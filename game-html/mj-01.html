@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-01 – Quelle couleur ?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    #gameScr { background: linear-gradient(160deg, #0d3b5e, #1a2a3a); }
+    .swatch-choice {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+    .swatch {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      border: 4px solid #fff4;
+      box-shadow: 0 4px 12px #0003;
+    }
+    .line-num {
+      font-size: 0.9rem;
+      font-weight: 900;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <div class="hdr">
+      <a href="index.html" class="back">←</a>
+      <span class="htitle">🎨 Quelle couleur ?</span>
+    </div>
+    
+    <!-- Score -->
+    <div class="scorebar">
+      <span class="scoretxt">Score</span>
+      <span class="scoreval" id="score">0</span>
+      <span class="streak" id="streak"></span>
+    </div>
+    
+    <!-- Question -->
+    <div class="qbox" id="qbox">
+      <div class="qtxt" id="qtxt" style="font-size:1.3rem;">
+        Quelle couleur est le bus <strong id="targetNum" style="font-size:1.6rem;color:#ffe066;">162</strong> ?
+      </div>
+    </div>
+    
+    <!-- Choices -->
+    <div class="choices" id="choices" style="grid-template-columns:1fr 1fr;padding:0 12px;">
+      <!-- Généré par JS -->
+    </div>
+  </div>
+  
+  <!-- Feedback overlay -->
+  <div id="fbOverlay"></div>
+  
+  <!-- Scripts -->
+  <script src="js/sounds.js"></script>
+  <script src="js/feedback.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/bus-svg.js"></script>
+  <script>
+    // ─── MJ-01: Quelle couleur ? ───
+    // Max voit un numéro → doit choisir la bonne couleur
+    
+    let score = 0;
+    let streak = 0;
+    let locked = false;
+    let currentLine = null;
+    
+    // Pool de lignes (toutes sauf TVM pour l'instant)
+    const POOL = LIGNES.filter(l => l.num !== 'TVM');
+    
+    function init() {
+      score = 0;
+      streak = 0;
+      document.getElementById('score').textContent = '0';
+      document.getElementById('streak').textContent = '';
+      nextQuestion();
+    }
+    
+    function nextQuestion() {
+      locked = false;
+      
+      // Choisir une ligne au hasard
+      currentLine = POOL[Math.floor(Math.random() * POOL.length)];
+      document.getElementById('targetNum').textContent = currentLine.num;
+      
+      // Générer 3 mauvaises réponses (couleurs différentes)
+      const otherColors = [...new Set(POOL.filter(l => l.color !== currentLine.color).map(l => l.color))];
+      const wrongColors = shuffle(otherColors).slice(0, 3);
+      
+      // Créer les options
+      const options = [
+        { color: currentLine.color, isCorrect: true },
+        ...wrongColors.map(c => ({ color: c, isCorrect: false }))
+      ];
+      
+      // Afficher les choix
+      const container = document.getElementById('choices');
+      container.innerHTML = '';
+      
+      shuffle(options).forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'ch swatch-choice';
+        btn.innerHTML = `
+          <span class="swatch" style="background:${opt.color};"></span>
+        `;
+        btn.onclick = () => answer(opt.isCorrect, btn);
+        container.appendChild(btn);
+      });
+    }
+    
+    function answer(isCorrect, btn) {
+      if (locked) return;
+      locked = true;
+      
+      // Vérifier si ambigu (plusieurs lignes ont cette couleur)
+      const sameColor = POOL.filter(l => l.color === currentLine.color);
+      const isAmbiguous = sameColor.length > 1;
+      
+      if (isCorrect) {
+        btn.classList.add('ok');
+        score += 10;
+        streak++;
+        if (streak >= 3) confetti();
+        
+        // Message spécial si ambigu
+        if (isAmbiguous) {
+          const others = sameColor.filter(l => l.num !== currentLine.num).map(l => l.num).join(' et ');
+          setTimeout(() => {
+            alert(`Bravo ! Le ${currentLine.num} est bien ${currentLine.name}.\n(Sache que le ${others} aussi !)`);
+          }, 300);
+        }
+        
+        sndDing();
+        showFB(true);
+      } else {
+        btn.classList.add('ko');
+        
+        // Montrer la bonne réponse
+        const correctBtn = Array.from(document.querySelectorAll('#choices .ch')).find(b => {
+          const swatch = b.querySelector('.swatch');
+          return swatch && swatch.style.background === currentLine.color;
+        });
+        if (correctBtn) correctBtn.classList.add('ok');
+        
+        streak = 0;
+        sndBuzz();
+        showFB(false);
+      }
+      
+      document.getElementById('score').textContent = score;
+      document.getElementById('streak').textContent = streak >= 2 ? `🔥×${streak}` : '';
+      
+      // Révéler le bus
+      setTimeout(() => {
+        const qbox = document.getElementById('qbox');
+        qbox.innerHTML = busSVG(currentLine.color, currentLine.textColor, currentLine.num, 180);
+        sndKlaxon();
+      }, 200);
+      
+      setTimeout(nextQuestion, 1500);
+    }
+    
+    // Démarrer
+    init();
+  </script>
+</body>
+</html>

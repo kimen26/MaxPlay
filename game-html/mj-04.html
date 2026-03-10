@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-04 – Lis le mot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    #gameScr { background: linear-gradient(160deg, #2a1a3a, #1a2a3a); }
+    .syl-word {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 16px 0;
+    }
+    .syl-block {
+      background: #ffffff20;
+      border-radius: 12px;
+      padding: 14px 20px;
+      font-size: 1.6rem;
+      font-weight: 900;
+      min-width: 60px;
+      text-align: center;
+    }
+    .syl-block.unknown {
+      background: #ffe06644;
+      border: 3px solid #ffe066;
+      animation: pulse 0.8s infinite alternate;
+    }
+    .syl-block.pop {
+      animation: popAnim 0.3s ease-out;
+    }
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.08); }
+    }
+    @keyframes popAnim {
+      0% { transform: scale(0.7); }
+      60% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    .syl-choices {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 0 12px;
+    }
+    .phase-indicator {
+      font-size: 0.75rem;
+      opacity: 0.6;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <div class="hdr">
+      <a href="index.html" class="back">←</a>
+      <span class="htitle">📖 Lis le mot</span>
+    </div>
+    
+    <!-- Score -->
+    <div class="scorebar">
+      <span class="scoretxt">Score</span>
+      <span class="scoreval" id="score">0</span>
+      <span class="streak" id="streak"></span>
+    </div>
+    
+    <!-- Phase indicator -->
+    <div class="phase-indicator" id="phaseInd">Phase 1: Mots simples</div>
+    
+    <!-- Word -->
+    <div class="qbox" style="padding:24px 12px;">
+      <div class="syl-word" id="wordBlocks">
+        <!-- Généré par JS -->
+      </div>
+      <div class="qtxt" style="font-size:0.95rem;opacity:0.8;">
+        Quelle syllabe manque ?
+      </div>
+    </div>
+    
+    <!-- Choices -->
+    <div class="syl-choices" id="choices">
+      <!-- Généré par JS -->
+    </div>
+  </div>
+  
+  <!-- Feedback overlay -->
+  <div id="fbOverlay"></div>
+  
+  <!-- Scripts -->
+  <script src="js/sounds.js"></script>
+  <script src="js/feedback.js"></script>
+  <script src="js/data.js"></script>
+  <script>
+    // ─── MJ-04: Lis le mot ───
+    // Phase 1: Mots simples (CACA, BUS, PAPA...)
+    // Phase 2: Arrêts de bus (Villejuif, Louis Aragon...)
+    
+    let score = 0;
+    let streak = 0;
+    let locked = false;
+    let currentWord = null;
+    let hiddenIndex = 0;
+    let phase = 1; // 1 = mots simples, 2 = arrêts
+    let questionsInPhase = 0;
+    
+    function init() {
+      score = 0;
+      streak = 0;
+      phase = 1;
+      questionsInPhase = 0;
+      document.getElementById('score').textContent = '0';
+      document.getElementById('streak').textContent = '';
+      nextQuestion();
+    }
+    
+    function nextQuestion() {
+      locked = false;
+      questionsInPhase++;
+      
+      // Passer à la phase 2 après 5 questions
+      if (phase === 1 && questionsInPhase > 5) {
+        phase = 2;
+        document.getElementById('phaseInd').textContent = 'Phase 2: Arrêts de bus';
+      }
+      
+      // Choisir un mot
+      const pool = phase === 1 ? MOTS_SIMPLE : ARRETS_185_M7;
+      currentWord = pool[Math.floor(Math.random() * pool.length)];
+      
+      // Choisir quelle syllabe cacher
+      hiddenIndex = Math.floor(Math.random() * currentWord.sylls.length);
+      const correctSyll = currentWord.sylls[hiddenIndex];
+      
+      // Afficher les blocs
+      const container = document.getElementById('wordBlocks');
+      container.innerHTML = '';
+      
+      currentWord.sylls.forEach((syl, i) => {
+        const block = document.createElement('span');
+        block.className = 'syl-block' + (i === hiddenIndex ? ' unknown' : '');
+        block.id = 'block_' + i;
+        block.textContent = i === hiddenIndex ? '?' : syl;
+        container.appendChild(block);
+      });
+      
+      // Générer les choix
+      const allSylls = [];
+      pool.forEach(w => w.sylls.forEach(s => {
+        if (s !== correctSyll && !allSylls.includes(s)) allSylls.push(s);
+      }));
+      
+      const wrongs = shuffle(allSylls).slice(0, 3);
+      const options = [correctSyll, ...wrongs];
+      
+      // Afficher les choix
+      const choicesDiv = document.getElementById('choices');
+      choicesDiv.innerHTML = '';
+      
+      shuffle(options).forEach(syl => {
+        const btn = document.createElement('button');
+        btn.className = 'ch';
+        btn.style.fontSize = '1.3rem';
+        btn.textContent = syl;
+        btn.onclick = () => answer(syl === correctSyll, btn, syl);
+        choicesDiv.appendChild(btn);
+      });
+    }
+    
+    function answer(isCorrect, btn, chosenSyll) {
+      if (locked) return;
+      locked = true;
+      
+      if (isCorrect) {
+        btn.classList.add('ok');
+        
+        // Révéler la syllabe
+        const block = document.getElementById('block_' + hiddenIndex);
+        if (block) {
+          block.classList.remove('unknown');
+          block.textContent = chosenSyll;
+          block.classList.add('pop');
+        }
+        
+        score += 10;
+        streak++;
+        if (streak >= 3) confetti();
+        sndDing();
+        showFB(true);
+        
+        // TTS du mot complet
+        speak(currentWord.word);
+      } else {
+        btn.classList.add('ko');
+        
+        const buttons = Array.from(document.querySelectorAll('#choices .ch'));
+        const correctSyll = currentWord.sylls[hiddenIndex];
+        const correctBtn = buttons.find(b => b.textContent === correctSyll);
+        if (correctBtn) correctBtn.classList.add('ok');
+        
+        streak = 0;
+        sndBuzz();
+        showFB(false);
+      }
+      
+      document.getElementById('score').textContent = score;
+      document.getElementById('streak').textContent = streak >= 2 ? `🔥×${streak}` : '';
+      
+      setTimeout(nextQuestion, 1400);
+    }
+    
+    function speak(text) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'fr-FR';
+      u.rate = 0.85;
+      u.pitch = 1.1;
+      window.speechSynthesis.speak(u);
+    }
+    
+    // Démarrer
+    init();
+  </script>
+</body>
+</html>

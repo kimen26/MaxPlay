@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-05 – Quel bus ?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    #gameScr { background: linear-gradient(160deg, #0d2a4a, #1a2a3a); }
+    .destination-card {
+      background: #ffffff15;
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .dest-icon {
+      font-size: 3rem;
+      margin-bottom: 8px;
+    }
+    .dest-name {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: #ffe066;
+    }
+    .dest-context {
+      font-size: 0.85rem;
+      opacity: 0.7;
+      margin-top: 4px;
+    }
+    .bus-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 0 12px;
+    }
+    .bus-option {
+      background: #ffffff12;
+      border: 2px solid transparent;
+      border-radius: 14px;
+      padding: 12px 8px;
+      cursor: pointer;
+      text-align: center;
+      transition: 0.15s;
+    }
+    .bus-option:active { transform: scale(0.97); }
+    .bus-option.ok { border-color: #00c47a; background: #00c47a22; }
+    .bus-option.ko { border-color: #ff4455; background: #ff445522; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <div class="hdr">
+      <a href="index.html" class="back">←</a>
+      <span class="htitle">🚏 Quel bus ?</span>
+    </div>
+    
+    <!-- Score -->
+    <div class="scorebar">
+      <span class="scoretxt">Score</span>
+      <span class="scoreval" id="score">0</span>
+      <span class="streak" id="streak"></span>
+    </div>
+    
+    <!-- Destination -->
+    <div class="destination-card" id="destCard">
+      <div class="dest-icon" id="destIcon">🏫</div>
+      <div class="dest-name" id="destName">École Montessori 101</div>
+      <div class="dest-context" id="destContext">Trajet quotidien</div>
+    </div>
+    
+    <!-- Choices -->
+    <div class="bus-grid" id="choices">
+      <!-- Généré par JS -->
+    </div>
+  </div>
+  
+  <!-- Feedback overlay -->
+  <div id="fbOverlay"></div>
+  
+  <!-- Scripts -->
+  <script src="js/sounds.js"></script>
+  <script src="js/feedback.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/bus-svg.js"></script>
+  <script>
+    // ─── MJ-05: Quel bus pour aller où ? ───
+    // Max doit choisir le bon bus pour une destination réelle
+    
+    let score = 0;
+    let streak = 0;
+    let locked = false;
+    let currentDest = null;
+    
+    function init() {
+      score = 0;
+      streak = 0;
+      document.getElementById('score').textContent = '0';
+      document.getElementById('streak').textContent = '';
+      nextQuestion();
+    }
+    
+    function nextQuestion() {
+      locked = false;
+      
+      // Choisir une destination
+      currentDest = DESTINATIONS[Math.floor(Math.random() * DESTINATIONS.length)];
+      
+      // Afficher
+      document.getElementById('destIcon').textContent = currentDest.icon;
+      document.getElementById('destName').textContent = currentDest.name;
+      document.getElementById('destContext').textContent = currentDest.contexte;
+      
+      // Générer les options (1 correcte + 3 distracteurs)
+      const correctLine = LIGNES.find(l => l.num === currentDest.lignes[0]);
+      const wrongLines = LIGNES
+        .filter(l => !currentDest.lignes.includes(l.num) && l.num !== 'TVM')
+        .sort(() => Math.random() - 0.5)
+        .slice(0, 3);
+      
+      const options = [correctLine, ...wrongLines];
+      
+      // Afficher
+      const container = document.getElementById('choices');
+      container.innerHTML = '';
+      
+      shuffle(options).forEach(line => {
+        const div = document.createElement('div');
+        div.className = 'bus-option';
+        div.innerHTML = busSVG(line.color, line.textColor, line.num, 120);
+        div.onclick = () => answer(line.num === currentDest.lignes[0], div);
+        container.appendChild(div);
+      });
+    }
+    
+    function answer(isCorrect, el) {
+      if (locked) return;
+      locked = true;
+      
+      if (isCorrect) {
+        el.classList.add('ok');
+        score += 10;
+        streak++;
+        if (streak >= 3) confetti();
+        sndKlaxon();
+        showFB(true);
+      } else {
+        el.classList.add('ko');
+        
+        // Montrer la bonne réponse
+        const correctNum = currentDest.lignes[0];
+        const options = Array.from(document.querySelectorAll('#choices .bus-option'));
+        const correctEl = options.find(opt => {
+          const svg = opt.querySelector('svg');
+          return svg && svg.textContent.includes(correctNum);
+        });
+        if (correctEl) correctEl.classList.add('ok');
+        
+        streak = 0;
+        sndBuzz();
+        showFB(false);
+      }
+      
+      document.getElementById('score').textContent = score;
+      document.getElementById('streak').textContent = streak >= 2 ? `🔥×${streak}` : '';
+      
+      setTimeout(nextQuestion, 1500);
+    }
+    
+    // Démarrer
+    init();
+  </script>
+</body>
+</html>

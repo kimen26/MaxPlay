@@ -1,0 +1,183 @@
+{
+  "effortLevel": "medium",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \".claude/hooks/run-with-flags.js\" \"pre:bash:tmux\" \"hooks/pre-bash-tmux.js\" \"standard,strict\""
+          }
+        ],
+        "description": "Auto-start dev servers in tmux with directory-based session names"
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \".claude/hooks/run-with-flags.js\" \"pre:bash:tmux-reminder\" \"hooks/pre-bash-tmux-reminder.js\" \"strict\""
+          }
+        ],
+        "description": "Reminder to use tmux for long-running commands"
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \".claude/hooks/run-with-flags.js\" \"pre:bash:git-push-reminder\" \"hooks/pre-bash-git-push-reminder.js\" \"strict\""
+          }
+        ],
+        "description": "Reminder before git push to review changes"
+      },
+      {
+        "matcher": "Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \".claude/hooks/run-with-flags.js\" \"pre:write:doc-file-warning\" \"hooks/doc-file-warning.js\" \"standard,strict\""
+          }
+        ],
+        "description": "Doc file warning: warn about non-standard documentation files"
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \".claude/hooks/run-with-flags.js\" \"pre:edit-write:suggest-compact\" \"hooks/suggest-compact.js\" \"standard,strict\""
+          }
+        ],
+        "description": "Suggest manual compaction at logical intervals"
+      }
+    ],
+    "PreCompact": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \".claude/hooks/run-with-flags.js\" \"pre:compact\" \"hooks/pre-compact.js\" \"standard,strict\""
+          }
+        ],
+        "description": "Save state before context compaction"
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \".claude/hooks/run-with-flags.js\" \"session:start\" \"hooks/session-start.js\" \"minimal,standard,strict\""
+          }
+        ],
+        "description": "Load previous context and detect package manager on new session"
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \".claude/hooks/run-with-flags.js\" \"post:bash:pr-created\" \"hooks/post-bash-pr-created.js\" \"standard,strict\""
+          }
+        ],
+        "description": "Log PR URL and provide review command after PR creation"
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \".claude/hooks/run-with-flags.js\" \"post:bash:build-complete\" \"hooks/post-bash-build-complete.js\" \"standard,strict\"",
+            "async": true,
+            "timeout": 30
+          }
+        ],
+        "description": "Async hook for build analysis"
+      },
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \".claude/hooks/run-with-flags.js\" \"post:quality-gate\" \"hooks/quality-gate.js\" \"standard,strict\"",
+            "async": true,
+            "timeout": 30
+          }
+        ],
+        "description": "Run quality gate checks after file edits"
+      },
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \".claude/hooks/run-with-flags.js\" \"post:edit:format\" \"hooks/post-edit-format.js\" \"standard,strict\""
+          }
+        ],
+        "description": "Auto-format JS/TS files after edits"
+      },
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \".claude/hooks/run-with-flags.js\" \"post:edit:typecheck\" \"hooks/post-edit-typecheck.js\" \"standard,strict\""
+          }
+        ],
+        "description": "TypeScript check after editing .ts/.tsx files"
+      },
+      {
+        "matcher": "Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd game && npx tsc --noEmit 2>&1 | head -20"
+          }
+        ],
+        "description": "TypeScript check for MaxPlay game/ directory"
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \".claude/hooks/run-with-flags.js\" \"stop\" \"hooks/stop.js\" \"minimal,standard,strict\""
+          }
+        ],
+        "description": "Save state on stop"
+      }
+    ],
+    "SessionEnd": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \".claude/hooks/run-with-flags.js\" \"session:end\" \"hooks/session-end.js\" \"minimal,standard,strict\""
+          }
+        ],
+        "description": "Save state on session end"
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:docs.anthropic.com)",
+      "Bash(npm install)",
+      "Bash(npm run *)",
+      "Bash(npx tsc --noEmit)",
+      "Bash(npx vite --host)",
+      "Bash(npx tsx *)"
+    ]
+  }
+}

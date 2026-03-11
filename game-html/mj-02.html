@@ -106,9 +106,8 @@
         200
       );
       
-      // Montrer la COULEUR comme indice textuel
-      document.getElementById('colorHint').textContent = `💡 C'est un bus ${currentLine.name}`;
-      document.getElementById('colorHint').style.color = currentLine.color;
+      // Pas d'indice textuel – le bus coloré suffit
+      document.getElementById('colorHint').textContent = '';
       
       // Générer 3 mauvaises réponses (numéros de couleurs différentes)
       const wrongOptions = POOL

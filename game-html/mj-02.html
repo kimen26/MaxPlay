@@ -10,6 +10,12 @@
     #gameScr { background: linear-gradient(160deg, #2a1a3a, #1a2a3a); }
     .bus-option { padding: 8px !important; }
     .bus-option svg { width: 100%; max-width: 140px; }
+    .question-counter {
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      margin-bottom: 8px;
+    }
   </style>
 </head>
 <body>
@@ -29,7 +35,9 @@
     
     <!-- Question -->
     <div class="qbox" id="qbox">
+      <div class="question-counter" id="qcounter">Question 1 / 5</div>
       <div id="busDisplay" style="margin-bottom:12px;"></div>
+      <div id="colorHint" style="font-size:1rem;margin-bottom:8px;font-weight:700;"></div>
       <div class="qtxt" style="font-size:1.1rem;">
         Quel est le numéro de ce bus ?
       </div>
@@ -56,6 +64,8 @@
     
     let score = 0;
     let streak = 0;
+    let questionCount = 0;
+    const MAX_QUESTIONS = 5;
     let locked = false;
     let currentLine = null;
     
@@ -68,18 +78,27 @@
     function init() {
       score = 0;
       streak = 0;
+      questionCount = 0;
       document.getElementById('score').textContent = '0';
       document.getElementById('streak').textContent = '';
+      document.getElementById('qcounter').textContent = `Question 1 / ${MAX_QUESTIONS}`;
       nextQuestion();
     }
     
     function nextQuestion() {
+      if (questionCount >= MAX_QUESTIONS) {
+        showEndScreen();
+        return;
+      }
+      
       locked = false;
+      questionCount++;
+      document.getElementById('qcounter').textContent = `Question ${questionCount} / ${MAX_QUESTIONS}`;
       
       // Choisir une ligne au hasard
       currentLine = POOL[Math.floor(Math.random() * POOL.length)];
       
-      // Afficher le bus avec numéro caché
+      // Afficher le bus COLORÉ avec numéro caché
       document.getElementById('busDisplay').innerHTML = busSVGHiddenNum(
         currentLine.color, 
         currentLine.textColor, 
@@ -87,7 +106,11 @@
         200
       );
       
-      // Générer 3 mauvaises réponses (numéros de couleurs proches)
+      // Montrer la COULEUR comme indice textuel
+      document.getElementById('colorHint').textContent = `💡 C'est un bus ${currentLine.name}`;
+      document.getElementById('colorHint').style.color = currentLine.color;
+      
+      // Générer 3 mauvaises réponses (numéros de couleurs différentes)
       const wrongOptions = POOL
         .filter(l => l.num !== currentLine.num)
         .sort(() => Math.random() - 0.5)
@@ -106,7 +129,8 @@
       shuffle(options).forEach(opt => {
         const btn = document.createElement('button');
         btn.className = 'ch';
-        btn.style.fontSize = '1.4rem';
+        btn.style.fontSize = '1.6rem';
+        btn.style.fontWeight = '900';
         btn.textContent = opt.line.num;
         btn.onclick = () => answer(opt.isCorrect, btn);
         container.appendChild(btn);
@@ -121,7 +145,6 @@
         btn.classList.add('ok');
         score += 10;
         streak++;
-        if (streak >= 3) confetti();
         sndDing();
         showFB(true);
         
@@ -148,6 +171,23 @@
       document.getElementById('streak').textContent = streak >= 2 ? `🔥×${streak}` : '';
       
       setTimeout(nextQuestion, 1800);
+    }
+    
+    function showEndScreen() {
+      sndVictory();
+      confetti();
+      const app = document.getElementById('app');
+      app.innerHTML = `
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;text-align:center;padding:20px;">
+          <div style="font-size:5rem;margin-bottom:20px;">🏆</div>
+          <h2 style="font-size:2rem;margin-bottom:20px;color:#ffe066;">Super !</h2>
+          <p style="font-size:1.4rem;margin-bottom:30px;">Tu as fait <strong>${score}</strong> points !</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+            <a href="mj-02.html" style="background:#00c47a;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">🔄 Rejouer</a>
+            <a href="index.html" style="background:#ffffff22;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">📋 Menu</a>
+          </div>
+        </div>
+      `;
     }
     
     // Démarrer

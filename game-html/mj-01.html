@@ -26,6 +26,12 @@
       font-weight: 900;
       color: #fff;
     }
+    .question-counter {
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      margin-bottom: 8px;
+    }
   </style>
 </head>
 <body>
@@ -45,6 +51,7 @@
     
     <!-- Question -->
     <div class="qbox" id="qbox">
+      <div class="question-counter" id="qcounter">Question 1 / 5</div>
       <div class="qtxt" id="qtxt" style="font-size:1.3rem;">
         Quelle couleur est le bus <strong id="targetNum" style="font-size:1.6rem;color:#ffe066;">162</strong> ?
       </div>
@@ -70,6 +77,8 @@
     
     let score = 0;
     let streak = 0;
+    let questionCount = 0;
+    const MAX_QUESTIONS = 5;
     let locked = false;
     let currentLine = null;
     
@@ -79,13 +88,22 @@
     function init() {
       score = 0;
       streak = 0;
+      questionCount = 0;
       document.getElementById('score').textContent = '0';
       document.getElementById('streak').textContent = '';
+      document.getElementById('qcounter').textContent = `Question 1 / ${MAX_QUESTIONS}`;
       nextQuestion();
     }
     
     function nextQuestion() {
+      if (questionCount >= MAX_QUESTIONS) {
+        showEndScreen();
+        return;
+      }
+      
       locked = false;
+      questionCount++;
+      document.getElementById('qcounter').textContent = `Question ${questionCount} / ${MAX_QUESTIONS}`;
       
       // Choisir une ligne au hasard
       currentLine = POOL[Math.floor(Math.random() * POOL.length)];
@@ -120,24 +138,10 @@
       if (locked) return;
       locked = true;
       
-      // Vérifier si ambigu (plusieurs lignes ont cette couleur)
-      const sameColor = POOL.filter(l => l.color === currentLine.color);
-      const isAmbiguous = sameColor.length > 1;
-      
       if (isCorrect) {
         btn.classList.add('ok');
         score += 10;
         streak++;
-        if (streak >= 3) confetti();
-        
-        // Message spécial si ambigu
-        if (isAmbiguous) {
-          const others = sameColor.filter(l => l.num !== currentLine.num).map(l => l.num).join(' et ');
-          setTimeout(() => {
-            alert(`Bravo ! Le ${currentLine.num} est bien ${currentLine.name}.\n(Sache que le ${others} aussi !)`);
-          }, 300);
-        }
-        
         sndDing();
         showFB(true);
       } else {
@@ -158,14 +162,24 @@
       document.getElementById('score').textContent = score;
       document.getElementById('streak').textContent = streak >= 2 ? `🔥×${streak}` : '';
       
-      // Révéler le bus
-      setTimeout(() => {
-        const qbox = document.getElementById('qbox');
-        qbox.innerHTML = busSVG(currentLine.color, currentLine.textColor, currentLine.num, 180);
-        sndKlaxon();
-      }, 200);
-      
-      setTimeout(nextQuestion, 1500);
+      setTimeout(nextQuestion, 1200);
+    }
+    
+    function showEndScreen() {
+      sndVictory();
+      confetti();
+      const app = document.getElementById('app');
+      app.innerHTML = `
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;text-align:center;padding:20px;">
+          <div style="font-size:5rem;margin-bottom:20px;">🏆</div>
+          <h2 style="font-size:2rem;margin-bottom:20px;color:#ffe066;">Super !</h2>
+          <p style="font-size:1.4rem;margin-bottom:30px;">Tu as fait <strong>${score}</strong> points !</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+            <a href="mj-01.html" style="background:#00c47a;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">🔄 Rejouer</a>
+            <a href="index.html" style="background:#ffffff22;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">📋 Menu</a>
+          </div>
+        </div>
+      `;
     }
     
     // Démarrer

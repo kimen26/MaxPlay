@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MJ-07 – La journée de Max (Sandbox)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(160deg, #1a2a3a 0%, #0d3b5e 100%);
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+    .container {
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #ffe066;
+    }
+    p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+    .btn {
+      display: inline-block;
+      background: #00c47a;
+      color: #fff;
+      padding: 15px 40px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 1.2rem;
+      margin: 10px;
+      transition: transform 0.2s;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+    }
+    .btn-back {
+      background: #ffffff22;
+    }
+    .info {
+      background: #ffffff15;
+      padding: 20px;
+      border-radius: 16px;
+      margin: 20px 0;
+      max-width: 500px;
+    }
+    .info h3 {
+      color: #00c47a;
+      margin-bottom: 10px;
+    }
+    .info ul {
+      text-align: left;
+      list-style: none;
+      padding: 0;
+    }
+    .info li {
+      padding: 5px 0;
+      padding-left: 25px;
+      position: relative;
+    }
+    .info li:before {
+      content: "🎮";
+      position: absolute;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🗺️ La journée de Max</h1>
+    
+    <div class="info">
+      <h3>Explore Villejuif avec Max !</h3>
+      <ul>
+        <li>Marche jusqu'à l'arrêt de bus</li>
+        <li>Prends le bon bus (185, V7, M7...)</li>
+        <li>Voyage vers l'école, chez Valouette...</li>
+        <li>3 missions à compléter !</li>
+      </ul>
+    </div>
+    
+    <p>
+      Ce jeu utilise Phaser.js et nécessite un serveur local.<br>
+      <small>Ouvre un terminal dans le dossier <code>game/</code> et lance :</small>
+    </p>
+    
+    <p>
+      <code style="background:#0003;padding:8px 16px;border-radius:8px;">npm install && npm run dev</code>
+    </p>
+    
+    <a href="http://localhost:5173" class="btn" target="_blank">Ouvrir le jeu (localhost:5173)</a>
+    <a href="index.html" class="btn btn-back">← Retour au menu</a>
+  </div>
+</body>
+</html>

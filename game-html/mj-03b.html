@@ -8,7 +8,51 @@
   <link rel="stylesheet" href="css/style.css">
   <style>
     #gameScr { background: linear-gradient(160deg, #3a1a2a, #1a2a3a); }
-    .bus-scheme {
+    .bus-scene {
+      background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 50%, #90EE90 50%, #228B22 100%);
+      border-radius: 16px;
+      padding: 16px;
+      margin: 0 12px 12px;
+      position: relative;
+      min-height: 180px;
+    }
+    .bus-visual {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 4rem;
+      animation: busBounce 2s ease-in-out infinite;
+    }
+    @keyframes busBounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-3px); }
+    }
+    .people-waiting {
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 8px;
+      background: rgba(255,255,255,0.3);
+      border-radius: 20px;
+    }
+    .person {
+      font-size: 1.8rem;
+      animation: personBob 1s ease-in-out infinite;
+    }
+    .person:nth-child(2) { animation-delay: 0.1s; }
+    .person:nth-child(3) { animation-delay: 0.2s; }
+    .person:nth-child(4) { animation-delay: 0.3s; }
+    .person:nth-child(5) { animation-delay: 0.4s; }
+    @keyframes personBob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-3px); }
+    }
+    .bus-seats {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
@@ -16,7 +60,7 @@
       padding: 12px;
       background: #ffffff10;
       border-radius: 12px;
-      margin-bottom: 12px;
+      margin: 0 12px 12px;
     }
     .seat {
       width: 36px;
@@ -28,6 +72,7 @@
       font-size: 1.2rem;
       background: #00c47a33;
       border: 2px solid #00c47a;
+      transition: all 0.3s;
     }
     .seat.occupied {
       background: #ff445533;
@@ -37,6 +82,13 @@
       background: #ffffff22;
       border-color: #ffffff44;
     }
+    .seat.boarding {
+      animation: boardAnim 0.5s ease-out;
+    }
+    @keyframes boardAnim {
+      0% { transform: scale(1.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
     .problem-text {
       font-size: 1rem;
       line-height: 1.5;
@@ -44,11 +96,17 @@
       padding: 12px;
       background: #ffffff10;
       border-radius: 12px;
-      margin-bottom: 12px;
+      margin: 0 12px 12px;
     }
     .problem-text strong {
       color: #ffe066;
       font-size: 1.2rem;
+    }
+    .question-counter {
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      margin-bottom: 8px;
     }
   </style>
 </head>
@@ -72,8 +130,16 @@
       <!-- Généré par JS -->
     </div>
     
-    <!-- Bus visualization -->
-    <div class="bus-scheme" id="busScheme">
+    <!-- Bus visualization with people -->
+    <div class="bus-scene" id="busScene">
+      <div class="bus-visual">🚌</div>
+      <div class="people-waiting" id="peopleWaiting">
+        <!-- Généré par JS -->
+      </div>
+    </div>
+    
+    <!-- Seats visualization -->
+    <div class="bus-seats" id="busSeats">
       <!-- Généré par JS -->
     </div>
     
@@ -97,13 +163,17 @@
     
     let score = 0;
     let streak = 0;
+    let questionCount = 0;
+    const MAX_QUESTIONS = 5;
     let locked = false;
     let correctAnswer = 0;
     let level = 1; // 1=facile, 2=moyen, 3=difficile
+    let currentProblem = null;
     
     function init() {
       score = 0;
       streak = 0;
+      questionCount = 0;
       level = 1;
       document.getElementById('score').textContent = '0';
       document.getElementById('streak').textContent = '';
@@ -111,7 +181,13 @@
     }
     
     function nextQuestion() {
+      if (questionCount >= MAX_QUESTIONS) {
+        showEndScreen();
+        return;
+      }
+      
       locked = false;
+      questionCount++;
       
       // Augmenter le niveau si Max réussit beaucoup
       if (streak >= 5) level = 3;
@@ -119,13 +195,19 @@
       
       // Générer le problème selon le niveau
       const problem = generateProblem(level);
+      currentProblem = problem;
       correctAnswer = problem.answer;
       
-      // Afficher le texte
-      document.getElementById('problem').innerHTML = problem.text;
+      // Afficher le texte avec compteur
+      document.getElementById('problem').innerHTML = 
+        `<div class="question-counter">Question ${questionCount} / ${MAX_QUESTIONS}</div>` + 
+        problem.text;
+      
+      // Afficher les personnes qui attendent
+      renderPeopleWaiting(problem.waiting || 0);
       
       // Afficher le schéma du bus
-      renderBus(problem.total, problem.occupied);
+      renderSeats(problem.total, problem.occupied);
       
       // Générer les choix
       const choices = generateChoices(correctAnswer, level);
@@ -157,8 +239,9 @@
         const available = total - occupied;
         
         return {
+          type: 'places',
           text: `Le bus a <strong>${total}</strong> places.<br><strong>${occupied}</strong> sont occupées.<br>Combien de places libres ?`,
-          total, occupied, answer: available
+          total, occupied, answer: available, waiting: 0
         };
       } else if (type === 'monter') {
         // Places, occupées, attente → combien peuvent monter ?
@@ -169,8 +252,9 @@
         const canBoard = Math.min(waiting, available);
         
         return {
+          type: 'monter',
           text: `Le bus a <strong>${total}</strong> places.<br><strong>${occupied}</strong> sont occupées.<br><strong>${waiting}</strong> personnes attendent.<br>Combien peuvent monter ?`,
-          total, occupied, answer: canBoard
+          total, occupied, answer: canBoard, waiting
         };
       } else {
         // Passagers, descendent → combien restent ?
@@ -181,14 +265,44 @@
         const remaining = total - leaving;
         
         return {
+          type: 'descendre',
           text: `Il y a <strong>${total}</strong> passagers dans le bus.<br><strong>${leaving}</strong> descendent.<br>Combien restent ?`,
-          total, occupied: 0, answer: remaining
+          total, occupied: 0, answer: remaining, waiting: leaving
         };
       }
     }
     
-    function renderBus(total, occupied) {
-      const container = document.getElementById('busScheme');
+    function renderPeopleWaiting(count) {
+      const container = document.getElementById('peopleWaiting');
+      container.innerHTML = '';
+      
+      if (count === 0) {
+        container.style.display = 'none';
+        return;
+      }
+      
+      container.style.display = 'flex';
+      const emojis = ['🧍', '🧍‍♀️', '🧍‍♂️', '👧', '👦', '👵', '👴'];
+      
+      for (let i = 0; i < Math.min(count, 6); i++) {
+        const person = document.createElement('span');
+        person.className = 'person';
+        person.textContent = emojis[i % emojis.length];
+        container.appendChild(person);
+      }
+      
+      if (count > 6) {
+        const more = document.createElement('span');
+        more.className = 'person';
+        more.textContent = `+${count - 6}`;
+        more.style.fontSize = '1rem';
+        more.style.fontWeight = 'bold';
+        container.appendChild(more);
+      }
+    }
+    
+    function renderSeats(total, occupied) {
+      const container = document.getElementById('busSeats');
       container.innerHTML = '';
       
       // Limiter l'affichage pour ne pas surcharger
@@ -217,6 +331,23 @@
       }
     }
     
+    function animateBoarding() {
+      // Animation des personnes qui montent
+      const seats = document.querySelectorAll('.seat.available');
+      let count = 0;
+      seats.forEach(seat => {
+        if (count < correctAnswer) {
+          setTimeout(() => {
+            seat.classList.remove('available');
+            seat.classList.add('occupied', 'boarding');
+            seat.textContent = '🧍';
+            sndPorte();
+          }, count * 200);
+          count++;
+        }
+      });
+    }
+    
     function generateChoices(correct, lvl) {
       const range = lvl === 1 ? 3 : lvl === 2 ? 5 : 8;
       const wrongs = [];
@@ -239,6 +370,11 @@
         if (streak >= 3) confetti();
         sndDing();
         showFB(true);
+        
+        // Animation des passagers qui montent
+        if (currentProblem && currentProblem.type === 'monter') {
+          animateBoarding();
+        }
       } else {
         btn.classList.add('ko');
         
@@ -255,7 +391,24 @@
       document.getElementById('score').textContent = score;
       document.getElementById('streak').textContent = streak >= 2 ? `🔥×${streak}` : '';
       
-      setTimeout(nextQuestion, 1400);
+      setTimeout(nextQuestion, 1800);
+    }
+    
+    function showEndScreen() {
+      sndVictory();
+      confetti();
+      const app = document.getElementById('app');
+      app.innerHTML = `
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;text-align:center;padding:20px;">
+          <div style="font-size:5rem;margin-bottom:20px;">🏆</div>
+          <h2 style="font-size:2rem;margin-bottom:20px;color:#ffe066;">Super !</h2>
+          <p style="font-size:1.4rem;margin-bottom:30px;">Tu as fait <strong>${score}</strong> points !</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+            <a href="mj-03b.html" style="background:#00c47a;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">🔄 Rejouer</a>
+            <a href="index.html" style="background:#ffffff22;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">📋 Menu</a>
+          </div>
+        </div>
+      `;
     }
     
     // Démarrer

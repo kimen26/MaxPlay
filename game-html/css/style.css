@@ -50,18 +50,31 @@ body {
 }
 
 .back {
-  background: #ffffff22;
+  background: linear-gradient(135deg, #00c47a, #00a060);
   border: none;
   color: #fff;
-  font-size: 22px;
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
+  font-size: 20px;
+  border-radius: 12px;
+  width: 48px;
+  height: 48px;
   cursor: pointer;
   flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 196, 122, 0.3);
+  transition: all 0.2s;
 }
 
-.back:active { transform: scale(0.96); }
+.back:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 196, 122, 0.4);
+}
+
+.back:active { 
+  transform: translateY(0) scale(0.95);
+}
 
 .htitle {
   font-size: 1.25rem;

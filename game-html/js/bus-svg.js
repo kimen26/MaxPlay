@@ -59,8 +59,8 @@ function busSVGHiddenNum(color, textColor, num, width = 200) {
   <rect x="36" y="14" width="21" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1.5"/>
   <rect x="84" y="14" width="40" height="21" fill="${color}" stroke="#111" stroke-width="1.5"/>
   <rect x="150.5" y="14" width="5" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1"/>
-  <!-- Numéro masqué -->
-  <rect x="86" y="16" width="36" height="17" fill="#fff" stroke="#111" stroke-width="1"/>
+  <!-- Numéro masqué (panneau blanc plus petit pour voir la couleur autour) -->
+  <rect x="88" y="18" width="32" height="13" fill="#fff" stroke="#111" stroke-width="1"/>
   <text x="104" y="29" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="${textColor}" text-anchor="middle" opacity="0">${num}</text>
   <line x1="149" y1="24" x2="155" y2="24" stroke="#111" stroke-width="2" stroke-linecap="round"/>
   <rect x="152" y="20" width="6" height="10" rx="1" fill="#111"/>

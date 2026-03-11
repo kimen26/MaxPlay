@@ -47,6 +47,12 @@
     .bus-option:active { transform: scale(0.97); }
     .bus-option.ok { border-color: #00c47a; background: #00c47a22; }
     .bus-option.ko { border-color: #ff4455; background: #ff445522; }
+    .question-counter {
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      margin-bottom: 8px;
+    }
   </style>
 </head>
 <body>
@@ -66,6 +72,7 @@
     
     <!-- Destination -->
     <div class="destination-card" id="destCard">
+      <div class="question-counter" id="qcounter">Question 1 / 5</div>
       <div class="dest-icon" id="destIcon">🏫</div>
       <div class="dest-name" id="destName">École Montessori 101</div>
       <div class="dest-context" id="destContext">Trajet quotidien</div>
@@ -91,19 +98,29 @@
     
     let score = 0;
     let streak = 0;
+    let questionCount = 0;
+    const MAX_QUESTIONS = 5;
     let locked = false;
     let currentDest = null;
     
     function init() {
       score = 0;
       streak = 0;
+      questionCount = 0;
       document.getElementById('score').textContent = '0';
       document.getElementById('streak').textContent = '';
       nextQuestion();
     }
     
     function nextQuestion() {
+      if (questionCount >= MAX_QUESTIONS) {
+        showEndScreen();
+        return;
+      }
+      
       locked = false;
+      questionCount++;
+      document.getElementById('qcounter').textContent = `Question ${questionCount} / ${MAX_QUESTIONS}`;
       
       // Choisir une destination
       currentDest = DESTINATIONS[Math.floor(Math.random() * DESTINATIONS.length)];
@@ -115,10 +132,33 @@
       
       // Générer les options (1 correcte + 3 distracteurs)
       const correctLine = LIGNES.find(l => l.num === currentDest.lignes[0]);
-      const wrongLines = LIGNES
-        .filter(l => !currentDest.lignes.includes(l.num) && l.num !== 'TVM')
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 3);
+      
+      // S'assurer d'avoir 3 lignes différentes (pas de doublons)
+      const usedLineNums = new Set([currentDest.lignes[0]]);
+      const wrongLines = [];
+      
+      // Filtrer les lignes disponibles (pas TVM, pas déjà utilisées)
+      const availableLines = LIGNES.filter(l => 
+        !currentDest.lignes.includes(l.num) && 
+        l.num !== 'TVM' &&
+        !usedLineNums.has(l.num)
+      );
+      
+      // Mélanger et prendre 3
+      const shuffledAvailable = shuffle(availableLines);
+      for (let i = 0; i < Math.min(3, shuffledAvailable.length); i++) {
+        wrongLines.push(shuffledAvailable[i]);
+        usedLineNums.add(shuffledAvailable[i].num);
+      }
+      
+      // Si on n'a pas assez de lignes, compléter avec d'autres (ne devrait pas arriver)
+      while (wrongLines.length < 3) {
+        const randomLine = LIGNES[Math.floor(Math.random() * LIGNES.length)];
+        if (!usedLineNums.has(randomLine.num)) {
+          wrongLines.push(randomLine);
+          usedLineNums.add(randomLine.num);
+        }
+      }
       
       const options = [correctLine, ...wrongLines];
       
@@ -126,7 +166,10 @@
       const container = document.getElementById('choices');
       container.innerHTML = '';
       
-      shuffle(options).forEach(line => {
+      // Mélanger les options pour l'affichage
+      const shuffledOptions = shuffle(options);
+      
+      shuffledOptions.forEach(line => {
         const div = document.createElement('div');
         div.className = 'bus-option';
         div.innerHTML = busSVG(line.color, line.textColor, line.num, 120);
@@ -167,6 +210,23 @@
       document.getElementById('streak').textContent = streak >= 2 ? `🔥×${streak}` : '';
       
       setTimeout(nextQuestion, 1500);
+    }
+    
+    function showEndScreen() {
+      sndVictory();
+      confetti();
+      const app = document.getElementById('app');
+      app.innerHTML = `
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;text-align:center;padding:20px;">
+          <div style="font-size:5rem;margin-bottom:20px;">🏆</div>
+          <h2 style="font-size:2rem;margin-bottom:20px;color:#ffe066;">Super !</h2>
+          <p style="font-size:1.4rem;margin-bottom:30px;">Tu as fait <strong>${score}</strong> points !</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+            <a href="mj-05.html" style="background:#00c47a;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">🔄 Rejouer</a>
+            <a href="index.html" style="background:#ffffff22;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">📋 Menu</a>
+          </div>
+        </div>
+      `;
     }
     
     // Démarrer

@@ -689,11 +689,11 @@
     {
       "num": "V7",
       "type": "valouette",
-      "color": "#F58443",
-      "textColor": "#333",
+      "color": "#E3051C",
+      "textColor": "#fff",
       "name": "Valouette V7",
       "actif": true,
-      "note": "Chez Valouette (marché/piscine). Couleur orange #F58443"
+      "note": "Chez Valouette (marché/piscine). Rouge Coquelicot #E3051C – confirmé IDFM"
     },
     {
       "num": "N11",

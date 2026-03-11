@@ -1,0 +1,989 @@
+{
+  "_meta": {
+    "source": "RATP / IDFM couleurs officielles",
+    "note": "Fichier de référence central – NE PAS modifier les couleurs sans vérification officielle. Le champ 'actif' indique si Max connaît cette ligne (utilisée dans les jeux).",
+    "updated": "2026-03-11"
+  },
+  "lignes": [
+    {
+      "num": "M1",
+      "type": "metro",
+      "color": "#FFCD00",
+      "textColor": "#333",
+      "name": "Métro 1",
+      "actif": false
+    },
+    {
+      "num": "M2",
+      "type": "metro",
+      "color": "#003CA6",
+      "textColor": "#fff",
+      "name": "Métro 2",
+      "actif": false
+    },
+    {
+      "num": "M3",
+      "type": "metro",
+      "color": "#837902",
+      "textColor": "#fff",
+      "name": "Métro 3",
+      "actif": false
+    },
+    {
+      "num": "M3b",
+      "type": "metro",
+      "color": "#6EC4E8",
+      "textColor": "#333",
+      "name": "Métro 3b",
+      "actif": false
+    },
+    {
+      "num": "M4",
+      "type": "metro",
+      "color": "#CF009E",
+      "textColor": "#fff",
+      "name": "Métro 4",
+      "actif": false
+    },
+    {
+      "num": "M5",
+      "type": "metro",
+      "color": "#FF7E2E",
+      "textColor": "#333",
+      "name": "Métro 5",
+      "actif": false
+    },
+    {
+      "num": "M6",
+      "type": "metro",
+      "color": "#6ECA97",
+      "textColor": "#333",
+      "name": "Métro 6",
+      "actif": true,
+      "note": "Trajet chez mamie → Montparnasse"
+    },
+    {
+      "num": "M7",
+      "type": "metro",
+      "color": "#FA9ABA",
+      "textColor": "#333",
+      "name": "Métro 7",
+      "actif": true,
+      "note": "École + mamie + tata Sarah"
+    },
+    {
+      "num": "M7b",
+      "type": "metro",
+      "color": "#83C491",
+      "textColor": "#333",
+      "name": "Métro 7b",
+      "actif": false
+    },
+    {
+      "num": "M8",
+      "type": "metro",
+      "color": "#E19BDF",
+      "textColor": "#333",
+      "name": "Métro 8",
+      "actif": false
+    },
+    {
+      "num": "M9",
+      "type": "metro",
+      "color": "#B5BD00",
+      "textColor": "#333",
+      "name": "Métro 9",
+      "actif": false
+    },
+    {
+      "num": "M10",
+      "type": "metro",
+      "color": "#C9910A",
+      "textColor": "#333",
+      "name": "Métro 10",
+      "actif": false
+    },
+    {
+      "num": "M11",
+      "type": "metro",
+      "color": "#704B1C",
+      "textColor": "#fff",
+      "name": "Métro 11",
+      "actif": false
+    },
+    {
+      "num": "M12",
+      "type": "metro",
+      "color": "#007852",
+      "textColor": "#fff",
+      "name": "Métro 12",
+      "actif": false
+    },
+    {
+      "num": "M13",
+      "type": "metro",
+      "color": "#6EC4E8",
+      "textColor": "#333",
+      "name": "Métro 13",
+      "actif": false
+    },
+    {
+      "num": "M14",
+      "type": "metro",
+      "color": "#62259D",
+      "textColor": "#fff",
+      "name": "Métro 14",
+      "actif": false
+    },
+    {
+      "num": "M15",
+      "type": "metro",
+      "color": "#B90845",
+      "textColor": "#fff",
+      "name": "Métro 15 (GPE)",
+      "actif": false
+    },
+    {
+      "num": "M16",
+      "type": "metro",
+      "color": "#F3A4BA",
+      "textColor": "#333",
+      "name": "Métro 16 (GPE)",
+      "actif": false
+    },
+    {
+      "num": "M17",
+      "type": "metro",
+      "color": "#D5C900",
+      "textColor": "#333",
+      "name": "Métro 17 (GPE)",
+      "actif": false
+    },
+    {
+      "num": "M18",
+      "type": "metro",
+      "color": "#00A88F",
+      "textColor": "#fff",
+      "name": "Métro 18 (GPE)",
+      "actif": false
+    },
+    {
+      "num": "RA",
+      "type": "rer",
+      "color": "#E2231A",
+      "textColor": "#fff",
+      "name": "RER A",
+      "actif": false
+    },
+    {
+      "num": "RB",
+      "type": "rer",
+      "color": "#5B9BD5",
+      "textColor": "#fff",
+      "name": "RER B",
+      "actif": false
+    },
+    {
+      "num": "RC",
+      "type": "rer",
+      "color": "#FFCD00",
+      "textColor": "#333",
+      "name": "RER C",
+      "actif": false
+    },
+    {
+      "num": "RD",
+      "type": "rer",
+      "color": "#007852",
+      "textColor": "#fff",
+      "name": "RER D",
+      "actif": false
+    },
+    {
+      "num": "RE",
+      "type": "rer",
+      "color": "#CF009E",
+      "textColor": "#fff",
+      "name": "RER E",
+      "actif": false
+    },
+    {
+      "num": "T1",
+      "type": "tram",
+      "color": "#E2231A",
+      "textColor": "#fff",
+      "name": "Tramway T1",
+      "actif": false
+    },
+    {
+      "num": "T2",
+      "type": "tram",
+      "color": "#003CA6",
+      "textColor": "#fff",
+      "name": "Tramway T2",
+      "actif": false
+    },
+    {
+      "num": "T3a",
+      "type": "tram",
+      "color": "#007852",
+      "textColor": "#fff",
+      "name": "Tramway T3a",
+      "actif": false
+    },
+    {
+      "num": "T3b",
+      "type": "tram",
+      "color": "#007852",
+      "textColor": "#fff",
+      "name": "Tramway T3b",
+      "actif": false
+    },
+    {
+      "num": "T4",
+      "type": "tram",
+      "color": "#CF009E",
+      "textColor": "#fff",
+      "name": "Tramway T4",
+      "actif": false
+    },
+    {
+      "num": "T5",
+      "type": "tram",
+      "color": "#6ECA97",
+      "textColor": "#333",
+      "name": "Tramway T5",
+      "actif": false
+    },
+    {
+      "num": "T6",
+      "type": "tram",
+      "color": "#837902",
+      "textColor": "#fff",
+      "name": "Tramway T6",
+      "actif": false
+    },
+    {
+      "num": "T7",
+      "type": "tram",
+      "color": "#FFCD00",
+      "textColor": "#333",
+      "name": "Tramway T7",
+      "actif": false
+    },
+    {
+      "num": "T8",
+      "type": "tram",
+      "color": "#E2231A",
+      "textColor": "#fff",
+      "name": "Tramway T8",
+      "actif": false
+    },
+    {
+      "num": "T9",
+      "type": "tram",
+      "color": "#FF7E2E",
+      "textColor": "#333",
+      "name": "Tramway T9",
+      "actif": false
+    },
+    {
+      "num": "T10",
+      "type": "tram",
+      "color": "#704B1C",
+      "textColor": "#fff",
+      "name": "Tramway T10",
+      "actif": false
+    },
+    {
+      "num": "T11",
+      "type": "tram",
+      "color": "#B5BD00",
+      "textColor": "#333",
+      "name": "Tramway T11",
+      "actif": false
+    },
+    {
+      "num": "T12",
+      "type": "tram",
+      "color": "#62259D",
+      "textColor": "#fff",
+      "name": "Tramway T12",
+      "actif": false
+    },
+    {
+      "num": "T13",
+      "type": "tram",
+      "color": "#6ECA97",
+      "textColor": "#333",
+      "name": "Tramway T13",
+      "actif": false
+    },
+    {
+      "num": "TVM",
+      "type": "tram",
+      "color": "#216EB4",
+      "textColor": "#fff",
+      "name": "Trans-Val-de-Marne",
+      "actif": false,
+      "note": "Cas particulier couleur ambiguë avec plusieurs lignes"
+    },
+    {
+      "num": "20",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 20",
+      "actif": false
+    },
+    {
+      "num": "21",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 21",
+      "actif": false
+    },
+    {
+      "num": "27",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 27",
+      "actif": false
+    },
+    {
+      "num": "38",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 38",
+      "actif": false
+    },
+    {
+      "num": "39",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 39",
+      "actif": false
+    },
+    {
+      "num": "47",
+      "type": "bus",
+      "color": "#FF82B4",
+      "textColor": "#333",
+      "name": "Bus 47",
+      "actif": true
+    },
+    {
+      "num": "57",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 57",
+      "actif": false
+    },
+    {
+      "num": "62",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 62",
+      "actif": false
+    },
+    {
+      "num": "63",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 63",
+      "actif": false
+    },
+    {
+      "num": "67",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 67",
+      "actif": false
+    },
+    {
+      "num": "83",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 83",
+      "actif": false
+    },
+    {
+      "num": "91",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 91",
+      "actif": false
+    },
+    {
+      "num": "125",
+      "type": "bus",
+      "color": "#006EB8",
+      "textColor": "#fff",
+      "name": "Bus 125",
+      "actif": true
+    },
+    {
+      "num": "131",
+      "type": "bus",
+      "color": "#8D653A",
+      "textColor": "#fff",
+      "name": "Bus 131",
+      "actif": true
+    },
+    {
+      "num": "132",
+      "type": "bus",
+      "color": "#652C90",
+      "textColor": "#fff",
+      "name": "Bus 132",
+      "actif": true,
+      "note": "Même couleur que 2234 – ambiguïté à gérer dans MJ-02"
+    },
+    {
+      "num": "162",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 162",
+      "actif": true,
+      "note": "Ligne maison – priorité haute dans les jeux"
+    },
+    {
+      "num": "172",
+      "type": "bus",
+      "color": "#008C59",
+      "textColor": "#fff",
+      "name": "Bus 172",
+      "actif": true
+    },
+    {
+      "num": "180",
+      "type": "bus",
+      "color": "#9B9839",
+      "textColor": "#fff",
+      "name": "Bus 180",
+      "actif": true
+    },
+    {
+      "num": "184",
+      "type": "bus",
+      "color": "#DCAC27",
+      "textColor": "#333",
+      "name": "Bus 184",
+      "actif": true
+    },
+    {
+      "num": "185",
+      "type": "bus",
+      "color": "#F58443",
+      "textColor": "#333",
+      "name": "Bus 185",
+      "actif": true,
+      "note": "École Montessori 101"
+    },
+    {
+      "num": "186",
+      "type": "bus",
+      "color": "#B43C95",
+      "textColor": "#fff",
+      "name": "Bus 186",
+      "actif": true
+    },
+    {
+      "num": "216",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 216",
+      "actif": false
+    },
+    {
+      "num": "217",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 217",
+      "actif": false
+    },
+    {
+      "num": "232",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 232",
+      "actif": false
+    },
+    {
+      "num": "273",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 273",
+      "actif": false
+    },
+    {
+      "num": "285",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 285",
+      "actif": false
+    },
+    {
+      "num": "286",
+      "type": "bus",
+      "color": "#C9A2CD",
+      "textColor": "#333",
+      "name": "Bus 286",
+      "actif": true
+    },
+    {
+      "num": "290",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 290",
+      "actif": false
+    },
+    {
+      "num": "291",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 291",
+      "actif": false
+    },
+    {
+      "num": "295",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 295",
+      "actif": false
+    },
+    {
+      "num": "323",
+      "type": "bus",
+      "color": "#CEC92A",
+      "textColor": "#333",
+      "name": "Bus 323",
+      "actif": true
+    },
+    {
+      "num": "380",
+      "type": "bus",
+      "color": "#75CE89",
+      "textColor": "#333",
+      "name": "Bus 380",
+      "actif": true,
+      "note": "Même couleur que V6 – ambiguïté à gérer dans MJ-02"
+    },
+    {
+      "num": "393",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 393",
+      "actif": false
+    },
+    {
+      "num": "395",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 395",
+      "actif": false
+    },
+    {
+      "num": "399",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 399",
+      "actif": false
+    },
+    {
+      "num": "399B",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 399B",
+      "actif": false
+    },
+    {
+      "num": "590",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 590",
+      "actif": false
+    },
+    {
+      "num": "591",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 591",
+      "actif": false
+    },
+    {
+      "num": "592",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 592",
+      "actif": false
+    },
+    {
+      "num": "593",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 593",
+      "actif": false
+    },
+    {
+      "num": "594",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 594",
+      "actif": false
+    },
+    {
+      "num": "595",
+      "type": "bus",
+      "color": "#0064B1",
+      "textColor": "#fff",
+      "name": "Bus 595",
+      "actif": false
+    },
+    {
+      "num": "2234",
+      "type": "bus",
+      "color": "#652C90",
+      "textColor": "#fff",
+      "name": "Bus 2234",
+      "actif": true,
+      "note": "Même couleur que 132 – ambiguïté à gérer dans MJ-02"
+    },
+    {
+      "num": "V6",
+      "type": "valouette",
+      "color": "#75CE89",
+      "textColor": "#333",
+      "name": "Valouette V6",
+      "actif": true,
+      "note": "Même couleur que 380 – ambiguïté à gérer dans MJ-02"
+    },
+    {
+      "num": "V7",
+      "type": "valouette",
+      "color": "#F58443",
+      "textColor": "#333",
+      "name": "Valouette V7",
+      "actif": true,
+      "note": "Chez Valouette (marché/piscine). Couleur orange #F58443"
+    },
+    {
+      "num": "N11",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N11",
+      "actif": false
+    },
+    {
+      "num": "N15",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N15",
+      "actif": true,
+      "note": "Même couleur que N22 – ambiguïté à gérer dans MJ-02"
+    },
+    {
+      "num": "N22",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N22",
+      "actif": true,
+      "note": "Même couleur que N15 – ambiguïté à gérer dans MJ-02"
+    },
+    {
+      "num": "N24",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N24",
+      "actif": false
+    },
+    {
+      "num": "N31",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N31",
+      "actif": false
+    },
+    {
+      "num": "N32",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N32",
+      "actif": false
+    },
+    {
+      "num": "N33",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N33",
+      "actif": false
+    },
+    {
+      "num": "N34",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N34",
+      "actif": false
+    },
+    {
+      "num": "N35",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N35",
+      "actif": false
+    },
+    {
+      "num": "N41",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N41",
+      "actif": false
+    },
+    {
+      "num": "N42",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N42",
+      "actif": false
+    },
+    {
+      "num": "N43",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N43",
+      "actif": false
+    },
+    {
+      "num": "N44",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N44",
+      "actif": false
+    },
+    {
+      "num": "N51",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N51",
+      "actif": false
+    },
+    {
+      "num": "N53",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N53",
+      "actif": false
+    },
+    {
+      "num": "N61",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N61",
+      "actif": false
+    },
+    {
+      "num": "N62",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N62",
+      "actif": false
+    },
+    {
+      "num": "N63",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N63",
+      "actif": false
+    },
+    {
+      "num": "N100",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N100",
+      "actif": false
+    },
+    {
+      "num": "N101",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N101",
+      "actif": false
+    },
+    {
+      "num": "N120",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N120",
+      "actif": false
+    },
+    {
+      "num": "N121",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N121",
+      "actif": false
+    },
+    {
+      "num": "N122",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N122",
+      "actif": false
+    },
+    {
+      "num": "N130",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N130",
+      "actif": false
+    },
+    {
+      "num": "N131",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N131",
+      "actif": false
+    },
+    {
+      "num": "N132",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N132",
+      "actif": false
+    },
+    {
+      "num": "N140",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N140",
+      "actif": false
+    },
+    {
+      "num": "N141",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N141",
+      "actif": false
+    },
+    {
+      "num": "N142",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N142",
+      "actif": false
+    },
+    {
+      "num": "N143",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N143",
+      "actif": false
+    },
+    {
+      "num": "N144",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N144",
+      "actif": false
+    },
+    {
+      "num": "N145",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N145",
+      "actif": false
+    },
+    {
+      "num": "N150",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N150",
+      "actif": false
+    },
+    {
+      "num": "N151",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N151",
+      "actif": false
+    },
+    {
+      "num": "N152",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N152",
+      "actif": false
+    },
+    {
+      "num": "N153",
+      "type": "noctilien",
+      "color": "#000091",
+      "textColor": "#fff",
+      "name": "Noctilien N153",
+      "actif": false
+    }
+  ]
+}

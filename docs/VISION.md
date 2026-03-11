@@ -19,11 +19,12 @@ Apprentissage naturel à travers le jeu, sans jamais que ça ressemble à de l'�
 
 ## Décisions EP-002 (2026-03-08)
 
-### ✅ Direction artistique : Pixel art (grille 16×32 px)
-Style pixel sur grille carrée, couleurs vives, animations frame-by-frame simples.
-Inspirations : Pokémon Gen1/2 (vue dessus), early GTA (ambiance), Tayo couleurs.
-Outils : Aseprite (~20€) ou Libresprite (gratuit). Pas besoin de talent de dessinateur — la grille masque les imperfections.
-**Raison** : plus accessible sans compétences artistiques que le vectoriel arrondi. Perf optimale. Évolutif.
+### ✅ Direction artistique : Flat design arrondi (Toca Boca / Tayo style)
+Formes simples arrondies, couleurs vives IDFM, SVG vectoriel pour les bus (zoomable, dynamique).
+Bus en SVG template avec couleur et numéro injectés dynamiquement → 1 fichier pour 20 lignes.
+Inspirations : Tayo le petit bus, Toca Boca, Peppa Pig.
+**Raison** : lisible par un enfant de 3-4 ans, accessible sans compétences en pixel art, SVG idéal pour bus colorés. (D-004, 2026-03-08)
+> Note : une décision "pixel art" avait été notée dans ce doc mais contredisait D-004. Flat design fait foi — corrigé en session 3 (2026-03-10).
 
 ### ✅ Univers narratif : Ville réaliste + vie secrète des bus
 Les vrais bus de Villejuif le jour (ancrage affectif fort pour Max).

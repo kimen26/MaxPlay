@@ -23,7 +23,7 @@ function busSVG(color, textColor, num, width = 200) {
   <rect x="36" y="14" width="21" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1.5"/>
   <rect x="84" y="14" width="40" height="21" fill="${color}" stroke="#111" stroke-width="1.5"/>
   <rect x="150.5" y="14" width="5" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1"/>
-  <text x="104" y="29" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="${textColor}" text-anchor="middle">${num}</text>
+  <text x="104" y="24.5" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="${textColor}" text-anchor="middle" dominant-baseline="central">${num}</text>
   <line x1="149" y1="24" x2="155" y2="24" stroke="#111" stroke-width="2" stroke-linecap="round"/>
   <rect x="152" y="20" width="6" height="10" rx="1" fill="#111"/>
   <circle cx="45" cy="54" r="10" fill="#333" stroke="#111" stroke-width="2"/>
@@ -59,9 +59,7 @@ function busSVGHiddenNum(color, textColor, num, width = 200) {
   <rect x="36" y="14" width="21" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1.5"/>
   <rect x="84" y="14" width="40" height="21" fill="${color}" stroke="#111" stroke-width="1.5"/>
   <rect x="150.5" y="14" width="5" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1"/>
-  <!-- Numéro masqué (panneau blanc plus petit pour voir la couleur autour) -->
-  <rect x="88" y="18" width="32" height="13" fill="#fff" stroke="#111" stroke-width="1"/>
-  <text x="104" y="29" font-family="Arial,sans-serif" font-size="14" font-weight="bold" fill="${textColor}" text-anchor="middle" opacity="0">${num}</text>
+  <text class="num-text" x="104" y="24.5" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="${textColor}" text-anchor="middle" dominant-baseline="central" opacity="0">${num}</text>
   <line x1="149" y1="24" x2="155" y2="24" stroke="#111" stroke-width="2" stroke-linecap="round"/>
   <rect x="152" y="20" width="6" height="10" rx="1" fill="#111"/>
   <circle cx="45" cy="54" r="10" fill="#333" stroke="#111" stroke-width="2"/>
@@ -83,24 +81,9 @@ function busSVGHiddenNum(color, textColor, num, width = 200) {
 function revealBusNumber(container, num) {
   const svg = container.querySelector('svg');
   if (!svg) return;
-  
-  // Créer un élément texte qui apparaît
-  const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-  text.setAttribute('x', '104');
-  text.setAttribute('y', '29');
-  text.setAttribute('font-family', 'Arial,sans-serif');
-  text.setAttribute('font-size', '14');
-  text.setAttribute('font-weight', 'bold');
-  text.setAttribute('fill', '#333');
-  text.setAttribute('text-anchor', 'middle');
-  text.textContent = num;
-  text.style.opacity = '0';
-  text.style.transition = 'opacity 0.3s';
-  
-  svg.appendChild(text);
-  
-  // Animer
-  requestAnimationFrame(() => {
-    text.style.opacity = '1';
-  });
+  const text = svg.querySelector('.num-text');
+  if (text) {
+    text.style.transition = 'opacity 0.4s';
+    requestAnimationFrame(() => { text.style.opacity = '1'; });
+  }
 }

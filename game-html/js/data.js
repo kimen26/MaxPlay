@@ -1,31 +1,39 @@
 // ─── Game Data ───
 // Toutes les lignes de bus et données des mini-jeux
+// ⚠️  COULEURS = source de vérité : docs/ratp-colors.json
+//     Ne pas modifier ici sans mettre à jour le JSON d'abord.
 
-// Lignes de bus IDFM (couleurs officielles)
+// Lignes actives dans les jeux (actif: true dans ratp-colors.json)
 const LIGNES = [
-  { num: '162',  color: '#0064B1', textColor: '#fff', name: 'Bleu RATP' },
-  { num: '172',  color: '#008C59', textColor: '#fff', name: 'Vert' },
-  { num: '185',  color: '#F58443', textColor: '#333', name: 'Orange' },
-  { num: '380',  color: '#75CE89', textColor: '#333', name: 'Vert clair' },
-  { num: 'V6',   color: '#75CE89', textColor: '#333', name: 'Vert clair' },  // Même couleur que 380
-  { num: '286',  color: '#C9A2CD', textColor: '#333', name: 'Lilas' },
-  { num: '323',  color: '#CEC92A', textColor: '#333', name: 'Jaune-vert' },
-  { num: '125',  color: '#006EB8', textColor: '#fff', name: 'Bleu' },
-  { num: '131',  color: '#8D653A', textColor: '#fff', name: 'Brun' },
-  { num: '132',  color: '#652C90', textColor: '#fff', name: 'Violet' },
-  { num: '2234', color: '#652C90', textColor: '#fff', name: 'Violet' },  // Même couleur que 132
-  { num: '184',  color: '#DCAC27', textColor: '#333', name: 'Jaune-or' },
-  { num: '186',  color: '#B43C95', textColor: '#fff', name: 'Rose-violet' },
-  { num: '47',   color: '#FF82B4', textColor: '#333', name: 'Rose' },
-  { num: '180',  color: '#9B9839', textColor: '#fff', name: 'Olive' },
-  { num: 'N15',  color: '#000091', textColor: '#fff', name: 'Bleu nuit' },
-  { num: 'N22',  color: '#000091', textColor: '#fff', name: 'Bleu nuit' },  // Même couleur que N15
-  { num: 'V7',   color: '#E2001A', textColor: '#fff', name: 'Rouge' },
-  { num: 'TVM',  color: '#216EB4', textColor: '#fff', name: 'Bleu TVM' },
+  // Bus Villejuif / quartier Max
+  { num: '162',  color: '#0064B1', textColor: '#fff', name: 'Bus 162' },
+  { num: '172',  color: '#008C59', textColor: '#fff', name: 'Bus 172' },
+  { num: '185',  color: '#F58443', textColor: '#333', name: 'Bus 185' },  // École Montessori 101
+  { num: '380',  color: '#75CE89', textColor: '#333', name: 'Bus 380' },  // Même couleur que V6
+  { num: '286',  color: '#C9A2CD', textColor: '#333', name: 'Bus 286' },
+  { num: '323',  color: '#CEC92A', textColor: '#333', name: 'Bus 323' },
+  { num: '125',  color: '#006EB8', textColor: '#fff', name: 'Bus 125' },
+  { num: '131',  color: '#8D653A', textColor: '#fff', name: 'Bus 131' },
+  { num: '132',  color: '#652C90', textColor: '#fff', name: 'Bus 132' },  // Même couleur que 2234
+  { num: '2234', color: '#652C90', textColor: '#fff', name: 'Bus 2234' }, // Même couleur que 132
+  { num: '184',  color: '#DCAC27', textColor: '#333', name: 'Bus 184' },
+  { num: '186',  color: '#B43C95', textColor: '#fff', name: 'Bus 186' },
+  { num: '47',   color: '#FF82B4', textColor: '#333', name: 'Bus 47' },
+  { num: '180',  color: '#9B9839', textColor: '#fff', name: 'Bus 180' },
+  // Noctilien
+  { num: 'N15',  color: '#000091', textColor: '#fff', name: 'Noctilien N15' }, // Même couleur que N22
+  { num: 'N22',  color: '#000091', textColor: '#fff', name: 'Noctilien N22' }, // Même couleur que N15
+  // Valouettes
+  { num: 'V6',   color: '#75CE89', textColor: '#333', name: 'Valouette V6' }, // Même couleur que 380
+  { num: 'V7',   color: '#F58443', textColor: '#333', name: 'Valouette V7' }, // Orange – chez Valouette
+  // Métros (utilisés dans les trajets de Max – MJ-05)
+  { num: 'M6',   color: '#6ECA97', textColor: '#333', name: 'Métro 6' },  // chez mamie → Montparnasse
+  { num: 'M7',   color: '#FA9ABA', textColor: '#333', name: 'Métro 7' },  // École + mamie + tata Sarah
 ];
 
-// Lignes quotidiennes de Max (prioritaires)
-const LIGNES_QUOTIDIENNES = ['162', '172', '185', 'V7', 'TVM'];
+// Lignes quotidiennes de Max (prioritaires pour les premières questions)
+// TVM exclu (cas particulier), V7 = valouette orange, M7 = ligne école + mamie
+const LIGNES_QUOTIDIENNES = ['162', '172', '185', 'V7', 'M7'];
 
 // Lignes avec couleur unique (pour MJ-02 - pas d'ambiguïté)
 const LIGNES_UNIQUES = LIGNES.filter(l => {

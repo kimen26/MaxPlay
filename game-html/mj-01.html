@@ -126,6 +126,7 @@
       shuffle(options).forEach(opt => {
         const btn = document.createElement('button');
         btn.className = 'ch swatch-choice';
+        btn.dataset.color = opt.color;
         btn.innerHTML = `
           <span class="swatch" style="background:${opt.color};"></span>
         `;
@@ -147,11 +148,9 @@
       } else {
         btn.classList.add('ko');
         
-        // Montrer la bonne réponse
-        const correctBtn = Array.from(document.querySelectorAll('#choices .ch')).find(b => {
-          const swatch = b.querySelector('.swatch');
-          return swatch && swatch.style.background === currentLine.color;
-        });
+        // Montrer la bonne réponse (comparaison via data-color, pas CSS rgb)
+        const correctBtn = Array.from(document.querySelectorAll('#choices .ch'))
+          .find(b => b.dataset.color === currentLine.color);
         if (correctBtn) correctBtn.classList.add('ok');
         
         streak = 0;

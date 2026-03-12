@@ -292,6 +292,7 @@ export class SandboxScene extends Phaser.Scene {
 
   private updateHonk(): void {
     if (Phaser.Input.Keyboard.JustDown(this.spaceKey)) {
+      this.soundManager.resumeAudio(); // Réveiller l'audio si besoin
       this.soundManager.honk();
       this.tweens.add({ targets: this.bus, scaleX: 0.65, scaleY: 0.65, duration: 100, yoyo: true });
       

@@ -3,68 +3,122 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>MJ-04 – Lis le mot</title>
+  <title>MJ-04 – Complète la phrase</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
     #gameScr { background: linear-gradient(160deg, #2a1a3a, #1a2a3a); }
-    .syl-word {
-      display: flex;
-      gap: 8px;
-      justify-content: center;
-      flex-wrap: wrap;
-      margin: 16px 0;
-    }
-    .syl-block {
-      background: #ffffff20;
-      border-radius: 12px;
-      padding: 14px 20px;
-      font-size: 1.6rem;
-      font-weight: 900;
-      min-width: 60px;
+    
+    .sentence-box {
+      background: #ffffff15;
+      border-radius: 20px;
+      padding: 24px 20px;
+      margin: 12px;
       text-align: center;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .syl-block.unknown {
+    
+    .sentence-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      line-height: 1.5;
+      color: #fff;
+    }
+    
+    .sentence-text .blank {
+      display: inline-block;
       background: #ffe06644;
       border: 3px solid #ffe066;
+      border-radius: 12px;
+      padding: 4px 16px;
+      margin: 0 4px;
+      min-width: 60px;
+      color: #ffe066;
+      font-weight: 900;
       animation: pulse 0.8s infinite alternate;
-      min-width: 50px;
     }
-    .syl-block.pop {
+    
+    .sentence-text .blank.filled {
+      background: #00c47a44;
+      border-color: #00c47a;
+      color: #00c47a;
       animation: popAnim 0.3s ease-out;
     }
+    
+    .sentence-text .blank.revealed {
+      background: #00c47a44;
+      border-color: #00c47a;
+      color: #00c47a;
+    }
+    
     @keyframes pulse {
       from { transform: scale(1); }
-      to { transform: scale(1.08); }
+      to { transform: scale(1.05); }
     }
+    
     @keyframes popAnim {
       0% { transform: scale(0.7); }
       60% { transform: scale(1.2); }
       100% { transform: scale(1); }
     }
-    .syl-choices {
+    
+    .choices-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 12px;
-      padding: 0 12px;
+      padding: 12px;
+      margin-top: 8px;
     }
-    .phase-indicator {
-      font-size: 0.75rem;
-      opacity: 0.6;
-      text-align: center;
-      margin-bottom: 8px;
+    
+    .choice-btn {
+      background: linear-gradient(145deg, #ffffff20, #ffffff10);
+      border: 2px solid #ffffff30;
+      border-radius: 16px;
+      padding: 18px 12px;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-family: 'Nunito', sans-serif;
     }
+    
+    .choice-btn:active {
+      transform: scale(0.95);
+    }
+    
+    .choice-btn.ok {
+      background: #00c47a;
+      border-color: #00c47a;
+    }
+    
+    .choice-btn.ko {
+      background: #ff4757;
+      border-color: #ff4757;
+    }
+    
     .question-counter {
       text-align: center;
-      font-size: 0.9rem;
+      font-size: 1rem;
       opacity: 0.7;
       margin-bottom: 8px;
+      font-weight: 700;
     }
-    .word-context {
-      font-size: 0.85rem;
+    
+    .instruction {
+      text-align: center;
+      font-size: 0.9rem;
       opacity: 0.6;
-      margin-top: 8px;
-      font-style: italic;
+      margin-bottom: 12px;
+    }
+    
+    .emoji-hint {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 8px;
     }
   </style>
 </head>
@@ -73,7 +127,7 @@
     <!-- Header -->
     <div class="hdr">
       <a href="index.html" class="back">←</a>
-      <span class="htitle">📖 Lis le mot</span>
+      <span class="htitle">📝 Complète la phrase</span>
     </div>
     
     <!-- Score -->
@@ -83,21 +137,24 @@
       <span class="streak" id="streak"></span>
     </div>
     
-    <!-- Phase indicator -->
-    <div class="phase-indicator" id="phaseInd">Phase 1: Mots simples</div>
+    <!-- Question counter -->
+    <div class="question-counter" id="qcounter">Question 1 / 5</div>
     
-    <!-- Word -->
-    <div class="qbox" style="padding:24px 12px;">
-      <div class="question-counter" id="qcounter">Question 1 / 5</div>
-      <div style="font-size:0.8rem;opacity:0.6;margin-bottom:8px;">Le mot à compléter :</div>
-      <div class="syl-word" id="wordBlocks">
+    <!-- Instruction -->
+    <div class="instruction">Choisis le mot qui complète la phrase :</div>
+    
+    <!-- Emoji hint -->
+    <div class="emoji-hint" id="emojiHint">🚌</div>
+    
+    <!-- Sentence with blank -->
+    <div class="sentence-box">
+      <div class="sentence-text" id="sentenceText">
         <!-- Généré par JS -->
       </div>
-      <div class="word-context" id="wordContext">Trouve la syllabe manquante !</div>
     </div>
     
     <!-- Choices -->
-    <div class="syl-choices" id="choices">
+    <div class="choices-grid" id="choices">
       <!-- Généré par JS -->
     </div>
   </div>
@@ -108,30 +165,138 @@
   <!-- Scripts -->
   <script src="js/sounds.js"></script>
   <script src="js/feedback.js"></script>
-  <script src="js/data.js"></script>
   <script>
-    // ─── MJ-04: Lis le mot ───
-    // Phase 1: Mots simples (CACA, BUS, PAPA...)
-    // Phase 2: Arrêts de bus (Villejuif, Louis Aragon...)
+    // ─── MJ-04: Complète la phrase ───
+    // Phrases à trous avec contexte (bus, métro, tramway)
+    
+    const PHRASES = [
+      {
+        text: "Max prend le bus ___ pour aller à l'école.",
+        answer: "162",
+        emoji: "🚌",
+        options: ["162", "125", "M7", "380"]
+      },
+      {
+        text: "Le bus ___ est vert comme les arbres.",
+        answer: "380",
+        emoji: "🌳",
+        options: ["380", "162", "131", "V7"]
+      },
+      {
+        text: "Pour aller chez mamie, on prend le ___.",
+        answer: "V7",
+        emoji: "👵",
+        options: ["V7", "M7", "T7", "162"]
+      },
+      {
+        text: "Le bus ___ passe par la porte d'Italie.",
+        answer: "131",
+        emoji: "🚏",
+        options: ["131", "125", "162", "M7"]
+      },
+      {
+        text: "Le métro ___ est orange.",
+        answer: "M7",
+        emoji: "🟠",
+        options: ["M7", "M14", "T7", "V7"]
+      },
+      {
+        text: "Le tramway ___ passe à Villejuif.",
+        answer: "T7",
+        emoji: "🚊",
+        options: ["T7", "M7", "V7", "131"]
+      },
+      {
+        text: "Le bus ___ est tout rouge !",
+        answer: "162",
+        emoji: "🔴",
+        options: ["162", "380", "125", "M14"]
+      },
+      {
+        text: "Pour la piscine, Max prend la ___.",
+        answer: "Valouette",
+        emoji: "🏊",
+        options: ["Valouette", "V7", "M7", "T7"]
+      },
+      {
+        text: "Le bus ___ va à Louis Aragon.",
+        answer: "131",
+        emoji: "🎭",
+        options: ["131", "125", "380", "162"]
+      },
+      {
+        text: "Le bus ___ va à Louis Aragon.",
+        answer: "125",
+        emoji: "🎭",
+        options: ["125", "131", "162", "180"]
+      },
+      {
+        text: "Le bus ___ va à Louis Aragon.",
+        answer: "380",
+        emoji: "🎭",
+        options: ["380", "162", "131", "125"]
+      },
+      {
+        text: "Le bus ___ va à Louis Aragon.",
+        answer: "162",
+        emoji: "🎭",
+        options: ["162", "180", "131", "125"]
+      },
+      {
+        text: "Le bus ___ va à Louis Aragon.",
+        answer: "180",
+        emoji: "🎭",
+        options: ["180", "162", "380", "131"]
+      },
+      {
+        text: "Le ___ est violet.",
+        answer: "M14",
+        emoji: "🟣",
+        options: ["M14", "M7", "T7", "V7"]
+      },
+      {
+        text: "Le bus ___ passe par la porte d'Italie.",
+        answer: "125",
+        emoji: "🚏",
+        options: ["125", "131", "162", "380"]
+      }
+    ];
     
     let score = 0;
     let streak = 0;
     let questionCount = 0;
     const MAX_QUESTIONS = 5;
     let locked = false;
-    let currentWord = null;
-    let hiddenIndex = 0;
-    let phase = 1; // 1 = mots simples, 2 = arrêts
+    let currentPhrase = null;
+    let usedIndices = [];
     
     function init() {
       score = 0;
       streak = 0;
       questionCount = 0;
-      phase = 1;
+      usedIndices = [];
       document.getElementById('score').textContent = '0';
       document.getElementById('streak').textContent = '';
-      document.getElementById('phaseInd').textContent = 'Phase 1: Mots simples';
       nextQuestion();
+    }
+    
+    function getRandomPhrase() {
+      let availableIndices = [];
+      for (let i = 0; i < PHRASES.length; i++) {
+        if (!usedIndices.includes(i)) {
+          availableIndices.push(i);
+        }
+      }
+      
+      // Si toutes les phrases ont été utilisées, réinitialiser
+      if (availableIndices.length === 0) {
+        usedIndices = [];
+        availableIndices = Array.from({length: PHRASES.length}, (_, i) => i);
+      }
+      
+      const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+      usedIndices.push(randomIndex);
+      return PHRASES[randomIndex];
     }
     
     function nextQuestion() {
@@ -143,80 +308,48 @@
       locked = false;
       questionCount++;
       
-      // Passer à la phase 2 après 3 questions
-      if (phase === 1 && questionCount > 3) {
-        phase = 2;
-        document.getElementById('phaseInd').textContent = 'Phase 2: Arrêts de bus';
-      }
-      
       document.getElementById('qcounter').textContent = `Question ${questionCount} / ${MAX_QUESTIONS}`;
       
-      // Choisir un mot
-      const pool = phase === 1 ? MOTS_SIMPLE : ARRETS_185_M7;
-      currentWord = pool[Math.floor(Math.random() * pool.length)];
+      // Choisir une phrase aléatoire
+      currentPhrase = getRandomPhrase();
       
-      // Choisir quelle syllabe cacher
-      hiddenIndex = Math.floor(Math.random() * currentWord.sylls.length);
-      const correctSyll = currentWord.sylls[hiddenIndex];
+      // Mettre à jour l'emoji
+      document.getElementById('emojiHint').textContent = currentPhrase.emoji;
       
-      // Afficher les blocs avec le mot visible avec trou
-      const container = document.getElementById('wordBlocks');
-      container.innerHTML = '';
-      
-      // Montrer le mot avec trou (ex: MA-?-AN pour MAMAN)
-      currentWord.sylls.forEach((syl, i) => {
-        const block = document.createElement('span');
-        block.className = 'syl-block';
-        if (i === hiddenIndex) {
-          block.classList.add('unknown');
-          block.id = 'block_' + i;
-          block.textContent = '?';
-        } else {
-          block.textContent = syl;
-        }
-        container.appendChild(block);
-      });
-      
-      // Mettre à jour le contexte
-      document.getElementById('wordContext').textContent = 
-        phase === 1 ? 'Quelle syllabe manque ?' : 'Quel arrêt de bus ?';
-      
-      // Générer les choix
-      const allSylls = [];
-      pool.forEach(w => w.sylls.forEach(s => {
-        if (s !== correctSyll && !allSylls.includes(s)) allSylls.push(s);
-      }));
-      
-      const wrongs = shuffle(allSylls).slice(0, 3);
-      const options = [correctSyll, ...wrongs];
+      // Afficher la phrase avec trou
+      const sentenceText = document.getElementById('sentenceText');
+      const parts = currentPhrase.text.split('___');
+      sentenceText.innerHTML = `${parts[0]}<span class="blank" id="blank">?</span>${parts[1] || ''}`;
       
       // Afficher les choix
       const choicesDiv = document.getElementById('choices');
       choicesDiv.innerHTML = '';
       
-      shuffle(options).forEach(syl => {
+      // Mélanger les options
+      const shuffledOptions = shuffle([...currentPhrase.options]);
+      
+      shuffledOptions.forEach(option => {
         const btn = document.createElement('button');
-        btn.className = 'ch';
-        btn.style.fontSize = '1.3rem';
-        btn.textContent = syl;
-        btn.onclick = () => answer(syl === correctSyll, btn, syl);
+        btn.className = 'choice-btn';
+        btn.textContent = option;
+        btn.onclick = () => answer(option === currentPhrase.answer, btn, option);
         choicesDiv.appendChild(btn);
       });
     }
     
-    function answer(isCorrect, btn, chosenSyll) {
+    function answer(isCorrect, btn, chosenOption) {
       if (locked) return;
       locked = true;
+      
+      const blank = document.getElementById('blank');
       
       if (isCorrect) {
         btn.classList.add('ok');
         
-        // Révéler la syllabe
-        const block = document.getElementById('block_' + hiddenIndex);
-        if (block) {
-          block.classList.remove('unknown');
-          block.textContent = chosenSyll;
-          block.classList.add('pop');
+        // Révéler la réponse dans la phrase
+        if (blank) {
+          blank.textContent = chosenOption;
+          blank.classList.add('filled');
         }
         
         score += 10;
@@ -224,23 +357,18 @@
         if (streak >= 3) confetti();
         sndDing();
         showFB(true);
-        
-        // TTS du mot complet
-        speak(currentWord.word);
       } else {
         btn.classList.add('ko');
         
-        const buttons = Array.from(document.querySelectorAll('#choices .ch'));
-        const correctSyll = currentWord.sylls[hiddenIndex];
-        const correctBtn = buttons.find(b => b.textContent === correctSyll);
+        // Montrer le bon bouton
+        const buttons = Array.from(document.querySelectorAll('#choices .choice-btn'));
+        const correctBtn = buttons.find(b => b.textContent === currentPhrase.answer);
         if (correctBtn) correctBtn.classList.add('ok');
         
         // Révéler la bonne réponse
-        const block = document.getElementById('block_' + hiddenIndex);
-        if (block) {
-          block.classList.remove('unknown');
-          block.textContent = correctSyll;
-          block.style.color = '#00c47a';
+        if (blank) {
+          blank.textContent = currentPhrase.answer;
+          blank.classList.add('revealed');
         }
         
         streak = 0;
@@ -252,16 +380,6 @@
       document.getElementById('streak').textContent = streak >= 2 ? `🔥×${streak}` : '';
       
       setTimeout(nextQuestion, 1800);
-    }
-    
-    function speak(text) {
-      if (!('speechSynthesis' in window)) return;
-      window.speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(text);
-      u.lang = 'fr-FR';
-      u.rate = 0.85;
-      u.pitch = 1.1;
-      window.speechSynthesis.speak(u);
     }
     
     function showEndScreen() {
@@ -279,6 +397,16 @@
           </div>
         </div>
       `;
+    }
+    
+    // Mélanger un tableau
+    function shuffle(array) {
+      const arr = [...array];
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
     }
     
     // Démarrer

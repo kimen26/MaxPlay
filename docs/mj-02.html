@@ -16,6 +16,51 @@
       opacity: 0.7;
       margin-bottom: 8px;
     }
+    .instruction-text {
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ffe066;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .repeat-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      font-size: 1.4rem;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .repeat-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(102, 126, 234, 0.6);
+    }
+    .repeat-btn:active {
+      transform: scale(0.95);
+    }
+    .tts-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .bus-display-container {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
   </style>
 </head>
 <body>
@@ -36,15 +81,27 @@
     <!-- Question -->
     <div class="qbox" id="qbox">
       <div class="question-counter" id="qcounter">Question 1 / 5</div>
-      <div id="busDisplay" style="margin-bottom:12px;"></div>
-      <div id="colorHint" style="font-size:1rem;margin-bottom:8px;font-weight:700;"></div>
-      <div class="qtxt" style="font-size:1.1rem;">
-        Quel est le numéro de ce bus ?
+      
+      <!-- Instruction -->
+      <div class="instruction-text">
+        Écoute bien 🔊 puis trouve le bon numéro !
+      </div>
+      
+      <!-- TTS Controls -->
+      <div class="tts-controls">
+        <button class="repeat-btn" id="repeatBtn" onclick="speakTarget()" title="Répéter">
+          🔊
+        </button>
+      </div>
+      
+      <!-- Bus Display (white/neutral) -->
+      <div class="bus-display-container">
+        <div id="busDisplay" style="margin-bottom:12px;"></div>
       </div>
     </div>
     
     <!-- Choices -->
-    <div class="choices" id="choices" style="grid-template-columns:1fr 1fr;padding:0 12px;gap:12px;">
+    <div class="choices" id="choices" style="grid-template-columns:1fr 1fr 1fr;padding:0 12px;gap:10px;">
       <!-- Généré par JS -->
     </div>
   </div>
@@ -55,12 +112,47 @@
   <!-- Scripts -->
   <script src="js/sounds.js"></script>
   <script src="js/feedback.js"></script>
-  <script src="js/data.js"></script>
-  <script src="js/bus-svg.js"></script>
   <script>
+    // ─── Données complètes des lignes ───
+    // Toutes les lignes de bus, métros, tramways, etc.
+    const LIGNES = [
+      // Bus Villejuif / quartier Max
+      { num: '162',  color: '#0064B1', textColor: '#fff', name: 'Bus 162' },
+      { num: '172',  color: '#008C59', textColor: '#fff', name: 'Bus 172' },
+      { num: '185',  color: '#F58443', textColor: '#333', name: 'Bus 185' },
+      { num: '380',  color: '#75CE89', textColor: '#333', name: 'Bus 380' },
+      { num: '286',  color: '#C9A2CD', textColor: '#333', name: 'Bus 286' },
+      { num: '323',  color: '#CEC92A', textColor: '#333', name: 'Bus 323' },
+      { num: '125',  color: '#006EB8', textColor: '#fff', name: 'Bus 125' },
+      { num: '131',  color: '#8D653A', textColor: '#fff', name: 'Bus 131' },
+      { num: '132',  color: '#652C90', textColor: '#fff', name: 'Bus 132' },
+      { num: '2234', color: '#652C90', textColor: '#fff', name: 'Bus 2234' },
+      { num: '184',  color: '#DCAC27', textColor: '#333', name: 'Bus 184' },
+      { num: '186',  color: '#B43C95', textColor: '#fff', name: 'Bus 186' },
+      { num: '47',   color: '#FF82B4', textColor: '#333', name: 'Bus 47' },
+      { num: '180',  color: '#9B9839', textColor: '#fff', name: 'Bus 180' },
+      // Noctilien
+      { num: 'N15',  color: '#000091', textColor: '#fff', name: 'Noctilien N15' },
+      { num: 'N22',  color: '#000091', textColor: '#fff', name: 'Noctilien N22' },
+      // Valouettes
+      { num: 'V6',   color: '#75CE89', textColor: '#333', name: 'Valouette V6' },
+      { num: 'V7',   color: '#E3051C', textColor: '#fff', name: 'Valouette V7' },
+      // Métros
+      { num: 'M6',   color: '#6ECA97', textColor: '#333', name: 'Métro 6' },
+      { num: 'M7',   color: '#FA9ABA', textColor: '#333', name: 'Métro 7' },
+      { num: 'M13',  color: '#7AB6E0', textColor: '#333', name: 'Métro 13' },
+      { num: 'M14',  color: '#6F44A0', textColor: '#fff', name: 'Métro 14' },
+      // Tramways
+      { num: 'T3a',  color: '#F68F4B', textColor: '#333', name: 'Tramway T3a' },
+      { num: 'T3b',  color: '#8D5E2A', textColor: '#fff', name: 'Tramway T3b' },
+      { num: 'T7',   color: '#8D5E2A', textColor: '#fff', name: 'Tramway T7' },
+      { num: 'T9',   color: '#4FBAE6', textColor: '#333', name: 'Tramway T9' },
+      // TVM
+      { num: 'TVM',  color: '#0064B1', textColor: '#fff', name: 'TVM' },
+    ];
+
     // ─── MJ-02: Quel numéro ? ───
-    // Max voit un bus coloré (numéro caché) → doit choisir le bon numéro
-    // SEULEMENT les lignes à couleur UNIQUE (pas d'ambiguïté)
+    // TTS obligatoire + bus blanc + 6 propositions
     
     let score = 0;
     let streak = 0;
@@ -69,11 +161,90 @@
     let locked = false;
     let currentLine = null;
     
-    // Uniquement les lignes avec couleur unique (pas d'ambiguïté pour MJ-02)
-    const POOL = LIGNES.filter(l => {
-      const sameColor = LIGNES.filter(x => x.color === l.color);
-      return sameColor.length === 1 && l.num !== 'TVM';
-    });
+    // Web Speech API TTS
+    const synth = window.speechSynthesis;
+    let ttsEnabled = true;
+    
+    function speak(text, priority = false) {
+      if (!synth || !ttsEnabled) return;
+      
+      // Annuler les utterances en cours si prioritaire
+      if (priority) {
+        synth.cancel();
+      }
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'fr-FR';
+      utterance.rate = 0.85; // Un peu plus lent pour les enfants
+      utterance.pitch = 1.1; // Voix légèrement plus haute/amusante
+      utterance.volume = 1;
+      
+      synth.speak(utterance);
+    }
+    
+    function speakTarget() {
+      if (currentLine) {
+        const textToSpeak = getLineDisplayName(currentLine.num);
+        speak(textToSpeak, true);
+      }
+    }
+    
+    function getLineDisplayName(num) {
+      // Formater le nom pour le TTS
+      if (num.startsWith('M')) return 'Métro ' + num.substring(1);
+      if (num.startsWith('T') && !num.startsWith('TV')) return 'Tram ' + num.substring(1);
+      if (num.startsWith('V')) return 'Valouette ' + num;
+      if (num.startsWith('N')) return 'Noctilien ' + num;
+      if (num === 'TVM') return 'TVM';
+      return 'Bus ' + num;
+    }
+    
+    /**
+     * Génère un SVG de bus BLANC/NEUTRE avec indice subtil de couleur
+     * Le numéro n'est PAS affiché - il faut écouter le TTS
+     */
+    function busSVGWhite(colorHint, width = 200) {
+      // Couleur blanche/neutre avec bordure fine de la couleur réelle
+      return `<svg viewBox="0 0 160 80" width="${width}" class="bus-svg" xmlns="http://www.w3.org/2000/svg">
+      <!-- Corps du bus en blanc/gris très clair -->
+      <rect x="5" y="10" width="150" height="45" rx="4" fill="#f8f9fa" stroke="${colorHint}" stroke-width="2"/>
+      <rect x="5" y="40" width="150" height="15" fill="#e9ecef"/>
+      <rect x="5" y="48" width="150" height="6" fill="#adb5bd"/>
+      
+      <!-- Portes (gris neutre) -->
+      <rect x="62" y="14" width="8" height="37" fill="#dee2e6" stroke="#495057" stroke-width="1.5"/>
+      <rect x="70" y="14" width="8" height="37" fill="#dee2e6" stroke="#495057" stroke-width="1.5"/>
+      <rect x="130" y="14" width="8" height="37" fill="#dee2e6" stroke="#495057" stroke-width="1.5"/>
+      <rect x="138" y="14" width="8" height="37" fill="#dee2e6" stroke="#495057" stroke-width="1.5"/>
+      
+      <!-- Fenêtres (reflet bleu subtil) -->
+      <rect x="10" y="14" width="21" height="21" fill="#a8d5f0" fill-opacity="0.6" stroke="#495057" stroke-width="1.5"/>
+      <rect x="36" y="14" width="21" height="21" fill="#a8d5f0" fill-opacity="0.6" stroke="#495057" stroke-width="1.5"/>
+      
+      <!-- Zone numéro - INDIQUE la couleur mais PAS le numéro -->
+      <rect x="84" y="14" width="40" height="21" fill="${colorHint}" fill-opacity="0.15" stroke="${colorHint}" stroke-width="2" stroke-dasharray="3,2"/>
+      <rect x="150.5" y="14" width="5" height="21" fill="#a8d5f0" fill-opacity="0.6" stroke="#495057" stroke-width="1"/>
+      
+      <!-- Points de suspension pour indiquer "caché" -->
+      <text x="104" y="24.5" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="${colorHint}" text-anchor="middle" dominant-baseline="central" opacity="0.6">?</text>
+      
+      <!-- Ligne d'arrêt -->
+      <line x1="149" y1="24" x2="155" y2="24" stroke="#495057" stroke-width="2" stroke-linecap="round"/>
+      <rect x="152" y="20" width="6" height="10" rx="1" fill="#495057"/>
+      
+      <!-- Roues -->
+      <circle cx="45" cy="54" r="10" fill="#333" stroke="#111" stroke-width="2"/>
+      <circle cx="45" cy="54" r="6" fill="#666"/>
+      <circle cx="45" cy="54" r="2" fill="#111"/>
+      <circle cx="115" cy="54" r="10" fill="#333" stroke="#111" stroke-width="2"/>
+      <circle cx="115" cy="54" r="6" fill="#666"/>
+      <circle cx="115" cy="54" r="2" fill="#111"/>
+      
+      <!-- Feux -->
+      <rect x="5" y="48" width="4" height="5" fill="#FF4444"/>
+      <rect x="151" y="48" width="4" height="5" fill="#FFCC00"/>
+      </svg>`;
+    }
     
     function init() {
       score = 0;
@@ -95,41 +266,37 @@
       questionCount++;
       document.getElementById('qcounter').textContent = `Question ${questionCount} / ${MAX_QUESTIONS}`;
       
-      // Choisir une ligne au hasard
-      currentLine = POOL[Math.floor(Math.random() * POOL.length)];
+      // Choisir une ligne au hasard parmi TOUTES les lignes
+      currentLine = LIGNES[Math.floor(Math.random() * LIGNES.length)];
       
-      // Afficher le bus COLORÉ avec numéro caché
-      document.getElementById('busDisplay').innerHTML = busSVGHiddenNum(
-        currentLine.color, 
-        currentLine.textColor, 
-        currentLine.num, 
-        200
-      );
+      // Afficher le bus BLANC avec indice de couleur subtil (pas de numéro visible)
+      document.getElementById('busDisplay').innerHTML = busSVGWhite(currentLine.color, 200);
       
-      // Pas d'indice textuel – le bus coloré suffit
-      document.getElementById('colorHint').textContent = '';
+      // Annoncer à voix haute le numéro à trouver
+      setTimeout(() => {
+        speakTarget();
+      }, 300);
       
-      // Générer 3 mauvaises réponses (numéros de couleurs différentes)
-      const wrongOptions = POOL
-        .filter(l => l.num !== currentLine.num)
-        .sort(() => Math.random() - 0.5)
-        .slice(0, 3);
+      // Générer 5 mauvaises réponses parmi TOUTES les lignes (différentes de la réponse)
+      const otherLines = LIGNES.filter(l => l.num !== currentLine.num);
+      const wrongOptions = shuffle([...otherLines]).slice(0, 5);
       
-      // Créer les options
+      // Créer les 6 options (1 correcte + 5 mauvaises)
       const options = [
         { line: currentLine, isCorrect: true },
         ...wrongOptions.map(l => ({ line: l, isCorrect: false }))
       ];
       
-      // Afficher les choix
+      // Afficher les 6 choix
       const container = document.getElementById('choices');
       container.innerHTML = '';
       
       shuffle(options).forEach(opt => {
         const btn = document.createElement('button');
         btn.className = 'ch';
-        btn.style.fontSize = '1.6rem';
+        btn.style.fontSize = '1.4rem';
         btn.style.fontWeight = '900';
+        btn.style.padding = '16px 8px';
         btn.textContent = opt.line.num;
         btn.onclick = () => answer(opt.isCorrect, btn);
         container.appendChild(btn);
@@ -147,8 +314,9 @@
         sndDing();
         showFB(true);
         
-        // Révéler le numéro
-        revealBusNumber(document.getElementById('busDisplay'), currentLine.num);
+        // Révéler le bus coloré avec le numéro
+        document.getElementById('busDisplay').innerHTML = busSVG(currentLine.color, currentLine.textColor, currentLine.num, 200);
+        speak('Bravo ! C\'était le ' + getLineDisplayName(currentLine.num));
         sndKlaxon();
       } else {
         btn.classList.add('ko');
@@ -162,19 +330,22 @@
         sndBuzz();
         showFB(false);
         
-        // Révéler le numéro quand même
-        revealBusNumber(document.getElementById('busDisplay'), currentLine.num);
+        // Révéler le bus coloré quand même
+        document.getElementById('busDisplay').innerHTML = busSVG(currentLine.color, currentLine.textColor, currentLine.num, 200);
+        speak('C\'était le ' + getLineDisplayName(currentLine.num));
       }
       
       document.getElementById('score').textContent = score;
       document.getElementById('streak').textContent = streak >= 2 ? `🔥×${streak}` : '';
       
-      setTimeout(nextQuestion, 1800);
+      setTimeout(nextQuestion, 2200);
     }
     
     function showEndScreen() {
       sndVictory();
       confetti();
+      speak('Félicitations ! Tu as terminé le jeu !', true);
+      
       const app = document.getElementById('app');
       app.innerHTML = `
         <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;text-align:center;padding:20px;">
@@ -187,6 +358,45 @@
           </div>
         </div>
       `;
+    }
+    
+    // Fonction utilitaire pour mélanger un tableau
+    function shuffle(array) {
+      const arr = [...array];
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+    
+    // Fonction busSVG normale (pour la révélation)
+    function busSVG(color, textColor, num, width = 200) {
+      return `<svg viewBox="0 0 160 80" width="${width}" class="bus-svg" xmlns="http://www.w3.org/2000/svg">
+      <rect x="5" y="10" width="150" height="45" rx="4" fill="#1abc9c"/>
+      <rect x="5" y="40" width="150" height="15" fill="#ecf0f1"/>
+      <rect x="5" y="48" width="150" height="6" fill="#7f8c8d"/>
+      <rect x="62" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+      <rect x="70" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+      <rect x="130" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+      <rect x="138" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+      <rect x="5" y="10" width="150" height="45" rx="4" fill="none" stroke="#111" stroke-width="2"/>
+      <rect x="10" y="14" width="21" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1.5"/>
+      <rect x="36" y="14" width="21" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1.5"/>
+      <rect x="84" y="14" width="40" height="21" fill="${color}" stroke="#111" stroke-width="1.5"/>
+      <rect x="150.5" y="14" width="5" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1"/>
+      <text x="104" y="24.5" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="${textColor}" text-anchor="middle" dominant-baseline="central">${num}</text>
+      <line x1="149" y1="24" x2="155" y2="24" stroke="#111" stroke-width="2" stroke-linecap="round"/>
+      <rect x="152" y="20" width="6" height="10" rx="1" fill="#111"/>
+      <circle cx="45" cy="54" r="10" fill="#333" stroke="#111" stroke-width="2"/>
+      <circle cx="45" cy="54" r="6" fill="#666"/>
+      <circle cx="45" cy="54" r="2" fill="#111"/>
+      <circle cx="115" cy="54" r="10" fill="#333" stroke="#111" stroke-width="2"/>
+      <circle cx="115" cy="54" r="6" fill="#666"/>
+      <circle cx="115" cy="54" r="2" fill="#111"/>
+      <rect x="5" y="48" width="4" height="5" fill="#FF4444"/>
+      <rect x="151" y="48" width="4" height="5" fill="#FFCC00"/>
+      </svg>`;
     }
     
     // Démarrer

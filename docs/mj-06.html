@@ -2,54 +2,651 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>MJ-06 – Au garage !</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
   <style>
-    #gameScr { background: linear-gradient(160deg, #0a1a2a, #1a2a3a); }
-    #garageCanvas {
-      border-radius: 12px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+      min-height: 100vh;
+      overflow: hidden;
       touch-action: none;
-      display: block;
+    }
+    
+    #app {
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+      max-width: 900px;
       margin: 0 auto;
-      background: linear-gradient(180deg, #1a2a3a 0%, #0a1520 100%);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+      position: relative;
     }
-    .garage-info {
-      font-size: 0.95rem;
-      font-weight: 700;
-      text-align: center;
-      margin: 8px 12px;
+    
+    /* Header */
+    .hdr {
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .back {
       color: #fff;
+      text-decoration: none;
+      font-size: 1.5rem;
+      margin-right: 12px;
+      padding: 4px 8px;
+      border-radius: 8px;
+      transition: background 0.2s;
     }
+    
+    .back:hover, .back:active {
+      background: rgba(255,255,255,0.2);
+    }
+    
+    .htitle {
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: 900;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    /* Progress */
+    .progress-container {
+      padding: 12px 16px;
+      background: rgba(0,0,0,0.2);
+    }
+    
     .progress-bar {
-      width: calc(100% - 24px);
-      height: 12px;
-      background: #ffffff15;
-      border-radius: 6px;
-      margin: 0 12px 12px;
+      width: 100%;
+      height: 14px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 7px;
       overflow: hidden;
       box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
     }
+    
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, #00c47a, #ffe066);
+      background: linear-gradient(90deg, #00c47a, #ffe066, #ff6b6b);
+      background-size: 200% 100%;
+      animation: shimmer 2s infinite;
       transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 0 10px rgba(0, 196, 122, 0.5);
+      border-radius: 7px;
     }
+    
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    
     .bus-count {
       text-align: center;
-      font-size: 0.85rem;
-      opacity: 0.7;
-      margin-bottom: 8px;
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.8);
+      margin-top: 8px;
+      font-weight: 700;
     }
-    @keyframes pulseText {
+    
+    /* Game Area */
+    .game-area {
+      flex: 1;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 12px;
+      overflow: hidden;
+    }
+    
+    /* Parking Container */
+    #parkingContainer {
+      flex: 1;
+      position: relative;
+      background: linear-gradient(180deg, #2a3a4a 0%, #1a2a3a 100%);
+      border-radius: 16px;
+      box-shadow: 
+        inset 0 2px 20px rgba(0,0,0,0.4),
+        0 4px 20px rgba(0,0,0,0.3);
+      overflow: hidden;
+      min-height: 200px;
+    }
+    
+    /* Asphalt texture */
+    .asphalt {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(circle at 20% 30%, rgba(255,255,255,0.03) 1px, transparent 1px),
+        radial-gradient(circle at 70% 70%, rgba(255,255,255,0.02) 1px, transparent 1px),
+        radial-gradient(circle at 40% 80%, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 50px 50px, 30px 30px, 70px 70px;
+    }
+    
+    /* Parking Slots */
+    .parking-slots {
+      position: absolute;
+      bottom: 20px;
+      left: 10px;
+      right: 10px;
+      height: 45%;
+      display: flex;
+      justify-content: space-around;
+      align-items: flex-end;
+      gap: 8px;
+    }
+    
+    .slot {
+      flex: 1;
+      max-width: 140px;
+      height: 100%;
+      position: relative;
+      border-radius: 12px 12px 4px 4px;
+      transition: all 0.3s ease;
+    }
+    
+    /* White parking lines */
+    .slot::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 4px;
+      right: 4px;
+      bottom: 0;
+      border: 3px solid rgba(255,255,255,0.6);
+      border-bottom: none;
+      border-radius: 10px 10px 0 0;
+      pointer-events: none;
+    }
+    
+    .slot::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: rgba(255,255,255,0.6);
+    }
+    
+    /* Slot background colors */
+    .slot-red { background: linear-gradient(180deg, rgba(231, 76, 60, 0.4) 0%, rgba(231, 76, 60, 0.2) 100%); }
+    .slot-blue { background: linear-gradient(180deg, rgba(52, 152, 219, 0.4) 0%, rgba(52, 152, 219, 0.2) 100%); }
+    .slot-yellow { background: linear-gradient(180deg, rgba(241, 196, 15, 0.4) 0%, rgba(241, 196, 15, 0.2) 100%); }
+    .slot-green { background: linear-gradient(180deg, rgba(46, 204, 113, 0.4) 0%, rgba(46, 204, 113, 0.2) 100%); }
+    .slot-orange { background: linear-gradient(180deg, rgba(230, 126, 34, 0.4) 0%, rgba(230, 126, 34, 0.2) 100%); }
+    .slot-purple { background: linear-gradient(180deg, rgba(155, 89, 182, 0.4) 0%, rgba(155, 89, 182, 0.2) 100%); }
+    
+    .slot.occupied {
+      background: linear-gradient(180deg, rgba(0, 196, 122, 0.5) 0%, rgba(0, 196, 122, 0.3) 100%) !important;
+    }
+    
+    .slot.occupied::before,
+    .slot.occupied::after {
+      border-color: rgba(0, 196, 122, 0.8);
+    }
+    
+    /* Color indicator */
+    .slot-indicator {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      border: 3px solid rgba(255,255,255,0.8);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    
+    .slot-red .slot-indicator { background: #e74c3c; }
+    .slot-blue .slot-indicator { background: #3498db; }
+    .slot-yellow .slot-indicator { background: #f1c40f; }
+    .slot-green .slot-indicator { background: #2ecc71; }
+    .slot-orange .slot-indicator { background: #e67e22; }
+    .slot-purple .slot-indicator { background: #9b59b6; }
+    
+    /* Slot label */
+    .slot-label {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
+      font-weight: 900;
+      color: rgba(255,255,255,0.9);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+    
+    /* Buses Container */
+    #busesContainer {
+      position: absolute;
+      top: 10px;
+      left: 0;
+      right: 0;
+      height: 45%;
+      pointer-events: none;
+    }
+    
+    /* Bus Styles */
+    .bus {
+      position: absolute;
+      width: 110px;
+      height: 60px;
+      cursor: grab;
+      pointer-events: auto;
+      touch-action: none;
+      transition: transform 0.1s;
+      z-index: 10;
+    }
+    
+    .bus.dragging {
+      cursor: grabbing;
+      z-index: 100;
+      transform: scale(1.05);
+    }
+    
+    .bus.parked {
+      cursor: default;
+      pointer-events: none;
+    }
+    
+    /* Bus bounce animation when parked */
+    @keyframes busBounce {
+      0%, 100% { transform: translateY(0); }
+      25% { transform: translateY(-8px); }
+      50% { transform: translateY(0); }
+      75% { transform: translateY(-4px); }
+    }
+    
+    .bus.bouncing {
+      animation: busBounce 0.6s ease-out;
+    }
+    
+    /* Headlights blink animation */
+    @keyframes headlightsBlink {
       0%, 100% { opacity: 1; }
-      50% { opacity: 0.7; }
+      50% { opacity: 0.3; }
     }
+    
+    .bus.bouncing .headlight {
+      animation: headlightsBlink 0.3s ease-in-out 3;
+    }
+    
+    /* Bus Body */
+    .bus-body {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    
+    /* Main body */
+    .bus-main {
+      position: absolute;
+      top: 5px;
+      left: 0;
+      right: 0;
+      height: 38px;
+      border-radius: 8px 8px 4px 4px;
+      box-shadow: 
+        0 4px 12px rgba(0,0,0,0.4),
+        inset 0 2px 4px rgba(255,255,255,0.3),
+        inset 0 -2px 4px rgba(0,0,0,0.2);
+    }
+    
+    /* Bus colors */
+    .bus-red .bus-main { background: linear-gradient(180deg, #e74c3c 0%, #c0392b 100%); }
+    .bus-blue .bus-main { background: linear-gradient(180deg, #3498db 0%, #2980b9 100%); }
+    .bus-yellow .bus-main { background: linear-gradient(180deg, #f1c40f 0%, #d4ac0d 100%); }
+    .bus-green .bus-main { background: linear-gradient(180deg, #2ecc71 0%, #27ae60 100%); }
+    .bus-orange .bus-main { background: linear-gradient(180deg, #e67e22 0%, #d35400 100%); }
+    .bus-purple .bus-main { background: linear-gradient(180deg, #9b59b6 0%, #8e44ad 100%); }
+    
+    /* Stripe */
+    .bus-stripe {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      right: 0;
+      height: 12px;
+      background: rgba(255,255,255,0.9);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+    }
+    
+    /* Windows */
+    .bus-window {
+      position: absolute;
+      top: 8px;
+      width: 20px;
+      height: 14px;
+      background: linear-gradient(135deg, #87CEEB 0%, #5DADE2 50%, #3498DB 100%);
+      border: 2px solid rgba(0,0,0,0.3);
+      border-radius: 3px;
+      box-shadow: inset 0 1px 3px rgba(255,255,255,0.5);
+    }
+    
+    .bus-window.front { left: 6px; }
+    .bus-window.back { left: 30px; }
+    
+    /* Door */
+    .bus-door {
+      position: absolute;
+      top: 8px;
+      right: 25px;
+      width: 18px;
+      height: 32px;
+      background: linear-gradient(180deg, #34495e 0%, #2c3e50 100%);
+      border: 2px solid rgba(0,0,0,0.4);
+      border-radius: 2px;
+    }
+    
+    .bus-door::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 2px;
+      right: 2px;
+      height: 1px;
+      background: rgba(255,255,255,0.3);
+    }
+    
+    /* Bus number */
+    .bus-number {
+      position: absolute;
+      top: 10px;
+      right: 48px;
+      background: #fff;
+      color: #333;
+      font-size: 0.7rem;
+      font-weight: 900;
+      padding: 2px 6px;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    /* Wheels */
+    .bus-wheel {
+      position: absolute;
+      bottom: 8px;
+      width: 18px;
+      height: 18px;
+      background: radial-gradient(circle at 30% 30%, #555 0%, #222 100%);
+      border-radius: 50%;
+      border: 2px solid #111;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+    }
+    
+    .bus-wheel::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 8px;
+      height: 8px;
+      background: #777;
+      border-radius: 50%;
+    }
+    
+    .bus-wheel.front { left: 18px; }
+    .bus-wheel.back { right: 18px; }
+    
+    /* Bumper */
+    .bus-bumper {
+      position: absolute;
+      bottom: 12px;
+      left: -2px;
+      right: -2px;
+      height: 8px;
+      background: linear-gradient(180deg, #95a5a6 0%, #7f8c8d 100%);
+      border-radius: 2px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    /* Headlights */
+    .headlight {
+      position: absolute;
+      bottom: 18px;
+      width: 8px;
+      height: 6px;
+      background: linear-gradient(180deg, #fffacd 0%, #ffd700 100%);
+      border: 1px solid #daa520;
+      border-radius: 2px;
+      box-shadow: 0 0 8px rgba(255, 215, 0, 0.8);
+    }
+    
+    .headlight.front { left: 2px; }
+    .headlight.back { right: 2px; }
+    
+    /* Taillights */
+    .taillight {
+      position: absolute;
+      bottom: 18px;
+      width: 6px;
+      height: 6px;
+      background: linear-gradient(180deg, #ff6b6b 0%, #c0392b 100%);
+      border: 1px solid #922b21;
+      border-radius: 2px;
+      box-shadow: 0 0 6px rgba(231, 76, 60, 0.6);
+    }
+    
+    .taillight.front { left: 10px; }
+    .taillight.back { right: 10px; }
+    
+    /* Shadow */
+    .bus-shadow {
+      position: absolute;
+      bottom: 2px;
+      left: 5px;
+      right: 5px;
+      height: 8px;
+      background: rgba(0,0,0,0.3);
+      border-radius: 50%;
+      filter: blur(3px);
+    }
+    
+    /* Info */
+    .garage-info {
+      padding: 12px 16px;
+      text-align: center;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      min-height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    @keyframes pulseText {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.02); }
+    }
+    
     .pulse {
       animation: pulseText 1s ease-in-out infinite;
+      color: #ffe066;
+    }
+    
+    /* Victory overlay */
+    .victory-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.5s ease;
+    }
+    
+    .victory-overlay.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    .victory-content {
+      text-align: center;
+      padding: 40px;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      border-radius: 24px;
+      border: 2px solid rgba(255,255,255,0.1);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      transform: scale(0.8);
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    
+    .victory-overlay.show .victory-content {
+      transform: scale(1);
+    }
+    
+    .victory-emoji {
+      font-size: 5rem;
+      margin-bottom: 20px;
+      animation: bounce 1s ease infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    .victory-title {
+      font-size: 2.5rem;
+      color: #ffe066;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 10px rgba(255,224,102,0.3);
+    }
+    
+    .victory-text {
+      font-size: 1.3rem;
+      color: #fff;
+      margin-bottom: 30px;
+      opacity: 0.9;
+    }
+    
+    .victory-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .victory-btn {
+      padding: 16px 32px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-family: 'Nunito', sans-serif;
+    }
+    
+    .victory-btn.primary {
+      background: linear-gradient(135deg, #00c47a 0%, #00a86b 100%);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(0,196,122,0.4);
+    }
+    
+    .victory-btn.secondary {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    
+    .victory-btn:hover, .victory-btn:active {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    }
+    
+    /* Confetti */
+    .confetti {
+      position: fixed;
+      width: 12px;
+      height: 12px;
+      pointer-events: none;
+      z-index: 999;
+    }
+    
+    /* Responsive */
+    @media (max-width: 600px) {
+      .bus {
+        width: 90px;
+        height: 50px;
+      }
+      
+      .bus-main {
+        height: 32px;
+      }
+      
+      .bus-wheel {
+        width: 14px;
+        height: 14px;
+        bottom: 6px;
+      }
+      
+      .bus-wheel.front { left: 14px; }
+      .bus-wheel.back { right: 14px; }
+      
+      .slot-indicator {
+        width: 32px;
+        height: 32px;
+        font-size: 1.2rem;
+      }
+      
+      .slot-label {
+        font-size: 0.65rem;
+      }
+      
+      .htitle {
+        font-size: 1.1rem;
+      }
+    }
+    
+    @media (max-height: 500px) and (orientation: landscape) {
+      .hdr {
+        padding: 8px 12px;
+      }
+      
+      .progress-container {
+        padding: 8px 12px;
+      }
+      
+      .parking-slots {
+        height: 40%;
+      }
+      
+      #busesContainer {
+        height: 50%;
+      }
+      
+      .bus {
+        width: 100px;
+        height: 55px;
+      }
     }
   </style>
 </head>
@@ -58,481 +655,616 @@
     <!-- Header -->
     <div class="hdr">
       <a href="index.html" class="back">←</a>
-      <span class="htitle">🏠 Au garage !</span>
+      <span class="htitle">🚌 Au garage !</span>
     </div>
     
     <!-- Progress -->
-    <div class="progress-bar">
-      <div class="progress-fill" id="progress" style="width:0%"></div>
+    <div class="progress-container">
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+      </div>
+      <div class="bus-count" id="busCount">Bus garés : 0 / 6</div>
     </div>
-    <div class="bus-count" id="busCount">Bus garés : 0 / 3</div>
     
-    <!-- Game -->
-    <canvas id="garageCanvas"></canvas>
-    <div class="garage-info" id="info">🎮 Glisse chaque bus vers sa place colorée !</div>
+    <!-- Game Area -->
+    <div class="game-area">
+      <div id="parkingContainer">
+        <div class="asphalt"></div>
+        
+        <!-- Parking Slots -->
+        <div class="parking-slots" id="parkingSlots">
+          <div class="slot slot-red" data-color="red">
+            <div class="slot-indicator">🔴</div>
+            <div class="slot-label">Rouge</div>
+          </div>
+          <div class="slot slot-blue" data-color="blue">
+            <div class="slot-indicator">🔵</div>
+            <div class="slot-label">Bleu</div>
+          </div>
+          <div class="slot slot-yellow" data-color="yellow">
+            <div class="slot-indicator">🟡</div>
+            <div class="slot-label">Jaune</div>
+          </div>
+          <div class="slot slot-green" data-color="green">
+            <div class="slot-indicator">🟢</div>
+            <div class="slot-label">Vert</div>
+          </div>
+          <div class="slot slot-orange" data-color="orange">
+            <div class="slot-indicator">🟠</div>
+            <div class="slot-label">Orange</div>
+          </div>
+          <div class="slot slot-purple" data-color="purple">
+            <div class="slot-indicator">🟣</div>
+            <div class="slot-label">Violet</div>
+          </div>
+        </div>
+        
+        <!-- Buses Container -->
+        <div id="busesContainer"></div>
+      </div>
+      
+      <div class="garage-info" id="info">
+        🎮 Glisse chaque bus vers sa place de la bonne couleur !
+      </div>
+    </div>
   </div>
   
-  <!-- Feedback overlay -->
-  <div id="fbOverlay"></div>
-  
-  <!-- Scripts -->
-  <script src="js/sounds.js"></script>
-  <script src="js/feedback.js"></script>
-  <script src="js/data.js"></script>
-  <script src="js/bus-svg.js"></script>
+  <!-- Victory Overlay -->
+  <div class="victory-overlay" id="victoryOverlay">
+    <div class="victory-content">
+      <div class="victory-emoji">🎉</div>
+      <h2 class="victory-title">Génial !</h2>
+      <p class="victory-text">Tu as garé tous les bus !<br>Tu es un super conducteur ! 🚌</p>
+      <div class="victory-buttons">
+        <button class="victory-btn primary" onclick="location.reload()">🔄 Rejouer</button>
+        <a href="index.html" class="victory-btn secondary">📋 Menu</a>
+      </div>
+    </div>
+  </div>
+
   <script>
-    // ─── MJ-06: Au garage le soir ! ───
-    // Drag & drop: glisser chaque bus vers sa place numérotée au sol
+    // ─── MJ-06: Au garage ! ───
+    // Refonte complète avec parking horizontal
     
-    const canvas = document.getElementById('garageCanvas');
-    const ctx = canvas.getContext('2d');
+    const busData = [
+      { color: 'red', name: 'Rouge', emoji: '🔴' },
+      { color: 'blue', name: 'Bleu', emoji: '🔵' },
+      { color: 'yellow', name: 'Jaune', emoji: '🟡' },
+      { color: 'green', name: 'Vert', emoji: '🟢' },
+      { color: 'orange', name: 'Orange', emoji: '🟠' },
+      { color: 'purple', name: 'Violet', emoji: '🟣' }
+    ];
     
     let buses = [];
-    let slots = [];
-    let people = [];
-    let dragBus = null;
+    let draggedBus = null;
     let dragOffset = { x: 0, y: 0 };
-    let placed = 0;
-    let total = 0;
-    let scale = 1;
-    let roundComplete = false;
-    let animationId = null;
+    let parkedCount = 0;
+    const totalBuses = 6;
+    let gameComplete = false;
     
+    // Initialize game
     function init() {
-      resize();
-      newRound();
-      
-      // Events
-      canvas.addEventListener('touchstart', onTouchStart, { passive: false });
-      canvas.addEventListener('touchmove', onTouchMove, { passive: false });
-      canvas.addEventListener('touchend', onTouchEnd);
-      canvas.addEventListener('mousedown', onMouseDown);
-      canvas.addEventListener('mousemove', onMouseMove);
-      canvas.addEventListener('mouseup', onMouseUp);
-      window.addEventListener('resize', () => { resize(); draw(); });
-      
-      // Start animation loop
-      animate();
-    }
-    
-    function resize() {
-      const w = Math.min(460, window.innerWidth - 24);
-      const h = Math.round(w * 0.75);
-      canvas.width = w;
-      canvas.height = h;
-      canvas.style.width = w + 'px';
-      canvas.style.height = h + 'px';
-      scale = w / 460;
-    }
-    
-    function newRound() {
-      roundComplete = false;
-      // 3 à 5 bus selon la progression
-      const level = Math.min(5, 3 + Math.floor(placed / 3));
-      total = level;
-      
-      // Choisir des lignes aléatoires
-      const chosen = shuffle([...LIGNES]).slice(0, total);
-      
-      // Créer les bus (position aléatoire en haut avec animation)
-      buses = chosen.map((line, i) => ({
-        line,
-        x: 60 + (i * 90) + Math.random() * 40,
-        y: 50 + Math.random() * 40,
-        placed: false,
-        slotIndex: i,
-        bounceOffset: Math.random() * Math.PI * 2,
-        entering: true,
-        enterProgress: 0
-      }));
-      
-      // Créer les places (en bas, numérotées)
-      const slotSpacing = Math.min(90, (400 - 60) / (total - 1));
-      slots = chosen.map((line, i) => ({
-        x: 60 + (i * slotSpacing),
-        y: canvas.height / scale - 70,
-        num: line.num,
-        color: line.color,
-        occupied: false
-      }));
-      
-      // Créer des personnages qui marchent vers les bus
-      people = chosen.map((line, i) => ({
-        x: 20 + Math.random() * 100,
-        y: canvas.height / scale - 35,
-        targetX: 60 + (i * slotSpacing),
-        emoji: ['🧍', '🧍‍♀️', '👦', '👧'][Math.floor(Math.random() * 4)],
-        walkOffset: Math.random() * Math.PI * 2,
-        speed: 0.5 + Math.random() * 0.5
-      }));
-      
-      placed = 0;
+      createBuses();
       updateProgress();
       sndMoteur();
     }
     
-    function updateProgress() {
-      const pct = (placed / total) * 100;
-      document.getElementById('progress').style.width = pct + '%';
-      document.getElementById('busCount').textContent = `Bus garés : ${placed} / ${total}`;
+    // Create bus elements
+    function createBuses() {
+      const container = document.getElementById('busesContainer');
+      container.innerHTML = '';
+      buses = [];
       
-      if (placed === total) {
-        document.getElementById('info').innerHTML = '<span class="pulse">🎉 Bravo ! Tous les bus sont garés !</span>';
-      } else {
-        document.getElementById('info').textContent = `🎮 Glisse les bus vers leur place colorée (${placed}/${total})`;
-      }
+      // Shuffle bus data for random initial positions
+      const shuffledData = [...busData].sort(() => Math.random() - 0.5);
+      
+      shuffledData.forEach((data, index) => {
+        const bus = createBusElement(data, index);
+        container.appendChild(bus.element);
+        buses.push(bus);
+        
+        // Animate entrance from left
+        setTimeout(() => {
+          animateBusEntrance(bus, index);
+        }, index * 200);
+      });
     }
     
-    function animate() {
-      draw();
-      animationId = requestAnimationFrame(animate);
-    }
-    
-    function draw() {
-      const W = canvas.width;
-      const H = canvas.height;
-      const s = scale;
+    // Create individual bus HTML
+    function createBusElement(data, index) {
+      const element = document.createElement('div');
+      element.className = `bus bus-${data.color}`;
+      element.dataset.color = data.color;
+      element.innerHTML = `
+        <div class="bus-body">
+          <div class="bus-main">
+            <div class="bus-window front"></div>
+            <div class="bus-window back"></div>
+            <div class="bus-stripe"></div>
+            <div class="bus-door"></div>
+            <div class="bus-number">${index + 1}</div>
+          </div>
+          <div class="bus-bumper"></div>
+          <div class="bus-wheel front"></div>
+          <div class="bus-wheel back"></div>
+          <div class="headlight front"></div>
+          <div class="headlight back"></div>
+          <div class="taillight front"></div>
+          <div class="taillight back"></div>
+          <div class="bus-shadow"></div>
+        </div>
+      `;
       
-      ctx.clearRect(0, 0, W, H);
+      // Initial position (off-screen left)
+      const container = document.getElementById('busesContainer');
+      const containerWidth = container.offsetWidth;
+      const containerHeight = container.offsetHeight;
       
-      // Fond dégradé
-      const gradient = ctx.createLinearGradient(0, 0, 0, H);
-      gradient.addColorStop(0, '#1a2a3a');
-      gradient.addColorStop(1, '#0a1520');
-      ctx.fillStyle = gradient;
-      ctx.fillRect(0, 0, W, H);
+      // Position buses in a staggered formation from left
+      const startX = -150;
+      const startY = 20 + (index % 3) * 65;
       
-      // Sol du garage
-      ctx.fillStyle = '#0d1a25';
-      ctx.fillRect(0, (canvas.height / scale - 60) * s, W, 60 * s);
+      element.style.left = startX + 'px';
+      element.style.top = startY + 'px';
       
-      // Lignes de parking
-      ctx.strokeStyle = '#ffffff15';
-      ctx.lineWidth = 2 * s;
-      slots.forEach((slot, i) => {
-        const x = slot.x * s;
-        const y = slot.y * s;
-        const w = 60 * s;
-        const h = 50 * s;
-        
-        ctx.beginPath();
-        ctx.moveTo(x - w/2, y - h/2);
-        ctx.lineTo(x - w/2, y + h/2);
-        ctx.moveTo(x + w/2, y - h/2);
-        ctx.lineTo(x + w/2, y + h/2);
-        ctx.stroke();
-      });
+      // Add event listeners
+      addDragListeners(element);
       
-      // Places numérotées (en bas)
-      slots.forEach(slot => {
-        const x = slot.x * s;
-        const y = slot.y * s;
-        const w = 60 * s;
-        const h = 50 * s;
-        
-        // Rectangle de place avec couleur
-        ctx.fillStyle = slot.occupied ? '#00c47a33' : slot.color + '22';
-        ctx.fillRect(x - w/2, y - h/2, w, h);
-        
-        // Bordure colorée
-        ctx.strokeStyle = slot.occupied ? '#00c47a' : slot.color;
-        ctx.lineWidth = 3 * s;
-        ctx.strokeRect(x - w/2, y - h/2, w, h);
-        
-        // Numéro au sol
-        ctx.fillStyle = slot.occupied ? '#00c47a' : '#ffffff99';
-        ctx.font = `bold ${18 * s}px Nunito`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(slot.num, x, y);
-      });
-      
-      // Personnages qui marchent (si bus pas encore placé)
-      people.forEach((person, i) => {
-        if (buses[i] && !buses[i].placed) {
-          // Animation de marche
-          person.walkOffset += 0.1;
-          const walkX = Math.sin(person.walkOffset) * 3;
-          const walkY = Math.abs(Math.sin(person.walkOffset * 2)) * 3;
-          
-          // Avancer vers le bus lentement
-          if (person.x < person.targetX - 40) {
-            person.x += person.speed;
-          }
-          
-          ctx.font = `${20 * s}px Arial`;
-          ctx.textAlign = 'center';
-          ctx.textBaseline = 'bottom';
-          ctx.fillText(person.emoji, (person.x + walkX) * s, (person.y - walkY) * s);
-        }
-      });
-      
-      // Bus
-      buses.forEach((bus, i) => {
-        if (bus.placed) return;
-        
-        // Animation d'entrée
-        if (bus.entering) {
-          bus.enterProgress += 0.05;
-          if (bus.enterProgress >= 1) {
-            bus.entering = false;
-            bus.enterProgress = 1;
-          }
-        }
-        
-        // Animation de rebond
-        bus.bounceOffset += 0.05;
-        const bounceY = Math.sin(bus.bounceOffset) * 2;
-        
-        const enterScale = bus.entering ? bus.enterProgress : 1;
-        const drawX = bus.x;
-        const drawY = bus.y + bounceY * enterScale;
-        
-        drawBus(ctx, drawX * s, drawY * s, 70 * s * enterScale, bus.line);
-      });
-      
-      // Effet de confetti si tous les bus sont placés
-      if (placed === total && !roundComplete) {
-        drawConfetti();
-      }
-    }
-    
-    let confettiParticles = [];
-    
-    function drawConfetti() {
-      const W = canvas.width;
-      const H = canvas.height;
-      
-      if (confettiParticles.length === 0) {
-        const colors = ['#ffe066', '#ff82b4', '#00c47a', '#0064B1', '#F58443', '#B43C95'];
-        for (let i = 0; i < 30; i++) {
-          confettiParticles.push({
-            x: Math.random() * W,
-            y: -20 - Math.random() * 50,
-            vx: (Math.random() - 0.5) * 4,
-            vy: 2 + Math.random() * 3,
-            color: colors[Math.floor(Math.random() * colors.length)],
-            rotation: Math.random() * Math.PI * 2,
-            rotationSpeed: (Math.random() - 0.5) * 0.2
-          });
-        }
-      }
-      
-      confettiParticles.forEach(p => {
-        p.x += p.vx;
-        p.y += p.vy;
-        p.rotation += p.rotationSpeed;
-        p.vy += 0.1; // gravité
-        
-        ctx.save();
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.rotation);
-        ctx.fillStyle = p.color;
-        ctx.fillRect(-4, -4, 8, 8);
-        ctx.restore();
-      });
-      
-      // Supprimer les particules qui sortent
-      confettiParticles = confettiParticles.filter(p => p.y < canvas.height + 20);
-    }
-    
-    function drawBus(ctx, cx, cy, bw, line) {
-      const sc = bw / 150;
-      const bh = 45 * sc;
-      const bx = cx - bw/2;
-      const by = cy - bh/2;
-      
-      // Ombre
-      ctx.fillStyle = 'rgba(0,0,0,0.3)';
-      ctx.beginPath();
-      ctx.ellipse(cx, by + bh + 5 * sc, bw/2, 8 * sc, 0, 0, Math.PI * 2);
-      ctx.fill();
-      
-      // Corps
-      ctx.fillStyle = '#1abc9c';
-      ctx.beginPath();
-      ctx.roundRect(bx, by, bw, bh, 4 * sc);
-      ctx.fill();
-      
-      // Bas
-      ctx.fillStyle = '#ecf0f1';
-      ctx.fillRect(bx, by + 30 * sc, bw, 15 * sc);
-      ctx.fillStyle = '#7f8c8d';
-      ctx.fillRect(bx, by + 38 * sc, bw, 6 * sc);
-      
-      // Portes
-      ctx.fillStyle = '#7f8c8d';
-      ctx.strokeStyle = '#111';
-      ctx.lineWidth = 1.5 * sc;
-      [57, 65, 125, 133].forEach(dx => {
-        ctx.fillRect(bx + dx * sc, by + 4 * sc, 8 * sc, 37 * sc);
-        ctx.strokeRect(bx + dx * sc, by + 4 * sc, 8 * sc, 37 * sc);
-      });
-      
-      // Contour
-      ctx.strokeStyle = '#111';
-      ctx.lineWidth = 2 * sc;
-      ctx.beginPath();
-      ctx.roundRect(bx, by, bw, bh, 4 * sc);
-      ctx.stroke();
-      
-      // Fenêtres
-      ctx.fillStyle = 'rgba(69,139,186,0.82)';
-      ctx.strokeStyle = '#111';
-      ctx.lineWidth = 1.5 * sc;
-      [5, 31].forEach(dx => {
-        ctx.fillRect(bx + dx * sc, by + 4 * sc, 21 * sc, 21 * sc);
-        ctx.strokeRect(bx + dx * sc, by + 4 * sc, 21 * sc, 21 * sc);
-      });
-      
-      // Panneau de ligne (coloré)
-      ctx.fillStyle = line.color;
-      ctx.fillRect(bx + 79 * sc, by + 4 * sc, 40 * sc, 21 * sc);
-      ctx.strokeRect(bx + 79 * sc, by + 4 * sc, 40 * sc, 21 * sc);
-      
-      // Numéro
-      ctx.fillStyle = line.textColor;
-      ctx.font = `bold ${14 * sc}px Arial`;
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(line.num, bx + 99 * sc, by + 14.5 * sc);
-      
-      // Roues
-      const wy = by + 44 * sc;
-      [40, 110].forEach(wx => {
-        ctx.fillStyle = '#333';
-        ctx.strokeStyle = '#111';
-        ctx.lineWidth = 2 * sc;
-        ctx.beginPath();
-        ctx.arc(bx + wx * sc, wy, 10 * sc, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.stroke();
-        ctx.fillStyle = '#666';
-        ctx.beginPath();
-        ctx.arc(bx + wx * sc, wy, 6 * sc, 0, Math.PI * 2);
-        ctx.fill();
-      });
-      
-      // Feux
-      ctx.fillStyle = '#FF4444';
-      ctx.fillRect(bx, by + 38 * sc, 4 * sc, 5 * sc);
-      ctx.fillStyle = '#FFCC00';
-      ctx.fillRect(bx + 146 * sc, by + 38 * sc, 4 * sc, 5 * sc);
-    }
-    
-    // Input handling
-    function getPos(e) {
-      const r = canvas.getBoundingClientRect();
-      const src = e.touches ? e.touches[0] : e;
       return {
-        x: (src.clientX - r.left) / scale,
-        y: (src.clientY - r.top) / scale
+        element,
+        color: data.color,
+        x: startX,
+        y: startY,
+        parked: false,
+        targetX: 20 + (index % 3) * 130,
+        targetY: startY
       };
     }
     
-    function hitBus(x, y) {
-      for (let i = buses.length - 1; i >= 0; i--) {
-        const b = buses[i];
-        if (b.placed) continue;
-        if (Math.abs(x - b.x) < 45 && Math.abs(y - b.y) < 30) return i;
+    // Animate bus entering the parking area
+    function animateBusEntrance(bus, index) {
+      const container = document.getElementById('busesContainer');
+      const containerWidth = container.offsetWidth;
+      
+      // Distribute buses across the available space
+      const availableWidth = containerWidth - 130;
+      const row = Math.floor(index / 3);
+      const col = index % 3;
+      
+      const finalX = 15 + (col * (availableWidth / 2.5));
+      const finalY = 10 + (row * 70) + Math.random() * 10;
+      
+      bus.targetX = finalX;
+      bus.targetY = finalY;
+      
+      // Animate with easing
+      const startTime = performance.now();
+      const duration = 800 + Math.random() * 400;
+      const startX = bus.x;
+      
+      function animate(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Ease out cubic
+        const easeProgress = 1 - Math.pow(1 - progress, 3);
+        
+        bus.x = startX + (finalX - startX) * easeProgress;
+        bus.element.style.left = bus.x + 'px';
+        bus.element.style.top = finalY + 'px';
+        
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          bus.y = finalY;
+          sndKlaxon();
+        }
       }
-      return -1;
+      
+      requestAnimationFrame(animate);
     }
     
-    function checkPlacement(bus) {
-      const slot = slots[bus.slotIndex];
-      const dist = Math.hypot(bus.x - slot.x, bus.y - slot.y);
+    // Add drag and drop listeners
+    function addDragListeners(element) {
+      // Mouse events
+      element.addEventListener('mousedown', handleStart);
       
-      if (dist < 35) {
-        // Placé !
-        bus.x = slot.x;
-        bus.y = slot.y;
-        bus.placed = true;
-        slot.occupied = true;
-        placed++;
-        updateProgress();
-        sndTschh(); // Son de freinage
+      // Touch events
+      element.addEventListener('touchstart', handleStart, { passive: false });
+    }
+    
+    function handleStart(e) {
+      if (gameComplete) return;
+      
+      const bus = buses.find(b => b.element === e.currentTarget);
+      if (!bus || bus.parked) return;
+      
+      e.preventDefault();
+      draggedBus = bus;
+      
+      const point = getEventPoint(e);
+      const rect = bus.element.getBoundingClientRect();
+      const containerRect = document.getElementById('parkingContainer').getBoundingClientRect();
+      
+      dragOffset.x = point.x - rect.left;
+      dragOffset.y = point.y - rect.top;
+      
+      bus.element.classList.add('dragging');
+      
+      // Add move and end listeners to document
+      document.addEventListener('mousemove', handleMove);
+      document.addEventListener('mouseup', handleEnd);
+      document.addEventListener('touchmove', handleMove, { passive: false });
+      document.addEventListener('touchend', handleEnd);
+      
+      sndPorte();
+    }
+    
+    function handleMove(e) {
+      if (!draggedBus) return;
+      e.preventDefault();
+      
+      const point = getEventPoint(e);
+      const containerRect = document.getElementById('parkingContainer').getBoundingClientRect();
+      
+      let newX = point.x - containerRect.left - dragOffset.x;
+      let newY = point.y - containerRect.top - dragOffset.y;
+      
+      // Constrain to container
+      const container = document.getElementById('parkingContainer');
+      const maxX = container.offsetWidth - 110;
+      const maxY = container.offsetHeight - 60;
+      
+      newX = Math.max(0, Math.min(newX, maxX));
+      newY = Math.max(0, Math.min(newY, maxY));
+      
+      draggedBus.x = newX;
+      draggedBus.y = newY;
+      draggedBus.element.style.left = newX + 'px';
+      draggedBus.element.style.top = newY + 'px';
+    }
+    
+    function handleEnd(e) {
+      if (!draggedBus) return;
+      
+      draggedBus.element.classList.remove('dragging');
+      
+      // Check if dropped on correct slot
+      checkParking(draggedBus);
+      
+      draggedBus = null;
+      
+      // Remove listeners
+      document.removeEventListener('mousemove', handleMove);
+      document.removeEventListener('mouseup', handleEnd);
+      document.removeEventListener('touchmove', handleMove);
+      document.removeEventListener('touchend', handleEnd);
+    }
+    
+    function getEventPoint(e) {
+      if (e.touches && e.touches.length > 0) {
+        return { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      }
+      return { x: e.clientX, y: e.clientY };
+    }
+    
+    // Check if bus is parked in correct slot
+    function checkParking(bus) {
+      const slots = document.querySelectorAll('.slot');
+      const busRect = bus.element.getBoundingClientRect();
+      const busCenter = {
+        x: busRect.left + busRect.width / 2,
+        y: busRect.top + busRect.height / 2
+      };
+      
+      for (const slot of slots) {
+        if (slot.dataset.color !== bus.color) continue;
+        if (slot.classList.contains('occupied')) continue;
         
-        // Effet visuel
-        confettiParticles = [];
+        const slotRect = slot.getBoundingClientRect();
         
-        if (placed === total) {
-          roundComplete = true;
-          sndVictory();
-          showFB(true);
-          setTimeout(showVictoryScreen, 1500);
+        // Check if bus center is within slot
+        if (
+          busCenter.x >= slotRect.left &&
+          busCenter.x <= slotRect.right &&
+          busCenter.y >= slotRect.top &&
+          busCenter.y <= slotRect.bottom
+        ) {
+          // Park the bus!
+          parkBus(bus, slot);
+          return;
+        }
+      }
+      
+      // Not parked - check if close to snap
+      for (const slot of slots) {
+        if (slot.dataset.color !== bus.color) continue;
+        if (slot.classList.contains('occupied')) continue;
+        
+        const slotRect = slot.getBoundingClientRect();
+        const slotCenter = {
+          x: slotRect.left + slotRect.width / 2,
+          y: slotRect.top + slotRect.height / 2
+        };
+        
+        const distance = Math.hypot(busCenter.x - slotCenter.x, busCenter.y - slotCenter.y);
+        
+        if (distance < 80) {
+          // Snap to slot
+          parkBus(bus, slot);
+          return;
         }
       }
     }
     
-    function showVictoryScreen() {
-      const app = document.getElementById('app');
-      app.innerHTML = `
-        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;text-align:center;padding:20px;">
-          <div style="font-size:5rem;margin-bottom:20px;">🎉</div>
-          <h2 style="font-size:2rem;margin-bottom:20px;color:#ffe066;">Génial !</h2>
-          <p style="font-size:1.4rem;margin-bottom:20px;">Tu as garé tous les bus !</p>
-          <p style="font-size:1.1rem;margin-bottom:30px;opacity:0.8;">Tu es un super conducteur ! 🚌</p>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
-            <a href="mj-06.html" style="background:#00c47a;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">🔄 Rejouer</a>
-            <a href="index.html" style="background:#ffffff22;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">📋 Menu</a>
-          </div>
-        </div>
-      `;
-    }
-    
-    function onTouchStart(e) {
-      e.preventDefault();
-      const p = getPos(e);
-      const i = hitBus(p.x, p.y);
-      if (i >= 0) {
-        dragBus = i;
-        dragOffset = { x: p.x - buses[i].x, y: p.y - buses[i].y };
-        sndPorte();
+    // Park bus in slot
+    function parkBus(bus, slot) {
+      bus.parked = true;
+      slot.classList.add('occupied');
+      bus.element.classList.add('parked', 'bouncing');
+      
+      // Position bus perfectly in slot
+      const containerRect = document.getElementById('parkingContainer').getBoundingClientRect();
+      const slotRect = slot.getBoundingClientRect();
+      
+      const busWidth = bus.element.offsetWidth;
+      const busHeight = bus.element.offsetHeight;
+      
+      const finalX = slotRect.left - containerRect.left + (slotRect.width - busWidth) / 2;
+      const finalY = slotRect.top - containerRect.top + (slotRect.height - busHeight) / 2 + 10;
+      
+      bus.element.style.left = finalX + 'px';
+      bus.element.style.top = finalY + 'px';
+      bus.x = finalX;
+      bus.y = finalY;
+      
+      parkedCount++;
+      updateProgress();
+      sndTschh();
+      
+      // Remove bounce class after animation
+      setTimeout(() => {
+        bus.element.classList.remove('bouncing');
+      }, 600);
+      
+      // Check for victory
+      if (parkedCount === totalBuses) {
+        gameComplete = true;
+        setTimeout(() => {
+          sndVictory();
+          createConfetti();
+          showVictory();
+        }, 800);
       }
     }
     
-    function onTouchMove(e) {
-      e.preventDefault();
-      if (dragBus === null) return;
-      const p = getPos(e);
-      buses[dragBus].x = p.x - dragOffset.x;
-      buses[dragBus].y = p.y - dragOffset.y;
-    }
-    
-    function onTouchEnd() {
-      if (dragBus !== null) {
-        checkPlacement(buses[dragBus]);
-        dragBus = null;
+    // Update progress bar
+    function updateProgress() {
+      const percentage = (parkedCount / totalBuses) * 100;
+      document.getElementById('progressFill').style.width = percentage + '%';
+      document.getElementById('busCount').textContent = `Bus garés : ${parkedCount} / ${totalBuses}`;
+      
+      const info = document.getElementById('info');
+      if (parkedCount === totalBuses) {
+        info.innerHTML = '<span class="pulse">🎉 Bravo ! Tous les bus sont garés !</span>';
+      } else {
+        info.textContent = `🎮 Glisse les bus vers leur place de la bonne couleur ! (${parkedCount}/${totalBuses})`;
       }
     }
     
-    function onMouseDown(e) {
-      const p = getPos(e);
-      const i = hitBus(p.x, p.y);
-      if (i >= 0) {
-        dragBus = i;
-        dragOffset = { x: p.x - buses[i].x, y: p.y - buses[i].y };
-        sndPorte();
+    // Show victory screen
+    function showVictory() {
+      document.getElementById('victoryOverlay').classList.add('show');
+    }
+    
+    // Create confetti effect
+    function createConfetti() {
+      const colors = ['#e74c3c', '#3498db', '#f1c40f', '#2ecc71', '#e67e22', '#9b59b6', '#ffe066'];
+      
+      for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+          const confetti = document.createElement('div');
+          confetti.className = 'confetti';
+          confetti.style.left = Math.random() * 100 + 'vw';
+          confetti.style.top = '-20px';
+          confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+          confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+          document.body.appendChild(confetti);
+          
+          // Animate
+          const duration = 2000 + Math.random() * 2000;
+          const xMovement = (Math.random() - 0.5) * 200;
+          
+          confetti.animate([
+            { transform: `translate(0, 0) rotate(0deg)`, opacity: 1 },
+            { transform: `translate(${xMovement}px, ${window.innerHeight + 50}px) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+          ], {
+            duration: duration,
+            easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+          }).onfinish = () => confetti.remove();
+        }, i * 50);
       }
     }
     
-    function onMouseMove(e) {
-      if (dragBus === null) return;
-      const p = getPos(e);
-      buses[dragBus].x = p.x - dragOffset.x;
-      buses[dragBus].y = p.y - dragOffset.y;
+    // ─── Sound Functions ───
+    
+    function getAC() {
+      return new (window.AudioContext || window.webkitAudioContext)();
     }
     
-    function onMouseUp() {
-      if (dragBus !== null) {
-        checkPlacement(buses[dragBus]);
-        dragBus = null;
-      }
+    // Son de victoire
+    function sndVictory() {
+      try {
+        const ac = getAC();
+        const t = ac.currentTime;
+        
+        [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
+          const o = ac.createOscillator();
+          const g = ac.createGain();
+          
+          o.connect(g);
+          g.connect(ac.destination);
+          
+          o.type = i < 2 ? 'triangle' : 'sine';
+          o.frequency.value = freq;
+          
+          g.gain.setValueAtTime(0, t);
+          g.gain.linearRampToValueAtTime(0.25 - i * 0.05, t + 0.1);
+          g.gain.exponentialRampToValueAtTime(0.01, t + 1.5);
+          
+          o.start(t);
+          o.stop(t + 1.5);
+        });
+      } catch (e) {}
     }
     
-    // Démarrer
-    init();
+    // Klaxon de bus
+    function sndKlaxon() {
+      try {
+        const ac = getAC();
+        const t = ac.currentTime;
+        
+        [0, 0.25].forEach(delay => {
+          const o = ac.createOscillator();
+          const g = ac.createGain();
+          const f = ac.createBiquadFilter();
+          
+          o.connect(f);
+          f.connect(g);
+          g.connect(ac.destination);
+          
+          o.type = 'sawtooth';
+          o.frequency.setValueAtTime(350, t + delay);
+          o.frequency.exponentialRampToValueAtTime(280, t + delay + 0.15);
+          
+          f.type = 'lowpass';
+          f.frequency.value = 1200;
+          
+          g.gain.setValueAtTime(0, t + delay);
+          g.gain.linearRampToValueAtTime(0.4, t + delay + 0.02);
+          g.gain.exponentialRampToValueAtTime(0.01, t + delay + 0.2);
+          
+          o.start(t + delay);
+          o.stop(t + delay + 0.25);
+        });
+      } catch (e) {}
+    }
+    
+    // Moteur qui démarre
+    function sndMoteur() {
+      try {
+        const ac = getAC();
+        const t = ac.currentTime;
+        
+        const o = ac.createOscillator();
+        const g = ac.createGain();
+        const f = ac.createBiquadFilter();
+        
+        o.connect(f);
+        f.connect(g);
+        g.connect(ac.destination);
+        
+        o.type = 'sawtooth';
+        o.frequency.setValueAtTime(60, t);
+        o.frequency.exponentialRampToValueAtTime(120, t + 0.8);
+        
+        f.type = 'lowpass';
+        f.frequency.setValueAtTime(400, t);
+        f.frequency.linearRampToValueAtTime(2000, t + 0.8);
+        
+        g.gain.setValueAtTime(0, t);
+        g.gain.linearRampToValueAtTime(0.3, t + 0.1);
+        g.gain.exponentialRampToValueAtTime(0.01, t + 1.0);
+        
+        o.start(t);
+        o.stop(t + 1.0);
+      } catch (e) {}
+    }
+    
+    // Pneu qui crisse
+    function sndTschh() {
+      try {
+        const ac = getAC();
+        const t = ac.currentTime;
+        
+        const buf = ac.createBuffer(1, ac.sampleRate * 0.3, ac.sampleRate);
+        const d = buf.getChannelData(0);
+        for (let i = 0; i < d.length; i++) {
+          d[i] = (Math.random() * 2 - 1) * (1 - i / d.length);
+        }
+        
+        const src = ac.createBufferSource();
+        const f = ac.createBiquadFilter();
+        const g = ac.createGain();
+        
+        src.buffer = buf;
+        src.connect(f);
+        f.connect(g);
+        g.connect(ac.destination);
+        
+        f.type = 'bandpass';
+        f.frequency.value = 3000;
+        f.Q.value = 1;
+        
+        g.gain.setValueAtTime(0.3, t);
+        g.gain.exponentialRampToValueAtTime(0.01, t + 0.3);
+        
+        src.start(t);
+      } catch (e) {}
+    }
+    
+    // Porte de bus qui s'ouvre
+    function sndPorte() {
+      try {
+        const ac = getAC();
+        const t = ac.currentTime;
+        const buf = ac.createBuffer(1, ac.sampleRate * 0.5, ac.sampleRate);
+        const d = buf.getChannelData(0);
+        
+        for (let i = 0; i < d.length; i++) {
+          d[i] = (Math.random() * 2 - 1) * Math.sin(i / d.length * Math.PI);
+        }
+        
+        const src = ac.createBufferSource();
+        const f = ac.createBiquadFilter();
+        const g = ac.createGain();
+        
+        src.buffer = buf;
+        src.connect(f);
+        f.connect(g);
+        g.connect(ac.destination);
+        
+        f.type = 'lowpass';
+        f.frequency.setValueAtTime(200, t);
+        f.frequency.linearRampToValueAtTime(800, t + 0.3);
+        
+        g.gain.setValueAtTime(0.2, t);
+        g.gain.linearRampToValueAtTime(0.01, t + 0.5);
+        
+        src.start(t);
+      } catch (e) {}
+    }
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      // Reposition buses if needed
+      buses.forEach(bus => {
+        if (!bus.parked) {
+          const container = document.getElementById('parkingContainer');
+          const maxX = container.offsetWidth - 110;
+          const maxY = container.offsetHeight - 60;
+          
+          bus.x = Math.min(bus.x, maxX);
+          bus.y = Math.min(bus.y, maxY);
+          bus.element.style.left = bus.x + 'px';
+          bus.element.style.top = bus.y + 'px';
+        }
+      });
+    });
+    
+    // Start game when DOM is ready
+    document.addEventListener('DOMContentLoaded', init);
   </script>
 </body>
 </html>

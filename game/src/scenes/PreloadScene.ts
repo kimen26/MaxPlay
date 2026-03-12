@@ -1,6 +1,7 @@
 import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT } from '../constants/config';
 import { UI_COLORS } from '../constants/colors';
+import { SoundManager } from '../utils/SoundManager';
 
 export class PreloadScene extends Phaser.Scene {
   private loadingBar!: Phaser.GameObjects.Rectangle;
@@ -17,6 +18,9 @@ export class PreloadScene extends Phaser.Scene {
       frameWidth: 210,
       frameHeight: 210,
     });
+
+    // Charger les sons
+    SoundManager.preload(this);
 
     this.load.on('progress', (value: number) => {
       this.loadingBar.width = 400 * value;

@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { GAME_WIDTH, GAME_HEIGHT } from '../constants/config';
+import { SoundManager } from '../utils/SoundManager';
 
 const BUS_SPEED = 220;
 const WORLD_WIDTH = 1200;
@@ -25,6 +26,7 @@ export class SandboxScene extends Phaser.Scene {
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
   private spaceKey!: Phaser.Input.Keyboard.Key;
   private passengerText!: Phaser.GameObjects.Text;
+  private soundManager!: SoundManager;
 
   constructor() {
     super({ key: 'SandboxScene' });
@@ -32,12 +34,18 @@ export class SandboxScene extends Phaser.Scene {
   }
 
   create(): void {
+    this.soundManager = new SoundManager(this);
+    this.soundManager.init();
+    
     this.createCleanWorld();
     this.createBus();
     this.createPassengers();
     this.createInput();
     this.createUI();
     this.setupCamera();
+    
+    // Démarrer le moteur
+    this.soundManager.startEngine();
   }
 
   private createCleanWorld(): void {
@@ -241,6 +249,9 @@ export class SandboxScene extends Phaser.Scene {
     // Choisir sprite selon direction
     this.updateBusFrame();
 
+    // Mettre à jour le son du moteur
+    this.soundManager.updateEngine(this.busVelocity.length());
+
     this.bus.x += this.busVelocity.x * dt;
     this.bus.y += this.busVelocity.y * dt;
     this.bus.x = Phaser.Math.Clamp(this.bus.x, 50, WORLD_WIDTH - 50);
@@ -273,6 +284,7 @@ export class SandboxScene extends Phaser.Scene {
 
   private updateHonk(): void {
     if (Phaser.Input.Keyboard.JustDown(this.spaceKey)) {
+      this.soundManager.honk();
       this.tweens.add({ targets: this.bus, scaleX: 0.65, scaleY: 0.65, duration: 100, yoyo: true });
       
       const beep = this.add.text(this.bus.x, this.bus.y - 50, '📢 BEEP!', {
@@ -298,6 +310,9 @@ export class SandboxScene extends Phaser.Scene {
     p.collected = true;
     this.passengersCollected++;
     
+    // Son de collecte
+    this.soundManager.collect();
+    
     if (p.sprite) {
       this.tweens.add({ targets: p.sprite, scale: 0, y: p.sprite.y - 50, duration: 400, onComplete: () => p.sprite?.destroy() });
     }
@@ -311,6 +326,7 @@ export class SandboxScene extends Phaser.Scene {
     this.passengerText.setText(`🧍 ${this.passengersCollected} / ${this.totalPassengers}`);
     
     if (this.passengersCollected >= this.totalPassengers) {
+      this.soundManager.victory();
       this.showVictory();
     }
   }

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-04 – Lis le mot</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    #gameScr { background: linear-gradient(160deg, #2a1a3a, #1a2a3a); }
+    .syl-word {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin: 16px 0;
+    }
+    .syl-block {
+      background: #ffffff20;
+      border-radius: 12px;
+      padding: 14px 20px;
+      font-size: 1.6rem;
+      font-weight: 900;
+      min-width: 60px;
+      text-align: center;
+    }
+    .syl-block.unknown {
+      background: #ffe06644;
+      border: 3px solid #ffe066;
+      animation: pulse 0.8s infinite alternate;
+      min-width: 50px;
+    }
+    .syl-block.pop {
+      animation: popAnim 0.3s ease-out;
+    }
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.08); }
+    }
+    @keyframes popAnim {
+      0% { transform: scale(0.7); }
+      60% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    .syl-choices {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 0 12px;
+    }
+    .phase-indicator {
+      font-size: 0.75rem;
+      opacity: 0.6;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+    .question-counter {
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      margin-bottom: 8px;
+    }
+    .word-context {
+      font-size: 0.85rem;
+      opacity: 0.6;
+      margin-top: 8px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <div class="hdr">
+      <a href="index.html" class="back">←</a>
+      <span class="htitle">📖 Lis le mot</span>
+    </div>
+    
+    <!-- Score -->
+    <div class="scorebar">
+      <span class="scoretxt">Score</span>
+      <span class="scoreval" id="score">0</span>
+      <span class="streak" id="streak"></span>
+    </div>
+    
+    <!-- Phase indicator -->
+    <div class="phase-indicator" id="phaseInd">Phase 1: Mots simples</div>
+    
+    <!-- Word -->
+    <div class="qbox" style="padding:24px 12px;">
+      <div class="question-counter" id="qcounter">Question 1 / 5</div>
+      <div style="font-size:0.8rem;opacity:0.6;margin-bottom:8px;">Le mot à compléter :</div>
+      <div class="syl-word" id="wordBlocks">
+        <!-- Généré par JS -->
+      </div>
+      <div class="word-context" id="wordContext">Trouve la syllabe manquante !</div>
+    </div>
+    
+    <!-- Choices -->
+    <div class="syl-choices" id="choices">
+      <!-- Généré par JS -->
+    </div>
+  </div>
+  
+  <!-- Feedback overlay -->
+  <div id="fbOverlay"></div>
+  
+  <!-- Scripts -->
+  <script src="js/sounds.js"></script>
+  <script src="js/feedback.js"></script>
+  <script src="js/data.js"></script>
+  <script>
+    // ─── MJ-04: Lis le mot ───
+    // Phase 1: Mots simples (CACA, BUS, PAPA...)
+    // Phase 2: Arrêts de bus (Villejuif, Louis Aragon...)
+    
+    let score = 0;
+    let streak = 0;
+    let questionCount = 0;
+    const MAX_QUESTIONS = 5;
+    let locked = false;
+    let currentWord = null;
+    let hiddenIndex = 0;
+    let phase = 1; // 1 = mots simples, 2 = arrêts
+    
+    function init() {
+      score = 0;
+      streak = 0;
+      questionCount = 0;
+      phase = 1;
+      document.getElementById('score').textContent = '0';
+      document.getElementById('streak').textContent = '';
+      document.getElementById('phaseInd').textContent = 'Phase 1: Mots simples';
+      nextQuestion();
+    }
+    
+    function nextQuestion() {
+      if (questionCount >= MAX_QUESTIONS) {
+        showEndScreen();
+        return;
+      }
+      
+      locked = false;
+      questionCount++;
+      
+      // Passer à la phase 2 après 3 questions
+      if (phase === 1 && questionCount > 3) {
+        phase = 2;
+        document.getElementById('phaseInd').textContent = 'Phase 2: Arrêts de bus';
+      }
+      
+      document.getElementById('qcounter').textContent = `Question ${questionCount} / ${MAX_QUESTIONS}`;
+      
+      // Choisir un mot
+      const pool = phase === 1 ? MOTS_SIMPLE : ARRETS_185_M7;
+      currentWord = pool[Math.floor(Math.random() * pool.length)];
+      
+      // Choisir quelle syllabe cacher
+      hiddenIndex = Math.floor(Math.random() * currentWord.sylls.length);
+      const correctSyll = currentWord.sylls[hiddenIndex];
+      
+      // Afficher les blocs avec le mot visible avec trou
+      const container = document.getElementById('wordBlocks');
+      container.innerHTML = '';
+      
+      // Montrer le mot avec trou (ex: MA-?-AN pour MAMAN)
+      currentWord.sylls.forEach((syl, i) => {
+        const block = document.createElement('span');
+        block.className = 'syl-block';
+        if (i === hiddenIndex) {
+          block.classList.add('unknown');
+          block.id = 'block_' + i;
+          block.textContent = '?';
+        } else {
+          block.textContent = syl;
+        }
+        container.appendChild(block);
+      });
+      
+      // Mettre à jour le contexte
+      document.getElementById('wordContext').textContent = 
+        phase === 1 ? 'Quelle syllabe manque ?' : 'Quel arrêt de bus ?';
+      
+      // Générer les choix
+      const allSylls = [];
+      pool.forEach(w => w.sylls.forEach(s => {
+        if (s !== correctSyll && !allSylls.includes(s)) allSylls.push(s);
+      }));
+      
+      const wrongs = shuffle(allSylls).slice(0, 3);
+      const options = [correctSyll, ...wrongs];
+      
+      // Afficher les choix
+      const choicesDiv = document.getElementById('choices');
+      choicesDiv.innerHTML = '';
+      
+      shuffle(options).forEach(syl => {
+        const btn = document.createElement('button');
+        btn.className = 'ch';
+        btn.style.fontSize = '1.3rem';
+        btn.textContent = syl;
+        btn.onclick = () => answer(syl === correctSyll, btn, syl);
+        choicesDiv.appendChild(btn);
+      });
+    }
+    
+    function answer(isCorrect, btn, chosenSyll) {
+      if (locked) return;
+      locked = true;
+      
+      if (isCorrect) {
+        btn.classList.add('ok');
+        
+        // Révéler la syllabe
+        const block = document.getElementById('block_' + hiddenIndex);
+        if (block) {
+          block.classList.remove('unknown');
+          block.textContent = chosenSyll;
+          block.classList.add('pop');
+        }
+        
+        score += 10;
+        streak++;
+        if (streak >= 3) confetti();
+        sndDing();
+        showFB(true);
+        
+        // TTS du mot complet
+        speak(currentWord.word);
+      } else {
+        btn.classList.add('ko');
+        
+        const buttons = Array.from(document.querySelectorAll('#choices .ch'));
+        const correctSyll = currentWord.sylls[hiddenIndex];
+        const correctBtn = buttons.find(b => b.textContent === correctSyll);
+        if (correctBtn) correctBtn.classList.add('ok');
+        
+        // Révéler la bonne réponse
+        const block = document.getElementById('block_' + hiddenIndex);
+        if (block) {
+          block.classList.remove('unknown');
+          block.textContent = correctSyll;
+          block.style.color = '#00c47a';
+        }
+        
+        streak = 0;
+        sndBuzz();
+        showFB(false);
+      }
+      
+      document.getElementById('score').textContent = score;
+      document.getElementById('streak').textContent = streak >= 2 ? `🔥×${streak}` : '';
+      
+      setTimeout(nextQuestion, 1800);
+    }
+    
+    function speak(text) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'fr-FR';
+      u.rate = 0.85;
+      u.pitch = 1.1;
+      window.speechSynthesis.speak(u);
+    }
+    
+    function showEndScreen() {
+      sndVictory();
+      confetti();
+      const app = document.getElementById('app');
+      app.innerHTML = `
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;text-align:center;padding:20px;">
+          <div style="font-size:5rem;margin-bottom:20px;">🏆</div>
+          <h2 style="font-size:2rem;margin-bottom:20px;color:#ffe066;">Super !</h2>
+          <p style="font-size:1.4rem;margin-bottom:30px;">Tu as fait <strong>${score}</strong> points !</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+            <a href="mj-04.html" style="background:#00c47a;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">🔄 Rejouer</a>
+            <a href="index.html" style="background:#ffffff22;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">📋 Menu</a>
+          </div>
+        </div>
+      `;
+    }
+    
+    // Démarrer
+    init();
+  </script>
+</body>
+</html>

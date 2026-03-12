@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-06 – Au garage !</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    #gameScr { background: linear-gradient(160deg, #0a1a2a, #1a2a3a); }
+    #garageCanvas {
+      border-radius: 12px;
+      touch-action: none;
+      display: block;
+      margin: 0 auto;
+      background: linear-gradient(180deg, #1a2a3a 0%, #0a1520 100%);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    .garage-info {
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-align: center;
+      margin: 8px 12px;
+      color: #fff;
+    }
+    .progress-bar {
+      width: calc(100% - 24px);
+      height: 12px;
+      background: #ffffff15;
+      border-radius: 6px;
+      margin: 0 12px 12px;
+      overflow: hidden;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #00c47a, #ffe066);
+      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 0 10px rgba(0, 196, 122, 0.5);
+    }
+    .bus-count {
+      text-align: center;
+      font-size: 0.85rem;
+      opacity: 0.7;
+      margin-bottom: 8px;
+    }
+    @keyframes pulseText {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.7; }
+    }
+    .pulse {
+      animation: pulseText 1s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <!-- Header -->
+    <div class="hdr">
+      <a href="index.html" class="back">←</a>
+      <span class="htitle">🏠 Au garage !</span>
+    </div>
+    
+    <!-- Progress -->
+    <div class="progress-bar">
+      <div class="progress-fill" id="progress" style="width:0%"></div>
+    </div>
+    <div class="bus-count" id="busCount">Bus garés : 0 / 3</div>
+    
+    <!-- Game -->
+    <canvas id="garageCanvas"></canvas>
+    <div class="garage-info" id="info">🎮 Glisse chaque bus vers sa place colorée !</div>
+  </div>
+  
+  <!-- Feedback overlay -->
+  <div id="fbOverlay"></div>
+  
+  <!-- Scripts -->
+  <script src="js/sounds.js"></script>
+  <script src="js/feedback.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/bus-svg.js"></script>
+  <script>
+    // ─── MJ-06: Au garage le soir ! ───
+    // Drag & drop: glisser chaque bus vers sa place numérotée au sol
+    
+    const canvas = document.getElementById('garageCanvas');
+    const ctx = canvas.getContext('2d');
+    
+    let buses = [];
+    let slots = [];
+    let people = [];
+    let dragBus = null;
+    let dragOffset = { x: 0, y: 0 };
+    let placed = 0;
+    let total = 0;
+    let scale = 1;
+    let roundComplete = false;
+    let animationId = null;
+    
+    function init() {
+      resize();
+      newRound();
+      
+      // Events
+      canvas.addEventListener('touchstart', onTouchStart, { passive: false });
+      canvas.addEventListener('touchmove', onTouchMove, { passive: false });
+      canvas.addEventListener('touchend', onTouchEnd);
+      canvas.addEventListener('mousedown', onMouseDown);
+      canvas.addEventListener('mousemove', onMouseMove);
+      canvas.addEventListener('mouseup', onMouseUp);
+      window.addEventListener('resize', () => { resize(); draw(); });
+      
+      // Start animation loop
+      animate();
+    }
+    
+    function resize() {
+      const w = Math.min(460, window.innerWidth - 24);
+      const h = Math.round(w * 0.75);
+      canvas.width = w;
+      canvas.height = h;
+      canvas.style.width = w + 'px';
+      canvas.style.height = h + 'px';
+      scale = w / 460;
+    }
+    
+    function newRound() {
+      roundComplete = false;
+      // 3 à 5 bus selon la progression
+      const level = Math.min(5, 3 + Math.floor(placed / 3));
+      total = level;
+      
+      // Choisir des lignes aléatoires
+      const chosen = shuffle([...LIGNES]).slice(0, total);
+      
+      // Créer les bus (position aléatoire en haut avec animation)
+      buses = chosen.map((line, i) => ({
+        line,
+        x: 60 + (i * 90) + Math.random() * 40,
+        y: 50 + Math.random() * 40,
+        placed: false,
+        slotIndex: i,
+        bounceOffset: Math.random() * Math.PI * 2,
+        entering: true,
+        enterProgress: 0
+      }));
+      
+      // Créer les places (en bas, numérotées)
+      const slotSpacing = Math.min(90, (400 - 60) / (total - 1));
+      slots = chosen.map((line, i) => ({
+        x: 60 + (i * slotSpacing),
+        y: canvas.height / scale - 70,
+        num: line.num,
+        color: line.color,
+        occupied: false
+      }));
+      
+      // Créer des personnages qui marchent vers les bus
+      people = chosen.map((line, i) => ({
+        x: 20 + Math.random() * 100,
+        y: canvas.height / scale - 35,
+        targetX: 60 + (i * slotSpacing),
+        emoji: ['🧍', '🧍‍♀️', '👦', '👧'][Math.floor(Math.random() * 4)],
+        walkOffset: Math.random() * Math.PI * 2,
+        speed: 0.5 + Math.random() * 0.5
+      }));
+      
+      placed = 0;
+      updateProgress();
+      sndMoteur();
+    }
+    
+    function updateProgress() {
+      const pct = (placed / total) * 100;
+      document.getElementById('progress').style.width = pct + '%';
+      document.getElementById('busCount').textContent = `Bus garés : ${placed} / ${total}`;
+      
+      if (placed === total) {
+        document.getElementById('info').innerHTML = '<span class="pulse">🎉 Bravo ! Tous les bus sont garés !</span>';
+      } else {
+        document.getElementById('info').textContent = `🎮 Glisse les bus vers leur place colorée (${placed}/${total})`;
+      }
+    }
+    
+    function animate() {
+      draw();
+      animationId = requestAnimationFrame(animate);
+    }
+    
+    function draw() {
+      const W = canvas.width;
+      const H = canvas.height;
+      const s = scale;
+      
+      ctx.clearRect(0, 0, W, H);
+      
+      // Fond dégradé
+      const gradient = ctx.createLinearGradient(0, 0, 0, H);
+      gradient.addColorStop(0, '#1a2a3a');
+      gradient.addColorStop(1, '#0a1520');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, W, H);
+      
+      // Sol du garage
+      ctx.fillStyle = '#0d1a25';
+      ctx.fillRect(0, (canvas.height / scale - 60) * s, W, 60 * s);
+      
+      // Lignes de parking
+      ctx.strokeStyle = '#ffffff15';
+      ctx.lineWidth = 2 * s;
+      slots.forEach((slot, i) => {
+        const x = slot.x * s;
+        const y = slot.y * s;
+        const w = 60 * s;
+        const h = 50 * s;
+        
+        ctx.beginPath();
+        ctx.moveTo(x - w/2, y - h/2);
+        ctx.lineTo(x - w/2, y + h/2);
+        ctx.moveTo(x + w/2, y - h/2);
+        ctx.lineTo(x + w/2, y + h/2);
+        ctx.stroke();
+      });
+      
+      // Places numérotées (en bas)
+      slots.forEach(slot => {
+        const x = slot.x * s;
+        const y = slot.y * s;
+        const w = 60 * s;
+        const h = 50 * s;
+        
+        // Rectangle de place avec couleur
+        ctx.fillStyle = slot.occupied ? '#00c47a33' : slot.color + '22';
+        ctx.fillRect(x - w/2, y - h/2, w, h);
+        
+        // Bordure colorée
+        ctx.strokeStyle = slot.occupied ? '#00c47a' : slot.color;
+        ctx.lineWidth = 3 * s;
+        ctx.strokeRect(x - w/2, y - h/2, w, h);
+        
+        // Numéro au sol
+        ctx.fillStyle = slot.occupied ? '#00c47a' : '#ffffff99';
+        ctx.font = `bold ${18 * s}px Nunito`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(slot.num, x, y);
+      });
+      
+      // Personnages qui marchent (si bus pas encore placé)
+      people.forEach((person, i) => {
+        if (buses[i] && !buses[i].placed) {
+          // Animation de marche
+          person.walkOffset += 0.1;
+          const walkX = Math.sin(person.walkOffset) * 3;
+          const walkY = Math.abs(Math.sin(person.walkOffset * 2)) * 3;
+          
+          // Avancer vers le bus lentement
+          if (person.x < person.targetX - 40) {
+            person.x += person.speed;
+          }
+          
+          ctx.font = `${20 * s}px Arial`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'bottom';
+          ctx.fillText(person.emoji, (person.x + walkX) * s, (person.y - walkY) * s);
+        }
+      });
+      
+      // Bus
+      buses.forEach((bus, i) => {
+        if (bus.placed) return;
+        
+        // Animation d'entrée
+        if (bus.entering) {
+          bus.enterProgress += 0.05;
+          if (bus.enterProgress >= 1) {
+            bus.entering = false;
+            bus.enterProgress = 1;
+          }
+        }
+        
+        // Animation de rebond
+        bus.bounceOffset += 0.05;
+        const bounceY = Math.sin(bus.bounceOffset) * 2;
+        
+        const enterScale = bus.entering ? bus.enterProgress : 1;
+        const drawX = bus.x;
+        const drawY = bus.y + bounceY * enterScale;
+        
+        drawBus(ctx, drawX * s, drawY * s, 70 * s * enterScale, bus.line);
+      });
+      
+      // Effet de confetti si tous les bus sont placés
+      if (placed === total && !roundComplete) {
+        drawConfetti();
+      }
+    }
+    
+    let confettiParticles = [];
+    
+    function drawConfetti() {
+      const W = canvas.width;
+      const H = canvas.height;
+      
+      if (confettiParticles.length === 0) {
+        const colors = ['#ffe066', '#ff82b4', '#00c47a', '#0064B1', '#F58443', '#B43C95'];
+        for (let i = 0; i < 30; i++) {
+          confettiParticles.push({
+            x: Math.random() * W,
+            y: -20 - Math.random() * 50,
+            vx: (Math.random() - 0.5) * 4,
+            vy: 2 + Math.random() * 3,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            rotation: Math.random() * Math.PI * 2,
+            rotationSpeed: (Math.random() - 0.5) * 0.2
+          });
+        }
+      }
+      
+      confettiParticles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.rotation += p.rotationSpeed;
+        p.vy += 0.1; // gravité
+        
+        ctx.save();
+        ctx.translate(p.x, p.y);
+        ctx.rotate(p.rotation);
+        ctx.fillStyle = p.color;
+        ctx.fillRect(-4, -4, 8, 8);
+        ctx.restore();
+      });
+      
+      // Supprimer les particules qui sortent
+      confettiParticles = confettiParticles.filter(p => p.y < canvas.height + 20);
+    }
+    
+    function drawBus(ctx, cx, cy, bw, line) {
+      const sc = bw / 150;
+      const bh = 45 * sc;
+      const bx = cx - bw/2;
+      const by = cy - bh/2;
+      
+      // Ombre
+      ctx.fillStyle = 'rgba(0,0,0,0.3)';
+      ctx.beginPath();
+      ctx.ellipse(cx, by + bh + 5 * sc, bw/2, 8 * sc, 0, 0, Math.PI * 2);
+      ctx.fill();
+      
+      // Corps
+      ctx.fillStyle = '#1abc9c';
+      ctx.beginPath();
+      ctx.roundRect(bx, by, bw, bh, 4 * sc);
+      ctx.fill();
+      
+      // Bas
+      ctx.fillStyle = '#ecf0f1';
+      ctx.fillRect(bx, by + 30 * sc, bw, 15 * sc);
+      ctx.fillStyle = '#7f8c8d';
+      ctx.fillRect(bx, by + 38 * sc, bw, 6 * sc);
+      
+      // Portes
+      ctx.fillStyle = '#7f8c8d';
+      ctx.strokeStyle = '#111';
+      ctx.lineWidth = 1.5 * sc;
+      [57, 65, 125, 133].forEach(dx => {
+        ctx.fillRect(bx + dx * sc, by + 4 * sc, 8 * sc, 37 * sc);
+        ctx.strokeRect(bx + dx * sc, by + 4 * sc, 8 * sc, 37 * sc);
+      });
+      
+      // Contour
+      ctx.strokeStyle = '#111';
+      ctx.lineWidth = 2 * sc;
+      ctx.beginPath();
+      ctx.roundRect(bx, by, bw, bh, 4 * sc);
+      ctx.stroke();
+      
+      // Fenêtres
+      ctx.fillStyle = 'rgba(69,139,186,0.82)';
+      ctx.strokeStyle = '#111';
+      ctx.lineWidth = 1.5 * sc;
+      [5, 31].forEach(dx => {
+        ctx.fillRect(bx + dx * sc, by + 4 * sc, 21 * sc, 21 * sc);
+        ctx.strokeRect(bx + dx * sc, by + 4 * sc, 21 * sc, 21 * sc);
+      });
+      
+      // Panneau de ligne (coloré)
+      ctx.fillStyle = line.color;
+      ctx.fillRect(bx + 79 * sc, by + 4 * sc, 40 * sc, 21 * sc);
+      ctx.strokeRect(bx + 79 * sc, by + 4 * sc, 40 * sc, 21 * sc);
+      
+      // Numéro
+      ctx.fillStyle = line.textColor;
+      ctx.font = `bold ${14 * sc}px Arial`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(line.num, bx + 99 * sc, by + 14.5 * sc);
+      
+      // Roues
+      const wy = by + 44 * sc;
+      [40, 110].forEach(wx => {
+        ctx.fillStyle = '#333';
+        ctx.strokeStyle = '#111';
+        ctx.lineWidth = 2 * sc;
+        ctx.beginPath();
+        ctx.arc(bx + wx * sc, wy, 10 * sc, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.stroke();
+        ctx.fillStyle = '#666';
+        ctx.beginPath();
+        ctx.arc(bx + wx * sc, wy, 6 * sc, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      
+      // Feux
+      ctx.fillStyle = '#FF4444';
+      ctx.fillRect(bx, by + 38 * sc, 4 * sc, 5 * sc);
+      ctx.fillStyle = '#FFCC00';
+      ctx.fillRect(bx + 146 * sc, by + 38 * sc, 4 * sc, 5 * sc);
+    }
+    
+    // Input handling
+    function getPos(e) {
+      const r = canvas.getBoundingClientRect();
+      const src = e.touches ? e.touches[0] : e;
+      return {
+        x: (src.clientX - r.left) / scale,
+        y: (src.clientY - r.top) / scale
+      };
+    }
+    
+    function hitBus(x, y) {
+      for (let i = buses.length - 1; i >= 0; i--) {
+        const b = buses[i];
+        if (b.placed) continue;
+        if (Math.abs(x - b.x) < 45 && Math.abs(y - b.y) < 30) return i;
+      }
+      return -1;
+    }
+    
+    function checkPlacement(bus) {
+      const slot = slots[bus.slotIndex];
+      const dist = Math.hypot(bus.x - slot.x, bus.y - slot.y);
+      
+      if (dist < 35) {
+        // Placé !
+        bus.x = slot.x;
+        bus.y = slot.y;
+        bus.placed = true;
+        slot.occupied = true;
+        placed++;
+        updateProgress();
+        sndTschh(); // Son de freinage
+        
+        // Effet visuel
+        confettiParticles = [];
+        
+        if (placed === total) {
+          roundComplete = true;
+          sndVictory();
+          showFB(true);
+          setTimeout(showVictoryScreen, 1500);
+        }
+      }
+    }
+    
+    function showVictoryScreen() {
+      const app = document.getElementById('app');
+      app.innerHTML = `
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;text-align:center;padding:20px;">
+          <div style="font-size:5rem;margin-bottom:20px;">🎉</div>
+          <h2 style="font-size:2rem;margin-bottom:20px;color:#ffe066;">Génial !</h2>
+          <p style="font-size:1.4rem;margin-bottom:20px;">Tu as garé tous les bus !</p>
+          <p style="font-size:1.1rem;margin-bottom:30px;opacity:0.8;">Tu es un super conducteur ! 🚌</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+            <a href="mj-06.html" style="background:#00c47a;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">🔄 Rejouer</a>
+            <a href="index.html" style="background:#ffffff22;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">📋 Menu</a>
+          </div>
+        </div>
+      `;
+    }
+    
+    function onTouchStart(e) {
+      e.preventDefault();
+      const p = getPos(e);
+      const i = hitBus(p.x, p.y);
+      if (i >= 0) {
+        dragBus = i;
+        dragOffset = { x: p.x - buses[i].x, y: p.y - buses[i].y };
+        sndPorte();
+      }
+    }
+    
+    function onTouchMove(e) {
+      e.preventDefault();
+      if (dragBus === null) return;
+      const p = getPos(e);
+      buses[dragBus].x = p.x - dragOffset.x;
+      buses[dragBus].y = p.y - dragOffset.y;
+    }
+    
+    function onTouchEnd() {
+      if (dragBus !== null) {
+        checkPlacement(buses[dragBus]);
+        dragBus = null;
+      }
+    }
+    
+    function onMouseDown(e) {
+      const p = getPos(e);
+      const i = hitBus(p.x, p.y);
+      if (i >= 0) {
+        dragBus = i;
+        dragOffset = { x: p.x - buses[i].x, y: p.y - buses[i].y };
+        sndPorte();
+      }
+    }
+    
+    function onMouseMove(e) {
+      if (dragBus === null) return;
+      const p = getPos(e);
+      buses[dragBus].x = p.x - dragOffset.x;
+      buses[dragBus].y = p.y - dragOffset.y;
+    }
+    
+    function onMouseUp() {
+      if (dragBus !== null) {
+        checkPlacement(buses[dragBus]);
+        dragBus = null;
+      }
+    }
+    
+    // Démarrer
+    init();
+  </script>
+</body>
+</html>

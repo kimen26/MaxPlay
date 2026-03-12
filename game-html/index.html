@@ -2,105 +2,180 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>MaxPlay – Jeu de Bus Villejuif</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🚌 MaxPlay - Les Jeux de Max</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    
+    h1 {
+      color: white;
+      font-size: 3rem;
+      font-weight: 800;
+      margin: 20px 0 10px;
+      text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+    }
+    
+    .subtitle {
+      color: rgba(255,255,255,0.9);
+      font-size: 1.3rem;
+      margin-bottom: 40px;
+    }
+    
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1200px;
+      width: 100%;
+    }
+    
+    .game-card {
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      text-decoration: none;
+      color: #333;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    
+    .game-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    }
+    
+    .game-number {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+    
+    .game-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: #1a1a1a;
+    }
+    
+    .game-desc {
+      font-size: 0.95rem;
+      color: #666;
+      line-height: 1.5;
+    }
+    
+    .game-emoji {
+      font-size: 3rem;
+      margin-bottom: 10px;
+    }
+    
+    .new-badge {
+      background: #4CAF50;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-top: 10px;
+    }
+    
+    footer {
+      margin-top: 50px;
+      color: rgba(255,255,255,0.7);
+      font-size: 1rem;
+    }
+    
+    .max-emoji {
+      font-size: 4rem;
+      margin-bottom: 10px;
+    }
+  </style>
 </head>
 <body>
-  <div id="app">
-    <!-- Menu principal -->
-    <div class="scr on" id="menuScr">
-      <div class="mtitle">
-        <h2>🚌 MaxPlay</h2>
-        <p>Choisis ta mission, petit conducteur !</p>
-      </div>
-      
-      <div class="mgrid">
-        <!-- MJ-01: Quelle couleur ? -->
-        <a href="mj-01.html" class="mcard">
-          <div class="bar" style="background:#0064B1"></div>
-          <div class="emoji">🎨</div>
-          <div class="mlbl">Quelle couleur ?</div>
-          <div class="msub">MJ-01</div>
-        </a>
-        
-        <!-- MJ-02: Quel numéro ? -->
-        <a href="mj-02.html" class="mcard">
-          <div class="bar" style="background:#F58443"></div>
-          <div class="emoji">🔢</div>
-          <div class="mlbl">Quel numéro ?</div>
-          <div class="msub">MJ-02</div>
-        </a>
-        
-        <!-- MJ-03a: Compte les passagers -->
-        <a href="mj-03a.html" class="mcard">
-          <div class="bar" style="background:#008C59"></div>
-          <div class="emoji">👥</div>
-          <div class="mlbl">Compte les passagers</div>
-          <div class="msub">MJ-03a</div>
-        </a>
-        
-        <!-- MJ-03b: La bonne place -->
-        <a href="mj-03b.html" class="mcard">
-          <div class="bar" style="background:#B43C95"></div>
-          <div class="emoji">🪑</div>
-          <div class="mlbl">La bonne place</div>
-          <div class="msub">MJ-03b</div>
-        </a>
-        
-        <!-- MJ-04: Lis le mot -->
-        <a href="mj-04.html" class="mcard">
-          <div class="bar" style="background:#C9A2CD"></div>
-          <div class="emoji">📖</div>
-          <div class="mlbl">Lis le mot</div>
-          <div class="msub">MJ-04</div>
-        </a>
-        
-        <!-- MJ-05: Quel bus ? -->
-        <a href="mj-05.html" class="mcard">
-          <div class="bar" style="background:#75CE89"></div>
-          <div class="emoji">🚏</div>
-          <div class="mlbl">Quel bus ?</div>
-          <div class="msub">MJ-05</div>
-        </a>
-        
-        <!-- MJ-06: Au garage ! -->
-        <a href="mj-06.html" class="mcard">
-          <div class="bar" style="background:#8D653A"></div>
-          <div class="emoji">🏠</div>
-          <div class="mlbl">Au garage !</div>
-          <div class="msub">MJ-06</div>
-        </a>
-        
-        <!-- MJ-07: La journée de Max (bientôt) -->
-        <a href="mj-07.html" class="mcard" style="opacity:0.5;pointer-events:none;">
-          <div class="bar" style="background:#00AFA3"></div>
-          <div class="emoji">🗺️</div>
-          <div class="mlbl">La journée de Max</div>
-          <div class="msub">🚧 Bientôt !</div>
-        </a>
-      </div>
-      
-      <!-- Test sounds -->
-      <div style="margin-top:20px;text-align:center;">
-        <p style="font-size:0.8rem;opacity:0.6;margin-bottom:8px;">Teste les sons :</p>
-        <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;">
-          <button class="back" onclick="sndKlaxon()" style="width:auto;padding:8px 12px;font-size:0.8rem;border-radius:10px;">🚌 Klaxon</button>
-          <button class="back" onclick="sndDing()" style="width:auto;padding:8px 12px;font-size:0.8rem;border-radius:10px;">⭐ Ding</button>
-          <button class="back" onclick="sndProut()" style="width:auto;padding:8px 12px;font-size:0.8rem;border-radius:10px;">💨 Prout</button>
-        </div>
-      </div>
-    </div>
+  <div class="max-emoji">👦</div>
+  <h1>MaxPlay</h1>
+  <p class="subtitle">Les jeux de bus pour Max ! 🚌</p>
+  
+  <div class="games-grid">
+    <a href="mj-01.html" class="game-card">
+      <div class="game-number">1</div>
+      <div class="game-emoji">🎨</div>
+      <div class="game-title">Quelle couleur ?</div>
+      <div class="game-desc">Le bus 380 est de quelle couleur ? Choisis la bonne couleur parmi 4 !</div>
+    </a>
+    
+    <a href="mj-02.html" class="game-card">
+      <div class="game-number">2</div>
+      <div class="game-emoji">🔢</div>
+      <div class="game-title">Quel numéro ?</div>
+      <div class="game-desc">Ce bus est vert, quel est son numéro ? Trouve le bon !</div>
+    </a>
+    
+    <a href="mj-03b.html" class="game-card">
+      <div class="game-number">3</div>
+      <div class="game-emoji">🪑</div>
+      <div class="game-title">La bonne place</div>
+      <div class="game-desc">Combien de passagers peuvent encore monter dans le bus ?</div>
+    </a>
+    
+    <a href="mj-04.html" class="game-card">
+      <div class="game-number">4</div>
+      <div class="game-emoji">📖</div>
+      <div class="game-title">Lis le mot</div>
+      <div class="game-desc">Quelle syllabe manque ? Complète le mot du bus !</div>
+    </a>
+    
+    <a href="mj-05.html" class="game-card">
+      <div class="game-number">5</div>
+      <div class="game-emoji">🎯</div>
+      <div class="game-title">Quel bus ?</div>
+      <div class="game-desc">Pour aller chez mamie, quel bus Max doit prendre ?</div>
+    </a>
+    
+    <a href="mj-06.html" class="game-card">
+      <div class="game-number">6</div>
+      <div class="game-emoji">🅿️</div>
+      <div class="game-title">Au garage !</div>
+      <div class="game-desc">Range les bus dans les bonnes places de parking !</div>
+    </a>
+    
+    <a href="mj-07.html" class="game-card">
+      <div class="game-number">7</div>
+      <div class="game-emoji">🎮</div>
+      <div class="game-title">Le Bac à Sable</div>
+      <div class="game-desc">Conduis ton bus dans la ville ! Collecte les passagers !</div>
+      <span class="new-badge">NOUVEAU !</span>
+    </a>
   </div>
   
-  <!-- Feedback overlay -->
-  <div id="fbOverlay"></div>
-  
-  <!-- Scripts -->
-  <script src="js/sounds.js"></script>
-  <script src="js/feedback.js"></script>
-  <script src="js/data.js"></script>
-  <script src="js/bus-svg.js"></script>
+  <footer>
+    🚌 Fait avec ❤️ pour Max
+  </footer>
 </body>
 </html>

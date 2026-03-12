@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>MJ-02 – Quel numéro ?</title>
+  <title>MJ-02b – Devine le numéro (TTS)</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
@@ -22,12 +22,54 @@
       font-weight: 700;
       color: #ffe066;
       margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .repeat-btn {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      border-radius: 50%;
+      width: 56px;
+      height: 56px;
+      font-size: 1.6rem;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+    }
+    .repeat-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 6px 16px rgba(102, 126, 234, 0.6);
+    }
+    .repeat-btn:active {
+      transform: scale(0.95);
+    }
+    .repeat-label {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #aaa;
+      margin-top: 4px;
     }
     .bus-display-container {
       background: rgba(255, 255, 255, 0.05);
       border-radius: 16px;
       padding: 16px;
-      margin-bottom: 12px;
+      margin: 12px 0;
+    }
+    .tts-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-left: 8px;
     }
   </style>
 </head>
@@ -36,7 +78,7 @@
     <!-- Header -->
     <div class="hdr">
       <a href="index.html" class="back">←</a>
-      <span class="htitle">🔢 Quel numéro ?</span>
+      <span class="htitle">🔊 Devine le numéro <span class="tts-badge">TTS</span></span>
     </div>
     
     <!-- Score -->
@@ -52,10 +94,16 @@
       
       <!-- Instruction -->
       <div class="instruction-text">
-        Quel est le numéro de ce bus ?
+        🔊 Écoute bien le numéro !
       </div>
       
-      <!-- Bus Display -->
+      <!-- TTS Controls -->
+      <button class="repeat-btn" id="repeatBtn" onclick="speakTarget()" title="Répéter">
+        🔊
+      </button>
+      <div class="repeat-label">Clique pour répéter</div>
+      
+      <!-- Bus Display (white/neutral with subtle hint) -->
       <div class="bus-display-container">
         <div id="busDisplay" style="margin-bottom:12px;"></div>
       </div>
@@ -74,26 +122,41 @@
   <script src="js/sounds.js"></script>
   <script src="js/feedback.js"></script>
   <script>
-    // ─── Données des lignes (version standard) ───
+    // ─── Données complètes des lignes (TTS version) ───
     const LIGNES = [
+      // Bus Villejuif / quartier Max
+      { num: '162',  color: '#0064B1', textColor: '#fff', name: 'Bus 162' },
+      { num: '172',  color: '#008C59', textColor: '#fff', name: 'Bus 172' },
+      { num: '185',  color: '#F58443', textColor: '#333', name: 'Bus 185' },
+      { num: '380',  color: '#75CE89', textColor: '#333', name: 'Bus 380' },
+      { num: '286',  color: '#C9A2CD', textColor: '#333', name: 'Bus 286' },
+      { num: '323',  color: '#CEC92A', textColor: '#333', name: 'Bus 323' },
       { num: '125',  color: '#006EB8', textColor: '#fff', name: 'Bus 125' },
       { num: '131',  color: '#8D653A', textColor: '#fff', name: 'Bus 131' },
       { num: '132',  color: '#652C90', textColor: '#fff', name: 'Bus 132' },
-      { num: '162',  color: '#0064B1', textColor: '#fff', name: 'Bus 162' },
-      { num: '172',  color: '#008C59', textColor: '#fff', name: 'Bus 172' },
-      { num: '180',  color: '#9B9839', textColor: '#fff', name: 'Bus 180' },
+      { num: '2234', color: '#652C90', textColor: '#fff', name: 'Bus 2234' },
       { num: '184',  color: '#DCAC27', textColor: '#333', name: 'Bus 184' },
-      { num: '185',  color: '#F58443', textColor: '#333', name: 'Bus 185' },
       { num: '186',  color: '#B43C95', textColor: '#fff', name: 'Bus 186' },
-      { num: '286',  color: '#C9A2CD', textColor: '#333', name: 'Bus 286' },
-      { num: '323',  color: '#CEC92A', textColor: '#333', name: 'Bus 323' },
-      { num: '380',  color: '#75CE89', textColor: '#333', name: 'Bus 380' },
+      { num: '47',   color: '#FF82B4', textColor: '#333', name: 'Bus 47' },
+      { num: '180',  color: '#9B9839', textColor: '#fff', name: 'Bus 180' },
+      // Noctilien
+      { num: 'N15',  color: '#000091', textColor: '#fff', name: 'Noctilien N15' },
+      { num: 'N22',  color: '#000091', textColor: '#fff', name: 'Noctilien N22' },
+      // Valouettes
+      { num: 'V6',   color: '#75CE89', textColor: '#333', name: 'Valouette V6' },
+      { num: 'V7',   color: '#E3051C', textColor: '#fff', name: 'Valouette V7' },
+      // Métros
       { num: 'M6',   color: '#6ECA97', textColor: '#333', name: 'Métro 6' },
       { num: 'M7',   color: '#FA9ABA', textColor: '#333', name: 'Métro 7' },
       { num: 'M13',  color: '#7AB6E0', textColor: '#333', name: 'Métro 13' },
       { num: 'M14',  color: '#6F44A0', textColor: '#fff', name: 'Métro 14' },
+      // Tramways
       { num: 'T3a',  color: '#F68F4B', textColor: '#333', name: 'Tramway T3a' },
+      { num: 'T3b',  color: '#8D5E2A', textColor: '#fff', name: 'Tramway T3b' },
       { num: 'T7',   color: '#8D5E2A', textColor: '#fff', name: 'Tramway T7' },
+      { num: 'T9',   color: '#4FBAE6', textColor: '#333', name: 'Tramway T9' },
+      // TVM
+      { num: 'TVM',  color: '#0064B1', textColor: '#fff', name: 'TVM' },
     ];
 
     let score = 0;
@@ -102,6 +165,72 @@
     const MAX_QUESTIONS = 5;
     let locked = false;
     let currentLine = null;
+    
+    // Web Speech API TTS
+    const synth = window.speechSynthesis;
+    let ttsEnabled = true;
+    
+    function speak(text, priority = false) {
+      if (!synth || !ttsEnabled) return;
+      
+      if (priority) {
+        synth.cancel();
+      }
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'fr-FR';
+      utterance.rate = 0.85;
+      utterance.pitch = 1.1;
+      utterance.volume = 1;
+      
+      synth.speak(utterance);
+    }
+    
+    function speakTarget() {
+      if (currentLine) {
+        const textToSpeak = getLineDisplayName(currentLine.num);
+        speak(textToSpeak, true);
+      }
+    }
+    
+    function getLineDisplayName(num) {
+      if (num.startsWith('M')) return 'Métro ' + num.substring(1);
+      if (num.startsWith('T') && !num.startsWith('TV')) return 'Tram ' + num.substring(1);
+      if (num.startsWith('V')) return 'Valouette ' + num;
+      if (num.startsWith('N')) return 'Noctilien ' + num;
+      if (num === 'TVM') return 'TVM';
+      return 'Bus ' + num;
+    }
+    
+    /**
+     * Bus blanc avec indice subtil de couleur - le numéro n'est PAS affiché
+     */
+    function busSVGWhite(colorHint, width = 200) {
+      return `<svg viewBox="0 0 160 80" width="${width}" class="bus-svg" xmlns="http://www.w3.org/2000/svg">
+      <rect x="5" y="10" width="150" height="45" rx="4" fill="#f8f9fa" stroke="${colorHint}" stroke-width="2"/>
+      <rect x="5" y="40" width="150" height="15" fill="#e9ecef"/>
+      <rect x="5" y="48" width="150" height="6" fill="#adb5bd"/>
+      <rect x="62" y="14" width="8" height="37" fill="#dee2e6" stroke="#495057" stroke-width="1.5"/>
+      <rect x="70" y="14" width="8" height="37" fill="#dee2e6" stroke="#495057" stroke-width="1.5"/>
+      <rect x="130" y="14" width="8" height="37" fill="#dee2e6" stroke="#495057" stroke-width="1.5"/>
+      <rect x="138" y="14" width="8" height="37" fill="#dee2e6" stroke="#495057" stroke-width="1.5"/>
+      <rect x="10" y="14" width="21" height="21" fill="#a8d5f0" fill-opacity="0.6" stroke="#495057" stroke-width="1.5"/>
+      <rect x="36" y="14" width="21" height="21" fill="#a8d5f0" fill-opacity="0.6" stroke="#495057" stroke-width="1.5"/>
+      <rect x="84" y="14" width="40" height="21" fill="${colorHint}" fill-opacity="0.15" stroke="${colorHint}" stroke-width="2" stroke-dasharray="3,2"/>
+      <rect x="150.5" y="14" width="5" height="21" fill="#a8d5f0" fill-opacity="0.6" stroke="#495057" stroke-width="1"/>
+      <text x="104" y="24.5" font-family="Arial,sans-serif" font-size="10" font-weight="bold" fill="${colorHint}" text-anchor="middle" dominant-baseline="central" opacity="0.6">?</text>
+      <line x1="149" y1="24" x2="155" y2="24" stroke="#495057" stroke-width="2" stroke-linecap="round"/>
+      <rect x="152" y="20" width="6" height="10" rx="1" fill="#495057"/>
+      <circle cx="45" cy="54" r="10" fill="#333" stroke="#111" stroke-width="2"/>
+      <circle cx="45" cy="54" r="6" fill="#666"/>
+      <circle cx="45" cy="54" r="2" fill="#111"/>
+      <circle cx="115" cy="54" r="10" fill="#333" stroke="#111" stroke-width="2"/>
+      <circle cx="115" cy="54" r="6" fill="#666"/>
+      <circle cx="115" cy="54" r="2" fill="#111"/>
+      <rect x="5" y="48" width="4" height="5" fill="#FF4444"/>
+      <rect x="151" y="48" width="4" height="5" fill="#FFCC00"/>
+      </svg>`;
+    }
     
     function busSVG(color, textColor, num, width = 200) {
       return `<svg viewBox="0 0 160 80" width="${width}" class="bus-svg" xmlns="http://www.w3.org/2000/svg">
@@ -151,13 +280,18 @@
       questionCount++;
       document.getElementById('qcounter').textContent = `Question ${questionCount} / ${MAX_QUESTIONS}`;
       
-      // Choisir une ligne au hasard
+      // Choisir une ligne au hasard parmi TOUTES les lignes
       currentLine = LIGNES[Math.floor(Math.random() * LIGNES.length)];
       
-      // Afficher le bus avec son numéro visible
-      document.getElementById('busDisplay').innerHTML = busSVG(currentLine.color, currentLine.textColor, currentLine.num, 200);
+      // Afficher le bus BLANC avec indice de couleur subtil (pas de numéro visible)
+      document.getElementById('busDisplay').innerHTML = busSVGWhite(currentLine.color, 200);
       
-      // Générer 5 mauvaises réponses
+      // Annoncer à voix haute le numéro à trouver
+      setTimeout(() => {
+        speakTarget();
+      }, 300);
+      
+      // Générer 5 mauvaises réponses parmi TOUTES les lignes
       const otherLines = LIGNES.filter(l => l.num !== currentLine.num);
       const wrongOptions = shuffle([...otherLines]).slice(0, 5);
       
@@ -193,6 +327,10 @@
         streak++;
         sndDing();
         showFB(true);
+        
+        // Révéler le bus coloré avec le numéro
+        document.getElementById('busDisplay').innerHTML = busSVG(currentLine.color, currentLine.textColor, currentLine.num, 200);
+        speak('Bravo ! C\'était le ' + getLineDisplayName(currentLine.num));
       } else {
         btn.classList.add('ko');
         
@@ -204,17 +342,22 @@
         streak = 0;
         sndBuzz();
         showFB(false);
+        
+        // Révéler le bus coloré quand même
+        document.getElementById('busDisplay').innerHTML = busSVG(currentLine.color, currentLine.textColor, currentLine.num, 200);
+        speak('C\'était le ' + getLineDisplayName(currentLine.num));
       }
       
       document.getElementById('score').textContent = score;
       document.getElementById('streak').textContent = streak >= 2 ? `🔥×${streak}` : '';
       
-      setTimeout(nextQuestion, 2000);
+      setTimeout(nextQuestion, 2500);
     }
     
     function showEndScreen() {
       sndVictory();
       confetti();
+      speak('Félicitations ! Tu as terminé le jeu !', true);
       
       const app = document.getElementById('app');
       app.innerHTML = `
@@ -223,7 +366,7 @@
           <h2 style="font-size:2rem;margin-bottom:20px;color:#ffe066;">Super !</h2>
           <p style="font-size:1.4rem;margin-bottom:30px;">Tu as fait <strong>${score}</strong> points !</p>
           <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
-            <a href="mj-02.html" style="background:#00c47a;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">🔄 Rejouer</a>
+            <a href="mj-02b.html" style="background:#00c47a;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">🔄 Rejouer</a>
             <a href="index.html" style="background:#ffffff22;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">📋 Menu</a>
           </div>
         </div>

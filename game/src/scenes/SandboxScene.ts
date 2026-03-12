@@ -173,7 +173,15 @@ export class SandboxScene extends Phaser.Scene {
     this.cursors = this.input.keyboard!.createCursorKeys();
     this.spaceKey = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
     
+    let audioStarted = false;
+    
     this.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
+      // Réveiller l'audio au premier clic (Chrome/Edge)
+      if (!audioStarted) {
+        this.soundManager.resumeAudio();
+        audioStarted = true;
+      }
+      
       const worldPoint = this.cameras.main.getWorldPoint(pointer.x, pointer.y);
       this.setTargetPoint(worldPoint.x, worldPoint.y);
     });

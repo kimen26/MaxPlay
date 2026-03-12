@@ -156,12 +156,12 @@ export class SoundManager {
     }
   }
 
-  /** Victoire ! */
+  /** Victoire ! (Fanfare FF7) */
   victory(): void {
     if (this.sounds.has('win')) {
       this.play('win', { volume: 0.5 });
     } else {
-      this.synth.victory();
+      this.synth.ff7Victory();
     }
   }
 

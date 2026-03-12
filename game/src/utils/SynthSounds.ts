@@ -90,6 +90,92 @@ export class SynthSounds {
   }
 
   /**
+   * Fanfare de victoire FF7 🎺
+   * D-D-D-E-F#-G-A-D (Ré-Ré-Ré-Mi-Fa#-Sol-La-Ré aigu)
+   * La fanfare iconique de Final Fantasy 7
+   */
+  ff7Victory(): void {
+    const now = this.audioContext.currentTime;
+    
+    // Notes: D4, D4, D4, E4, F#4, G4, A4, D5
+    const notes = [293.66, 293.66, 293.66, 329.63, 369.99, 392.00, 440.00, 587.33];
+    const durations = [0.15, 0.15, 0.15, 0.15, 0.15, 0.15, 0.3, 0.8]; // La dernière plus longue
+    const delays = [0, 0.15, 0.3, 0.45, 0.6, 0.75, 0.9, 1.2];
+    
+    notes.forEach((freq, i) => {
+      // Oscillateur principal (sawtooth pour son cuivre/fanfare)
+      const osc = this.audioContext.createOscillator();
+      const gain = this.audioContext.createGain();
+      
+      osc.type = i < 6 ? 'sawtooth' : 'square'; // Plus brillant sur la fin
+      osc.frequency.setValueAtTime(freq, now + delays[i]);
+      
+      // Enveloppe type fanfare (attack rapide, sustain, release)
+      const vol = i === 7 ? 0.25 : 0.15; // Dernier note plus forte
+      gain.gain.setValueAtTime(0, now + delays[i]);
+      gain.gain.linearRampToValueAtTime(vol, now + delays[i] + 0.02); // Attack
+      gain.gain.exponentialRampToValueAtTime(0.01, now + delays[i] + durations[i]);
+      
+      osc.connect(gain);
+      gain.connect(this.audioContext.destination);
+      
+      osc.start(now + delays[i]);
+      osc.stop(now + delays[i] + durations[i]);
+      
+      // Doublon avec octave inférieure pour plus de "corps" (uniquement notes fortes)
+      if (i === 0 || i === 3 || i === 7) {
+        const osc2 = this.audioContext.createOscillator();
+        const gain2 = this.audioContext.createGain();
+        
+        osc2.type = 'triangle';
+        osc2.frequency.setValueAtTime(freq / 2, now + delays[i]);
+        
+        gain2.gain.setValueAtTime(0, now + delays[i]);
+        gain2.gain.linearRampToValueAtTime(vol * 0.4, now + delays[i] + 0.02);
+        gain2.gain.exponentialRampToValueAtTime(0.01, now + delays[i] + durations[i]);
+        
+        osc2.connect(gain2);
+        gain2.connect(this.audioContext.destination);
+        
+        osc2.start(now + delays[i]);
+        osc2.stop(now + delays[i] + durations[i]);
+      }
+    });
+    
+    // Petit roulement de tambour (noise burst) au début
+    this.playDrumRoll(now);
+  }
+  
+  private playDrumRoll(startTime: number): void {
+    // Bruit blanc court pour simuler un roulement de tambour
+    const bufferSize = this.audioContext.sampleRate * 0.1;
+    const buffer = this.audioContext.createBuffer(1, bufferSize, this.audioContext.sampleRate);
+    const data = buffer.getChannelData(0);
+    
+    for (let i = 0; i < bufferSize; i++) {
+      data[i] = Math.random() * 2 - 1;
+    }
+    
+    const noise = this.audioContext.createBufferSource();
+    noise.buffer = buffer;
+    
+    const filter = this.audioContext.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.setValueAtTime(200, startTime);
+    
+    const gain = this.audioContext.createGain();
+    gain.gain.setValueAtTime(0.1, startTime);
+    gain.gain.exponentialRampToValueAtTime(0.01, startTime + 0.1);
+    
+    noise.connect(filter);
+    filter.connect(gain);
+    gain.connect(this.audioContext.destination);
+    
+    noise.start(startTime);
+    noise.stop(startTime + 0.1);
+  }
+
+  /**
    * Saut (type Mario)
    * Glissando vers le haut
    */

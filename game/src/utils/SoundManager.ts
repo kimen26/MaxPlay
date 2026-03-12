@@ -31,23 +31,23 @@ export class SoundManager {
    */
   static preload(scene: Phaser.Scene): void {
     // Bus
-    scene.load.audio('horn', 'assets/sounds/bus/horn.mp3');
-    scene.load.audio('air-brake', 'assets/sounds/bus/air-brake.mp3');
-    scene.load.audio('door', 'assets/sounds/bus/door.mp3');
-    scene.load.audio('engine', 'assets/sounds/bus/engine.mp3');
+    scene.load.audio('horn', 'assets/sounds/bus/horn.mp3').on('fileerror', () => console.log('Son horn.mp3 non trouvé'));
+    scene.load.audio('air-brake', 'assets/sounds/bus/air-brake.mp3').on('fileerror', () => {});
+    scene.load.audio('door', 'assets/sounds/bus/door.mp3').on('fileerror', () => {});
+    scene.load.audio('engine', 'assets/sounds/bus/engine.mp3').on('fileerror', () => {});
     
     // Retro
-    scene.load.audio('coin', 'assets/sounds/retro/coin.mp3');
-    scene.load.audio('win', 'assets/sounds/retro/win.mp3');
-    scene.load.audio('jump', 'assets/sounds/retro/jump.mp3');
+    scene.load.audio('coin', 'assets/sounds/retro/coin.mp3').on('fileerror', () => {});
+    scene.load.audio('win', 'assets/sounds/retro/win.mp3').on('fileerror', () => {});
+    scene.load.audio('jump', 'assets/sounds/retro/jump.mp3').on('fileerror', () => {});
     
     // Animals
-    scene.load.audio('dog', 'assets/sounds/animals/dog.mp3');
-    scene.load.audio('cat', 'assets/sounds/animals/cat.mp3');
+    scene.load.audio('dog', 'assets/sounds/animals/dog.mp3').on('fileerror', () => {});
+    scene.load.audio('cat', 'assets/sounds/animals/cat.mp3').on('fileerror', () => {});
     
     // Cartoon
-    scene.load.audio('fart', 'assets/sounds/cartoon/fart.mp3');
-    scene.load.audio('boing', 'assets/sounds/cartoon/boing.mp3');
+    scene.load.audio('fart', 'assets/sounds/cartoon/fart.mp3').on('fileerror', () => {});
+    scene.load.audio('boing', 'assets/sounds/cartoon/boing.mp3').on('fileerror', () => {});
   }
 
   /**
@@ -88,12 +88,16 @@ export class SoundManager {
 
   /** Démarrer le son du moteur (en boucle) */
   startEngine(): void {
-    if (!this.engineSound) {
-      this.engineSound = this.scene.sound.add('engine', {
-        loop: true,
-        volume: 0.2,
-      }) as Phaser.Sound.HTML5AudioSound;
-      this.engineSound.play();
+    if (!this.engineSound && this.scene.cache.audio.exists('engine')) {
+      try {
+        this.engineSound = this.scene.sound.add('engine', {
+          loop: true,
+          volume: 0.2,
+        }) as Phaser.Sound.HTML5AudioSound;
+        this.engineSound.play();
+      } catch (e) {
+        // Engine sound not available
+      }
     }
   }
 
@@ -106,11 +110,12 @@ export class SoundManager {
 
   /** Faire varier le volume du moteur selon la vitesse */
   updateEngine(speed: number): void {
-    if (this.engineSound) {
+    if (this.engineSound && this.engineSound.isPlaying) {
       // speed entre 0 et 200
       const normalizedSpeed = Math.min(speed / 200, 1);
-      this.engineSound.setVolume(0.1 + normalizedSpeed * 0.2);
-      this.engineSound.setRate(0.8 + normalizedSpeed * 0.4);
+      try {
+        this.engineSound.setVolume(0.1 + normalizedSpeed * 0.2);
+      } catch (e) {}
     }
   }
 
@@ -158,16 +163,21 @@ export class SoundManager {
   // ===== HELPER =====
 
   private play(key: string, config?: Phaser.Types.Sound.SoundConfig): void {
-    const sound = this.sounds.get(key);
-    if (sound) {
-      sound.play(config);
-    } else {
-      // Fallback: créer à la volée si pas préchargé
-      try {
-        this.scene.sound.play(key, config);
-      } catch (e) {
-        console.warn(`Son '${key}' non trouvé`);
+    try {
+      const sound = this.sounds.get(key);
+      if (sound) {
+        sound.play(config);
+      } else {
+        // Fallback: créer à la volée si pas préchargé
+        if (this.scene.cache.audio.exists(key)) {
+          this.scene.sound.play(key, config);
+        } else {
+          // Son non trouvé, on ignore silencieusement
+          // console.log(`Son '${key}' non chargé (normal si pas encore téléchargé)`);
+        }
       }
+    } catch (e) {
+      // Ignore les erreurs de son
     }
   }
 }

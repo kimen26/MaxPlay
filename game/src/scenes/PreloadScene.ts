@@ -19,17 +19,17 @@ export class PreloadScene extends Phaser.Scene {
     // === TILES 48x48 MODERN EXTERIORS ===
     
     // Routes et terrains
-    this.load.image('road-asphalt', 'assets/tiles/roads/ME_Singles_City_Terrains_48x48_Asphalt_Road_1.png');
-    this.load.image('road-concrete', 'assets/tiles/roads/ME_Singles_City_Terrains_48x48_Concrete_Road_1.png');
-    this.load.image('sidewalk', 'assets/tiles/roads/ME_Singles_City_Terrains_48x48_Sidewalk_1.png');
-    this.load.image('grass', 'assets/tiles/roads/ME_Singles_Terrains_and_Fences_48x48_Ground_1.png');
+    this.load.image('road-asphalt', 'assets/tiles/roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_1.png');
+    this.load.image('road-concrete', 'assets/tiles/roads/ME_Singles_City_Terrains_48x48_Concrete_1_Variation_1.png');
+    this.load.image('sidewalk', 'assets/tiles/roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_Variation_1.png');
+    this.load.image('grass', 'assets/tiles/roads/ME_Singles_Terrains_and_Fences_48x48_Ground_1_Variation_1.png');
     
     // Props urbains
     this.load.image('streetlamp', 'assets/tiles/props/ME_Singles_City_Props_48x48_Street_Lamp_1.png');
     this.load.image('bench', 'assets/tiles/props/ME_Singles_City_Props_48x48_Bench_1.png');
-    this.load.image('trashcan', 'assets/tiles/props/ME_Singles_City_Props_48x48_Trash_Can_1.png');
-    this.load.image('bus-stop-sign', 'assets/tiles/props/ME_Singles_City_Props_48x48_Bus_Stop_1.png');
-    this.load.image('tree', 'assets/tiles/parks/ME_Singles_Garden_48x48_Tree_1.png');
+    this.load.image('trashcan', 'assets/tiles/props/ME_Singles_City_Props_48x48_Black_Closed_Trash_Can.png');
+    this.load.image('bus-stop-sign', 'assets/tiles/props/ME_Singles_City_Props_48x48_Danger_Sign_1.png');
+    this.load.image('tree', 'assets/tiles/parks/ME_Singles_Garden_48x48_Bush_1.png');
     
     // Bâtiments
     this.load.image('building-condo', 'assets/tiles/buildings/ME_Singles_Generic_Building_48x48_Condo_1_1.png');

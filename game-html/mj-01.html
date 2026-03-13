@@ -18,31 +18,8 @@
       margin: 10px 0;
     }
     
-    .bus-wrapper {
-      position: relative;
-      display: inline-block;
-    }
-    
-    .bus-svg {
-      width: 140px;
-      height: auto;
+    #busDisplay svg {
       filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-    }
-    
-    .bus-num {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 1.8rem;
-      font-weight: 900;
-      color: #333;
-      background: rgba(255,255,255,0.9);
-      border-radius: 12px;
-      padding: 4px 12px;
-      min-width: 50px;
-      text-align: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     }
     
     /* TTS Button */
@@ -115,54 +92,14 @@
       margin: 0 auto;
     }
     
-    /* Responsive adjustments */
     @media (max-width: 400px) {
-      .bus-svg {
-        width: 120px;
-      }
-      
-      .bus-num {
-        font-size: 1.5rem;
-        padding: 3px 10px;
-        min-width: 45px;
-      }
-      
-      .swatch {
-        width: 56px;
-        height: 56px;
-      }
-      
-      .choices {
-        gap: 12px;
-        padding: 0 8px;
-      }
-      
-      .tts-btn {
-        padding: 8px 16px;
-        font-size: 0.9rem;
-      }
+      .swatch { width: 56px; height: 56px; }
+      .choices { gap: 12px; padding: 0 8px; }
+      .tts-btn { padding: 8px 16px; font-size: 0.9rem; }
     }
-    
     @media (max-width: 320px) {
-      .bus-svg {
-        width: 100px;
-      }
-      
-      .bus-num {
-        font-size: 1.3rem;
-        min-width: 40px;
-      }
-      
-      .swatch {
-        width: 50px;
-        height: 50px;
-        border-width: 3px;
-      }
-      
-      .choices {
-        gap: 10px;
-        padding: 0 6px;
-      }
+      .swatch { width: 50px; height: 50px; border-width: 3px; }
+      .choices { gap: 10px; padding: 0 6px; }
     }
   </style>
 </head>
@@ -188,39 +125,9 @@
         Quelle couleur est le bus
       </div>
       
-      <!-- Bus SVG avec numéro -->
+      <!-- Bus SVG dynamique -->
       <div class="bus-container">
-        <div class="bus-wrapper">
-          <svg class="bus-svg" viewBox="0 0 160 100" xmlns="http://www.w3.org/2000/svg">
-            <!-- Corps du bus -->
-            <rect x="10" y="20" width="140" height="60" rx="12" ry="12" fill="#ffffff" stroke="#e0e0e0" stroke-width="2"/>
-            <!-- Toit arrondi -->
-            <rect x="15" y="25" width="130" height="20" rx="8" ry="8" fill="#f8f8f8"/>
-            <!-- Pare-brise -->
-            <rect x="120" y="28" width="25" height="18" rx="3" ry="3" fill="#87CEEB" stroke="#b0d4f1" stroke-width="1"/>
-            <!-- Fenêtres -->
-            <rect x="25" y="30" width="20" height="12" rx="2" ry="2" fill="#87CEEB" stroke="#b0d4f1" stroke-width="1"/>
-            <rect x="50" y="30" width="20" height="12" rx="2" ry="2" fill="#87CEEB" stroke="#b0d4f1" stroke-width="1"/>
-            <rect x="75" y="30" width="20" height="12" rx="2" ry="2" fill="#87CEEB" stroke="#b0d4f1" stroke-width="1"/>
-            <rect x="100" y="30" width="15" height="12" rx="2" ry="2" fill="#87CEEB" stroke="#b0d4f1" stroke-width="1"/>
-            <!-- Porte -->
-            <rect x="115" y="50" width="25" height="25" rx="3" ry="3" fill="#f0f0f0" stroke="#d0d0d0" stroke-width="1"/>
-            <line x1="127" y1="50" x2="127" y2="75" stroke="#d0d0d0" stroke-width="1"/>
-            <!-- Phare avant -->
-            <circle cx="145" cy="55" r="4" fill="#FFD700" stroke="#FFA500" stroke-width="1"/>
-            <!-- Phare arrière -->
-            <circle cx="15" cy="55" r="3" fill="#FF6347" stroke="#DC143C" stroke-width="1"/>
-            <!-- Roues -->
-            <circle cx="35" cy="85" r="10" fill="#333" stroke="#555" stroke-width="2"/>
-            <circle cx="35" cy="85" r="5" fill="#777"/>
-            <circle cx="125" cy="85" r="10" fill="#333" stroke="#555" stroke-width="2"/>
-            <circle cx="125" cy="85" r="5" fill="#777"/>
-            <!-- Bande décorative -->
-            <rect x="10" y="48" width="140" height="4" fill="#e8e8e8"/>
-          </svg>
-          <span class="bus-num" id="targetNum">162</span>
-        </div>
-        
+        <div id="busDisplay" style="margin:8px auto;"></div>
         <!-- Bouton TTS -->
         <button class="tts-btn" id="ttsBtn" onclick="speakQuestion()">
           <span>🔊</span>
@@ -303,7 +210,7 @@
       
       // Choisir une ligne au hasard
       currentLine = POOL[Math.floor(Math.random() * POOL.length)];
-      document.getElementById('targetNum').textContent = currentLine.num;
+      document.getElementById('busDisplay').innerHTML = busSVG(currentLine.color, currentLine.textColor, currentLine.num, 160);
       
       // Générer 5 mauvaises réponses (couleurs distinctes, pas 2 trop proches)
       const otherLines = POOL.filter(l => l.color !== currentLine.color);

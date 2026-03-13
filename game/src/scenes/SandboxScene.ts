@@ -3,8 +3,8 @@ import { GAME_WIDTH, GAME_HEIGHT } from '../constants/config';
 import { SoundManager } from '../utils/SoundManager';
 
 const BUS_SPEED = 220;
-const WORLD_WIDTH = 1200;
-const WORLD_HEIGHT = 800;
+const WORLD_WIDTH = 2400;
+const WORLD_HEIGHT = 1600;
 
 interface Passenger {
   x: number;
@@ -71,13 +71,16 @@ export class SandboxScene extends Phaser.Scene {
     this.add.rectangle(WORLD_WIDTH / 2 + 85, WORLD_HEIGHT / 2, 30, WORLD_HEIGHT, 0xBDBDBD);
 
     // Arrêts de bus
-    this.createBusStop(180, WORLD_HEIGHT / 2 - 105, '162');
-    this.createBusStop(WORLD_WIDTH - 180, WORLD_HEIGHT / 2 + 105, '380');
+    this.createBusStop(300, WORLD_HEIGHT / 2 - 105, '162');
+    this.createBusStop(1200, WORLD_HEIGHT / 2 - 105, 'M7');
+    this.createBusStop(WORLD_WIDTH - 300, WORLD_HEIGHT / 2 + 105, '380');
 
-    // Arbres
+    // Arbres (répartis sur la grande carte)
     const trees = [
-      { x: 100, y: 100 }, { x: 300, y: 150 }, { x: 1000, y: 120 },
-      { x: 120, y: 650 }, { x: 1050, y: 680 },
+      { x: 200,  y: 200  }, { x: 500,  y: 300  }, { x: 800,  y: 150  },
+      { x: 1400, y: 250  }, { x: 1900, y: 200  }, { x: 2200, y: 300  },
+      { x: 200,  y: 1300 }, { x: 600,  y: 1400 }, { x: 1200, y: 1350 },
+      { x: 1800, y: 1400 }, { x: 2100, y: 1300 },
     ];
     trees.forEach(t => {
       this.add.rectangle(t.x, t.y, 12, 30, 0x5D4037);
@@ -86,14 +89,16 @@ export class SandboxScene extends Phaser.Scene {
       this.add.circle(t.x + 12, t.y - 20, 22, 0x66BB6A);
     });
 
-    // Bâtiments
-    this.createBuilding(150, 150, 0xFFCC80);
-    this.createBuilding(1000, 180, 0xEF9A9A);
-    this.createBuilding(130, 620, 0xB39DDB);
-    this.createBuilding(1020, 640, 0xA5D6A7);
+    // Bâtiments (répartis)
+    this.createBuilding(250, 280, 0xFFCC80);
+    this.createBuilding(1900, 350, 0xEF9A9A);
+    this.createBuilding(280, 1250, 0xB39DDB);
+    this.createBuilding(1950, 1280, 0xA5D6A7);
+    this.createBuilding(700, 250, 0x80DEEA);
+    this.createBuilding(1600, 300, 0xFFAB91);
 
     // Lampadaires
-    [300, 700].forEach(x => {
+    [400, 800, 1200, 1600, 2000].forEach(x => {
       this.createLamp(x, WORLD_HEIGHT / 2 - 105);
       this.createLamp(x, WORLD_HEIGHT / 2 + 105);
     });
@@ -152,11 +157,11 @@ export class SandboxScene extends Phaser.Scene {
     const TROT_N = WORLD_HEIGHT / 2 - 85; // trottoir nord de la route H
     const TROT_S = WORLD_HEIGHT / 2 + 85; // trottoir sud de la route H
     const positions = [
-      { x: 180,  y: TROT_N },
       { x: 400,  y: TROT_N },
-      { x: 780,  y: TROT_N },
-      { x: 300,  y: TROT_S },
-      { x: WORLD_WIDTH - 200, y: TROT_S },
+      { x: 900,  y: TROT_N },
+      { x: 1500, y: TROT_N },
+      { x: 600,  y: TROT_S },
+      { x: WORLD_WIDTH - 400, y: TROT_S },
     ];
 
     positions.forEach((pos, i) => {
@@ -241,8 +246,8 @@ export class SandboxScene extends Phaser.Scene {
 
   private setupCamera(): void {
     this.cameras.main.setBounds(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
-    this.cameras.main.startFollow(this.bus, true, 0.1, 0.1);
-    this.cameras.main.setZoom(0.9);
+    this.cameras.main.startFollow(this.bus, true, 0.08, 0.08);
+    this.cameras.main.setZoom(1.5);
   }
 
   update(_time: number, delta: number): void {

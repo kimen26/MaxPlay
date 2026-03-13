@@ -232,33 +232,28 @@
     // ─── MJ-05: Terminus ───
     // Devine la destination du bus/métro/tram
     
-    // Destinations RATP réelles
+    // Destinations RATP réelles — lignes quotidiennes de Max uniquement
     const DESTINATIONS = [
-      // Métros
+      // Métro
       { ligne: 'M7', dest: 'Villejuif - Louis Aragon', direction: 'sud', type: 'metro', colorClass: 'metro-m7' },
-      { ligne: 'M6', dest: 'Charles de Gaulle - Étoile', direction: 'ouest', type: 'metro', colorClass: 'metro-m6' },
-      { ligne: 'M14', dest: 'Olympiades', direction: 'sud', type: 'metro', colorClass: 'metro-m14' },
-      
-      // Tramways
-      { ligne: 'T3a', dest: 'Pont du Garigliano', direction: 'ouest', type: 'tram', colorClass: 'tram-t3a' },
-      { ligne: 'T3b', dest: 'Porte de Vincennes', direction: 'est', type: 'tram', colorClass: 'tram-t3b' },
+
+      // Tramway
       { ligne: 'T7', dest: 'Villejuif - Louis Aragon', direction: 'sud', type: 'tram', colorClass: 'tram-t7' },
-      { ligne: 'T9', dest: 'Porte de Choisy', direction: 'est', type: 'tram', colorClass: 'tram-t9' },
-      
-      // Bus franciliens
-      { ligne: '125', dest: 'Porte d\'Italie', direction: 'nord', type: 'bus', colorClass: 'bus' },
+
+      // Bus (lignes que Max connaît, terminus corrects)
+      { ligne: '125', dest: 'Porte de Gentilly', direction: 'nord', type: 'bus', colorClass: 'bus' },
       { ligne: '131', dest: 'Porte d\'Italie', direction: 'nord', type: 'bus', colorClass: 'bus' },
+      { ligne: '132', dest: 'Porte de Choisy', direction: 'nord', type: 'bus', colorClass: 'bus' },
       { ligne: '162', dest: 'Porte de Champerret', direction: 'nord', type: 'bus', colorClass: 'bus' },
       { ligne: '172', dest: 'Porte de Bagnolet', direction: 'est', type: 'bus', colorClass: 'bus' },
       { ligne: '180', dest: 'Porte de Clignancourt', direction: 'nord', type: 'bus', colorClass: 'bus' },
-      { ligne: '184', dest: 'Porte de Choisy', direction: 'est', type: 'bus', colorClass: 'bus' },
       { ligne: '185', dest: 'Porte d\'Italie', direction: 'nord', type: 'bus', colorClass: 'bus' },
       { ligne: '186', dest: 'Porte d\'Orléans', direction: 'ouest', type: 'bus', colorClass: 'bus' },
-      { ligne: 'N15', dest: 'Asnières-Gennevilliers', direction: 'nord', type: 'bus-nuit', colorClass: 'bus-nuit' },
-      { ligne: 'N22', dest: 'Bois-Colombes', direction: 'nord', type: 'bus-nuit', colorClass: 'bus-nuit' },
-      
-      // Valouettes
-      { ligne: 'V7', dest: 'Chevilly - Marché', direction: 'ouest', type: 'valouette', colorClass: 'valouette' }
+      { ligne: '47', dest: 'Porte de Bagnolet', direction: 'nord', type: 'bus', colorClass: 'bus' },
+      { ligne: '380', dest: 'Créteil - Préfecture', direction: 'est', type: 'bus', colorClass: 'bus' },
+
+      // Valouette
+      { ligne: 'V7', dest: 'Chevilly - Marché', direction: 'sud', type: 'valouette', colorClass: 'valouette' }
     ];
     
     // Icônes selon le type
@@ -278,6 +273,23 @@
       'ouest': '⬅️'
     };
     
+    // TTS
+    function speakTerminus(dest) {
+      const text = `Le ${dest.ligne} va vers ${dest.dest} !`;
+      const utt = new SpeechSynthesisUtterance(text);
+      utt.lang = 'fr-FR';
+      utt.rate = 0.85;
+      const voices = speechSynthesis.getVoices();
+      const frVoice = voices.find(v => v.lang.startsWith('fr'));
+      if (frVoice) utt.voice = frVoice;
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utt);
+    }
+
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+      speechSynthesis.onvoiceschanged = () => {};
+    }
+
     let score = 0;
     let streak = 0;
     let questionCount = 0;
@@ -388,6 +400,7 @@
         if (streak >= 3) confetti();
         sndKlaxon();
         showFB(true);
+        setTimeout(() => speakTerminus(currentDest), 400);
       } else {
         el.classList.add('ko');
         

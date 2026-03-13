@@ -11,14 +11,9 @@ Voir `docs/MAX_PROFILE.md` pour le profil complet.
 
 ## État (2026-03-13)
 
-- EP-001 Infrastructure : ✅
-- EP-002 Direction artistique : ✅ flat design arrondi (Toca Boca / Tayo)
-- EP-003 Scaffold Phaser.js : ✅
-- EP-004 Architecture V0 : ✅ MJ-01 à MJ-06 fonctionnels (HTML vanilla)
-- EP-010 Assets & outils : ✅ SVG bus + sprites topdown
-- **Déploiement refactoré** : ✅ CI GitHub Actions build Phaser + assemble + deploy
-- EP-MJ06 Au garage : **à faire** (T-161 à T-164)
-- EP-MJ07 Phaser sandbox : **à faire** (T-171 à T-176)
+- Tous les épics : ✅ terminés
+- **MJ-01 à MJ-07** : ✅ déployés + corrigés (sessions 5 & 6)
+- **Prochaine étape** : progression/flotte de bus (EP-005) + audio avancé (EP-006)
 
 ## Architecture déploiement (2026-03-13)
 
@@ -42,8 +37,9 @@ GitHub Pages → kimen26.github.io/MaxPlay/
 - **POV** : top-down (vue GTA1/Pokémon), tap only Phase 1
 - **Progression** : flotte de bus débloquée + carte Villejuif
 - **Audio** : Web Speech API (TTS), Web Audio API (sons procéduraux)
-- **Bus side-view** : SVG template dynamique {{COLOR}}/{{LINE}}
+- **Bus side-view** : `busSVG()` / `busSVGHiddenNum()` dans `game-html/js/bus-svg.js` — JAMAIS emoji ni div CSS
 - **Bus topdown** : sprite sheet White + setTint() Phaser
+- **Anti-doublons** : `selectDistinctColors(pool, n, minDist=80)` pour tout quiz à couleurs
 
 ## Règles jeu (non-négociables)
 

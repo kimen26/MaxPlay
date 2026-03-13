@@ -50,6 +50,19 @@
 - Zéro context-switching requis de l'utilisateur
 - Corriger les CI qui échouent sans être guidé
 
+## Doc Update Protocol (AUTOMATIQUE — obligatoire)
+
+Ces mises à jour se font **sans que l'utilisateur ait à le demander** :
+
+| Moment | Action |
+|--------|--------|
+| **Après ExitPlanMode** | Ajouter les tâches planifiées dans `tasks/BACKLOG.md` (section épic ou tâches à venir) |
+| **Avant de commencer le dev** | Vérifier que les tâches sont dans `BACKLOG.md` et les TodoWrite correspondent |
+| **Après chaque étape validée** | Cocher la tâche dans `BACKLOG.md` + mettre à jour `memory/MEMORY.md` si décision structurante |
+| **En fin de session** | Mettre à jour `BACKLOG.md` (épics terminés, leçons), `VISION.md` (nouvelles règles), `memory/MEMORY.md` (état, décisions), `~/.claude/projects/.../memory/MEMORY.md` |
+
+> **Règle** : Si les docs ne sont pas à jour, la session n'est pas terminée.
+
 ## Task Management
 
 1. **Plan First** : Écrire le plan dans `tasks/BACKLOG.md` avec items cochables

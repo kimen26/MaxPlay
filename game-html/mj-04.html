@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>MJ-04 – Complète la phrase</title>
+  <title>MJ-04 – Lis la phrase</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
@@ -127,7 +127,7 @@
     <!-- Header -->
     <div class="hdr">
       <a href="index.html" class="back">←</a>
-      <span class="htitle">📝 Complète la phrase</span>
+      <span class="htitle">📖 Lis la phrase</span>
     </div>
     
     <!-- Score -->
@@ -141,11 +141,16 @@
     <div class="question-counter" id="qcounter">Question 1 / 5</div>
     
     <!-- Instruction -->
-    <div class="instruction">Choisis le mot qui complète la phrase :</div>
-    
-    <!-- Emoji hint -->
-    <div class="emoji-hint" id="emojiHint">🚌</div>
-    
+    <div class="instruction">Quel mot manque dans la phrase ?</div>
+
+    <!-- TTS + Emoji -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:4px;">
+      <div class="emoji-hint" id="emojiHint" style="margin:0;">🚌</div>
+      <button class="tts-btn" id="ttsBtn" onclick="speakQuestion()" style="background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border:none;border-radius:25px;padding:8px 18px;font-size:0.95rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">
+        <span>🔊</span><span>Écouter</span>
+      </button>
+    </div>
+
     <!-- Sentence with blank -->
     <div class="sentence-box">
       <div class="sentence-text" id="sentenceText">
@@ -166,102 +171,25 @@
   <script src="js/sounds.js"></script>
   <script src="js/feedback.js"></script>
   <script>
-    // ─── MJ-04: Complète la phrase ───
-    // Phrases à trous avec contexte (bus, métro, tramway)
-    
+    // ─── MJ-04: Lis la phrase ───
+    // Max doit trouver le mot manqué [?] dans une phrase simple
+    // Phase 1 : mots courts que Max sait lire (BUS, TRAM, PAPA, MAMAN, VELO...)
+
     const PHRASES = [
-      {
-        text: "Max prend le bus ___ pour aller à l'école.",
-        answer: "162",
-        emoji: "🚌",
-        options: ["162", "125", "M7", "380"]
-      },
-      {
-        text: "Le bus ___ est vert comme les arbres.",
-        answer: "380",
-        emoji: "🌳",
-        options: ["380", "162", "131", "V7"]
-      },
-      {
-        text: "Pour aller chez mamie, on prend le ___.",
-        answer: "V7",
-        emoji: "👵",
-        options: ["V7", "M7", "T7", "162"]
-      },
-      {
-        text: "Le bus ___ passe par la porte d'Italie.",
-        answer: "131",
-        emoji: "🚏",
-        options: ["131", "125", "162", "M7"]
-      },
-      {
-        text: "Le métro ___ est orange.",
-        answer: "M7",
-        emoji: "🟠",
-        options: ["M7", "M14", "T7", "V7"]
-      },
-      {
-        text: "Le tramway ___ passe à Villejuif.",
-        answer: "T7",
-        emoji: "🚊",
-        options: ["T7", "M7", "V7", "131"]
-      },
-      {
-        text: "Le bus ___ est tout rouge !",
-        answer: "162",
-        emoji: "🔴",
-        options: ["162", "380", "125", "M14"]
-      },
-      {
-        text: "Pour la piscine, Max prend la ___.",
-        answer: "Valouette",
-        emoji: "🏊",
-        options: ["Valouette", "V7", "M7", "T7"]
-      },
-      {
-        text: "Le bus ___ va à Louis Aragon.",
-        answer: "131",
-        emoji: "🎭",
-        options: ["131", "125", "380", "162"]
-      },
-      {
-        text: "Le bus ___ va à Louis Aragon.",
-        answer: "125",
-        emoji: "🎭",
-        options: ["125", "131", "162", "180"]
-      },
-      {
-        text: "Le bus ___ va à Louis Aragon.",
-        answer: "380",
-        emoji: "🎭",
-        options: ["380", "162", "131", "125"]
-      },
-      {
-        text: "Le bus ___ va à Louis Aragon.",
-        answer: "162",
-        emoji: "🎭",
-        options: ["162", "180", "131", "125"]
-      },
-      {
-        text: "Le bus ___ va à Louis Aragon.",
-        answer: "180",
-        emoji: "🎭",
-        options: ["180", "162", "380", "131"]
-      },
-      {
-        text: "Le ___ est violet.",
-        answer: "M14",
-        emoji: "🟣",
-        options: ["M14", "M7", "T7", "V7"]
-      },
-      {
-        text: "Le bus ___ passe par la porte d'Italie.",
-        answer: "125",
-        emoji: "🚏",
-        options: ["125", "131", "162", "380"]
-      }
+      { before: "Papa prend le", answer: "BUS", after: "pour aller au travail.", options: ["BUS", "TRAM", "VELO", "TRAIN"], emoji: "👨" },
+      { before: "Max aime le", answer: "TRAM", after: "rouge à Villejuif.", options: ["TRAM", "BUS", "METRO", "VELO"], emoji: "🚊" },
+      { before: "Maman est dans le", answer: "METRO", after: "avec Max.", options: ["METRO", "BUS", "TRAM", "TRAIN"], emoji: "👩" },
+      { before: "Le bus est", answer: "ROUGE", after: "comme une tomate.", options: ["ROUGE", "BLEU", "VERT", "JAUNE"], emoji: "🔴" },
+      { before: "Max monte dans le", answer: "BUS", after: "avec papa.", options: ["BUS", "TRAM", "VELO", "TRAIN"], emoji: "🧒" },
+      { before: "Le", answer: "VELO", after: "de papa est dans le garage.", options: ["VELO", "BUS", "TRAM", "TRAIN"], emoji: "🚲" },
+      { before: "Le bus est", answer: "VERT", after: "comme un arbre.", options: ["VERT", "ROUGE", "BLEU", "JAUNE"], emoji: "🌳" },
+      { before: "Le", answer: "TRAIN", after: "va très vite !", options: ["TRAIN", "BUS", "VELO", "TRAM"], emoji: "🚄" },
+      { before: "Le bus est", answer: "BLEU", after: "comme le ciel.", options: ["BLEU", "ROUGE", "VERT", "JAUNE"], emoji: "🔵" },
+      { before: "Papa dit", answer: "BRAVO", after: "à Max.", options: ["BRAVO", "MERCI", "BONJOUR", "SALUT"], emoji: "👏" },
+      { before: "Max dit", answer: "MERCI", after: "au chauffeur.", options: ["MERCI", "BRAVO", "BONJOUR", "SALUT"], emoji: "😊" },
+      { before: "Le", answer: "LOUP", after: "est dans la forêt.", options: ["LOUP", "CHAT", "LION", "OURS"], emoji: "🐺" },
     ];
-    
+
     let score = 0;
     let streak = 0;
     let questionCount = 0;
@@ -269,7 +197,27 @@
     let locked = false;
     let currentPhrase = null;
     let usedIndices = [];
-    
+
+    // TTS
+    function speakQuestion(full) {
+      if (!currentPhrase) return;
+      const text = full
+        ? `${currentPhrase.before} ${currentPhrase.answer} ${currentPhrase.after}`
+        : `${currentPhrase.before} quelque chose ${currentPhrase.after}`;
+      const utt = new SpeechSynthesisUtterance(text);
+      utt.lang = 'fr-FR';
+      utt.rate = 0.85;
+      const voices = speechSynthesis.getVoices();
+      const frVoice = voices.find(v => v.lang.startsWith('fr'));
+      if (frVoice) utt.voice = frVoice;
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utt);
+    }
+
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+      speechSynthesis.onvoiceschanged = () => {};
+    }
+
     function init() {
       score = 0;
       streak = 0;
@@ -279,109 +227,85 @@
       document.getElementById('streak').textContent = '';
       nextQuestion();
     }
-    
+
     function getRandomPhrase() {
-      let availableIndices = [];
-      for (let i = 0; i < PHRASES.length; i++) {
-        if (!usedIndices.includes(i)) {
-          availableIndices.push(i);
-        }
-      }
-      
-      // Si toutes les phrases ont été utilisées, réinitialiser
-      if (availableIndices.length === 0) {
+      let available = PHRASES.map((_, i) => i).filter(i => !usedIndices.includes(i));
+      if (available.length === 0) {
         usedIndices = [];
-        availableIndices = Array.from({length: PHRASES.length}, (_, i) => i);
+        available = PHRASES.map((_, i) => i);
       }
-      
-      const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
-      usedIndices.push(randomIndex);
-      return PHRASES[randomIndex];
+      const idx = available[Math.floor(Math.random() * available.length)];
+      usedIndices.push(idx);
+      return PHRASES[idx];
     }
-    
+
     function nextQuestion() {
       if (questionCount >= MAX_QUESTIONS) {
         showEndScreen();
         return;
       }
-      
+
       locked = false;
       questionCount++;
-      
       document.getElementById('qcounter').textContent = `Question ${questionCount} / ${MAX_QUESTIONS}`;
-      
-      // Choisir une phrase aléatoire
+
       currentPhrase = getRandomPhrase();
-      
-      // Mettre à jour l'emoji
       document.getElementById('emojiHint').textContent = currentPhrase.emoji;
-      
-      // Afficher la phrase avec trou
+
+      // Afficher la phrase avec case [?]
       const sentenceText = document.getElementById('sentenceText');
-      const parts = currentPhrase.text.split('___');
-      sentenceText.innerHTML = `${parts[0]}<span class="blank" id="blank">?</span>${parts[1] || ''}`;
-      
-      // Afficher les choix
+      sentenceText.innerHTML = `${currentPhrase.before} <span class="blank" id="blank">?</span> ${currentPhrase.after}`;
+
+      // Afficher les 4 choix (grands boutons texte en majuscules)
       const choicesDiv = document.getElementById('choices');
       choicesDiv.innerHTML = '';
-      
-      // Mélanger les options
-      const shuffledOptions = shuffle([...currentPhrase.options]);
-      
-      shuffledOptions.forEach(option => {
+      shuffle([...currentPhrase.options]).forEach(option => {
         const btn = document.createElement('button');
         btn.className = 'choice-btn';
         btn.textContent = option;
         btn.onclick = () => answer(option === currentPhrase.answer, btn, option);
         choicesDiv.appendChild(btn);
       });
+
+      // TTS auto
+      setTimeout(() => speakQuestion(false), 400);
     }
-    
+
     function answer(isCorrect, btn, chosenOption) {
       if (locked) return;
       locked = true;
-      
+
       const blank = document.getElementById('blank');
-      
+
       if (isCorrect) {
         btn.classList.add('ok');
-        
-        // Révéler la réponse dans la phrase
-        if (blank) {
-          blank.textContent = chosenOption;
-          blank.classList.add('filled');
-        }
-        
+        if (blank) { blank.textContent = chosenOption; blank.classList.add('filled'); }
         score += 10;
         streak++;
         if (streak >= 3) confetti();
         sndDing();
         showFB(true);
+        // TTS lit la phrase complète
+        setTimeout(() => speakQuestion(true), 300);
       } else {
         btn.classList.add('ko');
-        
-        // Montrer le bon bouton
         const buttons = Array.from(document.querySelectorAll('#choices .choice-btn'));
         const correctBtn = buttons.find(b => b.textContent === currentPhrase.answer);
         if (correctBtn) correctBtn.classList.add('ok');
-        
-        // Révéler la bonne réponse
-        if (blank) {
-          blank.textContent = currentPhrase.answer;
-          blank.classList.add('revealed');
-        }
-        
+        if (blank) { blank.textContent = currentPhrase.answer; blank.classList.add('revealed'); }
         streak = 0;
         sndBuzz();
         showFB(false);
+        // TTS lit la bonne réponse
+        setTimeout(() => speakQuestion(true), 300);
       }
-      
+
       document.getElementById('score').textContent = score;
       document.getElementById('streak').textContent = streak >= 2 ? `🔥×${streak}` : '';
-      
-      setTimeout(nextQuestion, 1800);
+
+      setTimeout(nextQuestion, 2200);
     }
-    
+
     function showEndScreen() {
       sndVictory();
       confetti();
@@ -398,8 +322,7 @@
         </div>
       `;
     }
-    
-    // Mélanger un tableau
+
     function shuffle(array) {
       const arr = [...array];
       for (let i = arr.length - 1; i > 0; i--) {
@@ -408,8 +331,7 @@
       }
       return arr;
     }
-    
-    // Démarrer
+
     init();
   </script>
 </body>

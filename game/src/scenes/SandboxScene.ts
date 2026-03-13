@@ -148,12 +148,15 @@ export class SandboxScene extends Phaser.Scene {
   }
 
   private createPassengers(): void {
+    // Positions sur les trottoirs (trottoir H nord: y=315, trottoir H sud: y=485)
+    const TROT_N = WORLD_HEIGHT / 2 - 85; // trottoir nord de la route H
+    const TROT_S = WORLD_HEIGHT / 2 + 85; // trottoir sud de la route H
     const positions = [
-      { x: 180, y: WORLD_HEIGHT / 2 - 140 },
-      { x: WORLD_WIDTH - 180, y: WORLD_HEIGHT / 2 + 140 },
-      { x: WORLD_WIDTH / 2 - 140, y: 150 },
-      { x: WORLD_WIDTH / 2 + 140, y: WORLD_HEIGHT - 150 },
-      { x: 320, y: WORLD_HEIGHT / 2 - 140 },
+      { x: 180,  y: TROT_N },
+      { x: 400,  y: TROT_N },
+      { x: 780,  y: TROT_N },
+      { x: 300,  y: TROT_S },
+      { x: WORLD_WIDTH - 200, y: TROT_S },
     ];
 
     positions.forEach((pos, i) => {
@@ -187,11 +190,40 @@ export class SandboxScene extends Phaser.Scene {
     });
   }
 
-  private setTargetPoint(x: number, y: number): void {
-    this.targetPoint = new Phaser.Math.Vector2(
-      Phaser.Math.Clamp(x, 50, WORLD_WIDTH - 50),
-      Phaser.Math.Clamp(y, 50, WORLD_HEIGHT - 50)
+  // Routes : H (y ∈ [330, 470]), V (x ∈ [530, 670])
+  private readonly ROAD_H = { yMin: WORLD_HEIGHT / 2 - 70, yMax: WORLD_HEIGHT / 2 + 70 };
+  private readonly ROAD_V = { xMin: WORLD_WIDTH / 2 - 70, xMax: WORLD_WIDTH / 2 + 70 };
+
+  private snapToRoad(x: number, y: number): { x: number; y: number } {
+    const onH = y >= this.ROAD_H.yMin && y <= this.ROAD_H.yMax;
+    const onV = x >= this.ROAD_V.xMin && x <= this.ROAD_V.xMax;
+    if (onH || onV) return { x, y };
+
+    // Point le plus proche sur route H (clamp y, garder x)
+    const nearH = {
+      x,
+      y: Math.abs(y - WORLD_HEIGHT / 2) < Math.abs(y - this.ROAD_H.yMin)
+        ? WORLD_HEIGHT / 2
+        : y < WORLD_HEIGHT / 2 ? this.ROAD_H.yMin : this.ROAD_H.yMax,
+    };
+    // Point le plus proche sur route V (clamp x, garder y)
+    const nearV = {
+      x: Math.abs(x - WORLD_WIDTH / 2) < Math.abs(x - this.ROAD_V.xMin)
+        ? WORLD_WIDTH / 2
+        : x < WORLD_WIDTH / 2 ? this.ROAD_V.xMin : this.ROAD_V.xMax,
+      y,
+    };
+    const distH = Math.hypot(x - nearH.x, y - nearH.y);
+    const distV = Math.hypot(x - nearV.x, y - nearV.y);
+    return distH <= distV ? nearH : nearV;
+  }
+
+  private setTargetPoint(rawX: number, rawY: number): void {
+    const snapped = this.snapToRoad(
+      Phaser.Math.Clamp(rawX, 50, WORLD_WIDTH - 50),
+      Phaser.Math.Clamp(rawY, 50, WORLD_HEIGHT - 50)
     );
+    this.targetPoint = new Phaser.Math.Vector2(snapped.x, snapped.y);
     this.targetMarker.setPosition(this.targetPoint.x, this.targetPoint.y).setVisible(true).setScale(0);
     this.tweens.add({ targets: this.targetMarker, scale: 1, duration: 200 });
   }

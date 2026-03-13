@@ -60,6 +60,26 @@ Max n'a jamais touché une manette. Voir section "Motricité enfant" dans BACKLO
 
 ---
 
+---
+
+## Règles techniques non-négociables (2026-03-13)
+
+### ✅ Bus = toujours SVG IDFM — jamais emoji, jamais div CSS coloré
+Tous les mini-jeux HTML doivent afficher les bus via `busSVG()` ou `busSVGHiddenNum()` de `game-html/js/bus-svg.js`.
+- `busSVG(color, textColor, num, width)` : bus avec caisse en couleur ligne, numéro visible dans la fenêtre destination
+- `busSVGHiddenNum(color, textColor, num, width)` : même bus, numéro caché (`opacity:0`) — pour MJ-02
+- `revealBusNumber(container)` : révèle le numéro avec animation — appeler après la réponse dans MJ-02
+- **Jamais** : `🚌` emoji, div avec `background-color`, images PNG/JPEG de bus
+- **Raison** : couleurs IDFM exactes, lisibles par Max, cohérence visuelle, pas de dépendance d'assets
+
+### ✅ Anti-doublons couleurs — selectDistinctColors()
+Pour tout quiz proposant plusieurs options avec couleurs (MJ-01, MJ-02), utiliser `selectDistinctColors(pool, n, minDist=80)` de `bus-svg.js` pour éviter que deux options trop proches visuellement apparaissent ensemble.
+
+### ✅ TTS — Web Speech API
+Pour tout jeu avec lecture de contenu (MJ-01, MJ-02b, MJ-04, MJ-05), utiliser `speechSynthesis` avec `lang: 'fr-FR'`, `rate: 0.85`, et recherche de voix FR avec `voices.find(v => v.lang.startsWith('fr'))`.
+
+---
+
 ## Périmètre v1.0
 
 1. Sandbox de mouvement bus (prototype pour sentir le game feel)

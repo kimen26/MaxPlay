@@ -305,9 +305,13 @@
       currentLine = POOL[Math.floor(Math.random() * POOL.length)];
       document.getElementById('targetNum').textContent = currentLine.num;
       
-      // Générer 5 mauvaises réponses (couleurs différentes) pour avoir 6 options total
-      const otherColors = [...new Set(POOL.filter(l => l.color !== currentLine.color).map(l => l.color))];
-      const wrongColors = shuffle(otherColors).slice(0, 5);
+      // Générer 5 mauvaises réponses (couleurs distinctes, pas 2 trop proches)
+      const otherLines = POOL.filter(l => l.color !== currentLine.color);
+      const wrongLines = selectDistinctColors(
+        otherLines.filter((l, i, a) => a.findIndex(x => x.color === l.color) === i),
+        5
+      );
+      const wrongColors = wrongLines.map(l => l.color);
       
       // Créer les options
       const options = [

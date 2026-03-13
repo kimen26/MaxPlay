@@ -18,11 +18,15 @@
     }
     .bus-visual {
       position: absolute;
-      bottom: 40px;
+      bottom: 36px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 4rem;
+      width: 160px;
       animation: busBounce 2s ease-in-out infinite;
+    }
+    .bus-visual svg {
+      width: 100%;
+      height: auto;
     }
     @keyframes busBounce {
       0%, 100% { transform: translateX(-50%) translateY(0); }
@@ -132,7 +136,7 @@
     
     <!-- Bus visualization with people -->
     <div class="bus-scene" id="busScene">
-      <div class="bus-visual">🚌</div>
+      <div class="bus-visual" id="busVisual"></div>
       <div class="people-waiting" id="peopleWaiting">
         <!-- Généré par JS -->
       </div>
@@ -156,11 +160,15 @@
   <script src="js/sounds.js"></script>
   <script src="js/feedback.js"></script>
   <script src="js/data.js"></script>
+  <script src="js/bus-svg.js"></script>
   <script>
     // ─── MJ-03b: La bonne place ───
     // Problèmes de soustraction: places, passagers, attente
     // Max est très bon → difficulté progressive rapide
-    
+
+    // Lignes quotidiennes de Max (pour décorer le bus)
+    const POOL_MJ03B = LIGNES.filter(l => ['162','172','185','380','V7','131','125','132','180','47','186'].includes(l.num));
+
     let score = 0;
     let streak = 0;
     let questionCount = 0;
@@ -177,6 +185,9 @@
       level = 1;
       document.getElementById('score').textContent = '0';
       document.getElementById('streak').textContent = '';
+      // Choisir un bus aléatoire pour décorer la scène
+      const decorLine = POOL_MJ03B[Math.floor(Math.random() * POOL_MJ03B.length)];
+      document.getElementById('busVisual').innerHTML = busSVG(decorLine.color, decorLine.textColor, decorLine.num, 160);
       nextQuestion();
     }
     

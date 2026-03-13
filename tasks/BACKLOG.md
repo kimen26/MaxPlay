@@ -15,15 +15,15 @@
 | EP-003 | Scaffold Phaser.js | `[x]` |
 | EP-007 | Config Claude avancée (hooks) | `[x]` |
 | EP-010 | Assets & outils graphiques | `[x]` |
-| EP-004 | Architecture V0 (HTML quiz + Phaser sandbox) | `[~]` |
-| EP-MJ01 | MJ-01 · Quelle couleur ? | `[ ]` |
-| EP-MJ02 | MJ-02 · Quel numéro ? | `[ ]` |
-| EP-MJ03A | MJ-03a · Compte les passagers | `[ ]` |
-| EP-MJ03B | MJ-03b · La bonne place (soustraction) | `[ ]` |
-| EP-MJ04 | MJ-04 · Lis le mot | `[ ]` |
-| EP-MJ05 | MJ-05 · Quel bus pour aller où ? | `[ ]` |
-| EP-MJ06 | MJ-06 · Au garage le soir ! | `[ ]` |
-| EP-MJ07 | MJ-07 · La journée de Max (sandbox Phaser) | `[ ]` |
+| EP-004 | Architecture V0 (HTML quiz + Phaser sandbox) | `[x]` |
+| EP-MJ01 | MJ-01 · Quelle couleur ? | `[x]` |
+| EP-MJ02 | MJ-02 · Quel numéro ? | `[x]` |
+| EP-MJ03A | MJ-03a · Compte les passagers | `[x]` |
+| EP-MJ03B | MJ-03b · La bonne place (soustraction) | `[x]` |
+| EP-MJ04 | MJ-04 · Lis le mot | `[x]` |
+| EP-MJ05 | MJ-05 · Quel bus pour aller où ? | `[x]` |
+| EP-MJ06 | MJ-06 · Au garage le soir ! | `[x]` |
+| EP-MJ07 | MJ-07 · La journée de Max (sandbox Phaser) | `[x]` |
 | EP-005 | Système de progression (flotte + carte) | `[ ]` |
 | EP-006 | Audio (sons + musique + TTS) | `[ ]` |
 | EP-008 | Recherche motricité enfant 3-4 ans | `[ ]` |
@@ -239,18 +239,17 @@ MaxPlay V0
 - [~] T-153 : Logique réponse + feedback carte animée → sans carte pour l'instant
 
 ### EP-MJ06 – MJ-06 · Au garage le soir !
-- [ ] T-161 : Rendu garage (cases numérotées au sol)
-- [ ] T-162 : Drag & drop bus → case (cibles min 80px)
-- [ ] T-163 : Progression 3→6→8 bus
-- [ ] T-164 : Feedback son + animation porte
+- [x] T-161 : Bus SVG IDFM (vraies lignes, vraies couleurs) — plus de div CSS colorés
+- [x] T-162 : Drag & drop bus → colonne garage droite (cibles min 80px)
+- [x] T-163 : 6 lignes quotidiennes Max (162, 185, 380, V7, 131, 125)
+- [x] T-164 : Porte de garage animée (height 0→100% depuis bas) + sons
 
 ### EP-MJ07 – MJ-07 · La journée de Max (Phaser)
-- [ ] T-171 : Carte Villejuif top-down (tiles basiques pour commencer)
-- [ ] T-172 : Personnage Max avec mouvement tap-to-move
-- [ ] T-173 : Bus topdown avec sprite sheets + setTint couleurs IDFM
-- [ ] T-174 : Système de missions (arrêt → identifier bus → monter → arriver)
-- [ ] T-175 : Progression jour 1/2/3
-- [ ] T-176 : Sourcer sprites piétons top-down (itch.io)
+- [x] T-171 : Carte Villejuif top-down (routes H+V, trottoirs, arbres, bâtiments)
+- [x] T-172 : Bus topdown avec sprite sheet 7×7 + tap-to-move + 8 directions
+- [x] T-173 : 5 passagers à collecter sur les trottoirs
+- [x] T-174 : Snap à la route (tap herbe → point le plus proche sur la route)
+- [x] T-175 : Déploiement CI : Phaser build → _site/mj-07/ + redirect depuis mj-07.html
 
 ### EP-001 – Infrastructure (terminé)
 - [x] T-001 : Créer CLAUDE.md format opérationnel
@@ -336,6 +335,17 @@ MaxPlay V0
 ---
 
 ## Changelog sessions
+
+### 2026-03-13 – Session 6 (corrections multi-jeux)
+- **MJ-01** : Anti-doublons couleurs proches dans les 6 swatches (`selectDistinctColors`)
+- **MJ-02** : Bus caisse en couleur ligne + numéro caché (`busSVGHiddenNum`) + anti-doublons
+- **MJ-03b** : Emoji 🚌 → vrai SVG IDFM d'une ligne de Max (`busSVG`)
+- **MJ-04** : Refonte complète — mots simples à deviner (BUS, TRAM, ROUGE...) + TTS auto + "Écouter"
+- **MJ-05** : Filtré sur lignes connues de Max, 125→Porte de Gentilly (terminus corrigé), TTS après bonne réponse
+- **MJ-06** : Refonte complète — bus SVG IDFM, garage colonne droite, drag & drop, porte animée
+- **SandboxScene.ts** : snap à la route (tap sur l'herbe → point le plus proche), passagers sur les trottoirs
+- **style.css** : overlay "🔄 Tourne ton téléphone" en orientation portrait
+- **bus-svg.js** : `colorDistance()` + `selectDistinctColors()` ajoutés (utilisés par MJ-01 et MJ-02)
 
 ### 2026-03-13 – Session 5
 - **Analyse architecture déploiement** : docs/ = 41 MB doublon mort, MJ-07 jamais déployé en prod

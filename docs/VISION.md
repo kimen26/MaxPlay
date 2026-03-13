@@ -64,13 +64,19 @@ Max n'a jamais touché une manette. Voir section "Motricité enfant" dans BACKLO
 
 ## Règles techniques non-négociables (2026-03-13)
 
-### ✅ Bus = toujours SVG IDFM — jamais emoji, jamais div CSS coloré
-Tous les mini-jeux HTML doivent afficher les bus via `busSVG()` ou `busSVGHiddenNum()` de `game-html/js/bus-svg.js`.
-- `busSVG(color, textColor, num, width)` : bus avec caisse en couleur ligne, numéro visible dans la fenêtre destination
-- `busSVGHiddenNum(color, textColor, num, width)` : même bus, numéro caché (`opacity:0`) — pour MJ-02
-- `revealBusNumber(container)` : révèle le numéro avec animation — appeler après la réponse dans MJ-02
-- **Jamais** : `🚌` emoji, div avec `background-color`, images PNG/JPEG de bus
-- **Raison** : couleurs IDFM exactes, lisibles par Max, cohérence visuelle, pas de dépendance d'assets
+### ✅ Bus = UN modèle unique, DEUX seuls éléments variables (2026-03-13 — ABSOLU)
+**RÈGLE ABSOLUE** : carrosserie TOUJOURS turquoise RATP (`#1abc9c`). On ne touche jamais à la carrosserie, aux roues, aux fenêtres passagers.
+
+Seuls 2 éléments varient selon la ligne :
+1. **Couleur de fond** de la fenêtre destination → couleur officielle IDFM de la ligne (depuis `data.js`)
+2. **Numéro** dans cette fenêtre → numéro de la ligne
+
+Fonctions dans `game-html/js/bus-svg.js` :
+- `busSVG(color, textColor, num, width)` : fenêtre colorée, numéro visible
+- `busSVGHiddenNum(color, textColor, num, width)` : même bus, numéro caché — MJ-02
+- `revealBusNumber(container)` : révèle le numéro avec animation
+
+**Jamais** : 🚌 emoji · div CSS colorée · carrosserie colorée · PNG/JPEG de bus · SVG codé en dur dans HTML · couleurs inventées (toujours depuis `data.js`)
 
 ### ✅ Anti-doublons couleurs — selectDistinctColors()
 Pour tout quiz proposant plusieurs options avec couleurs (MJ-01, MJ-02), utiliser `selectDistinctColors(pool, n, minDist=80)` de `bus-svg.js` pour éviter que deux options trop proches visuellement apparaissent ensemble.

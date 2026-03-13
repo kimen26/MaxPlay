@@ -389,15 +389,14 @@
     // ─── MJ-06 : Au garage ! ───
     // Bus SVG IDFM → garage colonne droite, drag & drop
 
-    // Couleurs IDFM officielles — référentiel data.js
-    const BUS_LINES = [
-      { num: '162', color: '#0064B1', textColor: '#fff' },
-      { num: '185', color: '#F58443', textColor: '#333' },
-      { num: '380', color: '#75CE89', textColor: '#333' },
-      { num: 'V7',  color: '#E3051C', textColor: '#fff' },
-      { num: '131', color: '#8D653A', textColor: '#fff' },
-      { num: '125', color: '#006EB8', textColor: '#fff' },
-    ];
+    // Toutes les lignes IDFM depuis data.js — tirage de 6 au hasard parmi les couleurs uniques
+    // (pas de doublons de couleur pour éviter confusion dans le garage)
+    const BUS_POOL = LIGNES.filter(l => {
+      const sameColor = LIGNES.filter(x => x.color === l.color);
+      return sameColor.length === 1; // exclure les paires de couleur identique (N15/N22, V6/380, 132/2234)
+    });
+    // Mélanger et prendre 6 lignes avec couleurs distinctes
+    const BUS_LINES = selectDistinctColors(BUS_POOL, 6, 60);
 
     const BUS_WIDTH = 120;
     const SNAP_DIST = 100;

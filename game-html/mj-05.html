@@ -174,17 +174,7 @@
       margin-bottom: 12px;
     }
     
-    /* Couleurs RATP */
-    .metro-m7 { background: #f59fb3; color: #000; }
-    .metro-m6 { background: #79c696; color: #000; }
-    .metro-m14 { background: #662483; color: #fff; }
-    .tram-t3a { background: #f59fb3; color: #000; }
-    .tram-t3b { background: #00a092; color: #fff; }
-    .tram-t7 { background: #f59fb3; color: #000; }
-    .tram-t9 { background: #00a092; color: #fff; }
-    .bus { background: #00a092; color: #fff; }
-    .bus-nuit { background: #1a1a2e; color: #fff; border: 2px solid #fff; }
-    .valouette { background: #79c696; color: #000; }
+    /* Couleurs badge injectées en inline style depuis data.js — pas de classes hardcodées */
   </style>
 </head>
 <body>
@@ -228,32 +218,34 @@
   <!-- Scripts -->
   <script src="js/sounds.js"></script>
   <script src="js/feedback.js"></script>
+  <script src="js/data.js"></script>
   <script>
     // ─── MJ-05: Terminus ───
     // Devine la destination du bus/métro/tram
-    
-    // Destinations RATP réelles — lignes quotidiennes de Max uniquement
+    // Couleurs des badges = data.js LIGNES (jamais hardcodées)
+
+    // Helper : récupère la couleur officielle depuis LIGNES
+    function getBadgeStyle(ligneNum) {
+      const l = LIGNES.find(x => x.num === ligneNum);
+      if (!l) return 'background:#555;color:#fff;';
+      return `background:${l.color};color:${l.textColor};`;
+    }
+
+    // Destinations RATP réelles — lignes quotidiennes de Max
     const DESTINATIONS = [
-      // Métro
-      { ligne: 'M7', dest: 'Villejuif - Louis Aragon', direction: 'sud', type: 'metro', colorClass: 'metro-m7' },
-
-      // Tramway
-      { ligne: 'T7', dest: 'Villejuif - Louis Aragon', direction: 'sud', type: 'tram', colorClass: 'tram-t7' },
-
-      // Bus (lignes que Max connaît, terminus corrects)
-      { ligne: '125', dest: 'Porte de Gentilly', direction: 'nord', type: 'bus', colorClass: 'bus' },
-      { ligne: '131', dest: 'Porte d\'Italie', direction: 'nord', type: 'bus', colorClass: 'bus' },
-      { ligne: '132', dest: 'Porte de Choisy', direction: 'nord', type: 'bus', colorClass: 'bus' },
-      { ligne: '162', dest: 'Porte de Champerret', direction: 'nord', type: 'bus', colorClass: 'bus' },
-      { ligne: '172', dest: 'Porte de Bagnolet', direction: 'est', type: 'bus', colorClass: 'bus' },
-      { ligne: '180', dest: 'Porte de Clignancourt', direction: 'nord', type: 'bus', colorClass: 'bus' },
-      { ligne: '185', dest: 'Porte d\'Italie', direction: 'nord', type: 'bus', colorClass: 'bus' },
-      { ligne: '186', dest: 'Porte d\'Orléans', direction: 'ouest', type: 'bus', colorClass: 'bus' },
-      { ligne: '47', dest: 'Porte de Bagnolet', direction: 'nord', type: 'bus', colorClass: 'bus' },
-      { ligne: '380', dest: 'Créteil - Préfecture', direction: 'est', type: 'bus', colorClass: 'bus' },
-
-      // Valouette
-      { ligne: 'V7', dest: 'Chevilly - Marché', direction: 'sud', type: 'valouette', colorClass: 'valouette' }
+      { ligne: 'M7',  dest: 'Villejuif - Louis Aragon', direction: 'sud',   type: 'metro' },
+      { ligne: 'T7',  dest: 'Villejuif - Louis Aragon', direction: 'sud',   type: 'tram' },
+      { ligne: '125', dest: 'Porte de Gentilly',         direction: 'nord',  type: 'bus' },
+      { ligne: '131', dest: 'Porte d\'Italie',           direction: 'nord',  type: 'bus' },
+      { ligne: '132', dest: 'Porte de Choisy',           direction: 'nord',  type: 'bus' },
+      { ligne: '162', dest: 'Porte de Champerret',       direction: 'nord',  type: 'bus' },
+      { ligne: '172', dest: 'Porte de Bagnolet',         direction: 'est',   type: 'bus' },
+      { ligne: '180', dest: 'Porte de Clignancourt',     direction: 'nord',  type: 'bus' },
+      { ligne: '185', dest: 'Porte d\'Italie',           direction: 'nord',  type: 'bus' },
+      { ligne: '186', dest: 'Porte d\'Orléans',          direction: 'ouest', type: 'bus' },
+      { ligne: '47',  dest: 'Porte de Bagnolet',         direction: 'nord',  type: 'bus' },
+      { ligne: '380', dest: 'Créteil - Préfecture',      direction: 'est',   type: 'bus' },
+      { ligne: 'V7',  dest: 'Chevilly - Marché',         direction: 'sud',   type: 'valouette' },
     ];
     
     // Icônes selon le type
@@ -328,10 +320,11 @@
       // Choisir une destination
       currentDest = DESTINATIONS[Math.floor(Math.random() * DESTINATIONS.length)];
       
-      // Afficher le panneau terminus (sans la destination)
+      // Afficher le panneau terminus — couleur depuis data.js LIGNES
       const badge = document.getElementById('lineBadge');
       badge.textContent = currentDest.ligne;
-      badge.className = 'line-badge ' + currentDest.colorClass;
+      badge.className = 'line-badge';
+      badge.setAttribute('style', getBadgeStyle(currentDest.ligne));
       document.getElementById('terminusDest').textContent = '?';
       document.getElementById('terminusBoard').classList.remove('correct');
       

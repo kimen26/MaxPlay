@@ -1,81 +1,92 @@
 // ─── Bus SVG Utilities ───
-// Génère des SVG de bus dynamiques avec couleur et numéro variables
+//
+// RÈGLE ABSOLUE (non-négociable) :
+//   Le bus a UN seul modèle visuel. La carrosserie est TOUJOURS turquoise RATP.
+//   Seuls 2 éléments varient selon la ligne :
+//     1. La couleur de fond de la fenêtre destination (rect x="84")
+//     2. Le numéro affiché dans cette fenêtre
+//   RIEN d'autre ne change jamais.
+//
+// API :
+//   busSVG(color, textColor, num, width)         → bus normal, numéro visible
+//   busSVGHiddenNum(color, textColor, num, width) → bus MJ-02, numéro caché
+//   revealBusNumber(container)                   → révèle le numéro (MJ-02)
+//   colorDistance(hex1, hex2)                    → distance colorimétrique RGB
+//   selectDistinctColors(pool, n, minDist)       → sélection anti-doublons
+
+// Couleur fixe de la carrosserie — turquoise RATP standard
+const BUS_BODY_COLOR = '#1abc9c';
 
 /**
- * Génère un SVG de bus (vue latérale) — caisse en couleur de ligne
- * @param {string} color - Couleur hex (ex: '#0064B1')
- * @param {string} textColor - Couleur du texte sur la fenêtre destination (ex: '#fff')
- * @param {string} num - Numéro de ligne (ex: '162')
- * @param {number} width - Largeur en pixels
- * @returns {string} SVG en string
+ * Génère le SVG du bus.
+ * @param {string} color      - Couleur de fond de la fenêtre destination (ex: '#E2001A')
+ * @param {string} textColor  - Couleur du numéro dans la fenêtre (ex: '#fff')
+ * @param {string} num        - Numéro de ligne (ex: '162')
+ * @param {number} width      - Largeur en pixels
+ * @returns {string} SVG string
  */
 function busSVG(color, textColor, num, width = 200) {
-  return `<svg viewBox="0 0 160 80" width="${width}" class="bus-svg" xmlns="http://www.w3.org/2000/svg">
-  <rect x="5" y="10" width="150" height="45" rx="4" fill="${color}"/>
-  <rect x="5" y="40" width="150" height="15" fill="#ecf0f1"/>
-  <rect x="5" y="48" width="150" height="6" fill="#7f8c8d"/>
-  <rect x="62" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
-  <rect x="70" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
-  <rect x="130" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
-  <rect x="138" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
-  <rect x="5" y="10" width="150" height="45" rx="4" fill="none" stroke="#111" stroke-width="2"/>
-  <rect x="10" y="14" width="21" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1.5"/>
-  <rect x="36" y="14" width="21" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1.5"/>
-  <rect x="84" y="14" width="40" height="21" fill="#fff" stroke="#111" stroke-width="1.5"/>
-  <rect x="150.5" y="14" width="5" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1"/>
-  <text x="104" y="24.5" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#111" text-anchor="middle" dominant-baseline="central">${num}</text>
-  <line x1="149" y1="24" x2="155" y2="24" stroke="#111" stroke-width="2" stroke-linecap="round"/>
-  <rect x="152" y="20" width="6" height="10" rx="1" fill="#111"/>
-  <circle cx="45" cy="54" r="10" fill="#333" stroke="#111" stroke-width="2"/>
-  <circle cx="45" cy="54" r="6" fill="#666"/>
-  <circle cx="45" cy="54" r="2" fill="#111"/>
-  <circle cx="115" cy="54" r="10" fill="#333" stroke="#111" stroke-width="2"/>
-  <circle cx="115" cy="54" r="6" fill="#666"/>
-  <circle cx="115" cy="54" r="2" fill="#111"/>
-  <rect x="5" y="48" width="4" height="5" fill="#FF4444"/>
-  <rect x="151" y="48" width="4" height="5" fill="#FFCC00"/>
-  </svg>`;
+  return _busSVGTemplate(color, textColor, num, width, false);
 }
 
 /**
- * Génère un SVG de bus avec numéro masqué (pour MJ-02)
- * Caisse en couleur de ligne, fenêtre destination blanche avec numéro caché
- * @param {string} color - Couleur hex de la ligne
- * @param {string} textColor - Inutilisé (gardé pour compatibilité API)
- * @param {string} num - Numéro de ligne (sera caché jusqu'à révélation)
- * @param {number} width - Largeur en pixels
- * @returns {string} SVG en string
+ * Génère un SVG de bus avec numéro masqué (pour MJ-02).
+ * Même rendu que busSVG, mais le numéro est opacity="0".
+ * Appeler revealBusNumber() pour le révéler après réponse.
  */
 function busSVGHiddenNum(color, textColor, num, width = 200) {
+  return _busSVGTemplate(color, textColor, num, width, true);
+}
+
+/**
+ * Fonction interne commune — NE PAS appeler directement.
+ * Toute la définition visuelle du bus est ici et nulle part ailleurs.
+ */
+function _busSVGTemplate(destColor, textColor, num, width, hidden) {
+  const body = BUS_BODY_COLOR; // carrosserie toujours identique
+  const numOpacity = hidden ? '0' : '1';
+  const numClass = hidden ? 'class="num-text"' : '';
   return `<svg viewBox="0 0 160 80" width="${width}" class="bus-svg" xmlns="http://www.w3.org/2000/svg">
-  <rect x="5" y="10" width="150" height="45" rx="4" fill="${color}"/>
+  <!-- Carrosserie — couleur fixe turquoise RATP -->
+  <rect x="5" y="10" width="150" height="45" rx="4" fill="${body}"/>
+  <!-- Bas de caisse -->
   <rect x="5" y="40" width="150" height="15" fill="#ecf0f1"/>
   <rect x="5" y="48" width="150" height="6" fill="#7f8c8d"/>
+  <!-- Séparateurs verticaux -->
   <rect x="62" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
   <rect x="70" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
   <rect x="130" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
   <rect x="138" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+  <!-- Contour carrosserie -->
   <rect x="5" y="10" width="150" height="45" rx="4" fill="none" stroke="#111" stroke-width="2"/>
+  <!-- Fenêtres passagers -->
   <rect x="10" y="14" width="21" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1.5"/>
   <rect x="36" y="14" width="21" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1.5"/>
-  <rect x="84" y="14" width="40" height="21" fill="#fff" stroke="#111" stroke-width="1.5"/>
+  <!-- Fenêtre destination — couleur de la ligne -->
+  <rect x="84" y="14" width="40" height="21" fill="${destColor}" stroke="#111" stroke-width="1.5"/>
+  <!-- Fenêtre mini droite -->
   <rect x="150.5" y="14" width="5" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1"/>
-  <text class="num-text" x="104" y="24.5" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="#111" text-anchor="middle" dominant-baseline="central" opacity="0">${num}</text>
+  <!-- Numéro dans la fenêtre destination -->
+  <text ${numClass} x="104" y="24.5" font-family="Arial,sans-serif" font-size="13" font-weight="bold"
+        fill="${textColor}" text-anchor="middle" dominant-baseline="central" opacity="${numOpacity}">${num}</text>
+  <!-- Rétroviseur -->
   <line x1="149" y1="24" x2="155" y2="24" stroke="#111" stroke-width="2" stroke-linecap="round"/>
   <rect x="152" y="20" width="6" height="10" rx="1" fill="#111"/>
+  <!-- Roues -->
   <circle cx="45" cy="54" r="10" fill="#333" stroke="#111" stroke-width="2"/>
   <circle cx="45" cy="54" r="6" fill="#666"/>
   <circle cx="45" cy="54" r="2" fill="#111"/>
   <circle cx="115" cy="54" r="10" fill="#333" stroke="#111" stroke-width="2"/>
   <circle cx="115" cy="54" r="6" fill="#666"/>
   <circle cx="115" cy="54" r="2" fill="#111"/>
+  <!-- Feux -->
   <rect x="5" y="48" width="4" height="5" fill="#FF4444"/>
   <rect x="151" y="48" width="4" height="5" fill="#FFCC00"/>
   </svg>`;
 }
 
 /**
- * Révèle le numéro sur un SVG de bus (animation simple)
+ * Révèle le numéro sur un bus MJ-02 (animation fade-in).
  * @param {HTMLElement} container - Élément contenant le SVG
  */
 function revealBusNumber(container) {
@@ -89,11 +100,10 @@ function revealBusNumber(container) {
 }
 
 /**
- * Calcule la distance colorimétrique entre deux couleurs hex
- * Utilisé pour éviter les doublons de couleurs proches dans les choix
- * @param {string} hex1 - ex: '#0064B1'
- * @param {string} hex2 - ex: '#008C59'
- * @returns {number} distance (0 = identique, 441 = max)
+ * Distance colorimétrique euclidienne RGB entre deux couleurs hex.
+ * @param {string} hex1  ex: '#E2001A'
+ * @param {string} hex2  ex: '#0064B1'
+ * @returns {number} 0 = identique, ~441 = maximum
  */
 function colorDistance(hex1, hex2) {
   const parse = h => {
@@ -106,11 +116,11 @@ function colorDistance(hex1, hex2) {
 }
 
 /**
- * Sélectionne N lignes depuis un pool en évitant les couleurs trop proches
- * @param {Array} pool - Array de lignes {color, ...}
- * @param {number} n - Nombre de lignes à sélectionner
- * @param {number} minDist - Distance minimum entre couleurs (défaut 80)
- * @returns {Array} Lignes sélectionnées
+ * Sélectionne N lignes depuis un pool en évitant les couleurs trop proches.
+ * @param {Array}  pool    - Lignes {color, ...}
+ * @param {number} n       - Nombre à sélectionner
+ * @param {number} minDist - Distance minimum (défaut 80)
+ * @returns {Array}
  */
 function selectDistinctColors(pool, n, minDist = 80) {
   const shuffled = [...pool].sort(() => Math.random() - 0.5);
@@ -120,7 +130,7 @@ function selectDistinctColors(pool, n, minDist = 80) {
     const tooClose = selected.some(s => colorDistance(s.color, candidate.color) < minDist);
     if (!tooClose) selected.push(candidate);
   }
-  // Fallback : si pas assez de candidats éloignés, ajouter avec seuil réduit
+  // Fallback : seuil réduit si pas assez de candidats distincts
   if (selected.length < n) {
     for (const candidate of shuffled) {
       if (selected.length >= n) break;

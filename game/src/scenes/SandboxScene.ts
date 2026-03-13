@@ -247,7 +247,7 @@ export class SandboxScene extends Phaser.Scene {
   private setupCamera(): void {
     this.cameras.main.setBounds(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
     this.cameras.main.startFollow(this.bus, true, 0.08, 0.08);
-    this.cameras.main.setZoom(1.5);
+    this.cameras.main.setZoom(0.5);
   }
 
   update(_time: number, delta: number): void {

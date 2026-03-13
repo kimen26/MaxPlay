@@ -26,7 +26,9 @@
       "Bash(cat ~/.claude/projects/*/hooks.json)",
       "Bash(python3 -m json.tool)",
       "Bash(node \"C:/Users/kimen/.claude/ecc-root/scripts/hooks/run-with-flags.js\" \"test\" \"scripts/hooks/check-console-log.js\" \"standard\")",
-      "Bash(node -e \"const s = require\\(require\\(''os''\\).homedir\\(\\) + ''/.claude/settings.json''\\); console.log\\(''Hooks définis:'', Object.keys\\(s.hooks\\).join\\('', ''\\)\\); console.log\\(''Total hooks:'', Object.values\\(s.hooks\\).flat\\(\\).length\\);\")"
+      "Bash(node -e \"const s = require\\(require\\(''os''\\).homedir\\(\\) + ''/.claude/settings.json''\\); console.log\\(''Hooks définis:'', Object.keys\\(s.hooks\\).join\\('', ''\\)\\); console.log\\(''Total hooks:'', Object.values\\(s.hooks\\).flat\\(\\).length\\);\")",
+      "Bash(BASE=\"c:/ProjetsPerso/Claude_Projects/MaxPlay/game/public/assets/sounds\" __NEW_LINE_103e7d9cec486fb6__ echo \"=== Creazilla bus door ===\" curl -L -o \"$BASE/bus/door.wav\" \"https://creazilla.com/media/audio/15474030/\" -H \"User-Agent: Mozilla/5.0\" --max-time 15 -w \"Status: %{http_code}, Size: %{size_download}\\\\n\" -s -I)",
+      "Read(//c/ProjetsPerso/Claude_Projects/MaxPlay/**)"
     ]
   },
   "hooks": {

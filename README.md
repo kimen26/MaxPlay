@@ -7,18 +7,19 @@
 
 ---
 
-## 🎮 Les 7 Jeux de Max
+## 🎮 Les jeux de Max
 
 | Jeu | Description | Compétence |
 |-----|-------------|------------|
 | **MJ-01** 🎨 [Quelle couleur ?](https://kimen26.github.io/MaxPlay/mj-01.html) | Devine la couleur du bus | Couleurs + TTS |
 | **MJ-02** 🔢 [Quel numéro ?](https://kimen26.github.io/MaxPlay/mj-02.html) | Lis le numéro sur le bus | Reconnaissance visuelle |
-| **MJ-02b** 🔊 [Devine le numéro](https://kimen26.github.io/MaxPlay/mj-02b.html) | Écoute et trouve le numéro | **TTS** + 25+ lignes |
-| **MJ-03** 🪑 [La bonne place](https://kimen26.github.io/MaxPlay/mj-03b.html) | Compte les passagers | Calcul mental |
-| **MJ-04** 📖 [Complète la phrase](https://kimen26.github.io/MaxPlay/mj-04.html) | Lis et complète | Lecture contextuelle |
-| **MJ-05** 🎯 [Où va ce bus ?](https://kimen26.github.io/MaxPlay/mj-05.html) | Destinations RATP | Géographie |
-| **MJ-06** 🅿️ [Au garage !](https://kimen26.github.io/MaxPlay/mj-06.html) | Range les bus par couleur | Logique + motricité |
-| **MJ-07** 🎮 [Le Bac à Sable](https://kimen26.github.io/MaxPlay/mj-07.html) | Conduis ton bus ! | Sandbox Phaser |
+| **MJ-02b** 🔊 [Devine le numéro](https://kimen26.github.io/MaxPlay/mj-02b.html) | Écoute et trouve le numéro | TTS + 25+ lignes |
+| **MJ-03a** 👥 [Compte les passagers](https://kimen26.github.io/MaxPlay/mj-03a.html) | Groupes de passagers | Dénombrement |
+| **MJ-03b** 🪑 [La bonne place](https://kimen26.github.io/MaxPlay/mj-03b.html) | Calcul de places libres | Soustraction |
+| **MJ-04** 📖 [Lis le mot](https://kimen26.github.io/MaxPlay/mj-04.html) | Syllabe manquante | Lecture phonétique |
+| **MJ-05** 🎯 [Quel bus pour aller où ?](https://kimen26.github.io/MaxPlay/mj-05.html) | Trajets réels de Max | Géographie locale |
+| **MJ-06** 🏠 [Au garage !](https://kimen26.github.io/MaxPlay/mj-06.html) | Range les bus | Logique + drag |
+| **MJ-07** 🗺️ [La journée de Max](https://kimen26.github.io/MaxPlay/mj-07.html) | Explore Villejuif | Sandbox Phaser |
 
 ---
 
@@ -26,66 +27,44 @@
 
 ```
 MaxPlay/
-├── game-html/          ← 8 mini-jeux HTML/JS (déployés sur GitHub Pages)
+├── game-html/          ← Source des mini-jeux HTML (déployés via CI)
 │   ├── index.html      ← Menu principal
-│   ├── mj-01.html      ← Quelle couleur ?
-│   ├── mj-02.html      ← Quel numéro ? (classique)
-│   ├── mj-02b.html     ← Devine le numéro (TTS)
-│   ├── mj-03b.html     ← La bonne place
-│   ├── mj-04.html      ← Complète la phrase
-│   ├── mj-05.html      ← Où va ce bus ?
-│   ├── mj-06.html      ← Au garage !
-│   └── mj-07.html      ← Intro Bac à Sable
+│   ├── mj-01.html … mj-07.html
+│   ├── js/             ← Logique partagée (data, bus-svg, sounds, feedback)
+│   └── css/
 │
 ├── game/               ← MJ-07 Phaser.js (TypeScript + Vite)
 │   └── src/
-│       ├── scenes/     ← SandboxScene, etc.
+│       ├── scenes/     ← HubScene, SandboxScene
 │       └── utils/      ← SynthSounds.ts (audio procédural)
 │
-├── docs/               ← GitHub Pages (copie de game-html + build MJ-07)
-└── docs/MAX_PROFILE.md ← Profil complet de Max
+└── docs/               ← Documentation projet uniquement (.md)
 ```
 
----
-
-## 🎵 Audio
-
-**Pas de fichiers MP3** — tout est généré en temps réel avec la **Web Audio API** :
-- Ding (bonne réponse)
-- Buzz (erreur)
-- Victory (fanfare de fin)
-- Honk (klaxon)
-- Air brake (frein)
+**Déploiement** : GitHub Actions build Phaser + assemble tout dans `_site/` + deploy Pages.
+Rien n'est commité dans `docs/`. `game/dist/` et `_site/` sont dans `.gitignore`.
 
 ---
 
 ## 🚀 Déploiement
 
-### GitHub Pages (automatique)
 ```bash
-# Les fichiers sont dans docs/
-git add .
-git commit -m "Nouveaux jeux"
-git push origin master
+git push origin master   # CI build (~2 min) → site mis à jour automatiquement
 ```
 
-⚠️ **Activation requise** : Settings → Pages → Deploy from branch → master → /docs
-
 ### Local (développement)
+
 ```bash
-# Jeux HTML (vanilla JS)
-cd game-html
-# Ouvrir index.html dans un navigateur
+# Jeux HTML (vanilla JS) — ouvrir directement dans le navigateur
+open game-html/index.html
 
 # MJ-07 Phaser.js
-cd game
-npm install
-npm run dev
+cd game && npm install && npm run dev
 ```
 
 ---
 
-## 🎨 Stack Technique
+## 🎨 Stack technique
 
 | | |
 |---|---|
@@ -93,8 +72,8 @@ npm run dev
 | **MJ-07** | Phaser.js 3 + TypeScript + Vite |
 | **Audio** | Web Audio API (synthèse procédurale) |
 | **TTS** | Web Speech API (MJ-01, MJ-02b) |
-| **Hébergement** | GitHub Pages |
-| **Assets** | SVG vectoriels (bus), PNG (tiles) |
+| **Hébergement** | GitHub Pages via GitHub Actions |
+| **Assets** | SVG vectoriels (bus side-view), PNG sprites (topdown) |
 
 ---
 
@@ -106,7 +85,7 @@ npm run dev
 | **Quartier** | Villejuif Feuillantines (Val-de-Marne) |
 | **Passions** | Bus RATP 🚌 · Métro 🚇 · Animaux 🐾 |
 | **Connaissances** | 20+ lignes de bus, leurs couleurs et destinations |
-| **Input** | Tablette tactile (portrait/paysage) |
+| **Input** | Tablette tactile |
 | **Sessions** | 3–8 minutes |
 
 ---

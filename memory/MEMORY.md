@@ -9,33 +9,41 @@ Jeu éducatif 2D pour **Max**, 3.5-4 ans, passionné de bus (lignes Villejuif).
 Voir `docs/MAX_PROFILE.md` pour le profil complet.
 **Stack** : Phaser.js 3 + Vite + TypeScript · Résolution 1024×768 landscape
 
-## État (2026-03-08)
+## État (2026-03-13)
 
-- EP-001 Infrastructure : ✅ terminée
-- EP-002 Direction artistique : ✅ décidée (voir VISION.md)
-- EP-003 Scaffold Phaser.js : ✅ installé, tsc 0 erreur, Vite ok
-- EP-007 Hooks Claude : ✅ tsc auto après Edit/Write
-- EP-004 Premier mini-jeu : **EN COURS** → T-031 sandbox à coder
-- EP-008/009 Recherche motricité + audio : à faire en subagents
+- EP-001 Infrastructure : ✅
+- EP-002 Direction artistique : ✅ flat design arrondi (Toca Boca / Tayo)
+- EP-003 Scaffold Phaser.js : ✅
+- EP-004 Architecture V0 : ✅ MJ-01 à MJ-06 fonctionnels (HTML vanilla)
+- EP-010 Assets & outils : ✅ SVG bus + sprites topdown
+- **Déploiement refactoré** : ✅ CI GitHub Actions build Phaser + assemble + deploy
+- EP-MJ06 Au garage : **à faire** (T-161 à T-164)
+- EP-MJ07 Phaser sandbox : **à faire** (T-171 à T-176)
 
-## Décisions clés (EP-002)
+## Architecture déploiement (2026-03-13)
 
-- **Style** : pixel art grille 16×32px (Libresprite/Aseprite), plus facile sans talent artistique
+```
+GitHub Pages → kimen26.github.io/MaxPlay/
+├── /              ← game-html/index.html (menu)
+├── /mj-01.html    ← game-html/mj-01.html
+├── ...
+├── /mj-07.html    ← splash page → link ./mj-07/
+└── /mj-07/        ← Phaser build (game/dist/ copié par CI)
+```
+
+**CI** : `.github/workflows/deploy.yml` build Phaser (`CI=true` → base `/MaxPlay/mj-07/`) puis assemble dans `_site/`
+**docs/** : uniquement des `.md` (plus de HTML ni d'assets)
+**game/dist/**, **_site/** : dans `.gitignore`, jamais commités
+
+## Décisions clés
+
+- **Style** : flat design arrondi (Toca Boca / Tayo) — PAS pixel art
 - **Univers** : ville Villejuif réelle + vie secrète des bus
-- **POV** : Max est un personnage top-down (vue GTA1/Pokémon), voyage DANS le bus, peut descendre aux arrêts
-- **Contrôles Phase 1** : tap only (Max n'a jamais touché de manette)
-- **Progression** : flotte de bus débloquée + carte Villejuif qui s'allume
-- **Audio** : Web Speech API pour voix (prototype), Howler.js pour sons
-
-## Prochaine tâche : T-031 – Sandbox top-down
-
-Scène `SandboxScene.ts` avec :
-- Personnage Max (carré coloré pour l'instant, pas besoin de vrai sprite)
-- Rue simple avec arrêt de bus
-- Bus 162 (couleur `0x0064B1`) qui arrive, attend, repart
-- Max peut TAP pour se déplacer vers l'arrêt
-- Max peut TAP sur le bus pour "monter" → feedback positif
-- Pas de pédagogie encore – juste voir si ça donne envie
+- **POV** : top-down (vue GTA1/Pokémon), tap only Phase 1
+- **Progression** : flotte de bus débloquée + carte Villejuif
+- **Audio** : Web Speech API (TTS), Web Audio API (sons procéduraux)
+- **Bus side-view** : SVG template dynamique {{COLOR}}/{{LINE}}
+- **Bus topdown** : sprite sheet White + setTint() Phaser
 
 ## Règles jeu (non-négociables)
 
@@ -48,6 +56,7 @@ Scène `SandboxScene.ts` avec :
 | `tasks/BACKLOG.md` | Source de vérité : épics, tâches, décisions, leçons |
 | `docs/MAX_PROFILE.md` | Profil complet Max : lignes bus, couleurs IDFM, intérêts |
 | `docs/VISION.md` | Décisions prises + questions ouvertes |
-| `game/src/scenes/` | Boot · Preload · Hub · **SandboxScene** (à créer T-031) |
+| `game-html/` | MJ-01 à MJ-07 (vanilla HTML/JS) — source déployée |
+| `game/src/scenes/` | HubScene · SandboxScene (MJ-07 Phaser) |
 | `game/src/constants/colors.ts` | 19 lignes bus IDFM + UI_COLORS |
-| `game/src/constants/config.ts` | GAME_WIDTH/HEIGHT, MIN_TAP_SIZE, etc. |
+| `.github/workflows/deploy.yml` | CI : build + assemble + deploy GitHub Pages |

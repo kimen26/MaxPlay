@@ -337,6 +337,17 @@ MaxPlay V0
 
 ## Changelog sessions
 
+### 2026-03-13 – Session 5
+- **Analyse architecture déploiement** : docs/ = 41 MB doublon mort, MJ-07 jamais déployé en prod
+- **Refonte déploiement** :
+  - `docs/` nettoyé (seuls les .md conservés, -41 MB)
+  - `vite.config.ts` : base conditionnel `process.env.CI ? '/MaxPlay/mj-07/' : './'`
+  - `game-html/mj-07.html` : message "localhost" → bouton "Jouer" vers `./mj-07/`
+  - `HubScene.ts` : URLs `/game-html/mj-X.html` → `../mj-X.html` (prod-ready)
+  - `deploy.yml` : workflow build Phaser + assemble `_site/` + deploy Pages
+  - `.gitignore` : `_site/` ajouté
+- **Résultat** : un seul `git push` déploie tout. MJ-07 accessible en ligne. Base solide long terme.
+
 ### 2026-03-07 – Session 1
 Setup complet infrastructure. EP-001 terminé. Scaffold Phaser.js créé.
 

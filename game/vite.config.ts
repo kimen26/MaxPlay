@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 export default defineConfig({
-  base: './',
+  base: process.env.CI ? '/MaxPlay/mj-07/' : './',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
@@ -21,7 +21,7 @@ export default defineConfig({
   },
   plugins: [
     {
-      // Sert game-html/ sous /game-html/* pour que HubScene puisse y linker
+      // Dev only: sert game-html/ sous /game-html/* pour la navigation locale
       name: 'serve-game-html',
       configureServer(server) {
         const gameHtmlDir = path.resolve(process.cwd(), '../game-html');

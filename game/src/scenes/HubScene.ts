@@ -9,13 +9,13 @@ import { UI_COLORS } from '../constants/colors';
  */
 
 const QUIZ_GAMES = [
-  { label: 'Quelle\ncouleur ?',      emoji: '🎨', color: 0x0064B1, url: '/game-html/mj-01.html' },
-  { label: 'Quel\nnuméro ?',         emoji: '🔢', color: 0xF58443, url: '/game-html/mj-02.html' },
-  { label: 'Compte\nles passagers',  emoji: '👥', color: 0x008C59, url: '/game-html/mj-03a.html' },
-  { label: 'La bonne\nplace',        emoji: '🪑', color: 0xB43C95, url: '/game-html/mj-03b.html' },
-  { label: 'Lis\nle mot',            emoji: '📖', color: 0x652C90, url: '/game-html/mj-04.html' },
-  { label: 'Quel\nbus ?',            emoji: '🚏', color: 0x75CE89, url: '/game-html/mj-05.html' },
-  { label: 'Au\ngarage !',           emoji: '🏠', color: 0x8D653A, url: '/game-html/mj-06.html' },
+  { label: 'Quelle\ncouleur ?',      emoji: '🎨', color: 0x0064B1, url: '../mj-01.html' },
+  { label: 'Quel\nnuméro ?',         emoji: '🔢', color: 0xF58443, url: '../mj-02.html' },
+  { label: 'Compte\nles passagers',  emoji: '👥', color: 0x008C59, url: '../mj-03a.html' },
+  { label: 'La bonne\nplace',        emoji: '🪑', color: 0xB43C95, url: '../mj-03b.html' },
+  { label: 'Lis\nle mot',            emoji: '📖', color: 0x652C90, url: '../mj-04.html' },
+  { label: 'Quel\nbus ?',            emoji: '🚏', color: 0x75CE89, url: '../mj-05.html' },
+  { label: 'Au\ngarage !',           emoji: '🏠', color: 0x8D653A, url: '../mj-06.html' },
 ] as const;
 
 // Layout : 4 cartes ligne 1, 3 cartes ligne 2

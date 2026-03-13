@@ -25,30 +25,6 @@
       margin-bottom: 20px;
       color: #ffe066;
     }
-    p {
-      font-size: 1.1rem;
-      margin-bottom: 30px;
-      opacity: 0.9;
-      line-height: 1.6;
-    }
-    .btn {
-      display: inline-block;
-      background: #00c47a;
-      color: #fff;
-      padding: 15px 40px;
-      border-radius: 30px;
-      text-decoration: none;
-      font-weight: 900;
-      font-size: 1.2rem;
-      margin: 10px;
-      transition: transform 0.2s;
-    }
-    .btn:hover {
-      transform: scale(1.05);
-    }
-    .btn-back {
-      background: #ffffff22;
-    }
     .info {
       background: #ffffff15;
       padding: 20px;
@@ -75,12 +51,30 @@
       position: absolute;
       left: 0;
     }
+    .btn {
+      display: inline-block;
+      background: #00c47a;
+      color: #fff;
+      padding: 15px 40px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 1.2rem;
+      margin: 10px;
+      transition: transform 0.2s;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+    }
+    .btn-back {
+      background: #ffffff22;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1>🗺️ La journée de Max</h1>
-    
+
     <div class="info">
       <h3>Explore Villejuif avec Max !</h3>
       <ul>
@@ -90,17 +84,8 @@
         <li>3 missions à compléter !</li>
       </ul>
     </div>
-    
-    <p>
-      Ce jeu utilise Phaser.js et nécessite un serveur local.<br>
-      <small>Ouvre un terminal dans le dossier <code>game/</code> et lance :</small>
-    </p>
-    
-    <p>
-      <code style="background:#0003;padding:8px 16px;border-radius:8px;">npm install && npm run dev</code>
-    </p>
-    
-    <a href="http://localhost:5173" class="btn" target="_blank">Ouvrir le jeu (localhost:5173)</a>
+
+    <a href="./mj-07/" class="btn">▶ Jouer</a>
     <a href="index.html" class="btn btn-back">← Retour au menu</a>
   </div>
 </body>

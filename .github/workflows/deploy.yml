@@ -3,6 +3,7 @@ name: Deploy MaxPlay to GitHub Pages
 on:
   push:
     branches: [master]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -14,19 +15,39 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
+  build-and-deploy:
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: game/package-lock.json
+
+      - run: npm ci
+        working-directory: game
+
+      - run: npm run build
+        working-directory: game
+        env:
+          CI: true
+
+      - name: Assemble site
+        run: |
+          mkdir -p _site/mj-07
+          cp -r game-html/* _site/
+          cp -r game/dist/* _site/mj-07/
 
       - uses: actions/configure-pages@v4
 
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: game-html/
+          path: _site/
 
       - id: deployment
         uses: actions/deploy-pages@v4

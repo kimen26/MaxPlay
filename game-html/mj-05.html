@@ -329,31 +329,20 @@
       document.getElementById('terminusBoard').classList.remove('correct');
       
       // Générer les options (1 correcte + 2 distracteurs)
-      const correctDest = currentDest.dest;
-      const usedDests = new Set([correctDest]);
+      // Déduplique sur ligne (pas sur dest) pour éviter boucle infinie (M7/T7 même dest)
+      const usedLignes = new Set([currentDest.ligne]);
+      const candidates = shuffle(DESTINATIONS.filter(d => d.ligne !== currentDest.ligne));
       const wrongDests = [];
-      
-      // Filtrer les destinations disponibles
-      const availableDests = DESTINATIONS.filter(d => d.dest !== correctDest);
-      const shuffledAvailable = shuffle(availableDests);
-      
-      // Prendre 2 distracteurs
-      for (let i = 0; i < Math.min(2, shuffledAvailable.length); i++) {
-        if (!usedDests.has(shuffledAvailable[i].dest)) {
-          wrongDests.push(shuffledAvailable[i]);
-          usedDests.add(shuffledAvailable[i].dest);
+      for (const d of candidates) {
+        if (wrongDests.length >= 2) break;
+        if (!usedLignes.has(d.ligne)) {
+          wrongDests.push(d);
+          usedLignes.add(d.ligne);
         }
       }
-      
-      // Si on n'a pas assez, compléter avec d'autres
-      while (wrongDests.length < 2) {
-        const randomDest = DESTINATIONS[Math.floor(Math.random() * DESTINATIONS.length)];
-        if (!usedDests.has(randomDest.dest)) {
-          wrongDests.push(randomDest);
-          usedDests.add(randomDest.dest);
-        }
-      }
-      
+      // Fallback si DESTINATIONS trop petit (ne devrait pas arriver)
+      while (wrongDests.length < 2) wrongDests.push(candidates[wrongDests.length] || currentDest);
+
       const options = [currentDest, ...wrongDests];
       
       // Afficher

@@ -413,10 +413,14 @@
     let parkedCount = 0;
     let gameComplete = false;
 
-    // ── Audio inline (fallback si sounds.js absent) ──
-
+    // ── Audio inline — AudioContext SINGLETON pour éviter les coupures ──
+    let _ac = null;
     function getAC() {
-      return new (window.AudioContext || window.webkitAudioContext)();
+      if (!_ac || _ac.state === 'closed') {
+        _ac = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (_ac.state === 'suspended') _ac.resume();
+      return _ac;
     }
 
     function sndVictory() {
@@ -565,13 +569,16 @@
         el.dataset.num = line.num;
         el.innerHTML = busSVG(line.color, line.textColor, line.num, BUS_WIDTH);
 
-        // Grille 2 colonnes × 3 lignes
-        const col = i % 2;
-        const row = Math.floor(i / 2);
-        const colW = (zoneW - BUS_WIDTH - 20) / 2;
-        const rowH = (zoneH - 40) / 3;
-        const x = 10 + col * colW + (Math.random() * 10 - 5);
-        const y = 10 + row * rowH + (Math.random() * 10 - 5);
+        // Grille 3 colonnes × 2 lignes — bus bien espacés, pas superposés
+        const cols = 3;
+        const rows = Math.ceil(BUS_LINES.length / cols);
+        const col = i % cols;
+        const row = Math.floor(i / cols);
+        const padX = 12, padY = 16;
+        const colW = (zoneW - padX * (cols + 1)) / cols;
+        const rowH = (zoneH - padY * (rows + 1)) / rows;
+        const x = padX + col * (colW + padX) + (colW - BUS_WIDTH) / 2;
+        const y = padY + row * (rowH + padY) + (rowH - 50) / 2;
 
         el.style.left = x + 'px';
         el.style.top  = y + 'px';

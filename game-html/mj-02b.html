@@ -193,8 +193,9 @@
       // Choisir une ligne au hasard parmi TOUTES les lignes
       currentLine = LIGNES[Math.floor(Math.random() * LIGNES.length)];
       
-      // Bus standard + numéro caché — la fenêtre destination est en couleur de ligne
-      document.getElementById('busDisplay').innerHTML = busSVGHiddenNum(currentLine.color, currentLine.textColor, currentLine.num, 200);
+      // MJ-02b : aucun indice visuel — fenêtre BLANCHE + numéro CACHÉ
+      // Max entend le numéro (TTS), doit reconnaître sans aide couleur ni chiffre
+      document.getElementById('busDisplay').innerHTML = busSVGHiddenNum('#ffffff', '#111111', currentLine.num, 200);
       
       // Annoncer à voix haute le numéro à trouver
       setTimeout(() => {
@@ -238,8 +239,8 @@
         sndDing();
         showFB(true);
         
-        // Révéler le numéro avec animation
-        revealBusNumber(document.getElementById('busDisplay'));
+        // Révéler : remplacer le bus blanc par le vrai bus coloré
+        document.getElementById('busDisplay').innerHTML = busSVG(currentLine.color, currentLine.textColor, currentLine.num, 200);
         speak('Bravo ! C\'était le ' + getLineDisplayName(currentLine.num));
       } else {
         btn.classList.add('ko');

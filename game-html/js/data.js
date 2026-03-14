@@ -121,3 +121,15 @@ const DESTINATIONS = [
 
 // Emojis de personnages pour MJ-03
 const PERSONNAGES = ['🧑', '👦', '👧', '👴', '👵', '🧙', '🏴‍☠️', '👑', '🏹', '⚔️'];
+
+// ─── TTS : nom lisible d'une ligne ───
+// Règles : M7 → "Métro 7", T9 → "Tram 9", N15 → "Noctilien 15",
+//          V6/V7 → "Valouette V6/V7", TVM → "TVM", bus → "Bus 162"
+function getLineDisplayName(num) {
+  if (num === 'TVM') return 'TVM';
+  if (num.startsWith('M') && /^\d/.test(num.substring(1))) return 'Métro ' + num.substring(1);
+  if (num.startsWith('T') && /^\d/.test(num.substring(1))) return 'Tram ' + num.substring(1);
+  if (num.startsWith('N') && /^\d/.test(num.substring(1))) return 'Noctilien ' + num.substring(1);
+  if (num.startsWith('V')) return 'Valouette ' + num;
+  return 'Bus ' + num;
+}

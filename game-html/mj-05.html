@@ -276,7 +276,7 @@
     
     // TTS
     function speakTerminus(dest) {
-      const text = `Le ${dest.ligne} va vers ${dest.dest} !`;
+      const text = `Le ${getLineDisplayName(dest.ligne)} va vers ${dest.dest} !`;
       const utt = new SpeechSynthesisUtterance(text);
       utt.lang = 'fr-FR';
       utt.rate = 0.85;

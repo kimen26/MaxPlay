@@ -160,14 +160,7 @@
       }
     }
     
-    function getLineDisplayName(num) {
-      if (num.startsWith('M')) return 'Métro ' + num.substring(1);
-      if (num.startsWith('T') && !num.startsWith('TV')) return 'Tram ' + num.substring(1);
-      if (num.startsWith('V')) return 'Valouette ' + num;
-      if (num.startsWith('N')) return 'Noctilien ' + num;
-      if (num === 'TVM') return 'TVM';
-      return 'Bus ' + num;
-    }
+    // getLineDisplayName vient de data.js — PAS de redéfinition locale
     // busSVG et busSVGHiddenNum viennent de bus-svg.js — PAS de redéfinition locale
 
     function init() {

@@ -26,6 +26,8 @@ const LIGNES = [
   // Valouettes
   { num: 'V6',   color: '#75CE89', textColor: '#333', name: 'Valouette V6' }, // Même couleur que 380
   { num: 'V7',   color: '#E3051C', textColor: '#fff', name: 'Valouette V7' }, // Rouge Coquelicot – chez Valouette
+  // Trams (utilisés dans les trajets de Max – MJ-05)
+  { num: 'T7',   color: '#C2A000', textColor: '#fff', name: 'Tram T7' },  // Villejuif ↔ Athis-Mons
   // Métros (utilisés dans les trajets de Max – MJ-05)
   { num: 'M6',   color: '#6ECA97', textColor: '#333', name: 'Métro 6' },  // chez mamie → Montparnasse
   { num: 'M7',   color: '#FA9ABA', textColor: '#333', name: 'Métro 7' },  // École + mamie + tata Sarah

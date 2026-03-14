@@ -210,7 +210,9 @@
       
       // Choisir une ligne au hasard
       currentLine = POOL[Math.floor(Math.random() * POOL.length)];
-      document.getElementById('busDisplay').innerHTML = busSVG(currentLine.color, currentLine.textColor, currentLine.num, 160);
+      // MJ-01 : Max voit le numéro dans fenêtre BLANCHE → doit trouver la couleur
+      // On utilise busSVG avec fond blanc + texte sombre pour cacher la couleur de la ligne
+      document.getElementById('busDisplay').innerHTML = busSVG('#ffffff', '#111111', currentLine.num, 160);
       
       // Générer 5 mauvaises réponses (couleurs distinctes, pas 2 trop proches)
       const otherLines = POOL.filter(l => l.color !== currentLine.color);

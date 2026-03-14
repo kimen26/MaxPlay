@@ -21,7 +21,7 @@ export class SandboxScene extends Phaser.Scene {
 
   private passengers: Passenger[] = [];
   private passengersCollected = 0;
-  private totalPassengers = 5;
+  private totalPassengers = 15;
 
   private cursors!: Phaser.Types.Input.Keyboard.CursorKeys;
   private spaceKey!: Phaser.Input.Keyboard.Key;
@@ -153,15 +153,20 @@ export class SandboxScene extends Phaser.Scene {
   }
 
   private createPassengers(): void {
-    // Positions sur les trottoirs (trottoir H nord: y=315, trottoir H sud: y=485)
     const TROT_N = WORLD_HEIGHT / 2 - 85; // trottoir nord de la route H
     const TROT_S = WORLD_HEIGHT / 2 + 85; // trottoir sud de la route H
+    const TROT_E = WORLD_WIDTH / 2 + 85;  // trottoir est de la route V
+    const TROT_W = WORLD_WIDTH / 2 - 85;  // trottoir ouest de la route V
     const positions = [
-      { x: 400,  y: TROT_N },
-      { x: 900,  y: TROT_N },
-      { x: 1500, y: TROT_N },
-      { x: 600,  y: TROT_S },
-      { x: WORLD_WIDTH - 400, y: TROT_S },
+      // Trottoir nord
+      { x: 300,  y: TROT_N }, { x: 600,  y: TROT_N }, { x: 950,  y: TROT_N },
+      { x: 1300, y: TROT_N }, { x: 1650, y: TROT_N }, { x: 2000, y: TROT_N },
+      // Trottoir sud
+      { x: 450,  y: TROT_S }, { x: 800,  y: TROT_S }, { x: 1100, y: TROT_S },
+      { x: 1500, y: TROT_S }, { x: 1900, y: TROT_S },
+      // Trottoirs verticaux
+      { x: TROT_W, y: 350 }, { x: TROT_E, y: 500 },
+      { x: TROT_W, y: 900 }, { x: TROT_E, y: 1100 },
     ];
 
     positions.forEach((pos, i) => {
@@ -234,7 +239,7 @@ export class SandboxScene extends Phaser.Scene {
   }
 
   private createUI(): void {
-    this.passengerText = this.add.text(20, 20, '🧍 0 / 5', {
+    this.passengerText = this.add.text(20, 20, '🧍 0 / 15', {
       fontFamily: 'Nunito', fontSize: '32px', fontStyle: 'bold', color: '#1A1A1A',
       backgroundColor: '#FFFFFFDD', padding: { x: 20, y: 12 },
     }).setScrollFactor(0).setDepth(10000);

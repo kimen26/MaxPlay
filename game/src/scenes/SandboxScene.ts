@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-import { GAME_WIDTH, GAME_HEIGHT } from '../constants/config';
 import { SoundManager } from '../utils/SoundManager';
 
 const BUS_SPEED = 220;
@@ -239,20 +238,27 @@ export class SandboxScene extends Phaser.Scene {
   }
 
   private createUI(): void {
-    this.passengerText = this.add.text(20, 20, '🧍 0 / 15', {
-      fontFamily: 'Nunito', fontSize: '32px', fontStyle: 'bold', color: '#1A1A1A',
-      backgroundColor: '#FFFFFFDD', padding: { x: 20, y: 12 },
+    const W = this.scale.width;
+    const H = this.scale.height;
+
+    this.passengerText = this.add.text(16, 16, '🧍 0 / 15', {
+      fontFamily: 'Nunito', fontSize: '28px', fontStyle: 'bold', color: '#1A1A1A',
+      backgroundColor: '#FFFFFFDD', padding: { x: 16, y: 10 },
     }).setScrollFactor(0).setDepth(10000);
 
-    this.add.text(GAME_WIDTH / 2, GAME_HEIGHT - 40, '👆 Clique pour conduire   |   ESPACE Klaxon', {
-      fontFamily: 'Nunito', fontSize: '18px', color: '#666666', backgroundColor: '#FFFFFFCC', padding: { x: 20, y: 10 },
+    this.add.text(W / 2, H - 36, '👆 Touche pour conduire', {
+      fontFamily: 'Nunito', fontSize: '16px', color: '#444444', backgroundColor: '#FFFFFFCC', padding: { x: 16, y: 8 },
     }).setOrigin(0.5).setScrollFactor(0).setDepth(10000);
   }
 
   private setupCamera(): void {
+    const W = this.scale.width;
+    const H = this.scale.height;
+    // Zoom pour que ~1200px du monde soit visible sur l'axe le plus court
+    const zoom = Math.min(W, H) / 1200;
     this.cameras.main.setBounds(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
     this.cameras.main.startFollow(this.bus, true, 0.08, 0.08);
-    this.cameras.main.setZoom(0.5);
+    this.cameras.main.setZoom(zoom);
   }
 
   update(_time: number, delta: number): void {
@@ -383,14 +389,16 @@ export class SandboxScene extends Phaser.Scene {
   }
 
   private showVictory(): void {
-    this.add.rectangle(GAME_WIDTH / 2, GAME_HEIGHT / 2, GAME_WIDTH, GAME_HEIGHT, 0x000000, 0.7)
+    const W = this.scale.width;
+    const H = this.scale.height;
+    this.add.rectangle(W / 2, H / 2, W, H, 0x000000, 0.7)
       .setScrollFactor(0).setDepth(20000);
-    
-    this.add.text(GAME_WIDTH / 2, GAME_HEIGHT / 2 - 50, '🎉 BRAVO! 🎉', {
+
+    this.add.text(W / 2, H / 2 - 50, '🎉 BRAVO! 🎉', {
       fontFamily: 'Nunito', fontSize: '52px', fontStyle: 'bold', color: '#FFD700',
     }).setOrigin(0.5).setScrollFactor(0).setDepth(20001);
-    
-    this.add.text(GAME_WIDTH / 2, GAME_HEIGHT / 2 + 30, 'Tu as collecté tous les passagers!', {
+
+    this.add.text(W / 2, H / 2 + 30, 'Tu as collecté tous les passagers!', {
       fontFamily: 'Nunito', fontSize: '24px', color: '#FFFFFF',
     }).setOrigin(0.5).setScrollFactor(0).setDepth(20001);
 

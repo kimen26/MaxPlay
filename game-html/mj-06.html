@@ -563,22 +563,34 @@
       const zoneW = zone.offsetWidth;
       const zoneH = zone.offsetHeight;
 
+      const BUS_H = 52; // hauteur approximative du bus SVG
+      const margin = 10;
+      const maxX = zoneW - BUS_WIDTH - margin;
+      const maxY = zoneH - BUS_H - margin;
+
+      // Placement aléatoire sans chevauchement — max 80 tentatives par bus
+      const placed = [];
+      function overlaps(x, y) {
+        return placed.some(p =>
+          Math.abs(p.x - x) < BUS_WIDTH + margin &&
+          Math.abs(p.y - y) < BUS_H + margin
+        );
+      }
+
       shuffled.forEach((line, i) => {
         const el = document.createElement('div');
         el.className = 'bus-draggable';
         el.dataset.num = line.num;
         el.innerHTML = busSVG(line.color, line.textColor, line.num, BUS_WIDTH);
 
-        // Grille 3 colonnes × 2 lignes — bus bien espacés, pas superposés
-        const cols = 3;
-        const rows = Math.ceil(BUS_LINES.length / cols);
-        const col = i % cols;
-        const row = Math.floor(i / cols);
-        const padX = 12, padY = 16;
-        const colW = (zoneW - padX * (cols + 1)) / cols;
-        const rowH = (zoneH - padY * (rows + 1)) / rows;
-        const x = padX + col * (colW + padX) + (colW - BUS_WIDTH) / 2;
-        const y = padY + row * (rowH + padY) + (rowH - 50) / 2;
+        // Position aléatoire visible dans busZone, sans toucher les bords ni la zone garage
+        let x, y, attempts = 0;
+        do {
+          x = margin + Math.random() * (maxX - margin);
+          y = margin + Math.random() * (maxY - margin);
+          attempts++;
+        } while (overlaps(x, y) && attempts < 80);
+        placed.push({ x, y });
 
         el.style.left = x + 'px';
         el.style.top  = y + 'px';

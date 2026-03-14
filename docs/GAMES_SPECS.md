@@ -145,21 +145,29 @@
 
 **Couleurs badges** : `getBadgeStyle(ligneNum)` depuis `LIGNES` de data.js — jamais de classe CSS hardcodée
 
-**Pool** : Lignes quotidiennes de Max avec vrais terminus :
+**Pool** : **Tous les bus** (TERMINUS_DATA, 21 entrées = LIGNES complet) — variable renommée `TERMINUS_DATA` pour éviter conflit avec `DESTINATIONS` de data.js.
 | Ligne | Destination | Direction |
 |-------|-------------|-----------|
 | M7 | Villejuif - Louis Aragon | sud |
+| M6 | Nation | est |
 | T7 | Villejuif - Louis Aragon | sud |
 | 125 | Porte de Gentilly | nord |
 | 131 | Porte d'Italie | nord |
 | 132 | Porte de Choisy | nord |
-| 162 | Porte de Champerret | nord |
-| 172 | Porte de Bagnolet | est |
+| 162 | Clamart - Hôpital Béclère | sud |
+| 172 | Porte de Bagnolet | nord |
 | 180 | Porte de Clignancourt | nord |
+| 184 | Orly - Aéroport | sud |
 | 185 | Porte d'Italie | nord |
 | 186 | Porte d'Orléans | ouest |
-| 47 | Porte de Bagnolet | nord |
+| 286 | Villejuif - Louis Aragon | sud |
+| 323 | Rungis - La Fraternelle | sud |
 | 380 | Créteil - Préfecture | est |
+| 2234 | Massy - Palaiseau | ouest |
+| 47 | Porte de Bagnolet | nord |
+| N15 | Gare de Lyon | nord |
+| N22 | Châtelet | nord |
+| V6 | L'Haÿ-les-Roses - Mairie | nord |
 | V7 | Chevilly - Marché | sud |
 
 **Audio** : TTS après bonne réponse (obligatoire)
@@ -189,9 +197,42 @@
 
 ---
 
-## MJ-07 — La journée de Max (Sandbox)
+## MJ-07 (menu) — Trie les bus !
 
-**Fichier** : `game-html/mj-07.html` (intro) + `game/` (Phaser app)
+**Fichier** : `game-html/mj-08.html` (numéro 7 dans le menu, fichier nommé mj-08)
+
+**Objectif pédagogique** : Classer les bus par famille de couleur. Triage, catégorisation.
+
+**Mécanique** :
+- 21 bus SVG posés aléatoirement (X+Y random, sans chevauchement)
+- 6 boîtes de familles à droite (colonne fixe)
+- Glisser chaque bus vers sa boîte de couleur
+- Mauvais groupe : shake + retour position initiale
+- Victoire : défilé de toutes les familles avec leurs bus
+
+**Bus** : `busSVG()` — bus avec carrosserie en couleur de la ligne, numéro visible
+
+**Pool** : **Tous les bus** (ALL_BUSES = LIGNES, 21 lignes)
+
+**Positions** : Aléatoires (random X + Y), sans chevauchement, sans toucher la zone boîtes
+
+**Familles (6 groupes)** :
+| Famille | Lignes | Couleurs |
+|---------|--------|----------|
+| 🔵 Bleu | 162, 125, N15, N22 | #0064B1, #006EB8, #000091 |
+| 🟢 Vert | 172, 380, V6, M6 | #008C59, #75CE89, #6ECA97 |
+| 🟡 Orange/Jaune | 185, 184, T7, 323, 180 | #F58443, #DCAC27, #C2A000, #CEC92A, #9B9839 |
+| 🟣 Violet/Rose | 132, 2234, 286, 186, 47, M7 | #652C90, #B43C95, #C9A2CD, #FF82B4, #FA9ABA |
+| 🔴 Rouge | V7 | #E3051C |
+| 🟤 Brun | 131 | #8D653A |
+
+**Audio** : sons AudioContext (ok/wrong/victory)
+
+---
+
+## MJ-08 (menu) — La journée de Max (Sandbox)
+
+**Fichier** : `game-html/mj-07.html` (splash intro) + `game/` (Phaser app, build → `mj-07/`)
 
 **Objectif pédagogique** : Libre exploration — Max se déplace dans Villejuif, monte dans les bus, découvre son quartier.
 

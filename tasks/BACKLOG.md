@@ -236,7 +236,7 @@ MaxPlay V0
 ### EP-MJ05 – MJ-05 · Quel bus pour aller où ?
 - [x] T-151 : Base de données destinations (école, Valouette, mamie, tata Sarah...)
 - [x] T-152 : UI destination + 4 bus proposés
-- [~] T-153 : Logique réponse + feedback carte animée → sans carte pour l'instant
+- [x] T-153 : Feedback fin de partie → `busParade()` (défilé de bus en victoire)
 
 ### EP-MJ06 – MJ-06 · Au garage le soir !
 - [x] T-161 : Bus SVG IDFM (vraies lignes, vraies couleurs) — plus de div CSS colorés
@@ -335,6 +335,13 @@ MaxPlay V0
 ---
 
 ## Changelog sessions
+
+### 2026-03-15 – Session 7 (busParade + MJ-04 phrases + map-mockups)
+- **feedback.js** : `busParade()` ajouté — défilé de bus en victoire (scroll gauche→droite + klaxon)
+- **MJ-01/02/02b/05/06** : `busParade()` appelé sur écran fin de partie
+- **MJ-04** : Phrases mises à jour — vocabulaire varié (animaux, nature, famille) moins centré transport
+- **map-mockups.html** : Outil de preview tiles Modern Exteriors 48×48 — maquettes quartiers Villejuif
+- **settings.local.json** : Hook ExitPlanMode ajouté + hook Stop enrichi
 
 ### 2026-03-13 – Session 6 (corrections multi-jeux)
 - **MJ-01** : Anti-doublons couleurs proches dans les 6 swatches (`selectDistinctColors`)

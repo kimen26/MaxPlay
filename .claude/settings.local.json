@@ -29,7 +29,19 @@
       "Bash(node -e \"const s = require\\(require\\(''os''\\).homedir\\(\\) + ''/.claude/settings.json''\\); console.log\\(''Hooks définis:'', Object.keys\\(s.hooks\\).join\\('', ''\\)\\); console.log\\(''Total hooks:'', Object.values\\(s.hooks\\).flat\\(\\).length\\);\")",
       "Bash(BASE=\"c:/ProjetsPerso/Claude_Projects/MaxPlay/game/public/assets/sounds\" __NEW_LINE_103e7d9cec486fb6__ echo \"=== Creazilla bus door ===\" curl -L -o \"$BASE/bus/door.wav\" \"https://creazilla.com/media/audio/15474030/\" -H \"User-Agent: Mozilla/5.0\" --max-time 15 -w \"Status: %{http_code}, Size: %{size_download}\\\\n\" -s -I)",
       "Read(//c/ProjetsPerso/Claude_Projects/MaxPlay/**)",
-      "Bash(ls c:/ProjetsPerso/Claude_Projects/MaxPlay/docs/*.html)"
+      "Bash(ls c:/ProjetsPerso/Claude_Projects/MaxPlay/docs/*.html)",
+      "Bash(ls -la \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\game\\\\public\\\\assets\\\\sprites\\\\vehicles\\\\bus\"\" 2>/dev/null || ls -la /c/ProjetsPerso/Claude_Projects/MaxPlay/game/public/assets/sprites/vehicles/bus/ 2>/dev/null || echo \"Path not found \")",
+      "Bash(gh run:*)",
+      "Bash(node -e \":*)",
+      "Bash(git push:*)",
+      "Read(//c//**)",
+      "Bash(grep -E \"\\\\.\\(png|jpg|json\\)$\")",
+      "Bash(find /c/Users/kimen -type d -name *tiles*)",
+      "Bash(find /c/Users/kimen -type d -name *assets*)",
+      "Bash(find /c/ProjetsPerso/Claude_Projects/MaxPlay -name *.png -type f)",
+      "Bash(done)",
+      "Bash(find /c/ProjetsPerso/Claude_Projects/Carte_Tiled/Modern_Exteriors_32x32 -maxdepth 2 -type f \\\\\\(-name *.md -o -name README* -o -name *.txt -o -name *guide* -o -name *.json \\\\\\))",
+      "Bash(__NEW_LINE_f0492545078ec18a__ echo:*)"
     ]
   },
   "hooks": {
@@ -42,6 +54,15 @@
             "command": "cd \"c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\game\" && npx tsc --noEmit 2>&1 | head -20"
           }
         ]
+      },
+      {
+        "matcher": "ExitPlanMode",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "echo '[MaxPlay] ⚠️  Plan validé — OBLIGATOIRE avant de coder : 1) Ajouter les tâches dans tasks/BACKLOG.md  2) Créer les TodoWrite correspondants'"
+          }
+        ]
       }
     ],
     "Stop": [
@@ -50,7 +71,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "echo '[MaxPlay] Fin de session — as-tu mis à jour : memory/MEMORY.md · tasks/BACKLOG.md · README.md ?'"
+            "command": "echo '[MaxPlay] ✅ Checklist fin de session : tasks/BACKLOG.md épics à jour ? · memory/MEMORY.md état à jour ? · VISION.md nouvelles règles ? · ~/.claude/projects/.../memory/MEMORY.md mis à jour ?'"
           }
         ]
       }

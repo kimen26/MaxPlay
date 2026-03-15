@@ -176,18 +176,21 @@
     // Phase 1 : mots courts que Max sait lire (BUS, TRAM, PAPA, MAMAN, VELO...)
 
     const PHRASES = [
-      { before: "Papa prend le", answer: "BUS", after: "pour aller au travail.", options: ["BUS", "TRAM", "VELO", "TRAIN"], emoji: "👨" },
-      { before: "Max aime le", answer: "TRAM", after: "rouge à Villejuif.", options: ["TRAM", "BUS", "METRO", "VELO"], emoji: "🚊" },
-      { before: "Maman est dans le", answer: "METRO", after: "avec Max.", options: ["METRO", "BUS", "TRAM", "TRAIN"], emoji: "👩" },
-      { before: "Le bus est", answer: "ROUGE", after: "comme une tomate.", options: ["ROUGE", "BLEU", "VERT", "JAUNE"], emoji: "🔴" },
-      { before: "Max monte dans le", answer: "BUS", after: "avec papa.", options: ["BUS", "TRAM", "VELO", "TRAIN"], emoji: "🧒" },
-      { before: "Le", answer: "VELO", after: "de papa est dans le garage.", options: ["VELO", "BUS", "TRAM", "TRAIN"], emoji: "🚲" },
-      { before: "Le bus est", answer: "VERT", after: "comme un arbre.", options: ["VERT", "ROUGE", "BLEU", "JAUNE"], emoji: "🌳" },
-      { before: "Le", answer: "TRAIN", after: "va très vite !", options: ["TRAIN", "BUS", "VELO", "TRAM"], emoji: "🚄" },
-      { before: "Le bus est", answer: "BLEU", after: "comme le ciel.", options: ["BLEU", "ROUGE", "VERT", "JAUNE"], emoji: "🔵" },
-      { before: "Papa dit", answer: "BRAVO", after: "à Max.", options: ["BRAVO", "MERCI", "BONJOUR", "SALUT"], emoji: "👏" },
-      { before: "Max dit", answer: "MERCI", after: "au chauffeur.", options: ["MERCI", "BRAVO", "BONJOUR", "SALUT"], emoji: "😊" },
-      { before: "Le", answer: "LOUP", after: "est dans la forêt.", options: ["LOUP", "CHAT", "LION", "OURS"], emoji: "🐺" },
+      { before: "Le", answer: "CHAT", after: "dort sur le canapé.", options: ["CHAT", "CHIEN", "LAPIN", "OURS"], emoji: "🐱" },
+      { before: "Max mange une", answer: "POMME", after: "rouge.", options: ["POMME", "POIRE", "FRAISE", "BANANE"], emoji: "🍎" },
+      { before: "Le", answer: "LOUP", after: "est dans la forêt.", options: ["LOUP", "RENARD", "LION", "OURS"], emoji: "🐺" },
+      { before: "Papa dit", answer: "BRAVO", after: "à Max.", options: ["BRAVO", "MERCI", "SALUT", "COUCOU"], emoji: "👏" },
+      { before: "Max boit du", answer: "LAIT", after: "le matin.", options: ["LAIT", "JUS", "CAFÉ", "THÉ"], emoji: "🥛" },
+      { before: "Le ciel est", answer: "BLEU", after: "aujourd'hui.", options: ["BLEU", "ROUGE", "VERT", "NOIR"], emoji: "☀️" },
+      { before: "Maman fait un", answer: "GATEAU", after: "au chocolat.", options: ["GATEAU", "PAIN", "SUCRE", "YAOURT"], emoji: "🎂" },
+      { before: "Le", answer: "CHIEN", after: "aboie fort !", options: ["CHIEN", "CHAT", "LAPIN", "CANARD"], emoji: "🐶" },
+      { before: "Max aime la", answer: "NEIGE", after: "en hiver.", options: ["NEIGE", "PLUIE", "GRELE", "SOLEIL"], emoji: "❄️" },
+      { before: "La", answer: "LUNE", after: "brille la nuit.", options: ["LUNE", "ETOILE", "SOLEIL", "NUAGE"], emoji: "🌙" },
+      { before: "Le", answer: "LION", after: "rugit très fort.", options: ["LION", "TIGRE", "OURS", "LOUP"], emoji: "🦁" },
+      { before: "Max saute dans la", answer: "MER", after: "avec papa.", options: ["MER", "PISCINE", "RIVIERE", "LAC"], emoji: "🏖️" },
+      { before: "La", answer: "PLUIE", after: "tombe du ciel.", options: ["PLUIE", "NEIGE", "GRELE", "BRUME"], emoji: "🌧️" },
+      { before: "Max dit", answer: "MERCI", after: "à maman.", options: ["MERCI", "BRAVO", "COUCOU", "SALUT"], emoji: "😊" },
+      { before: "Le", answer: "CANARD", after: "nage dans l'eau.", options: ["CANARD", "LAPIN", "CHAT", "CHIEN"], emoji: "🦆" },
     ];
 
     let score = 0;

@@ -65,3 +65,47 @@ function shuffle(array) {
 function pickRandom(array, n) {
   return shuffle(array).slice(0, n);
 }
+
+/**
+ * Défilé de bus en victoire — buses scroll across screen left→right with klaxon
+ * @param {Array} lines - Tableau de lignes { num, color, textColor } à afficher
+ *   Si non fourni, utilise LIGNES de data.js
+ * @param {Function} [onDone] - Callback appelé quand le défilé est terminé
+ */
+function busParade(lines, onDone) {
+  const pool = (lines && lines.length) ? lines : (typeof LIGNES !== 'undefined' ? shuffle([...LIGNES]) : []);
+  if (!pool.length) { if (onDone) onDone(); return; }
+
+  const container = document.createElement('div');
+  container.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;z-index:9999;';
+  document.body.appendChild(container);
+
+  const rows = Math.min(pool.length, 5);
+  const rowH = 100 / rows;
+
+  pool.slice(0, rows).forEach((line, i) => {
+    const delay = i * 300;
+    const duration = 1800 + Math.random() * 400;
+    const yPct = rowH * i + rowH * 0.2 + Math.random() * rowH * 0.3;
+
+    const wrapper = document.createElement('div');
+    wrapper.style.cssText = `position:absolute;top:${yPct}%;left:-160px;transition:left ${duration}ms linear;`;
+    wrapper.innerHTML = typeof busSVG === 'function'
+      ? busSVG(line.color, line.textColor, line.num, 120)
+      : `<div style="background:${line.color};color:${line.textColor || '#fff'};border-radius:8px;padding:6px 14px;font-weight:900;font-size:1.2rem;">${line.num}</div>`;
+    container.appendChild(wrapper);
+
+    setTimeout(() => {
+      wrapper.style.left = (window.innerWidth + 160) + 'px';
+      sndKlaxon();
+    }, delay);
+
+    setTimeout(() => wrapper.remove(), delay + duration + 100);
+  });
+
+  const totalDuration = (rows - 1) * 300 + 2400;
+  setTimeout(() => {
+    container.remove();
+    if (onDone) onDone();
+  }, totalDuration);
+}

@@ -755,6 +755,7 @@
         setTimeout(() => {
           sndVictory();
           createConfetti();
+          busParade(BUS_LINES);
           document.getElementById('victoryOverlay').classList.add('show');
         }, 900);
       }

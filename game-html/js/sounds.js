@@ -1,8 +1,17 @@
 // ─── Sounds (Web Audio API) ───
 // Sons optimisés pour enfant 4 ans
 
-function getAC() { 
-  return new (window.AudioContext || window.webkitAudioContext)(); 
+// Singleton AudioContext — un seul par page, jamais recréé
+let _AC = null;
+function getAC() {
+  if (!_AC) {
+    _AC = new (window.AudioContext || window.webkitAudioContext)();
+  }
+  // Réveille le contexte si suspendu (politique autoplay navigateur)
+  if (_AC.state === 'suspended') {
+    _AC.resume();
+  }
+  return _AC;
 }
 
 // Klaxon de bus (amélioré)

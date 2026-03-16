@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-10 – Tableau de bord</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(160deg, #1a1a2e, #16213e, #0f3460);
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    /* Header bus */
+    .bus-cabin {
+      width: 100%;
+      max-width: 680px;
+      background: linear-gradient(180deg, #2d5a1b, #1e3d12);
+      border-radius: 0 0 30px 30px;
+      padding: 12px 20px 18px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+    }
+    .back-btn {
+      text-decoration: none;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .cabin-title {
+      color: #fff;
+      font-size: 1.3rem;
+      font-weight: 900;
+      text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+      flex: 1;
+    }
+    .cabin-subtitle {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    /* Speedometer display */
+    .speedo {
+      margin: 14px auto 8px;
+      width: 130px; height: 130px;
+      position: relative;
+    }
+    .speedo canvas { display: block; }
+
+    /* Dashboard body */
+    .dashboard {
+      width: 100%;
+      max-width: 680px;
+      padding: 10px 16px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* Sound button group */
+    .group-label {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.72rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: -6px;
+      padding-left: 4px;
+    }
+
+    .buttons-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .snd-btn {
+      flex: 1;
+      min-width: 80px;
+      background: linear-gradient(145deg, #2a2a4a, #1e1e38);
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 18px;
+      padding: 16px 10px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.1s, box-shadow 0.1s, border-color 0.15s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
+      touch-action: manipulation;
+      min-height: 80px;
+    }
+    .snd-btn:active {
+      transform: scale(0.93);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4), inset 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .snd-btn.active {
+      border-color: rgba(255,255,255,0.5);
+      box-shadow: 0 0 20px var(--glow), 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    .btn-icon { font-size: 1.9rem; line-height: 1; }
+    .btn-label {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.72rem;
+      font-weight: 900;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    /* Color accents per button */
+    .btn-klaxon   { --glow: rgba(255,200,50,0.6);  border-color: rgba(255,200,50,0.3); }
+    .btn-moteur   { --glow: rgba(100,200,100,0.6); border-color: rgba(100,200,100,0.3); }
+    .btn-porte    { --glow: rgba(100,180,255,0.6); border-color: rgba(100,180,255,0.3); }
+    .btn-tschh    { --glow: rgba(200,150,255,0.6); border-color: rgba(200,150,255,0.3); }
+    .btn-pinpon   { --glow: rgba(255,80,80,0.6);   border-color: rgba(255,80,80,0.3); }
+    .btn-bravo    { --glow: rgba(255,180,50,0.6);  border-color: rgba(255,180,50,0.3); }
+    .btn-victory  { --glow: rgba(80,220,180,0.6);  border-color: rgba(80,220,180,0.3); }
+    .btn-ding     { --glow: rgba(180,255,100,0.6); border-color: rgba(180,255,100,0.3); }
+    .btn-buzz     { --glow: rgba(255,100,80,0.6);  border-color: rgba(255,100,80,0.3); }
+    .btn-rire     { --glow: rgba(255,220,50,0.6);  border-color: rgba(255,220,50,0.3); }
+    .btn-count    { --glow: rgba(120,200,255,0.6); border-color: rgba(120,200,255,0.3); }
+    .btn-prout    { --glow: rgba(150,255,80,0.6);  border-color: rgba(150,255,80,0.3); }
+
+    /* Easter egg hint */
+    .hint {
+      color: rgba(255,255,255,0.25);
+      font-size: 0.65rem;
+      text-align: center;
+      padding-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="bus-cabin">
+    <a href="index.html" class="back-btn">←</a>
+    <div>
+      <div class="cabin-title">🚌 Tableau de bord</div>
+      <div class="cabin-subtitle">Appuie sur les boutons !</div>
+    </div>
+  </div>
+
+  <div class="dashboard">
+
+    <div class="group-label">Conduite</div>
+    <div class="buttons-row">
+      <button class="snd-btn btn-klaxon" onclick="play('klaxon',this)">
+        <span class="btn-icon">📯</span>
+        <span class="btn-label">Klaxon</span>
+      </button>
+      <button class="snd-btn btn-moteur" onclick="play('moteur',this)">
+        <span class="btn-icon">⚙️</span>
+        <span class="btn-label">Moteur</span>
+      </button>
+      <button class="snd-btn btn-porte" onclick="play('porte',this)">
+        <span class="btn-icon">🚪</span>
+        <span class="btn-label">Porte</span>
+      </button>
+      <button class="snd-btn btn-tschh" onclick="play('tschh',this)">
+        <span class="btn-icon">💨</span>
+        <span class="btn-label">Freins</span>
+      </button>
+    </div>
+
+    <div class="group-label">Urgences</div>
+    <div class="buttons-row">
+      <button class="snd-btn btn-pinpon" onclick="play('pinpon',this)">
+        <span class="btn-icon">🚨</span>
+        <span class="btn-label">Sirène</span>
+      </button>
+    </div>
+
+    <div class="group-label">Bravo !</div>
+    <div class="buttons-row">
+      <button class="snd-btn btn-bravo" onclick="play('bravo',this)">
+        <span class="btn-icon">🎵</span>
+        <span class="btn-label">Bravo</span>
+      </button>
+      <button class="snd-btn btn-victory" onclick="play('victory',this)">
+        <span class="btn-icon">🏆</span>
+        <span class="btn-label">Victoire</span>
+      </button>
+      <button class="snd-btn btn-ding" onclick="play('ding',this)">
+        <span class="btn-icon">✨</span>
+        <span class="btn-label">Ding</span>
+      </button>
+    </div>
+
+    <div class="group-label">Autres</div>
+    <div class="buttons-row">
+      <button class="snd-btn btn-buzz" onclick="play('buzz',this)">
+        <span class="btn-icon">❌</span>
+        <span class="btn-label">Buzz</span>
+      </button>
+      <button class="snd-btn btn-rire" onclick="play('rire',this)">
+        <span class="btn-icon">😂</span>
+        <span class="btn-label">Rire</span>
+      </button>
+      <button class="snd-btn btn-count" onclick="play('count',this)">
+        <span class="btn-icon">🕰️</span>
+        <span class="btn-label">Tic tac</span>
+      </button>
+    </div>
+
+    <!-- Easter egg : caché, tap 5x sur le coin -->
+    <div style="text-align:right; padding-right:4px;">
+      <button id="easterBtn" class="snd-btn btn-prout"
+              style="width:52px;min-width:52px;min-height:52px;padding:10px;opacity:0.25;transition:opacity 0.3s"
+              onclick="play('prout',this);this.style.opacity='0.25'">
+        <span class="btn-icon" style="font-size:1.4rem">💨</span>
+      </button>
+    </div>
+
+    <div class="hint">Psst… il y a un bouton caché 🤫</div>
+
+  </div>
+
+  <script src="js/sounds.js"></script>
+  <script>
+    const FNS = {
+      klaxon:  sndKlaxon,
+      moteur:  sndMoteur,
+      porte:   sndPorte,
+      tschh:   sndTschh,
+      pinpon:  sndPinpon,
+      bravo:   sndBravo,
+      victory: sndVictory,
+      ding:    sndDing,
+      buzz:    sndBuzz,
+      rire:    sndRire,
+      count:   sndCount,
+      prout:   sndProut,
+    };
+
+    let easterTaps = 0;
+    const easterBtn = document.getElementById('easterBtn');
+
+    // Reveal easter egg after 3 taps on any button
+    let tapTotal = 0;
+    function play(name, btn) {
+      const fn = FNS[name];
+      if (!fn) return;
+      fn();
+      flash(btn);
+      tapTotal++;
+      if (tapTotal >= 5 && easterBtn.style.opacity !== '1') {
+        easterBtn.style.opacity = '1';
+      }
+    }
+
+    function flash(btn) {
+      btn.classList.add('active');
+      setTimeout(() => btn.classList.remove('active'), 300);
+    }
+  </script>
+</body>
+</html>

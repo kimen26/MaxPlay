@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-11 – Quel pays ?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <!-- flag-icons CDN (260 drapeaux SVG) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(160deg, #0d3b5e, #1a2a3a);
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    .game-header {
+      width: 100%;
+      max-width: 680px;
+      padding: 14px 16px 10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .back-btn {
+      text-decoration: none;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .header-text { flex:1; }
+    .header-title { color:#fff; font-size:1.3rem; font-weight:900; }
+    .header-sub   { color:rgba(255,255,255,0.65); font-size:0.78rem; font-weight:700; }
+
+    /* Score */
+    .score-bar {
+      width: 100%;
+      max-width: 680px;
+      padding: 0 16px 8px;
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .score-pip {
+      width: 28px; height: 14px;
+      border-radius: 7px;
+      background: rgba(255,255,255,0.2);
+      transition: background 0.3s;
+    }
+    .score-pip.ok   { background: #4CAF50; }
+    .score-pip.miss { background: #ff6b6b; }
+    .score-label {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.8rem;
+      font-weight: 900;
+      margin-left: auto;
+    }
+
+    /* Main game area */
+    .game-area {
+      width: 100%;
+      max-width: 680px;
+      padding: 0 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    /* Bus with flag */
+    .bus-wrap {
+      position: relative;
+      display: inline-block;
+    }
+    .bus-svg-container svg {
+      filter: drop-shadow(0 6px 14px rgba(0,0,0,0.4));
+    }
+    /* Flag inside bus window */
+    .flag-in-bus {
+      position: absolute;
+      /* positioned over the destination window area of the bus SVG */
+      top: 18%;
+      left: 18%;
+      width: 64%;
+      height: 38%;
+      border-radius: 4px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .fi {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover;
+    }
+
+    /* TTS Help button */
+    .tts-btn {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      border: none;
+      border-radius: 28px;
+      padding: 12px 24px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 4px 14px rgba(102,126,234,0.45);
+      transition: transform 0.15s, box-shadow 0.15s;
+      touch-action: manipulation;
+    }
+    .tts-btn:active { transform: scale(0.95); }
+
+    /* Answer choices */
+    .choices {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      width: 100%;
+    }
+    .choice-btn {
+      background: rgba(255,255,255,0.08);
+      border: 2px solid rgba(255,255,255,0.15);
+      border-radius: 16px;
+      padding: 14px 10px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: transform 0.12s, border-color 0.2s, background 0.2s;
+      touch-action: manipulation;
+      min-height: 80px;
+    }
+    .choice-btn:active { transform: scale(0.96); }
+    .choice-btn.correct { background: rgba(76,175,80,0.25); border-color: #4CAF50; }
+    .choice-btn.wrong   { background: rgba(255,107,107,0.2); border-color: #ff6b6b; }
+
+    .choice-flag {
+      width: 48px; height: 32px;
+      border-radius: 4px;
+      overflow: hidden;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    }
+    .choice-flag .fi { width:48px!important; height:32px!important; }
+
+    .choice-name {
+      color: #fff;
+      font-size: 0.92rem;
+      font-weight: 900;
+      line-height: 1.2;
+      text-align: left;
+    }
+
+    /* Feedback overlay */
+    .feedback {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 100;
+      pointer-events: none;
+    }
+    .feedback.show { display: flex; }
+    .feedback-emoji {
+      font-size: 6rem;
+      animation: popIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    @keyframes popIn {
+      from { transform: scale(0); opacity:0; }
+      to   { transform: scale(1); opacity:1; }
+    }
+
+    /* Victory screen */
+    #victoryScreen {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.85);
+      z-index: 200;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+    #victoryScreen.show { display: flex; }
+    .victory-title {
+      color: #fff;
+      font-size: 2.5rem;
+      font-weight: 900;
+      text-align: center;
+      text-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+    }
+    .victory-score {
+      color: #FFD700;
+      font-size: 1.4rem;
+      font-weight: 900;
+    }
+    .replay-btn {
+      background: linear-gradient(135deg, #4CAF50, #2E7D32);
+      color: #fff;
+      border: none;
+      border-radius: 28px;
+      padding: 16px 36px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 900;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(76,175,80,0.4);
+      touch-action: manipulation;
+    }
+
+    /* Mode selector */
+    .mode-row {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+      margin-bottom: -4px;
+    }
+    .mode-btn {
+      flex: 1;
+      background: rgba(255,255,255,0.1);
+      border: 2px solid transparent;
+      border-radius: 12px;
+      padding: 8px;
+      color: rgba(255,255,255,0.6);
+      font-family: 'Nunito', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 900;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .mode-btn.active {
+      border-color: rgba(255,255,255,0.4);
+      background: rgba(255,255,255,0.18);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="game-header">
+    <a href="index.html" class="back-btn">←</a>
+    <div class="header-text">
+      <div class="header-title">🌍 Quel pays ?</div>
+      <div class="header-sub">Trouve le drapeau !</div>
+    </div>
+    <button class="back-btn" onclick="speakCountry()" title="Écouter le nom du pays" style="font-size:1.2rem">🔊</button>
+  </div>
+
+  <div class="score-bar" id="scoreBar"></div>
+
+  <div class="game-area">
+
+    <!-- Mode selector -->
+    <div class="mode-row">
+      <button class="mode-btn active" id="modeKnown" onclick="setMode('known')">⭐ Connus de Max</button>
+      <button class="mode-btn" id="modeAll" onclick="setMode('all')">🌍 Tous les pays</button>
+    </div>
+
+    <!-- Bus avec drapeau -->
+    <div class="bus-wrap">
+      <div class="bus-svg-container" id="busSVGContainer"></div>
+      <div class="flag-in-bus" id="flagInBus"></div>
+    </div>
+
+    <!-- Bouton aide TTS -->
+    <button class="tts-btn" onclick="speakCountry()">
+      <span>🔊</span>
+      <span id="ttsLabel">Écoute le nom du pays</span>
+    </button>
+
+    <!-- Choix de réponses -->
+    <div class="choices" id="choices"></div>
+
+  </div>
+
+  <!-- Feedback visuel -->
+  <div class="feedback" id="feedback">
+    <div class="feedback-emoji" id="feedbackEmoji"></div>
+  </div>
+
+  <!-- Écran victoire -->
+  <div id="victoryScreen">
+    <div style="font-size:4rem">🌍</div>
+    <div class="victory-title">Bravo Max !</div>
+    <div class="victory-score" id="victoryScore"></div>
+    <button class="replay-btn" onclick="startGame()">Rejouer !</button>
+    <a href="index.html" style="color:rgba(255,255,255,0.6);font-size:0.9rem;font-weight:900;text-decoration:none;margin-top:-8px">← Menu</a>
+  </div>
+
+  <script src="js/sounds.js"></script>
+  <script src="js/bus-svg.js"></script>
+  <script>
+    // ─── Données pays ───────────────────────────────────────────────────────────
+    // code ISO 3166-1 alpha-2 (pour flag-icons)
+    // known: true = connu de Max (19 pays)
+    const PAYS = [
+      { code:'fr', nom:'France',          known:true  },
+      { code:'gb', nom:'Royaume-Uni',     known:true  },
+      { code:'it', nom:'Italie',          known:true  },
+      { code:'tn', nom:'Tunisie',         known:true  },
+      { code:'br', nom:'Brésil',          known:true  },
+      { code:'ch', nom:'Suisse',          known:true  },
+      { code:'us', nom:'États-Unis',      known:true  },
+      { code:'cn', nom:'Chine',           known:true  },
+      { code:'jp', nom:'Japon',           known:true  },
+      { code:'ru', nom:'Russie',          known:true  },
+      { code:'de', nom:'Allemagne',       known:true  },
+      { code:'eg', nom:'Égypte',          known:true  },
+      { code:'th', nom:'Thaïlande',       known:true  },
+      { code:'ma', nom:'Maroc',           known:true  },
+      { code:'ar', nom:'Argentine',       known:true  },
+      { code:'nl', nom:'Pays-Bas',        known:true  },
+      { code:'lu', nom:'Luxembourg',      known:true  },
+      { code:'kh', nom:'Cambodge',        known:true  },
+      { code:'es', nom:'Espagne',         known:true  },
+      // Extra pays — non "connus" mais dans le pool complet
+      { code:'pt', nom:'Portugal',        known:false },
+      { code:'be', nom:'Belgique',        known:false },
+      { code:'pl', nom:'Pologne',         known:false },
+      { code:'se', nom:'Suède',           known:false },
+      { code:'no', nom:'Norvège',         known:false },
+      { code:'dk', nom:'Danemark',        known:false },
+      { code:'fi', nom:'Finlande',        known:false },
+      { code:'at', nom:'Autriche',        known:false },
+      { code:'gr', nom:'Grèce',           known:false },
+      { code:'tr', nom:'Turquie',         known:false },
+      { code:'mx', nom:'Mexique',         known:false },
+      { code:'ca', nom:'Canada',          known:false },
+      { code:'au', nom:'Australie',       known:false },
+      { code:'in', nom:'Inde',            known:false },
+      { code:'za', nom:'Afrique du Sud',  known:false },
+      { code:'ng', nom:'Nigéria',         known:false },
+      { code:'ke', nom:'Kenya',           known:false },
+      { code:'gh', nom:'Ghana',           known:false },
+      { code:'sn', nom:'Sénégal',         known:false },
+      { code:'ci', nom:'Côte d\'Ivoire',  known:false },
+      { code:'cm', nom:'Cameroun',        known:false },
+      { code:'dz', nom:'Algérie',         known:false },
+      { code:'ly', nom:'Libye',           known:false },
+      { code:'sd', nom:'Soudan',          known:false },
+      { code:'et', nom:'Éthiopie',        known:false },
+      { code:'tz', nom:'Tanzanie',        known:false },
+      { code:'ug', nom:'Ouganda',         known:false },
+      { code:'ao', nom:'Angola',          known:false },
+      { code:'mz', nom:'Mozambique',      known:false },
+      { code:'mg', nom:'Madagascar',      known:false },
+      { code:'bo', nom:'Bolivie',         known:false },
+      { code:'cl', nom:'Chili',           known:false },
+      { code:'co', nom:'Colombie',        known:false },
+      { code:'pe', nom:'Pérou',           known:false },
+      { code:'ve', nom:'Venezuela',       known:false },
+      { code:'ec', nom:'Équateur',        known:false },
+      { code:'uy', nom:'Uruguay',         known:false },
+      { code:'py', nom:'Paraguay',        known:false },
+      { code:'kr', nom:'Corée du Sud',    known:false },
+      { code:'id', nom:'Indonésie',       known:false },
+      { code:'vn', nom:'Viêt Nam',        known:false },
+      { code:'ph', nom:'Philippines',     known:false },
+      { code:'sg', nom:'Singapour',       known:false },
+      { code:'my', nom:'Malaisie',        known:false },
+      { code:'mm', nom:'Myanmar',         known:false },
+      { code:'bd', nom:'Bangladesh',      known:false },
+      { code:'pk', nom:'Pakistan',        known:false },
+      { code:'af', nom:'Afghanistan',     known:false },
+      { code:'ir', nom:'Iran',            known:false },
+      { code:'iq', nom:'Irak',            known:false },
+      { code:'sa', nom:'Arabie Saoudite', known:false },
+      { code:'ae', nom:'Émirats Arabes',  known:false },
+      { code:'il', nom:'Israël',          known:false },
+      { code:'jo', nom:'Jordanie',        known:false },
+      { code:'lb', nom:'Liban',           known:false },
+      { code:'sy', nom:'Syrie',           known:false },
+      { code:'ua', nom:'Ukraine',         known:false },
+      { code:'ro', nom:'Roumanie',        known:false },
+      { code:'hu', nom:'Hongrie',         known:false },
+      { code:'cz', nom:'Tchéquie',        known:false },
+      { code:'sk', nom:'Slovaquie',       known:false },
+      { code:'hr', nom:'Croatie',         known:false },
+      { code:'rs', nom:'Serbie',          known:false },
+      { code:'bg', nom:'Bulgarie',        known:false },
+      { code:'nz', nom:'Nouvelle-Zélande',known:false },
+      { code:'pf', nom:'Polynésie fr.',   known:false },
+      { code:'mq', nom:'Martinique',      known:false },
+      { code:'gp', nom:'Guadeloupe',      known:false },
+      { code:'re', nom:'La Réunion',      known:false },
+      { code:'nc', nom:'Nvl-Calédonie',   known:false },
+      { code:'gf', nom:'Guyane',          known:false },
+    ];
+
+    // ─── État ────────────────────────────────────────────────────────────────────
+    const ROUND_COUNT = 10;
+    let mode = 'known';
+    let pool = [];
+    let currentPays = null;
+    let round = 0;
+    let score = 0;
+    let answered = false;
+
+    // ─── Mode ───────────────────────────────────────────────────────────────────
+    function setMode(m) {
+      mode = m;
+      document.getElementById('modeKnown').classList.toggle('active', m === 'known');
+      document.getElementById('modeAll').classList.toggle('active', m === 'all');
+      startGame();
+    }
+
+    // ─── Démarrer / rejouer ──────────────────────────────────────────────────────
+    function startGame() {
+      round = 0;
+      score = 0;
+      document.getElementById('victoryScreen').classList.remove('show');
+      pool = shuffle(mode === 'known' ? PAYS.filter(p => p.known) : PAYS);
+      nextRound();
+    }
+
+    // ─── Tour suivant ────────────────────────────────────────────────────────────
+    function nextRound() {
+      if (round >= ROUND_COUNT) { showVictory(); return; }
+      answered = false;
+      currentPays = pool[round % pool.length];
+
+      // Score bar
+      renderScoreBar();
+
+      // Bus SVG (carrosserie turquoise standard, fenêtre sera masquée par le drapeau)
+      const busHTML = busSVG('#cccccc', '#333', '', 300);
+      document.getElementById('busSVGContainer').innerHTML = busHTML;
+
+      // Drapeau dans la fenêtre du bus
+      document.getElementById('flagInBus').innerHTML =
+        `<span class="fi fi-${currentPays.code}" style="width:100%;height:100%;background-size:cover;background-position:center;display:block;border-radius:3px"></span>`;
+
+      // Label TTS
+      document.getElementById('ttsLabel').textContent = 'Écoute le nom du pays';
+
+      // Parler automatiquement (aide)
+      setTimeout(speakCountry, 600);
+
+      // Générer 4 choix
+      renderChoices();
+    }
+
+    // ─── Choix ──────────────────────────────────────────────────────────────────
+    function renderChoices() {
+      const usedPool = mode === 'known' ? PAYS.filter(p => p.known) : PAYS;
+      const distractors = shuffle(usedPool.filter(p => p.code !== currentPays.code)).slice(0, 3);
+      const options = shuffle([currentPays, ...distractors]);
+
+      const container = document.getElementById('choices');
+      container.innerHTML = options.map(pays => `
+        <button class="choice-btn" onclick="answer('${pays.code}')">
+          <div class="choice-flag">
+            <span class="fi fi-${pays.code}" style="width:48px;height:32px;background-size:cover;background-position:center;display:block"></span>
+          </div>
+          <div class="choice-name">${pays.nom}</div>
+        </button>
+      `).join('');
+    }
+
+    // ─── Réponse ────────────────────────────────────────────────────────────────
+    function answer(code) {
+      if (answered) return;
+      answered = true;
+      round++;
+
+      const btns = document.querySelectorAll('.choice-btn');
+      btns.forEach(btn => {
+        const btnCode = btn.querySelector('.fi').className.replace(/.*fi-([a-z]+).*/,'$1');
+        if (btnCode === currentPays.code) btn.classList.add('correct');
+        else if (btnCode === code && code !== currentPays.code) btn.classList.add('wrong');
+        btn.style.pointerEvents = 'none';
+      });
+
+      if (code === currentPays.code) {
+        score++;
+        sndDing();
+        showFeedback('🎉');
+        // TTS : dire le nom du pays après bonne réponse
+        setTimeout(() => speak(currentPays.nom), 300);
+      } else {
+        sndBuzz();
+        showFeedback('💪');
+        setTimeout(() => speak(currentPays.nom), 300);
+      }
+
+      setTimeout(nextRound, 1800);
+    }
+
+    // ─── Feedback ────────────────────────────────────────────────────────────────
+    function showFeedback(emoji) {
+      const el = document.getElementById('feedback');
+      document.getElementById('feedbackEmoji').textContent = emoji;
+      el.classList.add('show');
+      setTimeout(() => el.classList.remove('show'), 1200);
+    }
+
+    // ─── Score bar ───────────────────────────────────────────────────────────────
+    function renderScoreBar() {
+      const bar = document.getElementById('scoreBar');
+      let html = '';
+      for (let i = 0; i < ROUND_COUNT; i++) {
+        const cls = i < round ? (i < score ? 'ok' : 'miss') :
+                    i === round ? '' : '';
+        html += `<div class="score-pip ${cls}"></div>`;
+      }
+      html += `<div class="score-label">${score}/${round}</div>`;
+      bar.innerHTML = html;
+    }
+
+    // ─── Victoire ────────────────────────────────────────────────────────────────
+    function showVictory() {
+      sndVictory();
+      renderScoreBar();
+      document.getElementById('victoryScore').textContent = `${score} bonnes réponses sur ${ROUND_COUNT} !`;
+      document.getElementById('victoryScreen').classList.add('show');
+    }
+
+    // ─── TTS ─────────────────────────────────────────────────────────────────────
+    function speakCountry() {
+      if (!currentPays) return;
+      speak(currentPays.nom);
+      document.getElementById('ttsLabel').textContent = currentPays.nom;
+    }
+
+    function speak(text) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'fr-FR';
+      u.rate = 0.85;
+      window.speechSynthesis.speak(u);
+    }
+
+    // ─── Utilitaires ──────────────────────────────────────────────────────────────
+    function shuffle(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    // ─── Init ─────────────────────────────────────────────────────────────────────
+    startGame();
+  </script>
+</body>
+</html>

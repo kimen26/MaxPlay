@@ -25,6 +25,8 @@
 | EP-MJ07 | MJ-07 · Terminus | `[x]` |
 | EP-MJ08 | MJ-08 · Au garage ! | `[x]` |
 | EP-MJ09 | MJ-09 · Trie les bus ! | `[x]` |
+| EP-MJ10 | MJ-10 · Tableau de bord (sons) | `[x]` |
+| EP-MJ11 | MJ-11 · Quel pays ? (drapeaux) | `[x]` |
 | EP-MAXADV | Max Adventure · La journée de Max (sandbox Phaser) | `[x]` |
 | EP-005 | Système de progression (flotte + carte) | `[ ]` |
 | EP-006 | Audio (sons + musique + TTS) | `[ ]` |
@@ -47,6 +49,8 @@ MaxPlay V0
 │   ├── mj-07.html · Terminus
 │   ├── mj-08.html · Au garage ! — pool 362 lignes IDFM
 │   ├── mj-09.html · Trie les bus ! — pool 362 lignes IDFM
+│   ├── mj-10.html · Tableau de bord — 12 boutons sons sandbox
+│   ├── mj-11.html · Quel pays ? — drapeaux + TTS + confettis
 │   ├── max-adventure.html · splash → ./max-adventure/
 │   └── js/
 │       ├── data.js    ← LIGNES (26 actives), source de vérité
@@ -194,6 +198,37 @@ MaxPlay V0
 | **Lacune** | Pas de sprites piétons top-down → à sourcer (itch.io) ou formes simples en attendant |
 | **Base existante** | SandboxScene.ts déjà codée → à faire évoluer |
 | **Tech** | Phaser.js 3 + TypeScript |
+
+---
+
+### MJ-10 · Tableau de bord
+
+| | |
+|--|--|
+| **But** | Sandbox libre — explorer les sons du bus sans objectif |
+| **Mécanique** | 12 boutons thématiques : klaxon, moteur, porte, freins, sirène, bravo, victoire, ding, buzz, rire, tic-tac + easter egg prout caché (révélé après 5 taps) |
+| **UX** | Glow coloré par catégorie, animation flash au tap |
+| **Easter egg** | Bouton prout semi-transparent, révélé après 5 taps totaux |
+| **Sons** | Web Audio API via sounds.js (singleton AudioContext depuis fix session 10) |
+| **Tech** | HTML vanilla · sounds.js |
+
+---
+
+### MJ-11 · Quel pays ?
+
+| | |
+|--|--|
+| **But pédagogique** | Reconnaissance des drapeaux du monde, géographie |
+| **Mécanique** | Drapeau affiché dans la fenêtre destination du bus → 4 choix texte (nom du pays) → TTS lit le nom |
+| **Drapeaux** | `flag-icons` CDN (260 drapeaux SVG) via CSS `fi fi-XX` |
+| **Affichage** | Drapeau en `background-size:contain` + fond noir (pillarbox) — inset 2px pour voir le contour |
+| **Pool** | Mode ⭐ (19 pays connus de Max) ou 🌍 (90+ pays) |
+| **Pays connus de Max** | France, Espagne, Royaume-Uni, Italie, Tunisie, Brésil, Suisse, États-Unis, Chine, Japon, Russie, Allemagne, Égypte, Thaïlande, Maroc, Argentine, Pays-Bas, Luxembourg, Cambodge |
+| **TTS** | Bouton "🔊 Écouter" — texte fixe (ne révèle jamais le nom). Lu auto à chaque question + après la réponse |
+| **Score** | 10 tours, barre de score colorée |
+| **Victoire** | 5 paliers selon score : 10/10 confettis drapeaux + son victoire · 8-9 bravo · 6-7 bien joué · 4-5 pas mal · 0-3 encouragements |
+| **Confettis** | 40 emojis drapeaux animés Canvas — UNIQUEMENT au 10/10 sans-faute |
+| **Tech** | HTML vanilla · flag-icons CDN · bus-svg.js · sounds.js |
 
 ---
 
@@ -346,6 +381,24 @@ MaxPlay V0
 | L-010 | 2026-03-15 | Anti-répétition : >6 tiles identiques consécutifs = issue HAUTE. Briser avec sidewalk2 aux positions des props. Asphalt : mixer asphalt/asphalt2/asphalt3 | map-mockups M2 FAIL fix |
 | L-011 | 2026-03-15 | bench_city = sprite 96×96 (2×2 tiles). Ancrer top-left. Tous les 4 pixels du footprint doivent être sur sidewalk, jamais sur asphalt | map-mockups M5 MOYENNE-01 |
 | L-012 | 2026-03-15 | Transition obligatoire : asphalt → sidewalk → bâtiment. Jamais asphalt adjacent direct à un bâtiment | Règle fondamentale tileset |
+
+---
+
+## Session 10 — 2026-03-17
+
+### Fait
+- [x] MJ-10 créé : Tableau de bord — 12 boutons sons sandbox + easter egg prout caché
+- [x] MJ-11 créé : Quel pays ? — drapeaux dans bus, TTS, 4 choix texte, confettis 10/10
+- [x] sounds.js : AudioContext singleton (fix son qui coupait après clics rapides)
+- [x] MJ-11 drapeau : pillarbox noir (contain) pour ratio correct dans la fenêtre bus
+- [x] MJ-11 TTS : bouton texte fixe "Écouter" (ne révèle plus jamais le nom du pays)
+- [x] MJ-11 victoire : 5 paliers de phrases selon score, confettis uniquement au 10/10
+- [x] index.html : cartes MJ-10 et MJ-11 ajoutées dans la grille
+
+### Leçons
+- `AudioContext` doit être un singleton — créer un nouveau contexte à chaque son épuise le pool navigateur (limite ~6) et coupe le son. Toujours réutiliser + `.resume()` si suspendu.
+- La fenêtre destination du bus SVG (w=40 h=21 / viewBox 160×80) a un ratio ≈1.9, trop large pour les drapeaux (ratio ≈1.5). Solution : `background-size:contain` + fond noir pour pillarbox automatique.
+- Ne jamais afficher la réponse dans le bouton d'aide TTS — texte fixe uniquement.
 
 ---
 

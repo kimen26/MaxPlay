@@ -9,15 +9,12 @@ Jeu éducatif 2D pour **Max**, 3.5-4 ans, passionné de bus (lignes Villejuif).
 Voir `docs/MAX_PROFILE.md` pour le profil complet.
 **Stack** : Phaser.js 3 + Vite + TypeScript · Résolution 1024×768 landscape
 
-## État jeux (2026-03-16, session 9)
+## État jeux (2026-03-17, session 10)
 
-- **10 jeux** : mj-01 à mj-09 + max-adventure (renommage complet cette session)
-- **Valouettes** : V2/V3/V4/V5 ajoutées (data.js + ratp-colors.json + idfm.js)
-- **idfm.js** : nouveau fichier — 362 lignes IDFM complètes, utilisé par mj-03/mj-08/mj-09
-- **MJ-03** (ex-02b) : distracteurs depuis pool 362 lignes IDFM
-- **MJ-08** (ex-06) : pool élargi 362 lignes distinctes
-- **MJ-09** (ex-08) : 362 bus à trier, mapping HSL auto → famille couleur
-- **docs/ratp-colors.json** : source de vérité, 26 lignes actives + référentiel 362 lignes
+- **12 jeux** : mj-01 à mj-11 + max-adventure
+- **MJ-10** : Tableau de bord — 12 boutons sons sandbox (klaxon/moteur/porte…) + easter egg prout caché
+- **MJ-11** : Quel pays ? — drapeau dans fenêtre bus (flag-icons CDN), TTS, 4 choix texte, confettis 10/10
+- **sounds.js** : AudioContext singleton depuis session 10 (fix son coupé après clics rapides)
 - **Prochaine étape** : progression/flotte de bus (EP-005) + audio avancé (EP-006)
 
 ## Architecture déploiement (2026-03-16)
@@ -33,6 +30,14 @@ GitHub Pages → kimen26.github.io/MaxPlay/
 **CI** : `.github/workflows/deploy.yml` build Phaser (`CI=true` → base `/MaxPlay/max-adventure/`) puis assemble dans `_site/`
 **docs/** : uniquement des `.md` (plus de HTML ni d'assets)
 **game/dist/**, **_site/** : dans `.gitignore`, jamais commités
+
+## Décisions clés MJ-11 (drapeaux)
+
+- **Drapeau dans bus** : `background-size:contain` + fond `#000` pour pillarbox — la fenêtre SVG (40×21) est trop large pour les drapeaux (ratio ≈1.5)
+- **TTS bouton** : texte fixe "Écouter" — ne jamais afficher le nom du pays (réponse visible = zéro défi)
+- **Confettis** : 40 emojis drapeaux Canvas uniquement au 10/10 sans-faute
+- **Victoire** : 5 paliers (10/8-9/6-7/4-5/0-3), toujours positif mais calibré
+- **Flag-icons CDN** : `cdn.jsdelivr.net/npm/flag-icons@7.2.3` — 260 drapeaux SVG via classe CSS `fi fi-XX`
 
 ## Décisions clés
 

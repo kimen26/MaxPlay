@@ -49,8 +49,8 @@
 </head>
 <body>
 
-<h1>Maquettes Villejuif — Styles de quartier</h1>
-<p class="sub">Tiles LimeZu Modern Exteriors 48×48 · Chaque case = une zone possible du jeu</p>
+<h1>Maquettes Villejuif — Apprentissage tileset LimeZu</h1>
+<p class="sub">Tiles LimeZu Modern Exteriors 48×48 · Pipeline : simplifier → designer → reviewer (PASS requis)</p>
 
 <div class="grid" id="grid"></div>
 
@@ -58,20 +58,24 @@
 // ─── Chemins des tiles ─────────────────────────────────────────
 const T = '../game/public/assets/tiles/';
 
+// RÈGLE AUTOTILE : variation_1 = coin/bord, variation_27 = remplissage plain.
+// Toujours utiliser les variations HAUTES (20-27) pour remplir une zone.
 const TILES = {
-  // Sol
-  asphalt:   T + 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_1.png',
-  asphalt2:  T + 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_3.png',
-  asphalt3:  T + 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_7.png',
-  sidewalk1: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_1.png',
-  sidewalk2: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_2_1.png',
-  sidewalk3: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_3_1.png',
-  sidewalk4: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_4_1.png',
-  sidewalk5: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_5_1.png',
-  sidewalk6: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_6_1.png',
-  grass1:    T + 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_1_1.png',
-  grass2:    T + 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_1.png',
-  grass3:    T + 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_3_1.png',
+  // Sol — PLAIN FILL (variation_20 à _27 = centre, sans marques de bord)
+  asphalt:   T + 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png',
+  asphalt2:  T + 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_22.png',
+  asphalt3:  T + 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_27.png',
+  // Sidewalk : variation_27 = béton clair avec grille (plain fill)
+  sidewalk1: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_27.png',
+  sidewalk2: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_2_27.png',
+  sidewalk3: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_3_27.png',
+  sidewalk4: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_4_27.png',
+  sidewalk5: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_5_27.png',
+  sidewalk6: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_6_27.png',
+  // Grass : Grass_2 = vert, utiliser variation haute (_9 = plain fill)
+  grass1:    T + 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_9.png',
+  grass2:    T + 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_7.png',
+  grass3:    T + 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_8.png',
   fence1:    T + 'roads/ME_Singles_Terrains_and_Fences_48x48_Fence_1_1.png',
   wall1:     T + 'roads/ME_Singles_Terrains_and_Fences_48x48_Wall_1_1.png',
 
@@ -87,6 +91,7 @@ const TILES = {
   roof1:     T + 'buildings/ME_Singles_Floor_Modular_Building_48x48_Roof_1.png',
   roof2:     T + 'buildings/ME_Singles_Floor_Modular_Building_48x48_Roof_2.png',
   roof3:     T + 'buildings/ME_Singles_Floor_Modular_Building_48x48_Roof_3.png',
+  // Toyhouses : 192×240 = 4 cols × 5 rows ! Ancre top-left. Map min 6 cols × 7 rows pour 1 seule.
   toyhouse1: T + 'buildings/ME_Singles_Villas_48x48_Toy_House_1.png',
   toyhouse2: T + 'buildings/ME_Singles_Villas_48x48_Toy_House_2.png',
   toyhouse3: T + 'buildings/ME_Singles_Villas_48x48_Toy_House_3.png',
@@ -99,11 +104,13 @@ const TILES = {
   bush1:     T + 'parks/ME_Singles_Garden_48x48_Bush_1.png',
   bush2:     T + 'parks/ME_Singles_Garden_48x48_Bush_2.png',
   bush3:     T + 'parks/ME_Singles_Garden_48x48_Bush_3.png',
-  flower_r:  T + 'parks/ME_Singles_Garden_48x48_Big_Red_Flower.png',
-  flower_b:  T + 'parks/ME_Singles_Garden_48x48_Big_Light_Blue_Flower.png',
-  flower_p:  T + 'parks/ME_Singles_Garden_48x48_Big_Pink_Flower.png',
-  bench_h:   T + 'parks/ME_Singles_Garden_48x48_Big_Bench_Horizontal.png',
-  bench_v:   T + 'parks/ME_Singles_Garden_48x48_Big_Bench_Vertical.png',
+  // Fleurs 48×48 (Small_* = plat au sol) — les Big_* font 48×96, ne PAS utiliser pour le sol
+  flower_r:  T + 'parks/ME_Singles_Garden_48x48_Small_Red_Flower.png',
+  flower_b:  T + 'parks/ME_Singles_Garden_48x48_Big_Light_Blue_Flower.png',  // 48×48 ✓ exception
+  flower_p:  T + 'parks/ME_Singles_Garden_48x48_Small_Pink_Flower.png',
+  flower_y:  T + 'parks/ME_Singles_Garden_48x48_Small_Yellow_Flower.png',
+  bench_h:   T + 'parks/ME_Singles_Garden_48x48_Medium_Bench_Horizontal.png',  // 96×48 = 2×1 tiles
+  bench_v:   T + 'parks/ME_Singles_Garden_48x48_Medium_Bench_Vertical.png',    // 48×96 = 1×2 tiles
   statue:    T + 'parks/ME_Singles_Garden_48x48_Angel_Statue_1.png',
   arch:      T + 'parks/ME_Singles_Garden_48x48_Grass_Arch_1.png',
 
@@ -118,16 +125,13 @@ const TILES = {
   metro_stairs:  T + 'stations/ME_Singles_Subway_and_Train_Station_48x48_ Stairs_Base_Structure_2.png',
 
   // ── Bâtiments modulaires (48×144 = 1×3 tiles chacun) ──────────
-  // Ice Cream Shop (m1=gauche, m2=droite, m3/m4=centre/fenêtre)
   icecream_m1: T + 'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Ice_Cream_Shop_Modular_1.png',
   icecream_m2: T + 'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Ice_Cream_Shop_Modular_2.png',
   icecream_m3: T + 'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Ice_Cream_Shop_Modular_3.png',
   icecream_m4: T + 'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Ice_Cream_Shop_Modular_4.png',
-  // Bakery (m1=gauche, m2=droite, m4=fenêtre)
   bakery_m1: T + 'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Bakery_Modular_1.png',
   bakery_m2: T + 'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Bakery_Modular_2.png',
   bakery_m4: T + 'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Bakery_Modular_4.png',
-  // Condo (m1=gauche, m2=droite, m5=fenêtre centre)
   condo_m1: T + 'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Condo_Modular_1.png',
   condo_m2: T + 'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Condo_Modular_2.png',
   condo_m5: T + 'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Condo_Modular_5.png',
@@ -163,7 +167,6 @@ function drawTile(ctx, key, col, row) {
 }
 
 // Objet : taille NATIVE (bâtiments modulaires 48×144, props 96×96, poteaux 48×192…)
-// Ancré au coin supérieur-gauche de la cellule (col, row)
 function drawObject(ctx, key, col, row) {
   const src = TILES[key];
   if (!src) return;
@@ -179,13 +182,19 @@ function fillRect(ctx, key, c0, r0, cw, rh) {
 }
 
 // ─── Rendu d'une map multi-layer (ground / objects / decoration) ───
+// ground : zéro null — toutes les cases ont un tile de sol
+// objects : null = case vide (bâtiments, props, arbres)
+// decoration : null = case vide (fleurs, petits détails)
+// RÈGLES :
+//   • Même style sidewalk dans toute la map (ne pas mélanger sidewalk1 et sidewalk3)
+//   • drawTile() pour ground (force 48×48), drawObject() pour objects (taille native)
+//   • asphalt → sidewalk → bâtiment (jamais asphalt direct → bâtiment)
+//   • max 4 tiles identiques consécutifs sur ground
 function drawLayeredMap(ctx, map) {
   const { ground, objects, decoration } = map;
-  // Ground : 48×48 forcé
   for (let r = 0; r < ground.length; r++)
     for (let c = 0; c < ground[r].length; c++)
       if (ground[r][c]) drawTile(ctx, ground[r][c], c, r);
-  // Objects + decoration : taille native (bâtiments, props)
   if (objects)
     for (let r = 0; r < objects.length; r++)
       for (let c = 0; c < objects[r].length; c++)
@@ -196,444 +205,225 @@ function drawLayeredMap(ctx, map) {
         if (decoration[r][c]) drawObject(ctx, decoration[r][c], c, r);
 }
 
-// ─── Définition des 10 maquettes ──────────────────────────────
-// cols × rows = taille en tuiles (canvas = cols*48 × rows*48)
+// ─── Maps (générées par le pipeline pixel-map) ────────────────
+// Chaque map passe par : simplifier → designer → reviewer (PASS requis)
+// Format : { id, title, desc, cols, rows, async draw(ctx) { drawLayeredMap(ctx, MAP_xxx); } }
+
 const MOCKUPS = [
 
+  // ─── ① Route simple — PASS 8/10 (iter 1/5) ──────────────────
   {
-    id: 'route_principale',
-    title: '① Avenue de Stalingrad — route principale',
-    desc: 'Grande avenue à 2 voies + trottoirs larges + arbres. Axe vertical du jeu.',
-    cols: 7, rows: 9,
+    id: 'route_simple',
+    title: '① Route simple',
+    desc: 'Route 3 voies verticale avec trottoirs sidewalk1 et arbres en quinconce.',
+    cols: 7, rows: 5,
     async draw(ctx) {
-      await loadAll(['asphalt','asphalt2','asphalt3','sidewalk1','sidewalk2','sidewalk3','bush1','bush2']);
-      // trottoir gauche (1 col)
-      fillRect(ctx, 'sidewalk1', 0, 0, 1, 9);
-      // route (3 cols)
-      fillRect(ctx, 'asphalt', 1, 0, 3, 9);
-      // variation asphalte (texture)
-      fillRect(ctx, 'asphalt2', 2, 2, 1, 2);
-      fillRect(ctx, 'asphalt3', 2, 6, 1, 2);
-      // trottoir central (1 col) — séparateur
-      fillRect(ctx, 'sidewalk2', 4, 0, 1, 9);
-      // trottoir droit (2 cols)
-      fillRect(ctx, 'sidewalk3', 5, 0, 2, 9);
-      // arbres sur trottoir droit
-      drawTile(ctx, 'bush1', 5, 1);
-      drawTile(ctx, 'bush2', 5, 4);
-      drawTile(ctx, 'bush1', 5, 7);
-      // arbres trottoir gauche
-      drawTile(ctx, 'bush2', 0, 2);
-      drawTile(ctx, 'bush1', 0, 6);
-    }
-  },
-
-  {
-    id: 'carrefour',
-    title: '② Carrefour — intersection Louis Aragon',
-    desc: 'Croisement 4 voies avec passages piétons et trottoirs. Zone arrêt de bus.',
-    cols: 9, rows: 9,
-    async draw(ctx) {
-      await loadAll(['asphalt','asphalt2','sidewalk1','sidewalk4','sidewalk5','bush1']);
-      // fond trottoir
-      fillRect(ctx, 'sidewalk1', 0, 0, 9, 9);
-      // route H
-      fillRect(ctx, 'asphalt', 0, 3, 9, 3);
-      // route V
-      fillRect(ctx, 'asphalt', 3, 0, 3, 9);
-      // intersection centre
-      fillRect(ctx, 'asphalt2', 3, 3, 3, 3);
-      // coins trottoir
-      drawTile(ctx, 'sidewalk4', 0, 0);
-      drawTile(ctx, 'sidewalk5', 8, 0);
-      drawTile(ctx, 'sidewalk4', 0, 8);
-      drawTile(ctx, 'sidewalk5', 8, 8);
-      // arbres coins
-      drawTile(ctx, 'bush1', 1, 1);
-      drawTile(ctx, 'bush1', 7, 1);
-      drawTile(ctx, 'bush1', 1, 7);
-      drawTile(ctx, 'bush1', 7, 7);
-    }
-  },
-
-  {
-    id: 'maisons_pavillons',
-    title: '③ Quartier pavillonnaire — sud Villejuif',
-    desc: 'Petites maisons avec jardins. Correspond au bas du plan (B/C-6) où vous habitez.',
-    cols: 7, rows: 7,
-    async draw(ctx) {
-      await loadAll(['grass1','grass2','sidewalk1','toyhouse1','toyhouse2','toyhouse3','toyhouse4','bush1','bush2','flower_r','flower_p','fence1']);
-      // herbe fond
-      fillRect(ctx, 'grass1', 0, 0, 7, 7);
-      fillRect(ctx, 'grass2', 2, 2, 2, 2);
-      // trottoir en bas
-      fillRect(ctx, 'sidewalk1', 0, 6, 7, 1);
-      // maisons
-      drawTile(ctx, 'toyhouse1', 0, 0);
-      drawTile(ctx, 'toyhouse2', 2, 0);
-      drawTile(ctx, 'toyhouse3', 4, 0);
-      drawTile(ctx, 'toyhouse4', 1, 3);
-      drawTile(ctx, 'toyhouse1', 5, 3);
-      // jardins
-      drawTile(ctx, 'bush1', 0, 2);
-      drawTile(ctx, 'flower_r', 1, 1);
-      drawTile(ctx, 'flower_p', 3, 1);
-      drawTile(ctx, 'bush2', 6, 1);
-      drawTile(ctx, 'flower_r', 0, 4);
-      drawTile(ctx, 'bush1', 6, 4);
-      // clôtures
-      drawTile(ctx, 'fence1', 2, 2);
-      drawTile(ctx, 'fence1', 4, 5);
-    }
-  },
-
-  {
-    id: 'immeubles',
-    title: '④ Immeubles — quartier résidentiel Villejuif',
-    desc: 'Grands immeubles type HLM/condo. Façade vue du dessus = toits plats.',
-    cols: 7, rows: 7,
-    async draw(ctx) {
-      await loadAll(['sidewalk1','sidewalk2','condo1_1','condo1_2','condo1_3','condo1_4','condo1_5','condo2_1','condo2_2','roof1','roof2','roof3','bush1','grass1']);
-      // trottoir sol
-      fillRect(ctx, 'sidewalk2', 0, 0, 7, 7);
-      // bande verte
-      fillRect(ctx, 'grass1', 0, 5, 7, 2);
-      // immeuble gauche (3×4)
-      drawTile(ctx, 'condo1_1', 0, 0);
-      drawTile(ctx, 'condo1_2', 1, 0);
-      drawTile(ctx, 'condo1_3', 2, 0);
-      drawTile(ctx, 'condo1_4', 0, 1);
-      drawTile(ctx, 'condo1_5', 1, 1);
-      drawTile(ctx, 'condo1_1', 2, 1);
-      drawTile(ctx, 'roof1',    0, 2);
-      drawTile(ctx, 'roof2',    1, 2);
-      drawTile(ctx, 'roof3',    2, 2);
-      // immeuble droit (3×3)
-      drawTile(ctx, 'condo2_1', 4, 0);
-      drawTile(ctx, 'condo2_2', 5, 0);
-      drawTile(ctx, 'condo2_3', 6, 0);
-      drawTile(ctx, 'condo2_1', 4, 1);
-      drawTile(ctx, 'condo2_2', 5, 1);
-      drawTile(ctx, 'condo2_3', 6, 1);
-      drawTile(ctx, 'roof1',    4, 2);
-      drawTile(ctx, 'roof2',    5, 2);
-      drawTile(ctx, 'roof3',    6, 2);
-      // arbres
-      drawTile(ctx, 'bush1', 3, 4);
-      drawTile(ctx, 'bush1', 0, 6);
-      drawTile(ctx, 'bush1', 6, 6);
-    }
-  },
-
-  {
-    id: 'parc_normandie',
-    title: '⑤ Parc Normandie-Niemen',
-    desc: 'Grand parc verdoyant au sud de Louis Aragon. Herbe, arbres, bancs, fleurs.',
-    cols: 8, rows: 7,
-    async draw(ctx) {
-      await loadAll(['grass1','grass2','grass3','bush1','bush2','bush3','flower_r','flower_b','flower_p','bench_h','bench_v','statue','arch']);
-      // sol herbe
-      fillRect(ctx, 'grass1', 0, 0, 8, 7);
-      fillRect(ctx, 'grass2', 1, 1, 3, 2);
-      fillRect(ctx, 'grass3', 5, 3, 2, 3);
-      // arbres buissons
-      drawTile(ctx, 'bush1', 0, 0);
-      drawTile(ctx, 'bush2', 2, 0);
-      drawTile(ctx, 'bush3', 5, 0);
-      drawTile(ctx, 'bush1', 7, 0);
-      drawTile(ctx, 'bush2', 0, 3);
-      drawTile(ctx, 'bush3', 7, 3);
-      drawTile(ctx, 'bush1', 1, 6);
-      drawTile(ctx, 'bush2', 4, 6);
-      drawTile(ctx, 'bush3', 7, 6);
-      // allée centrale
-      drawTile(ctx, 'bench_h', 3, 2);
-      drawTile(ctx, 'bench_v', 6, 2);
-      drawTile(ctx, 'statue', 4, 3);
-      drawTile(ctx, 'arch', 3, 4);
-      // fleurs
-      drawTile(ctx, 'flower_r', 1, 2);
-      drawTile(ctx, 'flower_b', 2, 4);
-      drawTile(ctx, 'flower_p', 5, 1);
-      drawTile(ctx, 'flower_r', 6, 5);
-      drawTile(ctx, 'flower_b', 3, 6);
-    }
-  },
-
-  {
-    id: 'terminus_bus',
-    title: '⑥ Terminus bus Louis Aragon — "village de bus"',
-    desc: 'Zone de terminus avec dalles béton, quais bus, abri. Le coeur du jeu pour Max !',
-    cols: 9, rows: 7,
-    async draw(ctx) {
-      await loadAll(['asphalt','asphalt2','asphalt3','sidewalk1','sidewalk3','sidewalk5','wall1','bush1']);
-      // sol béton terminus
-      fillRect(ctx, 'asphalt', 0, 0, 9, 7);
-      fillRect(ctx, 'asphalt2', 1, 1, 3, 2);
-      fillRect(ctx, 'asphalt3', 5, 3, 3, 2);
-      // quais bus — bandes trottoir
-      fillRect(ctx, 'sidewalk1', 0, 2, 1, 4);
-      fillRect(ctx, 'sidewalk3', 8, 0, 1, 7);
-      // murs du parking béton
-      fillRect(ctx, 'wall1', 0, 0, 9, 1);
-      // abris bus (trottoir texturé)
-      fillRect(ctx, 'sidewalk5', 2, 5, 3, 1);
-      fillRect(ctx, 'sidewalk5', 6, 5, 2, 1);
-      // quelques arbres côté
-      drawTile(ctx, 'bush1', 0, 5);
-      drawTile(ctx, 'bush1', 8, 2);
-    }
-  },
-
-  {
-    id: 'rue_commerciale',
-    title: '⑦ Rue commerçante — Avenue République',
-    desc: 'Boutiques en rez-de-chaussée, trottoir animé, devantures colorées.',
-    cols: 7, rows: 7,
-    async draw(ctx) {
-      await loadAll(['sidewalk1','sidewalk2','asphalt','shop1','condo1_1','condo1_2','condo1_3','condo2_1','roof1','bush1','flower_r','flower_p']);
-      // route
-      fillRect(ctx, 'asphalt', 2, 0, 3, 7);
-      // trottoirs
-      fillRect(ctx, 'sidewalk1', 0, 0, 2, 7);
-      fillRect(ctx, 'sidewalk2', 5, 0, 2, 7);
-      // commerce gauche
-      drawTile(ctx, 'shop1', 0, 2);
-      drawTile(ctx, 'condo1_1', 0, 0);
-      drawTile(ctx, 'condo1_2', 1, 0);
-      drawTile(ctx, 'condo1_3', 0, 1);
-      drawTile(ctx, 'roof1', 1, 1);
-      // bâtiment droit
-      drawTile(ctx, 'condo2_1', 5, 0);
-      drawTile(ctx, 'condo2_1', 6, 0);
-      drawTile(ctx, 'condo2_1', 5, 1);
-      drawTile(ctx, 'roof1', 6, 1);
-      // décos trottoir
-      drawTile(ctx, 'flower_r', 0, 4);
-      drawTile(ctx, 'flower_p', 1, 5);
-      drawTile(ctx, 'bush1', 5, 3);
-      drawTile(ctx, 'flower_r', 6, 5);
-    }
-  },
-
-  {
-    id: 'quartier_mixte',
-    title: '⑧ Quartier mixte — maisons + immeubles',
-    desc: 'Transition entre le pavillonnaire du sud et les immeubles du centre.',
-    cols: 8, rows: 8,
-    async draw(ctx) {
-      await loadAll(['grass1','grass2','sidewalk1','sidewalk3','asphalt','toyhouse1','toyhouse3','toyhouse5','toyhouse6','condo1_1','condo1_3','roof2','bush1','bush2','flower_b','fence1']);
-      fillRect(ctx, 'grass1', 0, 0, 8, 8);
-      fillRect(ctx, 'sidewalk1', 0, 4, 8, 1);
-      fillRect(ctx, 'sidewalk3', 3, 0, 1, 4);
-      // maisons sud-ouest
-      drawTile(ctx, 'toyhouse1', 0, 5);
-      drawTile(ctx, 'toyhouse3', 2, 5);
-      drawTile(ctx, 'toyhouse5', 0, 7);
-      drawTile(ctx, 'toyhouse6', 2, 7);
-      // immeuble nord-est
-      drawTile(ctx, 'condo1_1', 4, 0);
-      drawTile(ctx, 'condo1_3', 5, 0);
-      drawTile(ctx, 'condo1_1', 6, 0);
-      drawTile(ctx, 'roof2',    4, 1);
-      drawTile(ctx, 'roof2',    5, 1);
-      drawTile(ctx, 'roof2',    6, 1);
-      // jardins maisons
-      drawTile(ctx, 'bush1', 1, 6);
-      drawTile(ctx, 'flower_b', 0, 6);
-      drawTile(ctx, 'bush2', 3, 6);
-      drawTile(ctx, 'fence1', 1, 5);
-      drawTile(ctx, 'fence1', 1, 7);
-      // nord immeuble
-      drawTile(ctx, 'bush1', 7, 2);
-      drawTile(ctx, 'grass2', 7, 0);
-    }
-  },
-
-  {
-    id: 'arrêt_bus',
-    title: '⑨ Arrêt de bus — abri + marquage sol',
-    desc: 'Vue zoom sur un arrêt : trottoir, abri, marquage jaune, passager qui attend.',
-    cols: 6, rows: 6,
-    async draw(ctx) {
-      await loadAll(['asphalt','asphalt2','sidewalk1','sidewalk2','sidewalk4','sidewalk6','bush1','flower_b']);
-      // route
-      fillRect(ctx, 'asphalt', 0, 0, 3, 6);
-      fillRect(ctx, 'asphalt2', 1, 2, 2, 2);
-      // trottoir
-      fillRect(ctx, 'sidewalk1', 3, 0, 3, 6);
-      // abri bus (morceau de bâtiment)
-      drawTile(ctx, 'sidewalk4', 3, 1);
-      drawTile(ctx, 'sidewalk4', 4, 1);
-      drawTile(ctx, 'sidewalk6', 3, 2);
-      drawTile(ctx, 'sidewalk6', 4, 2);
-      // déco
-      drawTile(ctx, 'bush1', 5, 0);
-      drawTile(ctx, 'bush1', 5, 4);
-      drawTile(ctx, 'flower_b', 3, 4);
-    }
-  },
-
-  {
-    id: 'metro_m7',
-    title: '⑩ Sortie Métro M7 + tram T7',
-    desc: 'Entrée métro, voie tram, dalle béton, flux de passagers. Hub central du jeu.',
-    cols: 9, rows: 8,
-    async draw(ctx) {
-      await loadAll(['asphalt','asphalt2','asphalt3','sidewalk1','sidewalk2','sidewalk3','sidewalk5','wall1','fence1','bush1','bush2','flower_b','flower_r']);
-      // sol béton/dalles mixte
-      fillRect(ctx, 'sidewalk2', 0, 0, 9, 8);
-      // voie tram (bande asphalt centrale)
-      fillRect(ctx, 'asphalt', 3, 0, 3, 8);
-      fillRect(ctx, 'asphalt2', 4, 2, 1, 4);
-      // quai/accès métro (zone dalle)
-      fillRect(ctx, 'sidewalk3', 0, 2, 3, 4);
-      drawTile(ctx, 'wall1', 1, 2);
-      drawTile(ctx, 'wall1', 2, 2);
-      // sortie métro marquée
-      drawTile(ctx, 'sidewalk5', 1, 3);
-      drawTile(ctx, 'sidewalk5', 2, 3);
-      // côté est — trottoir bus
-      fillRect(ctx, 'sidewalk1', 6, 0, 3, 8);
-      fillRect(ctx, 'asphalt3', 6, 3, 3, 2);
-      // végétation
-      drawTile(ctx, 'bush1', 0, 0);
-      drawTile(ctx, 'bush2', 8, 0);
-      drawTile(ctx, 'bush1', 0, 6);
-      drawTile(ctx, 'bush2', 8, 6);
-      drawTile(ctx, 'flower_b', 0, 7);
-      drawTile(ctx, 'flower_r', 8, 7);
-    }
-  },
-
-  // ─── ⑪ Village des bus — généré par pipeline pixel-map ──────
-  {
-    id: 'terminus_louis_aragon',
-    title: '⑪ Terminus Louis Aragon — "Le village des bus"',
-    desc: 'Terminus M7+T7 — 3 quais bus, entrée métro, parc Normandie-Niemen. Lieu préféré de Max !',
-    cols: 14, rows: 11,
-    async draw(ctx) {
-      await loadAll([
-        'asphalt','asphalt2','asphalt3',
-        'sidewalk1','sidewalk2','sidewalk3','sidewalk5','sidewalk6',
-        'wall1','grass1','grass2',
-        'bush1','bush2','bench_city','metro_stairs',
-        'flower_r','flower_p','trash_can','electric_pole',
-      ]);
-
-      const MAP = {
+      await loadAll(['asphalt','asphalt2','asphalt3','sidewalk1','bush1','bush2','flower_r','flower_b']);
+      drawLayeredMap(ctx, {
         ground: [
-          // Row 0 — trottoir nord (varié)
-          ['sidewalk1','sidewalk2','sidewalk3','sidewalk1','sidewalk6','sidewalk2','sidewalk1','sidewalk3','sidewalk6','sidewalk1','sidewalk2','sidewalk3','sidewalk1','sidewalk6'],
-          // Row 1 — Avenue de Stalingrad
-          ['asphalt','asphalt2','asphalt','asphalt3','asphalt','asphalt2','asphalt','asphalt3','asphalt','asphalt2','asphalt','asphalt3','asphalt','asphalt2'],
-          // Row 2 — trottoir entrée terminus (varié)
-          ['sidewalk3','sidewalk1','sidewalk6','sidewalk3','sidewalk1','sidewalk3','sidewalk6','sidewalk1','sidewalk3','sidewalk6','sidewalk1','sidewalk3','sidewalk6','sidewalk1'],
-          // Row 3 — quai 1 nord (sidewalk5 cols 1–4)
-          ['asphalt','sidewalk5','sidewalk5','sidewalk5','sidewalk5','asphalt','asphalt2','asphalt','asphalt3','asphalt','asphalt2','asphalt','sidewalk1','sidewalk1'],
-          // Row 4 — circulation + zone métro (cols 12–13)
-          ['asphalt','asphalt2','asphalt','asphalt3','asphalt','asphalt2','asphalt','asphalt3','asphalt','asphalt2','asphalt','asphalt3','sidewalk1','sidewalk2'],
-          // Row 5 — quai 2 central (sidewalk5 cols 2–5 et 8–11)
-          ['asphalt','asphalt','sidewalk5','sidewalk5','sidewalk5','sidewalk5','asphalt','asphalt2','sidewalk5','sidewalk5','sidewalk5','sidewalk5','sidewalk1','sidewalk2'],
-          // Row 6 — circulation buses
-          ['asphalt2','asphalt','asphalt','asphalt3','asphalt','asphalt2','asphalt','asphalt','asphalt3','asphalt','asphalt2','asphalt','asphalt2','asphalt3'],
-          // Row 7 — quai 3 sud (sidewalk5 cols 1–4)
-          ['asphalt','sidewalk5','sidewalk5','sidewalk5','sidewalk5','asphalt3','asphalt','asphalt2','asphalt','asphalt3','asphalt','asphalt2','sidewalk1','sidewalk2'],
-          // Row 8 — trottoir sud (varié) + limite parking (wall1 cols 11–13)
-          ['sidewalk1','sidewalk2','sidewalk3','sidewalk1','sidewalk2','sidewalk1','sidewalk3','sidewalk2','sidewalk1','sidewalk3','sidewalk1','wall1','wall1','wall1'],
-          // Row 9 — Boulevard Maxime Gorki
-          ['sidewalk1','sidewalk1','asphalt','asphalt2','asphalt','asphalt3','asphalt','asphalt2','asphalt','asphalt3','asphalt','asphalt2','asphalt','asphalt3'],
-          // Row 10 — parc (cols 0–1) + résidentiel (cols 2–13, varié)
-          ['grass1','grass2','sidewalk1','sidewalk2','sidewalk3','sidewalk1','sidewalk2','sidewalk1','sidewalk3','sidewalk2','sidewalk1','sidewalk3','sidewalk2','sidewalk1'],
+          ['sidewalk1','sidewalk1','asphalt', 'asphalt2','asphalt3','sidewalk1','sidewalk1'],
+          ['sidewalk1','sidewalk1','asphalt2','asphalt', 'asphalt2','sidewalk1','sidewalk1'],
+          ['sidewalk1','sidewalk1','asphalt', 'asphalt3','asphalt', 'sidewalk1','sidewalk1'],
+          ['sidewalk1','sidewalk1','asphalt3','asphalt', 'asphalt2','sidewalk1','sidewalk1'],
+          ['sidewalk1','sidewalk1','asphalt2','asphalt2','asphalt3','sidewalk1','sidewalk1'],
         ],
         objects: [
-          // Row 0 — poteau électrique + arbres + poubelle
-          ['electric_pole', null, 'bush1', null, null, null, 'bush2', null, null, null, 'bush1', 'trash_can', null, null],
-          [null,null,null,null,null,null,null,null,null,null,null,null,null,null],
-          [null,null,null,null,null,null,null,null,null,null,null,null,null,null],
-          // Row 3 — quai 1 : bancs + fleur
-          [null, null, 'bench_city', 'flower_r', 'bench_city', null, null, null, null, null, null, null, null, null],
-          // Row 4 — escalier métro M7
-          [null, null, null, null, null, null, null, null, null, null, null, null, 'metro_stairs', null],
-          // Row 5 — quai 2 : bancs + fleurs
-          [null, null, null, 'bench_city', 'flower_p', null, null, null, null, 'bench_city', 'flower_r', null, null, null],
-          [null,null,null,null,null,null,null,null,null,null,null,null,null,null],
-          // Row 7 — quai 3 : bancs + fleur
-          [null, null, 'bench_city', null, 'flower_p', null, null, null, null, null, null, null, null, null],
-          [null,null,null,null,null,null,null,null,null,null,null,null,null,null],
-          [null,null,null,null,null,null,null,null,null,null,null,null,null,null],
-          // Row 10 — buisson parc
-          [null, 'bush2', null, null, null, null, null, null, null, null, null, null, null, null],
+          [null,'bush1', null,null,null,null,  null],
+          [null,null,    null,null,null,'bush2',null],
+          [null,'bush2', null,null,null,null,  null],
+          [null,null,    null,null,null,'bush1',null],
+          [null,'bush1', null,null,null,null,  null],
         ],
-      };
-
-      drawLayeredMap(ctx, MAP);
+        decoration: [
+          ['flower_r',null,null,null,null,null,null ],
+          [null,null,null,null,null,null,'flower_b'  ],
+          [null,null,null,null,null,null,null        ],
+          ['flower_b',null,null,null,null,null,null  ],
+          [null,null,null,null,null,null,'flower_r'  ],
+        ],
+      });
     }
   },
 
-  // ─── ⑫ Rue commerciale — bâtiments modulaires natifs ─────────
+  // ─── ⑤ Composite — PASS 7/10 fixé (iter 2/5) ───────────────
+  // Zone A (cols 0-4 rows 0-3) : résidentiel sidewalk + toyhouses
+  // Zone B (cols 5-8 rows 0-3) : parc grass + buissons
+  // Zone C (rows 4-5) : route principale
+  // Zone D (row 6)   : trottoir de liaison + parkings
+  // Zone E (rows 7-8): route secondaire
+  // Fix MOYENNE-01 : bench_city déplacé de (row3,col4) → (row2,col2), 2×2 entièrement sur sidewalk
+  // Fix BASSE-02   : fleurs/buissons ajoutés dans la zone résidentielle
   {
-    id: 'rue_commerciale',
-    title: '⑫ Rue commerciale — Ice Cream · Bakery · Condo',
-    desc: 'Demo bâtiments modulaires LimeZu (taille native). Glacierie + boulangerie + immeuble sur trottoir avec route + parking.',
-    cols: 12, rows: 9,
+    id: 'composite',
+    title: '⑤ Composite — Quartier urbain',
+    desc: 'Résidentiel + parc + 2 routes + trottoir parking. 9×9 tiles.',
+    cols: 9, rows: 9,
     async draw(ctx) {
       await loadAll([
-        'sidewalk1','sidewalk2','sidewalk3','asphalt','asphalt2','asphalt3',
-        'icecream_m1','icecream_m2','icecream_m3','icecream_m4',
-        'bakery_m1','bakery_m2','bakery_m4',
-        'condo_m1','condo_m2','condo_m5',
-        'bench_city','electric_pole','parking_m','bush1','bush2','flower_r',
+        'sidewalk1','sidewalk2','asphalt','asphalt2','asphalt3',
+        'grass1','grass2','grass3',
+        'bush1','bush2','bush3',
+        'bench_city','parking_m','flower_p','flower_r',
       ]);
+      drawLayeredMap(ctx, {
+        ground: [
+          ['sidewalk1','sidewalk2','sidewalk1','sidewalk2','sidewalk1','grass1','grass2','grass3','grass2'],
+          ['sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1','grass2','grass1','grass3','grass1'],
+          ['sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1','grass3','grass2','grass1','grass2'],
+          ['sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk2','sidewalk1'],
+          ['asphalt',  'asphalt2','asphalt',  'asphalt3','asphalt',  'asphalt2','asphalt3','asphalt','asphalt2'],
+          ['asphalt2', 'asphalt3','asphalt2', 'asphalt', 'asphalt2', 'asphalt3','asphalt', 'asphalt3','asphalt'],
+          ['sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk2','sidewalk1','sidewalk1'],
+          ['asphalt',  'asphalt3','asphalt2', 'asphalt', 'asphalt3', 'asphalt2','asphalt', 'asphalt3','asphalt2'],
+          ['asphalt3', 'asphalt', 'asphalt3', 'asphalt2','asphalt',  'asphalt3','asphalt2','asphalt', 'asphalt3'],
+        ],
+        objects: [
+          [null,null,null,null,null,null,null,null,'bush2'],
+          [null,'bush3',null,'bush1',null,null,'bush2',null,null],   // bush 48×48 ✓ (remplace toyhouse 192×240)
+          [null,null,'bench_city',null,null,null,null,null,null],  // bench_city 2×2 → rows2-3 cols2-3 = sidewalk
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,'parking_m',null,null,null,'parking_m',null,null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+        ],
+        decoration: [
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          ['flower_p',null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          ['flower_r',null,null,null,null,null,null,null,'flower_r'],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+        ],
+      });
+    }
+  },
 
-      // ── Ground layer (toutes les cellules 48×48) ──
-      const sw1 = 'sidewalk1', sw2 = 'sidewalk2', sw3 = 'sidewalk3';
-      const asp = 'asphalt', asp2 = 'asphalt2', asp3 = 'asphalt3';
+  // ─── ④ Arrêt de bus — PASS 8/10 (iter 1/5) ──────────────────
+  // Leçon : max 2 styles sidewalk dans un trottoir (pas 3), sidewalk1 dominant
+  {
+    id: 'arret_bus',
+    title: '④ Arrêt de bus',
+    desc: 'Banc d\'attente, trottoir, route 2 voies et jardin fleuri.',
+    cols: 9, rows: 5,
+    async draw(ctx) {
+      await loadAll(['asphalt','asphalt2','asphalt3','sidewalk1','sidewalk2','grass1','grass2','grass3','bench_city','bush1','bush2','bush3','flower_r','flower_b']);
+      drawLayeredMap(ctx, {
+        ground: [
+          // Row 0 — Route voie 1
+          ['asphalt', 'asphalt2','asphalt3','asphalt', 'asphalt2','asphalt3','asphalt', 'asphalt2','asphalt3'],
+          // Row 1 — Route voie 2
+          ['asphalt2','asphalt', 'asphalt2','asphalt3','asphalt', 'asphalt2','asphalt3','asphalt', 'asphalt2'],
+          // Row 2 — Trottoir principal (sidewalk1 dominant, sidewalk2 aux points d'intérêt)
+          ['sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk2','sidewalk1','sidewalk2','sidewalk1','sidewalk1'],
+          // Row 3 — Trottoir arrière
+          ['sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1'],
+          // Row 4 — Jardin
+          ['grass1',  'grass2',  'grass3',  'grass1',  'grass2',  'grass3',  'grass1',  'grass2',  'grass3'],
+        ],
+        objects: [
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,'bench_city',null,null,null,null],
+          [null,'bush1',null,null,null,null,null,'bush2',null],
+          [null,null,null,null,'bush3',null,null,null,null],
+        ],
+        decoration: [
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,'flower_r',null,null,null,'flower_b',null,null],
+        ],
+      });
+    }
+  },
 
-      const ground = [
-        // Rows 0-2 : sol sous les bâtiments (trottoir de fond)
-        [sw2,sw2,sw2,sw2,sw2,sw2,sw2,sw2,sw2,sw2,sw2,sw2],
-        [sw2,sw2,sw2,sw2,sw2,sw2,sw2,sw2,sw2,sw2,sw2,sw2],
-        [sw2,sw2,sw2,sw2,sw2,sw2,sw2,sw2,sw2,sw2,sw2,sw2],
-        // Row 3 : trottoir devant bâtiments
-        [sw1,sw1,sw1,sw1,sw1,sw1,sw3,sw3,sw3,sw3,sw3,sw3],
-        // Rows 4-5 : route (2 voies)
-        [asp,asp2,asp,asp3,asp,asp2,asp3,asp,asp2,asp,asp3,asp2],
-        [asp2,asp,asp3,asp,asp2,asp,asp,asp3,asp,asp2,asp,asp3],
-        // Row 6 : trottoir côté droit
-        [sw3,sw3,sw3,sw3,sw3,sw3,sw1,sw1,sw1,sw1,sw1,sw1],
-        // Rows 7-8 : parking asphalte
-        [asp3,asp,asp2,asp,asp3,asp,asp2,asp,asp3,asp,asp2,asp],
-        [asp,asp3,asp,asp2,asp,asp3,asp,asp2,asp,asp3,asp,asp2],
-      ];
+  // ─── ③ Bâtiment — façades modulaires (iter reset) ───────────
+  // Leçon : Toy_House = 192×240 (4×5 tiles) — trop grand pour une petite map.
+  //         Utiliser les tuiles modulaires (48×144 = 1×3) pour composer les façades.
+  //         Chaque module s'ancre en (row=0, col=C) et descend 3 rows.
+  {
+    id: 'batiment',
+    title: '③ Bâtiment — Façades modulaires',
+    desc: 'Bâtiments modulaires (1×3 tiles chacun) alignés, trottoir et route.',
+    cols: 7, rows: 6,
+    async draw(ctx) {
+      await loadAll(['sidewalk1','sidewalk2','asphalt','asphalt2','asphalt3','bush1','bush2','bush3','flower_r','flower_y','condo_m1','condo_m2','condo_m5','bakery_m1','bakery_m2']);
+      drawLayeredMap(ctx, {
+        ground: [
+          // Rows 0-2 : sol sous les façades (sidewalk, les modules le recouvrent visuellement)
+          ['sidewalk1','sidewalk1','sidewalk1','sidewalk1','sidewalk1','sidewalk1','sidewalk1'],
+          ['sidewalk1','sidewalk1','sidewalk1','sidewalk1','sidewalk1','sidewalk1','sidewalk1'],
+          ['sidewalk1','sidewalk1','sidewalk1','sidewalk1','sidewalk1','sidewalk1','sidewalk1'],
+          // Row 3 : trottoir avant — sidewalk2 en alternance pour briser la répétition
+          ['sidewalk2','sidewalk1','sidewalk2','sidewalk1','sidewalk2','sidewalk1','sidewalk2'],
+          // Rows 4-5 : route
+          ['asphalt', 'asphalt2','asphalt', 'asphalt3','asphalt', 'asphalt2','asphalt' ],
+          ['asphalt2','asphalt', 'asphalt3','asphalt', 'asphalt2','asphalt', 'asphalt3'],
+        ],
+        objects: [
+          // Row 0 : ancrage modules bâtiment (chaque 48×144 couvre rows 0→2)
+          [null,'bakery_m1','condo_m1','condo_m2','condo_m1','bakery_m2',null],
+          [null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null],
+          // Row 3 : décorations trottoir
+          [null,'bush1',null,'bush3',null,'bush2',null],
+          [null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null],
+        ],
+        decoration: [
+          [null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null],
+          ['flower_r',null,null,'flower_y',null,null,'flower_r'],
+          [null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null],
+        ],
+      });
+    }
+  },
 
-      // ── Objects layer ──
-      // Bâtiments modulaires en row 0 (chaque pièce = 48×144 = couvre rows 0-2)
-      // IceCream (cols 0-3): m1 gauche, m4 centre/porte, m3 fenêtre, m2 droite
-      // Bakery (cols 4-6): m1 gauche, m4 fenêtre, m2 droite
-      // Condo (cols 7-11): m1 gauche, m5×3 fenêtres, m2 droite
-      const objects = [
-        // Row 0 : toutes les façades de bâtiments (ancre top-left, s'étendent sur 3 rows)
-        ['icecream_m1','icecream_m4','icecream_m3','icecream_m2',
-         'bakery_m1','bakery_m4','bakery_m2',
-         'condo_m1','condo_m5','condo_m5','condo_m5','condo_m2'],
-        // Rows 1-2 : null (couverts par les sprites 48×144)
-        [null,null,null,null,null,null,null,null,null,null,null,null],
-        [null,null,null,null,null,null,null,null,null,null,null,null],
-        // Row 3 : mobilier trottoir
-        [null,'bench_city',null,null,null,null,null,null,null,null,'bench_city',null],
-        // Row 4-5 : route vide
-        [null,null,null,null,null,null,null,null,null,null,null,null],
-        [null,null,null,null,null,null,null,null,null,null,null,null],
-        // Row 6 : trottoir droit — poteau + buissons
-        ['electric_pole',null,null,'bush1',null,null,null,'bush2',null,null,null,null],
-        // Row 7 : parking — parcomètres + fleur
-        [null,'parking_m',null,null,null,'parking_m',null,null,null,'parking_m',null,null],
-        // Row 8 : parking
-        [null,null,null,'flower_r',null,null,null,null,null,null,null,null],
-      ];
-
-      drawLayeredMap(ctx, { ground, objects });
+  // ─── ② Parking — PASS 9/10 (iter 2/5) ───────────────────────
+  // Leçon : varier le sidewalk avec sidewalk2 aux positions des props
+  // pour éviter >6 tiles identiques consécutifs (issue HAUTE)
+  {
+    id: 'parking',
+    title: '② Parking',
+    desc: 'Route avec trottoir, parcomètres et zone de stationnement.',
+    cols: 7, rows: 6,
+    async draw(ctx) {
+      await loadAll(['asphalt','asphalt2','asphalt3','sidewalk1','sidewalk2','bush1','bush2','parking_m','flower_r']);
+      drawLayeredMap(ctx, {
+        ground: [
+          ['sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk1','sidewalk2','sidewalk1'],
+          ['asphalt',  'asphalt2', 'asphalt3', 'asphalt',  'asphalt2', 'asphalt3', 'asphalt' ],
+          ['asphalt2', 'asphalt3', 'asphalt',  'asphalt2', 'asphalt3', 'asphalt',  'asphalt2'],
+          ['sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1'],
+          ['asphalt3', 'asphalt',  'asphalt2', 'asphalt3', 'asphalt',  'asphalt2', 'asphalt3'],
+          ['asphalt',  'asphalt3', 'asphalt2', 'asphalt',  'asphalt3', 'asphalt2', 'asphalt' ],
+        ],
+        objects: [
+          [null,'bush1',null,null,null,'bush2',null],
+          [null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null],
+          [null,null,'parking_m',null,null,'parking_m',null],
+          [null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null],
+        ],
+        decoration: [
+          [null,null,null,'flower_r',null,null,null],
+          [null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null],
+        ],
+      });
     }
   },
 
@@ -642,6 +432,14 @@ const MOCKUPS = [
 // ─── Rendu ────────────────────────────────────────────────────
 async function renderAll() {
   const grid = document.getElementById('grid');
+
+  if (MOCKUPS.length === 0) {
+    const msg = document.createElement('p');
+    msg.style.cssText = 'color:#555;text-align:center;padding:40px;grid-column:1/-1;';
+    msg.textContent = 'Aucune map — pipeline en cours…';
+    grid.appendChild(msg);
+    return;
+  }
 
   for (const m of MOCKUPS) {
     const card = document.createElement('div');

@@ -3,122 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>MJ-04 – Lis la phrase</title>
+  <title>MJ-04 – Compte les passagers</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    #gameScr { background: linear-gradient(160deg, #2a1a3a, #1a2a3a); }
-    
-    .sentence-box {
-      background: #ffffff15;
-      border-radius: 20px;
-      padding: 24px 20px;
-      margin: 12px;
-      text-align: center;
-      min-height: 120px;
+    #gameScr { background: linear-gradient(160deg, #1a3a2a, #1a2a3a); }
+    .pax-group {
       display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    
-    .sentence-text {
-      font-size: 1.5rem;
-      font-weight: 700;
-      line-height: 1.5;
-      color: #fff;
-    }
-    
-    .sentence-text .blank {
-      display: inline-block;
-      background: #ffe06644;
-      border: 3px solid #ffe066;
+      gap: 8px;
+      padding: 8px 12px;
+      background: #ffffff10;
       border-radius: 12px;
-      padding: 4px 16px;
-      margin: 0 4px;
-      min-width: 60px;
-      color: #ffe066;
-      font-weight: 900;
-      animation: pulse 0.8s infinite alternate;
+      margin: 4px;
     }
-    
-    .sentence-text .blank.filled {
-      background: #00c47a44;
-      border-color: #00c47a;
-      color: #00c47a;
-      animation: popAnim 0.3s ease-out;
+    .pax {
+      font-size: 2.2rem;
+      animation: popIn 0.3s ease-out;
     }
-    
-    .sentence-text .blank.revealed {
-      background: #00c47a44;
-      border-color: #00c47a;
-      color: #00c47a;
+    @keyframes popIn {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
     }
-    
-    @keyframes pulse {
-      from { transform: scale(1); }
-      to { transform: scale(1.05); }
-    }
-    
-    @keyframes popAnim {
-      0% { transform: scale(0.7); }
-      60% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
-    
-    .choices-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      padding: 12px;
-      margin-top: 8px;
-    }
-    
-    .choice-btn {
-      background: linear-gradient(145deg, #ffffff20, #ffffff10);
-      border: 2px solid #ffffff30;
-      border-radius: 16px;
-      padding: 18px 12px;
-      font-size: 1.4rem;
-      font-weight: 900;
-      color: #fff;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      font-family: 'Nunito', sans-serif;
-    }
-    
-    .choice-btn:active {
-      transform: scale(0.95);
-    }
-    
-    .choice-btn.ok {
-      background: #00c47a;
-      border-color: #00c47a;
-    }
-    
-    .choice-btn.ko {
-      background: #ff4757;
-      border-color: #ff4757;
-    }
-    
-    .question-counter {
-      text-align: center;
-      font-size: 1rem;
-      opacity: 0.7;
-      margin-bottom: 8px;
-      font-weight: 700;
-    }
-    
-    .instruction {
-      text-align: center;
-      font-size: 0.9rem;
-      opacity: 0.6;
-      margin-bottom: 12px;
-    }
-    
-    .emoji-hint {
-      font-size: 2.5rem;
-      text-align: center;
-      margin-bottom: 8px;
+    .groups-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin: 12px 0;
     }
   </style>
 </head>
@@ -127,7 +38,7 @@
     <!-- Header -->
     <div class="hdr">
       <a href="index.html" class="back">←</a>
-      <span class="htitle">📖 Lis la phrase</span>
+      <span class="htitle">👥 Compte les passagers</span>
     </div>
     
     <!-- Score -->
@@ -137,29 +48,18 @@
       <span class="streak" id="streak"></span>
     </div>
     
-    <!-- Question counter -->
-    <div class="question-counter" id="qcounter">Question 1 / 5</div>
-    
-    <!-- Instruction -->
-    <div class="instruction">Quel mot manque dans la phrase ?</div>
-
-    <!-- TTS + Emoji -->
-    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:4px;">
-      <div class="emoji-hint" id="emojiHint" style="margin:0;">🚌</div>
-      <button class="tts-btn" id="ttsBtn" onclick="speakQuestion()" style="background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border:none;border-radius:25px;padding:8px 18px;font-size:0.95rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">
-        <span>🔊</span><span>Écouter</span>
-      </button>
-    </div>
-
-    <!-- Sentence with blank -->
-    <div class="sentence-box">
-      <div class="sentence-text" id="sentenceText">
-        <!-- Généré par JS -->
+    <!-- Question -->
+    <div class="qbox" style="padding:20px 12px;">
+      <div class="groups-container" id="groups">
+        <!-- Groupes générés par JS -->
+      </div>
+      <div class="qtxt" style="font-size:1.2rem;margin-top:12px;">
+        Combien de passagers en tout ?
       </div>
     </div>
     
     <!-- Choices -->
-    <div class="choices-grid" id="choices">
+    <div class="choices" id="choices" style="grid-template-columns:repeat(4,1fr);padding:0 12px;">
       <!-- Généré par JS -->
     </div>
   </div>
@@ -170,171 +70,134 @@
   <!-- Scripts -->
   <script src="js/sounds.js"></script>
   <script src="js/feedback.js"></script>
+  <script src="js/data.js"></script>
   <script>
-    // ─── MJ-04: Lis la phrase ───
-    // Max doit trouver le mot manqué [?] dans une phrase simple
-    // Phase 1 : mots courts que Max sait lire (BUS, TRAM, PAPA, MAMAN, VELO...)
-
-    const PHRASES = [
-      { before: "Le", answer: "CHAT", after: "dort sur le canapé.", options: ["CHAT", "CHIEN", "LAPIN", "OURS"], emoji: "🐱" },
-      { before: "Max mange une", answer: "POMME", after: "rouge.", options: ["POMME", "POIRE", "FRAISE", "BANANE"], emoji: "🍎" },
-      { before: "Le", answer: "LOUP", after: "est dans la forêt.", options: ["LOUP", "RENARD", "LION", "OURS"], emoji: "🐺" },
-      { before: "Papa dit", answer: "BRAVO", after: "à Max.", options: ["BRAVO", "MERCI", "SALUT", "COUCOU"], emoji: "👏" },
-      { before: "Max boit du", answer: "LAIT", after: "le matin.", options: ["LAIT", "JUS", "CAFÉ", "THÉ"], emoji: "🥛" },
-      { before: "Le ciel est", answer: "BLEU", after: "aujourd'hui.", options: ["BLEU", "ROUGE", "VERT", "NOIR"], emoji: "☀️" },
-      { before: "Maman fait un", answer: "GATEAU", after: "au chocolat.", options: ["GATEAU", "PAIN", "SUCRE", "YAOURT"], emoji: "🎂" },
-      { before: "Le", answer: "CHIEN", after: "aboie fort !", options: ["CHIEN", "CHAT", "LAPIN", "CANARD"], emoji: "🐶" },
-      { before: "Max aime la", answer: "NEIGE", after: "en hiver.", options: ["NEIGE", "PLUIE", "GRELE", "SOLEIL"], emoji: "❄️" },
-      { before: "La", answer: "LUNE", after: "brille la nuit.", options: ["LUNE", "ETOILE", "SOLEIL", "NUAGE"], emoji: "🌙" },
-      { before: "Le", answer: "LION", after: "rugit très fort.", options: ["LION", "TIGRE", "OURS", "LOUP"], emoji: "🦁" },
-      { before: "Max saute dans la", answer: "MER", after: "avec papa.", options: ["MER", "PISCINE", "RIVIERE", "LAC"], emoji: "🏖️" },
-      { before: "La", answer: "PLUIE", after: "tombe du ciel.", options: ["PLUIE", "NEIGE", "GRELE", "BRUME"], emoji: "🌧️" },
-      { before: "Max dit", answer: "MERCI", after: "à maman.", options: ["MERCI", "BRAVO", "COUCOU", "SALUT"], emoji: "😊" },
-      { before: "Le", answer: "CANARD", after: "nage dans l'eau.", options: ["CANARD", "LAPIN", "CHAT", "CHIEN"], emoji: "🦆" },
-    ];
-
+    // ─── MJ-03a: Compte les passagers ───
+    // Des passagers arrivent par GROUPES → Max compte le total
+    // Groupements visuels: 2+3+3 plutôt que 8 en ligne
+    
     let score = 0;
     let streak = 0;
-    let questionCount = 0;
-    const MAX_QUESTIONS = 5;
     let locked = false;
-    let currentPhrase = null;
-    let usedIndices = [];
-
-    // TTS
-    function speakQuestion(full) {
-      if (!currentPhrase) return;
-      const text = full
-        ? `${currentPhrase.before} ${currentPhrase.answer} ${currentPhrase.after}`
-        : `${currentPhrase.before} quelque chose ${currentPhrase.after}`;
-      const utt = new SpeechSynthesisUtterance(text);
-      utt.lang = 'fr-FR';
-      utt.rate = 0.85;
-      const voices = speechSynthesis.getVoices();
-      const frVoice = voices.find(v => v.lang.startsWith('fr'));
-      if (frVoice) utt.voice = frVoice;
-      speechSynthesis.cancel();
-      speechSynthesis.speak(utt);
-    }
-
-    if (speechSynthesis.onvoiceschanged !== undefined) {
-      speechSynthesis.onvoiceschanged = () => {};
-    }
-
+    let correctAnswer = 0;
+    
+    const EMOJIS = ['🧍', '🧍‍♂️', '🧍‍♀️', '👨', '👩', '👴', '👵'];
+    
     function init() {
       score = 0;
       streak = 0;
-      questionCount = 0;
-      usedIndices = [];
       document.getElementById('score').textContent = '0';
       document.getElementById('streak').textContent = '';
       nextQuestion();
     }
-
-    function getRandomPhrase() {
-      let available = PHRASES.map((_, i) => i).filter(i => !usedIndices.includes(i));
-      if (available.length === 0) {
-        usedIndices = [];
-        available = PHRASES.map((_, i) => i);
-      }
-      const idx = available[Math.floor(Math.random() * available.length)];
-      usedIndices.push(idx);
-      return PHRASES[idx];
-    }
-
+    
     function nextQuestion() {
-      if (questionCount >= MAX_QUESTIONS) {
-        showEndScreen();
-        return;
-      }
-
       locked = false;
-      questionCount++;
-      document.getElementById('qcounter').textContent = `Question ${questionCount} / ${MAX_QUESTIONS}`;
-
-      currentPhrase = getRandomPhrase();
-      document.getElementById('emojiHint').textContent = currentPhrase.emoji;
-
-      // Afficher la phrase avec case [?]
-      const sentenceText = document.getElementById('sentenceText');
-      sentenceText.innerHTML = `${currentPhrase.before} <span class="blank" id="blank">?</span> ${currentPhrase.after}`;
-
-      // Afficher les 4 choix (grands boutons texte en majuscules)
+      
+      // Générer un total entre 3 et 10
+      const total = 3 + Math.floor(Math.random() * 8);
+      correctAnswer = total;
+      
+      // Décomposer en groupes (max 3 par groupe)
+      const groups = decomposeIntoGroups(total);
+      
+      // Afficher les groupes
+      const container = document.getElementById('groups');
+      container.innerHTML = '';
+      
+      const emoji = EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
+      
+      groups.forEach((count, i) => {
+        const groupDiv = document.createElement('div');
+        groupDiv.className = 'pax-group';
+        groupDiv.style.animationDelay = `${i * 0.2}s`;
+        
+        for (let j = 0; j < count; j++) {
+          const span = document.createElement('span');
+          span.className = 'pax';
+          span.textContent = emoji;
+          span.style.animationDelay = `${i * 0.2 + j * 0.05}s`;
+          groupDiv.appendChild(span);
+        }
+        
+        container.appendChild(groupDiv);
+      });
+      
+      // Générer les choix
+      const wrongs = [];
+      for (let v = 1; v <= 12; v++) {
+        if (v !== correctAnswer) wrongs.push(v);
+      }
+      const options = [correctAnswer, ...shuffle(wrongs).slice(0, 3)];
+      
+      // Afficher les choix
       const choicesDiv = document.getElementById('choices');
       choicesDiv.innerHTML = '';
-      shuffle([...currentPhrase.options]).forEach(option => {
+      
+      shuffle(options).forEach(num => {
         const btn = document.createElement('button');
-        btn.className = 'choice-btn';
-        btn.textContent = option;
-        btn.onclick = () => answer(option === currentPhrase.answer, btn, option);
+        btn.className = 'ch';
+        btn.style.fontSize = '1.4rem';
+        btn.style.minHeight = '60px';
+        btn.textContent = num;
+        btn.onclick = () => answer(num === correctAnswer, btn);
         choicesDiv.appendChild(btn);
       });
-
-      // TTS auto
-      setTimeout(() => speakQuestion(false), 400);
     }
-
-    function answer(isCorrect, btn, chosenOption) {
+    
+    // Décompose un nombre en groupes de max 3
+    function decomposeIntoGroups(n) {
+      const groups = [];
+      let remaining = n;
+      
+      while (remaining > 0) {
+        // Groupe aléatoire entre 2 et 3 (ou 1 si reste 1)
+        let groupSize;
+        if (remaining === 1) {
+          groupSize = 1;
+        } else if (remaining === 2) {
+          groupSize = 2;
+        } else {
+          groupSize = 2 + Math.floor(Math.random() * 2); // 2 ou 3
+        }
+        groups.push(groupSize);
+        remaining -= groupSize;
+      }
+      
+      return groups;
+    }
+    
+    function answer(isCorrect, btn) {
       if (locked) return;
       locked = true;
-
-      const blank = document.getElementById('blank');
-
+      
       if (isCorrect) {
         btn.classList.add('ok');
-        if (blank) { blank.textContent = chosenOption; blank.classList.add('filled'); }
         score += 10;
         streak++;
         if (streak >= 3) confetti();
         sndDing();
         showFB(true);
-        // TTS lit la phrase complète
-        setTimeout(() => speakQuestion(true), 300);
       } else {
         btn.classList.add('ko');
-        const buttons = Array.from(document.querySelectorAll('#choices .choice-btn'));
-        const correctBtn = buttons.find(b => b.textContent === currentPhrase.answer);
+        
+        // Montrer la bonne réponse
+        const buttons = Array.from(document.querySelectorAll('#choices .ch'));
+        const correctBtn = buttons.find(b => +b.textContent === correctAnswer);
         if (correctBtn) correctBtn.classList.add('ok');
-        if (blank) { blank.textContent = currentPhrase.answer; blank.classList.add('revealed'); }
+        
         streak = 0;
         sndBuzz();
         showFB(false);
-        // TTS lit la bonne réponse
-        setTimeout(() => speakQuestion(true), 300);
       }
-
+      
       document.getElementById('score').textContent = score;
       document.getElementById('streak').textContent = streak >= 2 ? `🔥×${streak}` : '';
-
-      setTimeout(nextQuestion, 2200);
+      
+      setTimeout(nextQuestion, 1200);
     }
-
-    function showEndScreen() {
-      sndVictory();
-      confetti();
-      const app = document.getElementById('app');
-      app.innerHTML = `
-        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100dvh;text-align:center;padding:20px;">
-          <div style="font-size:5rem;margin-bottom:20px;">🏆</div>
-          <h2 style="font-size:2rem;margin-bottom:20px;color:#ffe066;">Super !</h2>
-          <p style="font-size:1.4rem;margin-bottom:30px;">Tu as fait <strong>${score}</strong> points !</p>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
-            <a href="mj-04.html" style="background:#00c47a;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">🔄 Rejouer</a>
-            <a href="index.html" style="background:#ffffff22;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">📋 Menu</a>
-          </div>
-        </div>
-      `;
-    }
-
-    function shuffle(array) {
-      const arr = [...array];
-      for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-      }
-      return arr;
-    }
-
+    
+    // Démarrer
     init();
   </script>
 </body>

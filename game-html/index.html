@@ -3,194 +3,210 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🚌 MaxPlay - Les Jeux de Max</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <title>MaxPlay – Les Jeux de Max</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
+    * { margin:0; padding:0; box-sizing:border-box; }
+
     body {
       font-family: 'Nunito', sans-serif;
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 20px;
+      padding: 20px 16px 40px;
     }
-    
-    h1 {
-      color: white;
-      font-size: 3rem;
-      font-weight: 800;
-      margin: 20px 0 10px;
+
+    .header {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .header .bus-emoji { font-size: 3.5rem; }
+    .header h1 {
+      color: #fff;
+      font-size: 2.6rem;
+      font-weight: 900;
       text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+      margin: 6px 0 4px;
     }
-    
-    .subtitle {
+    .header .subtitle {
       color: rgba(255,255,255,0.9);
-      font-size: 1.3rem;
-      margin-bottom: 40px;
+      font-size: 1.1rem;
+      font-weight: 700;
     }
-    
+
+    /* Grille 2 colonnes fixe */
     .games-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      max-width: 1200px;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
       width: 100%;
+      max-width: 720px;
     }
-    
+
+    /* Carte Max Adventure : pleine largeur */
+    .game-card.full-width {
+      grid-column: 1 / -1;
+    }
+
     .game-card {
-      background: white;
-      border-radius: 20px;
-      padding: 25px;
+      background: #fff;
+      border-radius: 18px;
+      padding: 18px 14px;
       text-decoration: none;
       color: #333;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+      position: relative;
     }
-    
-    .game-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    }
-    
+    .game-card:active { transform: scale(0.97); }
+
     .game-number {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      width: 60px;
-      height: 60px;
+      position: absolute;
+      top: -10px;
+      left: 14px;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: #fff;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.5rem;
-      font-weight: 800;
-      margin-bottom: 15px;
-    }
-    
-    .game-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      margin-bottom: 10px;
-      color: #1a1a1a;
-    }
-    
-    .game-desc {
-      font-size: 0.95rem;
-      color: #666;
-      line-height: 1.5;
-    }
-    
-    .game-emoji {
-      font-size: 3rem;
-      margin-bottom: 10px;
-    }
-    
-    .new-badge {
-      background: #4CAF50;
-      color: white;
-      padding: 4px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      margin-top: 10px;
-    }
-    
-    footer {
-      margin-top: 50px;
-      color: rgba(255,255,255,0.7);
       font-size: 1rem;
+      font-weight: 900;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.25);
     }
-    
-    .max-emoji {
-      font-size: 4rem;
-      margin-bottom: 10px;
+
+    .game-emoji { font-size: 2.4rem; margin: 10px 0 6px; }
+
+    .game-title {
+      font-size: 1rem;
+      font-weight: 900;
+      color: #1a1a1a;
+      margin-bottom: 5px;
+      line-height: 1.2;
+    }
+
+    .game-desc {
+      font-size: 0.78rem;
+      color: #777;
+      line-height: 1.4;
+    }
+
+    .badge {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 900;
+    }
+    .badge.new  { background: #4CAF50; color: #fff; }
+    .badge.tts  { background: linear-gradient(135deg,#667eea,#764ba2); color: #fff; }
+    .badge.big  { background: #ff6b35; color: #fff; }
+
+    /* Carte grand jeu */
+    .game-card.full-width .game-emoji { font-size: 3rem; }
+    .game-card.full-width .game-title { font-size: 1.3rem; }
+    .game-card.full-width .game-desc  { font-size: 0.9rem; max-width: 360px; }
+
+    footer {
+      margin-top: 30px;
+      color: rgba(255,255,255,0.75);
+      font-size: 0.9rem;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <div class="max-emoji">👦</div>
-  <h1>MaxPlay</h1>
-  <p class="subtitle">Les jeux de bus pour Max ! 🚌</p>
-  
+  <div class="header">
+    <div class="bus-emoji">🚌</div>
+    <h1>MaxPlay</h1>
+    <p class="subtitle">Les jeux de bus pour Max !</p>
+  </div>
+
   <div class="games-grid">
+
     <a href="mj-01.html" class="game-card">
       <div class="game-number">1</div>
       <div class="game-emoji">🎨</div>
       <div class="game-title">Quelle couleur ?</div>
-      <div class="game-desc">Le bus 380 est de quelle couleur ? Choisis la bonne couleur parmi 4 !</div>
+      <div class="game-desc">Trouve la bonne couleur du bus !</div>
     </a>
-    
+
     <a href="mj-02.html" class="game-card">
       <div class="game-number">2</div>
       <div class="game-emoji">🔢</div>
       <div class="game-title">Quel numéro ?</div>
-      <div class="game-desc">Ce bus est vert, quel est son numéro ? Trouve le bon !</div>
-    </a>
-    
-    <a href="mj-02b.html" class="game-card">
-      <div class="game-number">2b</div>
-      <div class="game-emoji">🔊</div>
-      <div class="game-title">Devine le numéro</div>
-      <div class="game-desc">Écoute le numéro et trouve le bon bus ! 20+ lignes RATP.</div>
-      <span class="new-badge">TTS</span>
-    </a>
-    
-    <a href="mj-03b.html" class="game-card">
-      <div class="game-number">3</div>
-      <div class="game-emoji">🪑</div>
-      <div class="game-title">La bonne place</div>
-      <div class="game-desc">Combien de passagers peuvent encore monter dans le bus ?</div>
-    </a>
-    
-    <a href="mj-04.html" class="game-card">
-      <div class="game-number">4</div>
-      <div class="game-emoji">📖</div>
-      <div class="game-title">Lis le mot</div>
-      <div class="game-desc">Quelle syllabe manque ? Complète le mot du bus !</div>
-    </a>
-    
-    <a href="mj-05.html" class="game-card">
-      <div class="game-number">5</div>
-      <div class="game-emoji">🎯</div>
-      <div class="game-title">Quel bus ?</div>
-      <div class="game-desc">Pour aller chez mamie, quel bus Max doit prendre ?</div>
-    </a>
-    
-    <a href="mj-06.html" class="game-card">
-      <div class="game-number">6</div>
-      <div class="game-emoji">🅿️</div>
-      <div class="game-title">Au garage !</div>
-      <div class="game-desc">Range les bus dans les bonnes places de parking !</div>
+      <div class="game-desc">Ce bus est vert, quel est son numéro ?</div>
     </a>
 
-    <a href="mj-08.html" class="game-card">
-      <div class="game-number">7</div>
-      <div class="game-emoji">🗂️</div>
-      <div class="game-title">Trie les bus !</div>
-      <div class="game-desc">Range tous les bus dans leur famille de couleur !</div>
-      <span class="new-badge">NOUVEAU !</span>
+    <a href="mj-03.html" class="game-card">
+      <div class="game-number">3</div>
+      <div class="game-emoji">🔊</div>
+      <div class="game-title">Devine le numéro</div>
+      <div class="game-desc">Écoute et trouve le bon bus !</div>
+      <span class="badge tts">TTS</span>
+    </a>
+
+    <a href="mj-04.html" class="game-card">
+      <div class="game-number">4</div>
+      <div class="game-emoji">👥</div>
+      <div class="game-title">Compte les passagers</div>
+      <div class="game-desc">Combien de passagers en tout ?</div>
+    </a>
+
+    <a href="mj-05.html" class="game-card">
+      <div class="game-number">5</div>
+      <div class="game-emoji">🪑</div>
+      <div class="game-title">La bonne place</div>
+      <div class="game-desc">Combien peuvent encore monter ?</div>
+    </a>
+
+    <a href="mj-06.html" class="game-card">
+      <div class="game-number">6</div>
+      <div class="game-emoji">📖</div>
+      <div class="game-title">Lis la phrase</div>
+      <div class="game-desc">Quel mot manque dans la phrase ?</div>
     </a>
 
     <a href="mj-07.html" class="game-card">
-      <div class="game-number">8</div>
-      <div class="game-emoji">🎮</div>
-      <div class="game-title">Le Bac à Sable</div>
-      <div class="game-desc">Conduis ton bus dans la ville ! Collecte les passagers !</div>
+      <div class="game-number">7</div>
+      <div class="game-emoji">🎯</div>
+      <div class="game-title">Terminus</div>
+      <div class="game-desc">Où va ce bus ? Trouve le terminus !</div>
     </a>
+
+    <a href="mj-08.html" class="game-card">
+      <div class="game-number">8</div>
+      <div class="game-emoji">🅿️</div>
+      <div class="game-title">Au garage !</div>
+      <div class="game-desc">Range les bus dans les bonnes places !</div>
+    </a>
+
+    <a href="mj-09.html" class="game-card">
+      <div class="game-number">9</div>
+      <div class="game-emoji">🗂️</div>
+      <div class="game-title">Trie les bus !</div>
+      <div class="game-desc">Range-les dans leur famille de couleur !</div>
+    </a>
+
+    <a href="max-adventure.html" class="game-card full-width">
+      <div class="game-number">★</div>
+      <div class="game-emoji">🎮</div>
+      <div class="game-title">Max Adventure</div>
+      <div class="game-desc">Conduis ton bus dans la ville, collecte les passagers et explore Villejuif !</div>
+      <span class="badge big">Grand Jeu</span>
+    </a>
+
   </div>
-  
-  <footer>
-    🚌 Fait avec ❤️ pour Max
-  </footer>
+
+  <footer>🚌 Fait avec ❤️ pour Max</footer>
 </body>
 </html>

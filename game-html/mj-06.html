@@ -2,345 +2,123 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>MJ-06 – Au garage !</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-06 – Lis la phrase</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent;
-      user-select: none;
-      -webkit-user-select: none;
-    }
-
-    body {
-      font-family: 'Nunito', sans-serif;
-      background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
-      height: 100dvh;
-      overflow: hidden;
-      touch-action: none;
-    }
-
-    #app {
-      display: flex;
-      flex-direction: column;
-      height: 100dvh;
-      max-width: 1000px;
-      margin: 0 auto;
-    }
-
-    /* ── Header ── */
-    .hdr {
+    #gameScr { background: linear-gradient(160deg, #2a1a3a, #1a2a3a); }
+    
+    .sentence-box {
+      background: #ffffff15;
+      border-radius: 20px;
+      padding: 24px 20px;
+      margin: 12px;
+      text-align: center;
+      min-height: 120px;
       display: flex;
       align-items: center;
-      padding: 10px 16px;
-      background: linear-gradient(90deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      flex-shrink: 0;
+      justify-content: center;
     }
-
-    .back {
-      color: #fff;
-      text-decoration: none;
+    
+    .sentence-text {
       font-size: 1.5rem;
-      margin-right: 12px;
-      padding: 4px 8px;
-      border-radius: 8px;
-      transition: background 0.2s;
-    }
-    .back:hover, .back:active { background: rgba(255,255,255,0.2); }
-
-    .htitle {
-      color: #fff;
-      font-size: 1.2rem;
-      font-weight: 900;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-      flex: 1;
-    }
-
-    /* ── Progress bar ── */
-    .scorebar {
-      padding: 8px 16px;
-      background: rgba(0,0,0,0.2);
-      flex-shrink: 0;
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 12px;
-      background: rgba(255,255,255,0.15);
-      border-radius: 6px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, #00c47a, #ffe066, #ff6b6b);
-      background-size: 200% 100%;
-      animation: shimmer 2s infinite;
-      transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      border-radius: 6px;
-    }
-
-    @keyframes shimmer {
-      0%   { background-position: 200% 0; }
-      100% { background-position: -200% 0; }
-    }
-
-    .bus-count {
-      text-align: center;
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.8);
-      margin-top: 6px;
       font-weight: 700;
-    }
-
-    /* ── Game layout ── */
-    .game-area {
-      flex: 1;
-      display: flex;
-      overflow: hidden;
-      position: relative;
-    }
-
-    /* Zone gauche : bus à glisser */
-    #busZone {
-      flex: 1;
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Zone droite : garage */
-    #garageCol {
-      width: 120px;
-      flex-shrink: 0;
-      display: flex;
-      flex-direction: column;
-      background: rgba(0,0,0,0.35);
-      border-left: 2px solid rgba(255,255,255,0.2);
-      overflow: hidden;
-    }
-
-    /* ── Slots ── */
-    .slot {
-      flex: 1;
-      min-height: 0;
-      max-height: 90px;
-      position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-bottom: 1px solid rgba(255,255,255,0.15);
-      overflow: hidden;
-      transition: box-shadow 0.2s;
-    }
-
-    .slot:last-child { border-bottom: none; }
-
-    .slot.hover-ok {
-      box-shadow: inset 0 0 0 3px rgba(0, 255, 150, 0.7);
-    }
-
-    /* Badge numéro dans le slot */
-    .slot-badge {
-      font-size: 1rem;
-      font-weight: 900;
+      line-height: 1.5;
       color: #fff;
-      text-shadow: 0 1px 6px rgba(0,0,0,0.9), 0 0 10px rgba(0,0,0,0.5);
-      z-index: 1;
-      pointer-events: none;
-      background: rgba(0,0,0,0.35);
-      padding: 3px 8px;
-      border-radius: 8px;
     }
-
-    /* Porte de garage — s'abaisse depuis le bas */
-    .slot-door {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 0%;
-      background: #2a2a3a;
-      border-top: 3px solid #444;
-      z-index: 5;
-      transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      pointer-events: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
-
-    .slot-door::after {
-      content: '';
-      position: absolute;
-      top: 6px;
-      left: 8px;
-      right: 8px;
-      height: 4px;
-      background: rgba(255,255,255,0.08);
-      border-radius: 2px;
-    }
-
-    .slot.parked .slot-door {
-      height: 100%;
-    }
-
-    /* ── Bus draggables ── */
-    .bus-draggable {
-      position: absolute;
-      cursor: grab;
-      touch-action: none;
-      z-index: 10;
-      transition: transform 0.15s;
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.5));
-    }
-
-    .bus-draggable:active,
-    .bus-draggable.dragging {
-      cursor: grabbing;
-      z-index: 20;
-      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.7));
-      transform: scale(1.08);
-    }
-
-    .bus-draggable.parked {
-      cursor: default;
-      pointer-events: none;
-      transition: left 0.3s ease, top 0.3s ease;
-    }
-
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      20%       { transform: translateX(-8px); }
-      40%       { transform: translateX(8px); }
-      60%       { transform: translateX(-5px); }
-      80%       { transform: translateX(5px); }
-    }
-
-    .bus-draggable.wrong {
-      animation: shake 0.4s ease;
-    }
-
-    /* Info texte bas */
-    .garage-info {
-      position: absolute;
-      bottom: 8px;
-      left: 8px;
-      right: 120px;
-      text-align: center;
-      color: rgba(255,255,255,0.75);
-      font-size: 0.88rem;
-      font-weight: 700;
-      pointer-events: none;
-    }
-
-    @keyframes pulseText {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50%       { opacity: 0.8; transform: scale(1.03); }
-    }
-
-    .pulse { animation: pulseText 1s ease-in-out infinite; color: #ffe066; }
-
-    /* ── Victory overlay ── */
-    .victory-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.85);
-      backdrop-filter: blur(8px);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.5s ease;
-    }
-
-    .victory-overlay.show {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .victory-content {
-      text-align: center;
-      padding: 40px;
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-      border-radius: 24px;
-      border: 2px solid rgba(255,255,255,0.1);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-      transform: scale(0.8);
-      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-
-    .victory-overlay.show .victory-content { transform: scale(1); }
-
-    .victory-emoji {
-      font-size: 4rem;
-      margin-bottom: 16px;
-      animation: bounce 1s ease infinite;
-    }
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50%       { transform: translateY(-16px); }
-    }
-
-    .victory-title {
-      font-size: 2.2rem;
+    
+    .sentence-text .blank {
+      display: inline-block;
+      background: #ffe06644;
+      border: 3px solid #ffe066;
+      border-radius: 12px;
+      padding: 4px 16px;
+      margin: 0 4px;
+      min-width: 60px;
       color: #ffe066;
-      margin-bottom: 10px;
-    }
-
-    .victory-text {
-      font-size: 1.2rem;
-      color: #fff;
-      margin-bottom: 28px;
-      opacity: 0.9;
-    }
-
-    .victory-buttons {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .victory-btn {
-      padding: 14px 28px;
-      border-radius: 30px;
-      text-decoration: none;
       font-weight: 900;
-      font-size: 1rem;
-      border: none;
+      animation: pulse 0.8s infinite alternate;
+    }
+    
+    .sentence-text .blank.filled {
+      background: #00c47a44;
+      border-color: #00c47a;
+      color: #00c47a;
+      animation: popAnim 0.3s ease-out;
+    }
+    
+    .sentence-text .blank.revealed {
+      background: #00c47a44;
+      border-color: #00c47a;
+      color: #00c47a;
+    }
+    
+    @keyframes pulse {
+      from { transform: scale(1); }
+      to { transform: scale(1.05); }
+    }
+    
+    @keyframes popAnim {
+      0% { transform: scale(0.7); }
+      60% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    
+    .choices-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      padding: 12px;
+      margin-top: 8px;
+    }
+    
+    .choice-btn {
+      background: linear-gradient(145deg, #ffffff20, #ffffff10);
+      border: 2px solid #ffffff30;
+      border-radius: 16px;
+      padding: 18px 12px;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #fff;
       cursor: pointer;
+      transition: all 0.2s ease;
       font-family: 'Nunito', sans-serif;
-      transition: all 0.2s;
     }
-
-    .victory-btn.primary {
-      background: linear-gradient(135deg, #00c47a, #00a86b);
-      color: #fff;
+    
+    .choice-btn:active {
+      transform: scale(0.95);
     }
-
-    .victory-btn.secondary {
-      background: rgba(255,255,255,0.15);
-      color: #fff;
+    
+    .choice-btn.ok {
+      background: #00c47a;
+      border-color: #00c47a;
     }
-
-    .victory-btn:hover, .victory-btn:active { transform: translateY(-3px); }
-
-    /* Confetti */
-    .confetti {
-      position: fixed;
-      width: 12px;
-      height: 12px;
-      pointer-events: none;
-      z-index: 999;
+    
+    .choice-btn.ko {
+      background: #ff4757;
+      border-color: #ff4757;
+    }
+    
+    .question-counter {
+      text-align: center;
+      font-size: 1rem;
+      opacity: 0.7;
+      margin-bottom: 8px;
+      font-weight: 700;
+    }
+    
+    .instruction {
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.6;
+      margin-bottom: 12px;
+    }
+    
+    .emoji-hint {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 8px;
     }
   </style>
 </head>
@@ -349,482 +127,215 @@
     <!-- Header -->
     <div class="hdr">
       <a href="index.html" class="back">←</a>
-      <span class="htitle">🚌 Au garage !</span>
+      <span class="htitle">📖 Lis la phrase</span>
     </div>
-
-    <!-- Progress -->
+    
+    <!-- Score -->
     <div class="scorebar">
-      <div class="progress-bar">
-        <div class="progress-fill" id="progressFill" style="width:0%"></div>
-      </div>
-      <div class="bus-count" id="busCount">Bus garés : 0 / 6</div>
+      <span class="scoretxt">Score</span>
+      <span class="scoreval" id="score">0</span>
+      <span class="streak" id="streak"></span>
+    </div>
+    
+    <!-- Question counter -->
+    <div class="question-counter" id="qcounter">Question 1 / 5</div>
+    
+    <!-- Instruction -->
+    <div class="instruction">Quel mot manque dans la phrase ?</div>
+
+    <!-- TTS + Emoji -->
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:4px;">
+      <div class="emoji-hint" id="emojiHint" style="margin:0;">🚌</div>
+      <button class="tts-btn" id="ttsBtn" onclick="speakQuestion()" style="background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border:none;border-radius:25px;padding:8px 18px;font-size:0.95rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">
+        <span>🔊</span><span>Écouter</span>
+      </button>
     </div>
 
-    <!-- Game -->
-    <div class="game-area">
-      <!-- Zone bus (gauche) -->
-      <div id="busZone">
-        <div class="garage-info" id="info">
-          Glisse chaque bus dans sa case à droite !
-        </div>
+    <!-- Sentence with blank -->
+    <div class="sentence-box">
+      <div class="sentence-text" id="sentenceText">
+        <!-- Généré par JS -->
       </div>
-
-      <!-- Colonne garage (droite) -->
-      <div id="garageCol" id="garageCol"></div>
+    </div>
+    
+    <!-- Choices -->
+    <div class="choices-grid" id="choices">
+      <!-- Généré par JS -->
     </div>
   </div>
-
-  <!-- Victory -->
-  <div class="victory-overlay" id="victoryOverlay">
-    <div class="victory-content">
-      <div class="victory-emoji">🎉</div>
-      <h2 class="victory-title">Génial !</h2>
-      <p class="victory-text">Tu as garé tous les bus !<br>Tu es un super conducteur ! 🚌</p>
-      <div class="victory-buttons">
-        <button class="victory-btn primary" onclick="location.reload()">🔄 Rejouer</button>
-        <a href="index.html" class="victory-btn secondary">📋 Menu</a>
-      </div>
-    </div>
-  </div>
-
+  
+  <!-- Feedback overlay -->
+  <div id="fbOverlay"></div>
+  
+  <!-- Scripts -->
   <script src="js/sounds.js"></script>
   <script src="js/feedback.js"></script>
-  <script src="js/data.js"></script>
-  <script src="js/bus-svg.js"></script>
   <script>
-    // ─── MJ-06 : Au garage ! ───
-    // Bus SVG IDFM → garage colonne droite, drag & drop
+    // ─── MJ-04: Lis la phrase ───
+    // Max doit trouver le mot manqué [?] dans une phrase simple
+    // Phase 1 : mots courts que Max sait lire (BUS, TRAM, PAPA, MAMAN, VELO...)
 
-    // Toutes les lignes IDFM depuis data.js — tirage de 6 au hasard parmi les couleurs uniques
-    // (pas de doublons de couleur pour éviter confusion dans le garage)
-    const BUS_POOL = LIGNES.filter(l => {
-      const sameColor = LIGNES.filter(x => x.color === l.color);
-      return sameColor.length === 1; // exclure les paires de couleur identique (N15/N22, V6/380, 132/2234)
-    });
-    // Mélanger et prendre 6 lignes avec couleurs distinctes
-    const BUS_LINES = selectDistinctColors(BUS_POOL, 6, 60);
+    const PHRASES = [
+      { before: "Le", answer: "CHAT", after: "dort sur le canapé.", options: ["CHAT", "CHIEN", "LAPIN", "OURS"], emoji: "🐱" },
+      { before: "Max mange une", answer: "POMME", after: "rouge.", options: ["POMME", "POIRE", "FRAISE", "BANANE"], emoji: "🍎" },
+      { before: "Le", answer: "LOUP", after: "est dans la forêt.", options: ["LOUP", "RENARD", "LION", "OURS"], emoji: "🐺" },
+      { before: "Papa dit", answer: "BRAVO", after: "à Max.", options: ["BRAVO", "MERCI", "SALUT", "COUCOU"], emoji: "👏" },
+      { before: "Max boit du", answer: "LAIT", after: "le matin.", options: ["LAIT", "JUS", "CAFÉ", "THÉ"], emoji: "🥛" },
+      { before: "Le ciel est", answer: "BLEU", after: "aujourd'hui.", options: ["BLEU", "ROUGE", "VERT", "NOIR"], emoji: "☀️" },
+      { before: "Maman fait un", answer: "GATEAU", after: "au chocolat.", options: ["GATEAU", "PAIN", "SUCRE", "YAOURT"], emoji: "🎂" },
+      { before: "Le", answer: "CHIEN", after: "aboie fort !", options: ["CHIEN", "CHAT", "LAPIN", "CANARD"], emoji: "🐶" },
+      { before: "Max aime la", answer: "NEIGE", after: "en hiver.", options: ["NEIGE", "PLUIE", "GRELE", "SOLEIL"], emoji: "❄️" },
+      { before: "La", answer: "LUNE", after: "brille la nuit.", options: ["LUNE", "ETOILE", "SOLEIL", "NUAGE"], emoji: "🌙" },
+      { before: "Le", answer: "LION", after: "rugit très fort.", options: ["LION", "TIGRE", "OURS", "LOUP"], emoji: "🦁" },
+      { before: "Max saute dans la", answer: "MER", after: "avec papa.", options: ["MER", "PISCINE", "RIVIERE", "LAC"], emoji: "🏖️" },
+      { before: "La", answer: "PLUIE", after: "tombe du ciel.", options: ["PLUIE", "NEIGE", "GRELE", "BRUME"], emoji: "🌧️" },
+      { before: "Max dit", answer: "MERCI", after: "à maman.", options: ["MERCI", "BRAVO", "COUCOU", "SALUT"], emoji: "😊" },
+      { before: "Le", answer: "CANARD", after: "nage dans l'eau.", options: ["CANARD", "LAPIN", "CHAT", "CHIEN"], emoji: "🦆" },
+    ];
 
-    const BUS_WIDTH = 120;
-    const SNAP_DIST = 100;
+    let score = 0;
+    let streak = 0;
+    let questionCount = 0;
+    const MAX_QUESTIONS = 5;
+    let locked = false;
+    let currentPhrase = null;
+    let usedIndices = [];
 
-    let buses = [];
-    let draggedBus = null;
-    let dragOffset = { x: 0, y: 0 };
-    let parkedCount = 0;
-    let gameComplete = false;
+    // TTS
+    function speakQuestion(full) {
+      if (!currentPhrase) return;
+      const text = full
+        ? `${currentPhrase.before} ${currentPhrase.answer} ${currentPhrase.after}`
+        : `${currentPhrase.before} quelque chose ${currentPhrase.after}`;
+      const utt = new SpeechSynthesisUtterance(text);
+      utt.lang = 'fr-FR';
+      utt.rate = 0.85;
+      const voices = speechSynthesis.getVoices();
+      const frVoice = voices.find(v => v.lang.startsWith('fr'));
+      if (frVoice) utt.voice = frVoice;
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utt);
+    }
 
-    // ── Audio inline — AudioContext SINGLETON pour éviter les coupures ──
-    let _ac = null;
-    function getAC() {
-      if (!_ac || _ac.state === 'closed') {
-        _ac = new (window.AudioContext || window.webkitAudioContext)();
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+      speechSynthesis.onvoiceschanged = () => {};
+    }
+
+    function init() {
+      score = 0;
+      streak = 0;
+      questionCount = 0;
+      usedIndices = [];
+      document.getElementById('score').textContent = '0';
+      document.getElementById('streak').textContent = '';
+      nextQuestion();
+    }
+
+    function getRandomPhrase() {
+      let available = PHRASES.map((_, i) => i).filter(i => !usedIndices.includes(i));
+      if (available.length === 0) {
+        usedIndices = [];
+        available = PHRASES.map((_, i) => i);
       }
-      if (_ac.state === 'suspended') _ac.resume();
-      return _ac;
+      const idx = available[Math.floor(Math.random() * available.length)];
+      usedIndices.push(idx);
+      return PHRASES[idx];
     }
 
-    function sndVictory() {
-      try {
-        const ac = getAC(), t = ac.currentTime;
-        [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
-          const o = ac.createOscillator(), g = ac.createGain();
-          o.connect(g); g.connect(ac.destination);
-          o.type = i < 2 ? 'triangle' : 'sine';
-          o.frequency.value = freq;
-          g.gain.setValueAtTime(0, t);
-          g.gain.linearRampToValueAtTime(0.25 - i * 0.05, t + 0.1);
-          g.gain.exponentialRampToValueAtTime(0.01, t + 1.5);
-          o.start(t); o.stop(t + 1.5);
-        });
-      } catch(e) {}
-    }
-
-    function sndKlaxon() {
-      try {
-        const ac = getAC(), t = ac.currentTime;
-        [0, 0.25].forEach(delay => {
-          const o = ac.createOscillator(), g = ac.createGain(), f = ac.createBiquadFilter();
-          o.connect(f); f.connect(g); g.connect(ac.destination);
-          o.type = 'sawtooth';
-          o.frequency.setValueAtTime(350, t + delay);
-          o.frequency.exponentialRampToValueAtTime(280, t + delay + 0.15);
-          f.type = 'lowpass'; f.frequency.value = 1200;
-          g.gain.setValueAtTime(0, t + delay);
-          g.gain.linearRampToValueAtTime(0.35, t + delay + 0.02);
-          g.gain.exponentialRampToValueAtTime(0.01, t + delay + 0.2);
-          o.start(t + delay); o.stop(t + delay + 0.25);
-        });
-      } catch(e) {}
-    }
-
-    function sndMoteur() {
-      try {
-        const ac = getAC(), t = ac.currentTime;
-        const o = ac.createOscillator(), g = ac.createGain(), f = ac.createBiquadFilter();
-        o.connect(f); f.connect(g); g.connect(ac.destination);
-        o.type = 'sawtooth';
-        o.frequency.setValueAtTime(60, t);
-        o.frequency.exponentialRampToValueAtTime(120, t + 0.8);
-        f.type = 'lowpass';
-        f.frequency.setValueAtTime(400, t);
-        f.frequency.linearRampToValueAtTime(2000, t + 0.8);
-        g.gain.setValueAtTime(0, t);
-        g.gain.linearRampToValueAtTime(0.3, t + 0.1);
-        g.gain.exponentialRampToValueAtTime(0.01, t + 1.0);
-        o.start(t); o.stop(t + 1.0);
-      } catch(e) {}
-    }
-
-    function sndTschh() {
-      try {
-        const ac = getAC(), t = ac.currentTime;
-        const buf = ac.createBuffer(1, ac.sampleRate * 0.3, ac.sampleRate);
-        const d = buf.getChannelData(0);
-        for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / d.length);
-        const src = ac.createBufferSource(), f = ac.createBiquadFilter(), g = ac.createGain();
-        src.buffer = buf; src.connect(f); f.connect(g); g.connect(ac.destination);
-        f.type = 'bandpass'; f.frequency.value = 3000; f.Q.value = 1;
-        g.gain.setValueAtTime(0.3, t);
-        g.gain.exponentialRampToValueAtTime(0.01, t + 0.3);
-        src.start(t);
-      } catch(e) {}
-    }
-
-    function sndPorte() {
-      try {
-        const ac = getAC(), t = ac.currentTime;
-        const buf = ac.createBuffer(1, ac.sampleRate * 0.5, ac.sampleRate);
-        const d = buf.getChannelData(0);
-        for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * Math.sin(i / d.length * Math.PI);
-        const src = ac.createBufferSource(), f = ac.createBiquadFilter(), g = ac.createGain();
-        src.buffer = buf; src.connect(f); f.connect(g); g.connect(ac.destination);
-        f.type = 'lowpass';
-        f.frequency.setValueAtTime(200, t);
-        f.frequency.linearRampToValueAtTime(800, t + 0.3);
-        g.gain.setValueAtTime(0.2, t);
-        g.gain.linearRampToValueAtTime(0.01, t + 0.5);
-        src.start(t);
-      } catch(e) {}
-    }
-
-    function sndBuzz() {
-      try {
-        const ac = getAC(), t = ac.currentTime;
-        const o = ac.createOscillator(), g = ac.createGain();
-        o.connect(g); g.connect(ac.destination);
-        o.type = 'square'; o.frequency.value = 180;
-        g.gain.setValueAtTime(0.25, t);
-        g.gain.exponentialRampToValueAtTime(0.01, t + 0.3);
-        o.start(t); o.stop(t + 0.3);
-      } catch(e) {}
-    }
-
-    // ── Build garage slots ──
-
-    function buildGarage() {
-      const col = document.getElementById('garageCol');
-      col.innerHTML = '';
-      BUS_LINES.forEach(line => {
-        const slot = document.createElement('div');
-        slot.className = 'slot';
-        slot.dataset.num = line.num;
-        slot.style.background = hexToSlotBg(line.color);
-
-        const badge = document.createElement('div');
-        badge.className = 'slot-badge';
-        badge.textContent = line.num;
-
-        const door = document.createElement('div');
-        door.className = 'slot-door';
-
-        slot.appendChild(badge);
-        slot.appendChild(door);
-        col.appendChild(slot);
-      });
-    }
-
-    function hexToSlotBg(hex) {
-      const r = parseInt(hex.slice(1,3), 16);
-      const g = parseInt(hex.slice(3,5), 16);
-      const b = parseInt(hex.slice(5,7), 16);
-      // Fond couleur du bus, légèrement assombri pour lisibilité
-      return `linear-gradient(180deg, rgba(${r},${g},${b},0.75) 0%, rgba(${r},${g},${b},0.55) 100%)`;
-    }
-
-    // ── Build draggable buses ──
-
-    function buildBuses() {
-      const zone = document.getElementById('busZone');
-      // Remove old buses
-      zone.querySelectorAll('.bus-draggable').forEach(el => el.remove());
-      buses = [];
-
-      const shuffled = [...BUS_LINES].sort(() => Math.random() - 0.5);
-      const zoneW = zone.offsetWidth;
-      const zoneH = zone.offsetHeight;
-
-      const BUS_H = 52; // hauteur approximative du bus SVG
-      const margin = 10;
-      const maxX = zoneW - BUS_WIDTH - margin;
-      const maxY = zoneH - BUS_H - margin;
-
-      // Placement aléatoire sans chevauchement — max 80 tentatives par bus
-      const placed = [];
-      function overlaps(x, y) {
-        return placed.some(p =>
-          Math.abs(p.x - x) < BUS_WIDTH + margin &&
-          Math.abs(p.y - y) < BUS_H + margin
-        );
-      }
-
-      shuffled.forEach((line, i) => {
-        const el = document.createElement('div');
-        el.className = 'bus-draggable';
-        el.dataset.num = line.num;
-        el.innerHTML = busSVG(line.color, line.textColor, line.num, BUS_WIDTH);
-
-        // Position aléatoire visible dans busZone, sans toucher les bords ni la zone garage
-        let x, y, attempts = 0;
-        do {
-          x = margin + Math.random() * (maxX - margin);
-          y = margin + Math.random() * (maxY - margin);
-          attempts++;
-        } while (overlaps(x, y) && attempts < 80);
-        placed.push({ x, y });
-
-        el.style.left = x + 'px';
-        el.style.top  = y + 'px';
-
-        zone.appendChild(el);
-        el.addEventListener('mousedown', onDragStart);
-        el.addEventListener('touchstart', onDragStart, { passive: false });
-
-        buses.push({ el, num: line.num, x, y, initX: x, initY: y, parked: false });
-
-        // Entrée depuis la gauche
-        el.style.left = (-BUS_WIDTH - 20) + 'px';
-        setTimeout(() => {
-          el.style.transition = 'left 0.6s cubic-bezier(0.22,1,0.36,1)';
-          el.style.left = x + 'px';
-          setTimeout(() => {
-            el.style.transition = '';
-            sndKlaxon();
-          }, 650);
-        }, i * 180);
-      });
-    }
-
-    // ── Drag & Drop ──
-
-    function onDragStart(e) {
-      if (gameComplete) return;
-      const bus = buses.find(b => b.el === e.currentTarget);
-      if (!bus || bus.parked) return;
-      e.preventDefault();
-
-      draggedBus = bus;
-      const pt = getPoint(e);
-      const rect = bus.el.getBoundingClientRect();
-      dragOffset.x = pt.x - rect.left;
-      dragOffset.y = pt.y - rect.top;
-
-      bus.el.classList.add('dragging');
-      sndPorte();
-
-      document.addEventListener('mousemove', onDragMove);
-      document.addEventListener('mouseup', onDragEnd);
-      document.addEventListener('touchmove', onDragMove, { passive: false });
-      document.addEventListener('touchend', onDragEnd);
-    }
-
-    function onDragMove(e) {
-      if (!draggedBus) return;
-      e.preventDefault();
-
-      const pt = getPoint(e);
-      const zone = document.getElementById('busZone');
-      const zRect = zone.getBoundingClientRect();
-
-      let x = pt.x - zRect.left - dragOffset.x;
-      let y = pt.y - zRect.top  - dragOffset.y;
-
-      // Constrain loosely (allow going slightly into garage col for snap)
-      x = Math.max(-10, Math.min(x, zRect.width + 20));
-      y = Math.max(-10, Math.min(y, zRect.height - 30));
-
-      draggedBus.x = x;
-      draggedBus.y = y;
-      draggedBus.el.style.left = x + 'px';
-      draggedBus.el.style.top  = y + 'px';
-
-      // Highlight matching slot
-      highlightSlot(draggedBus);
-    }
-
-    function onDragEnd(e) {
-      if (!draggedBus) return;
-      draggedBus.el.classList.remove('dragging');
-
-      // Remove all highlights
-      document.querySelectorAll('.slot').forEach(s => s.classList.remove('hover-ok'));
-
-      checkDrop(draggedBus);
-
-      draggedBus = null;
-      document.removeEventListener('mousemove', onDragMove);
-      document.removeEventListener('mouseup', onDragEnd);
-      document.removeEventListener('touchmove', onDragMove);
-      document.removeEventListener('touchend', onDragEnd);
-    }
-
-    function getPoint(e) {
-      if (e.touches && e.touches.length > 0) return { x: e.touches[0].clientX, y: e.touches[0].clientY };
-      if (e.changedTouches && e.changedTouches.length > 0) return { x: e.changedTouches[0].clientX, y: e.changedTouches[0].clientY };
-      return { x: e.clientX, y: e.clientY };
-    }
-
-    function highlightSlot(bus) {
-      document.querySelectorAll('.slot').forEach(s => s.classList.remove('hover-ok'));
-      const slot = findNearestSlot(bus);
-      if (slot && slot.num === bus.num && !slot.el.classList.contains('parked')) {
-        slot.el.classList.add('hover-ok');
-      }
-    }
-
-    function findNearestSlot(bus) {
-      const busRect = bus.el.getBoundingClientRect();
-      const busCenter = { x: busRect.left + busRect.width / 2, y: busRect.top + busRect.height / 2 };
-
-      let best = null;
-      let bestDist = Infinity;
-
-      document.querySelectorAll('.slot').forEach(slotEl => {
-        if (slotEl.classList.contains('parked')) return;
-        const sRect = slotEl.getBoundingClientRect();
-        const sCenter = { x: sRect.left + sRect.width / 2, y: sRect.top + sRect.height / 2 };
-        const dist = Math.hypot(busCenter.x - sCenter.x, busCenter.y - sCenter.y);
-        if (dist < bestDist) {
-          bestDist = dist;
-          best = { el: slotEl, num: slotEl.dataset.num, dist };
-        }
-      });
-
-      return best && best.dist < SNAP_DIST ? best : null;
-    }
-
-    function checkDrop(bus) {
-      const nearest = findNearestSlot(bus);
-
-      if (!nearest) {
-        wrongPark(bus);
+    function nextQuestion() {
+      if (questionCount >= MAX_QUESTIONS) {
+        showEndScreen();
         return;
       }
 
-      if (nearest.num === bus.num) {
-        parkBus(bus, nearest.el);
+      locked = false;
+      questionCount++;
+      document.getElementById('qcounter').textContent = `Question ${questionCount} / ${MAX_QUESTIONS}`;
+
+      currentPhrase = getRandomPhrase();
+      document.getElementById('emojiHint').textContent = currentPhrase.emoji;
+
+      // Afficher la phrase avec case [?]
+      const sentenceText = document.getElementById('sentenceText');
+      sentenceText.innerHTML = `${currentPhrase.before} <span class="blank" id="blank">?</span> ${currentPhrase.after}`;
+
+      // Afficher les 4 choix (grands boutons texte en majuscules)
+      const choicesDiv = document.getElementById('choices');
+      choicesDiv.innerHTML = '';
+      shuffle([...currentPhrase.options]).forEach(option => {
+        const btn = document.createElement('button');
+        btn.className = 'choice-btn';
+        btn.textContent = option;
+        btn.onclick = () => answer(option === currentPhrase.answer, btn, option);
+        choicesDiv.appendChild(btn);
+      });
+
+      // TTS auto
+      setTimeout(() => speakQuestion(false), 400);
+    }
+
+    function answer(isCorrect, btn, chosenOption) {
+      if (locked) return;
+      locked = true;
+
+      const blank = document.getElementById('blank');
+
+      if (isCorrect) {
+        btn.classList.add('ok');
+        if (blank) { blank.textContent = chosenOption; blank.classList.add('filled'); }
+        score += 10;
+        streak++;
+        if (streak >= 3) confetti();
+        sndDing();
+        showFB(true);
+        // TTS lit la phrase complète
+        setTimeout(() => speakQuestion(true), 300);
       } else {
-        wrongPark(bus);
+        btn.classList.add('ko');
+        const buttons = Array.from(document.querySelectorAll('#choices .choice-btn'));
+        const correctBtn = buttons.find(b => b.textContent === currentPhrase.answer);
+        if (correctBtn) correctBtn.classList.add('ok');
+        if (blank) { blank.textContent = currentPhrase.answer; blank.classList.add('revealed'); }
+        streak = 0;
+        sndBuzz();
+        showFB(false);
+        // TTS lit la bonne réponse
+        setTimeout(() => speakQuestion(true), 300);
       }
+
+      document.getElementById('score').textContent = score;
+      document.getElementById('streak').textContent = streak >= 2 ? `🔥×${streak}` : '';
+
+      setTimeout(nextQuestion, 2200);
     }
 
-    function parkBus(bus, slotEl) {
-      bus.parked = true;
-      slotEl.classList.add('parked');
+    function showEndScreen() {
+      sndVictory();
+      confetti();
+      const app = document.getElementById('app');
+      app.innerHTML = `
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100dvh;text-align:center;padding:20px;">
+          <div style="font-size:5rem;margin-bottom:20px;">🏆</div>
+          <h2 style="font-size:2rem;margin-bottom:20px;color:#ffe066;">Super !</h2>
+          <p style="font-size:1.4rem;margin-bottom:30px;">Tu as fait <strong>${score}</strong> points !</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+            <a href="mj-06.html" style="background:#00c47a;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">🔄 Rejouer</a>
+            <a href="index.html" style="background:#ffffff22;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">📋 Menu</a>
+          </div>
+        </div>
+      `;
+    }
 
-      // Snap bus into slot center
-      const zone = document.getElementById('busZone');
-      const zRect = zone.getBoundingClientRect();
-      const sRect = slotEl.getBoundingClientRect();
-
-      const finalX = sRect.left - zRect.left + (sRect.width - BUS_WIDTH) / 2;
-      const finalY = sRect.top  - zRect.top  + (sRect.height - 50) / 2;
-
-      bus.el.style.transition = 'left 0.25s ease, top 0.25s ease';
-      bus.el.style.left = finalX + 'px';
-      bus.el.style.top  = finalY + 'px';
-      bus.el.classList.add('parked');
-
-      setTimeout(() => { bus.el.style.transition = ''; }, 300);
-
-      sndTschh();
-      parkedCount++;
-      updateProgress();
-
-      if (parkedCount === BUS_LINES.length) {
-        gameComplete = true;
-        setTimeout(() => {
-          sndVictory();
-          createConfetti();
-          busParade(BUS_LINES);
-          document.getElementById('victoryOverlay').classList.add('show');
-        }, 900);
+    function shuffle(array) {
+      const arr = [...array];
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
       }
+      return arr;
     }
 
-    function wrongPark(bus) {
-      sndBuzz();
-      bus.el.classList.add('wrong');
-      // Return to initial position
-      setTimeout(() => {
-        bus.el.style.transition = 'left 0.35s ease, top 0.35s ease';
-        bus.el.style.left = bus.initX + 'px';
-        bus.el.style.top  = bus.initY + 'px';
-        bus.x = bus.initX;
-        bus.y = bus.initY;
-        setTimeout(() => {
-          bus.el.style.transition = '';
-          bus.el.classList.remove('wrong');
-        }, 380);
-      }, 50);
-    }
-
-    // ── Progress ──
-
-    function updateProgress() {
-      const total = BUS_LINES.length;
-      const pct = (parkedCount / total) * 100;
-      document.getElementById('progressFill').style.width = pct + '%';
-      document.getElementById('busCount').textContent = `Bus garés : ${parkedCount} / ${total}`;
-
-      const info = document.getElementById('info');
-      if (parkedCount === total) {
-        info.innerHTML = '<span class="pulse">🎉 Bravo ! Tous les bus sont garés !</span>';
-      } else {
-        info.textContent = `Glisse chaque bus dans sa case ! (${parkedCount}/${total})`;
-      }
-    }
-
-    // ── Confetti ──
-
-    function createConfetti() {
-      const colors = ['#E2001A','#00A092','#6EBE4A','#82C8E6','#ffe066','#fff'];
-      for (let i = 0; i < 50; i++) {
-        setTimeout(() => {
-          const c = document.createElement('div');
-          c.className = 'confetti';
-          c.style.left = Math.random() * 100 + 'vw';
-          c.style.top = '-20px';
-          c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-          c.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-          document.body.appendChild(c);
-          c.animate([
-            { transform: 'translate(0,0) rotate(0deg)', opacity: 1 },
-            { transform: `translate(${(Math.random()-0.5)*200}px,${window.innerHeight+50}px) rotate(${Math.random()*720}deg)`, opacity: 0 }
-          ], { duration: 2000 + Math.random() * 2000, easing: 'ease-in' }).onfinish = () => c.remove();
-        }, i * 50);
-      }
-    }
-
-    // ── Init ──
-
-    function init() {
-      buildGarage();
-      buildBuses();
-      updateProgress();
-      sndMoteur();
-    }
-
-    document.addEventListener('DOMContentLoaded', init);
+    init();
   </script>
 </body>
 </html>

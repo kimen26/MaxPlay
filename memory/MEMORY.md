@@ -9,24 +9,28 @@ Jeu éducatif 2D pour **Max**, 3.5-4 ans, passionné de bus (lignes Villejuif).
 Voir `docs/MAX_PROFILE.md` pour le profil complet.
 **Stack** : Phaser.js 3 + Vite + TypeScript · Résolution 1024×768 landscape
 
-## État (2026-03-13)
+## État jeux (2026-03-16, session 9)
 
-- Tous les épics : ✅ terminés
-- **MJ-01 à MJ-07** : ✅ déployés + corrigés (sessions 5 & 6)
+- **10 jeux** : mj-01 à mj-09 + max-adventure (renommage complet cette session)
+- **Valouettes** : V2/V3/V4/V5 ajoutées (data.js + ratp-colors.json + idfm.js)
+- **idfm.js** : nouveau fichier — 362 lignes IDFM complètes, utilisé par mj-03/mj-08/mj-09
+- **MJ-03** (ex-02b) : distracteurs depuis pool 362 lignes IDFM
+- **MJ-08** (ex-06) : pool élargi 362 lignes distinctes
+- **MJ-09** (ex-08) : 362 bus à trier, mapping HSL auto → famille couleur
+- **docs/ratp-colors.json** : source de vérité, 26 lignes actives + référentiel 362 lignes
 - **Prochaine étape** : progression/flotte de bus (EP-005) + audio avancé (EP-006)
 
-## Architecture déploiement (2026-03-13)
+## Architecture déploiement (2026-03-16)
 
 ```
 GitHub Pages → kimen26.github.io/MaxPlay/
-├── /              ← game-html/index.html (menu)
-├── /mj-01.html    ← game-html/mj-01.html
-├── ...
-├── /mj-07.html    ← splash page → link ./mj-07/
-└── /mj-07/        ← Phaser build (game/dist/ copié par CI)
+├── /                    ← game-html/index.html (menu 2 colonnes)
+├── /mj-01.html à /mj-09.html  ← 9 mini-jeux HTML vanilla
+└── /max-adventure/      ← Phaser build (game/dist/ copié par CI)
+    max-adventure.html   ← splash → ./max-adventure/
 ```
 
-**CI** : `.github/workflows/deploy.yml` build Phaser (`CI=true` → base `/MaxPlay/mj-07/`) puis assemble dans `_site/`
+**CI** : `.github/workflows/deploy.yml` build Phaser (`CI=true` → base `/MaxPlay/max-adventure/`) puis assemble dans `_site/`
 **docs/** : uniquement des `.md` (plus de HTML ni d'assets)
 **game/dist/**, **_site/** : dans `.gitignore`, jamais commités
 
@@ -40,10 +44,26 @@ GitHub Pages → kimen26.github.io/MaxPlay/
 - **Bus side-view** : `busSVG()` / `busSVGHiddenNum()` dans `game-html/js/bus-svg.js` — JAMAIS emoji ni div CSS
 - **Bus topdown** : sprite sheet White + setTint() Phaser
 - **Anti-doublons** : `selectDistinctColors(pool, n, minDist=80)` pour tout quiz à couleurs
+- **ratp-colors.json** : source de vérité terminus+couleurs. Protocole de modif dans `.claude/skills/game-rules/bus-rules.md`
+- **MJ-04 PHRASES** : jamais de prénom, emoji = représentation du answer, 90 phrases, sans remplacement cyclique
 
 ## Règles jeu (non-négociables)
 
 - Zones tap min 80×80 px · Feedback < 200 ms · Zéro pénalité · Sessions 3–8 min
+
+## Tileset LimeZu Modern Exteriors (48×48) — règles apprises (session 8)
+
+**Fichier** : `game-html/map-mockups.html` — 5 maps atomiques validées (M1–M5)
+
+| Règle | Détail |
+|-------|--------|
+| Sidewalk 1–6 | 6 styles DIFFÉRENTS (pas des orientations). Utiliser 1 style par zone. |
+| Variation `_1` | Plein jour. Varier avec `sidewalk2` max 2–3 points par ligne. |
+| Anti-répétition | >6 identiques consécutifs = HAUTE. Asphalt : mixer asphalt/asphalt2/asphalt3. |
+| bench_city | Sprite 96×96 (2×2 tiles). Ancre top-left. Les 4 cells = sidewalk (jamais asphalt). |
+| parking_m | Sprite 48×96 (1×2). Accepté en bas sur asphalt (arrêt-stationnement). |
+| Transition | asphalt → sidewalk → bâtiment. Jamais asphalt direct → bâtiment. |
+| Layers | `ground` (drawTile, zéro null), `objects` (drawObject, taille native), `decoration` |
 
 ## Carte des fichiers
 
@@ -52,7 +72,12 @@ GitHub Pages → kimen26.github.io/MaxPlay/
 | `tasks/BACKLOG.md` | Source de vérité : épics, tâches, décisions, leçons |
 | `docs/MAX_PROFILE.md` | Profil complet Max : lignes bus, couleurs IDFM, intérêts |
 | `docs/VISION.md` | Décisions prises + questions ouvertes |
-| `game-html/` | MJ-01 à MJ-07 (vanilla HTML/JS) — source déployée |
-| `game/src/scenes/` | HubScene · SandboxScene (MJ-07 Phaser) |
-| `game/src/constants/colors.ts` | 19 lignes bus IDFM + UI_COLORS |
+| `docs/ratp-colors.json` | Source de vérité couleurs+terminus : 26 actives + 362 référentiel |
+| `game-html/` | mj-01 à mj-09 + max-adventure (vanilla HTML/JS) — source déployée |
+| `game-html/js/data.js` | LIGNES (26 actives), DESTINATIONS, getLineDisplayName() |
+| `game-html/js/idfm.js` | IDFM_REFERENTIEL — 362 lignes complètes (généré depuis ratp-colors.json) |
+| `game-html/js/bus-svg.js` | busSVG() / busSVGHiddenNum() / selectDistinctColors() |
+| `game-html/map-mockups.html` | Preview tileset LimeZu — 5 maps atomiques M1–M5 |
+| `game/src/scenes/` | HubScene · SandboxScene (max-adventure Phaser) |
+| `.claude/skills/game-rules/bus-rules.md` | Règles immuables bus + protocole de modification |
 | `.github/workflows/deploy.yml` | CI : build + assemble + deploy GitHub Pages |

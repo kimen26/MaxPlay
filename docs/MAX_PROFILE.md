@@ -76,8 +76,12 @@ Couleurs officielles IDFM (Île-de-France Mobilités) – format Phaser `0xRRGGB
 | 125   | `#006EB8`  | `0x006EB8` | Bleu |
 | 131   | `#8D653A`  | `0x8D653A` | Brun |
 | 132   | `#652C90`  | `0x652C90` | Violet |
-| V7    | rouge      | `0xE2001A` | À confirmer |
+| V2    | `#E91E63`  | `0xE91E63` | Rose/Magenta |
+| V3    | `#FFC107`  | `0xFFC107` | Jaune |
+| V4    | `#9C27B0`  | `0x9C27B0` | Violet |
+| V5    | `#006633`  | `0x006633` | Vert foncé |
 | V6    | `#75CE89`  | `0x75CE89` | Vert clair (identique 380) |
+| V7    | `#E3051C`  | `0xE3051C` | Rouge Coquelicot — chez Valouette |
 | 186   | `#B43C95`  | `0xB43C95` | Rose-violet |
 | 47    | `#FF82B4`  | `0xFF82B4` | Rose |
 | 180   | `#9B9839`  | `0x9B9839` | Olive |

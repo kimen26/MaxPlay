@@ -39,9 +39,9 @@ jobs:
 
       - name: Assemble site
         run: |
-          mkdir -p _site/mj-07
+          mkdir -p _site/max-adventure
           cp -r game-html/* _site/
-          cp -r game/dist/* _site/mj-07/
+          cp -r game/dist/* _site/max-adventure/
 
       - uses: actions/configure-pages@v4
 

@@ -23,11 +23,15 @@ const LIGNES = [
   // Noctilien
   { num: 'N15',  color: '#000091', textColor: '#fff', name: 'Noctilien N15' }, // Même couleur que N22
   { num: 'N22',  color: '#000091', textColor: '#fff', name: 'Noctilien N22' }, // Même couleur que N15
-  // Valouettes
+  // Valouettes (lignes Villejuif locales)
+  { num: 'V2',   color: '#E91E63', textColor: '#fff', name: 'Valouette V2' }, // Rose/Magenta
+  { num: 'V3',   color: '#FFC107', textColor: '#333', name: 'Valouette V3' }, // Jaune
+  { num: 'V4',   color: '#9C27B0', textColor: '#fff', name: 'Valouette V4' }, // Violet
+  { num: 'V5',   color: '#006633', textColor: '#fff', name: 'Valouette V5' }, // Vert foncé
   { num: 'V6',   color: '#75CE89', textColor: '#333', name: 'Valouette V6' }, // Même couleur que 380
   { num: 'V7',   color: '#E3051C', textColor: '#fff', name: 'Valouette V7' }, // Rouge Coquelicot – chez Valouette
   // Trams (utilisés dans les trajets de Max – MJ-05)
-  { num: 'T7',   color: '#C2A000', textColor: '#fff', name: 'Tram T7' },  // Villejuif ↔ Athis-Mons
+  { num: 'T7',   color: '#704B1C', textColor: '#fff', name: 'Tram T7' },  // Villejuif ↔ Athis-Mons (brun officiel IDFM)
   // Métros (utilisés dans les trajets de Max – MJ-05)
   { num: 'M6',   color: '#6ECA97', textColor: '#333', name: 'Métro 6' },  // chez mamie → Montparnasse
   { num: 'M7',   color: '#FA9ABA', textColor: '#333', name: 'Métro 7' },  // École + mamie + tata Sarah

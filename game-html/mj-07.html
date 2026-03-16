@@ -2,91 +2,445 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MJ-07 – La journée de Max (Sandbox)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-07 – Terminus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: 'Nunito', sans-serif;
-      background: linear-gradient(160deg, #1a2a3a 0%, #0d3b5e 100%);
-      height: 100vh;
+    #gameScr { background: linear-gradient(160deg, #0d2a4a, #1a2a3a); }
+    
+    /* Panneau Terminus style RATP */
+    .terminus-board {
+      background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+      border: 4px solid #333;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 0 12px 20px;
+      text-align: center;
+      box-shadow: 
+        inset 0 0 20px rgba(0,0,0,0.5),
+        0 0 30px rgba(0,150,255,0.2);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .terminus-board::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.1) 2px,
+        rgba(0,0,0,0.1) 4px
+      );
+      pointer-events: none;
+    }
+    
+    .terminus-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: #888;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+    
+    .terminus-display {
       display: flex;
-      flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: #fff;
+      gap: 12px;
+      flex-wrap: wrap;
     }
-    .container {
-      text-align: center;
-      padding: 20px;
-    }
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #ffe066;
-    }
-    .info {
-      background: #ffffff15;
-      padding: 20px;
-      border-radius: 16px;
-      margin: 20px 0;
-      max-width: 500px;
-    }
-    .info h3 {
-      color: #00c47a;
-      margin-bottom: 10px;
-    }
-    .info ul {
-      text-align: left;
-      list-style: none;
-      padding: 0;
-    }
-    .info li {
-      padding: 5px 0;
-      padding-left: 25px;
-      position: relative;
-    }
-    .info li:before {
-      content: "🎮";
-      position: absolute;
-      left: 0;
-    }
-    .btn {
-      display: inline-block;
-      background: #00c47a;
-      color: #fff;
-      padding: 15px 40px;
-      border-radius: 30px;
-      text-decoration: none;
+    
+    .line-badge {
+      font-size: 2.5rem;
       font-weight: 900;
-      font-size: 1.2rem;
-      margin: 10px;
-      transition: transform 0.2s;
+      padding: 8px 20px;
+      border-radius: 8px;
+      min-width: 80px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
     }
-    .btn:hover {
-      transform: scale(1.05);
+    
+    .arrow-blink {
+      font-size: 2rem;
+      color: #ff6b35;
+      animation: blink 1s infinite;
+      text-shadow: 0 0 10px #ff6b35, 0 0 20px #ff6b35;
     }
-    .btn-back {
-      background: #ffffff22;
+    
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0.3; }
     }
+    
+    .terminus-dest {
+      font-size: 1.3rem;
+      font-weight: 900;
+      color: #ffe066;
+      text-shadow: 0 0 10px rgba(255,224,102,0.5);
+      animation: flicker 3s infinite;
+    }
+    
+    @keyframes flicker {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.95; }
+      52% { opacity: 0.8; }
+      54% { opacity: 0.95; }
+    }
+    
+    /* Effet backlight quand bonne réponse */
+    .terminus-board.correct {
+      animation: backlight 0.5s ease-out;
+      border-color: #00c47a;
+      box-shadow: 
+        inset 0 0 20px rgba(0,0,0,0.5),
+        0 0 50px rgba(0,196,122,0.6);
+    }
+    
+    @keyframes backlight {
+      0% { box-shadow: 0 0 10px rgba(0,196,122,0.3); }
+      50% { box-shadow: 0 0 60px rgba(0,196,122,0.8); }
+      100% { box-shadow: 0 0 30px rgba(0,196,122,0.4); }
+    }
+    
+    /* Ligne clignotante sur le panneau */
+    .scanline {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      animation: scanline 3s linear infinite;
+      pointer-events: none;
+    }
+    
+    @keyframes scanline {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(200px); }
+    }
+    
+    /* Grille des destinations */
+    .dest-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      padding: 0 12px;
+    }
+    
+    .dest-option {
+      background: #ffffff12;
+      border: 2px solid transparent;
+      border-radius: 14px;
+      padding: 16px 20px;
+      cursor: pointer;
+      text-align: center;
+      transition: 0.15s;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .dest-option:active { transform: scale(0.98); }
+    .dest-option.ok { border-color: #00c47a; background: #00c47a22; }
+    .dest-option.ko { border-color: #ff4455; background: #ff445522; }
+    
+    .dest-text {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    
+    .dest-direction {
+      font-size: 0.8rem;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    
+    .dest-arrow {
+      font-size: 1.5rem;
+      opacity: 0.6;
+    }
+    
+    .question-counter {
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.7;
+      margin-bottom: 12px;
+    }
+    
+    /* Couleurs badge injectées en inline style depuis data.js — pas de classes hardcodées */
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>🗺️ La journée de Max</h1>
-
-    <div class="info">
-      <h3>Explore Villejuif avec Max !</h3>
-      <ul>
-        <li>Marche jusqu'à l'arrêt de bus</li>
-        <li>Prends le bon bus (185, V7, M7...)</li>
-        <li>Voyage vers l'école, chez Valouette...</li>
-        <li>3 missions à compléter !</li>
-      </ul>
+  <div id="app">
+    <!-- Header -->
+    <div class="hdr">
+      <a href="index.html" class="back">←</a>
+      <span class="htitle">🚇 Terminus</span>
     </div>
-
-    <a href="./mj-07/" class="btn">▶ Jouer</a>
-    <a href="index.html" class="btn btn-back">← Retour au menu</a>
+    
+    <!-- Score -->
+    <div class="scorebar">
+      <span class="scoretxt">Score</span>
+      <span class="scoreval" id="score">0</span>
+      <span class="streak" id="streak"></span>
+    </div>
+    
+    <!-- Question counter -->
+    <div class="question-counter" id="qcounter">Question 1 / 5</div>
+    
+    <!-- Panneau Terminus -->
+    <div class="terminus-board" id="terminusBoard">
+      <div class="scanline"></div>
+      <div class="terminus-label">⚡ Prochain départ</div>
+      <div class="terminus-display">
+        <div class="line-badge" id="lineBadge">M7</div>
+        <div class="arrow-blink">→</div>
+        <div class="terminus-dest" id="terminusDest">?</div>
+      </div>
+    </div>
+    
+    <!-- Choix des destinations -->
+    <div class="dest-grid" id="choices">
+      <!-- Généré par JS -->
+    </div>
   </div>
+  
+  <!-- Feedback overlay -->
+  <div id="fbOverlay"></div>
+  
+  <!-- Scripts -->
+  <script src="js/sounds.js"></script>
+  <script src="js/feedback.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/bus-svg.js"></script>
+  <script>
+    // ─── MJ-05: Terminus ───
+    // Devine la destination du bus/métro/tram
+    // Couleurs des badges = data.js LIGNES (jamais hardcodées)
+
+    // Helper : récupère la couleur officielle depuis LIGNES
+    function getBadgeStyle(ligneNum) {
+      const l = LIGNES.find(x => x.num === ligneNum);
+      if (!l) return 'background:#555;color:#fff;';
+      return `background:${l.color};color:${l.textColor};`;
+    }
+
+    // Terminus RATP réels — TOUS les bus de LIGNES
+    // Renommé TERMINUS_DATA pour éviter conflit avec data.js DESTINATIONS
+    const TERMINUS_DATA = [
+      { ligne: 'M7',   dest: 'Villejuif - Louis Aragon',       direction: 'sud',   type: 'metro' },
+      { ligne: 'M6',   dest: 'Nation',                          direction: 'est',   type: 'metro' },
+      { ligne: 'T7',   dest: 'Villejuif - Louis Aragon',       direction: 'sud',   type: 'tram' },
+      { ligne: '125',  dest: 'Porte de Gentilly',               direction: 'nord',  type: 'bus' },
+      { ligne: '131',  dest: 'Porte d\'Italie',                 direction: 'nord',  type: 'bus' },
+      { ligne: '132',  dest: 'Porte de Choisy',                 direction: 'nord',  type: 'bus' },
+      { ligne: '162',  dest: 'Clamart - Hôpital Béclère',       direction: 'sud',   type: 'bus' },
+      { ligne: '172',  dest: 'Porte de Bagnolet',               direction: 'nord',  type: 'bus' },
+      { ligne: '180',  dest: 'Porte de Clignancourt',           direction: 'nord',  type: 'bus' },
+      { ligne: '184',  dest: 'Orly - Aéroport',                 direction: 'sud',   type: 'bus' },
+      { ligne: '185',  dest: 'Porte d\'Italie',                 direction: 'nord',  type: 'bus' },
+      { ligne: '186',  dest: 'Porte d\'Orléans',                direction: 'ouest', type: 'bus' },
+      { ligne: '286',  dest: 'Villejuif - Louis Aragon',        direction: 'sud',   type: 'bus' },
+      { ligne: '323',  dest: 'Rungis - La Fraternelle',         direction: 'sud',   type: 'bus' },
+      { ligne: '380',  dest: 'Créteil - Préfecture',            direction: 'est',   type: 'bus' },
+      { ligne: '2234', dest: 'Massy - Palaiseau',               direction: 'ouest', type: 'bus' },
+      { ligne: '47',   dest: 'Porte de Bagnolet',               direction: 'nord',  type: 'bus' },
+      { ligne: 'N15',  dest: 'Gare de Lyon',                    direction: 'nord',  type: 'bus-nuit' },
+      { ligne: 'N22',  dest: 'Châtelet',                        direction: 'nord',  type: 'bus-nuit' },
+      { ligne: 'V6',   dest: 'L\'Haÿ-les-Roses - Mairie',      direction: 'nord',  type: 'valouette' },
+      { ligne: 'V7',   dest: 'Chevilly - Marché',               direction: 'sud',   type: 'valouette' },
+    ];
+    
+    // Icônes selon le type
+    const TYPE_ICONS = {
+      'metro': '🚇',
+      'tram': '🚊',
+      'bus': '🚌',
+      'bus-nuit': '🌙',
+      'valouette': '🚐'
+    };
+    
+    // Flèches selon la direction
+    const DIR_ARROWS = {
+      'nord': '⬆️',
+      'sud': '⬇️',
+      'est': '➡️',
+      'ouest': '⬅️'
+    };
+    
+    // TTS
+    function speakTerminus(dest) {
+      const text = `Le ${getLineDisplayName(dest.ligne)} va vers ${dest.dest} !`;
+      const utt = new SpeechSynthesisUtterance(text);
+      utt.lang = 'fr-FR';
+      utt.rate = 0.85;
+      const voices = speechSynthesis.getVoices();
+      const frVoice = voices.find(v => v.lang.startsWith('fr'));
+      if (frVoice) utt.voice = frVoice;
+      speechSynthesis.cancel();
+      speechSynthesis.speak(utt);
+    }
+
+    if (speechSynthesis.onvoiceschanged !== undefined) {
+      speechSynthesis.onvoiceschanged = () => {};
+    }
+
+    let score = 0;
+    let streak = 0;
+    let questionCount = 0;
+    const MAX_QUESTIONS = 5;
+    let locked = false;
+    let currentDest = null;
+    
+    function shuffle(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+    
+    function init() {
+      score = 0;
+      streak = 0;
+      questionCount = 0;
+      document.getElementById('score').textContent = '0';
+      document.getElementById('streak').textContent = '';
+      nextQuestion();
+    }
+    
+    function nextQuestion() {
+      if (questionCount >= MAX_QUESTIONS) {
+        showEndScreen();
+        return;
+      }
+      
+      locked = false;
+      questionCount++;
+      document.getElementById('qcounter').textContent = `Question ${questionCount} / ${MAX_QUESTIONS}`;
+      
+      // Choisir une destination
+      currentDest = TERMINUS_DATA[Math.floor(Math.random() * TERMINUS_DATA.length)];
+      
+      // Afficher le panneau terminus — couleur depuis data.js LIGNES
+      const badge = document.getElementById('lineBadge');
+      badge.textContent = currentDest.ligne;
+      badge.className = 'line-badge';
+      badge.setAttribute('style', getBadgeStyle(currentDest.ligne));
+      document.getElementById('terminusDest').textContent = '?';
+      document.getElementById('terminusBoard').classList.remove('correct');
+      
+      // Générer les options (1 correcte + 2 distracteurs)
+      // Déduplique sur ligne (pas sur dest) pour éviter boucle infinie (M7/T7 même dest)
+      const usedLignes = new Set([currentDest.ligne]);
+      const candidates = shuffle(TERMINUS_DATA.filter(d => d.ligne !== currentDest.ligne));
+      const wrongDests = [];
+      for (const d of candidates) {
+        if (wrongDests.length >= 2) break;
+        if (!usedLignes.has(d.ligne)) {
+          wrongDests.push(d);
+          usedLignes.add(d.ligne);
+        }
+      }
+      // Fallback si DESTINATIONS trop petit (ne devrait pas arriver)
+      while (wrongDests.length < 2) wrongDests.push(candidates[wrongDests.length] || currentDest);
+
+      const options = [currentDest, ...wrongDests];
+      
+      // Afficher
+      const container = document.getElementById('choices');
+      container.innerHTML = '';
+      
+      // Mélanger les options pour l'affichage
+      const shuffledOptions = shuffle(options);
+      
+      shuffledOptions.forEach(dest => {
+        const div = document.createElement('div');
+        div.className = 'dest-option';
+        div.innerHTML = `
+          <div style="text-align: left;">
+            <div class="dest-text">${dest.dest}</div>
+            <div class="dest-direction">Direction ${dest.direction}</div>
+          </div>
+          <div class="dest-arrow">${DIR_ARROWS[dest.direction]}</div>
+        `;
+        div.onclick = () => answer(dest.dest === currentDest.dest, div, dest);
+        container.appendChild(div);
+      });
+    }
+    
+    function answer(isCorrect, el, selectedDest) {
+      if (locked) return;
+      locked = true;
+      
+      // Révéler la destination sur le panneau
+      document.getElementById('terminusDest').textContent = currentDest.dest;
+      
+      if (isCorrect) {
+        el.classList.add('ok');
+        document.getElementById('terminusBoard').classList.add('correct');
+        score += 10;
+        streak++;
+        if (streak >= 3) confetti();
+        sndKlaxon();
+        showFB(true);
+        setTimeout(() => speakTerminus(currentDest), 400);
+      } else {
+        el.classList.add('ko');
+        
+        // Montrer la bonne réponse
+        const correctDestName = currentDest.dest;
+        const options = Array.from(document.querySelectorAll('#choices .dest-option'));
+        const correctEl = options.find(opt => {
+          const textEl = opt.querySelector('.dest-text');
+          return textEl && textEl.textContent === correctDestName;
+        });
+        if (correctEl) {
+          correctEl.classList.add('ok');
+          correctEl.querySelector('.dest-arrow').textContent = '✓';
+        }
+        
+        document.getElementById('terminusBoard').classList.add('correct');
+        streak = 0;
+        sndBuzz();
+        showFB(false);
+      }
+      
+      document.getElementById('score').textContent = score;
+      document.getElementById('streak').textContent = streak >= 2 ? `🔥×${streak}` : '';
+      
+      setTimeout(nextQuestion, 1800);
+    }
+    
+    function showEndScreen() {
+      sndVictory();
+      confetti();
+      busParade();
+      const app = document.getElementById('app');
+      app.innerHTML = `
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100dvh;text-align:center;padding:20px;">
+          <div style="font-size:5rem;margin-bottom:20px;">🏆</div>
+          <h2 style="font-size:2rem;margin-bottom:20px;color:#ffe066;">Bravo !</h2>
+          <p style="font-size:1.4rem;margin-bottom:30px;">Tu as fait <strong>${score}</strong> points !</p>
+          <p style="font-size:1rem;margin-bottom:30px;opacity:0.8;">Tu connais bien les lignes RATP !</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+            <a href="mj-07.html" style="background:#00c47a;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">🔄 Rejouer</a>
+            <a href="index.html" style="background:#ffffff22;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">📋 Menu</a>
+          </div>
+        </div>
+      `;
+    }
+    
+    // Démarrer
+    init();
+  </script>
 </body>
 </html>

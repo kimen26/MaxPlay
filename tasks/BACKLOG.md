@@ -18,12 +18,14 @@
 | EP-004 | Architecture V0 (HTML quiz + Phaser sandbox) | `[x]` |
 | EP-MJ01 | MJ-01 · Quelle couleur ? | `[x]` |
 | EP-MJ02 | MJ-02 · Quel numéro ? | `[x]` |
-| EP-MJ03A | MJ-03a · Compte les passagers | `[x]` |
-| EP-MJ03B | MJ-03b · La bonne place (soustraction) | `[x]` |
-| EP-MJ04 | MJ-04 · Lis le mot | `[x]` |
-| EP-MJ05 | MJ-05 · Quel bus pour aller où ? | `[x]` |
-| EP-MJ06 | MJ-06 · Au garage le soir ! | `[x]` |
-| EP-MJ07 | MJ-07 · La journée de Max (sandbox Phaser) | `[x]` |
+| EP-MJ03 | MJ-03 · Devine le numéro (TTS) | `[x]` |
+| EP-MJ04 | MJ-04 · Compte les passagers | `[x]` |
+| EP-MJ05 | MJ-05 · La bonne place (soustraction) | `[x]` |
+| EP-MJ06 | MJ-06 · Lis la phrase | `[x]` |
+| EP-MJ07 | MJ-07 · Terminus | `[x]` |
+| EP-MJ08 | MJ-08 · Au garage ! | `[x]` |
+| EP-MJ09 | MJ-09 · Trie les bus ! | `[x]` |
+| EP-MAXADV | Max Adventure · La journée de Max (sandbox Phaser) | `[x]` |
 | EP-005 | Système de progression (flotte + carte) | `[ ]` |
 | EP-006 | Audio (sons + musique + TTS) | `[ ]` |
 | EP-008 | Recherche motricité enfant 3-4 ans | `[ ]` |
@@ -35,16 +37,25 @@
 
 ```
 MaxPlay V0
-├── game-html/index.html     ← Quiz games MJ-01 à MJ-06 (HTML/CSS/JS)
-│   ├── MJ-01 · Quelle couleur ?
-│   ├── MJ-02 · Quel numéro ?
-│   ├── MJ-03a · Compte les passagers
-│   ├── MJ-03b · La bonne place
-│   ├── MJ-04 · Lis le mot
-│   ├── MJ-05 · Quel bus pour aller où ?
-│   └── MJ-06 · Au garage le soir !
-└── game/                    ← Sandbox Phaser.js (MJ-07)
-    └── MJ-07 · La journée de Max
+├── game-html/index.html     ← Menu 2 colonnes (9 mini-jeux + Max Adventure)
+│   ├── mj-01.html · Quelle couleur ?
+│   ├── mj-02.html · Quel numéro ?
+│   ├── mj-03.html · Devine le numéro (TTS) — pool 362 lignes IDFM
+│   ├── mj-04.html · Compte les passagers
+│   ├── mj-05.html · La bonne place
+│   ├── mj-06.html · Lis la phrase
+│   ├── mj-07.html · Terminus
+│   ├── mj-08.html · Au garage ! — pool 362 lignes IDFM
+│   ├── mj-09.html · Trie les bus ! — pool 362 lignes IDFM
+│   ├── max-adventure.html · splash → ./max-adventure/
+│   └── js/
+│       ├── data.js    ← LIGNES (26 actives), source de vérité
+│       ├── idfm.js    ← IDFM_REFERENTIEL (362 lignes complètes)
+│       ├── bus-svg.js ← busSVG(), busSVGHiddenNum(), selectDistinctColors()
+│       ├── sounds.js  ← Web Audio API
+│       └── feedback.js ← feedback visuel/sonore + busParade()
+└── game/                    ← Sandbox Phaser.js (Max Adventure)
+    └── Max Adventure · La journée de Max
 ```
 
 **Principe** : HTML pour les jeux quiz (simple, livrable vite), Phaser pour la sandbox/action.
@@ -331,10 +342,64 @@ MaxPlay V0
 | L-006 | 2026-03-10 | Afficher la réponse dans la question = zéro défi pédagogique (ex: couleur visible dans le quiz couleur) | Jeux v1 game-html cassés pédagogiquement |
 | L-007 | 2026-03-10 | Toujours vérifier les incohérences entre docs (VISION vs BACKLOG ici) avant chaque session | Pixel art vs flat design, même date, deux docs différents |
 | L-008 | 2026-03-10 | Max est très avancé – ne pas sous-estimer. Il connaît 20 lignes par cœur, chiffres jusqu'aux milliers, lecture phonétique | Calibrage MJ-01/02/03b |
+| L-009 | 2026-03-15 | Sidewalk 1–6 = 6 STYLES différents (textures distinctes), pas des orientations. Utiliser 1 seul style par zone + sidewalk2 pour varier max 2–3 points | map-mockups pipeline |
+| L-010 | 2026-03-15 | Anti-répétition : >6 tiles identiques consécutifs = issue HAUTE. Briser avec sidewalk2 aux positions des props. Asphalt : mixer asphalt/asphalt2/asphalt3 | map-mockups M2 FAIL fix |
+| L-011 | 2026-03-15 | bench_city = sprite 96×96 (2×2 tiles). Ancrer top-left. Tous les 4 pixels du footprint doivent être sur sidewalk, jamais sur asphalt | map-mockups M5 MOYENNE-01 |
+| L-012 | 2026-03-15 | Transition obligatoire : asphalt → sidewalk → bâtiment. Jamais asphalt adjacent direct à un bâtiment | Règle fondamentale tileset |
+
+---
+
+## Session 9 — 2026-03-16
+
+### Fait
+- [x] Renommage complet : mj-02b/03a/03b/04/05/06/07/08 → mj-03 à mj-09 + max-adventure
+- [x] Menu index.html refait en 2 colonnes — Max Adventure pleine largeur, badge ★
+- [x] CI deploy.yml : mj-07/ → max-adventure/
+- [x] Valouettes V2/V3/V4/V5 ajoutées (data.js + ratp-colors.json + idfm.js)
+- [x] idfm.js créé : 362 lignes IDFM complètes accessibles dans les jeux
+- [x] MJ-03/08/09 : pool élargi aux 362 lignes IDFM
+- [x] MJ-09 : mapping HSL auto → famille couleur pour les nouvelles lignes
+- [x] MJ-09 : #C2A000 retiré d'orange_jaune, #704B1C (T7) ajouté à brun
+- [x] docs/ratp-colors.json : 26 lignes actives (+ V2-V5), 362 en référentiel
+
+### Leçons
+- Jamais de `cp` en chaîne quand les noms de destination chevauchent les sources — toujours passer par /tmp
+- idfm.js doit être régénéré depuis ratp-colors.json (node script) à chaque ajout de ligne
+
+---
+
+## Session 7 — 2026-03-16
+
+### Fait
+- [x] Inventaire complet des bus et jeux (fiche produit)
+- [x] Créé docs/ratp-colors.json — couleurs+terminus IDFM officiels, 22 lignes
+- [x] Créé .claude/skills/game-rules/bus-rules.md — skill règles bus immuables
+- [x] Corrigé T7 couleur #C2A000 → #704B1C dans data.js
+- [x] Corrigé 2234 terminus dans mj-05.html (Massy → Chessy)
+- [x] MJ-04 : 90 phrases génériques, sans prénom, emoji=answer
+- [x] MJ-06 layout mobile : slots min-height 60px, buses ne débordent plus en bas
+- [x] MJ-08 layout mobile : boîtes min-height 55px, box-parked overflow:hidden
+
+### Leçons
+- ratp-colors.json doit être créé dès le début, pas référencé en commentaire avant d'exister
+- Les terminus de bus doivent être vérifiés via API IDFM officielle (pas sites tiers)
+- Les conventions pédagogiques (N15/N22 bleu nuit) doivent être documentées et ne pas être "corrigées" silencieusement
+- Sur mobile portrait (<700px hauteur), les zones de jeu draggable doivent réserver de la hauteur pour les UI elements (header, progress, labels)
 
 ---
 
 ## Changelog sessions
+
+### 2026-03-15 – Session 8 (apprentissage tileset LimeZu — 5 maps atomiques)
+- **map-mockups.html** : Reset complet des 12 maps incohérentes. Infrastructure conservée.
+- Pipeline pixel-map (simplifier → designer → reviewer) exécuté sur 5 maps :
+  - M1 Route simple (7×5) → PASS 8/10 iter 1
+  - M2 Parking (7×6) → FAIL iter 1 (7 tiles sidewalk identiques) → PASS 9/10 iter 2
+  - M3 Bâtiment (7×7) → PASS 9/10 iter 1
+  - M4 Arrêt de bus (9×5) → PASS 8/10 iter 1 (fixé : max 2 styles sidewalk par trottoir)
+  - M5 Composite (9×9) → PASS 7/10 iter 1, fix MOYENNE-01 + BASSE-02 → intégré iter 2
+- Leçons L-009 à L-012 documentées
+- Règles tileset gravées dans drawLayeredMap() inline comments
 
 ### 2026-03-15 – Session 7 (busParade + MJ-04 phrases + map-mockups)
 - **feedback.js** : `busParade()` ajouté — défilé de bus en victoire (scroll gauche→droite + klaxon)

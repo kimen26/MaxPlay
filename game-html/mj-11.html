@@ -87,14 +87,15 @@
     .bus-svg-container svg {
       filter: drop-shadow(0 6px 14px rgba(0,0,0,0.4));
     }
-    /* Flag inside bus window — calé sur rect x=84 y=14 w=40 h=21 / viewBox 160×80 */
+    /* Flag inside bus window — calé sur rect x=84 y=14 w=40 h=21 / viewBox 160×80
+       Inset de 2px pour laisser voir le contour noir stroke="2" du rect */
     .flag-in-bus {
       position: absolute;
-      top: 17.5%;    /* 14/80   */
-      left: 52.5%;   /* 84/160  */
-      width: 25%;    /* 40/160  */
-      height: 26.25%;/* 21/80   */
-      border-radius: 2px;
+      top: calc(17.5% + 2px);
+      left: calc(52.5% + 2px);
+      width: calc(25% - 4px);
+      height: calc(26.25% - 4px);
+      border-radius: 1px;
       overflow: hidden;
       pointer-events: none;
     }
@@ -179,29 +180,50 @@
       to   { transform: scale(1); opacity:1; }
     }
 
+    /* Confettis drapeaux */
+    #confettiCanvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 199;
+      display: none;
+    }
+    #confettiCanvas.show { display: block; }
+
     /* Victory screen */
     #victoryScreen {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.85);
+      background: rgba(0,0,0,0.82);
       z-index: 200;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 20px;
+      gap: 18px;
+      padding: 20px;
     }
     #victoryScreen.show { display: flex; }
+    .victory-emoji { font-size: 3.5rem; }
     .victory-title {
       color: #fff;
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       font-weight: 900;
       text-align: center;
       text-shadow: 3px 3px 0 rgba(0,0,0,0.3);
+      line-height: 1.2;
+    }
+    .victory-msg {
+      color: rgba(255,255,255,0.85);
+      font-size: 1.05rem;
+      font-weight: 700;
+      text-align: center;
+      max-width: 340px;
+      line-height: 1.4;
     }
     .victory-score {
       color: #FFD700;
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 900;
     }
     .replay-btn {
@@ -272,10 +294,10 @@
       <div class="flag-in-bus" id="flagInBus"></div>
     </div>
 
-    <!-- Bouton aide TTS -->
+    <!-- Bouton aide TTS — texte fixe, ne révèle jamais le nom -->
     <button class="tts-btn" onclick="speakCountry()">
       <span>🔊</span>
-      <span id="ttsLabel">Écoute le nom du pays</span>
+      <span>Écouter</span>
     </button>
 
     <!-- Choix de réponses -->
@@ -288,10 +310,14 @@
     <div class="feedback-emoji" id="feedbackEmoji"></div>
   </div>
 
+  <!-- Confettis drapeaux -->
+  <canvas id="confettiCanvas"></canvas>
+
   <!-- Écran victoire -->
   <div id="victoryScreen">
-    <div style="font-size:4rem">🌍</div>
-    <div class="victory-title">Bravo Max !</div>
+    <div class="victory-emoji" id="victoryEmoji">🌍</div>
+    <div class="victory-title" id="victoryTitle">Bravo Max !</div>
+    <div class="victory-msg" id="victoryMsg"></div>
     <div class="victory-score" id="victoryScore"></div>
     <button class="replay-btn" onclick="startGame()">Rejouer !</button>
     <a href="index.html" style="color:rgba(255,255,255,0.6);font-size:0.9rem;font-weight:900;text-decoration:none;margin-top:-8px">← Menu</a>
@@ -440,9 +466,6 @@
       document.getElementById('flagInBus').innerHTML =
         `<span class="fi fi-${currentPays.code}" style="width:100%;height:100%;background-size:cover;background-position:center;display:block;border-radius:3px"></span>`;
 
-      // Label TTS
-      document.getElementById('ttsLabel').textContent = 'Écoute le nom du pays';
-
       // Parler automatiquement (aide)
       setTimeout(speakCountry, 600);
 
@@ -515,18 +538,99 @@
     }
 
     // ─── Victoire ────────────────────────────────────────────────────────────────
+    const VICTORY_DATA = [
+      // 10/10
+      { min:10, max:10, emoji:'🏆', title:'PARFAIT !!!', msg:'10 sur 10 ! Tu es un champion des drapeaux !', confetti:true, sound:'victory' },
+      // 8-9
+      { min:8,  max:9,  emoji:'🌟', title:'Super Max !', msg:'Presque parfait ! Tu connais super bien les drapeaux !', confetti:false, sound:'bravo' },
+      // 6-7
+      { min:6,  max:7,  emoji:'😊', title:'Bien joué !', msg:'C\'est bien ! Continue comme ça, tu progresses !', confetti:false, sound:'ding' },
+      // 4-5
+      { min:4,  max:5,  emoji:'💪', title:'Pas mal !', msg:'Tu peux faire encore mieux la prochaine fois !', confetti:false, sound:'ding' },
+      // 0-3
+      { min:0,  max:3,  emoji:'🚌', title:'On réessaie ?', msg:'C\'est difficile ! Essaie encore, tu vas progresser !', confetti:false, sound:'buzz' },
+    ];
+
     function showVictory() {
-      sndVictory();
       renderScoreBar();
-      document.getElementById('victoryScore').textContent = `${score} bonnes réponses sur ${ROUND_COUNT} !`;
+      const data = VICTORY_DATA.find(d => score >= d.min && score <= d.max);
+      document.getElementById('victoryEmoji').textContent = data.emoji;
+      document.getElementById('victoryTitle').textContent = data.title;
+      document.getElementById('victoryMsg').textContent = data.msg;
+      document.getElementById('victoryScore').textContent = `${score} / ${ROUND_COUNT}`;
       document.getElementById('victoryScreen').classList.add('show');
+      // Son
+      if (data.sound === 'victory') sndVictory();
+      else if (data.sound === 'bravo') sndBravo();
+      else if (data.sound === 'ding') sndDing();
+      else sndBuzz();
+      // Confettis drapeaux uniquement au sans-faute
+      if (data.confetti) launchFlagConfetti();
+    }
+
+    // ─── Confettis drapeaux ──────────────────────────────────────────────────────
+    // 40 drapeaux émoji tombent en arc depuis le haut
+    function launchFlagConfetti() {
+      const canvas = document.getElementById('confettiCanvas');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      canvas.classList.add('show');
+      const ctx = canvas.getContext('2d');
+
+      // Emojis drapeaux des pays connus
+      const flags = PAYS.filter(p => p.known).map(p => {
+        // Convertit code ISO → emoji drapeau (regional indicator symbols)
+        const base = 0x1F1E6 - 'a'.charCodeAt(0);
+        return String.fromCodePoint(base + p.code.charCodeAt(0), base + p.code.charCodeAt(1));
+      });
+
+      const particles = [];
+      const COUNT = 40;
+      for (let i = 0; i < COUNT; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: -40 - Math.random() * 200,
+          vy: 2 + Math.random() * 3,
+          vx: (Math.random() - 0.5) * 2,
+          rot: Math.random() * Math.PI * 2,
+          rotV: (Math.random() - 0.5) * 0.1,
+          flag: flags[Math.floor(Math.random() * flags.length)],
+          size: 28 + Math.random() * 18,
+          opacity: 1,
+        });
+      }
+
+      let frame = 0;
+      function tick() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let alive = false;
+        for (const p of particles) {
+          p.x += p.vx;
+          p.y += p.vy;
+          p.rot += p.rotV;
+          if (frame > 120) p.opacity = Math.max(0, p.opacity - 0.012);
+          if (p.y < canvas.height + 60 && p.opacity > 0) alive = true;
+          ctx.save();
+          ctx.globalAlpha = p.opacity;
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot);
+          ctx.font = `${p.size}px serif`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'middle';
+          ctx.fillText(p.flag, 0, 0);
+          ctx.restore();
+        }
+        frame++;
+        if (alive) requestAnimationFrame(tick);
+        else { canvas.classList.remove('show'); ctx.clearRect(0,0,canvas.width,canvas.height); }
+      }
+      requestAnimationFrame(tick);
     }
 
     // ─── TTS ─────────────────────────────────────────────────────────────────────
     function speakCountry() {
       if (!currentPays) return;
       speak(currentPays.nom);
-      document.getElementById('ttsLabel').textContent = currentPays.nom;
     }
 
     function speak(text) {

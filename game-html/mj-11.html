@@ -88,7 +88,9 @@
       filter: drop-shadow(0 6px 14px rgba(0,0,0,0.4));
     }
     /* Flag inside bus window — calé sur rect x=84 y=14 w=40 h=21 / viewBox 160×80
-       Inset de 2px pour laisser voir le contour noir stroke="2" du rect */
+       Inset 2px pour voir le contour noir.
+       La fenêtre est trop large (ratio 40/21 ≈ 1.9) pour un drapeau (ratio ≈ 1.5).
+       → fond noir + drapeau centré en object-fit:contain pour pillarbox automatique. */
     .flag-in-bus {
       position: absolute;
       top: calc(17.5% + 2px);
@@ -98,12 +100,18 @@
       border-radius: 1px;
       overflow: hidden;
       pointer-events: none;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .flag-in-bus .fi {
+      /* object-fit:contain via background-size:contain + bandes noires du fond */
       display: block;
       width: 100% !important;
       height: 100% !important;
-      background-size: cover !important;
+      background-size: contain !important;
+      background-repeat: no-repeat !important;
       background-position: center !important;
     }
 

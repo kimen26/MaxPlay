@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-12 – Nouveaux sons</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(160deg, #1a0a2e, #2d1b4e, #1a0a2e);
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    /* Header */
+    .bus-cabin {
+      width: 100%;
+      max-width: 680px;
+      background: linear-gradient(180deg, #3d1f6b, #2a1250);
+      border-radius: 0 0 30px 30px;
+      padding: 12px 20px 18px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+    }
+    .back-btn {
+      text-decoration: none;
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .cabin-title   { color:#fff; font-size:1.3rem; font-weight:900; text-shadow:2px 2px 0 rgba(0,0,0,0.3); }
+    .cabin-subtitle{ color:rgba(255,255,255,0.7); font-size:0.8rem; font-weight:700; }
+
+    /* Dashboard */
+    .dashboard {
+      width: 100%;
+      max-width: 680px;
+      padding: 14px 16px 36px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .group-label {
+      color: rgba(255,255,255,0.5);
+      font-size: 0.72rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: -8px;
+      padding-left: 4px;
+    }
+
+    .buttons-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .snd-btn {
+      flex: 1;
+      min-width: 80px;
+      background: linear-gradient(145deg, #2e1a50, #1e0f35);
+      border: 2px solid rgba(255,255,255,0.1);
+      border-radius: 18px;
+      padding: 16px 10px;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      transition: transform 0.1s, box-shadow 0.1s, border-color 0.15s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
+      touch-action: manipulation;
+      min-height: 80px;
+      position: relative;
+    }
+    .snd-btn:active {
+      transform: scale(0.93);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.5), inset 0 2px 4px rgba(0,0,0,0.4);
+    }
+    .snd-btn.playing {
+      border-color: var(--glow-color, rgba(255,255,255,0.5));
+      box-shadow: 0 0 22px var(--glow-color, rgba(255,255,255,0.3)), 0 4px 12px rgba(0,0,0,0.4);
+    }
+
+    /* Barre de progression audio */
+    .progress-bar {
+      position: absolute;
+      bottom: 6px;
+      left: 10px;
+      right: 10px;
+      height: 3px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 2px;
+      overflow: hidden;
+      display: none;
+    }
+    .snd-btn.playing .progress-bar { display: block; }
+    .progress-fill {
+      height: 100%;
+      background: var(--glow-color, #fff);
+      border-radius: 2px;
+      width: 0%;
+      transition: width 0.1s linear;
+    }
+
+    .btn-icon  { font-size: 1.9rem; line-height: 1; }
+    .btn-label {
+      color: rgba(255,255,255,0.85);
+      font-size: 0.7rem;
+      font-weight: 900;
+      text-align: center;
+      line-height: 1.2;
+    }
+
+    /* Couleurs par groupe */
+    .grp-bus    { --glow-color: rgba(80,200,255,0.7);  border-color: rgba(80,200,255,0.25); }
+    .grp-victoire{ --glow-color: rgba(255,215,0,0.7);  border-color: rgba(255,215,0,0.25); }
+    .grp-mario  { --glow-color: rgba(255,100,50,0.7);  border-color: rgba(255,100,50,0.25); }
+    .grp-pokemon{ --glow-color: rgba(255,220,50,0.7);  border-color: rgba(255,220,50,0.25); }
+    .grp-jeu    { --glow-color: rgba(120,255,180,0.7); border-color: rgba(120,255,180,0.25); }
+    .grp-secret { --glow-color: rgba(200,255,100,0.7); border-color: rgba(200,255,100,0.1); opacity:0.3; transition: opacity 0.4s; }
+    .grp-secret.revealed { opacity: 1; }
+  </style>
+</head>
+<body>
+
+  <div class="bus-cabin">
+    <a href="index.html" class="back-btn">←</a>
+    <div>
+      <div class="cabin-title">🎵 Nouveaux sons</div>
+      <div class="cabin-subtitle">Découvre les sons secrets !</div>
+    </div>
+  </div>
+
+  <div class="dashboard">
+
+    <!-- BUS & TRANSPORT -->
+    <div class="group-label">🚌 Bus & Transport</div>
+    <div class="buttons-row">
+      <button class="snd-btn grp-bus" data-src="sounds/honk-sound.mp3">
+        <span class="btn-icon">📯</span>
+        <span class="btn-label">Klaxon</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </button>
+      <button class="snd-btn grp-bus" data-src="sounds/freesound_community-bus-doors-sound-effect-44034.mp3">
+        <span class="btn-icon">🚪</span>
+        <span class="btn-label">Porte bus</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </button>
+      <button class="snd-btn grp-bus" data-src="sounds/bus-closing-door-sound.flac">
+        <span class="btn-icon">🔒</span>
+        <span class="btn-label">Fermeture</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </button>
+      <button class="snd-btn grp-bus" data-src="sounds/freesound_community-bus-pop-85054.mp3">
+        <span class="btn-icon">💥</span>
+        <span class="btn-label">Pop bus</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </button>
+    </div>
+    <div class="buttons-row">
+      <button class="snd-btn grp-bus" data-src="sounds/ratp-jingle.mp3">
+        <span class="btn-icon">🚇</span>
+        <span class="btn-label">Jingle RATP</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </button>
+      <button class="snd-btn grp-bus" data-src="sounds/sncf-france-jingle.mp3">
+        <span class="btn-icon">🚄</span>
+        <span class="btn-label">Jingle SNCF</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </button>
+    </div>
+
+    <!-- VICTOIRE -->
+    <div class="group-label">🏆 Victoire</div>
+    <div class="buttons-row">
+      <button class="snd-btn grp-victoire" data-src="sounds/Gagné.mp3">
+        <span class="btn-icon">🎉</span>
+        <span class="btn-label">Gagné !</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </button>
+      <button class="snd-btn grp-victoire" data-src="sounds/super-max.mp3">
+        <span class="btn-icon">⭐</span>
+        <span class="btn-label">Super Max !</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </button>
+      <button class="snd-btn grp-victoire" data-src="sounds/ff7_victory.mp3">
+        <span class="btn-icon">🗡️</span>
+        <span class="btn-label">FF7</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </button>
+      <button class="snd-btn grp-victoire" data-src="sounds/zelda-tresor.mp3">
+        <span class="btn-icon">💎</span>
+        <span class="btn-label">Trésor !</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </button>
+    </div>
+    <div class="buttons-row">
+      <button class="snd-btn grp-victoire" data-src="sounds/victory-mario-series-hq-super-smash-bros.mp3">
+        <span class="btn-icon">🥊</span>
+        <span class="btn-label">Smash Bros</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </button>
+      <button class="snd-btn grp-victoire" data-src="sounds/perdu.mp3">
+        <span class="btn-icon">😅</span>
+        <span class="btn-label">Perdu</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </button>
+    </div>
+
+    <!-- MARIO -->
+    <div class="group-label">🍄 Mario</div>
+    <div class="buttons-row">
+      <button class="snd-btn grp-mario" data-src="sounds/super-mario-coin-sound.mp3">
+        <span class="btn-icon">🪙</span>
+        <span class="btn-label">Pièce</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </button>
+      <button class="snd-btn grp-mario" data-src="sounds/mario coin hit.mp3">
+        <span class="btn-icon">💰</span>
+        <span class="btn-label">Coin hit</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </button>
+      <button class="snd-btn grp-mario" data-src="sounds/maro-jump-sound-effect_1.mp3">
+        <span class="btn-icon">⬆️</span>
+        <span class="btn-label">Saut</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </button>
+      <button class="snd-btn grp-mario" data-src="sounds/pokemon lvl up.mp3">
+        <span class="btn-icon">📈</span>
+        <span class="btn-label">Level up</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </button>
+    </div>
+
+    <!-- POKEMON -->
+    <div class="group-label">⚡ Pokémon</div>
+    <div class="buttons-row">
+      <button class="snd-btn grp-pokemon" data-src="sounds/pikachu_mw38Ry2.mp3">
+        <span class="btn-icon">⚡</span>
+        <span class="btn-label">Pikachu</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </button>
+      <button class="snd-btn grp-pokemon" data-src="sounds/pikachu_scream.mp3">
+        <span class="btn-icon">😱</span>
+        <span class="btn-label">Pika Scream</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </button>
+    </div>
+
+    <!-- JEUX -->
+    <div class="group-label">🎮 Jeux</div>
+    <div class="buttons-row">
+      <button class="snd-btn grp-jeu" data-src="sounds/pew.mp3">
+        <span class="btn-icon">🔫</span>
+        <span class="btn-label">Pew !</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </button>
+      <button class="snd-btn grp-jeu" data-src="sounds/among-us-role-reveal-sound.mp3">
+        <span class="btn-icon">👾</span>
+        <span class="btn-label">Among Us</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </button>
+      <button class="snd-btn grp-jeu" data-src="sounds/motus-boule-noire_cTY2JG4.mp3">
+        <span class="btn-icon">⚫</span>
+        <span class="btn-label">Motus</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </button>
+    </div>
+
+    <!-- EASTER EGG -->
+    <div style="text-align:right; padding-right:4px; margin-top:4px;">
+      <button id="easterBtn" class="snd-btn grp-secret" data-src="sounds/perfect-fart.mp3"
+              style="width:52px;min-width:52px;min-height:52px;padding:10px;display:inline-flex">
+        <span class="btn-icon" style="font-size:1.4rem">💨</span>
+        <div class="progress-bar"><div class="progress-fill"></div></div>
+      </button>
+    </div>
+
+  </div>
+
+  <script>
+    // ─── Audio player ────────────────────────────────────────────────────────────
+    // Un seul Audio à la fois — tap sur le même bouton = rejouer depuis le début
+    let currentAudio = null;
+    let currentBtn = null;
+    let progressTimer = null;
+
+    function stopCurrent() {
+      if (currentAudio) {
+        currentAudio.pause();
+        currentAudio.currentTime = 0;
+      }
+      if (currentBtn) {
+        currentBtn.classList.remove('playing');
+        const fill = currentBtn.querySelector('.progress-fill');
+        if (fill) fill.style.width = '0%';
+      }
+      clearInterval(progressTimer);
+      currentAudio = null;
+      currentBtn = null;
+    }
+
+    function playBtn(btn) {
+      const src = btn.dataset.src;
+      if (!src) return;
+
+      // Si c'est le bouton en cours → restart
+      if (btn === currentBtn) {
+        stopCurrent();
+      } else {
+        stopCurrent();
+      }
+
+      const audio = new Audio(src);
+      currentAudio = audio;
+      currentBtn = btn;
+      btn.classList.add('playing');
+
+      audio.play().catch(() => {});
+
+      // Barre de progression
+      progressTimer = setInterval(() => {
+        if (!audio.duration) return;
+        const pct = (audio.currentTime / audio.duration) * 100;
+        const fill = btn.querySelector('.progress-fill');
+        if (fill) fill.style.width = pct + '%';
+      }, 80);
+
+      audio.addEventListener('ended', () => {
+        stopCurrent();
+      });
+    }
+
+    // Attacher les handlers
+    document.querySelectorAll('.snd-btn').forEach(btn => {
+      btn.addEventListener('click', () => playBtn(btn));
+    });
+
+    // Easter egg — révélé après 5 taps sur n'importe quel bouton
+    let tapCount = 0;
+    const easterBtn = document.getElementById('easterBtn');
+    document.querySelectorAll('.snd-btn:not(#easterBtn)').forEach(btn => {
+      btn.addEventListener('click', () => {
+        tapCount++;
+        if (tapCount >= 5) easterBtn.classList.add('revealed');
+      });
+    });
+  </script>
+</body>
+</html>

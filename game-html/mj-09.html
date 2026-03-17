@@ -189,6 +189,7 @@
 </div>
 
 <script src="js/sounds.js"></script>
+<script src="js/victory-sounds.js"></script>
 <script src="js/data.js"></script>
 <script src="js/bus-svg.js"></script>
 <script>
@@ -298,8 +299,9 @@
     return FAMILIES.find(f => f.id === id) || null;
   }
 
-  // Pool complet : bus connus de Max + métros + RER + tramways
-  const ALL_BUSES = [...LIGNES, ...METRO_RER_TRAM];
+  // Pool complet : bus connus de Max + métros + RER + tramways — limité à 30
+  const _POOL = [...LIGNES, ...METRO_RER_TRAM];
+  const ALL_BUSES = _POOL.sort(() => Math.random() - 0.5).slice(0, 30);
 
   const BUS_WIDTH = 90;
   const SNAP_DIST = 90;
@@ -381,7 +383,7 @@
     zone.querySelectorAll('.bus-draggable').forEach(el => el.remove());
     buses = [];
 
-    const shuffled = [...ALL_BUSES].sort(() => Math.random() - 0.5);
+    const shuffled = [...ALL_BUSES];
     const zoneW = zone.offsetWidth;
     const zoneH = zone.offsetHeight;
 
@@ -530,12 +532,18 @@
     updateProgress();
 
     if (rangedCount >= totalBuses) {
-      setTimeout(() => { sndVictory(); createConfetti(); showParade(); }, 600);
+      setTimeout(() => {
+        const a = new Audio('sounds/super-max.mp3');
+        a.volume = 0.85;
+        a.play().catch(() => {});
+        createConfetti(); showParade();
+      }, 600);
     }
   }
 
   function wrongPark(bus) {
     sndWrong();
+    playErrorSound();
     bus.el.classList.add('wrong');
     setTimeout(() => {
       bus.el.style.transition = 'left 0.3s ease, top 0.3s ease';

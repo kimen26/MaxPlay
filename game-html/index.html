@@ -231,5 +231,18 @@
   </div>
 
   <footer>🚌 Fait avec ❤️ pour Max</footer>
+
+  <script>
+    // Jingle aléatoire RATP ou SNCF au chargement de la page
+    const JINGLES = ['sounds/ratp-jingle.mp3', 'sounds/sncf-france-jingle.mp3'];
+    const jingle = new Audio(JINGLES[Math.floor(Math.random() * JINGLES.length)]);
+    jingle.volume = 0.5;
+    document.addEventListener('click', function playOnce() {
+      jingle.play().catch(() => {});
+      document.removeEventListener('click', playOnce);
+    }, { once: true });
+    // Tenter autoplay direct (marche si page déjà visitée)
+    jingle.play().catch(() => {});
+  </script>
 </body>
 </html>

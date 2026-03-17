@@ -388,6 +388,7 @@
   </div>
 
   <script src="js/sounds.js"></script>
+  <script src="js/victory-sounds.js"></script>
   <script src="js/feedback.js"></script>
   <script src="js/data.js"></script>
   <script src="js/bus-svg.js"></script>
@@ -753,7 +754,7 @@
       if (parkedCount === BUS_LINES.length) {
         gameComplete = true;
         setTimeout(() => {
-          sndVictory();
+          playEndSound(BUS_LINES.length, BUS_LINES.length);
           createConfetti();
           busParade(BUS_LINES);
           document.getElementById('victoryOverlay').classList.add('show');
@@ -763,6 +764,7 @@
 
     function wrongPark(bus) {
       sndBuzz();
+      playErrorSound();
       bus.el.classList.add('wrong');
       // Return to initial position
       setTimeout(() => {

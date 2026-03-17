@@ -332,6 +332,7 @@
   </div>
 
   <script src="js/sounds.js"></script>
+  <script src="js/victory-sounds.js"></script>
   <script src="js/bus-svg.js"></script>
   <script>
     // ─── Données pays ───────────────────────────────────────────────────────────
@@ -517,6 +518,7 @@
         setTimeout(() => speak(currentPays.nom), 300);
       } else {
         sndBuzz();
+        playErrorSound();
         showFeedback('💪');
         setTimeout(() => speak(currentPays.nom), 300);
       }

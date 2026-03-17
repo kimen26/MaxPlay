@@ -158,6 +158,7 @@
   
   <!-- Scripts -->
   <script src="js/sounds.js"></script>
+  <script src="js/victory-sounds.js"></script>
   <script src="js/feedback.js"></script>
   <script src="js/data.js"></script>
   <script src="js/bus-svg.js"></script>
@@ -395,7 +396,7 @@
         
         streak = 0;
         level = Math.max(1, level - 1); // Redescendre un peu
-        sndBuzz();
+        playErrorSound(); sndBuzz();
         showFB(false);
       }
       
@@ -406,7 +407,7 @@
     }
     
     function showEndScreen() {
-      sndVictory();
+      playEndSound(score, MAX_QUESTIONS * 10);
       confetti();
       const app = document.getElementById('app');
       app.innerHTML = `

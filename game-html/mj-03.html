@@ -120,6 +120,7 @@
   
   <!-- Scripts — data.js et bus-svg.js sont la source de vérité -->
   <script src="js/sounds.js"></script>
+  <script src="js/victory-sounds.js"></script>
   <script src="js/feedback.js"></script>
   <script src="js/data.js"></script>
   <script src="js/bus-svg.js"></script>
@@ -244,7 +245,7 @@
         if (correctBtn) correctBtn.classList.add('ok');
         
         streak = 0;
-        sndBuzz();
+        playErrorSound(); sndBuzz();
         showFB(false);
         
         // Révéler le bus coloré quand même
@@ -259,7 +260,7 @@
     }
     
     function showEndScreen() {
-      sndVictory();
+      playEndSound(score, MAX_QUESTIONS * 10);
       confetti();
       busParade();
       speak('Félicitations ! Tu as terminé le jeu !', true);

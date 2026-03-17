@@ -315,6 +315,19 @@
   const boxCounts = {};
   FAMILIES.forEach(f => boxCounts[f.id] = 0);
 
+  // ── TTS ──
+  function speakLine(line) {
+    let text;
+    if (line.type === 'rer')     text = 'RER ' + line.num;
+    else if (line.type === 'metro')   text = 'Métro ' + line.num;
+    else if (line.type === 'tramway') text = 'Tram ' + line.num.substring(1);
+    else text = getLineDisplayName(line.num); // bus/noctilien/valouette/TVM
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'fr-FR'; u.rate = 0.9; u.volume = 0.9;
+    speechSynthesis.cancel();
+    speechSynthesis.speak(u);
+  }
+
   // ── Audio singleton ──
   let _ac = null;
   function getAC() {
@@ -518,6 +531,7 @@
     bus.parked = true;
     bus.el.classList.add('parked');
     sndOk();
+    setTimeout(() => speakLine(bus.line), 150);
 
     // Ajouter mini-bus dans la boîte
     const parkedZone = document.getElementById('parked-' + box.id);

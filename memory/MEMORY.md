@@ -11,11 +11,18 @@ Voir `docs/MAX_PROFILE.md` pour le profil complet.
 
 ## État jeux (2026-03-17, session 10)
 
-- **12 jeux** : mj-01 à mj-11 + max-adventure
+- **13 jeux** : mj-01 à mj-12 + max-adventure
 - **MJ-10** : Tableau de bord — 12 boutons sons sandbox (klaxon/moteur/porte…) + easter egg prout caché
 - **MJ-11** : Quel pays ? — drapeau dans fenêtre bus (flag-icons CDN), TTS, 4 choix texte, confettis 10/10
-- **sounds.js** : AudioContext singleton depuis session 10 (fix son coupé après clics rapides)
-- **Prochaine étape** : progression/flotte de bus (EP-005) + audio avancé (EP-006)
+- **MJ-12** : Nouveaux sons — tableau de bord 22 MP3/FLAC triés en 5 catégories + easter egg 💨
+- **victory-sounds.js** : module partagé `playEndSound(score, max)` + `playErrorSound()` + `stopEndSound()`
+  - ≥50% → FF7/Smash Bros/Zelda/Gagné/Super Max · <50% → perdu/motus/among-us
+  - erreur → prout/klaxon/pew aléatoire
+- **sounds.js** : AudioContext singleton (fix son coupé après clics rapides)
+- **Sons dans tous les jeux** : mj-01/02/03/05/07/08/09/11 utilisent victory-sounds.js
+- **MJ-09** : limité à 30 bus aléatoires parmi 65, victoire = super-max.mp3
+- **index.html** : jingle RATP ou SNCF aléatoire au chargement (autoplay + fallback premier clic)
+- **Prochaine étape** : idfm.js family+known pour 362 lignes (EP-007) + progression/flotte (EP-005)
 
 ## Architecture déploiement (2026-03-16)
 

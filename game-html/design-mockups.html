@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Poteau arrêt de bus — design validé</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { background:#1a1a2e; padding:60px 60px 120px;
+       display:flex; gap:80px; align-items:flex-start; flex-wrap:wrap; }
+</style>
+</head>
+<body>
+<script>
+/* ══ LED DOTS ══ */
+const DIGITS = {
+  '0': [1,1,1,1, 1,0,0,1, 1,0,0,1, 1,0,0,1, 1,0,0,1, 1,0,0,1, 1,1,1,1],
+  '1': [0,0,1,0, 0,1,1,0, 0,0,1,0, 0,0,1,0, 0,0,1,0, 0,0,1,0, 0,1,1,1],
+  '2': [1,1,1,1, 0,0,0,1, 0,0,0,1, 1,1,1,1, 1,0,0,0, 1,0,0,0, 1,1,1,1],
+  '3': [1,1,1,1, 0,0,0,1, 0,0,0,1, 0,1,1,1, 0,0,0,1, 0,0,0,1, 1,1,1,1],
+  '4': [1,0,0,1, 1,0,0,1, 1,0,0,1, 1,1,1,1, 0,0,0,1, 0,0,0,1, 0,0,0,1],
+  '5': [1,1,1,1, 1,0,0,0, 1,0,0,0, 1,1,1,1, 0,0,0,1, 0,0,0,1, 1,1,1,1],
+  '6': [1,1,1,1, 1,0,0,0, 1,0,0,0, 1,1,1,1, 1,0,0,1, 1,0,0,1, 1,1,1,1],
+  '7': [1,1,1,1, 0,0,0,1, 0,0,0,1, 0,0,1,0, 0,0,1,0, 0,1,0,0, 0,1,0,0],
+  '8': [1,1,1,1, 1,0,0,1, 1,0,0,1, 1,1,1,1, 1,0,0,1, 1,0,0,1, 1,1,1,1],
+  '9': [1,1,1,1, 1,0,0,1, 1,0,0,1, 1,1,1,1, 0,0,0,1, 0,0,0,1, 1,1,1,1],
+};
+function ledDigitSVG(ch, sq, dotOn, dotOff) {
+  const cols=4, rows=7;
+  const ds = Math.min(sq*0.80/(rows+(rows-1)*0.28), sq*0.70/(cols+(cols-1)*0.28));
+  const gap = ds*0.28;
+  const W=cols*ds+(cols-1)*gap, H=rows*ds+(rows-1)*gap;
+  const bits = DIGITS[ch]||DIGITS['0'];
+  let dots='';
+  bits.forEach((on,bi)=>{
+    const row=Math.floor(bi/cols),col=bi%cols;
+    const x=col*(ds+gap),y=row*(ds+gap),r=ds/2;
+    dots+=`<circle cx="${(x+r).toFixed(1)}" cy="${(y+r).toFixed(1)}" r="${r.toFixed(1)}" fill="${on?dotOn:dotOff}"/>`;
+  });
+  const ox=(sq-W)/2, oy=(sq-H)/2;
+  return `<svg width="${sq}" height="${sq}" viewBox="0 0 ${sq} ${sq}" xmlns="http://www.w3.org/2000/svg" style="display:block;">
+    <g transform="translate(${ox.toFixed(1)},${oy.toFixed(1)})">${dots}</g></svg>`;
+}
+
+/* ══ FICHE V1 VALIDÉE ══ */
+const P = { w:104, colorH:68, borderR:6, barR:4, pad:5, gap:3,
+  rectBg:'#141414', barOff:'#141414',
+  dotOn:'#e8e8e8', dotOff:'#1e1e1e',
+  minFs:12, minColor:'#aaaaaa', numFs:50,
+  shadow:'0 3px 12px rgba(0,0,0,0.9)' };
+
+function buildFiche(s, min) {
+  const str = String(min);
+  const innerW = P.w - P.pad*2;
+  const casesZoneW = Math.floor(innerW*0.667);
+  const minZoneW = innerW - casesZoneW;
+  const sq = Math.floor((casesZoneW - P.gap*2)/3);
+  let c1,c2,c3;
+  if (str.length===1){c1='bar';c2='bar';c3=str[0];}
+  else{c1='bar';c2=str[0];c3=str[1];}
+  const rc = (val) => val==='bar'
+    ? `<div style="width:${sq}px;height:${sq}px;background:${P.barOff};border-radius:${P.barR}px;flex-shrink:0;"></div>`
+    : `<div style="width:${sq}px;height:${sq}px;background:${P.rectBg};border-radius:${P.barR}px;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;">${ledDigitSVG(val,sq,P.dotOn,P.dotOff)}</div>`;
+  const numFs = s.num.length>2 ? Math.round(P.numFs*0.75) : P.numFs;
+  return `<div style="width:${P.w}px;border-radius:${P.borderR}px;overflow:hidden;box-shadow:${P.shadow};">
+    <div style="background:${s.color};height:${P.colorH}px;display:flex;align-items:center;justify-content:center;">
+      <span style="font-family:'Nunito',sans-serif;font-weight:900;font-size:${numFs}px;color:${s.text};line-height:1;">${s.num}</span>
+    </div>
+    <div style="background:#080808;padding:${P.pad}px;display:flex;align-items:center;gap:${P.gap}px;">
+      ${rc(c1)}${rc(c2)}${rc(c3)}
+      <div style="width:${minZoneW}px;height:${sq}px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <span style="font-family:'Nunito',sans-serif;font-size:${P.minFs}px;font-weight:900;color:${P.minColor};line-height:1;">min</span>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ══ ENTÊTE "C" VALIDÉ ══
+   Forme raquette SVG : ovale sombre, "BUS" blanc, liseré blanc, bande turquoise
+   Centré sur le poteau, en haut
+*/
+function buildHeader() {
+  const r  = 38;   // rayon du cercle
+  const cx = r + 2, cy = r + 2;
+  const w  = (r + 2) * 2;
+  const h  = w;
+  // Zones dans le cercle (de haut en bas) :
+  //  - fond gris  jusqu'à cy - 10
+  //  - liseré blanc  3px
+  //  - turquoise jusqu'en bas
+  const lisereY  = cy + 14;   // y du liseré dans le cercle
+  const turqH    = r + 2 - lisereY + cy; // hauteur restante
+
+  return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <clipPath id="clip-circle">
+        <circle cx="${cx}" cy="${cy}" r="${r}"/>
+      </clipPath>
+    </defs>
+
+    <!-- Fond gris poteau -->
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="#6a6a6a"/>
+
+    <!-- Bande turquoise en bas -->
+    <rect x="0" y="${lisereY + 3}" width="${w}" height="${h}" fill="#00c5a0" clip-path="url(#clip-circle)"/>
+
+    <!-- Liseré blanc -->
+    <rect x="0" y="${lisereY}" width="${w}" height="3" fill="#ffffff" clip-path="url(#clip-circle)"/>
+
+    <!-- Texte BUS -->
+    <text x="${cx}" y="${lisereY - 12}"
+      text-anchor="middle" dominant-baseline="middle"
+      font-family="Nunito, sans-serif" font-weight="900"
+      font-size="24" fill="#ffffff" letter-spacing="1">BUS</text>
+  </svg>`;
+}
+
+/* ══ POTEAU COMPLET ══
+   Structure :
+   - Poteau gris centré
+   - Header (raquette) centré sur le poteau en haut
+   - 2 fiches à gauche du poteau + 2 fiches à droite, alignées
+*/
+function buildPoteau(lines) {
+  const poleW   = 14;
+  const headerW = 80;
+  const headerH = 80;
+  const ficheGap = 10;
+  const poleBottom = 120;
+
+  // Fiches plus petites : on scale P
+  const fw = 86; // fiche width réduite
+  const fColorH = 52;
+  const fPad = 4, fGap = 3;
+  const fInnerW = fw - fPad*2;
+  const fCasesW = Math.floor(fInnerW*0.667);
+  const fSq = Math.floor((fCasesW - fGap*2)/3);
+  const ficheH = fColorH + fPad*2 + fSq + 4;
+
+  // left = 2 fiches | poteau | right = 2 fiches
+  const poleMargin = 6; // espace entre poteau et fiches
+  const totalW = fw + poleMargin + poleW + poleMargin + fw;
+  const poleX  = fw + poleMargin;
+  const headerX = poleX + Math.floor((poleW - headerW)/2);
+
+  const leftLines  = lines.slice(0,2);
+  const rightLines = lines.slice(2,4);
+
+  // Hauteur totale
+  const fichesH = 2 * ficheH + ficheGap;
+  const totalH  = headerH + 10 + fichesH + poleBottom;
+
+  // Helper fiche réduite inline
+  function fiche(s, min) {
+    const str = String(min);
+    let c1,c2,c3;
+    if(str.length===1){c1='bar';c2='bar';c3=str[0];}
+    else{c1='bar';c2=str[0];c3=str[1];}
+    const minZoneW = fInnerW - fCasesW;
+    const numFs = s.num.length>2 ? Math.round(34*0.75) : 34;
+    const rc = (val) => val==='bar'
+      ? `<div style="width:${fSq}px;height:${fSq}px;background:#141414;border-radius:3px;flex-shrink:0;"></div>`
+      : `<div style="width:${fSq}px;height:${fSq}px;background:#141414;border-radius:3px;display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;">${ledDigitSVG(val,fSq,'#e8e8e8','#1e1e1e')}</div>`;
+    return `<div style="width:${fw}px;border-radius:5px;overflow:hidden;box-shadow:0 3px 10px rgba(0,0,0,0.9);">
+      <div style="background:${s.color};height:${fColorH}px;display:flex;align-items:center;justify-content:center;">
+        <span style="font-family:'Nunito',sans-serif;font-weight:900;font-size:${numFs}px;color:${s.text};line-height:1;">${s.num}</span>
+      </div>
+      <div style="background:#080808;padding:${fPad}px;display:flex;align-items:center;gap:${fGap}px;">
+        ${rc(c1)}${rc(c2)}${rc(c3)}
+        <div style="width:${minZoneW}px;height:${fSq}px;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+          <span style="font-family:'Nunito',sans-serif;font-size:10px;font-weight:900;color:#aaa;line-height:1;">min</span>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  const fichesTop = headerH + 12;
+
+  const leftCol  = leftLines.map(l=>fiche(l.s,l.min)).join(`<div style="height:${ficheGap}px;"></div>`);
+  const rightCol = rightLines.map(l=>fiche(l.s,l.min)).join(`<div style="height:${ficheGap}px;"></div>`);
+
+  return `<div style="position:relative;width:${totalW}px;height:${totalH}px;">
+
+    <!-- Poteau gris vertical -->
+    <div style="
+      position:absolute;
+      left:${poleX}px; top:0; bottom:0;
+      width:${poleW}px;
+      background:linear-gradient(to right,#4e4e4e,#909090,#4e4e4e);
+      border-radius:7px;
+      z-index:0;"></div>
+
+    <!-- Header raquette centré sur le poteau -->
+    <div style="position:absolute;left:${headerX}px;top:0;z-index:2;">
+      ${buildHeader()}
+    </div>
+
+    <!-- 2 fiches à gauche -->
+    <div style="position:absolute;left:0;top:${fichesTop}px;display:flex;flex-direction:column;gap:${ficheGap}px;z-index:1;">
+      ${leftCol}
+    </div>
+
+    <!-- 2 fiches à droite -->
+    <div style="position:absolute;left:${poleX+poleW+poleMargin}px;top:${fichesTop}px;display:flex;flex-direction:column;gap:${ficheGap}px;z-index:1;">
+      ${rightCol}
+    </div>
+
+  </div>`;
+}
+
+/* ══ DONNÉES ══ */
+const LINES = [
+  { s:{ num:'162', color:'#0064B1', text:'#fff' }, min:5  },
+  { s:{ num:'185', color:'#0064B1', text:'#fff' }, min:12 },
+  { s:{ num:'52',  color:'#00a8d0', text:'#fff' }, min:20 },
+  { s:{ num:'131', color:'#8B4513', text:'#fff' }, min:3  },
+];
+
+document.body.innerHTML = buildPoteau(LINES);
+</script>
+</body>
+</html>

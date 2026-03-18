@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<title>MJ-13 – L'arrêt de bus</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',sans-serif; background:#1a1a2e; }
+
+/* ── Header jeu ── */
+#game-header {
+  position:fixed; top:0; left:0; right:0; z-index:50;
+  height:48px;
+  background:rgba(10,10,30,0.95);
+  border-bottom:2px solid #2a2a4a;
+  display:flex; align-items:center; padding:0 12px; gap:10px;
+}
+#btn-back {
+  background:#2a2a4a; border:none; border-radius:10px;
+  color:#fff; font-family:'Nunito',sans-serif; font-weight:900;
+  font-size:1rem; padding:6px 14px; cursor:pointer;
+}
+#score-display {
+  margin-left:auto;
+  font-weight:900; font-size:1rem; color:#ffe066;
+  background:#2a2a4a; border-radius:10px; padding:5px 14px;
+}
+
+/* ── App ── */
+#app { position:fixed; top:48px; left:0; right:0; bottom:0; }
+
+/* ── Route ── */
+.road { position:absolute; left:0; right:0; background:#2a2a2a; }
+.road-kerb {
+  position:absolute; top:0; left:0; right:0; height:6px;
+  background:repeating-linear-gradient(90deg,#fff 0,#fff 20px,#e3051c 20px,#e3051c 40px);
+}
+.road-lane {
+  position:absolute; left:0; right:0; height:4px;
+  background:repeating-linear-gradient(90deg,#f0c040 0,#f0c040 36px,transparent 36px,transparent 72px);
+  animation:roadScroll 0.5s linear infinite;
+}
+@keyframes roadScroll { from{background-position:0 0;} to{background-position:-72px 0;} }
+
+/* ── Bus animé ── */
+.bus-anim { position:absolute; will-change:left; }
+
+/* ── Question bar ── */
+.q-bar {
+  position:absolute; left:0; right:0; bottom:0;
+  background:#080820; border-top:2px solid #2a2a4a;
+  display:flex; align-items:center; justify-content:center;
+  flex-wrap:wrap; gap:8px; padding:10px 14px; min-height:68px;
+}
+.q-text { font-size:1.15rem; font-weight:900; color:#fff; text-align:center; }
+
+/* ── Fiches ── */
+.fiche { border-radius:6px; overflow:hidden; box-shadow:0 3px 12px rgba(0,0,0,.9); cursor:pointer; user-select:none; transition:transform .1s; }
+.fiche:active { transform:scale(.94); }
+.fiche-top { display:flex; align-items:center; justify-content:center; }
+.fiche-bot { background:#080808; display:flex; align-items:center; }
+.fiche-cell { background:#141414; border-radius:3px; display:flex; align-items:center; justify-content:center; flex-shrink:0; overflow:hidden; }
+.fiche-bar  { background:#141414; border-radius:3px; flex-shrink:0; }
+.fiche-min  { display:flex; align-items:center; justify-content:center; flex-shrink:0; font-family:'Nunito',sans-serif; font-weight:900; color:#aaa; }
+
+/* ── Feedback flash ── */
+.flash-ok  { background:#1a4a1a !important; }
+.flash-err { background:#4a1a1a !important; }
+</style>
+</head>
+<body>
+
+<div id="game-header">
+  <button id="btn-back" onclick="location.href='index.html'">← Retour</button>
+  <span style="font-weight:900;font-size:1rem;color:#fff;">🚌 Arrêt de bus</span>
+  <div id="score-display">0 / 0</div>
+</div>
+
+<div id="app"></div>
+
+<script src="js/bus-svg.js"></script>
+<script src="js/sounds.js"></script>
+<script src="js/victory-sounds.js"></script>
+<script>
+/* ══════════════════════════════════════════
+   LED DOTS
+══════════════════════════════════════════ */
+const DIGITS = {
+  '0':[1,1,1,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,1,1,1],
+  '1':[0,0,1,0,0,1,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,1,1,1],
+  '2':[1,1,1,1,0,0,0,1,0,0,0,1,1,1,1,1,1,0,0,0,1,0,0,0,1,1,1,1],
+  '3':[1,1,1,1,0,0,0,1,0,0,0,1,0,1,1,1,0,0,0,1,0,0,0,1,1,1,1,1],
+  '4':[1,0,0,1,1,0,0,1,1,0,0,1,1,1,1,1,0,0,0,1,0,0,0,1,0,0,0,1],
+  '5':[1,1,1,1,1,0,0,0,1,0,0,0,1,1,1,1,0,0,0,1,0,0,0,1,1,1,1,1],
+  '6':[1,1,1,1,1,0,0,0,1,0,0,0,1,1,1,1,1,0,0,1,1,0,0,1,1,1,1,1],
+  '7':[1,1,1,1,0,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0],
+  '8':[1,1,1,1,1,0,0,1,1,0,0,1,1,1,1,1,1,0,0,1,1,0,0,1,1,1,1,1],
+  '9':[1,1,1,1,1,0,0,1,1,0,0,1,1,1,1,1,0,0,0,1,0,0,0,1,1,1,1,1],
+};
+function ledSVG(ch, sq) {
+  const cols=4,rows=7;
+  const ds=Math.min(sq*.80/(rows+(rows-1)*.28), sq*.70/(cols+(cols-1)*.28));
+  const gap=ds*.28, W=cols*ds+(cols-1)*gap, H=rows*ds+(rows-1)*gap;
+  const bits=DIGITS[ch]||DIGITS['0'];
+  let d='';
+  bits.forEach((b,i)=>{
+    const row=Math.floor(i/cols),col=i%cols,x=col*(ds+gap),y=row*(ds+gap),r=ds/2;
+    d+=`<circle cx="${(x+r).toFixed(1)}" cy="${(y+r).toFixed(1)}" r="${r.toFixed(1)}" fill="${b?'#e8e8e8':'#1e1e1e'}"/>`;
+  });
+  const ox=(sq-W)/2,oy=(sq-H)/2;
+  return `<svg width="${sq}" height="${sq}" viewBox="0 0 ${sq} ${sq}" xmlns="http://www.w3.org/2000/svg" style="display:block;"><g transform="translate(${ox.toFixed(1)},${oy.toFixed(1)})">${d}</g></svg>`;
+}
+
+/* ══════════════════════════════════════════
+   FICHE
+══════════════════════════════════════════ */
+function ficheHTML(line, sec, fw, fch, fp, fg) {
+  const iw=fw-fp*2, cz=Math.floor(iw*.667), mz=iw-cz, sq=Math.floor((cz-fg*2)/3);
+  const s=Math.max(0,Math.round(Math.min(sec,99)));
+  const str=String(s);
+  let c1,c2,c3;
+  if(str.length===1){c1='x';c2='x';c3=str[0];}
+  else{c1='x';c2=str[0];c3=str[1];}
+  const cell=v=>v==='x'
+    ?`<div class="fiche-bar" style="width:${sq}px;height:${sq}px;"></div>`
+    :`<div class="fiche-cell" style="width:${sq}px;height:${sq}px;">${ledSVG(v,sq)}</div>`;
+  const nfs=line.num.length>2?Math.round(fw*.27):Math.round(fw*.33);
+  return `<div id="fiche-${line.num}" class="fiche" style="width:${fw}px;" onclick="onFicheTap('${line.num}')">
+    <div class="fiche-top" style="background:${line.color};height:${fch}px;">
+      <span style="font-family:'Nunito',sans-serif;font-weight:900;font-size:${nfs}px;color:${line.text};line-height:1;">${line.num}</span>
+    </div>
+    <div class="fiche-bot" style="padding:${fp}px;gap:${fg}px;">
+      ${cell(c1)}${cell(c2)}${cell(c3)}
+      <div class="fiche-min" style="width:${mz}px;height:${sq}px;font-size:${Math.max(9,Math.round(fw*.10))}px;">sec</div>
+    </div>
+  </div>`;
+}
+
+function updateFicheTimer(line, sec, fw, fp, fg) {
+  const el=document.getElementById(`fiche-${line.num}`);
+  if(!el) return;
+  const iw=fw-fp*2, cz=Math.floor(iw*.667), mz=iw-cz, sq=Math.floor((cz-fg*2)/3);
+  const s=Math.max(0,Math.round(Math.min(sec,99)));
+  const str=String(s);
+  let c1,c2,c3;
+  if(str.length===1){c1='x';c2='x';c3=str[0];}
+  else{c1='x';c2=str[0];c3=str[1];}
+  const cell=v=>v==='x'
+    ?`<div class="fiche-bar" style="width:${sq}px;height:${sq}px;"></div>`
+    :`<div class="fiche-cell" style="width:${sq}px;height:${sq}px;">${ledSVG(v,sq)}</div>`;
+  const bot=el.querySelector('.fiche-bot');
+  if(bot) bot.innerHTML=`${cell(c1)}${cell(c2)}${cell(c3)}<div class="fiche-min" style="width:${mz}px;height:${sq}px;font-size:${Math.max(9,Math.round(fw*.10))}px;">sec</div>`;
+}
+
+/* ══════════════════════════════════════════
+   HEADER POTEAU
+══════════════════════════════════════════ */
+function poleHeadSVG(r=36) {
+  const cx=r+2,cy=r+2,w=(r+2)*2,h=w,ly=cy+Math.round(r*.38);
+  return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">
+    <defs><clipPath id="cc${r}"><circle cx="${cx}" cy="${cy}" r="${r}"/></clipPath></defs>
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="#6a6a6a"/>
+    <rect x="0" y="${ly+3}" width="${w}" height="${h}" fill="#00c5a0" clip-path="url(#cc${r})"/>
+    <rect x="0" y="${ly}" width="${w}" height="3" fill="#fff" clip-path="url(#cc${r})"/>
+    <text x="${cx}" y="${ly-Math.round(r*.28)}" text-anchor="middle" dominant-baseline="middle"
+      font-family="Nunito,sans-serif" font-weight="900" font-size="${Math.round(r*.55)}" fill="#fff" letter-spacing="1">BUS</text>
+  </svg>`;
+}
+
+const POLE_STYLE='linear-gradient(to right,#4e4e4e,#909090,#4e4e4e)';
+
+/* ══════════════════════════════════════════
+   DONNÉES
+══════════════════════════════════════════ */
+const ALL_LINES = [
+  { num:'162', color:'#0064B1', text:'#fff' },
+  { num:'185', color:'#0064B1', text:'#fff' },
+  { num:'52',  color:'#00a8d0', text:'#fff' },
+  { num:'131', color:'#7B3F00', text:'#fff' },
+  { num:'183', color:'#005da0', text:'#fff' },
+  { num:'180', color:'#008C59', text:'#fff' },
+  { num:'57',  color:'#e8c200', text:'#111' },
+  { num:'TVM', color:'#E3051C', text:'#fff' },
+];
+
+/* ══════════════════════════════════════════
+   ÉTAT
+══════════════════════════════════════════ */
+const TOTAL_ROUNDS = 10;
+let lines=[], timers={};
+let gameMode='A', targetNum='';
+let score=0, round=0;
+let answered=false;
+let tickInterval=null, busInterval=null;
+let FW=86, FCH=52, FP=4, FG=3;
+let currentVariant='A';
+
+function shuffle(a){return [...a].sort(()=>Math.random()-.5);}
+function updateScore(){ document.getElementById('score-display').textContent=`${score} / ${round}`; }
+
+/* ══════════════════════════════════════════
+   INIT ROUND
+══════════════════════════════════════════ */
+function initRound() {
+  if(round>=TOTAL_ROUNDS){ showVictory(); return; }
+  answered=false;
+  stopAll();
+
+  // 162 toujours présent pour mode C
+  const others=shuffle(ALL_LINES.filter(l=>l.num!=='162'));
+  const n=3+Math.floor(Math.random()*4);
+  lines=shuffle([ALL_LINES[0],...others.slice(0,n-1)]).slice(0,n);
+  const pool=shuffle([6,9,12,15,18,22,27,32,38,44,52]).slice(0,n);
+  timers={};
+  lines.forEach((l,i)=>timers[l.num]=pool[i]);
+
+  // Variante aléatoire à chaque round
+  currentVariant=['A','B','C'][Math.floor(Math.random()*3)];
+  renderVariant();
+  renderQuestion();
+  startTick();
+  startBuses();
+}
+
+/* ══════════════════════════════════════════
+   VARIANTE A — Poteau centré, 2+2 fiches
+══════════════════════════════════════════ */
+function renderA() {
+  const app=document.getElementById('app');
+  const W=window.innerWidth, H=window.innerHeight-48;
+  const roadH=88, qBarH=68, sceneH=H-qBarH;
+  const poleR=34, poleDiam=poleR*2+4;
+  const poleX=Math.floor(W/2)-Math.floor(poleDiam/2);
+  const poleCX=poleX+Math.floor(poleDiam/2);
+
+  FW=Math.min(Math.floor((W/2)-Math.floor(poleDiam/2)-16),110);
+  FCH=Math.round(FW*.58); FP=4; FG=3;
+
+  const half=Math.ceil(lines.length/2);
+  const leftL=lines.slice(0,half), rightL=lines.slice(half);
+  const fg=8, ficheH=FCH+FP*2+Math.floor((FW-FP*2)*.667/3)+8;
+  const fichesMaxH=sceneH-roadH-poleDiam-20;
+  const top=poleDiam+10+Math.max(0,Math.floor((fichesMaxH-(leftL.length*ficheH+(leftL.length-1)*fg))/2));
+
+  const lf=leftL.map(l=>ficheHTML(l,timers[l.num],FW,FCH,FP,FG)).join(`<div style="height:${fg}px"></div>`);
+  const rf=rightL.map(l=>ficheHTML(l,timers[l.num],FW,FCH,FP,FG)).join(`<div style="height:${fg}px"></div>`);
+
+  app.innerHTML=`
+  <div style="position:relative;width:${W}px;height:${sceneH}px;background:linear-gradient(180deg,#1a1a2e 0%,#2d2d44 55%,#3a3a28 85%,#3a3a28 100%);overflow:hidden;">
+    <div style="position:absolute;left:${poleCX-5}px;top:0;bottom:${roadH}px;width:10px;background:${POLE_STYLE};z-index:2;"></div>
+    <div style="position:absolute;left:${poleX}px;top:0;z-index:3;">${poleHeadSVG(poleR)}</div>
+    <div style="position:absolute;right:${W-poleX+6}px;top:${top}px;display:flex;flex-direction:column;gap:${fg}px;z-index:4;align-items:flex-end;">${lf}</div>
+    <div style="position:absolute;left:${poleX+poleDiam+6}px;top:${top}px;display:flex;flex-direction:column;gap:${fg}px;z-index:4;">${rf}</div>
+    <div class="road" style="bottom:0;height:${roadH}px;" id="road-el">
+      <div class="road-kerb"></div>
+      <div class="road-lane" style="top:${Math.round(roadH*.44)}px;"></div>
+    </div>
+  </div>
+  <div class="q-bar" style="height:${qBarH}px;" id="q-bar"><div class="q-text" id="q-text"></div></div>`;
+}
+
+/* ══════════════════════════════════════════
+   VARIANTE B — Colonne gauche
+══════════════════════════════════════════ */
+function renderB() {
+  const app=document.getElementById('app');
+  const W=window.innerWidth, H=window.innerHeight-48;
+  const roadH=100, qBarH=68, sceneH=H-qBarH;
+  const poleR=28, poleDiam=poleR*2+4;
+
+  FW=Math.min(Math.floor(W*.54),130);
+  FCH=Math.round(FW*.54); FP=5; FG=3;
+
+  const fg=10, ficheH=FCH+FP*2+Math.floor((FW-FP*2)*.667/3)+10;
+  const totalH=lines.length*ficheH+(lines.length-1)*fg;
+  const poleTop=Math.max(4, Math.floor((sceneH-roadH-totalH)/2)-poleDiam-8);
+  const fichesTop=poleTop+poleDiam+8;
+  const poleCX=Math.round(FW/2);
+
+  const fhtml=lines.map(l=>ficheHTML(l,timers[l.num],FW,FCH,FP,FG)).join(`<div style="height:${fg}px"></div>`);
+
+  app.innerHTML=`
+  <div style="position:relative;width:${W}px;height:${sceneH}px;background:linear-gradient(180deg,#1a1a2e 0%,#252538 65%,#2a2a20 100%);overflow:hidden;">
+    <div style="position:absolute;left:${poleCX-5}px;top:0;bottom:${roadH}px;width:10px;background:${POLE_STYLE};z-index:2;"></div>
+    <div style="position:absolute;left:${poleCX-poleR-2}px;top:${poleTop}px;z-index:3;">${poleHeadSVG(poleR)}</div>
+    <div style="position:absolute;left:0;top:${fichesTop}px;display:flex;flex-direction:column;gap:${fg}px;z-index:4;padding-left:4px;">${fhtml}</div>
+    <div class="road" style="bottom:0;height:${roadH}px;" id="road-el">
+      <div class="road-kerb"></div>
+      <div class="road-lane" style="top:${Math.round(roadH*.42)}px;"></div>
+    </div>
+  </div>
+  <div class="q-bar" style="height:${qBarH}px;" id="q-bar"><div class="q-text" id="q-text"></div></div>`;
+}
+
+/* ══════════════════════════════════════════
+   VARIANTE C — Panneau centré, route bas
+══════════════════════════════════════════ */
+function renderC() {
+  const app=document.getElementById('app');
+  const W=window.innerWidth, H=window.innerHeight-48;
+  const roadH=110, qBarH=68, sceneH=H-qBarH;
+  const panelW=Math.min(W-28,300);
+  const poleR=32, poleDiam=poleR*2+4;
+  const panelX=Math.floor((W-panelW)/2);
+
+  FW=panelW; FCH=Math.round(FW*.42); FP=6; FG=4;
+
+  const fg=8, ficheH=FCH+FP*2+Math.floor((FW-FP*2)*.667/3)+10;
+  const panelH=poleDiam+lines.length*ficheH+(lines.length-1)*fg+20;
+  const poleX=Math.floor(W/2)-5;
+  const poleTop=panelH+4;
+
+  const fhtml=lines.map(l=>ficheHTML(l,timers[l.num],FW,FCH,FP,FG)).join(`<div style="height:${fg}px"></div>`);
+
+  app.innerHTML=`
+  <div style="position:relative;width:${W}px;height:${sceneH}px;background:linear-gradient(180deg,#131320 0%,#1e1e30 45%,#252518 100%);overflow:hidden;">
+    <div style="position:absolute;left:${poleX}px;top:${poleTop}px;bottom:${roadH}px;width:10px;background:${POLE_STYLE};z-index:2;"></div>
+    <div style="position:absolute;left:${panelX}px;top:4px;z-index:4;display:flex;flex-direction:column;align-items:center;">
+      <div>${poleHeadSVG(poleR)}</div>
+      <div style="width:${panelW}px;background:#111;border-radius:0 0 10px 10px;padding:8px;display:flex;flex-direction:column;gap:${fg}px;box-shadow:0 6px 24px rgba(0,0,0,.8);">${fhtml}</div>
+    </div>
+    <div class="road" style="bottom:0;height:${roadH}px;" id="road-el">
+      <div class="road-kerb"></div>
+      <div class="road-lane" style="top:${Math.round(roadH*.42)}px;"></div>
+    </div>
+  </div>
+  <div class="q-bar" style="height:${qBarH}px;" id="q-bar"><div class="q-text" id="q-text"></div></div>`;
+}
+
+function renderVariant() {
+  if(currentVariant==='A') renderA();
+  else if(currentVariant==='B') renderB();
+  else renderC();
+}
+
+/* ══════════════════════════════════════════
+   QUESTION
+══════════════════════════════════════════ */
+function renderQuestion() {
+  const qt=document.getElementById('q-text');
+  if(!qt) return;
+  gameMode=['A','B','C'][Math.floor(Math.random()*3)];
+
+  if(gameMode==='A') {
+    targetNum=lines.reduce((a,b)=>timers[a.num]<timers[b.num]?a:b).num;
+    qt.innerHTML=`<span style="color:#ffe066">Quel bus passe en premier ?</span>`;
+    tts('Quel bus passe en premier ?');
+  } else if(gameMode==='B') {
+    const tl=lines[Math.floor(Math.random()*lines.length)];
+    targetNum=tl.num;
+    qt.innerHTML=`Monte dans le <span style="background:${tl.color};color:${tl.text};border-radius:8px;padding:2px 12px;font-size:1.4rem;">${tl.num}</span> !`;
+    tts(`Monte dans le ${tl.num} !`);
+  } else {
+    targetNum=lines.find(l=>l.num==='162')?.num||lines[lines.length-1].num;
+    const tl=lines.find(l=>l.num===targetNum);
+    const before=lines.filter(l=>timers[l.num]<timers[targetNum]).length;
+    qt.innerHTML=`Combien de bus avant le <span style="background:${tl.color};color:${tl.text};border-radius:6px;padding:1px 10px;">${targetNum}</span> ?`;
+    tts(`Combien de bus avant le ${targetNum} ?`);
+    const qb=document.getElementById('q-bar');
+    const btns=document.createElement('div');
+    btns.style.cssText='display:flex;gap:6px;flex-wrap:wrap;justify-content:center;';
+    for(let i=0;i<=Math.min(5,lines.length-1);i++){
+      const b=document.createElement('button');
+      b.textContent=i;
+      b.style.cssText=`font-family:'Nunito',sans-serif;font-size:1.3rem;font-weight:900;width:44px;height:44px;border-radius:10px;border:none;cursor:pointer;background:#2a2a4a;color:#fff;`;
+      b.onclick=(()=>{const ans=i;return()=>onAnswer(ans===before);})();
+      btns.appendChild(b);
+    }
+    qb.appendChild(btns);
+  }
+}
+
+function tts(text) {
+  if(!window.speechSynthesis) return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='fr-FR'; u.rate=0.9; u.volume=0.9;
+  speechSynthesis.speak(u);
+}
+
+/* ══════════════════════════════════════════
+   TICK
+══════════════════════════════════════════ */
+function startTick() {
+  if(tickInterval) clearInterval(tickInterval);
+  tickInterval=setInterval(()=>{
+    if(answered) return;
+    lines.forEach(l=>{
+      timers[l.num]=Math.max(0,timers[l.num]-1);
+      if(timers[l.num]===0) timers[l.num]=12+Math.floor(Math.random()*30);
+    });
+    lines.forEach(l=>updateFicheTimer(l,timers[l.num],FW,FP,FG));
+  },1000);
+}
+
+/* ══════════════════════════════════════════
+   BUS ANIMÉS
+══════════════════════════════════════════ */
+function spawnBus() {
+  const scene=document.querySelector('#app > div');
+  if(!scene) return;
+  const roadEl=document.getElementById('road-el');
+  if(!roadEl) return;
+  const W=window.innerWidth;
+  const roadH=roadEl.offsetHeight;
+  const busW=Math.min(115,Math.round(W*.34));
+  const line=lines[Math.floor(Math.random()*lines.length)];
+
+  const wrap=document.createElement('div');
+  wrap.className='bus-anim';
+  wrap.style.cssText=`position:absolute;bottom:${Math.round(roadH*.08)}px;left:${W+10}px;z-index:5;`;
+  wrap.innerHTML=busSVG(line.color,line.text,line.num,busW);
+  scene.appendChild(wrap);
+
+  const stopX=Math.round(W*.12);
+  const speed=2.4;
+  let pos=W+10;
+
+  const move=setInterval(()=>{
+    pos-=speed;
+    wrap.style.left=pos+'px';
+    if(pos<=stopX){
+      clearInterval(move);
+      setTimeout(()=>{
+        const dep=setInterval(()=>{
+          pos-=speed*2.8;
+          wrap.style.left=pos+'px';
+          if(pos<-busW-20){clearInterval(dep);wrap.remove();}
+        },16);
+      },1200);
+    }
+  },16);
+}
+
+function startBuses() {
+  if(busInterval) clearInterval(busInterval);
+  setTimeout(spawnBus,600);
+  busInterval=setInterval(spawnBus,3500+Math.random()*3000);
+}
+
+function stopAll() {
+  if(tickInterval) clearInterval(tickInterval);
+  if(busInterval)  clearInterval(busInterval);
+  document.querySelectorAll('.bus-anim').forEach(b=>b.remove());
+}
+
+/* ══════════════════════════════════════════
+   INTERACTION
+══════════════════════════════════════════ */
+function onFicheTap(num) {
+  if(answered) return;
+  if(gameMode==='C') return;
+  onAnswer(num===targetNum);
+}
+
+function onAnswer(correct) {
+  if(answered) return;
+  answered=true;
+  round++;
+  updateScore();
+
+  const qb=document.getElementById('q-bar');
+  if(!qb) return;
+
+  if(correct) {
+    score++;
+    updateScore();
+    sndCorrect();
+    qb.classList.add('flash-ok');
+    qb.innerHTML=`<div class="q-text" style="color:#4CAF50;font-size:1.6rem;">✓ Bravo !</div>`;
+  } else {
+    playErrorSound();
+    qb.classList.add('flash-err');
+    qb.innerHTML=`<div class="q-text" style="color:#e53935;font-size:1.6rem;">✗ C'est raté !</div>`;
+  }
+  setTimeout(()=>initRound(), 1600);
+}
+
+function sndCorrect() {
+  try {
+    const ctx=getAudioContext();
+    const o=ctx.createOscillator(), g=ctx.createGain();
+    o.connect(g); g.connect(ctx.destination);
+    o.frequency.setValueAtTime(660,ctx.currentTime);
+    o.frequency.setValueAtTime(880,ctx.currentTime+0.1);
+    g.gain.setValueAtTime(0.3,ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.35);
+    o.start(); o.stop(ctx.currentTime+0.35);
+  } catch(e){}
+}
+
+/* ══════════════════════════════════════════
+   VICTOIRE
+══════════════════════════════════════════ */
+function showVictory() {
+  stopAll();
+  speechSynthesis.cancel();
+  playEndSound(score, TOTAL_ROUNDS);
+
+  const app=document.getElementById('app');
+  const stars=score>=8?'⭐⭐⭐':score>=5?'⭐⭐':'⭐';
+  const msg=score>=8?'Incroyable !':score>=5?'Bien joué !':'Continue !';
+  app.innerHTML=`
+  <div style="height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:24px;background:linear-gradient(160deg,#1a1a2e,#2d2d44);">
+    <div style="font-size:3.5rem;">${stars}</div>
+    <div style="font-size:2rem;font-weight:900;color:#ffe066;">${msg}</div>
+    <div style="font-size:1.3rem;font-weight:700;color:#fff;">${score} bonne${score>1?'s':''} réponse${score>1?'s':''} sur ${TOTAL_ROUNDS}</div>
+    <button onclick="restartGame()" style="margin-top:16px;font-family:'Nunito',sans-serif;font-size:1.2rem;font-weight:900;padding:14px 36px;border-radius:16px;border:none;cursor:pointer;background:#ffe066;color:#111;">
+      🔄 Rejouer
+    </button>
+    <button onclick="location.href='index.html'" style="font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;padding:10px 28px;border-radius:14px;border:none;cursor:pointer;background:#2a2a4a;color:#fff;">
+      ← Menu
+    </button>
+  </div>`;
+}
+
+function restartGame() {
+  score=0; round=0;
+  stopEndSound();
+  updateScore();
+  initRound();
+}
+
+/* ══════════════════════════════════════════
+   DÉMARRAGE
+══════════════════════════════════════════ */
+window.addEventListener('resize',()=>{ stopAll(); renderVariant(); renderQuestion(); startTick(); startBuses(); });
+updateScore();
+initRound();
+</script>
+</body>
+</html>

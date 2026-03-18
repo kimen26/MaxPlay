@@ -32,29 +32,9 @@ html, body {
   flex:1; overflow:hidden;
   display:flex; flex-direction:column; align-items:center;
   justify-content:flex-start;
-  padding:8px 0 4px;
+  padding:6px 0 0;
   background:linear-gradient(180deg,#131320 0%,#1e1e30 60%,#252520 100%);
   position:relative;
-}
-
-/* ── Panneau arrêt (header rond + fiches) ── */
-#panneau {
-  display:flex; flex-direction:column; align-items:center;
-  z-index:5; position:relative;
-}
-#panneau-fiches {
-  background:#111;
-  border-radius:0 0 10px 10px;
-  padding:6px;
-  display:flex; flex-direction:column; gap:6px;
-  box-shadow:0 6px 20px rgba(0,0,0,.8);
-}
-
-/* ── Poteau ── */
-#poteau {
-  width:10px;
-  background:linear-gradient(to right,#4e4e4e,#909090,#4e4e4e);
-  z-index:4; flex-shrink:0;
 }
 
 /* ── Route ── */
@@ -152,13 +132,23 @@ function ledSVG(ch, sq) {
   return `<svg width="${sq}" height="${sq}" viewBox="0 0 ${sq} ${sq}" xmlns="http://www.w3.org/2000/svg" style="display:block;"><g transform="translate(${((sq-W)/2).toFixed(1)},${((sq-H)/2).toFixed(1)})">${d}</g></svg>`;
 }
 
-/* ══ FICHE ══ */
-// FW calculé dynamiquement selon largeur écran
-let FW, FCH, FP, FG;
+/* ══ DIMS POTEAU (design validé, proportionnel écran) ══
+   Structure : [colGauche | poteau | colDroite] centré dans panel-zone
+   - FW : largeur d'une fiche  = (screen/2 - poleW/2 - poleMargin) * 0.92
+   - poteau occupe ~1/2 écran en hauteur visible, centré
+*/
+let FW, FCH, FP, FG, POLE_W, POLE_MARGIN, TOTAL_W, HDR_R;
 function calcFicheDims() {
-  FW = Math.min(Math.floor(window.innerWidth * 0.72), 260);
-  FCH = Math.round(FW * 0.32);
-  FP = 4; FG = 3;
+  const sw = window.innerWidth;
+  POLE_W     = Math.max(10, Math.round(sw * 0.035));  // ~3.5% largeur écran
+  POLE_MARGIN= Math.max(5,  Math.round(sw * 0.015));  // espace fiche↔poteau
+  // Fiche : moitié écran moins le demi-poteau et la marge
+  FW = Math.min(Math.floor((sw / 2) - POLE_W / 2 - POLE_MARGIN - 4), 180);
+  FW = Math.max(FW, 80);
+  FCH = Math.round(FW * 0.42);   // hauteur couleur
+  FP = 3; FG = 2;
+  HDR_R  = Math.max(22, Math.round(FW * 0.28)); // rayon cercle BUS
+  TOTAL_W = FW + POLE_MARGIN + POLE_W + POLE_MARGIN + FW;
 }
 
 function ficheHTML(line, sec) {
@@ -171,14 +161,14 @@ function ficheHTML(line, sec) {
   const cell=v=>v==='x'
     ?`<div class="fiche-bar" style="width:${sq}px;height:${sq}px;"></div>`
     :`<div class="fiche-cell" style="width:${sq}px;height:${sq}px;">${ledSVG(v,sq)}</div>`;
-  const nfs=line.num.length>2?Math.round(FW*.22):Math.round(FW*.28);
+  const nfs=line.num.length>2?Math.round(FW*.22):Math.round(FW*.30);
   return `<div id="fiche-${line.num}" class="fiche" style="width:${FW}px;" onclick="onFicheTap('${line.num}')">
     <div class="fiche-top" style="background:${line.color};height:${FCH}px;">
       <span style="font-family:'Nunito',sans-serif;font-weight:900;font-size:${nfs}px;color:${line.text};line-height:1;">${line.num}</span>
     </div>
     <div class="fiche-bot" style="padding:${FP}px;gap:${FG}px;">
       ${cell(c1)}${cell(c2)}${cell(c3)}
-      <div class="fiche-min" style="width:${mz}px;height:${sq}px;font-size:${Math.max(9,Math.round(FW*.085))}px;">sec</div>
+      <div class="fiche-min" style="width:${mz}px;height:${sq}px;font-size:${Math.max(8,Math.round(FW*.075))}px;">sec</div>
     </div>
   </div>`;
 }
@@ -196,7 +186,7 @@ function updateFicheTimer(line, sec) {
     ?`<div class="fiche-bar" style="width:${sq}px;height:${sq}px;"></div>`
     :`<div class="fiche-cell" style="width:${sq}px;height:${sq}px;">${ledSVG(v,sq)}</div>`;
   const bot=el.querySelector('.fiche-bot');
-  if(bot) bot.innerHTML=`${cell(c1)}${cell(c2)}${cell(c3)}<div class="fiche-min" style="width:${mz}px;height:${sq}px;font-size:${Math.max(9,Math.round(FW*.085))}px;">sec</div>`;
+  if(bot) bot.innerHTML=`${cell(c1)}${cell(c2)}${cell(c3)}<div class="fiche-min" style="width:${mz}px;height:${sq}px;font-size:${Math.max(8,Math.round(FW*.075))}px;">sec</div>`;
 }
 
 /* ══ HEADER POTEAU ══ */
@@ -234,22 +224,79 @@ let tickId=null,busId=null;
 function shuffle(a){return [...a].sort(()=>Math.random()-.5);}
 function updScore(){document.getElementById('score').textContent=`${score} / ${round}`;}
 
-/* ══ RENDU PANNEAU ══ */
+/* ══ RENDU PANNEAU — structure design validé ══
+   [colG (fiches)] [poteau gris vertical] [colD (fiches)]
+   Header rond BUS centré sur le poteau en haut
+*/
 function renderPanneau() {
   calcFicheDims();
-  const pz=document.getElementById('panel-zone');
-  const r=Math.round(FW*0.13); // rayon du cercle header proportionnel
+  const pz = document.getElementById('panel-zone');
 
-  const fichesHTML=lines.map(l=>ficheHTML(l,timers[l.num])).join('');
+  // Séparer les lignes : 2 à gauche, reste à droite (max 3+3)
+  const left  = lines.slice(0, Math.ceil(lines.length / 2));
+  const right = lines.slice(Math.ceil(lines.length / 2));
 
-  // Hauteur poteau = espace restant dans panel-zone après panneau
-  // On le calcule après rendu — on met flex:1 sur le poteau
-  pz.innerHTML=`
-    <div id="panneau">
-      ${poleHeadSVG(r)}
-      <div id="panneau-fiches" style="width:${FW}px;">${fichesHTML}</div>
-    </div>
-    <div id="poteau" style="flex:1;min-height:12px;"></div>`;
+  const gap = 6; // gap entre fiches dans une colonne
+  const fichesColHTML = (arr) => arr.map(l => ficheHTML(l, timers[l.num])).join(`<div style="height:${gap}px;"></div>`);
+
+  // headerX : centre du disque BUS = centre du poteau
+  const headerX = FW + POLE_MARGIN + Math.floor(POLE_W / 2) - (HDR_R + 2);
+  const headerD  = (HDR_R + 2) * 2; // diameter du SVG
+
+  pz.innerHTML = `
+    <div id="poteau-wrap" style="
+      position:relative;
+      width:${TOTAL_W}px;
+      flex:1;
+      display:flex;
+      flex-direction:column;
+    ">
+      <!-- Header rond BUS centré sur le poteau -->
+      <div style="
+        position:absolute;
+        left:${headerX}px;
+        top:0;
+        z-index:3;
+      ">${poleHeadSVG(HDR_R)}</div>
+
+      <!-- Corps : colonnes + poteau -->
+      <div style="
+        display:flex;
+        align-items:flex-start;
+        margin-top:${Math.round(headerD * 0.6)}px;
+        flex:1;
+      ">
+        <!-- Colonne gauche -->
+        <div style="
+          width:${FW}px;
+          display:flex;
+          flex-direction:column;
+          gap:${gap}px;
+          flex-shrink:0;
+        ">${fichesColHTML(left)}</div>
+
+        <!-- Poteau gris vertical -->
+        <div style="
+          width:${POLE_W}px;
+          margin:0 ${POLE_MARGIN}px;
+          flex:1;
+          background:linear-gradient(to right,#4e4e4e,#909090,#4e4e4e);
+          border-radius:${Math.round(POLE_W/2)}px;
+          flex-shrink:0;
+          align-self:stretch;
+          min-height:60px;
+        "></div>
+
+        <!-- Colonne droite -->
+        <div style="
+          width:${FW}px;
+          display:flex;
+          flex-direction:column;
+          gap:${gap}px;
+          flex-shrink:0;
+        ">${fichesColHTML(right)}</div>
+      </div>
+    </div>`;
 }
 
 /* ══ INIT ROUND ══ */

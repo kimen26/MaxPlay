@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dev Lab – MaxPlay</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    :root {
+      --bg: #0d1117;
+      --surface: #161b22;
+      --border: #30363d;
+      --text: #c9d1d9;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+      --green: #3fb950;
+      --red: #f85149;
+      --yellow: #d29922;
+      --purple: #a371f7;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100dvh;
+      padding: 16px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    header a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 1.4rem;
+    }
+    header h1 {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--text);
+    }
+    header .tag {
+      margin-left: auto;
+      background: #e94560;
+      color: #fff;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 900;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .tab-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .tab-btn.active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #0d1117;
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* Cards */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+    .card h2 {
+      font-size: 1rem;
+      font-weight: 900;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+    .kv-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.82rem;
+    }
+    .kv-row:last-child { border-bottom: none; }
+    .kv-key { color: var(--muted); }
+    .kv-val { color: var(--text); font-weight: 700; }
+    .kv-val.ok  { color: var(--green); }
+    .kv-val.warn { color: var(--yellow); }
+    .kv-val.bad  { color: var(--red); }
+
+    /* Gamepad */
+    #gamepad-status {
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 700;
+      text-align: center;
+      background: #1c2128;
+      border: 1px dashed var(--border);
+    }
+    .gamepad-connected { border-color: var(--green) !important; color: var(--green); }
+
+    .gamepad-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+    .btn-state {
+      background: #1c2128;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px;
+      font-size: 0.75rem;
+      text-align: center;
+      transition: all 0.1s;
+    }
+    .btn-state.pressed {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #0d1117;
+      font-weight: 900;
+    }
+    .axis-bar {
+      width: 100%;
+      height: 8px;
+      background: #1c2128;
+      border-radius: 4px;
+      margin: 4px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .axis-fill {
+      position: absolute;
+      top: 0; bottom: 0;
+      background: var(--purple);
+      border-radius: 4px;
+      transition: left 0.05s, width 0.05s;
+    }
+
+    /* Animation lab */
+    .anim-stage {
+      background: #1c2128;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      min-height: 140px;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .anim-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .anim-btn {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-family: 'Nunito', sans-serif;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .anim-btn:hover { background: var(--border); }
+    .anim-btn.running { background: var(--green); color: #0d1117; border-color: var(--green); }
+
+    /* FPS counter */
+    #fps-display {
+      position: fixed;
+      bottom: 16px;
+      right: 16px;
+      background: rgba(0,0,0,0.7);
+      color: var(--green);
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 0.8rem;
+      pointer-events: none;
+    }
+
+    /* Screen info */
+    #orientation-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 900;
+      background: var(--purple);
+      color: #fff;
+      margin-left: 8px;
+    }
+
+    /* Projector preview */
+    .projector-frame {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: #000;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+    .projector-frame .frame-label {
+      position: absolute;
+      top: 8px; left: 12px;
+      color: rgba(255,255,255,0.4);
+      font-size: 0.7rem;
+    }
+    .safe-zone {
+      position: absolute;
+      border: 1px dashed rgba(255,255,255,0.2);
+      border-radius: 4px;
+    }
+
+    .note {
+      background: rgba(210,153,34,0.1);
+      border: 1px solid var(--yellow);
+      border-radius: 8px;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      color: var(--yellow);
+      margin-bottom: 10px;
+    }
+
+    @keyframes busRoll {
+      from { transform: translateX(-120px); }
+      to   { transform: translateX(calc(100% + 120px)); }
+    }
+    @keyframes bounce {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-20px); }
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @keyframes pulse {
+      0%,100% { transform: scale(1); opacity: 1; }
+      50%      { transform: scale(1.2); opacity: 0.7; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html">←</a>
+  <h1>🔬 Dev Lab</h1>
+  <span class="tag">DEV</span>
+</header>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="device">📱 Appareil</button>
+  <button class="tab-btn" data-tab="gamepad">🕹️ Manette</button>
+  <button class="tab-btn" data-tab="anim">✨ Animations</button>
+  <button class="tab-btn" data-tab="screen">📺 Projecteur</button>
+</div>
+
+<!-- TAB: Appareil -->
+<div class="tab-panel active" id="tab-device">
+  <div class="card">
+    <h2>📱 Écran</h2>
+    <div class="kv-row"><span class="kv-key">Résolution physique</span><span class="kv-val" id="d-res"></span></div>
+    <div class="kv-row"><span class="kv-key">CSS pixels</span><span class="kv-val" id="d-css"></span></div>
+    <div class="kv-row"><span class="kv-key">Device Pixel Ratio</span><span class="kv-val" id="d-dpr"></span></div>
+    <div class="kv-row"><span class="kv-key">Orientation</span><span class="kv-val" id="d-orient"></span></div>
+    <div class="kv-row"><span class="kv-key">Touch points max</span><span class="kv-val" id="d-touch"></span></div>
+    <div class="kv-row"><span class="kv-key">Viewport height</span><span class="kv-val" id="d-vh"></span></div>
+  </div>
+  <div class="card">
+    <h2>⚡ Capacités</h2>
+    <div class="kv-row"><span class="kv-key">Gamepad API</span><span class="kv-val" id="c-gamepad"></span></div>
+    <div class="kv-row"><span class="kv-key">Web Audio</span><span class="kv-val" id="c-audio"></span></div>
+    <div class="kv-row"><span class="kv-key">Speech Synthesis (TTS)</span><span class="kv-val" id="c-tts"></span></div>
+    <div class="kv-row"><span class="kv-key">Vibration</span><span class="kv-val" id="c-vib"></span></div>
+    <div class="kv-row"><span class="kv-key">Fullscreen</span><span class="kv-val" id="c-fs"></span></div>
+    <div class="kv-row"><span class="kv-key">Pointer Events</span><span class="kv-val" id="c-pe"></span></div>
+  </div>
+  <div class="card">
+    <h2>🌐 Navigateur</h2>
+    <div class="kv-row"><span class="kv-key">User Agent</span><span class="kv-val" id="d-ua" style="font-size:0.7rem;max-width:60%;text-align:right;word-break:break-all;"></span></div>
+    <div class="kv-row"><span class="kv-key">Connexion</span><span class="kv-val" id="d-conn"></span></div>
+  </div>
+  <button class="anim-btn" onclick="testVibration()">📳 Test vibration</button>
+</div>
+
+<!-- TAB: Manette -->
+<div class="tab-panel" id="tab-gamepad">
+  <div class="card">
+    <h2>🕹️ 8BitDo / Manette</h2>
+    <div id="gamepad-status">En attente de connexion… Connecte ta manette et appuie sur un bouton.</div>
+    <div id="gamepad-info" style="display:none;">
+      <div class="kv-row" style="margin-top:10px;"><span class="kv-key">ID</span><span class="kv-val" id="gp-id" style="font-size:0.72rem;text-align:right;max-width:65%;word-break:break-all;"></span></div>
+      <div class="kv-row"><span class="kv-key">Boutons</span><span class="kv-val" id="gp-btns"></span></div>
+      <div class="kv-row"><span class="kv-key">Axes</span><span class="kv-val" id="gp-axes"></span></div>
+      <div class="kv-row"><span class="kv-key">Mapping</span><span class="kv-val" id="gp-mapping"></span></div>
+    </div>
+    <div id="gamepad-buttons" class="gamepad-grid" style="margin-top:12px;"></div>
+    <div id="gamepad-axes-section" style="margin-top:12px;display:none;">
+      <div style="font-size:0.8rem;color:var(--muted);margin-bottom:8px;">Axes (joysticks)</div>
+      <div id="gamepad-axes-bars"></div>
+    </div>
+  </div>
+  <div class="note">
+    💡 Mapping standard : A=Confirmer · B=Retour · D-pad=Navigation<br>
+    La manette 8BitDo FC30 Pro doit être en mode « Android » (bouton Home long) pour le mapping standard.
+  </div>
+</div>
+
+<!-- TAB: Animations -->
+<div class="tab-panel" id="tab-anim">
+  <div class="card">
+    <h2>✨ Scène d'animation</h2>
+    <div class="anim-stage" id="anim-stage">
+      <div id="anim-actor" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:3rem;">🚌</div>
+    </div>
+    <div class="anim-controls">
+      <button class="anim-btn" id="btn-roll" onclick="playAnim('roll')">🚌 Défilement</button>
+      <button class="anim-btn" id="btn-bounce" onclick="playAnim('bounce')">⬆️ Rebond</button>
+      <button class="anim-btn" id="btn-spin" onclick="playAnim('spin')">🔄 Rotation</button>
+      <button class="anim-btn" id="btn-pulse" onclick="playAnim('pulse')">💥 Pulse</button>
+      <button class="anim-btn" onclick="stopAnim()">⏹ Stop</button>
+    </div>
+    <div class="anim-controls">
+      <button class="anim-btn" onclick="setActor('🚌')">🚌</button>
+      <button class="anim-btn" onclick="setActor('⚡')">⚡</button>
+      <button class="anim-btn" onclick="setActor('🎯')">🎯</button>
+      <button class="anim-btn" onclick="setActor('⭐')">⭐</button>
+      <button class="anim-btn" onclick="setActor('🐾')">🐾</button>
+    </div>
+  </div>
+  <div class="card">
+    <h2>📊 Perf</h2>
+    <div class="kv-row"><span class="kv-key">FPS live</span><span class="kv-val" id="fps-val">–</span></div>
+    <div class="kv-row"><span class="kv-key">Animations CSS GPU</span><span class="kv-val ok">transform / opacity uniquement</span></div>
+    <div class="kv-row"><span class="kv-key">will-change test</span><span class="kv-val" id="wc-test"></span></div>
+  </div>
+</div>
+
+<!-- TAB: Projecteur -->
+<div class="tab-panel" id="tab-screen">
+  <div class="card">
+    <h2>📺 Prévisualisation 16:9</h2>
+    <div class="projector-frame" id="proj-frame">
+      <span class="frame-label">1920×1080 — Zone de jeu simulée</span>
+      <!-- Zone sûre inset 5% -->
+      <div class="safe-zone" id="safe-zone"></div>
+      <div style="color:rgba(255,255,255,0.3);font-size:1.5rem;text-align:center;">
+        <div>📺</div>
+        <div style="font-size:0.7rem;margin-top:6px;">Zone sûre affichée en pointillés</div>
+      </div>
+    </div>
+    <button class="anim-btn" onclick="goFullscreen()">⛶ Plein écran</button>
+    <button class="anim-btn" style="margin-left:8px;" onclick="openCastGuide()">📡 Guide Chromecast</button>
+  </div>
+  <div class="card">
+    <h2>🖥️ Conseils grand écran</h2>
+    <div class="kv-row"><span class="kv-key">Résolution cible</span><span class="kv-val">1920×1080 (1080p)</span></div>
+    <div class="kv-row"><span class="kv-key">Ratio jeu</span><span class="kv-val">16:9 — safe zone 90%</span></div>
+    <div class="kv-row"><span class="kv-key">Taille min tap</span><span class="kv-val ok">80px (OK télécommande)</span></div>
+    <div class="kv-row"><span class="kv-key">Police min</span><span class="kv-val">clamp(1.2rem, 2vw, 2rem)</span></div>
+    <div class="kv-row"><span class="kv-key">Chromecast tab</span><span class="kv-val ok">Chrome → Caster l'onglet</span></div>
+  </div>
+  <div class="note">
+    📡 <strong>Chromecast :</strong> Chrome → menu ⋮ → Diffuser → Caster l'onglet. Le jeu tourne dans le navigateur, le Chromecast reçoit le stream vidéo. Pas besoin de code spécifique.<br><br>
+    🕹️ <strong>Manette + Projecteur :</strong> La manette reste connectée au téléphone/PC. Le jeu doit gérer les événements <code>gamepadconnected</code> + loop <code>requestAnimationFrame</code>.
+  </div>
+</div>
+
+<div id="fps-display">FPS: –</div>
+
+<script>
+/* ─── Tabs ─── */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+/* ─── Device Info ─── */
+function updateDeviceInfo() {
+  const dpr = window.devicePixelRatio || 1;
+  document.getElementById('d-res').textContent    = `${Math.round(window.screen.width * dpr)} × ${Math.round(window.screen.height * dpr)} px`;
+  document.getElementById('d-css').textContent    = `${window.screen.width} × ${window.screen.height}`;
+  document.getElementById('d-dpr').textContent    = dpr.toFixed(2);
+  document.getElementById('d-touch').textContent  = navigator.maxTouchPoints || 0;
+  document.getElementById('d-vh').textContent     = `${window.innerHeight}px (dvh: ${CSS.supports('height','1dvh') ? 'oui' : 'non'})`;
+  const orient = screen.orientation ? screen.orientation.type : 'unknown';
+  document.getElementById('d-orient').textContent = orient;
+  document.getElementById('d-ua').textContent     = navigator.userAgent;
+  const conn = navigator.connection;
+  document.getElementById('d-conn').textContent   = conn ? `${conn.effectiveType || '?'} — ${conn.downlink || '?'} Mbps` : 'N/A';
+
+  const okBad = (ok) => `<span class="kv-val ${ok ? 'ok' : 'bad'}">${ok ? '✓ Oui' : '✗ Non'}</span>`;
+  document.getElementById('c-gamepad').innerHTML  = okBad('getGamepads' in navigator);
+  document.getElementById('c-audio').innerHTML    = okBad(typeof AudioContext !== 'undefined' || typeof webkitAudioContext !== 'undefined');
+  document.getElementById('c-tts').innerHTML      = okBad('speechSynthesis' in window);
+  document.getElementById('c-vib').innerHTML      = okBad('vibrate' in navigator);
+  document.getElementById('c-fs').innerHTML       = okBad(document.documentElement.requestFullscreen != null);
+  document.getElementById('c-pe').innerHTML       = okBad(typeof PointerEvent !== 'undefined');
+  document.getElementById('wc-test').innerHTML    = '<span class="kv-val ok">Supporté</span>';
+}
+updateDeviceInfo();
+window.addEventListener('resize', updateDeviceInfo);
+
+function testVibration() {
+  if ('vibrate' in navigator) { navigator.vibrate([100, 50, 100]); }
+}
+
+/* ─── FPS Counter ─── */
+let fps = 0, fpsFrames = 0, fpsLast = performance.now();
+function fpsLoop(ts) {
+  fpsFrames++;
+  if (ts - fpsLast >= 1000) {
+    fps = fpsFrames;
+    fpsFrames = 0;
+    fpsLast = ts;
+    const color = fps >= 55 ? '#3fb950' : fps >= 30 ? '#d29922' : '#f85149';
+    document.getElementById('fps-display').textContent = `FPS: ${fps}`;
+    document.getElementById('fps-display').style.color = color;
+    document.getElementById('fps-val').textContent = fps;
+    document.getElementById('fps-val').className = `kv-val ${fps >= 55 ? 'ok' : fps >= 30 ? 'warn' : 'bad'}`;
+  }
+  requestAnimationFrame(fpsLoop);
+}
+requestAnimationFrame(fpsLoop);
+
+/* ─── Animations ─── */
+const actor = document.getElementById('anim-actor');
+let animInterval = null;
+
+function setActor(emoji) { actor.textContent = emoji; }
+
+function stopAnim() {
+  actor.style.animation = 'none';
+  actor.style.position = 'absolute';
+  actor.style.top = '50%';
+  actor.style.left = '50%';
+  actor.style.transform = 'translate(-50%,-50%)';
+  document.querySelectorAll('.anim-btn[id^="btn-"]').forEach(b => b.classList.remove('running'));
+}
+
+function playAnim(type) {
+  stopAnim();
+  const btn = document.getElementById('btn-' + type);
+  if (btn) btn.classList.add('running');
+  if (type === 'roll') {
+    actor.style.position = 'absolute';
+    actor.style.top = '50%';
+    actor.style.left = '0';
+    actor.style.transform = 'translateY(-50%)';
+    actor.style.animation = 'busRoll 2s linear infinite';
+  } else if (type === 'bounce') {
+    actor.style.animation = 'bounce 0.6s ease-in-out infinite';
+  } else if (type === 'spin') {
+    actor.style.animation = 'spin 1s linear infinite';
+  } else if (type === 'pulse') {
+    actor.style.animation = 'pulse 0.5s ease-in-out infinite';
+  }
+}
+
+/* ─── Gamepad ─── */
+const BUTTON_LABELS = [
+  'A','B','X','Y','LB','RB','LT','RT','Select','Start',
+  'L3','R3','↑','↓','←','→','Home','–','–','–'
+];
+let gamepadLoop = null;
+
+window.addEventListener('gamepadconnected', (e) => {
+  document.getElementById('gamepad-status').textContent = `✅ Connecté : ${e.gamepad.id}`;
+  document.getElementById('gamepad-status').classList.add('gamepad-connected');
+  document.getElementById('gamepad-info').style.display = 'block';
+  startGamepadLoop();
+});
+window.addEventListener('gamepaddisconnected', () => {
+  document.getElementById('gamepad-status').textContent = 'Manette déconnectée.';
+  document.getElementById('gamepad-status').classList.remove('gamepad-connected');
+  document.getElementById('gamepad-info').style.display = 'none';
+  if (gamepadLoop) cancelAnimationFrame(gamepadLoop);
+});
+
+function startGamepadLoop() {
+  function loop() {
+    const gps = navigator.getGamepads ? navigator.getGamepads() : [];
+    const gp = gps[0];
+    if (!gp) { gamepadLoop = requestAnimationFrame(loop); return; }
+
+    document.getElementById('gp-id').textContent      = gp.id;
+    document.getElementById('gp-btns').textContent    = gp.buttons.length;
+    document.getElementById('gp-axes').textContent    = gp.axes.length;
+    document.getElementById('gp-mapping').textContent = gp.mapping || 'none';
+
+    // Buttons
+    const grid = document.getElementById('gamepad-buttons');
+    if (grid.children.length !== gp.buttons.length) {
+      grid.innerHTML = '';
+      gp.buttons.forEach((_, i) => {
+        const el = document.createElement('div');
+        el.className = 'btn-state';
+        el.id = `gbtn-${i}`;
+        el.textContent = BUTTON_LABELS[i] || `B${i}`;
+        grid.appendChild(el);
+      });
+    }
+    gp.buttons.forEach((btn, i) => {
+      const el = document.getElementById(`gbtn-${i}`);
+      if (el) el.classList.toggle('pressed', btn.pressed);
+    });
+
+    // Axes
+    const axSec = document.getElementById('gamepad-axes-section');
+    const axBars = document.getElementById('gamepad-axes-bars');
+    if (gp.axes.length > 0) {
+      axSec.style.display = 'block';
+      if (axBars.children.length !== gp.axes.length) {
+        axBars.innerHTML = '';
+        gp.axes.forEach((_, i) => {
+          const label = ['LX','LY','RX','RY'][i] || `A${i}`;
+          const wrap = document.createElement('div');
+          wrap.style.marginBottom = '6px';
+          wrap.innerHTML = `<div style="font-size:0.75rem;color:var(--muted)">${label}</div>
+            <div class="axis-bar"><div class="axis-fill" id="axis-fill-${i}"></div></div>
+            <div style="font-size:0.7rem;text-align:right;color:var(--muted)" id="axis-val-${i}">0.00</div>`;
+          axBars.appendChild(wrap);
+        });
+      }
+      gp.axes.forEach((val, i) => {
+        const fill = document.getElementById(`axis-fill-${i}`);
+        const label = document.getElementById(`axis-val-${i}`);
+        if (fill) {
+          const pct = (val + 1) / 2 * 100;
+          fill.style.left = '0';
+          fill.style.width = pct + '%';
+          fill.style.opacity = Math.abs(val) > 0.05 ? '1' : '0.2';
+        }
+        if (label) label.textContent = val.toFixed(3);
+      });
+    }
+
+    gamepadLoop = requestAnimationFrame(loop);
+  }
+  gamepadLoop = requestAnimationFrame(loop);
+}
+
+/* ─── Projector ─── */
+function updateSafeZone() {
+  const frame = document.getElementById('proj-frame');
+  const safe  = document.getElementById('safe-zone');
+  const w = frame.offsetWidth, h = frame.offsetHeight;
+  const inset = 0.05;
+  safe.style.left   = (w * inset) + 'px';
+  safe.style.top    = (h * inset) + 'px';
+  safe.style.width  = (w * (1 - 2*inset)) + 'px';
+  safe.style.height = (h * (1 - 2*inset)) + 'px';
+}
+window.addEventListener('resize', updateSafeZone);
+setTimeout(updateSafeZone, 100);
+
+function goFullscreen() {
+  document.documentElement.requestFullscreen().catch(e => alert('Fullscreen refusé : ' + e.message));
+}
+
+function openCastGuide() {
+  alert('Chromecast :\n1. Ouvre Chrome\n2. Menu ⋮ → Diffuser\n3. Sélectionne ta source Chromecast\n4. "Caster l\'onglet"\n\nLe jeu tourne dans ton navigateur — le Chromecast reçoit le stream. Aucun code requis côté jeu.');
+}
+</script>
+</body>
+</html>

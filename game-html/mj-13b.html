@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<title>MJ-13b – Monte dans le bon bus !</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+html, body {
+  width:100%; height:100dvh; overflow:hidden;
+  font-family:'Nunito',sans-serif; background:#1a1a2e;
+  display:flex; flex-direction:column;
+}
+#hdr {
+  flex-shrink:0; height:48px;
+  background:#0a0a1e; border-bottom:2px solid #2a2a4a;
+  display:flex; align-items:center; padding:0 12px; gap:10px; z-index:10;
+}
+#hdr button {
+  background:#2a2a4a; border:none; border-radius:10px;
+  color:#fff; font-family:'Nunito',sans-serif; font-weight:900;
+  font-size:0.95rem; padding:6px 14px; cursor:pointer;
+}
+#score { margin-left:auto; font-weight:900; font-size:1rem; color:#ffe066;
+  background:#2a2a4a; border-radius:10px; padding:4px 14px; }
+#panel-zone {
+  flex:1; overflow:hidden;
+  display:flex; flex-direction:column; align-items:center;
+  justify-content:flex-start; padding:6px 0 0;
+  background:linear-gradient(180deg,#131320 0%,#1e1e30 60%,#252520 100%);
+  position:relative;
+}
+.fiche-target { box-shadow: 0 0 0 3px #ffe066 !important; animation:pulse 0.8s ease infinite alternate; }
+@keyframes pulse { from { box-shadow:0 0 0 3px #ffe066; } to { box-shadow:0 0 0 6px #ffa500; } }
+#road {
+  flex-shrink:0; height:72px;
+  background:#2a2a2a; position:relative; overflow:hidden;
+}
+#road-kerb {
+  position:absolute; top:0; left:0; right:0; height:5px;
+  background:repeating-linear-gradient(90deg,#fff 0,#fff 20px,#e3051c 20px,#e3051c 40px);
+}
+#road-lane {
+  position:absolute; top:30px; left:0; right:0; height:4px;
+  background:repeating-linear-gradient(90deg,#f0c040 0,#f0c040 36px,transparent 36px,transparent 72px);
+  animation:scroll 0.5s linear infinite;
+}
+@keyframes scroll { to { background-position:-72px 0; } }
+.bus-anim { position:absolute; bottom:6px; will-change:left; }
+#q-bar {
+  flex-shrink:0; min-height:68px;
+  background:#080820; border-top:2px solid #2a2a4a;
+  display:flex; align-items:center; justify-content:center;
+  flex-wrap:wrap; gap:8px; padding:10px 14px;
+}
+.q-text { font-size:1.05rem; font-weight:900; color:#fff; text-align:center; line-height:1.4; }
+.fiche { border-radius:6px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.9);
+  cursor:pointer; user-select:none; touch-action:manipulation; }
+.fiche:active { opacity:0.75; }
+.fiche-top { display:flex; align-items:center; justify-content:center; }
+.fiche-bot { background:#080808; display:flex; align-items:center; }
+.fiche-cell { background:#141414; border-radius:3px; display:flex; align-items:center; justify-content:center; flex-shrink:0; overflow:hidden; }
+.fiche-bar  { background:#141414; border-radius:3px; flex-shrink:0; }
+.fiche-min  { display:flex; align-items:center; justify-content:center; flex-shrink:0;
+              font-family:'Nunito',sans-serif; font-weight:900; color:#aaa; }
+</style>
+</head>
+<body>
+
+<div id="hdr">
+  <button onclick="location.href='index.html'">← Retour</button>
+  <span style="font-weight:900;color:#fff;">🚌 Monte dans le bus !</span>
+  <div id="score">0 / 0</div>
+</div>
+
+<div id="panel-zone"></div>
+
+<div id="road">
+  <div id="road-kerb"></div>
+  <div id="road-lane"></div>
+</div>
+
+<div id="q-bar">
+  <div class="q-text" id="q-text">Chargement…</div>
+</div>
+
+<script src="js/bus-svg.js"></script>
+<script src="js/sounds.js"></script>
+<script src="js/victory-sounds.js"></script>
+<script>
+/* ══ LED ══ */
+const DIGITS={
+  '0':[1,1,1,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,1,1,1],
+  '1':[0,0,1,0,0,1,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,1,1,1],
+  '2':[1,1,1,1,0,0,0,1,0,0,0,1,1,1,1,1,1,0,0,0,1,0,0,0,1,1,1,1],
+  '3':[1,1,1,1,0,0,0,1,0,0,0,1,0,1,1,1,0,0,0,1,0,0,0,1,1,1,1,1],
+  '4':[1,0,0,1,1,0,0,1,1,0,0,1,1,1,1,1,0,0,0,1,0,0,0,1,0,0,0,1],
+  '5':[1,1,1,1,1,0,0,0,1,0,0,0,1,1,1,1,0,0,0,1,0,0,0,1,1,1,1,1],
+  '6':[1,1,1,1,1,0,0,0,1,0,0,0,1,1,1,1,1,0,0,1,1,0,0,1,1,1,1,1],
+  '7':[1,1,1,1,0,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0],
+  '8':[1,1,1,1,1,0,0,1,1,0,0,1,1,1,1,1,1,0,0,1,1,0,0,1,1,1,1,1],
+  '9':[1,1,1,1,1,0,0,1,1,0,0,1,1,1,1,1,0,0,0,1,0,0,0,1,1,1,1,1],
+};
+function ledSVG(ch,sq){
+  const c=4,r=7,ds=Math.min(sq*.80/(r+(r-1)*.28),sq*.70/(c+(c-1)*.28)),g=ds*.28;
+  const W=c*ds+(c-1)*g,H=r*ds+(r-1)*g,bits=DIGITS[ch]||DIGITS['0'];
+  let d='';
+  bits.forEach((b,i)=>{const row=Math.floor(i/c),col=i%c,x=col*(ds+g),y=row*(ds+g),rv=ds/2;
+    d+=`<circle cx="${(x+rv).toFixed(1)}" cy="${(y+rv).toFixed(1)}" r="${rv.toFixed(1)}" fill="${b?'#e8e8e8':'#1e1e1e'}"/>`;});
+  return `<svg width="${sq}" height="${sq}" viewBox="0 0 ${sq} ${sq}" xmlns="http://www.w3.org/2000/svg" style="display:block;"><g transform="translate(${((sq-W)/2).toFixed(1)},${((sq-H)/2).toFixed(1)})">${d}</g></svg>`;
+}
+
+/* ══ DIMS ══ */
+let FW,FCH,FP,FG,POLE_W,POLE_MARGIN,TOTAL_W,HDR_R;
+function calcDims(){
+  const sw=window.innerWidth;
+  POLE_W=Math.max(10,Math.round(sw*.035));
+  POLE_MARGIN=Math.max(5,Math.round(sw*.015));
+  FW=Math.min(Math.floor(sw/2-POLE_W/2-POLE_MARGIN-4),180);
+  FW=Math.max(FW,80);
+  FCH=Math.round(FW*.42); FP=3; FG=2;
+  HDR_R=Math.max(22,Math.round(FW*.28));
+  TOTAL_W=FW+POLE_MARGIN+POLE_W+POLE_MARGIN+FW;
+}
+
+/* ══ FICHE HTML ══ */
+function ficheHTML(line,sec,isTarget){
+  const iw=FW-FP*2,cz=Math.floor(iw*.667),mz=iw-cz,sq=Math.floor((cz-FG*2)/3);
+  const s=Math.max(0,Math.round(Math.min(sec,99)));
+  const str=String(s);
+  let c1,c2,c3;
+  if(str.length===1){c1='x';c2='x';c3=str[0];}else{c1='x';c2=str[0];c3=str[1];}
+  const cell=v=>v==='x'
+    ?`<div class="fiche-bar" style="width:${sq}px;height:${sq}px;"></div>`
+    :`<div class="fiche-cell" style="width:${sq}px;height:${sq}px;">${ledSVG(v,sq)}</div>`;
+  const nfs=line.num.length>2?Math.round(FW*.20):Math.round(FW*.30);
+  const cls=isTarget?'fiche fiche-target':'fiche';
+  return `<div id="fiche-${line.num}" class="${cls}" style="width:${FW}px;" onclick="onFicheTap('${line.num}')">
+    <div class="fiche-top" style="background:${line.color};height:${FCH}px;">
+      <span style="font-family:'Nunito',sans-serif;font-weight:900;font-size:${nfs}px;color:${line.textColor};line-height:1;">${line.num}</span>
+    </div>
+    <div class="fiche-bot" style="padding:${FP}px;gap:${FG}px;">
+      ${cell(c1)}${cell(c2)}${cell(c3)}
+      <div class="fiche-min" style="width:${mz}px;height:${sq}px;font-size:${Math.max(8,Math.round(FW*.075))}px;">min</div>
+    </div>
+  </div>`;
+}
+
+function updateFicheTimer(line,sec){
+  const el=document.getElementById(`fiche-${line.num}`);
+  if(!el)return;
+  const iw=FW-FP*2,cz=Math.floor(iw*.667),mz=iw-cz,sq=Math.floor((cz-FG*2)/3);
+  const s=Math.max(0,Math.round(Math.min(sec,99)));
+  const str=String(s);
+  let c1,c2,c3;
+  if(str.length===1){c1='x';c2='x';c3=str[0];}else{c1='x';c2=str[0];c3=str[1];}
+  const cell=v=>v==='x'
+    ?`<div class="fiche-bar" style="width:${sq}px;height:${sq}px;"></div>`
+    :`<div class="fiche-cell" style="width:${sq}px;height:${sq}px;">${ledSVG(v,sq)}</div>`;
+  const bot=el.querySelector('.fiche-bot');
+  if(bot)bot.innerHTML=`${cell(c1)}${cell(c2)}${cell(c3)}<div class="fiche-min" style="width:${mz}px;height:${sq}px;font-size:${Math.max(8,Math.round(FW*.075))}px;">min</div>`;
+}
+
+/* ══ POTEAU SVG ══ */
+function poleHeadSVG(r){
+  const cx=r+2,cy=r+2,w=(r+2)*2,h=w,ly=cy+Math.round(r*.38);
+  return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">
+    <defs><clipPath id="cc"><circle cx="${cx}" cy="${cy}" r="${r}"/></clipPath></defs>
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="#6a6a6a"/>
+    <rect x="0" y="${ly+3}" width="${w}" height="${h}" fill="#00c5a0" clip-path="url(#cc)"/>
+    <rect x="0" y="${ly}" width="${w}" height="3" fill="#fff" clip-path="url(#cc)"/>
+    <text x="${cx}" y="${ly-Math.round(r*.28)}" text-anchor="middle" dominant-baseline="middle"
+      font-family="Nunito,sans-serif" font-weight="900" font-size="${Math.round(r*.55)}" fill="#fff" letter-spacing="1">BUS</text>
+  </svg>`;
+}
+
+/* ══ TOUTES LES LIGNES (source: data.js / ratp-colors.json) ══ */
+const ALL_LINES=[
+  {num:'162',  color:'#0064B1', textColor:'#fff'},
+  {num:'172',  color:'#008C59', textColor:'#fff'},
+  {num:'185',  color:'#F58443', textColor:'#333'},
+  {num:'380',  color:'#75CE89', textColor:'#333'},
+  {num:'286',  color:'#C9A2CD', textColor:'#333'},
+  {num:'323',  color:'#CEC92A', textColor:'#333'},
+  {num:'125',  color:'#006EB8', textColor:'#fff'},
+  {num:'131',  color:'#8D653A', textColor:'#fff'},
+  {num:'132',  color:'#652C90', textColor:'#fff'},
+  {num:'2234', color:'#652C90', textColor:'#fff'},
+  {num:'184',  color:'#DCAC27', textColor:'#333'},
+  {num:'186',  color:'#B43C95', textColor:'#fff'},
+  {num:'47',   color:'#FF82B4', textColor:'#333'},
+  {num:'180',  color:'#9B9839', textColor:'#fff'},
+  {num:'N15',  color:'#000091', textColor:'#fff'},
+  {num:'N22',  color:'#000091', textColor:'#fff'},
+  {num:'V2',   color:'#E91E63', textColor:'#fff'},
+  {num:'V3',   color:'#FFC107', textColor:'#333'},
+  {num:'V4',   color:'#9C27B0', textColor:'#fff'},
+  {num:'V5',   color:'#006633', textColor:'#fff'},
+  {num:'V6',   color:'#75CE89', textColor:'#333'},
+  {num:'V7',   color:'#E3051C', textColor:'#fff'},
+  {num:'T7',   color:'#704B1C', textColor:'#fff'},
+  {num:'M6',   color:'#6ECA97', textColor:'#333'},
+  {num:'M7',   color:'#FA9ABA', textColor:'#333'},
+];
+
+/* ══ ÉTAT ══ */
+const TOTAL=8;
+let lines=[],timers={};
+let targetNum='';
+let score=0,round=0,answered=false;
+let tickId=null,busId=null;
+
+function shuffle(a){return [...a].sort(()=>Math.random()-.5);}
+function updScore(){document.getElementById('score').textContent=`${score} / ${round}`;}
+
+/* ══ PANNEAU ══ */
+function renderPanneau(){
+  calcDims();
+  const pz=document.getElementById('panel-zone');
+  const left=lines.slice(0,Math.ceil(lines.length/2));
+  const right=lines.slice(Math.ceil(lines.length/2));
+  const gap=6;
+  const col=(arr)=>arr.map(l=>ficheHTML(l,timers[l.num],l.num===targetNum)).join(`<div style="height:${gap}px;"></div>`);
+  const headerX=FW+POLE_MARGIN+Math.floor(POLE_W/2)-(HDR_R+2);
+  const headerD=(HDR_R+2)*2;
+  pz.innerHTML=`
+    <div style="position:relative;width:${TOTAL_W}px;flex:1;display:flex;flex-direction:column;">
+      <div style="position:absolute;left:${headerX}px;top:0;z-index:3;">${poleHeadSVG(HDR_R)}</div>
+      <div style="display:flex;align-items:flex-start;margin-top:${Math.round(headerD*.6)}px;flex:1;">
+        <div style="width:${FW}px;display:flex;flex-direction:column;gap:${gap}px;flex-shrink:0;">${col(left)}</div>
+        <div style="width:${POLE_W}px;margin:0 ${POLE_MARGIN}px;background:linear-gradient(to right,#4e4e4e,#909090,#4e4e4e);border-radius:${Math.round(POLE_W/2)}px;flex-shrink:0;align-self:stretch;min-height:60px;"></div>
+        <div style="width:${FW}px;display:flex;flex-direction:column;gap:${gap}px;flex-shrink:0;">${col(right)}</div>
+      </div>
+    </div>`;
+}
+
+/* ══ INIT ROUND ══ */
+function initRound(){
+  if(round>=TOTAL){showVictory();return;}
+  answered=false;
+  stopAll();
+  const n=3+Math.floor(Math.random()*4);
+  lines=shuffle(ALL_LINES).slice(0,n);
+  const pool=shuffle([5,8,12,17,22,28,35,42,50]).slice(0,n);
+  timers={};
+  lines.forEach((l,i)=>timers[l.num]=pool[i]);
+  // Cible = aléatoire parmi les lignes
+  targetNum=lines[Math.floor(Math.random()*lines.length)].num;
+
+  renderPanneau();
+  renderQuestion();
+  startTick();
+  startBuses();
+}
+
+/* ══ QUESTION ══ */
+function renderQuestion(){
+  const tl=lines.find(l=>l.num===targetNum);
+  document.getElementById('q-text').innerHTML=
+    `Monte dans le <span style="background:${tl.color};color:${tl.textColor};border-radius:8px;padding:3px 16px;font-size:1.5rem;font-weight:900;">${tl.num}</span> !`;
+  tts(`Monte dans le ${tl.num} !`);
+}
+
+function tts(t){
+  if(!window.speechSynthesis)return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(t);
+  u.lang='fr-FR';u.rate=0.85;u.volume=0.9;
+  speechSynthesis.speak(u);
+}
+
+/* ══ TICK — toutes les 5s ══ */
+function startTick(){
+  if(tickId)clearInterval(tickId);
+  tickId=setInterval(()=>{
+    if(answered)return;
+    let frozenNum=null;
+    lines.forEach(l=>{
+      timers[l.num]=Math.max(0,timers[l.num]-1);
+      if(timers[l.num]===0)frozenNum=l.num;
+    });
+    if(frozenNum){
+      clearInterval(tickId);tickId=null;
+      lines.forEach(l=>updateFicheTimer(l,timers[l.num]));
+    } else {
+      lines.forEach(l=>updateFicheTimer(l,timers[l.num]));
+    }
+  },5000);
+}
+
+/* ══ BUS ══ */
+function spawnBus(){
+  const road=document.getElementById('road');
+  if(!road)return;
+  const W=window.innerWidth;
+  const busW=Math.min(90,Math.round(W*.26));
+  const line=lines[Math.floor(Math.random()*lines.length)];
+  const el=document.createElement('div');
+  el.className='bus-anim';
+  el.style.left=(W+10)+'px';
+  el.innerHTML=busSVG(line.color,line.textColor,line.num,busW);
+  road.appendChild(el);
+  let pos=W+10;
+  const mv=setInterval(()=>{
+    pos-=2.5;
+    el.style.left=pos+'px';
+    if(pos<-busW-20){clearInterval(mv);el.remove();}
+  },16);
+}
+function startBuses(){
+  if(busId)clearInterval(busId);
+  setTimeout(spawnBus,800);
+  busId=setInterval(spawnBus,4000+Math.random()*3000);
+}
+function stopAll(){
+  if(tickId)clearInterval(tickId);tickId=null;
+  if(busId)clearInterval(busId);busId=null;
+  document.querySelectorAll('.bus-anim').forEach(b=>b.remove());
+}
+
+/* ══ INTERACTION ══ */
+function onFicheTap(num){
+  if(answered)return;
+  answered=true;
+  document.getElementById('panel-zone').style.pointerEvents='none';
+  onAnswer(num===targetNum,num);
+}
+
+function onAnswer(correct,tappedNum){
+  round++;
+  if(correct)score++;
+  updScore();
+  stopAll();
+
+  const qb=document.getElementById('q-bar');
+  const qt=document.getElementById('q-text');
+  const tl=lines.find(l=>l.num===targetNum);
+
+  if(correct){
+    try{const ctx=getAudioContext(),o=ctx.createOscillator(),g=ctx.createGain();
+      o.connect(g);g.connect(ctx.destination);o.frequency.value=880;
+      g.gain.setValueAtTime(0.3,ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.001,ctx.currentTime+0.3);
+      o.start();o.stop(ctx.currentTime+0.3);}catch(e){}
+    qb.style.background='#1a4a1a';
+    qt.innerHTML=`<span style="color:#4CAF50;font-size:1.3rem;">✓ Bravo !</span>
+      <span style="background:${tl.color};color:${tl.textColor};border-radius:8px;padding:3px 14px;font-size:1.4rem;font-weight:900;margin-left:8px;">${tl.num}</span>`;
+  } else {
+    playErrorSound();
+    const tapped=lines.find(l=>l.num===tappedNum);
+    qb.style.background='#4a1a1a';
+    qt.innerHTML=`<span style="color:#e53935;font-size:1rem;">C'était le</span>
+      <span style="background:${tl.color};color:${tl.textColor};border-radius:8px;padding:3px 14px;font-size:1.4rem;font-weight:900;margin-left:6px;">${tl.num}</span>
+      <span style="color:#aaa;font-size:0.9rem;display:block;margin-top:2px;">pas le ${tappedNum}</span>`;
+  }
+  setTimeout(()=>{
+    qb.style.background='';
+    document.getElementById('panel-zone').style.pointerEvents='';
+    initRound();
+  },1800);
+}
+
+/* ══ VICTOIRE ══ */
+function showVictory(){
+  stopAll();
+  if(window.speechSynthesis)speechSynthesis.cancel();
+  playEndSound(score,TOTAL);
+  const stars=score>=7?'⭐⭐⭐':score>=5?'⭐⭐':'⭐';
+  const msg=score>=7?'Incroyable !':score>=5?'Bien joué !':'Continue !';
+  document.getElementById('panel-zone').innerHTML='';
+  document.getElementById('road').style.display='none';
+  document.getElementById('q-bar').style.cssText='flex-direction:column;height:100%;min-height:auto;';
+  document.getElementById('q-bar').innerHTML=`
+    <div style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:20px;width:100%;">
+      <div style="font-size:3rem;">${stars}</div>
+      <div style="font-size:1.8rem;font-weight:900;color:#ffe066;">${msg}</div>
+      <div style="font-size:1.1rem;color:#fff;">${score} / ${TOTAL} bonne${score>1?'s':''} réponse${score>1?'s':''}</div>
+      <button onclick="restart()" style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:900;padding:12px 32px;border-radius:14px;border:none;cursor:pointer;background:#ffe066;color:#111;">🔄 Rejouer</button>
+      <button onclick="location.href='index.html'" style="font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;padding:10px 24px;border-radius:12px;border:none;cursor:pointer;background:#2a2a4a;color:#fff;">← Menu</button>
+    </div>`;
+}
+function restart(){
+  score=0;round=0;
+  stopEndSound();
+  document.getElementById('road').style.display='';
+  document.getElementById('q-bar').style.cssText='';
+  initRound();
+}
+
+updScore();
+initRound();
+</script>
+</body>
+</html>

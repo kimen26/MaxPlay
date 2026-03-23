@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<title>Dino Lab – MaxPlay</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+html, body {
+  width:100%; height:100dvh; overflow:hidden;
+  font-family:'Nunito',sans-serif;
+  background:linear-gradient(135deg,#1a0a2e,#0a1a2e);
+  display:flex; flex-direction:column;
+}
+
+/* ── Header ── */
+#hdr {
+  flex-shrink:0; height:48px; background:rgba(0,0,0,0.4);
+  border-bottom:2px solid rgba(255,255,255,0.1);
+  display:flex; align-items:center; padding:0 12px; gap:10px;
+}
+#hdr button {
+  background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2);
+  border-radius:10px; color:#fff; font-family:'Nunito',sans-serif;
+  font-weight:900; font-size:0.95rem; padding:6px 14px; cursor:pointer;
+}
+#hdr .title { font-weight:900; color:#fff; font-size:1rem; }
+#hdr .badge {
+  margin-left:auto; background:#e94560; color:#fff;
+  padding:2px 10px; border-radius:20px; font-size:0.75rem; font-weight:900;
+}
+
+/* ── Tabs ── */
+.tabs {
+  flex-shrink:0; display:flex; gap:0;
+  background:rgba(0,0,0,0.3); border-bottom:2px solid rgba(255,255,255,0.1);
+}
+.tab-btn {
+  flex:1; background:transparent; border:none;
+  color:rgba(255,255,255,0.6); font-family:'Nunito',sans-serif;
+  font-weight:900; font-size:0.82rem; padding:10px 4px; cursor:pointer;
+  border-bottom:3px solid transparent; transition:all 0.15s;
+}
+.tab-btn.active { color:#ffe066; border-bottom-color:#ffe066; }
+
+/* ── Content ── */
+.tab-panel { display:none; flex:1; overflow-y:auto; overflow-x:hidden; min-height:0; }
+.tab-panel.active { display:flex; flex-direction:column; }
+
+/* ── Galerie ── */
+#galerie-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(140px, 1fr));
+  gap:10px; padding:12px;
+}
+
+.dino-card {
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.12);
+  border-radius:14px; padding:12px 8px;
+  display:flex; flex-direction:column; align-items:center;
+  cursor:pointer; user-select:none; touch-action:manipulation;
+  transition:transform 0.15s, box-shadow 0.15s;
+  position:relative; overflow:hidden;
+}
+.dino-card:active { transform:scale(0.94); }
+.dino-card.bounce { animation:cardBounce 0.5s ease-out; }
+@keyframes cardBounce {
+  0%   { transform:scale(1) translateY(0); }
+  30%  { transform:scale(1.08) translateY(-14px); }
+  60%  { transform:scale(0.96) translateY(2px); }
+  100% { transform:scale(1) translateY(0); }
+}
+
+.dino-visual {
+  font-size:3.2rem; margin-bottom:6px; line-height:1;
+  display:flex; align-items:center; justify-content:center;
+  height:70px;
+}
+.dino-visual svg { filter:drop-shadow(0 2px 6px rgba(0,0,0,0.5)); }
+.dino-name { font-size:0.88rem; font-weight:900; color:#fff; text-align:center; margin-bottom:3px; }
+.dino-regime { font-size:0.7rem; color:rgba(255,255,255,0.6); text-align:center; }
+.dino-color-bar {
+  position:absolute; bottom:0; left:0; right:0; height:3px;
+}
+
+/* Modale info */
+#dino-modal {
+  display:none; position:fixed; inset:0; z-index:50;
+  background:rgba(0,0,0,0.85); align-items:center; justify-content:center;
+  padding:20px;
+}
+#dino-modal.open { display:flex; }
+.modal-card {
+  background:#1a1a2e; border:2px solid rgba(255,255,255,0.15);
+  border-radius:20px; padding:20px; max-width:340px; width:100%;
+  text-align:center; animation:modalIn 0.25s ease-out;
+}
+@keyframes modalIn { from { transform:scale(0.8); opacity:0; } to { transform:scale(1); opacity:1; } }
+.modal-emoji { font-size:4rem; margin-bottom:8px; }
+.modal-name { font-size:1.4rem; font-weight:900; color:#ffe066; margin-bottom:2px; }
+.modal-full { font-size:0.78rem; color:rgba(255,255,255,0.5); margin-bottom:10px; font-style:italic; }
+.modal-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px; }
+.modal-cell {
+  background:rgba(255,255,255,0.06); border-radius:8px;
+  padding:8px 6px; font-size:0.78rem; color:rgba(255,255,255,0.85);
+}
+.modal-cell strong { display:block; color:#ffe066; font-size:0.7rem; margin-bottom:2px; }
+.modal-fait {
+  background:rgba(255,230,100,0.1); border:1px solid rgba(255,230,100,0.3);
+  border-radius:10px; padding:10px; font-size:0.82rem; color:#ffe066;
+  line-height:1.5; margin-bottom:14px;
+}
+.modal-close {
+  background:#ffe066; border:none; border-radius:12px;
+  color:#1a1a2e; font-family:'Nunito',sans-serif; font-weight:900;
+  font-size:1rem; padding:10px 30px; cursor:pointer; width:100%;
+}
+
+/* ── Mini-jeu Google Dino ── */
+#jeu-panel {
+  padding:10px 12px; display:flex; flex-direction:column; gap:8px;
+}
+#game-info {
+  display:flex; align-items:center; justify-content:space-between;
+  padding:0 4px;
+}
+#score-display {
+  font-size:1.1rem; font-weight:900; color:#ffe066;
+}
+#best-display {
+  font-size:0.82rem; color:rgba(255,255,255,0.5); font-weight:700;
+}
+#game-container {
+  position:relative; touch-action:none;
+  border:2px solid rgba(255,255,255,0.15);
+  border-radius:14px; overflow:hidden;
+  background:linear-gradient(180deg,#1a2540 0%,#1a2540 65%,#2a2a2a 65%,#2a2a2a 100%);
+  cursor:pointer;
+}
+#game-canvas { display:block; width:100%; }
+#game-overlay {
+  position:absolute; inset:0; display:flex;
+  flex-direction:column; align-items:center; justify-content:center;
+  background:rgba(0,0,0,0.7); border-radius:12px;
+}
+#game-overlay .over-title { font-size:1.4rem; font-weight:900; color:#ffe066; margin-bottom:6px; }
+#game-overlay .over-sub   { font-size:0.88rem; color:rgba(255,255,255,0.7); margin-bottom:16px; }
+#game-overlay button {
+  background:#ffe066; border:none; border-radius:12px;
+  color:#1a1a2e; font-family:'Nunito',sans-serif; font-weight:900;
+  font-size:1rem; padding:10px 28px; cursor:pointer;
+}
+
+/* ── Idées ── */
+#idees-panel { padding:12px; display:flex; flex-direction:column; gap:10px; }
+.idee-card {
+  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
+  border-radius:14px; padding:14px; cursor:pointer;
+  transition:background 0.15s;
+}
+.idee-card:active { background:rgba(255,255,255,0.12); }
+.idee-title { font-size:1rem; font-weight:900; color:#ffe066; margin-bottom:6px; }
+.idee-desc  { font-size:0.82rem; color:rgba(255,255,255,0.75); line-height:1.5; }
+.idee-tag {
+  display:inline-block; margin-top:8px;
+  padding:2px 10px; border-radius:20px;
+  font-size:0.72rem; font-weight:900; color:#fff;
+}
+</style>
+</head>
+<body>
+
+<div id="hdr">
+  <button onclick="location.href='index.html'">← Retour</button>
+  <span class="title">🦖 Dino Lab</span>
+  <span class="badge">DEV</span>
+</div>
+
+<div class="tabs">
+  <button class="tab-btn active" data-tab="galerie">🦕 Galerie</button>
+  <button class="tab-btn" data-tab="jeu">🎮 Jeu dino</button>
+  <button class="tab-btn" data-tab="idees">💡 Idées jeux</button>
+</div>
+
+<!-- Galerie -->
+<div class="tab-panel active" id="tab-galerie">
+  <div id="galerie-grid"></div>
+</div>
+
+<!-- Jeu -->
+<div class="tab-panel" id="tab-jeu">
+  <div id="jeu-panel">
+    <div id="game-info">
+      <span id="score-display">Score : 0</span>
+      <span id="best-display">Meilleur : 0</span>
+    </div>
+    <div id="game-container">
+      <canvas id="game-canvas"></canvas>
+      <div id="game-overlay">
+        <div class="over-title">🦖 T-Rex Runner</div>
+        <div class="over-sub">Tape pour sauter par-dessus les cactus !</div>
+        <button onclick="startGame()">▶ Jouer</button>
+      </div>
+    </div>
+    <div style="font-size:0.78rem;color:rgba(255,255,255,0.4);text-align:center;padding:0 4px;">
+      Tap écran ou barre espace pour sauter — score qui augmente avec la vitesse
+    </div>
+  </div>
+</div>
+
+<!-- Idées -->
+<div class="tab-panel" id="tab-idees">
+  <div id="idees-panel">
+    <div class="idee-card">
+      <div class="idee-title">🃏 Memory Dinos</div>
+      <div class="idee-desc">6 à 8 paires de cartes retournées. Max retourne 2 cartes → si même dino = point ! Variante : paire nom + visuel. Simple et connu des 3-4 ans.</div>
+      <span class="idee-tag" style="background:#4a8a4a;">3-4 ans ✓</span>
+      <span class="idee-tag" style="background:#2a5a8a;margin-left:4px;">Mémoire visuelle</span>
+    </div>
+    <div class="idee-card">
+      <div class="idee-title">🔊 Quel cri ?</div>
+      <div class="idee-desc">TTS dit un cri de dino exagéré ("RAAAWR !", "BAOOUM !"). Max choisit parmi 3 dinos sur l'écran. Travaille la reconnaissance auditive + association son/animal.</div>
+      <span class="idee-tag" style="background:#7a4a9a;">TTS</span>
+      <span class="idee-tag" style="background:#4a8a4a;margin-left:4px;">3-4 ans ✓</span>
+    </div>
+    <div class="idee-card">
+      <div class="idee-title">🍖 Herbivore ou Carnivore ?</div>
+      <div class="idee-desc">Un dino apparaît. Max doit choisir : herbe 🌿 ou viande 🥩. Simple binaire, idéal pour débuter. Feedback différent selon le régime (rugissement vs bruit de broyage).</div>
+      <span class="idee-tag" style="background:#4a8a4a;">3-4 ans ✓</span>
+      <span class="idee-tag" style="background:#c07820;margin-left:4px;">Classification</span>
+    </div>
+    <div class="idee-card">
+      <div class="idee-title">🦷 Trouve le T-Rex !</div>
+      <div class="idee-desc">3-4 dinos sur l'écran, certains bougent en fond. Max doit taper uniquement le T-Rex (ou le dino demandé). Difficulté : augmenter le nombre de dinos / réduire le temps.</div>
+      <span class="idee-tag" style="background:#c06030;">Réactivité</span>
+      <span class="idee-tag" style="background:#4a8a4a;margin-left:4px;">Identification</span>
+    </div>
+    <div class="idee-card">
+      <div class="idee-title">🥚 L'œuf mystère</div>
+      <div class="idee-desc">Un œuf tombe du ciel → il s'ouvre en tapant → quel dino en sort ? Max doit dire ou taper son nom parmi 3 choix. Suspens + révélation = fun garanti.</div>
+      <span class="idee-tag" style="background:#8a3a3a;">Animation</span>
+      <span class="idee-tag" style="background:#4a8a4a;margin-left:4px;">3-4 ans ✓</span>
+    </div>
+    <div class="idee-card">
+      <div class="idee-title">📏 Le plus grand ?</div>
+      <div class="idee-desc">2 dinos côte à côte à des tailles différentes. "Lequel est le plus grand ?" Intro à la comparaison de grandeur. Variante : le plus petit, le plus lourd (taille du dino = métaphore).</div>
+      <span class="idee-tag" style="background:#3a5a8a;">Comparaison</span>
+    </div>
+  </div>
+</div>
+
+<!-- Modale -->
+<div id="dino-modal" onclick="closeModal()">
+  <div class="modal-card" onclick="event.stopPropagation()">
+    <div class="modal-emoji" id="m-emoji"></div>
+    <div class="modal-name"  id="m-name"></div>
+    <div class="modal-full"  id="m-full"></div>
+    <div class="modal-grid">
+      <div class="modal-cell"><strong>Époque</strong><span id="m-ep"></span></div>
+      <div class="modal-cell"><strong>Régime</strong><span id="m-reg"></span></div>
+      <div class="modal-cell" style="grid-column:1/-1"><strong>Taille</strong><span id="m-tai"></span></div>
+    </div>
+    <div class="modal-fait" id="m-fait"></div>
+    <button class="modal-close" onclick="closeModal()">Fermer</button>
+  </div>
+</div>
+
+<script src="js/dinos.js"></script>
+<script>
+/* ─── Tabs ─── */
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    if (btn.dataset.tab === 'jeu') resizeCanvas();
+  });
+});
+
+/* ─── Galerie ─── */
+const grid = document.getElementById('galerie-grid');
+DINOS.forEach(d => {
+  const card = document.createElement('div');
+  card.className = 'dino-card';
+
+  let visual = '';
+  if (d.emoji) {
+    visual = `<div class="dino-visual" style="font-size:3.4rem;">${d.emoji}</div>`;
+  } else {
+    const svg = dinoSVG(d.id, 80);
+    visual = `<div class="dino-visual">${svg}</div>`;
+  }
+
+  card.innerHTML = `
+    ${visual}
+    <div class="dino-name">${d.name}</div>
+    <div class="dino-regime">${d.regime}</div>
+    <div class="dino-color-bar" style="background:${d.color};"></div>
+  `;
+
+  card.addEventListener('click', () => {
+    card.classList.remove('bounce');
+    void card.offsetWidth;
+    card.classList.add('bounce');
+    setTimeout(() => openModal(d), 80);
+  });
+
+  grid.appendChild(card);
+});
+
+/* ─── Modale ─── */
+function openModal(d) {
+  document.getElementById('m-emoji').textContent = d.emoji || '🦕';
+  document.getElementById('m-name').textContent  = d.name;
+  document.getElementById('m-full').textContent  = d.full;
+  document.getElementById('m-ep').textContent    = d.epoque;
+  document.getElementById('m-reg').textContent   = d.regime;
+  document.getElementById('m-tai').textContent   = d.taille;
+  document.getElementById('m-fait').textContent  = '💡 ' + d.fait;
+  document.getElementById('dino-modal').classList.add('open');
+}
+function closeModal() {
+  document.getElementById('dino-modal').classList.remove('open');
+}
+
+/* ─── Mini-jeu Google Dino ─── */
+const canvas  = document.getElementById('game-canvas');
+const ctx     = canvas.getContext('2d');
+const overlay = document.getElementById('game-overlay');
+
+let W, H, GROUND_Y, PIXEL_SIZE;
+let gameRunning = false, gameOver = false;
+let score = 0, bestScore = 0, speed = 0;
+let dinoY = 0, velY = 0, jumping = false, jumpFrame = 0;
+let walkFrame = 0, walkTick = 0;
+let cacti = [], frame = 0;
+let lastTs = 0;
+
+function resizeCanvas() {
+  const container = document.getElementById('game-container');
+  W = container.clientWidth;
+  H = Math.max(140, Math.min(220, W * 0.35));
+  canvas.width = W;
+  canvas.height = H;
+  canvas.style.height = H + 'px';
+  GROUND_Y   = Math.round(H * 0.72);
+  PIXEL_SIZE = Math.max(3, Math.round(H / 50));
+  if (!gameRunning) drawIdle();
+}
+
+function drawIdle() {
+  ctx.clearRect(0, 0, W, H);
+  drawBg();
+  const ps = PIXEL_SIZE;
+  const dinoH = ps * 16;
+  const dx = Math.round(W * 0.12);
+  const dy = GROUND_Y - dinoH;
+  drawDinoPixel(ctx, dx, dy, ps, 0, '#4a8a4a');
+  drawGround();
+}
+
+function drawBg() {
+  ctx.fillStyle = '#1a2540';
+  ctx.fillRect(0, 0, W, GROUND_Y);
+  // stars
+  ctx.fillStyle = 'rgba(255,255,255,0.4)';
+  for (let i = 0; i < 20; i++) {
+    const sx = (i * 97 + 13) % W;
+    const sy = (i * 53 + 7) % GROUND_Y;
+    ctx.fillRect(sx, sy, 1, 1);
+  }
+}
+
+function drawGround() {
+  ctx.fillStyle = '#2a2a2a';
+  ctx.fillRect(0, GROUND_Y, W, H - GROUND_Y);
+  // kerb
+  const kh = Math.max(3, PIXEL_SIZE);
+  for (let x = 0; x < W; x += kh * 2) {
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(x, GROUND_Y, kh, kh);
+    ctx.fillStyle = '#e3051c';
+    ctx.fillRect(x + kh, GROUND_Y, kh, kh);
+  }
+  // dashes (scrolling)
+  const dashOff = -(frame * speed * 0.8) % (W / 5);
+  ctx.fillStyle = '#f0c040';
+  for (let x = dashOff; x < W; x += W / 5) {
+    ctx.fillRect(x, GROUND_Y + kh * 2, W / 10, Math.max(2, PIXEL_SIZE / 2));
+  }
+}
+
+function drawCactus(x) {
+  const cw = PIXEL_SIZE * 3;
+  const ch = PIXEL_SIZE * 10;
+  ctx.fillStyle = '#2d8a2d';
+  // trunk
+  ctx.fillRect(x + cw, GROUND_Y - ch, cw, ch);
+  // left arm
+  ctx.fillRect(x, GROUND_Y - ch * 0.65, cw * 3, PIXEL_SIZE * 2);
+  ctx.fillRect(x, GROUND_Y - ch * 0.65 - PIXEL_SIZE * 3, cw, PIXEL_SIZE * 3);
+  // right arm
+  ctx.fillRect(x + cw * 2, GROUND_Y - ch * 0.45, cw * 3, PIXEL_SIZE * 2);
+  ctx.fillRect(x + cw * 4, GROUND_Y - ch * 0.45 - PIXEL_SIZE * 3, cw, PIXEL_SIZE * 3);
+  // outline
+  ctx.strokeStyle = '#1a6a1a';
+  ctx.lineWidth = 1;
+  ctx.strokeRect(x + cw, GROUND_Y - ch, cw, ch);
+}
+
+function gameLoop(ts) {
+  if (!gameRunning) return;
+
+  const dt = Math.min((ts - lastTs) / 1000, 0.05);
+  lastTs = ts;
+  frame++;
+
+  // Speed
+  speed = 120 + score * 0.04;
+  score = Math.floor(score + dt * 8);
+
+  // Walk animation
+  walkTick++;
+  if (walkTick > 10) { walkFrame = 1 - walkFrame; walkTick = 0; }
+
+  // Jump physics
+  const gravity = H * 2.2;
+  if (jumping) {
+    dinoY += velY * dt;
+    velY  += gravity * dt;
+    if (dinoY >= 0) { dinoY = 0; velY = 0; jumping = false; jumpFrame = 0; }
+  }
+
+  // Cacti: spawn
+  const minGap = W * 0.45;
+  const last = cacti[cacti.length - 1];
+  if (!last || last.x < W - minGap - Math.random() * W * 0.3) {
+    cacti.push({ x: W + 20 });
+  }
+  // Move & remove
+  cacti = cacti.filter(c => {
+    c.x -= speed * dt;
+    return c.x > -PIXEL_SIZE * 7;
+  });
+
+  // Collision
+  const ps = PIXEL_SIZE;
+  const dinoH = ps * 16, dinoW = ps * 12;
+  const dx = Math.round(W * 0.12);
+  const dinoTop = GROUND_Y - dinoH + dinoY;
+  const pad = ps * 2;
+  for (const c of cacti) {
+    const cw = ps * 7, ch = ps * 10;
+    if (
+      dx + pad < c.x + cw - pad &&
+      dx + dinoW - pad > c.x + pad &&
+      dinoTop + pad < GROUND_Y &&
+      dinoTop + dinoH - pad > GROUND_Y - ch
+    ) {
+      endGame();
+      return;
+    }
+  }
+
+  // Draw
+  ctx.clearRect(0, 0, W, H);
+  drawBg();
+  cacti.forEach(c => drawCactus(c.x));
+  drawGround();
+
+  const curFrame = jumping ? 2 : walkFrame;
+  const dinoX = dx;
+  const dinoTopY = GROUND_Y - dinoH + Math.round(dinoY);
+  drawDinoPixel(ctx, dinoX, dinoTopY, ps, curFrame, '#4a8a4a');
+
+  // Score
+  ctx.fillStyle = 'rgba(255,255,255,0.7)';
+  ctx.font = `bold ${Math.max(12, PIXEL_SIZE * 3.5)}px Nunito`;
+  ctx.textAlign = 'right';
+  ctx.fillText(String(score).padStart(5, '0'), W - 10, 28);
+  ctx.textAlign = 'left';
+
+  document.getElementById('score-display').textContent = 'Score : ' + score;
+  requestAnimationFrame(gameLoop);
+}
+
+function jump() {
+  if (!gameRunning) { startGame(); return; }
+  if (!jumping && dinoY >= 0) {
+    jumping  = true;
+    jumpFrame = 2;
+    velY = -Math.sqrt(2 * H * 2.2 * H * 0.36);
+  }
+}
+
+function startGame() {
+  score = 0; speed = 120; cacti = []; dinoY = 0; velY = 0;
+  jumping = false; frame = 0; walkFrame = 0; walkTick = 0;
+  gameOver = false; gameRunning = true;
+  overlay.style.display = 'none';
+  lastTs = performance.now();
+  requestAnimationFrame(gameLoop);
+}
+
+function endGame() {
+  gameRunning = false; gameOver = true;
+  if (score > bestScore) {
+    bestScore = score;
+    document.getElementById('best-display').textContent = 'Meilleur : ' + bestScore;
+  }
+  overlay.style.display = 'flex';
+  overlay.innerHTML = `
+    <div class="over-title">💀 Raté !</div>
+    <div class="over-sub">Score : <strong style="color:#ffe066">${score}</strong> &nbsp;|&nbsp; Meilleur : <strong style="color:#ffe066">${bestScore}</strong></div>
+    <button onclick="startGame()">🔄 Rejouer</button>
+  `;
+}
+
+// Tap / Space to jump
+document.getElementById('game-container').addEventListener('pointerdown', jump);
+document.addEventListener('keydown', e => { if (e.code === 'Space') { e.preventDefault(); jump(); } });
+
+// Init
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+</script>
+</body>
+</html>

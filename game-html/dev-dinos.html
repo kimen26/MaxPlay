@@ -287,7 +287,9 @@ DINOS.forEach(d => {
   card.className = 'dino-card';
 
   let visual = '';
-  if (d.emoji) {
+  if (d.png) {
+    visual = `<div class="dino-visual"><img src="img/dinos/${d.png}" alt="${d.name}" style="height:70px;width:auto;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.5));"></div>`;
+  } else if (d.emoji) {
     visual = `<div class="dino-visual" style="font-size:3.4rem;">${d.emoji}</div>`;
   } else {
     const svg = dinoSVG(d.id, 80);
@@ -313,7 +315,12 @@ DINOS.forEach(d => {
 
 /* ─── Modale ─── */
 function openModal(d) {
-  document.getElementById('m-emoji').textContent = d.emoji || '🦕';
+  const mEmoji = document.getElementById('m-emoji');
+  if (d.png) {
+    mEmoji.innerHTML = `<img src="img/dinos/${d.png}" alt="${d.name}" style="height:90px;width:auto;object-fit:contain;">`;
+  } else {
+    mEmoji.textContent = d.emoji || '🦕';
+  }
   document.getElementById('m-name').textContent  = d.name;
   document.getElementById('m-full').textContent  = d.full;
   document.getElementById('m-ep').textContent    = d.epoque;

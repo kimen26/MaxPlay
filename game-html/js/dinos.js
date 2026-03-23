@@ -1,8 +1,11 @@
 // ─── Bibliothèque Dinosaures ───
 // API :
-//   DINOS        → array de 10 dinos (id, name, full, epoque, regime, fait, emoji, color)
-//   dinoSVG(id, size) → SVG string ou null (utiliser emoji si null)
-//   DINO_GAME_FRAMES  → pixel-art T-Rex pour le mini-jeu (2 frames de marche + saut)
+//   DINOS        → array de 10 dinos
+//   png présent  → utiliser <img src="img/dinos/{png}"> (assets OpenGameArt CC0)
+//   emoji présent → utiliser l'emoji Unicode
+//   sinon         → dinoSVG(id, size)
+//   dinoSVG(id, size) → SVG string ou null
+//   drawDinoPixel(ctx, x, y, ps, frame) → pixel-art T-Rex pour le mini-jeu
 
 const DINOS = [
   {
@@ -13,19 +16,19 @@ const DINOS = [
     regime: '🥩 Carnivore',
     taille: '12 m de long',
     fait: 'Ses dents mesuraient 20 cm — plus longues que ta main !',
-    emoji: '🦖',
+    png: 'T-Rex.png',
     color: '#4a8a4a',
     textColor: '#fff',
   },
   {
-    id: 'brachio',
-    name: 'Brachiosaure',
-    full: 'Brachiosaurus altithorax',
+    id: 'apato',
+    name: 'Apatosaure',
+    full: 'Apatosaurus ajax',
     epoque: 'Jurassique · 150 M ans',
     regime: '🥗 Herbivore',
-    taille: '26 m de long',
-    fait: 'Son cou mesurait 9 m — plus haut qu\'un immeuble de 3 étages !',
-    emoji: '🦕',
+    taille: '23 m de long',
+    fait: 'Son cou mesurait 6 m — il pouvait manger les feuilles tout en haut des arbres !',
+    png: 'Apatosaurus.png',
     color: '#4a7a8a',
     textColor: '#fff',
   },
@@ -37,7 +40,7 @@ const DINOS = [
     regime: '🥗 Herbivore',
     taille: '9 m de long',
     fait: 'Ses 3 cornes servaient à se défendre du T-Rex !',
-    emoji: null,
+    png: 'Triceratops.png',
     color: '#c07820',
     textColor: '#fff',
   },
@@ -49,7 +52,7 @@ const DINOS = [
     regime: '🥗 Herbivore',
     taille: '9 m de long',
     fait: 'Les plaques sur son dos lui servaient à réguler sa température !',
-    emoji: null,
+    png: 'Stegosaurs.png',
     color: '#6a8a3a',
     textColor: '#fff',
   },
@@ -61,7 +64,7 @@ const DINOS = [
     regime: '🐟 Piscivore',
     taille: '7 m d\'envergure',
     fait: 'Pas un vrai dino — c\'était un reptile volant ! Sa crête guidait son vol.',
-    emoji: null,
+    png: 'Pterodactyl.png',
     color: '#7a4a9a',
     textColor: '#fff',
   },
@@ -73,7 +76,7 @@ const DINOS = [
     regime: '🥩 Carnivore',
     taille: '2 m de long',
     fait: 'Moins gros qu\'un chien, mais ultra-rapide et super malin !',
-    emoji: null,
+    png: 'Raptor.png',
     color: '#c06030',
     textColor: '#fff',
   },

@@ -9,12 +9,13 @@ Jeu éducatif 2D pour **Max**, 3.5-4 ans, passionné de bus (lignes Villejuif).
 Voir `docs/MAX_PROFILE.md` pour le profil complet.
 **Stack** : Phaser.js 3 + Vite + TypeScript · Résolution 1024×768 landscape
 
-## État jeux (2026-03-17, session 10)
+## État jeux (2026-03-21, session 11)
 
-- **13 jeux** : mj-01 à mj-12 + max-adventure
+- **14 jeux** : mj-01 à mj-13 + max-adventure
 - **MJ-10** : Tableau de bord — 12 boutons sons sandbox (klaxon/moteur/porte…) + easter egg prout caché
 - **MJ-11** : Quel pays ? — drapeau dans fenêtre bus (flag-icons CDN), TTS, 4 choix texte, confettis 10/10
 - **MJ-12** : Nouveaux sons — tableau de bord 22 MP3/FLAC triés en 5 catégories + easter egg 💨
+- **MJ-13** : Arrêt de bus — panneau RATP (poteau gris + fiches LED turquoise), layout flexbox mobile, 3 modes A/B/C, Pikachu son bonne réponse
 - **victory-sounds.js** : module partagé `playEndSound(score, max)` + `playErrorSound()` + `stopEndSound()`
   - ≥50% → FF7/Smash Bros/Zelda/Gagné/Super Max · <50% → perdu/motus/among-us
   - erreur → prout/klaxon/pew aléatoire
@@ -24,12 +25,12 @@ Voir `docs/MAX_PROFILE.md` pour le profil complet.
 - **index.html** : jingle RATP ou SNCF aléatoire au chargement (autoplay + fallback premier clic)
 - **Prochaine étape** : idfm.js family+known pour 362 lignes (EP-007) + progression/flotte (EP-005)
 
-## Architecture déploiement (2026-03-16)
+## Architecture déploiement (2026-03-21)
 
 ```
 GitHub Pages → kimen26.github.io/MaxPlay/
 ├── /                    ← game-html/index.html (menu 2 colonnes)
-├── /mj-01.html à /mj-09.html  ← 9 mini-jeux HTML vanilla
+├── /mj-01.html à /mj-13.html  ← 13 mini-jeux HTML vanilla
 └── /max-adventure/      ← Phaser build (game/dist/ copié par CI)
     max-adventure.html   ← splash → ./max-adventure/
 ```

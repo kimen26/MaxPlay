@@ -27,6 +27,7 @@
 | EP-MJ09 | MJ-09 · Trie les bus ! | `[x]` |
 | EP-MJ10 | MJ-10 · Tableau de bord (sons) | `[x]` |
 | EP-MJ11 | MJ-11 · Quel pays ? (drapeaux) | `[x]` |
+| EP-MJ13 | MJ-13 · L'arrêt de bus (panneau RATP) | `[x]` |
 | EP-MAXADV | Max Adventure · La journée de Max (sandbox Phaser) | `[x]` |
 | EP-005 | Système de progression (flotte + carte) | `[ ]` |
 | EP-006 | Audio (sons + musique + TTS) | `[ ]` |
@@ -39,7 +40,7 @@
 
 ```
 MaxPlay V0
-├── game-html/index.html     ← Menu 2 colonnes (9 mini-jeux + Max Adventure)
+├── game-html/index.html     ← Menu 2 colonnes (14 mini-jeux + Max Adventure)
 │   ├── mj-01.html · Quelle couleur ?
 │   ├── mj-02.html · Quel numéro ?
 │   ├── mj-03.html · Devine le numéro (TTS) — pool 362 lignes IDFM
@@ -51,6 +52,8 @@ MaxPlay V0
 │   ├── mj-09.html · Trie les bus ! — pool 362 lignes IDFM
 │   ├── mj-10.html · Tableau de bord — 12 boutons sons sandbox
 │   ├── mj-11.html · Quel pays ? — drapeaux + TTS + confettis
+│   ├── mj-12.html · Nouveaux sons — tableau de bord 22 sons + easter egg
+│   ├── mj-13.html · L'arrêt de bus — panneau RATP + fiches LED
 │   ├── max-adventure.html · splash → ./max-adventure/
 │   └── js/
 │       ├── data.js    ← LIGNES (26 actives), source de vérité
@@ -229,6 +232,24 @@ MaxPlay V0
 | **Victoire** | 5 paliers selon score : 10/10 confettis drapeaux + son victoire · 8-9 bravo · 6-7 bien joué · 4-5 pas mal · 0-3 encouragements |
 | **Confettis** | 40 emojis drapeaux animés Canvas — UNIQUEMENT au 10/10 sans-faute |
 | **Tech** | HTML vanilla · flag-icons CDN · bus-svg.js · sounds.js |
+
+---
+
+### MJ-13 · L'arrêt de bus
+
+| | |
+|--|--|
+| **But pédagogique** | Simuler l'attente à un arrêt de bus avec affichage RATP réaliste |
+| **Univers** | Poteau gris RATP standard, fiches LED pour affichage des lignes |
+| **Layout** | Flexbox column (body) : header (48px) · panel-zone (flex:1) · road (80px) |
+| **Poteau** | Gris (#4a4a4a) avec cercle turquoise BUS (#00c5a0) dans header |
+| **Fiches LED** | Panneau RATP classique : 2/3 largeur pour lignes, 1/3 pour "sec" (seconde) |
+| **Buses animés** | Route scrollante avec 2-3 buses circulant (sprites ou SVG selon mode) |
+| **Modes A/B/C** | 3 variantes mélangées dans 1 seul fichier — différences : animations, timing |
+| **Décompte** | Secondes affichées · tick ~5s · freeze à 0 (arrivée bus) |
+| **Feedback** | Changement couleur fiches, son Pikachu aléatoire (2 cris possibles) |
+| **Score** | Points selon rapidité réaction ou choix correcte |
+| **Tech** | HTML vanilla · Flexbox · SVG buses · sounds.js |
 
 ---
 

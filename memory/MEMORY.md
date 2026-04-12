@@ -11,13 +11,13 @@ Voir `docs/MAX_PROFILE.md` pour le profil complet.
 
 ## État jeux (2026-04-12, session 12)
 
-- **15 jeux** : mj-01 à mj-14 + max-adventure
+- **18 jeux** : mj-01 à mj-17 + max-adventure
+- **MJ-17** : L'ombre du bus — silhouette noire, 3 niveaux (nette / floutée / partielle), 4 choix
+- **MJ-16** : Complète la suite — 4 cases, pattern à compléter, 3 niveaux (couleurs / tailles / mixte)
+- **MJ-15** : L'intrus — 5 bus, 1 ne va pas avec les autres, 3 niveaux (couleur / pair-impair / famille)
 - **MJ-14** : La grille des bus — Matrices de Raven, 2 modes (formes géo / bus IDFM), 3 niveaux (ligne → colonne → les deux)
 - **MJ-13** : Arrêt de bus — panneau RATP (poteau gris + fiches LED turquoise), layout flexbox mobile, 3 modes A/B/C, Pikachu son bonne réponse
-- **MJ-12** : Nouveaux sons — tableau de bord 22 MP3/FLAC triés en 5 catégories + easter egg 💨
-- **MJ-11** : Quel pays ? — drapeau dans fenêtre bus (flag-icons CDN), TTS, 4 choix texte, confettis 10/10
-- **MJ-10** : Tableau de bord — 12 boutons sons sandbox (klaxon/moteur/porte…) + easter egg prout caché
-- **tracker.js** : suivi progression localStorage — sessions, scores, taux de réussite, maîtrise Montessori (○ nouveau · ◑ en cours · ● maîtrisé). Intégré dans MJ-01 à MJ-14.
+- **tracker.js** : suivi progression localStorage — sessions, scores, taux de réussite, maîtrise Montessori (○ nouveau · ◑ en cours · ● maîtrisé). Intégré dans MJ-01 à MJ-17.
 - **suivi.html** : dashboard parent — stats globales, carte par jeu, sparklines, export/import JSON. Accessible via lien discret dans footer index.html.
 - **victory-sounds.js** : module partagé `playEndSound(score, max)` + `playErrorSound()` + `stopEndSound()`
   - ≥50% → FF7/Smash Bros/Zelda/Gagné/Super Max · <50% → perdu/motus/among-us
@@ -31,7 +31,7 @@ Voir `docs/MAX_PROFILE.md` pour le profil complet.
 ```
 GitHub Pages → kimen26.github.io/MaxPlay/
 ├── /                    ← game-html/index.html (menu 2 colonnes)
-├── /mj-01.html à /mj-14.html  ← 14 mini-jeux HTML vanilla
+├── /mj-01.html à /mj-17.html  ← 17 mini-jeux HTML vanilla
 └── /max-adventure/      ← Phaser build (game/dist/ copié par CI)
     max-adventure.html   ← splash → ./max-adventure/
 ```

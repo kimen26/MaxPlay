@@ -409,6 +409,12 @@ MaxPlay V0
 
 ### Fait
 - [x] MJ-14 créé : La grille des bus — Matrices de Raven, 2 modes (Formes / Bus), 3 niveaux (ligne → colonne → les deux)
+- [x] MJ-15 créé : L'intrus — 5 bus, 1 ne va pas, 3 niveaux (couleur / pair-impair / famille de ligne)
+- [x] MJ-16 créé : Complète la suite — 4 cases, pattern couleurs/tailles/mixte
+- [x] MJ-17 créé : L'ombre du bus — silhouette noire 3 niveaux (nette / floutée / partielle)
+- [x] tracker.js créé : suivi progression localStorage, maîtrise Montessori (nouveau/en-cours/maîtrisé)
+- [x] suivi.html créé : dashboard parent, stats globales, sparklines, export/import JSON
+- [x] tracker.js intégré dans MJ-01 à MJ-17 (tous les jeux)
 
 ### Idées capturées (pas encore planifiées)
 

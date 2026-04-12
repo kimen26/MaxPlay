@@ -753,6 +753,7 @@
 
       if (parkedCount === BUS_LINES.length) {
         gameComplete = true;
+        if (typeof Tracker !== 'undefined') Tracker.endSession(BUS_LINES.length, BUS_LINES.length);
         setTimeout(() => {
           playEndSound(BUS_LINES.length, BUS_LINES.length);
           createConfetti();
@@ -828,5 +829,6 @@
 
     document.addEventListener('DOMContentLoaded', init);
   </script>
+<script src="js/tracker.js"></script>
 </body>
 </html>

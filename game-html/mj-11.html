@@ -562,6 +562,7 @@
     ];
 
     function showVictory() {
+      if (typeof Tracker !== 'undefined') Tracker.endSession(score, ROUND_COUNT);
       renderScoreBar();
       const data = VICTORY_DATA.find(d => score >= d.min && score <= d.max);
       document.getElementById('victoryEmoji').textContent = data.emoji;
@@ -665,5 +666,6 @@
     // ─── Init ─────────────────────────────────────────────────────────────────────
     startGame();
   </script>
+<script src="js/tracker.js"></script>
 </body>
 </html>

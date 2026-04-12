@@ -422,6 +422,7 @@
     }
     
     function showEndScreen() {
+      if (typeof Tracker !== 'undefined') Tracker.endSession(score, MAX_QUESTIONS * 10);
       playEndSound(score, MAX_QUESTIONS * 10);
       confetti();
       busParade();
@@ -443,5 +444,6 @@
     // Démarrer
     init();
   </script>
+<script src="js/tracker.js"></script>
 </body>
 </html>

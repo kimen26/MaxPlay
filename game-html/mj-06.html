@@ -310,6 +310,7 @@
     }
 
     function showEndScreen() {
+      if (typeof Tracker !== 'undefined') Tracker.endSession(score, MAX_QUESTIONS * 10);
       sndVictory();
       confetti();
       const app = document.getElementById('app');
@@ -337,5 +338,6 @@
 
     init();
   </script>
+<script src="js/tracker.js"></script>
 </body>
 </html>

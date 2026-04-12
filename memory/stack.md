@@ -170,5 +170,5 @@ particles.explode(20);
 
 | Jeu | État | Notes |
 |-----|------|-------|
-| MJ-01 à MJ-13 | ✅ déployés | voir BACKLOG.md |
+| MJ-01 à MJ-14 | ✅ déployés | voir BACKLOG.md |
 | max-adventure | 🔄 en cours | Phaser, HubScene + SandboxScene |

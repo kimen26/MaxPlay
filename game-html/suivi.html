@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MaxPlay – Suivi de Max</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+html,body { font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; min-height:100vh; }
+
+/* ── Header ── */
+#hdr {
+  display:flex; align-items:center; gap:12px;
+  padding:14px 20px; background:rgba(0,0,0,0.4);
+  border-bottom:2px solid rgba(255,255,255,0.08); position:sticky; top:0; z-index:10;
+}
+#hdr a { color:#fff; text-decoration:none; background:rgba(255,255,255,0.1); border-radius:10px; padding:6px 14px; font-weight:900; }
+#hdr h1 { flex:1; font-size:1.15rem; font-weight:900; }
+#hdr-actions { display:flex; gap:8px; }
+.hdr-btn {
+  background:rgba(255,255,255,0.1); border:none; color:#fff;
+  font-family:'Nunito',sans-serif; font-weight:700; font-size:0.8rem;
+  border-radius:10px; padding:7px 14px; cursor:pointer;
+  transition:background 0.15s;
+}
+.hdr-btn:hover { background:rgba(255,255,255,0.2); }
+.hdr-btn.danger { color:#ff7070; }
+.hdr-btn.danger:hover { background:rgba(255,68,68,0.2); }
+
+/* ── Layout ── */
+#page { max-width:900px; margin:0 auto; padding:20px 16px 40px; }
+
+/* ── Vue vide ── */
+#empty-state {
+  text-align:center; padding:60px 20px;
+  display:none; flex-direction:column; align-items:center; gap:16px;
+}
+#empty-state.visible { display:flex; }
+#empty-state .big { font-size:4rem; }
+#empty-state p { font-size:1.1rem; opacity:0.7; }
+
+/* ── Résumé global ── */
+#summary {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+  gap:12px; margin-bottom:24px;
+}
+.stat-card {
+  background:rgba(255,255,255,0.06); border-radius:16px;
+  padding:16px 12px; text-align:center;
+  border:1px solid rgba(255,255,255,0.08);
+}
+.stat-card .val { font-size:2rem; font-weight:900; color:#ffe066; }
+.stat-card .lbl { font-size:0.78rem; opacity:0.6; font-weight:700; margin-top:4px; }
+
+/* ── Section titre ── */
+.section-title {
+  font-size:1rem; font-weight:900; opacity:0.5; text-transform:uppercase;
+  letter-spacing:2px; margin:28px 0 12px;
+}
+
+/* ── Grille jeux ── */
+#games-grid {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:12px;
+}
+
+.game-card {
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius:16px; padding:14px 16px;
+  display:flex; flex-direction:column; gap:8px;
+}
+.game-card.mastered { border-color:rgba(255,224,102,0.4); background:rgba(255,224,102,0.06); }
+.game-card.en-cours { border-color:rgba(0,196,122,0.3); }
+.game-card.nouveau  { opacity:0.5; }
+
+.gc-top { display:flex; align-items:center; gap:10px; }
+.gc-emoji { font-size:1.6rem; }
+.gc-info { flex:1; }
+.gc-name { font-size:0.95rem; font-weight:900; }
+.gc-skill { font-size:0.72rem; opacity:0.55; font-weight:700; }
+
+/* Badge maîtrise */
+.mastery-badge {
+  font-size:0.7rem; font-weight:900; border-radius:20px;
+  padding:3px 10px; flex-shrink:0;
+}
+.mastery-badge.maîtrisé { background:#ffe066; color:#1a1a1a; }
+.mastery-badge.en-cours  { background:#00c47a; color:#fff; }
+.mastery-badge.nouveau   { background:rgba(255,255,255,0.15); color:#fff; }
+
+/* Barre de succès */
+.success-bar-wrap {
+  height:6px; background:rgba(255,255,255,0.1); border-radius:3px; overflow:hidden;
+}
+.success-bar {
+  height:100%; border-radius:3px;
+  background:linear-gradient(90deg,#00c47a,#ffe066);
+  transition:width 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+
+.gc-stats {
+  display:flex; gap:12px; flex-wrap:wrap;
+}
+.gc-stat { font-size:0.75rem; opacity:0.6; font-weight:700; }
+.gc-stat strong { color:#fff; opacity:1; }
+
+/* Mini historique sparkline */
+.sparkline { display:flex; gap:2px; align-items:flex-end; height:24px; margin-top:2px; }
+.spark-bar {
+  flex:1; border-radius:2px 2px 0 0; min-height:3px;
+  transition:height 0.4s;
+}
+
+/* ── Activité récente ── */
+#activity { display:flex; flex-direction:column; gap:8px; }
+.activity-row {
+  display:flex; align-items:center; gap:12px;
+  background:rgba(255,255,255,0.04); border-radius:12px;
+  padding:10px 14px;
+}
+.act-emoji { font-size:1.3rem; width:32px; text-align:center; }
+.act-info { flex:1; }
+.act-name { font-size:0.88rem; font-weight:900; }
+.act-date { font-size:0.72rem; opacity:0.5; }
+.act-score {
+  font-size:0.82rem; font-weight:900;
+  background:rgba(255,255,255,0.1); border-radius:8px; padding:3px 10px;
+}
+.act-score.good { color:#00c47a; }
+.act-score.ok   { color:#ffe066; }
+.act-score.low  { color:#ff7070; }
+
+/* ── Aucune donnée pour ce jeu ── */
+.no-data { opacity:0.35; font-style:italic; font-size:0.8rem; }
+</style>
+</head>
+<body>
+
+<div id="hdr">
+  <a href="index.html">← Menu</a>
+  <h1>📊 Suivi de Max</h1>
+  <div id="hdr-actions">
+    <button class="hdr-btn" onclick="doExport()">⬇ Export</button>
+    <label class="hdr-btn" style="cursor:pointer">
+      ⬆ Import
+      <input type="file" accept=".json" style="display:none" onchange="doImport(this)">
+    </label>
+    <button class="hdr-btn danger" onclick="doReset()">🗑 Reset</button>
+  </div>
+</div>
+
+<div id="page">
+
+  <!-- État vide -->
+  <div id="empty-state">
+    <div class="big">🚌</div>
+    <p>Max n'a pas encore joué.</p>
+    <p style="font-size:0.9rem;">Les stats apparaîtront ici après la première partie !</p>
+  </div>
+
+  <!-- Résumé global -->
+  <div id="summary" style="display:none">
+    <div class="stat-card">
+      <div class="val" id="stat-sessions">0</div>
+      <div class="lbl">Parties jouées</div>
+    </div>
+    <div class="stat-card">
+      <div class="val" id="stat-games">0</div>
+      <div class="lbl">Jeux différents</div>
+    </div>
+    <div class="stat-card">
+      <div class="val" id="stat-rate">–</div>
+      <div class="lbl">Taux de réussite</div>
+    </div>
+    <div class="stat-card">
+      <div class="val" id="stat-mastered">0</div>
+      <div class="lbl">Jeux maîtrisés ⭐</div>
+    </div>
+    <div class="stat-card">
+      <div class="val" id="stat-time">0 min</div>
+      <div class="lbl">Temps de jeu</div>
+    </div>
+  </div>
+
+  <!-- Jeux -->
+  <div class="section-title" id="sec-games" style="display:none">Jeux</div>
+  <div id="games-grid"></div>
+
+  <!-- Activité récente -->
+  <div class="section-title" id="sec-activity" style="display:none">Activité récente</div>
+  <div id="activity"></div>
+
+</div>
+
+<script src="js/tracker.js"></script>
+<script>
+// ─── suivi.html ───────────────────────────────────────────────────────────
+
+function formatDate(iso) {
+  if (!iso) return '–';
+  const d = new Date(iso);
+  const now = new Date();
+  const diff = Math.floor((now - d) / 1000);
+  if (diff < 60)   return 'il y a quelques secondes';
+  if (diff < 3600) return `il y a ${Math.floor(diff/60)} min`;
+  if (diff < 86400)return `aujourd'hui`;
+  if (diff < 172800) return 'hier';
+  return d.toLocaleDateString('fr-FR', { day:'numeric', month:'short' });
+}
+
+function formatDuration(totalSec) {
+  if (!totalSec) return '–';
+  const m = Math.floor(totalSec / 60);
+  const s = totalSec % 60;
+  return m > 0 ? `${m} min ${s}s` : `${s}s`;
+}
+
+function pct(n, d) {
+  if (!d) return 0;
+  return Math.round((n / d) * 100);
+}
+
+function scoreClass(rate) {
+  if (rate >= 0.8) return 'good';
+  if (rate >= 0.5) return 'ok';
+  return 'low';
+}
+
+// ── Rendu ─────────────────────────────────────────────────────────────────
+function render() {
+  const data = Tracker.getStats();
+  const meta = Tracker.GAME_META;
+  const gameIds = Object.keys(data.games);
+
+  if (gameIds.length === 0) {
+    document.getElementById('empty-state').classList.add('visible');
+    return;
+  }
+
+  document.getElementById('empty-state').classList.remove('visible');
+  document.getElementById('summary').style.display = '';
+  document.getElementById('sec-games').style.display = '';
+  document.getElementById('sec-activity').style.display = '';
+
+  // ── Stats globales ──
+  let totalSessions = 0, totalQ = 0, totalOk = 0, totalDur = 0, mastered = 0;
+  gameIds.forEach(id => {
+    const g = data.games[id];
+    totalSessions += g.plays;
+    totalQ        += g.totalQuestions;
+    totalOk       += g.correctAnswers;
+    mastered      += g.mastery === 'maîtrisé' ? 1 : 0;
+    g.history.forEach(h => { totalDur += (h.duration || 0); });
+  });
+
+  document.getElementById('stat-sessions').textContent = totalSessions;
+  document.getElementById('stat-games').textContent    = gameIds.length;
+  document.getElementById('stat-rate').textContent     = totalQ ? pct(totalOk,totalQ) + '%' : '–';
+  document.getElementById('stat-mastered').textContent = mastered;
+  const totalMin = Math.round(totalDur / 60);
+  document.getElementById('stat-time').textContent = totalMin >= 60
+    ? Math.floor(totalMin/60) + 'h' + (totalMin%60) + 'm'
+    : totalMin + ' min';
+
+  // ── Grille jeux ──
+  const grid = document.getElementById('games-grid');
+  grid.innerHTML = '';
+
+  // Ordre : maîtrisé en premier, puis en-cours, puis nouveau, puis pas joué
+  const ORDER = { 'maîtrisé':0, 'en-cours':1, 'nouveau':2 };
+  const allIds = [...new Set([...Object.keys(meta), ...gameIds])];
+  allIds.sort((a,b) => {
+    const ma = data.games[a]?.mastery || 'nouveau';
+    const mb = data.games[b]?.mastery || 'nouveau';
+    return (ORDER[ma]??3) - (ORDER[mb]??3);
+  });
+
+  allIds.forEach(id => {
+    const m  = meta[id];
+    if (!m) return;
+    const g  = data.games[id];
+    const mastery = g?.mastery || 'nouveau';
+    const rate = g && g.totalQuestions ? pct(g.correctAnswers, g.totalQuestions) : null;
+
+    // Sparkline des 8 dernières sessions
+    let sparkHTML = '';
+    if (g && g.history.length) {
+      const last8 = g.history.slice(-8);
+      const maxS  = Math.max(...last8.map(h => h.maxScore || 1));
+      sparkHTML = last8.map(h => {
+        const r = h.maxScore ? h.score / h.maxScore : (h.questions ? h.correct / h.questions : 0);
+        const ht = Math.max(3, Math.round(r * 22));
+        const col = r >= 0.8 ? '#00c47a' : r >= 0.5 ? '#ffe066' : '#ff7070';
+        return `<div class="spark-bar" style="height:${ht}px;background:${col}"></div>`;
+      }).join('');
+    }
+
+    const card = document.createElement('div');
+    card.className = `game-card ${mastery === 'maîtrisé' ? 'mastered' : mastery}`;
+    card.innerHTML = `
+      <div class="gc-top">
+        <div class="gc-emoji">${m.emoji}</div>
+        <div class="gc-info">
+          <div class="gc-name">${m.name}</div>
+          <div class="gc-skill">${m.skill}</div>
+        </div>
+        <div class="mastery-badge ${mastery}">${
+          mastery === 'maîtrisé' ? '⭐ Maîtrisé'
+          : mastery === 'en-cours' ? '📈 En cours'
+          : '○ Nouveau'
+        }</div>
+      </div>
+      ${g ? `
+        <div class="success-bar-wrap">
+          <div class="success-bar" style="width:${rate ?? 0}%"></div>
+        </div>
+        <div class="gc-stats">
+          <div class="gc-stat"><strong>${g.plays}</strong> partie${g.plays>1?'s':''}</div>
+          ${rate !== null ? `<div class="gc-stat"><strong>${rate}%</strong> réussite</div>` : ''}
+          <div class="gc-stat">Dernière fois <strong>${formatDate(g.lastPlayed)}</strong></div>
+        </div>
+        ${sparkHTML ? `<div class="sparkline">${sparkHTML}</div>` : ''}
+      ` : `<div class="no-data">Pas encore joué</div>`}
+    `;
+    grid.appendChild(card);
+  });
+
+  // ── Activité récente ──
+  const actEl = document.getElementById('activity');
+  actEl.innerHTML = '';
+
+  const recent = [...data.sessions]
+    .reverse()
+    .slice(0, 15);
+
+  if (recent.length === 0) {
+    actEl.innerHTML = '<div class="no-data" style="padding:12px">Aucune activité enregistrée.</div>';
+    return;
+  }
+
+  recent.forEach(s => {
+    const m  = meta[s.gameId] || { name: s.gameId, emoji: '🎮' };
+    const rate = s.maxScore ? s.score / s.maxScore : null;
+    const cls  = rate !== null ? scoreClass(rate) : 'ok';
+    const scoreText = s.maxScore
+      ? `${s.score} / ${s.maxScore}`
+      : s.duration ? formatDuration(s.duration) : '–';
+
+    const row = document.createElement('div');
+    row.className = 'activity-row';
+    row.innerHTML = `
+      <div class="act-emoji">${m.emoji}</div>
+      <div class="act-info">
+        <div class="act-name">${m.name}</div>
+        <div class="act-date">${formatDate(s.date)}${s.duration ? ' · ' + formatDuration(s.duration) : ''}</div>
+      </div>
+      <div class="act-score ${cls}">${scoreText}</div>
+    `;
+    actEl.appendChild(row);
+  });
+}
+
+// ── Actions ───────────────────────────────────────────────────────────────
+function doExport() {
+  Tracker.exportJSON();
+}
+
+function doImport(input) {
+  const file = input.files[0];
+  if (!file) return;
+  Tracker.importJSON(file)
+    .then(() => { location.reload(); })
+    .catch(() => alert('Fichier invalide.'));
+}
+
+function doReset() {
+  if (!confirm('Supprimer toutes les données de progression de Max ?')) return;
+  localStorage.removeItem('maxplay_progress');
+  location.reload();
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────
+render();
+</script>
+</body>
+</html>

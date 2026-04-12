@@ -405,6 +405,53 @@ MaxPlay V0
 
 ---
 
+## Session 12 — 2026-04-12
+
+### Fait
+- [x] MJ-14 créé : La grille des bus — Matrices de Raven, 2 modes (Formes / Bus), 3 niveaux (ligne → colonne → les deux)
+
+### Idées capturées (pas encore planifiées)
+
+#### EP-015 · Suivi de progression (Carnet de Max)
+- Tracker les sessions : jeux joués, temps passé, scores, taux de réussite
+- Stockage : fichier JSON commité dans le repo git (voir D-020)
+- Interface parent `/suivi.html` : stats par jeu, forces/faiblesses, progression dans le temps
+- Accessible via bouton discret dans index.html (non visible pour Max)
+- Ce que Max voit : Le Garage (collection de bus débloqués selon maîtrise des jeux)
+
+#### EP-016 · Le Garage comme hub de progression
+- Garage = map centrale visible de Max (pas de score brut)
+- Chaque jeu maîtrisé → bus débloqué, visible dans le Garage
+- État visuel : carte grisée (pas joué) → normale (en cours) → étoile dorée (maîtrisé)
+- 3 états de maîtrise (Montessori) : ○ nouveau · ◑ en cours · ● maîtrisé
+- Depann2000 = dernier unlock (boss final, jeu exclusif)
+
+#### IDÉE · Garage comme mini-jeu
+- Jeu de garage interactif : réparation, nettoyage, changement de pièces, essence
+- Bus arrive sale/cassé → Max le répare → bus repart en condition
+- Mécanique : tap sur les zones (roue crevée, vitre cassée, jauge essence vide)
+- Progression : chaque bus débloqué peut venir au garage pour entretien
+- Lien avec suivi : bus qui "vieillissent" selon le temps ou les erreurs en jeu → besoin d'entretien
+
+#### IDÉE · Refonte du menu — 2 modes possibles
+- **Mode actuel** : boutons liste (aujourd'hui) → garder comme fallback / option
+- **Mode Map** : décor paysage animé (rue, arrêt de bus, immeubles Villejuif)
+  - Des gens qui attendent sur le trottoir → tap sur un personnage → lance le jeu associé
+  - Des bus qui arrivent → trouver le bon bus sur un panneau → mini-jeu de sélection
+  - Le panneau RATP devient la navigation elle-même (cohérence avec MJ-13)
+  - Chaque zone de la carte = famille de jeux (dépôt, arrêt, école, garage...)
+- Toggle entre les deux modes (bouton discret) ou décision unique plus tard
+- Familles naturelles : Couleurs/lignes (01-02), Nombres (03-04), Trajets (05), Garage (06-08-09), Sons (10-12), Monde (11), Arrêt (13), Logique (14)
+
+#### D-020 (décision à prendre) · Stockage progression
+- Option A : `localStorage` — offline, zéro serveur, perdu si navigateur effacé, non synchronisable
+- Option B : Fichier JSON dans git (`data/progress.json`) — commité manuellement, visible dans le repo, lisible
+- Option C : GitHub Gist API — 1 fichier JSON par appareil, synchronisable, nécessite token
+- Option D : Service backend léger (Supabase free tier) — multi-appareils, temps réel, complexité ++
+- **Recommandation** : Option A (localStorage) + export manuel JSON → git pour archivage ponctuel
+
+---
+
 ## Session 10 — 2026-03-17
 
 ### Fait

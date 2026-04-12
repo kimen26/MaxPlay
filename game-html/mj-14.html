@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<title>MJ-14 – La grille des bus</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; user-select:none; }
+html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; }
+
+#app { display:flex; flex-direction:column; height:100dvh; max-width:640px; margin:0 auto; position:relative; }
+
+/* ── Header ── */
+#hdr {
+  flex-shrink:0; display:flex; align-items:center; gap:10px;
+  padding:8px 12px; background:rgba(0,0,0,0.35);
+  border-bottom:2px solid rgba(255,255,255,0.08);
+}
+#hdr a { color:#fff; text-decoration:none; font-size:1.3rem;
+  background:rgba(255,255,255,0.12); border-radius:10px;
+  padding:6px 12px; font-weight:900; }
+#hdr a:active { background:rgba(255,255,255,0.25); }
+#htitle { flex:1; font-size:1.0rem; font-weight:900; }
+#score-badge {
+  background:#ffe066; color:#1a1a1a; font-weight:900;
+  border-radius:20px; padding:4px 14px; font-size:0.95rem; flex-shrink:0;
+}
+
+/* ── Sélecteur de mode ── */
+#mode-bar {
+  flex-shrink:0; display:flex; gap:6px; padding:8px 12px;
+  background:rgba(0,0,0,0.2); border-bottom:1px solid rgba(255,255,255,0.06);
+}
+.mode-btn {
+  flex:1; border:2px solid rgba(255,255,255,0.2); border-radius:12px;
+  background:rgba(255,255,255,0.06); color:#fff;
+  font-family:'Nunito',sans-serif; font-weight:900; font-size:0.82rem;
+  padding:7px 4px; cursor:pointer; transition:all 0.18s;
+  display:flex; flex-direction:column; align-items:center; gap:2px;
+}
+.mode-btn .mode-icon { font-size:1.2rem; }
+.mode-btn:active { transform:scale(0.94); }
+.mode-btn.active {
+  border-color:#ffe066; background:rgba(255,224,102,0.15); color:#ffe066;
+}
+
+/* ── Indicateur de niveau ── */
+#level-bar {
+  flex-shrink:0; display:flex; align-items:center; justify-content:center;
+  gap:8px; padding:4px 12px;
+}
+.lvl-dot {
+  width:10px; height:10px; border-radius:50%;
+  background:rgba(255,255,255,0.15); transition:background 0.3s;
+}
+.lvl-dot.done  { background:#00c47a; }
+.lvl-dot.active { background:#ffe066; box-shadow:0 0 6px #ffe066; }
+#level-label { font-size:0.78rem; font-weight:900; opacity:0.6; }
+
+/* ── Zone principale ── */
+#main { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:space-between; padding:8px 10px 6px; overflow:hidden; }
+
+/* ── Label question ── */
+#q-label {
+  font-size:1.05rem; font-weight:900; text-align:center;
+  background:rgba(255,255,255,0.08); border-radius:16px;
+  padding:7px 18px; flex-shrink:0; line-height:1.3;
+}
+
+/* ── Hint ── */
+#pattern-hint {
+  font-size:0.72rem; font-weight:700; opacity:0.5;
+  text-align:center; flex-shrink:0; padding:0 10px; line-height:1.4;
+  min-height:16px;
+}
+
+/* ── Grille 3×3 ── */
+#grid-wrap { flex-shrink:0; }
+
+#grid {
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  grid-template-rows:repeat(3, 1fr);
+  gap:6px;
+}
+
+/* Bordures colorées par ligne pour guider le regard */
+.cell {
+  background:rgba(255,255,255,0.06);
+  border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  border:3px solid transparent;
+  transition:border-color 0.2s, background 0.2s;
+  overflow:hidden;
+}
+.cell[data-row="0"] { border-color:rgba(100,180,255,0.25); }
+.cell[data-row="1"] { border-color:rgba(180,255,150,0.20); }
+.cell[data-row="2"] { border-color:rgba(255,180,100,0.20); }
+.cell[data-col="0"] { box-shadow:inset 3px 0 0 rgba(255,255,255,0.06); }
+
+/* Case mystère */
+.cell.mystery {
+  background:rgba(255,224,102,0.12) !important;
+  border:3px dashed #ffe066 !important;
+  animation:pulse-mystery 1.4s ease-in-out infinite;
+}
+@keyframes pulse-mystery {
+  0%,100% { box-shadow:0 0 0 0 rgba(255,224,102,0.45); }
+  50%      { box-shadow:0 0 0 8px rgba(255,224,102,0); }
+}
+.mystery-icon { font-size:2rem; animation:bounce-q 1.4s ease-in-out infinite; }
+@keyframes bounce-q {
+  0%,100% { transform:scale(1); }
+  50%      { transform:scale(1.18); }
+}
+
+/* Feedback */
+.cell.flash-ok { background:rgba(0,196,122,0.35) !important; border-color:#00c47a !important; animation:none; }
+@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+
+/* ── Choix ── */
+#choices-label {
+  font-size:0.75rem; font-weight:900; text-transform:uppercase;
+  letter-spacing:2px; opacity:0.45; text-align:center; flex-shrink:0;
+}
+#choices { display:flex; gap:8px; justify-content:center; flex-shrink:0; width:100%; }
+
+.choice-btn {
+  flex:1; max-width:160px;
+  background:rgba(255,255,255,0.08);
+  border:3px solid rgba(255,255,255,0.18);
+  border-radius:16px; padding:10px 6px 8px;
+  cursor:pointer;
+  display:flex; flex-direction:column; align-items:center; gap:6px;
+  transition:transform 0.15s, border-color 0.15s, background 0.15s;
+  min-height:80px;
+}
+.choice-btn:active { transform:scale(0.93); }
+.choice-btn:hover  { border-color:rgba(255,255,255,0.4); background:rgba(255,255,255,0.13); }
+.choice-btn.correct { border-color:#00c47a; background:rgba(0,196,122,0.2); animation:pop-ok 0.4s ease; }
+.choice-btn.wrong   { border-color:#ff4455; background:rgba(255,68,85,0.15); animation:shake-btn 0.35s ease; }
+@keyframes pop-ok { 0%{transform:scale(1)} 40%{transform:scale(1.1)} 100%{transform:scale(1)} }
+@keyframes shake-btn { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
+.choice-label { font-size:0.7rem; font-weight:900; opacity:0.65; background:rgba(255,255,255,0.1); border-radius:8px; padding:2px 8px; }
+
+/* ── Formes SVG (mode Formes) ── */
+.shape-svg { display:block; }
+
+/* ── Écran fin ── */
+#end-screen {
+  display:none; position:absolute; inset:0;
+  background:rgba(13,27,42,0.96);
+  flex-direction:column; align-items:center; justify-content:center;
+  gap:14px; z-index:20;
+}
+#end-screen.visible { display:flex; }
+#end-emoji { font-size:4rem; }
+#end-msg   { font-size:1.4rem; font-weight:900; text-align:center; padding:0 20px; }
+#end-score { font-size:1rem; color:#ffe066; font-weight:900; }
+#btn-replay {
+  background:linear-gradient(135deg,#00c47a,#00906a); color:#fff;
+  border:none; border-radius:20px;
+  font-family:'Nunito',sans-serif; font-weight:900;
+  font-size:1.05rem; padding:13px 34px; cursor:pointer;
+  box-shadow:0 4px 14px rgba(0,196,122,0.4); transition:transform 0.15s;
+}
+#btn-replay:active { transform:scale(0.95); }
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- Header -->
+  <div id="hdr">
+    <a href="index.html">←</a>
+    <span id="htitle">🔲 La grille</span>
+    <div id="score-badge">0 / 0</div>
+  </div>
+
+  <!-- Sélecteur mode -->
+  <div id="mode-bar">
+    <button class="mode-btn active" id="btn-mode-shapes" onclick="switchMode('shapes')">
+      <span class="mode-icon">🔴🟦</span>
+      <span>Formes</span>
+    </button>
+    <button class="mode-btn" id="btn-mode-bus" onclick="switchMode('bus')">
+      <span class="mode-icon">🚌</span>
+      <span>Bus</span>
+    </button>
+  </div>
+
+  <!-- Indicateur de niveau -->
+  <div id="level-bar">
+    <div class="lvl-dot active" id="dot-0"></div>
+    <div class="lvl-dot" id="dot-1"></div>
+    <div class="lvl-dot" id="dot-2"></div>
+    <div class="lvl-dot" id="dot-3"></div>
+    <div class="lvl-dot" id="dot-4"></div>
+    <span id="level-label">Round 1/5</span>
+  </div>
+
+  <!-- Zone de jeu -->
+  <div id="main">
+    <div id="q-label">Qu'est-ce qui manque ?</div>
+    <div id="pattern-hint"></div>
+    <div id="grid-wrap"><div id="grid"></div></div>
+    <div id="choices-label">Choisis ↓</div>
+    <div id="choices"></div>
+  </div>
+
+  <!-- Fin de partie -->
+  <div id="end-screen">
+    <div id="end-emoji">🎉</div>
+    <div id="end-msg"></div>
+    <div id="end-score"></div>
+    <button id="btn-replay" onclick="startGame()">Rejouer !</button>
+    <a href="index.html" style="color:#ffe066;font-weight:900;font-size:0.9rem;margin-top:4px;">← Menu</a>
+  </div>
+</div>
+
+<script src="js/bus-svg.js"></script>
+<script src="js/data.js"></script>
+<script src="js/victory-sounds.js"></script>
+<script src="js/tracker.js"></script>
+<script>
+// ═══════════════════════════════════════════════════════════════
+//  MJ-14 — La grille (Matrices de Raven)
+//  2 modes : Formes géo | Bus IDFM
+//  3 niveaux : pattern ligne → colonne → les deux
+// ═══════════════════════════════════════════════════════════════
+
+const ROUNDS_PER_GAME = 5;
+let currentMode = 'shapes'; // 'shapes' | 'bus'
+let score = 0;
+let round = 0;
+let answerKey = null;   // clé unique de la bonne réponse
+let answered  = false;
+
+// ── Niveaux par round ──────────────────────────────────────────
+// round 1-2 → niveau A (pattern en LIGNE)
+// round 3-4 → niveau B (pattern en COLONNE)
+// round 5   → niveau C (ligne ET colonne)
+function getLevel(r) {
+  if (r <= 2) return 'A';
+  if (r <= 4) return 'B';
+  return 'C';
+}
+
+// ─────────────────────────────────────────────────────────────
+//  FORMES GÉOMÉTRIQUES
+// ─────────────────────────────────────────────────────────────
+const SHAPES = ['circle','square','diamond','triangle'];
+const FILLS  = ['empty','solid','striped'];
+
+const SHAPE_COLORS = {
+  row0: '#5b8fff',  // bleu
+  row1: '#ff7043',  // orange
+  row2: '#66bb6a',  // vert
+  col0: '#5b8fff',
+  col1: '#ff7043',
+  col2: '#66bb6a',
+};
+
+// Couleur selon la règle active
+function shapeColor(r, c, level) {
+  if (level === 'A') return SHAPE_COLORS['row'+r]; // varie par ligne
+  if (level === 'B') return SHAPE_COLORS['col'+c]; // varie par colonne
+  // niveau C : couleur = combo ligne+colonne (on garde par ligne pour la couleur)
+  return SHAPE_COLORS['row'+r];
+}
+
+// Génère un SVG pour une forme
+function shapeSVG(shape, fill, color, size) {
+  const s = size;
+  const c = Math.floor(s / 2);
+  const r = Math.floor(s * 0.38);
+  let shapeEl = '';
+
+  if (shape === 'circle') {
+    shapeEl = `<circle cx="${c}" cy="${c}" r="${r}"/>`;
+  } else if (shape === 'square') {
+    const off = Math.floor(s * 0.15);
+    shapeEl = `<rect x="${off}" y="${off}" width="${s - off*2}" height="${s - off*2}" rx="4"/>`;
+  } else if (shape === 'diamond') {
+    shapeEl = `<polygon points="${c},${c-r} ${c+r},${c} ${c},${c+r} ${c-r},${c}"/>`;
+  } else { // triangle
+    shapeEl = `<polygon points="${c},${c-r} ${c+r},${c+r} ${c-r},${c+r}"/>`;
+  }
+
+  let fillAttr = 'none';
+  let strokeW  = Math.max(2, Math.floor(s * 0.05));
+  let extras   = '';
+
+  if (fill === 'solid') {
+    fillAttr = color;
+  } else if (fill === 'empty') {
+    fillAttr = 'none';
+  } else { // striped
+    fillAttr = `url(#str-${shape.slice(0,2)})`;
+    extras = `<defs>
+      <pattern id="str-${shape.slice(0,2)}" width="5" height="5" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+        <line x1="0" y1="0" x2="0" y2="5" stroke="${color}" stroke-width="2.5"/>
+      </pattern>
+    </defs>`;
+  }
+
+  return `<svg viewBox="0 0 ${s} ${s}" width="${s}" height="${s}" xmlns="http://www.w3.org/2000/svg">
+    ${extras}
+    <g fill="${fillAttr}" stroke="${color}" stroke-width="${strokeW}">${shapeEl}</g>
+  </svg>`;
+}
+
+// Génère un token unique pour une forme+fill
+function shapeKey(shape, fill) { return shape + '|' + fill; }
+function parseShapeKey(k) { const [s,f] = k.split('|'); return {shape:s,fill:f}; }
+
+function generateShapesPuzzle(roundNum) {
+  const level = getLevel(roundNum);
+
+  // Choisir 3 formes (axe ligne ou axe colonne selon niveau)
+  const sh = [...SHAPES].sort(() => Math.random()-0.5).slice(0,3);
+  const fi = [...FILLS].sort(() => Math.random()-0.5).slice(0,3);
+
+  // Construction grille 3×3
+  // Niveau A : forme varie par LIGNE (même forme sur toute la ligne)
+  //            fill fixe sur toute la grille (même fill partout)
+  // Niveau B : forme fixe sur toute la grille
+  //            fill varie par COLONNE (même fill sur toute la colonne)
+  // Niveau C : forme varie par LIGNE, fill varie par COLONNE
+  const fixedFill  = fi[0];
+  const fixedShape = sh[0];
+
+  const grid = [];
+  for (let r = 0; r < 3; r++) {
+    const row = [];
+    for (let c = 0; c < 3; c++) {
+      let shape, fill;
+      if (level === 'A') {
+        shape = sh[r];
+        fill  = fixedFill;
+      } else if (level === 'B') {
+        shape = fixedShape;
+        fill  = fi[c];
+      } else { // C
+        shape = sh[r];
+        fill  = fi[c];
+      }
+      row.push({ shape, fill, color: shapeColor(r, c, level) });
+    }
+    grid.push(row);
+  }
+
+  // Réponse correcte = [2][2]
+  const correct = grid[2][2];
+  answerKey = shapeKey(correct.shape, correct.fill);
+
+  // Distracteurs : combinaisons qui ne sont PAS la bonne réponse
+  const allCombos = [];
+  SHAPES.forEach(s => FILLS.forEach(f => {
+    if (shapeKey(s,f) !== answerKey) allCombos.push({shape:s, fill:f});
+  }));
+  const distractors = allCombos.sort(() => Math.random()-0.5).slice(0,2)
+    .map(d => ({ ...d, color: correct.color }));
+
+  const choices = [correct, ...distractors].sort(() => Math.random()-0.5);
+
+  const hints = {
+    A: 'Regarde : chaque ligne a la même forme !',
+    B: 'Regarde : chaque colonne a le même remplissage !',
+    C: 'Ligne = forme, colonne = remplissage. Trouve les deux !',
+  };
+
+  return { grid, choices, hint: hints[level], level, type: 'shapes' };
+}
+
+// ─────────────────────────────────────────────────────────────
+//  BUS IDFM
+// ─────────────────────────────────────────────────────────────
+const BUS_POOL = LIGNES.filter(l =>
+  ['162','172','185','286','323','V2','V3','V4','132','184','186','47'].includes(l.num)
+);
+
+function generateBusPuzzle(roundNum) {
+  const level = getLevel(roundNum);
+  const sh = [...BUS_POOL].sort(() => Math.random()-0.5);
+  const rowLines = sh.slice(0, 3);
+  const colLines = sh.slice(3, 6);
+
+  // Niveau A : même bus sur toute la ligne
+  // Niveau B : même bus sur toute la colonne
+  // Niveau C : bus[r][c] = rowLines[r] (couleur) + colLines[c] (numéro affiché)
+  //            → ici on affiche le bus de la colonne mais dans la couleur de la ligne
+
+  const grid = [];
+  for (let r = 0; r < 3; r++) {
+    const row = [];
+    for (let c = 0; c < 3; c++) {
+      let line;
+      if (level === 'A') {
+        line = rowLines[r];
+      } else if (level === 'B') {
+        line = colLines[c];
+      } else { // C : couleur de ligne, numéro de colonne
+        line = {
+          num: colLines[c].num,
+          color: rowLines[r].color,
+          textColor: rowLines[r].textColor,
+          name: `Bus ${colLines[c].num}`,
+        };
+      }
+      row.push(line);
+    }
+    grid.push(row);
+  }
+
+  const correct = grid[2][2];
+  answerKey = level === 'C'
+    ? `${correct.color}|${correct.num}`
+    : correct.num;
+
+  // Distracteurs
+  let distractors;
+  if (level === 'C') {
+    // Combos couleur × numéro qui ne sont pas la bonne réponse
+    const combos = [];
+    rowLines.forEach(rl => colLines.forEach(cl => {
+      const k = `${rl.color}|${cl.num}`;
+      if (k !== answerKey) combos.push({ num:cl.num, color:rl.color, textColor:rl.textColor });
+    }));
+    distractors = combos.sort(() => Math.random()-0.5).slice(0,2);
+  } else {
+    const usedNums = rowLines.map(l => l.num).concat(colLines.map(l => l.num));
+    distractors = BUS_POOL
+      .filter(l => !usedNums.includes(l.num))
+      .sort(() => Math.random()-0.5)
+      .slice(0,2);
+  }
+
+  const choices = [correct, ...distractors].sort(() => Math.random()-0.5);
+
+  const hints = {
+    A: 'Chaque ligne a toujours le même bus !',
+    B: 'Chaque colonne a toujours le même bus !',
+    C: 'La couleur change par ligne, le numéro par colonne !',
+  };
+
+  return { grid, choices, hint: hints[level], level, type: 'bus' };
+}
+
+// ─────────────────────────────────────────────────────────────
+//  RENDU
+// ─────────────────────────────────────────────────────────────
+function renderPuzzle(puzzle) {
+  answered = false;
+  const { grid, choices, hint, type } = puzzle;
+
+  document.getElementById('pattern-hint').textContent = hint;
+  document.getElementById('q-label').textContent =
+    type === 'bus' ? 'Quel bus manque dans la grille ?' : 'Qu\'est-ce qui manque ?';
+
+  // Taille de grille
+  const mainEl = document.getElementById('main');
+  const available = Math.min(
+    mainEl.clientWidth - 20,
+    mainEl.clientHeight * 0.50
+  );
+  const cellSize = Math.floor((available - 12) / 3);
+  const busFit   = Math.floor(cellSize * 0.84);
+  const shapeFit = Math.floor(cellSize * 0.60);
+
+  const gridEl = document.getElementById('grid');
+  gridEl.style.width  = available + 'px';
+  gridEl.style.height = available + 'px';
+  gridEl.innerHTML = '';
+
+  for (let r = 0; r < 3; r++) {
+    for (let c = 0; c < 3; c++) {
+      const isMystery = (r === 2 && c === 2);
+      const cell = document.createElement('div');
+      cell.className = 'cell';
+      cell.dataset.row = r;
+      cell.dataset.col = c;
+      cell.style.width  = cellSize + 'px';
+      cell.style.height = cellSize + 'px';
+
+      if (isMystery) {
+        cell.classList.add('mystery');
+        cell.innerHTML = `<span class="mystery-icon">❓</span>`;
+      } else {
+        const item = grid[r][c];
+        cell.innerHTML = type === 'bus'
+          ? busSVG(item.color, item.textColor, item.num, busFit)
+          : shapeSVG(item.shape, item.fill, item.color, shapeFit);
+      }
+      gridEl.appendChild(cell);
+    }
+  }
+
+  // ── Choix ──
+  const choicesEl = document.getElementById('choices');
+  choicesEl.innerHTML = '';
+  const cFit = type === 'bus'
+    ? Math.min(80, Math.floor(available / 3) - 12)
+    : Math.floor(cellSize * 0.52);
+
+  choices.forEach(item => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+
+    let key, content, label;
+    if (type === 'bus') {
+      key     = puzzle.level === 'C' ? `${item.color}|${item.num}` : item.num;
+      content = busSVG(item.color, item.textColor, item.num, cFit);
+      label   = `Ligne ${item.num}`;
+    } else {
+      key     = shapeKey(item.shape, item.fill);
+      content = shapeSVG(item.shape, item.fill, item.color, Math.max(48, cFit));
+      const shapeName  = {circle:'Rond',square:'Carré',diamond:'Losange',triangle:'Triangle'}[item.shape];
+      const fillName   = {empty:'Vide',solid:'Plein',striped:'Rayé'}[item.fill];
+      label = `${shapeName} ${fillName}`;
+    }
+
+    btn.dataset.key = key;
+    btn.innerHTML = content + `<span class="choice-label">${label}</span>`;
+    btn.addEventListener('click', () => onChoice(key, btn, puzzle));
+    choicesEl.appendChild(btn);
+  });
+
+  speak(type === 'bus' ? 'Quel bus manque dans la grille ?' : "Qu'est-ce qui manque dans la grille ?");
+}
+
+// ─────────────────────────────────────────────────────────────
+//  INTERACTION
+// ─────────────────────────────────────────────────────────────
+function onChoice(key, btn, puzzle) {
+  if (answered) return;
+  answered = true;
+
+  if (key === answerKey) {
+    score++;
+    btn.classList.add('correct');
+    if (typeof Tracker !== 'undefined') Tracker.logAnswer(true);
+
+    // Révèle la case mystère
+    const mystery = document.querySelector('.cell.mystery');
+    if (mystery) {
+      const item = puzzle.grid[2][2];
+      const gridW = parseInt(document.getElementById('grid').style.width);
+      const cs    = Math.floor((gridW - 12) / 3);
+      mystery.classList.remove('mystery');
+      mystery.style.animation = 'none';
+      mystery.innerHTML = puzzle.type === 'bus'
+        ? busSVG(item.color, item.textColor, item.num, Math.floor(cs * 0.84))
+        : shapeSVG(item.shape, item.fill, item.color, Math.floor(cs * 0.60));
+      mystery.classList.add('flash-ok');
+    }
+    playSuccessBeep();
+    updateScore();
+    setTimeout(nextRound, 1100);
+  } else {
+    btn.classList.add('wrong');
+    if (typeof Tracker !== 'undefined') Tracker.logAnswer(false);
+    playErrorSound();
+    setTimeout(() => {
+      document.querySelectorAll('.choice-btn').forEach(b => {
+        if (b.dataset.key === answerKey) b.classList.add('correct');
+      });
+      setTimeout(nextRound, 900);
+    }, 400);
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+//  SONS / TTS
+// ─────────────────────────────────────────────────────────────
+function playSuccessBeep() {
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    [523, 659, 784].forEach((freq, i) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.frequency.value = freq;
+      osc.type = 'triangle';
+      gain.gain.setValueAtTime(0.18, ctx.currentTime + i * 0.1);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + i * 0.1 + 0.18);
+      osc.start(ctx.currentTime + i * 0.1);
+      osc.stop(ctx.currentTime + i * 0.1 + 0.2);
+    });
+  } catch(e) {}
+}
+
+function speak(text) {
+  if (!window.speechSynthesis) return;
+  speechSynthesis.cancel();
+  const utt = new SpeechSynthesisUtterance(text);
+  utt.lang = 'fr-FR'; utt.rate = 0.9;
+  speechSynthesis.speak(utt);
+}
+
+// ─────────────────────────────────────────────────────────────
+//  SCORE / ROUNDS / NIVEAUX
+// ─────────────────────────────────────────────────────────────
+function updateScore() {
+  document.getElementById('score-badge').textContent = `${score} / ${round}`;
+}
+
+function updateLevelDots() {
+  for (let i = 0; i < ROUNDS_PER_GAME; i++) {
+    const dot = document.getElementById('dot-' + i);
+    if (i < round - 1)      dot.className = 'lvl-dot done';
+    else if (i === round - 1) dot.className = 'lvl-dot active';
+    else                      dot.className = 'lvl-dot';
+  }
+  document.getElementById('level-label').textContent = `Round ${round}/${ROUNDS_PER_GAME}`;
+}
+
+function nextRound() {
+  round++;
+  if (round > ROUNDS_PER_GAME) { showEnd(); return; }
+  updateScore();
+  updateLevelDots();
+  const puzzle = currentMode === 'bus' ? generateBusPuzzle(round) : generateShapesPuzzle(round);
+  renderPuzzle(puzzle);
+}
+
+function showEnd() {
+  const pct = score / ROUNDS_PER_GAME;
+  const emoji = pct >= 0.8 ? '🏆' : pct >= 0.5 ? '🎉' : '🚌';
+  const msg   = pct >= 0.8 ? 'Incroyable ! Tu es un champion !'
+              : pct >= 0.5 ? 'Bien joué ! Continue comme ça !'
+              : "C'est dur, mais tu t'améliores !";
+  document.getElementById('end-emoji').textContent = emoji;
+  document.getElementById('end-msg').textContent   = msg;
+  document.getElementById('end-score').textContent =
+    `${score} bonne${score>1?'s':''} réponse${score>1?'s':''} sur ${ROUNDS_PER_GAME}`;
+  document.getElementById('end-screen').classList.add('visible');
+  playEndSound(score, ROUNDS_PER_GAME);
+  speak(msg);
+  if (typeof Tracker !== 'undefined') Tracker.endSession(score, ROUNDS_PER_GAME);
+}
+
+// ─────────────────────────────────────────────────────────────
+//  MODE SWITCH
+// ─────────────────────────────────────────────────────────────
+function switchMode(mode) {
+  currentMode = mode;
+  document.getElementById('btn-mode-shapes').classList.toggle('active', mode === 'shapes');
+  document.getElementById('btn-mode-bus').classList.toggle('active', mode === 'bus');
+  startGame();
+}
+
+// ─────────────────────────────────────────────────────────────
+//  START
+// ─────────────────────────────────────────────────────────────
+function startGame() {
+  score = 0;
+  round = 1;
+  answered = false;
+  document.getElementById('end-screen').classList.remove('visible');
+  updateScore();
+  updateLevelDots();
+  const puzzle = currentMode === 'bus' ? generateBusPuzzle(round) : generateShapesPuzzle(round);
+  renderPuzzle(puzzle);
+}
+
+startGame();
+</script>
+</body>
+</html>

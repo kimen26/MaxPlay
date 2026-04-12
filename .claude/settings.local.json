@@ -2,46 +2,12 @@
   "permissions": {
     "allow": [
       "WebFetch(domain:github.com)",
-      "WebFetch(domain:raw.githubusercontent.com)",
-      "WebFetch(domain:docs.anthropic.com)",
+      "WebSearch",
       "Bash(npm install)",
       "Bash(npm run *)",
       "Bash(npx tsc --noEmit)",
       "Bash(npx vite --host)",
-      "Bash(python3 -c \"from PIL import Image; img = Image.open\\(r''c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\temp\\\\image_samples\\\\BUS1.png''\\).convert\\(''RGBA''\\); data = img.getdata\\(\\); new = [\\(0,0,0,0\\) if \\(r>240 and g>240 and b>240\\) else \\(r,g,b,a\\) for r,g,b,a in data]; img.putdata\\(new\\); img.save\\(r''c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\game\\\\public\\\\assets\\\\sprites\\\\bus-side-neutral.png''\\); print\\(''OK''\\)\")",
-      "Bash(python -c \"from PIL import Image; img = Image.open\\(r''c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\temp\\\\image_samples\\\\BUS1.png''\\).convert\\(''RGBA''\\); data = img.getdata\\(\\); new = [\\(0,0,0,0\\) if \\(r>240 and g>240 and b>240\\) else \\(r,g,b,a\\) for r,g,b,a in data]; img.putdata\\(new\\); img.save\\(r''c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\game\\\\public\\\\assets\\\\sprites\\\\bus-side-neutral.png''\\); print\\(''OK''\\)\")",
-      "Bash(python -m pip install pillow)",
-      "Bash(python -c \":*)",
-      "Bash(ls \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\temp\"\" 2>/dev/null || echo \"no temp \")",
-      "Bash(ls \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\game-html\"\" 2>/dev/null || echo \"Directory does not exist \")",
-      "Bash(gh repo view affaan-m/everything-claude-code --json description,readme)",
-      "Bash(curl -s https://api.github.com/repos/affaan-m/everything-claude-code)",
-      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d.get\\(''description'',''''\\)\\)\")",
-      "Bash(gh auth status)",
-      "Bash(ssh -T git@github.com)",
-      "Bash(mkdir -p ~/.ssh)",
-      "Bash(ssh-keyscan -H github.com)",
-      "Bash(~/.ssh/known_hosts)",
-      "Bash(GIT_SSH_COMMAND=\"ssh -i ~/.ssh/id_ed25519.pub -o IdentitiesOnly=yes\" git push origin master)",
-      "Bash(cat ~/.claude/projects/*/hooks.json)",
-      "Bash(python3 -m json.tool)",
-      "Bash(node \"C:/Users/kimen/.claude/ecc-root/scripts/hooks/run-with-flags.js\" \"test\" \"scripts/hooks/check-console-log.js\" \"standard\")",
-      "Bash(node -e \"const s = require\\(require\\(''os''\\).homedir\\(\\) + ''/.claude/settings.json''\\); console.log\\(''Hooks définis:'', Object.keys\\(s.hooks\\).join\\('', ''\\)\\); console.log\\(''Total hooks:'', Object.values\\(s.hooks\\).flat\\(\\).length\\);\")",
-      "Bash(BASE=\"c:/ProjetsPerso/Claude_Projects/MaxPlay/game/public/assets/sounds\" __NEW_LINE_103e7d9cec486fb6__ echo \"=== Creazilla bus door ===\" curl -L -o \"$BASE/bus/door.wav\" \"https://creazilla.com/media/audio/15474030/\" -H \"User-Agent: Mozilla/5.0\" --max-time 15 -w \"Status: %{http_code}, Size: %{size_download}\\\\n\" -s -I)",
-      "Read(//c/ProjetsPerso/Claude_Projects/MaxPlay/**)",
-      "Bash(ls c:/ProjetsPerso/Claude_Projects/MaxPlay/docs/*.html)",
-      "Bash(ls -la \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\game\\\\public\\\\assets\\\\sprites\\\\vehicles\\\\bus\"\" 2>/dev/null || ls -la /c/ProjetsPerso/Claude_Projects/MaxPlay/game/public/assets/sprites/vehicles/bus/ 2>/dev/null || echo \"Path not found \")",
-      "Bash(gh run:*)",
-      "Bash(node -e \":*)",
-      "Bash(git push:*)",
-      "Read(//c//**)",
-      "Bash(grep -E \"\\\\.\\(png|jpg|json\\)$\")",
-      "Bash(find /c/Users/kimen -type d -name *tiles*)",
-      "Bash(find /c/Users/kimen -type d -name *assets*)",
-      "Bash(find /c/ProjetsPerso/Claude_Projects/MaxPlay -name *.png -type f)",
-      "Bash(done)",
-      "Bash(find /c/ProjetsPerso/Claude_Projects/Carte_Tiled/Modern_Exteriors_32x32 -maxdepth 2 -type f \\\\\\(-name *.md -o -name README* -o -name *.txt -o -name *guide* -o -name *.json \\\\\\))",
-      "Bash(__NEW_LINE_f0492545078ec18a__ echo:*)"
+      "Bash(node -e \"*:*)"
     ]
   },
   "hooks": {
@@ -52,26 +18,6 @@
           {
             "type": "command",
             "command": "cd \"c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\game\" && npx tsc --noEmit 2>&1 | head -20"
-          }
-        ]
-      },
-      {
-        "matcher": "ExitPlanMode",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "echo '[MaxPlay] ⚠️  Plan validé — OBLIGATOIRE avant de coder : 1) Ajouter les tâches dans tasks/BACKLOG.md  2) Créer les TodoWrite correspondants'"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "matcher": "*",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "echo '[MaxPlay] ✅ Checklist fin de session : tasks/BACKLOG.md épics à jour ? · memory/MEMORY.md état à jour ? · VISION.md nouvelles règles ? · ~/.claude/projects/.../memory/MEMORY.md mis à jour ?'"
           }
         ]
       }

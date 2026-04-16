@@ -21,7 +21,7 @@
 ---
 
 ### 2. FICHES DE PERSONNAGES (9 fiches complètes)
-📍 `docs/Eneagramme/personnages/`
+📍 `docs/narration/Eneagramme/personnages/`
 
 Chaque fiche contient :
 - **Identité** : prénom, type, aile, centre, couleur, animal
@@ -50,7 +50,7 @@ Chaque fiche contient :
 ---
 
 ### 3. SITUATIONS DE VIE CARTOGRAPHIEES
-📍 `docs/Eneagramme/situations/`
+📍 `docs/narration/Eneagramme/situations/`
 
 #### `emotions-universelles.md`
 **9 situations** × **9 types** = 81 réactions détaillées
@@ -77,7 +77,7 @@ Matrice des relations entre les 9 personnages
 ---
 
 ### 4. RESSOURCES POUR AUTEURS
-📍 `docs/Eneagramme/ressources/`
+📍 `docs/narration/Eneagramme/ressources/`
 
 | Fichier | Contenu |
 |---------|---------|
@@ -89,7 +89,7 @@ Matrice des relations entre les 9 personnages
 ---
 
 ### 5. ANALYSE DES PERSONNAGES DE MANGA/ANIME
-📍 `docs/analyse-personnages-manga-enneagramme.md`
+📍 `docs/narration/analyse-personnages-manga-enneagramme.md`
 
 **24 personnages majeurs analysés** avec :
 
@@ -102,7 +102,7 @@ Matrice des relations entre les 9 personnages
 ---
 
 ### 6. ANALYSE DES PERSONNAGES POKÉMON
-📍 `docs/analyse-personnages-pokemon-enneagramme.md`
+📍 `docs/narration/analyse-personnages-pokemon-enneagramme.md`
 
 **30+ personnages analysés** avec :
 
@@ -155,7 +155,7 @@ Chaque personnage avec : essence narrative, motivation, arc de transformation, m
 ---
 
 ### 7. NIVEAUX DE DÉVELOPPEMENT RISO-HUDSON
-📍 `docs/enneagramme-9-niveaux-riso-hudson.md`
+📍 `docs/narration/enneagramme-9-niveaux-riso-hudson.md`
 
 **9 types × 9 niveaux** avec pour chacun :
 - Comportements caractéristiques
@@ -222,13 +222,13 @@ Chaque personnage avec : essence narrative, motivation, arc de transformation, m
 
 ```
 ÉTAPE 1 : Choisir le personnage central
-→ Consulter : docs/Eneagramme/personnages/type-XX-nom.md
+→ Consulter : docs/narration/Eneagramme/personnages/type-XX-nom.md
 
 ÉTAPE 2 : Choisir la situation (si universelle)
-→ Consulter : docs/Eneagramme/situations/emotions-universelles.md
+→ Consulter : docs/narration/Eneagramme/situations/emotions-universelles.md
 
 ÉTAPE 3 : Vérifier le niveau de santé
-→ Consulter : docs/enneagramme-9-niveaux-riso-hudson.md
+→ Consulter : docs/narration/enneagramme-9-niveaux-riso-hudson.md
 
 ÉTAPE 4 : Structurer la scène
 → Consulter : Skill narrative-craft (template, beats)
@@ -237,7 +237,7 @@ Chaque personnage avec : essence narrative, motivation, arc de transformation, m
 → Consulter : Skill narrative-storytelling
 
 ÉTAPE 6 : Vérifier la cohérence
-→ Consulter : docs/Eneagramme/ressources/guide-auteur.md
+→ Consulter : docs/narration/Eneagramme/ressources/guide-auteur.md
 ```
 
 ### Pour créer un nouvel épisode
@@ -250,7 +250,7 @@ Chaque personnage avec : essence narrative, motivation, arc de transformation, m
 
 ### Pour analyser un personnage de référence
 
-→ Consulter : `docs/analyse-personnages-manga-enneagramme.md`
+→ Consulter : `docs/narration/analyse-personnages-manga-enneagramme.md`
 
 Exemple : comment Naruto (type 7) gère la perte de Jiraya → inspiration pour comment Léo pourrait gérer une perte.
 

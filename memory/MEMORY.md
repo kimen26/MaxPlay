@@ -26,6 +26,22 @@ Voir `docs/MAX_PROFILE.md` pour le profil complet.
 - **index.html** : jingle RATP ou SNCF aléatoire au chargement (autoplay + fallback premier clic)
 - **Prochaine étape** : EP-015 (Carnet de Max / Garage progression) + refonte menu (carte ville)
 
+## Projet narration (2026-04-13, session 12)
+
+- **Histoires écrites** : "Le Pont Cassé" — Léo (#7) + Élia (#1) + Sam (#8), thème causalité/responsabilité, V1 complète
+- **Comité de lecture** : 7 profils internes (éditeur, prof français, philo, Boo 4 ans, enfant 8 ans, père, mère) + 8 cultures (USA, DE, CN, NG, JP, MA, BR, RU)
+- **3 actions V2** : couper chute italique · donner à Élia un vrai tort · ralentir retournement de Léo
+- **Univers macro** : en construction — `docs/univers/UNIVERS-NOTES-BRUTES.md`
+  - Post-Grande Tempête de Phos (Éveil des consciences, Tisseurs d'Ombre vaincus)
+  - Conscience créative + Totems de Pensée (Voile Janus)
+  - Gardiens de l'Équilibre (Présence Pure, micro-gestes)
+  - Grand Cycle 22k ans (Kali Yuga → Printemps de l'Éveil)
+  - Compagnons animaux hybrides liés à chaque enfant
+  - Baron (voyageur temporel, Gardien des Portes)
+  - **Nom de l'univers** : pas encore choisi (21 candidats dont Phosyntha, Egryntha, Veynara)
+- **Personnages nommés** : Léo (#7 héros), Sam (#8), Élia (#1), Lila (#9), Camille (#2), Victor (#3), Iris (#4), Theo (#5), Noa (#6)
+- **Docs narration** : `docs/narration/` (SYNTHESE + Eneagramme/) · `docs/univers/`
+
 ## Architecture déploiement (2026-03-21)
 
 ```
@@ -79,15 +95,23 @@ GitHub Pages → kimen26.github.io/MaxPlay/
 | Transition | asphalt → sidewalk → bâtiment. Jamais asphalt direct → bâtiment. |
 | Layers | `ground` (drawTile, zéro null), `objects` (drawObject, taille native), `decoration` |
 
+## Notes brutes en cours
+
+- [notes-brutes-univers.md](notes-brutes-univers.md) — égregores, Grand Cycle, question fractale personnages/rêve (2026-04-16)
+
 ## Carte des fichiers
 
 | Fichier | Rôle |
 |---------|------|
 | `tasks/BACKLOG.md` | Source de vérité : épics, tâches, décisions, leçons |
+| `docs/README.md` | Carte de toute la documentation — point d'entrée |
 | `docs/MAX_PROFILE.md` | Profil complet Max : lignes bus, couleurs IDFM, intérêts |
 | `docs/VISION.md` | Décisions prises + questions ouvertes |
 | `docs/ratp-colors.json` | Source de vérité couleurs+terminus : 26 actives + 362 référentiel |
-| `game-html/` | mj-01 à mj-14 + max-adventure (vanilla HTML/JS) — source déployée |
+| `docs/narration/SYNTHESE.md` | Vue d'ensemble projet narratif (personnages, ennéagramme) |
+| `docs/narration/Eneagramme/` | 9 fiches personnages + situations + ressources auteur |
+| `docs/univers/UNIVERS-NOTES-BRUTES.md` | Matière brute univers macro (Éveil, Compagnons, Janus, Baron...) |
+| `game-html/` | mj-01 à mj-17 + max-adventure (vanilla HTML/JS) — source déployée |
 | `game-html/js/tracker.js` | Suivi progression localStorage — sessions, scores, maîtrise |
 | `game-html/suivi.html` | Dashboard parent — stats, sparklines, export/import JSON |
 | `game-html/js/data.js` | LIGNES (26 actives), DESTINATIONS, getLineDisplayName() |

@@ -1,120 +1,74 @@
-# 🚌 MaxPlay
+# docs/ — Carte de la documentation MaxPlay
 
-> Jeux éducatifs pour **Max** (4 ans), passionné de bus — Villejuif & RATP
-> Apprendre en jouant avec les vraies lignes IDFM
+> Ce dossier contient toute la documentation du projet : jeux, narration, univers, profil Max.  
+> **Il ne contient aucun fichier déployé** (les jeux sont dans `game-html/`).
 
-🌐 **Jouer en ligne** : [kimen26.github.io/MaxPlay](https://kimen26.github.io/MaxPlay/)
-
----
-
-## 🎮 Les 7 Jeux de Max
-
-| Jeu | Description | Compétence |
-|-----|-------------|------------|
-| **MJ-01** 🎨 [Quelle couleur ?](https://kimen26.github.io/MaxPlay/mj-01.html) | Devine la couleur du bus | Couleurs + TTS |
-| **MJ-02** 🔢 [Quel numéro ?](https://kimen26.github.io/MaxPlay/mj-02.html) | Lis le numéro sur le bus | Reconnaissance visuelle |
-| **MJ-02b** 🔊 [Devine le numéro](https://kimen26.github.io/MaxPlay/mj-02b.html) | Écoute et trouve le numéro | **TTS** + 25+ lignes |
-| **MJ-03** 🪑 [La bonne place](https://kimen26.github.io/MaxPlay/mj-03b.html) | Compte les passagers | Calcul mental |
-| **MJ-04** 📖 [Complète la phrase](https://kimen26.github.io/MaxPlay/mj-04.html) | Lis et complète | Lecture contextuelle |
-| **MJ-05** 🎯 [Où va ce bus ?](https://kimen26.github.io/MaxPlay/mj-05.html) | Destinations RATP | Géographie |
-| **MJ-06** 🅿️ [Au garage !](https://kimen26.github.io/MaxPlay/mj-06.html) | Range les bus par couleur | Logique + motricité |
-| **MJ-07** 🎮 [Le Bac à Sable](https://kimen26.github.io/MaxPlay/mj-07.html) | Conduis ton bus ! | Sandbox Phaser |
+> **Deux pôles distincts** : voir le routing en tête de [CLAUDE.md](../CLAUDE.md).
+> - **JEU** → [jeux/](jeux/)
+> - **NARRATION / UNIVERS** → [narration/](narration/) et [univers/](univers/)
 
 ---
 
-## 🏗️ Architecture
+## Structure
 
 ```
-MaxPlay/
-├── game-html/          ← 8 mini-jeux HTML/JS (déployés sur GitHub Pages)
-│   ├── index.html      ← Menu principal
-│   ├── mj-01.html      ← Quelle couleur ?
-│   ├── mj-02.html      ← Quel numéro ? (classique)
-│   ├── mj-02b.html     ← Devine le numéro (TTS)
-│   ├── mj-03b.html     ← La bonne place
-│   ├── mj-04.html      ← Complète la phrase
-│   ├── mj-05.html      ← Où va ce bus ?
-│   ├── mj-06.html      ← Au garage !
-│   └── mj-07.html      ← Intro Bac à Sable
+docs/
 │
-├── game/               ← MJ-07 Phaser.js (TypeScript + Vite)
-│   └── src/
-│       ├── scenes/     ← SandboxScene, etc.
-│       └── utils/      ← SynthSounds.ts (audio procédural)
+├── README.md                  ← cette carte
 │
-├── docs/               ← GitHub Pages (copie de game-html + build MJ-07)
-└── docs/MAX_PROFILE.md ← Profil complet de Max
+├── MAX_PROFILE.md             ← Profil complet de Max (âge, passions, lignes connues)
+├── VISION.md                  ← Décisions prises + questions ouvertes (jeux)
+├── ratp-colors.json           ← Source de vérité couleurs IDFM (26 actives + 362 référentiel)
+│
+├── jeux/                      ← Documentation technique des mini-jeux
+│   ├── GAMES_SPECS.md         ← Specs par jeu
+│   ├── IMPROVEMENTS.md        ← Idées d'amélioration
+│   ├── ITERATION_NOTES.md     ← Notes de sessions de dev
+│   ├── game-ideas.md          ← Idées brutes de nouveaux jeux
+│   ├── ASSETS.md              ← Inventaire assets visuels
+│   ├── ASSETS_INVENTORY.md    ← Inventaire détaillé
+│   └── AUDIO_ASSETS.md        ← Sons disponibles
+│
+├── narration/                 ← Projet narratif — histoires pour Max
+│   ├── SYNTHESE.md            ← Vue d'ensemble du projet narration (point d'entrée)
+│   ├── Eneagramme/            ← Système ennéagramme complet
+│   │   ├── README.md          ← Guide du dossier ennéagramme
+│   │   ├── personnages/       ← 9 fiches personnages (type-01 à type-09)
+│   │   ├── situations/        ← 9 situations × 9 types (émotions universelles)
+│   │   └── ressources/        ← Fondements, guide auteur, références
+│   ├── analyse-personnages-manga-enneagramme.md   ← 24 persos manga analysés
+│   ├── analyse-personnages-pokemon-enneagramme.md ← 30+ persos Pokémon
+│   ├── analyse-pokemon-eux-memes-enneagramme.md   ← Les Pokémon eux-mêmes
+│   └── enneagramme-9-niveaux-riso-hudson.md       ← 9 types × 9 niveaux de santé
+│
+├── univers/                   ← L'univers narratif (macro-monde des histoires)
+│   ├── UNIVERS-NOTES-BRUTES.md ← Matière brute du brainstorm (session 2026-04-13)
+│   └── UNIVERS-DECISIONS.md   ← (à créer) Choix actés une fois les décisions prises
+│
+└── (racine — fichiers historiques)
+    ├── BACKLOG.md             ← Ancien backlog (source de vérité = tasks/BACKLOG.md)
+    └── REFERENCES.md          ← Références externes
 ```
 
 ---
 
-## 🎵 Audio
+## Points d'entrée par intention
 
-**Pas de fichiers MP3** — tout est généré en temps réel avec la **Web Audio API** :
-- Ding (bonne réponse)
-- Buzz (erreur)
-- Victory (fanfare de fin)
-- Honk (klaxon)
-- Air brake (frein)
-
----
-
-## 🚀 Déploiement
-
-### GitHub Pages (automatique)
-```bash
-# Les fichiers sont dans docs/
-git add .
-git commit -m "Nouveaux jeux"
-git push origin master
-```
-
-⚠️ **Activation requise** : Settings → Pages → Deploy from branch → master → /docs
-
-### Local (développement)
-```bash
-# Jeux HTML (vanilla JS)
-cd game-html
-# Ouvrir index.html dans un navigateur
-
-# MJ-07 Phaser.js
-cd game
-npm install
-npm run dev
-```
+| Tu veux... | Aller dans... |
+|-----------|--------------|
+| Comprendre qui est Max | `MAX_PROFILE.md` |
+| Écrire une histoire avec les personnages | `narration/SYNTHESE.md` |
+| Trouver la fiche d'un personnage (Léo, Sam...) | `narration/Eneagramme/personnages/` |
+| Comprendre l'univers macro (monde, histoire, rituels) | `univers/UNIVERS-NOTES-BRUTES.md` |
+| Vérifier les couleurs d'une ligne de bus | `ratp-colors.json` |
+| Voir les specs d'un mini-jeu | `jeux/GAMES_SPECS.md` |
+| Ajouter des idées de jeux | `jeux/game-ideas.md` |
 
 ---
 
-## 🎨 Stack Technique
+## Règle simple
 
-| | |
-|---|---|
-| **Mini-jeux** | HTML5 + CSS3 + Vanilla JS |
-| **MJ-07** | Phaser.js 3 + TypeScript + Vite |
-| **Audio** | Web Audio API (synthèse procédurale) |
-| **TTS** | Web Speech API (MJ-01, MJ-02b) |
-| **Hébergement** | GitHub Pages |
-| **Assets** | SVG vectoriels (bus), PNG (tiles) |
-
----
-
-## 👦 Profil Max
-
-| | |
-|---|---|
-| **Âge** | 4 ans |
-| **Quartier** | Villejuif Feuillantines (Val-de-Marne) |
-| **Passions** | Bus RATP 🚌 · Métro 🚇 · Animaux 🐾 |
-| **Connaissances** | 20+ lignes de bus, leurs couleurs et destinations |
-| **Input** | Tablette tactile (portrait/paysage) |
-| **Sessions** | 3–8 minutes |
-
----
-
-## 📝 Lignes de bus connues
-
-162 · 172 · 185 · 380 · 131 · 125 · 132 · 286 · 323 · 184 · 186 · 47 · 180 · 2234 · TVM · M6 · M7 · M13 · M14 · T3a · T3b · T7 · T9 · N15 · N22 · V6 · V7
-
----
-
-*Built with ❤️ by un papa dev · Powered by Claude Code*
+- **`narration/`** = les personnages, leurs psychologies, comment les écrire
+- **`univers/`** = le monde dans lequel ils vivent, son histoire, ses règles
+- **`jeux/`** = la partie technique et game design des mini-jeux HTML
+- **La racine `docs/`** = les fichiers transversaux (Max, vision, couleurs RATP)

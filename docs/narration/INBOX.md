@@ -230,8 +230,12 @@ Les **Harmonies locales** = 200 à 800 personnes, comme un quartier ou un petit 
 
 ## 2026-04-17 — Brainstorm LLM externe : delta univers
 
+> ⚠ **Partiellement distillé 2026-04-17** :
+> - Ombre Éternelle → `univers/grand-cycle.md` (comme nom du cauchemar cosmique, pas boss)
+> - "Grande Tempête de Lumière" → `univers/monde.md` (nom populaire pour les enfants)
+> - Baron → `univers/baron.md` marqué "mis de côté"
+> - **Questions ouvertes restent ici** (boss final oui/non, rôle passé Baron dans les rêves)
 > Source : réflexions partagées par l'auteur depuis session avec autre LLM.
-> ⚠ Idées brutes, non validées. Distiller vers les fichiers stables quand prêt.
 
 ### Ce qui est déjà dans l'écosystème (aucune action)
 - "Aetheria" → **déjà rejeté** dans `nom-candidats.md` (trop utilisé — Minecraft, romantasy)

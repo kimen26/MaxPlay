@@ -60,7 +60,20 @@
       "C:\\Users\\kimen\\.claude\\skills"
     ]
   },
+  "allowedHttpHookUrls": ["http://localhost:3001/*"],
   "hooks": {
+    "PermissionRequest": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "http",
+            "url": "http://localhost:3001/permission",
+            "timeout": 310
+          }
+        ]
+      }
+    ],
     "SessionStart": [
       {
         "matcher": "*",

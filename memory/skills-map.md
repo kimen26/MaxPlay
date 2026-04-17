@@ -65,6 +65,18 @@ type: reference
 | `investor-outreach` | Emails investisseurs, networking |
 | `market-research` | Recherche marché, competitors |
 
+### Génériques (depuis claude_conf)
+| Skill | Utiliser quand |
+|-------|----------------|
+| `deep-research` | Recherche profonde multi-sources (académique, praticiens, voix non-conventionnelles) |
+| `impact` | Pédagogie, storytelling, persuasion, gamification, facilitation, ennéagramme, instructional design |
+| `lettre-recommandation` | Générer une lettre de recommandation professionnelle au format Word |
+| `linkedin-cv-tech` | Optimiser LinkedIn et CV tech/IA/data/no-code |
+| `markdown-lisibilite` | Améliorer la lisibilité visuelle d'un document Markdown |
+| `n8n-website` | Générer un site HTML hébergé via webhook n8n |
+| `prompt-craft` | Créer, améliorer ou debugger un prompt (générique + Snowflake Cortex Agent) |
+| `qwen3-tts` | Utiliser Qwen3 avec TTS / génération audio |
+
 ## Skills globaux (`~/.claude/skills/`)
 
 | Catégorie | Skills |

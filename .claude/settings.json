@@ -44,7 +44,15 @@
       "Bash(find /c/ProjetsPerso/Claude_Projects/MaxPlay/docs/jeux -type f -name \"*.md\" -exec basename {} \\\\;)",
       "Bash(find /c/ProjetsPerso/Claude_Projects/MaxPlay/docs/narration -maxdepth 1 -type f -name \"*.md\" -exec basename {} \\\\;)",
       "Skill(update-config)",
-      "Skill(update-config:*)"
+      "Skill(update-config:*)",
+      "Bash(node -e \"const fs=require\\('fs'\\);try{JSON.parse\\(fs.readFileSync\\('c:/ProjetsPerso/Claude_Projects/MaxPlay/.claude/settings.json','utf8'\\)\\);console.log\\('JSON valide'\\)}catch\\(e\\){console.log\\('ERREUR:',e.message\\)}\")",
+      "Bash(python3 -c \"import sys,json; [print\\(json.loads\\(l\\).get\\('timestamp','?'\\)[:16], '|', \\(json.loads\\(l\\).get\\('content',''\\) or ''\\)[:200]\\) for l in sys.stdin if l.strip\\(\\)]\")",
+      "Bash(grep -oh \".\\\\{0,150\\\\}arbre.\\\\{0,5\\\\}lit\\\\|.\\\\{0,150\\\\}lit.\\\\{0,5\\\\}cabane\\\\|.\\\\{0,150\\\\}mezzanine\\\\|.\\\\{0,150\\\\}prise de terre\" \"c:/Users/kimen/.claude/projects/c--ProjetsPerso-Claude-Projects-MaxPlay/023560e0-8880-497b-aa0d-5176397075e5.jsonl\")",
+      "Bash(grep -oh \".\\\\{0,200\\\\}mezzanine.\\\\{0,200\\\\}\" \"c:/Users/kimen/.claude/projects/c--ProjetsPerso-Claude-Projects-MaxPlay/023560e0-8880-497b-aa0d-5176397075e5.jsonl\")",
+      "Bash(grep -o \".\\\\{0,300\\\\}mezzanine.\\\\{0,300\\\\}\" \"c:/Users/kimen/.claude/projects/c--ProjetsPerso-Claude-Projects-MaxPlay/5aacc48d-16aa-455b-b205-60388ce61f1a.jsonl\")",
+      "Bash(grep -o \".\\\\{0,200\\\\}arbre.\\\\{0,5\\\\}lit\\\\|.\\\\{0,200\\\\}lit.\\\\{0,5\\\\}arbre\\\\|.\\\\{0,200\\\\}cabane.\\\\{0,5\\\\}lit\\\\|.\\\\{0,200\\\\}prise de terre.\\\\{0,200\\\\}\" \"c:/Users/kimen/.claude/projects/c--ProjetsPerso-Claude-Projects-MaxPlay/3d019798-9676-4be6-b671-dba8d5df5622.jsonl\")",
+      "Bash(grep -o '\"timestamp\":\"[^\"]*\".\\\\{0,20\\\\}mezzanine\\\\|mezzanine.\\\\{0,50\\\\}\"timestamp\":\"[^\"]*\"' \"c:/Users/kimen/.claude/projects/c--ProjetsPerso-Claude-Projects-MaxPlay/3d019798-9676-4be6-b671-dba8d5df5622.jsonl\")",
+      "Bash(grep -o \".\\\\{0,100\\\\}mezzanine.\\\\{0,100\\\\}\" \"c:/Users/kimen/.claude/projects/c--ProjetsPerso-Claude-Projects-MaxPlay/3d019798-9676-4be6-b671-dba8d5df5622.jsonl\")"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\temp",
@@ -71,6 +79,17 @@
           {
             "type": "command",
             "command": "cd \"c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\game\" && npx tsc --noEmit 2>&1 | head -20"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'INPUT=$(cat); if echo \"$INPUT\" | grep -q \"narration.*INBOX\"; then cd \"c:/ProjetsPerso/Claude_Projects/MaxPlay\" && git add docs/narration/INBOX.md && git commit -m \"inbox: dump $(date +%Y-%m-%d)\" 2>/dev/null || true; fi'",
+            "statusMessage": "Sauvegarde INBOX narration...",
+            "async": true
           }
         ]
       }

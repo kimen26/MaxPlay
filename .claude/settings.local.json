@@ -30,7 +30,9 @@
       "Bash(echo \"Bot lancé en background, PID: $!\")",
       "Bash(jobs -l)",
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(git commit -m 'feat: validation Telegram avant exécution Claude *)",
+      "Bash(git commit *)"
     ]
   },
   "hooks": {

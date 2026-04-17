@@ -60,10 +60,11 @@ MJ-01 à MJ-17 déployés. Voir [tasks/BACKLOG.md](tasks/BACKLOG.md) pour détai
 ## Fichiers clés
 | Fichier | Rôle |
 |---------|------|
-| [docs/narration/SYNTHESE.md](docs/narration/SYNTHESE.md) | Point d'entrée projet narratif |
-| [docs/narration/Eneagramme/](docs/narration/Eneagramme/) | 9 fiches personnages + situations + ressources |
-| [docs/univers/UNIVERS-NOTES-BRUTES.md](docs/univers/UNIVERS-NOTES-BRUTES.md) | Matière brute univers macro |
-| [memory/notes-brutes-univers.md](memory/notes-brutes-univers.md) | Notes session récentes (égregores, fractales) |
+| [docs/narration/INDEX.md](docs/narration/INDEX.md) | **Point d'entrée agent — charger en premier** |
+| [docs/narration/INBOX.md](docs/narration/INBOX.md) | Dump brut sessions (non stable) |
+| [docs/narration/personnages/INDEX.md](docs/narration/personnages/INDEX.md) | Tableau des 9 + ⚠ prénoms |
+| [docs/narration/univers/](docs/narration/univers/) | Monde, systèmes, cycle, compagnons, Baron |
+| [docs/narration/Eneagramme/](docs/narration/Eneagramme/) | Fiches détaillées personnages + situations |
 
 ## Skills narration
 - `10-story/` : storytelling-master, craft-fundamentals
@@ -71,17 +72,16 @@ MJ-01 à MJ-17 déployés. Voir [tasks/BACKLOG.md](tasks/BACKLOG.md) pour détai
 - `12-characters/` : enneagramme-system
 - `13-media/` : animation-screenplay
 
-## Personnages (9 nommés, ennéagramme)
-Léo (#7 héros), Sam (#8), Élia (#1), Lila (#9), Camille (#2), Victor (#3),
-Iris (#4), Theo (#5), Noa (#6)
+## Personnages (9, ennéagramme)
+⚠ **Prénoms en cours de validation** — seul Wex (#7 héros) est confirmé.
+Toujours lire [docs/narration/personnages/INDEX.md](docs/narration/personnages/INDEX.md) avant d'écrire.
 
 ## Univers
-Futur proche post-Éveil. Nom non choisi (21 candidats dans [docs/univers/UNIVERS-NOTES-BRUTES.md](docs/univers/UNIVERS-NOTES-BRUTES.md)).
-Conscience créative · Compagnons animaux · Gardiens de l'Équilibre · Totems de
-Pensée (Janus) · Grand Cycle 22k ans.
+Futur proche post-Éveil. Nom non choisi (5 finalistes → [univers/nom-candidats.md](docs/narration/univers/nom-candidats.md)).
+Conscience créative · Compagnons animaux · Gardiens de l'Équilibre · Totems Janus · Grand Cycle 22k ans.
 
 ## Histoires écrites
-"Le Pont Cassé" (Léo/#7 + Élia/#1 + Sam/#8) — V1 complète, comité de lecture fait
+"Le Pont Cassé" (Wex/#7 + Élia/#1 + Sam/#8) — V1 complète, comité de lecture fait
 
 ---
 

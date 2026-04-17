@@ -1,4 +1,4 @@
-import { Bot, Context, InlineKeyboard } from "grammy";
+import { Bot, Context } from "grammy";
 import { homedir } from "os";
 
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
@@ -22,8 +22,6 @@ type Message = { role: "user" | "assistant"; content: string };
 // Historique par chat
 const histories = new Map<number, Message[]>();
 
-// Demandes en attente de validation
-const pendingRequests = new Map<string, string>();
 
 function getHistory(chatId: number): Message[] {
   if (!histories.has(chatId)) histories.set(chatId, []);
@@ -76,7 +74,7 @@ bot.command("reset", async (ctx) => {
   await ctx.reply("🗑️ Historique effacé. Nouvelle conversation.");
 });
 
-// Tout autre message → demande de validation avant exécution
+// Tout autre message → exécution directe
 bot.on("message:text", async (ctx) => {
   if (!isAllowed(ctx)) {
     await ctx.reply(`⛔ Non autorisé.\n\nTon Chat ID : \`${ctx.chat.id}\``, {
@@ -87,70 +85,23 @@ bot.on("message:text", async (ctx) => {
 
   const userMessage = ctx.message.text;
   const chatId = ctx.chat.id;
-  const reqId = `req_${Date.now()}`;
+  const thinking = await ctx.reply("⏳ Claude réfléchit…");
 
-  // Stocker le message + chatId pour la validation
-  pendingRequests.set(reqId, JSON.stringify({ chatId, userMessage }));
+  try {
+    const promptWithHistory = buildPromptWithHistory(chatId, userMessage);
+    const response = await runClaude(promptWithHistory);
 
-  const keyboard = new InlineKeyboard()
-    .text("✅ Exécuter", `approve_${reqId}`)
-    .text("❌ Annuler", `cancel_${reqId}`);
+    addToHistory(chatId, "user", userMessage);
+    addToHistory(chatId, "assistant", response.slice(0, 1000));
 
-  const preview = userMessage.length > 300 ? userMessage.slice(0, 300) + "…" : userMessage;
-  const histCount = getHistory(chatId).length / 2;
-  const histInfo = histCount > 0 ? `\n_📝 ${histCount} échange(s) de contexte inclus_` : "";
-
-  await ctx.reply(
-    `📨 *Demande reçue :*\n\n\`\`\`\n${preview}\n\`\`\`${histInfo}\n\nTu valides l'exécution ?`,
-    { parse_mode: "Markdown", reply_markup: keyboard }
-  );
-});
-
-// Validation → exécution
-bot.on("callback_query:data", async (ctx) => {
-  const data = ctx.callbackQuery.data;
-  await ctx.answerCallbackQuery();
-
-  if (data.startsWith("approve_")) {
-    const reqId = data.replace("approve_", "");
-    const stored = pendingRequests.get(reqId);
-    pendingRequests.delete(reqId);
-
-    if (!stored) {
-      await ctx.editMessageText("⚠️ Demande expirée ou déjà traitée.");
-      return;
+    await ctx.api.deleteMessage(chatId, thinking.message_id).catch(() => {});
+    for (const chunk of splitMessage(response)) {
+      await ctx.reply(chunk, { parse_mode: "Markdown" }).catch(() => ctx.reply(chunk));
     }
-
-    const { chatId, userMessage } = JSON.parse(stored) as { chatId: number; userMessage: string };
-
-    await ctx.editMessageText(
-      `⏳ *Exécution en cours…*\n\n\`\`\`\n${userMessage.slice(0, 300)}\n\`\`\``,
-      { parse_mode: "Markdown" }
-    );
-
-    try {
-      const promptWithHistory = buildPromptWithHistory(chatId, userMessage);
-      const response = await runClaude(promptWithHistory);
-
-      // Sauvegarder dans l'historique
-      addToHistory(chatId, "user", userMessage);
-      addToHistory(chatId, "assistant", response.slice(0, 1000)); // tronquer pour pas exploser la mémoire
-
-      for (const chunk of splitMessage(response)) {
-        await ctx.reply(chunk, { parse_mode: "Markdown" }).catch(() => ctx.reply(chunk));
-      }
-    } catch (err) {
-      await ctx.reply(`❌ Erreur : ${err instanceof Error ? err.message : String(err)}`);
-      console.error(err);
-    }
-    return;
-  }
-
-  if (data.startsWith("cancel_")) {
-    const reqId = data.replace("cancel_", "");
-    pendingRequests.delete(reqId);
-    await ctx.editMessageText("❌ Demande annulée.");
-    return;
+  } catch (err) {
+    await ctx.api.deleteMessage(chatId, thinking.message_id).catch(() => {});
+    await ctx.reply(`❌ Erreur : ${err instanceof Error ? err.message : String(err)}`);
+    console.error(err);
   }
 });
 

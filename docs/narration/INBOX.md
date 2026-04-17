@@ -117,8 +117,8 @@
 
 ## 2026-04-17 — Vibration, égrégores, antimatière Janus
 
+> ✅ **Distillé 2026-04-17** → `univers/vibration.md` (fichier créé). Conservé brut ici pour trace.
 > Source : conversation auteur / Botard.
-> ⚠ Idées brutes, non validées. Potentiellement à intégrer dans univers/vibration.md (nouveau fichier).
 
 ### 1. La vibration comme physique de l'univers
 

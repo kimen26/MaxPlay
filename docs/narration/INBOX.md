@@ -166,9 +166,8 @@
 
 ## 2026-04-17 — Quotidien ancré : IA, Harmonies, transports, nourriture
 
+> ✅ **Distillé 2026-04-17** → `univers/monde.md` révisé (IA, Harmonies locales, maisons, transports, nourriture). Conflits avec ancien monde.md résolus : éléments trop magiques écartés.
 > Source : auteur, suite de session.
-> Direction assumée : monde post-Éveil **ancré et réaliste** — proche de 2026, transformé en douceur.
-> ⚠ **Tension avec monde.md actuel** — voir note de conflits ci-dessous.
 
 ### 1. Rôle de l'IA (nouveau — absent de monde.md)
 

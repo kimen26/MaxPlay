@@ -12,6 +12,32 @@
 [contenu brut]
 -->
 
+## 2026-04-17 — Égrégores : contact, animaux, Grand Cycle
+
+> Source : auteur, suite de session vibration/Janus.
+> ⚠ Idées brutes, non validées.
+
+### 1. Comment entre-t-on en contact avec un égrégore ?
+
+- C'est l'**attention portée** à une chose/idée/événement qui l'alimente
+- L'attention collective = fréquence ou vibration (terme à préciser dans l'univers)
+- **Exemples réels** cités : francs-maçons, religions, événements religieux — se réunir pour penser/faire la même chose ensemble
+- La répétition et l'émotion collective renforcent l'amplitude
+- Pas besoin de rituel élaboré : l'intention collective suffit
+
+### 2. Les animaux ont leurs propres égrégores — et ce sont des archétypes
+
+- Les animaux n'ont pas des égrégores construits, ils ont des **archétypes** : pattern inscrit profondément
+- Exemples cités :
+  - Abeille : sait faire le 8, faire du miel, sans apprentissage conscient
+  - Oiseaux migrateurs : savent où aller sans GPS ni mémoire individuelle
+  - Animaux hibernants : savent quand dormir
+- Ces archétypes = égrégores naturels, non instrumentalisés, donc **plus purs**
+- Ils ont une conscience, une résonance vibratoire propre qui leur fait faire des choses (déplacement, nourriture, comportements collectifs)
+- Cohérent avec les Compagnons Animaux de l'univers — ils "portent" un archétype accessible
+
+---
+
 ## 2026-04-17 — Vibration, égrégores, antimatière Janus
 
 > Source : conversation auteur / Botard.

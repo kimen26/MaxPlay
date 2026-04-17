@@ -101,4 +101,4 @@ function splitMessage(text: string, maxLen = 4000): string[] {
 bot.catch((err) => console.error("Bot error:", err));
 
 console.log("🤖 MaxPlay Bot démarré…");
-bot.start();
+bot.start({ drop_pending_updates: true });

@@ -32,7 +32,19 @@
       "Bash(wc -l /c/ProjetsPerso/Claude_Projects/MaxPlay/docs/*.md)",
       "Bash(git -C /c/ProjetsPerso/Claude_Projects/MaxPlay log --oneline)",
       "Bash(stat /c/ProjetsPerso/Claude_Projects/MaxPlay/memory/*.md)",
-      "Bash(stat /c/ProjetsPerso/Claude_Projects/MaxPlay/docs/*.md)"
+      "Bash(stat /c/ProjetsPerso/Claude_Projects/MaxPlay/docs/*.md)",
+      "Bash(ls c:/ProjetsPerso/Claude_Projects/MaxPlay/game-html/mj-*.html)",
+      "Edit(~/.claude/skills/cheikh/**)",
+      "Edit(/.claude/skills/00-project/**)",
+      "Bash(grep -r \"🚌\\\\|emoji\" game-html/mj-*.html)",
+      "Bash(grep -n \"https://cdn\\\\|https://.*jsdelivr\\\\|https://.*unpkg\" game-html/mj-*.html)",
+      "Bash(grep -n \"endSession\\\\|end-game\" game-html/mj-*.html)",
+      "Bash(ls -1 game-html/mj-*.html)",
+      "Bash(grep \"https://\" game-html/index.html game-html/mj-*.html)",
+      "Bash(find /c/ProjetsPerso/Claude_Projects/MaxPlay/docs/jeux -type f -name \"*.md\" -exec basename {} \\\\;)",
+      "Bash(find /c/ProjetsPerso/Claude_Projects/MaxPlay/docs/narration -maxdepth 1 -type f -name \"*.md\" -exec basename {} \\\\;)",
+      "Skill(update-config)",
+      "Skill(update-config:*)"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\temp",
@@ -40,6 +52,18 @@
     ]
   },
   "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'pgrep -f \"bot/index.ts\" > /dev/null 2>&1 || (cd \"/c/ProjetsPerso/Claude_Projects/MaxPlay/bot\" && nohup bun run index.ts >> /tmp/maxplay-bot.log 2>&1 &)'",
+            "async": true
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Edit|Write",

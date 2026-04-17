@@ -1,4 +1,4 @@
-import { Bot, Context } from "grammy";
+import { Bot, Context, InlineKeyboard } from "grammy";
 import { homedir } from "os";
 
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
@@ -15,6 +15,9 @@ if (!BOT_TOKEN) {
 
 const bot = new Bot(BOT_TOKEN);
 
+// Demandes en attente de validation : id → prompt
+const pendingRequests = new Map<string, string>();
+
 // /start — affiche le chat ID pour configurer ALLOWED_CHAT_ID
 bot.command("start", async (ctx) => {
   await ctx.reply(
@@ -29,7 +32,7 @@ bot.command("status", async (ctx) => {
   await ctx.reply("✅ Bot actif · Claude Code prêt · Projet : MaxPlay");
 });
 
-// Tout autre message → Claude Code CLI
+// Tout autre message → demande de validation avant exécution
 bot.on("message:text", async (ctx) => {
   if (!isAllowed(ctx)) {
     await ctx.reply(`⛔ Non autorisé.\n\nTon Chat ID : \`${ctx.chat.id}\``, {
@@ -39,18 +42,60 @@ bot.on("message:text", async (ctx) => {
   }
 
   const userMessage = ctx.message.text;
-  const thinking = await ctx.reply("⏳ Claude réfléchit…");
+  const reqId = `req_${Date.now()}`;
+  pendingRequests.set(reqId, userMessage);
 
-  try {
-    const response = await runClaude(userMessage);
-    await ctx.api.deleteMessage(ctx.chat.id, thinking.message_id).catch(() => {});
-    for (const chunk of splitMessage(response)) {
-      await ctx.reply(chunk, { parse_mode: "Markdown" }).catch(() => ctx.reply(chunk));
+  const keyboard = new InlineKeyboard()
+    .text("✅ Exécuter", `approve_${reqId}`)
+    .text("❌ Annuler", `cancel_${reqId}`);
+
+  const preview = userMessage.length > 300
+    ? userMessage.slice(0, 300) + "…"
+    : userMessage;
+
+  await ctx.reply(
+    `📨 *Demande reçue :*\n\n\`\`\`\n${preview}\n\`\`\`\n\nTu valides l'exécution ?`,
+    { parse_mode: "Markdown", reply_markup: keyboard }
+  );
+});
+
+// Validation → exécution
+bot.on("callback_query:data", async (ctx) => {
+  const data = ctx.callbackQuery.data;
+  await ctx.answerCallbackQuery();
+
+  if (data.startsWith("approve_")) {
+    const reqId = data.replace("approve_", "");
+    const userMessage = pendingRequests.get(reqId);
+    pendingRequests.delete(reqId);
+
+    if (!userMessage) {
+      await ctx.editMessageText("⚠️ Demande expirée ou déjà traitée.");
+      return;
     }
-  } catch (err) {
-    await ctx.api.deleteMessage(ctx.chat.id, thinking.message_id).catch(() => {});
-    await ctx.reply(`❌ Erreur : ${err instanceof Error ? err.message : String(err)}`);
-    console.error(err);
+
+    await ctx.editMessageText(
+      `⏳ *Exécution en cours…*\n\n\`\`\`\n${userMessage.slice(0, 300)}\n\`\`\``,
+      { parse_mode: "Markdown" }
+    );
+
+    try {
+      const response = await runClaude(userMessage);
+      for (const chunk of splitMessage(response)) {
+        await ctx.reply(chunk, { parse_mode: "Markdown" }).catch(() => ctx.reply(chunk));
+      }
+    } catch (err) {
+      await ctx.reply(`❌ Erreur : ${err instanceof Error ? err.message : String(err)}`);
+      console.error(err);
+    }
+    return;
+  }
+
+  if (data.startsWith("cancel_")) {
+    const reqId = data.replace("cancel_", "");
+    pendingRequests.delete(reqId);
+    await ctx.editMessageText("❌ Demande annulée.");
+    return;
   }
 });
 

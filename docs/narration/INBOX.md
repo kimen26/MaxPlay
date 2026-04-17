@@ -12,6 +12,83 @@
 [contenu brut]
 -->
 
+## 2026-04-11 — [archive SYNTHESE.md] inventaire projet + workflow écriture
+
+> ⚠ **Archive** du fichier `SYNTHESE.md` supprimé le 2026-04-17 (restructuration narration).
+> Prénoms obsolètes (Léo héros → désormais Wex ; les 8 autres à valider).
+> Gardé pour ne rien perdre : workflow d'écriture en 6 étapes, tableau des 9 "meilleurs amis", liste des ressources externes, arc 3 saisons.
+> À re-distiller si besoin vers `Eneagramme/ressources/guide-auteur.md` ou `histoires/INDEX.md`.
+
+### Workflow pour écrire une scène (6 étapes)
+
+1. Choisir le personnage central → `Eneagramme/personnages/type-XX-*.md`
+2. Choisir la situation (si universelle) → `Eneagramme/situations/emotions-universelles.md`
+3. Vérifier le niveau de santé → `reference/enneagramme-9-niveaux-riso-hudson.md`
+4. Structurer la scène → skill `narrative-craft` (template, beats)
+5. Écrire avec les techniques → skill `narrative-storytelling`
+6. Vérifier la cohérence → `Eneagramme/ressources/guide-auteur.md`
+
+### Pour créer un nouvel épisode
+
+1. Choisir le thème de passion du héros (botanique, volcans, etc.)
+2. Sélectionner les personnages présents selon la saison
+3. Identifier le nœud émotionnel qui teste un personnage
+4. Appliquer le template d'épisode (5 étapes)
+5. Chercher l'opportunité de croissance (flèche d'intégration)
+
+### Tableau des 9 personnages — colonne "meilleur ami" (non présente ailleurs)
+
+⚠ Prénoms à l'ancienne, à transposer quand validés.
+
+| # | Prénom (ancien) | Essence | Peur | Force | Faiblesse | Meilleur ami |
+|---|-----------------|---------|------|-------|-----------|--------------|
+| 1 | Élia | Être bonne | Imperfection | Intégrité | Sévérité | Noa |
+| 2 | Camille | Être aimée | Rejet | Empathie | Oubli de soi | Lila |
+| 3 | Victor | Être valorisé | Sans valeur | Efficacité | Image avant être | — |
+| 4 | Iris | Être soi-même | Ordinarité | Créativité | Mélancolie | Theo |
+| 5 | Theo | Comprendre | Incompétence | Sagesse | Isolement | Iris |
+| 6 | Noa | Avoir du soutien | Abandon | Loyauté | Anxiété | Élia |
+| 7 | **Léo→Wex** | Être comblé | Souffrir | Joie | Fuite | Sam |
+| 8 | Sam | Être fort | Domination | Protection | Dureté | Léo→Wex |
+| 9 | Lila | La paix | Conflit | Harmonie | Effacement | Camille |
+
+### Arc narratif mentionné
+
+- Arc sur **3 saisons** (détail non précisé dans SYNTHESE — à élaborer)
+- Référence : skill `enneagramme` `.claude/skills/enneagramme/SKILL.md`
+
+### Skills mentionnés (pointeurs externes au dépôt)
+
+- `.claude/skills/enneagramme/SKILL.md`
+- `.claude/skills/narrative-storytelling/SKILL.md` (~22 Ko)
+- `.claude/skills/narrative-craft/SKILL.md` (~30 Ko)
+- `.claude/skills/maxplay-narration-universelle/SKILL.md` (skill-pont)
+
+### Ressources externes (livres & inspirations)
+
+**Livres :**
+- *The Wisdom of the Enneagram* — Riso & Hudson
+- *The Complete Enneagram* — Beatrice Chestnut
+- *Personality Types* — Riso & Hudson
+- *Story* — Robert McKee
+- *Anatomy of Story* — John Truby
+- *Save the Cat* — Blake Snyder
+
+**Inspirations manga/anime :**
+- Masashi Kishimoto (Naruto)
+- Akira Toriyama (Dragon Ball)
+- Masami Kurumada (Saint Seiya)
+- Hayao Miyazaki (Studio Ghibli)
+- Hajime Isayama (Attack on Titan)
+- Yoshiyuki Sadamoto (Evangelion)
+
+### Note finale d'origine
+
+> Ce projet est une **infrastructure narrative complète** — pas seulement des personnages, mais tout un système pour les faire vivre de façon cohérente et profonde.
+> Chaque scène écrite avec ces outils sera : psychologiquement juste (ennéagramme) · narrativement solide · émotionnellement authentique · adaptée à l'enfance.
+
+---
+
 ## 2026-04-17 — Égrégores : contact, animaux, Grand Cycle
 
 > Source : auteur, suite de session vibration/Janus.

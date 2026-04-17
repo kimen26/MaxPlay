@@ -91,8 +91,8 @@
 
 ## 2026-04-17 — Égrégores : contact, animaux, Grand Cycle
 
+> ✅ **Distillé 2026-04-17** → `univers/vibration.md` §Égrégores + §Animaux archétypes. Conservé brut ici pour trace.
 > Source : auteur, suite de session vibration/Janus.
-> ⚠ Idées brutes, non validées.
 
 ### 1. Comment entre-t-on en contact avec un égrégore ?
 

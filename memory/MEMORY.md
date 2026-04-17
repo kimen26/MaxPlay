@@ -99,6 +99,15 @@ GitHub Pages → kimen26.github.io/MaxPlay/
 
 - [notes-brutes-univers.md](notes-brutes-univers.md) — égregores, Grand Cycle, question fractale personnages/rêve (2026-04-16)
 
+## Bot Telegram (botard)
+
+`bot/index.ts` · grammy + bun · lancé auto au démarrage Claude (hook SessionStart)
+
+**Flow** : message reçu → boutons ✅ Exécuter / ❌ Annuler → si validé → `claude -p … --dangerously-skip-permissions`
+**Env vars** : `TELEGRAM_BOT_TOKEN` · `ALLOWED_CHAT_ID` · `PROJECT_PATH`
+**Logs** : `/tmp/maxplay-bot.log`
+**Redémarrer** : `pkill -f "bot/index.ts" && cd bot && bun run index.ts &`
+
 ## Carte des fichiers
 
 | Fichier | Rôle |

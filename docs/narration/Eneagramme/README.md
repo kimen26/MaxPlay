@@ -6,8 +6,13 @@ Un univers narratif pour enfants (et adultes) basé sur les 9 types de l'Ennéag
 9 personnages-enfants d'environ 5 ans, chacun incarnant un type, vivant des aventures
 qui reflètent leurs forces, leurs peurs, leurs joies et leurs défis.
 
-Le héros principal est **Léo (Type 7)** — curieux, passionné, toujours en quête de nouvelles
+Le héros principal est **Wex (Type 7)** — curieux, passionné, toujours en quête de nouvelles
 découvertes. Ses amis l'entourent, chacun apportant sa couleur au monde.
+
+> ⚠ **Prénoms en cours de validation** (2026-04-17). Seul **Wex (#7)** est confirmé.
+> Les 8 autres prénoms utilisés dans les fiches (Élia, Camille, Victor, Iris, Theo, Noa, Sam, Lila)
+> sont hérités d'une ancienne session — à valider avec l'auteur.
+> Voir [../personnages/INDEX.md](../personnages/INDEX.md) et [../personnages/prénoms-candidats.md](../personnages/prénoms-candidats.md).
 
 ---
 

@@ -1,6 +1,8 @@
 # Baron — personnage et artefact temporel
 
 > Source : brainstorm Grok + Claude 2026-04-13
+>
+> ⚠ **Mis de côté (feedback 2026-04-17).** Après recherche sur l'œuvre de Lookwook, Baron n'est pas un voyageur du temps — il explore des mondes souterrains (+ lien Trump Tower). Conservé ici comme inspiration écartée, plus une main idea pour le projet. Ne pas distiller dans les histoires actuelles.
 
 ---
 

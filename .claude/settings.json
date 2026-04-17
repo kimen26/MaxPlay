@@ -52,7 +52,8 @@
       "Bash(grep -o \".\\\\{0,300\\\\}mezzanine.\\\\{0,300\\\\}\" \"c:/Users/kimen/.claude/projects/c--ProjetsPerso-Claude-Projects-MaxPlay/5aacc48d-16aa-455b-b205-60388ce61f1a.jsonl\")",
       "Bash(grep -o \".\\\\{0,200\\\\}arbre.\\\\{0,5\\\\}lit\\\\|.\\\\{0,200\\\\}lit.\\\\{0,5\\\\}arbre\\\\|.\\\\{0,200\\\\}cabane.\\\\{0,5\\\\}lit\\\\|.\\\\{0,200\\\\}prise de terre.\\\\{0,200\\\\}\" \"c:/Users/kimen/.claude/projects/c--ProjetsPerso-Claude-Projects-MaxPlay/3d019798-9676-4be6-b671-dba8d5df5622.jsonl\")",
       "Bash(grep -o '\"timestamp\":\"[^\"]*\".\\\\{0,20\\\\}mezzanine\\\\|mezzanine.\\\\{0,50\\\\}\"timestamp\":\"[^\"]*\"' \"c:/Users/kimen/.claude/projects/c--ProjetsPerso-Claude-Projects-MaxPlay/3d019798-9676-4be6-b671-dba8d5df5622.jsonl\")",
-      "Bash(grep -o \".\\\\{0,100\\\\}mezzanine.\\\\{0,100\\\\}\" \"c:/Users/kimen/.claude/projects/c--ProjetsPerso-Claude-Projects-MaxPlay/3d019798-9676-4be6-b671-dba8d5df5622.jsonl\")"
+      "Bash(grep -o \".\\\\{0,100\\\\}mezzanine.\\\\{0,100\\\\}\" \"c:/Users/kimen/.claude/projects/c--ProjetsPerso-Claude-Projects-MaxPlay/3d019798-9676-4be6-b671-dba8d5df5622.jsonl\")",
+      "Bash(find \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\docs\\\\narration\\\\\" -type f -name \"*.md\" | head -50)"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\temp",

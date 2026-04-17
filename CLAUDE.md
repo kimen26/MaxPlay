@@ -61,10 +61,12 @@ MJ-01 à MJ-17 déployés. Voir [tasks/BACKLOG.md](tasks/BACKLOG.md) pour détai
 | Fichier | Rôle |
 |---------|------|
 | [docs/narration/INDEX.md](docs/narration/INDEX.md) | **Point d'entrée agent — charger en premier** |
-| [docs/narration/INBOX.md](docs/narration/INBOX.md) | Dump brut sessions (non stable) |
+| [docs/narration/INBOX.md](docs/narration/INBOX.md) | Dump brut sessions (hook commit auto) |
 | [docs/narration/personnages/INDEX.md](docs/narration/personnages/INDEX.md) | Tableau des 9 + ⚠ prénoms |
-| [docs/narration/univers/](docs/narration/univers/) | Monde, systèmes, cycle, compagnons, Baron |
+| [docs/narration/univers/INDEX.md](docs/narration/univers/INDEX.md) | Carte du monde (monde, systèmes, cycle, vibration, compagnons) |
+| [docs/narration/histoires/INDEX.md](docs/narration/histoires/INDEX.md) | Catalogue récits + gabarit |
 | [docs/narration/Eneagramme/](docs/narration/Eneagramme/) | Fiches détaillées personnages + situations |
+| [docs/narration/reference/INDEX.md](docs/narration/reference/INDEX.md) | Matière de fond (analyses manga/Pokémon, Riso-Hudson) |
 
 ## Skills narration
 - `10-story/` : storytelling-master, craft-fundamentals

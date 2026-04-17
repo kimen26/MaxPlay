@@ -35,7 +35,8 @@
 - 9 fiches complètes (type, aile, centre, couleur, animal totem)
 - Tableau des relations entre personnages → [Eneagramme/situations/interactions.md](../Eneagramme/situations/interactions.md)
 - 9 situations de vie × 9 types = 81 réactions → [Eneagramme/situations/emotions-universelles.md](../Eneagramme/situations/emotions-universelles.md)
-- Niveaux Riso-Hudson avec exemples enfant 5 ans → [enneagramme-9-niveaux-riso-hudson.md](../enneagramme-9-niveaux-riso-hudson.md)
+- Niveaux Riso-Hudson avec exemples enfant 5 ans → [reference/enneagramme-9-niveaux-riso-hudson.md](../reference/enneagramme-9-niveaux-riso-hudson.md)
+- Shortlists alternatives par type → [prénoms-candidats.md](prénoms-candidats.md)
 
 ---
 

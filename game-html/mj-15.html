@@ -203,9 +203,9 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 // ═══════════════════════════════════════════════════════════════════════════
 //  MJ-15 — L'intrus
 //  5 rounds, 5 bus affichés, 1 intrus à trouver
-//  Round 1-2 (A) : couleur différente
-//  Round 3-4 (B) : numéro pair vs impair
-//  Round 5   (C) : famille de ligne (Valouette / Noctilien / Métro / Standard)
+//  Niveau A : couleur différente
+//  Niveau C : famille de ligne (Valouette / Noctilien / Métro / Standard)
+//  (Ancien niveau B "pair vs impair" retiré : trop long à lire pour Max)
 // ═══════════════════════════════════════════════════════════════════════════
 
 const ROUNDS_PER_GAME = 5;
@@ -257,10 +257,11 @@ let answered = false;
 
 // ── Génération des puzzles ─────────────────────────────────────────────────
 
+// Alternance A/C : 3 rounds "couleur" faciles, 2 rounds "famille" plus durs.
+// Ordre fixe pour garder une courbe : A, A, C, A, C
+const LEVEL_SCHEDULE = ['A', 'A', 'C', 'A', 'C'];
 function getLevel(r) {
-  if (r <= 2) return 'A';
-  if (r <= 4) return 'B';
-  return 'C';
+  return LEVEL_SCHEDULE[(r - 1) % LEVEL_SCHEDULE.length] || 'A';
 }
 
 // Niveau A — couleur différente
@@ -380,7 +381,6 @@ function generatePuzzleC() {
 function generatePuzzle(roundNum) {
   const level = getLevel(roundNum);
   if (level === 'A') return generatePuzzleA();
-  if (level === 'B') return generatePuzzleB();
   return generatePuzzleC();
 }
 

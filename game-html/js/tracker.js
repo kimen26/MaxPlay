@@ -33,7 +33,6 @@ const Tracker = (() => {
     'mj-14': { name: 'La grille',             emoji: '🔲', skill: 'Logique / patterns' },
     'mj-15': { name: 'L\'intrus',             emoji: '🔍', skill: 'Catégorisation / logique' },
     'mj-16': { name: 'Complète la suite',    emoji: '📈', skill: 'Logique / suites' },
-    'mj-17': { name: 'L\'ombre du bus',       emoji: '🌑', skill: 'Reconnaissance de forme' },
   };
 
   // ── Lecture / écriture localStorage ────────────────────────────────────

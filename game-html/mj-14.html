@@ -190,14 +190,10 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
     </button>
   </div>
 
-  <!-- Indicateur de niveau -->
+  <!-- Indicateur de niveau (rendu dynamique selon ROUNDS_PER_GAME) -->
   <div id="level-bar">
-    <div class="lvl-dot active" id="dot-0"></div>
-    <div class="lvl-dot" id="dot-1"></div>
-    <div class="lvl-dot" id="dot-2"></div>
-    <div class="lvl-dot" id="dot-3"></div>
-    <div class="lvl-dot" id="dot-4"></div>
-    <span id="level-label">Round 1/5</span>
+    <span id="dots-wrap" style="display:flex;gap:8px;align-items:center;"></span>
+    <span id="level-label">Round 1/8</span>
   </div>
 
   <!-- Zone de jeu -->
@@ -230,21 +226,29 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 //  3 niveaux : pattern ligne → colonne → les deux
 // ═══════════════════════════════════════════════════════════════
 
-const ROUNDS_PER_GAME = 5;
+const ROUNDS_PER_GAME = 8;
 let currentMode = 'shapes'; // 'shapes' | 'bus'
 let score = 0;
 let round = 0;
 let answerKey = null;   // clé unique de la bonne réponse
 let answered  = false;
+let levelSchedule = []; // tirage aléatoire en début de partie
 
-// ── Niveaux par round ──────────────────────────────────────────
-// round 1-2 → niveau A (pattern en LIGNE)
-// round 3-4 → niveau B (pattern en COLONNE)
-// round 5   → niveau C (ligne ET colonne)
+// ── Niveaux ──────────────────────────────────────────────────
+// A : pattern LIGNE (même motif sur toute la ligne)
+// B : pattern COLONNE
+// C : LIGNE + COLONNE (ligne = axe1, colonne = axe2)
+// D : DIAGONALE (cases [0][0], [1][1], [2][2] partagent un motif) — rare
+function buildLevelSchedule(n) {
+  // 2 A, 2 B, 3 C, 1 D → mélangés, mais premier round toujours A (mise en confiance)
+  const base = ['A','A','B','B','C','C','C','D'];
+  // tronquer/étendre à n
+  while (base.length < n) base.push('C');
+  const rest = base.slice(1).sort(() => Math.random() - 0.5);
+  return ['A', ...rest].slice(0, n);
+}
 function getLevel(r) {
-  if (r <= 2) return 'A';
-  if (r <= 4) return 'B';
-  return 'C';
+  return levelSchedule[r - 1] || 'A';
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -318,18 +322,15 @@ function parseShapeKey(k) { const [s,f] = k.split('|'); return {shape:s,fill:f};
 function generateShapesPuzzle(roundNum) {
   const level = getLevel(roundNum);
 
-  // Choisir 3 formes (axe ligne ou axe colonne selon niveau)
   const sh = [...SHAPES].sort(() => Math.random()-0.5).slice(0,3);
   const fi = [...FILLS].sort(() => Math.random()-0.5).slice(0,3);
-
-  // Construction grille 3×3
-  // Niveau A : forme varie par LIGNE (même forme sur toute la ligne)
-  //            fill fixe sur toute la grille (même fill partout)
-  // Niveau B : forme fixe sur toute la grille
-  //            fill varie par COLONNE (même fill sur toute la colonne)
-  // Niveau C : forme varie par LIGNE, fill varie par COLONNE
   const fixedFill  = fi[0];
   const fixedShape = sh[0];
+
+  // Niveau D (diagonale) : la diagonale principale partage la même forme,
+  // les autres cases sont remplies avec des combos neutres variés.
+  const diagShape = sh[0];
+  const diagFill  = fi[0];
 
   const grid = [];
   for (let r = 0; r < 3; r++) {
@@ -342,20 +343,27 @@ function generateShapesPuzzle(roundNum) {
       } else if (level === 'B') {
         shape = fixedShape;
         fill  = fi[c];
-      } else { // C
+      } else if (level === 'C') {
         shape = sh[r];
         fill  = fi[c];
+      } else { // D — diagonale
+        if (r === c) { shape = diagShape; fill = diagFill; }
+        else {
+          // Hors diagonale : formes/fills différents de la diagonale
+          const otherShapes = SHAPES.filter(s => s !== diagShape);
+          const otherFills  = FILLS.filter(f => f !== diagFill);
+          shape = otherShapes[(r * 3 + c) % otherShapes.length];
+          fill  = otherFills[(r + c) % otherFills.length];
+        }
       }
       row.push({ shape, fill, color: shapeColor(r, c, level) });
     }
     grid.push(row);
   }
 
-  // Réponse correcte = [2][2]
   const correct = grid[2][2];
   answerKey = shapeKey(correct.shape, correct.fill);
 
-  // Distracteurs : combinaisons qui ne sont PAS la bonne réponse
   const allCombos = [];
   SHAPES.forEach(s => FILLS.forEach(f => {
     if (shapeKey(s,f) !== answerKey) allCombos.push({shape:s, fill:f});
@@ -369,6 +377,7 @@ function generateShapesPuzzle(roundNum) {
     A: 'Regarde : chaque ligne a la même forme !',
     B: 'Regarde : chaque colonne a le même remplissage !',
     C: 'Ligne = forme, colonne = remplissage. Trouve les deux !',
+    D: 'Regarde la diagonale : ↘ même motif !',
   };
 
   return { grid, choices, hint: hints[level], level, type: 'shapes' };
@@ -381,68 +390,168 @@ const BUS_POOL = LIGNES.filter(l =>
   ['162','172','185','286','323','V2','V3','V4','132','184','186','47'].includes(l.num)
 );
 
+// Palette de carrosseries (turquoise = standard, + variantes LOCALES à MJ-14)
+const BODY_COLORS = [
+  { key:'turquoise', body:'#1abc9c' },
+  { key:'orange',    body:'#ff7043' },
+  { key:'violet',    body:'#9c27b0' },
+];
+// Palette roues
+const WHEEL_COLORS = [
+  { key:'noir',   outer:'#333', inner:'#666' },
+  { key:'jaune',  outer:'#f1c40f', inner:'#ffdb4d' },
+  { key:'rouge',  outer:'#c0392b', inner:'#e74c3c' },
+];
+
+// Variante locale à MJ-14 uniquement : permet de changer carrosserie + roues.
+// Ne pas réutiliser ailleurs — la règle globale reste busSVG() turquoise fixe.
+function busSVGVariant(destColor, textColor, num, bodyColor, wheel, width) {
+  return `<svg viewBox="0 0 160 80" width="${width}" xmlns="http://www.w3.org/2000/svg">
+    <rect x="5" y="10" width="150" height="45" rx="4" fill="${bodyColor}"/>
+    <rect x="5" y="40" width="150" height="15" fill="#ecf0f1"/>
+    <rect x="5" y="48" width="150" height="6" fill="#7f8c8d"/>
+    <rect x="62" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+    <rect x="70" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+    <rect x="130" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+    <rect x="138" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+    <rect x="5" y="10" width="150" height="45" rx="4" fill="none" stroke="#111" stroke-width="2"/>
+    <rect x="10" y="14" width="21" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1.5"/>
+    <rect x="36" y="14" width="21" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1.5"/>
+    <rect x="84" y="14" width="40" height="21" fill="${destColor}" stroke="#111" stroke-width="1.5"/>
+    <rect x="150.5" y="14" width="5" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1"/>
+    <text x="104" y="24.5" font-family="Arial,sans-serif" font-size="13" font-weight="bold"
+          fill="${textColor}" text-anchor="middle" dominant-baseline="central">${num}</text>
+    <line x1="149" y1="24" x2="155" y2="24" stroke="#111" stroke-width="2" stroke-linecap="round"/>
+    <rect x="152" y="20" width="6" height="10" rx="1" fill="#111"/>
+    <circle cx="45" cy="54" r="10" fill="${wheel.outer}" stroke="#111" stroke-width="2"/>
+    <circle cx="45" cy="54" r="6" fill="${wheel.inner}"/>
+    <circle cx="45" cy="54" r="2" fill="#111"/>
+    <circle cx="115" cy="54" r="10" fill="${wheel.outer}" stroke="#111" stroke-width="2"/>
+    <circle cx="115" cy="54" r="6" fill="${wheel.inner}"/>
+    <circle cx="115" cy="54" r="2" fill="#111"/>
+    <rect x="5" y="48" width="4" height="5" fill="#FF4444"/>
+    <rect x="151" y="48" width="4" height="5" fill="#FFCC00"/>
+  </svg>`;
+}
+
+function busRender(item, size) {
+  if (item.bodyColor || item.wheel) {
+    return busSVGVariant(
+      item.color, item.textColor, item.num,
+      item.bodyColor || '#1abc9c',
+      item.wheel     || WHEEL_COLORS[0],
+      size
+    );
+  }
+  return busSVG(item.color, item.textColor, item.num, size);
+}
+
+function busKey(item) {
+  return `${item.color}|${item.num}|${item.bodyColor||'_'}|${item.wheel?item.wheel.key:'_'}`;
+}
+
 function generateBusPuzzle(roundNum) {
   const level = getLevel(roundNum);
   const sh = [...BUS_POOL].sort(() => Math.random()-0.5);
   const rowLines = sh.slice(0, 3);
   const colLines = sh.slice(3, 6);
 
-  // Niveau A : même bus sur toute la ligne
-  // Niveau B : même bus sur toute la colonne
-  // Niveau C : bus[r][c] = rowLines[r] (couleur) + colLines[c] (numéro affiché)
-  //            → ici on affiche le bus de la colonne mais dans la couleur de la ligne
+  // Pour varier ce que "l'axe" encode, on tire aléatoirement par partie :
+  // - axe "couleur de ligne" : rowLines (toujours)
+  // - axe "numéro de colonne" : colLines (toujours)
+  // - pour niveau C, on peut aussi utiliser carrosserie ou roues selon le round
+  const bodiesByRow = [...BODY_COLORS].sort(() => Math.random()-0.5).slice(0,3);
+  const wheelsByCol = [...WHEEL_COLORS].sort(() => Math.random()-0.5).slice(0,3);
+
+  // Niveau C a 3 variantes tirées au hasard :
+  //   C1 : couleur destination par ligne, numéro par colonne (classique)
+  //   C2 : carrosserie par ligne, numéro par colonne
+  //   C3 : couleur destination par ligne, roues par colonne
+  const cVariant = level === 'C' ? (1 + Math.floor(Math.random()*3)) : 0;
 
   const grid = [];
   for (let r = 0; r < 3; r++) {
     const row = [];
     for (let c = 0; c < 3; c++) {
-      let line;
+      let cell;
       if (level === 'A') {
-        line = rowLines[r];
+        cell = { ...rowLines[r] };
       } else if (level === 'B') {
-        line = colLines[c];
-      } else { // C : couleur de ligne, numéro de colonne
-        line = {
-          num: colLines[c].num,
-          color: rowLines[r].color,
-          textColor: rowLines[r].textColor,
-          name: `Bus ${colLines[c].num}`,
-        };
+        cell = { ...colLines[c] };
+      } else if (level === 'C') {
+        if (cVariant === 1) {
+          cell = {
+            num: colLines[c].num,
+            color: rowLines[r].color,
+            textColor: rowLines[r].textColor,
+          };
+        } else if (cVariant === 2) {
+          cell = {
+            num: colLines[c].num,
+            color: colLines[c].color,
+            textColor: colLines[c].textColor,
+            bodyColor: bodiesByRow[r].body,
+          };
+        } else {
+          cell = {
+            num: colLines[c].num,
+            color: rowLines[r].color,
+            textColor: rowLines[r].textColor,
+            wheel: wheelsByCol[c],
+          };
+        }
+      } else { // D — diagonale : même bus sur la diagonale, autres cases variées
+        if (r === c) {
+          cell = { ...rowLines[0] };
+        } else {
+          cell = { ...colLines[(r + c) % colLines.length] };
+        }
       }
-      row.push(line);
+      row.push(cell);
     }
     grid.push(row);
   }
 
   const correct = grid[2][2];
-  answerKey = level === 'C'
-    ? `${correct.color}|${correct.num}`
-    : correct.num;
+  answerKey = busKey(correct);
 
-  // Distracteurs
-  let distractors;
-  if (level === 'C') {
-    // Combos couleur × numéro qui ne sont pas la bonne réponse
-    const combos = [];
-    rowLines.forEach(rl => colLines.forEach(cl => {
-      const k = `${rl.color}|${cl.num}`;
-      if (k !== answerKey) combos.push({ num:cl.num, color:rl.color, textColor:rl.textColor });
+  // Distracteurs — variantes plausibles qui diffèrent sur au moins un axe
+  const distractorPool = [];
+  if (level === 'C' && cVariant === 2) {
+    // Mélanges carrosserie × numéro
+    bodiesByRow.forEach(b => colLines.forEach(cl => {
+      const cand = { num:cl.num, color:cl.color, textColor:cl.textColor, bodyColor:b.body };
+      if (busKey(cand) !== answerKey) distractorPool.push(cand);
     }));
-    distractors = combos.sort(() => Math.random()-0.5).slice(0,2);
+  } else if (level === 'C' && cVariant === 3) {
+    rowLines.forEach(rl => wheelsByCol.forEach(w => {
+      const cand = { num:colLines[2].num, color:rl.color, textColor:rl.textColor, wheel:w };
+      if (busKey(cand) !== answerKey) distractorPool.push(cand);
+    }));
+  } else if (level === 'C') {
+    rowLines.forEach(rl => colLines.forEach(cl => {
+      const cand = { num:cl.num, color:rl.color, textColor:rl.textColor };
+      if (busKey(cand) !== answerKey) distractorPool.push(cand);
+    }));
   } else {
     const usedNums = rowLines.map(l => l.num).concat(colLines.map(l => l.num));
-    distractors = BUS_POOL
+    BUS_POOL
       .filter(l => !usedNums.includes(l.num))
-      .sort(() => Math.random()-0.5)
-      .slice(0,2);
+      .forEach(l => distractorPool.push({ ...l }));
   }
 
+  const distractors = distractorPool.sort(() => Math.random()-0.5).slice(0,2);
   const choices = [correct, ...distractors].sort(() => Math.random()-0.5);
 
   const hints = {
     A: 'Chaque ligne a toujours le même bus !',
     B: 'Chaque colonne a toujours le même bus !',
-    C: 'La couleur change par ligne, le numéro par colonne !',
+    C: cVariant === 2
+        ? 'La carrosserie change par ligne, le numéro par colonne !'
+        : cVariant === 3
+        ? 'La couleur change par ligne, les roues par colonne !'
+        : 'La couleur change par ligne, le numéro par colonne !',
+    D: 'Regarde la diagonale : ↘ même bus !',
   };
 
   return { grid, choices, hint: hints[level], level, type: 'bus' };
@@ -490,7 +599,7 @@ function renderPuzzle(puzzle) {
       } else {
         const item = grid[r][c];
         cell.innerHTML = type === 'bus'
-          ? busSVG(item.color, item.textColor, item.num, busFit)
+          ? busRender(item, busFit)
           : shapeSVG(item.shape, item.fill, item.color, shapeFit);
       }
       gridEl.appendChild(cell);
@@ -510,8 +619,8 @@ function renderPuzzle(puzzle) {
 
     let key, content, label;
     if (type === 'bus') {
-      key     = puzzle.level === 'C' ? `${item.color}|${item.num}` : item.num;
-      content = busSVG(item.color, item.textColor, item.num, cFit);
+      key     = busKey(item);
+      content = busRender(item, cFit);
       label   = `Ligne ${item.num}`;
     } else {
       key     = shapeKey(item.shape, item.fill);
@@ -551,7 +660,7 @@ function onChoice(key, btn, puzzle) {
       mystery.classList.remove('mystery');
       mystery.style.animation = 'none';
       mystery.innerHTML = puzzle.type === 'bus'
-        ? busSVG(item.color, item.textColor, item.num, Math.floor(cs * 0.84))
+        ? busRender(item, Math.floor(cs * 0.84))
         : shapeSVG(item.shape, item.fill, item.color, Math.floor(cs * 0.60));
       mystery.classList.add('flash-ok');
     }
@@ -606,9 +715,20 @@ function updateScore() {
   document.getElementById('score-badge').textContent = `${score} / ${round}`;
 }
 
+function renderDots() {
+  const wrap = document.getElementById('dots-wrap');
+  wrap.innerHTML = '';
+  for (let i = 0; i < ROUNDS_PER_GAME; i++) {
+    const d = document.createElement('div');
+    d.className = 'lvl-dot';
+    d.id = 'dot-' + i;
+    wrap.appendChild(d);
+  }
+}
 function updateLevelDots() {
   for (let i = 0; i < ROUNDS_PER_GAME; i++) {
     const dot = document.getElementById('dot-' + i);
+    if (!dot) continue;
     if (i < round - 1)      dot.className = 'lvl-dot done';
     else if (i === round - 1) dot.className = 'lvl-dot active';
     else                      dot.className = 'lvl-dot';
@@ -658,6 +778,8 @@ function startGame() {
   score = 0;
   round = 1;
   answered = false;
+  levelSchedule = buildLevelSchedule(ROUNDS_PER_GAME);
+  renderDots();
   document.getElementById('end-screen').classList.remove('visible');
   updateScore();
   updateLevelDots();

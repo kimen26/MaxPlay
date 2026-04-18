@@ -246,8 +246,21 @@ function initRound(){
   stopAll();
   const n=3+Math.floor(Math.random()*4); // 3 à 6 lignes
   lines=shuffle(ALL_LINES).slice(0,n);
-  // timers : valeurs entre 5 et 45, toutes différentes, espacées
-  const pool=shuffle([5,8,12,17,22,28,35,42,50]).slice(0,n);
+  // timers : valeurs entières aléatoires entre 2 et 59, toutes différentes,
+  // espacées d'au moins 3 minutes pour éviter les bus "quasi ex aequo".
+  const pool=[];
+  let attempts=0;
+  while(pool.length<n && attempts<200){
+    const v=2+Math.floor(Math.random()*58); // 2..59
+    if(pool.every(x=>Math.abs(x-v)>=3))pool.push(v);
+    attempts++;
+  }
+  // Fallback : si pas assez de valeurs espacées, on complète avec du random simple
+  while(pool.length<n){
+    const v=2+Math.floor(Math.random()*58);
+    if(!pool.includes(v))pool.push(v);
+  }
+  shuffle(pool);
   timers={};
   lines.forEach((l,i)=>timers[l.num]=pool[i]);
   // La cible = le minimum

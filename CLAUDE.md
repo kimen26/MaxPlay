@@ -31,7 +31,7 @@ Si ambigu : demande à l'utilisateur avant d'avancer.
 | [memory/rules-jeu.md](memory/rules-jeu.md) | Règles UX/péda + designs validés |
 | [tasks/BACKLOG.md](tasks/BACKLOG.md) | Source de vérité épics jeu |
 | [docs/jeux/](docs/jeux/) | Specs, assets, idées |
-| [game-html/](game-html/) | Mini-jeux HTML vanilla (mj-01 à mj-17) |
+| [game-html/](game-html/) | Mini-jeux HTML vanilla (mj-01 à mj-16) |
 | [game/](game/) | Phaser build (mj-07) |
 
 ## Skills jeu
@@ -46,7 +46,7 @@ GitHub Pages → kimen26.github.io/MaxPlay/
 CI : [.github/workflows/deploy.yml](.github/workflows/deploy.yml) assemble dans `_site/` (gitignored)
 
 ## État jeux (2026-03-21)
-MJ-01 à MJ-17 déployés. Voir [tasks/BACKLOG.md](tasks/BACKLOG.md) pour détail.
+MJ-01 à MJ-16 déployés (MJ-17 retiré). Voir [tasks/BACKLOG.md](tasks/BACKLOG.md) pour détail.
 
 ---
 

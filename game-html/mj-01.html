@@ -3,284 +3,329 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>MJ-01 – Quelle couleur ?</title>
+  <title>MJ-01 – Quiz Bus (mix)</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
     #gameScr { background: linear-gradient(160deg, #0d3b5e, #1a2a3a); }
-    
-    /* Bus SVG container */
-    .bus-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 12px;
-      margin: 10px 0;
+
+    .bus-container { display:flex; flex-direction:column; align-items:center; gap:12px; margin:10px 0; }
+    #busDisplay svg { filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3)); }
+
+    .tts-btn, .repeat-btn {
+      background: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+      color:#fff; border:none; cursor:pointer;
+      box-shadow: 0 4px 12px rgba(102,126,234,0.4);
+      transition: transform .2s, box-shadow .2s;
     }
-    
-    #busDisplay svg {
-      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
-    }
-    
-    /* TTS Button */
     .tts-btn {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      border: none;
-      border-radius: 25px;
-      padding: 10px 20px;
-      font-size: 1rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-      transition: transform 0.2s, box-shadow 0.2s;
+      border-radius:25px; padding:10px 20px; font-size:1rem; font-weight:700;
+      display:flex; align-items:center; gap:8px;
     }
-    
-    .tts-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(102, 126, 234, 0.5);
+    .tts-btn:hover { transform: translateY(-2px); }
+    .repeat-btn {
+      border-radius:50%; width:56px; height:56px; font-size:1.6rem;
+      display:flex; align-items:center; justify-content:center; margin:0 auto;
     }
-    
-    .tts-btn:active {
-      transform: translateY(0);
+    .repeat-btn:hover { transform: scale(1.1); }
+
+    .swatch { width:64px; height:64px; border-radius:50%; border:4px solid #fff4; box-shadow:0 4px 12px #0003; transition: transform .2s; }
+    .swatch-choice { display:flex; flex-direction:column; align-items:center; gap:8px; }
+    .swatch-choice:hover .swatch { transform: scale(1.1); }
+
+    .question-counter { text-align:center; font-size:.9rem; opacity:.7; margin-bottom:8px; }
+    .mode-badge {
+      display:inline-block; padding:3px 10px; border-radius:12px;
+      font-size:.7rem; font-weight:900; margin-left:8px;
+      background: linear-gradient(135deg,#667eea,#764ba2); color:#fff;
     }
-    
-    /* Swatch choices */
-    .swatch-choice {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
+    .instruction-text {
+      text-align:center; font-size:1.15rem; font-weight:700;
+      color:#ffe066; margin-bottom:10px;
     }
-    
-    .swatch {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      border: 4px solid #fff4;
-      box-shadow: 0 4px 12px #0003;
-      transition: transform 0.2s;
+    .bus-display-container {
+      background: rgba(255,255,255,0.05); border-radius:16px; padding:16px; margin:8px 0;
     }
-    
-    .swatch-choice:hover .swatch {
-      transform: scale(1.1);
-    }
-    
-    .line-num {
-      font-size: 0.9rem;
-      font-weight: 900;
-      color: #fff;
-    }
-    
-    .question-counter {
-      text-align: center;
-      font-size: 0.9rem;
-      opacity: 0.7;
-      margin-bottom: 8px;
-    }
-    
-    /* Choices grid - 3 columns for 6 options */
-    .choices {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      padding: 0 12px;
-      max-width: 400px;
-      margin: 0 auto;
-    }
-    
+
+    .choices { display:grid; gap:12px; padding:0 12px; max-width:420px; margin:0 auto; }
+    .choices.colors { grid-template-columns: repeat(3, 1fr); }
+    .choices.numbers { grid-template-columns: 1fr 1fr 1fr; }
+
     @media (max-width: 400px) {
-      .swatch { width: 56px; height: 56px; }
-      .choices { gap: 12px; padding: 0 8px; }
-      .tts-btn { padding: 8px 16px; font-size: 0.9rem; }
-    }
-    @media (max-width: 320px) {
-      .swatch { width: 50px; height: 50px; border-width: 3px; }
-      .choices { gap: 10px; padding: 0 6px; }
+      .swatch { width:56px; height:56px; }
+      .tts-btn { padding:8px 16px; font-size:.9rem; }
     }
   </style>
 </head>
 <body>
   <div id="app">
-    <!-- Header -->
     <div class="hdr">
       <a href="index.html" class="back">←</a>
-      <span class="htitle">🎨 Quelle couleur ?</span>
+      <span class="htitle">🚌 Quiz Bus <span class="mode-badge" id="modeBadge">MIX</span></span>
     </div>
-    
-    <!-- Score -->
+
     <div class="scorebar">
       <span class="scoretxt">Score</span>
       <span class="scoreval" id="score">0</span>
       <span class="streak" id="streak"></span>
     </div>
-    
-    <!-- Question -->
+
     <div class="qbox" id="qbox">
-      <div class="question-counter" id="qcounter">Question 1 / 5</div>
-      <div class="qtxt" id="qtxt" style="font-size:1.2rem; text-align: center;">
-        Quelle couleur est le bus
+      <div class="question-counter" id="qcounter">Question 1 / 10</div>
+      <div class="instruction-text" id="instruction">…</div>
+
+      <div class="bus-display-container">
+        <div id="busDisplay" style="margin:0 auto;"></div>
       </div>
-      
-      <!-- Bus SVG dynamique -->
-      <div class="bus-container">
-        <div id="busDisplay" style="margin:8px auto;"></div>
-        <!-- Bouton TTS -->
-        <button class="tts-btn" id="ttsBtn" onclick="speakQuestion()">
-          <span>🔊</span>
-          <span>Écouter</span>
-        </button>
-      </div>
+
+      <div class="bus-container" id="extraControls"></div>
     </div>
-    
-    <!-- Choices -->
-    <div class="choices" id="choices">
-      <!-- Généré par JS -->
-    </div>
+
+    <div class="choices" id="choices"></div>
   </div>
-  
-  <!-- Feedback overlay -->
+
   <div id="fbOverlay"></div>
-  
-  <!-- Scripts -->
+
   <script src="js/sounds.js"></script>
   <script src="js/victory-sounds.js"></script>
   <script src="js/feedback.js"></script>
   <script src="js/data.js"></script>
   <script src="js/bus-svg.js"></script>
   <script>
-    // ─── MJ-01: Quelle couleur ? ───
-    // Max voit un numéro → doit choisir la bonne couleur
-    
-    let score = 0;
-    let streak = 0;
-    let questionCount = 0;
-    const MAX_QUESTIONS = 5;
+    // ─── MJ-01 MIX : 10 tours alternant 3 modes ───
+    // Mode A (couleur) : numéro visible fenêtre blanche → choisir la couleur
+    // Mode B (numéro)  : bus coloré numéro caché → choisir le numéro
+    // Mode C (vocal)   : bus blanc caché + TTS → choisir le numéro
+    const MAX_QUESTIONS = 10;
+    const MODES = ['color', 'number', 'voice'];
+
+    const POOL_COLOR  = LIGNES.filter(l => l.num !== 'TVM');
+    const POOL_NUMBER = LIGNES.filter(l => !['V6','2234','N22','TVM'].includes(l.num));
+    const POOL_VOICE  = LIGNES;
+
+    let score = 0, streak = 0, questionCount = 0;
     let locked = false;
     let currentLine = null;
-    
-    // Pool de lignes (toutes sauf TVM pour l'instant)
-    const POOL = LIGNES.filter(l => l.num !== 'TVM');
-    
-    // TTS (Text-to-Speech)
-    function speakQuestion() {
-      if (!currentLine) return;
-      
-      const utterance = new SpeechSynthesisUtterance(`Quelle couleur est le bus ${currentLine.num} ?`);
-      utterance.lang = 'fr-FR';
-      utterance.rate = 0.9;
-      utterance.pitch = 1;
-      
-      // Essayer de trouver une voix française
-      const voices = speechSynthesis.getVoices();
-      const frenchVoice = voices.find(v => v.lang.startsWith('fr'));
-      if (frenchVoice) {
-        utterance.voice = frenchVoice;
+    let currentMode = null;
+    let modeOrder = [];
+
+    const synth = window.speechSynthesis;
+    function speak(text, priority=false) {
+      if (!synth) return;
+      if (priority) synth.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'fr-FR'; u.rate = 0.9; u.pitch = 1.05; u.volume = 1;
+      const voices = synth.getVoices();
+      const fr = voices.find(v => v.lang.startsWith('fr'));
+      if (fr) u.voice = fr;
+      synth.speak(u);
+    }
+    if (synth && synth.onvoiceschanged !== undefined) synth.onvoiceschanged = () => {};
+
+    function shuffle(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i+1));
+        [a[i], a[j]] = [a[j], a[i]];
       }
-      
-      speechSynthesis.speak(utterance);
+      return a;
     }
-    
-    // Charger les voix au cas où elles ne soient pas encore disponibles
-    if (speechSynthesis.onvoiceschanged !== undefined) {
-      speechSynthesis.onvoiceschanged = () => {};
+
+    function buildModeOrder() {
+      // 10 tours : mélange équilibré ≈ 3-4 de chaque mode
+      const base = [];
+      for (let i = 0; i < MAX_QUESTIONS; i++) base.push(MODES[i % MODES.length]);
+      return shuffle(base);
     }
-    
+
     function init() {
-      score = 0;
-      streak = 0;
-      questionCount = 0;
+      score = 0; streak = 0; questionCount = 0;
+      modeOrder = buildModeOrder();
       document.getElementById('score').textContent = '0';
       document.getElementById('streak').textContent = '';
-      document.getElementById('qcounter').textContent = `Question 1 / ${MAX_QUESTIONS}`;
       nextQuestion();
     }
-    
+
+    function setBadge(mode) {
+      const map = { color: '🎨 COULEUR', number: '🔢 NUMÉRO', voice: '🔊 ÉCOUTE' };
+      document.getElementById('modeBadge').textContent = map[mode];
+    }
+
     function nextQuestion() {
-      if (questionCount >= MAX_QUESTIONS) {
-        showEndScreen();
-        return;
-      }
-      
+      if (questionCount >= MAX_QUESTIONS) { showEndScreen(); return; }
       locked = false;
+      currentMode = modeOrder[questionCount];
       questionCount++;
       document.getElementById('qcounter').textContent = `Question ${questionCount} / ${MAX_QUESTIONS}`;
-      
-      // Choisir une ligne au hasard
-      currentLine = POOL[Math.floor(Math.random() * POOL.length)];
-      // MJ-01 : Max voit le numéro dans fenêtre BLANCHE → doit trouver la couleur
-      // On utilise busSVG avec fond blanc + texte sombre pour cacher la couleur de la ligne
+      setBadge(currentMode);
+
+      const choicesEl = document.getElementById('choices');
+      const extra = document.getElementById('extraControls');
+      choicesEl.innerHTML = '';
+      extra.innerHTML = '';
+
+      if (currentMode === 'color') renderColorRound(choicesEl, extra);
+      else if (currentMode === 'number') renderNumberRound(choicesEl);
+      else renderVoiceRound(choicesEl, extra);
+    }
+
+    // ── Mode A : couleur ──
+    function renderColorRound(choicesEl, extra) {
+      currentLine = POOL_COLOR[Math.floor(Math.random() * POOL_COLOR.length)];
+      document.getElementById('instruction').textContent = 'Quelle couleur est ce bus ?';
       document.getElementById('busDisplay').innerHTML = busSVG('#ffffff', '#111111', currentLine.num, 160);
-      
-      // Générer 5 mauvaises réponses (couleurs distinctes, pas 2 trop proches)
-      const otherLines = POOL.filter(l => l.color !== currentLine.color);
-      const wrongLines = selectDistinctColors(
-        otherLines.filter((l, i, a) => a.findIndex(x => x.color === l.color) === i),
-        5
-      );
-      const wrongColors = wrongLines.map(l => l.color);
-      
-      // Créer les options
+
+      extra.innerHTML = `
+        <button class="tts-btn" onclick="speak('Quelle couleur est le bus ${currentLine.num} ?', true)">
+          <span>🔊</span><span>Écouter</span>
+        </button>`;
+
+      const uniqueColors = POOL_COLOR
+        .filter(l => l.color !== currentLine.color)
+        .filter((l, i, a) => a.findIndex(x => x.color === l.color) === i);
+      const wrongs = selectDistinctColors(uniqueColors, 5);
+
       const options = [
         { color: currentLine.color, isCorrect: true },
-        ...wrongColors.map(c => ({ color: c, isCorrect: false }))
+        ...wrongs.map(l => ({ color: l.color, isCorrect: false }))
       ];
-      
-      // Afficher les choix
-      const container = document.getElementById('choices');
-      container.innerHTML = '';
-      
+
+      choicesEl.className = 'choices colors';
       shuffle(options).forEach(opt => {
         const btn = document.createElement('button');
         btn.className = 'ch swatch-choice';
         btn.dataset.color = opt.color;
-        btn.innerHTML = `
-          <span class="swatch" style="background:${opt.color};"></span>
-        `;
-        btn.onclick = () => answer(opt.isCorrect, btn);
-        container.appendChild(btn);
+        btn.innerHTML = `<span class="swatch" style="background:${opt.color};"></span>`;
+        btn.onclick = () => answerColor(opt.isCorrect, btn);
+        choicesEl.appendChild(btn);
       });
     }
-    
-    function answer(isCorrect, btn) {
-      if (locked) return;
-      locked = true;
-      
+
+    function answerColor(isCorrect, btn) {
+      if (locked) return; locked = true;
       if (isCorrect) {
-        btn.classList.add('ok');
-        score += 10;
-        streak++;
-        sndDing();
-        showFB(true);
+        btn.classList.add('ok'); score += 10; streak++; sndDing(); showFB(true);
       } else {
         btn.classList.add('ko');
-        
-        // Montrer la bonne réponse (comparaison via data-color, pas CSS rgb)
         const correctBtn = Array.from(document.querySelectorAll('#choices .ch'))
           .find(b => b.dataset.color === currentLine.color);
         if (correctBtn) correctBtn.classList.add('ok');
-        
-        streak = 0;
-        playErrorSound(); sndBuzz();
-        showFB(false);
+        streak = 0; playErrorSound(); sndBuzz(); showFB(false);
       }
-      
-      document.getElementById('score').textContent = score;
-      document.getElementById('streak').textContent = streak >= 2 ? `🔥×${streak}` : '';
-      
+      updateScore();
       setTimeout(nextQuestion, 1200);
     }
-    
+
+    // ── Mode B : numéro (bus coloré, numéro caché) ──
+    function renderNumberRound(choicesEl) {
+      currentLine = POOL_NUMBER[Math.floor(Math.random() * POOL_NUMBER.length)];
+      document.getElementById('instruction').textContent = 'Quel est le numéro de ce bus ?';
+      document.getElementById('busDisplay').innerHTML =
+        busSVGHiddenNum(currentLine.color, currentLine.textColor, currentLine.num, 200);
+
+      const wrongs = selectDistinctColors(
+        LIGNES.filter(l => l.num !== currentLine.num), 5
+      );
+      const options = [
+        { line: currentLine, isCorrect: true },
+        ...wrongs.map(l => ({ line: l, isCorrect: false }))
+      ];
+
+      choicesEl.className = 'choices numbers';
+      shuffle(options).forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'ch';
+        btn.style.cssText = 'font-size:1.4rem;font-weight:900;padding:16px 8px;';
+        btn.textContent = opt.line.num;
+        btn.onclick = () => answerNumber(opt.isCorrect, btn);
+        choicesEl.appendChild(btn);
+      });
+    }
+
+    function answerNumber(isCorrect, btn) {
+      if (locked) return; locked = true;
+      revealBusNumber(document.getElementById('busDisplay'));
+      if (isCorrect) {
+        btn.classList.add('ok'); score += 10; streak++; sndDing(); showFB(true);
+      } else {
+        btn.classList.add('ko');
+        const correctBtn = Array.from(document.querySelectorAll('#choices .ch'))
+          .find(b => b.textContent === currentLine.num);
+        if (correctBtn) correctBtn.classList.add('ok');
+        streak = 0; playErrorSound(); sndBuzz(); showFB(false);
+      }
+      updateScore();
+      setTimeout(nextQuestion, 1800);
+    }
+
+    // ── Mode C : vocal (bus blanc + TTS) ──
+    function renderVoiceRound(choicesEl, extra) {
+      currentLine = POOL_VOICE[Math.floor(Math.random() * POOL_VOICE.length)];
+      document.getElementById('instruction').textContent = '🔊 Écoute bien le numéro !';
+      document.getElementById('busDisplay').innerHTML =
+        busSVGHiddenNum('#ffffff', '#111111', currentLine.num, 200);
+
+      extra.innerHTML = `
+        <button class="repeat-btn" onclick="speakTarget()" title="Répéter">🔊</button>
+        <div style="text-align:center;font-size:.8rem;color:#aaa;margin-top:4px;">Clique pour répéter</div>`;
+
+      setTimeout(speakTarget, 300);
+
+      const wrongs = shuffle(LIGNES.filter(l => l.num !== currentLine.num)).slice(0, 5);
+      const options = [
+        { line: currentLine, isCorrect: true },
+        ...wrongs.map(l => ({ line: l, isCorrect: false }))
+      ];
+
+      choicesEl.className = 'choices numbers';
+      shuffle(options).forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'ch';
+        btn.style.cssText = 'font-size:1.4rem;font-weight:900;padding:16px 8px;';
+        btn.textContent = opt.line.num;
+        btn.onclick = () => answerVoice(opt.isCorrect, btn);
+        choicesEl.appendChild(btn);
+      });
+    }
+
+    function speakTarget() {
+      if (!currentLine) return;
+      const txt = (typeof getLineDisplayName === 'function')
+        ? getLineDisplayName(currentLine.num) : currentLine.num;
+      speak(txt, true);
+    }
+
+    function answerVoice(isCorrect, btn) {
+      if (locked) return; locked = true;
+      const display = document.getElementById('busDisplay');
+      if (isCorrect) {
+        btn.classList.add('ok'); score += 10; streak++; sndDing(); showFB(true);
+        display.innerHTML = busSVG(currentLine.color, currentLine.textColor, currentLine.num, 200);
+        speak('Bravo ! C\'était le ' + ((typeof getLineDisplayName==='function')?getLineDisplayName(currentLine.num):currentLine.num));
+      } else {
+        btn.classList.add('ko');
+        const correctBtn = Array.from(document.querySelectorAll('#choices .ch'))
+          .find(b => b.textContent === currentLine.num);
+        if (correctBtn) correctBtn.classList.add('ok');
+        streak = 0; playErrorSound(); sndBuzz(); showFB(false);
+        display.innerHTML = busSVG(currentLine.color, currentLine.textColor, currentLine.num, 200);
+        speak('C\'était le ' + ((typeof getLineDisplayName==='function')?getLineDisplayName(currentLine.num):currentLine.num));
+      }
+      updateScore();
+      setTimeout(nextQuestion, 2200);
+    }
+
+    function updateScore() {
+      document.getElementById('score').textContent = score;
+      document.getElementById('streak').textContent = streak >= 2 ? `🔥×${streak}` : '';
+    }
+
     function showEndScreen() {
       if (typeof Tracker !== 'undefined') Tracker.endSession(score, MAX_QUESTIONS * 10);
       playEndSound(score, MAX_QUESTIONS * 10);
-      confetti();
-      busParade();
-      const app = document.getElementById('app');
-      app.innerHTML = `
+      confetti(); busParade();
+      speak('Félicitations ! Tu as terminé le quiz !', true);
+      document.getElementById('app').innerHTML = `
         <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100dvh;text-align:center;padding:20px;">
           <div style="font-size:5rem;margin-bottom:20px;">🏆</div>
           <h2 style="font-size:2rem;margin-bottom:20px;color:#ffe066;">Super !</h2>
@@ -289,13 +334,11 @@
             <a href="mj-01.html" style="background:#00c47a;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">🔄 Rejouer</a>
             <a href="index.html" style="background:#ffffff22;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">📋 Menu</a>
           </div>
-        </div>
-      `;
+        </div>`;
     }
-    
-    // Démarrer
+
     init();
   </script>
-<script src="js/tracker.js"></script>
+  <script src="js/tracker.js"></script>
 </body>
 </html>

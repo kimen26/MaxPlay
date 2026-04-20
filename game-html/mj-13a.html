@@ -92,6 +92,7 @@ html, body {
 <script src="js/bus-svg.js"></script>
 <script src="js/sounds.js"></script>
 <script src="js/victory-sounds.js"></script>
+<script src="js/qcm-retry.js"></script>
 <script>
 /* ══ LED ══ */
 const DIGITS={
@@ -214,6 +215,7 @@ let lines=[],timers={};
 let targetNum='';
 let score=0,round=0,answered=false;
 let tickId=null,busId=null;
+let qcm=null;
 
 function shuffle(a){return [...a].sort(()=>Math.random()-.5);}
 function updScore(){document.getElementById('score').textContent=`${score} / ${round}`;}
@@ -243,6 +245,7 @@ function renderPanneau(){
 function initRound(){
   if(round>=TOTAL){showVictory();return;}
   answered=false;
+  qcm=QcmRetry.create();
   stopAll();
   const n=3+Math.floor(Math.random()*4); // 3 à 6 lignes
   lines=shuffle(ALL_LINES).slice(0,n);
@@ -342,40 +345,60 @@ function stopAll(){
 /* ══ INTERACTION ══ */
 function onFicheTap(num){
   if(answered)return;
-  // Bloquer immédiatement tous les taps
-  answered=true;
-  document.getElementById('panel-zone').style.pointerEvents='none';
-  onAnswer(num===targetNum,num);
-}
-
-function onAnswer(correct,tappedNum){
-  round++;
-  if(correct)score++;
-  updScore();
-  stopAll();
+  const el=document.getElementById(`fiche-${num}`);
+  if(el && el.dataset.disabled==='1')return;
+  const isCorrect=num===targetNum;
+  const res=QcmRetry.handle(qcm,isCorrect);
+  if(res.outcome==='ignored')return;
 
   const qb=document.getElementById('q-bar');
   const qt=document.getElementById('q-text');
   const tl=lines.find(l=>l.num===targetNum);
 
-  if(correct){
+  if(res.outcome==='correct'){
+    answered=true;
+    if(tickId){clearInterval(tickId);tickId=null;}
+    document.getElementById('panel-zone').style.pointerEvents='none';
+    if(el){el.style.outline='3px solid #4CAF50';el.style.outlineOffset='2px';}
+    round++;
+    if(res.points===10)score++;
+    updScore();
+    stopAll();
     const pika=new Audio('sounds/'+(['pikachu_mw38Ry2.mp3','pikachu_scream.mp3'][Math.floor(Math.random()*2)]));
     pika.volume=0.7; pika.play().catch(()=>{});
     qb.style.background='#1a4a1a';
     qt.innerHTML=`<span style="color:#4CAF50;font-size:1.3rem;">✓ Bravo !</span>
-      <span style="background:${tl.color};color:${tl.textColor};border-radius:8px;padding:3px 14px;font-size:1.4rem;font-weight:900;margin-left:8px;">${tl.num}</span>
-      <span style="color:#aaa;font-size:0.9rem;display:block;margin-top:4px;">arrivait en premier !</span>`;
-  } else {
+      <span style="background:${tl.color};color:${tl.textColor};border-radius:8px;padding:3px 14px;font-size:1.4rem;font-weight:900;margin-left:8px;">${tl.num}</span>`;
+    setTimeout(()=>{
+      qb.style.background='';
+      document.getElementById('panel-zone').style.pointerEvents='';
+      initRound();
+    },1600);
+  } else if(res.outcome==='reveal'){
+    answered=true;
+    document.getElementById('panel-zone').style.pointerEvents='none';
+    if(el){el.style.outline='3px solid #e53935';el.style.outlineOffset='2px';el.dataset.disabled='1';}
+    const tgt=document.getElementById(`fiche-${targetNum}`);
+    if(tgt){tgt.style.outline='3px solid #4CAF50';tgt.style.outlineOffset='2px';}
+    round++;
+    updScore();
+    stopAll();
     playErrorSound();
     qb.style.background='#4a1a1a';
     qt.innerHTML=`<span style="color:#e53935;font-size:1.1rem;">C'était le</span>
       <span style="background:${tl.color};color:${tl.textColor};border-radius:8px;padding:3px 14px;font-size:1.4rem;font-weight:900;margin-left:6px;">${tl.num}</span>`;
+    setTimeout(()=>{
+      qb.style.background='';
+      document.getElementById('panel-zone').style.pointerEvents='';
+      initRound();
+    },1800);
+  } else {
+    // wrong — freeze timers, mark red, let Max retry
+    if(tickId){clearInterval(tickId);tickId=null;}
+    if(el){el.style.outline='3px solid #e53935';el.style.outlineOffset='2px';el.dataset.disabled='1';}
+    playErrorSound();
+    qt.innerHTML=`<span style="color:#ffb74d;font-size:1rem;">Essaie encore !</span>`;
   }
-  setTimeout(()=>{
-    qb.style.background='';
-    document.getElementById('panel-zone').style.pointerEvents='';
-    initRound();
-  },1800);
 }
 
 /* ══ VICTOIRE ══ */

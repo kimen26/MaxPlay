@@ -388,9 +388,9 @@ function buildCycleABCA(a, b, c, extra) {
   };
 }
 
-// Niveau B : suite de tailles (même bus, tailles croissantes ou décroissantes)
+// Niveau B : suite de tailles (même bus, taille croissante uniquement)
 function generatePuzzleB() {
-  const goingUp = randBool();
+  const goingUp = true;
   // Tailles : 4 valeurs extraites de SIZE_STEPS
   // La 4e est la réponse
   const sizes = goingUp ? [...SIZE_STEPS] : [...SIZE_STEPS].reverse();
@@ -456,10 +456,9 @@ function generatePuzzleC() {
   };
 }
 
-function generatePuzzle(roundNum) {
-  if (roundNum <= 2) return generatePuzzleA();
-  if (roundNum <= 4) return generatePuzzleB();
-  return generatePuzzleC();
+function generatePuzzle(_roundNum) {
+  // Un seul pattern pour tous les rounds : taille croissante (petit → gros)
+  return generatePuzzleB();
 }
 
 // ── État du jeu ──────────────────────────────────────────────────────────────

@@ -105,6 +105,7 @@
 
     let score = 0, streak = 0, questionCount = 0;
     let locked = false;
+    let hadWrong = false;
     let currentLine = null;
     let currentMode = null;
     let modeOrder = [];
@@ -154,6 +155,7 @@
     function nextQuestion() {
       if (questionCount >= MAX_QUESTIONS) { showEndScreen(); return; }
       locked = false;
+      hadWrong = false;
       currentMode = modeOrder[questionCount];
       questionCount++;
       document.getElementById('qcounter').textContent = `Question ${questionCount} / ${MAX_QUESTIONS}`;
@@ -202,18 +204,21 @@
     }
 
     function answerColor(isCorrect, btn) {
-      if (locked) return; locked = true;
+      if (locked || btn.disabled) return;
       if (isCorrect) {
-        btn.classList.add('ok'); score += 10; streak++; sndDing(); showFB(true);
+        locked = true;
+        btn.classList.add('ok');
+        score += hadWrong ? 5 : 10;
+        if (!hadWrong) streak++;
+        sndDing(); showFB(true);
+        updateScore();
+        setTimeout(nextQuestion, 1200);
       } else {
-        btn.classList.add('ko');
-        const correctBtn = Array.from(document.querySelectorAll('#choices .ch'))
-          .find(b => b.dataset.color === currentLine.color);
-        if (correctBtn) correctBtn.classList.add('ok');
-        streak = 0; playErrorSound(); sndBuzz(); showFB(false);
+        btn.classList.add('ko'); btn.disabled = true;
+        hadWrong = true; streak = 0;
+        playErrorSound(); sndBuzz(); showFB(false);
+        updateScore();
       }
-      updateScore();
-      setTimeout(nextQuestion, 1200);
     }
 
     // ── Mode B : numéro (bus coloré, numéro caché) ──
@@ -243,19 +248,22 @@
     }
 
     function answerNumber(isCorrect, btn) {
-      if (locked) return; locked = true;
-      revealBusNumber(document.getElementById('busDisplay'));
+      if (locked || btn.disabled) return;
       if (isCorrect) {
-        btn.classList.add('ok'); score += 10; streak++; sndDing(); showFB(true);
+        locked = true;
+        revealBusNumber(document.getElementById('busDisplay'));
+        btn.classList.add('ok');
+        score += hadWrong ? 5 : 10;
+        if (!hadWrong) streak++;
+        sndDing(); showFB(true);
+        updateScore();
+        setTimeout(nextQuestion, 1800);
       } else {
-        btn.classList.add('ko');
-        const correctBtn = Array.from(document.querySelectorAll('#choices .ch'))
-          .find(b => b.textContent === currentLine.num);
-        if (correctBtn) correctBtn.classList.add('ok');
-        streak = 0; playErrorSound(); sndBuzz(); showFB(false);
+        btn.classList.add('ko'); btn.disabled = true;
+        hadWrong = true; streak = 0;
+        playErrorSound(); sndBuzz(); showFB(false);
+        updateScore();
       }
-      updateScore();
-      setTimeout(nextQuestion, 1800);
     }
 
     // ── Mode C : vocal (bus blanc + TTS) ──
@@ -296,23 +304,25 @@
     }
 
     function answerVoice(isCorrect, btn) {
-      if (locked) return; locked = true;
+      if (locked || btn.disabled) return;
       const display = document.getElementById('busDisplay');
       if (isCorrect) {
-        btn.classList.add('ok'); score += 10; streak++; sndDing(); showFB(true);
+        locked = true;
+        btn.classList.add('ok');
+        score += hadWrong ? 5 : 10;
+        if (!hadWrong) streak++;
+        sndDing(); showFB(true);
         display.innerHTML = busSVG(currentLine.color, currentLine.textColor, currentLine.num, 200);
         speak('Bravo ! C\'était le ' + ((typeof getLineDisplayName==='function')?getLineDisplayName(currentLine.num):currentLine.num));
+        updateScore();
+        setTimeout(nextQuestion, 2200);
       } else {
-        btn.classList.add('ko');
-        const correctBtn = Array.from(document.querySelectorAll('#choices .ch'))
-          .find(b => b.textContent === currentLine.num);
-        if (correctBtn) correctBtn.classList.add('ok');
-        streak = 0; playErrorSound(); sndBuzz(); showFB(false);
-        display.innerHTML = busSVG(currentLine.color, currentLine.textColor, currentLine.num, 200);
-        speak('C\'était le ' + ((typeof getLineDisplayName==='function')?getLineDisplayName(currentLine.num):currentLine.num));
+        btn.classList.add('ko'); btn.disabled = true;
+        hadWrong = true; streak = 0;
+        playErrorSound(); sndBuzz(); showFB(false);
+        speak('Essaie encore !', true);
+        updateScore();
       }
-      updateScore();
-      setTimeout(nextQuestion, 2200);
     }
 
     function updateScore() {

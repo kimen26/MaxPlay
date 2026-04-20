@@ -37,6 +37,7 @@
 - 9 situations de vie × 9 types = 81 réactions → [Eneagramme/situations/emotions-universelles.md](../Eneagramme/situations/emotions-universelles.md)
 - Niveaux Riso-Hudson avec exemples enfant 5 ans → [reference/enneagramme-9-niveaux-riso-hudson.md](../reference/enneagramme-9-niveaux-riso-hudson.md)
 - Shortlists alternatives par type → [prénoms-candidats.md](prénoms-candidats.md)
+- Brainstorm brut ~400 prénoms (par ennéatype + par culture) → [prénoms-brainstorm-cultures.md](prénoms-brainstorm-cultures.md)
 
 ---
 

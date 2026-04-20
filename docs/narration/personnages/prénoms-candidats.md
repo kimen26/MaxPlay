@@ -2,6 +2,8 @@
 
 > Fichier de **travail froid** pour valider les 8 prénoms non-confirmés.
 > Seul **Wex (#7)** est canon. Les autres (Élia, Camille, Victor, Iris, Theo, Noa, Sam, Lila) sont héritées d'une ancienne session et doivent être confirmées ou remplacées.
+>
+> **Matière brute à piocher :** → [prénoms-brainstorm-cultures.md](prénoms-brainstorm-cultures.md) (~400 prénoms par ennéatype et par culture, avec analyse critique)
 
 ---
 

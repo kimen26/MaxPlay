@@ -162,6 +162,7 @@
   <script src="js/feedback.js"></script>
   <script src="js/data.js"></script>
   <script src="js/bus-svg.js"></script>
+  <script src="js/qcm-retry.js"></script>
   <script>
     // ─── MJ-03b: La bonne place ───
     // Problèmes de soustraction: places, passagers, attente
@@ -174,7 +175,7 @@
     let streak = 0;
     let questionCount = 0;
     const MAX_QUESTIONS = 5;
-    let locked = false;
+    let qcm = null;
     let correctAnswer = 0;
     let level = 1; // 1=facile, 2=moyen, 3=difficile
     let currentProblem = null;
@@ -198,7 +199,7 @@
         return;
       }
       
-      locked = false;
+      qcm = QcmRetry.create();
       questionCount++;
       
       // Augmenter le niveau si Max réussit beaucoup
@@ -233,6 +234,7 @@
         btn.style.fontSize = '1.3rem';
         btn.style.minHeight = '56px';
         btn.textContent = num;
+        if (num === correctAnswer) btn.dataset.correct = '1';
         btn.onclick = () => answer(num === correctAnswer, btn);
         container.appendChild(btn);
       });

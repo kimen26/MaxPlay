@@ -71,6 +71,7 @@
   <script src="js/sounds.js"></script>
   <script src="js/feedback.js"></script>
   <script src="js/data.js"></script>
+  <script src="js/qcm-retry.js"></script>
   <script>
     // ─── MJ-03a: Compte les passagers ───
     // Des passagers arrivent par GROUPES → Max compte le total
@@ -78,7 +79,7 @@
     
     let score = 0;
     let streak = 0;
-    let locked = false;
+    let qcm = null;
     let correctAnswer = 0;
     
     const EMOJIS = ['🧍', '🧍‍♂️', '🧍‍♀️', '👨', '👩', '👴', '👵'];
@@ -92,7 +93,7 @@
     }
     
     function nextQuestion() {
-      locked = false;
+      qcm = QcmRetry.create();
       
       // Générer un total entre 3 et 10
       const total = 3 + Math.floor(Math.random() * 8);
@@ -140,6 +141,7 @@
         btn.style.fontSize = '1.4rem';
         btn.style.minHeight = '60px';
         btn.textContent = num;
+        if (num === correctAnswer) btn.dataset.correct = '1';
         btn.onclick = () => answer(num === correctAnswer, btn);
         choicesDiv.appendChild(btn);
       });
@@ -168,33 +170,36 @@
     }
     
     function answer(isCorrect, btn) {
-      if (locked) return;
-      locked = true;
-      
-      if (isCorrect) {
+      if (btn.disabled) return;
+      const res = QcmRetry.handle(qcm, isCorrect);
+      if (res.outcome === 'ignored') return;
+
+      if (res.outcome === 'correct') {
         btn.classList.add('ok');
-        score += 10;
-        streak++;
+        score += res.points;
+        if (res.streakInc) streak++; else streak = 0;
         if (streak >= 3) confetti();
-        sndDing();
-        showFB(true);
-      } else {
-        btn.classList.add('ko');
-        
-        // Montrer la bonne réponse
-        const buttons = Array.from(document.querySelectorAll('#choices .ch'));
-        const correctBtn = buttons.find(b => +b.textContent === correctAnswer);
-        if (correctBtn) correctBtn.classList.add('ok');
-        
+        sndDing(); showFB(true);
+        updateBar();
+        setTimeout(nextQuestion, 1200);
+      } else if (res.outcome === 'reveal') {
+        btn.classList.add('ko'); btn.disabled = true;
         streak = 0;
-        sndBuzz();
-        showFB(false);
+        QcmRetry.revealCorrect(document.getElementById('choices'));
+        sndBuzz(); showFB(false);
+        updateBar();
+        setTimeout(nextQuestion, 1600);
+      } else {
+        btn.classList.add('ko'); btn.disabled = true;
+        streak = 0;
+        sndBuzz(); showFB(false);
+        updateBar();
       }
-      
+    }
+
+    function updateBar() {
       document.getElementById('score').textContent = score;
       document.getElementById('streak').textContent = streak >= 2 ? `🔥×${streak}` : '';
-      
-      setTimeout(nextQuestion, 1200);
     }
     
     // Démarrer

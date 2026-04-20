@@ -91,6 +91,7 @@
   <script src="js/feedback.js"></script>
   <script src="js/data.js"></script>
   <script src="js/bus-svg.js"></script>
+  <script src="js/qcm-retry.js"></script>
   <script>
     // ─── MJ-01 MIX : 10 tours alternant 3 modes ───
     // Mode A (couleur) : numéro visible fenêtre blanche → choisir la couleur
@@ -104,8 +105,7 @@
     const POOL_VOICE  = LIGNES;
 
     let score = 0, streak = 0, questionCount = 0;
-    let locked = false;
-    let hadWrong = false;
+    let qcm = null;
     let currentLine = null;
     let currentMode = null;
     let modeOrder = [];
@@ -154,8 +154,7 @@
 
     function nextQuestion() {
       if (questionCount >= MAX_QUESTIONS) { showEndScreen(); return; }
-      locked = false;
-      hadWrong = false;
+      qcm = QcmRetry.create();
       currentMode = modeOrder[questionCount];
       questionCount++;
       document.getElementById('qcounter').textContent = `Question ${questionCount} / ${MAX_QUESTIONS}`;
@@ -197,6 +196,7 @@
         const btn = document.createElement('button');
         btn.className = 'ch swatch-choice';
         btn.dataset.color = opt.color;
+        if (opt.isCorrect) btn.dataset.correct = '1';
         btn.innerHTML = `<span class="swatch" style="background:${opt.color};"></span>`;
         btn.onclick = () => answerColor(opt.isCorrect, btn);
         choicesEl.appendChild(btn);
@@ -204,18 +204,26 @@
     }
 
     function answerColor(isCorrect, btn) {
-      if (locked || btn.disabled) return;
-      if (isCorrect) {
-        locked = true;
+      if (btn.disabled) return;
+      const res = QcmRetry.handle(qcm, isCorrect);
+      if (res.outcome === 'ignored') return;
+      if (res.outcome === 'correct') {
         btn.classList.add('ok');
-        score += hadWrong ? 5 : 10;
-        if (!hadWrong) streak++;
+        score += res.points;
+        if (res.streakInc) streak++; else streak = 0;
         sndDing(); showFB(true);
         updateScore();
         setTimeout(nextQuestion, 1200);
+      } else if (res.outcome === 'reveal') {
+        btn.classList.add('ko'); btn.disabled = true;
+        streak = 0;
+        QcmRetry.revealCorrect(document.getElementById('choices'));
+        playErrorSound(); sndBuzz(); showFB(false);
+        updateScore();
+        setTimeout(nextQuestion, 1800);
       } else {
         btn.classList.add('ko'); btn.disabled = true;
-        hadWrong = true; streak = 0;
+        streak = 0;
         playErrorSound(); sndBuzz(); showFB(false);
         updateScore();
       }
@@ -242,25 +250,35 @@
         btn.className = 'ch';
         btn.style.cssText = 'font-size:1.4rem;font-weight:900;padding:16px 8px;';
         btn.textContent = opt.line.num;
+        if (opt.isCorrect) btn.dataset.correct = '1';
         btn.onclick = () => answerNumber(opt.isCorrect, btn);
         choicesEl.appendChild(btn);
       });
     }
 
     function answerNumber(isCorrect, btn) {
-      if (locked || btn.disabled) return;
-      if (isCorrect) {
-        locked = true;
+      if (btn.disabled) return;
+      const res = QcmRetry.handle(qcm, isCorrect);
+      if (res.outcome === 'ignored') return;
+      if (res.outcome === 'correct') {
         revealBusNumber(document.getElementById('busDisplay'));
         btn.classList.add('ok');
-        score += hadWrong ? 5 : 10;
-        if (!hadWrong) streak++;
+        score += res.points;
+        if (res.streakInc) streak++; else streak = 0;
         sndDing(); showFB(true);
+        updateScore();
+        setTimeout(nextQuestion, 1800);
+      } else if (res.outcome === 'reveal') {
+        btn.classList.add('ko'); btn.disabled = true;
+        streak = 0;
+        revealBusNumber(document.getElementById('busDisplay'));
+        QcmRetry.revealCorrect(document.getElementById('choices'));
+        playErrorSound(); sndBuzz(); showFB(false);
         updateScore();
         setTimeout(nextQuestion, 1800);
       } else {
         btn.classList.add('ko'); btn.disabled = true;
-        hadWrong = true; streak = 0;
+        streak = 0;
         playErrorSound(); sndBuzz(); showFB(false);
         updateScore();
       }
@@ -291,6 +309,7 @@
         btn.className = 'ch';
         btn.style.cssText = 'font-size:1.4rem;font-weight:900;padding:16px 8px;';
         btn.textContent = opt.line.num;
+        if (opt.isCorrect) btn.dataset.correct = '1';
         btn.onclick = () => answerVoice(opt.isCorrect, btn);
         choicesEl.appendChild(btn);
       });
@@ -304,21 +323,31 @@
     }
 
     function answerVoice(isCorrect, btn) {
-      if (locked || btn.disabled) return;
+      if (btn.disabled) return;
+      const res = QcmRetry.handle(qcm, isCorrect);
+      if (res.outcome === 'ignored') return;
       const display = document.getElementById('busDisplay');
-      if (isCorrect) {
-        locked = true;
+      if (res.outcome === 'correct') {
         btn.classList.add('ok');
-        score += hadWrong ? 5 : 10;
-        if (!hadWrong) streak++;
+        score += res.points;
+        if (res.streakInc) streak++; else streak = 0;
         sndDing(); showFB(true);
         display.innerHTML = busSVG(currentLine.color, currentLine.textColor, currentLine.num, 200);
         speak('Bravo ! C\'était le ' + ((typeof getLineDisplayName==='function')?getLineDisplayName(currentLine.num):currentLine.num));
         updateScore();
         setTimeout(nextQuestion, 2200);
+      } else if (res.outcome === 'reveal') {
+        btn.classList.add('ko'); btn.disabled = true;
+        streak = 0;
+        display.innerHTML = busSVG(currentLine.color, currentLine.textColor, currentLine.num, 200);
+        QcmRetry.revealCorrect(document.getElementById('choices'));
+        playErrorSound(); sndBuzz(); showFB(false);
+        speak('C\'était le ' + ((typeof getLineDisplayName==='function')?getLineDisplayName(currentLine.num):currentLine.num), true);
+        updateScore();
+        setTimeout(nextQuestion, 2200);
       } else {
         btn.classList.add('ko'); btn.disabled = true;
-        hadWrong = true; streak = 0;
+        streak = 0;
         playErrorSound(); sndBuzz(); showFB(false);
         speak('Essaie encore !', true);
         updateScore();

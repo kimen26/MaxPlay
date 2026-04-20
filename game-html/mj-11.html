@@ -334,6 +334,7 @@
   <script src="js/sounds.js"></script>
   <script src="js/victory-sounds.js"></script>
   <script src="js/bus-svg.js"></script>
+  <script src="js/qcm-retry.js"></script>
   <script>
     // ─── Données pays ───────────────────────────────────────────────────────────
     // code ISO 3166-1 alpha-2 (pour flag-icons)
@@ -439,7 +440,7 @@
     let currentPays = null;
     let round = 0;
     let score = 0;
-    let answered = false;
+    let qcm = null;
 
     // ─── Mode ───────────────────────────────────────────────────────────────────
     function setMode(m) {
@@ -461,7 +462,7 @@
     // ─── Tour suivant ────────────────────────────────────────────────────────────
     function nextRound() {
       if (round >= ROUND_COUNT) { showVictory(); return; }
-      answered = false;
+      qcm = QcmRetry.create();
       currentPays = pool[round % pool.length];
 
       // Score bar
@@ -489,41 +490,47 @@
       const options = shuffle([currentPays, ...distractors]);
 
       const container = document.getElementById('choices');
-      container.innerHTML = options.map(pays => `
-        <button class="choice-btn" data-code="${pays.code}" onclick="answer('${pays.code}')">
+      container.innerHTML = options.map(pays => {
+        const isCorrect = pays.code === currentPays.code;
+        return `
+        <button class="choice-btn" data-code="${pays.code}"${isCorrect ? ' data-correct="1"' : ''} onclick="answer('${pays.code}', this)">
           <div class="choice-name">${pays.nom}</div>
         </button>
-      `).join('');
+      `;
+      }).join('');
     }
 
     // ─── Réponse ────────────────────────────────────────────────────────────────
-    function answer(code) {
-      if (answered) return;
-      answered = true;
-      round++;
+    function answer(code, btn) {
+      if (btn.disabled) return;
+      const isCorrect = code === currentPays.code;
+      const res = QcmRetry.handle(qcm, isCorrect);
+      if (res.outcome === 'ignored') return;
 
-      const btns = document.querySelectorAll('.choice-btn');
-      btns.forEach(btn => {
-        const btnCode = btn.dataset.code;
-        if (btnCode === currentPays.code) btn.classList.add('correct');
-        else if (btnCode === code && code !== currentPays.code) btn.classList.add('wrong');
-        btn.style.pointerEvents = 'none';
-      });
-
-      if (code === currentPays.code) {
-        score++;
+      if (res.outcome === 'correct') {
+        btn.classList.add('correct');
+        document.querySelectorAll('.choice-btn').forEach(b => { b.style.pointerEvents = 'none'; });
+        if (res.points === 10) score++;
         sndDing();
         showFeedback('🎉');
-        // TTS : dire le nom du pays après bonne réponse
         setTimeout(() => speak(currentPays.nom), 300);
-      } else {
-        sndBuzz();
-        playErrorSound();
+        round++;
+        setTimeout(nextRound, 1600);
+      } else if (res.outcome === 'reveal') {
+        btn.classList.add('wrong'); btn.disabled = true;
+        QcmRetry.revealCorrect(document.getElementById('choices'), 'correct');
+        document.querySelectorAll('.choice-btn').forEach(b => { b.style.pointerEvents = 'none'; });
+        sndBuzz(); playErrorSound();
         showFeedback('💪');
         setTimeout(() => speak(currentPays.nom), 300);
+        round++;
+        setTimeout(nextRound, 1800);
+      } else {
+        btn.classList.add('wrong'); btn.disabled = true;
+        sndBuzz(); playErrorSound();
+        showFeedback('🤔');
+        setTimeout(() => speak('Essaie encore !'), 200);
       }
-
-      setTimeout(nextRound, 1800);
     }
 
     // ─── Feedback ────────────────────────────────────────────────────────────────

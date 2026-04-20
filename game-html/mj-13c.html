@@ -93,6 +93,7 @@ html, body {
 <script src="js/bus-svg.js"></script>
 <script src="js/sounds.js"></script>
 <script src="js/victory-sounds.js"></script>
+<script src="js/qcm-retry.js"></script>
 <script>
 /* ══ LED ══ */
 const DIGITS={
@@ -215,6 +216,7 @@ let lines=[],timers={};
 let targetNum='',correctBefore=0;
 let score=0,round=0,answered=false;
 let tickId=null,busId=null;
+let qcm=null;
 
 function shuffle(a){return [...a].sort(()=>Math.random()-.5);}
 function updScore(){document.getElementById('score').textContent=`${score} / ${round}`;}
@@ -244,6 +246,7 @@ function renderPanneau(){
 function initRound(){
   if(round>=TOTAL){showVictory();return;}
   answered=false;
+  qcm=QcmRetry.create();
   stopAll();
   const n=4+Math.floor(Math.random()*3); // 4 à 6 pour avoir du comptage
   lines=shuffle(ALL_LINES).slice(0,n);
@@ -281,7 +284,8 @@ function renderButtons(){
     const b=document.createElement('button');
     b.className='btn-count';
     b.textContent=i;
-    b.onclick=(()=>{const v=i;return()=>onAnswer(v===correctBefore);})();
+    if(i===correctBefore)b.dataset.correct='1';
+    b.onclick=(()=>{const v=i,btn=b;return()=>onAnswer(v===correctBefore,btn);})();
     qb.appendChild(b);
   }
 }
@@ -344,39 +348,67 @@ function stopAll(){
 }
 
 /* ══ INTERACTION ══ */
-function onAnswer(correct){
-  if(answered)return;
-  answered=true;
-  document.getElementById('panel-zone').style.pointerEvents='none';
-  document.getElementById('q-bar').querySelectorAll('.btn-count').forEach(b=>b.disabled=true);
-  round++;
-  if(correct)score++;
-  updScore();
-  stopAll();
+function onAnswer(isCorrect,btn){
+  if(btn && btn.disabled)return;
+  const res=QcmRetry.handle(qcm,isCorrect);
+  if(res.outcome==='ignored')return;
 
   const qb=document.getElementById('q-bar');
   const qt=document.getElementById('q-text');
-  qb.querySelectorAll('.btn-count').forEach(e=>e.remove());
   const tl=lines.find(l=>l.num===targetNum);
 
-  if(correct){
-    const pika=new Audio('sounds/'+(['pikachu_mw38Ry2.mp3','pikachu_scream.mp3'][Math.floor(Math.random()*2)]));
-    pika.volume=0.7; pika.play().catch(()=>{});
-    qb.style.background='#1a4a1a';
-    qt.innerHTML=`<span style="color:#4CAF50;font-size:1.3rem;">✓ Bravo !</span>
-      <span style="color:#fff;font-size:1rem;display:block;margin-top:4px;">${correctBefore} bus avant le <span style="background:${tl.color};color:${tl.textColor};border-radius:6px;padding:1px 10px;">${tl.num}</span></span>`;
-  } else {
+  if(res.outcome==='correct'){
+    answered=true;
+    document.getElementById('panel-zone').style.pointerEvents='none';
+    qb.querySelectorAll('.btn-count').forEach(b=>{b.disabled=true;});
+    if(btn){btn.style.background='#4CAF50';}
+    round++;
+    if(res.points===10)score++;
+    updScore();
+    stopAll();
+    setTimeout(()=>{
+      qb.querySelectorAll('.btn-count').forEach(e=>e.remove());
+      const pika=new Audio('sounds/'+(['pikachu_mw38Ry2.mp3','pikachu_scream.mp3'][Math.floor(Math.random()*2)]));
+      pika.volume=0.7; pika.play().catch(()=>{});
+      qb.style.background='#1a4a1a';
+      qt.innerHTML=`<span style="color:#4CAF50;font-size:1.3rem;">✓ Bravo !</span>
+        <span style="color:#fff;font-size:1rem;display:block;margin-top:4px;">${correctBefore} bus avant le <span style="background:${tl.color};color:${tl.textColor};border-radius:6px;padding:1px 10px;">${tl.num}</span></span>`;
+    },300);
+    setTimeout(()=>{
+      qb.style.background='';
+      document.getElementById('panel-zone').style.pointerEvents='';
+      initRound();
+    },1800);
+  } else if(res.outcome==='reveal'){
+    answered=true;
+    document.getElementById('panel-zone').style.pointerEvents='none';
+    if(btn){btn.style.background='#e53935';btn.disabled=true;}
+    qb.querySelectorAll('.btn-count').forEach(b=>{
+      b.disabled=true;
+      if(b.dataset.correct==='1')b.style.background='#4CAF50';
+    });
+    round++;
+    updScore();
+    stopAll();
     playErrorSound();
-    qb.style.background='#4a1a1a';
-    qt.innerHTML=`<span style="color:#e53935;font-size:1rem;">C'était</span>
-      <span style="color:#ffe066;font-size:1.5rem;font-weight:900;margin:0 6px;">${correctBefore}</span>
-      <span style="color:#e53935;font-size:1rem;">bus avant le <span style="background:${tl.color};color:${tl.textColor};border-radius:6px;padding:1px 10px;">${tl.num}</span></span>`;
+    setTimeout(()=>{
+      qb.querySelectorAll('.btn-count').forEach(e=>e.remove());
+      qb.style.background='#4a1a1a';
+      qt.innerHTML=`<span style="color:#e53935;font-size:1rem;">C'était</span>
+        <span style="color:#ffe066;font-size:1.5rem;font-weight:900;margin:0 6px;">${correctBefore}</span>
+        <span style="color:#e53935;font-size:1rem;">bus avant le <span style="background:${tl.color};color:${tl.textColor};border-radius:6px;padding:1px 10px;">${tl.num}</span></span>`;
+    },400);
+    setTimeout(()=>{
+      qb.style.background='';
+      document.getElementById('panel-zone').style.pointerEvents='';
+      initRound();
+    },2000);
+  } else {
+    if(btn){btn.style.background='#e53935';btn.disabled=true;}
+    playErrorSound();
+    if(tickId){clearInterval(tickId);tickId=null;}
+    tts('Essaie encore !');
   }
-  setTimeout(()=>{
-    qb.style.background='';
-    document.getElementById('panel-zone').style.pointerEvents='';
-    initRound();
-  },1800);
 }
 
 /* ══ VICTOIRE ══ */

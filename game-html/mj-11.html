@@ -433,6 +433,42 @@
       { code:'gf', nom:'Guyane',          known:false },
     ];
 
+    // ─── Salutations dans la langue du pays ─────────────────────────────────────
+    // [texte, code BCP-47]. Si la voix n'est pas dispo, SpeechSynthesis utilisera
+    // la voix par défaut — ce n'est pas grave, Max entend quand même un mot nouveau.
+    const GREETINGS = {
+      fr:['Bonjour','fr-FR'], gb:['Hello','en-GB'], it:['Ciao','it-IT'],
+      tn:['Salam','ar-TN'],   br:['Olá','pt-BR'],   ch:['Grüezi','de-CH'],
+      us:['Hello','en-US'],   cn:['Ni hao','zh-CN'],jp:['Konnichiwa','ja-JP'],
+      ru:['Privet','ru-RU'],  de:['Hallo','de-DE'], eg:['Salam','ar-EG'],
+      th:['Sawatdi','th-TH'], ma:['Salam','ar-MA'], ar:['Hola','es-AR'],
+      nl:['Hallo','nl-NL'],   lu:['Moien','fr-LU'], kh:['Suostei','km-KH'],
+      es:['Hola','es-ES'],    pt:['Olá','pt-PT'],   be:['Bonjour','fr-BE'],
+      pl:['Cześć','pl-PL'],   se:['Hej','sv-SE'],   no:['Hei','nb-NO'],
+      dk:['Hej','da-DK'],     fi:['Hei','fi-FI'],   at:['Hallo','de-AT'],
+      gr:['Yassou','el-GR'],  tr:['Merhaba','tr-TR'],mx:['Hola','es-MX'],
+      ca:['Hello','en-CA'],   au:['Hello','en-AU'], in:['Namasté','hi-IN'],
+      za:['Hello','en-ZA'],   ng:['Hello','en-NG'], ke:['Jambo','sw-KE'],
+      gh:['Hello','en-GH'],   sn:['Salam','fr-SN'], ci:['Bonjour','fr-FR'],
+      cm:['Bonjour','fr-FR'], dz:['Salam','ar-DZ'], ly:['Salam','ar-LY'],
+      sd:['Salam','ar-SD'],   et:['Selam','am-ET'], tz:['Jambo','sw-TZ'],
+      ug:['Jambo','sw-UG'],   ao:['Olá','pt-PT'],   mz:['Olá','pt-PT'],
+      mg:['Salama','fr-FR'],  bo:['Hola','es-BO'],  cl:['Hola','es-CL'],
+      co:['Hola','es-CO'],    pe:['Hola','es-PE'],  ve:['Hola','es-VE'],
+      ec:['Hola','es-EC'],    uy:['Hola','es-UY'],  py:['Hola','es-PY'],
+      kr:['Annyeong','ko-KR'],id:['Halo','id-ID'],  vn:['Xin chào','vi-VN'],
+      ph:['Kumusta','fil-PH'],sg:['Hello','en-SG'], my:['Helo','ms-MY'],
+      mm:['Mingalaba','my-MM'],bd:['Nomoshkar','bn-BD'],pk:['Salam','ur-PK'],
+      af:['Salam','fa-AF'],   ir:['Salam','fa-IR'], iq:['Salam','ar-IQ'],
+      sa:['Salam','ar-SA'],   ae:['Salam','ar-AE'], il:['Shalom','he-IL'],
+      jo:['Salam','ar-JO'],   lb:['Salam','ar-LB'], sy:['Salam','ar-SY'],
+      ua:['Pryvit','uk-UA'],  ro:['Salut','ro-RO'], hu:['Szia','hu-HU'],
+      cz:['Ahoj','cs-CZ'],    sk:['Ahoj','sk-SK'],  hr:['Bok','hr-HR'],
+      rs:['Zdravo','sr-RS'],  bg:['Zdravei','bg-BG'],nz:['Kia ora','en-NZ'],
+      pf:['Ia orana','fr-FR'],mq:['Bonjour','fr-FR'],gp:['Bonjour','fr-FR'],
+      re:['Bonjour','fr-FR'], nc:['Bonjour','fr-FR'],gf:['Bonjour','fr-FR'],
+    };
+
     // ─── État ────────────────────────────────────────────────────────────────────
     const ROUND_COUNT = 10;
     let mode = 'known';
@@ -514,8 +550,9 @@
         sndDing();
         showFeedback('🎉');
         setTimeout(() => speak(currentPays.nom), 300);
+        setTimeout(() => speakGreeting(currentPays.code), 1300);
         round++;
-        setTimeout(nextRound, 1600);
+        setTimeout(nextRound, 2600);
       } else if (res.outcome === 'reveal') {
         btn.classList.add('wrong'); btn.disabled = true;
         QcmRetry.revealCorrect(document.getElementById('choices'), 'correct');
@@ -657,6 +694,22 @@
       const u = new SpeechSynthesisUtterance(text);
       u.lang = 'fr-FR';
       u.rate = 0.85;
+      window.speechSynthesis.speak(u);
+    }
+
+    function speakGreeting(code) {
+      if (!('speechSynthesis' in window)) return;
+      const g = GREETINGS[code];
+      if (!g) return;
+      const [text, lang] = g;
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = lang;
+      u.rate = 0.85;
+      // Choisir une voix qui matche le lang si dispo
+      const voices = window.speechSynthesis.getVoices();
+      const match = voices.find(v => v.lang === lang) ||
+                    voices.find(v => v.lang.startsWith(lang.split('-')[0]));
+      if (match) u.voice = match;
       window.speechSynthesis.speak(u);
     }
 

@@ -101,6 +101,48 @@ html, body {
   display:flex; align-items:flex-end; gap:0;
 }
 
+/* Station essence */
+#gas-station {
+  position:absolute; left:6%; bottom:54%;
+  display:flex; flex-direction:column; align-items:center;
+  pointer-events:none;
+}
+
+/* Lavage */
+#car-wash {
+  position:absolute; left:40%; bottom:0;
+  width:22%; height:55%;
+  pointer-events:none;
+}
+.wash-tunnel {
+  position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(100,180,255,0.35) 0%, rgba(60,140,220,0.45) 100%);
+  border-left:3px solid rgba(255,255,255,0.5);
+  border-right:3px solid rgba(255,255,255,0.5);
+  border-top:6px solid #2a72b8;
+  border-radius:4px 4px 0 0;
+  overflow:hidden;
+}
+.wash-drip {
+  position:absolute; top:6px; width:4px; height:16px;
+  background:rgba(180,220,255,0.7); border-radius:2px;
+  animation:washDrip 0.9s linear infinite;
+}
+@keyframes washDrip {
+  0%   { transform:translateY(0); opacity:1; }
+  100% { transform:translateY(80px); opacity:0.2; }
+}
+.fuel-bar {
+  position:absolute; width:44px; height:8px;
+  background:#111; border:1px solid #fff; border-radius:3px;
+  overflow:hidden;
+  transform:translateX(-50%);
+}
+.fuel-bar > div {
+  height:100%; background:linear-gradient(90deg,#ff4444,#ffcc00,#00c5a0);
+  width:0%; transition:width 2s linear;
+}
+
 /* ── Panneau de contrôle ── */
 #controls {
   flex-shrink:0; background:#0a0a1e; border-top:2px solid #2a2a4a;
@@ -191,6 +233,12 @@ html, body {
   <!-- Arrêt de bus (affiché si togglé) -->
   <div id="bus-stop" style="display:none;"></div>
 
+  <!-- Station essence -->
+  <div id="gas-station" style="display:none;"></div>
+
+  <!-- Lavage -->
+  <div id="car-wash" style="display:none;"></div>
+
   <!-- Décors dynamiques -->
   <div id="decors"></div>
 
@@ -214,6 +262,8 @@ html, body {
   <div class="ctrl-row">
     <div class="ctrl-label">🎨 Décors</div>
     <button class="ctrl-btn" id="tog-stop" onclick="toggleStop()">🚏 Arrêt de bus</button>
+    <button class="ctrl-btn" id="tog-gas" onclick="toggleGas()">⛽ Station essence</button>
+    <button class="ctrl-btn" id="tog-wash" onclick="toggleWash()">🫧 Lavage</button>
     <button class="ctrl-btn" onclick="addDecor('tree')">🌳 Arbre</button>
     <button class="ctrl-btn" onclick="addDecor('building')">🏢 Bâtiment</button>
     <button class="ctrl-btn" onclick="addDecor('light')">🚦 Feu rouge</button>
@@ -350,10 +400,26 @@ function animLoop(ts) {
   lastTs = ts;
 
   const sw = sceneW();
+  const gasZ  = gasZoneX();
+  const washZ = washZoneX();
   for (let i = activeBuses.length - 1; i >= 0; i--) {
     const b = activeBuses[i];
     b.x += b.dir * b.speed * dt;
     b.el.style.left = b.x + 'px';
+    const busCx = b.x + b.w/2;
+
+    // Station essence : lane 0 (proche), stop 2s quand le centre passe les pompes
+    if (gasZ && b.lane === 0 && !b._gasDone) {
+      if (Math.abs(busCx - gasZ.cx) < gasZ.w * 0.4) triggerGasStop(b);
+    }
+    // Lavage : lane 1 (milieu), ✨ quand le bus sort du tunnel
+    if (washZ && b.lane === 1 && !b._washDone) {
+      const exited = b.dir === 1 ? (busCx > washZ.x1) : (busCx < washZ.x0);
+      const entered = busCx > washZ.x0 && busCx < washZ.x1;
+      if (!b._washEntered && entered) b._washEntered = true;
+      if (b._washEntered && exited) triggerWashExit(b);
+    }
+
     const offLeft  = b.x < -(b.w + 20);
     const offRight = b.x > sw + 20;
     if (offLeft || offRight) {
@@ -423,6 +489,114 @@ function renderStop() {
       ${poleHead}
       <div style="width:${poleW}px;height:${poleH}px;background:#6a6a6a;border-radius:2px;"></div>
     </div>`;
+}
+
+/* ─── Station essence ─── */
+let gasVisible = false;
+function toggleGas() {
+  gasVisible = !gasVisible;
+  const el = document.getElementById('gas-station');
+  const btn = document.getElementById('tog-gas');
+  if (gasVisible) {
+    el.style.display = 'flex';
+    btn.classList.add('active');
+    renderGas();
+  } else {
+    el.style.display = 'none';
+    btn.classList.remove('active');
+  }
+}
+function renderGas() {
+  const el = document.getElementById('gas-station');
+  const sw = sceneW();
+  const w = Math.max(90, Math.min(140, sw * 0.16));
+  const pumpW = Math.round(w * 0.22);
+  const pumpH = Math.round(w * 0.38);
+  const canopyH = Math.round(w * 0.18);
+  el.innerHTML = `
+    <div style="width:${w}px;height:${canopyH}px;background:linear-gradient(180deg,#e94560,#b1253c);border-radius:4px 4px 0 0;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:${Math.round(w*.11)}px;letter-spacing:2px;box-shadow:0 2px 6px rgba(0,0,0,.5);">⛽ ESSO</div>
+    <div style="width:4px;height:${Math.round(canopyH*0.5)}px;background:#666;"></div>
+    <div style="display:flex;gap:${Math.round(w*0.12)}px;">
+      <div style="width:${pumpW}px;height:${pumpH}px;background:#2a2a2a;border:2px solid #111;border-radius:3px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:3px;">
+        <div style="width:70%;height:${Math.round(pumpH*0.3)}px;background:#00c5a0;border-radius:1px;"></div>
+        <div style="color:#fff;font-size:${Math.round(pumpW*0.45)}px;margin-top:2px;">⛽</div>
+      </div>
+      <div style="width:${pumpW}px;height:${pumpH}px;background:#2a2a2a;border:2px solid #111;border-radius:3px;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-top:3px;">
+        <div style="width:70%;height:${Math.round(pumpH*0.3)}px;background:#ffcc00;border-radius:1px;"></div>
+        <div style="color:#fff;font-size:${Math.round(pumpW*0.45)}px;margin-top:2px;">⛽</div>
+      </div>
+    </div>`;
+}
+function gasZoneX() {
+  const gas = document.getElementById('gas-station');
+  if (!gasVisible) return null;
+  const r = gas.getBoundingClientRect();
+  const sr = document.getElementById('scene').getBoundingClientRect();
+  return { cx: r.left - sr.left + r.width/2, w: r.width };
+}
+function triggerGasStop(b) {
+  if (b._gasDone) return;
+  b._gasDone = true;
+  const savedSpeed = b.speed;
+  b.speed = 0;
+  // Fuel bar above bus
+  const bar = document.createElement('div');
+  bar.className = 'fuel-bar';
+  bar.innerHTML = '<div></div>';
+  bar.style.left = (b.x + b.w/2) + 'px';
+  bar.style.bottom = (parseFloat(b.el.style.bottom) + 70) + 'px';
+  fxLayer.appendChild(bar);
+  requestAnimationFrame(() => { bar.firstChild.style.width = '100%'; });
+  const followIv = setInterval(() => {
+    bar.style.left = (b.x + b.w/2) + 'px';
+  }, 40);
+  setTimeout(() => {
+    clearInterval(followIv);
+    bar.remove();
+    b.speed = savedSpeed;
+  }, 2000);
+}
+
+/* ─── Lavage ─── */
+let washVisible = false;
+function toggleWash() {
+  washVisible = !washVisible;
+  const el = document.getElementById('car-wash');
+  const btn = document.getElementById('tog-wash');
+  if (washVisible) {
+    el.style.display = 'block';
+    btn.classList.add('active');
+    renderWash();
+  } else {
+    el.style.display = 'none';
+    btn.classList.remove('active');
+  }
+}
+function renderWash() {
+  const el = document.getElementById('car-wash');
+  const drips = Array.from({length:6}, (_,i) =>
+    `<div class="wash-drip" style="left:${8 + i*16}%;animation-delay:${(i*0.12).toFixed(2)}s;"></div>`
+  ).join('');
+  el.innerHTML = `<div class="wash-tunnel">${drips}<div style="position:absolute;top:-22px;left:50%;transform:translateX(-50%);color:#fff;font-weight:900;font-size:0.75rem;background:#2a72b8;padding:2px 8px;border-radius:6px;">🫧 LAVAGE</div></div>`;
+}
+function washZoneX() {
+  const w = document.getElementById('car-wash');
+  if (!washVisible) return null;
+  const r = w.getBoundingClientRect();
+  const sr = document.getElementById('scene').getBoundingClientRect();
+  return { x0: r.left - sr.left, x1: r.right - sr.left };
+}
+function triggerWashExit(b) {
+  if (b._washDone) return;
+  b._washDone = true;
+  // Sparkle exit flash at bus center
+  const sparkle = document.createElement('div');
+  sparkle.style.cssText = `position:absolute;left:${b.x + b.w/2}px;bottom:${parseFloat(b.el.style.bottom)+40}px;font-size:2.2rem;pointer-events:none;animation:starFly 0.9s ease-out forwards;`;
+  sparkle.style.setProperty('--dx', '0px');
+  sparkle.style.setProperty('--dy', '-40px');
+  sparkle.textContent = '✨';
+  fxLayer.appendChild(sparkle);
+  sparkle.addEventListener('animationend', () => sparkle.remove());
 }
 
 /* ─── Décors ─── */
@@ -676,6 +850,8 @@ window.addEventListener('resize', () => {
     b.el.style.bottom = busBottomPx(b.lane || 0) + 'px';
   });
   if (stopVisible) renderStop();
+  if (gasVisible)  renderGas();
+  if (washVisible) renderWash();
 });
 </script>
 </body>

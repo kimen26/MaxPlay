@@ -80,8 +80,20 @@ html, body {
   transform:translateX(0);
   transition:none;
 }
-.bus-actor.enter { animation:busEnter 0.25s ease-out; }
-@keyframes busEnter { from { transform:scaleX(0.6); opacity:0; } to { transform:scaleX(1); opacity:1; } }
+.bus-actor.enter { animation:busFade 0.25s ease-out; }
+@keyframes busFade { from { opacity:0; } to { opacity:1; } }
+
+/* Atelier pickers */
+.atelier-pick {
+  display:flex; align-items:center; justify-content:space-between;
+  background:#161b22; border:1px solid #30363d; border-radius:8px;
+  padding:4px 8px; font-size:0.78rem; font-weight:700; color:#c9d1d9;
+  gap:6px;
+}
+.atelier-pick input[type="color"] {
+  width:30px; height:26px; border:none; background:transparent;
+  cursor:pointer; padding:0;
+}
 
 /* Arrêt de bus */
 #bus-stop {
@@ -219,15 +231,32 @@ html, body {
     <button class="ctrl-btn" onclick="fxBusExplode()">💥 Explosion</button>
   </div>
 
-  <!-- Idées de jeux -->
+  <!-- Atelier bus -->
   <div class="ctrl-row">
-    <div class="ctrl-label">💡 Idées jeux à explorer</div>
-    <button class="ctrl-btn" onclick="ideaInfo('course')">🏁 Course de bus</button>
-    <button class="ctrl-btn" onclick="ideaInfo('memory')">🧠 Memory lignes</button>
-    <button class="ctrl-btn" onclick="ideaInfo('sort')">↕ Trier par vitesse</button>
-    <button class="ctrl-btn" onclick="ideaInfo('shadow')">👻 Devine l'ombre</button>
-    <button class="ctrl-btn" onclick="ideaInfo('tap')">👆 Tape le bon bus</button>
-    <button class="ctrl-btn" onclick="ideaInfo('noise')">📣 Quel bruit ?</button>
+    <div class="ctrl-label">🛠 Atelier bus — crée ton bus perso</div>
+    <div id="atelier-preview" style="flex:1 1 100%;display:flex;justify-content:center;margin:4px 0 8px;"></div>
+    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:6px;width:100%;">
+      <label class="atelier-pick">Carrosserie
+        <input type="color" id="a-body" value="#1abc9c">
+      </label>
+      <label class="atelier-pick">Fenêtre dest.
+        <input type="color" id="a-dest" value="#E2001A">
+      </label>
+      <label class="atelier-pick">Fenêtres passagers
+        <input type="color" id="a-win" value="#458bba">
+      </label>
+      <label class="atelier-pick">Roues
+        <input type="color" id="a-wheel" value="#333333">
+      </label>
+      <label class="atelier-pick">Couleur numéro
+        <input type="color" id="a-text" value="#ffffff">
+      </label>
+      <label class="atelier-pick">Numéro
+        <input type="text" id="a-num" value="MAX" maxlength="4"
+               style="background:#161b22;border:1px solid #30363d;color:#c9d1d9;border-radius:6px;padding:4px 6px;font-family:'Nunito',sans-serif;font-weight:900;">
+      </label>
+    </div>
+    <button class="ctrl-btn accent" style="width:100%;margin-top:4px;" onclick="spawnCustomBus()">🚀 Envoyer sur la route</button>
   </div>
 
 </div>
@@ -242,8 +271,11 @@ function sceneH() { return document.getElementById('scene').offsetHeight; }
 function sceneW() { return document.getElementById('scene').offsetWidth; }
 const ROAD_BOTTOM_PCT = 0.55; // road starts at 55% from top
 
-function busBottomPx() {
-  return sceneH() * (1 - ROAD_BOTTOM_PCT) + 6;
+function busBottomPx(lane = 0) {
+  // lane 0 = proche (bas de route), 1 = milieu, 2 = loin (haut de route)
+  const base = sceneH() * (1 - ROAD_BOTTOM_PCT) + 6;
+  const laneGap = Math.round(sceneH() * 0.09);
+  return base + lane * laneGap;
 }
 
 /* ─── Bus picks ─── */
@@ -271,21 +303,29 @@ function spawnBus(line) {
   const id = 'bus-' + (busIdCounter++);
   const sw = sceneW();
   const busW = Math.max(100, Math.min(160, sw * 0.28));
-  const botPx = busBottomPx();
-  const speed = 60 + Math.random() * 50; // px/s
+  const lane = Math.floor(Math.random() * 3);       // 0/1/2
+  const dir  = Math.random() < 0.5 ? -1 : 1;         // -1 = left (right→left), 1 = right (left→right)
+  const botPx = busBottomPx(lane);
+  const speed = 60 + Math.random() * 50;
+
+  const svgMarkup = line._custom
+    ? customBusSVG({ ...line._custom, width: busW })
+    : busSVG(line.color, line.textColor, line.num, busW);
 
   const el = document.createElement('div');
   el.className = 'bus-actor enter';
   el.id = id;
   el.style.bottom = botPx + 'px';
-  el.style.left = (sw + 10) + 'px';
-  el.innerHTML = busSVG(line.color, line.textColor, line.num, busW);
+  const startX = dir === -1 ? (sw + 10) : (-busW - 10);
+  el.style.left = startX + 'px';
+  // flip horizontal when going right
+  if (dir === 1) el.style.transform = 'scaleX(-1)';
+  el.innerHTML = svgMarkup;
   busLayer.appendChild(el);
 
-  // Tap → effet
   el.addEventListener('click', () => { fxStars(); fxPikachu(); });
 
-  activeBuses.push({ el, speed, x: sw + 10, id });
+  activeBuses.push({ el, speed, x: startX, id, dir, w: busW, lane });
 }
 
 // Auto-spawn 1 bus au départ
@@ -304,9 +344,11 @@ function animLoop(ts) {
   const sw = sceneW();
   for (let i = activeBuses.length - 1; i >= 0; i--) {
     const b = activeBuses[i];
-    b.x -= b.speed * dt;
+    b.x += b.dir * b.speed * dt;
     b.el.style.left = b.x + 'px';
-    if (b.x < -220) {
+    const offLeft  = b.x < -(b.w + 20);
+    const offRight = b.x > sw + 20;
+    if (offLeft || offRight) {
       b.el.remove();
       activeBuses.splice(i, 1);
     }
@@ -501,57 +543,67 @@ function fxBusExplode() {
   fxStars();
 }
 
-/* ─── Idées jeux ─── */
-const IDEAS = {
-  course: {
-    title: '🏁 Course de bus',
-    desc:  '3 bus partent en même temps depuis la droite à des vitesses différentes. Max doit taper sur le bus de la bonne ligne AVANT qu\'il arrive à l\'arrêt. Travaille la réactivité et la reconnaissance de couleur/numéro sous pression.',
-  },
-  memory: {
-    title: '🧠 Memory lignes',
-    desc:  '6 fiches retournées (dos). Max retourne 2 fiches → si même ligne = point ! Variantes : même couleur, même numéro, ou paire couleur+numéro. Simple, bien connu des 3-4 ans.',
-  },
-  sort: {
-    title: '↕ Trier par vitesse',
-    desc:  '3 bus entrent à des vitesses visibles différentes. Question : "lequel va le plus vite ?". Max doit pointer/taper le bus le plus rapide ou le plus lent. Intro à la comparaison.',
-  },
-  shadow: {
-    title: '👻 Devine l\'ombre',
-    desc:  'Un bus SVG en silhouette noire apparaît. 3 fiches de lignes en bas. Max doit trouver quelle ligne c\'est en reconnaissant la forme de la fenêtre destination (couleur cachée). Observation fine.',
-  },
-  tap: {
-    title: '👆 Tape le bon bus',
-    desc:  '3-4 bus roulent en même temps à des hauteurs légèrement différentes. TTS dit "Tape le bus 162 !". Max doit taper le bon avant qu\'il sorte de l\'écran. Lecture de numéro + rapidité.',
-  },
-  noise: {
-    title: '📣 Quel bruit ?',
-    desc:  'TTS joue un son : numéro de ligne, couleur, ou terminus. Plusieurs fiches s\'affichent. Max tape la bonne fiche. Variante audio pure de MJ-03 mais avec fiches arrêt de bus.',
-  },
-};
-
-function ideaInfo(key) {
-  const idea = IDEAS[key];
-  if (!idea) return;
-  // Affiche sur la scène comme overlay temporaire
-  const overlay = document.createElement('div');
-  overlay.style.cssText = `
-    position:absolute;inset:0;background:rgba(10,10,30,0.92);z-index:20;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;
-    padding:20px;text-align:center;cursor:pointer;
-  `;
-  overlay.innerHTML = `
-    <div style="font-size:1.5rem;font-weight:900;color:#ffe066;margin-bottom:12px;">${idea.title}</div>
-    <div style="font-size:0.9rem;color:#c9d1d9;line-height:1.6;max-width:320px;">${idea.desc}</div>
-    <div style="margin-top:16px;color:#8b949e;font-size:0.78rem;">Tape pour fermer</div>
-  `;
-  overlay.addEventListener('click', () => overlay.remove());
-  document.getElementById('scene').appendChild(overlay);
+/* ─── Atelier bus (SVG custom — LOCAL au dev-lab uniquement) ─── */
+function customBusSVG({ body, dest, win, wheel, text, num, width = 200 }) {
+  return `<svg viewBox="0 0 160 80" width="${width}" xmlns="http://www.w3.org/2000/svg">
+    <rect x="5" y="10" width="150" height="45" rx="4" fill="${body}"/>
+    <rect x="5" y="40" width="150" height="15" fill="#ecf0f1"/>
+    <rect x="5" y="48" width="150" height="6" fill="#7f8c8d"/>
+    <rect x="62" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+    <rect x="70" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+    <rect x="130" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+    <rect x="138" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+    <rect x="5" y="10" width="150" height="45" rx="4" fill="none" stroke="#111" stroke-width="2"/>
+    <rect x="10" y="14" width="21" height="21" fill="${win}" fill-opacity="0.82" stroke="#111" stroke-width="1.5"/>
+    <rect x="36" y="14" width="21" height="21" fill="${win}" fill-opacity="0.82" stroke="#111" stroke-width="1.5"/>
+    <rect x="84" y="14" width="40" height="21" fill="${dest}" stroke="#111" stroke-width="1.5"/>
+    <rect x="150.5" y="14" width="5" height="21" fill="${win}" fill-opacity="0.82" stroke="#111" stroke-width="1"/>
+    <text x="104" y="24.5" font-family="Arial,sans-serif" font-size="13" font-weight="bold"
+          fill="${text}" text-anchor="middle" dominant-baseline="central">${num}</text>
+    <line x1="149" y1="24" x2="155" y2="24" stroke="#111" stroke-width="2" stroke-linecap="round"/>
+    <rect x="152" y="20" width="6" height="10" rx="1" fill="#111"/>
+    <circle cx="45" cy="54" r="10" fill="${wheel}" stroke="#111" stroke-width="2"/>
+    <circle cx="45" cy="54" r="6" fill="#666"/>
+    <circle cx="45" cy="54" r="2" fill="#111"/>
+    <circle cx="115" cy="54" r="10" fill="${wheel}" stroke="#111" stroke-width="2"/>
+    <circle cx="115" cy="54" r="6" fill="#666"/>
+    <circle cx="115" cy="54" r="2" fill="#111"/>
+    <rect x="5" y="48" width="4" height="5" fill="#FF4444"/>
+    <rect x="151" y="48" width="4" height="5" fill="#FFCC00"/>
+  </svg>`;
 }
+
+function readAtelier() {
+  return {
+    body:  document.getElementById('a-body').value,
+    dest:  document.getElementById('a-dest').value,
+    win:   document.getElementById('a-win').value,
+    wheel: document.getElementById('a-wheel').value,
+    text:  document.getElementById('a-text').value,
+    num:   (document.getElementById('a-num').value || 'MAX').trim().slice(0,4),
+  };
+}
+
+function updateAtelierPreview() {
+  const opts = readAtelier();
+  document.getElementById('atelier-preview').innerHTML = customBusSVG({ ...opts, width: 180 });
+}
+
+function spawnCustomBus() {
+  const opts = readAtelier();
+  const line = { color: opts.dest, textColor: opts.text, num: opts.num, _custom: opts };
+  spawnBus(line);
+}
+
+document.querySelectorAll('#a-body,#a-dest,#a-win,#a-wheel,#a-text,#a-num').forEach(i => {
+  i.addEventListener('input', updateAtelierPreview);
+});
+updateAtelierPreview();
 
 /* ─── Responsive resize ─── */
 window.addEventListener('resize', () => {
   activeBuses.forEach(b => {
-    b.el.style.bottom = busBottomPx() + 'px';
+    b.el.style.bottom = busBottomPx(b.lane || 0) + 'px';
   });
   if (stopVisible) renderStop();
 });

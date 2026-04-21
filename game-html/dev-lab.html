@@ -272,10 +272,11 @@ function sceneW() { return document.getElementById('scene').offsetWidth; }
 const ROAD_BOTTOM_PCT = 0.55; // road starts at 55% from top
 
 function busBottomPx(lane = 0) {
-  // lane 0 = proche (bas de route), 1 = milieu, 2 = loin (haut de route)
-  const base = sceneH() * (1 - ROAD_BOTTOM_PCT) + 6;
-  const laneGap = Math.round(sceneH() * 0.09);
-  return base + lane * laneGap;
+  // Le bus doit rester SUR la route (bottom 0 à sh*0.55 depuis le bas de scène).
+  // lane 0 = proche (près du bord bas), lane 2 = loin (haut de route, ~42% sh).
+  const sh = sceneH();
+  const laneStep = Math.round(sh * 0.14);
+  return Math.round(sh * 0.02) + lane * laneStep;
 }
 
 /* ─── Bus picks ─── */
@@ -308,9 +309,18 @@ function spawnBus(line) {
   const botPx = busBottomPx(lane);
   const speed = 60 + Math.random() * 50;
 
-  const svgMarkup = line._custom
-    ? customBusSVG({ ...line._custom, width: busW })
-    : busSVG(line.color, line.textColor, line.num, busW);
+  // dir === -1 : bus va vers la gauche → front à gauche → SVG bus-left
+  // dir ===  1 : bus va vers la droite → front à droite → SVG bus-right (standard)
+  let svgMarkup;
+  if (line._custom) {
+    svgMarkup = dir === -1
+      ? customBusSVGLeft({ ...line._custom, width: busW })
+      : customBusSVG({ ...line._custom, width: busW });
+  } else {
+    svgMarkup = dir === -1
+      ? busSVGLeftLocal(line.color, line.textColor, line.num, busW)
+      : busSVG(line.color, line.textColor, line.num, busW);
+  }
 
   const el = document.createElement('div');
   el.className = 'bus-actor enter';
@@ -318,8 +328,6 @@ function spawnBus(line) {
   el.style.bottom = botPx + 'px';
   const startX = dir === -1 ? (sw + 10) : (-busW - 10);
   el.style.left = startX + 'px';
-  // flip horizontal when going right
-  if (dir === 1) el.style.transform = 'scaleX(-1)';
   el.innerHTML = svgMarkup;
   busLayer.appendChild(el);
 
@@ -543,6 +551,39 @@ function fxBusExplode() {
   fxStars();
 }
 
+/* ─── Bus orienté gauche (front à gauche) — LOCAL dev-lab ───
+   Miroir du busSVG standard, destination à gauche.
+   Carrosserie toujours turquoise RATP, comme busSVG. */
+function busSVGLeftLocal(destColor, textColor, num, width = 200) {
+  const body = '#1abc9c';
+  return `<svg viewBox="0 0 160 80" width="${width}" xmlns="http://www.w3.org/2000/svg">
+    <rect x="5" y="10" width="150" height="45" rx="4" fill="${body}"/>
+    <rect x="5" y="40" width="150" height="15" fill="#ecf0f1"/>
+    <rect x="5" y="48" width="150" height="6" fill="#7f8c8d"/>
+    <rect x="22" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+    <rect x="30" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+    <rect x="90" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+    <rect x="98" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+    <rect x="5" y="10" width="150" height="45" rx="4" fill="none" stroke="#111" stroke-width="2"/>
+    <rect x="4.5" y="14" width="5" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1"/>
+    <rect x="36" y="14" width="40" height="21" fill="${destColor}" stroke="#111" stroke-width="1.5"/>
+    <rect x="103" y="14" width="21" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1.5"/>
+    <rect x="129" y="14" width="21" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1.5"/>
+    <text x="56" y="24.5" font-family="Arial,sans-serif" font-size="13" font-weight="bold"
+          fill="${textColor}" text-anchor="middle" dominant-baseline="central">${num}</text>
+    <line x1="5" y1="24" x2="11" y2="24" stroke="#111" stroke-width="2" stroke-linecap="round"/>
+    <rect x="2" y="20" width="6" height="10" rx="1" fill="#111"/>
+    <circle cx="45" cy="54" r="10" fill="#333" stroke="#111" stroke-width="2"/>
+    <circle cx="45" cy="54" r="6" fill="#666"/>
+    <circle cx="45" cy="54" r="2" fill="#111"/>
+    <circle cx="115" cy="54" r="10" fill="#333" stroke="#111" stroke-width="2"/>
+    <circle cx="115" cy="54" r="6" fill="#666"/>
+    <circle cx="115" cy="54" r="2" fill="#111"/>
+    <rect x="5" y="48" width="4" height="5" fill="#FFCC00"/>
+    <rect x="151" y="48" width="4" height="5" fill="#FF4444"/>
+  </svg>`;
+}
+
 /* ─── Atelier bus (SVG custom — LOCAL au dev-lab uniquement) ─── */
 function customBusSVG({ body, dest, win, wheel, text, num, width = 200 }) {
   return `<svg viewBox="0 0 160 80" width="${width}" xmlns="http://www.w3.org/2000/svg">
@@ -570,6 +611,35 @@ function customBusSVG({ body, dest, win, wheel, text, num, width = 200 }) {
     <circle cx="115" cy="54" r="2" fill="#111"/>
     <rect x="5" y="48" width="4" height="5" fill="#FF4444"/>
     <rect x="151" y="48" width="4" height="5" fill="#FFCC00"/>
+  </svg>`;
+}
+
+function customBusSVGLeft({ body, dest, win, wheel, text, num, width = 200 }) {
+  return `<svg viewBox="0 0 160 80" width="${width}" xmlns="http://www.w3.org/2000/svg">
+    <rect x="5" y="10" width="150" height="45" rx="4" fill="${body}"/>
+    <rect x="5" y="40" width="150" height="15" fill="#ecf0f1"/>
+    <rect x="5" y="48" width="150" height="6" fill="#7f8c8d"/>
+    <rect x="22" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+    <rect x="30" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+    <rect x="90" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+    <rect x="98" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+    <rect x="5" y="10" width="150" height="45" rx="4" fill="none" stroke="#111" stroke-width="2"/>
+    <rect x="4.5" y="14" width="5" height="21" fill="${win}" fill-opacity="0.82" stroke="#111" stroke-width="1"/>
+    <rect x="36" y="14" width="40" height="21" fill="${dest}" stroke="#111" stroke-width="1.5"/>
+    <rect x="103" y="14" width="21" height="21" fill="${win}" fill-opacity="0.82" stroke="#111" stroke-width="1.5"/>
+    <rect x="129" y="14" width="21" height="21" fill="${win}" fill-opacity="0.82" stroke="#111" stroke-width="1.5"/>
+    <text x="56" y="24.5" font-family="Arial,sans-serif" font-size="13" font-weight="bold"
+          fill="${text}" text-anchor="middle" dominant-baseline="central">${num}</text>
+    <line x1="5" y1="24" x2="11" y2="24" stroke="#111" stroke-width="2" stroke-linecap="round"/>
+    <rect x="2" y="20" width="6" height="10" rx="1" fill="#111"/>
+    <circle cx="45" cy="54" r="10" fill="${wheel}" stroke="#111" stroke-width="2"/>
+    <circle cx="45" cy="54" r="6" fill="#666"/>
+    <circle cx="45" cy="54" r="2" fill="#111"/>
+    <circle cx="115" cy="54" r="10" fill="${wheel}" stroke="#111" stroke-width="2"/>
+    <circle cx="115" cy="54" r="6" fill="#666"/>
+    <circle cx="115" cy="54" r="2" fill="#111"/>
+    <rect x="5" y="48" width="4" height="5" fill="#FFCC00"/>
+    <rect x="151" y="48" width="4" height="5" fill="#FF4444"/>
   </svg>`;
 }
 

@@ -34,14 +34,6 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   background:linear-gradient(180deg, #1e3a5f 0%, #2a5f7a 45%, #4a7a52 45%, #3a5a3a 100%);
 }
 
-/* Instruction */
-#q-label {
-  text-align:center; font-size:1.05rem; font-weight:900;
-  padding:10px 14px; background:rgba(0,0,0,0.35);
-  border-bottom:2px solid rgba(255,255,255,0.08);
-  flex-shrink:0; line-height:1.3;
-}
-
 /* Stations (rangée du haut) */
 #stations {
   display:grid; grid-template-columns:repeat(4,1fr);
@@ -53,9 +45,9 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   border-radius:18px; padding:10px 6px;
   display:flex; flex-direction:column; align-items:center;
   gap:4px; transition:all 0.2s; position:relative;
-  min-height:120px; justify-content:center;
+  min-height:110px; justify-content:center;
 }
-.station .icon { font-size:2.6rem; line-height:1; }
+.station .icon { font-size:2.4rem; line-height:1; }
 .station .label {
   font-size:0.78rem; font-weight:900; text-align:center;
   color:#fff; line-height:1.1;
@@ -88,38 +80,19 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 
 /* Zone bus */
 #bus-zone {
-  flex:1; position:relative; display:flex;
-  align-items:center; justify-content:center;
-  padding:10px;
+  flex:1; position:relative; overflow:hidden;
 }
 
 /* Bus actor — draggable */
 .bus-actor {
-  position:relative; cursor:grab;
-  transition:transform 0.25s, left 0.25s, top 0.25s;
+  position:absolute; cursor:grab;
+  transition:left 0.3s, top 0.3s;
   touch-action:none;
 }
 .bus-actor.dragging { cursor:grabbing; transition:none; z-index:20; }
 .bus-actor svg { display:block; }
 
-/* Bubble du bus (indication de panne) */
-.bus-bubble {
-  position:absolute; bottom:calc(100% + 6px); left:50%;
-  transform:translateX(-50%);
-  background:#fff; color:#333;
-  font-weight:900; font-size:0.9rem;
-  padding:6px 12px; border-radius:14px;
-  box-shadow:0 3px 8px rgba(0,0,0,0.3);
-  white-space:nowrap;
-}
-.bus-bubble::after {
-  content:''; position:absolute; top:100%; left:50%;
-  transform:translateX(-50%);
-  border:6px solid transparent; border-top-color:#fff;
-}
-
 /* ── Overlays de pannes ── */
-/* Jauge essence */
 .fuel-gauge {
   position:absolute; top:-18px; right:-4px;
   width:42px; height:14px;
@@ -140,18 +113,18 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   50% { opacity:0.4; }
 }
 
-/* Taches sale */
 .stain {
   position:absolute; border-radius:50%;
   background:radial-gradient(circle, #6b4423 30%, rgba(107,68,35,0.4) 80%);
   pointer-events:none;
 }
-.stain.s1 { width:22px; height:18px; top:30%; left:18%; }
-.stain.s2 { width:16px; height:14px; top:50%; left:38%; transform:rotate(20deg); }
-.stain.s3 { width:20px; height:16px; top:35%; left:58%; }
+.stain.s1 { width:20px; height:16px; top:30%; left:18%; }
+.stain.s2 { width:14px; height:12px; top:50%; left:38%; transform:rotate(20deg); }
+.stain.s3 { width:18px; height:14px; top:35%; left:58%; }
 .fly {
-  position:absolute; font-size:1rem; top:5%; left:40%;
+  position:absolute; font-size:0.9rem; top:5%; left:40%;
   animation:flyMove 1.6s ease-in-out infinite;
+  pointer-events:none;
 }
 @keyframes flyMove {
   0%,100% { transform:translate(0,0); }
@@ -159,7 +132,7 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   66% { transform:translate(-6px,4px); }
 }
 
-/* Bus penché (pneus à plat) : géré en JS via classe sur wrapper */
+/* Bus penché (pneus à plat) */
 .tilt { transform:rotate(-3deg) translateY(4px); transition:transform 0.3s; }
 
 /* Confettis */
@@ -172,9 +145,8 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   100% { transform:translate(var(--dx),var(--dy)) rotate(360deg); opacity:0; }
 }
 
-/* Sparkle lavage */
 .sparkle {
-  position:absolute; font-size:1.5rem; pointer-events:none;
+  position:absolute; font-size:1.4rem; pointer-events:none;
   animation:sparkleFloat 0.9s ease-out forwards;
 }
 @keyframes sparkleFloat {
@@ -183,38 +155,16 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   100% { transform:translate(var(--dx),-40px) scale(1.3); opacity:0; }
 }
 
-/* Bus qui repart */
-.bus-leave { animation:busLeave 1s ease-in forwards; }
+.bus-leave { animation:busLeave 0.9s ease-in forwards; }
 @keyframes busLeave {
   0% { transform:translateX(0); opacity:1; }
   100% { transform:translateX(100vw); opacity:0; }
 }
 
-/* Bus qui arrive */
-.bus-enter { animation:busEnter 0.7s ease-out; }
+.bus-enter { animation:busEnter 0.6s ease-out; }
 @keyframes busEnter {
-  0% { transform:translateX(-100vw); }
-  100% { transform:translateX(0); }
-}
-
-/* Overlay "bravo" */
-#wow {
-  position:absolute; inset:0; display:none;
-  align-items:center; justify-content:center;
-  background:rgba(0,0,0,0.3); z-index:30;
-  pointer-events:none;
-}
-#wow.show { display:flex; animation:wowPop 1s ease-out; }
-#wow .msg {
-  background:#fff; color:#00c47a;
-  padding:18px 36px; border-radius:24px;
-  font-size:2rem; font-weight:900;
-  box-shadow:0 10px 30px rgba(0,0,0,0.4);
-}
-@keyframes wowPop {
-  0% { opacity:0; transform:scale(0.5); }
-  50% { transform:scale(1.1); }
-  100% { opacity:1; transform:scale(1); }
+  0% { transform:translateX(-100vw); opacity:0; }
+  100% { transform:translateX(0); opacity:1; }
 }
 </style>
 </head>
@@ -227,8 +177,6 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   </div>
 
   <div id="main">
-    <div id="q-label">Amène le bus à la bonne station !</div>
-
     <div id="stations">
       <div class="station" data-station="essence">
         <div class="icon">⛽</div>
@@ -239,8 +187,8 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
         <div class="label">Lavage</div>
       </div>
       <div class="station" data-station="numero">
-        <div class="icon">🔢</div>
-        <div class="label">Atelier<br>numéro</div>
+        <div class="icon">💻</div>
+        <div class="label">Ordinateur</div>
       </div>
       <div class="station" data-station="pneus">
         <div class="icon">🔧</div>
@@ -249,8 +197,6 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
     </div>
 
     <div id="bus-zone"></div>
-
-    <div id="wow"><div class="msg">✨ Bravo !</div></div>
   </div>
 </div>
 
@@ -264,74 +210,55 @@ const LIGNES = [
   { num:'185', color:'#6d4e8a', textColor:'#fff' },
   { num:'186', color:'#e2001a', textColor:'#fff' },
   { num:'323', color:'#00a878', textColor:'#fff' },
-  { num:'323', color:'#2a6ab3', textColor:'#fff' },
   { num:'131', color:'#ffcc00', textColor:'#333' },
 ];
 
 const PANNES = ['essence', 'lavage', 'numero', 'pneus'];
-
-const PANNE_BUBBLES = {
-  essence: 'Plus d\'essence !',
-  lavage:  'Je suis sale...',
-  numero:  'J\'ai perdu mon numéro !',
-  pneus:   'Pneus à plat !',
-};
+const BUS_COUNT = 4;
+const BUS_W = 150;
 
 let score = 0;
-let currentPanne = null;
-let currentBus = null;
-let busEl = null;
-let dragging = false;
-let dragOffset = { x:0, y:0 };
-let busStartPos = { left:0, top:0 };
-let queue = []; // pannes restantes du round pour éviter répétition immédiate
-
-const $ = (s) => document.querySelector(s);
-const busZone = $('#bus-zone');
+const scoreEl = document.getElementById('score');
+const busZone = document.getElementById('bus-zone');
 const stations = document.querySelectorAll('.station');
-const scoreEl = $('#score');
-const wowEl = $('#wow');
 
-// ─── TTS ───
-function speak(text) {
-  if (!('speechSynthesis' in window)) return;
-  window.speechSynthesis.cancel();
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = 'fr-FR'; u.rate = 1; u.pitch = 1;
-  window.speechSynthesis.speak(u);
-}
-
-// ─── Next panne (évite répétition immédiate) ───
-function nextPanne() {
-  if (queue.length === 0) queue = [...PANNES].sort(() => Math.random() - 0.5);
-  return queue.shift();
+// Slots — positions fixes calculées à partir de bus-zone
+function slotPos(index) {
+  const zone = busZone.getBoundingClientRect();
+  const cols = 2;
+  const rows = 2;
+  const col = index % cols;
+  const row = Math.floor(index / cols);
+  const cellW = zone.width / cols;
+  const cellH = zone.height / rows;
+  return {
+    left: cellW * col + (cellW - BUS_W) / 2,
+    top:  cellH * row + (cellH - 100) / 2,
+  };
 }
 
 // ─── Bus factory ───
-function makeBus(panne) {
+function makeBus(panne, slot) {
   const ligne = LIGNES[Math.floor(Math.random() * LIGNES.length)];
   const wrapper = document.createElement('div');
   wrapper.className = 'bus-actor bus-enter';
   wrapper.dataset.panne = panne;
+  wrapper.dataset.slot = slot;
+  wrapper._ligne = ligne; // pour réparation "numero"
 
-  // Bulle
-  const bubble = document.createElement('div');
-  bubble.className = 'bus-bubble';
-  bubble.textContent = PANNE_BUBBLES[panne];
-  wrapper.appendChild(bubble);
-
-  // SVG : pour "numero" on passe un num vide + fond gris
+  // SVG : carrosserie turquoise + vraie couleur IDFM sur destination
+  // Pour "numero", couleur de ligne conservée, numéro remplacé par "?" muet
   let svgHtml;
   if (panne === 'numero') {
-    svgHtml = busSVG('#888', '#888', '?', 180);
+    svgHtml = busSVG(ligne.color, 'rgba(255,255,255,0.25)', '?', BUS_W);
   } else {
-    svgHtml = busSVG(ligne.color, ligne.textColor, ligne.num, 180);
+    svgHtml = busSVG(ligne.color, ligne.textColor, ligne.num, BUS_W);
   }
   const svgWrap = document.createElement('div');
   svgWrap.innerHTML = svgHtml;
   wrapper.appendChild(svgWrap);
 
-  // Overlays selon panne
+  // Overlays visuels (indices de panne — PAS de bulle texte, PAS de TTS)
   if (panne === 'essence') {
     const g = document.createElement('div');
     g.className = 'fuel-gauge';
@@ -348,12 +275,11 @@ function makeBus(panne) {
     wrapper.appendChild(fly);
   } else if (panne === 'pneus') {
     wrapper.classList.add('tilt');
-    // Remplacer les roues (cx=45, cx=115, r=10) par ellipses aplaties
     const svg = wrapper.querySelector('svg');
     const circles = svg.querySelectorAll('circle[r="10"]');
     circles.forEach(c => {
       const cx = c.getAttribute('cx');
-      const cy = parseFloat(c.getAttribute('cy')) + 3; // descendre un peu
+      const cy = parseFloat(c.getAttribute('cy')) + 3;
       const ell = document.createElementNS('http://www.w3.org/2000/svg','ellipse');
       ell.setAttribute('cx', cx);
       ell.setAttribute('cy', cy);
@@ -364,43 +290,55 @@ function makeBus(panne) {
       ell.setAttribute('stroke-width', '2');
       c.parentNode.replaceChild(ell, c);
     });
-    // Masquer les cercles intérieurs r=6 et r=2
     svg.querySelectorAll('circle[r="6"],circle[r="2"]').forEach(c => c.remove());
   }
 
   return wrapper;
 }
 
-function positionBusCenter(el) {
-  const zone = busZone.getBoundingClientRect();
-  const w = 180;
-  el.style.position = 'absolute';
-  el.style.left = ((zone.width - w) / 2) + 'px';
-  el.style.top = ((zone.height - 100) / 2) + 'px';
-  busStartPos = {
-    left: (zone.width - w) / 2,
-    top: (zone.height - 100) / 2,
-  };
+function placeBusAtSlot(el, slot) {
+  const p = slotPos(slot);
+  el.style.left = p.left + 'px';
+  el.style.top  = p.top + 'px';
+  el._slotLeft = p.left;
+  el._slotTop  = p.top;
 }
 
-function spawnBus() {
-  currentPanne = nextPanne();
-  currentBus = makeBus(currentPanne);
-  busZone.appendChild(currentBus);
-  busEl = currentBus;
-  positionBusCenter(currentBus);
-  attachDrag(currentBus);
-  setTimeout(() => speak(PANNE_BUBBLES[currentPanne]), 300);
+// Détermine une panne à donner à un nouveau bus : mélange les 4 panne pour le 1er
+// round puis aléatoire ensuite, en évitant la panne déjà présente sur les autres
+// bus si possible.
+let initialQueue = [];
+function nextPanne() {
+  if (initialQueue.length > 0) return initialQueue.shift();
+  // Aléatoire en évitant idéalement les pannes déjà présentes
+  const existing = new Set(
+    [...busZone.querySelectorAll('.bus-actor')].map(b => b.dataset.panne)
+  );
+  const absent = PANNES.filter(p => !existing.has(p));
+  if (absent.length > 0) return absent[Math.floor(Math.random() * absent.length)];
+  return PANNES[Math.floor(Math.random() * PANNES.length)];
 }
 
-// ─── Drag & drop ───
+function spawnBusAtSlot(slot) {
+  const panne = nextPanne();
+  const bus = makeBus(panne, slot);
+  busZone.appendChild(bus);
+  placeBusAtSlot(bus, slot);
+  attachDrag(bus);
+  return bus;
+}
+
+// ─── Drag & drop (par bus) ───
 function attachDrag(el) {
+  let dragging = false;
+  let offset = { x:0, y:0 };
+
   const onDown = (e) => {
     e.preventDefault();
     const pt = getPoint(e);
     const rect = el.getBoundingClientRect();
-    dragOffset.x = pt.x - rect.left;
-    dragOffset.y = pt.y - rect.top;
+    offset.x = pt.x - rect.left;
+    offset.y = pt.y - rect.top;
     dragging = true;
     el.classList.add('dragging');
   };
@@ -409,8 +347,8 @@ function attachDrag(el) {
     e.preventDefault();
     const pt = getPoint(e);
     const zone = busZone.getBoundingClientRect();
-    el.style.left = (pt.x - zone.left - dragOffset.x) + 'px';
-    el.style.top = (pt.y - zone.top - dragOffset.y) + 'px';
+    el.style.left = (pt.x - zone.left - offset.x) + 'px';
+    el.style.top  = (pt.y - zone.top - offset.y) + 'px';
     highlightHoveredStation(pt);
   };
   const onUp = (e) => {
@@ -421,17 +359,28 @@ function attachDrag(el) {
     const st = findStationAt(pt);
     clearStationHover();
     if (st) {
-      handleDrop(st);
+      handleDrop(el, st);
     } else {
-      // Retour à la position initiale
-      el.style.left = busStartPos.left + 'px';
-      el.style.top = busStartPos.top + 'px';
+      // Retour au slot
+      el.style.left = el._slotLeft + 'px';
+      el.style.top  = el._slotTop + 'px';
     }
   };
+
   el.addEventListener('pointerdown', onDown);
+  el._onMove = onMove;
+  el._onUp = onUp;
   window.addEventListener('pointermove', onMove);
   window.addEventListener('pointerup', onUp);
   window.addEventListener('pointercancel', onUp);
+}
+
+function detachDrag(el) {
+  if (el._onMove) window.removeEventListener('pointermove', el._onMove);
+  if (el._onUp) {
+    window.removeEventListener('pointerup', el._onUp);
+    window.removeEventListener('pointercancel', el._onUp);
+  }
 }
 
 function getPoint(e) {
@@ -449,7 +398,6 @@ function findStationAt(pt) {
   }
   return null;
 }
-
 function highlightHoveredStation(pt) {
   const hovered = findStationAt(pt);
   stations.forEach(s => {
@@ -460,61 +408,54 @@ function highlightHoveredStation(pt) {
 function clearStationHover() { stations.forEach(s => s.classList.remove('hover')); }
 
 // ─── Drop handling ───
-function handleDrop(station) {
+function handleDrop(bus, station) {
   const target = station.dataset.station;
-  if (target === currentPanne) {
-    correctDrop(station);
+  if (target === bus.dataset.panne) {
+    correctDrop(bus, station);
   } else {
-    wrongDrop(station);
+    wrongDrop(bus, station);
   }
 }
 
-function wrongDrop(station) {
+function wrongDrop(bus, station) {
   station.classList.add('wrong');
   setTimeout(() => station.classList.remove('wrong'), 400);
-  // Retour position centre
-  busEl.style.left = busStartPos.left + 'px';
-  busEl.style.top = busStartPos.top + 'px';
-  speak('Non, pas ici...');
+  bus.style.left = bus._slotLeft + 'px';
+  bus.style.top  = bus._slotTop + 'px';
 }
 
-function correctDrop(station) {
+function correctDrop(bus, station) {
   station.classList.add('correct');
   setTimeout(() => station.classList.remove('correct'), 600);
 
-  // Snap le bus sur la station
+  // Snap sous la station
   const sr = station.getBoundingClientRect();
   const zr = busZone.getBoundingClientRect();
-  const bw = 180;
-  busEl.style.left = (sr.left - zr.left + sr.width/2 - bw/2) + 'px';
-  busEl.style.top = (sr.top - zr.top + sr.height - 40) + 'px';
+  bus.style.left = (sr.left - zr.left + sr.width/2 - BUS_W/2) + 'px';
+  bus.style.top  = (sr.top - zr.top + sr.height - 30) + 'px';
 
-  // Anim de réparation (1s), puis le bus repart "réparé"
-  setTimeout(() => repairAnim(station), 100);
-  setTimeout(() => finishRound(), 1400);
+  setTimeout(() => repairAnim(bus), 100);
+  setTimeout(() => finishBus(bus), 1400);
 }
 
-function repairAnim(station) {
-  const panne = currentPanne;
+function repairAnim(bus) {
+  const panne = bus.dataset.panne;
   if (panne === 'lavage') {
-    // Sparkles + retirer taches
-    busEl.querySelectorAll('.stain,.fly').forEach(e => e.remove());
+    bus.querySelectorAll('.stain,.fly').forEach(e => e.remove());
     for (let i = 0; i < 6; i++) {
       const sp = document.createElement('div');
       sp.className = 'sparkle';
       sp.textContent = '✨';
-      sp.style.left = (40 + i*18) + 'px';
+      sp.style.left = (30 + i*18) + 'px';
       sp.style.top = '20px';
       sp.style.setProperty('--dx', ((Math.random()-0.5)*40) + 'px');
-      busEl.appendChild(sp);
+      bus.appendChild(sp);
       setTimeout(() => sp.remove(), 1000);
     }
   } else if (panne === 'essence') {
-    const g = busEl.querySelector('.fuel-gauge');
+    const g = bus.querySelector('.fuel-gauge');
     if (g) {
       g.style.animation = 'none';
-      g.querySelector(':scope') || null;
-      // Remplir la jauge en vert
       g.innerHTML = '';
       const bar = document.createElement('div');
       bar.style.cssText = 'height:100%;width:0;background:#00c47a;transition:width 0.8s;';
@@ -522,82 +463,76 @@ function repairAnim(station) {
       requestAnimationFrame(() => bar.style.width = '100%');
     }
   } else if (panne === 'numero') {
-    // Recolorer la fenêtre destination avec la bonne ligne (aléatoire)
-    const ligne = LIGNES[Math.floor(Math.random() * LIGNES.length)];
-    const svg = busEl.querySelector('svg');
-    const destRect = svg.querySelector('rect[x="84"]');
-    if (destRect) destRect.setAttribute('fill', ligne.color);
+    // Restaurer le numéro avec la vraie couleur de la ligne d'origine
+    const ligne = bus._ligne;
+    const svg = bus.querySelector('svg');
     const numText = svg.querySelector('text');
     if (numText) {
       numText.textContent = ligne.num;
       numText.setAttribute('fill', ligne.textColor);
     }
   } else if (panne === 'pneus') {
-    busEl.classList.remove('tilt');
-    // Remplacer les ellipses par des cercles
-    const svg = busEl.querySelector('svg');
+    bus.classList.remove('tilt');
+    const svg = bus.querySelector('svg');
     const ellipses = svg.querySelectorAll('ellipse');
     ellipses.forEach(ell => {
       const cx = ell.getAttribute('cx');
       const cy = parseFloat(ell.getAttribute('cy')) - 3;
-      const cGrp = `
+      const tmp = document.createElementNS('http://www.w3.org/2000/svg','svg');
+      tmp.innerHTML = `
         <circle cx="${cx}" cy="${cy}" r="10" fill="#333" stroke="#111" stroke-width="2"/>
         <circle cx="${cx}" cy="${cy}" r="6" fill="#666"/>
         <circle cx="${cx}" cy="${cy}" r="2" fill="#111"/>
       `;
-      const g = document.createElementNS('http://www.w3.org/2000/svg','g');
-      g.innerHTML = cGrp;
-      // insertAdjacentHTML polyfill pour SVG
-      const tmp = document.createElementNS('http://www.w3.org/2000/svg','svg');
-      tmp.innerHTML = cGrp;
       while (tmp.firstChild) ell.parentNode.insertBefore(tmp.firstChild, ell);
       ell.remove();
     });
   }
 }
 
-function finishRound() {
+function finishBus(bus) {
   score++;
   scoreEl.textContent = score;
-  speak('Bravo !');
-  // Confettis + wow
-  fireConfetti();
-  wowEl.classList.add('show');
-  setTimeout(() => wowEl.classList.remove('show'), 900);
+  fireConfetti(bus);
 
-  // Bus qui repart
-  if (busEl) {
-    busEl.classList.add('bus-leave');
-    busEl.style.pointerEvents = 'none';
-    // Retirer la bulle
-    const b = busEl.querySelector('.bus-bubble');
-    if (b) b.style.display = 'none';
-  }
+  const slot = parseInt(bus.dataset.slot, 10);
+  bus.classList.add('bus-leave');
+  bus.style.pointerEvents = 'none';
+  detachDrag(bus);
+
   setTimeout(() => {
-    if (busEl) busEl.remove();
-    spawnBus();
-  }, 1100);
+    bus.remove();
+    spawnBusAtSlot(slot);
+  }, 900);
 }
 
-function fireConfetti() {
+function fireConfetti(bus) {
   const colors = ['#ffe066','#e94560','#00c47a','#4a90e2','#f28cad'];
-  const zone = busZone;
-  for (let i = 0; i < 20; i++) {
+  const r = bus.getBoundingClientRect();
+  const zr = busZone.getBoundingClientRect();
+  const cx = r.left - zr.left + r.width/2;
+  const cy = r.top - zr.top + r.height/2;
+  for (let i = 0; i < 16; i++) {
     const c = document.createElement('div');
     c.className = 'confetti';
     c.style.background = colors[i % colors.length];
-    c.style.left = (zone.clientWidth/2) + 'px';
-    c.style.top = (zone.clientHeight/2) + 'px';
-    c.style.setProperty('--dx', ((Math.random()-0.5)*300) + 'px');
-    c.style.setProperty('--dy', (Math.random()*-250 - 50) + 'px');
-    zone.appendChild(c);
+    c.style.left = cx + 'px';
+    c.style.top  = cy + 'px';
+    c.style.setProperty('--dx', ((Math.random()-0.5)*240) + 'px');
+    c.style.setProperty('--dy', (Math.random()*-200 - 40) + 'px');
+    busZone.appendChild(c);
     setTimeout(() => c.remove(), 1300);
   }
 }
 
 // ─── Start ───
 window.addEventListener('load', () => {
-  setTimeout(spawnBus, 300);
+  // 1er round : 4 pannes distinctes mélangées
+  initialQueue = [...PANNES].sort(() => Math.random() - 0.5);
+  // Spawn décalé pour effet cascade
+  for (let i = 0; i < BUS_COUNT; i++) {
+    setTimeout(() => spawnBusAtSlot(i), 150 * i);
+  }
 });
 </script>
 </body>

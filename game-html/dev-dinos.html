@@ -350,11 +350,17 @@ const overlay = document.getElementById('game-overlay');
 
 let W, H, GROUND_Y, PIXEL_SIZE;
 let gameRunning = false, gameOver = false;
-let score = 0, bestScore = 0, speed = 0;
+let score = 0, scoreF = 0, bestScore = 0, speed = 0;
 let dinoY = 0, velY = 0, jumping = false, jumpFrame = 0;
 let walkFrame = 0, walkTick = 0;
 let cacti = [], frame = 0;
 let lastTs = 0;
+
+// Preload dino image
+const dinoImg = new Image();
+dinoImg.src = 'img/dinos/T-Rex.png';
+let dinoImgReady = false;
+dinoImg.onload = () => { dinoImgReady = true; if (!gameRunning) drawIdle(); };
 
 function resizeCanvas() {
   const container = document.getElementById('game-container');
@@ -375,8 +381,30 @@ function drawIdle() {
   const dinoH = ps * 16;
   const dx = Math.round(W * 0.12);
   const dy = GROUND_Y - dinoH;
-  drawDinoPixel(ctx, dx, dy, ps, 0, '#4a8a4a');
+  drawDino(dx, dy, 0, 0);
   drawGround();
+}
+
+function drawDino(x, y, frameIdx, jumpOffset) {
+  const ps = PIXEL_SIZE;
+  const h = ps * 16;
+  const w = ps * 16; // image ratio ~ square
+  if (dinoImgReady) {
+    ctx.save();
+    // slight tilt when jumping, bob when running
+    const bob = (frameIdx === 1) ? -ps * 0.5 : 0;
+    if (jumping) {
+      ctx.translate(x + w/2, y + h/2);
+      ctx.rotate(-0.12);
+      ctx.drawImage(dinoImg, -w/2, -h/2, w, h);
+      ctx.restore();
+    } else {
+      ctx.drawImage(dinoImg, x, y + bob, w, h);
+      ctx.restore();
+    }
+  } else {
+    drawDinoPixel(ctx, x, y, ps, frameIdx, '#d24a1c');
+  }
 }
 
 function drawBg() {
@@ -411,21 +439,63 @@ function drawGround() {
 }
 
 function drawCactus(x) {
-  const cw = PIXEL_SIZE * 3;
-  const ch = PIXEL_SIZE * 10;
-  ctx.fillStyle = '#2d8a2d';
-  // trunk
-  ctx.fillRect(x + cw, GROUND_Y - ch, cw, ch);
-  // left arm
-  ctx.fillRect(x, GROUND_Y - ch * 0.65, cw * 3, PIXEL_SIZE * 2);
-  ctx.fillRect(x, GROUND_Y - ch * 0.65 - PIXEL_SIZE * 3, cw, PIXEL_SIZE * 3);
-  // right arm
-  ctx.fillRect(x + cw * 2, GROUND_Y - ch * 0.45, cw * 3, PIXEL_SIZE * 2);
-  ctx.fillRect(x + cw * 4, GROUND_Y - ch * 0.45 - PIXEL_SIZE * 3, cw, PIXEL_SIZE * 3);
-  // outline
-  ctx.strokeStyle = '#1a6a1a';
+  const ps = PIXEL_SIZE;
+  const trunkW = ps * 3;
+  const trunkH = ps * 10;
+  const r = ps * 1.2;
+  const baseX = x + trunkW;
+
+  const grad = ctx.createLinearGradient(baseX, 0, baseX + trunkW, 0);
+  grad.addColorStop(0, '#1f7a1f');
+  grad.addColorStop(0.5, '#3aa83a');
+  grad.addColorStop(1, '#1f7a1f');
+  ctx.fillStyle = grad;
+
+  // Main trunk (rounded top)
+  roundedBar(baseX, GROUND_Y - trunkH, trunkW, trunkH, r);
+
+  // Left arm
+  const lArmY = GROUND_Y - trunkH * 0.5;
+  roundedBar(baseX - trunkW * 1.8, lArmY, trunkW * 1.8, ps * 2, r * 0.8);
+  roundedBar(baseX - trunkW * 1.8, lArmY - ps * 3, ps * 2, ps * 3, r * 0.7);
+
+  // Right arm
+  const rArmY = GROUND_Y - trunkH * 0.7;
+  roundedBar(baseX + trunkW, rArmY, trunkW * 1.6, ps * 2, r * 0.8);
+  roundedBar(baseX + trunkW * 2.2, rArmY - ps * 3, ps * 2, ps * 3, r * 0.7);
+
+  // Highlight stripe
+  ctx.fillStyle = 'rgba(255,255,255,0.18)';
+  ctx.fillRect(baseX + ps * 0.4, GROUND_Y - trunkH + ps, ps * 0.6, trunkH - ps * 2);
+
+  // Spines
+  ctx.strokeStyle = '#0d3d0d';
   ctx.lineWidth = 1;
-  ctx.strokeRect(x + cw, GROUND_Y - ch, cw, ch);
+  for (let i = 0; i < 4; i++) {
+    const sy = GROUND_Y - trunkH + ps * 1.5 + i * ps * 2.2;
+    ctx.beginPath();
+    ctx.moveTo(baseX + ps * 0.5, sy);
+    ctx.lineTo(baseX - ps * 0.3, sy - ps * 0.4);
+    ctx.moveTo(baseX + trunkW - ps * 0.5, sy + ps);
+    ctx.lineTo(baseX + trunkW + ps * 0.3, sy + ps * 0.6);
+    ctx.stroke();
+  }
+}
+
+function roundedBar(x, y, w, h, r) {
+  r = Math.min(r, w / 2, h / 2);
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+  ctx.fill();
 }
 
 function gameLoop(ts) {
@@ -435,9 +505,10 @@ function gameLoop(ts) {
   lastTs = ts;
   frame++;
 
-  // Speed
-  speed = 120 + score * 0.04;
-  score = Math.floor(score + dt * 8);
+  // Speed & score (accumulate float, display floor)
+  speed = 120 + score * 0.4;
+  scoreF += dt * 10;
+  score = Math.floor(scoreF);
 
   // Walk animation
   walkTick++;
@@ -491,7 +562,7 @@ function gameLoop(ts) {
   const curFrame = jumping ? 2 : walkFrame;
   const dinoX = dx;
   const dinoTopY = GROUND_Y - dinoH + Math.round(dinoY);
-  drawDinoPixel(ctx, dinoX, dinoTopY, ps, curFrame, '#4a8a4a');
+  drawDino(dinoX, dinoTopY, curFrame, Math.round(dinoY));
 
   // Score
   ctx.fillStyle = 'rgba(255,255,255,0.7)';
@@ -514,7 +585,7 @@ function jump() {
 }
 
 function startGame() {
-  score = 0; speed = 120; cacti = []; dinoY = 0; velY = 0;
+  score = 0; scoreF = 0; speed = 120; cacti = []; dinoY = 0; velY = 0;
   jumping = false; frame = 0; walkFrame = 0; walkTick = 0;
   gameOver = false; gameRunning = true;
   overlay.style.display = 'none';

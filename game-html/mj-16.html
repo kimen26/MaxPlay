@@ -258,15 +258,15 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 <script>
 // ═══════════════════════════════════════════════════════════════════════════
 //  MJ-16 — Complète la suite
-//  5 rounds progressifs :
-//    Rounds 1-2 (A) : Suite de couleurs de bus
-//    Rounds 3-4 (B) : Suite de tailles (même bus, taille croissante/décroissante)
-//    Round 5   (C) : Suite mixte couleur + taille
+//  5 rounds, patterns mixés (3 ou 4 éléments visibles avant la case mystère) :
+//    - size-up / size-down (3 starters, même bus) : S M L → XL
+//    - num-up / num-down   (3 starters, même couleur) : 5 6 7 → 8
+//    - alt-AB              (4 starters) : 🔴🔵🔴🔵 → 🔴
+//    - alt-ABC             (4 starters) : 🔴🔵🟢🔴 → 🔵
 // ═══════════════════════════════════════════════════════════════════════════
 
 const ROUNDS_PER_GAME = 5;
 
-// Tailles utilisées pour les niveaux B et C
 const SIZE_STEPS = [60, 80, 100, 120];
 
 // ── Utilitaires ─────────────────────────────────────────────────────────────
@@ -301,165 +301,143 @@ function calcChoiceBusWidth() {
 
 // ── Génération des puzzles ───────────────────────────────────────────────────
 
-// Niveau A : suite de couleurs
-// Deux patterns possibles :
-//   "4 distincts" : A-B-C-? → le 4e doit être une 4e couleur distincte
-//   "cycle"       : A-B-A-? = B  ou  A-B-C-? = A
-function generatePuzzleA() {
-  const usePattern = randBool() ? 'cycle' : 'distinct4';
-
-  if (usePattern === 'distinct4') {
-    // 4 couleurs bien distinctes, le 4e est la réponse
-    const chosen = selectDistinctColors(LIGNES, 5, 90);
-    // Si pas assez, fallback cycle
-    if (chosen.length < 4) return generatePuzzleACycle();
-    const seq = chosen.slice(0, 3);    // 3 premières cases
-    const answer = chosen[3];          // 4e = bonne réponse
-    const wrong1 = chosen[4] || pick(LIGNES.filter(l => !seq.includes(l) && l !== answer), 1)[0] || LIGNES[0];
-    const wrong2 = pick(LIGNES.filter(l => !seq.includes(l) && l !== answer && l !== wrong1), 1)[0] || LIGNES[1];
-
-    return {
-      sequence: seq.map(l => ({ ligne: l, width: 0 })),  // width rempli au rendu
-      answer:   { ligne: answer, width: 0 },
-      choices:  shuffle([
-        { ligne: answer, width: 0, correct: true },
-        { ligne: wrong1, width: 0, correct: false },
-        { ligne: wrong2, width: 0, correct: false },
-      ]),
-      hint: 'Regarde les couleurs !',
-      level: 'A',
-      patternLabel: 'Chaque bus a une couleur différente.',
-    };
-  } else {
-    return generatePuzzleACycle();
-  }
+function pickDailyLigne() {
+  const dailyPool = LIGNES.filter(l => ['162','172','185','V7','M7'].includes(l.num));
+  return shuffle(dailyPool.length ? dailyPool : LIGNES)[0];
 }
 
-function generatePuzzleACycle() {
-  // Patterns : A-B-A-? = B  ou  A-B-C-? = A
-  const which = randBool() ? 'ABA' : 'ABC_back_to_A';
-  const pool = selectDistinctColors(LIGNES, 4, 80);
-  if (pool.length < 3) {
-    // Ultra-fallback : prendre les 3 premières lignes
-    const [a, b, c] = LIGNES;
-    return buildCycleABA(a, b, c || LIGNES[3] || b);
-  }
-  if (which === 'ABA') {
-    return buildCycleABA(pool[0], pool[1], pool[2]);
-  } else {
-    // A-B-C-? = A
-    return buildCycleABCA(pool[0], pool[1], pool[2], pool[3]);
-  }
-}
-
-function buildCycleABA(a, b, _extra) {
-  // Séquence : A-B-A-? = B
-  const wrong1 = LIGNES.find(l => l !== a && l !== b) || LIGNES[2];
-  const wrong2 = LIGNES.find(l => l !== a && l !== b && l !== wrong1) || LIGNES[3];
-  return {
-    sequence: [a, b, a].map(l => ({ ligne: l, width: 0 })),
-    answer:   { ligne: b, width: 0 },
-    choices:  shuffle([
-      { ligne: b,      width: 0, correct: true  },
-      { ligne: a,      width: 0, correct: false },
-      { ligne: wrong1, width: 0, correct: false },
-    ]),
-    hint: 'Regarde les couleurs !',
-    level: 'A',
-    patternLabel: 'Le pattern se répète.',
-  };
-}
-
-function buildCycleABCA(a, b, c, extra) {
-  // Séquence : A-B-C-? = A
-  const wrong1 = extra || LIGNES.find(l => l !== a && l !== b && l !== c) || LIGNES[4];
-  const wrong2 = LIGNES.find(l => l !== a && l !== b && l !== c && l !== wrong1) || LIGNES[5];
-  return {
-    sequence: [a, b, c].map(l => ({ ligne: l, width: 0 })),
-    answer:   { ligne: a, width: 0 },
-    choices:  shuffle([
-      { ligne: a,      width: 0, correct: true  },
-      { ligne: wrong1, width: 0, correct: false },
-      { ligne: wrong2, width: 0, correct: false },
-    ]),
-    hint: 'Regarde les couleurs !',
-    level: 'A',
-    patternLabel: 'Le cycle repart depuis le début.',
-  };
-}
-
-// Niveau B : suite de tailles (même bus, taille croissante uniquement)
-function generatePuzzleB() {
-  const goingUp = true;
-  // Tailles : 4 valeurs extraites de SIZE_STEPS
-  // La 4e est la réponse
-  const sizes = goingUp ? [...SIZE_STEPS] : [...SIZE_STEPS].reverse();
-  // [s0, s1, s2] → séquence,  s3 → réponse
-  const [s0, s1, s2, s3] = sizes;
-
-  // Choisir un bus fixe (ligne du quartier Max en priorité)
-  const dailyPool = LIGNES.filter(l => ['162','172','185','V7'].includes(l.num));
-  const ligne = shuffle(dailyPool.length >= 1 ? dailyPool : LIGNES)[0];
-
-  // Distracteurs : tailles incorrectes (trop grand ou trop petit)
-  const wrongSizes = SIZE_STEPS.filter(s => s !== s3);
-  const [ws1, ws2] = shuffle(wrongSizes).slice(0, 2);
-
-  const hint = goingUp ? 'Regarde la taille !' : 'Regarde la taille !';
-
+// Taille croissante : S M L → XL (3 starters)
+function generateSizeUp() {
+  const ligne = pickDailyLigne();
+  const [s0, s1, s2, s3] = SIZE_STEPS;
+  const [ws1, ws2] = shuffle(SIZE_STEPS.filter(s => s !== s3)).slice(0, 2);
   return {
     sequence: [s0, s1, s2].map(w => ({ ligne, width: w })),
     answer:   { ligne, width: s3 },
-    choices:  shuffle([
+    choices: shuffle([
       { ligne, width: s3,  correct: true  },
       { ligne, width: ws1, correct: false },
       { ligne, width: ws2, correct: false },
     ]),
-    hint,
-    level: 'B',
-    patternLabel: goingUp ? 'Les bus grandissent.' : 'Les bus rapetissent.',
+    hint: 'Les bus grandissent !',
+    labelMode: 'num',
   };
 }
 
-// Niveau C : suite mixte couleur + taille
-function generatePuzzleC() {
-  // Couleurs : 3 couleurs distinctes pour la séquence, la 4e est la réponse couleur
-  const colorPool = selectDistinctColors(LIGNES, 5, 80);
-  if (colorPool.length < 4) {
-    // Fallback niveau B
-    return generatePuzzleB();
-  }
-  const [lA, lB, lC, lD] = colorPool;
-
-  // Tailles : croissante
-  const [s0, s1, s2, s3] = SIZE_STEPS;
-
-  // Séquence : (lA,s0)-(lB,s1)-(lC,s2) → réponse (lD,s3)
-  const wrongColor = colorPool[4] || LIGNES.find(l => l !== lD) || LIGNES[4];
+// Taille décroissante : XL L M → S (3 starters)
+function generateSizeDown() {
+  const ligne = pickDailyLigne();
+  const [s0, s1, s2, s3] = [...SIZE_STEPS].reverse();
   const [ws1, ws2] = shuffle(SIZE_STEPS.filter(s => s !== s3)).slice(0, 2);
-
   return {
-    sequence: [
-      { ligne: lA, width: s0 },
-      { ligne: lB, width: s1 },
-      { ligne: lC, width: s2 },
-    ],
-    answer: { ligne: lD, width: s3 },
+    sequence: [s0, s1, s2].map(w => ({ ligne, width: w })),
+    answer:   { ligne, width: s3 },
     choices: shuffle([
-      { ligne: lD,         width: s3,  correct: true  },  // bonne couleur, bonne taille
-      { ligne: wrongColor, width: s3,  correct: false },  // mauvaise couleur, bonne taille
-      { ligne: lD,         width: ws1, correct: false },  // bonne couleur, mauvaise taille
+      { ligne, width: s3,  correct: true  },
+      { ligne, width: ws1, correct: false },
+      { ligne, width: ws2, correct: false },
     ]),
-    hint: 'Couleur ET taille !',
-    level: 'C',
-    patternLabel: 'La couleur change ET le bus grandit.',
+    hint: 'Les bus rapetissent !',
+    labelMode: 'num',
   };
 }
+
+// Num croissant : 5 6 7 → 8 (3 starters, même couleur)
+function generateNumUp() {
+  const base    = pickDailyLigne();
+  const start   = 2 + Math.floor(Math.random() * 7); // 2..8
+  const make    = n => ({ num: String(n), color: base.color, textColor: base.textColor });
+  const ligneA = make(start), ligneB = make(start+1), ligneC = make(start+2), ligneD = make(start+3);
+  const wrong1 = make(start+5);
+  const wrong2 = make(start-1 >= 1 ? start-1 : start+4);
+  const w = 90;
+  return {
+    sequence: [ligneA, ligneB, ligneC].map(l => ({ ligne: l, width: w })),
+    answer:   { ligne: ligneD, width: w },
+    choices: shuffle([
+      { ligne: ligneD, width: w, correct: true  },
+      { ligne: wrong1, width: w, correct: false },
+      { ligne: wrong2, width: w, correct: false },
+    ]),
+    hint: 'Les numéros montent !',
+    labelMode: 'num',
+  };
+}
+
+// Num décroissant : 8 7 6 → 5 (3 starters)
+function generateNumDown() {
+  const base  = pickDailyLigne();
+  const start = 5 + Math.floor(Math.random() * 6); // 5..10
+  const make  = n => ({ num: String(n), color: base.color, textColor: base.textColor });
+  const ligneA = make(start), ligneB = make(start-1), ligneC = make(start-2), ligneD = make(start-3);
+  const wrong1 = make(start-5 >= 1 ? start-5 : start+2);
+  const wrong2 = make(start+1);
+  const w = 90;
+  return {
+    sequence: [ligneA, ligneB, ligneC].map(l => ({ ligne: l, width: w })),
+    answer:   { ligne: ligneD, width: w },
+    choices: shuffle([
+      { ligne: ligneD, width: w, correct: true  },
+      { ligne: wrong1, width: w, correct: false },
+      { ligne: wrong2, width: w, correct: false },
+    ]),
+    hint: 'Les numéros descendent !',
+    labelMode: 'num',
+  };
+}
+
+// Alternance 2 couleurs : A B A B → A (4 starters)
+function generateAltAB() {
+  const pool = selectDistinctColors(LIGNES, 4, 80);
+  if (pool.length < 3) return generateSizeUp();
+  const [a, b, c] = pool;
+  const w = 80;
+  return {
+    sequence: [a, b, a, b].map(l => ({ ligne: l, width: w })),
+    answer:   { ligne: a, width: w },
+    choices: shuffle([
+      { ligne: a, width: w, correct: true  },
+      { ligne: b, width: w, correct: false },
+      { ligne: c, width: w, correct: false },
+    ]),
+    hint: 'Ça se répète deux par deux !',
+    labelMode: 'num',
+  };
+}
+
+// Alternance 3 couleurs : A B C A → B (4 starters)
+function generateAltABC() {
+  const pool = selectDistinctColors(LIGNES, 5, 80);
+  if (pool.length < 4) return generateAltAB();
+  const [a, b, c, d] = pool;
+  const w = 80;
+  return {
+    sequence: [a, b, c, a].map(l => ({ ligne: l, width: w })),
+    answer:   { ligne: b, width: w },
+    choices: shuffle([
+      { ligne: b, width: w, correct: true  },
+      { ligne: c, width: w, correct: false },
+      { ligne: d, width: w, correct: false },
+    ]),
+    hint: 'Ça tourne par trois !',
+    labelMode: 'num',
+  };
+}
+
+const PATTERN_GENERATORS = [
+  generateSizeUp,
+  generateSizeDown,
+  generateNumUp,
+  generateNumDown,
+  generateAltAB,
+  generateAltABC,
+];
 
 function generatePuzzle(_roundNum) {
-  // Un seul pattern pour tous les rounds : taille croissante (petit → gros)
-  return generatePuzzleB();
+  const fn = PATTERN_GENERATORS[Math.floor(Math.random() * PATTERN_GENERATORS.length)];
+  return fn();
 }
+
 
 // ── État du jeu ──────────────────────────────────────────────────────────────
 
@@ -507,8 +485,7 @@ function renderPuzzle(puzzle) {
 
     const cell = document.createElement('div');
     cell.className = 'seq-cell';
-    cell.innerHTML = `<div class="cell-bus-wrap">${busSVG(item.ligne.color, item.ligne.textColor, item.ligne.num, item.width)}</div>
-                      <span class="cell-label">${i + 1}</span>`;
+    cell.innerHTML = `<div class="cell-bus-wrap">${busSVG(item.ligne.color, item.ligne.textColor, item.ligne.num, item.width)}</div>`;
     seqRow.appendChild(cell);
   });
 
@@ -522,8 +499,7 @@ function renderPuzzle(puzzle) {
   const mysteryCell = document.createElement('div');
   mysteryCell.className = 'seq-cell mystery';
   mysteryCell.id = 'mystery-cell';
-  mysteryCell.innerHTML = `<span class="mystery-mark">?</span>
-                            <span class="cell-label">4</span>`;
+  mysteryCell.innerHTML = `<span class="mystery-mark">?</span>`;
   seqRow.appendChild(mysteryCell);
 
   // Boutons de choix
@@ -535,14 +511,7 @@ function renderPuzzle(puzzle) {
     btn.className = 'choice-btn';
     btn.dataset.correct = item.correct ? '1' : '0';
 
-    const labelText = puzzle.level === 'A'
-      ? item.ligne.num
-      : puzzle.level === 'B'
-        ? `${item.width} px`
-        : `${item.ligne.num} · ${item.width}px`;
-
-    btn.innerHTML = `${busSVG(item.ligne.color, item.ligne.textColor, item.ligne.num, item.width)}
-                     <span class="choice-label">${labelText}</span>`;
+    btn.innerHTML = busSVG(item.ligne.color, item.ligne.textColor, item.ligne.num, item.width);
 
     btn.addEventListener('click', () => onChoiceTap(btn, item, resolvedAnswer));
     choicesEl.appendChild(btn);

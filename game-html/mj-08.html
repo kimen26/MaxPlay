@@ -333,15 +333,6 @@
     }
 
     .victory-btn:hover, .victory-btn:active { transform: translateY(-3px); }
-
-    /* Confetti */
-    .confetti {
-      position: fixed;
-      width: 12px;
-      height: 12px;
-      pointer-events: none;
-      z-index: 999;
-    }
   </style>
 </head>
 <body>
@@ -392,6 +383,7 @@
   <script src="js/feedback.js"></script>
   <script src="js/data.js"></script>
   <script src="js/bus-svg.js"></script>
+  <script src="js/drag-drop.js"></script>
   <script>
     // ─── MJ-06 : Au garage ! ───
     // Bus SVG IDFM → garage colonne droite, drag & drop
@@ -624,7 +616,7 @@
       e.preventDefault();
 
       draggedBus = bus;
-      const pt = getPoint(e);
+      const pt = getPointerXY(e);
       const rect = bus.el.getBoundingClientRect();
       dragOffset.x = pt.x - rect.left;
       dragOffset.y = pt.y - rect.top;
@@ -642,7 +634,7 @@
       if (!draggedBus) return;
       e.preventDefault();
 
-      const pt = getPoint(e);
+      const pt = getPointerXY(e);
       const zone = document.getElementById('busZone');
       const zRect = zone.getBoundingClientRect();
 
@@ -678,13 +670,7 @@
       document.removeEventListener('touchend', onDragEnd);
     }
 
-    function getPoint(e) {
-      if (e.touches && e.touches.length > 0) return { x: e.touches[0].clientX, y: e.touches[0].clientY };
-      if (e.changedTouches && e.changedTouches.length > 0) return { x: e.changedTouches[0].clientX, y: e.changedTouches[0].clientY };
-      return { x: e.clientX, y: e.clientY };
-    }
-
-    function highlightSlot(bus) {
+function highlightSlot(bus) {
       document.querySelectorAll('.slot').forEach(s => s.classList.remove('hover-ok'));
       const slot = findNearestSlot(bus);
       if (slot && slot.num === bus.num && !slot.el.classList.contains('parked')) {
@@ -756,7 +742,7 @@
         if (typeof Tracker !== 'undefined') Tracker.endSession(BUS_LINES.length, BUS_LINES.length);
         setTimeout(() => {
           playEndSound(BUS_LINES.length, BUS_LINES.length);
-          createConfetti();
+          confettiBurst(50);
           busParade(BUS_LINES);
           document.getElementById('victoryOverlay').classList.add('show');
         }, 900);
@@ -794,27 +780,6 @@
         info.innerHTML = '<span class="pulse">🎉 Bravo ! Tous les bus sont garés !</span>';
       } else {
         info.textContent = `Glisse chaque bus dans sa case ! (${parkedCount}/${total})`;
-      }
-    }
-
-    // ── Confetti ──
-
-    function createConfetti() {
-      const colors = ['#E2001A','#00A092','#6EBE4A','#82C8E6','#ffe066','#fff'];
-      for (let i = 0; i < 50; i++) {
-        setTimeout(() => {
-          const c = document.createElement('div');
-          c.className = 'confetti';
-          c.style.left = Math.random() * 100 + 'vw';
-          c.style.top = '-20px';
-          c.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-          c.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-          document.body.appendChild(c);
-          c.animate([
-            { transform: 'translate(0,0) rotate(0deg)', opacity: 1 },
-            { transform: `translate(${(Math.random()-0.5)*200}px,${window.innerHeight+50}px) rotate(${Math.random()*720}deg)`, opacity: 0 }
-          ], { duration: 2000 + Math.random() * 2000, easing: 'ease-in' }).onfinish = () => c.remove();
-        }, i * 50);
       }
     }
 

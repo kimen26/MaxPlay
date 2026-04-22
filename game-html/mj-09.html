@@ -157,9 +157,6 @@
     }
     .parade-btn.primary { background:linear-gradient(135deg,#00c47a,#00a86b); color:#fff; }
     .parade-btn.secondary { background:rgba(255,255,255,0.15); color:#fff; }
-
-    /* Confetti */
-    .confetti { position:fixed; width:10px; height:10px; pointer-events:none; z-index:999; }
   </style>
 </head>
 <body>
@@ -190,8 +187,10 @@
 
 <script src="js/sounds.js"></script>
 <script src="js/victory-sounds.js"></script>
+<script src="js/feedback.js"></script>
 <script src="js/data.js"></script>
 <script src="js/bus-svg.js"></script>
+<script src="js/drag-drop.js"></script>
 <script>
   // ─── MJ-09 : Trie les bus ! ───
   // Pool : 26 bus Max + 39 métros/RER/tramways = ~65 véhicules
@@ -454,7 +453,7 @@
     if (!bus || bus.parked) return;
     e.preventDefault();
     draggedBus = bus;
-    const pt = getPoint(e);
+    const pt = getPointerXY(e);
     const rect = bus.el.getBoundingClientRect();
     dragOffset.x = pt.x - rect.left;
     dragOffset.y = pt.y - rect.top;
@@ -468,7 +467,7 @@
   function onDragMove(e) {
     if (!draggedBus) return;
     e.preventDefault();
-    const pt = getPoint(e);
+    const pt = getPointerXY(e);
     const zone = document.getElementById('busZone');
     const zRect = zone.getBoundingClientRect();
     const x = pt.x - zRect.left - dragOffset.x;
@@ -491,13 +490,7 @@
     document.removeEventListener('touchend', onDragEnd);
   }
 
-  function getPoint(e) {
-    if (e.touches?.length) return { x:e.touches[0].clientX, y:e.touches[0].clientY };
-    if (e.changedTouches?.length) return { x:e.changedTouches[0].clientX, y:e.changedTouches[0].clientY };
-    return { x:e.clientX, y:e.clientY };
-  }
-
-  function highlightBox(bus) {
+function highlightBox(bus) {
     document.querySelectorAll('.family-box').forEach(b => b.classList.remove('hover-ok'));
     const box = findNearestBox(bus);
     if (box && !box.el.classList.contains('full')) box.el.classList.add('hover-ok');
@@ -551,7 +544,7 @@
         const a = new Audio('sounds/super-max.mp3');
         a.volume = 0.85;
         a.play().catch(() => {});
-        createConfetti(); showParade();
+        confettiBurst(60); showParade();
       }, 600);
     }
   }
@@ -605,26 +598,6 @@
       container.appendChild(row);
     });
     document.getElementById('paradeOverlay').classList.add('show');
-  }
-
-  // ── Confetti ──
-  function createConfetti() {
-    const cols = ['#E2001A','#0064B1','#008C59','#ffe066','#B43C95','#FF82B4','#CEC92A','#8D653A'];
-    for (let i = 0; i < 60; i++) {
-      setTimeout(() => {
-        const c = document.createElement('div');
-        c.className = 'confetti';
-        c.style.left = Math.random()*100 + 'vw';
-        c.style.top = '-20px';
-        c.style.backgroundColor = cols[i % cols.length];
-        c.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
-        document.body.appendChild(c);
-        c.animate([
-          { transform:'translate(0,0) rotate(0deg)', opacity:1 },
-          { transform:`translate(${(Math.random()-0.5)*200}px,${window.innerHeight+50}px) rotate(${Math.random()*720}deg)`, opacity:0 }
-        ], { duration:2000+Math.random()*2000, easing:'ease-in' }).onfinish = () => c.remove();
-      }, i * 40);
-    }
   }
 
   // ── Init ──

@@ -43,6 +43,45 @@ function confetti() {
 }
 
 /**
+ * Confetti rain (plus dense que confetti()) — WAAPI, self-contained
+ * Utilisé pour les écrans de victoire (bravo, parade, fin de partie)
+ * @param {number} count - Nombre de pièces (défaut 50)
+ * @param {Array<string>} colors - Couleurs (défaut palette RATP)
+ */
+function confettiBurst(count = 50, colors) {
+  const palette = colors || ['#E2001A','#0064B1','#008C59','#ffe066','#B43C95','#FF82B4','#CEC92A','#8D653A'];
+  for (let i = 0; i < count; i++) {
+    setTimeout(() => {
+      const c = document.createElement('div');
+      c.style.cssText = `position:fixed;top:-20px;left:${Math.random() * 100}vw;width:10px;height:10px;background:${palette[i % palette.length]};border-radius:${Math.random() > 0.5 ? '50%' : '0'};pointer-events:none;z-index:999;`;
+      document.body.appendChild(c);
+      c.animate([
+        { transform: 'translate(0,0) rotate(0deg)', opacity: 1 },
+        { transform: `translate(${(Math.random() - 0.5) * 200}px,${window.innerHeight + 50}px) rotate(${Math.random() * 720}deg)`, opacity: 0 }
+      ], { duration: 2000 + Math.random() * 2000, easing: 'ease-in' }).onfinish = () => c.remove();
+    }, i * 45);
+  }
+}
+
+/**
+ * Shake horizontal self-contained (WAAPI, pas de CSS requis)
+ * @param {HTMLElement} el - Élément à secouer
+ * @param {number} duration - Durée ms (défaut 350)
+ * @param {number} amplitude - Pixels max (défaut 7)
+ */
+function shakeEl(el, duration = 350, amplitude = 7) {
+  if (!el || !el.animate) return;
+  el.animate([
+    { transform: 'translateX(0)' },
+    { transform: `translateX(-${amplitude}px)`, offset: 0.2 },
+    { transform: `translateX(${amplitude}px)`, offset: 0.4 },
+    { transform: `translateX(-${amplitude * 0.55}px)`, offset: 0.6 },
+    { transform: `translateX(${amplitude * 0.55}px)`, offset: 0.8 },
+    { transform: 'translateX(0)' }
+  ], { duration, easing: 'ease' });
+}
+
+/**
  * Mélange un tableau (Fisher-Yates)
  * @param {Array} array - Tableau à mélanger
  * @returns {Array} Nouveau tableau mélangé

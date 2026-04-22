@@ -201,6 +201,10 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 </div>
 
 <script src="js/bus-svg.js"></script>
+<script src="js/sounds.js"></script>
+<script src="js/feedback.js"></script>
+<script src="js/drag-drop.js"></script>
+<script src="js/tracker.js"></script>
 <script>
 // ─── Lignes RATP Villejuif (sous-ensemble connu de Max) ───
 const LIGNES = [
@@ -335,7 +339,7 @@ function attachDrag(el) {
 
   const onDown = (e) => {
     e.preventDefault();
-    const pt = getPoint(e);
+    const pt = getPointerXY(e);
     const rect = el.getBoundingClientRect();
     offset.x = pt.x - rect.left;
     offset.y = pt.y - rect.top;
@@ -345,7 +349,7 @@ function attachDrag(el) {
   const onMove = (e) => {
     if (!dragging) return;
     e.preventDefault();
-    const pt = getPoint(e);
+    const pt = getPointerXY(e);
     const zone = busZone.getBoundingClientRect();
     el.style.left = (pt.x - zone.left - offset.x) + 'px';
     el.style.top  = (pt.y - zone.top - offset.y) + 'px';
@@ -355,7 +359,7 @@ function attachDrag(el) {
     if (!dragging) return;
     dragging = false;
     el.classList.remove('dragging');
-    const pt = getPoint(e);
+    const pt = getPointerXY(e);
     const st = findStationAt(pt);
     clearStationHover();
     if (st) {
@@ -381,12 +385,6 @@ function detachDrag(el) {
     window.removeEventListener('pointerup', el._onUp);
     window.removeEventListener('pointercancel', el._onUp);
   }
-}
-
-function getPoint(e) {
-  if (e.touches && e.touches[0]) return { x:e.touches[0].clientX, y:e.touches[0].clientY };
-  if (e.changedTouches && e.changedTouches[0]) return { x:e.changedTouches[0].clientX, y:e.changedTouches[0].clientY };
-  return { x:e.clientX, y:e.clientY };
 }
 
 function findStationAt(pt) {
@@ -422,11 +420,15 @@ function wrongDrop(bus, station) {
   setTimeout(() => station.classList.remove('wrong'), 400);
   bus.style.left = bus._slotLeft + 'px';
   bus.style.top  = bus._slotTop + 'px';
+  if (typeof sndBuzz === 'function') sndBuzz();
+  if (typeof Tracker !== 'undefined') Tracker.logAnswer(false);
 }
 
 function correctDrop(bus, station) {
   station.classList.add('correct');
   setTimeout(() => station.classList.remove('correct'), 600);
+  if (typeof sndDing === 'function') sndDing();
+  if (typeof Tracker !== 'undefined') Tracker.logAnswer(true);
 
   // Snap sous la station
   const sr = station.getBoundingClientRect();

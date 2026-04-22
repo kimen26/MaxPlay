@@ -34,38 +34,37 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   background:linear-gradient(180deg, #1e3a5f 0%, #2a5f7a 45%, #4a7a52 45%, #3a5a3a 100%);
 }
 
-/* Stations (rangée du haut) */
-#stations {
-  display:grid; grid-template-columns:repeat(4,1fr);
-  gap:8px; padding:12px 10px; flex-shrink:0;
+/* Étagère d'outils (rangée du haut) — plein de petits outils variés */
+#shelf {
+  flex-shrink:0; display:flex; flex-wrap:wrap; justify-content:center;
+  gap:6px; padding:8px 10px;
+  background:rgba(0,0,0,0.32);
+  border-bottom:2px solid rgba(255,255,255,0.12);
 }
-.station {
-  background:rgba(255,255,255,0.1);
-  border:3px dashed rgba(255,255,255,0.3);
-  border-radius:18px; padding:10px 6px;
-  display:flex; flex-direction:column; align-items:center;
-  gap:4px; transition:all 0.2s; position:relative;
-  min-height:110px; justify-content:center;
+.tool {
+  width:50px; height:50px; display:flex; align-items:center; justify-content:center;
+  font-size:1.7rem; line-height:1;
+  background:rgba(255,255,255,0.12);
+  border:2px solid rgba(255,255,255,0.25);
+  border-radius:12px; transition:transform 0.15s, background 0.2s, border-color 0.2s;
+  cursor:grab; touch-action:none;
 }
-.station .icon { font-size:2.4rem; line-height:1; }
-.station .label {
-  font-size:0.78rem; font-weight:900; text-align:center;
-  color:#fff; line-height:1.1;
+.tool.sep {
+  width:2px; height:38px; background:rgba(255,255,255,0.18);
+  border:none; border-radius:1px; pointer-events:none;
+  align-self:center; margin:0 2px;
 }
-.station.hover {
+.tool.active {
   background:rgba(255,230,102,0.3);
-  border-color:#ffe066;
-  transform:scale(1.05);
+  border-color:#ffe066; transform:scale(1.12);
 }
-.station.wrong {
-  animation:shake 0.4s ease-in-out;
-  background:rgba(233,69,96,0.35);
-  border-color:#e94560;
+.tool.wrong {
+  animation:shake 0.3s ease-in-out;
+  background:rgba(233,69,96,0.3); border-color:#e94560;
 }
-.station.correct {
-  animation:pulseGreen 0.6s ease-out;
-  background:rgba(0,196,122,0.35);
-  border-color:#00c47a;
+.tool.correct {
+  animation:pulseGreen 0.5s ease-out;
+  background:rgba(0,196,122,0.3); border-color:#00c47a;
 }
 @keyframes shake {
   0%,100% { transform:translateX(0); }
@@ -149,11 +148,16 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 .fuel-gauge::before {
   content:''; display:block; height:100%; width:15%;
   background:#e94560;
+  transition:width 0.8s ease-out, background 0.3s;
 }
 .fuel-gauge::after {
   content:'E'; position:absolute; right:-12px; top:-2px;
   color:#e94560; font-size:0.75rem; font-weight:900;
+  transition:color 0.3s;
 }
+.fuel-gauge.filled { animation:none; }
+.fuel-gauge.filled::before { width:100%; background:#00c47a; }
+.fuel-gauge.filled::after { content:'F'; color:#00c47a; }
 @keyframes fuelBlink {
   0%,100% { opacity:1; }
   50% { opacity:0.4; }
@@ -235,23 +239,20 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   </div>
 
   <div id="main">
-    <div id="stations">
-      <div class="station" data-station="essence">
-        <div class="icon">⛽</div>
-        <div class="label">Station<br>essence</div>
-      </div>
-      <div class="station" data-station="lavage">
-        <div class="icon">🫧</div>
-        <div class="label">Lavage</div>
-      </div>
-      <div class="station" data-station="numero">
-        <div class="icon">💻</div>
-        <div class="label">Ordinateur</div>
-      </div>
-      <div class="station" data-station="pneus">
-        <div class="icon">🔧</div>
-        <div class="label">Garage<br>pneus</div>
-      </div>
+    <div id="shelf">
+      <div class="tool" data-station="essence">⛽</div>
+      <div class="tool" data-station="essence">🛢️</div>
+      <div class="tool sep"></div>
+      <div class="tool" data-station="lavage">🫧</div>
+      <div class="tool" data-station="lavage">🧽</div>
+      <div class="tool" data-station="lavage">🚿</div>
+      <div class="tool sep"></div>
+      <div class="tool" data-station="numero">💻</div>
+      <div class="tool" data-station="numero">📺</div>
+      <div class="tool sep"></div>
+      <div class="tool" data-station="pneus">🔧</div>
+      <div class="tool" data-station="pneus">🛠️</div>
+      <div class="tool" data-station="pneus">🔩</div>
     </div>
 
     <div id="bus-zone"></div>
@@ -259,25 +260,18 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 </div>
 
 <script src="js/bus-svg.js"></script>
+<script src="js/data.js"></script>
 <script src="js/sounds.js"></script>
 <script src="js/feedback.js"></script>
 <script src="js/drag-drop.js"></script>
 <script src="js/tracker.js"></script>
 <script src="js/comments.js"></script>
 <script>
-// ─── Lignes RATP Villejuif (sous-ensemble connu de Max) ───
-const LIGNES = [
-  { num:'162', color:'#f28cad', textColor:'#fff' },
-  { num:'172', color:'#d4a24f', textColor:'#fff' },
-  { num:'180', color:'#87b7c8', textColor:'#fff' },
-  { num:'185', color:'#6d4e8a', textColor:'#fff' },
-  { num:'186', color:'#e2001a', textColor:'#fff' },
-  { num:'323', color:'#00a878', textColor:'#fff' },
-  { num:'131', color:'#ffcc00', textColor:'#333' },
-];
+// ─── Lignes : sous-ensemble connu de Max, couleurs IDFM canoniques via data.js ───
+const MJ17_NUMS = ['162', '172', '185', '186', '323', '131', '180', 'V7'];
+const LIGNES_MJ17 = LIGNES.filter(l => MJ17_NUMS.includes(l.num));
 
 const PANNES = ['essence', 'lavage', 'numero', 'pneus', 'couleur'];
-const TOOL_ICONS = { essence:'⛽', lavage:'🫧', numero:'💻', pneus:'🔧' };
 // L'ordinateur 💻 répare deux types de pannes : numéro masqué ET mauvaise couleur
 const TOOL_FIXES = {
   essence: ['essence'],
@@ -295,7 +289,7 @@ let score = 0;
 let busDone = 0;
 const scoreEl = document.getElementById('score');
 const busZone = document.getElementById('bus-zone');
-const stations = document.querySelectorAll('.station');
+const tools = document.querySelectorAll('.tool:not(.sep)');
 
 // Position centrale pour le bus unique
 function centerPos() {
@@ -308,7 +302,7 @@ function centerPos() {
 
 // ─── Bus factory ───
 function makeBus(pannes) {
-  const ligne = LIGNES[Math.floor(Math.random() * LIGNES.length)];
+  const ligne = LIGNES_MJ17[Math.floor(Math.random() * LIGNES_MJ17.length)];
   const wrapper = document.createElement('div');
   wrapper.className = 'bus-actor bus-enter';
   wrapper._pannes = [...pannes];
@@ -322,7 +316,7 @@ function makeBus(pannes) {
   const hasCouleur = pannes.includes('couleur');
   let displayColor = ligne.color;
   if (hasCouleur) {
-    const others = LIGNES.filter(l => l.color !== ligne.color);
+    const others = LIGNES_MJ17.filter(l => l.color !== ligne.color);
     const fake = others[Math.floor(Math.random() * others.length)];
     displayColor = fake.color;
     wrapper._fakeColor = fake.color;
@@ -433,23 +427,24 @@ function stopPatience(bus) {
   if (bus._patienceTick) { clearInterval(bus._patienceTick); bus._patienceTick = null; }
 }
 
-// ─── Drag & drop : depuis stations vers bus ───
-stations.forEach(st => attachStationDrag(st));
+// ─── Drag & drop : depuis étagère d'outils vers bus ───
+tools.forEach(t => attachToolDrag(t));
 
-function attachStationDrag(station) {
+function attachToolDrag(tool) {
   let ghost = null;
-  const type = station.dataset.station;
+  const type = tool.dataset.station;
+  const iconChar = tool.textContent.trim();
 
   const onDown = (e) => {
     e.preventDefault();
     const pt = getPointerXY(e);
     ghost = document.createElement('div');
     ghost.className = 'tool-ghost';
-    ghost.textContent = TOOL_ICONS[type];
+    ghost.textContent = iconChar;
     ghost.style.left = pt.x + 'px';
     ghost.style.top  = pt.y + 'px';
     document.body.appendChild(ghost);
-    station.classList.add('active');
+    tool.classList.add('active');
   };
   const onMove = (e) => {
     if (!ghost) return;
@@ -466,11 +461,11 @@ function attachStationDrag(station) {
     clearBusHover();
     ghost.remove();
     ghost = null;
-    station.classList.remove('active');
-    if (bus && !bus._done) handleDrop(bus, type, station);
+    tool.classList.remove('active');
+    if (bus && !bus._done) handleDrop(bus, type, tool);
   };
 
-  station.addEventListener('pointerdown', onDown);
+  tool.addEventListener('pointerdown', onDown);
   window.addEventListener('pointermove', onMove);
   window.addEventListener('pointerup', onUp);
   window.addEventListener('pointercancel', onUp);
@@ -570,12 +565,19 @@ function repairAnim(bus, panne) {
   } else if (panne === 'essence') {
     const g = bus.querySelector('.fuel-gauge');
     if (g) {
-      g.style.animation = 'none';
-      g.innerHTML = '';
-      const bar = document.createElement('div');
-      bar.style.cssText = 'height:100%;width:0;background:#00c47a;transition:width 0.8s;';
-      g.appendChild(bar);
-      requestAnimationFrame(() => bar.style.width = '100%');
+      // La classe .filled passe width:15% → 100% via ::before transition, sans race condition
+      g.classList.add('filled');
+      // Petites gouttes qui tombent pour montrer qu'on remplit
+      for (let i = 0; i < 5; i++) {
+        const d = document.createElement('div');
+        d.className = 'sparkle';
+        d.textContent = '💧';
+        d.style.left = (20 + i * 6) + 'px';
+        d.style.top = '-10px';
+        d.style.setProperty('--dx', ((Math.random()-0.5)*20) + 'px');
+        bus.appendChild(d);
+        setTimeout(() => d.remove(), 1000);
+      }
     }
   } else if (panne === 'numero') {
     // Restaurer le numéro avec la vraie couleur de la ligne d'origine
@@ -601,17 +603,21 @@ function repairAnim(bus, panne) {
     bus.classList.remove('tilt');
     const svg = bus.querySelector('svg');
     const ellipses = svg.querySelectorAll('ellipse');
-    ellipses.forEach(ell => {
-      const cx = ell.getAttribute('cx');
-      const cy = parseFloat(ell.getAttribute('cy')) - 3;
-      const tmp = document.createElementNS('http://www.w3.org/2000/svg','svg');
-      tmp.innerHTML = `
-        <circle cx="${cx}" cy="${cy}" r="10" fill="#333" stroke="#111" stroke-width="2"/>
-        <circle cx="${cx}" cy="${cy}" r="6" fill="#666"/>
-        <circle cx="${cx}" cy="${cy}" r="2" fill="#111"/>
-      `;
-      while (tmp.firstChild) ell.parentNode.insertBefore(tmp.firstChild, ell);
-      ell.remove();
+    // Gonfle les pneus un par un avec un petit son pour chaque
+    ellipses.forEach((ell, idx) => {
+      setTimeout(() => {
+        const cx = ell.getAttribute('cx');
+        const cy = parseFloat(ell.getAttribute('cy')) - 3;
+        const tmp = document.createElementNS('http://www.w3.org/2000/svg','svg');
+        tmp.innerHTML = `
+          <circle cx="${cx}" cy="${cy}" r="10" fill="#333" stroke="#111" stroke-width="2"/>
+          <circle cx="${cx}" cy="${cy}" r="6" fill="#666"/>
+          <circle cx="${cx}" cy="${cy}" r="2" fill="#111"/>
+        `;
+        while (tmp.firstChild) ell.parentNode.insertBefore(tmp.firstChild, ell);
+        ell.remove();
+        if (typeof sndTschh === 'function') sndTschh();
+      }, idx * 250);
     });
   }
 }
@@ -620,6 +626,9 @@ function finishBus(bus) {
   score++;
   scoreEl.textContent = score;
   fireConfetti(bus);
+  // Petit bruit rigolo de moteur qui démarre quand le bus part (type Trilibus)
+  if (typeof sndMoteur === 'function') sndMoteur();
+  if (typeof sndKlaxon === 'function') setTimeout(() => sndKlaxon(), 250);
 
   bus.classList.add('bus-leave');
   bus.style.pointerEvents = 'none';

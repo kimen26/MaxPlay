@@ -35,6 +35,15 @@ const LIGNES = [
   // Métros (utilisés dans les trajets de Max – MJ-05)
   { num: 'M6',   color: '#6ECA97', textColor: '#333', name: 'Métro 6' },  // chez mamie → Montparnasse
   { num: 'M7',   color: '#FA9ABA', textColor: '#333', name: 'Métro 7' },  // École + mamie + tata Sarah
+  { num: 'M1',   color: '#FFCD00', textColor: '#333', name: 'Métro 1' },
+  { num: 'M4',   color: '#BB4BA1', textColor: '#fff', name: 'Métro 4' },
+  { num: 'M14',  color: '#622280', textColor: '#fff', name: 'Métro 14' },
+  // RER
+  { num: 'RER A', color: '#E2231A', textColor: '#fff', name: 'RER A' },
+  { num: 'RER B', color: '#4FA3DC', textColor: '#fff', name: 'RER B' },
+  { num: 'RER C', color: '#FFCD00', textColor: '#333', name: 'RER C' },
+  { num: 'RER D', color: '#009639', textColor: '#fff', name: 'RER D' },
+  { num: 'RER E', color: '#A88B00', textColor: '#fff', name: 'RER E' },
 ];
 
 // Lignes quotidiennes de Max (prioritaires pour les premières questions)
@@ -131,6 +140,7 @@ const PERSONNAGES = ['🧑', '👦', '👧', '👴', '👵', '🧙', '🏴‍☠
 //          V6/V7 → "Valouette V6/V7", TVM → "TVM", bus → "Bus 162"
 function getLineDisplayName(num) {
   if (num === 'TVM') return 'TVM';
+  if (num.startsWith('RER ')) return 'RER ' + num.substring(4);
   if (num.startsWith('M') && /^\d/.test(num.substring(1))) return 'Métro ' + num.substring(1);
   if (num.startsWith('T') && /^\d/.test(num.substring(1))) return 'Tram ' + num.substring(1);
   if (num.startsWith('N') && /^\d/.test(num.substring(1))) return 'Noctilien ' + num.substring(1);

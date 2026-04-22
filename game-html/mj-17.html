@@ -269,6 +269,8 @@ const TOOL_ICONS = { essence:'⛽', lavage:'🫧', numero:'💻', pneus:'🔧' }
 const TOTAL_BUS = 8;
 const BUS_W = 150;
 const PATIENCE_MS = 22000;
+const DROP_BUFFER = 120; // pixels autour du bus pour accepter le drop (large : tout autour est OK)
+const DOUBLE_PANNE_PCT = 0.35; // 35% des bus ont 2 pannes
 
 let score = 0;
 let busDone = 0;
@@ -286,31 +288,31 @@ function centerPos() {
 }
 
 // ─── Bus factory ───
-function makeBus(panne) {
+function makeBus(pannes) {
   const ligne = LIGNES[Math.floor(Math.random() * LIGNES.length)];
   const wrapper = document.createElement('div');
   wrapper.className = 'bus-actor bus-enter';
-  wrapper.dataset.panne = panne;
-  wrapper._ligne = ligne; // pour réparation "numero"
+  wrapper._pannes = [...pannes];
+  wrapper._ligne = ligne;
+  wrapper.dataset.panne = pannes.join(','); // pour debug/css
 
   // SVG : carrosserie turquoise + vraie couleur IDFM sur destination
-  // Pour "numero", couleur de ligne conservée, numéro remplacé par "?" muet
-  let svgHtml;
-  if (panne === 'numero') {
-    svgHtml = busSVG(ligne.color, 'rgba(255,255,255,0.25)', '?', BUS_W);
-  } else {
-    svgHtml = busSVG(ligne.color, ligne.textColor, ligne.num, BUS_W);
-  }
+  // Pour "numero", numéro remplacé par "?" muet
+  const hasNumero = pannes.includes('numero');
+  const svgHtml = hasNumero
+    ? busSVG(ligne.color, 'rgba(255,255,255,0.25)', '?', BUS_W)
+    : busSVG(ligne.color, ligne.textColor, ligne.num, BUS_W);
   const svgWrap = document.createElement('div');
   svgWrap.innerHTML = svgHtml;
   wrapper.appendChild(svgWrap);
 
-  // Overlays visuels (indices de panne — PAS de bulle texte, PAS de TTS)
-  if (panne === 'essence') {
+  // Overlays visuels (tous affichés simultanément si plusieurs pannes)
+  if (pannes.includes('essence')) {
     const g = document.createElement('div');
     g.className = 'fuel-gauge';
     wrapper.appendChild(g);
-  } else if (panne === 'lavage') {
+  }
+  if (pannes.includes('lavage')) {
     ['s1','s2','s3'].forEach(c => {
       const st = document.createElement('div');
       st.className = 'stain ' + c;
@@ -320,7 +322,8 @@ function makeBus(panne) {
     fly.className = 'fly';
     fly.textContent = '🪰';
     wrapper.appendChild(fly);
-  } else if (panne === 'pneus') {
+  }
+  if (pannes.includes('pneus')) {
     wrapper.classList.add('tilt');
     const svg = wrapper.querySelector('svg');
     const circles = svg.querySelectorAll('circle[r="10"]');
@@ -349,14 +352,21 @@ function placeBusCenter(el) {
   el.style.top  = p.top + 'px';
 }
 
-function nextPanne() {
-  return PANNES[Math.floor(Math.random() * PANNES.length)];
+function nextPannes() {
+  // 1 panne par défaut, 35% de chance d'en avoir 2 différentes
+  const first = PANNES[Math.floor(Math.random() * PANNES.length)];
+  if (Math.random() < DOUBLE_PANNE_PCT) {
+    const others = PANNES.filter(p => p !== first);
+    const second = others[Math.floor(Math.random() * others.length)];
+    return [first, second];
+  }
+  return [first];
 }
 
 function spawnBus() {
   if (busDone >= TOTAL_BUS) { showEnd(); return; }
-  const panne = nextPanne();
-  const bus = makeBus(panne);
+  const pannes = nextPannes();
+  const bus = makeBus(pannes);
   busZone.appendChild(bus);
   placeBusCenter(bus);
   startPatience(bus);
@@ -436,7 +446,8 @@ function findBusAt(pt) {
   for (const b of all) {
     if (b._done) continue;
     const r = b.getBoundingClientRect();
-    if (pt.x >= r.left && pt.x <= r.right && pt.y >= r.top && pt.y <= r.bottom) return b;
+    if (pt.x >= r.left - DROP_BUFFER && pt.x <= r.right + DROP_BUFFER &&
+        pt.y >= r.top - DROP_BUFFER && pt.y <= r.bottom + DROP_BUFFER) return b;
   }
   return null;
 }
@@ -453,8 +464,8 @@ function clearBusHover() {
 
 // ─── Drop handling ───
 function handleDrop(bus, toolType, station) {
-  if (bus.dataset.panne === toolType) {
-    correctDrop(bus, station);
+  if (bus._pannes && bus._pannes.includes(toolType)) {
+    correctDrop(bus, station, toolType);
   } else {
     wrongDrop(bus, station);
   }
@@ -469,17 +480,26 @@ function wrongDrop(bus, station) {
   if (typeof Tracker !== 'undefined') Tracker.logAnswer(false);
 }
 
-function correctDrop(bus, station) {
+function correctDrop(bus, station, panne) {
   station.classList.add('correct');
   setTimeout(() => station.classList.remove('correct'), 600);
   if (typeof sndDing === 'function') sndDing();
   if (typeof Tracker !== 'undefined') Tracker.logAnswer(true);
-  bus._done = true;
-  stopPatience(bus);
-  if (bus._patienceBar) bus._patienceBar.remove();
 
-  setTimeout(() => repairAnim(bus), 100);
-  setTimeout(() => finishBus(bus), 1400);
+  // Retire la panne réparée
+  bus._pannes = bus._pannes.filter(p => p !== panne);
+  setTimeout(() => repairAnim(bus, panne), 100);
+
+  if (bus._pannes.length === 0) {
+    // Toutes les pannes sont réparées
+    bus._done = true;
+    stopPatience(bus);
+    if (bus._patienceBar) bus._patienceBar.remove();
+    setTimeout(() => finishBus(bus), 1400);
+  } else {
+    // Patience bonus pour la 2ème panne
+    bus._patienceStart = performance.now();
+  }
 }
 
 function leaveUnserved(bus) {
@@ -497,8 +517,7 @@ function leaveUnserved(bus) {
   setTimeout(() => { bus.remove(); spawnBus(); }, 900);
 }
 
-function repairAnim(bus) {
-  const panne = bus.dataset.panne;
+function repairAnim(bus, panne) {
   if (panne === 'lavage') {
     bus.querySelectorAll('.stain,.fly').forEach(e => e.remove());
     for (let i = 0; i < 6; i++) {

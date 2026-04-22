@@ -217,8 +217,10 @@ const FAMILIES = {
   valouette:  l => ['V2','V3','V4','V5','V6','V7'].includes(l.num),
   noctilien:  l => l.num.startsWith('N'),
   metro:      l => l.num.startsWith('M') && /^\d/.test(l.num.substring(1)),
+  rer:        l => l.num.startsWith('RER '),
   standard:   l => !['V2','V3','V4','V5','V6','V7'].includes(l.num)
                    && !l.num.startsWith('N')
+                   && !l.num.startsWith('RER ')
                    && !(l.num.startsWith('M') && /^\d/.test(l.num.substring(1)))
                    && !(l.num.startsWith('T') && /^\d/.test(l.num.substring(1))),
 };
@@ -227,6 +229,7 @@ const FAMILY_NAMES = {
   valouette: 'Valouette',
   noctilien: 'Noctilien',
   metro:     'Métro',
+  rer:       'RER',
   standard:  'Bus standard',
 };
 

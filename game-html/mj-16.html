@@ -287,11 +287,12 @@ function randBool() {
 
 // ── Calcul de la taille de bus adaptée à l'écran ────────────────────────────
 // Les 4 cases sont en ligne horizontale. On vise une taille raisonnable.
-function calcSeqBusWidth() {
+function calcSeqBusWidth(cellCount) {
+  const n = cellCount || 4; // nombre total de cellules (starters + case mystère)
   const w = Math.min(window.innerWidth, 760);
-  // 4 cellules + 3 flèches (18px each) + padding + gaps
-  const available = w - 4 * 8 - 3 * 26 - 4 * 12 - 4 * 16;
-  return Math.min(130, Math.max(70, Math.floor(available / 4)));
+  // n cellules + (n-1) flèches (~26px) + paddings/gaps par cellule (~22px)
+  const available = w - 16 - (n - 1) * 26 - n * 22;
+  return Math.min(120, Math.max(52, Math.floor(available / n)));
 }
 
 function calcChoiceBusWidth() {
@@ -393,7 +394,7 @@ function generateAltAB() {
   const pool = selectDistinctColors(LIGNES, 4, 80);
   if (pool.length < 3) return generateSizeUp();
   const [a, b, c] = pool;
-  const w = 80;
+  const w = 0; // responsive via calcSeqBusWidth
   return {
     sequence: [a, b, a, b].map(l => ({ ligne: l, width: w })),
     answer:   { ligne: a, width: w },
@@ -412,7 +413,7 @@ function generateAltABC() {
   const pool = selectDistinctColors(LIGNES, 5, 80);
   if (pool.length < 4) return generateAltAB();
   const [a, b, c, d] = pool;
-  const w = 80;
+  const w = 0; // responsive via calcSeqBusWidth
   return {
     sequence: [a, b, c, a].map(l => ({ ligne: l, width: w })),
     answer:   { ligne: b, width: w },
@@ -454,7 +455,7 @@ function renderPuzzle(puzzle) {
   currentPuzzle = puzzle;
   answered      = false;
 
-  const seqBusW    = calcSeqBusWidth();
+  const seqBusW    = calcSeqBusWidth(puzzle.sequence.length + 1);
   const choiceBusW = calcChoiceBusWidth();
 
   // Appliquer la taille calculée si width===0 (niveaux A)

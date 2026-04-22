@@ -266,37 +266,31 @@ const LIGNES = [
 
 const PANNES = ['essence', 'lavage', 'numero', 'pneus'];
 const TOOL_ICONS = { essence:'⛽', lavage:'🫧', numero:'💻', pneus:'🔧' };
-const BUS_COUNT = 4;
+const TOTAL_BUS = 8;
 const BUS_W = 150;
 const PATIENCE_MS = 22000;
 
 let score = 0;
+let busDone = 0;
 const scoreEl = document.getElementById('score');
 const busZone = document.getElementById('bus-zone');
 const stations = document.querySelectorAll('.station');
 
-// Slots — positions fixes calculées à partir de bus-zone
-function slotPos(index) {
+// Position centrale pour le bus unique
+function centerPos() {
   const zone = busZone.getBoundingClientRect();
-  const cols = 2;
-  const rows = 2;
-  const col = index % cols;
-  const row = Math.floor(index / cols);
-  const cellW = zone.width / cols;
-  const cellH = zone.height / rows;
   return {
-    left: cellW * col + (cellW - BUS_W) / 2,
-    top:  cellH * row + (cellH - 100) / 2,
+    left: (zone.width - BUS_W) / 2,
+    top:  (zone.height - 100) / 2,
   };
 }
 
 // ─── Bus factory ───
-function makeBus(panne, slot) {
+function makeBus(panne) {
   const ligne = LIGNES[Math.floor(Math.random() * LIGNES.length)];
   const wrapper = document.createElement('div');
   wrapper.className = 'bus-actor bus-enter';
   wrapper.dataset.panne = panne;
-  wrapper.dataset.slot = slot;
   wrapper._ligne = ligne; // pour réparation "numero"
 
   // SVG : carrosserie turquoise + vraie couleur IDFM sur destination
@@ -349,34 +343,22 @@ function makeBus(panne, slot) {
   return wrapper;
 }
 
-function placeBusAtSlot(el, slot) {
-  const p = slotPos(slot);
+function placeBusCenter(el) {
+  const p = centerPos();
   el.style.left = p.left + 'px';
   el.style.top  = p.top + 'px';
-  el._slotLeft = p.left;
-  el._slotTop  = p.top;
 }
 
-// Détermine une panne à donner à un nouveau bus : mélange les 4 panne pour le 1er
-// round puis aléatoire ensuite, en évitant la panne déjà présente sur les autres
-// bus si possible.
-let initialQueue = [];
 function nextPanne() {
-  if (initialQueue.length > 0) return initialQueue.shift();
-  // Aléatoire en évitant idéalement les pannes déjà présentes
-  const existing = new Set(
-    [...busZone.querySelectorAll('.bus-actor')].map(b => b.dataset.panne)
-  );
-  const absent = PANNES.filter(p => !existing.has(p));
-  if (absent.length > 0) return absent[Math.floor(Math.random() * absent.length)];
   return PANNES[Math.floor(Math.random() * PANNES.length)];
 }
 
-function spawnBusAtSlot(slot) {
+function spawnBus() {
+  if (busDone >= TOTAL_BUS) { showEnd(); return; }
   const panne = nextPanne();
-  const bus = makeBus(panne, slot);
+  const bus = makeBus(panne);
   busZone.appendChild(bus);
-  placeBusAtSlot(bus, slot);
+  placeBusCenter(bus);
   startPatience(bus);
   return bus;
 }
@@ -510,9 +492,9 @@ function leaveUnserved(bus) {
   sad.textContent = '😢';
   bus.appendChild(sad);
   if (typeof sndBuzz === 'function') sndBuzz();
-  const slot = parseInt(bus.dataset.slot, 10);
   bus.classList.add('bus-leave-sad');
-  setTimeout(() => { bus.remove(); spawnBusAtSlot(slot); }, 900);
+  busDone++;
+  setTimeout(() => { bus.remove(); spawnBus(); }, 900);
 }
 
 function repairAnim(bus) {
@@ -572,14 +554,32 @@ function finishBus(bus) {
   scoreEl.textContent = score;
   fireConfetti(bus);
 
-  const slot = parseInt(bus.dataset.slot, 10);
   bus.classList.add('bus-leave');
   bus.style.pointerEvents = 'none';
+  busDone++;
 
   setTimeout(() => {
     bus.remove();
-    spawnBusAtSlot(slot);
+    spawnBus();
   }, 900);
+}
+
+function showEnd() {
+  if (typeof Tracker !== 'undefined' && Tracker.endSession) Tracker.endSession();
+  const ov = document.createElement('div');
+  ov.style.cssText = 'position:fixed;inset:0;background:rgba(13,27,42,0.92);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;z-index:100;padding:20px;';
+  ov.innerHTML = `
+    <div style="font-size:4rem;">🎉</div>
+    <div style="font-size:1.6rem;font-weight:900;text-align:center;">Bravo !</div>
+    <div style="font-size:1.2rem;font-weight:700;">Score : ${score} / ${TOTAL_BUS}</div>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;">
+      <button id="replay" style="background:#ffe066;color:#1a1a1a;border:none;border-radius:14px;padding:12px 22px;font-size:1.1rem;font-weight:900;font-family:inherit;cursor:pointer;">🔁 Rejouer</button>
+      <button id="menu" style="background:rgba(255,255,255,0.15);color:#fff;border:2px solid rgba(255,255,255,0.3);border-radius:14px;padding:12px 22px;font-size:1.1rem;font-weight:900;font-family:inherit;cursor:pointer;">🏠 Menu</button>
+    </div>
+  `;
+  document.body.appendChild(ov);
+  ov.querySelector('#replay').addEventListener('click', () => location.reload());
+  ov.querySelector('#menu').addEventListener('click', () => location.href = 'index.html');
 }
 
 function fireConfetti(bus) {
@@ -603,12 +603,7 @@ function fireConfetti(bus) {
 
 // ─── Start ───
 window.addEventListener('load', () => {
-  // 1er round : 4 pannes distinctes mélangées
-  initialQueue = [...PANNES].sort(() => Math.random() - 0.5);
-  // Spawn décalé pour effet cascade
-  for (let i = 0; i < BUS_COUNT; i++) {
-    setTimeout(() => spawnBusAtSlot(i), 150 * i);
-  }
+  spawnBus();
 });
 </script>
 </body>

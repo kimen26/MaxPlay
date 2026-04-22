@@ -433,6 +433,7 @@ function onFicheTap(num){
 function onAnswer(correct){
   if(answered)return;
   answered=true;
+  if(typeof Tracker!=='undefined')Tracker.logAnswer(correct);
   round++;
   if(correct)score++;
   updScore();

@@ -173,6 +173,7 @@
       if (btn.disabled) return;
       const res = QcmRetry.handle(qcm, isCorrect);
       if (res.outcome === 'ignored') return;
+      if ((res.outcome === 'correct' || res.outcome === 'reveal') && typeof Tracker !== 'undefined') Tracker.logAnswer(res.outcome === 'correct');
 
       if (res.outcome === 'correct') {
         btn.classList.add('ok');

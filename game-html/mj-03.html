@@ -225,7 +225,8 @@
     function answer(isCorrect, btn) {
       if (locked) return;
       locked = true;
-      
+      if (typeof Tracker !== 'undefined') Tracker.logAnswer(isCorrect);
+
       if (isCorrect) {
         btn.classList.add('ok');
         score += 10;

@@ -277,6 +277,7 @@
     function answer(isCorrect, btn, chosenOption) {
       if (locked) return;
       locked = true;
+      if (typeof Tracker !== 'undefined') Tracker.logAnswer(isCorrect);
 
       const blank = document.getElementById('blank');
 

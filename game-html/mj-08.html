@@ -703,13 +703,16 @@ function highlightSlot(bus) {
       const nearest = findNearestSlot(bus);
 
       if (!nearest) {
+        if (typeof Tracker !== 'undefined') Tracker.logAnswer(false);
         wrongPark(bus);
         return;
       }
 
       if (nearest.num === bus.num) {
+        if (typeof Tracker !== 'undefined') Tracker.logAnswer(true);
         parkBus(bus, nearest.el);
       } else {
+        if (typeof Tracker !== 'undefined') Tracker.logAnswer(false);
         wrongPark(bus);
       }
     }

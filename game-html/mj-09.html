@@ -512,10 +512,12 @@ function highlightBox(bus) {
 
   function checkDrop(bus) {
     const nearest = findNearestBox(bus);
-    if (!nearest) { wrongPark(bus); return; }
+    if (!nearest) { if (typeof Tracker !== 'undefined') Tracker.logAnswer(false); wrongPark(bus); return; }
     if (nearest.id === bus.family) {
+      if (typeof Tracker !== 'undefined') Tracker.logAnswer(true);
       parkBus(bus, nearest);
     } else {
+      if (typeof Tracker !== 'undefined') Tracker.logAnswer(false);
       wrongPark(bus);
     }
   }

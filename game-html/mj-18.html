@@ -37,9 +37,10 @@
       border-radius:0 0 30px 30px;
       position:relative;
       cursor:pointer;
-      transition:transform 0.2s;
+      transition:transform 0.3s ease;
       overflow:hidden;
       display:flex; flex-direction:column-reverse;
+      will-change:transform;
     }
     .tube::before {
       content:''; position:absolute; top:-8px; left:-4px; right:-4px; height:8px;
@@ -215,32 +216,49 @@
 
     function topColor(t) { return t.length ? t[t.length-1] : null; }
 
-    // Animation d'une goutte qui vole du tube src vers le tube dst
+    // Le tube source se penche vers le tube cible, puis une goutte
+    // suit une trajectoire en arc jusqu'à la cible. Tube se redresse ensuite.
     function animateDrop(srcIdx, dstIdx, color, onDone) {
       const stage = document.getElementById('stage');
       const srcEl = stage.children[srcIdx];
       const dstEl = stage.children[dstIdx];
       if (!srcEl || !dstEl) { onDone && onDone(); return; }
+
       const sRect = srcEl.getBoundingClientRect();
       const dRect = dstEl.getBoundingClientRect();
-      const stRect = stage.getBoundingClientRect();
-      const startX = sRect.left - stRect.left + sRect.width/2 - 14;
-      const startY = sRect.top  - stRect.top - 20;
-      const endX   = dRect.left - stRect.left + dRect.width/2 - 14;
-      const endY   = dRect.top  - stRect.top + 8;
+      const tiltLeft = dRect.left < sRect.left;
+      const tiltDeg = tiltLeft ? -55 : 55;
 
-      const drop = document.createElement('div');
-      drop.className = 'drop';
-      drop.style.background = color;
-      drop.style.left = startX + 'px';
-      drop.style.top  = startY + 'px';
-      drop.style.transition = 'left 0.45s ease-in-out, top 0.45s cubic-bezier(0.4, -0.2, 0.7, 1)';
-      stage.appendChild(drop);
-      requestAnimationFrame(() => {
-        drop.style.left = endX + 'px';
-        drop.style.top  = endY + 'px';
-      });
-      setTimeout(() => { drop.remove(); onDone && onDone(); }, 480);
+      // Penche le tube source vers la cible (pivot = coin haut côté cible)
+      srcEl.style.transformOrigin = tiltLeft ? '100% 0%' : '0% 0%';
+      srcEl.style.transform = `rotate(${tiltDeg}deg)`;
+
+      setTimeout(() => {
+        const sRect2 = srcEl.getBoundingClientRect();
+        const startX = (tiltLeft ? sRect2.left : sRect2.right) - 14;
+        const startY = sRect2.top + 8;
+        const endX   = dRect.left + dRect.width/2 - 14;
+        const endY   = dRect.top + 4;
+
+        const drop = document.createElement('div');
+        drop.className = 'drop';
+        drop.style.position = 'fixed';
+        drop.style.background = color;
+        drop.style.left = startX + 'px';
+        drop.style.top  = startY + 'px';
+        drop.style.transition = 'left 0.5s ease-in-out, top 0.5s cubic-bezier(0.35,-0.25,0.7,1)';
+        document.body.appendChild(drop);
+        requestAnimationFrame(() => {
+          drop.style.left = endX + 'px';
+          drop.style.top  = endY + 'px';
+        });
+        setTimeout(() => {
+          drop.remove();
+          // Redresse le tube
+          srcEl.style.transform = '';
+          setTimeout(() => { onDone && onDone(); }, 260);
+        }, 520);
+      }, 320);
     }
 
     function onTap(idx) {
@@ -268,11 +286,12 @@
         return;
       }
 
-      // Animation goutte puis applique le versement
+      // Déselectionne d'abord (render rebuild les tubes) puis anime
       animating = true;
       const fromIdx = selected;
       const toIdx = idx;
       selected = null;
+      render();
       animateDrop(fromIdx, toIdx, srcTop, () => {
         let moved = 0;
         while (src.length && topColor(src) === srcTop && dst.length + moved < TUBE_CAPACITY) {
@@ -292,7 +311,6 @@
           }, 400);
         }
       });
-      render();
     }
 
     function showVictory() {

@@ -650,21 +650,35 @@ function showEnd() {
 }
 
 function fireConfetti(bus) {
-  const colors = ['#ffe066','#e94560','#00c47a','#4a90e2','#f28cad'];
+  const colors = ['#ffe066','#e94560','#00c47a','#4a90e2','#f28cad','#ff9800','#9c27b0'];
   const r = bus.getBoundingClientRect();
   const zr = busZone.getBoundingClientRect();
   const cx = r.left - zr.left + r.width/2;
   const cy = r.top - zr.top + r.height/2;
-  for (let i = 0; i < 16; i++) {
+  for (let i = 0; i < 48; i++) {
     const c = document.createElement('div');
     c.className = 'confetti';
     c.style.background = colors[i % colors.length];
+    const size = 8 + Math.random() * 8;
+    c.style.width = size + 'px';
+    c.style.height = size + 'px';
     c.style.left = cx + 'px';
     c.style.top  = cy + 'px';
-    c.style.setProperty('--dx', ((Math.random()-0.5)*240) + 'px');
-    c.style.setProperty('--dy', (Math.random()*-200 - 40) + 'px');
+    c.style.setProperty('--dx', ((Math.random()-0.5)*360) + 'px');
+    c.style.setProperty('--dy', (Math.random()*-260 - 60) + 'px');
     busZone.appendChild(c);
-    setTimeout(() => c.remove(), 1300);
+    setTimeout(() => c.remove(), 1400);
+  }
+  const emojis = ['✨','⭐','🎊','💫','🎉'];
+  for (let i = 0; i < 8; i++) {
+    const s = document.createElement('div');
+    s.className = 'sparkle';
+    s.textContent = emojis[i % emojis.length];
+    s.style.left = (cx - 10) + 'px';
+    s.style.top  = (cy - 10) + 'px';
+    s.style.setProperty('--dx', ((Math.random()-0.5)*220) + 'px');
+    busZone.appendChild(s);
+    setTimeout(() => s.remove(), 1100);
   }
 }
 

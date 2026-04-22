@@ -30,9 +30,13 @@ const Tracker = (() => {
     'mj-11': { name: 'Quel pays ?',           emoji: '🌍', skill: 'Drapeaux / géographie' },
     'mj-12': { name: 'Nouveaux sons',         emoji: '🎶', skill: 'Sons / exploration' },
     'mj-13': { name: 'L\'arrêt de bus',       emoji: '🚏', skill: 'Lecture panneau RATP' },
+    'mj-13a': { name: 'Arrêt — mode écoute',  emoji: '🚏', skill: 'Lecture panneau RATP' },
+    'mj-13b': { name: 'Arrêt — mode temps',   emoji: '🚏', skill: 'Lecture panneau RATP' },
+    'mj-13c': { name: 'Arrêt — mode bus',     emoji: '🚏', skill: 'Lecture panneau RATP' },
     'mj-14': { name: 'La grille',             emoji: '🔲', skill: 'Logique / patterns' },
     'mj-15': { name: 'L\'intrus',             emoji: '🔍', skill: 'Catégorisation / logique' },
     'mj-16': { name: 'Complète la suite',    emoji: '📈', skill: 'Logique / suites' },
+    'mj-17': { name: 'Le village des bus',    emoji: '🏘️', skill: 'Tri / causalité' },
   };
 
   // ── Lecture / écriture localStorage ────────────────────────────────────

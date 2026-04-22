@@ -93,6 +93,7 @@ html, body {
 <script src="js/bus-svg.js"></script>
 <script src="js/sounds.js"></script>
 <script src="js/victory-sounds.js"></script>
+<script src="js/tracker.js"></script>
 <script src="js/qcm-retry.js"></script>
 <script>
 /* ══ LED ══ */
@@ -364,6 +365,7 @@ function onAnswer(isCorrect,btn){
     if(btn){btn.style.background='#4CAF50';}
     round++;
     if(res.points===10)score++;
+    if(typeof Tracker!=='undefined')Tracker.logAnswer(true);
     updScore();
     stopAll();
     setTimeout(()=>{
@@ -391,6 +393,7 @@ function onAnswer(isCorrect,btn){
     updScore();
     stopAll();
     playErrorSound();
+    if(typeof Tracker!=='undefined')Tracker.logAnswer(false);
     setTimeout(()=>{
       qb.querySelectorAll('.btn-count').forEach(e=>e.remove());
       qb.style.background='#4a1a1a';
@@ -416,6 +419,7 @@ function showVictory(){
   stopAll();
   if(window.speechSynthesis)speechSynthesis.cancel();
   playEndSound(score,TOTAL);
+  if(typeof Tracker!=='undefined')Tracker.endSession(score,TOTAL);
   const stars=score>=7?'⭐⭐⭐':score>=5?'⭐⭐':'⭐';
   const msg=score>=7?'Incroyable !':score>=5?'Bien joué !':'Continue !';
   document.getElementById('panel-zone').innerHTML='';

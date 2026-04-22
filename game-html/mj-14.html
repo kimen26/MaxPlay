@@ -234,6 +234,7 @@ let score = 0;
 let round = 0;
 let answerKey = null;   // clé unique de la bonne réponse
 let answered  = false;
+let wrongCount = 0;     // nombre d'erreurs sur le round courant
 let levelSchedule = []; // tirage aléatoire en début de partie
 
 // ── Niveaux ──────────────────────────────────────────────────
@@ -242,12 +243,11 @@ let levelSchedule = []; // tirage aléatoire en début de partie
 // C : LIGNE + COLONNE (ligne = axe1, colonne = axe2)
 // D : DIAGONALE (cases [0][0], [1][1], [2][2] partagent un motif) — rare
 function buildLevelSchedule(n) {
-  // 2 A, 2 B, 3 C, 1 D → mélangés, mais premier round toujours A (mise en confiance)
+  // Progression douce, pas mélangée : A→A→B→B→C→C→C→D
+  // Max a besoin de monter graduellement en difficulté.
   const base = ['A','A','B','B','C','C','C','D'];
-  // tronquer/étendre à n
   while (base.length < n) base.push('C');
-  const rest = base.slice(1).sort(() => Math.random() - 0.5);
-  return ['A', ...rest].slice(0, n);
+  return base.slice(0, n);
 }
 function getLevel(r) {
   return levelSchedule[r - 1] || 'A';
@@ -564,9 +564,14 @@ function generateBusPuzzle(roundNum) {
 // ─────────────────────────────────────────────────────────────
 function renderPuzzle(puzzle) {
   answered = false;
+  wrongCount = 0;
   const { grid, choices, hint, type } = puzzle;
 
-  document.getElementById('pattern-hint').textContent = hint;
+  const hintEl = document.getElementById('pattern-hint');
+  hintEl.textContent = hint;
+  hintEl.style.opacity = '';
+  hintEl.style.color   = '';
+  hintEl.style.fontSize = '';
   document.getElementById('q-label').textContent =
     type === 'bus' ? 'Quel bus manque dans la grille ?' : 'Qu\'est-ce qui manque ?';
 
@@ -644,14 +649,23 @@ function renderPuzzle(puzzle) {
 // ─────────────────────────────────────────────────────────────
 //  INTERACTION
 // ─────────────────────────────────────────────────────────────
+// Indice fort par niveau — parlé à voix haute sur erreur
+function strongHint(level, cVariant) {
+  if (level === 'A') return 'Regarde bien : dans chaque ligne horizontale, tous les motifs sont pareils. Trouve la ligne de la case vide.';
+  if (level === 'B') return 'Regarde bien : dans chaque colonne verticale, tous les motifs sont pareils. Trouve la colonne de la case vide.';
+  if (level === 'D') return 'Regarde la diagonale : en descendant de gauche à droite, tous les motifs sont pareils.';
+  return 'Regarde la ligne de la case vide et la colonne de la case vide. La bonne réponse combine les deux.';
+}
+
 function onChoice(key, btn, puzzle) {
   if (answered) return;
-  answered = true;
 
   if (key === answerKey) {
-    score++;
+    answered = true;
+    // +1 au score seulement si première tentative
+    if (wrongCount === 0) score++;
     btn.classList.add('correct');
-    if (typeof Tracker !== 'undefined') Tracker.logAnswer(true);
+    if (typeof Tracker !== 'undefined') Tracker.logAnswer(wrongCount === 0);
 
     // Révèle la case mystère
     const mystery = document.querySelector('.cell.mystery');
@@ -669,17 +683,40 @@ function onChoice(key, btn, puzzle) {
     playSuccessBeep();
     updateScore();
     setTimeout(nextRound, 1100);
-  } else {
-    btn.classList.add('wrong');
-    if (typeof Tracker !== 'undefined') Tracker.logAnswer(false);
-    playErrorSound();
-    setTimeout(() => {
-      document.querySelectorAll('.choice-btn').forEach(b => {
-        if (b.dataset.key === answerKey) b.classList.add('correct');
-      });
-      setTimeout(nextRound, 900);
-    }, 400);
+    return;
   }
+
+  // Mauvaise réponse
+  wrongCount++;
+  btn.classList.add('wrong');
+  if (typeof Tracker !== 'undefined') Tracker.logAnswer(false);
+  playErrorSound();
+
+  if (wrongCount === 1) {
+    // 1ère erreur : PAS de révélation, on montre un indice fort + on le dit à l'oral, retry possible
+    const hintEl = document.getElementById('pattern-hint');
+    const strong = strongHint(puzzle.level);
+    hintEl.textContent = '💡 ' + strong;
+    hintEl.style.opacity = '1';
+    hintEl.style.color   = '#ffe066';
+    hintEl.style.fontSize = '0.88rem';
+    speak(strong);
+    setTimeout(() => {
+      btn.classList.remove('wrong');
+      btn.disabled = true;
+      btn.style.opacity = '0.35';
+    }, 450);
+    return;
+  }
+
+  // 2e erreur (ou +) : on révèle la bonne réponse et on passe
+  answered = true;
+  setTimeout(() => {
+    document.querySelectorAll('.choice-btn').forEach(b => {
+      if (b.dataset.key === answerKey) b.classList.add('correct');
+    });
+    setTimeout(nextRound, 1100);
+  }, 400);
 }
 
 // ─────────────────────────────────────────────────────────────

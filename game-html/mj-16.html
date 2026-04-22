@@ -271,6 +271,52 @@ const ROUNDS_PER_GAME = 5;
 
 const SIZE_STEPS = [60, 80, 100, 120];
 
+// Palette de carrosseries (local à MJ-16, comme MJ-14)
+const BODY_COLORS = [
+  { key:'turquoise', body:'#1abc9c' },
+  { key:'orange',    body:'#ff7043' },
+  { key:'rouge',     body:'#e74c3c' },
+  { key:'violet',    body:'#9c27b0' },
+  { key:'jaune',     body:'#f1c40f' },
+];
+
+// Variante SVG locale à MJ-16 pour patterns "carrosserie"
+function busSVGBody(destColor, textColor, num, bodyColor, width) {
+  return `<svg viewBox="0 0 160 80" width="${width}" xmlns="http://www.w3.org/2000/svg">
+    <rect x="5" y="10" width="150" height="45" rx="4" fill="${bodyColor}"/>
+    <rect x="5" y="40" width="150" height="15" fill="#ecf0f1"/>
+    <rect x="5" y="48" width="150" height="6" fill="#7f8c8d"/>
+    <rect x="62" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+    <rect x="70" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+    <rect x="130" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+    <rect x="138" y="14" width="8" height="37" fill="#7f8c8d" stroke="#111" stroke-width="1.5"/>
+    <rect x="5" y="10" width="150" height="45" rx="4" fill="none" stroke="#111" stroke-width="2"/>
+    <rect x="10" y="14" width="21" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1.5"/>
+    <rect x="36" y="14" width="21" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1.5"/>
+    <rect x="84" y="14" width="40" height="21" fill="${destColor}" stroke="#111" stroke-width="1.5"/>
+    <rect x="150.5" y="14" width="5" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1"/>
+    <text x="104" y="24.5" font-family="Arial,sans-serif" font-size="13" font-weight="bold"
+          fill="${textColor}" text-anchor="middle" dominant-baseline="central">${num}</text>
+    <circle cx="45" cy="54" r="10" fill="#333" stroke="#111" stroke-width="2"/>
+    <circle cx="45" cy="54" r="6" fill="#666"/>
+    <circle cx="45" cy="54" r="2" fill="#111"/>
+    <circle cx="115" cy="54" r="10" fill="#333" stroke="#111" stroke-width="2"/>
+    <circle cx="115" cy="54" r="6" fill="#666"/>
+    <circle cx="115" cy="54" r="2" fill="#111"/>
+    <rect x="5" y="48" width="4" height="5" fill="#FF4444"/>
+    <rect x="151" y="48" width="4" height="5" fill="#FFCC00"/>
+  </svg>`;
+}
+
+// Rend un item qui peut avoir un bodyColor custom (patterns carrosserie)
+function renderBus(item) {
+  const w = item.width;
+  if (item.bodyColor) {
+    return busSVGBody(item.ligne.color, item.ligne.textColor, item.ligne.num, item.bodyColor, w);
+  }
+  return busSVG(item.ligne.color, item.ligne.textColor, item.ligne.num, w);
+}
+
 // ── Utilitaires ─────────────────────────────────────────────────────────────
 
 function shuffle(arr) {
@@ -341,6 +387,88 @@ function generateSizeDown() {
       { ligne, width: ws2, correct: false },
     ]),
     hint: 'Les bus rapetissent !',
+    labelMode: 'num',
+  };
+}
+
+// Num croissant pas de 2 : 2 4 6 → 8 (pairs) ou 3 5 7 → 9 (impairs)
+function generateNumUpBy2() {
+  const base  = pickDailyLigne();
+  const startPair = [2, 3][Math.floor(Math.random()*2)]; // 2 (pair) ou 3 (impair)
+  const start = startPair + 2 * Math.floor(Math.random() * 2); // +0 ou +2
+  const make  = n => ({ num: String(n), color: base.color, textColor: base.textColor });
+  const ligneA = make(start), ligneB = make(start+2), ligneC = make(start+4), ligneD = make(start+6);
+  const wrong1 = make(start+5); // même parité opposée
+  const wrong2 = make(start+7);
+  const w = 90;
+  return {
+    sequence: [ligneA, ligneB, ligneC].map(l => ({ ligne: l, width: w })),
+    answer:   { ligne: ligneD, width: w },
+    choices: shuffle([
+      { ligne: ligneD, width: w, correct: true  },
+      { ligne: wrong1, width: w, correct: false },
+      { ligne: wrong2, width: w, correct: false },
+    ]),
+    hint: 'On saute de 2 en 2 !',
+    labelMode: 'num',
+  };
+}
+
+// Num décroissant pas de 2 : 8 6 4 → 2
+function generateNumDownBy2() {
+  const base  = pickDailyLigne();
+  const startPair = [9, 10][Math.floor(Math.random()*2)];
+  const make  = n => ({ num: String(n), color: base.color, textColor: base.textColor });
+  const ligneA = make(startPair), ligneB = make(startPair-2), ligneC = make(startPair-4), ligneD = make(startPair-6);
+  const wrong1 = make(startPair-5);
+  const wrong2 = make(startPair-3);
+  const w = 90;
+  return {
+    sequence: [ligneA, ligneB, ligneC].map(l => ({ ligne: l, width: w })),
+    answer:   { ligne: ligneD, width: w },
+    choices: shuffle([
+      { ligne: ligneD, width: w, correct: true  },
+      { ligne: wrong1, width: w, correct: false },
+      { ligne: wrong2, width: w, correct: false },
+    ]),
+    hint: 'On descend de 2 en 2 !',
+    labelMode: 'num',
+  };
+}
+
+// Carrosserie AB : 🟠🟣🟠🟣 → 🟠 (même bus, couleur de carrosserie alterne)
+function generateBodyAB() {
+  const ligne = pickDailyLigne();
+  const [bA, bB, bC] = shuffle(BODY_COLORS).slice(0, 3);
+  const w = 0; // responsive
+  return {
+    sequence: [bA, bB, bA, bB].map(b => ({ ligne, width: w, bodyColor: b.body })),
+    answer:   { ligne, width: w, bodyColor: bA.body },
+    choices: shuffle([
+      { ligne, width: w, bodyColor: bA.body, correct: true  },
+      { ligne, width: w, bodyColor: bB.body, correct: false },
+      { ligne, width: w, bodyColor: bC.body, correct: false },
+    ]),
+    hint: 'Regarde la couleur du bus : elle alterne !',
+    labelMode: 'num',
+  };
+}
+
+// AABB doubles : 🔴🔴🔵🔵 → 🔴
+function generateAltAABB() {
+  const pool = selectDistinctColors(LIGNES, 4, 80);
+  if (pool.length < 3) return generateSizeUp();
+  const [a, b, c] = pool;
+  const w = 0;
+  return {
+    sequence: [a, a, b, b].map(l => ({ ligne: l, width: w })),
+    answer:   { ligne: a, width: w },
+    choices: shuffle([
+      { ligne: a, width: w, correct: true  },
+      { ligne: b, width: w, correct: false },
+      { ligne: c, width: w, correct: false },
+    ]),
+    hint: 'Deux pareils, puis deux pareils, et ça recommence !',
     labelMode: 'num',
   };
 }
@@ -432,8 +560,12 @@ const PATTERN_GENERATORS = [
   generateSizeDown,
   generateNumUp,
   generateNumDown,
+  generateNumUpBy2,
+  generateNumDownBy2,
   generateAltAB,
   generateAltABC,
+  generateAltAABB,
+  generateBodyAB,
 ];
 
 function generatePuzzle(_roundNum) {
@@ -488,7 +620,7 @@ function renderPuzzle(puzzle) {
 
     const cell = document.createElement('div');
     cell.className = 'seq-cell';
-    cell.innerHTML = `<div class="cell-bus-wrap">${busSVG(item.ligne.color, item.ligne.textColor, item.ligne.num, item.width)}</div>`;
+    cell.innerHTML = `<div class="cell-bus-wrap">${renderBus(item)}</div>`;
     seqRow.appendChild(cell);
   });
 
@@ -514,7 +646,7 @@ function renderPuzzle(puzzle) {
     btn.className = 'choice-btn';
     btn.dataset.correct = item.correct ? '1' : '0';
 
-    btn.innerHTML = busSVG(item.ligne.color, item.ligne.textColor, item.ligne.num, item.width);
+    btn.innerHTML = renderBus(item);
 
     btn.addEventListener('click', () => onChoiceTap(btn, item, resolvedAnswer));
     choicesEl.appendChild(btn);
@@ -569,7 +701,7 @@ function fillMysteryCell(answer) {
   const cell = document.getElementById('mystery-cell');
   if (!cell) return;
   cell.classList.add('filled');
-  cell.innerHTML = `<div class="cell-bus-wrap">${busSVG(answer.ligne.color, answer.ligne.textColor, answer.ligne.num, answer.width)}</div>
+  cell.innerHTML = `<div class="cell-bus-wrap">${renderBus(answer)}</div>
                     <span class="cell-label">4</span>`;
 }
 

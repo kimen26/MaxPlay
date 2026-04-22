@@ -181,6 +181,18 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 /* Bus penché (pneus à plat) */
 .tilt { transform:rotate(-3deg) translateY(4px); transition:transform 0.3s; }
 
+/* Indicateur panne couleur */
+.color-warn {
+  position:absolute; top:-22px; left:50%; transform:translateX(-50%);
+  font-size:1.3rem; animation:colorWarnPulse 1s ease-in-out infinite;
+  pointer-events:none;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,0.6));
+}
+@keyframes colorWarnPulse {
+  0%,100% { transform:translateX(-50%) scale(1); }
+  50% { transform:translateX(-50%) scale(1.2); }
+}
+
 /* Confettis */
 .confetti {
   position:absolute; width:10px; height:10px;
@@ -264,8 +276,15 @@ const LIGNES = [
   { num:'131', color:'#ffcc00', textColor:'#333' },
 ];
 
-const PANNES = ['essence', 'lavage', 'numero', 'pneus'];
+const PANNES = ['essence', 'lavage', 'numero', 'pneus', 'couleur'];
 const TOOL_ICONS = { essence:'⛽', lavage:'🫧', numero:'💻', pneus:'🔧' };
+// L'ordinateur 💻 répare deux types de pannes : numéro masqué ET mauvaise couleur
+const TOOL_FIXES = {
+  essence: ['essence'],
+  lavage:  ['lavage'],
+  numero:  ['numero', 'couleur'],
+  pneus:   ['pneus'],
+};
 const TOTAL_BUS = 8;
 const BUS_W = 150;
 const PATIENCE_MS = 22000;
@@ -296,15 +315,31 @@ function makeBus(pannes) {
   wrapper._ligne = ligne;
   wrapper.dataset.panne = pannes.join(','); // pour debug/css
 
-  // SVG : carrosserie turquoise + vraie couleur IDFM sur destination
+  // SVG : carrosserie turquoise + couleur IDFM sur destination
   // Pour "numero", numéro remplacé par "?" muet
+  // Pour "couleur", la fenêtre destination prend une couleur d'une autre ligne (fausse)
   const hasNumero = pannes.includes('numero');
+  const hasCouleur = pannes.includes('couleur');
+  let displayColor = ligne.color;
+  if (hasCouleur) {
+    const others = LIGNES.filter(l => l.color !== ligne.color);
+    const fake = others[Math.floor(Math.random() * others.length)];
+    displayColor = fake.color;
+    wrapper._fakeColor = fake.color;
+  }
   const svgHtml = hasNumero
-    ? busSVG(ligne.color, 'rgba(255,255,255,0.25)', '?', BUS_W)
-    : busSVG(ligne.color, ligne.textColor, ligne.num, BUS_W);
+    ? busSVG(displayColor, 'rgba(255,255,255,0.25)', '?', BUS_W)
+    : busSVG(displayColor, ligne.textColor, ligne.num, BUS_W);
   const svgWrap = document.createElement('div');
   svgWrap.innerHTML = svgHtml;
   wrapper.appendChild(svgWrap);
+
+  if (hasCouleur) {
+    const warn = document.createElement('div');
+    warn.className = 'color-warn';
+    warn.textContent = '⚠️';
+    wrapper.appendChild(warn);
+  }
 
   // Overlays visuels (tous affichés simultanément si plusieurs pannes)
   if (pannes.includes('essence')) {
@@ -464,8 +499,10 @@ function clearBusHover() {
 
 // ─── Drop handling ───
 function handleDrop(bus, toolType, station) {
-  if (bus._pannes && bus._pannes.includes(toolType)) {
-    correctDrop(bus, station, toolType);
+  const fixables = TOOL_FIXES[toolType] || [toolType];
+  const matched = (bus._pannes || []).find(p => fixables.includes(p));
+  if (matched) {
+    correctDrop(bus, station, matched);
   } else {
     wrongDrop(bus, station);
   }
@@ -549,6 +586,17 @@ function repairAnim(bus, panne) {
       numText.textContent = ligne.num;
       numText.setAttribute('fill', ligne.textColor);
     }
+  } else if (panne === 'couleur') {
+    // Corriger la couleur de la fenêtre destination vers la vraie couleur
+    const ligne = bus._ligne;
+    const svg = bus.querySelector('svg');
+    const destRect = svg.querySelector('rect[x="84"]');
+    if (destRect) {
+      destRect.style.transition = 'fill 0.6s ease';
+      destRect.setAttribute('fill', ligne.color);
+    }
+    const warn = bus.querySelector('.color-warn');
+    if (warn) warn.remove();
   } else if (panne === 'pneus') {
     bus.classList.remove('tilt');
     const svg = bus.querySelector('svg');

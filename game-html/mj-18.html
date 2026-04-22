@@ -22,18 +22,19 @@
     .back:active { background:rgba(255,255,255,0.2); }
     .htitle { color:#fff; font-size:1.2rem; font-weight:900; flex:1; }
     .info {
-      text-align:center; color:#ffe066; font-size:1.1rem; font-weight:900; padding:10px 16px;
+      text-align:center; color:#ffe066; font-size:1rem; font-weight:900; padding:8px 16px;
     }
     .stage {
       flex:1; display:flex; justify-content:center; align-items:flex-end;
-      gap:24px; padding:20px 16px 60px;
+      gap:12px; padding:16px 10px 40px;
+      position:relative; flex-wrap:wrap;
     }
     .tube {
-      width:70px; height:280px;
+      width:54px; height:240px;
       background:rgba(255,255,255,0.08);
       border:4px solid rgba(255,255,255,0.55);
       border-top:none;
-      border-radius:0 0 36px 36px;
+      border-radius:0 0 30px 30px;
       position:relative;
       cursor:pointer;
       transition:transform 0.2s;
@@ -53,42 +54,79 @@
     }
     .layer {
       width:100%; height:25%;
-      transition:all 0.3s ease;
+      transition:height 0.3s ease;
     }
-    @keyframes pour {
-      0% { transform:translateY(0); opacity:1; }
-      100% { transform:translateY(-40px); opacity:0; }
+    /* Goutte qui vole d'un tube à l'autre */
+    .drop {
+      position:absolute;
+      width:28px; height:36px;
+      border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+      pointer-events:none; z-index:20;
+      box-shadow:0 2px 6px rgba(0,0,0,0.4);
     }
-    .layer.pouring { animation:pour 0.4s ease forwards; }
 
-    .controls { display:flex; justify-content:center; gap:12px; padding:0 16px 20px; }
+    .controls { display:flex; justify-content:center; gap:12px; padding:0 16px 12px; }
     .btn {
       padding:10px 20px; border-radius:24px; border:none; background:rgba(255,255,255,0.15);
       color:#fff; font-weight:900; font-size:1rem; font-family:inherit; cursor:pointer;
     }
-    .btn.primary { background:linear-gradient(135deg,#00c47a,#00a86b); }
 
     .victory-overlay {
-      position:fixed; inset:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px);
+      position:fixed; inset:0; background:rgba(0,0,0,0.9); backdrop-filter:blur(8px);
       display:flex; align-items:center; justify-content:center; z-index:1000;
       opacity:0; visibility:hidden; transition:all 0.5s ease;
     }
     .victory-overlay.show { opacity:1; visibility:visible; }
     .victory-content {
-      text-align:center; padding:40px;
+      text-align:center; padding:30px 20px;
       background:linear-gradient(135deg,#1a1a2e,#16213e);
       border-radius:24px; border:2px solid rgba(255,255,255,0.1);
+      max-width:92vw;
     }
-    .victory-emoji { font-size:4rem; margin-bottom:16px; animation:bounce 1s infinite; }
+    .victory-emoji { font-size:3rem; margin-bottom:10px; animation:bounce 1s infinite; }
     @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-16px);} }
-    .victory-title { font-size:2.2rem; color:#ffe066; margin-bottom:10px; }
-    .victory-text { color:#fff; margin-bottom:24px; }
+    .victory-title { font-size:1.8rem; color:#ffe066; margin-bottom:6px; }
+    .victory-text { color:#fff; margin-bottom:18px; font-size:0.95rem; }
     .victory-btn {
-      padding:14px 28px; border-radius:30px; text-decoration:none; font-weight:900;
-      border:none; cursor:pointer; font-family:inherit; margin:0 8px;
+      padding:12px 22px; border-radius:26px; text-decoration:none; font-weight:900;
+      border:none; cursor:pointer; font-family:inherit; margin:0 6px; display:inline-block;
     }
     .victory-btn.primary { background:linear-gradient(135deg,#00c47a,#00a86b); color:#fff; }
     .victory-btn.secondary { background:rgba(255,255,255,0.15); color:#fff; }
+
+    /* Défilé de bus bonus — scène animée tube → bus */
+    .paint-scene {
+      position:relative; width:100%; height:200px; margin:10px 0;
+      overflow:hidden; background:rgba(255,255,255,0.04);
+      border-radius:14px;
+    }
+    .paint-tube {
+      position:absolute; top:10px; left:50%; transform:translateX(-50%) rotate(0deg);
+      width:36px; height:110px;
+      border:3px solid rgba(255,255,255,0.6); border-top:none;
+      border-radius:0 0 18px 18px;
+      transform-origin:50% 0%;
+      transition:transform 0.5s ease, opacity 0.3s;
+      overflow:hidden; display:flex; flex-direction:column-reverse;
+    }
+    .paint-tube::before {
+      content:''; position:absolute; top:-6px; left:-3px; right:-3px; height:6px;
+      background:rgba(255,255,255,0.6); border-radius:4px 4px 0 0;
+    }
+    .paint-tube .layer { width:100%; height:25%; }
+    .paint-tube.pouring { transform:translateX(-50%) rotate(60deg); }
+    .paint-bus {
+      position:absolute; bottom:10px; left:-140px;
+      transition:left 0.8s ease;
+    }
+    .paint-bus.enter { left:50%; transform:translateX(-50%); }
+    .paint-bus.exit  { left:110%; transform:translateX(0); }
+    .paint-drop {
+      position:absolute; width:16px; height:22px;
+      border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+      box-shadow:0 2px 4px rgba(0,0,0,0.4);
+      pointer-events:none; opacity:0;
+    }
   </style>
 </head>
 <body>
@@ -108,7 +146,8 @@
     <div class="victory-content">
       <div class="victory-emoji">🎉</div>
       <h2 class="victory-title">Bravo !</h2>
-      <p class="victory-text">Tous les tubes sont triés !</p>
+      <p class="victory-text">Tu as trié toutes les couleurs ! Regarde les bus repeints :</p>
+      <div class="paint-scene" id="paintScene"></div>
       <button class="victory-btn primary" onclick="reset();document.getElementById('victoryOverlay').classList.remove('show')">🔄 Rejouer</button>
       <a href="index.html" class="victory-btn secondary">📋 Menu</a>
     </div>
@@ -116,31 +155,30 @@
 
   <script src="js/sounds.js"></script>
   <script src="js/feedback.js"></script>
+  <script src="js/bus-svg.js"></script>
   <script>
-    // MJ-18 V1 — Water sort simple
-    // 3 tubes, 2 couleurs. Chaque tube contient 4 couches max.
-    // Règle : verser la couche du haut dans un tube si (vide OU même couleur en haut ET pas plein).
-
+    // MJ-18 V3 — 6 tubes, 4 couleurs + 2 tubes vides
     const TUBE_CAPACITY = 4;
-    const PALETTES = [
-      // V1 : seulement 2 couleurs + 1 tube vide (3 tubes total)
-      { colors:['#E2001A','#0064B1'], tubes:3 },
-    ];
+    const COLORS = ['#E2001A', '#0064B1', '#ffcc00', '#00a878']; // rouge, bleu, jaune, vert
+    const TUBES_FILLED = COLORS.length;               // 4
+    const TUBES_EMPTY  = 2;
+    const TOTAL_TUBES  = TUBES_FILLED + TUBES_EMPTY;  // 6
 
-    let tubes = []; // array of arrays (bottom → top)
+    let tubes = [];
     let selected = null;
     let complete = false;
+    let animating = false;
 
     function reset() {
       complete = false;
-      const p = PALETTES[0];
-      // Mélange 4 rouges + 4 bleus dans les 2 premiers tubes, 3e vide
+      animating = false;
+      // Mélange : TUBE_CAPACITY couches × COLORS.length, réparti sur 3 tubes
       const mix = [];
-      p.colors.forEach(c => { for (let i=0;i<TUBE_CAPACITY;i++) mix.push(c); });
-      // shuffle
+      COLORS.forEach(c => { for (let i=0;i<TUBE_CAPACITY;i++) mix.push(c); });
       for (let i=mix.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [mix[i],mix[j]]=[mix[j],mix[i]]; }
-      tubes = [mix.slice(0,4), mix.slice(4,8), []];
-      // Évite état initial déjà gagnant
+      tubes = [];
+      for (let i=0;i<TUBES_FILLED;i++) tubes.push(mix.slice(i*TUBE_CAPACITY, (i+1)*TUBE_CAPACITY));
+      for (let i=0;i<TUBES_EMPTY;i++)  tubes.push([]);
       if (isSolved()) return reset();
       selected = null;
       render();
@@ -172,16 +210,43 @@
     }
 
     function isSolved() {
-      // Chaque tube est vide OU plein mono
       return tubes.every(t => t.length === 0 || isMonoFull(t));
     }
 
     function topColor(t) { return t.length ? t[t.length-1] : null; }
 
+    // Animation d'une goutte qui vole du tube src vers le tube dst
+    function animateDrop(srcIdx, dstIdx, color, onDone) {
+      const stage = document.getElementById('stage');
+      const srcEl = stage.children[srcIdx];
+      const dstEl = stage.children[dstIdx];
+      if (!srcEl || !dstEl) { onDone && onDone(); return; }
+      const sRect = srcEl.getBoundingClientRect();
+      const dRect = dstEl.getBoundingClientRect();
+      const stRect = stage.getBoundingClientRect();
+      const startX = sRect.left - stRect.left + sRect.width/2 - 14;
+      const startY = sRect.top  - stRect.top - 20;
+      const endX   = dRect.left - stRect.left + dRect.width/2 - 14;
+      const endY   = dRect.top  - stRect.top + 8;
+
+      const drop = document.createElement('div');
+      drop.className = 'drop';
+      drop.style.background = color;
+      drop.style.left = startX + 'px';
+      drop.style.top  = startY + 'px';
+      drop.style.transition = 'left 0.45s ease-in-out, top 0.45s cubic-bezier(0.4, -0.2, 0.7, 1)';
+      stage.appendChild(drop);
+      requestAnimationFrame(() => {
+        drop.style.left = endX + 'px';
+        drop.style.top  = endY + 'px';
+      });
+      setTimeout(() => { drop.remove(); onDone && onDone(); }, 480);
+    }
+
     function onTap(idx) {
-      if (complete) return;
+      if (complete || animating) return;
       if (selected === null) {
-        if (tubes[idx].length === 0) return; // pas de source vide
+        if (tubes[idx].length === 0) return;
         selected = idx;
         try { sndClick && sndClick(); } catch(e) {}
         render();
@@ -192,45 +257,129 @@
         render();
         return;
       }
-      // Tenter versement selected → idx
       const src = tubes[selected], dst = tubes[idx];
       const srcTop = topColor(src);
       const dstTop = topColor(dst);
-      if (dst.length >= TUBE_CAPACITY) {
-        // Tube plein, refus
+      if (dst.length >= TUBE_CAPACITY || (dst.length > 0 && dstTop !== srcTop)) {
         if (typeof Tracker !== 'undefined') Tracker.logAnswer(false);
         try { sndBuzz && sndBuzz(); } catch(e) {}
         selected = null;
         render();
         return;
       }
-      if (dst.length > 0 && dstTop !== srcTop) {
-        // Couleur incompatible
-        if (typeof Tracker !== 'undefined') Tracker.logAnswer(false);
-        try { sndBuzz && sndBuzz(); } catch(e) {}
-        selected = null;
-        render();
-        return;
-      }
-      // Verse toutes les couches consécutives de la même couleur en haut
-      let moved = 0;
-      while (src.length && topColor(src) === srcTop && dst.length + moved < TUBE_CAPACITY) {
-        dst.push(src.pop());
-        moved++;
-      }
-      if (typeof Tracker !== 'undefined') Tracker.logAnswer(true);
-      try { sndDing && sndDing(); } catch(e) {}
+
+      // Animation goutte puis applique le versement
+      animating = true;
+      const fromIdx = selected;
+      const toIdx = idx;
       selected = null;
+      animateDrop(fromIdx, toIdx, srcTop, () => {
+        let moved = 0;
+        while (src.length && topColor(src) === srcTop && dst.length + moved < TUBE_CAPACITY) {
+          dst.push(src.pop());
+          moved++;
+        }
+        if (typeof Tracker !== 'undefined') Tracker.logAnswer(true);
+        try { sndDing && sndDing(); } catch(e) {}
+        animating = false;
+        render();
+        if (isSolved()) {
+          complete = true;
+          if (typeof Tracker !== 'undefined') Tracker.endSession(1, 1);
+          setTimeout(() => {
+            try { confettiBurst(60); } catch(e) {}
+            showVictory();
+          }, 400);
+        }
+      });
       render();
-      if (isSolved()) {
-        complete = true;
-        if (typeof Tracker !== 'undefined') Tracker.endSession(1, 1);
-        setTimeout(() => {
-          try { confettiBurst(50); } catch(e) {}
-          document.getElementById('victoryOverlay').classList.add('show');
-        }, 400);
+    }
+
+    function showVictory() {
+      document.getElementById('victoryOverlay').classList.add('show');
+      runPaintParade();
+    }
+
+    // Parade : un tube penche et verse sur un bus qui passe.
+    // Pour chaque couleur : bus entre (fenêtre grise) → tube penche → goutte tombe → fenêtre prend la couleur → bus sort.
+    async function runPaintParade() {
+      const scene = document.getElementById('paintScene');
+      scene.innerHTML = '';
+      const nums = ['162','172','180','186'];
+      const GREY = '#8a95a3';
+
+      for (let i = 0; i < COLORS.length; i++) {
+        const color = COLORS[i];
+        const num = nums[i] || String(100 + i);
+
+        // Tube rempli de cette couleur
+        const tube = document.createElement('div');
+        tube.className = 'paint-tube';
+        for (let k = 0; k < TUBE_CAPACITY; k++) {
+          const layer = document.createElement('div');
+          layer.className = 'layer';
+          layer.style.background = color;
+          tube.appendChild(layer);
+        }
+        scene.appendChild(tube);
+
+        // Bus qui entre avec fenêtre destination grise
+        const bus = document.createElement('div');
+        bus.className = 'paint-bus';
+        bus.innerHTML = busSVG(GREY, '#fff', num, 130);
+        scene.appendChild(bus);
+
+        await sleep(80);
+        bus.classList.add('enter');
+        await sleep(900);
+
+        // Tube penche
+        tube.classList.add('pouring');
+        await sleep(450);
+
+        // Goutte tombe du tube vers la fenêtre destination du bus
+        const drop = document.createElement('div');
+        drop.className = 'paint-drop';
+        drop.style.background = color;
+        const tr = tube.getBoundingClientRect();
+        const sr = scene.getBoundingClientRect();
+        const startX = tr.left - sr.left + tr.width;
+        const startY = tr.top - sr.top + tr.height/2;
+        drop.style.left = startX + 'px';
+        drop.style.top  = startY + 'px';
+        drop.style.opacity = '1';
+        drop.style.transition = 'top 0.45s ease-in, opacity 0.2s';
+        scene.appendChild(drop);
+        await sleep(20);
+        const busRect = bus.getBoundingClientRect();
+        const targetY = busRect.top - sr.top + 28;
+        drop.style.top = targetY + 'px';
+        await sleep(450);
+        drop.style.opacity = '0';
+
+        // La fenêtre destination prend la couleur du tube
+        const destRect = bus.querySelector('rect[x="84"]');
+        if (destRect) {
+          destRect.style.transition = 'fill 0.45s ease';
+          destRect.setAttribute('fill', color);
+        }
+        try { sndDing && sndDing(); } catch(e) {}
+
+        await sleep(500);
+        // Tube se redresse + bus sort
+        tube.classList.remove('pouring');
+        bus.classList.remove('enter');
+        bus.classList.add('exit');
+        await sleep(700);
+        tube.style.opacity = '0';
+        await sleep(200);
+        tube.remove();
+        bus.remove();
+        drop.remove();
       }
     }
+
+    function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
     document.addEventListener('DOMContentLoaded', reset);
   </script>

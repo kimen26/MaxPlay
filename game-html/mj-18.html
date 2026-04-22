@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MJ-18 – Tubes de couleurs</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none; }
+    body {
+      font-family:'Nunito',sans-serif;
+      background:linear-gradient(160deg,#0f1a2e 0%,#1a2338 50%,#0a0f1a 100%);
+      height:100dvh; overflow:hidden; touch-action:none;
+    }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:1000px; margin:0 auto; }
+    .hdr {
+      display:flex; align-items:center; padding:10px 16px;
+      background:linear-gradient(90deg,rgba(255,255,255,0.1),rgba(255,255,255,0.05));
+      border-bottom:1px solid rgba(255,255,255,0.1);
+    }
+    .back { color:#fff; text-decoration:none; font-size:1.5rem; margin-right:12px; padding:4px 8px; border-radius:8px; }
+    .back:active { background:rgba(255,255,255,0.2); }
+    .htitle { color:#fff; font-size:1.2rem; font-weight:900; flex:1; }
+    .info {
+      text-align:center; color:#ffe066; font-size:1.1rem; font-weight:900; padding:10px 16px;
+    }
+    .stage {
+      flex:1; display:flex; justify-content:center; align-items:flex-end;
+      gap:24px; padding:20px 16px 60px;
+    }
+    .tube {
+      width:70px; height:280px;
+      background:rgba(255,255,255,0.08);
+      border:4px solid rgba(255,255,255,0.55);
+      border-top:none;
+      border-radius:0 0 36px 36px;
+      position:relative;
+      cursor:pointer;
+      transition:transform 0.2s;
+      overflow:hidden;
+      display:flex; flex-direction:column-reverse;
+    }
+    .tube::before {
+      content:''; position:absolute; top:-8px; left:-4px; right:-4px; height:8px;
+      background:rgba(255,255,255,0.55); border-radius:6px 6px 0 0;
+    }
+    .tube.selected {
+      transform:translateY(-24px);
+      box-shadow:0 0 0 4px #ffe066, 0 8px 24px rgba(255,224,102,0.5);
+    }
+    .tube.full-mono {
+      box-shadow:0 0 0 4px #00c47a, 0 0 20px rgba(0,196,122,0.6);
+    }
+    .layer {
+      width:100%; height:25%;
+      transition:all 0.3s ease;
+    }
+    @keyframes pour {
+      0% { transform:translateY(0); opacity:1; }
+      100% { transform:translateY(-40px); opacity:0; }
+    }
+    .layer.pouring { animation:pour 0.4s ease forwards; }
+
+    .controls { display:flex; justify-content:center; gap:12px; padding:0 16px 20px; }
+    .btn {
+      padding:10px 20px; border-radius:24px; border:none; background:rgba(255,255,255,0.15);
+      color:#fff; font-weight:900; font-size:1rem; font-family:inherit; cursor:pointer;
+    }
+    .btn.primary { background:linear-gradient(135deg,#00c47a,#00a86b); }
+
+    .victory-overlay {
+      position:fixed; inset:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(8px);
+      display:flex; align-items:center; justify-content:center; z-index:1000;
+      opacity:0; visibility:hidden; transition:all 0.5s ease;
+    }
+    .victory-overlay.show { opacity:1; visibility:visible; }
+    .victory-content {
+      text-align:center; padding:40px;
+      background:linear-gradient(135deg,#1a1a2e,#16213e);
+      border-radius:24px; border:2px solid rgba(255,255,255,0.1);
+    }
+    .victory-emoji { font-size:4rem; margin-bottom:16px; animation:bounce 1s infinite; }
+    @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-16px);} }
+    .victory-title { font-size:2.2rem; color:#ffe066; margin-bottom:10px; }
+    .victory-text { color:#fff; margin-bottom:24px; }
+    .victory-btn {
+      padding:14px 28px; border-radius:30px; text-decoration:none; font-weight:900;
+      border:none; cursor:pointer; font-family:inherit; margin:0 8px;
+    }
+    .victory-btn.primary { background:linear-gradient(135deg,#00c47a,#00a86b); color:#fff; }
+    .victory-btn.secondary { background:rgba(255,255,255,0.15); color:#fff; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="hdr">
+      <a href="index.html" class="back">←</a>
+      <span class="htitle">🧪 Tubes de couleurs</span>
+    </div>
+    <div class="info" id="info">Tape un tube, puis tape un autre pour verser !</div>
+    <div class="stage" id="stage"></div>
+    <div class="controls">
+      <button class="btn" onclick="reset()">🔄 Recommencer</button>
+    </div>
+  </div>
+
+  <div class="victory-overlay" id="victoryOverlay">
+    <div class="victory-content">
+      <div class="victory-emoji">🎉</div>
+      <h2 class="victory-title">Bravo !</h2>
+      <p class="victory-text">Tous les tubes sont triés !</p>
+      <button class="victory-btn primary" onclick="reset();document.getElementById('victoryOverlay').classList.remove('show')">🔄 Rejouer</button>
+      <a href="index.html" class="victory-btn secondary">📋 Menu</a>
+    </div>
+  </div>
+
+  <script src="js/sounds.js"></script>
+  <script src="js/feedback.js"></script>
+  <script>
+    // MJ-18 V1 — Water sort simple
+    // 3 tubes, 2 couleurs. Chaque tube contient 4 couches max.
+    // Règle : verser la couche du haut dans un tube si (vide OU même couleur en haut ET pas plein).
+
+    const TUBE_CAPACITY = 4;
+    const PALETTES = [
+      // V1 : seulement 2 couleurs + 1 tube vide (3 tubes total)
+      { colors:['#E2001A','#0064B1'], tubes:3 },
+    ];
+
+    let tubes = []; // array of arrays (bottom → top)
+    let selected = null;
+    let complete = false;
+
+    function reset() {
+      complete = false;
+      const p = PALETTES[0];
+      // Mélange 4 rouges + 4 bleus dans les 2 premiers tubes, 3e vide
+      const mix = [];
+      p.colors.forEach(c => { for (let i=0;i<TUBE_CAPACITY;i++) mix.push(c); });
+      // shuffle
+      for (let i=mix.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [mix[i],mix[j]]=[mix[j],mix[i]]; }
+      tubes = [mix.slice(0,4), mix.slice(4,8), []];
+      // Évite état initial déjà gagnant
+      if (isSolved()) return reset();
+      selected = null;
+      render();
+      if (typeof Tracker !== 'undefined') Tracker.startSession('mj-18');
+    }
+
+    function render() {
+      const stage = document.getElementById('stage');
+      stage.innerHTML = '';
+      tubes.forEach((t, idx) => {
+        const el = document.createElement('div');
+        el.className = 'tube';
+        el.dataset.idx = idx;
+        if (selected === idx) el.classList.add('selected');
+        if (isMonoFull(t)) el.classList.add('full-mono');
+        t.forEach(color => {
+          const layer = document.createElement('div');
+          layer.className = 'layer';
+          layer.style.background = color;
+          el.appendChild(layer);
+        });
+        el.addEventListener('click', () => onTap(idx));
+        stage.appendChild(el);
+      });
+    }
+
+    function isMonoFull(t) {
+      return t.length === TUBE_CAPACITY && t.every(c => c === t[0]);
+    }
+
+    function isSolved() {
+      // Chaque tube est vide OU plein mono
+      return tubes.every(t => t.length === 0 || isMonoFull(t));
+    }
+
+    function topColor(t) { return t.length ? t[t.length-1] : null; }
+
+    function onTap(idx) {
+      if (complete) return;
+      if (selected === null) {
+        if (tubes[idx].length === 0) return; // pas de source vide
+        selected = idx;
+        try { sndClick && sndClick(); } catch(e) {}
+        render();
+        return;
+      }
+      if (selected === idx) {
+        selected = null;
+        render();
+        return;
+      }
+      // Tenter versement selected → idx
+      const src = tubes[selected], dst = tubes[idx];
+      const srcTop = topColor(src);
+      const dstTop = topColor(dst);
+      if (dst.length >= TUBE_CAPACITY) {
+        // Tube plein, refus
+        if (typeof Tracker !== 'undefined') Tracker.logAnswer(false);
+        try { sndBuzz && sndBuzz(); } catch(e) {}
+        selected = null;
+        render();
+        return;
+      }
+      if (dst.length > 0 && dstTop !== srcTop) {
+        // Couleur incompatible
+        if (typeof Tracker !== 'undefined') Tracker.logAnswer(false);
+        try { sndBuzz && sndBuzz(); } catch(e) {}
+        selected = null;
+        render();
+        return;
+      }
+      // Verse toutes les couches consécutives de la même couleur en haut
+      let moved = 0;
+      while (src.length && topColor(src) === srcTop && dst.length + moved < TUBE_CAPACITY) {
+        dst.push(src.pop());
+        moved++;
+      }
+      if (typeof Tracker !== 'undefined') Tracker.logAnswer(true);
+      try { sndDing && sndDing(); } catch(e) {}
+      selected = null;
+      render();
+      if (isSolved()) {
+        complete = true;
+        if (typeof Tracker !== 'undefined') Tracker.endSession(1, 1);
+        setTimeout(() => {
+          try { confettiBurst(50); } catch(e) {}
+          document.getElementById('victoryOverlay').classList.add('show');
+        }, 400);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', reset);
+  </script>
+  <script src="js/tracker.js"></script>
+</body>
+</html>

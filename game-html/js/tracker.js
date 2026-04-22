@@ -37,6 +37,8 @@ const Tracker = (() => {
     'mj-15': { name: 'L\'intrus',             emoji: '🔍', skill: 'Catégorisation / logique' },
     'mj-16': { name: 'Complète la suite',    emoji: '📈', skill: 'Logique / suites' },
     'mj-17': { name: 'Le village des bus',    emoji: '🏘️', skill: 'Tri / causalité' },
+    'mj-18': { name: 'Tubes de couleurs',     emoji: '🧪', skill: 'Logique / planification' },
+    'mj-19': { name: 'Trouve le bus !',       emoji: '🎯', skill: 'Attention visuelle' },
   };
 
   // ── Lecture / écriture localStorage ────────────────────────────────────

@@ -113,3 +113,42 @@
 - Bus SVG (busSVG()) qui roulent de droite à gauche
 - Arrivent à l'arrêt, s'arrêtent, repartent
 - Poteau sur le côté gauche ou droite
+
+---
+
+## 🧪 Idée — Mélange de couleurs (tubes à essai) — 2026-04-22
+
+Tubes à essai avec des quarts/tiers de couleur qu'on peut faire switcher d'un tube à l'autre pour obtenir des flacons monocolores.
+
+**Variantes possibles :**
+- **Jeu autonome** : puzzle de tri de couleurs (genre Water Sort Puzzle), progression en difficulté
+- **Support d'un autre MJ** : une fois les couleurs triées, on obtient la peinture pour colorier un bus à la bonne couleur IDFM
+- **Débloquage** : chaque tube monocolore résolu révèle un indice (lettre, chiffre, pièce de puzzle) pour trouver quelque chose
+
+**Pédago** : logique, planification de coups, reconnaissance couleurs, patience
+**Tech** : drag&drop (on a `attachDraggable()` depuis C2), animation de liquide SVG
+**Âge** : à adapter pour 3.5-4 ans (versions simples 3-4 tubes, 2-3 couleurs)
+
+---
+
+## 🎯 Idée — "Trouve-le parmi la foule" (hidden in plain sight bus) — 2026-04-22
+
+Plein de bus se déplacent à l'écran en même temps, Max doit retrouver une cible spécifique.
+
+**Variantes de cible :**
+- Un bus d'une couleur précise parmi plein d'autres couleurs proches
+- Un bus avec un numéro de ligne spécifique
+- Un petit bonhomme / personnage caché à une fenêtre d'un des bus
+- Le seul bus qui roule dans le bon sens
+
+**Variantes d'action :**
+- Le taper pour le "capturer" / ramener au garage
+- Le faire exploser (confetti + son)
+- Le suivre du doigt pendant X secondes sans le lâcher
+
+**Pédago** : attention visuelle soutenue, reconnaissance rapide couleurs/chiffres, discrimination visuelle
+**Tech** : multiples bus SVG en mouvement simultané, détection de tap sur élément mobile
+**⚠ À valider** : est-ce qu'on a les animations de personnages pour afficher un petit bonhomme à une fenêtre de bus ? (à vérifier dans ASSETS_INVENTORY.md — sinon, reprise de l'esthétique SVG simple)
+
+**Question en suspens** : faire marcher des petits perso (walking cycle) = pas d'asset actuel côté HTML vanilla. Faisable via SVG inline + CSS animation, ou sprite sheet, à creuser si on veut des persos animés récurrents.
+

@@ -181,5 +181,16 @@ const Tracker = (() => {
     if (id) startSession(id);
   })();
 
+  // ── Auto-end ────────────────────────────────────────────────────────────
+  // Clôt la session quand la page disparaît, pour les jeux sans fin explicite
+  // (MJ-04 compte, MJ-12 sons, MJ-17 village). Les jeux qui appellent
+  // endSession() explicitement ont déjà _session = null → no-op.
+  // pagehide est plus fiable que beforeunload sur mobile / iOS Safari.
+  window.addEventListener('pagehide', () => {
+    if (_session) {
+      endSession(_session.correct, _session.questions);
+    }
+  });
+
   return { startSession, endSession, logAnswer, getStats: load, exportJSON, importJSON, GAME_META };
 })();

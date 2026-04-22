@@ -192,6 +192,15 @@ html,body { font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; min
   <div class="section-title" id="sec-activity" style="display:none">Activité récente</div>
   <div id="activity"></div>
 
+  <!-- Commentaires -->
+  <div class="section-title" id="sec-comments" style="display:flex;align-items:center;gap:10px;">
+    <span style="flex:1">💬 Commentaires</span>
+    <button class="hdr-btn" onclick="doCopyComments()" style="font-size:0.72rem;">📋 Copier tout</button>
+    <button class="hdr-btn" onclick="doExportComments()" style="font-size:0.72rem;">⬇ Export</button>
+    <button class="hdr-btn danger" onclick="doResetComments()" style="font-size:0.72rem;">🗑</button>
+  </div>
+  <div id="comments-list"></div>
+
 </div>
 
 <script src="js/tracker.js"></script>
@@ -381,8 +390,85 @@ function doReset() {
   location.reload();
 }
 
+// ── Commentaires ──────────────────────────────────────────────────────────
+function loadComments() {
+  try { return JSON.parse(localStorage.getItem('maxplay_comments')) || []; }
+  catch(e) { return []; }
+}
+
+function renderComments() {
+  const list = loadComments();
+  const container = document.getElementById('comments-list');
+  const section = document.getElementById('sec-comments');
+  if (list.length === 0) {
+    section.style.display = 'none';
+    container.innerHTML = '';
+    return;
+  }
+  section.style.display = 'flex';
+  const meta = Tracker.GAME_META;
+  const sorted = [...list].sort((a,b) => (b.date||'').localeCompare(a.date||''));
+  container.innerHTML = sorted.map(c => {
+    const m = meta[c.gameId] || { emoji:'❓', name: c.gameId };
+    const d = new Date(c.date);
+    const dateStr = d.toLocaleDateString('fr-FR', { day:'numeric', month:'short' }) + ' ' +
+                    d.toLocaleTimeString('fr-FR', { hour:'2-digit', minute:'2-digit' });
+    const safe = (c.text || '').replace(/[&<>]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[ch]));
+    return `
+      <div class="game-card" style="margin-bottom:8px;">
+        <div class="gc-top">
+          <span class="gc-emoji">${m.emoji}</span>
+          <div class="gc-info">
+            <div style="font-weight:900;font-size:0.9rem">${m.name}</div>
+            <div style="font-size:0.75rem;opacity:0.55">${dateStr}</div>
+          </div>
+        </div>
+        <div style="white-space:pre-wrap;font-size:0.92rem;line-height:1.4">${safe}</div>
+      </div>`;
+  }).join('');
+}
+
+function doCopyComments() {
+  const list = loadComments();
+  if (list.length === 0) return;
+  const meta = Tracker.GAME_META;
+  const sorted = [...list].sort((a,b) => (a.date||'').localeCompare(b.date||''));
+  const txt = sorted.map(c => {
+    const m = meta[c.gameId] || { name: c.gameId };
+    const d = new Date(c.date);
+    const dateStr = d.toLocaleString('fr-FR');
+    return `[${dateStr}] ${c.gameId} — ${m.name}\n${c.text}\n`;
+  }).join('\n');
+  navigator.clipboard.writeText(txt)
+    .then(() => alert('Commentaires copiés dans le presse-papier.'))
+    .catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = txt; document.body.appendChild(ta);
+      ta.select(); document.execCommand('copy'); ta.remove();
+      alert('Commentaires copiés.');
+    });
+}
+
+function doExportComments() {
+  const list = loadComments();
+  const blob = new Blob([JSON.stringify(list, null, 2)], { type: 'application/json' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href = url;
+  a.download = `maxplay-comments-${new Date().toISOString().slice(0,10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function doResetComments() {
+  if (!confirm('Supprimer tous les commentaires ?')) return;
+  localStorage.removeItem('maxplay_comments');
+  renderComments();
+}
+
 // ── Init ──────────────────────────────────────────────────────────────────
 render();
+renderComments();
 </script>
 </body>
 </html>

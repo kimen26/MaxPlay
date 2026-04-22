@@ -92,6 +92,7 @@ html, body {
 
 <script src="js/bus-svg.js"></script>
 <script src="js/sounds.js"></script>
+<script src="js/tts.js"></script>
 <script src="js/victory-sounds.js"></script>
 <script src="js/tracker.js"></script>
 <script src="js/qcm-retry.js"></script>
@@ -291,13 +292,7 @@ function renderButtons(){
   }
 }
 
-function tts(t){
-  if(!window.speechSynthesis)return;
-  speechSynthesis.cancel();
-  const u=new SpeechSynthesisUtterance(t);
-  u.lang='fr-FR';u.rate=0.85;u.volume=0.9;
-  speechSynthesis.speak(u);
-}
+function tts(t){ TTS.speak(t, { rate: 0.85, volume: 0.9 }); }
 
 /* ══ TICK — toutes les 5s ══ */
 function startTick(){
@@ -417,7 +412,7 @@ function onAnswer(isCorrect,btn){
 /* ══ VICTOIRE ══ */
 function showVictory(){
   stopAll();
-  if(window.speechSynthesis)speechSynthesis.cancel();
+  TTS.cancel();
   playEndSound(score,TOTAL);
   if(typeof Tracker!=='undefined')Tracker.endSession(score,TOTAL);
   const stars=score>=7?'⭐⭐⭐':score>=5?'⭐⭐':'⭐';

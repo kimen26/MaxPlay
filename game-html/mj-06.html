@@ -169,6 +169,7 @@
   
   <!-- Scripts -->
   <script src="js/sounds.js"></script>
+  <script src="js/tts.js"></script>
   <script src="js/feedback.js"></script>
   <script>
     // ─── MJ-04: Lis la phrase ───
@@ -201,24 +202,13 @@
     let currentPhrase = null;
     let usedIndices = [];
 
-    // TTS
+    // TTS (via js/tts.js)
     function speakQuestion(full) {
       if (!currentPhrase) return;
       const text = full
         ? `${currentPhrase.before} ${currentPhrase.answer} ${currentPhrase.after}`
         : `${currentPhrase.before} quelque chose ${currentPhrase.after}`;
-      const utt = new SpeechSynthesisUtterance(text);
-      utt.lang = 'fr-FR';
-      utt.rate = 0.85;
-      const voices = speechSynthesis.getVoices();
-      const frVoice = voices.find(v => v.lang.startsWith('fr'));
-      if (frVoice) utt.voice = frVoice;
-      speechSynthesis.cancel();
-      speechSynthesis.speak(utt);
-    }
-
-    if (speechSynthesis.onvoiceschanged !== undefined) {
-      speechSynthesis.onvoiceschanged = () => {};
+      TTS.speak(text, { rate: 0.85 });
     }
 
     function init() {

@@ -186,6 +186,7 @@
 </div>
 
 <script src="js/sounds.js"></script>
+<script src="js/tts.js"></script>
 <script src="js/victory-sounds.js"></script>
 <script src="js/feedback.js"></script>
 <script src="js/data.js"></script>
@@ -314,17 +315,14 @@
   const boxCounts = {};
   FAMILIES.forEach(f => boxCounts[f.id] = 0);
 
-  // ── TTS ──
+  // ── TTS (via js/tts.js) ──
   function speakLine(line) {
     let text;
     if (line.type === 'rer')     text = 'RER ' + line.num;
     else if (line.type === 'metro')   text = 'Métro ' + line.num;
     else if (line.type === 'tramway') text = 'Tram ' + line.num.substring(1);
     else text = getLineDisplayName(line.num); // bus/noctilien/valouette/TVM
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = 'fr-FR'; u.rate = 0.9; u.volume = 0.9;
-    speechSynthesis.cancel();
-    speechSynthesis.speak(u);
+    TTS.speak(text, { volume: 0.9 });
   }
 
   // ── Audio singleton ──

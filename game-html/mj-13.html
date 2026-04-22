@@ -106,6 +106,7 @@ html, body {
 
 <script src="js/bus-svg.js"></script>
 <script src="js/sounds.js"></script>
+<script src="js/tts.js"></script>
 <script src="js/victory-sounds.js"></script>
 <script>
 /* ══ LED ══ */
@@ -358,13 +359,7 @@ function renderQuestion() {
   }
 }
 
-function tts(t){
-  if(!window.speechSynthesis)return;
-  speechSynthesis.cancel();
-  const u=new SpeechSynthesisUtterance(t);
-  u.lang='fr-FR';u.rate=0.9;u.volume=0.9;
-  speechSynthesis.speak(u);
-}
+function tts(t){ TTS.speak(t, { volume: 0.9 }); }
 
 /* ══ TICK ══ */
 function startTick(){
@@ -460,7 +455,7 @@ function onAnswer(correct){
 /* ══ VICTOIRE ══ */
 function showVictory(){
   stopAll();
-  speechSynthesis.cancel();
+  TTS.cancel();
   if (typeof Tracker !== 'undefined') Tracker.endSession(score, TOTAL);
   playEndSound(score,TOTAL);
   const stars=score>=8?'⭐⭐⭐':score>=5?'⭐⭐':'⭐';

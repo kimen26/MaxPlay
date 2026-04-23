@@ -573,10 +573,20 @@
         if (res.points === 10) score++;
         sndDing();
         showFeedback('🎉');
-        setTimeout(() => speak(currentPays.nom), 300);
-        setTimeout(() => speakGreeting(currentPays.code), 1300);
         round++;
-        setTimeout(nextRound, 2600);
+        // Chaîne TTS : "France" → pause → "Bonjour comment ça va ?" → pause → round suivant.
+        // On attend la fin réelle de la salutation (onEnd) au lieu d'un setTimeout fixe,
+        // sinon la phrase est coupée par le speakCountry() du round suivant.
+        let advanced = false;
+        const advance = () => { if (advanced) return; advanced = true; nextRound(); };
+        const safety  = setTimeout(advance, 7000); // filet si onEnd ne tombe pas
+        setTimeout(() => speak(currentPays.nom), 300);
+        setTimeout(() => {
+          speakGreetingThen(currentPays.code, () => {
+            clearTimeout(safety);
+            setTimeout(advance, 500); // mini pause après la salutation
+          });
+        }, 1400);
       } else if (res.outcome === 'reveal') {
         btn.classList.add('wrong'); btn.disabled = true;
         QcmRetry.revealCorrect(document.getElementById('choices'), 'correct');
@@ -722,6 +732,14 @@
       const [text, lang] = g;
       // queued (pas de cancel) pour enchaîner après speakCountry()
       TTS.speak(text, { lang, rate: 0.85, priority: false });
+    }
+
+    // Variante qui appelle onEnd à la fin de la salutation (pour enchaîner le round suivant).
+    function speakGreetingThen(code, onEnd) {
+      const g = GREETINGS[code];
+      if (!g) { onEnd && onEnd(); return; }
+      const [text, lang] = g;
+      TTS.speak(text, { lang, rate: 0.85, priority: false, onEnd });
     }
 
     // ─── Utilitaires ──────────────────────────────────────────────────────────────

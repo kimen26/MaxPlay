@@ -241,13 +241,28 @@ let levelSchedule = []; // tirage aléatoire en début de partie
 // A : pattern LIGNE (même motif sur toute la ligne)
 // B : pattern COLONNE
 // C : LIGNE + COLONNE (ligne = axe1, colonne = axe2)
-// D : DIAGONALE (cases [0][0], [1][1], [2][2] partagent un motif) — rare
+// D : CARRÉ LATIN — chaque ligne ET chaque colonne contient les 3 motifs une
+//     seule fois (pattern Raven classique, pas de diagonale ambiguë).
 function buildLevelSchedule(n) {
-  // Progression douce, pas mélangée : A→A→B→B→C→C→C→D
-  // Max a besoin de monter graduellement en difficulté.
-  const base = ['A','A','B','B','C','C','C','D'];
-  while (base.length < n) base.push('C');
-  return base.slice(0, n);
+  // Répartition : 2 A, 2 B, 3 C, 1 D (pour n=8). On mélange MAIS on garantit
+  // qu'on démarre par un niveau facile (A ou B) pour une entrée douce.
+  const pool = [];
+  const quota = { A: 2, B: 2, C: 3, D: 1 };
+  Object.entries(quota).forEach(([lvl, count]) => {
+    for (let i = 0; i < count; i++) pool.push(lvl);
+  });
+  while (pool.length < n) pool.push('C');
+  // Shuffle Fisher-Yates
+  for (let i = pool.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [pool[i], pool[j]] = [pool[j], pool[i]];
+  }
+  // Round 1 doit être A ou B : si ce n'est pas le cas on échange avec le premier A/B trouvé.
+  if (pool[0] !== 'A' && pool[0] !== 'B') {
+    const swapIdx = pool.findIndex((l, i) => i > 0 && (l === 'A' || l === 'B'));
+    if (swapIdx > 0) [pool[0], pool[swapIdx]] = [pool[swapIdx], pool[0]];
+  }
+  return pool.slice(0, n);
 }
 function getLevel(r) {
   return levelSchedule[r - 1] || 'A';
@@ -348,15 +363,12 @@ function generateShapesPuzzle(roundNum) {
       } else if (level === 'C') {
         shape = sh[r];
         fill  = fi[c];
-      } else { // D — diagonale
-        if (r === c) { shape = diagShape; fill = diagFill; }
-        else {
-          // Hors diagonale : formes/fills différents de la diagonale
-          const otherShapes = SHAPES.filter(s => s !== diagShape);
-          const otherFills  = FILLS.filter(f => f !== diagFill);
-          shape = otherShapes[(r * 3 + c) % otherShapes.length];
-          fill  = otherFills[(r + c) % otherFills.length];
-        }
+      } else { // D — CARRÉ LATIN : chaque ligne et chaque colonne contiennent
+               // les 3 formes une seule fois (sh[0], sh[1], sh[2]).
+               // Rangée r, colonne c → sh[(r+c) mod 3]. Fill = fixedFill partout
+               // pour que l'attention porte sur la forme uniquement.
+        shape = sh[(r + c) % 3];
+        fill  = fixedFill;
       }
       row.push({ shape, fill, color: shapeColor(r, c, level) });
     }
@@ -379,7 +391,7 @@ function generateShapesPuzzle(roundNum) {
     A: 'Regarde : chaque ligne a la même forme !',
     B: 'Regarde : chaque colonne a le même remplissage !',
     C: 'Ligne = forme, colonne = remplissage. Trouve les deux !',
-    D: 'Regarde la diagonale : ↘ même motif !',
+    D: 'Chaque ligne et chaque colonne ont les 3 formes une seule fois. Laquelle manque ?',
   };
 
   return { grid, choices, hint: hints[level], level, type: 'shapes' };
@@ -502,12 +514,10 @@ function generateBusPuzzle(roundNum) {
             wheel: wheelsByCol[c],
           };
         }
-      } else { // D — diagonale : même bus sur la diagonale, autres cases variées
-        if (r === c) {
-          cell = { ...rowLines[0] };
-        } else {
-          cell = { ...colLines[(r + c) % colLines.length] };
-        }
+      } else { // D — CARRÉ LATIN : chaque ligne et chaque colonne contiennent
+               // les 3 mêmes bus (rowLines[0..2]) une seule fois.
+               // Position (r,c) → rowLines[(r+c) mod 3].
+        cell = { ...rowLines[(r + c) % 3] };
       }
       row.push(cell);
     }
@@ -553,7 +563,7 @@ function generateBusPuzzle(roundNum) {
         : cVariant === 3
         ? 'La couleur change par ligne, les roues par colonne !'
         : 'La couleur change par ligne, le numéro par colonne !',
-    D: 'Regarde la diagonale : ↘ même bus !',
+    D: 'Chaque ligne et chaque colonne ont les 3 bus une seule fois. Lequel manque ?',
   };
 
   return { grid, choices, hint: hints[level], level, type: 'bus' };
@@ -653,7 +663,7 @@ function renderPuzzle(puzzle) {
 function strongHint(level, cVariant) {
   if (level === 'A') return 'Regarde bien : dans chaque ligne horizontale, tous les motifs sont pareils. Trouve la ligne de la case vide.';
   if (level === 'B') return 'Regarde bien : dans chaque colonne verticale, tous les motifs sont pareils. Trouve la colonne de la case vide.';
-  if (level === 'D') return 'Regarde la diagonale : en descendant de gauche à droite, tous les motifs sont pareils.';
+  if (level === 'D') return 'Regarde bien : dans chaque ligne il y a 3 motifs différents, et dans chaque colonne aussi. Trouve celui qui manque dans la dernière ligne ET la dernière colonne.';
   return 'Regarde la ligne de la case vide et la colonne de la case vide. La bonne réponse combine les deux.';
 }
 

@@ -46,6 +46,10 @@
     u.lang = lang; u.rate = rate; u.pitch = pitch; u.volume = volume;
     const v = pickVoice(lang);
     if (v) u.voice = v;
+    if (typeof opts.onEnd === 'function') {
+      u.onend = opts.onEnd;
+      u.onerror = opts.onEnd;
+    }
     synth.speak(u);
   }
 

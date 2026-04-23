@@ -38,6 +38,7 @@
       position:absolute; cursor:pointer;
       filter:drop-shadow(0 4px 8px rgba(0,0,0,0.5));
       will-change:transform;
+      padding:16px; box-sizing:content-box;
     }
     .bus-mover:active { filter:drop-shadow(0 8px 16px rgba(0,0,0,0.8)); }
     .bus-mover.captured {
@@ -98,8 +99,8 @@
     const ROUNDS = 7;
     const BUS_COUNT = 12;
     const BUS_WIDTH = 80;
-    const SPEED_MIN = 50;  // px/sec
-    const SPEED_MAX = 130;
+    const SPEED_MIN = 28;  // px/sec
+    const SPEED_MAX = 75;
 
     let round = 0;
     let score = 0;
@@ -140,8 +141,9 @@
         el.style.width = BUS_WIDTH + 'px';
         el.innerHTML = busSVG(line.color, line.textColor, line.num, BUS_WIDTH);
         arena.appendChild(el);
-        const bh = el.offsetHeight || 46;
-        const x = rand(10, Math.max(10, W - BUS_WIDTH - 10));
+        const bw = el.offsetWidth  || (BUS_WIDTH + 32);
+        const bh = el.offsetHeight || 78;
+        const x = rand(10, Math.max(10, W - bw - 10));
         const y = rand(10, Math.max(10, H - bh - 10));
         // 60% de bus quasi-horizontaux (gauche↔droite), 40% libres
         const sp = rand(SPEED_MIN, SPEED_MAX);
@@ -157,7 +159,7 @@
         const mv = {
           el, num: line.num, line,
           x, y, vx, vy,
-          w: BUS_WIDTH, h: bh
+          w: bw, h: bh
         };
         el.style.transform = `translate(${x}px,${y}px)`;
         el.addEventListener('click', () => onTap(mv));

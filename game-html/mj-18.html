@@ -157,10 +157,19 @@
   <script src="js/sounds.js"></script>
   <script src="js/feedback.js"></script>
   <script src="js/bus-svg.js"></script>
+  <script src="js/data.js"></script>
   <script>
-    // MJ-18 V3 — 6 tubes, 4 couleurs + 2 tubes vides
+    // MJ-18 V3 — 6 tubes, 4 couleurs réelles de bus + 2 tubes vides
     const TUBE_CAPACITY = 4;
-    const COLORS = ['#E2001A', '#0064B1', '#ffcc00', '#00a878']; // rouge, bleu, jaune, vert
+    // Couleurs strictes IDFM : chaque tube correspond à un vrai bus.
+    // La parade finale peindra ces bus avec LEUR vraie couleur.
+    const BUS_THEMES = [
+      { num: '162', color: '#0064B1' }, // bleu
+      { num: '172', color: '#008C59' }, // vert
+      { num: '184', color: '#DCAC27' }, // jaune/or
+      { num: '186', color: '#B43C95' }, // magenta
+    ];
+    const COLORS = BUS_THEMES.map(t => t.color);
     const TUBES_FILLED = COLORS.length;               // 4
     const TUBES_EMPTY  = 2;
     const TOTAL_TUBES  = TUBES_FILLED + TUBES_EMPTY;  // 6
@@ -323,12 +332,11 @@
     async function runPaintParade() {
       const scene = document.getElementById('paintScene');
       scene.innerHTML = '';
-      const nums = ['162','172','180','186'];
       const GREY = '#8a95a3';
 
-      for (let i = 0; i < COLORS.length; i++) {
-        const color = COLORS[i];
-        const num = nums[i] || String(100 + i);
+      for (let i = 0; i < BUS_THEMES.length; i++) {
+        const color = BUS_THEMES[i].color;
+        const num = BUS_THEMES[i].num;
 
         // Tube rempli de cette couleur
         const tube = document.createElement('div');

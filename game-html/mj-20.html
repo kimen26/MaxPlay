@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-20 – Compte dans toutes les langues</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family:'Nunito',sans-serif;
+      background:linear-gradient(160deg,#1a0d3e,#2e1a5e);
+      min-height:100dvh;
+      display:flex; flex-direction:column; align-items:center;
+      overflow-x:hidden;
+      color:#fff;
+    }
+    .game-header {
+      width:100%; max-width:680px; padding:14px 16px 10px;
+      display:flex; align-items:center; gap:12px;
+    }
+    .back-btn {
+      text-decoration:none; background:rgba(255,255,255,0.15); color:#fff;
+      border:none; border-radius:50%; width:44px; height:44px;
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.4rem; cursor:pointer; flex-shrink:0;
+    }
+    .header-text { flex:1; }
+    .header-title { font-size:1.3rem; font-weight:900; }
+    .header-sub   { color:rgba(255,255,255,0.65); font-size:0.78rem; font-weight:700; }
+
+    .game-area {
+      width:100%; max-width:680px; padding:0 16px 40px;
+      display:flex; flex-direction:column; align-items:center; gap:14px;
+    }
+
+    /* Mode selector */
+    .mode-row {
+      display:flex; gap:8px; width:100%;
+    }
+    .mode-btn {
+      flex:1;
+      background:rgba(255,255,255,0.1);
+      border:2px solid transparent;
+      border-radius:14px; padding:12px 8px;
+      color:rgba(255,255,255,0.65);
+      font-family:'Nunito',sans-serif;
+      font-size:0.95rem; font-weight:900;
+      cursor:pointer; touch-action:manipulation;
+    }
+    .mode-btn.active {
+      border-color:rgba(255,255,255,0.5);
+      background:rgba(255,255,255,0.22);
+      color:#fff;
+    }
+
+    /* Langue row (scrollable) */
+    .lang-scroll {
+      width:100%;
+      display:flex; gap:8px; overflow-x:auto;
+      padding:4px 0 8px;
+      scrollbar-width:none;
+    }
+    .lang-scroll::-webkit-scrollbar { display:none; }
+    .lang-btn {
+      flex-shrink:0;
+      background:rgba(255,255,255,0.1);
+      border:2px solid transparent;
+      border-radius:14px;
+      padding:10px 14px;
+      color:#fff;
+      font-family:'Nunito',sans-serif;
+      font-size:0.9rem; font-weight:900;
+      cursor:pointer; touch-action:manipulation;
+      display:flex; align-items:center; gap:8px;
+      min-height:52px;
+    }
+    .lang-btn.active {
+      border-color:#FFD700;
+      background:rgba(255,215,0,0.2);
+    }
+    .lang-btn .fi { width:24px; height:18px; border-radius:2px; }
+
+    /* ========== APPRENDRE ========== */
+    .learn-grid {
+      width:100%;
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:10px;
+    }
+    .num-btn {
+      background:linear-gradient(135deg,#667eea,#764ba2);
+      border:none; border-radius:14px;
+      min-height:64px;
+      color:#fff;
+      font-family:'Nunito',sans-serif;
+      font-size:1.6rem; font-weight:900;
+      cursor:pointer; touch-action:manipulation;
+      box-shadow:0 3px 10px rgba(0,0,0,0.25);
+      transition:transform 0.1s;
+    }
+    .num-btn:active { transform:scale(0.92); }
+    .num-btn.speaking {
+      background:linear-gradient(135deg,#4CAF50,#2E7D32);
+      transform:scale(1.05);
+    }
+
+    .learn-all-btn {
+      background:linear-gradient(135deg,#FFD700,#FFA500);
+      color:#2e1a5e;
+      border:none; border-radius:20px;
+      padding:14px 24px;
+      font-family:'Nunito',sans-serif;
+      font-size:1.05rem; font-weight:900;
+      cursor:pointer; touch-action:manipulation;
+      display:flex; align-items:center; gap:10px;
+      box-shadow:0 4px 14px rgba(255,215,0,0.4);
+    }
+    .learn-all-btn:active { transform:scale(0.96); }
+    .learn-all-btn:disabled { opacity:0.5; }
+
+    /* ========== QUIZ ========== */
+    .quiz-card {
+      width:100%;
+      background:rgba(255,255,255,0.08);
+      border:2px solid rgba(255,255,255,0.15);
+      border-radius:22px;
+      padding:20px;
+      display:flex; flex-direction:column; align-items:center; gap:14px;
+    }
+    .quiz-flag {
+      width:80px; height:60px;
+      border-radius:6px;
+      overflow:hidden;
+      box-shadow:0 4px 12px rgba(0,0,0,0.3);
+    }
+    .quiz-flag .fi { width:100%; height:100%; background-size:cover; background-position:center; display:block; }
+    .quiz-lang-name {
+      font-size:1.1rem; font-weight:900;
+      color:#FFD700;
+    }
+    .quiz-speak-btn {
+      background:linear-gradient(135deg,#667eea,#764ba2);
+      color:#fff;
+      border:none; border-radius:28px;
+      padding:14px 28px;
+      font-family:'Nunito',sans-serif;
+      font-size:1.1rem; font-weight:900;
+      cursor:pointer; touch-action:manipulation;
+      display:flex; align-items:center; gap:10px;
+      box-shadow:0 4px 14px rgba(102,126,234,0.4);
+    }
+    .quiz-speak-btn:active { transform:scale(0.95); }
+
+    .choices {
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      width:100%;
+    }
+    .choice-btn {
+      background:rgba(255,255,255,0.08);
+      border:2px solid rgba(255,255,255,0.15);
+      border-radius:16px;
+      min-height:80px;
+      cursor:pointer; touch-action:manipulation;
+      display:flex; align-items:center; justify-content:center;
+      transition:transform 0.12s, border-color 0.2s, background 0.2s;
+      color:#fff;
+      font-family:'Nunito',sans-serif;
+      font-size:2.2rem; font-weight:900;
+    }
+    .choice-btn:active { transform:scale(0.96); }
+    .choice-btn.correct { background:rgba(76,175,80,0.3); border-color:#4CAF50; }
+    .choice-btn.wrong   { background:rgba(255,107,107,0.25); border-color:#ff6b6b; }
+
+    /* Score bar */
+    .score-bar {
+      width:100%;
+      display:flex; gap:6px; align-items:center;
+    }
+    .score-pip {
+      width:26px; height:12px; border-radius:6px;
+      background:rgba(255,255,255,0.2);
+      transition:background 0.3s;
+    }
+    .score-pip.ok   { background:#4CAF50; }
+    .score-pip.miss { background:#ff6b6b; }
+    .score-label {
+      color:rgba(255,255,255,0.7);
+      font-size:0.8rem; font-weight:900;
+      margin-left:auto;
+    }
+
+    /* Feedback */
+    .feedback {
+      position:fixed; inset:0;
+      display:none;
+      flex-direction:column; align-items:center; justify-content:center;
+      z-index:100; pointer-events:none;
+    }
+    .feedback.show { display:flex; }
+    .feedback-emoji {
+      font-size:6rem;
+      animation:popIn 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    @keyframes popIn {
+      from { transform:scale(0); opacity:0; }
+      to   { transform:scale(1); opacity:1; }
+    }
+
+    /* Victory */
+    #victoryScreen {
+      display:none;
+      position:fixed; inset:0;
+      background:rgba(0,0,0,0.85);
+      z-index:200;
+      flex-direction:column; align-items:center; justify-content:center;
+      gap:18px; padding:20px;
+    }
+    #victoryScreen.show { display:flex; }
+    .victory-emoji { font-size:3.5rem; }
+    .victory-title {
+      font-size:2.2rem; font-weight:900; text-align:center;
+      text-shadow:3px 3px 0 rgba(0,0,0,0.3);
+    }
+    .victory-msg {
+      color:rgba(255,255,255,0.85);
+      font-size:1.05rem; font-weight:700;
+      text-align:center; max-width:340px; line-height:1.4;
+    }
+    .victory-score { color:#FFD700; font-size:1.5rem; font-weight:900; }
+    .replay-btn {
+      background:linear-gradient(135deg,#4CAF50,#2E7D32);
+      color:#fff; border:none; border-radius:28px;
+      padding:16px 36px;
+      font-family:'Nunito',sans-serif;
+      font-size:1.2rem; font-weight:900;
+      cursor:pointer; touch-action:manipulation;
+      box-shadow:0 6px 20px rgba(76,175,80,0.4);
+    }
+
+    .hidden { display:none !important; }
+  </style>
+</head>
+<body>
+
+  <div class="game-header">
+    <a href="index.html" class="back-btn">←</a>
+    <div class="header-text">
+      <div class="header-title">🔢 Compte dans toutes les langues !</div>
+      <div class="header-sub">1 à 20 · 8 langues</div>
+    </div>
+  </div>
+
+  <div class="game-area">
+
+    <!-- Sélecteur Mode -->
+    <div class="mode-row">
+      <button class="mode-btn active" id="modeLearn" onclick="setMode('learn')">📚 Apprendre</button>
+      <button class="mode-btn" id="modeQuiz" onclick="setMode('quiz')">🎯 Quiz</button>
+    </div>
+
+    <!-- Sélecteur langue -->
+    <div class="lang-scroll" id="langScroll"></div>
+
+    <!-- ===== APPRENDRE ===== -->
+    <div id="learnPanel">
+      <div class="learn-grid" id="learnGrid"></div>
+      <div style="height:8px"></div>
+      <button class="learn-all-btn" id="learnAllBtn" onclick="readAll()">
+        <span>▶️</span>
+        <span id="learnAllLabel">Tout écouter (1 à 10)</span>
+      </button>
+      <div style="display:flex;gap:10px;margin-top:4px">
+        <button class="mode-btn" id="rangeLow"  onclick="setRange('low')"  style="flex:0 0 auto;padding:8px 14px">1-10</button>
+        <button class="mode-btn" id="rangeHigh" onclick="setRange('high')" style="flex:0 0 auto;padding:8px 14px">11-20</button>
+        <button class="mode-btn" id="rangeAll"  onclick="setRange('all')"  style="flex:0 0 auto;padding:8px 14px">1-20</button>
+      </div>
+    </div>
+
+    <!-- ===== QUIZ ===== -->
+    <div id="quizPanel" class="hidden" style="width:100%;display:flex;flex-direction:column;gap:14px;align-items:center">
+      <div class="score-bar" id="scoreBar"></div>
+      <div class="quiz-card">
+        <div class="quiz-flag"><span class="fi" id="quizFlag"></span></div>
+        <div class="quiz-lang-name" id="quizLangName">Français</div>
+        <button class="quiz-speak-btn" onclick="speakQuiz()">
+          <span>🔊</span>
+          <span>Réécouter</span>
+        </button>
+      </div>
+      <div class="choices" id="choices"></div>
+    </div>
+
+  </div>
+
+  <div class="feedback" id="feedback">
+    <div class="feedback-emoji" id="feedbackEmoji"></div>
+  </div>
+
+  <div id="victoryScreen">
+    <div class="victory-emoji" id="victoryEmoji">🏆</div>
+    <div class="victory-title" id="victoryTitle">Bravo Max !</div>
+    <div class="victory-msg" id="victoryMsg"></div>
+    <div class="victory-score" id="victoryScore"></div>
+    <button class="replay-btn" onclick="restartQuiz()">Rejouer !</button>
+    <a href="index.html" style="color:rgba(255,255,255,0.6);font-size:0.9rem;font-weight:900;text-decoration:none;margin-top:-8px">← Menu</a>
+  </div>
+
+  <script src="js/sounds.js"></script>
+  <script src="js/tts.js"></script>
+  <script src="js/victory-sounds.js"></script>
+  <script src="js/qcm-retry.js"></script>
+  <script>
+    // ─── Langues ────────────────────────────────────────────────────────────────
+    const LANGS = [
+      { code:'fr',    flag:'fr', nom:'Français',  lang:'fr-FR' },
+      { code:'en',    flag:'gb', nom:'Anglais',   lang:'en-GB' },
+      { code:'es',    flag:'es', nom:'Espagnol',  lang:'es-ES' },
+      { code:'pt-br', flag:'br', nom:'Brésilien', lang:'pt-BR' },
+      { code:'de',    flag:'de', nom:'Allemand',  lang:'de-DE' },
+      { code:'ru',    flag:'ru', nom:'Russe',     lang:'ru-RU' },
+      { code:'zh',    flag:'cn', nom:'Chinois',   lang:'zh-CN' },
+      { code:'ja',    flag:'jp', nom:'Japonais',  lang:'ja-JP' },
+    ];
+
+    // ─── Nombres 1-20 par langue (orthographe phonétique pour TTS) ─────────────
+    // On passe la vraie langue à SpeechSynthesis ; si la voix n'est pas dispo,
+    // une translittération serait mieux. On garde l'orthographe native : la voix
+    // du navigateur (si présente) prononcera correctement.
+    const NUMBERS = {
+      'fr':    ['un','deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize','dix-sept','dix-huit','dix-neuf','vingt'],
+      'en':    ['one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty'],
+      'es':    ['uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve','diez','once','doce','trece','catorce','quince','dieciséis','diecisiete','dieciocho','diecinueve','veinte'],
+      'pt-br': ['um','dois','três','quatro','cinco','seis','sete','oito','nove','dez','onze','doze','treze','quatorze','quinze','dezesseis','dezessete','dezoito','dezenove','vinte'],
+      'de':    ['eins','zwei','drei','vier','fünf','sechs','sieben','acht','neun','zehn','elf','zwölf','dreizehn','vierzehn','fünfzehn','sechzehn','siebzehn','achtzehn','neunzehn','zwanzig'],
+      'ru':    ['один','два','три','четыре','пять','шесть','семь','восемь','девять','десять','одиннадцать','двенадцать','тринадцать','четырнадцать','пятнадцать','шестнадцать','семнадцать','восемнадцать','девятнадцать','двадцать'],
+      'zh':    ['一','二','三','四','五','六','七','八','九','十','十一','十二','十三','十四','十五','十六','十七','十八','十九','二十'],
+      'ja':    ['いち','に','さん','よん','ご','ろく','なな','はち','きゅう','じゅう','じゅういち','じゅうに','じゅうさん','じゅうよん','じゅうご','じゅうろく','じゅうなな','じゅうはち','じゅうきゅう','にじゅう'],
+    };
+
+    // ─── État ──────────────────────────────────────────────────────────────────
+    let mode = 'learn';
+    let currentLang = LANGS[0];
+    let range = 'low'; // low 1-10, high 11-20, all 1-20
+    let reading = false;
+
+    // Quiz state
+    const ROUND_COUNT = 10;
+    let round = 0;
+    let score = 0;
+    let quizNumber = 0;     // 1..20
+    let quizLang = null;
+    let qcm = null;
+
+    // ─── Init UI ───────────────────────────────────────────────────────────────
+    function renderLangScroll() {
+      const c = document.getElementById('langScroll');
+      c.innerHTML = LANGS.map(l => `
+        <button class="lang-btn ${l.code === currentLang.code ? 'active' : ''}"
+                data-code="${l.code}" onclick="selectLang('${l.code}')">
+          <span class="fi fi-${l.flag}"></span>
+          <span>${l.nom}</span>
+        </button>
+      `).join('');
+    }
+
+    function selectLang(code) {
+      currentLang = LANGS.find(l => l.code === code) || LANGS[0];
+      renderLangScroll();
+      if (mode === 'learn') renderLearn();
+    }
+
+    function setMode(m) {
+      mode = m;
+      document.getElementById('modeLearn').classList.toggle('active', m === 'learn');
+      document.getElementById('modeQuiz').classList.toggle('active', m === 'quiz');
+      document.getElementById('learnPanel').classList.toggle('hidden', m !== 'learn');
+      document.getElementById('quizPanel').classList.toggle('hidden', m !== 'quiz');
+      document.getElementById('langScroll').classList.toggle('hidden', m === 'quiz');
+      if (m === 'learn') renderLearn();
+      else startQuiz();
+    }
+
+    // ─── APPRENDRE ─────────────────────────────────────────────────────────────
+    function rangeBounds() {
+      if (range === 'low')  return [1, 10];
+      if (range === 'high') return [11, 20];
+      return [1, 20];
+    }
+
+    function setRange(r) {
+      range = r;
+      ['rangeLow','rangeHigh','rangeAll'].forEach(id => {
+        document.getElementById(id).classList.remove('active');
+      });
+      document.getElementById(r === 'low' ? 'rangeLow' : r === 'high' ? 'rangeHigh' : 'rangeAll')
+        .classList.add('active');
+      const [a, b] = rangeBounds();
+      document.getElementById('learnAllLabel').textContent = `Tout écouter (${a} à ${b})`;
+      renderLearn();
+    }
+
+    function renderLearn() {
+      const grid = document.getElementById('learnGrid');
+      const [a, b] = rangeBounds();
+      let html = '';
+      for (let n = a; n <= b; n++) {
+        html += `<button class="num-btn" data-n="${n}" onclick="sayNumber(${n})">${n}</button>`;
+      }
+      grid.innerHTML = html;
+    }
+
+    function sayNumber(n) {
+      const word = NUMBERS[currentLang.code][n - 1];
+      const btn = document.querySelector(`.num-btn[data-n="${n}"]`);
+      if (btn) {
+        btn.classList.add('speaking');
+        setTimeout(() => btn.classList.remove('speaking'), 900);
+      }
+      TTS.speak(word, { lang: currentLang.lang, rate: 0.85 });
+    }
+
+    async function readAll() {
+      if (reading) {
+        TTS.cancel();
+        reading = false;
+        document.getElementById('learnAllLabel').textContent = `Tout écouter (${rangeBounds()[0]} à ${rangeBounds()[1]})`;
+        return;
+      }
+      reading = true;
+      document.getElementById('learnAllLabel').textContent = 'Stop';
+      const [a, b] = rangeBounds();
+      for (let n = a; n <= b; n++) {
+        if (!reading) break;
+        const btn = document.querySelector(`.num-btn[data-n="${n}"]`);
+        if (btn) btn.classList.add('speaking');
+        const word = NUMBERS[currentLang.code][n - 1];
+        await speakAsync(word, currentLang.lang);
+        if (btn) btn.classList.remove('speaking');
+        if (!reading) break;
+        await wait(150);
+      }
+      reading = false;
+      document.getElementById('learnAllLabel').textContent = `Tout écouter (${a} à ${b})`;
+    }
+
+    function speakAsync(text, lang) {
+      return new Promise(resolve => {
+        if (!window.speechSynthesis) { resolve(); return; }
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = lang; u.rate = 0.85;
+        // Voix si dispo
+        const voices = window.speechSynthesis.getVoices();
+        const prefix = lang.split('-')[0];
+        const v = voices.find(x => x.lang === lang) || voices.find(x => x.lang.startsWith(prefix));
+        if (v) u.voice = v;
+        u.onend = resolve;
+        u.onerror = resolve;
+        window.speechSynthesis.speak(u);
+        // Safety timeout
+        setTimeout(resolve, 2500);
+      });
+    }
+
+    function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+    // ─── QUIZ ──────────────────────────────────────────────────────────────────
+    function startQuiz() {
+      round = 0;
+      score = 0;
+      document.getElementById('victoryScreen').classList.remove('show');
+      nextQuizRound();
+    }
+
+    function restartQuiz() {
+      document.getElementById('victoryScreen').classList.remove('show');
+      startQuiz();
+    }
+
+    function nextQuizRound() {
+      if (round >= ROUND_COUNT) { showVictory(); return; }
+      qcm = QcmRetry.create();
+      quizNumber = 1 + Math.floor(Math.random() * 20);
+      quizLang = LANGS[Math.floor(Math.random() * LANGS.length)];
+
+      renderScoreBar();
+      document.getElementById('quizFlag').className = `fi fi-${quizLang.flag}`;
+      document.getElementById('quizLangName').textContent = quizLang.nom;
+
+      renderQuizChoices();
+      setTimeout(speakQuiz, 500);
+    }
+
+    function speakQuiz() {
+      const word = NUMBERS[quizLang.code][quizNumber - 1];
+      TTS.speak(word, { lang: quizLang.lang, rate: 0.85 });
+    }
+
+    function renderQuizChoices() {
+      const pool = [];
+      while (pool.length < 3) {
+        const n = 1 + Math.floor(Math.random() * 20);
+        if (n !== quizNumber && !pool.includes(n)) pool.push(n);
+      }
+      const options = shuffle([quizNumber, ...pool]);
+      const c = document.getElementById('choices');
+      c.innerHTML = options.map(n => `
+        <button class="choice-btn" data-n="${n}"${n === quizNumber ? ' data-correct="1"' : ''}
+                onclick="answerQuiz(${n}, this)">${n}</button>
+      `).join('');
+    }
+
+    function answerQuiz(n, btn) {
+      if (btn.disabled) return;
+      const isCorrect = n === quizNumber;
+      const res = QcmRetry.handle(qcm, isCorrect);
+      if (res.outcome === 'ignored') return;
+      if ((res.outcome === 'correct' || res.outcome === 'reveal') && typeof Tracker !== 'undefined') {
+        Tracker.logAnswer(res.outcome === 'correct');
+      }
+
+      if (res.outcome === 'correct') {
+        btn.classList.add('correct');
+        document.querySelectorAll('.choice-btn').forEach(b => b.style.pointerEvents = 'none');
+        if (res.points === 10) score++;
+        if (typeof sndDing === 'function') sndDing();
+        showFeedback('🎉');
+        // Répéter le mot + dire le chiffre en français
+        setTimeout(() => speakQuiz(), 300);
+        setTimeout(() => TTS.speak(`C'est ${quizNumber} !`, { lang:'fr-FR', rate:0.85, priority:false }), 1300);
+        round++;
+        setTimeout(nextQuizRound, 2600);
+      } else if (res.outcome === 'reveal') {
+        btn.classList.add('wrong'); btn.disabled = true;
+        QcmRetry.revealCorrect(document.getElementById('choices'), 'correct');
+        document.querySelectorAll('.choice-btn').forEach(b => b.style.pointerEvents = 'none');
+        if (typeof sndBuzz === 'function') sndBuzz();
+        if (typeof playErrorSound === 'function') playErrorSound();
+        showFeedback('💪');
+        setTimeout(() => TTS.speak(`C'était ${quizNumber}`, { lang:'fr-FR', rate:0.85 }), 300);
+        round++;
+        setTimeout(nextQuizRound, 2000);
+      } else {
+        btn.classList.add('wrong'); btn.disabled = true;
+        if (typeof sndBuzz === 'function') sndBuzz();
+        showFeedback('🤔');
+        setTimeout(speakQuiz, 400);
+      }
+    }
+
+    function renderScoreBar() {
+      const bar = document.getElementById('scoreBar');
+      let html = '';
+      for (let i = 0; i < ROUND_COUNT; i++) {
+        const cls = i < round ? (i < score ? 'ok' : 'miss') : '';
+        html += `<div class="score-pip ${cls}"></div>`;
+      }
+      html += `<div class="score-label">${score}/${round}</div>`;
+      bar.innerHTML = html;
+    }
+
+    function showFeedback(emoji) {
+      const el = document.getElementById('feedback');
+      document.getElementById('feedbackEmoji').textContent = emoji;
+      el.classList.add('show');
+      setTimeout(() => el.classList.remove('show'), 1200);
+    }
+
+    const VICTORY_DATA = [
+      { min:10, max:10, emoji:'🏆', title:'PARFAIT !!!', msg:'10 sur 10 ! Tu parles toutes les langues !',  sound:'victory' },
+      { min:8,  max:9,  emoji:'🌟', title:'Super Max !', msg:'Presque parfait ! Tu deviens polyglotte !',    sound:'bravo' },
+      { min:6,  max:7,  emoji:'😊', title:'Bien joué !', msg:'C\'est bien ! Continue comme ça !',             sound:'ding' },
+      { min:4,  max:5,  emoji:'💪', title:'Pas mal !',   msg:'Tu peux encore progresser !',                   sound:'ding' },
+      { min:0,  max:3,  emoji:'🔢', title:'On réessaie ?',msg:'Entraîne-toi en mode Apprendre !',             sound:'buzz' },
+    ];
+
+    function showVictory() {
+      if (typeof Tracker !== 'undefined') Tracker.endSession(score, ROUND_COUNT);
+      renderScoreBar();
+      const data = VICTORY_DATA.find(d => score >= d.min && score <= d.max);
+      document.getElementById('victoryEmoji').textContent = data.emoji;
+      document.getElementById('victoryTitle').textContent = data.title;
+      document.getElementById('victoryMsg').textContent = data.msg;
+      document.getElementById('victoryScore').textContent = `${score} / ${ROUND_COUNT}`;
+      document.getElementById('victoryScreen').classList.add('show');
+      if (data.sound === 'victory' && typeof sndVictory === 'function') sndVictory();
+      else if (data.sound === 'bravo' && typeof sndBravo === 'function') sndBravo();
+      else if (data.sound === 'ding' && typeof sndDing === 'function') sndDing();
+      else if (typeof sndBuzz === 'function') sndBuzz();
+    }
+
+    function shuffle(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    // ─── Init ──────────────────────────────────────────────────────────────────
+    renderLangScroll();
+    setRange('low');
+    renderLearn();
+  </script>
+  <script src="js/tracker.js"></script>
+  <script src="js/comments.js"></script>
+</body>
+</html>

@@ -9,7 +9,7 @@
 
 | Quoi | Statut |
 |------|--------|
-| Personnages | 9 définis (ennéagramme) — ⚠ **prénoms en cours de validation** (seul Wex #7 confirmé) |
+| Personnages | 9 définis (ennéagramme) — ✅ **casting V1 biblique validé** (Melki, Marie, Paul, Jérémie, Luc, Pierre, Wex, Judith, Noé). Propagation dans les fiches à faire. |
 | Univers | post-Éveil, Printemps de l'Éveil — distillé dans `univers/` |
 | Direction | **monde sobre, merveilleux discret** (vu à travers enfant né dedans) |
 | Histoires | "Le Pont Cassé" (Wex + Élia + Sam) — V1 complète, comité de lecture fait |
@@ -28,8 +28,9 @@
 ### Personnages
 | Fichier | Quand le lire |
 |---------|--------------|
-| [personnages/INDEX.md](personnages/INDEX.md) | **Toujours — avant d'écrire un perso** (prénoms ⚠) |
-| [personnages/prénoms-candidats.md](personnages/prénoms-candidats.md) | Shortlists pour validation à froid |
+| [personnages/INDEX.md](personnages/INDEX.md) | **Toujours — avant d'écrire un perso** (casting V1 biblique validé) |
+| [personnages/prénoms-candidats.md](personnages/prénoms-candidats.md) | V1 biblique figée + prénoms écartés par raison |
+| [personnages/prénoms-par-origine.md](personnages/prénoms-par-origine.md) | Matrice cross-country (Wex fixe + équipe variable) |
 | [Eneagramme/personnages/](Eneagramme/personnages/) | Fiches détaillées par type |
 | [Eneagramme/situations/emotions-universelles.md](Eneagramme/situations/emotions-universelles.md) | Pour une réaction émotionnelle précise (9×9) |
 | [Eneagramme/ressources/guide-auteur.md](Eneagramme/ressources/guide-auteur.md) | Pour vérifier la cohérence d'une scène |
@@ -65,7 +66,7 @@
 ## Questions ouvertes
 
 1. **Nom de l'univers** — choisir parmi les 5 finalistes
-2. **Prénoms des 8 autres personnages** — valider (seul Wex #7 confirmé)
+2. ~~**Prénoms des 8 autres personnages**~~ — ✅ résolu V1 (2026-04-24). Reste : propagation dans fiches + choix F/M (2F→3F ?) + validation des castings par-origine.
 3. **Ombre Éternelle** — concept principal ou laisser en standby ?
 4. **Question fractale** (2026-04-16) — les persos savent-ils qu'ils sont dans le rêve de... ?
 5. **Compagnons** — dans toutes les histoires ou progressivement ?

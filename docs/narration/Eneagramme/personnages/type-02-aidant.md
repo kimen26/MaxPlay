@@ -83,14 +83,14 @@ Ce qu'elle cache : qu'elle donne parfois pour recevoir — et qu'elle ne se l'av
 
 | Personnage | Type | Relation |
 |------------|------|----------|
-| Léo | 7 | Elle prend soin de lui. Il l'adore mais ne réalise pas toujours qu'elle a besoin de retour. |
-| Sam | 8 | Il accepte mal qu'on prenne soin de lui. Mais il tolère Mimi — elle ne force pas, elle propose. |
-| Lila | 9 | Complicité douce. Elles prennent soin l'une de l'autre sans en parler. |
-| Élia | 1 | Élia apprécie mais peut trouver Mimi trop présente. Petites frictions sur le "bon moyen d'aider". |
-| Noa | 6 | Elle rassure Noa naturellement. Noa l'aime profondément pour ça. |
-| Theo | 5 | Theo ne demande jamais d'aide. Mimi le respecte — et de temps en temps lui laisse un snack sans rien dire. |
-| Victor | 3 | Victor et Mimi se ressemblent dans le besoin de reconnaissance. Ils peuvent s'épauler — ou rivaliser. |
-| Iris | 4 | Mimi est fascinée par Iris et veut la "sauver" de sa tristesse. Iris n'a pas besoin d'être sauvée — ce que Mimi doit apprendre. |
+| Raph | 7 | Elle prend soin de lui. Il l'adore mais ne réalise pas toujours qu'elle a besoin de retour. |
+| Juju | 8 | Il accepte mal qu'on prenne soin de lui. Mais il tolère Mimi — elle ne force pas, elle propose. |
+| Nono | 9 | Complicité douce. Elles prennent soin l'une de l'autre sans en parler. |
+| Melki | 1 | Melki apprécie mais peut trouver Mimi trop présente. Petites frictions sur le "bon moyen d'aider". |
+| Pierrot | 6 | Elle rassure Pierrot naturellement. Pierrot l'aime profondément pour ça. |
+| Lulu | 5 | Lulu ne demande jamais d'aide. Mimi le respecte — et de temps en temps lui laisse un snack sans rien dire. |
+| Polo | 3 | Polo et Mimi se ressemblent dans le besoin de reconnaissance. Ils peuvent s'épauler — ou rivaliser. |
+| Jérem | 4 | Mimi est fascinée par Jérem et veut la "sauver" de sa tristesse. Jérem n'a pas besoin d'être sauvée — ce que Mimi doit apprendre. |
 
 ---
 
@@ -109,13 +109,13 @@ Ce qu'elle cache : qu'elle donne parfois pour recevoir — et qu'elle ne se l'av
 ## Moments émotionnels clés
 
 ### Le jour où personne n'a remarqué
-*Mimi avait préparé une surprise pour toute la classe. Découpé, collé, enveloppé. Le jour J, Léo a dit "c'est cool !" et est passé à autre chose. Victor a pris sa part sans lever les yeux. Lila a dit merci, doucement. Mais personne n'avait vraiment vu le travail. Mimi a souri. Et le soir elle a pleuré sans savoir exactement pourquoi.*
+*Mimi avait préparé une surprise pour toute la classe. Découpé, collé, enveloppé. Le jour J, Raph a dit "c'est cool !" et est passé à autre chose. Polo a pris sa part sans lever les yeux. Nono a dit merci, doucement. Mais personne n'avait vraiment vu le travail. Mimi a souri. Et le soir elle a pleuré sans savoir exactement pourquoi.*
 
 ### Quand elle a demandé quelque chose pour elle
 *Mimi était malade. Elle voulait que quelqu'un lui apporte un verre d'eau. Elle a attendu. Personne ne venait. Elle s'est levée pour le faire elle-même — et en chemin elle s'est arrêtée. Et elle a dit à voix haute : "J'ai besoin d'un verre d'eau, quelqu'un peut m'aider ?" C'était petit. Mais c'était énorme.*
 
 ### La fois où elle a aidé trop
-*Iris n'allait pas bien. Mimi a tout essayé : câlins, gâteaux, histoires. Iris a fini par dire : "Mimi, j'ai pas besoin que tu me répares. J'ai juste besoin que tu restes là." Mimi n'a pas compris tout de suite. Mais elle est restée. Et c'était mieux que tout ce qu'elle avait tenté.*
+*Jérem n'allait pas bien. Mimi a tout essayé : câlins, gâteaux, histoires. Jérem a fini par dire : "Mimi, j'ai pas besoin que tu me répares. J'ai juste besoin que tu restes là." Mimi n'a pas compris tout de suite. Mais elle est restée. Et c'était mieux que tout ce qu'elle avait tenté.*
 
 ---
 

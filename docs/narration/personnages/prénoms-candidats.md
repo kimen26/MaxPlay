@@ -82,15 +82,15 @@ Anciens prénoms placeholders hérités d'une session précédente, **remplacés
 
 | # | Placeholder ancien | Remplacé par (V1) |
 |---|---|---|
-| 1 | Élia | Melki |
-| 2 | Camille | Marie |
-| 3 | Victor | Paul |
-| 4 | Iris | Jérémie |
-| 5 | Theo | Luc |
-| 6 | Noa | Pierre |
+| 1 | Melki | Melki |
+| 2 | Mimi | Marie |
+| 3 | Polo | Paul |
+| 4 | Jérem | Jérémie |
+| 5 | Lulu | Luc |
+| 6 | Pierrot | Pierre |
 | 7 | **Wex** ✓ | **Wex** (inchangé) |
-| 8 | Sam | Judith |
-| 9 | Lila | Noé |
+| 8 | Juju | Judith |
+| 9 | Nono | Noé |
 
 **À propager :** toutes les fiches `Eneagramme/personnages/type-XX-*.md` + histoire "Le Pont Cassé" + tableaux relations/interactions. → grande passe de renommage à planifier (voir [tasks/BACKLOG.md](../../../tasks/BACKLOG.md)).
 

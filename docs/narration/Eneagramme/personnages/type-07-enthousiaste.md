@@ -1,7 +1,7 @@
 # Raph — Type 7, L'Enthousiaste
 
-> ⚠ **Changement de statut :** ce personnage était désigné "héros principal" sous l'ancien placeholder Léo (M). Le héros principal est désormais **Wex** (hors-système). Raph (F) reste Titi7 enthousiaste mais occupe un rôle secondaire, pas le rôle central.
-> Pronoms/accords à relire (Léo M → Raph F).
+> ⚠ **Changement de statut :** ce personnage était désigné "héros principal" sous l'ancien placeholder Raph (M). Le héros principal est désormais **Wex** (hors-système). Raph (F) reste Titi7 enthousiaste mais occupe un rôle secondaire, pas le rôle central.
+> Pronoms/accords à relire (Raph M → Raph F).
 *"Il y a tellement de choses à découvrir ! On y va ?"*
 
 ---
@@ -11,7 +11,7 @@
 - **Prénom complet** : Raphaëlle
 - **Diminutif (usage courant ≈ 4/5 du temps)** : **Raph**
 - **Notation** : Type7 / Titi7 (origine : Christ)
-- **Genre** : F (placeholder Léo était M — voir note en tête)
+- **Genre** : F (placeholder Raph était M — voir note en tête)
 - **Type** : 7 — L'Enthousiaste / L'Épicurien
 - **Rôle dans l'histoire** : Compagnonne proche de Wex, moteur d'élan du groupe *(héros principal = Wex, hors-système)*
 - **Aile dominante** : 7w8 (avec une touche de 6 selon les moments)
@@ -83,14 +83,14 @@ Ce qu'il cache : une petite voix intérieure qui dit parfois *"et si on s'ennuya
 
 | Personnage | Type | Relation |
 |------------|------|----------|
-| Sam | 8 | Meilleur ami du moment. Sam protège, Raph anime. Ensemble ils font des bêtises et de grandes aventures. |
-| Lila | 9 | Elle le pose. Quand tout le monde est épuisé par Raph, Lila dit *"moi je t'aime quand même"* et ça suffit. |
-| Noa | 6 | Noa l'inquiète un peu (toujours à dire que ça peut mal tourner), mais Raph trouve ça drôle et le rassure. |
-| Theo | 5 | Raph adore les connaissances de Theo. Il pose mille questions. Theo finit par sourire. |
-| Élia | 1 | Tensions fréquentes. Élia dit *"fais attention"* et Raph dit *"c'est bon !"*. Mais au fond ils s'admirent. |
-| Camille | 2 | Camille prend soin de Raph. Raph l'adore. Risque : Raph ne réalise pas toujours qu'elle a besoin de lui aussi. |
-| Victor | 3 | Compétition amicale. Qui est le plus cool ? Raph s'en fiche vite — Victor reste plus accroché au résultat. |
-| Iris | 4 | Raph ne comprend pas toujours pourquoi Iris est triste. Iris ne comprend pas pourquoi Raph court toujours. Mais ils se fascinent mutuellement. |
+| Juju | 8 | Meilleur ami du moment. Juju protège, Raph anime. Ensemble ils font des bêtises et de grandes aventures. |
+| Nono | 9 | Elle le pose. Quand tout le monde est épuisé par Raph, Nono dit *"moi je t'aime quand même"* et ça suffit. |
+| Pierrot | 6 | Pierrot l'inquiète un peu (toujours à dire que ça peut mal tourner), mais Raph trouve ça drôle et le rassure. |
+| Lulu | 5 | Raph adore les connaissances de Lulu. Il pose mille questions. Lulu finit par sourire. |
+| Melki | 1 | Tensions fréquentes. Melki dit *"fais attention"* et Raph dit *"c'est bon !"*. Mais au fond ils s'admirent. |
+| Mimi | 2 | Mimi prend soin de Raph. Raph l'adore. Risque : Raph ne réalise pas toujours qu'elle a besoin de lui aussi. |
+| Polo | 3 | Compétition amicale. Qui est le plus cool ? Raph s'en fiche vite — Polo reste plus accroché au résultat. |
+| Jérem | 4 | Raph ne comprend pas toujours pourquoi Jérem est triste. Jérem ne comprend pas pourquoi Raph court toujours. Mais ils se fascinent mutuellement. |
 
 ---
 
@@ -126,10 +126,10 @@ Chaque épisode/chapitre peut être déclenché par une nouvelle passion soudain
 ## Moments émotionnels clés (scènes narratives)
 
 ### La nuit où il n'a pas pu fuir
-*Un soir, le chat de Lila meurt. Raph fait des blagues pour "aider". Lila lui dit doucement : "Raph, tu n'as pas à m'égayer. Tu peux juste être là." Raph ne sait pas quoi faire. Il s'assoit. Et pour la première fois, il laisse le silence exister. C'est difficile. Mais quelque chose de doux se passe.*
+*Un soir, le chat de Nono meurt. Raph fait des blagues pour "aider". Nono lui dit doucement : "Raph, tu n'as pas à m'égayer. Tu peux juste être là." Raph ne sait pas quoi faire. Il s'assoit. Et pour la première fois, il laisse le silence exister. C'est difficile. Mais quelque chose de doux se passe.*
 
 ### Le jour où il a tout raté
-*Raph avait promis d'apprendre à jouer d'un instrument pour le spectacle de l'école. Il a changé d'idée quatre fois, n'a rien appris. Le jour J, il n'a rien à montrer. Il s'attendait à trouver ça drôle — il ne trouve pas. C'est la première fois qu'il ressent de la honte vraiment. Sam lui dit : "C'est pas grave, t'es encore Raph."*
+*Raph avait promis d'apprendre à jouer d'un instrument pour le spectacle de l'école. Il a changé d'idée quatre fois, n'a rien appris. Le jour J, il n'a rien à montrer. Il s'attendait à trouver ça drôle — il ne trouve pas. C'est la première fois qu'il ressent de la honte vraiment. Juju lui dit : "C'est pas grave, t'es encore Raph."*
 
 ### La semaine où il était malade
 *Raph est malade. Vraiment malade. Il ne peut pas courir, jouer, inventer. Il s'ennuie d'une façon nouvelle — pas l'ennui qu'il transforme en jeu, mais l'ennui qui lui montre qui il est quand il ne court plus. Il découvre qu'il aime les histoires racontées par son papa. Il découvre que rester dans un lit peut être doux.*

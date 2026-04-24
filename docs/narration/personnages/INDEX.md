@@ -34,9 +34,9 @@
 
 **Bilan genre casting Christ :** 3F (Marie/Mimi, Raphaëlle/Raph, Judith/Juju) / 6M + Wex hors-système. **Figé — définitif.** Pas de bascule F/M.
 
-> ✅ **Les fiches `Eneagramme/personnages/type-XX-*.md` ont été renommées** (passe 2026-04-24 : Élia→Melki, Camille→Mimi, Victor→Polo, Iris→Jérem, Theo→Lulu, Noa→Pierrot, Léo→Raph, Sam→Juju, Lila→Nono).
-> ⚠ **Cohérence pronoms/genres à relire** fiche par fiche (certains placeholders changent de genre : Iris F → Jérem M, Léo M → Raph F, Lila F → Nono M). Ajustements au fil des sessions.
-> Le rôle de héros principal quitte Titi7 (anciennement Léo) pour revenir à **Wex** (hors-système). Raph reste Titi7 enthousiaste, mais n'est plus désigné comme "héros".
+> ✅ **Les fiches `Eneagramme/personnages/type-XX-*.md` ont été renommées** (passe 2026-04-24 : Melki→Melki, Mimi→Mimi, Polo→Polo, Jérem→Jérem, Lulu→Lulu, Pierrot→Pierrot, Raph→Raph, Juju→Juju, Nono→Nono).
+> ⚠ **Cohérence pronoms/genres à relire** fiche par fiche (certains placeholders changent de genre : Jérem F → Jérem M, Raph M → Raph F, Nono F → Nono M). Ajustements au fil des sessions.
+> Le rôle de héros principal quitte Titi7 (anciennement Raph) pour revenir à **Wex** (hors-système). Raph reste Titi7 enthousiaste, mais n'est plus désigné comme "héros".
 
 ---
 

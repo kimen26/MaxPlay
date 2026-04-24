@@ -24,7 +24,7 @@ Melki a un sens inné de "comment les choses devraient être". Sa chambre est ra
 
 Elle n'est pas méchante. Pas du tout. Elle est juste... exigeante. Et cette exigence, elle se l'applique d'abord à elle-même, plus durement qu'à n'importe qui d'autre. Quand elle fait une erreur, elle reste longtemps à y penser. *"J'aurais dû mieux faire."*
 
-Les autres l'écoutent souvent. Pas parce qu'elle est forte (comme Sam) ni parce qu'elle est joyeuse (comme Léo) — mais parce qu'elle a l'air de savoir ce qui est juste. Et souvent, elle a raison. Ce qui est un peu énervant, parfois.
+Les autres l'écoutent souvent. Pas parce qu'elle est forte (comme Juju) ni parce qu'elle est joyeuse (comme Raph) — mais parce qu'elle a l'air de savoir ce qui est juste. Et souvent, elle a raison. Ce qui est un peu énervant, parfois.
 
 Ce qu'on voit : la rigueur, le sérieux, le sens moral.
 Ce qu'elle cache : une vraie colère intérieure contre tout ce qui n'est pas à la hauteur — et surtout contre elle-même.
@@ -80,14 +80,14 @@ Ce qu'elle cache : une vraie colère intérieure contre tout ce qui n'est pas à
 
 | Personnage | Type | Relation |
 |------------|------|----------|
-| Léo | 7 | Tension affectueuse. *"Léo, fais attention !"* / *"Melki, détends-toi !"*. Ils se complètent sans se comprendre tout à fait. |
-| Sam | 8 | Respect mutuel. Deux fortes personnalités avec des principes. Conflits directs mais résolus directement. |
-| Lila | 9 | Lila la calme. Melki trouve Lila trop passive parfois. Mais Lila voit la bonté profonde d'Melki sans la juger. |
-| Noa | 6 | Complicité sur les règles et la fiabilité. Melki apprécie la prudence de Noa. |
-| Camille | 2 | Melki apprécie l'aide de Camille mais trouve qu'elle aide parfois trop. Petites frictions douces. |
-| Theo | 5 | Respect intellectuel mutuel. Tous les deux sérieux, rigoureux. Melki aime que Theo soit précis. |
-| Victor | 3 | Méfiance. Melki sent que Victor adapte ce qu'il dit selon la situation. Elle ne l'approuve pas. |
-| Iris | 4 | Tension : Iris dramatise, Melki rationalise. Mais Melki est fascinée par la sensibilité d'Iris, même si elle n'en parle pas. |
+| Raph | 7 | Tension affectueuse. *"Raph, fais attention !"* / *"Melki, détends-toi !"*. Ils se complètent sans se comprendre tout à fait. |
+| Juju | 8 | Respect mutuel. Deux fortes personnalités avec des principes. Conflits directs mais résolus directement. |
+| Nono | 9 | Nono la calme. Melki trouve Nono trop passive parfois. Mais Nono voit la bonté profonde d'Melki sans la juger. |
+| Pierrot | 6 | Complicité sur les règles et la fiabilité. Melki apprécie la prudence de Pierrot. |
+| Mimi | 2 | Melki apprécie l'aide de Mimi mais trouve qu'elle aide parfois trop. Petites frictions douces. |
+| Lulu | 5 | Respect intellectuel mutuel. Tous les deux sérieux, rigoureux. Melki aime que Lulu soit précis. |
+| Polo | 3 | Méfiance. Melki sent que Polo adapte ce qu'il dit selon la situation. Elle ne l'approuve pas. |
+| Jérem | 4 | Tension : Jérem dramatise, Melki rationalise. Mais Melki est fascinée par la sensibilité d'Jérem, même si elle n'en parle pas. |
 
 ---
 
@@ -106,13 +106,13 @@ Ce qu'elle cache : une vraie colère intérieure contre tout ce qui n'est pas à
 ## Moments émotionnels clés
 
 ### La fois où elle a laissé tomber
-*Melki travaillait sur un dessin depuis une heure. Ça ne ressemblait pas à ce qu'elle voulait. Elle l'a froissé et l'a jeté. Et puis Léo a dit : "Hé, je l'avais vu ton dessin, il était bien." Elle a regardé la poubelle. Et elle a compris qu'elle n'arrivait parfois pas à voir ce qui était bon — parce que le juge intérieur était trop fort.*
+*Melki travaillait sur un dessin depuis une heure. Ça ne ressemblait pas à ce qu'elle voulait. Elle l'a froissé et l'a jeté. Et puis Raph a dit : "Hé, je l'avais vu ton dessin, il était bien." Elle a regardé la poubelle. Et elle a compris qu'elle n'arrivait parfois pas à voir ce qui était bon — parce que le juge intérieur était trop fort.*
 
 ### Quand elle a fait quelque chose de "mal"
 *Melki a menti une fois — un tout petit mensonge — pour ne pas avoir d'ennuis. Ça lui a pesé pendant trois jours. Elle en a parlé à sa maman. Sa maman a dit : "Tu vois, tu es venue le dire. C'est ça, être une bonne personne — pas d'être parfaite." Melki n'a pas tout de suite compris. Mais quelque chose a bougé.*
 
 ### La crise du spectacle
-*Melki avait préparé un poème pour l'école. Elle le savait par cœur. Sur scène, elle a oublié une ligne. Elle a dit une autre ligne à la place. Personne dans le public n'a remarqué. Mais elle, si. Elle a failli pleurer sur scène — puis elle s'est reprise. Après, Lila lui a dit : "Tu étais magnifique." Melki a pensé : "Je sais qu'elle ment." Mais elle n'en était plus certaine.*
+*Melki avait préparé un poème pour l'école. Elle le savait par cœur. Sur scène, elle a oublié une ligne. Elle a dit une autre ligne à la place. Personne dans le public n'a remarqué. Mais elle, si. Elle a failli pleurer sur scène — puis elle s'est reprise. Après, Nono lui a dit : "Tu étais magnifique." Melki a pensé : "Je sais qu'elle ment." Mais elle n'en était plus certaine.*
 
 ---
 

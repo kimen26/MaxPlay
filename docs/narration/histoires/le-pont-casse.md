@@ -1,24 +1,15 @@
 # Le Pont Cassé
 
 **Statut :** V1 complète — comité de lecture fait
-**Personnages :** **Wex** · **Melki** (Titi1, ex-placeholder Élia) · **Juju** (Titi8, ex-placeholder Sam)
+**Personnages :** **Wex** · **Melki** (Titi1) · **Juju** (Titi8)
 **Structure :** Kishōtenketsu (sans antagoniste)
-
-> ⚠ **Le texte complet de l'histoire est à récupérer depuis la session où il a été écrit — puis prénoms à remplacer : Élia → Melki, Sam → Juju.** Wex reste Wex.
+**Règle d'écriture :** surnoms utilisés 4/5 du temps dans les dialogues. Prénoms complets (Melchisédech, Judith) uniquement pour moments formels/adultes.
 
 ---
 
 ## Localisation du texte
 
-*(Le texte complet de l'histoire est à réimporter ici — une fois importé, faire la passe de renommage de prénoms.)*
-
-### Table de renommage à appliquer
-
-| Ancien placeholder | Nouveau (casting Christ V1) |
-|--------------------|------------------------------|
-| Élia (Titi1) | **Melki** (diminutif par défaut dans les dialogues) |
-| Sam (Titi8) | **Juju** |
-| Wex | Wex (inchangé) |
+*(Le texte complet de l'histoire est à réimporter ici depuis la session d'origine. Une fois collé, appliquer la passe de surnoms : Melki, Juju, Wex — dans cet ordre de fréquence.)*
 
 ---
 
@@ -49,3 +40,15 @@ L'histoire telle qu'elle existe (version réaliste, sans magie) fonctionne parfa
 - **Wex** dans cette histoire : rôle catalytique (voit, propose, relie) — cohérent avec la piste "Wex observateur" (voir `univers/nom-candidats.md` § Wex World).
 - **Melki** (Titi1) : vérifie, mesure, propose la planche juste.
 - **Juju** (Titi8) : fonce tester, pose le poids, valide.
+
+---
+
+## Qualités mises en valeur (par personnage)
+
+| Personnage | Ce que l'histoire lui fait aimer |
+|---|---|
+| Wex | Voit sans juger. Relie sans commander. |
+| Melki | La minutie rend possible ce que la force seule n'obtient pas. |
+| Juju | Le courage d'essayer en premier, même quand c'est bancal. |
+
+> Principe : chaque histoire doit **faire aimer** au moins un personnage au lecteur. Ici : les 3 sont mis en valeur — Wex par sa présence, Melki par sa mesure, Juju par son élan.

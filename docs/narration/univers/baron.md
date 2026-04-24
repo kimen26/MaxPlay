@@ -33,5 +33,5 @@ Emmène des enfants dans le passé pour *comprendre*, jamais pour *changer*.
 ## Questions ouvertes
 
 - Baron est-il un personnage récurrent ou un guide ponctuel ?
-- Fait-il partie du groupe principal (Wex, Sam, Élia...) ou est-il un passeur extérieur ?
+- Fait-il partie du groupe principal (Wex, Juju, Melki...) ou est-il un passeur extérieur ?
 - Histoire de Baron et le voyage temporel : histoire séparée ou crossover avec les 9 ?

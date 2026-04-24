@@ -80,14 +80,14 @@ Ce qu'il cache : le doute profond. *"Et si je valais rien sans mes exploits ?"*
 
 | Personnage | Type | Relation |
 |------------|------|----------|
-| Léo | 7 | Compétition amicale. Léo s'en fiche de gagner. Polo ne comprend pas ça — mais il aime l'énergie de Léo. |
-| Sam | 8 | Frottement. Sam dit ce qu'il pense directement. Polo adapte. Sam ne fait pas confiance à ça. |
-| Élia | 1 | Élia le juge. Polo le sent. Il essaie de l'impressionner — en vain. |
-| Camille | 2 | Complicité dans le besoin de reconnaissance. Ils se comprennent sans le dire. |
-| Noa | 6 | Polo ne comprend pas les inquiétudes de Noa. "Fonce et on verra !" — mais Noa a besoin de sécurité d'abord. |
-| Theo | 5 | Polo est impressionné par l'intelligence de Theo mais ne l'admettra pas facilement. |
-| Lila | 9 | Polo ne comprend pas l'absence d'ambition de Lila. Mais Lila le voit avec douceur, sans le juger. |
-| Iris | 4 | Tension esthétique. Iris croit en la profondeur. Polo croit en l'efficacité. Fascination mutuelle sous la friction. |
+| Raph | 7 | Compétition amicale. Raph s'en fiche de gagner. Polo ne comprend pas ça — mais il aime l'énergie de Raph. |
+| Juju | 8 | Frottement. Juju dit ce qu'il pense directement. Polo adapte. Juju ne fait pas confiance à ça. |
+| Melki | 1 | Melki le juge. Polo le sent. Il essaie de l'impressionner — en vain. |
+| Mimi | 2 | Complicité dans le besoin de reconnaissance. Ils se comprennent sans le dire. |
+| Pierrot | 6 | Polo ne comprend pas les inquiétudes de Pierrot. "Fonce et on verra !" — mais Pierrot a besoin de sécurité d'abord. |
+| Lulu | 5 | Polo est impressionné par l'intelligence de Lulu mais ne l'admettra pas facilement. |
+| Nono | 9 | Polo ne comprend pas l'absence d'ambition de Nono. Mais Nono le voit avec douceur, sans le juger. |
+| Jérem | 4 | Tension esthétique. Jérem croit en la profondeur. Polo croit en l'efficacité. Fascination mutuelle sous la friction. |
 
 ---
 
@@ -108,11 +108,11 @@ Ce qu'il cache : le doute profond. *"Et si je valais rien sans mes exploits ?"*
 ### Le jour où il a raté devant tout le monde
 *Polo avait annoncé qu'il allait réussir quelque chose d'impressionnant. Il a raté. Devant tout le monde. Il a vu les regards. Il a souri — mais ses yeux ne souriaient pas. Le soir, seul, il a eu la nausée. Et pour la première fois, il s'est demandé : "Si je rate encore, est-ce qu'ils m'aimront quand même ?"*
 
-### Quand Léo l'a aimé sans raison
-*Un jour, Léo lui a dit : "Polo, t'es sympa." Juste comme ça, pas après une victoire, pas après avoir fait quelque chose d'impressionnant. Juste : t'es sympa. Polo a dit "ouais merci" en haussant les épaules. Mais en vrai, ce soir-là, il y a pensé longtemps.*
+### Quand Raph l'a aimé sans raison
+*Un jour, Raph lui a dit : "Polo, t'es sympa." Juste comme ça, pas après une victoire, pas après avoir fait quelque chose d'impressionnant. Juste : t'es sympa. Polo a dit "ouais merci" en haussant les épaules. Mais en vrai, ce soir-là, il y a pensé longtemps.*
 
 ### La fois où il a laissé quelqu'un gagner
-*Polo aurait pu gagner la course. Il était plus rapide. Mais Noa était essoufflé et avait vraiment envie d'arriver en premier ce jour-là. Polo a ralenti. Noa a gagné. Noa était tellement content. Polo a ressenti quelque chose d'étrange — pas de la déception. Quelque chose de doux. De la joie pour quelqu'un d'autre.*
+*Polo aurait pu gagner la course. Il était plus rapide. Mais Pierrot était essoufflé et avait vraiment envie d'arriver en premier ce jour-là. Polo a ralenti. Pierrot a gagné. Pierrot était tellement content. Polo a ressenti quelque chose d'étrange — pas de la déception. Quelque chose de doux. De la joie pour quelqu'un d'autre.*
 
 ---
 

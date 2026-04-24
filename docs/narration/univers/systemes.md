@@ -91,7 +91,7 @@ Groupe spécial d'hommes, femmes, parfois grands enfants — entraînés à entr
 - Les factions, guildes, groupes de cet univers ne se définissent pas par un ennemi commun — mais par une direction commune (une lumière à atteindre, une chose à construire, un équilibre à garder)
 - Quand un personnage commence à haïr plutôt qu'à construire, c'est un signal de danger interne — pas de victoire
 - Wex (#7) incarne naturellement ça : il entraîne les autres *vers* quelque chose, jamais *contre* quelqu'un
-- Sam (#8) est le plus à risque de cette erreur : sa force peut devenir "contre" si elle perd sa direction
+- Juju (#8) est le plus à risque de cette erreur : sa force peut devenir "contre" si elle perd sa direction
 
 **Seed narratif possible :**
 Un groupe qui pensait se battre contre un danger finit par réaliser qu'il cherchait surtout un ennemi — et que le vrai mouvement a toujours été de construire autre chose.

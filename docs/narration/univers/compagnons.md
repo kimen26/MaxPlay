@@ -43,7 +43,7 @@ L'idée centrale : **chaque enfant a une signature intérieure visible**, qui bo
 | Personnage (notation) | Piste initiale (animal hybride) | Comportement caractéristique |
 |---|---|---|
 | **Wex** (hors-système) | Colibri-luciole | S'emballe, s'envole, revient |
-| **Titi8 / Judy** | Tatou-chouette silencieux | Observe, se tasse quand colère |
+| **Titi8 / Juju** | Tatou-chouette silencieux | Observe, se tasse quand colère |
 | **Titi1 / Melki** | Compagnon qui vérifie, compte les pas | Rectifie sa trajectoire |
 | **Titi9 / Nono** | Hérisson-nuage | S'endort avec lui, sursaute en conflit |
 | *(autres)* | — | À définir |
@@ -62,7 +62,7 @@ L'idée centrale : **chaque enfant a une signature intérieure visible**, qui bo
 ## Lien avec "Le Pont Cassé"
 
 **Option A — Touches légères (recommandée)**
-- Le compagnon de Judy se détasse / s'éclaircit / se recristallise quand la planche est posée.
+- Le compagnon de Juju se détasse / s'éclaircit / se recristallise quand la planche est posée.
 - Pas plus — quasi-invisible à la 1ère lecture.
 
 **Option B — Touches moyennes**

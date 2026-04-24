@@ -22,7 +22,7 @@
 
 Pierrot a une façon particulière d'entrer quelque part : il regarde d'abord. Vérifie les sorties. Identifie qui est là. Ce n'est pas de la peur consciente — c'est juste comme ça que son cerveau fonctionne. *Anticiper. Prévoir. Ne pas être pris au dépourvu.*
 
-Il pose beaucoup de questions avant de s'engager. *"T'es sûr que c'est sans danger ? T'as demandé à un adulte ? Qu'est-ce qui se passe si ça tourne mal ?"* Léo soupire parfois. Mais souvent, les questions de Pierrot évitent des catastrophes.
+Il pose beaucoup de questions avant de s'engager. *"T'es sûr que c'est sans danger ? T'as demandé à un adulte ? Qu'est-ce qui se passe si ça tourne mal ?"* Raph soupire parfois. Mais souvent, les questions de Pierrot évitent des catastrophes.
 
 Ce que Pierrot fait mieux que personne : être là. Vraiment là. Si quelqu'un a besoin d'aide à 22h, Pierrot répond. Si quelqu'un traverse quelque chose de difficile, Pierrot n'oublie pas d'envoyer un message le lendemain. Sa loyauté est un don rare.
 
@@ -80,14 +80,14 @@ Ce qu'il cache : une anxiété de fond qui ne s'arrête jamais vraiment — mêm
 
 | Personnage | Type | Relation |
 |------------|------|----------|
-| Léo | 7 | Pierrot dit "ça peut mal tourner", Léo dit "on verra !". Pierrot l'aime mais l'inquiète. Léo le rassure sans s'en rendre compte. |
-| Sam | 8 | Sam le protège instinctivement. Pierrot s'y fie — peut-être trop. |
-| Camille | 2 | Elle le rassure. Il l'aime pour ça. Elle prend soin de lui avec douceur. |
-| Lila | 9 | Ils se sécurisent mutuellement. Mais peuvent aussi spiraliser ensemble dans l'inquiétude. |
-| Élia | 1 | Élia apprécie la prudence de Pierrot. Ils partagent un sens des règles et du cadre. |
-| Theo | 5 | Theo analyse les risques, Pierrot anticipe les dangers. Complicité intellectuelle dans la précaution. |
-| Victor | 3 | Pierrot ne comprend pas que Victor fonce sans vérifier. Victor ne comprend pas que Pierrot vérifie tout. |
-| Iris | 4 | Iris est trop imprévisible pour Pierrot. Pierrot est trop anxieux pour Iris. Mais ils s'estiment. |
+| Raph | 7 | Pierrot dit "ça peut mal tourner", Raph dit "on verra !". Pierrot l'aime mais l'inquiète. Raph le rassure sans s'en rendre compte. |
+| Juju | 8 | Juju le protège instinctivement. Pierrot s'y fie — peut-être trop. |
+| Mimi | 2 | Elle le rassure. Il l'aime pour ça. Elle prend soin de lui avec douceur. |
+| Nono | 9 | Ils se sécurisent mutuellement. Mais peuvent aussi spiraliser ensemble dans l'inquiétude. |
+| Melki | 1 | Melki apprécie la prudence de Pierrot. Ils partagent un sens des règles et du cadre. |
+| Lulu | 5 | Lulu analyse les risques, Pierrot anticipe les dangers. Complicité intellectuelle dans la précaution. |
+| Polo | 3 | Pierrot ne comprend pas que Polo fonce sans vérifier. Polo ne comprend pas que Pierrot vérifie tout. |
+| Jérem | 4 | Jérem est trop imprévisible pour Pierrot. Pierrot est trop anxieux pour Jérem. Mais ils s'estiment. |
 
 ---
 
@@ -106,13 +106,13 @@ Ce qu'il cache : une anxiété de fond qui ne s'arrête jamais vraiment — mêm
 ## Moments émotionnels clés
 
 ### Quand il a fait confiance malgré la peur
-*Léo avait proposé une aventure dans les bois. Pierrot avait dit non dix fois. Puis Sam lui avait dit : "Je suis là." Pierrot avait pris une grande inspiration. Et il était allé. Dans les bois. Avec les autres. Et il ne s'était rien passé de mauvais. Et c'était bien. Et Pierrot avait pensé : peut-être que la peur n'est pas toujours la vérité.*
+*Raph avait proposé une aventure dans les bois. Pierrot avait dit non dix fois. Puis Juju lui avait dit : "Je suis là." Pierrot avait pris une grande inspiration. Et il était allé. Dans les bois. Avec les autres. Et il ne s'était rien passé de mauvais. Et c'était bien. Et Pierrot avait pensé : peut-être que la peur n'est pas toujours la vérité.*
 
 ### La catastrophe imaginaire devenue réelle
 *Pierrot avait anticipé que quelque chose irait mal lors d'un voyage. Tout le monde l'avait ignoré. Et puis quelque chose avait mal tourné — pas une catastrophe, mais un incident. Pierrot avait dit "j'avais dit". Et personne n'avait ri. Et Pierrot avait compris quelque chose d'important : ses inquiétudes ne sont pas toutes fausses. Mais elles ne sont pas toutes vraies non plus.*
 
 ### Le jour où quelqu'un lui a fait confiance inconditionnellement
-*Élia lui avait confié un secret. Un vrai secret. Elle lui avait dit : "Je te fais confiance." Pierrot avait gardé ce secret. Parfaitement. Sans rien dire à personne. Et pour la première fois, il n'avait pas pensé à ce qui pouvait mal tourner — il avait juste pensé à être digne de cette confiance. C'était différent. C'était bien.*
+*Melki lui avait confié un secret. Un vrai secret. Elle lui avait dit : "Je te fais confiance." Pierrot avait gardé ce secret. Parfaitement. Sans rien dire à personne. Et pour la première fois, il n'avait pas pensé à ce qui pouvait mal tourner — il avait juste pensé à être digne de cette confiance. C'était différent. C'était bien.*
 
 ---
 

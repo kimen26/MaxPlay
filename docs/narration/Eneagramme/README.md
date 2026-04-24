@@ -10,7 +10,7 @@ Le héros principal est **Wex (Type 7)** — curieux, passionné, toujours en qu
 découvertes. Ses amis l'entourent, chacun apportant sa couleur au monde.
 
 > ⚠ **Prénoms en cours de validation** (2026-04-17). Seul **Wex (#7)** est confirmé.
-> Les 8 autres prénoms utilisés dans les fiches (Élia, Camille, Victor, Iris, Theo, Noa, Sam, Lila)
+> Les 8 autres prénoms utilisés dans les fiches (Melki, Mimi, Polo, Jérem, Lulu, Pierrot, Juju, Nono)
 > sont hérités d'une ancienne session — à valider avec l'auteur.
 > Voir [../personnages/INDEX.md](../personnages/INDEX.md) et [../personnages/prénoms-candidats.md](../personnages/prénoms-candidats.md).
 
@@ -47,21 +47,21 @@ Eneagramme/
 
 | # | Nom | Peur centrale | Désir central | Personnage |
 |---|-----|---------------|---------------|------------|
-| 1 | Le Perfectionniste | Être imparfait/mauvais | Être bon, juste | **Élia** |
-| 2 | L'Aidant | Ne pas être aimé | Se sentir aimé | **Camille** |
-| 3 | Le Performeur | Être sans valeur | Se sentir précieux | **Victor** |
-| 4 | L'Individualiste | Ne pas avoir d'identité | Être soi-même | **Iris** |
-| 5 | L'Observateur | Être incompétent/vide | Être capable | **Theo** |
-| 6 | Le Loyal | Être sans soutien | Avoir du soutien | **Noa** |
-| 7 | L'Enthousiaste | Souffrir/manquer | Être comblé | **Léo** (héros) |
-| 8 | Le Challenger | Être contrôlé | Se protéger | **Sam** |
-| 9 | Le Pacificateur | Perdre la connexion | Avoir la paix | **Lila** |
+| 1 | Le Perfectionniste | Être imparfait/mauvais | Être bon, juste | **Melki** |
+| 2 | L'Aidant | Ne pas être aimé | Se sentir aimé | **Mimi** |
+| 3 | Le Performeur | Être sans valeur | Se sentir précieux | **Polo** |
+| 4 | L'Individualiste | Ne pas avoir d'identité | Être soi-même | **Jérem** |
+| 5 | L'Observateur | Être incompétent/vide | Être capable | **Lulu** |
+| 6 | Le Loyal | Être sans soutien | Avoir du soutien | **Pierrot** |
+| 7 | L'Enthousiaste | Souffrir/manquer | Être comblé | **Raph** (héros) |
+| 8 | Le Challenger | Être contrôlé | Se protéger | **Juju** |
+| 9 | Le Pacificateur | Perdre la connexion | Avoir la paix | **Nono** |
 
 ---
 
 ## Principes narratifs
 
-### Le héros : Léo (Type 7)
+### Le héros : Raph (Type 7)
 - Passionné, curieux, toujours en quête de la prochaine aventure
 - Chaque épisode = une nouvelle passion (botanique, astronomie, cuisine, langues...)
 - Sa joie est contagieuse mais il fuit parfois ce qui est difficile
@@ -74,8 +74,8 @@ Eneagramme/
 4. **Résolution** — chaque type grandit un peu
 
 ### Progression des personnages
-- Saison 1 : Léo + 1-2 amis proches (Sam le 8, Lila le 9)
-- Saison 2 : Arrivée progressive des autres (Theo le 5, Noa le 6)
+- Saison 1 : Raph + 1-2 amis proches (Juju le 8, Nono le 9)
+- Saison 2 : Arrivée progressive des autres (Lulu le 5, Pierrot le 6)
 - Saison 3 : Le groupe complet, tensions et réconciliations
 
 ---

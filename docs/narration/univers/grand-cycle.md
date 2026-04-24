@@ -55,7 +55,7 @@ Dans les histoires : on peut l'évoquer comme les enfants parlent d'un mauvais r
 
 ### Le point de vue des enfants nés après l'Éveil
 
-Wex, Sam, Élia et les autres **n'ont jamais connu le cauchemar**. Ils sont nés dans le Printemps.
+Wex, Juju, Melki et les autres **n'ont jamais connu le cauchemar**. Ils sont nés dans le Printemps.
 Le cauchemar, c'est ce que leurs grands-parents racontent — comme la Seconde Guerre mondiale pour nous.
 Ils ne sont pas choqués par le monde actuel parce que c'est tout ce qu'ils ont toujours connu.
 

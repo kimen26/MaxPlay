@@ -1,6 +1,6 @@
 # Jérem — Type 4, L'Individualiste
 
-> ⚠ **Fiche héritée d'un placeholder féminin (Iris) — Jérem est masculin.** Pronoms et accords ("elle", "son / sa") à relire et ajuster à la prochaine passe.
+> ⚠ **Fiche héritée d'un placeholder féminin (Jérem) — Jérem est masculin.** Pronoms et accords ("elle", "son / sa") à relire et ajuster à la prochaine passe.
 *"Personne ne ressent les choses comme moi."*
 
 ---
@@ -10,7 +10,7 @@
 - **Prénom complet** : Jérémie
 - **Diminutif (usage courant ≈ 4/5 du temps)** : **Jérem**
 - **Notation** : Type4 / Titi4 (origine : Christ)
-- **Genre** : M (placeholder Iris était F — voir note en tête)
+- **Genre** : M (placeholder Jérem était F — voir note en tête)
 - **Type** : 4 — Le Romantique / L'Individualiste
 - **Rôle dans l'histoire** : La profondeur du groupe, celle qui voit ce que les autres ne voient pas
 - **Aile dominante** : 4w5 (introspective, artistique, légèrement mystérieuse)
@@ -83,14 +83,14 @@ Ce qu'elle cache : une envie secrète d'être ordinaire. D'appartenir sans effor
 
 | Personnage | Type | Relation |
 |------------|------|----------|
-| Léo | 7 | Fascination mutuelle. Léo ne comprend pas pourquoi Jérem est triste. Jérem ne comprend pas pourquoi Léo court. Mais ils se voient. |
-| Lila | 9 | Lila ne juge pas la tristesse d'Jérem. Elle reste là. C'est tout ce qu'Jérem demande. |
-| Camille | 2 | Camille veut aider Jérem. Jérem veut être accompagnée, pas réparée. Friction douce mais importante. |
-| Élia | 1 | Tension : Élia rationalise, Jérem ressent. Mais Élia reconnaît secrètement la justesse du regard d'Jérem. |
-| Theo | 5 | Affinité profonde. Tous les deux tournés vers l'intérieur, cherchent la profondeur. Amitié silencieuse. |
-| Sam | 8 | Sam la laisse tranquille. Il ne la comprend pas mais il la respecte. Elle apprécie ça. |
-| Victor | 3 | Tension esthétique. Victor veut briller. Jérem veut être vraie. Mais ils se fascinent mutuellement. |
-| Noa | 6 | Jérem trouve la constante anticipation de Noa épuisante. Noa trouve Jérem trop imprévisible. |
+| Raph | 7 | Fascination mutuelle. Raph ne comprend pas pourquoi Jérem est triste. Jérem ne comprend pas pourquoi Raph court. Mais ils se voient. |
+| Nono | 9 | Nono ne juge pas la tristesse d'Jérem. Elle reste là. C'est tout ce qu'Jérem demande. |
+| Mimi | 2 | Mimi veut aider Jérem. Jérem veut être accompagnée, pas réparée. Friction douce mais importante. |
+| Melki | 1 | Tension : Melki rationalise, Jérem ressent. Mais Melki reconnaît secrètement la justesse du regard d'Jérem. |
+| Lulu | 5 | Affinité profonde. Tous les deux tournés vers l'intérieur, cherchent la profondeur. Amitié silencieuse. |
+| Juju | 8 | Juju la laisse tranquille. Il ne la comprend pas mais il la respecte. Elle apprécie ça. |
+| Polo | 3 | Tension esthétique. Polo veut briller. Jérem veut être vraie. Mais ils se fascinent mutuellement. |
+| Pierrot | 6 | Jérem trouve la constante anticipation de Pierrot épuisante. Pierrot trouve Jérem trop imprévisible. |
 
 ---
 
@@ -109,13 +109,13 @@ Ce qu'elle cache : une envie secrète d'être ordinaire. D'appartenir sans effor
 ## Moments émotionnels clés
 
 ### La fois où quelqu'un a compris son dessin
-*Jérem avait fait un dessin qui représentait sa tristesse. Elle ne savait pas trop si elle devait le montrer. Theo l'a regardé longuement et a dit : "C'est comme si tu avais dessiné exactement ce que je ressens des fois mais que je pouvais pas expliquer." Jérem a senti quelque chose se dénouer dans sa poitrine. Être vraiment vue.*
+*Jérem avait fait un dessin qui représentait sa tristesse. Elle ne savait pas trop si elle devait le montrer. Lulu l'a regardé longuement et a dit : "C'est comme si tu avais dessiné exactement ce que je ressens des fois mais que je pouvais pas expliquer." Jérem a senti quelque chose se dénouer dans sa poitrine. Être vraiment vue.*
 
 ### Quand elle a voulu être "normale"
-*Un jour, Jérem a regardé ses amis rire de quelque chose de simple — une blague stupide de Léo. Et elle a pensé : pourquoi est-ce que moi j'arrive pas à juste... rire ? Pourquoi tout doit être si lourd ? Elle les a regardés avec envie. Puis doucement, elle a souri aussi. Pas parce que c'était drôle. Parce qu'elle les aimait.*
+*Un jour, Jérem a regardé ses amis rire de quelque chose de simple — une blague stupide de Raph. Et elle a pensé : pourquoi est-ce que moi j'arrive pas à juste... rire ? Pourquoi tout doit être si lourd ? Elle les a regardés avec envie. Puis doucement, elle a souri aussi. Pas parce que c'était drôle. Parce qu'elle les aimait.*
 
 ### La crise de l'abandon
-*Camille a eu un nouveau groupe d'amies un temps et a été moins présente. Jérem a spiralisé. *Est-ce que je l'ai rendue malheureuse ? Est-ce qu'elle m'aimait vraiment ?* Elle n'a rien dit à Camille — mais s'est éloignée pour se protéger. Camille a fini par venir frapper à sa porte. Jérem a compris ce jour-là que s'éloigner pour éviter la douleur la créait quand même.*
+*Mimi a eu un nouveau groupe d'amies un temps et a été moins présente. Jérem a spiralisé. *Est-ce que je l'ai rendue malheureuse ? Est-ce qu'elle m'aimait vraiment ?* Elle n'a rien dit à Mimi — mais s'est éloignée pour se protéger. Mimi a fini par venir frapper à sa porte. Jérem a compris ce jour-là que s'éloigner pour éviter la douleur la créait quand même.*
 
 ---
 

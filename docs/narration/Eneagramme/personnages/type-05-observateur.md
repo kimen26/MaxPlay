@@ -49,7 +49,7 @@ Ce qu'il cache : un besoin de connexion réelle qu'il n'ose pas vraiment admettr
 - Sa joie est tranquille, concentrée.
 - Un sujet fascinant = la meilleure journée du monde.
 - Peut passer des heures à étudier quelque chose qui l'intéresse, complètement absorbé.
-- Léo déclenche souvent sa joie — en posant des questions que Lulu adore.
+- Raph déclenche souvent sa joie — en posant des questions que Lulu adore.
 
 ### Dans l'ennui
 - L'ennui social (conversations vides, bruits de fond) l'épuise.
@@ -81,14 +81,14 @@ Ce qu'il cache : un besoin de connexion réelle qu'il n'ose pas vraiment admettr
 
 | Personnage | Type | Relation |
 |------------|------|----------|
-| Léo | 7 | Léo pose mille questions et Lulu adore ça. Léo force Lulu à partager. Lulu donne à Léo de la profondeur. |
-| Iris | 4 | Affinité silencieuse. Ils partagent le goût de la profondeur, la préférence pour les choses vraies. |
-| Lila | 9 | Ils partagent l'amour du calme et de l'observation. Amitié douce, peu de mots nécessaires. |
-| Élia | 1 | Respect intellectuel mutuel. Tous les deux rigoureux et sérieux. Élia apprécie sa précision. |
-| Sam | 8 | Sam est fasciné par le cerveau de Lulu. Lulu est fasciné par la force directe de Sam. Respect étrange. |
-| Camille | 2 | Camille lui laisse des petites attentions. Lulu les remarque sans le montrer. Il apprécie sans le dire. |
-| Victor | 3 | Victor est impressionné mais ne veut pas l'admettre. Lulu s'en fiche de la compétition. |
-| Noa | 6 | Lulu est rassurant pour Noa — il analyse les risques. Noa se fie à ses analyses. |
+| Raph | 7 | Raph pose mille questions et Lulu adore ça. Raph force Lulu à partager. Lulu donne à Raph de la profondeur. |
+| Jérem | 4 | Affinité silencieuse. Ils partagent le goût de la profondeur, la préférence pour les choses vraies. |
+| Nono | 9 | Ils partagent l'amour du calme et de l'observation. Amitié douce, peu de mots nécessaires. |
+| Melki | 1 | Respect intellectuel mutuel. Tous les deux rigoureux et sérieux. Melki apprécie sa précision. |
+| Juju | 8 | Juju est fasciné par le cerveau de Lulu. Lulu est fasciné par la force directe de Juju. Respect étrange. |
+| Mimi | 2 | Mimi lui laisse des petites attentions. Lulu les remarque sans le montrer. Il apprécie sans le dire. |
+| Polo | 3 | Polo est impressionné mais ne veut pas l'admettre. Lulu s'en fiche de la compétition. |
+| Pierrot | 6 | Lulu est rassurant pour Pierrot — il analyse les risques. Pierrot se fie à ses analyses. |
 
 ---
 
@@ -107,13 +107,13 @@ Ce qu'il cache : un besoin de connexion réelle qu'il n'ose pas vraiment admettr
 ## Moments émotionnels clés
 
 ### La nuit des étoiles
-*Léo avait insisté pour une nuit dehors à regarder les étoiles. Lulu avait expliqué tout : les constellations, la distance lumière-années, les supernovas. À un moment, Léo avait dit : "Lulu, c'est beau." Pas "c'est intéressant". Beau. Lulu avait levé les yeux du livre qu'il imaginait dans sa tête. Et il avait regardé le ciel différemment. Et il avait pensé : oui.*
+*Raph avait insisté pour une nuit dehors à regarder les étoiles. Lulu avait expliqué tout : les constellations, la distance lumière-années, les supernovas. À un moment, Raph avait dit : "Lulu, c'est beau." Pas "c'est intéressant". Beau. Lulu avait levé les yeux du livre qu'il imaginait dans sa tête. Et il avait regardé le ciel différemment. Et il avait pensé : oui.*
 
 ### Quand il a partagé son trésor
-*Lulu avait un livre sur les fossiles qu'il ne montrait à personne. C'était son objet le plus précieux. Un jour, Iris avait l'air vraiment triste. Lulu ne savait pas quoi faire. Il lui avait tendu le livre sans rien dire. Elle l'avait regardé longuement. Elle lui avait dit : "Merci." C'était la première fois que partager quelque chose lui avait donné plus que ce que ça lui avait pris.*
+*Lulu avait un livre sur les fossiles qu'il ne montrait à personne. C'était son objet le plus précieux. Un jour, Jérem avait l'air vraiment triste. Lulu ne savait pas quoi faire. Il lui avait tendu le livre sans rien dire. Elle l'avait regardé longuement. Elle lui avait dit : "Merci." C'était la première fois que partager quelque chose lui avait donné plus que ce que ça lui avait pris.*
 
 ### La fête trop bruyante
-*Lulu était à une fête d'anniversaire. Trop de bruit, trop de gens, trop de tout. Il était allé s'asseoir dans un couloir. Sam l'avait trouvé là. Sam n'avait pas dit "viens, c'est bien !". Il s'était juste assis à côté. En silence. Pendant dix minutes. Puis il avait dit : "On rentre dans cinq minutes si tu veux." Lulu avait dit oui. C'était parfait.*
+*Lulu était à une fête d'anniversaire. Trop de bruit, trop de gens, trop de tout. Il était allé s'asseoir dans un couloir. Juju l'avait trouvé là. Juju n'avait pas dit "viens, c'est bien !". Il s'était juste assis à côté. En silence. Pendant dix minutes. Puis il avait dit : "On rentre dans cinq minutes si tu veux." Lulu avait dit oui. C'était parfait.*
 
 ---
 

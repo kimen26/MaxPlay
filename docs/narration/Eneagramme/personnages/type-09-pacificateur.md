@@ -1,6 +1,6 @@
 # Nono — Type 9, Le Pacificateur
 
-> ⚠ **Fiche héritée d'un placeholder féminin (Lila) — Nono est masculin.** Pronoms et accords à relire et ajuster à la prochaine passe.
+> ⚠ **Fiche héritée d'un placeholder féminin (Nono) — Nono est masculin.** Pronoms et accords à relire et ajuster à la prochaine passe.
 *"Ça va aller. Tout le monde peut s'entendre."*
 
 ---
@@ -10,7 +10,7 @@
 - **Prénom complet** : Noé
 - **Diminutif (usage courant ≈ 4/5 du temps)** : **Nono**
 - **Notation** : Type9 / Titi9 (origine : Christ)
-- **Genre** : M (placeholder Lila était F — voir note en tête)
+- **Genre** : M (placeholder Nono était F — voir note en tête)
 - **Type** : 9 — Le Médiateur / Le Pacificateur
 - **Rôle dans l'histoire** : Présence apaisante, colle le groupe ensemble
 - **Aile dominante** : 9w8 (une douceur qui a un fond solide)
@@ -85,14 +85,14 @@ Ce qu'elle cache : qu'elle existe, elle aussi. Qu'elle a des envies, des opinion
 
 | Personnage | Type | Relation |
 |------------|------|----------|
-| Léo | 7 | Elle l'aime et l'apaise. Quand Léo court trop vite, Nono lui dit doucement "t'inquiète, c'est là". |
-| Sam | 8 | Elle voit la douceur de Sam sans qu'il ait besoin de l'expliquer. Il le sait. Il la respecte pour ça. |
-| Noa | 6 | Ils se sécurisent mutuellement. Mais peuvent aussi se renforcer dans l'inquiétude. |
-| Élia | 1 | Élia apprécie l'harmonie de Nono mais peut la trouver trop passive. Nono ne s'en offusque pas. |
-| Camille | 2 | Elles prennent soin l'une de l'autre. Mais aucune ne dit vraiment ce dont elle a besoin. |
-| Theo | 5 | Ils partagent l'amour du silence et de l'observation. Amitié tranquille et profonde. |
-| Victor | 3 | Victor ne comprend pas trop Nono. Elle ne court pas après la victoire. Il respecte ça malgré lui. |
-| Iris | 4 | Iris pense parfois que Nono n'a pas de profondeur. Nono ne se défend pas. Mais Iris finit par voir — la profondeur de Nono est juste calme. |
+| Raph | 7 | Elle l'aime et l'apaise. Quand Raph court trop vite, Nono lui dit doucement "t'inquiète, c'est là". |
+| Juju | 8 | Elle voit la douceur de Juju sans qu'il ait besoin de l'expliquer. Il le sait. Il la respecte pour ça. |
+| Pierrot | 6 | Ils se sécurisent mutuellement. Mais peuvent aussi se renforcer dans l'inquiétude. |
+| Melki | 1 | Melki apprécie l'harmonie de Nono mais peut la trouver trop passive. Nono ne s'en offusque pas. |
+| Mimi | 2 | Elles prennent soin l'une de l'autre. Mais aucune ne dit vraiment ce dont elle a besoin. |
+| Lulu | 5 | Ils partagent l'amour du silence et de l'observation. Amitié tranquille et profonde. |
+| Polo | 3 | Polo ne comprend pas trop Nono. Elle ne court pas après la victoire. Il respecte ça malgré lui. |
+| Jérem | 4 | Jérem pense parfois que Nono n'a pas de profondeur. Nono ne se défend pas. Mais Jérem finit par voir — la profondeur de Nono est juste calme. |
 
 ---
 
@@ -101,7 +101,7 @@ Ce qu'elle cache : qu'elle existe, elle aussi. Qu'elle a des envies, des opinion
 - *"Ça m'est égal."* (sincère)
 - *"Vous voulez quoi, vous ?"* (avant de choisir)
 - *"C'est pas grave."* (pour elle-même)
-- *"Je crois que Léo est un peu triste aujourd'hui."* (elle voit ce que les autres ne voient pas)
+- *"Je crois que Raph est un peu triste aujourd'hui."* (elle voit ce que les autres ne voient pas)
 - *"On peut pas décider que tout le monde soit d'accord ?"*
 - *"Attends, ça commence à aller trop vite."*
 - *"Je sais pas... ce que je veux."* (honnêteté touchante)
@@ -114,7 +114,7 @@ Ce qu'elle cache : qu'elle existe, elle aussi. Qu'elle a des envies, des opinion
 *Tout le groupe voulait jouer à un jeu que Nono n'aimait pas. Pour la première fois, elle a dit : "Non, moi je veux pas." Silence. Personne ne s'est fâché. Le groupe a joué à autre chose. Nono s'est sentie bizarre — et bien. Comme si quelque chose s'était déposé à l'endroit juste.*
 
 ### Quand le groupe s'est disputé à cause d'elle
-*Deux amis se sont disputés pour décider où on allait jouer avec Nono. Elle a senti que c'était sa faute. Elle a essayé de les réconcilier sans prendre position. Mais Léo lui a dit : "Nono, dis juste où TOI tu veux aller." Elle a compris ce jour-là que son absence de choix peut, parfois, créer plus de désordre que son choix.*
+*Deux amis se sont disputés pour décider où on allait jouer avec Nono. Elle a senti que c'était sa faute. Elle a essayé de les réconcilier sans prendre position. Mais Raph lui a dit : "Nono, dis juste où TOI tu veux aller." Elle a compris ce jour-là que son absence de choix peut, parfois, créer plus de désordre que son choix.*
 
 ### La nuit où elle ne savait plus qui elle était
 *Une nuit, Nono a réalisé qu'elle avait passé toute la journée à faire ce que les autres voulaient, à dire ce qu'ils voulaient entendre, à adopter les opinions des uns et des autres. Et avant de dormir elle s'est demandé : "Mais moi, je suis qui ?"  Elle n'a pas pleuré. Elle a juste gardé cette question, doucement, comme quelque chose d'important.*

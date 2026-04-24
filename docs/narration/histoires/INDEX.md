@@ -8,16 +8,24 @@
 
 | Titre | Personnages | Statut | Structure | Fichier |
 |-------|-------------|--------|-----------|---------|
-| Le Pont Cassé | Wex · Type1 · Type8 *(anciens placeholders Élia/Sam)* | V1 — comité lu | Kishōtenketsu (sans antagoniste) | [le-pont-casse.md](le-pont-casse.md) |
+| Le Pont Cassé | Wex · Melki (Titi1) · Juju (Titi8) | V1 — comité lu | Kishōtenketsu (sans antagoniste) | [le-pont-casse.md](le-pont-casse.md) |
+
+---
+
+## Banc d'essai — axes en stock
+
+→ [axes-histoires-en-stock.md](axes-histoires-en-stock.md) — 10 axes unitaires (1 par perso) + 5 axes transversaux.
+**Règle :** un axe ne devient une histoire qu'après passage de la check-list de candidature.
 
 ---
 
 ## Ajouter une histoire
 
-1. Copier `_gabarit.md` → `<titre-kebab-case>.md`
-2. Remplir les sections
-3. Ajouter une ligne dans le catalogue ci-dessus
-4. Marquer statut : `brouillon` → `V1` → `comité lu` → `validé`
+1. Sélectionner un axe mûr depuis `axes-histoires-en-stock.md` (check-list validée)
+2. Copier `_gabarit.md` → `<titre-kebab-case>.md`
+3. Remplir les sections
+4. Ajouter une ligne dans le catalogue ci-dessus
+5. Marquer statut : `brouillon` → `V1` → `comité lu` → `validé`
 
 ---
 

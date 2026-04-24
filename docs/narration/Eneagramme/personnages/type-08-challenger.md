@@ -8,7 +8,7 @@
 - **Prénom complet** : Judith
 - **Diminutif (usage courant ≈ 4/5 du temps)** : **Juju**
 - **Notation** : Type8 / Titi8 (origine : Christ)
-- **Genre** : F (placeholder Sam était ambigu — pronoms à relire)
+- **Genre** : F (placeholder Juju était ambigu — pronoms à relire)
 - **Type** : 8 — Le Chef / Le Challenger
 - **Rôle dans l'histoire** : Proche de Wex, protectrice du groupe
 - **Aile dominante** : 8w7 (expansif, joueur, intensément vivant)
@@ -82,14 +82,14 @@ Ce qu'il cache : une sensibilité profonde qu'il protège comme un trésor dange
 
 | Personnage | Type | Relation |
 |------------|------|----------|
-| Léo | 7 | Son meilleur ami. Juju ne dit pas "je t'aime" mais il défend Léo contre n'importe qui. |
-| Lila | 9 | Il la respecte profondément. Sa douceur ne lui paraît pas faible — elle lui paraît sage. |
-| Élia | 1 | Ils se respectent. Deux forts, deux principes différents. Peuvent s'affronter mais se comprennent. |
-| Noa | 6 | Juju est un peu exaspéré par les peurs de Noa. Mais il le protège instinctivement. |
-| Camille | 2 | Camille prend soin de Juju — ce qu'il tolère mal en général, sauf d'elle. |
-| Theo | 5 | Fasciné par le cerveau de Theo. Relation étrange mais de respect mutuel. |
-| Victor | 3 | Compétition directe. Juju n'aime pas que Victor cache ce qu'il pense. |
-| Iris | 4 | Il ne comprend pas Iris mais il la laisse tranquille — il sait instinctivement qu'elle ne veut pas être "réparée". |
+| Raph | 7 | Son meilleur ami. Juju ne dit pas "je t'aime" mais il défend Raph contre n'importe qui. |
+| Nono | 9 | Il la respecte profondément. Sa douceur ne lui paraît pas faible — elle lui paraît sage. |
+| Melki | 1 | Ils se respectent. Deux forts, deux principes différents. Peuvent s'affronter mais se comprennent. |
+| Pierrot | 6 | Juju est un peu exaspéré par les peurs de Pierrot. Mais il le protège instinctivement. |
+| Mimi | 2 | Mimi prend soin de Juju — ce qu'il tolère mal en général, sauf d'elle. |
+| Lulu | 5 | Fasciné par le cerveau de Lulu. Relation étrange mais de respect mutuel. |
+| Polo | 3 | Compétition directe. Juju n'aime pas que Polo cache ce qu'il pense. |
+| Jérem | 4 | Il ne comprend pas Jérem mais il la laisse tranquille — il sait instinctivement qu'elle ne veut pas être "réparée". |
 
 ---
 
@@ -108,7 +108,7 @@ Ce qu'il cache : une sensibilité profonde qu'il protège comme un trésor dange
 ## Moments émotionnels clés
 
 ### Le jour où il a pleuré sans le vouloir
-*Le chien de Juju est mort. Il a dit que ça allait. Il a dit que c'était juste un chien. La nuit, Léo l'a entendu pleurer derrière sa porte. Léo n'a rien dit. Le lendemain, Juju a juste dit "merci d'être là" sans expliquer. Léo n'a pas demandé. C'était suffisant.*
+*Le chien de Juju est mort. Il a dit que ça allait. Il a dit que c'était juste un chien. La nuit, Raph l'a entendu pleurer derrière sa porte. Raph n'a rien dit. Le lendemain, Juju a juste dit "merci d'être là" sans expliquer. Raph n'a pas demandé. C'était suffisant.*
 
 ### La fois où il a fait peur à quelqu'un sans le vouloir
 *Juju s'est mis en colère dans la cour. Pas méchamment — mais fort. Un plus petit a eu peur. Juju n'a pas compris d'abord pourquoi. Puis il a vu le visage du petit. Et pour la première fois, il a ressenti : ma force peut blesser sans que je le veuille. Cette découverte a changé quelque chose.*

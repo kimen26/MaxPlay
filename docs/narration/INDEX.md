@@ -71,7 +71,7 @@
 3. **Ombre Éternelle** — concept principal ou laisser en standby ?
 4. **Question fractale** (2026-04-16) — les persos savent-ils qu'ils sont dans le rêve de... ?
 5. **Compagnons** — dans toutes les histoires ou progressivement ?
-6. **Univers explicite ou en fond** dans les histoires ?
+6. ~~Univers explicite ou en fond ?~~ ✅ **tranché (2026-04-24)** : univers IMPLICITE dans les histoires enfantines (pas de noms-concepts nommés), ennéatypes DILUÉS dans actions/interactions (jamais étiquetés). Infusion progressive au fil des récits. Voir `histoires/INDEX.md` § Règles.
 
 ---
 

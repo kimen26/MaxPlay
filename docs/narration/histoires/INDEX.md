@@ -8,7 +8,8 @@
 
 | Titre | Personnages | Statut | Structure | Fichier |
 |-------|-------------|--------|-----------|---------|
-| Le Pont Cassé | Wex (#7) · Élia (#1) · Sam (#8) | V1 — comité lu | Kishōtenketsu (sans antagoniste) | [le-pont-casse.md](le-pont-casse.md) |
+| Le Pont Cassé | Wex · Type1 · Type8 *(anciens placeholders Élia/Sam)* | V1 — comité lu | Kishōtenketsu (sans antagoniste) | [le-pont-casse.md](le-pont-casse.md) |
+| Natation *(en préparation)* | — à définir — | brouillon | — | [natation.md](natation.md) |
 
 ---
 
@@ -23,6 +24,7 @@
 
 ## Règles d'écriture (rappels)
 
+- **Notation personnages : `TypeN` / `TitiN` × origine** (voir [../personnages/notation-types.md](../personnages/notation-types.md)). Origine par défaut : **Christ**. Wex reste toujours **Wex** (hors-système).
 - **Ennéagramme = grille, pas cage.** Les persos agissent selon leur type mais peuvent surprendre.
 - **Kishōtenketsu privilégié** (exposition · développement · twist · résolution, **sans antagoniste**)
 - **Univers en fond**, pas en avant-scène (merveilleux discret)

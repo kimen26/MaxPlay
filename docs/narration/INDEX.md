@@ -9,7 +9,7 @@
 
 | Quoi | Statut |
 |------|--------|
-| Personnages | 9 définis (ennéagramme) — ✅ **casting V1 biblique validé** (Melki, Marie, Paul, Jérémie, Luc, Pierre, Wex, Judith, Noé). Propagation dans les fiches à faire. |
+| Personnages | 9 définis (ennéagramme) — ✅ **casting V1 "Christ" validé** (Melki, Marie, Paul, Jérémie, Luc, Pierre, **Raph**, Judith, Noé) + **Wex héros hors-système** (pas d'ennéatype). Notation `TypeN`/`TitiN × origine` pour écrire les textes. Propagation dans les fiches à faire. |
 | Univers | post-Éveil, Printemps de l'Éveil — distillé dans `univers/` |
 | Direction | **monde sobre, merveilleux discret** (vu à travers enfant né dedans) |
 | Histoires | "Le Pont Cassé" (Wex + Élia + Sam) — V1 complète, comité de lecture fait |
@@ -28,9 +28,10 @@
 ### Personnages
 | Fichier | Quand le lire |
 |---------|--------------|
-| [personnages/INDEX.md](personnages/INDEX.md) | **Toujours — avant d'écrire un perso** (casting V1 biblique validé) |
-| [personnages/prénoms-candidats.md](personnages/prénoms-candidats.md) | V1 biblique figée + prénoms écartés par raison |
-| [personnages/prénoms-par-origine.md](personnages/prénoms-par-origine.md) | Matrice cross-country (Wex fixe + équipe variable) |
+| [personnages/INDEX.md](personnages/INDEX.md) | **Toujours — avant d'écrire un perso** (casting V1 "Christ" validé, Wex hors-système) |
+| [personnages/notation-types.md](personnages/notation-types.md) | **Convention d'écriture `TypeN` / `TitiN × origine`** — à utiliser dans toutes les histoires et orchestrations |
+| [personnages/prénoms-candidats.md](personnages/prénoms-candidats.md) | V1 "Christ" figée + prénoms écartés par raison |
+| [personnages/prénoms-par-origine.md](personnages/prénoms-par-origine.md) | Matrice cross-country (Wex hors-système + 9 copains variables) |
 | [Eneagramme/personnages/](Eneagramme/personnages/) | Fiches détaillées par type |
 | [Eneagramme/situations/emotions-universelles.md](Eneagramme/situations/emotions-universelles.md) | Pour une réaction émotionnelle précise (9×9) |
 | [Eneagramme/ressources/guide-auteur.md](Eneagramme/ressources/guide-auteur.md) | Pour vérifier la cohérence d'une scène |

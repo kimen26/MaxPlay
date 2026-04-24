@@ -8,21 +8,29 @@
 
 ---
 
-## Casting V1 — biblique/NT (validé 2026-04-24)
+## Casting V1 — origine « Christ » (validé 2026-04-24)
 
-| # | Type | Prénom | Diminutif | Figure | Genre |
+> **Wex est hors liste** (héros universel, sans ennéatype assigné pour le moment). Voir section dédiée plus bas.
+
+| Notation | Type | Prénom | Diminutif | Figure | Genre |
 |---|------|--------|-----------|--------|-------|
-| 1 | Perfectionniste | **Melki** | Melki | Melchisédech — *roi de justice* (Hé 7) | M |
-| 2 | Aidant | **Marie** | Mimi, Mariette | Marie + Marie-Madeleine | F |
-| 3 | Performeur | **Paul** | Paulo | Saul → Paul — transformation, "je me suis fait tout à tous" | M |
-| 4 | Individualiste | **Jérémie** | Jerem, Jéré | Prophète Jérémie — Lamentations, poète de l'intense | M |
-| 5 | Observateur | **Luc** | Lulu | Évangéliste Luc — médecin, "ayant tout recherché avec soin" (Lc 1:3) | M |
-| 6 | Loyal | **Pierre** | Pierrot | Apôtre Pierre — le roc qui doute, renie, revient | M |
-| 7 | **Enthousiaste — Héros** | **Wex** ✓ | Wex | Héros universel, n'appartient à aucune tradition | M |
-| 8 | Challenger | **Judith** | Judy | Livre de Judith — tranche Holopherne pour sauver les siens | F |
-| 9 | Pacificateur | **Noé** | Noé, No | Noé — arche, arc-en-ciel, alliance après le chaos | M |
+| Type1 / Titi1 | Perfectionniste | **Melki** | Melki | Melchisédech — *roi de justice* (Hé 7) | M |
+| Type2 / Titi2 | Aidant | **Marie** | Mimi, Mariette | Marie + Marie-Madeleine | F |
+| Type3 / Titi3 | Performeur | **Paul** | Paulo | Saul → Paul — transformation, "je me suis fait tout à tous" | M |
+| Type4 / Titi4 | Individualiste | **Jérémie** | Jerem, Jéré | Prophète Jérémie — Lamentations, poète de l'intense | M |
+| Type5 / Titi5 | Observateur | **Luc** | Lulu | Évangéliste Luc — médecin, "ayant tout recherché avec soin" (Lc 1:3) | M |
+| Type6 / Titi6 | Loyal | **Pierre** | Pierrot | Apôtre Pierre — le roc qui doute, renie, revient | M |
+| Type7 / Titi7 | Enthousiaste | **Raph** | Raph, Rafa | Archange Raphaël — compagnon joyeux de Tobie (apocryphe) | F |
+| Type8 / Titi8 | Challenger | **Judith** | Judy | Livre de Judith — tranche Holopherne pour sauver les siens | F |
+| Type9 / Titi9 | Pacificateur | **Noé** | Noé, No | Noé — arche, arc-en-ciel, alliance après le chaos | M |
 
-**Bilan genre :** 2F/7M. Si besoin d'une 3e fille : Noé → **Noémie** (même source, féminin) ou Luc → **Sophie** (*Hagia Sophia* = Sagesse personnifiée, Pr 8 + Sagesse de Salomon).
+**Bilan genre casting Christ :** 3F (Marie, Raph, Judith) / 6M.
+
+### Héros hors-système
+
+| Prénom | Rôle | Ennéatype | Notes |
+|--------|------|-----------|-------|
+| **Wex** | Héros universel | **Aucun pour le moment** | N'appartient à aucune tradition. Jamais traduit dans les versions cross-country. À attribuer un ennéatype plus tard si nécessaire. |
 
 **Décisions explicites :**
 - Mel → **Melki** (Mel "sonne américain/rebeu", Melki garde la racine *melek*/roi sans lourdeur).
@@ -106,6 +114,12 @@ Discussion auteur + 2 IA externes → convergence sur le casting V1 biblique ci-
 
 ### Questions ouvertes V1
 
-1. **2F/7M vs 3F** — garder Noé (M) ou basculer Noémie (F) ? Luc (M) ou Sophie (F) ?
-2. **Raphaëlle (F) — proposée par IA#2 pour le #7** : conflit avec Wex (héros fixe = #7). Si on veut une 3e fille biblique, préférer Noémie ou Sophie plutôt que de toucher au #7.
-3. **Propagation** — grande passe de renommage dans `Eneagramme/personnages/*` et `histoires/le-pont-casse.md`, à faire quand V1 sera confirmé stable.
+1. **Wex ennéatype** — laissé volontairement non-assigné. À trancher plus tard si le besoin narratif l'exige.
+2. **Propagation** — grande passe de renommage dans `Eneagramme/personnages/*` et `histoires/le-pont-casse.md`, à faire quand V1 sera confirmé stable. Utiliser la notation `TypeN / TitiN × origine` pour référencer les profils dans les textes (voir [notation-types.md](notation-types.md)).
+
+### Décisions 2026-04-24 (deuxième passe)
+
+- **Wex sorti de la liste typée** — héros hors-système, sans ennéatype pour le moment.
+- **Type7 = Raph (F)** pour le casting Christ (archange Raphaël, compagnon joyeux de Tobie — apocryphe).
+- **Origine renommée "Christ"** (plus court et plus clair que "Biblique/NT"). Reste la valeur **par défaut** quand on écrit un texte sans préciser l'origine.
+- **Notation `TypeN` / `TitiN`** introduite pour les textes et fiches (voir [notation-types.md](notation-types.md)).

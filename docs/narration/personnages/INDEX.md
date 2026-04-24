@@ -1,27 +1,35 @@
 # Personnages — Index
 
-> ✅ **Casting V1 validé 2026-04-24** — biblique/NT (voir tableau ci-dessous).
-> Concept cross-country : **Wex (héros, #7) est universel**, les 8 autres changent selon l'origine (biblique, hébreu, japonais, swahili...).
+> ✅ **Casting V1 validé 2026-04-24** — origine **Christ** (voir tableau ci-dessous).
+> **Wex = héros hors-système** — n'a pas d'ennéatype assigné pour le moment, n'appartient à aucune tradition, jamais traduit.
+> Concept cross-country : les 8 copains changent selon l'origine (Christ, Hébreu/AT, Japonais/Ghibli, Swahili…).
 > Les **ennéatypes et comportements restent identiques** dans toutes les versions.
 > → [prénoms-par-origine.md](prénoms-par-origine.md) pour la matrice.
+> → [notation-types.md](notation-types.md) pour la convention `TypeN / TitiN × origine`.
 
 ---
 
-## Tableau des 9 — Casting V1 (biblique/NT)
+## Tableau des 9 — Casting V1 (origine : Christ)
 
-| # | Type | Prénom V1 | Diminutif | Essence | Meilleur ami |
+| Notation | Type | Prénom V1 | Diminutif | Essence | Meilleur ami |
 |---|------|-----------|-----------|---------|--------------|
-| 1 | Perfectionniste | **Melki** | Melki | Être bon·ne | Pierre |
-| 2 | Aidant | **Marie** (F) | Mimi | Être aimé·e | Noé |
-| 3 | Performeur | **Paul** | Paulo | Être valorisé·e | — |
-| 4 | Individualiste | **Jérémie** | Jerem | Être soi-même | Luc |
-| 5 | Observateur | **Luc** | Lulu | Comprendre | Jérémie |
-| 6 | Loyal | **Pierre** | Pierrot | Avoir du soutien | Melki |
-| 7 | **Enthousiaste — Héros** | **Wex** ✓ universel | Wex | Être comblé | Judith |
-| 8 | Challenger | **Judith** (F) | Judy | Être fort·e | Wex |
-| 9 | Pacificateur | **Noé** | Noé | La paix | Marie |
+| Type1 / Titi1 | Perfectionniste | **Melki** | Melki | Être bon·ne | Pierre |
+| Type2 / Titi2 | Aidant | **Marie** (F) | Mimi | Être aimé·e | Noé |
+| Type3 / Titi3 | Performeur | **Paul** | Paulo | Être valorisé·e | — |
+| Type4 / Titi4 | Individualiste | **Jérémie** | Jerem | Être soi-même | Luc |
+| Type5 / Titi5 | Observateur | **Luc** | Lulu | Comprendre | Jérémie |
+| Type6 / Titi6 | Loyal | **Pierre** | Pierrot | Avoir du soutien | Melki |
+| Type7 / Titi7 | Enthousiaste | **Raph** (F) | Raph, Rafa | Être comblé·e | Wex |
+| Type8 / Titi8 | Challenger | **Judith** (F) | Judy | Être fort·e | Wex |
+| Type9 / Titi9 | Pacificateur | **Noé** | Noé | La paix | Marie |
 
-**Bilan genre :** 2F / 7M. Question ouverte — basculer Noé→Noémie ou Luc→Sophie pour obtenir 3F ?
+### Hors-système
+
+| Rôle | Prénom | Statut |
+|------|--------|--------|
+| **Héros universel** | **Wex** ✓ | **Sans ennéatype pour le moment.** Jamais traduit. Pivot de toutes les versions cross-country. |
+
+**Bilan genre casting Christ :** 3F (Marie, Raph, Judith) / 6M + Wex hors-système.
 
 > ⚠ **Les fiches `Eneagramme/personnages/type-XX-*.md` utilisent encore les anciens placeholders** (Élia, Camille, Victor, Iris, Theo, Noa, Sam, Lila).
 > Grande passe de renommage à planifier (cf. [tasks/BACKLOG.md](../../../tasks/BACKLOG.md)).

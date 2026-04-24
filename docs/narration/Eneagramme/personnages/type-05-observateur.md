@@ -1,11 +1,14 @@
-# Theo — Type 5, L'Observateur
+# Lulu — Type 5, L'Observateur
 *"Attends, laisse-moi d'abord comprendre comment ça marche."*
 
 ---
 
 ## Identité
 
-- **Prénom** : Theo
+- **Prénom complet** : Luc
+- **Diminutif (usage courant ≈ 4/5 du temps)** : **Lulu**
+- **Notation** : Type5 / Titi5 (origine : Christ)
+- **Genre** : M
 - **Type** : 5 — L'Enquêteur / L'Observateur
 - **Rôle dans l'histoire** : Le cerveau du groupe, la sagesse tranquille
 - **Aile dominante** : 5w4 (intellectuel ET artistiquement curieux)
@@ -17,7 +20,7 @@
 
 ## Portrait vivant
 
-Theo observe. C'est sa façon d'être dans le monde — en regardant d'abord, en participant ensuite, et seulement si nécessaire. Dans la cour, il est souvent légèrement à l'écart. Pas triste — juste en mode "collecte d'informations".
+Lulu observe. C'est sa façon d'être dans le monde — en regardant d'abord, en participant ensuite, et seulement si nécessaire. Dans la cour, il est souvent légèrement à l'écart. Pas triste — juste en mode "collecte d'informations".
 
 Il sait des choses. Des choses précises, étranges, fascinantes. Pourquoi les araignées font des toiles en spirale. Comment fonctionne un sablier. La différence entre un météore et une météorite. Les autres l'écoutent — pas parce qu'il est charismatique, mais parce qu'il est *précis*.
 
@@ -40,13 +43,13 @@ Ce qu'il cache : un besoin de connexion réelle qu'il n'ose pas vraiment admettr
 
 ---
 
-## Comment Theo se comporte selon les situations
+## Comment Lulu se comporte selon les situations
 
 ### Dans la joie / le plaisir
 - Sa joie est tranquille, concentrée.
 - Un sujet fascinant = la meilleure journée du monde.
 - Peut passer des heures à étudier quelque chose qui l'intéresse, complètement absorbé.
-- Léo déclenche souvent sa joie — en posant des questions que Theo adore.
+- Léo déclenche souvent sa joie — en posant des questions que Lulu adore.
 
 ### Dans l'ennui
 - L'ennui social (conversations vides, bruits de fond) l'épuise.
@@ -74,22 +77,22 @@ Ce qu'il cache : un besoin de connexion réelle qu'il n'ose pas vraiment admettr
 
 ---
 
-## Theo avec les autres
+## Lulu avec les autres
 
 | Personnage | Type | Relation |
 |------------|------|----------|
-| Léo | 7 | Léo pose mille questions et Theo adore ça. Léo force Theo à partager. Theo donne à Léo de la profondeur. |
+| Léo | 7 | Léo pose mille questions et Lulu adore ça. Léo force Lulu à partager. Lulu donne à Léo de la profondeur. |
 | Iris | 4 | Affinité silencieuse. Ils partagent le goût de la profondeur, la préférence pour les choses vraies. |
 | Lila | 9 | Ils partagent l'amour du calme et de l'observation. Amitié douce, peu de mots nécessaires. |
 | Élia | 1 | Respect intellectuel mutuel. Tous les deux rigoureux et sérieux. Élia apprécie sa précision. |
-| Sam | 8 | Sam est fasciné par le cerveau de Theo. Theo est fasciné par la force directe de Sam. Respect étrange. |
-| Camille | 2 | Camille lui laisse des petites attentions. Theo les remarque sans le montrer. Il apprécie sans le dire. |
-| Victor | 3 | Victor est impressionné mais ne veut pas l'admettre. Theo s'en fiche de la compétition. |
-| Noa | 6 | Theo est rassurant pour Noa — il analyse les risques. Noa se fie à ses analyses. |
+| Sam | 8 | Sam est fasciné par le cerveau de Lulu. Lulu est fasciné par la force directe de Sam. Respect étrange. |
+| Camille | 2 | Camille lui laisse des petites attentions. Lulu les remarque sans le montrer. Il apprécie sans le dire. |
+| Victor | 3 | Victor est impressionné mais ne veut pas l'admettre. Lulu s'en fiche de la compétition. |
+| Noa | 6 | Lulu est rassurant pour Noa — il analyse les risques. Noa se fie à ses analyses. |
 
 ---
 
-## Phrases typiques de Theo
+## Phrases typiques de Lulu
 
 - *"Attends, je comprends pas encore comment ça marche."*
 - *"En fait, c'est plus complexe que ça."*
@@ -104,13 +107,13 @@ Ce qu'il cache : un besoin de connexion réelle qu'il n'ose pas vraiment admettr
 ## Moments émotionnels clés
 
 ### La nuit des étoiles
-*Léo avait insisté pour une nuit dehors à regarder les étoiles. Theo avait expliqué tout : les constellations, la distance lumière-années, les supernovas. À un moment, Léo avait dit : "Theo, c'est beau." Pas "c'est intéressant". Beau. Theo avait levé les yeux du livre qu'il imaginait dans sa tête. Et il avait regardé le ciel différemment. Et il avait pensé : oui.*
+*Léo avait insisté pour une nuit dehors à regarder les étoiles. Lulu avait expliqué tout : les constellations, la distance lumière-années, les supernovas. À un moment, Léo avait dit : "Lulu, c'est beau." Pas "c'est intéressant". Beau. Lulu avait levé les yeux du livre qu'il imaginait dans sa tête. Et il avait regardé le ciel différemment. Et il avait pensé : oui.*
 
 ### Quand il a partagé son trésor
-*Theo avait un livre sur les fossiles qu'il ne montrait à personne. C'était son objet le plus précieux. Un jour, Iris avait l'air vraiment triste. Theo ne savait pas quoi faire. Il lui avait tendu le livre sans rien dire. Elle l'avait regardé longuement. Elle lui avait dit : "Merci." C'était la première fois que partager quelque chose lui avait donné plus que ce que ça lui avait pris.*
+*Lulu avait un livre sur les fossiles qu'il ne montrait à personne. C'était son objet le plus précieux. Un jour, Iris avait l'air vraiment triste. Lulu ne savait pas quoi faire. Il lui avait tendu le livre sans rien dire. Elle l'avait regardé longuement. Elle lui avait dit : "Merci." C'était la première fois que partager quelque chose lui avait donné plus que ce que ça lui avait pris.*
 
 ### La fête trop bruyante
-*Theo était à une fête d'anniversaire. Trop de bruit, trop de gens, trop de tout. Il était allé s'asseoir dans un couloir. Sam l'avait trouvé là. Sam n'avait pas dit "viens, c'est bien !". Il s'était juste assis à côté. En silence. Pendant dix minutes. Puis il avait dit : "On rentre dans cinq minutes si tu veux." Theo avait dit oui. C'était parfait.*
+*Lulu était à une fête d'anniversaire. Trop de bruit, trop de gens, trop de tout. Il était allé s'asseoir dans un couloir. Sam l'avait trouvé là. Sam n'avait pas dit "viens, c'est bien !". Il s'était juste assis à côté. En silence. Pendant dix minutes. Puis il avait dit : "On rentre dans cinq minutes si tu veux." Lulu avait dit oui. C'était parfait.*
 
 ---
 
@@ -126,8 +129,8 @@ Ce qu'il cache : un besoin de connexion réelle qu'il n'ose pas vraiment admettr
 
 ## Note pour l'auteur
 
-Theo est le personnage qui enseigne que la solitude intellectuelle ne suffit pas — que le savoir partagé crée quelque chose que le savoir accumulé seul ne peut pas créer. Son arc est d'apprendre à faire confiance au monde — et aux gens — assez pour s'y engager vraiment.
+Lulu est le personnage qui enseigne que la solitude intellectuelle ne suffit pas — que le savoir partagé crée quelque chose que le savoir accumulé seul ne peut pas créer. Son arc est d'apprendre à faire confiance au monde — et aux gens — assez pour s'y engager vraiment.
 
-Les scènes les plus touchantes de Theo sont celles où il *donne* quelque chose de lui-même — pas de l'information, mais de la présence. De la chaleur. C'est là qu'il découvre que la connexion ne l'épuise pas — elle le nourrit.
+Les scènes les plus touchantes de Lulu sont celles où il *donne* quelque chose de lui-même — pas de l'information, mais de la présence. De la chaleur. C'est là qu'il découvre que la connexion ne l'épuise pas — elle le nourrit.
 
 *Source théorique : Type 5 Chabreuil / Riso-Hudson. Aile 4, intégration vers 8, désintégration vers 7.*

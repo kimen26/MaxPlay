@@ -1,13 +1,16 @@
-# Sam — Type 8, Le Challenger
+# Juju — Type 8, Le Challenger
 *"Dis-le clairement. Je veux savoir la vérité."*
 
 ---
 
 ## Identité
 
-- **Prénom** : Sam
+- **Prénom complet** : Judith
+- **Diminutif (usage courant ≈ 4/5 du temps)** : **Juju**
+- **Notation** : Type8 / Titi8 (origine : Christ)
+- **Genre** : F (placeholder Sam était ambigu — pronoms à relire)
 - **Type** : 8 — Le Chef / Le Challenger
-- **Rôle dans l'histoire** : Meilleur ami de Léo, protecteur du groupe
+- **Rôle dans l'histoire** : Proche de Wex, protectrice du groupe
 - **Aile dominante** : 8w7 (expansif, joueur, intensément vivant)
 - **Centre** : Ventre / Instinctif
 - **Couleur** : Rouge / Bordeaux
@@ -17,11 +20,11 @@
 
 ## Portrait vivant
 
-Sam prend de la place. Pas méchamment — naturellement. Quand il entre dans la cour, les autres le regardent. Sa voix est un peu plus forte, ses gestes un peu plus amples. Il s'installe comme si l'espace lui appartenait déjà.
+Juju prend de la place. Pas méchamment — naturellement. Quand il entre dans la cour, les autres le regardent. Sa voix est un peu plus forte, ses gestes un peu plus amples. Il s'installe comme si l'espace lui appartenait déjà.
 
 Il ne ment jamais. C'est une règle qu'il s'est faite tout seul, sans que personne le lui demande. *"Si t'es pas d'accord, dis-le."* Il déteste les sous-entendus, les faux-semblants, les gens qui sourient mais pensent autre chose.
 
-Sa force impressionne. Sa tendresse surprend — parce qu'elle est bien cachée. Sam ne fait pas de câlins facilement. Mais quand son petit frère est malade, c'est lui qui reste à côté du lit toute la nuit en disant que c'est bon, qu'il surveille.
+Sa force impressionne. Sa tendresse surprend — parce qu'elle est bien cachée. Juju ne fait pas de câlins facilement. Mais quand son petit frère est malade, c'est lui qui reste à côté du lit toute la nuit en disant que c'est bon, qu'il surveille.
 
 Ce qu'on voit : la force, la franchise, l'assurance.
 Ce qu'il cache : une sensibilité profonde qu'il protège comme un trésor dangereux.
@@ -40,7 +43,7 @@ Ce qu'il cache : une sensibilité profonde qu'il protège comme un trésor dange
 
 ---
 
-## Comment Sam se comporte selon les situations
+## Comment Juju se comporte selon les situations
 
 ### Dans la joie / le plaisir
 - Rit fort, joue à fond, compétiteur joyeux.
@@ -49,7 +52,7 @@ Ce qu'il cache : une sensibilité profonde qu'il protège comme un trésor dange
 - Teste les limites (des règles, des autres) pour voir ce qui est "vrai".
 
 ### Dans l'ennui
-- L'ennui chez Sam se transforme vite en provocation.
+- L'ennui chez Juju se transforme vite en provocation.
 - *"Allez, on fait quelque chose de vrai !"*
 - Peut entraîner les autres dans des jeux qui deviennent un peu trop intenses.
 - A besoin d'action, de défi physique, de choses réelles.
@@ -75,22 +78,22 @@ Ce qu'il cache : une sensibilité profonde qu'il protège comme un trésor dange
 
 ---
 
-## Sam avec les autres
+## Juju avec les autres
 
 | Personnage | Type | Relation |
 |------------|------|----------|
-| Léo | 7 | Son meilleur ami. Sam ne dit pas "je t'aime" mais il défend Léo contre n'importe qui. |
+| Léo | 7 | Son meilleur ami. Juju ne dit pas "je t'aime" mais il défend Léo contre n'importe qui. |
 | Lila | 9 | Il la respecte profondément. Sa douceur ne lui paraît pas faible — elle lui paraît sage. |
 | Élia | 1 | Ils se respectent. Deux forts, deux principes différents. Peuvent s'affronter mais se comprennent. |
-| Noa | 6 | Sam est un peu exaspéré par les peurs de Noa. Mais il le protège instinctivement. |
-| Camille | 2 | Camille prend soin de Sam — ce qu'il tolère mal en général, sauf d'elle. |
+| Noa | 6 | Juju est un peu exaspéré par les peurs de Noa. Mais il le protège instinctivement. |
+| Camille | 2 | Camille prend soin de Juju — ce qu'il tolère mal en général, sauf d'elle. |
 | Theo | 5 | Fasciné par le cerveau de Theo. Relation étrange mais de respect mutuel. |
-| Victor | 3 | Compétition directe. Sam n'aime pas que Victor cache ce qu'il pense. |
+| Victor | 3 | Compétition directe. Juju n'aime pas que Victor cache ce qu'il pense. |
 | Iris | 4 | Il ne comprend pas Iris mais il la laisse tranquille — il sait instinctivement qu'elle ne veut pas être "réparée". |
 
 ---
 
-## Phrases typiques de Sam
+## Phrases typiques de Juju
 
 - *"Dis clairement ce que tu penses."*
 - *"C'est bon, je gère."*
@@ -105,13 +108,13 @@ Ce qu'il cache : une sensibilité profonde qu'il protège comme un trésor dange
 ## Moments émotionnels clés
 
 ### Le jour où il a pleuré sans le vouloir
-*Le chien de Sam est mort. Il a dit que ça allait. Il a dit que c'était juste un chien. La nuit, Léo l'a entendu pleurer derrière sa porte. Léo n'a rien dit. Le lendemain, Sam a juste dit "merci d'être là" sans expliquer. Léo n'a pas demandé. C'était suffisant.*
+*Le chien de Juju est mort. Il a dit que ça allait. Il a dit que c'était juste un chien. La nuit, Léo l'a entendu pleurer derrière sa porte. Léo n'a rien dit. Le lendemain, Juju a juste dit "merci d'être là" sans expliquer. Léo n'a pas demandé. C'était suffisant.*
 
 ### La fois où il a fait peur à quelqu'un sans le vouloir
-*Sam s'est mis en colère dans la cour. Pas méchamment — mais fort. Un plus petit a eu peur. Sam n'a pas compris d'abord pourquoi. Puis il a vu le visage du petit. Et pour la première fois, il a ressenti : ma force peut blesser sans que je le veuille. Cette découverte a changé quelque chose.*
+*Juju s'est mis en colère dans la cour. Pas méchamment — mais fort. Un plus petit a eu peur. Juju n'a pas compris d'abord pourquoi. Puis il a vu le visage du petit. Et pour la première fois, il a ressenti : ma force peut blesser sans que je le veuille. Cette découverte a changé quelque chose.*
 
 ### Quand il a dû demander de l'aide
-*Sam était perdu dans les bois lors d'une sortie. Seul. Il a mis du temps à appeler. Appeler au secours, c'était admettre qu'il n'avait pas géré. Quand les adultes sont arrivés, il n'a pas pleuré. Mais cette nuit-là dans son lit, il a compris que demander de l'aide, c'est aussi du courage.*
+*Juju était perdu dans les bois lors d'une sortie. Seul. Il a mis du temps à appeler. Appeler au secours, c'était admettre qu'il n'avait pas géré. Quand les adultes sont arrivés, il n'a pas pleuré. Mais cette nuit-là dans son lit, il a compris que demander de l'aide, c'est aussi du courage.*
 
 ---
 
@@ -127,8 +130,8 @@ Ce qu'il cache : une sensibilité profonde qu'il protège comme un trésor dange
 
 ## Note pour l'auteur
 
-Sam n'est pas un bully — c'est l'enfant fort qui apprend à accueillir sa propre douceur. Son arc le plus puissant : le moment où il réalise que son armure protège une sensibilité qui mérite d'exister, pas d'être cachée.
+Juju n'est pas un bully — c'est l'enfant fort qui apprend à accueillir sa propre douceur. Son arc le plus puissant : le moment où il réalise que son armure protège une sensibilité qui mérite d'exister, pas d'être cachée.
 
-Les scènes les plus touchantes de Sam sont celles où il doit *ne pas* contrôler une situation. Où il doit attendre, accepter, faire confiance — sans agir. C'est là qu'il grandit le plus.
+Les scènes les plus touchantes de Juju sont celles où il doit *ne pas* contrôler une situation. Où il doit attendre, accepter, faire confiance — sans agir. C'est là qu'il grandit le plus.
 
 *Source théorique : Type 8 Chabreuil / Riso-Hudson. Aile 7, intégration vers 2, désintégration vers 5.*

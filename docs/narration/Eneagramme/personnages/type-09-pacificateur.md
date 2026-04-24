@@ -1,11 +1,16 @@
-# Lila — Type 9, Le Pacificateur
+# Nono — Type 9, Le Pacificateur
+
+> ⚠ **Fiche héritée d'un placeholder féminin (Lila) — Nono est masculin.** Pronoms et accords à relire et ajuster à la prochaine passe.
 *"Ça va aller. Tout le monde peut s'entendre."*
 
 ---
 
 ## Identité
 
-- **Prénom** : Lila
+- **Prénom complet** : Noé
+- **Diminutif (usage courant ≈ 4/5 du temps)** : **Nono**
+- **Notation** : Type9 / Titi9 (origine : Christ)
+- **Genre** : M (placeholder Lila était F — voir note en tête)
 - **Type** : 9 — Le Médiateur / Le Pacificateur
 - **Rôle dans l'histoire** : Présence apaisante, colle le groupe ensemble
 - **Aile dominante** : 9w8 (une douceur qui a un fond solide)
@@ -17,11 +22,11 @@
 
 ## Portrait vivant
 
-Lila est là — et c'est déjà quelque chose. Pas bruyamment. Pas de façon spectaculaire. Elle est là avec une qualité de présence qui fait que les autres se sentent bienvenus.
+Nono est là — et c'est déjà quelque chose. Pas bruyamment. Pas de façon spectaculaire. Elle est là avec une qualité de présence qui fait que les autres se sentent bienvenus.
 
 Elle ne prend jamais beaucoup de place. Au goûter, elle attend que tout le monde ait pris avant de se servir. Dans les jeux, elle choisit le rôle que personne ne voulait. Elle dit *"ça m'est égal"* avec une sincérité déconcertante — et c'est vrai, souvent.
 
-Ce que Lila fait mieux que personne : sentir quand quelqu'un est triste sans que ça se voie. Elle s'approche doucement. Elle ne dit pas grand chose. Mais sa présence dit *"t'es pas seul"*.
+Ce que Nono fait mieux que personne : sentir quand quelqu'un est triste sans que ça se voie. Elle s'approche doucement. Elle ne dit pas grand chose. Mais sa présence dit *"t'es pas seul"*.
 
 Ce qu'on voit : la douceur, la gentillesse, l'harmonie.
 Ce qu'elle cache : qu'elle existe, elle aussi. Qu'elle a des envies, des opinions, des besoins — mais qu'elle a tellement l'habitude de les taire qu'elle ne sait plus toujours ce qu'ils sont.
@@ -40,7 +45,7 @@ Ce qu'elle cache : qu'elle existe, elle aussi. Qu'elle a des envies, des opinion
 
 ---
 
-## Comment Lila se comporte selon les situations
+## Comment Nono se comporte selon les situations
 
 ### Dans la joie / le plaisir
 - Sourit beaucoup, avec une vraie douceur.
@@ -58,7 +63,7 @@ Ce qu'elle cache : qu'elle existe, elle aussi. Qu'elle a des envies, des opinion
 - Absorbe les émotions des autres. Si quelqu'un est triste, elle est triste aussi.
 - Mais pour sa propre douleur ? Elle la met de côté. *"Ça va, c'est pas grave."*
 - Ses larmes viennent parfois sans crier gare — alors qu'elle croyait que ça allait.
-- A besoin qu'on lui pose la question directement : *"Et toi, Lila, comment tu vas ?"*
+- A besoin qu'on lui pose la question directement : *"Et toi, Nono, comment tu vas ?"*
 - Ne sait pas toujours répondre tout de suite.
 
 ### Sous stress (désintégration vers le 6)
@@ -76,22 +81,22 @@ Ce qu'elle cache : qu'elle existe, elle aussi. Qu'elle a des envies, des opinion
 
 ---
 
-## Lila avec les autres
+## Nono avec les autres
 
 | Personnage | Type | Relation |
 |------------|------|----------|
-| Léo | 7 | Elle l'aime et l'apaise. Quand Léo court trop vite, Lila lui dit doucement "t'inquiète, c'est là". |
+| Léo | 7 | Elle l'aime et l'apaise. Quand Léo court trop vite, Nono lui dit doucement "t'inquiète, c'est là". |
 | Sam | 8 | Elle voit la douceur de Sam sans qu'il ait besoin de l'expliquer. Il le sait. Il la respecte pour ça. |
 | Noa | 6 | Ils se sécurisent mutuellement. Mais peuvent aussi se renforcer dans l'inquiétude. |
-| Élia | 1 | Élia apprécie l'harmonie de Lila mais peut la trouver trop passive. Lila ne s'en offusque pas. |
+| Élia | 1 | Élia apprécie l'harmonie de Nono mais peut la trouver trop passive. Nono ne s'en offusque pas. |
 | Camille | 2 | Elles prennent soin l'une de l'autre. Mais aucune ne dit vraiment ce dont elle a besoin. |
 | Theo | 5 | Ils partagent l'amour du silence et de l'observation. Amitié tranquille et profonde. |
-| Victor | 3 | Victor ne comprend pas trop Lila. Elle ne court pas après la victoire. Il respecte ça malgré lui. |
-| Iris | 4 | Iris pense parfois que Lila n'a pas de profondeur. Lila ne se défend pas. Mais Iris finit par voir — la profondeur de Lila est juste calme. |
+| Victor | 3 | Victor ne comprend pas trop Nono. Elle ne court pas après la victoire. Il respecte ça malgré lui. |
+| Iris | 4 | Iris pense parfois que Nono n'a pas de profondeur. Nono ne se défend pas. Mais Iris finit par voir — la profondeur de Nono est juste calme. |
 
 ---
 
-## Phrases typiques de Lila
+## Phrases typiques de Nono
 
 - *"Ça m'est égal."* (sincère)
 - *"Vous voulez quoi, vous ?"* (avant de choisir)
@@ -106,13 +111,13 @@ Ce qu'elle cache : qu'elle existe, elle aussi. Qu'elle a des envies, des opinion
 ## Moments émotionnels clés
 
 ### Le jour où elle a dit non
-*Tout le groupe voulait jouer à un jeu que Lila n'aimait pas. Pour la première fois, elle a dit : "Non, moi je veux pas." Silence. Personne ne s'est fâché. Le groupe a joué à autre chose. Lila s'est sentie bizarre — et bien. Comme si quelque chose s'était déposé à l'endroit juste.*
+*Tout le groupe voulait jouer à un jeu que Nono n'aimait pas. Pour la première fois, elle a dit : "Non, moi je veux pas." Silence. Personne ne s'est fâché. Le groupe a joué à autre chose. Nono s'est sentie bizarre — et bien. Comme si quelque chose s'était déposé à l'endroit juste.*
 
 ### Quand le groupe s'est disputé à cause d'elle
-*Deux amis se sont disputés pour décider où on allait jouer avec Lila. Elle a senti que c'était sa faute. Elle a essayé de les réconcilier sans prendre position. Mais Léo lui a dit : "Lila, dis juste où TOI tu veux aller." Elle a compris ce jour-là que son absence de choix peut, parfois, créer plus de désordre que son choix.*
+*Deux amis se sont disputés pour décider où on allait jouer avec Nono. Elle a senti que c'était sa faute. Elle a essayé de les réconcilier sans prendre position. Mais Léo lui a dit : "Nono, dis juste où TOI tu veux aller." Elle a compris ce jour-là que son absence de choix peut, parfois, créer plus de désordre que son choix.*
 
 ### La nuit où elle ne savait plus qui elle était
-*Une nuit, Lila a réalisé qu'elle avait passé toute la journée à faire ce que les autres voulaient, à dire ce qu'ils voulaient entendre, à adopter les opinions des uns et des autres. Et avant de dormir elle s'est demandé : "Mais moi, je suis qui ?"  Elle n'a pas pleuré. Elle a juste gardé cette question, doucement, comme quelque chose d'important.*
+*Une nuit, Nono a réalisé qu'elle avait passé toute la journée à faire ce que les autres voulaient, à dire ce qu'ils voulaient entendre, à adopter les opinions des uns et des autres. Et avant de dormir elle s'est demandé : "Mais moi, je suis qui ?"  Elle n'a pas pleuré. Elle a juste gardé cette question, doucement, comme quelque chose d'important.*
 
 ---
 
@@ -128,8 +133,8 @@ Ce qu'elle cache : qu'elle existe, elle aussi. Qu'elle a des envies, des opinion
 
 ## Note pour l'auteur
 
-Lila n'est pas "juste gentille". Elle est le personnage qui tient le groupe ensemble — souvent sans qu'on le remarque. Son arc narratif est de *s'apercevoir qu'elle existe*, de découvrir ses propres désirs et de les exprimer sans détruire l'harmonie qu'elle chérit.
+Nono n'est pas "juste gentille". Elle est le personnage qui tient le groupe ensemble — souvent sans qu'on le remarque. Son arc narratif est de *s'apercevoir qu'elle existe*, de découvrir ses propres désirs et de les exprimer sans détruire l'harmonie qu'elle chérit.
 
-Les meilleurs moments de Lila sont les moments de silence — ceux où elle est présente d'une façon que les mots ne peuvent pas décrire. Et les moments où elle dit, enfin, clairement : *"Moi, je veux ça."*
+Les meilleurs moments de Nono sont les moments de silence — ceux où elle est présente d'une façon que les mots ne peuvent pas décrire. Et les moments où elle dit, enfin, clairement : *"Moi, je veux ça."*
 
 *Source théorique : Type 9 Chabreuil / Riso-Hudson. Aile 8, intégration vers 3, désintégration vers 6.*

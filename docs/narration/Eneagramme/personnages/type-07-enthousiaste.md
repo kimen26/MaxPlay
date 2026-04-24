@@ -1,15 +1,21 @@
-# Léo — Type 7, L'Enthousiaste
+# Raph — Type 7, L'Enthousiaste
+
+> ⚠ **Changement de statut :** ce personnage était désigné "héros principal" sous l'ancien placeholder Léo (M). Le héros principal est désormais **Wex** (hors-système). Raph (F) reste Titi7 enthousiaste mais occupe un rôle secondaire, pas le rôle central.
+> Pronoms/accords à relire (Léo M → Raph F).
 *"Il y a tellement de choses à découvrir ! On y va ?"*
 
 ---
 
 ## Identité
 
-- **Prénom** : Léo
+- **Prénom complet** : Raphaëlle
+- **Diminutif (usage courant ≈ 4/5 du temps)** : **Raph**
+- **Notation** : Type7 / Titi7 (origine : Christ)
+- **Genre** : F (placeholder Léo était M — voir note en tête)
 - **Type** : 7 — L'Enthousiaste / L'Épicurien
-- **Rôle dans l'histoire** : **Héros principal**
+- **Rôle dans l'histoire** : Compagnonne proche de Wex, moteur d'élan du groupe *(héros principal = Wex, hors-système)*
 - **Aile dominante** : 7w8 (avec une touche de 6 selon les moments)
-- **Centre** : Tête (mais Léo n'aime pas trop penser — il préfère *faire*)
+- **Centre** : Tête (mais Raph n'aime pas trop penser — il préfère *faire*)
 - **Couleur** : Jaune soleil / Orange vif
 - **Animal totem** : Colibri (toujours en mouvement, curieux de tout)
 
@@ -17,9 +23,9 @@
 
 ## Portrait vivant
 
-Léo a les yeux grands ouverts sur le monde. Quand il entre dans une pièce, l'énergie monte d'un coup. Il parle vite, gesticule, pose des questions avant la fin de la réponse à sa dernière question. Son sourire est immédiat — comme si sa bouche avait décidé d'être heureuse avant même que son cerveau soit réveillé.
+Raph a les yeux grands ouverts sur le monde. Quand il entre dans une pièce, l'énergie monte d'un coup. Il parle vite, gesticule, pose des questions avant la fin de la réponse à sa dernière question. Son sourire est immédiat — comme si sa bouche avait décidé d'être heureuse avant même que son cerveau soit réveillé.
 
-Il a toujours cinq projets en tête. Ce matin c'était les dinosaures, ce midi les volcans, ce soir il veut savoir pourquoi le ciel est bleu. Sa maman dit parfois en souriant : *"Léo, tu es une tornade avec des baskets."*
+Il a toujours cinq projets en tête. Ce matin c'était les dinosaures, ce midi les volcans, ce soir il veut savoir pourquoi le ciel est bleu. Sa maman dit parfois en souriant : *"Raph, tu es une tornade avec des baskets."*
 
 Ce qu'on voit de lui : l'enthousiasme, la joie, l'humour, l'invention constante.
 Ce qu'il cache : une petite voix intérieure qui dit parfois *"et si on s'ennuyait ? et si c'était triste ?"* — une voix qu'il court très vite pour ne pas entendre.
@@ -38,7 +44,7 @@ Ce qu'il cache : une petite voix intérieure qui dit parfois *"et si on s'ennuya
 
 ---
 
-## Comment Léo se comporte selon les situations
+## Comment Raph se comporte selon les situations
 
 ### Dans la joie / le plaisir
 - Contagieux. Il fait rire tout le monde.
@@ -73,22 +79,22 @@ Ce qu'il cache : une petite voix intérieure qui dit parfois *"et si on s'ennuya
 
 ---
 
-## Léo avec les autres
+## Raph avec les autres
 
 | Personnage | Type | Relation |
 |------------|------|----------|
-| Sam | 8 | Meilleur ami du moment. Sam protège, Léo anime. Ensemble ils font des bêtises et de grandes aventures. |
-| Lila | 9 | Elle le pose. Quand tout le monde est épuisé par Léo, Lila dit *"moi je t'aime quand même"* et ça suffit. |
-| Noa | 6 | Noa l'inquiète un peu (toujours à dire que ça peut mal tourner), mais Léo trouve ça drôle et le rassure. |
-| Theo | 5 | Léo adore les connaissances de Theo. Il pose mille questions. Theo finit par sourire. |
-| Élia | 1 | Tensions fréquentes. Élia dit *"fais attention"* et Léo dit *"c'est bon !"*. Mais au fond ils s'admirent. |
-| Camille | 2 | Camille prend soin de Léo. Léo l'adore. Risque : Léo ne réalise pas toujours qu'elle a besoin de lui aussi. |
-| Victor | 3 | Compétition amicale. Qui est le plus cool ? Léo s'en fiche vite — Victor reste plus accroché au résultat. |
-| Iris | 4 | Léo ne comprend pas toujours pourquoi Iris est triste. Iris ne comprend pas pourquoi Léo court toujours. Mais ils se fascinent mutuellement. |
+| Sam | 8 | Meilleur ami du moment. Sam protège, Raph anime. Ensemble ils font des bêtises et de grandes aventures. |
+| Lila | 9 | Elle le pose. Quand tout le monde est épuisé par Raph, Lila dit *"moi je t'aime quand même"* et ça suffit. |
+| Noa | 6 | Noa l'inquiète un peu (toujours à dire que ça peut mal tourner), mais Raph trouve ça drôle et le rassure. |
+| Theo | 5 | Raph adore les connaissances de Theo. Il pose mille questions. Theo finit par sourire. |
+| Élia | 1 | Tensions fréquentes. Élia dit *"fais attention"* et Raph dit *"c'est bon !"*. Mais au fond ils s'admirent. |
+| Camille | 2 | Camille prend soin de Raph. Raph l'adore. Risque : Raph ne réalise pas toujours qu'elle a besoin de lui aussi. |
+| Victor | 3 | Compétition amicale. Qui est le plus cool ? Raph s'en fiche vite — Victor reste plus accroché au résultat. |
+| Iris | 4 | Raph ne comprend pas toujours pourquoi Iris est triste. Iris ne comprend pas pourquoi Raph court toujours. Mais ils se fascinent mutuellement. |
 
 ---
 
-## Phrases typiques de Léo
+## Phrases typiques de Raph
 
 - *"Oh mais attends, t'as vu ça ?!"*
 - *"C'est le meilleur truc que j'aie jamais vu."*
@@ -102,7 +108,7 @@ Ce qu'il cache : une petite voix intérieure qui dit parfois *"et si on s'ennuya
 
 ## Thèmes de passions (arcs narratifs possibles)
 
-Chaque épisode/chapitre peut être déclenché par une nouvelle passion soudaine de Léo :
+Chaque épisode/chapitre peut être déclenché par une nouvelle passion soudaine de Raph :
 
 1. **Les plantes** — sa maman fait des graines germées, il veut tout savoir sur la botanique
 2. **Les volcans** — il voit un documentaire et veut "en voir un vrai"
@@ -120,13 +126,13 @@ Chaque épisode/chapitre peut être déclenché par une nouvelle passion soudain
 ## Moments émotionnels clés (scènes narratives)
 
 ### La nuit où il n'a pas pu fuir
-*Un soir, le chat de Lila meurt. Léo fait des blagues pour "aider". Lila lui dit doucement : "Léo, tu n'as pas à m'égayer. Tu peux juste être là." Léo ne sait pas quoi faire. Il s'assoit. Et pour la première fois, il laisse le silence exister. C'est difficile. Mais quelque chose de doux se passe.*
+*Un soir, le chat de Lila meurt. Raph fait des blagues pour "aider". Lila lui dit doucement : "Raph, tu n'as pas à m'égayer. Tu peux juste être là." Raph ne sait pas quoi faire. Il s'assoit. Et pour la première fois, il laisse le silence exister. C'est difficile. Mais quelque chose de doux se passe.*
 
 ### Le jour où il a tout raté
-*Léo avait promis d'apprendre à jouer d'un instrument pour le spectacle de l'école. Il a changé d'idée quatre fois, n'a rien appris. Le jour J, il n'a rien à montrer. Il s'attendait à trouver ça drôle — il ne trouve pas. C'est la première fois qu'il ressent de la honte vraiment. Sam lui dit : "C'est pas grave, t'es encore Léo."*
+*Raph avait promis d'apprendre à jouer d'un instrument pour le spectacle de l'école. Il a changé d'idée quatre fois, n'a rien appris. Le jour J, il n'a rien à montrer. Il s'attendait à trouver ça drôle — il ne trouve pas. C'est la première fois qu'il ressent de la honte vraiment. Sam lui dit : "C'est pas grave, t'es encore Raph."*
 
 ### La semaine où il était malade
-*Léo est malade. Vraiment malade. Il ne peut pas courir, jouer, inventer. Il s'ennuie d'une façon nouvelle — pas l'ennui qu'il transforme en jeu, mais l'ennui qui lui montre qui il est quand il ne court plus. Il découvre qu'il aime les histoires racontées par son papa. Il découvre que rester dans un lit peut être doux.*
+*Raph est malade. Vraiment malade. Il ne peut pas courir, jouer, inventer. Il s'ennuie d'une façon nouvelle — pas l'ennui qu'il transforme en jeu, mais l'ennui qui lui montre qui il est quand il ne court plus. Il découvre qu'il aime les histoires racontées par son papa. Il découvre que rester dans un lit peut être doux.*
 
 ---
 
@@ -142,8 +148,8 @@ Chaque épisode/chapitre peut être déclenché par une nouvelle passion soudain
 
 ## Note pour l'auteur
 
-Léo est le héros — mais pas parce qu'il est parfait. Il est le héros parce que le lecteur s'identifie à lui : la joie de vivre, le désir que tout soit beau, la peur de souffrir. Son arc narratif sur le long terme est d'apprendre que la vraie joie ne fuit pas la douleur — elle la traverse.
+Raph est le héros — mais pas parce qu'il est parfait. Il est le héros parce que le lecteur s'identifie à lui : la joie de vivre, le désir que tout soit beau, la peur de souffrir. Son arc narratif sur le long terme est d'apprendre que la vraie joie ne fuit pas la douleur — elle la traverse.
 
-Les meilleurs épisodes de Léo sont ceux où sa fuite habituelle *ne fonctionne pas*, et où il doit rester avec ce qui est difficile. C'est là qu'il grandit. C'est là qu'il devient vraiment présent.
+Les meilleurs épisodes de Raph sont ceux où sa fuite habituelle *ne fonctionne pas*, et où il doit rester avec ce qui est difficile. C'est là qu'il grandit. C'est là qu'il devient vraiment présent.
 
 *Source théorique : Type 7 Chabreuil / Riso-Hudson. Aile 8, intégration vers 5, désintégration vers 1.*

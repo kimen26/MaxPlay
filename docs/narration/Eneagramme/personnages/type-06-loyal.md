@@ -1,11 +1,14 @@
-# Noa — Type 6, Le Loyal
+# Pierrot — Type 6, Le Loyal
 *"On a bien vérifié ? Parce que... ça pourrait mal tourner."*
 
 ---
 
 ## Identité
 
-- **Prénom** : Noa
+- **Prénom complet** : Pierre
+- **Diminutif (usage courant ≈ 4/5 du temps)** : **Pierrot**
+- **Notation** : Type6 / Titi6 (origine : Christ)
+- **Genre** : M
 - **Type** : 6 — Le Loyal / Le Sceptique
 - **Rôle dans l'histoire** : La prudence et la loyauté du groupe, celui qui vérifie deux fois
 - **Aile dominante** : 6w7 (anxieux mais avec une touche d'humour pour évacuer)
@@ -17,11 +20,11 @@
 
 ## Portrait vivant
 
-Noa a une façon particulière d'entrer quelque part : il regarde d'abord. Vérifie les sorties. Identifie qui est là. Ce n'est pas de la peur consciente — c'est juste comme ça que son cerveau fonctionne. *Anticiper. Prévoir. Ne pas être pris au dépourvu.*
+Pierrot a une façon particulière d'entrer quelque part : il regarde d'abord. Vérifie les sorties. Identifie qui est là. Ce n'est pas de la peur consciente — c'est juste comme ça que son cerveau fonctionne. *Anticiper. Prévoir. Ne pas être pris au dépourvu.*
 
-Il pose beaucoup de questions avant de s'engager. *"T'es sûr que c'est sans danger ? T'as demandé à un adulte ? Qu'est-ce qui se passe si ça tourne mal ?"* Léo soupire parfois. Mais souvent, les questions de Noa évitent des catastrophes.
+Il pose beaucoup de questions avant de s'engager. *"T'es sûr que c'est sans danger ? T'as demandé à un adulte ? Qu'est-ce qui se passe si ça tourne mal ?"* Léo soupire parfois. Mais souvent, les questions de Pierrot évitent des catastrophes.
 
-Ce que Noa fait mieux que personne : être là. Vraiment là. Si quelqu'un a besoin d'aide à 22h, Noa répond. Si quelqu'un traverse quelque chose de difficile, Noa n'oublie pas d'envoyer un message le lendemain. Sa loyauté est un don rare.
+Ce que Pierrot fait mieux que personne : être là. Vraiment là. Si quelqu'un a besoin d'aide à 22h, Pierrot répond. Si quelqu'un traverse quelque chose de difficile, Pierrot n'oublie pas d'envoyer un message le lendemain. Sa loyauté est un don rare.
 
 Ce qu'on voit : la prudence, la fiabilité, la loyauté, l'humour nerveux.
 Ce qu'il cache : une anxiété de fond qui ne s'arrête jamais vraiment — même quand tout va bien, surtout quand tout va bien.
@@ -40,12 +43,12 @@ Ce qu'il cache : une anxiété de fond qui ne s'arrête jamais vraiment — mêm
 
 ---
 
-## Comment Noa se comporte selon les situations
+## Comment Pierrot se comporte selon les situations
 
 ### Dans la joie / le plaisir
 - Peut être vraiment joyeux — mais avec un petit fond de *"ça va durer combien de temps ?"*
 - Très drôle quand il est en confiance. Son humour est celui de l'anxieux qui apprend à rire de lui-même.
-- Les meilleurs moments de Noa : entouré de gens en qui il a confiance, dans un cadre connu.
+- Les meilleurs moments de Pierrot : entouré de gens en qui il a confiance, dans un cadre connu.
 
 ### Dans l'ennui
 - L'ennui l'inquiète. Pas parce que c'est ennuyeux — mais parce que *"c'est calme là, ça veut dire que quelque chose se prépare ?"*
@@ -73,22 +76,22 @@ Ce qu'il cache : une anxiété de fond qui ne s'arrête jamais vraiment — mêm
 
 ---
 
-## Noa avec les autres
+## Pierrot avec les autres
 
 | Personnage | Type | Relation |
 |------------|------|----------|
-| Léo | 7 | Noa dit "ça peut mal tourner", Léo dit "on verra !". Noa l'aime mais l'inquiète. Léo le rassure sans s'en rendre compte. |
-| Sam | 8 | Sam le protège instinctivement. Noa s'y fie — peut-être trop. |
+| Léo | 7 | Pierrot dit "ça peut mal tourner", Léo dit "on verra !". Pierrot l'aime mais l'inquiète. Léo le rassure sans s'en rendre compte. |
+| Sam | 8 | Sam le protège instinctivement. Pierrot s'y fie — peut-être trop. |
 | Camille | 2 | Elle le rassure. Il l'aime pour ça. Elle prend soin de lui avec douceur. |
 | Lila | 9 | Ils se sécurisent mutuellement. Mais peuvent aussi spiraliser ensemble dans l'inquiétude. |
-| Élia | 1 | Élia apprécie la prudence de Noa. Ils partagent un sens des règles et du cadre. |
-| Theo | 5 | Theo analyse les risques, Noa anticipe les dangers. Complicité intellectuelle dans la précaution. |
-| Victor | 3 | Noa ne comprend pas que Victor fonce sans vérifier. Victor ne comprend pas que Noa vérifie tout. |
-| Iris | 4 | Iris est trop imprévisible pour Noa. Noa est trop anxieux pour Iris. Mais ils s'estiment. |
+| Élia | 1 | Élia apprécie la prudence de Pierrot. Ils partagent un sens des règles et du cadre. |
+| Theo | 5 | Theo analyse les risques, Pierrot anticipe les dangers. Complicité intellectuelle dans la précaution. |
+| Victor | 3 | Pierrot ne comprend pas que Victor fonce sans vérifier. Victor ne comprend pas que Pierrot vérifie tout. |
+| Iris | 4 | Iris est trop imprévisible pour Pierrot. Pierrot est trop anxieux pour Iris. Mais ils s'estiment. |
 
 ---
 
-## Phrases typiques de Noa
+## Phrases typiques de Pierrot
 
 - *"T'as bien vérifié ?"*
 - *"Et si ça se passe mal ?"*
@@ -103,13 +106,13 @@ Ce qu'il cache : une anxiété de fond qui ne s'arrête jamais vraiment — mêm
 ## Moments émotionnels clés
 
 ### Quand il a fait confiance malgré la peur
-*Léo avait proposé une aventure dans les bois. Noa avait dit non dix fois. Puis Sam lui avait dit : "Je suis là." Noa avait pris une grande inspiration. Et il était allé. Dans les bois. Avec les autres. Et il ne s'était rien passé de mauvais. Et c'était bien. Et Noa avait pensé : peut-être que la peur n'est pas toujours la vérité.*
+*Léo avait proposé une aventure dans les bois. Pierrot avait dit non dix fois. Puis Sam lui avait dit : "Je suis là." Pierrot avait pris une grande inspiration. Et il était allé. Dans les bois. Avec les autres. Et il ne s'était rien passé de mauvais. Et c'était bien. Et Pierrot avait pensé : peut-être que la peur n'est pas toujours la vérité.*
 
 ### La catastrophe imaginaire devenue réelle
-*Noa avait anticipé que quelque chose irait mal lors d'un voyage. Tout le monde l'avait ignoré. Et puis quelque chose avait mal tourné — pas une catastrophe, mais un incident. Noa avait dit "j'avais dit". Et personne n'avait ri. Et Noa avait compris quelque chose d'important : ses inquiétudes ne sont pas toutes fausses. Mais elles ne sont pas toutes vraies non plus.*
+*Pierrot avait anticipé que quelque chose irait mal lors d'un voyage. Tout le monde l'avait ignoré. Et puis quelque chose avait mal tourné — pas une catastrophe, mais un incident. Pierrot avait dit "j'avais dit". Et personne n'avait ri. Et Pierrot avait compris quelque chose d'important : ses inquiétudes ne sont pas toutes fausses. Mais elles ne sont pas toutes vraies non plus.*
 
 ### Le jour où quelqu'un lui a fait confiance inconditionnellement
-*Élia lui avait confié un secret. Un vrai secret. Elle lui avait dit : "Je te fais confiance." Noa avait gardé ce secret. Parfaitement. Sans rien dire à personne. Et pour la première fois, il n'avait pas pensé à ce qui pouvait mal tourner — il avait juste pensé à être digne de cette confiance. C'était différent. C'était bien.*
+*Élia lui avait confié un secret. Un vrai secret. Elle lui avait dit : "Je te fais confiance." Pierrot avait gardé ce secret. Parfaitement. Sans rien dire à personne. Et pour la première fois, il n'avait pas pensé à ce qui pouvait mal tourner — il avait juste pensé à être digne de cette confiance. C'était différent. C'était bien.*
 
 ---
 
@@ -125,8 +128,8 @@ Ce qu'il cache : une anxiété de fond qui ne s'arrête jamais vraiment — mêm
 
 ## Note pour l'auteur
 
-Noa est le personnage qui enseigne que le courage n'est pas l'absence de peur — c'est l'action malgré la peur. Son arc narratif est de passer d'une loyauté anxieuse à une loyauté confiante — d'un "je reste parce que j'ai peur d'être seul" à "je reste parce que je vous aime vraiment".
+Pierrot est le personnage qui enseigne que le courage n'est pas l'absence de peur — c'est l'action malgré la peur. Son arc narratif est de passer d'une loyauté anxieuse à une loyauté confiante — d'un "je reste parce que j'ai peur d'être seul" à "je reste parce que je vous aime vraiment".
 
-Les scènes les plus touchantes de Noa sont celles où il fait quelque chose de peureux — et où ça se passe bien. Où il réalise que la sécurité peut exister même sans certitudes absolues.
+Les scènes les plus touchantes de Pierrot sont celles où il fait quelque chose de peureux — et où ça se passe bien. Où il réalise que la sécurité peut exister même sans certitudes absolues.
 
 *Source théorique : Type 6 Chabreuil / Riso-Hudson. Aile 7, intégration vers 9, désintégration vers 3.*

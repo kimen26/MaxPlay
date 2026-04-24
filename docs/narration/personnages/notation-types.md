@@ -49,18 +49,20 @@ Dans les textes, on écrit directement **Wex**. Il reste identique dans toutes l
 
 ## Mapping rapide (casting Christ par défaut)
 
-| Notation | Prénom V1 (Christ) |
-|----------|--------------------|
-| Type1 / Titi1 | Melki |
-| Type2 / Titi2 | Marie |
-| Type3 / Titi3 | Paul |
-| Type4 / Titi4 | Jérémie |
-| Type5 / Titi5 | Luc |
-| Type6 / Titi6 | Pierre |
-| Type7 / Titi7 | Raph |
-| Type8 / Titi8 | Judith |
-| Type9 / Titi9 | Noé |
-| *(hors-système)* | **Wex** (héros universel, pas de type) |
+> **Règle d'usage :** diminutif par défaut dans les textes (≈ 4/5 du temps). Prénom complet = moments formels, solennels, ou parole d'adulte nommant l'enfant.
+
+| Notation | Prénom complet | **Diminutif (courant)** |
+|----------|----------------|--------------------------|
+| Type1 / Titi1 | Melchisédech | **Melki** |
+| Type2 / Titi2 | Marie | **Mimi** |
+| Type3 / Titi3 | Paul | **Polo** |
+| Type4 / Titi4 | Jérémie | **Jérem** |
+| Type5 / Titi5 | Luc | **Lulu** |
+| Type6 / Titi6 | Pierre | **Pierrot** |
+| Type7 / Titi7 | Raphaëlle | **Raph** |
+| Type8 / Titi8 | Judith | **Juju** |
+| Type9 / Titi9 | Noé | **Nono** |
+| *(hors-système)* | **Wex** | Wex (pas de diminutif — jamais traduit) |
 
 Pour les autres origines → [prénoms-par-origine.md](prénoms-par-origine.md).
 

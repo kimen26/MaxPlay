@@ -11,17 +11,20 @@
 
 ## Tableau des 9 — Casting V1 (origine : Christ)
 
-| Notation | Type | Prénom V1 | Diminutif | Essence | Meilleur ami |
-|---|------|-----------|-----------|---------|--------------|
-| Type1 / Titi1 | Perfectionniste | **Melki** | Melki | Être bon·ne | Pierre |
-| Type2 / Titi2 | Aidant | **Marie** (F) | Mimi | Être aimé·e | Noé |
-| Type3 / Titi3 | Performeur | **Paul** | Paulo | Être valorisé·e | — |
-| Type4 / Titi4 | Individualiste | **Jérémie** | Jerem | Être soi-même | Luc |
-| Type5 / Titi5 | Observateur | **Luc** | Lulu | Comprendre | Jérémie |
-| Type6 / Titi6 | Loyal | **Pierre** | Pierrot | Avoir du soutien | Melki |
-| Type7 / Titi7 | Enthousiaste | **Raph** (F) | Raph, Rafa | Être comblé·e | Wex |
-| Type8 / Titi8 | Challenger | **Judith** (F) | Judy | Être fort·e | Wex |
-| Type9 / Titi9 | Pacificateur | **Noé** | Noé | La paix | Marie |
+> **Règle d'écriture :** dans les histoires et dialogues, on utilise le **diminutif 4/5 du temps**.
+> Le prénom complet sert aux moments formels, solennels, ou quand un adulte nomme l'enfant.
+
+| Notation | Type | Prénom complet | **Diminutif (usage courant)** | Essence | Meilleur ami |
+|---|------|----------------|-------------------------------|---------|--------------|
+| Type1 / Titi1 | Perfectionniste | Melchisédech | **Melki** | Être bon·ne | Pierrot |
+| Type2 / Titi2 | Aidant | Marie (F) | **Mimi** | Être aimé·e | Nono |
+| Type3 / Titi3 | Performeur | Paul | **Polo** | Être valorisé·e | — |
+| Type4 / Titi4 | Individualiste | Jérémie | **Jérem** | Être soi-même | Lulu |
+| Type5 / Titi5 | Observateur | Luc | **Lulu** | Comprendre | Jérem |
+| Type6 / Titi6 | Loyal | Pierre | **Pierrot** | Avoir du soutien | Melki |
+| Type7 / Titi7 | Enthousiaste | Raphaëlle (F) | **Raph** | Être comblé·e | Wex |
+| Type8 / Titi8 | Challenger | Judith (F) | **Juju** | Être fort·e | Wex |
+| Type9 / Titi9 | Pacificateur | Noé | **Nono** | La paix | Mimi |
 
 ### Hors-système
 
@@ -29,11 +32,11 @@
 |------|--------|--------|
 | **Héros universel** | **Wex** ✓ | **Sans ennéatype pour le moment.** Jamais traduit. Pivot de toutes les versions cross-country. |
 
-**Bilan genre casting Christ :** 3F (Marie, Raph, Judith) / 6M + Wex hors-système.
+**Bilan genre casting Christ :** 3F (Marie/Mimi, Raphaëlle/Raph, Judith/Juju) / 6M + Wex hors-système. **Figé — définitif.** Pas de bascule F/M.
 
-> ⚠ **Les fiches `Eneagramme/personnages/type-XX-*.md` utilisent encore les anciens placeholders** (Élia, Camille, Victor, Iris, Theo, Noa, Sam, Lila).
-> Grande passe de renommage à planifier (cf. [tasks/BACKLOG.md](../../../tasks/BACKLOG.md)).
-> En attendant : lire le contenu (type, essence, comportements) mais ignorer les prénoms affichés.
+> ✅ **Les fiches `Eneagramme/personnages/type-XX-*.md` ont été renommées** (passe 2026-04-24 : Élia→Melki, Camille→Mimi, Victor→Polo, Iris→Jérem, Theo→Lulu, Noa→Pierrot, Léo→Raph, Sam→Juju, Lila→Nono).
+> ⚠ **Cohérence pronoms/genres à relire** fiche par fiche (certains placeholders changent de genre : Iris F → Jérem M, Léo M → Raph F, Lila F → Nono M). Ajustements au fil des sessions.
+> Le rôle de héros principal quitte Titi7 (anciennement Léo) pour revenir à **Wex** (hors-système). Raph reste Titi7 enthousiaste, mais n'est plus désigné comme "héros".
 
 ---
 

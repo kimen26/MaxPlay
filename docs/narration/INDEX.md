@@ -12,7 +12,7 @@
 | Personnages | 9 définis (ennéagramme) — ✅ **casting V1 "Christ" validé** (Melki, Marie, Paul, Jérémie, Luc, Pierre, **Raph**, Judith, Noé) + **Wex héros hors-système** (pas d'ennéatype). Notation `TypeN`/`TitiN × origine` pour écrire les textes. Propagation dans les fiches à faire. |
 | Univers | post-Éveil, Printemps de l'Éveil — distillé dans `univers/` |
 | Direction | **monde sobre, merveilleux discret** (vu à travers enfant né dedans) |
-| Histoires | "Le Pont Cassé" (Wex + Élia + Sam) — V1 complète, comité de lecture fait |
+| Histoires | "Le Pont Cassé" (Wex + Melki/Titi1 + Juju/Titi8) — V1 complète, comité de lecture fait. Texte source à réimporter. |
 | Nom univers | **non tranché** → `univers/nom-candidats.md` |
 
 ---
@@ -66,11 +66,12 @@
 
 ## Questions ouvertes
 
-1. **Nom de l'univers** — choisir parmi les 5 finalistes
-2. ~~**Prénoms des 8 autres personnages**~~ — ✅ résolu V1 (2026-04-24). Reste : propagation dans fiches + choix F/M (2F→3F ?) + validation des castings par-origine.
-3. **Ombre Éternelle** — concept principal ou laisser en standby ?
-4. **Question fractale** (2026-04-16) — les persos savent-ils qu'ils sont dans le rêve de... ?
-5. **Compagnons** — dans toutes les histoires ou progressivement ?
+1. **Nom de l'univers** — choisir parmi les 5 finalistes (+ piste méta "Wex World")
+2. ~~**Prénoms des 8 autres personnages**~~ — ✅ résolu V1 (2026-04-24). Casting **figé définitif** (3F/6M + Wex). Fiches renommées. Reste : relecture cohérence genres/pronoms + validation des castings par-origine.
+3. **Ombre Éternelle** — concept principal ou laisser en standby ? *(standby)*
+4. **Question fractale** (2026-04-16) — les persos savent-ils qu'ils sont dans le rêve de... ? *(standby)*
+5. **Compagnons** — forme (onde/cristal/couleur/fluide/animal) non tranchée + apparition progressive ou systématique ?
+6. **Wex absent d'une histoire** — un des 9 reprend-il le rôle d'observateur ? → à trancher à l'écriture.
 6. ~~Univers explicite ou en fond ?~~ ✅ **tranché (2026-04-24)** : univers IMPLICITE dans les histoires enfantines (pas de noms-concepts nommés), ennéatypes DILUÉS dans actions/interactions (jamais étiquetés). Infusion progressive au fil des récits. Voir `histoires/INDEX.md` § Règles.
 
 ---

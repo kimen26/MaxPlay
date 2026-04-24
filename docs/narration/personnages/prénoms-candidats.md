@@ -12,19 +12,21 @@
 
 > **Wex est hors liste** (héros universel, sans ennéatype assigné pour le moment). Voir section dédiée plus bas.
 
-| Notation | Type | Prénom | Diminutif | Figure | Genre |
-|---|------|--------|-----------|--------|-------|
-| Type1 / Titi1 | Perfectionniste | **Melki** | Melki | Melchisédech — *roi de justice* (Hé 7) | M |
-| Type2 / Titi2 | Aidant | **Marie** | Mimi, Mariette | Marie + Marie-Madeleine | F |
-| Type3 / Titi3 | Performeur | **Paul** | Paulo | Saul → Paul — transformation, "je me suis fait tout à tous" | M |
-| Type4 / Titi4 | Individualiste | **Jérémie** | Jerem, Jéré | Prophète Jérémie — Lamentations, poète de l'intense | M |
-| Type5 / Titi5 | Observateur | **Luc** | Lulu | Évangéliste Luc — médecin, "ayant tout recherché avec soin" (Lc 1:3) | M |
-| Type6 / Titi6 | Loyal | **Pierre** | Pierrot | Apôtre Pierre — le roc qui doute, renie, revient | M |
-| Type7 / Titi7 | Enthousiaste | **Raph** | Raph, Rafa | Archange Raphaël — compagnon joyeux de Tobie (apocryphe) | F |
-| Type8 / Titi8 | Challenger | **Judith** | Judy | Livre de Judith — tranche Holopherne pour sauver les siens | F |
-| Type9 / Titi9 | Pacificateur | **Noé** | Noé, No | Noé — arche, arc-en-ciel, alliance après le chaos | M |
+| Notation | Type | Prénom complet | **Diminutif (usage courant)** | Figure | Genre |
+|---|------|----------------|-------------------------------|--------|-------|
+| Type1 / Titi1 | Perfectionniste | Melchisédech | **Melki** | Melchisédech — *roi de justice* (Hé 7) | M |
+| Type2 / Titi2 | Aidant | Marie | **Mimi** | Marie + Marie-Madeleine | F |
+| Type3 / Titi3 | Performeur | Paul | **Polo** | Saul → Paul — transformation, "je me suis fait tout à tous" | M |
+| Type4 / Titi4 | Individualiste | Jérémie | **Jérem** | Prophète Jérémie — Lamentations, poète de l'intense | M |
+| Type5 / Titi5 | Observateur | Luc | **Lulu** | Évangéliste Luc — médecin, "ayant tout recherché avec soin" (Lc 1:3) | M |
+| Type6 / Titi6 | Loyal | Pierre | **Pierrot** | Apôtre Pierre — le roc qui doute, renie, revient | M |
+| Type7 / Titi7 | Enthousiaste | Raphaëlle | **Raph** | Archange Raphaël — compagnon joyeux de Tobie (apocryphe) | F |
+| Type8 / Titi8 | Challenger | Judith | **Juju** | Livre de Judith — tranche Holopherne pour sauver les siens | F |
+| Type9 / Titi9 | Pacificateur | Noé | **Nono** | Noé — arche, arc-en-ciel, alliance après le chaos | M |
 
-**Bilan genre casting Christ :** 3F (Marie, Raph, Judith) / 6M.
+**Bilan genre casting Christ :** 3F (Marie/Mimi, Raphaëlle/Raph, Judith/Juju) / 6M + Wex hors-système. **Casting figé — définitif.** Pas de bascule F/M (question Noémie/Sophie retirée).
+
+**Règle d'écriture** : diminutif ≈ 4/5 du temps dans les histoires et dialogues. Prénom complet pour moments solennels / parole d'adulte.
 
 ### Héros hors-système
 

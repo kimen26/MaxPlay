@@ -1,11 +1,14 @@
-# Élia — Type 1, Le Perfectionniste
+# Melki — Type 1, Le Perfectionniste
 *"C'est pas comme ça qu'on fait. Il y a une façon juste de faire les choses."*
 
 ---
 
 ## Identité
 
-- **Prénom** : Élia
+- **Prénom complet** : Melchisédech
+- **Diminutif (usage courant ≈ 4/5 du temps)** : **Melki**
+- **Notation** : Type1 / Titi1 (origine : Christ)
+- **Genre** : M
 - **Type** : 1 — Le Perfectionniste / Le Réformateur
 - **Rôle dans l'histoire** : La conscience du groupe, celle qui tient les principes
 - **Aile dominante** : 1w2 (rigoureuse mais avec une vraie chaleur)
@@ -17,7 +20,7 @@
 
 ## Portrait vivant
 
-Élia a un sens inné de "comment les choses devraient être". Sa chambre est rangée, ses crayons sont dans l'ordre, et elle remarque tout de suite quand quelque chose est de travers — une injustice, une erreur, un manque de soin.
+Melki a un sens inné de "comment les choses devraient être". Sa chambre est rangée, ses crayons sont dans l'ordre, et elle remarque tout de suite quand quelque chose est de travers — une injustice, une erreur, un manque de soin.
 
 Elle n'est pas méchante. Pas du tout. Elle est juste... exigeante. Et cette exigence, elle se l'applique d'abord à elle-même, plus durement qu'à n'importe qui d'autre. Quand elle fait une erreur, elle reste longtemps à y penser. *"J'aurais dû mieux faire."*
 
@@ -40,7 +43,7 @@ Ce qu'elle cache : une vraie colère intérieure contre tout ce qui n'est pas à
 
 ---
 
-## Comment Élia se comporte selon les situations
+## Comment Melki se comporte selon les situations
 
 ### Dans la joie / le plaisir
 - Elle peut être joyeuse — quand tout est en ordre, quand elle s'est bien comportée, quand elle a "mérité" le plaisir.
@@ -73,22 +76,22 @@ Ce qu'elle cache : une vraie colère intérieure contre tout ce qui n'est pas à
 
 ---
 
-## Élia avec les autres
+## Melki avec les autres
 
 | Personnage | Type | Relation |
 |------------|------|----------|
-| Léo | 7 | Tension affectueuse. *"Léo, fais attention !"* / *"Élia, détends-toi !"*. Ils se complètent sans se comprendre tout à fait. |
+| Léo | 7 | Tension affectueuse. *"Léo, fais attention !"* / *"Melki, détends-toi !"*. Ils se complètent sans se comprendre tout à fait. |
 | Sam | 8 | Respect mutuel. Deux fortes personnalités avec des principes. Conflits directs mais résolus directement. |
-| Lila | 9 | Lila la calme. Élia trouve Lila trop passive parfois. Mais Lila voit la bonté profonde d'Élia sans la juger. |
-| Noa | 6 | Complicité sur les règles et la fiabilité. Élia apprécie la prudence de Noa. |
-| Camille | 2 | Élia apprécie l'aide de Camille mais trouve qu'elle aide parfois trop. Petites frictions douces. |
-| Theo | 5 | Respect intellectuel mutuel. Tous les deux sérieux, rigoureux. Élia aime que Theo soit précis. |
-| Victor | 3 | Méfiance. Élia sent que Victor adapte ce qu'il dit selon la situation. Elle ne l'approuve pas. |
-| Iris | 4 | Tension : Iris dramatise, Élia rationalise. Mais Élia est fascinée par la sensibilité d'Iris, même si elle n'en parle pas. |
+| Lila | 9 | Lila la calme. Melki trouve Lila trop passive parfois. Mais Lila voit la bonté profonde d'Melki sans la juger. |
+| Noa | 6 | Complicité sur les règles et la fiabilité. Melki apprécie la prudence de Noa. |
+| Camille | 2 | Melki apprécie l'aide de Camille mais trouve qu'elle aide parfois trop. Petites frictions douces. |
+| Theo | 5 | Respect intellectuel mutuel. Tous les deux sérieux, rigoureux. Melki aime que Theo soit précis. |
+| Victor | 3 | Méfiance. Melki sent que Victor adapte ce qu'il dit selon la situation. Elle ne l'approuve pas. |
+| Iris | 4 | Tension : Iris dramatise, Melki rationalise. Mais Melki est fascinée par la sensibilité d'Iris, même si elle n'en parle pas. |
 
 ---
 
-## Phrases typiques d'Élia
+## Phrases typiques d'Melki
 
 - *"C'est pas comme ça qu'on fait."*
 - *"J'aurais dû faire mieux."*
@@ -103,13 +106,13 @@ Ce qu'elle cache : une vraie colère intérieure contre tout ce qui n'est pas à
 ## Moments émotionnels clés
 
 ### La fois où elle a laissé tomber
-*Élia travaillait sur un dessin depuis une heure. Ça ne ressemblait pas à ce qu'elle voulait. Elle l'a froissé et l'a jeté. Et puis Léo a dit : "Hé, je l'avais vu ton dessin, il était bien." Elle a regardé la poubelle. Et elle a compris qu'elle n'arrivait parfois pas à voir ce qui était bon — parce que le juge intérieur était trop fort.*
+*Melki travaillait sur un dessin depuis une heure. Ça ne ressemblait pas à ce qu'elle voulait. Elle l'a froissé et l'a jeté. Et puis Léo a dit : "Hé, je l'avais vu ton dessin, il était bien." Elle a regardé la poubelle. Et elle a compris qu'elle n'arrivait parfois pas à voir ce qui était bon — parce que le juge intérieur était trop fort.*
 
 ### Quand elle a fait quelque chose de "mal"
-*Élia a menti une fois — un tout petit mensonge — pour ne pas avoir d'ennuis. Ça lui a pesé pendant trois jours. Elle en a parlé à sa maman. Sa maman a dit : "Tu vois, tu es venue le dire. C'est ça, être une bonne personne — pas d'être parfaite." Élia n'a pas tout de suite compris. Mais quelque chose a bougé.*
+*Melki a menti une fois — un tout petit mensonge — pour ne pas avoir d'ennuis. Ça lui a pesé pendant trois jours. Elle en a parlé à sa maman. Sa maman a dit : "Tu vois, tu es venue le dire. C'est ça, être une bonne personne — pas d'être parfaite." Melki n'a pas tout de suite compris. Mais quelque chose a bougé.*
 
 ### La crise du spectacle
-*Élia avait préparé un poème pour l'école. Elle le savait par cœur. Sur scène, elle a oublié une ligne. Elle a dit une autre ligne à la place. Personne dans le public n'a remarqué. Mais elle, si. Elle a failli pleurer sur scène — puis elle s'est reprise. Après, Lila lui a dit : "Tu étais magnifique." Élia a pensé : "Je sais qu'elle ment." Mais elle n'en était plus certaine.*
+*Melki avait préparé un poème pour l'école. Elle le savait par cœur. Sur scène, elle a oublié une ligne. Elle a dit une autre ligne à la place. Personne dans le public n'a remarqué. Mais elle, si. Elle a failli pleurer sur scène — puis elle s'est reprise. Après, Lila lui a dit : "Tu étais magnifique." Melki a pensé : "Je sais qu'elle ment." Mais elle n'en était plus certaine.*
 
 ---
 
@@ -125,8 +128,8 @@ Ce qu'elle cache : une vraie colère intérieure contre tout ce qui n'est pas à
 
 ## Note pour l'auteur
 
-Élia est la conscience du groupe — mais pas une conscience froide. Elle veut vraiment que le monde soit meilleur et elle commence par elle-même. Son arc le plus touchant est celui où elle apprend à se pardonner. Où elle comprend que la vraie perfection n'existe pas — et que ce n'est pas une tragédie.
+Melki est la conscience du groupe — mais pas une conscience froide. Elle veut vraiment que le monde soit meilleur et elle commence par elle-même. Son arc le plus touchant est celui où elle apprend à se pardonner. Où elle comprend que la vraie perfection n'existe pas — et que ce n'est pas une tragédie.
 
-Les scènes les plus fortes d'Élia sont celles où elle doit accepter l'imperfection des autres (ou la sienne) sans la corriger. C'est là que son amour profond pour le monde se révèle.
+Les scènes les plus fortes d'Melki sont celles où elle doit accepter l'imperfection des autres (ou la sienne) sans la corriger. C'est là que son amour profond pour le monde se révèle.
 
 *Source théorique : Type 1 Chabreuil / Riso-Hudson. Aile 2, intégration vers 7, désintégration vers 4.*

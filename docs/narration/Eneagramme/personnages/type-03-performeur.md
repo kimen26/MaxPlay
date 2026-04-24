@@ -1,11 +1,14 @@
-# Victor — Type 3, Le Performeur
+# Polo — Type 3, Le Performeur
 *"Regardez ce que j'ai fait. Je suis le meilleur à ça."*
 
 ---
 
 ## Identité
 
-- **Prénom** : Victor
+- **Prénom complet** : Paul
+- **Diminutif (usage courant ≈ 4/5 du temps)** : **Polo**
+- **Notation** : Type3 / Titi3 (origine : Christ)
+- **Genre** : M
 - **Type** : 3 — Le Battant / L'Achiever
 - **Rôle dans l'histoire** : L'énergie compétitive, celui qui pousse le groupe à se dépasser
 - **Aile dominante** : 3w2 (ambitieux ET besoin de plaire)
@@ -17,11 +20,11 @@
 
 ## Portrait vivant
 
-Victor sait exactement ce qu'il veut montrer. Son sac à dos est cool. Sa coupe de cheveux est parfaite. Quand il parle, il regarde si les autres écoutent — et s'ils n'écoutent pas, il dit quelque chose de plus intéressant.
+Polo sait exactement ce qu'il veut montrer. Son sac à dos est cool. Sa coupe de cheveux est parfaite. Quand il parle, il regarde si les autres écoutent — et s'ils n'écoutent pas, il dit quelque chose de plus intéressant.
 
 Il est drôle. Compétent. Rapide. Quand il décide de faire quelque chose, il le fait vraiment bien — pas parce qu'il l'aime forcément, mais parce qu'il veut être le meilleur. Et souvent, il l'est.
 
-Ce que peu de gens voient : Victor ne sait pas vraiment ce qu'il aime pour de vrai. Il sait ce qui impressionne. Il sait ce qui plaît. Mais *lui* — ce qu'il ressent au fond — c'est comme un tiroir qu'il n'ouvre jamais vraiment.
+Ce que peu de gens voient : Polo ne sait pas vraiment ce qu'il aime pour de vrai. Il sait ce qui impressionne. Il sait ce qui plaît. Mais *lui* — ce qu'il ressent au fond — c'est comme un tiroir qu'il n'ouvre jamais vraiment.
 
 Ce qu'on voit : la réussite, l'énergie, le charme, l'efficacité.
 Ce qu'il cache : le doute profond. *"Et si je valais rien sans mes exploits ?"*
@@ -40,7 +43,7 @@ Ce qu'il cache : le doute profond. *"Et si je valais rien sans mes exploits ?"*
 
 ---
 
-## Comment Victor se comporte selon les situations
+## Comment Polo se comporte selon les situations
 
 ### Dans la joie / le plaisir
 - Il aime gagner. La victoire lui procure une joie intense, brève, et vite suivie d'un besoin de nouvelles victoires.
@@ -73,22 +76,22 @@ Ce qu'il cache : le doute profond. *"Et si je valais rien sans mes exploits ?"*
 
 ---
 
-## Victor avec les autres
+## Polo avec les autres
 
 | Personnage | Type | Relation |
 |------------|------|----------|
-| Léo | 7 | Compétition amicale. Léo s'en fiche de gagner. Victor ne comprend pas ça — mais il aime l'énergie de Léo. |
-| Sam | 8 | Frottement. Sam dit ce qu'il pense directement. Victor adapte. Sam ne fait pas confiance à ça. |
-| Élia | 1 | Élia le juge. Victor le sent. Il essaie de l'impressionner — en vain. |
+| Léo | 7 | Compétition amicale. Léo s'en fiche de gagner. Polo ne comprend pas ça — mais il aime l'énergie de Léo. |
+| Sam | 8 | Frottement. Sam dit ce qu'il pense directement. Polo adapte. Sam ne fait pas confiance à ça. |
+| Élia | 1 | Élia le juge. Polo le sent. Il essaie de l'impressionner — en vain. |
 | Camille | 2 | Complicité dans le besoin de reconnaissance. Ils se comprennent sans le dire. |
-| Noa | 6 | Victor ne comprend pas les inquiétudes de Noa. "Fonce et on verra !" — mais Noa a besoin de sécurité d'abord. |
-| Theo | 5 | Victor est impressionné par l'intelligence de Theo mais ne l'admettra pas facilement. |
-| Lila | 9 | Victor ne comprend pas l'absence d'ambition de Lila. Mais Lila le voit avec douceur, sans le juger. |
-| Iris | 4 | Tension esthétique. Iris croit en la profondeur. Victor croit en l'efficacité. Fascination mutuelle sous la friction. |
+| Noa | 6 | Polo ne comprend pas les inquiétudes de Noa. "Fonce et on verra !" — mais Noa a besoin de sécurité d'abord. |
+| Theo | 5 | Polo est impressionné par l'intelligence de Theo mais ne l'admettra pas facilement. |
+| Lila | 9 | Polo ne comprend pas l'absence d'ambition de Lila. Mais Lila le voit avec douceur, sans le juger. |
+| Iris | 4 | Tension esthétique. Iris croit en la profondeur. Polo croit en l'efficacité. Fascination mutuelle sous la friction. |
 
 ---
 
-## Phrases typiques de Victor
+## Phrases typiques de Polo
 
 - *"J'ai fini le premier !"*
 - *"Vous avez vu comme j'ai fait ça ?"*
@@ -103,13 +106,13 @@ Ce qu'il cache : le doute profond. *"Et si je valais rien sans mes exploits ?"*
 ## Moments émotionnels clés
 
 ### Le jour où il a raté devant tout le monde
-*Victor avait annoncé qu'il allait réussir quelque chose d'impressionnant. Il a raté. Devant tout le monde. Il a vu les regards. Il a souri — mais ses yeux ne souriaient pas. Le soir, seul, il a eu la nausée. Et pour la première fois, il s'est demandé : "Si je rate encore, est-ce qu'ils m'aimront quand même ?"*
+*Polo avait annoncé qu'il allait réussir quelque chose d'impressionnant. Il a raté. Devant tout le monde. Il a vu les regards. Il a souri — mais ses yeux ne souriaient pas. Le soir, seul, il a eu la nausée. Et pour la première fois, il s'est demandé : "Si je rate encore, est-ce qu'ils m'aimront quand même ?"*
 
 ### Quand Léo l'a aimé sans raison
-*Un jour, Léo lui a dit : "Victor, t'es sympa." Juste comme ça, pas après une victoire, pas après avoir fait quelque chose d'impressionnant. Juste : t'es sympa. Victor a dit "ouais merci" en haussant les épaules. Mais en vrai, ce soir-là, il y a pensé longtemps.*
+*Un jour, Léo lui a dit : "Polo, t'es sympa." Juste comme ça, pas après une victoire, pas après avoir fait quelque chose d'impressionnant. Juste : t'es sympa. Polo a dit "ouais merci" en haussant les épaules. Mais en vrai, ce soir-là, il y a pensé longtemps.*
 
 ### La fois où il a laissé quelqu'un gagner
-*Victor aurait pu gagner la course. Il était plus rapide. Mais Noa était essoufflé et avait vraiment envie d'arriver en premier ce jour-là. Victor a ralenti. Noa a gagné. Noa était tellement content. Victor a ressenti quelque chose d'étrange — pas de la déception. Quelque chose de doux. De la joie pour quelqu'un d'autre.*
+*Polo aurait pu gagner la course. Il était plus rapide. Mais Noa était essoufflé et avait vraiment envie d'arriver en premier ce jour-là. Polo a ralenti. Noa a gagné. Noa était tellement content. Polo a ressenti quelque chose d'étrange — pas de la déception. Quelque chose de doux. De la joie pour quelqu'un d'autre.*
 
 ---
 
@@ -125,8 +128,8 @@ Ce qu'il cache : le doute profond. *"Et si je valais rien sans mes exploits ?"*
 
 ## Note pour l'auteur
 
-Victor est le personnage qui enseigne que la valeur n'est pas conditionnelle. Son arc narratif est de découvrir qui il est *derrière* les accomplissements. Ce voyage est douloureux — parce qu'il n'a pas l'habitude de s'arrêter pour regarder en lui.
+Polo est le personnage qui enseigne que la valeur n'est pas conditionnelle. Son arc narratif est de découvrir qui il est *derrière* les accomplissements. Ce voyage est douloureux — parce qu'il n'a pas l'habitude de s'arrêter pour regarder en lui.
 
-Les scènes les plus révélatrices de Victor sont celles où il rate — et où il découvre que le groupe l'aime quand même. Ces moments lui donnent accès à quelque chose de nouveau : l'authenticité.
+Les scènes les plus révélatrices de Polo sont celles où il rate — et où il découvre que le groupe l'aime quand même. Ces moments lui donnent accès à quelque chose de nouveau : l'authenticité.
 
 *Source théorique : Type 3 Chabreuil / Riso-Hudson. Aile 2, intégration vers 6, désintégration vers 9.*

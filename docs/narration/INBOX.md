@@ -15,7 +15,7 @@
 ## 2026-04-11 — [archive SYNTHESE.md] inventaire projet + workflow écriture
 
 > ⚠ **Archive** du fichier `SYNTHESE.md` supprimé le 2026-04-17 (restructuration narration).
-> Prénoms obsolètes (Léo héros → désormais Wex ; les 8 autres à valider).
+> Prénoms obsolètes — casting Christ V1 figé 2026-04-24. Mapping : Léo→Wex (héros hors-système), Élia→Melki, Camille→Mimi, Victor→Polo, Iris→Jérem, Theo→Lulu, Noa→Pierrot, Sam→Juju, Lila→Nono.
 > Gardé pour ne rien perdre : workflow d'écriture en 6 étapes, tableau des 9 "meilleurs amis", liste des ressources externes, arc 3 saisons.
 > À re-distiller si besoin vers `Eneagramme/ressources/guide-auteur.md` ou `histoires/INDEX.md`.
 

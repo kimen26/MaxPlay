@@ -12,6 +12,22 @@
 [contenu brut]
 -->
 
+## 2026-04-26 — Feedback écriture V2 "Parapluie oublié" (rejetée)
+
+Retour auteur sur la V2 :
+- **Trop décoratif** : explication de la pluie, "ancien arrêt de bus reconverti en abri-rituel avec plaque colorée" = world-building plaqué sur l'histoire.
+- **Lourd** : on explique tout, on commente le monde au lieu de le laisser respirer.
+- **Sujet perdu** : *où est passé le parapluie ?* Le titre annonce un objet, l'histoire l'oublie.
+- **Sortie évidente non assumée** : on rentre mouillé, c'est pas grave. Pas besoin d'inventer un dispositif rituel pour ça.
+
+→ Règle d'écriture qui se dégage :
+1. **L'objet du titre est le centre de gravité** — il agit, il manque, il revient. Pas un prétexte.
+2. **Le monde affleure, ne s'explique pas.** Un détail suffit (un mot, un geste). Pas de notice.
+3. **La conclusion la plus simple est souvent la bonne.** "On rentre mouillé" peut être le ketsu.
+4. Pas de réflexe "ajoute du lore" en réécriture. Si c'est vide, c'est peut-être que la **scène elle-même** manque, pas le décor.
+
+---
+
 ## 2026-04-26 — Cadrage histoires : format, paliers d'âge, univers logistique
 
 ### Décision macro : pas d'album illustré

@@ -38,19 +38,20 @@
 
 ### Tableau des 9 personnages — colonne "meilleur ami" (non présente ailleurs)
 
-⚠ Prénoms à l'ancienne, à transposer quand validés.
+⚠ Tableau migré vers casting Christ V1 figé 2026-04-24.
 
-| # | Prénom (ancien) | Essence | Peur | Force | Faiblesse | Meilleur ami |
-|---|-----------------|---------|------|-------|-----------|--------------|
-| 1 | Élia | Être bonne | Imperfection | Intégrité | Sévérité | Noa |
-| 2 | Camille | Être aimée | Rejet | Empathie | Oubli de soi | Lila |
-| 3 | Victor | Être valorisé | Sans valeur | Efficacité | Image avant être | — |
-| 4 | Iris | Être soi-même | Ordinarité | Créativité | Mélancolie | Theo |
-| 5 | Theo | Comprendre | Incompétence | Sagesse | Isolement | Iris |
-| 6 | Noa | Avoir du soutien | Abandon | Loyauté | Anxiété | Élia |
-| 7 | **Léo→Wex** | Être comblé | Souffrir | Joie | Fuite | Sam |
-| 8 | Sam | Être fort | Domination | Protection | Dureté | Léo→Wex |
-| 9 | Lila | La paix | Conflit | Harmonie | Effacement | Camille |
+| # | Prénom (surnom / complet) | Essence | Peur | Force | Faiblesse | Meilleur ami |
+|---|---------------------------|---------|------|-------|-----------|--------------|
+| 1 | **Melki** / Melchisédech | Être bon·ne | Imperfection | Intégrité | Sévérité | Pierrot |
+| 2 | **Mimi** / Marie F | Être aimée | Rejet | Empathie | Oubli de soi | Nono |
+| 3 | **Polo** / Paul | Être valorisé | Sans valeur | Efficacité | Image avant être | — |
+| 4 | **Jérem** / Jérémie | Être soi-même | Ordinarité | Créativité | Mélancolie | Lulu |
+| 5 | **Lulu** / Luc | Comprendre | Incompétence | Sagesse | Isolement | Jérem |
+| 6 | **Pierrot** / Pierre | Avoir du soutien | Abandon | Loyauté | Anxiété | Melki |
+| 7 (ennéa) | **Raph** / Raphaëlle F | Être comblée | Souffrir | Joie | Fuite | Wex |
+| 7 (héros) | **Wex** (hors-système) | — | — | — | — | Raph / Juju |
+| 8 | **Juju** / Judith F | Être forte | Domination | Protection | Dureté | Wex |
+| 9 | **Nono** / Noé | La paix | Conflit | Harmonie | Effacement | Mimi |
 
 ### Arc narratif mentionné
 

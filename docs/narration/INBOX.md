@@ -12,6 +12,74 @@
 [contenu brut]
 -->
 
+## 2026-04-26 — Cadrage histoires : format, paliers d'âge, univers logistique
+
+### Décision macro : pas d'album illustré
+- Pas de dessinateur, IA pas constante → pas de picture book à 15 illustrations.
+- Choix : **plusieurs histoires courtes texte-only** (ou 1-2 illus crayon/aquarelle simples max par histoire).
+- Priorité quantité d'histoires > beauté visuelle. Format compact, lisible TTS + papier sobre.
+
+### Paliers d'âge (3 paliers)
+
+| Palier | Âge | Format | Autonomie persos | Détail monde |
+|--------|-----|--------|------------------|--------------|
+| **P1** | 2-3 ans (avant maternelle) | Histoire ultra-courte, 2-3 min lecture, ~150-250 mots | Peu/pas d'autonomie, lié aux parents | Découverte simpliste objets quotidiens |
+| **P2** | 4-6 ans (maternelle, **= Max aujourd'hui**) | Histoire courte, 4-6 min lecture, ~400-700 mots | Déplacements seuls OK (rituel de passage de confiance) | Beaucoup de "pourquoi", détails du monde |
+| **P3** | 6-9 ans | Format roman court ou documentaire — à définir | Autonomie large | Profond, science, biologie, cosmologie de l'univers |
+
+→ Même histoire peut exister en 3 versions paliers (compact P1 → étoffé P3).
+
+### Règles d'univers tranchées (2026-04-26)
+
+1. **Enfants seuls dehors dès la maternelle** — pas de danger dans ce monde. Possibilité de **rituel/passage de confiance** marquant le moment où on peut sortir seul.
+2. **Pas de noms de villes réelles** dans les histoires (pas "Villejuif", pas "Paris"). Plutôt **noms de communautés/quartiers** type "Harmonie", "Le Cercle", etc. — à définir, pas urgent. On peut écrire sans nommer.
+3. **Lieux géographiques réels OK** pour décor (mer, montagne, savane, éléphant, lion) — mais éviter les **clichés culturels** (ex : ne pas réduire l'Afrique à savane/pauvreté/pas de pont). Cibles toutes connectées internet, en ville.
+4. **Coutumes locales = remarques sociales fines** (style "Pont Cassé"), pas folklore costumé.
+
+### Transport — système à inventer
+- **Bus moteur classique : non** (incohérent avec monde post-Éveil sobre + "tous proches").
+- Pistes :
+  - **Foodbus** (ancien bus → food-truck festif/communautaire)
+  - **Arrêts de bus reconvertis** en torii / petits abris / kiosques rituels
+  - **Lignes et couleurs RATP réutilisées** comme **lignes d'énergie / sens de circulation** (la structure couvrait l'espace, on récupère le maillage pour autre chose : vibrations, harmonie, parcours rituels)
+- **Système de transport à inventer** : atomique/automatique, harmonieux avec l'intention, support physique requis.
+  - Pistes science : gravité/gravitation manipulée, fusion/atome, ondes, résonance.
+  - À retravailler — pas de réponse définitive maintenant.
+- ⚠ Question ouverte : **les bus existent-ils encore comme objets** dans les villes cibles, ou seulement comme vestiges/réappropriations ?
+
+### Pluie & climat
+- **Pluie = sujet récurrent** possible (pas un cliché si pas réservé au #7).
+- **Variations culturelles à exploiter** : pluie célébrée en Afrique (vie, fertilité) vs pluie subie en Europe → matière narrative.
+- Plusieurs histoires "pluie" possibles avec **différentes combinaisons d'ennéatypes** → arborescence facile.
+
+### Biologie & quotidien (univers à définir)
+- **Repas** : 1-2 par jour quand faim, **pas 3-5 repas rituels** comme chez nous.
+- Pas de rituel quotidien obligatoire — possibilité de rituels **hebdo** ou autre fréquence.
+- **Sommeil** : à définir, peut différer du nôtre.
+- **Animaux carnivore/omnivore/végétarien** : sujet d'explication récurrent (Max demande "y mange quoi le crocodile ?", "qui mange les poules ?") → matière pédagogique naturelle.
+- **Science quotidienne** intégrable : cellules, cœur, respiration, oxygène, soleil, alimentation — selon palier d'âge (surtout P2-P3).
+
+### Casting & Wex
+- **Wex = observateur sans ennéatype**, présent comme témoin/relieur, ne tranche pas. Confirmé.
+- Cast par histoire : Wex + **2 à 3 copains typés** (ne pas surcharger).
+- ⚠ **Prénoms d'autres cultures à produire rapidement** — la matrice par origine existe (`personnages/prénoms-par-origine.md`) mais à étoffer pour pouvoir varier les histoires.
+
+### Kishōtenketsu — rappel
+Structure 4 temps, **pas d'antagoniste** : Ki (intro) · Shō (vie continue) · **Ten (décalage / changement de perspective**, pas conflit) · Ketsu (harmonie). Adapté aux sujets anodins du quotidien.
+
+### Mode d'écriture cible
+- **Sujets ultra-anodins** : un parapluie oublié, un balai, un fantôme, un phare, un pont (réf. Suzanne et Gaston).
+- Marquant pour jeune enfant : **entraînant, palpitant, étonnant — mais simple**, du quotidien avec amis.
+- Potentiel : centaines d'histoires combinatoires (objet × lieu × duo/trio ennéatype × culture).
+
+### Prochain pas
+Réécrire l'histoire-test "Parapluie oublié" avec les nouvelles règles :
+- pas de Villejuif (pas de nom de ville)
+- pas de bus moteur (bus reconverti / autre chose)
+- palier P2 (4-6 ans), ~400-700 mots
+- 3 copains typés + Wex observateur
+- Kishōtenketsu
+
 ## 2026-04-11 — [archive SYNTHESE.md] inventaire projet + workflow écriture
 
 > ⚠ **Archive** du fichier `SYNTHESE.md` supprimé le 2026-04-17 (restructuration narration).

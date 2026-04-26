@@ -72,13 +72,16 @@
   <script src="js/feedback.js"></script>
   <script src="js/data.js"></script>
   <script src="js/qcm-retry.js"></script>
+  <script src="js/victory-sounds.js"></script>
   <script>
     // ─── MJ-03a: Compte les passagers ───
     // Des passagers arrivent par GROUPES → Max compte le total
     // Groupements visuels: 2+3+3 plutôt que 8 en ligne
-    
+
+    const MAX_QUESTIONS = 10;
     let score = 0;
     let streak = 0;
+    let questionCount = 0;
     let qcm = null;
     let correctAnswer = 0;
     
@@ -87,12 +90,15 @@
     function init() {
       score = 0;
       streak = 0;
+      questionCount = 0;
       document.getElementById('score').textContent = '0';
       document.getElementById('streak').textContent = '';
       nextQuestion();
     }
-    
+
     function nextQuestion() {
+      if (questionCount >= MAX_QUESTIONS) { showEndScreen(); return; }
+      questionCount++;
       qcm = QcmRetry.create();
       
       // Générer un total entre 3 et 10
@@ -202,7 +208,23 @@
       document.getElementById('score').textContent = score;
       document.getElementById('streak').textContent = streak >= 2 ? `🔥×${streak}` : '';
     }
-    
+
+    function showEndScreen() {
+      if (typeof Tracker !== 'undefined') Tracker.endSession(score, MAX_QUESTIONS * 10);
+      if (typeof playEndSound === 'function') playEndSound(score, MAX_QUESTIONS * 10);
+      if (typeof confetti === 'function') confetti();
+      document.getElementById('app').innerHTML = `
+        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100dvh;text-align:center;padding:20px;">
+          <div style="font-size:5rem;margin-bottom:20px;">🏆</div>
+          <h2 style="font-size:2rem;margin-bottom:20px;color:#ffe066;">Super !</h2>
+          <p style="font-size:1.4rem;margin-bottom:30px;">Tu as fait <strong>${score}</strong> points !</p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
+            <a href="mj-04.html" style="background:#00c47a;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">🔄 Rejouer</a>
+            <a href="index.html" style="background:#ffffff22;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">📋 Menu</a>
+          </div>
+        </div>`;
+    }
+
     // Démarrer
     init();
   </script>

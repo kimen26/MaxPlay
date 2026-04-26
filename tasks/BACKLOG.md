@@ -33,8 +33,8 @@
 | EP-006 | Audio (sons + musique + TTS) | `[ ]` |
 | EP-008 | Recherche motricité enfant 3-4 ans | `[ ]` |
 | EP-009 | Recherche audio : TTS, voix, streaming | `[ ]` |
-| EP-021 | Renommage cohérence vocab Max (Centre bus / Garage / Village) | `[ ]` |
-| EP-022 | MJ-04 → ajouter fin de partie (10 tours + endSession + playEndSound) | `[ ]` |
+| EP-021 | Renommage cohérence vocab Max (Centre bus / Garage / Village) | `[x]` |
+| EP-022 | MJ-04 → ajouter fin de partie (10 tours + endSession + playEndSound) | `[x]` |
 | EP-023 | Menu hybride : Carte de Villejuif (haut) + grille classique (bas) | `[ ]` |
 | EP-024 | Fix Max Adventure (cassé actuellement) | `[x]` |
 | EP-025 | Max Adventure responsive (portrait mobile) | `[x]` |

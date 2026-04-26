@@ -56,6 +56,27 @@
 | [histoires/_gabarit.md](histoires/_gabarit.md) | Structure type nouvelle histoire |
 | [histoires/le-pont-casse.md](histoires/le-pont-casse.md) | V1 complète + options d'intégration univers |
 
+### Équipe éditoriale
+| Fichier | Rôle |
+|---------|------|
+| [equipe/ORGANIGRAMME.md](equipe/ORGANIGRAMME.md) | **Qui fait quoi — lire avant d'appeler un agent** |
+| [equipe/profils-lecteurs.md](equipe/profils-lecteurs.md) | Fiches 4F · 4M · 9F · 9M · Parent · Éditeur · Prof · Philo · 8 cultures |
+| [equipe/sources-sciences.md](equipe/sources-sciences.md) | Refs documentaires (C'est pas sorcier, La Vie...) |
+| [equipe/sources-sensibilite.md](equipe/sources-sensibilite.md) | Catalogue topics sensibles / conspirationnistes |
+| [equipe/memoire-dir.md](equipe/memoire-dir.md) | Mémoire Directeur Éditorial |
+| [equipe/memoire-writer-a/b/c.md](equipe/) | Mémoire Writers (séparées) |
+| [equipe/memoire-science.md](equipe/memoire-science.md) | Mémoire Expert Sciences |
+| [equipe/memoire-sensibilite.md](equipe/memoire-sensibilite.md) | Mémoire Expert Sensibilité (décisions OUI/NON) |
+| [equipe/memoire-keeper.md](equipe/memoire-keeper.md) | Mémoire Keeper |
+
+### Workflow
+| Fichier | Rôle |
+|---------|------|
+| [input-idees/](input-idees/) | **Zone de dump brut** — un fichier par session/sujet |
+| [TODO-EDITORIAL.md](TODO-EDITORIAL.md) | Tickets éditoriaux (créés par le Directeur) |
+| [archive/](archive/) | Sessions archivées (rien n'est effacé) |
+| [atelier/](atelier/) | Brouillons en cours (brief · versions A/B/C · final) |
+
 ### Reference (matière de fond, pas quotidien)
 | Fichier | Quand le lire |
 |---------|--------------|

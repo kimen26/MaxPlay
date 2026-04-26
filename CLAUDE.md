@@ -75,7 +75,7 @@ MJ-01 à MJ-16 déployés (MJ-17 retiré). Voir [tasks/BACKLOG.md](tasks/BACKLOG
 - `13-media/` : animation-screenplay
 
 ## Personnages (9, ennéagramme)
-⚠ **Prénoms en cours de validation** — seul Wex (#7 héros) est confirmé.
+Casting V1 "Christ" **figé** (2026-04-24). Wex (#7 héros hors-système) + 9 compagnons.
 Toujours lire [docs/narration/personnages/INDEX.md](docs/narration/personnages/INDEX.md) avant d'écrire.
 
 ## Univers
@@ -103,7 +103,10 @@ Origines brésiliennes. Voir [docs/MAX_PROFILE.md](docs/MAX_PROFILE.md).
 | [docs/README.md](docs/README.md) | Carte documentation |
 | [docs/MAX_PROFILE.md](docs/MAX_PROFILE.md) | Profil complet Max |
 | [bot/index.ts](bot/index.ts) | Bot Telegram — routing agents, permissions Telegram |
-| [.claude/agents/](../.claude/agents/) | Agents locaux : narration (Opus), game-dev (Sonnet), quick (Haiku) |
+| [.claude/agents/](../.claude/agents/) | **Équipe narration** : narration/dir (Opus) · writer-a/b/c (Sonnet) · science/keeper (Haiku) · sensibilite (Sonnet) · game-dev (Sonnet) · quick (Haiku) |
+| [docs/narration/equipe/ORGANIGRAMME.md](docs/narration/equipe/ORGANIGRAMME.md) | Organigramme équipe éditoriale — qui fait quoi |
+| [docs/narration/input-idees/](docs/narration/input-idees/) | Zone de dump brut idées narration |
+| [docs/narration/TODO-EDITORIAL.md](docs/narration/TODO-EDITORIAL.md) | Tickets éditoriaux en cours |
 
 ## Workflow
 ```

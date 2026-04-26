@@ -19,12 +19,12 @@ const Tracker = (() => {
   const GAME_META = {
     'mj-01': { name: 'Quelle couleur ?',      emoji: '🎨', skill: 'Couleurs des lignes' },
     'mj-02': { name: 'Quel numéro ?',         emoji: '🔢', skill: 'Numéros des lignes' },
-    'mj-03': { name: 'Compte les passagers',  emoji: '👥', skill: 'Dénombrement' },
-    'mj-04': { name: 'Lis le mot',            emoji: '📖', skill: 'Lecture' },
-    'mj-05': { name: 'Quel bus pour aller où ?', emoji: '🗺️', skill: 'Trajets' },
-    'mj-06': { name: 'Au garage !',           emoji: '🚌', skill: 'Tri / drag-drop' },
+    'mj-03': { name: 'Devine le numéro',      emoji: '🔢', skill: 'Numéros / écoute' },
+    'mj-04': { name: 'Compte les passagers',  emoji: '👥', skill: 'Dénombrement' },
+    'mj-05': { name: 'La bonne place',        emoji: '🪑', skill: 'Soustraction' },
+    'mj-06': { name: 'Lis la phrase',         emoji: '📖', skill: 'Lecture' },
     'mj-07': { name: 'La journée de Max',     emoji: '🎮', skill: 'Sandbox Phaser' },
-    'mj-08': { name: 'Au garage le soir',     emoji: '🌙', skill: 'Tri / drag-drop' },
+    'mj-08': { name: 'Au centre bus',         emoji: '🅿️', skill: 'Tri / drag-drop' },
     'mj-09': { name: 'Trie les bus !',        emoji: '🔀', skill: 'Tri / classement' },
     'mj-10': { name: 'Tableau de bord',       emoji: '🎵', skill: 'Sons / exploration' },
     'mj-11': { name: 'Quel pays ?',           emoji: '🌍', skill: 'Drapeaux / géographie' },
@@ -36,9 +36,10 @@ const Tracker = (() => {
     'mj-14': { name: 'La grille',             emoji: '🔲', skill: 'Logique / patterns' },
     'mj-15': { name: 'L\'intrus',             emoji: '🔍', skill: 'Catégorisation / logique' },
     'mj-16': { name: 'Complète la suite',    emoji: '📈', skill: 'Logique / suites' },
-    'mj-17': { name: 'Le village des bus',    emoji: '🏘️', skill: 'Tri / causalité' },
+    'mj-17': { name: 'Le garage',             emoji: '🔧', skill: 'Réparation / causalité' },
     'mj-18': { name: 'Tubes de couleurs',     emoji: '🧪', skill: 'Logique / planification' },
-    'mj-19': { name: 'Trouve le bus !',       emoji: '🎯', skill: 'Attention visuelle' },
+    'mj-19': { name: 'Trouve le bus',         emoji: '🎯', skill: 'Attention visuelle' },
+    'mj-20': { name: 'Compte en huit langues', emoji: '🌐', skill: 'Langues / nombres' },
   };
 
   // ── Lecture / écriture localStorage ────────────────────────────────────
@@ -92,6 +93,31 @@ const Tracker = (() => {
       questions: 0,
       correct: 0,
     };
+    _announceTitle(id);
+  }
+
+  function _announceTitle(id) {
+    const meta = GAME_META[id];
+    if (!meta || !('speechSynthesis' in window)) return;
+    try {
+      const speakNow = () => {
+        speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(meta.name);
+        u.lang = 'fr-FR';
+        u.rate = 0.95;
+        u.pitch = 1.05;
+        const voices = speechSynthesis.getVoices();
+        const fr = voices.find(v => v.lang.startsWith('fr'));
+        if (fr) u.voice = fr;
+        speechSynthesis.speak(u);
+      };
+      if (speechSynthesis.getVoices().length === 0) {
+        speechSynthesis.addEventListener('voiceschanged', speakNow, { once: true });
+        setTimeout(speakNow, 300);
+      } else {
+        setTimeout(speakNow, 250);
+      }
+    } catch (e) {}
   }
 
   function logAnswer(correct) {

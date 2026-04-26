@@ -8,10 +8,10 @@
 - **Prénom complet** : Judith
 - **Diminutif (usage courant ≈ 4/5 du temps)** : **Juju**
 - **Notation** : Type8 / Titi8 (origine : Christ)
-- **Genre** : F (placeholder Juju était ambigu — pronoms à relire)
+- **Genre** : F
 - **Type** : 8 — Le Chef / Le Challenger
 - **Rôle dans l'histoire** : Proche de Wex, protectrice du groupe
-- **Aile dominante** : 8w7 (expansif, joueur, intensément vivant)
+- **Aile dominante** : 8w7 (expansive, joueuse, intensément vivante)
 - **Centre** : Ventre / Instinctif
 - **Couleur** : Rouge / Bordeaux
 - **Animal totem** : Lion (force visible, mais cœur tendre caché)
@@ -20,35 +20,35 @@
 
 ## Portrait vivant
 
-Juju prend de la place. Pas méchamment — naturellement. Quand il entre dans la cour, les autres le regardent. Sa voix est un peu plus forte, ses gestes un peu plus amples. Il s'installe comme si l'espace lui appartenait déjà.
+Juju prend de la place. Pas méchamment — naturellement. Quand elle entre dans la cour, les autres la regardent. Sa voix est un peu plus forte, ses gestes un peu plus amples. Elle s'installe comme si l'espace lui appartenait déjà.
 
-Il ne ment jamais. C'est une règle qu'il s'est faite tout seul, sans que personne le lui demande. *"Si t'es pas d'accord, dis-le."* Il déteste les sous-entendus, les faux-semblants, les gens qui sourient mais pensent autre chose.
+Elle ne ment jamais. C'est une règle qu'elle s'est faite toute seule, sans que personne le lui demande. *"Si t'es pas d'accord, dis-le."* Elle déteste les sous-entendus, les faux-semblants, les gens qui sourient mais pensent autre chose.
 
-Sa force impressionne. Sa tendresse surprend — parce qu'elle est bien cachée. Juju ne fait pas de câlins facilement. Mais quand son petit frère est malade, c'est lui qui reste à côté du lit toute la nuit en disant que c'est bon, qu'il surveille.
+Sa force impressionne. Sa tendresse surprend — parce qu'elle est bien cachée. Juju ne fait pas de câlins facilement. Mais quand son petit frère est malade, c'est elle qui reste à côté du lit toute la nuit en disant que c'est bon, qu'elle surveille.
 
 Ce qu'on voit : la force, la franchise, l'assurance.
-Ce qu'il cache : une sensibilité profonde qu'il protège comme un trésor dangereux.
+Ce qu'elle cache : une sensibilité profonde qu'elle protège comme un trésor dangereux.
 
 ---
 
 ## Motivation profonde
 
-**Peur fondamentale** : Être dominé, contrôlé, blessé parce qu'il aurait montré sa faiblesse.
+**Peur fondamentale** : Être dominée, contrôlée, blessée parce qu'elle aurait montré sa faiblesse.
 
-**Désir fondamental** : Être maître de sa vie. Être fort. Protéger ceux qu'il aime.
+**Désir fondamental** : Être maîtresse de sa vie. Être forte. Protéger ceux qu'elle aime.
 
 **Sa croyance secrète** : *"Le monde, c'est les forts et les faibles. Si je montre que je suis vulnérable, quelqu'un va en profiter."*
 
-**Ce qu'il apprend dans les histoires** : que montrer sa tendresse ne le rend pas faible — ça le rend humain. Que la vraie force peut accueillir la douceur.
+**Ce qu'elle apprend dans les histoires** : que montrer sa tendresse ne la rend pas faible — ça la rend humaine. Que la vraie force peut accueillir la douceur.
 
 ---
 
 ## Comment Juju se comporte selon les situations
 
 ### Dans la joie / le plaisir
-- Rit fort, joue à fond, compétiteur joyeux.
+- Rit fort, joue à fond, compétitrice joyeuse.
 - Donne l'impression que tout est une aventure.
-- Généreux avec ceux qu'il aime — il partage sans compter.
+- Généreuse avec ceux qu'elle aime — elle partage sans compter.
 - Teste les limites (des règles, des autres) pour voir ce qui est "vrai".
 
 ### Dans l'ennui
@@ -60,21 +60,21 @@ Ce qu'il cache : une sensibilité profonde qu'il protège comme un trésor dange
 ### Dans la tristesse / la douleur
 - Nie d'abord. *"C'est rien, ça va."*
 - Sa tristesse se déguise souvent en colère.
-- Peut se retirer seul pour ne montrer sa douleur à personne.
-- S'il fait confiance à quelqu'un, il peut enfin laisser tomber l'armure — c'est rare et précieux.
-- A besoin qu'on ne le juge pas, qu'on ne profite pas de sa vulnérabilité.
+- Peut se retirer seule pour ne montrer sa douleur à personne.
+- Si elle fait confiance à quelqu'un, elle peut enfin laisser tomber l'armure — c'est rare et précieux.
+- A besoin qu'on ne la juge pas, qu'on ne profite pas de sa vulnérabilité.
 
 ### Sous stress (désintégration vers le 5)
-- Se ferme totalement. Devient silencieux, froid, distant.
+- Se ferme totalement. Devient silencieuse, froide, distante.
 - Accumule des informations sans les partager.
 - Planifie une "contre-attaque" dans sa tête.
 - C'est le contraire de son comportement habituel — ça fait peur aux autres.
 
 ### En croissance (intégration vers le 2)
 - Exprime sa tendresse directement.
-- *"Je suis fier de toi."* (c'est énorme de sa part)
+- *"Je suis fière de toi."* (c'est énorme de sa part)
 - Protège les autres non pas par peur d'être faible, mais par amour authentique.
-- Devient le leader que tout le monde veut suivre — pas parce qu'il impose, mais parce qu'il inspire.
+- Devient la leader que tout le monde veut suivre — pas parce qu'elle impose, mais parce qu'elle inspire.
 
 ---
 
@@ -82,14 +82,14 @@ Ce qu'il cache : une sensibilité profonde qu'il protège comme un trésor dange
 
 | Personnage | Type | Relation |
 |------------|------|----------|
-| Raph | 7 | Son meilleur ami. Juju ne dit pas "je t'aime" mais il défend Raph contre n'importe qui. |
-| Nono | 9 | Il la respecte profondément. Sa douceur ne lui paraît pas faible — elle lui paraît sage. |
+| Raph | 7 | Sa meilleure amie. Juju ne dit pas "je t'aime" mais elle défend Raph contre n'importe qui. |
+| Nono | 9 | Elle le respecte profondément. Sa douceur ne lui paraît pas faible — elle lui paraît sage. |
 | Melki | 1 | Ils se respectent. Deux forts, deux principes différents. Peuvent s'affronter mais se comprennent. |
-| Pierrot | 6 | Juju est un peu exaspéré par les peurs de Pierrot. Mais il le protège instinctivement. |
-| Mimi | 2 | Mimi prend soin de Juju — ce qu'il tolère mal en général, sauf d'elle. |
-| Lulu | 5 | Fasciné par le cerveau de Lulu. Relation étrange mais de respect mutuel. |
+| Pierrot | 6 | Juju est un peu exaspérée par les peurs de Pierrot. Mais elle le protège instinctivement. |
+| Mimi | 2 | Mimi prend soin de Juju — ce qu'elle tolère mal en général, sauf d'elle. |
+| Lulu | 5 | Fascinée par le cerveau de Lulu. Relation étrange mais de respect mutuel. |
 | Polo | 3 | Compétition directe. Juju n'aime pas que Polo cache ce qu'il pense. |
-| Jérem | 4 | Il ne comprend pas Jérem mais il la laisse tranquille — il sait instinctivement qu'elle ne veut pas être "réparée". |
+| Jérem | 4 | Elle ne comprend pas Jérem mais elle le laisse tranquille — elle sait instinctivement qu'il ne veut pas être "réparé". |
 
 ---
 
@@ -98,23 +98,23 @@ Ce qu'il cache : une sensibilité profonde qu'il protège comme un trésor dange
 - *"Dis clairement ce que tu penses."*
 - *"C'est bon, je gère."*
 - *"Personne touche à mes amis."*
-- *"T'es sûr ? Vraiment sûr ?"* (il teste la réalité)
+- *"T'es sûr ? Vraiment sûr ?"* (elle teste la réalité)
 - *"Je m'en fous de perdre si c'était juste."*
-- *"Je suis pas fatigué."* (vrai, lui)
+- *"Je suis pas fatiguée."* (vrai, elle)
 - *"C'est quoi le vrai problème ?"*
 
 ---
 
 ## Moments émotionnels clés
 
-### Le jour où il a pleuré sans le vouloir
-*Le chien de Juju est mort. Il a dit que ça allait. Il a dit que c'était juste un chien. La nuit, Raph l'a entendu pleurer derrière sa porte. Raph n'a rien dit. Le lendemain, Juju a juste dit "merci d'être là" sans expliquer. Raph n'a pas demandé. C'était suffisant.*
+### Le jour où elle a pleuré sans le vouloir
+*Le chien de Juju est mort. Elle a dit que ça allait. Elle a dit que c'était juste un chien. La nuit, Raph l'a entendue pleurer derrière sa porte. Raph n'a rien dit. Le lendemain, Juju a juste dit "merci d'être là" sans expliquer. Raph n'a pas demandé. C'était suffisant.*
 
-### La fois où il a fait peur à quelqu'un sans le vouloir
-*Juju s'est mis en colère dans la cour. Pas méchamment — mais fort. Un plus petit a eu peur. Juju n'a pas compris d'abord pourquoi. Puis il a vu le visage du petit. Et pour la première fois, il a ressenti : ma force peut blesser sans que je le veuille. Cette découverte a changé quelque chose.*
+### La fois où elle a fait peur à quelqu'un sans le vouloir
+*Juju s'est mise en colère dans la cour. Pas méchamment — mais fort. Un plus petit a eu peur. Juju n'a pas compris d'abord pourquoi. Puis elle a vu le visage du petit. Et pour la première fois, elle a ressenti : ma force peut blesser sans que je le veuille. Cette découverte a changé quelque chose.*
 
-### Quand il a dû demander de l'aide
-*Juju était perdu dans les bois lors d'une sortie. Seul. Il a mis du temps à appeler. Appeler au secours, c'était admettre qu'il n'avait pas géré. Quand les adultes sont arrivés, il n'a pas pleuré. Mais cette nuit-là dans son lit, il a compris que demander de l'aide, c'est aussi du courage.*
+### Quand elle a dû demander de l'aide
+*Juju était perdue dans les bois lors d'une sortie. Seule. Elle a mis du temps à appeler. Appeler au secours, c'était admettre qu'elle n'avait pas géré. Quand les adultes sont arrivés, elle n'a pas pleuré. Mais cette nuit-là dans son lit, elle a compris que demander de l'aide, c'est aussi du courage.*
 
 ---
 
@@ -122,16 +122,16 @@ Ce qu'il cache : une sensibilité profonde qu'il protège comme un trésor dange
 
 | Niveau | Ce qu'on voit |
 |--------|---------------|
-| Sain (3-4) | Protecteur authentique, généreux, fort ET tendre, défend les plus faibles sans dominer |
-| Moyen (5-6) | Dominant, teste les autres, peut écraser sans s'en rendre compte, colère prompte |
-| Bas (7+) | Tyran, brusque, blessant — puis retrait froid et silencieux (désintégration en 5) |
+| Sain (3-4) | Protectrice authentique, généreuse, forte ET tendre, défend les plus faibles sans dominer |
+| Moyen (5-6) | Dominante, teste les autres, peut écraser sans s'en rendre compte, colère prompte |
+| Bas (7+) | Tyran, brusque, blessante — puis retrait froid et silencieux (désintégration en 5) |
 
 ---
 
 ## Note pour l'auteur
 
-Juju n'est pas un bully — c'est l'enfant fort qui apprend à accueillir sa propre douceur. Son arc le plus puissant : le moment où il réalise que son armure protège une sensibilité qui mérite d'exister, pas d'être cachée.
+Juju n'est pas un bully — c'est l'enfant forte qui apprend à accueillir sa propre douceur. Son arc le plus puissant : le moment où elle réalise que son armure protège une sensibilité qui mérite d'exister, pas d'être cachée.
 
-Les scènes les plus touchantes de Juju sont celles où il doit *ne pas* contrôler une situation. Où il doit attendre, accepter, faire confiance — sans agir. C'est là qu'il grandit le plus.
+Les scènes les plus touchantes de Juju sont celles où elle doit *ne pas* contrôler une situation. Où elle doit attendre, accepter, faire confiance — sans agir. C'est là qu'elle grandit le plus.
 
 *Source théorique : Type 8 Chabreuil / Riso-Hudson. Aile 7, intégration vers 2, désintégration vers 5.*

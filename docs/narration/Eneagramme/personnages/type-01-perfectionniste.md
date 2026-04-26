@@ -10,45 +10,46 @@
 - **Notation** : Type1 / Titi1 (origine : Christ)
 - **Genre** : M
 - **Type** : 1 — Le Perfectionniste / Le Réformateur
-- **Rôle dans l'histoire** : La conscience du groupe, celle qui tient les principes
-- **Aile dominante** : 1w2 (rigoureuse mais avec une vraie chaleur)
+- **Rôle dans l'histoire** : La conscience du groupe, celui qui tient les principes
+- **Aile dominante** : 1w2 (rigoureux mais avec une vraie chaleur)
 - **Centre** : Ventre / Instinctif (tourné vers l'intérieur)
 - **Couleur** : Blanc / Bleu roi
 - **Animal totem** : Aigle (vision acérée du détail, vol droit et haut)
+
 
 ---
 
 ## Portrait vivant
 
-Melki a un sens inné de "comment les choses devraient être". Sa chambre est rangée, ses crayons sont dans l'ordre, et elle remarque tout de suite quand quelque chose est de travers — une injustice, une erreur, un manque de soin.
+Melki a un sens inné de "comment les choses devraient être". Sa chambre est rangée, ses crayons sont dans l'ordre, et il remarque tout de suite quand quelque chose est de travers — une injustice, une erreur, un manque de soin.
 
-Elle n'est pas méchante. Pas du tout. Elle est juste... exigeante. Et cette exigence, elle se l'applique d'abord à elle-même, plus durement qu'à n'importe qui d'autre. Quand elle fait une erreur, elle reste longtemps à y penser. *"J'aurais dû mieux faire."*
+Il n'est pas méchant. Pas du tout. Il est juste... exigeant. Et cette exigence, il se l'applique d'abord à lui-même, plus durement qu'à n'importe qui d'autre. Quand il fait une erreur, il reste longtemps à y penser. *"J'aurais dû mieux faire."*
 
-Les autres l'écoutent souvent. Pas parce qu'elle est forte (comme Juju) ni parce qu'elle est joyeuse (comme Raph) — mais parce qu'elle a l'air de savoir ce qui est juste. Et souvent, elle a raison. Ce qui est un peu énervant, parfois.
+Les autres l'écoutent souvent. Pas parce qu'il est fort (comme Juju) ni parce qu'il est joyeux (comme Raph) — mais parce qu'il a l'air de savoir ce qui est juste. Et souvent, il a raison. Ce qui est un peu énervant, parfois.
 
 Ce qu'on voit : la rigueur, le sérieux, le sens moral.
-Ce qu'elle cache : une vraie colère intérieure contre tout ce qui n'est pas à la hauteur — et surtout contre elle-même.
+Ce qu'il cache : une vraie colère intérieure contre tout ce qui n'est pas à la hauteur — et surtout contre lui-même.
 
 ---
 
 ## Motivation profonde
 
-**Peur fondamentale** : Être imparfaite, mauvaise, condamnable. Que quelque chose en elle soit fondamentalement défaillant.
+**Peur fondamentale** : Être imparfait, mauvais, condamnable. Que quelque chose en lui soit fondamentalement défaillant.
 
-**Désir fondamental** : Être bonne, intègre, irréprochable. Faire bien. Être juste.
+**Désir fondamental** : Être bon, intègre, irréprochable. Faire bien. Être juste.
 
-**Sa croyance secrète** : *"Si je suis parfaite, personne ne pourra me reprocher quoi que ce soit. Et si je travaille assez sur moi-même, je serai enfin bien."*
+**Sa croyance secrète** : *"Si je suis parfait, personne ne pourra me reprocher quoi que ce soit. Et si je travaille assez sur moi-même, je serai enfin bien."*
 
-**Ce qu'elle apprend dans les histoires** : que l'imperfection est humaine — et que la vraie bonté ne vient pas du perfectionnisme, mais de l'acceptation.
+**Ce qu'il apprend dans les histoires** : que l'imperfection est humaine — et que la vraie bonté ne vient pas du perfectionnisme, mais de l'acceptation.
 
 ---
 
 ## Comment Melki se comporte selon les situations
 
 ### Dans la joie / le plaisir
-- Elle peut être joyeuse — quand tout est en ordre, quand elle s'est bien comportée, quand elle a "mérité" le plaisir.
+- Il peut être joyeux — quand tout est en ordre, quand il s'est bien comporté, quand il a "mérité" le plaisir.
 - Son plaisir a souvent un arrière-goût de "c'est permis là".
-- Quand elle lâche vraiment (intégration vers le 7), c'est contagieux — elle devient légère, drôle, spontanée. Ça surprend tout le monde.
+- Quand il lâche vraiment (intégration vers le 7), c'est contagieux — il devient léger, drôle, spontané. Ça surprend tout le monde.
 
 ### Dans l'ennui
 - Ne s'ennuie jamais longtemps. Il y a toujours quelque chose à améliorer, organiser, corriger.
@@ -58,21 +59,21 @@ Ce qu'elle cache : une vraie colère intérieure contre tout ce qui n'est pas à
 ### Dans la tristesse / la douleur
 - Prend du recul. S'analyse. *"Pourquoi je ressens ça ? Est-ce que j'aurais pu faire autrement ?"*
 - La tristesse se double souvent d'une critique intérieure.
-- Peut sembler "forte" alors qu'elle est juste occupée à ne pas s'effondrer.
+- Peut sembler "fort" alors qu'il est juste occupé à ne pas s'effondrer.
 - A besoin d'entendre : *"T'as rien mal fait. C'est pas ta faute."*
 - A du mal à demander du réconfort — ça lui semble faible ou inapproprié.
 
 ### Sous stress (désintégration vers le 4)
 - S'effondre dans la mélancolie.
-- *"Je suis nulle, à quoi je sers, personne me comprend."*
-- Humeur noire, retrait, sentiment d'être fondamentalement déficiente.
-- C'est le contraire de son comportement habituel — et ça la surprend elle-même.
+- *"Je suis nul, à quoi je sers, personne me comprend."*
+- Humeur noire, retrait, sentiment d'être fondamentalement déficient.
+- C'est le contraire de son comportement habituel — et ça le surprend lui-même.
 
 ### En croissance (intégration vers le 7)
 - Légèreté ! Spontanéité !
 - Accepte que les choses ne soient pas parfaites et que c'est quand même bien.
-- Rit d'elle-même. Se permet de ne pas finir ce qu'elle a commencé.
-- C'est là qu'elle est la plus libre et la plus heureuse.
+- Rit de lui-même. Se permet de ne pas finir ce qu'il a commencé.
+- C'est là qu'il est le plus libre et le plus heureux.
 
 ---
 
@@ -82,16 +83,16 @@ Ce qu'elle cache : une vraie colère intérieure contre tout ce qui n'est pas à
 |------------|------|----------|
 | Raph | 7 | Tension affectueuse. *"Raph, fais attention !"* / *"Melki, détends-toi !"*. Ils se complètent sans se comprendre tout à fait. |
 | Juju | 8 | Respect mutuel. Deux fortes personnalités avec des principes. Conflits directs mais résolus directement. |
-| Nono | 9 | Nono la calme. Melki trouve Nono trop passive parfois. Mais Nono voit la bonté profonde d'Melki sans la juger. |
+| Nono | 9 | Nono le calme. Melki trouve Nono trop passif parfois. Mais Nono voit la bonté profonde de Melki sans le juger. |
 | Pierrot | 6 | Complicité sur les règles et la fiabilité. Melki apprécie la prudence de Pierrot. |
 | Mimi | 2 | Melki apprécie l'aide de Mimi mais trouve qu'elle aide parfois trop. Petites frictions douces. |
 | Lulu | 5 | Respect intellectuel mutuel. Tous les deux sérieux, rigoureux. Melki aime que Lulu soit précis. |
-| Polo | 3 | Méfiance. Melki sent que Polo adapte ce qu'il dit selon la situation. Elle ne l'approuve pas. |
-| Jérem | 4 | Tension : Jérem dramatise, Melki rationalise. Mais Melki est fascinée par la sensibilité d'Jérem, même si elle n'en parle pas. |
+| Polo | 3 | Méfiance. Melki sent que Polo adapte ce qu'il dit selon la situation. Il ne l'approuve pas. |
+| Jérem | 4 | Tension : Jérem dramatise, Melki rationalise. Mais Melki est fasciné par la sensibilité de Jérem, même s'il n'en parle pas. |
 
 ---
 
-## Phrases typiques d'Melki
+## Phrases typiques de Melki
 
 - *"C'est pas comme ça qu'on fait."*
 - *"J'aurais dû faire mieux."*
@@ -99,20 +100,20 @@ Ce qu'elle cache : une vraie colère intérieure contre tout ce qui n'est pas à
 - *"Laisse-moi finir d'abord."*
 - *"Je peux recommencer ? Je l'ai pas bien fait."*
 - *"Ça mérite qu'on le fasse vraiment bien."*
-- *"Je suis déçue de moi."* (elle se dit ça, pas aux autres)
+- *"Je suis déçu de moi."* (il se dit ça, pas aux autres)
 
 ---
 
 ## Moments émotionnels clés
 
-### La fois où elle a laissé tomber
-*Melki travaillait sur un dessin depuis une heure. Ça ne ressemblait pas à ce qu'elle voulait. Elle l'a froissé et l'a jeté. Et puis Raph a dit : "Hé, je l'avais vu ton dessin, il était bien." Elle a regardé la poubelle. Et elle a compris qu'elle n'arrivait parfois pas à voir ce qui était bon — parce que le juge intérieur était trop fort.*
+### La fois où il a laissé tomber
+*Melki travaillait sur un dessin depuis une heure. Ça ne ressemblait pas à ce qu'il voulait. Il l'a froissé et l'a jeté. Et puis Raph a dit : "Hé, je l'avais vu ton dessin, il était bien." Il a regardé la poubelle. Et il a compris qu'il n'arrivait parfois pas à voir ce qui était bon — parce que le juge intérieur était trop fort.*
 
-### Quand elle a fait quelque chose de "mal"
-*Melki a menti une fois — un tout petit mensonge — pour ne pas avoir d'ennuis. Ça lui a pesé pendant trois jours. Elle en a parlé à sa maman. Sa maman a dit : "Tu vois, tu es venue le dire. C'est ça, être une bonne personne — pas d'être parfaite." Melki n'a pas tout de suite compris. Mais quelque chose a bougé.*
+### Quand il a fait quelque chose de "mal"
+*Melki a menti une fois — un tout petit mensonge — pour ne pas avoir d'ennuis. Ça lui a pesé pendant trois jours. Il en a parlé à sa maman. Sa maman a dit : "Tu vois, tu es venu le dire. C'est ça, être une bonne personne — pas d'être parfait." Melki n'a pas tout de suite compris. Mais quelque chose a bougé.*
 
 ### La crise du spectacle
-*Melki avait préparé un poème pour l'école. Elle le savait par cœur. Sur scène, elle a oublié une ligne. Elle a dit une autre ligne à la place. Personne dans le public n'a remarqué. Mais elle, si. Elle a failli pleurer sur scène — puis elle s'est reprise. Après, Nono lui a dit : "Tu étais magnifique." Melki a pensé : "Je sais qu'elle ment." Mais elle n'en était plus certaine.*
+*Melki avait préparé un poème pour l'école. Il le savait par cœur. Sur scène, il a oublié une ligne. Il a dit une autre ligne à la place. Personne dans le public n'a remarqué. Mais lui, si. Il a failli pleurer sur scène — puis il s'est repris. Après, Nono lui a dit : "Tu étais magnifique." Melki a pensé : "Je sais qu'il ment." Mais il n'en était plus certain.*
 
 ---
 
@@ -120,16 +121,16 @@ Ce qu'elle cache : une vraie colère intérieure contre tout ce qui n'est pas à
 
 | Niveau | Ce qu'on voit |
 |--------|---------------|
-| Sain (3-4) | Principée ET flexible, inspire sans moraliser, s'accepte avec sérénité, discernement juste |
-| Moyen (5-6) | Critique (d'elle et des autres), perfectionniste fonctionnel, tensions physiques, colère rentrée |
-| Bas (7+) | Rigide, moralisatrice, s'effondre en 4 : mélancolie, sentiment d'être fondamentalement déficiente |
+| Sain (3-4) | Principé ET flexible, inspire sans moraliser, s'accepte avec sérénité, discernement juste |
+| Moyen (5-6) | Critique (de lui et des autres), perfectionniste fonctionnel, tensions physiques, colère rentrée |
+| Bas (7+) | Rigide, moralisateur, s'effondre en 4 : mélancolie, sentiment d'être fondamentalement déficient |
 
 ---
 
 ## Note pour l'auteur
 
-Melki est la conscience du groupe — mais pas une conscience froide. Elle veut vraiment que le monde soit meilleur et elle commence par elle-même. Son arc le plus touchant est celui où elle apprend à se pardonner. Où elle comprend que la vraie perfection n'existe pas — et que ce n'est pas une tragédie.
+Melki est la conscience du groupe — mais pas une conscience froide. Il veut vraiment que le monde soit meilleur et il commence par lui-même. Son arc le plus touchant est celui où il apprend à se pardonner. Où il comprend que la vraie perfection n'existe pas — et que ce n'est pas une tragédie.
 
-Les scènes les plus fortes d'Melki sont celles où elle doit accepter l'imperfection des autres (ou la sienne) sans la corriger. C'est là que son amour profond pour le monde se révèle.
+Les scènes les plus fortes de Melki sont celles où il doit accepter l'imperfection des autres (ou la sienne) sans la corriger. C'est là que son amour profond pour le monde se révèle.
 
 *Source théorique : Type 1 Chabreuil / Riso-Hudson. Aile 2, intégration vers 7, désintégration vers 4.*

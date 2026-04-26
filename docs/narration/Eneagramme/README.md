@@ -6,12 +6,10 @@ Un univers narratif pour enfants (et adultes) basé sur les 9 types de l'Ennéag
 9 personnages-enfants d'environ 5 ans, chacun incarnant un type, vivant des aventures
 qui reflètent leurs forces, leurs peurs, leurs joies et leurs défis.
 
-Le héros principal est **Wex (Type 7)** — curieux, passionné, toujours en quête de nouvelles
-découvertes. Ses amis l'entourent, chacun apportant sa couleur au monde.
+Le héros principal est **Wex (hors-système)** — héros universel sans ennéatype assigné,
+pivot de toutes les versions cross-country. Ses 9 amis-Titi (chacun un ennéatype) l'entourent.
 
-> ⚠ **Prénoms en cours de validation** (2026-04-17). Seul **Wex (#7)** est confirmé.
-> Les 8 autres prénoms utilisés dans les fiches (Melki, Mimi, Polo, Jérem, Lulu, Pierrot, Juju, Nono)
-> sont hérités d'une ancienne session — à valider avec l'auteur.
+> ✅ **Casting V1 "Christ" figé** (2026-04-24). Wex hors-système, 9 Titi typés.
 > Voir [../personnages/INDEX.md](../personnages/INDEX.md) et [../personnages/prénoms-candidats.md](../personnages/prénoms-candidats.md).
 
 ---
@@ -53,19 +51,27 @@ Eneagramme/
 | 4 | L'Individualiste | Ne pas avoir d'identité | Être soi-même | **Jérem** |
 | 5 | L'Observateur | Être incompétent/vide | Être capable | **Lulu** |
 | 6 | Le Loyal | Être sans soutien | Avoir du soutien | **Pierrot** |
-| 7 | L'Enthousiaste | Souffrir/manquer | Être comblé | **Raph** (héros) |
-| 8 | Le Challenger | Être contrôlé | Se protéger | **Juju** |
-| 9 | Le Pacificateur | Perdre la connexion | Avoir la paix | **Nono** |
+| 7 | L'Enthousiaste | Souffrir/manquer | Être comblé·e | **Raph** (Raphaëlle, F) |
+| 8 | Le Challenger | Être contrôlé·e | Se protéger | **Juju** (Judith, F) |
+| 9 | Le Pacificateur | Perdre la connexion | Avoir la paix | **Nono** (Noé, M) |
+
+| Hors-système | Héros universel | — | — | **Wex** (pas d'ennéatype, jamais traduit) |
 
 ---
 
 ## Principes narratifs
 
-### Le héros : Raph (Type 7)
-- Passionné, curieux, toujours en quête de la prochaine aventure
+### Le héros : Wex (hors-système)
+- Pivot universel — observe, relie, catalyse sans diriger
+- Pas d'ennéatype assigné : il n'est ni en quête, ni en fuite d'un type
+- Présent dans toutes les versions cross-country (jamais traduit)
+- Voir piste "Wex observateur" → [../univers/nom-candidats.md](../univers/nom-candidats.md)
+
+### Raph (Titi7, F) — l'enthousiaste
+- Passionnée, curieuse, toujours en quête de la prochaine aventure
 - Chaque épisode = une nouvelle passion (botanique, astronomie, cuisine, langues...)
-- Sa joie est contagieuse mais il fuit parfois ce qui est difficile
-- Arc long : apprendre à rester présent même quand c'est dure
+- Sa joie est contagieuse mais elle fuit parfois ce qui est difficile
+- Arc long : apprendre à rester présente même quand c'est dur
 
 ### Structure d'un épisode
 1. **Déclencheur** — une découverte, un événement, un problème
@@ -74,7 +80,7 @@ Eneagramme/
 4. **Résolution** — chaque type grandit un peu
 
 ### Progression des personnages
-- Saison 1 : Raph + 1-2 amis proches (Juju le 8, Nono le 9)
+- Saison 1 : Wex + 1-2 amis proches (Juju le 8, Nono le 9)
 - Saison 2 : Arrivée progressive des autres (Lulu le 5, Pierrot le 6)
 - Saison 3 : Le groupe complet, tensions et réconciliations
 

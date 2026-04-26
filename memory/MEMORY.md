@@ -103,10 +103,13 @@ GitHub Pages → kimen26.github.io/MaxPlay/
 
 `bot/index.ts` · grammy + bun · lancé auto au démarrage Claude (hook SessionStart)
 
-**Flow** : message reçu → boutons ✅ Exécuter / ❌ Annuler → si validé → `claude -p … --dangerously-skip-permissions`
+**Flow** : message → détection d'intention → `claude -p --agent <nom> --dangerously-skip-permissions`
+**Agents** : `narration` (Opus) · `game-dev` (Sonnet) · `quick` (Haiku) — dans `.claude/agents/`
+**Permissions** : hook `PermissionRequest` → HTTP `:3001/permission` → Telegram ✅/❌ → décision
 **Env vars** : `TELEGRAM_BOT_TOKEN` · `ALLOWED_CHAT_ID` · `PROJECT_PATH`
 **Logs** : `/tmp/maxplay-bot.log`
-**Redémarrer** : `pkill -f "bot/index.ts" && cd bot && bun run index.ts &`
+**Redémarrer** : `pkill -f "bot/index.ts" && cd C:/ProjetsPerso/Claude_Projects/MaxPlay/bot && bun run index.ts &`
+**Commandes** : `/status` · `/reset` (efface historique)
 
 ## Carte des fichiers
 

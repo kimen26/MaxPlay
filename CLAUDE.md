@@ -102,6 +102,8 @@ Origines brésiliennes. Voir [docs/MAX_PROFILE.md](docs/MAX_PROFILE.md).
 | [memory/skills-map.md](memory/skills-map.md) | Agents, skills, commandes |
 | [docs/README.md](docs/README.md) | Carte documentation |
 | [docs/MAX_PROFILE.md](docs/MAX_PROFILE.md) | Profil complet Max |
+| [bot/index.ts](bot/index.ts) | Bot Telegram — routing agents, permissions Telegram |
+| [.claude/agents/](../.claude/agents/) | Agents locaux : narration (Opus), game-dev (Sonnet), quick (Haiku) |
 
 ## Workflow
 ```

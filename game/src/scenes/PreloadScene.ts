@@ -1,5 +1,4 @@
 import Phaser from 'phaser';
-import { GAME_WIDTH, GAME_HEIGHT } from '../constants/config';
 import { UI_COLORS } from '../constants/colors';
 import { SoundManager } from '../utils/SoundManager';
 
@@ -33,8 +32,8 @@ export class PreloadScene extends Phaser.Scene {
   }
 
   private createLoadingUI(): void {
-    const cx = GAME_WIDTH / 2;
-    const cy = GAME_HEIGHT / 2;
+    const cx = this.scale.width / 2;
+    const cy = this.scale.height / 2;
 
     this.cameras.main.setBackgroundColor(UI_COLORS.BACKGROUND);
 

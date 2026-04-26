@@ -1,7 +1,7 @@
 {
   "name": "maxplay",
   "version": "0.1.0",
-  "description": "Jeu éducatif bus pour Tom - 3.5-4 ans",
+  "description": "Jeu éducatif bus pour Max - 3.5-4 ans",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

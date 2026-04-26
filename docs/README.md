@@ -5,7 +5,7 @@
 
 > **Deux pôles distincts** : voir le routing en tête de [CLAUDE.md](../CLAUDE.md).
 > - **JEU** → [jeux/](jeux/)
-> - **NARRATION / UNIVERS** → [narration/](narration/) et [univers/](univers/)
+> - **NARRATION / UNIVERS** → [narration/](narration/)
 
 ---
 
@@ -29,25 +29,46 @@ docs/
 │   ├── ASSETS_INVENTORY.md    ← Inventaire détaillé
 │   └── AUDIO_ASSETS.md        ← Sons disponibles
 │
-├── narration/                 ← Projet narratif — histoires pour Max
-│   ├── SYNTHESE.md            ← Vue d'ensemble du projet narration (point d'entrée)
-│   ├── Eneagramme/            ← Système ennéagramme complet
-│   │   ├── README.md          ← Guide du dossier ennéagramme
-│   │   ├── personnages/       ← 9 fiches personnages (type-01 à type-09)
-│   │   ├── situations/        ← 9 situations × 9 types (émotions universelles)
-│   │   └── ressources/        ← Fondements, guide auteur, références
-│   ├── analyse-personnages-manga-enneagramme.md   ← 24 persos manga analysés
-│   ├── analyse-personnages-pokemon-enneagramme.md ← 30+ persos Pokémon
-│   ├── analyse-pokemon-eux-memes-enneagramme.md   ← Les Pokémon eux-mêmes
-│   └── enneagramme-9-niveaux-riso-hudson.md       ← 9 types × 9 niveaux de santé
-│
-├── univers/                   ← L'univers narratif (macro-monde des histoires)
-│   ├── UNIVERS-NOTES-BRUTES.md ← Matière brute du brainstorm (session 2026-04-13)
-│   └── UNIVERS-DECISIONS.md   ← (à créer) Choix actés une fois les décisions prises
-│
-└── (racine — fichiers historiques)
-    ├── BACKLOG.md             ← Ancien backlog (source de vérité = tasks/BACKLOG.md)
-    └── REFERENCES.md          ← Références externes
+└── narration/                 ← Projet narratif — histoires pour Max
+    ├── INDEX.md               ← Point d'entrée agent narration (charger en premier)
+    ├── INBOX.md               ← Dump brut sessions (hook commit auto)
+    ├── TODO-EDITORIAL.md      ← Tickets éditoriaux en cours
+    ├── personnages/           ← Tableau des 9 + prénoms
+    │   ├── INDEX.md           ← Casting + état de validation prénoms
+    │   ├── notation-types.md
+    │   ├── prénoms-candidats.md
+    │   ├── prénoms-par-origine.md
+    │   └── prénoms-brainstorm-cultures.md
+    ├── univers/               ← Carte du monde post-Éveil
+    │   ├── INDEX.md           ← Vue d'ensemble univers
+    │   ├── monde.md · systemes.md · grand-cycle.md
+    │   ├── vibration.md · compagnons.md · baron.md
+    │   ├── nom-candidats.md   ← 5 finalistes nom de l'univers
+    │   └── directions-brainstorm.md
+    ├── histoires/             ← Catalogue des récits
+    │   ├── INDEX.md           ← Catalogue + gabarit
+    │   ├── le-pont-casse.md   ← V1 complète
+    │   ├── axes-histoires-en-stock.md
+    │   └── _gabarit.md
+    ├── Eneagramme/            ← Système ennéagramme complet
+    │   ├── README.md
+    │   ├── personnages/       ← 9 fiches type-01 à type-09
+    │   ├── situations/        ← émotions-universelles · interactions
+    │   └── ressources/        ← fondements · guide-auteur · references · supplement
+    ├── reference/             ← Matière de fond (analyses manga/Pokémon, Riso-Hudson)
+    │   ├── INDEX.md
+    │   ├── analyse-personnages-manga-enneagramme.md
+    │   ├── analyse-personnages-pokemon-enneagramme.md
+    │   ├── analyse-pokemon-eux-memes-enneagramme.md
+    │   └── enneagramme-9-niveaux-riso-hudson.md
+    ├── equipe/                ← Mémoires agents + organigramme éditorial
+    │   ├── ORGANIGRAMME.md
+    │   ├── memoire-dir.md · memoire-writer-a/b/c.md
+    │   ├── memoire-science.md · memoire-sensibilite.md · memoire-keeper.md
+    │   ├── profils-lecteurs.md
+    │   └── sources-sciences.md · sources-sensibilite.md
+    ├── input-idees/           ← Zone de dump brut idées narration
+    └── archive/               ← Matière archivée
 ```
 
 ---
@@ -57,9 +78,9 @@ docs/
 | Tu veux... | Aller dans... |
 |-----------|--------------|
 | Comprendre qui est Max | `MAX_PROFILE.md` |
-| Écrire une histoire avec les personnages | `narration/SYNTHESE.md` |
-| Trouver la fiche d'un personnage (Wex, Melki, Juju...) | `narration/Eneagramme/personnages/` |
-| Comprendre l'univers macro (monde, histoire, rituels) | `univers/UNIVERS-NOTES-BRUTES.md` |
+| Écrire une histoire avec les personnages | `narration/INDEX.md` |
+| Trouver la fiche d'un personnage (Wex, Melki, Juju...) | `narration/personnages/INDEX.md` |
+| Comprendre l'univers macro (monde, histoire, rituels) | `narration/univers/INDEX.md` |
 | Vérifier les couleurs d'une ligne de bus | `ratp-colors.json` |
 | Voir les specs d'un mini-jeu | `jeux/GAMES_SPECS.md` |
 | Ajouter des idées de jeux | `jeux/game-ideas.md` |
@@ -68,7 +89,6 @@ docs/
 
 ## Règle simple
 
-- **`narration/`** = les personnages, leurs psychologies, comment les écrire
-- **`univers/`** = le monde dans lequel ils vivent, son histoire, ses règles
+- **`narration/`** = les personnages, leurs psychologies, comment les écrire, l'univers
 - **`jeux/`** = la partie technique et game design des mini-jeux HTML
 - **La racine `docs/`** = les fichiers transversaux (Max, vision, couleurs RATP)

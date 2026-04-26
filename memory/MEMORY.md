@@ -49,14 +49,14 @@ Voir `docs/MAX_PROFILE.md` pour le profil complet.
   - Baron (voyageur temporel, Gardien des Portes)
   - **Nom de l'univers** : pas encore choisi (21 candidats dont Phosyntha, Egryntha, Veynara)
 - **Personnages nommés (casting Christ V1 figé 2026-04-24)** : Wex (#7 héros hors-système), Melki/Melchisédech (#1), Mimi/Marie F (#2), Polo/Paul (#3), Jérem/Jérémie (#4), Lulu/Luc (#5), Pierrot/Pierre (#6), Raph/Raphaëlle F (#7 ennéatype), Juju/Judith F (#8), Nono/Noé (#9)
-- **Docs narration** : `docs/narration/` (SYNTHESE + Eneagramme/) · `docs/univers/`
+- **Docs narration** : `docs/narration/` (INDEX.md + Eneagramme/) · `docs/univers/`
 
 ## Architecture déploiement (2026-03-21)
 
 ```
 GitHub Pages → kimen26.github.io/MaxPlay/
 ├── /                    ← game-html/index.html (menu 2 colonnes)
-├── /mj-01.html à /mj-17.html  ← 17 mini-jeux HTML vanilla
+├── /mj-01.html à /mj-20.html  ← mini-jeux HTML vanilla (mj-02/03/07/10 retirés)
 └── /max-adventure/      ← Phaser build (game/dist/ copié par CI)
     max-adventure.html   ← splash → ./max-adventure/
 ```
@@ -129,10 +129,10 @@ GitHub Pages → kimen26.github.io/MaxPlay/
 | `docs/MAX_PROFILE.md` | Profil complet Max : lignes bus, couleurs IDFM, intérêts |
 | `docs/VISION.md` | Décisions prises + questions ouvertes |
 | `docs/ratp-colors.json` | Source de vérité couleurs+terminus : 26 actives + 362 référentiel |
-| `docs/narration/SYNTHESE.md` | Vue d'ensemble projet narratif (personnages, ennéagramme) |
+| `docs/narration/INDEX.md` | Point d'entrée projet narratif (personnages, ennéagramme, univers) |
 | `docs/narration/Eneagramme/` | 9 fiches personnages + situations + ressources auteur |
 | `docs/univers/UNIVERS-NOTES-BRUTES.md` | Matière brute univers macro (Éveil, Compagnons, Janus, Baron...) |
-| `game-html/` | mj-01 à mj-17 + max-adventure (vanilla HTML/JS) — source déployée |
+| `game-html/` | mj-01 à mj-20 + max-adventure (vanilla HTML/JS) — source déployée |
 | `game-html/js/tracker.js` | Suivi progression localStorage — sessions, scores, maîtrise |
 | `game-html/suivi.html` | Dashboard parent — stats, sparklines, export/import JSON |
 | `game-html/js/data.js` | LIGNES (26 actives), DESTINATIONS, getLineDisplayName() |

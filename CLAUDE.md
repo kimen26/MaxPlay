@@ -31,8 +31,8 @@ Si ambigu : demande à l'utilisateur avant d'avancer.
 | [memory/rules-jeu.md](memory/rules-jeu.md) | Règles UX/péda + designs validés |
 | [tasks/BACKLOG.md](tasks/BACKLOG.md) | Source de vérité épics jeu |
 | [docs/jeux/](docs/jeux/) | Specs, assets, idées |
-| [game-html/](game-html/) | Mini-jeux HTML vanilla (mj-01 à mj-16) |
-| [game/](game/) | Phaser build (mj-07) |
+| [game-html/](game-html/) | Mini-jeux HTML vanilla (mj-01 à mj-20) |
+| [game/](game/) | Phaser build (max-adventure) |
 
 ## Skills jeu
 `20-game-tech/` : phaser-framework, gamepad-inputs, performance-opt, game-mechanics
@@ -45,8 +45,8 @@ GitHub Pages → kimen26.github.io/MaxPlay/
 
 CI : [.github/workflows/deploy.yml](.github/workflows/deploy.yml) assemble dans `_site/` (gitignored)
 
-## État jeux (2026-03-21)
-MJ-01 à MJ-16 déployés (MJ-17 retiré). Voir [tasks/BACKLOG.md](tasks/BACKLOG.md) pour détail.
+## État jeux (2026-04-26)
+MJ-01 à MJ-20 déployés (mj-02, mj-03, mj-07, mj-10 retirés du menu). Voir [tasks/BACKLOG.md](tasks/BACKLOG.md) pour détail.
 
 ---
 
@@ -103,7 +103,7 @@ Origines brésiliennes. Voir [docs/MAX_PROFILE.md](docs/MAX_PROFILE.md).
 | [docs/README.md](docs/README.md) | Carte documentation |
 | [docs/MAX_PROFILE.md](docs/MAX_PROFILE.md) | Profil complet Max |
 | [bot/index.ts](bot/index.ts) | Bot Telegram — routing agents, permissions Telegram |
-| [.claude/agents/](../.claude/agents/) | **Équipe narration** : narration/dir (Opus) · writer-a/b/c (Sonnet) · science/keeper (Haiku) · sensibilite (Sonnet) · game-dev (Sonnet) · quick (Haiku) |
+| [.claude/agents/](.claude/agents/) | **Équipe narration** : narration/dir (Opus) · writer-a/b/c (Sonnet) · science/keeper (Haiku) · sensibilite (Sonnet) · game-dev (Sonnet) · quick (Haiku) |
 | [docs/narration/equipe/ORGANIGRAMME.md](docs/narration/equipe/ORGANIGRAMME.md) | Organigramme équipe éditoriale — qui fait quoi |
 | [docs/narration/input-idees/](docs/narration/input-idees/) | Zone de dump brut idées narration |
 | [docs/narration/TODO-EDITORIAL.md](docs/narration/TODO-EDITORIAL.md) | Tickets éditoriaux en cours |

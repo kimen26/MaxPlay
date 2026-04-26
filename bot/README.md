@@ -16,18 +16,25 @@ Bot Telegram qui permet de piloter Claude Code depuis le téléphone.
 | `ALLOWED_CHAT_ID` | Chat ID autorisé (toi seul). Récupérable via `/start` |
 | `PROJECT_PATH` | Chemin du projet (défaut : `C:/ProjetsPerso/Claude_Projects/MaxPlay`) |
 
-## Flow de validation
-
-Chaque message déclenche une confirmation avant exécution :
+## Flow
 
 ```
-Toi → bot : "génère mj-18"
-Bot → toi : 📨 Demande reçue … [✅ Exécuter] [❌ Annuler]
-Toi → bot : clique ✅
-Bot → Claude CLI → résultat renvoyé dans le chat
+Toi → bot : "génère mj-21"
+Bot → Claude CLI (agent détecté selon mots-clés : narration / game-dev / quick)
+Claude → résultat renvoyé dans le chat
 ```
 
-Aucune commande Claude ne s'exécute sans ton approbation explicite.
+Les messages sont exécutés directement sans confirmation préalable.
+
+**Permissions d'outils** : si Claude demande une permission (ex. écrire un fichier), le hook `PermissionRequest` envoie un message Telegram avec boutons ✅/❌. Tu valides depuis le téléphone.
+
+## Routing agents
+
+| Mots-clés détectés | Agent utilisé |
+|-------------------|---------------|
+| narration, histoire, personnage, univers... | `narration` (Opus) |
+| jeu, mj, bug, html, phaser... | `game-dev` (Sonnet) |
+| Tout le reste | `quick` (Haiku) |
 
 ## Commandes
 
@@ -35,7 +42,8 @@ Aucune commande Claude ne s'exécute sans ton approbation explicite.
 |----------|-------------|
 | `/start` | Affiche ton Chat ID (pour configurer `ALLOWED_CHAT_ID`) |
 | `/status` | Vérifie que le bot est actif |
-| Tout autre texte | Demande de validation → exécution Claude si approuvé |
+| `/reset` | Efface l'historique de conversation |
+| Tout autre texte | Envoyé à Claude (agent détecté automatiquement) |
 
 ## Démarrage
 

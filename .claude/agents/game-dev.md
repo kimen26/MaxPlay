@@ -30,7 +30,7 @@ Tu es l'agent développement jeux du projet MaxPlay. Tu codes des mini-jeux édu
 
 ## Jeux existants (référence)
 
-MJ-01 à MJ-17 dans `game-html/`. Lire un jeu existant avant d'en créer un nouveau pour respecter les conventions.
+MJ-01 à MJ-20 dans `game-html/` (mj-02, mj-03, mj-07, mj-10 retirés du menu). Lire un jeu existant avant d'en créer un nouveau pour respecter les conventions.
 
 ## Ce que tu fais
 

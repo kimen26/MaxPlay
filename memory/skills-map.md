@@ -4,21 +4,21 @@ description: Carte de tous les skills, agents et commandes disponibles et quand 
 type: reference
 ---
 
-## Agents spécialisés (`~/.claude/agents/`)
+## Agents spécialisés MaxPlay (`.claude/agents/`)
 
-| Agent | Utiliser quand |
-|-------|----------------|
-| `planner` | Feature complexe, refactoring multi-fichiers |
-| `architect` | Décision archi, nouvelle structure |
-| `code-reviewer` | Après chaque écriture de code |
-| `tdd-guide` | Nouveau feature ou bug fix |
-| `security-reviewer` | Avant commit, code sensible |
-| `build-error-resolver` | Build cassé, erreurs TS |
-| `refactor-cleaner` | Nettoyage code mort |
-| `e2e-runner` | Tests critiques utilisateur |
-| `doc-updater` | Mise à jour docs en fin de session |
-| `chief-of-staff` | Orchestration sessions complexes |
-| `loop-operator` | Loops autonomes |
+| Agent | Modèle | Utiliser quand |
+|-------|--------|----------------|
+| `narration` | Opus | Directeur éditorial — orchestration narration, histoires, personnages |
+| `narration-writer-a` | Sonnet | Writer sobre / Kishōtenketsu |
+| `narration-writer-b` | Sonnet | Writer sensoriel / poétique |
+| `narration-writer-c` | Sonnet | Writer dynamique / dialogues |
+| `narration-science` | Haiku | Expert sciences (biorésonance, physique) |
+| `narration-sensibilite` | Sonnet | Expert sensibilité lecteurs |
+| `narration-keeper` | Haiku | Gardien cohérence univers |
+| `game-dev` | Sonnet | Développement jeux HTML vanilla + Phaser |
+| `quick` | Haiku | Questions rapides, status, recherches légères |
+
+> Agents globaux disponibles (`~/.claude/agents/`) : planner, architect, code-reviewer, tdd-guide, security-reviewer, build-error-resolver, refactor-cleaner, e2e-runner, doc-updater
 
 ## Skills projet (`.claude/skills/`)
 

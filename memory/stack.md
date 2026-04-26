@@ -16,7 +16,7 @@ type: project
 ```
 GitHub Pages → kimen26.github.io/MaxPlay/
 ├── /                    ← game-html/index.html (menu 2 colonnes)
-├── /mj-01.html à /mj-13.html  ← jeux HTML vanilla
+├── /mj-01.html à /mj-20.html  ← jeux HTML vanilla (mj-02/03/07/10 retirés)
 └── /max-adventure/      ← Phaser build (game/dist/ copié par CI)
     max-adventure.html   ← splash → ./max-adventure/
 ```
@@ -170,5 +170,5 @@ particles.explode(20);
 
 | Jeu | État | Notes |
 |-----|------|-------|
-| MJ-01 à MJ-17 | ✅ déployés | voir BACKLOG.md |
+| MJ-01 à MJ-20 | ✅ déployés | voir BACKLOG.md (mj-02/03/07/10 retirés du menu) |
 | max-adventure | 🔄 en cours | Phaser, HubScene + SandboxScene |

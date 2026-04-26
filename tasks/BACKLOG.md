@@ -38,6 +38,7 @@
 | EP-023 | Menu hybride : Carte de Villejuif (haut) + grille classique (bas) | `[ ]` |
 | EP-024 | Fix Max Adventure (cassé actuellement) | `[x]` |
 | EP-025 | Max Adventure responsive (portrait mobile) | `[x]` |
+| EP-026 | TTS ElevenLabs pré-générés (MP3 statiques pour noms de jeux) | `[ ]` |
 
 ---
 
@@ -287,6 +288,15 @@ MaxPlay V0
 - [x] T-241 : Diagnostic — `base` Vite pas mis à jour quand le dossier de déploiement a été renommé en session 9
 - [x] T-242 : Fix `base: '/MaxPlay/max-adventure/'` + commit + push CI (commit 98923b60)
 - [x] T-243 : Re-test prod : OK, jeu se charge
+
+### EP-026 – TTS ElevenLabs (MP3 statiques)
+> Aujourd'hui annonce nom de jeu via `speechSynthesis` natif (voix robotique). Décidé 2026-04-26 : pré-générer les MP3 via MCP ElevenLabs (option B) — voix enfant-friendly, zéro clé exposée, zéro coût récurrent.
+> Reportée : ne pas faire maintenant, on garde speechSynthesis comme fallback.
+- [ ] T-260 : Setup MCP ElevenLabs dans `~/.claude/settings.json` (clé API utilisateur)
+- [ ] T-261 : Choix de la voix (Charlie/Alice FR enfantines ou voix clonée)
+- [ ] T-262 : Script de génération bouclant sur `GAME_META` → `game-html/sounds/titles/mj-XX.mp3`
+- [ ] T-263 : Modifier `tracker.js._announceTitle` : si MP3 existe → `new Audio()`, sinon fallback `speechSynthesis`
+- [ ] T-264 : Régénération à la demande quand un jeu est renommé
 
 ### EP-025 – Max Adventure responsive (portrait mobile)
 > Constat user 2026-04-26 : sur Xiaomi 15 Ultra en portrait avec barre navigateur, paysage = trop peu de place. Veut rester en portrait.

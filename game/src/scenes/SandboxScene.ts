@@ -254,11 +254,16 @@ export class SandboxScene extends Phaser.Scene {
   private setupCamera(): void {
     const W = this.scale.width;
     const H = this.scale.height;
-    // Zoom pour que ~1200px du monde soit visible sur l'axe le plus court
-    const zoom = Math.min(W, H) / 1200;
+    const zoom = Math.max(W / WORLD_WIDTH, H / WORLD_HEIGHT, 0.45);
     this.cameras.main.setBounds(0, 0, WORLD_WIDTH, WORLD_HEIGHT);
     this.cameras.main.startFollow(this.bus, true, 0.08, 0.08);
     this.cameras.main.setZoom(zoom);
+
+    this.scale.on('resize', () => {
+      const w = this.scale.width;
+      const h = this.scale.height;
+      this.cameras.main.setZoom(Math.max(w / WORLD_WIDTH, h / WORLD_HEIGHT, 0.45));
+    });
   }
 
   update(_time: number, delta: number): void {

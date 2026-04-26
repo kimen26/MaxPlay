@@ -36,7 +36,8 @@
 | EP-021 | Renommage cohérence vocab Max (Centre bus / Garage / Village) | `[ ]` |
 | EP-022 | MJ-04 → ajouter fin de partie (10 tours + endSession + playEndSound) | `[ ]` |
 | EP-023 | Menu hybride : Carte de Villejuif (haut) + grille classique (bas) | `[ ]` |
-| EP-024 | Fix Max Adventure (cassé actuellement) | `[~]` |
+| EP-024 | Fix Max Adventure (cassé actuellement) | `[x]` |
+| EP-025 | Max Adventure responsive (portrait mobile) | `[x]` |
 
 ---
 
@@ -280,13 +281,20 @@ MaxPlay V0
 - [ ] T-233 : Intégration index.html (map en haut, grille en bas, pas de toggle)
 - [ ] T-234 : Test motricité (hotspots min 60×60 px)
 
-### EP-024 – Fix Max Adventure (CASSÉ → en correction)
-> Max Adventure ne marche pas pour le moment (constat utilisateur 2026-04-26).
-> Root cause : `vite.config.ts` `base: '/MaxPlay/mj-07/'` mais CI déploie sous `/max-adventure/`. Mismatch → 404 sur les JS Phaser → écran noir prod.
-- [x] T-240 : Reproduire (Playwright sur prod : écran noir, 404 phaser-*.js et index-*.js)
+### EP-024 – Fix Max Adventure (RÉSOLU)
+> Root cause : `vite.config.ts` `base: '/MaxPlay/mj-07/'` mais CI déploie sous `/max-adventure/`. Mismatch → 404 JS Phaser → écran noir prod.
+- [x] T-240 : Reproduit via Playwright sur prod (écran noir, 404 phaser-*.js et index-*.js)
 - [x] T-241 : Diagnostic — `base` Vite pas mis à jour quand le dossier de déploiement a été renommé en session 9
-- [~] T-242 : Fix `base: '/MaxPlay/max-adventure/'` + commit + push CI
-- [ ] T-243 : Re-tester prod après déploiement
+- [x] T-242 : Fix `base: '/MaxPlay/max-adventure/'` + commit + push CI (commit 98923b60)
+- [x] T-243 : Re-test prod : OK, jeu se charge
+
+### EP-025 – Max Adventure responsive (portrait mobile)
+> Constat user 2026-04-26 : sur Xiaomi 15 Ultra en portrait avec barre navigateur, paysage = trop peu de place. Veut rester en portrait.
+- [x] T-250 : `game/index.html` — `#game-container` 1024x768 fixe → 100vw/100vh (commit c9b2de3f)
+- [x] T-251 : `PreloadScene` — UI centrée via `this.scale.width/height` au lieu des constantes fixes
+- [x] T-252 : `SandboxScene.setupCamera` — zoom = max(W/WORLD_W, H/WORLD_H, 0.45) → garantit que le monde remplit le viewport quel que soit l'orientation (commit ab5bbee3)
+- [x] T-253 : Listener `scale.on('resize')` pour recalculer le zoom en cas de rotation
+- [x] T-254 : Test Playwright mobile portrait 430x932 → canvas plein viewport, pas de bande vide
 
 ### EP-010 – Assets & outils graphiques ✅
 - [x] T-070 : SVG bus side-view (droite + gauche) avec template {{COLOR}}/{{LINE}}

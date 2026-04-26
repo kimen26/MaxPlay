@@ -1,0 +1,30 @@
+id: NNN
+slug: titre-en-kebab-case
+titre: "[Titre lisible]"
+statut: brouillon  # brouillon | V1 | V1-comite-lu | V2 | valide
+version_courante: V1
+date_creation: YYYY-MM-DD
+date_maj: YYYY-MM-DD
+
+structure: kishotenketsu  # kishotenketsu | classique | autre
+antagoniste: false
+age_cible: "3.5-4"
+duree_lecture_minutes: 5
+
+personnages:
+  - nom: ""
+    role: ""           # ex: catalyseur, initiatrice, vérificateur
+    ennéatype: ""      # 1..9 ou "hors-systeme"
+
+themes: []
+morales_implicites: []
+
+univers:
+  niveau: A-touches-legeres  # A | B | C
+  elements_implicites: []
+
+lieux: []
+
+variantes_culturelles: []
+
+tags: []

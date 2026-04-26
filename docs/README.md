@@ -45,11 +45,12 @@ docs/
     │   ├── vibration.md · compagnons.md · baron.md
     │   ├── nom-candidats.md   ← 5 finalistes nom de l'univers
     │   └── directions-brainstorm.md
-    ├── histoires/             ← Catalogue des récits
-    │   ├── INDEX.md           ← Catalogue + gabarit
-    │   ├── le-pont-casse.md   ← V1 complète
-    │   ├── axes-histoires-en-stock.md
-    │   └── _gabarit.md
+    ├── histoires/             ← Catalogue des récits (1 dossier par histoire)
+    │   ├── INDEX.md           ← Catalogue
+    │   ├── README.md          ← Convention (ID NNN, meta.yaml, archives, variantes)
+    │   ├── _gabarit/          ← Dossier-modèle à copier
+    │   ├── 001-pont-casse/    ← V1 complète + comité lu + archives
+    │   └── axes-histoires-en-stock.md
     ├── Eneagramme/            ← Système ennéagramme complet
     │   ├── README.md
     │   ├── personnages/       ← 9 fiches type-01 à type-09

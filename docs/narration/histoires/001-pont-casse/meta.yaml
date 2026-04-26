@@ -1,0 +1,55 @@
+id: 001
+slug: pont-casse
+titre: Le Pont Cassé
+statut: V1-comite-lu
+version_courante: V1
+date_creation: 2026-04-13
+date_maj: 2026-04-26
+
+structure: kishotenketsu
+antagoniste: false
+age_cible: "3.5-4"
+duree_lecture_minutes: 5
+
+personnages:
+  - nom: Wex
+    role: catalyseur
+    ennéatype: hors-systeme
+  - nom: Melki
+    surnom_de: Melchisédech
+    role: vérificatrice
+    ennéatype: 1
+  - nom: Juju
+    surnom_de: Judith
+    role: initiatrice
+    ennéatype: 8
+
+themes:
+  - reparation-du-commun
+  - consentement
+  - complementarite-des-roles
+  - gratitude-discrete
+
+morales_implicites:
+  - "Ce qu'on construit à trois ne ressemble à aucun de nous trois séparément"
+  - "Faire avec, demander, finir le travail"
+
+univers:
+  niveau: A-touches-legeres
+  elements_implicites:
+    - vibration-douce-arbres
+    - compagnon-juju-eclaircissement
+    - ferretti-ancien-reparateur
+
+lieux:
+  - pont-au-dessus-du-ruisseau
+  - bois-communal
+  - remise-ferretti
+
+variantes_culturelles: []
+
+tags:
+  - reparation
+  - intergenerationnel
+  - cooperation
+  - voisin-age

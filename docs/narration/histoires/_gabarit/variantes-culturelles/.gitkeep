@@ -1,0 +1,3 @@
+Patches culturels — un fichier par culture.
+Format : `{culture}.md` (ex : `jp.md`, `ng.md`, `br.md`).
+Contient uniquement le diff (lieu, prénoms locaux, ajustement de référence).

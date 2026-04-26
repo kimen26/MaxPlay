@@ -1,0 +1,5 @@
+# Variantes culturelles — placeholder
+
+Ce dossier accueillera les patches culturels (1 fichier par culture).
+Format : `{culture}.md` — uniquement les diff (lieu, nom de personnage local, ajustement de référence culturelle).
+Le texte source reste `../texte.md`.

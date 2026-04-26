@@ -1,14 +1,15 @@
 # Histoires — Index
 
-> Catalogue des récits écrits + gabarit pour en ajouter.
+> Catalogue des récits + convention d'organisation.
+> **Convention complète :** [README.md](README.md) — un dossier par histoire, ID à 3 chiffres, gabarit à copier.
 
 ---
 
 ## Catalogue
 
-| Titre | Personnages | Statut | Structure | Fichier |
-|-------|-------------|--------|-----------|---------|
-| Le Pont Cassé | Wex · Melki (Titi1) · Juju (Titi8) | V1 — comité lu | Kishōtenketsu (sans antagoniste) | [le-pont-casse.md](le-pont-casse.md) |
+| ID | Titre | Personnages | Statut | Structure | Dossier |
+|----|-------|-------------|--------|-----------|---------|
+| 001 | Le Pont Cassé | Wex · Melki (Titi1) · Juju (Titi8) | V1 — comité lu (V2 à faire) | Kishōtenketsu | [001-pont-casse/](001-pont-casse/) |
 
 ---
 
@@ -22,10 +23,12 @@
 ## Ajouter une histoire
 
 1. Sélectionner un axe mûr depuis `axes-histoires-en-stock.md` (check-list validée)
-2. Copier `_gabarit.md` → `<titre-kebab-case>.md`
-3. Remplir les sections
+2. Copier le dossier gabarit : `cp -r _gabarit/ NNN-titre-kebab/`
+3. Remplir `meta.yaml` puis `texte.md`
 4. Ajouter une ligne dans le catalogue ci-dessus
-5. Marquer statut : `brouillon` → `V1` → `comité lu` → `validé`
+5. Faire évoluer le statut : `brouillon` → `V1` → `V1-comité-lu` → `V2` → `validé`
+
+Détails : [README.md](README.md).
 
 ---
 

@@ -92,7 +92,7 @@ Anciens prénoms placeholders hérités d'une session précédente, **remplacés
 | 8 | Juju | Judith |
 | 9 | Nono | Noé |
 
-**À propager :** toutes les fiches `Eneagramme/personnages/type-XX-*.md` + histoire "Le Pont Cassé" + tableaux relations/interactions. → grande passe de renommage à planifier (voir [tasks/BACKLOG.md](../../../tasks/BACKLOG.md)).
+**À propager :** toutes les fiches `Eneagramme/personnages/type-XX-*.md` + histoire `histoires/001-pont-casse/` (déjà fait sur V1) + tableaux relations/interactions. → grande passe de renommage à planifier (voir [tasks/BACKLOG.md](../../../tasks/BACKLOG.md)).
 
 ---
 
@@ -117,7 +117,7 @@ Discussion auteur + 2 IA externes → convergence sur le casting V1 biblique ci-
 ### Questions ouvertes V1
 
 1. **Wex ennéatype** — laissé volontairement non-assigné. À trancher plus tard si le besoin narratif l'exige.
-2. **Propagation** — grande passe de renommage dans `Eneagramme/personnages/*` et `histoires/le-pont-casse.md`, à faire quand V1 sera confirmé stable. Utiliser la notation `TypeN / TitiN × origine` pour référencer les profils dans les textes (voir [notation-types.md](notation-types.md)).
+2. **Propagation** — grande passe de renommage dans `Eneagramme/personnages/*` (Pont Cassé déjà migré dans `histoires/001-pont-casse/`), à faire quand V1 sera confirmé stable. Utiliser la notation `TypeN / TitiN × origine` pour référencer les profils dans les textes (voir [notation-types.md](notation-types.md)).
 
 ### Décisions 2026-04-24 (deuxième passe)
 

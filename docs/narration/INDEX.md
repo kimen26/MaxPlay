@@ -12,7 +12,7 @@
 | Personnages | 9 définis (ennéagramme) — ✅ **casting V1 "Christ" validé** (Melki, Marie, Paul, Jérémie, Luc, Pierre, **Raph**, Judith, Noé) + **Wex héros hors-système** (pas d'ennéatype). Notation `TypeN`/`TitiN × origine` pour écrire les textes. Propagation dans les fiches à faire. |
 | Univers | post-Éveil, Printemps de l'Éveil — distillé dans `univers/` |
 | Direction | **monde sobre, merveilleux discret** (vu à travers enfant né dedans) |
-| Histoires | "Le Pont Cassé" (Wex + Melki/Titi1 + Juju/Titi8) — V1 complète, comité de lecture fait. Texte source à réimporter. |
+| Histoires | "Le Pont Cassé" (Wex + Melki/Titi1 + Juju/Titi8) — V1 complète, comité de lecture fait, V2 à faire (3 modifs prio). |
 | Nom univers | **non tranché** → `univers/nom-candidats.md` |
 
 ---
@@ -52,9 +52,10 @@
 ### Histoires
 | Fichier | Contenu |
 |---------|---------|
-| [histoires/INDEX.md](histoires/INDEX.md) | **Catalogue + gabarit** |
-| [histoires/_gabarit.md](histoires/_gabarit.md) | Structure type nouvelle histoire |
-| [histoires/le-pont-casse.md](histoires/le-pont-casse.md) | V1 complète + options d'intégration univers |
+| [histoires/INDEX.md](histoires/INDEX.md) | **Catalogue** |
+| [histoires/README.md](histoires/README.md) | Convention : 1 dossier par histoire, ID NNN, métadonnées YAML |
+| [histoires/_gabarit/](histoires/_gabarit/) | Dossier gabarit à copier pour une nouvelle histoire |
+| [histoires/001-pont-casse/](histoires/001-pont-casse/) | V1 complète + comité de lecture + archives + variantes |
 
 ### Équipe éditoriale
 | Fichier | Rôle |

@@ -66,9 +66,9 @@ Bun.serve({
         return Response.json({ decision: "allow" });
       }
 
-      let body: { tool_name?: string; tool_input?: unknown; [key: string]: unknown };
+      let body: { tool_name?: string; tool_input?: unknown; [key: string]: unknown } = {};
       try {
-        body = await req.json();
+        body = await req.json() as typeof body;
       } catch {
         return Response.json({ decision: "allow" });
       }
@@ -151,11 +151,12 @@ bot.on("message:text", async (ctx) => {
 
   const userMessage = ctx.message.text;
   const chatId = ctx.chat.id;
-  const thinking = await ctx.reply("⏳ Claude réfléchit…");
+  const agent = detectAgent(userMessage);
+  const thinking = await ctx.reply(`${AGENT_EMOJI[agent]} Claude réfléchit… _(agent : ${agent})_`, { parse_mode: "Markdown" });
 
   try {
     const promptWithHistory = buildPromptWithHistory(chatId, userMessage);
-    const response = await runClaude(promptWithHistory);
+    const response = await runClaude(promptWithHistory, agent);
 
     addToHistory(chatId, "user", userMessage);
     addToHistory(chatId, "assistant", response.slice(0, 1000));
@@ -207,14 +208,52 @@ function isAllowed(ctx: Context): boolean {
   return ctx.chat?.id === ALLOWED_CHAT_ID;
 }
 
-async function runClaude(prompt: string): Promise<string> {
+type Agent = "narration" | "game-dev" | "quick";
+
+const NARRATION_KEYWORDS = [
+  "histoire", "histoir", "personnage", "narration", "univers", "ennéagramme",
+  "wex", "melki", "mimi", "polo", "jérem", "lulu", "pierrot", "raph", "juju", "nono",
+  "léo", "sam", "élia", "lila", "camille", "victor", "iris", "theo", "noa",
+  "pont cassé", "éveil", "phos", "gardien", "totem", "compagnon",
+  "arc", "chapitre", "scène", "dialogue", "récit", "conte",
+  "écris", "écri", "rédige", "invente", "imagine", "crée une histoire",
+];
+
+const GAME_KEYWORDS = [
+  "jeu", "mini-jeu", "mj-", "code", "bug", "html", "javascript", "phaser",
+  "bus svg", "déploie", "deploy", "github", "menu", "index.html",
+  "tracker", "son", "victoire", "couleur", "svg", "score",
+  "crée un jeu", "nouveau jeu", "corrige", "répare", "ajoute",
+];
+
+function detectAgent(message: string): Agent {
+  const lower = message.toLowerCase();
+
+  const narrationScore = NARRATION_KEYWORDS.filter((k) => lower.includes(k)).length;
+  const gameScore = GAME_KEYWORDS.filter((k) => lower.includes(k)).length;
+
+  if (narrationScore > gameScore && narrationScore > 0) return "narration";
+  if (gameScore > narrationScore && gameScore > 0) return "game-dev";
+  return "quick";
+}
+
+const AGENT_EMOJI: Record<Agent, string> = {
+  "narration": "📖",
+  "game-dev": "🎮",
+  "quick": "⚡",
+};
+
+async function runClaude(prompt: string, agent: Agent = "quick"): Promise<string> {
   const home = homedir();
-  const proc = Bun.spawn(["claude", "-p", prompt, "--dangerously-skip-permissions"], {
-    cwd: PROJECT_PATH,
-    stdout: "pipe",
-    stderr: "pipe",
-    env: { ...process.env, HOME: home, USERPROFILE: home },
-  });
+  const proc = Bun.spawn(
+    ["claude", "-p", prompt, "--agent", agent, "--dangerously-skip-permissions"],
+    {
+      cwd: PROJECT_PATH,
+      stdout: "pipe",
+      stderr: "pipe",
+      env: { ...process.env, HOME: home, USERPROFILE: home },
+    }
+  );
 
   const timeoutId = setTimeout(() => proc.kill(), 5 * 60 * 1000);
   const [stdout, stderr] = await Promise.all([

@@ -10,7 +10,7 @@ Le projet a 2 pôles distincts. Identifie lequel concerne la demande puis lis
   → lire bloc `# PÔLE JEU`
 
 - **Mots NARRATION** : narration, histoire, personnage, environnement, univers,
-  ennéagramme, Léo/Sam/Élia/Lila/Camille/Victor/Iris/Theo/Noa, post-Éveil
+  ennéagramme, Wex/Melki/Mimi/Polo/Jérem/Lulu/Pierrot/Raph/Juju/Nono, post-Éveil
   → lire bloc `# PÔLE NARRATION`
 
 Si ambigu : demande à l'utilisateur avant d'avancer.
@@ -83,7 +83,7 @@ Futur proche post-Éveil. Nom non choisi (5 finalistes → [univers/nom-candidat
 Conscience créative · Compagnons animaux · Gardiens de l'Équilibre · Totems Janus · Grand Cycle 22k ans.
 
 ## Histoires écrites
-"Le Pont Cassé" (Wex/#7 + Élia/#1 + Sam/#8) — V1 complète, comité de lecture fait
+"Le Pont Cassé" (Wex/#7 + Melki/#1 + Juju/#8) — V1 complète, comité de lecture fait
 
 ---
 

@@ -1,7 +1,7 @@
 # Prénoms — brainstorm par ennéatype
 
 > **Matière brute** accumulée sur plusieurs sessions d'exploration (sources LLM externes + recherches auteur).
-> ~450+ prénoms répartis sur les 9 ennéatypes (Wex/#7 confirmé, Élia/#1 et Sam/#8 placeholders).
+> ~450+ prénoms répartis sur les 9 ennéatypes. Casting V1 figé 2026-04-24 (origine Christ) : Melki/#1, Mimi/#2, Polo/#3, Jérem/#4, Lulu/#5, Pierrot/#6, Raph/#7, Juju/#8, Nono/#9 + Wex héros hors-système. Catalogue conservé pour les déclinaisons cross-country (Hébreu/AT, Japonais/Ghibli, Swahili…).
 > À distiller vers `prénoms-candidats.md` (shortlists) quand l'auteur arbitre.
 >
 > **Organisation : uniquement par ennéatype.** À l'intérieur de chaque type, sous-classement par registre (mythologique / racines linguistiques / "normaux" / etc.). Les coups de cœur sont marqués ⭐. Les apparitions dans les options de casting sont annotées `[A]` `[B]` `[C]` `[D]`.
@@ -53,7 +53,7 @@ Chaque prénom retenu dans un casting est annoté `[A]`, `[B]`, `[C]`, `[D]` à 
 - **Faisal** (arabe) — juge équitable.
 
 ### "Normaux" évocateurs
-- **Élia** `[A][B][C][D]` (placeholder actuel, hébreu "mon Dieu est Yahvé") — prophète rigoureux.
+- ~~**Élia**~~ `[A][B][C][D]` (ancien placeholder — remplacé par **Melchisédech / Melki** dans le casting Christ V1).
 - **Clara / Claire** — clarté, transparence.
 - **Augustin** — vénérable, droit.
 - **Maël** (celte) — prince lumineux.
@@ -78,7 +78,7 @@ Chaque prénom retenu dans un casting est annoté `[A]`, `[B]`, `[C]`, `[D]` à 
 **Hmong :** Zoo — bon.
 **Tibétain :** Tenzin ⭐ — détenteur du dharma · Karma — action juste.
 
-**Coups de cœur :** Maât · Satya · Aletheia · Makoto · Lior (ou garder Élia) · Tenzin · Qiniso · JOM.
+**Coups de cœur :** Maât · Satya · Aletheia · Makoto · Lior · Tenzin · Qiniso · JOM. *(Casting Christ V1 = Melchisédech/Melki.)*
 
 ---
 
@@ -362,7 +362,7 @@ Chaque prénom retenu dans un casting est annoté `[A]`, `[B]`, `[C]`, `[D]` à 
 - **Xaman Ek** (maya) — étoile polaire, guide.
 
 ### Rassurants
-- **Elias** — proche d'Élia mais différent.
+- **Elias** — variante hébraïque (ancien placeholder Type 1 = Élia, désormais Melki en casting Christ).
 - **Adam** — origine, fondation.
 - **Sami** (arabe) `[A]` — protecteur.
 - **Gabriel** (archange) `[B]` — messager, protecteur.
@@ -495,7 +495,7 @@ Chaque prénom retenu dans un casting est annoté `[A]`, `[B]`, `[C]`, `[D]` à 
 ## Type 8 — La Force / Le Leader
 
 **Essence :** puissance, protection, ancrage.
-**Placeholder actuel :** Sam `[A][C][D]`.
+**Casting Christ V1 :** Judith F / **Juju**. *(Ancien placeholder « Sam » `[A][C][D]` abandonné 2026-04-24.)*
 
 ### Mythologiques
 - **Thor** (nordique) — à utiliser subtilement.

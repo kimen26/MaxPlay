@@ -28,9 +28,9 @@ Voir `docs/MAX_PROFILE.md` pour le profil complet.
 
 ## Projet narration (2026-04-13, session 12)
 
-- **Histoires écrites** : "Le Pont Cassé" — Léo (#7) + Élia (#1) + Sam (#8), thème causalité/responsabilité, V1 complète
+- **Histoires écrites** : "Le Pont Cassé" — Wex (#7 héros hors-système) + Melki (#1) + Juju (#8), thème causalité/responsabilité, V1 complète
 - **Comité de lecture** : 7 profils internes (éditeur, prof français, philo, Boo 4 ans, enfant 8 ans, père, mère) + 8 cultures (USA, DE, CN, NG, JP, MA, BR, RU)
-- **3 actions V2** : couper chute italique · donner à Élia un vrai tort · ralentir retournement de Léo
+- **3 actions V2** : couper chute italique · donner à Melki un vrai tort · ralentir retournement de Wex
 - **Univers macro** : en construction — `docs/univers/UNIVERS-NOTES-BRUTES.md`
   - Post-Grande Tempête de Phos (Éveil des consciences, Tisseurs d'Ombre vaincus)
   - Conscience créative + Totems de Pensée (Voile Janus)
@@ -39,7 +39,7 @@ Voir `docs/MAX_PROFILE.md` pour le profil complet.
   - Compagnons animaux hybrides liés à chaque enfant
   - Baron (voyageur temporel, Gardien des Portes)
   - **Nom de l'univers** : pas encore choisi (21 candidats dont Phosyntha, Egryntha, Veynara)
-- **Personnages nommés** : Léo (#7 héros), Sam (#8), Élia (#1), Lila (#9), Camille (#2), Victor (#3), Iris (#4), Theo (#5), Noa (#6)
+- **Personnages nommés (casting Christ V1 figé 2026-04-24)** : Wex (#7 héros hors-système), Melki/Melchisédech (#1), Mimi/Marie F (#2), Polo/Paul (#3), Jérem/Jérémie (#4), Lulu/Luc (#5), Pierrot/Pierre (#6), Raph/Raphaëlle F (#7 ennéatype), Juju/Judith F (#8), Nono/Noé (#9)
 - **Docs narration** : `docs/narration/` (SYNTHESE + Eneagramme/) · `docs/univers/`
 
 ## Architecture déploiement (2026-03-21)

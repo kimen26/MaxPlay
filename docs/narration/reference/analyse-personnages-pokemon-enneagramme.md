@@ -732,15 +732,15 @@ Sycamore est élégant, passionné, romantique. Il voit la beauté dans les Pok�
 
 | Pokémon | Type | Correspondance MaxPlay |
 |---------|------|------------------------|
-| Sacha | 7 | **Léo** — l'enthousiasme pur |
-| Pikachu | 6 | **Noa** — la loyauté inébranlable |
-| Ondine | 8 | **Sam** — la force qui protège |
-| Pierre | 2 | **Camille** — le soin maternel |
-| Flora | 3 | **Victor** — la quête de réussite |
-| Aurore | 4 | **Iris** — l'authenticité créative |
-| Cynthia | 5 | **Theo** — la sagesse tranquille |
-| Lillie | 6 | **Noa** — le courage face à la peur |
-| James | 9 | **Lila** — la fuite du conflit |
+| Sacha | 7 | **Wex** (héros hors-système) — l'enthousiasme pur · ou **Raph** (Type 7 ennéatype) |
+| Pikachu | 6 | **Pierrot** — la loyauté inébranlable |
+| Ondine | 8 | **Juju** — la force qui protège |
+| Pierre | 2 | **Mimi** — le soin maternel |
+| Flora | 3 | **Polo** — la quête de réussite |
+| Aurore | 4 | **Jérem** — l'authenticité créative |
+| Cynthia | 5 | **Lulu** — la sagesse tranquille |
+| Lillie | 6 | **Pierrot** — le courage face à la peur |
+| James | 9 | **Nono** — la fuite du conflit |
 
 ---
 

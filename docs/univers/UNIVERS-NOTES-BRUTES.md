@@ -55,7 +55,7 @@ Aucun choix définitif. Les critères : jamais utilisé ailleurs, doux à pronon
 
 **Note :** "Trump" dans le nom vient du brainstorm Grok (référence aux théories QAnon / Baron Trump réel). À discuter pour l'export international — ce nom peut créer des associations politiques indésirables selon les pays.
 
-**Question ouverte :** Baron est-il un personnage récurrent ou un guide ponctuel ? Fait-il partie du groupe principal (Léo, Sam, Élia...) ou est-il un passeur extérieur ?
+**Question ouverte :** Baron est-il un personnage récurrent ou un guide ponctuel ? Fait-il partie du groupe principal (Wex, Juju, Melki...) ou est-il un passeur extérieur ?
 
 ---
 
@@ -205,10 +205,10 @@ Chaque enfant a un compagnon — animal qui n'existait pas avant, hybride improb
 
 | Personnage | Compagnon pressenti | Comportement caractéristique |
 |------------|--------------------|-----------------------------|
-| Léo (7) | Quelque chose d'agité et lumineux — colibri-luciole ? | S'emballe, s'envole, revient |
-| Sam (8) | Tatou-chouette silencieux | Observe, se tasse en boule quand Sam est en colère |
-| Élia (1) | Compagnon qui vérifie tout, tourne en rond, compte les pas | Rectifie sa trajectoire en marchant |
-| Lila (9) | Quelque chose de doux et rond — hérisson-nuage ? | S'endort avec elle, se réveille en sursaut si conflit |
+| Wex (héros, hors-système) | Quelque chose d'agité et lumineux — colibri-luciole ? | S'emballe, s'envole, revient |
+| Juju (8) | Tatou-chouette silencieux | Observe, se tasse en boule quand Juju est en colère |
+| Melki (1) | Compagnon qui vérifie tout, tourne en rond, compte les pas | Rectifie sa trajectoire en marchant |
+| Nono (9) | Quelque chose de doux et rond — hérisson-nuage ? | S'endort avec lui, se réveille en sursaut si conflit |
 
 ---
 
@@ -218,16 +218,16 @@ L'histoire telle qu'elle existe (version réaliste, sans magie) fonctionne parfa
 
 **Option A — Touches légères (garder l'histoire sobre)**
 - Les arbres autour du pont font un son très doux quand le pont est réparé — presque rien, juste une vibration
-- Le compagnon de Sam se détasse quand la planche est posée
+- Le compagnon de Juju se détasse quand la planche est posée
 - Ferretti a peut-être été un Gardien de l'Équilibre dans sa jeunesse (pas dit, juste suggéré par sa façon de se tenir)
 
 **Option B — Touches moyennes**
-- La planche en frêne "voulait" être posée là — Élia le ressent sans pouvoir l'expliquer
+- La planche en frêne "voulait" être posée là — Melki le ressent sans pouvoir l'expliquer
 - La petite fille qui traverse a un compagnon qui gambade sur le pont le premier matin
 
 **Option C — Immersion complète**
 - Le pont cassé est dans le Cercle de Paix du quartier — un lieu qui "sent" les frictions non résolues
-- Sam voit un micro-Totem de Pensée (vieille peur du quartier) rétrécir quand le pont est réparé
+- Juju voit un micro-Totem de Pensée (vieille peur du quartier) rétrécir quand le pont est réparé
 
 **Recommandation :** Option A pour les premières histoires. Les touches doivent être quasi-invisibles — on les remarque à la 3e lecture, pas à la 1ère.
 
@@ -241,7 +241,7 @@ L'histoire telle qu'elle existe (version réaliste, sans magie) fonctionne parfa
 4. **Les Compagnons** — apparaissent-ils dans toutes les histoires ou progressivement ?
 5. **La technologie** (cristaux, vélos volants) — dans quelles histoires l'introduire ?
 6. **Les Cercles d'Harmonie** (7 continents) — à détailler ? Lequel d'abord ?
-7. **Baron et le voyage temporel** — histoire séparée ou crossover avec Léo/Sam/Élia ?
+7. **Baron et le voyage temporel** — histoire séparée ou crossover avec Wex/Juju/Melki ?
 8. **L'Académie du Souvenir** — remplace-t-elle l'école dans toutes les histoires, ou les deux coexistent ?
 
 ---
@@ -278,8 +278,8 @@ L'histoire telle qu'elle existe (version réaliste, sans magie) fonctionne parfa
 **Ce que ça dit sur l'univers :**
 - Les factions, guildes, groupes de cet univers ne se définissent pas par un ennemi commun — mais par une direction commune (une lumière à atteindre, une chose à construire, un équilibre à garder)
 - Quand un personnage commence à haïr plutôt qu'à construire, c'est un signal de danger interne — pas de victoire
-- Léo (#7) incarne naturellement ça : il entraîne les autres *vers* quelque chose, jamais *contre* quelqu'un
-- Sam (#8) est le plus à risque de cette erreur : sa force peut devenir "contre" si elle perd sa direction
+- Wex (héros) incarne naturellement ça : il entraîne les autres *vers* quelque chose, jamais *contre* quelqu'un
+- Juju (#8) est le plus à risque de cette erreur : sa force peut devenir "contre" si elle perd sa direction
 
 **Seed narratif possible :**
 Un groupe qui pensait se battre contre un danger finit par réaliser qu'il cherchait surtout un ennemi — et que le vrai mouvement a toujours été de construire autre chose.

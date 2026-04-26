@@ -58,7 +58,7 @@ docs/
 |-----------|--------------|
 | Comprendre qui est Max | `MAX_PROFILE.md` |
 | Écrire une histoire avec les personnages | `narration/SYNTHESE.md` |
-| Trouver la fiche d'un personnage (Léo, Sam...) | `narration/Eneagramme/personnages/` |
+| Trouver la fiche d'un personnage (Wex, Melki, Juju...) | `narration/Eneagramme/personnages/` |
 | Comprendre l'univers macro (monde, histoire, rituels) | `univers/UNIVERS-NOTES-BRUTES.md` |
 | Vérifier les couleurs d'une ligne de bus | `ratp-colors.json` |
 | Voir les specs d'un mini-jeu | `jeux/GAMES_SPECS.md` |

@@ -7,9 +7,9 @@
 
 ## Catalogue
 
-| ID | Titre | Personnages | Statut | Structure | Dossier |
-|----|-------|-------------|--------|-----------|---------|
-| 001 | Le Pont Cassé | Wex · Melki (Titi1) · Juju (Titi8) | V1 — comité lu (V2 à faire) | Kishōtenketsu | [001-pont-casse/](001-pont-casse/) |
+| ID | Titre | Personnages | Statut | Structure | Module |
+|----|-------|-------------|--------|-----------|--------|
+| 001 | Le Pont Cassé | Wex · Melki (Titi1) · Juju (Titi8) | V1 — comité lu (V2 à faire) | Kishōtenketsu | [`stories/001-le-pont-casse/`](../stories/001-le-pont-casse/) |
 
 ---
 

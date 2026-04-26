@@ -289,14 +289,25 @@ MaxPlay V0
 - [x] T-242 : Fix `base: '/MaxPlay/max-adventure/'` + commit + push CI (commit 98923b60)
 - [x] T-243 : Re-test prod : OK, jeu se charge
 
-### EP-026 – TTS ElevenLabs (MP3 statiques)
-> Aujourd'hui annonce nom de jeu via `speechSynthesis` natif (voix robotique). Décidé 2026-04-26 : pré-générer les MP3 via MCP ElevenLabs (option B) — voix enfant-friendly, zéro clé exposée, zéro coût récurrent.
+### EP-026 – TTS ElevenLabs (MP3 statiques) — JEU + NARRATION
+> Aujourd'hui annonce nom de jeu via `speechSynthesis` natif (voix robotique). Décidé 2026-04-26 : pré-générer les MP3 via MCP ElevenLabs (option B) — zéro clé exposée, zéro coût récurrent.
+> **Voix : générées ou clonées (PAS les voix par défaut)**. Cible : voix enfant-friendly avec nuances émotionnelles fortes (joie, suspense, douceur, surprise…).
+> Champ d'application : **JEU** (annonces, retours, victoires) **ET NARRATION** (lecture des histoires Wex/Christ avec dialogues incarnés).
 > Reportée : ne pas faire maintenant, on garde speechSynthesis comme fallback.
+
+**Infra TTS**
 - [ ] T-260 : Setup MCP ElevenLabs dans `~/.claude/settings.json` (clé API utilisateur)
-- [ ] T-261 : Choix de la voix (Charlie/Alice FR enfantines ou voix clonée)
+- [ ] T-261 : Sélection / clonage de voix (3-5 voix : narrateur doux, voix enfant joyeuse, voix grave/calme, voix vive/excitée…)
 - [ ] T-262 : Script de génération bouclant sur `GAME_META` → `game-html/sounds/titles/mj-XX.mp3`
 - [ ] T-263 : Modifier `tracker.js._announceTitle` : si MP3 existe → `new Audio()`, sinon fallback `speechSynthesis`
 - [ ] T-264 : Régénération à la demande quand un jeu est renommé
+- [ ] T-265 : Pipeline narration : 1 histoire → découpe par voix → MP3 par segment → lecteur audio web
+
+**Agent éditorial voix (nouveau)**
+- [ ] T-266 : Spec d'un nouvel agent `voice-director` : prend un texte brut (annonce de jeu, dialogue d'histoire) et l'enrichit en SSML/markup ElevenLabs (émotions, pauses, emphases, prononciation, voix par personnage)
+- [ ] T-267 : Définir le vocabulaire d'émotions : joyeux, doux, suspense, mystérieux, déçu, fier, complice…
+- [ ] T-268 : Mapper personnages (casting Christ : Wex, Melki, Mimi, Polo…) → voix ElevenLabs
+- [ ] T-269 : Tester sur un texte court de chaque type (annonce jeu courte, victoire, dialogue narration)
 
 ### EP-025 – Max Adventure responsive (portrait mobile)
 > Constat user 2026-04-26 : sur Xiaomi 15 Ultra en portrait avec barre navigateur, paysage = trop peu de place. Veut rester en portrait.

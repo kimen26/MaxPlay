@@ -3,7 +3,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 
 export default defineConfig({
-  base: process.env.CI ? '/MaxPlay/mj-07/' : './',
+  base: process.env.CI ? '/MaxPlay/max-adventure/' : './',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',

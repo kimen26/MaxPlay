@@ -28,11 +28,15 @@
 | EP-MJ10 | MJ-10 · Tableau de bord (sons) | `[x]` |
 | EP-MJ11 | MJ-11 · Quel pays ? (drapeaux) | `[x]` |
 | EP-MJ13 | MJ-13 · L'arrêt de bus (panneau RATP) | `[x]` |
-| EP-MAXADV | Max Adventure · La journée de Max (sandbox Phaser) | `[x]` |
+| EP-MAXADV | Max Adventure · La journée de Max (sandbox Phaser) | `[!]` |
 | EP-005 | Système de progression (flotte + carte) | `[ ]` |
 | EP-006 | Audio (sons + musique + TTS) | `[ ]` |
 | EP-008 | Recherche motricité enfant 3-4 ans | `[ ]` |
 | EP-009 | Recherche audio : TTS, voix, streaming | `[ ]` |
+| EP-021 | Renommage cohérence vocab Max (Centre bus / Garage / Village) | `[ ]` |
+| EP-022 | MJ-04 → ajouter fin de partie (10 tours + endSession + playEndSound) | `[ ]` |
+| EP-023 | Menu hybride : Carte de Villejuif (haut) + grille classique (bas) | `[ ]` |
+| EP-024 | Fix Max Adventure (cassé actuellement) | `[~]` |
 
 ---
 
@@ -255,6 +259,35 @@ MaxPlay V0
 
 ## Tâches actives
 
+### EP-021 – Renommage cohérence vocab Max
+> Vocabulaire Max validé 2026-04-26 : Centre bus = dodo des bus · Garage = réparation · Village des bus = terminus
+- [ ] T-210 : MJ-08 "Au garage !" → "Au centre bus" (titre, desc, références)
+- [ ] T-211 : MJ-17 "Village des bus" → "Le garage" (titre, desc, références)
+- [ ] T-212 : Mettre à jour MEMORY.md, BACKLOG.md, docs/ avec le nouveau vocab
+- [ ] T-213 : Réserver "Village des bus" pour future idée terminus
+
+### EP-022 – MJ-04 fin de partie
+> Aujourd'hui MJ-04 boucle infinie sans `endSession`. Doit terminer normalement.
+- [ ] T-220 : Ajouter compteur 10 tours dans mj-04.html
+- [ ] T-221 : Écran fin de partie + appel `Tracker.endSession(score, max)`
+- [ ] T-222 : Appel `playEndSound(score, max)`
+
+### EP-023 – Menu hybride Carte de Villejuif
+> Page d'accueil = map Villejuif (haut) + grille classique (bas). Plan : `docs/jeux/MENU-MAP-VILLEJUIF.md`
+- [ ] T-230 : Valider emplacements V1 avec utilisateur
+- [ ] T-231 : Layout map (dimensions, échelle, choix illustration vs tileset LimeZu)
+- [ ] T-232 : Coordonnées x,y des emojis hotspots
+- [ ] T-233 : Intégration index.html (map en haut, grille en bas, pas de toggle)
+- [ ] T-234 : Test motricité (hotspots min 60×60 px)
+
+### EP-024 – Fix Max Adventure (CASSÉ → en correction)
+> Max Adventure ne marche pas pour le moment (constat utilisateur 2026-04-26).
+> Root cause : `vite.config.ts` `base: '/MaxPlay/mj-07/'` mais CI déploie sous `/max-adventure/`. Mismatch → 404 sur les JS Phaser → écran noir prod.
+- [x] T-240 : Reproduire (Playwright sur prod : écran noir, 404 phaser-*.js et index-*.js)
+- [x] T-241 : Diagnostic — `base` Vite pas mis à jour quand le dossier de déploiement a été renommé en session 9
+- [~] T-242 : Fix `base: '/MaxPlay/max-adventure/'` + commit + push CI
+- [ ] T-243 : Re-tester prod après déploiement
+
 ### EP-010 – Assets & outils graphiques ✅
 - [x] T-070 : SVG bus side-view (droite + gauche) avec template {{COLOR}}/{{LINE}}
 - [x] T-071 : Utilitaire bus-svg.ts (createBusSvg, createBusDataUrl, preloadAllBusTextures)
@@ -383,6 +416,9 @@ MaxPlay V0
 | D-017 | 2026-03-10 | MJ-04 : Phase 1 = mots simples (CACA, BUS, PAPA...) avant arrêts | Max sait lire ces mots, commencer par l'acquis |
 | D-018 | 2026-03-10 | MJ-05 : trajets réels uniquement (185 école, V7 Valouette, M7+M6 mamie) | Ancrage affectif maximal |
 | D-019 | 2026-03-10 | MJ-06 : place au sol numérotée, pas garage 3D | Plus lisible pour 3-4 ans |
+| D-021 | 2026-04-26 | Vocab Max : Centre bus = dodo · Garage = réparation · Village des bus = terminus (réservé) | Cohérence avec le vocabulaire que Max utilise |
+| D-022 | 2026-04-26 | Menu hybride : carte Villejuif (haut) + grille classique (bas), pas de toggle | Découverte map sans casser le fallback rapide |
+| D-023 | 2026-04-26 | Backup progression : reste localStorage seul. Pas d'API/n8n maintenant | Site = HTML simple, pas de complexité prématurée |
 
 ---
 

@@ -9,9 +9,18 @@ Jeu éducatif 2D pour **Max**, 3.5-4 ans, passionné de bus (lignes Villejuif).
 Voir `docs/MAX_PROFILE.md` pour le profil complet.
 **Stack** : Phaser.js 3 + Vite + TypeScript · Résolution 1024×768 landscape
 
-## État jeux (2026-04-12, session 12)
+## État jeux (2026-04-26, session 13)
 
-- **18 jeux** : mj-01 à mj-17 + max-adventure
+- **21 jeux** : mj-01, mj-04, mj-05, mj-06, mj-08, mj-09, mj-11, mj-12, mj-13a, mj-13b, mj-13c, mj-14 à mj-20 + max-adventure
+- **⚠ Max Adventure cassé** (à diagnostiquer — EP-024)
+- **MJ-04** boucle infinie sans `endSession` — à corriger (EP-022)
+- **Vocab Max (D-021)** : Centre bus = dodo · Garage = réparation · Village des bus = terminus (réservé)
+  - MJ-08 à renommer "Au garage !" → "Au centre bus"
+  - MJ-17 à renommer "Village des bus" → "Le garage"
+- **Menu** : projet Carte de Villejuif en haut + grille classique en bas (EP-023, plan : `docs/jeux/MENU-MAP-VILLEJUIF.md`)
+- **mj-02, mj-03, mj-07, mj-10** : retirés du menu (consolidés ailleurs)
+
+### Détails jeux récents
 - **MJ-17** : L'ombre du bus — silhouette noire, 3 niveaux (nette / floutée / partielle), 4 choix
 - **MJ-16** : Complète la suite — 4 cases, pattern à compléter, 3 niveaux (couleurs / tailles / mixte)
 - **MJ-15** : L'intrus — 5 bus, 1 ne va pas avec les autres, 3 niveaux (couleur / pair-impair / famille)

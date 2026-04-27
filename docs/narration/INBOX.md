@@ -10,6 +10,48 @@
 [contenu brut]
 -->
 
+## 2026-04-27 — Urbanisation, transport, mobilité post-Éveil
+
+### Principe général
+
+Beaucoup de choses ont été **recyclées** (béton, immeubles en série, routes larges), mais pas tout.
+Wex vit toujours dans une **tour/résidence** — les bâtiments existants ne sont pas tous démolis.
+Il y a **beaucoup moins de logements** qu'avant, et **beaucoup plus de vert** partout.
+
+### Les axes de circulation
+
+Les **grandes routes sont conservées** mais transformées :
+- Recouvertes de matière naturelle (végétaux, mousse, sol vivant)
+- Permettent des déplacements en **lévitation ou propulsion magnétique** — une technologie du monde fictif (non existante en 2026)
+
+### Les technologies de déplacement (concepts à creuser)
+
+L'utilisateur demande des concepts **techniquement ou logiquement défendables**, même imaginaires.
+
+**Concepts réels existants en germe (extrapolables) :**
+
+1. **Effet Meissner / supraconductivité** — un rail supraconducteur enfoui sous la végétation crée un champ qui repousse un matériau ferromagnétique au-dessus. Les véhicules flottent passivement, sans moteur individuel. Déjà à l'œuvre dans les trains maglev japonais (SCMaglev). Dans l'univers : le revêtement de route *est* le rail — invisible sous la mousse.
+
+2. **Propulsion MHD (magnétohydrodynamique)** — moteur sans pièces mobiles, utilise un champ électromagnétique pour déplacer un fluide conducteur ou l'air ionisé. Silencieux, pas de friction. Concept réel (submarines US Seawolf, expériences aériennes). Dans l'univers : les "bus-bouées" sont propulsés par l'air ionisé de la route, pas par un moteur embarqué.
+
+3. **Inversion Janus** — les particules de Janus ont deux faces physico-chimiques opposées (une face hydrophile, une hydrophobe, ou une face magnétique et une neutre). On pourrait imaginer une **surface de route Janus** qui répulse les véhicules équipés d'une face inverse, les maintenant à 3-5 cm du sol. Concept réel en physique des matériaux (Janus particles — Jan 2023, actif dans les nano-matériaux).
+
+4. **Route à vide / tunnel de vide partiel** — dans les grands axes : une membrane souple recouvre la route, maintient une légère dépression d'air (pas de vide total, juste moins de frottement). Les véhicules glissent sur un coussin d'air appauvri. Concept proche du Hyperloop de Musk, simplifié.
+
+5. **Pédaliers utiles** — des vélos ou trottinettes à pédales qui, en roulant, pompent de l'eau vers les **jardinières et jardins collectifs** le long des axes. Pas de moteur, énergie 100% corporelle transformée en arrosage automatique. Plausible immédiatement.
+
+**Ambiance visuelle :**
+- Les axes ressemblent à des **coulées vertes légèrement surélevées** avec des lumières douces la nuit
+- Les "bus-bouées" = véhicules ronds, silencieux, qui avancent en file comme des bulles
+- Pas de klaxon, pas de bruit de moteur — ambiance "rivière calme"
+
+### Questions en suspens
+- Un nom pour les axes verts ? (Coulées ? Glissières ? Axes vivants ?)
+- Les bus-bouées = véhicules individuels (1-4 personnes) ou bus collectifs ?
+- La technologie a-t-elle un nom dans l'univers (les enfants le savent ?), ou c'est "normal" comme l'électricité pour nous ?
+
+---
+
 ## 2026-04-27 — Stratégie de diffusion réelle (2026) + géographie univers
 
 ### Stratégie de diffusion — monde réel 2026 (pas l'univers fictif)

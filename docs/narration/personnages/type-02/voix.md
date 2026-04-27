@@ -8,31 +8,31 @@
 
 | Couche | Paramètre |
 |--------|-----------|
-| **Articulation** | P/B adoucis · M/N résonnants et chauds · voyelles ouvertes |
+| **Articulation** | P/B adoucis (presque embrassés) · M/N résonants prolongés · S amortis · étirement tendre sur les prénoms |
 | **Prosodie** | Cadences montantes chaleureuses · fin de phrase = invitation, légèrement ouverte |
-| **Rythme** | Avec micro-lingerings sur les voyelles · généreux, pas pressé |
-| **Phonation** | "mm" doux avant de répondre · sourire audible |
+| **Rythme** | Moyen avec micro-lingerings affectueux sur les mots tendres |
+| **Phonation** | "mm" doux entre les phrases · sourire audible · veloutée avec souffle intermittent |
+
+---
 
 ## Paramètres ElevenLabs
 
 ```
 Stability: 0.60
-Similarity Boost: 0.75
+Similarity Boost: 0.80
 Style: 0.30
-Speaker Boost: true
+Speaker Boost: false
 ```
 
-## Prompt voix (F)
+---
 
-Voix de petite fille très douce et chaleureuse. Sons M et N résonnants, enveloppants.
-Phrases qui se terminent légèrement vers le haut, comme une question bienveillante.
-Petits "mm" doux avant de répondre. Sourire perceptible dans la voix, naturel.
+## Prompt ElevenLabs — Femme (F)
 
-## Prompt voix (M)
+> Female narrator voice, early thirties, warm velvety mezzo timbre with soft chest resonance and a hint of head warmth. Tender embracing delivery filled with affection. Distinctive shared articulation: softened "p" and "b" (gentle, almost lip-kiss release), warmly sustained "m" and "n" sounds, soft non-sharp "s", every consonant treated with care. Lingering tenderly on names and address terms. Prosody: rising warm cadences, lifted endings on emotionally important phrases, gentle waves of melodic warmth. Rhythm: medium pace with affectionate micro-lingerings on tender words. Texture: velvety with intermittent soft breathiness, distinct smile in the voice. Signature tic: warm closed-mouth "mm" between phrases, occasional soft chuckle reflex on tender moments. Conveys profound benevolence and embracing care. Think: a tender aunt reading you a love letter.
 
-Voix de petit garçon doux et attentionné. Sons M et N résonnants, enveloppants.
-Phrases ouvertes, accueillantes. Petits "mm" doux avant de répondre.
-Chaleur naturelle, sans mièvrerie.
+## Prompt ElevenLabs — Homme (M)
+
+> Male narrator voice, late thirties, warm velvety baritone timbre with soft chest resonance and gentle upper warmth. Tender embracing delivery filled with affection. Distinctive shared articulation: softened "p" and "b" (gentle, almost lip-kiss release), warmly sustained "m" and "n" sounds, soft non-sharp "s", every consonant treated with care. Lingering tenderly on names and address terms. Prosody: rising warm cadences, lifted endings on emotionally important phrases, gentle waves of melodic warmth. Rhythm: medium pace with affectionate micro-lingerings on tender words. Texture: velvety with intermittent soft breathiness, distinct smile in the voice. Signature tic: warm closed-mouth "mm" between phrases, occasional soft chuckle reflex on tender moments. Conveys profound benevolence and embracing care. Think: a tender uncle reading you a love letter.
 
 ---
 

@@ -8,31 +8,31 @@
 
 | Couche | Paramètre |
 |--------|-----------|
-| **Articulation** | Consonnes nettes et claires · sibilantes précises · diction impeccable |
-| **Prosodie** | Statements descendants confiants · fin de phrase = fait accompli |
-| **Rythme** | Brisk · attaque énergique sur la première syllabe des mots importants |
-| **Phonation** | Légère pointe d'énergie en début de souffle · voix portée |
+| **Articulation** | Consonnes nettes et claires · sibilantes brillantes propres · plosives punchy en début de phrase |
+| **Prosodie** | Statements descendants confiants · sourire de présentation · légère montée sur les mots motivants |
+| **Rythme** | Brisk et contrôlé · attaque énergique sur la première syllabe de chaque idée nouvelle |
+| **Phonation** | Placement avant (masque) · brillant · propre · charisme audible dans les verbes d'action |
+
+---
 
 ## Paramètres ElevenLabs
 
 ```
 Stability: 0.70
-Similarity Boost: 0.65
+Similarity Boost: 0.80
 Style: 0.40
-Speaker Boost: true
+Speaker Boost: false
 ```
 
-## Prompt voix (F)
+---
 
-Voix de petite fille assurée et dynamique. Diction très nette, chaque mot bien posé.
-Phrases qui se terminent vers le bas avec confiance. Attaque légèrement énergique
-sur les premiers mots. Ton naturellement compétent, sans arrogance.
+## Prompt ElevenLabs — Femme (F)
 
-## Prompt voix (M)
+> Female narrator voice, early thirties, bright clear mezzo timbre with forward placement and a polished radiant quality. Confident warmly engaging delivery. Distinctive shared articulation: crisp confident release on every consonant, bright forward sibilants (clean and energizing), punchy plosives at phrase starts giving energizing entry, every word fully present. Bright open peak vowels. Prosody: confident downward statements (resolved, never tentative), distinct smile-in-voice, slight bright rise on key motivating words. Rhythm: brisk and energizing but never rushed, controlled and presentational. Texture: bright forward (mask placement), clean and polished. Signature tic: peppy energetic attack on first syllable of each new idea, charisma audible in the lift on action verbs. Conveys polished confident charm. Think: a charismatic TED speaker who genuinely believes her message.
 
-Voix de petit garçon assuré et dynamique. Diction nette, consonnes propres.
-Phrases descendantes, conclusives. Attaque légèrement vive sur les premiers mots.
-Énergie naturelle, pas bruyant — juste présent.
+## Prompt ElevenLabs — Homme (M)
+
+> Male narrator voice, mid-thirties, bright clear baritone timbre with forward placement and a polished radiant quality. Confident warmly engaging delivery. Distinctive shared articulation: crisp confident release on every consonant, bright forward sibilants (clean and energizing), punchy plosives at phrase starts giving energizing entry, every word fully present. Bright open peak vowels. Prosody: confident downward statements (resolved, never tentative), distinct smile-in-voice, slight bright rise on key motivating words. Rhythm: brisk and energizing but never rushed, controlled and presentational. Texture: bright forward (mask placement), clean and polished. Signature tic: peppy energetic attack on first syllable of each new idea, charisma audible in the lift on action verbs. Conveys polished confident charm. Think: a charismatic TED speaker who genuinely believes his message.
 
 ---
 

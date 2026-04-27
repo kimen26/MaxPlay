@@ -8,31 +8,31 @@
 
 | Couche | Paramètre |
 |--------|-----------|
-| **Articulation** | Plosives lourdes et ancrées · voyelles ouvertes et profondes · aucune hésitation |
-| **Prosodie** | Statements descendants autoritaires · fin de phrase = fait, pas suggestion |
-| **Rythme** | Pas précipité · lourd · chaque mot posé avec intention |
-| **Phonation** | "Plant moments" — silences courts, ancrés, qui pèsent · pas de filler |
+| **Articulation** | Plosives lourdes et pleinement relâchées (P, B, D ancrés) · voyelles profondes au soutien thoracique |
+| **Prosodie** | Statements descendants déclaratifs autoritaires · registre étroit mais puissant · jamais de montée tentative |
+| **Rythme** | Moyen-lent et délibéré · jamais précipité · poids sur chaque syllabe |
+| **Phonation** | Résonance thoracique pleine · légère rauque sur les mots forts · "plant moments" avant les déclarations clés |
+
+---
 
 ## Paramètres ElevenLabs
 
 ```
 Stability: 0.75
-Similarity Boost: 0.65
+Similarity Boost: 0.80
 Style: 0.50
-Speaker Boost: true
+Speaker Boost: false
 ```
 
-## Prompt voix (F)
+---
 
-Voix de petite fille directe et assurée. Plosives lourdes, ancrées. Voyelles ouvertes.
-Phrases qui se terminent vers le bas, résolues. Rythme délibéré, pas pressé.
-Silences courts qui pèsent. Forte mais pas agressive — juste vraie.
+## Prompt ElevenLabs — Femme (F)
 
-## Prompt voix (M)
+> Female narrator voice, late thirties, full grounded mezzo-alto timbre with rich chest resonance and a touch of warm rasp. Powerful, present, fiercely caring delivery. Distinctive shared articulation: weighted plosives ("p", "b", "d" given full grounded release, never light), rooted strong vowels with full chest support, every consonant carrying weight and conviction. Prosody: strong downward declarative statements (resolved with authority), narrow but powerful pitch range, no tentative lifts. Rhythm: medium-slow and deliberate, never rushed, weight on every syllable, plant-and-deliver pacing. Texture: chesty and full, slight warm rasp on emphasized words and sustained vowels, presence you can feel. Signature tic: weighted single-word emphasis on truth-words, vocal "plant" moments where she stops and grounds before key declarations. Conveys protective rooted authority and unflinching warmth. Think: a fierce mother bear who chooses every word like she's making a vow.
 
-Voix de petit garçon direct et ancré. Plosives lourdes, intentionnelles.
-Déclarations descendantes, comme des vérités établies. Rythme lourd et délibéré.
-Silences qui pèsent. Pas colérique — juste sans ambiguïté.
+## Prompt ElevenLabs — Homme (M)
+
+> Male narrator voice, early forties, full grounded bass-baritone timbre with rich chest resonance and a touch of warm rasp. Powerful, present, fiercely caring delivery. Distinctive shared articulation: weighted plosives ("p", "b", "d" given full grounded release, never light), rooted strong vowels with full chest support, every consonant carrying weight and conviction. Prosody: strong downward declarative statements (resolved with authority), narrow but powerful pitch range, no tentative lifts. Rhythm: medium-slow and deliberate, never rushed, weight on every syllable, plant-and-deliver pacing. Texture: chesty and full, slight warm rasp on emphasized words and sustained vowels, presence you can feel. Signature tic: weighted single-word emphasis on truth-words, vocal "plant" moments where he stops and grounds before key declarations. Conveys protective rooted authority and unflinching warmth. Think: a fierce protector who chooses every word like he's making a vow.
 
 ---
 

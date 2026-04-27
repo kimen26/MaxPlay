@@ -8,31 +8,31 @@
 
 | Couche | Paramètre |
 |--------|-----------|
-| **Articulation** | T/K crisp aspirés · S sibilants nets · voyelles bien tenues |
-| **Prosodie** | Cadences descendantes résolues · fin de phrase = conclusion, jamais suspendue |
+| **Articulation** | T/K crisp aspirés · S sibilants nets · voyelles bien tenues · aucune élision |
+| **Prosodie** | Cadences descendantes résolues · fin de phrase = conclusion, jamais suspendue · insistance sur mots de conviction |
 | **Rythme** | Métronomique · pauses précises avant les mots importants |
-| **Phonation** | Micro-inspiration audible avant les mots-clés · légère tension dans la gorge |
+| **Phonation** | Micro-inspiration audible avant les mots-clés · texture sèche et propre · aucun fry |
+
+---
 
 ## Paramètres ElevenLabs
 
 ```
 Stability: 0.75
-Similarity Boost: 0.70
+Similarity Boost: 0.80
 Style: 0.15
-Speaker Boost: true
+Speaker Boost: false
 ```
 
-## Prompt voix (F)
+---
 
-Voix de petite fille soigneuse et précise. Consonnes T et K très claires, presque croquantes. 
-Phrases qui se terminent vers le bas, résolues, comme une décision prise. 
-Légère pause avant les mots importants. Ton studieux, jamais crispé — juste appliqué.
+## Prompt ElevenLabs — Femme (F)
 
-## Prompt voix (M)
+> Female narrator voice, mid-thirties, clear and bright mezzo timbre with controlled focused resonance. Calm composed delivery with quiet conviction. Distinctive shared articulation: extra-crisp release on "t" and "k" (precisely aspirated, never sloppy), perfectly enunciated "s" with no sibilant excess, no consonant elision or slurring, every syllable fully articulated. Subtle weight on words of moral conviction. Prosody: narrow controlled range, slight downward terminal resolution on every statement (resolved, never floating). Rhythm: regular almost metronomic, with measured micro-pauses for emphasis. Texture: clean and dry, no vocal fry, minimal breathiness. Signature tic: a tiny precise in-breath right before key words. No warmth excess, no dramatic flourish. Conveys principled clarity and quiet rigor. Think: a thoughtful editor reading a text she believes in deeply.
 
-Voix de petit garçon soigneux et précis. Consonnes T et K très claires, presque croquantes.
-Phrases qui se terminent vers le bas, résolues, comme une règle établie.
-Légère pause avant les mots importants. Ton appliqué, jamais anxieux — juste attentif.
+## Prompt ElevenLabs — Homme (M)
+
+> Male narrator voice, late thirties, clear baritone timbre with controlled focused resonance and a clean upper register. Calm composed delivery with quiet conviction. Distinctive shared articulation: extra-crisp release on "t" and "k" (precisely aspirated, never sloppy), perfectly enunciated "s" with no sibilant excess, no consonant elision or slurring, every syllable fully articulated. Subtle weight on words of moral conviction. Prosody: narrow controlled range, slight downward terminal resolution on every statement (resolved, never floating). Rhythm: regular almost metronomic, with measured micro-pauses for emphasis. Texture: clean and dry, no vocal fry, minimal breathiness. Signature tic: a tiny precise in-breath right before key words. No warmth excess, no dramatic flourish. Conveys principled clarity and quiet rigor. Think: a thoughtful editor reading a text he believes in deeply.
 
 ---
 

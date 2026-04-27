@@ -10,6 +10,66 @@
 [contenu brut]
 -->
 
+## 2026-04-27 — Réseaux sociaux de l'univers + géographie + échanges culturels
+
+### Géographie : cadre du monde post-Éveil
+
+**Maille de référence :** Continents → Pays → Villes principales (min 1, max 5 par pays, ou régions — à trancher)
+- Les frontières **existent encore** mais uniquement pour se repérer, pas pour diviser
+- Population mieux répartie (moins concentrée), probablement globalement moins nombreuse
+- Vie **locale** : on produit et consomme près de chez soi
+- Partage de biens et denrées avec les régions voisines (pas de commerce mondial de masse)
+- Changement de région possible librement si on le souhaite
+
+**Voyages :**
+- On part souvent en vacances dans l'année (fréquence : à préciser)
+- 2 fois à l'étranger par an (format échange culturel, voir ci-dessous)
+
+**Échange culturel (format validé) :**
+- Exemple France ↔ Japon
+- Semaine 1 : les Japonais viennent en France (les Français sont "hôtes")
+- Semaine 2 : les Français vont au Japon (les Japonais sont "hôtes")
+- En fin de semaine 1 : teaser en japonais de la semaine suivante (et inversement)
+- Chaque enfant accueille un autre enfant étranger chez lui en alternance
+
+### Réseaux sociaux dans l'univers
+
+Pas de YouTube ni WhatsApp — mais des **équivalents à définir.**
+
+**Structure pressentie :**
+- Chaque enfant a **une chaîne** (profil) propre — comme une page YouTube, privée ou semi-publique
+- Wex a **une chaîne par culture** visitée (lien avec la Saison 2)
+- Les interactions : commentaires entre comptes, privatisation possible, regroupement des histoires d'un même perso
+- Des stats lisibles par les enfants (claires, sans gamification toxique)
+- Émulsion entre cultures : comptes d'une même région, d'une même culture, se retrouvent et échangent
+
+**Modèle économique :** à définir — qu'est-ce qui est gratuit, qu'est-ce qui est payant, et pourquoi.
+
+### Notes en suspens
+- Nombre de villes max par pays (5 ou par région ?)
+- Fréquence des voyages domestiques vs. voyages internationaux
+- Nom du réseau social dans l'univers (pas YouTube, pas WhatsApp)
+- Stats enfants : quelles données montrer, comment les rendre lisibles à 4-6 ans ?
+
+---
+
+## 2026-04-27 — Cours d'histoire (suite) : l'argent, tout était payant
+
+**Nouvelle anecdote historique pour le prof complotiste :**
+
+Dans l'ancien monde, **tout coûtait de l'argent** :
+- L'eau (robinet payant, bouteille payante)
+- L'habitat (loyer ou achat)
+- La nourriture
+- Le transport
+- L'énergie
+
+**Et pire :** on pouvait **emprunter de l'argent à une institution**, et payer encore de l'argent pour le droit d'avoir emprunté (intérêts). Les enfants trouvent ça hallucinant.
+
+**Usage narratif :** excellente scène de cours d'histoire — le prof mime la queue à la caisse, les enfants essaient de comprendre pourquoi l'eau n'était pas libre, comparaison avec aujourd'hui (l'eau est partagée, gérée localement, pas vendue).
+
+---
+
 ## 2026-04-27 — L'École : programme + cours d'histoire comique
 
 ### Programme scolaire dans l'univers post-Éveil

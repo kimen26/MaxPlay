@@ -46,24 +46,9 @@ Ce bloc concerne le **projet MaxPlay en tant que produit éditorial** à diffuse
 - En fin de semaine 1 : teaser en japonais de la semaine suivante (et inversement)
 - Chaque enfant accueille un autre enfant étranger chez lui en alternance
 
-### Réseaux sociaux dans l'univers
-
-Pas de YouTube ni WhatsApp — mais des **équivalents à définir.**
-
-**Structure pressentie :**
-- Chaque enfant a **une chaîne** (profil) propre — comme une page YouTube, privée ou semi-publique
-- Wex a **une chaîne par culture** visitée (lien avec la Saison 2)
-- Les interactions : commentaires entre comptes, privatisation possible, regroupement des histoires d'un même perso
-- Des stats lisibles par les enfants (claires, sans gamification toxique)
-- Émulsion entre cultures : comptes d'une même région, d'une même culture, se retrouvent et échangent
-
-**Modèle économique :** à définir — qu'est-ce qui est gratuit, qu'est-ce qui est payant, et pourquoi.
-
 ### Notes en suspens
 - Nombre de villes max par pays (5 ou par région ?)
 - Fréquence des voyages domestiques vs. voyages internationaux
-- Nom du réseau social dans l'univers (pas YouTube, pas WhatsApp)
-- Stats enfants : quelles données montrer, comment les rendre lisibles à 4-6 ans ?
 
 ---
 

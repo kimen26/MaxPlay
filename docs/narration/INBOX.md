@@ -10,7 +10,21 @@
 [contenu brut]
 -->
 
-## 2026-04-27 — Réseaux sociaux de l'univers + géographie + échanges culturels
+## 2026-04-27 — Stratégie de diffusion réelle (2026) + géographie univers
+
+### Stratégie de diffusion — monde réel 2026 (pas l'univers fictif)
+
+Ce bloc concerne le **projet MaxPlay en tant que produit éditorial** à diffuser, pas le monde de Wex.
+
+**Canaux pressentis :** YouTube + WhatsApp (les plus penetrés pour ce type de contenu)
+
+**Structure :**
+- Une chaîne par personnage/culture (ex : chaîne "Wex", chaîne "Japon")
+- Commentaires entre comptes, privatisation possible, regroupement des histoires d'un même perso
+- Stats lisibles (claires, sans gamification toxique)
+- Émulsion entre cultures : les abonnés d'une même région se retrouvent et échangent
+
+**Modèle économique :** à définir — qu'est-ce qui est gratuit, qu'est-ce qui est payant (et pourquoi / à quel stade du projet).
 
 ### Géographie : cadre du monde post-Éveil
 

@@ -1,0 +1,54 @@
+# Résolveur de tokens personnages — MaxPlay
+# Source de vérité : personnages/type-NN/pays/XX/identite.md
+# Ne pas éditer à la main si possible — éditer les identite.md puis mettre à jour ici
+
+version: 1
+generated_at: 2026-04-28
+casting_default: fr
+
+tokens:
+  titi_1_fr: { prenom: Melchisédech, diminutif: Melki,    genre: M, type: 1, token: titi_1_fr }
+  titi_2_fr: { prenom: Marie,        diminutif: Mimi,     genre: F, type: 2, token: titi_2_fr }
+  titi_3_fr: { prenom: Paul,         diminutif: Polo,     genre: M, type: 3, token: titi_3_fr }
+  titi_4_fr: { prenom: Jérémie,      diminutif: Jérem,    genre: M, type: 4, token: titi_4_fr }
+  titi_5_fr: { prenom: Luc,          diminutif: Lulu,     genre: M, type: 5, token: titi_5_fr }
+  titi_6_fr: { prenom: Pierre,       diminutif: Pierrot,  genre: M, type: 6, token: titi_6_fr }
+  titi_7_fr: { prenom: Raphaëlle,    diminutif: Raph,     genre: F, type: 7, token: titi_7_fr }
+  titi_8_fr: { prenom: Judith,       diminutif: Juju,     genre: F, type: 8, token: titi_8_fr }
+  titi_9_fr: { prenom: Noé,          diminutif: Nono,     genre: M, type: 9, token: titi_9_fr }
+  wex:       { prenom: Wex,          diminutif: Wex,      genre: M, type: null, token: wex, jamais_traduit: true }
+
+# Index inverse (prénom → token)
+prenoms_to_token:
+  Melchisédech: titi_1_fr
+  Melki: titi_1_fr
+  Marie: titi_2_fr
+  Mimi: titi_2_fr
+  Paul: titi_3_fr
+  Polo: titi_3_fr
+  Jérémie: titi_4_fr
+  Jérem: titi_4_fr
+  Luc: titi_5_fr
+  Lulu: titi_5_fr
+  Pierre: titi_6_fr
+  Pierrot: titi_6_fr
+  Raphaëlle: titi_7_fr
+  Raph: titi_7_fr
+  Judith: titi_8_fr
+  Juju: titi_8_fr
+  Noé: titi_9_fr
+  Nono: titi_9_fr
+  Wex: wex
+
+# Codes pays disponibles
+pays:
+  fr: { nom: France, casting_v1: true, famille: christ }
+  # jp: { nom: Japon, famille: ghibli }       ← à créer (cross-country S2)
+  # he: { nom: Hébreu, famille: ancien_testament }
+  # sw: { nom: Swahili, famille: afrique_est }
+
+# Usage dans les textes
+# Mode prénom dur (actuel, casting fr par défaut) : "Jérem regardait le pont."
+# Mode token (pour cross-country) : "{{ titi_4 }} regardait le pont."
+# {{ titi_4 }} sans suffixe = résolu via casting_default (fr)
+# {{ titi_4_jp }} = forcé vers le casting japonais

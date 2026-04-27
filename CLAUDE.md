@@ -64,7 +64,7 @@ MJ-01 à MJ-20 déployés (mj-02, mj-03, mj-07, mj-10 retirés du menu). Voir [t
 | [docs/narration/INBOX.md](docs/narration/INBOX.md) | Dump brut sessions (hook commit auto) |
 | [docs/narration/personnages/INDEX.md](docs/narration/personnages/INDEX.md) | Tableau des 9 + ⚠ prénoms |
 | [docs/narration/univers/INDEX.md](docs/narration/univers/INDEX.md) | Carte du monde (monde, systèmes, cycle, vibration, compagnons) |
-| [docs/narration/histoires/INDEX.md](docs/narration/histoires/INDEX.md) | Catalogue récits + gabarit |
+| [docs/narration/stories/INDEX.md](docs/narration/stories/INDEX.md) | Catalogue récits + gabarit |
 | [docs/narration/Eneagramme/](docs/narration/Eneagramme/) | Fiches détaillées personnages + situations |
 | [docs/narration/reference/INDEX.md](docs/narration/reference/INDEX.md) | Matière de fond (analyses manga/Pokémon, Riso-Hudson) |
 
@@ -103,10 +103,10 @@ Origines brésiliennes. Voir [docs/MAX_PROFILE.md](docs/MAX_PROFILE.md).
 | [docs/README.md](docs/README.md) | Carte documentation |
 | [docs/MAX_PROFILE.md](docs/MAX_PROFILE.md) | Profil complet Max |
 | [bot/index.ts](bot/index.ts) | Bot Telegram — routing agents, permissions Telegram |
-| [.claude/agents/](.claude/agents/) | **Équipe narration** : narration/dir (Opus) · writer-a/b/c (Sonnet) · science/keeper (Haiku) · sensibilite (Sonnet) · game-dev (Sonnet) · quick (Haiku) |
+| [.claude/agents/](.claude/agents/) | **Équipe narration** : narration-pmo (Haiku) · narration/dir (Opus) · writer-a/b/c (Sonnet) · science/keeper/archiviste (Haiku) · sensibilite (Sonnet) · game-dev (Sonnet) · quick (Haiku) |
 | [docs/narration/equipe/ORGANIGRAMME.md](docs/narration/equipe/ORGANIGRAMME.md) | Organigramme équipe éditoriale — qui fait quoi |
 | [docs/narration/input-idees/](docs/narration/input-idees/) | Zone de dump brut idées narration |
-| [docs/narration/TODO-EDITORIAL.md](docs/narration/TODO-EDITORIAL.md) | Tickets éditoriaux en cours |
+| [docs/narration/pmo/INDEX.md](docs/narration/pmo/INDEX.md) | PMO — tickets, décisions, sprint-log (reprise après reboot) |
 
 ## Workflow
 ```

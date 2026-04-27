@@ -44,16 +44,20 @@
 
 ## Fichiers
 
-| Fichier | Rôle | Lignes |
-|---------|------|--------|
-| [monde.md](monde.md) | Événement fondateur, nature, société, rituels, spiritualité, quotidien ancré | ~200 |
-| [systemes.md](systemes.md) | Conscience Créative, Totems Janus, Égregores, Gardiens, "s'unir pour pas contre" | 97 |
-| [grand-cycle.md](grand-cycle.md) | Cycle 22k ans, Yugas adaptés, métaphore du sommeil, Ombre Éternelle | 88 |
-| [vibration.md](vibration.md) | Fréquence/amplitude, égrégores, modèle Janus, tension espace de vie | ~100 |
-| [compagnons.md](compagnons.md) | Animaux hybrides liés aux enfants | 47 |
-| [nom-candidats.md](nom-candidats.md) | 5 finalistes pour nommer le monde (non tranché) | 26 |
-| [directions-brainstorm.md](directions-brainstorm.md) | 6 directions non retenues | 28 |
-| [baron.md](baron.md) | ⚠ mis de côté — inspiration écartée (17/04) | 35 |
+| Fichier | Rôle |
+|---------|------|
+| [monde.md](monde.md) | Événement fondateur, nature, société, rituels, spiritualité |
+| [systemes.md](systemes.md) | Conscience Créative, Totems Janus, Égregores, Gardiens |
+| [grand-cycle.md](grand-cycle.md) | Cycle 22k ans, Yugas adaptés, Ombre Éternelle |
+| [vibration.md](vibration.md) | Fréquence/amplitude, égrégores, modèle Janus |
+| [sensibilites.md](sensibilites.md) | **9 Sensibilités** — liste, attribution persos, Wex hors-système, Cercle d'Harmonie |
+| [transport.md](transport.md) | **Jabus**, axes verts, technologie non nommée, Ponaire |
+| [ecole.md](ecole.md) | Programme scolaire, cours d'Histoire comique, prof Type 7 |
+| [geographie.md](geographie.md) | Maille monde, habitat, voyages, échanges culturels |
+| [compagnons.md](compagnons.md) | Animaux hybrides liés aux enfants (non définitif) |
+| [nom-candidats.md](nom-candidats.md) | 5 finalistes pour nommer le monde (non tranché) |
+| [directions-brainstorm.md](directions-brainstorm.md) | 6 directions non retenues |
+| [baron.md](baron.md) | ⚠ mis de côté — inspiration écartée (17/04) |
 
 ---
 

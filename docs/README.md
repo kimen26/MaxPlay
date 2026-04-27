@@ -21,18 +21,16 @@ docs/
 ├── ratp-colors.json           ← Source de vérité couleurs IDFM (26 actives + 362 référentiel)
 │
 ├── jeux/                      ← Documentation technique des mini-jeux
-│   ├── GAMES_SPECS.md         ← Specs par jeu
-│   ├── IMPROVEMENTS.md        ← Idées d'amélioration
-│   ├── ITERATION_NOTES.md     ← Notes de sessions de dev
+│   ├── INDEX.md               ← Point d'entrée agent jeux (charger en premier)
+│   ├── GAMES_SPECS.md         ← Specs par jeu (source de vérité)
+│   ├── ASSETS.md · AUDIO_ASSETS.md ← Assets visuels et sons
 │   ├── game-ideas.md          ← Idées brutes de nouveaux jeux
-│   ├── ASSETS.md              ← Inventaire assets visuels
-│   ├── ASSETS_INVENTORY.md    ← Inventaire détaillé
-│   └── AUDIO_ASSETS.md        ← Sons disponibles
+│   └── IMPROVEMENTS.md · ITERATION_NOTES.md ← Historique
 │
 └── narration/                 ← Projet narratif — histoires pour Max
     ├── INDEX.md               ← Point d'entrée agent narration (charger en premier)
     ├── INBOX.md               ← Dump brut sessions (hook commit auto)
-    ├── TODO-EDITORIAL.md      ← Tickets éditoriaux en cours
+    ├── pmo/                   ← Gestion de projet (backlog, decisions, sprint-log)
     ├── personnages/           ← Tableau des 9 + prénoms
     │   ├── INDEX.md           ← Casting + état de validation prénoms
     │   ├── notation-types.md
@@ -45,11 +43,10 @@ docs/
     │   ├── vibration.md · compagnons.md · baron.md
     │   ├── nom-candidats.md   ← 5 finalistes nom de l'univers
     │   └── directions-brainstorm.md
-    ├── histoires/             ← Catalogue des récits (1 dossier par histoire)
-    │   ├── INDEX.md           ← Catalogue
-    │   ├── README.md          ← Convention (ID NNN, meta.yaml, archives, variantes)
+    ├── stories/               ← Catalogue des récits (1 dossier par histoire)
+    │   ├── INDEX.md           ← Catalogue (auto-généré)
     │   ├── _gabarit/          ← Dossier-modèle à copier
-    │   ├── 001-pont-casse/    ← V1 complète + comité lu + archives
+    │   ├── 001-le-pont-casse/ ← V1 complète + comité lu + archives
     │   └── axes-histoires-en-stock.md
     ├── Eneagramme/            ← Système ennéagramme complet
     │   ├── README.md

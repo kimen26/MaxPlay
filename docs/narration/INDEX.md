@@ -52,10 +52,10 @@
 ### Histoires
 | Fichier | Contenu |
 |---------|---------|
-| [histoires/INDEX.md](histoires/INDEX.md) | **Catalogue** |
-| [histoires/README.md](histoires/README.md) | Convention : 1 dossier par histoire, ID NNN, métadonnées YAML |
-| [histoires/_gabarit/](histoires/_gabarit/) | Dossier gabarit à copier pour une nouvelle histoire |
-| [histoires/001-pont-casse/](histoires/001-pont-casse/) | V1 complète + comité de lecture + archives + variantes |
+| [stories/INDEX.md](stories/INDEX.md) | **Catalogue** (auto-généré) |
+| [stories/_gabarit/](stories/_gabarit/) | Dossier gabarit à copier pour une nouvelle histoire |
+| [stories/001-le-pont-casse/](stories/001-le-pont-casse/) | V1 complète + comité de lecture + archives + variantes |
+| [stories/axes-histoires-en-stock.md](stories/axes-histoires-en-stock.md) | **Stock d'axes** — 10 unitaires + 5 transversaux |
 
 ### Équipe éditoriale
 | Fichier | Rôle |
@@ -70,13 +70,21 @@
 | [equipe/memoire-sensibilite.md](equipe/memoire-sensibilite.md) | Mémoire Expert Sensibilité (décisions OUI/NON) |
 | [equipe/memoire-keeper.md](equipe/memoire-keeper.md) | Mémoire Keeper |
 
-### Workflow
+### PMO (gestion de projet)
 | Fichier | Rôle |
 |---------|------|
-| [input-idees/](input-idees/) | **Zone de dump brut** — un fichier par session/sujet |
-| [TODO-EDITORIAL.md](TODO-EDITORIAL.md) | Tickets éditoriaux (créés par le Directeur) |
+| [pmo/INDEX.md](pmo/INDEX.md) | **État instantané + règles de reprise après reboot** |
+| [pmo/backlog.md](pmo/backlog.md) | Tickets actifs (max 3 en cours) |
+| [pmo/decisions.md](pmo/decisions.md) | Décisions définitives + questions ouvertes |
+| [pmo/sprint-log.md](pmo/sprint-log.md) | Journal de sessions |
+| [pmo/roadmap.md](pmo/roadmap.md) | Vision moyen terme |
+
+### Inputs & archive
+| Fichier | Rôle |
+|---------|------|
+| [input-idees/](input-idees/) | **Zone de dump brut** — un fichier par session/sujet (format `YYYY-MM-DD-sujet.md`) |
 | [archive/](archive/) | Sessions archivées (rien n'est effacé) |
-| [atelier/](atelier/) | Brouillons en cours (brief · versions A/B/C · final) |
+| [workshop/](workshop/) | Brouillons en cours (brief · versions A/B/C · final) |
 
 ### Reference (matière de fond, pas quotidien)
 | Fichier | Quand le lire |
@@ -94,7 +102,7 @@
 4. **Question fractale** (2026-04-16) — les persos savent-ils qu'ils sont dans le rêve de... ? *(standby)*
 5. **Compagnons** — forme (onde/cristal/couleur/fluide/animal) non tranchée + apparition progressive ou systématique ?
 6. **Wex absent d'une histoire** — un des 9 reprend-il le rôle d'observateur ? → à trancher à l'écriture.
-6. ~~Univers explicite ou en fond ?~~ ✅ **tranché (2026-04-24)** : univers IMPLICITE dans les histoires enfantines (pas de noms-concepts nommés), ennéatypes DILUÉS dans actions/interactions (jamais étiquetés). Infusion progressive au fil des récits. Voir `histoires/INDEX.md` § Règles.
+6. ~~Univers explicite ou en fond ?~~ ✅ **tranché (2026-04-24)** : univers IMPLICITE dans les histoires enfantines (pas de noms-concepts nommés), ennéatypes DILUÉS dans actions/interactions (jamais étiquetés). Infusion progressive au fil des récits. Voir `stories/INDEX.md`.
 
 ---
 
@@ -105,7 +113,7 @@ Chatbot / session
       ↓
   INBOX.md  ←  dump daté (hook commit auto)
       ↓  (quand tranché)
-  univers/ · personnages/ · histoires/  ←  fichiers stables
+  univers/ · personnages/ · stories/  ←  fichiers stables
       ↓
   INBOX vidé des sections distillées
 ```

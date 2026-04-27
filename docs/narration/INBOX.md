@@ -10,6 +10,52 @@
 [contenu brut]
 -->
 
+## 2026-04-27 — L'École : programme + cours d'histoire comique
+
+### Programme scolaire dans l'univers post-Éveil
+
+**Matières classiques conservées :**
+- Maths, Français, Géographie, Physique, Sport, Histoire
+
+**Matières pratiques ajoutées :**
+- Couture, Cuisine, Bricolage, Jardinage
+
+**Matières propres à l'univers (concept clé) :**
+- Harmonie (rituel collectif)
+- Partage
+- Humain (étude des relations, des émotions)
+- Équipe
+- Amour (à préciser — pas romantique, plus large)
+- ...d'autres à définir
+
+### Les cours d'Histoire = source de comédie et de critique sociale
+
+**Principe :** dans cet univers, l'histoire qu'on enseigne = **l'ère d'avant** (avant la grande transition, avant l'IA, avant ChatGPT). Les enfants trouvent ça hilarant et incompréhensible.
+
+**Le professeur :** ancien **complotiste** de l'époque. Il était dans le vrai, mais personne ne l'écoutait. Maintenant que tout le monde sait, il est enfin entendu — il est heureux, légèrement vanité, avec des centaines d'anecdotes. Personnage récurrent potentiel.
+
+**Ce qui fait rire les enfants (et dénonce l'époque actuelle 2026) :**
+- La **publicité** : capter l'attention pour vendre des choses dont on n'a pas besoin
+- Les **réseaux sociaux** : utiliser un écran pour parler à son voisin
+- Les **fermes d'élevage** : élever des animaux en masse pour manger
+- Les **transports de nourriture** : manger des fruits hors saison venus de l'autre bout du monde
+- **Brûler des choses** pour faire de l'énergie (pétrole, charbon)
+- D'autres exemples à accumuler au fil des histoires
+
+**Usage narratif :**
+- Vecteur de vraies "vérités" ou critiques sociales — glissées dans le rire
+- Les enfants-lecteurs (et leurs parents) peuvent reconnaître leur propre époque dans ces "bizarreries"
+- Ton : pas moralisateur, juste le regard innocent d'enfants qui trouvent ça absurde
+
+**À construire :** un pool d'anecdotes historiques à recenser (1 par histoire ? récurrentes ?)
+
+### Notes en suspens
+- Nom du prof d'histoire (complotiste bienveillant) — type ennéagramme ?
+- La "grande transition" a-t-elle un nom ? (utilisateur préfère pas encore)
+- Longueur d'un épisode de cours d'histoire dans une histoire (insert vs. histoire dédiée ?)
+
+---
+
 ## 2026-04-27 — Idées narration : saisons, sensibilités, Wex arc
 
 ### Structure narrative en saisons

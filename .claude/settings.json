@@ -66,13 +66,29 @@
       "Bash(python3)",
       "Bash(grep -ao \".[^\\\\\\\\\\\\\\\\]{0,50}[Pp]ont [Cc]ass.[^\\\\\\\\\\\\\\\\]{0,300}\" \"1906df1e-c37a-44dc-8b68-f7ba6b71775b.jsonl\")",
       "Bash(grep -ao \"[^\\\\\\\\\\\\\\\\n]{0,100}pont cass[^\\\\\\\\\\\\\\\\n]{0,300}\" \"1906df1e-c37a-44dc-8b68-f7ba6b71775b.jsonl\")",
-      "Bash(awk 'NR>200 && NR<=260')"
+      "Bash(awk 'NR>200 && NR<=260')",
+      "Bash(find \"c:/ProjetsPerso/Claude_Projects/MaxPlay/docs/narration\" -name \"*.md\" -exec grep -l \"Élia\" {} \\\\;)",
+      "Skill(claude-api)",
+      "Skill(claude-api:*)",
+      "Bash(bun install *)",
+      "Bash(gh search *)",
+      "WebFetch(domain:platform.kimi.ai)",
+      "WebFetch(domain:moonshotai.github.io)",
+      "WebFetch(domain:platform.moonshot.ai)",
+      "WebFetch(domain:kimik2ai.com)",
+      "WebFetch(domain:www.kimi.com)",
+      "WebFetch(domain:aicybr.com)",
+      "WebFetch(domain:www.nxcode.io)",
+      "Bash(bun --eval ' *)"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\temp",
       "C:\\Users\\kimen\\.claude\\skills"
     ]
   },
+  "enabledMcpjsonServers": [
+    "llm-copains"
+  ],
   "hooks": {
     "PermissionRequest": [
       {

@@ -34,7 +34,26 @@
       "Bash(git commit -m 'feat: validation Telegram avant exécution Claude *)",
       "Bash(git commit *)",
       "Bash(pkill -f \"bot/index.ts\")",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(bun check *)",
+      "Bash(bunx tsc *)",
+      "Bash(claude *)",
+      "Bash(npm update *)",
+      "Bash(npm ls *)",
+      "Read(//tmp/**)",
+      "Bash(npx playwright *)",
+      "Bash(python -m http.server 8765 --directory dist)",
+      "Bash(python *)",
+      "Bash(node test.js)",
+      "Bash(kill %1)",
+      "Bash(pkill -f \"http.server 8765\")",
+      "Bash(node test-prod.js)",
+      "Bash(pkill -f \"python -m http.server\")",
+      "Bash(git *)",
+      "Bash(gh -R kimen26/MaxPlay run list --limit 1)",
+      "Bash(node test-mobile.js)",
+      "Bash(node test-menu.js)",
+      "Bash(node test-header.js)"
     ]
   },
   "hooks": {

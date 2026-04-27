@@ -50,9 +50,54 @@ Types pressentis :
 
 ### Notes en suspens
 - Combien de sensibilités exactement ? (liste à fermer)
-- Wex : quelle est SA sensibilité ? Peut-être aucune — ou il les voit toutes = lien avec son rôle d'observateur hors-système
 - Mentor de Max : qui, quel type, quel âge ?
 - Timing précis saison 1 → saison 2 (les noms des copains de Wex = casting Christ confirmé ?)
+
+---
+
+## 2026-04-27 — Wex : sensibilité vibration + Cercle d'Harmonie + vision causale
+
+### Sensibilité de Wex = Vibration / Harmonie (DÉCISION)
+
+Wex n'est pas "sans sensibilité" — il EST la sensibilité vibration/harmonie.
+C'est cohérent avec son rôle hors-système (observateur) : il perçoit l'ensemble des fréquences, pas une seule.
+
+### Rituel : Le Cercle d'Harmonie
+
+Wex peut demander l'attention de ses copains — ils s'exécutent volontiers.
+Protocole :
+- Pieds nus par terre
+- On se tient les mains (avec toutes les personnes présentes, même celles qui n'étaient pas dans le groupe)
+- On synchronise la vibration — comme une "Genki-Dama" (DBZ) collective
+- On comprend le "début de problème" (dissonance), on le met à plat
+- On le règle ou pas (pas d'injustice forcée)
+- Fin : "Merci pour l'harmonie"
+
+**Pas** d'incantation, pas de magie visible, pas de mise en scène spectaculaire. Juste le geste du sol + lien physique + présence.
+
+Usage dans les histoires : en fin de S1, Wex l'utilise quand il sent une dissonance commencer. Ce n'est pas expliqué — juste montré.
+
+### Pouvoir secondaire : Vision causale (à développer)
+
+Wex peut "vivre" un instant en tant qu'observateur pur.
+Capacité :
+- Il voit la **causalité** plus vite que les autres
+- Il peut **projeter** (imaginer très précisément) la suite des événements si rien ne change
+- Ce n'est PAS du voyage dans le temps — il voit les conséquences logiques d'une action
+- C'est **involontaire** au départ (des visions arrivent avant qu'il n'agisse)
+- Progressivement il apprend à le contrôler — "rêveur conscient"
+
+Lien avec le Cercle d'Harmonie :
+- Wex reçoit parfois une vision juste **avant** de lancer le cercle
+- Dans les premières histoires : on ne voit que le résultat (il agit juste au bon moment)
+- Plus tard : on partage la vision avec le groupe pendant le cercle
+
+**Distinction clé :** il ne change pas le passé, il **voit la causalité** et peut choisir d'agir différemment maintenant.
+
+### Notes en suspens (mise à jour)
+- Quand Wex commence à contrôler sa vision causale ? (S1 / S2 / S3)
+- Est-ce que le mentor de Max et le mentor de Wex sont les mêmes ?
+- Est-ce que d'autres enfants ont des doubles-sensibilités comme Wex, ou c'est unique ?
 
 ---
 

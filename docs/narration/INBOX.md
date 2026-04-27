@@ -10,6 +10,12 @@
 [contenu brut]
 -->
 
+## 2026-04-27 — Session nuit (transport, sensibilités, école, géographie, Wex)
+
+> ✅ Distillé 2026-04-28 → `univers/transport.md` · `univers/sensibilites.md` · `univers/ecole.md` · `univers/geographie.md` · `personnages/INDEX.md` · `pmo/decisions.md`
+
+---
+
 ## 2026-04-27 — Urbanisation, transport, mobilité post-Éveil
 
 ### Principe général

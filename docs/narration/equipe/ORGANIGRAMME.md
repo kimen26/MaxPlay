@@ -25,32 +25,34 @@ DIRECTEUR ÉDITORIAL [narration · Opus]
   ├── Simule les lecteurs (profils-lecteurs.md)
   ├── Archive les sessions (archive/)
   │
-  ├── Experts internes (consultés à la demande)
-  │     ├── narration-science  [Haiku]
-  │     └── narration-sensibilite  [Sonnet]
+  ├── Validation légère (consultés si doute — pas à bloc)
+  │     ├── Science     : Grok + Claude + Kimi  (quick pass)
+  │     └── Sensibilité : Grok + Claude + Kimi  (quick pass)
   │
-  ├── Writers internes (en parallèle, indépendants)
-  │     ├── Writer A  [Sonnet]  — sobre · Kishōtenketsu classique
-  │     ├── Writer B  [Sonnet]  — sensoriel · poétique
-  │     └── Writer C  [Sonnet]  — dynamique · dialogue
+  ├── WRITERS (5 parallèles, indépendants)
+  │     ├── Kimi 2.6+        [externe · stateless · no reasoning]  — libre
+  │     ├── DeepSeek latest  [externe · stateless · no reasoning]  — libre
+  │     ├── Grok latest      [externe · stateless · no reasoning]  — libre
+  │     ├── Claude Libre     [Sonnet  · stateless]  — angle libre, suit son instinct
+  │     └── Claude Ancré     [Sonnet  · AVEC MÉMOIRE]  — angle spécifique, variance stable
   │
-  ├── Directeur synthétise → version finale + notes
+  ├── Directeur synthétise → version de travail
   │
-  └── COMITÉ DE RELECTURE EXTERNE (optionnel, sur décision Directeur)
-        ├── Kimi  [externe · stateless]  — Grand Lecteur narratif
-        ├── Grok  [externe · stateless]  — Avocat du diable / critique
-        └── DeepSeek  [externe · stateless]  — Cohérence structurelle
-              ↓  retours loggés dans workshop/<titre>/relecture-externe.md
+  └── RELECTURE (Kimi + Claude, notes / remarques / idées)
+        Kimi    [externe · stateless]
+        Claude  [Sonnet  · avec mémoire]
+              ↓
+        Directeur intègre → choix final + rédaction Claude
   │
   ▼
-KEEPER [narration-keeper · Haiku]  (fin de cycle uniquement)
+KEEPER [narration-keeper · Haiku]  (fin de cycle uniquement · Claude)
   Ennéagramme · Univers · Prénoms · lookup.yml → PASS / FAIL
   │
   ▼
 stories/<NNN-titre>/texte.md  (CANON)
   │
   ▼
-ARCHIVISTE [narration-archiviste · Haiku]  (sur demande)
+ARCHIVISTE [narration-archiviste · Haiku · Claude]  (sur demande)
   Régénère _index/, vérifie structure, reconstitue variantes culturelles
 ```
 
@@ -58,29 +60,27 @@ ARCHIVISTE [narration-archiviste · Haiku]  (sur demande)
 
 ## Agents — responsabilités et mémoire
 
-### Agents Claude (internes)
+### Claude (internes)
 
-| Agent | Modèle | Rôle | Mémoire propre | Mémoire partagée |
-|-------|--------|------|----------------|-----------------|
-| `narration-pmo` | Haiku | PMO autonome — tickets, décisions, reprise | — | `pmo/backlog.md` · `pmo/decisions.md` · `pmo/sprint-log.md` |
-| `narration` | Opus | Directeur Éditorial — challenge, briefs, synthèse | `memoire-dir.md` | INDEX.md · univers/ · personnages/ |
-| `narration-writer-a` | Sonnet | Writer sobre / Kishōtenketsu classique | `memoire-writer-a.md` | INDEX.md · personnages/ |
-| `narration-writer-b` | Sonnet | Writer sensoriel / poétique | `memoire-writer-b.md` | INDEX.md · personnages/ |
-| `narration-writer-c` | Sonnet | Writer dynamique / dialogue | `memoire-writer-c.md` | INDEX.md · personnages/ |
-| `narration-science` | Haiku | Fact-check sciences et biologie | `memoire-science.md` | `sources-sciences.md` |
-| `narration-sensibilite` | Sonnet | Détection topics sensibles / conspirationnistes | `memoire-sensibilite.md` | `sources-sensibilite.md` |
-| `narration-keeper` | Haiku | Gardien univers + ennéagramme (fin de cycle) | `memoire-keeper.md` | `personnages/lookup.yml` · `univers/INDEX.md` |
-| `narration-archiviste` | Haiku | Index, structure dossiers, lookup.yml | — | `_index/` · `lookup.yml` · `stories/INDEX.md` |
+| Agent | Modèle | Rôle | Mémoire propre | Partagée |
+|-------|--------|------|----------------|----------|
+| `narration-pmo` | Haiku | PMO autonome — tickets, décisions, reprise | — | `pmo/` |
+| `narration` | Opus | Directeur — challenge, briefs, synthèse, rédaction finale | `memoire-dir.md` | `INDEX.md` · `univers/` · `personnages/` |
+| `narration-writer-claude-libre` | Sonnet | Writer libre — angle instinctif, stateless | — | `INDEX.md` · `personnages/` |
+| `narration-writer-claude-ancre` | Sonnet | Writer ancré — angle spécifique, **avec mémoire** | `memoire-writer-ancre.md` | `INDEX.md` · `personnages/` |
+| `narration-keeper` | Haiku | Gardien univers (fin de cycle) | `memoire-keeper.md` | `lookup.yml` · `univers/INDEX.md` |
+| `narration-archiviste` | Haiku | Index, structure dossiers | — | `_index/` · `lookup.yml` |
 
-### Relecteurs externes (stateless)
+### Externes stateless
 
-> Ces modèles n'ont **aucune mémoire persistante**. Le Directeur leur injecte le contexte à chaque appel (brief + version finale + règles univers). Leur output est loggé dans `workshop/<titre>/relecture-externe.md`.
+> Aucune mémoire persistante. Contexte injecté à chaque appel par le Directeur.
+> Output loggé dans `workshop/<titre>/`.
 
-| Modèle | Force | Rôle dans l'équipe | Commandé par | Quand |
-|--------|-------|-------------------|--------------|-------|
-| **Kimi** | Grande capacité contexte · narration | Grand Lecteur — challenge qualité littéraire, lit tout le corpus si besoin | Directeur Éditorial | Après synthèse, avant Keeper (optionnel) |
-| **Grok** | Critique acerbe · regard extérieur | Avocat du diable — angles faibles, incohérences émotionnelles, ce qui "ne passe pas" | Directeur Éditorial | Après synthèse, avant Keeper (optionnel) |
-| **DeepSeek** | Analyse structurelle | Relecteur cohérence — structure Kishōtenketsu, transitions, arcs logiques | Directeur Éditorial | Après synthèse, avant Keeper (optionnel) |
+| Modèle | Version cible | Rôle principal | Rôle secondaire |
+|--------|--------------|----------------|-----------------|
+| **Kimi** | 2.6+ (no reasoning) | Writer · Relecteur | Science/Sensibilité légère |
+| **DeepSeek** | latest (no reasoning) | Writer | — |
+| **Grok** | latest (no reasoning) | Writer | Science/Sensibilité légère |
 
 ---
 
@@ -88,24 +88,21 @@ ARCHIVISTE [narration-archiviste · Haiku]  (sur demande)
 
 ```
 Auteur
-  │ (ordres stratégiques, validation)
-  ├──→ PMO          (peut donner des ordres directs)
-  └──→ Directeur    (validation éditoriale)
+  ├──→ PMO          (tickets, organisation)
+  └──→ Directeur    (décisions éditoriales)
 
-PMO
-  │ (alerte, organise, tickets)
-  └──→ Directeur    (escalade si blocage ou décision éditoriale)
-  └──→ tous agents  (peut poser des questions directement)
+PMO [autonome]
+  ├──→ Directeur    (escalade · arbitrage)
+  └──→ tous agents  (questions directes)
 
 Directeur
-  ├──→ Writers A/B/C   (brief → 3 versions indépendantes)
-  ├──→ Science         (consultation fact-check)
-  ├──→ Sensibilité     (consultation topic sensible)
-  ├──→ Kimi/Grok/DeepSeek  (relecture après synthèse — optionnel)
-  └──→ Keeper          (envoi version finale)
+  ├──→ Writers × 5  (brief → 5 versions parallèles)
+  ├──→ Validation légère (Grok + Claude + Kimi si doute)
+  ├──→ Relecteurs  (Kimi + Claude après synthèse)
+  └──→ Keeper      (version finale)
 
 Keeper
-  └──→ Directeur   (PASS → canon · FAIL → retour pour correction)
+  └──→ Directeur   (PASS → canon · FAIL → retour)
 ```
 
 ---
@@ -113,58 +110,54 @@ Keeper
 ## Modèle de mémoire
 
 ```
-MÉMOIRE PARTAGÉE (tous les agents lisent)
+MÉMOIRE PARTAGÉE (tous lisent)
   docs/narration/INDEX.md
   docs/narration/univers/INDEX.md
   docs/narration/personnages/INDEX.md + lookup.yml
   docs/narration/stories/INDEX.md
 
-MÉMOIRE PROPRE (agent × 1)
-  equipe/memoire-dir.md          ← Directeur
-  equipe/memoire-writer-a.md     ← Writer A uniquement
-  equipe/memoire-writer-b.md     ← Writer B uniquement
-  equipe/memoire-writer-c.md     ← Writer C uniquement
-  equipe/memoire-science.md      ← Science
-  equipe/memoire-sensibilite.md  ← Sensibilité
-  equipe/memoire-keeper.md       ← Keeper
+MÉMOIRE PROPRE (par agent Claude)
+  equipe/memoire-dir.md            ← Directeur
+  equipe/memoire-writer-ancre.md   ← Writer Ancré uniquement  ← VARIANCE STABLE
+  equipe/memoire-keeper.md         ← Keeper
 
 MÉMOIRE PROJET (PMO · source de vérité)
-  pmo/backlog.md
-  pmo/decisions.md
-  pmo/sprint-log.md
+  pmo/backlog.md · pmo/decisions.md · pmo/sprint-log.md
 
 AUCUNE MÉMOIRE (stateless — contexte injecté à chaque appel)
-  Kimi · Grok · DeepSeek
-  → output loggé dans workshop/<titre>/relecture-externe.md
+  Kimi · DeepSeek · Grok · Claude Libre
+  → output loggé dans workshop/<titre>/version-X.md + relecture.md
 ```
+
+> **Principe de variance :**
+> 4 writers arrivent frais à chaque histoire (aucun biais de session).
+> 1 writer (Claude Ancré) porte la continuité éditoriale et les apprentissages.
+> C'est cette tension stateless / avec-mémoire qui génère la vraie diversité.
 
 ---
 
 ## Workflow complet
 
 ```
-Auteur dumpe → input-idees/YYYY-MM-DD-<sujet>.md
+Auteur dumpe → input-idees/
       ↓
-PMO scanne → crée tickets dans pmo/backlog.md
+PMO scanne → tickets → pmo/backlog.md
       ↓
-Auteur (ou PMO autonome) choisit un ticket
-      ↓
-Directeur challenge, consulte experts si besoin
-      ↓
-Décision → PMO logue pmo/decisions.md + pmo/sprint-log.md
+Directeur challenge + consulte (si doute : Grok + Claude + Kimi léger)
       ↓
 Directeur crée brief → workshop/<titre>/brief.md
       ↓
-Writers A · B · C (indépendants, en parallèle) → 3 versions
+Writers × 5 (parallèles, indépendants) → 5 versions
       ↓
-Directeur synthétise → version finale + notes éditoriaux
-      ↓ [optionnel selon ticket]
-Comité externe : Kimi + Grok + DeepSeek → relecture-externe.md
-Directeur intègre les retours → ajustement si nécessaire
+Directeur synthétise → version de travail
+      ↓
+Relecture : Kimi + Claude → notes dans workshop/<titre>/relecture.md
+      ↓
+Directeur intègre → choix final + rédaction Claude
       ↓
 Keeper valide → PASS → stories/<NNN-titre>/texte.md (CANON)
       ↓
-PMO ferme ticket + Archiviste met à jour _index/
+PMO ferme ticket · Archiviste met à jour _index/
       ↓
 Archive → archive/YYYY-MM-DD-<sujet>.md
 ```
@@ -174,34 +167,46 @@ Archive → archive/YYYY-MM-DD-<sujet>.md
 ## Règles de la mémoire (non-négociables)
 
 1. Chaque agent Claude **lit sa mémoire propre en premier** à chaque session
-2. Chaque agent Claude **met à jour sa mémoire** après chaque décision importante
-3. Les mémoires des writers sont **strictement séparées** — le feedback à A n'affecte pas B ou C
-4. Les décisions de sensibilité sont **enregistrées avec raison** — jamais OUI/NON seul
-5. Les relecteurs externes n'ont **aucune mémoire** — c'est le Directeur qui porte la continuité
-6. Une session archivée **n'est jamais effacée**
-7. `input-idees/` **n'est jamais supprimé** — transit seulement
+2. **Writer Ancré uniquement** a une mémoire entre les histoires — les autres 4 writers reset
+3. Les décisions de sensibilité sont **enregistrées avec raison** — jamais OUI/NON seul
+4. Les relecteurs externes n'ont **aucune mémoire** — le Directeur porte la continuité
+5. Une session archivée **n'est jamais effacée**
+6. `input-idees/` **n'est jamais supprimé** — transit seulement
 
 ---
 
-## Intégration technique des relecteurs externes
+## Intégration technique des externes
 
-### Court terme — prompts templates
-
-Le Directeur prépare un prompt standard à copier dans l'interface Kimi/Grok/DeepSeek.
-Chaque modèle a son angle :
+### Court terme — prompts templates (à copier dans leurs interfaces)
 
 ```
-Kimi  → "Tu es un grand lecteur sensible. Lis cette histoire enfantine + brief.
-          Évalue la qualité narrative, l'émotion, le rythme. Sois direct."
+Kimi / DeepSeek / Grok — WRITER
+  → Reçoivent : brief + règles univers résumées + consigne style libre
+  → Produisent : texte brut (pas de commentaires)
 
-Grok  → "Joue l'avocat du diable sur cette histoire pour enfants.
-          Qu'est-ce qui ne fonctionne pas ? Quels angles sont manqués ?"
+Kimi — RELECTEUR
+  → Reçoit : brief + version synthétisée
+  → Produit : 3-5 remarques prioritaires (ton · rythme · émotion)
 
-DeepSeek → "Analyse la structure de cette histoire (Kishōtenketsu 4 actes).
-             Les transitions sont-elles logiques ? Les arcs cohérents ?"
+Kimi / Grok — VALIDATION LÉGÈRE
+  → Reçoivent : texte + question ciblée (science OU sensibilité)
+  → Produisent : verdict + raison en 2-3 lignes
 ```
 
 ### Moyen terme — MCP tools
 
-Ajouter dans `.mcp.json` des outils `kimi-review`, `grok-review`, `deepseek-review`
-appelables directement depuis le Directeur via l'API de chaque modèle.
+Ajouter dans `.mcp.json` : `kimi-writer`, `deepseek-writer`, `grok-writer`, `kimi-review`
+appelables directement depuis Claude Code via l'API de chaque modèle.
+
+---
+
+## À implémenter (ticket ARCHI-004)
+
+- [ ] Créer `narration-writer-claude-libre.md` (agent Sonnet stateless)
+- [ ] Créer `narration-writer-claude-ancre.md` (agent Sonnet avec mémoire)
+- [ ] Créer `equipe/memoire-writer-ancre.md`
+- [ ] Créer `equipe/prompts-externes/writer-brief.md` (template brief → Kimi/DS/Grok)
+- [ ] Créer `equipe/prompts-externes/relecteur-kimi.md`
+- [ ] Créer `equipe/prompts-externes/validation-legere.md`
+- [ ] MCP tools (kimi/deepseek/grok) → `.mcp.json`
+- [ ] Supprimer/archiver `narration-writer-a/b/c.md` (remplacés)

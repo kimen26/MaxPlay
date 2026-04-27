@@ -19,6 +19,7 @@
 
 | Statut | ID | Titre | Priorité | Assigné | Prochaine action |
 |--------|-----|-------|----------|---------|------------------|
+| ⚪ | ARCHI-004 | Refonte équipe writers — 5 writers + relecteurs externes | Haute | — | Créer agents claude-libre + claude-ancré · prompts templates externes · MCP tools (voir ORGANIGRAMME.md § À implémenter) |
 | ⚪ | UNIVERS-001 | Trancher nom de l'univers | Normale | Auteur | Choisir parmi 5 finalistes (`univers/nom-candidats.md`) |
 | ⚪ | STORY-002 | H-02 — histoire unitaire Mimi (Titi2) | Normale | — | Valider grille candidature (axes-histoires-en-stock.md) |
 | ⚪ | STORY-003 | T-01 — axe transversal "pluie" | Basse | — | Choisir duo/trio + objet |

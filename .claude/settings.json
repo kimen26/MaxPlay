@@ -85,7 +85,8 @@
       "Bash(node -e ' *)",
       "Bash(bun --eval \"await import\\('./server.ts'\\)\")",
       "Bash(npx knip *)",
-      "Bash(npx depcheck *)"
+      "Bash(npx depcheck *)",
+      "Bash([ -f \"$base/$f\" ])"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\temp",

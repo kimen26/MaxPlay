@@ -47,8 +47,16 @@ Alerte si :
 Sur demande, applique un patch culturel à un texte de base :
 - Lis `texte.md` (canon)
 - Lis `variantes-culturelles/XXX.patch`
-- Remplace prénoms, lieux, objets, tournures
+- Remplace prénoms, lieux, objets, tournures via `personnages/lookup.yml`
 - Produit le texte reconstitué
+
+### 5. Mise à jour lookup.yml
+
+Quand un nouveau `pays/XX/identite.md` est créé :
+- Lire le frontmatter YAML du nouveau fichier
+- Ajouter l'entrée dans `personnages/lookup.yml` (section `tokens` + `prenoms_to_token`)
+- Mettre à jour la section `pays` si nouveau code pays
+- Vérifier qu'aucun token n'est en doublon
 
 ## Format de réponse
 

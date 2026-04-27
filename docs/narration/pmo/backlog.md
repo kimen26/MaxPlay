@@ -19,7 +19,6 @@
 
 | Statut | ID | Titre | Priorité | Assigné | Prochaine action |
 |--------|-----|-------|----------|---------|------------------|
-| ⚪ | PERSO-001 | Propagation prénoms V1 dans fiches Eneagramme | Normale | — | Passe de renommage `Eneagramme/personnages/*` |
 | ⚪ | UNIVERS-001 | Trancher nom de l'univers | Normale | Auteur | Choisir parmi 5 finalistes (`univers/nom-candidats.md`) |
 | ⚪ | STORY-002 | H-02 — histoire unitaire Mimi (Titi2) | Normale | — | Valider grille candidature (axes-histoires-en-stock.md) |
 | ⚪ | STORY-003 | T-01 — axe transversal "pluie" | Basse | — | Choisir duo/trio + objet |
@@ -37,6 +36,7 @@
 | ✅ | INPUT-001 | Distillation INBOX 2026-04-27 → univers/ (transport, sensibilités, école, géographie) | 2026-04-28 |
 | ✅ | INPUT-002 | Symbolique ésotérique → Eneagramme/symbolique.md (pierre, astre, couleur) | 2026-04-28 |
 | ✅ | INPUT-003 | Voix ElevenLabs → equipe/voix/ (10 fichiers, 4 couches × 9 types + Wex) | 2026-04-28 |
+| ✅ | PERSO-001 | Restructuration personnages multi-pays (type-NN/, wex/, lookup.yml, identite.md) | 2026-04-28 |
 
 ---
 

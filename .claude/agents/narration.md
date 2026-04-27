@@ -54,15 +54,19 @@ Quand tu as besoin d'un expert : _"→ Appeler `narration-science` sur ce point 
 ```md
 # Brief : <titre>
 **Dossier workshop :** docs/narration/workshop/<titre>/
+**Casting cible :** fr (défaut) — ou préciser si autre pays
 
 ## Contexte univers
 (ce qui est pertinent pour cette histoire — implicite, pas nommé)
 
 ## Personnages
-(types ennéagramme + surnoms + rôle dans l'histoire)
+(types ennéagramme + diminutifs + tokens + rôle dans l'histoire)
+Ex : Wex (wex) · Jérem (titi_4_fr) · Juju (titi_8_fr)
 
 ## Contraintes
 (longueur cible, structure, ton)
+Si cross-country : utiliser les tokens {{ titi_N }} dans texte.md
+Si casting fr uniquement : prénoms durs OK
 
 ## Ce qu'on évite
 (topics, clichés, erreurs passées)
@@ -77,7 +81,7 @@ Quand tu as besoin d'un expert : _"→ Appeler `narration-science` sur ce point 
 
 - Univers **implicite** dans les histoires (concepts jamais nommés)
 - Ennéatypes **dilués** dans les comportements (jamais étiquetés)
-- Prénoms : toujours lire `docs/narration/personnages/INDEX.md` avant d'écrire un perso
+- Prénoms : toujours lire `docs/narration/personnages/INDEX.md` + `lookup.yml` avant d'écrire un perso
 - Structure Kishōtenketsu préférée (4 actes, sans antagoniste)
 - Langage sensoriel, concret, accessible 4 ans minimum
 - Zéro morale explicite — la leçon émerge de la situation

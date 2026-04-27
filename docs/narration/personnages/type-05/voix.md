@@ -8,31 +8,31 @@
 
 | Couche | Paramètre |
 |--------|-----------|
-| **Articulation** | Consonnes sèches et précises · voyelles neutres, économes |
-| **Prosodie** | Plateau plat + léger drop final · ton informatif, jamais affirmatif-émotionnel |
-| **Rythme** | Mesuré · pauses de réflexion avant les termes techniques ou précis |
-| **Phonation** | Micro-pauses avant les mots exacts · pas de remplisseurs ("euh", "mm") |
+| **Articulation** | Consonnes sèches à faible souffle · T et S parfaitement contenus · chaque mot choisi avec soin |
+| **Prosodie** | Registre tonal étroit · cadence en plateau avec léger drop final · emphase pondérée sur des mots uniques |
+| **Rythme** | Mesuré et délibéré · pauses de réflexion caractéristiques avant la terminologie précise |
+| **Phonation** | Fraîche et silencieuse · volume bas naturel · sans souffle excessif · sans fry |
+
+---
 
 ## Paramètres ElevenLabs
 
 ```
 Stability: 0.80
-Similarity Boost: 0.60
+Similarity Boost: 0.80
 Style: 0.10
 Speaker Boost: false
 ```
 
-## Prompt voix (F)
+---
 
-Voix de petite fille très calme et précise. Consonnes nettes, économes.
-Phrases plates qui descendent légèrement à la fin. Pauses avant les mots précis.
-Pas d'enthousiasme apparent — juste de la clarté. Neutre mais pas froide.
+## Prompt ElevenLabs — Femme (F)
 
-## Prompt voix (M)
+> Female narrator voice, mid-thirties, cool clear mezzo timbre with contained dry resonance, neither warm nor cold but perfectly poised. Quiet contained intellectually present delivery. Distinctive shared articulation: dry low-air consonants (precise but never effortful), perfectly contained "t" and "s" (no airy excess), every word chosen carefully. No vocal expansion, no warmth flourish. Prosody: narrow controlled pitch range, calm plateau-like delivery with slight terminal drop, weighted emphasis on single key words. Rhythm: measured and deliberate, with characteristic thinking pauses before precise word choices. Texture: cool and quiet, contained natural low volume, no breathiness, no fry. Signature tic: micro-pauses preceding precise terminology, the audible sound of careful selection. Conveys quiet intellectual depth and observational calm. Think: a research librarian who has spent years with this specific text.
 
-Voix de petit garçon calme et méthodique. Consonnes sèches, diction économe.
-Phrases en plateau qui descendent légèrement à la fin. Micro-pauses avant les termes précis.
-Ton neutre et factuel. Pas distant — juste concentré.
+## Prompt ElevenLabs — Homme (M)
+
+> Male narrator voice, late thirties, cool clear baritone timbre with contained dry resonance, neither warm nor cold but perfectly poised. Quiet contained intellectually present delivery. Distinctive shared articulation: dry low-air consonants (precise but never effortful), perfectly contained "t" and "s" (no airy excess), every word chosen carefully. No vocal expansion, no warmth flourish. Prosody: narrow controlled pitch range, calm plateau-like delivery with slight terminal drop, weighted emphasis on single key words. Rhythm: measured and deliberate, with characteristic thinking pauses before precise word choices. Texture: cool and quiet, contained natural low volume, no breathiness, no fry. Signature tic: micro-pauses preceding precise terminology, the audible sound of careful selection. Conveys quiet intellectual depth and observational calm. Think: a research librarian who has spent years with this specific text.
 
 ---
 

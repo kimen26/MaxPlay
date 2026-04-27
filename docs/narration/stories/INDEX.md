@@ -31,7 +31,7 @@
 
 ## Axes en stock (non encore écrits)
 
-Voir [`../histoires/axes-histoires-en-stock.md`](../histoires/axes-histoires-en-stock.md) pour le détail.
+Voir [`axes-histoires-en-stock.md`](axes-histoires-en-stock.md) pour le détail.
 
 ---
 

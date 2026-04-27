@@ -16,7 +16,7 @@ docs/narration/
 │
 ├── personnages/            ← tableau des 9 + prénoms candidats
 ├── univers/                ← monde, systèmes, cycle, compagnons, vibration
-├── histoires/              ← récits écrits + gabarit
+├── stories/                ← récits écrits + gabarit (structure canonique)
 ├── Eneagramme/             ← système théorique (9 fiches + situations + ressources)
 └── reference/              ← matière de fond (analyses manga/Pokémon, Riso-Hudson)
 ```
@@ -32,7 +32,7 @@ docs/narration/
           ↓
   2) INBOX.md  ← dump daté (hook git commit auto sur modif)
           ↓  quand tranché
-  3) univers/ · personnages/ · histoires/   ← stable, canon
+  3) univers/ · personnages/ · stories/   ← stable, canon
           ↓
      INDEX du dossier mis à jour
           ↓
@@ -60,8 +60,8 @@ docs/narration/
 
 ## Écrire une nouvelle histoire
 
-1. Copier `histoires/_gabarit.md` → `histoires/<titre>.md`
-2. Remplir. Ajouter au tableau de `histoires/INDEX.md`.
+1. Copier `stories/_gabarit/` → `stories/<NNN-titre>/`
+2. Remplir. Le catalogue `stories/INDEX.md` est auto-généré par `narration-archiviste`.
 
 ---
 

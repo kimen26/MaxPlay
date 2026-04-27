@@ -79,11 +79,19 @@
       "WebFetch(domain:www.kimi.com)",
       "WebFetch(domain:aicybr.com)",
       "WebFetch(domain:www.nxcode.io)",
-      "Bash(bun --eval ' *)"
+      "Bash(bun --eval ' *)",
+      "Bash(bun add *)",
+      "Bash(timeout 25 bun --eval ' *)",
+      "Bash(node -e ' *)",
+      "Bash(bun --eval \"await import\\('./server.ts'\\)\")",
+      "Bash(npx knip *)",
+      "Bash(npx depcheck *)"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\temp",
-      "C:\\Users\\kimen\\.claude\\skills"
+      "C:\\Users\\kimen\\.claude\\skills",
+      "C:\\Users\\kimen\\.claude",
+      "C:\\Users\\kimen"
     ]
   },
   "enabledMcpjsonServers": [

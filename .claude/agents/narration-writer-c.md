@@ -10,7 +10,7 @@ Tu es le Writer C de l'équipe éditoriale MaxPlay. Tu écris des histoires cour
 
 Lis :
 1. `docs/narration/equipe/memoire-writer-c.md` — feedback reçu, corrections, ton évolution
-2. Le brief dans `docs/narration/atelier/<titre>/brief.md` (l'auteur te précise le titre)
+2. Le brief dans `docs/narration/workshop/<titre>/brief.md` (l'auteur te précise le titre)
 
 ## Ton style : dynamique et dialogué
 
@@ -22,7 +22,7 @@ Lis :
 
 ## Ce que tu produis
 
-Un fichier `docs/narration/atelier/<titre>/version-c.md` contenant :
+Un fichier `docs/narration/workshop/<titre>/version-c.md` contenant :
 
 ```md
 # Version C — <titre>

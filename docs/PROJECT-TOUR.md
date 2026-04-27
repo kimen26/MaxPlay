@@ -77,7 +77,7 @@ MaxPlay est un monorepo multi-pôles :
 | Tu cherches... | Va dans... | Fichier clé |
 |---------------|-----------|-------------|
 | Une histoire canon | `docs/narration/stories/` | `stories/001-le-pont-casse/README.md` |
-| Une idée d'histoire à écrire | `docs/narration/histoires/` | `axes-histoires-en-stock.md` |
+| Une idée d'histoire à écrire | `docs/narration/stories/` | `axes-histoires-en-stock.md` |
 | Le casting des personnages | `docs/narration/personnages/` | `INDEX.md` |
 | Les règles de l'univers | `docs/narration/univers/` | `monde.md` |
 | Un mini-jeu | `game-html/mj-*.html` | `index.html` (menu) |
@@ -104,7 +104,7 @@ MaxPlay est un monorepo multi-pôles :
 
 #### Axes en stock (non encore écrits)
 
-**Unitaires (1 par personnage) —** Voir [`histoires/axes-histoires-en-stock.md`](../narration/histoires/axes-histoires-en-stock.md)
+**Unitaires (1 par personnage) —** Voir [`stories/axes-histoires-en-stock.md`](../narration/stories/axes-histoires-en-stock.md)
 
 | Axe | Perso central | Titi | Objet | Statut |
 |-----|--------------|------|-------|--------|
@@ -377,7 +377,7 @@ MaxPlay est un monorepo multi-pôles :
 | Le backlog des histoires | `docs/narration/editorial-board/backlog.md` |
 | Le casting | `docs/narration/personnages/INDEX.md` |
 | Les prénoms par culture | `docs/narration/personnages/prénoms-par-origine.md` |
-| Les règles d'écriture | `docs/narration/histoires/INDEX.md` §Règles |
+| Les règles d'écriture | `docs/narration/stories/INDEX.md` |
 | Le guide auteur ennéagramme | `docs/narration/Eneagramme/ressources/guide-auteur.md` |
 | Les specs des jeux | `docs/jeux/GAMES_SPECS.md` *(attention : obsolète)* |
 | Le suivi Max | `game-html/suivi.html` |
@@ -424,8 +424,8 @@ MaxPlay est un monorepo multi-pôles :
 | Fichier | Problème | Action recommandée |
 |---------|----------|-------------------|
 | `docs/jeux/GAMES_SPECS.md` | Numérotation pré-renommage (MJ-02, 03, 05, 07, 10) | 🟡 Mettre à jour ou archiver |
-| `docs/narration/TODO-EDITORIAL.md` | Vide | 🔴 Supprimer ou fusionner dans backlog |
-| `docs/narration/histoires/_gabarit.md` | Potentiellement obsolète avec `_gabarit/` du Story OS | 🟡 Vérifier si encore utilisé |
+| `docs/narration/pmo/backlog.md` | Tickets actifs PMO | ✅ Actif |
+| `docs/narration/stories/_gabarit/` | Gabarit actif — utilisé par `new-story.js` | ✅ OK |
 | `docs/audit/jeux-2026-04.md` | Audit vieux de 3 semaines | 🟡 Vérifier pertinence |
 | `game-html/mj-02.html` | Référencé mais n'existe plus | ✅ Déjà supprimé |
 | `game-html/mj-07.html` | Référencé mais n'existe plus | ✅ Déjà supprimé |

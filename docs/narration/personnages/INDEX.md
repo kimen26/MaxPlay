@@ -14,23 +14,23 @@
 > **Règle d'écriture :** dans les histoires et dialogues, on utilise le **diminutif 4/5 du temps**.
 > Le prénom complet sert aux moments formels, solennels, ou quand un adulte nomme l'enfant.
 
-| Notation | Type | Prénom complet | **Diminutif (usage courant)** | Essence | Meilleur ami |
-|---|------|----------------|-------------------------------|---------|--------------|
-| Type1 / Titi1 | Perfectionniste | Melchisédech | **Melki** | Être bon·ne | Pierrot |
-| Type2 / Titi2 | Aidant | Marie (F) | **Mimi** | Être aimé·e | Nono |
-| Type3 / Titi3 | Performeur | Paul | **Polo** | Être valorisé·e | — |
-| Type4 / Titi4 | Individualiste | Jérémie | **Jérem** | Être soi-même | Lulu |
-| Type5 / Titi5 | Observateur | Luc | **Lulu** | Comprendre | Jérem |
-| Type6 / Titi6 | Loyal | Pierre | **Pierrot** | Avoir du soutien | Melki |
-| Type7 / Titi7 | Enthousiaste | Raphaëlle (F) | **Raph** | Être comblé·e | Wex |
-| Type8 / Titi8 | Challenger | Judith (F) | **Juju** | Être fort·e | Wex |
-| Type9 / Titi9 | Pacificateur | Noé | **Nono** | La paix | Mimi |
+| Notation | Type | Prénom complet | **Diminutif** | Essence | Sensibilité | Meilleur ami |
+|---|------|----------------|---------------|---------|-------------|--------------|
+| Type1 / Titi1 | Perfectionniste | Melchisédech | **Melki** | Être bon·ne | Minéraux | Pierrot |
+| Type2 / Titi2 | Aidant | Marie (F) | **Mimi** | Être aimé·e | Eau | Nono |
+| Type3 / Titi3 | Performeur | Paul | **Polo** | Être valorisé·e | Forces | — |
+| Type4 / Titi4 | Individualiste | Jérémie | **Jérem** | Être soi-même | Fréquence | Lulu |
+| Type5 / Titi5 | Observateur | Luc | **Lulu** | Comprendre | Quantique | Jérem |
+| Type6 / Titi6 | Loyal | Pierre | **Pierrot** | Avoir du soutien | Animaux | Melki |
+| Type7 / Titi7 | Enthousiaste | Raphaëlle (F) | **Raph** | Être comblé·e | Cosmos | Wex |
+| Type8 / Titi8 | Challenger | Judith (F) | **Juju** | Être fort·e | Plantes | Wex |
+| Type9 / Titi9 | Pacificateur | Noé | **Nono** | La paix | Vibration collective | Mimi |
 
 ### Hors-système
 
 | Rôle | Prénom | Statut |
 |------|--------|--------|
-| **Héros universel** | **Wex** ✓ | **Sans ennéatype pour le moment.** Jamais traduit. Pivot de toutes les versions cross-country. |
+| **Héros universel** | **Wex** ✓ | **Sans ennéatype.** Sensibilité Vibration (transversale). Vision causale (power). Jamais traduit. |
 
 **Bilan genre casting Christ :** 3F (Marie/Mimi, Raphaëlle/Raph, Judith/Juju) / 6M + Wex hors-système. **Figé — définitif.** Pas de bascule F/M.
 

@@ -14,13 +14,13 @@ input-idees/  (un fichier par session/sujet)
   ↓
 DIRECTEUR ÉDITORIAL [narration · Opus]
   ├── Challenge les idées
-  ├── Gère TODO-EDITORIAL.md (tickets)
+  ├── Coordonne avec le PMO (`narration-pmo`) sur les tickets
   ├── Simule les lecteurs (profils-lecteurs.md)
   ├── Archive les sessions (archive/)
   ├── Consulte à la demande :
   │     ├── narration-science  [Haiku]
   │     └── narration-sensibilite  [Sonnet]
-  └── Produit brief → atelier/<titre>/brief.md
+  └── Produit brief → workshop/<titre>/brief.md
           ↓
   ┌───────┬───────┬───────┐
   ↓       ↓       ↓
@@ -35,7 +35,7 @@ version-a version-b version-c
   KEEPER [narration-keeper · Haiku]  (fin de cycle seulement)
   Ennéagramme · Univers · Prénoms → PASS / FAIL
           ↓
-  histoires/<titre>.md  (canon)
+  stories/<NNN-titre>/texte.md  (canon)
 ```
 
 ---
@@ -44,13 +44,15 @@ version-a version-b version-c
 
 | Agent | Modèle | Rôle | Mémoire |
 |-------|--------|------|---------|
-| `narration` | Opus | Directeur Éditorial — orchestration, challenge, tickets, synthèse | `memoire-dir.md` |
+| `narration-pmo` | Haiku | PMO — tickets, decisions, sprint-log, reprise après reboot | — |
+| `narration` | Opus | Directeur Éditorial — challenge, briefs, synthèse | `memoire-dir.md` |
 | `narration-writer-a` | Sonnet | Writer sobre / Kishōtenketsu classique | `memoire-writer-a.md` |
 | `narration-writer-b` | Sonnet | Writer sensoriel / poétique | `memoire-writer-b.md` |
 | `narration-writer-c` | Sonnet | Writer dynamique / dialogue | `memoire-writer-c.md` |
 | `narration-science` | Haiku | Expert fact-check sciences et biologie | `memoire-science.md` |
 | `narration-sensibilite` | Sonnet | Expert sensibilité / topics conspirationnistes | `memoire-sensibilite.md` |
 | `narration-keeper` | Haiku | Gardien univers + ennéagramme (fin de cycle) | `memoire-keeper.md` |
+| `narration-archiviste` | Haiku | Génère les index `_index/`, structure les dossiers | — |
 
 ---
 
@@ -73,17 +75,26 @@ docs/narration/equipe/
 
 ---
 
-## Workflow ticketing
+## Workflow complet
 
 ```
-1. Auteur dumpe → input-idees/YYYY-MM-DD-<sujet>.md
-2. Auteur dit "ya quoi à challenger ?" → Directeur lit inbox, liste les tickets
-3. Auteur choisit un ticket → Directeur challenge, consulte experts si besoin
-4. Décision prise → rangée dans les bons fichiers stables
-5. Directeur crée brief → writers produisent 3 versions indépendantes
-6. Directeur synthétise → version finale + notes
-7. Keeper valide → PASS → histoires/<titre>.md
-8. Session archivée → archive/YYYY-MM-DD-<sujet>.md
+Auteur dumpe → input-idees/YYYY-MM-DD-<sujet>.md
+      ↓
+PMO scanne → crée tickets dans pmo/backlog.md
+      ↓
+Auteur choisit un ticket → Directeur challenge, consulte experts si besoin
+      ↓
+Décision prise → PMO logue dans pmo/decisions.md + pmo/sprint-log.md
+      ↓
+Directeur crée brief → workshop/<titre>/brief.md
+      ↓
+Writers A · B · C (indépendants) → 3 versions
+      ↓
+Directeur synthétise → version finale + notes
+      ↓
+Keeper valide → PASS → stories/<NNN-titre>/texte.md
+      ↓
+PMO ferme ticket + session archivée → archive/YYYY-MM-DD-<sujet>.md
 ```
 
 ---

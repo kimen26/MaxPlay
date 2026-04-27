@@ -108,6 +108,19 @@ GitHub Pages → kimen26.github.io/MaxPlay/
 
 - [notes-brutes-univers.md](notes-brutes-univers.md) — égregores, Grand Cycle, question fractale personnages/rêve (2026-04-16)
 
+## MCP Server llm-copains (2026-04-27)
+
+Serveur MCP global (scope user, tous projets) exposant 2 outils LLM tiers :
+- `ask_grok` → xAI `grok-4-fast-non-reasoning` (pay-as-you-go)
+- `ask_kimi` → Kimi K2.6 via `api.kimi.com/coding/v1` + `User-Agent: claude-code/1.0` (**consomme l'abonnement kimi.com**)
+- `tts_elevenlabs` → à implémenter (clé ElevenLabs en attente)
+
+**Fichiers** : `mcp/server.ts` + `mcp/package.json` (bun, @modelcontextprotocol/sdk 1.29)
+**Config** : `claude mcp add --scope user --transport stdio llm-copains -- bun run c:/ProjetsPerso/Claude_Projects/MaxPlay/mcp/server.ts`
+**Clés** : stockées dans `~/.claude.json` via CLI (`claude mcp add --env KEY=val`) — jamais éditer à la main
+**`.mcp.json` projet** : vide (garde le fichier pour usage projet futur)
+**`.gitignore`** : `.mcp.json` exclu (sécurité)
+
 ## Bot Telegram (botard)
 
 `bot/index.ts` · grammy + bun · lancé auto au démarrage Claude (hook SessionStart)

@@ -48,7 +48,7 @@
 | Palier | Âge | Durée | Mots |
 |--------|-----|-------|------|
 | P1 | 2-3 ans | 2-3 min | ~150-250 |
-| P2 | 4-6 ans | 4-6 min | ~400-700 |
+| P2 | 4-6 ans | 4-6 min | **400-700** |
 | P3 | 6-9 ans | roman court | à définir |
 
 **Raison :** Feedback Max 4 ans + pas de dessinateur, IA image instable.

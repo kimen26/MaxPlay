@@ -2,7 +2,7 @@
 
 > Fichier injecté tel quel aux writers et relecteurs externes (Kimi, DeepSeek, Grok, Claude Libre).
 > Maintenu par l'Archiviste **toutes les 5 histoires canoniques**, ou si quelque chose d'important a été tranché entre-temps.
-> Dernière mise à jour : 2026-04-28 (après histoire 001)
+> Dernière mise à jour : 2026-04-28 (après histoire 002)
 
 ---
 
@@ -42,8 +42,9 @@ Futur proche. Il y a une dizaine d'années, le monde a basculé en une nuit — 
 
 **Ton :** sobre. Pas de grandiloquence. Pas de morale explicite à la fin.
 **Univers :** jamais nommé dans le texte. Le monde affleure dans les détails — un geste, un mot, une habitude — jamais dans une notice.
-**Longueur cible :** 500 à 900 mots.
-**Public :** enfant de 3 à 5 ans qu'on lit avant de dormir. Phrases courtes. Vocabulaire accessible. Rythme tranquille.
+**Longueur cible :** **400 à 700 mots** — figé pour le palier P2 (4-6 ans).
+**Public :** enfant de 4 à 6 ans qu'on lit avant de dormir. Phrases courtes. Vocabulaire accessible. Rythme tranquille.
+**Dialogues :** les personnages parlent. Privilégier l'échange. 3-5 mots par réplique. Le silence est actif, mais la parole est le cœur du récit.
 
 ---
 
@@ -65,10 +66,30 @@ Ce passage montre : pas d'explication, personnages révélés par leurs gestes, 
 
 ---
 
+## Physique de l'univers (optionnel — injecter si l'histoire touche à ces thèmes)
+
+> Cette section n'est pas injectée par défaut. Le Directeur l'ajoute au brief quand l'histoire implique vibration, transport, sensibilités, ou phénomènes naturels spécifiques.
+
+**Vibration et matière**
+- La matière = vibration à une certaine fréquence (base : physique des champs)
+- Les émotions = fréquences ; la force d'un égrégore = amplitude
+- Certains personnages perçoivent ces vibrations (sensibilités) — jamais nommé dans le texte
+
+**Transport**
+- Jabus : lévitation par effet Meissner (supraconductivité), jamais expliqué
+- Axes verts : coulées végétales avec Jabus silencieux
+- Pas de bus moteur classique, pas d'essence, pas de bruit de moteur
+
+**Règle d'or :** La physique sert à expliquer discrètement ce qui est DÉJÀ dans l'univers (Cristaux, Gardiens, Compagnons) sans jamais les nommer. Les enfants ne savent pas ces mots. Ils vivent les phénomènes.
+
+---
+
 ## Ce qui a évolué / été écarté au fil des histoires
 
 | # | Décision | Raison |
 |---|----------|--------|
 | 001 | Merveilleux purement discret — zéro visible | Direction tranchée avant l'écriture, confirmée par comité de lecture |
+| 002 | Pas d'épilogue italique | Le texte se tient seul. L'épilogue de 001 reste exception. |
+| 002 | Dialogues comme moteur narratif | Le silence porte, mais la parole révèle. Privilégier l'échange. |
 
 *(l'Archiviste met ce tableau à jour toutes les 5 histoires)*

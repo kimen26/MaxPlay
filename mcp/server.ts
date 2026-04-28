@@ -64,21 +64,26 @@ server.tool(
 
 server.tool(
   "ask_kimi",
-  "Pose une question à Kimi K2.6 (Moonshot). Utile pour fact-check, relecture, perspective alternative. Consomme l'abonnement kimi.com.",
+  "Pose une question à Kimi / Moonshot AI. Mode 'story' (défaut) pour narration/relecture/créatif — utilise moonshot-v1-32k. Mode 'code' pour code/analyse — utilise kimi-for-coding.",
   {
     prompt: z.string().describe("La question ou le texte à soumettre à Kimi"),
     context: z.string().optional().describe("Contexte optionnel (ex: extrait de l'histoire)"),
+    mode: z.enum(["story", "code"]).optional().default("story").describe("story = narration/créatif (moonshot-v1-32k) | code = code/analyse (kimi-for-coding)"),
   },
-  async ({ prompt, context }) => {
+  async ({ prompt, context, mode }) => {
     const apiKey = process.env.MOONSHOT_API_KEY;
     if (!apiKey) return { content: [{ type: "text", text: "Erreur: MOONSHOT_API_KEY non définie." }], isError: true };
     const systemPrompt = context ? `Tu es un assistant expert. Contexte fourni:\n\n${context}` : "Tu es un assistant expert, précis et concis.";
+    const isCode = mode === "code";
+    const baseUrl = isCode ? "https://api.kimi.com/coding/v1" : "https://api.moonshot.cn/v1";
+    const model = isCode ? "kimi-for-coding" : "moonshot-v1-32k";
+    const extraHeaders = isCode ? {
+      "User-Agent": "claude-code/1.9.0 (win32; x64)",
+      "X-Client-Name": "claude-code",
+      "X-Client-Version": "1.9.0",
+    } : {};
     try {
-      const result = await callOpenAICompat("https://api.kimi.com/coding/v1", apiKey, "kimi-for-coding", systemPrompt, prompt, {
-        "User-Agent": "claude-code/1.9.0 (win32; x64)",
-        "X-Client-Name": "claude-code",
-        "X-Client-Version": "1.9.0",
-      });
+      const result = await callOpenAICompat(baseUrl, apiKey, model, systemPrompt, prompt, extraHeaders);
       return { content: [{ type: "text", text: result }] };
     } catch (e) {
       return { content: [{ type: "text", text: `Erreur Kimi: ${(e as Error).message}` }], isError: true };

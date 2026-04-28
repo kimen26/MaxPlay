@@ -61,6 +61,7 @@
 | Fichier | Rôle |
 |---------|------|
 | [equipe/ORGANIGRAMME.md](equipe/ORGANIGRAMME.md) | **Qui fait quoi — lire avant d'appeler un agent** |
+| [equipe/cartographie-domaines.md](equipe/cartographie-domaines.md) | **Où va quelle info · qui décide · invariants** |
 | [equipe/profils-lecteurs.md](equipe/profils-lecteurs.md) | Fiches 4F · 4M · 9F · 9M · Parent · Éditeur · Prof · Philo · 8 cultures |
 | [equipe/sources-sciences.md](equipe/sources-sciences.md) | Refs documentaires (C'est pas sorcier, La Vie...) |
 | [equipe/sources-sensibilite.md](equipe/sources-sensibilite.md) | Catalogue topics sensibles / conspirationnistes |

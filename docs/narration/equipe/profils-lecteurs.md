@@ -1,7 +1,39 @@
 # Profils Lecteurs — Équipe Éditoriale MaxPlay
 
 > Utilisé par le Directeur Éditorial pour simuler les réactions des différents publics.
-> Dernière mise à jour : 2026-04-26
+> Dernière mise à jour : 2026-04-28
+
+---
+
+## Format de retour — Lecteur Témoin
+
+> Ce format s'applique quand le Directeur demande à un profil de réagir à un texte.
+> **Priorité absolue : le texte libre.** Les questions structurées viennent après, et sont facultatives.
+
+### Étape 1 — Réaction libre (OBLIGATOIRE)
+
+Le lecteur exprime ce qu'il a ressenti, dans ses propres mots, sans grille.
+Aucune contrainte de format. Peut être : une impression, une image, un doute, une émotion, un "ça m'a fait penser à...".
+
+```
+[Texte libre — de 2 lignes à un paragraphe. Ce qui a résonné, ce qui a coincé, ce qui a surpris.]
+```
+
+### Étape 2 — Questions de cadrage (OPTIONNEL — seulement si la réaction libre ne suffit pas)
+
+Le Directeur peut poser jusqu'à 3 questions ciblées après la réaction libre.
+Ne jamais poser les questions avant le texte libre — cela biaiserait la lecture.
+
+Questions types selon profil :
+- **Enfant** : "Tu te souviens de quoi à la fin ?" / "Qui tu préfères dans l'histoire ?"
+- **Parent** : "Tu lirais ça à ton enfant ?" / "Il y a quelque chose qui t'a mis mal à l'aise ?"
+- **Éditeur** : "Tu tournes la page ?" / "Qu'est-ce qui manque ?"
+- **Filtre culturel** : "Est-ce que ça sonne juste pour [culture] ?" / "Qu'est-ce qui paraît étranger ?"
+
+### Principe
+
+> Un lecteur témoin ne remplit pas une grille. Il réagit d'abord comme un humain.
+> La structure sert à orienter la discussion — pas à la remplacer.
 
 ---
 

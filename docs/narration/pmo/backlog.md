@@ -12,6 +12,7 @@
 | Statut | ID | Titre | Priorité | Assigné | Prochaine action |
 |--------|-----|-------|----------|---------|------------------|
 | 🟡 | STORY-001-V2 | Le Pont Cassé — V2 | Haute | Auteur | Appliquer 3 modifs comité (voir `stories/001-le-pont-casse/comite-lecture/v1-retours.md`) |
+| 🟡 | STORY-003 | La Confidence — Wex · Jérem · Raph · dessin | Haute | Directeur | Briefs prêts dans `input-idees/serie-parole-briefs.md` |
 
 ---
 
@@ -19,10 +20,10 @@
 
 | Statut | ID | Titre | Priorité | Assigné | Prochaine action |
 |--------|-----|-------|----------|---------|------------------|
-| ⚪ | ARCHI-004 | Refonte équipe writers — 5 writers + relecteurs externes | Haute | — | Créer agents claude-libre + claude-ancré · prompts templates externes · MCP tools (voir ORGANIGRAMME.md § À implémenter) |
 | ⚪ | UNIVERS-001 | Trancher nom de l'univers | Normale | Auteur | Choisir parmi 5 finalistes (`univers/nom-candidats.md`) |
-| ⚪ | STORY-002 | H-02 — histoire unitaire Mimi (Titi2) | Normale | — | Valider grille candidature (axes-histoires-en-stock.md) |
-| ⚪ | STORY-003 | T-01 — axe transversal "pluie" | Basse | — | Choisir duo/trio + objet |
+| ⚪ | STORY-004 | Cartable-à-trou — Polo · Lulu · Mimi · Wex | Haute | Directeur | Briefs prêts dans `input-idees/serie-parole-briefs.md` |
+| ⚪ | STORY-005 | Le Mardi — Wex · Pierrot · Melki · graine | Haute | Directeur | Briefs prêts |
+| ⚪ | STORY-006 | Sept à rien — Juju · Mimi · Wex · blocs | Haute | Directeur | Briefs prêts |
 
 ---
 
@@ -30,6 +31,8 @@
 
 | Statut | ID | Titre | Date |
 |--------|-----|-------|------|
+| ✅ | STORY-002 | Le Rire qui reste — canon (489 mots · Keeper PASS) | 2026-04-28 |
+| ✅ | ARCHI-004 | Refonte équipe writers — 5 writers + briefs stateless + agents | 2026-04-28 |
 | ✅ | STORY-001-V1 | Le Pont Cassé — V1 + comité de lecture | 2026-04-24 |
 | ✅ | ARCHI-001 | Restructuration narration (stories/, pmo/, équipe) | 2026-04-27 |
 | ✅ | ARCHI-002 | Suppression histoires/ legacy + migration axes-en-stock | 2026-04-27 |

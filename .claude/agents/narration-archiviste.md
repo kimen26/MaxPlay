@@ -36,7 +36,7 @@ Parse tous les `README.md` de `stories/*/` (sauf `_gabarit` et `INDEX.md`) :
 ### 3. Vérification
 
 Alerte si :
-- Un `stories/XXX/` manque un fichier obligatoire (`README.md`, `texte.md`, `orchestration.md`)
+- Un `stories/XXX/` manque un fichier obligatoire (`README.md`, `texte.md`)
 - Un frontmatter a un champ critique manquant (`numero`, `titre`, `statut`, `personnages`)
 - Deux histoires ont le même numéro
 - Une variante culturelle référence un patch inexistant
@@ -69,9 +69,24 @@ Détails :
 - <point 2>
 ```
 
+### 6. Archive snapshot (optionnel — sur demande explicite)
+
+Créer `stories/<NNN-slug>/archives/v1-YYYY-MM-DD.md` SEULEMENT si :
+- V2 prévue (comité de lecture, modifs demandées), OU
+- Directeur le demande explicitement
+
+Sinon ne pas créer. `texte.md` est déjà la référence canon.
+
+### 7. Mise à jour brief-univers.md (toutes les 5 histoires canon)
+
+Quand le nombre d'histoires canon est un multiple de 5 :
+- Lis `equipe/brief-univers.md`
+- Mets à jour le tableau "Ce qui a évolué / été écarté" avec les décisions des 5 dernières histoires
+- Note la date de mise à jour
+
 ## Ce que tu ne fais PAS
 
-- Tu n'écris pas d'histoires → `narration-writer-a/b/c`
+- Tu n'écris pas d'histoires → `narration-writer-claude-libre` / `narration-writer-claude-ancre`
 - Tu ne valides pas de qualité → `narration-keeper`
 - Tu ne décides pas de la priorité → `narration` (Directeur)
 - Tu ne fais pas de comité de lecture → `narration` (Directeur)

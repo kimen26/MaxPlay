@@ -86,7 +86,10 @@
       "Bash(bun --eval \"await import\\('./server.ts'\\)\")",
       "Bash(npx knip *)",
       "Bash(npx depcheck *)",
-      "Bash([ -f \"$base/$f\" ])"
+      "Bash([ -f \"$base/$f\" ])",
+      "mcp__llm-copains__ask_kimi",
+      "mcp__llm-copains__ask_deepseek",
+      "mcp__llm-copains__ask_grok"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\temp",

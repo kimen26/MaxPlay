@@ -2,7 +2,7 @@
 numero: NNN
 slug: slug-de-l-histoire
 titre: Titre de l'histoire
-statut: idea              # idea / draft / review / canon / archived
+statut: draft              # draft / canon / archived
 version_active: v1
 date_creation: YYYY-MM-DD
 date_validation: null
@@ -12,64 +12,49 @@ editorial:
   structure: Kishotenketsu
   antagoniste: false
   mots: 0
-  palier: P2               # P1=2-4 / P2=4-6 / P3=6-8
+  palier: P2               # P1=2-4min / P2=4-6min / P3=6-8min
   duree_lecture: 0min
 
 personnages:
-  liste: []
-  enneatypes: []
-  enneatype_heros: null
+  liste: []                # ex: [wex, nono, polo]
+  enneatypes: []           # ex: [9, 3]
+  enneatype_heros: null    # ex: 9
 
 themes:
   principal: null
   secondaires: []
-  qualites: {}
+  qualites: {}             # ex: { wex: remarque-et-va-chercher }
 
 univers:
-  integration: null        # Option A / B / C
-  magic_level: none        # none / light / medium / full
+  magic_level: none        # none / light
   lieu: null
   saison: null
 
 variantes:
   base: christ
   disponibles: [christ]
-  prevues: []
 
 production:
   comite_lecture: false
-  science_check: false
-  sensitivity_check: false
   retours_v2: 0
 
 relations:
-  prequel: null
-  sequel: null
-  serie: null
+  serie: null              # ex: serie-la-parole
   references: []
 ---
 
 # Titre de l'histoire
 
-> **Module :** `stories/NNN-slug/`  
-> **Créé le :** YYYY-MM-DD  
-> **Statut :** `idea`  
-> **Texte courant :** [`texte.md`](texte.md)  
-
----
+> **Statut :** `draft`  
+> **Texte courant :** [`texte.md`](texte.md)
 
 ## Résumé
 
-_(2-3 lignes qui disent de quoi parle l'histoire, sans spoilers.)_
+_(2-3 lignes, pas de spoiler de fin.)_
 
 ## Pourquoi cette histoire ?
 
-_(Quel axe du stock ? Quel personnage mis en valeur ? Quelle qualité ?)_
-
-## Prochaines étapes
-
-- [ ] Brief d'orchestration (`orchestration.md`)
-- [ ] Texte V1 (`texte.md`)
-- [ ] Comité de lecture (`comite-lecture/`)
-- [ ] Keeper validation
-- [ ] Archive snapshot (`archives/v1-YYYY-MM-DD.md`)
+- **Série / Axe :** 
+- **Perso mis en valeur :**
+- **Qualité promue :**
+- **Objet-titre :**

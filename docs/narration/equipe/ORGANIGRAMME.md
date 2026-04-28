@@ -22,12 +22,13 @@ PMO [narration-pmo · Haiku · AUTONOME]
   ▼
 DIRECTEUR ÉDITORIAL [narration · Opus]
   ├── Challenge les idées, produit les briefs
-  ├── Simule les lecteurs (profils-lecteurs.md)
+  ├── Consulte un panel externe sur des idées/angles (pas de simulation — avis lecteur)
   ├── Archive les sessions (archive/)
   │
-  ├── Validation légère (consultés si doute — pas à bloc)
+  ├── Consultation panel (si doute ou besoin d'un regard extérieur — pas à bloc)
   │     ├── Science     : Grok + Claude + Kimi  (quick pass)
-  │     └── Sensibilité : Grok + Claude + Kimi  (quick pass)
+  │     ├── Sensibilité : Grok + Claude + Kimi  (quick pass)
+  │     └── Lecture / angle : Kimi + Grok (avis de lecteur, pas simulation)
   │
   ├── WRITERS (5 parallèles, indépendants)
   │     ├── Kimi 2.6+        [externe · stateless · no reasoning]  — libre
@@ -52,8 +53,8 @@ KEEPER [narration-keeper · Haiku]  (fin de cycle uniquement · Claude)
 stories/<NNN-titre>/texte.md  (CANON)
   │
   ▼
-ARCHIVISTE [narration-archiviste · Haiku · Claude]  (sur demande)
-  Régénère _index/, vérifie structure, reconstitue variantes culturelles
+ARCHIVISTE [narration-archiviste · Haiku · Claude]  (toutes les 5 histoires canon, ou si décision importante)
+  Régénère _index/, vérifie structure, met à jour equipe/brief-univers.md
 ```
 
 ---
@@ -139,27 +140,74 @@ AUCUNE MÉMOIRE (stateless — contexte injecté à chaque appel)
 ## Workflow complet
 
 ```
+[PHASE 0 — INTAKE]
 Auteur dumpe → input-idees/
       ↓
-PMO scanne → tickets → pmo/backlog.md
+PMO scanne → crée ticket → pmo/backlog.md + sprint-log.md
+
+[PHASE 1 — BRIEF]
+Directeur lit ticket + personnages/INDEX + univers/INDEX + memoire-dir.md
+      ↓ (si doute science/sensibilité/angle)
+Directeur consulte panel → Kimi + Grok + Claude (quick pass)
       ↓
-Directeur challenge + consulte (si doute : Grok + Claude + Kimi léger)
+Archiviste crée le module histoire depuis le gabarit :
+  stories/<NNN-slug>/README.md   ← frontmatter pré-rempli (titre, persos, date)  [OBLIGATOIRE]
+  stories/<NNN-slug>/texte.md    ← vide                                           [OBLIGATOIRE]
+  (orchestration.md, archives/, comite-lecture/ → créés si besoin, pas par défaut)
       ↓
-Directeur crée brief → workshop/<titre>/brief.md
+Directeur produit 3 fichiers dans workshop/<titre>/ :
+  brief-univers.md   ← copie de equipe/brief-univers.md (inchangée)
+  brief-personnages.md  ← rempli depuis equipe/brief-personnages-template.md
+  brief-histoire.md     ← rempli depuis equipe/brief-histoire-template.md
       ↓
-Writers × 5 (parallèles, indépendants) → 5 versions
+PMO log → sprint-log.md
+
+[PHASE 2 — ÉCRITURE × 5 (parallèle)]
+Directeur injecte les 3 briefs aux 5 writers simultanément
+  Kimi        → workshop/<titre>/version-kimi.md
+  DeepSeek    → workshop/<titre>/version-deepseek.md
+  Grok        → workshop/<titre>/version-grok.md
+  Claude Libre  → workshop/<titre>/version-claude-libre.md
+  Claude Ancré  → workshop/<titre>/version-claude-ancre.md
       ↓
-Directeur synthétise → version de travail
+PMO log → sprint-log.md
+
+[PHASE 3 — SYNTHÈSE]
+Directeur lit 5 versions → sélectionne, combine
       ↓
-Relecture : Kimi + Claude → notes dans workshop/<titre>/relecture.md
+Directeur produit → workshop/<titre>/synthese.md
       ↓
-Directeur intègre → choix final + rédaction Claude
+PMO log → sprint-log.md
+
+[PHASE 4 — RELECTURE]
+Directeur envoie synthese.md à Kimi + Claude relecteur
+  → workshop/<titre>/relecture.md
+Directeur intègre → workshop/<titre>/version-finale.md
       ↓
-Keeper valide → PASS → stories/<NNN-titre>/texte.md (CANON)
+PMO log → sprint-log.md
+
+[PHASE 5 — KEEPER]
+Keeper valide version-finale.md
+  ✅ PASS → canon
+  ❌ FAIL → retour Directeur (motif) → retour phase 3 ou 4
       ↓
-PMO ferme ticket · Archiviste met à jour _index/
+PMO log → sprint-log.md
+
+[PHASE 6 — CANON + CLÔTURE]
+Directeur écrit → stories/<NNN-slug>/texte.md  (CANON)
+Directeur complète → stories/<NNN-slug>/orchestration.md (qui/où/quoi/Kishōtenketsu final)
       ↓
-Archive → archive/YYYY-MM-DD-<sujet>.md
+Archiviste :
+  → remplit stories/<NNN-slug>/README.md YAML final (mots, keeper_passed, themes...)
+  → régénère _index/ (by-character, by-theme, by-status, stats)
+  → vérifie structure (README + texte obligatoires — le reste optionnel)
+  → crée archives/v1-YYYY-MM-DD.md SEULEMENT si V2 prévue ou comité de lecture prévu
+  (si histoire N° multiple de 5 → met aussi à jour equipe/brief-univers.md)
+      ↓
+PMO ferme ticket → backlog.md · decisions.md · sprint-log.md
+      ↓
+Directeur met à jour → stories/INDEX.md
+Directeur archive session → archive/YYYY-MM-DD-<titre>.md
 ```
 
 ---
@@ -180,33 +228,45 @@ Archive → archive/YYYY-MM-DD-<sujet>.md
 ### Court terme — prompts templates (à copier dans leurs interfaces)
 
 ```
-Kimi / DeepSeek / Grok — WRITER
-  → Reçoivent : brief + règles univers résumées + consigne style libre
-  → Produisent : texte brut (pas de commentaires)
+Kimi / DeepSeek / Grok / Claude Libre — WRITER
+  → Reçoivent : brief-univers.md + brief-personnages.md + brief-histoire.md
+  → Produisent : texte brut (pas de commentaires, pas de titre)
 
 Kimi — RELECTEUR
-  → Reçoit : brief + version synthétisée
+  → Reçoit : brief-univers.md + brief-histoire.md + synthese.md
   → Produit : 3-5 remarques prioritaires (ton · rythme · émotion)
 
-Kimi / Grok — VALIDATION LÉGÈRE
+Kimi / Grok — CONSULTATION PANEL (science ou sensibilité)
   → Reçoivent : texte + question ciblée (science OU sensibilité)
   → Produisent : verdict + raison en 2-3 lignes
+
+Kimi / Grok — CONSULTATION PANEL (angle / lecture)
+  → Reçoivent : brief-histoire.md + idée ou direction à évaluer
+  → Produisent : avis de lecteur (pas de simulation de personnage)
 ```
 
-### Moyen terme — MCP tools
+### MCP tools — opérationnels (2026-04-28)
 
-Ajouter dans `.mcp.json` : `kimi-writer`, `deepseek-writer`, `grok-writer`, `kimi-review`
-appelables directement depuis Claude Code via l'API de chaque modèle.
+`ask_kimi`, `ask_deepseek`, `ask_grok` dans `~/.claude.json` (global).
+Serveur : `mcp/server.ts` (bun). Headers Claude Code requis pour Kimi. Pas de `max_tokens` — chaque modèle utilise sa limite native.
+
+### Briefs — fichiers de référence
+
+| Fichier | Qui le crée | Fréquence | Injecté à |
+|---------|------------|-----------|-----------|
+| `equipe/brief-univers.md` | Archiviste | Toutes les 5 histoires canon | tous les writers + relecteurs |
+| `workshop/<titre>/brief-personnages.md` | Directeur | Chaque histoire | tous les writers |
+| `workshop/<titre>/brief-histoire.md` | Directeur | Chaque histoire | tous les writers |
 
 ---
 
-## À implémenter (ticket ARCHI-004)
+## État ARCHI-004 (soldé 2026-04-28)
 
-- [ ] Créer `narration-writer-claude-libre.md` (agent Sonnet stateless)
-- [ ] Créer `narration-writer-claude-ancre.md` (agent Sonnet avec mémoire)
-- [ ] Créer `equipe/memoire-writer-ancre.md`
-- [ ] Créer `equipe/prompts-externes/writer-brief.md` (template brief → Kimi/DS/Grok)
-- [ ] Créer `equipe/prompts-externes/relecteur-kimi.md`
-- [ ] Créer `equipe/prompts-externes/validation-legere.md`
-- [ ] MCP tools (kimi/deepseek/grok) → `.mcp.json`
-- [ ] Supprimer/archiver `narration-writer-a/b/c.md` (remplacés)
+- [x] `narration-writer-claude-libre.md` créé
+- [x] `narration-writer-claude-ancre.md` créé
+- [x] `equipe/memoire-writer-ancre.md` créé
+- [x] Briefs stateless : `equipe/brief-univers.md` · `brief-personnages-template.md` · `brief-histoire-template.md`
+- [x] MCP tools Kimi/DeepSeek/Grok opérationnels (serveur `mcp/server.ts`)
+- [ ] Supprimer/archiver `narration-writer-a/b/c.md` (remplacés — à faire)
+- [ ] `equipe/prompts-externes/relecteur-kimi.md` (templates copier-coller — à faire)
+- [ ] `equipe/prompts-externes/validation-legere.md` (à faire)

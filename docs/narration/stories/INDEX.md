@@ -9,8 +9,8 @@
 
 | Métrique | Valeur |
 |----------|--------|
-| Histoires canon | **1** |
-| Histoires en atelier | **0** |
+| Histoires canon | **2** |
+| Histoires en atelier | **0** (003 en backlog — workshop pas encore ouvert) |
 | Total axes en stock | **15** (10 unitaires + 5 transversaux) |
 
 ---
@@ -20,6 +20,7 @@
 | # | Titre | Statut | Palier | Personnages | Mots | Date validation |
 |---|-------|--------|--------|-------------|------|-----------------|
 | 001 | Le Pont Cassé | `canon` | P2 | Wex, Melki, Juju | ~750 | 2026-04-24 |
+| 002 | Le Rire qui reste | `canon` | P1 | Wex, Nono, Polo | 489 | 2026-04-28 |
 
 ---
 

@@ -28,7 +28,6 @@ async function callOpenAICompat(
         { role: "system", content: systemPrompt },
         { role: "user", content: userPrompt },
       ],
-      max_tokens: 2048,
     }),
   });
 
@@ -75,7 +74,11 @@ server.tool(
     if (!apiKey) return { content: [{ type: "text", text: "Erreur: MOONSHOT_API_KEY non définie." }], isError: true };
     const systemPrompt = context ? `Tu es un assistant expert. Contexte fourni:\n\n${context}` : "Tu es un assistant expert, précis et concis.";
     try {
-      const result = await callOpenAICompat("https://api.kimi.com/coding/v1", apiKey, "kimi-for-coding", systemPrompt, prompt, { "User-Agent": "claude-code/1.0" });
+      const result = await callOpenAICompat("https://api.kimi.com/coding/v1", apiKey, "kimi-for-coding", systemPrompt, prompt, {
+        "User-Agent": "claude-code/1.9.0 (win32; x64)",
+        "X-Client-Name": "claude-code",
+        "X-Client-Version": "1.9.0",
+      });
       return { content: [{ type: "text", text: result }] };
     } catch (e) {
       return { content: [{ type: "text", text: `Erreur Kimi: ${(e as Error).message}` }], isError: true };

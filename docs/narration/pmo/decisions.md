@@ -179,3 +179,4 @@
 | 12 | Quand Wex commence à contrôler sa Vision causale ? (S1/S2/S3) | Non | — |
 | 13 | Mentor de Wex — qui ? Quel âge ? Quelle sensibilité ? | Non | — |
 | 14 | Castings cross-country (Hébreu, Ghibli, Swahili…) — démarrer lequel en premier ? | Oui pour S2 | `../personnages/prénoms-par-origine.md` |
+| 15 | Mémoire narrative des lecteurs — les enfants connaîtront les histoires précédentes et feront des liens. Comment en tenir compte dans l'écriture (callbacks implicites, évolution persos, arcs longs) ? À partir de quelle histoire introduire ce niveau de couche ? | Non | — |

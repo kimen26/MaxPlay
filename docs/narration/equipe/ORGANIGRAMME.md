@@ -71,6 +71,7 @@ ARCHIVISTE [narration-archiviste · Haiku · Claude]  (toutes les 5 histoires ca
 | `narration-writer-claude-ancre` | Sonnet | Writer ancré — angle spécifique, **avec mémoire** | `memoire-writer-ancre.md` | `INDEX.md` · `personnages/` |
 | `narration-keeper` | Haiku | Gardien univers (fin de cycle) | `memoire-keeper.md` | `lookup.yml` · `univers/INDEX.md` |
 | `narration-archiviste` | Haiku | Index, structure dossiers | — | `_index/` · `lookup.yml` |
+| `narration-lecteur` | Sonnet | Lecteur témoin — incarne un profil injecté par le Directeur | — | `equipe/profils-lecteurs.md` |
 
 ### Externes stateless
 
@@ -180,9 +181,18 @@ Directeur produit → workshop/<titre>/synthese.md
 PMO log → sprint-log.md
 
 [PHASE 4 — RELECTURE]
-Directeur envoie synthese.md à Kimi + Claude relecteur
+Directeur envoie synthese.md à Kimi + Claude relecteur (style/rythme/émotion)
   → workshop/<titre>/relecture.md
 Directeur intègre → workshop/<titre>/version-finale.md
+      ↓
+PMO log → sprint-log.md
+
+[PHASE 4b — LECTEURS TÉMOINS (optionnel — si doute réception)]
+Directeur injecte version-finale.md + profil dans narration-lecteur (Claude)
+  ou utilise templates equipe/prompts-externes/lecteurs/ pour Kimi/Grok
+  Profils disponibles : enfant-4ans · enfant-9ans · parent · editeur-jeunesse · filtre-culturel
+  → texte libre d'abord, questions de cadrage ensuite si besoin
+  → workshop/<titre>/lecteurs-temoins.md
       ↓
 PMO log → sprint-log.md
 

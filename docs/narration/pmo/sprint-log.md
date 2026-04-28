@@ -6,6 +6,30 @@
 
 ---
 
+## 2026-04-28 — Process complet · Série Parole · STORY-002
+
+**Objectif :** Rodage du workflow éditorial complet. Écriture et canonisation de l'histoire 002.
+
+**Fait :**
+- [x] Création agents `narration-writer-claude-libre` + `narration-writer-claude-ancre` + `memoire-writer-ancre.md`
+- [x] Création briefs stateless : `equipe/brief-univers.md` · `brief-personnages-template.md` · `brief-histoire-template.md`
+- [x] ARCHI-004 soldé (nouveau process 5 writers opérationnel)
+- [x] Tickets STORY-002 à 006 ouverts (série "La Parole")
+- [x] STORY-002 "Le Rire qui reste" — process complet : briefs → 5 writers → synthèse → relecture → Keeper PASS → canon
+- [x] stories/002-le-rire-qui-reste/texte.md canonisé (489 mots · Wex · Nono · Polo)
+- [x] STORY-003 "La Confidence" ouvert en cours
+
+**À faire :**
+- [ ] STORY-003 La Confidence (Wex · Jérem · Raph) — prochain cycle
+- [ ] STORY-004 à 006 en file
+- [ ] STORY-001-V2 en attente auteur
+
+**Notes process :**
+- Kimi MCP non fonctionnel (2 appels = vide) — à investiguer
+- Décision éditoriale : pas d'épilogue italique à partir de 002 (Le Pont Cassé seul avec cette structure)
+
+---
+
 ## 2026-04-27 — Architecture + setup PMO
 
 **Objectif :** Nettoyer la structure docs/, créer le rôle PMO, trier les inputs.

@@ -1,5 +1,6 @@
 import { Bot, Context, InlineKeyboard } from "grammy";
 import { homedir } from "os";
+import { randomUUID } from "crypto";
 
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const ALLOWED_CHAT_ID = process.env.ALLOWED_CHAT_ID
@@ -23,6 +24,29 @@ const histories = new Map<number, Message[]>();
 
 // Permissions en attente : reqId → { resolve }
 const pendingPermissions = new Map<string, (allow: boolean) => void>();
+
+// ─── Buffer pour messages longs découpés par Telegram ─────────────────────────
+
+const MESSAGE_BUFFER_MS = 1500; // délai d'attente entre morceaux
+
+interface MessageBuffer {
+  parts: string[];
+  timer: ReturnType<typeof setTimeout>;
+  thinkingMsgId?: number;
+}
+
+const messageBuffers = new Map<number, MessageBuffer>();
+
+async function flushBuffer(chatId: number) {
+  const buffer = messageBuffers.get(chatId);
+  if (!buffer) return;
+  messageBuffers.delete(chatId);
+
+  const fullText = buffer.parts.join("\n");
+  if (!fullText.trim()) return;
+
+  await processUserMessage(chatId, fullText, buffer.thinkingMsgId);
+}
 
 // ─── Historique ──────────────────────────────────────────────────────────────
 
@@ -76,7 +100,8 @@ Bun.serve({
       // Claude Code envoie {tool_name, tool_input} ou le payload brut du hook
       const tool_name = (body.tool_name ?? body.tool ?? "outil inconnu") as string;
       const tool_input = body.tool_input ?? body;
-      const reqId = `perm_${Date.now()}`;
+      const reqId = randomUUID();
+      console.log(`[PERM] Nouvelle demande ${reqId} — outil: ${tool_name}`);
 
       // Formater l'input pour affichage
       const inputStr = JSON.stringify(tool_input, null, 2);
@@ -91,6 +116,7 @@ Bun.serve({
         `🔐 *Demande de permission*\n\n*Outil :* \`${tool_name}\`\n\n\`\`\`json\n${preview}\n\`\`\``,
         { parse_mode: "Markdown", reply_markup: keyboard }
       );
+      console.log(`[PERM] Message envoyé sur Telegram pour ${reqId}`);
 
       // Attendre la réponse Telegram (max 5 min)
       const allow = await new Promise<boolean>((resolve) => {
@@ -98,11 +124,14 @@ Bun.serve({
         setTimeout(() => {
           if (pendingPermissions.has(reqId)) {
             pendingPermissions.delete(reqId);
+            console.log(`[PERM] Timeout expiré pour ${reqId} → refus auto`);
             resolve(false);
             bot.api.sendMessage(ALLOWED_CHAT_ID!, "⏰ Permission expirée (5 min) — refusée.").catch(() => {});
           }
         }, 5 * 60 * 1000);
       });
+
+      console.log(`[PERM] Décision pour ${reqId} : ${allow ? "ALLOW" : "DENY"}`);
 
       // Format de réponse attendu par le hook PermissionRequest de Claude Code
       return Response.json(
@@ -149,10 +178,48 @@ bot.on("message:text", async (ctx) => {
     return;
   }
 
-  const userMessage = ctx.message.text;
   const chatId = ctx.chat.id;
+  const text = ctx.message.text;
+  const existing = messageBuffers.get(chatId);
+
+  if (existing) {
+    // Message suivant : on l'ajoute au buffer et on repousse le timer
+    existing.parts.push(text);
+    clearTimeout(existing.timer);
+    existing.timer = setTimeout(() => flushBuffer(chatId), MESSAGE_BUFFER_MS);
+    return;
+  }
+
+  // Premier morceau : on crée le buffer et on affiche le message "réfléchit"
+  const agent = detectAgent(text);
+  const thinking = await ctx.reply(
+    `${AGENT_EMOJI[agent]} Claude réfléchit… _(agent : ${agent})_`,
+    { parse_mode: "Markdown" }
+  );
+
+  messageBuffers.set(chatId, {
+    parts: [text],
+    timer: setTimeout(() => flushBuffer(chatId), MESSAGE_BUFFER_MS),
+    thinkingMsgId: thinking.message_id,
+  });
+});
+
+async function processUserMessage(
+  chatId: number,
+  userMessage: string,
+  thinkingMsgId?: number
+) {
   const agent = detectAgent(userMessage);
-  const thinking = await ctx.reply(`${AGENT_EMOJI[agent]} Claude réfléchit… _(agent : ${agent})_`, { parse_mode: "Markdown" });
+
+  let thinkingId = thinkingMsgId;
+  if (!thinkingId) {
+    const msg = await bot.api.sendMessage(
+      chatId,
+      `${AGENT_EMOJI[agent]} Claude réfléchit… _(agent : ${agent})_`,
+      { parse_mode: "Markdown" }
+    );
+    thinkingId = msg.message_id;
+  }
 
   try {
     const promptWithHistory = buildPromptWithHistory(chatId, userMessage);
@@ -161,41 +228,62 @@ bot.on("message:text", async (ctx) => {
     addToHistory(chatId, "user", userMessage);
     addToHistory(chatId, "assistant", response.slice(0, 1000));
 
-    await ctx.api.deleteMessage(chatId, thinking.message_id).catch(() => {});
+    await bot.api.deleteMessage(chatId, thinkingId).catch(() => {});
     for (const chunk of splitMessage(response)) {
-      await ctx.reply(chunk, { parse_mode: "Markdown" }).catch(() => ctx.reply(chunk));
+      await bot.api
+        .sendMessage(chatId, chunk, { parse_mode: "Markdown" })
+        .catch(() => bot.api.sendMessage(chatId, chunk));
     }
   } catch (err) {
-    await ctx.api.deleteMessage(chatId, thinking.message_id).catch(() => {});
-    await ctx.reply(`❌ Erreur : ${err instanceof Error ? err.message : String(err)}`);
+    await bot.api.deleteMessage(chatId, thinkingId).catch(() => {});
+    await bot.api.sendMessage(
+      chatId,
+      `❌ Erreur : ${err instanceof Error ? err.message : String(err)}`
+    );
     console.error(err);
   }
-});
+}
 
 // ─── Callbacks (permissions) ──────────────────────────────────────────────────
 
 bot.on("callback_query:data", async (ctx) => {
   const data = ctx.callbackQuery.data;
-  await ctx.answerCallbackQuery();
+  console.log(`[CALLBACK] Reçu : ${data}`);
+
+  try {
+    await ctx.answerCallbackQuery();
+  } catch (e) {
+    console.log("[CALLBACK] answerCallbackQuery a échoué :", e);
+  }
 
   if (data.startsWith("perm_allow_")) {
     const reqId = data.replace("perm_allow_", "");
+    console.log(`[CALLBACK] Autoriser demandé pour ${reqId}`);
     const resolve = pendingPermissions.get(reqId);
     pendingPermissions.delete(reqId);
     if (resolve) {
+      console.log(`[CALLBACK] Résolution ALLOW pour ${reqId}`);
       resolve(true);
-      await ctx.editMessageText("✅ Permission accordée.");
+      await ctx.editMessageText("✅ Permission accordée.").catch((e) => console.log("[CALLBACK] editMessageText fail:", e));
+    } else {
+      console.log(`[CALLBACK] reqId ${reqId} introuvable dans pendingPermissions`);
+      await ctx.editMessageText("⚠️ Cette demande a déjà été traitée ou a expiré.").catch(() => {});
     }
     return;
   }
 
   if (data.startsWith("perm_deny_")) {
     const reqId = data.replace("perm_deny_", "");
+    console.log(`[CALLBACK] Refus demandé pour ${reqId}`);
     const resolve = pendingPermissions.get(reqId);
     pendingPermissions.delete(reqId);
     if (resolve) {
+      console.log(`[CALLBACK] Résolution DENY pour ${reqId}`);
       resolve(false);
-      await ctx.editMessageText("❌ Permission refusée.");
+      await ctx.editMessageText("❌ Permission refusée.").catch((e) => console.log("[CALLBACK] editMessageText fail:", e));
+    } else {
+      console.log(`[CALLBACK] reqId ${reqId} introuvable dans pendingPermissions`);
+      await ctx.editMessageText("⚠️ Cette demande a déjà été traitée ou a expiré.").catch(() => {});
     }
     return;
   }

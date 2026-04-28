@@ -127,6 +127,40 @@
 
 ---
 
+## 2026-04-28 — Process éditorial 5 writers + briefs stateless
+
+**Décision :** Workflow en 6 phases (INTAKE → BRIEF → ÉCRITURE × 5 → SYNTHÈSE → RELECTURE → KEEPER → CANON). PMO hub post-phase à chaque étape.
+
+**Briefs injectés aux writers stateless :** 3 fichiers séparés par histoire :
+- `equipe/brief-univers.md` — monde, ton, règles (mis à jour par Archiviste toutes les 5 histoires)
+- `workshop/<titre>/brief-personnages.md` — casting + traits comportementaux (pas d'ennéatypes)
+- `workshop/<titre>/brief-histoire.md` — sujet, Ki-Sho-Ten-Ketsu, angle, contraintes
+
+**Writers × 5 :** Kimi (reasoning, no reasoning en pratique via headers Claude Code) · DeepSeek · Grok · Claude Libre (stateless) · Claude Ancré (avec mémoire inter-histoires).
+
+**Raison :** rodage sur STORY-002 — process validé, Keeper PASS au premier essai.
+
+---
+
+## 2026-04-28 — MCP Kimi : headers obligatoires + pas de max_tokens
+
+**Décision :**
+- Kimi For Coding nécessite `X-Client-Name: claude-code` + `X-Client-Version: 1.9.0` + `User-Agent: claude-code/1.9.0 (win32; x64)` — sinon `access_terminated_error`
+- `max_tokens` supprimé de tous les appels MCP — chaque modèle utilise sa limite native
+- Kimi utilise `kimi-for-coding` (reasoning) mais produit du texte narratif de qualité
+
+**Raison :** bug découvert en production STORY-002. Fix appliqué dans `mcp/server.ts`.
+
+---
+
+## 2026-04-28 — Pas d'épilogue italique à partir de STORY-002
+
+**Décision :** "Le Pont Cassé" avait un épilogue en italique (*Ce qu'on construit à trois…*). À partir de 002, le texte se tient seul — pas d'épilogue. Le Pont Cassé reste tel quel (premier texte, posture de présentation).
+
+**Raison :** retour relecture STORY-002 — l'histoire se termine sur une image, pas besoin de méta-commentaire.
+
+---
+
 ## Questions ouvertes (à trancher)
 
 | # | Question | Bloquant ? | Fichier |

@@ -10,7 +10,7 @@
 
 | # | Perso valorisé | Qualité promue | Problématique / morale implicite | Décor / amorce | Autres persos pressentis | Statut |
 |---|---------------|----------------|----------------------------------|----------------|---------------------------|--------|
-| H-01 | Melki (Titi1) · Juju (Titi8) | Minutie + courage d'essayer | On répare ensemble ce qu'on ne peut pas faire seul | Pont cassé dans le quartier | Wex | ✅ écrit (V1) — *Le Pont Cassé* |
+| H-01 | Melki (Titi1) · Juju (Titi8) | Minutie + courage d'essayer | On répare ensemble ce qu'on ne peut pas faire seul | Pont cassé dans le quartier | Wex | ✅ canon (V1) — *Le Pont Cassé* |
 | H-02 | **Lulu (Titi5)** | Savoir sans dominer | Poser la bonne question vaut plus que donner la réponse | Un arbre dont personne ne reconnaît les feuilles | Wex · Mimi | 💡 idée |
 | H-03 | **Mimi (Titi2)** | Aider sans s'oublier | Aider quelqu'un c'est parfois… ne rien faire à sa place | Un compagnon d'un autre enfant qui refuse d'avancer | Pierrot · Nono | 💡 idée |
 | H-04 | **Polo (Titi3)** | Briller pour partager, pas pour se comparer | La meilleure idée du groupe n'est pas forcément la sienne | Une cabane qu'on construit à plusieurs | Jérem · Raph | 💡 idée |
@@ -20,6 +20,21 @@
 | H-08 | **Juju (Titi8)** | Protéger sans écraser | La force au service du plus doux | Un plus petit enfant dont personne ne voit le problème | Mimi · Nono | 💡 idée |
 | H-09 | **Nono (Titi9)** | Dire ce qu'on pense vraiment | Le calme n'est pas l'absence d'avis | Une dispute qu'il préfère ne pas voir | Juju · Melki | 💡 idée |
 | H-10 | **Wex** (observateur) | Voir ce que personne ne regarde | Être là change ce qui se passe, même sans parler | Un lieu qui a l'air "normal" mais ne l'est pas | Tous en arrière-plan | 💡 idée |
+
+---
+
+## Série "La Parole" — STORY-002 à 006 (en cours 2026-04-28)
+
+> Série thématique indépendante des axes H-XX. Histoires autour du poids des mots.
+> Brief complet dans `input-idees/serie-parole-briefs.md`.
+
+| STORY | Titre | Facette | Persos | Statut |
+|-------|-------|---------|--------|--------|
+| 002 | Le Rire qui reste | Rire du malheur d'un autre | Wex · Polo · **Nono** | ✅ canon |
+| 003 | La Confidence | Répéter ce qu'on n'aurait pas dû | Wex · **Jérem** · Raph | 🟡 en cours |
+| 004 | Cartable-à-trou | Surnom qui colle | Polo · **Lulu** · Mimi · Wex | ⚪ à faire |
+| 005 | Le Mardi | Promesse oubliée | Wex · **Pierrot** · Melki | ⚪ à faire |
+| 006 | Sept à rien | Mot dit en colère | **Juju** · **Mimi** · Wex | ⚪ à faire |
 
 ---
 

@@ -89,7 +89,8 @@
       "Bash([ -f \"$base/$f\" ])",
       "mcp__llm-copains__ask_kimi",
       "mcp__llm-copains__ask_deepseek",
-      "mcp__llm-copains__ask_grok"
+      "mcp__llm-copains__ask_grok",
+      "Edit(~/.claude/skills/prompt-architect/**)"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\temp",

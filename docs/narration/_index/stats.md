@@ -4,14 +4,15 @@
 
 | Métrique | Valeur |
 |----------|--------|
-| Total histoires | 1 |
-| Total mots | 750 |
-| Mots moyens/histoire | 750 |
+| Total histoires | 2 |
+| Total mots | 1239 |
+| Mots moyens/histoire | 620 |
 
 ## Par statut
 
-- canon: 1
+- canon: 2
 
 ## Par palier
 
+- P1: 1
 - P2: 1

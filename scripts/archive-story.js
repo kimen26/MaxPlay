@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * archive-story.js — Promouvoir un workshop en canon
- * Usage : node scripts/archive-story.js WIP-002-parapluie-oublie
+ * Usage : node scripts/archive-story.js 002-le-rire-qui-reste
  */
 
 const fs = require('fs');
@@ -9,7 +9,7 @@ const path = require('path');
 
 const WORKSHOP_DIR = path.join(__dirname, '..', 'docs', 'narration', 'workshop');
 const STORIES_DIR = path.join(__dirname, '..', 'docs', 'narration', 'stories');
-const ARCHIVE_DIR = path.join(__dirname, '..', 'docs', 'narration', 'editorial-board', 'archive');
+const EDITORIAL_ARCHIVE_DIR = path.join(__dirname, '..', 'docs', 'narration', 'editorial-board', 'archive');
 
 function getNextNumber() {
   const entries = fs.readdirSync(STORIES_DIR, { withFileTypes: true });
@@ -35,20 +35,21 @@ function copyDir(src, dest) {
 }
 
 function main() {
-  const wipName = process.argv[2];
-  if (!wipName) {
-    console.error('Usage: node scripts/archive-story.js WIP-002-parapluie-oublie');
+  const workshopName = process.argv[2];
+  if (!workshopName) {
+    console.error('Usage: node scripts/archive-story.js 002-le-rire-qui-reste');
     process.exit(1);
   }
 
-  const wipDir = path.join(WORKSHOP_DIR, wipName);
-  if (!fs.existsSync(wipDir)) {
-    console.error(`Erreur : Workshop ${wipDir} introuvable.`);
+  const workshopDir = path.join(WORKSHOP_DIR, workshopName);
+  if (!fs.existsSync(workshopDir)) {
+    console.error(`Erreur : Workshop ${workshopDir} introuvable.`);
     process.exit(1);
   }
 
-  // Extraire le slug (après WIP-NNN-)
-  const slug = wipName.replace(/^WIP-\d+-/, '');
+  // Accepter aussi l'ancien format WIP-NNN-slug pour compatibilité
+  const cleanName = workshopName.replace(/^WIP-\d+-/, '');
+  const slug = cleanName.replace(/^\d+-/, '');
   const num = getNextNumber();
   const storyDir = path.join(STORIES_DIR, `${num}-${slug}`);
 
@@ -58,12 +59,12 @@ function main() {
   }
 
   // Copier le workshop vers stories/
-  copyDir(wipDir, storyDir);
+  copyDir(workshopDir, storyDir);
 
-  // Déplacer le workshop vers archive/
-  const archiveWipDir = path.join(ARCHIVE_DIR, `${new Date().toISOString().split('T')[0]}-${wipName}`);
+  // Archiver le workshop (déplacer)
+  const archiveWipDir = path.join(EDITORIAL_ARCHIVE_DIR, `${new Date().toISOString().split('T')[0]}-${workshopName}`);
   fs.mkdirSync(path.dirname(archiveWipDir), { recursive: true });
-  fs.renameSync(wipDir, archiveWipDir);
+  fs.renameSync(workshopDir, archiveWipDir);
 
   console.log(`✅ Canonisé : stories/${num}-${slug}/`);
   console.log(`   → Workshop archivé : ${archiveWipDir}`);

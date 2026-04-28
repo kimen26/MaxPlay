@@ -6,19 +6,44 @@ type: reference
 
 ## Agents spécialisés MaxPlay (`.claude/agents/`)
 
+### Équipe Narrative
+
 | Agent | Modèle | Utiliser quand |
 |-------|--------|----------------|
-| `narration` | Opus | Directeur éditorial — orchestration narration, histoires, personnages |
-| `narration-writer-a` | Sonnet | Writer sobre / Kishōtenketsu |
-| `narration-writer-b` | Sonnet | Writer sensoriel / poétique |
-| `narration-writer-c` | Sonnet | Writer dynamique / dialogues |
-| `narration-science` | Haiku | Expert sciences (biorésonance, physique) |
-| `narration-sensibilite` | Sonnet | Expert sensibilité lecteurs |
-| `narration-keeper` | Haiku | Gardien cohérence univers |
+| `narration` | Opus | Directeur éditorial — orchestration narration, histoires, personnages, briefs, synthèse |
+| `narration-pmo` | Haiku | Gestion projet narration — tickets, backlog, sprint-log, traçabilité |
+| `narration-writer-claude-libre` | Sonnet | Writer angle libre, instinctif, stateless |
+| `narration-writer-claude-ancre` | Sonnet | Writer avec mémoire inter-histoires, continuité éditoriale |
+| `narration-keeper` | Haiku | Validation finale PASS/FAIL — ennéagramme, univers, prénoms, structure |
+| `narration-archiviste` | Haiku | Index, structure dossiers, YAML, génération `_index/` |
+| `narration-science` | Haiku | Expert sciences — biorésonance, physique, validation factuelle |
+| `narration-sensibilite` | Sonnet | Expert sensibilité lecteurs — topics sensibles, complotisme, polarisation |
+| `narration-lecteur` | Sonnet | Lecteur témoin — simule un profil injecté par le Directeur |
+| `narration-showrunner` | Sonnet | Cohérence de série — arcs longs, callbacks, évolution personnages |
+| `narration-audio` | Sonnet | Brief audio par histoire — rythme, pauses, intonation, voix ElevenLabs |
+| `narration-lecteur-dyade` | Sonnet | Simulation lecture parent-enfant à voix haute — friction, improvisation |
+| `narration-localisation` | Sonnet | Adaptation culturelle — variantes cross-country, prénoms, rituels |
+
+### Équipe Jeu
+
+| Agent | Modèle | Utiliser quand |
+|-------|--------|----------------|
 | `game-dev` | Sonnet | Développement jeux HTML vanilla + Phaser |
 | `quick` | Haiku | Questions rapides, status, recherches légères |
 
+> **Agents obsolètes (archivés dans `.claude/agents/archive/`) :** `narration-writer-a`, `narration-writer-b`, `narration-writer-c`
+
 > Agents globaux disponibles (`~/.claude/agents/`) : planner, architect, code-reviewer, tdd-guide, security-reviewer, build-error-resolver, refactor-cleaner, e2e-runner, doc-updater
+
+## Writers externes (stateless — contexte injecté à chaque appel)
+
+| Modèle | Version cible | Angle assigné | Rôle principal |
+|--------|--------------|---------------|----------------|
+| **Kimi 1** | 2.6+ (no reasoning) | Sobre / Kishōtenketsu classique | Writer |
+| **Kimi 2** | 2.6+ (no reasoning) | Sensoriel / poétique / textures | Writer |
+| **DeepSeek 1** | latest (no reasoning) | Sobre / Kishōtenketsu classique | Writer |
+| **DeepSeek 2** | latest (no reasoning) | Sensoriel / atmosphère / matières | Writer |
+| **Grok** | latest (no reasoning) | Dynamique / dialogues / rythme | Writer |
 
 ## Skills projet (`.claude/skills/`)
 

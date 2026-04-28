@@ -9,6 +9,7 @@ const path = require('path');
 
 const STORIES_DIR = path.join(__dirname, '..', 'docs', 'narration', 'stories');
 const INDEX_DIR = path.join(__dirname, '..', 'docs', 'narration', '_index');
+const STORIES_INDEX_PATH = path.join(STORIES_DIR, 'INDEX.md');
 
 function parseFrontmatter(content) {
   const match = content.match(/^---\n([\s\S]*?)\n---/);
@@ -16,11 +17,21 @@ function parseFrontmatter(content) {
   const lines = match[1].split('\n');
   const data = {};
   let current = data;
-  const stack = [];
+  const stack = [data];
+  let lastIndent = 0;
+
   for (const line of lines) {
     const trimmed = line.trim();
     if (!trimmed || trimmed.startsWith('#')) continue;
     const indent = line.search(/\S/);
+
+    // Gestion des retours d'indentation
+    while (stack.length > 0 && indent < lastIndent && stack.length > 1) {
+      stack.pop();
+      current = stack[stack.length - 1] || data;
+    }
+    lastIndent = indent;
+
     const keyMatch = trimmed.match(/^([\w-]+):\s*(.*)$/);
     if (keyMatch) {
       const [, key, val] = keyMatch;
@@ -28,6 +39,9 @@ function parseFrontmatter(content) {
         current[key] = {};
         current = current[key];
         stack.push(current);
+      } else if (val.startsWith('[') && val.endsWith(']')) {
+        // Tableau inline YAML [a, b, c]
+        current[key] = val.slice(1, -1).split(',').map(s => s.trim()).filter(s => s.length > 0);
       } else {
         current[key] = val.replace(/^["'](.*)["']$/, '$1');
       }
@@ -136,6 +150,24 @@ function generateStats(stories) {
   return md;
 }
 
+function generateStoriesIndex(stories) {
+  let md = '# Index des Histoires\n\n> Auto-généré par narration-archiviste. Dernière mise à jour : ' + new Date().toISOString().split('T')[0] + '\n\n';
+  md += '| # | Titre | Statut | Mots | Personnages | Thème principal |\n';
+  md += '|---|-------|--------|------|-------------|-----------------|\n';
+  for (const s of stories.sort((a, b) => parseInt(a.fm.numero) - parseInt(b.fm.numero))) {
+    const num = s.fm.numero || '???';
+    const titre = s.fm.titre || 'Sans titre';
+    const statut = s.fm.statut || 'unknown';
+    const mots = s.fm.editorial?.mots || '?';
+    const persos = (s.fm.personnages?.liste || []).join(', ') || '—';
+    const theme = s.fm.themes?.principal || '—';
+    md += `| ${num} | [${titre}](${s.dir}/README.md) | ${statut} | ${mots} | ${persos} | ${theme} |\n`;
+  }
+  md += '\n---\n\n';
+  md += '## Axes en stock\n\nVoir [axes-histoires-en-stock.md](axes-histoires-en-stock.md)\n';
+  return md;
+}
+
 function main() {
   fs.mkdirSync(INDEX_DIR, { recursive: true });
   const stories = loadStories();
@@ -149,8 +181,12 @@ function main() {
   fs.writeFileSync(path.join(INDEX_DIR, 'by-moral.md'), '# Index par morale/valeur\n\n> Auto-généré. Ne pas éditer.\n\n_(À implémenter quand le champ `morale_implicite` sera standardisé.)_\n');
   fs.writeFileSync(path.join(INDEX_DIR, 'by-age.md'), '# Index par palier d\'âge\n\n> Auto-généré. Ne pas éditer.\n\nVoir [stats.md](stats.md) pour le résumé par palier.\n');
 
+  // Mise à jour du catalogue maître
+  fs.writeFileSync(STORIES_INDEX_PATH, generateStoriesIndex(stories));
+
   console.log(`✅ Index régénérés dans ${INDEX_DIR}/`);
   console.log(`   ${stories.length} histoire(s) indexée(s).`);
+  console.log(`   ${STORIES_INDEX_PATH} mis à jour.`);
 }
 
 main();

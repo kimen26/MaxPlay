@@ -10,16 +10,17 @@ type: reference
 
 | Agent | Modèle | Utiliser quand |
 |-------|--------|----------------|
-| `narration` | Opus | Directeur éditorial — orchestration narration, histoires, personnages, briefs, synthèse |
+| `narration` | Opus | Directeur éditorial — sélection, rewrite, validation finale |
 | `narration-pmo` | Haiku | Gestion projet narration — tickets, backlog, sprint-log, traçabilité |
 | `narration-writer-claude-libre` | Sonnet | Writer angle libre, instinctif, stateless |
-| `narration-writer-claude-ancre` | Sonnet | Writer avec mémoire inter-histoires, continuité éditoriale |
-| `narration-keeper` | Haiku | Validation finale PASS/FAIL — ennéagramme, univers, prénoms, structure |
+| `narration-conseiller` | Opus | Binôme créatif — challenge, pitch, carte narrative |
+| `narration-architecte` | Sonnet | Plan d'Histoire — structure, persos, contraintes |
+| `narration-gatekeeper` | Haiku | Validation finale PASS/FAIL — ennéagramme, univers, prénoms, structure |
 | `narration-archiviste` | Haiku | Index, structure dossiers, YAML, génération `_index/` |
 | `narration-science` | Haiku | Expert sciences — biorésonance, physique, validation factuelle |
 | `narration-sensibilite` | Sonnet | Expert sensibilité lecteurs — topics sensibles, complotisme, polarisation |
-| `narration-lecteur` | Sonnet | Lecteur témoin — simule un profil injecté par le Directeur |
-| `narration-showrunner` | Sonnet | Cohérence de série — arcs longs, callbacks, évolution personnages |
+| `narration-lecteur` | Sonnet | Lecteur témoin enfant — réaction émotionnelle pure |
+| `narration-lecteur-dyade` | Sonnet | Lecteur témoin dyade parent-enfant — friction, improvisation |
 | `narration-audio` | Sonnet | Brief audio par histoire — rythme, pauses, intonation, voix ElevenLabs |
 | `narration-lecteur-dyade` | Sonnet | Simulation lecture parent-enfant à voix haute — friction, improvisation |
 | `narration-localisation` | Sonnet | Adaptation culturelle — variantes cross-country, prénoms, rituels |
@@ -31,19 +32,18 @@ type: reference
 | `game-dev` | Sonnet | Développement jeux HTML vanilla + Phaser |
 | `quick` | Haiku | Questions rapides, status, recherches légères |
 
-> **Agents obsolètes (archivés dans `.claude/agents/archive/`) :** `narration-writer-a`, `narration-writer-b`, `narration-writer-c`
+> **Anciens agents supprimés :** `narration-writer-a`, `narration-writer-b`, `narration-writer-c`, `narration-writer-claude-ancre`, `narration-keeper`, `narration-showrunner`
 
 > Agents globaux disponibles (`~/.claude/agents/`) : planner, architect, code-reviewer, tdd-guide, security-reviewer, build-error-resolver, refactor-cleaner, e2e-runner, doc-updater
 
 ## Writers externes (stateless — contexte injecté à chaque appel)
 
-| Modèle | Version cible | Angle assigné | Rôle principal |
-|--------|--------------|---------------|----------------|
-| **Kimi 1** | 2.6+ (no reasoning) | Sobre / Kishōtenketsu classique | Writer |
-| **Kimi 2** | 2.6+ (no reasoning) | Sensoriel / poétique / textures | Writer |
-| **DeepSeek 1** | latest (no reasoning) | Sobre / Kishōtenketsu classique | Writer |
-| **DeepSeek 2** | latest (no reasoning) | Sensoriel / atmosphère / matières | Writer |
-| **Grok** | latest (no reasoning) | Dynamique / dialogues / rythme | Writer |
+| Angle | Modèle possible | Rôle |
+|-------|-----------------|------|
+| **A — Sobre** (Kishōtenketsu rigoureux, gestes, narration sobre) | Kimi / DeepSeek | Writer |
+| **B — Sensoriel** (textures, matières, poésie du concret) | Kimi / DeepSeek | Writer |
+| **C — Dynamique** (dialogues vifs, rythme, échanges rapides) | Grok | Writer |
+| **D — Instinct/Libre** (angle libre, surprise, ton auteur) | Claude Libre (`narration-writer-claude-libre`) | Writer |
 
 ## Skills projet (`.claude/skills/`)
 

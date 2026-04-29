@@ -6,7 +6,7 @@ statut: canon
 version_active: v1
 date_creation: 2026-04-28
 date_validation: 2026-04-28
-keeper_passed: true
+gatekeeper_passed: true
 
 editorial:
   structure: Kishotenketsu
@@ -56,7 +56,7 @@ relations:
 
 > **Module :** `stories/002-le-rire-qui-reste/`  
 > **Créé le :** 2026-04-28  
-> **Statut :** `canon` · V1 validée 2026-04-28 · Keeper PASS  
+> **Statut :** `canon` · V1 validée 2026-04-28 · GateKeeper PASS  
 > **Texte courant :** [`texte.md`](texte.md)
 
 ---
@@ -75,10 +75,10 @@ Après la pluie, Nono glisse dans une flaque de boue en courant après le ballon
 
 ## Process d'écriture (nouveau workflow)
 
-- 5 writers en parallèle : DeepSeek · Grok · Claude Libre · Claude Ancré · ~~Kimi~~ (MCP opérationnel en cours de session)
-- Synthèse Directeur : rythme DeepSeek + images Claude Ancré ("chaud du bois du banc") + Claude Libre ("dent en moins", la pie)
+- 5 writers en parallèle : DeepSeek · Grok · Claude Libre · ~~Claude Ancré~~ · ~~Kimi~~ *(MCP opérationnel en cours de session)*
+- Synthèse Directeur : rythme DeepSeek + images Claude Ancré *(agent historique, supprimé)* ("chaud du bois du banc") + Claude Libre ("dent en moins", la pie)
 - Relecture : Claude (Kimi MCP réparé en cours de session)
-- Keeper : PASS premier essai
+- GateKeeper : PASS premier essai
 
 ## Prochaines étapes
 

@@ -9,7 +9,7 @@ const path = require('path');
 
 const WORKSHOP_DIR = path.join(__dirname, '..', 'docs', 'narration', 'workshop');
 const STORIES_DIR = path.join(__dirname, '..', 'docs', 'narration', 'stories');
-const EDITORIAL_ARCHIVE_DIR = path.join(__dirname, '..', 'docs', 'narration', 'editorial-board', 'archive');
+const WORKSHOP_ARCHIVE_DIR = path.join(__dirname, '..', 'docs', 'narration', 'archive', 'workshop');
 
 function getNextNumber() {
   const entries = fs.readdirSync(STORIES_DIR, { withFileTypes: true });
@@ -62,7 +62,7 @@ function main() {
   copyDir(workshopDir, storyDir);
 
   // Archiver le workshop (déplacer)
-  const archiveWipDir = path.join(EDITORIAL_ARCHIVE_DIR, `${new Date().toISOString().split('T')[0]}-${workshopName}`);
+  const archiveWipDir = path.join(WORKSHOP_ARCHIVE_DIR, `${new Date().toISOString().split('T')[0]}-${workshopName}`);
   fs.mkdirSync(path.dirname(archiveWipDir), { recursive: true });
   fs.renameSync(workshopDir, archiveWipDir);
 

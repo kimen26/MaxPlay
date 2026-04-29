@@ -12,7 +12,7 @@
 | Personnages | 9 définis (ennéagramme) — ✅ **casting V1 "Christ" validé** (Melki, Marie, Paul, Jérémie, Luc, Pierre, **Raph**, Judith, Noé) + **Wex héros hors-système** (pas d'ennéatype). Notation `TypeN`/`TitiN × origine` pour écrire les textes. Propagation dans les fiches à faire. |
 | Univers | post-Éveil, Printemps de l'Éveil — distillé dans `univers/` |
 | Direction | **monde sobre, merveilleux discret** (vu à travers enfant né dedans) |
-| Histoires | "Le Pont Cassé" (Wex + Melki/Titi1 + Juju/Titi8) — V1 complète, comité de lecture fait, V2 à faire (3 modifs prio). |
+| Histoires | "Le Pont Cassé" (001) — canon · "Le Rire qui reste" (002) — canon · "La Confidence" (003) — en workshop |
 | Nom univers | **non tranché** → `univers/nom-candidats.md` |
 
 ---
@@ -62,14 +62,13 @@
 |---------|------|
 | [equipe/ORGANIGRAMME.md](equipe/ORGANIGRAMME.md) | **Qui fait quoi — lire avant d'appeler un agent** |
 | [equipe/cartographie-domaines.md](equipe/cartographie-domaines.md) | **Où va quelle info · qui décide · invariants** |
-| [equipe/profils-lecteurs.md](equipe/profils-lecteurs.md) | Fiches 4F · 4M · 9F · 9M · Parent · Éditeur · Prof · Philo · 8 cultures |
+| [equipe/profils-lecteurs.md](equipe/profils-lecteurs.md) | Profils lecteurs témoins : enfant 4-6 ans, parent (dyade), éditeur jeunesse (optionnel) |
 | [equipe/sources-sciences.md](equipe/sources-sciences.md) | Refs documentaires (C'est pas sorcier, La Vie...) |
 | [equipe/sources-sensibilite.md](equipe/sources-sensibilite.md) | Catalogue topics sensibles / conspirationnistes |
+| [equipe/memoire-conseiller.md](equipe/memoire-conseiller.md) | Mémoire Conseiller Narratif (arcs, saisons, feedback) |
+| [equipe/memoire-architecte.md](equipe/memoire-architecte.md) | Mémoire Architecte (plans, structures) |
 | [equipe/memoire-dir.md](equipe/memoire-dir.md) | Mémoire Directeur Éditorial |
-| [equipe/memoire-writer-a/b/c.md](equipe/) | Mémoire Writers (séparées) |
-| [equipe/memoire-science.md](equipe/memoire-science.md) | Mémoire Expert Sciences |
-| [equipe/memoire-sensibilite.md](equipe/memoire-sensibilite.md) | Mémoire Expert Sensibilité (décisions OUI/NON) |
-| [equipe/memoire-keeper.md](equipe/memoire-keeper.md) | Mémoire Keeper |
+| [equipe/memoire-gatekeeper.md](equipe/memoire-gatekeeper.md) | Mémoire GateKeeper (erreurs récurrentes) |
 
 ### PMO (gestion de projet)
 | Fichier | Rôle |
@@ -85,7 +84,7 @@
 |---------|------|
 | [input-idees/](input-idees/) | **Zone de dump brut** — un fichier par session/sujet (format `YYYY-MM-DD-sujet.md`) |
 | [archive/](archive/) | Sessions archivées (rien n'est effacé) |
-| [workshop/](workshop/) | Brouillons en cours (brief · versions A/B/C · final) |
+| [workshop/](workshop/) | Brouillons en cours (pitch · plan · 4 versions · rewrite · GateKeeper) |
 
 ### Reference (matière de fond, pas quotidien)
 | Fichier | Quand le lire |
@@ -107,16 +106,24 @@
 
 ---
 
-## Workflow brainstorm → fichiers stables
+## Workflow narratif (à jour)
 
 ```
-Chatbot / session
+Auteur → input-idees/ → Conseiller (binôme + pitch)
       ↓
-  INBOX.md  ←  dump daté (hook commit auto)
-      ↓  (quand tranché)
-  univers/ · personnages/ · stories/  ←  fichiers stables
+Architecte → Plan d'Histoire
       ↓
-  INBOX vidé des sections distillées
+4 Writers → versions complètes + notes d'intention
+      ↓
+Lecteurs témoins (enfant ×2 + dyade ×2) → réactions texte libre
+      ↓
+Directeur → sélection + brief de rewrite
+      ↓
+Rewrite (1 cycle max)
+      ↓
+GateKeeper → validation technique → PASS
+      ↓
+Version finale → stories/<NNN-slug>/texte.md
 ```
 
 **Règle :** un INDEX ne contient jamais de contenu canon, seulement des pointeurs.

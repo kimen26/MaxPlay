@@ -6,7 +6,7 @@ statut: draft              # draft / canon / archived
 version_active: v1
 date_creation: YYYY-MM-DD
 date_validation: null
-keeper_passed: false
+gatekeeper_passed: false
 
 editorial:
   structure: Kishotenketsu

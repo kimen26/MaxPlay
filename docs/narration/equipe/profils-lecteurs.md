@@ -7,132 +7,61 @@
 
 ## Format de retour — Lecteur Témoin
 
-> Ce format s'applique quand le Directeur demande à un profil de réagir à un texte.
-> **Priorité absolue : le texte libre.** Les questions structurées viennent après, et sont facultatives.
+> **Texte libre obligatoire.** Pas de grille, pas de cases, pas de note sur 10.
+> Le lecteur réagit comme un humain.
 
-### Étape 1 — Réaction libre (OBLIGATOIRE)
-
-Le lecteur exprime ce qu'il a ressenti, dans ses propres mots, sans grille.
-Aucune contrainte de format. Peut être : une impression, une image, un doute, une émotion, un "ça m'a fait penser à...".
+### Enfant seul (lecture silencieuse ou écoute)
 
 ```
-[Texte libre — de 2 lignes à un paragraphe. Ce qui a résonné, ce qui a coincé, ce qui a surpris.]
+J'ai aimé : [ce qui a fait sourire, ce que je retiens, ce que je voudrais revoir]
+J'ai pas trop aimé : [ce qui m'a perdu, ce que j'ai pas compris, ce qui m'a ennuyé]
+Ce que je retiens : [1-2 images ou moments précis]
+Questions : [si j'ai demandé "pourquoi ?" à un moment]
 ```
 
-### Étape 2 — Questions de cadrage (OPTIONNEL — seulement si la réaction libre ne suffit pas)
+### Dyade parent-enfant (lecture à voix haute)
 
-Le Directeur peut poser jusqu'à 3 questions ciblées après la réaction libre.
-Ne jamais poser les questions avant le texte libre — cela biaiserait la lecture.
+```
+### Voix Enfant (réaction en direct)
+J'ai aimé : [...]
+J'ai pas compris : [...]
+J'ai demandé pendant la lecture : [...]
+Ce que je retiens : [1-2 images précises]
 
-Questions types selon profil :
-- **Enfant** : "Tu te souviens de quoi à la fin ?" / "Qui tu préfères dans l'histoire ?"
-- **Parent** : "Tu lirais ça à ton enfant ?" / "Il y a quelque chose qui t'a mis mal à l'aise ?"
-- **Éditeur** : "Tu tournes la page ?" / "Qu'est-ce qui manque ?"
-- **Filtre culturel** : "Est-ce que ça sonne juste pour [culture] ?" / "Qu'est-ce qui paraît étranger ?"
-
-### Principe
-
-> Un lecteur témoin ne remplit pas une grille. Il réagit d'abord comme un humain.
-> La structure sert à orienter la discussion — pas à la remplacer.
+### Voix Parent (observation après lecture)
+Ce qui a bien fonctionné à la lecture : [...]
+Moments où mon enfant s'est accroché / a décroché : [...]
+Vocabulaire ou tournure qui a posé problème : [...]
+Rythme de la lecture à voix haute : [fluide / haché / trop dense / parfait]
+Note sur la fin : [...]
+```
 
 ---
 
-## Enfants
+## Profils utilisés
 
-### Fille 4 ans
+### Enfant 4-6 ans (lecture seule)
 - **Vocabulaire** : ~500 mots courants, pas d'abstractions
-- **Aime** : animaux, couleurs vives, magie simple, amitié, choses qui bougent
-- **Comprend** : situations concrètes, émotions basiques (content/triste/peur/surpris), cause→effet immédiat
-- **Durée attention** : 3-5 min, besoin de rebonds réguliers
-- **🚩 Red flags** : mots abstraits ("responsabilité", "destin"), plus de 3 personnages actifs, retournements complexes, longueur > 500 mots
+- **Aime** : animaux, couleurs vives, choses qui bougent, répétitions rythmées
+- **Comprend** : situations concrètes, émotions basiques, cause→effet immédiat
+- **Durée attention** : 3-5 min
+- **🚩 Red flags** : mots abstraits ("responsabilité", "destin"), plus de 3 personnages actifs, retournements complexes
 
-### Garçon 4 ans _(= Max, notre lecteur de référence)_
-- **Vocabulaire** : similaire fille 4 ans + champs lexicaux spécifiques (véhicules, chiffres, animaux)
-- **Aime** : bus, véhicules, chiffres, bruits, répétitions rythmées, "encore !"
-- **Comprend** : règles claires, comptage, comparaisons de taille/vitesse
-- **🚩 Red flags** : passivité narrative totale, absence de mouvement ou bruit, texte trop contemplatif
+### Parent lisant à l'enfant
+- **Cherche** : un moment de connexion, un texte qu'on a envie de relire
+- **Valorise** : rythme fluide à la lecture à voix haute, dialogues qui sonnent juste
+- **Note** : où l'enfant s'accroche, où il décroche, quel vocabulaire pose problème
 
-### Fille 9 ans
-- **Vocabulaire** : lit seule, comprend l'ironie légère, registres variés
-- **Aime** : relations complexes, émotions nuancées, injustice/justice, personnages qui évoluent
-- **Comprend** : motivations multiples, retournements de situation, ellipses narratives
-- **🚩 Red flags** : sexisme implicite (même involontaire), personnages féminins passifs, fin trop facile
-
-### Garçon 9 ans
-- **Vocabulaire** : similaire fille 9 ans
-- **Aime** : aventure, défi physique ou intellectuel, humour, fair-play, compétition saine
-- **Comprend** : stratégie, règles du jeu, cause→effet lointain
-- **🚩 Red flags** : longueur sans action ni progression, personnages trop passifs, morale trop appuyée
+### Éditeur jeunesse (optionnel)
+- **Cherche** : originalité, structure solide, potentiel de série
+- **Exige** : longueur adaptée, cohérence interne
+- **🚩** : clichés, morale explicite, langueur
 
 ---
 
-## Adultes proches
+## Profils écartés
 
-### Père
-- **Valeurs** : courage, honnêteté, travail bien fait, autonomie
-- **Cherche** : modèles positifs réalistes, pas de morale creuse ni de résolution magique
-- **🚩 Red flags** : victimisation sans issue, message trop "soft" ou condescendant
-
-### Mère
-- **Valeurs** : bienveillance, sécurité émotionnelle, diversité, résilience
-- **Cherche** : empathie représentée, enfants qui expriment leurs émotions sainement
-- **🚩 Red flags** : violence même légère non traitée, stéréotypes de genre, anxiété sans résolution
-
-### Éditeur jeunesse
-- **Cherche** : originalité du dispositif narratif, structure solide, potentiel de série, accroche première page
-- **Exige** : longueur adaptée à l'âge cible, cohérence interne, pas de trou de plot
-- **🚩 Red flags** : clichés de genre (princesse sauvée, méchant grotesque), morale explicite en fin, langueur en milieu de texte
-
-### Prof français
-- **Cherche** : richesse et variété du vocabulaire, syntaxe adaptée mais stimulante, ponctuation juste
-- **Valorise** : figures de style simples (comparaison, répétition, onomatopée), dialogue bien rendu
-- **🚩 Red flags** : répétitions lexicales excessives, phrases trop longues pour l'âge cible, registre incohérent
-
-### Philosophe
-- **Cherche** : question éthique implicite, tension morale non résolue artificiellement, profondeur discrète
-- **Valorise** : fin ouverte qui fait penser, personnages avec une vraie intériorité
-- **🚩 Red flags** : manichéisme (tout bon/tout mauvais), solution trop facile, univers sans conséquences réelles
-
----
-
-## Filtres culturels (8 cultures)
-
-### 🇺🇸 USA
-- Attend : arc narratif clair, protagoniste actif, happy ending ou résolution positive
-- Sensible à : diversité de représentation, messages sur l'effort individuel
-- 🚩 : nihilisme, ambiguïté sans résolution, passivité du héros
-
-### 🇩🇪 DE (Allemagne)
-- Attend : qualité narrative, logique interne, conséquences justes aux actions
-- Sensible à : pédagogie implicite, exactitude factuelle
-- 🚩 : flou narratif, incohérences, fin sans logique
-
-### 🇨🇳 CN (Chine)
-- Attend : harmonie collective, valeurs familiales, respect de la nature et des anciens
-- Sensible à : réussite par la persévérance collective
-- 🚩 : individualisme excessif, irrévérence envers les aînés, chaos sans ordre restauré
-
-### 🇳🇬 NG (Nigeria)
-- Attend : liens communautaires forts, rythme oral (répétitions, formules), nature vivante
-- Sensible à : sagesse transmise entre générations, animaux comme messagers
-- 🚩 : isolement du héros, ville > nature sans nuance, conclusion sans retour au groupe
-
-### 🇯🇵 JP (Japon)
-- Attend : beauté des détails, ma (pause/silence chargé de sens), harmonie du groupe
-- Sensible à : non-dit expressif, esthétique, modestie du héros
-- 🚩 : agressivité non nuancée, trop explicite, individualisme non tempéré
-
-### 🇲🇦 MA (Maroc)
-- Attend : chaleur familiale, sens de la communauté, nature bienveillante
-- Sensible à : spiritualité discrète, hospitalité comme valeur, enfants respectueux
-- 🚩 : irrespect envers les adultes sans conséquence, matérialisme affiché
-
-### 🇧🇷 BR (Brésil)
-- Attend : joie, chaleur, diversité naturelle, rythme dans la langue
-- Sensible à : représentation de la diversité ethnique, nature luxuriante, fête collective
-- 🚩 : tristesse sans lumière, exclusion sociale non traitée, uniformité culturelle
-
-### 🇷🇺 RU (Russie)
-- Attend : profondeur émotionnelle, nature comme personnage à part entière, ambiguïté acceptable
-- Sensible à : mélancolie productive, force intérieure, hiver/froid comme contexte symbolique
-- 🚩 : happy ending trop facile, légèreté excessive, absence de profondeur
+> Les profils suivants ne sont plus utilisés dans le workflow standard :
+> - Prof de français (le vocabulaire est géré dans le brief et les briefs writers)
+> - Philosophe (la profondeur émerge de l'histoire, pas d'analyse philosophique)
+> - Filtres culturels × 8 (réservés aux variantes culturelles si localisation demandée)

@@ -6,7 +6,7 @@ statut: canon
 version_active: v1
 date_creation: 2026-04-11
 date_validation: 2026-04-24
-keeper_passed: true
+gatekeeper_passed: true
 
 editorial:
   structure: Kishotenketsu
@@ -78,6 +78,6 @@ Le pont au-dessus du ruisseau est cassé depuis l'été. Wex saute sans réfléc
 
 - [x] Texte V1
 - [x] Comité de lecture (7 profils + 8 cultures)
-- [x] Keeper validation
+- [x] GateKeeper validation
 - [x] Archive snapshot
 - [ ] **V2** — 3 modifications prioritaires (voir [`comite-lecture/v1-retours.md`](comite-lecture/v1-retours.md))

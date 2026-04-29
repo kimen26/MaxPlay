@@ -61,8 +61,8 @@ docs/
     │   └── enneagramme-9-niveaux-riso-hudson.md
     ├── equipe/                ← Mémoires agents + organigramme éditorial
     │   ├── ORGANIGRAMME.md
-    │   ├── memoire-dir.md · memoire-writer-a/b/c.md
-    │   ├── memoire-science.md · memoire-sensibilite.md · memoire-keeper.md
+    │   ├── memoire-conseiller.md · memoire-architecte.md · memoire-dir.md · memoire-gatekeeper.md
+    │   ├── memoire-science.md · memoire-sensibilite.md
     │   ├── profils-lecteurs.md
     │   └── sources-sciences.md · sources-sensibilite.md
     ├── input-idees/           ← Zone de dump brut idées narration

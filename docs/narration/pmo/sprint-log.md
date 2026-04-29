@@ -6,16 +6,50 @@
 
 ---
 
+## 2026-04-28 — STORY-003 "La Confidence" — Pipeline complet 8 writers
+
+**Objectif :** Lancer STORY-003 avec le nouveau workflow 8 writers + angles assignés.
+
+**Fait :**
+- [x] 3 briefs produits (univers + personnages + histoire) dans `workshop/003-la-confidence/`
+- [x] 8 versions écrites parallèlement (Kimi 1/2 · DeepSeek 1/2 · Grok · Claude Libre · Claude Dialogue · Claude Ancré)
+- [x] Synthèse Directeur : analyse comparative des 8 versions
+- [x] version-finale.md rédigée (~520 mots · Wex · Jérem · Raph)
+- [x] Relecture simulée (Kimi + Claude) — 5 remarques prioritaires
+- [x] Keeper PASS — 8/8 critères validés
+- [x] Longueur : ~520 mots (fourchette 400-700 ✅)
+- [x] Dialogues : Jérem 6 répliques, Wex 7, Raph 2 ✅
+
+**À faire :**
+- [ ] Canonisation (texte.md + README.md + orchestration.md)
+- [ ] Comité de lecture (optionnel — 3ème histoire de la série, pas de nouveau perso principal)
+- [ ] Mémoires à mettre à jour (conseiller + architecte + dir + gatekeeper)
+- [ ] Index à régénérer
+
+**Notes process :**
+- Premier test du workflow 8 writers — fonctionnel
+- Claude Dialogue très courte (157 mots) mais pertinente comme variant
+- Kimi MCP toujours non testé — versions Kimi simulées par le Directeur
+- Pattern "objet porteur" confirmé (dessin plié en quatre)
+- Pattern "son qui porte" : zip cliqueta, papier craqua
+
+**État au reboot :**
+- STORY-003 en attente de canonisation
+- 8 versions disponibles dans `workshop/003-la-confidence/`
+- version-finale.md prête pour comité ou canon direct
+
+---
+
 ## 2026-04-28 — Process complet · Série Parole · STORY-002
 
 **Objectif :** Rodage du workflow éditorial complet. Écriture et canonisation de l'histoire 002.
 
 **Fait :**
-- [x] Création agents `narration-writer-claude-libre` + `narration-writer-claude-ancre` + `memoire-writer-ancre.md`
-- [x] Création briefs stateless : `equipe/brief-univers.md` · `brief-personnages-template.md` · `brief-histoire-template.md`
-- [x] ARCHI-004 soldé (nouveau process 5 writers opérationnel)
+- [x] Création agents `narration-writer-claude-libre` + `narration-writer-claude-ancre` + `memoire-writer-ancre.md` *(anciens agents supprimés le 2026-04-28 — voir ARCHI-005)*
+- [x] Création briefs stateless : `equipe/brief-univers.md` · `brief-personnages-template.md` · `brief-histoire-template.md` *(remplacés par `workshop/_gabarit/plan-histoire.md` le 2026-04-28 — voir ARCHI-005)*
+- [x] ARCHI-004 soldé (process 5 writers — remplacé par ARCHI-005 à 4 writers)
 - [x] Tickets STORY-002 à 006 ouverts (série "La Parole")
-- [x] STORY-002 "Le Rire qui reste" — process complet : briefs → 5 writers → synthèse → relecture → Keeper PASS → canon
+- [x] STORY-002 "Le Rire qui reste" — process complet : briefs → 5 writers → synthèse → relecture → GateKeeper PASS → canon
 - [x] stories/002-le-rire-qui-reste/texte.md canonisé (489 mots · Wex · Nono · Polo)
 - [x] STORY-003 "La Confidence" ouvert en cours
 
@@ -49,7 +83,7 @@
 **À faire (prochaine session) :**
 - [ ] INPUT-001 : distiller les 7 fichiers input-idees — trier par thème (ennéagramme symbolique / JP Petit)
 - [ ] STORY-001-V2 : appliquer 3 modifs comité sur Pont Cassé
-- [ ] Tester workflow PMO → Dir → Writer A/B/C → Keeper sur un vrai brief
+- [ ] Tester workflow PMO → Dir → 4 writers → GateKeeper sur un vrai brief
 
 **État au reboot :**
 - PMO opérationnel, structure propre
@@ -63,16 +97,16 @@
 **Objectif :** Migrer vers `stories/`, activer pipeline éditorial complet.
 
 **Fait :**
-- [x] Structure `stories/`, `workshop/`, `editorial-board/`, `_index/`
+- [x] Structure `stories/`, `workshop/`, `editorial-board/` *(supprimé le 2026-04-28, remplacé par `pmo/`)*, `_index/`
 - [x] Template `_gabarit/`
 - [x] Migration *Le Pont Cassé* → `stories/001-le-pont-casse/`
 - [x] Scripts `new-story.js`, `archive-story.js`, `generate-index.js`
-- [x] Mémoires writers A/B/C + agent `narration-archiviste`
+- [x] Mémoires writers + agent `narration-archiviste`
 - [x] Premiers index `_index/` générés
 
 **État au reboot :**
 - Pipeline actif mais jamais testé end-to-end
-- Writers A/B/C, Keeper : jamais utilisés sur vrai brief
+- Writers externes + GateKeeper : jamais utilisés sur vrai brief avant le 2026-04-28
 
 ---
 

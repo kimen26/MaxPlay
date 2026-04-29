@@ -1,12 +1,18 @@
 # Personnages — Index
 
-> ✅ **Casting V1 validé 2026-04-24** — origine **France** (Christ).
+> ✅ **Casting V1 validé 2026-04-24** — origine **France** (Christ) — **un casting parmi N**.
 > ✅ **Structure multi-pays mise en place 2026-04-28** — un dossier par type, sous-dossier `pays/` pour les castings.
-> **Wex = héros hors-système** — jamais traduit, un seul casting universel.
-> Concept cross-country : les 9 types changent de prénom selon l'origine (fr, jp, sw, he...).
-> Le **caractère ennéatype et la sensibilité sont invariants** dans toutes les versions.
+> ✅ **Architecture cross-culture tranchée 2026-04-29** — voir [`../pmo/decisions.md`](../pmo/decisions.md) et [`../univers/architecture-cross-culture.md`](../univers/architecture-cross-culture.md).
+>
+> **Structure générale de l'univers :**
+> - **Wex** = archetype universel, **prénom invariant** (« Wex »), présent dans toutes les communautés / cultures.
+> - **9 compagnons** = ennéatypes invariants + sensibilités fixes, MAIS **prénoms variables par culture** (9 nouveaux prénoms par casting national) + vies adaptées au pays + **légère variance dans l'expression de l'ennéatype**.
+>
+> Le casting V1 « Christ » français = **un casting parmi N à venir**. Les 218 prénoms / 30 cultures de [`catalogue-prenoms/`](catalogue-prenoms/INDEX.md) sont la **base opérationnelle** pour construire les autres castings nationaux.
+>
 > → [lookup.yml](lookup.yml) pour la résolution des tokens `titi_N_pays`.
 > → [notation-types.md](notation-types.md) pour la convention `TypeN / TitiN × pays`.
+> → [catalogue-prenoms/INDEX.md](catalogue-prenoms/INDEX.md) pour les prénoms qualifiés des autres castings.
 
 ---
 
@@ -81,9 +87,35 @@ personnages/
 
 ---
 
+## Sensibilités différenciées (tranché 2026-04-29)
+
+> **Règle structurelle** : chaque personnage perçoit ce que les autres ne perçoivent pas. C'est de la **sensibilité différenciée** — **pas du savoir caché**. Aucune hiérarchie « Wex sait, les autres ignorent ».
+>
+> Voir `../pmo/decisions.md` (section *Sensibilité différenciée*) et `../univers/sensibilites.md`.
+
+| Perso | Type | Sensibilité | Statut |
+|-------|------|-------------|--------|
+| **Wex** | hors-système | À définir précisément — piste : écoute des fausses notes / lien soin-bioélectrique | 🟡 NARR-003 |
+| Melki | T1 | Minéraux | ✅ figé |
+| Mimi | T2 | Eau | ✅ figé |
+| Polo | T3 | Forces | ✅ figé |
+| Jérem | T4 | Fréquence | ✅ figé |
+| Lulu | T5 | Quantique | ✅ figé |
+| Pierrot | T6 | Animaux | ✅ figé |
+| Raph | T7 | Cosmos | ✅ figé |
+| Juju | T8 | Plantes | ✅ figé |
+| Nono | T9 | Vibration collective | ✅ figé |
+
+**Révélation progressive** : les sensibilités sont peu/pas présentes en début S1, affleurent en milieu/fin S1, sont **mises en avant en S2** (saison des visites — Wex chez chaque copain). Voir `../pmo/roadmap.md`.
+
+**Détail à creuser** : ce que perçoit *exactement* Wex (NARR-003) — à définir progressivement via les histoires, idéalement en début S2 quand sa propre découverte devient le sujet.
+
+---
+
 ## Ressources transversales
 
 - [Eneagramme/situations/interactions.md](../Eneagramme/situations/interactions.md) — tableau 9×9 des interactions
 - [Eneagramme/situations/emotions-universelles.md](../Eneagramme/situations/emotions-universelles.md) — 81 réactions
 - [reference/enneagramme-9-niveaux-riso-hudson.md](../reference/enneagramme-9-niveaux-riso-hudson.md) — niveaux Riso-Hudson
 - [univers/sensibilites.md](../univers/sensibilites.md) — doctrine des 9 sensibilités
+- [univers/compagnons.md](../univers/compagnons.md) — compagnons ondes/couleurs (distinct des sensibilités)

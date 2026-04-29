@@ -38,6 +38,24 @@
 
 ---
 
+## Amorces complémentaires — issues du brainstorm Grok mi-avril
+
+> Source : `archive/inputs-historiques/2026-04-13-20-echange-telegram.md` (l. 5269-5315 — 10 pitches "esprit MaxPlay" du 17/04).
+> Mapping prénoms anciens → V1 : Élia/Léo→Pierrot · Iris→Jérem · Sam→Juju · Theo→Lulu · Camille→Mimi · Noa→Nono · Lila→Polo · Wex inchangé.
+> Les pitches déjà couverts par H-01 à H-10 ne sont **pas** repris ici. Seules les variantes qui apportent un angle neuf sont stockées.
+
+| # | Perso valorisé | Qualité promue | Problématique / morale implicite | Décor / amorce | Statut |
+|---|----------------|----------------|----------------------------------|----------------|--------|
+| H-11 | **Wex** + Melki + Juju | Écouter avant de réparer | Parfois ce qui semble cassé a juste quelque chose à dire — on ne répare pas, on s'assoit | Un vieux bus dont le moteur fait une drôle de note | 💡 idée |
+| H-12 | **Juju (Titi8)** | Transformer la colère en jeu | La grande colère peut devenir une grande force quand on lui trouve un jeu | Une rivière qui a emporté son radeau · cailloux à lancer | 💡 idée |
+| H-13 | **Mimi (Titi2)** | Recevoir aussi, c'est un cadeau | Aider tout le temps empêche les autres d'aider à leur tour | Mimi a un chagrin et ne sait pas demander · Wex apporte une figue sans poser de question | 💡 idée |
+| T-06 | **Tous les 9 + Wex** (chœur) | Être la lumière ensemble | Quand le monde s'éteint, le cercle qu'on forme suffit | Une nuit sans étoiles · 9 bougies allumées une par une | 💡 stockée |
+
+> **Pitches déjà couverts** (pas repris) : Plume perdue (≈ H-05, T-02), Léo dit non (≈ H-06), Noa graines (≈ H-09), Theo cailloux (≈ H-02), Lila gagner (≈ H-04).
+> **Pitch écarté** : *Le Totem Janus endormi* — incompatible avec la direction "univers IMPLICITE / sobre" tranchée le 17/04 (un totem nommé en titre, des adultes qui s'inquiètent autour, c'est trop frontal sur la mécanique d'univers).
+
+---
+
 ## Axes transversaux (multi-persos, plusieurs tomes)
 
 | # | Thème | Qui porte | Quoi ça révèle | Statut |

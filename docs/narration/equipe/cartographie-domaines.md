@@ -213,6 +213,35 @@ Nouvelle info narrative
 
 ---
 
+## Éléments cross-culture — où va quelle info culturelle
+
+> Pattern moat : **même histoire × N cultures, geste change, ennéatype reste.**
+> Cette section trace où ranger la matière culturelle au fil de sa maturité.
+
+| Type d'info | Stade | Fichier cible | Qui maintient |
+|-------------|-------|---------------|---------------|
+| Sens culturel d'un objet/élément (pluie, feu, repas, silence…) | Note de pattern | `equipe/memoire-conseiller.md` (section "Patterns éditoriaux") | Conseiller |
+| Geste/comportement enfant par culture pour un même thème | Catalogue de variations | `stories/NNN-slug/variantes-culturelles/` | Archiviste (structure) + Directeur (contenu) |
+| Prénom + diminutif d'un perso dans une culture | Identité | `personnages/type-NN/pays/XX/identite.md` + `personnages/lookup.yml` | Directeur (choix) + Archiviste (lookup) |
+| Casting cross-country complet pour une culture | Catalogue | `personnages/catalogue-prenoms/` | Archiviste |
+| Profil lecteur d'une culture cible | Brief lecteur | `equipe/profils-lecteurs.md` | Directeur |
+
+**Premier exemple consigné — la pluie :**
+
+| Culture | Sens | Geste enfant |
+|---------|------|--------------|
+| Sahel | Bénédiction attendue | Danse sous l'orage |
+| Tokyo / Europe tempérée | Nuisance douce | S'abritent, observent les flaques |
+| São Paulo | Élément quotidien | Continuent, à peine ralentis |
+| Bombay / mousson | Saison entière | Jeux dédiés à la mousson |
+| Désert | Événement rare, sacré | Sortent exprès, en silence |
+
+→ détail et leçon V2→V3 dans `equipe/memoire-conseiller.md`.
+
+**Règle :** une variation culturelle ne descend dans `stories/.../variantes-culturelles/` qu'une fois la version FR canon. Avant ça → matière de pattern dans la mémoire Conseiller.
+
+---
+
 ## Invariants (non-négociables)
 
 1. **Canon = GateKeeper PASS** — aucun texte canon sans PASS GateKeeper
@@ -223,3 +252,6 @@ Nouvelle info narrative
 6. **`brief-univers.md` stateless** = toujours la version de `equipe/brief-univers.md` du jour — Archiviste recopie en Phase 1, ne pas éditer en workshop
 7. **PMO loggé à chaque phase** — sans log PMO, la phase n'est pas traçable
 8. **Un dossier workshop = une histoire** — pas de mélange entre titres
+9. **Saison 1 = prisme enfant pur** — les parents existent hors-cadre, ne sont **jamais** dans la scène. Pas de dialogue parent ↔ enfant, pas d'intervention parentale dans la résolution. Le foyer peut affleurer (un seuil, une voix au loin), le parent n'entre pas. Le filtre se relâche éventuellement en S2+ (modèle Bluey « bon assez parent »). Décision tranchée 2026-04-29 — voir `../pmo/decisions.md`.
+10. **Compagnons = ondes / couleurs émotionnelles** — jamais d'animaux, jamais de mascotte. Apparition progressive milieu/fin S1. Voir `../univers/compagnons.md`. Décision tranchée 2026-04-29.
+11. **Sensibilité différenciée, pas savoir caché** — chaque perso (les 9 + Wex) perçoit ce que les autres ne perçoivent pas. Pas de hiérarchie « Wex sait, les autres ignorent ». Décision tranchée 2026-04-29.

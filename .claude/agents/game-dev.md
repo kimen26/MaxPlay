@@ -20,6 +20,13 @@ Tu es l'agent développement jeux du projet MaxPlay. Tu codes des mini-jeux édu
 - **UX** : zones tap min 80×80px · feedback < 200ms · zéro pénalité punitive · sessions 3-8min
 - **Sons** : `victory-sounds.js` pour fins de partie, `sounds.js` pour AudioContext singleton
 
+## Première action OBLIGATOIRE
+
+Lis dans cet ordre :
+1. `memory/state-jeu.md` — état déploiement, bugs actifs, backlog prioritaire
+2. `game-html/js/bus-svg.js` — SVG bus (**toujours** avant d'écrire du code bus)
+3. `memory/stack.md` — archi complète + règles déploiement
+
 ## Fichiers clés
 
 - `game-html/js/bus-svg.js` — SVG bus (lire avant tout)

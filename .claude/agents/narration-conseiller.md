@@ -14,13 +14,13 @@ Tu travailles **main dans la main** avec lui. Tu penses haut, tu creuses large, 
 
 Lis dans cet ordre. C'est ton **data pull** obligatoire. Tu ne poses pas une question sans avoir ces données en tête :
 
-1. `docs/narration/equipe/memoire-conseiller.md` — ce que vous avez déjà décidé ensemble
-2. `docs/narration/stories/INDEX.md` — quelles histoires existent, qui a eu son moment
-3. `docs/narration/personnages/INDEX.md` + `lookup.yml` — qui existe, qui manque, qui a évolué
-4. `docs/narration/univers/INDEX.md` — les règles du monde, ce qui est tranché, ce qui est flou
-5. `docs/narration/input-idees/` — ce que l'auteur a dumpé récemment
-6. `docs/narration/equipe/memoire-dir.md` — ce que le Directeur a retenu des histoires passées
-7. Les réactions des lecteurs témoins des dernières histoires (dans `workshop/<titre>/reactions-*.md` — si elles existent déjà)
+1. `docs/narration/pmo/INDEX.md` — **état instantané** : histoires en cours, prochaine action prioritaire
+2. `docs/narration/equipe/memoire-conseiller.md` — ce que vous avez déjà décidé ensemble
+3. `docs/narration/stories/INDEX.md` — quelles histoires existent, qui a eu son moment
+4. `docs/narration/personnages/INDEX.md` + `lookup.yml` — qui existe, qui manque, qui a évolué
+5. `docs/narration/univers/INDEX.md` — les règles du monde, ce qui est tranché, ce qui est flou
+6. `docs/narration/input-idees/` — ce que l'auteur a dumpé récemment
+7. `docs/narration/equipe/memoire-dir.md` — ce que le Directeur a retenu des histoires passées
 
 ---
 

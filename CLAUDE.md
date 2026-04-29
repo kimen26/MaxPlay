@@ -1,19 +1,18 @@
 # MaxPlay — Jeu éducatif & Univers narratif pour Max (3.5-4 ans)
 
-## ROUTING — lis ce bloc en premier
+## ACTION OBLIGATOIRE — avant toute réponse
 
-Le projet a 2 pôles distincts. Identifie lequel concerne la demande puis lis
-**SEULEMENT** le bloc correspondant + le bloc COMMUN à la fin.
+**Étape 1 — Identifier le pôle :**
 
-- **Mots JEU** : jeu, téléphone, MJ, mini jeu, bus, dinosaure, mécanique, Phaser,
-  mj-XX, déploiement, game-html
-  → lire bloc `# PÔLE JEU`
+| Mots dans la demande | Pôle | Lire ensuite |
+|----------------------|------|-------------|
+| jeu · MJ · mini-jeu · bus · Phaser · mj-XX · déploiement · game-html | **JEU** | `memory/state-jeu.md` → `tasks/BACKLOG.md` |
+| narration · histoire · personnage · univers · ennéagramme · Wex/Melki/Mimi/Polo/Jérem/Lulu/Pierrot/Raph/Juju/Nono | **NARRATION** | `docs/narration/pmo/INDEX.md` → `docs/narration/INDEX.md` |
+| idée brute · dump · brainstorm sans contexte clair | **?** | Poser la question : "C'est pour le jeu ou pour les histoires ?" |
 
-- **Mots NARRATION** : narration, histoire, personnage, environnement, univers,
-  ennéagramme, Wex/Melki/Mimi/Polo/Jérem/Lulu/Pierrot/Raph/Juju/Nono, post-Éveil
-  → lire bloc `# PÔLE NARRATION`
-
-Si ambigu : demande à l'utilisateur avant d'avancer.
+**Étape 2 — Annoncer avant d'agir :**
+Dire en 1 ligne : *"Mode [JEU/NARRATION] — je charge [fichier] puis j'agis."*
+Ne jamais répondre sans avoir chargé le contexte du bon pôle.
 
 ---
 
@@ -45,8 +44,8 @@ GitHub Pages → kimen26.github.io/MaxPlay/
 
 CI : [.github/workflows/deploy.yml](.github/workflows/deploy.yml) assemble dans `_site/` (gitignored)
 
-## État jeux (2026-04-26)
-MJ-01 à MJ-20 déployés (mj-02, mj-03, mj-07, mj-10 retirés du menu). Voir [tasks/BACKLOG.md](tasks/BACKLOG.md) pour détail.
+## État jeux
+→ [memory/state-jeu.md](memory/state-jeu.md) — déployés, bugs actifs, backlog (toujours à jour)
 
 ---
 
@@ -74,16 +73,12 @@ MJ-01 à MJ-20 déployés (mj-02, mj-03, mj-07, mj-10 retirés du menu). Voir [t
 - `12-characters/` : enneagramme-system
 - `13-media/` : animation-screenplay
 
-## Personnages (9, ennéagramme)
-Casting V1 "Christ" **figé** (2026-04-24). Wex (#7 héros hors-système) + 9 compagnons.
+## État narration
+→ [memory/state-narration.md](memory/state-narration.md) — histoires, casting, workflow, agents (toujours à jour)
+
+## Personnages
+Casting V1 "Christ" **figé** (2026-04-24). Wex (héros hors-système) + 9 compagnons ennéagramme.
 Toujours lire [docs/narration/personnages/INDEX.md](docs/narration/personnages/INDEX.md) avant d'écrire.
-
-## Univers
-Futur proche post-Éveil. Nom non choisi (5 finalistes → [univers/nom-candidats.md](docs/narration/univers/nom-candidats.md)).
-Conscience créative · Compagnons animaux · Gardiens de l'Équilibre · Totems Janus · Grand Cycle 22k ans.
-
-## Histoires écrites
-"Le Pont Cassé" (Wex/#7 + Melki/#1 + Juju/#8) — V1 complète, comité de lecture fait
 
 ---
 
@@ -97,7 +92,9 @@ Origines brésiliennes. Voir [docs/MAX_PROFILE.md](docs/MAX_PROFILE.md).
 ## Fichiers transversaux
 | Fichier | Rôle |
 |---------|------|
-| [memory/MEMORY.md](memory/MEMORY.md) | État projet — chargé auto |
+| [memory/state-jeu.md](memory/state-jeu.md) | **État jeux** — déployés, bugs, backlog |
+| [memory/state-narration.md](memory/state-narration.md) | **État narration** — histoires, casting, agents |
+| [memory/MEMORY.md](memory/MEMORY.md) | Mémoire projet dense (archi, décisions historiques) |
 | [memory/workflow.md](memory/workflow.md) | Workflow session |
 | [memory/skills-map.md](memory/skills-map.md) | Agents, skills, commandes |
 | [docs/README.md](docs/README.md) | Carte documentation |

@@ -26,3 +26,14 @@
 ## Lien possible avec "Le Pont Cassé"
 
 La direction 1 (Ville Vivante) est celle où s'inscrit le mieux l'histoire du Pont Cassé — un pont qui "voulait" être réparé, des arbres qui vibrent au moment de la réparation, sans que ça soit explicite.
+
+---
+
+## Concepts écartés (Grok aetheria — challenge 2026-04-29)
+
+- **Grand Souvenir / mémoire trans-cyclique** *(écarté)* : mécanique narrative où les savoirs anciens dorment dans l'éther et se réactivent par contact (objet, livre, lieu).
+  - **Raison du rejet** : pas besoin. Les gens se sont réveillés naturellement avec le cycle du Grand Réveil — sensibilités qui arrivent, moins besoin de se battre pour énergie/stockage. La justification "Grand Souvenir" alourdit pour rien.
+- **Baron Lumière-Trump + montre temporelle + voyage dans le temps** *(écarté antérieurement, voir baron.md)*
+- **Cristaux marchant à la pensée, vélo qui vole, maison qui change de forme, ponts de lumière entre continents** *(écartés)* : trop spectaculaire — règle "merveilleux discret"
+- **Bulles de Déplacement, téléportation par visualisation** *(écartés)* : trop magique
+- **Lila Cœur-d'Or, Zephyr, Maître Étoile, Ombres Résiduelles** *(écartés)* : casting V1 figé, pas de figure d'autorité.

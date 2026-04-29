@@ -26,6 +26,19 @@ Les grandes routes de l'ancien monde ont été conservées mais transformées :
 
 ---
 
+## Les kiosques — anciens arrêts de bus reconvertis
+
+Vestiges de l'Ancien Temps réintégrés au quotidien sans qu'on en parle.
+
+- Toit en tuiles, banc, parfois une plaque où s'allument doucement des couleurs
+- Les couleurs sont les **traces des anciennes lignes de bus** (héritées des lignes RATP et équivalents) — devenues lignes d'énergie, sans usage de transport
+- Personne ne se souvient bien comment on y prenait un bus avant — pour les enfants, c'est un abri, un repère, parfois un lieu de halte ou de petit rituel informel
+- Implantés à intervalles réguliers dans les Harmonies — héritage du maillage urbain ancien
+
+**Règle narrative :** jamais expliqué dans les histoires. Le kiosque est juste là — un toit, un banc, une plaque qui change de couleur. Présence > description.
+
+---
+
 ## La technologie (non nommée dans l'univers)
 
 Mix de plusieurs principes — aucun ne doit être expliqué dans les histoires :

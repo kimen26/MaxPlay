@@ -65,6 +65,8 @@
 | [equipe/profils-lecteurs.md](equipe/profils-lecteurs.md) | Profils lecteurs témoins : enfant 4-6 ans, parent (dyade), éditeur jeunesse (optionnel) |
 | [equipe/sources-sciences.md](equipe/sources-sciences.md) | Refs documentaires (C'est pas sorcier, La Vie...) |
 | [equipe/sources-sensibilite.md](equipe/sources-sensibilite.md) | Catalogue topics sensibles / conspirationnistes |
+| [equipe/sources-narratologie.md](equipe/sources-narratologie.md) | **Étude narratologique cross-culture** — paliers mots/âge, Kishōtenketsu, simulation incarnée, ToM, modèles cross-culture (Architecte / Writers) |
+| [equipe/voix-enneatypes.md](equipe/voix-enneatypes.md) | **Étude vocale par ennéatype** — 18 prompts ElevenLabs (F+M × 9 types), signature combinatoire, lexique articulatoire (réf agent voice-director EP-026) |
 | [equipe/memoire-conseiller.md](equipe/memoire-conseiller.md) | Mémoire Conseiller Narratif (arcs, saisons, feedback) |
 | [equipe/memoire-architecte.md](equipe/memoire-architecte.md) | Mémoire Architecte (plans, structures) |
 | [equipe/memoire-dir.md](equipe/memoire-dir.md) | Mémoire Directeur Éditorial |

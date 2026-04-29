@@ -55,6 +55,8 @@
 | [ecole.md](ecole.md) | Programme scolaire, cours d'Histoire comique, prof Type 7 |
 | [geographie.md](geographie.md) | Maille monde, habitat, voyages, échanges culturels |
 | [compagnons.md](compagnons.md) | Animaux hybrides liés aux enfants (non définitif) |
+| [soin-bioelectrique.md](soin-bioelectrique.md) | **Soin par fréquences** — Chant du Miroir, 4 portes, 5 outils naturels, lieux dédiés (matière camouflée pour localisation future) |
+| [architecture-cross-culture.md](architecture-cross-culture.md) | **Architecture cross-culture** — Wex archetype universel + 9 ennéatypes invariants × N castings nationaux (décision 2026-04-29) |
 | [nom-candidats.md](nom-candidats.md) | 5 finalistes pour nommer le monde (non tranché) |
 | [directions-brainstorm.md](directions-brainstorm.md) | 6 directions non retenues |
 | [baron.md](baron.md) | ⚠ mis de côté — inspiration écartée (17/04) |

@@ -20,10 +20,16 @@
 
 | Statut | ID | Titre | Priorité | Assigné | Prochaine action |
 |--------|-----|-------|----------|---------|------------------|
-| ⚪ | UNIVERS-001 | Trancher nom de l'univers | Normale | Auteur | Choisir parmi 5 finalistes (`univers/nom-candidats.md`) |
-| ⚪ | STORY-004 | Cartable-à-trou — Polo · Lulu · Mimi · Wex | Haute | Directeur | Briefs prêts dans `input-idees/serie-parole-briefs.md` |
-| ⚪ | STORY-005 | Le Mardi — Wex · Pierrot · Melki · graine | Haute | Directeur | Briefs prêts |
-| ⚪ | STORY-006 | Sept à rien — Juju · Mimi · Wex · blocs | Haute | Directeur | Briefs prêts |
+| ⚪ | UNIVERS-001 | Trancher nom de l'univers | Normale | Auteur | Choisir parmi 21 candidats + pistes "Wex World" / "Wex Bou" (`univers/nom-candidats.md`) |
+| ⚪ | STORY-004 | Cartable-à-trou — Polo · Lulu · Mimi · Wex | Haute | Architecte | pitch validé — prêt pour Architecte (`workshop/004-cartable-a-trou/pitch.md`) |
+| ⚪ | STORY-005 | Le Mardi — Wex · Pierrot · Melki · graine | Haute | Architecte | pitch validé — prêt pour Architecte (`workshop/005-le-mardi/pitch.md`) |
+| ⚪ | STORY-006 | Sept à rien — Juju · Mimi · Wex · blocs | Haute | Architecte | pitch validé — prêt pour Architecte (`workshop/006-sept-a-rien/pitch.md`) |
+| ⚪ | UNIVERS-002 | Définir `univers/societe.md` (Vocation · Pouvoir Intérieur · Mission du jour) | Normale | Auteur · Conseiller | À définir ensemble — concept "contribution joyeuse" remonté du Grok aetheria, demande explicite auteur, absent de l'univers actuel |
+| ⚪ | UNIVERS-003 | Borner invariant vs variant dans l'expression ennéatype par culture | Normale | Auteur · Conseiller | À définir : où s'arrête le « même Type N partout » et où commence la variance culturelle légitime ? Documenter règles d'écriture par ennéatype × culture (futur `Eneagramme/expression-cross-culture.md`). Voir `univers/architecture-cross-culture.md` section dédiée. |
+| ⚪ | NARR-001 | Discussion D4 — Cross-culture micro-structures | **Haute** | Auteur · Conseiller | À creuser ensemble : règles micro-structurelles culturelles (call-and-response africain, cycles amérindiens, etc.) à autoriser dans les bulles culturelles, sans tomber dans le cliché. À cadrer avant ouverture du 2e casting national. |
+| ⚪ | NARR-002 | Définir le brief writer (verbes action + sensations sensorielles + ratio dialogue %) | Normale | Auteur · Directeur · Conseiller | Formaliser dans `equipe/brief-univers.md` ou nouveau fichier : verbes d'action concrets, sensations sensorielles obligatoires (texture/son/température), pas de seuil dur sur ratio dialogue mais **noter %age dans chaque story** pour rappel relecture. Cliffhanger à débattre via NARR-001. |
+| ⚪ | NARR-003 | Définir les sensibilités différenciées de chaque perso (Wex + 9) | Normale | Auteur · Conseiller | 9 sensibilités déjà figées (cf. décision 2026-04-28). Reste : **détailler ce que perçoit chacun précisément** (ce que c'est, ce que ce n'est pas, ce qui les active, ce qu'ils en font). Surtout **Wex — à définir** (piste : écoute des fausses notes / soin-bioélectrique). Idéalement en préparation de S2. |
+| ⚪ | NARR-004 | Définir S3 (saison 3 vide) | Basse | Auteur · Conseiller | Saison 3 actuellement vide dans la roadmap. À pitcher quand la S1 sera plus avancée et que la S2 sera cadrée. |
 
 ---
 

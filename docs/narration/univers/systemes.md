@@ -82,6 +82,24 @@ Groupe spécial d'hommes, femmes, parfois grands enfants — entraînés à entr
 
 ---
 
+## Le pardon — mécanique émotionnelle (2026-04-29)
+
+> Source : échange Botard/Ray (mi-avril 2026, archivé dans `inputs-historiques/2026-04-13-20-echange-telegram.md`).
+
+Dans le monde post-Éveil, le pardon n'est **pas une vertu morale**. C'est une opération concrète : **couper le fil qui alimente l'abcès**.
+
+Tant qu'on garde la rancune, on continue à nourrir la blessure de son attention. Elle reste vivante par notre regard. Le pardon, c'est arrêter de la regarder — pas l'oublier, pas la justifier, juste la débrancher.
+
+> *« On ne pardonne pas parce que c'est bien. On pardonne parce que c'est la seule façon de ne plus se faire ronger. »*
+
+**Note narrative (univers IMPLICITE) :** ne **jamais** expliciter cette règle dans une histoire. À montrer par les gestes — un personnage qui détourne le regard d'une chose qui l'a blessé, qui ne nourrit plus l'image, qui range l'objet du conflit sans drame. C'est l'**effet** qui transmet, pas le concept.
+
+**Lien direct avec :**
+- **Cercles de Paix** — c'est dans la Présence Pure du Gardien que le fil se coupe ; le pardon est l'opération, le Cercle est le lieu où elle s'opère.
+- **Conscience Créative** — l'attention nourrit ce qu'elle regarde ; cesser de regarder une rancune = cesser de la faire grossir. Même règle, appliquée à soi.
+
+---
+
 ## Philosophie narrative — S'unir pour, pas contre (2026-04-15)
 
 > *"Il ne faudrait pas s'unir contre quelqu'un ou quelque chose, mais pour avancer, améliorer...  

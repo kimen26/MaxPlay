@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * pre-keeper.js — Vérification automatique des contraintes avant envoi au Keeper
- * Usage : node scripts/pre-keeper.js docs/narration/workshop/002-le-rire-qui-reste/version-finale.md
+ * pre-gatekeeper.js — Vérification automatique des contraintes avant envoi au GateKeeper
+ * Usage : node scripts/pre-gatekeeper.js docs/narration/workshop/003-la-confidence/rewrite.md
  */
 
 const fs = require('fs');
@@ -24,19 +24,27 @@ function extractDialogues(text) {
 }
 
 function loadCasting() {
-  const castingPath = path.join(__dirname, '..', 'docs', 'narration', 'pmo', 'decisions.md');
-  if (!fs.existsSync(castingPath)) return [];
-  const content = fs.readFileSync(castingPath, 'utf8');
+  const lookupPath = path.join(__dirname, '..', 'docs', 'narration', 'personnages', 'lookup.yml');
+  if (!fs.existsSync(lookupPath)) return [];
+  const content = fs.readFileSync(lookupPath, 'utf8');
   const surnoms = [];
   const lines = content.split('\n');
+  let inPrenomsSection = false;
   for (const line of lines) {
-    const match = line.match(/\|\s*Type\s+\d+\s*\|\s*[^|]+\|\s*([^|]+)\|/);
-    if (match) {
-      surnoms.push(match[1].trim());
+    if (line.trim().startsWith('prenoms_to_token:')) {
+      inPrenomsSection = true;
+      continue;
+    }
+    if (inPrenomsSection) {
+      if (line.trim() === '' || line.trim().startsWith('#')) continue;
+      // Fin de section si on revient au niveau racine (pas indenté)
+      if (!line.startsWith(' ') && !line.startsWith('\t')) break;
+      const match = line.match(/^\s+([\p{L}\p{M}'-]+):/u);
+      if (match) {
+        surnoms.push(match[1].trim());
+      }
     }
   }
-  // Ajouter Wex
-  surnoms.push('Wex');
   return surnoms;
 }
 
@@ -62,7 +70,7 @@ function checkExplicitMorale(text) {
 function main() {
   const filePath = process.argv[2];
   if (!filePath) {
-    console.error('Usage: node scripts/pre-keeper.js <chemin/vers/version-finale.md>');
+    console.error('Usage: node scripts/pre-gatekeeper.js <chemin/vers/rewrite.md>');
     process.exit(1);
   }
 
@@ -74,7 +82,7 @@ function main() {
   const content = fs.readFileSync(filePath, 'utf8');
   const textOnly = content.replace(/^---\n[\s\S]*?\n---/, '').trim();
 
-  console.log('# Pré-validation Keeper\n');
+  console.log('# Pré-validation GateKeeper\n');
   console.log(`Fichier : ${path.basename(filePath)}\n`);
 
   let errors = 0;
@@ -142,7 +150,7 @@ function main() {
   console.log(`Sho (développement) : ${hasSho ? '✅' : '❌'}`);
   console.log(`Ten (tournant) : ${hasTen ? '✅ (indicateur)' : '⚠️ (indicateur)'}`);
   console.log(`Ketsu (résolution) : ${hasKetsu ? '✅ (indicateur)' : '⚠️ (indicateur)'}`);
-  console.log(`⚠️ NOTE : La validation Kishōtenketsu reste manuelle (Keeper).`);
+  console.log(`⚠️ NOTE : La validation Kishōtenketsu reste manuelle (GateKeeper).`);
 
   // Résumé
   console.log(`\n---\n`);
@@ -150,13 +158,13 @@ function main() {
   console.log(`Erreurs : ${errors}`);
   console.log(`Warnings : ${warnings}`);
   if (errors === 0 && warnings === 0) {
-    console.log(`\n🟢 PASS — Prêt pour le Keeper.`);
+    console.log(`\n🟢 PASS — Prêt pour le GateKeeper.`);
     process.exit(0);
   } else if (errors === 0) {
-    console.log(`\n🟡 PASS avec warnings — Peut aller au Keeper, mais vérifier les warnings.`);
+    console.log(`\n🟡 PASS avec warnings — Peut aller au GateKeeper, mais vérifier les warnings.`);
     process.exit(0);
   } else {
-    console.log(`\n🔴 FAIL — Corriger les erreurs avant le Keeper.`);
+    console.log(`\n🔴 FAIL — Corriger les erreurs avant le GateKeeper.`);
     process.exit(1);
   }
 }

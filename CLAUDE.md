@@ -103,7 +103,7 @@ Origines brésiliennes. Voir [docs/MAX_PROFILE.md](docs/MAX_PROFILE.md).
 | [docs/README.md](docs/README.md) | Carte documentation |
 | [docs/MAX_PROFILE.md](docs/MAX_PROFILE.md) | Profil complet Max |
 | [bot/index.ts](bot/index.ts) | Bot Telegram — routing agents, permissions Telegram |
-| [.claude/agents/](.claude/agents/) | **Équipe narration** : narration-pmo (Haiku) · narration/dir (Opus) · writer-a/b/c (Sonnet) · science/keeper/archiviste (Haiku) · sensibilite (Sonnet) · game-dev (Sonnet) · quick (Haiku) |
+| [.claude/agents/](.claude/agents/) | **Équipe narration** : narration-conseiller (Opus) · narration-architecte (Sonnet) · narration (Opus) · narration-writer-claude-libre (Sonnet) · narration-gatekeeper (Haiku) · narration-pmo (Haiku) · science/sensibilite/archiviste (Haiku/Sonnet) · game-dev (Sonnet) · quick (Haiku) |
 | [docs/narration/equipe/ORGANIGRAMME.md](docs/narration/equipe/ORGANIGRAMME.md) | Organigramme équipe éditoriale — qui fait quoi |
 | [docs/narration/input-idees/](docs/narration/input-idees/) | Zone de dump brut idées narration |
 | [docs/narration/pmo/INDEX.md](docs/narration/pmo/INDEX.md) | PMO — tickets, décisions, sprint-log (reprise après reboot) |

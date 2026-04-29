@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 /**
- * new-story.js — Créer un nouveau module histoire depuis le gabarit
+ * new-story.js — Créer un nouveau dossier workshop pour une histoire
  * Usage : node scripts/new-story.js "titre-de-l-histoire"
  */
 
 const fs = require('fs');
 const path = require('path');
 
-const STORIES_DIR = path.join(__dirname, '..', 'docs', 'narration', 'stories');
-const GABARIT_DIR = path.join(STORIES_DIR, '_gabarit');
+const WORKSHOP_DIR = path.join(__dirname, '..', 'docs', 'narration', 'workshop');
+const GABARIT_DIR = path.join(WORKSHOP_DIR, '_gabarit');
 
 function slugify(str) {
   return str
@@ -17,15 +17,6 @@ function slugify(str) {
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '');
-}
-
-function getNextNumber() {
-  const entries = fs.readdirSync(STORIES_DIR, { withFileTypes: true });
-  const numbers = entries
-    .filter(e => e.isDirectory() && /^\d{3}-/.test(e.name))
-    .map(e => parseInt(e.name.split('-')[0], 10));
-  const max = numbers.length > 0 ? Math.max(...numbers) : 0;
-  return String(max + 1).padStart(3, '0');
 }
 
 function copyDir(src, dest) {
@@ -50,9 +41,7 @@ function main() {
   }
 
   const slug = slugify(title);
-  const num = getNextNumber();
-  const dirName = `${num}-${slug}`;
-  const destDir = path.join(STORIES_DIR, dirName);
+  const destDir = path.join(WORKSHOP_DIR, slug);
 
   if (fs.existsSync(destDir)) {
     console.error(`Erreur : ${destDir} existe déjà.`);
@@ -61,25 +50,34 @@ function main() {
 
   copyDir(GABARIT_DIR, destDir);
 
-  // Remplacer les placeholders dans README.md
-  const readmePath = path.join(destDir, 'README.md');
-  let readme = fs.readFileSync(readmePath, 'utf8');
-  readme = readme
-    .replace(/NNN/g, num)
-    .replace(/slug-de-l-histoire/g, slug)
-    .replace(/Titre de l'histoire/g, title)
+  // Remplacer les placeholders dans pitch.md
+  const pitchPath = path.join(destDir, 'pitch.md');
+  let pitch = fs.readFileSync(pitchPath, 'utf8');
+  pitch = pitch
+    .replace(/\[Titre\]/g, title)
     .replace(/YYYY-MM-DD/g, new Date().toISOString().split('T')[0]);
-  fs.writeFileSync(readmePath, readme);
+  fs.writeFileSync(pitchPath, pitch);
 
-  // Remplacer dans orchestration.md
-  const orchPath = path.join(destDir, 'orchestration.md');
-  let orch = fs.readFileSync(orchPath, 'utf8');
-  orch = orch.replace(/Titre de l'histoire/g, title);
-  fs.writeFileSync(orchPath, orch);
+  // Remplacer dans plan-histoire.md
+  const planPath = path.join(destDir, 'plan-histoire.md');
+  let plan = fs.readFileSync(planPath, 'utf8');
+  plan = plan.replace(/\[Titre\]/g, title);
+  fs.writeFileSync(planPath, plan);
 
-  console.log(`✅ Module créé : stories/${dirName}/`);
-  console.log(`   → Éditez ${destDir}/orchestration.md pour le brief`);
-  console.log(`   → Éditez ${destDir}/texte.md pour le texte`);
+  // Remplacer dans decision.md et gatekeeper-verdict.md
+  const decisionPath = path.join(destDir, 'decision.md');
+  let decision = fs.readFileSync(decisionPath, 'utf8');
+  decision = decision.replace(/\[Titre\]/g, title);
+  fs.writeFileSync(decisionPath, decision);
+
+  const gkPath = path.join(destDir, 'gatekeeper-verdict.md');
+  let gk = fs.readFileSync(gkPath, 'utf8');
+  gk = gk.replace(/\[Titre\]/g, title);
+  fs.writeFileSync(gkPath, gk);
+
+  console.log(`✅ Workshop créé : workshop/${slug}/`);
+  console.log(`   → Éditez ${destDir}/pitch.md pour l'idée`);
+  console.log(`   → Éditez ${destDir}/plan-histoire.md pour le squelette`);
 }
 
 main();

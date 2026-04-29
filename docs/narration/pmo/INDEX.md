@@ -9,12 +9,12 @@
 
 | Axe | Statut |
 |-----|--------|
-| Histoires canon | 1 — *Le Pont Cassé* (V2 en attente) |
-| Histoires en workshop | 0 |
+| Histoires canon | 2 — *Le Pont Cassé* (001) · *Le Rire qui reste* (002) |
+| Histoires en workshop | 1 — *La Confidence* (003) |
 | Axes en stock | 15 (10 unitaires + 5 transversaux) |
 | Personnages | 9 + Wex — casting V1 figé (2026-04-24) |
 | Nom univers | ❌ non tranché — 5 finalistes |
-| Prochaine action | Appliquer les 3 modifs comité sur *Le Pont Cassé* V2 |
+| Prochaine action | Canoniser STORY-003 ou démarrer STORY-004 avec le nouveau workflow |
 
 ---
 

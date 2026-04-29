@@ -16,9 +16,9 @@ mis_a_jour: 2026-04-28
 | Agent | Modèle | Ce qu'il garantit | Ce qu'il ne fait PAS |
 |-------|--------|-------------------|----------------------|
 | **PMO** `narration-pmo` | Haiku | Tickets ouverts/fermés · décisions tracées · sprint-log à jour · max 3 tickets actifs | Décisions de contenu · arbitrage narratif |
-| **Directeur** `narration` | Opus | Briefs complets · synthèse 5 writers · version finale cohérente · décisions contenu ambiguës | Indexation · création dossiers · archivage |
-| **Writers × 5** | Sonnet/ext. | Version brute livrée dans `workshop/<titre>/` | Cohérence univers (c'est le Keeper qui vérifie) |
-| **Keeper** `narration-keeper` | Haiku | PASS/FAIL ennéagramme · univers · prénoms | Réécriture · style · contenu créatif |
+| **Directeur** `narration` | Opus | Sélection parmi 4 writers · pilotage rewrite · version finale · décisions contenu ambiguës | Indexation · création dossiers · archivage |
+| **Writers × 4** | Sonnet/ext. | Version complète dans `workshop/<titre>/` + note d'intention | Cohérence univers (c'est le GateKeeper qui vérifie) |
+| **GateKeeper** `narration-gatekeeper` | Haiku | PASS/FAIL ennéagramme · univers · prénoms | Réécriture · style · contenu créatif |
 | **Archiviste** `narration-archiviste` | Haiku | Structure dossiers conforme · index à jour · README YAML rempli · lookup.yml cohérent | Décisions de contenu · création narrative |
 | **Science** `narration-science` | Haiku | Faits biologiques/physiques/écologiques validés | Style · structure · cohérence univers |
 | **Sensibilité** `narration-sensibilite` | Sonnet | Risques conspirationnistes/polarisation détectés + décision OUI/NON enregistrée | Contenu créatif |
@@ -81,12 +81,11 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 | `stories/_gabarit/` | Modèle vierge | Archiviste | Archiviste | Archiviste |
 | `stories/axes-histoires-en-stock.md` | Stock d'axes | Directeur | Directeur | Directeur |
 | `stories/NNN-slug/README.md` | Frontmatter YAML | Archiviste (Phase 1, gabarit) | Archiviste (Phase 6, YAML final) | Directeur si champ ambigu |
-| `stories/NNN-slug/texte.md` | **CANON** — texte figé post-Keeper | Directeur (Phase 6) | Directeur (si V2 décidée) | Auteur (modif = nouvelle version) |
-| `stories/NNN-slug/orchestration.md` | Ki/Sho/Ten/Ketsu + décisions prod | Directeur (Phase 6) | Directeur | Directeur |
+| `stories/NNN-slug/texte.md` | **CANON** — texte figé post-GateKeeper | Directeur (Phase 6) | Directeur (si V2 décidée) | Auteur (modif = nouvelle version) |
 | `stories/NNN-slug/archives/vN-YYYY-MM-DD.md` | Snapshot figé | Archiviste | Jamais modifier | — |
 | `stories/NNN-slug/variantes-culturelles/` | Patches par culture | Archiviste | Archiviste | Directeur |
 
-**Règle :** `texte.md` = CANON (Keeper-validé). Toute modification → nouvelle version `archives/v2-...md` + mise à jour frontmatter.
+**Règle :** `texte.md` = CANON (GateKeeper-validé). Toute modification → nouvelle version `archives/v2-...md` + mise à jour frontmatter.
 
 ---
 
@@ -96,18 +95,14 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 
 | Fichier | Contenu | Qui crée | Qui met à jour |
 |---------|---------|----------|----------------|
-| `workshop/<titre>/brief-univers.md` | Copie de `equipe/brief-univers.md` | Directeur (Phase 1) | — (snapshot immutable) |
-| `workshop/<titre>/brief-personnages.md` | Persos impliqués, relations | Directeur (Phase 1) | — |
-| `workshop/<titre>/brief-histoire.md` | Axe, structure Ki/Sho/Ten/Ketsu | Directeur (Phase 1) | — |
-| `workshop/<titre>/version-kimi.md` | Version brute Kimi | Directeur (injecte brief) | — |
-| `workshop/<titre>/version-deepseek.md` | Version brute DeepSeek | Directeur | — |
-| `workshop/<titre>/version-grok.md` | Version brute Grok | Directeur | — |
-| `workshop/<titre>/version-claude-libre.md` | Version Claude Libre | Claude Libre | — |
-| `workshop/<titre>/version-claude-ancre.md` | Version Claude Ancré | Claude Ancré | — |
-| `workshop/<titre>/synthese.md` | Sélection + combinaison Directeur | Directeur (Phase 3) | — |
-| `workshop/<titre>/relecture.md` | Notes Kimi + Claude relecteur | Directeur (Phase 4) | — |
-| `workshop/<titre>/version-finale.md` | Version finale avant Keeper | Directeur (Phase 4) | — |
-| `workshop/<titre>/keeper-verdict.md` | PASS/FAIL + motif | Keeper (Phase 5) | — |
+| `workshop/<titre>/pitch.md` | Idée brute affûtée par le Conseiller | Conseiller (Phase 0) | — |
+| `workshop/<titre>/plan-histoire.md` | Plan d'Histoire — Ki/Sho/Ten/Ketsu, persos, contraintes | Architecte (Phase 1) | — |
+| `workshop/<titre>/version-*.md` | 4 versions complètes + notes d'intention | Writers (Phase 2) | — |
+| `workshop/<titre>/reactions-*.md` | Réactions lecteurs témoins (texte libre) | Lecteurs (Phase 3) | — |
+| `workshop/<titre>/decision.md` | Choix version base + éléments à récupérer + brief rewrite | Directeur (Phase 4) | — |
+| `workshop/<titre>/rewrite.md` | Rewrite (1 cycle max) | Directeur (Phase 5) | — |
+| `workshop/<titre>/gatekeeper-verdict.md` | PASS/FAIL + motif | GateKeeper (Phase 6) | — |
+| `workshop/<titre>/kanban.md` | Suivi phases + boucles + mémoire | PMO (toutes phases) | — |
 
 **Règle :** le dossier `workshop/` est lecture-seule une fois l'histoire en canon. Archiver, ne pas supprimer.
 
@@ -123,11 +118,12 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 | `equipe/ORGANIGRAMME.md` | Workflow complet 6 phases | Directeur | Directeur + Auteur | Auteur |
 | `equipe/cartographie-domaines.md` | Ce fichier | Directeur | Directeur + Archiviste | Auteur |
 | `equipe/brief-univers.md` | Brief injection stateless | Archiviste (toutes les 5 histoires) | Archiviste | Directeur |
-| `equipe/brief-personnages-template.md` | Template brief persos | Directeur | Directeur | Directeur |
-| `equipe/brief-histoire-template.md` | Template brief histoire | Directeur | Directeur | Directeur |
+| `workshop/_gabarit/plan-histoire.md` | Template Plan d'Histoire | Architecte | Architecte | Directeur |
+| `workshop/_gabarit/decision.md` | Template décision Directeur | Directeur | Directeur | Directeur |
 | `equipe/memoire-dir.md` | Mémoire Directeur inter-sessions | Directeur | Directeur | Directeur |
-| `equipe/memoire-writer-ancre.md` | Mémoire Writer Ancré inter-histoires | Writer Ancré | Writer Ancré | Directeur |
-| `equipe/memoire-keeper.md` | Mémoire Keeper | Keeper | Keeper | — |
+| `equipe/memoire-conseiller.md` | Mémoire Conseiller (arcs, saisons, feedback) | Conseiller | Conseiller | Directeur |
+| `equipe/memoire-architecte.md` | Mémoire Architecte (plans, structures) | Architecte | Architecte | Directeur |
+| `equipe/memoire-gatekeeper.md` | Mémoire GateKeeper (erreurs récurrentes) | GateKeeper | GateKeeper | — |
 | `equipe/profils-lecteurs.md` | Fiches 7 profils + 8 cultures | Directeur | Directeur | Directeur |
 | `equipe/sources-sciences.md` | Références documentaires | Science | Science | Science |
 | `equipe/sources-sensibilite.md` | Catalogue topics sensibles | Sensibilité | Sensibilité | Sensibilité |
@@ -174,9 +170,10 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 |---------|-------------|-------------|
 | `.claude/agents/narration-pmo.md` | PMO | Auteur |
 | `.claude/agents/narration.md` | Directeur | Auteur |
+| `.claude/agents/narration-conseiller.md` | Conseiller Narratif | Auteur |
+| `.claude/agents/narration-architecte.md` | Architecte | Auteur |
+| `.claude/agents/narration-gatekeeper.md` | GateKeeper | Auteur |
 | `.claude/agents/narration-writer-claude-libre.md` | Writer Libre | Auteur |
-| `.claude/agents/narration-writer-claude-ancre.md` | Writer Ancré | Auteur |
-| `.claude/agents/narration-keeper.md` | Keeper | Auteur |
 | `.claude/agents/narration-archiviste.md` | Archiviste | Auteur |
 | `.claude/agents/narration-science.md` | Science | Auteur |
 | `.claude/agents/narration-sensibilite.md` | Sensibilité | Auteur |
@@ -218,7 +215,7 @@ Nouvelle info narrative
 
 ## Invariants (non-négociables)
 
-1. **Canon = Keeper PASS** — aucun texte canon sans PASS Keeper
+1. **Canon = GateKeeper PASS** — aucun texte canon sans PASS GateKeeper
 2. **Casting V1 figé** — modification = décision Auteur explicite
 3. **Rien n'est effacé** — archive ou déplace, ne supprime pas
 4. **INBOX.md** = transit — vider au fil des sessions

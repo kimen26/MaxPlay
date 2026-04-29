@@ -1,6 +1,6 @@
 # Index des Histoires
 
-> Auto-généré par narration-archiviste. Dernière mise à jour : 2026-04-28
+> Auto-généré par narration-archiviste. Dernière mise à jour : 2026-04-29
 
 | # | Titre | Statut | Mots | Personnages | Thème principal |
 |---|-------|--------|------|-------------|-----------------|

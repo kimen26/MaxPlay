@@ -1,7 +1,9 @@
 # Organigramme — Équipe Éditoriale MaxPlay
 
+> **Ce fichier est la référence technique complète.**
+> **Pour le déroulé humain étape par étape, voir `PROCESS.md`.**
 > Référence permanente. Mis à jour si l'équipe évolue.
-> Dernière mise à jour : 2026-04-28
+> Dernière mise à jour : 2026-04-29
 
 ---
 
@@ -10,105 +12,39 @@
 ```
 AUTEUR (toi)
   │
-  ├── dump brut → input-idees/
+  ├──→ CONSEILLER NARRATIF [narration-conseiller · Opus]
+  │       ├── Binôme créatif : challenge, brainstorm, raffine
+  │       ├── Génère les pitches
+  │       └── Maintient la CARTE NARRATIVE (arcs, saisons, personnages, mémoire équipe)
   │
-  ▼
+  ├──→ ARCHITECTE [narration-architecte · Sonnet]
+  │       └── Transforme le pitch validé en Plan d'Histoire
+  │
+  └──→ DIRECTEUR ÉDITORIAL [narration · Opus]
+          ├── Sélectionne la meilleure version parmi les 4 drafts
+          ├── Pilote le rewrite (brief + corrections)
+          └── Valide la version finale avant GateKeeper
+
 PMO [narration-pmo · Haiku · AUTONOME]
-  ├── Scanne input-idees/, crée tickets, ferme tickets
-  ├── Peut interroger n'importe quel agent directement
-  ├── Alerte auteur si blocage / dérive
-  └── Source de vérité projet : backlog · decisions · sprint-log
-  │
-  ▼
-DIRECTEUR ÉDITORIAL [narration · Opus]
-  ├── Challenge les idées, produit les 3 briefs
-  ├── Consulte un panel externe sur des idées/angles (pas de simulation — avis lecteur)
-  ├── Archive les sessions (archive/)
-  │
-  ├── Consultation panel (si doute ou besoin d'un regard extérieur — pas à bloc)
-  │     ├── Science     : Grok + Claude + Kimi  (quick pass)
-  │     ├── Sensibilité : Grok + Claude + Kimi  (quick pass)
-  │     └── Lecture / angle : Kimi + Grok (avis de lecteur, pas simulation)
-  │
-  ├── WRITERS (8 parallèles, indépendants, angles assignés)
-  │     ├── Kimi 1          [externe · stateless · no reasoning]  — SOBRE / Kishōtenketsu
-  │     ├── Kimi 2          [externe · stateless · no reasoning]  — SENSORIEL / poésie du concret
-  │     ├── DeepSeek 1      [externe · stateless · no reasoning]  — SOBRE / structure
-  │     ├── DeepSeek 2      [externe · stateless · no reasoning]  — SENSORIEL / atmosphère
-  │     ├── Grok            [externe · stateless · no reasoning]  — DYNAMIQUE / dialogues / rythme
-  │     ├── Claude Libre    [Sonnet  · stateless]  — angle libre, suit son instinct
-  │     ├── Claude Dialogue [Sonnet  · stateless]  — DIALOGUE PUR, narration minimale
-  │     └── Claude Ancré    [Sonnet  · AVEC MÉMOIRE]  — continuité, patterns validés
-  │
-  ├── Directeur synthétise → version de travail
-  │
-  └── RELECTURE (Kimi + Claude, notes / remarques / idées)
-        Kimi    [externe · stateless]
-        Claude  [Sonnet  · avec mémoire]
-              ↓
-        Directeur intègre → choix final + rédaction Claude
-  │
-  ├── LECTEURS TÉMOINS (optionnel — voir règles ci-dessous)
-  │     narration-lecteur (Sonnet) + profils externes
-  │     narration-lecteur-dyade (Sonnet) — lecture parent-enfant
-  │
-  ├── SHOWRUNNER (si série en cours ou audit tous les 3)
-  │     narration-showrunner (Sonnet) — cohérence série, arcs, callbacks
-  │
-  ▼
-KEEPER [narration-keeper · Haiku]  (fin de cycle uniquement · Claude)
-  Ennéagramme · Univers · Prénoms · lookup.yml → PASS / FAIL
-  │
-  ▼
-stories/<NNN-titre>/texte.md  (CANON)
-  │
-  ▼
-AUDIO [narration-audio · Sonnet]  (après canonisation, avant enregistrement)
-  Brief audio : rythme, pauses, intonation, voix ElevenLabs
-  │
-  ▼
-LOCALISATION [narration-localisation · Sonnet]  (quand variante culturelle demandée)
-  Adaptation cross-country : prénoms, lieux, rituels
-  │
-  ▼
-ARCHIVISTE [narration-archiviste · Haiku · Claude]  (toutes les 5 histoires canon, ou si décision importante)
-  Régénère _index/, vérifie structure, met à jour equipe/brief-univers.md
+  ├── Crée les dossiers workshop/ et stories/
+  ├── Tient le backlog, les sprint-logs, les decisions
+  ├── Génère les index et met à jour les mémoires partagées
+  └── Alerte si blocage / oubli / incohérence documentaire
+
+WRITERS × 4 (parallèles, stateless, angles assignés)
+  ├── Writer A (Sobre)          — Kishōtenketsu rigoureux, gestes, narration sobre
+  ├── Writer B (Sensoriel)      — Textures, matières, poésie du concret
+  ├── Writer C (Dynamique)      — Dialogues vifs, rythme, échanges rapides
+  └── Writer D (Instinct/Libre) — Angle libre, surprise, ton auteur
+  → Chacun livre : 1 version complète (400-700 mots) + 1 note d'intention créative
+
+LECTEURS TÉMOINS (simulés, texte libre)
+  ├── Enfant seul × 2           — réaction émotionnelle pure
+  └── Dyade parent-enfant × 2   — réaction enfant + observations parent
+
+GATEKEEPER [narration-gatekeeper · Haiku]
+  └── Validation technique finale (prénoms, règles, longueur) → PASS ou corrections
 ```
-
----
-
-## Agents — responsabilités et mémoire
-
-### Claude (internes)
-
-| Agent | Modèle | Rôle | Mémoire propre | Partagée |
-|-------|--------|------|----------------|----------|
-| `narration-pmo` | Haiku | PMO autonome — tickets, décisions, reprise | — | `pmo/` |
-| `narration` | Opus | Directeur — challenge, briefs, synthèse, rédaction finale | `memoire-dir.md` | `INDEX.md` · `univers/` · `personnages/` |
-| `narration-writer-claude-libre` | Sonnet | Writer libre — angle instinctif, stateless | — | `INDEX.md` · `personnages/` |
-| `narration-writer-claude-ancre` | Sonnet | Writer ancré — angle mémoire, continuité | `memoire-writer-ancre.md` | `INDEX.md` · `personnages/` |
-| `narration-keeper` | Haiku | Gardien univers (fin de cycle) | `memoire-keeper.md` | `lookup.yml` · `univers/INDEX.md` |
-| `narration-archiviste` | Haiku | Index, structure dossiers | — | `_index/` · `lookup.yml` |
-| `narration-lecteur` | Sonnet | Lecteur témoin — incarne un profil injecté par le Directeur | — | `equipe/profils-lecteurs.md` |
-| `narration-lecteur-dyade` | Sonnet | Lecteur dyade — lecture parent-enfant à voix haute | — | `equipe/profils-lecteurs.md` |
-| `narration-showrunner` | Sonnet | Cohérence de série, arcs longs, callbacks | `memoire-showrunner.md` | `stories/INDEX.md` |
-| `narration-audio` | Sonnet | Brief audio par histoire | — | `equipe/voix/` |
-| `narration-localisation` | Sonnet | Adaptation culturelle cross-country | — | `personnages/prénoms-par-origine.md` |
-| `narration-science` | Haiku | Validation faits | `memoire-science.md` | `equipe/sources-sciences.md` |
-| `narration-sensibilite` | Sonnet | Détection topics sensibles | `memoire-sensibilite.md` | `equipe/sources-sensibilite.md` |
-
-### Externes stateless
-
-> Aucune mémoire persistante. Contexte injecté à chaque appel par le Directeur.
-> Output loggé dans `workshop/<titre>/`.
-
-| Modèle | Version cible | Angle assigné | Rôle principal | Rôle secondaire |
-|--------|--------------|---------------|----------------|-----------------|
-| **Kimi 1** | 2.6+ (no reasoning) | Sobre / Kishōtenketsu | Writer | Science/Sensibilité légère |
-| **Kimi 2** | 2.6+ (no reasoning) | Sensoriel / poésie | Writer | Relecteur |
-| **DeepSeek 1** | latest (no reasoning) | Sobre / structure | Writer | — |
-| **DeepSeek 2** | latest (no reasoning) | Sensoriel / atmosphère | Writer | — |
-| **Grok** | latest (no reasoning) | Dynamique / dialogues | Writer | Science/Sensibilité légère |
 
 ---
 
@@ -116,168 +52,226 @@ ARCHIVISTE [narration-archiviste · Haiku · Claude]  (toutes les 5 histoires ca
 
 ```
 Auteur
-  ├──→ PMO          (tickets, organisation)
-  └──→ Directeur    (décisions éditoriales)
+  ├──→ Conseiller   (brainstorm, pitch, carte narrative)
+  ├──→ Directeur    (sélection, rewrite, validation)
+  └──→ PMO          (organisation, documents, index)
 
-PMO [autonome]
-  ├──→ Directeur    (escalade · arbitrage)
-  └──→ tous agents  (questions directes)
+Conseiller
+  ├──→ Auteur       (propose, challenge, affûte)
+  ├──→ Architecte   (valide le pitch avant plan)
+  └──→ Directeur    (transmet la mémoire et les contraintes)
+
+Architecte
+  └──→ Workshop     (produit le Plan d'Histoire)
 
 Directeur
-  ├──→ Writers × 8  (brief → 8 versions parallèles avec angles)
-  ├──→ Validation légère (Grok + Claude + Kimi si doute)
-  ├──→ Relecteurs  (Kimi + Claude après synthèse)
-  ├──→ Lecteurs Témoins (si obligatoire — voir règles)
-  ├──→ Showrunner  (si série en cours)
-  └──→ Keeper      (version finale)
+  ├──→ Writers × 4  (brief + angles)
+  ├──→ Lecteurs × 4 (les 4 versions à lire)
+  ├──→ Writer gagnant (brief de rewrite)
+  └──→ GateKeeper   (version finale)
 
-Keeper
-  └──→ Directeur   (PASS → canon · FAIL → retour)
+GateKeeper
+  └──→ Directeur    (PASS → canonise / corrections → applique)
 
-Canon
-  ├──→ Audio       (brief narration)
-  ├──→ Localisation (variantes culturelles)
-  └──→ Archiviste  (index, structure)
+PMO
+  ├──→ Tous agents  (crée dossiers, met à jour index)
+  └──→ Auteur       (alerte si besoin)
 ```
 
 ---
 
-## Modèle de mémoire
+## Mémoires — qui met quoi à jour
 
-```
-MÉMOIRE PARTAGÉE (tous lisent)
-  docs/narration/INDEX.md
-  docs/narration/univers/INDEX.md
-  docs/narration/personnages/INDEX.md + lookup.yml
-  docs/narration/stories/INDEX.md
+### Mémoires partagées (tous lisent)
 
-MÉMOIRE PROPRE (par agent Claude)
-  equipe/memoire-dir.md            ← Directeur
-  equipe/memoire-writer-ancre.md   ← Writer Ancré uniquement  ← VARIANCE STABLE
-  equipe/memoire-keeper.md         ← Keeper
-  equipe/memoire-showrunner.md     ← Showrunner
-  equipe/memoire-science.md        ← Science
-  equipe/memoire-sensibilite.md    ← Sensibilité
+| Fichier | Contenu | Mis à jour par |
+|---------|---------|----------------|
+| `docs/narration/INDEX.md` | Pointeurs globaux | PMO |
+| `docs/narration/stories/INDEX.md` | Catalogue histoires | PMO (après canonisation) |
+| `docs/narration/univers/INDEX.md` | Règles du monde | Archiviste (toutes les 5 histoires) |
+| `docs/narration/personnages/INDEX.md` | Casting | PMO (si évolution) |
+| `docs/narration/personnages/lookup.yml` | Prénoms/genres | PMO (source de vérité) |
 
-MÉMOIRE PROJET (PMO · source de vérité)
-  pmo/backlog.md · pmo/decisions.md · pmo/sprint-log.md
+### Mémoires propres (1 agent = 1 mémoire)
 
-AUCUNE MÉMOIRE (stateless — contexte injecté à chaque appel)
-  Kimi 1/2 · DeepSeek 1/2 · Grok · Claude Libre · Claude Dialogue
-  → output loggé dans workshop/<titre>/version-X.md + relecture.md
-```
+| Fichier | Agent | Contenu | Fréquence |
+|---------|-------|---------|-----------|
+| `equipe/memoire-conseiller.md` | Conseiller | Arcs, saisons, feedback lecteurs, patterns validés | Après chaque session |
+| `equipe/memoire-dir.md` | Directeur | Décisions de sélection, ce qui a fonctionné | Après chaque histoire |
+| `equipe/memoire-architecte.md` | Architecte | Plans qui ont bien/mal fonctionné | Après chaque histoire |
+| `equipe/memoire-gatekeeper.md` | GateKeeper | Erreurs récurrentes, patterns à surveiller | Après chaque validation |
 
-> **Principe de variance :**
-> 7 writers arrivent frais à chaque histoire (aucun biais de session).
-> 1 writer (Claude Ancré) porte la continuité éditoriale et les apprentissages.
-> C'est cette tension stateless / avec-mémoire qui génère la vraie diversité.
+### Mémoire projet (PMO)
+
+| Fichier | Contenu |
+|---------|---------|
+| `pmo/backlog.md` | Tickets en cours, idées en attente |
+| `pmo/decisions.md` | Décisions structurantes avec date et raison |
+| `pmo/sprint-log.md` | Log chronologique de chaque session |
+
+> **Règle :** Une mémoire jamais mise à jour = un agent qui n'apprend pas. Le PMO vérifie.
 
 ---
 
 ## Workflow complet
 
+### PHASE 0 — INTAKE
+
 ```
-[PHASE 0 — INTAKE]
-Auteur dumpe → input-idees/
-      ↓
-PMO scanne → crée ticket → pmo/backlog.md + sprint-log.md
+Auteur dumpe une idée → input-idees/YYYY-MM-DD-<sujet>.md
+    ↓
+Conseiller lit + discute avec l'auteur
+    ↓
+Binôme valide un pitch → workshop/<titre>/pitch.md
+    ↓
+PMO crée le dossier workshop/<titre>/ + log dans sprint-log.md
+```
 
-[PHASE 1 — BRIEF]
-Directeur lit ticket + personnages/INDEX + univers/INDEX + memoire-dir.md
-      ↓ (si doute science/sensibilité/angle)
-Directeur consulte panel → Kimi + Grok + Claude (quick pass)
-      ↓
-Archiviste crée le module histoire depuis le gabarit :
-  stories/<NNN-slug>/README.md   ← frontmatter pré-rempli (titre, persos, date)  [OBLIGATOIRE]
-  stories/<NNN-slug>/texte.md    ← vide                                           [OBLIGATOIRE]
-  (orchestration.md, archives/, comite-lecture/ → créés si besoin, pas par défaut)
-      ↓
-Directeur produit 3 fichiers dans workshop/<titre>/ :
-  brief-univers.md   ← copie de equipe/brief-univers.md (inchangée) + physique optionnelle
-  brief-personnages.md  ← rempli depuis equipe/brief-personnages-template.md
-  brief-histoire.md     ← rempli depuis equipe/brief-histoire-template.md (avec angles assignés)
-      ↓
-PMO log → sprint-log.md
+### PHASE 1 — PLAN D'HISTOIRE
 
-[PHASE 2 — ÉCRITURE × 8 (parallèle)]
-Directeur injecte les 3 briefs aux 8 writers simultanément
-  Kimi 1 (Sobre)      → workshop/<titre>/version-kimi-1.md
-  Kimi 2 (Sensoriel)  → workshop/<titre>/version-kimi-2.md
-  DeepSeek 1 (Sobre)  → workshop/<titre>/version-deepseek-1.md
-  DeepSeek 2 (Sensoriel) → workshop/<titre>/version-deepseek-2.md
-  Grok (Dynamique)    → workshop/<titre>/version-grok.md
-  Claude Libre        → workshop/<titre>/version-claude-libre.md
-  Claude Dialogue     → workshop/<titre>/version-claude-dialogue.md
-  Claude Ancré        → workshop/<titre>/version-claude-ancre.md
-      ↓
-PMO log → sprint-log.md
+```
+Architecte lit le pitch + mémoires + histoires précédentes
+    ↓
+Architecte produit → workshop/<titre>/plan-histoire.md
+    (inclut : personnages, structure Kishōtenketsu, contraintes)
+    ↓
+Conseiller valide la cohérence avec la carte narrative
+    ↓
+PMO log
+```
 
-[PHASE 3 — SYNTHÈSE]
-Directeur lit 8 versions → sélectionne, combine
-      ↓
-Directeur produit → workshop/<titre>/synthese.md
-      ↓
-PMO log → sprint-log.md
+### PHASE 2 — ÉCRITURE × 4 (parallèle)
 
-[PHASE 4 — RELECTURE]
-Directeur envoie synthese.md à Kimi + Claude relecteur (style/rythme/émotion)
-  → workshop/<titre>/relecture.md
-Directeur intègre → workshop/<titre>/version-finale.md
-      ↓
-PMO log → sprint-log.md
+```
+Directeur injecte à 4 writers simultanément :
+  - plan-histoire.md (inclut personnages, structure, contraintes)
+  - brief-univers.md (copie standard)
+  - Angle assigné + consigne spécifique
 
-[PHASE 4b — LECTEURS TÉMOINS]
-Directeur injecte version-finale.md + profil dans narration-lecteur (Claude)
-  ou utilise templates equipe/prompts-externes/lecteurs/ pour Kimi/Grok
-  → workshop/<titre>/lecteurs-temoins.md
-      ↓
-Lecteur Dyade (OBLIGATOIRE pour P2) → simulation lecture parent-enfant
-  → workshop/<titre>/lecteur-dyade.md
-      ↓
-PMO log → sprint-log.md
+Chaque writer produit :
+  → workshop/<titre>/version-{a,b,c,d}.md (texte complet 400-700 mots)
+  → + note d'intention créative dans le fichier
 
-[PHASE 4c — SHOWRUNNER (si série en cours)]
-Showrunner audit version-finale → cohérence série, arcs, callbacks
-  → workshop/<titre>/showrunner-audit.md
-      ↓
-PMO log → sprint-log.md
+Note d'intention attendue (exemple) :
+> "J'ai choisi la saison automnale parce que le vent porte les mots sans
+> qu'on ait besoin de crier. La couleur orange du personnage n'est pas
+> hasardeuse : elle réchauffe la fin sans le dire. J'ai fait référence
+> au pont cassé de 001 parce que la réparation comme acte d'amitié est
+> un fil que j'aime bien tirer."
 
-[PHASE 5 — PRÉ-VALIDATION]
-Directeur lance scripts/pre-keeper.js sur version-finale.md
-  → vérification auto : longueur, casting, dialogues, morale explicite
-      ↓
-PMO log → sprint-log.md
+PMO log
+```
 
-[PHASE 6 — KEEPER]
-Keeper valide version-finale.md
-  ✅ PASS → canon
-  ❌ FAIL → retour Directeur (motif) → retour phase 3 ou 4
-      ↓
-PMO log → sprint-log.md
+### PHASE 3 — LECTEURS TÉMOINS
 
-[PHASE 7 — CANON + CLÔTURE]
-Directeur écrit → stories/<NNN-slug>/texte.md  (CANON)
-Directeur complète → stories/<NNN-slug>/orchestration.md (qui/où/quoi/Kishōtenketsu final)
-      ↓
-Scripts de validation :
-  → scripts/validate-frontmatter.js sur README.md
-  → scripts/generate-index.js (régénère _index/ + stories/INDEX.md)
-      ↓
-Archiviste :
-  → remplit stories/<NNN-slug>/README.md YAML final (mots, keeper_passed, themes...)
-  → crée archives/v1-YYYY-MM-DD.md SEULEMENT si V2 prévue ou comité de lecture prévu
-  (si histoire N° multiple de 5 → met aussi à jour equipe/brief-univers.md)
-      ↓
+```
+Directeur envoie les 4 versions aux lecteurs témoins :
+  - Enfant seul #1 → reactions-enfant-1.md
+  - Enfant seul #2 → reactions-enfant-2.md
+  - Dyade #1 → reactions-dyade-1.md
+  - Dyade #2 → reactions-dyade-2.md
+
+Chaque lecteur lit les 4 versions et donne un retour texte libre.
+Format : "J'ai aimé... / J'ai pas compris... / Je retiens..."
+
+PMO log
+```
+
+### PHASE 4 — SÉLECTION
+
+```
+Directeur lit les 4 versions + les réactions lecteurs
+    ↓
+Directeur produit → workshop/<titre>/decision.md
+  - Version choisie comme base (et pourquoi)
+  - Éléments à récupérer des autres versions
+  - Réactions lecteurs à prendre en compte
+  - Brief de réécriture
+
+L'auteur valide ou ajuste la décision.
+```
+
+### PHASE 5 — RÉÉCRITURE
+
+```
+Directeur (ou writer gagnant) produit → workshop/<titre>/rewrite.md
+  - Basé sur la version choisie
+  - Intègre le brief de réécriture
+  - Tient compte des réactions lecteurs
+
+1 cycle de rewrite maximum. Pas de rewrite sur rewrite.
+Si le rewrite ne convient pas → retour en Phase 4 (nouvelle décision).
+
+PMO log
+```
+
+### PHASE 6 — VALIDATION TECHNIQUE (GateKeeper)
+
+```
+Directeur envoie rewrite.md au GateKeeper
+    ↓
+GateKeeper checklist rapide :
+  □ Prénoms corrects (lookup.yml)
+  □ Longueur 400-700 mots
+  □ Dialogues : 2 répliques min par perso
+  □ Pas de morale explicite
+  □ Pas d'univers nommé
+  □ Surnoms 4/5 du temps
+    ↓
+Statut : ✅ PASS → Phase 7
+         ❌ CORRECTIONS → Directeur applique les corrections rapides → PASS
+```
+
+> Le GateKeeper ne réécrit pas. Il pointe des corrections précises.
+> Si un problème structurel majeur est découvert → retour au Conseiller (rare).
+
+### PHASE 7 — VERSION FINALE + CLÔTURE
+
+```
+Directeur écrit → stories/<NNN-slug>/texte.md
+Directeur complète → stories/<NNN-slug>/orchestration.md
+    ↓
+PMO lance les scripts :
+  → scripts/validate-frontmatter.js (README.md)
+  → scripts/generate-index.js (_index/ + stories/INDEX.md)
+    ↓
 Mémoires mises à jour :
+  → memoire-conseiller.md (Conseiller)
   → memoire-dir.md (Directeur)
-  → memoire-writer-ancre.md (Writer Ancré)
-  → memoire-keeper.md (Keeper)
-  → memoire-showrunner.md (Showrunner, si appelé)
-      ↓
-PMO ferme ticket → backlog.md · decisions.md · sprint-log.md
-      ↓
-Directeur archive session → archive/YYYY-MM-DD-<titre>.md
+  → memoire-architecte.md (Architecte)
+  → memoire-gatekeeper.md (GateKeeper)
+    ↓
+PMO ferme ticket → backlog.md + decisions.md + sprint-log.md
+    ↓
+Archive : session résumée dans archive/YYYY-MM-DD-<titre>.md
 ```
+
+---
+
+## Les 4 Writers — angles assignés
+
+| Writer | Source | Angle | Ce qu'il privilégie | Note d'intention |
+|--------|--------|-------|---------------------|------------------|
+| **A — Sobre** | Kimi / DeepSeek | Structure Kishōtenketsu rigoureuse | Gestes précis, narration sobre, silence actif | Obligatoire : pourquoi cette structure ? |
+| **B — Sensoriel** | Kimi / DeepSeek | Poésie du concret | Textures, matières, lumière, odeurs | Obligatoire : quel détail sensoriel porte l'histoire ? |
+| **C — Dynamique** | Grok | Dialogues vifs, rythme | Échanges rapides, répartie, silences comiques | Obligatoire : pourquoi le dialogue ici ? |
+| **D — Instinct** | Claude (Sonnet) | Angle libre, surprise | Ton auteur, ce qui est vrai pour cette histoire | Obligatoire : quelle a été ton intention personnelle ? |
+
+> Chaque writer écrit **une version complète** (400-700 mots). Pas d'extrait.
+> Chaque writer ajoute une **note d'intention créative** (pas technique).
+
+---
+
+## Lecteurs Témoins — profils
+
+| Profil | Nombre | Format | Ce qu'il regarde |
+|--------|--------|--------|------------------|
+| Enfant seul | 2 | Texte libre | Émotion, compréhension, images retenues |
+| Dyade parent-enfant | 2 | Voix enfant + voix parent | Réaction enfant + rythme de lecture, vocabulaire |
+
+> Pas de profil "prof de français" ni "philosophe".
+> Pas de grille de notation.
+> Audio (lecture voix ElevenLabs) : à tester plus tard.
 
 ---
 
@@ -285,113 +279,69 @@ Directeur archive session → archive/YYYY-MM-DD-<titre>.md
 
 ### Quand est-ce OBLIGATOIRE ?
 
-| Situation | Comité obligatoire ? |
-|-----------|---------------------|
+| Situation | Lecteurs témoins obligatoires ? |
+|-----------|--------------------------------|
 | Première histoire d'une série | ✅ Oui |
 | Nouveau personnage principal | ✅ Oui |
 | Sujet sensible (complotisme, polarisation, anxiété, exclusion) | ✅ Oui |
-| Histoire N° multiple de 5 (001, 005, 010...) | ✅ Oui (audit global) |
-| Histoire suite dans une série connue | ❌ Non (optionnel) |
+| Histoire N° multiple de 5 (005, 010...) | ✅ Oui (audit global) |
+| Suite dans une série connue | ❌ Non (optionnel) |
 | Mêmes personnages, sujet léger | ❌ Non (optionnel) |
 
-### Quels profils minimum ?
-
-Si comité obligatoire :
-- **Lecteur Dyade** (parent-enfant à voix haute) — TOUJOURS
-- **Enfant 4 ans** (Max, référence) — TOUJOURS
-- **Éditeur jeunesse** — TOUJOURS
-- **Filtre culturel** (au moins 2 cultures) — si cross-country envisagé
-
-### Quels profils optionnels ?
-
-- Fille 9 ans / Garçon 9 ans (si histoire plus longue ou nuancée)
-- Philosophe (si tension éthique)
-- Prof français (si richesse langagière à valider)
+> À terme, on vise des lecteurs témoins **systématiques** sur toutes les histoires.
 
 ---
 
-## Règles de la mémoire (non-négociables)
-
-1. Chaque agent Claude **lit sa mémoire propre en premier** à chaque session
-2. **Writer Ancré uniquement** a une mémoire entre les histoires — les autres 7 writers reset
-3. **Showrunner** enrichit sa mémoire à chaque audit de série
-4. Les décisions de sensibilité sont **enregistrées avec raison** — jamais OUI/NON seul
-5. Les relecteurs externes n'ont **aucune mémoire** — le Directeur porte la continuité
-6. Une session archivée **n'est jamais effacée**
-7. `input-idees/` **n'est jamais supprimé** — transit seulement
-
----
-
-## Intégration technique des externes
-
-### Court terme — prompts templates (à copier dans leurs interfaces)
-
-```
-Kimi 1/2 / DeepSeek 1/2 / Grok / Claude Libre / Claude Dialogue — WRITER
-  → Reçoivent : brief-univers.md + brief-personnages.md + brief-histoire.md (avec angle assigné)
-  → Produisent : texte brut (pas de commentaires, pas de titre)
-
-Kimi — RELECTEUR
-  → Reçoit : brief-univers.md + brief-histoire.md + synthese.md
-  → Produit : 3-5 remarques prioritaires (ton · rythme · émotion · dialogues)
-
-Kimi / Grok — CONSULTATION PANEL (science ou sensibilité)
-  → Reçoivent : texte + question ciblée (science OU sensibilité)
-  → Produisent : verdict + raison en 2-3 lignes
-
-Kimi / Grok — CONSULTATION PANEL (angle / lecture)
-  → Reçoivent : brief-histoire.md + idée ou direction à évaluer
-  → Produisent : avis de lecteur (pas de simulation de personnage)
-```
-
-### MCP tools — opérationnels (2026-04-28)
-
-`ask_kimi`, `ask_deepseek`, `ask_grok` dans `~/.claude.json` (global).
-Serveur : `mcp/server.ts` (bun). Headers Claude Code requis pour Kimi. Pas de `max_tokens` — chaque modèle utilise sa limite native.
-
-> **Note :** Kimi MCP non fonctionnel le 2026-04-28 (2 appels = vide). Fix headers appliqué. À tester.
-
-### Briefs — fichiers de référence
-
-| Fichier | Qui le crée | Fréquence | Injecté à |
-|---------|------------|-----------|-----------|
-| `equipe/brief-univers.md` | Archiviste | Toutes les 5 histoires canon | tous les writers + relecteurs |
-| `workshop/<titre>/brief-personnages.md` | Directeur | Chaque histoire | tous les writers |
-| `workshop/<titre>/brief-histoire.md` | Directeur | Chaque histoire | tous les writers |
-
----
-
-## Scripts de validation
+## Scripts et outils
 
 | Script | Quand le lancer | Que fait-il |
 |--------|----------------|-------------|
-| `scripts/pre-keeper.js <version-finale.md>` | Phase 5 — avant Keeper | Vérifie longueur (400-700 mots), casting, dialogues (min 3), morale explicite |
-| `scripts/validate-frontmatter.js [README.md]` | Phase 7 — après canonisation | Vérifie cohérence YAML (numéro, slug, statut, mots, ennéatype) |
-| `scripts/generate-index.js` | Phase 7 — après canonisation | Régénère `_index/` + `stories/INDEX.md` |
-| `scripts/archive-story.js <workshop-name>` | Phase 7 — clôture | Promouvoir workshop → stories/ + archive |
-| `scripts/new-story.js <NNN> <slug>` | Phase 1 — création | Copie gabarit → nouveau dossier histoire |
+| `scripts/new-story.js <titre>` | Phase 0 | Crée le dossier workshop/ depuis un gabarit |
+| `scripts/validate-frontmatter.js [README.md]` | Phase 7 | Vérifie le YAML du README |
+| `scripts/generate-index.js` | Phase 7 | Régénère `_index/` + `stories/INDEX.md` |
+| `scripts/archive-story.js <workshop-name>` | Phase 7 | Promouvoir workshop → stories/ + archive |
+| `scripts/pre-gatekeeper.js <rewrite.md>` | Phase 6 (optionnel) | Vérification auto avant GateKeeper (longueur, dialogues) |
 
 ---
 
-## État ARCHI-004 (soldé 2026-04-28)
+## Glossaire
 
-- [x] `narration-writer-claude-libre.md` créé
-- [x] `narration-writer-claude-ancre.md` créé
-- [x] `equipe/memoire-writer-ancre.md` créé
-- [x] Briefs stateless : `equipe/brief-univers.md` · `brief-personnages-template.md` · `brief-histoire-template.md`
-- [x] MCP tools Kimi/DeepSeek/Grok opérationnels (serveur `mcp/server.ts`)
-- [x] Supprimer/archiver `narration-writer-a/b/c.md` (remplacés)
-- [x] `equipe/prompts-externes/relecteur-kimi.md` (templates copier-coller)
-- [x] `equipe/prompts-externes/validation-legere.md`
-- [x] Mémoires mises à jour (dir, keeper, writer-ancre)
-- [x] Fourchette P2 figée : 400-700 mots
-- [x] Agent Directeur réécrit (process 8 writers)
-- [x] `skills-map.md` mis à jour
-- [x] `archive-story.js` corrigé (pas de préfixe WIP)
-- [x] `generate-index.js` écrit aussi dans `stories/INDEX.md`
-- [x] `pre-keeper.js` créé
-- [x] `validate-frontmatter.js` créé
-- [x] Agents créés : `narration-showrunner`, `narration-audio`, `narration-lecteur-dyade`, `narration-localisation`
-- [x] ORGANIGRAMME réécrit (règles comité, 8 writers, scripts)
-- [ ] Tester MCP Kimi après fix headers
-- [ ] Distiller les 7 fichiers `input-idees/`
+| Terme | Définition |
+|-------|------------|
+| **Plan d'Histoire** | Le squelette avant écriture : 4 temps, persos, lieu, contraintes |
+| **Version finale** | Le texte validé, prêt à être canonisé (on ne dit plus "canon") |
+| **GateKeeper** | Validation technique finale (checklist), pas un relecteur créatif |
+| **Note d'intention** | Ce que le writer a voulu faire, pourquoi il a fait ces choix créatifs |
+| **Dyade** | Lecture à voix haute parent-enfant |
+
+---
+
+## Cérémonies
+
+| Cérémonie | Qui | Quand | Data pull du Conseiller |
+|-----------|-----|-------|------------------------|
+| **Atelier Univers** | Toi + Conseiller | Régulier (pas lié à une histoire) | Univers, personnages, histoires précédentes, feedback lecteurs |
+| **Brainstorm Pitch** | Toi + Conseiller | Quand tu as une idée brute | input-idees/, mémoire-conseiller.md, casting |
+| **Revue de Plan** | Conseiller + Architecte | Après l'Architecte | personnages/INDEX.md, univers/INDEX.md, histoires précédentes |
+| **Sélection** | Toi + Directeur | Après les lecteurs témoins | 4 versions + réactions |
+| **Review Finale** | Toi seul | Après GateKeeper PASS | rewrite.md |
+| **Rétro** | Conseiller seul | Après canonisation | Tout le dossier workshop |
+
+## Kanban
+
+- **Global** : `pmo/KANBAN.md` — toutes les histoires + sujets univers. Mis à jour par le PMO.
+- **Par histoire** : `workshop/<titre>/kanban.md` — étapes détaillées + boucles. Mis à jour par le responsable de l'étape.
+
+## État actuel
+
+- [x] Conseiller narratif réécrit (vrai binôme, questions ouvertes, construction d'univers)
+- [x] Architecte créé
+- [x] GateKeeper créé
+- [x] Directeur réécrit (sélection + rewrite)
+- [x] Lecteurs témoins réécrits (texte libre, 4 versions)
+- [x] Workflow 8 writers → 4 writers
+- [x] Terminologie mise à jour (Plan d'Histoire, Version finale, GateKeeper)
+- [x] Kanban global + kanban par histoire créés
+- [x] PROCESS.md avec DoD, responsables, cérémonies
+- [ ] Tester le workflow sur l'histoire 004
+- [x] Créer le gabarit workshop/

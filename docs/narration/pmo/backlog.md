@@ -12,7 +12,7 @@
 | Statut | ID | Titre | Priorité | Assigné | Prochaine action |
 |--------|-----|-------|----------|---------|------------------|
 | 🟡 | STORY-001-V2 | Le Pont Cassé — V2 | Haute | Auteur | Appliquer 3 modifs comité (voir `stories/001-le-pont-casse/comite-lecture/v1-retours.md`) |
-| 🟡 | STORY-003 | La Confidence — Wex · Jérem · Raph · dessin | Haute | Directeur | Briefs prêts dans `input-idees/serie-parole-briefs.md` |
+| 🟡 | STORY-003 | La Confidence — Wex · Jérem · Raph · dessin | Haute | Directeur | GateKeeper PASS · version finale en attente auteur (voir `workshop/003-la-confidence/kanban.md`) |
 
 ---
 
@@ -31,8 +31,9 @@
 
 | Statut | ID | Titre | Date |
 |--------|-----|-------|------|
-| ✅ | STORY-002 | Le Rire qui reste — canon (489 mots · Keeper PASS) | 2026-04-28 |
+| ✅ | STORY-002 | Le Rire qui reste — canon (489 mots · GateKeeper PASS) | 2026-04-28 |
 | ✅ | ARCHI-004 | Refonte équipe writers — 5 writers + briefs stateless + agents | 2026-04-28 |
+| ✅ | ARCHI-005 | Refonte workflow narratif — 4 writers + lecteurs témoins + GateKeeper + Conseiller/Architecte | 2026-04-28 |
 | ✅ | STORY-001-V1 | Le Pont Cassé — V1 + comité de lecture | 2026-04-24 |
 | ✅ | ARCHI-001 | Restructuration narration (stories/, pmo/, équipe) | 2026-04-27 |
 | ✅ | ARCHI-002 | Suppression histoires/ legacy + migration axes-en-stock | 2026-04-27 |

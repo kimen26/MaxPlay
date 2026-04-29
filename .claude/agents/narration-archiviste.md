@@ -52,7 +52,7 @@ Sur demande, applique un patch culturel à un texte de base :
 
 ### 5. Mise à jour lookup.yml
 
-Quand un nouveau `pays/XX/identite.md` est créé :
+Quand un nouveau `personnages/type-NN/pays/XX/identite.md` est créé :
 - Lire le frontmatter YAML du nouveau fichier
 - Ajouter l'entrée dans `personnages/lookup.yml` (section `tokens` + `prenoms_to_token`)
 - Mettre à jour la section `pays` si nouveau code pays
@@ -86,8 +86,8 @@ Quand le nombre d'histoires canon est un multiple de 5 :
 
 ## Ce que tu ne fais PAS
 
-- Tu n'écris pas d'histoires → `narration-writer-claude-libre` / `narration-writer-claude-ancre`
-- Tu ne valides pas de qualité → `narration-keeper`
+- Tu n'écris pas d'histoires → `narration-writer-claude-libre`
+- Tu ne valides pas de qualité → `narration-gatekeeper`
 - Tu ne décides pas de la priorité → `narration` (Directeur)
 - Tu ne fais pas de comité de lecture → `narration` (Directeur)
 - Tu ne fact-checkes pas → `narration-science`

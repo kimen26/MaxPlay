@@ -21,9 +21,9 @@
 > Tranchés migrés vers `pmo/decisions.md`. Reste en cours ci-dessous.
 
 **En cours** :
-- Chantier 2 — Gabarit d'épisode (minimal vs complet) — **prochain à ouvrir**
-- Chantier 3 — Histoire test bout-en-bout pour critique John — pas encore ouvert
-- Question Conseiller suspendue (chantier 3) : fin inachevée douce (style 002) vs fin qui referme (style 001) ?
+- Cascade documentaire post-chantiers 1+2 (à exécuter après validation John) — créer `voix-maxplay.md`, `exemples-canoniques.md`, MAJ `sources-narratologie.md` + `_gabarit/pitch.md` + `axes-histoires-en-stock.md` (MOYEN), créer dossier `arcs/`
+- Chantier 3 reformulé — **lecture critique John des 3 histoires existantes** (001, 002, 003) avant toute nouvelle écriture
+- Question Conseiller suspendue : fin inachevée douce (style 002) vs fin qui referme (style 001) ? → sera tranchée à la critique des textes existants
 
 **Tranchés cette session** (déjà dans decisions.md) :
 - Saison 1 = 4 axes (objet-décor / Parole / univers-spécifique / pouvoirs Wex)

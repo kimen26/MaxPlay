@@ -21,13 +21,13 @@ export default defineConfig({
   },
   plugins: [
     {
-      // Dev only: sert game-html/ sous /game-html/* pour la navigation locale
-      name: 'serve-game-html',
+      // Dev only: sert game/web/ sous /web/* pour la navigation locale (sibling dir post-reorg)
+      name: 'serve-game-web',
       configureServer(server) {
-        const gameHtmlDir = path.resolve(process.cwd(), '../game-html');
+        const gameWebDir = path.resolve(process.cwd(), '../web');
         server.middlewares.use((req, res, next) => {
-          if (!req.url?.startsWith('/game-html/')) return next();
-          const filePath = path.join(gameHtmlDir, req.url.slice('/game-html/'.length));
+          if (!req.url?.startsWith('/web/')) return next();
+          const filePath = path.join(gameWebDir, req.url.slice('/web/'.length));
           if (!fs.existsSync(filePath) || fs.statSync(filePath).isDirectory()) return next();
           const ext = path.extname(filePath).slice(1);
           const mime: Record<string, string> = {

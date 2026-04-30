@@ -6,7 +6,7 @@
 
 | Mots dans la demande | Pôle | Lire ensuite |
 |----------------------|------|-------------|
-| jeu · MJ · mini-jeu · bus · Phaser · mj-XX · déploiement · game-html | **JEU** | `memory/state-jeu.md` → `tasks/BACKLOG.md` |
+| jeu · MJ · mini-jeu · bus · Phaser · mj-XX · déploiement · game/web | **JEU** | `memory/state-jeu.md` → `tasks/BACKLOG.md` |
 | narration · histoire · personnage · univers · ennéagramme · Wex/Melki/Mimi/Polo/Jérem/Lulu/Pierrot/Raph/Juju/Nono | **NARRATION** | `docs/narration/pmo/INDEX.md` → `docs/narration/INDEX.md` |
 | idée brute · dump · brainstorm sans contexte clair | **?** | Poser la question : "C'est pour le jeu ou pour les histoires ?" |
 
@@ -21,7 +21,7 @@ Ne jamais répondre sans avoir chargé le contexte du bon pôle.
 ## Principes
 - **Simplicity First** · **No Laziness** · **Minimal Impact**
 - Plan mode pour 3+ étapes
-- Toujours `busSVG()` / `busSVGHiddenNum()` de [game-html/js/bus-svg.js](game-html/js/bus-svg.js), jamais 🚌
+- Toujours `busSVG()` / `busSVGHiddenNum()` de [game/web/js/bus-svg.js](game/web/js/bus-svg.js), jamais 🚌
 
 ## Fichiers clés
 | Fichier | Rôle |
@@ -29,8 +29,8 @@ Ne jamais répondre sans avoir chargé le contexte du bon pôle.
 | [memory/stack.md](memory/stack.md) | Stack Phaser, archi déploiement, règles SVG |
 | [memory/rules-jeu.md](memory/rules-jeu.md) | Règles UX/péda + designs validés |
 | [tasks/BACKLOG.md](tasks/BACKLOG.md) | Source de vérité épics jeu |
-| [docs/jeux/](docs/jeux/) | Specs, assets, idées |
-| [game-html/](game-html/) | Mini-jeux HTML vanilla (mj-01 à mj-20) |
+| [game/docs/jeux/](game/docs/jeux/) | Specs, assets, idées |
+| [game/web/](game/web/) | Mini-jeux HTML vanilla (mj-01 à mj-20) |
 | [game/](game/) | Phaser build (max-adventure) |
 
 ## Skills jeu
@@ -38,7 +38,7 @@ Ne jamais répondre sans avoir chargé le contexte du bon pôle.
 
 ## Stack & déploiement
 GitHub Pages → kimen26.github.io/MaxPlay/
-- `/`              → game-html/index.html (menu)
+- `/`              → game/web/index.html (menu)
 - `/mj-XX.html`    → HTML vanilla
 - `/mj-07/`        → Phaser build (CI)
 

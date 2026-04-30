@@ -42,7 +42,7 @@
 ## 3. Architecture proposée
 
 ```
-game-html/
+game/web/
 ├── css/
 │   ├── base.css         ← reset, typo, layout mobile
 │   ├── ui.css           ← btn-home, fbOverlay, toast, buttons

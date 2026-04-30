@@ -1,5 +1,5 @@
 // ─── Sons victoire / défaite / erreur (MP3 réels) ───────────────────────────
-// Nécessite que la page soit dans game-html/ (chemins relatifs)
+// Nécessite que la page soit dans game/web/ (chemins relatifs)
 
 // ── Sons de victoire (bon score ≥ 50%) ──────────────────────────────────────
 const VICTORY_SOUNDS = [

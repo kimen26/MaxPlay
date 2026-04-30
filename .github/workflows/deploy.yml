@@ -27,21 +27,21 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: game/package-lock.json
+          cache-dependency-path: game/phaser/package-lock.json
 
       - run: npm ci
-        working-directory: game
+        working-directory: game/phaser
 
       - run: npm run build
-        working-directory: game
+        working-directory: game/phaser
         env:
           CI: true
 
       - name: Assemble site
         run: |
           mkdir -p _site/max-adventure
-          cp -r game-html/* _site/
-          cp -r game/dist/* _site/max-adventure/
+          cp -r game/web/* _site/
+          cp -r game/phaser/dist/* _site/max-adventure/
 
       - uses: actions/configure-pages@v4
 

@@ -73,7 +73,7 @@
 - [x] Suppression `histoires/` legacy → `axes-histoires-en-stock.md` migré dans `stories/`
 - [x] Archive `UNIVERS-NOTES-BRUTES.md` → `archive/2026-04-13-univers-notes-brutes.md`
 - [x] Suppression `docs/univers/` (dossier vide après archivage)
-- [x] Création `docs/jeux/INDEX.md` (agent-ready)
+- [x] Création `game/docs/jeux/INDEX.md` (agent-ready)
 - [x] Suppression `TODO-EDITORIAL.md` (doublon) + `atelier/` (doublon de `workshop/`)
 - [x] Création `docs/narration/pmo/` (INDEX, backlog, decisions, sprint-log, roadmap)
 - [x] Création agent `narration-pmo`

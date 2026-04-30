@@ -1,7 +1,7 @@
 # docs/ — Carte de la documentation MaxPlay
 
 > Ce dossier contient toute la documentation du projet : jeux, narration, univers, profil Max.  
-> **Il ne contient aucun fichier déployé** (les jeux sont dans `game-html/`).
+> **Il ne contient aucun fichier déployé** (les jeux sont dans `game/web/`).
 
 > **Deux pôles distincts** : voir le routing en tête de [CLAUDE.md](../CLAUDE.md).
 > - **JEU** → [jeux/](jeux/)

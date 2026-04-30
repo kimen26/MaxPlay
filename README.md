@@ -27,7 +27,7 @@
 
 ```
 MaxPlay/
-├── game-html/          ← Source des mini-jeux HTML (déployés via CI)
+├── game/web/          ← Source des mini-jeux HTML (déployés via CI)
 │   ├── index.html      ← Menu principal
 │   ├── mj-01.html … mj-07.html
 │   ├── js/             ← Logique partagée (data, bus-svg, sounds, feedback)
@@ -56,7 +56,7 @@ git push origin master   # CI build (~2 min) → site mis à jour automatiquemen
 
 ```bash
 # Jeux HTML (vanilla JS) — ouvrir directement dans le navigateur
-open game-html/index.html
+open game/web/index.html
 
 # MJ-07 Phaser.js
 cd game && npm install && npm run dev

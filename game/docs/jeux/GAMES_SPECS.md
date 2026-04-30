@@ -9,7 +9,7 @@
 
 - **Bus** : modèle unique turquoise RATP. Seule la **fenêtre destination** change (couleur + numéro de la ligne). Jamais d'autre élément modifié.
 - **Couleurs** : TOUJOURS depuis `data.js` → `LIGNES`. Jamais de valeur hex hardcodée dans un jeu.
-- **Bus SVG** : `busSVG()` ou `busSVGHiddenNum()` de `game-html/js/bus-svg.js`. Jamais de SVG inline, jamais d'emoji, jamais de div CSS colorée.
+- **Bus SVG** : `busSVG()` ou `busSVGHiddenNum()` de `game/web/js/bus-svg.js`. Jamais de SVG inline, jamais d'emoji, jamais de div CSS colorée.
 - **Pool sans audio** : uniquement les lignes que Max connaît bien (list restreinte ci-dessous par jeu).
 - **Pool avec audio TTS** : toutes les lignes de `LIGNES` (data.js) — la voix annonce le nom, pas de risque de confusion.
 
@@ -17,7 +17,7 @@
 
 ## MJ-01 — Quelle couleur ?
 
-**Fichier** : `game-html/mj-01.html`
+**Fichier** : `game/web/mj-01.html`
 
 **Objectif pédagogique** : Reconnaître la couleur associée à chaque numéro de ligne.
 
@@ -36,7 +36,7 @@
 
 ## MJ-02 — Quel numéro ?
 
-**Fichier** : `game-html/mj-02.html`
+**Fichier** : `game/web/mj-02.html`
 
 **Objectif pédagogique** : Associer la couleur d'une ligne à son numéro.
 
@@ -55,7 +55,7 @@
 
 ## MJ-02b — Devine le numéro (version TTS)
 
-**Fichier** : `game-html/mj-02b.html`
+**Fichier** : `game/web/mj-02b.html`
 
 **Objectif pédagogique** : Idem MJ-02 mais avec aide audio — associer un numéro **entendu** à sa représentation visuelle.
 
@@ -74,7 +74,7 @@
 
 ## MJ-03a — Compte les passagers
 
-**Fichier** : `game-html/mj-03a.html`
+**Fichier** : `game/web/mj-03a.html`
 
 **Objectif pédagogique** : Dénombrement visuel rapide (comptage jusqu'à ~12).
 
@@ -90,7 +90,7 @@
 
 ## MJ-03b — La bonne place
 
-**Fichier** : `game-html/mj-03b.html`
+**Fichier** : `game/web/mj-03b.html`
 
 **Objectif pédagogique** : Addition/soustraction simple en contexte bus (places libres, gens qui montent/descendent).
 
@@ -111,7 +111,7 @@
 
 ## MJ-04 — Lis la phrase
 
-**Fichier** : `game-html/mj-04.html`
+**Fichier** : `game/web/mj-04.html`
 
 **Objectif pédagogique** : Lecture de mots simples + compréhension de phrases. Max est en apprentissage de lecture syllabique.
 
@@ -131,7 +131,7 @@
 
 ## MJ-05 — Terminus
 
-**Fichier** : `game-html/mj-05.html`
+**Fichier** : `game/web/mj-05.html`
 
 **Objectif pédagogique** : Mémoriser les destinations réelles des lignes de Max. Ancrage sur les vrais trajets.
 
@@ -176,7 +176,7 @@
 
 ## MJ-06 — Au garage !
 
-**Fichier** : `game-html/mj-06.html`
+**Fichier** : `game/web/mj-06.html`
 
 **Objectif pédagogique** : Reconnaître les bus par leur couleur + numéro. Motricité (drag & drop).
 
@@ -199,7 +199,7 @@
 
 ## MJ-07 (menu) — Trie les bus !
 
-**Fichier** : `game-html/mj-08.html` (numéro 7 dans le menu, fichier nommé mj-08)
+**Fichier** : `game/web/mj-08.html` (numéro 7 dans le menu, fichier nommé mj-08)
 
 **Objectif pédagogique** : Classer les bus par famille de couleur. Triage, catégorisation.
 
@@ -232,7 +232,7 @@
 
 ## MJ-08 (menu) — La journée de Max (Sandbox)
 
-**Fichier** : `game-html/mj-07.html` (splash intro) + `game/` (Phaser app, build → `mj-07/`)
+**Fichier** : `game/web/mj-07.html` (splash intro) + `game/` (Phaser app, build → `mj-07/`)
 
 **Objectif pédagogique** : Libre exploration — Max se déplace dans Villejuif, monte dans les bus, découvre son quartier.
 
@@ -253,7 +253,7 @@
 
 ## Référentiel couleurs
 
-Toujours depuis `game-html/js/data.js` → tableau `LIGNES`.
+Toujours depuis `game/web/js/data.js` → tableau `LIGNES`.
 
 Lignes à double couleur (à exclure des quiz sans audio pour éviter confusion) :
 - `N15` et `N22` : même bleu nuit `#000091`

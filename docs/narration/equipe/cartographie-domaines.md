@@ -157,10 +157,9 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 
 | Fichier / Dossier | Contenu | Règle |
 |-------------------|---------|-------|
-| `INBOX.md` | Dump brut session (hook commit auto) | Vider les sections distillées une fois rangées dans leurs domaines |
-| `input-idees/` | Idées brutes par sujet (un fichier par session/sujet) | Transit uniquement — jamais de contenu canon |
+| `INBOX.md` | Dump brut session (hook commit auto) — **zone unique** | Vider les sections distillées une fois rangées dans leurs domaines |
 | `archive/` | Sessions archivées complètes | **Jamais effacé** |
-| `reference/` | Analyses manga/Pokémon, Riso-Hudson | Lecture seule — source externe |
+| `_archive/narration-reference/` (racine) | Analyses manga/Pokémon, Riso-Hudson — matière dormante | Lecture seule — non chargée au quotidien |
 
 ---
 

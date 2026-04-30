@@ -25,7 +25,7 @@
 | ⚪ | STORY-005 | Le Mardi — Wex · Pierrot · Melki · graine | Haute | Architecte | pitch validé — prêt pour Architecte (`workshop/005-le-mardi/pitch.md`) |
 | ⚪ | STORY-006 | Sept à rien — Juju · Mimi · Wex · blocs | Haute | Architecte | pitch validé — prêt pour Architecte (`workshop/006-sept-a-rien/pitch.md`) |
 | ⚪ | UNIVERS-002 | Définir `univers/societe.md` (Vocation · Pouvoir Intérieur · Mission du jour) | Normale | Auteur · Conseiller | À définir ensemble — concept "contribution joyeuse" remonté du Grok aetheria, demande explicite auteur, absent de l'univers actuel |
-| ⚪ | UNIVERS-003 | Borner invariant vs variant dans l'expression ennéatype par culture | Normale | Auteur · Conseiller | À définir : où s'arrête le « même Type N partout » et où commence la variance culturelle légitime ? Documenter règles d'écriture par ennéatype × culture (futur `Eneagramme/expression-cross-culture.md`). Voir `univers/architecture-cross-culture.md` section dédiée. |
+| ⚪ | UNIVERS-003 | Borner invariant vs variant dans l'expression ennéatype par culture | Normale | Auteur · Conseiller | À définir : où s'arrête le « même Type N partout » et où commence la variance culturelle légitime ? Documenter règles d'écriture par ennéatype × culture (futur `enneagramme/expression-cross-culture.md`). Voir `univers/architecture-cross-culture.md` section dédiée. |
 | ⚪ | NARR-001 | Discussion D4 — Cross-culture micro-structures | **Haute** | Auteur · Conseiller | À creuser ensemble : règles micro-structurelles culturelles (call-and-response africain, cycles amérindiens, etc.) à autoriser dans les bulles culturelles, sans tomber dans le cliché. À cadrer avant ouverture du 2e casting national. |
 | ⚪ | NARR-002 | Définir le brief writer (verbes action + sensations sensorielles + ratio dialogue %) | Normale | Auteur · Directeur · Conseiller | Formaliser dans `equipe/brief-univers.md` ou nouveau fichier : verbes d'action concrets, sensations sensorielles obligatoires (texture/son/température), pas de seuil dur sur ratio dialogue mais **noter %age dans chaque story** pour rappel relecture. Cliffhanger à débattre via NARR-001. |
 | ⚪ | NARR-003 | Définir les sensibilités différenciées de chaque perso (Wex + 9) | Normale | Auteur · Conseiller | 9 sensibilités déjà figées (cf. décision 2026-04-28). Reste : **détailler ce que perçoit chacun précisément** (ce que c'est, ce que ce n'est pas, ce qui les active, ce qu'ils en font). Surtout **Wex — à définir** (piste : écoute des fausses notes / soin-bioélectrique). Idéalement en préparation de S2. |
@@ -45,7 +45,7 @@
 | ✅ | ARCHI-002 | Suppression histoires/ legacy + migration axes-en-stock | 2026-04-27 |
 | ✅ | ARCHI-003 | Nettoyage docs/ (dead code, refs orphelines) | 2026-04-27 |
 | ✅ | INPUT-001 | Distillation INBOX 2026-04-27 → univers/ (transport, sensibilités, école, géographie) | 2026-04-28 |
-| ✅ | INPUT-002 | Symbolique ésotérique → Eneagramme/symbolique.md (pierre, astre, couleur) | 2026-04-28 |
+| ✅ | INPUT-002 | Symbolique ésotérique → enneagramme/symbolique.md (pierre, astre, couleur) | 2026-04-28 |
 | ✅ | INPUT-003 | Voix ElevenLabs → equipe/voix/ (10 fichiers, 4 couches × 9 types + Wex) | 2026-04-28 |
 | ✅ | PERSO-001 | Restructuration personnages multi-pays (type-NN/, wex/, lookup.yml, identite.md) | 2026-04-28 |
 
@@ -53,7 +53,7 @@
 
 ## Comment créer un ticket
 
-1. Identifier la source : axe stock, dump input-idees/, décision à prendre
+1. Identifier la source : axe stock, dump INBOX.md, décision à prendre
 2. Vérifier qu'il y a < 3 tickets actifs — sinon attendre
 3. Ajouter une ligne dans "À faire" avec un ID unique (`STORY-NNN`, `PERSO-NNN`, `UNIVERS-NNN`, `ARCHI-NNN`)
 4. Quand démarré : déplacer dans "En cours" + mettre à jour `sprint-log.md`

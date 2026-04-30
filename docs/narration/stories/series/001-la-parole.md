@@ -1,6 +1,6 @@
 # Série 001 — La Parole
 
-> Source : `input-idees/serie-parole-briefs.md` (2026-04-29) — proposition Directeur, validée Conseiller + Auteur.
+> Source : `archive/inputs-historiques/serie-parole-briefs.md` (2026-04-29) — proposition Directeur, validée Conseiller + Auteur.
 
 ## Thème fil rouge
 

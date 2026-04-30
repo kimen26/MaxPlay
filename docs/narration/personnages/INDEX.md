@@ -83,7 +83,7 @@ personnages/
 ## Fiches détaillées
 
 → Chaque dossier `type-NN/` contient les 5 fichiers + dossier `pays/`.
-→ L'ancien emplacement `Eneagramme/personnages/` contient des stubs de redirection.
+→ L'ancien emplacement `enneagramme/personnages/` contient des stubs de redirection.
 
 ---
 
@@ -114,8 +114,8 @@ personnages/
 
 ## Ressources transversales
 
-- [Eneagramme/situations/interactions.md](../Eneagramme/situations/interactions.md) — tableau 9×9 des interactions
-- [Eneagramme/situations/emotions-universelles.md](../Eneagramme/situations/emotions-universelles.md) — 81 réactions
-- [reference/enneagramme-9-niveaux-riso-hudson.md](../reference/enneagramme-9-niveaux-riso-hudson.md) — niveaux Riso-Hudson
+- [enneagramme/casting-mapping.md](../enneagramme/casting-mapping.md) — pont type ↔ casting V1 (à lire avant d'écrire)
+- [enneagramme/situations/interactions.md](../enneagramme/situations/interactions.md) — tableau 9×9 des interactions
+- [enneagramme/situations/emotions-universelles.md](../enneagramme/situations/emotions-universelles.md) — 81 réactions
 - [univers/sensibilites.md](../univers/sensibilites.md) — doctrine des 9 sensibilités
 - [univers/compagnons.md](../univers/compagnons.md) — compagnons ondes/couleurs (distinct des sensibilités)

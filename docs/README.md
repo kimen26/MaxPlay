@@ -48,7 +48,7 @@ docs/
     │   ├── _gabarit/          ← Dossier-modèle à copier
     │   ├── 001-le-pont-casse/ ← V1 complète + comité lu + archives
     │   └── axes-histoires-en-stock.md
-    ├── Eneagramme/            ← Système ennéagramme complet
+    ├── enneagramme/            ← Système ennéagramme complet
     │   ├── README.md
     │   ├── personnages/       ← 9 fiches type-01 à type-09
     │   ├── situations/        ← émotions-universelles · interactions
@@ -65,7 +65,7 @@ docs/
     │   ├── memoire-science.md · memoire-sensibilite.md
     │   ├── profils-lecteurs.md
     │   └── sources-sciences.md · sources-sensibilite.md
-    ├── input-idees/           ← Zone de dump brut idées narration
+    ├── INBOX.md           ← Zone de dump brut idées narration
     └── archive/               ← Matière archivée
 ```
 

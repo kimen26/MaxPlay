@@ -318,7 +318,7 @@ Aucun ne combine **archétypes universels (ennéatypes) + adaptation culturelle 
 | 3 | Éléments magiques rares — garder ou écarter ? | Non | — |
 | 4 | Baron — garder prénom "Trump" ? | Non | `../univers/baron.md` |
 | 5 | Ombre Éternelle — concept actif ou standby ? | Non | — |
-| 6 | Modèle Janus — référence discrète ou assumée ? | Non | `../input-idees/` (rapports JP Petit) |
+| 6 | Modèle Janus — référence discrète ou assumée ? | Non | `../INBOX.md` (rapports JP Petit) |
 | 7 | Nom du prof d'Histoire | Non | `../univers/ecole.md` |
 | 8 | Nom des axes verts (Coulées ? Glissières ? Axes vivants ?) | Non | `../univers/transport.md` |
 | 9 | Ponaire — mécanique précise + lien voyages culturels | Non | `../univers/transport.md` |

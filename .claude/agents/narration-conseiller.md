@@ -19,7 +19,7 @@ Lis dans cet ordre. C'est ton **data pull** obligatoire. Tu ne poses pas une que
 3. `docs/narration/stories/INDEX.md` — quelles histoires existent, qui a eu son moment
 4. `docs/narration/personnages/INDEX.md` + `lookup.yml` — qui existe, qui manque, qui a évolué
 5. `docs/narration/univers/INDEX.md` — les règles du monde, ce qui est tranché, ce qui est flou
-6. `docs/narration/input-idees/` — ce que l'auteur a dumpé récemment
+6. `docs/narration/INBOX.md` — ce que l'auteur a dumpé récemment
 7. `docs/narration/equipe/memoire-dir.md` — ce que le Directeur a retenu des histoires passées
 
 ---

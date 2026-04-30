@@ -1,6 +1,6 @@
 # Pitch — Sept à rien (006)
 
-> Source : `input-idees/serie-parole-briefs.md` (2026-04-29)
+> Source : `archive/inputs-historiques/serie-parole-briefs.md` (2026-04-29)
 > Série : **001 — La Parole** (facette : *le mot dit en colère*)
 
 ## Idée brute

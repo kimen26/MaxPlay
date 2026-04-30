@@ -1,6 +1,6 @@
 # Le Soin par les Fréquences — pratique vivante du monde post-Éveil
 
-> Source : distillation de matière brute (4 fichiers `input-idees/` + grimoire `project_bioresonance_natation.md`) — 2026-04-29.
+> Source : distillation de matière brute (4 fichiers `INBOX.md` + grimoire `project_bioresonance_natation.md`) — 2026-04-29.
 >
 > **Règle de camouflage (mise à jour 2026-04-29 — décision *Architecture cross-culture du casting*) :**
 > - **Casting V1 français** (« Christ ») : aucune culture réelle nommée. Les inspirations (Dagara, Yoruba, Andes, Hammam, Temazcal, Ivan Kupala, Bajau/Ama, café éthiopien, Moon Lodge, g-Tummo…) restent **camouflées** — on parle des Maisons de Vapeur, Cabanes de Chaleur, Cercle de la Boisson Chaude, Retraites de Lune, Peuples de l'Eau.

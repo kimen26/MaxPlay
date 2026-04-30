@@ -17,7 +17,7 @@ type: project
 | 005 | Le Mardi | ⚪ à faire | Wex · Pierrot · Melki |
 | 006 | Sept à rien | ⚪ à faire | Juju · Mimi · Wex |
 
-**Série "La Parole"** : thème poids des mots — brief dans `input-idees/serie-parole-briefs.md`
+**Série "La Parole"** : thème poids des mots — brief dans `archive/inputs-historiques/serie-parole-briefs.md`
 **Axes en stock** : 15 (H-01 à H-10 + T-01 à T-05) → `stories/axes-histoires-en-stock.md`
 **Prochaine action PMO** : canoniser STORY-003 ou démarrer STORY-004
 
@@ -49,7 +49,7 @@ type: project
 ## Workflow narration
 
 ```
-input-idees/ → Conseiller → Architecte (Plan) → 4 Writers → Lecteurs témoins
+INBOX.md → Conseiller → Architecte (Plan) → 4 Writers → Lecteurs témoins
 → Directeur (sélection + brief) → Rewrite → GateKeeper PASS → stories/<NNN>/texte.md
 ```
 

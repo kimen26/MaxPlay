@@ -26,7 +26,7 @@
 ## Série "La Parole" — STORY-002 à 006 (en cours 2026-04-28)
 
 > Série thématique indépendante des axes H-XX. Histoires autour du poids des mots.
-> Brief complet dans `input-idees/serie-parole-briefs.md`.
+> Brief complet dans `archive/inputs-historiques/serie-parole-briefs.md`.
 
 | STORY | Titre | Facette | Persos | Statut |
 |-------|-------|---------|--------|--------|

@@ -12,14 +12,19 @@ Univers narratif pour enfants (Max, 3.5–4 ans) basé sur l'ennéagramme (9 per
 docs/narration/
 ├── README.md               ← ce fichier (humain)
 ├── INDEX.md                ← point d'entrée agent (toujours en premier)
-├── INBOX.md                ← dump brut sessions (hook commit auto)
+├── INBOX.md                ← dump brut sessions (hook commit auto) — zone unique
 │
-├── personnages/            ← tableau des 9 + prénoms candidats
+├── personnages/            ← casting V1 figé + lookup + catalogue cross-culture
 ├── univers/                ← monde, systèmes, cycle, compagnons, vibration
-├── stories/                ← récits écrits + gabarit (structure canonique)
-├── Eneagramme/             ← système théorique (9 fiches + situations + ressources)
-└── reference/              ← matière de fond (analyses manga/Pokémon, Riso-Hudson)
+├── enneagramme/            ← système théorique (9 fiches + casting-mapping + situations)
+├── stories/                ← canon (texte.md + archives)
+├── workshop/               ← brouillons en cours (pitch · plan · 4 versions · rewrite)
+├── pmo/                    ← projet (backlog · decisions · sprint-log · roadmap)
+├── equipe/                 ← processus + organigramme + mémoires des agents
+└── archive/                ← sessions historiques (rien n'est effacé)
 ```
+
+> **Matière dormante** (analyses manga/Pokémon, niveaux Riso-Hudson) : déplacée dans `_archive/narration-reference/` à la racine projet — non chargée par les agents au quotidien.
 
 **Règle fondamentale :** un INDEX ne contient jamais de contenu canon, uniquement des pointeurs + état + questions ouvertes.
 
@@ -50,8 +55,8 @@ docs/narration/
 ## Travailler sur un personnage
 
 1. Lire `personnages/INDEX.md` (prénoms ⚠)
-2. Fiche détaillée : `Eneagramme/personnages/type-XX-*.md`
-3. Scène émotionnelle : `Eneagramme/situations/emotions-universelles.md`
+2. Fiche détaillée : `enneagramme/personnages/type-XX-*.md`
+3. Scène émotionnelle : `enneagramme/situations/emotions-universelles.md`
 
 ## Travailler sur l'univers
 

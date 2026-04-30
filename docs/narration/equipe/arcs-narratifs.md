@@ -49,7 +49,7 @@ Un **arc narratif** = **suite de 3 à 7 histoires** (typiquement 3, 5 ou 7) lié
 
 **Couverture casting** : 8/9 compagnons (Nono, Polo, Jérem, Raph, Lulu, Mimi, Pierrot, Melki, Juju) + Wex circule en témoin. Manque : Pierrot apparaît en secondaire, à confirmer.
 
-**Source** : `../input-idees/serie-parole-briefs.md` (archivé) · `../stories/series/001-la-parole.md`.
+**Source** : `../archive/inputs-historiques/serie-parole-briefs.md` (archivé) · `../stories/series/001-la-parole.md`.
 
 ---
 

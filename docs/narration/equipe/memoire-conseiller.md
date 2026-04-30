@@ -5,7 +5,7 @@
 
 ## Arcs et saisons en cours
 
-- 2026-04-29 | série | **Série 001 "La Parole"** ouverte — fil rouge : *ce qu'on dit (ou ne dit pas) a des conséquences réelles*. 5 histoires (002 canon, 003 workshop, 004/005/006 pitch validé). Source : `input-idees/serie-parole-briefs.md`. Couvre 8/9 compagnons, Wex circule en témoin.
+- 2026-04-29 | série | **Série 001 "La Parole"** ouverte — fil rouge : *ce qu'on dit (ou ne dit pas) a des conséquences réelles*. 5 histoires (002 canon, 003 workshop, 004/005/006 pitch validé). Source : `archive/inputs-historiques/serie-parole-briefs.md`. Couvre 8/9 compagnons, Wex circule en témoin.
 - 2026-04-29 | note | **002 *Le Rire qui reste*** déjà canon (489 mots, GateKeeper PASS) — pitch source aligné, pas de différence notable détectée à ce stade (vérification fine recommandée si questions). Lieu canon : terrain-de-jeu-parc.
 - 2026-04-29 | note | **003 *La Confidence*** en workshop (GateKeeper PASS, version finale en attente auteur). Pas de fichier `pitch.md` formalisé dans le workshop — le pitch source du fichier `serie-parole-briefs.md` reste la référence Ki/Sho/Ten/Ketsu. À régulariser si besoin lors de la canonisation.
 - 2026-04-29 | règles-série | Règles transversales La Parole : pas d'adulte qui résout · pas de morale dite · pas de réconciliation rapide · Wex jamais sauveur · le geste > le mot.
@@ -126,7 +126,7 @@
 - 2026-04-30 | règle | **Pas de gros cliché / légende / religion locale dans les bulles**. Socle universel = bienveillance · éveil · sensibilité. La culture **affleure par les gestes du quotidien**, elle n'est pas le sujet.
 - 2026-04-30 | piste | **Wex** : un Wex par culture, prénom invariant « Wex » partout. Confirmation reportée à la première histoire de croisement (S2+).
 - 2026-04-30 | piste | **Mémoire entre castings** : probablement OUI (mêmes histoires archétypales rejouées par culture). Tension avec charge éditoriale → ticket UNIVERS-003.
-- 2026-04-30 | ticket | **UNIVERS-003** créé : borner invariant vs variant dans l'expression ennéatype par culture. Futur fichier cible : `Eneagramme/expression-cross-culture.md`.
+- 2026-04-30 | ticket | **UNIVERS-003** créé : borner invariant vs variant dans l'expression ennéatype par culture. Futur fichier cible : `enneagramme/expression-cross-culture.md`.
 
 ### Distillation narratologie cross-culture
 
@@ -149,9 +149,9 @@
   - Étude narratologique cross-culture → equipe/sources-narratologie.md (créé)
   - Concept « contribution joyeuse » Aetheria → ticket UNIVERS-002
   - Voix ElevenLabs → equipe/voix/ (10 fichiers, INPUT-003 ✅)
-  - Symbolique ésotérique → Eneagramme/symbolique.md (INPUT-002 ✅)
+  - Symbolique ésotérique → enneagramme/symbolique.md (INPUT-002 ✅)
   - Distillation INBOX → univers/transport, sensibilités, école, géographie (INPUT-001 ✅)
-- 2026-04-30 | direction | Plus aucune extraction en attente. Les prochaines arrivées dans `input-idees/` seront traitées dossier par dossier.
+- 2026-04-30 | direction | Plus aucune extraction en attente. Les prochaines arrivées dans `INBOX.md` seront traitées dossier par dossier.
 
 ## Sessions 2026-04-29 (suite — décisions auteur de fond)
 

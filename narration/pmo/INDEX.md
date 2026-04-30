@@ -45,5 +45,5 @@
 1. Lire `sprint-log.md` — dernière session : qu'est-ce qui était en cours ?
 2. Lire `decisions.md` — quelles décisions sont figées ?
 3. Lire `backlog.md` — quel ticket est prioritaire ?
-4. Lire `docs/narration/INDEX.md` — état du projet narration complet
+4. Lire `narration/INDEX.md` — état du projet narration complet
 5. Reprendre le ticket en cours ou demander au Directeur de challenger le suivant

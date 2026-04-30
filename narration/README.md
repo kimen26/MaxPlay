@@ -9,7 +9,7 @@ Univers narratif pour enfants (Max, 3.5–4 ans) basé sur l'ennéagramme (9 per
 ## Organisation
 
 ```
-docs/narration/
+narration/
 ├── README.md               ← ce fichier (humain)
 ├── INDEX.md                ← point d'entrée agent (toujours en premier)
 ├── INBOX.md                ← dump brut sessions (hook commit auto) — zone unique

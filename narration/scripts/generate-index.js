@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 /**
  * generate-index.js — Régénère les index transversaux depuis les métadonnées
- * Usage : node scripts/generate-index.js
+ * Usage : node narration/scripts/generate-index.js
  */
 
 const fs = require('fs');
 const path = require('path');
 
-const STORIES_DIR = path.join(__dirname, '..', 'docs', 'narration', 'stories');
-const INDEX_DIR = path.join(__dirname, '..', 'docs', 'narration', '_index');
+const STORIES_DIR = path.join(__dirname, '..', 'stories');
+const INDEX_DIR = path.join(__dirname, '..', '_index');
 const STORIES_INDEX_PATH = path.join(STORIES_DIR, 'INDEX.md');
 
 function parseFrontmatter(content) {

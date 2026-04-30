@@ -10,7 +10,7 @@
 
 ## Pourquoi ce catalogue
 
-L'univers Wex est pensé pour **traverser les cultures** : les **mêmes 9 ennéatypes invariants** (caractère + sensibilité), des **prénoms qui changent par culture** et des **vies adaptées au pays**, avec une **légère variance dans l'expression de l'ennéatype** (cf. [`../../univers/architecture-cross-culture.md`](../../univers/architecture-cross-culture.md)).
+L'univers Wex est pensé pour **traverser les cultures** : les **mêmes 9 ennéatypes invariants** (caractère + sensibilité), des **prénoms qui changent par culture** et des **vies adaptées au pays**, avec une **légère variance dans l'expression de l'ennéatype** (cf. [`../../univers/meta/architecture-cross-culture.md`](../../univers/meta/architecture-cross-culture.md)).
 
 Ce catalogue est la **matière opérationnelle** des castings nationaux. Il sert à :
 - **Construire** chaque casting national (9 prénoms qualifiés par culture cible)
@@ -109,7 +109,7 @@ Chaque **fichier de culture** liste les prénoms qualifiés en markdown narratif
 **Total qualifiés à ce jour : 218 prénoms** sur **30 cultures** (29 actives + 1 dépréciée).
 
 **Sources** :
-- `session-fondatrice-2026` (volets 1-3 de la recherche IA externe d'avril 2026, désormais archivée dans `docs/narration/archive/inputs-historiques/recherche-prenoms-culturel-session-fondatrice.md`)
+- `session-fondatrice-2026` (volets 1-3 de la recherche IA externe d'avril 2026, désormais archivée dans `narration/archive/inputs-historiques/recherche-prenoms-culturel-session-fondatrice.md`)
 - `dump IA Kimi 2026-04-29` (premier brouillon)
 - `deepseek proposition prénom personnage.md` (2026-04-29) → +27 prénoms : 14 brésiliens (tupi + orisha), 7 égyptiens, 3 anges, 3 nordiques
 

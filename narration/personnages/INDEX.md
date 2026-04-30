@@ -2,7 +2,7 @@
 
 > ✅ **Casting V1 validé 2026-04-24** — origine **France** (Christ) — **un casting parmi N**.
 > ✅ **Structure multi-pays mise en place 2026-04-28** — un dossier par type, sous-dossier `pays/` pour les castings.
-> ✅ **Architecture cross-culture tranchée 2026-04-29** — voir [`../pmo/decisions.md`](../pmo/decisions.md) et [`../univers/architecture-cross-culture.md`](../univers/architecture-cross-culture.md).
+> ✅ **Architecture cross-culture tranchée 2026-04-29** — voir [`../pmo/decisions.md`](../pmo/decisions.md) et [`../univers/meta/architecture-cross-culture.md`](../univers/meta/architecture-cross-culture.md).
 >
 > **Structure générale de l'univers :**
 > - **Wex** = archetype universel, **prénom invariant** (« Wex »), présent dans toutes les communautés / cultures.
@@ -91,7 +91,7 @@ personnages/
 
 > **Règle structurelle** : chaque personnage perçoit ce que les autres ne perçoivent pas. C'est de la **sensibilité différenciée** — **pas du savoir caché**. Aucune hiérarchie « Wex sait, les autres ignorent ».
 >
-> Voir `../pmo/decisions.md` (section *Sensibilité différenciée*) et `../univers/sensibilites.md`.
+> Voir `../pmo/decisions.md` (section *Sensibilité différenciée*) et `../univers/fondements/sensibilites.md`.
 
 | Perso | Type | Sensibilité | Statut |
 |-------|------|-------------|--------|
@@ -117,5 +117,5 @@ personnages/
 - [enneagramme/casting-mapping.md](../enneagramme/casting-mapping.md) — pont type ↔ casting V1 (à lire avant d'écrire)
 - [enneagramme/situations/interactions.md](../enneagramme/situations/interactions.md) — tableau 9×9 des interactions
 - [enneagramme/situations/emotions-universelles.md](../enneagramme/situations/emotions-universelles.md) — 81 réactions
-- [univers/sensibilites.md](../univers/sensibilites.md) — doctrine des 9 sensibilités
-- [univers/compagnons.md](../univers/compagnons.md) — compagnons ondes/couleurs (distinct des sensibilités)
+- [univers/fondements/sensibilites.md](../univers/fondements/sensibilites.md) — doctrine des 9 sensibilités
+- [univers/vie-quotidienne/compagnons.md](../univers/vie-quotidienne/compagnons.md) — compagnons ondes/couleurs (distinct des sensibilités)

@@ -96,7 +96,7 @@
 
 - 2026-04-29 | parking | **Rituel "prénom donné après observation"** (l. 6644-6645 du source 13-20 avril). Pratique amérindienne / ancienne : l'enfant n'a pas de prénom à la naissance, on observe son comportement, sa "vibration", et un prénom-vibration émerge. Application possible : S2, cultures alternatives, ou histoire ponctuelle où un personnage rencontre cette pratique. **Pas d'intégration au canon V1** (le casting Wex + 9 compagnons est figé). Ressortir comme matière narrative ou clin d'œil culturel le moment venu.
 
-- 2026-04-29 | parking | **Comparables prior art cross-culture jeunesse** (matière utile pour l'Architecte / Writers quand ils exploreront la piste cross-culture, suite à la décision *Architecture cross-culture du casting* — voir `pmo/decisions.md` et `univers/architecture-cross-culture.md`) :
+- 2026-04-29 | parking | **Comparables prior art cross-culture jeunesse** (matière utile pour l'Architecte / Writers quand ils exploreront la piste cross-culture, suite à la décision *Architecture cross-culture du casting* — voir `pmo/decisions.md` et `univers/meta/architecture-cross-culture.md`) :
   - **StoryWeaver / Pratham Books** (Inde) — 25 000+ histoires en 270+ langues, adaptation visuelle communautaire, licence CC-BY, audio Readalongs intégré. Référence absolue de la localisation hyperlocale jeunesse.
   - **Elisavet Arkolaki** (auteure maltaise) — séries *Cousins Forever*, *Where am I from?*, *Happiness Street* — traduits en 50+ langues. Modèle "même livre × N langues" pour comprendre les limites du format papier statique.
   - **One Globe Kids** (app iOS) — choose-your-own-adventure avec photos d'enfants réels (Haïti, Burundi, Indonésie, NY, Israël). 1,99$/histoire. Production lourde, abandonné ~2015 — utile comme contre-exemple (production photo réelle = piège scaling).
@@ -122,7 +122,7 @@
 
 ### Architecture cross-culture — précisions stratégiques
 
-- 2026-04-30 | stratégie | **Bulles + croisements** : Phase 1 = bulles locales (chaque culture pense que le casting lui est propre, pas de signal cross-culture au démarrage). Phase 2 = croisements 6-12 mois après stabilisation. Doc à jour dans `univers/architecture-cross-culture.md`.
+- 2026-04-30 | stratégie | **Bulles + croisements** : Phase 1 = bulles locales (chaque culture pense que le casting lui est propre, pas de signal cross-culture au démarrage). Phase 2 = croisements 6-12 mois après stabilisation. Doc à jour dans `univers/meta/architecture-cross-culture.md`.
 - 2026-04-30 | règle | **Pas de gros cliché / légende / religion locale dans les bulles**. Socle universel = bienveillance · éveil · sensibilité. La culture **affleure par les gestes du quotidien**, elle n'est pas le sujet.
 - 2026-04-30 | piste | **Wex** : un Wex par culture, prénom invariant « Wex » partout. Confirmation reportée à la première histoire de croisement (S2+).
 - 2026-04-30 | piste | **Mémoire entre castings** : probablement OUI (mêmes histoires archétypales rejouées par culture). Tension avec charge éditoriale → ticket UNIVERS-003.
@@ -142,7 +142,7 @@
 - 2026-04-30 | bilan | Tri input-idees terminé. Dossier ne contient plus que `README.md`. **Bilan extraction sur la vague (16 fichiers triés)** :
   - Patterns éditoriaux (parapluie, sobriété, info-loss) → mémoire conseiller + decisions
   - Pattern « même histoire × N cultures » → memoire-conseiller (parking)
-  - Architecture cross-culture → univers/architecture-cross-culture.md (créé) + pmo/decisions.md
+  - Architecture cross-culture → univers/meta/architecture-cross-culture.md (créé) + pmo/decisions.md
   - Catalogue prénoms 191 prénoms / 28 cultures → personnages/catalogue-prenoms/
   - Comparables prior art cross-culture (StoryWeaver, Arkolaki, etc.) → memoire-conseiller (parking)
   - Rituel prénom-vibration → memoire-conseiller (parking)
@@ -157,7 +157,7 @@
 
 ### Décisions tranchées définitivement
 - 2026-04-29 | tranché | **D1 Parents** : présents non-présents (confiance, amour, liberté). **S1 = prisme enfant pur** — pas de scène avec parent visible. Réintroduction possible S2+ via modèle « bon assez parent » Bluey/Winnicott.
-- 2026-04-29 | tranché | **D2 Compagnons** : forme = **ondes / fluides / vapeurs / éther** (pas d'animaux). Manifestation par **couleurs émotionnelles** ("je t'ai vu devenir rouge"). Apparition progressive milieu/fin S1. Refonte complète de `univers/compagnons.md` faite.
+- 2026-04-29 | tranché | **D2 Compagnons** : forme = **ondes / fluides / vapeurs / éther** (pas d'animaux). Manifestation par **couleurs émotionnelles** ("je t'ai vu devenir rouge"). Apparition progressive milieu/fin S1. Refonte complète de `univers/vie-quotidienne/compagnons.md` faite.
 - 2026-04-29 | tranché | **Sensibilité différenciée** (correctif narratologie) : chacun perçoit ce que les autres ne perçoivent pas. **PAS de hiérarchie « savoir caché »**. Wex est un percepteur parmi d'autres. Sa sensibilité reste à définir précisément (NARR-003).
 - 2026-04-29 | tranché | **D3 Structure des saisons** : S1 enfance pure → S2 visites Wex chez chaque copain (sensibilités révélées) → S3 vide (NARR-004) → S4 décentrement (un des 9 prend le rôle central, plus d'histoires en volume) → S# voyage cross-culture (joker).
 
@@ -172,7 +172,7 @@
 
 ### Fichiers modifiés cette session
 - `pmo/decisions.md` — 4 décisions ajoutées (Parents, Compagnons, Sensibilité différenciée, Structure des saisons), question ouverte #2 marquée tranchée.
-- `univers/compagnons.md` — refonte complète (ondes/couleurs).
+- `univers/vie-quotidienne/compagnons.md` — refonte complète (ondes/couleurs).
 - `equipe/arcs-narratifs.md` — créé.
 - `pmo/roadmap.md` — section Structure des saisons + horizons mis à jour.
 - `equipe/cartographie-domaines.md` — invariants 9, 10, 11 ajoutés.

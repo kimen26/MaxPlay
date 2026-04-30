@@ -56,8 +56,11 @@
       "Bash(node test-header.js)",
       "Bash(xargs ls *)",
       "Bash(xargs sed *)",
-      "Bash(sed -i 's|input-idees/, mémoire|INBOX.md, mémoire|g' docs/narration/equipe/ORGANIGRAMME.md)",
-      "Bash(sed -i 's|axe stock, dump input-idees/, décision|axe stock, dump INBOX.md, décision|g' docs/narration/pmo/backlog.md)"
+      "Bash(sed -i 's|input-idees/, mémoire|INBOX.md, mémoire|g' narration/equipe/ORGANIGRAMME.md)",
+      "Bash(sed -i 's|axe stock, dump input-idees/, décision|axe stock, dump INBOX.md, décision|g' narration/pmo/backlog.md)",
+      "Read(//c/c/ProjetsPerso/Claude_Projects/**)",
+      "Read(//c/c/ProjetsPerso/Claude_Projects/MaxPlay/**)",
+      "Bash(node narration/scripts/new-story.js TEST-REORG)"
     ]
   },
   "hooks": {

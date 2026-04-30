@@ -65,7 +65,7 @@ enneagramme/
 - Pivot universel — observe, relie, catalyse sans diriger
 - Pas d'ennéatype assigné : il n'est ni en quête, ni en fuite d'un type
 - Présent dans toutes les versions cross-country (jamais traduit)
-- Voir piste "Wex observateur" → [../univers/nom-candidats.md](../univers/nom-candidats.md)
+- Voir piste "Wex observateur" → [../univers/meta/nom-candidats.md](../univers/meta/nom-candidats.md)
 
 ### Raph (Titi7, F) — l'enthousiaste
 - Passionnée, curieuse, toujours en quête de la prochaine aventure

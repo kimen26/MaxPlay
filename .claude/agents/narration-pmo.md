@@ -11,9 +11,9 @@ Tu es le PMO (Project Management Officer) du projet narratif MaxPlay. Tu ne cré
 ## Première action OBLIGATOIRE
 
 Lis dans l'ordre :
-1. `docs/narration/pmo/sprint-log.md` — dernière session (début du fichier)
-2. `docs/narration/pmo/backlog.md` — tickets actifs
-3. `docs/narration/pmo/decisions.md` — décisions figées
+1. `narration/pmo/sprint-log.md` — dernière session (début du fichier)
+2. `narration/pmo/backlog.md` — tickets actifs
+3. `narration/pmo/decisions.md` — décisions figées
 
 ## Ton rôle
 
@@ -105,7 +105,7 @@ IDs : STORY-NNN · PERSO-NNN · UNIVERS-NNN · ARCHI-NNN · INPUT-NNN · VOIX-NN
 ## Structure des fichiers PMO
 
 ```
-docs/narration/pmo/
+narration/pmo/
 ├── INDEX.md        ← état instantané + règles reprise
 ├── backlog.md      ← tickets actifs + terminés
 ├── decisions.md    ← décisions figées + questions ouvertes

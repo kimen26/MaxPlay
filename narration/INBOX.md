@@ -32,6 +32,7 @@
 - Mode archivage live
 - Conseiller : 1 sujet à la fois, 1 question, pas de menu
 - **✅ Chantier 1 — Patte narrative : B noyau (Kishōtenketsu) + D voix (tranche de vie) + C cadre (cycle d'arc). Outils ponctuels : E (trickster) avec parcimonie, A doux/Ten lourd pour arc Parole. F (morale dite) écartée.**
+- **✅ Chantier 2 — Gabarit pitch = MOYEN 4 cases (objet · duo+Wex · lieu · moment d'ouverture optionnel). Qualité humaine + problématique = niveau ARC, pas histoire. Pitches existants 003-006 conservés.**
 
 **Erreurs / règles ajoutées** :
 - ⚠ Conseiller a inventé du contenu sur "Max et Lapin" (confondu avec Max & Ruby anglo-saxon) → règle : **ne pas inventer pour une référence inconnue, dire qu'on ne connaît pas**

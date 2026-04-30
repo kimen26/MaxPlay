@@ -49,6 +49,16 @@ export class HubScene extends Phaser.Scene {
       fontSize: portrait ? '16px' : '20px',
       color: '#555555',
     }).setOrigin(0.5);
+
+    // Tag temporaire test bus SVG (2026-04-30) — à retirer après validation
+    this.add.text(W / 2, subtitleY + 28, '🆕 v-bus-svg', {
+      fontFamily: 'Nunito',
+      fontSize: portrait ? '14px' : '16px',
+      fontStyle: 'bold',
+      color: '#FFFFFF',
+      backgroundColor: '#E2001A',
+      padding: { x: 10, y: 4 },
+    }).setOrigin(0.5);
   }
 
   private createGameCards(W: number, _H: number, portrait: boolean): void {

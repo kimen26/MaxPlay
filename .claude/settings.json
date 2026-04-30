@@ -33,16 +33,16 @@
       "Bash(git -C /c/ProjetsPerso/Claude_Projects/MaxPlay log --oneline)",
       "Bash(stat /c/ProjetsPerso/Claude_Projects/MaxPlay/memory/*.md)",
       "Bash(stat /c/ProjetsPerso/Claude_Projects/MaxPlay/docs/*.md)",
-      "Bash(ls c:/ProjetsPerso/Claude_Projects/MaxPlay/game-html/mj-*.html)",
+      "Bash(ls c:/ProjetsPerso/Claude_Projects/MaxPlay/game/web/mj-*.html)",
       "Edit(~/.claude/skills/cheikh/**)",
       "Edit(/.claude/skills/00-project/**)",
-      "Bash(grep -r \"🚌\\\\|emoji\" game-html/mj-*.html)",
-      "Bash(grep -n \"https://cdn\\\\|https://.*jsdelivr\\\\|https://.*unpkg\" game-html/mj-*.html)",
-      "Bash(grep -n \"endSession\\\\|end-game\" game-html/mj-*.html)",
-      "Bash(ls -1 game-html/mj-*.html)",
-      "Bash(grep \"https://\" game-html/index.html game-html/mj-*.html)",
+      "Bash(grep -r \"🚌\\\\|emoji\" game/web/mj-*.html)",
+      "Bash(grep -n \"https://cdn\\\\|https://.*jsdelivr\\\\|https://.*unpkg\" game/web/mj-*.html)",
+      "Bash(grep -n \"endSession\\\\|end-game\" game/web/mj-*.html)",
+      "Bash(ls -1 game/web/mj-*.html)",
+      "Bash(grep \"https://\" game/web/index.html game/web/mj-*.html)",
       "Bash(find /c/ProjetsPerso/Claude_Projects/MaxPlay/docs/jeux -type f -name \"*.md\" -exec basename {} \\\\;)",
-      "Bash(find /c/ProjetsPerso/Claude_Projects/MaxPlay/docs/narration -maxdepth 1 -type f -name \"*.md\" -exec basename {} \\\\;)",
+      "Bash(find /c/ProjetsPerso/Claude_Projects/MaxPlay/narration -maxdepth 1 -type f -name \"*.md\" -exec basename {} \\\\;)",
       "Skill(update-config)",
       "Skill(update-config:*)",
       "Bash(node -e \"const fs=require\\('fs'\\);try{JSON.parse\\(fs.readFileSync\\('c:/ProjetsPerso/Claude_Projects/MaxPlay/.claude/settings.json','utf8'\\)\\);console.log\\('JSON valide'\\)}catch\\(e\\){console.log\\('ERREUR:',e.message\\)}\")",
@@ -56,7 +56,7 @@
       "Bash(find \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\docs\\\\narration\\\\\" -type f -name \"*.md\" | head -50)",
       "Bash(node -e 'const fs=require\\('\\\\''fs'\\\\''\\);const h=fs.readFileSync\\('\\\\''__TRACKED_VAR__'\\\\'','\\\\''utf8'\\\\''\\);const m=h.match\\(/<script>\\([\\\\s\\\\S]*?\\)<\\\\/script>\\\\s*<\\\\/body>/\\);if\\(!m\\){console.log\\('\\\\''no inline script'\\\\''\\);process.exit\\(0\\)}try{new Function\\(m[1]\\);console.log\\('\\\\''OK'\\\\''\\)}catch\\(e\\){console.log\\('\\\\''ERR'\\\\'',e.message\\)}')",
       "Bash(sort echo *)",
-      "Read(//c/ProjetsPerso/Claude_Projects/Eneagramme/**)",
+      "Read(//c/ProjetsPerso/Claude_Projects/enneagramme/**)",
       "Read(//c/ProjetsPerso/Claude_Projects/**)",
       "Bash(xargs grep *)",
       "Read(//c/ProjetsPerso/**)",
@@ -67,7 +67,7 @@
       "Bash(grep -ao \".[^\\\\\\\\\\\\\\\\]{0,50}[Pp]ont [Cc]ass.[^\\\\\\\\\\\\\\\\]{0,300}\" \"1906df1e-c37a-44dc-8b68-f7ba6b71775b.jsonl\")",
       "Bash(grep -ao \"[^\\\\\\\\\\\\\\\\n]{0,100}pont cass[^\\\\\\\\\\\\\\\\n]{0,300}\" \"1906df1e-c37a-44dc-8b68-f7ba6b71775b.jsonl\")",
       "Bash(awk 'NR>200 && NR<=260')",
-      "Bash(find \"c:/ProjetsPerso/Claude_Projects/MaxPlay/docs/narration\" -name \"*.md\" -exec grep -l \"Élia\" {} \\\\;)",
+      "Bash(find \"c:/ProjetsPerso/Claude_Projects/MaxPlay/narration\" -name \"*.md\" -exec grep -l \"Élia\" {} \\\\;)",
       "Skill(claude-api)",
       "Skill(claude-api:*)",
       "Bash(bun install *)",
@@ -90,7 +90,8 @@
       "mcp__llm-copains__ask_kimi",
       "mcp__llm-copains__ask_deepseek",
       "mcp__llm-copains__ask_grok",
-      "Edit(~/.claude/skills/prompt-architect/**)"
+      "Edit(~/.claude/skills/prompt-architect/**)",
+      "Bash(sort -t: -k2 -n)"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\temp",
@@ -121,7 +122,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash -c 'pgrep -f \"bot/index.ts\" > /dev/null 2>&1 || (cd \"/c/ProjetsPerso/Claude_Projects/MaxPlay/bot\" && nohup bun run index.ts >> /tmp/maxplay-bot.log 2>&1 &)'",
+            "command": "bash -c 'pgrep -f \"infra/bot/index.ts\" > /dev/null 2>&1 || (cd \"/c/ProjetsPerso/Claude_Projects/MaxPlay/infra/bot\" && nohup bun run index.ts >> /tmp/maxplay-bot.log 2>&1 &)'",
             "async": true
           }
         ]
@@ -142,7 +143,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash -c 'INPUT=$(cat); if echo \"$INPUT\" | grep -q \"narration.*INBOX\"; then cd \"c:/ProjetsPerso/Claude_Projects/MaxPlay\" && git add docs/narration/INBOX.md && git commit -m \"inbox: dump $(date +%Y-%m-%d)\" 2>/dev/null || true; fi'",
+            "command": "bash -c 'INPUT=$(cat); if echo \"$INPUT\" | grep -q \"narration.*INBOX\"; then cd \"c:/ProjetsPerso/Claude_Projects/MaxPlay\" && git add narration/INBOX.md && git commit -m \"inbox: dump $(date +%Y-%m-%d)\" 2>/dev/null || true; fi'",
             "statusMessage": "Sauvegarde INBOX narration...",
             "async": true
           }

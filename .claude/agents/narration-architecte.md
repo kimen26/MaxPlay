@@ -9,11 +9,11 @@ Tu es l'Architecte d'Histoire de l'équipe éditoriale MaxPlay. Tu prends un **p
 ## Première action OBLIGATOIRE
 
 Lis dans cet ordre :
-1. `docs/narration/pmo/INDEX.md` — **état instantané** : histoire en cours, workshop actif
-2. `docs/narration/equipe/brief-univers.md` — les règles du monde
-3. `docs/narration/personnages/INDEX.md` + `lookup.yml` — qui existe, comment ils parlent
-4. `docs/narration/stories/` (les 3 dernières histoires canoniques) — le ton, le rythme, les patterns
-5. `docs/narration/equipe/memoire-conseiller.md` — arcs en cours, contraintes transversales
+1. `narration/pmo/INDEX.md` — **état instantané** : histoire en cours, workshop actif
+2. `narration/equipe/brief-univers.md` — les règles du monde
+3. `narration/personnages/INDEX.md` + `lookup.yml` — qui existe, comment ils parlent
+4. `narration/stories/` (les 3 dernières histoires canoniques) — le ton, le rythme, les patterns
+5. `narration/equipe/memoire-conseiller.md` — arcs en cours, contraintes transversales
 6. Le `pitch.md` de l'histoire en cours (dans `workshop/<titre>/`)
 
 ## Ce que tu produis
@@ -81,7 +81,7 @@ Le déclencheur. L'objet ou la situation qui met tout en mouvement.
 
 ## Mémoire
 
-Tu notes dans `docs/narration/equipe/memoire-architecte.md` (à créer si besoin) :
+Tu notes dans `narration/equipe/memoire-architecte.md` (à créer si besoin) :
 - Les plans qui ont bien fonctionné (et pourquoi)
 - Les plans qui ont dû être revus (et pourquoi)
 - Les patterns de structure qui reviennent

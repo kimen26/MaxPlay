@@ -1,12 +1,12 @@
 # MaxPlay – Mémoire Projet
 
 > Chargé automatiquement à chaque session. Rester sous 200 lignes.
-> Source de vérité = `tasks/BACKLOG.md`. Ici : contexte rapide pour démarrer.
+> Source de vérité = `game/tasks/BACKLOG.md`. Ici : contexte rapide pour démarrer.
 
 ## Projet
 
 Jeu éducatif 2D pour **Max**, 3.5-4 ans, passionné de bus (lignes Villejuif).
-Voir `docs/MAX_PROFILE.md` pour le profil complet.
+Voir `memory/MAX_PROFILE.md` pour le profil complet.
 **Stack** : Phaser.js 3 + Vite + TypeScript · Résolution 1024×768 landscape
 
 ## État jeux (2026-04-26, session 13)
@@ -17,7 +17,7 @@ Voir `docs/MAX_PROFILE.md` pour le profil complet.
 - **Vocab Max (D-021)** : Centre bus = dodo · Garage = réparation · Village des bus = terminus (réservé)
   - MJ-08 à renommer "Au garage !" → "Au centre bus"
   - MJ-17 à renommer "Village des bus" → "Le garage"
-- **Menu** : projet Carte de Villejuif en haut + grille classique en bas (EP-023, plan : `docs/jeux/MENU-MAP-VILLEJUIF.md`)
+- **Menu** : projet Carte de Villejuif en haut + grille classique en bas (EP-023, plan : `_archive/docs-jeux-cadavres/MENU-MAP-VILLEJUIF.md`)
 - **mj-02, mj-03, mj-07, mj-10** : retirés du menu (consolidés ailleurs)
 
 ### Détails jeux récents
@@ -40,7 +40,7 @@ Voir `docs/MAX_PROFILE.md` pour le profil complet.
 - **Histoires écrites** : "Le Pont Cassé" — Wex (#7 héros hors-système) + Melki (#1) + Juju (#8), thème causalité/responsabilité, V1 complète
 - **Comité de lecture** : 7 profils internes (éditeur, prof français, philo, Boo 4 ans, enfant 8 ans, père, mère) + 8 cultures (USA, DE, CN, NG, JP, MA, BR, RU)
 - **3 actions V2** : couper chute italique · donner à Melki un vrai tort · ralentir retournement de Wex
-- **Univers macro** : en construction — `docs/univers/UNIVERS-NOTES-BRUTES.md`
+- **Univers macro** : en construction — `narration/univers/INDEX.md`
   - Post-Grande Tempête de Phos (Éveil des consciences, Tisseurs d'Ombre vaincus)
   - Conscience créative + Totems de Pensée (Voile Janus)
   - Gardiens de l'Équilibre (Présence Pure, micro-gestes)
@@ -49,20 +49,20 @@ Voir `docs/MAX_PROFILE.md` pour le profil complet.
   - Baron (voyageur temporel, Gardien des Portes)
   - **Nom de l'univers** : pas encore choisi (21 candidats dont Phosyntha, Egryntha, Veynara)
 - **Personnages nommés (casting Christ V1 figé 2026-04-24)** : Wex (#7 héros hors-système), Melki/Melchisédech (#1), Mimi/Marie F (#2), Polo/Paul (#3), Jérem/Jérémie (#4), Lulu/Luc (#5), Pierrot/Pierre (#6), Raph/Raphaëlle F (#7 ennéatype), Juju/Judith F (#8), Nono/Noé (#9)
-- **Docs narration** : `docs/narration/` (INDEX.md + Eneagramme/) · `docs/univers/`
+- **Docs narration** : `narration/` (INDEX.md + univers/{fondements,vie-quotidienne,meta} + enneagramme/ + personnages/ + stories/ + workshop/ + pmo/ + equipe/)
 
 ## Architecture déploiement (2026-03-21)
 
 ```
 GitHub Pages → kimen26.github.io/MaxPlay/
-├── /                    ← game-html/index.html (menu 2 colonnes)
+├── /                    ← game/web/index.html (menu 2 colonnes)
 ├── /mj-01.html à /mj-20.html  ← mini-jeux HTML vanilla (mj-02/03/07/10 retirés)
-└── /max-adventure/      ← Phaser build (game/dist/ copié par CI)
+└── /max-adventure/      ← Phaser build (game/phaser/dist/ copié par CI)
     max-adventure.html   ← splash → ./max-adventure/
 ```
 
 **CI** : `.github/workflows/deploy.yml` build Phaser (`CI=true` → base `/MaxPlay/max-adventure/`) puis assemble dans `_site/`
-**docs/** : uniquement des `.md` (plus de HTML ni d'assets)
+
 **game/dist/**, **_site/** : dans `.gitignore`, jamais commités
 
 ## Décisions clés MJ-11 (drapeaux)
@@ -80,7 +80,7 @@ GitHub Pages → kimen26.github.io/MaxPlay/
 - **POV** : top-down (vue GTA1/Pokémon), tap only Phase 1
 - **Progression** : flotte de bus débloquée + carte Villejuif
 - **Audio** : Web Speech API (TTS), Web Audio API (sons procéduraux)
-- **Bus side-view** : `busSVG()` / `busSVGHiddenNum()` dans `game-html/js/bus-svg.js` — JAMAIS emoji ni div CSS
+- **Bus side-view** : `busSVG()` / `busSVGHiddenNum()` dans `game/web/js/bus-svg.js` — JAMAIS emoji ni div CSS
 - **Bus topdown** : sprite sheet White + setTint() Phaser
 - **Anti-doublons** : `selectDistinctColors(pool, n, minDist=80)` pour tout quiz à couleurs
 - **ratp-colors.json** : source de vérité terminus+couleurs. Protocole de modif dans `.claude/skills/game-rules/bus-rules.md`
@@ -92,7 +92,7 @@ GitHub Pages → kimen26.github.io/MaxPlay/
 
 ## Tileset LimeZu Modern Exteriors (48×48) — règles apprises (session 8)
 
-**Fichier** : `game-html/map-mockups.html` — 5 maps atomiques validées (M1–M5)
+**Fichier** : `game/web/map-mockups.html` — 5 maps atomiques validées (M1–M5)
 
 | Règle | Détail |
 |-------|--------|
@@ -115,43 +115,43 @@ Serveur MCP global (scope user, tous projets) exposant 2 outils LLM tiers :
 - `ask_kimi` → Kimi K2.6 via `api.kimi.com/coding/v1` + `User-Agent: claude-code/1.0` (**consomme l'abonnement kimi.com**)
 - `tts_elevenlabs` → à implémenter (clé ElevenLabs en attente)
 
-**Fichiers** : `mcp/server.ts` + `mcp/package.json` (bun, @modelcontextprotocol/sdk 1.29)
-**Config** : `claude mcp add --scope user --transport stdio llm-copains -- bun run c:/ProjetsPerso/Claude_Projects/MaxPlay/mcp/server.ts`
+**Fichiers** : `infra/mcp/server.ts` + `mcp/package.json` (bun, @modelcontextprotocol/sdk 1.29)
+**Config** : `claude mcp add --scope user --transport stdio llm-copains -- bun run c:/ProjetsPerso/Claude_Projects/MaxPlay/infra/mcp/server.ts`
 **Clés** : stockées dans `~/.claude.json` via CLI (`claude mcp add --env KEY=val`) — jamais éditer à la main
 **`.mcp.json` projet** : vide (garde le fichier pour usage projet futur)
 **`.gitignore`** : `.mcp.json` exclu (sécurité)
 
 ## Bot Telegram (botard)
 
-`bot/index.ts` · grammy + bun · lancé auto au démarrage Claude (hook SessionStart)
+`infra/bot/index.ts` · grammy + bun · lancé auto au démarrage Claude (hook SessionStart)
 
 **Flow** : message → détection d'intention → `claude -p --agent <nom> --dangerously-skip-permissions`
 **Agents** : `narration` (Opus) · `game-dev` (Sonnet) · `quick` (Haiku) — dans `.claude/agents/`
 **Permissions** : hook `PermissionRequest` → HTTP `:3001/permission` → Telegram ✅/❌ → décision
 **Env vars** : `TELEGRAM_BOT_TOKEN` · `ALLOWED_CHAT_ID` · `PROJECT_PATH`
 **Logs** : `/tmp/maxplay-bot.log`
-**Redémarrer** : `pkill -f "bot/index.ts" && cd C:/ProjetsPerso/Claude_Projects/MaxPlay/bot && bun run index.ts &`
+**Redémarrer** : `pkill -f "infra/bot/index.ts" && cd C:/ProjetsPerso/Claude_Projects/MaxPlay/infra/bot && bun run index.ts &`
 **Commandes** : `/status` · `/reset` (efface historique)
 
 ## Carte des fichiers
 
 | Fichier | Rôle |
 |---------|------|
-| `tasks/BACKLOG.md` | Source de vérité : épics, tâches, décisions, leçons |
-| `docs/README.md` | Carte de toute la documentation — point d'entrée |
-| `docs/MAX_PROFILE.md` | Profil complet Max : lignes bus, couleurs IDFM, intérêts |
-| `docs/VISION.md` | Décisions prises + questions ouvertes |
-| `docs/ratp-colors.json` | Source de vérité couleurs+terminus : 26 actives + 362 référentiel |
-| `docs/narration/INDEX.md` | Point d'entrée projet narratif (personnages, ennéagramme, univers) |
-| `docs/narration/Eneagramme/` | 9 fiches personnages + situations + ressources auteur |
-| `docs/univers/UNIVERS-NOTES-BRUTES.md` | Matière brute univers macro (Éveil, Compagnons, Janus, Baron...) |
-| `game-html/` | mj-01 à mj-20 + max-adventure (vanilla HTML/JS) — source déployée |
-| `game-html/js/tracker.js` | Suivi progression localStorage — sessions, scores, maîtrise |
-| `game-html/suivi.html` | Dashboard parent — stats, sparklines, export/import JSON |
-| `game-html/js/data.js` | LIGNES (26 actives), DESTINATIONS, getLineDisplayName() |
-| `game-html/js/idfm.js` | IDFM_REFERENTIEL — 362 lignes complètes (généré depuis ratp-colors.json) |
-| `game-html/js/bus-svg.js` | busSVG() / busSVGHiddenNum() / selectDistinctColors() |
-| `game-html/map-mockups.html` | Preview tileset LimeZu — 5 maps atomiques M1–M5 |
-| `game/src/scenes/` | HubScene · SandboxScene (max-adventure Phaser) |
+| `game/tasks/BACKLOG.md` | Source de vérité : épics, tâches, décisions, leçons |
+| `_archive/docs-meta-cadavres/README-docs-old.md` (archivé) | Carte de toute la documentation — point d'entrée |
+| `memory/MAX_PROFILE.md` | Profil complet Max : lignes bus, couleurs IDFM, intérêts |
+| `memory/VISION.md` | Décisions prises + questions ouvertes |
+| `game/docs/ratp-colors.json` | Source de vérité couleurs+terminus : 26 actives + 362 référentiel |
+| `narration/INDEX.md` | Point d'entrée projet narratif (personnages, ennéagramme, univers) |
+| `narration/enneagramme/` | 9 fiches personnages + situations + ressources auteur |
+| `narration/univers/INDEX.md` | Matière brute univers macro (Éveil, Compagnons, Janus, Baron...) |
+| `game/web/` | mj-01 à mj-20 + max-adventure (vanilla HTML/JS) — source déployée |
+| `game/web/js/tracker.js` | Suivi progression localStorage — sessions, scores, maîtrise |
+| `game/web/suivi.html` | Dashboard parent — stats, sparklines, export/import JSON |
+| `game/web/js/data.js` | LIGNES (26 actives), DESTINATIONS, getLineDisplayName() |
+| `game/web/js/idfm.js` | IDFM_REFERENTIEL — 362 lignes complètes (généré depuis ratp-colors.json) |
+| `game/web/js/bus-svg.js` | busSVG() / busSVGHiddenNum() / selectDistinctColors() |
+| `game/web/map-mockups.html` | Preview tileset LimeZu — 5 maps atomiques M1–M5 |
+| `game/phaser/src/scenes/` | HubScene · SandboxScene (max-adventure Phaser) |
 | `.claude/skills/game-rules/bus-rules.md` | Règles immuables bus + protocole de modification |
 | `.github/workflows/deploy.yml` | CI : build + assemble + deploy GitHub Pages |

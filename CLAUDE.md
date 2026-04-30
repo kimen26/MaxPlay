@@ -6,9 +6,9 @@
 
 | Mots dans la demande | Pôle | Lire ensuite |
 |----------------------|------|-------------|
-| jeu · MJ · mini-jeu · bus · Phaser · mj-XX · déploiement · game-html | **JEU** | `memory/state-jeu.md` → `tasks/BACKLOG.md` |
-| narration · histoire · personnage · univers · ennéagramme · Wex/Melki/Mimi/Polo/Jérem/Lulu/Pierrot/Raph/Juju/Nono | **NARRATION** | `docs/narration/pmo/INDEX.md` → `docs/narration/INDEX.md` |
-| idée brute · dump · brainstorm sans contexte clair | **?** | Poser la question : "C'est pour le jeu ou pour les histoires ?" |
+| jeu · MJ · mini-jeu · bus · Phaser · mj-XX · déploiement · `game/web` | **JEU** | [`game/INDEX.md`](game/INDEX.md) → [`game/memory/state.md`](game/memory/state.md) |
+| narration · histoire · personnage · univers · ennéagramme · Wex/Melki/Mimi/Polo/Jérem/Lulu/Pierrot/Raph/Juju/Nono | **NARRATION** | [`narration/INDEX.md`](narration/INDEX.md) → [`narration/pmo/INDEX.md`](narration/pmo/INDEX.md) |
+| idée brute · dump · brainstorm sans contexte clair | **?** | Demander : "C'est pour le jeu ou pour les histoires ?" |
 
 **Étape 2 — Annoncer avant d'agir :**
 Dire en 1 ligne : *"Mode [JEU/NARRATION] — je charge [fichier] puis j'agis."*
@@ -16,36 +16,45 @@ Ne jamais répondre sans avoir chargé le contexte du bon pôle.
 
 ---
 
+## Arborescence (refonte 2026-04-30)
+
+```
+MaxPlay/
+├── game/         ← PÔLE JEU (web/, phaser/, docs/, memory/, tasks/) → game/INDEX.md
+├── narration/    ← PÔLE NARRATION (stories, workshop, univers, perso, scripts, ...) → narration/INDEX.md
+├── infra/        ← bot Telegram + serveur MCP llm-copains
+├── memory/       ← transverse : MEMORY, MAX_PROFILE, VISION, workflow, skills-map
+├── _archive/     ← cadavres préservés (avec INDEX expliquant chaque entrée)
+└── .claude/ .github/ .gitignore CLAUDE.md README.md
+```
+
+---
+
 # PÔLE JEU
 
 ## Principes
-- **Simplicity First** · **No Laziness** · **Minimal Impact**
-- Plan mode pour 3+ étapes
-- Toujours `busSVG()` / `busSVGHiddenNum()` de [game-html/js/bus-svg.js](game-html/js/bus-svg.js), jamais 🚌
+- **Simplicity First** · **No Laziness** · **Minimal Impact** · Plan mode pour 3+ étapes
+- Toujours `busSVG()` / `busSVGHiddenNum()` de [`game/web/js/bus-svg.js`](game/web/js/bus-svg.js), jamais 🚌
 
 ## Fichiers clés
 | Fichier | Rôle |
 |---------|------|
-| [memory/stack.md](memory/stack.md) | Stack Phaser, archi déploiement, règles SVG |
-| [memory/rules-jeu.md](memory/rules-jeu.md) | Règles UX/péda + designs validés |
-| [tasks/BACKLOG.md](tasks/BACKLOG.md) | Source de vérité épics jeu |
-| [docs/jeux/](docs/jeux/) | Specs, assets, idées |
-| [game-html/](game-html/) | Mini-jeux HTML vanilla (mj-01 à mj-20) |
-| [game/](game/) | Phaser build (max-adventure) |
-
-## Skills jeu
-`20-game-tech/` : phaser-framework, gamepad-inputs, performance-opt, game-mechanics
+| [`game/INDEX.md`](game/INDEX.md) | **Point d'entrée pôle** — charger en premier |
+| [`game/memory/state.md`](game/memory/state.md) | État réel : déployés, bugs, backlog |
+| [`game/memory/rules.md`](game/memory/rules.md) | Règles UX/péda + designs validés |
+| [`game/memory/stack.md`](game/memory/stack.md) | Stack Phaser, archi déploiement, règles SVG |
+| [`game/tasks/BACKLOG.md`](game/tasks/BACKLOG.md) | Source de vérité épics jeu |
+| [`game/docs/jeux/`](game/docs/jeux/) | Specs, assets, idées |
+| [`game/web/`](game/web/) | 21 mini-jeux HTML vanilla |
+| [`game/phaser/`](game/phaser/) | Phaser TS+Vite (max-adventure) |
 
 ## Stack & déploiement
-GitHub Pages → kimen26.github.io/MaxPlay/
-- `/`              → game-html/index.html (menu)
-- `/mj-XX.html`    → HTML vanilla
-- `/mj-07/`        → Phaser build (CI)
+GitHub Pages → `kimen26.github.io/MaxPlay/`
+- `/` → `game/web/index.html` (menu)
+- `/mj-XX.html` → HTML vanilla
+- `/max-adventure/` → Phaser build (CI)
 
-CI : [.github/workflows/deploy.yml](.github/workflows/deploy.yml) assemble dans `_site/` (gitignored)
-
-## État jeux
-→ [memory/state-jeu.md](memory/state-jeu.md) — déployés, bugs actifs, backlog (toujours à jour)
+CI : [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) (assemble dans `_site/` gitignored).
 
 ---
 
@@ -59,54 +68,46 @@ CI : [.github/workflows/deploy.yml](.github/workflows/deploy.yml) assemble dans 
 ## Fichiers clés
 | Fichier | Rôle |
 |---------|------|
-| [docs/narration/INDEX.md](docs/narration/INDEX.md) | **Point d'entrée agent — charger en premier** |
-| [docs/narration/INBOX.md](docs/narration/INBOX.md) | Dump brut sessions (hook commit auto) |
-| [docs/narration/personnages/INDEX.md](docs/narration/personnages/INDEX.md) | Tableau des 9 + ⚠ prénoms |
-| [docs/narration/univers/INDEX.md](docs/narration/univers/INDEX.md) | Carte du monde (monde, systèmes, cycle, vibration, compagnons) |
-| [docs/narration/stories/INDEX.md](docs/narration/stories/INDEX.md) | Catalogue récits + gabarit |
-| [docs/narration/Eneagramme/](docs/narration/Eneagramme/) | Fiches détaillées personnages + situations |
-| [docs/narration/reference/INDEX.md](docs/narration/reference/INDEX.md) | Matière de fond (analyses manga/Pokémon, Riso-Hudson) |
-
-## Skills narration
-- `10-story/` : storytelling-master, craft-fundamentals
-- `11-youth/` : youth-writing
-- `12-characters/` : enneagramme-system
-- `13-media/` : animation-screenplay
-
-## État narration
-→ [memory/state-narration.md](memory/state-narration.md) — histoires, casting, workflow, agents (toujours à jour)
+| [`narration/INDEX.md`](narration/INDEX.md) | **Point d'entrée pôle** — charger en premier |
+| [`narration/INBOX.md`](narration/INBOX.md) | Zone unique de dump brut sessions |
+| [`narration/pmo/INDEX.md`](narration/pmo/INDEX.md) | PMO — backlog, decisions, sprint-log, roadmap |
+| [`narration/personnages/INDEX.md`](narration/personnages/INDEX.md) | Casting V1 figé + lookup + catalogue cross-culture |
+| [`narration/univers/INDEX.md`](narration/univers/INDEX.md) | Carte du monde (3 sous-dossiers : fondements, vie-quotidienne, meta) |
+| [`narration/stories/INDEX.md`](narration/stories/INDEX.md) | Catalogue récits canon |
+| [`narration/workshop/`](narration/workshop/) | Brouillons en cours (pitch, plan, drafts) |
+| [`narration/enneagramme/`](narration/enneagramme/) | Fiches théoriques par type + casting-mapping |
+| [`narration/equipe/ORGANIGRAMME.md`](narration/equipe/ORGANIGRAMME.md) | Workflow éditorial 6 phases |
+| [`narration/memory/state.md`](narration/memory/state.md) | État instantané narration |
+| [`narration/scripts/`](narration/scripts/) | CLI : new-story, archive-story, gatekeeper, validate, generate-index |
 
 ## Personnages
-Casting V1 "Christ" **figé** (2026-04-24). Wex (héros hors-système) + 9 compagnons ennéagramme.
-Toujours lire [docs/narration/personnages/INDEX.md](docs/narration/personnages/INDEX.md) avant d'écrire.
+Casting V1 "Christ" **figé** (2026-04-24). Wex (héros hors-système, prénom invariant cross-culture) + 9 compagnons ennéatypes (prénoms variables par casting national).
+Toujours lire [`narration/personnages/INDEX.md`](narration/personnages/INDEX.md) avant d'écrire.
 
 ---
 
-# COMMUN (toujours pertinent)
+# COMMUN
 
 ## Profil Max
-3.5-4 ans · chiffres jusqu'aux milliers · lecture phonétique · tablet tactile.
+3.5-4 ans · chiffres jusqu'aux milliers · lecture phonétique · tablette tactile.
 Passions : bus Villejuif, animaux, drapeaux, loups, Tayo, Totoro/Ghibli, Stitch.
-Origines brésiliennes. Voir [docs/MAX_PROFILE.md](docs/MAX_PROFILE.md).
+Origines brésiliennes. Voir [`memory/MAX_PROFILE.md`](memory/MAX_PROFILE.md).
 
 ## Fichiers transversaux
 | Fichier | Rôle |
 |---------|------|
-| [memory/state-jeu.md](memory/state-jeu.md) | **État jeux** — déployés, bugs, backlog |
-| [memory/state-narration.md](memory/state-narration.md) | **État narration** — histoires, casting, agents |
-| [memory/MEMORY.md](memory/MEMORY.md) | Mémoire projet dense (archi, décisions historiques) |
-| [memory/workflow.md](memory/workflow.md) | Workflow session |
-| [memory/skills-map.md](memory/skills-map.md) | Agents, skills, commandes |
-| [docs/README.md](docs/README.md) | Carte documentation |
-| [docs/MAX_PROFILE.md](docs/MAX_PROFILE.md) | Profil complet Max |
-| [bot/index.ts](bot/index.ts) | Bot Telegram — routing agents, permissions Telegram |
-| [.claude/agents/](.claude/agents/) | **Équipe narration** : narration-conseiller (Opus) · narration-architecte (Sonnet) · narration (Opus) · narration-writer-claude-libre (Sonnet) · narration-gatekeeper (Haiku) · narration-pmo (Haiku) · science/sensibilite/archiviste (Haiku/Sonnet) · game-dev (Sonnet) · quick (Haiku) |
-| [docs/narration/equipe/ORGANIGRAMME.md](docs/narration/equipe/ORGANIGRAMME.md) | Organigramme équipe éditoriale — qui fait quoi |
-| [docs/narration/input-idees/](docs/narration/input-idees/) | Zone de dump brut idées narration |
-| [docs/narration/pmo/INDEX.md](docs/narration/pmo/INDEX.md) | PMO — tickets, décisions, sprint-log (reprise après reboot) |
+| [`memory/MEMORY.md`](memory/MEMORY.md) | Mémoire projet dense (archi, décisions historiques) |
+| [`memory/MAX_PROFILE.md`](memory/MAX_PROFILE.md) | Profil complet Max |
+| [`memory/VISION.md`](memory/VISION.md) | Vision produit jeu |
+| [`memory/workflow.md`](memory/workflow.md) | Workflow session |
+| [`memory/skills-map.md`](memory/skills-map.md) | Agents, skills, commandes |
+| [`infra/bot/index.ts`](infra/bot/index.ts) | Bot Telegram — routing agents, permissions |
+| [`infra/mcp/server.ts`](infra/mcp/server.ts) | MCP llm-copains (Grok, Kimi, ElevenLabs) |
+| [`.claude/agents/`](.claude/agents/) | Équipe : narration-conseiller (Opus) · narration-architecte (Sonnet) · narration (Opus) · narration-writer-claude-libre (Sonnet) · narration-gatekeeper (Haiku) · narration-pmo (Haiku) · science/sensibilite/archiviste (Haiku/Sonnet) · game-dev (Sonnet) · quick (Haiku) |
+| [`_archive/INDEX.md`](_archive/INDEX.md) | Cadavres préservés (avec date + raison) |
 
 ## Workflow
 ```
 Plan → TodoWrite → Dev (subagents) → Verify → Commit → Docs
 ```
-Après correction utilisateur → leçon dans [tasks/BACKLOG.md](tasks/BACKLOG.md).
+Après correction utilisateur → leçon dans [`game/tasks/BACKLOG.md`](game/tasks/BACKLOG.md) (jeu) ou [`narration/pmo/decisions.md`](narration/pmo/decisions.md) (narration).

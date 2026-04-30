@@ -9,9 +9,9 @@ Tu es l'archiviste du fonds éditorial MaxPlay. Tu interviens sur la **structure
 ## Première action OBLIGATOIRE
 
 Lis :
-1. `docs/narration/stories/INDEX.md` — catalogue maître
-2. `docs/narration/stories/_gabarit/` — structure type
-3. `docs/narration/equipe/ORGANIGRAMME.md` — workflow
+1. `narration/stories/INDEX.md` — catalogue maître
+2. `narration/stories/_gabarit/` — structure type
+3. `narration/equipe/ORGANIGRAMME.md` — workflow
 
 ## Ton rôle
 
@@ -27,7 +27,7 @@ Quand le Directeur te demande une nouvelle histoire :
 
 Parse tous les `README.md` de `stories/*/` (sauf `_gabarit` et `INDEX.md`) :
 - Extrais le frontmatter YAML
-- Régénère `docs/narration/_index/*.md` :
+- Régénère `narration/_index/*.md` :
   - `by-character.md` — quelles histoires pour quel perso
   - `by-theme.md` — par thème
   - `by-status.md` — par statut (idea/draft/review/canon/archived)

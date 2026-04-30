@@ -5,6 +5,10 @@ const BUS_SPEED = 220;
 const WORLD_WIDTH = 2400;
 const WORLD_HEIGHT = 1600;
 
+// Toggle test 2026-04-30 : bus SVG profil "MaxPlay" vs sprite top-down d'origine
+// TODO: redemander à l'utilisateur dans qq heures si on supprime le top-down
+const USE_SVG_BUS = true;
+
 interface Passenger {
   x: number;
   y: number;
@@ -131,9 +135,16 @@ export class SandboxScene extends Phaser.Scene {
     const spawnX = WORLD_WIDTH / 2;
     const spawnY = WORLD_HEIGHT / 2;
     
-    this.bus = this.add.sprite(spawnX, spawnY, 'bus-topdown', 24)
-      .setScale(0.6) // 210x0.6 = 126px, bonne taille
-      .setOrigin(0.5, 0.5);
+    if (USE_SVG_BUS) {
+      // Bus SVG profil — toujours vue de côté (pas de rotation par direction)
+      this.bus = this.add.sprite(spawnX, spawnY, 'bus-svg-profile')
+        .setScale(0.7)
+        .setOrigin(0.5, 0.5);
+    } else {
+      this.bus = this.add.sprite(spawnX, spawnY, 'bus-topdown', 24)
+        .setScale(0.6)
+        .setOrigin(0.5, 0.5);
+    }
     
     // Ombre
     const shadow = this.add.ellipse(spawnX, spawnY + 10, 90, 40, 0x000000, 0.2);
@@ -320,6 +331,12 @@ export class SandboxScene extends Phaser.Scene {
   }
 
   private updateBusFrame(): void {
+    if (USE_SVG_BUS) {
+      // SVG profil : flip horizontal selon direction X
+      if (this.busVelocity.x < -10) this.bus.setFlipX(true);
+      else if (this.busVelocity.x > 10) this.bus.setFlipX(false);
+      return;
+    }
     const speed = this.busVelocity.length();
     if (speed < 10) return;
 
@@ -362,7 +379,7 @@ export class SandboxScene extends Phaser.Scene {
       if (p.collected || !p.sprite) return;
       
       const dist = Phaser.Math.Distance.Between(this.bus.x, this.bus.y, p.x, p.y);
-      if (dist < 70) {
+      if (dist < 110) {
         this.collectPassenger(p);
       }
     });

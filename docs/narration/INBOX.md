@@ -1,14 +1,19 @@
-# INBOX — Dump brut sessions
+# INBOX — Dump brut sessions (zone unique)
 
-> **Zone de transit.** Tout ce qui arrive ici est matière brute, non validée, non définitive.
-> **Règle dorée :** Max 48h de vie. Distiller vers `pmo/decisions.md` ou fichiers stables, puis supprimer.
+> **Zone de transit unique.** Tout ce qui arrive ici est matière brute, non validée, non définitive.
+> Plus aucun dossier `input-idees/` séparé : **tout passe par ce fichier**.
+> **Règle dorée :** Max 48h de vie. Distiller vers `pmo/decisions.md` ou fichiers stables, puis supprimer la section.
+>
+> **Convention de section :**
+> ```
+> ## YYYY-MM-DD — sujet en 5 mots
+> [contenu brut, format libre]
+> ```
+> Une fois distillée → ajouter `> ✅ Distillé YYYY-MM-DD → <fichiers cibles>` puis supprimer la matière brute.
 
 ---
 
-<!-- Ajouter les dumps ici, en haut, format :
-## [DATE] — [sujet en 5 mots]
-[contenu brut]
--->
+<!-- Ajouter les dumps ici, en haut -->
 
 ## 2026-04-27 — Session nuit (transport, sensibilités, école, géographie, Wex)
 

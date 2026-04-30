@@ -24,7 +24,7 @@ Le reste, l'équipe le fait.
 ## Qui fait quoi
 
 ### Toi (l'auteur)
-- Tu pitches une idée brute (dump dans `input-idees/`)
+- Tu pitches une idée brute (dump dans `INBOX.md`)
 - Tu discutes avec le Conseiller pour affûter le pitch
 - **Tu valides** le pitch final
 - **Tu valides** la décision du Directeur (quelle version on garde, quels éléments on récupère)
@@ -100,9 +100,9 @@ Le reste, l'équipe le fait.
 
 ### Étape 1 — L'idée
 **Qui :** Toi
-**Action :** Tu écris une idée brute dans `input-idees/YYYY-MM-DD-mon-idee.md`
+**Action :** Tu écris une idée brute dans `INBOX.md (sous une section datée)`
 **Format :** Du brut. Des phrases, des mots-clés, une image. Pas besoin que ce soit propre.
-**Résultat :** Un fichier dans `input-idees/`
+**Résultat :** Un fichier dans `INBOX.md`
 
 ### Étape 2 — Le pitch
 **Qui :** Toi + Conseiller (binôme)
@@ -180,7 +180,7 @@ Le reste, l'équipe le fait.
 
 | Étape | Fichier créé | Par qui |
 |-------|-------------|---------|
-| 1. Idée | `input-idees/YYYY-MM-DD-idee.md` | Toi |
+| 1. Idée | `INBOX.md (section datée)` | Toi |
 | 2. Pitch | `workshop/<titre>/pitch.md` | Conseiller |
 | 3. Plan | `workshop/<titre>/plan-histoire.md` | Architecte |
 | 4. Versions | `version-{a,b,c,d}.md` | Writers |

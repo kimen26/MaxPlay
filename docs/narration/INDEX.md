@@ -32,9 +32,9 @@
 | [personnages/notation-types.md](personnages/notation-types.md) | **Convention d'écriture `TypeN` / `TitiN × origine`** — à utiliser dans toutes les histoires et orchestrations |
 | [personnages/prénoms-candidats.md](personnages/prénoms-candidats.md) | V1 "Christ" figée + prénoms écartés par raison |
 | [personnages/prénoms-par-origine.md](personnages/prénoms-par-origine.md) | Matrice cross-country (Wex hors-système + 9 copains variables) |
-| [Eneagramme/personnages/](Eneagramme/personnages/) | Fiches détaillées par type |
-| [Eneagramme/situations/emotions-universelles.md](Eneagramme/situations/emotions-universelles.md) | Pour une réaction émotionnelle précise (9×9) |
-| [Eneagramme/ressources/guide-auteur.md](Eneagramme/ressources/guide-auteur.md) | Pour vérifier la cohérence d'une scène |
+| [enneagramme/personnages/](enneagramme/personnages/) | Fiches détaillées par type |
+| [enneagramme/situations/emotions-universelles.md](enneagramme/situations/emotions-universelles.md) | Pour une réaction émotionnelle précise (9×9) |
+| [enneagramme/ressources/guide-auteur.md](enneagramme/ressources/guide-auteur.md) | Pour vérifier la cohérence d'une scène |
 
 ### Univers
 | Fichier | Contenu |
@@ -84,15 +84,9 @@
 ### Inputs & archive
 | Fichier | Rôle |
 |---------|------|
-| [input-idees/](input-idees/) | **Zone de dump brut** — un fichier par session/sujet (format `YYYY-MM-DD-sujet.md`) |
+| [INBOX.md](INBOX.md) | **Zone unique de dump brut** — toute matière non triée (format libre, sections `## YYYY-MM-DD — sujet`) |
 | [archive/](archive/) | Sessions archivées (rien n'est effacé) |
 | [workshop/](workshop/) | Brouillons en cours (pitch · plan · 4 versions · rewrite · GateKeeper) |
-
-### Reference (matière de fond, pas quotidien)
-| Fichier | Quand le lire |
-|---------|--------------|
-| [reference/INDEX.md](reference/INDEX.md) | Pointeurs rapides |
-| [reference/](reference/) | Analyses manga/Pokémon + Riso-Hudson 9 niveaux |
 
 ---
 
@@ -111,7 +105,7 @@
 ## Workflow narratif (à jour)
 
 ```
-Auteur → input-idees/ → Conseiller (binôme + pitch)
+Auteur → INBOX.md → Conseiller (binôme + pitch)
       ↓
 Architecte → Plan d'Histoire
       ↓

@@ -17,7 +17,7 @@ pivot de toutes les versions cross-country. Ses 9 amis-Titi (chacun un ennéatyp
 ## Structure du projet
 
 ```
-Eneagramme/
+enneagramme/
 ├── README.md                    ← Ce fichier
 ├── personnages/
 │   ├── type-01-perfectionniste.md   ← Le Perfectionniste

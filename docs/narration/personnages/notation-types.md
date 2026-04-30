@@ -71,5 +71,5 @@ Pour les autres origines → [prénoms-par-origine.md](prénoms-par-origine.md).
 ## À appliquer
 
 - Nouvelles histoires / orchestrations : utiliser `TypeN` / `TitiN` dans les brouillons, résoudre à un prénom au moment de la publication.
-- Fiches `Eneagramme/personnages/type-XX-*.md` : header canonique = notation ; le prénom par casting est une donnée de surface.
+- Fiches `enneagramme/personnages/type-XX-*.md` : header canonique = notation ; le prénom par casting est une donnée de surface.
 - Specs de jeux : pas concerné (les mini-jeux n'utilisent pas les personnages de la narration pour l'instant).

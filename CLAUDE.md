@@ -64,7 +64,7 @@ CI : [.github/workflows/deploy.yml](.github/workflows/deploy.yml) assemble dans 
 | [docs/narration/personnages/INDEX.md](docs/narration/personnages/INDEX.md) | Tableau des 9 + ⚠ prénoms |
 | [docs/narration/univers/INDEX.md](docs/narration/univers/INDEX.md) | Carte du monde (monde, systèmes, cycle, vibration, compagnons) |
 | [docs/narration/stories/INDEX.md](docs/narration/stories/INDEX.md) | Catalogue récits + gabarit |
-| [docs/narration/Eneagramme/](docs/narration/Eneagramme/) | Fiches détaillées personnages + situations |
+| [docs/narration/enneagramme/](docs/narration/enneagramme/) | Fiches détaillées personnages + situations |
 | [docs/narration/reference/INDEX.md](docs/narration/reference/INDEX.md) | Matière de fond (analyses manga/Pokémon, Riso-Hudson) |
 
 ## Skills narration
@@ -102,7 +102,7 @@ Origines brésiliennes. Voir [docs/MAX_PROFILE.md](docs/MAX_PROFILE.md).
 | [bot/index.ts](bot/index.ts) | Bot Telegram — routing agents, permissions Telegram |
 | [.claude/agents/](.claude/agents/) | **Équipe narration** : narration-conseiller (Opus) · narration-architecte (Sonnet) · narration (Opus) · narration-writer-claude-libre (Sonnet) · narration-gatekeeper (Haiku) · narration-pmo (Haiku) · science/sensibilite/archiviste (Haiku/Sonnet) · game-dev (Sonnet) · quick (Haiku) |
 | [docs/narration/equipe/ORGANIGRAMME.md](docs/narration/equipe/ORGANIGRAMME.md) | Organigramme équipe éditoriale — qui fait quoi |
-| [docs/narration/input-idees/](docs/narration/input-idees/) | Zone de dump brut idées narration |
+| [docs/narration/INBOX.md](docs/narration/INBOX.md) | Zone de dump brut idées narration |
 | [docs/narration/pmo/INDEX.md](docs/narration/pmo/INDEX.md) | PMO — tickets, décisions, sprint-log (reprise après reboot) |
 
 ## Workflow

@@ -149,7 +149,7 @@ Exemples à arbitrer :
 - Type 5 sahélien = **observateur silencieux à l'ombre**. Type 5 tokyoïte = **observateur silencieux derrière sa fenêtre** ? Mêmes essences, contextes spatiaux différents ?
 - Type 8 brésilienne (Juju) = **leader de capoeira**. Type 8 japonaise = **leader silencieux mais ferme** ? Le « registre d'expression » de la force change-t-il avec la culture ?
 
-→ À documenter sous forme de **règles d'écriture par ennéatype × culture**, dans une future fiche `Eneagramme/expression-cross-culture.md`.
+→ À documenter sous forme de **règles d'écriture par ennéatype × culture**, dans une future fiche `enneagramme/expression-cross-culture.md`.
 
 ---
 

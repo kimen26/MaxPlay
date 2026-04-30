@@ -118,7 +118,7 @@ PMO
 ### PHASE 0 — INTAKE
 
 ```
-Auteur dumpe une idée → input-idees/YYYY-MM-DD-<sujet>.md
+Auteur dumpe une idée → INBOX.md (section ## YYYY-MM-DD — sujet)
     ↓
 Conseiller lit + discute avec l'auteur
     ↓
@@ -321,7 +321,7 @@ Archive : session résumée dans archive/YYYY-MM-DD-<titre>.md
 | Cérémonie | Qui | Quand | Data pull du Conseiller |
 |-----------|-----|-------|------------------------|
 | **Atelier Univers** | Toi + Conseiller | Régulier (pas lié à une histoire) | Univers, personnages, histoires précédentes, feedback lecteurs |
-| **Brainstorm Pitch** | Toi + Conseiller | Quand tu as une idée brute | input-idees/, mémoire-conseiller.md, casting |
+| **Brainstorm Pitch** | Toi + Conseiller | Quand tu as une idée brute | INBOX.md, mémoire-conseiller.md, casting |
 | **Revue de Plan** | Conseiller + Architecte | Après l'Architecte | personnages/INDEX.md, univers/INDEX.md, histoires précédentes |
 | **Sélection** | Toi + Directeur | Après les lecteurs témoins | 4 versions + réactions |
 | **Review Finale** | Toi seul | Après GateKeeper PASS | rewrite.md |

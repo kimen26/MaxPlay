@@ -17,7 +17,7 @@
 
 ## 2026-04-27 — Session nuit (transport, sensibilités, école, géographie, Wex)
 
-> ✅ Distillé 2026-04-28 → `univers/transport.md` · `univers/sensibilites.md` · `univers/ecole.md` · `univers/geographie.md` · `personnages/INDEX.md` · `pmo/decisions.md`
+> ✅ Distillé 2026-04-28 → `univers/vie-quotidienne/transport.md` · `univers/fondements/sensibilites.md` · `univers/vie-quotidienne/ecole.md` · `univers/vie-quotidienne/geographie.md` · `personnages/INDEX.md` · `pmo/decisions.md`
 
 ---
 

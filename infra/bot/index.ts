@@ -193,7 +193,7 @@ bot.on("message:text", async (ctx) => {
   // Premier morceau : on crée le buffer et on affiche le message "réfléchit"
   const agent = detectAgent(text);
   const thinking = await ctx.reply(
-    `${AGENT_EMOJI[agent]} Claude réfléchit… _(agent : ${agent})_`,
+    `${AGENT_EMOJI[agent]} Claude réfléchit… _(agent : ${agent} · TRACE-ALPHA-2604)_`,
     { parse_mode: "Markdown" }
   );
 
@@ -215,7 +215,7 @@ async function processUserMessage(
   if (!thinkingId) {
     const msg = await bot.api.sendMessage(
       chatId,
-      `${AGENT_EMOJI[agent]} Claude réfléchit… _(agent : ${agent})_`,
+      `${AGENT_EMOJI[agent]} Claude réfléchit… _(agent : ${agent} · TRACE-ALPHA-2604)_`,
       { parse_mode: "Markdown" }
     );
     thinkingId = msg.message_id;

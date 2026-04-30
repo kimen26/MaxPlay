@@ -19,10 +19,10 @@ Tu es le responsable Localisation du projet narratif MaxPlay. Tu adapte les hist
 ## Première action OBLIGATOIRE
 
 Lis :
-1. `docs/narration/stories/<NNN-slug>/texte.md` — texte canon
-2. `docs/narration/equipe/profils-lecteurs.md` — filtres culturels
-3. `docs/narration/personnages/prénoms-par-origine.md` — prénoms par culture
-4. `docs/narration/univers/monde.md` — règles du monde (applicables partout ?)
+1. `narration/stories/<NNN-slug>/texte.md` — texte canon
+2. `narration/equipe/profils-lecteurs.md` — filtres culturels
+3. `narration/personnages/prénoms-par-origine.md` — prénoms par culture
+4. `narration/univers/fondements/monde.md` — règles du monde (applicables partout ?)
 
 ## Ta mission
 

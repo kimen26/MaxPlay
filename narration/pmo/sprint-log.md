@@ -75,7 +75,7 @@
 - [x] Suppression `docs/univers/` (dossier vide après archivage)
 - [x] Création `game/docs/jeux/INDEX.md` (agent-ready)
 - [x] Suppression `TODO-EDITORIAL.md` (doublon) + `atelier/` (doublon de `workshop/`)
-- [x] Création `docs/narration/pmo/` (INDEX, backlog, decisions, sprint-log, roadmap)
+- [x] Création `narration/pmo/` (INDEX, backlog, decisions, sprint-log, roadmap)
 - [x] Création agent `narration-pmo`
 - [x] Mise à jour `narration/INDEX.md` + `README.md` + `ORGANIGRAMME.md`
 - [x] Agent `narration.md` mis à jour (chemins corrigés)

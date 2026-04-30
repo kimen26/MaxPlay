@@ -16,4 +16,4 @@ S2/S3 : un mentor nomme et explique. Le vocabulaire s'affine.
 
 ## Lien
 
-→ [univers/sensibilites.md](../../univers/sensibilites.md) pour la doctrine complète.
+→ [univers/fondements/sensibilites.md](../../univers/fondements/sensibilites.md) pour la doctrine complète.

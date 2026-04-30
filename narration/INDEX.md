@@ -13,7 +13,7 @@
 | Univers | post-Éveil, Printemps de l'Éveil — distillé dans `univers/` |
 | Direction | **monde sobre, merveilleux discret** (vu à travers enfant né dedans) |
 | Histoires | "Le Pont Cassé" (001) — canon · "Le Rire qui reste" (002) — canon · "La Confidence" (003) — en workshop |
-| Nom univers | **non tranché** → `univers/nom-candidats.md` |
+| Nom univers | **non tranché** → `univers/meta/nom-candidats.md` |
 
 ---
 
@@ -40,13 +40,13 @@
 | Fichier | Contenu |
 |---------|---------|
 | [univers/INDEX.md](univers/INDEX.md) | **Carte — comment les pièces s'emboîtent** |
-| [univers/monde.md](univers/monde.md) | Événement fondateur, nature, société, rituels, spiritualité |
-| [univers/systemes.md](univers/systemes.md) | Conscience Créative, Totems Janus, Égregores, Gardiens |
-| [univers/grand-cycle.md](univers/grand-cycle.md) | Cycle 22k ans, Yugas adaptés, Ombre Éternelle |
-| [univers/vibration.md](univers/vibration.md) | Fréquence/amplitude, égrégores, lien Janus |
-| [univers/compagnons.md](univers/compagnons.md) | Animaux hybrides liés aux enfants |
-| [univers/nom-candidats.md](univers/nom-candidats.md) | 5 finalistes pour nommer le monde |
-| [univers/directions-brainstorm.md](univers/directions-brainstorm.md) | 6 directions non retenues |
+| [univers/fondements/monde.md](univers/fondements/monde.md) | Événement fondateur, nature, société, rituels, spiritualité |
+| [univers/fondements/systemes.md](univers/fondements/systemes.md) | Conscience Créative, Totems Janus, Égregores, Gardiens |
+| [univers/fondements/grand-cycle.md](univers/fondements/grand-cycle.md) | Cycle 22k ans, Yugas adaptés, Ombre Éternelle |
+| [univers/fondements/vibration.md](univers/fondements/vibration.md) | Fréquence/amplitude, égrégores, lien Janus |
+| [univers/vie-quotidienne/compagnons.md](univers/vie-quotidienne/compagnons.md) | Animaux hybrides liés aux enfants |
+| [univers/meta/nom-candidats.md](univers/meta/nom-candidats.md) | 5 finalistes pour nommer le monde |
+| [univers/meta/directions-brainstorm.md](univers/meta/directions-brainstorm.md) | 6 directions non retenues |
 | [univers/baron.md](univers/baron.md) | ⚠ mis de côté (inspiration écartée) |
 
 ### Histoires

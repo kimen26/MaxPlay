@@ -146,7 +146,7 @@ Certaines Harmonies ont une figure de référence pour le soin par les plantes �
 
 ## Matière de localisation
 
-La matière source détaillée par culture (Dagara, Yoruba, Andes, Hammam, Temazcal, Ivan Kupala, Bajau, Ama, Moon Lodge, café éthiopien, g-Tummo, Tibb-e-Nabawi, Nowruz…) est conservée dans `docs/narration/archive/inputs-historiques/`. Depuis la décision **Architecture cross-culture du casting** (2026-04-29), cette matière n'est **plus une réserve future théorique** mais bien la **source opérationnelle** des castings nationaux à venir — chaque casting évolue dans **sa** culture et **nomme** ses propres rituels.
+La matière source détaillée par culture (Dagara, Yoruba, Andes, Hammam, Temazcal, Ivan Kupala, Bajau, Ama, Moon Lodge, café éthiopien, g-Tummo, Tibb-e-Nabawi, Nowruz…) est conservée dans `narration/archive/inputs-historiques/`. Depuis la décision **Architecture cross-culture du casting** (2026-04-29), cette matière n'est **plus une réserve future théorique** mais bien la **source opérationnelle** des castings nationaux à venir — chaque casting évolue dans **sa** culture et **nomme** ses propres rituels.
 
 **À retenir pour les writers :**
 - Casting français ⇒ camouflage assumé (Maisons de Vapeur, Cabanes de Chaleur, etc.).

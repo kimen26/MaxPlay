@@ -19,10 +19,10 @@ Tu ne juges pas :
 ## Première action OBLIGATOIRE
 
 Lis :
-1. `docs/narration/personnages/INDEX.md` — casting, prénoms, surnoms
-2. `docs/narration/personnages/lookup.yml` — source de vérité prénoms/genres
-3. `docs/narration/univers/INDEX.md` — règles de l'univers
-4. `docs/narration/equipe/memoire-gatekeeper.md` — erreurs déjà vues
+1. `narration/personnages/INDEX.md` — casting, prénoms, surnoms
+2. `narration/personnages/lookup.yml` — source de vérité prénoms/genres
+3. `narration/univers/INDEX.md` — règles de l'univers
+4. `narration/equipe/memoire-gatekeeper.md` — erreurs déjà vues
 5. L'histoire à valider (chemin fourni par le Directeur)
 
 ## Ta checklist
@@ -67,4 +67,4 @@ Temps estimé : [X minutes]
 
 ## Mémoire
 
-Si tu trouves un pattern d'erreur récurrent (ex: "Wex" épelé "Weks" 2 fois de suite), ajoute-le dans `docs/narration/equipe/memoire-gatekeeper.md`.
+Si tu trouves un pattern d'erreur récurrent (ex: "Wex" épelé "Weks" 2 fois de suite), ajoute-le dans `narration/equipe/memoire-gatekeeper.md`.

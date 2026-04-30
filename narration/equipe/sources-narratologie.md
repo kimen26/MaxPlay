@@ -168,7 +168,7 @@ L'enfant ne traite pas une histoire intellectuellement. Il **simule corporelleme
 | **Asiatique (Panchatantra)** | Récit-cadre, morale explicite | ❌ Trop didactique |
 | **Coréen (Pansori)** | Harmonie, équilibre, justice douce | ✅ Compatible MaxPlay |
 
-**Implication cross-culture (cf. `univers/architecture-cross-culture.md`)** : chaque casting national peut **emprunter des micro-structures de sa culture d'origine** (call-and-response dans une histoire *sw*, cycles saisonniers dans une *amérindien*, etc.) tout en gardant le squelette Kishōtenketsu.
+**Implication cross-culture (cf. `univers/meta/architecture-cross-culture.md`)** : chaque casting national peut **emprunter des micro-structures de sa culture d'origine** (call-and-response dans une histoire *sw*, cycles saisonniers dans une *amérindien*, etc.) tout en gardant le squelette Kishōtenketsu.
 
 ---
 
@@ -267,7 +267,7 @@ L'étude complète (~28k tokens, 8 sections, 36 références) a été archivée 
 
 ## Liens
 
-- [`../univers/architecture-cross-culture.md`](../univers/architecture-cross-culture.md) — chaque casting peut emprunter sa micro-structure culturelle
+- [`../univers/meta/architecture-cross-culture.md`](../univers/meta/architecture-cross-culture.md) — chaque casting peut emprunter sa micro-structure culturelle
 - [`../pmo/decisions.md`](../pmo/decisions.md) — décisions narratologiques MaxPlay
 - [`brief-univers.md`](brief-univers.md) — brief Architecte / Writers
 - [`memoire-conseiller.md`](memoire-conseiller.md) — patterns identifiés

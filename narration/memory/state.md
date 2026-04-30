@@ -4,7 +4,7 @@ description: État condensé du pôle narration — histoires, casting, workflow
 type: project
 ---
 
-> Charger ce fichier au démarrage de toute session NARRATION. Puis lire `docs/narration/pmo/INDEX.md`.
+> Charger ce fichier au démarrage de toute session NARRATION. Puis lire `narration/pmo/INDEX.md`.
 
 ## État histoires (2026-04-29)
 
@@ -57,12 +57,12 @@ INBOX.md → Conseiller → Architecte (Plan) → 4 Writers → Lecteurs témoin
 
 | Fichier | Rôle |
 |---------|------|
-| `docs/narration/pmo/INDEX.md` | **État instantané + reprise après reboot** |
-| `docs/narration/INDEX.md` | Carte complète projet narration |
-| `docs/narration/personnages/INDEX.md` | Casting + tableau des 9 + Wex |
-| `docs/narration/univers/INDEX.md` | Carte du monde |
-| `docs/narration/stories/INDEX.md` | Catalogue récits |
-| `docs/narration/equipe/ORGANIGRAMME.md` | Qui fait quoi — avant d'appeler un agent |
+| `narration/pmo/INDEX.md` | **État instantané + reprise après reboot** |
+| `narration/INDEX.md` | Carte complète projet narration |
+| `narration/personnages/INDEX.md` | Casting + tableau des 9 + Wex |
+| `narration/univers/INDEX.md` | Carte du monde |
+| `narration/stories/INDEX.md` | Catalogue récits |
+| `narration/equipe/ORGANIGRAMME.md` | Qui fait quoi — avant d'appeler un agent |
 
 ## Agents à appeler selon la tâche
 

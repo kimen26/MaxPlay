@@ -86,11 +86,11 @@ PMO
 
 | Fichier | Contenu | Mis à jour par |
 |---------|---------|----------------|
-| `docs/narration/INDEX.md` | Pointeurs globaux | PMO |
-| `docs/narration/stories/INDEX.md` | Catalogue histoires | PMO (après canonisation) |
-| `docs/narration/univers/INDEX.md` | Règles du monde | Archiviste (toutes les 5 histoires) |
-| `docs/narration/personnages/INDEX.md` | Casting | PMO (si évolution) |
-| `docs/narration/personnages/lookup.yml` | Prénoms/genres | PMO (source de vérité) |
+| `narration/INDEX.md` | Pointeurs globaux | PMO |
+| `narration/stories/INDEX.md` | Catalogue histoires | PMO (après canonisation) |
+| `narration/univers/INDEX.md` | Règles du monde | Archiviste (toutes les 5 histoires) |
+| `narration/personnages/INDEX.md` | Casting | PMO (si évolution) |
+| `narration/personnages/lookup.yml` | Prénoms/genres | PMO (source de vérité) |
 
 ### Mémoires propres (1 agent = 1 mémoire)
 
@@ -296,11 +296,11 @@ Archive : session résumée dans archive/YYYY-MM-DD-<titre>.md
 
 | Script | Quand le lancer | Que fait-il |
 |--------|----------------|-------------|
-| `scripts/new-story.js <titre>` | Phase 0 | Crée le dossier workshop/ depuis un gabarit |
-| `scripts/validate-frontmatter.js [README.md]` | Phase 7 | Vérifie le YAML du README |
-| `scripts/generate-index.js` | Phase 7 | Régénère `_index/` + `stories/INDEX.md` |
-| `scripts/archive-story.js <workshop-name>` | Phase 7 | Promouvoir workshop → stories/ + archive |
-| `scripts/pre-gatekeeper.js <rewrite.md>` | Phase 6 (optionnel) | Vérification auto avant GateKeeper (longueur, dialogues) |
+| `narration/scripts/new-story.js <titre>` | Phase 0 | Crée le dossier workshop/ depuis un gabarit |
+| `narration/scripts/validate-frontmatter.js [README.md]` | Phase 7 | Vérifie le YAML du README |
+| `narration/scripts/generate-index.js` | Phase 7 | Régénère `_index/` + `stories/INDEX.md` |
+| `narration/scripts/archive-story.js <workshop-name>` | Phase 7 | Promouvoir workshop → stories/ + archive |
+| `narration/scripts/pre-gatekeeper.js <rewrite.md>` | Phase 6 (optionnel) | Vérification auto avant GateKeeper (longueur, dialogues) |
 
 ---
 

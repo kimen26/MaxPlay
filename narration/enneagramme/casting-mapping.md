@@ -40,7 +40,7 @@
 
 ## Castings futurs (autres pays)
 
-> Wex garde le prénom **« Wex »** dans tous les castings nationaux. Les 9 compagnons reçoivent 9 nouveaux prénoms qualifiés par culture, depuis [`../personnages/catalogue-prenoms/`](../personnages/catalogue-prenoms/INDEX.md). L'ennéatype et la sensibilité restent invariants ; seule l'expression culturelle varie légèrement. Voir [`../univers/architecture-cross-culture.md`](../univers/architecture-cross-culture.md).
+> Wex garde le prénom **« Wex »** dans tous les castings nationaux. Les 9 compagnons reçoivent 9 nouveaux prénoms qualifiés par culture, depuis [`../personnages/catalogue-prenoms/`](../personnages/catalogue-prenoms/INDEX.md). L'ennéatype et la sensibilité restent invariants ; seule l'expression culturelle varie légèrement. Voir [`../univers/meta/architecture-cross-culture.md`](../univers/meta/architecture-cross-culture.md).
 
 | Code | Casting | Statut |
 |------|---------|--------|

@@ -99,21 +99,21 @@
 | Nono | Vibration collective (Harmonie) |
 
 **Raison :** cohérence cross-country, simplicité éditoriale. Sensibilités = ADN du perso comme l'ennéatype.
-**Lien :** `../univers/sensibilites.md`
+**Lien :** `../univers/fondements/sensibilites.md`
 
 ---
 
 ## 2026-04-28 — Transport : Jabus validé
 
 **Décision :** Nom du véhicule = **Jabus**. Multi-personnes. Technologie non nommée dans l'univers (normal comme l'électricité). Axes verts = coulées végétales avec Jabus silencieux.
-**Lien :** `../univers/transport.md`
+**Lien :** `../univers/vie-quotidienne/transport.md`
 
 ---
 
 ## 2026-04-28 — Prof d'Histoire : Type 7
 
 **Décision :** Prof d'Histoire = Type 7. Enthousiaste, fait des liens vite (même faux), adore le show. Jamais ridiculisé. Prénom à définir.
-**Lien :** `../univers/ecole.md`
+**Lien :** `../univers/vie-quotidienne/ecole.md`
 
 ---
 
@@ -123,7 +123,7 @@
 - **S1 "L'École"** — histoires courtes autonomes P2, 1/semaine, Wex observateur-acteur sans révélation de sa nature
 - **S2 "Les Visites"** — Wex chez chacun de ses copains one-on-one, découverte sensibilités
 
-**Lien :** `../univers/sensibilites.md`
+**Lien :** `../univers/fondements/sensibilites.md`
 
 ---
 
@@ -203,7 +203,7 @@ Les 218 prénoms / 30 cultures du catalogue ne sont plus « matière en réserve
 
 Aucun ne combine **archétypes universels (ennéatypes) + adaptation culturelle profonde + univers connecté** — la zone de différenciation reste libre.
 
-**Lien :** `../personnages/INDEX.md` · `../personnages/catalogue-prenoms/INDEX.md` · `../univers/architecture-cross-culture.md` · `../equipe/memoire-conseiller.md`
+**Lien :** `../personnages/INDEX.md` · `../personnages/catalogue-prenoms/INDEX.md` · `../univers/meta/architecture-cross-culture.md` · `../equipe/memoire-conseiller.md`
 
 ---
 
@@ -240,9 +240,9 @@ Aucun ne combine **archétypes universels (ennéatypes) + adaptation culturelle 
 
 **Raison :** la piste « animal hybride » glisse trop vers compagnon-mascotte (codes Pokémon/Totoro déjà saturés). L'onde-couleur reste cohérente avec `vibration.md` (fréquence/amplitude visible) et avec la doctrine d'univers implicite (le compagnon affleure, ne s'explique pas). La couleur émotionnelle = lecture intuitive 4 ans (rouge=colère, bleu=calme).
 
-**Conséquence sur `univers/compagnons.md` :** refonte complète — les sections « animal hybride » deviennent obsolètes.
+**Conséquence sur `univers/vie-quotidienne/compagnons.md` :** refonte complète — les sections « animal hybride » deviennent obsolètes.
 
-**Lien :** `../univers/compagnons.md` · `../univers/vibration.md`
+**Lien :** `../univers/vie-quotidienne/compagnons.md` · `../univers/fondements/vibration.md`
 
 ---
 
@@ -263,7 +263,7 @@ Aucun ne combine **archétypes universels (ennéatypes) + adaptation culturelle 
 
 **Raison :** l'univers MaxPlay n'a pas d'élu — il a des sensibilités complémentaires. C'est cohérent avec l'architecture cross-culture (l'enfant timide s'identifie à Lulu, l'extraverti à Raph) et avec la doctrine ennéatypes dilués (chaque type a son angle, pas de hiérarchie).
 
-**Lien :** `../personnages/INDEX.md` · `../univers/sensibilites.md` · `../equipe/sources-narratologie.md`
+**Lien :** `../personnages/INDEX.md` · `../univers/fondements/sensibilites.md` · `../equipe/sources-narratologie.md`
 
 ---
 
@@ -285,7 +285,7 @@ Aucun ne combine **archétypes universels (ennéatypes) + adaptation culturelle 
 - S4 = brise le « tout passe par Wex », monte en communauté
 - S# voyage = passerelle vers l'architecture cross-culture (cf. décision 2026-04-29 castings)
 
-**Lien :** `../pmo/roadmap.md` · `../personnages/INDEX.md` · `../univers/architecture-cross-culture.md`
+**Lien :** `../pmo/roadmap.md` · `../personnages/INDEX.md` · `../univers/meta/architecture-cross-culture.md`
 
 ---
 
@@ -313,19 +313,19 @@ Aucun ne combine **archétypes universels (ennéatypes) + adaptation culturelle 
 
 | # | Question | Bloquant ? | Fichier |
 |---|----------|-----------|---------|
-| 1 | Nom de l'univers — lequel parmi 5 finalistes ? | Non | `../univers/nom-candidats.md` |
-| 2 | ~~Compagnons — forme exacte ? Quand apparaissent-ils ?~~ **TRANCHÉ 2026-04-29** (ondes/couleurs, milieu/fin S1) | — | `../univers/compagnons.md` |
+| 1 | Nom de l'univers — lequel parmi 5 finalistes ? | Non | `../univers/meta/nom-candidats.md` |
+| 2 | ~~Compagnons — forme exacte ? Quand apparaissent-ils ?~~ **TRANCHÉ 2026-04-29** (ondes/couleurs, milieu/fin S1) | — | `../univers/vie-quotidienne/compagnons.md` |
 | 3 | Éléments magiques rares — garder ou écarter ? | Non | — |
 | 4 | Baron — garder prénom "Trump" ? | Non | `../univers/baron.md` |
 | 5 | Ombre Éternelle — concept actif ou standby ? | Non | — |
 | 6 | Modèle Janus — référence discrète ou assumée ? | Non | `../INBOX.md` (rapports JP Petit) |
-| 7 | Nom du prof d'Histoire | Non | `../univers/ecole.md` |
-| 8 | Nom des axes verts (Coulées ? Glissières ? Axes vivants ?) | Non | `../univers/transport.md` |
-| 9 | Ponaire — mécanique précise + lien voyages culturels | Non | `../univers/transport.md` |
-| 10 | Nombre de villes max par pays | Non | `../univers/geographie.md` |
-| 11 | Liste des Sensibilités — fermer les sous-types (Fréquence/Son/Schumann) | Non | `../univers/sensibilites.md` |
+| 7 | Nom du prof d'Histoire | Non | `../univers/vie-quotidienne/ecole.md` |
+| 8 | Nom des axes verts (Coulées ? Glissières ? Axes vivants ?) | Non | `../univers/vie-quotidienne/transport.md` |
+| 9 | Ponaire — mécanique précise + lien voyages culturels | Non | `../univers/vie-quotidienne/transport.md` |
+| 10 | Nombre de villes max par pays | Non | `../univers/vie-quotidienne/geographie.md` |
+| 11 | Liste des Sensibilités — fermer les sous-types (Fréquence/Son/Schumann) | Non | `../univers/fondements/sensibilites.md` |
 | 12 | Quand Wex commence à contrôler sa Vision causale ? (S1/S2/S3) | Non | — |
 | 13 | Mentor de Wex — qui ? Quel âge ? Quelle sensibilité ? | Non | — |
 | 14 | Castings cross-country (Hébreu, Ghibli, Swahili…) — démarrer lequel en premier ? | Oui pour S2 | `../personnages/prénoms-par-origine.md` |
 | 15 | Mémoire narrative des lecteurs — les enfants connaîtront les histoires précédentes et feront des liens. Comment en tenir compte dans l'écriture (callbacks implicites, évolution persos, arcs longs) ? À partir de quelle histoire introduire ce niveau de couche ? | Non | — |
-| 16 | Quartier / communauté — nommé (Clairval, Tissé, Hameau de l'Aube, la Ronde…) ou volontairement anonyme ? Décision 26/04 a écarté les villes réelles, mais n'a pas tranché si on nomme la communauté/quartier. Trade-off : ancrage affectif (B) vs universalité cross-culture (A). | Non | `../univers/geographie.md` |
+| 16 | Quartier / communauté — nommé (Clairval, Tissé, Hameau de l'Aube, la Ronde…) ou volontairement anonyme ? Décision 26/04 a écarté les villes réelles, mais n'a pas tranché si on nomme la communauté/quartier. Trade-off : ancrage affectif (B) vs universalité cross-culture (A). | Non | `../univers/vie-quotidienne/geographie.md` |

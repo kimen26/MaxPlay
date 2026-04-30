@@ -36,6 +36,6 @@
 
 ## Questions ouvertes
 
-- Nom de l'univers : non tranché (5 finalistes dans univers/nom-candidats.md)
+- Nom de l'univers : non tranché (5 finalistes dans univers/meta/nom-candidats.md)
 - Compagnons animaux : forme non tranchée (onde/cristal/couleur/fluide/animal)
 - Wex absent d'une histoire : quel personnage reprend le rôle d'observateur ?

@@ -1,12 +1,12 @@
 # MaxPlay – Mémoire Projet
 
 > Chargé automatiquement à chaque session. Rester sous 200 lignes.
-> Source de vérité = `tasks/BACKLOG.md`. Ici : contexte rapide pour démarrer.
+> Source de vérité = `game/tasks/BACKLOG.md`. Ici : contexte rapide pour démarrer.
 
 ## Projet
 
 Jeu éducatif 2D pour **Max**, 3.5-4 ans, passionné de bus (lignes Villejuif).
-Voir `docs/MAX_PROFILE.md` pour le profil complet.
+Voir `memory/MAX_PROFILE.md` pour le profil complet.
 **Stack** : Phaser.js 3 + Vite + TypeScript · Résolution 1024×768 landscape
 
 ## État jeux (2026-04-26, session 13)
@@ -49,7 +49,7 @@ Voir `docs/MAX_PROFILE.md` pour le profil complet.
   - Baron (voyageur temporel, Gardien des Portes)
   - **Nom de l'univers** : pas encore choisi (21 candidats dont Phosyntha, Egryntha, Veynara)
 - **Personnages nommés (casting Christ V1 figé 2026-04-24)** : Wex (#7 héros hors-système), Melki/Melchisédech (#1), Mimi/Marie F (#2), Polo/Paul (#3), Jérem/Jérémie (#4), Lulu/Luc (#5), Pierrot/Pierre (#6), Raph/Raphaëlle F (#7 ennéatype), Juju/Judith F (#8), Nono/Noé (#9)
-- **Docs narration** : `docs/narration/` (INDEX.md + enneagramme/) · `docs/univers/`
+- **Docs narration** : `narration/` (INDEX.md + enneagramme/) · `docs/univers/`
 
 ## Architecture déploiement (2026-03-21)
 
@@ -137,13 +137,13 @@ Serveur MCP global (scope user, tous projets) exposant 2 outils LLM tiers :
 
 | Fichier | Rôle |
 |---------|------|
-| `tasks/BACKLOG.md` | Source de vérité : épics, tâches, décisions, leçons |
+| `game/tasks/BACKLOG.md` | Source de vérité : épics, tâches, décisions, leçons |
 | `docs/README.md` | Carte de toute la documentation — point d'entrée |
-| `docs/MAX_PROFILE.md` | Profil complet Max : lignes bus, couleurs IDFM, intérêts |
+| `memory/MAX_PROFILE.md` | Profil complet Max : lignes bus, couleurs IDFM, intérêts |
 | `docs/VISION.md` | Décisions prises + questions ouvertes |
 | `docs/ratp-colors.json` | Source de vérité couleurs+terminus : 26 actives + 362 référentiel |
-| `docs/narration/INDEX.md` | Point d'entrée projet narratif (personnages, ennéagramme, univers) |
-| `docs/narration/enneagramme/` | 9 fiches personnages + situations + ressources auteur |
+| `narration/INDEX.md` | Point d'entrée projet narratif (personnages, ennéagramme, univers) |
+| `narration/enneagramme/` | 9 fiches personnages + situations + ressources auteur |
 | `docs/univers/UNIVERS-NOTES-BRUTES.md` | Matière brute univers macro (Éveil, Compagnons, Janus, Baron...) |
 | `game/web/` | mj-01 à mj-20 + max-adventure (vanilla HTML/JS) — source déployée |
 | `game/web/js/tracker.js` | Suivi progression localStorage — sessions, scores, maîtrise |

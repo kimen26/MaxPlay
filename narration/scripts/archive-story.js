@@ -1,15 +1,15 @@
 #!/usr/bin/env node
 /**
  * archive-story.js — Promouvoir un workshop en canon
- * Usage : node scripts/archive-story.js 002-le-rire-qui-reste
+ * Usage : node narration/scripts/archive-story.js 002-le-rire-qui-reste
  */
 
 const fs = require('fs');
 const path = require('path');
 
-const WORKSHOP_DIR = path.join(__dirname, '..', 'docs', 'narration', 'workshop');
-const STORIES_DIR = path.join(__dirname, '..', 'docs', 'narration', 'stories');
-const WORKSHOP_ARCHIVE_DIR = path.join(__dirname, '..', 'docs', 'narration', 'archive', 'workshop');
+const WORKSHOP_DIR = path.join(__dirname, '..', 'workshop');
+const STORIES_DIR = path.join(__dirname, '..', 'stories');
+const WORKSHOP_ARCHIVE_DIR = path.join(__dirname, '..', 'archive', 'workshop');
 
 function getNextNumber() {
   const entries = fs.readdirSync(STORIES_DIR, { withFileTypes: true });
@@ -37,7 +37,7 @@ function copyDir(src, dest) {
 function main() {
   const workshopName = process.argv[2];
   if (!workshopName) {
-    console.error('Usage: node scripts/archive-story.js 002-le-rire-qui-reste');
+    console.error('Usage: node narration/scripts/archive-story.js 002-le-rire-qui-reste');
     process.exit(1);
   }
 
@@ -71,7 +71,7 @@ function main() {
   console.log(`   → Pensez à :`);
   console.log(`     1. Éditer ${storyDir}/README.md (statut → canon, date_validation)`);
   console.log(`     2. Copier texte.md → archives/v1-YYYY-MM-DD.md`);
-  console.log(`     3. Lancer node scripts/generate-index.js`);
+  console.log(`     3. Lancer node narration/scripts/generate-index.js`);
 }
 
 main();

@@ -19,7 +19,7 @@ type: project
 
 | Moment | Action |
 |--------|--------|
-| Après ExitPlanMode | Ajouter tâches dans `tasks/BACKLOG.md` |
+| Après ExitPlanMode | Ajouter tâches dans `game/tasks/BACKLOG.md` |
 | Avant dev | Vérifier BACKLOG.md + TodoWrite alignés |
 | Après étape validée | Cocher BACKLOG.md + maj MEMORY.md si décision structurante |
 | Fin de session | BACKLOG.md (épics, leçons) + memory/ (état, décisions) |
@@ -37,6 +37,6 @@ type: project
 
 ## Self-improvement
 
-- Après toute correction utilisateur → leçon dans `tasks/BACKLOG.md`
+- Après toute correction utilisateur → leçon dans `game/tasks/BACKLOG.md`
 - Écrire la règle pour ne pas reproduire l'erreur
 - Relire les leçons en début de session

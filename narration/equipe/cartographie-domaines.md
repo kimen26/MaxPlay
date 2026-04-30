@@ -54,16 +54,16 @@ mis_a_jour: 2026-04-28
 | Fichier | Contenu | Qui crée | Qui met à jour | Décision si ambigu |
 |---------|---------|----------|----------------|-------------------|
 | `univers/INDEX.md` | Carte des pièces, questions ouvertes | Directeur | Directeur | Directeur |
-| `univers/monde.md` | Éveil, société, rituels | Directeur | Directeur | Directeur |
-| `univers/systemes.md` | Conscience Créative, Janus, Gardiens | Directeur | Directeur | Directeur |
-| `univers/grand-cycle.md` | 22k ans, Yugas | Directeur | Directeur | Directeur |
-| `univers/vibration.md` | Fréquences, égrégores | Directeur | Directeur | Directeur |
-| `univers/sensibilites.md` | 9 sensibilités + attribution persos | Directeur | Directeur | Directeur |
-| `univers/compagnons.md` | Animaux hybrides | Directeur | Directeur | Directeur |
-| `univers/transport.md` | Jabus, axes verts | Directeur | Directeur | Directeur |
-| `univers/ecole.md` | Programme scolaire, cours | Directeur | Directeur | Directeur |
-| `univers/geographie.md` | Maille monde, habitat | Directeur | Directeur | Directeur |
-| `univers/nom-candidats.md` | 5 finalistes nom du monde | Auteur | Auteur | Auteur (décision finale) |
+| `univers/fondements/monde.md` | Éveil, société, rituels | Directeur | Directeur | Directeur |
+| `univers/fondements/systemes.md` | Conscience Créative, Janus, Gardiens | Directeur | Directeur | Directeur |
+| `univers/fondements/grand-cycle.md` | 22k ans, Yugas | Directeur | Directeur | Directeur |
+| `univers/fondements/vibration.md` | Fréquences, égrégores | Directeur | Directeur | Directeur |
+| `univers/fondements/sensibilites.md` | 9 sensibilités + attribution persos | Directeur | Directeur | Directeur |
+| `univers/vie-quotidienne/compagnons.md` | Animaux hybrides | Directeur | Directeur | Directeur |
+| `univers/vie-quotidienne/transport.md` | Jabus, axes verts | Directeur | Directeur | Directeur |
+| `univers/vie-quotidienne/ecole.md` | Programme scolaire, cours | Directeur | Directeur | Directeur |
+| `univers/vie-quotidienne/geographie.md` | Maille monde, habitat | Directeur | Directeur | Directeur |
+| `univers/meta/nom-candidats.md` | 5 finalistes nom du monde | Auteur | Auteur | Auteur (décision finale) |
 
 **Règle :** idée brute non tranchée → `INBOX.md` d'abord, jamais directement dans `univers/`.  
 Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée → section dans fichier existant.
@@ -252,5 +252,5 @@ Nouvelle info narrative
 7. **PMO loggé à chaque phase** — sans log PMO, la phase n'est pas traçable
 8. **Un dossier workshop = une histoire** — pas de mélange entre titres
 9. **Saison 1 = prisme enfant pur** — les parents existent hors-cadre, ne sont **jamais** dans la scène. Pas de dialogue parent ↔ enfant, pas d'intervention parentale dans la résolution. Le foyer peut affleurer (un seuil, une voix au loin), le parent n'entre pas. Le filtre se relâche éventuellement en S2+ (modèle Bluey « bon assez parent »). Décision tranchée 2026-04-29 — voir `../pmo/decisions.md`.
-10. **Compagnons = ondes / couleurs émotionnelles** — jamais d'animaux, jamais de mascotte. Apparition progressive milieu/fin S1. Voir `../univers/compagnons.md`. Décision tranchée 2026-04-29.
+10. **Compagnons = ondes / couleurs émotionnelles** — jamais d'animaux, jamais de mascotte. Apparition progressive milieu/fin S1. Voir `../univers/vie-quotidienne/compagnons.md`. Décision tranchée 2026-04-29.
 11. **Sensibilité différenciée, pas savoir caché** — chaque perso (les 9 + Wex) perçoit ce que les autres ne perçoivent pas. Pas de hiérarchie « Wex sait, les autres ignorent ». Décision tranchée 2026-04-29.

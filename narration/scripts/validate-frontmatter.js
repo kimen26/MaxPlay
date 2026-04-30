@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * validate-frontmatter.js — Valide la cohérence du frontmatter YAML des histoires
- * Usage : node scripts/validate-frontmatter.js docs/narration/stories/002-le-rire-qui-reste/README.md
+ * Usage : node narration/scripts/validate-frontmatter.js narration/stories/002-le-rire-qui-reste/README.md
  */
 
 const fs = require('fs');
@@ -118,7 +118,7 @@ function main() {
 
   if (!target) {
     // Validation globale
-    const storiesDir = path.join(__dirname, '..', 'docs', 'narration', 'stories');
+    const storiesDir = path.join(__dirname, '..', 'stories');
     const entries = fs.readdirSync(storiesDir, { withFileTypes: true });
     let totalErrors = 0;
     let totalWarnings = 0;

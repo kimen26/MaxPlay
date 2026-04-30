@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * pre-gatekeeper.js — Vérification automatique des contraintes avant envoi au GateKeeper
- * Usage : node scripts/pre-gatekeeper.js docs/narration/workshop/003-la-confidence/rewrite.md
+ * Usage : node narration/scripts/pre-gatekeeper.js narration/workshop/003-la-confidence/rewrite.md
  */
 
 const fs = require('fs');
@@ -24,7 +24,7 @@ function extractDialogues(text) {
 }
 
 function loadCasting() {
-  const lookupPath = path.join(__dirname, '..', 'docs', 'narration', 'personnages', 'lookup.yml');
+  const lookupPath = path.join(__dirname, '..', 'personnages', 'lookup.yml');
   if (!fs.existsSync(lookupPath)) return [];
   const content = fs.readFileSync(lookupPath, 'utf8');
   const surnoms = [];
@@ -70,7 +70,7 @@ function checkExplicitMorale(text) {
 function main() {
   const filePath = process.argv[2];
   if (!filePath) {
-    console.error('Usage: node scripts/pre-gatekeeper.js <chemin/vers/rewrite.md>');
+    console.error('Usage: node narration/scripts/pre-gatekeeper.js <chemin/vers/rewrite.md>');
     process.exit(1);
   }
 

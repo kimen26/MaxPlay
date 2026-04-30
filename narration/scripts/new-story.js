@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 /**
  * new-story.js — Créer un nouveau dossier workshop pour une histoire
- * Usage : node scripts/new-story.js "titre-de-l-histoire"
+ * Usage : node narration/scripts/new-story.js "titre-de-l-histoire"
  */
 
 const fs = require('fs');
 const path = require('path');
 
-const WORKSHOP_DIR = path.join(__dirname, '..', 'docs', 'narration', 'workshop');
+const WORKSHOP_DIR = path.join(__dirname, '..', 'workshop');
 const GABARIT_DIR = path.join(WORKSHOP_DIR, '_gabarit');
 
 function slugify(str) {
@@ -36,7 +36,7 @@ function copyDir(src, dest) {
 function main() {
   const title = process.argv[2];
   if (!title) {
-    console.error('Usage: node scripts/new-story.js "titre-de-l-histoire"');
+    console.error('Usage: node narration/scripts/new-story.js "titre-de-l-histoire"');
     process.exit(1);
   }
 

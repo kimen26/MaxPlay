@@ -148,7 +148,7 @@
 - `max_tokens` supprimé de tous les appels MCP — chaque modèle utilise sa limite native
 - Kimi utilise `kimi-for-coding` (reasoning) mais produit du texte narratif de qualité
 
-**Raison :** bug découvert en production STORY-002. Fix appliqué dans `mcp/server.ts`.
+**Raison :** bug découvert en production STORY-002. Fix appliqué dans `infra/mcp/server.ts`.
 
 ---
 

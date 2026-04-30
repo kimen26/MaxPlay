@@ -115,22 +115,22 @@ Serveur MCP global (scope user, tous projets) exposant 2 outils LLM tiers :
 - `ask_kimi` → Kimi K2.6 via `api.kimi.com/coding/v1` + `User-Agent: claude-code/1.0` (**consomme l'abonnement kimi.com**)
 - `tts_elevenlabs` → à implémenter (clé ElevenLabs en attente)
 
-**Fichiers** : `mcp/server.ts` + `mcp/package.json` (bun, @modelcontextprotocol/sdk 1.29)
-**Config** : `claude mcp add --scope user --transport stdio llm-copains -- bun run c:/ProjetsPerso/Claude_Projects/MaxPlay/mcp/server.ts`
+**Fichiers** : `infra/mcp/server.ts` + `mcp/package.json` (bun, @modelcontextprotocol/sdk 1.29)
+**Config** : `claude mcp add --scope user --transport stdio llm-copains -- bun run c:/ProjetsPerso/Claude_Projects/MaxPlay/infra/mcp/server.ts`
 **Clés** : stockées dans `~/.claude.json` via CLI (`claude mcp add --env KEY=val`) — jamais éditer à la main
 **`.mcp.json` projet** : vide (garde le fichier pour usage projet futur)
 **`.gitignore`** : `.mcp.json` exclu (sécurité)
 
 ## Bot Telegram (botard)
 
-`bot/index.ts` · grammy + bun · lancé auto au démarrage Claude (hook SessionStart)
+`infra/bot/index.ts` · grammy + bun · lancé auto au démarrage Claude (hook SessionStart)
 
 **Flow** : message → détection d'intention → `claude -p --agent <nom> --dangerously-skip-permissions`
 **Agents** : `narration` (Opus) · `game-dev` (Sonnet) · `quick` (Haiku) — dans `.claude/agents/`
 **Permissions** : hook `PermissionRequest` → HTTP `:3001/permission` → Telegram ✅/❌ → décision
 **Env vars** : `TELEGRAM_BOT_TOKEN` · `ALLOWED_CHAT_ID` · `PROJECT_PATH`
 **Logs** : `/tmp/maxplay-bot.log`
-**Redémarrer** : `pkill -f "bot/index.ts" && cd C:/ProjetsPerso/Claude_Projects/MaxPlay/bot && bun run index.ts &`
+**Redémarrer** : `pkill -f "infra/bot/index.ts" && cd C:/ProjetsPerso/Claude_Projects/MaxPlay/infra/bot && bun run index.ts &`
 **Commandes** : `/status` · `/reset` (efface historique)
 
 ## Carte des fichiers

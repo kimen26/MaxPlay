@@ -122,7 +122,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash -c 'pgrep -f \"bot/index.ts\" > /dev/null 2>&1 || (cd \"/c/ProjetsPerso/Claude_Projects/MaxPlay/bot\" && nohup bun run index.ts >> /tmp/maxplay-bot.log 2>&1 &)'",
+            "command": "bash -c 'pgrep -f \"infra/bot/index.ts\" > /dev/null 2>&1 || (cd \"/c/ProjetsPerso/Claude_Projects/MaxPlay/infra/bot\" && nohup bun run index.ts >> /tmp/maxplay-bot.log 2>&1 &)'",
             "async": true
           }
         ]

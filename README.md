@@ -23,26 +23,30 @@
 
 ---
 
-## 🏗️ Architecture
+## 🏗️ Architecture (refonte 2026-04-30)
 
 ```
 MaxPlay/
-├── game-html/          ← Source des mini-jeux HTML (déployés via CI)
-│   ├── index.html      ← Menu principal
-│   ├── mj-01.html … mj-07.html
-│   ├── js/             ← Logique partagée (data, bus-svg, sounds, feedback)
-│   └── css/
+├── game/                   ← PÔLE JEU
+│   ├── web/                ← 21 mini-jeux HTML vanilla (déployés à /)
+│   ├── phaser/             ← max-adventure Phaser TS+Vite (déployé à /max-adventure/)
+│   ├── docs/               ← specs, audit, recherche, ratp-colors.json
+│   ├── memory/             ← state.md · rules.md · stack.md
+│   └── tasks/              ← BACKLOG.md (épics jeu)
 │
-├── game/               ← MJ-07 Phaser.js (TypeScript + Vite)
-│   └── src/
-│       ├── scenes/     ← HubScene, SandboxScene
-│       └── utils/      ← SynthSounds.ts (audio procédural)
+├── narration/              ← PÔLE NARRATION (univers éditorial)
+│   ├── stories/  workshop/  personnages/  enneagramme/  univers/
+│   ├── pmo/  equipe/  archive/
+│   ├── scripts/            ← CLI (new-story, archive-story, gatekeeper, ...)
+│   ├── memory/             ← state.md · business/
+│   ├── INBOX.md INDEX.md
 │
-└── docs/               ← Documentation projet uniquement (.md)
+├── infra/                  ← bot Telegram + serveur MCP llm-copains
+├── memory/                 ← transverse : MEMORY · MAX_PROFILE · VISION · workflow
+└── _archive/               ← cadavres préservés (cf. _archive/INDEX.md)
 ```
 
-**Déploiement** : GitHub Actions build Phaser + assemble tout dans `_site/` + deploy Pages.
-Rien n'est commité dans `docs/`. `game/dist/` et `_site/` sont dans `.gitignore`.
+**Déploiement** : GitHub Actions build `game/phaser/` + assemble `game/web/` + `game/phaser/dist/` dans `_site/` + deploy Pages. `node_modules/`, `dist/`, `_site/`, `temp/` sont dans `.gitignore`.
 
 ---
 
@@ -56,10 +60,10 @@ git push origin master   # CI build (~2 min) → site mis à jour automatiquemen
 
 ```bash
 # Jeux HTML (vanilla JS) — ouvrir directement dans le navigateur
-open game-html/index.html
+open game/web/index.html
 
-# MJ-07 Phaser.js
-cd game && npm install && npm run dev
+# Max Adventure (Phaser)
+cd game/phaser && npm install && npm run dev
 ```
 
 ---

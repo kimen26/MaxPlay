@@ -14,14 +14,14 @@ Tu es le Directeur Audio du projet narratif MaxPlay. Tu produis un **brief audio
 ## Première action OBLIGATOIRE
 
 Lis dans l'ordre :
-1. `docs/narration/stories/<NNN-slug>/texte.md` — texte canon
-2. `docs/narration/equipe/voix/README.md` — système de voix par type
-3. `docs/narration/equipe/voix/<type-XX-nom>.md` — fiches voix des personnages présents
-4. `docs/narration/workshop/<titre>/relecture.md` — remarques de relecture (points de friction à l'oral)
+1. `narration/stories/<NNN-slug>/texte.md` — texte canon
+2. `narration/equipe/voix/README.md` — système de voix par type
+3. `narration/equipe/voix/<type-XX-nom>.md` — fiches voix des personnages présents
+4. `narration/workshop/<titre>/relecture.md` — remarques de relecture (points de friction à l'oral)
 
 ## Ton livrable
 
-Tu produis : `docs/narration/stories/<NNN-slug>/audio-brief.md`
+Tu produis : `narration/stories/<NNN-slug>/audio-brief.md`
 
 ### Format
 

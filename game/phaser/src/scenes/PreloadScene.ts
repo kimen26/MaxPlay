@@ -20,10 +20,10 @@ export class PreloadScene extends Phaser.Scene {
 
     // Bus SVG profil (ligne 162 par défaut — couleur orange RATP)
     // TODO 2026-04-30: si validé, supprimer le sprite top-down ci-dessus + assets PNG
-    const busSvgString = this.buildBusSVG('#E2001A', '#fff', '162');
-    const busSvgBlob = new Blob([busSvgString], { type: 'image/svg+xml' });
-    const busSvgUrl = URL.createObjectURL(busSvgBlob);
-    this.load.image('bus-svg-profile', busSvgUrl);
+    const busSvgRight = this.buildBusSVG('#E2001A', '#fff', '162', false);
+    const busSvgLeft = this.buildBusSVG('#E2001A', '#fff', '162', true);
+    this.load.image('bus-svg-profile', URL.createObjectURL(new Blob([busSvgRight], { type: 'image/svg+xml' })));
+    this.load.image('bus-svg-profile-left', URL.createObjectURL(new Blob([busSvgLeft], { type: 'image/svg+xml' })));
 
     // Charger les sons
     SoundManager.preload(this);
@@ -57,9 +57,14 @@ export class PreloadScene extends Phaser.Scene {
       .setOrigin(0, 0.5);
   }
 
-  private buildBusSVG(destColor: string, textColor: string, num: string): string {
+  private buildBusSVG(destColor: string, textColor: string, num: string, mirror: boolean): string {
     const body = '#1abc9c';
+    // On flippe toute la carrosserie via un groupe scale(-1,1), puis on dessine le texte
+    // par-dessus dans le bon sens à la position miroir.
+    const numX = mirror ? 160 - 104 : 104;
+    const groupOpen = mirror ? '<g transform="translate(160,0) scale(-1,1)">' : '<g>';
     return `<svg viewBox="0 0 160 80" width="320" height="160" xmlns="http://www.w3.org/2000/svg">
+${groupOpen}
 <rect x="5" y="10" width="150" height="45" rx="4" fill="${body}"/>
 <rect x="5" y="40" width="150" height="15" fill="#ecf0f1"/>
 <rect x="5" y="48" width="150" height="6" fill="#7f8c8d"/>
@@ -72,7 +77,6 @@ export class PreloadScene extends Phaser.Scene {
 <rect x="36" y="14" width="21" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1.5"/>
 <rect x="84" y="14" width="40" height="21" fill="${destColor}" stroke="#111" stroke-width="1.5"/>
 <rect x="150.5" y="14" width="5" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1"/>
-<text x="104" y="24.5" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="${textColor}" text-anchor="middle" dominant-baseline="central">${num}</text>
 <line x1="149" y1="24" x2="155" y2="24" stroke="#111" stroke-width="2" stroke-linecap="round"/>
 <rect x="152" y="20" width="6" height="10" rx="1" fill="#111"/>
 <circle cx="45" cy="54" r="10" fill="#333" stroke="#111" stroke-width="2"/>
@@ -81,6 +85,8 @@ export class PreloadScene extends Phaser.Scene {
 <circle cx="115" cy="54" r="10" fill="#333" stroke="#111" stroke-width="2"/>
 <circle cx="115" cy="54" r="6" fill="#666"/>
 <circle cx="115" cy="54" r="2" fill="#111"/>
+</g>
+<text x="${numX}" y="24.5" font-family="Arial,sans-serif" font-size="13" font-weight="bold" fill="${textColor}" text-anchor="middle" dominant-baseline="central">${num}</text>
 </svg>`;
   }
 

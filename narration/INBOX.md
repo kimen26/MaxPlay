@@ -21,10 +21,9 @@
 > Tranchés migrés vers `pmo/decisions.md`. Reste en cours ci-dessous.
 
 **En cours** :
-- Chantier 1 — Style de narration : Kishōtenketsu (squelette) + grain sensoriel brésilien (peau) ? À trancher en mode 1 question à la fois.
-- Chantier 2 — Gabarit d'épisode (minimal vs complet) — pas encore ouvert
+- Chantier 2 — Gabarit d'épisode (minimal vs complet) — **prochain à ouvrir**
 - Chantier 3 — Histoire test bout-en-bout pour critique John — pas encore ouvert
-- Question Conseiller suspendue : fin inachevée douce (style 002) vs fin qui referme (style 001) ?
+- Question Conseiller suspendue (chantier 3) : fin inachevée douce (style 002) vs fin qui referme (style 001) ?
 
 **Tranchés cette session** (déjà dans decisions.md) :
 - Saison 1 = 4 axes (objet-décor / Parole / univers-spécifique / pouvoirs Wex)
@@ -32,6 +31,10 @@
 - 003-006 en pause, pas supprimés
 - Mode archivage live
 - Conseiller : 1 sujet à la fois, 1 question, pas de menu
+- **✅ Chantier 1 — Patte narrative : B noyau (Kishōtenketsu) + D voix (tranche de vie) + C cadre (cycle d'arc). Outils ponctuels : E (trickster) avec parcimonie, A doux/Ten lourd pour arc Parole. F (morale dite) écartée.**
+
+**Erreurs / règles ajoutées** :
+- ⚠ Conseiller a inventé du contenu sur "Max et Lapin" (confondu avec Max & Ruby anglo-saxon) → règle : **ne pas inventer pour une référence inconnue, dire qu'on ne connaît pas**
 
 ---
 

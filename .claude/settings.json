@@ -91,7 +91,26 @@
       "mcp__llm-copains__ask_deepseek",
       "mcp__llm-copains__ask_grok",
       "Edit(~/.claude/skills/prompt-architect/**)",
-      "Bash(sort -t: -k2 -n)"
+      "Bash(sort -t: -k2 -n)",
+      "Bash(echo \"exit=$?\")",
+      "Bash(tasklist //FI \"IMAGENAME eq bun.exe\")",
+      "Bash(ps -W)",
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"Name='bun.exe'\")",
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"Name='bun.exe' OR Name='node.exe'\")",
+      "PowerShell(Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -match \"bot|MaxPlay|telegram|grammy|index\\\\.ts\" } | Select-Object ProcessId, Name, CommandLine | Format-List)",
+      "PowerShell(Get-NetTCPConnection -LocalPort 3001 -ErrorAction SilentlyContinue)",
+      "PowerShell(Get-CimInstance Win32_Process | Where-Object { $_.CommandLine -match \"bot|MaxPlay|telegram|grammy|yannewo|botard\" } | Select-Object ProcessId, Name, CommandLine | Format-List)",
+      "PowerShell(Get-ScheduledTask | Where-Object { $_.TaskName -match \"bot|maxplay|telegram|yannewo\" -or $_.Description -match \"bot|maxplay|telegram\" } | Select-Object TaskName, State, TaskPath | Format-Table -AutoSize)",
+      "PowerShell(Get-Service | Where-Object { $_.Name -match \"bot|maxplay\" -or $_.DisplayName -match \"bot|maxplay|telegram\" } | Format-Table)",
+      "Bash(wsl --list --running)",
+      "PowerShell(Get-ChildItem -Path C:\\\\Users\\\\kimen\\\\.claude -Recurse -File -Force -ErrorAction SilentlyContinue | Where-Object { $_.FullName -notmatch \"node_modules\" } | Select-String -Pattern \"8779270805|yannewo_bot|TELEGRAM_BOT_TOKEN\" -List -ErrorAction SilentlyContinue | Select-Object Path | Format-Table -AutoSize -Wrap)",
+      "PowerShell([Environment]::GetEnvironmentVariable\\(\"TELEGRAM_BOT_TOKEN\", \"User\"\\); Write-Output \"---MACHINE---\"; [Environment]::GetEnvironmentVariable\\(\"TELEGRAM_BOT_TOKEN\", \"Machine\"\\); Write-Output \"---PROCESS---\"; $env:TELEGRAM_BOT_TOKEN)",
+      "Bash(gh auth *)",
+      "Bash(gh codespace *)",
+      "PowerShell(Get-Command gh -ErrorAction SilentlyContinue)",
+      "PowerShell(gh codespace list 2>&1)",
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"Name='bun.exe'\" | Where-Object { $_.CommandLine -match \"bot|index\\\\.ts\" } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force; \"killed $\\($_.ProcessId\\)\" })",
+      "PowerShell(Get-CimInstance Win32_Process -Filter \"Name='bun.exe'\" | Where-Object { $_.CommandLine -match \"bot|index\\\\.ts\" } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force; \"killed PID=$\\($_.ProcessId\\)\" }; Start-Sleep -Seconds 12; Get-CimInstance Win32_Process -Filter \"Name='bun.exe'\" | Select-Object ProcessId, CommandLine | Format-List)"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\temp",
@@ -122,7 +141,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash -c 'pgrep -f \"infra/bot/index.ts\" > /dev/null 2>&1 || (cd \"/c/ProjetsPerso/Claude_Projects/MaxPlay/infra/bot\" && nohup bun run index.ts >> /tmp/maxplay-bot.log 2>&1 &)'",
+            "command": "powershell -NoProfile -Command \"if (-not (Get-CimInstance Win32_Process -Filter \\\"Name='bun.exe'\\\" -ErrorAction SilentlyContinue | Where-Object { $_.CommandLine -match 'infra[\\\\/]bot[\\\\/]index\\.ts' })) { Start-Process bun -ArgumentList 'run','index.ts' -WorkingDirectory 'C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\infra\\bot' -WindowStyle Hidden -RedirectStandardOutput 'C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\infra\\bot\\bot.log' -RedirectStandardError 'C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\infra\\bot\\bot.err.log' }\"",
             "async": true
           }
         ]

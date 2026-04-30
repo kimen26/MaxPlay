@@ -53,7 +53,11 @@
       "Bash(gh -R kimen26/MaxPlay run list --limit 1)",
       "Bash(node test-mobile.js)",
       "Bash(node test-menu.js)",
-      "Bash(node test-header.js)"
+      "Bash(node test-header.js)",
+      "Bash(xargs ls *)",
+      "Bash(xargs sed *)",
+      "Bash(sed -i 's|input-idees/, mémoire|INBOX.md, mémoire|g' docs/narration/equipe/ORGANIGRAMME.md)",
+      "Bash(sed -i 's|axe stock, dump input-idees/, décision|axe stock, dump INBOX.md, décision|g' docs/narration/pmo/backlog.md)"
     ]
   },
   "hooks": {

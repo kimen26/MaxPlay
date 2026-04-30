@@ -23,13 +23,13 @@ type: project
 
 | EP | Titre |
 |----|-------|
-| EP-023 | Menu carte de Villejuif (plan : `docs/jeux/MENU-MAP-VILLEJUIF.md`) |
+| EP-023 | Menu carte de Villejuif (plan archivé : `_archive/docs-jeux-cadavres/MENU-MAP-VILLEJUIF.md`) |
 | EP-015 | Carnet de Max / Garage progression |
 | EP-026 | TTS ElevenLabs (voix clonées, agent voice-director) |
 
 ## Règles critiques non-négociables
 
-- **Bus** : `busSVG()` / `busSVGHiddenNum()` depuis `game-html/js/bus-svg.js` — JAMAIS emoji 🚌 ni div CSS
+- **Bus** : `busSVG()` / `busSVGHiddenNum()` depuis `game/web/js/bus-svg.js` — JAMAIS emoji 🚌 ni div CSS
 - **Couleurs** : `selectDistinctColors(pool, n, minDist=80)` pour tout quiz multi-couleurs
 - **UX** : zones tap min 80×80px · feedback < 200ms · zéro pénalité · sessions 3–8min
 - **Sons** : `victory-sounds.js` fins de partie · `sounds.js` AudioContext singleton
@@ -39,9 +39,9 @@ type: project
 
 | Fichier | Rôle |
 |---------|------|
-| `game-html/js/bus-svg.js` | SVG bus — lire avant tout |
-| `game-html/js/data.js` | LIGNES (26 actives), DESTINATIONS |
-| `game-html/js/tracker.js` | Suivi progression localStorage |
+| `game/web/js/bus-svg.js` | SVG bus — lire avant tout |
+| `game/web/js/data.js` | LIGNES (26 actives), DESTINATIONS |
+| `game/web/js/tracker.js` | Suivi progression localStorage |
 | `docs/ratp-colors.json` | Source de vérité couleurs+terminus |
 | `memory/stack.md` | Architecture complète + règles déploiement |
 | `memory/rules-jeu.md` | Règles UX/péda + designs validés |

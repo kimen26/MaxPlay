@@ -46,7 +46,7 @@
 
 ```
 MaxPlay V0
-├── game-html/index.html     ← Menu 2 colonnes (14 mini-jeux + Max Adventure)
+├── game/web/index.html     ← Menu 2 colonnes (14 mini-jeux + Max Adventure)
 │   ├── mj-01.html · Quelle couleur ?
 │   ├── mj-02.html · Quel numéro ?
 │   ├── mj-03.html · Devine le numéro (TTS) — pool 362 lignes IDFM
@@ -275,7 +275,7 @@ MaxPlay V0
 - [ ] T-222 : Appel `playEndSound(score, max)`
 
 ### EP-023 – Menu hybride Carte de Villejuif
-> Page d'accueil = map Villejuif (haut) + grille classique (bas). Plan : `docs/jeux/MENU-MAP-VILLEJUIF.md`
+> Page d'accueil = map Villejuif (haut) + grille classique (bas). Plan : `game/docs/jeux/MENU-MAP-VILLEJUIF.md`
 - [ ] T-230 : Valider emplacements V1 avec utilisateur
 - [ ] T-231 : Layout map (dimensions, échelle, choix illustration vs tileset LimeZu)
 - [ ] T-232 : Coordonnées x,y des emojis hotspots
@@ -298,7 +298,7 @@ MaxPlay V0
 **Infra TTS**
 - [ ] T-260 : Setup MCP ElevenLabs dans `~/.claude/settings.json` (clé API utilisateur)
 - [ ] T-261 : Sélection / clonage de voix (3-5 voix : narrateur doux, voix enfant joyeuse, voix grave/calme, voix vive/excitée…)
-- [ ] T-262 : Script de génération bouclant sur `GAME_META` → `game-html/sounds/titles/mj-XX.mp3`
+- [ ] T-262 : Script de génération bouclant sur `GAME_META` → `game/web/sounds/titles/mj-XX.mp3`
 - [ ] T-263 : Modifier `tracker.js._announceTitle` : si MP3 existe → `new Audio()`, sinon fallback `speechSynthesis`
 - [ ] T-264 : Régénération à la demande quand un jeu est renommé
 - [ ] T-265 : Pipeline narration : 1 histoire → découpe par voix → MP3 par segment → lecteur audio web
@@ -326,8 +326,8 @@ MaxPlay V0
 
 ### EP-004 – Architecture V0
 - [x] T-031 : Sandbox codée – SandboxScene.ts (prototype top-down)
-- [x] T-080 : Supprimer `game-html/index.html` v1 (version pédagogiquement cassée) → backup dans `temp/`
-- [x] T-081 : Créer nouvelle structure `game-html/` avec composants partagés (SVG bus, feedback, score)
+- [x] T-080 : Supprimer `game/web/index.html` v1 (version pédagogiquement cassée) → backup dans `temp/`
+- [x] T-081 : Créer nouvelle structure `game/web/` avec composants partagés (SVG bus, feedback, score)
 - [x] T-082 : Composant partagé BusCard (SVG + ligne + couleur + état masqué/révélé)
 - [x] T-083 : Composant partagé FeedbackOverlay (succès / erreur / encouragement)
 - [x] T-084 : Hub menu principal (7 mini-jeux, accès direct)
@@ -460,7 +460,7 @@ MaxPlay V0
 | L-003 | 2026-03-07 | CLAUDE.md = instructions opérationnelles Claude, pas de la doc projet | Confusion format initial |
 | L-004 | 2026-03-08 | Le prénom de l'enfant est Max, pas Tom | Correction critique session 2 |
 | L-005 | 2026-03-08 | Sandbox avant de coder le mini-jeu – le game feel se décide en jouant | EP-004 |
-| L-006 | 2026-03-10 | Afficher la réponse dans la question = zéro défi pédagogique (ex: couleur visible dans le quiz couleur) | Jeux v1 game-html cassés pédagogiquement |
+| L-006 | 2026-03-10 | Afficher la réponse dans la question = zéro défi pédagogique (ex: couleur visible dans le quiz couleur) | Jeux v1 game/web cassés pédagogiquement |
 | L-007 | 2026-03-10 | Toujours vérifier les incohérences entre docs (VISION vs BACKLOG ici) avant chaque session | Pixel art vs flat design, même date, deux docs différents |
 | L-008 | 2026-03-10 | Max est très avancé – ne pas sous-estimer. Il connaît 20 lignes par cœur, chiffres jusqu'aux milliers, lecture phonétique | Calibrage MJ-01/02/03b |
 | L-009 | 2026-03-15 | Sidewalk 1–6 = 6 STYLES différents (textures distinctes), pas des orientations. Utiliser 1 seul style par zone + sidewalk2 pour varier max 2–3 points | map-mockups pipeline |
@@ -616,8 +616,8 @@ MaxPlay V0
 - **Refonte déploiement** :
   - `docs/` nettoyé (seuls les .md conservés, -41 MB)
   - `vite.config.ts` : base conditionnel `process.env.CI ? '/MaxPlay/mj-07/' : './'`
-  - `game-html/mj-07.html` : message "localhost" → bouton "Jouer" vers `./mj-07/`
-  - `HubScene.ts` : URLs `/game-html/mj-X.html` → `../mj-X.html` (prod-ready)
+  - `game/web/mj-07.html` : message "localhost" → bouton "Jouer" vers `./mj-07/`
+  - `HubScene.ts` : URLs `/game/web/mj-X.html` → `../mj-X.html` (prod-ready)
   - `deploy.yml` : workflow build Phaser + assemble `_site/` + deploy Pages
   - `.gitignore` : `_site/` ajouté
 - **Résultat** : un seul `git push` déploie tout. MJ-07 accessible en ligne. Base solide long terme.
@@ -636,7 +636,7 @@ Setup complet infrastructure. EP-001 terminé. Scaffold Phaser.js créé.
 ### 2026-03-10 – Session 3
 - Hooks Claude activés (SessionStart confirmé)
 - Revue complète architecture + pédagogie
-- **Problème identifié** : jeux game-html v1 pédagogiquement cassés (réponse visible)
+- **Problème identifié** : jeux game/web v1 pédagogiquement cassés (réponse visible)
 - **Architecture V0 décidée** : Option C (HTML quiz + Phaser sandbox)
 - SVG bus side-view fourni par l'utilisateur → rangé + template dynamique créé
 - `game/src/utils/bus-svg.ts` créé (createBusSvg, createBusDataUrl)
@@ -647,9 +647,9 @@ Setup complet infrastructure. EP-001 terminé. Scaffold Phaser.js créé.
 
 ### 2026-03-10 – Session 4 (soir)
 - **BACKLOG.md mis à jour** avec les échanges utilisateur
-- **Structure game-html/ nettoyée** – nouvelle architecture propre :
+- **Structure game/web/ nettoyée** – nouvelle architecture propre :
   ```
-  game-html/
+  game/web/
   ├── index.html          ← Hub menu (7 mini-jeux)
   ├── css/
   │   └── style.css       ← Styles partagés
@@ -666,7 +666,7 @@ Setup complet infrastructure. EP-001 terminé. Scaffold Phaser.js créé.
   ├── mj-05.html          ← Quel bus ?
   └── mj-06.html          ← Au garage !
   ```
-- **Ancien index.html v1** archivé dans `temp/game-html-v1-backup.html`
+- **Ancien index.html v1** archivé dans `temp/game/web-v1-backup.html`
 - **MJ-01 à MJ-06 fonctionnels** en HTML vanilla
 - **MJ-07 (Phaser)** reste dans `game/` avec SandboxScene.ts
   - MJ-01 : Max connait 20 lignes par cœur (centaines incluses), TVM exclu

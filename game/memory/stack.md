@@ -6,7 +6,7 @@ type: project
 
 ## Stack
 
-- **Jeux HTML** : HTML vanilla + JavaScript ES6 (game-html/)
+- **Jeux HTML** : HTML vanilla + JavaScript ES6 (game/web/)
 - **Jeu Phaser** : Phaser.js 3 + Vite + TypeScript strict (game/)
 - **Assets** : SVG/PNG — jamais d'emoji pour les bus ni pour aucun graphisme de jeu (rendu inconsistant multi-OS)
 - **Résolution** : 1024×768 landscape (Phaser), responsive mobile (HTML)
@@ -15,13 +15,13 @@ type: project
 
 ```
 GitHub Pages → kimen26.github.io/MaxPlay/
-├── /                    ← game-html/index.html (menu 2 colonnes)
+├── /                    ← game/web/index.html (menu 2 colonnes)
 ├── /mj-01.html à /mj-20.html  ← jeux HTML vanilla (mj-02/03/07/10 retirés)
 └── /max-adventure/      ← Phaser build (game/dist/ copié par CI)
     max-adventure.html   ← splash → ./max-adventure/
 ```
 
-- Source HTML : `game-html/`
+- Source HTML : `game/web/`
 - Source Phaser : `game/` (build → `game/dist/`)
 - CI : `.github/workflows/deploy.yml` assemble dans `_site/` (non commité)
 - `docs/` = uniquement des .md de documentation
@@ -29,7 +29,7 @@ GitHub Pages → kimen26.github.io/MaxPlay/
 
 ## Règle critique bus
 
-**Toujours** utiliser `busSVG()` / `busSVGHiddenNum()` de `game-html/js/bus-svg.js`.
+**Toujours** utiliser `busSVG()` / `busSVGHiddenNum()` de `game/web/js/bus-svg.js`.
 **Jamais** d'emoji 🚌 ni de div CSS coloré pour représenter un bus.
 `selectDistinctColors(pool, n)` pour tout quiz multi-couleurs.
 

@@ -17,7 +17,7 @@ Voir `docs/MAX_PROFILE.md` pour le profil complet.
 - **Vocab Max (D-021)** : Centre bus = dodo · Garage = réparation · Village des bus = terminus (réservé)
   - MJ-08 à renommer "Au garage !" → "Au centre bus"
   - MJ-17 à renommer "Village des bus" → "Le garage"
-- **Menu** : projet Carte de Villejuif en haut + grille classique en bas (EP-023, plan : `docs/jeux/MENU-MAP-VILLEJUIF.md`)
+- **Menu** : projet Carte de Villejuif en haut + grille classique en bas (EP-023, plan : `game/docs/jeux/MENU-MAP-VILLEJUIF.md`)
 - **mj-02, mj-03, mj-07, mj-10** : retirés du menu (consolidés ailleurs)
 
 ### Détails jeux récents
@@ -49,13 +49,13 @@ Voir `docs/MAX_PROFILE.md` pour le profil complet.
   - Baron (voyageur temporel, Gardien des Portes)
   - **Nom de l'univers** : pas encore choisi (21 candidats dont Phosyntha, Egryntha, Veynara)
 - **Personnages nommés (casting Christ V1 figé 2026-04-24)** : Wex (#7 héros hors-système), Melki/Melchisédech (#1), Mimi/Marie F (#2), Polo/Paul (#3), Jérem/Jérémie (#4), Lulu/Luc (#5), Pierrot/Pierre (#6), Raph/Raphaëlle F (#7 ennéatype), Juju/Judith F (#8), Nono/Noé (#9)
-- **Docs narration** : `docs/narration/` (INDEX.md + Eneagramme/) · `docs/univers/`
+- **Docs narration** : `docs/narration/` (INDEX.md + enneagramme/) · `docs/univers/`
 
 ## Architecture déploiement (2026-03-21)
 
 ```
 GitHub Pages → kimen26.github.io/MaxPlay/
-├── /                    ← game-html/index.html (menu 2 colonnes)
+├── /                    ← game/web/index.html (menu 2 colonnes)
 ├── /mj-01.html à /mj-20.html  ← mini-jeux HTML vanilla (mj-02/03/07/10 retirés)
 └── /max-adventure/      ← Phaser build (game/dist/ copié par CI)
     max-adventure.html   ← splash → ./max-adventure/
@@ -80,7 +80,7 @@ GitHub Pages → kimen26.github.io/MaxPlay/
 - **POV** : top-down (vue GTA1/Pokémon), tap only Phase 1
 - **Progression** : flotte de bus débloquée + carte Villejuif
 - **Audio** : Web Speech API (TTS), Web Audio API (sons procéduraux)
-- **Bus side-view** : `busSVG()` / `busSVGHiddenNum()` dans `game-html/js/bus-svg.js` — JAMAIS emoji ni div CSS
+- **Bus side-view** : `busSVG()` / `busSVGHiddenNum()` dans `game/web/js/bus-svg.js` — JAMAIS emoji ni div CSS
 - **Bus topdown** : sprite sheet White + setTint() Phaser
 - **Anti-doublons** : `selectDistinctColors(pool, n, minDist=80)` pour tout quiz à couleurs
 - **ratp-colors.json** : source de vérité terminus+couleurs. Protocole de modif dans `.claude/skills/game-rules/bus-rules.md`
@@ -92,7 +92,7 @@ GitHub Pages → kimen26.github.io/MaxPlay/
 
 ## Tileset LimeZu Modern Exteriors (48×48) — règles apprises (session 8)
 
-**Fichier** : `game-html/map-mockups.html` — 5 maps atomiques validées (M1–M5)
+**Fichier** : `game/web/map-mockups.html` — 5 maps atomiques validées (M1–M5)
 
 | Règle | Détail |
 |-------|--------|
@@ -143,15 +143,15 @@ Serveur MCP global (scope user, tous projets) exposant 2 outils LLM tiers :
 | `docs/VISION.md` | Décisions prises + questions ouvertes |
 | `docs/ratp-colors.json` | Source de vérité couleurs+terminus : 26 actives + 362 référentiel |
 | `docs/narration/INDEX.md` | Point d'entrée projet narratif (personnages, ennéagramme, univers) |
-| `docs/narration/Eneagramme/` | 9 fiches personnages + situations + ressources auteur |
+| `docs/narration/enneagramme/` | 9 fiches personnages + situations + ressources auteur |
 | `docs/univers/UNIVERS-NOTES-BRUTES.md` | Matière brute univers macro (Éveil, Compagnons, Janus, Baron...) |
-| `game-html/` | mj-01 à mj-20 + max-adventure (vanilla HTML/JS) — source déployée |
-| `game-html/js/tracker.js` | Suivi progression localStorage — sessions, scores, maîtrise |
-| `game-html/suivi.html` | Dashboard parent — stats, sparklines, export/import JSON |
-| `game-html/js/data.js` | LIGNES (26 actives), DESTINATIONS, getLineDisplayName() |
-| `game-html/js/idfm.js` | IDFM_REFERENTIEL — 362 lignes complètes (généré depuis ratp-colors.json) |
-| `game-html/js/bus-svg.js` | busSVG() / busSVGHiddenNum() / selectDistinctColors() |
-| `game-html/map-mockups.html` | Preview tileset LimeZu — 5 maps atomiques M1–M5 |
+| `game/web/` | mj-01 à mj-20 + max-adventure (vanilla HTML/JS) — source déployée |
+| `game/web/js/tracker.js` | Suivi progression localStorage — sessions, scores, maîtrise |
+| `game/web/suivi.html` | Dashboard parent — stats, sparklines, export/import JSON |
+| `game/web/js/data.js` | LIGNES (26 actives), DESTINATIONS, getLineDisplayName() |
+| `game/web/js/idfm.js` | IDFM_REFERENTIEL — 362 lignes complètes (généré depuis ratp-colors.json) |
+| `game/web/js/bus-svg.js` | busSVG() / busSVGHiddenNum() / selectDistinctColors() |
+| `game/web/map-mockups.html` | Preview tileset LimeZu — 5 maps atomiques M1–M5 |
 | `game/src/scenes/` | HubScene · SandboxScene (max-adventure Phaser) |
 | `.claude/skills/game-rules/bus-rules.md` | Règles immuables bus + protocole de modification |
 | `.github/workflows/deploy.yml` | CI : build + assemble + deploy GitHub Pages |

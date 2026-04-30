@@ -15,6 +15,27 @@
 
 <!-- Ajouter les dumps ici, en haut -->
 
+## 2026-04-30 — Brainstorm saison 1 : arcs, style, gabarit, histoire test (EN COURS)
+
+> Session live. Archive complète : `archive/sessions/2026-04-30-brainstorm-arcs-style-gabarit.md`
+> Tranchés migrés vers `pmo/decisions.md`. Reste en cours ci-dessous.
+
+**En cours** :
+- Chantier 1 — Style de narration : Kishōtenketsu (squelette) + grain sensoriel brésilien (peau) ? À trancher en mode 1 question à la fois.
+- Chantier 2 — Gabarit d'épisode (minimal vs complet) — pas encore ouvert
+- Chantier 3 — Histoire test bout-en-bout pour critique John — pas encore ouvert
+- Question Conseiller suspendue : fin inachevée douce (style 002) vs fin qui referme (style 001) ?
+
+**Tranchés cette session** (déjà dans decisions.md) :
+- Saison 1 = 4 axes (objet-décor / Parole / univers-spécifique / pouvoirs Wex)
+- Arc 1 = duos (objet + 2-3 persos + Wex)
+- 003-006 en pause, pas supprimés
+- Mode archivage live
+- Conseiller : 1 sujet à la fois, 1 question, pas de menu
+
+---
+
+
 ## 2026-04-27 — Session nuit (transport, sensibilités, école, géographie, Wex)
 
 > ✅ Distillé 2026-04-28 → `univers/vie-quotidienne/transport.md` · `univers/fondements/sensibilites.md` · `univers/vie-quotidienne/ecole.md` · `univers/vie-quotidienne/geographie.md` · `personnages/INDEX.md` · `pmo/decisions.md`

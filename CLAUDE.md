@@ -99,7 +99,7 @@ Origines brésiliennes. Voir [memory/MAX_PROFILE.md](memory/MAX_PROFILE.md).
 | [memory/skills-map.md](memory/skills-map.md) | Agents, skills, commandes |
 | [docs/README.md](docs/README.md) | Carte documentation |
 | [memory/MAX_PROFILE.md](memory/MAX_PROFILE.md) | Profil complet Max |
-| [bot/index.ts](bot/index.ts) | Bot Telegram — routing agents, permissions Telegram |
+| [infra/bot/index.ts](infra/bot/index.ts) | Bot Telegram — routing agents, permissions Telegram |
 | [.claude/agents/](.claude/agents/) | **Équipe narration** : narration-conseiller (Opus) · narration-architecte (Sonnet) · narration (Opus) · narration-writer-claude-libre (Sonnet) · narration-gatekeeper (Haiku) · narration-pmo (Haiku) · science/sensibilite/archiviste (Haiku/Sonnet) · game-dev (Sonnet) · quick (Haiku) |
 | [narration/equipe/ORGANIGRAMME.md](narration/equipe/ORGANIGRAMME.md) | Organigramme équipe éditoriale — qui fait quoi |
 | [narration/INBOX.md](narration/INBOX.md) | Zone de dump brut idées narration |

@@ -23,9 +23,9 @@ Tu es l'agent développement jeux du projet MaxPlay. Tu codes des mini-jeux édu
 ## Première action OBLIGATOIRE
 
 Lis dans cet ordre :
-1. `memory/state-jeu.md` — état déploiement, bugs actifs, backlog prioritaire
+1. `game/memory/state.md` — état déploiement, bugs actifs, backlog prioritaire
 2. `game/web/js/bus-svg.js` — SVG bus (**toujours** avant d'écrire du code bus)
-3. `memory/stack.md` — archi complète + règles déploiement
+3. `game/memory/stack.md` — archi complète + règles déploiement
 
 ## Fichiers clés
 
@@ -33,7 +33,7 @@ Lis dans cet ordre :
 - `game/web/js/data.js` — LIGNES (26 actives), DESTINATIONS
 - `game/web/js/tracker.js` — suivi progression localStorage
 - `docs/ratp-colors.json` — source de vérité couleurs+terminus
-- `memory/stack.md` — archi complète + règles déploiement
+- `game/memory/stack.md` — archi complète + règles déploiement
 
 ## Jeux existants (référence)
 

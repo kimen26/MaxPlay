@@ -66,7 +66,12 @@
       "Bash(kill 530)",
       "Bash(mcp/server\\\\.ts)",
       "Bash(grep -rln \"\\\\`bot/index\\\\.ts\\\\`\\\\|`mcp/server\\\\.ts`\\\\|bot/index\\\\.ts\\\\|mcp/server\\\\.ts\" --include=\"*.md\" --include=\"*.json\" --include=\"*.ts\" .)",
-      "Bash(grep -rln \"bot/index\\\\.ts\\\\|mcp/server\\\\.ts\\\\|\\\\`bot/\\\\`\\\\|\\\\`mcp/\\\\`\" --include=\"*.md\" --include=\"*.json\" --include=\"*.ts\" --include=\"*.js\" .)"
+      "Bash(grep -rln \"bot/index\\\\.ts\\\\|mcp/server\\\\.ts\\\\|\\\\`bot/\\\\`\\\\|\\\\`mcp/\\\\`\" --include=\"*.md\" --include=\"*.json\" --include=\"*.ts\" --include=\"*.js\" .)",
+      "Bash(sed -i 's|`docs/jeux/MENU-MAP-VILLEJUIF\\\\.md`|`_archive/docs-jeux-cadavres/MENU-MAP-VILLEJUIF.md`|g; s|game/docs/jeux/MENU-MAP-VILLEJUIF\\\\.md|_archive/docs-jeux-cadavres/MENU-MAP-VILLEJUIF.md|g' memory/MEMORY.md)",
+      "Bash(sed -i 's|narration/ \\(INDEX\\\\.md + enneagramme/\\) · docs/univers/|narration/ \\(INDEX.md + univers/ + enneagramme/ + personnages/ + stories/ + workshop/ + pmo/ + equipe/\\)|g; s|narration/\\) · docs/univers/|narration/\\)|g' memory/MEMORY.md)",
+      "Bash(sed -i 's|^\\\\*\\\\*docs/\\\\*\\\\*.*$||g; s|game/dist/, \\\\*\\\\*_site/\\\\*\\\\*|game/phaser/dist/**, **_site/|g' memory/MEMORY.md)",
+      "Bash(sed -i 's|`memory/state-jeu\\\\.md`|`game/memory/state.md`|g; s|`memory/stack\\\\.md`|`game/memory/stack.md`|g; s|`memory/rules-jeu\\\\.md`|`game/memory/rules.md`|g; s|`memory/rules\\\\.md`|`game/memory/rules.md`|g' .claude/agents/game-dev.md)",
+      "Bash(sed -i 's|`memory/stack\\\\.md`|`game/memory/stack.md`|g; s|`memory/rules-jeu\\\\.md`|`game/memory/rules.md`|g' game/memory/state.md)"
     ]
   },
   "hooks": {

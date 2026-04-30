@@ -4,7 +4,7 @@ description: État condensé du pôle jeu — jeux déployés, bugs actifs, règ
 type: project
 ---
 
-> Charger ce fichier au démarrage de toute session JEU. Puis lire `tasks/BACKLOG.md` pour le détail.
+> Charger ce fichier au démarrage de toute session JEU. Puis lire `game/tasks/BACKLOG.md` pour le détail.
 
 ## État déploiement (2026-04-29)
 
@@ -42,10 +42,10 @@ type: project
 | `game/web/js/bus-svg.js` | SVG bus — lire avant tout |
 | `game/web/js/data.js` | LIGNES (26 actives), DESTINATIONS |
 | `game/web/js/tracker.js` | Suivi progression localStorage |
-| `docs/ratp-colors.json` | Source de vérité couleurs+terminus |
-| `memory/stack.md` | Architecture complète + règles déploiement |
-| `memory/rules-jeu.md` | Règles UX/péda + designs validés |
-| `tasks/BACKLOG.md` | Source de vérité épics |
+| `game/docs/ratp-colors.json` | Source de vérité couleurs+terminus |
+| `game/memory/stack.md` | Architecture complète + règles déploiement |
+| `game/memory/rules.md` | Règles UX/péda + designs validés |
+| `game/tasks/BACKLOG.md` | Source de vérité épics |
 
 ## Agent à appeler
 

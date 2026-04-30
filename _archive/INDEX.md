@@ -21,6 +21,7 @@ Ce dossier contient les fichiers retirés de la circulation active mais **conser
 |---------|------------------|
 | `REFERENCES.md` | Hub liens externes — peu référencé, valeur secondaire |
 | `PROJECT-TOUR.md` | Doc onboarding — rarement relue après première visite ; pourra être fusionnée dans `README.md` si besoin |
+| `README-docs-old.md` | Ex-`docs/README.md` — carte de la documentation pré-refonte. Pointeurs obsolètes après l'éclatement de `docs/` en `game/docs/` + `narration/`. Conservé pour mémoire archi. |
 
 ### `narration-reference/` — Analyses inspiration ennéagramme
 
@@ -35,6 +36,8 @@ Ex-`docs/narration/reference/`. Contenu analysé mais jamais référencé active
 | `enneagramme-9-niveaux-riso-hudson.md` (44 ko) | Référence théorique Riso-Hudson |
 
 À ressortir si une histoire future réutilise les compagnons-créatures façon Pokémon. Sinon laisser dormir.
+
+**+ `baron.md`** (ex-`docs/narration/univers/baron.md`) : inspiration univers écartée le 2026-04-17 (figure de voyageur temporel mise de côté). Conservée si une histoire ravive la piste.
 
 ### `temp-assets-2026-04/` — Sons bruts pré-production
 

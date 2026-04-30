@@ -332,9 +332,12 @@ export class SandboxScene extends Phaser.Scene {
 
   private updateBusFrame(): void {
     if (USE_SVG_BUS) {
-      // SVG profil : flip horizontal selon direction X
-      if (this.busVelocity.x < -10) this.bus.setFlipX(true);
-      else if (this.busVelocity.x > 10) this.bus.setFlipX(false);
+      // SVG profil : swap texture (carrosserie miroir, numéro lisible) selon direction X
+      if (this.busVelocity.x < -10 && this.bus.texture.key !== 'bus-svg-profile-left') {
+        this.bus.setTexture('bus-svg-profile-left');
+      } else if (this.busVelocity.x > 10 && this.bus.texture.key !== 'bus-svg-profile') {
+        this.bus.setTexture('bus-svg-profile');
+      }
       return;
     }
     const speed = this.busVelocity.length();

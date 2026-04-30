@@ -1,0 +1,47 @@
+# `_archive/` — Cadavres préservés
+
+Ce dossier contient les fichiers retirés de la circulation active mais **conservés pour traçabilité**. Aucun agent ne lit ce dossier par défaut. Ne pas y dumper de matière neuve.
+
+> **Date de création :** 2026-04-30 (refonte arborescence projet)
+
+## Contenu
+
+### `docs-jeux-cadavres/` — Anciens documents JEU obsolètes
+
+| Fichier | Raison archivage |
+|---------|------------------|
+| `IMPROVEMENTS.md` | Log fixes MJ-01→14 — historique migré vers `tasks/BACKLOG.md` |
+| `ITERATION_NOTES.md` | Journal dev MJ-07 Phaser sandbox — sprints 1-4 terminés, plus de suivi actif |
+| `ASSETS_INVENTORY.md` | Métadonnées pack Modern Exteriors (40k PNG) — référence uniquement, jamais implémenté |
+| `MENU-MAP-VILLEJUIF.md` | Spec menu hybride carte+grille — non implémenté, speculative design |
+
+### `docs-meta-cadavres/` — Anciens documents META
+
+| Fichier | Raison archivage |
+|---------|------------------|
+| `REFERENCES.md` | Hub liens externes — peu référencé, valeur secondaire |
+| `PROJECT-TOUR.md` | Doc onboarding — rarement relue après première visite ; pourra être fusionnée dans `README.md` si besoin |
+
+### `narration-reference/` — Analyses inspiration ennéagramme
+
+Ex-`docs/narration/reference/`. Contenu analysé mais jamais référencé activement dans le canon ou le workshop narratif.
+
+| Fichier | Note |
+|---------|------|
+| `INDEX.md` | Index ancien |
+| `analyse-personnages-manga-enneagramme.md` (26 ko) | Inspiration manga → ennéatypes |
+| `analyse-personnages-pokemon-enneagramme.md` (32 ko) | Mapping Pokémon → ennéatypes |
+| `analyse-pokemon-eux-memes-enneagramme.md` (31 ko) | Pokémon individuels → ennéatypes |
+| `enneagramme-9-niveaux-riso-hudson.md` (44 ko) | Référence théorique Riso-Hudson |
+
+À ressortir si une histoire future réutilise les compagnons-créatures façon Pokémon. Sinon laisser dormir.
+
+### `temp-assets-2026-04/` — Sons bruts pré-production
+
+Ex-`temp/` (partie sons). 26 fichiers audio (.mp3, .flac) + 1 script `gen-idfm.js` mort. ~2.8 Mo.
+
+> **Note importante :** Le pack pixel art `Design to sort/` (347 Mo, Modern Exteriors 16x16) et `Dino/` qui étaient dans l'ancien `temp/` ont été **laissés hors du repo** (toujours dans `temp/` racine, ignoré par `.gitignore`) pour ne pas gonfler le repo. Ils restent accessibles localement à l'utilisateur. Si un jour ces packs deviennent utiles, les déplacer vers `game/phaser/public/assets/` au moment de l'usage.
+
+## Règle d'or
+
+Ne **rien** y ajouter sans une note dans ce fichier expliquant **quand**, **pourquoi**, et **comment retrouver** la matière. Un cadavre non documenté = un cadavre perdu.

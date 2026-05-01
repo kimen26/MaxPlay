@@ -24,7 +24,7 @@
 - ✅ **Phase A — Cadrage process militaire LIVRÉE** : PROCESS.md, INDEX.md équipe, 8 templates, gabarit unifié `stories/_gabarit/`
 - ✅ **Phase B — Migration workshop→stories LIVRÉE** : 002 fusionné, 003 migré (gatekeeper-PASS bloqué documenté), 004/005/006 migrés en pitches, 001 aligné, workshop/ supprimé, scripts mis à jour, liens cassés résolus
 - ✅ **Phase C — Cascade décisions LIVRÉE** : `equipe/patte-narrative-maxplay.md` créé, dossier `arcs/` créé avec 4 fiches d'arc (arc-1 priorité, arc-2 pause, arc-3 + arc-4 plus tard), `axes-histoires-en-stock.md` réécrit format MOYEN par arc + matière historique préservée, INDEX et CLAUDE.md MAJ
-- ⏳ **Phase D à lancer** — Lecture critique John des 3 histoires existantes (001, 002, 003 bloquée)
+- ⏳ **Phase D à lancer** — Lecture critique Papa Yann des 3 histoires existantes (001, 002, 003 bloquée)
 - Question Conseiller suspendue : fin inachevée douce (style 002) vs fin qui referme (style 001) ? → tranchée Phase D
 
 **Tranchés cette session** (déjà dans decisions.md) :

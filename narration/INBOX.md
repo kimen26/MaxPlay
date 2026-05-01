@@ -21,9 +21,11 @@
 > Tranchés migrés vers `pmo/decisions.md`. Reste en cours ci-dessous.
 
 **En cours** :
-- Cascade documentaire post-chantiers 1+2 (à exécuter après validation John) — créer `voix-maxplay.md`, `exemples-canoniques.md`, MAJ `sources-narratologie.md` + `_gabarit/pitch.md` + `axes-histoires-en-stock.md` (MOYEN), créer dossier `arcs/`
-- Chantier 3 reformulé — **lecture critique John des 3 histoires existantes** (001, 002, 003) avant toute nouvelle écriture
-- Question Conseiller suspendue : fin inachevée douce (style 002) vs fin qui referme (style 001) ? → sera tranchée à la critique des textes existants
+- ⏳ **Phase A — Cadrage process militaire LIVRÉE** : `equipe/PROCESS.md` réécrit, `equipe/INDEX.md` créé, 8 templates créés dans `equipe/templates/`, `stories/_gabarit/` réécrit unifié. **Attente validation John** avant Phase B (migration workshop→stories).
+- Phase B — Migration workshop → stories unifié (à lancer après validation A)
+- Phase C — Cascade documentaire (créer `equipe/patte-narrative-maxplay.md`, MAJ ORGANIGRAMME + cartographie, réécrire `axes-histoires-en-stock.md` au format MOYEN, créer `arcs/`)
+- Phase D — Lecture critique John des 3 histoires existantes (001, 002, 003)
+- Question Conseiller suspendue : fin inachevée douce (style 002) vs fin qui referme (style 001) ? → sera tranchée Phase D
 
 **Tranchés cette session** (déjà dans decisions.md) :
 - Saison 1 = 4 axes (objet-décor / Parole / univers-spécifique / pouvoirs Wex)

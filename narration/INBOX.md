@@ -15,35 +15,10 @@
 
 <!-- Ajouter les dumps ici, en haut -->
 
-## 2026-04-30 — Brainstorm saison 1 : arcs, style, gabarit, histoire test (EN COURS)
+## 2026-04-30 — Brainstorm saison 1 : arcs, style, gabarit, histoire test
 
-> Session live. Archive complète : `archive/sessions/2026-04-30-brainstorm-arcs-style-gabarit.md`
-> Tranchés migrés vers `pmo/decisions.md`. Reste en cours ci-dessous.
-
-**En cours** :
-- ✅ **Phase A — Cadrage process militaire LIVRÉE** : PROCESS.md, INDEX.md équipe, 8 templates, gabarit unifié `stories/_gabarit/`
-- ✅ **Phase B — Migration workshop→stories LIVRÉE** : 002 fusionné, 003 migré, 004/005/006 migrés en pitches, 001 aligné, workshop/ supprimé
-- ✅ **Phase C — Cascade décisions LIVRÉE** : `equipe/patte-narrative-maxplay.md`, dossier `arcs/` avec 4 fiches, `axes-histoires-en-stock.md` réécrit MOYEN par arc
-- ✅ **Phase D — Lecture critique LIVRÉE 2026-04-30** : 3 relectures Papa Yann archivées (001/002/003), patte Papa Yann distillée dans `equipe/patte-papa-yann.md` (7 reproches + 14 critères), GateKeeper renforcé (15→26 critères)
-- ✅ **Renommage John → Papa Yann** dans tout le repo
-- ✅ **Suppression définitive** dossiers 003/004/005/006 (2026-05-02) — seules 001 et 002 restent
-- ⏳ **PROCHAINE SESSION** : 2 tests à lancer en parallèle :
-  - **Test 1 — 001 V2 CORRECTION** : Directeur seul applique retours Papa Yann sur V1 → `stories/001-le-pont-casse/rewrite/v2-correction.md`
-  - **Test 2 — 003-le-pont-casse-v2 FROM SCRATCH** : PROCESS militaire complet sur même sujet (pont cassé). Pitch challengé en binôme avec Conseiller. **Validation Papa Yann après étape 1 ET étape 3** (point d'arrêt supplémentaire pour ce 1er test).
-- ⚠ **RAISON DE LA RUPTURE** : agents `narration-pmo`, `narration-architecte`, `narration-gatekeeper` non chargés en session courante (les `.md` existent mais session démarrée avant leur création/modif). Papa Yann a refusé que je me substitue à eux (règle absolue 2026-05-02 ajoutée à `pmo/decisions.md` + `equipe/PROCESS.md` principe 7).
-- Question Conseiller suspendue : fin inachevée douce (style 002) vs fin qui referme (style 001) ? → tranchée à la lecture du from-scratch
-
-**Tranchés cette session** (déjà dans decisions.md) :
-- Saison 1 = 4 axes (objet-décor / Parole / univers-spécifique / pouvoirs Wex)
-- Arc 1 = duos (objet + 2-3 persos + Wex)
-- 003-006 en pause, pas supprimés
-- Mode archivage live
-- Conseiller : 1 sujet à la fois, 1 question, pas de menu
-- **✅ Chantier 1 — Patte narrative : B noyau (Kishōtenketsu) + D voix (tranche de vie) + C cadre (cycle d'arc). Outils ponctuels : E (trickster) avec parcimonie, A doux/Ten lourd pour arc Parole. F (morale dite) écartée.**
-- **✅ Chantier 2 — Gabarit pitch = MOYEN 4 cases (objet · duo+Wex · lieu · moment d'ouverture optionnel). Qualité humaine + problématique = niveau ARC, pas histoire. Pitches existants 003-006 conservés.**
-
-**Erreurs / règles ajoutées** :
-- ⚠ Conseiller a inventé du contenu sur "Max et Lapin" (confondu avec Max & Ruby anglo-saxon) → règle : **ne pas inventer pour une référence inconnue, dire qu'on ne connaît pas**
+> ✅ Distillé 2026-05-02 → `pmo/decisions.md` · `pmo/sprint-log.md` · `stories/001-le-pont-casse/kanban.md` · `stories/003-le-pont-casse-v2/README.md` · `pmo/backlog.md` (TEST-PROCESS-001 + TEST-PROCESS-003)
+> **Phase E démarrée 2026-05-02 :** 2 tests lancés en parallèle (Directeur correction + Conseiller from-scratch).
 
 ---
 

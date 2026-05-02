@@ -22,10 +22,16 @@
 
 **En cours** :
 - ✅ **Phase A — Cadrage process militaire LIVRÉE** : PROCESS.md, INDEX.md équipe, 8 templates, gabarit unifié `stories/_gabarit/`
-- ✅ **Phase B — Migration workshop→stories LIVRÉE** : 002 fusionné, 003 migré (gatekeeper-PASS bloqué documenté), 004/005/006 migrés en pitches, 001 aligné, workshop/ supprimé, scripts mis à jour, liens cassés résolus
-- ✅ **Phase C — Cascade décisions LIVRÉE** : `equipe/patte-narrative-maxplay.md` créé, dossier `arcs/` créé avec 4 fiches d'arc (arc-1 priorité, arc-2 pause, arc-3 + arc-4 plus tard), `axes-histoires-en-stock.md` réécrit format MOYEN par arc + matière historique préservée, INDEX et CLAUDE.md MAJ
-- ⏳ **Phase D à lancer** — Lecture critique Papa Yann des 3 histoires existantes (001, 002, 003 bloquée)
-- Question Conseiller suspendue : fin inachevée douce (style 002) vs fin qui referme (style 001) ? → tranchée Phase D
+- ✅ **Phase B — Migration workshop→stories LIVRÉE** : 002 fusionné, 003 migré, 004/005/006 migrés en pitches, 001 aligné, workshop/ supprimé
+- ✅ **Phase C — Cascade décisions LIVRÉE** : `equipe/patte-narrative-maxplay.md`, dossier `arcs/` avec 4 fiches, `axes-histoires-en-stock.md` réécrit MOYEN par arc
+- ✅ **Phase D — Lecture critique LIVRÉE 2026-04-30** : 3 relectures Papa Yann archivées (001/002/003), patte Papa Yann distillée dans `equipe/patte-papa-yann.md` (7 reproches + 14 critères), GateKeeper renforcé (15→26 critères)
+- ✅ **Renommage John → Papa Yann** dans tout le repo
+- ✅ **Suppression définitive** dossiers 003/004/005/006 (2026-05-02) — seules 001 et 002 restent
+- ⏳ **PROCHAINE SESSION** : 2 tests à lancer en parallèle :
+  - **Test 1 — 001 V2 CORRECTION** : Directeur seul applique retours Papa Yann sur V1 → `stories/001-le-pont-casse/rewrite/v2-correction.md`
+  - **Test 2 — 003-le-pont-casse-v2 FROM SCRATCH** : PROCESS militaire complet sur même sujet (pont cassé). Pitch challengé en binôme avec Conseiller. **Validation Papa Yann après étape 1 ET étape 3** (point d'arrêt supplémentaire pour ce 1er test).
+- ⚠ **RAISON DE LA RUPTURE** : agents `narration-pmo`, `narration-architecte`, `narration-gatekeeper` non chargés en session courante (les `.md` existent mais session démarrée avant leur création/modif). Papa Yann a refusé que je me substitue à eux (règle absolue 2026-05-02 ajoutée à `pmo/decisions.md` + `equipe/PROCESS.md` principe 7).
+- Question Conseiller suspendue : fin inachevée douce (style 002) vs fin qui referme (style 001) ? → tranchée à la lecture du from-scratch
 
 **Tranchés cette session** (déjà dans decisions.md) :
 - Saison 1 = 4 axes (objet-décor / Parole / univers-spécifique / pouvoirs Wex)

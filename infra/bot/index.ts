@@ -1,6 +1,15 @@
 import { Bot, Context, InlineKeyboard } from "grammy";
-import { homedir } from "os";
+import { hostname } from "os";
 import { randomUUID } from "crypto";
+import { spawn } from "child_process";
+
+const INSTANCE_ID = randomUUID().slice(0, 8);
+const INSTANCE_TAG = `[${INSTANCE_ID}@${hostname()}#${process.pid}]`;
+const STARTED_AT = new Date().toISOString();
+
+function log(...args: unknown[]) {
+  console.log(INSTANCE_TAG, ...args);
+}
 
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
 const ALLOWED_CHAT_ID = process.env.ALLOWED_CHAT_ID
@@ -8,6 +17,9 @@ const ALLOWED_CHAT_ID = process.env.ALLOWED_CHAT_ID
   : null;
 const PROJECT_PATH =
   process.env.PROJECT_PATH ?? "C:/ProjetsPerso/Claude_Projects/MaxPlay";
+
+const CLAUDE_CLI = process.env.CLAUDE_CLI ?? "claude";
+const CLAUDE_TIMEOUT_MS = parseInt(process.env.CLAUDE_TIMEOUT_MS ?? "540000");
 
 const MAX_HISTORY = 10;
 
@@ -145,7 +157,7 @@ Bun.serve({
   },
 });
 
-console.log("🌐 HTTP server démarré sur port 3001 (permissions)");
+log("🌐 HTTP server démarré sur port 3001 (permissions)");
 
 // ─── Commandes Telegram ───────────────────────────────────────────────────────
 
@@ -162,6 +174,17 @@ bot.command("status", async (ctx) => {
   await ctx.reply(`✅ Bot actif · Claude Code prêt · Projet : MaxPlay\n📝 ${count} échange(s) en mémoire`);
 });
 
+bot.command("whoami", async (ctx) => {
+  if (!isAllowed(ctx)) return;
+  await ctx.reply(
+    `🆔 *Instance bot*\n\n` +
+      `\`${INSTANCE_TAG}\`\n` +
+      `Démarrée : ${STARTED_AT}\n` +
+      `Projet : ${PROJECT_PATH}`,
+    { parse_mode: "Markdown" }
+  );
+});
+
 bot.command("reset", async (ctx) => {
   if (!isAllowed(ctx)) return;
   histories.delete(ctx.chat.id);
@@ -171,15 +194,19 @@ bot.command("reset", async (ctx) => {
 // ─── Messages → Claude ────────────────────────────────────────────────────────
 
 bot.on("message:text", async (ctx) => {
+  const chatId = ctx.chat.id;
+  const text = ctx.message.text;
+  const preview = text.length > 80 ? text.slice(0, 80) + "…" : text;
+  log(`📨 update chat=${chatId} text="${preview}"`);
+
   if (!isAllowed(ctx)) {
-    await ctx.reply(`⛔ Non autorisé.\n\nTon Chat ID : \`${ctx.chat.id}\``, {
+    log(`⛔ chat=${chatId} non autorisé (ALLOWED=${ALLOWED_CHAT_ID})`);
+    await ctx.reply(`⛔ Non autorisé.\n\nTon Chat ID : \`${chatId}\``, {
       parse_mode: "Markdown",
     });
     return;
   }
 
-  const chatId = ctx.chat.id;
-  const text = ctx.message.text;
   const existing = messageBuffers.get(chatId);
 
   if (existing) {
@@ -332,29 +359,71 @@ const AGENT_EMOJI: Record<Agent, string> = {
 };
 
 async function runClaude(prompt: string, agent: Agent = "quick"): Promise<string> {
-  const home = homedir();
-  const proc = Bun.spawn(
-    ["claude", "-p", prompt, "--agent", agent, "--dangerously-skip-permissions"],
-    {
+  const callId = randomUUID().slice(0, 6);
+  const t0 = Date.now();
+
+  // Map agent → modèle CLI Claude Code (utilise l'auth OAuth de l'utilisateur, pas de clé API)
+  const modelMap: Record<Agent, string> = {
+    "narration": "opus",
+    "game-dev": "sonnet",
+    "quick": "haiku",
+  };
+
+  const model = modelMap[agent];
+  log(`🚀 runClaude[${callId}] agent=${agent} model=${model} promptLen=${prompt.length} (via CLI)`);
+
+  return new Promise<string>((resolve, reject) => {
+    const args = ["-p", "--model", model, "--permission-mode", "bypassPermissions"];
+    const child = spawn(CLAUDE_CLI, args, {
       cwd: PROJECT_PATH,
-      stdout: "pipe",
-      stderr: "pipe",
-      env: { ...process.env, HOME: home, USERPROFILE: home },
-    }
-  );
+      shell: false,
+      stdio: ["pipe", "pipe", "pipe"],
+    });
 
-  const timeoutId = setTimeout(() => proc.kill(), 5 * 60 * 1000);
-  const [stdout, stderr] = await Promise.all([
-    new Response(proc.stdout).text(),
-    new Response(proc.stderr).text(),
-  ]);
-  clearTimeout(timeoutId);
-  const exitCode = await proc.exited;
+    let stdout = "";
+    let stderr = "";
+    let timedOut = false;
 
-  if (exitCode !== 0 && !stdout.trim()) {
-    throw new Error(stderr.trim() || `Claude a quitté avec le code ${exitCode}`);
-  }
-  return stdout.trim() || "(pas de réponse)";
+    const timer = setTimeout(() => {
+      timedOut = true;
+      child.kill();
+    }, CLAUDE_TIMEOUT_MS);
+
+    child.stdout.on("data", (chunk) => { stdout += chunk.toString(); });
+    child.stderr.on("data", (chunk) => { stderr += chunk.toString(); });
+
+    child.on("error", (err) => {
+      clearTimeout(timer);
+      const dt = Date.now() - t0;
+      log(`❌ runClaude[${callId}] spawn error=${err.message} duration=${dt}ms`);
+      reject(new Error(`Erreur Claude (spawn): ${err.message}`));
+    });
+
+    child.on("close", (code) => {
+      clearTimeout(timer);
+      const dt = Date.now() - t0;
+
+      if (timedOut) {
+        log(`❌ runClaude[${callId}] timeout=${CLAUDE_TIMEOUT_MS}ms`);
+        reject(new Error(`Erreur Claude: timeout après ${CLAUDE_TIMEOUT_MS}ms`));
+        return;
+      }
+
+      if (code !== 0) {
+        const errMsg = stderr.trim() || `exit code ${code}`;
+        log(`❌ runClaude[${callId}] exit=${code} duration=${dt}ms stderr="${errMsg.slice(0, 200)}"`);
+        reject(new Error(`Erreur Claude: ${errMsg.slice(0, 500)}`));
+        return;
+      }
+
+      const responseText = stdout.trim();
+      log(`✅ runClaude[${callId}] exit=0 duration=${dt}ms responseLen=${responseText.length}`);
+      resolve(responseText || "(pas de réponse)");
+    });
+
+    child.stdin.write(prompt);
+    child.stdin.end();
+  });
 }
 
 function splitMessage(text: string, maxLen = 4000): string[] {
@@ -366,7 +435,7 @@ function splitMessage(text: string, maxLen = 4000): string[] {
   return chunks;
 }
 
-bot.catch((err) => console.error("Bot error:", err));
+bot.catch((err) => console.error(INSTANCE_TAG, "Bot error:", err));
 
-console.log("🤖 MaxPlay Bot démarré…");
+log(`🤖 MaxPlay Bot démarré… INSTANCE_ID=${INSTANCE_ID} pid=${process.pid} host=${hostname()}`);
 bot.start({ drop_pending_updates: true });

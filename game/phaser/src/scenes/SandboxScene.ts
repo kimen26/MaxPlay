@@ -82,21 +82,39 @@ export class SandboxScene extends Phaser.Scene {
       }
     }
 
+    // ─── Layer 1b : pointillés blancs au centre des routes ─────
+    // Route H axe central = row 16 ; Route V axe central = col 25
+    const INTERSECTION_R = (r: number) => r >= 15 && r <= 17;
+    const INTERSECTION_C = (c: number) => c >= 24 && c <= 26;
+    for (let c = 0; c < COLS; c++) {
+      // Pointillés H sur row 16, sauf intersection
+      if (!INTERSECTION_C(c)) {
+        this.add.image(c * TILE, 16 * TILE, 'tile-line-h').setOrigin(0, 0).setDepth(-99);
+      }
+    }
+    for (let r = 0; r < ROWS; r++) {
+      // Pointillés V sur col 25, sauf intersection
+      if (!INTERSECTION_R(r)) {
+        this.add.image(25 * TILE, r * TILE, 'tile-line-v').setOrigin(0, 0).setDepth(-99);
+      }
+    }
+
     // ─── Layer 2 : maisons (toyhouse 4×5 = 192×240 px) ──────────
     // 4 quadrants, chacun avec 1-2 maisons sur grass
     const houses: Array<[number, number, string]> = [
+      // Mix maisons rouges + bleues + jaune pour diversité visuelle
       // Quadrant NO
-      [3 * TILE,  3 * TILE,  'tile-toyhouse1'],
-      [12 * TILE, 4 * TILE,  'tile-toyhouse5'],
+      [3 * TILE,  3 * TILE,  'tile-toyhouse1'],       // rouge
+      [12 * TILE, 4 * TILE,  'tile-toyhouse-blue1'],  // bleue
       // Quadrant NE
-      [33 * TILE, 3 * TILE,  'tile-toyhouse2'],
-      [42 * TILE, 4 * TILE,  'tile-toyhouse6'],
+      [33 * TILE, 3 * TILE,  'tile-toyhouse-blue2'],  // bleue
+      [42 * TILE, 4 * TILE,  'tile-toyhouse6'],       // rouge
       // Quadrant SO
-      [3 * TILE,  22 * TILE, 'tile-toyhouse3'],
-      [12 * TILE, 23 * TILE, 'tile-toyhouse5'],
+      [3 * TILE,  22 * TILE, 'tile-toyhouse-yellow'], // jaune
+      [12 * TILE, 23 * TILE, 'tile-toyhouse5'],       // rouge
       // Quadrant SE
-      [33 * TILE, 22 * TILE, 'tile-toyhouse4'],
-      [42 * TILE, 23 * TILE, 'tile-toyhouse1'],
+      [33 * TILE, 22 * TILE, 'tile-toyhouse4'],       // rouge
+      [42 * TILE, 23 * TILE, 'tile-toyhouse-blue1'],  // bleue
     ];
     houses.forEach(([x, y, key]) => {
       this.add.image(x, y, key).setOrigin(0, 0).setDepth(y);
@@ -118,9 +136,10 @@ export class SandboxScene extends Phaser.Scene {
 
     // ─── Layer 4 : arrêts de bus (poteau + abri) ────────────────
     // Positions : 3 arrêts inspirés du jeu original
-    this.createBusStop(6 * TILE,  14 * TILE, '162');  // côté nord, ouest
-    this.createBusStop(20 * TILE, 14 * TILE, 'M7');   // côté nord, milieu
-    this.createBusStop(40 * TILE, 18 * TILE, '380');  // côté sud, est
+    // Bus stop : banc remonté sur le trottoir (y = trottoir_row - 1 pour ancrer la base sur le trottoir)
+    this.createBusStop(6 * TILE,  13 * TILE, '162');  // trottoir N, ouest
+    this.createBusStop(20 * TILE, 13 * TILE, 'M7');   // trottoir N, milieu
+    this.createBusStop(40 * TILE, 18 * TILE, '380');  // trottoir S, est (déjà OK)
 
     // ─── Layer 5 : lampadaires (electric_pole 1×4 = 48×192) ─────
     const lamps: Array<[number, number]> = [

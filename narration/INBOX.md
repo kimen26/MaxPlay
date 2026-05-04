@@ -15,6 +15,127 @@
 
 <!-- Ajouter les dumps ici, en haut -->
 
+## 2026-05-04 — Top 15 prénoms par pays/année/sexe (à dispatcher → catalogue-prenoms/par-culture/)
+
+> Source IA externe (à recouper). À dispatcher vers `personnages/catalogue-prenoms/par-culture/{france,japon,bresil,canada,nigeria}.md`.
+
+### 🇫🇷 FRANCE (Source INSEE)
+
+| Rang | 1930 G | 1930 F | 1980 G | 1980 F | 2025 G | 2025 F |
+|------|--------|--------|--------|--------|--------|--------|
+| 1 | Jean | Marie | Nicolas | Aurélie | Gabriel | Jade |
+| 2 | André | Jeanne | Sébastien | Céline | Léo | Emma |
+| 3 | Pierre | Marguerite | Julien | Émilie | Raphaël | Louise |
+| 4 | Marcel | Yvonne | Christophe | Virginie | Arthur | Ambre |
+| 5 | René | Madeleine | Stéphane | Stéphanie | Louis | Alice |
+| 6 | Roger | Suzanne | Laurent | Julie | Noah | Lina |
+| 7 | Robert | Simone | Fabien | Sandrine | Jules | Rose |
+| 8 | Henri | Paulette | David | Sophie | Adam | Anna |
+| 9 | Louis | Denise | Alexandre | Nathalie | Lucas | Mia |
+| 10 | Georges | Odette | Jérôme | Caroline | Maël | Chloé |
+| 11 | Maurice | Jacqueline | Pascal | Jennifer | Hugo | Inès |
+| 12 | Paul | Germaine | Philippe | Delphine | Sacha | Léa |
+| 13 | Joseph | Lucienne | Frédéric | Karine | Théo | Romy |
+| 14 | Michel | Marthe | Olivier | Alexandra | Liam | Zoé |
+| 15 | Edmond | Thérèse | Éric | Audrey | Isaac | Nina |
+
+Sources : INSEE via Journal des Femmes ; Politologue ; ConsoBaby / HappyBulle.
+
+### 🇯🇵 JAPON (Source Meiji Yasuda / enquêtes nationales)
+
+| Rang | 1930 G | 1930 F | 1980 G | 1980 F | 2025 G | 2025 F |
+|------|--------|--------|--------|--------|--------|--------|
+| 1 | Kiyoshi | Chiyo | Daisuke | Ai | Minato | Sui |
+| 2 | Shigeru | Chiyoko | Kenta | Mai | Iori | Himari |
+| 3 | Hiroshi | Fumiko | Makoto | Megumi | Yuito | Tsumugi |
+| 4 | Saburou | Shizuko | Takuya | Mami | Ao | Rin |
+| 5 | Isamu | Kiyo | Naoki | Kaori | Haruto | Mei |
+| 6 | Masao | Yoshiko | Kazuya | Misaki | Asahi | Hina |
+| 7 | Tadashi | Hisako | Shota | Yumi | Ren | Aoi |
+| 8 | Minoru | Miyoko | Tsubasa | Tomoko | Nagi | Kotoha |
+| 9 | Susumu | Sachiko | Hiroto | Kumiko | Haru | Yuzuki |
+| 10 | Hiroshi | Kazuko | Kenta | Yuko | Sora | Mio |
+| 11 | Isamu | Setsuko | Makoto | Mayumi | Ritsu | Ema |
+| 12 | Kiyoshi | Hiroko | Daisuke | Ai | Minato | Sui |
+| 13 | Shigeru | Youko | Naoki | Megumi | Iori | Himari |
+| 14 | Masao | Keiko | Takuya | Mai | Yuito | Tsumugi |
+| 15 | Tadashi | Yoshiko | Kazuya | Mami | Haruto | Rin |
+
+Sources : ThoughtCo (historique) ; NewsOnJapan / Mainichi (2025).
+
+### 🇧🇷 BRÉSIL (Source IBGE / Arpen-Brasil)
+
+| Rang | 1930 G | 1930 F | 1980 G | 1980 F | 2025 G | 2025 F |
+|------|--------|--------|--------|--------|--------|--------|
+| 1 | José | Maria | José | Maria | Ravi | Helena |
+| 2 | Antônio | Ana | Antônio | Ana | Miguel | Maitê |
+| 3 | João | Francisca | Francisco | Juliana | Heitor | Cecília |
+| 4 | Francisco | Terezinha | João | Patrícia | Arthur | Maria Cecília |
+| 5 | Manoel | Antonia | Carlos | Adriana | Theo | Aurora |
+| 6 | Pedro | Josefa | Rafael | Aline | Gael | Alice |
+| 7 | Sebastião | Raimunda | Paulo | Fernanda | Bernardo | Laura |
+| 8 | Raimundo | Tereza | Rodrigo | Vanessa | Davi | Antonella |
+| 9 | Luiz | Rosa | Marcos | Luciana | Noah | Isis |
+| 10 | Geraldo | Luzia | Fábio | Cristiane | Samuel | Heloisa |
+| 11 | Joaquim | Joana | Leandro | Fabiana | — | — |
+| 12 | Manuel | Nair | Marcelo | Renata | — | — |
+| 13 | Benedito | Aparecida | Tiago | Márcia | — | — |
+| 14 | Paulo | Benedita | André | Simone | — | — |
+| 15 | Luís | Sebastiana | Anderson | Camila | — | — |
+
+Sources : IBGE / Reddit (1930) ; Blog Nomes / ARPEN-SP (1980) ; G1 / Arpen-Brasil (2025).
+
+### 🇨🇦 CANADA (Source StatCan / Provinces)
+
+| Rang | 1930 G | 1930 F | 1980 G | 1980 F* | 2024-25 G | 2024-25 F |
+|------|--------|--------|--------|---------|-----------|-----------|
+| 1 | Joseph | Mary | Michael | Jennifer | Noah | Olivia |
+| 2 | John | Marie | Christopher | Melissa | Liam | Charlotte |
+| 3 | William | Margaret | David | Heather | Theodore | Emma |
+| 4 | Robert | Shirley | Jason | Jessica | Leo | Amelia |
+| 5 | James | Dorothy | Ryan | Amanda | William | Sophia |
+| 6 | Donald | Helen | Matthew | Sarah | Oliver | Sofia |
+| 7 | George | Betty | Robert | Stephanie | Lucas | Mia |
+| 8 | Kenneth | Joan | James | Nicole | James | Chloe |
+| 9 | Ronald | Barbara | Andrew | Elizabeth | Benjamin | Lily |
+| 10 | Charles | Jean | Daniel | Laura | Thomas | Ava |
+| 11 | Thomas | Elizabeth | Adam | Lisa | Jack | Isla |
+| 12 | Edward | Ruth | John | Amber | Henry | Nora |
+| 13 | David | Marion | Kevin | Michelle | Owen | Hazel |
+| 14 | Gordon | Joyce | Joseph | Tiffany | Levi | Eleanor |
+| 15 | Harold | Patricia | Jeffrey | Amy | Hudson | Grace |
+
+*1980 F : tendances nord-américaines (SSA US) — registres provinciaux canadiens ne diffusaient pas de top 15 féminin consolidé.
+Sources : BehindTheName (Ontario/BC 1930 & 1980) ; StatCan (2024) ; BabyCenter Canada.
+
+### 🇳🇬 NIGERIA — Précision importante
+
+Pas de registre civil national fiable diffusant un classement annuel. Données = estimations globales (toutes générations) ou enquêtes ethniques ponctuelles.
+
+Selon bases démographiques consolidées (Forebears / Wikipedia), prénoms les plus portés en population totale :
+
+| Garçons | Filles |
+|---------|--------|
+| Musa | Blessing |
+| Ibrahim | Aisha |
+| Abubakar | Fatima |
+| Sani | Mary |
+| Abdullahi | Esther |
+| Mohammed | Grace |
+| Sunday | Amina |
+| Umar | Zainab |
+| Emmanuel | Maryam |
+| Adamu | Joy |
+| Usman | Victoria |
+| Aliyu | Patience |
+| Muhammed | Christiana |
+| John | Hauwa |
+| Yusuf | Rebecca |
+
+Note : reflète diversité ethnique/religieuse (hausa, yoruba, igbo) mais pas top 15 par année spécifique.
+
+---
+
 ## 2026-04-30 — Brainstorm saison 1 : arcs, style, gabarit, histoire test
 
 > ✅ Distillé 2026-05-02 → `pmo/decisions.md` · `pmo/sprint-log.md` · `stories/001-le-pont-casse/kanban.md` · `stories/003-le-pont-casse-v2/README.md` · `pmo/backlog.md` (TEST-PROCESS-001 + TEST-PROCESS-003)

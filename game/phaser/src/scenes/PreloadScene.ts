@@ -47,6 +47,13 @@ export class PreloadScene extends Phaser.Scene {
       ['tile-toyhouse4', `${TILE_BASE}buildings/ME_Singles_Villas_48x48_Toy_House_4.png`],
       ['tile-toyhouse5', `${TILE_BASE}buildings/ME_Singles_Villas_48x48_Toy_House_5.png`],
       ['tile-toyhouse6', `${TILE_BASE}buildings/ME_Singles_Villas_48x48_Toy_House_6.png`],
+      // Variantes recolorées (générées par tile-tools/scripts/recolor_house.py)
+      ['tile-toyhouse-blue1',  `${TILE_BASE}buildings/ME_Custom_Villas_48x48_Toy_House_Blue_1.png`],
+      ['tile-toyhouse-blue2',  `${TILE_BASE}buildings/ME_Custom_Villas_48x48_Toy_House_Blue_2.png`],
+      ['tile-toyhouse-yellow', `${TILE_BASE}buildings/ME_Custom_Villas_48x48_Toy_House_Yellow_1.png`],
+      // Pointillés blancs centre route (asph_14 = H, asph_15 = V)
+      ['tile-line-h', `${TILE_BASE}roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_14.png`],
+      ['tile-line-v', `${TILE_BASE}roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_15.png`],
       // Arbres
       ['tile-bush1', `${TILE_BASE}parks/ME_Singles_Garden_48x48_Bush_1.png`],
       ['tile-bush2', `${TILE_BASE}parks/ME_Singles_Garden_48x48_Bush_2.png`],

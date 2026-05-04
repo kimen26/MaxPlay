@@ -56,20 +56,24 @@ export class SandboxScene extends Phaser.Scene {
     const COLS = Math.ceil(WORLD_WIDTH / TILE);   // 50
     const ROWS = Math.ceil(WORLD_HEIGHT / TILE);  // 34
 
-    // Croisement central : route H rows 15-17, route V cols 24-26 (3 tiles chacune)
-    // Trottoirs : rows 14 et 18 (H), cols 23 et 27 (V)
-    const isHRoad = (r: number) => r >= 15 && r <= 17;
-    const isVRoad = (c: number) => c >= 24 && c <= 26;
-    const isHSidewalk = (r: number) => r === 14 || r === 18;
-    const isVSidewalk = (c: number) => c === 23 || c === 27;
+    // Réseau de routes en grille :
+    //   2 routes H : rows 5-7 (nord) + rows 15-17 (centre, traversant le rond-point)
+    //   2 routes V : cols 8-10 (ouest) + cols 24-26 (centre, traversant le rond-point)
+    // Rond-point central : cols 18-31, rows 10-21 (14×12)
+    const isHRoad = (r: number) => (r >= 15 && r <= 17) || (r >= 5 && r <= 7);
+    const isVRoad = (c: number) => (c >= 24 && c <= 26) || (c >= 8 && c <= 10);
+    const isHSidewalk = (r: number) => r === 14 || r === 18 || r === 4 || r === 8;
+    const isVSidewalk = (c: number) => c === 23 || c === 27 || c === 7 || c === 11;
+    const isInRondPoint = (c: number, r: number) => c >= 18 && c <= 31 && r >= 10 && r <= 21;
 
     const grassMix = ['tile-grass1', 'tile-grass2', 'tile-grass3'];
     const asphMix  = ['tile-asphalt1', 'tile-asphalt2', 'tile-asphalt3'];
     const swMix    = ['tile-sidewalk1', 'tile-sidewalk2'];
 
-    // ─── Layer 1 : sol (tile par tile) ──────────────────────────
+    // ─── Layer 1 : sol (tile par tile, hors zone rond-point) ────
     for (let r = 0; r < ROWS; r++) {
       for (let c = 0; c < COLS; c++) {
+        if (isInRondPoint(c, r)) continue;  // posé après par le rond-point
         let key: string;
         if (isHRoad(r) || isVRoad(c)) {
           key = asphMix[(r + c) % 3];
@@ -82,22 +86,39 @@ export class SandboxScene extends Phaser.Scene {
       }
     }
 
-    // ─── Layer 1b : pointillés blancs au centre des routes ─────
-    // Route H axe central = row 16 ; Route V axe central = col 25
-    const INTERSECTION_R = (r: number) => r >= 15 && r <= 17;
-    const INTERSECTION_C = (c: number) => c >= 24 && c <= 26;
+    // ─── Layer 1b : rond-point central (4 quarts + îlot panneau) ──
+    // Quarts 7×6 : NW (18,10), NE (25,10), SW (18,16), SE (25,16)
+    this.add.image(18 * TILE, 10 * TILE, 'tile-rp-nw').setOrigin(0, 0).setDepth(-100);
+    this.add.image(25 * TILE, 10 * TILE, 'tile-rp-ne').setOrigin(0, 0).setDepth(-100);
+    this.add.image(18 * TILE, 16 * TILE, 'tile-rp-sw').setOrigin(0, 0).setDepth(-100);
+    this.add.image(25 * TILE, 16 * TILE, 'tile-rp-se').setOrigin(0, 0).setDepth(-100);
+    // Îlot+panneau 3×4 (col=6, row=5 dans grille rond-point => abs (24, 15))
+    this.add.image(24 * TILE, 15 * TILE, 'tile-rp-ilot').setOrigin(0, 0).setDepth(-50);
+
+    // ─── Layer 1c : pointillés blancs au centre des routes ─────
+    // Routes H axes : row 6 et row 16 ; Routes V axes : col 9 et col 25
+    const isCrossing = (c: number, r: number) => isHRoad(r) && isVRoad(c);
     for (let c = 0; c < COLS; c++) {
-      // Pointillés H sur row 16, sauf intersection
-      if (!INTERSECTION_C(c)) {
+      // Pointillé route H nord (row 6) sauf croisements
+      if (!isVRoad(c)) {
+        this.add.image(c * TILE, 6 * TILE, 'tile-line-h').setOrigin(0, 0).setDepth(-99);
+      }
+      // Pointillé route H centrale (row 16) sauf rond-point + croisements
+      if (!isInRondPoint(c, 16) && !isVRoad(c)) {
         this.add.image(c * TILE, 16 * TILE, 'tile-line-h').setOrigin(0, 0).setDepth(-99);
       }
     }
     for (let r = 0; r < ROWS; r++) {
-      // Pointillés V sur col 25, sauf intersection
-      if (!INTERSECTION_R(r)) {
+      // Pointillé route V ouest (col 9) sauf croisements
+      if (!isHRoad(r)) {
+        this.add.image(9 * TILE, r * TILE, 'tile-line-v').setOrigin(0, 0).setDepth(-99);
+      }
+      // Pointillé route V centrale (col 25) sauf rond-point + croisements
+      if (!isInRondPoint(25, r) && !isHRoad(r)) {
         this.add.image(25 * TILE, r * TILE, 'tile-line-v').setOrigin(0, 0).setDepth(-99);
       }
     }
+    void isCrossing;
 
     // ─── Layer 2 : maisons (toyhouse 4×5 = 192×240 px) ──────────
     // 4 quadrants, chacun avec 1-2 maisons sur grass
@@ -120,50 +141,48 @@ export class SandboxScene extends Phaser.Scene {
       this.add.image(x, y, key).setOrigin(0, 0).setDepth(y);
     });
 
-    // ─── Layer 3 : arbres répartis sur grass ────────────────────
+    // ─── Layer 3 : arbres répartis sur les "îlots" entre les routes ──
     const bushKeys = ['tile-bush1', 'tile-bush2', 'tile-bush3'];
     const trees: Array<[number, number]> = [
-      [9, 1], [11, 9], [20, 2], [22, 11],
-      [29, 1], [31, 9], [40, 2], [47, 11],
-      [9, 21], [11, 28], [20, 23], [22, 30],
-      [29, 21], [31, 28], [40, 23], [47, 30],
-      [16, 9], [37, 9], [16, 23], [37, 23],
+      // NO (avant route N, à l'ouest de la route V ouest)
+      [2, 2], [5, 1], [2, 11], [5, 13],
+      // NE (entre route V ouest et rond-point) - SE limité par route H nord
+      [14, 1], [16, 13], [14, 9],
+      // E (à droite du rond-point, au-dessus de la route H centrale)
+      [33, 2], [38, 1], [44, 2], [48, 1],
+      [33, 13], [38, 13], [44, 13], [48, 13],
+      // SO (à gauche du rond-point, sous route H centrale)
+      [2, 22], [5, 22], [14, 22], [16, 22],
+      [2, 30], [5, 32], [14, 30], [16, 32],
+      // SE (à droite du rond-point, sous route H centrale)
+      [33, 22], [38, 22], [44, 22], [48, 22],
+      [33, 30], [38, 32], [44, 30], [48, 32],
     ];
     trees.forEach(([c, r], i) => {
+      if (isInRondPoint(c, r)) return;
       const key = bushKeys[i % 3];
       this.add.image(c * TILE, r * TILE, key).setOrigin(0, 0).setDepth(r * TILE);
     });
 
-    // ─── Layer 4 : arrêts de bus (poteau + abri) ────────────────
-    // Positions : 3 arrêts inspirés du jeu original
-    // Bus stop : banc remonté sur le trottoir (y = trottoir_row - 1 pour ancrer la base sur le trottoir)
-    this.createBusStop(6 * TILE,  13 * TILE, '162');  // trottoir N, ouest
-    this.createBusStop(20 * TILE, 13 * TILE, 'M7');   // trottoir N, milieu
-    this.createBusStop(40 * TILE, 18 * TILE, '380');  // trottoir S, est (déjà OK)
+    // ─── Layer 4 : arrêts de bus (3 stratégiques) ────────────────
+    // Banc remonté sur le trottoir (y = trottoir_row - 1)
+    this.createBusStop(2 * TILE,  13 * TILE, '162');  // trottoir N centrale, ouest extrême
+    this.createBusStop(40 * TILE, 13 * TILE, 'M7');   // trottoir N centrale, est
+    this.createBusStop(15 * TILE, 18 * TILE, '380');  // trottoir S centrale, milieu-ouest
 
-    // ─── Layer 5 : lampadaires (electric_pole 1×4 = 48×192) ─────
+    // ─── Layer 5 : lampadaires (réduits, hors zone rond-point) ──
     const lamps: Array<[number, number]> = [
-      [8, 13], [15, 13], [29, 13], [36, 13], [43, 13], // nord
-      [8, 19], [15, 19], [29, 19], [36, 19], [43, 19], // sud
+      // Le long de la route H centrale (row 13 nord, row 19 sud)
+      [4, 13], [15, 13], [37, 13], [44, 13],
+      [4, 19], [15, 19], [37, 19], [44, 19],
+      // Le long de la route H nord (row 3, row 9)
+      [4, 3], [15, 3], [30, 3], [44, 3],
+      [4, 9], [15, 9], [30, 9], [44, 9],
     ];
     lamps.forEach(([c, r]) => {
+      if (isInRondPoint(c, r)) return;
       // Pole tile = 48×192 → ancré 4 rows au-dessus de la base
       this.add.image(c * TILE, (r - 3) * TILE, 'tile-pole').setOrigin(0, 0).setDepth(r * TILE);
-    });
-
-    // ─── Layer 6 : décorations (poubelles, panneaux, fleurs) ────
-    this.add.image(10 * TILE, 14 * TILE, 'tile-trash').setOrigin(0, 0).setDepth(14 * TILE);
-    this.add.image(34 * TILE, 18 * TILE, 'tile-trash').setOrigin(0, 0).setDepth(18 * TILE);
-    this.add.image(25 * TILE, 14 * TILE, 'tile-info-sign').setOrigin(0, 0).setDepth(14 * TILE);
-    this.add.image(25 * TILE, 18 * TILE, 'tile-mailbox').setOrigin(0, 0).setDepth(18 * TILE);
-
-    const flowerKeys = ['tile-flower-r', 'tile-flower-y', 'tile-flower-p'];
-    const flowers: Array<[number, number]> = [
-      [8, 8], [16, 7], [25, 6], [35, 8], [45, 7],
-      [8, 25], [16, 26], [25, 27], [35, 25], [45, 26],
-    ];
-    flowers.forEach(([c, r], i) => {
-      this.add.image(c * TILE, r * TILE, flowerKeys[i % 3]).setOrigin(0, 0).setDepth(r * TILE);
     });
   }
 
@@ -216,20 +235,20 @@ export class SandboxScene extends Phaser.Scene {
   }
 
   private createPassengers(): void {
-    const TROT_N = WORLD_HEIGHT / 2 - 85; // trottoir nord de la route H
-    const TROT_S = WORLD_HEIGHT / 2 + 85; // trottoir sud de la route H
-    const TROT_E = WORLD_WIDTH / 2 + 85;  // trottoir est de la route V
-    const TROT_W = WORLD_WIDTH / 2 - 85;  // trottoir ouest de la route V
+    // Passagers répartis sur les trottoirs des 4 routes (hors rond-point)
     const positions = [
-      // Trottoir nord
-      { x: 300,  y: TROT_N }, { x: 600,  y: TROT_N }, { x: 950,  y: TROT_N },
-      { x: 1300, y: TROT_N }, { x: 1650, y: TROT_N }, { x: 2000, y: TROT_N },
-      // Trottoir sud
-      { x: 450,  y: TROT_S }, { x: 800,  y: TROT_S }, { x: 1100, y: TROT_S },
-      { x: 1500, y: TROT_S }, { x: 1900, y: TROT_S },
-      // Trottoirs verticaux
-      { x: TROT_W, y: 350 }, { x: TROT_E, y: 500 },
-      { x: TROT_W, y: 900 }, { x: TROT_E, y: 1100 },
+      // Trottoir N route H nord (y = 4*48 = 192)
+      { x: 200, y: 192 }, { x: 600, y: 192 }, { x: 1700, y: 192 }, { x: 2100, y: 192 },
+      // Trottoir S route H nord (y = 8*48 = 384)
+      { x: 400, y: 384 }, { x: 1200, y: 384 }, { x: 1900, y: 384 },
+      // Trottoir N route H centrale, hors rond-point (y = 14*48 = 672)
+      { x: 200, y: 672 }, { x: 1700, y: 672 },
+      // Trottoir S route H centrale, hors rond-point (y = 18*48 = 864)
+      { x: 500, y: 864 }, { x: 1700, y: 864 }, { x: 2100, y: 864 },
+      // Trottoir W route V ouest (x = 7*48 = 336)
+      { x: 336, y: 1100 }, { x: 528, y: 1300 },
+      // Trottoir route V centrale (col 23, x = 1104), hors rond-point
+      { x: 1104, y: 1300 },
     ];
 
     positions.forEach((pos, i) => {
@@ -263,40 +282,33 @@ export class SandboxScene extends Phaser.Scene {
     });
   }
 
-  // Routes : H (y ∈ [330, 470]), V (x ∈ [530, 670])
-  private readonly ROAD_H = { yMin: WORLD_HEIGHT / 2 - 70, yMax: WORLD_HEIGHT / 2 + 70 };
-  private readonly ROAD_V = { xMin: WORLD_WIDTH / 2 - 70, xMax: WORLD_WIDTH / 2 + 70 };
+  // Zone interdite : îlot central du rond-point
+  // Îlot _54 (3×4) posé en (col=24, row=15) → pixels (1152..1296, 720..912)
+  // Buffer ~30px pour la taille du bus
+  private readonly ILOT = { xMin: 1152 - 30, xMax: 1296 + 30, yMin: 720 - 20, yMax: 912 + 20 };
 
-  private snapToRoad(x: number, y: number): { x: number; y: number } {
-    const onH = y >= this.ROAD_H.yMin && y <= this.ROAD_H.yMax;
-    const onV = x >= this.ROAD_V.xMin && x <= this.ROAD_V.xMax;
-    if (onH || onV) return { x, y };
-
-    // Point le plus proche sur route H (clamp y, garder x)
-    const nearH = {
-      x,
-      y: Math.abs(y - WORLD_HEIGHT / 2) < Math.abs(y - this.ROAD_H.yMin)
-        ? WORLD_HEIGHT / 2
-        : y < WORLD_HEIGHT / 2 ? this.ROAD_H.yMin : this.ROAD_H.yMax,
-    };
-    // Point le plus proche sur route V (clamp x, garder y)
-    const nearV = {
-      x: Math.abs(x - WORLD_WIDTH / 2) < Math.abs(x - this.ROAD_V.xMin)
-        ? WORLD_WIDTH / 2
-        : x < WORLD_WIDTH / 2 ? this.ROAD_V.xMin : this.ROAD_V.xMax,
-      y,
-    };
-    const distH = Math.hypot(x - nearH.x, y - nearH.y);
-    const distV = Math.hypot(x - nearV.x, y - nearV.y);
-    return distH <= distV ? nearH : nearV;
+  private isInIlot(x: number, y: number): boolean {
+    return x >= this.ILOT.xMin && x <= this.ILOT.xMax
+        && y >= this.ILOT.yMin && y <= this.ILOT.yMax;
   }
 
   private setTargetPoint(rawX: number, rawY: number): void {
-    const snapped = this.snapToRoad(
-      Phaser.Math.Clamp(rawX, 50, WORLD_WIDTH - 50),
-      Phaser.Math.Clamp(rawY, 50, WORLD_HEIGHT - 50)
-    );
-    this.targetPoint = new Phaser.Math.Vector2(snapped.x, snapped.y);
+    let x = Phaser.Math.Clamp(rawX, 50, WORLD_WIDTH - 50);
+    let y = Phaser.Math.Clamp(rawY, 50, WORLD_HEIGHT - 50);
+    // Si tap dans l'îlot, snap au bord le plus proche
+    if (this.isInIlot(x, y)) {
+      const cx = (this.ILOT.xMin + this.ILOT.xMax) / 2;
+      const cy = (this.ILOT.yMin + this.ILOT.yMax) / 2;
+      const dx = x - cx;
+      const dy = y - cy;
+      // Pousser le tap au-delà du bord le plus proche
+      if (Math.abs(dx) > Math.abs(dy)) {
+        x = dx > 0 ? this.ILOT.xMax + 40 : this.ILOT.xMin - 40;
+      } else {
+        y = dy > 0 ? this.ILOT.yMax + 40 : this.ILOT.yMin - 40;
+      }
+    }
+    this.targetPoint = new Phaser.Math.Vector2(x, y);
     this.targetMarker.setPosition(this.targetPoint.x, this.targetPoint.y).setVisible(true).setScale(0);
     this.tweens.add({ targets: this.targetMarker, scale: 1, duration: 200 });
   }
@@ -377,10 +389,21 @@ export class SandboxScene extends Phaser.Scene {
     // Mettre à jour le son du moteur
     this.soundManager.updateEngine(this.busVelocity.length());
 
+    const prevX = this.bus.x;
+    const prevY = this.bus.y;
     this.bus.x += this.busVelocity.x * dt;
     this.bus.y += this.busVelocity.y * dt;
     this.bus.x = Phaser.Math.Clamp(this.bus.x, 50, WORLD_WIDTH - 50);
     this.bus.y = Phaser.Math.Clamp(this.bus.y, 50, WORLD_HEIGHT - 50);
+
+    // Collision : îlot central du rond-point infranchissable
+    if (this.isInIlot(this.bus.x, this.bus.y)) {
+      this.bus.x = prevX;
+      this.bus.y = prevY;
+      this.busVelocity.set(0, 0);
+      this.targetPoint = null;
+      this.targetMarker.setVisible(false);
+    }
   }
 
   private updateBusFrame(): void {

@@ -54,6 +54,12 @@ export class PreloadScene extends Phaser.Scene {
       // Pointillés blancs centre route (asph_14 = H, asph_15 = V)
       ['tile-line-h', `${TILE_BASE}roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_14.png`],
       ['tile-line-v', `${TILE_BASE}roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_15.png`],
+      // Rond-point (4 quarts 7×6 + îlot 3×4)
+      ['tile-rp-nw',   `${TILE_BASE}roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_50.png`],
+      ['tile-rp-ne',   `${TILE_BASE}roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_51.png`],
+      ['tile-rp-se',   `${TILE_BASE}roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_52.png`],
+      ['tile-rp-sw',   `${TILE_BASE}roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_53.png`],
+      ['tile-rp-ilot', `${TILE_BASE}roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_54.png`],
       // Arbres
       ['tile-bush1', `${TILE_BASE}parks/ME_Singles_Garden_48x48_Bush_1.png`],
       ['tile-bush2', `${TILE_BASE}parks/ME_Singles_Garden_48x48_Bush_2.png`],

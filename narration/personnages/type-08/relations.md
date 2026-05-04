@@ -13,5 +13,5 @@
 | Mimi | 2 | Mimi prend soin de Juju — ce qu'elle tolère mal en général, sauf d'elle. |
 | Lulu | 5 | Fascinée par le cerveau de Lulu. Relation étrange mais de respect mutuel. |
 | Polo | 3 | Compétition directe. Juju n'aime pas que Polo cache ce qu'il pense. |
-| Jérem | 4 | Elle ne comprend pas Jérem mais elle le laisse tranquille — elle sait instinctivement qu'il ne veut pas être "réparé". |
+| Madie | 4 | Elle ne comprend pas Madie mais elle la laisse tranquille — elle sait instinctivement qu'elle ne veut pas être "réparée". |
 

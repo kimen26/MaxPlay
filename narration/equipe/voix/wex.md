@@ -29,11 +29,11 @@ Style: 0.18
 Speaker Boost: false
 ```
 
-## Prompt voix (M — Wex est M, jamais traduit)
+## Prompt ElevenLabs (M — Wex est M, jamais traduit)
 
-Voix de petit garçon calme et naturellement présent. Ni trop doux ni trop ferme.
-Phrases légèrement plates, rarement urgentes. Silence avant d'agir — jamais de filler.
-Sensation qu'il a déjà vu ce qui va se passer. Serein sans être détaché. Ancré.
+> Native French. Male, young child around 4 to 5 years old. Studio quality.
+> Persona: quiet observer, slightly outside the system. Emotion: calm, present, grounded.
+> Neutral clean articulation, no rough edges, all consonants present without excess. Prosody between flat plateau and gentle wave, rarely urgent. Adaptive pacing — can speed up or slow down to match the partner. Silence before action, never fillers, no "mm" or sigh. Clear neutral child timbre with quiet inner focus. Sense that he has already seen what is about to happen — serene, never detached.
 
 ---
 

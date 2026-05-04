@@ -25,7 +25,7 @@ Ce n'est pas un pouvoir — c'est un **mode de perception du vivant** plus fin q
 | 3 | **Plantes** | Pourquoi une plante pousse ou non, cycles, dialogue souterrain racines | **Juju** (Type 8 — force vitale brute, territoire) |
 | 4 | **Minéraux** | Roches, cristaux, mémoire du sol, structures géologiques | **Melki** (Type 1 — structure, ce qui tient ou cède) |
 | 5 | **Eau** | Flux, mémoire de l'eau, tout ce qui contient de l'eau (= tout le vivant), soin | **Mimi** (Type 2 — flux vital, soin, mémoire émotionnelle du corps) |
-| 6 | **Fréquence** | Son, Schumann (7.83Hz), vent, musique du monde, radar naturel | **Jérem** (Type 4 — profondeur, vibration artistique) |
+| 6 | **Fréquence** | Son, Schumann (7.83Hz), vent, musique du monde, radar naturel | **Madie** (Type 4 — profondeur, vibration artistique) |
 | 7 | **Cosmos** | Astres, cycles, saisons, ionosphère, rotations, fenêtres Ponaire | **Raph** (Type 7 — expansion, voyages, cycles) |
 | 8 | **Forces** | Magnétisme, gravité, énergie, électricité naturelle, champs, ionosphère | **Polo** (Type 3 — énergie, attraction, puissance) |
 | 9 | **Quantique** | Intrication, non-localité, mémoire collective, ADN comme clé de lecture | **Lulu** (Type 5 — connexions invisibles, ce qui est lié sans contact) |

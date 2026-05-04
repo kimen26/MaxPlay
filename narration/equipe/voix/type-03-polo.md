@@ -22,17 +22,17 @@ Style: 0.40
 Speaker Boost: true
 ```
 
-## Prompt voix (F)
+## Prompt ElevenLabs (F)
 
-Voix de petite fille assurée et dynamique. Diction très nette, chaque mot bien posé.
-Phrases qui se terminent vers le bas avec confiance. Attaque légèrement énergique
-sur les premiers mots. Ton naturellement compétent, sans arrogance.
+> Native French. Female, young child around 4 to 5 years old. Studio quality.
+> Persona: confident little achiever. Emotion: assured, dynamic, focused.
+> Clean precise consonants, sharp sibilants, impeccable diction. Sentences end with a confident downward cadence — like a fact stated. Brisk pacing with energetic attack on the first syllable of important words. Voice carried forward with a slight initial puff of energy. Bright clear child timbre, naturally competent, never arrogant.
 
-## Prompt voix (M)
+## Prompt ElevenLabs (M)
 
-Voix de petit garçon assuré et dynamique. Diction nette, consonnes propres.
-Phrases descendantes, conclusives. Attaque légèrement vive sur les premiers mots.
-Énergie naturelle, pas bruyant — juste présent.
+> Native French. Male, young child around 4 to 5 years old. Studio quality.
+> Persona: confident little achiever. Emotion: assured, dynamic, focused.
+> Clean consonants, crisp diction, every word well-placed. Conclusive downward sentence endings. Brisk pace with vivid attack on first syllables. Voice carried forward with natural energy — present, not loud. Bright clear child timbre, naturally capable.
 
 ---
 

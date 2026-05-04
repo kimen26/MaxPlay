@@ -9,7 +9,7 @@
 | **Melki (1)** | *"Tu es bien comme tu es."* / *"Tu es assez bonne."* |
 | **Mimi (2)** | *"Tu es aimée pour ce que tu es, pas pour ce que tu fais."* |
 | **Polo (3)** | *"Tu as de la valeur pour qui tu es, pas pour ce que tu accomplis."* |
-| **Jérem (4)** | *"Tu es vue. Tu es comprise. Tu comptes."* |
+| **Madie (4)** | *"Tu es vue. Tu es comprise. Tu comptes."* |
 | **Lulu (5)** | *"Tu as tout ce qu'il faut."* / *"Tu peux faire confiance."* |
 | **Pierrot (6)** | *"Tu n'es pas seul. Je suis là."* / *"Tu peux te faire confiance."* |
 | **Raph (7)** | *"Tu peux rester là. Je reste là aussi."* |
@@ -54,7 +54,7 @@
 - Se redresse et sourit quand un adulte entre dans la pièce
 - Cache sous la table le dessin raté pour que personne ne le voie
 
-**Jérem (4) :**
+**Madie (4) :**
 - Passe dix minutes à choisir la couleur exacte de son crayon
 - Regarde par la fenêtre avec une expression que les adultes ne comprennent pas
 - Pleure sincèrement face à une image triste dans un livre
@@ -101,10 +101,10 @@
 - Juju (8) : *"C'est qui ?"* — prêt à agir directement
 - Nono (9) : *"C'est pas grave, on peut réparer..."* — éteint le conflit
 
-**Triade Cœur (Mimi/Polo/Jérem) — réaction émotionnelle :**
+**Triade Cœur (Mimi/Polo/Madie) — réaction émotionnelle :**
 - Mimi (2) : *"Oh non, tu vas bien ?"* — soins en premier
 - Polo (3) : *"C'était pas moi !"* — protège son image
-- Jérem (4) : *"C'est triste, c'était beau cet objet..."* — ressent la perte
+- Madie (4) : *"C'est triste, c'était beau cet objet..."* — ressent la perte
 
 **Triade Tête (Lulu/Pierrot/Raph) — réaction mentale :**
 - Lulu (5) : *"Comment c'est arrivé exactement ?"* — comprendre
@@ -122,7 +122,7 @@
 | **Melki (1)** | Refait, corrige, juge | Rit d'elle-même, laisse tomber |
 | **Mimi (2)** | Donne sans compter | Dit *"j'ai besoin de..."* et laisse les autres lui donner |
 | **Polo (3)** | Performe pour être aimé | Montre sa vulnérabilité et découvre qu'il est aimé quand même |
-| **Jérem (4)** | Plonge dans la mélancolie | Traduit sa douleur en action concrète et belle |
+| **Madie (4)** | Plonge dans la mélancolie | Traduit sa douleur en action concrète et belle |
 | **Lulu (5)** | Accumule, observe | Partage, s'engage, agit avec confiance |
 | **Pierrot (6)** | Anticipe les catastrophes | Avance malgré la peur, fait confiance |
 | **Raph (7)** | Fuit dans la joie | Reste dans le moment difficile — et découvre une joie plus profonde |
@@ -140,7 +140,7 @@
 | Raph + Melki | Vitesse vs rigueur | Raph apprend à ralentir, Melki à lâcher |
 | Juju + Mimi | *"Je gère"* vs *"Laisse-moi t'aider"* | Juju apprend à recevoir |
 | Lulu + Raph | Profondeur vs curiosité papillon | Raph apprend à creuser, Lulu à partager |
-| Jérem + Nono | Intensité vs calme plat | Jérem apprend la paix, Nono apprend la profondeur |
+| Madie + Nono | Intensité vs calme plat | Madie apprend la paix, Nono apprend la profondeur |
 | Pierrot + Juju | Peur vs courage impulsif | Pierrot apprend à agir, Juju à attendre |
 | Polo + Melki | Image vs vérité | Polo apprend l'authenticité |
 
@@ -181,7 +181,7 @@
 | Melki (1) | Légère correction | Tension visible, mâchoire serrée | Larmes de honte ou explosion brève |
 | Mimi (2) | Petite attention | Donne trop, s'efface | Explosion de rancœur / épuisement visible |
 | Polo (3) | Sourire forcé | Justifications défensives | Effondrement silencieux |
-| Jérem (4) | Regard mélancolique | Larmes pour "rien" | Retrait total / spiral émotionnel |
+| Madie (4) | Regard mélancolique | Larmes pour "rien" | Retrait total / spiral émotionnel |
 | Lulu (5) | Silence | Monosyllabes | Disparition complète |
 | Pierrot (6) | Vérification discrète | Questions anxieuses | Paralysie / crise d'inquiétude |
 | Raph (7) | Distraction légère | Humour déplacé | Colère soudaine (désintégration en 1) |

@@ -23,7 +23,7 @@ Par défaut : **origine = "Christ"** (casting V1).
 Quand on écrit pour une autre version, préciser entre parenthèses ou crochets :
 
 ```
-Type4(Christ)        → Jérémie
+Type4(Christ)        → Madeleine
 Type4(Hébreu)        → David
 Type4(Japonais)      → Miyu
 Titi7(Christ)        → Raph
@@ -41,8 +41,8 @@ Dans les textes, on écrit directement **Wex**. Il reste identique dans toutes l
 
 ## Pourquoi cette notation
 
-- **Écrire une fois, publier N fois.** Le moteur de publication cross-country remplace `Type4(Christ)` par "Jérémie", `Type4(Japonais)` par "Miyu", etc.
-- **Désambiguïse les discussions.** "Le type 4" est vague ("le *4*" ? "Jérémie" ? "la fiche n°4" ?) ; `Type4` ou `Titi4` est un identifiant net.
+- **Écrire une fois, publier N fois.** Le moteur de publication cross-country remplace `Type4(Christ)` par "Madeleine", `Type4(Japonais)` par "Miyu", etc.
+- **Désambiguïse les discussions.** "Le type 4" est vague ("le *4*" ? "Madeleine" ? "la fiche n°4" ?) ; `Type4` ou `Titi4` est un identifiant net.
 - **Protège l'univers.** On discute des comportements et des relations (liés au type), pas des prénoms qui ne sont que du cosmétique culturel.
 
 ---
@@ -56,7 +56,7 @@ Dans les textes, on écrit directement **Wex**. Il reste identique dans toutes l
 | Type1 / Titi1 | Melchisédech | **Melki** |
 | Type2 / Titi2 | Marie | **Mimi** |
 | Type3 / Titi3 | Paul | **Polo** |
-| Type4 / Titi4 | Jérémie | **Jérem** |
+| Type4 / Titi4 | Madeleine | **Madie** |
 | Type5 / Titi5 | Luc | **Lulu** |
 | Type6 / Titi6 | Pierre | **Pierrot** |
 | Type7 / Titi7 | Raphaëlle | **Raph** |

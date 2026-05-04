@@ -9,7 +9,7 @@
 
 | Quoi | Statut |
 |------|--------|
-| Personnages | 9 définis (ennéagramme) — ✅ **casting V1 "Christ" validé** (Melki, Marie, Paul, Jérémie, Luc, Pierre, **Raph**, Judith, Noé) + **Wex héros hors-système** (pas d'ennéatype). Notation `TypeN`/`TitiN × origine` pour écrire les textes. Propagation dans les fiches à faire. |
+| Personnages | 9 définis (ennéagramme) — ✅ **casting V1 "Christ" validé** (Melki, Mimi, Polo, Madie, Lulu, Pierrot, Raph, Juju, Nono) + **Wex héros hors-système** (pas d'ennéatype). Notation `TypeN`/`TitiN × origine` pour écrire les textes. Casting V1 = 4F/6M (mise à jour 2026-05-05). |
 | Univers | post-Éveil, Printemps de l'Éveil — distillé dans `univers/` |
 | Direction | **monde sobre, merveilleux discret** (vu à travers enfant né dedans) |
 | Histoires | "Le Pont Cassé" (001) — canon · "Le Rire qui reste" (002) — canon · "La Confidence" (003) — en workshop |
@@ -36,6 +36,15 @@
 | [enneagramme/situations/emotions-universelles.md](enneagramme/situations/emotions-universelles.md) | Pour une réaction émotionnelle précise (9×9) |
 | [enneagramme/ressources/guide-auteur.md](enneagramme/ressources/guide-auteur.md) | Pour vérifier la cohérence d'une scène |
 
+### Arcs narratifs
+| Fichier | Quand le lire |
+|---------|--------------|
+| [arcs/INDEX.md](arcs/INDEX.md) | **Toujours — avant d'écrire une histoire** (pour connaître la qualité d'arc + cadre cyclique) |
+| [arcs/arc-1-objet-decor/fiche.md](arcs/arc-1-objet-decor/fiche.md) | Arc 1 (priorité actuelle) |
+| [arcs/arc-2-parole/fiche.md](arcs/arc-2-parole/fiche.md) | Arc 2 (en pause) |
+| [arcs/arc-3-univers-specifique/fiche.md](arcs/arc-3-univers-specifique/fiche.md) | Arc 3 (plus tard) |
+| [arcs/arc-4-pouvoirs-wex/fiche.md](arcs/arc-4-pouvoirs-wex/fiche.md) | Arc 4 (fil rouge) |
+
 ### Univers
 | Fichier | Contenu |
 |---------|---------|
@@ -60,6 +69,10 @@
 ### Équipe éditoriale
 | Fichier | Rôle |
 |---------|------|
+| [equipe/INDEX.md](equipe/INDEX.md) | **Index complet de l'équipe — lire en premier** (carte des fichiers, arbre de décision agents) |
+| [equipe/PROCESS.md](equipe/PROCESS.md) | **Workflow militaire 9 étapes** — owners, I/O, critères PASS, reprise, SLA |
+| [equipe/patte-narrative-maxplay.md](equipe/patte-narrative-maxplay.md) | **Patte B+D+C** : Kishōtenketsu noyau + tranche de vie voix + cycle d'arc. Outils E/A doux. F écartée. |
+| [equipe/templates/](equipe/templates/) | Gabarits réutilisables : pitch, plan, briefs, sélection, kanban, synthèse |
 | [equipe/ORGANIGRAMME.md](equipe/ORGANIGRAMME.md) | **Qui fait quoi — lire avant d'appeler un agent** |
 | [equipe/cartographie-domaines.md](equipe/cartographie-domaines.md) | **Où va quelle info · qui décide · invariants** |
 | [equipe/profils-lecteurs.md](equipe/profils-lecteurs.md) | Profils lecteurs témoins : enfant 4-6 ans, parent (dyade), éditeur jeunesse (optionnel) |
@@ -86,7 +99,7 @@
 |---------|------|
 | [INBOX.md](INBOX.md) | **Zone unique de dump brut** — toute matière non triée (format libre, sections `## YYYY-MM-DD — sujet`) |
 | [archive/](archive/) | Sessions archivées (rien n'est effacé) |
-| [workshop/](workshop/) | Brouillons en cours (pitch · plan · 4 versions · rewrite · GateKeeper) |
+| ~~workshop/~~ | **Supprimé 2026-04-30** — fusionné dans [`stories/<NNN-slug>/`](stories/) (gabarit unifié). Toute la fabrication d'une histoire vit dans son seul dossier. |
 
 ---
 

@@ -17,7 +17,7 @@ mis_a_jour: 2026-04-28
 |-------|--------|-------------------|----------------------|
 | **PMO** `narration-pmo` | Haiku | Tickets ouverts/fermés · décisions tracées · sprint-log à jour · max 3 tickets actifs | Décisions de contenu · arbitrage narratif |
 | **Directeur** `narration` | Opus | Sélection parmi 4 writers · pilotage rewrite · version finale · décisions contenu ambiguës | Indexation · création dossiers · archivage |
-| **Writers × 4** | Sonnet/ext. | Version complète dans `workshop/<titre>/` + note d'intention | Cohérence univers (c'est le GateKeeper qui vérifie) |
+| **Writers × 8** | Sonnet/ext. | Version complète dans `stories/<NNN-slug>/versions-writers/` + note d'intention | Cohérence univers (c'est le GateKeeper qui vérifie) |
 | **GateKeeper** `narration-gatekeeper` | Haiku | PASS/FAIL ennéagramme · univers · prénoms | Réécriture · style · contenu créatif |
 | **Archiviste** `narration-archiviste` | Haiku | Structure dossiers conforme · index à jour · README YAML rempli · lookup.yml cohérent | Décisions de contenu · création narrative |
 | **Science** `narration-science` | Haiku | Faits biologiques/physiques/écologiques validés | Style · structure · cohérence univers |
@@ -89,22 +89,30 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 
 ---
 
-## Domaine 4 — WORKSHOP (en cours)
+## Domaine 4 — FABRICATION D'UNE HISTOIRE (workshop fusionné dans stories/)
 
-**Responsable :** Directeur (crée et pilote) — Archiviste n'intervient pas ici
+**⚠ Migration 2026-04-30 :** le dossier `workshop/` a été supprimé. Toute la fabrication d'une histoire vit désormais dans son dossier `stories/<NNN-slug>/`. Le statut (workshop / canon / abandonné) n'est plus une localisation, c'est une **propriété** lisible dans `kanban.md` + `README.md`.
 
-| Fichier | Contenu | Qui crée | Qui met à jour |
-|---------|---------|----------|----------------|
-| `workshop/<titre>/pitch.md` | Idée brute affûtée par le Conseiller | Conseiller (Phase 0) | — |
-| `workshop/<titre>/plan-histoire.md` | Plan d'Histoire — Ki/Sho/Ten/Ketsu, persos, contraintes | Architecte (Phase 1) | — |
-| `workshop/<titre>/version-*.md` | 4 versions complètes + notes d'intention | Writers (Phase 2) | — |
-| `workshop/<titre>/reactions-*.md` | Réactions lecteurs témoins (texte libre) | Lecteurs (Phase 3) | — |
-| `workshop/<titre>/decision.md` | Choix version base + éléments à récupérer + brief rewrite | Directeur (Phase 4) | — |
-| `workshop/<titre>/rewrite.md` | Rewrite (1 cycle max) | Directeur (Phase 5) | — |
-| `workshop/<titre>/gatekeeper-verdict.md` | PASS/FAIL + motif | GateKeeper (Phase 6) | — |
-| `workshop/<titre>/kanban.md` | Suivi phases + boucles + mémoire | PMO (toutes phases) | — |
+**Responsable :** Directeur (crée et pilote)
 
-**Règle :** le dossier `workshop/` est lecture-seule une fois l'histoire en canon. Archiver, ne pas supprimer.
+| Fichier | Contenu | Qui crée | Étape PROCESS |
+|---------|---------|----------|---------------|
+| `stories/<NNN-slug>/pitch.md` | Pitch MOYEN 4 cases | Conseiller | 1 |
+| `stories/<NNN-slug>/plan-histoire.md` | Plan d'Histoire Kishōtenketsu | Architecte | 2 |
+| `stories/<NNN-slug>/briefs/{brief-univers,brief-personnages,brief-histoire}.md` | Briefs writers stateless | Directeur | 3 |
+| `stories/<NNN-slug>/versions-writers/*.md` | 8 versions complètes (4 base + 2 Claude variance + 2 Kimi variance) + notes d'intention | Writers | 4 |
+| `stories/<NNN-slug>/lecteurs-temoins/{enfant-1,enfant-2,dyade-1,dyade-2}.md` | 4 retours lecteurs texte libre | Lecteurs | 5 |
+| `stories/<NNN-slug>/selection.md` | Choix version base + éléments à récupérer + brief rewrite | Directeur | 6 |
+| `stories/<NNN-slug>/rewrite/v1.md` | Rewrite (1 cycle max) | Directeur | 7 |
+| `stories/<NNN-slug>/gatekeeper-verdict.md` | PASS/CORRECTIONS + motif | GateKeeper | 8 |
+| `stories/<NNN-slug>/kanban.md` | Suivi des 9 étapes (source de vérité reprise) | owner d'étape | toutes |
+| `stories/<NNN-slug>/synthese.md` + `relecture.md` | Compilation + relecture finale Directeur | Directeur | 9 |
+| `stories/<NNN-slug>/texte.md` | **CANON** — figé post-GateKeeper PASS + auteur-validé | Directeur | 9 |
+| `stories/<NNN-slug>/_archive/` | Versions abandonnées + anciennes vN (jamais d'overwrite) | tous | toutes |
+
+**Règle :** rien n'est effacé. Versions abandonnées → `_archive/`. Post-canon V2/V3 : `texte.md` actuel → `_archive/v1-YYYY-MM-DD.md`, nouveau `texte.md`.
+
+**Référence complète :** [`PROCESS.md`](PROCESS.md) (workflow militaire 9 étapes).
 
 ---
 
@@ -118,8 +126,10 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 | `equipe/ORGANIGRAMME.md` | Workflow complet 6 phases | Directeur | Directeur + Auteur | Auteur |
 | `equipe/cartographie-domaines.md` | Ce fichier | Directeur | Directeur + Archiviste | Auteur |
 | `equipe/brief-univers.md` | Brief injection stateless | Archiviste (toutes les 5 histoires) | Archiviste | Directeur |
-| `workshop/_gabarit/plan-histoire.md` | Template Plan d'Histoire | Architecte | Architecte | Directeur |
-| `workshop/_gabarit/decision.md` | Template décision Directeur | Directeur | Directeur | Directeur |
+| `equipe/templates/plan-histoire.template.md` | Template Plan d'Histoire | Architecte | Architecte | Directeur |
+| `equipe/templates/selection.template.md` | Template sélection Directeur (ex-decision) | Directeur | Directeur | Directeur |
+| `equipe/templates/{pitch,brief-*,kanban,synthese}.template.md` | Templates restants (étapes 1, 3, kanban, 9) | owners respectifs | owners | Directeur |
+| `stories/_gabarit/` | Gabarit de dossier histoire (copie de référence) | Archiviste | Archiviste | Archiviste |
 | `equipe/memoire-dir.md` | Mémoire Directeur inter-sessions | Directeur | Directeur | Directeur |
 | `equipe/memoire-conseiller.md` | Mémoire Conseiller (arcs, saisons, feedback) | Conseiller | Conseiller | Directeur |
 | `equipe/memoire-architecte.md` | Mémoire Architecte (plans, structures) | Architecte | Architecte | Directeur |
@@ -195,7 +205,7 @@ Nouvelle info narrative
         │     → Si nouveau thème : nouveau fichier + entrée dans univers/INDEX.md
         │
         ├── Concerne une histoire en cours ?
-        │     → workshop/<titre>/... (brouillon)
+        │     → stories/<NNN-slug>/... (fabrication intégrale, statut dans kanban.md)
         │     → stories/NNN-slug/texte.md (canon uniquement post-Keeper)
         │
         ├── Concerne une décision prise (process, casting, règle) ?

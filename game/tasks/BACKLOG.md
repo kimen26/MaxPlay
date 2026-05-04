@@ -28,17 +28,21 @@
 | EP-MJ10 | MJ-10 · Tableau de bord (sons) | `[x]` |
 | EP-MJ11 | MJ-11 · Quel pays ? (drapeaux) | `[x]` |
 | EP-MJ13 | MJ-13 · L'arrêt de bus (panneau RATP) | `[x]` |
-| EP-MAXADV | Max Adventure · La journée de Max (sandbox Phaser) | `[!]` |
+| EP-MAXADV | Max Adventure · La journée de Max (sandbox Phaser) | `[x]` |
 | EP-005 | Système de progression (flotte + carte) | `[ ]` |
-| EP-006 | Audio (sons + musique + TTS) | `[ ]` |
-| EP-008 | Recherche motricité enfant 3-4 ans | `[ ]` |
-| EP-009 | Recherche audio : TTS, voix, streaming | `[ ]` |
 | EP-021 | Renommage cohérence vocab Max (Centre bus / Garage / Village) | `[x]` |
+| EP-033 | Désactivation TTS annonce titre au lancement (laggue) | `[x]` |
 | EP-022 | MJ-04 → ajouter fin de partie (10 tours + endSession + playEndSound) | `[x]` |
-| EP-023 | Menu hybride : Carte de Villejuif (haut) + grille classique (bas) | `[ ]` |
+| EP-023 | Menu hybride : Carte de Villejuif (haut) + grille classique (bas) | `[x]` |
 | EP-024 | Fix Max Adventure (cassé actuellement) | `[x]` |
 | EP-025 | Max Adventure responsive (portrait mobile) | `[x]` |
 | EP-026 | TTS ElevenLabs pré-générés (MP3 statiques pour noms de jeux) | `[ ]` |
+| EP-027 | MJ-20 · Système de niveaux par langue (cartes intermédiaires, progression mot par mot) | `[x]` |
+| EP-028 | MJ-18 · Tubes de couleurs : contrôle nb de tubes vides + palette élargie | `[x]` |
+| EP-029 | MJ-19 · Trouve le bus : 2-3× plus de bus (pool avec doublons) | `[x]` |
+| EP-030 | MJ-17 · Le garage : 10 icônes en 2 lignes droites | `[x]` |
+| EP-031 | MJ-15 · L'intrus : niveau D roues colorées + intrus couleur+numéro wrong | `[x]` |
+| EP-032 | MJ-09 · Trie les bus : déplacer 2 bus simultanément (multi-touch 2 doigts) | `[x]` |
 
 ---
 
@@ -261,12 +265,16 @@ MaxPlay V0
 
 ## Tâches actives
 
-### EP-021 – Renommage cohérence vocab Max
+### EP-021 – Renommage cohérence vocab Max ✅
 > Vocabulaire Max validé 2026-04-26 : Centre bus = dodo des bus · Garage = réparation · Village des bus = terminus
-- [ ] T-210 : MJ-08 "Au garage !" → "Au centre bus" (titre, desc, références)
-- [ ] T-211 : MJ-17 "Village des bus" → "Le garage" (titre, desc, références)
-- [ ] T-212 : Mettre à jour MEMORY.md, BACKLOG.md, docs/ avec le nouveau vocab
-- [ ] T-213 : Réserver "Village des bus" pour future idée terminus
+- [x] T-210 : MJ-08 "Au garage !" → "Au centre bus" (titre, header, commentaires)
+- [x] T-211 : MJ-17 "Village des bus" → "Le garage" (titre, header, commentaires)
+- [x] T-212 : tracker.js GAME_META à jour
+- [x] T-213 : "Village des bus" libéré pour future idée terminus
+
+### EP-033 – TTS annonce titre désactivé ✅
+> Au lancement de chaque MJ, `tracker.startSession()` lançait `_announceTitle()` (TTS du nom du jeu). Cause des lags au démarrage. Désactivé 2026-05-03 — l'utilisateur n'en a pas besoin, les jeux gardent leurs TTS pédagogiques en cours de partie.
+- [x] T-330 : Commenter l'appel `_announceTitle(id)` dans `tracker.startSession()`
 
 ### EP-022 – MJ-04 fin de partie
 > Aujourd'hui MJ-04 boucle infinie sans `endSession`. Doit terminer normalement.
@@ -274,13 +282,13 @@ MaxPlay V0
 - [ ] T-221 : Écran fin de partie + appel `Tracker.endSession(score, max)`
 - [ ] T-222 : Appel `playEndSound(score, max)`
 
-### EP-023 – Menu hybride Carte de Villejuif
-> Page d'accueil = map Villejuif (haut) + grille classique (bas). Plan : `game/docs/jeux/MENU-MAP-VILLEJUIF.md`
-- [ ] T-230 : Valider emplacements V1 avec utilisateur
-- [ ] T-231 : Layout map (dimensions, échelle, choix illustration vs tileset LimeZu)
-- [ ] T-232 : Coordonnées x,y des emojis hotspots
-- [ ] T-233 : Intégration index.html (map en haut, grille en bas, pas de toggle)
-- [ ] T-234 : Test motricité (hotspots min 60×60 px)
+### EP-023 – Menu hybride Carte de Villejuif ✅
+> Page d'accueil = map Villejuif (haut) + grille classique (bas). Implémenté dans `game/web/index.html` avec `.map-hotspot`, tooltips et liens vers chaque MJ.
+- [x] T-230 : Valider emplacements V1 avec utilisateur
+- [x] T-231 : Layout map (dimensions, échelle, choix illustration vs tileset LimeZu)
+- [x] T-232 : Coordonnées x,y des emojis hotspots
+- [x] T-233 : Intégration index.html (map en haut, grille en bas, pas de toggle)
+- [x] T-234 : Test motricité (hotspots min 60×60 px)
 
 ### EP-024 – Fix Max Adventure (RÉSOLU)
 > Root cause : `vite.config.ts` `base: '/MaxPlay/mj-07/'` mais CI déploie sous `/max-adventure/`. Mismatch → 404 JS Phaser → écran noir prod.
@@ -353,7 +361,7 @@ MaxPlay V0
 - [x] T-131 : Moteur de problèmes (places total, occupées, attente, places libres)
 - [x] T-132 : Génération texte problème + visuel bus intérieur
 - [x] T-133 : Calibrage difficulté (Max est très bon → monter vite à 20+ places)
-- [~] T-134 : Variantes 2 étapes (descendre puis monter) → TODO
+- [x] T-134 : Variantes 2 étapes (descendre puis monter) — type `combo` ajouté au niveau 3 dans mj-05
 
 ### EP-MJ04 – MJ-04 · Lis le mot
 - [x] T-141 : Base de données mots prioritaires (CACA, BUS, PAPA...)
@@ -403,22 +411,6 @@ MaxPlay V0
 ### EP-007 – Config Claude avancée ✅
 - [x] T-040 : Hook PostToolUse Edit/Write → tsc --noEmit automatique
 - [x] T-042 : Hooks actifs dans settings.local.json
-
-### EP-008 – Recherche motricité enfant 3-4 ans
-> À faire en subagent. Résultats → skill child-pedagogy + config.ts
-- [ ] T-050 : Synthèse études sur motricité fine 3-4 ans et jeux vidéo
-- [ ] T-051 : Gestes maîtrisés (tap, drag, pinch, double-tap) à quel âge ?
-- [ ] T-052 : Adapter GAME_CONFIG selon les données
-- [ ] T-053 : Progression manette/contrôles par tranche d'âge
-
-### EP-009 – Recherche audio & TTS
-> À faire en subagent. Résultats → skill audio/ + EP-006
-- [ ] T-060 : Inventaire TTS 2025 (ElevenLabs, OpenAI TTS, Web Speech API)
-- [ ] T-061 : TTS local vs streamé : latence, coût, intégration
-- [ ] T-062 : Musique : Web Audio API vs Howler.js vs Tone.js
-- [ ] T-063 : Audio sprites vs fichiers séparés
-- [ ] T-064 : Voix enfant-friendly FR pour 3-4 ans
-- [ ] T-065 : Créer skill audio/sound-design.md
 
 ---
 
@@ -480,46 +472,6 @@ MaxPlay V0
 - [x] tracker.js créé : suivi progression localStorage, maîtrise Montessori (nouveau/en-cours/maîtrisé)
 - [x] suivi.html créé : dashboard parent, stats globales, sparklines, export/import JSON
 - [x] tracker.js intégré dans MJ-01 à MJ-17 (tous les jeux)
-
-### Idées capturées (pas encore planifiées)
-
-#### EP-015 · Suivi de progression (Carnet de Max)
-- Tracker les sessions : jeux joués, temps passé, scores, taux de réussite
-- Stockage : fichier JSON commité dans le repo git (voir D-020)
-- Interface parent `/suivi.html` : stats par jeu, forces/faiblesses, progression dans le temps
-- Accessible via bouton discret dans index.html (non visible pour Max)
-- Ce que Max voit : Le Garage (collection de bus débloqués selon maîtrise des jeux)
-
-#### EP-016 · Le Garage comme hub de progression
-- Garage = map centrale visible de Max (pas de score brut)
-- Chaque jeu maîtrisé → bus débloqué, visible dans le Garage
-- État visuel : carte grisée (pas joué) → normale (en cours) → étoile dorée (maîtrisé)
-- 3 états de maîtrise (Montessori) : ○ nouveau · ◑ en cours · ● maîtrisé
-- Depann2000 = dernier unlock (boss final, jeu exclusif)
-
-#### IDÉE · Garage comme mini-jeu
-- Jeu de garage interactif : réparation, nettoyage, changement de pièces, essence
-- Bus arrive sale/cassé → Max le répare → bus repart en condition
-- Mécanique : tap sur les zones (roue crevée, vitre cassée, jauge essence vide)
-- Progression : chaque bus débloqué peut venir au garage pour entretien
-- Lien avec suivi : bus qui "vieillissent" selon le temps ou les erreurs en jeu → besoin d'entretien
-
-#### IDÉE · Refonte du menu — 2 modes possibles
-- **Mode actuel** : boutons liste (aujourd'hui) → garder comme fallback / option
-- **Mode Map** : décor paysage animé (rue, arrêt de bus, immeubles Villejuif)
-  - Des gens qui attendent sur le trottoir → tap sur un personnage → lance le jeu associé
-  - Des bus qui arrivent → trouver le bon bus sur un panneau → mini-jeu de sélection
-  - Le panneau RATP devient la navigation elle-même (cohérence avec MJ-13)
-  - Chaque zone de la carte = famille de jeux (dépôt, arrêt, école, garage...)
-- Toggle entre les deux modes (bouton discret) ou décision unique plus tard
-- Familles naturelles : Couleurs/lignes (01-02), Nombres (03-04), Trajets (05), Garage (06-08-09), Sons (10-12), Monde (11), Arrêt (13), Logique (14)
-
-#### D-020 (décision à prendre) · Stockage progression
-- Option A : `localStorage` — offline, zéro serveur, perdu si navigateur effacé, non synchronisable
-- Option B : Fichier JSON dans git (`data/progress.json`) — commité manuellement, visible dans le repo, lisible
-- Option C : GitHub Gist API — 1 fichier JSON par appareil, synchronisable, nécessite token
-- Option D : Service backend léger (Supabase free tier) — multi-appareils, temps réel, complexité ++
-- **Recommandation** : Option A (localStorage) + export manuel JSON → git pour archivage ponctuel
 
 ---
 

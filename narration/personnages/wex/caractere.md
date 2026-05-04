@@ -74,7 +74,7 @@ Sa conscience "somnole" parfois — elle glisse vers un autre espace de percepti
 | Polo | 3 | Polo ne sait pas quoi faire de quelqu'un qui ne cherche pas à gagner. |
 | Pierrot | 6 | Wex rassure Pierrot sans effort. Sa présence = sécurité naturelle. |
 | Lulu | 5 | Respect silencieux entre deux observateurs. Lulu comprend que Wex voit autrement. |
-| Jérem | 4 | Jérem sent que Wex le voit — vraiment. Lien profond et rare. |
+| Madie | 4 | Madie sent que Wex la voit — vraiment. Lien profond et rare. |
 
 ---
 

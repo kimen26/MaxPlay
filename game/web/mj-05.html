@@ -241,8 +241,25 @@
     }
     
     function generateProblem(lvl) {
-      const types = ['places', 'monter', 'descendre'];
+      // Niveau 3 : ajoute la variante 2 étapes (descendre puis monter)
+      const types = lvl >= 3
+        ? ['places', 'monter', 'descendre', 'combo', 'combo']
+        : ['places', 'monter', 'descendre'];
       const type = types[Math.floor(Math.random() * types.length)];
+
+      if (type === 'combo') {
+        // 2 étapes : N passagers, X descendent, Y montent → combien dans le bus ?
+        const start = 8 + Math.floor(Math.random() * 8);   // 8-15
+        const leaving = 2 + Math.floor(Math.random() * (start - 3));
+        const boarding = 2 + Math.floor(Math.random() * 6);
+        const finalCount = start - leaving + boarding;
+
+        return {
+          type: 'combo',
+          text: `Il y a <strong>${start}</strong> passagers dans le bus.<br><strong>${leaving}</strong> descendent.<br>Puis <strong>${boarding}</strong> montent.<br>Combien sont dans le bus ?`,
+          total: start, occupied: 0, answer: finalCount, waiting: boarding
+        };
+      }
       
       if (type === 'places') {
         // Places totales, occupées → combien de libres ?
@@ -387,7 +404,7 @@
         showFB(true);
         
         // Animation des passagers qui montent
-        if (currentProblem && currentProblem.type === 'monter') {
+        if (currentProblem && (currentProblem.type === 'monter' || currentProblem.type === 'combo')) {
           animateBoarding();
         }
       } else {

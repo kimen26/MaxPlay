@@ -1,6 +1,6 @@
 # Type 04 — L'Individualiste
 
-**Casting France :** Jérémie / **Jérem** (M) · Token : `titi_4_fr`
+**Casting France :** Madeleine / **Madie** (F) · Token : `titi_4_fr`
 **Sensibilité :** Fréquence
 
 ---

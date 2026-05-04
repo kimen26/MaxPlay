@@ -31,6 +31,28 @@ export class HubScene extends Phaser.Scene {
     this.createTitle(W, portrait);
     this.createGameCards(W, H, portrait);
     this.createSandboxButton(W, H, portrait);
+    this.createRondPointTestButton(W, H, portrait);
+  }
+
+  private createRondPointTestButton(W: number, H: number, portrait: boolean): void {
+    const btnY = H - (portrait ? 110 : 130);
+    const btnW = portrait ? 180 : 220;
+    const btnH = portrait ? 36 : 42;
+
+    const gfx = this.add.graphics();
+    gfx.fillStyle(0x1976D2, 1);
+    gfx.fillRoundedRect(W / 2 - btnW / 2, btnY - btnH / 2, btnW, btnH, 18);
+
+    this.add.text(W / 2, btnY, '🔄 Test rond-point Tiled', {
+      fontFamily: 'Nunito',
+      fontSize: portrait ? '13px' : '15px',
+      fontStyle: 'bold',
+      color: '#FFFFFF',
+    }).setOrigin(0.5);
+
+    const hit = this.add.rectangle(W / 2, btnY, btnW, btnH, 0xffffff, 0)
+      .setInteractive({ cursor: 'pointer' });
+    hit.on('pointerdown', () => this.scene.start('RondPointScene'));
   }
 
   private createTitle(W: number, portrait: boolean): void {

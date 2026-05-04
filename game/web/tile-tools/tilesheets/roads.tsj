@@ -1,0 +1,15 @@
+{
+  "columns": 16,
+  "image": "roads.png",
+  "imagewidth": 768,
+  "imageheight": 624,
+  "margin": 0,
+  "name": "roads",
+  "spacing": 0,
+  "tilecount": 198,
+  "tiledversion": "1.10.2",
+  "tileheight": 48,
+  "tilewidth": 48,
+  "type": "tileset",
+  "version": "1.10"
+}

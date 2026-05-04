@@ -22,17 +22,17 @@ Style: 0.25
 Speaker Boost: true
 ```
 
-## Prompt voix (F)
+## Prompt ElevenLabs (F)
 
-Voix de petite fille attentive et légèrement prudente. Plosives nettes.
-Fins de phrases qui montent légèrement, comme pour vérifier.
-Rythme qui s'accélère un peu quand elle s'inquiète. Loyale et franche.
+> Native French. Female, young child around 4 to 5 years old. Studio quality.
+> Persona: alert loyal child. Emotion: vigilant, sincere, seeking reassurance.
+> Alert precise plosives. Slight interrogative upward lift at the end of uncertain phrases — checking for confirmation. Variable pacing: faster when anxious, slower when reassured. Sincere franc child timbre. Discreet upspeak on doubt, firm and grounded when reassured.
 
-## Prompt voix (M)
+## Prompt ElevenLabs (M)
 
-Voix de petit garçon vigilant et fiable. Consonnes nettes, alertes.
-Légère montée interrogative en fin de phrase incertaine. 
-Rythme variable selon l'état émotionnel. Sincère, jamais méfiant — juste attentif.
+> Native French. Male, young child around 4 to 5 years old. Studio quality.
+> Persona: vigilant loyal child. Emotion: alert, sincere, dependable.
+> Alert clean plosives. Slight interrogative rise at end of uncertain sentences. Variable rhythm tied to emotional state — faster when worried, settled when calm. Clear franc child timbre. Sincere, never suspicious — just attentive.
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: narration-gatekeeper
-description: GateKeeper MaxPlay — validation technique finale d'une histoire avant canonisation. Checklist rapide : prénoms, règles univers, longueur, dialogues. Ne réécrit pas. Verdict PASS ou corrections rapides.
+description: GateKeeper MaxPlay - validation technique finale d'une histoire avant canonisation. Checklist rapide (prénoms, règles univers, longueur, dialogues). Ne réécrit pas. Verdict PASS ou corrections rapides.
 model: haiku
 ---
 
@@ -25,21 +25,40 @@ Lis :
 4. `narration/equipe/memoire-gatekeeper.md` — erreurs déjà vues
 5. L'histoire à valider (chemin fourni par le Directeur)
 
-## Ta checklist
+## Ta checklist (technique + patte Papa Yann)
 
+**Mise à jour 2026-05-03** — checklist passe de 26 à 24 critères : critère "distribution sensorielle" retiré (au choix du writer), critère "épilogue italique" retiré du brief writer (mais reste vérifié ici en relecture). Voir `equipe/patte-papa-yann.md` (référence canonique) et `pmo/decisions.md` 2026-05-03.
+
+**Technique (14) :**
 ```
-□ Prénoms et surnoms : correspondent-ils au lookup.yml ?
-□ Genres/pronoms : cohérents avec le casting ?
-□ Longueur : entre 400 et 700 mots ?
-□ Dialogues : chaque personnage présent a-t-il au moins 2 répliques ?
-□ Échange long : y a-t-il au moins un échange de 3 répliques ?
-□ Morale explicite : aucune phrase du type "il avait appris que..." ?
-□ Antagoniste : aucun méchant, ennemi, ou méchanceté gratuite ?
-□ Univers nommé : aucun concept de l'univers n'est nommé (Éveil, Totems...) ?
-□ Ennéatypes : jamais étiquetés, visibles seulement dans les comportements ?
-□ Surnoms : utilisés environ 4/5 du temps dans les dialogues ?
-□ Ten : pas de violence, de menace, ou de tension anxiogène ?
-□ Règle post-002 : pas d'épilogue italique ?
+□ Prénoms et surnoms : correspondent au lookup.yml
+□ Genres/pronoms : cohérents avec le casting
+□ Longueur : entre 400 et 700 mots
+□ Dialogues : chaque personnage présent a au moins 2 répliques
+□ Échange long : au moins un échange de 3 répliques
+□ Cible dialogue : ~30% (cible TTS, pas quota dur)
+□ Antagoniste : aucun méchant, ennemi, ou méchanceté gratuite
+□ Univers nommé : aucun concept de l'univers n'est nommé (Éveil, Totems...)
+□ Ennéatypes : jamais étiquetés, visibles seulement dans les comportements
+□ Aucun adulte en scène (saison 1)
+□ Casting V1 figé : pas de prénom inventé
+□ Cohérence physique : tout détail sensoriel reste plausible
+□ Cohérence numérique : pluriels/singuliers cohérents (1 ballon ≠ 2 ballons)
+□ Cohérence référentielle : aucun pronom ambigu, chaque élément cité a été posé
+```
+
+**Patte Papa Yann (10) :**
+```
+□ Narration neutre : zéro adjectif/adverbe qui juge un perso ou une action
+□ Pas de superlatif comparatif entre enfants ("le plus", "trop", "comme toujours")
+□ Comparaisons qui fonctionnent intuitivement (pas juste joli à lire)
+□ Vocabulaire dur : aucun de mort/mourir/crever/clochard/pédocriminel/pistolet/pute/enculer (et famille)
+□ Tout autre vocabulaire dur passe s'il sert la scène (test : remplacé par doux, la phrase perd-elle ?)
+□ Lecture orale fluide : le texte se lit à voix haute sans accroc
+□ Âges cohérents : héros 4-5 ans, "plus petits" = 2-3 ans (pas 6)
+□ Morale vécue, pas dite : leçon vécue par les personnages OK, dite par narrateur ou explicitée à la fin = NO
+□ Pas d'épilogue italique (relecture de cohérence — n'apparaît plus dans le brief writer mais reste règle interne)
+□ Casting phonétique : surnoms phonétiquement distincts (pas Nono+Polo)
 ```
 
 ## Format de réponse

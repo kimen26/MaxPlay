@@ -307,8 +307,8 @@
   const SNAP_DIST = 90;
 
   let buses = [];
-  let draggedBus = null;
-  let dragOffset = { x:0, y:0 };
+  // Multi-touch drag : pointerId → { bus, offsetX, offsetY }
+  const drags = new Map();
   let rangedCount = 0;
   const totalBuses = ALL_BUSES.length;
   // Suivi : combien dans chaque boîte
@@ -430,8 +430,7 @@
       el.style.top  = y + 'px';
       zone.appendChild(el);
 
-      el.addEventListener('mousedown', onDragStart);
-      el.addEventListener('touchstart', onDragStart, { passive:false });
+      el.addEventListener('pointerdown', onDragStart);
 
       buses.push({ el, num:line.num, family:getFamilyForLine(line)?.id||'', line, x, y, initX:x, initY:y, parked:false });
 
@@ -445,47 +444,44 @@
     });
   }
 
-  // ── Drag & Drop ──
+  // ── Drag & Drop (Pointer Events — multi-touch natif) ──
   function onDragStart(e) {
     const bus = buses.find(b => b.el === e.currentTarget);
     if (!bus || bus.parked) return;
     e.preventDefault();
-    draggedBus = bus;
-    const pt = getPointerXY(e);
+    // Capturer le pointeur sur cet élément (move/up restent attachés même si le doigt sort)
+    e.currentTarget.setPointerCapture(e.pointerId);
     const rect = bus.el.getBoundingClientRect();
-    dragOffset.x = pt.x - rect.left;
-    dragOffset.y = pt.y - rect.top;
+    drags.set(e.pointerId, { bus, offsetX: e.clientX - rect.left, offsetY: e.clientY - rect.top });
     bus.el.classList.add('dragging');
-    document.addEventListener('mousemove', onDragMove);
-    document.addEventListener('mouseup', onDragEnd);
-    document.addEventListener('touchmove', onDragMove, { passive:false });
-    document.addEventListener('touchend', onDragEnd);
   }
 
   function onDragMove(e) {
-    if (!draggedBus) return;
+    const drag = drags.get(e.pointerId);
+    if (!drag) return;
     e.preventDefault();
-    const pt = getPointerXY(e);
+    const { bus, offsetX, offsetY } = drag;
     const zone = document.getElementById('busZone');
     const zRect = zone.getBoundingClientRect();
-    const x = pt.x - zRect.left - dragOffset.x;
-    const y = pt.y - zRect.top  - dragOffset.y;
-    draggedBus.x = x; draggedBus.y = y;
-    draggedBus.el.style.left = x + 'px';
-    draggedBus.el.style.top  = y + 'px';
-    highlightBox(draggedBus);
+    const x = e.clientX - zRect.left - offsetX;
+    const y = e.clientY - zRect.top  - offsetY;
+    bus.x = x; bus.y = y;
+    bus.el.style.left = x + 'px';
+    bus.el.style.top  = y + 'px';
+    highlightBox(bus);
   }
 
-  function onDragEnd() {
-    if (!draggedBus) return;
-    draggedBus.el.classList.remove('dragging');
-    document.querySelectorAll('.family-box').forEach(b => b.classList.remove('hover-ok'));
-    checkDrop(draggedBus);
-    draggedBus = null;
-    document.removeEventListener('mousemove', onDragMove);
-    document.removeEventListener('mouseup', onDragEnd);
-    document.removeEventListener('touchmove', onDragMove);
-    document.removeEventListener('touchend', onDragEnd);
+  function onDragEnd(e) {
+    const drag = drags.get(e.pointerId);
+    if (!drag) return;
+    const { bus } = drag;
+    bus.el.classList.remove('dragging');
+    drags.delete(e.pointerId);
+    // Retirer hover-ok uniquement si plus aucun drag actif (évite clignotement multi-touch)
+    if (drags.size === 0) {
+      document.querySelectorAll('.family-box').forEach(b => b.classList.remove('hover-ok'));
+    }
+    checkDrop(bus);
   }
 
 function highlightBox(bus) {
@@ -605,8 +601,12 @@ function highlightBox(bus) {
     buildBoxes();
     buildBuses();
     updateProgress();
-    // init total
     document.getElementById('busCount').textContent = `Bus rangés : 0 / ${totalBuses}`;
+
+    // Listeners globaux pointer events (couvrent souris + touch + stylet)
+    document.addEventListener('pointermove',   onDragMove);
+    document.addEventListener('pointerup',     onDragEnd);
+    document.addEventListener('pointercancel', onDragEnd);
   }
 
   document.addEventListener('DOMContentLoaded', init);

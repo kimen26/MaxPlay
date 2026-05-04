@@ -22,17 +22,17 @@ Style: 0.50
 Speaker Boost: true
 ```
 
-## Prompt voix (F)
+## Prompt ElevenLabs (F)
 
-Voix de petite fille directe et assurée. Plosives lourdes, ancrées. Voyelles ouvertes.
-Phrases qui se terminent vers le bas, résolues. Rythme délibéré, pas pressé.
-Silences courts qui pèsent. Forte mais pas agressive — juste vraie.
+> Native French. Female, young child around 4 to 5 years old. Studio quality.
+> Persona: grounded challenger. Emotion: direct, assured, unambiguous.
+> Heavy grounded plosives, deep open vowels, no hesitation. Authoritative downward statements — sentence endings are facts, never suggestions. Deliberate unhurried rhythm, each word placed with intent. Short grounded silences that carry weight. No fillers. Strong chesty child timbre. Strong but not aggressive — just true.
 
-## Prompt voix (M)
+## Prompt ElevenLabs (M)
 
-Voix de petit garçon direct et ancré. Plosives lourdes, intentionnelles.
-Déclarations descendantes, comme des vérités établies. Rythme lourd et délibéré.
-Silences qui pèsent. Pas colérique — juste sans ambiguïté.
+> Native French. Male, young child around 4 to 5 years old. Studio quality.
+> Persona: grounded challenger. Emotion: direct, anchored, plain-spoken.
+> Heavy intentional plosives. Declarative downward statements like established truths. Heavy deliberate rhythm. Loaded silences. No fillers. Strong chesty child timbre. Not angry — just unambiguous.
 
 ---
 

@@ -22,17 +22,17 @@ Style: 0.55
 Speaker Boost: false
 ```
 
-## Prompt voix (F)
+## Prompt ElevenLabs (F)
 
-Voix de petite fille rêveuse et un peu mélancolique. Voyelles tenues, légèrement étirées.
-Fins de phrases qui descendent doucement, comme une question sans réponse.
-Pauses naturelles. Soupirs très discrets. Pas triste — juste profonde.
+> Native French. Female, young child around 4 to 5 years old. Studio quality.
+> Persona: dreamy introspective child. Emotion: gentle, melancholic, intimate.
+> Soft rolled R, sustained vowels stretched on emotional words. Slow pacing with charged pauses and loaded silences. Sentence endings descend softly with a faint melodic sadness — like an unanswered question. Discreet sighs and whispered "oh" moments. Slightly breathy modal child timbre with inner depth — not sad, just deep.
 
-## Prompt voix (M)
+## Prompt ElevenLabs (M)
 
-Voix de petit garçon introspectif et doux. Voyelles tenues sur les mots qui comptent.
-Fins de phrases descendantes, avec une légère mélancolie naturelle. 
-Pauses chargées. Respiration légèrement audible. Présence intérieure.
+> Native French. Male, young child around 4 to 5 years old. Studio quality.
+> Persona: dreamy introspective child. Emotion: gentle, melancholic, intimate.
+> Soft rolled R, sustained vowels on words that matter. Slow pacing with charged silences. Sentence endings descend softly, faintly melancholic. Faintly audible breath. Slightly breathy child timbre, present and inward — not sad, just deep.
 
 ---
 

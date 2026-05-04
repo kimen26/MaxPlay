@@ -34,9 +34,9 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   background:linear-gradient(180deg, #1e3a5f 0%, #2a5f7a 45%, #4a7a52 45%, #3a5a3a 100%);
 }
 
-/* Étagère d'outils (rangée du haut) — plein de petits outils variés */
+/* Étagère d'outils — 2 rangées de 5, alignées */
 #shelf {
-  flex-shrink:0; display:flex; flex-wrap:wrap; justify-content:center;
+  flex-shrink:0; display:grid; grid-template-columns:repeat(5,1fr);
   gap:6px; padding:8px 10px;
   background:rgba(0,0,0,0.32);
   border-bottom:2px solid rgba(255,255,255,0.12);

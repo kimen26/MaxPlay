@@ -105,7 +105,7 @@ Canon (si auteur valide)
 |-------|--------|-----|
 | 1 | Directeur écrit les briefs | Directeur (Kimi CLI ou Claude Code) |
 | 2 | Copier-coller des briefs dans Kimi web / DeepSeek web / Grok web | Auteur (toi) |
-| 3 | Récupérer les outputs, les coller dans workshop/ | Auteur (toi) |
+| 3 | Récupérer les outputs, les coller dans `stories/<NNN-slug>/versions-writers/` | Auteur (toi) |
 | 4 | Directeur synthétise | Directeur |
 | 5 | Auteur lit à voix haute à Max = comité de lecture | Auteur + Max |
 | 6 | Keeper = checklist manuelle par Directeur | Directeur |

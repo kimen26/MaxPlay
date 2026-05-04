@@ -48,7 +48,7 @@ Le compagnon **n'est pas nommé**, il n'a pas de classification. On le voit, on 
 Le compagnon est **distinct** de la sensibilité personnelle (minéraux, eau, plantes…). Tout le monde a un compagnon-onde-couleur. Mais **chaque enfant lit les couleurs avec sa propre sensibilité** :
 
 - Mimi (eau) ressent le compagnon comme un courant qui glisse
-- Jérem (fréquence) entend une note qui change
+- Madie (fréquence) entend une note qui change
 - Nono (vibration collective) capte la couleur dominante du groupe
 
 → **À affiner via briefs et histoires** : ces nuances de perception sont matière narrative à creuser, pas à figer maintenant.
@@ -75,7 +75,7 @@ Le compagnon est **distinct** de la sensibilité personnelle (minéraux, eau, pl
 
 ## Questions ouvertes (à creuser via briefs / arcs)
 
-1. **Première apparition canon** — quelle histoire de fin S1 inaugure le compagnon visible ? Idéalement un Type sensible aux flux (Mimi-eau ? Jérem-fréquence ?).
+1. **Première apparition canon** — quelle histoire de fin S1 inaugure le compagnon visible ? Idéalement un Type sensible aux flux (Mimi-eau ? Madie-fréquence ?).
 2. **Le compagnon de Wex** — a-t-il une couleur particulière ? Une signature ? Question à poser quand sa sensibilité sera tranchée (cf. NARR-003).
 3. **Lecture entre enfants** — à quelle histoire un perso « voit » pour la première fois la couleur d'un autre et le nomme ? C'est un palier narratif.
 4. **Variantes culturelles** — la palette des couleurs émotionnelles a-t-elle des nuances par culture (cross-culture S2+) ? À creuser plus tard.

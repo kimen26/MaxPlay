@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>MaxPlay – Bibliothèque LimeZu v2 (validée)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #1a1a2e; font-family: sans-serif; color: #fff; padding: 16px; }
+  h1 { text-align: center; color: #ffe066; font-size: 1.5rem; margin-bottom: 6px; }
+  p.sub { text-align: center; color: #aaa; font-size: 0.85rem; margin-bottom: 20px; max-width: 900px; margin-left: auto; margin-right: auto; }
+  nav { text-align: center; margin: 16px 0 24px; }
+  nav a { display: inline-block; margin: 4px; padding: 6px 12px; background: #0f3460; color: #ffe066; text-decoration: none; border-radius: 6px; font-size: 0.8rem; }
+  nav a:hover { background: #1f4480; }
+  section { max-width: 1700px; margin: 0 auto 32px; background: #16213e; border-radius: 8px; overflow: hidden; }
+  h2 { font-size: 1.15rem; color: #ffe066; padding: 10px 14px; background: #0f3460; }
+  .desc { padding: 6px 14px; font-size: 0.82rem; color: #aac; background: #0f3460; }
+  .body { padding: 12px; }
+
+  .snippet-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px; }
+  .snippet { background: #0a1530; border-radius: 6px; overflow: hidden; }
+  .snippet-title { padding: 6px 10px; font-size: 0.9rem; color: #ffe066; background: #0f3460; font-weight: bold; }
+  .snippet-meta { padding: 4px 10px; font-size: 0.7rem; color: #aac; background: #0f3460; }
+  .snippet img { display: block; width: 100%; height: auto; image-rendering: pixelated; image-rendering: crisp-edges; background: #2a4a2a; }
+
+  .sheet-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+  .sheet-link { background: #0a1530; padding: 10px; border-radius: 6px; text-decoration: none; color: #fff; }
+  .sheet-link:hover { background: #1f4480; }
+  .sheet-link .name { color: #ffe066; font-weight: bold; font-size: 0.85rem; }
+  .sheet-link .count { color: #aac; font-size: 0.7rem; }
+</style>
+</head>
+<body>
+
+<h1>📚 Bibliothèque LimeZu — version validée pixel par pixel</h1>
+<p class="sub">
+  Chaque snippet ci-dessous est un PNG <strong>réellement rendu</strong> par le pipeline Python (PIL).
+  Cliquer ouvre le PNG taille réelle. Les planches-contact en bas listent toutes les tiles dispo par catégorie.
+</p>
+
+<nav>
+  <a href="#snippets">🧩 SNIPPETS VALIDÉS</a>
+  <a href="#sheets">📋 PLANCHES PAR CATÉGORIE</a>
+  <a href="tile-library.html">← anciennes maps</a>
+</nav>
+
+<section id="snippets">
+  <h2>🧩 Snippets validés (rendus PNG)</h2>
+  <div class="desc">
+    Chaque image ci-dessous est le résultat exact de <code>render.py</code> appliqué à un layout Python.
+    Le code source de chaque snippet est dans <code>game/web/tile-tools/test_*.py</code>.
+  </div>
+  <div class="body">
+    <div class="snippet-grid">
+
+      <div class="snippet">
+        <div class="snippet-title">🛣️ Route verticale 2 voies</div>
+        <div class="snippet-meta">5×7 tiles · ligne pointillée centrale = Asphalt_1_Variation_15</div>
+        <img src="tile-tools/test_route_v.png" alt="Route verticale">
+      </div>
+
+      <div class="snippet">
+        <div class="snippet-title">🛣️ Route horizontale 2 voies</div>
+        <div class="snippet-meta">7×5 tiles · ligne pointillée centrale = Asphalt_1_Variation_14</div>
+        <img src="tile-tools/test_route_h.png" alt="Route horizontale">
+      </div>
+
+      <div class="snippet">
+        <div class="snippet-title">🔄 Rond-point complet</div>
+        <div class="snippet-meta">14×12 tiles · 4 quarts Sidewalk_1_50/51/52/53 (chacun 7×6) + îlot grass+bushes</div>
+        <img src="tile-tools/test_rond_point4.png" alt="Rond-point">
+      </div>
+
+      <div class="snippet">
+        <div class="snippet-title">🚌 Voie de bus avec marquage "BUS"</div>
+        <div class="snippet-meta">9×14 tiles · marquages Sidewalk_1_48 + _49 (chacun 3×6 = mot BUS complet)</div>
+        <img src="tile-tools/test_voie_bus2.png" alt="Voie bus">
+      </div>
+
+      <div class="snippet">
+        <div class="snippet-title">🅿️ Parking avec places "P"</div>
+        <div class="snippet-meta">12×8 tiles · 2 marquages Sidewalk_1_45 + _46 (chacun 5×2)</div>
+        <img src="tile-tools/test_parking.png" alt="Parking">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="sheets">
+  <h2>📋 Planches-contact par catégorie</h2>
+  <div class="desc">
+    24 planches générées par <code>make_catalog_sheets.py</code> à partir de l'inventaire.
+    Cliquer ouvre la planche en taille réelle (taille native de chaque tile préservée).
+  </div>
+  <div class="body">
+    <div class="sheet-list">
+      <a class="sheet-link" href="tile-tools/_sheet_roads_marquages.png">
+        <div class="name">🛣️ Roads – Sidewalk_1 (marquages)</div>
+        <div class="count">54 tiles · zebras, BUS, P, ronds-points, panneaux</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_roads_terrains.png">
+        <div class="name">🟫 Roads – Asphalt variations</div>
+        <div class="count">27 tiles · routes, intersections, lignes blanches</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_roads_grass.png">
+        <div class="name">🌿 Roads – Grass</div>
+        <div class="count">200 tiles · pelouses, bordures, transitions</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_roads_fences.png">
+        <div class="name">🚧 Roads – Fences</div>
+        <div class="count">84 tiles · clôtures variées</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_roads_walls.png">
+        <div class="name">🧱 Roads – Walls</div>
+        <div class="count">70 tiles · murs béton/brique/pierre</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_roads_water.png">
+        <div class="name">💧 Roads – Water</div>
+        <div class="count">129 tiles · eau profonde, transitions herbe/eau</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_buildings_villas.png">
+        <div class="name">🏠 Buildings – Villas (Toy_House etc.)</div>
+        <div class="count">194 tiles · maisons individuelles 4×5, dépendances</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_buildings_condo.png">
+        <div class="name">🏢 Buildings – Condos</div>
+        <div class="count">169 tiles · immeubles modulaires haute densité</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_buildings_modular.png">
+        <div class="name">🏪 Buildings – Modular ground floors</div>
+        <div class="count">200 tiles · bakery, ice cream, gym, butchery, music…</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_buildings_modular_middle.png">
+        <div class="name">🏢 Buildings – Middle floors</div>
+        <div class="count">48 tiles · étages intermédiaires</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_buildings_modular_roof.png">
+        <div class="name">🔺 Buildings – Roofs</div>
+        <div class="count">60 tiles · toits + props (cheminée, antenne)</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_parks_plants.png">
+        <div class="name">🌳 Parks – Plants (bushes)</div>
+        <div class="count">32 tiles · arbres et arbustes</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_parks_flowers.png">
+        <div class="name">🌸 Parks – Flowers</div>
+        <div class="count">86 tiles · fleurs en pot, vases, sprouts</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_parks_furniture.png">
+        <div class="name">🪑 Parks – Furniture (bancs)</div>
+        <div class="count">17 tiles · bancs jardin de toutes tailles</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_parks_fountains.png">
+        <div class="name">⛲ Parks – Fountains</div>
+        <div class="count">12 tiles · 4 tailles + 4 styles (simple, classique, statue)</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_parks_statues.png">
+        <div class="name">😇 Parks – Statues</div>
+        <div class="count">21 tiles · anges, monuments (5×7 tiles !)</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_parks_misc.png">
+        <div class="name">🌺 Parks – Misc</div>
+        <div class="count">200 tiles · cabanes, vases, jardin divers</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_props_trash.png">
+        <div class="name">🗑️ Props – Trash</div>
+        <div class="count">95 tiles · poubelles couleurs, sacs, cartons, ouvertes/fermées</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_props_signs.png">
+        <div class="name">🪧 Props – Signs</div>
+        <div class="count">200 tiles · panneaux info, danger, directionnels</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_props_lights.png">
+        <div class="name">💡 Props – Lights / Poles</div>
+        <div class="count">5 tiles · poteaux électriques, lampadaires</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_props_misc.png">
+        <div class="name">🧱 Props – Misc</div>
+        <div class="count">200 tiles · ATM, cônes, hydrants, parcomètres, drones…</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_stations_school.png">
+        <div class="name">🏫 Stations – School</div>
+        <div class="count">125 tiles · drapeau, basket, foot, école, jeux cour</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_stations_metro.png">
+        <div class="name">🚇 Stations – Metro</div>
+        <div class="count">200 tiles · escaliers, tunnels, graffitis, panneaux</div>
+      </a>
+      <a class="sheet-link" href="tile-tools/_sheet_animated.png">
+        <div class="name">🚌 Animated – Vehicles</div>
+        <div class="count">41 fichiers · ATTENTION fichiers énormes (méga-spritesheets)</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

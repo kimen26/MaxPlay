@@ -1,0 +1,482 @@
+window.CARTOGRAPHY = {
+  "version": "1.0",
+  "generated": "2026-05-04",
+  "comment": "Cartographie militaire des tiles LimeZu pour MaxPlay. Chaque tile a un rôle précis. Vérifié visuellement.",
+  "_legend": {
+    "role": "Rôle visuel précis de la tile",
+    "size": "Dimensions natives en tiles 48×48",
+    "use_in": "Snippets qui l'utilisent",
+    "neighbors": "Tiles à mettre à côté pour cohérence visuelle"
+  },
+  "asphalt_1": {
+    "_path_prefix": "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_",
+    "tiles": {
+      "1": {
+        "role": "carrefour-coin-SE-int",
+        "size": "1x1",
+        "note": "Coin asphalte intérieur SE (route fait L)"
+      },
+      "2": {
+        "role": "carrefour-bordure-haute",
+        "size": "1x1",
+        "note": "Trait horizontal blanc en haut"
+      },
+      "3": {
+        "role": "carrefour-coin-SW-int",
+        "size": "1x1"
+      },
+      "4": {
+        "role": "ligne-blanche-solide-V",
+        "size": "1x1",
+        "note": "Ligne blanche solide verticale (centre 1 voie ou bord)"
+      },
+      "5": {
+        "role": "T-junction-W",
+        "size": "1x1"
+      },
+      "6": {
+        "role": "carrefour-bordure-basse",
+        "size": "1x1"
+      },
+      "7": {
+        "role": "carrefour-coin-NE-int",
+        "size": "1x1"
+      },
+      "8": {
+        "role": "ligne-blanche-solide-V-alt",
+        "size": "1x1",
+        "note": "Variante de _4"
+      },
+      "9": {
+        "role": "T-junction-E",
+        "size": "1x1"
+      },
+      "10": {
+        "role": "T-junction-W-alt",
+        "size": "1x1"
+      },
+      "11": {
+        "role": "T-junction-S",
+        "size": "1x1"
+      },
+      "12": {
+        "role": "T-junction-N",
+        "size": "1x1"
+      },
+      "13": {
+        "role": "intersection-cross",
+        "size": "1x1",
+        "note": "Carrefour 4 directions"
+      },
+      "14": {
+        "role": "ligne-pointillee-H",
+        "size": "1x1",
+        "note": "Ligne blanche pointillée horizontale, CENTRE de route horizontale",
+        "use_in": [
+          "route_horizontale_2voies"
+        ]
+      },
+      "15": {
+        "role": "ligne-pointillee-V",
+        "size": "1x1",
+        "note": "Ligne blanche pointillée verticale, CENTRE de route verticale",
+        "use_in": [
+          "route_verticale_2voies",
+          "voie_bus"
+        ]
+      },
+      "16": {
+        "role": "asphalte-decor-1",
+        "size": "1x1",
+        "note": "Plain fill avec micro-pattern"
+      },
+      "17": {
+        "role": "asphalte-decor-2",
+        "size": "1x1"
+      },
+      "18": {
+        "role": "asphalte-decor-3",
+        "size": "1x1"
+      },
+      "19": {
+        "role": "asphalte-decor-4",
+        "size": "1x1"
+      },
+      "20": {
+        "role": "asphalte-plain",
+        "size": "1x1",
+        "note": "PLAIN FILL principal (utiliser pour remplir)",
+        "use_in": [
+          "all_routes"
+        ]
+      },
+      "21": {
+        "role": "asphalte-plain-tache",
+        "size": "1x1",
+        "note": "Plain fill avec subtle tache"
+      },
+      "22": {
+        "role": "asphalte-plain-alt",
+        "size": "1x1",
+        "use_in": [
+          "all_routes"
+        ]
+      },
+      "23": {
+        "role": "asphalte-plain-alt2",
+        "size": "1x1"
+      },
+      "24": {
+        "role": "asphalte-plain-2x2",
+        "size": "2x2"
+      },
+      "25": {
+        "role": "asphalte-plain-2x2-alt",
+        "size": "2x2"
+      },
+      "26": {
+        "role": "asphalte-plain-2x1",
+        "size": "2x1"
+      },
+      "27": {
+        "role": "asphalte-plain-clean",
+        "size": "1x1",
+        "note": "Plain fill très net",
+        "use_in": [
+          "all_routes"
+        ]
+      }
+    }
+  },
+  "sidewalk_1": {
+    "_path_prefix": "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_",
+    "_comment": "Variations 1-44 = bordures et passages. 45-49 = marquages BUS/P. 50-54 = rond-point + panneau. _9 = trottoir plain pur.",
+    "tiles": {
+      "1": {
+        "role": "asphalte-coin-trottoir-SE",
+        "size": "1x1",
+        "note": "Asphalte avec coin trottoir convexe SE (1/4 de tile)"
+      },
+      "2": {
+        "role": "asphalte-bord-S",
+        "size": "1x1",
+        "note": "Asphalte avec bordure S (trottoir au sud)"
+      },
+      "3": {
+        "role": "asphalte-coin-trottoir-SW",
+        "size": "1x1"
+      },
+      "4": {
+        "role": "transition-trottoir-G-asphalte-D",
+        "size": "1x1",
+        "note": "Trottoir À GAUCHE de la tile, asphalte à droite. À utiliser en col 1 d'une route verticale (transition trottoir→route).",
+        "use_in": [
+          "route_verticale_5cols"
+        ]
+      },
+      "5": {
+        "role": "asphalte-coin-trottoir-NE",
+        "size": "1x1"
+      },
+      "6": {
+        "role": "asphalte-bord-N",
+        "size": "1x1",
+        "note": "Asphalte avec bordure N (trottoir au NORD)",
+        "use_in": [
+          "parking_2voies"
+        ]
+      },
+      "7": {
+        "role": "asphalte-coin-trottoir-NW",
+        "size": "1x1"
+      },
+      "8": {
+        "role": "transition-asphalte-G-trottoir-D",
+        "size": "1x1",
+        "note": "Asphalte À GAUCHE de la tile, trottoir à droite. À utiliser en col 3/dernière voie d'une route verticale (transition route→trottoir).",
+        "use_in": [
+          "route_verticale_5cols"
+        ]
+      },
+      "9": {
+        "role": "trottoir-plain-pur",
+        "size": "1x1",
+        "note": "Trottoir 100% net carrelé fin",
+        "use_in": [
+          "all_sidewalks"
+        ]
+      },
+      "10": {
+        "role": "asphalte-plain-alt",
+        "size": "1x1",
+        "note": "Asphalte plain (alternative à _27)"
+      },
+      "11": {
+        "role": "arc-virage-coin-interieur-SE",
+        "size": "1x1",
+        "note": "Asphalte au NW + arc trottoir convexe au SE. Coin INTERIEUR du virage = SE.",
+        "use_in": [
+          "virages_4sens"
+        ]
+      },
+      "12": {
+        "role": "arc-virage-coin-interieur-SW",
+        "size": "1x1",
+        "note": "Asphalte au NE + arc trottoir convexe au SW. Coin INTERIEUR = SW.",
+        "use_in": [
+          "virages_4sens"
+        ]
+      },
+      "13": {
+        "role": "arc-virage-coin-interieur-NW",
+        "size": "1x1",
+        "note": "Trottoir au NW + arc asphalte concave au SE. Coin INTERIEUR = NW.",
+        "use_in": [
+          "virages_4sens"
+        ]
+      },
+      "14": {
+        "role": "arc-virage-coin-interieur-NE",
+        "size": "1x1",
+        "note": "Trottoir au NE + arc asphalte concave au SW. Coin INTERIEUR = NE.",
+        "use_in": [
+          "virages_4sens"
+        ]
+      },
+      "15": {
+        "role": "trottoir-diagonal-NW",
+        "size": "1x1"
+      },
+      "16": {
+        "role": "trottoir-diagonal-NE",
+        "size": "1x1"
+      },
+      "17": {
+        "role": "trottoir-styled-1",
+        "size": "1x1",
+        "note": "PAS plain. Trottoir avec petite deco/objet. Ne pas mettre dans pool aleatoire plain."
+      },
+      "18": {
+        "role": "trottoir-styled-2",
+        "size": "1x1",
+        "note": "PAS plain - voir _17."
+      },
+      "19": {
+        "role": "trottoir-styled-3",
+        "size": "1x1",
+        "note": "PAS plain - voir _17."
+      },
+      "20": {
+        "role": "trottoir-styled-4",
+        "size": "1x1",
+        "note": "PAS plain - voir _17."
+      },
+      "21": {
+        "role": "transition-detail-S",
+        "size": "2x1"
+      },
+      "22": {
+        "role": "transition-detail-N",
+        "size": "2x1"
+      },
+      "23": {
+        "role": "transition-detail-NE",
+        "size": "2x1"
+      },
+      "24": {
+        "role": "transition-detail-NW",
+        "size": "2x1"
+      },
+      "25": {
+        "role": "trottoir-plain-2x2-A",
+        "size": "2x2"
+      },
+      "26": {
+        "role": "trottoir-plain-2x2-B",
+        "size": "2x2"
+      },
+      "27": {
+        "role": "trottoir-plain-clean",
+        "size": "1x1",
+        "note": "Trottoir plain alternatif (utilise partout dans v1)",
+        "use_in": [
+          "all_sidewalks"
+        ]
+      },
+      "28": {
+        "role": "trottoir-plain-2x2-C",
+        "size": "2x2"
+      },
+      "29": {
+        "role": "passage-pieton-V-haut",
+        "size": "2x1",
+        "note": "Extremite HAUTE d'un passage pieton vertical (pour route horizontale). Bord trottoir blanc en haut.",
+        "use_in": [
+          "passage_pieton_route_h"
+        ]
+      },
+      "30": {
+        "role": "passage-pieton-V-mid",
+        "size": "2x1",
+        "note": "Section MILIEU d'un passage pieton vertical. 2 bandes blanches.",
+        "use_in": [
+          "passage_pieton_route_h"
+        ]
+      },
+      "31": {
+        "role": "passage-pieton-V-mid-alt",
+        "size": "2x1",
+        "note": "Variante de _30 (milieu passage pieton vertical)."
+      },
+      "32": {
+        "role": "passage-pieton-V-bas",
+        "size": "2x1",
+        "note": "Extremite BASSE d'un passage pieton vertical. Bord trottoir blanc en bas.",
+        "use_in": [
+          "passage_pieton_route_h"
+        ]
+      },
+      "33": {
+        "role": "passage-pieton-H-gauche",
+        "size": "1x2",
+        "note": "Extremite GAUCHE d'un passage pieton horizontal (pour route verticale). Bord trottoir blanc a gauche.",
+        "use_in": [
+          "passage_pieton_route_v"
+        ]
+      },
+      "34": {
+        "role": "passage-pieton-H-mid",
+        "size": "1x2",
+        "note": "Section MILIEU d'un passage pieton horizontal.",
+        "use_in": [
+          "passage_pieton_route_v"
+        ]
+      },
+      "35": {
+        "role": "passage-pieton-H-mid-alt",
+        "size": "1x2",
+        "note": "Variante de _34."
+      },
+      "36": {
+        "role": "passage-pieton-H-droite",
+        "size": "1x2",
+        "note": "Extremite DROITE d'un passage pieton horizontal. Bord trottoir blanc a droite.",
+        "use_in": [
+          "passage_pieton_route_v"
+        ]
+      },
+      "37": {
+        "role": "objet-rond-4x4",
+        "size": "4x4"
+      },
+      "38": {
+        "role": "objet-2x4",
+        "size": "2x4"
+      },
+      "39": {
+        "role": "objet-2x4-alt",
+        "size": "2x4"
+      },
+      "40": {
+        "role": "objet-2x4-bis",
+        "size": "2x4"
+      },
+      "41": {
+        "role": "trottoir-detail",
+        "size": "1x1"
+      },
+      "42": {
+        "role": "place-parking-individuelle-A",
+        "size": "3x5",
+        "note": "Place de parking 3x5 avec lettre P + cadre blanc. Pose individuelle."
+      },
+      "43": {
+        "role": "place-parking-individuelle-B",
+        "size": "3x5",
+        "note": "Variante de _42."
+      },
+      "44": {
+        "role": "place-parking-individuelle-C",
+        "size": "3x5",
+        "note": "Variante de _42."
+      },
+      "45": {
+        "role": "marquage-P-au-sol-A",
+        "size": "5x2",
+        "note": "Place de parking marquée P (variante A, accolée au trottoir au-dessus)",
+        "use_in": [
+          "parking_2voies"
+        ]
+      },
+      "46": {
+        "role": "marquage-P-au-sol-B",
+        "size": "5x2",
+        "note": "Place de parking marquée P (variante B)",
+        "use_in": [
+          "parking_2voies"
+        ]
+      },
+      "47": {
+        "role": "marquage-BUS-H",
+        "size": "7x3",
+        "note": "Mot 'BUS' horizontal pour route horizontale"
+      },
+      "48": {
+        "role": "marquage-BUS-V-G",
+        "size": "3x6",
+        "note": "Mot 'BUS' vertical, cadre fermé à GAUCHE → voie GAUCHE de la chaussée",
+        "use_in": [
+          "voie_bus_2voies"
+        ]
+      },
+      "49": {
+        "role": "marquage-BUS-V-D",
+        "size": "3x6",
+        "note": "Mot 'BUS' vertical, cadre fermé à DROITE → voie DROITE de la chaussée",
+        "use_in": [
+          "voie_bus_2voies"
+        ]
+      },
+      "50": {
+        "role": "rond-point-quart-NW",
+        "size": "7x6",
+        "note": "Quart NW. Pose en (col=0, row=0).",
+        "use_in": [
+          "rond_point_complet"
+        ]
+      },
+      "51": {
+        "role": "rond-point-quart-NE",
+        "size": "7x6",
+        "note": "Quart NE. Pose en (col=7, row=0).",
+        "use_in": [
+          "rond_point_complet"
+        ]
+      },
+      "52": {
+        "role": "rond-point-quart-SE",
+        "size": "7x6",
+        "note": "ATTENTION nommage : _52 va en SE (pas SW). Pose en (col=7, row=6).",
+        "use_in": [
+          "rond_point_complet"
+        ]
+      },
+      "53": {
+        "role": "rond-point-quart-SW",
+        "size": "7x6",
+        "note": "ATTENTION nommage : _53 va en SW (pas SE). Pose en (col=0, row=6).",
+        "use_in": [
+          "rond_point_complet"
+        ]
+      },
+      "54": {
+        "role": "ilot-beige-panneau-bleu-giratoire",
+        "size": "3x4",
+        "note": "Ilot beige circulaire + poteau gris + panneau bleu rond giratoire. Se pose au CENTRE d'un rond-point.",
+        "use_in": [
+          "rond_point_complet"
+        ]
+      }
+    }
+  }
+};

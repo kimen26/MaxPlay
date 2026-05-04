@@ -48,7 +48,7 @@ enneagramme/
 | 1 | Le Perfectionniste | Être imparfait/mauvais | Être bon, juste | **Melki** |
 | 2 | L'Aidant | Ne pas être aimé | Se sentir aimé | **Mimi** |
 | 3 | Le Performeur | Être sans valeur | Se sentir précieux | **Polo** |
-| 4 | L'Individualiste | Ne pas avoir d'identité | Être soi-même | **Jérem** |
+| 4 | L'Individualiste | Ne pas avoir d'identité | Être soi-même | **Madie** |
 | 5 | L'Observateur | Être incompétent/vide | Être capable | **Lulu** |
 | 6 | Le Loyal | Être sans soutien | Avoir du soutien | **Pierrot** |
 | 7 | L'Enthousiaste | Souffrir/manquer | Être comblé·e | **Raph** (Raphaëlle, F) |

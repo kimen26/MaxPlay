@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>MaxPlay – Bibliothèque de tiles LimeZu</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #1a1a2e; font-family: sans-serif; color: #fff; padding: 16px; }
+  h1 { text-align: center; color: #ffe066; font-size: 1.5rem; margin-bottom: 6px; }
+  p.sub { text-align: center; color: #aaa; font-size: 0.85rem; margin-bottom: 20px; }
+  nav { text-align: center; margin-bottom: 24px; }
+  nav a {
+    display: inline-block; margin: 4px 6px; padding: 5px 12px;
+    background: #0f3460; color: #ffe066; text-decoration: none;
+    border-radius: 6px; font-size: 0.8rem;
+  }
+  nav a:hover { background: #1f4480; }
+
+  section { max-width: 1280px; margin: 0 auto 32px; }
+  h2 {
+    font-size: 1.1rem; color: #ffe066; padding: 8px 12px;
+    background: #0f3460; border-radius: 8px 8px 0 0;
+  }
+  .desc { font-size: 0.8rem; color: #aac; padding: 4px 12px 10px; background: #0f3460; }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 8px;
+    background: #16213e;
+    padding: 12px;
+    border-radius: 0 0 8px 8px;
+  }
+  .tile {
+    background: #3d7a3d;
+    border: 1px solid #0f3460;
+    border-radius: 4px;
+    padding: 4px;
+    text-align: center;
+    overflow: hidden;
+  }
+  .tile img {
+    display: block;
+    margin: 0 auto;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+    background: #2a4a2a;
+  }
+  .tile .name {
+    font-size: 0.65rem;
+    color: #fff;
+    margin-top: 4px;
+    word-break: break-word;
+  }
+  .tile .key {
+    font-size: 0.6rem;
+    color: #ffe066;
+    font-family: monospace;
+  }
+
+  /* Snippets : compositions plus grandes */
+  .snippet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    background: #16213e;
+    padding: 16px;
+    border-radius: 0 0 8px 8px;
+  }
+  .snippet {
+    background: #0a1530;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  .snippet-title {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    color: #ffe066;
+    background: #0f3460;
+    font-weight: bold;
+  }
+  .snippet-desc {
+    padding: 4px 10px;
+    font-size: 0.7rem;
+    color: #aac;
+    background: #0f3460;
+  }
+  .snippet canvas {
+    display: block;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    background: #3d7a3d;
+    width: 100%;
+    height: auto;
+  }
+</style>
+</head>
+<body>
+
+<h1>📚 Bibliothèque de tiles LimeZu Modern Exteriors</h1>
+<p class="sub">Catalogue visuel + snippets composés · 48×48 px · cliquer un tile pour voir le chemin</p>
+
+<nav>
+  <a href="#sols">SOLS</a>
+  <a href="#marquages">🚌 MARQUAGES</a>
+  <a href="#routes">ROUTES</a>
+  <a href="#maisons">MAISONS</a>
+  <a href="#commerces">COMMERCES</a>
+  <a href="#vegetation">VÉGÉTATION</a>
+  <a href="#mobilier">MOBILIER URBAIN</a>
+  <a href="#stations">STATIONS / ÉCOLE</a>
+  <a href="#vehicules">VÉHICULES</a>
+  <a href="#snippets">🧩 SNIPPETS</a>
+</nav>
+
+<div style="text-align:center;color:#ffe066;margin:16px auto;max-width:1280px;padding:12px;background:#0f3460;border-radius:8px;">
+  📂 <strong>CATALOGUE TILES INDIVIDUELS ci-dessous</strong> — 140 tiles classés par catégorie ·
+  🧩 <strong>SNIPPETS COMPOSÉS</strong> tout en bas de page
+</div>
+
+<script>
+const T = '../phaser/public/assets/tiles/';
+
+// ─── Catalogue : { catégorie → [{key, file, label, size?}] }
+// size: dimensions en TILES (cols×rows) si > 1×1
+const CATALOG = {
+
+  sols: {
+    title: '🟩 Sols (variations 27 = plain fill)',
+    desc: 'Variantes _1=bord/coin, _9 ou _27=remplissage central. Toujours utiliser variation haute pour remplir.',
+    tiles: [
+      { key:'asphalt',   file:'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png', label:'Asphalt 20' },
+      { key:'asphalt2',  file:'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_22.png', label:'Asphalt 22' },
+      { key:'asphalt3',  file:'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_27.png', label:'Asphalt 27' },
+      { key:'sidewalk1', file:'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_27.png', label:'Trottoir clair' },
+      { key:'sidewalk2', file:'roads/ME_Singles_City_Terrains_48x48_Sidewalk_2_27.png', label:'Trottoir carrelé' },
+      { key:'sidewalk3', file:'roads/ME_Singles_City_Terrains_48x48_Sidewalk_3_27.png', label:'Trottoir foncé' },
+      { key:'sidewalk4', file:'roads/ME_Singles_City_Terrains_48x48_Sidewalk_4_27.png', label:'Trottoir coin' },
+      { key:'sidewalk5', file:'roads/ME_Singles_City_Terrains_48x48_Sidewalk_5_27.png', label:'Quai bus (sw5)' },
+      { key:'sidewalk6', file:'roads/ME_Singles_City_Terrains_48x48_Sidewalk_6_27.png', label:'Trottoir sec.' },
+      { key:'grass1',    file:'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_1_9.png', label:'Herbe 1' },
+      { key:'grass2',    file:'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_9.png', label:'Herbe 2' },
+      { key:'grass3',    file:'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_3_9.png', label:'Herbe 3' },
+      { key:'grass4',    file:'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_4_9.png', label:'Herbe 4' },
+      { key:'water1',    file:'roads/ME_Singles_Terrains_and_Fences_48x48_Deep_Water_1_9.png', label:'Eau profonde' },
+      { key:'mound1',    file:'roads/ME_Singles_Terrains_and_Fences_48x48_Mound_1_1.png', label:'Monticule terre' },
+    ],
+  },
+
+  marquages: {
+    title: '🚌 Marquages chaussée & rond-point (Sidewalk_1 _45 à _54)',
+    desc: 'Marquages au sol BUS, P, ronds-points (4 quarts), panneau giratoire. À placer sur l\'asphalte ou le trottoir directement (PAS un sol de remplissage).',
+    tiles: [
+      { key:'mark_p_top',     file:'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_45.png', label:'Bord+P (haut)' },
+      { key:'mark_p',         file:'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_46.png', label:'Marquage P parking' },
+      { key:'mark_bus_h',     file:'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_47.png', label:'BUS sur asphalte' },
+      { key:'mark_bus_v_top', file:'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_48.png', label:'BUS vertical (haut)' },
+      { key:'mark_bus_v_bot', file:'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_49.png', label:'BUS vertical (bas)' },
+      { key:'rdpt_tl',        file:'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_50.png', label:'Rond-point ↖ NO' },
+      { key:'rdpt_tr',        file:'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_51.png', label:'Rond-point ↗ NE' },
+      { key:'rdpt_bl',        file:'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_52.png', label:'Rond-point ↙ SO' },
+      { key:'rdpt_br',        file:'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_53.png', label:'Rond-point ↘ SE' },
+      { key:'sign_rdpt',      file:'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_54.png', label:'Panneau giratoire' },
+    ],
+  },
+
+  routes: {
+    title: '🛣️ Routes & marquages (variantes asphalt 1-19)',
+    desc: 'Les variations 1 à 19 contiennent les bords, lignes blanches, marquages, transitions. Utiliser pour tracer routes.',
+    tiles: [
+      { key:'asph_v1',   file:'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_1.png',  label:'Var 1 (bord)' },
+      { key:'asph_v2',   file:'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png',  label:'Var 2' },
+      { key:'asph_v3',   file:'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_3.png',  label:'Var 3' },
+      { key:'asph_v4',   file:'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_4.png',  label:'Var 4' },
+      { key:'asph_v5',   file:'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_5.png',  label:'Var 5' },
+      { key:'asph_v6',   file:'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_6.png',  label:'Var 6' },
+      { key:'asph_v7',   file:'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_7.png',  label:'Var 7' },
+      { key:'asph_v8',   file:'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png',  label:'Var 8' },
+      { key:'asph_v9',   file:'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_9.png',  label:'Var 9' },
+      { key:'asph_v10',  file:'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_10.png', label:'Var 10' },
+      { key:'asph_v11',  file:'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_11.png', label:'Var 11' },
+      { key:'asph_v12',  file:'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_12.png', label:'Var 12' },
+      { key:'asph_v13',  file:'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_13.png', label:'Var 13' },
+      { key:'asph_v14',  file:'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_14.png', label:'Var 14' },
+      { key:'asph_v15',  file:'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_15.png', label:'Var 15' },
+      { key:'asph_v16',  file:'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_16.png', label:'Var 16' },
+      { key:'asph_v17',  file:'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_17.png', label:'Var 17' },
+      { key:'asph_v18',  file:'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_18.png', label:'Var 18' },
+      { key:'asph_v19',  file:'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_19.png', label:'Var 19' },
+      { key:'fence1',    file:'roads/ME_Singles_Terrains_and_Fences_48x48_Fence_1_1.png', label:'Clôture 1' },
+      { key:'fence2',    file:'roads/ME_Singles_Terrains_and_Fences_48x48_Fence_2_1.png', label:'Clôture 2' },
+      { key:'fence3',    file:'roads/ME_Singles_Terrains_and_Fences_48x48_Fence_3_1.png', label:'Clôture 3' },
+      { key:'wall1',     file:'roads/ME_Singles_Terrains_and_Fences_48x48_Wall_1_1.png', label:'Mur béton' },
+      { key:'wall2',     file:'roads/ME_Singles_Terrains_and_Fences_48x48_Wall_2_1.png', label:'Mur brique' },
+      { key:'wall3',     file:'roads/ME_Singles_Terrains_and_Fences_48x48_Wall_3_1.png', label:'Mur pierre' },
+    ],
+  },
+
+  maisons: {
+    title: '🏠 Maisons individuelles (Toy_House 4×5 = 192×240 px)',
+    desc: '8 modèles (couleurs différentes). Ancrer top-left, occupent 4 cols × 5 rows visuellement.',
+    tiles: Array.from({length: 8}, (_, i) => ({
+      key: `toyhouse${i+1}`,
+      file: `buildings/ME_Singles_Villas_48x48_Toy_House_${i+1}.png`,
+      label: `Toy House ${i+1}`,
+      size: '4×5',
+    })),
+  },
+
+  commerces: {
+    title: '🏪 Commerces & immeubles modulaires',
+    desc: 'Façades 1×3 (48×144 px). Combiner en _1 + _2 + _3 + _4 pour bâtiment complet. Ancrer row=0.',
+    tiles: [
+      // Bakery modular
+      { key:'bakery_m1', file:'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Bakery_Modular_1.png', label:'Bakery 1', size:'1×3' },
+      { key:'bakery_m2', file:'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Bakery_Modular_2.png', label:'Bakery 2', size:'1×3' },
+      { key:'bakery_m3', file:'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Bakery_Modular_3.png', label:'Bakery 3', size:'1×3' },
+      { key:'bakery_m4', file:'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Bakery_Modular_4.png', label:'Bakery 4', size:'1×3' },
+      // Ice cream
+      { key:'ice_m1', file:'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Ice_Cream_Shop_Modular_1.png', label:'Glacier 1', size:'1×3' },
+      { key:'ice_m2', file:'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Ice_Cream_Shop_Modular_2.png', label:'Glacier 2', size:'1×3' },
+      { key:'ice_m3', file:'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Ice_Cream_Shop_Modular_3.png', label:'Glacier 3', size:'1×3' },
+      { key:'ice_m4', file:'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Ice_Cream_Shop_Modular_4.png', label:'Glacier 4', size:'1×3' },
+      // Condo modular (immeuble résidentiel)
+      { key:'condo_m1', file:'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Condo_Modular_1.png', label:'Condo 1', size:'1×3' },
+      { key:'condo_m2', file:'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Condo_Modular_2.png', label:'Condo 2', size:'1×3' },
+      { key:'condo_m3', file:'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Condo_Modular_3.png', label:'Condo 3', size:'1×3' },
+      { key:'condo_m4', file:'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Condo_Modular_4.png', label:'Condo 4', size:'1×3' },
+      // Music
+      { key:'music_m1', file:'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Music_Store_Modular_1.png', label:'Musique 1', size:'1×3' },
+      { key:'music_m2', file:'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Music_Store_Modular_2.png', label:'Musique 2', size:'1×3' },
+      // Gym
+      { key:'gym_m1', file:'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Gym_Modular_1.png', label:'Gym 1', size:'1×3' },
+      { key:'gym_m2', file:'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Gym_Modular_2.png', label:'Gym 2', size:'1×3' },
+      // Boucherie
+      { key:'butch_m1', file:'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Butchery_Modular_1.png', label:'Boucherie 1', size:'1×3' },
+      { key:'butch_m2', file:'buildings/ME_Singles_Floor_Modular_Building_48x48_Ground_Floor_Butchery_Modular_2.png', label:'Boucherie 2', size:'1×3' },
+      // ATM standalone
+      { key:'atm_b', file:'buildings/ME_Singles_Floor_Modular_Building_48x48_ATM_1.png', label:'ATM mural' },
+      // Hardware store (entier)
+      { key:'shop1', file:'buildings/ME_Singles_Generic_Building_48x48_Hardware_Store.png', label:'Quincaillerie' },
+    ],
+  },
+
+  vegetation: {
+    title: '🌳 Végétation & jardins',
+    desc: 'Arbres (bush 48×48), fleurs grandes (Big_*=48×96) ou petites (Small_*=48×48). Bancs jardin, fontaine, statue.',
+    tiles: [
+      { key:'bush1', file:'parks/ME_Singles_Garden_48x48_Bush_1.png', label:'Arbre clair' },
+      { key:'bush2', file:'parks/ME_Singles_Garden_48x48_Bush_2.png', label:'Arbre moyen' },
+      { key:'bush3', file:'parks/ME_Singles_Garden_48x48_Bush_3.png', label:'Arbre foncé' },
+      { key:'bush4', file:'parks/ME_Singles_Garden_48x48_Bush_4.png', label:'Arbre var.' },
+      { key:'bush_pot', file:'parks/ME_Singles_Garden_48x48_Bush_Potted_1.png', label:'Arbre en pot' },
+      { key:'flower_r_s', file:'parks/ME_Singles_Garden_48x48_Small_Red_Flower.png', label:'Fleur rouge' },
+      { key:'flower_y_s', file:'parks/ME_Singles_Garden_48x48_Small_Yellow_Flower.png', label:'Fleur jaune' },
+      { key:'flower_p_s', file:'parks/ME_Singles_Garden_48x48_Small_Pink_Flower.png', label:'Fleur rose' },
+      { key:'flower_w_s', file:'parks/ME_Singles_Garden_48x48_Small_White_Flower.png', label:'Fleur blanche' },
+      { key:'flower_r_b', file:'parks/ME_Singles_Garden_48x48_Big_Red_Flower.png', label:'Grande rouge', size:'1×2' },
+      { key:'flower_b_b', file:'parks/ME_Singles_Garden_48x48_Big_Light_Blue_Flower.png', label:'Grande bleue' },
+      { key:'sunflower', file:'parks/ME_Singles_Garden_48x48_Big_Sunflower.png', label:'Tournesol', size:'1×2' },
+      { key:'bench_h', file:'parks/ME_Singles_Garden_48x48_Medium_Bench_Horizontal.png', label:'Banc parc H', size:'2×1' },
+      { key:'bench_v', file:'parks/ME_Singles_Garden_48x48_Medium_Bench_Vertical.png', label:'Banc parc V', size:'1×2' },
+      { key:'big_bench_h', file:'parks/ME_Singles_Garden_48x48_Big_Bench_Horizontal.png', label:'Banc XL H', size:'3×1' },
+      { key:'statue1', file:'parks/ME_Singles_Garden_48x48_Angel_Statue_1.png', label:'Statue ange' },
+      { key:'statue2', file:'parks/ME_Singles_Garden_48x48_Angel_Statue_2.png', label:'Statue ange 2' },
+      { key:'arch', file:'parks/ME_Singles_Garden_48x48_Grass_Arch_1.png', label:'Arche végétale', size:'2×2' },
+      { key:'fountain_p', file:'parks/ME_Singles_Garden_48x48_Fountain_1_1.png', label:'Fontaine parc', size:'2×2' },
+      { key:'gate_p', file:'parks/ME_Singles_Garden_48x48_Gate_1.png', label:'Portail jardin' },
+      { key:'birdhouse', file:'parks/ME_Singles_Garden_48x48_Blue_Big_Bird_House.png', label:'Cabane oiseau' },
+      { key:'storage_b', file:'parks/ME_Singles_Garden_48x48_Brown_Wood_Storage.png', label:'Cabanon bois' },
+    ],
+  },
+
+  mobilier: {
+    title: '🗑️ Mobilier urbain (props)',
+    desc: 'Poubelles (multi-couleurs/styles), bancs, lampadaires, panneaux, bornes, hydrants, parcomètres.',
+    tiles: [
+      { key:'bench_city', file:'props/ME_Singles_City_Props_48x48_Bench_1.png', label:'Banc rue', size:'2×2' },
+      { key:'trash_blk', file:'props/ME_Singles_City_Props_48x48_Black_Closed_Trash_Can.png', label:'Poubelle noire', size:'2×2' },
+      { key:'trash_blu', file:'props/ME_Singles_City_Props_48x48_Blue_Closed_Trash_Can.png', label:'Poubelle bleue', size:'2×2' },
+      { key:'trash_grn', file:'props/ME_Singles_City_Props_48x48_Green_Closed_Trash_Can.png', label:'Poubelle verte', size:'2×2' },
+      { key:'pole_elec', file:'props/ME_Singles_City_Props_48x48_Electric_Pole_1.png', label:'Poteau élec.', size:'1×4' },
+      { key:'parking_m', file:'props/ME_Singles_City_Props_48x48_Parking_Meter_1.png', label:'Parcomètre', size:'1×2' },
+      { key:'atm_p', file:'props/ME_Singles_City_Props_48x48_ATM_1.png', label:'Distrib. billets', size:'2×3' },
+      { key:'billboard1', file:'props/ME_Singles_City_Props_48x48_Billboard_1.png', label:'Panneau pub' },
+      { key:'cone1', file:'props/ME_Singles_City_Props_48x48_Cone_3.png', label:'Cône orange' },
+      { key:'fount_city', file:'props/ME_Singles_City_Props_48x48_Fountain_1.png', label:'Fontaine rue', size:'2×2' },
+      { key:'ev_station', file:'props/ME_Singles_City_Props_48x48_EV_Charging_Station_1.png', label:'Borne EV' },
+      { key:'hydrant1', file:'props/ME_Singles_City_Props_48x48_Hydrant_1.png', label:'Bouche incendie' },
+      { key:'hydrant_sgn', file:'props/ME_Singles_City_Props_48x48_Hydrant_Sign_1.png', label:'Panneau hydrant' },
+      { key:'mailbox1', file:'props/ME_Singles_City_Props_48x48_Mailbox_1.png', label:'Boîte aux lettres' },
+      { key:'info_sign', file:'props/ME_Singles_City_Props_48x48_Info_Sign_1.png', label:'Panneau info' },
+      { key:'danger_sgn', file:'props/ME_Singles_City_Props_48x48_Danger_Sign_1.png', label:'Panneau danger' },
+      { key:'drink_fount', file:'props/ME_Singles_City_Props_48x48_Drinking_Fountain_1.png', label:'Fontaine à boire' },
+      { key:'antenna', file:'props/ME_Singles_City_Props_48x48_Antenna.png', label:'Antenne' },
+      { key:'barrel1', file:'props/ME_Singles_City_Props_48x48_Barrel_1.png', label:'Tonneau' },
+      { key:'cone2', file:'props/ME_Singles_City_Props_48x48_Cone_4.png', label:'Cône 4' },
+      { key:'electric_box', file:'props/ME_Singles_City_Props_48x48_Electric_Box_1.png', label:'Boîtier élec.' },
+      { key:'grate', file:'props/ME_Singles_City_Props_48x48_Grate_1.png', label:'Grille égout' },
+      { key:'flowers_p', file:'props/ME_Singles_City_Props_48x48_Flowers_1.png', label:'Bac à fleurs' },
+      { key:'flower_bush', file:'props/ME_Singles_City_Props_48x48_Flower_Bush_1.png', label:'Buisson fleuri' },
+      { key:'fhydrant', file:'props/ME_Singles_City_Props_48x48_Hydrant_2.png', label:'Hydrant 2' },
+    ],
+  },
+
+  stations: {
+    title: '🚇 Stations métro / École / Sport',
+    desc: 'Métro (escaliers, tunnels, graffitis), école (drapeau, horloge, terrain de basket/foot, jeux).',
+    tiles: [
+      { key:'metro_stairs', file:'stations/ME_Singles_Subway_and_Train_Station_48x48_ Stairs_Base_Structure_2.png', label:'Métro escaliers', size:'3×2' },
+      { key:'flag1', file:'stations/ME_Singles_School_48x48_Flag_1.png', label:'Drapeau', size:'1×2' },
+      { key:'clock_tower', file:'stations/ME_Singles_School_48x48_Clock_Tower_1.png', label:'Tour horloge', size:'2×4' },
+      { key:'school1', file:'stations/ME_Singles_School_48x48_School_1.png', label:'École' },
+      { key:'school_ramp', file:'stations/ME_Singles_School_48x48_School_Entrance_Ramp_1.png', label:'Rampe école' },
+      { key:'school_railing', file:'stations/ME_Singles_School_48x48_School_Railing_1.png', label:'Grille école' },
+      { key:'bball_court', file:'stations/ME_Singles_School_48x48_Basketball_Court_1.png', label:'Terrain basket' },
+      { key:'bball_net', file:'stations/ME_Singles_School_48x48_Basketball_Net_1.png', label:'Panier basket' },
+      { key:'soccer_court', file:'stations/ME_Singles_School_48x48_Soccer_Court_1.png', label:'Terrain foot' },
+      { key:'soccer_net', file:'stations/ME_Singles_School_48x48_Soccer_Net_1.png', label:'But foot' },
+      { key:'stadium_lt', file:'stations/ME_Singles_School_48x48_Stadium_Light_1.png', label:'Projecteur' },
+      { key:'stands1', file:'stations/ME_Singles_School_48x48_Stands_1.png', label:'Tribunes' },
+      { key:'school_yard', file:'stations/ME_Singles_School_48x48_School_Yard_Toy_1.png', label:'Jeu cour école' },
+      { key:'bench_school', file:'stations/ME_Singles_School_48x48_Bench_1.png', label:'Banc école' },
+      { key:'graffiti1', file:'stations/ME_Singles_Subway_and_Train_Station_48x48_Angry_Face_Graffiti.png', label:'Graffiti visage' },
+      { key:'graffiti_arrow', file:'stations/ME_Singles_Subway_and_Train_Station_48x48_Arrow_Down_Green_Sign.png', label:'Flèche bas' },
+      { key:'graffiti_arrow_up', file:'stations/ME_Singles_Subway_and_Train_Station_48x48_Arrow_Up_Green_Sign.png', label:'Flèche haut' },
+      { key:'graffiti_arrow_r', file:'stations/ME_Singles_Subway_and_Train_Station_48x48_Arrow_Right_Green_Sign.png', label:'Flèche droite' },
+      { key:'big_pillar', file:'stations/ME_Singles_Subway_and_Train_Station_48x48_Big_Pillar.png', label:'Pilier métro' },
+    ],
+  },
+
+  vehicules: {
+    title: '🚌 Véhicules animés (6-9 frames)',
+    desc: 'Bus (6 frames), voitures modernes (9 frames), voitures classiques (6 couleurs). Frame 1 = pose statique.',
+    tiles: [
+      { key:'bus_1', file:'animated/vehicles/Buses_48x48_1.png', label:'Bus frame 1', size:'2×1' },
+      { key:'bus_2', file:'animated/vehicles/Buses_48x48_2.png', label:'Bus frame 2' },
+      { key:'bus_3', file:'animated/vehicles/Buses_48x48_3.png', label:'Bus frame 3' },
+      { key:'bus_4', file:'animated/vehicles/Buses_48x48_4.png', label:'Bus frame 4' },
+      { key:'car2_1', file:'animated/vehicles/Car_2_complete_48x48_1.png', label:'Voiture moderne' },
+      { key:'car3_1', file:'animated/vehicles/Car_3_48x48_1.png', label:'Voiture sport' },
+    ],
+  },
+
+};
+
+// ─── Rendu catalogue ──────────────────────────────────────────
+function renderCatalog() {
+  for (const [id, cat] of Object.entries(CATALOG)) {
+    const section = document.createElement('section');
+    section.id = id;
+    section.innerHTML = `<h2>${cat.title}</h2><div class="desc">${cat.desc}</div><div class="grid"></div>`;
+    document.body.appendChild(section);
+    const grid = section.querySelector('.grid');
+    cat.tiles.forEach(t => {
+      const div = document.createElement('div');
+      div.className = 'tile';
+      div.title = T + t.file;
+      div.onclick = () => navigator.clipboard.writeText(T + t.file).then(() => {
+        div.style.borderColor = '#4ade80';
+        setTimeout(() => div.style.borderColor = '#0f3460', 800);
+      });
+      const sizeBadge = t.size ? ` <span style="color:#4ade80">[${t.size}]</span>` : '';
+      div.innerHTML = `
+        <img src="${T + t.file}" alt="${t.label}" width="64" height="64" loading="lazy" onerror="this.style.background='#a00'">
+        <div class="name">${t.label}${sizeBadge}</div>
+        <div class="key">${t.key}</div>
+      `;
+      grid.appendChild(div);
+    });
+  }
+  renderSnippets();
+}
+
+// ─── SNIPPETS — petites compositions réutilisables ────────────
+const SNIPPETS = [
+  {
+    id: 'route_vert', title: '🛣️ Route verticale 2 voies',
+    desc: 'Route asphaltée bordée de trottoirs (plain fill 20/22/27 uniquement, jamais de variantes 1-19 au centre).',
+    cols: 5, rows: 6,
+    tiles: ['asphalt','asphalt2','asphalt3','sidewalk1','sidewalk2'],
+    draw(ctx, get) {
+      // Sol : 2 voies asphalte plain fill + trottoirs latéraux
+      const layout = [
+        ['sidewalk1','asphalt','asphalt2','asphalt','sidewalk1'],
+        ['sidewalk2','asphalt2','asphalt3','asphalt','sidewalk1'],
+        ['sidewalk1','asphalt3','asphalt','asphalt2','sidewalk2'],
+        ['sidewalk1','asphalt','asphalt2','asphalt3','sidewalk1'],
+        ['sidewalk2','asphalt2','asphalt','asphalt','sidewalk1'],
+        ['sidewalk1','asphalt','asphalt3','asphalt2','sidewalk1'],
+      ];
+      for (let r = 0; r < layout.length; r++)
+        for (let c = 0; c < layout[r].length; c++)
+          ctx.drawImage(get(layout[r][c]), c*48, r*48, 48, 48);
+    },
+  },
+  {
+    id: 'rond_point', title: '🔄 Rond-point (vrais arcs LimeZu)',
+    desc: 'Vrais quarts-de-cercle (Sidewalk_1 _50/_51/_52/_53) avec arcs pointillés + îlot central + panneau giratoire.',
+    cols: 7, rows: 7,
+    tiles: ['asphalt','asphalt2','asphalt3','sidewalk1','sidewalk2','grass1','grass2','bush1','bush2','statue1','flower_r_s','flower_y_s','rdpt_tl','rdpt_tr','rdpt_bl','rdpt_br','sign_rdpt'],
+    draw(ctx, get) {
+      // Sol asphalte partout sauf trottoirs périphériques
+      for (let r = 0; r < 7; r++)
+        for (let c = 0; c < 7; c++) {
+          let key = ['asphalt','asphalt2','asphalt3'][(r+c)%3];
+          // Trottoirs aux 4 coins extérieurs (laisser entrées N/S/E/O en asphalte)
+          if ((r <= 0 || r >= 6) && (c <= 0 || c >= 6)) {
+            key = ['sidewalk1','sidewalk2'][(r+c)%2];
+          }
+          ctx.drawImage(get(key), c*48, r*48, 48, 48);
+        }
+      // Les 4 quarts-de-cercle du rond-point (rows 2-4 cols 2-4)
+      ctx.drawImage(get('rdpt_tl'), 2*48, 2*48, 48, 48);
+      ctx.drawImage(get('rdpt_tr'), 4*48, 2*48, 48, 48);
+      ctx.drawImage(get('rdpt_bl'), 2*48, 4*48, 48, 48);
+      ctx.drawImage(get('rdpt_br'), 4*48, 4*48, 48, 48);
+      // Îlot central : grass + statue (row 3 col 3)
+      ctx.drawImage(get('grass1'), 3*48, 3*48, 48, 48);
+      ctx.drawImage(get('statue1'), 3*48, 3*48, 48, 48);
+      // Verdure autour de l'îlot
+      ctx.drawImage(get('bush1'), 3*48, 2*48, 48, 48);
+      ctx.drawImage(get('bush2'), 3*48, 4*48, 48, 48);
+      // Panneau giratoire sur trottoir
+      ctx.drawImage(get('sign_rdpt'), 0, 0, 48, 48);
+    },
+  },
+
+  {
+    id: 'voie_bus', title: '🚌 Voie de bus marquée',
+    desc: 'Marquages "BUS" au sol (Sidewalk_1 _47 horizontal, _48/_49 verticaux) + arrêt + banc.',
+    cols: 8, rows: 5,
+    tiles: ['asphalt','asphalt2','asphalt3','sidewalk1','sidewalk2','sidewalk5','bench_city','mark_bus_h','mark_bus_v_top','mark_bus_v_bot','flower_r_s'],
+    draw(ctx, get) {
+      // Sol : trottoir haut + quai + route en bas
+      const ground = [
+        ['sidewalk1','sidewalk2','sidewalk1','sidewalk2','sidewalk1','sidewalk2','sidewalk1','sidewalk2'],
+        ['sidewalk5','sidewalk5','sidewalk5','sidewalk5','sidewalk5','sidewalk5','sidewalk5','sidewalk5'],
+        ['asphalt','asphalt2','asphalt3','asphalt','asphalt2','asphalt3','asphalt','asphalt2'],
+        ['asphalt2','asphalt3','asphalt','asphalt2','asphalt3','asphalt','asphalt2','asphalt3'],
+        ['asphalt','asphalt2','asphalt3','asphalt','asphalt2','asphalt3','asphalt','asphalt2'],
+      ];
+      for (let r = 0; r < 5; r++)
+        for (let c = 0; c < 8; c++)
+          ctx.drawImage(get(ground[r][c]), c*48, r*48, 48, 48);
+      // Marquages BUS : voie de bus à row 2-3 (option H sur 1 ligne ou V sur 2 lignes)
+      // Variant horizontal "BUS" répété sur la voie
+      ctx.drawImage(get('mark_bus_h'), 1*48, 2*48, 48, 48);
+      ctx.drawImage(get('mark_bus_h'), 4*48, 2*48, 48, 48);
+      ctx.drawImage(get('mark_bus_h'), 7*48, 2*48, 48, 48);
+      // Variant vertical "BUS" sur 2 tiles (haut + bas)
+      ctx.drawImage(get('mark_bus_v_top'), 2*48, 3*48, 48, 48);
+      ctx.drawImage(get('mark_bus_v_bot'), 2*48, 4*48, 48, 48);
+      ctx.drawImage(get('mark_bus_v_top'), 5*48, 3*48, 48, 48);
+      ctx.drawImage(get('mark_bus_v_bot'), 5*48, 4*48, 48, 48);
+      // Banc d'attente + fleur
+      ctx.drawImage(get('bench_city'), 3*48, 0, 96, 96);
+      ctx.drawImage(get('flower_r_s'), 6*48, 0, 48, 48);
+    },
+  },
+
+  {
+    id: 'parking_marque', title: '🅿️ Parking avec marquages "P"',
+    desc: 'Vrais marquages parking au sol (Sidewalk_1 _46) + parcomètres + voitures.',
+    cols: 7, rows: 5,
+    tiles: ['asphalt','asphalt2','asphalt3','sidewalk1','sidewalk2','mark_p','parking_m','car2_1','flower_y_s'],
+    draw(ctx, get) {
+      for (let r = 0; r < 5; r++)
+        for (let c = 0; c < 7; c++) {
+          let key = ['asphalt','asphalt2','asphalt3'][(r*3+c)%3];
+          if (r === 0) key = ['sidewalk1','sidewalk2'][(c)%2];
+          ctx.drawImage(get(key), c*48, r*48, 48, 48);
+        }
+      // Marquages P sur les places de parking (3 places)
+      ctx.drawImage(get('mark_p'), 1*48, 2*48, 48, 48);
+      ctx.drawImage(get('mark_p'), 3*48, 2*48, 48, 48);
+      ctx.drawImage(get('mark_p'), 5*48, 2*48, 48, 48);
+      // Parcomètres sur trottoir
+      ctx.drawImage(get('parking_m'), 0,    1*48, 48, 96);
+      ctx.drawImage(get('parking_m'), 6*48, 1*48, 48, 96);
+      // 1 voiture déjà garée
+      ctx.drawImage(get('car2_1'), 3*48, 3*48, 48, 48);
+      // Fleur trottoir
+      ctx.drawImage(get('flower_y_s'), 4*48, 0, 48, 48);
+    },
+  },
+  {
+    id: 'arret_bus_complet', title: '🚏 Arrêt de bus complet',
+    desc: 'Quai sidewalk5 + banc + panneau + poubelle (route 2 voies en bas).',
+    cols: 7, rows: 5,
+    tiles: ['asphalt','asphalt2','asphalt3','sidewalk1','sidewalk2','sidewalk5','bench_city','trash_blk','info_sign','grass1','grass2','flower_r_s'],
+    draw(ctx, get) {
+      // Sol : trottoir + quai sidewalk5 sur tout le haut, route en bas
+      const ground = [
+        ['sidewalk1','sidewalk2','sidewalk1','sidewalk2','sidewalk1','sidewalk2','sidewalk1'],
+        ['sidewalk5','sidewalk5','sidewalk5','sidewalk5','sidewalk5','sidewalk5','sidewalk5'],
+        ['sidewalk1','sidewalk2','sidewalk1','sidewalk2','sidewalk1','sidewalk2','sidewalk1'],
+        ['asphalt','asphalt2','asphalt3','asphalt','asphalt2','asphalt3','asphalt'],
+        ['asphalt2','asphalt3','asphalt','asphalt2','asphalt3','asphalt','asphalt2'],
+      ];
+      for (let r = 0; r < 5; r++)
+        for (let c = 0; c < 7; c++)
+          ctx.drawImage(get(ground[r][c]), c*48, r*48, 48, 48);
+      // Banc 2×2 au quai (rows 1-2 cols 2-3)
+      ctx.drawImage(get('bench_city'), 2*48, 1*48, 96, 96);
+      // Poubelle 2×2 (rows 1-2 cols 5-6)
+      ctx.drawImage(get('trash_blk'), 5*48, 1*48, 96, 96);
+      // Panneau info sur trottoir haut
+      ctx.drawImage(get('info_sign'), 0, 0, 48, 48);
+      // Fleurs trottoir
+      ctx.drawImage(get('flower_r_s'), 4*48, 0, 48, 48);
+    },
+  },
+  {
+    id: 'maison_jardin', title: '🏠 Maison rouge + jardin clos',
+    desc: 'Toy_House 1 entourée d\'une clôture, allée centrale.',
+    cols: 6, rows: 7,
+    tiles: ['grass1','grass2','grass3','sidewalk1','toyhouse1','bush1','bush2','flower_r_s','flower_y_s','fence1'],
+    draw(ctx, get) {
+      // Sol grass mixte
+      for (let r = 0; r < 7; r++)
+        for (let c = 0; c < 6; c++) {
+          let key = ['grass1','grass2','grass3'][(r*3+c)%3];
+          if (r === 6) key = 'sidewalk1';
+          if (r === 5 && c === 2) key = 'sidewalk1'; // allée
+          if (r === 5 && c === 3) key = 'sidewalk1';
+          ctx.drawImage(get(key), c*48, r*48, 48, 48);
+        }
+      // Maison ancrée (1, 1) = 4×5 → couvre cols 1-4 rows 1-5
+      ctx.drawImage(get('toyhouse1'), 1*48, 1*48, 192, 240);
+      // Décor : bushes + fleurs aux coins
+      ctx.drawImage(get('bush1'), 0, 0, 48, 48);
+      ctx.drawImage(get('bush2'), 5*48, 0, 48, 48);
+      ctx.drawImage(get('flower_r_s'), 0, 4*48, 48, 48);
+      ctx.drawImage(get('flower_y_s'), 5*48, 4*48, 48, 48);
+    },
+  },
+  {
+    id: 'rue_immeubles', title: '🏢 Rue avec immeubles modulaires',
+    desc: 'Bakery + Condo + Glacier + Music alignés sur trottoir, route 2 voies.',
+    cols: 9, rows: 6,
+    tiles: ['asphalt','asphalt2','asphalt3','sidewalk1','sidewalk2','bakery_m1','bakery_m2','condo_m1','condo_m2','ice_m1','ice_m2','music_m1','music_m2','flower_r_s'],
+    draw(ctx, get) {
+      // Sol (rows 0-2 sidewalk, row 3 trottoir, rows 4-5 route)
+      for (let r = 0; r < 6; r++)
+        for (let c = 0; c < 9; c++) {
+          let key = ['sidewalk1','sidewalk2'][(r+c)%2];
+          if (r >= 4) key = ['asphalt','asphalt2','asphalt3'][(r*3+c)%3];
+          ctx.drawImage(get(key), c*48, r*48, 48, 48);
+        }
+      // Façades 1×3 ancrées row 0
+      ctx.drawImage(get('bakery_m1'), 0,    0, 48, 144);
+      ctx.drawImage(get('bakery_m2'), 1*48, 0, 48, 144);
+      ctx.drawImage(get('condo_m1'),  3*48, 0, 48, 144);
+      ctx.drawImage(get('condo_m2'),  4*48, 0, 48, 144);
+      ctx.drawImage(get('ice_m1'),    6*48, 0, 48, 144);
+      ctx.drawImage(get('ice_m2'),    7*48, 0, 48, 144);
+      // Fleurs trottoir
+      ctx.drawImage(get('flower_r_s'), 2*48, 3*48, 48, 48);
+      ctx.drawImage(get('flower_r_s'), 5*48, 3*48, 48, 48);
+    },
+  },
+  {
+    id: 'parc_complet', title: '🌳 Parc avec fontaine',
+    desc: 'Pelouse, fontaine centrale, statue, banc XL, allées sidewalk2.',
+    cols: 8, rows: 7,
+    tiles: ['grass1','grass2','grass3','sidewalk1','sidewalk2','fountain_p','statue1','big_bench_h','bush1','bush2','bush3','flower_r_s','flower_y_s'],
+    draw(ctx, get) {
+      // Sol grass + bordures sidewalk
+      for (let r = 0; r < 7; r++)
+        for (let c = 0; c < 8; c++) {
+          let key = ['grass1','grass2','grass3'][(r*3+c)%3];
+          if (r === 0 || r === 6 || c === 0 || c === 7) key = 'sidewalk1';
+          ctx.drawImage(get(key), c*48, r*48, 48, 48);
+        }
+      // Fontaine 2×2 au centre (rows 2-3 cols 3-4)
+      ctx.drawImage(get('fountain_p'), 3*48, 2*48, 96, 96);
+      // Statue (1×1)
+      ctx.drawImage(get('statue1'), 1*48, 3*48, 48, 48);
+      // Banc XL 3×1 (rows 5 cols 3-5)
+      ctx.drawImage(get('big_bench_h'), 3*48, 5*48, 144, 48);
+      // Bushes décoratifs
+      ctx.drawImage(get('bush1'), 6*48, 1*48, 48, 48);
+      ctx.drawImage(get('bush2'), 1*48, 1*48, 48, 48);
+      ctx.drawImage(get('bush3'), 6*48, 4*48, 48, 48);
+      // Fleurs
+      ctx.drawImage(get('flower_r_s'), 2*48, 5*48, 48, 48);
+      ctx.drawImage(get('flower_y_s'), 6*48, 5*48, 48, 48);
+    },
+  },
+  {
+    id: 'ecole', title: '🏫 Cour d\'école',
+    desc: 'Drapeau, terrain de basket, banc, grille, projecteur.',
+    cols: 8, rows: 6,
+    tiles: ['sidewalk1','sidewalk2','grass1','grass2','flag1','bball_court','bball_net','bench_school','school_railing','stadium_lt','flower_y_s'],
+    draw(ctx, get) {
+      // Cour : sidewalk en haut, grass en bas
+      for (let r = 0; r < 6; r++)
+        for (let c = 0; c < 8; c++) {
+          let key = ['sidewalk1','sidewalk2'][(r+c)%2];
+          if (r >= 4) key = ['grass1','grass2'][(r+c)%2];
+          ctx.drawImage(get(key), c*48, r*48, 48, 48);
+        }
+      // Drapeau (1×2 — dépasse en hauteur)
+      ctx.drawImage(get('flag1'), 0, 0, 48, 96);
+      // Terrain basket (panneau au-dessus du court)
+      ctx.drawImage(get('bball_court'), 3*48, 2*48, 48, 48);
+      ctx.drawImage(get('bball_net'),   3*48, 1*48, 48, 48);
+      // Banc école
+      ctx.drawImage(get('bench_school'), 6*48, 2*48, 48, 48);
+      // Projecteur
+      ctx.drawImage(get('stadium_lt'), 5*48, 0, 48, 48);
+      // Grilles côté droite
+      for (let r = 0; r < 6; r++) ctx.drawImage(get('school_railing'), 7*48, r*48, 48, 48);
+      // Fleurs au sol (bandes grass)
+      ctx.drawImage(get('flower_y_s'), 1*48, 5*48, 48, 48);
+      ctx.drawImage(get('flower_y_s'), 4*48, 5*48, 48, 48);
+    },
+  },
+  {
+    id: 'parking', title: '🅿️ Petit parking',
+    desc: '4 places de stationnement + parcomètres + sortie sur route.',
+    cols: 7, rows: 5,
+    tiles: ['asphalt','asphalt2','asphalt3','sidewalk1','sidewalk2','parking_m','cone1','car2_1'],
+    draw(ctx, get) {
+      // Tout asphalt sauf bandes trottoir
+      for (let r = 0; r < 5; r++)
+        for (let c = 0; c < 7; c++) {
+          let key = ['asphalt','asphalt2','asphalt3'][(r*3+c)%3];
+          if (r === 0) key = 'sidewalk1';
+          if (c === 0 && r !== 4) key = 'sidewalk2';
+          ctx.drawImage(get(key), c*48, r*48, 48, 48);
+        }
+      // Parcomètres
+      ctx.drawImage(get('parking_m'), 1*48, 1*48, 48, 96);
+      ctx.drawImage(get('parking_m'), 4*48, 1*48, 48, 96);
+      // Voitures
+      ctx.drawImage(get('car2_1'), 2*48, 2*48, 48, 48);
+      ctx.drawImage(get('car2_1'), 5*48, 2*48, 48, 48);
+      // Cônes
+      ctx.drawImage(get('cone1'), 6*48, 4*48, 48, 48);
+    },
+  },
+  {
+    id: 'metro_entree', title: '🚇 Entrée de métro',
+    desc: 'Escaliers métro + lampadaire + poubelle + panneau.',
+    cols: 6, rows: 4,
+    tiles: ['sidewalk1','sidewalk2','metro_stairs','pole_elec','trash_blk','info_sign','bush1'],
+    draw(ctx, get) {
+      // Trottoir
+      for (let r = 0; r < 4; r++)
+        for (let c = 0; c < 6; c++) {
+          ctx.drawImage(get(['sidewalk1','sidewalk2'][(r+c)%2]), c*48, r*48, 48, 48);
+        }
+      // Escaliers métro 3×2
+      ctx.drawImage(get('metro_stairs'), 1*48, 1*48, 144, 96);
+      // Lampadaire 1×4 (dépasse en haut)
+      ctx.drawImage(get('pole_elec'), 0, 0, 48, 192);
+      // Poubelle
+      ctx.drawImage(get('trash_blk'), 5*48, 2*48, 96, 96);
+      // Panneau info
+      ctx.drawImage(get('info_sign'), 5*48, 0, 48, 48);
+    },
+  },
+  {
+    id: 'maisons_couleurs', title: '🌈 4 maisons couleurs (vue catalogue)',
+    desc: 'Comparaison Toy_House 1/2/3/4 avec leur couleur (rouge/bleu/jaune/vert).',
+    cols: 18, rows: 5,
+    tiles: ['grass1','grass2','toyhouse1','toyhouse2','toyhouse3','toyhouse4'],
+    draw(ctx, get) {
+      // Grass partout
+      for (let r = 0; r < 5; r++)
+        for (let c = 0; c < 18; c++)
+          ctx.drawImage(get(['grass1','grass2'][(r+c)%2]), c*48, r*48, 48, 48);
+      // 4 maisons côte à côte (4×5 chacune, espacées 1 col)
+      ctx.drawImage(get('toyhouse1'), 0,    0, 192, 240);
+      ctx.drawImage(get('toyhouse2'), 5*48, 0, 192, 240);
+      ctx.drawImage(get('toyhouse3'), 10*48, 0, 192, 240);
+      ctx.drawImage(get('toyhouse4'), 15*48, 0, 144, 240); // dernière dépasse mais OK pour preview
+    },
+  },
+];
+
+const imgCache = {};
+function loadImage(file) {
+  if (imgCache[file]) return Promise.resolve(imgCache[file]);
+  return new Promise(res => {
+    const img = new Image();
+    img.onload = () => { imgCache[file] = img; res(img); };
+    img.onerror = () => { imgCache[file] = null; res(null); };
+    img.src = T + file;
+  });
+}
+
+async function renderSnippets() {
+  const section = document.createElement('section');
+  section.id = 'snippets';
+  section.innerHTML = `
+    <h2>🧩 Snippets — Compositions prêtes à l'emploi</h2>
+    <div class="desc">Mini-cartes 5×5 à 18×7 illustrant des patterns courants : arrêt de bus complet, rond-point, école, parking, métro… Cliquer le titre pour copier l'ID.</div>
+    <div class="snippet-grid"></div>
+  `;
+  document.body.appendChild(section);
+  const grid = section.querySelector('.snippet-grid');
+
+  // Construire un index file→key pour récupérer tile par key
+  const keyToFile = {};
+  for (const cat of Object.values(CATALOG)) {
+    cat.tiles.forEach(t => keyToFile[t.key] = t.file);
+  }
+
+  for (const sn of SNIPPETS) {
+    const card = document.createElement('div');
+    card.className = 'snippet';
+    card.innerHTML = `
+      <div class="snippet-title">${sn.title}</div>
+      <div class="snippet-desc">${sn.desc}</div>
+      <canvas width="${sn.cols * 48}" height="${sn.rows * 48}"></canvas>
+    `;
+    grid.appendChild(card);
+    const ctx = card.querySelector('canvas').getContext('2d');
+    // Charger toutes les images requises
+    const files = sn.tiles.map(k => keyToFile[k]).filter(Boolean);
+    await Promise.all(files.map(loadImage));
+    const get = (key) => imgCache[keyToFile[key]];
+    try {
+      sn.draw(ctx, get);
+    } catch (e) {
+      ctx.fillStyle = '#f00';
+      ctx.font = '12px sans-serif';
+      ctx.fillText('Erreur: ' + e.message, 4, 20);
+    }
+  }
+}
+
+renderCatalog();
+</script>
+</body>
+</html>

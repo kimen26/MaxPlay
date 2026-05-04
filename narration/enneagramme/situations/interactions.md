@@ -8,7 +8,7 @@ Ces duos se comprennent instinctivement et forment des amitiés naturelles :
 |-----|-------------------|
 | **Raph (7) + Juju (8)** | L'enthousiasme de Raph + la force de Juju = aventures épiques. Juju protège, Raph invente. Ils se complètent sans se contraindre. |
 | **Raph (7) + Nono (9)** | Nono pose Raph sans l'arrêter. Raph anime Nono sans la brusquer. Douceur et énergie en équilibre. |
-| **Jérem (4) + Lulu (5)** | Profondeur émotionnelle (4) + profondeur intellectuelle (5) = compréhension silencieuse et rare. |
+| **Madie (4) + Lulu (5)** | Profondeur émotionnelle (4) + profondeur intellectuelle (5) = compréhension silencieuse et rare. |
 | **Melki (1) + Pierrot (6)** | Tous les deux sérieux, prudents, soucieux de bien faire. Ils se comprennent dans les règles et les principes. |
 | **Mimi (2) + Nono (9)** | Toutes les deux tournées vers les autres. Prennent soin l'une de l'autre dans un équilibre doux. |
 | **Mimi (2) + Pierrot (6)** | Mimi rassure, Pierrot apprécie. Leur soin mutuel crée un espace de sécurité. |
@@ -25,10 +25,10 @@ Ces duos se frottent souvent — pas par malveillance, mais par vision du monde 
 |-----|---------|
 | **Raph (7) + Melki (1)** | *"Allez !"* vs *"Attends, fais-le bien."* Raph fonce, Melki vérifie. Ils s'énervent — mais ils s'admirent. |
 | **Polo (3) + Juju (8)** | Polo adapte son image, Juju dit ce qu'il pense. Juju ne fait pas confiance aux "masques". |
-| **Jérem (4) + Pierrot (6)** | Jérem est imprévisible, Pierrot a besoin de prévisibilité. Ils s'épuisent mutuellement. |
+| **Madie (4) + Pierrot (6)** | Madie est imprévisible, Pierrot a besoin de prévisibilité. Ils s'épuisent mutuellement. |
 | **Raph (7) + Pierrot (6)** | Raph : *"On y va !"* Pierrot : *"T'as vérifié ?"* Raph soupire. Pierrot s'inquiète. |
 | **Polo (3) + Melki (1)** | Melki sent que Polo adapte la vérité. Ça l'irrite profondément. Polo ne comprend pas son problème. |
-| **Mimi (2) + Jérem (4)** | Mimi veut aider Jérem. Jérem ne veut pas être "réparée". Friction douce mais réelle. |
+| **Mimi (2) + Madie (4)** | Mimi veut aider Madie. Madie ne veut pas être "réparée". Friction douce mais réelle. |
 | **Lulu (5) + Juju (8)** | Lulu observe avant d'agir. Juju agit et observe après. Clash de méthodes. |
 
 ---
@@ -44,7 +44,7 @@ Ces duos se frottent souvent — pas par malveillance, mais par vision du monde 
 - Mimi s'assure que tout le monde est inclus
 - Nono dit "ça me va, vous ?"
 - Polo dit "c'est parti, je serai le meilleur"
-- Jérem dit "il y a quelque chose de beau là-dedans"
+- Madie dit "il y a quelque chose de beau là-dedans"
 
 Résultat : une aventure complète, bien préparée, inclusive, profonde.
 
@@ -57,7 +57,7 @@ Résultat : une aventure complète, bien préparée, inclusive, profonde.
 - Mimi s'oublie, fait tout sans rien dire, puis explose
 - Nono disparaît dans l'effacement, rien ne vient d'elle
 - Polo compétitionne sur tout, crée des divisions
-- Jérem s'isole, pense que personne ne la comprend
+- Madie s'isole, pense que personne ne la comprend
 
 Résultat : le groupe se fragmente, chacun dans sa bulle défensive.
 
@@ -75,15 +75,15 @@ La colle du groupe est souvent **Nono** — sa présence apaisante retient les l
 | Juju (8) | Nono (9) | La douceur comme force |
 | Juju (8) | Mimi (2) | Recevoir les soins sans les refuser |
 | Melki (1) | Raph (7) | La légèreté, l'imperfection heureuse |
-| Melki (1) | Jérem (4) | La vérité émotionnelle au-delà des principes |
+| Melki (1) | Madie (4) | La vérité émotionnelle au-delà des principes |
 | Polo (3) | Raph (7) | La joie sans condition |
 | Polo (3) | Melki (1) | L'authenticité plutôt que la performance |
 | Pierrot (6) | Juju (8) | Le courage en action |
 | Pierrot (6) | Raph (7) | La confiance dans le flux |
-| Mimi (2) | Jérem (4) | Se reconnecter à ses propres émotions |
+| Mimi (2) | Madie (4) | Se reconnecter à ses propres émotions |
 | Mimi (2) | Lulu (5) | L'autonomie, ne pas avoir besoin de donner pour exister |
-| Jérem (4) | Nono (9) | La paix dans le moment présent |
-| Jérem (4) | Melki (1) | Traduire les émotions en actions concrètes |
+| Madie (4) | Nono (9) | La paix dans le moment présent |
+| Madie (4) | Melki (1) | Traduire les émotions en actions concrètes |
 | Lulu (5) | Raph (7) | Le partage et la connexion comme source |
 | Nono (9) | Melki (1) | S'affirmer, prendre sa place |
 
@@ -91,9 +91,9 @@ La colle du groupe est souvent **Nono** — sa présence apaisante retient les l
 
 ## Les "triangles" narratifs les plus riches
 
-### Triangle 1 : Raph — Jérem — Lulu
+### Triangle 1 : Raph — Madie — Lulu
 *L'enthousiaste, la profonde, l'observateur.*
-Raph voit les possibilités. Jérem voit la beauté et la douleur. Lulu voit les structures.
+Raph voit les possibilités. Madie voit la beauté et la douleur. Lulu voit les structures.
 Ensemble, ils peuvent créer quelque chose de complet : vision + profondeur + précision.
 
 ### Triangle 2 : Juju — Mimi — Nono
@@ -115,11 +115,11 @@ Pour des histoires en binôme :
 | Paire | Histoire possible |
 |-------|------------------|
 | Raph + Lulu | Exploration intellectuelle : une passion de Raph rencontre la connaissance de Lulu |
-| Juju + Jérem | Juju découvre sa sensibilité. Jérem découvre sa force. |
+| Juju + Madie | Juju découvre sa sensibilité. Madie découvre sa force. |
 | Melki + Nono | Melki apprend à ne pas contrôler. Nono apprend à s'affirmer. |
 | Mimi + Polo | Deux besoins de reconnaissance qui se reconnaissent — et s'entraident |
 | Pierrot + Nono | Deux anxieux doux qui trouvent la paix ensemble |
-| Lulu + Jérem | La tête et le cœur, ensemble, créent quelque chose de rare |
+| Lulu + Madie | La tête et le cœur, ensemble, créent quelque chose de rare |
 
 ---
 
@@ -132,7 +132,7 @@ Chaque personnage a une relation différente à l'autorité :
 | Melki (1) | Respecte les adultes qui ont des principes clairs. Très affectée par leur désapprobation. |
 | Mimi (2) | Cherche à plaire aux adultes, sensible à leur attention. Se sent bien quand elle aide un adulte. |
 | Polo (3) | Veut être admiré par les adultes. Compétitionne pour leur regard. |
-| Jérem (4) | Cherche les adultes qui la comprennent vraiment — rares. Parfois proche d'un grand-parent ou d'un enseignant atypique. |
+| Madie (4) | Cherche les adultes qui la comprennent vraiment — rares. Parfois proche d'un grand-parent ou d'un enseignant atypique. |
 | Lulu (5) | Respecte les adultes compétents. Méfiant envers l'autorité non légitime intellectuellement. |
 | Pierrot (6) | Les adultes sont des figures de sécurité. Très affecté si un adulte de confiance déçoit. |
 | Raph (7) | Les adultes sont des sources d'aventures possibles. Cherche ceux qui disent "oui, essayons". |

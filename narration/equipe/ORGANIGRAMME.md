@@ -26,7 +26,7 @@ AUTEUR (toi)
           └── Valide la version finale avant GateKeeper
 
 PMO [narration-pmo · Haiku · AUTONOME]
-  ├── Crée les dossiers workshop/ et stories/
+  ├── Crée les dossiers stories/<NNN-slug>/ depuis le gabarit unifié
   ├── Tient le backlog, les sprint-logs, les decisions
   ├── Génère les index et met à jour les mémoires partagées
   └── Alerte si blocage / oubli / incohérence documentaire
@@ -122,9 +122,9 @@ Auteur dumpe une idée → INBOX.md (section ## YYYY-MM-DD — sujet)
     ↓
 Conseiller lit + discute avec l'auteur
     ↓
-Binôme valide un pitch → workshop/<titre>/pitch.md
+Binôme valide un pitch → stories/<NNN-slug>/pitch.md
     ↓
-PMO crée le dossier workshop/<titre>/ + log dans sprint-log.md
+PMO crée le dossier stories/<NNN-slug>/ + log dans sprint-log.md
 ```
 
 ### PHASE 1 — PLAN D'HISTOIRE
@@ -132,7 +132,7 @@ PMO crée le dossier workshop/<titre>/ + log dans sprint-log.md
 ```
 Architecte lit le pitch + mémoires + histoires précédentes
     ↓
-Architecte produit → workshop/<titre>/plan-histoire.md
+Architecte produit → stories/<NNN-slug>/plan-histoire.md
     (inclut : personnages, structure Kishōtenketsu, contraintes)
     ↓
 Conseiller valide la cohérence avec la carte narrative
@@ -149,7 +149,7 @@ Directeur injecte à 4 writers simultanément :
   - Angle assigné + consigne spécifique
 
 Chaque writer produit :
-  → workshop/<titre>/version-{a,b,c,d}.md (texte complet 400-700 mots)
+  → stories/<NNN-slug>/version-{a,b,c,d}.md (texte complet 400-700 mots)
   → + note d'intention créative dans le fichier
 
 Note d'intention attendue (exemple) :
@@ -182,7 +182,7 @@ PMO log
 ```
 Directeur lit les 4 versions + les réactions lecteurs
     ↓
-Directeur produit → workshop/<titre>/decision.md
+Directeur produit → stories/<NNN-slug>/decision.md
   - Version choisie comme base (et pourquoi)
   - Éléments à récupérer des autres versions
   - Réactions lecteurs à prendre en compte
@@ -194,7 +194,7 @@ L'auteur valide ou ajuste la décision.
 ### PHASE 5 — RÉÉCRITURE
 
 ```
-Directeur (ou writer gagnant) produit → workshop/<titre>/rewrite.md
+Directeur (ou writer gagnant) produit → stories/<NNN-slug>/rewrite.md
   - Basé sur la version choisie
   - Intègre le brief de réécriture
   - Tient compte des réactions lecteurs
@@ -296,7 +296,7 @@ Archive : session résumée dans archive/YYYY-MM-DD-<titre>.md
 
 | Script | Quand le lancer | Que fait-il |
 |--------|----------------|-------------|
-| `narration/scripts/new-story.js <titre>` | Phase 0 | Crée le dossier workshop/ depuis un gabarit |
+| `narration/scripts/new-story.js NNN <titre>` | Phase 0 | Crée le dossier `stories/NNN-slug/` depuis le gabarit unifié `stories/_gabarit/` |
 | `narration/scripts/validate-frontmatter.js [README.md]` | Phase 7 | Vérifie le YAML du README |
 | `narration/scripts/generate-index.js` | Phase 7 | Régénère `_index/` + `stories/INDEX.md` |
 | `narration/scripts/archive-story.js <workshop-name>` | Phase 7 | Promouvoir workshop → stories/ + archive |
@@ -330,7 +330,7 @@ Archive : session résumée dans archive/YYYY-MM-DD-<titre>.md
 ## Kanban
 
 - **Global** : `pmo/KANBAN.md` — toutes les histoires + sujets univers. Mis à jour par le PMO.
-- **Par histoire** : `workshop/<titre>/kanban.md` — étapes détaillées + boucles. Mis à jour par le responsable de l'étape.
+- **Par histoire** : `stories/<NNN-slug>/kanban.md` — étapes détaillées + boucles. Mis à jour par le responsable de l'étape.
 
 ## État actuel
 
@@ -344,4 +344,4 @@ Archive : session résumée dans archive/YYYY-MM-DD-<titre>.md
 - [x] Kanban global + kanban par histoire créés
 - [x] PROCESS.md avec DoD, responsables, cérémonies
 - [ ] Tester le workflow sur l'histoire 004
-- [x] Créer le gabarit workshop/
+- [x] Créer le gabarit unifié `stories/_gabarit/` (workshop/ supprimé 2026-04-30)

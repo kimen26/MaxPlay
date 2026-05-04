@@ -22,17 +22,17 @@ Style: 0.10
 Speaker Boost: false
 ```
 
-## Prompt voix (F)
+## Prompt ElevenLabs (F)
 
-Voix de petite fille très calme et précise. Consonnes nettes, économes.
-Phrases plates qui descendent légèrement à la fin. Pauses avant les mots précis.
-Pas d'enthousiasme apparent — juste de la clarté. Neutre mais pas froide.
+> Native French. Female, young child around 4 to 5 years old. Studio quality.
+> Persona: calm precise observer. Emotion: neutral, focused, factual.
+> Dry precise consonants, economical neutral vowels. Flat plateau prosody with a slight downward drop at sentence ends — informative, never emotional. Measured pacing with reflective micro-pauses before precise terms. No fillers, no "uh" or "mm". Clear unembellished child timbre. Neutral tone, never cold — just concentrated.
 
-## Prompt voix (M)
+## Prompt ElevenLabs (M)
 
-Voix de petit garçon calme et méthodique. Consonnes sèches, diction économe.
-Phrases en plateau qui descendent légèrement à la fin. Micro-pauses avant les termes précis.
-Ton neutre et factuel. Pas distant — juste concentré.
+> Native French. Male, young child around 4 to 5 years old. Studio quality.
+> Persona: calm methodical observer. Emotion: neutral, focused, factual.
+> Dry precise consonants, economical diction. Plateau prosody with slight downward drop at sentence ends. Measured pacing with micro-pauses before precise terms. No verbal fillers. Clear unembellished child timbre. Factual tone — not distant, just focused.
 
 ---
 

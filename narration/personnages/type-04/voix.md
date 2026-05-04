@@ -1,4 +1,4 @@
-# Voix Type 4 — Jérem (Jérémie)
+# Voix Type 4 — Madie (Madeleine)
 
 **Ennéatype :** Individualiste · **Sensibilité :** Fréquence · **Astre :** Neptune
 
@@ -36,7 +36,7 @@ Speaker Boost: false
 
 ---
 
-## Phrases types (Jérem)
+## Phrases types (Madie)
 
 - "Personne comprend vraiment ce que je veux dire..." *(voyelle étirée sur "vraiment")*
 - "C'est... *(pause)* ...beau, en fait." *(respiration audible, découverte lente)*

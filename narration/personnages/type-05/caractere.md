@@ -89,7 +89,7 @@ Ce qu'il cache : un besoin de connexion réelle qu'il n'ose pas vraiment admettr
 *Raph avait insisté pour une nuit dehors à regarder les étoiles. Lulu avait expliqué tout : les constellations, la distance lumière-années, les supernovas. À un moment, Raph avait dit : "Lulu, c'est beau." Pas "c'est intéressant". Beau. Lulu avait levé les yeux du livre qu'il imaginait dans sa tête. Et il avait regardé le ciel différemment. Et il avait pensé : oui.*
 
 ### Quand il a partagé son trésor
-*Lulu avait un livre sur les fossiles qu'il ne montrait à personne. C'était son objet le plus précieux. Un jour, Jérem avait l'air vraiment triste. Lulu ne savait pas quoi faire. Il lui avait tendu le livre sans rien dire. Elle l'avait regardé longuement. Elle lui avait dit : "Merci." C'était la première fois que partager quelque chose lui avait donné plus que ce que ça lui avait pris.*
+*Lulu avait un livre sur les fossiles qu'il ne montrait à personne. C'était son objet le plus précieux. Un jour, Madie avait l'air vraiment triste. Lulu ne savait pas quoi faire. Il lui avait tendu le livre sans rien dire. Elle l'avait regardé longuement. Elle lui avait dit : "Merci." C'était la première fois que partager quelque chose lui avait donné plus que ce que ça lui avait pris.*
 
 ### La fête trop bruyante
 *Lulu était à une fête d'anniversaire. Trop de bruit, trop de gens, trop de tout. Il était allé s'asseoir dans un couloir. Juju l'avait trouvé là. Juju n'avait pas dit "viens, c'est bien !". Il s'était juste assis à côté. En silence. Pendant dix minutes. Puis il avait dit : "On rentre dans cinq minutes si tu veux." Lulu avait dit oui. C'était parfait.*

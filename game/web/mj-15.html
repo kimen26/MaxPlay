@@ -207,6 +207,8 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 //  5 rounds, 5 bus affichés, 1 intrus à trouver
 //  Niveau A : couleur différente
 //  Niveau C : famille de ligne (Valouette / Noctilien / Métro / Standard)
+//  Niveau D : roues colorées (4 bus roues normales, 1 bus roues vives)
+//  Niveau E : double critère — couleur ET numéro (pair/impair) faux ensemble
 //  (Ancien niveau B "pair vs impair" retiré : trop long à lire pour Max)
 // ═══════════════════════════════════════════════════════════════════════════
 
@@ -262,9 +264,8 @@ let answered = false;
 
 // ── Génération des puzzles ─────────────────────────────────────────────────
 
-// Alternance A/C : 3 rounds "couleur" faciles, 2 rounds "famille" plus durs.
-// Ordre fixe pour garder une courbe : A, A, C, A, C
-const LEVEL_SCHEDULE = ['A', 'A', 'C', 'A', 'C'];
+// Courbe de difficulté : A=couleur, C=famille, D=roues colorées, E=double critère
+const LEVEL_SCHEDULE = ['A', 'D', 'C', 'E', 'A'];
 function getLevel(r) {
   return LEVEL_SCHEDULE[(r - 1) % LEVEL_SCHEDULE.length] || 'A';
 }
@@ -383,10 +384,86 @@ function generatePuzzleC() {
   };
 }
 
+// Niveau D — roues colorées
+// 4 bus avec roues noires/grises normales + 1 bus avec roues d'une couleur vive
+function generatePuzzleD() {
+  // 5 bus, peu importe couleur/numéro — seul l'intrus a des roues colorées
+  const lignes = pick(LIGNES, 5);
+  const wheelColors = ['#e94560', '#ffe066', '#00c47a', '#ff8c00', '#9b59b6'];
+  const wheelColor = wheelColors[Math.floor(Math.random() * wheelColors.length)];
+
+  const positions = shuffle([0,1,2,3,4]);
+  const placed = new Array(5);
+  positions.forEach((pos, i) => { placed[pos] = lignes[i]; });
+  const intrusPos = positions[4];
+
+  return {
+    buses: placed,
+    intrusIdx: intrusPos,
+    hint: 'Regarde bien les roues !',
+    level: 'D',
+    wheelColor,
+  };
+}
+
+// Niveau E — double critère : couleur ET numéro (pair/impair) faux ensemble
+// 4 bus = même couleur + même parité. Intrus = couleur différente + parité opposée.
+function generatePuzzleE() {
+  const wantPair = Math.random() < 0.5;
+  const majorityFilter = wantPair ? isPair : isImpair;
+  const minorityFilter = wantPair ? isImpair : isPair;
+
+  // Grouper les lignes par couleur, majoritaire = couleur avec ≥4 numéros pair (ou impair)
+  const byColor = {};
+  LIGNES.forEach(l => {
+    if (majorityFilter(l.num)) {
+      (byColor[l.color] = byColor[l.color] || []).push(l);
+    }
+  });
+  const validMajColors = Object.keys(byColor).filter(c => byColor[c].length >= 4);
+
+  if (validMajColors.length === 0) return generatePuzzleA();
+
+  const majColor = validMajColors[Math.floor(Math.random() * validMajColors.length)];
+  const majPool = byColor[majColor];
+
+  // Intrus : ligne avec parité opposée ET couleur différente du majColor
+  const minPool = LIGNES.filter(l => minorityFilter(l.num) && l.color !== majColor);
+  if (minPool.length === 0) return generatePuzzleA();
+
+  const majorBuses = pick(majPool, 4);
+  const intrusBus  = pick(minPool, 1)[0];
+
+  const buses = [...majorBuses, intrusBus];
+  const positions = shuffle([0,1,2,3,4]);
+  const placed = new Array(5);
+  positions.forEach((pos, i) => { placed[pos] = buses[i]; });
+  const intrusPos = positions[4];
+
+  return {
+    buses: placed,
+    intrusIdx: intrusPos,
+    hint: 'Couleur ET numéro… deux choses à voir !',
+    level: 'E',
+  };
+}
+
 function generatePuzzle(roundNum) {
   const level = getLevel(roundNum);
   if (level === 'A') return generatePuzzleA();
+  if (level === 'D') return generatePuzzleD();
+  if (level === 'E') return generatePuzzleE();
   return generatePuzzleC();
+}
+
+// Recolore les grosses roues (r=10) d'un bus SVG.
+function colorBusWheels(btnEl, color) {
+  const circles = btnEl.querySelectorAll('svg circle');
+  circles.forEach(c => {
+    if (c.getAttribute('r') === '10') {
+      c.setAttribute('fill', color);
+    }
+  });
 }
 
 // ── Rendu ──────────────────────────────────────────────────────────────────
@@ -422,6 +499,11 @@ function renderPuzzle(puzzle) {
     btn.innerHTML    = busSVG(ligne.color, ligne.textColor, ligne.num, busW)
                      + `<span class="bus-label">${getLineDisplayName(ligne.num)}</span>`;
     btn.addEventListener('click', () => onBusTap(idx, btn));
+
+    // Niveau D : seul l'intrus a des roues colorées
+    if (puzzle.level === 'D' && idx === puzzle.intrusIdx) {
+      colorBusWheels(btn, puzzle.wheelColor);
+    }
 
     // Disposition : bus 0-1 en haut, 2-4 en bas
     if (idx < 2) rowTop.appendChild(btn);

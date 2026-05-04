@@ -21,7 +21,7 @@ Ne jamais répondre sans avoir chargé le contexte du bon pôle.
 ```
 MaxPlay/
 ├── game/         ← PÔLE JEU (web/, phaser/, docs/, memory/, tasks/) → game/INDEX.md
-├── narration/    ← PÔLE NARRATION (stories, workshop, univers, perso, scripts, ...) → narration/INDEX.md
+├── narration/    ← PÔLE NARRATION (stories, arcs, univers, perso, equipe, pmo, scripts, ...) → narration/INDEX.md
 ├── infra/        ← bot Telegram + serveur MCP llm-copains
 ├── memory/       ← transverse : MEMORY, MAX_PROFILE, VISION, workflow, skills-map
 ├── _archive/     ← cadavres préservés (avec INDEX expliquant chaque entrée)
@@ -73,10 +73,14 @@ CI : [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) (assemble da
 | [`narration/pmo/INDEX.md`](narration/pmo/INDEX.md) | PMO — backlog, decisions, sprint-log, roadmap |
 | [`narration/personnages/INDEX.md`](narration/personnages/INDEX.md) | Casting V1 figé + lookup + catalogue cross-culture |
 | [`narration/univers/INDEX.md`](narration/univers/INDEX.md) | Carte du monde (3 sous-dossiers : fondements, vie-quotidienne, meta) |
-| [`narration/stories/INDEX.md`](narration/stories/INDEX.md) | Catalogue récits canon |
-| [`narration/workshop/`](narration/workshop/) | Brouillons en cours (pitch, plan, drafts) |
+| [`narration/stories/INDEX.md`](narration/stories/INDEX.md) | **Catalogue récits — TOUS les états** (pitch, gatekeeper-PASS, canon — un seul lieu post-2026-04-30) |
+| [`narration/arcs/INDEX.md`](narration/arcs/INDEX.md) | **Fiches d'arc** : qualité humaine + problématique au niveau arc (4 arcs saison 1) |
 | [`narration/enneagramme/`](narration/enneagramme/) | Fiches théoriques par type + casting-mapping |
-| [`narration/equipe/ORGANIGRAMME.md`](narration/equipe/ORGANIGRAMME.md) | Workflow éditorial 6 phases |
+| [`narration/equipe/INDEX.md`](narration/equipe/INDEX.md) | **Index équipe — point d'entrée**, arbre de décision agents |
+| [`narration/equipe/PROCESS.md`](narration/equipe/PROCESS.md) | **Workflow militaire 9 étapes** — owners, I/O, critères PASS, SLA, reprise |
+| [`narration/equipe/patte-narrative-maxplay.md`](narration/equipe/patte-narrative-maxplay.md) | **Patte B+D+C** Kishōtenketsu+tranche de vie+cycle, outils E/A doux, F écartée |
+| [`narration/equipe/templates/`](narration/equipe/templates/) | 8 gabarits réutilisables (pitch, plan, briefs, sélection, kanban, synthèse) |
+| [`narration/equipe/ORGANIGRAMME.md`](narration/equipe/ORGANIGRAMME.md) | Vue agents + chaîne de commandement |
 | [`narration/memory/state.md`](narration/memory/state.md) | État instantané narration |
 | [`narration/scripts/`](narration/scripts/) | CLI : new-story, archive-story, gatekeeper, validate, generate-index |
 

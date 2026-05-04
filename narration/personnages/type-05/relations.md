@@ -7,7 +7,7 @@
 | Personnage | Type | Relation |
 |------------|------|----------|
 | Raph | 7 | Raph pose mille questions et Lulu adore ça. Raph force Lulu à partager. Lulu donne à Raph de la profondeur. |
-| Jérem | 4 | Affinité silencieuse. Ils partagent le goût de la profondeur, la préférence pour les choses vraies. |
+| Madie | 4 | Affinité silencieuse. Ils partagent le goût de la profondeur, la préférence pour les choses vraies. |
 | Nono | 9 | Ils partagent l'amour du calme et de l'observation. Amitié douce, peu de mots nécessaires. |
 | Melki | 1 | Respect intellectuel mutuel. Tous les deux rigoureux et sérieux. Melki apprécie sa précision. |
 | Juju | 8 | Juju est fasciné par le cerveau de Lulu. Lulu est fasciné par la force directe de Juju. Respect étrange. |

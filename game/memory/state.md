@@ -6,18 +6,24 @@ type: project
 
 > Charger ce fichier au démarrage de toute session JEU. Puis lire `game/tasks/BACKLOG.md` pour le détail.
 
-## État déploiement (2026-04-29)
+## État déploiement (2026-05-03)
 
 **21 jeux actifs** : mj-01, mj-04–06, mj-08–09, mj-11–13 (a/b/c), mj-14–20, max-adventure
 **Retirés du menu** : mj-02, mj-03, mj-07, mj-10 (consolidés)
 **GitHub Pages** : `kimen26.github.io/MaxPlay/` — CI via `.github/workflows/deploy.yml`
 
+## Session 2026-05-03
+
+- ✅ EP-021 vocab : MJ-08 "Au centre bus" / MJ-17 "Le garage" partout
+- ✅ EP-027 MJ-20 : progression Duolingo par langue + paliers + localStorage
+- ✅ EP-029 MJ-19 : 50-80 bus (avec doublons) au lieu de 20-30
+- ✅ EP-031 MJ-15 : niveau D (roues colorées) + niveau E (combo couleur+numéro)
+- ✅ EP-032 MJ-09 : multi-touch 2 doigts (Pointer Events + Map)
+- ✅ EP-033 : TTS annonce titre désactivé (laggait le démarrage)
+
 ## Bugs actifs
 
-| EP | Jeu | Bug |
-|----|-----|-----|
-| EP-024 | max-adventure | Cassé — à diagnostiquer |
-| EP-022 | MJ-04 | Boucle infinie sans `endSession` |
+Aucun. Max Adventure tourne en prod (vérifié 2026-05-03 : `kimen26.github.io/MaxPlay/max-adventure/` charge phaser-*.js et index-*.js correctement).
 
 ## Backlog prioritaire
 

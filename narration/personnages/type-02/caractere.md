@@ -94,7 +94,7 @@ Ce qu'elle cache : qu'elle donne parfois pour recevoir — et qu'elle ne se l'av
 *Mimi était malade. Elle voulait que quelqu'un lui apporte un verre d'eau. Elle a attendu. Personne ne venait. Elle s'est levée pour le faire elle-même — et en chemin elle s'est arrêtée. Et elle a dit à voix haute : "J'ai besoin d'un verre d'eau, quelqu'un peut m'aider ?" C'était petit. Mais c'était énorme.*
 
 ### La fois où elle a aidé trop
-*Jérem n'allait pas bien. Mimi a tout essayé : câlins, gâteaux, histoires. Jérem a fini par dire : "Mimi, j'ai pas besoin que tu me répares. J'ai juste besoin que tu restes là." Mimi n'a pas compris tout de suite. Mais elle est restée. Et c'était mieux que tout ce qu'elle avait tenté.*
+*Madie n'allait pas bien. Mimi a tout essayé : câlins, gâteaux, histoires. Madie a fini par dire : "Mimi, j'ai pas besoin que tu me répares. J'ai juste besoin que tu restes là." Mimi n'a pas compris tout de suite. Mais elle est restée. Et c'était mieux que tout ce qu'elle avait tenté.*
 
 ---
 

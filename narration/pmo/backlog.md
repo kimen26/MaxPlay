@@ -11,8 +11,10 @@
 
 | Statut | ID | Titre | Priorité | Assigné | Prochaine action |
 |--------|-----|-------|----------|---------|------------------|
-| 🟡 | STORY-001-V2 | Le Pont Cassé — V2 | Haute | Auteur | Appliquer 3 modifs comité (voir `stories/001-le-pont-casse/comite-lecture/v1-retours.md`) |
-| 🟡 | STORY-003 | La Confidence — Wex · Jérem · Raph · dessin | Haute | Directeur | GateKeeper PASS · version finale en attente auteur (voir `workshop/003-la-confidence/kanban.md`) |
+| 🟡 | TEST-PROCESS-001 | 001 V2 chemin CORRECTION — Directeur applique retours Papa Yann | **Haute (test process)** | narration (Directeur) | Directeur seul applique retours Papa Yann (`001-le-pont-casse/lecteurs-temoins/papa-yann-relecture-2026-04-30.md`) sur V1 → `stories/001-le-pont-casse/rewrite/v2-correction.md`. Pas de PROCESS complet — application correctives ponctuelles. |
+| 🟡 | TEST-PROCESS-003 | 003-le-pont-casse-v2 — PROCESS militaire 9 étapes complet | **Haute (test process)** | narration-conseiller (étape 1) + équipe | Test parallèle du PROCESS complet 9 étapes. Pitch en binôme Conseiller + Papa Yann. Validations Papa Yann obligatoires après étape 1 (pitch) ET étape 3 (briefs writers). Dossier : `stories/003-le-pont-casse-v2/`. |
+| 🟡 | STORY-002-V2 | Le Rire qui reste — V2 | Pause arc 2 | Conseiller | Casting Nono+Polo à changer (phonétique), cohérence physique, fluidité orale, distribution sensorielle. Retours : `stories/002-le-rire-qui-reste/lecteurs-temoins/papa-yann-relecture-2026-04-30.md` |
+| ✅ | STORY-003-006 | La Confidence + Cartable + Mardi + Sept-à-rien — **SUPPRIMÉES** 2026-05-02 | — | — | Aucune validée par Papa Yann. Suppression pure. **Slot 003 réutilisé** pour le test from-scratch. Idée *concours de dessins en lieu public bienveillant* conservée pour le futur (arc 3 possible). |
 
 ---
 
@@ -21,13 +23,13 @@
 | Statut | ID | Titre | Priorité | Assigné | Prochaine action |
 |--------|-----|-------|----------|---------|------------------|
 | ⚪ | UNIVERS-001 | Trancher nom de l'univers | Normale | Auteur | Choisir parmi 21 candidats + pistes "Wex World" / "Wex Bou" (`univers/meta/nom-candidats.md`) |
-| ⚪ | STORY-004 | Cartable-à-trou — Polo · Lulu · Mimi · Wex | Haute | Architecte | pitch validé — prêt pour Architecte (`workshop/004-cartable-a-trou/pitch.md`) |
-| ⚪ | STORY-005 | Le Mardi — Wex · Pierrot · Melki · graine | Haute | Architecte | pitch validé — prêt pour Architecte (`workshop/005-le-mardi/pitch.md`) |
-| ⚪ | STORY-006 | Sept à rien — Juju · Mimi · Wex · blocs | Haute | Architecte | pitch validé — prêt pour Architecte (`workshop/006-sept-a-rien/pitch.md`) |
+| ⚪ | STORY-004 | Cartable-à-trou — Polo · Lulu · Mimi · Wex | Pause arc 2 | — | pitch validé — **arc 2 Parole en pause depuis 2026-04-30** (`stories/004-cartable-a-trou/pitch.md`) |
+| ⚪ | STORY-005 | Le Mardi — Wex · Pierrot · Melki · graine | Pause arc 2 | — | pitch validé — **arc 2 Parole en pause** (`stories/005-le-mardi/pitch.md`) |
+| ⚪ | STORY-006 | Sept à rien — Juju · Mimi · Wex · blocs | Pause arc 2 | — | pitch validé — **arc 2 Parole en pause** (`stories/006-sept-a-rien/pitch.md`) |
 | ⚪ | UNIVERS-002 | Définir `univers/societe.md` (Vocation · Pouvoir Intérieur · Mission du jour) | Normale | Auteur · Conseiller | À définir ensemble — concept "contribution joyeuse" remonté du Grok aetheria, demande explicite auteur, absent de l'univers actuel |
 | ⚪ | UNIVERS-003 | Borner invariant vs variant dans l'expression ennéatype par culture | Normale | Auteur · Conseiller | À définir : où s'arrête le « même Type N partout » et où commence la variance culturelle légitime ? Documenter règles d'écriture par ennéatype × culture (futur `enneagramme/expression-cross-culture.md`). Voir `univers/meta/architecture-cross-culture.md` section dédiée. |
 | ⚪ | NARR-001 | Discussion D4 — Cross-culture micro-structures | **Haute** | Auteur · Conseiller | À creuser ensemble : règles micro-structurelles culturelles (call-and-response africain, cycles amérindiens, etc.) à autoriser dans les bulles culturelles, sans tomber dans le cliché. À cadrer avant ouverture du 2e casting national. |
-| ⚪ | NARR-002 | Définir le brief writer (verbes action + sensations sensorielles + ratio dialogue %) | Normale | Auteur · Directeur · Conseiller | Formaliser dans `equipe/brief-univers.md` ou nouveau fichier : verbes d'action concrets, sensations sensorielles obligatoires (texture/son/température), pas de seuil dur sur ratio dialogue mais **noter %age dans chaque story** pour rappel relecture. Cliffhanger à débattre via NARR-001. |
+| ✅ | NARR-002 | Définir le brief writer | Normale | Directeur | **Résolu 2026-04-30** : 3 templates produits (`equipe/templates/brief-{univers,personnages,histoire}.template.md`) avec sections obligatoires + règles héritées de `pmo/decisions.md`. Ratio dialogue à noter dans le synthese.md de chaque story pour info, pas seuil dur. |
 | ⚪ | NARR-003 | Définir les sensibilités différenciées de chaque perso (Wex + 9) | Normale | Auteur · Conseiller | 9 sensibilités déjà figées (cf. décision 2026-04-28). Reste : **détailler ce que perçoit chacun précisément** (ce que c'est, ce que ce n'est pas, ce qui les active, ce qu'ils en font). Surtout **Wex — à définir** (piste : écoute des fausses notes / soin-bioélectrique). Idéalement en préparation de S2. |
 | ⚪ | NARR-004 | Définir S3 (saison 3 vide) | Basse | Auteur · Conseiller | Saison 3 actuellement vide dans la roadmap. À pitcher quand la S1 sera plus avancée et que la S2 sera cadrée. |
 

@@ -24,7 +24,7 @@
 
 **Implication MaxPlay** : notre palier P2 (4-6 ans, 400-700 mots) chevauche album standard / album textuel. **Cible Max (4 ans)** = plutôt 400-500 mots. À 5-6 ans, on peut pousser jusqu'à 700.
 
-> Source : Children's Publishing Academy, John Fox, Mary Kole — fourchettes industrielles confirmées.
+> Source : Children's Publishing Academy, Papa Yann Fox, Mary Kole — fourchettes industrielles confirmées.
 
 ---
 
@@ -230,7 +230,7 @@ L'enfant ne traite pas une histoire intellectuellement. Il **simule corporelleme
 - **Cognition** : Piaget, Bowlby (Attachment, 1969), Winnicott (Playing and Reality, 1971), O'Neill & Shultis (ToM)
 - **Structure** : Propp (Morphologie du conte, 1928), Genette, Aarne-Thompson-Uther (ATU Index), Pixar's 22 Rules
 - **Modèles culturels** : Miyazaki (Starting Point, 2009), Marshall (Doraemon, 2018), Eversole (Decolonizing the Narrative, 2022), Olivelle (Pancatantra, 1997), Kim (Korean Folktales, 2005)
-- **Industrie** : Mary Kole (kidlit.com), John Fox, Children's Publishing Academy
+- **Industrie** : Mary Kole (kidlit.com), Papa Yann Fox, Children's Publishing Academy
 - **Données quantitatives** : Happiest Baby (attention span pédiatrique), School Specialty (Stages of Narrative Development)
 
 ### Tableaux de référence (extraits)

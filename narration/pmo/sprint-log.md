@@ -6,6 +6,161 @@
 
 ---
 
+## 2026-05-05 — Switch casting V1 : Type 4 Jérémie/M → Madeleine/F
+
+**Objectif :** Rééquilibrer casting V1 français (3F/6M → 4F/6M) en basculant Type 4 de masculin vers féminin.
+
+**Fait :**
+- [x] `personnages/type-04/README.md`, `caractere.md`, `relations.md`, `pays/fr/identite.md` — réécriture prénom + tous pronoms
+- [x] `personnages/type-01/relations.md` à `type-09/relations.md` — mise à jour pronoms T4 dans chaque relation
+- [x] `personnages/wex/caractere.md` et `relations.md` — mise à jour pronoms T4
+- [x] `enneagramme/casting-mapping.md`, `README.md` — table casting V1 mise à jour
+- [x] `enneagramme/ressources/guide-auteur.md` — tous "Jérem" → "Madie"
+- [x] `enneagramme/ressources/supplement-recherches.md` — section Type 4 + arc croissance mise à jour
+- [x] `enneagramme/situations/emotions-universelles.md`, `interactions.md` — remplacements exhaustifs
+- [x] `equipe/voix/type-04-jerem.md` → `type-04-madie.md` (fichier créé) + `voix/README.md` + `voix/_CHEATSHEET-WRITERS.md`
+- [x] `univers/fondements/sensibilites.md`, `univers/vie-quotidienne/compagnons.md` — mises à jour
+- [x] `pmo/decisions.md` — entrée 2026-05-05 ajoutée en haut
+
+**Ancienne fiche supprimée :** `narration/equipe/voix/type-04-jerem.md` (remplacée par type-04-madie.md)
+
+**État au reboot :**
+- Casting V1 actualisé : **Wex + Melki(1,M) + Mimi(2,F) + Polo(3,M) + Madie(4,F) + Lulu(5,M) + Pierrot(6,M) + Raph(7,F) + Juju(8,F) + Nono(9,M)** = 4F/6M ✅
+- Token `titi_4_fr` inchangé
+- Toutes fiches perso réalignées, pronoms cohérents
+
+---
+
+## 2026-05-04 — Refonte 003-v2 Tour 2 (trio + variance + lecteurs + promesse du titre)
+
+**Objectif :** suite leçons Tour 1, refonder briefs writers 003-v2 sur trio plus contrasté, abandonner angles imposés, étendre panel lecteurs, enrichir la patte.
+
+**Fait :**
+- [x] `equipe/patte-narrative-maxplay.md` — règle « promesse du titre » ajoutée sous pilier B
+- [x] `equipe/memoire-conseiller.md` — section *Patterns sélection — observations Tour 1 003-v2* (sons-bouche, comparaisons domestiques, ouvertures courtes, corps qui participe — règles de sélection, pas de brief)
+- [x] `personnages/INDEX.md` vérifié — fiche Raph (T7, F, Raphaëlle, Cosmos) cohérente, pas de modif nécessaire
+- [x] `stories/003-le-pont-casse-v2/briefs/brief-personnages.md` — refondu : trio Wex+Raph+Pierrot avec exemples concrets situation-type (nid d'oiseau)
+- [x] `stories/003-le-pont-casse-v2/briefs/_writer-package.md` — refondu : trio remplacé, règle promesse du titre, variance "8 runs natifs"
+- [x] `stories/003-le-pont-casse-v2/briefs/brief-histoire.md` — trio + promesse + variance natifs
+- [x] `stories/003-le-pont-casse-v2/briefs/brief-univers.md` — trio + promesse + variance natifs
+- [x] `stories/003-le-pont-casse-v2/kanban.md` — étape 4 réinitialisée (🟡), étape 5 réinitialisée (6 témoins), journal Tour 2 ajouté
+- [x] `pmo/decisions.md` — entrée 2026-05-04 ajoutée en haut
+
+**À faire (post-validation Papa Yann) :**
+- [ ] Étape 4 — lancer 8 runs natifs (4 LLM × 2 runs, températures différentes — ordre à confirmer Papa Yann)
+- [ ] Étape 5 — recruter/préparer les 6 lecteurs (2 enfants seuls + 4 dyades)
+
+**État au reboot :**
+- Briefs Tour 2 propres et cohérents, en attente GO Papa Yann
+- Question ouverte : ordre températures (run #1 basse / run #2 haute, ou inverse)
+- Tour 1 supprimé (versions-writers/ et lecteurs-temoins/ vides), leçons capitalisées en mémoire Conseiller
+
+---
+
+## 2026-05-03 — Refonte writer-package + PMO relecteur briefs
+
+**Objectif :** finaliser brief writer 003-le-pont-casse-v2 prêt pour étape 4, ajouter rôle PMO relecteur.
+
+**Fait :**
+- [x] 14 corrections package writer appliquées par Directeur (mots interdits explicites, passé simple retiré, tirets cadratins retirés, exemples de bugs 002 retirés, morale reformulée, dialogue 30% ajouté, etc.)
+- [x] 3 corrections supplémentaires Papa Yann en direct (3e tour) : "pas de pouvoirs Wex" retiré, "détails sensoriels distribués" retiré (au choix), "le texte finit là où il finit" retiré (négation gratuite)
+- [x] `equipe/patte-papa-yann.md` aligné : critères 9 + 13 marqués retirés du brief writer
+- [x] `.claude/agents/narration-pmo.md` enrichi : nouveau rôle "Relecteur des briefs writers" (grep négations + test règle F + alerte Directeur, sans corriger soi-même)
+- [x] `pmo/decisions.md` : 2 entrées 2026-05-03 ajoutées en haut (PMO relecteur + retrait critères 9/13)
+- [x] `pitch.md` 003-v2 : "pas dans ses pouvoirs" → "hors-système"
+
+**À faire (post-validation Papa Yann) :**
+- [ ] Étape 4 — lancer 8 runs writers (4 base + 2 Claude angularisés + 2 Kimi angularisés)
+- [ ] Test 1 (001 V2 correction) en attente relecture Papa Yann
+
+**État au reboot :**
+- writer-package.md propre, validé sur 14 + 3 corrections
+- PMO acquiert le rôle de relecteur des briefs writers à partir de la prochaine histoire
+- Les passes futures auront 4 niveaux : Conseiller (pitch) → Architecte (plan minimal) → Directeur (briefs) → PMO (passe relecture négations) → Papa Yann (validation finale) → Writers (étape 4)
+
+---
+
+## 2026-05-02 (Phase E ~17h) — Lancement 2 tests PROCESS en parallèle
+
+**Objectif :** démarrer TEST-PROCESS-001 (correction) et TEST-PROCESS-003 (from-scratch) en parallèle, chef d'orchestre PMO.
+
+**Fait :**
+- [x] Créé dossier `narration/stories/003-le-pont-casse-v2/` depuis gabarit unifié
+- [x] Initié `003-le-pont-casse-v2/README.md` avec frontmatter (numéro 003, statut pitch, arc 1)
+- [x] Initié `003-le-pont-casse-v2/kanban.md` (étape 1 EN COURS, owner narration-conseiller, validations Papa Yann après étape 1 ET 3)
+- [x] Créé `003-le-pont-casse-v2/pitch.md` (placeholder en attente remplissage Conseiller)
+- [x] Mis à jour `001-le-pont-casse/kanban.md` — ajout section V2 tests, validation étape 7 (rewrite) V2 correction
+- [x] Ouvert 2 tickets dans `pmo/backlog.md` :
+  - `TEST-PROCESS-001` — Directeur seul (correction appliquée sur 001 V1)
+  - `TEST-PROCESS-003` — Conseiller + équipe (PROCESS complet 9 étapes, pitch challengé en binôme)
+- [x] Mis à jour `stories/INDEX.md` — ajout ligne 003 status pitch
+
+**Décisions autonomes (PMO) :**
+- ✅ Tickets ouverts dans backlog (règle : max 3 actifs ne s'applique pas aux tests PROCESS — exceptions explicitées dans `decisions.md` 2026-05-02)
+- ✅ Dossier créé + structure fichiers minimale
+- ✅ Kanban de 001 marqué V2-correction en cours (étape 7)
+
+**À faire (agents) :**
+- [ ] TEST-PROCESS-001 : `narration` applique retours Papa Yann sur 001 V1 → `rewrite/v2-correction.md`
+- [ ] TEST-PROCESS-003 : `narration-conseiller` produit pitch en binôme Papa Yann, puis validation Papa Yann explicite, puis relai Architecte étape 2
+
+**État au reboot :**
+- 2 tests démarrés 2026-05-02 Phase E
+- Dossier 003-v2 créé, structure ready
+- TEST-PROCESS-001 : Directeur attendre instructions
+- TEST-PROCESS-003 : Conseiller débute pitch (étape 1 🟢 EN COURS)
+- Note : question ouverte de Conseiller (fin inachevée douce vs fin qui referme) à trancher sur le from-scratch
+
+---
+
+## 2026-05-02 (suite, ~15h30) — Bug agents résolu + Phase E démarrage imminent
+
+**Contexte :** session interrompue avant lancement des 2 tests à cause de 5 agents non chargés par Claude Code (`narration-pmo`, `narration-architecte`, `narration-audio`, `narration-gatekeeper`, `pixel-map-simplifier`).
+
+**Diagnostic résolu :**
+- Cause = caractères `:` interne et em-dash `—` dans `description:` non quotée du frontmatter YAML → rejet silencieux par le parser Claude Code
+- Correctif : remplacer `:` par `-` ou `(...)` et `—` par `-` dans descriptions
+- Règle documentée dans `.claude/agents/README.md` + lien ajouté dans `equipe/INDEX.md`
+
+**Phase E à démarrer (post-compact) :**
+- TEST-PROCESS-001 : 001 V2 chemin CORRECTION (Directeur seul applique retours Papa Yann)
+- TEST-PROCESS-003 : 003-le-pont-casse-v2 chemin FROM SCRATCH (PROCESS militaire complet, pitch challengé Conseiller, validation Papa Yann après étape 1 ET 3)
+
+**État au reboot/compact :**
+- Tous les agents narration chargés ✅
+- Règle frontmatter YAML documentée ✅
+- 2 tests prêts à lancer en parallèle via PMO chef d'orchestre
+- Reprise post-compact : invoquer `narration-pmo` en premier pour ouvrir tickets + créer dossier `stories/003-le-pont-casse-v2/` depuis gabarit, puis lancer `narration` (Test 1) et `narration-conseiller` (Test 2) en parallèle
+
+---
+
+## 2026-05-02 — Phase D Lecture critique Papa Yann + Suppression 003-006 + Lancement test refonte 001
+
+**Objectif :** valider la lisibilité des 2 premières histoires canon et tester le nouveau PROCESS militaire.
+
+**Fait :**
+- [x] Lecture critique Papa Yann des 3 histoires existantes (001 canon, 002 canon, 003 rewrite GateKeeper-PASS)
+- [x] Verdict 001 : V2 nécessaire (refonte intégrale via PROCESS — adulte Ferretti à retirer, ennéatype Juju/Melki à vérifier, narration jugeante, épilogue italique)
+- [x] Verdict 002 : V2 nécessaire (casting Nono+Polo phonétique, incohérence physique ballon, expression inventée, style saccadé)
+- [x] Verdict 003 : ABANDONNÉE puis SUPPRIMÉE
+- [x] **Patte Papa Yann formalisée** dans `equipe/patte-papa-yann.md` — 7 reproches récurrents + 14 critères checklist
+- [x] **GateKeeper renforcé** : passage de 15 critères techniques à 26 critères (techniques + patte Papa Yann)
+- [x] Brief writer mis à jour avec checklist anti-Papa Yann express
+- [x] **Renommage John → Papa Yann** dans 24 fichiers
+- [x] **Suppression définitive** des dossiers `stories/003-la-confidence/`, `stories/004-cartable-a-trou/`, `stories/005-le-mardi/`, `stories/006-sept-a-rien/` (aucun n'avait été validé par Papa Yann)
+- [x] Idée *concours de dessins en lieu public bienveillant* sauvegardée dans `axes-histoires-en-stock.md` (axe A3-06)
+
+**À faire (en cours) :**
+- [ ] **Test 1 : 001 V2 chemin CORRECTION** — Directeur seul applique les retours Papa Yann sur la V1 → produit `stories/001-le-pont-casse/rewrite/v2-correction.md`
+- [ ] **Test 2 : 001 from scratch** — relancer le PROCESS militaire complet sur le même sujet (pont cassé) → nouveau dossier dans le slot 003. Papa Yann valide après étape 3 (briefs writers complets) AVANT que les writers écrivent.
+
+**État au reboot :**
+- 2 histoires existantes : 001 (V2 nécessaire) + 002 (V2 nécessaire, en pause arc 2)
+- 2 tests en cours sur 001 (CORRECTION en parallèle de FROM SCRATCH)
+- Phase A (cadrage) + B (migration) + C (cascade) + D (lecture critique) toutes terminées
+
+---
+
 ## 2026-04-28 — STORY-003 "La Confidence" — Pipeline complet 8 writers
 
 **Objectif :** Lancer STORY-003 avec le nouveau workflow 8 writers + angles assignés.

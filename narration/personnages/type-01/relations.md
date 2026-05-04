@@ -13,5 +13,5 @@
 | Mimi | 2 | Melki apprécie l'aide de Mimi mais trouve qu'elle aide parfois trop. Petites frictions douces. |
 | Lulu | 5 | Respect intellectuel mutuel. Tous les deux sérieux, rigoureux. Melki aime que Lulu soit précis. |
 | Polo | 3 | Méfiance. Melki sent que Polo adapte ce qu'il dit selon la situation. Il ne l'approuve pas. |
-| Jérem | 4 | Tension : Jérem dramatise, Melki rationalise. Mais Melki est fasciné par la sensibilité de Jérem, même s'il n'en parle pas. |
+| Madie | 4 | Tension : Madie dramatise, Melki rationalise. Mais Melki est fasciné par la sensibilité de Madie, même s'il n'en parle pas. |
 

@@ -22,17 +22,17 @@ Style: 0.20
 Speaker Boost: false
 ```
 
-## Prompt voix (F)
+## Prompt ElevenLabs (F)
 
-Voix de petite fille très douce et tranquille. Sons qui s'enchaînent sans rupture.
-Phrases en vagues légères, ni montantes ni descendantes. Très lente, jamais pressée.
-"Mmm" doux naturels. Sérénité absolue, apaisant sans effort.
+> Native French. Female, young child around 4 to 5 years old. Studio quality.
+> Persona: serene peacemaker. Emotion: calm, soothing, unhurried.
+> Legato consonants flowing seamlessly with no ruptures. Gentle wave-like prosody, neither rising nor falling — gently rocking. Slow fluid pacing, no urgency, everything takes its time. Natural soft "mmm" and "ah" sounds, slow audible breath. Soft round child timbre. Effortless serenity, soothing without effort.
 
-## Prompt voix (M)
+## Prompt ElevenLabs (M)
 
-Voix de petit garçon tranquille et serein. Consonnes douces, tout fluide.
-Rythme lent et régulier comme une rivière calme. "Mmm" et "ah" doux naturels.
-Respiration lente audible. Pas somnolent — juste en paix.
+> Native French. Male, young child around 4 to 5 years old. Studio quality.
+> Persona: serene peacemaker. Emotion: calm, fluid, peaceful.
+> Soft legato consonants, fluid throughout. Slow regular rhythm like a calm river. Natural soft "mmm" and "ah". Slow audible breath. Soft warm child timbre. Not drowsy — just at peace.
 
 ---
 

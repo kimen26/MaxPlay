@@ -56,7 +56,7 @@
 
 <script>
 // ─── Chemins des tiles ─────────────────────────────────────────
-const T = '../game/public/assets/tiles/';
+const T = '../phaser/public/assets/tiles/';
 
 // RÈGLE AUTOTILE : variation_1 = coin/bord, variation_27 = remplissage plain.
 // Toujours utiliser les variations HAUTES (20-27) pour remplir une zone.
@@ -422,6 +422,320 @@ const MOCKUPS = [
           [null,null,null,null,null,null,null],
           [null,null,null,null,null,null,null],
           [null,null,null,null,null,null,null],
+        ],
+      });
+    }
+  },
+
+  // ─── ⑥ Maison rouge dans son jardin (entraînement) ──────────
+  // toyhouse1 = 4×5 tiles (192×240 px), ancré (row=0, col=2) → couvre cols 2-5 rows 0-4
+  // Mix grass1/2/3 autour. Trottoir + petite route en bas.
+  {
+    id: 'maison_jardin',
+    title: '⑥ Maison rouge & jardin',
+    desc: 'Maison individuelle (toyhouse 4×5), jardin grass mixte, trottoir + route 2 voies.',
+    cols: 8, rows: 8,
+    async draw(ctx) {
+      await loadAll(['grass1','grass2','grass3','sidewalk1','sidewalk2','asphalt','asphalt2','asphalt3','toyhouse1','bush1','bush2','bush3','flower_r','flower_y','flower_p']);
+      drawLayeredMap(ctx, {
+        ground: [
+          // Rows 0-4 : jardin (grass mixte) — la toyhouse couvre visuellement cols 2-5
+          ['grass1','grass2','grass3','grass1','grass2','grass3','grass1','grass2'],
+          ['grass2','grass3','grass1','grass2','grass3','grass1','grass2','grass3'],
+          ['grass3','grass1','grass2','grass3','grass1','grass2','grass3','grass1'],
+          ['grass1','grass2','grass3','grass1','grass2','grass3','grass1','grass2'],
+          ['grass2','grass3','grass1','grass2','grass3','grass1','grass2','grass3'],
+          // Row 5 : trottoir transition jardin → route
+          ['sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2'],
+          // Rows 6-7 : route 2 voies (mix asphalt)
+          ['asphalt', 'asphalt2','asphalt3','asphalt', 'asphalt2','asphalt3','asphalt', 'asphalt2'],
+          ['asphalt2','asphalt3','asphalt', 'asphalt2','asphalt3','asphalt', 'asphalt2','asphalt3'],
+        ],
+        objects: [
+          // Row 0 : toyhouse1 ancrée col=2 (couvre cols 2-5 rows 0-4 visuellement)
+          ['bush1',null,'toyhouse1',null,null,null,null,'bush2'],
+          [null,'bush3',null,null,null,null,'bush2',null],
+          [null,null,null,null,null,null,null,'bush1'],
+          [null,'bush2',null,null,null,null,null,null],
+          ['bush3',null,null,null,null,null,'bush1',null],
+          [null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null],
+        ],
+        decoration: [
+          [null,null,null,null,null,null,null,null],
+          ['flower_r',null,null,null,null,null,null,'flower_y'],
+          [null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,'flower_p',null],
+          [null,'flower_y',null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null],
+        ],
+      });
+    }
+  },
+
+  // ─── ⑦ Arrêt de bus avec abri (entraînement) ────────────────
+  // sidewalk5 = quai bus, bench_city 2×2 ancré pour abri, route 2 voies
+  {
+    id: 'arret_abri',
+    title: '⑦ Arrêt de bus & abri',
+    desc: 'Quai sidewalk5, banc d\'attente 2×2, route 2 voies, jardin arrière.',
+    cols: 9, rows: 6,
+    async draw(ctx) {
+      await loadAll(['asphalt','asphalt2','asphalt3','sidewalk1','sidewalk2','sidewalk5','grass1','grass2','grass3','bench_city','bush1','bush2','bush3','flower_r','flower_b','flower_y']);
+      drawLayeredMap(ctx, {
+        ground: [
+          // Row 0 : trottoir avant
+          ['sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1'],
+          // Rows 1-2 : route 2 voies
+          ['asphalt', 'asphalt2','asphalt3','asphalt', 'asphalt2','asphalt3','asphalt', 'asphalt2','asphalt3'],
+          ['asphalt2','asphalt3','asphalt', 'asphalt2','asphalt3','asphalt', 'asphalt2','asphalt3','asphalt'],
+          // Row 3 : trottoir + zone quai (sidewalk5 cols 3-5)
+          ['sidewalk1','sidewalk2','sidewalk1','sidewalk5','sidewalk5','sidewalk5','sidewalk1','sidewalk2','sidewalk1'],
+          // Row 4 : trottoir arrière (sous l'abri)
+          ['sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1'],
+          // Row 5 : jardin
+          ['grass1','grass2','grass3','grass1','grass2','grass3','grass1','grass2','grass3'],
+        ],
+        objects: [
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          // bench_city 2×2 ancré row=3 col=4 → couvre rows 3-4 cols 4-5
+          [null,null,null,null,'bench_city',null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,'bush1',null,null,null,null,null,'bush3',null],
+        ],
+        decoration: [
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          ['flower_r',null,null,'flower_b',null,null,'flower_y',null,'flower_r'],
+        ],
+      });
+    }
+  },
+
+  // ─── ⑧ Carrefour en T (entraînement) ────────────────────────
+  // Route horizontale rows 2-3, branche descendante cols 3-5 rows 4-6
+  {
+    id: 'carrefour_t',
+    title: '⑧ Carrefour en T',
+    desc: 'Route horizontale + branche descendante, trottoirs et arbres alignés.',
+    cols: 9, rows: 7,
+    async draw(ctx) {
+      await loadAll(['asphalt','asphalt2','asphalt3','sidewalk1','sidewalk2','grass1','grass2','grass3','bush1','bush2','bush3','flower_r','flower_y','flower_p']);
+      drawLayeredMap(ctx, {
+        ground: [
+          // Row 0 : trottoir nord
+          ['sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1'],
+          // Row 1 : trottoir nord (2e bande)
+          ['sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2'],
+          // Rows 2-3 : route horizontale
+          ['asphalt', 'asphalt2','asphalt3','asphalt', 'asphalt2','asphalt3','asphalt', 'asphalt2','asphalt3'],
+          ['asphalt2','asphalt3','asphalt', 'asphalt2','asphalt3','asphalt', 'asphalt2','asphalt3','asphalt'],
+          // Row 4 : trottoir sud + branche (cols 3-5 = asphalt)
+          ['sidewalk1','sidewalk2','sidewalk1','asphalt','asphalt2','asphalt3','sidewalk1','sidewalk2','sidewalk1'],
+          // Row 5 : trottoir transition + branche (sidewalk obligatoire entre asphalt et grass)
+          ['grass1','grass2','sidewalk1','asphalt2','asphalt','asphalt2','sidewalk1','grass2','grass3'],
+          // Row 6 : grass + branche (terminus au bord), trottoir transition cols 2 et 6
+          ['grass2','grass3','sidewalk2','asphalt','asphalt3','asphalt','sidewalk2','grass1','grass2'],
+        ],
+        objects: [
+          [null,'bush1',null,null,null,null,'bush2',null,'bush3'],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,'bush2',null,null,null,'bush1',null,null],
+          [null,'bush3',null,null,null,null,null,'bush2',null],
+          [null,null,null,null,null,null,null,null,'bush1'],
+        ],
+        decoration: [
+          [null,null,null,null,null,null,null,null,null],
+          ['flower_r',null,null,null,null,null,null,'flower_y',null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,'flower_p',null,null,null,'flower_r',null,null],
+          [null,'flower_y',null,null,null,null,null,null,null],
+        ],
+      });
+    }
+  },
+
+  // ─── ⑨ Petit parc avec statue (entraînement) ────────────────
+  // Fond grass mixte, allée verticale sidewalk2 cols 3-4, statue centrale, bancs, fleurs
+  {
+    id: 'parc_statue',
+    title: '⑨ Petit parc & statue',
+    desc: 'Parc grass, allée centrale sidewalk2, statue point focal, bancs et fleurs.',
+    cols: 8, rows: 7,
+    async draw(ctx) {
+      await loadAll(['grass1','grass2','grass3','sidewalk1','sidewalk2','statue','bench_h','bush1','bush2','bush3','flower_r','flower_b','flower_p','flower_y']);
+      drawLayeredMap(ctx, {
+        ground: [
+          // Row 0 : trottoir périphérique
+          ['sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1'],
+          // Rows 1-5 : grass + allée centrale (cols 3-4 = sidewalk2)
+          ['grass1','grass2','grass3','sidewalk2','sidewalk2','grass3','grass2','grass1'],
+          ['grass2','grass3','grass1','sidewalk2','sidewalk2','grass1','grass3','grass2'],
+          ['grass3','grass1','grass2','sidewalk2','sidewalk2','grass2','grass1','grass3'],
+          ['grass1','grass2','grass3','sidewalk2','sidewalk2','grass3','grass2','grass1'],
+          ['grass2','grass3','grass1','sidewalk2','sidewalk2','grass1','grass3','grass2'],
+          // Row 6 : trottoir périphérique
+          ['sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2'],
+        ],
+        objects: [
+          [null,null,null,null,null,null,null,null],
+          [null,'bush1',null,null,null,null,'bush3',null],
+          [null,null,null,'statue',null,null,null,null],     // statue centrale 48×48
+          [null,'bench_h',null,null,null,null,'bush2',null], // bench_h 2×1 cols 1-2 row 3
+          [null,null,'bush3',null,null,null,null,null],
+          [null,'bush2',null,null,null,'bench_h',null,null], // bench_h 2×1 cols 5-6 row 5
+          [null,null,null,null,null,null,null,null],
+        ],
+        decoration: [
+          [null,null,null,null,null,null,null,null],
+          ['flower_r',null,'flower_y',null,null,'flower_p',null,'flower_b'],
+          [null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null],
+          ['flower_p',null,null,null,null,null,null,'flower_r'],
+          [null,null,null,null,null,null,null,null],
+          [null,'flower_y',null,null,null,null,'flower_b',null],
+        ],
+      });
+    }
+  },
+
+  // ─── ⑪ Max Adventure — reproduction tile-based de SandboxScene ──
+  // Original Phaser : monde 2400×1600 px, routes en croix au centre (140 px),
+  // 3 arrêts de bus, 4-6 bâtiments, ~11 arbres, 5 paires de lampadaires.
+  // Reproduction : 25×17 tiles (1200×816 px native, échelle ~1:2 du monde réel).
+  {
+    id: 'max_adventure',
+    title: '⑪ Max Adventure (carte tilée)',
+    desc: 'Reproduction de SandboxScene Phaser : routes en croix, 3 arrêts bus, bâtiments, arbres.',
+    cols: 25, rows: 17,
+    async draw(ctx) {
+      await loadAll([
+        'asphalt','asphalt2','asphalt3','sidewalk1','sidewalk2','sidewalk5',
+        'grass1','grass2','grass3',
+        'bush1','bush2','bush3',
+        'toyhouse1','toyhouse2','toyhouse3','toyhouse4',
+        'bench_city','flower_r','flower_y','flower_b','flower_p',
+      ]);
+
+      // Construction algorithmique du ground (plus lisible que 17×25 littéraux)
+      const ground = [];
+      const grassMix = ['grass1','grass2','grass3'];
+      const asphMix  = ['asphalt','asphalt2','asphalt3'];
+      const swMix    = ['sidewalk1','sidewalk2'];
+      // Routes : H sur rows 7-9, V sur cols 11-13. Trottoirs : rows 6/10 et cols 10/14.
+      for (let r = 0; r < 17; r++) {
+        const row = [];
+        for (let c = 0; c < 25; c++) {
+          const isHRoad = (r >= 7 && r <= 9);
+          const isVRoad = (c >= 11 && c <= 13);
+          const isHSidewalk = (r === 6 || r === 10);
+          const isVSidewalk = (c === 10 || c === 14);
+          if (isHRoad || isVRoad) {
+            row.push(asphMix[(r + c) % 3]);
+          } else if (isHSidewalk || isVSidewalk) {
+            row.push(swMix[(r + c) % 2]);
+          } else {
+            row.push(grassMix[(r * 7 + c * 3) % 3]);
+          }
+        }
+        ground.push(row);
+      }
+
+      // Layer objects : null partout par défaut
+      const objects = Array.from({ length: 17 }, () => Array(25).fill(null));
+      // Arrêts de bus (sidewalk5 + bench_city) — 3 positions inspirées du jeu
+      // Arrêt 162 : col 3, row 6 (trottoir nord-ouest)
+      ground[6][3] = 'sidewalk5'; ground[6][4] = 'sidewalk5';
+      objects[5][3] = 'bench_city'; // 2×2 → rows 5-6 cols 3-4 (sur grass+sidewalk5)
+      // Arrêt M7 : col 12 trop sur la route. Mettre col 8 row 6
+      ground[6][8] = 'sidewalk5'; ground[6][9] = 'sidewalk5';
+      objects[5][8] = 'bench_city';
+      // Arrêt 380 : col 20 row 10 (trottoir sud-est)
+      ground[10][19] = 'sidewalk5'; ground[10][20] = 'sidewalk5';
+      objects[10][19] = 'bench_city'; // rows 10-11 cols 19-20
+
+      // Bâtiments (toyhouse 4×5) — 4 quadrants. Ancrés sur grass.
+      // NO : trop grand pour 17 rows. Place 2 toyhouses, ailleurs juste bushes.
+      objects[0][1]  = 'toyhouse1'; // NO : cols 1-4 rows 0-4
+      objects[0][20] = 'toyhouse2'; // NE : cols 20-23 rows 0-4
+      objects[12][1]  = 'toyhouse3'; // SO : cols 1-4 rows 12-16
+      objects[12][20] = 'toyhouse4'; // SE : cols 20-23 rows 12-16
+
+      // Arbres (bushes) éparpillés sur grass (zones non couvertes par toyhouses)
+      const trees = [
+        [1,6],[2,15],[5,7],[5,18],
+        [11,7],[11,18],
+        [15,6],[15,8],[15,15],[15,17],
+        [13,7],[13,18],
+      ];
+      trees.forEach(([r,c]) => {
+        if (objects[r][c] === null) objects[r][c] = ['bush1','bush2','bush3'][(r+c)%3];
+      });
+
+      // Decoration : fleurs autour des bâtiments et arrêts
+      const decoration = Array.from({ length: 17 }, () => Array(25).fill(null));
+      const flowers = [
+        [5,5,'flower_r'],[5,16,'flower_y'],
+        [11,5,'flower_p'],[11,16,'flower_b'],
+        [16,7,'flower_r'],[16,17,'flower_y'],
+        [0,8,'flower_b'],[0,15,'flower_p'],
+      ];
+      flowers.forEach(([r,c,f]) => { if (decoration[r][c] === null) decoration[r][c] = f; });
+
+      drawLayeredMap(ctx, { ground, objects, decoration });
+    }
+  },
+
+  // ─── ⑩ Rue commerçante (entraînement) ───────────────────────
+  // 3 modules 1×3 (boulangerie, condo, glacier) ancrés row 0 → couvrent rows 0-2
+  {
+    id: 'rue_commercante',
+    title: '⑩ Rue commerçante',
+    desc: 'Façades modulaires (bakery + condo + icecream), trottoir et route 2 voies.',
+    cols: 9, rows: 6,
+    async draw(ctx) {
+      await loadAll(['sidewalk1','sidewalk2','asphalt','asphalt2','asphalt3','bush1','bush2','bush3','flower_r','flower_y','flower_p','bakery_m1','bakery_m2','condo_m1','condo_m2','icecream_m1','icecream_m2']);
+      drawLayeredMap(ctx, {
+        ground: [
+          // Rows 0-2 : sol sous façades
+          ['sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk1'],
+          ['sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1'],
+          ['sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1'],
+          // Row 3 : trottoir avant
+          ['sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1'],
+          // Rows 4-5 : route 2 voies
+          ['asphalt', 'asphalt2','asphalt3','asphalt', 'asphalt2','asphalt3','asphalt', 'asphalt2','asphalt3'],
+          ['asphalt2','asphalt3','asphalt', 'asphalt2','asphalt3','asphalt', 'asphalt2','asphalt3','asphalt'],
+        ],
+        objects: [
+          // Row 0 : façades modulaires (chaque 1×3 couvre rows 0-2)
+          [null,'bakery_m1','bakery_m2','condo_m1','condo_m2','icecream_m1','icecream_m2',null,null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          // Row 3 : décorations trottoir (entre façades et route)
+          ['bush1',null,null,'bush2',null,null,null,'bush3',null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+        ],
+        decoration: [
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
+          [null,'flower_r',null,null,'flower_y',null,'flower_p',null,'flower_r'],
+          [null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null],
         ],
       });
     }

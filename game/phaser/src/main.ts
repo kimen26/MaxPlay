@@ -3,6 +3,7 @@ import { BootScene } from './scenes/BootScene';
 import { PreloadScene } from './scenes/PreloadScene';
 import { HubScene } from './scenes/HubScene';
 import { SandboxScene } from './scenes/SandboxScene';
+import { RondPointScene } from './scenes/RondPointScene';
 
 const config: Phaser.Types.Core.GameConfig = {
   type: Phaser.AUTO,
@@ -19,6 +20,7 @@ const config: Phaser.Types.Core.GameConfig = {
     PreloadScene,
     HubScene,
     SandboxScene,
+    RondPointScene,
     // Mini-jeux ajoutés ici au fur et à mesure
   ],
 };

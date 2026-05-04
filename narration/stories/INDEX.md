@@ -4,12 +4,11 @@
 
 | # | Titre | Statut | Mots | Personnages | Thème principal |
 |---|-------|--------|------|-------------|-----------------|
-| 001 | [Le Pont Cassé](001-le-pont-casse/README.md) | canon | 750 | wex, melki, juju | collaboration |
-| 002 | [Le Rire qui reste](002-le-rire-qui-reste/README.md) | canon | 489 | wex, nono, polo | consequences-de-la-parole |
-| 003 | [La Confidence](../workshop/003-la-confidence/) | workshop | — | wex, jerem, raph | confidence-repetee |
-| 004 | [Cartable-à-trou](../workshop/004-cartable-a-trou/pitch.md) | workshop (pitch) | — | polo, lulu, mimi, wex | surnom-qui-colle |
-| 005 | [Le Mardi](../workshop/005-le-mardi/pitch.md) | workshop (pitch) | — | wex, pierrot, melki | promesse-oubliee |
-| 006 | [Sept à rien](../workshop/006-sept-a-rien/pitch.md) | workshop (pitch) | — | juju, mimi, wex | mot-dit-en-colere |
+| 001 | [Le Pont Cassé](001-le-pont-casse/README.md) | canon V1 ⚠ V2 correction en cours + V2 from-scratch test | 750 | wex, melki, juju | collaboration |
+| 002 | [Le Rire qui reste](002-le-rire-qui-reste/README.md) | canon V1 ⚠ V2 nécessaire | 489 | wex, nono, polo (un à changer) | consequences-de-la-parole |
+| 003 | [Le Pont Cassé V2 from scratch (TEST-PROCESS)](003-le-pont-casse-v2/README.md) | pitch — test PROCESS militaire 9 étapes complet | 0 | TBD | collaboration (test) |
+
+> **Suppression du 2026-05-02** (Papa Yann) : les histoires 003 *La Confidence*, 004 *Cartable-à-trou*, 005 *Le Mardi*, 006 *Sept à rien* ont été **supprimées définitivement**. Aucune n'avait été validée par l'auteur. Le slot **003 sera réutilisé** pour la version from-scratch de la 001.
 
 ---
 
@@ -17,7 +16,7 @@
 
 | # | Titre | Histoires | Thème fil rouge |
 |---|-------|-----------|-----------------|
-| 001 | [La Parole](series/001-la-parole.md) | 002 · 003 · 004 · 005 · 006 | Ce qu'on dit (ou ne dit pas) a des conséquences réelles |
+| 001 | [La Parole](series/001-la-parole.md) | 002 (V2 nécessaire — seule histoire restante de l'arc 2 après suppression 003-006) | Ce qu'on dit (ou ne dit pas) a des conséquences réelles |
 
 ---
 

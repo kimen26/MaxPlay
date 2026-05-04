@@ -5,6 +5,407 @@
 
 ---
 
+## 2026-05-05 — Switch casting V1 : Type 4 Jérémie/M → Madeleine/F
+
+**Décision** : Type 4 (Individualiste / Fréquence) passe de **Jérémie (M, diminutif Jérem)** à **Madeleine (F, diminutif Madie)** pour rééquilibrer le casting V1 français de **3F/6M vers 4F/6M**.
+
+**Raison** : Parité plus saine pour identification fillettes + meilleure répartition des profils vocaux TTS multilingues. Archétype féminin Marie-Madeleine (Évangile) cohérent avec lignée "casting Christ" V1.
+
+**Impact** :
+- Tous les fiches perso type-04/ : réécriture prénom + pronoms (M→F)
+- Fiches type-01 à 09 et Wex : mise à jour pronoms dans relations.md et caractere.md
+- Ennéagramme : casting-mapping.md, README.md, guide-auteur.md, situations/emotions-universelles.md, situations/interactions.md
+- Univers : sensibilites.md, compagnons.md
+- Voix : renommage type-04-jerem.md → type-04-madie.md, README.md, _CHEATSHEET-WRITERS.md
+- Token `titi_4_fr` : inchangé
+
+**Phonétique vérifiée** : Madie distinct de tous autres diminutifs (Wex/Melki/Mimi/Polo/Lulu/Pierrot/Raph/Juju/Nono).
+
+---
+
+## 2026-05-04 — Refonte 003-v2 Tour 2 : trio + variance + lecteurs
+
+**Décisions** :
+- Trio 003-v2 = **Wex + Raph (T7, fille) + Pierrot (T6, garçon)**. Raph remplace Melki (deux calmes 1+6 ne créaient pas assez de friction lisible en arc 1).
+- **Variance writers** abandonnée (Sobre/Sensoriel/Dynamique/Instinct n'ont pas apporté de valeur). Nouveau schéma : **8 runs natifs** = 4 LLM × 2 runs avec températures légèrement différentes. Brief strictement identique pour les 8 runs.
+- **Lecteurs étendus à 6** : 2 enfants seuls (garçon + fille) + 4 dyades (papa+garçon, papa+fille, maman+garçon, maman+fille). Objectif secondaire : observer si la narration colle mieux voix féminine ou masculine pour TTS futur.
+- **Patte MaxPlay enrichie** : règle « **promesse du titre** » sous pilier B. Le Ten transforme la promesse, le Ketsu la résout — il ne l'élude jamais.
+- **Sons-bouche** (floc-floc, glou-glou, tss-tss, tac-tac…) → mémoire Conseiller (pattern sélection), **pas brief writer** (risque fabrication forcée).
+- **Brief personnages enrichi** avec exemples concrets de réaction par perso dans une situation-type non-pont (pas de chorégraphie de l'histoire — juste illustration du moteur sans le nommer).
+
+**Pourquoi** : leçons Tour 1 003-v2 (8 versions writers + 4 lecteurs témoins, supprimées). Voir `equipe/memoire-conseiller.md` section *Patterns sélection — observations Tour 1 003-v2*.
+
+---
+
+## 2026-05-03 — PMO devient relecteur des briefs writers (anti-négation gratuite)
+
+**Décision** : avant qu'un brief writer parte aux runs étape 4, le PMO fait une passe mécanique de relecture (grep négations + test règle F : un writer naïf évoquerait-il spontanément le sujet ?). Si non → alerte le Directeur. Tant que des négations gratuites restent, kanban étape 4 = 🔴 BLOQUÉ.
+
+**Pourquoi** : sur 003-v2, plusieurs négations gratuites ont été détectées par Papa Yann lui-même au 3e tour de relecture ("pas de pouvoirs", "pas de bloc séparé", etc.). Ce travail mécanique n'est ni technique ni stratégique → Haiku PMO suffit, soulage Papa Yann, fluidifie le PROCESS.
+
+**Comment** : voir `.claude/agents/narration-pmo.md` section "Relecteur des briefs writers".
+
+---
+
+## 2026-05-03 — Critères patte Papa Yann retirés du brief writer
+
+**Décisions** :
+- **Critère 9 (distribution sensorielle)** : retiré du brief writer. **Au choix du writer**, parfois un gros moment sensoriel concentré sert mieux que la distribution. Pas une règle.
+- **Critère 13 (épilogue italique / "texte finit là où il finit")** : retiré du brief writer. Négation gratuite (un writer naïf n'y penserait pas). Reste règle de relecture Directeur si jamais un writer en met un.
+
+**Pourquoi** : appliqué règle F sur le writer-package — si un writer naïf n'évoquerait pas spontanément le sujet, on ne le mentionne pas dans le brief.
+
+---
+
+## 2026-05-03 — Patte Papa Yann : refonte critères 6, 7, 13, 14, 15 + suppression mention passé simple et tirets cadratins
+
+**Décisions** :
+- Mots forts/sombres : liste explicite d'interdits durs (mort/crever/clochard/pédocriminel/pistolet/pute/enculer + famille) ; tout autre vocabulaire dur passe s'il a un sens.
+- Passé simple : pas de règle pour ou contre, affaire de style writer.
+- Tirets cadratins : sortis du brief writer (Papa Yann ne les utilise jamais, GateKeeper attrape les usages ambigus).
+- Épilogue italique : reformulé en positif ("le texte finit là où il finit").
+- Morale : leçon vécue par les personnages OK, leçon dite par narrateur ou explicitée à la fin = NO.
+- Critère 15 (négations gratuites) : reste règle interne Architecte/Directeur/notes, pas writer.
+
+**Pourquoi** : un brief writer doit donner des règles digérées et positives. Les exemples de bugs 001/002 polluent le brief sans aider le writer naïf. Application immédiate sur 003-le-pont-casse-v2.
+
+---
+
+## 2026-05-03 — Briefs writers autoporteurs (writer-package)
+
+**Décision :** Pour chaque histoire, le Directeur produit un fichier `briefs/_writer-package.md` **autoporteur, identique pour les 8 runs**. Contenu inliné (pas de "cf fichier X") car Kimi/DeepSeek/Grok via MCP n'ont pas accès au filesystem.
+
+Pour les 4 runs angularisés (2 Claude + 2 Kimi), on envoie le **même** writer-package + 1 ligne d'angle ajoutée à la fin. Aucune autre différence.
+
+**Pourquoi :** équité de traitement entre les 8 runs, comparabilité du test PROCESS, garantie que tous les writers ont la même information de base.
+
+---
+
+## 2026-05-03 — Saison printemps par défaut sur tout arc 1
+
+**Décision :** Tout l'arc 1 (objet/décor bienveillant) se passe au **printemps** par défaut. Décision facilitante.
+
+**Lien :** `arcs/arc-1-objet-decor/fiche.md` (section Cadre cyclique).
+
+---
+
+## 2026-05-03 — Règle Directeur : relire decisions.md avant tout brief
+
+**Décision :** Avant tout brief / livrable / décision proposée, le Directeur relit `pmo/decisions.md`. Si une question a déjà été tranchée, il l'applique — ne la repose pas.
+
+**Pourquoi :** sur le brief 003-v2, le Directeur a reposé la question "Option A vs B variance writers" alors qu'elle était tranchée le 2026-04-30 (8 versions = 4 base + 2 Claude angularisés + 2 Kimi angularisés). Perte de temps + confusion auteur.
+
+---
+
+## 2026-04-30 — Saison 1 : 4 axes narratifs
+
+**Décision :** La saison 1 s'articule autour de **4 axes** (et non 3) :
+
+1. **Arc 1 — histoires-objet / élément de décor** : bienveillantes, simples, fluides. On apprend à connaître les voix des personnages. Que du gentil. **Priorité actuelle.**
+2. **Arc 2 — la Parole** : poids des mots, "je veux plus être ton copain", "si c'est comme ça je joue plus avec toi". Résonance directe avec ce que Max vit en ce moment IRL.
+3. **Arc 3 — original-dans-le-naturel** : objet ou lieu **spécifique à notre univers** (bus à techno, immeubles raréfiés, plantes/eau au fonctionnement différent, bioélectricité contre allergies, etc.).
+4. **Arc 4 (fil rouge transversal) — pouvoirs de Wex** : il prend conscience progressivement qu'il peut voir quand ça ne va pas, projeter le futur proche en semi-transparence sans altérer le présent, revivre/ajuster son comportement et comprendre les conséquences.
+
+**Raison :** Recadrage Papa Yann 2026-04-30 — la "Série La Parole" préexistante est rangée dans l'arc 2. L'arc 1 doit rester ultra-simple/bienveillant pour faire connaître les persos avant tout reste.
+**Liens :** `archive/sessions/2026-04-30-brainstorm-arcs-style-gabarit.md`
+
+---
+
+## 2026-04-30 — Arc 1 : format duos
+
+**Décision :** Pour l'arc 1, chaque histoire = **1 objet (titre) + 2 ou 3 persos + Wex présent**.
+
+**Raison :** L'amitié se montre mieux à plusieurs (un perso seul s'explique, à 2 il existe par contraste). Couvre le casting plus vite. Les ennéatypes se révèlent par friction douce, jamais nommée.
+**Wex en arc 1 :** présent en témoin silencieux, **pouvoirs PAS encore activés** (l'arc 4 viendra plus tard dans la saison).
+
+---
+
+## 2026-04-30 — STORY-003 à 006 en pause (pas supprimés)
+
+**Décision :** Les histoires 003 *La Confidence* (workshop), 004 *Cartable-à-trou* (pitch), 005 *Le Mardi* (pitch), 006 *Sept à rien* (pitch) sont **mises en pause**, à reprendre quand l'arc 1 sera bouclé. Elles relèvent toutes de l'**arc 2 (Parole)**.
+
+**Raison :** Papa Yann veut prioriser l'arc 1 (rencontre des persos via objet/décor bienveillant) avant de revenir à la tension de la Parole. Aucune suppression — la matière est conservée intacte dans `stories/003-la-confidence/`, `stories/004-cartable-a-trou/`, `stories/005-le-mardi/`, `stories/006-sept-a-rien/` (post-migration workshop→stories du 2026-04-30).
+
+---
+
+## 2026-04-30 — Mode archivage live des sessions brainstorm
+
+**Décision :** Pendant les sessions de brainstorm, l'orchestrateur (Claude principal) tient à jour **en continu** :
+- `INBOX.md` : ce qui est en cours, en cours d'arbitrage
+- `pmo/decisions.md` : dès qu'un point est tranché par Papa Yann, il y est migré immédiatement
+- `archive/sessions/<date>-<sujet>.md` : trace brute complète de la session (toutes les positions et leur évolution)
+
+**Pas attendre la fin** d'une session pour archiver. Toutes les 2-3 réponses, mise à jour.
+**Raison :** Papa Yann : *"si on note à la fin on va tout perdre"*.
+
+---
+
+## 2026-04-30 — Patte narrative MaxPlay : B noyau + D voix + C cadre + outils ponctuels
+
+**Décision (chantier 1 — style narration tranché) :**
+
+La patte narrative MaxPlay s'écrit sur 3 piliers, complétés par 2 outils ponctuels et 1 outil reporté :
+
+### Piliers (présents dans toute histoire)
+
+1. **B — Kishōtenketsu (noyau structurel)** : Ki / Sho / Ten / Ketsu. Pas d'antagoniste. Bascule de perception, pas combat. Confirmé pilier absolu.
+2. **D — Tranche de vie (voix d'écriture)** : précision sensorielle, gestes ordinaires, dialogues qui sonnent vrai, pas de grandiloquence. Avec **micro-Ten** ajouté pour Max 3.5 ans (le camion qui passe, la lumière qui change) — D pur sans accroche est risqué à cet âge.
+   - *Référence interne :* mini-scénario *Le verre de Mimi* (archive 2026-04-30)
+3. **C — Cycle (cadre d'arc)** : un même cadre revient sur plusieurs histoires d'un même arc (lieu, moment, type d'objet) pour que la reconnaissance soit du plaisir. Comme Tayo (rituel dépôt→mission→dépôt).
+
+### Outils ponctuels (utilisés à la demande, pas en pilier)
+
+4. **E — Trickster** : un perso fait un truc inattendu, **sans méchanceté ni dégradation**. Raph (T7) = porteur naturel mais n'importe qui peut le porter ponctuellement.
+   - **Dosage : avec parcimonie** (Papa Yann : "je suis 7 donc ça m'attire, avec parcimonie")
+   - Garde-fou : ne blesse personne, ne dégrade rien
+   - *Référence interne :* mini-scénario *Raph et le banc* (archive 2026-04-30)
+
+5. **A doux — Conflit émotionnel (réservé arc Parole)** : pas de violence physique, mais **tristesse / conséquence émotionnelle visible**.
+   - À utiliser dans l'arc 2 (Parole), pas dans l'arc 1
+   - **PAS** une famille F (morale dite) — c'est un **B avec un Ten lourd = conséquence concrète non commentée**. Le récit montre, ne dit pas. Aucun adulte qui tire la leçon, aucun enfant qui s'excuse vite.
+   - *Référence interne :* mini-scénario *Le mot dit* (archive 2026-04-30)
+
+### Outil reporté
+
+6. **Coloration de voix culturelle** : quand un casting culturel autre (BR, JP, etc.) sera ouvert, la **voix narrative** (rythme, structure de phrase, références sensorielles) s'adaptera, mais le **sens du texte reste invariant**. Aujourd'hui casting France seul → aucune décision à prendre maintenant. Décor/biome (mer, montagne, pluie, saison) reste un paramètre libre du brief de chaque histoire.
+
+### Familles écartées
+
+- **F (morale explicite dite)** : écartée définitivement. Aucun narrateur ne tire la leçon, aucun perso ne dit "j'ai compris". Le lecteur (parent qui lit) commente s'il veut.
+
+### Brief writers en 1 phrase
+
+> *"Kishōtenketsu noyau (B) + voix tranche de vie (D) + cadre cyclique de la série (C). Pour l'arc 2 Parole : Ten = conséquence visible jamais commentée."*
+
+**Raison :** Max nourri par Tayo (C+A soft) + Ghibli (B pur) + Stitch (A doux) — sa réceptivité au B est déjà installée. À 3.5 ans, la causalité "parce que" s'installe → le Ten du Kishōtenketsu devient lisible. Mono-fil obligatoire (B-plot impossible avant 6-7 ans).
+
+**Liens :**
+- `archive/sessions/2026-04-30-brainstorm-arcs-style-gabarit.md` (matière brute + 5 mini-scénarios castés)
+- `equipe/sources-narratologie.md` (panorama 6 familles narratives mondiales + tableau ToM par âge)
+
+---
+
+## 2026-04-30 — Gabarit d'épisode : MOYEN (4 cases) avec qualité/problématique au niveau arc
+
+**Décision (chantier 2 tranché) :**
+
+### Gabarit pitch standard = MOYEN (4 cases)
+
+```
+- Objet titre : <le centre de gravité>
+- Duo + Wex : <2-3 persos> · Wex présent
+- Lieu : <puisé dans univers/, déjà connu>
+- Moment d'ouverture (1 phrase, OPTIONNEL si l'objet est fort)
+```
+
+### Qualité humaine + problématique implicite = NIVEAU ARC
+
+Ces deux dimensions ne sont **plus dupliquées dans chaque pitch d'histoire**. Elles sont préparées **une fois par arc**, dans la fiche de l'arc, et partagées entre toutes les histoires de l'arc.
+- Arc 1 (objet/décor bienveillant) : qualité d'arc à définir (probablement *"présence"* ou *"voir l'autre"* — à trancher quand on prépare l'arc)
+- Arc 2 (Parole) : qualité = *"les mots qui blessent ont des conséquences réelles, jamais commentées"* (déjà acté)
+- Arc 3 (univers spécifique) : qualité à définir
+- Arc 4 (pouvoirs Wex) : qualité à définir
+
+### Statut des pitches existants
+
+- **003 *La Confidence*, 004 *Cartable-à-trou*, 005 *Le Mardi*, 006 *Sept à rien*** : pitches COMPLETS conservés tels quels (sunk cost utile, sont en pause arc 2)
+- **Stock `axes-histoires-en-stock.md`** (15 axes H-XX + T-XX) : à convertir au format MOYEN. Colonnes "Qualité humaine" et "Problématique implicite" remontent au niveau arc.
+
+### Règle de révision
+
+Après 5-6 histoires écrites en gabarit MOYEN : point de revue. Si writers tapent à côté trop souvent → ajout du Ten visé. Si ça vole → maintien MOYEN, voire test MINIMAL ponctuel.
+
+**Raison :**
+- Le moment d'ouverture en 1 phrase est le vrai filtre éditorial — il dit si une histoire vaut le coup
+- COMPLET trahit la patte (D voix tranche de vie demande au writer de trouver le détail vrai dans l'instant, pas d'exécuter un Ten pré-spécifié — leçon V2 *Parapluie oublié*)
+- Coût de paramétrage compatible avec la fatigue Papa Yann (5 pitches en 15 min vs 2h en COMPLET)
+- Garde-fous délégués aux fiches stables (perso → ennéatype, univers → lieu, arc → motif)
+
+**Liens :** `archive/sessions/2026-04-30-brainstorm-arcs-style-gabarit.md` (mini-scénario comparé *La pierre tiède*)
+
+---
+
+## 2026-04-30 — Cascade documentaire post-décisions (chantiers 1 + 2)
+
+**Décision :** Les décisions stratégiques (`pmo/decisions.md`) doivent **descendre** dans les fichiers opérationnels lus par les agents exécutants (writers, architecte, gatekeeper). Sinon décisions "mortes" en PMO.
+
+### Cascade à appliquer
+
+| Décision | Atterrit dans | Lu par |
+|---|---|---|
+| Patte B+D+C + brief writers en 1 phrase | `equipe/voix-maxplay.md` *(à créer)* | Writers, Architecte, Dir |
+| Outils E (parcimonie) + A doux (Ten lourd arc Parole) + F écartée | `equipe/sources-narratologie.md` (MAJ section "patte MaxPlay") | Conseiller, Architecte |
+| 3 mini-scénarios canon (*Verre Mimi*, *Raph banc*, *Mot dit*) | `equipe/exemples-canoniques.md` *(à créer)* | Writers (référence concrète) |
+| Décor/biome paramètre libre | `equipe/templates/pitch.template.md` + `stories/_gabarit/pitch.md` (champ optionnel) | Tout pipeline |
+| Voix culturelle reportée à 2e casting | `personnages/prénoms-par-origine.md` (note bas) | Future ouverture casting |
+| Gabarit MOYEN 4 cases | Réécrire `axes-histoires-en-stock.md` + MAJ `equipe/templates/pitch.template.md` + `stories/_gabarit/pitch.md` | Conseiller, Architecte |
+| Qualité/problématique niveau arc | Nouveau dossier `arcs/` (1 fiche par arc) | Conseiller, Architecte |
+
+**Statut :** À exécuter après que Papa Yann aura validé la cascade et le chantier 3 (lecture critique des histoires existantes).
+
+---
+
+## 2026-04-30 — Chantier 3 reformulé : lecture critique avant écriture
+
+**Décision (reformulation chantier 3) :**
+
+Papa Yann n'a **lu aucune des 3 histoires existantes** (001 Pont Cassé canon, 002 Rire qui reste canon, 003 La Confidence workshop). Avant d'écrire toute nouvelle histoire, il veut :
+1. Lire les 3 textes existants
+2. Critiquer librement (style, voix, dialogues, sensibilité, sobriété, etc.)
+3. Nourrir `memoire-conseiller.md` + `memoire-dir.md` avec ses remarques
+4. Décider garder / affiner / jeter chacune
+
+**Raison :** Papa Yann : *"je n'ai lu AUCUNE des histoires jusque-là, justement je veux me pencher là-dessus. Si on a déjà des existantes je ferai mes remarques dessus, ça sera toujours utile et précieux. Si c'est nul on repartira de 0, si c'est bien ou presque on affinera sur l'existant."*
+
+→ Plus rigoureux que la proposition initiale d'écrire *La pierre tiède* sans avoir évalué les canon existants.
+
+---
+
+## 2026-04-30 — Renommage John → Papa Yann (auteur principal)
+
+**Décision :** L'auteur principal du projet MaxPlay s'appelle **Papa Yann** (pas "John" comme erronément écrit dans plusieurs fichiers depuis le début du chantier process militaire). Renommé partout dans `narration/**/*.md` (sauf 2 archives historiques où la trace reste).
+
+**Raison :** Erreur de l'orchestrateur (probable projection automatique). L'auteur s'est manifesté : *"Je ne m'appelle pas John c'est Papa Yann remplace everywhere."*
+
+---
+
+## 2026-04-30 — Patte Papa Yann (auteur) : 7 reproches récurrents + checklist GateKeeper renforcée
+
+**Décision :** Création d'un fichier dédié [`equipe/patte-papa-yann.md`](../equipe/patte-papa-yann.md) qui distille la sensibilité personnelle de l'auteur après ses 3 relectures critiques (001, 002, 003) le 2026-04-30.
+
+### 7 reproches récurrents identifiés
+1. **Narration jugeante** (anti-superlatif, anti-jugement) — *"comme toujours", "le plus rapide", "trop fort", "inutile"*
+2. **Prose qui fait littérature** — passé simple, métaphores doubles, comparaisons obscures
+3. **Cohérence narrative de fer** — physique, numérique, référentielle
+4. **Univers IMPLICITE strict** — aucun élément non attesté dans `univers/` (ex 003 « Maison Commune » → invention writer rejetée)
+5. **Lexique sombre interdit** — pas de "mort", pas de mots adultes abstraits ("communal")
+6. **Lecture orale fluide** — pas saccadée, pas de tirets cadratins ambigus, pas d'expression inventée
+7. **Distribution sensorielle** — saupoudrée, pas concentrée en bloc
+
+### Règles ajoutées
+- **Casting phonétique** : éviter les surnoms phonétiquement proches dans une même histoire (Nono+Polo = bug confirmé sur 002)
+- **Âge des persos secondaires** : si les héros ont 3.5-4-5 ans, les "plus petits" qui apparaissent ont 2-3 ans (pas 6)
+
+### Renforcement GateKeeper
+La checklist GateKeeper passe de **15 critères techniques** à **15 + 11 = 26 critères** (techniques + patte Papa Yann). Une histoire qui passe la checklist technique mais échoue sur la patte = NON PASS. Voir [`equipe/memoire-gatekeeper.md`](../equipe/memoire-gatekeeper.md).
+
+**Raison :** **003 La Confidence a passé 8/8 critères techniques mais reste mauvaise** selon Papa Yann → preuve que la checklist d'origine ne suffit pas. La patte Papa Yann + cohérence stricte sont nécessaires.
+
+---
+
+## 2026-04-30 — STORY-001 V2 nécessaire (refonte intégrale)
+
+**Décision :** L'histoire 001 *Le Pont Cassé* (canon V1 depuis 2026-04-24) nécessite une **refonte intégrale** via le nouveau PROCESS militaire 9 étapes.
+
+**Raisons :**
+- Adulte en scène (Monsieur Ferretti) — viole règle saison 1 actée le 2026-04-29 (postérieure à la canonisation)
+- Possible confusion ennéatype Juju/Melki (à vérifier)
+- Épilogue italique (règle anti-épilogue actée le 2026-04-28)
+- 4 patterns Papa Yann détectés (jugement, lexique adulte, incohérences, lexique sombre)
+
+**Action :** lancer le PROCESS standard. La V1 reste en `_archive/v1-2026-04-24.md`. Idées Papa Yann pour la V2 dans `stories/001-le-pont-casse/lecteurs-temoins/papa-yann-relecture-2026-04-30.md`.
+
+---
+
+## 2026-04-30 — STORY-002 V2 nécessaire
+
+**Décision :** L'histoire 002 *Le Rire qui reste* (canon V1 depuis 2026-04-28) nécessite une **V2** via le nouveau PROCESS.
+
+**Raisons critiques :**
+- Casting phonétique Nono+Polo = confusion → **un des deux à changer** (celui qui tombe reste garçon)
+- Incohérence physique (ballon "chaud du bois du banc" sur les genoux)
+- Pronom ambigu (qui lance vers Polo ?)
+- Expression inventée ("jouer avec une dent en moins")
+- Style trop saccadé pour lecture orale parent
+- Détails sensoriels concentrés en bloc (au lieu de distribués)
+- Reste rattachée à arc-2 Parole (en pause)
+
+**Action :** la V1 reste canon (la V2 sera traitée à la reprise de l'arc 2). Détails dans `stories/002-le-rire-qui-reste/lecteurs-temoins/papa-yann-relecture-2026-04-30.md`.
+
+---
+
+## 2026-05-02 — RÈGLE ABSOLUE : agent manquant = STOP + alerte auteur
+
+**Décision Papa Yann (non-négociable) :**
+
+> *« Quand un truc est manquant ou non fonctionnel dans notre process militaire, tu sors et tu me demandes. TOUJOURS. »*
+
+**Application stricte :**
+
+- L'orchestrateur (Claude principal) ou tout agent **NE DOIT JAMAIS** se substituer à un autre agent indisponible
+- Si un agent défini dans `.claude/agents/` n'est pas chargé en session courante → **STOP immédiat**, alerter Papa Yann, proposer redémarrage de session
+- Pas de "mode dégradé manuel" sur les rôles process (PMO, Architecte, GateKeeper, Conseiller, Directeur, Writers, Lecteurs, Archiviste, Science, Sensibilité, Localisation, Audio)
+- Ce qui peut rester orchestrateur : navigation fichiers, archivage live, exécution scripts, mises à jour techniques (renommages, suppressions validées) — **PAS** le travail créatif/éditorial des agents dédiés
+
+**Raison :** la patte/qualité d'un agent dédié (modèle adapté, prompt système spécifique, mémoire propre) ne peut pas être imitée correctement par l'orchestrateur. Une histoire écrite par "Claude qui imite le Directeur" ne sera pas une histoire MaxPlay validée.
+
+**Cas concret 2026-05-02 :** session courante avait `narration-pmo`, `narration-architecte`, `narration-gatekeeper` non chargés. → Décision Papa Yann : redémarrer la session plutôt que de me laisser faire à leur place.
+
+**Action standard quand un agent manque :**
+1. STOP — ne pas tenter de substitution
+2. Identifier précisément quel(s) agent(s) manque(nt)
+3. Alerter Papa Yann avec le nom exact des agents indisponibles
+4. Proposer redémarrage de session (les `.md` étant déjà sur disque)
+5. Reprendre où on s'était arrêté à la prochaine session
+
+---
+
+## 2026-05-02 — Suppression définitive STORY-003 / 004 / 005 / 006
+
+**Décision Papa Yann :** suppression **pure et dure** des 4 dossiers d'histoires :
+- `stories/003-la-confidence/` (déjà abandonnée le 2026-04-30)
+- `stories/004-cartable-a-trou/` (pitch en pause arc 2)
+- `stories/005-le-mardi/` (pitch en pause arc 2)
+- `stories/006-sept-a-rien/` (pitch en pause arc 2)
+
+**Raison :** *« j'ai lu que 1 et 2, la 3 était terrible, je la supprime pure et dure. Seul 1 et 2 existent pour le moment, rien d'autre niveau story tu peux virer (on a toujours pas validé le style d'une seule histoire, donc en avoir 12 non lues est contre-productif). »*
+
+**Conséquences :**
+- **Aucune sauvegarde** des pitches/briefs Kishōtenketsu de 004/005/006 (aucun n'avait été validé par Papa Yann — la matière était présente mais non-canon)
+- **Une seule idée conservée** (de la défunte 003) : *concours de dessins en lieu public bienveillant* → noté dans `axes-histoires-en-stock.md` comme matière exploitable pour arc 3
+- Le **slot 003 redevient libre** et sera utilisé pour la version *from-scratch* de la 001 (test du nouveau PROCESS militaire)
+- La série La Parole (`stories/series/001-la-parole.md`) est désormais réduite à la seule 002 — gardée pour la reprise future de l'arc 2
+
+**État final des stories après suppression :**
+- 001 *Le Pont Cassé* (canon V1 — V2 nécessaire)
+- 002 *Le Rire qui reste* (canon V1 — V2 nécessaire, en pause arc 2)
+
+---
+
+## 2026-04-30 — STORY-003 ABANDONNÉE
+
+**Décision :** L'histoire 003 *La Confidence* est **abandonnée**. Ne sera pas canonisée.
+
+**Verdict Papa Yann :** *"cette histoire est pas bonne… on va retravailler ça différemment."*
+
+**Raisons :**
+- Élément d'univers non attesté ("Maison Commune") = invention writer rejetée
+- Métaphores adultes abstraites ("montagnes blanches, vallées d'encre")
+- Passé simple littéraire ("naquit au coin")
+- Comparaison qui ne marche pas ("blanc comme un doigt")
+- Détails techniques non ancrés ("papier kraft")
+- Références orphelines ("la maison aux fenêtres" jamais posée)
+- Fin opaque ("on dit pas blabla puis ça va")
+
+**Action :**
+- Statut `abandoned` dans frontmatter README
+- Tous les fichiers de fabrication restent dans le dossier (règle PROCESS : rien n'est effacé)
+- Ticket STORY-003 fermé
+- **Idées à conserver** pour de futures histoires :
+  - Concept "concours de dessins dans un lieu de passage public" (matière potentielle pour arc 3 ou autre)
+  - Lieu d'exposition extérieur bienveillant → décision univers à prendre avec Conseiller (à formaliser dans `univers/vie-quotidienne/` à terme)
+
+---
+
+## 2026-04-30 — Comportement Conseiller : 1 sujet à la fois
+
+**Décision :** L'agent `narration-conseiller` doit traiter **un seul chantier à la fois**, poser **une seule question** par salve, ne **pas servir de menu** de solutions. Ouvrir les autres angles seulement après réaction de Papa Yann.
+
+**Implémentation :** Bloc "Règle de conduite brainstorm (NON-NÉGOCIABLE)" ajouté dans `.claude/agents/narration-conseiller.md`.
+**Raison :** Papa Yann saturé par les réponses-menu : *"tu me donnes des solutions sur 3 axes et je suis débordé".*
+
+---
+
 ## 2026-04-24 — Casting V1 "Christ" figé
 
 **Décision :** Les 9 prénoms + Wex sont définitifs.
@@ -131,9 +532,9 @@
 
 **Décision :** Workflow en 6 phases (INTAKE → BRIEF → ÉCRITURE × 5 → SYNTHÈSE → RELECTURE → KEEPER → CANON). PMO hub post-phase à chaque étape.
 
-**Briefs injectés aux writers stateless :** 3 fichiers séparés par histoire :
-- `equipe/brief-univers.md` — monde, ton, règles (mis à jour par Archiviste toutes les 5 histoires)
-- `workshop/<titre>/plan-histoire.md` — sujet, Ki-Sho-Ten-Ketsu, casting, angle, contraintes (remplace brief-personnages + brief-histoire)
+**Briefs injectés aux writers stateless :** *(Surchargé par décision 2026-04-30 PROCESS militaire — voir templates `equipe/templates/brief-{univers,personnages,histoire}.template.md` et étape 3 du PROCESS)*
+- ~~`equipe/brief-univers.md` — monde, ton, règles~~
+- ~~`workshop/<titre>/plan-histoire.md`~~
 
 **Writers × 4 :** Kimi · DeepSeek · Grok · Claude Libre (stateless). ~~Claude Ancré~~ *(agent historique supprimé le 2026-04-28 — voir ARCHI-005)*.
 

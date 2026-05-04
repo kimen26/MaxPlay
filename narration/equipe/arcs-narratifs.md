@@ -35,7 +35,7 @@ Un **arc narratif** = **suite de 3 à 7 histoires** (typiquement 3, 5 ou 7) lié
 | # | Titre | Statut | Personnages | Ressort « parole » |
 |---|-------|--------|-------------|---------------------|
 | 002 | Le Rire qui reste | ✅ canon | Wex · Nono · Polo | Une moquerie qui colle |
-| 003 | La Confidence | 🟡 workshop | Wex · Jérem · Raph | Confidence répétée |
+| 003 | La Confidence | 🟡 workshop | Wex · Madie · Raph | Confidence répétée |
 | 004 | Cartable-à-trou | ⚪ pitch | Polo · Lulu · Mimi · Wex | Surnom qui colle |
 | 005 | Le Mardi | ⚪ pitch | Wex · Pierrot · Melki | Promesse oubliée |
 | 006 | Sept à rien | ⚪ pitch | Juju · Mimi · Wex | Mot dit en colère |
@@ -47,7 +47,7 @@ Un **arc narratif** = **suite de 3 à 7 histoires** (typiquement 3, 5 ou 7) lié
 - Wex jamais sauveur
 - Le geste > le mot
 
-**Couverture casting** : 8/9 compagnons (Nono, Polo, Jérem, Raph, Lulu, Mimi, Pierrot, Melki, Juju) + Wex circule en témoin. Manque : Pierrot apparaît en secondaire, à confirmer.
+**Couverture casting** : 8/9 compagnons (Nono, Polo, Madie, Raph, Lulu, Mimi, Pierrot, Melki, Juju) + Wex circule en témoin. Manque : Pierrot apparaît en secondaire, à confirmer.
 
 **Source** : `../archive/inputs-historiques/serie-parole-briefs.md` (archivé) · `../stories/series/001-la-parole.md`.
 

@@ -52,83 +52,117 @@ export class SandboxScene extends Phaser.Scene {
   }
 
   private createCleanWorld(): void {
-    // Herbe
-    this.add.rectangle(WORLD_WIDTH / 2, WORLD_HEIGHT / 2, WORLD_WIDTH, WORLD_HEIGHT, 0x81C784);
+    const TILE = 48;
+    const COLS = Math.ceil(WORLD_WIDTH / TILE);   // 50
+    const ROWS = Math.ceil(WORLD_HEIGHT / TILE);  // 34
 
-    // Route horizontale
-    this.add.rectangle(WORLD_WIDTH / 2, WORLD_HEIGHT / 2, WORLD_WIDTH, 140, 0x616161);
-    for (let x = 50; x < WORLD_WIDTH; x += 100) {
-      this.add.rectangle(x, WORLD_HEIGHT / 2, 50, 6, 0xFFFFFF);
+    // Croisement central : route H rows 15-17, route V cols 24-26 (3 tiles chacune)
+    // Trottoirs : rows 14 et 18 (H), cols 23 et 27 (V)
+    const isHRoad = (r: number) => r >= 15 && r <= 17;
+    const isVRoad = (c: number) => c >= 24 && c <= 26;
+    const isHSidewalk = (r: number) => r === 14 || r === 18;
+    const isVSidewalk = (c: number) => c === 23 || c === 27;
+
+    const grassMix = ['tile-grass1', 'tile-grass2', 'tile-grass3'];
+    const asphMix  = ['tile-asphalt1', 'tile-asphalt2', 'tile-asphalt3'];
+    const swMix    = ['tile-sidewalk1', 'tile-sidewalk2'];
+
+    // ─── Layer 1 : sol (tile par tile) ──────────────────────────
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < COLS; c++) {
+        let key: string;
+        if (isHRoad(r) || isVRoad(c)) {
+          key = asphMix[(r + c) % 3];
+        } else if (isHSidewalk(r) || isVSidewalk(c)) {
+          key = swMix[(r + c) % 2];
+        } else {
+          key = grassMix[(r * 7 + c * 3) % 3];
+        }
+        this.add.image(c * TILE, r * TILE, key).setOrigin(0, 0).setDepth(-100);
+      }
     }
 
-    // Route verticale
-    this.add.rectangle(WORLD_WIDTH / 2, WORLD_HEIGHT / 2, 140, WORLD_HEIGHT, 0x616161);
-    for (let y = 50; y < WORLD_HEIGHT; y += 100) {
-      this.add.rectangle(WORLD_WIDTH / 2, y, 6, 50, 0xFFFFFF);
-    }
-
-    // Trottoirs
-    this.add.rectangle(WORLD_WIDTH / 2, WORLD_HEIGHT / 2 - 85, WORLD_WIDTH, 30, 0xBDBDBD);
-    this.add.rectangle(WORLD_WIDTH / 2, WORLD_HEIGHT / 2 + 85, WORLD_WIDTH, 30, 0xBDBDBD);
-    this.add.rectangle(WORLD_WIDTH / 2 - 85, WORLD_HEIGHT / 2, 30, WORLD_HEIGHT, 0xBDBDBD);
-    this.add.rectangle(WORLD_WIDTH / 2 + 85, WORLD_HEIGHT / 2, 30, WORLD_HEIGHT, 0xBDBDBD);
-
-    // Arrêts de bus
-    this.createBusStop(300, WORLD_HEIGHT / 2 - 105, '162');
-    this.createBusStop(1200, WORLD_HEIGHT / 2 - 105, 'M7');
-    this.createBusStop(WORLD_WIDTH - 300, WORLD_HEIGHT / 2 + 105, '380');
-
-    // Arbres (répartis sur la grande carte)
-    const trees = [
-      { x: 200,  y: 200  }, { x: 500,  y: 300  }, { x: 800,  y: 150  },
-      { x: 1400, y: 250  }, { x: 1900, y: 200  }, { x: 2200, y: 300  },
-      { x: 200,  y: 1300 }, { x: 600,  y: 1400 }, { x: 1200, y: 1350 },
-      { x: 1800, y: 1400 }, { x: 2100, y: 1300 },
+    // ─── Layer 2 : maisons (toyhouse 4×5 = 192×240 px) ──────────
+    // 4 quadrants, chacun avec 1-2 maisons sur grass
+    const houses: Array<[number, number, string]> = [
+      // Quadrant NO
+      [3 * TILE,  3 * TILE,  'tile-toyhouse1'],
+      [12 * TILE, 4 * TILE,  'tile-toyhouse5'],
+      // Quadrant NE
+      [33 * TILE, 3 * TILE,  'tile-toyhouse2'],
+      [42 * TILE, 4 * TILE,  'tile-toyhouse6'],
+      // Quadrant SO
+      [3 * TILE,  22 * TILE, 'tile-toyhouse3'],
+      [12 * TILE, 23 * TILE, 'tile-toyhouse5'],
+      // Quadrant SE
+      [33 * TILE, 22 * TILE, 'tile-toyhouse4'],
+      [42 * TILE, 23 * TILE, 'tile-toyhouse1'],
     ];
-    trees.forEach(t => {
-      this.add.rectangle(t.x, t.y, 12, 30, 0x5D4037);
-      this.add.circle(t.x, t.y - 25, 35, 0x4CAF50);
-      this.add.circle(t.x - 12, t.y - 20, 22, 0x66BB6A);
-      this.add.circle(t.x + 12, t.y - 20, 22, 0x66BB6A);
+    houses.forEach(([x, y, key]) => {
+      this.add.image(x, y, key).setOrigin(0, 0).setDepth(y);
     });
 
-    // Bâtiments (répartis)
-    this.createBuilding(250, 280, 0xFFCC80);
-    this.createBuilding(1900, 350, 0xEF9A9A);
-    this.createBuilding(280, 1250, 0xB39DDB);
-    this.createBuilding(1950, 1280, 0xA5D6A7);
-    this.createBuilding(700, 250, 0x80DEEA);
-    this.createBuilding(1600, 300, 0xFFAB91);
+    // ─── Layer 3 : arbres répartis sur grass ────────────────────
+    const bushKeys = ['tile-bush1', 'tile-bush2', 'tile-bush3'];
+    const trees: Array<[number, number]> = [
+      [9, 1], [11, 9], [20, 2], [22, 11],
+      [29, 1], [31, 9], [40, 2], [47, 11],
+      [9, 21], [11, 28], [20, 23], [22, 30],
+      [29, 21], [31, 28], [40, 23], [47, 30],
+      [16, 9], [37, 9], [16, 23], [37, 23],
+    ];
+    trees.forEach(([c, r], i) => {
+      const key = bushKeys[i % 3];
+      this.add.image(c * TILE, r * TILE, key).setOrigin(0, 0).setDepth(r * TILE);
+    });
 
-    // Lampadaires
-    [400, 800, 1200, 1600, 2000].forEach(x => {
-      this.createLamp(x, WORLD_HEIGHT / 2 - 105);
-      this.createLamp(x, WORLD_HEIGHT / 2 + 105);
+    // ─── Layer 4 : arrêts de bus (poteau + abri) ────────────────
+    // Positions : 3 arrêts inspirés du jeu original
+    this.createBusStop(6 * TILE,  14 * TILE, '162');  // côté nord, ouest
+    this.createBusStop(20 * TILE, 14 * TILE, 'M7');   // côté nord, milieu
+    this.createBusStop(40 * TILE, 18 * TILE, '380');  // côté sud, est
+
+    // ─── Layer 5 : lampadaires (electric_pole 1×4 = 48×192) ─────
+    const lamps: Array<[number, number]> = [
+      [8, 13], [15, 13], [29, 13], [36, 13], [43, 13], // nord
+      [8, 19], [15, 19], [29, 19], [36, 19], [43, 19], // sud
+    ];
+    lamps.forEach(([c, r]) => {
+      // Pole tile = 48×192 → ancré 4 rows au-dessus de la base
+      this.add.image(c * TILE, (r - 3) * TILE, 'tile-pole').setOrigin(0, 0).setDepth(r * TILE);
+    });
+
+    // ─── Layer 6 : décorations (poubelles, panneaux, fleurs) ────
+    this.add.image(10 * TILE, 14 * TILE, 'tile-trash').setOrigin(0, 0).setDepth(14 * TILE);
+    this.add.image(34 * TILE, 18 * TILE, 'tile-trash').setOrigin(0, 0).setDepth(18 * TILE);
+    this.add.image(25 * TILE, 14 * TILE, 'tile-info-sign').setOrigin(0, 0).setDepth(14 * TILE);
+    this.add.image(25 * TILE, 18 * TILE, 'tile-mailbox').setOrigin(0, 0).setDepth(18 * TILE);
+
+    const flowerKeys = ['tile-flower-r', 'tile-flower-y', 'tile-flower-p'];
+    const flowers: Array<[number, number]> = [
+      [8, 8], [16, 7], [25, 6], [35, 8], [45, 7],
+      [8, 25], [16, 26], [25, 27], [35, 25], [45, 26],
+    ];
+    flowers.forEach(([c, r], i) => {
+      this.add.image(c * TILE, r * TILE, flowerKeys[i % 3]).setOrigin(0, 0).setDepth(r * TILE);
     });
   }
 
   private createBusStop(x: number, y: number, line: string): void {
-    this.add.rectangle(x, y, 6, 50, 0x424242);
-    this.add.rectangle(x, y - 35, 50, 30, 0x1976D2).setStrokeStyle(2, 0xFFFFFF);
-    this.add.text(x, y - 35, line, {
-      fontFamily: 'Nunito', fontSize: '16px', fontStyle: 'bold', color: '#FFFFFF',
-    }).setOrigin(0.5);
-    this.add.rectangle(x + 40, y, 40, 15, 0x8D6E63);
-    this.add.rectangle(x + 30, y + 10, 6, 15, 0x5D4037);
-    this.add.rectangle(x + 50, y + 10, 6, 15, 0x5D4037);
-  }
+    // Banc d'attente (tile bench_city = 96×96 ancré top-left)
+    this.add.image(x, y, 'tile-bench-city').setOrigin(0, 0).setDepth(y);
 
-  private createBuilding(x: number, y: number, color: number): void {
-    this.add.rectangle(x, y, 100, 80, color).setStrokeStyle(2, 0x424242);
-    this.add.rectangle(x, y + 20, 30, 40, 0x5D4037);
-    this.add.rectangle(x - 25, y - 15, 30, 30, 0x81D4FA).setStrokeStyle(1, 0x424242);
-    this.add.rectangle(x + 25, y - 15, 30, 30, 0x81D4FA).setStrokeStyle(1, 0x424242);
-  }
-
-  private createLamp(x: number, y: number): void {
-    this.add.rectangle(x, y, 6, 40, 0x424242);
-    this.add.circle(x, y - 25, 12, 0xFFEB3B, 0.8);
-    this.add.circle(x, y - 25, 40, 0xFFEB3B, 0.1);
+    // Panneau d'arrêt : rectangle bleu RATP avec numéro de ligne (au-dessus du banc)
+    const signX = x + 24;       // centré sur le banc
+    const signY = y - 32;
+    this.add.rectangle(signX, signY, 6, 40, 0x424242).setOrigin(0.5, 0).setDepth(y);  // mât
+    this.add.rectangle(signX, signY, 50, 22, 0x1976D2)
+      .setStrokeStyle(2, 0xFFFFFF)
+      .setOrigin(0.5, 0)
+      .setDepth(y);
+    this.add.text(signX, signY + 11, line, {
+      fontFamily: 'Nunito', fontSize: '14px', fontStyle: 'bold', color: '#FFFFFF',
+    }).setOrigin(0.5).setDepth(y + 1);
   }
 
   private createBus(): void {

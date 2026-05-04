@@ -182,6 +182,63 @@
 
 ### Trous identifiés / à creuser ensemble
 - **Sensibilité de Wex** — non définie précisément. Priorité avant S2 (NARR-003). Pistes auteur : écoute des fausses notes, lien soin-bioélectrique.
-- **Première apparition canon des compagnons-ondes** — quelle histoire de fin S1 inaugure ? Idéalement perso sensible aux flux (Mimi-eau ou Jérem-fréquence). À pitcher.
+- **Première apparition canon des compagnons-ondes** — quelle histoire de fin S1 inaugure ? Idéalement perso sensible aux flux (Mimi-eau ou Madie-fréquence). À pitcher.
 - **Logements / chambres de chaque perso** — non définis. Devient critique en S2 (saison des visites). À cadrer avant ouverture S2.
 - **Cross-culture micro-structures** — NARR-001, à discuter avec auteur.
+
+---
+
+## Patterns sélection — observations Tour 1 003-v2 (2026-05-04)
+
+> Patterns observés sur les 8 versions writers Tour 1 + 4 lecteurs témoins (Tour 1 supprimé suite refonte, mais leçons gardées).
+> **Règle d'usage** : ces patterns servent à **arbitrer la sélection** (Phase 6 Directeur). Ils ne **doivent pas** être imposés dans les briefs writers — un writer qui se force à les fabriquer sonne faux. On les **détecte** quand ils émergent naturellement.
+
+### Sons-bouche (favoriser en sélection)
+
+`floc-floc`, `glou-glou`, `tss-tss`, `tac-tac`, `clac`, `plouf`, etc. Onomatopées labiales/dentales que l'enfant peut **rejouer avec sa bouche**. Universellement appréciés par les 4 lecteurs Tour 1 (signal d'engagement corporel).
+
+**À favoriser en sélection MAIS ne pas imposer dans les briefs** — risque de fabrication forcée si le writer se sent obligé d'en mettre.
+
+### Comparaisons domestiques > métaphores adultes
+
+Comparaisons qui ont accroché Tour 1 : *cuillère*, *laine de mouton*, *porte qui claque*. Ce que l'enfant a déjà touché ou entendu chez lui.
+Comparaisons qui ont décroché : *doigts dorés*, *géant maladroit*, *miroir liquide*. Belles à l'oreille adulte, vides pour l'enfant.
+
+**Test sélection** : la comparaison aide-t-elle à **voir/sentir** ou juste à **admirer la prose** ?
+
+### Ouvertures longues = décrochage
+
+Plus de **30 mots avant un personnage en action** = décrochage systématique chez les 4 lecteurs Tour 1. Le décor seul ne tient pas l'attention 3.5 ans, même très bien écrit.
+
+**À observer en sélection** : compter les mots avant la première action/parole d'un personnage.
+
+### Corps qui participe
+
+Verbes où l'enfant peut **bouger avec** (sauter avec, ramper avec, pousser avec) tiennent mieux qu'observer/regarder. Tour 1 a montré que les enfants agités décrochent moins quand le texte propose un mouvement à mimer.
+
+**À favoriser en sélection. Ne pas imposer en brief** (risque de fabrication).
+
+---
+
+## Sessions 2026-05-03 — Refonte briefs writers (règle F + simplification checklist)
+
+### Décisions tranchées définitivement
+
+- 2026-05-03 | tranché | **Critères 9 et 13 retirés de checklist GateKeeper** : distribution sensorielle (au choix du writer) + épilogue italique (reste règle relecture Directeur). Application de règle F — un writer naïf n'évoquerait pas spontanément ces sujets → ne pas les mentionner. Checklist passe de 26 à 24 critères.
+
+- 2026-05-03 | tranché | **Règle F remonte dans tous les documents** : briefs Directeur, plans Architecte, notes Conseiller, mémoires. Quand on dit "on n'a pas besoin de X", on n'écrit RIEN sur X. La négation crée un fantôme. Test : lecteur naïf du document évoquerait-il spontanément le sujet sans la négation ? Si non → enlever.
+
+- 2026-05-03 | tranché | **Vocabulaire dur = liste explicite d'interdits seulement** (mort, mourir, crever, clochard, pédocriminel, pistolet, pute, enculer + famille). Tout le reste passe s'il sert la scène. Pas de censure soft — on libère le vocabulaire fort quand ça sert.
+
+- 2026-05-03 | tranché | **Wex peut agir, parler, résoudre** (clarification héritée V2 003-v2). "Observateur, joyeux, moteur, légèrement tête en l'air, sans ennéatype. Souvent déclencheur." Pas de handicap. Pas de mutisme.
+
+- 2026-05-03 | tranché | **PMO devient relecteur des briefs writers** : passe mécanique (grep négations + test règle F) avant étape 4. Si négatifs gratuits restent → kanban bloqué, alerte Directeur.
+
+### Fichiers impactés cette session
+- `narration/equipe/memoire-gatekeeper.md` — checklist réduite de 26 à 24 critères + explication retrait
+- `narration/equipe/memoire-architecte.md` — règle F + rappel relire decisions.md
+- `narration/equipe/memoire-dir.md` — 8 nouvelles décisions 2026-05-03 (briefs cadre, autoporteurs, vocabulaire, PMO relecture, etc.)
+- `narration/equipe/memoire-conseiller.md` — cette section (ajoutée 2026-05-03)
+- `.claude/agents/narration-gatekeeper.md` — checklist réduite (14+10 au lieu de 15+11)
+- `.claude/agents/narration.md` — mention PMO relecture briefs + decisions.md
+- `.claude/agents/narration-architecte.md` — plan minimal + règle F

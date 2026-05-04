@@ -63,7 +63,7 @@ personnages/
 | [type-01/](type-01/) | Perfectionniste | Melchisédech | **Melki** | Être bon·ne | Minéraux | `titi_1_fr` |
 | [type-02/](type-02/) | Aidant | Marie (F) | **Mimi** | Être aimé·e | Eau | `titi_2_fr` |
 | [type-03/](type-03/) | Performeur | Paul | **Polo** | Être valorisé·e | Forces | `titi_3_fr` |
-| [type-04/](type-04/) | Individualiste | Jérémie | **Jérem** | Être soi-même | Fréquence | `titi_4_fr` |
+| [type-04/](type-04/) | Individualiste | Madeleine (F) | **Madie** | Être soi-même | Fréquence | `titi_4_fr` |
 | [type-05/](type-05/) | Observateur | Luc | **Lulu** | Comprendre | Quantique | `titi_5_fr` |
 | [type-06/](type-06/) | Loyal | Pierre | **Pierrot** | Avoir du soutien | Animaux | `titi_6_fr` |
 | [type-07/](type-07/) | Enthousiaste | Raphaëlle (F) | **Raph** | Être comblé·e | Cosmos | `titi_7_fr` |
@@ -76,7 +76,7 @@ personnages/
 |---------|------|--------|-------|
 | [wex/](wex/) | **Héros universel** | **Wex** | `wex` |
 
-**Bilan genre casting France :** 3F (Mimi, Raph, Juju) / 6M + Wex. **Figé — définitif.**
+**Bilan genre casting France :** 4F (Mimi, Madie, Raph, Juju) / 5M + Wex. **Figé — définitif (mise à jour 2026-05-05).**
 
 ---
 
@@ -99,7 +99,7 @@ personnages/
 | Melki | T1 | Minéraux | ✅ figé |
 | Mimi | T2 | Eau | ✅ figé |
 | Polo | T3 | Forces | ✅ figé |
-| Jérem | T4 | Fréquence | ✅ figé |
+| Madie | T4 | Fréquence | ✅ figé |
 | Lulu | T5 | Quantique | ✅ figé |
 | Pierrot | T6 | Animaux | ✅ figé |
 | Raph | T7 | Cosmos | ✅ figé |

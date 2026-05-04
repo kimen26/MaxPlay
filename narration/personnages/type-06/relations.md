@@ -13,5 +13,5 @@
 | Melki | 1 | Melki apprécie la prudence de Pierrot. Ils partagent un sens des règles et du cadre. |
 | Lulu | 5 | Lulu analyse les risques, Pierrot anticipe les dangers. Complicité intellectuelle dans la précaution. |
 | Polo | 3 | Pierrot ne comprend pas que Polo fonce sans vérifier. Polo ne comprend pas que Pierrot vérifie tout. |
-| Jérem | 4 | Jérem est trop imprévisible pour Pierrot. Pierrot est trop anxieux pour Jérem. Mais ils s'estiment. |
+| Madie | 4 | Madie est trop imprévisible pour Pierrot. Pierrot est trop anxieux pour Madie. Mais ils s'estiment. |
 

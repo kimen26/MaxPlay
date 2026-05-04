@@ -13,7 +13,7 @@
 | 1 | Melki | Diamant · Saphir blanc | Mercure | Argent / Blanc | Air |
 | 2 | Mimi | Quartz rose · Rhodonite | Lune | Rose / Rouge doux | Eau |
 | 3 | Polo | Citrine · Rubis | Soleil | Jaune / Or | Feu |
-| 4 | Jérem | Opale · Améthyste | Neptune | Violet / Indigo | Eau |
+| 4 | Madie | Opale · Améthyste | Neptune | Violet / Indigo | Eau |
 | 5 | Lulu | Saphir · Lapis-lazuli | Uranus | Bleu nuit | Air |
 | 6 | Pierrot | Agate Blue Lace · Calcédoine | Saturne | Bleu ciel / Beige | Terre |
 | 7 | Raph | Lépidolite · Citrine verte | Jupiter | Vert / Orange | Feu |
@@ -36,7 +36,7 @@
 - Citrine : énergie solaire, réussite, confiance — accord 2 sources (Grok préférait Rubis)
 - Soleil : performance, rayonnement, visibilité — accord 3 sources
 
-**Type 4 — Jérem**
+**Type 4 — Madie**
 - Opale : unicité, profondeur émotionnelle, iridescence — accord 2 sources
 - Neptune : rêve, mystère, profondeur — accord 3 sources
 

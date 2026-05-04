@@ -139,7 +139,10 @@
     <div class="info" id="info">Tape un tube, puis tape un autre pour verser !</div>
     <div class="stage" id="stage"></div>
     <div class="controls">
-      <button class="btn" onclick="reset()">🔄 Recommencer</button>
+      <button class="btn" onclick="changeColorCount(-1)">−</button>
+      <span style="color:#fff;font-weight:900;font-size:1rem;padding:0 4px;">🧪 <span id="tubeCountVal">4</span> couleurs</span>
+      <button class="btn" onclick="changeColorCount(1)">+</button>
+      <button class="btn" onclick="reset()">🔄</button>
     </div>
   </div>
 
@@ -159,36 +162,56 @@
   <script src="js/bus-svg.js"></script>
   <script src="js/data.js"></script>
   <script>
-    // MJ-18 V3 — 6 tubes, 4 couleurs réelles de bus + 2 tubes vides
+    // MJ-18 V4 — nombre de tubes configurable, couleurs de bus réelles
     const TUBE_CAPACITY = 4;
-    // Couleurs strictes IDFM : chaque tube correspond à un vrai bus.
-    // La parade finale peindra ces bus avec LEUR vraie couleur.
-    const BUS_THEMES = [
+    const TUBES_EMPTY = 2;
+    const COLOR_COUNT_MIN = 3;
+    const COLOR_COUNT_MAX = 8;
+
+    // Palette élargie : couleurs IDFM réelles de bus connus
+    const ALL_BUS_THEMES = [
       { num: '162', color: '#0064B1' }, // bleu
       { num: '172', color: '#008C59' }, // vert
       { num: '184', color: '#DCAC27' }, // jaune/or
       { num: '186', color: '#B43C95' }, // magenta
+      { num: '323', color: '#E3000F' }, // rouge
+      { num: '131', color: '#FF8200' }, // orange
+      { num: '180', color: '#00AFCA' }, // cyan
+      { num: 'V7',  color: '#6EBE44' }, // vert pomme
     ];
-    const COLORS = BUS_THEMES.map(t => t.color);
-    const TUBES_FILLED = COLORS.length;               // 4
-    const TUBES_EMPTY  = 2;
-    const TOTAL_TUBES  = TUBES_FILLED + TUBES_EMPTY;  // 6
+
+    let colorCount = 4; // nombre de couleurs actif (= tubes remplis)
+    let BUS_THEMES = ALL_BUS_THEMES.slice(0, colorCount);
 
     let tubes = [];
     let selected = null;
     let complete = false;
     let animating = false;
 
+    function updateCountDisplay() {
+      document.getElementById('tubeCountVal').textContent = colorCount;
+    }
+
+    function changeColorCount(delta) {
+      const next = colorCount + delta;
+      if (next < COLOR_COUNT_MIN || next > COLOR_COUNT_MAX) return;
+      colorCount = next;
+      BUS_THEMES = ALL_BUS_THEMES.slice(0, colorCount);
+      updateCountDisplay();
+      reset();
+    }
+
     function reset() {
       complete = false;
       animating = false;
-      // Mélange : TUBE_CAPACITY couches × COLORS.length, réparti sur 3 tubes
+      const COLORS = BUS_THEMES.map(t => t.color);
+      // Mélange : TUBE_CAPACITY couches × COLORS.length, réparti sur les tubes remplis
       const mix = [];
       COLORS.forEach(c => { for (let i=0;i<TUBE_CAPACITY;i++) mix.push(c); });
       for (let i=mix.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [mix[i],mix[j]]=[mix[j],mix[i]]; }
       tubes = [];
-      for (let i=0;i<TUBES_FILLED;i++) tubes.push(mix.slice(i*TUBE_CAPACITY, (i+1)*TUBE_CAPACITY));
-      for (let i=0;i<TUBES_EMPTY;i++)  tubes.push([]);
+      for (let i=0;i<colorCount;i++) tubes.push(mix.slice(i*TUBE_CAPACITY, (i+1)*TUBE_CAPACITY));
+      for (let i=0;i<TUBES_EMPTY;i++) tubes.push([]);
       if (isSolved()) return reset();
       selected = null;
       render();
@@ -407,7 +430,7 @@
 
     function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
-    document.addEventListener('DOMContentLoaded', reset);
+    document.addEventListener('DOMContentLoaded', () => { updateCountDisplay(); reset(); });
   </script>
   <script src="js/tracker.js"></script>
   <script src="js/comments.js"></script>

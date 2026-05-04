@@ -1,20 +1,22 @@
 #!/usr/bin/env node
 /**
- * new-story.js — Créer un nouveau dossier workshop pour une histoire
- * Usage : node narration/scripts/new-story.js "titre-de-l-histoire"
+ * new-story.js — Créer un nouveau dossier d'histoire à partir du gabarit unifié.
+ * Usage : node narration/scripts/new-story.js NNN "titre-de-l-histoire"
+ *
+ * Crée stories/<NNN-slug>/ depuis stories/_gabarit/ (réécrit 2026-04-30, format unifié post-suppression workshop/).
  */
 
 const fs = require('fs');
 const path = require('path');
 
-const WORKSHOP_DIR = path.join(__dirname, '..', 'workshop');
-const GABARIT_DIR = path.join(WORKSHOP_DIR, '_gabarit');
+const STORIES_DIR = path.join(__dirname, '..', 'stories');
+const GABARIT_DIR = path.join(STORIES_DIR, '_gabarit');
 
 function slugify(str) {
   return str
     .toLowerCase()
     .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[̀-ͯ]/g, '')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '');
 }
@@ -33,15 +35,33 @@ function copyDir(src, dest) {
   }
 }
 
+function replacePlaceholders(filePath, replacements) {
+  if (!fs.existsSync(filePath)) return;
+  let content = fs.readFileSync(filePath, 'utf8');
+  for (const [pattern, value] of Object.entries(replacements)) {
+    content = content.split(pattern).join(value);
+  }
+  fs.writeFileSync(filePath, content);
+}
+
 function main() {
-  const title = process.argv[2];
-  if (!title) {
-    console.error('Usage: node narration/scripts/new-story.js "titre-de-l-histoire"');
+  const numero = process.argv[2];
+  const title = process.argv[3];
+
+  if (!numero || !title) {
+    console.error('Usage: node narration/scripts/new-story.js NNN "titre-de-l-histoire"');
+    console.error('Exemple: node narration/scripts/new-story.js 007 "La pierre tiède"');
+    process.exit(1);
+  }
+
+  if (!/^\d{3}$/.test(numero)) {
+    console.error(`Erreur : le numéro doit être 3 chiffres (ex: 007). Reçu : ${numero}`);
     process.exit(1);
   }
 
   const slug = slugify(title);
-  const destDir = path.join(WORKSHOP_DIR, slug);
+  const folderName = `${numero}-${slug}`;
+  const destDir = path.join(STORIES_DIR, folderName);
 
   if (fs.existsSync(destDir)) {
     console.error(`Erreur : ${destDir} existe déjà.`);
@@ -50,34 +70,35 @@ function main() {
 
   copyDir(GABARIT_DIR, destDir);
 
-  // Remplacer les placeholders dans pitch.md
-  const pitchPath = path.join(destDir, 'pitch.md');
-  let pitch = fs.readFileSync(pitchPath, 'utf8');
-  pitch = pitch
-    .replace(/\[Titre\]/g, title)
-    .replace(/YYYY-MM-DD/g, new Date().toISOString().split('T')[0]);
-  fs.writeFileSync(pitchPath, pitch);
+  const today = new Date().toISOString().split('T')[0];
+  const replacements = {
+    'NNN': numero,
+    'slug-de-l-histoire': slug,
+    'Titre de l\'histoire': title,
+    '<slug>': folderName,
+    'STORY-NNN': `STORY-${numero}`,
+    'YYYY-MM-DD': today,
+  };
 
-  // Remplacer dans plan-histoire.md
-  const planPath = path.join(destDir, 'plan-histoire.md');
-  let plan = fs.readFileSync(planPath, 'utf8');
-  plan = plan.replace(/\[Titre\]/g, title);
-  fs.writeFileSync(planPath, plan);
+  // Appliquer placeholders sur tous les .md du nouveau dossier
+  function walkAndReplace(dir) {
+    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    for (const entry of entries) {
+      const entryPath = path.join(dir, entry.name);
+      if (entry.isDirectory()) {
+        walkAndReplace(entryPath);
+      } else if (entry.name.endsWith('.md')) {
+        replacePlaceholders(entryPath, replacements);
+      }
+    }
+  }
 
-  // Remplacer dans decision.md et gatekeeper-verdict.md
-  const decisionPath = path.join(destDir, 'decision.md');
-  let decision = fs.readFileSync(decisionPath, 'utf8');
-  decision = decision.replace(/\[Titre\]/g, title);
-  fs.writeFileSync(decisionPath, decision);
+  walkAndReplace(destDir);
 
-  const gkPath = path.join(destDir, 'gatekeeper-verdict.md');
-  let gk = fs.readFileSync(gkPath, 'utf8');
-  gk = gk.replace(/\[Titre\]/g, title);
-  fs.writeFileSync(gkPath, gk);
-
-  console.log(`✅ Workshop créé : workshop/${slug}/`);
-  console.log(`   → Éditez ${destDir}/pitch.md pour l'idée`);
-  console.log(`   → Éditez ${destDir}/plan-histoire.md pour le squelette`);
+  console.log(`✅ Histoire créée : stories/${folderName}/`);
+  console.log(`   → Éditez ${destDir}/pitch.md pour le pitch (étape 1)`);
+  console.log(`   → Mettez à jour ${destDir}/kanban.md au fil des étapes`);
+  console.log(`   → Workflow complet : narration/equipe/PROCESS.md`);
 }
 
 main();

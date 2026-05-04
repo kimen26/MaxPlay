@@ -11,7 +11,7 @@
 | **1** | Perfectionniste | Melchisédech | **Melki** | Minéraux | [type-01-perfectionniste.md](personnages/type-01-perfectionniste.md) | [../personnages/type-01/](../personnages/type-01/) |
 | **2** | Aidant | Marie (F) | **Mimi** | Eau | [type-02-aidant.md](personnages/type-02-aidant.md) | [../personnages/type-02/](../personnages/type-02/) |
 | **3** | Performeur | Paul | **Polo** | Forces | [type-03-performeur.md](personnages/type-03-performeur.md) | [../personnages/type-03/](../personnages/type-03/) |
-| **4** | Individualiste | Jérémie | **Jérem** | Fréquence | [type-04-individualiste.md](personnages/type-04-individualiste.md) | [../personnages/type-04/](../personnages/type-04/) |
+| **4** | Individualiste | Madeleine (F) | **Madie** | Fréquence | [type-04-individualiste.md](personnages/type-04-individualiste.md) | [../personnages/type-04/](../personnages/type-04/) |
 | **5** | Observateur | Luc | **Lulu** | Quantique | [type-05-observateur.md](personnages/type-05-observateur.md) | [../personnages/type-05/](../personnages/type-05/) |
 | **6** | Loyal | Pierre | **Pierrot** | Animaux | [type-06-loyal.md](personnages/type-06-loyal.md) | [../personnages/type-06/](../personnages/type-06/) |
 | **7** | Enthousiaste | Raphaëlle (F) | **Raph** | Cosmos | [type-07-enthousiaste.md](personnages/type-07-enthousiaste.md) | [../personnages/type-07/](../personnages/type-07/) |

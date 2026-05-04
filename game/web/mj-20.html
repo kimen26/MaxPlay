@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css">
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none; }
     body {
       font-family:'Nunito',sans-serif;
       background:linear-gradient(160deg,#1a0d3e,#2e1a5e);
@@ -140,6 +140,12 @@
       font-size:1.1rem; font-weight:900;
       color:#FFD700;
     }
+    .quiz-tier-badge {
+      font-size:0.78rem; font-weight:700;
+      color:rgba(255,255,255,0.6);
+      background:rgba(255,255,255,0.1);
+      border-radius:20px; padding:3px 10px;
+    }
     .quiz-speak-btn {
       background:linear-gradient(135deg,#667eea,#764ba2);
       color:#fff;
@@ -193,6 +199,52 @@
       margin-left:auto;
     }
 
+    /* ========== PROGRESSION ========== */
+    #progressPanel {
+      width:100%;
+      display:flex; flex-direction:column; gap:10px;
+    }
+    .prog-title {
+      font-size:1rem; font-weight:900; color:#ffe066;
+      text-align:center; padding-bottom:4px;
+    }
+    .lang-prog-card {
+      background:rgba(255,255,255,0.07);
+      border:2px solid rgba(255,255,255,0.12);
+      border-radius:16px;
+      padding:12px 16px;
+      display:flex; align-items:center; gap:12px;
+    }
+    .lang-prog-card.locked {
+      opacity:0.45;
+    }
+    .lang-prog-flag {
+      width:36px; height:27px; border-radius:3px; flex-shrink:0;
+    }
+    .lang-prog-info { flex:1; min-width:0; }
+    .lang-prog-name { font-size:0.9rem; font-weight:900; }
+    .lang-prog-sub  { font-size:0.72rem; color:rgba(255,255,255,0.55); font-weight:700; margin-top:1px; }
+    .tier-dots { display:flex; gap:5px; margin-top:5px; }
+    .tier-dot {
+      width:14px; height:14px; border-radius:50%;
+      border:2px solid rgba(255,255,255,0.3);
+      background:transparent;
+      position:relative;
+    }
+    .tier-dot.done  { background:#00c47a; border-color:#00c47a; }
+    .tier-dot.partial {
+      background:transparent; border-color:#ffe066;
+    }
+    .tier-dot.partial::after {
+      content:''; position:absolute;
+      left:0; top:0; width:50%; height:100%;
+      background:#ffe066;
+      border-radius:50% 0 0 50%;
+    }
+    .tier-dot.locked-dot { border-color:rgba(255,255,255,0.18); }
+    .lang-prog-lock { font-size:1.3rem; opacity:0.5; }
+    .lang-prog-next { font-size:0.7rem; color:#ffe066; font-weight:700; margin-top:3px; }
+
     /* Feedback */
     .feedback {
       position:fixed; inset:0;
@@ -208,6 +260,26 @@
     @keyframes popIn {
       from { transform:scale(0); opacity:0; }
       to   { transform:scale(1); opacity:1; }
+    }
+
+    /* Unlock toast */
+    .unlock-toast {
+      position:fixed; top:70px; left:50%; transform:translateX(-50%);
+      background:linear-gradient(135deg,#ffe066,#FFA500);
+      color:#2e1a5e;
+      font-family:'Nunito',sans-serif;
+      font-size:1rem; font-weight:900;
+      border-radius:24px; padding:12px 24px;
+      box-shadow:0 6px 20px rgba(255,165,0,0.5);
+      z-index:300;
+      display:none;
+      white-space:nowrap;
+      animation:slideDown 0.4s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .unlock-toast.show { display:block; }
+    @keyframes slideDown {
+      from { transform:translateX(-50%) translateY(-30px); opacity:0; }
+      to   { transform:translateX(-50%) translateY(0); opacity:1; }
     }
 
     /* Victory */
@@ -247,10 +319,10 @@
 <body>
 
   <div class="game-header">
-    <a href="index.html" class="back-btn">←</a>
+    <a href="index.html" class="back-btn">&#8592;</a>
     <div class="header-text">
-      <div class="header-title">🔢 Compte dans toutes les langues !</div>
-      <div class="header-sub">1 à 20 · 8 langues</div>
+      <div class="header-title">Compte dans toutes les langues !</div>
+      <div class="header-sub">1 à 20 · 8 langues · progression Duolingo</div>
     </div>
   </div>
 
@@ -258,11 +330,12 @@
 
     <!-- Sélecteur Mode -->
     <div class="mode-row">
-      <button class="mode-btn active" id="modeLearn" onclick="setMode('learn')">📚 Apprendre</button>
-      <button class="mode-btn" id="modeQuiz" onclick="setMode('quiz')">🎯 Quiz</button>
+      <button class="mode-btn active" id="modeLearn"    onclick="setMode('learn')">Apprendre</button>
+      <button class="mode-btn"        id="modeQuiz"     onclick="setMode('quiz')">Quiz</button>
+      <button class="mode-btn"        id="modeProgress" onclick="setMode('progress')">Progression</button>
     </div>
 
-    <!-- Sélecteur langue -->
+    <!-- Sélecteur langue (mode Apprendre uniquement) -->
     <div class="lang-scroll" id="langScroll"></div>
 
     <!-- ===== APPRENDRE ===== -->
@@ -270,7 +343,7 @@
       <div class="learn-grid" id="learnGrid"></div>
       <div style="height:8px"></div>
       <button class="learn-all-btn" id="learnAllBtn" onclick="readAll()">
-        <span>▶️</span>
+        <span>&#9654;</span>
         <span id="learnAllLabel">Tout écouter (1 à 10)</span>
       </button>
       <div style="display:flex;gap:10px;margin-top:4px">
@@ -286,12 +359,19 @@
       <div class="quiz-card">
         <div class="quiz-flag"><span class="fi" id="quizFlag"></span></div>
         <div class="quiz-lang-name" id="quizLangName">Français</div>
+        <div class="quiz-tier-badge" id="quizTierBadge">palier 1 · chiffres 1-3</div>
         <button class="quiz-speak-btn" onclick="speakQuiz()">
-          <span>🔊</span>
+          <span>&#128266;</span>
           <span>Réécouter</span>
         </button>
       </div>
       <div class="choices" id="choices"></div>
+    </div>
+
+    <!-- ===== PROGRESSION ===== -->
+    <div id="progressPanel" class="hidden">
+      <div class="prog-title">Ta progression par langue</div>
+      <div id="progCards"></div>
     </div>
 
   </div>
@@ -300,13 +380,15 @@
     <div class="feedback-emoji" id="feedbackEmoji"></div>
   </div>
 
+  <div class="unlock-toast" id="unlockToast"></div>
+
   <div id="victoryScreen">
-    <div class="victory-emoji" id="victoryEmoji">🏆</div>
+    <div class="victory-emoji" id="victoryEmoji">&#127942;</div>
     <div class="victory-title" id="victoryTitle">Bravo Max !</div>
     <div class="victory-msg" id="victoryMsg"></div>
     <div class="victory-score" id="victoryScore"></div>
     <button class="replay-btn" onclick="restartQuiz()">Rejouer !</button>
-    <a href="index.html" style="color:rgba(255,255,255,0.6);font-size:0.9rem;font-weight:900;text-decoration:none;margin-top:-8px">← Menu</a>
+    <a href="index.html" style="color:rgba(255,255,255,0.6);font-size:0.9rem;font-weight:900;text-decoration:none;margin-top:-8px">&#8592; Menu</a>
   </div>
 
   <script src="js/sounds.js"></script>
@@ -326,10 +408,19 @@
       { code:'ja',    flag:'jp', nom:'Japonais',  lang:'ja-JP' },
     ];
 
-    // ─── Nombres 1-20 par langue (orthographe phonétique pour TTS) ─────────────
-    // On passe la vraie langue à SpeechSynthesis ; si la voix n'est pas dispo,
-    // une translittération serait mieux. On garde l'orthographe native : la voix
-    // du navigateur (si présente) prononcera correctement.
+    // ─── Paliers ────────────────────────────────────────────────────────────────
+    // Palier = { id, label, max } — max = chiffre maximum inclus dans ce palier
+    // Palier 0 = verrouillé (aucun chiffre actif pour la langue)
+    const TIERS = [
+      { id:1, label:'1-3',  max:3  },
+      { id:2, label:'1-5',  max:5  },
+      { id:3, label:'1-10', max:10 },
+      { id:4, label:'1-20', max:20 },
+    ];
+    // Nombre de bonnes réponses CONSÉCUTIVES pour débloquer le palier suivant
+    const UNLOCK_THRESHOLD = 3;
+
+    // ─── Nombres 1-20 par langue ─────────────────────────────────────────────
     const NUMBERS = {
       'fr':    ['un','deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize','dix-sept','dix-huit','dix-neuf','vingt'],
       'en':    ['one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty'],
@@ -341,21 +432,105 @@
       'ja':    ['いち','に','さん','よん','ご','ろく','なな','はち','きゅう','じゅう','じゅういち','じゅうに','じゅうさん','じゅうよん','じゅうご','じゅうろく','じゅうなな','じゅうはち','じゅうきゅう','にじゅう'],
     };
 
-    // ─── État ──────────────────────────────────────────────────────────────────
+    // ─── Persistance progression ─────────────────────────────────────────────
+    const PROG_KEY = 'mj20_progress';
+
+    // Structure localStorage :
+    // {
+    //   version: 2,
+    //   langs: {
+    //     'fr':    { unlockedTier: 4, consecutiveCorrect: 0 },
+    //     'en':    { unlockedTier: 1, consecutiveCorrect: 2 },
+    //     'es':    { unlockedTier: 0, consecutiveCorrect: 0 },
+    //     ...
+    //   }
+    // }
+    function loadProgress() {
+      try {
+        const raw = localStorage.getItem(PROG_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed.version === 2) return parsed;
+        }
+      } catch(e) {}
+      return _defaultProgress();
+    }
+
+    function _defaultProgress() {
+      const langs = {};
+      LANGS.forEach(l => {
+        langs[l.code] = { unlockedTier: 0, consecutiveCorrect: 0 };
+      });
+      // Français : débloqué max d'emblée
+      langs['fr'].unlockedTier = 4;
+      // Anglais : palier 1 débloqué d'emblée
+      langs['en'].unlockedTier = 1;
+      return { version: 2, langs };
+    }
+
+    function saveProgress(prog) {
+      try { localStorage.setItem(PROG_KEY, JSON.stringify(prog)); } catch(e) {}
+    }
+
+    let progress = loadProgress();
+
+    // ─── Helpers progression ──────────────────────────────────────────────────
+    function getUnlockedTier(langCode) {
+      return (progress.langs[langCode] || { unlockedTier: 0 }).unlockedTier;
+    }
+
+    function getTierMax(langCode) {
+      const tier = getUnlockedTier(langCode);
+      if (tier === 0) return 0;
+      return TIERS[tier - 1].max;
+    }
+
+    function isLangActive(langCode) {
+      return getUnlockedTier(langCode) > 0;
+    }
+
+    // Appelé après chaque bonne réponse dans le quiz
+    // Retourne { unlocked: bool, newTier: number|null }
+    function recordCorrect(langCode) {
+      const lp = progress.langs[langCode];
+      lp.consecutiveCorrect = (lp.consecutiveCorrect || 0) + 1;
+      const currentTier = lp.unlockedTier;
+      let newTier = null;
+      if (currentTier < 4 && lp.consecutiveCorrect >= UNLOCK_THRESHOLD) {
+        lp.unlockedTier = currentTier + 1;
+        lp.consecutiveCorrect = 0;
+        newTier = lp.unlockedTier;
+      }
+      saveProgress(progress);
+      return { unlocked: newTier !== null, newTier };
+    }
+
+    function recordWrong(langCode) {
+      // Pas de régression — on remet juste le compteur de consécutives à 0
+      progress.langs[langCode].consecutiveCorrect = 0;
+      saveProgress(progress);
+    }
+
+    // Pool actif pour le quiz : langues débloquées (tier >= 1)
+    function buildQuizPool() {
+      return LANGS.filter(l => isLangActive(l.code));
+    }
+
+    // ─── État UI ──────────────────────────────────────────────────────────────
     let mode = 'learn';
     let currentLang = LANGS[0];
-    let range = 'low'; // low 1-10, high 11-20, all 1-20
+    let range = 'low';
     let reading = false;
 
     // Quiz state
     const ROUND_COUNT = 10;
     let round = 0;
     let score = 0;
-    let quizNumber = 0;     // 1..20
+    let quizNumber = 0;
     let quizLang = null;
     let qcm = null;
 
-    // ─── Init UI ───────────────────────────────────────────────────────────────
+    // ─── Init UI ──────────────────────────────────────────────────────────────
     function renderLangScroll() {
       const c = document.getElementById('langScroll');
       c.innerHTML = LANGS.map(l => `
@@ -375,16 +550,24 @@
 
     function setMode(m) {
       mode = m;
-      document.getElementById('modeLearn').classList.toggle('active', m === 'learn');
-      document.getElementById('modeQuiz').classList.toggle('active', m === 'quiz');
+      ['modeLearn','modeQuiz','modeProgress'].forEach(id => {
+        document.getElementById(id).classList.remove('active');
+      });
+      document.getElementById(
+        m === 'learn' ? 'modeLearn' : m === 'quiz' ? 'modeQuiz' : 'modeProgress'
+      ).classList.add('active');
+
       document.getElementById('learnPanel').classList.toggle('hidden', m !== 'learn');
       document.getElementById('quizPanel').classList.toggle('hidden', m !== 'quiz');
-      document.getElementById('langScroll').classList.toggle('hidden', m === 'quiz');
-      if (m === 'learn') renderLearn();
-      else startQuiz();
+      document.getElementById('progressPanel').classList.toggle('hidden', m !== 'progress');
+      document.getElementById('langScroll').classList.toggle('hidden', m !== 'learn');
+
+      if (m === 'learn')    renderLearn();
+      else if (m === 'quiz')     startQuiz();
+      else if (m === 'progress') renderProgress();
     }
 
-    // ─── APPRENDRE ─────────────────────────────────────────────────────────────
+    // ─── APPRENDRE ────────────────────────────────────────────────────────────
     function rangeBounds() {
       if (range === 'low')  return [1, 10];
       if (range === 'high') return [11, 20];
@@ -453,7 +636,6 @@
         window.speechSynthesis.cancel();
         const u = new SpeechSynthesisUtterance(text);
         u.lang = lang; u.rate = 0.85;
-        // Voix si dispo
         const voices = window.speechSynthesis.getVoices();
         const prefix = lang.split('-')[0];
         const v = voices.find(x => x.lang === lang) || voices.find(x => x.lang.startsWith(prefix));
@@ -461,14 +643,13 @@
         u.onend = resolve;
         u.onerror = resolve;
         window.speechSynthesis.speak(u);
-        // Safety timeout
         setTimeout(resolve, 2500);
       });
     }
 
     function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
 
-    // ─── QUIZ ──────────────────────────────────────────────────────────────────
+    // ─── QUIZ (progression) ──────────────────────────────────────────────────
     function startQuiz() {
       round = 0;
       score = 0;
@@ -484,14 +665,34 @@
     function nextQuizRound() {
       if (round >= ROUND_COUNT) { showVictory(); return; }
       qcm = QcmRetry.create();
-      quizNumber = 1 + Math.floor(Math.random() * 20);
-      quizLang = LANGS[Math.floor(Math.random() * LANGS.length)];
+
+      // Choisir une langue active au hasard (pondérée par palier = plus de variété pour les avancées)
+      const pool = buildQuizPool();
+      if (pool.length === 0) {
+        // Sécurité : ne devrait pas arriver car fr toujours actif
+        quizLang = LANGS[0];
+      } else {
+        quizLang = pool[Math.floor(Math.random() * pool.length)];
+      }
+
+      // Chiffre dans la plage débloquée pour cette langue
+      const maxNum = getTierMax(quizLang.code);
+      quizNumber = 1 + Math.floor(Math.random() * maxNum);
+
+      const tierIdx = getUnlockedTier(quizLang.code) - 1;
+      const tierLabel = TIERS[tierIdx].label;
+      const tierId    = TIERS[tierIdx].id;
+      const consec    = progress.langs[quizLang.code].consecutiveCorrect || 0;
 
       renderScoreBar();
       document.getElementById('quizFlag').className = `fi fi-${quizLang.flag}`;
       document.getElementById('quizLangName').textContent = quizLang.nom;
+      document.getElementById('quizTierBadge').textContent =
+        tierId < 4
+          ? `palier ${tierId} · chiffres ${tierLabel} · ${consec}/${UNLOCK_THRESHOLD} pour niveau suivant`
+          : `palier ${tierId} · chiffres ${tierLabel}`;
 
-      renderQuizChoices();
+      renderQuizChoices(maxNum);
       setTimeout(speakQuiz, 500);
     }
 
@@ -500,10 +701,10 @@
       TTS.speak(word, { lang: quizLang.lang, rate: 0.85 });
     }
 
-    function renderQuizChoices() {
+    function renderQuizChoices(maxNum) {
       const pool = [];
       while (pool.length < 3) {
-        const n = 1 + Math.floor(Math.random() * 20);
+        const n = 1 + Math.floor(Math.random() * maxNum);
         if (n !== quizNumber && !pool.includes(n)) pool.push(n);
       }
       const options = shuffle([quizNumber, ...pool]);
@@ -519,8 +720,11 @@
       const isCorrect = n === quizNumber;
       const res = QcmRetry.handle(qcm, isCorrect);
       if (res.outcome === 'ignored') return;
-      if ((res.outcome === 'correct' || res.outcome === 'reveal') && typeof Tracker !== 'undefined') {
-        Tracker.logAnswer(res.outcome === 'correct');
+
+      if (typeof Tracker !== 'undefined') {
+        if (res.outcome === 'correct' || res.outcome === 'reveal') {
+          Tracker.logAnswer(res.outcome === 'correct');
+        }
       }
 
       if (res.outcome === 'correct') {
@@ -528,26 +732,38 @@
         document.querySelectorAll('.choice-btn').forEach(b => b.style.pointerEvents = 'none');
         if (res.points === 10) score++;
         if (typeof sndDing === 'function') sndDing();
-        showFeedback('🎉');
-        // Répéter le mot + dire le chiffre en français
+        showFeedback('');
+
+        // Enregistrer progression
+        const unlock = recordCorrect(quizLang.code);
+        if (unlock.unlocked) {
+          const lang = quizLang;
+          const tier = TIERS[unlock.newTier - 1];
+          setTimeout(() => showUnlockToast(lang, tier), 800);
+        }
+
         setTimeout(() => speakQuiz(), 300);
         setTimeout(() => TTS.speak(`C'est ${quizNumber} !`, { lang:'fr-FR', rate:0.85, priority:false }), 1300);
         round++;
         setTimeout(nextQuizRound, 2600);
+
       } else if (res.outcome === 'reveal') {
         btn.classList.add('wrong'); btn.disabled = true;
         QcmRetry.revealCorrect(document.getElementById('choices'), 'correct');
         document.querySelectorAll('.choice-btn').forEach(b => b.style.pointerEvents = 'none');
         if (typeof sndBuzz === 'function') sndBuzz();
         if (typeof playErrorSound === 'function') playErrorSound();
-        showFeedback('💪');
+        showFeedback('');
+        recordWrong(quizLang.code);
         setTimeout(() => TTS.speak(`C'était ${quizNumber}`, { lang:'fr-FR', rate:0.85 }), 300);
         round++;
         setTimeout(nextQuizRound, 2000);
+
       } else {
         btn.classList.add('wrong'); btn.disabled = true;
         if (typeof sndBuzz === 'function') sndBuzz();
-        showFeedback('🤔');
+        showFeedback('');
+        // Pas de recordWrong ici — QcmRetry gère les tentatives intermédiaires
         setTimeout(speakQuiz, 400);
       }
     }
@@ -570,22 +786,81 @@
       setTimeout(() => el.classList.remove('show'), 1200);
     }
 
+    // ─── Toast déblocage ──────────────────────────────────────────────────────
+    let _toastTimer = null;
+    function showUnlockToast(lang, tier) {
+      const toast = document.getElementById('unlockToast');
+      toast.textContent = `Nouveau niveau débloqué : ${lang.nom} chiffres ${tier.label} !`;
+      toast.classList.add('show');
+      clearTimeout(_toastTimer);
+      _toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    // ─── PROGRESSION (vue) ────────────────────────────────────────────────────
+    function renderProgress() {
+      const container = document.getElementById('progCards');
+      container.innerHTML = LANGS.map(l => {
+        const lp = progress.langs[l.code];
+        const tier = lp.unlockedTier;
+        const isLocked = tier === 0;
+        const consec = lp.consecutiveCorrect || 0;
+
+        // Pastilles
+        const dots = TIERS.map((t, idx) => {
+          const dotTier = idx + 1;
+          let cls = 'locked-dot';
+          if (dotTier < tier)       cls = 'done';
+          else if (dotTier === tier) cls = 'done';
+          // Pour le tier courant, montrer progression partielle
+          // (optionnel : toujours done si débloqué)
+          return `<div class="tier-dot ${cls}" title="Palier ${dotTier} : ${t.label}"></div>`;
+        }).join('');
+
+        let subText = '';
+        let nextText = '';
+        if (isLocked) {
+          subText = 'Verrouillé';
+        } else {
+          subText = `Palier ${tier}/4 · chiffres ${TIERS[tier-1].label}`;
+          if (tier < 4) {
+            nextText = `${consec}/${UNLOCK_THRESHOLD} pour débloquer le palier ${tier+1}`;
+          } else {
+            nextText = 'Maîtrisé !';
+          }
+        }
+
+        return `
+          <div class="lang-prog-card ${isLocked ? 'locked' : ''}">
+            <span class="fi fi-${l.flag} lang-prog-flag"></span>
+            <div class="lang-prog-info">
+              <div class="lang-prog-name">${l.nom}</div>
+              <div class="lang-prog-sub">${subText}</div>
+              ${nextText ? `<div class="lang-prog-next">${nextText}</div>` : ''}
+              <div class="tier-dots">${dots}</div>
+            </div>
+            ${isLocked ? '<div class="lang-prog-lock">&#128274;</div>' : ''}
+          </div>
+        `;
+      }).join('');
+    }
+
+    // ─── Victoire ─────────────────────────────────────────────────────────────
     const VICTORY_DATA = [
-      { min:10, max:10, emoji:'🏆', title:'PARFAIT !!!', msg:'10 sur 10 ! Tu parles toutes les langues !',  sound:'victory' },
-      { min:8,  max:9,  emoji:'🌟', title:'Super Max !', msg:'Presque parfait ! Tu deviens polyglotte !',    sound:'bravo' },
-      { min:6,  max:7,  emoji:'😊', title:'Bien joué !', msg:'C\'est bien ! Continue comme ça !',             sound:'ding' },
-      { min:4,  max:5,  emoji:'💪', title:'Pas mal !',   msg:'Tu peux encore progresser !',                   sound:'ding' },
-      { min:0,  max:3,  emoji:'🔢', title:'On réessaie ?',msg:'Entraîne-toi en mode Apprendre !',             sound:'buzz' },
+      { min:10, max:10, emoji:'', title:'PARFAIT !!!', msg:'10 sur 10 ! Tu parles toutes les langues !',  sound:'victory' },
+      { min:8,  max:9,  emoji:'', title:'Super Max !', msg:'Presque parfait ! Tu deviens polyglotte !',    sound:'bravo' },
+      { min:6,  max:7,  emoji:'', title:'Bien joué !', msg:"C'est bien ! Continue comme ça !",             sound:'ding' },
+      { min:4,  max:5,  emoji:'', title:'Pas mal !',   msg:'Tu peux encore progresser !',                   sound:'ding' },
+      { min:0,  max:3,  emoji:'', title:'On réessaie ?',msg:'Entraîne-toi en mode Apprendre !',             sound:'buzz' },
     ];
 
     function showVictory() {
       if (typeof Tracker !== 'undefined') Tracker.endSession(score, ROUND_COUNT);
       renderScoreBar();
       const data = VICTORY_DATA.find(d => score >= d.min && score <= d.max);
-      document.getElementById('victoryEmoji').textContent = data.emoji;
-      document.getElementById('victoryTitle').textContent = data.title;
-      document.getElementById('victoryMsg').textContent = data.msg;
-      document.getElementById('victoryScore').textContent = `${score} / ${ROUND_COUNT}`;
+      document.getElementById('victoryEmoji').textContent  = data.emoji;
+      document.getElementById('victoryTitle').textContent  = data.title;
+      document.getElementById('victoryMsg').textContent    = data.msg;
+      document.getElementById('victoryScore').textContent  = `${score} / ${ROUND_COUNT}`;
       document.getElementById('victoryScreen').classList.add('show');
       if (data.sound === 'victory' && typeof sndVictory === 'function') sndVictory();
       else if (data.sound === 'bravo' && typeof sndBravo === 'function') sndBravo();

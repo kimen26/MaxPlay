@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * pre-gatekeeper.js — Vérification automatique des contraintes avant envoi au GateKeeper
- * Usage : node narration/scripts/pre-gatekeeper.js narration/workshop/003-la-confidence/rewrite.md
+ * Usage : node narration/scripts/pre-gatekeeper.js narration/stories/<NNN-slug>/rewrite/v1.md
  */
 
 const fs = require('fs');

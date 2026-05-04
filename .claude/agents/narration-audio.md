@@ -1,6 +1,6 @@
 ---
 name: narration-audio
-description: Directeur Audio MaxPlay — produit un brief audio par histoire canon : rythme, pauses, intonation, voix ElevenLabs par personnage. Appelé après canonisation, avant enregistrement audio.
+description: Directeur Audio MaxPlay - produit un brief audio par histoire canon (rythme, pauses, intonation, voix ElevenLabs par personnage). Appelé après canonisation, avant enregistrement audio.
 model: sonnet
 ---
 

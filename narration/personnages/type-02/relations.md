@@ -13,5 +13,5 @@
 | Pierrot | 6 | Elle rassure Pierrot naturellement. Pierrot l'aime profondément pour ça. |
 | Lulu | 5 | Lulu ne demande jamais d'aide. Mimi le respecte — et de temps en temps lui laisse un snack sans rien dire. |
 | Polo | 3 | Polo et Mimi se ressemblent dans le besoin de reconnaissance. Ils peuvent s'épauler — ou rivaliser. |
-| Jérem | 4 | Mimi est fascinée par Jérem et veut la "sauver" de sa tristesse. Jérem n'a pas besoin d'être sauvée — ce que Mimi doit apprendre. |
+| Madie | 4 | Mimi est fascinée par Madie et veut la "sauver" de sa tristesse. Madie n'a pas besoin d'être sauvée — ce que Mimi doit apprendre. |
 

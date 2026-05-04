@@ -22,17 +22,17 @@ Style: 0.65
 Speaker Boost: true
 ```
 
-## Prompt voix (F)
+## Prompt ElevenLabs (F)
 
-Voix de petite fille enthousiaste et pétillante. Plosives légères comme des petites bulles.
-Voix qui monte et descend beaucoup. Légèrement rapide. Sourire permanent dans le son.
-Demi-rires spontanés. Pleine d'énergie, naturellement joyeuse.
+> Native French. Female, young child around 4 to 5 years old. Studio quality.
+> Persona: pétillante enthusiast. Emotion: joyful, excited, optimistic.
+> Light dancing plosives like little bubbles, luminous open vowels, energy bouncing in the mouth. Multiple melodic peaks, sentence endings often rising or suspended. Fast pace with bursts of syllables, accelerates when excited. Audible smile throughout, spontaneous half-laughs. Bright lifted child timbre — naturally joyful, unforced.
 
-## Prompt voix (M)
+## Prompt ElevenLabs (M)
 
-Voix de petit garçon enthousiaste et vif. Sons légers et rebondissants.
-Beaucoup de variations mélodiques. Rythme rapide avec des rafales.
-Sourire audible, élan naturel. Optimiste sans effort.
+> Native French. Male, young child around 4 to 5 years old. Studio quality.
+> Persona: lively enthusiast. Emotion: joyful, eager, optimistic.
+> Light bouncing consonants, luminous vowels, energetic mouth. Many melodic variations. Fast pace with syllable bursts. Audible smile, natural lift. Bright lifted child timbre, effortlessly optimistic.
 
 ---
 

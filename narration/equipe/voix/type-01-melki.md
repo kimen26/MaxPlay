@@ -22,17 +22,17 @@ Style: 0.15
 Speaker Boost: true
 ```
 
-## Prompt voix (F)
+## Prompt ElevenLabs (F)
 
-Voix de petite fille soigneuse et précise. Consonnes T et K très claires, presque croquantes. 
-Phrases qui se terminent vers le bas, résolues, comme une décision prise. 
-Légère pause avant les mots importants. Ton studieux, jamais crispé — juste appliqué.
+> Native French. Female, young child around 4 to 5 years old. Studio quality.
+> Persona: meticulous little perfectionist. Emotion: calm, attentive, quietly satisfied.
+> Crisp aspirated T and K consonants, almost crunchy. Crystal-clear sibilants. Sentences end on a downward resolved cadence — like a decision firmly made. Steady metronomic rhythm with a brief micro-pause and audible micro-inhale before key words. Studious tone, never tense — just applied. Warm clear child timbre with a faint inner focus.
 
-## Prompt voix (M)
+## Prompt ElevenLabs (M)
 
-Voix de petit garçon soigneux et précis. Consonnes T et K très claires, presque croquantes.
-Phrases qui se terminent vers le bas, résolues, comme une règle établie.
-Légère pause avant les mots importants. Ton appliqué, jamais anxieux — juste attentif.
+> Native French. Male, young child around 4 to 5 years old. Studio quality.
+> Persona: meticulous little perfectionist. Emotion: calm, attentive, quietly satisfied.
+> Crisp aspirated T and K consonants, almost crunchy. Crystal-clear sibilants. Sentences end on a downward resolved cadence — like a rule firmly stated. Steady metronomic rhythm with a brief micro-pause and audible micro-inhale before key words. Applied tone, never anxious — just attentive. Warm clear child timbre with a faint inner focus.
 
 ---
 

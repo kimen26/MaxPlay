@@ -16,8 +16,8 @@
 ### Polo (Type 3) — La star naturelle
 Activité libre à l'école. Polo remarque que la maîtresse regarde. Il choisit spontanément la tâche la plus difficile visible. Commence. Regarde du coin de l'œil. La maîtresse hoche la tête. Il redouble d'effort. Il ne s'amuse pas — il performe. Et ça ne lui semble pas étrange du tout.
 
-### Jérem (Type 4) — La profondeur à 5 ans
-Sa maman lui montre un coucher de soleil par la fenêtre. Les autres enfants continuent de jouer. Jérem s'arrête. Reste immobile deux minutes. Puis dit : "C'est beau. Ça me rend triste." Sa maman demande pourquoi. Il dit : "Parce que ça va disparaître."
+### Madie (Type 4) — La profondeur à 5 ans
+Sa maman lui montre un coucher de soleil par la fenêtre. Les autres enfants continuent de jouer. Madie s'arrête. Reste immobile deux minutes. Puis dit : "C'est beau. Ça me rend triste." Sa maman demande pourquoi. Elle dit : "Parce que ça va disparaître."
 
 ### Lulu (Type 5) — L'observateur
 Anniversaire de sa cousine. Il ne court pas avec les autres. Il trouve un livre sur les animaux marins et s'installe dans un coin. Un adulte dit "va jouer !" — il répond poliment "je joue" en montrant le livre. Il ne comprend pas pourquoi les autres ont besoin de bruit pour s'amuser.
@@ -71,7 +71,7 @@ Deux amis décident du jeu à faire — conflit. Nono observe en silence. Puis d
 *Réels :* Martin Luther King Jr., Churchill, Indira Gandhi, Aretha Franklin, Serena Williams
 
 ### Type 9
-*Personnages fictifs :* Frodon Sacquet, Forrest Gump, Mr. Miyagi, Winnie l'Ourson, John Coffey  
+*Personnages fictifs :* Frodon Sacquet, Forrest Gump, Mr. Miyagi, Winnie l'Ourson, Papa Yann Coffey  
 *Réels :* Keanu Reeves, Obama, Audrey Hepburn, Carl Jung, Ryan Gosling
 
 ---
@@ -95,7 +95,7 @@ Ce Pierrot-là est plus difficile à reconnaître comme un 6 — mais sous la br
 - **Melki (1)** : Apprend que la vraie perfection est d'accepter l'imperfection
 - **Mimi (2)** : Apprend qu'elle est aimée pour ce qu'elle est, pas pour ce qu'elle donne
 - **Polo (3)** : Apprend que sa valeur ne dépend pas de ce qu'il accomplit
-- **Jérem (4)** : Apprend que ce qu'il appelle "manque" est en fait une sensibilité rare
+- **Madie (4)** : Apprend que ce qu'elle appelle "manque" est en fait une sensibilité rare
 - **Lulu (5)** : Apprend que partager sa connaissance ne le vide pas — ça le nourrit
 - **Pierrot (6)** : Apprend que la sécurité vient de l'intérieur, pas de la vérification permanente
 - **Raph (7)** : Apprend que rester dans un moment difficile ne détruit pas — et que la vraie joie traverse la douleur

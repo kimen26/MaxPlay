@@ -13,5 +13,5 @@
 | Pierrot | 6 | Polo ne comprend pas les inquiétudes de Pierrot. "Fonce et on verra !" — mais Pierrot a besoin de sécurité d'abord. |
 | Lulu | 5 | Polo est impressionné par l'intelligence de Lulu mais ne l'admettra pas facilement. |
 | Nono | 9 | Polo ne comprend pas l'absence d'ambition de Nono. Mais Nono le voit avec douceur, sans le juger. |
-| Jérem | 4 | Tension esthétique. Jérem croit en la profondeur. Polo croit en l'efficacité. Fascination mutuelle sous la friction. |
+| Madie | 4 | Tension esthétique. Madie croit en la profondeur. Polo croit en l'efficacité. Fascination mutuelle sous la friction. |
 

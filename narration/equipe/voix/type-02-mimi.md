@@ -22,17 +22,17 @@ Style: 0.30
 Speaker Boost: true
 ```
 
-## Prompt voix (F)
+## Prompt ElevenLabs (F)
 
-Voix de petite fille très douce et chaleureuse. Sons M et N résonnants, enveloppants.
-Phrases qui se terminent légèrement vers le haut, comme une question bienveillante.
-Petits "mm" doux avant de répondre. Sourire perceptible dans la voix, naturel.
+> Native French. Female, young child around 4 to 5 years old. Studio quality.
+> Persona: warm little caregiver. Emotion: tender, welcoming, attentive.
+> Softened P and B consonants, resonant warm M and N, open vowels. Sentences end with a slight upward cadence — like a gentle invitation. Generous unhurried pacing with micro-lingerings on warm vowels. Audible smile in the voice, soft "mm" before responding. Round chesty child timbre with natural warmth, never saccharine.
 
-## Prompt voix (M)
+## Prompt ElevenLabs (M)
 
-Voix de petit garçon doux et attentionné. Sons M et N résonnants, enveloppants.
-Phrases ouvertes, accueillantes. Petits "mm" doux avant de répondre.
-Chaleur naturelle, sans mièvrerie.
+> Native French. Male, young child around 4 to 5 years old. Studio quality.
+> Persona: warm little caregiver. Emotion: tender, welcoming, attentive.
+> Softened P and B, resonant warm M and N, open vowels. Open phrase endings, slight upward lift — welcoming, not questioning. Generous unhurried pacing. Soft "mm" before responding. Audible smile in the voice. Round warm child timbre, naturally caring, no mannerism.
 
 ---
 

@@ -25,6 +25,49 @@ export class PreloadScene extends Phaser.Scene {
     this.load.image('bus-svg-profile', URL.createObjectURL(new Blob([busSvgRight], { type: 'image/svg+xml' })));
     this.load.image('bus-svg-profile-left', URL.createObjectURL(new Blob([busSvgLeft], { type: 'image/svg+xml' })));
 
+    // ─── Tiles LimeZu Modern Exteriors (pour rendu monde) ──────
+    const TILE_BASE = 'assets/tiles/';
+    const TILES_TO_LOAD: Array<[string, string]> = [
+      // Sol
+      ['tile-grass1',    `${TILE_BASE}roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_9.png`],
+      ['tile-grass2',    `${TILE_BASE}roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_7.png`],
+      ['tile-grass3',    `${TILE_BASE}roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_8.png`],
+      // Asphalte (variations 20/22/27 = plain fill)
+      ['tile-asphalt1',  `${TILE_BASE}roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png`],
+      ['tile-asphalt2',  `${TILE_BASE}roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_22.png`],
+      ['tile-asphalt3',  `${TILE_BASE}roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_27.png`],
+      // Trottoirs
+      ['tile-sidewalk1', `${TILE_BASE}roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_27.png`],
+      ['tile-sidewalk2', `${TILE_BASE}roads/ME_Singles_City_Terrains_48x48_Sidewalk_2_27.png`],
+      ['tile-sidewalk5', `${TILE_BASE}roads/ME_Singles_City_Terrains_48x48_Sidewalk_5_27.png`],
+      // Maisons (4×5 = 192×240 px)
+      ['tile-toyhouse1', `${TILE_BASE}buildings/ME_Singles_Villas_48x48_Toy_House_1.png`],
+      ['tile-toyhouse2', `${TILE_BASE}buildings/ME_Singles_Villas_48x48_Toy_House_2.png`],
+      ['tile-toyhouse3', `${TILE_BASE}buildings/ME_Singles_Villas_48x48_Toy_House_3.png`],
+      ['tile-toyhouse4', `${TILE_BASE}buildings/ME_Singles_Villas_48x48_Toy_House_4.png`],
+      ['tile-toyhouse5', `${TILE_BASE}buildings/ME_Singles_Villas_48x48_Toy_House_5.png`],
+      ['tile-toyhouse6', `${TILE_BASE}buildings/ME_Singles_Villas_48x48_Toy_House_6.png`],
+      // Arbres
+      ['tile-bush1', `${TILE_BASE}parks/ME_Singles_Garden_48x48_Bush_1.png`],
+      ['tile-bush2', `${TILE_BASE}parks/ME_Singles_Garden_48x48_Bush_2.png`],
+      ['tile-bush3', `${TILE_BASE}parks/ME_Singles_Garden_48x48_Bush_3.png`],
+      // Mobilier
+      ['tile-bench-city',  `${TILE_BASE}props/ME_Singles_City_Props_48x48_Bench_1.png`],
+      ['tile-pole',        `${TILE_BASE}props/ME_Singles_City_Props_48x48_Electric_Pole_1.png`],
+      ['tile-trash',       `${TILE_BASE}props/ME_Singles_City_Props_48x48_Black_Closed_Trash_Can.png`],
+      ['tile-info-sign',   `${TILE_BASE}props/ME_Singles_City_Props_48x48_Info_Sign_1.png`],
+      ['tile-mailbox',     `${TILE_BASE}props/ME_Singles_City_Props_48x48_Mailbox_1.png`],
+      // Fleurs
+      ['tile-flower-r', `${TILE_BASE}parks/ME_Singles_Garden_48x48_Small_Red_Flower.png`],
+      ['tile-flower-y', `${TILE_BASE}parks/ME_Singles_Garden_48x48_Small_Yellow_Flower.png`],
+      ['tile-flower-p', `${TILE_BASE}parks/ME_Singles_Garden_48x48_Small_Pink_Flower.png`],
+    ];
+    TILES_TO_LOAD.forEach(([key, path]) => this.load.image(key, path));
+
+    // ─── Tiled tilemap test : rond-point ───────────────────────
+    this.load.image('tileset-roads', 'assets/tilesets/roads.png');
+    this.load.tilemapTiledJSON('map-rondpoint', 'assets/maps/rondpoint.tmj');
+
     // Charger les sons
     SoundManager.preload(this);
 

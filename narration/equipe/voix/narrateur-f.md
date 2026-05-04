@@ -36,7 +36,9 @@ Speaker Boost: false
 
 ## Prompt ElevenLabs (Voice Design)
 
-> Female narrator voice, mid-thirties, warm clear mezzo timbre with gentle chest resonance and a naturally bright but unhurried quality. Storytelling voice for young children aged 3 to 9. Distinctive articulation: every consonant clean and unhurried, warmly voiced "m" and "n" sounds, soft "s" with no edge, rounded consonant releases, no clipping. Vowels full and open, never rushed past. Prosody: gentle narrative arcs — a slight rise on moments of wonder or mystery, a soft and grounding drop on resolution; no flat delivery, no dramatic excess. Rhythm: medium-slow, natural storytelling pace with genuine breath pauses at commas and periods; she never rushes, silence is her friend. Texture: warm modal voice with a light natural breathiness, just enough warmth to feel like a trusted adult, never saccharine. Signature tics: slight head-tilt quality on "listen" moments, micro-lingering on evocative nouns (animals, sky, rain), calm "and then..." energy between scenes. Conveys safe curiosity — the voice of someone who knows a wonderful secret and is about to share it gently. Think: a kind librarian reading aloud on a rainy afternoon, fully present with the children, never performing.
+> Native French. Female narrator, mid-thirties. Studio quality.
+> Persona: kind storytelling librarian for children aged 3 to 9. Emotion: warm, curious, unhurried.
+> Warm clear mezzo timbre with gentle chest resonance, naturally bright but never rushed. Clean unhurried consonants — warmly voiced M and N, soft S with no edge, rounded releases. Full open vowels, never clipped. Gentle narrative arcs: a slight rise on wonder and mystery, a soft grounding drop on resolution. Medium-slow pacing with genuine breath pauses; silence is her friend. Light natural breathiness, the warmth of a trusted adult, never saccharine. Micro-lingering on evocative nouns. Conveys safe curiosity — someone who knows a wonderful secret and shares it gently.
 
 ---
 

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>MaxPlay – Cartographie LimeZu (v3)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #1a1a2e; font-family: 'Segoe UI', sans-serif; color: #fff; padding: 16px; }
+  h1 { text-align: center; color: #ffe066; font-size: 1.6rem; margin-bottom: 6px; }
+  p.sub { text-align: center; color: #aaa; font-size: 0.85rem; margin-bottom: 20px; max-width: 900px; margin-left: auto; margin-right: auto; }
+  nav { text-align: center; margin: 16px 0 24px; }
+  nav a { display: inline-block; margin: 4px; padding: 6px 12px; background: #0f3460; color: #ffe066; text-decoration: none; border-radius: 6px; font-size: 0.8rem; }
+  nav a:hover { background: #1f4480; }
+
+  section { max-width: 1700px; margin: 0 auto 32px; background: #16213e; border-radius: 8px; overflow: hidden; }
+  h2 { font-size: 1.2rem; color: #ffe066; padding: 10px 14px; background: #0f3460; }
+  .desc { padding: 6px 14px; font-size: 0.82rem; color: #aac; background: #0f3460; }
+  .body { padding: 14px; }
+
+  /* Patterns */
+  .pattern { background: #0a1530; border-radius: 6px; padding: 14px; margin-bottom: 18px; }
+  .pattern-title { font-size: 1rem; color: #ffe066; font-weight: bold; margin-bottom: 4px; }
+  .pattern-meta { font-size: 0.75rem; color: #aac; margin-bottom: 8px; }
+  .pattern-flex { display: flex; gap: 16px; align-items: flex-start; flex-wrap: wrap; }
+  .pattern-img { flex: 0 0 auto; }
+  .pattern-img img { display: block; max-width: 360px; max-height: 480px; image-rendering: pixelated; image-rendering: crisp-edges; background: #2a4a2a; border-radius: 4px; }
+  .pattern-info { flex: 1 1 380px; min-width: 280px; }
+  .pattern-info h4 { color: #ffe066; font-size: 0.85rem; margin: 8px 0 4px; }
+  .pattern-info ul { list-style: none; padding-left: 0; font-size: 0.78rem; color: #ddd; }
+  .pattern-info li { padding: 2px 0; border-bottom: 1px dotted #1f4480; }
+  .pattern-info code { background: #2a3a5a; padding: 2px 5px; border-radius: 3px; color: #ffe066; font-size: 0.72rem; }
+  .pattern-warning { background: #3a1f1f; border-left: 3px solid #ff6666; padding: 6px 10px; margin-top: 8px; font-size: 0.75rem; color: #ffaaaa; }
+  .pattern-note { background: #1f2a3a; border-left: 3px solid #66aaff; padding: 6px 10px; margin-top: 8px; font-size: 0.75rem; color: #aaccff; }
+
+  /* Cartography role table */
+  table { width: 100%; border-collapse: collapse; font-size: 0.78rem; }
+  th, td { padding: 5px 8px; border-bottom: 1px solid #1f4480; text-align: left; vertical-align: top; }
+  th { background: #0f3460; color: #ffe066; font-weight: bold; }
+  td.tile-num { font-family: monospace; color: #ffe066; font-weight: bold; }
+  td.size { font-family: monospace; color: #4ade80; }
+  td.role { color: #fff; }
+  td.note { color: #aac; font-size: 0.72rem; }
+  tr:hover { background: #1f2a3a; }
+
+  /* Sheet links */
+  .sheet-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+  .sheet-link { background: #0a1530; padding: 10px; border-radius: 6px; text-decoration: none; color: #fff; display: block; }
+  .sheet-link:hover { background: #1f4480; }
+  .sheet-link .name { color: #ffe066; font-weight: bold; font-size: 0.85rem; }
+  .sheet-link .count { color: #aac; font-size: 0.7rem; }
+</style>
+</head>
+<body>
+
+<h1>📚 MaxPlay × LimeZu — Cartographie militaire</h1>
+<p class="sub">
+  Index par cas d'usage : "je veux faire X, voilà les tiles à utiliser et le rendu validé".
+  Chaque pattern est rendu en PNG par <code>render.py</code> et vérifié visuellement.
+</p>
+
+<nav>
+  <a href="#patterns">🧩 PATTERNS PRÊTS À L'EMPLOI</a>
+  <a href="#cartographie">🗺️ CARTOGRAPHIE TILES</a>
+  <a href="#sheets">📋 PLANCHES VISUELLES</a>
+  <a href="tile-library-v2.html">← v2</a>
+</nav>
+
+<section id="patterns">
+  <h2>🧩 Patterns réutilisables (cas d'usage → tiles)</h2>
+  <div class="desc">
+    Chaque pattern : <strong>preview PNG</strong> + tiles requis + layout exact.
+    Code source dans <code>game/web/tile-tools/recipes/test_*.py</code>.
+  </div>
+  <div class="body" id="patterns-body">Chargement…</div>
+</section>
+
+<section id="cartographie">
+  <h2>🗺️ Cartographie des tiles (rôle exact par variation)</h2>
+  <div class="desc">
+    <code>cartography.json</code> documente chaque variante avec son rôle visuel précis.
+    Centré sur Asphalt_1 (27 var) et Sidewalk_1 (54 var) — les fondations de toute carte urbaine.
+  </div>
+  <div class="body" id="cartography-body">Chargement…</div>
+</section>
+
+<section id="sheets">
+  <h2>📋 Planches-contact par catégorie</h2>
+  <div class="desc">PNG cliquables, taille native préservée. <strong>2220 familles, 6222 variants</strong> indexés depuis ME_Theme_Sorter (24 thèmes). Voir <code>tile-tools/families/</code> pour les planches par famille et <code>tile-tools/families/_families_index.json</code> pour l'index machine.</div>
+  <div class="body">
+    <h3 style="color:#ffe066;font-size:0.95rem;margin-bottom:8px">🛣️ Référence routes (Sidewalk_1 + Asphalt_1)</h3>
+    <div class="sheet-list">
+      <a class="sheet-link" href="tile-tools/families/02_city_terrains/Sidewalk_1.png"><div class="name">📋 Sidewalk_1 (54 var)</div><div class="count">trottoirs + marquages route</div></a>
+      <a class="sheet-link" href="tile-tools/families/02_city_terrains/Asphalt_1.png"><div class="name">📋 Asphalt_1 (27 var)</div><div class="count">lignes blanches + plain fill</div></a>
+      <a class="sheet-link" href="tile-tools/scripts/compare_sidewalk_styles.png"><div class="name">🎨 6 styles Sidewalk côte à côte</div><div class="count">_1 crème · _3 béton · _5 bleu...</div></a>
+    </div>
+
+    <h3 style="color:#ffe066;font-size:0.95rem;margin:14px 0 8px">🎨 Styles alternatifs trottoir</h3>
+    <div class="sheet-list">
+      <a class="sheet-link" href="tile-tools/families/02_city_terrains/Sidewalk_2.png"><div class="name">Sidewalk_2 (54 var)</div><div class="count">crème + bordure claire</div></a>
+      <a class="sheet-link" href="tile-tools/families/02_city_terrains/Sidewalk_3.png"><div class="name">Sidewalk_3 (54 var)</div><div class="count">béton gris contrasté</div></a>
+      <a class="sheet-link" href="tile-tools/families/02_city_terrains/Sidewalk_4.png"><div class="name">Sidewalk_4 (54 var)</div><div class="count">gris clair</div></a>
+      <a class="sheet-link" href="tile-tools/families/02_city_terrains/Sidewalk_5.png"><div class="name">Sidewalk_5 (54 var)</div><div class="count">bleu</div></a>
+      <a class="sheet-link" href="tile-tools/families/02_city_terrains/Sidewalk_6.png"><div class="name">Sidewalk_6 (54 var)</div><div class="count">ardoise</div></a>
+    </div>
+
+    <h3 style="color:#ffe066;font-size:0.95rem;margin:14px 0 8px">🌍 Planches-contact par thème (24 thèmes)</h3>
+    <div class="sheet-list">
+      <a class="sheet-link" href="../phaser/public/assets/tiles/themes/_planches/01_terrains_and_fences.png"><div class="name">01 Terrains & Fences</div><div class="count">462 tiles · 25 fam</div></a>
+      <a class="sheet-link" href="../phaser/public/assets/tiles/themes/_planches/02_city_terrains.png"><div class="name">02 City Terrains</div><div class="count">351 tiles · 7 fam</div></a>
+      <a class="sheet-link" href="../phaser/public/assets/tiles/themes/_planches/03_city_props.png"><div class="name">03 City Props</div><div class="count">716 tiles · 184 fam</div></a>
+      <a class="sheet-link" href="../phaser/public/assets/tiles/themes/_planches/07_villas.png"><div class="name">07 Villas</div><div class="count">194 tiles · 30 fam</div></a>
+      <a class="sheet-link" href="../phaser/public/assets/tiles/themes/_planches/10_vehicles.png"><div class="name">10 Vehicles</div><div class="count">273 tiles · 53 fam</div></a>
+      <a class="sheet-link" href="../phaser/public/assets/tiles/themes/_planches/13_school.png"><div class="name">13 School</div><div class="count">125 tiles · 19 fam</div></a>
+      <a class="sheet-link" href="../phaser/public/assets/tiles/themes/_planches/17_garden.png"><div class="name">17 Garden</div><div class="count">570 tiles · 354 fam</div></a>
+      <a class="sheet-link" href="../phaser/public/assets/tiles/themes/_planches/21_beach.png"><div class="name">21 Beach</div><div class="count">316 tiles · 231 fam</div></a>
+    </div>
+  </div>
+</section>
+
+<script src="tile-tools/cartography.js"></script>
+<script src="tile-tools/patterns.js?v=6"></script>
+<script>
+function load() {
+  // CARTOGRAPHY et PATTERNS sont chargés par les <script> ci-dessus
+  if (typeof PATTERNS === 'undefined' || typeof CARTOGRAPHY === 'undefined') {
+    document.getElementById('patterns-body').textContent = 'Erreur: JS data not loaded.';
+    return;
+  }
+  renderPatterns(PATTERNS);
+  renderCartography(CARTOGRAPHY);
+}
+
+function renderPatterns(p) {
+  const root = document.getElementById('patterns-body');
+  root.innerHTML = '';
+  for (const [key, pat] of Object.entries(p)) {
+    if (key === 'version' || key === 'comment') continue;
+    const el = document.createElement('div');
+    el.className = 'pattern';
+    el.id = key;
+    el.innerHTML = `
+      <div class="pattern-title">${pat.title}</div>
+      <div class="pattern-meta">Taille minimale : <code>${pat.size_min}</code> · Code : <code>${pat.code_example || '—'}</code></div>
+      <div class="pattern-flex">
+        <div class="pattern-img"><img src="${pat.rendered}" alt="${pat.title}"></div>
+        <div class="pattern-info">
+          <h4>📦 Tiles requis</h4>
+          <ul>${(pat.tiles_required || []).map(t => `<li>${t}</li>`).join('')}</ul>
+          <h4>🎯 Layout</h4>
+          <p style="font-size:0.78rem;color:#ddd"><code>${pat.layout || '—'}</code></p>
+          ${pat.warning ? `<div class="pattern-warning">⚠️ ${pat.warning}</div>` : ''}
+          ${pat.note ? `<div class="pattern-note">💡 ${pat.note}</div>` : ''}
+        </div>
+      </div>
+    `;
+    root.appendChild(el);
+  }
+}
+
+function renderCartography(c) {
+  const root = document.getElementById('cartography-body');
+  root.innerHTML = '';
+  for (const [family, data] of Object.entries(c)) {
+    if (family.startsWith('_') || family === 'version' || family === 'generated' || family === 'comment') continue;
+    const tiles = data.tiles;
+    const wrap = document.createElement('div');
+    wrap.style.marginBottom = '18px';
+    wrap.innerHTML = `<h3 style="color:#ffe066;font-size:1rem;margin-bottom:8px">${family} <span style="color:#aac;font-size:0.7rem">${Object.keys(tiles).length} variations</span></h3>`;
+    const tbl = document.createElement('table');
+    tbl.innerHTML = `
+      <thead><tr>
+        <th>#</th><th>Rôle</th><th>Taille</th><th>Note / Usage</th>
+      </tr></thead>
+      <tbody></tbody>
+    `;
+    const tbody = tbl.querySelector('tbody');
+    for (const [num, t] of Object.entries(tiles)) {
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td class="tile-num">_${num}</td>
+        <td class="role">${t.role}</td>
+        <td class="size">${t.size}</td>
+        <td class="note">${t.note || ''} ${t.use_in ? `<br><strong style="color:#4ade80">→ ${t.use_in.join(', ')}</strong>` : ''}</td>
+      `;
+      tbody.appendChild(tr);
+    }
+    wrap.appendChild(tbl);
+    root.appendChild(wrap);
+  }
+}
+
+try { load(); } catch(e) {
+  document.getElementById('patterns-body').textContent = 'Erreur: ' + e.message;
+}
+</script>
+</body>
+</html>

@@ -97,7 +97,8 @@
     // N bus se déplacent, Max doit taper celui demandé. 5 rounds.
 
     const ROUNDS = 7;
-    const BUS_COUNT = 12;
+    const BUS_COUNT_MIN = 50;
+    const BUS_COUNT_MAX = 80;
     const BUS_WIDTH = 80;
     const SPEED_MIN = 28;  // px/sec
     const SPEED_MAX = 75;
@@ -119,8 +120,16 @@
       arena.innerHTML = '';
       movers = [];
 
-      // Pool : lignes à couleurs distinctes pour rendre visuel plus clair
-      const pool = selectDistinctColors(LIGNES, BUS_COUNT, 40);
+      // Pool : nombre aléatoire de bus, doublons autorisés (LIGNES ~26 mais on veut 50-80 bus)
+      const busCount = Math.floor(rand(BUS_COUNT_MIN, BUS_COUNT_MAX + 1));
+      const pool = [];
+      while (pool.length < busCount) {
+        const shuffled = LIGNES.slice().sort(() => Math.random() - 0.5);
+        for (const l of shuffled) {
+          if (pool.length >= busCount) break;
+          pool.push(l);
+        }
+      }
       // Cible parmi les bus présents
       const target = pick(pool);
       targetNum = target.num;

@@ -1,20 +1,20 @@
 ---
 type: 4
 pays: fr
-prenom_complet: Jérémie
-diminutif: Jérem
-genre: M
+prenom_complet: Madeleine
+diminutif: Madie
+genre: F
 token: titi_4_fr
 casting_v1: true
-prononciation_ipa: ʒeʁɛm
+prononciation_ipa: maˈdi
 ---
 
-# Jérem (Jérémie) — Type 4, casting France
+# Madie (Madeleine) — Type 4, casting France
 
 ## Origine du prénom
-Jérémie : prophète de la lamentation poétique, profondeur, sensibilité rare.
-Diminutif "Jérem" doux, singulier, mélancolique sans lourdeur.
+Madeleine : archétype féminin de profondeur et sensibilité (Marie-Madeleine de l'Évangile), première à voir le Ressuscité, mystique, transformation par l'amour.
+Diminutif "Madie" doux, singulier, mélancolique sans lourdeur.
 
 ## Usage
-- Diminutif 4/5 du temps : **Jérem**
-- Prénom complet pour les moments solennels : Jérémie
+- Diminutif 4/5 du temps : **Madie**
+- Prénom complet pour les moments solennels : Madeleine

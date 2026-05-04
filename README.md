@@ -35,7 +35,7 @@ MaxPlay/
 │   └── tasks/              ← BACKLOG.md (épics jeu)
 │
 ├── narration/              ← PÔLE NARRATION (univers éditorial)
-│   ├── stories/  workshop/  personnages/  enneagramme/  univers/
+│   ├── stories/  personnages/  enneagramme/  univers/
 │   ├── pmo/  equipe/  archive/
 │   ├── scripts/            ← CLI (new-story, archive-story, gatekeeper, ...)
 │   ├── memory/             ← state.md · business/

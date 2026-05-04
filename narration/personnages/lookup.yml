@@ -10,7 +10,7 @@ tokens:
   titi_1_fr: { prenom: Melchisédech, diminutif: Melki,    genre: M, type: 1, token: titi_1_fr }
   titi_2_fr: { prenom: Marie,        diminutif: Mimi,     genre: F, type: 2, token: titi_2_fr }
   titi_3_fr: { prenom: Paul,         diminutif: Polo,     genre: M, type: 3, token: titi_3_fr }
-  titi_4_fr: { prenom: Jérémie,      diminutif: Jérem,    genre: M, type: 4, token: titi_4_fr }
+  titi_4_fr: { prenom: Madeleine,    diminutif: Madie,    genre: F, type: 4, token: titi_4_fr }
   titi_5_fr: { prenom: Luc,          diminutif: Lulu,     genre: M, type: 5, token: titi_5_fr }
   titi_6_fr: { prenom: Pierre,       diminutif: Pierrot,  genre: M, type: 6, token: titi_6_fr }
   titi_7_fr: { prenom: Raphaëlle,    diminutif: Raph,     genre: F, type: 7, token: titi_7_fr }
@@ -26,8 +26,8 @@ prenoms_to_token:
   Mimi: titi_2_fr
   Paul: titi_3_fr
   Polo: titi_3_fr
-  Jérémie: titi_4_fr
-  Jérem: titi_4_fr
+  Madeleine: titi_4_fr
+  Madie: titi_4_fr
   Luc: titi_5_fr
   Lulu: titi_5_fr
   Pierre: titi_6_fr

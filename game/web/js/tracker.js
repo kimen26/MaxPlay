@@ -93,7 +93,7 @@ const Tracker = (() => {
       questions: 0,
       correct: 0,
     };
-    _announceTitle(id);
+    // TTS du titre désactivé : laggue le démarrage (D-024 2026-05-03)
   }
 
   function _announceTitle(id) {
@@ -211,7 +211,7 @@ const Tracker = (() => {
 
   // ── Auto-end ────────────────────────────────────────────────────────────
   // Clôt la session quand la page disparaît, pour les jeux sans fin explicite
-  // (MJ-04 compte, MJ-12 sons, MJ-17 village). Les jeux qui appellent
+  // (MJ-04 compte, MJ-12 sons, MJ-17 garage). Les jeux qui appellent
   // endSession() explicitement ont déjà _session = null → no-op.
   // pagehide est plus fiable que beforeunload sur mobile / iOS Safari.
   window.addEventListener('pagehide', () => {

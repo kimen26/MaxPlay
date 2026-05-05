@@ -108,7 +108,9 @@
       "Bash(PYTHONIOENCODING=utf-8 python render.py test_route_h_5rows.py)",
       "Bash(PYTHONIOENCODING=utf-8 python render.py test_voie_bus_v4.py)",
       "Bash(set PYTHONIOENCODING=utf-8)",
-      "Bash(grep -iE \"\\\\.env|secret|credential|token|\\\\.key$\")"
+      "Bash(grep -iE \"\\\\.env|secret|credential|token|\\\\.key$\")",
+      "Bash(gh run *)",
+      "PowerShell(gh run list --limit 3 --repo kimen26/MaxPlay 2>&1)"
     ]
   },
   "hooks": {

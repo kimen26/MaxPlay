@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 import { SoundManager } from '../utils/SoundManager';
+import { VirtualJoystick } from '../controls/VirtualJoystick';
 
 const BUS_SPEED = 220;
 const WORLD_WIDTH = 2400;
@@ -19,8 +20,6 @@ interface Passenger {
 export class SandboxScene extends Phaser.Scene {
   private bus!: Phaser.GameObjects.Sprite;
   private busVelocity: Phaser.Math.Vector2;
-  private targetPoint: Phaser.Math.Vector2 | null = null;
-  private targetMarker!: Phaser.GameObjects.Arc;
 
   private passengers: Passenger[] = [];
   private passengersCollected = 0;
@@ -30,6 +29,8 @@ export class SandboxScene extends Phaser.Scene {
   private spaceKey!: Phaser.Input.Keyboard.Key;
   private passengerText!: Phaser.GameObjects.Text;
   private soundManager!: SoundManager;
+  private joystick!: VirtualJoystick;
+  private honkButton!: Phaser.GameObjects.Container;
 
   constructor() {
     super({ key: 'SandboxScene' });
@@ -228,10 +229,6 @@ export class SandboxScene extends Phaser.Scene {
       this.bus.setDepth(this.bus.y);
     });
 
-    this.targetMarker = this.add.circle(0, 0, 25, 0x4CAF50, 0.3)
-      .setStrokeStyle(3, 0x4CAF50)
-      .setVisible(false)
-      .setDepth(1000);
   }
 
   private createPassengers(): void {
@@ -267,19 +264,58 @@ export class SandboxScene extends Phaser.Scene {
   private createInput(): void {
     this.cursors = this.input.keyboard!.createCursorKeys();
     this.spaceKey = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-    
+
+    // Réveiller l'audio au premier touch n'importe où (Chrome/Edge)
     let audioStarted = false;
-    
-    this.input.on('pointerdown', (pointer: Phaser.Input.Pointer) => {
-      // Réveiller l'audio au premier clic (Chrome/Edge)
+    this.input.on('pointerdown', () => {
       if (!audioStarted) {
         this.soundManager.resumeAudio();
         audioStarted = true;
       }
-      
-      const worldPoint = this.cameras.main.getWorldPoint(pointer.x, pointer.y);
-      this.setTargetPoint(worldPoint.x, worldPoint.y);
     });
+
+    // Joystick virtuel bas-gauche
+    const W = this.scale.width;
+    const H = this.scale.height;
+    const margin = 110;
+    this.joystick = new VirtualJoystick(this, margin, H - margin, 80);
+
+    // Bouton klaxon bas-droite
+    this.honkButton = this.createHonkButton(W - 90, H - 90);
+
+    // Repositionner sur resize
+    this.scale.on('resize', () => {
+      const w = this.scale.width;
+      const h = this.scale.height;
+      this.joystick.setCenter(margin, h - margin);
+      this.honkButton.setPosition(w - 90, h - 90);
+    });
+  }
+
+  private createHonkButton(x: number, y: number): Phaser.GameObjects.Container {
+    const bg = this.add.circle(0, 0, 50, 0xE2001A, 0.85)
+      .setStrokeStyle(3, 0xffffff);
+    const icon = this.add.text(0, 0, '📢', { fontSize: '38px' }).setOrigin(0.5);
+    const container = this.add.container(x, y, [bg, icon])
+      .setSize(100, 100)
+      .setScrollFactor(0)
+      .setDepth(10000)
+      .setInteractive({ cursor: 'pointer', useHandCursor: true, hitArea: new Phaser.Geom.Circle(0, 0, 50), hitAreaCallback: Phaser.Geom.Circle.Contains });
+    container.on('pointerdown', () => {
+      this.soundManager.resumeAudio();
+      this.triggerHonk();
+      this.tweens.add({ targets: container, scaleX: 0.85, scaleY: 0.85, duration: 80, yoyo: true });
+    });
+    return container;
+  }
+
+  private triggerHonk(): void {
+    this.soundManager.honk();
+    this.tweens.add({ targets: this.bus, scaleX: 0.65, scaleY: 0.65, duration: 100, yoyo: true });
+    const beep = this.add.text(this.bus.x, this.bus.y - 50, '📢 BEEP!', {
+      fontFamily: 'Nunito', fontSize: '24px', fontStyle: 'bold', color: '#FF6B00',
+    }).setOrigin(0.5).setDepth(20000);
+    this.tweens.add({ targets: beep, y: beep.y - 40, alpha: 0, duration: 800, onComplete: () => beep.destroy() });
   }
 
   // Zone interdite : îlot central du rond-point
@@ -292,27 +328,6 @@ export class SandboxScene extends Phaser.Scene {
         && y >= this.ILOT.yMin && y <= this.ILOT.yMax;
   }
 
-  private setTargetPoint(rawX: number, rawY: number): void {
-    let x = Phaser.Math.Clamp(rawX, 50, WORLD_WIDTH - 50);
-    let y = Phaser.Math.Clamp(rawY, 50, WORLD_HEIGHT - 50);
-    // Si tap dans l'îlot, snap au bord le plus proche
-    if (this.isInIlot(x, y)) {
-      const cx = (this.ILOT.xMin + this.ILOT.xMax) / 2;
-      const cy = (this.ILOT.yMin + this.ILOT.yMax) / 2;
-      const dx = x - cx;
-      const dy = y - cy;
-      // Pousser le tap au-delà du bord le plus proche
-      if (Math.abs(dx) > Math.abs(dy)) {
-        x = dx > 0 ? this.ILOT.xMax + 40 : this.ILOT.xMin - 40;
-      } else {
-        y = dy > 0 ? this.ILOT.yMax + 40 : this.ILOT.yMin - 40;
-      }
-    }
-    this.targetPoint = new Phaser.Math.Vector2(x, y);
-    this.targetMarker.setPosition(this.targetPoint.x, this.targetPoint.y).setVisible(true).setScale(0);
-    this.tweens.add({ targets: this.targetMarker, scale: 1, duration: 200 });
-  }
-
   private createUI(): void {
     const W = this.scale.width;
     const H = this.scale.height;
@@ -322,9 +337,9 @@ export class SandboxScene extends Phaser.Scene {
       backgroundColor: '#FFFFFFDD', padding: { x: 16, y: 10 },
     }).setScrollFactor(0).setDepth(10000);
 
-    this.add.text(W / 2, H - 36, '👆 Touche pour conduire', {
-      fontFamily: 'Nunito', fontSize: '16px', color: '#444444', backgroundColor: '#FFFFFFCC', padding: { x: 16, y: 8 },
-    }).setOrigin(0.5).setScrollFactor(0).setDepth(10000);
+    this.add.text(W / 2, 16, '🕹️ Joystick à gauche · 📢 Klaxon à droite', {
+      fontFamily: 'Nunito', fontSize: '14px', color: '#444444', backgroundColor: '#FFFFFFCC', padding: { x: 12, y: 6 },
+    }).setOrigin(0.5, 0).setScrollFactor(0).setDepth(10000);
   }
 
   private setupCamera(): void {
@@ -350,37 +365,32 @@ export class SandboxScene extends Phaser.Scene {
   }
 
   private updateBusMovement(dt: number): void {
-    // Tap mode
-    if (this.targetPoint) {
-      const dx = this.targetPoint.x - this.bus.x;
-      const dy = this.targetPoint.y - this.bus.y;
-      const dist = Math.sqrt(dx * dx + dy * dy);
-      
-      if (dist < 15) {
-        this.targetPoint = null;
-        this.targetMarker.setVisible(false);
-        this.busVelocity.set(0, 0);
-      } else {
-        this.busVelocity.x = (dx / dist) * BUS_SPEED;
-        this.busVelocity.y = (dy / dist) * BUS_SPEED;
-      }
-    } else {
-      this.busVelocity.scale(0.9);
+    // Source 1 : joystick virtuel (touch)
+    const j = this.joystick.delta;
+    const jMag = j.length();
+    let inputX = 0, inputY = 0;
+    if (jMag > 0.18) {  // deadzone
+      inputX = j.x;
+      inputY = j.y;
     }
 
-    // Clavier override
+    // Source 2 : clavier (override prioritaire si appuyé)
     let kx = 0, ky = 0;
     if (this.cursors.left?.isDown) kx = -1;
     if (this.cursors.right?.isDown) kx = 1;
     if (this.cursors.up?.isDown) ky = -1;
     if (this.cursors.down?.isDown) ky = 1;
-    
     if (kx !== 0 || ky !== 0) {
-      this.targetPoint = null;
-      this.targetMarker.setVisible(false);
       if (kx !== 0 && ky !== 0) { kx *= 0.707; ky *= 0.707; }
-      this.busVelocity.x = kx * BUS_SPEED;
-      this.busVelocity.y = ky * BUS_SPEED;
+      inputX = kx;
+      inputY = ky;
+    }
+
+    if (inputX !== 0 || inputY !== 0) {
+      this.busVelocity.x = inputX * BUS_SPEED;
+      this.busVelocity.y = inputY * BUS_SPEED;
+    } else {
+      this.busVelocity.scale(0.85);  // friction
     }
 
     // Choisir sprite selon direction
@@ -401,8 +411,6 @@ export class SandboxScene extends Phaser.Scene {
       this.bus.x = prevX;
       this.bus.y = prevY;
       this.busVelocity.set(0, 0);
-      this.targetPoint = null;
-      this.targetMarker.setVisible(false);
     }
   }
 

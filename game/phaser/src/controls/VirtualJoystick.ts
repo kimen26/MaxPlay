@@ -25,11 +25,11 @@ export class VirtualJoystick {
     this.centerY = y;
     this.radius = radius;
 
-    this.base = scene.add.circle(x, y, radius, 0x000000, 0.32)
-      .setStrokeStyle(3, 0xffffff, 0.55)
+    this.base = scene.add.circle(x, y, radius, 0x1976D2, 0.55)
+      .setStrokeStyle(5, 0xffffff, 0.95)
       .setScrollFactor(0).setDepth(10000);
-    this.thumb = scene.add.circle(x, y, radius * 0.45, 0xffffff, 0.75)
-      .setStrokeStyle(2, 0x000000, 0.5)
+    this.thumb = scene.add.circle(x, y, radius * 0.5, 0xffffff, 0.98)
+      .setStrokeStyle(3, 0x1976D2, 1)
       .setScrollFactor(0).setDepth(10001);
 
     scene.input.addPointer(3);  // multi-touch

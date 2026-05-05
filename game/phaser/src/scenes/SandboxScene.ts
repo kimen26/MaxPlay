@@ -20,6 +20,8 @@ interface Passenger {
 export class SandboxScene extends Phaser.Scene {
   private bus!: Phaser.GameObjects.Sprite;
   private busVelocity: Phaser.Math.Vector2;
+  private joystick!: VirtualJoystick;
+  private honkButton!: Phaser.GameObjects.Container;
 
   private passengers: Passenger[] = [];
   private passengersCollected = 0;
@@ -29,8 +31,6 @@ export class SandboxScene extends Phaser.Scene {
   private spaceKey!: Phaser.Input.Keyboard.Key;
   private passengerText!: Phaser.GameObjects.Text;
   private soundManager!: SoundManager;
-  private joystick!: VirtualJoystick;
-  private honkButton!: Phaser.GameObjects.Container;
 
   constructor() {
     super({ key: 'SandboxScene' });
@@ -57,24 +57,20 @@ export class SandboxScene extends Phaser.Scene {
     const COLS = Math.ceil(WORLD_WIDTH / TILE);   // 50
     const ROWS = Math.ceil(WORLD_HEIGHT / TILE);  // 34
 
-    // Réseau de routes en grille :
-    //   2 routes H : rows 5-7 (nord) + rows 15-17 (centre, traversant le rond-point)
-    //   2 routes V : cols 8-10 (ouest) + cols 24-26 (centre, traversant le rond-point)
-    // Rond-point central : cols 18-31, rows 10-21 (14×12)
-    const isHRoad = (r: number) => (r >= 15 && r <= 17) || (r >= 5 && r <= 7);
-    const isVRoad = (c: number) => (c >= 24 && c <= 26) || (c >= 8 && c <= 10);
-    const isHSidewalk = (r: number) => r === 14 || r === 18 || r === 4 || r === 8;
-    const isVSidewalk = (c: number) => c === 23 || c === 27 || c === 7 || c === 11;
-    const isInRondPoint = (c: number, r: number) => c >= 18 && c <= 31 && r >= 10 && r <= 21;
+    // Croisement central : route H rows 15-17, route V cols 24-26 (3 tiles chacune)
+    // Trottoirs : rows 14 et 18 (H), cols 23 et 27 (V)
+    const isHRoad = (r: number) => r >= 15 && r <= 17;
+    const isVRoad = (c: number) => c >= 24 && c <= 26;
+    const isHSidewalk = (r: number) => r === 14 || r === 18;
+    const isVSidewalk = (c: number) => c === 23 || c === 27;
 
     const grassMix = ['tile-grass1', 'tile-grass2', 'tile-grass3'];
     const asphMix  = ['tile-asphalt1', 'tile-asphalt2', 'tile-asphalt3'];
     const swMix    = ['tile-sidewalk1', 'tile-sidewalk2'];
 
-    // ─── Layer 1 : sol (tile par tile, hors zone rond-point) ────
+    // ─── Layer 1 : sol (tile par tile) ──────────────────────────
     for (let r = 0; r < ROWS; r++) {
       for (let c = 0; c < COLS; c++) {
-        if (isInRondPoint(c, r)) continue;  // posé après par le rond-point
         let key: string;
         if (isHRoad(r) || isVRoad(c)) {
           key = asphMix[(r + c) % 3];
@@ -87,39 +83,22 @@ export class SandboxScene extends Phaser.Scene {
       }
     }
 
-    // ─── Layer 1b : rond-point central (4 quarts + îlot panneau) ──
-    // Quarts 7×6 : NW (18,10), NE (25,10), SW (18,16), SE (25,16)
-    this.add.image(18 * TILE, 10 * TILE, 'tile-rp-nw').setOrigin(0, 0).setDepth(-100);
-    this.add.image(25 * TILE, 10 * TILE, 'tile-rp-ne').setOrigin(0, 0).setDepth(-100);
-    this.add.image(18 * TILE, 16 * TILE, 'tile-rp-sw').setOrigin(0, 0).setDepth(-100);
-    this.add.image(25 * TILE, 16 * TILE, 'tile-rp-se').setOrigin(0, 0).setDepth(-100);
-    // Îlot+panneau 3×4 (col=6, row=5 dans grille rond-point => abs (24, 15))
-    this.add.image(24 * TILE, 15 * TILE, 'tile-rp-ilot').setOrigin(0, 0).setDepth(-50);
-
-    // ─── Layer 1c : pointillés blancs au centre des routes ─────
-    // Routes H axes : row 6 et row 16 ; Routes V axes : col 9 et col 25
-    const isCrossing = (c: number, r: number) => isHRoad(r) && isVRoad(c);
+    // ─── Layer 1b : pointillés blancs au centre des routes ─────
+    // Route H axe central = row 16 ; Route V axe central = col 25
+    const INTERSECTION_R = (r: number) => r >= 15 && r <= 17;
+    const INTERSECTION_C = (c: number) => c >= 24 && c <= 26;
     for (let c = 0; c < COLS; c++) {
-      // Pointillé route H nord (row 6) sauf croisements
-      if (!isVRoad(c)) {
-        this.add.image(c * TILE, 6 * TILE, 'tile-line-h').setOrigin(0, 0).setDepth(-99);
-      }
-      // Pointillé route H centrale (row 16) sauf rond-point + croisements
-      if (!isInRondPoint(c, 16) && !isVRoad(c)) {
+      // Pointillés H sur row 16, sauf intersection
+      if (!INTERSECTION_C(c)) {
         this.add.image(c * TILE, 16 * TILE, 'tile-line-h').setOrigin(0, 0).setDepth(-99);
       }
     }
     for (let r = 0; r < ROWS; r++) {
-      // Pointillé route V ouest (col 9) sauf croisements
-      if (!isHRoad(r)) {
-        this.add.image(9 * TILE, r * TILE, 'tile-line-v').setOrigin(0, 0).setDepth(-99);
-      }
-      // Pointillé route V centrale (col 25) sauf rond-point + croisements
-      if (!isInRondPoint(25, r) && !isHRoad(r)) {
+      // Pointillés V sur col 25, sauf intersection
+      if (!INTERSECTION_R(r)) {
         this.add.image(25 * TILE, r * TILE, 'tile-line-v').setOrigin(0, 0).setDepth(-99);
       }
     }
-    void isCrossing;
 
     // ─── Layer 2 : maisons (toyhouse 4×5 = 192×240 px) ──────────
     // 4 quadrants, chacun avec 1-2 maisons sur grass
@@ -142,48 +121,50 @@ export class SandboxScene extends Phaser.Scene {
       this.add.image(x, y, key).setOrigin(0, 0).setDepth(y);
     });
 
-    // ─── Layer 3 : arbres répartis sur les "îlots" entre les routes ──
+    // ─── Layer 3 : arbres répartis sur grass ────────────────────
     const bushKeys = ['tile-bush1', 'tile-bush2', 'tile-bush3'];
     const trees: Array<[number, number]> = [
-      // NO (avant route N, à l'ouest de la route V ouest)
-      [2, 2], [5, 1], [2, 11], [5, 13],
-      // NE (entre route V ouest et rond-point) - SE limité par route H nord
-      [14, 1], [16, 13], [14, 9],
-      // E (à droite du rond-point, au-dessus de la route H centrale)
-      [33, 2], [38, 1], [44, 2], [48, 1],
-      [33, 13], [38, 13], [44, 13], [48, 13],
-      // SO (à gauche du rond-point, sous route H centrale)
-      [2, 22], [5, 22], [14, 22], [16, 22],
-      [2, 30], [5, 32], [14, 30], [16, 32],
-      // SE (à droite du rond-point, sous route H centrale)
-      [33, 22], [38, 22], [44, 22], [48, 22],
-      [33, 30], [38, 32], [44, 30], [48, 32],
+      [9, 1], [11, 9], [20, 2], [22, 11],
+      [29, 1], [31, 9], [40, 2], [47, 11],
+      [9, 21], [11, 28], [20, 23], [22, 30],
+      [29, 21], [31, 28], [40, 23], [47, 30],
+      [16, 9], [37, 9], [16, 23], [37, 23],
     ];
     trees.forEach(([c, r], i) => {
-      if (isInRondPoint(c, r)) return;
       const key = bushKeys[i % 3];
       this.add.image(c * TILE, r * TILE, key).setOrigin(0, 0).setDepth(r * TILE);
     });
 
-    // ─── Layer 4 : arrêts de bus (3 stratégiques) ────────────────
-    // Banc remonté sur le trottoir (y = trottoir_row - 1)
-    this.createBusStop(2 * TILE,  13 * TILE, '162');  // trottoir N centrale, ouest extrême
-    this.createBusStop(40 * TILE, 13 * TILE, 'M7');   // trottoir N centrale, est
-    this.createBusStop(15 * TILE, 18 * TILE, '380');  // trottoir S centrale, milieu-ouest
+    // ─── Layer 4 : arrêts de bus (poteau + abri) ────────────────
+    // Positions : 3 arrêts inspirés du jeu original
+    // Bus stop : banc remonté sur le trottoir (y = trottoir_row - 1 pour ancrer la base sur le trottoir)
+    this.createBusStop(6 * TILE,  13 * TILE, '162');  // trottoir N, ouest
+    this.createBusStop(20 * TILE, 13 * TILE, 'M7');   // trottoir N, milieu
+    this.createBusStop(40 * TILE, 18 * TILE, '380');  // trottoir S, est (déjà OK)
 
-    // ─── Layer 5 : lampadaires (réduits, hors zone rond-point) ──
+    // ─── Layer 5 : lampadaires (electric_pole 1×4 = 48×192) ─────
     const lamps: Array<[number, number]> = [
-      // Le long de la route H centrale (row 13 nord, row 19 sud)
-      [4, 13], [15, 13], [37, 13], [44, 13],
-      [4, 19], [15, 19], [37, 19], [44, 19],
-      // Le long de la route H nord (row 3, row 9)
-      [4, 3], [15, 3], [30, 3], [44, 3],
-      [4, 9], [15, 9], [30, 9], [44, 9],
+      [8, 13], [15, 13], [29, 13], [36, 13], [43, 13], // nord
+      [8, 19], [15, 19], [29, 19], [36, 19], [43, 19], // sud
     ];
     lamps.forEach(([c, r]) => {
-      if (isInRondPoint(c, r)) return;
       // Pole tile = 48×192 → ancré 4 rows au-dessus de la base
       this.add.image(c * TILE, (r - 3) * TILE, 'tile-pole').setOrigin(0, 0).setDepth(r * TILE);
+    });
+
+    // ─── Layer 6 : décorations (poubelles, panneaux, fleurs) ────
+    this.add.image(10 * TILE, 14 * TILE, 'tile-trash').setOrigin(0, 0).setDepth(14 * TILE);
+    this.add.image(34 * TILE, 18 * TILE, 'tile-trash').setOrigin(0, 0).setDepth(18 * TILE);
+    this.add.image(25 * TILE, 14 * TILE, 'tile-info-sign').setOrigin(0, 0).setDepth(14 * TILE);
+    this.add.image(25 * TILE, 18 * TILE, 'tile-mailbox').setOrigin(0, 0).setDepth(18 * TILE);
+
+    const flowerKeys = ['tile-flower-r', 'tile-flower-y', 'tile-flower-p'];
+    const flowers: Array<[number, number]> = [
+      [8, 8], [16, 7], [25, 6], [35, 8], [45, 7],
+      [8, 25], [16, 26], [25, 27], [35, 25], [45, 26],
+    ];
+    flowers.forEach(([c, r], i) => {
+      this.add.image(c * TILE, r * TILE, flowerKeys[i % 3]).setOrigin(0, 0).setDepth(r * TILE);
     });
   }
 
@@ -232,20 +213,20 @@ export class SandboxScene extends Phaser.Scene {
   }
 
   private createPassengers(): void {
-    // Passagers répartis sur les trottoirs des 4 routes (hors rond-point)
+    const TROT_N = WORLD_HEIGHT / 2 - 85; // trottoir nord de la route H
+    const TROT_S = WORLD_HEIGHT / 2 + 85; // trottoir sud de la route H
+    const TROT_E = WORLD_WIDTH / 2 + 85;  // trottoir est de la route V
+    const TROT_W = WORLD_WIDTH / 2 - 85;  // trottoir ouest de la route V
     const positions = [
-      // Trottoir N route H nord (y = 4*48 = 192)
-      { x: 200, y: 192 }, { x: 600, y: 192 }, { x: 1700, y: 192 }, { x: 2100, y: 192 },
-      // Trottoir S route H nord (y = 8*48 = 384)
-      { x: 400, y: 384 }, { x: 1200, y: 384 }, { x: 1900, y: 384 },
-      // Trottoir N route H centrale, hors rond-point (y = 14*48 = 672)
-      { x: 200, y: 672 }, { x: 1700, y: 672 },
-      // Trottoir S route H centrale, hors rond-point (y = 18*48 = 864)
-      { x: 500, y: 864 }, { x: 1700, y: 864 }, { x: 2100, y: 864 },
-      // Trottoir W route V ouest (x = 7*48 = 336)
-      { x: 336, y: 1100 }, { x: 528, y: 1300 },
-      // Trottoir route V centrale (col 23, x = 1104), hors rond-point
-      { x: 1104, y: 1300 },
+      // Trottoir nord
+      { x: 300,  y: TROT_N }, { x: 600,  y: TROT_N }, { x: 950,  y: TROT_N },
+      { x: 1300, y: TROT_N }, { x: 1650, y: TROT_N }, { x: 2000, y: TROT_N },
+      // Trottoir sud
+      { x: 450,  y: TROT_S }, { x: 800,  y: TROT_S }, { x: 1100, y: TROT_S },
+      { x: 1500, y: TROT_S }, { x: 1900, y: TROT_S },
+      // Trottoirs verticaux
+      { x: TROT_W, y: 350 }, { x: TROT_E, y: 500 },
+      { x: TROT_W, y: 900 }, { x: TROT_E, y: 1100 },
     ];
 
     positions.forEach((pos, i) => {
@@ -265,7 +246,6 @@ export class SandboxScene extends Phaser.Scene {
     this.cursors = this.input.keyboard!.createCursorKeys();
     this.spaceKey = this.input.keyboard!.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
-    // Réveiller l'audio au premier touch n'importe où (Chrome/Edge)
     let audioStarted = false;
     this.input.on('pointerdown', () => {
       if (!audioStarted) {
@@ -274,71 +254,35 @@ export class SandboxScene extends Phaser.Scene {
       }
     });
 
-    // Joystick virtuel bas-gauche
+    // Joystick bas-gauche
     const W = this.scale.width;
     const H = this.scale.height;
-    const margin = 110;
-    this.joystick = new VirtualJoystick(this, margin, H - margin, 80);
+    this.joystick = new VirtualJoystick(this, 130, H - 130, 80);
 
-    // Bouton klaxon bas-droite
-    this.honkButton = this.createHonkButton(W - 90, H - 90);
-
-    // Repositionner sur resize
-    this.scale.on('resize', () => {
-      const w = this.scale.width;
-      const h = this.scale.height;
-      this.joystick.setCenter(margin, h - margin);
-      this.honkButton.setPosition(w - 90, h - 90);
-    });
-  }
-
-  private createHonkButton(x: number, y: number): Phaser.GameObjects.Container {
-    const bg = this.add.circle(0, 0, 50, 0xE2001A, 0.85)
-      .setStrokeStyle(3, 0xffffff);
-    const icon = this.add.text(0, 0, '📢', { fontSize: '38px' }).setOrigin(0.5);
-    const container = this.add.container(x, y, [bg, icon])
-      .setSize(100, 100)
+    // Bouton klaxon bas-droite — gros, contrasté
+    const btnX = W - 110;
+    const btnY = H - 130;
+    const btnBg = this.add.circle(0, 0, 60, 0xE53935, 0.92)
+      .setStrokeStyle(5, 0xffffff, 1);
+    const btnIcon = this.add.text(0, 0, '📢', { fontSize: '52px' }).setOrigin(0.5);
+    this.honkButton = this.add.container(btnX, btnY, [btnBg, btnIcon])
+      .setSize(120, 120)
       .setScrollFactor(0)
       .setDepth(10000)
-      .setInteractive({ cursor: 'pointer', useHandCursor: true, hitArea: new Phaser.Geom.Circle(0, 0, 50), hitAreaCallback: Phaser.Geom.Circle.Contains });
-    container.on('pointerdown', () => {
-      this.soundManager.resumeAudio();
-      this.triggerHonk();
-      this.tweens.add({ targets: container, scaleX: 0.85, scaleY: 0.85, duration: 80, yoyo: true });
-    });
-    return container;
-  }
-
-  private triggerHonk(): void {
-    this.soundManager.honk();
-    this.tweens.add({ targets: this.bus, scaleX: 0.65, scaleY: 0.65, duration: 100, yoyo: true });
-    const beep = this.add.text(this.bus.x, this.bus.y - 50, '📢 BEEP!', {
-      fontFamily: 'Nunito', fontSize: '24px', fontStyle: 'bold', color: '#FF6B00',
-    }).setOrigin(0.5).setDepth(20000);
-    this.tweens.add({ targets: beep, y: beep.y - 40, alpha: 0, duration: 800, onComplete: () => beep.destroy() });
-  }
-
-  // Zone interdite : îlot central du rond-point
-  // Îlot _54 (3×4) posé en (col=24, row=15) → pixels (1152..1296, 720..912)
-  // Buffer ~30px pour la taille du bus
-  private readonly ILOT = { xMin: 1152 - 30, xMax: 1296 + 30, yMin: 720 - 20, yMax: 912 + 20 };
-
-  private isInIlot(x: number, y: number): boolean {
-    return x >= this.ILOT.xMin && x <= this.ILOT.xMax
-        && y >= this.ILOT.yMin && y <= this.ILOT.yMax;
+      .setInteractive({ useHandCursor: true });
+    this.honkButton.on('pointerdown', () => this.triggerHonk());
   }
 
   private createUI(): void {
     const W = this.scale.width;
-    const H = this.scale.height;
 
     this.passengerText = this.add.text(16, 16, '🧍 0 / 15', {
       fontFamily: 'Nunito', fontSize: '28px', fontStyle: 'bold', color: '#1A1A1A',
       backgroundColor: '#FFFFFFDD', padding: { x: 16, y: 10 },
     }).setScrollFactor(0).setDepth(10000);
 
-    this.add.text(W / 2, 16, '🕹️ Joystick à gauche · 📢 Klaxon à droite', {
-      fontFamily: 'Nunito', fontSize: '14px', color: '#444444', backgroundColor: '#FFFFFFCC', padding: { x: 12, y: 6 },
+    this.add.text(W / 2, 24, '🕹️ Joystick pour conduire · 📢 pour klaxonner', {
+      fontFamily: 'Nunito', fontSize: '16px', color: '#444444', backgroundColor: '#FFFFFFCC', padding: { x: 16, y: 8 },
     }).setOrigin(0.5, 0).setScrollFactor(0).setDepth(10000);
   }
 
@@ -354,6 +298,8 @@ export class SandboxScene extends Phaser.Scene {
       const w = this.scale.width;
       const h = this.scale.height;
       this.cameras.main.setZoom(Math.max(w / WORLD_WIDTH, h / WORLD_HEIGHT, 0.45));
+      if (this.joystick) this.joystick.setCenter(130, h - 130);
+      if (this.honkButton) this.honkButton.setPosition(w - 110, h - 130);
     });
   }
 
@@ -365,32 +311,28 @@ export class SandboxScene extends Phaser.Scene {
   }
 
   private updateBusMovement(dt: number): void {
-    // Source 1 : joystick virtuel (touch)
+    // Joystick prioritaire (deadzone 0.15)
     const j = this.joystick.delta;
-    const jMag = j.length();
-    let inputX = 0, inputY = 0;
-    if (jMag > 0.18) {  // deadzone
-      inputX = j.x;
-      inputY = j.y;
-    }
+    const jMag = Math.hypot(j.x, j.y);
 
-    // Source 2 : clavier (override prioritaire si appuyé)
-    let kx = 0, ky = 0;
-    if (this.cursors.left?.isDown) kx = -1;
-    if (this.cursors.right?.isDown) kx = 1;
-    if (this.cursors.up?.isDown) ky = -1;
-    if (this.cursors.down?.isDown) ky = 1;
-    if (kx !== 0 || ky !== 0) {
-      if (kx !== 0 && ky !== 0) { kx *= 0.707; ky *= 0.707; }
-      inputX = kx;
-      inputY = ky;
-    }
-
-    if (inputX !== 0 || inputY !== 0) {
-      this.busVelocity.x = inputX * BUS_SPEED;
-      this.busVelocity.y = inputY * BUS_SPEED;
+    if (jMag > 0.15) {
+      this.busVelocity.x = j.x * BUS_SPEED;
+      this.busVelocity.y = j.y * BUS_SPEED;
     } else {
-      this.busVelocity.scale(0.85);  // friction
+      // Clavier backup
+      let kx = 0, ky = 0;
+      if (this.cursors.left?.isDown) kx = -1;
+      if (this.cursors.right?.isDown) kx = 1;
+      if (this.cursors.up?.isDown) ky = -1;
+      if (this.cursors.down?.isDown) ky = 1;
+
+      if (kx !== 0 || ky !== 0) {
+        if (kx !== 0 && ky !== 0) { kx *= 0.707; ky *= 0.707; }
+        this.busVelocity.x = kx * BUS_SPEED;
+        this.busVelocity.y = ky * BUS_SPEED;
+      } else {
+        this.busVelocity.scale(0.85);
+      }
     }
 
     // Choisir sprite selon direction
@@ -399,19 +341,10 @@ export class SandboxScene extends Phaser.Scene {
     // Mettre à jour le son du moteur
     this.soundManager.updateEngine(this.busVelocity.length());
 
-    const prevX = this.bus.x;
-    const prevY = this.bus.y;
     this.bus.x += this.busVelocity.x * dt;
     this.bus.y += this.busVelocity.y * dt;
     this.bus.x = Phaser.Math.Clamp(this.bus.x, 50, WORLD_WIDTH - 50);
     this.bus.y = Phaser.Math.Clamp(this.bus.y, 50, WORLD_HEIGHT - 50);
-
-    // Collision : îlot central du rond-point infranchissable
-    if (this.isInIlot(this.bus.x, this.bus.y)) {
-      this.bus.x = prevX;
-      this.bus.y = prevY;
-      this.busVelocity.set(0, 0);
-    }
   }
 
   private updateBusFrame(): void {
@@ -449,16 +382,19 @@ export class SandboxScene extends Phaser.Scene {
 
   private updateHonk(): void {
     if (Phaser.Input.Keyboard.JustDown(this.spaceKey)) {
-      this.soundManager.resumeAudio(); // Réveiller l'audio si besoin
-      this.soundManager.honk();
-      this.tweens.add({ targets: this.bus, scaleX: 0.65, scaleY: 0.65, duration: 100, yoyo: true });
-      
-      const beep = this.add.text(this.bus.x, this.bus.y - 50, '📢 BEEP!', {
-        fontFamily: 'Nunito', fontSize: '24px', fontStyle: 'bold', color: '#FF6B00',
-      }).setOrigin(0.5);
-      
-      this.tweens.add({ targets: beep, y: beep.y - 40, alpha: 0, duration: 800, onComplete: () => beep.destroy() });
+      this.triggerHonk();
     }
+  }
+
+  private triggerHonk(): void {
+    this.soundManager.resumeAudio();
+    this.soundManager.honk();
+    this.tweens.add({ targets: this.bus, scaleX: 0.65, scaleY: 0.65, duration: 100, yoyo: true });
+
+    const beep = this.add.text(this.bus.x, this.bus.y - 50, '📢 BEEP!', {
+      fontFamily: 'Nunito', fontSize: '24px', fontStyle: 'bold', color: '#FF6B00',
+    }).setOrigin(0.5);
+    this.tweens.add({ targets: beep, y: beep.y - 40, alpha: 0, duration: 800, onComplete: () => beep.destroy() });
   }
 
   private checkPassengers(): void {

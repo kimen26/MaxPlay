@@ -305,8 +305,8 @@ export class SandboxScene extends Phaser.Scene {
       const w = this.scale.width;
       const h = this.scale.height;
       this.cameras.main.setZoom(Math.max(w / WORLD_WIDTH, h / WORLD_HEIGHT, 0.45));
-      if (this.joystick) this.joystick.setCenter(130, h - 100);
-      if (this.honkButton) this.honkButton.setPosition(w - 110, h - 100);
+      if (this.joystick) this.joystick.setCenter(180, h - 150);
+      if (this.honkButton) this.honkButton.setPosition(w - 110, h - 150);
     });
   }
 

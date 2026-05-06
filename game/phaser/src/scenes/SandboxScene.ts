@@ -257,11 +257,11 @@ export class SandboxScene extends Phaser.Scene {
     // Joystick bas-gauche
     const W = this.scale.width;
     const H = this.scale.height;
-    this.joystick = new VirtualJoystick(this, 130, H - 130, 80);
+    this.joystick = new VirtualJoystick(this, 130, H - 70, 80);
 
     // Bouton klaxon bas-droite — gros, contrasté
     const btnX = W - 110;
-    const btnY = H - 130;
+    const btnY = H - 70;
     const btnBg = this.add.circle(0, 0, 60, 0xE53935, 0.92)
       .setStrokeStyle(5, 0xffffff, 1);
     const btnIcon = this.add.text(0, 0, '📢', { fontSize: '52px' }).setOrigin(0.5);
@@ -298,8 +298,8 @@ export class SandboxScene extends Phaser.Scene {
       const w = this.scale.width;
       const h = this.scale.height;
       this.cameras.main.setZoom(Math.max(w / WORLD_WIDTH, h / WORLD_HEIGHT, 0.45));
-      if (this.joystick) this.joystick.setCenter(130, h - 130);
-      if (this.honkButton) this.honkButton.setPosition(w - 110, h - 130);
+      if (this.joystick) this.joystick.setCenter(130, h - 70);
+      if (this.honkButton) this.honkButton.setPosition(w - 110, h - 70);
     });
   }
 

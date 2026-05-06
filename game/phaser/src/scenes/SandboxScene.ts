@@ -259,11 +259,11 @@ export class SandboxScene extends Phaser.Scene {
     // Joystick bas-gauche
     const W = this.scale.width;
     const H = this.scale.height;
-    this.joystick = new VirtualJoystick(this, 180, H - 150, 80);
+    this.joystick = new VirtualJoystick(this, 180, H - 320, 80);
 
     // Bouton klaxon bas-droite — gros, contrasté
     const btnX = W - 110;
-    const btnY = H - 150;
+    const btnY = H - 320;
     const btnBg = this.add.circle(0, 0, 60, 0xE53935, 0.92)
       .setStrokeStyle(5, 0xffffff, 1);
     const btnIcon = this.add.text(0, 0, '📢', { fontSize: '52px' }).setOrigin(0.5);
@@ -305,8 +305,8 @@ export class SandboxScene extends Phaser.Scene {
       const w = this.scale.width;
       const h = this.scale.height;
       this.cameras.main.setZoom(Math.max(w / WORLD_WIDTH, h / WORLD_HEIGHT, 0.45));
-      if (this.joystick) this.joystick.setCenter(180, h - 150);
-      if (this.honkButton) this.honkButton.setPosition(w - 110, h - 150);
+      if (this.joystick) this.joystick.setCenter(180, h - 320);
+      if (this.honkButton) this.honkButton.setPosition(w - 110, h - 320);
     });
   }
 
@@ -459,10 +459,13 @@ export class SandboxScene extends Phaser.Scene {
 
   private async loadVersion(): Promise<void> {
     try {
-      const response = await fetch('/version.txt');
+      const path = window.location.pathname.includes('/MaxPlay/') ? '/MaxPlay/version.txt' : '/version.txt';
+      const response = await fetch(path);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
       this.version = (await response.text()).trim();
-    } catch {
-      this.version = 'unknown';
+    } catch (error) {
+      console.warn('Version load failed:', error);
+      this.version = 'dev';
     }
   }
 }

@@ -162,7 +162,8 @@
       "Bash(sed -n '1,5p' c:/ProjetsPerso/Claude_Projects/MaxPlay/.claude/agents/narration-pmo.md)",
       "Bash(sed -n '1,5p' c:/ProjetsPerso/Claude_Projects/MaxPlay/.claude/agents/narration-gatekeeper.md)",
       "Bash(sed -n '1,5p' c:/ProjetsPerso/Claude_Projects/MaxPlay/.claude/agents/narration-science.md)",
-      "Bash(npx tsc *)"
+      "Bash(npx tsc *)",
+      "Bash(xargs -I{} grep -H \"^model:\" {})"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\temp",

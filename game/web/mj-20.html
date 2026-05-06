@@ -245,6 +245,36 @@
     .lang-prog-lock { font-size:1.3rem; opacity:0.5; }
     .lang-prog-next { font-size:0.7rem; color:#ffe066; font-weight:700; margin-top:3px; }
 
+    /* Streak */
+    .streak-badge {
+      background:rgba(255,165,0,0.22);
+      border:2px solid rgba(255,165,0,0.5);
+      border-radius:20px;
+      padding:4px 12px;
+      font-size:0.85rem; font-weight:900; color:#FFD700;
+      white-space:nowrap; flex-shrink:0;
+    }
+
+    /* Quiz lang row */
+    .quiz-lang-row {
+      width:100%;
+      display:flex; gap:8px; overflow-x:auto;
+      padding:4px 0 8px; scrollbar-width:none;
+    }
+    .quiz-lang-row::-webkit-scrollbar { display:none; }
+    .ql-btn {
+      flex-shrink:0;
+      background:rgba(255,255,255,0.1);
+      border:2px solid transparent;
+      border-radius:14px; padding:10px 14px;
+      color:#fff; font-family:'Nunito',sans-serif;
+      font-size:0.9rem; font-weight:900;
+      cursor:pointer; touch-action:manipulation;
+      display:flex; align-items:center; gap:8px; min-height:52px;
+    }
+    .ql-btn.active { border-color:#FFD700; background:rgba(255,215,0,0.2); }
+    .ql-btn .fi { width:24px; height:18px; border-radius:2px; }
+
     /* Feedback */
     .feedback {
       position:fixed; inset:0;
@@ -324,6 +354,7 @@
       <div class="header-title">Compte dans toutes les langues !</div>
       <div class="header-sub">1 à 20 · 8 langues · progression Duolingo</div>
     </div>
+    <div class="streak-badge" id="streakBadge" style="display:none"></div>
   </div>
 
   <div class="game-area">
@@ -352,6 +383,9 @@
         <button class="mode-btn" id="rangeAll"  onclick="setRange('all')"  style="flex:0 0 auto;padding:8px 14px">1-20</button>
       </div>
     </div>
+
+    <!-- Sélecteur langue quiz -->
+    <div class="quiz-lang-row hidden" id="quizLangRow"></div>
 
     <!-- ===== QUIZ ===== -->
     <div id="quizPanel" class="hidden" style="width:100%;display:flex;flex-direction:column;gap:14px;align-items:center">
@@ -516,9 +550,41 @@
       return LANGS.filter(l => isLangActive(l.code));
     }
 
+    // ─── Streak ────────────────────────────────────────────────────────────────
+    const STREAK_KEY = 'mj20_streak';
+
+    function getStreak() {
+      try {
+        return JSON.parse(localStorage.getItem(STREAK_KEY) || '{"count":0,"last":""}');
+      } catch(e) { return { count: 0, last: '' }; }
+    }
+
+    function touchStreak() {
+      const today = new Date().toDateString();
+      const s = getStreak();
+      if (s.last === today) return s.count;
+      const yesterday = new Date(Date.now() - 86400000).toDateString();
+      const newCount = s.last === yesterday ? s.count + 1 : 1;
+      const updated = { count: newCount, last: today };
+      try { localStorage.setItem(STREAK_KEY, JSON.stringify(updated)); } catch(e) {}
+      return newCount;
+    }
+
+    function renderStreakBadge() {
+      const s = getStreak();
+      const badge = document.getElementById('streakBadge');
+      if (s.count >= 1) {
+        badge.textContent = `🔥 ${s.count}j`;
+        badge.style.display = '';
+      } else {
+        badge.style.display = 'none';
+      }
+    }
+
     // ─── État UI ──────────────────────────────────────────────────────────────
     let mode = 'learn';
     let currentLang = LANGS[0];
+    let quizFocusLang = null; // null = toutes les langues actives
     let range = 'low';
     let reading = false;
 
@@ -702,13 +768,12 @@
     }
 
     function renderQuizChoices(maxNum) {
-      const pool = [];
-      while (pool.length < 3) {
-        const n = 1 + Math.floor(Math.random() * maxNum);
-        if (n !== quizNumber && !pool.includes(n)) pool.push(n);
-      }
-      const options = shuffle([quizNumber, ...pool]);
+      const available = [];
+      for (let n = 1; n <= maxNum; n++) { if (n !== quizNumber) available.push(n); }
+      const distractors = shuffle(available).slice(0, Math.min(3, available.length));
+      const options = shuffle([quizNumber, ...distractors]);
       const c = document.getElementById('choices');
+      c.style.gridTemplateColumns = options.length <= 2 ? '1fr' : '1fr 1fr';
       c.innerHTML = options.map(n => `
         <button class="choice-btn" data-n="${n}"${n === quizNumber ? ' data-correct="1"' : ''}
                 onclick="answerQuiz(${n}, this)">${n}</button>

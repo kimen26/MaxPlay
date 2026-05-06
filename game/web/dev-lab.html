@@ -94,6 +94,15 @@ html, body {
   width:30px; height:26px; border:none; background:transparent;
   cursor:pointer; padding:0;
 }
+.color-swatches {
+  display:flex; flex-wrap:wrap; gap:5px; padding:5px 2px 2px;
+}
+.color-swatch {
+  width:30px; height:30px; border-radius:7px; border:2px solid transparent;
+  cursor:pointer; flex-shrink:0; transition:transform 0.1s, border-color 0.1s;
+}
+.color-swatch:active { transform:scale(1.2); }
+.color-swatch.sel { border-color:#fff; }
 
 /* Arrêt de bus */
 #bus-stop {
@@ -285,26 +294,43 @@ html, body {
   <div class="ctrl-row">
     <div class="ctrl-label">🛠 Atelier bus — crée ton bus perso</div>
     <div id="atelier-preview" style="flex:1 1 100%;display:flex;justify-content:center;margin:4px 0 8px;"></div>
-    <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:6px;width:100%;">
-      <label class="atelier-pick">Carrosserie
-        <input type="color" id="a-body" value="#1abc9c">
-      </label>
-      <label class="atelier-pick">Fenêtre dest.
-        <input type="color" id="a-dest" value="#E2001A">
-      </label>
-      <label class="atelier-pick">Fenêtres passagers
-        <input type="color" id="a-win" value="#458bba">
-      </label>
-      <label class="atelier-pick">Roues
-        <input type="color" id="a-wheel" value="#333333">
-      </label>
-      <label class="atelier-pick">Couleur numéro
-        <input type="color" id="a-text" value="#ffffff">
-      </label>
-      <label class="atelier-pick">Numéro
-        <input type="text" id="a-num" value="MAX" maxlength="4"
-               style="background:#161b22;border:1px solid #30363d;color:#c9d1d9;border-radius:6px;padding:4px 6px;font-family:'Nunito',sans-serif;font-weight:900;">
-      </label>
+    <div style="display:flex;flex-direction:column;gap:6px;width:100%;">
+      <!-- Carrosserie + swatches -->
+      <div>
+        <label class="atelier-pick">Carrosserie
+          <input type="color" id="a-body" value="#1abc9c">
+        </label>
+        <div class="color-swatches" data-target="a-body"></div>
+      </div>
+      <!-- Fenêtres (2 colonnes, sans swatches) -->
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:6px;">
+        <label class="atelier-pick">Fenêtre dest.
+          <input type="color" id="a-dest" value="#E2001A">
+        </label>
+        <label class="atelier-pick">Fenêtres pass.
+          <input type="color" id="a-win" value="#458bba">
+        </label>
+      </div>
+      <!-- Roues + swatches -->
+      <div>
+        <label class="atelier-pick">Roues
+          <input type="color" id="a-wheel" value="#333333">
+        </label>
+        <div class="color-swatches" data-target="a-wheel"></div>
+      </div>
+      <!-- Couleur numéro + swatches | Numéro -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;">
+        <div>
+          <label class="atelier-pick">Couleur numéro
+            <input type="color" id="a-text" value="#ffffff">
+          </label>
+          <div class="color-swatches" data-target="a-text"></div>
+        </div>
+        <label class="atelier-pick" style="align-self:start;">Numéro
+          <input type="text" id="a-num" value="MAX" maxlength="4"
+                 style="background:#161b22;border:1px solid #30363d;color:#c9d1d9;border-radius:6px;padding:4px 6px;font-family:'Nunito',sans-serif;font-weight:900;width:60px;">
+        </label>
+      </div>
     </div>
     <button class="ctrl-btn accent" style="width:100%;margin-top:4px;" onclick="spawnCustomBus()">🚀 Envoyer sur la route</button>
   </div>
@@ -842,6 +868,31 @@ function spawnCustomBus() {
 document.querySelectorAll('#a-body,#a-dest,#a-win,#a-wheel,#a-text,#a-num').forEach(i => {
   i.addEventListener('input', updateAtelierPreview);
 });
+
+/* ─── Swatches arc-en-ciel ─── */
+const RAINBOW = [
+  '#e94560','#ff7043','#ffca28','#a5d63f',
+  '#26c6da','#42a5f5','#7e57c2','#ec407a',
+  '#ffffff','#c9d1d9','#888888','#333333',
+];
+document.querySelectorAll('.color-swatches').forEach(container => {
+  const targetId = container.dataset.target;
+  const input = document.getElementById(targetId);
+  RAINBOW.forEach(col => {
+    const btn = document.createElement('button');
+    btn.className = 'color-swatch';
+    btn.style.background = col;
+    btn.title = col;
+    btn.addEventListener('click', () => {
+      input.value = col;
+      container.querySelectorAll('.color-swatch').forEach(b => b.classList.remove('sel'));
+      btn.classList.add('sel');
+      updateAtelierPreview();
+    });
+    container.appendChild(btn);
+  });
+});
+
 updateAtelierPreview();
 
 /* ─── Responsive resize ─── */

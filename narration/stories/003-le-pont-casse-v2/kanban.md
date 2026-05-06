@@ -28,10 +28,10 @@
 | 1 | Pitch | Conseiller (`narration-conseiller`) | ✅ | 2026-05-02 | [`pitch.md`](pitch.md) — livré et validé Papa Yann (validation tacite par cadrage du brief minimal verbatim 2026-05-02) |
 | 2 | Plan | Architecte (`narration-architecte`) | ✅ | 2026-05-02 | [`plan-histoire.md`](plan-histoire.md) — livré PASS auto-validé. Révisé 2026-05-03 en mode minimal (recadrage Papa Yann). |
 | 3 | Briefs | Directeur (`narration`) | ✅ | 2026-05-04 | [`briefs/_writer-package.md`](briefs/_writer-package.md) (autoporteur, 8 runs) · [`briefs/brief-histoire.md`](briefs/brief-histoire.md) · [`briefs/brief-univers.md`](briefs/brief-univers.md) · [`briefs/brief-personnages.md`](briefs/brief-personnages.md) — **refonte Tour 2 (2026-05-04)** : trio Wex+Raph+Pierrot, variance natifs sans angles, règle promesse du titre |
-| 4 | Versions writers | 8 Writers | 🟡 | — | [`versions-writers/`](versions-writers/) — **réinitialisé Tour 2 — attend GO Papa Yann sur briefs refondus** |
-| 5 | Lecteurs témoins | 6 Témoins (2 enfants seuls + 4 dyades) | ⚪ | — | [`lecteurs-temoins/`](lecteurs-temoins/) — **réinitialisé Tour 2** |
-| 6 | Sélection | Directeur | ⚪ | — | [`selection.md`](selection.md) |
-| 7 | Rewrite | Directeur | ⚪ | — | [`rewrite/v1.md`](rewrite/v1.md) |
+| 4 | Versions writers | 8 Writers | ✅ | 2026-05-04 | [`versions-writers/`](versions-writers/) — 8 versions livrées (claude×2, kimi×2, deepseek×2, grok×2) |
+| 5 | Lecteurs témoins | 6 Témoins (2 enfants seuls + 4 dyades) | ✅ | 2026-05-04 | [`lecteurs-temoins/`](lecteurs-temoins/) — 6 fiches livrées avec classements consolidés |
+| 6 | Sélection | Directeur | ⏳ | 2026-05-07 | [`selection.md`](selection.md) — base **kimi-run1** + 3 greffes (Clac ouverture, "comme un bracelet" Pierrot, "Au revoir fenêtre" rituel fin) — **EN ATTENTE VALIDATION AUTEUR** (SLA 2026-05-10) |
+| 7 | Rewrite | Directeur | 🟢 | 2026-05-07 | [`rewrite/v1.md`](rewrite/v1.md) — 568 mots, 4 greffes appliquées (Clac / bracelet / écaille / Au revoir fenêtre) — soumis à l'auteur pour validation sur pièces avant GateKeeper |
 | 8 | GateKeeper | GateKeeper (`narration-gatekeeper`) | ⚪ | — | [`gatekeeper-verdict.md`](gatekeeper-verdict.md) |
 | 9 | Canon | Directeur + PMO | ⚪ | — | [`texte.md`](texte.md) |
 

@@ -25,7 +25,7 @@ export class VirtualJoystick {
     this.centerX = x;
     this.centerY = y;
     this.radius = radius;
-    this.hitRadius = radius * 1.3;
+    this.hitRadius = radius;
 
     this.debugRing = scene.add.circle(x, y, this.hitRadius, 0xff0000, 0)
       .setStrokeStyle(0)

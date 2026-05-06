@@ -25,11 +25,10 @@ export class VirtualJoystick {
     this.centerX = x;
     this.centerY = y;
     this.radius = radius;
-    this.hitRadius = radius * 1.6;
+    this.hitRadius = radius * 1.3;
 
-    // Anneau debug rouge transparent : montre la zone tactile réelle (rayon * 1.6)
-    this.debugRing = scene.add.circle(x, y, this.hitRadius, 0xff0000, 0.12)
-      .setStrokeStyle(2, 0xff0000, 0.6)
+    this.debugRing = scene.add.circle(x, y, this.hitRadius, 0xff0000, 0)
+      .setStrokeStyle(0)
       .setScrollFactor(0).setDepth(9999);
 
     this.base = scene.add.circle(x, y, radius, 0x1976D2, 0.55)

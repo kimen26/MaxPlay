@@ -13,6 +13,7 @@ import Phaser from 'phaser';
 export class VirtualJoystick {
   readonly delta: Phaser.Math.Vector2 = new Phaser.Math.Vector2(0, 0);
 
+  private scene: Phaser.Scene;
   private base: Phaser.GameObjects.Arc;
   private thumb: Phaser.GameObjects.Arc;
   private centerX: number;
@@ -21,6 +22,7 @@ export class VirtualJoystick {
   private activePointerId: number | null = null;
 
   constructor(scene: Phaser.Scene, x: number, y: number, radius = 80) {
+    this.scene = scene;
     this.centerX = x;
     this.centerY = y;
     this.radius = radius;
@@ -47,12 +49,18 @@ export class VirtualJoystick {
     if (this.activePointerId === null) this.thumb.setPosition(x, y);
   }
 
+  // scrollFactor(0) objects render at worldPos * camera.zoom in canvas space.
+  // pointer.x/y are in canvas space. This converts them to match.
+  private get zoom(): number {
+    return this.scene.cameras.main.zoom;
+  }
+
   private onDown(p: Phaser.Input.Pointer): void {
     if (this.activePointerId !== null) return;
-    const dx = p.x - this.centerX;
-    const dy = p.y - this.centerY;
-    // Zone d'activation = 1.6× le rayon (plus tolérant pour gros doigts)
-    if (Math.hypot(dx, dy) <= this.radius * 1.6) {
+    const z = this.zoom;
+    const dx = p.x - this.centerX * z;
+    const dy = p.y - this.centerY * z;
+    if (Math.hypot(dx, dy) <= this.radius * z * 1.6) {
       this.activePointerId = p.id;
       this.updateThumb(p);
     }
@@ -71,15 +79,18 @@ export class VirtualJoystick {
   }
 
   private updateThumb(p: Phaser.Input.Pointer): void {
-    let dx = p.x - this.centerX;
-    let dy = p.y - this.centerY;
+    const z = this.zoom;
+    const maxCanvas = this.radius * z;
+    let dx = p.x - this.centerX * z;
+    let dy = p.y - this.centerY * z;
     const dist = Math.hypot(dx, dy);
-    if (dist > this.radius) {
-      dx = (dx / dist) * this.radius;
-      dy = (dy / dist) * this.radius;
+    if (dist > maxCanvas) {
+      dx = (dx / dist) * maxCanvas;
+      dy = (dy / dist) * maxCanvas;
     }
-    this.thumb.setPosition(this.centerX + dx, this.centerY + dy);
-    this.delta.set(dx / this.radius, dy / this.radius);
+    // Convert canvas delta back to world space for thumb positioning
+    this.thumb.setPosition(this.centerX + dx / z, this.centerY + dy / z);
+    this.delta.set(dx / maxCanvas, dy / maxCanvas);
   }
 
   destroy(): void {

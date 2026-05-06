@@ -103,6 +103,16 @@ html, body {
 }
 .color-swatch:active { transform:scale(1.2); }
 .color-swatch.sel { border-color:#fff; }
+.rainbow-swatch {
+  width:100%; height:28px; border-radius:7px; border:2px solid transparent;
+  cursor:pointer; flex-shrink:0; transition:transform 0.1s, border-color 0.1s;
+  background:linear-gradient(90deg,
+    hsl(0,90%,55%), hsl(30,90%,55%), hsl(60,90%,50%),
+    hsl(120,80%,45%), hsl(180,85%,45%), hsl(240,85%,60%),
+    hsl(280,85%,60%), hsl(330,90%,55%), hsl(360,90%,55%));
+}
+.rainbow-swatch:active { transform:scale(1.03); }
+.rainbow-swatch.sel { border-color:#fff; }
 
 /* Arrêt de bus */
 #bus-stop {
@@ -869,28 +879,30 @@ document.querySelectorAll('#a-body,#a-dest,#a-win,#a-wheel,#a-text,#a-num').forE
   i.addEventListener('input', updateAtelierPreview);
 });
 
-/* ─── Swatches arc-en-ciel ─── */
-const RAINBOW = [
-  '#e94560','#ff7043','#ffca28','#a5d63f',
-  '#26c6da','#42a5f5','#7e57c2','#ec407a',
-  '#ffffff','#c9d1d9','#888888','#333333',
-];
+/* ─── Swatch arc-en-ciel unique par zone ─── */
+function hslToHex(h, s, l) {
+  s /= 100; l /= 100;
+  const a = s * Math.min(l, 1 - l);
+  const f = n => { const k = (n + h / 30) % 12; return l - a * Math.max(-1, Math.min(k - 3, 9 - k, 1)); };
+  return '#' + [f(0), f(8), f(4)].map(v => Math.round(v * 255).toString(16).padStart(2, '0')).join('');
+}
 document.querySelectorAll('.color-swatches').forEach(container => {
   const targetId = container.dataset.target;
   const input = document.getElementById(targetId);
-  RAINBOW.forEach(col => {
-    const btn = document.createElement('button');
-    btn.className = 'color-swatch';
-    btn.style.background = col;
-    btn.title = col;
-    btn.addEventListener('click', () => {
-      input.value = col;
-      container.querySelectorAll('.color-swatch').forEach(b => b.classList.remove('sel'));
-      btn.classList.add('sel');
-      updateAtelierPreview();
-    });
-    container.appendChild(btn);
+  const btn = document.createElement('button');
+  btn.className = 'rainbow-swatch';
+  btn.title = 'Couleur arc-en-ciel aléatoire';
+  btn.addEventListener('click', () => {
+    const h = Math.round(Math.random() * 360);
+    const s = 75 + Math.round(Math.random() * 20);
+    const l = 45 + Math.round(Math.random() * 20);
+    const col = hslToHex(h, s, l);
+    input.value = col;
+    document.querySelectorAll('.rainbow-swatch').forEach(b => b.classList.remove('sel'));
+    btn.classList.add('sel');
+    updateAtelierPreview();
   });
+  container.appendChild(btn);
 });
 
 updateAtelierPreview();

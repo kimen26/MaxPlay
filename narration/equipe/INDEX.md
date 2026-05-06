@@ -35,7 +35,7 @@
 
 ### Templates (gabarits réutilisables)
 
-> Dossier [`templates/`](templates/) — 8 gabarits créés 2026-04-30 (Phase A3 ✅)
+> Dossier [`templates/`](templates/) — 10 gabarits (8 initiaux 2026-04-30 + 2 briefs writers 2026-05-07)
 
 | Template | Sert à | Lu/rempli par |
 |---|---|---|
@@ -44,9 +44,17 @@
 | `brief-univers.template.md` | Étape 3 — règles univers stateless | Directeur |
 | `brief-personnages.template.md` | Étape 3 — casting figé + ennéatypes dilués | Directeur |
 | `brief-histoire.template.md` | Étape 3 — pitch + plan + contraintes + variance writers | Directeur |
+| **`brief-writer-libre.template.md`** | Étape 4 — brief commun aux 9 writers libres (forme uniquement, no contenu imposé) | Directeur |
+| **`brief-writer-guide.template.md`** | Étape 4 — brief enrichi pour le 1 writer guidé (Kimi) avec annexe AXES 1-6 | Directeur |
 | `selection.template.md` | Étape 6 — sélection Directeur post-lecteurs | Directeur |
 | `kanban.template.md` | Suivi des 9 étapes par histoire | PMO + owner d'étape |
 | `synthese.template.md` | Étape 9 — compilation analyses | Directeur |
+
+### Configuration LLM
+
+| Fichier | Sert à |
+|---|---|
+| [`../../infra/mcp/MODELS.md`](../../infra/mcp/MODELS.md) | Source de vérité des modèles LLM utilisés (Grok 4.3, Kimi K2.6, DeepSeek V4-Pro). Dépréciations à surveiller. Historique des changements. |
 
 ### Mémoires d'agents
 
@@ -86,8 +94,14 @@ Tu veux faire quoi ?
 ├─ Créer un plan d'histoire depuis un pitch validé
 │   → narration-architecte (Sonnet)
 │
-├─ Écrire une version (Claude libre)
-│   → narration-writer-claude-libre (Sonnet)
+├─ Écrire une version (Claude libre, x2)
+│   → narration-writer-claude-libre (Opus 4.7)
+│
+├─ Écrire la version GUIDÉE (Kimi avec annexe AXES 1-6)
+│   → narration-writer-kimi-guide (Sonnet orchestre, appelle Kimi K2.6 via MCP)
+│
+├─ Écrire une version libre via LLM externe (Kimi/DeepSeek/Grok)
+│   → MCP llm-copains : ask_kimi / ask_deepseek / ask_grok
 │
 ├─ Sélectionner la meilleure version + piloter le rewrite
 │   → narration (Directeur, Opus)
@@ -128,7 +142,7 @@ Tu veux faire quoi ?
 
 - Dossier : `stories/<NNN-slug>/` (ex: `stories/001-le-pont-casse/`)
 - Canon : `stories/<NNN-slug>/texte.md` (la seule version qui compte au final)
-- Versions writers : `versions-writers/{claude,kimi,deepseek,grok}-base.md` + `{claude,kimi}-variance-N-{angle}.md`
+- Versions writers (10) : 9 libres `versions-writers/{claude-1,claude-2,kimi-1,kimi-2,kimi-3,deepseek-1,deepseek-2,grok-1,grok-2}.md` + 1 guidé `kimi-guide.md`
 - Archives : `_archive/vN-YYYY-MM-DD.md` (jamais d'overwrite)
 
 ### Statut d'une histoire

@@ -16,8 +16,8 @@ mis_a_jour: 2026-04-28
 | Agent | Modèle | Ce qu'il garantit | Ce qu'il ne fait PAS |
 |-------|--------|-------------------|----------------------|
 | **PMO** `narration-pmo` | Haiku | Tickets ouverts/fermés · décisions tracées · sprint-log à jour · max 3 tickets actifs | Décisions de contenu · arbitrage narratif |
-| **Directeur** `narration` | Opus | Sélection parmi 4 writers · pilotage rewrite · version finale · décisions contenu ambiguës | Indexation · création dossiers · archivage |
-| **Writers × 8** | Sonnet/ext. | Version complète dans `stories/<NNN-slug>/versions-writers/` + note d'intention | Cohérence univers (c'est le GateKeeper qui vérifie) |
+| **Directeur** `narration` | Opus | Sélection parmi 10 writers · pilotage rewrite consolidé · version finale · décisions contenu ambiguës | Indexation · création dossiers · archivage |
+| **Writers × 10** (9 libres + 1 guidé) | Opus 4.7 (Claude×2) · Kimi K2.6 (×4) · DeepSeek V4-Pro (×2) · Grok 4.3 (×2) | Version complète dans `stories/<NNN-slug>/versions-writers/` + note d'intention. Libres = FORME uniquement. Guidé = forme + annexe AXES 1-6. | Cohérence univers (c'est le GateKeeper qui vérifie) |
 | **GateKeeper** `narration-gatekeeper` | Haiku | PASS/FAIL ennéagramme · univers · prénoms | Réécriture · style · contenu créatif |
 | **Archiviste** `narration-archiviste` | Haiku | Structure dossiers conforme · index à jour · README YAML rempli · lookup.yml cohérent | Décisions de contenu · création narrative |
 | **Science** `narration-science` | Haiku | Faits biologiques/physiques/écologiques validés | Style · structure · cohérence univers |
@@ -100,8 +100,8 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 | `stories/<NNN-slug>/pitch.md` | Pitch MOYEN 4 cases | Conseiller | 1 |
 | `stories/<NNN-slug>/plan-histoire.md` | Plan d'Histoire Kishōtenketsu | Architecte | 2 |
 | `stories/<NNN-slug>/briefs/{brief-univers,brief-personnages,brief-histoire}.md` | Briefs writers stateless | Directeur | 3 |
-| `stories/<NNN-slug>/versions-writers/*.md` | 8 versions complètes (4 base + 2 Claude variance + 2 Kimi variance) + notes d'intention | Writers | 4 |
-| `stories/<NNN-slug>/lecteurs-temoins/{enfant-1,enfant-2,dyade-1,dyade-2}.md` | 4 retours lecteurs texte libre | Lecteurs | 5 |
+| `stories/<NNN-slug>/versions-writers/*.md` | 10 versions (2 Claude Opus + 3 Kimi libre + 1 Kimi guidé + 2 DeepSeek + 2 Grok) + notes d'intention | Writers | 4 |
+| `stories/<NNN-slug>/lecteurs-temoins/{enfant-garcon,enfant-fille,dyade-papa-garcon,dyade-papa-fille,dyade-maman-garcon,dyade-maman-fille}.md` | 6 retours lecteurs texte libre | Lecteurs | 5 |
 | `stories/<NNN-slug>/selection.md` | Choix version base + éléments à récupérer + brief rewrite | Directeur | 6 |
 | `stories/<NNN-slug>/rewrite/v1.md` | Rewrite (1 cycle max) | Directeur | 7 |
 | `stories/<NNN-slug>/gatekeeper-verdict.md` | PASS/CORRECTIONS + motif | GateKeeper | 8 |
@@ -182,7 +182,9 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 | `.claude/agents/narration-conseiller.md` | Conseiller Narratif | Auteur |
 | `.claude/agents/narration-architecte.md` | Architecte | Auteur |
 | `.claude/agents/narration-gatekeeper.md` | GateKeeper | Auteur |
-| `.claude/agents/narration-writer-claude-libre.md` | Writer Libre | Auteur |
+| `.claude/agents/narration-writer-claude-libre.md` | Writer Claude Libre (Opus 4.7) | Auteur |
+| `.claude/agents/narration-writer-kimi-guide.md` | Writer Kimi Guidé (Sonnet orchestre + Kimi K2.6 via MCP) | Auteur |
+| `infra/mcp/MODELS.md` | Configuration LLM (Grok 4.3 / Kimi K2.6 / DeepSeek V4-Pro) — dépréciations + historique | Auteur + PMO |
 | `.claude/agents/narration-archiviste.md` | Archiviste | Auteur |
 | `.claude/agents/narration-science.md` | Science | Auteur |
 | `.claude/agents/narration-sensibilite.md` | Sensibilité | Auteur |

@@ -31,6 +31,7 @@ export class SandboxScene extends Phaser.Scene {
   private spaceKey!: Phaser.Input.Keyboard.Key;
   private passengerText!: Phaser.GameObjects.Text;
   private soundManager!: SoundManager;
+  private version: string = '';
 
   constructor() {
     super({ key: 'SandboxScene' });
@@ -40,14 +41,15 @@ export class SandboxScene extends Phaser.Scene {
   create(): void {
     this.soundManager = new SoundManager(this);
     this.soundManager.init();
-    
+
     this.createCleanWorld();
     this.createBus();
     this.createPassengers();
     this.createInput();
     this.createUI();
     this.setupCamera();
-    
+    this.loadVersion();
+
     // Démarrer le moteur
     this.soundManager.startEngine();
   }
@@ -275,6 +277,7 @@ export class SandboxScene extends Phaser.Scene {
 
   private createUI(): void {
     const W = this.scale.width;
+    const H = this.scale.height;
 
     this.passengerText = this.add.text(16, 16, '🧍 0 / 15', {
       fontFamily: 'Nunito', fontSize: '28px', fontStyle: 'bold', color: '#1A1A1A',
@@ -284,6 +287,10 @@ export class SandboxScene extends Phaser.Scene {
     this.add.text(W / 2, 24, '🕹️ Joystick pour conduire · 📢 pour klaxonner', {
       fontFamily: 'Nunito', fontSize: '16px', color: '#444444', backgroundColor: '#FFFFFFCC', padding: { x: 16, y: 8 },
     }).setOrigin(0.5, 0).setScrollFactor(0).setDepth(10000);
+
+    this.add.text(W - 16, H - 16, `v${this.version}`, {
+      fontFamily: 'Nunito', fontSize: '14px', color: '#666666', backgroundColor: '#FFFFFFAA', padding: { x: 8, y: 4 },
+    }).setOrigin(1, 1).setScrollFactor(0).setDepth(10000);
   }
 
   private setupCamera(): void {
@@ -448,5 +455,14 @@ export class SandboxScene extends Phaser.Scene {
     }).setOrigin(0.5).setScrollFactor(0).setDepth(20001);
 
     this.time.delayedCall(4000, () => this.scene.restart());
+  }
+
+  private async loadVersion(): Promise<void> {
+    try {
+      const response = await fetch('/version.txt');
+      this.version = (await response.text()).trim();
+    } catch {
+      this.version = 'unknown';
+    }
   }
 }

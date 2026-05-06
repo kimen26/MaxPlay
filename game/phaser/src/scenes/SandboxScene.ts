@@ -257,11 +257,11 @@ export class SandboxScene extends Phaser.Scene {
     // Joystick bas-gauche
     const W = this.scale.width;
     const H = this.scale.height;
-    this.joystick = new VirtualJoystick(this, 130, H - 100, 80);
+    this.joystick = new VirtualJoystick(this, 180, H - 150, 80);
 
     // Bouton klaxon bas-droite — gros, contrasté
     const btnX = W - 110;
-    const btnY = H - 100;
+    const btnY = H - 150;
     const btnBg = this.add.circle(0, 0, 60, 0xE53935, 0.92)
       .setStrokeStyle(5, 0xffffff, 1);
     const btnIcon = this.add.text(0, 0, '📢', { fontSize: '52px' }).setOrigin(0.5);

@@ -6,6 +6,58 @@
 
 ---
 
+## RAPPELS DATÉS (à vérifier au passage)
+
+- **2026-05-25** : Kimi K2 series discontinuation officielle. Vérifier que `kimi-k2.6` reste maintenu (cf. `infra/mcp/MODELS.md`).
+- **2026-05-31** : Fin de la promo DeepSeek -75% sur V4-Pro. **Vérifier le coût réel** des appels DeepSeek post-31/05 et basculer sur `deepseek-v4-flash` si trop cher (modifier le défaut dans `infra/mcp/server.ts`).
+- **2026-07-24** : Dépréciation officielle des noms `deepseek-chat`/`deepseek-reasoner` côté DeepSeek. Déjà migrés vers V4 le 2026-05-07, OK.
+
+---
+
+## 2026-05-07 — Refonte LLM + casting writers 10 versions
+
+**Objectif :** Mettre à jour modèles LLM (Grok 4.3, Kimi K2.6, DeepSeek V4-Pro), passer Claude writers en Opus 4.7, séparer writers libres et guidé.
+
+**Fait :**
+- [x] `infra/mcp/server.ts` patché (3 modèles + `reasoning_effort: low` Grok + `thinking: false` DeepSeek + suppression mode `story` Kimi)
+- [x] `infra/mcp/MODELS.md` créé (config + dépréciations + historique)
+- [x] `narration-writer-claude-libre.md` → Opus
+- [x] `narration-writer-kimi-guide.md` créé (orchestrateur Sonnet qui appelle Kimi via MCP avec annexe AXES)
+- [x] 2 templates briefs créés (`brief-writer-libre.template.md` + `brief-writer-guide.template.md`)
+- [x] `equipe/PROCESS.md` mis à jour (8→10 writers, 4→6 lecteurs, étape 7 = consolidation explicite)
+- [x] `pmo/decisions.md` : entrée 2026-05-07 documentée
+- [x] Mémoire `feedback_kimi_mode_code.md` mise à jour (mode unique désormais)
+
+**Reste à faire :**
+- [ ] Tester casting 10 writers sur la prochaine histoire (005)
+- [ ] Reboot Claude Code après ce commit pour recharger MCP avec les nouveaux modèles
+- [ ] Vérifier `equipe/INDEX.md` + `cartographie-domaines.md` pointent bien vers les nouveaux templates
+
+---
+
+## 2026-05-06 — Relecture V2 du 001 + synthèse intégrée
+
+**Objectif :** Lire la V2 (`rewrite-v2-correction`) de "Le Pont Cassé" et l'intégrer au classement global.
+
+**Fait :**
+- [x] Fiche enfant-fille V2 → `001-le-pont-casse/lecteurs-temoins/enfant-fille-v2-relecture-2026-05-06.md` (note 7,5/10)
+- [x] Synthèse globale → `stories/SYNTHESE-2026-05-06.md` (complément à `ultime_debrief.md`)
+- [x] Nouvel **AXE 6** identifié : faute volontaire + geste maladroit (= "ATENSION" + triangle de Juju)
+
+**Verdict V2 :**
+- **3ème** au classement toutes versions confondues (derrière 003-kimi-run1 et 004-kimi-run2 ex æquo)
+- ATENSION = meilleur moment de toutes les versions lues
+- Perte de Monsieur Ferretti = perte émotionnelle majeure → **canon V1 conservé**, V2 = variante d'étude
+
+**À faire :**
+- [ ] Compléter V2 avec les 5 profils manquants (enfant-garçon + 4 dyades)
+- [ ] Décision PMO : ajouter AXE 6 au `ultime_debrief.md` ?
+- [ ] Architecte : tester pour 005+ un adulte "présent mais non-résolutif"
+
+**État au reboot :** V2 lue par 1 seul profil sur 6 — pas de canonisation à décider tant que les 5 autres profils ne sont pas lus.
+
+---
+
 ## 2026-05-05 — Switch casting V1 : Type 4 Jérémie/M → Madeleine/F
 
 **Objectif :** Rééquilibrer casting V1 français (3F/6M → 4F/6M) en basculant Type 4 de masculin vers féminin.

@@ -5,6 +5,47 @@
 
 ---
 
+## 2026-05-07 — Refonte LLM + casting writers 10 versions (libre + guidé)
+
+**Décisions** :
+
+1. **LLM mis à jour** ([infra/mcp/MODELS.md](../../infra/mcp/MODELS.md)) :
+   - Grok : `grok-4-fast-non-reasoning` → `grok-4.3` + `reasoning_effort: "low"` (juste au-dessus de none, évite le thinking long)
+   - Kimi : suppression du paramètre `mode` (le mode `story`/moonshot-v1-32k ne marchait plus). Mono-mode `kimi-k2.6` non-thinking sur `api.moonshot.ai`
+   - DeepSeek : `deepseek-chat` → `deepseek-v4-pro` non-thinking (défaut), `deepseek-v4-flash` en option. Promo -75% sur V4-Pro **jusqu'au 2026-05-31** (rappel sprint-log)
+   - Tous en **non-thinking** : décision John "pas de thinking mode" — réponses one-shot, pas de raisonnement qui lisse la créativité
+   - Claude writers : `sonnet` → `claude-opus-4-7` (test du saut de modèle pour décaler le rang Claude qui plafonnait à 3-4)
+
+2. **Casting writers passe de 8 à 10 versions** :
+   - 2 Claude (Opus 4.7, libres)
+   - **3 Kimi libres** + **1 Kimi guidé** (= 4 Kimi total, justifié par domination Kimi en Tour 2/3)
+   - 2 DeepSeek (V4-Pro, libres)
+   - 2 Grok (4.3, libres) — "deuxième chance" après bottom unanime, saut de génération majeur
+
+3. **Séparation libre / guidé** :
+   - **9 writers LIBRES** : reçoivent uniquement règles de FORME (ouverture courte, geste avant parole, fin image, longueur, promesse du titre). **Aucune indication de contenu** (pas d'animal, d'onomatopée, d'objet imposé). Variance native préservée. Template : [`brief-writer-libre.template.md`](../equipe/templates/brief-writer-libre.template.md)
+   - **1 writer GUIDÉ** : reçoit en plus l'**Annexe AXES 1-6** issue des 100+ relectures (créature vivante, geste avant parole, onomatopée légère, fin rituel, mystère vs résolution, faute volontaire). Active 2-3 axes max, jamais 4+. Template : [`brief-writer-guide.template.md`](../equipe/templates/brief-writer-guide.template.md). Agent : [`narration-writer-kimi-guide`](../../.claude/agents/narration-writer-kimi-guide.md)
+
+4. **Checklist auto-cohérence en fin de brief (tous writers)** : passe factuelle 30s avant remise (prénoms, lieux, objets cohérents). Pas de réécriture créative — corrige uniquement les bugs. Une 2e passe créative dilue la voix one-shot.
+
+5. **Étape 7 Rewrite formalisée comme consolidation** : pas une réécriture from-scratch — base + 2-3 greffes d'ingrédients gagnants identifiés en sélection. Spine de la base intacte. Pas de Frankenstein. ([`PROCESS.md`](../equipe/PROCESS.md) §7)
+
+6. **Lecteurs témoins** : passe de 4 (2 enfants + 2 dyades) à **6** (2 enfants G+F + 4 dyades papa-G/papa-F/maman-G/maman-F). Reflète le protocole utilisé en Tour 2/3 et la richesse des retours par genre/parent.
+
+**Raison** : Verdict consolidé Tour 2/3 (003-v2 + 004) = Kimi domine (kimi-run1 #1 chez 5/6 lecteurs sur 004), Grok bottom unanime, Claude plafonne 3-4. Le test température réelle (004) a confirmé que la formule structure prime sur l'angle. On exploite cette connaissance via le writer guidé sans casser la créativité des libres.
+
+**À surveiller** :
+- Coût DeepSeek-V4-Pro après 2026-05-31 (fin promo) → bascule possible vers V4-Flash
+- Kimi K2 series discontinued 2026-05-25 (K2.6 reste OK mais surveiller release notes)
+- Si les 4 Kimi convergent trop, perte de variance inter-LLM → à mesurer après 3-5 histoires
+
+**Impact fichiers** :
+- Modifié : [`infra/mcp/server.ts`](../../infra/mcp/server.ts), [`PROCESS.md`](../equipe/PROCESS.md), [`narration-writer-claude-libre.md`](../../.claude/agents/narration-writer-claude-libre.md)
+- Créé : [`MODELS.md`](../../infra/mcp/MODELS.md), [`narration-writer-kimi-guide.md`](../../.claude/agents/narration-writer-kimi-guide.md), [`brief-writer-libre.template.md`](../equipe/templates/brief-writer-libre.template.md), [`brief-writer-guide.template.md`](../equipe/templates/brief-writer-guide.template.md)
+- Mémoire MaxPlay : `feedback_kimi_mode_code.md` mise à jour (mode unique désormais)
+
+---
+
 ## 2026-05-05 — Switch casting V1 : Type 4 Jérémie/M → Madeleine/F
 
 **Décision** : Type 4 (Individualiste / Fréquence) passe de **Jérémie (M, diminutif Jérem)** à **Madeleine (F, diminutif Madie)** pour rééquilibrer le casting V1 français de **3F/6M vers 4F/6M**.

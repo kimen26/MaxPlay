@@ -4,7 +4,7 @@ import { z } from "zod";
 
 const server = new McpServer({
   name: "llm-copains",
-  version: "1.0.0",
+  version: "2.0.0",
 });
 
 async function callOpenAICompat(
@@ -14,7 +14,8 @@ async function callOpenAICompat(
   systemPrompt: string,
   userPrompt: string,
   extraHeaders: Record<string, string> = {},
-  temperature?: number
+  temperature?: number,
+  extraBody: Record<string, unknown> = {}
 ): Promise<string> {
   const body: Record<string, unknown> = {
     model,
@@ -22,6 +23,7 @@ async function callOpenAICompat(
       { role: "system", content: systemPrompt },
       { role: "user", content: userPrompt },
     ],
+    ...extraBody,
   };
   if (typeof temperature === "number") {
     body.temperature = temperature;
@@ -49,7 +51,7 @@ async function callOpenAICompat(
 
 server.tool(
   "ask_grok",
-  "Pose une question à Grok (xAI). Utile pour fact-check, relecture, ou perspective alternative sur un texte narratif. Param 'temperature' optionnel (0.0=déterministe, 0.7=nominal, 1.0+=créatif).",
+  "Pose une question à Grok 4.3 (xAI). reasoning_effort='low' par défaut (juste au-dessus de none, évite le thinking long). Param 'temperature' optionnel (0.0=déterministe, 0.7=nominal, 1.0+=créatif).",
   {
     prompt: z.string().describe("La question ou le texte à soumettre à Grok"),
     context: z.string().optional().describe("Contexte optionnel (ex: extrait de l'histoire)"),
@@ -60,7 +62,16 @@ server.tool(
     if (!apiKey) return { content: [{ type: "text", text: "Erreur: XAI_API_KEY non définie." }], isError: true };
     const systemPrompt = context ? `Tu es un assistant expert. Contexte fourni:\n\n${context}` : "Tu es un assistant expert, précis et concis.";
     try {
-      const result = await callOpenAICompat("https://api.x.ai/v1", apiKey, "grok-4-fast-non-reasoning", systemPrompt, prompt, {}, temperature);
+      const result = await callOpenAICompat(
+        "https://api.x.ai/v1",
+        apiKey,
+        "grok-4.3",
+        systemPrompt,
+        prompt,
+        {},
+        temperature,
+        { reasoning_effort: "low" }
+      );
       return { content: [{ type: "text", text: result }] };
     } catch (e) {
       return { content: [{ type: "text", text: `Erreur Grok: ${(e as Error).message}` }], isError: true };
@@ -70,27 +81,26 @@ server.tool(
 
 server.tool(
   "ask_kimi",
-  "Pose une question à Kimi / Moonshot AI. Mode 'story' (défaut) pour narration/relecture/créatif — utilise moonshot-v1-32k. Mode 'code' pour code/analyse — utilise kimi-for-coding. Param 'temperature' optionnel (0=déterministe, 0.3=nominal Kimi narratif, 1.0+=créatif).",
+  "Pose une question à Kimi K2.6 (Moonshot AI). Mode unique non-thinking via platform.moonshot.ai. Param 'temperature' optionnel (0=déterministe, 0.6=nominal, 1.0+=créatif).",
   {
     prompt: z.string().describe("La question ou le texte à soumettre à Kimi"),
     context: z.string().optional().describe("Contexte optionnel (ex: extrait de l'histoire)"),
-    mode: z.enum(["story", "code"]).optional().default("story").describe("story = narration/créatif (moonshot-v1-32k) | code = code/analyse (kimi-for-coding)"),
-    temperature: z.number().min(0).max(2).optional().describe("Température LLM (Moonshot défaut ~0.3, Kimi-for-coding défaut ~0.6 ; 0=déterministe, 1.0+=plus créatif)"),
+    temperature: z.number().min(0).max(2).optional().describe("Température LLM (Kimi K2.6 défaut ~0.6 ; 0=déterministe, 1.0+=plus créatif)"),
   },
-  async ({ prompt, context, mode, temperature }) => {
+  async ({ prompt, context, temperature }) => {
     const apiKey = process.env.MOONSHOT_API_KEY;
     if (!apiKey) return { content: [{ type: "text", text: "Erreur: MOONSHOT_API_KEY non définie." }], isError: true };
     const systemPrompt = context ? `Tu es un assistant expert. Contexte fourni:\n\n${context}` : "Tu es un assistant expert, précis et concis.";
-    const isCode = mode === "code";
-    const baseUrl = isCode ? "https://api.kimi.com/coding/v1" : "https://api.moonshot.cn/v1";
-    const model = isCode ? "kimi-for-coding" : "moonshot-v1-32k";
-    const extraHeaders = isCode ? {
-      "User-Agent": "claude-code/1.9.0 (win32; x64)",
-      "X-Client-Name": "claude-code",
-      "X-Client-Version": "1.9.0",
-    } : {};
     try {
-      const result = await callOpenAICompat(baseUrl, apiKey, model, systemPrompt, prompt, extraHeaders, temperature);
+      const result = await callOpenAICompat(
+        "https://api.moonshot.ai/v1",
+        apiKey,
+        "kimi-k2.6",
+        systemPrompt,
+        prompt,
+        {},
+        temperature
+      );
       return { content: [{ type: "text", text: result }] };
     } catch (e) {
       return { content: [{ type: "text", text: `Erreur Kimi: ${(e as Error).message}` }], isError: true };
@@ -100,19 +110,28 @@ server.tool(
 
 server.tool(
   "ask_deepseek",
-  "Pose une question à DeepSeek. Utile pour raisonnement, code, analyse logique. Param 'temperature' optionnel (0=déterministe, 1.0=nominal défaut DeepSeek, 1.5=créatif max).",
+  "Pose une question à DeepSeek V4. Modèle 'pro' (défaut, plus capable) ou 'flash' (rapide). Mode non-thinking. Promo -75% sur V4-Pro jusqu'au 2026-05-31.",
   {
     prompt: z.string().describe("La question ou le texte à soumettre à DeepSeek"),
     context: z.string().optional().describe("Contexte optionnel"),
-    model: z.enum(["deepseek-chat", "deepseek-reasoner"]).optional().default("deepseek-chat").describe("deepseek-chat = rapide, deepseek-reasoner = raisonnement approfondi"),
-    temperature: z.number().min(0).max(2).optional().describe("Température LLM (DeepSeek défaut ~1.0 ; 0=déterministe, 1.5=plus créatif). DeepSeek-reasoner ignore ce paramètre."),
+    model: z.enum(["deepseek-v4-pro", "deepseek-v4-flash"]).optional().default("deepseek-v4-pro").describe("v4-pro = plus capable (1.6T params, promo -75% jusqu'au 2026-05-31) | v4-flash = rapide (284B params)"),
+    temperature: z.number().min(0).max(2).optional().describe("Température LLM (DeepSeek défaut ~1.0 ; 0=déterministe, 1.5=plus créatif)"),
   },
   async ({ prompt, context, model, temperature }) => {
     const apiKey = process.env.DEEPSEEK_API_KEY;
     if (!apiKey) return { content: [{ type: "text", text: "Erreur: DEEPSEEK_API_KEY non définie." }], isError: true };
     const systemPrompt = context ? `Tu es un assistant expert. Contexte fourni:\n\n${context}` : "Tu es un assistant expert, précis et concis.";
     try {
-      const result = await callOpenAICompat("https://api.deepseek.com/v1", apiKey, model ?? "deepseek-chat", systemPrompt, prompt, {}, temperature);
+      const result = await callOpenAICompat(
+        "https://api.deepseek.com/v1",
+        apiKey,
+        model ?? "deepseek-v4-pro",
+        systemPrompt,
+        prompt,
+        {},
+        temperature,
+        { thinking: false }
+      );
       return { content: [{ type: "text", text: result }] };
     } catch (e) {
       return { content: [{ type: "text", text: `Erreur DeepSeek: ${(e as Error).message}` }], isError: true };

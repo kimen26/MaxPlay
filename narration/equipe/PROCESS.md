@@ -98,17 +98,19 @@
 
 ---
 
-## Étape 4 — Versions writers (8 versions parallèles)
+## Étape 4 — Versions writers (10 versions parallèles)
 
 | Champ | Valeur |
 |---|---|
 | **Owner** | Directeur (orchestrateur) — Writers exécutent |
-| **Inputs** | Les 3 briefs (univers + personnages + histoire), le plan-histoire.md, la [cheatsheet didascalies vocales](voix/_CHEATSHEET-WRITERS.md) (didascalies FR italiques autorisées dans les drafts ; le voice-director les convertira en tags v3 ElevenLabs en production audio) |
-| **Outputs** | <ul><li>`versions-writers/claude-base.md` (Claude config standard, angle natif)</li><li>`versions-writers/kimi-base.md` (Kimi config standard, angle natif)</li><li>`versions-writers/deepseek-base.md` (DeepSeek config standard, angle natif)</li><li>`versions-writers/grok-base.md` (Grok config standard, angle natif)</li><li>`versions-writers/claude-variance-1-{angle}.md` (angularisé)</li><li>`versions-writers/claude-variance-2-{angle}.md` (angularisé)</li><li>`versions-writers/kimi-variance-1-{angle}.md` (angularisé)</li><li>`versions-writers/kimi-variance-2-{angle}.md` (angularisé)</li><li>`versions-writers/_notes-intention/<writer>.md` (1 par version : pourquoi ces choix créatifs, pas technique)</li><li>`kanban.md` étape 4 ✅</li></ul> |
-| **Schéma writers (premières histoires, révision après 3-5)** | <table><tr><th>Bloc</th><th>N</th><th>LLM</th><th>Configuration</th><th>Angle</th></tr><tr><td>Core "normal"</td><td>4</td><td>Claude · Kimi · DeepSeek · Grok</td><td>Config standard, prompt identique</td><td>Aucun angle imposé — l'angle natif du LLM se révèle</td></tr><tr><td>Variance Claude</td><td>2</td><td>Claude × 2</td><td>Prompts angularisés</td><td>Sobre + Sensoriel (par défaut)</td></tr><tr><td>Variance Kimi</td><td>2</td><td>Kimi × 2</td><td>Prompts angularisés</td><td>Dynamique + Instinct (par défaut)</td></tr></table> |
-| **Leviers de variance disponibles** | <ul><li>**Angle narratif** (Sobre / Sensoriel / Dynamique / Instinct) — par défaut</li><li>**POV / focal narratif** (Wex témoin / un perso du duo / narrateur invisible)</li><li>**Ouverture** (in medias res / lente / dialogue d'amorce)</li><li>**Longueur cible** (400 / 550 / 700 mots)</li></ul> Le Directeur choisit le levier dans `brief-histoire.md`. |
-| **Critères PASS** | <ul><li>8 versions présentes (sauf si écart documenté dans `selection.md` à venir — tolérance temporaire)</li><li>Chaque version : 400-700 mots</li><li>Chaque version : note d'intention créative dans `_notes-intention/<writer>.md`</li><li>Aucun writer n'a lu les autres (stateless)</li></ul> |
-| **Condition de passage** | Directeur lance étape 5 dès que les 8 versions sont produites |
+| **Inputs** | Les 3 briefs (univers + personnages + histoire), le plan-histoire.md, le brief writer libre OU guidé selon le rôle ([`templates/brief-writer-libre.template.md`](templates/brief-writer-libre.template.md), [`templates/brief-writer-guide.template.md`](templates/brief-writer-guide.template.md)), la [cheatsheet didascalies vocales](voix/_CHEATSHEET-WRITERS.md) |
+| **Outputs** | <ul><li>9 versions LIBRES : `versions-writers/claude-1.md`, `claude-2.md`, `kimi-1.md`, `kimi-2.md`, `kimi-3.md`, `deepseek-1.md`, `deepseek-2.md`, `grok-1.md`, `grok-2.md`</li><li>1 version GUIDÉE : `versions-writers/kimi-guide.md` (annexe AXES 1-6)</li><li>Notes d'intention en fin de chaque fichier (frontmatter + section finale)</li><li>`kanban.md` étape 4 ✅</li></ul> |
+| **Casting writers (révision après 3-5 histoires de plus)** | <table><tr><th>Bloc</th><th>N</th><th>LLM / Modèle</th><th>Brief</th></tr><tr><td>Claude</td><td>2</td><td>`claude-opus-4-7` (agent narration-writer-claude-libre)</td><td>libre</td></tr><tr><td>Kimi libre</td><td>3</td><td>`kimi-k2.6` non-thinking (MCP `ask_kimi`)</td><td>libre</td></tr><tr><td>Kimi guidé</td><td>1</td><td>`kimi-k2.6` non-thinking (agent narration-writer-kimi-guide)</td><td>**guidé** (annexe AXES 1-6)</td></tr><tr><td>DeepSeek</td><td>2</td><td>`deepseek-v4-pro` non-thinking (MCP `ask_deepseek`)</td><td>libre</td></tr><tr><td>Grok</td><td>2</td><td>`grok-4.3` `reasoning_effort: low` (MCP `ask_grok`)</td><td>libre</td></tr></table> Détails LLM : [`infra/mcp/MODELS.md`](../../infra/mcp/MODELS.md). |
+| **Différence libre vs guidé** | <ul><li>**LIBRE (9 writers)** : reçoit briefs + 5 garde-fous de FORME (ouverture courte, geste avant parole, fin image, longueur, promesse du titre). **Aucune indication de contenu** (pas de "mets une créature", pas d'onomatopée imposée). Variance native préservée.</li><li>**GUIDÉ (1 writer)** : reçoit briefs + brief libre + **annexe AXES 1-6** issue des 100+ relectures. Active 2-3 axes librement, jamais 4+. Doit produire une version qui exploite les leçons sans les copier.</li></ul> |
+| **Leviers de variance disponibles (libres)** | Température réelle via param MCP, POV, ouverture, longueur cible. Le Directeur peut imposer un levier par writer dans `brief-histoire.md`. |
+| **Checklist auto-cohérence (tous writers)** | Chaque writer fait **une passe factuelle de 30 secondes** avant remise (prénoms casting, cohérence lieux/objets, surnoms 4/5). Pas de réécriture créative — corrige uniquement les bugs. Une 2e passe créative dilue la voix one-shot. |
+| **Critères PASS** | <ul><li>10 versions présentes (sauf écart documenté)</li><li>Chaque version : 400-700 mots</li><li>Chaque version : note d'intention en fin</li><li>Aucun writer n'a lu les autres (stateless)</li></ul> |
+| **Condition de passage** | Directeur lance étape 5 dès que les 10 versions sont produites |
 | **Point de reprise** | Si reboot : compter fichiers présents dans `versions-writers/`. Relancer les writers manquants. |
 | **Modalité v2/v3** | Aucune itération en étape 4. Si une version est défectueuse (vide, hors-format) → `_archive/` + relance du writer. |
 
@@ -119,10 +121,10 @@
 | Champ | Valeur |
 |---|---|
 | **Owner** | Directeur (orchestrateur) — Lecteurs exécutent |
-| **Inputs** | Les 8 versions writers + `equipe/profils-lecteurs.md` |
-| **Outputs** | <ul><li>`lecteurs-temoins/enfant-1.md`</li><li>`lecteurs-temoins/enfant-2.md`</li><li>`lecteurs-temoins/dyade-1.md`</li><li>`lecteurs-temoins/dyade-2.md`</li><li>`kanban.md` étape 5 ✅</li></ul> |
-| **Profils** | 2 enfants seuls + 2 dyades parent-enfant. Format **texte libre obligatoire** (pas de grille, pas de note sur 10). « J'ai aimé… / J'ai pas compris… / Je retiens… » |
-| **Critères PASS** | <ul><li>4 fichiers présents</li><li>Chaque fichier : retour personnel sur les 8 versions (peut comparer, peut signaler des préférences)</li><li>Pas de jargon technique (pas de "Kishōtenketsu", "ennéatype")</li></ul> |
+| **Inputs** | Les 10 versions writers + `equipe/profils-lecteurs.md` |
+| **Outputs** | <ul><li>`lecteurs-temoins/enfant-garcon.md`</li><li>`lecteurs-temoins/enfant-fille.md`</li><li>`lecteurs-temoins/dyade-papa-garcon.md`</li><li>`lecteurs-temoins/dyade-papa-fille.md`</li><li>`lecteurs-temoins/dyade-maman-garcon.md`</li><li>`lecteurs-temoins/dyade-maman-fille.md`</li><li>`kanban.md` étape 5 ✅</li></ul> |
+| **Profils** | 2 enfants seuls (G+F) + 4 dyades (papa-garçon, papa-fille, maman-garçon, maman-fille). Format **texte libre obligatoire** (pas de grille, pas de note sur 10). « J'ai aimé… / J'ai pas compris… / Je retiens… » |
+| **Critères PASS** | <ul><li>6 fichiers présents</li><li>Chaque fichier : retour personnel sur les 10 versions (peut comparer, peut signaler des préférences)</li><li>Pas de jargon technique (pas de "Kishōtenketsu", "ennéatype")</li></ul> |
 | **Condition de passage** | Directeur déclenche étape 6 |
 | **Point de reprise** | Si reboot : relire `lecteurs-temoins/` (ce qui est présent) + relancer ce qui manque |
 | **Modalité v2/v3** | Aucune itération |
@@ -134,7 +136,7 @@
 | Champ | Valeur |
 |---|---|
 | **Owner** | Directeur (`narration`, Opus) |
-| **Inputs** | Les 8 versions + 4 retours lecteurs + `equipe/memoire-dir.md` + `equipe/patte-narrative-maxplay.md` |
+| **Inputs** | Les 10 versions + 6 retours lecteurs + `equipe/memoire-dir.md` + `equipe/patte-narrative-maxplay.md` |
 | **Outputs** | <ul><li>`stories/<NNN-slug>/selection.md` (rempli depuis `equipe/templates/selection.template.md`)</li><li>`kanban.md` étape 6 ✅ + statut "EN ATTENTE AUTEUR"</li></ul> |
 | **Format `selection.md`** | <ul><li>**Version base choisie** (laquelle des 8 + pourquoi)</li><li>**Éléments à récupérer** d'autres versions (citations précises)</li><li>**Réactions lecteurs** à prendre en compte (citations + interprétation)</li><li>**Brief de rewrite** : ce qui doit changer, ce qui doit rester intact</li><li>**Tiebreak rule** : si 2 versions sont à égalité, le Directeur choisit celle qui colle le plus à la patte (B+D+C) — pas celle qui plaît le plus au lecteur enfant si elle dérive du Kishōtenketsu</li></ul> |
 | **Critères PASS** | <ul><li>`selection.md` rempli toutes sections</li><li>Choix justifié contre la patte narrative et les retours lecteurs</li><li>Brief rewrite actionnable (pas de "améliore globalement")</li></ul> |
@@ -146,14 +148,16 @@
 
 ---
 
-## Étape 7 — Rewrite
+## Étape 7 — Rewrite consolidé
+
+> **Nature de l'étape** : Le rewrite n'est PAS une réécriture from scratch. C'est une **consolidation** : on prend la version base choisie en étape 6 (sa structure, son fil, sa voix) et on **greffe 2-3 ingrédients gagnants** identifiés dans d'autres versions ou ailleurs (V2 d'une histoire précédente, axes consolidés). Pas un Frankenstein — la spine de la base reste intacte, on ajoute du "plaisir/attention/émotion" sans casser le fil.
 
 | Champ | Valeur |
 |---|---|
 | **Owner** | Directeur (peut sous-traiter à un writer) |
-| **Inputs** | `selection.md` (version base + brief rewrite) + version base elle-même + 4 retours lecteurs |
+| **Inputs** | `selection.md` (version base + liste d'ingrédients à greffer + brief rewrite) + version base elle-même + 6 retours lecteurs |
 | **Outputs** | <ul><li>`stories/<NNN-slug>/rewrite/v1.md`</li><li>`kanban.md` étape 7 ✅</li></ul> |
-| **Critères PASS** | <ul><li>Rewrite respecte le brief (changements demandés appliqués)</li><li>Longueur 400-700 mots</li><li>Patte respectée (pas de dérive A/F)</li><li>Garde-fous narratifs respectés (parents hors-scène, pas de morale dite, ennéatype dilué, etc.)</li></ul> |
+| **Critères PASS** | <ul><li>Rewrite respecte le brief (greffes appliquées sans casser le fil)</li><li>Spine de la version base **identifiable** (un lecteur de la base reconnaît le texte)</li><li>2-3 greffes maximum (au-delà : Frankenstein)</li><li>Longueur 400-700 mots</li><li>Patte respectée (pas de dérive A/F)</li><li>Garde-fous narratifs respectés (parents hors-scène, pas de morale dite, ennéatype dilué, etc.)</li></ul> |
 | **Condition de passage** | Directeur déclenche étape 8 dès que `v1.md` existe |
 | **Point de reprise** | Si reboot : relire `rewrite/v1.md` (s'il existe) + `selection.md` + kanban |
 | **Modalité v2/v3** | **1 cycle max.** Si v1 ne convient pas après GateKeeper ou auteur → retour étape 6 (nouvelle sélection avec autre version base). Pas de v2 de rewrite. |

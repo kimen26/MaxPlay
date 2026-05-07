@@ -23,7 +23,7 @@ Le prompt est passé via **stdin**, la réponse récupérée sur **stdout**.
 - `ALLOWED_CHAT_ID` — recommandé
 - `PROJECT_PATH` — défaut `C:/ProjetsPerso/Claude_Projects/MaxPlay`
 - `CLAUDE_CLI` — défaut `claude` (chemin de la CLI si non dans PATH)
-- `CLAUDE_TIMEOUT_MS` — défaut `180000` (3 min par requête)
+- `CLAUDE_TIMEOUT_MS` — défaut `600000` (10 min par requête)
 
 ❌ **Plus besoin de `ANTHROPIC_API_KEY`** — l'auth est dans `~/.claude/`.
 

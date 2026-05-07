@@ -19,7 +19,7 @@ const PROJECT_PATH =
   process.env.PROJECT_PATH ?? "C:/ProjetsPerso/Claude_Projects/MaxPlay";
 
 const CLAUDE_CLI = process.env.CLAUDE_CLI ?? "claude";
-const CLAUDE_TIMEOUT_MS = parseInt(process.env.CLAUDE_TIMEOUT_MS ?? "540000");
+const CLAUDE_TIMEOUT_MS = parseInt(process.env.CLAUDE_TIMEOUT_MS ?? "600000");
 
 const MAX_HISTORY = 10;
 

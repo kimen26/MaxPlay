@@ -163,7 +163,10 @@
       "Bash(sed -n '1,5p' c:/ProjetsPerso/Claude_Projects/MaxPlay/.claude/agents/narration-gatekeeper.md)",
       "Bash(sed -n '1,5p' c:/ProjetsPerso/Claude_Projects/MaxPlay/.claude/agents/narration-science.md)",
       "Bash(npx tsc *)",
-      "Bash(xargs -I{} grep -H \"^model:\" {})"
+      "Bash(xargs -I{} grep -H \"^model:\" {})",
+      "Bash(mkdir -p relecture-rewrite rewrite/_archive)",
+      "Bash(mv rewrite/v1.md rewrite/claude-rewrite-v1.md)",
+      "Bash(mkdir -p .claude/hooks 2>&1; ls .claude/hooks/)"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\temp",
@@ -171,7 +174,8 @@
       "C:\\Users\\kimen\\.claude",
       "C:\\Users\\kimen",
       "c:\\c\\ProjetsPerso\\Claude_Projects\\MaxPlay\\infra\\bot",
-      "C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude\\agents"
+      "C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude\\agents",
+      "C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude"
     ]
   },
   "enabledMcpjsonServers": [
@@ -220,6 +224,17 @@
             "command": "bash -c 'INPUT=$(cat); if echo \"$INPUT\" | grep -q \"narration.*INBOX\"; then cd \"c:/ProjetsPerso/Claude_Projects/MaxPlay\" && git add narration/INBOX.md && git commit -m \"inbox: dump $(date +%Y-%m-%d)\" 2>/dev/null || true; fi'",
             "statusMessage": "Sauvegarde INBOX narration...",
             "async": true
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude\\hooks\\narration-pmo-check.ps1\""
           }
         ]
       }

@@ -22,6 +22,7 @@
 
 | Statut | ID | Titre | Priorité | Assigné | Prochaine action |
 |--------|-----|-------|----------|---------|------------------|
+| ⚪ | ARCHI-006 | Formaliser procédure PMO dans `.claude/agents/narration-pmo.md` | Normale | narration-pmo (Haiku) | Créer doc agent reflet des décisions 2026-05-08 : classification input (6 catégories), routing, checklist remise main. Cible : PMO auto-guidé sans attendre instructions. |
 | ⚪ | UNIVERS-001 | Trancher nom de l'univers | Normale | Auteur | Choisir parmi 21 candidats + pistes "Wex World" / "Wex Bou" (`univers/meta/nom-candidats.md`) |
 | ⚪ | STORY-004 | Cartable-à-trou — Polo · Lulu · Mimi · Wex | Pause arc 2 | — | pitch validé — **arc 2 Parole en pause depuis 2026-04-30** (`stories/004-cartable-a-trou/pitch.md`) |
 | ⚪ | STORY-005 | Le Mardi — Wex · Pierrot · Melki · graine | Pause arc 2 | — | pitch validé — **arc 2 Parole en pause** (`stories/005-le-mardi/pitch.md`) |

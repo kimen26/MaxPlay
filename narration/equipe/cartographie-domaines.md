@@ -105,14 +105,16 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 | `stories/<NNN-slug>/selection.md` | Choix version base + éléments à récupérer + brief rewrite | Directeur | 6 |
 | `stories/<NNN-slug>/rewrite/v1.md` | Rewrite (1 cycle max) | Directeur | 7 |
 | `stories/<NNN-slug>/gatekeeper-verdict.md` | PASS/CORRECTIONS + motif | GateKeeper | 8 |
-| `stories/<NNN-slug>/kanban.md` | Suivi des 9 étapes (source de vérité reprise) | owner d'étape | toutes |
+| `stories/<NNN-slug>/kanban.md` | Suivi des 11 étapes (source de vérité reprise) | owner d'étape | toutes |
+| `stories/<NNN-slug>/synthese-lecteurs.md` | Consolidation Directeur des retours lecteurs (étape 5) | Directeur | 5 → 6 |
+| `stories/<NNN-slug>/relecture-rewrite/` | Sous-panel relecture rewrite (3-4 lecteurs ciblés) | Lecteurs | 9 |
 | `stories/<NNN-slug>/synthese.md` + `relecture.md` | Compilation + relecture finale Directeur | Directeur | 9 |
 | `stories/<NNN-slug>/texte.md` | **CANON** — figé post-GateKeeper PASS + auteur-validé | Directeur | 9 |
 | `stories/<NNN-slug>/_archive/` | Versions abandonnées + anciennes vN (jamais d'overwrite) | tous | toutes |
 
 **Règle :** rien n'est effacé. Versions abandonnées → `_archive/`. Post-canon V2/V3 : `texte.md` actuel → `_archive/v1-YYYY-MM-DD.md`, nouveau `texte.md`.
 
-**Référence complète :** [`PROCESS.md`](PROCESS.md) (workflow militaire 9 étapes).
+**Référence complète :** [`PROCESS.md`](PROCESS.md) (workflow militaire 11 étapes — refonte 2026-05-08, ajout étape 9 re-relecture rewrite).
 
 ---
 
@@ -185,6 +187,10 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 | `.claude/agents/narration-writer-claude-libre.md` | Writer Claude Libre (Opus 4.7) | Auteur |
 | `.claude/agents/narration-writer-kimi-guide.md` | Writer Kimi Guidé (Sonnet orchestre + Kimi K2.6 via MCP) | Auteur |
 | `infra/mcp/MODELS.md` | Configuration LLM (Grok 4.3 / Kimi K2.6 / DeepSeek V4-Pro) — dépréciations + historique | Auteur + PMO |
+| `narration/equipe/onomatopees-cross-culture.md` | Catalogue 37 onomatopées cross-langues (FR/EN/JA/ES/PT-BR/DE/AR/ZH) | Conseiller |
+| `narration/equipe/lecons-vivantes.md` | Document vivant des patterns narratifs (P1-P6, G1-G6, axes) — mis à jour à chaque canonisation | Conseiller + Directeur |
+| `narration/equipe/templates/brief-writer-libre.template.md` | Brief commun aux 9 writers libres (forme uniquement) | Directeur |
+| `narration/equipe/templates/brief-writer-guide.template.md` | Brief enrichi pour 1 writer guidé (annexe AXES 1-6) | Directeur |
 | `.claude/agents/narration-archiviste.md` | Archiviste | Auteur |
 | `.claude/agents/narration-science.md` | Science | Auteur |
 | `.claude/agents/narration-sensibilite.md` | Sensibilité | Auteur |

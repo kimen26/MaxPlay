@@ -12,7 +12,7 @@
 | Personnages | 9 définis (ennéagramme) — ✅ **casting V1 "Christ" validé** (Melki, Mimi, Polo, Madie, Lulu, Pierrot, Raph, Juju, Nono) + **Wex héros hors-système** (pas d'ennéatype). Notation `TypeN`/`TitiN × origine` pour écrire les textes. Casting V1 = 4F/6M (mise à jour 2026-05-05). |
 | Univers | post-Éveil, Printemps de l'Éveil — distillé dans `univers/` |
 | Direction | **monde sobre, merveilleux discret** (vu à travers enfant né dedans) |
-| Histoires | "Le Pont Cassé" (001) — canon · "Le Rire qui reste" (002) — canon · "La Confidence" (003) — en workshop |
+| Histoires | "Le Pont Cassé" (001) — canon V1 · "Le Rire qui reste" (002) — canon · **"Le Pont Cassé V2 from scratch" (003)** — étape 7 (rewrite Kimi en cours, attente reboot MCP) · "Le Pont Cassé Températures" (004) — test variance température, étape 5 livré |
 | Nom univers | **non tranché** → `univers/meta/nom-candidats.md` |
 
 ---
@@ -70,9 +70,11 @@
 | Fichier | Rôle |
 |---------|------|
 | [equipe/INDEX.md](equipe/INDEX.md) | **Index complet de l'équipe — lire en premier** (carte des fichiers, arbre de décision agents) |
-| [equipe/PROCESS.md](equipe/PROCESS.md) | **Workflow militaire 9 étapes** — owners, I/O, critères PASS, reprise, SLA |
+| [equipe/PROCESS.md](equipe/PROCESS.md) | **Workflow militaire 11 étapes** (refonte 2026-05-08) — owners, I/O, critères PASS, reprise, SLA. Étape 9 nouvelle = re-relecture rewrite. |
 | [equipe/patte-narrative-maxplay.md](equipe/patte-narrative-maxplay.md) | **Patte B+D+C** : Kishōtenketsu noyau + tranche de vie voix + cycle d'arc. Outils E/A doux. F écartée. |
-| [equipe/templates/](equipe/templates/) | Gabarits réutilisables : pitch, plan, briefs, sélection, kanban, synthèse |
+| [equipe/lecons-vivantes.md](equipe/lecons-vivantes.md) | **Document vivant** des patterns narratifs MaxPlay (P1-P6, G1-G6, axes, signal genre). Mis à jour à chaque canonisation. |
+| [equipe/onomatopees-cross-culture.md](equipe/onomatopees-cross-culture.md) | **Catalogue 37 onomatopées** validées cross-langues. 0 ou 1 par histoire, choisie dans cette liste. |
+| [equipe/templates/](equipe/templates/) | 10 gabarits réutilisables : pitch, plan, briefs (univers/persos/histoire), **brief-writer-libre**, **brief-writer-guide**, sélection, kanban, synthèse |
 | [equipe/ORGANIGRAMME.md](equipe/ORGANIGRAMME.md) | **Qui fait quoi — lire avant d'appeler un agent** |
 | [equipe/cartographie-domaines.md](equipe/cartographie-domaines.md) | **Où va quelle info · qui décide · invariants** |
 | [equipe/profils-lecteurs.md](equipe/profils-lecteurs.md) | Profils lecteurs témoins : enfant 4-6 ans, parent (dyade), éditeur jeunesse (optionnel) |
@@ -115,25 +117,26 @@
 
 ---
 
-## Workflow narratif (à jour)
+## Workflow narratif (11 étapes — refonte 2026-05-08)
 
 ```
-Auteur → INBOX.md → Conseiller (binôme + pitch)
-      ↓
-Architecte → Plan d'Histoire
-      ↓
-4 Writers → versions complètes + notes d'intention
-      ↓
-Lecteurs témoins (enfant ×2 + dyade ×2) → réactions texte libre
-      ↓
-Directeur → sélection + brief de rewrite
-      ↓
-Rewrite (1 cycle max)
-      ↓
-GateKeeper → validation technique → PASS
-      ↓
-Version finale → stories/<NNN-slug>/texte.md
+0.  Auteur          → INBOX.md (idée brute)
+1.  Conseiller      → pitch.md                                     ✅ valide auteur
+2.  Architecte      → plan-histoire.md
+3.  Directeur       → briefs/{univers, personnages, histoire}.md
+4.  10 Writers      → versions-writers/ (2 Claude Opus + 4 Kimi K2.6 dont 1 guidé + 2 DeepSeek + 2 Grok 4.3)
+5.  20 Lecteurs     → lecteurs-temoins/ + synthese-lecteurs.md (panel cible : 10 profils × 2 tranches d'âge)
+6.  Directeur       → selection.md (base + greffes)                ✅ valide auteur
+7.  Writer top 1    → rewrite/<llm>-rewrite-v1.md (auteur top 1 garde la main)
+8.  GateKeeper      → gatekeeper-verdict.md
+9.  3-4 Lecteurs    → relecture-rewrite/ (sous-panel léger sur le rewrite)
+10. Directeur+PMO   → texte.md (CANON) + maj equipe/lecons-vivantes.md ✅ valide auteur
 ```
+
+**Configuration LLM** : voir [`infra/mcp/MODELS.md`](../infra/mcp/MODELS.md).
+**Casting writers** + **panel lecteurs** détaillés : voir [`equipe/PROCESS.md`](equipe/PROCESS.md).
+**Onomatopées** (règle 0 ou 1, catalogue cross-culture) : voir [`equipe/onomatopees-cross-culture.md`](equipe/onomatopees-cross-culture.md).
+**Patterns narratifs** confirmés / pièges : voir [`equipe/lecons-vivantes.md`](equipe/lecons-vivantes.md).
 
 **Règle :** un INDEX ne contient jamais de contenu canon, seulement des pointeurs.
 Un fichier stable > 400 lignes → on scinde thématiquement.

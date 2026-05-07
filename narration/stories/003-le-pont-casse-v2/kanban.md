@@ -1,6 +1,6 @@
 # Kanban — STORY-003 Le Pont Cassé V2 from scratch
 
-> **Test PROCESS militaire 9 étapes complet** (2026-05-02).
+> **Test PROCESS militaire 9 étapes** (lancé 2026-05-02). **Migré vers PROCESS 11 étapes (refonte 2026-05-08)** — étape 9 nouvelle ajoutée (re-relecture rewrite, panel 20 lecteurs), étape 10 = canon. Pour 003-v2, panel re-relecture transitoire = 6 lecteurs (cf. note historique PROCESS.md étape 9).
 > Même sujet que 001 (pont cassé) mais fabrication entièrement from-scratch pour valider le nouveau workflow.
 > **Validation Papa Yann obligatoire après étape 1 (pitch) ET étape 3 (briefs writers complets).**
 > Source de vérité de l'étape en cours — lu en premier par tout agent qui reprend l'histoire.
@@ -31,9 +31,10 @@
 | 4 | Versions writers | 8 Writers | ✅ | 2026-05-04 | [`versions-writers/`](versions-writers/) — 8 versions livrées (claude×2, kimi×2, deepseek×2, grok×2) |
 | 5 | Lecteurs témoins | 6 Témoins (2 enfants seuls + 4 dyades) | ✅ | 2026-05-04 | [`lecteurs-temoins/`](lecteurs-temoins/) — 6 fiches livrées avec classements consolidés |
 | 6 | Sélection | Directeur | ⏳ | 2026-05-07 | [`selection.md`](selection.md) — base **kimi-run1** + 3 greffes (Clac ouverture, "comme un bracelet" Pierrot, "Au revoir fenêtre" rituel fin) — **EN ATTENTE VALIDATION AUTEUR** (SLA 2026-05-10) |
-| 7 | Rewrite | Directeur | 🟢 | 2026-05-07 | [`rewrite/v1.md`](rewrite/v1.md) — 568 mots, 4 greffes appliquées (Clac / bracelet / écaille / Au revoir fenêtre) — soumis à l'auteur pour validation sur pièces avant GateKeeper |
+| 7 | Rewrite | Directeur orchestre · auteur top 1 (Kimi) exécute | 🟢 | 2026-05-07 | [`rewrite/`](rewrite/) — **claude-rewrite-v1.md livré 2026-05-07 mais régression identifiée** (ouverture sensorielle écrasée, contamination présent vs imparfait kimi-run1). Refonte en cours : kimi-rewrite (auteur top 1 retouche son texte avec conseils non-imposés) à lancer post-reboot MCP. Voir [`rewrite/_prompt-kimi-rewrite.md`](rewrite/_prompt-kimi-rewrite.md). |
 | 8 | GateKeeper | GateKeeper (`narration-gatekeeper`) | ⚪ | — | [`gatekeeper-verdict.md`](gatekeeper-verdict.md) |
-| 9 | Canon | Directeur + PMO | ⚪ | — | [`texte.md`](texte.md) |
+| 9 | Re-relecture rewrite (NOUVEAU) | Directeur orchestre · 6 lecteurs (panel transitoire 003-v2 — voir note historique) | ⚪ | — | [`relecture-rewrite/`](relecture-rewrite/) |
+| 10 | Canon | Directeur + PMO | ⚪ | — | [`texte.md`](texte.md) |
 
 ---
 
@@ -42,7 +43,7 @@
 - [x] **Étape 1 — Pitch** validé (Papa Yann) : 2026-05-02 (validation tacite par cadrage brief minimal verbatim)
 - [ ] **Étape 3 — Briefs** validés (Papa Yann — validation supplémentaire pour ce 1er test) : ___ (date) — **briefs finalisés 2026-05-03 (tutoiement writer + writer-package autoporteur), en attente GO final**
 - [ ] **Étape 6 — Sélection** validée (Papa Yann) : ___ (date)
-- [ ] **Étape 9 — Version finale** validée (Papa Yann) : ___ (date)
+- [ ] **Étape 10 — Version finale** validée (Papa Yann) : ___ (date)
 
 **SLA :** 3 jours par validation. Au-delà → 🔴 BLOQUÉ + log auto `pmo/sprint-log.md`.
 

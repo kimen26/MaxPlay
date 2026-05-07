@@ -32,6 +32,7 @@ export class SandboxScene extends Phaser.Scene {
   private passengerText!: Phaser.GameObjects.Text;
   private soundManager!: SoundManager;
   private version: string = '';
+  private versionText!: Phaser.GameObjects.Text;
 
   constructor() {
     super({ key: 'SandboxScene' });
@@ -288,7 +289,7 @@ export class SandboxScene extends Phaser.Scene {
       fontFamily: 'Nunito', fontSize: '16px', color: '#444444', backgroundColor: '#FFFFFFCC', padding: { x: 16, y: 8 },
     }).setOrigin(0.5, 0).setScrollFactor(0).setDepth(10000);
 
-    this.add.text(W - 16, H - 16, `v${this.version}`, {
+    this.versionText = this.add.text(W - 16, H - 16, 'v…', {
       fontFamily: 'Nunito', fontSize: '14px', color: '#666666', backgroundColor: '#FFFFFFAA', padding: { x: 8, y: 4 },
     }).setOrigin(1, 1).setScrollFactor(0).setDepth(10000);
   }
@@ -459,13 +460,13 @@ export class SandboxScene extends Phaser.Scene {
 
   private async loadVersion(): Promise<void> {
     try {
-      const path = window.location.pathname.includes('/MaxPlay/') ? '/MaxPlay/version.txt' : '/version.txt';
-      const response = await fetch(path);
+      const response = await fetch('./version.txt');
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
       this.version = (await response.text()).trim();
     } catch (error) {
       console.warn('Version load failed:', error);
       this.version = 'dev';
     }
+    if (this.versionText) this.versionText.setText(`v${this.version}`);
   }
 }

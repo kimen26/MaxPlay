@@ -42,6 +42,7 @@ jobs:
           mkdir -p _site/max-adventure
           cp -r game/web/* _site/
           cp -r game/phaser/dist/* _site/max-adventure/
+          cp game/phaser/public/version.txt _site/max-adventure/
 
       - uses: actions/configure-pages@v4
 

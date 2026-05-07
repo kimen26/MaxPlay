@@ -289,7 +289,8 @@ export class SandboxScene extends Phaser.Scene {
       fontFamily: 'Nunito', fontSize: '16px', color: '#444444', backgroundColor: '#FFFFFFCC', padding: { x: 16, y: 8 },
     }).setOrigin(0.5, 0).setScrollFactor(0).setDepth(10000);
 
-    this.versionText = this.add.text(W - 16, H - 16, 'v…', {
+    const zoom = Math.max(W / WORLD_WIDTH, H / WORLD_HEIGHT, 0.45);
+    this.versionText = this.add.text((W - 16) / zoom, (H - 16) / zoom, 'v…', {
       fontFamily: 'Nunito', fontSize: '14px', color: '#666666', backgroundColor: '#FFFFFFAA', padding: { x: 8, y: 4 },
     }).setOrigin(1, 1).setScrollFactor(0).setDepth(10000);
   }
@@ -308,7 +309,8 @@ export class SandboxScene extends Phaser.Scene {
       this.cameras.main.setZoom(Math.max(w / WORLD_WIDTH, h / WORLD_HEIGHT, 0.45));
       if (this.joystick) this.joystick.setCenter(180, h - 320);
       if (this.honkButton) this.honkButton.setPosition(w - 110, h - 320);
-      if (this.versionText) this.versionText.setPosition(w - 16, h - 16);
+      const vZoom = Math.max(w / WORLD_WIDTH, h / WORLD_HEIGHT, 0.45);
+      if (this.versionText) this.versionText.setPosition((w - 16) / vZoom, (h - 16) / vZoom);
     });
   }
 

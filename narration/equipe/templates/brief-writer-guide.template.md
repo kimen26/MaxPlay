@@ -49,6 +49,8 @@ usage: Brief enrichi pour le 1 writer GUIDÉ (Kimi K2.6 guidé). Inclut tout le 
 
 **Règle si activé** : **0 ou 1 onomatopée**, jamais plus. Jouable à voix haute sans préparation. Si papa doit s'entraîner, c'est trop lourd.
 
+**Catalogue à utiliser** : [`onomatopees-cross-culture.md`](../onomatopees-cross-culture.md) — 37 onomatopées validées cross-langues. **Privilégier les pivots 🟢** (universels, lisibles dans 5+ langues) si l'histoire est destinée à voyager. ⚠ « clap clap » = applaudissements UNIQUEMENT, pas de l'eau qui coule.
+
 ---
 
 ### AXE 4 — Fin avec rituel physique

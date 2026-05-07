@@ -81,11 +81,11 @@ server.tool(
 
 server.tool(
   "ask_kimi",
-  "Pose une question à Kimi K2.6 (Moonshot AI). Mode unique non-thinking via platform.moonshot.ai. Param 'temperature' optionnel (0=déterministe, 0.6=nominal, 1.0+=créatif).",
+  "Pose une question à Kimi K2 (via endpoint coding kimi.com qui accepte aussi du créatif/narratif, mode passe-partout). Param 'temperature' optionnel (0=déterministe, 0.6=nominal, 1.0+=créatif).",
   {
     prompt: z.string().describe("La question ou le texte à soumettre à Kimi"),
     context: z.string().optional().describe("Contexte optionnel (ex: extrait de l'histoire)"),
-    temperature: z.number().min(0).max(2).optional().describe("Température LLM (Kimi K2.6 défaut ~0.6 ; 0=déterministe, 1.0+=plus créatif)"),
+    temperature: z.number().min(0).max(2).optional().describe("Température LLM (Kimi défaut ~0.6 ; 0=déterministe, 1.0+=plus créatif)"),
   },
   async ({ prompt, context, temperature }) => {
     const apiKey = process.env.MOONSHOT_API_KEY;
@@ -93,12 +93,16 @@ server.tool(
     const systemPrompt = context ? `Tu es un assistant expert. Contexte fourni:\n\n${context}` : "Tu es un assistant expert, précis et concis.";
     try {
       const result = await callOpenAICompat(
-        "https://api.moonshot.ai/v1",
+        "https://api.kimi.com/coding/v1",
         apiKey,
-        "kimi-k2.6",
+        "kimi-for-coding",
         systemPrompt,
         prompt,
-        {},
+        {
+          "User-Agent": "claude-code/1.9.0 (win32; x64)",
+          "X-Client-Name": "claude-code",
+          "X-Client-Version": "1.9.0",
+        },
         temperature
       );
       return { content: [{ type: "text", text: result }] };
@@ -129,8 +133,7 @@ server.tool(
         systemPrompt,
         prompt,
         {},
-        temperature,
-        { thinking: false }
+        temperature
       );
       return { content: [{ type: "text", text: result }] };
     } catch (e) {

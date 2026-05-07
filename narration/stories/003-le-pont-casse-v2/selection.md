@@ -1,143 +1,109 @@
 ---
 story: 003-le-pont-casse-v2
 etape: 6 (sélection)
-date: 2026-05-07
+date: 2026-05-07 (révisée 2026-05-08 après identification régression rewrite-claude)
 directeur: narration (Opus)
 statut: ⏳ EN ATTENTE VALIDATION AUTEUR
 ---
 
 # Sélection — STORY-003 Le Pont Cassé V2
 
-> Document produit par le Directeur après lecture des 8 versions writers + 6 retours lecteurs (2 enfants seuls + 4 dyades parent-enfant).
+> Document de **décision Directeur** post-synthèse lecteurs. Pour les classements et patterns détaillés, voir [`synthese-lecteurs.md`](synthese-lecteurs.md). Pour les fiches lecteurs brutes : [`lecteurs-temoins/`](lecteurs-temoins/).
 
 ---
 
 ## 1. VERSION BASE CHOISIE
 
 - **Fichier :** [`versions-writers/kimi-run1.md`](versions-writers/kimi-run1.md) (535 mots)
-- **Pourquoi celle-ci :**
-  - **#1 chez 5 lecteurs sur 6** (la seule exception est l'enfant garçon, qui la classe 5e mais cherche surtout des bruits — comblé par les greffes de deepseek-run2/kimi-run2 ci-dessous).
-  - Honore parfaitement la **promesse du titre** : le pont reste cassé, le drapeau-pissenlit le marque sans le réparer. C'est la signature narrative la plus forte des 8 versions.
-  - **3 voix distinctes lisibles** : Wex pose (constat sec), Raph explose (questions en rafale + Houlou !), Pierrot protège (corps, "Pas trop penchée").
-  - Patte MaxPlay (B+D+C) respectée : Kishōtenketsu pur, tranche de vie de printemps, cycle ouvert (« on peut en remettre une autre demain »).
-  - **Aucun mot bloquant** à voix haute (vérifié dyades papa+maman).
+- **Pourquoi :** #1 chez 5/6 lecteurs (panel actuel), patte MaxPlay (B+D+C) respectée, aucun mot bloquant à voix haute. Détails et citations dans [`synthese-lecteurs.md`](synthese-lecteurs.md).
 
 ---
 
-## 2. ÉLÉMENTS À RÉCUPÉRER D'AUTRES VERSIONS
+## 2. CONSEILS POUR LE REWRITE (issus des autres versions et lecteurs)
 
-> Citations précises pour le rewriter.
+> ⚠ **Philosophie mise à jour 2026-05-08** : ces éléments sont des **conseils**, pas des injonctions. Le writer du top 1 (Kimi) reçoit ces conseils et **décide** ce qui consolide vs ce qui abîme. La spine kimi-run1 est intouchable.
 
-| Source | Élément | Pourquoi le récupérer |
+| Source | Élément suggéré | Pourquoi le proposer |
 |---|---|---|
-| [`kimi-run2.md`](versions-writers/kimi-run2.md) lignes 11-15 | « **Clac. Clac. Clac.** / Le pont répète le bruit des chaussures. » (ouverture en métronome) | Cité par enfant garçon (#2 chez lui), enfant fille, dyade maman-fille top 3, dyade papa-fille top 3. **Donne au début un appui sonore que la base actuelle (description du sentier) n'a pas.** Comble le besoin "bruits/proprioception" du garçon sans casser le fil de kimi-run1. |
-| [`kimi-run2.md`](versions-writers/kimi-run2.md) ligne 39 | « **Pierrot garde sa main autour du poignet de Raph. Il ne serre pas fort. Il serre comme un bracelet.** » | Cité top 3 par dyade maman-fille ("la plus belle description physique") + enfant fille + dyade papa-fille. À insérer au moment où Raph se penche dans le trou (kimi-run1 ligne 29-31, où Pierrot la prend "doucement par le bras"). |
-| [`kimi-run2.md`](versions-writers/kimi-run2.md) lignes 81-89 | « Au revoir fenêtre, dit-il. / — Au revoir, dit Raph. / Pierrot lève la main. Il fait un petit signe avec les doigts. / — À plus tard, dit-il. » | **Répété spontanément** par enfant fille et dyade papa-fille. Plus fort que la fin actuelle de kimi-run1 ("Tant qu'il fait beau / On peut en remettre une autre demain"). À substituer ou intégrer en clôture rituelle. |
-| [`kimi-run2.md`](versions-writers/kimi-run2.md) ligne 47 | « **— Et une écaille, dit Raph. Une écaille argentée. Comme une petite cuillère.** » | Image courte, sensorielle, citée par enfant fille ("c'est quoi une écaille argentée ?"). À glisser dans la séquence "regard à plat ventre dans le trou" de kimi-run1 (ligne 35-37) où chaque enfant nomme ce qu'il voit. |
-| [`deepseek-run2.md`](versions-writers/deepseek-run2.md) (via retours lecteurs) | « bras en moulin » + « les trois assis jambes ballantes au bord du trou » | Évoqué par enfant garçon #1 chez lui. **Risque** : casse la spine kimi-run1 si on fait asseoir tout le monde. **Décision** : ne pas greffer ce passage tel quel, mais permettre **un mouvement plus visible de Wex** au moment où il se relève après avoir regardé dans le trou (légère intensification proprioceptive sans dérouter l'arc). |
+| [`kimi-run2.md`](versions-writers/kimi-run2.md) | Ouverture « Clac. Clac. Clac. » | Comble le décrochage initial signalé par enfant garçon. **Doit être ADDITIVE** (avant l'ouverture sensorielle de kimi-run1, pas en remplacement). |
+| [`kimi-run2.md`](versions-writers/kimi-run2.md) | Geste « comme un bracelet » (Pierrot autour poignet Raph) | « La plus belle description physique » selon dyade maman-fille. À substituer au « doucement par le bras » de kimi-run1 (greffe locale, mineure). |
+| [`kimi-run2.md`](versions-writers/kimi-run2.md) | Réplique « écaille argentée comme une petite cuillère » (Raph) | Image courte sensorielle. **Insérer APRÈS « Moi je veux briller »** de Raph (préserver l'écho avec « il y en a un qui brille » de Wex), pas avant. |
+| [`kimi-run2.md`](versions-writers/kimi-run2.md) | Rituel de fin « Au revoir fenêtre / À plus tard » | Répété spontanément. À ajouter **après** la séquence existante (« Tant qu'il fait beau / on peut en remettre une autre demain »), pas remplacement. Fin se ferme sur la fleur qui danse. |
+| [`deepseek-run2.md`](versions-writers/deepseek-run2.md) | Proprioception de Wex (geste sauté plus visible) | L'enfant garçon a retenu « bras en moulin » comme #1. Conseil **optionnel** : intensifier UN seul geste de Wex sans copier deepseek. À écarter si ça alourdit. |
+
+**Règles dures de cohérence stylistique** (à respecter dans le rewrite, quel que soit le rewriter) :
+- **Garder l'imparfait** de kimi-run1 (« courait », « claquaient »). Si on greffe du kimi-run2 (au présent), conjuguer à l'imparfait.
+- **Garder l'ouverture sensorielle** : mousse, baskets qui claquent, pissenlits qui sautillent (préfigure le drapeau-pissenlit final).
+- **Plafond greffes : 3 acceptées max + 1 mineure** (4 = limite atteinte, surveiller).
 
 ---
 
-## 3. RÉACTIONS LECTEURS À PRENDRE EN COMPTE
+## 3. POINTEURS LECTEURS
 
-### Enfant fille ([`enfant-fille.md`](lecteurs-temoins/enfant-fille.md))
-
-- Cite : « *Oh la fleur jaune qui danse sur la branche comme un petit soleil ! Et quand Raph dit "Houlou !" dans le trou, j'avais trop envie de le dire aussi.* »
-- Cite : « *"Au revoir fenêtre" — c'est le moment que je préfère dans toutes les histoires.* »
-- **Interprétation :** la base est validée pour elle (kimi-run1 #1) **mais le moment qui l'a marquée le plus est dans kimi-run2**. La greffe du "Au revoir fenêtre" est non-négociable.
-
-### Enfant garçon ([`enfant-garcon.md`](lecteurs-temoins/enfant-garcon.md))
-
-- Cite : « *J'ai préféré quand les enfants ils font des bruits avec leur bouche ou leurs pieds — les CLAC, les crunch, les bras en moulin.* »
-- Cite kimi-run1 : « *c'est un peu long avant qu'on arrive à faire quelque chose.* »
-- **Interprétation :** il décroche au début de kimi-run1 (description du sentier, lignes 11-13). La greffe d'ouverture "Clac. Clac. Clac." comble exactement ce besoin — démarrage sonore immédiat avant que Wex pointe le trou.
-
-### Dyade maman-fille ([`dyade-maman-fille.md`](lecteurs-temoins/dyade-maman-fille.md))
-
-- Cite maman : « *La plus naturelle à lire à voix haute de toutes. Le "Houlou !" dans le trou a provoqué une répétition spontanée.* »
-- Cite : « *L'image du bracelet pour Pierrot est la plus belle description physique de toutes les versions.* »
-- **Interprétation :** la base kimi-run1 est validée pour la lecture orale. Le bracelet (kimi-run2) est demandé explicitement.
-
-### Dyade maman-garçon ([`dyade-maman-garcon.md`](lecteurs-temoins/dyade-maman-garcon.md))
-
-- Cite maman : « *le drapeau-fleur est l'image la plus mémorisée. Aucun mot bloquant. Le garçon a voulu relire.* »
-- **Interprétation :** kimi-run1 fonctionne déjà pour le couple maman-garçon. Pas de demande spécifique de greffe — les améliorations pour l'enfant garçon viennent de l'enfant garçon seul.
-
-### Dyade papa-fille ([`dyade-papa-fille.md`](lecteurs-temoins/dyade-papa-fille.md))
-
-- Cite papa : « *La voix masculine trouve des appuis forts (arrêt net, geste du drapeau, fleur qui danse) sans jamais forcer le ton contemplatif.* »
-- Cite : « *"Au revoir fenêtre" : la fille l'a répété d'elle-même.* »
-- **Interprétation :** confirme la valeur du rituel de fin (greffe kimi-run2). La voix grave passe bien sur kimi-run1.
-
-### Dyade papa-garçon ([`dyade-papa-garcon.md`](lecteurs-temoins/dyade-papa-garcon.md))
-
-- Cite papa : « *fluide du début à la fin, le garçon n'a pas bougé, le "Houlou" et "les bruits de cheval" sont des cadeaux pour lecture à voix haute.* »
-- **Interprétation :** kimi-run1 est la version la plus performante pour ce couple. **Aucune greffe à faire qui mette en péril cette fluidité** — d'où la prudence sur deepseek-run2.
+→ Tous les détails (classements 6 lecteurs, patterns observés, citations clés, signal genre/accompagnement) sont dans [`synthese-lecteurs.md`](synthese-lecteurs.md).
 
 ---
 
-## 4. BRIEF DE REWRITE (actionnable)
+## 4. BRIEF DE REWRITE
 
-### Ce qui CHANGE
+### Ce qui CHANGE (greffes acceptées)
 
-1. **Ouverture remplacée** : démarrer par 3 lignes « Clac. Clac. Clac. / Le pont répète le bruit des chaussures. » puis enchaîner sur le trio (Wex devant, Raph au milieu qui compte, Pierrot ferme la marche). Supprimer les 2 phrases sur la mousse tendre + le sentier (kimi-run1 lignes 11-13). Gain : enfant garçon ne décroche plus.
-2. **Pierrot "comme un bracelet"** : à l'endroit où Raph se penche par-dessus la barrière (kimi-run1 ligne 21), remplacer « Pierrot la prit doucement par le bras / — Pas trop penchée. Si tu glisses, le bois est mouillé. » par : « Pierrot garde sa main autour du poignet de Raph. Il ne serre pas fort. Il serre comme un bracelet. / — Pas trop penchée, dit-il. Le bois est mouillé. »
-3. **"Une écaille argentée"** ajoutée au tableau "regard dans le trou" (kimi-run1 lignes 35-39). Après « Wex : "L'eau est toute froide. Je vois des cailloux blancs. Il y en a un qui brille." », ajouter Raph : « — Et une écaille, dit Raph. Une écaille argentée. Comme une petite cuillère. » Maintient le tour de parole, ajoute une image sensorielle.
-4. **Fin retravaillée** : conserver la pose du drapeau (kimi-run1 lignes 55-65) et la traversée des 3, **mais clore par le rituel d'au revoir** : Wex tourne la tête → "Au revoir fenêtre" / Raph "Au revoir" / Pierrot fait un petit signe avec les doigts "À plus tard". Conserver derrière le « Tant qu'il fait beau / On peut en remettre une autre demain » mais le **placer avant** les au revoir (au moment où ils s'arrêtent de l'autre côté), pas comme clôture finale. Image finale : « Le drapeau jaune ondulait doucement dans l'air du printemps. »
+1. **Ajouter** « Clac. Clac. Clac. » en ouverture, **avant** la phrase printanière kimi-run1. Pas écraser. La séquence devient : Clac × 3 + courte phrase de bruit + ouverture sensorielle kimi-run1 conservée intégralement.
+2. **Substituer** dans kimi-run1 le « doucement par le bras » par le « comme un bracelet » de kimi-run2. Conjuguer à l'imparfait (« Pierrot gardait sa main autour du poignet de Raph. Il ne serrait pas fort. Il serrait comme un bracelet. »).
+3. **Insérer** la réplique de Raph « Et une écaille, dit Raph. Une écaille argentée. Comme une petite cuillère. » **après** « Moi je veux briller ! » (préserver l'écho).
+4. **Ajouter** la séquence rituelle « Au revoir fenêtre / À plus tard » **après** « on peut en remettre une autre demain », avec une respiration entre les deux blocs (« Le ruisseau coulait toujours. Le pont reprenait le sentier de l'autre côté. »). Image finale : fleur qui danse.
 
 ### Ce qui RESTE intact
 
-- **Le drapeau-pissenlit** (cœur narratif, image #1 retenue par 5/6 lecteurs)
-- **La traversée à 3 styles** : Wex bruit sec, Raph bruits de cheval, Pierrot main sur la barrière
-- **Le "Houlou !"** crié par Raph dans le trou (cité par 4 lecteurs)
-- **Le tour de parole équitable** (Wex/Raph/Pierrot) sans hiérarchie
-- **La promesse du titre** : pont jamais réparé, marqué par la fleur
-- **Le ton printemps doux** + cycle ouvert (« on peut en remettre une autre demain »)
-- **Les 3 voix distinctes** sans étiquetage ennéatype
+- Drapeau-pissenlit (cœur narratif)
+- 3 voix distinctes Wex / Raph / Pierrot
+- « Houlou ! » crié par Raph
+- Traversée à 3 styles (Wex sec / Raph cheval / Pierrot main barrière)
+- Imparfait de conte
+- Promesse du titre tenue
+- Cycle ouvert (« on peut en remettre une autre demain »)
+- Aucun ajout de morale
 
 ### Longueur cible
 
-535 mots actuels + greffes ≈ **560-580 mots** (limite 700, marge OK).
+535 mots actuels + greffes ≈ **555-580 mots**.
 
 ---
 
-## 5. TIEBREAK
+## 5. RISQUES SUR LE REWRITE (à surveiller)
 
-Pas de tiebreak — kimi-run1 est #1 chez 5/6, écart net. Le seul lecteur qui le classe 5e (enfant garçon) demande des bruits, comblés par les greffes kimi-run2 sans changer la base.
+1. **Régression identifiée sur claude-rewrite-v1** : l'ouverture sensorielle de kimi-run1 a été écrasée par la greffe « Clac », et le présent de kimi-run2 a contaminé l'imparfait. Voir [`rewrite/claude-rewrite-v1.md`](rewrite/claude-rewrite-v1.md) (archivé pour référence). **Le rewrite-kimi devra absolument éviter ces 2 erreurs.**
+2. **Plafond greffes** : 3 acceptées + 1 optionnelle (proprioception Wex) = limite atteinte. Surveillance "Frankenstein".
+3. **Tour de parole "regard dans le trou"** : passe de 3 à 4 voix avec l'écaille. Vérifier que ça reste rapide.
+4. **Surveillance ennéatype Pierrot** : « comme un bracelet » est tendre, ne pas glisser vers étiquetage T6.
+5. **Voix grave (papa)** : ne pas alourdir avec onomatopées en cascade — les 3 « Clac » d'ouverture suffisent, ne pas en ajouter ailleurs.
 
 ---
 
-## 6. RISQUES SUR LE REWRITE
+## 6. CHOIX DU REWRITER (décision tranchée 2026-05-08)
 
-1. **Risque "Frankenstein"** : 4 greffes c'est limite. La règle PROCESS dit "2-3 greffes max". **Justification de l'écart** : 3 greffes textuelles + 1 substitution d'ouverture (Clac), comptable comme 1 modification structurelle. Total : 3 greffes + 1 substitution. Acceptable mais vigilance.
-2. **Risque rythme alourdi** : la séquence "regard dans le trou" (Wex / Raph / Pierrot) gagne une 4e voix avec l'écaille. Vérifier que ça reste rapide (chacun une phrase max).
-3. **Risque fin double** : si « Tant qu'il fait beau / On peut en remettre une autre demain » + « Au revoir fenêtre » s'enchaînent mal, on perd la respiration. **Solution** : 2 paragraphes séparés par un saut d'image (« Le ruisseau coulait toujours. Le pont reprenait le sentier de l'autre côté. ») entre les deux blocs.
-4. **Surveillance ennéatype Pierrot** : "comme un bracelet" est tendre, ne pas glisser vers étiquetage T6 protecteur (rester dans le geste, pas l'analyse).
-5. **Voix grave (papa-garçon)** : ne pas alourdir avec onomatopées en cascade — 3 "Clac" en ouverture suffisent, ne pas en ajouter ailleurs.
+| Option | Statut |
+|---|---|
+| ❌ Claude Opus rewrite avec greffes proposées (option A) | Testé en `claude-rewrite-v1.md` — **régression identifiée** (ouverture sensorielle écrasée + contamination présent vs imparfait). Archivé pour référence. |
+| ❌ Kimi rewrite avec injection complète (synthèse lecteurs + passages autres writers) | Risque de dilution / cherry-picking. **Écarté** par John 2026-05-08 : « *Juste on donne son texte au meilleur writer et les/ses notes d'intention aussi.* » |
+| 🟢 **Kimi relit kimi-run1 avec sa propre note d'intention seulement** (option C) | **Choisi**. Pas de greffes, pas d'injection externe. L'auteur peaufine SI il sent qu'il y a lieu, sinon laisse tel quel. Voir [`rewrite/_prompt-kimi-rewrite.md`](rewrite/_prompt-kimi-rewrite.md) (version minimaliste). |
+
+**Pourquoi cette voie** : kimi-run1 a fait #1 chez 5/6 lecteurs **sans avoir vu les autres versions**. Lui injecter les leçons des autres = casser ce qui a fait son succès. Les patterns lecteurs vivent désormais dans `equipe/lecons-vivantes.md` (à créer) pour alimenter les **futures** histoires, pas celle-ci.
+
+**Plans de repli** :
+- Si Kimi ne touche quasi rien → on canonise **kimi-run1 brut** comme `texte.md`. C'est probable.
+- Si Kimi peaufine 5-15 phrases → comparaison panel étape 9 (kimi-run1 vs kimi-rewrite-v1) → meilleur devient canon.
+- Si Kimi sur-réécrit → on archive kimi-rewrite, on garde kimi-run1.
 
 ---
 
 ## 7. STATUT
 
 - **Date sélection :** 2026-05-07
-- **Statut :** ⏳ EN ATTENTE VALIDATION AUTEUR
-- **SLA :** 3 jours (passe en 🔴 BLOQUÉ après 2026-05-10)
-- **Si validé** → étape 7 (rewrite consolidé)
-- **Si rejet** → archiver en `_archive/selection-v1-2026-05-07.md`, nouvelle sélection (plafond 2 itérations)
-
----
-
-## ANNEXE — Classement consolidé 6 lecteurs
-
-| Rang | Version | Enfant F | Enfant G | Dyade MF | Dyade MG | Dyade PF | Dyade PG |
-|------|---------|----------|----------|----------|----------|----------|----------|
-| 🥇 | **kimi-run1** | 1 | 5 | 1 | 1 | 1 | 1 |
-| 🥈 | **kimi-run2** | 2 | 2 | 3 | — | 3 | — |
-| 🥉 | **claude-run1** | 4 | 8 | 2 | 3 | 2 | 2 |
-| 4 | **deepseek-run2** | 3 | 1 | — | bottom | — | bottom |
-| 5 | **deepseek-run1** | 7 | 3 | — | 2 | — | 3 |
-| 6 | claude-run2 | 5 | 6 | — | — | — | — |
-| 7 | grok-run2 | 6 | 4 | bottom | — | bottom | — |
-| 8 | grok-run1 | 8 | 7 | bottom | bottom | bottom | bottom |
-
-**Lecture** : kimi-run1 domine 5/6 lecteurs. claude-run1 est le plus consensuel (jamais top 1, jamais bottom — bonne base de secours si kimi-run1 rejeté). Grok bottom unanime confirme l'élimination du style "formules adultes".
+- **Date révision approche rewrite :** 2026-05-08
+- **Statut :** ⏳ EN ATTENTE VALIDATION AUTEUR sur :
+  - Choix du rewriter (option B Kimi)
+  - Plafond 3+1 greffes
+  - Règles dures (imparfait + ouverture sensorielle préservés)
+- **SLA :** 3 jours (passe en 🔴 BLOQUÉ après 2026-05-11)
+- **Si validé** → reboot MCP → étape 7 (kimi-rewrite) → étape 9 (re-relecture 3-4 lecteurs sur le rewrite seul) → étape 10 canonisation

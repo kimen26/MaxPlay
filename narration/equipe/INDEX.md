@@ -74,6 +74,8 @@
 | [`sources-sensibilite.md`](sources-sensibilite.md) | Catalogue topics sensibles / conspirationnistes | Sensibilité |
 | [`voix-enneatypes.md`](voix-enneatypes.md) | Étude vocale par ennéatype (18 prompts ElevenLabs F+M × 9 types) | Audio |
 | [`profils-lecteurs.md`](profils-lecteurs.md) | Fiches profils lecteurs témoins (enfant 4-6, dyade) | Directeur |
+| [`onomatopees-cross-culture.md`](onomatopees-cross-culture.md) | **Catalogue 37 onomatopées** enfantines validées cross-langues (FR/EN/JA/ES/PT-BR/DE/AR/ZH). Pivot pour writers : 0 ou 1 onomatopée par histoire, choisie dans cette liste | Conseiller |
+| [`lecons-vivantes.md`](lecons-vivantes.md) | **Document vivant** des patterns narratifs MaxPlay confirmés (P1-P6), pièges (G1-G6), axes 1-6, signal genre. Mis à jour à chaque canonisation. Lu par Conseiller (étape 1), Architecte (étape 2), writers via briefs. | Conseiller + Directeur |
 
 ### Ressources vivantes
 

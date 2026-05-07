@@ -6,6 +6,32 @@
 
 ---
 
+## 2026-05-08 — Refonte process 9→11 étapes + procédure PMO
+
+**Objectif :** Formaliser la procédure PMO (classification input, routing, remise main) et valider les nouvelles étapes process refondues.
+
+**Fait :**
+- [x] `equipe/PROCESS.md` mis à jour (9→11 étapes, étape 9 panel 20 lecteurs, étape 10 re-relecture, étape 11 canon)
+- [x] `equipe/lecons-vivantes.md` créé (document vivant remplaçant ultime_debrief.md figé, patterns P1-P6, pièges G1-G6, axes 1-6, signal genre × accompagnement)
+- [x] `equipe/onomatopees-cross-culture.md` créé (catalogue cross-culturel, règle 0 ou 1/histoire, pivots 🟢 listés, sources deepsearch)
+- [x] 2 templates briefs writers créés (`brief-writer-libre.template.md` + `brief-writer-guide.template.md`)
+- [x] `stories/003-le-pont-casse-v2/kanban.md` mis à jour (étape 5 lecteurs + synthèse, prêt pour étape 6 sélection)
+- [x] `pmo/decisions.md` : 2 entrées 2026-05-08 ajoutées (étape 9 panel 20 + procédure PMO systématique)
+
+**Décisions prises (Papa Yann)** :
+1. Étape 9 re-relecture = panel complet 20 lecteurs (pas 3-4 ciblés)
+2. PMO déclenché **systématiquement** sur chaque input narration (classification live + routing)
+3. Remise main = checklist PMO 8 points (décisions, leçons, todos, questions, index, kanban, références, état reboot)
+
+**État au reboot :**
+- **Tickets actifs** : 3 en cours (TEST-PROCESS-001 + TEST-PROCESS-003 + STORY-002-V2)
+- **Blocages** : aucun identifié — 003-v2 en étape 5 (synthèse lecteurs produite), prête pour étape 6 sélection
+- **Structure** : PROCESS figé 11 étapes, 2 docs patterns vivants créés, templates writers complets
+- **Avant prochain tour** : Directeur peut lancer étape 6 sélection 003-v2 quand Papa Yann valide (SLA auteur 3j à partir de 2026-05-07)
+- **Index à vérifier** : `equipe/INDEX.md` et `cartographie-domaines.md` pointent-elles vers les 2 nouveaux docs ? (à scanner rapidement)
+
+---
+
 ## RAPPELS DATÉS (à vérifier au passage)
 
 - **2026-05-25** : Kimi K2 series discontinuation officielle. Vérifier que `kimi-k2.6` reste maintenu (cf. `infra/mcp/MODELS.md`).

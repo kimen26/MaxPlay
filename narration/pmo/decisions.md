@@ -5,6 +5,69 @@
 
 ---
 
+## 2026-05-08 — Étape 9 (re-relecture) : panel complet 20 lecteurs
+
+**Décision** : L'étape 9 du PROCESS militaire (re-relecture du rewrite) se fait avec le **panel complet 20 lecteurs**, pas une sélection ciblée de 3-4.
+
+**Raison** : Papa Yann : *"le 9 relecture je veux bien tout le monde denouveau les 20"* — après le rewrite, valider auprès du panel complet que la version finale tient sur toutes les tranches (3-5 ans tranche A + 6-7 ans tranche B, tous genres + dyades).
+
+**Impact sur `equipe/PROCESS.md`** : étape 9 révisée — output devient 20 fiches (non plus 3-4 + 1 contrôle). Synthèse finale avant étape 10 (canon).
+
+**Statut** : À appliquer à partir de la prochaine histoire réécrite (003-v2 ou 005 selon situation).
+
+---
+
+## 2026-05-08 — Procédure PMO : classification et routing automatiques
+
+**Décision (opérationnelle)** : Le PMO est déclenché **automatiquement et systématiquement** dès que du contenu narration passe en conversation. La procédure suivante s'applique à la fin de chaque salve Directeur/Conseiller :
+
+### Classification (pour chaque input utilisateur)
+
+L'input tombe dans **l'une de ces 6 catégories** :
+
+| Catégorie | Signe | Action PMO |
+|-----------|-------|-----------|
+| **DÉCISION** | « Je décide que... » / « À partir de maintenant... » / acte volontaire d'arbitrage | → `pmo/decisions.md` + entrée datée + résumé raison + impact fichiers |
+| **LEÇON** | Observation du writer / lecteur / test qui révèle un pattern récurrent | → `equipe/lecons-vivantes.md` + section HISTOIRE + ajout pattern/piège/axe |
+| **TODO** | Chantier identifié mais non traitée aujourd'hui — dépend d'autre chose ou attend prochaine session | → `pmo/backlog.md` + ticket STORY/PERSO/UNIVERS/ARCHI/INPUT + priorité + assigné |
+| **QUESTION OUVERTE** | Arbitrage nécessaire mais pas tranché → reste question, attend réponse explicite | → `pmo/decisions.md` section "Questions ouvertes" + lien fichier source |
+| **INFO** | Contexte, état, rapport — rien à décider maintenant | → `pmo/sprint-log.md` section "État au reboot" OU ignored si redondant |
+| **TRAITEMENT IMMÉDIAT** | Correction factuelle, refonte opérationnelle, mise à jour structurelle → agir **maintenant** | Agir + documenter action dans `sprint-log.md` |
+
+### Routing (qui fait quoi)
+
+- **DÉCISION** : PMO enregistre. Directeur applique immédiatement ou délègue agent concerné.
+- **LEÇON** : PMO enrichit `lecons-vivantes.md`. Conseiller valide la formulation pour futures histoires.
+- **TODO** : PMO crée ticket. Auteur décide priorité et assigné à prochaine session.
+- **QUESTION** : reste dans backlog § Questions ouvertes jusqu'à Papa Yann tranche.
+- **INFO** : PMO note, pas d'action requise.
+- **TRAITEMENT** : PMO exécute (edits, créations, mises à jour index), log dans `sprint-log.md`.
+
+### Timing
+
+- **À chaque réponse Directeur/Conseiller** : PMO scanne les outputs narratifs (pitch, plan, briefs, sélection, etc.)
+- **Avant de rendre la main à l'auteur** : PMO valide checklist (voir section Remise main ci-dessous)
+- **Pas attendre la fin de session** : classification live, mi-session si besoin
+
+### Remise main à l'auteur (checklist PMO avant "fin de session")
+
+Avant de dire "OK on a terminé", le PMO vérifie :
+
+- ✅ Tous les DÉCISIONS de la session → `decisions.md` avec date + raison
+- ✅ Tous les LEÇONS → `lecons-vivantes.md` enrichi OU noté dans `sprint-log.md` si trop tôt
+- ✅ Tous les TODO → `backlog.md` avec ticket + priorité (jamais plus de 3 actifs)
+- ✅ Toutes les QUESTIONS → `decisions.md` § Questions ouvertes OU résolues si Papa Yann a tranché
+- ✅ `sprint-log.md` entrée datée avec "État au reboot" (= ce que le prochain agent doit savoir)
+- ✅ INDEX.md et cartographie à jour si structure a changé (fichiers créés/supprimés/renommés)
+- ✅ Aucun kanban.md désalignés (étapes en cours = correctes vs réalité)
+- ✅ Pas de références cassées (fichiers mentionnés dans `decisions.md` ou `PROCESS.md` mais inexistants)
+
+Si un élément manque → flag auteur avant remise main : *"⚠️ PMO — [catégorie] : [ce qui manque] → faire X avant de rendre la main"*.
+
+**Raison** : Papa Yann : *"OK on a livré quoi ? todo à jour les proces équipe blabla index claude tout est bon je te donne la main etc..."* — besoin de checklist systématique, pas de bricolage ad-hoc.
+
+---
+
 ## 2026-05-07 — Refonte LLM + casting writers 10 versions (libre + guidé)
 
 **Décisions** :

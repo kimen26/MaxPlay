@@ -5,38 +5,41 @@
 > **Pour l'organigramme et les agents, voir [`ORGANIGRAMME.md`](ORGANIGRAMME.md).**
 > **Pour l'index complet de l'équipe, voir [`INDEX.md`](INDEX.md).**
 >
-> Dernière mise à jour : 2026-04-30 (réécriture militaire chantier process)
+> Dernière mise à jour : 2026-05-08 (refonte 11 étapes — ajout étape 9 re-relecture rewrite, panel 20 lecteurs, onomatopées cross-culture, lecons-vivantes)
 
 ---
 
 ## Principes invariants
 
-1. **Auteur a le dernier mot** — sur le pitch (étape 1), sur la sélection (étape 6), sur la version finale (étape 9). Trois points de validation, pas plus.
+1. **Auteur a le dernier mot** — sur le pitch (étape 1), sur la sélection (étape 6), sur la version finale (étape 10). Trois points de validation, pas plus.
 2. **1 rewrite max** — si le rewrite ne convient pas, retour à la sélection avec une autre version comme base.
 3. **GateKeeper ne change pas l'histoire** — il vérifie le respect des règles, point.
 4. **Rien n'est effacé** — versions abandonnées → `_archive/`. Histoire abandonnée → `_archive/` racine. Aucun overwrite.
-5. **1 dossier = 1 histoire** — `stories/<NNN-slug>/` contient TOUT (briefs, versions, lecteurs, sélection, rewrite, gatekeeper, canon, variantes, archives). Pas de fragmentation `workshop/`.
+5. **1 dossier = 1 histoire** — `stories/<NNN-slug>/` contient TOUT (briefs, versions, lecteurs, sélection, rewrite, gatekeeper, re-relecture, canon, variantes, archives). Pas de fragmentation `workshop/`.
 6. **Le `kanban.md` est la source de vérité** — pour reprendre une histoire après reboot, on lit son kanban.
-7. **Agent manquant = STOP + alerte auteur** (règle absolue 2026-05-02) — l'orchestrateur ne se substitue JAMAIS à un agent défini (PMO, Architecte, GateKeeper, Conseiller, Directeur, Writers, Lecteurs, Archiviste, Science, Sensibilité, Localisation, Audio) qui n'est pas chargé en session courante. Voir `pmo/decisions.md` (2026-05-02 RÈGLE ABSOLUE).
+7. **Agent manquant = STOP + alerte auteur** (règle absolue 2026-05-02) — l'orchestrateur ne se substitue JAMAIS à un agent défini qui n'est pas chargé en session courante. Voir `pmo/decisions.md` (2026-05-02 RÈGLE ABSOLUE).
+8. **Le writer du top 1 garde la main au rewrite** (règle 2026-05-08) — quand une version est élue #1 par les lecteurs, c'est son auteur (Kimi, Claude, etc.) qui retouche son propre texte avec sa propre note d'intention. Pas de greffes injectées par d'autres LLM. Les patterns lecteurs alimentent `lecons-vivantes.md` pour les **futures** histoires.
+9. **Onomatopées normées** (règle 2026-05-08) — 0 ou 1 par histoire, choisie dans [`onomatopees-cross-culture.md`](onomatopees-cross-culture.md). Test à voix haute obligatoire.
 
 ---
 
-## Vue d'ensemble — 9 étapes
+## Vue d'ensemble — 11 étapes
 
 ```
-0. Idée        (Auteur)              → INBOX.md section datée
-1. Pitch       (Conseiller)          ✅ valide auteur
-2. Plan        (Architecte)
-3. Briefs      (Directeur)
-4. Versions    (8 Writers parallèles)
-5. Lecteurs    (4 Témoins)
-6. Sélection   (Directeur)           ✅ valide auteur
-7. Rewrite     (Directeur, 1 cycle max)
-8. GateKeeper  (Haiku)
-9. Canon       (Directeur + PMO)     ✅ valide auteur
+0.  Idée            (Auteur)                    → INBOX.md section datée
+1.  Pitch           (Conseiller)                ✅ valide auteur
+2.  Plan            (Architecte)
+3.  Briefs          (Directeur)
+4.  Versions        (10 Writers parallèles)
+5.  Lecteurs        (Panel cible : 20 lecteurs)
+6.  Sélection       (Directeur)                 ✅ valide auteur
+7.  Rewrite         (Writer du top 1 si possible — sinon Directeur, 1 cycle max)
+8.  GateKeeper      (Haiku)
+9.  Re-relecture    (3-4 lecteurs ciblés sur le rewrite + 1 contrôle)
+10. Canon           (Directeur + PMO)           ✅ valide auteur
 ```
 
-**SLA :** 3 jours max sur chaque attente auteur (étapes 1/6/9). Au-delà → `kanban.md` passe en 🔴 BLOQUÉ + log auto dans `pmo/sprint-log.md`.
+**SLA :** 3 jours max sur chaque attente auteur (étapes 1/6/10). Au-delà → `kanban.md` passe en 🔴 BLOQUÉ + log auto dans `pmo/sprint-log.md`.
 
 ---
 
@@ -116,18 +119,21 @@
 
 ---
 
-## Étape 5 — Lecteurs témoins
+## Étape 5 — Lecteurs témoins (panel 20)
 
 | Champ | Valeur |
 |---|---|
-| **Owner** | Directeur (orchestrateur) — Lecteurs exécutent |
+| **Owner** | Directeur (orchestrateur) — Lecteurs exécutent (agents `narration-lecteur` + `narration-lecteur-dyade`, Sonnet) |
 | **Inputs** | Les 10 versions writers + `equipe/profils-lecteurs.md` |
-| **Outputs** | <ul><li>`lecteurs-temoins/enfant-garcon.md`</li><li>`lecteurs-temoins/enfant-fille.md`</li><li>`lecteurs-temoins/dyade-papa-garcon.md`</li><li>`lecteurs-temoins/dyade-papa-fille.md`</li><li>`lecteurs-temoins/dyade-maman-garcon.md`</li><li>`lecteurs-temoins/dyade-maman-fille.md`</li><li>`kanban.md` étape 5 ✅</li></ul> |
-| **Profils** | 2 enfants seuls (G+F) + 4 dyades (papa-garçon, papa-fille, maman-garçon, maman-fille). Format **texte libre obligatoire** (pas de grille, pas de note sur 10). « J'ai aimé… / J'ai pas compris… / Je retiens… » |
-| **Critères PASS** | <ul><li>6 fichiers présents</li><li>Chaque fichier : retour personnel sur les 10 versions (peut comparer, peut signaler des préférences)</li><li>Pas de jargon technique (pas de "Kishōtenketsu", "ennéatype")</li></ul> |
-| **Condition de passage** | Directeur déclenche étape 6 |
-| **Point de reprise** | Si reboot : relire `lecteurs-temoins/` (ce qui est présent) + relancer ce qui manque |
+| **Panel cible — 20 lecteurs** | **10 profils × 2 tranches d'âge.** Tranche A 3-5 ans = priorité (cible Max). Tranche B 6-7 ans = info complémentaire (anticipation + détection histoires qui décrochent à 6-7 ans). |
+| **Détail panel** | <table><tr><th>#</th><th>Profil</th><th>Tranche A 3-5 ans</th><th>Tranche B 6-7 ans</th></tr><tr><td>1-2</td><td>Garçon normal</td><td>G-A1</td><td>G-B1</td></tr><tr><td>3-4</td><td>Garçon intro/observateur</td><td>G-A2</td><td>G-B2</td></tr><tr><td>5-6</td><td>Garçon extra</td><td>G-A3</td><td>G-B3</td></tr><tr><td>7-8</td><td>Fille normale</td><td>F-A1</td><td>F-B1</td></tr><tr><td>9-10</td><td>Fille intro/observatrice</td><td>F-A2</td><td>F-B2</td></tr><tr><td>11-12</td><td>Fille extra</td><td>F-A3</td><td>F-B3</td></tr><tr><td>13-14</td><td>Dyade papa-Garçon</td><td>DPG-A</td><td>DPG-B</td></tr><tr><td>15-16</td><td>Dyade papa-Fille</td><td>DPF-A</td><td>DPF-B</td></tr><tr><td>17-18</td><td>Dyade maman-Garçon</td><td>DMG-A</td><td>DMG-B</td></tr><tr><td>19-20</td><td>Dyade maman-Fille</td><td>DMF-A</td><td>DMF-B</td></tr></table> |
+| **Outputs** | <ul><li>`lecteurs-temoins/<profil>-<tranche>.md` × 20</li><li>`synthese-lecteurs.md` à la racine du dossier histoire (consolidation Directeur : classement + patterns + citations clés). Sert d'input à l'étape 6 ET alimente `equipe/lecons-vivantes.md` post-canonisation.</li><li>`kanban.md` étape 5 ✅</li></ul> |
+| **Format fiche** | Texte libre obligatoire (pas de grille, pas de note sur 10). « J'ai aimé… / J'ai pas compris… / Je retiens… » + classement personnel des 10 versions. Pas de jargon technique (pas de "Kishōtenketsu", "ennéatype"). |
+| **Critères PASS** | <ul><li>20 fichiers présents (sauf écart documenté)</li><li>Chaque fichier : retour personnel sur les 10 versions</li><li>`synthese-lecteurs.md` produit avec classement consolidé + patterns observés</li><li>Pondération : tranche A pèse plus dans la sélection (cible Max), tranche B en signal complémentaire</li></ul> |
+| **Condition de passage** | Directeur déclenche étape 6 dès que `synthese-lecteurs.md` existe |
+| **Point de reprise** | Si reboot : compter fichiers présents dans `lecteurs-temoins/` + vérifier existence `synthese-lecteurs.md`. Relancer ce qui manque. |
 | **Modalité v2/v3** | Aucune itération |
+| **Note transitoire** | Pour les histoires antérieures à 2026-05-08 (001/002/003/004), le panel à 6 lecteurs (2 enfants + 4 dyades) reste valide pour ne pas re-faire les histoires. Panel 20 applicable à partir de 005. |
 
 ---
 
@@ -148,16 +154,20 @@
 
 ---
 
-## Étape 7 — Rewrite consolidé
+## Étape 7 — Rewrite
 
-> **Nature de l'étape** : Le rewrite n'est PAS une réécriture from scratch. C'est une **consolidation** : on prend la version base choisie en étape 6 (sa structure, son fil, sa voix) et on **greffe 2-3 ingrédients gagnants** identifiés dans d'autres versions ou ailleurs (V2 d'une histoire précédente, axes consolidés). Pas un Frankenstein — la spine de la base reste intacte, on ajoute du "plaisir/attention/émotion" sans casser le fil.
+> **Nature de l'étape (refondue 2026-05-08)** : Le rewrite est une **relecture finale par l'auteur du top 1**, pas une consolidation par injection de greffes externes. Logique : la version élue #1 par les lecteurs a gagné **sans avoir vu les autres**. Lui injecter ce qu'on a appris des autres = casser ce qui a fait son succès. L'auteur du top 1 (Kimi, Claude, etc.) **se relit avec sa propre note d'intention**, peaufine SI il sent qu'il y a lieu, sinon laisse tel quel.
+
+> **Les patterns lecteurs ne sont pas perdus** : ils alimentent [`equipe/lecons-vivantes.md`](lecons-vivantes.md) pour les **futures** histoires (Conseiller / Architecte / writers de 005+).
 
 | Champ | Valeur |
 |---|---|
-| **Owner** | Directeur (peut sous-traiter à un writer) |
-| **Inputs** | `selection.md` (version base + liste d'ingrédients à greffer + brief rewrite) + version base elle-même + 6 retours lecteurs |
-| **Outputs** | <ul><li>`stories/<NNN-slug>/rewrite/v1.md`</li><li>`kanban.md` étape 7 ✅</li></ul> |
-| **Critères PASS** | <ul><li>Rewrite respecte le brief (greffes appliquées sans casser le fil)</li><li>Spine de la version base **identifiable** (un lecteur de la base reconnaît le texte)</li><li>2-3 greffes maximum (au-delà : Frankenstein)</li><li>Longueur 400-700 mots</li><li>Patte respectée (pas de dérive A/F)</li><li>Garde-fous narratifs respectés (parents hors-scène, pas de morale dite, ennéatype dilué, etc.)</li></ul> |
+| **Owner par défaut** | Writer du top 1 (auteur de la version sélectionnée). Si LLM externe (Kimi/DeepSeek/Grok) → orchestré par le Directeur via MCP. Si Claude → agent `narration-writer-claude-libre`. |
+| **Owner de repli** | Si le writer du top 1 dilue trop / sur-réécrit → Directeur (`narration`, Opus) reprend la main avec un rewrite Claude maîtrisé. Si rien ne tient → on canonise la base brute. |
+| **Inputs** | `selection.md` + texte de la version base (`versions-writers/<top1>.md`) + sa propre note d'intention. **PAS** : autres versions writers, synthèse lecteurs, retours bruts. (Évite la pollution / cherry-picking.) |
+| **Outputs** | <ul><li>`stories/<NNN-slug>/rewrite/<llm>-rewrite-v1.md` (ex: `kimi-rewrite-v1.md`, `claude-rewrite-v1.md`)</li><li>Note de relecture en fin de fichier (3-5 phrases : combien de modifs, pourquoi, zones non touchées)</li><li>`kanban.md` étape 7 ✅</li></ul> |
+| **Règles dures stylistiques** | <ul><li>**Conserver le temps verbal** de la base (pas de bascule présent↔imparfait par contamination)</li><li>**Conserver l'ouverture** (premières phrases) si elle est sensorielle ou structurante</li><li>**Conserver la spine** : un lecteur de la base reconnaît le texte</li><li>Cible : longueur base ±10% (pas plus de 50 mots ajoutés)</li></ul> |
+| **Critères PASS** | <ul><li>Spine identifiable</li><li>Pas de greffes injectées depuis d'autres versions writers (sauf cas exceptionnel documenté)</li><li>Longueur 400-700 mots</li><li>Patte respectée (B+D+C, pas de dérive A/F)</li><li>Garde-fous narratifs (parents hors-scène, pas de morale, ennéatype dilué, etc.)</li><li>Onomatopées : 0 ou 1, choisie dans [`onomatopees-cross-culture.md`](onomatopees-cross-culture.md)</li></ul> |
 | **Condition de passage** | Directeur déclenche étape 8 dès que `v1.md` existe |
 | **Point de reprise** | Si reboot : relire `rewrite/v1.md` (s'il existe) + `selection.md` + kanban |
 | **Modalité v2/v3** | **1 cycle max.** Si v1 ne convient pas après GateKeeper ou auteur → retour étape 6 (nouvelle sélection avec autre version base). Pas de v2 de rewrite. |
@@ -169,27 +179,46 @@
 | Champ | Valeur |
 |---|---|
 | **Owner** | GateKeeper (`narration-gatekeeper`, Haiku) |
-| **Inputs** | `rewrite/v1.md` + `personnages/lookup.yml` + `pmo/decisions.md` + `equipe/memoire-gatekeeper.md` |
+| **Inputs** | Le rewrite (`rewrite/<llm>-rewrite-v1.md`) + `personnages/lookup.yml` + `pmo/decisions.md` + `equipe/memoire-gatekeeper.md` + `equipe/onomatopees-cross-culture.md` |
 | **Outputs** | <ul><li>`stories/<NNN-slug>/gatekeeper-verdict.md`</li><li>`kanban.md` étape 8 ✅ ou ❌</li><li>Mise à jour `equipe/memoire-gatekeeper.md` (erreurs récurrentes détectées)</li></ul> |
 | **Checklist PASS (toutes binaires)** | <ul><li>☐ Prénoms/surnoms vs `lookup.yml`</li><li>☐ Genres/pronoms cohérents</li><li>☐ Longueur 400-700 mots</li><li>☐ Chaque perso ≥ 2 répliques</li><li>☐ ≥ 1 échange de 3+ répliques</li><li>☐ Pas de morale explicite (« il avait appris que… »)</li><li>☐ Pas d'antagoniste</li><li>☐ Univers pas nommé (Éveil, Totems, Janus — implicites)</li><li>☐ Ennéatypes jamais étiquetés</li><li>☐ Surnoms 4/5 du temps</li><li>☐ Ten pas anxiogène</li><li>☐ Pas d'épilogue italique (post-001)</li><li>☐ Parents jamais en scène (saison 1)</li><li>☐ Compagnons = ondes/couleurs si présents</li><li>☐ Sensibilité différenciée (pas hiérarchie savoir)</li></ul> |
 | **Critères PASS** | Tous les items binaires ✅. Si une case ❌ → verdict CORRECTIONS avec liste précise (5 min max). |
-| **Condition de passage** | <ul><li>**PASS** → étape 9</li><li>**CORRECTIONS** → Directeur applique correctifs (modifie `rewrite/v1.md` directement, pas de nouvelle version) → re-soumet GateKeeper → PASS</li><li>**REJET STRUCTUREL** (rare, problème majeur narratif) → retour étape 6 avec note Conseiller</li></ul> |
-| **Point de reprise** | Si reboot : relire `gatekeeper-verdict.md` (s'il existe) — sinon relancer GateKeeper sur `rewrite/v1.md` |
+| **Condition de passage** | <ul><li>**PASS** → étape 9</li><li>**CORRECTIONS** → Directeur applique correctifs (modifie le rewrite directement, pas de nouvelle version) → re-soumet GateKeeper → PASS</li><li>**REJET STRUCTUREL** (rare, problème majeur narratif) → retour étape 6 avec note Conseiller</li></ul> |
+| **Point de reprise** | Si reboot : relire `gatekeeper-verdict.md` (s'il existe) — sinon relancer GateKeeper sur le rewrite |
 | **Modalité v2/v3** | Pas d'itération de verdict — un seul verdict par soumission. Si corrections, on re-soumet jusqu'à PASS. |
 
 ---
 
-## Étape 9 — Canonisation
+## Étape 9 — Re-relecture du rewrite (NOUVEAU)
+
+> **Pourquoi cette étape** (ajoutée 2026-05-08) : le rewrite est une consolidation textuelle. Sans re-validation lecteurs, on prend le risque qu'une greffe ou une retouche ait abîmé ce qui plaisait. Cette étape **dérisque la canonisation**.
+
+| Champ | Valeur |
+|---|---|
+| **Owner** | Directeur (orchestrateur) — Lecteurs exécutent (`narration-lecteur` + `narration-lecteur-dyade`, Sonnet) |
+| **Inputs** | Le rewrite seul (`rewrite/<llm>-rewrite-v1.md`). **Sans** la version base d'origine, **sans** les autres versions writers — lecture neutre, lecteur reçoit juste le texte candidat à canonisation. |
+| **Panel — 20 lecteurs (panel complet)** | **Identique au panel étape 5** : 10 profils × 2 tranches d'âge (3-5 / 6-7). Décision auteur 2026-05-08 : pas de sous-panel léger, on re-test au complet pour éliminer tout doute de régression. |
+| **Format** | Fiches courtes (plus courtes qu'à l'étape 5 — pas de classement, pas de comparaison entre versions, juste **lecture du texte candidat seul**) : « J'ai aimé / J'ai pas compris / Je retiens / Je relirais oui-non ». Si le lecteur a déjà lu la base à l'étape 5, **on ne lui rappelle pas** — il lit naïf. |
+| **Outputs** | <ul><li>`stories/<NNN-slug>/relecture-rewrite/<profil>-<tranche>.md` × 20</li><li>`stories/<NNN-slug>/relecture-rewrite/synthese.md` (verdict consolidé Directeur)</li><li>`kanban.md` étape 9 ✅</li></ul> |
+| **Critères PASS** | <ul><li>20 fiches présentes (sauf écart documenté pour 003 qui utilisera le panel transitoire 6 — voir note historique)</li><li>**Aucun retour structurel négatif** convergent (3+ lecteurs signalent la même régression = signal fort)</li><li>Au moins 70% des lecteurs (14/20) répondent positivement à « je relirais »</li><li>Si la version 5 du même panel avait classé la base #1 chez un profil et que ce même profil note maintenant une régression nette → bloquant</li></ul> |
+| **Condition de passage** | <ul><li>**PASS** → étape 10</li><li>**CORRECTIONS LÉGÈRES** (1-2 micro-ajustements signalés convergents) → Directeur corrige le rewrite, **pas** de re-relecture supplémentaire (sauf si correction structurelle)</li><li>**RÉGRESSION SIGNIFICATIVE** → retour étape 7 (1 cycle de plus max), ou décision auteur de canoniser la **base brute** si rien ne tient</li></ul> |
+| **Point de reprise** | Si reboot : compter fichiers présents dans `relecture-rewrite/`. Relancer ce qui manque. |
+| **Modalité v2/v3** | 1 cycle de re-relecture max. Si après corrections étape 7 il y a encore régression → on canonise la base brute (top 1 sans rewrite). |
+| **Note historique pour 003-004 (panel 6 transitoire)** | Pour les histoires antérieures à la décision 2026-05-08 (003-v2 et 004), la re-relecture étape 9 utilisera le **même panel 6 lecteurs** que l'étape 5 (cohérence). Panel 20 applicable à partir de 005. |
+
+---
+
+## Étape 10 — Canonisation
 
 | Champ | Valeur |
 |---|---|
 | **Owner** | Directeur (rédige) + PMO (canonise) |
-| **Inputs** | `rewrite/v1.md` GateKeeper-PASS + `kanban.md` + `equipe/templates/synthese.template.md` |
-| **Outputs** | <ul><li>`stories/<NNN-slug>/texte.md` ← **CANON** (copie de `rewrite/v1.md` validée auteur)</li><li>`stories/<NNN-slug>/synthese.md` (compilation des analyses Directeur)</li><li>`stories/<NNN-slug>/relecture.md` (relecture finale Directeur)</li><li>`stories/<NNN-slug>/README.md` (frontmatter YAML rempli — titre, mots, persos, thème, statut canon)</li><li>`kanban.md` étape 9 ✅</li><li>Mises à jour mémoires : `memoire-conseiller.md`, `memoire-dir.md`, `memoire-architecte.md`</li><li>Régénération `stories/INDEX.md` (script `generate-index.js`)</li><li>Entrée `pmo/sprint-log.md` + ticket clos dans `pmo/backlog.md`</li><li>Entrée `pmo/decisions.md` si une décision narrative a émergé pendant l'écriture</li></ul> |
-| **Critères PASS** | <ul><li>`texte.md` existe et est identique au rewrite GateKeeper-PASS</li><li>`README.md` YAML valide (script `validate-frontmatter.js`)</li><li>`stories/INDEX.md` régénéré et incluant la nouvelle histoire</li><li>3 mémoires mises à jour</li><li>Ticket fermé dans backlog</li></ul> |
+| **Inputs** | Rewrite GateKeeper-PASS et re-relecture-PASS + `kanban.md` + `equipe/templates/synthese.template.md` + `equipe/lecons-vivantes.md` |
+| **Outputs** | <ul><li>`stories/<NNN-slug>/texte.md` ← **CANON** (copie du rewrite validé)</li><li>`stories/<NNN-slug>/synthese-finale.md` (compilation des analyses Directeur)</li><li>`stories/<NNN-slug>/README.md` (frontmatter YAML rempli)</li><li>`kanban.md` étape 10 ✅</li><li>Mises à jour mémoires : `memoire-conseiller.md`, `memoire-dir.md`, `memoire-architecte.md`</li><li>**Mise à jour `equipe/lecons-vivantes.md`** : ce qu'on a appris sur cette histoire (patterns confirmés, pièges identifiés, axes nouveaux)</li><li>Régénération `stories/INDEX.md` (script `generate-index.js`)</li><li>Entrée `pmo/sprint-log.md` + ticket clos dans `pmo/backlog.md`</li><li>Entrée `pmo/decisions.md` si décision narrative a émergé</li></ul> |
+| **Critères PASS** | <ul><li>`texte.md` existe et identique au rewrite re-relu PASS</li><li>`README.md` YAML valide</li><li>`stories/INDEX.md` régénéré</li><li>3 mémoires mises à jour</li><li>**`lecons-vivantes.md` enrichi** (ce qu'on a appris)</li><li>Ticket fermé dans backlog</li></ul> |
 | **Condition de passage** | ✅ **Auteur valide la version finale** |
-| **Point de reprise** | Si reboot : `texte.md` est-il présent ? Si oui mais index pas à jour → relancer scripts. Si non → recopier depuis `rewrite/v1.md` après validation auteur. |
-| **Modalité v2/v3 (post-canon)** | Si une V2 de l'histoire est demandée plus tard (correction comité, bug pédagogique) → `texte.md` actuel déplacé en `_archive/v1-YYYY-MM-DD.md` + nouveau `texte.md` créé. Trace dans `README.md` (changelog V1 → V2 → V3). |
+| **Point de reprise** | Si reboot : `texte.md` présent ? Si oui mais index pas à jour → relancer scripts. Si non → recopier depuis le rewrite après validation auteur. |
+| **Modalité v2/v3 (post-canon)** | V2 demandée plus tard → `texte.md` actuel déplacé en `_archive/canon-v1-YYYY-MM-DD.md` + nouveau cycle complet étapes 4-10 (briefs/plan rarement modifiés). Trace dans `README.md` (changelog V1 → V2 → V3). |
 
 **SLA auteur :** 3 jours. Au-delà : kanban 🔴 BLOQUÉ.
 
@@ -205,12 +234,13 @@ Procédure standard pour tout agent reprenant une histoire :
    - Étape 1 : `pitch.md`
    - Étape 2 : `plan-histoire.md`
    - Étape 3 : `briefs/`
-   - Étape 4 : compter `versions-writers/` (combien sur 8)
-   - Étape 5 : compter `lecteurs-temoins/` (combien sur 4)
+   - Étape 4 : compter `versions-writers/` (combien sur 10)
+   - Étape 5 : compter `lecteurs-temoins/` (combien sur 20 cible, 6 en transitoire pour 001-004) + `synthese-lecteurs.md`
    - Étape 6 : `selection.md`
-   - Étape 7 : `rewrite/v1.md`
+   - Étape 7 : `rewrite/<llm>-rewrite-v1.md`
    - Étape 8 : `gatekeeper-verdict.md`
-   - Étape 9 : `texte.md`
+   - Étape 9 : compter `relecture-rewrite/` (combien sur 3-4)
+   - Étape 10 : `texte.md`
 4. **Lire `pmo/decisions.md`** — règles tranchées récentes
 5. Reprendre à l'étape signalée par le kanban
 

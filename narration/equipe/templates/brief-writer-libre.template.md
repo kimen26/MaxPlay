@@ -71,6 +71,7 @@ pourquoi cette fin. Pas de checklist technique. Dis ce qui t'a guidé.]
 - Langage concret, sensoriel, accessible à 4 ans
 - **Zéro morale explicite** à la fin
 - **Pas d'antagoniste** — frictions, malentendus, obstacles oui, méchants non
+- **Onomatopées** : **0 ou 1 par histoire**, jamais en cascade. Si tu en utilises une, prends-la dans le catalogue [`onomatopees-cross-culture.md`](../onomatopees-cross-culture.md) pour assurer la lisibilité cross-cultures. Si tu en inventes une nouvelle, signale-la dans ta note d'intention. Test à voix haute : si un parent doit s'entraîner pour la dire, c'est trop lourd.
 
 ---
 

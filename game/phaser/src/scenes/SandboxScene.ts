@@ -290,7 +290,7 @@ export class SandboxScene extends Phaser.Scene {
     }).setOrigin(0.5, 0).setScrollFactor(0).setDepth(10000);
 
     const zoom = Math.max(W / WORLD_WIDTH, H / WORLD_HEIGHT, 0.45);
-    this.versionText = this.add.text((W - 16) / zoom, (H - 16) / zoom, 'v…', {
+    this.versionText = this.add.text((W - 16) / zoom, (H - 16) / zoom, '…', {
       fontFamily: 'Nunito', fontSize: '14px', color: '#666666', backgroundColor: '#FFFFFFAA', padding: { x: 8, y: 4 },
     }).setOrigin(1, 1).setScrollFactor(0).setDepth(10000);
   }
@@ -470,6 +470,6 @@ export class SandboxScene extends Phaser.Scene {
       console.warn('Version load failed:', error);
       this.version = 'dev';
     }
-    if (this.versionText) this.versionText.setText(`v${this.version}`);
+    if (this.versionText) this.versionText.setText(this.version);
   }
 }

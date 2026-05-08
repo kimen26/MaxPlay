@@ -12,7 +12,7 @@
 | Personnages | 9 définis (ennéagramme) — ✅ **casting V1 "Christ" validé** (Melki, Mimi, Polo, Madie, Lulu, Pierrot, Raph, Juju, Nono) + **Wex héros hors-système** (pas d'ennéatype). Notation `TypeN`/`TitiN × origine` pour écrire les textes. Casting V1 = 4F/6M (mise à jour 2026-05-05). |
 | Univers | post-Éveil, Printemps de l'Éveil — distillé dans `univers/` |
 | Direction | **monde sobre, merveilleux discret** (vu à travers enfant né dedans) |
-| Histoires | "Le Pont Cassé" (001) — canon V1 · "Le Rire qui reste" (002) — canon · **"Le Pont Cassé V2 from scratch" (003)** — étape 7 (rewrite Kimi en cours, attente reboot MCP) · "Le Pont Cassé Températures" (004) — test variance température, étape 5 livré |
+| Histoires | **001 Le Pont Cassé** (canon refonte 2026-05-08, ex-003-le-pont-casse-v2). Anciennes histoires (001 V1 Ferretti, 002, 004) supprimées définitivement 2026-05-08 — patterns migrés vers `equipe/lecons-vivantes.md`. Prochaine = 005 (brainstorm à venir). |
 | Nom univers | **non tranché** → `univers/meta/nom-candidats.md` |
 
 ---

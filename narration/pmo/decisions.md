@@ -5,6 +5,23 @@
 
 ---
 
+## 2026-05-08 — Étape 7 (rewrite) : philosophie double minimaliste + comité éditorial
+
+**Décision (implicite, figée par exécution)** : L'étape 7 (rewrite) produit **2 versions à comparer** en étape 9 :
+1. **V1 minimaliste** = auteur top-1 se relit avec sa note d'intention seule. Aucune injection externe. Fidèle au texte original.
+2. **V2 comité éditorial** = auteur top-1 reçoit brief léger avec 5 idées issues d'autres versions (palette, non injonction) et intègre 2-3 max avec justification argumentée.
+
+**Raison** : Test empirique de deux approches. V1 baseline référence. V2 enrichissement très léger pour mesurer si les greffes sélectives améliorent ou diluent. Étape 9 (panel 6 ou 20 selon histoire) arbitre le choix définitif ou demande synthèse des deux.
+
+**Impact** :
+- `PROCESS.md` étape 7 = formalisé comme "consolidation légère" (pas refonte, pas fabrication multi-sources)
+- `lecons-vivantes.md` pattern P7 ajouté (rewrite comité = sélection légère, pas injonction)
+- Kanban.md histoire = 2 livrables étape 7 (v1 minimaliste + v2 comité) en attente étape 9
+
+**Statut** : À appliquer à 003-v2 (juste livrée 2026-05-08), puis 005+ selon besoin.
+
+---
+
 ## 2026-05-08 — Étape 9 (re-relecture) : panel complet 20 lecteurs
 
 **Décision** : L'étape 9 du PROCESS militaire (re-relecture du rewrite) se fait avec le **panel complet 20 lecteurs**, pas une sélection ciblée de 3-4.
@@ -814,6 +831,63 @@ Aucun ne combine **archétypes universels (ennéatypes) + adaptation culturelle 
 
 ---
 
+## 2026-05-08 — Canonisation 001 + réinitialisation catalogue (FINAL)
+
+**4 décisions Papa Yann (session 3, fin de 001)** :
+
+### Décision A : Validation étape 9 + 10 — 001 CANON
+
+**Décision :** Étape 9 re-relecture par panel 6 lecteurs : **6 × ✅**. Deux corrections légères appliquées dans texte.md final (suppression du mot « proprement » redondant; simplification phrase plantation drapeau). Étape 10 canonisée 2026-05-08.
+
+**Raison :** Panel 6 (2 enfants seuls + 4 dyades) ont validé la version kimi-rewrite-v2 (comité éditorial, 2 intégrations sur 5). Corrections mineures ne demandent pas re-re-relecture.
+
+**Impact :** 001-le-pont-casse/ = CANON (540 mots, Wex+Raph+Pierrot, promesse du titre tenue). Patterns P1-P7 + G1-G6 migrés vers `equipe/lecons-vivantes.md`.
+
+**Statut :** ✅ Exécuté. Texte final dans `stories/001-le-pont-casse/texte.md`.
+
+---
+
+### Décision B : Suppression définitive du catalogue ancien
+
+**Décision :** rm -rf des dossiers/fichiers suivants (aucun n'avait la validation Papa Yann) :
+- ancien `stories/001-le-pont-casse/` (V1 Ferretti + V2 correction)
+- `stories/002-le-rire-qui-reste/` (en pause arc 2, non supprimé, déplacé en attente)
+- `stories/004-cartable-a-trou/`, `stories/005-le-mardi/`, `stories/006-sept-a-rien/` (workshop 003, non validés)
+- `stories/003-la-confidence/` (abandon workshop)
+- `stories/series/`, `stories/ultime_debrief.md`, `stories/ultime_relecture.md`, `stories/SYNTHESE-2026-05-06.md`
+
+**Raison :** Base propre après test PROCESS 11 étapes. Patterns consolidés dans lecons-vivantes. Aucun reste de la fabrication antérieure n'interfère.
+
+**Impact :** Backlog reconfiguré (TEST-PROCESS-001, TEST-PROCESS-003, STORY-002-V2 fermés). Prochaine histoire = 005 (numérotation continue). INDEX stories/decisions mis à jour.
+
+**Statut :** ✅ Exécuté. Aucune donnée perdue (lecons-vivantes contient les patterns).
+
+---
+
+### Décision C : Renommage 003-v2 → 001 + restructuration base propre
+
+**Décision :** `003-le-pont-casse-v2/` renommé `001-le-pont-casse/`. Dossier interne nettoyé (suppression versions-writers/, lecteurs-temoins/, rewrite/, selection/, synthese-lecteurs/, gatekeeper-verdict/, relecture-rewrite/ du commit, présence en _archive/ pour tracabilité). Conservés : README (frontmatter à jour), kanban.md (histoire rendue), pitch.md, plan-histoire.md, briefs/, texte.md (canon), synthese-finale.md, _archive/.
+
+**Raison :** Une seule histoire canon à ce stade. Numérotation continue (prochaine = 005, non 004). Arborescence claire pour futures histoires.
+
+**Impact :** `stories/INDEX.md` & `stories/_gabarit/` à jour. `narration/INDEX.md` reflète l'état (001 seule), prochaine = 005.
+
+**Statut :** ✅ Exécuté. Kanban mis à jour.
+
+---
+
+### Décision D : Brainstorm prochains sujets — différé à session suivante
+
+**Décision :** Papa Yann lance brainstorm 005 (sujet + casting + brief Papa Yann) **à la prochaine session**. Conseiller + Directeur produisent brief initial.
+
+**Raison :** User cuit après 3 sessions intenses (2026-05-02 → 2026-05-08). Repos conseillé. Matière en attente : `stories/axes-histoires-en-stock.md` (10 unitaires + 5 transversaux).
+
+**Impact :** STORY-005 créé dans backlog (Haute priorité, "À faire"). Éétape 1 (pitch) prête à lancer dès GO Papa Yann.
+
+**Statut :** ⏳ En attente auteur.
+
+---
+
 ## Questions ouvertes (à trancher)
 
 | # | Question | Bloquant ? | Fichier |
@@ -834,3 +908,4 @@ Aucun ne combine **archétypes universels (ennéatypes) + adaptation culturelle 
 | 14 | Castings cross-country (Hébreu, Ghibli, Swahili…) — démarrer lequel en premier ? | Oui pour S2 | `../personnages/prénoms-par-origine.md` |
 | 15 | Mémoire narrative des lecteurs — les enfants connaîtront les histoires précédentes et feront des liens. Comment en tenir compte dans l'écriture (callbacks implicites, évolution persos, arcs longs) ? À partir de quelle histoire introduire ce niveau de couche ? | Non | — |
 | 16 | Quartier / communauté — nommé (Clairval, Tissé, Hameau de l'Aube, la Ronde…) ou volontairement anonyme ? Décision 26/04 a écarté les villes réelles, mais n'a pas tranché si on nomme la communauté/quartier. Trade-off : ancrage affectif (B) vs universalité cross-culture (A). | Non | `../univers/vie-quotidienne/geographie.md` |
+| 17 | ~~**V1 minimaliste vs V2 comité pour 003-v2**~~ **TRANCHÉ 2026-05-08** (V2 comité retenue, canonisée 001) | — | — |

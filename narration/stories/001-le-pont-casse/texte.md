@@ -1,83 +1,106 @@
-# Texte — V1
+---
+numero: "001"
+slug: le-pont-casse
+titre: Le Pont Cassé
+statut: canon
+version_active: v1
+date_creation: 2026-05-02
+date_canonisation: 2026-05-08
+gatekeeper_passed: true
 
+editorial:
+  structure: Kishotenketsu
+  antagoniste: false
+  mots: 540
+  palier: P2
+  duree_lecture: 5min
+  patte: B+D+C
+
+personnages:
+  liste: [wex, raph, pierrot]
+  enneatypes: [7, 6]
+  enneatype_heros: null
+
+themes:
+  principal: promesse-du-titre-tenue
+  secondaires: [soin-collectif, signalisation-douce, traversee-attentive]
+
+univers:
+  magic_level: none
+  saison: printemps
+  meteo: ensoleille
+  moment: matinee
+
+arc:
+  rattachement: arc-1-objet-decor
+  fiche: arcs/arc-1-objet-decor/fiche.md
+
+writer_top1: kimi-k2.6
+rewrite_phase: comite-editorial (2 intégrations sur 5 idées)
 ---
 
-Le pont au-dessus du ruisseau était cassé depuis l'été. Quelqu'un avait arraché deux planches — ou peut-être que c'était l'eau, personne ne savait exactement. Ce qui était sûr, c'est qu'on ne pouvait plus traverser sans sauter.
+# Le pont cassé
 
-**Wex** avait traversé le premier, sans réfléchir, comme toujours. Un petit élan, les deux pieds dans l'herbe de l'autre côté, et il s'était retourné en riant.
+Le printemps avait mis de la mousse tendre sur les pierres du sentier. Wex courait devant. Ses baskets claquaient contre les cailloux. Clac. Clac. Clac. Derrière, Raph comptait les pissenlits en sautillant. Pierrot fermait la marche. Il regardait où il posait ses chaussures.
 
-"Facile ! Vous venez ?"
+Le pont apparaissait après le gros chêne. C'était un pont en bois avec une barrière des deux côtés. En dessous, le ruisseau chantait tout seul sur les galets.
 
-**Melki** s'était avancée jusqu'au bord. Elle avait regardé le trou. Deux planches manquaient, il y avait cinquante centimètres vides au-dessus d'un filet d'eau froide. Elle avait évalué la distance. Posé le pied sur la première planche encore solide. Et elle avait reculé.
+Wex posa le pied sur la première planche. Il s'arrêta net. Il pointa le doigt.
 
-"Il manque des vis. Ce côté-là tient pas bien."
+— Regardez. Il y a un trou.
 
-Wex haussa les épaules. "J'ai sauté et je suis pas mort."
+La deuxième planche après le milieu du pont était cassée. Un morceau de bois manquait, comme si on avait enlevé une pièce de puzzle. On voyait l'eau couler en dessous, rapide et claire.
 
-"T'as eu de la chance."
+Raph arriva en courant. Elle se pencha par-dessus la barrière.
 
-**Juju** regardait la scène sans rien dire, les bras croisés. Elle n'aimait pas les ponts. Elle n'aimait surtout pas les choses qui ne fonctionnaient plus comme elles devaient fonctionner — sans que personne fasse rien, sans que personne s'en occupe. Le pont était cassé depuis l'été. Depuis l'été, les gens enjambaient le trou, sautaient, reculaient, attendaient que quelqu'un d'autre règle le problème.
+— Une fenêtre ! On dirait une fenêtre sur le ruisseau ! Est-ce qu'on voit des poissons ? Moi je veux voir des poissons ! Et si on appelait par le trou ?
 
-Elle trouva ça insupportable.
+Elle mit ses mains en porte-voix.
 
-"On va chercher des planches," dit-elle.
+— Houlou !
 
-Wex se retourna, surpris. "Pourquoi ? On peut juste sauter."
+Pierrot posa sa main autour du poignet de Raph. Il ne serrait pas fort. Il serrait comme un bracelet.
 
-"Pas tout le monde."
+— Pas trop penchée. Si tu glisses, le bois est mouillé.
 
-C'était vrai. Wex n'avait pas pensé à ça — enfin, il l'avait pas vu, ou pas voulu voir. Il y avait la petite du bout de la rue qui venait parfois chercher ses parents par là. Elle avait six ans, des jambes courtes, et elle ne sauterait jamais ce trou sans tomber.
+Il s'agenouilla à son tour. Il toucha le bord de la planche cassée. Un morceau de bois pointait vers le haut comme une petite dent.
 
-"D'accord," dit Wex, parce que Juju avait l'air de vraiment vouloir le faire, et que chercher des planches dans le bois au-delà du ruisseau sonnait comme une petite aventure.
+Wex se mit à plat ventre. Il approcha son œil de l'ouverture.
 
-Melki, elle, ne dit rien. Elle nota mentalement : *Le bois derrière est communal. Les planches appartiennent peut-être à quelqu'un. Il faudra demander.*
+— L'eau est toute froide. Je vois des cailloux blancs. Il y en a un qui brille.
 
----
+— Moi je veux briller ! dit Raph.
 
-Ils revinrent avec deux branches épaisses que Juju avait cassées, et une vraie planche récupérée contre le muret d'une vieille remise abandonnée. Wex était le plus rapide — il courait partout, revenait, repartait, disparaissait dans les buissons et réapparaissait avec quelque chose d'inutile en annonçant *"j'ai trouvé ça !"* avec une énergie qui ne semblait jamais tomber.
+— Faut pas marcher dessus, dit Pierrot. Même pas une fois. Faut dire aux autres.
 
-La planche de la remise, c'était lui qui l'avait trouvée.
+Wex se releva. Il prit une grande inspiration.
 
-Elle venait de la remise de Monsieur Ferretti.
+— On met un panneau.
 
-Ils l'avaient posée sur le pont. Juju avait tapé dessus avec le talon pour tester. Melki avait vérifié les bords, froncé les sourcils, dit que ça irait mais qu'il fallait quand même prévenir quelqu'un pour mettre des vraies vis.
+— Avec du papier ? demanda Raph.
 
-Le lendemain, Monsieur Ferretti était venu voir le pont.
+— La pluie l'abîmerait, dit Pierrot.
 
-Il n'avait pas l'air content.
+Raph tourna sur elle-même en cherchant.
 
----
+— Un bâton ! Un gros bâton planté comme un drapeau ! Pour que tout le monde voie avant d'arriver !
 
-"C'est vous ?"
+Elle courut jusqu'au bord du ruisseau. Wex la suivit. Ils choisirent ensemble une branche de saule cassée par le vent, longue comme le bras de Pierrot. Raph arracha une fleur jaune, une grosse fleur de pissenlit toute ronde.
 
-Juju dit oui sans baisser les yeux. Melki dit oui aussi, et ajouta *"on pensait que la remise était abandonnée."* Ce n'était pas une excuse, juste un fait — elle ne faisait pas d'excuses quand elle n'avait pas eu l'intention de mal faire. Elle avait eu tort de ne pas vérifier. Elle l'acceptait.
+Pierrot tenait la branche bien droite. Wex enfonça la branche entre deux planches, juste avant le trou. La branche se tenait debout toute seule. Raph glissa la tige de la fleur dans l'écorce de la branche. La fleur jaune pendait comme un petit soleil.
 
-Wex, lui, dit : "Le pont était cassé depuis l'été ! Les petits pouvaient pas passer."
+— Même les tout petits verront, dit Pierrot.
 
-Monsieur Ferretti les regarda l'un après l'autre. Puis il regarda le pont. La planche était bien posée, droite, solide. Il tapota la planche avec sa canne.
+— Ceux qui courent vite aussi, dit Wex.
 
-"C'est du frêne, ça. C'est bien."
+Les trois enfants firent un pas en arrière. Le pont avait maintenant un drapeau jaune au-dessus de la planche cassée. Le vent souffla. La fleur dansait de gauche à droite.
 
-Il avait un silence particulier — pas le silence de quelqu'un en colère, plutôt celui de quelqu'un qui réfléchit à voix haute sans faire de bruit.
+Wex passa le premier. Il marcha sur la planche de gauche, en évitant le trou. Ses pas faisaient un bruit sec et joyeux. Raph passa sur la droite en faisant des bruits de cheval. Pierrot passa derrière. Il posa une main sur la barrière. De l'autre côté, ils s'arrêtèrent. Le ruisseau continuait son bruit sous le pont. Le drapeau jaune ondulait doucement dans l'air du printemps.
 
-"La remise était pas abandonnée. Mais j'avais plus les jambes pour aller vérifier les planches moi-même." Il s'arrêta. "Y'a des vis dans le cabanon. Derrière la porte. Si quelqu'un veut finir le travail."
+— Il est là pour longtemps ? demanda Raph.
 
----
+— Tant qu'il fait beau, dit Pierrot.
 
-Juju alla chercher les vis. Melki tint la planche. Wex courut chercher le marteau qu'il avait vu dans une boîte à outils qu'il n'aurait peut-être pas dû ouvrir — mais cette fois, il demanda avant de le prendre.
+— On peut en remettre une autre demain, dit Wex. Si le vent l'emporte.
 
-Le pont tint tout l'hiver.
-
-La petite du bout de la rue traversa dessus sans sauter, le lendemain même.
-
-Elle ne sut jamais pourquoi il était réparé.
-
----
-
-*Ce qu'on construit à trois ne ressemble à aucun de nous trois séparément. Wex y avait mis l'élan. Juju, l'intention. Melki, l'attention.*
-
-*Le pont, lui, ne savait rien de tout ça. Il portait juste les gens d'un bord à l'autre.*
-
----
-
-**Fin.**
+Ils reprirent le sentier. Derrière eux, le pont restait en bois, avec sa barrière, sa mousse, et sa fleur jaune qui disait attention.

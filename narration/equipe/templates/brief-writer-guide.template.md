@@ -19,7 +19,7 @@ usage: Brief enrichi pour le 1 writer GUIDÉ (Kimi K2.6 guidé). Inclut tout le 
 
 ## Section 2 — Annexe AXES 1-6 (palette guidée)
 
-> Ces 6 axes sont issus de 100+ relectures (6 lecteurs × 16 versions × 3 histoires) consolidées dans [`narration/stories/ultime_debrief.md`](../../stories/ultime_debrief.md). Ils décrivent ce qui a marché chez les enfants. **Choisis 2-3 axes à activer librement — pas plus, pas moins.**
+> Ces 6 axes sont issus de relectures issues de 001 (ex 003-v2) consolidées dans [`equipe/lecons-vivantes.md`](../lecons-vivantes.md) section "Axes narratifs". Ils décrivent ce qui a marché chez les enfants. **Choisis 2-3 axes à activer librement — pas plus, pas moins.**
 
 ---
 

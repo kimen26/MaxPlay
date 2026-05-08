@@ -113,6 +113,21 @@ Les critères 9 (distribution sensorielle) et 13 (épilogue italique) ont été 
 
 ---
 
+## Validations 2026-05-08
+
+### 003 Le Pont Cassé V2 — PASS complet
+
+**Date :** 2026-05-08 · **Version :** kimi-rewrite-v2.md · **Critères :** 24/24 ✅
+
+- Onomatopée « Clac. Clac. Clac. » intégrée (catalogue #28, pivot 🟢)
+- Casting changé vs pitch (Melki/Pierrot → Raph/Pierrot) — validé par Kimi (note justificative L82)
+- Arc 1 cohérent (bienveillance, micro-Ten sensoriel, Kishōtenketsu clean)
+- Zéro correction requise
+
+**Aucun pattern d'erreur détecté** — texte suit fidèlement la patte Papa Yann.
+
+---
+
 ## Liens
 
 - [`patte-papa-yann.md`](patte-papa-yann.md) — la patte de l'auteur (référence obligatoire)

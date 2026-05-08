@@ -6,6 +6,57 @@
 
 ---
 
+## 2026-05-08 — Canonisation 001 + suppression catalogue + restructuration base propre (SESSION 3 — FIN)
+
+**Objectif :** Papa Yann tranche les 4 questions ouvertes. Canoniser 001 définitivement, nettoyer la base, documenter les décisions PMO.
+
+**Fait :**
+- [x] **Validation Papa Yann étape 9 + 10** : panel 6 lecteurs re-relecture ✅ (6×✅ + 2 corrections légères appliquées et intégrées dans texte.md). Nouvelle étape 11 "Canon" formalisée.
+- [x] **Suppression définitive** : rm -rf ancien 001, 002, 004, 003-la-confidence, series/, ultime_debrief.md, ultime_relecture.md, SYNTHESE-2026-05-06.md (décision Papa Yann exécutée)
+- [x] **Renommage** : 003-le-pont-casse-v2 → 001-le-pont-casse (numérotation continue, base propre). Dossier interne nettoyé (versions-writers, lecteurs-temoins, rewrite, selection, synthese-lecteurs, gatekeeper-verdict, relecture-rewrite supprimés de commit, mais présents _archive/). Conservé : README (frontmatter, version_active = v1), kanban, pitch, plan-histoire, briefs/, texte.md (canon), synthese-finale.md, _archive/.
+- [x] **INDEX stories** mis à jour : 1 seule histoire canon (001). Refs vers supprimées nettoyées.
+- [x] **Patterns 001 archivés** dans lecons-vivantes (P1-P7 confirmés sur 001, G1-G6 pièges documentés).
+- [x] **Décisions PMO enregistrées** : 4 décisions Papa Yann finales → decisions.md avec raison + impact.
+
+**Décisions prises (Papa Yann)** :
+1. **Étape 9 panel 6 OK** — validation ✅ rewrite kimi-v2 par 6 lecteurs, 2 corrections appliquées et intégrées
+2. **Suppression pure** — rm -rf ancien 001, 002, 004, 003-la-confidence, series/, fiches archive
+3. **Renommage 003-v2 → 001** — réindex numérotation (prochaine = 005), base propre pour PROCESS 11 étapes stable
+4. **Brainstorm prochains sujets** — différé à session suivante (user cuit)
+
+**État au reboot :**
+- **Bilan 001 FINAL** : 11 étapes complètes ✅, 8 writers, 6 témoins, 1 rewrite (kimi, v2 comité), GateKeeper PASS 24/24, panel 6 re-relecture ✅. Canon 540 mots. Patterns P1-P7 + G1-G6 migrés vers equipe/lecons-vivantes.md.
+- **Backlog** : TEST-PROCESS-001 et TEST-PROCESS-003 à clore. ARCHI-006 (PMO procédure) à formalisé (Haiku peut le faire).
+- **Structure** : 001-le-pont-casse/ seule histoire déployée. axes-histoires-en-stock.md conservé. _gabarit/ pour futures histoires (005+). Prochaine histoire 005 (numérotation continue).
+- **SLA** : respect parfait (toutes validations Papa Yann < 3 jours). Pas de bloqués en attente.
+- **Prochaine session** : brainstorm 005 (sujet + casting + brief Papa Yann), lancer étape 1 (pitch).
+
+---
+
+## 2026-05-08 — Lancement rewrite Kimi v1 minimaliste + v2 comité éditorial (post-reboot MCP)
+
+**Objectif :** Étape 7 (rewrite) — auteur top-1 Kimi produit 2 versions (minimaliste + comité éditorial) pour étape 9 comparaison.
+
+**Fait :**
+- [x] kimi-rewrite-v1.md : minimaliste, 1 seule modif (« se tint » → « se tenait »), note d'intention concise, ~535 mots
+- [x] kimi-rewrite-v2.md : comité éditorial, 2 intégrations sur 5 proposées (Clac additif + bracelet), 3 écartées avec raisons (écaille ralentirait, au revoir redondant, bras moulin dénature Wex)
+- [x] kanban.md 003-v2 mis à jour : étape 7 = ✅ TERMINÉ, 2 livrables en attente étape 9 (panel 6 lecteurs)
+- [x] lecons-vivantes.md enrichi : pattern P7 ajouté (rewrite comité = sélection légère, pas injonction)
+
+**Décisions implicites :**
+- **Philosophie rewrite double** : v1 minimaliste (tutoriel rewrite fidèle) + v2 comité (intégration légère) coexistent → étape 9 tranché empiriquement par panel 6
+- **Pattern P7 figé** : rewrite top-1 ne saute que 2-3 idées comité max par session, arguments obligatoires pour chaque refus
+
+**État au reboot :**
+- Étape 7 livrée ✅ (kimi-rewrite-v1.md + kimi-rewrite-v2.md)
+- Étape 8 (GateKeeper) → à lancer quand Directeur signale prêt
+- Étape 9 (Re-relecture, panel 6) → coordonner relecture parallèle 2 versions, synthèse avant étape 10
+- Kanban exact, briefs itérés 3×, writers 10 (4 LLM × 2 runs + Claude × 2), lecteurs 6, rewrite 2 versions
+- SLA : Directeur peut lancer étape 8 GateKeeper dès maintenant (pas d'attente auteur)
+- Question ouverte : v1 seule canon vs v2 seule canon vs les deux relues (étape 9 arbitre)
+
+---
+
 ## 2026-05-08 — Refonte process 9→11 étapes + procédure PMO
 
 **Objectif :** Formaliser la procédure PMO (classification input, routing, remise main) et valider les nouvelles étapes process refondues.

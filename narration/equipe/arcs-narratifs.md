@@ -49,7 +49,7 @@ Un **arc narratif** = **suite de 3 à 7 histoires** (typiquement 3, 5 ou 7) lié
 
 **Couverture casting** : 8/9 compagnons (Nono, Polo, Madie, Raph, Lulu, Mimi, Pierrot, Melki, Juju) + Wex circule en témoin. Manque : Pierrot apparaît en secondaire, à confirmer.
 
-**Source** : `../archive/inputs-historiques/serie-parole-briefs.md` (archivé) · `../stories/series/001-la-parole.md`.
+**Source** : `../arcs/arc-2-parole/fiche.md` (en cours, 1/5 canon). Voir aussi `../stories/axes-histoires-en-stock.md` (pool d'idées pour arc 2).
 
 ---
 
@@ -101,7 +101,7 @@ Une histoire **n'est pas obligée** d'appartenir à un arc.
 | **Phase 6 — GateKeeper** | Vérifie que les règles transversales sont respectées (pas d'adulte qui résout, etc.) |
 | **Phase 7 — Canon** | L'histoire est tagguée avec son arc dans `stories/INDEX.md` |
 
-→ Voir `ORGANIGRAMME.md` pour les phases complètes.
+→ Voir `ORGANIGRAMME.md` pour les phases complètes. Note : depuis refonte 2026-05-08, le PROCESS comporte 11 étapes (0 Idée → 10 Canon), cf. `PROCESS.md`.
 
 ---
 
@@ -110,14 +110,16 @@ Une histoire **n'est pas obligée** d'appartenir à un arc.
 1. **Conseiller détecte** un axe émergent (3+ pitches qui partagent un fil rouge).
 2. **Brief auteur** : le Conseiller formule l'axe en une phrase + propose 3-5 pitches alignés.
 3. **Validation auteur + Directeur** : axe validé, arc ouvert.
-4. **Création** : un fichier `stories/series/NNN-<slug>.md` est créé avec axe, règles transversales, casting visé.
-5. **Tracking** : l'arc apparaît dans la table « Arcs en stock » ci-dessus, puis se déplace vers une section « Arcs en cours ».
+4. **Création** : un fichier `arcs/arc-N-<slug>/fiche.md` est créé avec axe, règles transversales, casting visé (cf. `../arcs/arc-1-objet-decor/` + `../arcs/arc-2-parole/`).
+5. **Tracking** : l'arc apparaît dans `../arcs/INDEX.md` (catalogue officiel des arcs) et dans la table « Arcs en stock » ci-dessus.
 
 ---
 
 ## Pour aller plus loin
 
-- `../stories/INDEX.md` — table des séries actuelles
+- `../arcs/INDEX.md` — table des arcs actuels (canon)
+- `../stories/INDEX.md` — table des histoires (canon + en cours)
+- `../stories/axes-histoires-en-stock.md` — pool d'idées futures
 - `../stories/series/001-la-parole.md` — fichier de l'arc « La Parole »
 - `../pmo/roadmap.md` — vision de la structure des saisons
 - `memoire-conseiller.md` — patterns transversaux et arcs en gestation

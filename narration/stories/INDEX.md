@@ -1,25 +1,38 @@
 # Index des Histoires
 
-> Auto-généré par narration-archiviste. Dernière mise à jour : 2026-04-29
+> Maintenu manuellement à chaque canonisation. Dernière mise à jour : 2026-05-08
+
+---
+
+## Histoires canonisées
 
 | # | Titre | Statut | Mots | Personnages | Thème principal |
 |---|-------|--------|------|-------------|-----------------|
-| 001 | [Le Pont Cassé](001-le-pont-casse/README.md) | canon V1 ⚠ V2 correction en cours + V2 from-scratch test | 750 | wex, melki, juju | collaboration |
-| 002 | [Le Rire qui reste](002-le-rire-qui-reste/README.md) | canon V1 ⚠ V2 nécessaire | 489 | wex, nono, polo (un à changer) | consequences-de-la-parole |
-| 003 | [Le Pont Cassé V2 from scratch (TEST-PROCESS)](003-le-pont-casse-v2/README.md) | pitch — test PROCESS militaire 9 étapes complet | 0 | TBD | collaboration (test) |
-
-> **Suppression du 2026-05-02** (Papa Yann) : les histoires 003 *La Confidence*, 004 *Cartable-à-trou*, 005 *Le Mardi*, 006 *Sept à rien* ont été **supprimées définitivement**. Aucune n'avait été validée par l'auteur. Le slot **003 sera réutilisé** pour la version from-scratch de la 001.
+| 001 | [Le Pont Cassé](001-le-pont-casse/README.md) | canon (refonte 2026-05-08, ex-003-le-pont-casse-v2) | ~540 | Wex, Raph, Pierrot | promesse du titre tenue · soin collectif sans réparation |
 
 ---
 
-## Séries
+## Réinitialisation 2026-05-08 (Papa Yann)
 
-| # | Titre | Histoires | Thème fil rouge |
-|---|-------|-----------|-----------------|
-| 001 | [La Parole](series/001-la-parole.md) | 002 (V2 nécessaire — seule histoire restante de l'arc 2 après suppression 003-006) | Ce qu'on dit (ou ne dit pas) a des conséquences réelles |
+Refonte complète du catalogue narratif. Décisions :
+
+- **001 nouveau** = ex-`003-le-pont-casse-v2` (kimi-rewrite-v2 canonisé). Auteur top 1 = Kimi K2.
+- **Suppressions définitives** (rm -rf) : ancien 001 (canon V1 Monsieur Ferretti + V2 correction), 002 (Le Rire qui reste), 004 (Pont Cassé Températures — test variance), 003-la-confidence (workshop abandonné), `series/`, `ultime_debrief.md`, `ultime_relecture.md`, `SYNTHESE-2026-05-06.md`.
+- **Conservé** : `_gabarit/` (modèle), `axes-histoires-en-stock.md` (stock d'idées pour brainstorm 005+).
+- **Justification** : base propre pour repartir avec la BONNE structure (PROCESS 11 étapes, panel 20 lecteurs, casting writers 10, lecons-vivantes vivant).
+
+Les patterns observés sur les histoires supprimées sont consolidés dans [`equipe/lecons-vivantes.md`](../equipe/lecons-vivantes.md) (P1-P7, G1-G6, axes 1-6).
 
 ---
 
-## Axes en stock
+## Stock pour prochaines histoires
 
-Voir [axes-histoires-en-stock.md](axes-histoires-en-stock.md)
+Voir [axes-histoires-en-stock.md](axes-histoires-en-stock.md) — 10 unitaires + 5 transversaux.
+
+Prochaine histoire = **005** (numérotation continue). Brainstorm sujet/perso à venir.
+
+---
+
+## Workflow par histoire
+
+Voir [`equipe/PROCESS.md`](../equipe/PROCESS.md) — 11 étapes (0 à 10).

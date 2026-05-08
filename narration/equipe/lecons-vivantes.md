@@ -30,36 +30,42 @@ remplace: ancien `stories/ultime_debrief.md` (figé au 2026-05-05) — désormai
 
 ### P1 — Ouverture rapide (≤ 2 phrases de contexte)
 
-**Origine** : kimi-run1 (003), claude-run1 (003) en haut du classement.
-**Anti-leçon** : grok-run1 (003 + 004) : 3 phrases de saules/soleil/feuilles → décrochage 6/6 lecteurs.
+**Origine** : kimi-run1 (001), claude-run1 (001) en haut du classement.
+**Anti-leçon** : grok-run1 (001) : 3 phrases de saules/soleil/feuilles → décrochage 6/6 lecteurs.
 **Règle** : maximum 2 phrases avant l'action ou l'arrivée du trio.
 
 ### P2 — Geste physique avant réplique
 
-**Origine** : kimi-run2 (003) « Pierrot garde sa main autour du poignet de Raph […] comme un bracelet ». Cité top par 3 lecteurs.
+**Origine** : kimi-run2 (001) « Pierrot garde sa main autour du poignet de Raph […] comme un bracelet ». Cité top par 3 lecteurs.
 **Règle** : les enfants **font** avant de **dire**. S'allonger, ramper, tracer, cueillir. Le mouvement crée la voix.
 
 ### P3 — Promesse du titre tenue
 
-**Origine** : kimi-run1 (003) drapeau-pissenlit ne répare pas le pont, le marque. Cité par 5/6 lecteurs.
+**Origine** : kimi-run1 (001) drapeau-pissenlit ne répare pas le pont, le marque. Cité par 5/6 lecteurs.
 **Règle** : l'objet du titre reste au centre. Jamais évacué, jamais réparé/résolu de force.
 
 ### P4 — Fin = rituel physique ou image, pas explication
 
-**Origine** : kimi-run2 (003) « Au revoir fenêtre / À plus tard » répété spontanément par 2 lecteurs.
-**Anti-leçon** : grok-run1 « gardant son secret printanier » → enfants attendent une suite qui ne vient pas.
+**Origine** : kimi-run2 (001) « Au revoir fenêtre / À plus tard » répété spontanément par 2 lecteurs.
+**Anti-leçon** : grok-run1 (001) « gardant son secret printanier » → enfants attendent une suite qui ne vient pas.
 **Règle** : la fin est un **geste, un objet planté, un bruit, une image qui tourne**. L'enfant doit pouvoir *refaire* ce qu'il a entendu.
 
 ### P5 — Onomatopée : 0 ou 1, jamais en cascade
 
-**Origine** : kimi-run2 « Clac. Clac. Clac. » en ouverture seule = métronome efficace.
-**Anti-leçon** : grok-run2 « plop-plop glou-glou clap-clap-clap cric boum » = enfants perdus.
+**Origine** : kimi-run2 (001) « Clac. Clac. Clac. » en ouverture seule = métronome efficace.
+**Anti-leçon** : grok-run2 (001) « plop-plop glou-glou clap-clap-clap cric boum » = enfants perdus.
 **Règle** : voir [`onomatopees-cross-culture.md`](onomatopees-cross-culture.md). Test à voix haute obligatoire.
 
 ### P6 — 3 voix distinctes lisibles
 
-**Origine** : kimi-run1 (003) Wex pose / Raph explose / Pierrot protège. Lisibilité immédiate.
+**Origine** : kimi-run1 (001) Wex pose / Raph explose / Pierrot protège. Lisibilité immédiate.
 **Règle** : chaque enfant du trio a un mode d'action différent (constat / question / corps). Pas de hiérarchie.
+
+### P7 — Rewrite comité éditorial : sélection légère sur idées externes
+
+**Origine** : kimi-rewrite-v2 (001) — comité transmet 5 idées (Clac, bracelet, écaille, au revoir, bras moulin), writer accepte 2/5 avec justification argumentée.
+**Anti-leçon** : claude-rewrite-v1 (001) — tenter d'intégrer 4/5 d'un coup + basculer de temps verbal → régression syntaxique.
+**Règle** : rewrite top-1 ne saute que 2-3 idées max par session, pas 5 à la fois. Brief comité = palette, pas injonction. Argumenter chaque refus dans la note.
 
 ---
 
@@ -148,8 +154,8 @@ claude-rewrite-v1 (003) : kimi-run2 au présent a contaminé tout le rewrite, ki
 
 | Date | Histoire canonisée | Nouveautés ajoutées | Révisions |
 |------|--------------------|---------------------|-----------|
-| 2026-05-08 | (création) | P1-P6, G1-G6, axes 1-6, signal genre, O1-O3 | Initialisation depuis ex-`ultime_debrief.md` (figé 2026-05-05) + ex-`SYNTHESE-2026-05-06.md` |
-| (future) | 003 canon | enrichissement post-canonisation | — |
+| 2026-05-08 | (création) | P1-P6, G1-G6, axes 1-6, signal genre, O1-O3 | Initialisation |
+| 2026-05-08 | **001 Le Pont Cassé (canon)** ex-003-v2 | P7 ajouté (rewrite comité éditorial, 2-3 idées max) | Refonte complète catalogue : ancien 001, 002, 004 supprimés. ultime_debrief.md + SYNTHESE-2026-05-06.md supprimés (info migrée ici) |
 
 ---
 
@@ -160,4 +166,4 @@ claude-rewrite-v1 (003) : kimi-run2 au présent a contaminé tout le rewrite, ki
 - Process : [`PROCESS.md`](PROCESS.md)
 - Profils lecteurs (panel 20) : [`profils-lecteurs.md`](profils-lecteurs.md)
 - Patte narrative : [`patte-narrative-maxplay.md`](patte-narrative-maxplay.md)
-- Photos figées (à archiver progressivement) : [`../stories/ultime_debrief.md`](../stories/ultime_debrief.md), [`../stories/SYNTHESE-2026-05-06.md`](../stories/SYNTHESE-2026-05-06.md)
+- Archive : anciennes photos figées supprimées 2026-05-08 (`ultime_debrief.md`, `SYNTHESE-2026-05-06.md`). Patterns consolidés dans ce document vivant.

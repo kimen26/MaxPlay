@@ -198,4 +198,4 @@ Quand Papa Yann dit « on n'a pas besoin de mentionner X », **on n'écrit RIEN 
 - [`memoire-conseiller.md`](memoire-conseiller.md) — mémoire Conseiller (patterns d'arc, retours validés)
 - [`memoire-dir.md`](memoire-dir.md) — mémoire Directeur (sélections, ce qui a fonctionné)
 - [`templates/brief-histoire.template.md`](templates/brief-histoire.template.md) — brief writer, doit citer cette patte
-- Sources : `stories/001-le-pont-casse/lecteurs-temoins/papa-yann-relecture-2026-04-30.md` · `stories/002-.../lecteurs-temoins/papa-yann-relecture-2026-04-30.md` · `stories/003-.../lecteurs-temoins/papa-yann-relecture-2026-04-30.md`
+- Sources : `stories/001-le-pont-casse/lecteurs-temoins/papa-yann-relecture-2026-04-30.md` (relecture V1), validée + intégrée en étape 7 rewrite v2 comité (2026-05-08). Anciennes histoires 002, 003 supprimées 2026-05-08 (patterns consolidés dans `lecons-vivantes.md`).

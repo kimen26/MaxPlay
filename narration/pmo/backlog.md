@@ -11,10 +11,8 @@
 
 | Statut | ID | Titre | Priorité | Assigné | Prochaine action |
 |--------|-----|-------|----------|---------|------------------|
-| 🟡 | TEST-PROCESS-001 | 001 V2 chemin CORRECTION — Directeur applique retours Papa Yann | **Haute (test process)** | narration (Directeur) | Directeur seul applique retours Papa Yann (`001-le-pont-casse/lecteurs-temoins/papa-yann-relecture-2026-04-30.md`) sur V1 → `stories/001-le-pont-casse/rewrite/v2-correction.md`. Pas de PROCESS complet — application correctives ponctuelles. |
-| 🟡 | TEST-PROCESS-003 | 003-le-pont-casse-v2 — PROCESS militaire 9 étapes complet | **Haute (test process)** | narration-conseiller (étape 1) + équipe | Test parallèle du PROCESS complet 9 étapes. Pitch en binôme Conseiller + Papa Yann. Validations Papa Yann obligatoires après étape 1 (pitch) ET étape 3 (briefs writers). Dossier : `stories/003-le-pont-casse-v2/`. |
-| 🟡 | STORY-002-V2 | Le Rire qui reste — V2 | Pause arc 2 | Conseiller | Casting Nono+Polo à changer (phonétique), cohérence physique, fluidité orale, distribution sensorielle. Retours : `stories/002-le-rire-qui-reste/lecteurs-temoins/papa-yann-relecture-2026-04-30.md` |
-| ✅ | STORY-003-006 | La Confidence + Cartable + Mardi + Sept-à-rien — **SUPPRIMÉES** 2026-05-02 | — | — | Aucune validée par Papa Yann. Suppression pure. **Slot 003 réutilisé** pour le test from-scratch. Idée *concours de dessins en lieu public bienveillant* conservée pour le futur (arc 3 possible). |
+| 🟡 | ARCHI-006 | Formaliser procédure PMO dans `narration-pmo.md` (agent Haiku) | Normale | narration-pmo | Créer doc agent reflet des décisions 2026-05-08 : classification input (6 catégories), routing, checklist remise main. Cible : PMO auto-guidé sans attendre instructions. |
+| 🟡 | STORY-005 | Brainstorm prochaine histoire (sujet + casting + brief Papa Yann) | **Haute** | Auteur + Conseiller | Papa Yann lance sujet + casting à partir des axes-en-stock. Conseiller et Directeur produisent brief Papa Yann. Étape 1 (pitch) prête à lancer. Session suivante. |
 
 ---
 
@@ -40,6 +38,9 @@
 
 | Statut | ID | Titre | Date |
 |--------|-----|-------|------|
+| ✅ | TEST-PROCESS-001 | 001 V2 chemin CORRECTION (test parallèle abandonné) | 2026-05-08 |
+| ✅ | TEST-PROCESS-003 | 003-le-pont-casse-v2 — PROCESS 11 étapes complet (canonisé 001) | 2026-05-08 |
+| ✅ | STORY-002-V2 | Le Rire qui reste — V2 (en pause arc 2, diffère à S2) | 2026-05-08 |
 | ✅ | STORY-002 | Le Rire qui reste — canon (489 mots · GateKeeper PASS) | 2026-04-28 |
 | ✅ | ARCHI-004 | Refonte équipe writers — 5 writers + briefs stateless + agents | 2026-04-28 |
 | ✅ | ARCHI-005 | Refonte workflow narratif — 4 writers + lecteurs témoins + GateKeeper + Conseiller/Architecte | 2026-04-28 |

@@ -1,5 +1,5 @@
 window.PATTERNS = {
-  "version": "2.2",
+  "version": "2.8",
   "comment": "Patterns reutilisables - chaque entree VALIDEE en methode militaire (render -> regarde -> corrige). validated_by_user signifie confirmation explicite du user. UN SEUL STYLE de Sidewalk par pattern - ne JAMAIS melanger Sidewalk_1, _2, _3 etc dans le meme rendu.",
   "route_verticale_5cols": {
     "title": "Route verticale 2 voies - REFERENCE",
@@ -67,6 +67,29 @@ window.PATTERNS = {
     "rendered": "tile-tools/recipes/test_parking_v4.png",
     "note": "PAS de transition sw_6/sw_2. Les marquages P (_45/_46) contiennent deja leur bordure blanche."
   },
+  "virage_gauche": {
+    "title": "Virage a GAUCHE - route 5 cols, DOUBLE arrondi (coin EXT _14 + coin INT _12)",
+    "size_min": "24x18",
+    "preview": "recipes/test_virage_gauche.png",
+    "code_example": "recipes/test_virage_gauche.py",
+    "validated_by_user": false,
+    "validation_date": "2026-05-08",
+    "tiles_required": [
+      "Asphalt_1_Variation_20 (asphalte plein)",
+      "Sidewalk_1_9 (trottoir plain)",
+      "Sidewalk_1_6 (sw_N : row=5 cols 0-8 - bord N branche OUEST jusqu'au coin EXT)",
+      "Sidewalk_1_8 (sw_E : col=9 rows 6-17 - bord E branche SUD)",
+      "Sidewalk_1_2 (sw_S : row=9 cols 0-4 - bord S branche OUEST jusqu'au coin INT)",
+      "Sidewalk_1_4 (sw_W : col=5 rows 10-17 - bord W branche SUD)",
+      "Sidewalk_1_14 (coin EXT NE - trottoir massif NE + arc descendant, en col=9 row=5)",
+      "Sidewalk_1_12 (coin INT SW - trottoir au SW + arc concave NE, en col=5 row=9)",
+      "Asphalt_1_Variation_15 (pointille V branche SUD col=7 rows 10-17)",
+      "Asphalt_1_Variation_14 (pointille H branche OUEST row=7 cols 0-4)"
+    ],
+    "layout": "24x18 : branche OUEST asphalte rows 6-8 cols 0-9 (10 cases) + branche SUD asphalte rows 6-17 cols 6-8 (12 cases). Pivot 3x3 cols 6-8 rows 6-8. Coin EXT NE = _14 (col=9 row=5). Coin INT SW = _12 (col=5 row=9).",
+    "rendered": "tile-tools/recipes/test_virage_gauche.png",
+    "note": "CARTOGRAPHIE 2026-05-08 : _14 (coin EXT) = trottoir massif NE + arc, _12 (coin INT) = petit trottoir au SW + arc concave. Confirme sur la planche themes_overview/2_City_Terrains qui montre l'assemblage exemple LimeZu. Avant j'utilisais _13 au coin INT par erreur - _13 est en fait une transition trottoir-asphalte horizontale, pas un coin de virage."
+  },
   "rond_point_complet": {
     "title": "Rond-point 14x12 - 4 quarts + ilot beige + panneau bleu giratoire",
     "size_min": "14x12",
@@ -119,96 +142,4 @@ window.PATTERNS = {
     "rendered": "tile-tools/recipes/test_passage_pieton_route_h.png",
     "note": "Variantes _30/_31 interchangeables. Les tiles font 2 cols x 1 row."
   },
-  "virage_ne": {
-    "title": "Virage route 90 degres - NE (route entre par SUD, sort par OUEST) - 2 voies",
-    "size_min": "11x11",
-    "preview": "recipes/test_virage_ne_v2.png",
-    "code_example": "recipes/test_virage_ne_v2.py",
-    "validated_by_user": true,
-    "validation_date": "2026-05-04",
-    "tiles_required": [
-      "Asphalt_1_Variation_20 (asphalte)",
-      "Sidewalk_1_9 (trottoir plain)",
-      "Sidewalk_1_4 (sw_W : bord ouest branche SUD)",
-      "Sidewalk_1_8 (sw_E : bord est branche SUD)",
-      "Sidewalk_1_6 (sw_N : bord nord branche OUEST)",
-      "Sidewalk_1_2 (sw_S : bord sud branche OUEST, 2 cols seulement)",
-      "Sidewalk_1_13 (arc trottoir convexe NW au coin INTERIEUR SW)",
-      "Asphalt_1_Variation_15 (pointille vertical - axe branche SUD)",
-      "Asphalt_1_Variation_14 (pointille horizontal - axe branche OUEST)",
-      "Asphalt_1_Variation_5 (ligne en L coin SW - au pivot)"
-    ],
-    "layout": "9x9 : branche SUD cols 2-6 rows 4-8 + branche OUEST rows 2-6 cols 0-6. Pivot 5x5 au NW.",
-    "rendered": "tile-tools/recipes/test_virage_ne_v2.png",
-    "note": "Coin EXTERIEUR NE = trottoir plain. Coin INTERIEUR SW = sw_13. Lignes pointillees (double-sens)."
-  },
-  "virage_nw": {
-    "title": "Virage route 90 degres - NW (route entre par SUD, sort par EST) - 2 voies",
-    "size_min": "11x11",
-    "preview": "recipes/test_virage_nw_v2.png",
-    "code_example": "recipes/test_virage_nw_v2.py",
-    "validated_by_user": true,
-    "validation_date": "2026-05-04",
-    "tiles_required": [
-      "Asphalt_1_Variation_20",
-      "Sidewalk_1_9",
-      "Sidewalk_1_4 (sw_W : col=1 rows 7-8 branche SUD)",
-      "Sidewalk_1_8 (sw_E : col=7 rows 4-8 branche SUD)",
-      "Sidewalk_1_6 (sw_N : row=1 cols 2-8 branche EST)",
-      "Sidewalk_1_2 (sw_S : row=7 cols 7-8 branche EST)",
-      "Sidewalk_1_14 (arc trottoir convexe NE au coin INTERIEUR SE)",
-      "Asphalt_1_Variation_15 (pointille V axe SUD)",
-      "Asphalt_1_Variation_14 (pointille H axe EST)",
-      "Asphalt_1_Variation_7 (ligne en L coin SE - au pivot)"
-    ],
-    "layout": "9x9 : branche SUD cols 2-6 rows 4-8 + branche EST rows 2-6 cols 2-8. Pivot 5x5 au NE.",
-    "rendered": "tile-tools/recipes/test_virage_nw_v2.png",
-    "note": "Coin EXTERIEUR NW = trottoir plain. Coin INTERIEUR SE = sw_14."
-  },
-  "virage_se": {
-    "title": "Virage route 90 degres - SE (route entre par NORD, sort par OUEST) - 2 voies",
-    "size_min": "11x11",
-    "preview": "recipes/test_virage_se_v2.png",
-    "code_example": "recipes/test_virage_se_v2.py",
-    "validated_by_user": true,
-    "validation_date": "2026-05-04",
-    "tiles_required": [
-      "Asphalt_1_Variation_20",
-      "Sidewalk_1_9",
-      "Sidewalk_1_4 (sw_W : col=1 rows 0-1 branche NORD)",
-      "Sidewalk_1_8 (sw_E : col=7 rows 0-4 branche NORD)",
-      "Sidewalk_1_6 (sw_N : row=1 cols 0-1 branche OUEST)",
-      "Sidewalk_1_2 (sw_S : row=7 cols 0-6 branche OUEST)",
-      "Sidewalk_1_12 (arc trottoir convexe SW au coin INTERIEUR NW)",
-      "Asphalt_1_Variation_15 (pointille V axe NORD)",
-      "Asphalt_1_Variation_14 (pointille H axe OUEST)",
-      "Asphalt_1_Variation_1 (ligne en L coin NW - au pivot)"
-    ],
-    "layout": "9x9 : branche NORD cols 2-6 rows 0-4 + branche OUEST rows 2-6 cols 0-6. Pivot 5x5 au SW.",
-    "rendered": "tile-tools/recipes/test_virage_se_v2.png",
-    "note": "Coin EXTERIEUR SE = trottoir plain. Coin INTERIEUR NW = sw_12."
-  },
-  "virage_sw": {
-    "title": "Virage route 90 degres - SW (route entre par NORD, sort par EST) - 2 voies",
-    "size_min": "11x11",
-    "preview": "recipes/test_virage_sw_v2.png",
-    "code_example": "recipes/test_virage_sw_v2.py",
-    "validated_by_user": true,
-    "validation_date": "2026-05-04",
-    "tiles_required": [
-      "Asphalt_1_Variation_20",
-      "Sidewalk_1_9",
-      "Sidewalk_1_4 (sw_W : col=1 rows 0-4 branche NORD)",
-      "Sidewalk_1_8 (sw_E : col=7 rows 0-1 branche NORD)",
-      "Sidewalk_1_6 (sw_N : row=1 cols 7-8 branche EST)",
-      "Sidewalk_1_2 (sw_S : row=7 cols 2-8 branche EST)",
-      "Sidewalk_1_11 (arc trottoir convexe SE au coin INTERIEUR NE)",
-      "Asphalt_1_Variation_15 (pointille V axe NORD)",
-      "Asphalt_1_Variation_14 (pointille H axe EST)",
-      "Asphalt_1_Variation_3 (ligne en L coin NE - au pivot)"
-    ],
-    "layout": "9x9 : branche NORD cols 2-6 rows 0-4 + branche EST rows 2-6 cols 2-8. Pivot 5x5 au SE.",
-    "rendered": "tile-tools/recipes/test_virage_sw_v2.png",
-    "note": "Coin EXTERIEUR SW = trottoir plain. Coin INTERIEUR NE = sw_11."
-  }
 };

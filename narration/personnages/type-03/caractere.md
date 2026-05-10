@@ -111,4 +111,33 @@ Polo est le personnage qui enseigne que la valeur n'est pas conditionnelle. Son 
 
 Les scènes les plus révélatrices de Polo sont celles où il rate — et où il découvre que le groupe l'aime quand même. Ces moments lui donnent accès à quelque chose de nouveau : l'authenticité.
 
+---
+
+## Gestes / attitudes / habitudes (mise en valeur arc 1)
+
+> **Source** : brainstorm Auteur + Conseiller (2026-05-10), ancré dans Chabreuil 2022 (`../theorie/enneagramme/chabreuil-synthese-complete.md`) et patterns lecteurs (`equipe/lecons-vivantes.md` P8).
+> **Usage** : matière à infuser dans les briefs writers et la conduite d'agents — type EST, type APPORTE, sans transformation forcée.
+
+### Geste signature
+Montrer fièrement (un dessin, une cabane, un saut). Se redresser quand on le regarde. Courir plus vite.
+
+### Attitude
+Énergique, charmeur, drôle. Adore les défis.
+
+### Habitude
+Faire bien parce qu'il aime le résultat. Entraîner les autres dans ce qu'il fait.
+
+### Ce qu'il apporte au groupe
+L'élan. Le groupe se met en mouvement parce que Polo embraye. Il rend les choses possibles parce qu'il les rend désirables.
+
+### Paires fortes (Chabreuil §6.2 + interactions.md)
+- Nono T9 (complémentaire forte — élan+paix, Polo entraîne, Nono ralentit)
+- Madie T4 (énergie inverse féconde — image+vérité)
+- Juju T8 (deux énergies fortes)
+
+### Garde-fou (à ne PAS faire)
+Ne pas le réduire à « il veut briller ». Polo épanoui partage l'élan, ne compétitionne pas contre les copains.
+
+---
+
 *Source théorique : Type 3 Chabreuil / Riso-Hudson. Aile 2, intégration vers 6, désintégration vers 9.*

@@ -55,8 +55,8 @@ narration/
 ## Travailler sur un personnage
 
 1. Lire `personnages/INDEX.md` (prénoms ⚠)
-2. Fiche détaillée : `enneagramme/personnages/type-XX-*.md`
-3. Scène émotionnelle : `enneagramme/situations/emotions-universelles.md`
+2. Fiche détaillée : `personnages/type-NN/` (caractere, voix, relations, sensibilité)
+3. Scène émotionnelle : `personnages/theorie/enneagramme/emotions-universelles.md`
 
 ## Travailler sur l'univers
 

@@ -114,4 +114,33 @@ Mimi est le personnage qui enseigne que prendre soin des autres est beau — mai
 
 Les scènes les plus touchantes de Mimi sont celles où quelqu'un prend soin d'elle — et où elle doit apprendre à accepter ce soin sans le rediriger vers l'autre.
 
+---
+
+## Gestes / attitudes / habitudes (mise en valeur arc 1)
+
+> **Source** : brainstorm Auteur + Conseiller (2026-05-10), ancré dans Chabreuil 2022 (`../theorie/enneagramme/chabreuil-synthese-complete.md`) et patterns lecteurs (`equipe/lecons-vivantes.md` P8).
+> **Usage** : matière à infuser dans les briefs writers et la conduite d'agents — type EST, type APPORTE, sans transformation forcée.
+
+### Geste signature
+Tendre quelque chose sans qu'on lui demande (mouchoir, moitié de gâteau, main).
+
+### Attitude
+Chaleureuse, attentive, présente. Sourire offert d'abord.
+
+### Habitude
+Repérer les détails humains que les autres manquent. « Il manque quelque chose à quelqu'un » et elle l'a vu avant.
+
+### Ce qu'elle apporte au groupe
+L'attention. Le soin. Quelqu'un est seul ? Mimi va vers lui. Quelqu'un n'a rien ? Mimi partage.
+
+### Paires fortes (Chabreuil §6.2 + interactions.md)
+- Nono T9 (affinité, soin doux mutuel)
+- Pierrot T6 (affinité, espace de sécurité)
+- Lulu T5 (chaleur+lucidité, traduction réciproque)
+
+### Garde-fou (à ne PAS faire)
+Ne pas la mettre en sacrifice ou « s'oublie pour les autres ». Mimi épanouie demande aussi pour elle quand il faut.
+
+---
+
 *Source théorique : Type 2 Chabreuil / Riso-Hudson. Aile 3, intégration vers 4, désintégration vers 8.*

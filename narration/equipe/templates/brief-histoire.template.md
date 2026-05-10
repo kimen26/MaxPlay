@@ -11,6 +11,8 @@ Une histoire complète de **400-700 mots** en français, à destination d'un enf
 
 **Tu écris seul.** Tu ne lis pas les autres versions des autres writers. Tu ne consultes pas le dossier `narration/`. Tu n'as que ce brief + le brief univers + le brief personnages.
 
+**Public 4-5 ans — boussole pédagogique intégrée** : Max et ses pairs sont à l'âge de la **théorie de l'esprit en construction**, de l'**attention conjointe**, du **jeu symbolique**. Capacités à respecter : pensées intérieures simples montrées par gestes/phrases courtes ; objet/lieu commun qui rassemble (focus partagé) ; gestes mimables comme entrées d'identification ; petits espaces (recoins, miniatures) plus captivants que grands paysages ; causalité immédiate (action → réaction) ; max 3 informations en parallèle ; textures/sons/lumières comptent plus que concepts. Source : `personnages/theorie/pedagogie-enfance/sources-pedagogie-enfance.md` (cheat-sheet dans le README).
+
 À la fin, tu produis :
 - **Le texte de l'histoire** (dans ce fichier ou dans `versions-writers/<ton-id>.md`)
 - **Une note d'intention créative** (dans `versions-writers/_notes-intention/<ton-id>.md`) : pourquoi ces choix créatifs, qu'est-ce que tu as voulu faire — pas technique, créatif
@@ -110,4 +112,9 @@ Avant de soumettre ta version :
 ---
 
 **Date :** YYYY-MM-DD
-**Source des règles globales :** `pmo/decisions.md` (2026-04-30)
+**Sources des règles globales :**
+- `pmo/decisions.md` (règles tranchées)
+- `equipe/patte-narrative-maxplay.md` (patte B+D+C)
+- `personnages/theorie/pedagogie-enfance/` (boussole 4-5 ans — invariants cognitifs)
+- `personnages/theorie/enneagramme/chabreuil-synthese-complete.md` (psychologie persos)
+- `cross-culture/onomatopees/catalogue-onomatopees.md` (0 ou 1 par histoire, choisie ici)

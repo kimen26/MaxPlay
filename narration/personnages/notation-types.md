@@ -64,12 +64,12 @@ Dans les textes, on écrit directement **Wex**. Il reste identique dans toutes l
 | Type9 / Titi9 | Noé | **Nono** |
 | *(hors-système)* | **Wex** | Wex (pas de diminutif — jamais traduit) |
 
-Pour les autres origines → [prénoms-par-origine.md](prénoms-par-origine.md).
+Pour les autres origines → [`../cross-culture/castings-nationaux/`](../cross-culture/castings-nationaux/INDEX.md) (FR figé ; jp/br/he/sw à construire) + catalogue prénoms qualifiés dans [`../cross-culture/prenoms/`](../cross-culture/prenoms/INDEX.md).
 
 ---
 
 ## À appliquer
 
 - Nouvelles histoires / orchestrations : utiliser `TypeN` / `TitiN` dans les brouillons, résoudre à un prénom au moment de la publication.
-- Fiches `enneagramme/personnages/type-XX-*.md` : header canonique = notation ; le prénom par casting est une donnée de surface.
+- Fiches `personnages/type-NN/` : invariant (caractère, voix, sensibilité, relations). L'identité culturelle (prénom, prononciation) vit dans `cross-culture/castings-nationaux/<pays>/type-NN.md`.
 - Specs de jeux : pas concerné (les mini-jeux n'utilisent pas les personnages de la narration pour l'instant).

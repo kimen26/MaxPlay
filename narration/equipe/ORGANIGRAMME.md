@@ -3,7 +3,21 @@
 > **Ce fichier est la référence technique complète.**
 > **Pour le déroulé humain étape par étape, voir `PROCESS.md`.**
 > Référence permanente. Mis à jour si l'équipe évolue.
-> Dernière mise à jour : 2026-04-29
+> Dernière mise à jour : 2026-05-11 (ajout narration-audio + narration-localisation + 10 writers + panel 20 lecteurs)
+
+---
+
+## Évolution post-refonte 2026-05-08
+
+Depuis le PROCESS militaire 11 étapes (2026-05-08) :
+- **Writers : 10** (et non 4) — 2 Claude + 3 Kimi libre + 1 Kimi guidé + 2 DeepSeek + 2 Grok
+- **Panel lecteurs : 20** (et non 4) — 10 profils × 2 tranches d'âge (3-5 et 6-7 ans). Note transitoire : panel 6 reste valide pour histoires <005.
+- **2 agents post-canon** : `narration-audio` (production TTS ElevenLabs) + `narration-localisation` (portage cross-country)
+- **Agents support** : `narration-science` (validation factuelle), `narration-sensibilite` (topics sensibles), `narration-archiviste` (cohérence docs), `narration-lecteur` (enfant solo simulé), `narration-lecteur-dyade` (parent-enfant simulé)
+
+Détails dans `PROCESS.md` (source canonique des 11 étapes).
+
+---
 
 ---
 
@@ -44,6 +58,25 @@ LECTEURS TÉMOINS (simulés, texte libre)
 
 GATEKEEPER [narration-gatekeeper · Haiku]
   └── Validation technique finale (prénoms, règles, longueur) → PASS ou corrections
+
+VOICE-DIRECTOR / AUDIO [narration-audio · Sonnet] (post-canon)
+  ├── Extrait les didascalies FR du texte canon
+  ├── Convertit en tags ElevenLabs v3
+  ├── Choisit narrateur H ou F selon ton de l'histoire
+  └── Produit fichiers audio dans stories/<NNN>/audio/
+
+LOCALISATION [narration-localisation · Sonnet] (post-canon)
+  ├── Porte un texte canon FR vers un autre casting national (jp, br, he, sw...)
+  ├── Résout les tokens {titi_N_pays} via lookup.yml
+  ├── Substitue décors locaux (cross-culture/lieux-locaux/, faune-flore/, saisons-climat/)
+  └── Trace dans stories/<NNN>/variantes-culturelles/<pays>/
+
+AGENTS SUPPORT (consultés au besoin)
+  ├── narration-science [Haiku]         — validation factuelle (biologie, physique, écologie)
+  ├── narration-sensibilite [Sonnet]    — détection topics conspirationnistes / polarisants
+  ├── narration-archiviste [Haiku]      — cohérence docs, index, structure
+  ├── narration-lecteur [Sonnet]        — enfant 4-6 ans solo simulé
+  └── narration-lecteur-dyade [Sonnet]  — parent + enfant simulé (dyade)
 ```
 
 ---

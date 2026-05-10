@@ -8,31 +8,31 @@
 
 | Couche | Paramètre |
 |--------|-----------|
-| **Articulation** | R légèrement roulé et étiré (doux, jamais théâtral) · voyelles tenues longuement sur les mots émotionnels |
-| **Prosodie** | Fins descendantes mélancoliques · arcs contemplatifs · soupirs audibles entre les phrases |
+| **Articulation** | R roulé doux · voyelles tenues, étirées sur les mots émotionnels |
+| **Prosodie** | Fins mélodiques légèrement tristes ou suspendues · montée puis chute douce |
 | **Rythme** | Lent · pauses dramatiques · silences chargés |
-| **Phonation** | Soupirs discrets · "oh" chuchoté · légère rauque sur les voyelles tenues · texture enfumée |
-
----
+| **Phonation** | Soupirs discrets · "oh" chuchoté · respiration audible |
 
 ## Paramètres ElevenLabs
 
 ```
-Stability: 0.40
-Similarity Boost: 0.75
+Stability: 0.50
+Similarity Boost: 0.70
 Style: 0.55
 Speaker Boost: false
 ```
 
----
+## Prompt ElevenLabs (F)
 
-## Prompt ElevenLabs — Femme (F)
+> Native French. Female, young child around 4 to 5 years old. Studio quality.
+> Persona: dreamy introspective child. Emotion: gentle, melancholic, intimate.
+> Soft rolled R, sustained vowels stretched on emotional words. Slow pacing with charged pauses and loaded silences. Sentence endings descend softly with a faint melodic sadness — like an unanswered question. Discreet sighs and whispered "oh" moments. Slightly breathy modal child timbre with inner depth — not sad, just deep.
 
-> Female narrator voice, early thirties, smoky mezzo-alto timbre with rich lower resonance and a touch of velvet rasp on sustained notes. Melancholic, deeply expressive, soulful delivery. Distinctive shared articulation: lingering sustained vowels (held longer than expected, almost mournful), slightly rolled and elongated "r" sound (soft and lingering, never theatrical), audible exhale-sighs between phrases, dropped soft endings on emotional moments. Prosody: melodic and sustained, dropping melancholic terminal cadences, slow contemplative arcs. Rhythm: slow with dramatic emotional pauses, never rushed. Texture: smoky and breathy, slight velvet rasp on long-held vowels, deeply present. Signature tic: audible exhaled sigh between phrases, occasional whispered "oh" or breath-syllable, lingering on emotionally weighted vowels. Conveys poetic melancholy and authentic feeling. Think: a woman reading her own diary by candlelight, fully inhabiting each memory.
+## Prompt ElevenLabs (M)
 
-## Prompt ElevenLabs — Homme (M)
-
-> Male narrator voice, mid-thirties, smoky low baritone timbre with rich chest resonance and a touch of velvet rasp on sustained notes. Melancholic, deeply expressive, soulful delivery. Distinctive shared articulation: lingering sustained vowels (held longer than expected, almost mournful), slightly rolled and elongated "r" sound (soft and lingering, never theatrical), audible exhale-sighs between phrases, dropped soft endings on emotional moments. Prosody: melodic and sustained, dropping melancholic terminal cadences, slow contemplative arcs. Rhythm: slow with dramatic emotional pauses, never rushed. Texture: smoky and breathy, slight velvet rasp on long-held vowels, deeply present. Signature tic: audible exhaled sigh between phrases, occasional whispered "oh" or breath-syllable, lingering on emotionally weighted vowels. Conveys poetic melancholy and authentic feeling. Think: a man reading his own diary by candlelight, fully inhabiting each memory.
+> Native French. Male, young child around 4 to 5 years old. Studio quality.
+> Persona: dreamy introspective child. Emotion: gentle, melancholic, intimate.
+> Soft rolled R, sustained vowels on words that matter. Slow pacing with charged silences. Sentence endings descend softly, faintly melancholic. Faintly audible breath. Slightly breathy child timbre, present and inward — not sad, just deep.
 
 ---
 

@@ -8,31 +8,31 @@
 
 | Couche | Paramètre |
 |--------|-----------|
-| **Articulation** | Consonnes alertes légèrement tendues · T et K avec arête d'attention · chaque mot activement choisi |
-| **Prosodie** | Légère ouverture interrogative en fin de phrase · upspeak discret qui invite confirmation |
-| **Rythme** | Variable · accélérations quand engagé · pondéré sur les faits importants |
-| **Phonation** | Légère tension d'alerte dans la gorge · lean-in vocal sur les détails importants |
-
----
+| **Articulation** | Consonnes alertes · légèrement vigilantes · plosives nettes |
+| **Prosodie** | Légère ouverture interrogative en fin de phrase · ton qui cherche confirmation |
+| **Rythme** | Variable · accélérations quand anxieux · ralentissements quand rassuré |
+| **Phonation** | Upspeak discret · légère élévation de fin de phrase sur les incertitudes |
 
 ## Paramètres ElevenLabs
 
 ```
 Stability: 0.65
-Similarity Boost: 0.80
+Similarity Boost: 0.70
 Style: 0.25
-Speaker Boost: false
+Speaker Boost: true
 ```
 
----
+## Prompt ElevenLabs (F)
 
-## Prompt ElevenLabs — Femme (F)
+> Native French. Female, young child around 4 to 5 years old. Studio quality.
+> Persona: alert loyal child. Emotion: vigilant, sincere, seeking reassurance.
+> Alert precise plosives. Slight interrogative upward lift at the end of uncertain phrases — checking for confirmation. Variable pacing: faster when anxious, slower when reassured. Sincere franc child timbre. Discreet upspeak on doubt, firm and grounded when reassured.
 
-> Female narrator voice, early thirties, clear alert mezzo timbre with slightly forward placement and a bright but not piercing quality. Engaged, watchful, emotionally invested delivery. Distinctive shared articulation: alert slightly tight-throated consonants, edge on "t" and "k" (sharp but not harsh, like attention crystallized), every word actively chosen. Subtle vocal lean-in on important details. Prosody: variable energy with characteristic slight upspeak (questioning lifts at phrase ends, as if checking the listener is following), mid-phrase pauses for verification. Rhythm: variable — faster when energized, careful and weighted on key facts. Texture: alert, slightly tight throat tension (active engagement, not anxiety), bright awareness. Signature tic: tiny upturning lift at clause ends inviting confirmation, audible attentiveness to the listener. Conveys vigilant warm loyalty and present engagement. Think: a trusted friend telling you a story she really wants you to understand correctly.
+## Prompt ElevenLabs (M)
 
-## Prompt ElevenLabs — Homme (M)
-
-> Male narrator voice, mid-thirties, clear alert baritone timbre with slightly forward placement and a bright but not piercing quality. Engaged, watchful, emotionally invested delivery. Distinctive shared articulation: alert slightly tight-throated consonants, edge on "t" and "k" (sharp but not harsh, like attention crystallized), every word actively chosen. Subtle vocal lean-in on important details. Prosody: variable energy with characteristic slight upspeak (questioning lifts at phrase ends, as if checking the listener is following), mid-phrase pauses for verification. Rhythm: variable — faster when energized, careful and weighted on key facts. Texture: alert, slightly tight throat tension (active engagement, not anxiety), bright awareness. Signature tic: tiny upturning lift at clause ends inviting confirmation, audible attentiveness to the listener. Conveys vigilant warm loyalty and present engagement. Think: a trusted friend telling you a story he really wants you to understand correctly.
+> Native French. Male, young child around 4 to 5 years old. Studio quality.
+> Persona: vigilant loyal child. Emotion: alert, sincere, dependable.
+> Alert clean plosives. Slight interrogative rise at end of uncertain sentences. Variable rhythm tied to emotional state — faster when worried, settled when calm. Clear franc child timbre. Sincere, never suspicious — just attentive.
 
 ---
 

@@ -1,7 +1,7 @@
-# Narration — Index agent
+# Narration — Index racine
 
 > **Charger ce fichier en premier.** Lire les sous-fichiers seulement si la tâche le nécessite.
-> Taille cible : 1 page. Ne pas allonger.
+> Architecture en **4 piliers narratifs + opérationnel** (refonte 2026-05-10).
 
 ---
 
@@ -9,137 +9,161 @@
 
 | Quoi | Statut |
 |------|--------|
-| Personnages | 9 définis (ennéagramme) — ✅ **casting V1 "Christ" validé** (Melki, Mimi, Polo, Madie, Lulu, Pierrot, Raph, Juju, Nono) + **Wex héros hors-système** (pas d'ennéatype). Notation `TypeN`/`TitiN × origine` pour écrire les textes. Casting V1 = 4F/6M (mise à jour 2026-05-05). |
-| Univers | post-Éveil, Printemps de l'Éveil — distillé dans `univers/` |
-| Direction | **monde sobre, merveilleux discret** (vu à travers enfant né dedans) |
-| Histoires | **001 Le Pont Cassé** (canon 540 mots, 2026-05-08). Brainstorm arc 1 en cours : **9 histoires (002-010)** co-construites. Direction Nono (T9) validée 2026-05-10. Casting + gestes + leçons enregistrés. Arc 2 (Parole) en pause. |
-| Nom univers | **non tranché** → `univers/meta/nom-candidats.md` |
+| **Casting V1** | ✅ figé 2026-04-24 (4F/5M+Wex) — Wex + Melki/Mimi/Polo/**Madie**/Lulu/Pierrot/Raph/Juju/Nono |
+| **Univers** | post-Éveil, Printemps de l'Éveil — distillé dans `univers/` |
+| **Direction narrative** | monde sobre, merveilleux discret (vu à travers l'enfant né dedans) · patte B+D+C (Kishōtenketsu + tranche de vie + cycle) |
+| **Histoires** | 001 *Le Pont Cassé* (canon 540 mots, 2026-05-08). Brainstorm arc 1 en cours (002-010). Direction Nono validée. Arc 2 (Parole) en pause. |
+| **Nom univers** | non tranché — voir [`univers/meta/nom-candidats.md`](univers/meta/nom-candidats.md) |
 
 ---
 
-## Carte des fichiers
+## Architecture
 
-### Racine
-| Fichier | Rôle |
-|---------|------|
-| [README.md](README.md) | Vue projet pour humain |
-| [INBOX.md](INBOX.md) | **Dump brut** — hook commit auto sur modification |
+```
+narration/
+├── personnages/     ← Pilier 1 : qui sont les persos (+ théorie sur l'humain)
+├── univers/         ← Pilier 2 : le monde où ils vivent
+├── cross-culture/   ← Pilier 3 : variantes par culture (prénoms, onomatopées, lieux, faune, coutumes, saisons climat)
+├── saisons/         ← Pilier 4 : plan éditorial (saison → arc → stories)
+├── stories/         ← contenu produit
+├── equipe/, pmo/, scripts/, archive/, memory/   ← opérationnel
+└── README.md, INBOX.md, INDEX.md
+```
 
-### Personnages
+---
+
+## Pilier 1 — Personnages
+
 | Fichier | Quand le lire |
-|---------|--------------|
-| [personnages/INDEX.md](personnages/INDEX.md) | **Toujours — avant d'écrire un perso** (casting V1 "Christ" validé, Wex hors-système) |
-| [personnages/notation-types.md](personnages/notation-types.md) | **Convention d'écriture `TypeN` / `TitiN × origine`** — à utiliser dans toutes les histoires et orchestrations |
-| [personnages/prénoms-candidats.md](personnages/prénoms-candidats.md) | V1 "Christ" figée + prénoms écartés par raison |
-| [personnages/prénoms-par-origine.md](personnages/prénoms-par-origine.md) | Matrice cross-country (Wex hors-système + 9 copains variables) |
-| [enneagramme/personnages/](enneagramme/personnages/) | Fiches détaillées par type |
-| [enneagramme/situations/emotions-universelles.md](enneagramme/situations/emotions-universelles.md) | Pour une réaction émotionnelle précise (9×9) |
-| [enneagramme/ressources/guide-auteur.md](enneagramme/ressources/guide-auteur.md) | Pour vérifier la cohérence d'une scène |
-| [enneagramme/ressources/chabreuil-synthese-complete.md](enneagramme/ressources/chabreuil-synthese-complete.md) | **Synthèse exhaustive Chabreuil** — analyse par type (traits, peurs, motivations, mécanismes). Réf Conseiller/Auteur lors des briefs. |
+|---------|---------------|
+| [`personnages/INDEX.md`](personnages/INDEX.md) | **Toujours — avant d'écrire un perso** (casting V1 figé) |
+| [`personnages/notation-types.md`](personnages/notation-types.md) | Convention `TypeN/TitiN @origine` dans les textes |
+| [`personnages/lookup.yml`](personnages/lookup.yml) | Résolveur token → prénom (toutes cultures) |
+| [`personnages/casting-mapping.md`](personnages/casting-mapping.md) | Pont théorie ↔ casting V1 |
+| [`personnages/type-NN/`](personnages/) | 9 fiches incarnées (caractere, voix, relations, sensibilite) |
+| [`personnages/wex/`](personnages/wex/) | Fiche Wex (hors-système, invariant cross-culture) |
+| [`personnages/theorie/enneagramme/`](personnages/theorie/enneagramme/README.md) | Théorie ennéagramme (Chabreuil, guide auteur, interactions 9×9, émotions 9×9) |
+| [`personnages/theorie/pedagogie-enfance/`](personnages/theorie/pedagogie-enfance/README.md) | **Boussole pédagogique 4-5 ans** (à consulter avant brainstorm/plan/brief) |
 
-### Arcs narratifs
-| Fichier | Quand le lire |
-|---------|--------------|
-| [arcs/INDEX.md](arcs/INDEX.md) | **Toujours — avant d'écrire une histoire** (pour connaître la qualité d'arc + cadre cyclique) |
-| [arcs/arc-1-objet-decor/fiche.md](arcs/arc-1-objet-decor/fiche.md) | Arc 1 (priorité actuelle) |
-| [arcs/arc-2-parole/fiche.md](arcs/arc-2-parole/fiche.md) | Arc 2 (en pause) |
-| [arcs/arc-3-univers-specifique/fiche.md](arcs/arc-3-univers-specifique/fiche.md) | Arc 3 (plus tard) |
-| [arcs/arc-4-pouvoirs-wex/fiche.md](arcs/arc-4-pouvoirs-wex/fiche.md) | Arc 4 (fil rouge) |
+---
 
-### Univers
+## Pilier 2 — Univers
+
 | Fichier | Contenu |
 |---------|---------|
-| [univers/INDEX.md](univers/INDEX.md) | **Carte — comment les pièces s'emboîtent** |
-| [univers/fondements/monde.md](univers/fondements/monde.md) | Événement fondateur, nature, société, rituels, spiritualité |
-| [univers/fondements/systemes.md](univers/fondements/systemes.md) | Conscience Créative, Totems Janus, Égregores, Gardiens |
-| [univers/fondements/grand-cycle.md](univers/fondements/grand-cycle.md) | Cycle 22k ans, Yugas adaptés, Ombre Éternelle |
-| [univers/fondements/vibration.md](univers/fondements/vibration.md) | Fréquence/amplitude, égrégores, lien Janus |
-| [univers/vie-quotidienne/compagnons.md](univers/vie-quotidienne/compagnons.md) | Animaux hybrides liés aux enfants |
-| [univers/meta/nom-candidats.md](univers/meta/nom-candidats.md) | 5 finalistes pour nommer le monde |
-| [univers/meta/directions-brainstorm.md](univers/meta/directions-brainstorm.md) | 6 directions non retenues |
-| [univers/baron.md](univers/baron.md) | ⚠ mis de côté (inspiration écartée) |
+| [`univers/INDEX.md`](univers/INDEX.md) | Carte du pilier |
+| [`univers/fondements/monde.md`](univers/fondements/monde.md) | Événement fondateur, nature, société, rituels, spiritualité |
+| [`univers/fondements/systemes.md`](univers/fondements/systemes.md) | Conscience Créative, Totems Janus, Égregores, Gardiens |
+| [`univers/fondements/grand-cycle.md`](univers/fondements/grand-cycle.md) | Cycle 22k ans, Yugas adaptés, Ombre Éternelle |
+| [`univers/fondements/vibration.md`](univers/fondements/vibration.md) | Fréquence/amplitude, égrégores, lien Janus |
+| [`univers/fondements/sensibilites.md`](univers/fondements/sensibilites.md) | Doctrine des 9 sensibilités |
+| [`univers/vie-quotidienne/`](univers/vie-quotidienne/) | Compagnons, école, géographie, transport, soin bioélectrique |
+| [`univers/meta/nom-candidats.md`](univers/meta/nom-candidats.md) | 5 finalistes pour nommer le monde |
 
-### Histoires
+---
+
+## Pilier 3 — Cross-culture
+
 | Fichier | Contenu |
 |---------|---------|
-| [stories/INDEX.md](stories/INDEX.md) | **Catalogue** (auto-généré) |
-| [stories/_gabarit/](stories/_gabarit/) | Dossier gabarit à copier pour une nouvelle histoire |
-| [stories/001-le-pont-casse/](stories/001-le-pont-casse/) | Canon complet (540 mots, 11 étapes PROCESS) |
-| [stories/brainstorm-arc-1.md](stories/brainstorm-arc-1.md) | **Fiche de session** — brainstorm arc 1 (002-010) en continu. Cadre, casting à valoriser, direction Nono validée, TODO. |
-| [stories/axes-histoires-en-stock.md](stories/axes-histoires-en-stock.md) | **Stock d'axes** — 10 unitaires + 5 transversaux |
-
-### Équipe éditoriale
-| Fichier | Rôle |
-|---------|------|
-| [equipe/INDEX.md](equipe/INDEX.md) | **Index complet de l'équipe — lire en premier** (carte des fichiers, arbre de décision agents) |
-| [equipe/PROCESS.md](equipe/PROCESS.md) | **Workflow militaire 11 étapes** (refonte 2026-05-08) — owners, I/O, critères PASS, reprise, SLA. Étape 9 nouvelle = re-relecture rewrite. |
-| [equipe/patte-narrative-maxplay.md](equipe/patte-narrative-maxplay.md) | **Patte B+D+C** : Kishōtenketsu noyau + tranche de vie voix + cycle d'arc. Outils E/A doux. F écartée. |
-| [equipe/lecons-vivantes.md](equipe/lecons-vivantes.md) | **Document vivant** des patterns narratifs MaxPlay (P1-P6, G1-G6, axes, signal genre). Mis à jour à chaque canonisation. |
-| [equipe/onomatopees-cross-culture.md](equipe/onomatopees-cross-culture.md) | **Catalogue 37 onomatopées** validées cross-langues. 0 ou 1 par histoire, choisie dans cette liste. |
-| [equipe/templates/](equipe/templates/) | 10 gabarits réutilisables : pitch, plan, briefs (univers/persos/histoire), **brief-writer-libre**, **brief-writer-guide**, sélection, kanban, synthèse |
-| [equipe/ORGANIGRAMME.md](equipe/ORGANIGRAMME.md) | **Qui fait quoi — lire avant d'appeler un agent** |
-| [equipe/cartographie-domaines.md](equipe/cartographie-domaines.md) | **Où va quelle info · qui décide · invariants** |
-| [equipe/profils-lecteurs.md](equipe/profils-lecteurs.md) | Profils lecteurs témoins : enfant 4-6 ans, parent (dyade), éditeur jeunesse (optionnel) |
-| [equipe/sources-sciences.md](equipe/sources-sciences.md) | Refs documentaires (C'est pas sorcier, La Vie...) |
-| [equipe/sources-sensibilite.md](equipe/sources-sensibilite.md) | Catalogue topics sensibles / conspirationnistes |
-| [equipe/sources-narratologie.md](equipe/sources-narratologie.md) | **Étude narratologique cross-culture** — paliers mots/âge, Kishōtenketsu, simulation incarnée, ToM, modèles cross-culture (Architecte / Writers) |
-| [equipe/sources-pedagogie-enfance.md](equipe/sources-pedagogie-enfance.md) | **8 insights pédagogie 4-7 ans cross-culture** — deepsearch 2026-05-10 (motricité, émotion, attention, langage, créativité) |
-| [equipe/voix-enneatypes.md](equipe/voix-enneatypes.md) | **Étude vocale par ennéatype** — 18 prompts ElevenLabs (F+M × 9 types), signature combinatoire, lexique articulatoire (réf agent voice-director EP-026) |
-| [equipe/memoire-conseiller.md](equipe/memoire-conseiller.md) | Mémoire Conseiller Narratif (arcs, saisons, feedback) |
-| [equipe/memoire-architecte.md](equipe/memoire-architecte.md) | Mémoire Architecte (plans, structures) |
-| [equipe/memoire-dir.md](equipe/memoire-dir.md) | Mémoire Directeur Éditorial |
-| [equipe/memoire-gatekeeper.md](equipe/memoire-gatekeeper.md) | Mémoire GateKeeper (erreurs récurrentes) |
-
-### PMO (gestion de projet)
-| Fichier | Rôle |
-|---------|------|
-| [pmo/INDEX.md](pmo/INDEX.md) | **État instantané + règles de reprise après reboot** |
-| [pmo/backlog.md](pmo/backlog.md) | Tickets actifs (max 3 en cours) |
-| [pmo/decisions.md](pmo/decisions.md) | Décisions définitives + questions ouvertes |
-| [pmo/sprint-log.md](pmo/sprint-log.md) | Journal de sessions |
-| [pmo/roadmap.md](pmo/roadmap.md) | Vision moyen terme |
-
-### Inputs & archive
-| Fichier | Rôle |
-|---------|------|
-| [INBOX.md](INBOX.md) | **Zone unique de dump brut** — toute matière non triée (format libre, sections `## YYYY-MM-DD — sujet`) |
-| [archive/](archive/) | Sessions archivées (rien n'est effacé) |
-| ~~workshop/~~ | **Supprimé 2026-04-30** — fusionné dans [`stories/<NNN-slug>/`](stories/) (gabarit unifié). Toute la fabrication d'une histoire vit dans son seul dossier. |
+| [`cross-culture/INDEX.md`](cross-culture/INDEX.md) | **Toujours — point d'entrée pilier 3** |
+| [`cross-culture/doctrine.md`](cross-culture/doctrine.md) | Doctrine cross-culture (bulles, croisements, anti-cliché) |
+| [`cross-culture/prenoms/INDEX.md`](cross-culture/prenoms/INDEX.md) | 218 prénoms qualifiés / 30 cultures (réserve) |
+| [`cross-culture/castings-nationaux/`](cross-culture/castings-nationaux/INDEX.md) | Castings attribués (FR figé, jp/br/he/sw… à venir) |
+| [`cross-culture/onomatopees/`](cross-culture/onomatopees/INDEX.md) | Catalogue 37 onomatopées validées |
+| [`cross-culture/faune-flore/`](cross-culture/faune-flore/INDEX.md) | À peupler (animaux/plantes par culture) |
+| [`cross-culture/lieux-locaux/`](cross-culture/lieux-locaux/INDEX.md) | À peupler (équivalents pont/rivière/talus par culture) |
+| [`cross-culture/coutumes-jeux-aliments/`](cross-culture/coutumes-jeux-aliments/INDEX.md) | À peupler (gestes culturels du quotidien) |
+| [`cross-culture/saisons-climat/`](cross-culture/saisons-climat/INDEX.md) | À peupler (saisons locales) |
 
 ---
 
-## Questions ouvertes
+## Pilier 4 — Saisons (plan éditorial)
 
-1. **Nom de l'univers** — choisir parmi les 5 finalistes (+ piste méta "Wex World")
-2. ~~**Prénoms des 8 autres personnages**~~ — ✅ résolu V1 (2026-04-24). Casting **figé définitif** (3F/6M + Wex). Fiches renommées. Reste : relecture cohérence genres/pronoms + validation des castings par-origine.
-3. **Ombre Éternelle** — concept principal ou laisser en standby ? *(standby)*
-4. **Question fractale** (2026-04-16) — les persos savent-ils qu'ils sont dans le rêve de... ? *(standby)*
-5. **Compagnons** — forme (onde/cristal/couleur/fluide/animal) non tranchée + apparition progressive ou systématique ?
-6. **Wex absent d'une histoire** — un des 9 reprend-il le rôle d'observateur ? → à trancher à l'écriture.
-6. ~~Univers explicite ou en fond ?~~ ✅ **tranché (2026-04-24)** : univers IMPLICITE dans les histoires enfantines (pas de noms-concepts nommés), ennéatypes DILUÉS dans actions/interactions (jamais étiquetés). Infusion progressive au fil des récits. Voir `stories/INDEX.md`.
+| Fichier | Contenu |
+|---------|---------|
+| [`saisons/INDEX.md`](saisons/INDEX.md) | Roadmap globale (S1 en cours, S2/S3 à venir) |
+| [`saisons/saison-1/INDEX.md`](saisons/saison-1/INDEX.md) | Saison 1 — 4 arcs (cadre, fil rouge) |
+| [`saisons/saison-1/arc-1-objet-decor/`](saisons/saison-1/arc-1-objet-decor/) | Arc 1 — priorité actuelle (10 épisodes) |
+| [`saisons/saison-1/arc-2-parole/`](saisons/saison-1/arc-2-parole/) | Arc 2 — en pause |
+| [`saisons/saison-1/arc-3-univers-specifique/`](saisons/saison-1/arc-3-univers-specifique/) | Arc 3 — pas avant |
+| [`saisons/saison-1/arc-4-pouvoirs-wex/`](saisons/saison-1/arc-4-pouvoirs-wex/) | Arc 4 — fil rouge de fin de saison |
 
 ---
 
-## Workflow narratif (11 étapes — refonte 2026-05-08)
+## Contenu produit
+
+| Fichier | Contenu |
+|---------|---------|
+| [`stories/INDEX.md`](stories/INDEX.md) | **Catalogue** des histoires |
+| [`stories/001-le-pont-casse/`](stories/001-le-pont-casse/) | Canon complet (540 mots, 11 étapes PROCESS) |
+| [`stories/brainstorm-arc-1.md`](stories/brainstorm-arc-1.md) | Fiche brainstorm arc 1 (002-010) en cours |
+| [`stories/axes-histoires-en-stock.md`](stories/axes-histoires-en-stock.md) | Stock d'axes (10 unitaires + 5 transversaux) |
+| [`stories/_gabarit/`](stories/_gabarit/) | Dossier modèle à copier pour une nouvelle histoire |
+
+---
+
+## Équipe éditoriale (process & agents)
+
+| Fichier | Rôle |
+|---------|------|
+| [`equipe/INDEX.md`](equipe/INDEX.md) | **Toujours — index équipe, arbre de décision agents** |
+| [`equipe/PROCESS.md`](equipe/PROCESS.md) | Workflow militaire 11 étapes (refonte 2026-05-08) |
+| [`equipe/patte-narrative-maxplay.md`](equipe/patte-narrative-maxplay.md) | Patte B+D+C (Kishōtenketsu + tranche de vie + cycle) |
+| [`equipe/lecons-vivantes.md`](equipe/lecons-vivantes.md) | Document vivant des patterns confirmés (P1-P10, G1-G6) |
+| [`equipe/templates/`](equipe/templates/) | 10 gabarits réutilisables (pitch, plan, briefs, sélection, kanban, synthèse) |
+| [`equipe/ORGANIGRAMME.md`](equipe/ORGANIGRAMME.md) | Qui fait quoi |
+| [`equipe/cartographie-domaines.md`](equipe/cartographie-domaines.md) | Où va quelle info · qui décide · invariants |
+| [`equipe/profils-lecteurs.md`](equipe/profils-lecteurs.md) | Profils lecteurs témoins |
+| [`equipe/sources-sciences.md`](equipe/sources-sciences.md) | Refs documentaires sciences |
+| [`equipe/sources-sensibilite.md`](equipe/sources-sensibilite.md) | Catalogue topics sensibles / conspirationnistes |
+| [`equipe/sources-narratologie.md`](equipe/sources-narratologie.md) | Étude narratologique cross-culture |
+| [`personnages/voix-meta/`](personnages/voix-meta/README.md) | **Voix méta** : narrateurs H/F adultes + cheatsheet didascalies + étude vocale 18 prompts ElevenLabs |
+| [`equipe/memoire-*.md`](equipe/) | Mémoires décentralisées par agent |
+
+---
+
+## PMO (gestion de projet)
+
+| Fichier | Rôle |
+|---------|------|
+| [`pmo/INDEX.md`](pmo/INDEX.md) | État instantané + règles de reprise après reboot |
+| [`pmo/backlog.md`](pmo/backlog.md) | Tickets actifs (max 3 en cours) |
+| [`pmo/decisions.md`](pmo/decisions.md) | Décisions définitives + questions ouvertes |
+| [`pmo/sprint-log.md`](pmo/sprint-log.md) | Journal de sessions |
+| [`pmo/roadmap.md`](pmo/roadmap.md) | Vision moyen terme |
+
+---
+
+## Inputs & archive
+
+| Fichier | Rôle |
+|---------|------|
+| [`INBOX.md`](INBOX.md) | Zone unique de dump brut — hook commit auto |
+| [`archive/`](archive/) | Sessions archivées (rien d'effacé) |
+| [`archive/sessions/2026-05-10-restructuration-3-piliers.md`](archive/sessions/2026-05-10-restructuration-3-piliers.md) | Trace de la refonte 2026-05-10 (4 piliers) |
+
+---
+
+## Workflow narratif (11 étapes)
 
 ```
 0.  Auteur          → INBOX.md (idée brute)
 1.  Conseiller      → pitch.md                                     ✅ valide auteur
 2.  Architecte      → plan-histoire.md
 3.  Directeur       → briefs/{univers, personnages, histoire}.md
-4.  10 Writers      → versions-writers/ (2 Claude Opus + 4 Kimi K2.6 dont 1 guidé + 2 DeepSeek + 2 Grok 4.3)
-5.  20 Lecteurs     → lecteurs-temoins/ + synthese-lecteurs.md (panel cible : 10 profils × 2 tranches d'âge)
+4.  10 Writers      → versions-writers/ (2 Claude + 4 Kimi (dont 1 guidé) + 2 DeepSeek + 2 Grok)
+5.  20 Lecteurs     → lecteurs-temoins/ + synthese-lecteurs.md
 6.  Directeur       → selection.md (base + greffes)                ✅ valide auteur
-7.  Writer top 1    → rewrite/<llm>-rewrite-v1.md (auteur top 1 garde la main)
+7.  Writer top 1    → rewrite/<llm>-rewrite-v1.md
 8.  GateKeeper      → gatekeeper-verdict.md
-9.  3-4 Lecteurs    → relecture-rewrite/ (sous-panel léger sur le rewrite)
-10. Directeur+PMO   → texte.md (CANON) + maj equipe/lecons-vivantes.md ✅ valide auteur
+9.  3-4 Lecteurs    → relecture-rewrite/ (sous-panel léger)
+10. Directeur+PMO   → texte.md (CANON) + maj lecons-vivantes.md    ✅ valide auteur
 ```
 
-**Configuration LLM** : voir [`infra/mcp/MODELS.md`](../infra/mcp/MODELS.md).
-**Casting writers** + **panel lecteurs** détaillés : voir [`equipe/PROCESS.md`](equipe/PROCESS.md).
-**Onomatopées** (règle 0 ou 1, catalogue cross-culture) : voir [`equipe/onomatopees-cross-culture.md`](equipe/onomatopees-cross-culture.md).
-**Patterns narratifs** confirmés / pièges : voir [`equipe/lecons-vivantes.md`](equipe/lecons-vivantes.md).
+**Règles obligatoires étapes 1-3** : lecture de [`personnages/theorie/pedagogie-enfance/`](personnages/theorie/pedagogie-enfance/README.md) + ennéatypes pertinents.
+
+---
 
 **Règle :** un INDEX ne contient jamais de contenu canon, seulement des pointeurs.
 Un fichier stable > 400 lignes → on scinde thématiquement.

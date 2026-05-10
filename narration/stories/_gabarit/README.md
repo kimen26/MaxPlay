@@ -2,7 +2,7 @@
 numero: NNN
 slug: slug-de-l-histoire
 titre: Titre de l'histoire
-statut: pitch              # pitch / plan / briefs / versions / lecteurs / selection / rewrite / gatekeeper / canon / abandoned
+statut: pitch              # idee / pitch / plan / briefs / versions / lecteurs / selection / rewrite / gatekeeper / re-relecture / canon / abandoned
 version_active: null       # v1 / v2 / v3 (post-canon)
 date_creation: YYYY-MM-DD
 date_validation: null
@@ -35,23 +35,23 @@ univers:
 
 arc:
   rattachement: null       # arc-1-objet-decor / arc-2-parole / arc-3-univers-specifique / arc-4-pouvoirs-wex
-  fiche: null              # ex: arcs/arc-1-objet-decor/fiche.md
+  fiche: null              # ex: saisons/saison-1/arc-1-objet-decor/fiche.md
 
 variantes:
   base: christ
   disponibles: [christ]
 
 production:
-  writers_planifies: 8     # 4 core + 2 Claude variance + 2 Kimi variance
+  writers_planifies: 10    # 2 Claude libres + 3 Kimi libres + 1 Kimi guidé + 2 DeepSeek + 2 Grok (PROCESS 2026-05-08)
   writers_produits: 0
-  lecteurs_planifies: 4    # 2 enfant + 2 dyade
+  lecteurs_planifies: 20   # 10 profils × 2 tranches d'âge (panel post-2026-05-08). Note transitoire : histoires <005 peuvent garder le panel 6 (2 enfant + 4 dyade)
   lecteurs_produits: 0
   rewrite_cycles: 0        # 1 max
-  comite_lecture: false
-  retours_v2: 0
+  re_relecture_lecteurs: 0 # étape 9 (3-4 lecteurs ciblés sur rewrite)
+  audio_produit: false     # production TTS ElevenLabs
 
 relations:
-  serie: null              # ex: serie-la-parole (arc-2)
+  serie: null
   references: []           # autres histoires citées
 ---
 
@@ -59,19 +59,19 @@ relations:
 
 > **Statut :** `pitch` — voir [`kanban.md`](kanban.md) pour l'étape précise.
 > **Patte :** Kishōtenketsu noyau (B) + voix tranche de vie (D) + cycle d'arc (C).
-> **Texte canon :** [`texte.md`](texte.md) *(produit en étape 9)*
+> **Texte canon :** [`texte.md`](texte.md) *(produit en étape 10)*
 
 ---
 
 ## Résumé
 
-_(2-3 lignes, pas de spoiler de fin. Rempli par le Directeur à l'étape 9.)_
+_(2-3 lignes, pas de spoiler de fin. Rempli par le Directeur à l'étape 10.)_
 
 ---
 
 ## Pourquoi cette histoire ?
 
-- **Arc rattaché :** *(arc-1 / arc-2 / arc-3 / arc-4)*
+- **Arc rattaché :** *(saisons/saison-1/arc-1-objet-decor / arc-2-parole / arc-3-univers-specifique / arc-4-pouvoirs-wex)*
 - **Persos mis en valeur :**
 - **Objet titre :**
 - **Qualité promue (héritée de l'arc) :**
@@ -83,39 +83,67 @@ _(2-3 lignes, pas de spoiler de fin. Rempli par le Directeur à l'étape 9.)_
 ```
 NNN-slug/
 ├── README.md              ← ce fichier (carte vivante)
-├── kanban.md              ← état des 9 étapes (source de vérité)
+├── kanban.md              ← état des 11 étapes (source de vérité)
 ├── pitch.md               ← étape 1 (Conseiller)
 ├── plan-histoire.md       ← étape 2 (Architecte)
 ├── briefs/                ← étape 3 (Directeur)
 │   ├── brief-univers.md
 │   ├── brief-personnages.md
 │   └── brief-histoire.md
-├── versions-writers/      ← étape 4 (8 versions)
-│   ├── claude-base.md · kimi-base.md · deepseek-base.md · grok-base.md
-│   ├── claude-variance-1-{angle}.md · claude-variance-2-{angle}.md
-│   ├── kimi-variance-1-{angle}.md · kimi-variance-2-{angle}.md
+├── versions-writers/      ← étape 4 (10 versions)
+│   ├── claude-1.md · claude-2.md
+│   ├── kimi-1.md · kimi-2.md · kimi-3.md · kimi-guide.md
+│   ├── deepseek-1.md · deepseek-2.md
+│   ├── grok-1.md · grok-2.md
 │   └── _notes-intention/
-├── lecteurs-temoins/      ← étape 5 (4 retours texte libre)
-│   ├── enfant-1.md · enfant-2.md
-│   └── dyade-1.md · dyade-2.md
+├── lecteurs-temoins/      ← étape 5 (20 retours panel cible — 10 profils × 2 tranches)
+│   ├── G-A1.md · G-A2.md · G-A3.md · G-B1.md · G-B2.md · G-B3.md
+│   ├── F-A1.md · F-A2.md · F-A3.md · F-B1.md · F-B2.md · F-B3.md
+│   ├── DPG-A.md · DPG-B.md · DPF-A.md · DPF-B.md
+│   └── DMG-A.md · DMG-B.md · DMF-A.md · DMF-B.md
+├── synthese-lecteurs.md   ← étape 5 (consolidation Directeur)
 ├── selection.md           ← étape 6 (Directeur)
-├── rewrite/               ← étape 7
-│   └── v1.md              ← 1 cycle max
+├── rewrite/               ← étape 7 (1 cycle max)
+│   └── <llm>-rewrite-v1.md
 ├── gatekeeper-verdict.md  ← étape 8
-├── synthese.md            ← étape 9 (Directeur)
-├── relecture.md           ← étape 9 (Directeur)
-├── texte.md               ← étape 9 — VERSION CANON
-├── variantes-culturelles/ ← multi-culture (post-canon)
-│   └── christ.patch
-├── assets/                ← illustrations, audio TTS
+├── relecture-rewrite/     ← étape 9 (3-4 lecteurs ciblés sur rewrite)
+│   └── <profil>.md × 3-4
+├── synthese.md            ← étape 10 (Directeur)
+├── relecture.md           ← étape 10 (Directeur)
+├── texte.md               ← étape 10 — VERSION CANON
+├── assets/                ← illustrations, supports visuels (illustrations, mockups)
+├── audio/                 ← production TTS ElevenLabs
+│   ├── narrateur-h.mp3     OR  narrateur-f.mp3   (texte narratif)
+│   ├── dialogues/<perso>.mp3 (dialogues par perso)
+│   └── mix-complet.mp3     (montage final story)
+├── variantes-culturelles/ ← multi-culture (post-canon, tokens résolus par casting)
+│   ├── fr/                 (casting V1 figé)
+│   └── jp/ · br/ · ...     (à venir)
 └── _archive/              ← versions abandonnées + anciennes vN
 ```
 
 ---
 
+## Workflow audio (post-canon)
+
+1. **Texte canon validé** (`texte.md` figé après étape 10)
+2. **Voice-director extrait les didascalies** FR du texte ([`../../personnages/voix-meta/_CHEATSHEET-WRITERS.md`](../../personnages/voix-meta/_CHEATSHEET-WRITERS.md))
+3. **Choix narrateur H ou F** selon ton de l'histoire (voir [`../../personnages/voix-meta/`](../../personnages/voix-meta/README.md))
+4. **Génération TTS** via MCP `mcp__llm-copains__tts_elevenlabs` :
+   - Voix narrateur pour le texte narratif (hors dialogues)
+   - Voix persos pour chaque réplique (prompts depuis [`../../personnages/type-NN/voix.md`](../../personnages/))
+5. **Mix final** dans `audio/mix-complet.mp3`
+6. **Trace** `production.audio_produit: true` dans le frontmatter de ce README
+
+→ Agent dédié : [`.claude/agents/narration-audio.md`](../../../.claude/agents/narration-audio.md)
+
+---
+
 ## Liens process
 
-- Workflow complet : [`../../equipe/PROCESS.md`](../../equipe/PROCESS.md)
+- Workflow complet (11 étapes) : [`../../equipe/PROCESS.md`](../../equipe/PROCESS.md)
 - Templates : [`../../equipe/templates/`](../../equipe/templates/)
 - Règles tranchées : [`../../pmo/decisions.md`](../../pmo/decisions.md)
 - Patte narrative : [`../../equipe/patte-narrative-maxplay.md`](../../equipe/patte-narrative-maxplay.md)
+- Voix méta (narrateurs + cheatsheet) : [`../../personnages/voix-meta/`](../../personnages/voix-meta/README.md)
+- Onomatopées cross-culture : [`../../cross-culture/onomatopees/catalogue-onomatopees.md`](../../cross-culture/onomatopees/catalogue-onomatopees.md)

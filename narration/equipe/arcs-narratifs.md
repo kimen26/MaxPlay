@@ -49,7 +49,7 @@ Un **arc narratif** = **suite de 3 à 7 histoires** (typiquement 3, 5 ou 7) lié
 
 **Couverture casting** : 8/9 compagnons (Nono, Polo, Madie, Raph, Lulu, Mimi, Pierrot, Melki, Juju) + Wex circule en témoin. Manque : Pierrot apparaît en secondaire, à confirmer.
 
-**Source** : `../arcs/arc-2-parole/fiche.md` (en cours, 1/5 canon). Voir aussi `../stories/axes-histoires-en-stock.md` (pool d'idées pour arc 2).
+**Source** : `../saisons/saison-1/arc-2-parole/fiche.md` (en cours, 1/5 canon). Voir aussi `../stories/axes-histoires-en-stock.md` (pool d'idées pour arc 2).
 
 ---
 
@@ -110,16 +110,16 @@ Une histoire **n'est pas obligée** d'appartenir à un arc.
 1. **Conseiller détecte** un axe émergent (3+ pitches qui partagent un fil rouge).
 2. **Brief auteur** : le Conseiller formule l'axe en une phrase + propose 3-5 pitches alignés.
 3. **Validation auteur + Directeur** : axe validé, arc ouvert.
-4. **Création** : un fichier `arcs/arc-N-<slug>/fiche.md` est créé avec axe, règles transversales, casting visé (cf. `../arcs/arc-1-objet-decor/` + `../arcs/arc-2-parole/`).
-5. **Tracking** : l'arc apparaît dans `../arcs/INDEX.md` (catalogue officiel des arcs) et dans la table « Arcs en stock » ci-dessus.
+4. **Création** : un fichier `saisons/saison-N/arc-X-<slug>/fiche.md` est créé avec axe, règles transversales, casting visé (cf. `../saisons/saison-1/arc-1-objet-decor/` + `../saisons/saison-1/arc-2-parole/`).
+5. **Tracking** : l'arc apparaît dans `../saisons/saison-1/INDEX.md` (catalogue officiel des arcs de la saison) et dans la table « Arcs en stock » ci-dessus.
 
 ---
 
 ## Pour aller plus loin
 
-- `../arcs/INDEX.md` — table des arcs actuels (canon)
+- `../saisons/INDEX.md` — roadmap globale (saisons → arcs)
+- `../saisons/saison-1/INDEX.md` — table des arcs de la saison 1 (canon)
 - `../stories/INDEX.md` — table des histoires (canon + en cours)
 - `../stories/axes-histoires-en-stock.md` — pool d'idées futures
-- `../stories/series/001-la-parole.md` — fichier de l'arc « La Parole »
 - `../pmo/roadmap.md` — vision de la structure des saisons
 - `memoire-conseiller.md` — patterns transversaux et arcs en gestation

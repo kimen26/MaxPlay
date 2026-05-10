@@ -11,4 +11,4 @@
 | [relations.md](relations.md) | Wex avec chacun des 9 |
 | [sensibilite.md](sensibilite.md) | Vibration transversale vs Vibration collective (Nono) |
 | [voix.md](voix.md) | Signature vocale ElevenLabs |
-| [pays/fr/identite.md](pays/fr/identite.md) | Identité universelle (un seul pays) |
+| [../../cross-culture/castings-nationaux/fr/wex.md](../../cross-culture/castings-nationaux/fr/wex.md) | Identité universelle (un seul pays) |

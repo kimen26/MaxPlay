@@ -54,7 +54,7 @@ remplace: ancien `stories/ultime_debrief.md` (figé au 2026-05-05) — désormai
 
 **Origine** : kimi-run2 (001) « Clac. Clac. Clac. » en ouverture seule = métronome efficace.
 **Anti-leçon** : grok-run2 (001) « plop-plop glou-glou clap-clap-clap cric boum » = enfants perdus.
-**Règle** : voir [`onomatopees-cross-culture.md`](onomatopees-cross-culture.md). Test à voix haute obligatoire.
+**Règle** : voir [`../cross-culture/onomatopees/catalogue-onomatopees.md`](../cross-culture/onomatopees/catalogue-onomatopees.md). Test à voix haute obligatoire.
 
 ### P6 — 3 voix distinctes lisibles
 

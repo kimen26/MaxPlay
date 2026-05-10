@@ -111,4 +111,34 @@ Pierrot est le personnage qui enseigne que le courage n'est pas l'absence de peu
 
 Les scènes les plus touchantes de Pierrot sont celles où il fait quelque chose de peureux — et où ça se passe bien. Où il réalise que la sécurité peut exister même sans certitudes absolues.
 
+---
+
+## Gestes / attitudes / habitudes (mise en valeur arc 1)
+
+> **Source** : brainstorm Auteur + Conseiller (2026-05-10), ancré dans Chabreuil 2022 (`../theorie/enneagramme/chabreuil-synthese-complete.md`) et patterns lecteurs (`equipe/lecons-vivantes.md` P8).
+> **Usage** : matière à infuser dans les briefs writers et la conduite d'agents — type EST, type APPORTE, sans transformation forcée.
+
+### Geste signature
+Vérifier (la planche tient ? le bord glisse ?). Poser la main sur l'autre pour protéger. Rester quand les autres partent.
+
+### Attitude
+Prudent, fiable, attentionné. Humour un peu nerveux quand il est rassuré.
+
+### Habitude
+Penser à ce qui pourrait arriver. Préparer un plan B sans le dire.
+
+### Ce qu'il apporte au groupe
+La vigilance bienveillante. Le filet invisible. Avec Pierrot, les autres osent plus parce qu'il pense pour eux à ce qui pourrait clocher.
+
+### Paires fortes (Chabreuil §6.2 + interactions.md)
+- Melki T1 (affinité, deux sérieux)
+- Mimi T2 (affinité, sécurité mutuelle)
+- Nono T9 (affinité, paix+loyauté tiennent ensemble)
+- Juju T8 (énergie inverse féconde — Juju protège Pierrot, Pierrot freine Juju)
+
+### Garde-fou (à ne PAS faire)
+Ne pas le mettre en angoisse ou paralysie. Pierrot épanoui ose après vérification, ne reste pas bloqué.
+
+---
+
 *Source théorique : Type 6 Chabreuil / Riso-Hudson. Aile 7, intégration vers 9, désintégration vers 3.*

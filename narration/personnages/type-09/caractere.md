@@ -114,4 +114,36 @@ Nono n'est pas "juste gentil". Il est le personnage qui tient le groupe ensemble
 
 Les meilleurs moments de Nono sont les moments de silence — ceux où il est présent d'une façon que les mots ne peuvent pas décrire. Et les moments où il dit, enfin, clairement : *"Moi, je veux ça."*
 
+---
+
+## Gestes / attitudes / habitudes (mise en valeur arc 1)
+
+> **Source** : brainstorm Auteur + Conseiller (2026-05-10), ancré dans Chabreuil 2022 (`../theorie/enneagramme/chabreuil-synthese-complete.md`) et patterns lecteurs (`equipe/lecons-vivantes.md` P8).
+> **Usage** : matière à infuser dans les briefs writers et la conduite d'agents — type EST, type APPORTE, sans transformation forcée.
+
+### Geste signature
+S'approcher doucement et s'asseoir à côté. Tenir la main. Ouvrir les bras pour faire de la place. Fredonner (« mmm »). Distribuer équitablement (le goûter, la place).
+
+### Attitude
+Douce, médiatrice, accueillante. Présence apaisante. Ne prend jamais beaucoup de place mais EST là.
+
+### Habitude
+Sentir quand quelqu'un en a besoin sans qu'on lui dise. Choisir le rôle que personne ne voulait. Apaiser par la présence plus que par les mots.
+
+### Ce qu'il apporte au groupe
+La paix. La présence qui rassure. Le point d'ancrage autour duquel les autres convergent naturellement.
+
+### Paires fortes (Chabreuil §6.2 + interactions.md)
+- Mimi T2 (affinité, soin doux mutuel)
+- Juju T8 (affinité, force+douceur)
+- Raph T7 (affinité, énergie+douceur)
+- Pierrot T6 (affinité, paix+loyauté)
+- Polo T3 (complémentaire forte — élan+paix)
+- Melki T1 (énergie inverse féconde)
+
+### Garde-fou (à ne PAS faire)
+Ne pas le rendre passif/effacé. Nono épanoui FAIT des gestes (s'asseoir à côté, tendre la main, ouvrir l'espace, fredonner) — sa lumière est active, pas absence.
+
+---
+
 *Source théorique : Type 9 Chabreuil / Riso-Hudson. Aile 8, intégration vers 3, désintégration vers 6.*

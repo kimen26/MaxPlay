@@ -46,7 +46,7 @@ univers/
 
 | Fichier | Rôle |
 |---------|------|
-| [meta/architecture-cross-culture.md](meta/architecture-cross-culture.md) | **Architecture cross-culture** — Wex archetype universel + 9 ennéatypes invariants × N castings nationaux (décision 2026-04-29) |
+| [`../cross-culture/doctrine.md`](../cross-culture/doctrine.md) | **Architecture cross-culture** — Wex archetype universel + 9 ennéatypes invariants × N castings nationaux (décision 2026-04-29, déplacé 2026-05-10 dans pilier `cross-culture/`) |
 | [meta/nom-candidats.md](meta/nom-candidats.md) | 5 finalistes pour nommer le monde (non tranché) |
 | [meta/directions-brainstorm.md](meta/directions-brainstorm.md) | 6 directions non retenues |
 

@@ -8,31 +8,31 @@
 
 | Couche | Paramètre |
 |--------|-----------|
-| **Articulation** | P/B adoucis (presque embrassés) · M/N résonants prolongés · S amortis · étirement tendre sur les prénoms |
+| **Articulation** | P/B adoucis · M/N résonnants et chauds · voyelles ouvertes |
 | **Prosodie** | Cadences montantes chaleureuses · fin de phrase = invitation, légèrement ouverte |
-| **Rythme** | Moyen avec micro-lingerings affectueux sur les mots tendres |
-| **Phonation** | "mm" doux entre les phrases · sourire audible · veloutée avec souffle intermittent |
-
----
+| **Rythme** | Avec micro-lingerings sur les voyelles · généreux, pas pressé |
+| **Phonation** | "mm" doux avant de répondre · sourire audible |
 
 ## Paramètres ElevenLabs
 
 ```
 Stability: 0.60
-Similarity Boost: 0.80
+Similarity Boost: 0.75
 Style: 0.30
-Speaker Boost: false
+Speaker Boost: true
 ```
 
----
+## Prompt ElevenLabs (F)
 
-## Prompt ElevenLabs — Femme (F)
+> Native French. Female, young child around 4 to 5 years old. Studio quality.
+> Persona: warm little caregiver. Emotion: tender, welcoming, attentive.
+> Softened P and B consonants, resonant warm M and N, open vowels. Sentences end with a slight upward cadence — like a gentle invitation. Generous unhurried pacing with micro-lingerings on warm vowels. Audible smile in the voice, soft "mm" before responding. Round chesty child timbre with natural warmth, never saccharine.
 
-> Female narrator voice, early thirties, warm velvety mezzo timbre with soft chest resonance and a hint of head warmth. Tender embracing delivery filled with affection. Distinctive shared articulation: softened "p" and "b" (gentle, almost lip-kiss release), warmly sustained "m" and "n" sounds, soft non-sharp "s", every consonant treated with care. Lingering tenderly on names and address terms. Prosody: rising warm cadences, lifted endings on emotionally important phrases, gentle waves of melodic warmth. Rhythm: medium pace with affectionate micro-lingerings on tender words. Texture: velvety with intermittent soft breathiness, distinct smile in the voice. Signature tic: warm closed-mouth "mm" between phrases, occasional soft chuckle reflex on tender moments. Conveys profound benevolence and embracing care. Think: a tender aunt reading you a love letter.
+## Prompt ElevenLabs (M)
 
-## Prompt ElevenLabs — Homme (M)
-
-> Male narrator voice, late thirties, warm velvety baritone timbre with soft chest resonance and gentle upper warmth. Tender embracing delivery filled with affection. Distinctive shared articulation: softened "p" and "b" (gentle, almost lip-kiss release), warmly sustained "m" and "n" sounds, soft non-sharp "s", every consonant treated with care. Lingering tenderly on names and address terms. Prosody: rising warm cadences, lifted endings on emotionally important phrases, gentle waves of melodic warmth. Rhythm: medium pace with affectionate micro-lingerings on tender words. Texture: velvety with intermittent soft breathiness, distinct smile in the voice. Signature tic: warm closed-mouth "mm" between phrases, occasional soft chuckle reflex on tender moments. Conveys profound benevolence and embracing care. Think: a tender uncle reading you a love letter.
+> Native French. Male, young child around 4 to 5 years old. Studio quality.
+> Persona: warm little caregiver. Emotion: tender, welcoming, attentive.
+> Softened P and B, resonant warm M and N, open vowels. Open phrase endings, slight upward lift — welcoming, not questioning. Generous unhurried pacing. Soft "mm" before responding. Audible smile in the voice. Round warm child timbre, naturally caring, no mannerism.
 
 ---
 

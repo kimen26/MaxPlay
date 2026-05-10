@@ -166,7 +166,25 @@
       "Bash(xargs -I{} grep -H \"^model:\" {})",
       "Bash(mkdir -p relecture-rewrite rewrite/_archive)",
       "Bash(mv rewrite/v1.md rewrite/claude-rewrite-v1.md)",
-      "Bash(mkdir -p .claude/hooks 2>&1; ls .claude/hooks/)"
+      "Bash(mkdir -p .claude/hooks 2>&1; ls .claude/hooks/)",
+      "Bash(find \"c:/ProjetsPerso/Claude_Projects/MaxPlay/narration/personnages/type-\"* -name \"caractere.md\" -type f)",
+      "Bash(grep -E '\\\\[`[^]]+`\\\\]\\\\\\(' narration/pmo/decisions.md)",
+      "Bash(mv personnages/type-__TRACKED_VAR__/pays/fr/identite.md cross-culture/castings-nationaux/fr/type-__TRACKED_VAR__.md)",
+      "Bash(rmdir personnages/type-__TRACKED_VAR__/pays/fr)",
+      "Bash(rmdir personnages/type-__TRACKED_VAR__/pays)",
+      "Bash(mv personnages/wex/pays/fr/identite.md cross-culture/castings-nationaux/fr/wex.md)",
+      "Bash(rmdir personnages/wex/pays/fr)",
+      "Bash(cd c:/ProjetsPerso/Claude_Projects/MaxPlay/narration && mkdir -p personnages/theorie/enneagramme personnages/theorie/pedagogie-enfance && mv enneagramme/ressources/*.md personnages/theorie/enneagramme/ && mv enneagramme/situations/interactions.md personnages/theorie/enneagramme/interactions-9x9.md && mv enneagramme/situations/emotions-universelles.md personnages/theorie/enneagramme/ && mv enneagramme/symbolique.md personnages/theorie/enneagramme/ && mv enneagramme/casting-mapping.md personnages/casting-mapping.md && ls personnages/theorie/enneagramme/)",
+      "Bash(cd c:/ProjetsPerso/Claude_Projects/MaxPlay/narration && rm enneagramme/personnages/type-*.md && rmdir enneagramme/personnages enneagramme/ressources enneagramme/situations && mv enneagramme/README.md personnages/theorie/enneagramme/README.md && rmdir enneagramme && ls personnages/theorie/enneagramme/)",
+      "Bash(sed -i 's|\\\\[pays/fr/identite.md\\\\]\\(pays/fr/identite.md\\)|[../../cross-culture/castings-nationaux/fr/type-__TRACKED_VAR__.md]\\(../../cross-culture/castings-nationaux/fr/type-__TRACKED_VAR__.md\\)|' type-__TRACKED_VAR__/README.md)",
+      "Bash(sed -i 's|enneagramme/ressources/chabreuil-synthese-complete.md|../theorie/enneagramme/chabreuil-synthese-complete.md|g' type-__TRACKED_VAR__/caractere.md)",
+      "Bash(sed -i \"s|\\\\\\\\[pays/fr/identite.md\\\\\\\\]\\(pays/fr/identite.md\\)|[../../cross-culture/castings-nationaux/fr/wex.md]\\(../../cross-culture/castings-nationaux/fr/wex.md\\)|\" wex/README.md)",
+      "Bash(grep -E \"^\\\\\\\\?\\\\\\\\?\")",
+      "Bash(mkdir -p personnages/voix-meta)",
+      "Bash(mv equipe/voix/narrateur-h.md personnages/voix-meta/narrateur-h.md)",
+      "Bash(mv equipe/voix/narrateur-f.md personnages/voix-meta/narrateur-f.md)",
+      "Bash(mv equipe/voix/_CHEATSHEET-WRITERS.md personnages/voix-meta/_CHEATSHEET-WRITERS.md)",
+      "Bash(mv equipe/voix/_PROMPTING-GUIDE.md personnages/voix-meta/_PROMPTING-GUIDE.md)"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\temp",
@@ -175,7 +193,9 @@
       "C:\\Users\\kimen",
       "c:\\c\\ProjetsPerso\\Claude_Projects\\MaxPlay\\infra\\bot",
       "C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude\\agents",
-      "C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude"
+      "C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude",
+      "C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\narration\\enneagramme\\ressources",
+      "C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\narration\\enneagramme\\personnages"
     ]
   },
   "enabledMcpjsonServers": [

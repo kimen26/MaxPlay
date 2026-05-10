@@ -23,6 +23,44 @@
 
 ---
 
+## 2026-05-11 (suite) — Tokenisation texte canon 001 + backlog audio + audit complet + challenges narration-pmo
+
+**Contexte :** Final audit tour — John valide Phase C tokens + découvertes structurel + challenges pmo de game-pmo transféré.
+
+**DÉCISION 1 — Phase C Tokenisation ✅ OUI, IMMÉDIAT**
+
+Raison : préparation production audio + future passe markup émotionnel ElevenLabs.
+
+Action :
+- `stories/001-le-pont-casse/texte.md` : tokens `{{ wex }}`, `{{ titi_7 }}`, `{{ titi_6 }}` (Jinja-style, aligné `personnages/lookup.yml`)
+- `stories/001-le-pont-casse/variantes-culturelles/fr/texte.md` : version FR résolue (texte canon intact, lisible directement)
+- Frontmatter `texte.md` enrichi : section `tokens:` (format, resolution_casting, variantes_disponibles)
+- Décors **non-tokenisés** : pont/ruisseau/saule/pissenlit en clair → substitution sémantique via agent narration-localisation + cross-culture/lieux-locaux/
+
+Impact backlog : VOIX-001/002/003 (Haute) ajoutés, CROSS-001..004 (continu), ARCHI-DASH (post-audio).
+
+**DÉCISION 2 — Voix consolidées dans Pilier 1 ✅ FIGÉ**
+
+Voix persos = invariant universel `personnages/type-NN/voix.md` — remplacé versions adultes par **young child 4-5 ans** (correctes, depuis equipe/voix/).
+Voix méta dans Pilier 1 aussi : `personnages/voix-meta/` (narrateurs H/F adultes, cheatsheet didascalies writers, guide ElevenLabs, étude vocale).
+`equipe/voix/` supprimé (vide). `equipe/voix-enneatypes.md` déplacé → `personnages/voix-meta/etude-vocale-par-type.md`.
+
+Impact : doublon résolu, refs cassées narration-audio.md + narration-localisation.md fixées.
+
+**DÉCISION 3 — Challenges narration-pmo : 3 ignorés, 3 à planifier en INBOX ⚠️**
+
+Game-pmo a transmis 6 challenges pour enrichir narration-pmo (anti-patterns, checklist, mnémonique, cartographie, 3e mémoire). Analyse John :
+- C-1 (checklist hardcodée) : prise directe itération narration-pmo (ARCHI-006 en cours)
+- C-2 (rapport synthétique) : intégré dans structure sprint-log (done ✅)
+- C-3 (PIPELINE-MEMORY.md) : à planifier, non urgent (INBOX)
+- C-4 (anti-patterns) : à planifier, secondaire (INBOX)
+- C-5 (mnémonique 1-ligne) : à planifier, prise directe itération (INBOX)
+- C-6 (tableau cartographie) : à planifier, secondaire (INBOX)
+
+→ Résultat : 3 challenges ARCHI ignorés (hors scope PMO turbo), 3 en INBOX pour brainstorm + planification prochain cycle.
+
+---
+
 ## 2026-05-11 — Voix consolidées dans Pilier 1 + comblement trous structurels post-refonte
 
 **Contexte :** audit voix ouvert par John (« y'avait un homme et une femme on avait préparé un prompt » + « age mid 30 ou teenage… on voulait plus petit nan ??? »).

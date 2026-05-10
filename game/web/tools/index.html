@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>MaxPlay - Tools</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #1a1a2e; color: #fff; font-family: 'Segoe UI', sans-serif; padding: 30px; }
+  h1 { color: #ffe066; text-align: center; font-size: 1.8rem; margin-bottom: 6px; }
+  p.sub { text-align: center; color: #aaa; font-size: 0.9rem; margin-bottom: 30px; }
+  .grid { max-width: 1100px; margin: 0 auto; display: grid; gap: 16px;
+          grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+  .card { background: #16213e; border-radius: 8px; padding: 20px; text-decoration: none; color: #fff;
+          transition: transform 0.15s, background 0.15s; border: 2px solid transparent; }
+  .card:hover { background: #1f4480; transform: translateY(-2px); border-color: #ffe066; }
+  .card .icon { font-size: 2.4rem; margin-bottom: 10px; }
+  .card .title { color: #ffe066; font-size: 1.1rem; font-weight: bold; margin-bottom: 6px; }
+  .card .desc { color: #aac; font-size: 0.85rem; line-height: 1.4; }
+  .back { display: inline-block; margin-top: 30px; color: #aac; text-decoration: none; font-size: 0.85rem; }
+  .back:hover { color: #ffe066; }
+</style>
+</head>
+<body>
+
+<h1>🛠️ MaxPlay - Tools</h1>
+<p class="sub">Outils de design et de composition pour le pôle JEU. Outils internes - pas pour Max.</p>
+
+<div class="grid">
+
+  <a class="card" href="tile-picker.html">
+    <div class="icon">🎨</div>
+    <div class="title">Tile Picker</div>
+    <div class="desc">Bibliothèque visuelle 81 tiles + matrice 10×10 drag&drop. Compose un layout, exporte en Python pour les recettes.</div>
+  </a>
+
+  <a class="card" href="tile-library-v3.html">
+    <div class="icon">📚</div>
+    <div class="title">Tile Library v3</div>
+    <div class="desc">Patterns prêts à l'emploi (route, virages, rond-point, passage piéton, parking) + cartographie navigable.</div>
+  </a>
+
+  <a class="card" href="mockups-routes.html">
+    <div class="icon">🛣️</div>
+    <div class="title">Mockups Routes (échelle uniforme)</div>
+    <div class="desc">🆕 6 patterns routes/virages/carrefours à échelle identique. Bouton "Éditer" → ouvre tile-picker pré-rempli pour finition user.</div>
+  </a>
+
+  <a class="card" href="tile-library-v2.html">
+    <div class="icon">📖</div>
+    <div class="title">Tile Library v2 (legacy)</div>
+    <div class="desc">Ancienne version - gardée pour archive.</div>
+  </a>
+
+  <a class="card" href="../map-mockups.html">
+    <div class="icon">🗺️</div>
+    <div class="title">Map Mockups Villejuif</div>
+    <div class="desc">Maquettes de scènes (rue, parc, métro) - apprentissage tileset.</div>
+  </a>
+
+  <a class="card" href="../design-mockups.html">
+    <div class="icon">🚏</div>
+    <div class="title">Design Mockups</div>
+    <div class="desc">Designs validés (poteau d'arrêt de bus avec écran LED).</div>
+  </a>
+
+</div>
+
+<div style="text-align: center;">
+  <a class="back" href="../index.html">← Retour menu jeu</a>
+</div>
+
+</body>
+</html>

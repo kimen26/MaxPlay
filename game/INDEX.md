@@ -52,6 +52,28 @@ game/
 2. **Couleurs** : toujours via `LIGNES` de [`web/js/data.js`](web/js/data.js). Jamais de hex hardcodé.
 3. **Zéro pénalité punitive** · **Feedback < 200 ms** · **Zones tap min 80 px** · **Sessions 3–8 min**.
 
+## Outils tiles (LimeZu Modern Exteriors)
+
+| Outil | Rôle |
+|-------|------|
+| [`web/tools/index.html`](web/tools/index.html) | **Hub Tools** — point d'entrée des outils de design |
+| [`web/tools/mockups-routes.html`](web/tools/mockups-routes.html) | 🆕 **Mockups Routes** échelle uniforme + bouton "Éditer" → ouvre tile-picker pré-rempli |
+| [`web/tools/tile-library-v3.html`](web/tools/tile-library-v3.html) | Patterns prêts à l'emploi + cartographie navigable |
+| [`web/tools/tile-picker.html`](web/tools/tile-picker.html) | Bibliothèque catégorisée + matrice drag&drop + export Python. Supporte `?recipe=X.py` pour pré-remplir. |
+| [`web/tile-tools/README.md`](web/tile-tools/README.md) | Pipeline complet (render, recipes, scripts) |
+
+**Workflow Propose → Édite → Apprend** : agent propose une recette dans mockups-routes → user clique Éditer → modifie dans tile-picker → exporte → agent intègre + invoque agent `tile-pmo` pour graver les leçons.
+
+**Agent dédié** : [`.claude/agents/tile-pmo.md`](../.claude/agents/tile-pmo.md) — capture systématique des erreurs ET réussites tile, met à jour LESSONS.md / patterns.js / cartography.json.
+
+Skill associé : [`~/.claude/skills/maxplay-tiles/SKILL.md`](C:/Users/kimen/.claude/skills/maxplay-tiles/SKILL.md) + [`LESSONS.md`](C:/Users/kimen/.claude/skills/maxplay-tiles/LESSONS.md)
+
+## Mini-jeu kids du tileset
+
+[`web/mj-pose-tiles.html`](web/mj-pose-tiles.html) 🦺🚧 — **Pose-tes-tiles**, mini-jeu petit ouvrier où Max choisit ses pièces parmi 5 catégories simples (Rue, Parc, Jardin, Maisons, Forêt) et construit sa ville sur une grille 8×8. Bouton 🦺 "Lisser" qui pose automatiquement les bords trottoir autour de l'asphalte. Persistence localStorage.
+
+---
+
 ## Pôle voisin
 
 NARRATION : [`../narration/INDEX.md`](../narration/INDEX.md) — univers narratif (post-Phase 4).

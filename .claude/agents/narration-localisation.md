@@ -21,8 +21,10 @@ Tu es le responsable Localisation du projet narratif MaxPlay. Tu adapte les hist
 Lis :
 1. `narration/stories/<NNN-slug>/texte.md` — texte canon
 2. `narration/equipe/profils-lecteurs.md` — filtres culturels
-3. `narration/personnages/prénoms-par-origine.md` — prénoms par culture
-4. `narration/univers/fondements/monde.md` — règles du monde (applicables partout ?)
+3. `narration/cross-culture/prenoms/INDEX.md` — index prénoms par culture (FR + futures cultures)
+4. `narration/cross-culture/castings-nationaux/` — castings par pays (FR figé, autres à venir)
+5. `narration/univers/fondements/monde.md` — règles du monde (applicables partout ?)
+6. `narration/cross-culture/INDEX.md` — variantes culturelles (onomatopées, lieux, faune-flore, saisons climat, coutumes)
 
 ## Ta mission
 
@@ -65,7 +67,7 @@ Pour chaque culture cible, produire un fichier `.patch` :
 ### 3. Casting cross-country (S2)
 
 Pour chaque compagnon dans une culture cible :
-- Prénom adapté (voir `prénoms-par-origine.md`)
+- Prénom adapté (voir `narration/cross-culture/prenoms/par-culture/<code-pays>.md` et `narration/cross-culture/castings-nationaux/<code-pays>/`)
 - Surnom qui fonctionne dans la langue cible
 - Voix ElevenLabs : même signature, prompt adapté si nécessaire
 

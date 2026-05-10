@@ -1,80 +1,62 @@
-"""Virage a GAUCHE - chaussee 5 cols, branches LONGUES, DOUBLE arrondi.
+"""Virage a GAUCHE (SUD->OUEST) - 10x10. Version PROPRE 2026-05-10.
 
-Conducteur arrive du SUD, tourne a gauche, sort par OUEST.
-Coin EXTERIEUR NE = _14 (trottoir massif NE de la tile + arc descendant).
-Coin INTERIEUR SW = _12 (trottoir au SW de la tile + arc concave NE).
+Trottoirs : Sidewalk_1_9 uniquement (plain net, pas de motifs).
+Marquage centre : Asphalt_1_Variation_8 (V propre) + Variation_14 (H propre).
+Coin EXT NE : Sidewalk_1_14 (gros arc trottoir NE).
+Coin INT SW : Sidewalk_1_3 (petit triangle trottoir SW).
+Bords : Sidewalk_1_2/_4/_6/_8 (bords trottoir N/S/W/E).
 
-CARTOGRAPHIE CORRIGEE 2026-05-08 (apres erreur _13 au lieu de _12) :
-  _11 : trottoir au SE de la tile (petit) + arc concave NW
-  _12 : trottoir au SW de la tile (petit) + arc concave NE  -> coin INT SW
-  _13 : trottoir massif HAUT de la tile + arc descendant    -> coin EXT NW
-  _14 : trottoir massif HAUT de la tile + arc descendant    -> coin EXT NE
-
-Geometrie 24x18 :
-  Branche OUEST : asphalte rows 6-8 cols 0-9 (10 cases avant pivot)
-  Branche SUD   : asphalte rows 6-17 cols 6-8 (12 cases sous pivot)
-  Pivot         : rows 6-8 cols 6-8 (3x3 asphalte plein)
-  Coin EXT NE   : _14 en (col=9, row=5)
-  Coin INT SW   : _12 en (col=5, row=9)
-  Bord N        : sw_6 row=5 cols 0-8 (col 9 = _14)
-  Bord E        : sw_8 col=9 rows 6-17 (row 5 = _14)
-  Bord S OUEST  : sw_2 row=9 cols 0-4 (col 5 = _12)
-  Bord W SUD    : sw_4 col=5 rows 10-17 (row 9 = _12)
+Geometrie :
+  Branche OUEST (route H) : rows 1-3, cols 0-4
+  Branche SUD (route V)   : cols 4-5, rows 3-7
 """
 
-ASPH = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png'
-TR   = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png'
-SW_W = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png'
-SW_E = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png'
+# === Tiles ===
+TROTTOIR = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png'
 SW_N = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png'
 SW_S = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png'
-ARC_INT = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_12.png'  # coin INT SW : trottoir au SW + arc concave NE
-ARC_EXT = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_14.png'  # coin EXT NE : trottoir massif NE + arc
+SW_W = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png'
+SW_E = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png'
+EXT_NE = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_14.png'  # coin EXT
+INT_SW = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_3.png'   # coin INT
+ASPH = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png'  # plain
+DASH_V = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png'  # marquage V propre
+DASH_H = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png' # marquage H propre
+PIVOT_L = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_3.png' # coin L SE pour pivot
 
-LINE_V = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_15.png'
-LINE_H = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_14.png'
+COLS, ROWS = 10, 10
 
-COLS, ROWS = 24, 18
-ground = [[TR] * COLS for _ in range(ROWS)]
+# Init avec trottoir partout
+ground = [[TROTTOIR] * COLS for _ in range(ROWS)]
 
-# Asphalte branche OUEST (rows 6-8, cols 0-9, jusqu'au pivot inclus)
-for r in range(6, 9):
-    for c in range(0, 10):
-        ground[r][c] = ASPH
-# Asphalte branche SUD (rows 6-17, cols 6-8)
-for r in range(6, 18):
-    for c in range(6, 9):
-        ground[r][c] = ASPH
+# === Branche OUEST : rows 1-3, cols 0-4 ===
+# row 1 : sw_N (bord N) cols 0-4
+# row 2 : asph + marquage centre H cols 0-4 (sauf au pivot)
+# row 3 : sw_S (bord S) cols 0-2 + INT_SW en col 3 + asph col 4
 
-# Bords trottoir 1x1
-# Bord N (cols 0-8, col 9 sera _14)
-for c in range(0, 9):
-    ground[5][c] = SW_N
-# Bord E (rows 6-17, row 5 sera _14)
-for r in range(6, 18):
-    ground[r][9] = SW_E
-# Bord S branche OUEST (cols 0-4, col 5 sera _13)
+# Bord N branche OUEST + coin EXT NE en (col=5, row=1)
 for c in range(0, 5):
-    ground[9][c] = SW_S
-# Bord W branche SUD (rows 10-17, row 9 sera _13)
-for r in range(10, 18):
-    ground[r][5] = SW_W
+    ground[1][c] = SW_N
+ground[1][5] = EXT_NE
 
-# Coins arrondis
-ground[5][9] = ARC_EXT  # coin EXT NE
-ground[9][5] = ARC_INT  # coin INT SW
-
-# Lignes pointillees centrales
-objects = []
-for r in range(10, 18):
-    objects.append((7, r, LINE_V))  # branche SUD axe
+# Asphalte branche OUEST row=2, cols 0-5 (jusqu'au pivot inclus)
 for c in range(0, 5):
-    objects.append((c, 7, LINE_H))  # branche OUEST axe
+    ground[2][c] = DASH_H  # marquage H propre
+ground[2][4] = PIVOT_L     # coin L SE au pivot
+ground[2][5] = SW_E        # bord E pivot/branche SUD
 
-SNIPPET = {
-    'name': 'virage_gauche',
-    'cols': COLS,
-    'rows': ROWS,
-    'ground': ground,
-    'objects': objects,
-}
+# Bord S branche OUEST row=3, cols 0-2 (jusqu'au coin INT SW)
+for c in range(0, 3):
+    ground[3][c] = SW_S
+ground[3][3] = INT_SW      # coin INT en (col=3, row=3)
+ground[3][4] = DASH_V      # asphalte centrale branche SUD
+ground[3][5] = SW_E        # bord E branche SUD
+
+# === Branche SUD : col 4 (asphalte), col 5 (bord E), col 3 (bord W) ===
+# La branche descend jusqu'au bord du canvas (row 9 = derniere row)
+for r in range(4, 10):
+    ground[r][3] = SW_W    # bord W branche SUD
+    ground[r][4] = DASH_V  # marquage V propre
+    ground[r][5] = SW_E    # bord E branche SUD
+
+SNIPPET = {'name': 'virage_gauche', 'cols': COLS, 'rows': ROWS, 'ground': ground, 'objects': []}

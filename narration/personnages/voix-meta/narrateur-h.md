@@ -1,3 +1,12 @@
+---
+role: narrateur
+genre: M
+voice_id_elevenlabs: null   # à remplir après création Voice Design (cf. VOIX-002 backlog)
+date_creation_voice: null
+modele_creation: eleven_multilingual_v2
+modele_production: eleven_v3
+---
+
 # Narrateur — Voix générale (H)
 
 > Voix qui raconte — pas un personnage, mais celui qui porte l'histoire.
@@ -23,7 +32,29 @@ Le narrateur n'est pas lié à un ennéatype. Il est la présence solide et chal
 
 ---
 
-## Paramètres ElevenLabs
+## ① Voice Design — création voice_id (UI ElevenLabs, modèle `eleven_multilingual_v2`)
+
+> Paramètres **visibles dans l'UI Voice Design** au moment de la création.
+
+| Paramètre | Valeur | Pourquoi |
+|-----------|--------|----------|
+| **Prompt** | (voir ci-dessous, 770 chars) | Décrit la voix |
+| **Loudness** | Slider ~50% (milieu) | Voix narrative pas saturée |
+| **Guidance Scale** | **30-40 %** | Priorité fidélité au prompt (timbre stable et reproductible — critique pour un narrateur) |
+| **Generate Preview Text** | ON | Tester en preview avant sauvegarde |
+| **Preview text** | Phrase complète FR (ex : « Le printemps avait mis de la mousse tendre sur les pierres du sentier. ») | Long, pas abrupt — best practices |
+
+**Procédure** :
+1. Coller le prompt ci-dessous dans Voice Design
+2. Régler Loudness milieu + Guidance Scale 30-40%
+3. Générer **3 previews** (chaque génération diffère)
+4. Garder la meilleure → sauvegarder → noter `voice_id_elevenlabs` dans le frontmatter
+
+---
+
+## ② TTS Generation — utilisation voice_id (API, modèle `eleven_v3` recommandé)
+
+> Paramètres réglés **APRÈS création**, au moment de générer l'audio (via MCP `mcp__llm-copains__tts_elevenlabs`).
 
 ```
 Stability: 0.55
@@ -31,6 +62,25 @@ Similarity Boost: 0.80
 Style: 0.20
 Speaker Boost: false
 ```
+
+**Workflow recommandé v2 → v3** (cf. skill `elevenlabs-voice-design` §10) :
+- Création voice_id en `eleven_multilingual_v2` ← étape ① (stable, reproductible)
+- Production audio en `eleven_v3` ← étape ② (alpha, audio tags inline pour émotion fine)
+- Le `voice_id` est **indépendant du moteur** — on crée en v2 et on exploite en v3
+
+**Audio tags v3 inline dans le texte** (mapping didascalies FR → tags) :
+
+| Didascalie writer FR | Tag v3 |
+|---------------------|--------|
+| `*(en chuchotant)*` | `[whispers]` |
+| `*(doucement)*` `*(tout doux)*` | `[softly]` |
+| `*(en riant)*` `*(rire)*` | `[laughs]` |
+| `*(soupir)*` | `[sighs]` |
+| `*(curieux)*` | `[curious]` |
+| `*(calme)*` | `[calm]` |
+| `*(pause)*` ou `*(...)*` | `[pauses]` |
+
+→ Mapping complet (20 didascalies) dans le skill `elevenlabs-voice-design` §11 + dans [`_CHEATSHEET-WRITERS.md`](_CHEATSHEET-WRITERS.md).
 
 ---
 

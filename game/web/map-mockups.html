@@ -65,6 +65,16 @@ const TILES = {
   asphalt:   T + 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png',
   asphalt2:  T + 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_22.png',
   asphalt3:  T + 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_27.png',
+  // Pointillees centrales DASHEES (vrai marquage centre route)
+  dashV: T + 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_15.png',  // pointille V dashee
+  dashH: T + 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_14.png',  // pointille H dashee
+  // Pointillees centrales CONTINUES + coins L (pour pivots)
+  lineH: T + 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png',   // ligne H continue
+  lineV: T + 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_4.png',   // ligne V continue
+  pivotSW: T + 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_1.png', // coin L SW
+  pivotSE: T + 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_3.png', // coin L SE
+  pivotNW: T + 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_5.png', // coin L NW
+  pivotNE: T + 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_7.png', // coin L NE
   // Sidewalk : variation_27 = béton clair avec grille (plain fill)
   sidewalk1: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_27.png',
   sidewalk2: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_2_27.png',
@@ -72,6 +82,28 @@ const TILES = {
   sidewalk4: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_4_27.png',
   sidewalk5: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_5_27.png',
   sidewalk6: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_6_27.png',
+  // Trottoir plain SIDEWALK_1 - variantes anti-mono
+  sw_9:   T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png',
+  sw_25:  T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_25.png',
+  sw_26:  T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_26.png',
+  // Bords trottoir 1×1 fins (pour border l'asphalte)
+  swN: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png',  // bord N : trottoir-en-haut
+  swS: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png',  // bord S : trottoir-en-bas
+  swW: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png',  // bord W : trottoir-a-gauche
+  swE: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png',  // bord E : trottoir-a-droite
+  // Coins INTERIEUR de virage (petit triangle trottoir)
+  intSE: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_1.png',  // trottoir SE - virage droit
+  intSW: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_3.png',  // trottoir SW - virage gauche
+  intNW: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_5.png',  // trottoir NW - virage haut-gauche
+  intNE: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_7.png',  // trottoir NE - virage haut-droit
+  // Coins EXTERIEUR de virage (gros arc trottoir)
+  extSW: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_11.png', // gros arc SW
+  extSE: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_12.png', // gros arc SE
+  extNW: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_13.png', // gros arc NW
+  extNE: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_14.png', // gros arc NE
+  // Passages pietons (milieu sans rebord)
+  zebV: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_30.png',  // 2x1 - bandes V (pour route H)
+  zebH: T + 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_34.png',  // 1x2 - bandes H (pour route V)
   // Grass : Grass_2 = vert, utiliser variation haute (_9 = plain fill)
   grass1:    T + 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_9.png',
   grass2:    T + 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_7.png',
@@ -211,35 +243,86 @@ function drawLayeredMap(ctx, map) {
 
 const MOCKUPS = [
 
-  // ─── ① Route simple — PASS 8/10 (iter 1/5) ──────────────────
+  // ─── ① Route droite verticale (recette validee 2026-05-08) ──────
+  // 5 cols : trottoir | swW | asphalte_dashee | swE | trottoir
+  // Pattern reutilisable : aussi long qu'on veut en hauteur
   {
     id: 'route_simple',
-    title: '① Route simple',
-    desc: 'Route 3 voies verticale avec trottoirs sidewalk1 et arbres en quinconce.',
-    cols: 7, rows: 5,
+    title: '① Route droite (verticale)',
+    desc: 'Route 1 voie chaque sens avec bords trottoir propres + pointillee centrale dashee. Recette route_v_5cols validee.',
+    cols: 5, rows: 8,
     async draw(ctx) {
-      await loadAll(['asphalt','asphalt2','asphalt3','sidewalk1','bush1','bush2','flower_r','flower_b']);
+      await loadAll(['sw_9','sw_25','sw_26','swW','swE','asphalt','dashV','bush1','bush2','flower_r','flower_y']);
+      const swPlain = ['sw_9','sw_25','sw_26'];
+      const ground = [];
+      for (let r = 0; r < 8; r++) {
+        ground.push([
+          swPlain[(r * 2 + 0) % 3],
+          'swW',
+          'dashV',
+          'swE',
+          swPlain[(r * 3 + 1) % 3],
+        ]);
+      }
       drawLayeredMap(ctx, {
-        ground: [
-          ['sidewalk1','sidewalk1','asphalt', 'asphalt2','asphalt3','sidewalk1','sidewalk1'],
-          ['sidewalk1','sidewalk1','asphalt2','asphalt', 'asphalt2','sidewalk1','sidewalk1'],
-          ['sidewalk1','sidewalk1','asphalt', 'asphalt3','asphalt', 'sidewalk1','sidewalk1'],
-          ['sidewalk1','sidewalk1','asphalt3','asphalt', 'asphalt2','sidewalk1','sidewalk1'],
-          ['sidewalk1','sidewalk1','asphalt2','asphalt2','asphalt3','sidewalk1','sidewalk1'],
-        ],
+        ground,
         objects: [
-          [null,'bush1', null,null,null,null,  null],
-          [null,null,    null,null,null,'bush2',null],
-          [null,'bush2', null,null,null,null,  null],
-          [null,null,    null,null,null,'bush1',null],
-          [null,'bush1', null,null,null,null,  null],
+          [null,null,null,null,'bush1'],
+          ['bush2',null,null,null,null],
+          [null,null,null,null,null],
+          ['bush1',null,null,null,null],
+          [null,null,null,null,'bush2'],
+          [null,null,null,null,null],
+          ['bush2',null,null,null,null],
+          [null,null,null,null,'bush1'],
         ],
         decoration: [
-          ['flower_r',null,null,null,null,null,null ],
-          [null,null,null,null,null,null,'flower_b'  ],
-          [null,null,null,null,null,null,null        ],
-          ['flower_b',null,null,null,null,null,null  ],
-          [null,null,null,null,null,null,'flower_r'  ],
+          [null,null,null,null,null],
+          [null,null,null,null,'flower_r'],
+          [null,null,null,null,null],
+          ['flower_y',null,null,null,null],
+          [null,null,null,null,null],
+          [null,null,null,null,'flower_r'],
+          [null,null,null,null,null],
+          ['flower_y',null,null,null,null],
+        ],
+      });
+    }
+  },
+
+  // ─── ①b Route droite horizontale ──────────────────────────────
+  {
+    id: 'route_h',
+    title: '①b Route droite (horizontale)',
+    desc: 'Symetrique de la verticale - 5 rows : trottoir / swN / dashH / swS / trottoir. Recette route_h_5rows validee.',
+    cols: 10, rows: 5,
+    async draw(ctx) {
+      await loadAll(['sw_9','sw_25','sw_26','swN','swS','asphalt','dashH','bush1','bush2','flower_b','flower_p']);
+      const swPlain = ['sw_9','sw_25','sw_26'];
+      const ground = [];
+      // row 0 trottoir, row 1 swN, row 2 dashH, row 3 swS, row 4 trottoir
+      const tops = []; for (let c = 0; c < 10; c++) tops.push(swPlain[(c * 2) % 3]);
+      const bots = []; for (let c = 0; c < 10; c++) bots.push(swPlain[(c * 3 + 1) % 3]);
+      ground.push(tops);
+      ground.push(Array(10).fill('swN'));
+      ground.push(Array(10).fill('dashH'));
+      ground.push(Array(10).fill('swS'));
+      ground.push(bots);
+      drawLayeredMap(ctx, {
+        ground,
+        objects: [
+          ['bush1',null,null,'bush2',null,null,'bush1',null,null,'bush2'],
+          [null,null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null,null],
+          [null,'bush2',null,null,'bush1',null,null,'bush2',null,null],
+        ],
+        decoration: [
+          [null,'flower_b',null,null,'flower_p',null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null,null],
+          [null,null,null,'flower_p',null,null,null,'flower_b',null,null],
         ],
       });
     }
@@ -520,48 +603,52 @@ const MOCKUPS = [
     }
   },
 
-  // ─── ⑧ Carrefour en T (entraînement) ────────────────────────
-  // Route horizontale rows 2-3, branche descendante cols 3-5 rows 4-6
+  // ─── ⑧ Virage gauche (recette validee 2026-05-08 par compo user) ────
   {
     id: 'carrefour_t',
-    title: '⑧ Carrefour en T',
-    desc: 'Route horizontale + branche descendante, trottoirs et arbres alignés.',
-    cols: 9, rows: 7,
+    title: '⑧ Virage gauche (SUD->OUEST)',
+    desc: 'Coin EXT NE = _14 (gros arc). Coin INT SW = _3 (petit triangle). Bords sw_2/4/6/8. Pointillee L au pivot.',
+    cols: 10, rows: 8,
     async draw(ctx) {
-      await loadAll(['asphalt','asphalt2','asphalt3','sidewalk1','sidewalk2','grass1','grass2','grass3','bush1','bush2','bush3','flower_r','flower_y','flower_p']);
+      await loadAll(['sw_9','sw_25','sw_26','swN','swS','swW','swE','intSW','extNE','asphalt','lineH','lineV','pivotSE','dashV','bush1','bush2','bush3','flower_r','flower_y','flower_p']);
       drawLayeredMap(ctx, {
         ground: [
-          // Row 0 : trottoir nord
-          ['sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1'],
-          // Row 1 : trottoir nord (2e bande)
-          ['sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2','sidewalk1','sidewalk1','sidewalk2'],
-          // Rows 2-3 : route horizontale
-          ['asphalt', 'asphalt2','asphalt3','asphalt', 'asphalt2','asphalt3','asphalt', 'asphalt2','asphalt3'],
-          ['asphalt2','asphalt3','asphalt', 'asphalt2','asphalt3','asphalt', 'asphalt2','asphalt3','asphalt'],
-          // Row 4 : trottoir sud + branche (cols 3-5 = asphalt)
-          ['sidewalk1','sidewalk2','sidewalk1','asphalt','asphalt2','asphalt3','sidewalk1','sidewalk2','sidewalk1'],
-          // Row 5 : trottoir transition + branche (sidewalk obligatoire entre asphalt et grass)
-          ['grass1','grass2','sidewalk1','asphalt2','asphalt','asphalt2','sidewalk1','grass2','grass3'],
-          // Row 6 : grass + branche (terminus au bord), trottoir transition cols 2 et 6
-          ['grass2','grass3','sidewalk2','asphalt','asphalt3','asphalt','sidewalk2','grass1','grass2'],
+          // row 0 : trottoir top
+          ['sw_9','sw_25','sw_9','sw_26','sw_9','sw_25','sw_9','sw_26','sw_9','sw_25'],
+          // row 1 : sw_6 bord N + extNE coin EXT NE + trottoir
+          ['swN','swN','swN','swN','swN','extNE','sw_9','sw_25','sw_9','sw_26'],
+          // row 2 : asphalte avec pointillee H + coin L SE + bord E + trottoir
+          ['lineH','lineH','lineH','lineH','pivotSE','swE','sw_9','sw_25','sw_9','sw_26'],
+          // row 3 : sw_2 bord S branche OUEST + intSW coin INT SW + asph + sw_8 + trottoir
+          ['swS','swS','swS','intSW','lineV','swE','sw_9','sw_25','sw_9','sw_26'],
+          // row 4 : trottoirs plain variantes + sw_4 bord W branche SUD + asph + sw_8
+          ['sw_25','sw_26','sw_9','swW','lineV','swE','sw_9','sw_25','sw_9','sw_26'],
+          // row 5 : trottoirs + branche SUD avec pointillee dashee
+          ['sw_25','sw_25','sw_26','swW','dashV','swE','sw_9','sw_25','sw_9','sw_26'],
+          // row 6 : idem
+          ['sw_25','sw_25','sw_26','swW','lineV','swE','sw_9','sw_25','sw_9','sw_26'],
+          // row 7 : trottoirs encore
+          ['sw_9','sw_25','sw_26','swW','lineV','swE','sw_9','sw_25','sw_9','sw_26'],
         ],
         objects: [
-          [null,'bush1',null,null,null,null,'bush2',null,'bush3'],
-          [null,null,null,null,null,null,null,null,null],
-          [null,null,null,null,null,null,null,null,null],
-          [null,null,null,null,null,null,null,null,null],
-          [null,null,'bush2',null,null,null,'bush1',null,null],
-          [null,'bush3',null,null,null,null,null,'bush2',null],
-          [null,null,null,null,null,null,null,null,'bush1'],
+          [null,null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,'bush1',null,'bush2'],
+          [null,null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,'bush3',null],
+          [null,null,null,null,null,null,null,'bush2',null,null],
+          [null,null,null,null,null,null,null,null,'bush1',null],
+          [null,null,null,null,null,null,null,'bush3',null,null],
+          [null,null,null,null,null,null,null,null,null,null],
         ],
         decoration: [
-          [null,null,null,null,null,null,null,null,null],
-          ['flower_r',null,null,null,null,null,null,'flower_y',null],
-          [null,null,null,null,null,null,null,null,null],
-          [null,null,null,null,null,null,null,null,null],
-          [null,null,null,null,null,null,null,null,null],
-          [null,null,'flower_p',null,null,null,'flower_r',null,null],
-          [null,'flower_y',null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,null,null,'flower_p',null],
+          [null,null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,'flower_r',null,null,null],
+          [null,null,null,null,null,null,null,null,null,'flower_y'],
+          [null,null,null,null,null,null,null,null,null,null],
+          [null,null,null,null,null,null,'flower_p',null,null,null],
         ],
       });
     }
@@ -617,82 +704,118 @@ const MOCKUPS = [
   // Reproduction : 25×17 tiles (1200×816 px native, échelle ~1:2 du monde réel).
   {
     id: 'max_adventure',
-    title: '⑪ Max Adventure (carte tilée)',
-    desc: 'Reproduction de SandboxScene Phaser : routes en croix, 3 arrêts bus, bâtiments, arbres.',
-    cols: 25, rows: 17,
+    title: '⑪ Petit quartier propre (base future Max Adventure)',
+    desc: 'Bloc 16×12 : route H + route V + 4 virages aux coins formant un anneau, herbe au centre, 1 toyhouse. Tous les bords trottoir lisses. Base remplaçant la grosse croix au pif.',
+    cols: 16, rows: 12,
     async draw(ctx) {
       await loadAll([
-        'asphalt','asphalt2','asphalt3','sidewalk1','sidewalk2','sidewalk5',
+        'sw_9','sw_25','sw_26','swN','swS','swW','swE',
+        'intSE','intSW','intNE','intNW','extSE','extSW','extNE','extNW',
+        'asphalt','dashV','dashH','lineH','lineV',
         'grass1','grass2','grass3',
         'bush1','bush2','bush3',
-        'toyhouse1','toyhouse2','toyhouse3','toyhouse4',
-        'bench_city','flower_r','flower_y','flower_b','flower_p',
+        'toyhouse1','flower_r','flower_y','flower_b','flower_p',
       ]);
 
-      // Construction algorithmique du ground (plus lisible que 17×25 littéraux)
-      const ground = [];
+      // Anneau routier 16x12 :
+      // Trottoir externe : row 0 + row 11 + col 0 + col 15 (plain)
+      // Bord externe trottoir : row 1 (swN), row 10 (swS), col 1 (swW), col 14 (swE)
+      // Asphalte exterieure : row 2 (route H haute), col 2 (route V gauche), col 13 (route V droite), row 9 (route H basse)
+      // Au centre : row 3-8 cols 3-12 = pelouse + maison
+      // Coins : 4 virages (extNE/extNW/extSE/extSW + intSW/intSE/intNW/intNE)
       const grassMix = ['grass1','grass2','grass3'];
-      const asphMix  = ['asphalt','asphalt2','asphalt3'];
-      const swMix    = ['sidewalk1','sidewalk2'];
-      // Routes : H sur rows 7-9, V sur cols 11-13. Trottoirs : rows 6/10 et cols 10/14.
-      for (let r = 0; r < 17; r++) {
-        const row = [];
-        for (let c = 0; c < 25; c++) {
-          const isHRoad = (r >= 7 && r <= 9);
-          const isVRoad = (c >= 11 && c <= 13);
-          const isHSidewalk = (r === 6 || r === 10);
-          const isVSidewalk = (c === 10 || c === 14);
-          if (isHRoad || isVRoad) {
-            row.push(asphMix[(r + c) % 3]);
-          } else if (isHSidewalk || isVSidewalk) {
-            row.push(swMix[(r + c) % 2]);
-          } else {
-            row.push(grassMix[(r * 7 + c * 3) % 3]);
-          }
-        }
-        ground.push(row);
+      const swPlain = ['sw_9','sw_25','sw_26'];
+      const COLS = 16, ROWS = 12;
+      const ground = Array.from({length: ROWS}, () => Array(COLS).fill(null));
+
+      // Default = pelouse pour le centre
+      for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+        ground[r][c] = grassMix[(r * 7 + c * 3) % 3];
+      }
+      // Asphalte route H haute : row 2 cols 2-13
+      for (let c = 2; c < 14; c++) ground[2][c] = 'asphalt';
+      // Asphalte route H basse : row 9 cols 2-13
+      for (let c = 2; c < 14; c++) ground[9][c] = 'asphalt';
+      // Asphalte route V gauche : rows 2-9 col 2
+      for (let r = 2; r < 10; r++) ground[r][2] = 'asphalt';
+      // Asphalte route V droite : rows 2-9 col 13
+      for (let r = 2; r < 10; r++) ground[r][13] = 'asphalt';
+      // Pointillee centre H haute : row 2 cols 3-12 (sauf coins)
+      for (let c = 3; c < 13; c++) ground[2][c] = 'dashH';
+      // Pointillee centre H basse : row 9 cols 3-12
+      for (let c = 3; c < 13; c++) ground[9][c] = 'dashH';
+      // Pointillee centre V gauche : rows 3-8 col 2
+      for (let r = 3; r < 9; r++) ground[r][2] = 'dashV';
+      // Pointillee centre V droite : rows 3-8 col 13
+      for (let r = 3; r < 9; r++) ground[r][13] = 'dashV';
+
+      // Bords trottoir 1×1 (les bords trottoir-cote-route, vers le CENTRE = pelouse)
+      // swN = bord N (trottoir-en-haut/asph-en-bas) -> pose AU-DESSUS de l'asphalte = row 1
+      // Mais ici on a aussi de l'asphalte au-dessus de la pelouse interne -> swS (trottoir-en-bas) cote interne row 3
+      // Et swN cote externe row 1
+      // Externe : entoure tout le bloc routier (rows 1+10, cols 1+14)
+      for (let c = 1; c < 15; c++) ground[1][c] = 'swN';   // bord N externe
+      for (let c = 1; c < 15; c++) ground[10][c] = 'swS';  // bord S externe
+      for (let r = 1; r < 11; r++) ground[r][1] = 'swW';   // bord W externe
+      for (let r = 1; r < 11; r++) ground[r][14] = 'swE';  // bord E externe
+      // Interne : entoure la pelouse centrale (rows 3+8, cols 3+12)
+      for (let c = 3; c < 13; c++) ground[3][c] = 'swS';   // bord S de l'asph haut, cote interne
+      // Mais wait, ground[3][c] etait asph dashH ?? Non row 3 c'est centre, pas asph.
+      // Re-reflechissons : row 2 = asph H, row 3 = pelouse centrale interne.
+      // Donc le bord interne est ENTRE row 2 (asph) et row 3 (pelouse), c'est-a-dire SUR row 3 ? Non.
+      // Le bord est sur ROW 2 ou ROW 3 selon la convention de la tile.
+      // sw_S = trottoir-en-bas + asphalte-en-haut : se pose SUR la cellule asphalte qui a du trottoir au sud.
+      // -> Mais row 2 doit avoir l'ASPHALTE+POINTILLEE, pas du trottoir.
+      // Donc le bord interne se pose sur ROW 3 (cote pelouse) = sw_N (trottoir-en-haut/asph-en-bas)
+      for (let c = 3; c < 13; c++) ground[3][c] = 'swN';   // bord N de la pelouse interne (asph au-dessus) cote nord
+      for (let c = 3; c < 13; c++) ground[8][c] = 'swS';   // bord S idem cote sud
+      for (let r = 3; r < 9; r++) ground[r][3] = 'swW';    // bord W de la pelouse cote ouest
+      for (let r = 3; r < 9; r++) ground[r][12] = 'swE';   // bord E idem cote est
+
+      // 4 coins EXTERIEURS (au coins du bloc, gros arcs trottoir)
+      ground[1][1]  = 'extNW';   // coin NW
+      ground[1][14] = 'extNE';   // coin NE
+      ground[10][1] = 'extSW';   // coin SW
+      ground[10][14]= 'extSE';   // coin SE
+
+      // 4 coins INTERIEURS (autour de la pelouse, petits triangles trottoir)
+      ground[3][3]  = 'intSE';   // coin INT SE de la pelouse (vue depuis la pelouse)... non
+      // Recap : la pelouse est au centre. Les 4 coins de la pelouse sont :
+      //   (3,3) = NW de pelouse, mais la chaussee est au nord (row 2) et a l'ouest (col 2)
+      //   -> a cette cellule il faut un trottoir au coin NW (vers le coin EXT du quartier)
+      //   -> intNW (petit triangle trottoir NW) sera pose
+      ground[3][3]  = 'intNW';
+      ground[3][12] = 'intNE';
+      ground[8][3]  = 'intSW';
+      ground[8][12] = 'intSE';
+
+      // Pelouse au centre (rows 4-7, cols 4-11) : remplace par grass
+      for (let r = 4; r < 8; r++) for (let c = 4; c < 12; c++) {
+        ground[r][c] = grassMix[(r * 7 + c * 3) % 3];
+      }
+      // Trottoirs externes plain (row 0 et row 11) - varier
+      for (let c = 0; c < COLS; c++) {
+        ground[0][c] = swPlain[(c * 2) % 3];
+        ground[11][c] = swPlain[(c * 3 + 1) % 3];
+      }
+      // Trottoirs externes col 0 et 15 plain
+      for (let r = 0; r < ROWS; r++) {
+        ground[r][0] = swPlain[(r * 2 + 1) % 3];
+        ground[r][15] = swPlain[(r * 3) % 3];
       }
 
-      // Layer objects : null partout par défaut
-      const objects = Array.from({ length: 17 }, () => Array(25).fill(null));
-      // Arrêts de bus (sidewalk5 + bench_city) — 3 positions inspirées du jeu
-      // Arrêt 162 : col 3, row 6 (trottoir nord-ouest)
-      ground[6][3] = 'sidewalk5'; ground[6][4] = 'sidewalk5';
-      objects[5][3] = 'bench_city'; // 2×2 → rows 5-6 cols 3-4 (sur grass+sidewalk5)
-      // Arrêt M7 : col 12 trop sur la route. Mettre col 8 row 6
-      ground[6][8] = 'sidewalk5'; ground[6][9] = 'sidewalk5';
-      objects[5][8] = 'bench_city';
-      // Arrêt 380 : col 20 row 10 (trottoir sud-est)
-      ground[10][19] = 'sidewalk5'; ground[10][20] = 'sidewalk5';
-      objects[10][19] = 'bench_city'; // rows 10-11 cols 19-20
+      // 1 toyhouse au centre de la pelouse (4x5)
+      const objects = Array.from({ length: ROWS }, () => Array(COLS).fill(null));
+      objects[4][5] = 'toyhouse1';  // ancre top-left, couvre rows 4-8 cols 5-8
 
-      // Bâtiments (toyhouse 4×5) — 4 quadrants. Ancrés sur grass.
-      // NO : trop grand pour 17 rows. Place 2 toyhouses, ailleurs juste bushes.
-      objects[0][1]  = 'toyhouse1'; // NO : cols 1-4 rows 0-4
-      objects[0][20] = 'toyhouse2'; // NE : cols 20-23 rows 0-4
-      objects[12][1]  = 'toyhouse3'; // SO : cols 1-4 rows 12-16
-      objects[12][20] = 'toyhouse4'; // SE : cols 20-23 rows 12-16
+      // Quelques bushes autour de la pelouse
+      const bushes = [[5,10],[6,4],[7,11],[4,11]];
+      bushes.forEach(([r,c]) => { if (objects[r][c] === null) objects[r][c] = ['bush1','bush2','bush3'][(r+c)%3]; });
 
-      // Arbres (bushes) éparpillés sur grass (zones non couvertes par toyhouses)
-      const trees = [
-        [1,6],[2,15],[5,7],[5,18],
-        [11,7],[11,18],
-        [15,6],[15,8],[15,15],[15,17],
-        [13,7],[13,18],
-      ];
-      trees.forEach(([r,c]) => {
-        if (objects[r][c] === null) objects[r][c] = ['bush1','bush2','bush3'][(r+c)%3];
-      });
-
-      // Decoration : fleurs autour des bâtiments et arrêts
-      const decoration = Array.from({ length: 17 }, () => Array(25).fill(null));
-      const flowers = [
-        [5,5,'flower_r'],[5,16,'flower_y'],
-        [11,5,'flower_p'],[11,16,'flower_b'],
-        [16,7,'flower_r'],[16,17,'flower_y'],
-        [0,8,'flower_b'],[0,15,'flower_p'],
-      ];
-      flowers.forEach(([r,c,f]) => { if (decoration[r][c] === null) decoration[r][c] = f; });
+      // Fleurs sur les trottoirs externes
+      const decoration = Array.from({ length: ROWS }, () => Array(COLS).fill(null));
+      [[0,3,'flower_r'],[0,11,'flower_y'],[11,3,'flower_p'],[11,11,'flower_b']]
+        .forEach(([r,c,f]) => decoration[r][c] = f);
 
       drawLayeredMap(ctx, { ground, objects, decoration });
     }

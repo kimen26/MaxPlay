@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>🦺 Pose-tes-tiles - Petit Ouvrier 🚧</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; overflow: hidden; }
+  body { background: linear-gradient(180deg, #ffd166 0%, #ffb627 100%);
+         font-family: 'Comic Sans MS', 'Marker Felt', sans-serif; color: #2a2a4a;
+         display: flex; flex-direction: column; align-items: center; padding: 8px;
+         touch-action: manipulation; user-select: none; }
+
+  h1 { font-size: 1.4rem; margin: 4px 0; text-align: center;
+       text-shadow: 2px 2px 0 rgba(255,255,255,0.5); }
+
+  .layout { display: flex; gap: 12px; max-width: 1200px; width: 100%; flex: 1; min-height: 0; }
+  @media (max-width: 800px) { .layout { flex-direction: column; } }
+
+  /* Grille de jeu */
+  .game-zone { background: #6abe30; border-radius: 12px; padding: 8px;
+               border: 4px solid #fff; box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+               flex-shrink: 0; }
+  .grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 2px;
+          background: #4a8a20; padding: 2px; border-radius: 6px;
+          width: min(480px, calc(100vw - 40px)); aspect-ratio: 1; }
+  .cell { background: #6abe30; border-radius: 3px; position: relative;
+          aspect-ratio: 1; cursor: pointer; min-height: 40px; }
+  .cell img { position: absolute; inset: 0; width: 100%; height: 100%;
+              image-rendering: pixelated; image-rendering: crisp-edges;
+              pointer-events: none; }
+  .cell.selected { outline: 3px solid #ffe066; z-index: 2; }
+
+  /* Palette */
+  .palette { background: #fff; border-radius: 12px; padding: 10px;
+             border: 4px solid #fff; box-shadow: 0 4px 0 rgba(0,0,0,0.2);
+             display: flex; flex-direction: column; gap: 8px; flex: 1;
+             min-width: 280px; max-width: 360px; }
+  .cats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
+  .cat-btn { background: #f0f0f0; border: 3px solid transparent; border-radius: 8px;
+             padding: 6px 2px; cursor: pointer; font-size: 0.7rem; text-align: center;
+             min-height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+  .cat-btn .emoji { font-size: 1.4rem; }
+  .cat-btn.active { background: #ffe066; border-color: #2a2a4a; }
+  .cat-btn:active { transform: scale(0.95); }
+
+  .tiles-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+                gap: 6px; flex: 1; overflow-y: auto; padding: 4px;
+                background: #f0f0f0; border-radius: 6px; min-height: 200px; }
+  .tile-btn { background: #fff; border: 3px solid transparent; border-radius: 6px;
+              padding: 4px; cursor: pointer; aspect-ratio: 1; position: relative; }
+  .tile-btn img { width: 100%; height: 100%; image-rendering: pixelated;
+                  image-rendering: crisp-edges; pointer-events: none; }
+  .tile-btn.active { border-color: #ff6b35; background: #ffe5d9; transform: scale(1.05); }
+  .tile-btn:active { transform: scale(0.95); }
+
+  /* Toolbar */
+  .toolbar { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tool-btn { background: #fff; border: 3px solid #2a2a4a; border-radius: 8px;
+              padding: 8px 12px; cursor: pointer; font-size: 0.95rem; font-weight: bold;
+              font-family: inherit; flex: 1; min-height: 48px; min-width: 100px;
+              box-shadow: 0 3px 0 rgba(0,0,0,0.2); }
+  .tool-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 rgba(0,0,0,0.2); }
+  .tool-btn.lisser { background: #ffe066; }
+  .tool-btn.gomme { background: #ff8b8b; }
+  .tool-btn.fini { background: #6abe30; color: #fff; }
+  .tool-btn.fini.success { background: #4caf50; animation: bounce 0.5s ease; }
+  @keyframes bounce { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+
+  .selected-display { display: flex; align-items: center; gap: 8px; font-size: 0.85rem;
+                      padding: 4px 8px; background: #ffe066; border-radius: 6px; min-height: 36px; }
+  .selected-display img { width: 32px; height: 32px; image-rendering: pixelated;
+                          image-rendering: crisp-edges; }
+
+  .back { position: absolute; top: 8px; left: 8px; background: rgba(255,255,255,0.9);
+          border: 2px solid #2a2a4a; border-radius: 50%; width: 44px; height: 44px;
+          font-size: 1.5rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+
+  .helmet { font-size: 1.8rem; vertical-align: middle; }
+</style>
+</head>
+<body>
+
+<a class="back" href="index.html" title="Retour menu">←</a>
+
+<h1><span class="helmet">🦺</span> Pose-tes-tiles <span class="helmet">🚧</span></h1>
+
+<div class="layout">
+
+  <div class="game-zone">
+    <div class="grid" id="grid"></div>
+  </div>
+
+  <div class="palette">
+    <div class="cats" id="cats"></div>
+
+    <div class="selected-display" id="selected-display">
+      <span>👆</span> <span id="selected-text">Choisis une pièce</span>
+    </div>
+
+    <div class="tiles-list" id="tiles-list"></div>
+
+    <div class="toolbar">
+      <button class="tool-btn lisser" onclick="lisser()">🦺 Lisser</button>
+      <button class="tool-btn gomme" onclick="if(confirm('Tout effacer ?')) clearAll()">🚧 Effacer</button>
+      <button class="tool-btn fini" id="fini-btn" onclick="celebrer()">🎉 Fini !</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const ASSET = '../phaser/public/assets/tiles/';
+
+// Categories - tiles SIMPLES adaptees enfant 4 ans
+// Toutes 1x1, focalise sur les briques de base
+const CATEGORIES = {
+  rue: {
+    label: 'Rue', emoji: '🛣️',
+    tiles: [
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png', name: 'asphalte' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_15.png', name: 'route ligne V' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_14.png', name: 'route ligne H' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png', name: 'trottoir' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_25.png', name: 'trottoir motif' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_27.png', name: 'trottoir clair' },
+    ],
+  },
+  parc: {
+    label: 'Parc', emoji: '🌳',
+    tiles: [
+      { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_9.png', name: 'herbe' },
+      { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_7.png', name: 'herbe 2' },
+      { file: 'parks/ME_Singles_Garden_48x48_Bush_1.png', name: 'buisson' },
+      { file: 'parks/ME_Singles_Garden_48x48_Bush_2.png', name: 'buisson 2' },
+      { file: 'parks/ME_Singles_Garden_48x48_Bush_10.png', name: 'buisson 3' },
+    ],
+  },
+  jardin: {
+    label: 'Jardin', emoji: '🌸',
+    tiles: [
+      { file: 'parks/ME_Singles_Garden_48x48_Small_Red_Flower.png', name: 'fleur rouge' },
+      { file: 'parks/ME_Singles_Garden_48x48_Small_Pink_Flower.png', name: 'fleur rose' },
+      { file: 'parks/ME_Singles_Garden_48x48_Small_Yellow_Flower.png', name: 'fleur jaune' },
+      { file: 'parks/ME_Singles_Garden_48x48_Big_Light_Blue_Flower.png', name: 'fleur bleue' },
+      { file: 'parks/ME_Singles_Garden_48x48_Bush_3.png', name: 'buisson rond' },
+    ],
+  },
+  maisons: {
+    label: 'Maisons', emoji: '🏠',
+    tiles: [
+      { file: 'buildings/ME_Singles_Generic_Building_48x48_Condo_1_1.png', name: 'mur 1' },
+      { file: 'buildings/ME_Singles_Generic_Building_48x48_Condo_1_2.png', name: 'mur 2' },
+      { file: 'buildings/ME_Singles_Generic_Building_48x48_Condo_1_3.png', name: 'fenetre' },
+      { file: 'buildings/ME_Singles_Floor_Modular_Building_48x48_Roof_1.png', name: 'toit 1' },
+      { file: 'buildings/ME_Singles_Floor_Modular_Building_48x48_Roof_2.png', name: 'toit 2' },
+    ],
+  },
+  foret: {
+    label: 'Forêt', emoji: '🌲',
+    tiles: [
+      { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_9.png', name: 'herbe' },
+      { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_7.png', name: 'herbe foncee' },
+      { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_8.png', name: 'herbe claire' },
+      { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Props_Dirt_1.png', name: 'terre' },
+      { file: 'parks/ME_Singles_Garden_48x48_Bush_15.png', name: 'fougere' },
+      { file: 'parks/ME_Singles_Garden_48x48_Bush_18.png', name: 'broussailles' },
+    ],
+  },
+};
+
+const ASPHALTE = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png';
+const TROTTOIR = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png';
+const SW_N = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png';
+const SW_S = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png';
+const SW_W = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png';
+const SW_E = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png';
+
+const COLS = 8, ROWS = 8;
+let grid = Array.from({length: ROWS}, () => Array(COLS).fill(null));
+let selectedTile = null;
+let currentCat = 'rue';
+
+function tileURL(file) { return ASSET + file; }
+
+function buildCats() {
+  const div = document.getElementById('cats');
+  div.innerHTML = '';
+  for (const [key, cat] of Object.entries(CATEGORIES)) {
+    const b = document.createElement('button');
+    b.className = 'cat-btn' + (key === currentCat ? ' active' : '');
+    b.innerHTML = `<div class="emoji">${cat.emoji}</div><div>${cat.label}</div>`;
+    b.onclick = () => { currentCat = key; buildCats(); buildTiles(); };
+    div.appendChild(b);
+  }
+}
+
+function buildTiles() {
+  const list = document.getElementById('tiles-list');
+  list.innerHTML = '';
+  const tiles = CATEGORIES[currentCat].tiles;
+  for (const t of tiles) {
+    const b = document.createElement('button');
+    b.className = 'tile-btn' + (selectedTile && selectedTile.file === t.file ? ' active' : '');
+    b.innerHTML = `<img src="${tileURL(t.file)}" alt="${t.name}">`;
+    b.title = t.name;
+    b.onclick = () => selectTile(t);
+    list.appendChild(b);
+  }
+}
+
+function selectTile(t) {
+  selectedTile = t;
+  buildTiles();
+  document.getElementById('selected-text').textContent = t.name;
+}
+
+function buildGrid() {
+  const div = document.getElementById('grid');
+  div.innerHTML = '';
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
+      const cell = document.createElement('div');
+      cell.className = 'cell';
+      cell.dataset.row = r;
+      cell.dataset.col = c;
+      cell.onclick = () => placeOnCell(r, c);
+      cell.oncontextmenu = e => { e.preventDefault(); clearCell(r, c); };
+      // long press for mobile
+      let pressTimer;
+      cell.ontouchstart = () => { pressTimer = setTimeout(() => clearCell(r, c), 500); };
+      cell.ontouchend = () => clearTimeout(pressTimer);
+      div.appendChild(cell);
+    }
+  }
+  redraw();
+}
+
+function placeOnCell(r, c) {
+  if (!selectedTile) return;
+  grid[r][c] = selectedTile.file;
+  save();
+  redraw();
+}
+
+function clearCell(r, c) {
+  grid[r][c] = null;
+  save();
+  redraw();
+}
+
+function clearAll() {
+  grid = Array.from({length: ROWS}, () => Array(COLS).fill(null));
+  save();
+  redraw();
+}
+
+function redraw() {
+  const cells = document.querySelectorAll('.cell');
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
+      const cell = cells[r * COLS + c];
+      const t = grid[r][c];
+      const img = cell.querySelector('img');
+      if (t) {
+        if (img) img.src = tileURL(t);
+        else cell.insertAdjacentHTML('beforeend', `<img src="${tileURL(t)}" alt="">`);
+      } else if (img) {
+        img.remove();
+      }
+    }
+  }
+}
+
+// LISSAGE : autour de chaque asphalte, ajoute sw_2/4/6/8 si voisin = vide ou trottoir
+function lisser() {
+  const ASPHALTES = ['ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png',
+                     'ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_15.png',
+                     'ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_14.png'];
+  const isAsph = t => t && ASPHALTES.some(a => t.endsWith(a));
+  const newGrid = grid.map(row => [...row]);
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
+      if (!isAsph(grid[r][c])) continue;
+      // voisin N (r-1) si vide -> SW_N (mais sw_N va sur le voisin lui-meme)
+      // En fait : sw_N = trottoir-en-haut/asphalte-en-bas -> a poser SUR la cellule asphalte voisin N
+      // Donc ici je pose les bords AUTOUR de l'asphalte (cellule voisine vide).
+      if (r > 0 && !isAsph(grid[r-1][c]) && !grid[r-1][c]) newGrid[r-1][c] = SW_N;
+      if (r < ROWS-1 && !isAsph(grid[r+1][c]) && !grid[r+1][c]) newGrid[r+1][c] = SW_S;
+      if (c > 0 && !isAsph(grid[r][c-1]) && !grid[r][c-1]) newGrid[r][c-1] = SW_W;
+      if (c < COLS-1 && !isAsph(grid[r][c+1]) && !grid[r][c+1]) newGrid[r][c+1] = SW_E;
+    }
+  }
+  grid = newGrid;
+  save();
+  redraw();
+}
+
+function celebrer() {
+  const btn = document.getElementById('fini-btn');
+  btn.classList.add('success');
+  btn.textContent = '🎉 Bravo !';
+  setTimeout(() => {
+    btn.classList.remove('success');
+    btn.textContent = '🎉 Fini !';
+  }, 2500);
+}
+
+// localStorage
+function save() {
+  try { localStorage.setItem('mj-pose-tiles', JSON.stringify(grid)); } catch(e) {}
+}
+function load() {
+  try {
+    const s = localStorage.getItem('mj-pose-tiles');
+    if (s) {
+      const arr = JSON.parse(s);
+      if (Array.isArray(arr) && arr.length === ROWS) grid = arr;
+    }
+  } catch(e) {}
+}
+
+load();
+buildCats();
+buildTiles();
+buildGrid();
+</script>
+</body>
+</html>

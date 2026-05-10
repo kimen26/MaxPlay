@@ -30,6 +30,11 @@ type: reference
 | Agent | Modèle | Utiliser quand |
 |-------|--------|----------------|
 | `game-dev` | Sonnet | Développement jeux HTML vanilla + Phaser |
+| `game-pmo` | Haiku | **PMO pôle JEU** — garant persistance state.md + BACKLOG.md, classifie inputs (6 catégories), orchestre les sous-spécialistes. À invoquer à chaque tour incluant un signal JEU. |
+| `game-tile-pmo` | Haiku | **Sous-spé PMO tile-tools LimeZu** (parent: game-pmo) — scope strict 5 fichiers (LESSONS, cartography, patterns, recipes_data, PIPELINE-MEMORY). Remonte synthèse au parent, ne touche pas state/BACKLOG. |
+| `game-tile-simplifier` | Sonnet | **Sachant tile #1/3** — analyste de scène. Image/desc → ANALYSE structurée pour designer. Connaît 30+ LESSONS LimeZu. |
+| `game-tile-designer` | Sonnet | **Sachant tile #2/3** — constructeur recettes Python. ANALYSE → `recipes/test_<nom>.py` + PNG render + auto-inspection. |
+| `game-tile-reviewer` | Haiku | **Sachant tile #3/3** — contrôleur qualité. Verdict PASS/FAIL avec issues CRITIQUE/HAUTE/MOYENNE/BASSE. Max 5 iter. |
 | `quick` | Haiku | Questions rapides, status, recherches légères |
 
 > **Anciens agents supprimés :** `narration-writer-a`, `narration-writer-b`, `narration-writer-c`, `narration-writer-claude-ancre`, `narration-keeper`, `narration-showrunner`
@@ -80,6 +85,7 @@ type: reference
 | `gamepad-inputs` | Manette 8BitDo FC30, Web Gamepad API, dual-input manette+tactile |
 | `performance-opt` | **PROACTIF** — optimisation assets, texture atlas, object pooling, draw calls |
 | `game-mechanics` | Mécaniques jeu 3-5 ans, level design, difficulté adaptative |
+| `maxplay-tiles` | Tileset LimeZu Modern Exteriors — méthode militaire, cartographie, voisinage, pattern modulaire bas/milieu/haut. Outils : [`game/web/tools/index.html`](../game/web/tools/index.html) (hub) → mockups-routes (échelle uniforme) + tile-library-v3 (patterns) + tile-picker (matrice drag&drop, supporte `?recipe=X.py`). Workflow Propose → Édite → Apprend avec sous-agent [`game-tile-pmo`](../.claude/agents/game-tile-pmo.md) (parent : [`game-pmo`](../.claude/agents/game-pmo.md)). Mini-jeu kids : [`mj-pose-tiles.html`](../game/web/mj-pose-tiles.html). |
 
 ### Business/Content (existants)
 | Skill | Utiliser quand |

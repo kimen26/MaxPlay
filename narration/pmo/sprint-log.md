@@ -6,6 +6,80 @@
 
 ---
 
+## 2026-05-11 (nuit) — Audit complet narration + fixes critiques + backlog audio
+
+**Contexte :** John ouvre session finale d'audit post-refonte 4 piliers — simulation 8 scénarios (nouvelle histoire, audio, cross-culture, localisation). Audit passe un skill `pmo-challenge` créé ce jour. 3 liens cassés CRITIQUES trouvés ET FIXÉS dans le même tour, conformément à décision auteur « fixe tout ! ».
+
+**Objectif :** 
+1. Vérifier cohérence end-to-end workflow 11 étapes (pitch → canon) + audio post-canon
+2. Détecter trous structurels (refs cassées, docs manquantes, INDEX désync)
+3. Valider tokenisation texte canon 001 (Phase C)
+4. Graver défis ARCHI découlant du challenge externe game-pmo
+
+**Fait (3 phases) :**
+
+**Phase A — Fixes critiques (3 refs cassées) ✅**
+- `.claude/agents/narration-audio.md` : 2 refs cassées corrigées
+  - `narration/personnages/voix-meta/README.md` (était `equipe/voix/README.md`, supprimé 2026-05-11)
+  - `narration/stories/<NNN-slug>/relecture-rewrite/synthese.md` (était `narration/workshop/<titre>/relecture.md`, supprimé 2026-05-08)
+  - Résultat : agent narration-audio fonctionnel, scénario « lancer audio histoire X » débloqué
+- `.claude/agents/narration-localisation.md` : 1 ref cassée + 2 sources ajoutées
+  - `narration/cross-culture/prenoms/INDEX.md` (était fichier inexistant)
+  - Ajout sources : `narration/cross-culture/castings-nationaux/` + `narration/cross-culture/INDEX.md`
+  - Résultat : agent narration-localisation fonctionnel, scénario « version brésilienne » débloqué côté agent
+- `narration/equipe/INDEX.md` : alignement PROCESS 9 → 11 étapes
+  - Ligne 12 + 29 : « workflow militaire 9 étapes » → « 11 étapes »
+  - « Suivi des 9 étapes » → « Suivi des 11 étapes »
+  - SLA « étapes 1, 6, 9 » → « étapes 1, 6, 10 (pitch, sélection, canon) »
+
+**Phase B — Décisions tranchées ✅**
+- **Phase C tokenisation** : OUI, tokeniser texte canon 001 dès maintenant (raison : prépa audio + future markup émotionnel ElevenLabs)
+  - Format tokens Jinja : `{{ wex }}`, `{{ titi_7 }}`, `{{ titi_6 }}`
+  - Alignement `personnages/lookup.yml` + frontmatter `tokens:` section
+  - Décors NON-tokenisés (pont/ruisseau/saule/pissenlit) → substitution sémantique via agent narration-localisation + cross-culture/lieux-locaux/
+- **Voix consolidées Pilier 1** : confirmation doublon résolu (equipe/voix/ supprimé)
+  - `personnages/voix-meta/` = narrateurs H/F adultes + cheatsheet + guide ElevenLabs + étude vocale
+  - `personnages/type-NN/voix.md` = 10 persos 4-5 ans (correctes, ancien format adulte remplacé)
+- **Backlog audio 8 tickets** : VOIX-001/002/003 (Haute) + CROSS-001..004 (continu) + ARCHI-DASH (reporté post-audio)
+
+**Phase C — Challenges détectés (à graver en backlog ARCHI) ⚠️**
+Du skill game-pmo et audit, 6 challenges transmis pour narration-pmo :
+1. C-1 : Pas de checklist hardcodée `[✅/❌]` fin de session (prose vs tableau)
+2. C-2 : Pas de rapport synthétique scannable en 5 sec (sprint-log OK, mais pas de « résumé complet tour »)
+3. C-3 : Pas de 3e niveau mémoire (`PIPELINE-MEMORY.md` méta-process) — décisions méta diluées dans decisions.md
+4. C-4 : Pas d'anti-patterns explicites documentés
+5. C-5 : Pas de mnémonique 1-ligne pour PMO (« Toile pas de moraline » pour narration)
+6. C-6 : Cartographie pas en tableau «  Fichier / Rôle / Tu y notes »
+
+→ Décision auteur : graver en tickets ARCHI-NNN (max 3 actifs) OU dans INBOX pour pickup ultérieur — placer en INBOX en attente de planification (C-3, C-5, C-6 prise directe par narration-pmo itération suivante).
+
+**Découvertes non-fixées (à acter/ticker) ⚠️**
+- Stubs cross-culture : `faune-flore/`, `lieux-locaux/`, `coutumes-jeux-aliments/`, `saisons-climat/` = INDEX uniquement, à peupler avant 2e casting national → tickets UNIVERS-004/005 (ou notes INBOX pour brainstorm prochain)
+- `exemples-canoniques.md` mentionné equipe/INDEX.md comme « à créer post-Phase D » — risque oubli si Phase D s'éloigne → ticket ARCHI pour tracker ?
+- Gabarit casting-nationaux créé (B1) et prêt dupliquer pour jp/br/he/sw — timing à trancher avec Directeur
+
+**Patterns méta-process (LEÇON) ✅**
+- Audit pôle systématique (skill pmo-challenge) s'avère utile — applicable à narration/jeu régulièrement
+- Distinction PMO vs sachant clarifiée : jeu = 3 sachants tile + 2 PMO ; narration = 1 PMO seul (hypothèse à tester si spécialisation future)
+- Checklist remise main 8 points formalisée dans narration-pmo (à graver en ARCHI-006)
+
+**Décisions prises (à enregistrer decisions.md) ✅**
+1. Phase C tokenisation : OUI immédiat (cf. section 2026-05-11 suite)
+2. Voix consolidées : figé (Pilier 1 = truth, equipe/voix supprimé)
+3. narration-pmo enrichi : challengé par game-pmo, 6 pistes = 3 à ignorer, 3 à planifier (ARCHI/INBOX)
+
+**État au reboot :**
+- Voix : consolidées Pilier 1, 10 persos enfants 4-5 ans ✅, narrateurs H/F adultes voix-meta ✅
+- Gabarit casting : prêt dupliquer
+- Stories gabarit : PROCESS 11 étapes ✅
+- ORGANIGRAMME : 13 agents ✅
+- Backlog : 2 actifs (STORY-002 + ARCHI-006), 8 audio-voix à venir, 3 challenges ARCHI en attente placement
+- À venir : Phase C implémentation 001 + tokenisation (assigné Directeur en prochain tour) + brainstorm STORY-002 Nono + placement 6 challenges deck
+- Code : commit `64d4d581` (narration/ + .claude/agents/* + CLAUDE.md)
+- Brainstorm STORY-002 bloqué : Nono — duo (Polo/Raph/Juju ?) + lieu + animal à trancher
+
+---
+
 ## 2026-05-11 — Audit voix + comblement trous structurels (post-refonte 4 piliers)
 
 **Contexte :** John ouvre 2 chantiers avant le dashboard HTML :

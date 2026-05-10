@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>MaxPlay - Tile Picker (Bibliotheque + Matrice 10x10)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #1a1a2e; color: #fff; font-family: 'Segoe UI', sans-serif; padding: 16px; }
+  h1 { color: #ffe066; text-align: center; font-size: 1.4rem; margin-bottom: 4px; }
+  p.sub { text-align: center; color: #aaa; font-size: 0.85rem; margin-bottom: 18px; }
+
+  .container { max-width: 1700px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 1200px) { .container { grid-template-columns: 1fr; } }
+
+  section { background: #16213e; border-radius: 8px; overflow: hidden; }
+  h2 { background: #0f3460; color: #ffe066; padding: 8px 12px; font-size: 1rem; }
+  .desc { padding: 4px 12px; font-size: 0.75rem; color: #aac; background: #0f3460; }
+
+  /* Bibliotheque */
+  .lib-body { padding: 10px; max-height: 80vh; overflow-y: auto; }
+  .lib-group { margin-bottom: 14px; }
+  .lib-group-title { color: #ffe066; font-size: 0.9rem; margin-bottom: 6px; font-weight: bold; }
+  /* Lib tiles : afficher les multi-tiles a leurs VRAIES dimensions natives (w x h).
+     Layout flexbox pour permettre des tiles de tailles differentes (1x1, 4x2, 7x6, etc).
+     --cell-size controle le zoom commun, w/h native est preserve via les attributs w/h sur l'img. */
+  .lib-grid { display: flex; flex-wrap: wrap; gap: 4px; align-items: flex-start; }
+  .lib-tile { background: #2a4a2a; border-radius: 4px; padding: 3px; cursor: grab; user-select: none;
+              transition: transform 0.1s; position: relative;
+              display: flex; flex-direction: column; align-items: center; }
+  .lib-tile:hover { transform: scale(1.06); background: #3a5a3a; outline: 2px solid #ffe066; z-index: 10; }
+  .lib-tile.dragging { opacity: 0.4; }
+  /* width = w * --cell-size, height = h * --cell-size - injectes en inline par le JS */
+  .lib-tile img { display: block; image-rendering: pixelated; image-rendering: crisp-edges; }
+  .lib-tile .label { color: #ffe066; font-size: 0.6rem; text-align: center; padding-top: 2px;
+                     font-family: monospace; overflow: hidden; text-overflow: ellipsis;
+                     white-space: nowrap; max-width: 100%; }
+  .lib-tile .dims { color: #4ade80; font-size: 0.55rem; text-align: center; font-family: monospace; }
+
+  /* Matrice */
+  .mat-body { padding: 10px; }
+  .mat-controls { display: flex; gap: 8px; margin-bottom: 8px; flex-wrap: wrap; align-items: center; }
+  .mat-controls button { background: #0f3460; color: #ffe066; border: none; padding: 6px 12px;
+                         border-radius: 4px; cursor: pointer; font-size: 0.8rem; }
+  .mat-controls button:hover { background: #1f4480; }
+  .mat-controls input { background: #2a3a5a; color: #fff; border: 1px solid #1f4480; padding: 4px 8px;
+                        border-radius: 4px; width: 60px; font-size: 0.85rem; }
+  .mat-controls label { font-size: 0.8rem; color: #aac; }
+  /* Cellules a TAILLE FIXE - une case fait toujours la meme taille (5x5 ou 15x15 = meme echelle) */
+  :root { --cell-size: 48px; }
+  .mat-grid-wrap { overflow: auto; max-height: 80vh; padding: 6px; }
+  /* Fond mat-grid = couleur unique discrete (pas de quadrillage visible quand cellules vides ou couvertes) */
+  .mat-grid { display: grid; gap: 0; background: #1a2540; padding: 0; border-radius: 4px;
+              width: max-content; outline: 1px solid #2a3a5a; }
+  .mat-cell { background: transparent; cursor: pointer; position: relative;
+              width: var(--cell-size); height: var(--cell-size); }
+  /* Quadrillage TRES discret pour reperer la grille sans pollutionvisuelle */
+  .mat-cell::before { content: ''; position: absolute; inset: 0;
+                      border-right: 1px solid rgba(255,255,255,0.04);
+                      border-bottom: 1px solid rgba(255,255,255,0.04);
+                      pointer-events: none; }
+  .mat-cell.drop-target { outline: 2px dashed #ffe066; z-index: 100; }
+  /* Image dans la matrice : taille NATIVE = w * cell-size, h * cell-size (multi-tile preservee) */
+  .mat-cell img { position: absolute; top: 0; left: 0;
+                  image-rendering: pixelated; image-rendering: crisp-edges;
+                  pointer-events: none; }
+  /* Multi-tiles ancres : z-index eleve pour couvrir les cellules en dessous + masquer leur quadrillage */
+  .mat-cell.multi { z-index: 10; }
+  .mat-cell.multi img { outline: 1px dashed rgba(255,224,102,0.4); z-index: 10; }
+  /* Cellules COUVERTES par un multi-tile : masquer leur quadrillage (sinon visible a travers la tile) */
+  .mat-cell.covered::before { display: none; }
+  .mat-cell .coord { display: none; } /* Coordonnees masquees par defaut */
+  body.show-coords .mat-cell .coord { display: block; position: absolute; top: 1px; left: 2px;
+                                       color: rgba(255,255,255,0.4); font-size: 0.5rem;
+                                       font-family: monospace; pointer-events: none; z-index: 5; }
+  .mat-cell:hover { outline: 1px solid #ffe066; z-index: 50; }
+  /* Modes d'echelle - les boutons activent une variable CSS differente */
+  body.zoom-mini { --cell-size: 20px; }
+  body.zoom-small { --cell-size: 32px; }
+  body.zoom-normal { --cell-size: 48px; }
+  body.zoom-big { --cell-size: 72px; }
+  /* Mobile : auto-passer en zoom-mini */
+  @media (max-width: 800px) {
+    body:not(.zoom-locked) { --cell-size: 24px; }
+  }
+
+  /* Export zone */
+  .export { padding: 10px; background: #0a1530; }
+  .export pre { background: #0f1820; color: #4ade80; padding: 8px; border-radius: 4px;
+                font-size: 0.7rem; overflow-x: auto; max-height: 200px; white-space: pre-wrap; word-break: break-all; }
+  .export-actions { display: flex; gap: 6px; margin-top: 6px; }
+  .filter-input { background: #2a3a5a; color: #fff; border: 1px solid #1f4480; padding: 4px 8px;
+                  border-radius: 4px; font-size: 0.85rem; flex: 1; min-width: 120px; }
+  .cat-tab { background: #2a3a5a; color: #aac; border: 1px solid #1f4480; padding: 4px 8px;
+             border-radius: 4px; cursor: pointer; font-size: 0.78rem; }
+  .cat-tab:hover { background: #3a4a6a; color: #fff; }
+  .cat-tab.active { background: #ffe066; color: #2a2a4a; border-color: #ffe066; font-weight: bold; }
+  .zoom-btn { background: #2a3a5a; color: #aac; border: 1px solid #1f4480; padding: 4px 10px;
+              border-radius: 4px; cursor: pointer; font-size: 0.78rem; }
+  .zoom-btn:hover { background: #3a4a6a; color: #fff; }
+  .zoom-btn.active { background: #ffe066; color: #2a2a4a; border-color: #ffe066; font-weight: bold; }
+
+  /* Selected tile preview */
+  .selected-preview { padding: 6px 10px; background: #0a1530; border-bottom: 1px solid #1f4480;
+                      display: flex; gap: 8px; align-items: center; font-size: 0.78rem; }
+  .selected-preview img { width: 48px; height: 48px; image-rendering: pixelated; image-rendering: crisp-edges;
+                          background: #2a4a2a; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<h1>🎨 MaxPlay - Tile Picker (bibliotheque + matrice 10x10)</h1>
+<p class="sub">
+  Glisse une tile depuis la bibliotheque vers la matrice pour composer un exemple. Click droit sur une cellule = supprime.
+  Clique "Export" pour copier la composition au format Python (a coller dans une recipe).
+</p>
+<nav style="text-align: center; margin-bottom: 16px;">
+  <a href="tile-library-v3.html" style="display: inline-block; padding: 6px 12px; background: #0f3460; color: #ffe066; text-decoration: none; border-radius: 6px; font-size: 0.8rem;">← Tile Library v3 (patterns + cartographie)</a>
+</nav>
+
+<div class="container">
+
+  <section>
+    <h2>📚 Bibliotheque (clique pour selectionner, ou drag vers la matrice)</h2>
+    <div class="desc">81 tiles : 27 Asphalt_1 + 54 Sidewalk_1. Filtre par categorie ou par numero.</div>
+    <div style="padding: 6px 10px; background: #0a1530; display: flex; gap: 4px; flex-wrap: wrap;">
+      <button class="cat-tab active" data-cat="all">🔍 Tout</button>
+      <button class="cat-tab" data-cat="rue">🛣️ Rue</button>
+      <button class="cat-tab" data-cat="parc">🌳 Parc</button>
+      <button class="cat-tab" data-cat="jardin">🌸 Jardin</button>
+      <button class="cat-tab" data-cat="building">🏠 Building</button>
+      <button class="cat-tab" data-cat="foret">🌲 Foret</button>
+    </div>
+    <div style="padding: 6px 10px; background: #0a1530;">
+      <input type="text" id="filter" class="filter-input" placeholder="Filtrer (ex: 11, 12, 50, sw...)" />
+    </div>
+    <div class="selected-preview" id="selected-preview">
+      <span style="color: #aac;">Tile selectionnee :</span>
+      <img id="selected-img" src="" alt="">
+      <span id="selected-label" style="color: #ffe066; font-family: monospace;">aucune</span>
+    </div>
+    <div class="lib-body" id="lib-body">Chargement...</div>
+  </section>
+
+  <section>
+    <h2>🎯 Matrice (defaut 10x10) - clique cellule + tile selectionnee, ou drag depuis biblio</h2>
+    <div class="desc">Click gauche cellule = pose la tile selectionnee. Click droit = efface. Tailles cellule fixes (echelle au choix).</div>
+    <div class="mat-body">
+      <div class="mat-controls">
+        <label>Cols : <input type="number" id="mat-cols" value="10" min="1" max="50"></label>
+        <label>Rows : <input type="number" id="mat-rows" value="10" min="1" max="50"></label>
+        <button onclick="rebuildMatrix()">Reconstruire</button>
+        <button onclick="clearMatrix()">Effacer tout</button>
+        <button onclick="exportMatrix()" style="background: #6a3a0f;">📤 Export Python</button>
+      </div>
+      <div class="mat-controls" style="margin-top: 4px;">
+        <label style="color: #ffe066;">🔍 Échelle :</label>
+        <button class="zoom-btn" data-zoom="mini">Mini</button>
+        <button class="zoom-btn" data-zoom="small">Petit</button>
+        <button class="zoom-btn active" data-zoom="normal">Normal</button>
+        <button class="zoom-btn" data-zoom="big">Grand</button>
+        <span id="zoom-info" style="color: #aac; font-size: 0.75rem; margin-left: 6px;">48 px/case</span>
+      </div>
+      <div class="mat-grid-wrap">
+        <div class="mat-grid" id="mat-grid"></div>
+      </div>
+    </div>
+    <div class="export">
+      <pre id="export-output">// Compose ta matrice puis clique Export</pre>
+      <div class="export-actions">
+        <button onclick="copyExport()">Copier dans presse-papier</button>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="../tile-tools/tile_picker_data.js"></script>
+<script src="../tile-tools/recipes_data.js"></script>
+<script>
+const ASSET_PREFIX = '../../phaser/public/assets/tiles/';
+
+let selectedTile = null;
+let matrixState = []; // [row][col] = {file, w, h} | null
+let MAT_COLS = 10, MAT_ROWS = 10;
+let currentCat = 'all';
+
+const CAT_INFO = {
+  all: 'Toutes les tiles',
+  rue: 'Rue (asphalte, trottoir, lignes)',
+  parc: 'Parc (bancs, statues, arches)',
+  jardin: 'Jardin (fleurs, plantes)',
+  building: 'Building (murs, fenetres, toits)',
+  foret: 'Foret (herbe, terre, broussailles)',
+};
+
+function tileURL(filename) {
+  return ASSET_PREFIX + filename;
+}
+
+function getTilesForCat(cat) {
+  if (!window.TILE_PICKER) return [];
+  if (cat === 'all') {
+    return Object.values(window.TILE_PICKER).flat();
+  }
+  return window.TILE_PICKER[cat] || [];
+}
+
+function buildLib() {
+  const body = document.getElementById('lib-body');
+  if (!window.TILE_PICKER) {
+    body.textContent = 'Erreur: TILE_PICKER data non charge.';
+    return;
+  }
+  body.innerHTML = '';
+
+  const tiles = getTilesForCat(currentCat);
+  const div = document.createElement('div');
+  div.className = 'lib-group';
+  div.innerHTML = `<div class="lib-group-title">${CAT_INFO[currentCat]} (${tiles.length} tiles)</div><div class="lib-grid"></div>`;
+  const grid = div.querySelector('.lib-grid');
+
+  // Limit display for perf (>500 tiles ralentit le navigateur). On affiche les 500 premiers + message.
+  const MAX_DISPLAY = 500;
+  const toShow = tiles.slice(0, MAX_DISPLAY);
+
+  for (const t of toShow) {
+    const tdiv = document.createElement('div');
+    tdiv.className = 'lib-tile';
+    tdiv.draggable = true;
+    tdiv.dataset.file = t.file;
+    tdiv.dataset.w = t.w;
+    tdiv.dataset.h = t.h;
+    tdiv.dataset.label = t.name || t.file.split('/').pop();
+    const shortName = (t.name || t.file).slice(-20);
+    // Tailles natives appliquees via inline style basees sur --cell-size courant
+    tdiv.innerHTML = `
+      <img src="${tileURL(t.file)}" alt="" loading="lazy"
+           style="width: calc(${t.w} * var(--cell-size)); height: calc(${t.h} * var(--cell-size));">
+      <div class="label" title="${t.name || ''}">${shortName}</div>
+      <div class="dims">${t.w}x${t.h}</div>
+    `;
+    tdiv.addEventListener('click', () => selectTile(tdiv));
+    tdiv.addEventListener('dragstart', e => {
+      tdiv.classList.add('dragging');
+      e.dataTransfer.setData('application/json', JSON.stringify({
+        file: t.file, w: t.w, h: t.h, label: tdiv.dataset.label,
+      }));
+    });
+    tdiv.addEventListener('dragend', () => tdiv.classList.remove('dragging'));
+    grid.appendChild(tdiv);
+  }
+
+  if (tiles.length > MAX_DISPLAY) {
+    const more = document.createElement('div');
+    more.style.cssText = 'padding: 10px; color: #aac; text-align: center; font-size: 0.8rem;';
+    more.textContent = `... et ${tiles.length - MAX_DISPLAY} autres (utilise le filtre pour reduire)`;
+    div.appendChild(more);
+  }
+
+  body.appendChild(div);
+}
+
+function setCategory(cat) {
+  currentCat = cat;
+  document.querySelectorAll('.cat-tab').forEach(b => {
+    b.classList.toggle('active', b.dataset.cat === cat);
+  });
+  buildLib();
+  // re-apply current filter
+  const q = document.getElementById('filter').value;
+  applyFilter(q);
+}
+
+function applyFilter(q) {
+  q = q.toLowerCase().trim();
+  document.querySelectorAll('.lib-tile').forEach(t => {
+    const match = !q || (t.dataset.label || '').toLowerCase().includes(q) || (t.dataset.file || '').toLowerCase().includes(q);
+    t.style.display = match ? '' : 'none';
+  });
+}
+
+function selectTile(tdiv) {
+  selectedTile = {
+    file: tdiv.dataset.file,
+    w: +tdiv.dataset.w,
+    h: +tdiv.dataset.h,
+    label: tdiv.dataset.label,
+  };
+  document.getElementById('selected-img').src = tileURL(selectedTile.file);
+  document.getElementById('selected-label').textContent = `${selectedTile.label} (${selectedTile.w}x${selectedTile.h})`;
+  // visual highlight
+  document.querySelectorAll('.lib-tile').forEach(t => t.style.outline = '');
+  tdiv.style.outline = '2px solid #ffe066';
+}
+
+function buildMatrix() {
+  MAT_COLS = +document.getElementById('mat-cols').value || 10;
+  MAT_ROWS = +document.getElementById('mat-rows').value || 10;
+  const grid = document.getElementById('mat-grid');
+  grid.style.gridTemplateColumns = `repeat(${MAT_COLS}, 1fr)`;
+  grid.innerHTML = '';
+  matrixState = Array.from({length: MAT_ROWS}, () => Array(MAT_COLS).fill(null));
+
+  for (let r = 0; r < MAT_ROWS; r++) {
+    for (let c = 0; c < MAT_COLS; c++) {
+      const cell = document.createElement('div');
+      cell.className = 'mat-cell';
+      cell.dataset.row = r;
+      cell.dataset.col = c;
+      cell.innerHTML = `<span class="coord">${c},${r}</span>`;
+      cell.addEventListener('click', () => placeOnCell(r, c));
+      cell.addEventListener('contextmenu', e => { e.preventDefault(); clearCell(r, c); });
+      cell.addEventListener('dragover', e => { e.preventDefault(); cell.classList.add('drop-target'); });
+      cell.addEventListener('dragleave', () => cell.classList.remove('drop-target'));
+      cell.addEventListener('drop', e => {
+        e.preventDefault();
+        cell.classList.remove('drop-target');
+        const data = JSON.parse(e.dataTransfer.getData('application/json'));
+        placeAt(r, c, data);
+      });
+      grid.appendChild(cell);
+    }
+  }
+}
+
+function placeOnCell(r, c) {
+  if (!selectedTile) {
+    alert('Selectionne une tile dans la bibliotheque d abord (clique dessus).');
+    return;
+  }
+  placeAt(r, c, selectedTile);
+}
+
+function placeAt(r, c, tile) {
+  if (r >= MAT_ROWS || c >= MAT_COLS) return;
+  matrixState[r][c] = {...tile};
+  redraw();
+}
+
+function clearCell(r, c) {
+  matrixState[r][c] = null;
+  redraw();
+}
+
+function clearMatrix() {
+  for (let r = 0; r < MAT_ROWS; r++) {
+    for (let c = 0; c < MAT_COLS; c++) matrixState[r][c] = null;
+  }
+  redraw();
+}
+
+function rebuildMatrix() {
+  buildMatrix();
+}
+
+function redraw() {
+  const grid = document.getElementById('mat-grid');
+
+  // Etape 1 : reset toutes les classes "multi" et "covered"
+  for (let i = 0; i < grid.children.length; i++) {
+    grid.children[i].classList.remove('multi', 'covered');
+  }
+
+  // Etape 2 : pour chaque cellule ancree, dessiner l'image + marquer les cellules couvertes
+  for (let r = 0; r < MAT_ROWS; r++) {
+    for (let c = 0; c < MAT_COLS; c++) {
+      const cell = grid.children[r * MAT_COLS + c];
+      const t = matrixState[r][c];
+      const img = cell.querySelector('img');
+      if (t) {
+        const w = t.w || 1, h = t.h || 1;
+        const isMulti = (w > 1 || h > 1);
+        if (img) {
+          img.src = tileURL(t.file);
+          img.style.width = isMulti ? `calc(${w} * var(--cell-size))` : '100%';
+          img.style.height = isMulti ? `calc(${h} * var(--cell-size))` : '100%';
+        } else {
+          const styleAttr = isMulti
+            ? `style="width: calc(${w} * var(--cell-size)); height: calc(${h} * var(--cell-size));"`
+            : `style="width: 100%; height: 100%;"`;
+          cell.insertAdjacentHTML('beforeend', `<img src="${tileURL(t.file)}" alt="" ${styleAttr}>`);
+        }
+        if (isMulti) {
+          cell.classList.add('multi');
+          // Marquer toutes les cellules couvertes par ce multi-tile (sauf l'ancre)
+          for (let dr = 0; dr < h; dr++) {
+            for (let dc = 0; dc < w; dc++) {
+              if (dr === 0 && dc === 0) continue;
+              const rr = r + dr, cc = c + dc;
+              if (rr < MAT_ROWS && cc < MAT_COLS) {
+                const covered = grid.children[rr * MAT_COLS + cc];
+                covered.classList.add('covered');
+              }
+            }
+          }
+        }
+      } else if (img) {
+        img.remove();
+      }
+    }
+  }
+}
+
+function exportMatrix() {
+  const lines = ['"""Composition exportee depuis tile-picker.html."""', ''];
+  // Build ground 2D array - les paths sont relatifs au dossier tiles/
+  const ground = [];
+  for (let r = 0; r < MAT_ROWS; r++) {
+    const row = [];
+    for (let c = 0; c < MAT_COLS; c++) {
+      const t = matrixState[r][c];
+      // t.file = "roads/foo.png" ou "parks/bar.png" etc. Le path complet est conserve.
+      row.push(t ? `'${t.file}'` : 'None');
+    }
+    ground.push(row);
+  }
+  lines.push('ground = [');
+  for (const row of ground) {
+    lines.push('    [' + row.join(', ') + '],');
+  }
+  lines.push(']');
+  lines.push('');
+  lines.push(`SNIPPET = {'name': 'composition', 'cols': ${MAT_COLS}, 'rows': ${MAT_ROWS}, 'ground': ground, 'objects': []}`);
+  const txt = lines.join('\n');
+  document.getElementById('export-output').textContent = txt;
+  // Auto-copy + scroll vers la zone export
+  navigator.clipboard.writeText(txt).then(() => {
+    const btn = event && event.target;
+    if (btn) {
+      const orig = btn.textContent;
+      btn.textContent = '✅ Copié !';
+      setTimeout(() => { btn.textContent = orig; }, 1500);
+    }
+  }).catch(() => {});
+  document.getElementById('export-output').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function copyExport() {
+  const txt = document.getElementById('export-output').textContent;
+  navigator.clipboard.writeText(txt).then(() => alert('Copie !'));
+}
+
+// Zoom de la matrice
+function setZoom(level) {
+  const sizes = { mini: 20, small: 32, normal: 48, big: 72 };
+  document.body.classList.remove('zoom-mini', 'zoom-small', 'zoom-normal', 'zoom-big');
+  document.body.classList.add('zoom-' + level, 'zoom-locked');
+  document.querySelectorAll('.zoom-btn').forEach(b => {
+    b.classList.toggle('active', b.dataset.zoom === level);
+  });
+  const info = document.getElementById('zoom-info');
+  if (info) info.textContent = sizes[level] + ' px/case';
+  // Persistance
+  try { localStorage.setItem('tile-picker-zoom', level); } catch(e) {}
+}
+document.querySelectorAll('.zoom-btn').forEach(b => {
+  b.addEventListener('click', () => setZoom(b.dataset.zoom));
+});
+// Restore zoom au chargement
+try {
+  const saved = localStorage.getItem('tile-picker-zoom');
+  if (saved && ['mini','small','normal','big'].includes(saved)) setZoom(saved);
+} catch(e) {}
+
+// Filter bibliotheque
+document.getElementById('filter').addEventListener('input', e => {
+  applyFilter(e.target.value);
+});
+
+// Onglets categorie
+document.querySelectorAll('.cat-tab').forEach(b => {
+  b.addEventListener('click', () => setCategory(b.dataset.cat));
+});
+
+// Import d'une recette via ?recipe=test_X.py
+function importRecipeFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const recipeName = params.get('recipe');
+  if (!recipeName || !window.RECIPES) return false;
+  const recipe = window.RECIPES[recipeName];
+  if (!recipe) {
+    console.warn('Recipe not found:', recipeName, 'available:', Object.keys(window.RECIPES));
+    return false;
+  }
+  // Set matrix dimensions to match the recipe
+  document.getElementById('mat-cols').value = recipe.cols;
+  document.getElementById('mat-rows').value = recipe.rows;
+  buildMatrix();
+  // Fill cells from ground[][]
+  for (let r = 0; r < recipe.rows; r++) {
+    for (let c = 0; c < recipe.cols; c++) {
+      const file = recipe.ground[r] ? recipe.ground[r][c] : null;
+      if (file) {
+        // We need the w/h. Look up in TILE_PICKER catalog
+        let dims = { w: 1, h: 1 };
+        for (const cat in window.TILE_PICKER) {
+          const found = window.TILE_PICKER[cat].find(t => t.file === file);
+          if (found) { dims = { w: found.w, h: found.h }; break; }
+        }
+        matrixState[r][c] = { file, w: dims.w, h: dims.h, label: file.split('/').pop() };
+      }
+    }
+  }
+  redraw();
+  // Banner: indicate recipe loaded
+  const msg = document.createElement('div');
+  msg.style.cssText = 'background: #ffe066; color: #2a2a4a; padding: 8px 12px; border-radius: 4px; margin-bottom: 8px; font-size: 0.85rem;';
+  msg.innerHTML = `📥 Recette <code>${recipeName}</code> importée (${recipe.cols}×${recipe.rows}). Modifie + Export Python pour renvoyer ta version.`;
+  document.querySelector('.mat-body').prepend(msg);
+  return true;
+}
+
+buildLib();
+buildMatrix();
+importRecipeFromURL();
+</script>
+</body>
+</html>

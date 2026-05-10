@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>MaxPlay - Mockups Routes (echelle uniforme)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #1a1a2e; font-family: 'Segoe UI', sans-serif; color: #fff; padding: 20px; }
+  h1 { color: #ffe066; text-align: center; font-size: 1.6rem; margin-bottom: 4px; }
+  p.sub { text-align: center; color: #aaa; font-size: 0.85rem; margin-bottom: 20px; }
+  nav { text-align: center; margin-bottom: 24px; }
+  nav a { color: #aac; text-decoration: none; padding: 4px 10px; }
+  nav a:hover { color: #ffe066; }
+
+  .grid { max-width: 1400px; margin: 0 auto; display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(520px, 1fr)); gap: 18px; }
+
+  .card { background: #16213e; border-radius: 10px; overflow: hidden; border: 2px solid #0f3460; }
+  .card-header { padding: 10px 14px; background: #0f3460; }
+  .card-title { font-size: 1rem; color: #ffe066; font-weight: bold; }
+  .card-desc { font-size: 0.78rem; color: #aac; margin-top: 4px; line-height: 1.4; }
+  .card-meta { font-size: 0.7rem; color: #6a7a9a; margin-top: 4px; font-family: monospace; }
+
+  /* CANVAS uniforme : tous les mockups dans un container 480x480 fixe, image contained */
+  .canvas-wrap { background: #2a4a2a; padding: 8px; display: flex; align-items: center; justify-content: center;
+                 height: 500px; }
+  .canvas-wrap img { image-rendering: pixelated; image-rendering: crisp-edges;
+                     max-width: 100%; max-height: 100%; width: auto; height: auto;
+                     object-fit: contain;
+                     background: rgba(0,0,0,0.2); border-radius: 4px; }
+  /* Mode mini pour mobile */
+  @media (max-width: 800px) {
+    .canvas-wrap { height: 300px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+
+  .actions { display: flex; gap: 6px; padding: 10px 14px; background: #0a1530; }
+  .btn { flex: 1; background: #1f4480; color: #ffe066; border: none; padding: 8px;
+         border-radius: 6px; cursor: pointer; font-size: 0.82rem; text-align: center;
+         text-decoration: none; }
+  .btn:hover { background: #2f5490; }
+  .btn.edit { background: #6a3a0f; }
+  .btn.edit:hover { background: #8a4a1f; }
+  .btn.png { background: #2a5a2a; }
+  .btn.png:hover { background: #3a7a3a; }
+
+  .loading { color: #aac; font-size: 0.85rem; text-align: center; }
+  .info-banner { max-width: 1400px; margin: 0 auto 16px;
+                 background: #1f4480; color: #ffe066; padding: 8px 14px;
+                 border-radius: 6px; font-size: 0.82rem; }
+</style>
+</head>
+<body>
+
+<h1>🛣️ Mockups Routes — échelle uniforme 480×480</h1>
+<p class="sub">5 patterns de référence avec recettes validées. Bouton "Éditer" ouvre le tile-picker pré-rempli.</p>
+<nav>
+  <a href="index.html">← Tools</a> ·
+  <a href="tile-library-v3.html">📚 Tile Library</a> ·
+  <a href="tile-picker.html">🎨 Tile Picker</a>
+</nav>
+
+<div class="info-banner">
+  💡 <strong>Workflow Propose → Édite → Apprend</strong> :
+  je propose une compo. Tu cliques 🎨 Éditer → tu modifies dans tile-picker → tu copies l'export Python → tu me l'envoies → je mets à jour la recette + invoque tile-pmo pour graver la leçon.
+</div>
+
+<div class="grid" id="grid">
+  <div class="loading">Chargement…</div>
+</div>
+
+<script>
+// Liste des mockups : chaque entrée pointe vers un PNG pré-rendu + recette source.
+// Avantage : pas besoin de rerendre en JS (le PNG est canonique, identique à ce que verra Phaser).
+const MOCKUPS = [
+  {
+    id: 'route_v_5cols',
+    title: '① Route droite (verticale)',
+    desc: '5 cols × 12 rows. Chaussée 1 col + bords trottoir _4/_8 + trottoirs plain. Recette validée user.',
+    png: '../tile-tools/recipes/test_route_v_5cols.png',
+    recipe: 'test_route_v_5cols.py',
+    size: '5×12 tiles',
+  },
+  {
+    id: 'route_h_5rows',
+    title: '② Route droite (horizontale)',
+    desc: '14 cols × 5 rows. Symétrique de la verticale avec _6/_2 et pointillée dashée H.',
+    png: '../tile-tools/recipes/test_route_h_5rows.png',
+    recipe: 'test_route_h_5rows.py',
+    size: '14×5 tiles',
+  },
+  {
+    id: 'virage_gauche',
+    title: '③ Virage gauche (SUD→OUEST)',
+    desc: 'Coin EXT NE = _14 (gros arc). Coin INT SW = _3 (petit triangle). Pointillée L au pivot. Validé user.',
+    png: '../tile-tools/recipes/test_virage_gauche.png',
+    recipe: 'test_virage_gauche.py',
+    size: '10×10 tiles',
+  },
+  {
+    id: 'carrefour_4voies',
+    title: '④ Carrefour 4 voies (croix)',
+    desc: '12×12. Route H + Route V + 4 coins INT au pivot (_1/_3/_5/_7). 4 quadrants de trottoir aux coins.',
+    png: '../tile-tools/recipes/test_carrefour_4voies.png',
+    recipe: 'test_carrefour_4voies.py',
+    size: '12×12 tiles',
+  },
+  {
+    id: 'rond_point',
+    title: '⑤ Rond-point complet',
+    desc: '14×12. 4 quarts _50/_51/_52/_53 + îlot+panneau _54 centré (pose en col=5, row=4).',
+    png: '../tile-tools/recipes/test_rond_point_v9.png',
+    recipe: 'test_rond_point_v9.py',
+    size: '14×12 tiles',
+  },
+  {
+    id: 'quartier_propre',
+    title: '⑥ Petit quartier propre (base Max Adventure)',
+    desc: '16×12. Anneau routier complet + 4 virages aux coins + pelouse centrale + maison. Toutes recettes assemblées.',
+    png: '../tile-tools/recipes/test_quartier_propre.png',
+    recipe: 'test_quartier_propre.py',
+    size: '16×12 tiles',
+  },
+];
+
+function build() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  for (const m of MOCKUPS) {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="card-header">
+        <div class="card-title">${m.title}</div>
+        <div class="card-desc">${m.desc}</div>
+        <div class="card-meta">${m.size} · <code>${m.recipe}</code></div>
+      </div>
+      <div class="canvas-wrap">
+        <img src="${m.png}" alt="${m.title}" loading="lazy" onerror="this.style.opacity=0.3; this.alt='⚠️ PNG manquant : '+this.src">
+      </div>
+      <div class="actions">
+        <a class="btn edit" href="tile-picker.html?recipe=${encodeURIComponent(m.recipe)}" title="Éditer dans le picker">🎨 Éditer</a>
+        <a class="btn png" href="${m.png}" target="_blank" title="Voir le PNG en grand">🖼️ PNG</a>
+        <a class="btn" href="../tile-tools/recipes/${m.recipe}" target="_blank" title="Voir le code Python">📜 Code</a>
+      </div>
+    `;
+    grid.appendChild(card);
+  }
+}
+
+build();
+</script>
+</body>
+</html>

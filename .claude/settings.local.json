@@ -110,7 +110,26 @@
       "Bash(set PYTHONIOENCODING=utf-8)",
       "Bash(grep -iE \"\\\\.env|secret|credential|token|\\\\.key$\")",
       "Bash(gh run *)",
-      "PowerShell(gh run list --limit 3 --repo kimen26/MaxPlay 2>&1)"
+      "PowerShell(gh run list --limit 3 --repo kimen26/MaxPlay 2>&1)",
+      "Bash(rm -f zoom_arcs_11_14.png zoom_arcs_11_14_BIG.png zoom_passages_pietons.png zoom_passages_v2.png zoom_passages_pietons_BIG.png zoom_54.png zoom_examples_bottom.png zoom_rondpoint_lz.png compare_rondpoint_centrage.png)",
+      "Bash(rm -f recipes/test_rond_point_v10.py recipes/test_rond_point_v10.png)",
+      "Bash(rm -rf \"c:/ProjetsPerso/Claude_Projets/\" 2>&1 && ls \"c:/ProjetsPerso/Claude_Projets/\" 2>&1)",
+      "Bash(grep -E \"html$\")",
+      "Bash(grep -n \"</div>$\\\\|games-grid\\\\|map-hotspot\\\\|grid-toggle\\\\|tools\" \"c:/ProjetsPerso/Claude_Projects/MaxPlay/game/web/index.html\")",
+      "Bash(grep \"^test_.*\\\\.py$\")",
+      "Bash(grep \"^test_.*\\\\.png$\")",
+      "Bash(awk '{print $NF, $5}')",
+      "Bash(grep -n \"EP-032\\\\|EP-033\\\\|EP-026\\\\|^---$\" c:/ProjetsPerso/Claude_Projects/MaxPlay/game/tasks/BACKLOG.md)",
+      "Bash(rm \"c:/ProjetsPerso/Claude_Projects/MaxPlay/.claude/agents/tile-pmo.md\")",
+      "Bash(mkdir -p \"C:/Users/kimen/.claude/skills/multi-agent-pmo\" && ls \"C:/Users/kimen/.claude/skills/\" | head -30)",
+      "Bash(mv \"C:/Users/kimen/.claude/skills/multi-agent-pmo\" \"C:/Users/kimen/.claude/skills/pmo-design\" && ls C:/Users/kimen/.claude/skills/ | grep -i pmo)",
+      "PowerShell(Get-ChildItem \"C:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\\\\stories\\\\\" | Where-Object { $_.Name -match \"002\" })"
+    ],
+    "additionalDirectories": [
+      "c:\\ProjetsPerso\\Claude_Projets",
+      "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude\\agents",
+      "C:\\Users\\kimen\\.claude\\skills",
+      "C:\\Users\\kimen\\.claude\\skills\\multi-agent-pmo"
     ]
   },
   "hooks": {

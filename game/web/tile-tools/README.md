@@ -71,13 +71,29 @@ Les `.js` sont des copies des `.json` chargées via `<script src>` (file:// bloq
 | Route horizontale 5 rows | `test_route_h_5rows.py` | ✅ validé |
 | Voie bus 2 voies | `test_voie_bus_v6.py` | ⏳ |
 | Parking 2 rangées | `test_parking_v4.py` | ⏳ |
-| Rond-point | `test_rond_point_v9.py` | ⏳ |
-| Passage piéton vertical | `test_passage_pieton_route_v.py` | ⏳ |
-| Passage piéton horizontal | `test_passage_pieton_route_h.py` | ⏳ |
-| Virage NE/NW/SE/SW (11×11) | `test_virage_{ne,nw,se,sw}_v2.py` | ✅ validé |
+| Rond-point | `test_rond_point_v9.py` | ⏳ centrage corrigé 2026-05-08 |
+| Passage piéton vertical (sans rebord) | `test_passage_pieton_route_v.py` | ⏳ corrigé 2026-05-08 |
+| Passage piéton horizontal (sans rebord) | `test_passage_pieton_route_h.py` | ⏳ corrigé 2026-05-08 |
+| Virage gauche route 5 cols (double arrondi) | `test_virage_gauche.py` | ⏳ en cours |
 
 ---
 
-## Vue navigable
+## Outils HTML (à ouvrir en double-clic, file:// supporté)
 
-Ouvrir [`../tile-library-v3.html`](../tile-library-v3.html) en double-clic — charge `cartography.js` + `patterns.js` et affiche tous les patterns avec PNG.
+| Page | Rôle |
+|------|------|
+| [`../tools/index.html`](../tools/index.html) | 🆕 **Hub Tools** (point d'entrée unique des outils de design). |
+| [`../tools/tile-library-v3.html`](../tools/tile-library-v3.html) | **Vue navigable** des patterns + cartographie. Charge `patterns.js` et affiche chaque pattern avec PNG, tiles requises, layout. |
+| [`../tools/tile-picker.html`](../tools/tile-picker.html) | **Bibliothèque visuelle catégorisée** (Rue/Parc/Jardin/Building/Forêt) + matrice 10×10 drag&drop. ~3500 tiles indexés (roads, parks, buildings, props, stations), export Python à coller dans une recette. **À utiliser quand l'agencement n'est pas évident** — le user compose, l'agent transcrit. |
+| [`../mj-pose-tiles.html`](../mj-pose-tiles.html) | 🦺🚧 **Mini-jeu Pose-tes-tiles** (kids) - version simplifiée du tile-picker pensée pour Max. 8×8, palette réduite, bouton "Lisser" auto-bords. |
+
+---
+
+## Outils de scripts complémentaires
+
+| Script | Rôle |
+|--------|------|
+| `scripts/render.py` | Render PIL → PNG d'une recipe |
+| `scripts/render_debug.py` | Idem + grille rouge + coordonnées col/row jaune (debug visuel) |
+| `scripts/catalog_families.py` | Planches-contact par famille |
+| `scripts/import_themes.py` | Import LimeZu Theme Sorter |

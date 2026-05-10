@@ -1,7 +1,7 @@
 # Équipe éditoriale — INDEX
 
 > **Point d'entrée du dossier `equipe/`.** Charger ce fichier en premier pour savoir quoi lire selon la tâche.
-> Dernière mise à jour : 2026-04-30
+> Dernière mise à jour : 2026-05-11 (PROCESS 11 étapes depuis 2026-05-08, ajout templates 2026-05-07)
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Tu veux… | Lis d'abord |
 |---|---|
-| Comprendre comment on écrit une histoire | [`PROCESS.md`](PROCESS.md) — workflow militaire 9 étapes |
+| Comprendre comment on écrit une histoire | [`PROCESS.md`](PROCESS.md) — workflow militaire 11 étapes |
 | Savoir qui fait quoi (agents, modèles, rôles) | [`ORGANIGRAMME.md`](ORGANIGRAMME.md) |
 | Trouver où ranger une info | [`cartographie-domaines.md`](cartographie-domaines.md) |
 | Comprendre la patte narrative MaxPlay | [`patte-narrative-maxplay.md`](patte-narrative-maxplay.md) |
@@ -26,7 +26,7 @@
 
 | Fichier | Rôle | Mis à jour par |
 |---|---|---|
-| [`PROCESS.md`](PROCESS.md) | Workflow militaire 9 étapes — owners, I/O, critères PASS, reprise | Directeur + Auteur |
+| [`PROCESS.md`](PROCESS.md) | Workflow militaire 11 étapes — owners, I/O, critères PASS, reprise | Directeur + Auteur |
 | [`ORGANIGRAMME.md`](ORGANIGRAMME.md) | Vue d'ensemble agents + chaîne de commandement + cérémonies | Directeur |
 | [`cartographie-domaines.md`](cartographie-domaines.md) | Où va quelle info, qui décide, invariants | Directeur + Archiviste |
 | [`patte-narrative-maxplay.md`](patte-narrative-maxplay.md) | Patte B+D+C : Kishōtenketsu noyau + tranche de vie voix + cycle cadre. Outils E/A doux. F écartée. ✅ Créé 2026-04-30. | Conseiller + Directeur |
@@ -47,7 +47,7 @@
 | **`brief-writer-libre.template.md`** | Étape 4 — brief commun aux 9 writers libres (forme uniquement, no contenu imposé) | Directeur |
 | **`brief-writer-guide.template.md`** | Étape 4 — brief enrichi pour le 1 writer guidé (Kimi) avec annexe AXES 1-6 | Directeur |
 | `selection.template.md` | Étape 6 — sélection Directeur post-lecteurs | Directeur |
-| `kanban.template.md` | Suivi des 9 étapes par histoire | PMO + owner d'étape |
+| `kanban.template.md` | Suivi des 11 étapes par histoire | PMO + owner d'étape |
 | `synthese.template.md` | Étape 9 — compilation analyses | Directeur |
 
 ### Configuration LLM
@@ -159,7 +159,7 @@ Statuts possibles : `pitch` · `plan` · `briefs` · `versions` · `lecteurs` ·
 
 ### SLA et alertes
 
-- **3 jours max** d'attente auteur sur étapes 1, 6, 9
+- **3 jours max** d'attente auteur sur étapes 1, 6, 10 (pitch, sélection, canon — PROCESS 11 étapes)
 - Au-delà → kanban 🔴 BLOQUÉ + log auto `pmo/sprint-log.md`
 - PMO surveille et alerte
 

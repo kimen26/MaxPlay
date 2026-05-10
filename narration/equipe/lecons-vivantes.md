@@ -129,6 +129,32 @@ claude-rewrite-v1 (003) : kimi-run2 au présent a contaminé tout le rewrite, ki
 
 ---
 
+## Patterns méta-process (opérationnels)
+
+> ✅ Vérifiés en audit 2026-05-11 — applicables au pôle narration et jeu.
+
+### M1 — Audit pôle systématique = outil utile
+
+**Origine** : skill `pmo-challenge` créé game-pmo (2026-05-11). Simulation 8 scénarios (nouvelle histoire, audio, cross-culture, localisation) → détecte trous structurels rapidement.
+
+**Règle** : appliquer audit pôle **post-refonte majeure** (ex : 4 piliers, PROCESS 9→11 étapes, agents restructure) et **pré-déploiement critique** (ex : avant lancer S2 avec casting multi-pays).
+
+**Résultat 001** : 3 liens cassés détectés + fixés dans le même tour (narration-audio.md, narration-localisation.md, equipe/INDEX.md).
+
+### M2 — Distinction PMO spécialiste vs PMO polyvalent
+
+**Contexte** : jeu = 3 sachants tile + 2 PMO ; narration = 1 PMO seul (couvre entièrement son pôle).
+
+**Hypothèse à tester** : si narration grandit (10+ agents, 50+ fichiers), faudra-t-il PMO spécialisés ? À revisiter en S2.
+
+### M3 — Challenges transmis = enrichissement itératif du PMO
+
+**Protocole** : quand on découvre des améliorations opérationnelles au PMO (checklist, anti-patterns, mnémoniques, cartographie), les graver en tickets ARCHI séquencés.
+
+**Exemple 2026-05-11** : game-pmo a transmis 6 challenges ; narration-pmo en a retenu 2 pour itération immédiate (C-1, C-2 → ARCHI-007), 4 en INBOX pour planification (C-3..C-6).
+
+---
+
 ## Patterns en observation
 
 > ⏳ À valider sur 2+ histoires supplémentaires.

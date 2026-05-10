@@ -8,9 +8,19 @@ type: project
 
 ## État déploiement (2026-05-03)
 
-**21 jeux actifs** : mj-01, mj-04–06, mj-08–09, mj-11–13 (a/b/c), mj-14–20, max-adventure
+**22 jeux actifs** : mj-01, mj-04–06, mj-08–09, mj-11–13 (a/b/c), mj-14–20, max-adventure, **mj-pose-tiles** (🆕 kids 2026-05-10)
 **Retirés du menu** : mj-02, mj-03, mj-07, mj-10 (consolidés)
 **GitHub Pages** : `kimen26.github.io/MaxPlay/` — CI via `.github/workflows/deploy.yml`
+
+## Session 2026-05-08 → 2026-05-10 (EP-TILES + EP-MJPOSE)
+
+- ✅ Skill `~/.claude/skills/maxplay-tiles/` : SKILL.md (566 l) + LESSONS.md (30+ entrées)
+- ✅ Agent dédié `.claude/agents/tile-pmo.md` (Haiku) — à invoquer après correction user, découverte, fin session
+- ✅ `game/web/tools/` : hub + tile-picker (matrice drag&drop, 5 catégories, multi-tiles vraies dimensions, `?recipe=X.py`), tile-library-v3, mockups-routes (6 patterns échelle uniforme + bouton 🎨 Éditer)
+- ✅ `mj-pose-tiles.html` : 🦺🚧 mini-jeu kids (8×8 tactile, 5 catégories, bouton Lisser)
+- ✅ 13 recettes Python validées + 13 PNG (routes, virages, carrefour, rond-point, quartier, parking, voie bus, passages piétons)
+- ✅ Cartographie LimeZu corrigée — L-013 à L-018 (voir BACKLOG)
+- ✅ Workflow Propose → Édite → Apprend opérationnel
 
 ## Session 2026-05-03
 
@@ -29,6 +39,7 @@ Aucun. Max Adventure tourne en prod (vérifié 2026-05-03 : `kimen26.github.io/M
 
 | EP | Titre |
 |----|-------|
+| EP-TILES | Pipeline tile-tools : intégrer le quartier 16×12 dans Phaser (remplace grosse croix max-adventure), étendre à 24×18 puis 32×24 |
 | EP-023 | Menu carte de Villejuif (plan archivé : `_archive/docs-jeux-cadavres/MENU-MAP-VILLEJUIF.md`) |
 | EP-015 | Carnet de Max / Garage progression |
 | EP-026 | TTS ElevenLabs (voix clonées, agent voice-director) |
@@ -53,6 +64,18 @@ Aucun. Max Adventure tourne en prod (vérifié 2026-05-03 : `kimen26.github.io/M
 | `game/memory/rules.md` | Règles UX/péda + designs validés |
 | `game/tasks/BACKLOG.md` | Source de vérité épics |
 
-## Agent à appeler
+## Agents à appeler
 
-**`game-dev`** (Sonnet) — pour tout développement, correction, amélioration jeu.
+| Agent | Modèle | Rôle |
+|-------|--------|------|
+| **`game-dev`** | Sonnet | Développement, correction, amélioration jeu (HTML vanilla + Phaser) |
+| **`game-pmo`** | Haiku | **PMO pôle JEU** — garant `state.md` + `BACKLOG.md`. À invoquer à chaque tour incluant un signal JEU. Orchestre les sous-spé. |
+| **`game-tile-pmo`** | Haiku | Sous-spé PMO pipeline tile-tools LimeZu (parent : game-pmo). Scope strict 5 fichiers : LESSONS, cartography.json, patterns.js, recipes_data.js, PIPELINE-MEMORY.md. |
+| **`game-tile-simplifier`** | Sonnet | Sachant tile #1/3 — image/desc → ANALYSE structurée |
+| **`game-tile-designer`** | Sonnet | Sachant tile #2/3 — ANALYSE → recette Python + PNG |
+| **`game-tile-reviewer`** | Haiku | Sachant tile #3/3 — verdict PASS/FAIL avec issues |
+
+**Hiérarchie + pipeline** (refonte 2026-05-11) :
+- **PMO** : main → game-pmo → game-tile-pmo (synthèse remontée, pas de cross-pôle)
+- **Sachants** : main invoque simplifier → designer → reviewer (max 5 iter) → user → game-tile-pmo grave leçon
+- Boucle d'apprentissage : LESSONS technique + PIPELINE-MEMORY méta-process + auto-memory transverse

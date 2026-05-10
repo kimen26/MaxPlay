@@ -74,8 +74,25 @@ Aucun. Max Adventure tourne en prod (vérifié 2026-05-03 : `kimen26.github.io/M
 | **`game-tile-simplifier`** | Sonnet | Sachant tile #1/3 — image/desc → ANALYSE structurée |
 | **`game-tile-designer`** | Sonnet | Sachant tile #2/3 — ANALYSE → recette Python + PNG |
 | **`game-tile-reviewer`** | Haiku | Sachant tile #3/3 — verdict PASS/FAIL avec issues |
+| **`game-conseiller`** | Opus | **Binôme créatif transverse** — voix de John, challenge, force de proposition, pont entre les 3 sous-domaines |
+| **`game-mj-pmo`** | Haiku | Sous-spé PMO mini-jeux HTML (parent : game-pmo). Scope strict : rules.md, stack.md, PIPELINE-MEMORY-MJ.md, docs/jeux/ |
+| **`game-mj-reviewer`** | Haiku | Sachant validateur MJ pré-livraison — checklist hardcodée 5 sections, verdict PASS/FAIL |
 
-**Hiérarchie + pipeline** (refonte 2026-05-11) :
-- **PMO** : main → game-pmo → game-tile-pmo (synthèse remontée, pas de cross-pôle)
-- **Sachants** : main invoque simplifier → designer → reviewer (max 5 iter) → user → game-tile-pmo grave leçon
-- Boucle d'apprentissage : LESSONS technique + PIPELINE-MEMORY méta-process + auto-memory transverse
+**Architecture cible pôle JEU** (refonte 2026-05-11, Phase 1) :
+```
+game-pmo (parent)
+├── game-tile-pmo (sous-spé maps tile)        ✅
+├── game-mj-pmo (sous-spé mini-jeux HTML)     ✅ (créé 2026-05-11)
+└── game-wexworld-pmo (sous-spé Phaser)        ⏳ Phase 2
+
+Sachants :
+- game-conseiller (Opus, transverse)            ✅ (créé 2026-05-11)
+- game-dev (Sonnet, dev général)                ✅
+- game-mj-reviewer (Haiku, validateur MJ)       ✅ (créé 2026-05-11)
+- game-tile-{simplifier,designer,reviewer}      ✅
+- game-wexworld-{designer,tester}                ⏳ Phase 2
+```
+
+**Boucle d'apprentissage** : 3 niveaux de mémoire par sous-spé (technique : LESSONS / rules / stack · méta-process : PIPELINE-MEMORY-* · transverse : auto-memory + VISION-LONG-TERME)
+
+**Vision long terme** : voir [`memory/VISION-LONG-TERME.md`](./VISION-LONG-TERME.md) (Phase 2 WexWorld Pokemon-like, pont narration↔jeu, app mobile, diffusion grand public).

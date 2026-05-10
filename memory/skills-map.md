@@ -35,6 +35,9 @@ type: reference
 | `game-tile-simplifier` | Sonnet | **Sachant tile #1/3** — analyste de scène. Image/desc → ANALYSE structurée pour designer. Connaît 30+ LESSONS LimeZu. |
 | `game-tile-designer` | Sonnet | **Sachant tile #2/3** — constructeur recettes Python. ANALYSE → `recipes/test_<nom>.py` + PNG render + auto-inspection. |
 | `game-tile-reviewer` | Haiku | **Sachant tile #3/3** — contrôleur qualité. Verdict PASS/FAIL avec issues CRITIQUE/HAUTE/MOYENNE/BASSE. Max 5 iter. |
+| `game-conseiller` | Opus | **Binôme créatif pôle JEU (transverse)** — ta voix, force de proposition, challenge, pont entre les 3 sous-domaines (MJ, tile, WexWorld). Équivalent narration-conseiller côté jeu. |
+| `game-mj-pmo` | Haiku | **Sous-spé PMO mini-jeux HTML** (parent : game-pmo). Scope strict : rules.md, stack.md, PIPELINE-MEMORY-MJ.md, docs/jeux/. Remonte synthèse à game-pmo. |
+| `game-mj-reviewer` | Haiku | **Sachant validateur MJ pré-livraison** — checklist hardcodée 5 sections (Bus & couleurs / UX 3.5-4 ans / Audio / Technique / Vocab & péda). Verdict PASS/FAIL. Max 5 iter. |
 | `quick` | Haiku | Questions rapides, status, recherches légères |
 
 > **Anciens agents supprimés :** `narration-writer-a`, `narration-writer-b`, `narration-writer-c`, `narration-writer-claude-ancre`, `narration-keeper`, `narration-showrunner`

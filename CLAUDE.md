@@ -52,21 +52,24 @@ MaxPlay/
 
 ## Tileset LimeZu — règles + agent
 - **Skill** : [`~/.claude/skills/maxplay-tiles/SKILL.md`](C:/Users/kimen/.claude/skills/maxplay-tiles/SKILL.md) + [`LESSONS.md`](C:/Users/kimen/.claude/skills/maxplay-tiles/LESSONS.md) (30+ leçons gravées)
-- **Équipe tile complète (refonte 2026-05-11)** :
-  - **PMO niveau pôle** : [`game-pmo`](.claude/agents/game-pmo.md) — garant `state.md` + `BACKLOG.md`. Classifie 6 catégories (DÉCISION/LEÇON/TODO/QUESTION/INFO/TRAITEMENT). **À invoquer à chaque tour incluant un signal JEU**.
-  - **PMO sous-spé tile** : [`game-tile-pmo`](.claude/agents/game-tile-pmo.md) — scope strict 5 fichiers (LESSONS, cartography.json, patterns.js, recipes_data.js, **PIPELINE-MEMORY.md**). Ne touche PAS state/BACKLOG, remonte synthèse à game-pmo.
+- **Équipe pôle JEU complète (refonte 2026-05-11)** :
+  - **PMO niveau pôle** : [`game-pmo`](.claude/agents/game-pmo.md) — garant `state.md` + `BACKLOG.md`. Classifie 6 catégories. **À invoquer à chaque tour incluant un signal JEU**.
+  - **Sous-spé PMO maps tile** : [`game-tile-pmo`](.claude/agents/game-tile-pmo.md) — scope strict 5 fichiers (LESSONS, cartography.json, patterns.js, recipes_data.js, PIPELINE-MEMORY.md).
+  - **Sous-spé PMO mini-jeux HTML** : [`game-mj-pmo`](.claude/agents/game-mj-pmo.md) — scope strict (rules.md, stack.md, PIPELINE-MEMORY-MJ.md, docs/jeux/).
+  - **Conseiller transverse** : [`game-conseiller`](.claude/agents/game-conseiller.md) (Opus) — binôme créatif John, voix produit, force de proposition, pont entre les 3 sous-domaines. Équivalent narration-conseiller côté jeu.
   - **Sachants tile (pipeline 3 étapes)** :
     1. [`game-tile-simplifier`](.claude/agents/game-tile-simplifier.md) (Sonnet) — image/desc → ANALYSE structurée
-    2. [`game-tile-designer`](.claude/agents/game-tile-designer.md) (Sonnet) — ANALYSE → recette `test_<nom>.py` + PNG render + auto-inspection
-    3. [`game-tile-reviewer`](.claude/agents/game-tile-reviewer.md) (Haiku) — verdict PASS/FAIL avec issues CRITIQUE/HAUTE/MOYENNE/BASSE, max 5 iter
-  - **Règle hiérarchie** (best practice 2026 : Google ADK, Anthropic engineering, Hindsight) : main → game-pmo → game-tile-pmo. Communication enfant → parent. Jamais cross-pôle.
-- **Workflow boucle d'apprentissage** :
-  ```
-  main → simplifier → designer (PNG render) → reviewer
-       → si PASS → user (validation)
-       → game-tile-pmo grave leçon technique (LESSONS) + méta-process (PIPELINE-MEMORY) + remonte synthèse à game-pmo
-  ```
-  → LESSONS s'enrichit, le système devient plus intelligent à chaque cycle.
+    2. [`game-tile-designer`](.claude/agents/game-tile-designer.md) (Sonnet) — ANALYSE → recette `test_<nom>.py` + PNG render
+    3. [`game-tile-reviewer`](.claude/agents/game-tile-reviewer.md) (Haiku) — verdict PASS/FAIL
+  - **Sachants MJ** :
+    - [`game-dev`](.claude/agents/game-dev.md) (Sonnet) — dev HTML + Phaser
+    - [`game-mj-reviewer`](.claude/agents/game-mj-reviewer.md) (Haiku) — checklist 5 sections (Bus & couleurs / UX 3.5-4 ans / Audio / Technique / Vocab & péda), verdict PASS/FAIL max 5 iter
+  - **Phase 2 à venir** : game-wexworld-pmo + game-wexworld-designer + game-wexworld-tester (Pokemon Gameboy-like, séparé du pipeline tile)
+  - **Règle hiérarchie** : main → game-pmo → sous-spé. Communication enfant → parent. Jamais cross-pôle direct.
+- **Workflow boucles d'apprentissage** :
+  - **Tile** : simplifier → designer (PNG) → reviewer → user → game-tile-pmo grave (LESSONS + PIPELINE-MEMORY)
+  - **MJ** : game-conseiller (challenge) → game-dev (code) → game-mj-reviewer (verdict) → user → game-mj-pmo grave (PIPELINE-MEMORY-MJ)
+- **Vision long terme** : [`game/memory/VISION-LONG-TERME.md`](game/memory/VISION-LONG-TERME.md) (Phase 2 WexWorld, pont narration↔jeu, app mobile)
 - **Règles d'or** :
   - Marquages H : `Asphalt_1_Variation_2` propre (pas `_14` qui est sale)
   - Marquages V : `Asphalt_1_Variation_8` propre (pas `_15` qui est sale)

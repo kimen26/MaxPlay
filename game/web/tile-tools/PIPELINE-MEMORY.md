@@ -182,7 +182,8 @@ Main agent (Sonnet/Opus)
 
 | Date | Engagement | Origine | Statut |
 |---|---|---|---|
-| 2026-05-11 | À la prochaine évolution non-triviale de `game-pmo` ou `game-tile-pmo`, pinger `narration-pmo` pour challenge réciproque | Réponse narration-pmo après audit du 2026-05-11 (5/7 retenus) | ⏳ Actif — à honorer dès prochain changement |
+| 2026-05-11 | À la prochaine évolution non-triviale de `game-pmo` ou `game-tile-pmo`, pinger `narration-pmo` pour challenge réciproque | Réponse narration-pmo après audit du 2026-05-11 (5/7 retenus) | ✅ **HONORÉ 2026-05-11** — création game-conseiller + game-mj-pmo + game-mj-reviewer → 5/5 challenges narration-pmo retenus, patchs appliqués, voir `PIPELINE-MEMORY-MJ.md` |
+| 2026-05-11 | À la création de `game-wexworld-*` (Phase 2), continuer le protocole réciproque avec narration-pmo (pattern validé 2 fois) | Pattern P-004 PIPELINE-MEMORY-MJ — à systématiser | ⏳ Actif (Phase 2) |
 
 **Mécanisme** : main agent invoque l'autre PMO via Agent tool avec un prompt "challenge réciproque sur fiche [nom]". L'autre PMO renvoie 5-7 observations, le PMO ciblé trie et patche.
 

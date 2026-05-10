@@ -143,10 +143,72 @@ claude-rewrite-v1 (003) : kimi-run2 au présent a contaminé tout le rewrite, ki
 **Hypothèse** : un adulte qui transmet en silence (mélancolie) apporte une émotion non-remplaçable. Mais un adulte qui résout casse l'autonomie des enfants.
 **À tester** : sur 005+ insérer un adulte présent qui n'agit pas, mesurer l'effet.
 
+### P8 — Tous les types épanouis, chacun dans sa nature (PRINCIPE FONDATEUR arc 1)
+
+**Origine** : décision Papa Yann 2026-05-08 (reformulée 2026-05-10).
+
+**Règle** : chaque ennéatype est présenté **épanoui dans sa nature propre** et **apporte sa singularité** au groupe ou à la petite équipe de l'histoire. Pas de transformation forcée, pas d'obligation à sortir de son type, pas de négation. Le type **EST** et ce qu'il est aide naturellement les autres.
+
+- Le **5 (Lulu)** observe, contemple, possède l'info, compare, réfléchit, **apporte sa vision** quand l'équipe en a besoin. Il joue et partage à sa manière.
+- Le **8 (Juju)** est fort, protège, courage. Pas agressif, pas de gros mots — juste sa solidité tranquille et son courage qui rassure les autres.
+- Le **9 (Nono)** reste **médiateur**, pacificateur, présence apaisante. Pas le mettre sur des choix tranchés ou de l'affirmation forte (= contre sa nature).
+- Le **4 (Madie)** est différente, **impressionne par ses idées**, anime de sa singularité.
+- Le **7 (Raph)** s'amuse, multiplie les idées, prévoit plein d'options.
+- Le **1 (Melki)** apporte sa précision, son sens du bien fait.
+- Le **2 (Mimi)** apporte son attention, son soin aux autres.
+- Le **3 (Polo)** apporte son élan, son envie de réussir.
+- Le **6 (Pierrot)** apporte sa loyauté, sa vigilance bienveillante.
+
+**Quote Papa Yann** : *« Que ce qui est normal à ses yeux aide les autres, comme la force du 8 ou le fun du 7 ou la précision du 1. »*
+
+**Anti-pattern à éviter dans les briefs writers** :
+- ❌ Chercher à faire évoluer un perso hors de son type (« Nono qui dit moi je veux ! » = désintégration vers 3, pas son essence)
+- ❌ Empiler des négations explicatives (« 8 mais pas agressif, mais pas dur, mais pas… »)
+- ❌ Mettre un perso introverti en faire-valoir d'un expressif
+
+**Bon réflexe brief** : **dire ce que le type EST**, **son geste / attitude / habitude** caractéristique, ce qu'il apporte. Pas besoin d'expliquer ce qu'il n'est pas — le writer ne mettra pas de hard-core puisqu'on est en bienveillance arc 1, c'est déjà cadré.
+
+**Précédent 001** : on n'avait pas du tout discuté de cet équilibre type par type au moment du brief, et le résultat est juste — Wex pose, Raph explose, Pierrot protège — chacun dans sa nature, chacun lumineux. À ne pas sur-prescrire dans les futurs briefs.
+
+**Niveau brief writer (matière mince) vs niveau pilotage Conseiller-Auteur (matière épaisse)** : on accumule beaucoup de connaissance Chabreuil et patterns en amont (Conseiller + Auteur), mais on n'envoie au writer que **l'essentiel** — le geste, l'attitude, la situation. Trop d'instructions étouffe.
+
+---
+
 ### O3 — Emprunts japonais en VF
 **Origine** : `onomatopees-cross-culture.md` recommande **pota-pota** (goutte), **saku-saku** (croustillant), **picha-picha** (pieds dans flaque).
 **Hypothèse** : les enfants français adoptent rapidement.
 **À tester** : sur 005, glisser 1 emprunt JA, mesurer mémorisation.
+
+### P9 — Type 9 DOIT FAIRE (pas seulement ÊTRE)
+
+**Origine** : brainstorm casting 2026-05-10. Observation : "présence" seule ≠ imitable pour enfant 4 ans. Type 9 (Nono) a besoin de **gestes actifs dans sa nature**.
+
+**Règle** : Type 9 n'est jamais passif. Il agit. **5 gestes archétypiques** :
+1. S'asseoir / se poser
+2. Ouvrir la paume (main au sol ou vers l'autre)
+3. Fredonner doucement (« mmm »)
+4. Faire un petit signe / geste d'accueil
+5. Sourire silencieux
+
+Ces gestes deviennent **imitables par l'enfant lecteur**. Type 9 = **petit maître silencieux** (modèle Totoro). Il ne parle pas forcément beaucoup, mais il FAIT quelque chose que l'autre peut apprendre par mimétisme.
+
+**Anti-pattern** : Nono juste « présent et tranquille » sans aucun geste actif. **Non, c'est plate pour un 4 ans.**
+
+**Exemple bon** (à valider étape 5 lecteurs 002-Nono) : Nono s'assoit, main ouverte au sol, fredonne. Copain l'imite. Animal s'approche. Accroche de savoir-faire « on obtient certaines choses en ralentissant ».
+
+### P10 — Brainstorm gestes figés immédiatement en doc
+
+**Origine** : brainstorm casting arc 1 2026-05-10. Constat : matière brassée en session brainstorm Auteur/Conseiller = non figée = réinventée à chaque histoire. Sinon writers trouvent pas, agents le re-proposent, perte de cohérence.
+
+**Règle** : Dès qu'un **geste, attitude, habitude, garde-fou d'un type** est validé en session, il est **immédiatement enregistré dans le fichier `type-NN/caractere.md`** (section "Gestes/attitudes/habitudes"). Devient source de vérité pour tous les writers et agents.
+
+**Exemple** : Type 4 Madie 2026-05-10 = « expression, acteur, danse, intention vivante ». Ligne ajoutée dans `type-04/caractere.md`, visible pour tout writer future. Type 5 Lulu = « discret, observateur, en léger retrait » → idem `type-05/caractere.md`.
+
+**Bénéfice** : 
+- Writers trouvent automatiquement la doc des persos
+- Pas de téléphone arabe (brainstorm Conseiller → brief Auteur → brief writer)
+- Traçabilité dans git
+- Réutilisable d'une histoire à la suivante
 
 ---
 
@@ -154,8 +216,9 @@ claude-rewrite-v1 (003) : kimi-run2 au présent a contaminé tout le rewrite, ki
 
 | Date | Histoire canonisée | Nouveautés ajoutées | Révisions |
 |------|--------------------|---------------------|-----------|
-| 2026-05-08 | (création) | P1-P6, G1-G6, axes 1-6, signal genre, O1-O3 | Initialisation |
+| 2026-05-10 | brainstorm arc 1 casting | P9 ajouté (Type 9 DOIT FAIRE, 5 gestes archétypiques), P10 ajouté (gestes figés immédiatement en doc) | Intégration observations casting Madie/Lulu/Nono |
 | 2026-05-08 | **001 Le Pont Cassé (canon)** ex-003-v2 | P7 ajouté (rewrite comité éditorial, 2-3 idées max) | Refonte complète catalogue : ancien 001, 002, 004 supprimés. ultime_debrief.md + SYNTHESE-2026-05-06.md supprimés (info migrée ici) |
+| 2026-05-08 | (création) | P1-P6, G1-G6, axes 1-6, signal genre, O1-O3 | Initialisation |
 
 ---
 

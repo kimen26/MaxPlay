@@ -11,8 +11,8 @@
 
 | Statut | ID | Titre | Priorité | Assigné | Prochaine action |
 |--------|-----|-------|----------|---------|------------------|
+| 🟡 | STORY-002 | Animal qui s'approche — Nono (T9) + 1 duo à trancher | **Haute** | Auteur + Conseiller | Direction validée (2026-05-10). Brainstorm : trancher duo (Polo/Raph/Juju), lieu, animal exact. Ensuite pitch + plan. |
 | 🟡 | ARCHI-006 | Formaliser procédure PMO dans `narration-pmo.md` (agent Haiku) | Normale | narration-pmo | Créer doc agent reflet des décisions 2026-05-08 : classification input (6 catégories), routing, checklist remise main. Cible : PMO auto-guidé sans attendre instructions. |
-| 🟡 | STORY-005 | Brainstorm prochaine histoire (sujet + casting + brief Papa Yann) | **Haute** | Auteur + Conseiller | Papa Yann lance sujet + casting à partir des axes-en-stock. Conseiller et Directeur produisent brief Papa Yann. Étape 1 (pitch) prête à lancer. Session suivante. |
 
 ---
 
@@ -20,11 +20,19 @@
 
 | Statut | ID | Titre | Priorité | Assigné | Prochaine action |
 |--------|-----|-------|----------|---------|------------------|
+| ⚪ | STORY-003 | Histoire Melki (T1) — brainstorm à lancer | Normale | Auteur + Conseiller | Brainstorm après STORY-002 validé. Casting × 2 (Melki valorisé 2×). |
+| ⚪ | STORY-004 | Histoire Mimi (T2) — brainstorm à lancer | Normale | Auteur + Conseiller | Brainstorm après STORY-002 validé. Mimi valorisée 2×. Nota : 004-cartable-a-trou arc 2 en pause. |
+| ⚪ | STORY-005 | Histoire Polo (T3) — brainstorm à lancer | Normale | Auteur + Conseiller | Brainstorm après STORY-002 validé. Polo valorisé 2× (sauf si retenu en duo Nono). |
+| ⚪ | STORY-006 | Histoire Madie (T4) — brainstorm à lancer | Normale | Auteur + Conseiller | Brainstorm après STORY-002 validé. Madie ajustée (expression vivante). Valorisée 2×. |
+| ⚪ | STORY-007 | Histoire Lulu (T5) — brainstorm à lancer | Normale | Auteur + Conseiller | Brainstorm après STORY-002 validé. Lulu ajustée (discret observateur). Valorisée 2×. |
+| ⚪ | STORY-008 | Histoire Juju (T8) — brainstorm à lancer | Normale | Auteur + Conseiller | Brainstorm après STORY-002 validé. Juju valorisée 2× (sauf si retenue en duo Nono). |
+| ⚪ | STORY-009 | Histoire Pierrot (T6) — brainstorm à lancer | Normale | Auteur + Conseiller | Brainstorm après STORY-002 validé. Pierrot valorisé 2× (déjà en 001 avec Raph, duo à renouveler). |
+| ⚪ | STORY-010 | Histoire Raph (T7) — brainstorm à lancer | Normale | Auteur + Conseiller | Brainstorm après STORY-002 validé. Raph valorisée 2× (déjà en 001 avec Pierrot, duo à renouveler). |
 | ⚪ | ARCHI-006 | Formaliser procédure PMO dans `.claude/agents/narration-pmo.md` | Normale | narration-pmo (Haiku) | Créer doc agent reflet des décisions 2026-05-08 : classification input (6 catégories), routing, checklist remise main. Cible : PMO auto-guidé sans attendre instructions. |
 | ⚪ | UNIVERS-001 | Trancher nom de l'univers | Normale | Auteur | Choisir parmi 21 candidats + pistes "Wex World" / "Wex Bou" (`univers/meta/nom-candidats.md`) |
-| ⚪ | STORY-004 | Cartable-à-trou — Polo · Lulu · Mimi · Wex | Pause arc 2 | — | pitch validé — **arc 2 Parole en pause depuis 2026-04-30** (`stories/004-cartable-a-trou/pitch.md`) |
-| ⚪ | STORY-005 | Le Mardi — Wex · Pierrot · Melki · graine | Pause arc 2 | — | pitch validé — **arc 2 Parole en pause** (`stories/005-le-mardi/pitch.md`) |
-| ⚪ | STORY-006 | Sept à rien — Juju · Mimi · Wex · blocs | Pause arc 2 | — | pitch validé — **arc 2 Parole en pause** (`stories/006-sept-a-rien/pitch.md`) |
+| ⚪ | STORY-004-ARC2 | Cartable-à-trou — Polo · Lulu · Mimi · Wex (ARC 2) | Pause arc 2 | — | pitch validé — **arc 2 Parole en pause depuis 2026-04-30** (`stories/004-cartable-a-trou/pitch.md`) |
+| ⚪ | STORY-005-ARC2 | Le Mardi — Wex · Pierrot · Melki · graine (ARC 2) | Pause arc 2 | — | pitch validé — **arc 2 Parole en pause** (`stories/005-le-mardi/pitch.md`) |
+| ⚪ | STORY-006-ARC2 | Sept à rien — Juju · Mimi · Wex · blocs (ARC 2) | Pause arc 2 | — | pitch validé — **arc 2 Parole en pause** (`stories/006-sept-a-rien/pitch.md`) |
 | ⚪ | UNIVERS-002 | Définir `univers/societe.md` (Vocation · Pouvoir Intérieur · Mission du jour) | Normale | Auteur · Conseiller | À définir ensemble — concept "contribution joyeuse" remonté du Grok aetheria, demande explicite auteur, absent de l'univers actuel |
 | ⚪ | UNIVERS-003 | Borner invariant vs variant dans l'expression ennéatype par culture | Normale | Auteur · Conseiller | À définir : où s'arrête le « même Type N partout » et où commence la variance culturelle légitime ? Documenter règles d'écriture par ennéatype × culture (futur `enneagramme/expression-cross-culture.md`). Voir `univers/meta/architecture-cross-culture.md` section dédiée. |
 | ⚪ | NARR-001 | Discussion D4 — Cross-culture micro-structures | **Haute** | Auteur · Conseiller | À creuser ensemble : règles micro-structurelles culturelles (call-and-response africain, cycles amérindiens, etc.) à autoriser dans les bulles culturelles, sans tomber dans le cliché. À cadrer avant ouverture du 2e casting national. |

@@ -6,6 +6,41 @@
 
 ---
 
+## 2026-05-10 — Brainstorm arc 1 : casting + gestes + direction Nono validée
+
+**Objectif :** Brainstorm collaboratif Auteur + Conseiller sur casting arc 1. Figer les gestes/attitudes/habitudes des 9 types. Valider direction histoire Nono (animal qui s'approche).
+
+**Fait :**
+- [x] **9 fiches mise en valeur réécrites** : Type 1 Melki, T2 Mimi, T3 Polo, T4 Madie (ajustée), T5 Lulu (ajustée), T6 Pierrot, T7 Raph, T8 Juju, T9 Nono — 4 retraits, 5 actifs
+- [x] **Section "Gestes/attitudes/habitudes" intégrée dans tous 9 caractere.md** : chaque type a sa fiche des gestes imitables et garde-fous
+- [x] **Sources pédagogie 4-7 ans cross-culture** : `equipe/sources-pedagogie-enfance.md` créé par sub-agent (8 insights validés)
+- [x] **Synthèse Chabreuil complète** : `enneagramme/ressources/chabreuil-synthese-complete.md` produit
+- [x] **Type 4 Madie reformulée** : « expression / acteur / danse / intention vivante » (pas que contemplation)
+- [x] **Type 5 Lulu reformulée** : « discret, observateur, en léger retrait de l'action / nouveauté »
+- [x] **Type 8 (nommage historique)** : confirmé (aucun changement)
+- [x] **Direction Nono (T9) VALIDÉE** : animal qui s'approche, Nono ACTIF (5 gestes imitables), modèle Totoro
+- [x] **Document brainstorm créé** : `stories/brainstorm-arc-1.md` (fiche de session en continu, cadre + casting + direction Nono + TODO)
+
+**Décisions prises (Papa Yann 2026-05-10)** :
+1. Pas de dispute, pas de tristesse dans arc 1 (bienveillance totale confirmée)
+2. Type 4 Madie = expression vivante (not just contemplation)
+3. Type 5 Lulu = discret + observateur + retrait naturel (formulation précise)
+4. Gestes/attitudes figés dans caractere.md (à partir de 2026-05-10)
+5. Direction Nono = animal s'approche, Nono fait 5 gestes imitables, apprentissage par mimétisme (Totoro)
+6. 3 animaux possibles : papillon, écureuil, oiseau (pas tranchés)
+7. Pistes Nono alternatives stockées dans brainstorm-arc-1.md (partage équitable, main tendue, coussin vivant)
+
+**État au reboot :**
+- **Histoire Nono (STORY-002)** : direction validée, **duo + lieu + animal à trancher prochaine session**
+- **6 persos restants** (Mimi T2, Madie T4, Lulu T5, Melki T1, Polo T3, Juju T8) : brainstorm ensuite (une histoire par perso, sauf que 9 histoires × 2 slots = certains auront 2 histoires)
+- **Structure** : `brainstorm-arc-1.md` = document de session en continu, mises à jour à chaque brainstorm validé
+- **Backlog** : STORY-002 à 010 à ouvrir ; tickets STORY-002...010 créés dans backlog.md avec priorité Haute
+- **SLA** : Nono direction OK, passage à STORY-002 pitch quand Papa Yann valide duo+lieu+animal
+- **Leçons** : P9 (Type 9 doit faire, 5 gestes) + P10 (gestes figés immédiatement en doc) enregistrées dans lecons-vivantes.md
+- **Décisions** : 12 points enregistrés dans decisions.md entrée 2026-05-10 complétée
+
+---
+
 ## 2026-05-08 — Canonisation 001 + suppression catalogue + restructuration base propre (SESSION 3 — FIN)
 
 **Objectif :** Papa Yann tranche les 4 questions ouvertes. Canoniser 001 définitivement, nettoyer la base, documenter les décisions PMO.

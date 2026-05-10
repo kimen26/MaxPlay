@@ -5,6 +5,82 @@
 
 ---
 
+## 2026-05-10 — Précisions cadre arc 1 + ajustements casting (post-deepsearch pédagogie + Chabreuil)
+
+**Décisions complémentaires** au cadre arc 1 du 2026-05-08, après ingestion pédagogie + Chabreuil + brainstorm casting :
+- Deepsearch pédagogie 4-7 ans cross-culture → [`equipe/sources-pedagogie-enfance.md`](../equipe/sources-pedagogie-enfance.md)
+- Synthèse Chabreuil exhaustive → [`enneagramme/ressources/chabreuil-synthese-complete.md`](../enneagramme/ressources/chabreuil-synthese-complete.md)
+- Brainstorm casting + gestes → `narration/stories/brainstorm-arc-1.md` (document de session en continu)
+
+### Cadre arc 1 (ratification + complément)
+
+1. **Format trio confirmé pour tout l'arc 1** : 2 compagnons + Wex. 9 histoires × 2 = 18 slots → chaque ennéatype valorisé 2 fois. Pas de duo Wex+1 (rejeté).
+
+2. **Longueur 400-650 mots** (centrée 500-550). 001 = 540 = pile bon. *« Si c'est fluide ça passera »* (Papa Yann). Pas trop radin.
+
+3. **Pas de description physique ni dessin des persos**. Identification par prénom + geste signature + attitude + habitude. Préserve la cross-culturalité (l'enfant projette image/culture).
+
+4. **Cross-culture équilibrée** : on soigne tous les types également, pas selon culture cible. Pas de modulation par marché.
+
+5. **Reformulation P8 (équilibre profils)** : pas « héros à parts égales » (faux pour un duo 5+8 qui n'aura pas le même rapport au monde). Bon principe : **chaque ennéatype est épanoui dans sa nature et apporte sa singularité**. Pas de transformation forcée. Le 9 reste médiateur, le 5 reste observateur, le 8 reste protecteur, etc. → figée dans `equipe/lecons-vivantes.md` pattern P8.
+
+6. **Niveau brief writer = mince ; niveau Conseiller-Auteur = épais**. La connaissance Chabreuil + patterns vit dans la doc équipe (lecons-vivantes, chabreuil-synthese, sources-pedagogie). Le writer reçoit l'essentiel : geste, attitude, situation. Pas de double/triple négation explicative.
+
+7. **Anti-pattern brief** :
+   - ❌ Empiler négations (« 8 mais pas agressif, mais pas… »)
+   - ❌ Forcer un type hors de sa nature
+   - ❌ Décrire physiquement
+   - ✅ Dire ce que le type EST + son geste
+
+8. **Pas de dispute, pas de tristesse** dans l'arc 1. Bienveillance totale (confirmé cadre 2026-05-08). Validation Papa Yann 2026-05-10 explicite après brainstorm casting.
+
+**Raison** : Papa Yann après lecture des 8 insights pédagogie + extraits Chabreuil. Quote : *« Tu vois on en a pas DU TOUT parlé pour le 001 ça a pourtant DÉJÀ été bien retranscrit donc pas en mettre trop. »*
+
+### Ajustements casting + gestes (brainstorm 2026-05-10)
+
+9. **Type 4 Madie (T4) — reformulation expression vivante** : pas que contemplation passée. Madie est **expression, actrice, danse, intention vivante**. Elle anime sa singularité, elle impressionne par ses idées. Fiches perso type-04/caractere.md mises à jour avec section "Gestes/attitudes/habitudes" — section ajoutée 2026-05-10 à tous les 9 types.
+
+10. **Type 5 Lulu (T5) — formulation discrétion observatrice** : **« discret, observateur, naturellement en léger retrait de l'action / nouveauté »**. Cette formulation remplace la précédente et s'ajoute aux fiches type-05/caractere.md.
+
+11. **Type 9 Nono (T9) — direction histoire validée : l'animal qui s'approche** :
+    - **Contexte** : Nono s'assoit, main ouverte, fredonne « mmm ». Fait un signe « viens ». Un autre perso l'imite. Un animal (papillon/écureuil/oiseau) s'approche, peut-être se pose.
+    - **Principe** : Nono FAIT quelque chose, pas passif. 5 gestes imitables : s'asseoir / poser paume ouverte / fredonner / faire signe / sourire.
+    - **Modèle** : Totoro — petit maître silencieux qui partage un savoir-faire (ralentir, accueillir). L'autre enfant apprend par mimétisme.
+    - **À trancher prochaine session** : duo (Polo/Raph/Juju ou autre), lieu, animal exact.
+    - **Pistes mises de côté** : partage équitable, main tendue en retour, coussin vivant (à garder en stock pour alternatives).
+
+12. **Intégration des gestes/attitudes/habitudes dans 9 fiches personnages** : section créée 2026-05-10 dans les 9 fichiers `type-NN/caractere.md`. Chaque writer trouvera automatiquement. Remplace la transmission par brief ou par note du Conseiller. Améliore la traçabilité et la réutilisabilité.
+
+**Raison** : Papa Yann brainstorm validé 2026-05-10. Observations pédagogiques (DeepSeek synthèse 4-7 ans) + Chabreuil détail (Madie/Lulu relus ensemble). Pattern P9/P10 enregistrés pour le futur dans lecons-vivantes.md.
+
+---
+
+## 2026-05-08 — Cadre arc 1 tranché (post-canonisation 001)
+
+**Décision** : Cadre définitif de l'arc 1 (priorité actuelle saison 1), tranché par Papa Yann après le ménage du catalogue :
+
+1. **10 épisodes** (001 fait + 9 à venir = 002-010)
+2. **Découverte progressive** des 9 ennéatypes + Wex (chaque perso valorisé au moins 1 fois en duo principal)
+3. **Extérieur uniquement** — pas d'intérieur
+4. **Aucun adulte en scène**
+5. **Printemps uniquement**
+6. **Bienveillance totale**, zéro tension
+7. **Cible 4 ans** (palier P1 ultra-court envisageable, plus court que 001 si possible)
+8. **Pas de grille spéculative** — les axes 002-010 sont co-construits avec l'auteur en brainstorm direct, pas pré-définis par un agent
+
+**Raison** : Papa Yann a explicitement supprimé les pistes Conseiller 2026-04-30 qu'il n'avait jamais validées : *« Supprime TOUTES tes propositions on va bosser avec nos retour d'expérience pas avec un truc que t'as bidouillé dans un coin y'a 1 mois j'ai jamais validé ton truc ! »*
+
+**Impact** :
+- `arcs/arc-1-objet-decor/fiche.md` : cadre tranché ajouté, pistes spéculatives supprimées
+- `stories/axes-histoires-en-stock.md` : grille spéculative arc 1 supprimée + arc 2 nettoyé (histoires supprimées au ménage)
+- `arcs/INDEX.md` : statut arcs corrigé
+- Arc 3 : « on n'en parle pas encore » (gel jusqu'à nouvel ordre)
+- Arc 4 : confirmé fin de saison
+
+**Statut** : ACTIF immédiatement. Brainstorm 002-010 en co-construction.
+
+---
+
 ## 2026-05-08 — Étape 7 (rewrite) : philosophie double minimaliste + comité éditorial
 
 **Décision (implicite, figée par exécution)** : L'étape 7 (rewrite) produit **2 versions à comparer** en étape 9 :

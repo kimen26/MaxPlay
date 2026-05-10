@@ -12,7 +12,7 @@
 | Personnages | 9 définis (ennéagramme) — ✅ **casting V1 "Christ" validé** (Melki, Mimi, Polo, Madie, Lulu, Pierrot, Raph, Juju, Nono) + **Wex héros hors-système** (pas d'ennéatype). Notation `TypeN`/`TitiN × origine` pour écrire les textes. Casting V1 = 4F/6M (mise à jour 2026-05-05). |
 | Univers | post-Éveil, Printemps de l'Éveil — distillé dans `univers/` |
 | Direction | **monde sobre, merveilleux discret** (vu à travers enfant né dedans) |
-| Histoires | **001 Le Pont Cassé** (canon refonte 2026-05-08, ex-003-le-pont-casse-v2). Anciennes histoires (001 V1 Ferretti, 002, 004) supprimées définitivement 2026-05-08 — patterns migrés vers `equipe/lecons-vivantes.md`. Prochaine = 005 (brainstorm à venir). |
+| Histoires | **001 Le Pont Cassé** (canon 540 mots, 2026-05-08). Brainstorm arc 1 en cours : **9 histoires (002-010)** co-construites. Direction Nono (T9) validée 2026-05-10. Casting + gestes + leçons enregistrés. Arc 2 (Parole) en pause. |
 | Nom univers | **non tranché** → `univers/meta/nom-candidats.md` |
 
 ---
@@ -35,6 +35,7 @@
 | [enneagramme/personnages/](enneagramme/personnages/) | Fiches détaillées par type |
 | [enneagramme/situations/emotions-universelles.md](enneagramme/situations/emotions-universelles.md) | Pour une réaction émotionnelle précise (9×9) |
 | [enneagramme/ressources/guide-auteur.md](enneagramme/ressources/guide-auteur.md) | Pour vérifier la cohérence d'une scène |
+| [enneagramme/ressources/chabreuil-synthese-complete.md](enneagramme/ressources/chabreuil-synthese-complete.md) | **Synthèse exhaustive Chabreuil** — analyse par type (traits, peurs, motivations, mécanismes). Réf Conseiller/Auteur lors des briefs. |
 
 ### Arcs narratifs
 | Fichier | Quand le lire |
@@ -63,7 +64,8 @@
 |---------|---------|
 | [stories/INDEX.md](stories/INDEX.md) | **Catalogue** (auto-généré) |
 | [stories/_gabarit/](stories/_gabarit/) | Dossier gabarit à copier pour une nouvelle histoire |
-| [stories/001-le-pont-casse/](stories/001-le-pont-casse/) | V1 complète + comité de lecture + archives + variantes |
+| [stories/001-le-pont-casse/](stories/001-le-pont-casse/) | Canon complet (540 mots, 11 étapes PROCESS) |
+| [stories/brainstorm-arc-1.md](stories/brainstorm-arc-1.md) | **Fiche de session** — brainstorm arc 1 (002-010) en continu. Cadre, casting à valoriser, direction Nono validée, TODO. |
 | [stories/axes-histoires-en-stock.md](stories/axes-histoires-en-stock.md) | **Stock d'axes** — 10 unitaires + 5 transversaux |
 
 ### Équipe éditoriale
@@ -81,6 +83,7 @@
 | [equipe/sources-sciences.md](equipe/sources-sciences.md) | Refs documentaires (C'est pas sorcier, La Vie...) |
 | [equipe/sources-sensibilite.md](equipe/sources-sensibilite.md) | Catalogue topics sensibles / conspirationnistes |
 | [equipe/sources-narratologie.md](equipe/sources-narratologie.md) | **Étude narratologique cross-culture** — paliers mots/âge, Kishōtenketsu, simulation incarnée, ToM, modèles cross-culture (Architecte / Writers) |
+| [equipe/sources-pedagogie-enfance.md](equipe/sources-pedagogie-enfance.md) | **8 insights pédagogie 4-7 ans cross-culture** — deepsearch 2026-05-10 (motricité, émotion, attention, langage, créativité) |
 | [equipe/voix-enneatypes.md](equipe/voix-enneatypes.md) | **Étude vocale par ennéatype** — 18 prompts ElevenLabs (F+M × 9 types), signature combinatoire, lexique articulatoire (réf agent voice-director EP-026) |
 | [equipe/memoire-conseiller.md](equipe/memoire-conseiller.md) | Mémoire Conseiller Narratif (arcs, saisons, feedback) |
 | [equipe/memoire-architecte.md](equipe/memoire-architecte.md) | Mémoire Architecte (plans, structures) |

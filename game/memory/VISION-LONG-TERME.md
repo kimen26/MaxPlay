@@ -31,7 +31,7 @@ PÔLE JEU
 │
 └── 🤝 CONSEILLER (transverse)
     État : à créer
-    Rôle : voix de John, force de proposition, challenge des idées, suivi retours Max
+    Rôle : voix de Papa Yann, force de proposition, challenge des idées, suivi retours Max
     Modèle : Opus (réflexion produit profonde)
 ```
 

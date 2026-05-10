@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>MJ-20 – Compte dans toutes les langues</title>
+  <title>MJ-20 â€“ Compte dans toutes les langues</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css">
   <style>
@@ -352,21 +352,21 @@
     <a href="index.html" class="back-btn">&#8592;</a>
     <div class="header-text">
       <div class="header-title">Compte dans toutes les langues !</div>
-      <div class="header-sub">1 à 20 · 8 langues · progression Duolingo</div>
+      <div class="header-sub">1 Ã  20 Â· 8 langues Â· progression Duolingo</div>
     </div>
     <div class="streak-badge" id="streakBadge" style="display:none"></div>
   </div>
 
   <div class="game-area">
 
-    <!-- Sélecteur Mode -->
+    <!-- SÃ©lecteur Mode -->
     <div class="mode-row">
       <button class="mode-btn active" id="modeLearn"    onclick="setMode('learn')">Apprendre</button>
       <button class="mode-btn"        id="modeQuiz"     onclick="setMode('quiz')">Quiz</button>
       <button class="mode-btn"        id="modeProgress" onclick="setMode('progress')">Progression</button>
     </div>
 
-    <!-- Sélecteur langue (mode Apprendre uniquement) -->
+    <!-- SÃ©lecteur langue (mode Apprendre uniquement) -->
     <div class="lang-scroll" id="langScroll"></div>
 
     <!-- ===== APPRENDRE ===== -->
@@ -375,7 +375,7 @@
       <div style="height:8px"></div>
       <button class="learn-all-btn" id="learnAllBtn" onclick="readAll()">
         <span>&#9654;</span>
-        <span id="learnAllLabel">Tout écouter (1 à 10)</span>
+        <span id="learnAllLabel">Tout Ã©couter (1 Ã  10)</span>
       </button>
       <div style="display:flex;gap:10px;margin-top:4px">
         <button class="mode-btn" id="rangeLow"  onclick="setRange('low')"  style="flex:0 0 auto;padding:8px 14px">1-10</button>
@@ -384,7 +384,7 @@
       </div>
     </div>
 
-    <!-- Sélecteur langue quiz -->
+    <!-- SÃ©lecteur langue quiz -->
     <div class="quiz-lang-row hidden" id="quizLangRow"></div>
 
     <!-- ===== QUIZ ===== -->
@@ -392,11 +392,11 @@
       <div class="score-bar" id="scoreBar"></div>
       <div class="quiz-card">
         <div class="quiz-flag"><span class="fi" id="quizFlag"></span></div>
-        <div class="quiz-lang-name" id="quizLangName">Français</div>
-        <div class="quiz-tier-badge" id="quizTierBadge">palier 1 · chiffres 1-3</div>
+        <div class="quiz-lang-name" id="quizLangName">FranÃ§ais</div>
+        <div class="quiz-tier-badge" id="quizTierBadge">palier 1 Â· chiffres 1-3</div>
         <button class="quiz-speak-btn" onclick="speakQuiz()">
           <span>&#128266;</span>
-          <span>Réécouter</span>
+          <span>RÃ©Ã©couter</span>
         </button>
       </div>
       <div class="choices" id="choices"></div>
@@ -430,43 +430,43 @@
   <script src="js/victory-sounds.js"></script>
   <script src="js/qcm-retry.js"></script>
   <script>
-    // ─── Langues ────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Langues â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const LANGS = [
-      { code:'fr',    flag:'fr', nom:'Français',  lang:'fr-FR' },
+      { code:'fr',    flag:'fr', nom:'FranÃ§ais',  lang:'fr-FR' },
       { code:'en',    flag:'gb', nom:'Anglais',   lang:'en-GB' },
       { code:'es',    flag:'es', nom:'Espagnol',  lang:'es-ES' },
-      { code:'pt-br', flag:'br', nom:'Brésilien', lang:'pt-BR' },
+      { code:'pt-br', flag:'br', nom:'BrÃ©silien', lang:'pt-BR' },
       { code:'de',    flag:'de', nom:'Allemand',  lang:'de-DE' },
       { code:'ru',    flag:'ru', nom:'Russe',     lang:'ru-RU' },
       { code:'zh',    flag:'cn', nom:'Chinois',   lang:'zh-CN' },
       { code:'ja',    flag:'jp', nom:'Japonais',  lang:'ja-JP' },
     ];
 
-    // ─── Paliers ────────────────────────────────────────────────────────────────
-    // Palier = { id, label, max } — max = chiffre maximum inclus dans ce palier
-    // Palier 0 = verrouillé (aucun chiffre actif pour la langue)
+    // â”€â”€â”€ Paliers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // Palier = { id, label, max } â€” max = chiffre maximum inclus dans ce palier
+    // Palier 0 = verrouillÃ© (aucun chiffre actif pour la langue)
     const TIERS = [
       { id:1, label:'1-3',  max:3  },
       { id:2, label:'1-5',  max:5  },
       { id:3, label:'1-10', max:10 },
       { id:4, label:'1-20', max:20 },
     ];
-    // Nombre de bonnes réponses CONSÉCUTIVES pour débloquer le palier suivant
+    // Nombre de bonnes rÃ©ponses CONSÃ‰CUTIVES pour dÃ©bloquer le palier suivant
     const UNLOCK_THRESHOLD = 3;
 
-    // ─── Nombres 1-20 par langue ─────────────────────────────────────────────
+    // â”€â”€â”€ Nombres 1-20 par langue â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const NUMBERS = {
       'fr':    ['un','deux','trois','quatre','cinq','six','sept','huit','neuf','dix','onze','douze','treize','quatorze','quinze','seize','dix-sept','dix-huit','dix-neuf','vingt'],
       'en':    ['one','two','three','four','five','six','seven','eight','nine','ten','eleven','twelve','thirteen','fourteen','fifteen','sixteen','seventeen','eighteen','nineteen','twenty'],
-      'es':    ['uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve','diez','once','doce','trece','catorce','quince','dieciséis','diecisiete','dieciocho','diecinueve','veinte'],
-      'pt-br': ['um','dois','três','quatro','cinco','seis','sete','oito','nove','dez','onze','doze','treze','quatorze','quinze','dezesseis','dezessete','dezoito','dezenove','vinte'],
-      'de':    ['eins','zwei','drei','vier','fünf','sechs','sieben','acht','neun','zehn','elf','zwölf','dreizehn','vierzehn','fünfzehn','sechzehn','siebzehn','achtzehn','neunzehn','zwanzig'],
-      'ru':    ['один','два','три','четыре','пять','шесть','семь','восемь','девять','десять','одиннадцать','двенадцать','тринадцать','четырнадцать','пятнадцать','шестнадцать','семнадцать','восемнадцать','девятнадцать','двадцать'],
-      'zh':    ['一','二','三','四','五','六','七','八','九','十','十一','十二','十三','十四','十五','十六','十七','十八','十九','二十'],
-      'ja':    ['いち','に','さん','よん','ご','ろく','なな','はち','きゅう','じゅう','じゅういち','じゅうに','じゅうさん','じゅうよん','じゅうご','じゅうろく','じゅうなな','じゅうはち','じゅうきゅう','にじゅう'],
+      'es':    ['uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve','diez','once','doce','trece','catorce','quince','diecisÃ©is','diecisiete','dieciocho','diecinueve','veinte'],
+      'pt-br': ['um','dois','trÃªs','quatro','cinco','seis','sete','oito','nove','dez','onze','doze','treze','quatorze','quinze','dezesseis','dezessete','dezoito','dezenove','vinte'],
+      'de':    ['eins','zwei','drei','vier','fÃ¼nf','sechs','sieben','acht','neun','zehn','elf','zwÃ¶lf','dreizehn','vierzehn','fÃ¼nfzehn','sechzehn','siebzehn','achtzehn','neunzehn','zwanzig'],
+      'ru':    ['Ð¾Ð´Ð¸Ð½','Ð´Ð²Ð°','Ñ‚Ñ€Ð¸','Ñ‡ÐµÑ‚Ñ‹Ñ€Ðµ','Ð¿ÑÑ‚ÑŒ','ÑˆÐµÑÑ‚ÑŒ','ÑÐµÐ¼ÑŒ','Ð²Ð¾ÑÐµÐ¼ÑŒ','Ð´ÐµÐ²ÑÑ‚ÑŒ','Ð´ÐµÑÑÑ‚ÑŒ','Ð¾Ð´Ð¸Ð½Ð½Ð°Ð´Ñ†Ð°Ñ‚ÑŒ','Ð´Ð²ÐµÐ½Ð°Ð´Ñ†Ð°Ñ‚ÑŒ','Ñ‚Ñ€Ð¸Ð½Ð°Ð´Ñ†Ð°Ñ‚ÑŒ','Ñ‡ÐµÑ‚Ñ‹Ñ€Ð½Ð°Ð´Ñ†Ð°Ñ‚ÑŒ','Ð¿ÑÑ‚Ð½Ð°Ð´Ñ†Ð°Ñ‚ÑŒ','ÑˆÐµÑÑ‚Ð½Ð°Ð´Ñ†Ð°Ñ‚ÑŒ','ÑÐµÐ¼Ð½Ð°Ð´Ñ†Ð°Ñ‚ÑŒ','Ð²Ð¾ÑÐµÐ¼Ð½Ð°Ð´Ñ†Ð°Ñ‚ÑŒ','Ð´ÐµÐ²ÑÑ‚Ð½Ð°Ð´Ñ†Ð°Ñ‚ÑŒ','Ð´Ð²Ð°Ð´Ñ†Ð°Ñ‚ÑŒ'],
+      'zh':    ['ä¸€','äºŒ','ä¸‰','å››','äº”','å…­','ä¸ƒ','å…«','ä¹','å','åä¸€','åäºŒ','åä¸‰','åå››','åäº”','åå…­','åä¸ƒ','åå…«','åä¹','äºŒå'],
+      'ja':    ['ã„ã¡','ã«','ã•ã‚“','ã‚ˆã‚“','ã”','ã‚ã','ãªãª','ã¯ã¡','ãã‚…ã†','ã˜ã‚…ã†','ã˜ã‚…ã†ã„ã¡','ã˜ã‚…ã†ã«','ã˜ã‚…ã†ã•ã‚“','ã˜ã‚…ã†ã‚ˆã‚“','ã˜ã‚…ã†ã”','ã˜ã‚…ã†ã‚ã','ã˜ã‚…ã†ãªãª','ã˜ã‚…ã†ã¯ã¡','ã˜ã‚…ã†ãã‚…ã†','ã«ã˜ã‚…ã†'],
     };
 
-    // ─── Persistance progression ─────────────────────────────────────────────
+    // â”€â”€â”€ Persistance progression â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const PROG_KEY = 'mj20_progress';
 
     // Structure localStorage :
@@ -495,9 +495,9 @@
       LANGS.forEach(l => {
         langs[l.code] = { unlockedTier: 0, consecutiveCorrect: 0 };
       });
-      // Français : débloqué max d'emblée
+      // FranÃ§ais : dÃ©bloquÃ© max d'emblÃ©e
       langs['fr'].unlockedTier = 4;
-      // Anglais : palier 1 débloqué d'emblée
+      // Anglais : palier 1 dÃ©bloquÃ© d'emblÃ©e
       langs['en'].unlockedTier = 1;
       return { version: 2, langs };
     }
@@ -508,7 +508,7 @@
 
     let progress = loadProgress();
 
-    // ─── Helpers progression ──────────────────────────────────────────────────
+    // â”€â”€â”€ Helpers progression â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     function getUnlockedTier(langCode) {
       return (progress.langs[langCode] || { unlockedTier: 0 }).unlockedTier;
     }
@@ -523,7 +523,7 @@
       return getUnlockedTier(langCode) > 0;
     }
 
-    // Appelé après chaque bonne réponse dans le quiz
+    // AppelÃ© aprÃ¨s chaque bonne rÃ©ponse dans le quiz
     // Retourne { unlocked: bool, newTier: number|null }
     function recordCorrect(langCode) {
       const lp = progress.langs[langCode];
@@ -540,17 +540,17 @@
     }
 
     function recordWrong(langCode) {
-      // Pas de régression — on remet juste le compteur de consécutives à 0
+      // Pas de rÃ©gression â€” on remet juste le compteur de consÃ©cutives Ã  0
       progress.langs[langCode].consecutiveCorrect = 0;
       saveProgress(progress);
     }
 
-    // Pool actif pour le quiz : langues débloquées (tier >= 1)
+    // Pool actif pour le quiz : langues dÃ©bloquÃ©es (tier >= 1)
     function buildQuizPool() {
       return LANGS.filter(l => isLangActive(l.code));
     }
 
-    // ─── Streak ────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Streak â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const STREAK_KEY = 'mj20_streak';
 
     function getStreak() {
@@ -574,14 +574,14 @@
       const s = getStreak();
       const badge = document.getElementById('streakBadge');
       if (s.count >= 1) {
-        badge.textContent = `🔥 ${s.count}j`;
+        badge.textContent = `ðŸ”¥ ${s.count}j`;
         badge.style.display = '';
       } else {
         badge.style.display = 'none';
       }
     }
 
-    // ─── État UI ──────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Ã‰tat UI â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     let mode = 'learn';
     let currentLang = LANGS[0];
     let quizFocusLang = null; // null = toutes les langues actives
@@ -596,7 +596,7 @@
     let quizLang = null;
     let qcm = null;
 
-    // ─── Init UI ──────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Init UI â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     function renderLangScroll() {
       const c = document.getElementById('langScroll');
       c.innerHTML = LANGS.map(l => `
@@ -633,7 +633,7 @@
       else if (m === 'progress') renderProgress();
     }
 
-    // ─── APPRENDRE ────────────────────────────────────────────────────────────
+    // â”€â”€â”€ APPRENDRE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     function rangeBounds() {
       if (range === 'low')  return [1, 10];
       if (range === 'high') return [11, 20];
@@ -648,7 +648,7 @@
       document.getElementById(r === 'low' ? 'rangeLow' : r === 'high' ? 'rangeHigh' : 'rangeAll')
         .classList.add('active');
       const [a, b] = rangeBounds();
-      document.getElementById('learnAllLabel').textContent = `Tout écouter (${a} à ${b})`;
+      document.getElementById('learnAllLabel').textContent = `Tout Ã©couter (${a} Ã  ${b})`;
       renderLearn();
     }
 
@@ -676,7 +676,7 @@
       if (reading) {
         TTS.cancel();
         reading = false;
-        document.getElementById('learnAllLabel').textContent = `Tout écouter (${rangeBounds()[0]} à ${rangeBounds()[1]})`;
+        document.getElementById('learnAllLabel').textContent = `Tout Ã©couter (${rangeBounds()[0]} Ã  ${rangeBounds()[1]})`;
         return;
       }
       reading = true;
@@ -693,7 +693,7 @@
         await wait(150);
       }
       reading = false;
-      document.getElementById('learnAllLabel').textContent = `Tout écouter (${a} à ${b})`;
+      document.getElementById('learnAllLabel').textContent = `Tout Ã©couter (${a} Ã  ${b})`;
     }
 
     function speakAsync(text, lang) {
@@ -715,7 +715,7 @@
 
     function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
 
-    // ─── QUIZ (progression) ──────────────────────────────────────────────────
+    // â”€â”€â”€ QUIZ (progression) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     function startQuiz() {
       round = 0;
       score = 0;
@@ -732,16 +732,16 @@
       if (round >= ROUND_COUNT) { showVictory(); return; }
       qcm = QcmRetry.create();
 
-      // Choisir une langue active au hasard (pondérée par palier = plus de variété pour les avancées)
+      // Choisir une langue active au hasard (pondÃ©rÃ©e par palier = plus de variÃ©tÃ© pour les avancÃ©es)
       const pool = buildQuizPool();
       if (pool.length === 0) {
-        // Sécurité : ne devrait pas arriver car fr toujours actif
+        // SÃ©curitÃ© : ne devrait pas arriver car fr toujours actif
         quizLang = LANGS[0];
       } else {
         quizLang = pool[Math.floor(Math.random() * pool.length)];
       }
 
-      // Chiffre dans la plage débloquée pour cette langue
+      // Chiffre dans la plage dÃ©bloquÃ©e pour cette langue
       const maxNum = getTierMax(quizLang.code);
       quizNumber = 1 + Math.floor(Math.random() * maxNum);
 
@@ -755,8 +755,8 @@
       document.getElementById('quizLangName').textContent = quizLang.nom;
       document.getElementById('quizTierBadge').textContent =
         tierId < 4
-          ? `palier ${tierId} · chiffres ${tierLabel} · ${consec}/${UNLOCK_THRESHOLD} pour niveau suivant`
-          : `palier ${tierId} · chiffres ${tierLabel}`;
+          ? `palier ${tierId} Â· chiffres ${tierLabel} Â· ${consec}/${UNLOCK_THRESHOLD} pour niveau suivant`
+          : `palier ${tierId} Â· chiffres ${tierLabel}`;
 
       renderQuizChoices(maxNum);
       setTimeout(speakQuiz, 500);
@@ -820,7 +820,7 @@
         if (typeof playErrorSound === 'function') playErrorSound();
         showFeedback('');
         recordWrong(quizLang.code);
-        setTimeout(() => TTS.speak(`C'était ${quizNumber}`, { lang:'fr-FR', rate:0.85 }), 300);
+        setTimeout(() => TTS.speak(`C'Ã©tait ${quizNumber}`, { lang:'fr-FR', rate:0.85 }), 300);
         round++;
         setTimeout(nextQuizRound, 2000);
 
@@ -828,7 +828,7 @@
         btn.classList.add('wrong'); btn.disabled = true;
         if (typeof sndBuzz === 'function') sndBuzz();
         showFeedback('');
-        // Pas de recordWrong ici — QcmRetry gère les tentatives intermédiaires
+        // Pas de recordWrong ici â€” QcmRetry gÃ¨re les tentatives intermÃ©diaires
         setTimeout(speakQuiz, 400);
       }
     }
@@ -851,17 +851,17 @@
       setTimeout(() => el.classList.remove('show'), 1200);
     }
 
-    // ─── Toast déblocage ──────────────────────────────────────────────────────
+    // â”€â”€â”€ Toast dÃ©blocage â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     let _toastTimer = null;
     function showUnlockToast(lang, tier) {
       const toast = document.getElementById('unlockToast');
-      toast.textContent = `Nouveau niveau débloqué : ${lang.nom} chiffres ${tier.label} !`;
+      toast.textContent = `Nouveau niveau dÃ©bloquÃ© : ${lang.nom} chiffres ${tier.label} !`;
       toast.classList.add('show');
       clearTimeout(_toastTimer);
       _toastTimer = setTimeout(() => toast.classList.remove('show'), 3000);
     }
 
-    // ─── PROGRESSION (vue) ────────────────────────────────────────────────────
+    // â”€â”€â”€ PROGRESSION (vue) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     function renderProgress() {
       const container = document.getElementById('progCards');
       container.innerHTML = LANGS.map(l => {
@@ -877,20 +877,20 @@
           if (dotTier < tier)       cls = 'done';
           else if (dotTier === tier) cls = 'done';
           // Pour le tier courant, montrer progression partielle
-          // (optionnel : toujours done si débloqué)
+          // (optionnel : toujours done si dÃ©bloquÃ©)
           return `<div class="tier-dot ${cls}" title="Palier ${dotTier} : ${t.label}"></div>`;
         }).join('');
 
         let subText = '';
         let nextText = '';
         if (isLocked) {
-          subText = 'Verrouillé';
+          subText = 'VerrouillÃ©';
         } else {
-          subText = `Palier ${tier}/4 · chiffres ${TIERS[tier-1].label}`;
+          subText = `Palier ${tier}/4 Â· chiffres ${TIERS[tier-1].label}`;
           if (tier < 4) {
-            nextText = `${consec}/${UNLOCK_THRESHOLD} pour débloquer le palier ${tier+1}`;
+            nextText = `${consec}/${UNLOCK_THRESHOLD} pour dÃ©bloquer le palier ${tier+1}`;
           } else {
-            nextText = 'Maîtrisé !';
+            nextText = 'MaÃ®trisÃ© !';
           }
         }
 
@@ -909,13 +909,13 @@
       }).join('');
     }
 
-    // ─── Victoire ─────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Victoire â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     const VICTORY_DATA = [
       { min:10, max:10, emoji:'', title:'PARFAIT !!!', msg:'10 sur 10 ! Tu parles toutes les langues !',  sound:'victory' },
       { min:8,  max:9,  emoji:'', title:'Super Max !', msg:'Presque parfait ! Tu deviens polyglotte !',    sound:'bravo' },
-      { min:6,  max:7,  emoji:'', title:'Bien joué !', msg:"C'est bien ! Continue comme ça !",             sound:'ding' },
+      { min:6,  max:7,  emoji:'', title:'Bien jouÃ© !', msg:"C'est bien ! Continue comme Ã§a !",             sound:'ding' },
       { min:4,  max:5,  emoji:'', title:'Pas mal !',   msg:'Tu peux encore progresser !',                   sound:'ding' },
-      { min:0,  max:3,  emoji:'', title:'On réessaie ?',msg:'Entraîne-toi en mode Apprendre !',             sound:'buzz' },
+      { min:0,  max:3,  emoji:'', title:'On rÃ©essaie ?',msg:'EntraÃ®ne-toi en mode Apprendre !',             sound:'buzz' },
     ];
 
     function showVictory() {
@@ -942,12 +942,13 @@
       return a;
     }
 
-    // ─── Init ──────────────────────────────────────────────────────────────────
+    // â”€â”€â”€ Init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
     renderLangScroll();
     setRange('low');
     renderLearn();
   </script>
   <script src="js/tracker.js"></script>
   <script src="js/comments.js"></script>
+  <script src="js/back-button.js"></script>
 </body>
 </html>

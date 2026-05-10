@@ -74,7 +74,7 @@ Aucun. Max Adventure tourne en prod (vérifié 2026-05-03 : `kimen26.github.io/M
 | **`game-tile-simplifier`** | Sonnet | Sachant tile #1/3 — image/desc → ANALYSE structurée |
 | **`game-tile-designer`** | Sonnet | Sachant tile #2/3 — ANALYSE → recette Python + PNG |
 | **`game-tile-reviewer`** | Haiku | Sachant tile #3/3 — verdict PASS/FAIL avec issues |
-| **`game-conseiller`** | Opus | **Binôme créatif transverse** — voix de John, challenge, force de proposition, pont entre les 3 sous-domaines |
+| **`game-conseiller`** | Opus | **Binôme créatif transverse** — voix de Papa Yann, challenge, force de proposition, pont entre les 3 sous-domaines |
 | **`game-mj-pmo`** | Haiku | Sous-spé PMO mini-jeux HTML (parent : game-pmo). Scope strict : rules.md, stack.md, PIPELINE-MEMORY-MJ.md, docs/jeux/ |
 | **`game-mj-reviewer`** | Haiku | Sachant validateur MJ pré-livraison — checklist hardcodée 5 sections, verdict PASS/FAIL |
 

@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
-<title>MJ-16 – Complète la suite</title>
+<title>MJ-16 â€“ ComplÃ¨te la suite</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
 <style>
 * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; user-select:none; }
@@ -11,7 +11,7 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 
 #app { display:flex; flex-direction:column; height:100dvh; max-width:760px; margin:0 auto; position:relative; }
 
-/* ── Header ── */
+/* â”€â”€ Header â”€â”€ */
 #hdr {
   flex-shrink:0; display:flex; align-items:center; gap:10px;
   padding:8px 12px; background:rgba(0,0,0,0.35);
@@ -25,11 +25,12 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 #hdr a:active { background:rgba(255,255,255,0.25); }
 #htitle { flex:1; font-size:1.05rem; font-weight:900; }
 #score-badge {
+  display:none !important;
   background:#ffe066; color:#1a1a1a; font-weight:900;
   border-radius:20px; padding:4px 14px; font-size:0.95rem; flex-shrink:0;
 }
 
-/* ── Indicateur de round ── */
+/* â”€â”€ Indicateur de round â”€â”€ */
 #level-bar {
   flex-shrink:0; display:flex; align-items:center; justify-content:center;
   gap:8px; padding:6px 12px;
@@ -44,14 +45,14 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 .lvl-dot.active { background:#ffe066; box-shadow:0 0 8px #ffe066; }
 #level-label { font-size:0.82rem; font-weight:900; opacity:0.65; }
 
-/* ── Zone principale ── */
+/* â”€â”€ Zone principale â”€â”€ */
 #main {
   flex:1; display:flex; flex-direction:column; align-items:center;
   justify-content:space-evenly; padding:10px 8px 6px; overflow:hidden;
   gap:6px;
 }
 
-/* ── Question ── */
+/* â”€â”€ Question â”€â”€ */
 #q-label {
   font-size:1.15rem; font-weight:900; text-align:center;
   background:rgba(255,255,255,0.09); border-radius:18px;
@@ -59,14 +60,14 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   border:2px solid rgba(255,255,255,0.1);
 }
 
-/* ── Hint ── */
+/* â”€â”€ Hint â”€â”€ */
 #hint-label {
   font-size:0.82rem; font-weight:700; opacity:0.6;
   text-align:center; flex-shrink:0; padding:0 12px; min-height:18px;
   color:#ffe066;
 }
 
-/* ── Ligne de la suite (4 cases) ── */
+/* â”€â”€ Ligne de la suite (4 cases) â”€â”€ */
 #sequence-row {
   flex-shrink:0; display:flex; align-items:flex-end;
   justify-content:center; gap:8px; width:100%; padding:0 4px;
@@ -104,14 +105,14 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   line-height:1; padding-bottom:4px;
 }
 
-/* Case mystère remplie (après bonne réponse) */
+/* Case mystÃ¨re remplie (aprÃ¨s bonne rÃ©ponse) */
 .seq-cell.mystery.filled {
   animation:none;
   border-color:#00c47a;
   background:rgba(0,196,122,0.15);
 }
 
-/* Flash vert case mystère */
+/* Flash vert case mystÃ¨re */
 @keyframes flash-fill {
   0%   { transform:scale(0.7); opacity:0; }
   60%  { transform:scale(1.1); }
@@ -121,19 +122,19 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   animation:flash-fill 0.4s ease forwards;
 }
 
-/* ── Séparateur flèche ── */
+/* â”€â”€ SÃ©parateur flÃ¨che â”€â”€ */
 .seq-arrow {
   font-size:1.3rem; opacity:0.35; flex-shrink:0; align-self:center;
   padding-bottom:8px;
 }
 
-/* ── Label "Choisis la bonne réponse" ── */
+/* â”€â”€ Label "Choisis la bonne rÃ©ponse" â”€â”€ */
 #choices-label {
   font-size:0.88rem; font-weight:900; opacity:0.65;
   text-align:center; flex-shrink:0;
 }
 
-/* ── Zone choix ── */
+/* â”€â”€ Zone choix â”€â”€ */
 #choices {
   flex-shrink:0; display:flex; gap:10px; justify-content:center;
   width:100%; padding:0 4px; flex-wrap:wrap;
@@ -181,13 +182,13 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   60%     { transform:translateX(8px); }
 }
 
-/* Révèle la bonne réponse (après erreur) */
+/* RÃ©vÃ¨le la bonne rÃ©ponse (aprÃ¨s erreur) */
 .choice-btn.reveal {
   border-color:#ffe066 !important;
   background:rgba(255,224,102,0.15) !important;
 }
 
-/* ── Écran de fin ── */
+/* â”€â”€ Ã‰cran de fin â”€â”€ */
 #end-screen {
   display:none; position:absolute; inset:0;
   background:rgba(13,27,42,0.97);
@@ -213,8 +214,8 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 
   <!-- Header -->
   <div id="hdr">
-    <a href="index.html">←</a>
-    <span id="htitle">📈 Complète la suite</span>
+    <a href="index.html">â†</a>
+    <span id="htitle">ðŸ“ˆ ComplÃ¨te la suite</span>
     <div id="score-badge">0 / 0</div>
   </div>
 
@@ -237,17 +238,17 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
     <div id="sequence-row"></div>
 
     <!-- Choix -->
-    <div id="choices-label">Choisis la bonne réponse ↓</div>
+    <div id="choices-label">Choisis la bonne rÃ©ponse â†“</div>
     <div id="choices"></div>
   </div>
 
   <!-- Fin de partie -->
   <div id="end-screen">
-    <div id="end-emoji">🎉</div>
+    <div id="end-emoji">ðŸŽ‰</div>
     <div id="end-msg"></div>
     <div id="end-score"></div>
     <button id="btn-replay" onclick="startGame()">Rejouer !</button>
-    <a href="index.html" style="color:#ffe066;font-weight:900;font-size:0.95rem;margin-top:4px;">← Menu</a>
+    <a href="index.html" style="color:#ffe066;font-weight:900;font-size:0.95rem;margin-top:4px;">â† Menu</a>
   </div>
 </div>
 
@@ -257,21 +258,22 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 <script src="js/tts.js"></script>
 <script src="js/tracker.js"></script>
 <script src="js/comments.js"></script>
+  <script src="js/back-button.js"></script>
 <script>
-// ═══════════════════════════════════════════════════════════════════════════
-//  MJ-16 — Complète la suite
-//  5 rounds, patterns mixés (3 ou 4 éléments visibles avant la case mystère) :
-//    - size-up / size-down (3 starters, même bus) : S M L → XL
-//    - num-up / num-down   (3 starters, même couleur) : 5 6 7 → 8
-//    - alt-AB              (4 starters) : 🔴🔵🔴🔵 → 🔴
-//    - alt-ABC             (4 starters) : 🔴🔵🟢🔴 → 🔵
-// ═══════════════════════════════════════════════════════════════════════════
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+//  MJ-16 â€” ComplÃ¨te la suite
+//  5 rounds, patterns mixÃ©s (3 ou 4 Ã©lÃ©ments visibles avant la case mystÃ¨re) :
+//    - size-up / size-down (3 starters, mÃªme bus) : S M L â†’ XL
+//    - num-up / num-down   (3 starters, mÃªme couleur) : 5 6 7 â†’ 8
+//    - alt-AB              (4 starters) : ðŸ”´ðŸ”µðŸ”´ðŸ”µ â†’ ðŸ”´
+//    - alt-ABC             (4 starters) : ðŸ”´ðŸ”µðŸŸ¢ðŸ”´ â†’ ðŸ”µ
+// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
 
 const ROUNDS_PER_GAME = 5;
 
 const SIZE_STEPS = [60, 80, 100, 120];
 
-// Palette de carrosseries (local à MJ-16, comme MJ-14)
+// Palette de carrosseries (local Ã  MJ-16, comme MJ-14)
 const BODY_COLORS = [
   { key:'turquoise', body:'#1abc9c' },
   { key:'orange',    body:'#ff7043' },
@@ -280,7 +282,7 @@ const BODY_COLORS = [
   { key:'jaune',     body:'#f1c40f' },
 ];
 
-// Variante SVG locale à MJ-16 pour patterns "carrosserie"
+// Variante SVG locale Ã  MJ-16 pour patterns "carrosserie"
 function busSVGBody(destColor, textColor, num, bodyColor, width) {
   return `<svg viewBox="0 0 160 80" width="${width}" xmlns="http://www.w3.org/2000/svg">
     <rect x="5" y="10" width="150" height="45" rx="4" fill="${bodyColor}"/>
@@ -317,7 +319,7 @@ function renderBus(item) {
   return busSVG(item.ligne.color, item.ligne.textColor, item.ligne.num, w);
 }
 
-// ── Utilitaires ─────────────────────────────────────────────────────────────
+// â”€â”€ Utilitaires â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function shuffle(arr) {
   return [...arr].sort(() => Math.random() - 0.5);
@@ -331,12 +333,12 @@ function randBool() {
   return Math.random() < 0.5;
 }
 
-// ── Calcul de la taille de bus adaptée à l'écran ────────────────────────────
+// â”€â”€ Calcul de la taille de bus adaptÃ©e Ã  l'Ã©cran â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 // Les 4 cases sont en ligne horizontale. On vise une taille raisonnable.
 function calcSeqBusWidth(cellCount) {
-  const n = cellCount || 4; // nombre total de cellules (starters + case mystère)
+  const n = cellCount || 4; // nombre total de cellules (starters + case mystÃ¨re)
   const w = Math.min(window.innerWidth, 760);
-  // n cellules + (n-1) flèches (~26px) + paddings/gaps par cellule (~22px)
+  // n cellules + (n-1) flÃ¨ches (~26px) + paddings/gaps par cellule (~22px)
   const available = w - 16 - (n - 1) * 26 - n * 22;
   return Math.min(120, Math.max(52, Math.floor(available / n)));
 }
@@ -348,14 +350,14 @@ function calcChoiceBusWidth() {
   return Math.min(140, Math.max(80, Math.floor(available / 3)));
 }
 
-// ── Génération des puzzles ───────────────────────────────────────────────────
+// â”€â”€ GÃ©nÃ©ration des puzzles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function pickDailyLigne() {
   const dailyPool = LIGNES.filter(l => ['162','172','185','V7','M7'].includes(l.num));
   return shuffle(dailyPool.length ? dailyPool : LIGNES)[0];
 }
 
-// Taille croissante : S M L → XL (3 starters)
+// Taille croissante : S M L â†’ XL (3 starters)
 function generateSizeUp() {
   const ligne = pickDailyLigne();
   const [s0, s1, s2, s3] = SIZE_STEPS;
@@ -373,7 +375,7 @@ function generateSizeUp() {
   };
 }
 
-// Taille décroissante : XL L M → S (3 starters)
+// Taille dÃ©croissante : XL L M â†’ S (3 starters)
 function generateSizeDown() {
   const ligne = pickDailyLigne();
   const [s0, s1, s2, s3] = [...SIZE_STEPS].reverse();
@@ -391,14 +393,14 @@ function generateSizeDown() {
   };
 }
 
-// Num croissant pas de 2 : 2 4 6 → 8 (pairs) ou 3 5 7 → 9 (impairs)
+// Num croissant pas de 2 : 2 4 6 â†’ 8 (pairs) ou 3 5 7 â†’ 9 (impairs)
 function generateNumUpBy2() {
   const base  = pickDailyLigne();
   const startPair = [2, 3][Math.floor(Math.random()*2)]; // 2 (pair) ou 3 (impair)
   const start = startPair + 2 * Math.floor(Math.random() * 2); // +0 ou +2
   const make  = n => ({ num: String(n), color: base.color, textColor: base.textColor });
   const ligneA = make(start), ligneB = make(start+2), ligneC = make(start+4), ligneD = make(start+6);
-  const wrong1 = make(start+5); // même parité opposée
+  const wrong1 = make(start+5); // mÃªme paritÃ© opposÃ©e
   const wrong2 = make(start+7);
   const w = 90;
   return {
@@ -414,7 +416,7 @@ function generateNumUpBy2() {
   };
 }
 
-// Num décroissant pas de 2 : 8 6 4 → 2
+// Num dÃ©croissant pas de 2 : 8 6 4 â†’ 2
 function generateNumDownBy2() {
   const base  = pickDailyLigne();
   const startPair = [9, 10][Math.floor(Math.random()*2)];
@@ -436,7 +438,7 @@ function generateNumDownBy2() {
   };
 }
 
-// Carrosserie AB : 🟠🟣🟠🟣 → 🟠 (même bus, couleur de carrosserie alterne)
+// Carrosserie AB : ðŸŸ ðŸŸ£ðŸŸ ðŸŸ£ â†’ ðŸŸ  (mÃªme bus, couleur de carrosserie alterne)
 function generateBodyAB() {
   const ligne = pickDailyLigne();
   const [bA, bB, bC] = shuffle(BODY_COLORS).slice(0, 3);
@@ -454,7 +456,7 @@ function generateBodyAB() {
   };
 }
 
-// AABB doubles : 🔴🔴🔵🔵 → 🔴
+// AABB doubles : ðŸ”´ðŸ”´ðŸ”µðŸ”µ â†’ ðŸ”´
 function generateAltAABB() {
   const pool = selectDistinctColors(LIGNES, 4, 80);
   if (pool.length < 3) return generateSizeUp();
@@ -468,12 +470,12 @@ function generateAltAABB() {
       { ligne: b, width: w, correct: false },
       { ligne: c, width: w, correct: false },
     ]),
-    hint: 'Deux pareils, puis deux pareils, et ça recommence !',
+    hint: 'Deux pareils, puis deux pareils, et Ã§a recommence !',
     labelMode: 'num',
   };
 }
 
-// Num croissant : 5 6 7 → 8 (3 starters, même couleur)
+// Num croissant : 5 6 7 â†’ 8 (3 starters, mÃªme couleur)
 function generateNumUp() {
   const base    = pickDailyLigne();
   const start   = 2 + Math.floor(Math.random() * 7); // 2..8
@@ -490,12 +492,12 @@ function generateNumUp() {
       { ligne: wrong1, width: w, correct: false },
       { ligne: wrong2, width: w, correct: false },
     ]),
-    hint: 'Les numéros montent !',
+    hint: 'Les numÃ©ros montent !',
     labelMode: 'num',
   };
 }
 
-// Num décroissant : 8 7 6 → 5 (3 starters)
+// Num dÃ©croissant : 8 7 6 â†’ 5 (3 starters)
 function generateNumDown() {
   const base  = pickDailyLigne();
   const start = 5 + Math.floor(Math.random() * 6); // 5..10
@@ -512,12 +514,12 @@ function generateNumDown() {
       { ligne: wrong1, width: w, correct: false },
       { ligne: wrong2, width: w, correct: false },
     ]),
-    hint: 'Les numéros descendent !',
+    hint: 'Les numÃ©ros descendent !',
     labelMode: 'num',
   };
 }
 
-// Alternance 2 couleurs : A B A B → A (4 starters)
+// Alternance 2 couleurs : A B A B â†’ A (4 starters)
 function generateAltAB() {
   const pool = selectDistinctColors(LIGNES, 4, 80);
   if (pool.length < 3) return generateSizeUp();
@@ -531,12 +533,12 @@ function generateAltAB() {
       { ligne: b, width: w, correct: false },
       { ligne: c, width: w, correct: false },
     ]),
-    hint: 'Ça se répète deux par deux !',
+    hint: 'Ã‡a se rÃ©pÃ¨te deux par deux !',
     labelMode: 'num',
   };
 }
 
-// Alternance 3 couleurs : A B C A → B (4 starters)
+// Alternance 3 couleurs : A B C A â†’ B (4 starters)
 function generateAltABC() {
   const pool = selectDistinctColors(LIGNES, 5, 80);
   if (pool.length < 4) return generateAltAB();
@@ -550,7 +552,7 @@ function generateAltABC() {
       { ligne: c, width: w, correct: false },
       { ligne: d, width: w, correct: false },
     ]),
-    hint: 'Ça tourne par trois !',
+    hint: 'Ã‡a tourne par trois !',
     labelMode: 'num',
   };
 }
@@ -574,14 +576,14 @@ function generatePuzzle(_roundNum) {
 }
 
 
-// ── État du jeu ──────────────────────────────────────────────────────────────
+// â”€â”€ Ã‰tat du jeu â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 let score    = 0;
 let round    = 0;
 let answered = false;
 let currentPuzzle = null;
 
-// ── Rendu ────────────────────────────────────────────────────────────────────
+// â”€â”€ Rendu â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function renderPuzzle(puzzle) {
   currentPuzzle = puzzle;
@@ -590,7 +592,7 @@ function renderPuzzle(puzzle) {
   const seqBusW    = calcSeqBusWidth(puzzle.sequence.length + 1);
   const choiceBusW = calcChoiceBusWidth();
 
-  // Appliquer la taille calculée si width===0 (niveaux A)
+  // Appliquer la taille calculÃ©e si width===0 (niveaux A)
   const resolvedSeq = puzzle.sequence.map(item => ({
     ...item,
     width: item.width > 0 ? item.width : seqBusW,
@@ -614,7 +616,7 @@ function renderPuzzle(puzzle) {
     if (i > 0) {
       const arrow = document.createElement('div');
       arrow.className = 'seq-arrow';
-      arrow.textContent = '›';
+      arrow.textContent = 'â€º';
       seqRow.appendChild(arrow);
     }
 
@@ -624,13 +626,13 @@ function renderPuzzle(puzzle) {
     seqRow.appendChild(cell);
   });
 
-  // Flèche avant case mystère
+  // FlÃ¨che avant case mystÃ¨re
   const arrowLast = document.createElement('div');
   arrowLast.className = 'seq-arrow';
-  arrowLast.textContent = '›';
+  arrowLast.textContent = 'â€º';
   seqRow.appendChild(arrowLast);
 
-  // Case mystère (4e case)
+  // Case mystÃ¨re (4e case)
   const mysteryCell = document.createElement('div');
   mysteryCell.className = 'seq-cell mystery';
   mysteryCell.id = 'mystery-cell';
@@ -655,7 +657,7 @@ function renderPuzzle(puzzle) {
   speak('Qu\'est-ce qui vient ensuite ?');
 }
 
-// ── Interaction ───────────────────────────────────────────────────────────────
+// â”€â”€ Interaction â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function onChoiceTap(btn, item, answer) {
   if (answered) return;
@@ -664,33 +666,33 @@ function onChoiceTap(btn, item, answer) {
   const isCorrect = item.correct;
 
   if (isCorrect) {
-    // Bonne réponse
+    // Bonne rÃ©ponse
     score++;
     updateScore();
     btn.classList.add('correct');
     if (typeof Tracker !== 'undefined') Tracker.logAnswer(true);
     playSuccessBeep();
 
-    // Remplir la case mystère
+    // Remplir la case mystÃ¨re
     setTimeout(() => {
       fillMysteryCell(answer);
       setTimeout(nextRound, 700);
     }, 350);
 
   } else {
-    // Mauvaise réponse
+    // Mauvaise rÃ©ponse
     btn.classList.add('wrong');
     if (typeof Tracker !== 'undefined') Tracker.logAnswer(false);
     playErrorSound();
 
     setTimeout(() => {
       btn.classList.remove('wrong');
-      // Révèle la bonne réponse
+      // RÃ©vÃ¨le la bonne rÃ©ponse
       const allBtns = document.querySelectorAll('.choice-btn');
       allBtns.forEach(b => {
         if (b.dataset.correct === '1') b.classList.add('reveal');
       });
-      // Remplir quand même la case mystère
+      // Remplir quand mÃªme la case mystÃ¨re
       fillMysteryCell(answer);
       setTimeout(nextRound, 1100);
     }, 450);
@@ -705,7 +707,7 @@ function fillMysteryCell(answer) {
                     <span class="cell-label">4</span>`;
 }
 
-// ── Sons / TTS ──────────────────────────────────────────────────────────────
+// â”€â”€ Sons / TTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function playSuccessBeep() {
   try {
@@ -726,7 +728,7 @@ function playSuccessBeep() {
 
 function speak(text) { TTS.speak(text); }
 
-// ── Score / Rounds / Dots ────────────────────────────────────────────────────
+// â”€â”€ Score / Rounds / Dots â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function updateScore() {
   document.getElementById('score-badge').textContent = `${score} / ${round}`;
@@ -756,15 +758,15 @@ function nextRound() {
 
 function showEnd() {
   const pct   = score / ROUNDS_PER_GAME;
-  const emoji = pct >= 0.8 ? '🏆' : pct >= 0.5 ? '🎉' : '🚌';
+  const emoji = pct >= 0.8 ? 'ðŸ†' : pct >= 0.5 ? 'ðŸŽ‰' : 'ðŸšŒ';
   const msg   = pct >= 0.8 ? 'Bravo ! Tu es un champion des suites !'
-              : pct >= 0.5 ? 'Bien joué ! Tu t\'améliores !'
-              :               'Continue de t\'entraîner, tu vas y arriver !';
+              : pct >= 0.5 ? 'Bien jouÃ© ! Tu t\'amÃ©liores !'
+              :               'Continue de t\'entraÃ®ner, tu vas y arriver !';
 
   document.getElementById('end-emoji').textContent  = emoji;
   document.getElementById('end-msg').textContent    = msg;
   document.getElementById('end-score').textContent  =
-    `${score} bonne${score > 1 ? 's' : ''} réponse${score > 1 ? 's' : ''} sur ${ROUNDS_PER_GAME}`;
+    `${score} bonne${score > 1 ? 's' : ''} rÃ©ponse${score > 1 ? 's' : ''} sur ${ROUNDS_PER_GAME}`;
 
   document.getElementById('end-screen').classList.add('visible');
   playEndSound(score, ROUNDS_PER_GAME);
@@ -772,7 +774,7 @@ function showEnd() {
   if (typeof Tracker !== 'undefined') Tracker.endSession(score, ROUNDS_PER_GAME);
 }
 
-// ── Démarrage ────────────────────────────────────────────────────────────────
+// â”€â”€ DÃ©marrage â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 function startGame() {
   score    = 0;

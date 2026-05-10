@@ -467,8 +467,38 @@ MaxPlay V0
 | L-016 | 2026-05-10 | **Anti-pattern méta** : si user dit 2× "c'est sale" et que je crois avoir corrigé sans changement visible → STOP, zoomer la tile x5, comparer planche-contact entière, identifier différence pixel-perfect AVANT de patcher | Erreur de 4 sessions sur `_14` |
 | L-017 | 2026-05-10 | **Multi-tiles à vraies dimensions** : un sprite 4×2 doit s'afficher rectangle 4×2 dans tile-picker, pas carré 1×1 déformé. CSS inline `width: calc(w * --cell-size); height: calc(h * --cell-size)` | Bug visuel tile-picker corrigé |
 | L-018 | 2026-05-10 | **Tile `Asphalt_1_Variation_13` = croix `+` pour intersection centrale** d'un carrefour 4 voies. Sans elle, le pivot est juste de l'asphalte plain sans signal visuel d'intersection | Cartographie révélée |
+| L-019 | 2026-05-11 | **Composant partagé `js/back-button.js`** (80×80 + mini-bus SVG + auto-replace 3 patterns) > 19 boutons inline duplicate. Injecté dans 18 MJ. CSS `.back` fallback upgraded 48→80. | Session refactor 5 dim (`PIPELINE-MEMORY-MJ.md` § 3 F-006) |
+| L-020 | 2026-05-11 | **Composant partagé `js/intro-splash.js`** avec convention déclarative `data-mp-intro-emoji/title/hint` sur `<body>`. Auto-init au DOMContentLoaded, skippable au tap, pas de TTS (EP-033 respecté) | Session refactor 5 dim (`PIPELINE-MEMORY-MJ.md` § 3 F-007) |
+| L-021 | 2026-05-11 | **`.scorebar` neutralisée par défaut** dans CSS partagé (DOM reste pour compat code, affichage masqué). Ajout `.progressbar` alternative non-numérique. Règle "pas de score < 6 ans" enfin appliquée sur 7 MJ | Session refactor 5 dim (`PIPELINE-MEMORY-MJ.md` § 3 F-005) |
+| L-022 | 2026-05-11 | **`mj-pose-tiles` consomme `Asphalt_1_Variation_14` et `_15` SALE** (lignes 123-124) — viole L-013. Dépendance tile à fixer + tracer dans coordination tile↔MJ (cas OBS-3 narration-pmo) | Audit MJ 2026-05-11, à corriger prochain tour |
 
 ---
+
+## Session 14 — 2026-05-11 (équipe pôle JEU complète + refactor MJ 5 dim)
+
+### Fait (Phase 1)
+- ✅ Création 3 agents : `game-conseiller` (Opus transverse) · `game-mj-pmo` (Haiku sous-spé) · `game-mj-reviewer` (Haiku validateur)
+- ✅ `game/web/PIPELINE-MEMORY-MJ.md` créé (méta-process MJ, 3 niveaux mémoire)
+- ✅ `game/memory/VISION-LONG-TERME.md` créé (Phase 2 WexWorld + pont narration↔jeu + hypothèses)
+- ✅ Skill global `pmo-design` renommé depuis `multi-agent-pmo` + nouveau skill `pmo-challenge` (~/.claude/skills/)
+- ✅ Challenge réciproque narration-pmo : 5/5 retenus, patchs appliqués (OBS-1 à OBS-5)
+
+### Fait (refactor MJ 5 dimensions)
+- ✅ Audit 19 MJ via pmo-challenge (skill Explore)
+- ✅ Composant `js/back-button.js` (80×80, mini-bus SVG, auto-replace 3 patterns)
+- ✅ Composant `js/intro-splash.js` (auto-init via data-mp-intro-*)
+- ✅ CSS partagé : `.scorebar` neutralisée, `.back` 48→80, ajout `.progressbar`
+- ✅ 18 MJ : injection back-button.js (mj-pose-tiles patché à part)
+- ✅ 7 MJ : score badges inline masqués
+- ✅ 7 MJ : intro splash + data-mp-intro-* (mj-04/05/12/13a/b/c/17)
+- ✅ mj-pose-tiles : audio + confettis + son victoire dans `celebrer()`
+
+### Leçons (voir L-019 à L-022 ci-dessus)
+
+### Out of scope (à acter prochain tour)
+- 🟠 mj-04 boucle infinie EP-022 — non fixé (gros chantier logique)
+- 🟠 mj-pose-tiles utilise `_14`/`_15` SALE — dépendance tile à fixer + tracer
+- 🟠 mj-12 scope (lecteur audio vs quiz) — décision auteur à prendre
 
 ## Session 13 — 2026-05-08 → 2026-05-10 (pipeline tile-tools + EP-TILES)
 

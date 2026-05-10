@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>MJ-18 – Tubes de couleurs</title>
+  <title>MJ-18 â€“ Tubes de couleurs</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none; }
@@ -57,7 +57,7 @@
       width:100%; height:25%;
       transition:height 0.3s ease;
     }
-    /* Goutte qui vole d'un tube à l'autre */
+    /* Goutte qui vole d'un tube Ã  l'autre */
     .drop {
       position:absolute;
       width:28px; height:36px;
@@ -95,7 +95,7 @@
     .victory-btn.primary { background:linear-gradient(135deg,#00c47a,#00a86b); color:#fff; }
     .victory-btn.secondary { background:rgba(255,255,255,0.15); color:#fff; }
 
-    /* Défilé de bus bonus — scène animée tube → bus */
+    /* DÃ©filÃ© de bus bonus â€” scÃ¨ne animÃ©e tube â†’ bus */
     .paint-scene {
       position:relative; width:100%; height:200px; margin:10px 0;
       overflow:hidden; background:rgba(255,255,255,0.04);
@@ -133,27 +133,27 @@
 <body>
   <div id="app">
     <div class="hdr">
-      <a href="index.html" class="back">←</a>
-      <span class="htitle">🧪 Tubes de couleurs</span>
+      <a href="index.html" class="back">â†</a>
+      <span class="htitle">ðŸ§ª Tubes de couleurs</span>
     </div>
     <div class="info" id="info">Tape un tube, puis tape un autre pour verser !</div>
     <div class="stage" id="stage"></div>
     <div class="controls">
-      <button class="btn" onclick="changeColorCount(-1)">−</button>
-      <span style="color:#fff;font-weight:900;font-size:1rem;padding:0 4px;">🧪 <span id="tubeCountVal">4</span> couleurs</span>
+      <button class="btn" onclick="changeColorCount(-1)">âˆ’</button>
+      <span style="color:#fff;font-weight:900;font-size:1rem;padding:0 4px;">ðŸ§ª <span id="tubeCountVal">4</span> couleurs</span>
       <button class="btn" onclick="changeColorCount(1)">+</button>
-      <button class="btn" onclick="reset()">🔄</button>
+      <button class="btn" onclick="reset()">ðŸ”„</button>
     </div>
   </div>
 
   <div class="victory-overlay" id="victoryOverlay">
     <div class="victory-content">
-      <div class="victory-emoji">🎉</div>
+      <div class="victory-emoji">ðŸŽ‰</div>
       <h2 class="victory-title">Bravo !</h2>
-      <p class="victory-text">Tu as trié toutes les couleurs ! Regarde les bus repeints :</p>
+      <p class="victory-text">Tu as triÃ© toutes les couleurs ! Regarde les bus repeints :</p>
       <div class="paint-scene" id="paintScene"></div>
-      <button class="victory-btn primary" onclick="reset();document.getElementById('victoryOverlay').classList.remove('show')">🔄 Rejouer</button>
-      <a href="index.html" class="victory-btn secondary">📋 Menu</a>
+      <button class="victory-btn primary" onclick="reset();document.getElementById('victoryOverlay').classList.remove('show')">ðŸ”„ Rejouer</button>
+      <a href="index.html" class="victory-btn secondary">ðŸ“‹ Menu</a>
     </div>
   </div>
 
@@ -162,13 +162,13 @@
   <script src="js/bus-svg.js"></script>
   <script src="js/data.js"></script>
   <script>
-    // MJ-18 V4 — nombre de tubes configurable, couleurs de bus réelles
+    // MJ-18 V4 â€” nombre de tubes configurable, couleurs de bus rÃ©elles
     const TUBE_CAPACITY = 4;
     const TUBES_EMPTY = 2;
     const COLOR_COUNT_MIN = 3;
     const COLOR_COUNT_MAX = 8;
 
-    // Palette élargie : couleurs IDFM réelles de bus connus
+    // Palette Ã©largie : couleurs IDFM rÃ©elles de bus connus
     const ALL_BUS_THEMES = [
       { num: '162', color: '#0064B1' }, // bleu
       { num: '172', color: '#008C59' }, // vert
@@ -205,7 +205,7 @@
       complete = false;
       animating = false;
       const COLORS = BUS_THEMES.map(t => t.color);
-      // Mélange : TUBE_CAPACITY couches × COLORS.length, réparti sur les tubes remplis
+      // MÃ©lange : TUBE_CAPACITY couches Ã— COLORS.length, rÃ©parti sur les tubes remplis
       const mix = [];
       COLORS.forEach(c => { for (let i=0;i<TUBE_CAPACITY;i++) mix.push(c); });
       for (let i=mix.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [mix[i],mix[j]]=[mix[j],mix[i]]; }
@@ -249,7 +249,7 @@
     function topColor(t) { return t.length ? t[t.length-1] : null; }
 
     // Le tube source se penche vers le tube cible, puis une goutte
-    // suit une trajectoire en arc jusqu'à la cible. Tube se redresse ensuite.
+    // suit une trajectoire en arc jusqu'Ã  la cible. Tube se redresse ensuite.
     function animateDrop(srcIdx, dstIdx, color, onDone) {
       const stage = document.getElementById('stage');
       const srcEl = stage.children[srcIdx];
@@ -261,7 +261,7 @@
       const tiltLeft = dRect.left < sRect.left;
       const tiltDeg = tiltLeft ? -55 : 55;
 
-      // Penche le tube source vers la cible (pivot = coin haut côté cible)
+      // Penche le tube source vers la cible (pivot = coin haut cÃ´tÃ© cible)
       srcEl.style.transformOrigin = tiltLeft ? '100% 0%' : '0% 0%';
       srcEl.style.transform = `rotate(${tiltDeg}deg)`;
 
@@ -318,7 +318,7 @@
         return;
       }
 
-      // Déselectionne d'abord (render rebuild les tubes) puis anime
+      // DÃ©selectionne d'abord (render rebuild les tubes) puis anime
       animating = true;
       const fromIdx = selected;
       const toIdx = idx;
@@ -351,7 +351,7 @@
     }
 
     // Parade : un tube penche et verse sur un bus qui passe.
-    // Pour chaque couleur : bus entre (fenêtre grise) → tube penche → goutte tombe → fenêtre prend la couleur → bus sort.
+    // Pour chaque couleur : bus entre (fenÃªtre grise) â†’ tube penche â†’ goutte tombe â†’ fenÃªtre prend la couleur â†’ bus sort.
     async function runPaintParade() {
       const scene = document.getElementById('paintScene');
       scene.innerHTML = '';
@@ -372,7 +372,7 @@
         }
         scene.appendChild(tube);
 
-        // Bus qui entre avec fenêtre destination grise
+        // Bus qui entre avec fenÃªtre destination grise
         const bus = document.createElement('div');
         bus.className = 'paint-bus';
         bus.innerHTML = busSVG(GREY, '#fff', num, 130);
@@ -386,7 +386,7 @@
         tube.classList.add('pouring');
         await sleep(450);
 
-        // Goutte tombe du tube vers la fenêtre destination du bus
+        // Goutte tombe du tube vers la fenÃªtre destination du bus
         const drop = document.createElement('div');
         drop.className = 'paint-drop';
         drop.style.background = color;
@@ -406,7 +406,7 @@
         await sleep(450);
         drop.style.opacity = '0';
 
-        // La fenêtre destination prend la couleur du tube
+        // La fenÃªtre destination prend la couleur du tube
         const destRect = bus.querySelector('rect[x="84"]');
         if (destRect) {
           destRect.style.transition = 'fill 0.45s ease';
@@ -434,5 +434,6 @@
   </script>
   <script src="js/tracker.js"></script>
   <script src="js/comments.js"></script>
+  <script src="js/back-button.js"></script>
 </body>
 </html>

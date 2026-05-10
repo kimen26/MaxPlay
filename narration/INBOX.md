@@ -15,9 +15,9 @@
 
 <!-- Ajouter les dumps ici, en haut -->
 
-## 2026-05-04 — Top 15 prénoms par pays/année/sexe (à dispatcher → catalogue-prenoms/par-culture/)
+## 2026-05-04 — Top 15 prénoms par pays/année/sexe (à dispatcher → cross-culture/prenoms/par-culture/)
 
-> Source IA externe (à recouper). À dispatcher vers `personnages/catalogue-prenoms/par-culture/{france,japon,bresil,canada,nigeria}.md`.
+> Source IA externe (à recouper). À dispatcher vers `cross-culture/prenoms/par-culture/{france,japon,bresil,canada,nigeria}.md`.
 
 ### 🇫🇷 FRANCE (Source INSEE)
 

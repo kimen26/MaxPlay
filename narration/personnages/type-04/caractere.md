@@ -112,4 +112,33 @@ Madie est le personnage qui enseigne la profondeur. Elle dit au lecteur : il est
 
 Les scènes les plus fortes de Madie sont celles où elle est vraiment vue par quelqu'un — pas consolée, pas "réparée" — juste vue.
 
+---
+
+## Gestes / attitudes / habitudes (mise en valeur arc 1)
+
+> **Source** : brainstorm Auteur + Conseiller (2026-05-10), ancré dans Chabreuil 2022 (`../theorie/enneagramme/chabreuil-synthese-complete.md`) et patterns lecteurs (`equipe/lecons-vivantes.md` P8).
+> **Usage** : matière à infuser dans les briefs writers et la conduite d'agents — type EST, type APPORTE, sans transformation forcée.
+
+### Geste signature
+Choisir la couleur exacte. Danser quand la musique l'attrape. Dessiner dans la marge. Mimer ce qu'elle a vu. Mettre de l'intention dans chaque geste.
+
+### Attitude
+Sensible, intense, expressive. Acteur / conteur / danseur — elle incarne.
+
+### Habitude
+Transformer un détail banal en quelque chose de remarquable. Vivre l'instant avec intensité.
+
+### Ce qu'elle apporte au groupe
+« Regardez, c'est beau » — et tout d'un coup les autres voient. Elle anime, impressionne par ses idées, donne envie de regarder mieux.
+
+### Paires fortes (Chabreuil §6.2 + interactions.md)
+- Lulu T5 (affinité, compréhension silencieuse rare)
+- Juju T8 (émotionnelle+force franche)
+- Polo T3 (énergie inverse féconde)
+
+### Garde-fou (à ne PAS faire)
+Ne pas la mettre triste ou en retrait passif. Madie épanouie est expressive, fascinante, vivante — pas ténébreuse à 4 ans.
+
+---
+
 *Source théorique : Type 4 Chabreuil / Riso-Hudson. Aile 5, intégration vers 1, désintégration vers 2.*

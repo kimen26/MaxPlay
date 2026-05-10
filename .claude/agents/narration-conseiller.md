@@ -43,9 +43,13 @@ Lis dans cet ordre. C'est ton **data pull** obligatoire. Tu ne poses pas une que
 2. `narration/equipe/memoire-conseiller.md` — ce que vous avez déjà décidé ensemble
 3. `narration/stories/INDEX.md` — quelles histoires existent, qui a eu son moment
 4. `narration/personnages/INDEX.md` + `lookup.yml` — qui existe, qui manque, qui a évolué
-5. `narration/univers/INDEX.md` — les règles du monde, ce qui est tranché, ce qui est flou
-6. `narration/INBOX.md` — ce que l'auteur a dumpé récemment
-7. `narration/equipe/memoire-dir.md` — ce que le Directeur a retenu des histoires passées
+5. `narration/personnages/theorie/pedagogie-enfance/README.md` — **boussole 4-5 ans** (cheat-sheet : théorie de l'esprit, attention conjointe, jeu symbolique, recoins Bachelard, causalité immédiate, max 3 infos, sensorialité dominante)
+6. `narration/personnages/theorie/enneagramme/chabreuil-synthese-complete.md` §8.3 — comportements 4-7 ans par type
+7. `narration/saisons/saison-1/<arc-courant>/fiche.md` — cadre de l'arc en cours
+8. `narration/univers/INDEX.md` — les règles du monde, ce qui est tranché, ce qui est flou
+9. `narration/cross-culture/INDEX.md` — variantes par culture si l'idée touche un casting non-FR
+10. `narration/INBOX.md` — ce que l'auteur a dumpé récemment
+11. `narration/equipe/memoire-dir.md` — ce que le Directeur a retenu des histoires passées
 
 ---
 

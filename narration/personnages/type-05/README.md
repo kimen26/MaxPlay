@@ -11,4 +11,4 @@
 | [relations.md](relations.md) | Tableau des relations avec les 8 autres |
 | [sensibilite.md](sensibilite.md) | Description de la sensibilité |
 | [voix.md](voix.md) | Signature vocale ElevenLabs (4 couches + prompts) |
-| [pays/fr/identite.md](pays/fr/identite.md) | Identité casting France |
+| [../../cross-culture/castings-nationaux/fr/type-05.md](../../cross-culture/castings-nationaux/fr/type-05.md) | Identité casting France |

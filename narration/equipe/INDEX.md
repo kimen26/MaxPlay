@@ -72,11 +72,11 @@
 | [`sources-narratologie.md`](sources-narratologie.md) | Étude cross-culture, paliers mots/âge, Kishōtenketsu, ToM, modèles narratifs (6 familles) | Conseiller |
 | [`sources-sciences.md`](sources-sciences.md) | Refs documentaires (C'est pas sorcier, La Vie…) | Science |
 | [`sources-sensibilite.md`](sources-sensibilite.md) | Catalogue topics sensibles / conspirationnistes | Sensibilité |
-| [`voix-enneatypes.md`](voix-enneatypes.md) | Étude vocale par ennéatype (18 prompts ElevenLabs F+M × 9 types) | Audio |
+| [`../personnages/voix-meta/`](../personnages/voix-meta/README.md) | **Voix méta** : narrateurs H/F adultes, cheatsheet didascalies writers, guide ElevenLabs, étude vocale 18 prompts (déplacé 2026-05-11 dans pilier 1) | Audio |
 | [`profils-lecteurs.md`](profils-lecteurs.md) | Fiches profils lecteurs témoins (enfant 4-6, dyade) | Directeur |
-| [`onomatopees-cross-culture.md`](onomatopees-cross-culture.md) | **Catalogue 37 onomatopées** enfantines validées cross-langues (FR/EN/JA/ES/PT-BR/DE/AR/ZH). Pivot pour writers : 0 ou 1 onomatopée par histoire, choisie dans cette liste | Conseiller |
-| [`sources-pedagogie-enfance.md`](sources-pedagogie-enfance.md) | **Boussole pédagogique 4-7 ans cross-culture** (Wellman, Tomasello, Vygotsky, Bachelard, Bruner, Thomas & Chess + albums jeunesse). Invariants cognitifs/affectifs, identification narrative, profils d'enfants, best-practices histoires courtes 4-5 ans. | Conseiller |
-| [`../enneagramme/ressources/chabreuil-synthese-complete.md`](../enneagramme/ressources/chabreuil-synthese-complete.md) | **Synthèse exhaustive du Grand Livre Chabreuil 2022** (9181 mots, 10 sections). Concepts de base, 9 types détaillés (lumière prioritaire), ailes, flèches, instincts, **interactions 36 paires**, cross-culture, **essence et sublimation**, application MaxPlay (gestes/objets/moments par type, garde-fous anti-biais). | Conseiller |
+| [`../cross-culture/onomatopees/catalogue-onomatopees.md`](../cross-culture/onomatopees/catalogue-onomatopees.md) | **Catalogue 37 onomatopées** enfantines validées cross-langues (FR/EN/JA/ES/PT-BR/DE/AR/ZH). Pivot pour writers : 0 ou 1 onomatopée par histoire, choisie dans cette liste | Conseiller |
+| [`../personnages/theorie/pedagogie-enfance/`](../personnages/theorie/pedagogie-enfance/README.md) | **Boussole pédagogique 4-7 ans cross-culture** (Wellman, Tomasello, Vygotsky, Bachelard, Bruner, Thomas & Chess + albums jeunesse). Invariants cognitifs/affectifs, identification narrative, profils d'enfants, best-practices histoires courtes 4-5 ans. **À consulter avant brainstorm/plan/brief.** | Conseiller + Architecte |
+| [`../personnages/theorie/enneagramme/chabreuil-synthese-complete.md`](../personnages/theorie/enneagramme/chabreuil-synthese-complete.md) | **Synthèse exhaustive du Grand Livre Chabreuil 2022** (9181 mots, 10 sections). Concepts de base, 9 types détaillés (lumière prioritaire), ailes, flèches, instincts, **interactions 36 paires**, cross-culture, **essence et sublimation**, application MaxPlay (gestes/objets/moments par type, garde-fous anti-biais). | Conseiller |
 | [`lecons-vivantes.md`](lecons-vivantes.md) | **Document vivant** des patterns narratifs MaxPlay confirmés (P1-P6), pièges (G1-G6), axes 1-6, signal genre. Mis à jour à chaque canonisation. Lu par Conseiller (étape 1), Architecte (étape 2), writers via briefs. | Conseiller + Directeur |
 
 ### Ressources vivantes
@@ -187,7 +187,7 @@ Tout fichier créé ou modifié dans `narration/` doit être **indexé**. Quand 
 
 - [`../INDEX.md`](../INDEX.md) — index racine du projet narration
 - [`../pmo/INDEX.md`](../pmo/INDEX.md) — état instantané PMO
-- [`../arcs/INDEX.md`](../arcs/INDEX.md) — fiches d'arc (qualité humaine + problématique au niveau arc)
+- [`../saisons/INDEX.md`](../saisons/INDEX.md) — plan éditorial (saisons → arcs → stories)
 - [`../personnages/INDEX.md`](../personnages/INDEX.md) — casting V1 figé
 - [`../univers/INDEX.md`](../univers/INDEX.md) — règles du monde
 - [`../stories/INDEX.md`](../stories/INDEX.md) — catalogue des histoires

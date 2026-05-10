@@ -23,7 +23,7 @@ statut: en cours
 - **Pas de dispute, pas de tristesse** dans cet arc
 - **Tous les types épanouis dans leur nature** (P8, cf. `equipe/lecons-vivantes.md`)
 
-Sources : [`arcs/arc-1-objet-decor/fiche.md`](../arcs/arc-1-objet-decor/fiche.md) · [`equipe/lecons-vivantes.md`](../equipe/lecons-vivantes.md) · [`enneagramme/ressources/chabreuil-synthese-complete.md`](../enneagramme/ressources/chabreuil-synthese-complete.md) · [`equipe/sources-pedagogie-enfance.md`](../equipe/sources-pedagogie-enfance.md)
+Sources : [`saisons/saison-1/arc-1-objet-decor/fiche.md`](../saisons/saison-1/arc-1-objet-decor/fiche.md) · [`equipe/lecons-vivantes.md`](../equipe/lecons-vivantes.md) · [`personnages/theorie/enneagramme/chabreuil-synthese-complete.md`](../personnages/theorie/enneagramme/chabreuil-synthese-complete.md) · [`personnages/theorie/pedagogie-enfance/sources-pedagogie-enfance.md`](../personnages/theorie/pedagogie-enfance/sources-pedagogie-enfance.md)
 
 ---
 

@@ -130,4 +130,34 @@ Raph est l'héroïne — mais pas parce qu'elle est parfaite. Elle est l'héroï
 
 Les meilleurs épisodes de Raph sont ceux où sa fuite habituelle *ne fonctionne pas*, et où elle doit rester avec ce qui est difficile. C'est là qu'elle grandit. C'est là qu'elle devient vraiment présente.
 
+---
+
+## Gestes / attitudes / habitudes (mise en valeur arc 1)
+
+> **Source** : brainstorm Auteur + Conseiller (2026-05-10), ancré dans Chabreuil 2022 (`../theorie/enneagramme/chabreuil-synthese-complete.md`) et patterns lecteurs (`equipe/lecons-vivantes.md` P8).
+> **Usage** : matière à infuser dans les briefs writers et la conduite d'agents — type EST, type APPORTE, sans transformation forcée.
+
+### Geste signature
+Courir (tout le temps). Pointer du doigt « regardez ! ». Inventer un jeu en 10 secondes. Rire fort.
+
+### Attitude
+Joyeuse, curieuse, inventive. Tornade avec des baskets.
+
+### Habitude
+Prévoir 5 options pour le moindre choix. Sauter d'un sujet à l'autre. Faire rire.
+
+### Ce qu'elle apporte au groupe
+Le fun. L'idée folle qui rend l'après-midi génial. L'envie d'essayer. Avec Raph, on s'ennuie pas.
+
+### Paires fortes (Chabreuil §6.2 + interactions.md)
+- Juju T8 (affinité, aventures épiques)
+- Nono T9 (affinité, énergie+douceur)
+- Lulu T5 (curiosité+profondeur)
+- Melki T1 (friction créative féconde — rigueur joyeuse)
+
+### Garde-fou (à ne PAS faire)
+Ne pas la rendre superficielle ou égoïste. Raph épanouie reste pour ses copains quand ça compte.
+
+---
+
 *Source théorique : Type 7 Chabreuil / Riso-Hudson. Aile 8, intégration vers 5, désintégration vers 1.*

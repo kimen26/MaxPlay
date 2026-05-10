@@ -2,7 +2,7 @@
 
 **Sujet** : un pont avec une planche cassée au-dessus d'un ruisseau.
 **Trio** : Melki (T1), Pierrot (T6), Wex (hors-système, déclencheur).
-**Arc** : arc 1 — découverte de l'univers via un objet quotidien (cf `narration/arcs/arc-1-objet-decor/fiche.md`).
+**Arc** : arc 1 — découverte de l'univers via un objet quotidien (cf `narration/saisons/saison-1/arc-1-objet-decor/fiche.md`).
 **Structure attendue** : Kishōtenketsu noyau (cf `narration/equipe/patte-narrative-maxplay.md`). Le Ten et le Ketsu sont libres : chaque writer choisit comment le trio sort de la situation.
 **Longueur cible** : 400-700 mots.
 

@@ -187,7 +187,7 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 | `.claude/agents/narration-writer-claude-libre.md` | Writer Claude Libre (Opus 4.7) | Auteur |
 | `.claude/agents/narration-writer-kimi-guide.md` | Writer Kimi Guidé (Sonnet orchestre + Kimi K2.6 via MCP) | Auteur |
 | `infra/mcp/MODELS.md` | Configuration LLM (Grok 4.3 / Kimi K2.6 / DeepSeek V4-Pro) — dépréciations + historique | Auteur + PMO |
-| `narration/equipe/onomatopees-cross-culture.md` | Catalogue 37 onomatopées cross-langues (FR/EN/JA/ES/PT-BR/DE/AR/ZH) | Conseiller |
+| `narration/cross-culture/onomatopees/catalogue-onomatopees.md` | Catalogue 37 onomatopées cross-langues (FR/EN/JA/ES/PT-BR/DE/AR/ZH) | Conseiller |
 | `narration/equipe/lecons-vivantes.md` | Document vivant des patterns narratifs (P1-P6, G1-G6, axes) — mis à jour à chaque canonisation | Conseiller + Directeur |
 | `narration/equipe/templates/brief-writer-libre.template.md` | Brief commun aux 9 writers libres (forme uniquement) | Directeur |
 | `narration/equipe/templates/brief-writer-guide.template.md` | Brief enrichi pour 1 writer guidé (annexe AXES 1-6) | Directeur |
@@ -240,7 +240,7 @@ Nouvelle info narrative
 | Sens culturel d'un objet/élément (pluie, feu, repas, silence…) | Note de pattern | `equipe/memoire-conseiller.md` (section "Patterns éditoriaux") | Conseiller |
 | Geste/comportement enfant par culture pour un même thème | Catalogue de variations | `stories/NNN-slug/variantes-culturelles/` | Archiviste (structure) + Directeur (contenu) |
 | Prénom + diminutif d'un perso dans une culture | Identité | `personnages/type-NN/pays/XX/identite.md` + `personnages/lookup.yml` | Directeur (choix) + Archiviste (lookup) |
-| Casting cross-country complet pour une culture | Catalogue | `personnages/catalogue-prenoms/` | Archiviste |
+| Casting cross-country complet pour une culture | Catalogue | `cross-culture/prenoms/` | Archiviste |
 | Profil lecteur d'une culture cible | Brief lecteur | `equipe/profils-lecteurs.md` | Directeur |
 
 **Premier exemple consigné — la pluie :**

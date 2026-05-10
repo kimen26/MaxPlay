@@ -8,31 +8,31 @@
 
 | Couche | Paramètre |
 |--------|-----------|
-| **Articulation** | T/K crisp aspirés · S sibilants nets · voyelles bien tenues · aucune élision |
-| **Prosodie** | Cadences descendantes résolues · fin de phrase = conclusion, jamais suspendue · insistance sur mots de conviction |
+| **Articulation** | T/K crisp aspirés · S sibilants nets · voyelles bien tenues |
+| **Prosodie** | Cadences descendantes résolues · fin de phrase = conclusion, jamais suspendue |
 | **Rythme** | Métronomique · pauses précises avant les mots importants |
-| **Phonation** | Micro-inspiration audible avant les mots-clés · texture sèche et propre · aucun fry |
-
----
+| **Phonation** | Micro-inspiration audible avant les mots-clés · légère tension dans la gorge |
 
 ## Paramètres ElevenLabs
 
 ```
 Stability: 0.75
-Similarity Boost: 0.80
+Similarity Boost: 0.70
 Style: 0.15
-Speaker Boost: false
+Speaker Boost: true
 ```
 
----
+## Prompt ElevenLabs (F)
 
-## Prompt ElevenLabs — Femme (F)
+> Native French. Female, young child around 4 to 5 years old. Studio quality.
+> Persona: meticulous little perfectionist. Emotion: calm, attentive, quietly satisfied.
+> Crisp aspirated T and K consonants, almost crunchy. Crystal-clear sibilants. Sentences end on a downward resolved cadence — like a decision firmly made. Steady metronomic rhythm with a brief micro-pause and audible micro-inhale before key words. Studious tone, never tense — just applied. Warm clear child timbre with a faint inner focus.
 
-> Female narrator voice, mid-thirties, clear and bright mezzo timbre with controlled focused resonance. Calm composed delivery with quiet conviction. Distinctive shared articulation: extra-crisp release on "t" and "k" (precisely aspirated, never sloppy), perfectly enunciated "s" with no sibilant excess, no consonant elision or slurring, every syllable fully articulated. Subtle weight on words of moral conviction. Prosody: narrow controlled range, slight downward terminal resolution on every statement (resolved, never floating). Rhythm: regular almost metronomic, with measured micro-pauses for emphasis. Texture: clean and dry, no vocal fry, minimal breathiness. Signature tic: a tiny precise in-breath right before key words. No warmth excess, no dramatic flourish. Conveys principled clarity and quiet rigor. Think: a thoughtful editor reading a text she believes in deeply.
+## Prompt ElevenLabs (M)
 
-## Prompt ElevenLabs — Homme (M)
-
-> Male narrator voice, late thirties, clear baritone timbre with controlled focused resonance and a clean upper register. Calm composed delivery with quiet conviction. Distinctive shared articulation: extra-crisp release on "t" and "k" (precisely aspirated, never sloppy), perfectly enunciated "s" with no sibilant excess, no consonant elision or slurring, every syllable fully articulated. Subtle weight on words of moral conviction. Prosody: narrow controlled range, slight downward terminal resolution on every statement (resolved, never floating). Rhythm: regular almost metronomic, with measured micro-pauses for emphasis. Texture: clean and dry, no vocal fry, minimal breathiness. Signature tic: a tiny precise in-breath right before key words. No warmth excess, no dramatic flourish. Conveys principled clarity and quiet rigor. Think: a thoughtful editor reading a text he believes in deeply.
+> Native French. Male, young child around 4 to 5 years old. Studio quality.
+> Persona: meticulous little perfectionist. Emotion: calm, attentive, quietly satisfied.
+> Crisp aspirated T and K consonants, almost crunchy. Crystal-clear sibilants. Sentences end on a downward resolved cadence — like a rule firmly stated. Steady metronomic rhythm with a brief micro-pause and audible micro-inhale before key words. Applied tone, never anxious — just attentive. Warm clear child timbre with a faint inner focus.
 
 ---
 

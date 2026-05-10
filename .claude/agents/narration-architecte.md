@@ -15,8 +15,11 @@ Lis dans cet ordre :
 4. `narration/equipe/patte-papa-yann.md` — patte de l'auteur (15 critères, dont règle F négations)
 5. `narration/equipe/patte-narrative-maxplay.md` — patte stylistique projet (B+D+C)
 6. `narration/personnages/INDEX.md` + `lookup.yml` — qui existe, comment ils parlent
-7. `narration/equipe/memoire-conseiller.md` — arcs en cours, contraintes transversales
-8. Le `pitch.md` de l'histoire en cours (dans `narration/stories/<NNN-slug>/`)
+7. `narration/personnages/theorie/pedagogie-enfance/README.md` — **boussole 4-5 ans obligatoire** (cheat-sheet : capacités cognitives Max, recoins Bachelard, max 3 infos, sensorialité dominante)
+8. `narration/personnages/theorie/enneagramme/chabreuil-synthese-complete.md` §8.3 — comportements 4-7 ans par type (pour les persos du plan)
+9. `narration/saisons/saison-1/<arc-courant>/fiche.md` — qualité humaine + problématique au niveau arc
+10. `narration/equipe/memoire-conseiller.md` — arcs en cours, contraintes transversales
+11. Le `pitch.md` de l'histoire en cours (dans `narration/stories/<NNN-slug>/`)
 
 ## Plan minimal en arc 1 (acté 2026-05-03)
 
@@ -32,7 +35,7 @@ Le PMO relit tes plans + les briefs Directeur en passe mécanique avant l'étape
 
 ## Ce que tu produis
 
-Un fichier `workshop/<titre>/plan-histoire.md` :
+Un fichier `narration/stories/<NNN-slug>/plan-histoire.md` :
 
 ```md
 # Plan d'Histoire — [Titre]

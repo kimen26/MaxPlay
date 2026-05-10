@@ -6,6 +6,77 @@
 
 ---
 
+## 2026-05-11 — Audit voix + comblement trous structurels (post-refonte 4 piliers)
+
+**Contexte :** John ouvre 2 chantiers avant le dashboard HTML :
+1. **Voix des perso** : où sont les narrateurs H/F ? Les prompts perso ont des âges adultes (30 ans) alors qu'on voulait enfants 4-5
+2. **Audit complet du process** : simuler les cas d'usage (nouvelle histoire, audio, cross-country, etc.) et vérifier que tout est trouvable
+
+**Diagnostic (audit voix) :**
+- Doublon avec divergence : `equipe/voix/type-NN-*.md` (récent, **young child 4-5 ans** ✅) vs `personnages/type-NN/voix.md` (ancien, **adultes 30-40 ans** ❌)
+- Les narrateurs H/F existent dans `equipe/voix/narrateur-{h,f}.md` — **volontairement adultes** (ils racontent AUX enfants 3-9 ans)
+- Donc 100% des voix dans `personnages/` étaient obsolètes
+
+**Diagnostic (audit process) :** 8 scénarios simulés → 8 trous identifiés (du critique au mineur). 3 critiques traités, 4 mineurs à peupler au fil des histoires, 1 décision (tokens dans canon) à trancher avec John.
+
+**Phase A — Voix consolidées** ✅
+- 10 voix persos corrigées (cp `equipe/voix/type-NN-*.md` → `personnages/type-NN/voix.md`)
+- Création `personnages/voix-meta/` avec : narrateur-h, narrateur-f, _CHEATSHEET-WRITERS, _PROMPTING-GUIDE, etude-vocale-par-type (ex `equipe/voix-enneatypes.md`), README
+- Suppression `equipe/voix/` (vide)
+- Recâblage refs : `equipe/PROCESS.md` étape 4, `equipe/INDEX.md`, `narration/INDEX.md`
+
+**Phase B — Trous structurels** ✅
+- B1 : `cross-culture/castings-nationaux/_gabarit/` créé (README + type-XX.md + wex.md + voix.md) avec étapes de construction d'un nouveau casting national
+- B2 : `audio/` ajouté dans `stories/_gabarit/` + section "Workflow audio (post-canon)" dans le README du gabarit + production_audio_produit dans frontmatter. README du gabarit synchronisé avec PROCESS 11 étapes (10 writers, panel 20 lecteurs, kanban 11 étapes)
+- B3 : `equipe/ORGANIGRAMME.md` actualisé avec note de mise à jour + ajout 2 agents post-canon (narration-audio, narration-localisation) + 5 agents support (science, sensibilite, archiviste, lecteur, lecteur-dyade)
+
+**Phase C (à venir, discussion auteur)** : décision sur tokens dans textes canon — rétroporter `stories/001-le-pont-casse/texte.md` avec `{titi_N}` placeholders ou garder prénoms en dur jusqu'au 2e casting national ?
+
+**État au reboot :**
+- Voix : tout consolidé dans le Pilier 1 (`personnages/`). 10 voix perso = enfants 4-5 ans ✅. Narrateurs H/F adultes dans `voix-meta/`. Cheatsheet didascalies dans `voix-meta/_CHEATSHEET-WRITERS.md`.
+- Gabarit casting : prêt à dupliquer pour jp/br/he/sw quand un 2e casting national sera lancé.
+- Stories gabarit : aligné avec PROCESS 11 étapes (10 writers, panel 20 lecteurs, audio post-canon).
+- ORGANIGRAMME : 13 agents en place, dont 2 post-canon (audio, localisation) + 5 support.
+- À venir : décision tokens dans canon (Phase C) puis Dashboard HTML (Bonus).
+- Brainstorm arc 1 toujours en attente : STORY-002 Nono = duo + lieu + animal à trancher.
+
+---
+
+## 2026-05-10 (soir) — Refonte structurelle 4 piliers narratifs
+
+**Contexte :** ouverture crise structure par John après audit zone personnages/ennéagramme/voix/cultures/prénoms. Diagnostic : 4 erreurs casting V1 dans le catalogue prénoms, désynchronisations, doublon enneagramme↔personnages, cross-culture éclaté en 3 endroits.
+
+**Fait (6 phases) :**
+- [x] **Phase 1** — Corrections critiques (Jérem→Madie, Polo Salomon→Paul, lookup.yml, brief-writer-libre, MEMORY globale Claude + feedback_prenoms_personnages)
+- [x] **Phase 2** — Création pilier `cross-culture/` (déplacement catalogue prénoms + architecture + onomatopées + identités FR ; création 7 sous-INDEX)
+- [x] **Phase 3** — Fusion `enneagramme/` → `personnages/theorie/enneagramme/` + ajout `personnages/theorie/pedagogie-enfance/` (déplacé depuis equipe/)
+- [x] **Phase 4** — Suppression définitive de 12 stubs morts + traçage `archive/sessions/2026-05-10-restructuration-3-piliers.md`
+- [x] **Phase 5** — Création pilier `saisons/saison-1/` (déplacement de `arcs/`, ajout INDEX par arc) + réécriture INDEX (personnages, narration, CLAUDE.md, cross-culture) + recâblage ~25 fichiers de liens cassés + ajout refs pédagogie dans PROCESS étapes 1-3, brief-histoire.template, narration-conseiller, narration-architecte
+- [x] **Phase 6** — Trace PMO (cette entrée + entrée `decisions.md` 2026-05-10 soir)
+
+**Décisions clés tranchées par auteur :**
+1. Architecture en 4 piliers (personnages / univers / cross-culture / saisons)
+2. Modèle hybride invariant/variant pour les persos (technique propre vs confort auteur — auteur a validé après challenge)
+3. Pédagogie d'enfance = sibling de l'ennéagramme dans `personnages/theorie/`
+4. Saisons/arcs en nouveau pilier (pas `arcs/` à la racine)
+5. Stubs morts supprimés (pas archivés — règle « archiver une décision, pas un fichier disparu »)
+
+**Outputs :**
+- 4 piliers structurés et indexés
+- ~40 fichiers touchés (corrections, déplacements, recâblages, créations)
+- 0 perte d'information (déplacements simples, traçage exhaustif dans archive/)
+- Workflow PROCESS étapes 1-3 référence explicitement la boussole péda 4-5 ans
+- Agents narration-conseiller et narration-architecte chargent la péda au démarrage
+
+**État au reboot :**
+- 4 piliers en place : `personnages/`, `univers/`, `cross-culture/`, `saisons/` + opérationnel inchangé
+- Casting V1 FR figé et propagé (plus aucun « Jérem » ni « Salomon » dans fichiers actifs)
+- Catalogue prénoms = réserve (30 cultures, 218 prénoms)
+- Brainstorm arc 1 toujours en cours : STORY-002 (Nono) en attente de trancher duo + lieu + animal (papillon/écureuil/oiseau)
+- À venir : Dashboard HTML qui présente cartes-persos + déroulables prénoms par culture + histoires canon (bonus reporté, validation auteur attendue)
+
+---
+
 ## 2026-05-10 — Brainstorm arc 1 : casting + gestes + direction Nono validée
 
 **Objectif :** Brainstorm collaboratif Auteur + Conseiller sur casting arc 1. Figer les gestes/attitudes/habitudes des 9 types. Valider direction histoire Nono (animal qui s'approche).

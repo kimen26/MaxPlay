@@ -112,6 +112,6 @@ Test grandeur nature du PROCESS militaire 11 étapes appliqué intégralement (p
 
 - Workflow complet : [`../../equipe/PROCESS.md`](../../equipe/PROCESS.md) (11 étapes)
 - Patterns narratifs : [`../../equipe/lecons-vivantes.md`](../../equipe/lecons-vivantes.md)
-- Onomatopées : [`../../equipe/onomatopees-cross-culture.md`](../../equipe/onomatopees-cross-culture.md)
+- Onomatopées : [`../../cross-culture/onomatopees/catalogue-onomatopees.md`](../../cross-culture/onomatopees/catalogue-onomatopees.md)
 - Patte narrative : [`../../equipe/patte-narrative-maxplay.md`](../../equipe/patte-narrative-maxplay.md)
 - Décisions tranchées : [`../../pmo/decisions.md`](../../pmo/decisions.md)

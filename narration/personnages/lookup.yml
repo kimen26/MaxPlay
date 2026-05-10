@@ -1,9 +1,10 @@
 # Résolveur de tokens personnages — MaxPlay
-# Source de vérité : personnages/type-NN/pays/XX/identite.md
-# Ne pas éditer à la main si possible — éditer les identite.md puis mettre à jour ici
+# Source de vérité : cross-culture/castings-nationaux/<pays>/type-NN.md
+# (déplacé depuis personnages/type-NN/pays/<pays>/identite.md lors de la refonte 2026-05-10)
+# Ne pas éditer à la main si possible — éditer les fichiers casting puis mettre à jour ici
 
-version: 1
-generated_at: 2026-04-28
+version: 2
+generated_at: 2026-05-10
 casting_default: fr
 
 tokens:
@@ -48,7 +49,7 @@ pays:
   # sw: { nom: Swahili, famille: afrique_est }
 
 # Usage dans les textes
-# Mode prénom dur (actuel, casting fr par défaut) : "Jérem regardait le pont."
+# Mode prénom dur (actuel, casting fr par défaut) : "Madie regardait le pont."
 # Mode token (pour cross-country) : "{{ titi_4 }} regardait le pont."
 # {{ titi_4 }} sans suffixe = résolu via casting_default (fr)
 # {{ titi_4_jp }} = forcé vers le casting japonais

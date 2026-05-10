@@ -1,62 +1,12 @@
-# Personnages — Index
+# Personnages — Index (Pilier 1)
 
-> ✅ **Casting V1 validé 2026-04-24** — origine **France** (Christ) — **un casting parmi N**.
-> ✅ **Structure multi-pays mise en place 2026-04-28** — un dossier par type, sous-dossier `pays/` pour les castings.
-> ✅ **Architecture cross-culture tranchée 2026-04-29** — voir [`../pmo/decisions.md`](../pmo/decisions.md) et [`../univers/meta/architecture-cross-culture.md`](../univers/meta/architecture-cross-culture.md).
->
-> **Structure générale de l'univers :**
-> - **Wex** = archetype universel, **prénom invariant** (« Wex »), présent dans toutes les communautés / cultures.
-> - **9 compagnons** = ennéatypes invariants + sensibilités fixes, MAIS **prénoms variables par culture** (9 nouveaux prénoms par casting national) + vies adaptées au pays + **légère variance dans l'expression de l'ennéatype**.
->
-> Le casting V1 « Christ » français = **un casting parmi N à venir**. Les 218 prénoms / 30 cultures de [`catalogue-prenoms/`](catalogue-prenoms/INDEX.md) sont la **base opérationnelle** pour construire les autres castings nationaux.
->
-> → [lookup.yml](lookup.yml) pour la résolution des tokens `titi_N_pays`.
-> → [notation-types.md](notation-types.md) pour la convention `TypeN / TitiN × pays`.
-> → [catalogue-prenoms/INDEX.md](catalogue-prenoms/INDEX.md) pour les prénoms qualifiés des autres castings.
+> **Qui sont nos persos + théorie sur l'humain.** Wex + 9 compagnons-ennéatypes. Identité invariante (ennéatype, voix-signature, gestes, sensibilité, relations). Les **variantes culturelles** (prénoms, prononciation, décor local) vivent dans [`../cross-culture/`](../cross-culture/INDEX.md).
 
 ---
 
-## Structure des dossiers
+## Casting V1 — France (Christ) · figé 2026-04-24
 
-```
-personnages/
-├── INDEX.md (ce fichier)
-├── lookup.yml          ← résolveur token → prénom
-├── notation-types.md   ← convention TypeN/TitiN
-├── _gabarit/           ← modèles vierges pour nouveaux types/pays
-├── archive/            ← prénoms-brainstorm, candidats, matrice plate
-├── type-01/            ← Perfectionniste (Melki/fr)
-│   ├── README.md
-│   ├── caractere.md
-│   ├── relations.md
-│   ├── sensibilite.md
-│   ├── voix.md
-│   └── pays/fr/identite.md
-├── type-02/ ... type-09/  (même structure)
-└── wex/
-    ├── README.md
-    ├── caractere.md
-    ├── relations.md
-    ├── sensibilite.md
-    ├── voix.md
-    └── pays/fr/identite.md  ← universel, jamais de pays/jp/ etc.
-```
-
-### Codes pays disponibles
-
-| Code | Nom | Famille | Statut |
-|------|-----|---------|--------|
-| `fr` | France | Christ | ✅ V1 — casting principal |
-| `jp` | Japon | Ghibli | ⚪ à créer pour S2 |
-| `he` | Hébreu / Ancien Testament | AT | ⚪ à créer |
-| `sw` | Swahili / Afrique de l'Est | Swahili | ⚪ à créer |
-
----
-
-## Tableau des 9 — Casting V1 (France)
-
-> **Règle d'écriture :** dans les histoires et dialogues, on utilise le **diminutif 4/5 du temps**.
-> Le prénom complet sert aux moments formels, solennels, ou quand un adulte nomme l'enfant.
+> **Règle d'écriture :** dans les histoires et dialogues, on utilise le **diminutif 4/5 du temps**. Le prénom complet sert aux moments solennels.
 
 | Dossier | Type | Prénom complet | **Diminutif** | Essence | Sensibilité | Token |
 |---------|------|----------------|---------------|---------|-------------|-------|
@@ -69,21 +19,56 @@ personnages/
 | [type-07/](type-07/) | Enthousiaste | Raphaëlle (F) | **Raph** | Être comblé·e | Cosmos | `titi_7_fr` |
 | [type-08/](type-08/) | Challenger | Judith (F) | **Juju** | Être fort·e | Plantes | `titi_8_fr` |
 | [type-09/](type-09/) | Pacificateur | Noé | **Nono** | La paix | Vibration collective | `titi_9_fr` |
+| [wex/](wex/) | Hors-système | **Wex** (invariant) | **Wex** | — | à définir (NARR-003) | `wex` |
 
-### Hors-système
+**Bilan genre :** 4F (Mimi, Madie, Raph, Juju) / 5M + Wex. **Figé.**
 
-| Dossier | Rôle | Prénom | Token |
-|---------|------|--------|-------|
-| [wex/](wex/) | **Héros universel** | **Wex** | `wex` |
-
-**Bilan genre casting France :** 4F (Mimi, Madie, Raph, Juju) / 5M + Wex. **Figé — définitif (mise à jour 2026-05-05).**
+→ Casting attribué FR (prénom, prononciation IPA, origine) dans [`../cross-culture/castings-nationaux/fr/`](../cross-culture/castings-nationaux/fr/).
+→ Castings à venir (jp, br, he, sw…) : voir [`../cross-culture/castings-nationaux/INDEX.md`](../cross-culture/castings-nationaux/INDEX.md).
 
 ---
 
-## Fiches détaillées
+## Structure du pilier
 
-→ Chaque dossier `type-NN/` contient les 5 fichiers + dossier `pays/`.
-→ L'ancien emplacement `enneagramme/personnages/` contient des stubs de redirection.
+```
+personnages/
+├── INDEX.md                        ← ce fichier
+├── lookup.yml                      ← résolveur token → prénom (toutes cultures)
+├── notation-types.md               ← convention TypeN/TitiN dans les textes
+├── casting-mapping.md              ← pont théorie ↔ casting V1
+│
+├── type-01..09/                    ← 9 fiches incarnées (INVARIANT)
+│   ├── README.md
+│   ├── caractere.md                ← ennéatype + gestes/attitudes/habitudes
+│   ├── relations.md                ← interactions avec les 8 autres
+│   ├── sensibilite.md              ← sensibilité différenciée
+│   └── voix.md                     ← signature vocale ElevenLabs (universelle)
+│
+├── wex/                            ← idem pour Wex
+│
+├── theorie/                        ← Théorie sur l'humain
+│   ├── README.md
+│   ├── enneagramme/                ← comprendre les 9 persos (Chabreuil, situations, etc.)
+│   └── pedagogie-enfance/          ← comprendre le lecteur Max (4-5 ans)
+│
+└── archive/                        ← anciens brainstorms / candidats / matrice
+```
+
+---
+
+## Lectures par usage
+
+| Tu cherches… | Va lire… |
+|--------------|----------|
+| Le casting V1 français | Le tableau ci-dessus + [`type-NN/README.md`](type-01/README.md) |
+| Le caractère, geste signature, attitude d'un perso | [`type-NN/caractere.md`](type-01/caractere.md) |
+| La voix ElevenLabs d'un perso | [`type-NN/voix.md`](type-01/voix.md) |
+| La sensibilité différenciée d'un perso | [`type-NN/sensibilite.md`](type-01/sensibilite.md) |
+| Comment 2 persos interagissent | [`type-NN/relations.md`](type-01/relations.md) ou [`theorie/enneagramme/interactions-9x9.md`](theorie/enneagramme/interactions-9x9.md) |
+| Comprendre un ennéatype en profondeur | [`theorie/enneagramme/`](theorie/enneagramme/README.md) (Chabreuil, guide auteur) |
+| Comprendre Max le lecteur (4-5 ans) | [`theorie/pedagogie-enfance/`](theorie/pedagogie-enfance/README.md) |
+| Le prénom d'un perso dans une autre culture | [`../cross-culture/castings-nationaux/`](../cross-culture/castings-nationaux/INDEX.md) (FR figé, autres à construire) |
+| Des prénoms candidats par culture | [`../cross-culture/prenoms/INDEX.md`](../cross-culture/prenoms/INDEX.md) (218 prénoms / 30 cultures) |
 
 ---
 
@@ -91,7 +76,7 @@ personnages/
 
 > **Règle structurelle** : chaque personnage perçoit ce que les autres ne perçoivent pas. C'est de la **sensibilité différenciée** — **pas du savoir caché**. Aucune hiérarchie « Wex sait, les autres ignorent ».
 >
-> Voir `../pmo/decisions.md` (section *Sensibilité différenciée*) et `../univers/fondements/sensibilites.md`.
+> Voir [`../pmo/decisions.md`](../pmo/decisions.md) (section *Sensibilité différenciée*) et [`../univers/fondements/sensibilites.md`](../univers/fondements/sensibilites.md).
 
 | Perso | Type | Sensibilité | Statut |
 |-------|------|-------------|--------|
@@ -106,16 +91,14 @@ personnages/
 | Juju | T8 | Plantes | ✅ figé |
 | Nono | T9 | Vibration collective | ✅ figé |
 
-**Révélation progressive** : les sensibilités sont peu/pas présentes en début S1, affleurent en milieu/fin S1, sont **mises en avant en S2** (saison des visites — Wex chez chaque copain). Voir `../pmo/roadmap.md`.
-
-**Détail à creuser** : ce que perçoit *exactement* Wex (NARR-003) — à définir progressivement via les histoires, idéalement en début S2 quand sa propre découverte devient le sujet.
+**Révélation progressive** : les sensibilités sont peu/pas présentes en début S1, affleurent en milieu/fin S1, sont **mises en avant en S2** (saison des visites — Wex chez chaque copain).
 
 ---
 
-## Ressources transversales
+## Liens
 
-- [enneagramme/casting-mapping.md](../enneagramme/casting-mapping.md) — pont type ↔ casting V1 (à lire avant d'écrire)
-- [enneagramme/situations/interactions.md](../enneagramme/situations/interactions.md) — tableau 9×9 des interactions
-- [enneagramme/situations/emotions-universelles.md](../enneagramme/situations/emotions-universelles.md) — 81 réactions
-- [univers/fondements/sensibilites.md](../univers/fondements/sensibilites.md) — doctrine des 9 sensibilités
-- [univers/vie-quotidienne/compagnons.md](../univers/vie-quotidienne/compagnons.md) — compagnons ondes/couleurs (distinct des sensibilités)
+- Pilier Univers : [`../univers/INDEX.md`](../univers/INDEX.md)
+- Pilier Cross-culture : [`../cross-culture/INDEX.md`](../cross-culture/INDEX.md)
+- Plan éditorial saisons : [`../saisons/INDEX.md`](../saisons/INDEX.md)
+- Process d'écriture : [`../equipe/PROCESS.md`](../equipe/PROCESS.md)
+- Index racine narration : [`../INDEX.md`](../INDEX.md)

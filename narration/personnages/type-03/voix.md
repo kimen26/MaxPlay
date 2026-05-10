@@ -8,31 +8,31 @@
 
 | Couche | Paramètre |
 |--------|-----------|
-| **Articulation** | Consonnes nettes et claires · sibilantes brillantes propres · plosives punchy en début de phrase |
-| **Prosodie** | Statements descendants confiants · sourire de présentation · légère montée sur les mots motivants |
-| **Rythme** | Brisk et contrôlé · attaque énergique sur la première syllabe de chaque idée nouvelle |
-| **Phonation** | Placement avant (masque) · brillant · propre · charisme audible dans les verbes d'action |
-
----
+| **Articulation** | Consonnes nettes et claires · sibilantes précises · diction impeccable |
+| **Prosodie** | Statements descendants confiants · fin de phrase = fait accompli |
+| **Rythme** | Brisk · attaque énergique sur la première syllabe des mots importants |
+| **Phonation** | Légère pointe d'énergie en début de souffle · voix portée |
 
 ## Paramètres ElevenLabs
 
 ```
 Stability: 0.70
-Similarity Boost: 0.80
+Similarity Boost: 0.65
 Style: 0.40
-Speaker Boost: false
+Speaker Boost: true
 ```
 
----
+## Prompt ElevenLabs (F)
 
-## Prompt ElevenLabs — Femme (F)
+> Native French. Female, young child around 4 to 5 years old. Studio quality.
+> Persona: confident little achiever. Emotion: assured, dynamic, focused.
+> Clean precise consonants, sharp sibilants, impeccable diction. Sentences end with a confident downward cadence — like a fact stated. Brisk pacing with energetic attack on the first syllable of important words. Voice carried forward with a slight initial puff of energy. Bright clear child timbre, naturally competent, never arrogant.
 
-> Female narrator voice, early thirties, bright clear mezzo timbre with forward placement and a polished radiant quality. Confident warmly engaging delivery. Distinctive shared articulation: crisp confident release on every consonant, bright forward sibilants (clean and energizing), punchy plosives at phrase starts giving energizing entry, every word fully present. Bright open peak vowels. Prosody: confident downward statements (resolved, never tentative), distinct smile-in-voice, slight bright rise on key motivating words. Rhythm: brisk and energizing but never rushed, controlled and presentational. Texture: bright forward (mask placement), clean and polished. Signature tic: peppy energetic attack on first syllable of each new idea, charisma audible in the lift on action verbs. Conveys polished confident charm. Think: a charismatic TED speaker who genuinely believes her message.
+## Prompt ElevenLabs (M)
 
-## Prompt ElevenLabs — Homme (M)
-
-> Male narrator voice, mid-thirties, bright clear baritone timbre with forward placement and a polished radiant quality. Confident warmly engaging delivery. Distinctive shared articulation: crisp confident release on every consonant, bright forward sibilants (clean and energizing), punchy plosives at phrase starts giving energizing entry, every word fully present. Bright open peak vowels. Prosody: confident downward statements (resolved, never tentative), distinct smile-in-voice, slight bright rise on key motivating words. Rhythm: brisk and energizing but never rushed, controlled and presentational. Texture: bright forward (mask placement), clean and polished. Signature tic: peppy energetic attack on first syllable of each new idea, charisma audible in the lift on action verbs. Conveys polished confident charm. Think: a charismatic TED speaker who genuinely believes his message.
+> Native French. Male, young child around 4 to 5 years old. Studio quality.
+> Persona: confident little achiever. Emotion: assured, dynamic, focused.
+> Clean consonants, crisp diction, every word well-placed. Conclusive downward sentence endings. Brisk pace with vivid attack on first syllables. Voice carried forward with natural energy — present, not loud. Bright clear child timbre, naturally capable.
 
 ---
 

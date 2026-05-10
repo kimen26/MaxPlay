@@ -5,11 +5,121 @@
 
 ---
 
+## Évolutions du PROCESS (méta-process)
+
+> Section dédiée aux décisions qui modifient le **process lui-même** (étapes, agents, règles d'écriture, panel, casting writers), distinctes des décisions de contenu (univers, persos, arcs, histoires).
+
+| Date | Évolution | Raison | Impact |
+|------|-----------|--------|--------|
+| 2026-05-08 | **PROCESS 9 → 11 étapes** (ajout étape 9 « Re-relecture rewrite » entre GateKeeper et Canon) | Détection trop tardive de régressions post-rewrite ; besoin de lecteurs sur le rewrite avant canonisation | `equipe/PROCESS.md` réécrit, `stories/_gabarit/` aligné, kanban étendu |
+| 2026-05-08 | **Writer du top 1 garde la main au rewrite** | Greffes substitutives détectées (claude-rewrite-v1 sur 001) → perte de la voix one-shot | Étape 7 PROCESS, brief-writer-libre.template, agents writer-claude-libre/writer-kimi-guide |
+| 2026-05-08 | **Panel lecteurs : 4 → 20** (10 profils × 2 tranches d'âge 3-5 et 6-7) | Cible Max prioritaire + détection anticipée 6-7 ans | Étape 5 PROCESS, agents lecteur/lecteur-dyade, gabarit story production.lecteurs_planifies |
+| 2026-05-08 | **Writers : 4 → 10** (2 Claude + 3 Kimi libre + 1 Kimi guidé + 2 DeepSeek + 2 Grok) | Variance maximale, exploration angle natif × 4 LLM | Étape 4 PROCESS, MODELS.md, gabarit story production.writers_planifies |
+| 2026-05-10 | **Restructuration 4 piliers** (personnages / univers / cross-culture / saisons) | Audit John : « c'est le bazard » — fragmentation cross-culture, doublon enneagramme | Toute la racine narration/ + INDEX + CLAUDE.md |
+| 2026-05-11 | **Voix consolidées dans Pilier 1** (`personnages/voix-meta/` + `type-NN/voix.md` corrigées) | Doublon `equipe/voix/` vs `personnages/type-NN/voix.md` avec divergence (adultes vs enfants 4-5) | `personnages/voix-meta/`, suppression `equipe/voix/`, voix persos = 4-5 ans |
+| 2026-05-11 | **narration-pmo enrichi** (anti-patterns, mnémonique, tableau cartographie multi-fichiers) | Challenge transmis par game-pmo (5/6 challenges retenus, 1 décliné, 1 reporté) | `.claude/agents/narration-pmo.md` |
+
+> Comment alimenter cette section : à chaque modification du PROCESS, agents, panel, casting writers — **avant** la décision de contenu correspondante. Ligne unique tableau, lien vers le détail si nécessaire dans la section « 2026-MM-DD » plus bas.
+
+---
+
+## 2026-05-11 — Voix consolidées dans Pilier 1 + comblement trous structurels post-refonte
+
+**Contexte :** audit voix ouvert par John (« y'avait un homme et une femme on avait préparé un prompt » + « age mid 30 ou teenage… on voulait plus petit nan ??? »).
+
+**Décisions tranchées :**
+
+1. **Voix persos = invariant universel** dans `personnages/type-NN/voix.md` (Pilier 1). Les 10 fichiers obsolètes (versions adultes ~30 ans) remplacés par les versions correctes (**young child around 4 to 5 years old**) qui étaient dans `equipe/voix/`. Plus de doublon.
+
+2. **Voix méta dans Pilier 1 aussi** : `personnages/voix-meta/` rassemble les 2 narrateurs adultes H/F (qui racontent AUX enfants 3-9 ans), la cheatsheet didascalies pour writers, le guide ElevenLabs, et l'étude vocale 18 prompts. Le dossier `equipe/voix/` est supprimé (vide).
+
+3. **`equipe/voix-enneatypes.md` déplacé** dans `personnages/voix-meta/etude-vocale-par-type.md` — c'est de la théorie sur les voix des persos, sa place est dans le Pilier 1 avec les autres voix.
+
+4. **Voix-overrides cross-culture** : la signature voix reste invariante (Pilier 1) avec un placeholder `{native_language}` substitué à la publication. Les overrides spécifiques par culture (si une langue impose un ajustement de prosodie/articulation) vivent dans `cross-culture/castings-nationaux/<pays>/voix.md` (gabarit fourni).
+
+5. **Gabarit casting national** créé : `cross-culture/castings-nationaux/_gabarit/` (README + type-XX.md + wex.md + voix.md). Inclut les 8 étapes de construction d'un nouveau casting (choix prénoms, création fiches, MAJ lookup.yml, trace PMO).
+
+6. **Story gabarit synchronisé avec PROCESS 11 étapes** :
+   - `production.writers_planifies` : 10 (et non 8) — 2 Claude + 3 Kimi libre + 1 Kimi guidé + 2 DeepSeek + 2 Grok
+   - `production.lecteurs_planifies` : 20 (et non 4) — 10 profils × 2 tranches d'âge. Note transitoire panel 6 pour histoires <005.
+   - `production.audio_produit` : champ ajouté
+   - `audio/` sous-dossier ajouté avec workflow audio dans README du gabarit (narrateur H/F + dialogues persos + mix complet)
+
+7. **ORGANIGRAMME actualisé** : 13 agents documentés post-refonte (Conseiller, Architecte, Directeur, PMO, Writers ×10, GateKeeper, Audio, Localisation, Science, Sensibilité, Archiviste, Lecteur, Lecteur-dyade).
+
+8. **Phase C reportée à discussion** : faut-il tokeniser le texte canon de `stories/001-le-pont-casse/texte.md` (substituer prénoms par `{titi_N}` placeholders) ou attendre le 2e casting national ? À trancher.
+
+**Lien :** [`../archive/sessions/2026-05-10-restructuration-3-piliers.md`](../archive/sessions/2026-05-10-restructuration-3-piliers.md) (trace refonte initiale) + sprint-log 2026-05-11 (trace ce traitement)
+
+---
+
+## 2026-05-10 (soir) — Refonte structurelle en 4 piliers + cross-culture comme pilier propre
+
+**Contexte** : audit de la zone personnages/ennéagramme/voix/cultures/prénoms ouvert par John : *« c'est le bazard, j'aimerai un audit complet… structure claire, hypra claire pour toute l'équipe »*. Audit révèle 4 erreurs casting V1 dans le catalogue prénoms (Jérem au lieu de Madie, Polo « Salomon » au lieu de Paul), désynchronisation enneagramme/README, liens cassés vers stubs orphelins, 3e pilier cross-culture éclaté entre 3 dossiers, doublon enneagramme/ ↔ personnages/.
+
+### Décisions tranchées (autonomie auteur)
+
+1. **Architecture en 4 piliers narratifs + opérationnel** :
+   - **Pilier 1 — `personnages/`** : qui sont les persos (identité, voix-signature, gestes, sensibilité, relations) **+ théorie sur l'humain** (ennéagramme fondu en `personnages/theorie/enneagramme/` + pédagogie d'enfance 4-5 ans dans `personnages/theorie/pedagogie-enfance/`)
+   - **Pilier 2 — `univers/`** : le monde où ils vivent (lois, cycles, sensibilités, transports, vie quotidienne) — inchangé sauf déplacement architecture-cross-culture
+   - **Pilier 3 — `cross-culture/`** : variantes par culture (prénoms, onomatopées, faune-flore, lieux-locaux, coutumes-jeux-aliments, saisons-climat, castings-nationaux + doctrine cross-culture)
+   - **Pilier 4 — `saisons/`** : plan éditorial (saison → arc → liens vers stories). Remplace `arcs/` à la racine.
+   - **Opérationnel inchangé** : `stories/`, `equipe/`, `pmo/`, `scripts/`, `archive/`, `memory/`
+
+2. **Modèle hybride invariant/variant pour les persos** (tranché après challenge John « technique propre vs confort auteur ») :
+   - Personnages = invariant universel (ennéatype, voix-signature, gestes, sensibilité). Vit dans `personnages/type-NN/`.
+   - Cross-culture = variant par pays (prénom, prononciation, décor local, voix-overrides 1 mot). Vit dans `cross-culture/castings-nationaux/<pays>/type-NN.md`.
+   - Voix ElevenLabs : signature universelle + placeholder `{native_language}` substitué à la publication. Pas de duplication de prompt par culture.
+   - Trade-off accepté : confort auteur légèrement dégradé sur l'écriture, industrialisation cross-culture grandement facilitée (1 fichier par perso × pays au lieu de tout dupliquer).
+
+3. **Pédagogie d'enfance 4-5 ans = théorie sur le lecteur** (sibling de l'ennéagramme = théorie sur les persos). Vit dans `personnages/theorie/pedagogie-enfance/`. **Référencée obligatoirement** dans :
+   - `equipe/PROCESS.md` étapes 1 (Pitch), 2 (Plan), 3 (Briefs) — critères PASS incluent « calibrage 4-5 ans : ressources péda consultées »
+   - `equipe/templates/brief-histoire.template.md` — cheat-sheet intégrée + section sources
+   - `.claude/agents/narration-conseiller.md` — lecture obligatoire au démarrage
+   - `.claude/agents/narration-architecte.md` — lecture obligatoire au démarrage
+
+4. **Catalogue prénoms = tout en réserve** (218 prénoms / 30 cultures). Aucune promotion en « cultures principales V2 » pour l'instant. Décision reportée au lancement effectif d'un 2e casting national.
+
+5. **Stubs morts supprimés définitivement** (12 fichiers : 3 stubs orphelins racine `personnages/` + 9 stubs `enneagramme/personnages/type-NN-*.md`). Conforme règle auteur 2026-05-10 : *« archiver un truc qui a disparu c'est pas utile, archiver une décision avec explication oui »*. Trace dans `archive/sessions/2026-05-10-restructuration-3-piliers.md`.
+
+6. **Saisons/arcs déplacés** : `arcs/` à la racine → `saisons/saison-1/arc-*/`. Question hiérarchisation `stories/saisons/arcs/NNN/` reportée à fin saison 1 (quand >10 histoires).
+
+### Migrations exécutées (Phase 2-5 du plan)
+
+- `personnages/catalogue-prenoms/` → `cross-culture/prenoms/` (218 prénoms intacts)
+- `univers/meta/architecture-cross-culture.md` → `cross-culture/doctrine.md`
+- `equipe/onomatopees-cross-culture.md` → `cross-culture/onomatopees/catalogue-onomatopees.md`
+- `personnages/type-01..09/pays/fr/identite.md` (×10) → `cross-culture/castings-nationaux/fr/type-NN.md`
+- `enneagramme/` → fondu dans `personnages/theorie/enneagramme/` (le dossier `enneagramme/` à la racine disparaît)
+- `equipe/sources-pedagogie-enfance.md` → `personnages/theorie/pedagogie-enfance/sources-pedagogie-enfance.md`
+- `arcs/arc-N-*/` → `saisons/saison-1/arc-N-*/` + INDEX.md ajoutés
+
+### Création nouveaux INDEX
+
+- `narration/cross-culture/INDEX.md` + 7 sous-INDEX (prenoms, castings-nationaux, onomatopees, faune-flore, lieux-locaux, coutumes-jeux-aliments, saisons-climat)
+- `narration/saisons/INDEX.md` + `saison-1/INDEX.md` + 4 INDEX d'arc
+- `narration/personnages/theorie/README.md` + sous-READMEs (enneagramme, pedagogie-enfance)
+- `narration/personnages/INDEX.md` réécrit
+- `narration/INDEX.md` réécrit (4 piliers)
+- `CLAUDE.md` actualisé (pôle NARRATION)
+
+### Corrections critiques (Phase 1)
+
+- 4 corrections dans `cross-culture/prenoms/INDEX.md` (Jérem→Madie ×2, Salomon→Paul, Jérémie→Madeleine)
+- 2 corrections dans `cross-culture/prenoms/par-culture/hebreu.md` (intro + liste V1)
+- 1 correction `personnages/lookup.yml` (exemple commentaire)
+- 1 correction `equipe/templates/brief-writer-libre.template.md`
+- MEMORY globale Claude actualisée (`feedback_prenoms_personnages.md` + `MEMORY.md`)
+
+**Lien :** [`../archive/sessions/2026-05-10-restructuration-3-piliers.md`](../archive/sessions/2026-05-10-restructuration-3-piliers.md) (trace complète + plan d'exécution + checksums)
+
+---
+
 ## 2026-05-10 — Précisions cadre arc 1 + ajustements casting (post-deepsearch pédagogie + Chabreuil)
 
 **Décisions complémentaires** au cadre arc 1 du 2026-05-08, après ingestion pédagogie + Chabreuil + brainstorm casting :
-- Deepsearch pédagogie 4-7 ans cross-culture → [`equipe/sources-pedagogie-enfance.md`](../equipe/sources-pedagogie-enfance.md)
-- Synthèse Chabreuil exhaustive → [`enneagramme/ressources/chabreuil-synthese-complete.md`](../enneagramme/ressources/chabreuil-synthese-complete.md)
+- Deepsearch pédagogie 4-7 ans cross-culture → [`personnages/theorie/pedagogie-enfance/sources-pedagogie-enfance.md`](../personnages/theorie/pedagogie-enfance/sources-pedagogie-enfance.md) *(déplacé 2026-05-10 dans la refonte 4 piliers)*
+- Synthèse Chabreuil exhaustive → [`personnages/theorie/enneagramme/chabreuil-synthese-complete.md`](../personnages/theorie/enneagramme/chabreuil-synthese-complete.md) *(déplacé 2026-05-10)*
 - Brainstorm casting + gestes → `narration/stories/brainstorm-arc-1.md` (document de session en continu)
 
 ### Cadre arc 1 (ratification + complément)
@@ -981,7 +1091,9 @@ Aucun ne combine **archétypes universels (ennéatypes) + adaptation culturelle 
 | 11 | Liste des Sensibilités — fermer les sous-types (Fréquence/Son/Schumann) | Non | `../univers/fondements/sensibilites.md` |
 | 12 | Quand Wex commence à contrôler sa Vision causale ? (S1/S2/S3) | Non | — |
 | 13 | Mentor de Wex — qui ? Quel âge ? Quelle sensibilité ? | Non | — |
-| 14 | Castings cross-country (Hébreu, Ghibli, Swahili…) — démarrer lequel en premier ? | Oui pour S2 | `../personnages/prénoms-par-origine.md` |
+| 14 | Castings cross-country (Hébreu, Ghibli, Swahili…) — démarrer lequel en premier ? | Oui pour S2 | `../cross-culture/castings-nationaux/INDEX.md` + `../cross-culture/prenoms/INDEX.md` |
+| 15 | Tokens `{titi_N}` dans les textes canon — rétroporter `001-le-pont-casse/texte.md` ou attendre le 2e casting national ? | Oui avant 2e casting | `../stories/001-le-pont-casse/texte.md` + `../personnages/lookup.yml` |
+| 16 | **Sous-spé narration-pmo future** : si volume grossit (>20 stories, 2+ castings nationaux actifs), faut-il scinder en `narration-stories-pmo` (kanban + SLA) vs `narration-meta-pmo` (PROCESS + decisions + roadmap) ? Hypothèse transmise par game-pmo 2026-05-11. Pas urgent — tient pour l'instant. | Non (hypothèse) | `.claude/agents/narration-pmo.md` |
 | 15 | Mémoire narrative des lecteurs — les enfants connaîtront les histoires précédentes et feront des liens. Comment en tenir compte dans l'écriture (callbacks implicites, évolution persos, arcs longs) ? À partir de quelle histoire introduire ce niveau de couche ? | Non | — |
 | 16 | Quartier / communauté — nommé (Clairval, Tissé, Hameau de l'Aube, la Ronde…) ou volontairement anonyme ? Décision 26/04 a écarté les villes réelles, mais n'a pas tranché si on nomme la communauté/quartier. Trade-off : ancrage affectif (B) vs universalité cross-culture (A). | Non | `../univers/vie-quotidienne/geographie.md` |
 | 17 | ~~**V1 minimaliste vs V2 comité pour 003-v2**~~ **TRANCHÉ 2026-05-08** (V2 comité retenue, canonisée 001) | — | — |

@@ -8,31 +8,31 @@
 
 | Couche | Paramètre |
 |--------|-----------|
-| **Articulation** | Consonnes legato glissant dans les voyelles · plosives non percussives · liaison-flow entre les mots |
-| **Prosodie** | Vagues mélodiques douces (ni pic ni vallée) · fins non emphatiques · aucune arête |
-| **Rythme** | Lent et fluide · aucune urgence · aucune rupture de continuité |
-| **Phonation** | "mmm" ou "ah" doux entre les phrases · légère respiration soufflée naturelle · sérénité totale |
-
----
+| **Articulation** | Consonnes legato · tout s'enchaîne doucement · pas de ruptures |
+| **Prosodie** | Vagues douces · ni vraiment montant ni vraiment descendant · berçant |
+| **Rythme** | Lent et fluide · aucune urgence · tout prend son temps |
+| **Phonation** | "mmm" doux · "ah" doux · respiration lente et profonde · sourire serein |
 
 ## Paramètres ElevenLabs
 
 ```
 Stability: 0.70
-Similarity Boost: 0.80
+Similarity Boost: 0.75
 Style: 0.20
 Speaker Boost: false
 ```
 
----
+## Prompt ElevenLabs (F)
 
-## Prompt ElevenLabs — Femme (F)
+> Native French. Female, young child around 4 to 5 years old. Studio quality.
+> Persona: serene peacemaker. Emotion: calm, soothing, unhurried.
+> Legato consonants flowing seamlessly with no ruptures. Gentle wave-like prosody, neither rising nor falling — gently rocking. Slow fluid pacing, no urgency, everything takes its time. Natural soft "mmm" and "ah" sounds, slow audible breath. Soft round child timbre. Effortless serenity, soothing without effort.
 
-> Female narrator voice, mid-thirties, smooth flowing mezzo timbre with mellow gentle resonance and naturally soft edges. Calm soothing harmoniously present delivery. Distinctive shared articulation: legato consonants (gliding seamlessly into vowels), soft non-percussive plosives (no sharpness ever), liaison-like flow between words as if they were one melody. Prosody: gentle wavelike rises and falls (no peaks, no valleys, just soft swells), soft un-emphatic endings, no harsh resolutions. Rhythm: slow and flowing, no urgency, no rush, no break in continuity. Texture: smooth and slightly soft, light natural breathiness, no edges, no friction anywhere. Signature tic: soft "mmm" or "ah" between phrases, liaison flow that carries one phrase into the next, complete absence of percussive attacks. Conveys harmonious ease and gentle ever-presence. Think: a wise gentle aunt whose voice itself is a place of rest.
+## Prompt ElevenLabs (M)
 
-## Prompt ElevenLabs — Homme (M)
-
-> Male narrator voice, late thirties, smooth flowing baritone timbre with mellow gentle resonance and naturally soft edges. Calm soothing harmoniously present delivery. Distinctive shared articulation: legato consonants (gliding seamlessly into vowels), soft non-percussive plosives (no sharpness ever), liaison-like flow between words as if they were one melody. Prosody: gentle wavelike rises and falls (no peaks, no valleys, just soft swells), soft un-emphatic endings, no harsh resolutions. Rhythm: slow and flowing, no urgency, no rush, no break in continuity. Texture: smooth and slightly soft, light natural breathiness, no edges, no friction anywhere. Signature tic: soft "mmm" or "ah" between phrases, liaison flow that carries one phrase into the next, complete absence of percussive attacks. Conveys harmonious ease and gentle ever-presence. Think: a wise gentle uncle whose voice itself is a place of rest.
+> Native French. Male, young child around 4 to 5 years old. Studio quality.
+> Persona: serene peacemaker. Emotion: calm, fluid, peaceful.
+> Soft legato consonants, fluid throughout. Slow regular rhythm like a calm river. Natural soft "mmm" and "ah". Slow audible breath. Soft warm child timbre. Not drowsy — just at peace.
 
 ---
 

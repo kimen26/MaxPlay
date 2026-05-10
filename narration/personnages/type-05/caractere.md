@@ -112,4 +112,34 @@ Lulu est le personnage qui enseigne que la solitude intellectuelle ne suffit pas
 
 Les scènes les plus touchantes de Lulu sont celles où il *donne* quelque chose de lui-même — pas de l'information, mais de la présence. De la chaleur. C'est là qu'il découvre que la connexion ne l'épuise pas — elle le nourrit.
 
+---
+
+## Gestes / attitudes / habitudes (mise en valeur arc 1)
+
+> **Source** : brainstorm Auteur + Conseiller (2026-05-10), ancré dans Chabreuil 2022 (`../theorie/enneagramme/chabreuil-synthese-complete.md`) et patterns lecteurs (`equipe/lecons-vivantes.md` P8).
+> **Usage** : matière à infuser dans les briefs writers et la conduite d'agents — type EST, type APPORTE, sans transformation forcée.
+
+### Geste signature
+S'agenouiller pour regarder de près. Ramasser pour examiner. Ranger dans sa collection mentale.
+
+### Attitude
+Discret, observateur, naturellement en léger retrait de l'action ou de la nouveauté. Précis dans la parole.
+
+### Habitude
+Avoir l'info juste qu'il faut au moment où elle est utile. Compare, réfléchit, trouve.
+
+### Ce qu'il apporte au groupe
+La phrase courte qui éclaire. Il partage quand l'équipe en a besoin (pas pour montrer). Sa vision après contemplation.
+
+### Paires fortes (Chabreuil §6.2 + interactions.md)
+- Madie T4 (affinité)
+- Mimi T2 (chaleur+savoir)
+- Raph T7 (curiosité+profondeur)
+- Pierrot T6 (miroir mental)
+
+### Garde-fou (à ne PAS faire)
+Ne pas le forcer à « sortir de sa coquille ». Lulu est BIEN dans sa coquille, c'est sa lumière. Il sort quand l'équipe en a besoin, pas pour plaire.
+
+---
+
 *Source théorique : Type 5 Chabreuil / Riso-Hudson. Aile 4, intégration vers 8, désintégration vers 7.*

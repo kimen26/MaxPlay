@@ -8,31 +8,31 @@
 
 | Couche | Paramètre |
 |--------|-----------|
-| **Articulation** | Consonnes sèches à faible souffle · T et S parfaitement contenus · chaque mot choisi avec soin |
-| **Prosodie** | Registre tonal étroit · cadence en plateau avec léger drop final · emphase pondérée sur des mots uniques |
-| **Rythme** | Mesuré et délibéré · pauses de réflexion caractéristiques avant la terminologie précise |
-| **Phonation** | Fraîche et silencieuse · volume bas naturel · sans souffle excessif · sans fry |
-
----
+| **Articulation** | Consonnes sèches et précises · voyelles neutres, économes |
+| **Prosodie** | Plateau plat + léger drop final · ton informatif, jamais affirmatif-émotionnel |
+| **Rythme** | Mesuré · pauses de réflexion avant les termes techniques ou précis |
+| **Phonation** | Micro-pauses avant les mots exacts · pas de remplisseurs ("euh", "mm") |
 
 ## Paramètres ElevenLabs
 
 ```
 Stability: 0.80
-Similarity Boost: 0.80
+Similarity Boost: 0.60
 Style: 0.10
 Speaker Boost: false
 ```
 
----
+## Prompt ElevenLabs (F)
 
-## Prompt ElevenLabs — Femme (F)
+> Native French. Female, young child around 4 to 5 years old. Studio quality.
+> Persona: calm precise observer. Emotion: neutral, focused, factual.
+> Dry precise consonants, economical neutral vowels. Flat plateau prosody with a slight downward drop at sentence ends — informative, never emotional. Measured pacing with reflective micro-pauses before precise terms. No fillers, no "uh" or "mm". Clear unembellished child timbre. Neutral tone, never cold — just concentrated.
 
-> Female narrator voice, mid-thirties, cool clear mezzo timbre with contained dry resonance, neither warm nor cold but perfectly poised. Quiet contained intellectually present delivery. Distinctive shared articulation: dry low-air consonants (precise but never effortful), perfectly contained "t" and "s" (no airy excess), every word chosen carefully. No vocal expansion, no warmth flourish. Prosody: narrow controlled pitch range, calm plateau-like delivery with slight terminal drop, weighted emphasis on single key words. Rhythm: measured and deliberate, with characteristic thinking pauses before precise word choices. Texture: cool and quiet, contained natural low volume, no breathiness, no fry. Signature tic: micro-pauses preceding precise terminology, the audible sound of careful selection. Conveys quiet intellectual depth and observational calm. Think: a research librarian who has spent years with this specific text.
+## Prompt ElevenLabs (M)
 
-## Prompt ElevenLabs — Homme (M)
-
-> Male narrator voice, late thirties, cool clear baritone timbre with contained dry resonance, neither warm nor cold but perfectly poised. Quiet contained intellectually present delivery. Distinctive shared articulation: dry low-air consonants (precise but never effortful), perfectly contained "t" and "s" (no airy excess), every word chosen carefully. No vocal expansion, no warmth flourish. Prosody: narrow controlled pitch range, calm plateau-like delivery with slight terminal drop, weighted emphasis on single key words. Rhythm: measured and deliberate, with characteristic thinking pauses before precise word choices. Texture: cool and quiet, contained natural low volume, no breathiness, no fry. Signature tic: micro-pauses preceding precise terminology, the audible sound of careful selection. Conveys quiet intellectual depth and observational calm. Think: a research librarian who has spent years with this specific text.
+> Native French. Male, young child around 4 to 5 years old. Studio quality.
+> Persona: calm methodical observer. Emotion: neutral, focused, factual.
+> Dry precise consonants, economical diction. Plateau prosody with slight downward drop at sentence ends. Measured pacing with micro-pauses before precise terms. No verbal fillers. Clear unembellished child timbre. Factual tone — not distant, just focused.
 
 ---
 

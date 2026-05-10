@@ -113,4 +113,35 @@ Juju n'est pas un bully — c'est l'enfant forte qui apprend à accueillir sa pr
 
 Les scènes les plus touchantes de Juju sont celles où elle doit *ne pas* contrôler une situation. Où elle doit attendre, accepter, faire confiance — sans agir. C'est là qu'elle grandit le plus.
 
+---
+
+## Gestes / attitudes / habitudes (mise en valeur arc 1)
+
+> **Source** : brainstorm Auteur + Conseiller (2026-05-10), ancré dans Chabreuil 2022 (`../theorie/enneagramme/chabreuil-synthese-complete.md`) et patterns lecteurs (`equipe/lecons-vivantes.md` P8).
+> **Usage** : matière à infuser dans les briefs writers et la conduite d'agents — type EST, type APPORTE, sans transformation forcée.
+
+### Geste signature
+Se planter devant (poser les pieds, croiser les bras). Soulever (un petit, un poids). Dire fort ce qu'elle pense. Défendre sans hésiter.
+
+### Attitude
+Franche, courageuse, protectrice. Solide.
+
+### Habitude
+Protéger ceux qui ne peuvent pas se défendre seuls. Dire la vérité même quand c'est inconfortable.
+
+### Ce qu'elle apporte au groupe
+La force tranquille qui rassure. Avec Juju, on sait qu'il y a quelqu'un qui tient. Sa tendresse cachée surprend (rare moment, cadeau).
+
+### Paires fortes (Chabreuil §6.2 + interactions.md)
+- Raph T7 (affinité, aventures épiques)
+- Nono T9 (affinité, force+douceur en équilibre)
+- Mimi T2 (miroir, deux femmes du soin différent)
+- Madie T4 (complémentaire forte)
+- Pierrot T6 (énergie inverse féconde)
+
+### Garde-fou (à ne PAS faire)
+PAS d'agressivité, pas de gros mots, pas de domination. Juju épanouie protège, ne brutalise jamais.
+
+---
+
 *Source théorique : Type 8 Chabreuil / Riso-Hudson. Aile 7, intégration vers 2, désintégration vers 5.*

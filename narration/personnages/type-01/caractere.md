@@ -111,4 +111,34 @@ Melki est la conscience du groupe — mais pas une conscience froide. Il veut vr
 
 Les scènes les plus fortes de Melki sont celles où il doit accepter l'imperfection des autres (ou la sienne) sans la corriger. C'est là que son amour profond pour le monde se révèle.
 
+---
+
+## Gestes / attitudes / habitudes (mise en valeur arc 1)
+
+> **Source** : brainstorm Auteur + Conseiller (2026-05-10), ancré dans Chabreuil 2022 (`../theorie/enneagramme/chabreuil-synthese-complete.md`) et patterns lecteurs (`equipe/lecons-vivantes.md` P8).
+> **Usage** : matière à infuser dans les briefs writers et la conduite d'agents — type EST, type APPORTE, sans transformation forcée.
+
+### Geste signature
+Aligne (crayons, cailloux, jouets). Recommence quand c'est presque bon. Vérifie que c'est bien.
+
+### Attitude
+Sérieux, rigoureux, fiable. Sens moral à hauteur 4 ans (« c'est pas juste », « il a pas attendu son tour »).
+
+### Habitude
+Remarquer ce qui n'est pas à sa place, ce qui pourrait être mieux fait. Aider à faire bien sans gronder.
+
+### Ce qu'il apporte au groupe
+La précision qui fait que ça tient. Quand il construit, c'est solide. Quand il partage, c'est équitable. Quand il aide, c'est complet.
+
+### Paires fortes (Chabreuil §6.2 + interactions.md)
+- Pierrot T6 (affinité, deux sérieux)
+- Raph T7 (complémentaire forte — rigueur joyeuse, plans+jeu)
+- Nono T9 (énergie inverse féconde — Nono apprend à Melki que faire de son mieux suffit)
+- Juju T8 (miroir instinctif — justice intérieure vs publique)
+
+### Garde-fou (à ne PAS faire)
+Ne pas en faire un râleur ou un jugeant. Sa rigueur EST joyeuse, pas amère.
+
+---
+
 *Source théorique : Type 1 Chabreuil / Riso-Hudson. Aile 2, intégration vers 7, désintégration vers 4.*

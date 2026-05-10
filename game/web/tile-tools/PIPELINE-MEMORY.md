@@ -114,6 +114,13 @@ Main agent (Sonnet/Opus)
 - **Résolution** : créer des équivalents projet-scopés (game-tile-*), garder pixel-map-* globaux pour d'autres projets potentiels
 - **Pattern gravé** : "ne pas modifier un agent global pour les besoins d'un projet — créer un équivalent projet"
 
+### F-005 : Audit superficiel sans lire le fichier complètement (2026-05-11)
+- **Symptôme** : sur les 7 challenges transmis à narration-pmo, **C-1 (checklist hardcodée fin de session) était déjà implémenté** dans narration-pmo.md → décliné par lui
+- **Cause** : j'ai lu narration-pmo.md partiellement pour formuler les challenges, manqué la section "Checklist remise main 8 points" qui existait déjà
+- **Résolution** : lire le fichier en entier (Read sans limit + Grep des sections) avant de proposer un challenge "manque X"
+- **Pattern gravé** : "auditer ≠ scanner — il faut LIRE en entier le fichier audité avant de proposer du 'manquant'"
+- **Conséquence positive** : narration-pmo a quand même retenu 5/7 (C-3 traité en plus léger via section decisions.md plutôt qu'un 6e fichier ; C-4/C-5/C-6 patchés ; C-7 noté Question ouverte #16)
+
 ---
 
 ## 4. Patterns user observés (collaboration)
@@ -137,6 +144,12 @@ Main agent (Sonnet/Opus)
 - **Observation** : *"on a une boucle d'apprentissage et positive"*
 - **Conséquence** : chaque correction user doit enrichir le système (LESSONS, PIPELINE-MEMORY, cartography) pour que les futures sessions soient meilleures
 - **Application** : c'est l'objectif central du pipeline 3-sachants + game-tile-pmo
+
+### P-005 : Challenge réciproque entre PMO fonctionne (2026-05-11)
+- **Observation** : audit cross-PMO game-pmo ↔ narration-pmo a donné 5/7 retenus côté narration. Narration-pmo a répondu : *"À charge de revanche : quand tu pousseras la prochaine évolution de tile-pmo, ping-moi pour challenge réciproque"*
+- **Conséquence** : le mécanisme de challenge réciproque entre PMO de pôles différents est un **vecteur d'amélioration mutuelle** sans toucher au scope strict de chacun
+- **Application** : à la **prochaine évolution non-triviale de game-pmo OU game-tile-pmo**, le main agent doit pinger narration-pmo pour challenge réciproque. Engagement explicite ↔.
+- **Format challenge** : transmettre 5-7 observations comparatives (forme + fond), pas un audit complet. L'autre PMO trie et patche ce qui est pertinent dans son scope.
 
 ---
 
@@ -165,7 +178,17 @@ Main agent (Sonnet/Opus)
 
 ---
 
-## 7. Comment alimenter ce fichier
+## 7. Engagements croisés inter-PMO
+
+| Date | Engagement | Origine | Statut |
+|---|---|---|---|
+| 2026-05-11 | À la prochaine évolution non-triviale de `game-pmo` ou `game-tile-pmo`, pinger `narration-pmo` pour challenge réciproque | Réponse narration-pmo après audit du 2026-05-11 (5/7 retenus) | ⏳ Actif — à honorer dès prochain changement |
+
+**Mécanisme** : main agent invoque l'autre PMO via Agent tool avec un prompt "challenge réciproque sur fiche [nom]". L'autre PMO renvoie 5-7 observations, le PMO ciblé trie et patche.
+
+---
+
+## 8. Comment alimenter ce fichier
 
 À chaque session où **le pipeline lui-même** change, `game-tile-pmo` ajoute :
 - Une entrée dans § 2 (Décisions de design) si nouveau agent / refonte / suppression

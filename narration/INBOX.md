@@ -15,7 +15,7 @@
 
 ## 2026-05-11 — Challenges narration-pmo : C-3, C-4, C-5, C-6 à planifier
 
-**Source :** audit game-pmo transféré 6 challenges narration-pmo. John a validé 2 : C-1 (checklist, → ARCHI-007), C-2 (rapport, done). 4 autres = à planifier.
+**Source :** audit game-pmo transféré 6 challenges narration-pmo. Papa Yann a validé 2 : C-1 (checklist, → ARCHI-007), C-2 (rapport, done). 4 autres = à planifier.
 
 ### C-3 — 3e niveau mémoire : PIPELINE-MEMORY.md
 
@@ -137,7 +137,7 @@ Sources : IBGE / Reddit (1930) ; Blog Nomes / ARPEN-SP (1980) ; G1 / Arpen-Brasi
 | Rang | 1930 G | 1930 F | 1980 G | 1980 F* | 2024-25 G | 2024-25 F |
 |------|--------|--------|--------|---------|-----------|-----------|
 | 1 | Joseph | Mary | Michael | Jennifer | Noah | Olivia |
-| 2 | John | Marie | Christopher | Melissa | Liam | Charlotte |
+| 2 | Papa Yann | Marie | Christopher | Melissa | Liam | Charlotte |
 | 3 | William | Margaret | David | Heather | Theodore | Emma |
 | 4 | Robert | Shirley | Jason | Jessica | Leo | Amelia |
 | 5 | James | Dorothy | Ryan | Amanda | William | Sophia |
@@ -147,7 +147,7 @@ Sources : IBGE / Reddit (1930) ; Blog Nomes / ARPEN-SP (1980) ; G1 / Arpen-Brasi
 | 9 | Ronald | Barbara | Andrew | Elizabeth | Benjamin | Lily |
 | 10 | Charles | Jean | Daniel | Laura | Thomas | Ava |
 | 11 | Thomas | Elizabeth | Adam | Lisa | Jack | Isla |
-| 12 | Edward | Ruth | John | Amber | Henry | Nora |
+| 12 | Edward | Ruth | Papa Yann | Amber | Henry | Nora |
 | 13 | David | Marion | Kevin | Michelle | Owen | Hazel |
 | 14 | Gordon | Joyce | Joseph | Tiffany | Levi | Eleanor |
 | 15 | Harold | Patricia | Jeffrey | Amy | Hudson | Grace |
@@ -176,7 +176,7 @@ Selon bases démographiques consolidées (Forebears / Wikipedia), prénoms les p
 | Usman | Victoria |
 | Aliyu | Patience |
 | Muhammed | Christiana |
-| John | Hauwa |
+| Papa Yann | Hauwa |
 | Yusuf | Rebecca |
 
 Note : reflète diversité ethnique/religieuse (hausa, yoruba, igbo) mais pas top 15 par année spécifique.

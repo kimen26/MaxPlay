@@ -39,6 +39,27 @@ Pipeline boucle d'apprentissage :
 
 ## 2. Décisions de design (chronologique)
 
+### 2026-05-11 (nuit) — Audit complet + refactor 5 dimensions + 2 composants partagés
+
+**Trigger user** : *"review tous les jeux, intro, son, [...] retour menu ou rejouer. y'a des bugs sur beaucoup ! (...) CORRIGE TOUT"*
+
+**Audit conduit** via skill `pmo-challenge` (Explore en délégation) sur les 19 mini-jeux et 5 dimensions ciblées. **Résultat** : 3 bugs transversaux + 5 bugs localisés.
+
+**Décision** : créer 2 composants partagés (back-button.js + intro-splash.js) + neutraliser `.scorebar` dans le CSS partagé, puis batch des MJ. Approche **composants > duplications** pour gain durable.
+
+**Composants créés** :
+- `game/web/js/back-button.js` : bouton 80×80 avec mini-bus SVG, auto-replace sélecteurs `.back`, `.back-mj`, `.back-btn`, `#hdr a/button[href|onclick*="index.html"]`
+- `game/web/js/intro-splash.js` : splash 1.5s avec auto-init via `data-mp-intro-emoji|title|hint` sur `<body>`, skippable au tap
+
+**Fichiers patchés** :
+- `style.css` : `.scorebar/.scoretxt/.scoreval/.streak` → `display:none !important`. `.back` upgraded 48×48 → 80×80. Ajout `.progressbar` (alternative non-numérique).
+- 18 MJ HTML : injection script back-button.js
+- 7 MJ : score badges inline masqués (mj-13a/b/c sur `#score`, mj-14/15/16/17 sur `#score-badge`)
+- 7 MJ : intro splash + `data-mp-intro-*` (mj-04/05/12/13a/b/c/17)
+- mj-pose-tiles : import sounds.js + victory-sounds.js + feedback.js + back-button.js, `celebrer()` enrichi avec `playEndSound` + `confettiBurst`
+
+**Résultat** : violations rules.md (scores visibles, zones tap < 80px, intros absentes, mj-pose-tiles silencieux) résolues sans toucher à la logique métier des MJ.
+
 ### 2026-05-11 — Création game-mj-pmo + game-mj-reviewer + game-conseiller (Phase 1)
 
 **Trigger user** : *"on a pas d'agent pour les mini-jeux, autant avoir aussi un agent à minima de validation avant livraison de suivi backlog todo"* + vision élargie en 3 sous-domaines (MJ, tile, WexWorld) + besoin d'un conseiller transverse.
@@ -87,13 +108,37 @@ Pipeline boucle d'apprentissage :
 - **Résolution** : section "Préparation du pont — prérequis canon avant adaptation jeu" ajoutée dans `VISION-LONG-TERME.md` avec 6 critères + protocole hand-off futur narration-pmo ↔ game-pmo
 - **Pattern gravé** : "graver les protocoles inter-pôles avant qu'ils ne deviennent urgents — éviter le retro-fit"
 
+### F-005 : Score visible sur 7 MJ → violation rules.md (2026-05-11)
+- **Symptôme** : 7 MJ affichaient `Score` / `score-badge` / `#score` malgré la règle MaxPlay "pas de score < 6 ans"
+- **Cause** : pattern hérité du CSS partagé `.scorebar` (mj-01/04/05) + badges inline custom (mj-13a/b/c/14/15/16/17). Les nouveaux MJ remplissaient le champ au lieu de désactiver.
+- **Résolution** : `.scorebar` neutralisée par défaut dans style.css (DOM reste pour compat code) + `display:none !important` injecté dans les CSS custom inline. Ajout `.progressbar` comme alternative non-numérique pour les MJ qui ont besoin d'une jauge de progression.
+- **Pattern gravé** : "le DOM peut accumuler du score en interne, jamais en visuel — utiliser .progressbar pour la jauge visuelle"
+
+### F-006 : Boutons retour inconsistants 30-48px → tous les MJ violation 80×80 (2026-05-11)
+- **Symptôme** : 3 patterns différents de bouton retour observés (`.back` 48×48, `#hdr a` 30px, `#hdr button` 32px), tous sous la zone tap 80×80 obligatoire
+- **Cause** : pas de composant unique partagé
+- **Résolution** : création `js/back-button.js` qui injecte un bouton 80×80 avec mini-bus SVG (forme "bus qui rentre au dépôt") au DOMContentLoaded. Auto-replace les 3 patterns existants. Injecté dans les 18 MJ via PowerShell batch. CSS `.back` fallback aussi upgradé 48→80 pour robustesse.
+- **Pattern gravé** : "1 composant partagé > 19 duplications inline. Le composant gagne en upgrade futur (forme, accessibilité, son tap...)"
+
+### F-007 : 6 MJ sans intro → Max ne sait pas quoi faire (2026-05-11)
+- **Symptôme** : mj-04/05/12/13a/b/c/17 démarrent direct sur la mécanique, pas d'écran de bienvenue, pas de contexte
+- **Cause** : pas de composant partagé, pas de convention
+- **Résolution** : création `js/intro-splash.js` avec auto-init via `data-mp-intro-emoji|title|hint` sur `<body>`. Splash 1.5s, skippable au tap (respect agentivité Max), animation bounce sur emoji, **PAS de TTS** (respect EP-033).
+- **Pattern gravé** : "convention déclarative > impératif — `data-mp-intro-*` sur `<body>` rend l'intro lisible dans le HTML, pas perdue dans le JS"
+
+### F-008 : mj-pose-tiles silencieux + dépendance tile non tracée (2026-05-11)
+- **Symptôme** : mj-pose-tiles n'importait ni sounds.js ni victory-sounds.js → expérience silencieuse, pas de feedback victoire. ET ligne 123-124 utilise `Asphalt_1_Variation_14`/`_15` qui sont les variations **SALE** (interdit par règle L-013 tile)
+- **Cause** : créé en parallèle du pipeline tile sans coordination, audio oublié
+- **Résolution partielle** : audio importé + `celebrer()` enrichi avec `playEndSound(10,10)` + `confettiBurst(40)` → finit sur succès. **Dépendance tile NON résolue** : `_14`/`_15` sales restent dans le code, à signaler à game-tile-pmo pour fix au prochain tour (cas exact OBS-3 narration-pmo qu'on a capitalisé)
+- **Pattern gravé** : "tile fournit, MJ consomme — la dépendance doit être tracée à la création du MJ, pas découverte 3 sessions plus tard"
+
 ---
 
 ## 4. Patterns user observés
 
 ### P-001 : Vision en 3 sous-domaines (2026-05-11)
 
-**Observation** : John a précisé la vision pôle JEU en 3 sous-domaines structurés (mini-jeux HTML, maps tile, WexWorld Phaser) + un conseiller transverse. Il pense déjà à long terme (pont narration↔jeu, app mobile, diffusion grand public).
+**Observation** : Papa Yann a précisé la vision pôle JEU en 3 sous-domaines structurés (mini-jeux HTML, maps tile, WexWorld Phaser) + un conseiller transverse. Il pense déjà à long terme (pont narration↔jeu, app mobile, diffusion grand public).
 
 **Conséquence** :
 - Ne pas siloter les 3 sous-domaines artificiellement — `game-conseiller` doit faire le pont
@@ -104,7 +149,7 @@ Pipeline boucle d'apprentissage :
 
 ### P-002 : Préférence MJ + dev = équipe (2026-05-11)
 
-**Observation** : John a formulé *"pmo + dev"* pour les MJ — pas "1 agent sachant unique" ni "5 agents par sous-action". L'équilibre KISS qu'il cherche : **1 sachant créatif (game-dev existant) + 1 validateur (reviewer) + 1 PMO**.
+**Observation** : Papa Yann a formulé *"pmo + dev"* pour les MJ — pas "1 agent sachant unique" ni "5 agents par sous-action". L'équilibre KISS qu'il cherche : **1 sachant créatif (game-dev existant) + 1 validateur (reviewer) + 1 PMO**.
 
 **Conséquence** : ne pas dupliquer game-dev en `game-mj-dev` dédié. game-dev reste général HTML + Phaser. Le reviewer suffit pour valider la spécificité MJ.
 

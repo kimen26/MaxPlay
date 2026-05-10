@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>MJ-19 – Trouve le bus !</title>
+  <title>MJ-19 â€“ Trouve le bus !</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none; }
@@ -78,8 +78,8 @@
 <body>
   <div id="app">
     <div class="hdr">
-      <a href="index.html" class="back">←</a>
-      <span class="htitle">🎯 Trouve le bus !</span>
+      <a href="index.html" class="back">â†</a>
+      <span class="htitle">ðŸŽ¯ Trouve le bus !</span>
       <span class="score" id="score">0/7</span>
     </div>
     <div class="quest" id="quest">Trouve le bus <b>162</b> !</div>
@@ -93,8 +93,8 @@
   <script src="js/data.js"></script>
   <script src="js/bus-svg.js"></script>
   <script>
-    // MJ-19 V1 — Hidden in plain sight
-    // N bus se déplacent, Max doit taper celui demandé. 5 rounds.
+    // MJ-19 V1 â€” Hidden in plain sight
+    // N bus se dÃ©placent, Max doit taper celui demandÃ©. 5 rounds.
 
     const ROUNDS = 7;
     const BUS_COUNT_MIN = 50;
@@ -120,7 +120,7 @@
       arena.innerHTML = '';
       movers = [];
 
-      // Pool : nombre aléatoire de bus, doublons autorisés (LIGNES ~26 mais on veut 50-80 bus)
+      // Pool : nombre alÃ©atoire de bus, doublons autorisÃ©s (LIGNES ~26 mais on veut 50-80 bus)
       const busCount = Math.floor(rand(BUS_COUNT_MIN, BUS_COUNT_MAX + 1));
       const pool = [];
       while (pool.length < busCount) {
@@ -130,7 +130,7 @@
           pool.push(l);
         }
       }
-      // Cible parmi les bus présents
+      // Cible parmi les bus prÃ©sents
       const target = pick(pool);
       targetNum = target.num;
       document.getElementById('quest').innerHTML = `Trouve le bus <b>${targetNum}</b> !`;
@@ -154,7 +154,7 @@
         const bh = el.offsetHeight || 78;
         const x = rand(10, Math.max(10, W - bw - 10));
         const y = rand(10, Math.max(10, H - bh - 10));
-        // 60% de bus quasi-horizontaux (gauche↔droite), 40% libres
+        // 60% de bus quasi-horizontaux (gaucheâ†”droite), 40% libres
         const sp = rand(SPEED_MIN, SPEED_MAX);
         let vx, vy;
         if (Math.random() < 0.6) {
@@ -210,7 +210,7 @@
       const arena = document.getElementById('arena');
       const cx = mv.x + mv.w/2;
       const cy = mv.y + mv.h/2;
-      const emojis = ['✨','⭐','💫','🎉','🌟'];
+      const emojis = ['âœ¨','â­','ðŸ’«','ðŸŽ‰','ðŸŒŸ'];
       for (let i = 0; i < 14; i++) {
         const p = document.createElement('div');
         p.className = 'particle';
@@ -261,12 +261,12 @@
       const arena = document.getElementById('arena');
       arena.innerHTML = `
         <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:20px;">
-          <div style="font-size:5rem;">🎉</div>
+          <div style="font-size:5rem;">ðŸŽ‰</div>
           <h2 style="color:#ffe066;font-size:2.2rem;margin:10px 0;">Bravo !</h2>
-          <p style="font-size:1.3rem;margin-bottom:24px;">Tu as trouvé ${score} bus sur ${ROUNDS} !</p>
+          <p style="font-size:1.3rem;margin-bottom:24px;">Tu as trouvÃ© ${score} bus sur ${ROUNDS} !</p>
           <div>
-            <button onclick="location.reload()" style="padding:14px 28px;border-radius:30px;border:none;background:linear-gradient(135deg,#00c47a,#00a86b);color:#fff;font-weight:900;font-family:inherit;margin:0 8px;cursor:pointer;">🔄 Rejouer</button>
-            <a href="index.html" style="padding:14px 28px;border-radius:30px;background:rgba(255,255,255,0.15);color:#fff;font-weight:900;text-decoration:none;margin:0 8px;">📋 Menu</a>
+            <button onclick="location.reload()" style="padding:14px 28px;border-radius:30px;border:none;background:linear-gradient(135deg,#00c47a,#00a86b);color:#fff;font-weight:900;font-family:inherit;margin:0 8px;cursor:pointer;">ðŸ”„ Rejouer</button>
+            <a href="index.html" style="padding:14px 28px;border-radius:30px;background:rgba(255,255,255,0.15);color:#fff;font-weight:900;text-decoration:none;margin:0 8px;">ðŸ“‹ Menu</a>
           </div>
         </div>`;
       try { confettiBurst(60); } catch(e) {}
@@ -279,5 +279,6 @@
   </script>
   <script src="js/tracker.js"></script>
   <script src="js/comments.js"></script>
+  <script src="js/back-button.js"></script>
 </body>
 </html>

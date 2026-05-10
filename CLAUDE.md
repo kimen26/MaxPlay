@@ -56,7 +56,7 @@ MaxPlay/
   - **PMO niveau pôle** : [`game-pmo`](.claude/agents/game-pmo.md) — garant `state.md` + `BACKLOG.md`. Classifie 6 catégories. **À invoquer à chaque tour incluant un signal JEU**.
   - **Sous-spé PMO maps tile** : [`game-tile-pmo`](.claude/agents/game-tile-pmo.md) — scope strict 5 fichiers (LESSONS, cartography.json, patterns.js, recipes_data.js, PIPELINE-MEMORY.md).
   - **Sous-spé PMO mini-jeux HTML** : [`game-mj-pmo`](.claude/agents/game-mj-pmo.md) — scope strict (rules.md, stack.md, PIPELINE-MEMORY-MJ.md, docs/jeux/).
-  - **Conseiller transverse** : [`game-conseiller`](.claude/agents/game-conseiller.md) (Opus) — binôme créatif John, voix produit, force de proposition, pont entre les 3 sous-domaines. Équivalent narration-conseiller côté jeu.
+  - **Conseiller transverse** : [`game-conseiller`](.claude/agents/game-conseiller.md) (Opus) — binôme créatif Papa Yann, voix produit, force de proposition, pont entre les 3 sous-domaines. Équivalent narration-conseiller côté jeu.
   - **Sachants tile (pipeline 3 étapes)** :
     1. [`game-tile-simplifier`](.claude/agents/game-tile-simplifier.md) (Sonnet) — image/desc → ANALYSE structurée
     2. [`game-tile-designer`](.claude/agents/game-tile-designer.md) (Sonnet) — ANALYSE → recette `test_<nom>.py` + PNG render

@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>MJ-05 – La bonne place</title>
+  <title>MJ-05 â€“ La bonne place</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
@@ -114,12 +114,12 @@
     }
   </style>
 </head>
-<body>
+<body data-mp-intro-emoji="🅿️" data-mp-intro-title="La bonne place" data-mp-intro-hint="Trouve le bon parking !">
   <div id="app">
     <!-- Header -->
     <div class="hdr">
-      <a href="index.html" class="back">←</a>
-      <span class="htitle">🪑 La bonne place</span>
+      <a href="index.html" class="back">â†</a>
+      <span class="htitle">ðŸª‘ La bonne place</span>
     </div>
     
     <!-- Score -->
@@ -131,25 +131,25 @@
     
     <!-- Problem -->
     <div class="problem-text" id="problem">
-      <!-- Généré par JS -->
+      <!-- GÃ©nÃ©rÃ© par JS -->
     </div>
     
     <!-- Bus visualization with people -->
     <div class="bus-scene" id="busScene">
       <div class="bus-visual" id="busVisual"></div>
       <div class="people-waiting" id="peopleWaiting">
-        <!-- Généré par JS -->
+        <!-- GÃ©nÃ©rÃ© par JS -->
       </div>
     </div>
     
     <!-- Seats visualization -->
     <div class="bus-seats" id="busSeats">
-      <!-- Généré par JS -->
+      <!-- GÃ©nÃ©rÃ© par JS -->
     </div>
     
     <!-- Choices -->
     <div class="choices" id="choices" style="grid-template-columns:repeat(4,1fr);padding:0 12px;">
-      <!-- Généré par JS -->
+      <!-- GÃ©nÃ©rÃ© par JS -->
     </div>
   </div>
   
@@ -164,11 +164,11 @@
   <script src="js/bus-svg.js"></script>
   <script src="js/qcm-retry.js"></script>
   <script>
-    // ─── MJ-03b: La bonne place ───
-    // Problèmes de soustraction: places, passagers, attente
-    // Max est très bon → difficulté progressive rapide
+    // â”€â”€â”€ MJ-03b: La bonne place â”€â”€â”€
+    // ProblÃ¨mes de soustraction: places, passagers, attente
+    // Max est trÃ¨s bon â†’ difficultÃ© progressive rapide
 
-    // Lignes quotidiennes de Max (pour décorer le bus)
+    // Lignes quotidiennes de Max (pour dÃ©corer le bus)
     const POOL_MJ03B = LIGNES.filter(l => ['162','172','185','380','V7','131','125','132','180','47','186'].includes(l.num));
 
     let score = 0;
@@ -187,7 +187,7 @@
       level = 1;
       document.getElementById('score').textContent = '0';
       document.getElementById('streak').textContent = '';
-      // Choisir un bus aléatoire pour décorer la scène
+      // Choisir un bus alÃ©atoire pour dÃ©corer la scÃ¨ne
       const decorLine = POOL_MJ03B[Math.floor(Math.random() * POOL_MJ03B.length)];
       document.getElementById('busVisual').innerHTML = busSVG(decorLine.color, decorLine.textColor, decorLine.num, 160);
       nextQuestion();
@@ -202,11 +202,11 @@
       qcm = QcmRetry.create();
       questionCount++;
       
-      // Augmenter le niveau si Max réussit beaucoup
+      // Augmenter le niveau si Max rÃ©ussit beaucoup
       if (streak >= 5) level = 3;
       else if (streak >= 3) level = 2;
       
-      // Générer le problème selon le niveau
+      // GÃ©nÃ©rer le problÃ¨me selon le niveau
       const problem = generateProblem(level);
       currentProblem = problem;
       correctAnswer = problem.answer;
@@ -219,10 +219,10 @@
       // Afficher les personnes qui attendent
       renderPeopleWaiting(problem.waiting || 0);
       
-      // Afficher le schéma du bus
+      // Afficher le schÃ©ma du bus
       renderSeats(problem.total, problem.occupied);
       
-      // Générer les choix
+      // GÃ©nÃ©rer les choix
       const choices = generateChoices(correctAnswer, level);
       
       const container = document.getElementById('choices');
@@ -241,14 +241,14 @@
     }
     
     function generateProblem(lvl) {
-      // Niveau 3 : ajoute la variante 2 étapes (descendre puis monter)
+      // Niveau 3 : ajoute la variante 2 Ã©tapes (descendre puis monter)
       const types = lvl >= 3
         ? ['places', 'monter', 'descendre', 'combo', 'combo']
         : ['places', 'monter', 'descendre'];
       const type = types[Math.floor(Math.random() * types.length)];
 
       if (type === 'combo') {
-        // 2 étapes : N passagers, X descendent, Y montent → combien dans le bus ?
+        // 2 Ã©tapes : N passagers, X descendent, Y montent â†’ combien dans le bus ?
         const start = 8 + Math.floor(Math.random() * 8);   // 8-15
         const leaving = 2 + Math.floor(Math.random() * (start - 3));
         const boarding = 2 + Math.floor(Math.random() * 6);
@@ -262,7 +262,7 @@
       }
       
       if (type === 'places') {
-        // Places totales, occupées → combien de libres ?
+        // Places totales, occupÃ©es â†’ combien de libres ?
         const total = lvl === 1 ? 6 + Math.floor(Math.random() * 5) :
                       lvl === 2 ? 10 + Math.floor(Math.random() * 11) :
                                   20 + Math.floor(Math.random() * 16);
@@ -271,11 +271,11 @@
         
         return {
           type: 'places',
-          text: `Le bus a <strong>${total}</strong> places.<br><strong>${occupied}</strong> sont occupées.<br>Combien de places libres ?`,
+          text: `Le bus a <strong>${total}</strong> places.<br><strong>${occupied}</strong> sont occupÃ©es.<br>Combien de places libres ?`,
           total, occupied, answer: available, waiting: 0
         };
       } else if (type === 'monter') {
-        // Places, occupées, attente → combien peuvent monter ?
+        // Places, occupÃ©es, attente â†’ combien peuvent monter ?
         const total = lvl === 1 ? 8 : lvl === 2 ? 12 : 20;
         const occupied = 2 + Math.floor(Math.random() * (total - 4));
         const waiting = 2 + Math.floor(Math.random() * 6);
@@ -284,11 +284,11 @@
         
         return {
           type: 'monter',
-          text: `Le bus a <strong>${total}</strong> places.<br><strong>${occupied}</strong> sont occupées.<br><strong>${waiting}</strong> personnes attendent.<br>Combien peuvent monter ?`,
+          text: `Le bus a <strong>${total}</strong> places.<br><strong>${occupied}</strong> sont occupÃ©es.<br><strong>${waiting}</strong> personnes attendent.<br>Combien peuvent monter ?`,
           total, occupied, answer: canBoard, waiting
         };
       } else {
-        // Passagers, descendent → combien restent ?
+        // Passagers, descendent â†’ combien restent ?
         const total = lvl === 1 ? 5 + Math.floor(Math.random() * 6) :
                       lvl === 2 ? 10 + Math.floor(Math.random() * 11) :
                                   15 + Math.floor(Math.random() * 16);
@@ -313,7 +313,7 @@
       }
       
       container.style.display = 'flex';
-      const emojis = ['🧍', '🧍‍♀️', '🧍‍♂️', '👧', '👦', '👵', '👴'];
+      const emojis = ['ðŸ§', 'ðŸ§â€â™€ï¸', 'ðŸ§â€â™‚ï¸', 'ðŸ‘§', 'ðŸ‘¦', 'ðŸ‘µ', 'ðŸ‘´'];
       
       for (let i = 0; i < Math.min(count, 6); i++) {
         const person = document.createElement('span');
@@ -345,7 +345,7 @@
         seat.className = 'seat';
         if (i < displayOccupied) {
           seat.classList.add('occupied');
-          seat.textContent = '🧍';
+          seat.textContent = 'ðŸ§';
         } else {
           seat.classList.add('available');
           seat.textContent = '';
@@ -371,7 +371,7 @@
           setTimeout(() => {
             seat.classList.remove('available');
             seat.classList.add('occupied', 'boarding');
-            seat.textContent = '🧍';
+            seat.textContent = 'ðŸ§';
             sndPorte();
           }, count * 200);
           count++;
@@ -421,7 +421,7 @@
       }
       
       document.getElementById('score').textContent = score;
-      document.getElementById('streak').textContent = streak >= 2 ? `🔥×${streak}` : '';
+      document.getElementById('streak').textContent = streak >= 2 ? `ðŸ”¥Ã—${streak}` : '';
       
       setTimeout(nextQuestion, 1800);
     }
@@ -433,21 +433,23 @@
       const app = document.getElementById('app');
       app.innerHTML = `
         <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100dvh;text-align:center;padding:20px;">
-          <div style="font-size:5rem;margin-bottom:20px;">🏆</div>
+          <div style="font-size:5rem;margin-bottom:20px;">ðŸ†</div>
           <h2 style="font-size:2rem;margin-bottom:20px;color:#ffe066;">Super !</h2>
           <p style="font-size:1.4rem;margin-bottom:30px;">Tu as fait <strong>${score}</strong> points !</p>
           <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
-            <a href="mj-05.html" style="background:#00c47a;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">🔄 Rejouer</a>
-            <a href="index.html" style="background:#ffffff22;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">📋 Menu</a>
+            <a href="mj-05.html" style="background:#00c47a;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">ðŸ”„ Rejouer</a>
+            <a href="index.html" style="background:#ffffff22;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">ðŸ“‹ Menu</a>
           </div>
         </div>
       `;
     }
     
-    // Démarrer
+    // DÃ©marrer
     init();
   </script>
 <script src="js/tracker.js"></script>
 <script src="js/comments.js"></script>
+  <script src="js/intro-splash.js"></script>
+  <script src="js/back-button.js"></script>
 </body>
 </html>

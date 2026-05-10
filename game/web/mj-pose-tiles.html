@@ -301,6 +301,9 @@ function celebrer() {
   const btn = document.getElementById('fini-btn');
   btn.classList.add('success');
   btn.textContent = '🎉 Bravo !';
+  // Son + confettis (règles MaxPlay : feedback < 200ms + finir sur succès)
+  try { if (window.playEndSound) playEndSound(10, 10); } catch(e) {}
+  try { if (window.confettiBurst) confettiBurst(40); } catch(e) {}
   setTimeout(() => {
     btn.classList.remove('success');
     btn.textContent = '🎉 Fini !';
@@ -326,5 +329,11 @@ buildCats();
 buildTiles();
 buildGrid();
 </script>
+
+<!-- Audio + composants partagés MaxPlay -->
+<script src="js/sounds.js"></script>
+<script src="js/victory-sounds.js"></script>
+<script src="js/feedback.js"></script>
+<script src="js/back-button.js"></script>
 </body>
 </html>

@@ -49,14 +49,17 @@ body {
   padding: 16px 12px 0;
 }
 
+/* .back fallback CSS — réel composant injecté par js/back-button.js (forme bus, busSVG mini) */
 .back {
   background: linear-gradient(135deg, #00c47a, #00a060);
   border: none;
   color: #fff;
-  font-size: 20px;
-  border-radius: 12px;
-  width: 48px;
-  height: 48px;
+  font-size: 28px;
+  border-radius: 16px;
+  width: 80px;
+  height: 80px;
+  min-width: 80px;
+  min-height: 80px;
   cursor: pointer;
   flex-shrink: 0;
   display: flex;
@@ -64,7 +67,8 @@ body {
   justify-content: center;
   text-decoration: none;
   box-shadow: 0 4px 12px rgba(0, 196, 122, 0.3);
-  transition: all 0.2s;
+  transition: transform 150ms ease, box-shadow 150ms ease;
+  touch-action: manipulation;
 }
 
 .back:hover {
@@ -72,8 +76,8 @@ body {
   box-shadow: 0 6px 16px rgba(0, 196, 122, 0.4);
 }
 
-.back:active { 
-  transform: translateY(0) scale(0.95);
+.back:active {
+  transform: translateY(0) scale(0.92);
 }
 
 .htitle {
@@ -81,21 +85,47 @@ body {
   font-weight: 900;
 }
 
-/* ─── Score bar ─── */
+/* ─── Score bar (NEUTRALISÉE 2026-05-11 — règle MaxPlay : pas de score visible < 6 ans) ───
+   Le DOM peut rester pour compat code (incrémenter `score`), mais l'affichage est masqué.
+   Pour afficher une progression : utiliser `.progressbar` ci-dessous. */
 .scorebar {
+  display: none !important;
+}
+
+.scoretxt, .scoreval, .streak {
+  display: none !important;
+}
+
+/* ─── Progress bar (remplacement non-numérique de scorebar) ─── */
+.progressbar {
   width: calc(100% - 24px);
   background: #ffffff12;
   border-radius: 20px;
-  padding: 10px 16px;
+  padding: 8px 12px;
   margin: 0 12px 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  height: 12px;
+  position: relative;
+  overflow: hidden;
 }
-
-.scoretxt { font-size: 0.9rem; opacity: 0.8; }
-.scoreval { font-size: 1.3rem; font-weight: 900; color: var(--accent-gold); }
-.streak { font-size: 0.85rem; color: #ff9f43; }
+.progressbar .pfill {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, #00c47a, #00e8a3);
+  border-radius: 20px;
+  width: 0%;
+  transition: width 0.4s ease;
+}
+.progressbar .ptxt {
+  position: relative;
+  z-index: 1;
+  font-size: 0.75rem;
+  font-weight: 900;
+  text-align: center;
+  color: #fff;
+  text-shadow: 0 1px 2px #0008;
+  line-height: 12px;
+  pointer-events: none;
+}
 
 /* ─── Question box ─── */
 .qbox {

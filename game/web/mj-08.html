@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>MJ-08 – Au centre bus</title>
+  <title>MJ-08 â€“ Au centre bus</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <style>
     * {
@@ -31,7 +31,7 @@
       margin: 0 auto;
     }
 
-    /* ── Header ── */
+    /* â”€â”€ Header â”€â”€ */
     .hdr {
       display: flex;
       align-items: center;
@@ -61,7 +61,7 @@
       flex: 1;
     }
 
-    /* ── Progress bar ── */
+    /* â”€â”€ Progress bar â”€â”€ */
     .scorebar {
       padding: 8px 16px;
       background: rgba(0,0,0,0.2);
@@ -98,7 +98,7 @@
       font-weight: 700;
     }
 
-    /* ── Game layout ── */
+    /* â”€â”€ Game layout â”€â”€ */
     .game-area {
       flex: 1;
       display: flex;
@@ -106,7 +106,7 @@
       position: relative;
     }
 
-    /* Zone gauche : bus à glisser */
+    /* Zone gauche : bus Ã  glisser */
     #busZone {
       flex: 1;
       position: relative;
@@ -124,7 +124,7 @@
       overflow: hidden;
     }
 
-    /* ── Slots ── */
+    /* â”€â”€ Slots â”€â”€ */
     .slot {
       flex: 1;
       min-height: 0;
@@ -144,7 +144,7 @@
       box-shadow: inset 0 0 0 3px rgba(0, 255, 150, 0.7);
     }
 
-    /* Badge numéro dans le slot */
+    /* Badge numÃ©ro dans le slot */
     .slot-badge {
       font-size: 1rem;
       font-weight: 900;
@@ -157,7 +157,7 @@
       border-radius: 8px;
     }
 
-    /* Porte de garage — s'abaisse depuis le bas */
+    /* Porte de garage â€” s'abaisse depuis le bas */
     .slot-door {
       position: absolute;
       bottom: 0;
@@ -190,7 +190,7 @@
       height: 100%;
     }
 
-    /* ── Bus draggables ── */
+    /* â”€â”€ Bus draggables â”€â”€ */
     .bus-draggable {
       position: absolute;
       cursor: grab;
@@ -246,7 +246,7 @@
 
     .pulse { animation: pulseText 1s ease-in-out infinite; color: #ffe066; }
 
-    /* ── Victory overlay ── */
+    /* â”€â”€ Victory overlay â”€â”€ */
     .victory-overlay {
       position: fixed;
       inset: 0;
@@ -339,8 +339,8 @@
   <div id="app">
     <!-- Header -->
     <div class="hdr">
-      <a href="index.html" class="back">←</a>
-      <span class="htitle">🚌 Au centre bus</span>
+      <a href="index.html" class="back">â†</a>
+      <span class="htitle">ðŸšŒ Au centre bus</span>
     </div>
 
     <!-- Progress -->
@@ -348,7 +348,7 @@
       <div class="progress-bar">
         <div class="progress-fill" id="progressFill" style="width:0%"></div>
       </div>
-      <div class="bus-count" id="busCount">Bus garés : 0 / 6</div>
+      <div class="bus-count" id="busCount">Bus garÃ©s : 0 / 6</div>
     </div>
 
     <!-- Game -->
@@ -356,7 +356,7 @@
       <!-- Zone bus (gauche) -->
       <div id="busZone">
         <div class="garage-info" id="info">
-          Glisse chaque bus dans sa case à droite !
+          Glisse chaque bus dans sa case Ã  droite !
         </div>
       </div>
 
@@ -368,12 +368,12 @@
   <!-- Victory -->
   <div class="victory-overlay" id="victoryOverlay">
     <div class="victory-content">
-      <div class="victory-emoji">🎉</div>
-      <h2 class="victory-title">Génial !</h2>
-      <p class="victory-text">Tu as garé tous les bus !<br>Tu es un super conducteur ! 🚌</p>
+      <div class="victory-emoji">ðŸŽ‰</div>
+      <h2 class="victory-title">GÃ©nial !</h2>
+      <p class="victory-text">Tu as garÃ© tous les bus !<br>Tu es un super conducteur ! ðŸšŒ</p>
       <div class="victory-buttons">
-        <button class="victory-btn primary" onclick="location.reload()">🔄 Rejouer</button>
-        <a href="index.html" class="victory-btn secondary">📋 Menu</a>
+        <button class="victory-btn primary" onclick="location.reload()">ðŸ”„ Rejouer</button>
+        <a href="index.html" class="victory-btn secondary">ðŸ“‹ Menu</a>
       </div>
     </div>
   </div>
@@ -385,16 +385,16 @@
   <script src="js/bus-svg.js"></script>
   <script src="js/drag-drop.js"></script>
   <script>
-    // ─── MJ-08 : Au centre bus ───
-    // Bus SVG IDFM → centre bus colonne droite, drag & drop
+    // â”€â”€â”€ MJ-08 : Au centre bus â”€â”€â”€
+    // Bus SVG IDFM â†’ centre bus colonne droite, drag & drop
 
-    // Toutes les lignes IDFM depuis data.js — tirage de 6 au hasard parmi les couleurs uniques
-    // (pas de doublons de couleur pour éviter confusion dans le garage)
+    // Toutes les lignes IDFM depuis data.js â€” tirage de 6 au hasard parmi les couleurs uniques
+    // (pas de doublons de couleur pour Ã©viter confusion dans le garage)
     const BUS_POOL = LIGNES.filter(l => {
       const sameColor = LIGNES.filter(x => x.color === l.color);
       return sameColor.length === 1; // exclure les paires de couleur identique (N15/N22, V6/380, 132/2234)
     });
-    // Mélanger et prendre 6 lignes avec couleurs distinctes
+    // MÃ©langer et prendre 6 lignes avec couleurs distinctes
     const BUS_LINES = selectDistinctColors(BUS_POOL, 6, 60);
 
     const BUS_WIDTH = 120;
@@ -406,7 +406,7 @@
     let parkedCount = 0;
     let gameComplete = false;
 
-    // ── Audio inline — AudioContext SINGLETON pour éviter les coupures ──
+    // â”€â”€ Audio inline â€” AudioContext SINGLETON pour Ã©viter les coupures â”€â”€
     let _ac = null;
     function getAC() {
       if (!_ac || _ac.state === 'closed') {
@@ -512,7 +512,7 @@
       } catch(e) {}
     }
 
-    // ── Build garage slots ──
+    // â”€â”€ Build garage slots â”€â”€
 
     function buildGarage() {
       const col = document.getElementById('garageCol');
@@ -540,11 +540,11 @@
       const r = parseInt(hex.slice(1,3), 16);
       const g = parseInt(hex.slice(3,5), 16);
       const b = parseInt(hex.slice(5,7), 16);
-      // Fond couleur du bus, légèrement assombri pour lisibilité
+      // Fond couleur du bus, lÃ©gÃ¨rement assombri pour lisibilitÃ©
       return `linear-gradient(180deg, rgba(${r},${g},${b},0.75) 0%, rgba(${r},${g},${b},0.55) 100%)`;
     }
 
-    // ── Build draggable buses ──
+    // â”€â”€ Build draggable buses â”€â”€
 
     function buildBuses() {
       const zone = document.getElementById('busZone');
@@ -561,7 +561,7 @@
       const maxX = zoneW - BUS_WIDTH - margin;
       const maxY = zoneH - BUS_H - margin;
 
-      // Placement aléatoire sans chevauchement — max 80 tentatives par bus
+      // Placement alÃ©atoire sans chevauchement â€” max 80 tentatives par bus
       const placed = [];
       function overlaps(x, y) {
         return placed.some(p =>
@@ -576,7 +576,7 @@
         el.dataset.num = line.num;
         el.innerHTML = busSVG(line.color, line.textColor, line.num, BUS_WIDTH);
 
-        // Position aléatoire visible dans busZone, sans toucher les bords ni la zone garage
+        // Position alÃ©atoire visible dans busZone, sans toucher les bords ni la zone garage
         let x, y, attempts = 0;
         do {
           x = margin + Math.random() * (maxX - margin);
@@ -594,7 +594,7 @@
 
         buses.push({ el, num: line.num, x, y, initX: x, initY: y, parked: false });
 
-        // Entrée depuis la gauche
+        // EntrÃ©e depuis la gauche
         el.style.left = (-BUS_WIDTH - 20) + 'px';
         setTimeout(() => {
           el.style.transition = 'left 0.6s cubic-bezier(0.22,1,0.36,1)';
@@ -607,7 +607,7 @@
       });
     }
 
-    // ── Drag & Drop ──
+    // â”€â”€ Drag & Drop â”€â”€
 
     function onDragStart(e) {
       if (gameComplete) return;
@@ -770,23 +770,23 @@ function highlightSlot(bus) {
       }, 50);
     }
 
-    // ── Progress ──
+    // â”€â”€ Progress â”€â”€
 
     function updateProgress() {
       const total = BUS_LINES.length;
       const pct = (parkedCount / total) * 100;
       document.getElementById('progressFill').style.width = pct + '%';
-      document.getElementById('busCount').textContent = `Bus garés : ${parkedCount} / ${total}`;
+      document.getElementById('busCount').textContent = `Bus garÃ©s : ${parkedCount} / ${total}`;
 
       const info = document.getElementById('info');
       if (parkedCount === total) {
-        info.innerHTML = '<span class="pulse">🎉 Bravo ! Tous les bus sont garés !</span>';
+        info.innerHTML = '<span class="pulse">ðŸŽ‰ Bravo ! Tous les bus sont garÃ©s !</span>';
       } else {
         info.textContent = `Glisse chaque bus dans sa case ! (${parkedCount}/${total})`;
       }
     }
 
-    // ── Init ──
+    // â”€â”€ Init â”€â”€
 
     function init() {
       buildGarage();
@@ -799,5 +799,6 @@ function highlightSlot(bus) {
   </script>
 <script src="js/tracker.js"></script>
 <script src="js/comments.js"></script>
+  <script src="js/back-button.js"></script>
 </body>
 </html>

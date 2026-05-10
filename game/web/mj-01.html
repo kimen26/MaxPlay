@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>MJ-01 – Quiz Bus (mix)</title>
+  <title>MJ-01 â€“ Quiz Bus (mix)</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
@@ -60,8 +60,8 @@
 <body>
   <div id="app">
     <div class="hdr">
-      <a href="index.html" class="back">←</a>
-      <span class="htitle">🚌 Quiz Bus <span class="mode-badge" id="modeBadge">MIX</span></span>
+      <a href="index.html" class="back">â†</a>
+      <span class="htitle">ðŸšŒ Quiz Bus <span class="mode-badge" id="modeBadge">MIX</span></span>
     </div>
 
     <div class="scorebar">
@@ -72,7 +72,7 @@
 
     <div class="qbox" id="qbox">
       <div class="question-counter" id="qcounter">Question 1 / 10</div>
-      <div class="instruction-text" id="instruction">…</div>
+      <div class="instruction-text" id="instruction">â€¦</div>
 
       <div class="bus-display-container">
         <div id="busDisplay" style="margin:0 auto;"></div>
@@ -94,10 +94,10 @@
   <script src="js/bus-svg.js"></script>
   <script src="js/qcm-retry.js"></script>
   <script>
-    // ─── MJ-01 MIX : 10 tours alternant 3 modes ───
-    // Mode A (couleur) : numéro visible fenêtre blanche → choisir la couleur
-    // Mode B (numéro)  : bus coloré numéro caché → choisir le numéro
-    // Mode C (vocal)   : bus blanc caché + TTS → choisir le numéro
+    // â”€â”€â”€ MJ-01 MIX : 10 tours alternant 3 modes â”€â”€â”€
+    // Mode A (couleur) : numÃ©ro visible fenÃªtre blanche â†’ choisir la couleur
+    // Mode B (numÃ©ro)  : bus colorÃ© numÃ©ro cachÃ© â†’ choisir le numÃ©ro
+    // Mode C (vocal)   : bus blanc cachÃ© + TTS â†’ choisir le numÃ©ro
     const MAX_QUESTIONS = 10;
     const MODES = ['color', 'number', 'voice'];
 
@@ -125,7 +125,7 @@
     }
 
     function buildModeOrder() {
-      // 10 tours : mélange équilibré ≈ 3-4 de chaque mode
+      // 10 tours : mÃ©lange Ã©quilibrÃ© â‰ˆ 3-4 de chaque mode
       const base = [];
       for (let i = 0; i < MAX_QUESTIONS; i++) base.push(MODES[i % MODES.length]);
       return shuffle(base);
@@ -140,7 +140,7 @@
     }
 
     function setBadge(mode) {
-      const map = { color: '🎨 COULEUR', number: '🔢 NUMÉRO', voice: '🔊 ÉCOUTE' };
+      const map = { color: 'ðŸŽ¨ COULEUR', number: 'ðŸ”¢ NUMÃ‰RO', voice: 'ðŸ”Š Ã‰COUTE' };
       document.getElementById('modeBadge').textContent = map[mode];
     }
 
@@ -162,7 +162,7 @@
       else renderVoiceRound(choicesEl, extra);
     }
 
-    // ── Mode A : couleur ──
+    // â”€â”€ Mode A : couleur â”€â”€
     function renderColorRound(choicesEl, extra) {
       currentLine = POOL_COLOR[Math.floor(Math.random() * POOL_COLOR.length)];
       document.getElementById('instruction').textContent = 'Quelle couleur est ce bus ?';
@@ -170,7 +170,7 @@
 
       extra.innerHTML = `
         <button class="tts-btn" onclick="speak('Quelle couleur est le bus ${currentLine.num} ?', true)">
-          <span>🔊</span><span>Écouter</span>
+          <span>ðŸ”Š</span><span>Ã‰couter</span>
         </button>`;
 
       const uniqueColors = POOL_COLOR
@@ -222,10 +222,10 @@
       }
     }
 
-    // ── Mode B : numéro (bus coloré, numéro caché) ──
+    // â”€â”€ Mode B : numÃ©ro (bus colorÃ©, numÃ©ro cachÃ©) â”€â”€
     function renderNumberRound(choicesEl) {
       currentLine = POOL_NUMBER[Math.floor(Math.random() * POOL_NUMBER.length)];
-      document.getElementById('instruction').textContent = 'Quel est le numéro de ce bus ?';
+      document.getElementById('instruction').textContent = 'Quel est le numÃ©ro de ce bus ?';
       document.getElementById('busDisplay').innerHTML =
         busSVGHiddenNum(currentLine.color, currentLine.textColor, currentLine.num, 200);
 
@@ -278,16 +278,16 @@
       }
     }
 
-    // ── Mode C : vocal (bus blanc + TTS) ──
+    // â”€â”€ Mode C : vocal (bus blanc + TTS) â”€â”€
     function renderVoiceRound(choicesEl, extra) {
       currentLine = POOL_VOICE[Math.floor(Math.random() * POOL_VOICE.length)];
-      document.getElementById('instruction').textContent = '🔊 Écoute bien le numéro !';
+      document.getElementById('instruction').textContent = 'ðŸ”Š Ã‰coute bien le numÃ©ro !';
       document.getElementById('busDisplay').innerHTML =
         busSVGHiddenNum('#ffffff', '#111111', currentLine.num, 200);
 
       extra.innerHTML = `
-        <button class="repeat-btn" onclick="speakTarget()" title="Répéter">🔊</button>
-        <div style="text-align:center;font-size:.8rem;color:#aaa;margin-top:4px;">Clique pour répéter</div>`;
+        <button class="repeat-btn" onclick="speakTarget()" title="RÃ©pÃ©ter">ðŸ”Š</button>
+        <div style="text-align:center;font-size:.8rem;color:#aaa;margin-top:4px;">Clique pour rÃ©pÃ©ter</div>`;
 
       setTimeout(speakTarget, 300);
 
@@ -328,7 +328,7 @@
         if (res.streakInc) streak++; else streak = 0;
         sndDing(); showFB(true);
         display.innerHTML = busSVG(currentLine.color, currentLine.textColor, currentLine.num, 200);
-        speak('Bravo ! C\'était le ' + ((typeof getLineDisplayName==='function')?getLineDisplayName(currentLine.num):currentLine.num));
+        speak('Bravo ! C\'Ã©tait le ' + ((typeof getLineDisplayName==='function')?getLineDisplayName(currentLine.num):currentLine.num));
         updateScore();
         setTimeout(nextQuestion, 2200);
       } else if (res.outcome === 'reveal') {
@@ -337,7 +337,7 @@
         display.innerHTML = busSVG(currentLine.color, currentLine.textColor, currentLine.num, 200);
         QcmRetry.revealCorrect(document.getElementById('choices'));
         playErrorSound(); sndBuzz(); showFB(false);
-        speak('C\'était le ' + ((typeof getLineDisplayName==='function')?getLineDisplayName(currentLine.num):currentLine.num), true);
+        speak('C\'Ã©tait le ' + ((typeof getLineDisplayName==='function')?getLineDisplayName(currentLine.num):currentLine.num), true);
         updateScore();
         setTimeout(nextQuestion, 2200);
       } else {
@@ -351,22 +351,22 @@
 
     function updateScore() {
       document.getElementById('score').textContent = score;
-      document.getElementById('streak').textContent = streak >= 2 ? `🔥×${streak}` : '';
+      document.getElementById('streak').textContent = streak >= 2 ? `ðŸ”¥Ã—${streak}` : '';
     }
 
     function showEndScreen() {
       if (typeof Tracker !== 'undefined') Tracker.endSession(score, MAX_QUESTIONS * 10);
       playEndSound(score, MAX_QUESTIONS * 10);
       confetti(); busParade();
-      speak('Félicitations ! Tu as terminé le quiz !', true);
+      speak('FÃ©licitations ! Tu as terminÃ© le quiz !', true);
       document.getElementById('app').innerHTML = `
         <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100dvh;text-align:center;padding:20px;">
-          <div style="font-size:5rem;margin-bottom:20px;">🏆</div>
+          <div style="font-size:5rem;margin-bottom:20px;">ðŸ†</div>
           <h2 style="font-size:2rem;margin-bottom:20px;color:#ffe066;">Super !</h2>
           <p style="font-size:1.4rem;margin-bottom:30px;">Tu as fait <strong>${score}</strong> points !</p>
           <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
-            <a href="mj-01.html" style="background:#00c47a;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">🔄 Rejouer</a>
-            <a href="index.html" style="background:#ffffff22;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">📋 Menu</a>
+            <a href="mj-01.html" style="background:#00c47a;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">ðŸ”„ Rejouer</a>
+            <a href="index.html" style="background:#ffffff22;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">ðŸ“‹ Menu</a>
           </div>
         </div>`;
     }
@@ -375,5 +375,6 @@
   </script>
   <script src="js/tracker.js"></script>
   <script src="js/comments.js"></script>
+  <script src="js/back-button.js"></script>
 </body>
 </html>

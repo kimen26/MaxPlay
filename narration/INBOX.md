@@ -13,6 +13,53 @@
 
 ---
 
+## 2026-05-11 — Challenges narration-pmo : C-3, C-4, C-5, C-6 à planifier
+
+**Source :** audit game-pmo transféré 6 challenges narration-pmo. John a validé 2 : C-1 (checklist, → ARCHI-007), C-2 (rapport, done). 4 autres = à planifier.
+
+### C-3 — 3e niveau mémoire : PIPELINE-MEMORY.md
+
+Narration = 3 niveaux mémoire :
+1. sprint-log.md (« ce qu'on a fait cette session »)
+2. decisions.md (« choix structurels figés »)
+3. **PIPELINE-MEMORY.md** (« meta-process patterns », ex : checklist relecture brief, phases A/B/C template story, règles routing agents, SLA étapes)
+
+Actuellement diluées dans decisions.md. À extraire + struturer.
+
+### C-4 — Anti-patterns explicites
+
+Narration a des anti-patterns (ex : briefs avec négations gratuites, rewrite trop gourmands en idées, pitch sans trio d'action). Documenter dans `equipe/anti-patterns-narration.md`.
+
+### C-5 — Mnémonique 1-ligne
+
+Game-pmo : « Toile pas de moraline — c'est ça MaxPlay ». Narration besoin équivalent (cohésif, mémoriel). Candidate : « Souple pas de saule » ou TBD.
+
+### C-6 — Tableau cartographie multi-fichiers
+
+narration-pmo gère 30+ fichiers. Pas de tableau « Fichier / Rôle / Où tu y notes ». Créer cartographie visuelle = référence rapide pour diagnostiquer incohérence.
+
+---
+
+## 2026-05-11 — Tickets univers découverts : UNIVERS-004, UNIVERS-005 + exemples-canoniques
+
+**Source :** audit stubs cross-culture. Trois options :
+
+### Option A — Créer 2 tickets UNIVERS now (quota 3 actifs permet)
+
+- **UNIVERS-004** : Peupler cross-culture/faune-flore/ + lieux-locaux/ au fil des 5 prochaines histoires
+- **UNIVERS-005** : Peupler cross-culture/saisons-climat/ + coutumes-jeux-aliments/ au fil des 5 prochaines histoires
+
+### Option B — Brainstorm avec Directeur avant de ticketer
+
+Attendreque STORY-002 (Nono animal) se termine — servira comme premier test peuplement faune-flore. Puis ouvrir les 2 tickets avec matière concrète.
+
+### Option C — Tracker exemplrs-canoniques.md comme ARCHI
+
+`equipe/INDEX.md` mentionne « exemplrs-canoniques.md à créer post-Phase D » (lignes 41-43 de equipe/INDEX.md). Risque oubli si Phase D s'éloigne.
+Créer ticket ARCHI-008 : « Préempter création exemples-canoniques.md » = suivre Phase D timeline, et créer ébauche quand bon.
+
+---
+
 <!-- Ajouter les dumps ici, en haut -->
 
 ## 2026-05-04 — Top 15 prénoms par pays/année/sexe (à dispatcher → cross-culture/prenoms/par-culture/)

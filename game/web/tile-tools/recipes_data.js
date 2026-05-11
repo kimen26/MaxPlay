@@ -175,6 +175,185 @@ window.RECIPES = {
     ],
     "objects": []
   },
+  "test_papa_route_large.py": {
+    "name": "papa_route_large",
+    "cols": 17,
+    "rows": 9,
+    "ground": [
+      [
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+      ],
+      [
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_23.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_47.png",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_24.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+      ],
+      [
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_19.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_29.png",
+        null,
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_19.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_19.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_19.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_19.png",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_19.png"
+      ],
+      [
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_16.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_30.png",
+        null,
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_10.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_16.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_10.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_10.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_10.png",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_21.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_21.png"
+      ],
+      [
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_30.png",
+        null,
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_14.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png"
+      ],
+      [
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_10.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_31.png",
+        null,
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_19.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_16.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_10.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_10.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_10.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_10.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_16.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_10.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_10.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_10.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_10.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_16.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_10.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_10.png"
+      ],
+      [
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_32.png",
+        null,
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_2_46.png",
+        null,
+        null,
+        null,
+        null,
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_2_46.png",
+        null,
+        null,
+        null,
+        null,
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png"
+      ],
+      [
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+      ],
+      [
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+      ]
+    ],
+    "objects": []
+  },
   "test_parking_v4.py": {
     "name": "parking_v4",
     "cols": 12,
@@ -1120,6 +1299,22 @@ window.RECIPES = {
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png"
       ],
       [
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png"
+      ],
+      [
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
@@ -1134,6 +1329,142 @@ window.RECIPES = {
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png"
+      ],
+      [
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png"
+      ],
+      [
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png"
+      ],
+      [
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+      ]
+    ],
+    "objects": []
+  },
+  "test_route_h_7rows_v3.py": {
+    "name": "route_h_7rows_v3",
+    "cols": 14,
+    "rows": 7,
+    "ground": [
+      [
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+      ],
+      [
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png"
+      ],
+      [
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png"
+      ],
+      [
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_14.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_14.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png"
+      ],
+      [
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png"
       ],
       [
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
@@ -1270,84 +1601,108 @@ window.RECIPES = {
       [
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
       ],
       [
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_15.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
       ],
       [
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
       ],
       [
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
       ],
       [
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
       ],
       [
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
       ],
       [
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_15.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
       ],
       [
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
       ],
       [
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
       ],
       [
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_15.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
       ],
       [
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
       ],
       [
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
       ]
@@ -1356,26 +1711,18 @@ window.RECIPES = {
   },
   "test_virage_droit.py": {
     "name": "virage_droit",
-    "cols": 10,
-    "rows": 10,
+    "cols": 6,
+    "rows": 9,
     "ground": [
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_13.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
@@ -1384,10 +1731,6 @@ window.RECIPES = {
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png"
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_1.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
@@ -1396,10 +1739,6 @@ window.RECIPES = {
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png"
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_1.png",
@@ -1408,96 +1747,60 @@ window.RECIPES = {
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png"
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        null,
+        null,
+        null
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        null,
+        null,
+        null
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        null,
+        null,
+        null
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        null,
+        null,
+        null
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
-      ],
-      [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
+        null,
+        null,
+        null
       ]
     ],
     "objects": []
   },
   "test_virage_gauche.py": {
     "name": "virage_gauche",
-    "cols": 10,
-    "rows": 10,
+    "cols": 6,
+    "rows": 9,
     "ground": [
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
       ],
       [
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
@@ -1505,11 +1808,7 @@ window.RECIPES = {
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_14.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_14.png"
       ],
       [
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
@@ -1517,11 +1816,7 @@ window.RECIPES = {
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_3.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png"
       ],
       [
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
@@ -1529,291 +1824,183 @@ window.RECIPES = {
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_3.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png"
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        null,
+        null,
+        null,
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png"
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        null,
+        null,
+        null,
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png"
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        null,
+        null,
+        null,
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png"
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        null,
+        null,
+        null,
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png"
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        null,
+        null,
+        null,
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
-      ],
-      [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
-        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png"
       ]
     ],
     "objects": []
   },
   "test_virage_haut_droit.py": {
     "name": "virage_haut_droit",
-    "cols": 10,
-    "rows": 10,
+    "cols": 6,
+    "rows": 9,
     "ground": [
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
-      ],
-      [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        null,
+        null,
+        null
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        null,
+        null,
+        null
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        null,
+        null,
+        null
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        null,
+        null,
+        null
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        null,
+        null,
+        null
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
+        null,
+        null,
+        null
+      ],
+      [
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_7.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png"
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_7.png",
-        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png"
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_11.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_12.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png"
-      ],
-      [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
       ]
     ],
     "objects": []
   },
   "test_virage_haut_gauche.py": {
     "name": "virage_haut_gauche",
-    "cols": 10,
-    "rows": 10,
+    "cols": 6,
+    "rows": 9,
     "ground": [
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
-      ],
-      [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        null,
+        null,
+        null,
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png"
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        null,
+        null,
+        null,
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png"
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        null,
+        null,
+        null,
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png"
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        null,
+        null,
+        null,
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png"
       ],
       [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
+        null,
+        null,
+        null,
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png"
+      ],
+      [
+        null,
+        null,
+        null,
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png",
+        "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png"
       ],
       [
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
@@ -1821,11 +2008,7 @@ window.RECIPES = {
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_5.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png"
       ],
       [
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
@@ -1833,11 +2016,7 @@ window.RECIPES = {
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png",
         "roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_5.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png"
       ],
       [
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
@@ -1845,23 +2024,7 @@ window.RECIPES = {
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
         "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_12.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
-      ],
-      [
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png",
-        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png"
+        "roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_11.png"
       ]
     ],
     "objects": []

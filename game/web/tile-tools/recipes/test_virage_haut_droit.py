@@ -1,48 +1,36 @@
-"""Virage HAUT-DROIT (NORD->EST) - 10x10. Version PROPRE 2026-05-10.
+"""Virage haut-droit : route descend du haut, tourne a droite en bas (vers EST).
 
-Double miroir du virage gauche.
-Coin EXT SW : Sidewalk_1_11. Coin INT NE : Sidewalk_1_7.
+Layout 6x9 minimal (None partout sauf le L). Miroir horizontal de virage_haut_gauche.
+- L pivote en bas-gauche du canvas
+- Branche descendante : cols 0-2 (sw_4 | asph_8 | sw_8) rows 0-7
+- Pivot row 7 col 1 : asph_7 (PIVOT_L NE)
+- Branche EST : row 7 cols 2-5 (asph_2) + asph_7 pivot col 1
+- Bord N branche EST : row 6 cols 2-5 (sw_6) + INT_NE sw_7 col 1
+- Bord S branche EST : row 8 cols 1-5 (sw_2) + EXT_SE sw_12 col 0
+
+Tout le reste = None.
 """
 
-TROTTOIR = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png'
-SW_N = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png'
-SW_S = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png'
-SW_W = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png'
-SW_E = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png'
-EXT_SW = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_11.png'
-INT_NE = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_7.png'
-DASH_V = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png'
-DASH_H = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png'
-PIVOT_L = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_7.png'  # coin L NE
+SW_4  = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png'
+SW_8  = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png'
+SW_6  = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png'
+SW_2  = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png'
+SW_7  = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_7.png'   # INT_NE
+SW_12 = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_12.png'  # EXT_SE (miroir de _11)
+ASPH_V = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png'
+ASPH_H = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png'
+ASPH_7 = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_7.png'  # PIVOT_L NE
 
-COLS, ROWS = 10, 10
-ground = [[TROTTOIR] * COLS for _ in range(ROWS)]
+ground = [
+    [SW_4,  ASPH_V, SW_8,   None,   None,   None],            # row 0 : descendante touche bord haut
+    [SW_4,  ASPH_V, SW_8,   None,   None,   None],
+    [SW_4,  ASPH_V, SW_8,   None,   None,   None],
+    [SW_4,  ASPH_V, SW_8,   None,   None,   None],
+    [SW_4,  ASPH_V, SW_8,   None,   None,   None],
+    [SW_4,  ASPH_V, SW_8,   None,   None,   None],
+    [SW_4,  ASPH_V, SW_7,   SW_6,   SW_6,   SW_6],            # row 6 : INT_NE + bord N branche EST
+    [SW_4,  ASPH_7, ASPH_H, ASPH_H, ASPH_H, ASPH_H],          # row 7 : pivot + chaussee EST
+    [SW_12, SW_2,   SW_2,   SW_2,   SW_2,   SW_2],            # row 8 : EXT_SE + bord S branche EST
+]
 
-# Branche NORD : cols 3-5 rows 1-6 (sw_W col 3, asph col 4, sw_E col 5)
-for r in range(1, 6):
-    ground[r][3] = SW_W
-    ground[r][4] = DASH_V
-    ground[r][5] = SW_E
-
-# Pivot row 6 : sw_W + asphalte + INT_NE
-ground[6][3] = SW_W
-ground[6][4] = DASH_V
-ground[6][5] = INT_NE
-
-# Branche EST (horizontale a droite) :
-#   row 6 (N branche EST) : sw_N cols 6-9 (apres INT_NE col 5)
-#   row 7 (asphalte) : sw_W col 3, PIVOT_L col 4, DASH_H cols 5-9
-#   row 8 (S branche EST) : EXT_SW col 3, sw_S cols 4-9
-for c in range(6, 10):
-    ground[6][c] = SW_N
-
-ground[7][3] = SW_W
-ground[7][4] = PIVOT_L
-for c in range(5, 10):
-    ground[7][c] = DASH_H
-
-ground[8][3] = EXT_SW
-for c in range(4, 10):
-    ground[8][c] = SW_S
-
-SNIPPET = {'name': 'virage_haut_droit', 'cols': COLS, 'rows': ROWS, 'ground': ground, 'objects': []}
+SNIPPET = {'name': 'virage_haut_droit', 'cols': 6, 'rows': 9, 'ground': ground, 'objects': []}

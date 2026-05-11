@@ -25,6 +25,9 @@ from __future__ import annotations
 from typing import Iterable
 
 from vocab import (
+    ASPHALT_PLAIN,
+    ASPHALT_PLAIN_ALT1,
+    ASPHALT_PLAIN_ALT2,
     BORD_EST,
     BORD_NORD,
     BORD_OUEST,
@@ -35,6 +38,11 @@ from vocab import (
     ROUTE_V_SALE,
     TROTTOIR_PLAIN,
 )
+
+# Pool de 3 variantes plain pour casser la mono "tâches répétées" sur les voies.
+# Validation Papa Yann 2026-05-11 : sans alternance, on voit le même motif texture
+# partout, ça fait artificiel.
+_VOIE_POOL = [ASPHALT_PLAIN, ASPHALT_PLAIN_ALT1, ASPHALT_PLAIN_ALT2]
 
 # Type alias pour clarté
 Row = list[str]
@@ -51,26 +59,31 @@ def route_h(
     trottoirs: bool = True,
     anti_mono_cols: Iterable[int] = (),
 ) -> Ground:
-    """Construit une route HORIZONTALE 2 voies (1 sens chacune).
+    """Construit une route HORIZONTALE 2 voies (1 sens par voie) — vraie largeur LimeZu.
 
-    Structure si `trottoirs=True` (5 rows × `longueur` cols) :
+    Validée 2026-05-11 sur planches officielles LimeZu :
+    3 rows d'asphalte (voie ←, marquage central pointillé, voie →) au lieu d'1 seule.
+
+    Structure si `trottoirs=True` (7 rows × `longueur` cols) :
 
         row 0 │ trottoir       trottoir       trottoir       trottoir
         row 1 │ bord-N         bord-N         bord-N         bord-N
-        row 2 │ marquage H     marquage H     marquage H     marquage H
-        row 3 │ bord-S         bord-S         bord-S         bord-S
-        row 4 │ trottoir       trottoir       trottoir       trottoir
+        row 2 │ asphalte       asphalte       asphalte       asphalte    ← voie ←
+        row 3 │ marquage H     marquage H     marquage H     marquage H  ← séparation
+        row 4 │ asphalte       asphalte       asphalte       asphalte    ← voie →
+        row 5 │ bord-S         bord-S         bord-S         bord-S
+        row 6 │ trottoir       trottoir       trottoir       trottoir
 
-    Si `trottoirs=False` : juste la row 2 (1 row × `longueur` cols).
+    Si `trottoirs=False` : 3 rows (asphalte / marquage / asphalte) sans bordures ni trottoirs.
 
     Args:
         longueur: nombre de colonnes (cellules de 48px).
-        trottoirs: True ajoute 2 rows trottoir nord + 2 rows trottoir sud.
+        trottoirs: True ajoute bordures + 2 rows trottoir N/S.
         anti_mono_cols: indices de colonnes (0-based) où poser ROUTE_H_SALE
-            au lieu de ROUTE_H_PROPRE. LESSONS : ≤10% MAX, défaut = `()` (tout propre).
+            au lieu de ROUTE_H_PROPRE sur la row marquage. LESSONS : ≤10% MAX.
 
     Returns:
-        Ground (liste de rows). Hauteur = 5 si trottoirs, 1 sinon.
+        Ground (liste de rows). Hauteur = 7 si trottoirs, 3 sinon.
 
     Raises:
         ValueError: si longueur < 1 ou si un index anti_mono_cols est hors bornes.
@@ -82,18 +95,24 @@ def route_h(
     if out_of_range:
         raise ValueError(f"anti_mono_cols hors bornes [0..{longueur-1}] : {out_of_range}")
 
+    # Voies asphalte : alternance déterministe entre les 3 plains (_20, _22, _27)
+    # pour casser la mono "même tâche partout". Voie sud décalée d'1 vs voie nord.
+    voie_nord: Row = [_VOIE_POOL[c % 3] for c in range(longueur)]
+    voie_sud: Row = [_VOIE_POOL[(c + 1) % 3] for c in range(longueur)]
     centre_row: Row = [
         ROUTE_H_SALE if c in dirty else ROUTE_H_PROPRE
         for c in range(longueur)
     ]
 
     if not trottoirs:
-        return [centre_row]
+        return [voie_nord, centre_row, voie_sud]
 
     return [
         [TROTTOIR_PLAIN] * longueur,
         [BORD_NORD] * longueur,
+        voie_nord,
         centre_row,
+        voie_sud,
         [BORD_SUD] * longueur,
         [TROTTOIR_PLAIN] * longueur,
     ]
@@ -105,25 +124,26 @@ def route_v(
     trottoirs: bool = True,
     anti_mono_rows: Iterable[int] = (),
 ) -> Ground:
-    """Construit une route VERTICALE 2 voies (1 sens chacune).
+    """Construit une route VERTICALE 2 voies (1 sens par voie) — vraie largeur LimeZu.
 
-    Structure si `trottoirs=True` (`hauteur` rows × 5 cols) :
+    Validée 2026-05-11 : 3 cols d'asphalte (voie ↑, marquage central pointillé, voie ↓).
 
-              col 0       col 1     col 2       col 3     col 4
-        row r │ trottoir   bord-W   marquage V  bord-E   trottoir
-        row r │ trottoir   bord-W   marquage V  bord-E   trottoir
+    Structure si `trottoirs=True` (`hauteur` rows × 7 cols) :
+
+              col 0       col 1     col 2      col 3        col 4      col 5    col 6
+        row r │ trottoir   bord-W   asphalte   marquage V   asphalte   bord-E   trottoir
         ...
 
-    Si `trottoirs=False` : juste 1 col centrale (`hauteur` rows × 1 col).
+    Si `trottoirs=False` : 3 cols (asphalte / marquage / asphalte).
 
     Args:
         hauteur: nombre de rows (cellules de 48px).
-        trottoirs: True ajoute 2 cols trottoir ouest + 2 cols trottoir est.
+        trottoirs: True ajoute bordures + 2 cols trottoir O/E.
         anti_mono_rows: indices de rows (0-based) où poser ROUTE_V_SALE
-            au lieu de ROUTE_V_PROPRE. LESSONS : ≤10% MAX, défaut = `()` (tout propre).
+            au lieu de ROUTE_V_PROPRE sur la col marquage. LESSONS : ≤10% MAX.
 
     Returns:
-        Ground (liste de rows). Largeur = 5 si trottoirs, 1 sinon.
+        Ground (liste de rows). Largeur = 7 si trottoirs, 3 sinon.
 
     Raises:
         ValueError: si hauteur < 1 ou si un index anti_mono_rows est hors bornes.
@@ -135,9 +155,14 @@ def route_v(
     if out_of_range:
         raise ValueError(f"anti_mono_rows hors bornes [0..{hauteur-1}] : {out_of_range}")
 
+    # Voies asphalte : alternance déterministe (voie ouest = row % 3, voie est décalée +1)
     if not trottoirs:
         return [
-            [ROUTE_V_SALE if r in dirty else ROUTE_V_PROPRE]
+            [
+                _VOIE_POOL[r % 3],
+                ROUTE_V_SALE if r in dirty else ROUTE_V_PROPRE,
+                _VOIE_POOL[(r + 1) % 3],
+            ]
             for r in range(hauteur)
         ]
 
@@ -147,7 +172,9 @@ def route_v(
         ground.append([
             TROTTOIR_PLAIN,
             BORD_OUEST,
+            _VOIE_POOL[r % 3],
             centre_tile,
+            _VOIE_POOL[(r + 1) % 3],
             BORD_EST,
             TROTTOIR_PLAIN,
         ])
@@ -159,25 +186,33 @@ def route_v(
 # ═══════════════════════════════════════════════════════════════════════════
 
 def _test_route_h() -> None:
-    # Cas 1 : trottoirs + tout propre
+    # Cas 1 : trottoirs + tout propre (7 rows depuis 2026-05-11)
     g = route_h(longueur=14)
-    assert len(g) == 5, f"5 rows attendues, got {len(g)}"
-    assert all(len(row) == 14 for row in g), "toutes les rows doivent faire 14 cols"
-    assert g[2][0] == ROUTE_H_PROPRE, "row 2 col 0 = ROUTE_H_PROPRE attendu"
-    assert g[1][0] == BORD_NORD
-    assert g[3][0] == BORD_SUD
+    assert len(g) == 7, f"7 rows attendues (3 chaussee + bordures + trottoirs), got {len(g)}"
+    assert all(len(row) == 14 for row in g)
     assert g[0][0] == TROTTOIR_PLAIN
+    assert g[1][0] == BORD_NORD
+    assert g[2][0] in _VOIE_POOL, "row 2 = voie nord (plain alterné)"
+    assert g[3][0] == ROUTE_H_PROPRE, "row 3 = marquage central"
+    assert g[4][0] in _VOIE_POOL, "row 4 = voie sud (plain alterné)"
+    assert g[5][0] == BORD_SUD
+    assert g[6][0] == TROTTOIR_PLAIN
+    # Alternance vérifiée : col 0 et col 3 doivent être identiques (cycle de 3)
+    assert g[2][0] == g[2][3], "voies alternent en cycle 3 (col 0 == col 3)"
 
-    # Cas 2 : anti-mono
+    # Cas 2 : anti-mono sur la row marquage (row 3)
     g2 = route_h(longueur=14, anti_mono_cols=[4, 10])
-    assert g2[2][4] == ROUTE_H_SALE, "col 4 doit etre SALE"
-    assert g2[2][10] == ROUTE_H_SALE
-    assert g2[2][5] == ROUTE_H_PROPRE
+    assert g2[3][4] == ROUTE_H_SALE
+    assert g2[3][10] == ROUTE_H_SALE
+    assert g2[3][5] == ROUTE_H_PROPRE
+    assert g2[2][4] in _VOIE_POOL, "voie nord pas affectee par anti-mono"
 
-    # Cas 3 : sans trottoirs
+    # Cas 3 : sans trottoirs = 3 rows (asphalte / marquage / asphalte)
     g3 = route_h(longueur=10, trottoirs=False)
-    assert len(g3) == 1, "sans trottoirs = 1 row"
-    assert len(g3[0]) == 10
+    assert len(g3) == 3
+    assert g3[0][0] in _VOIE_POOL
+    assert g3[1][0] == ROUTE_H_PROPRE
+    assert g3[2][0] in _VOIE_POOL
 
     # Cas 4 : erreurs
     try:
@@ -187,33 +222,41 @@ def _test_route_h() -> None:
         pass
     try:
         route_h(longueur=5, anti_mono_cols=[10])
-        assert False, "anti_mono hors bornes doit lever ValueError"
+        assert False
     except ValueError:
         pass
 
-    print("  ✅ route_h : 4 cas OK")
+    print("  ✅ route_h (7 rows, 3 chaussee) : 4 cas OK")
 
 
 def _test_route_v() -> None:
-    # Cas 1 : trottoirs + tout propre
+    # Cas 1 : trottoirs + tout propre (7 cols depuis 2026-05-11)
     g = route_v(hauteur=10)
-    assert len(g) == 10, f"10 rows attendues, got {len(g)}"
-    assert all(len(row) == 5 for row in g), "toutes les rows doivent faire 5 cols"
-    assert g[0][2] == ROUTE_V_PROPRE
-    assert g[0][1] == BORD_OUEST
-    assert g[0][3] == BORD_EST
+    assert len(g) == 10
+    assert all(len(row) == 7 for row in g), f"7 cols attendues, got {len(g[0])}"
     assert g[0][0] == TROTTOIR_PLAIN
+    assert g[0][1] == BORD_OUEST
+    assert g[0][2] in _VOIE_POOL, "col 2 = voie ouest (plain alterné)"
+    assert g[0][3] == ROUTE_V_PROPRE, "col 3 = marquage central"
+    assert g[0][4] in _VOIE_POOL, "col 4 = voie est (plain alterné)"
+    assert g[0][5] == BORD_EST
+    assert g[0][6] == TROTTOIR_PLAIN
+    # Alternance vérifiée : row 0 et row 3 doivent être identiques
+    assert g[0][2] == g[3][2], "voies alternent en cycle 3 (row 0 == row 3)"
 
-    # Cas 2 : anti-mono
+    # Cas 2 : anti-mono sur la col marquage (col 3)
     g2 = route_v(hauteur=10, anti_mono_rows=[3, 7])
-    assert g2[3][2] == ROUTE_V_SALE
-    assert g2[7][2] == ROUTE_V_SALE
-    assert g2[4][2] == ROUTE_V_PROPRE
+    assert g2[3][3] == ROUTE_V_SALE
+    assert g2[7][3] == ROUTE_V_SALE
+    assert g2[4][3] == ROUTE_V_PROPRE
 
-    # Cas 3 : sans trottoirs
+    # Cas 3 : sans trottoirs = 3 cols (asphalte / marquage / asphalte)
     g3 = route_v(hauteur=10, trottoirs=False)
     assert len(g3) == 10
-    assert len(g3[0]) == 1
+    assert len(g3[0]) == 3
+    assert g3[0][0] in _VOIE_POOL
+    assert g3[0][1] == ROUTE_V_PROPRE
+    assert g3[0][2] in _VOIE_POOL
 
     # Cas 4 : erreurs
     try:
@@ -227,7 +270,7 @@ def _test_route_v() -> None:
     except ValueError:
         pass
 
-    print("  ✅ route_v : 4 cas OK")
+    print("  ✅ route_v (7 cols, 3 chaussee) : 4 cas OK")
 
 
 if __name__ == '__main__':

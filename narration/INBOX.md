@@ -13,6 +13,25 @@
 
 ---
 
+## 2026-05-11 (nuit) — Voix narrateur vs voix perso — affiner le lien (à reprendre)
+
+**Source** : Papa Yann, après la création Wex v7 — *« oui et pour la voix [Wex], pour la narration c'est autre chose aussi même si un peu lié, on en reparle si tu veux ».*
+
+**Architecture actuelle confirmée** :
+- Narrateur (Lumi H/F adultes) → texte narratif, descriptions, transitions
+- Voix perso (Wex + 10 autres, enfants) → dialogues uniquement
+
+**Sujets à creuser ensemble** :
+- **Tags d'attribution** (« dit Wex », « demanda Raph ») — narrateur lit ou on les coupe au montage ?
+- **Transitions narrateur ↔ perso** — comment éviter rupture sèche au montage audio
+- **Pensée intérieure d'un perso** — narrateur garde sa voix ou prend le timbre du perso ?
+- **Choix narrateur par story** — fixé pour toute la saison ? alterné H/F selon ton de scène ?
+- **Style de lecture narrateur** — uniforme ou s'adapte au perso qu'il introduit (ex : plus excité quand Raph arrive, plus calme avec Nono) ?
+
+**À discuter avec Papa Yann** + agent `narration-audio` qui produira les briefs audio des stories canon.
+
+---
+
 ## 2026-05-11 — Challenges narration-pmo : C-3, C-4, C-5, C-6 à planifier
 
 **Source :** audit game-pmo transféré 6 challenges narration-pmo. Papa Yann a validé 2 : C-1 (checklist, → ARCHI-007), C-2 (rapport, done). 4 autres = à planifier.

@@ -31,6 +31,18 @@ type: project
 - ✅ EP-032 MJ-09 : multi-touch 2 doigts (Pointer Events + Map)
 - ✅ EP-033 : TTS annonce titre désactivé (laggait le démarrage)
 
+## Session 2026-05-11 (suite) — EP-VOCAB lancé
+
+**Contexte** : Papa Yann cadrage nouvel epic "ingénierie tile-tools" pour résoudre cause racine : galère mensuelle sur tâches simples ("route droite propre"), briefs complexes impossibles.
+
+**Décision** : Lancer EP-VOCAB (8 phases, 2026-05-11 → TBD). Phase 0 validée (RESEARCH-INSPIRATIONS.md créé). Plein pouvoir exécution sur phases 1-8.
+
+**Signal clé** : Conflit documentaire actif — `cartography.json` line 22 contredit LESSONS.md correction 5. Résolution dans phase 7.
+
+**Nouveau fichier clé créé** : `game/web/tile-tools/RESEARCH-INSPIRATIONS.md` (inspirations LDtk/WFC/DualTilemap/Bitmask/Phaser/LimeZu, matière capitalisée pour ne pas perdre).
+
+---
+
 ## Bugs actifs
 
 Aucun. Max Adventure tourne en prod (vérifié 2026-05-03 : `kimen26.github.io/MaxPlay/max-adventure/` charge phaser-*.js et index-*.js correctement).

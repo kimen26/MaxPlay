@@ -131,6 +131,43 @@ ground = <span class="fn">route_h</span>(
 <span class="com">#   row 6 = TROTTOIR_PLAIN</span>`,
   },
   {
+    id: 'route_v_7cols_v3',
+    title: '🆕 Route verticale v3 — 3 voies LimeZu',
+    desc: '<strong>Nouvelle largeur</strong> validée sur planches LimeZu officielles : <strong>3 cols d\'asphalte</strong> (voie ↑ / marquage central pointillé / voie ↓). Total 7 cols avec trottoirs O/E + bordures.',
+    png: '../tile-tools/recipes/test_route_v_7cols_v3.png',
+    recipe: 'test_route_v_7cols_v3.py',
+    size: '7×14 tiles · 336×672 px',
+    status: 'validated',
+    code: `<span class="kw">from</span> builders <span class="kw">import</span> route_v
+
+ground = <span class="fn">route_v</span>(
+    hauteur=<span class="num">14</span>,
+    trottoirs=<span class="num">True</span>,
+    anti_mono_rows=[<span class="num">4</span>, <span class="num">10</span>],
+)
+<span class="com"># Returns 14 rows × 7 cols :</span>
+<span class="com">#   col 0 = TROTTOIR_PLAIN</span>
+<span class="com">#   col 1 = BORD_OUEST</span>
+<span class="com">#   col 2 = ASPHALT_PLAIN (voie ↑)</span>
+<span class="com">#   col 3 = ROUTE_V_PROPRE (marquage central)</span>
+<span class="com">#   col 4 = ASPHALT_PLAIN (voie ↓)</span>
+<span class="com">#   col 5 = BORD_EST</span>
+<span class="com">#   col 6 = TROTTOIR_PLAIN</span>`,
+  },
+  {
+    id: 'papa_route_large',
+    title: '🅿️ Compo Papa — route + BUS + parking + passage piéton',
+    desc: '<strong>Composition tile-picker Papa Yann</strong> (2026-05-11) : route H 3-chaussées + voie BUS marquée + 2 zones parking + passage piéton vertical. Référence visuelle composition urbaine complète.',
+    png: '../tile-tools/recipes/test_papa_route_large.png',
+    recipe: 'test_papa_route_large.py',
+    size: '17×9 tiles · 816×432 px',
+    status: 'validated',
+    code: `<span class="com"># Composition manuelle Papa Yann (tile-picker drag&drop export).</span>
+<span class="com"># Démontre l'intégration de : route 3-chaussées, voie BUS marquée,</span>
+<span class="com"># parking 2 zones, passage piéton V, transitions trottoir/asphalte.</span>
+<span class="com"># Sert de référence visuelle pour les futures macros parking/passage.</span>`,
+  },
+  {
     id: 'route_h_5rows_v2',
     title: '① Route horizontale (ancienne 5 rows — référence)',
     desc: '5 rows × 14 cols. Macro <code>route_h(longueur=14, anti_mono_cols=[4, 10])</code>. Trottoirs N/S + bandes blanches centrales pointillées + 2 cases anti-mono (cols 4 et 10).',
@@ -172,57 +209,53 @@ SNIPPET = {<span class="str">'name'</span>: <span class="str">'route_v_5cols_v2'
   },
   {
     id: 'virage_gauche',
-    title: '③ Virage gauche — 🆕 minimal 6×9',
-    desc: 'Pivot HAUT-DROITE. Branche OUEST en haut + descendante en bas (atteint bord bas). EXT_NE (sw_14) + INT_SW (sw_3). Tout hors L = None (parc/immeuble plus tard).',
+    title: '③ Virage gauche — 🆕 v2 route 3-chaussées 13×13',
+    desc: 'Pivot HAUT-DROITE. Route OUEST 7-cells qui tourne pour descendre vers SUD. Carré intersection 7×7. COIN_INT_SW (sw_3) au pivot + VIRAGE_INT_SE (sw_11) au coin externe. Pipeline tile validé PASS 9/10.',
     png: '../tile-tools/recipes/test_virage_gauche.png',
     recipe: 'test_virage_gauche.py',
-    size: '6×9 tiles · 288×432 px',
-    status: 'pending',
-    code: `<span class="com"># Recette v1 — utilise encore des string paths inline.</span>
-<span class="com"># Migration vers vocab.py prévue si Papa Yann valide le visuel.</span>
-
-<span class="com"># Tiles principales : voir test_virage_gauche.py</span>
-<span class="com">#   - Coin EXT NE = Sidewalk_1_14 (gros arc trottoir)</span>
-<span class="com">#   - Coin INT SW = Sidewalk_1_3 (petit triangle)</span>
-<span class="com">#   - Pivot L     = Asphalt_1_Variation_3</span>
-<span class="com">#   - Marquages H/V propres (_2/_8) prolongés jusqu'au bord</span>
-
-<span class="com"># Si OK → on aura :  virage(direction='gauche_so')</span>`,
+    size: '13×13 tiles · 624×624 px',
+    status: 'validated',
+    code: `<span class="kw">from</span> vocab <span class="kw">import</span> (
+    TROTTOIR_PLAIN, BORD_NORD, BORD_SUD, BORD_OUEST, BORD_EST,
+    ASPHALT_PLAIN, ASPHALT_PLAIN_ALT1, ASPHALT_PLAIN_ALT2,
+    ROUTE_H_PROPRE, ROUTE_V_PROPRE,
+    COIN_INT_SW, VIRAGE_INT_SE,
+)
+<span class="com"># Pivot haut-droite. Carré intersection 7×7.</span>
+<span class="com"># Zone None (vert) = rows 7-12 × cols 0-5 (parc/immeuble plus tard).</span>`,
   },
   {
     id: 'virage_droit',
-    title: '④ Virage droit — 🆕 minimal 6×9',
-    desc: 'Pivot HAUT-GAUCHE. Branche EST en haut + descendante en bas. Miroir H de ③. EXT_NW (sw_13) + INT_SE (sw_1). Tout hors L = None.',
+    title: '④ Virage droit — 🆕 v2 route 3-chaussées 13×13',
+    desc: 'Pivot HAUT-GAUCHE (miroir H de ③). Carré intersection 7×7. COIN_INT_SE (sw_1) au pivot + VIRAGE_INT_SW (sw_12) au coin externe.',
     png: '../tile-tools/recipes/test_virage_droit.png',
     recipe: 'test_virage_droit.py',
-    size: '6×9 tiles · 288×432 px',
-    status: 'pending',
-    code: `<span class="com"># Recette v1 — miroir horizontal du virage_gauche.</span>
-<span class="com"># Si Papa Yann valide → virage(direction='droit_se')</span>`,
+    size: '13×13 tiles · 624×624 px',
+    status: 'validated',
+    code: `<span class="com"># Miroir horizontal de virage_gauche.</span>
+<span class="com"># Zone None = rows 7-12 × cols 7-12.</span>`,
   },
   {
     id: 'virage_haut_gauche',
-    title: '⑤ Virage haut-gauche — 🆕 minimal 6×9 ✅ ref Papa',
-    desc: 'Pivot BAS-DROITE. Descendante en haut + branche OUEST en bas. <strong>Composition Papa Yann tile-picker</strong> + sw_9 superflus supprimés. EXT_SW (sw_11) + INT_NW (sw_5).',
+    title: '⑤ Virage haut-gauche — 🆕 v2 route 3-chaussées 13×13',
+    desc: 'Pivot BAS-DROITE (miroir V de ③). Carré intersection 7×7. COIN_INT_NW (sw_7) au pivot + VIRAGE_INT_NE (sw_14) au coin externe.',
     png: '../tile-tools/recipes/test_virage_haut_gauche.png',
     recipe: 'test_virage_haut_gauche.py',
-    size: '6×9 tiles · 288×432 px',
-    status: 'pending',
-    code: `<span class="com"># Recette v1 — miroir vertical du virage_gauche.</span>
-<span class="com"># ⚠️ Artefact possible au coin INT (à confirmer visuel).</span>
-<span class="com"># Si OK → virage(direction='haut_no')</span>`,
+    size: '13×13 tiles · 624×624 px',
+    status: 'validated',
+    code: `<span class="com"># Miroir vertical de virage_gauche.</span>
+<span class="com"># Zone None = rows 0-5 × cols 0-5.</span>`,
   },
   {
     id: 'virage_haut_droit',
-    title: '⑥ Virage haut-droit — 🆕 minimal 6×9',
-    desc: 'Pivot BAS-GAUCHE. Descendante en haut + branche EST en bas. Miroir H de ⑤. EXT_SE (sw_12) + INT_NE (sw_7).',
+    title: '⑥ Virage haut-droit — 🆕 v2 route 3-chaussées 13×13',
+    desc: 'Pivot BAS-GAUCHE (miroir H+V de ③). Carré intersection 7×7. COIN_INT_NE (sw_5) au pivot + VIRAGE_INT_NW (sw_13) au coin externe.',
     png: '../tile-tools/recipes/test_virage_haut_droit.png',
     recipe: 'test_virage_haut_droit.py',
-    size: '6×9 tiles · 288×432 px',
-    status: 'pending',
-    code: `<span class="com"># Recette v1 — double miroir du virage_gauche.</span>
-<span class="com"># ⚠️ Artefact possible au coin INT (à confirmer visuel).</span>
-<span class="com"># Si OK → virage(direction='haut_ne')</span>`,
+    size: '13×13 tiles · 624×624 px',
+    status: 'validated',
+    code: `<span class="com"># Double miroir de virage_gauche.</span>
+<span class="com"># Zone None = rows 0-5 × cols 7-12.</span>`,
   },
 ];
 

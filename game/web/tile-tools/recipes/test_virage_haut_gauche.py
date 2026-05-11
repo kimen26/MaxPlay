@@ -1,39 +1,101 @@
-"""Virage haut-gauche : route descend du haut, tourne a gauche en bas (vers OUEST).
+"""Virage haut-gauche — 13x13. Version v2 2026-05-12.
 
-Layout 6x9 (minimal, pas de trottoir _9 inutile).
-- L pivote en bas-droite du canvas
-- Branche descendante : cols 3-5 (sw_4 | asph_8 | sw_8), rows 0-7
-- Pivot row 7 : INT_NW sw_5 (col 3), asph_5 (col 4), sw_8 (col 5)
-- Branche OUEST : row 7 cols 0-3 (asph_2) + asph_5 pivot col 4
-- Bord N branche OUEST : row 6 cols 0-3 (sw_6, dont sw_5 col 3 = INT au coin int)
-- Bord S branche OUEST : row 8 cols 0-4 (sw_2) + sw_11 (EXT_SW) col 5
+Route 3-chaussees (7-wide) en L miroir vertical, pivot bas-droit.
+Branche V descend du NORD (cols 6-12, rows 0-6), branche H part vers l'OUEST (rows 6-12).
+Carre intersection rows 6-12 x cols 6-12. Zone None rows 0-5 x cols 0-5.
 
-Tout le reste = None (transparent : sera rempli parc/immeuble plus tard).
-
-Source : composition tile-picker Papa Yann 2026-05-11 + suppression sw_9 inutiles.
+Schema:
+  - Branche V : cols 6-12, rows 0-6 (marquage V sur col 9 rows 1-5)
+  - Branche H : rows 6-12, cols 0-12 (marquage H sur row 9 cols 0-5)
+  - Coins : (12,12)=VIRAGE_INT_NE, (6,6)=COIN_INT_NW
+  - Coins neutres : (6,12)=TROTTOIR_PLAIN, (12,6)=TROTTOIR_PLAIN
 """
 
-# Tiles utilisees (chemins absolus pour copier-coller depuis tile-picker)
-SW_4  = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png'   # BORD_OUEST
-SW_8  = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png'   # BORD_EST
-SW_6  = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png'   # BORD_NORD
-SW_2  = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png'   # BORD_SUD
-SW_5  = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_5.png'   # INT_NW
-SW_11 = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_11.png'  # EXT_SW (validation Papa 2026-05-11)
-ASPH_V = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png'  # ROUTE_V_PROPRE
-ASPH_H = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png'  # ROUTE_H_PROPRE
-ASPH_5 = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_5.png'  # PIVOT_L NW
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-ground = [
-    [None, None, None, SW_4, ASPH_V, SW_8],       # row 0 : descendante touche bord haut
-    [None, None, None, SW_4, ASPH_V, SW_8],
-    [None, None, None, SW_4, ASPH_V, SW_8],
-    [None, None, None, SW_4, ASPH_V, SW_8],
-    [None, None, None, SW_4, ASPH_V, SW_8],
-    [None, None, None, SW_4, ASPH_V, SW_8],
-    [SW_6,  SW_6, SW_6,  SW_5,  ASPH_V, SW_8],    # row 6 : bord N branche OUEST + INT_NW
-    [ASPH_H, ASPH_H, ASPH_H, ASPH_H, ASPH_5, SW_8],  # row 7 : chaussee horizontale + pivot
-    [SW_2,  SW_2,  SW_2,  SW_2,  SW_2,  SW_11],   # row 8 : bord S branche OUEST + EXT_SW
-]
+from vocab import (
+    TROTTOIR_PLAIN,
+    BORD_NORD, BORD_SUD, BORD_OUEST, BORD_EST,
+    ASPHALT_PLAIN, ASPHALT_PLAIN_ALT1, ASPHALT_PLAIN_ALT2,
+    ROUTE_H_PROPRE, ROUTE_V_PROPRE,
+    COIN_INT_NW,
+    VIRAGE_INT_NE,
+)
 
-SNIPPET = {'name': 'virage_haut_gauche', 'cols': 6, 'rows': 9, 'ground': ground, 'objects': []}
+_VOIE_POOL = [ASPHALT_PLAIN, ASPHALT_PLAIN_ALT1, ASPHALT_PLAIN_ALT2]
+
+
+def _asph(r: int, c: int) -> str:
+    return _VOIE_POOL[(r + c) % 3]
+
+
+COLS, ROWS = 13, 13
+
+# Init grille None
+ground = [[None] * COLS for _ in range(ROWS)]
+
+# ── Branche V : cols 6-12, rows 0-6 ──────────────────────────────────────
+# row 0 : trottoir cols 6-12
+for c in range(6, COLS):
+    ground[0][c] = TROTTOIR_PLAIN
+
+# rows 1-5 : branche V pure
+for r in range(1, 6):
+    ground[r][6] = BORD_OUEST
+    ground[r][7] = _asph(r, 7)
+    ground[r][8] = _asph(r, 8)
+    ground[r][9] = ROUTE_V_PROPRE   # marquage V col 9
+    ground[r][10] = _asph(r, 10)
+    ground[r][11] = _asph(r, 11)
+    ground[r][12] = BORD_EST
+
+# row 6 : COIN_INT_NW a (6,6), bords N carre cols 7-11, (6,12)=TROTTOIR_PLAIN
+# + trottoir cols 0-5 (bord superieur branche H)
+for c in range(0, 6):
+    ground[6][c] = TROTTOIR_PLAIN
+ground[6][6] = COIN_INT_NW
+for c in range(7, 12):
+    ground[6][c] = BORD_NORD
+ground[6][12] = TROTTOIR_PLAIN
+
+# ── Branche H : rows 7-12, cols 0-12 ─────────────────────────────────────
+# rows 7-11 : branche pure (cols 0-5) + carre (cols 6-12)
+for r in range(7, 12):
+    # Branche pure cols 0-5
+    if r == 7:
+        for c in range(0, 6):
+            ground[r][c] = BORD_NORD
+    elif r == 8:
+        for c in range(0, 6):
+            ground[r][c] = _asph(r, c)
+    elif r == 9:
+        for c in range(0, 6):
+            ground[r][c] = ROUTE_H_PROPRE   # marquage H row 9
+    elif r == 10:
+        for c in range(0, 6):
+            ground[r][c] = _asph(r, c)
+    elif r == 11:
+        for c in range(0, 6):
+            ground[r][c] = BORD_SUD
+    # Carre cols 6-12
+    ground[r][6] = BORD_OUEST
+    for c in range(7, 12):
+        ground[r][c] = _asph(r, c)
+    ground[r][12] = BORD_EST
+
+# row 12 : trottoir cols 0-5, (12,6)=TROTTOIR_PLAIN, bords S carre cols 7-11, (12,12)=VIRAGE_INT_NE
+for c in range(0, 7):
+    ground[12][c] = TROTTOIR_PLAIN
+for c in range(7, 12):
+    ground[12][c] = BORD_SUD
+ground[12][12] = VIRAGE_INT_NE
+
+SNIPPET = {
+    'name': 'virage_haut_gauche',
+    'cols': COLS,
+    'rows': ROWS,
+    'ground': ground,
+    'objects': [],
+}

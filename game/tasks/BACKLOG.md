@@ -12,7 +12,7 @@
 
 ## EP-VOCAB – Module vocab.py + pivot "refs visuelles" pour pipeline tile-tools
 
-**Statut** : `[~]` clôturé partiellement 2026-05-11 (scope révisé après pivot Papa Yann).
+**Statut** : `[x]` **clôturé 2026-05-12** (phases 1-2 terminées, phases 3-5 → EP-REFS)
 
 ### Cause racine (diagnostic 2026-05-11)
 
@@ -119,7 +119,8 @@
 | EP-032 | MJ-09 · Trie les bus : déplacer 2 bus simultanément (multi-touch 2 doigts) | `[x]` |
 | EP-TILES | Pipeline tile-tools LimeZu (cartographie + recettes + mockups-routes + tile-picker + tile-pmo) | `[~]` |
 | EP-MJPOSE | MJ · Pose-tes-tiles (kids éditeur de map simplifié) | `[x]` |
-| EP-VOCAB | Module vocab.py + pivot "refs visuelles" pour pipeline tile-tools (anti-erreurs, source unique) | `[~]` |
+| EP-VOCAB | Module vocab.py + pivot "refs visuelles" pour pipeline tile-tools (anti-erreurs, source unique) | `[x]` |
+| EP-MACRO-VIRAGE | Macro `virage(direction, ...)` dans builders.py (DRY consolidation 4 recettes manuelles, basse priorité) | `[ ]` |
 | EP-REFS | Banque de références visuelles tile-tools (post-EP-VOCAB, briefs complexes) | `[ ]` |
 
 ---

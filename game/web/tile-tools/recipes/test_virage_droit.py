@@ -1,36 +1,94 @@
-"""Virage droit : route arrive du haut-droite (EST), descend vers le bas.
+"""Virage droit — 13x13. Version v2 2026-05-12.
 
-Layout 6x9 minimal (None partout sauf le L).
-- L pivote en haut-gauche du canvas
-- Branche EST en haut : rows 1-3, cols 1-5 (chaussee row 2, bords row 1 + row 3)
-- Pivot row 2 col 1 : asph_1 (PIVOT_L SE)
-- Branche descendante : col 1 rows 3-8 (sw_4 col 0, asph_8 col 1, sw_8 col 2)
-- EXT_NW (sw_13) row 1 col 0 (coin exterieur du L, vers haut-gauche)
-- INT_SE (sw_1) row 3 col 2 (coin interieur du L, vers bas-droite)
+Route 3-chaussees (7-wide) en L miroir horizontal, pivot haut-gauche.
+Branche H arrive de l'EST (rows 0-6), branche V descend vers le SUD (cols 0-6).
+Carre intersection rows 0-6 x cols 0-6. Zone None rows 7-12 x cols 7-12.
 
-Tout le reste = None.
+Schema:
+  - Branche H : rows 0-6, cols 0-12 (marquage H sur row 3 cols 7-12)
+  - Branche V : cols 0-6, rows 7-12 (marquage V sur col 3 rows 7-11)
+  - Coins : (0,0)=VIRAGE_INT_SW, (6,6)=COIN_INT_SE
+  - Coins neutres : (0,6)=TROTTOIR_PLAIN, (6,0)=TROTTOIR_PLAIN
 """
 
-SW_4  = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png'
-SW_8  = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png'
-SW_6  = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png'
-SW_2  = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png'
-SW_1  = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_1.png'   # INT_SE
-SW_13 = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_13.png'  # EXT_NW
-ASPH_V = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png'
-ASPH_H = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png'
-ASPH_1 = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_1.png'  # PIVOT_L SE
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-ground = [
-    [None,   None,   None,   None,   None,   None],            # row 0
-    [SW_13,  SW_6,   SW_6,   SW_6,   SW_6,   SW_6],            # row 1 : EXT_NW + bord N
-    [SW_4,   ASPH_1, ASPH_H, ASPH_H, ASPH_H, ASPH_H],          # row 2 : bord W + pivot + chaussee EST
-    [SW_4,   ASPH_V, SW_1,   SW_2,   SW_2,   SW_2],            # row 3 : bord W + asph + INT_SE + bord S
-    [SW_4,   ASPH_V, SW_8,   None,   None,   None],            # rows 4-8 : descendante seule
-    [SW_4,   ASPH_V, SW_8,   None,   None,   None],
-    [SW_4,   ASPH_V, SW_8,   None,   None,   None],
-    [SW_4,   ASPH_V, SW_8,   None,   None,   None],
-    [SW_4,   ASPH_V, SW_8,   None,   None,   None],
-]
+from vocab import (
+    TROTTOIR_PLAIN,
+    BORD_NORD, BORD_SUD, BORD_OUEST, BORD_EST,
+    ASPHALT_PLAIN, ASPHALT_PLAIN_ALT1, ASPHALT_PLAIN_ALT2,
+    ROUTE_H_PROPRE, ROUTE_V_PROPRE,
+    COIN_INT_SE,
+    VIRAGE_INT_SW,
+)
 
-SNIPPET = {'name': 'virage_droit', 'cols': 6, 'rows': 9, 'ground': ground, 'objects': []}
+_VOIE_POOL = [ASPHALT_PLAIN, ASPHALT_PLAIN_ALT1, ASPHALT_PLAIN_ALT2]
+
+
+def _asph(r: int, c: int) -> str:
+    return _VOIE_POOL[(r + c) % 3]
+
+
+COLS, ROWS = 13, 13
+
+# Init grille None
+ground = [[None] * COLS for _ in range(ROWS)]
+
+# ── row 0 : trottoir partout, (0,0)=VIRAGE_INT_SW ─────────────────────────
+ground[0][0] = VIRAGE_INT_SW
+for c in range(1, COLS):
+    ground[0][c] = TROTTOIR_PLAIN
+
+# ── rows 1-5 : toute la branche H ─────────────────────────────────────────
+# Carre (cols 0-6) : bord O col 0, asphalte plain cols 1-5, bord E col 6
+# Branche pure (cols 7-12) : bord N row 1, asphalte rows 2+4, marquage row 3, bord S row 5
+for r in range(1, 6):
+    # Carre cols 0-6
+    ground[r][0] = BORD_OUEST
+    for c in range(1, 6):
+        ground[r][c] = _asph(r, c)
+    ground[r][6] = BORD_EST
+    # Branche pure cols 7-12
+    for c in range(7, 13):
+        if r == 1:
+            ground[r][c] = BORD_NORD
+        elif r == 2:
+            ground[r][c] = _asph(r, c)
+        elif r == 3:
+            ground[r][c] = ROUTE_H_PROPRE
+        elif r == 4:
+            ground[r][c] = _asph(r, c)
+        elif r == 5:
+            ground[r][c] = BORD_SUD
+
+# ── row 6 : (6,0)=TROTTOIR_PLAIN, bords S carre cols 1-5, (6,6)=COIN_INT_SE, trottoir cols 7-12
+ground[6][0] = TROTTOIR_PLAIN
+for c in range(1, 6):
+    ground[6][c] = BORD_SUD
+ground[6][6] = COIN_INT_SE
+for c in range(7, COLS):
+    ground[6][c] = TROTTOIR_PLAIN
+
+# ── Branche V : cols 0-6, rows 7-12 ──────────────────────────────────────
+for r in range(7, 12):
+    ground[r][0] = BORD_OUEST
+    ground[r][1] = _asph(r, 1)
+    ground[r][2] = _asph(r, 2)
+    ground[r][3] = ROUTE_V_PROPRE   # marquage V col 3
+    ground[r][4] = _asph(r, 4)
+    ground[r][5] = _asph(r, 5)
+    ground[r][6] = BORD_EST
+
+# row 12 : trottoir cols 0-6
+for c in range(0, 7):
+    ground[12][c] = TROTTOIR_PLAIN
+
+SNIPPET = {
+    'name': 'virage_droit',
+    'cols': COLS,
+    'rows': ROWS,
+    'ground': ground,
+    'objects': [],
+}

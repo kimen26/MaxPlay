@@ -60,6 +60,29 @@ type: project
 
 ---
 
+## Session 2026-05-12 (intégration EP-VOCAB clôture + suite pipeline tile)
+
+**Synthèse game-tile-pmo (simplifier→designer→reviewer) :**
+
+**Fait** :
+- ✅ **5 recettes validées** par pipeline (9/10 reviewer) :
+  - `test_route_h_7rows_v3.py` (14×7 route H 3-chaussées)
+  - `test_route_v_7cols_v3.py` (7×14 route V 3-chaussées)
+  - `test_papa_route_large.py` (17×9 compo Papa référence)
+  - `test_virage_gauche.py` / `_droit.py` / `_haut_gauche.py` / `_haut_droit.py` (4× 13×13 virages, carré intersection 7×7)
+- ✅ **`builders.py` v3** opérationnel : `route_h()/route_v()` macrifiées, alternance `_VOIE_POOL` cycle 3, anti-mono activé
+- ✅ **`vocab.py`** source unique constantes tiles (validation auto)
+- ✅ **`vocab-playground.html`** synchronisé
+- ✅ **Workflow pipeline** validé : 1 cycle complet ≈8 min, verdict PASS 9/10
+
+**Leçons gravées** (LESSONS.md + PIPELINE-MEMORY.md maj) :
+- **L-025** : Géométrie virage 3-chaussées (carré 7×7 + table 4 coins critiques)
+- **L-026** : Anti-mono pool 3 + décalage cycle modulo
+
+**EP-VOCAB clôturé** `[x]` (phases 1-2 complètes, phases 3-5 → EP-REFS)
+
+---
+
 ## Bugs actifs
 
 Aucun. Max Adventure tourne en prod (vérifié 2026-05-03 : `kimen26.github.io/MaxPlay/max-adventure/` charge phaser-*.js et index-*.js correctement).

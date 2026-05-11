@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>MaxPlay — Vocab Playground (EP-VOCAB v2)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #1a1a2e; font-family: 'Segoe UI', sans-serif; color: #fff; padding: 20px; }
+  h1 { color: #ffe066; text-align: center; font-size: 1.6rem; margin-bottom: 4px; }
+  p.sub { text-align: center; color: #aaa; font-size: 0.85rem; margin-bottom: 12px; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.5; }
+  nav { text-align: center; margin-bottom: 20px; }
+  nav a { color: #aac; text-decoration: none; padding: 4px 10px; }
+  nav a:hover { color: #ffe066; }
+
+  .info-banner { max-width: 1400px; margin: 0 auto 20px;
+                 background: #2a5a2a; color: #d4f4d4; padding: 10px 16px;
+                 border-radius: 6px; font-size: 0.88rem; line-height: 1.5; }
+  .info-banner strong { color: #ffe066; }
+  .info-banner code { background: rgba(0,0,0,0.4); padding: 1px 6px; border-radius: 3px; }
+
+  .grid { max-width: 1400px; margin: 0 auto; display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(540px, 1fr)); gap: 20px; }
+
+  .card { background: #16213e; border-radius: 10px; overflow: hidden; border: 2px solid #0f3460; }
+  .card-header { padding: 12px 16px; background: #0f3460; }
+  .card-title { font-size: 1.05rem; color: #ffe066; font-weight: bold; }
+  .card-desc { font-size: 0.82rem; color: #aac; margin-top: 4px; line-height: 1.5; }
+  .card-meta { font-size: 0.72rem; color: #6a7a9a; margin-top: 6px; font-family: monospace; }
+
+  .canvas-wrap { background: #2a4a2a; padding: 8px; display: flex; align-items: center; justify-content: center;
+                 height: 460px; }
+  .canvas-wrap img { image-rendering: pixelated; image-rendering: crisp-edges;
+                     max-width: 100%; max-height: 100%; width: auto; height: auto;
+                     object-fit: contain;
+                     background: rgba(0,0,0,0.2); border-radius: 4px; }
+
+  .code-block { background: #0a1530; color: #b4d4ff; padding: 10px 14px;
+                font-family: 'Consolas', 'Courier New', monospace; font-size: 0.78rem;
+                line-height: 1.5; overflow-x: auto; white-space: pre; }
+  .code-block .kw { color: #c586c0; }
+  .code-block .fn { color: #dcdcaa; }
+  .code-block .str { color: #ce9178; }
+  .code-block .num { color: #b5cea8; }
+  .code-block .com { color: #6a9955; font-style: italic; }
+
+  .actions { display: flex; gap: 6px; padding: 10px 14px; background: #0a1530; }
+  .btn { flex: 1; background: #1f4480; color: #ffe066; border: none; padding: 9px;
+         border-radius: 6px; cursor: pointer; font-size: 0.85rem; text-align: center;
+         text-decoration: none; }
+  .btn:hover { background: #2f5490; }
+  .btn.edit { background: #6a3a0f; }
+  .btn.edit:hover { background: #8a4a1f; }
+  .btn.png { background: #2a5a2a; }
+  .btn.png:hover { background: #3a7a3a; }
+
+  .feedback-zone { max-width: 1400px; margin: 24px auto 0;
+                   background: #16213e; border: 2px dashed #0f3460;
+                   border-radius: 10px; padding: 14px 18px; }
+  .feedback-zone h3 { color: #ffe066; font-size: 0.95rem; margin-bottom: 8px; }
+  .feedback-zone textarea { width: 100%; background: #0a1530; color: #d4d4d4;
+                            border: 1px solid #0f3460; border-radius: 6px; padding: 10px;
+                            font-family: inherit; font-size: 0.85rem; resize: vertical; min-height: 100px; }
+  .feedback-zone .hint { font-size: 0.75rem; color: #6a7a9a; margin-top: 6px; }
+
+  @media (max-width: 800px) {
+    .canvas-wrap { height: 280px; }
+    .grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<h1>🎯 Vocab Playground — EP-VOCAB v2</h1>
+<p class="sub">
+  Recettes <strong>route_h</strong> et <strong>route_v</strong> générées par <code>builders.py</code> (qui utilise <code>vocab.py</code>).<br>
+  Tu peux <strong>visualiser le rendu</strong>, <strong>éditer la grille</strong> (tile-picker) et <strong>laisser un feedback</strong> en bas.
+</p>
+<nav>
+  <a href="index.html">← Tools</a> ·
+  <a href="tile-picker.html">🎨 Tile Picker</a> ·
+  <a href="mockups-routes.html">🛣️ Mockups Routes (v1)</a> ·
+  <a href="tile-library-v3.html">📚 Tile Library</a>
+</nav>
+
+<div class="info-banner">
+  💡 <strong>Workflow EP-VOCAB</strong> :
+  Les PNG ci-dessous sont générés par les <strong>macros Python testées</strong> (<code>route_h()</code> / <code>route_v()</code>),
+  qui posent les bonnes tiles depuis <code>vocab.py</code> — plus de risque d'erreur <code>_2</code>/<code>_14</code>.<br>
+  Pour <strong>modifier visuellement</strong> : clique 🎨 Éditer → tile-picker pré-rempli → tu modifies → tu copies l'export Python → tu me l'envoies.<br>
+  Pour <strong>changer les paramètres</strong> (longueur, anti-mono, sans trottoirs…) : note ton feedback en bas, je modifie l'appel <code>route_h(...)</code> et je re-rends.
+</div>
+
+<div class="grid" id="grid">
+  <!-- généré JS -->
+</div>
+
+<div class="feedback-zone">
+  <h3>📝 Tes notes / feedback visuel (Papa Yann)</h3>
+  <textarea id="feedback" placeholder="Ce qui te plaît / te dérange visuellement.&#10;Ex : 'trottoir trop foncé', 'bandes blanches trop espacées', 'route trop large', 'manque un truc sur les bords'…&#10;Tu peux aussi dire ce que tu voudrais en plus : 'route 1 voie unique', 'sans bandes blanches', 'route 20 cases de long', etc."></textarea>
+  <div class="hint">💾 Cette note est sauvée localement dans ton navigateur (localStorage). Copie-la dans le chat pour me la transmettre.</div>
+</div>
+
+<script>
+const PLAYGROUND = [
+  {
+    id: 'route_h_5rows_v2',
+    title: '① Route horizontale (route_h)',
+    desc: '5 rows × 14 cols. Macro <code>route_h(longueur=14, anti_mono_cols=[4, 10])</code>. Trottoirs N/S + bandes blanches centrales pointillées + 2 cases anti-mono (cols 4 et 10).',
+    png: '../tile-tools/recipes/test_route_h_5rows_v2.png',
+    recipe: 'test_route_h_5rows_v2.py',
+    size: '14×5 tiles · 672×240 px',
+    code: `<span class="kw">from</span> builders <span class="kw">import</span> route_h
+
+ground = <span class="fn">route_h</span>(
+    longueur=<span class="num">14</span>,
+    trottoirs=<span class="num">True</span>,         <span class="com"># défaut</span>
+    anti_mono_cols=[<span class="num">4</span>, <span class="num">10</span>],  <span class="com"># ≤ 10% des cols</span>
+)
+
+SNIPPET = {<span class="str">'name'</span>: <span class="str">'route_h_5rows_v2'</span>,
+           <span class="str">'cols'</span>: <span class="num">14</span>, <span class="str">'rows'</span>: <span class="num">5</span>,
+           <span class="str">'ground'</span>: ground, <span class="str">'objects'</span>: []}`,
+  },
+  {
+    id: 'route_v_5cols_v2',
+    title: '② Route verticale (route_v)',
+    desc: '12 rows × 5 cols. Macro <code>route_v(hauteur=12, anti_mono_rows=[1, 6, 9])</code>. Trottoirs O/E + bandes pointillées V + 3 rows anti-mono (1, 6, 9).',
+    png: '../tile-tools/recipes/test_route_v_5cols_v2.png',
+    recipe: 'test_route_v_5cols_v2.py',
+    size: '5×12 tiles · 240×576 px',
+    code: `<span class="kw">from</span> builders <span class="kw">import</span> route_v
+
+ground = <span class="fn">route_v</span>(
+    hauteur=<span class="num">12</span>,
+    trottoirs=<span class="num">True</span>,            <span class="com"># défaut</span>
+    anti_mono_rows=[<span class="num">1</span>, <span class="num">6</span>, <span class="num">9</span>],   <span class="com"># ≤ 10% des rows</span>
+)
+
+SNIPPET = {<span class="str">'name'</span>: <span class="str">'route_v_5cols_v2'</span>,
+           <span class="str">'cols'</span>: <span class="num">5</span>, <span class="str">'rows'</span>: <span class="num">12</span>,
+           <span class="str">'ground'</span>: ground, <span class="str">'objects'</span>: []}`,
+  },
+];
+
+function build() {
+  const grid = document.getElementById('grid');
+  grid.innerHTML = '';
+  for (const m of PLAYGROUND) {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="card-header">
+        <div class="card-title">${m.title}</div>
+        <div class="card-desc">${m.desc}</div>
+        <div class="card-meta">${m.size} · <code>${m.recipe}</code></div>
+      </div>
+      <div class="canvas-wrap">
+        <img src="${m.png}" alt="${m.title}" loading="lazy"
+             onerror="this.style.opacity=0.3; this.alt='⚠️ PNG manquant : '+this.src">
+      </div>
+      <div class="code-block">${m.code}</div>
+      <div class="actions">
+        <a class="btn edit" href="tile-picker.html?recipe=${encodeURIComponent(m.recipe)}" title="Éditer la grille tile par tile">🎨 Éditer</a>
+        <a class="btn png" href="${m.png}" target="_blank" title="Voir le PNG en grand">🖼️ PNG</a>
+        <a class="btn" href="../tile-tools/recipes/${m.recipe}" target="_blank" title="Voir le code Python source">📜 Code</a>
+      </div>
+    `;
+    grid.appendChild(card);
+  }
+}
+
+// LocalStorage pour le feedback
+const fb = document.getElementById('feedback');
+fb.value = localStorage.getItem('vocab-playground-feedback') || '';
+fb.addEventListener('input', () => {
+  localStorage.setItem('vocab-playground-feedback', fb.value);
+});
+
+build();
+</script>
+</body>
+</html>

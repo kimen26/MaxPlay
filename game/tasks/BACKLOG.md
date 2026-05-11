@@ -278,11 +278,13 @@ MaxPlay V0
 > Au lancement de chaque MJ, `tracker.startSession()` lançait `_announceTitle()` (TTS du nom du jeu). Cause des lags au démarrage. Désactivé 2026-05-03 — l'utilisateur n'en a pas besoin, les jeux gardent leurs TTS pédagogiques en cours de partie.
 - [x] T-330 : Commenter l'appel `_announceTitle(id)` dans `tracker.startSession()`
 
-### EP-022 – MJ-04 fin de partie
-> Aujourd'hui MJ-04 boucle infinie sans `endSession`. Doit terminer normalement.
-- [ ] T-220 : Ajouter compteur 10 tours dans mj-04.html
-- [ ] T-221 : Écran fin de partie + appel `Tracker.endSession(score, max)`
-- [ ] T-222 : Appel `playEndSound(score, max)`
+### EP-022 – MJ-04 fin de partie ✅ (résolu, vérifié 2026-05-11)
+> ~~Aujourd'hui MJ-04 boucle infinie sans `endSession`.~~ Code conforme depuis (date inconnue, audit 2026-05-11 a découvert que les 3 sous-tâches étaient implémentées sans coche). Désync sommaire ↔ détail corrigée.
+- [x] T-220 : Compteur 10 tours présent (`MAX_QUESTIONS = 10` + check `questionCount >= MAX_QUESTIONS` dans `nextQuestion()`)
+- [x] T-221 : Écran fin de partie présent (`showEndScreen()` avec `Tracker.endSession(score, MAX_QUESTIONS * 10)`)
+- [x] T-222 : `playEndSound(score, MAX_QUESTIONS * 10)` appelé dans `showEndScreen()`
+
+**Leçon méthodologique** (gravée Session 14) : un audit `pmo-challenge` doit **vérifier le code** d'un ticket avant de le relayer comme actif. Lire BACKLOG ne suffit pas — risque de relayer des "bugs fantômes".
 
 ### EP-023 – Menu hybride Carte de Villejuif ✅
 > Page d'accueil = map Villejuif (haut) + grille classique (bas). Implémenté dans `game/web/index.html` avec `.map-hotspot`, tooltips et liens vers chaque MJ.
@@ -470,7 +472,8 @@ MaxPlay V0
 | L-019 | 2026-05-11 | **Composant partagé `js/back-button.js`** (80×80 + mini-bus SVG + auto-replace 3 patterns) > 19 boutons inline duplicate. Injecté dans 18 MJ. CSS `.back` fallback upgraded 48→80. | Session refactor 5 dim (`PIPELINE-MEMORY-MJ.md` § 3 F-006) |
 | L-020 | 2026-05-11 | **Composant partagé `js/intro-splash.js`** avec convention déclarative `data-mp-intro-emoji/title/hint` sur `<body>`. Auto-init au DOMContentLoaded, skippable au tap, pas de TTS (EP-033 respecté) | Session refactor 5 dim (`PIPELINE-MEMORY-MJ.md` § 3 F-007) |
 | L-021 | 2026-05-11 | **`.scorebar` neutralisée par défaut** dans CSS partagé (DOM reste pour compat code, affichage masqué). Ajout `.progressbar` alternative non-numérique. Règle "pas de score < 6 ans" enfin appliquée sur 7 MJ | Session refactor 5 dim (`PIPELINE-MEMORY-MJ.md` § 3 F-005) |
-| L-022 | 2026-05-11 | **`mj-pose-tiles` consomme `Asphalt_1_Variation_14` et `_15` SALE** (lignes 123-124) — viole L-013. Dépendance tile à fixer + tracer dans coordination tile↔MJ (cas OBS-3 narration-pmo) | Audit MJ 2026-05-11, à corriger prochain tour |
+| L-022 | 2026-05-11 | **`mj-pose-tiles` consomme `Asphalt_1_Variation_14` et `_15` SALE** (lignes 123-124) — violait L-013. ✅ Corrigé 2026-05-11 (nuit) : swap vers `_2` (H propre) et `_8` (V propre), L-013 respectée | Audit MJ 2026-05-11, corrigé même jour |
+| L-023 | 2026-05-11 | **Audit `pmo-challenge` doit vérifier le code** d'un ticket avant de le relayer comme bug actif. Lire BACKLOG seul = risque de "bugs fantômes" (cas EP-022 mj-04 : 3 sous-tâches implémentées sans coche, audit l'a relayé comme actif) | Anti-pattern méta gravé Session 14 |
 
 ---
 
@@ -496,9 +499,9 @@ MaxPlay V0
 ### Leçons (voir L-019 à L-022 ci-dessus)
 
 ### Out of scope (à acter prochain tour)
-- 🟠 mj-04 boucle infinie EP-022 — non fixé (gros chantier logique)
-- 🟠 mj-pose-tiles utilise `_14`/`_15` SALE — dépendance tile à fixer + tracer
-- 🟠 mj-12 scope (lecteur audio vs quiz) — décision auteur à prendre
+- ✅ ~~mj-04 boucle infinie EP-022~~ — **découvert résolu 2026-05-11** : code conforme, BACKLOG désync corrigée. Leçon L-023 gravée.
+- ✅ ~~mj-pose-tiles utilise `_14`/`_15` SALE~~ — **corrigé 2026-05-11** : swap vers `_2`/`_8` propres
+- 🟠 mj-12 scope (lecteur audio vs quiz) — décision Papa Yann à prendre
 
 ## Session 13 — 2026-05-08 → 2026-05-10 (pipeline tile-tools + EP-TILES)
 

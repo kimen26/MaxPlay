@@ -168,49 +168,9 @@ ground = <span class="fn">route_v</span>(
 <span class="com"># Sert de référence visuelle pour les futures macros parking/passage.</span>`,
   },
   {
-    id: 'route_h_5rows_v2',
-    title: '① Route horizontale (ancienne 5 rows — référence)',
-    desc: '5 rows × 14 cols. Macro <code>route_h(longueur=14, anti_mono_cols=[4, 10])</code>. Trottoirs N/S + bandes blanches centrales pointillées + 2 cases anti-mono (cols 4 et 10).',
-    png: '../tile-tools/recipes/test_route_h_5rows_v2.png',
-    recipe: 'test_route_h_5rows_v2.py',
-    size: '14×5 tiles · 672×240 px',
-    status: 'validated',
-    code: `<span class="kw">from</span> builders <span class="kw">import</span> route_h
-
-ground = <span class="fn">route_h</span>(
-    longueur=<span class="num">14</span>,
-    trottoirs=<span class="num">True</span>,         <span class="com"># défaut</span>
-    anti_mono_cols=[<span class="num">4</span>, <span class="num">10</span>],  <span class="com"># ≤ 10% des cols</span>
-)
-
-SNIPPET = {<span class="str">'name'</span>: <span class="str">'route_h_5rows_v2'</span>,
-           <span class="str">'cols'</span>: <span class="num">14</span>, <span class="str">'rows'</span>: <span class="num">5</span>,
-           <span class="str">'ground'</span>: ground, <span class="str">'objects'</span>: []}`,
-  },
-  {
-    id: 'route_v_5cols_v2',
-    title: '② Route verticale ✅ validée',
-    desc: '12 rows × 5 cols. Macro <code>route_v(hauteur=12, anti_mono_rows=[1, 6, 9])</code>. Trottoirs O/E + bandes pointillées V + 3 rows anti-mono (1, 6, 9).',
-    png: '../tile-tools/recipes/test_route_v_5cols_v2.png',
-    recipe: 'test_route_v_5cols_v2.py',
-    size: '5×12 tiles · 240×576 px',
-    status: 'validated',
-    code: `<span class="kw">from</span> builders <span class="kw">import</span> route_v
-
-ground = <span class="fn">route_v</span>(
-    hauteur=<span class="num">12</span>,
-    trottoirs=<span class="num">True</span>,            <span class="com"># défaut</span>
-    anti_mono_rows=[<span class="num">1</span>, <span class="num">6</span>, <span class="num">9</span>],   <span class="com"># ≤ 10% des rows</span>
-)
-
-SNIPPET = {<span class="str">'name'</span>: <span class="str">'route_v_5cols_v2'</span>,
-           <span class="str">'cols'</span>: <span class="num">5</span>, <span class="str">'rows'</span>: <span class="num">12</span>,
-           <span class="str">'ground'</span>: ground, <span class="str">'objects'</span>: []}`,
-  },
-  {
     id: 'virage_gauche',
-    title: '③ Virage gauche — 🆕 v2 route 3-chaussées 13×13',
-    desc: 'Pivot HAUT-DROITE. Route OUEST 7-cells qui tourne pour descendre vers SUD. Carré intersection 7×7. COIN_INT_SW (sw_3) au pivot + VIRAGE_INT_SE (sw_11) au coin externe. Pipeline tile validé PASS 9/10.',
+    title: '① Virage gauche — v2 route 3-chaussées 13×13 ⚠️ à corriger',
+    desc: 'Pivot HAUT-DROITE. Route OUEST 7-cells qui tourne pour descendre vers SUD. Carré intersection 7×7. <strong>Visuel jugé raté par Papa Yann 2026-05-12</strong> — refonte à venir en s\'inspirant des planches LimeZu officielles (style ville propre + feux + passages piétons).',
     png: '../tile-tools/recipes/test_virage_gauche.png',
     recipe: 'test_virage_gauche.py',
     size: '13×13 tiles · 624×624 px',
@@ -226,8 +186,8 @@ SNIPPET = {<span class="str">'name'</span>: <span class="str">'route_v_5cols_v2'
   },
   {
     id: 'virage_droit',
-    title: '④ Virage droit — 🆕 v2 route 3-chaussées 13×13',
-    desc: 'Pivot HAUT-GAUCHE (miroir H de ③). Carré intersection 7×7. COIN_INT_SE (sw_1) au pivot + VIRAGE_INT_SW (sw_12) au coin externe.',
+    title: '② Virage droit — v2 route 3-chaussées 13×13 ⚠️ à corriger',
+    desc: 'Pivot HAUT-GAUCHE (miroir H de ①). Carré intersection 7×7. Visuel raté — refonte à venir.',
     png: '../tile-tools/recipes/test_virage_droit.png',
     recipe: 'test_virage_droit.py',
     size: '13×13 tiles · 624×624 px',
@@ -237,8 +197,8 @@ SNIPPET = {<span class="str">'name'</span>: <span class="str">'route_v_5cols_v2'
   },
   {
     id: 'virage_haut_gauche',
-    title: '⑤ Virage haut-gauche — 🆕 v2 route 3-chaussées 13×13',
-    desc: 'Pivot BAS-DROITE (miroir V de ③). Carré intersection 7×7. COIN_INT_NW (sw_7) au pivot + VIRAGE_INT_NE (sw_14) au coin externe.',
+    title: '③ Virage haut-gauche — v2 route 3-chaussées 13×13 ⚠️ à corriger',
+    desc: 'Pivot BAS-DROITE (miroir V de ①). Carré intersection 7×7. Visuel raté — refonte à venir.',
     png: '../tile-tools/recipes/test_virage_haut_gauche.png',
     recipe: 'test_virage_haut_gauche.py',
     size: '13×13 tiles · 624×624 px',
@@ -248,8 +208,8 @@ SNIPPET = {<span class="str">'name'</span>: <span class="str">'route_v_5cols_v2'
   },
   {
     id: 'virage_haut_droit',
-    title: '⑥ Virage haut-droit — 🆕 v2 route 3-chaussées 13×13',
-    desc: 'Pivot BAS-GAUCHE (miroir H+V de ③). Carré intersection 7×7. COIN_INT_NE (sw_5) au pivot + VIRAGE_INT_NW (sw_13) au coin externe.',
+    title: '④ Virage haut-droit — v2 route 3-chaussées 13×13 ⚠️ à corriger',
+    desc: 'Pivot BAS-GAUCHE (miroir H+V de ①). Carré intersection 7×7. Visuel raté — refonte à venir.',
     png: '../tile-tools/recipes/test_virage_haut_droit.png',
     recipe: 'test_virage_haut_droit.py',
     size: '13×13 tiles · 624×624 px',

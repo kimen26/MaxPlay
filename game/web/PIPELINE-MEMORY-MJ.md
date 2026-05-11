@@ -39,6 +39,22 @@ Pipeline boucle d'apprentissage :
 
 ## 2. Décisions de design (chronologique)
 
+### 2026-05-11 — Décision Papa Yann sur scope mj-12
+
+**Trigger user** : *"nanan c'est bien garder comme plage de son tableau de bord, pas de jeu"*
+
+**Décision** : mj-12 reste un **dashboard sonore / découverte libre**, pas un mini-jeu à mécanique gagnant. Pas de refonte en quiz. L'intro splash actuelle ("Joue avec les sons / Touche les boutons pour écouter") reflète bien ce scope. Étiquettes index.html cohérentes ("Nouveaux sons" + "Bus, Mario, Pokémon et plein de sons secrets !").
+
+**Conséquence pour le pôle JEU** : la grille des mini-jeux peut contenir **2 types** :
+- **Jeux à mécanique** (quiz, tri, déduction) avec compteur de tours + showEndScreen
+- **Dashboards / découvertes libres** (exploration, sans gagnant) — mj-12 est le 1er du genre
+
+**Application future** : ne pas chercher à imposer "score / fin de partie" aux dashboards. game-mj-reviewer doit reconnaître ce type via une convention (ex `data-mp-type="dashboard"` sur `<body>` à explorer plus tard si on en crée d'autres).
+
+→ Voir L-024 dans BACKLOG.
+
+---
+
 ### 2026-05-11 (nuit) — Audit complet + refactor 5 dimensions + 2 composants partagés
 
 **Trigger user** : *"review tous les jeux, intro, son, [...] retour menu ou rejouer. y'a des bugs sur beaucoup ! (...) CORRIGE TOUT"*

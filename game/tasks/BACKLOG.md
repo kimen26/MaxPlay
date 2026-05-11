@@ -474,6 +474,7 @@ MaxPlay V0
 | L-021 | 2026-05-11 | **`.scorebar` neutralisée par défaut** dans CSS partagé (DOM reste pour compat code, affichage masqué). Ajout `.progressbar` alternative non-numérique. Règle "pas de score < 6 ans" enfin appliquée sur 7 MJ | Session refactor 5 dim (`PIPELINE-MEMORY-MJ.md` § 3 F-005) |
 | L-022 | 2026-05-11 | **`mj-pose-tiles` consomme `Asphalt_1_Variation_14` et `_15` SALE** (lignes 123-124) — violait L-013. ✅ Corrigé 2026-05-11 (nuit) : swap vers `_2` (H propre) et `_8` (V propre), L-013 respectée | Audit MJ 2026-05-11, corrigé même jour |
 | L-023 | 2026-05-11 | **Audit `pmo-challenge` doit vérifier le code** d'un ticket avant de le relayer comme bug actif. Lire BACKLOG seul = risque de "bugs fantômes" (cas EP-022 mj-04 : 3 sous-tâches implémentées sans coche, audit l'a relayé comme actif) | Anti-pattern méta gravé Session 14 |
+| L-024 | 2026-05-11 | **mj-12 = plage de sons / tableau de bord, PAS un jeu** (décision Papa Yann 2026-05-11). Pas de mécanique gagnant, pas de refonte en quiz. Concept = "explore les sons" (bus, Mario, Pokémon, sons secrets). Garder tel quel, l'intro splash actuelle "Joue avec les sons / Touche les boutons pour écouter" reflète bien ce scope | Décision auteur, clôture point out-of-scope Session 14 |
 
 ---
 
@@ -498,10 +499,10 @@ MaxPlay V0
 
 ### Leçons (voir L-019 à L-022 ci-dessus)
 
-### Out of scope (à acter prochain tour)
+### Out of scope (à acter prochain tour) — TOUS RÉSOLUS ✅
 - ✅ ~~mj-04 boucle infinie EP-022~~ — **découvert résolu 2026-05-11** : code conforme, BACKLOG désync corrigée. Leçon L-023 gravée.
 - ✅ ~~mj-pose-tiles utilise `_14`/`_15` SALE~~ — **corrigé 2026-05-11** : swap vers `_2`/`_8` propres
-- 🟠 mj-12 scope (lecteur audio vs quiz) — décision Papa Yann à prendre
+- ✅ ~~mj-12 scope (lecteur audio vs quiz)~~ — **tranché 2026-05-11 par Papa Yann** : *"c'est bien, garder comme plage de son tableau de bord, pas de jeu"*. Leçon L-024 gravée.
 
 ## Session 13 — 2026-05-08 → 2026-05-10 (pipeline tile-tools + EP-TILES)
 

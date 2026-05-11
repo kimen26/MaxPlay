@@ -38,6 +38,9 @@ Aucun. Max Adventure tourne en prod (vérifié 2026-05-03 : `kimen26.github.io/M
 **Vérifications 2026-05-11 (Session 14)** :
 - EP-022 MJ-04 "boucle infinie" : **faux bug** — code conforme depuis (compteur 10 tours + showEndScreen + playEndSound présents). BACKLOG désync corrigée.
 - mj-pose-tiles `_14`/`_15` SALE : **corrigé** par swap vers `_2`/`_8` propres (L-013 respectée).
+- mj-12 scope : **tranché Papa Yann** — dashboard sonore / découverte libre, pas un jeu à mécanique. Pas de refonte (L-024).
+
+**Convention pôle JEU à acter** : 2 types de MJ — (1) jeux à mécanique avec compteur + showEndScreen, (2) dashboards / découvertes libres (mj-12 1er du genre). game-mj-reviewer à enrichir avec reconnaissance du type (`data-mp-type="dashboard"` ?).
 
 ## Backlog prioritaire
 

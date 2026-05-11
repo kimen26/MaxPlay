@@ -121,6 +121,19 @@ Main agent (Sonnet/Opus)
 - **Pattern gravé** : "auditer ≠ scanner — il faut LIRE en entier le fichier audité avant de proposer du 'manquant'"
 - **Conséquence positive** : narration-pmo a quand même retenu 5/7 (C-3 traité en plus léger via section decisions.md plutôt qu'un 6e fichier ; C-4/C-5/C-6 patchés ; C-7 noté Question ouverte #16)
 
+### F-006 : Conflit doc cartography.json ↔ LESSONS.md (2026-05-11)
+- **Symptôme** : Claude se trompait systématiquement entre `_2` (H propre) et `_14` (H sale). 5+ fois sur 4 sessions, malgré 30+ leçons gravées
+- **Cause** : `cartography.json` line 22 disait "_14 = ligne H propre" (cartographie historique 2026-05-04), `LESSONS.md` correction 5 du 2026-05-10 disait "_14 SALE, _2 PROPRE" → deux sources de vérité contradictoires, Claude lisait l'une ou l'autre
+- **Résolution** : créer `vocab.py` comme **source unique** (constantes nommées français), marquer `cartography.json` DEPRECATED (champ `_DEPRECATED` dans le JSON), pointer skill+agent vers vocab.py
+- **Pattern gravé** : "une source de vérité unique, sinon la mauvaise se rappellera à toi"
+
+### F-007 : Inventer la composition de scènes = piège (2026-05-11, soir)
+- **Symptôme** : J'ai commencé à coder des macros `route_h`, `route_v` qui répliquent exactement les recettes existantes. Mais **Papa Yann trouve les recettes existantes pas OK visuellement** → mes macros héritaient du défaut → circulaire
+- **Cause** : confusion entre "documenter des constantes" (légitime, vocab.py) et "inventer comment composer" (illégitime, je n'ai pas l'œil de Papa Yann)
+- **Résolution** : **pivot EP-VOCAB phase 3+**. On abandonne l'invention de macros. On collecte des **références visuelles validées** par Papa Yann (LimeZu officiel, Pokemon, LDtk samples) → on reproduit fidèlement → la "macro" devient une recette de référence.
+- **Pattern gravé** : "0-invention sur la composition esthétique. On copie ce qui marche déjà et que l'utilisateur valide visuellement. On invente seulement le vocabulaire (constantes nommées)."
+- **EP créé** : EP-REFS (banque de références visuelles tile-tools) — à lancer en session dédiée
+
 ---
 
 ## 4. Patterns user observés (collaboration)
@@ -149,6 +162,19 @@ Main agent (Sonnet/Opus)
 - **Observation** : audit cross-PMO game-pmo ↔ narration-pmo a donné 5/7 retenus côté narration. Narration-pmo a répondu : *"À charge de revanche : quand tu pousseras la prochaine évolution de tile-pmo, ping-moi pour challenge réciproque"*
 - **Conséquence** : le mécanisme de challenge réciproque entre PMO de pôles différents est un **vecteur d'amélioration mutuelle** sans toucher au scope strict de chacun
 - **Application** : à la **prochaine évolution non-triviale de game-pmo OU game-tile-pmo**, le main agent doit pinger narration-pmo pour challenge réciproque. Engagement explicite ↔.
+
+### P-006 : "0-invention" sur la composition esthétique (2026-05-11)
+- **Observation** : *"t'es pas obligé d'inventer hein c'est ca le PB... mais tu as dit que tu notais juste le vocabulaire ? y'a pas des exemples visuel dans tous les repos exemple que t'as trouvé ?"*
+- **Conséquence** : Claude doit faire la **différence entre 2 types d'outputs** :
+  - ✅ **Légitime** : documenter, cartographier, nommer (vocab.py), lister des sources externes (RESEARCH-INSPIRATIONS.md)
+  - ❌ **Illégitime** : inventer comment doit-être un beau carrefour, un beau trottoir, une belle rivière → Papa Yann n'a pas la même esthétique que les recettes existantes, donc je reproduirai le défaut
+- **Application** : pour tout nouveau type de scène (carrefour, immeuble, parc…), **commencer par chercher une référence visuelle externe** (LimeZu officiel, Pokemon, LDtk samples) que Papa Yann valide, **avant** d'écrire la moindre ligne de recette.
+- **Règle d'or gravée** : "on copie ce qui marche, on n'invente pas le beau"
+
+### P-007 : Papa Yann valorise le "dire non" (2026-05-11)
+- **Observation** : *"pas de soucis à dire non !!! au contraire, on gagne du temps !"*
+- **Conséquence** : quand Claude détecte une faiblesse dans son propre plan, il doit la nommer EXPLICITEMENT et proposer le pivot, plutôt que d'avancer mécaniquement.
+- **Application** : ne pas continuer à exécuter une phase juste parce que je l'ai prévue ; signaler au moindre doute. C'est valorisé, pas pénalisé.
 - **Format challenge** : transmettre 5-7 observations comparatives (forme + fond), pas un audit complet. L'autre PMO trie et patche ce qui est pertinent dans son scope.
 
 ---

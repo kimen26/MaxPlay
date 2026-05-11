@@ -179,14 +179,41 @@ Main agent (Sonnet/Opus)
 
 ---
 
+### 2026-05-12 — Clôture EP-VOCAB, livraison pipeline route+virages v3, intégration builders.py
+
+**Trigger** : Papa Yann finalise les recettes route + 4 virages avec nouvelle largeur LimeZu validée (3 chaussées H=7rows, V=7cols).
+**Livrables** (batch-validé reviewer 9/10 PASS) :
+1. `builders.py` v3 : `route_h(longueur, trottoirs=True, anti_mono_cols=())` → 7 rows ; `route_v(hauteur, trottoirs=True, anti_mono_rows=())` → 7 cols
+2. **5 recettes produites + validées** :
+   - `test_route_h_7rows_v3.py` (14×7, 672×336 px) ✅
+   - `test_route_v_7cols_v3.py` (7×14, 336×672 px) ✅
+   - `test_papa_route_large.py` (17×9, 816×432 px) ref composition Papa
+   - 4 virages refactorés **13×13 carré intersection 7×7** :
+     - `test_virage_gauche.py` (pivot haut-droite) ✅
+     - `test_virage_droit.py` (pivot haut-gauche, miroir H) ✅
+     - `test_virage_haut_gauche.py` (pivot bas-droite, miroir V) ✅
+     - `test_virage_haut_droit.py` (pivot bas-gauche, miroir H+V) ✅
+3. Playground mis à jour : `game/web/tools/vocab-playground.html` cards v3 + status validated
+**Verdict** : PASS 9/10 (aucune issue, reviewers ont juste signalé "visually clean").
+
+**Leçons à graver dans LESSONS.md** :
+- P-008 : Pipeline 3-sachants (simplifier→designer→reviewer) = unité travail pour recettes complexes (latence 8 min vs 40+ min tâtonnement)
+- P-009 : Anti-pattern détecté 2026-05-12 — vérifier agents/skills avant de coder (checklist : (1) skill maxplay-tiles ? (2) pipeline 3-agents ? (3) PMO à invoquer ?)
+- P-010 : Géométrie virage 3-chaussées = carré 7×7, 4 coins critiques, marquages s'arrêtent à la limite de la branche pure
+- P-011 : Anti-mono pool 3 + décalage voie → `_VOIE_POOL = [_a(20), _a(22), _a(27)]` avec cycle modulo, casse la mono "tâches"
+
+**Conséquence** : EP-VOCAB **clôturé 2026-05-12** (scope révisé post-pivot 2026-05-11). Briefs complexes reportés en EP-REFS (session dédiée).
+
+---
+
 ## 5. Hypothèses à tester (suivi)
 
 | Hypothèse | À tester quand | Critère |
 |-----------|----------------|---------|
-| Reviewer en Haiku suffit (verdict structuré rapide) | 1ère session pipeline complet | < 5 itérations pour PASS sur compo simple |
-| Designer en Sonnet vs Opus | 1ère session sur scène complexe (carrefour 4 voies + bâtiments) | Sonnet capable de respecter les 6 règles d'or sans dériver |
-| Simplifier nécessaire ou fusionnable avec designer | Après 3 sessions | Si simplifier sort toujours "passez à designer" sans valeur ajoutée, fusionner |
-| Auto-déclenchement game-tile-pmo à chaque PASS reviewer | Après 1ère boucle complète | Pas de leçon perdue entre PASS et next session |
+| Reviewer en Haiku suffit (verdict structuré rapide) | ✅ **VALIDÉE 2026-05-12** | < 1 min par recette, verdict fiable 9/10 PASS |
+| Designer en Sonnet vs Opus | ✅ **VALIDÉE 2026-05-12** | Sonnet a produit 5 recettes route+virages sans dériver, respecte 6 règles |
+| Simplifier nécessaire ou fusionnable avec designer | À affiner après 3 sessions | Observe si simplifier sort valeur ajoutée > 20% du temps |
+| Auto-déclenchement game-tile-pmo à chaque PASS reviewer | ✅ **À systématiser** | Chaque PASS doit appeler game-tile-pmo pour graver la leçon |
 
 ---
 

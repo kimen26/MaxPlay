@@ -8,6 +8,42 @@
 
 ## Épics
 
+---
+
+## EP-VOCAB – Module vocab.py + macros haut-niveau pour pipeline tile-tools
+
+**Cause racine** (diagnostic 2026-05-11) :
+1. Conflit documentaire : `cartography.json` line 22 ("_14 propre H") contredit `~/.claude/skills/maxplay-tiles/LESSONS.md` correction 5 ("_14 SALE")
+2. Info éparpillée sur 3 fichiers (cartography.json + LESSONS.md + recettes) → relecture complète à chaque session
+3. Noms cryptiques (`Asphalt_1_Variation_2` vs `_14`) → mémorisation impossible
+4. Pas de cartographie bâtiments/végétation/eau → briefs riches impossibles
+
+**Objectif** : source unique & mnémonique (vocab.py) + macros haut-niveau (route_h, route_v, virage, carrefour…) → éviter erreurs récurrentes, permettre briefs complexes.
+
+**Phases** (8 étapes, validé Papa Yann) :
+
+- **P0 ✅** : Recherche & capitalisation (RESEARCH-INSPIRATIONS.md créé, 2026-05-11)
+- **P1 ⏳** : vocab.py = source unique (constantes tuiles, tests pytest)
+- **P2 ⏳** : Macros routes (route_h, route_v) + tests PNG
+- **P3 ⏳** : Macros virages/carrefour/T-junction/rond-point
+- **P4 ⏳** : Macros passages piétons/parking/voie bus
+- **P5 ⏳** : Refactor 13 recettes existantes vers vocab.py
+- **P6 ⏳** : Nettoyage (PNG orphelins, scripts obsolètes)
+- **P7 ⏳** : Gravure (skill maxplay-tiles + game-tile-designer + LESSONS.md + cartography.json)
+- **P8 ⏳** : Commit final + handoff PMO
+
+**Anti-pattern à éviter** (pmo-challenge) : N'auditer/refactorer sans lire code complet. Phase 5 : vérifier PNG actuel OK avant de toucher à une recette.
+
+**Clés de succès** :
+- Mnémonique décidée & documentée (ex : "2 propre H, 8 propre V, 14 sale H, 15 sale V")
+- Tests visuels obligatoires : render.py → PNG → comparaison byte-à-byte
+- Cartographie complète (asphalt/sidewalk/building/grass/water) de 16×12 à 32×24
+- Source de vérité consolidée (LESSONS.md upgrade, cartography.json deprecated)
+
+---
+
+
+
 | ID | Titre | Statut |
 |----|-------|--------|
 | EP-001 | Infrastructure & config Claude | `[x]` |
@@ -45,6 +81,7 @@
 | EP-032 | MJ-09 · Trie les bus : déplacer 2 bus simultanément (multi-touch 2 doigts) | `[x]` |
 | EP-TILES | Pipeline tile-tools LimeZu (cartographie + recettes + mockups-routes + tile-picker + tile-pmo) | `[~]` |
 | EP-MJPOSE | MJ · Pose-tes-tiles (kids éditeur de map simplifié) | `[x]` |
+| EP-VOCAB | Module vocab.py + macros haut-niveau pour pipeline tile-tools (anti-erreurs, consolidation) | `[ ]` |
 
 ---
 

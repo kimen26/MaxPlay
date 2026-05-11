@@ -11,7 +11,7 @@ PAS DE BORD AJOUTÉ — le marquage BUS contient déjà sa bordure blanche.
 """
 
 ASPH_PLAIN = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png'
-ASPH_DASH_V = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_15.png'
+ASPH_DASH_V = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png'  # V PROPRE (corrigé 2026-05-11, voir LESSONS correction 5 du 2026-05-10)
 TROTTOIR = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png'
 BUS_VOIE_G = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_48.png'
 BUS_VOIE_D = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_49.png'

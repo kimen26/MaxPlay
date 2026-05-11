@@ -13,22 +13,24 @@
 
 ---
 
-## 2026-05-11 (nuit) — Voix narrateur vs voix perso — affiner le lien (à reprendre)
+## 2026-05-11 (nuit) — Voix narrateur vs voix perso ✅ DÉCIDÉ
 
-**Source** : Papa Yann, après la création Wex v7 — *« oui et pour la voix [Wex], pour la narration c'est autre chose aussi même si un peu lié, on en reparle si tu veux ».*
+**Architecture confirmée** :
+- Narrateur (Lumi H/F adultes) → texte narratif, descriptions, transitions, **tags d'attribution (« dit Wex », « demanda Raph »)**
+- Voix perso (Wex + 10 autres, enfants) → dialogues + **pensées intérieures rapportées** (ex : « Wex se dit que... » prononcé avec voix de Wex)
 
-**Architecture actuelle confirmée** :
-- Narrateur (Lumi H/F adultes) → texte narratif, descriptions, transitions
-- Voix perso (Wex + 10 autres, enfants) → dialogues uniquement
+**Décisions tranchées par Papa Yann 2026-05-11 (nuit)** :
 
-**Sujets à creuser ensemble** :
-- **Tags d'attribution** (« dit Wex », « demanda Raph ») — narrateur lit ou on les coupe au montage ?
-- **Transitions narrateur ↔ perso** — comment éviter rupture sèche au montage audio
-- **Pensée intérieure d'un perso** — narrateur garde sa voix ou prend le timbre du perso ?
-- **Choix narrateur par story** — fixé pour toute la saison ? alterné H/F selon ton de scène ?
-- **Style de lecture narrateur** — uniforme ou s'adapte au perso qu'il introduit (ex : plus excité quand Raph arrive, plus calme avec Nono) ?
+| Sujet | Décision | Note |
+|-------|----------|------|
+| Tags d'attribution | ✅ **Conservés** dans le texte, narrateur les lit | « on ne les reconnait pas du tout » |
+| Montage multi-voix | 🟡 **À tester** — Papa Yann pensait ElevenLabs auto, **non** (cf. Studio Option A recommandée) | Reco : ElevenLabs Studio pour stories audio complètes |
+| Pensée intérieure perso | ✅ **Voix du perso** prononce, pas narrateur | « je préfèrerai entendre le perso parler » |
+| Narrateur fixe ou alterné | ✅ **Un seul fixe pour saison 1** | Reco Claude : Lumi H pour arc 1, F en réserve pour arc 4 plus intime — à tester à l'oreille |
 
-**À discuter avec Papa Yann** + agent `narration-audio` qui produira les briefs audio des stories canon.
+**Action prochaine** : choisir Lumi H ou F comme narrateur fixe S1 après écoute side-by-side du preview text identique sur les 2 voix.
+
+**Trace PMO** : `pmo/decisions.md` entrée à compléter quand le narrateur S1 est choisi.
 
 ---
 

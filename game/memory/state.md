@@ -35,6 +35,10 @@ type: project
 
 Aucun. Max Adventure tourne en prod (vérifié 2026-05-03 : `kimen26.github.io/MaxPlay/max-adventure/` charge phaser-*.js et index-*.js correctement).
 
+**Vérifications 2026-05-11 (Session 14)** :
+- EP-022 MJ-04 "boucle infinie" : **faux bug** — code conforme depuis (compteur 10 tours + showEndScreen + playEndSound présents). BACKLOG désync corrigée.
+- mj-pose-tiles `_14`/`_15` SALE : **corrigé** par swap vers `_2`/`_8` propres (L-013 respectée).
+
 ## Backlog prioritaire
 
 | EP | Titre |

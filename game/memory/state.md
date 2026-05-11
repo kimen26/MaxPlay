@@ -31,15 +31,32 @@ type: project
 - ✅ EP-032 MJ-09 : multi-touch 2 doigts (Pointer Events + Map)
 - ✅ EP-033 : TTS annonce titre désactivé (laggait le démarrage)
 
-## Session 2026-05-11 (suite) — EP-VOCAB lancé
+## Session 2026-05-11 (suite) — EP-VOCAB phases 1-2 + pivot
 
-**Contexte** : Papa Yann cadrage nouvel epic "ingénierie tile-tools" pour résoudre cause racine : galère mensuelle sur tâches simples ("route droite propre"), briefs complexes impossibles.
+**Contexte** : Papa Yann a cadré l'epic "ingénierie tile-tools" pour résoudre cause racine (galère sur "route droite propre", briefs complexes impossibles). Plein pouvoir donné.
 
-**Décision** : Lancer EP-VOCAB (8 phases, 2026-05-11 → TBD). Phase 0 validée (RESEARCH-INSPIRATIONS.md créé). Plein pouvoir exécution sur phases 1-8.
+**Livré** (commit `feat(tile-tools): EP-VOCAB phases 1+2`) :
+- ✅ `game/web/tile-tools/vocab.py` : 46 constantes nommées français, validation auto au boot
+- ✅ `game/web/tile-tools/builders.py` : macros `route_h()` + `route_v()` testées + **SHA256 byte-identique** aux PNG existants
+- ✅ `game/web/tile-tools/RESEARCH-INSPIRATIONS.md` : 60+ liens capitalisés (LDtk, WFC, DualTilemap, Bitmask, Phaser, LimeZu)
+- ✅ Fix en passant : `test_voie_bus_v6.py` (`_15` SALE → `_8` PROPRE, oubli correction 5)
+- ✅ 2 recettes v2 exemple : `test_route_h_5rows_v2.py` + `test_route_v_5cols_v2.py`
 
-**Signal clé** : Conflit documentaire actif — `cartography.json` line 22 contredit LESSONS.md correction 5. Résolution dans phase 7.
+**🔀 Pivot Papa Yann (fin de session, validé)** :
+- Découverte : coder des macros (`virage`, `carrefour`…) = **inventer comment composer**. Or les recettes actuelles ne plaisent pas visuellement à Papa Yann → on reproduirait le défaut.
+- Nouvelle direction : **collecter des références visuelles** (screenshots LimeZu officiel, maps Pokemon, samples LDtk) → reproduire fidèlement → la "macro" devient une recette de référence validée.
+- EP-VOCAB phases 3-5 (macros virages/carrefour/T/refactor 13 recettes) **ANNULÉES**.
+- **EP-REFS ajouté au BACKLOG** (banque refs visuelles, à lancer en session dédiée).
 
-**Nouveau fichier clé créé** : `game/web/tile-tools/RESEARCH-INSPIRATIONS.md` (inspirations LDtk/WFC/DualTilemap/Bitmask/Phaser/LimeZu, matière capitalisée pour ne pas perdre).
+**Nettoyage effectué (clôture)** :
+- ✅ `cartography.json` marqué **DEPRECATED** (champ `_DEPRECATED` dans le JSON)
+- ✅ `game/web/tools/tile-library.html` + `tile-library-v2.html` → archivés dans `tools/_archive/` + card index retirée
+- ✅ `__pycache__/` purgés (gitignore créé)
+- ✅ `game/web/tile-tools/_archive/` créé avec inventaire candidats futurs (scripts debug, recettes non-auditées)
+- ⏳ Pas touché : scripts debug (render_debug, render_tmj, zoom_index, build_rondpoint_tmj, recolor_house) — à vérifier dépendances en session dédiée
+- ⏳ Pas touché : recettes passages piétons (non-auditées visuellement)
+
+**Fichier clé créé** : `game/web/tile-tools/vocab.py` = source UNIQUE pour les paths de tiles. Remplace cartography.json.
 
 ---
 

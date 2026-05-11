@@ -10,35 +10,73 @@
 
 ---
 
-## EP-VOCAB – Module vocab.py + macros haut-niveau pour pipeline tile-tools
+## EP-VOCAB – Module vocab.py + pivot "refs visuelles" pour pipeline tile-tools
 
-**Cause racine** (diagnostic 2026-05-11) :
-1. Conflit documentaire : `cartography.json` line 22 ("_14 propre H") contredit `~/.claude/skills/maxplay-tiles/LESSONS.md` correction 5 ("_14 SALE")
+**Statut** : `[~]` clôturé partiellement 2026-05-11 (scope révisé après pivot Papa Yann).
+
+### Cause racine (diagnostic 2026-05-11)
+
+1. Conflit documentaire : `cartography.json` ("_14 propre H") contredit `LESSONS.md` correction 5 ("_14 SALE")
 2. Info éparpillée sur 3 fichiers (cartography.json + LESSONS.md + recettes) → relecture complète à chaque session
 3. Noms cryptiques (`Asphalt_1_Variation_2` vs `_14`) → mémorisation impossible
 4. Pas de cartographie bâtiments/végétation/eau → briefs riches impossibles
 
-**Objectif** : source unique & mnémonique (vocab.py) + macros haut-niveau (route_h, route_v, virage, carrefour…) → éviter erreurs récurrentes, permettre briefs complexes.
+### 🔀 PIVOT 2026-05-11 (session nuit, validé Papa Yann)
 
-**Phases** (8 étapes, validé Papa Yann) :
+**Découverte** : coder des macros (`route_h`, `virage`, etc.) revient à **inventer comment composer une scène**. Or Papa Yann trouve les recettes existantes **pas OK visuellement** → coder un builder qui les recopie reproduit le défaut.
 
-- **P0 ✅** : Recherche & capitalisation (RESEARCH-INSPIRATIONS.md créé, 2026-05-11)
-- **P1 ⏳** : vocab.py = source unique (constantes tuiles, tests pytest)
-- **P2 ⏳** : Macros routes (route_h, route_v) + tests PNG
-- **P3 ⏳** : Macros virages/carrefour/T-junction/rond-point
-- **P4 ⏳** : Macros passages piétons/parking/voie bus
-- **P5 ⏳** : Refactor 13 recettes existantes vers vocab.py
-- **P6 ⏳** : Nettoyage (PNG orphelins, scripts obsolètes)
-- **P7 ⏳** : Gravure (skill maxplay-tiles + game-tile-designer + LESSONS.md + cartography.json)
-- **P8 ⏳** : Commit final + handoff PMO
+**Nouvelle approche** : ne pas inventer. **Collecter des références visuelles** (screenshots LimeZu officiel, maps Pokemon, samples LDtk, refs trouvées dans deepsearch) → reproduire fidèlement → la "macro" devient une recette de référence validée par Papa Yann, pas une fonction inventée.
 
-**Anti-pattern à éviter** (pmo-challenge) : N'auditer/refactorer sans lire code complet. Phase 5 : vérifier PNG actuel OK avant de toucher à une recette.
+### Livrables phase 1+2 (LIVRÉS ✅)
 
-**Clés de succès** :
-- Mnémonique décidée & documentée (ex : "2 propre H, 8 propre V, 14 sale H, 15 sale V")
-- Tests visuels obligatoires : render.py → PNG → comparaison byte-à-byte
-- Cartographie complète (asphalt/sidewalk/building/grass/water) de 16×12 à 32×24
-- Source de vérité consolidée (LESSONS.md upgrade, cartography.json deprecated)
+- **`game/web/tile-tools/vocab.py`** : 46 constantes nommées français (validation auto au boot), source UNIQUE pour les paths de tiles. Anti-erreur radical : plus de choix entre `_2` et `_14`.
+- **`game/web/tile-tools/builders.py`** : `route_h()` + `route_v()` (les 2 seuls cas où "ligne droite trivial" ≠ invention). Tests assertions + **SHA256 byte-identique** aux PNG existants → macros validées techniquement.
+- **`game/web/tile-tools/recipes/test_route_h_5rows_v2.py`** + `test_route_v_5cols_v2.py` : recettes exemple utilisant les macros.
+- **Fix passing** : `test_voie_bus_v6.py` Variation_15 (sale) → Variation_8 (propre) — bug oublié lors correction 5.
+- **`game/web/tile-tools/RESEARCH-INSPIRATIONS.md`** : 60+ liens capitalisés (LDtk, WFC, Dual Tilemap, bitmask, Phaser tutos, LimeZu officiel, AI tools).
+- **`game/web/tile-tools/cartography.json`** : marqué DEPRECATED dans le JSON (champ `_DEPRECATED`).
+- **`game/web/tools/_archive/`** : tile-library.html + tile-library-v2.html archivés (legacy, URLs cassées).
+- **`game/web/tile-tools/_archive/`** : créé avec README pour futurs déplacements ciblés.
+
+### Phases abandonnées (suite au pivot)
+
+- **P3-5 ❌ ANNULÉES** : pas de macros inventées (virages/carrefour/T/passages/parking/refactor). Sera remplacé par EP-REFS (ci-dessous).
+- **P6 ✅ partielle** : tile-library legacy archivé, cartography.json DEPRECATED. Reste à faire en session dédiée (scripts/render_debug.py, render_tmj.py, build_rondpoint_tmj.py, recolor_house.py, zoom_index.py — à vérifier dépendances avant suppression).
+- **P7 ✅** : skill `maxplay-tiles` + agent `game-tile-designer` MAJ pour pointer vers vocab.py + nouvelle approche refs.
+- **P8 ✅** : commit clôture + handoff PMO.
+
+### Clés de succès rétroactives
+
+✅ Conflit doc résolu (vocab.py = vérité, cartography.json deprecated)
+✅ Mnémonique gravée (2/8 propre, 14/15 sale)
+✅ Tests visuels SHA256 (route_h + route_v identiques au pixel près)
+❌ Briefs complexes ("immeuble 3 étages, parc, rivière, pont") **PAS RÉSOLUS** → reportés en EP-REFS
+
+---
+
+## EP-REFS – Banque de références visuelles tile-tools (post-EP-VOCAB)
+
+**Origine** : pivot Papa Yann 2026-05-11. Coder des macros = inventer ; on doit copier ce qui marche.
+
+**Objectif** : constituer une **banque de PNG de référence** par concept (carrefour, virage, trottoir, immeuble, rivière, pont, parc, arrêt de bus) à reproduire fidèlement avec notre vocab.py.
+
+**Sources possibles** (issues de RESEARCH-INSPIRATIONS.md) :
+1. LimeZu officiel (itch.io screenshots du tileset)
+2. LimeZu YouTube channel (tutos = ses propres maps)
+3. LDtk samples
+4. Pokemon Rouge/Bleu (via `peterhajas/pokemon_map_generator`)
+5. opengameart LPC 4-Seasons
+6. Photos Papa Yann (Google Maps Villejuif, photos terrain)
+
+**Workflow proposé** :
+1. Pour chaque concept manquant : collecter 2-3 refs → Papa Yann valide visuellement
+2. Stocker dans `game/web/tile-tools/references/<concept>/ref-001.png` + `ref-001.md` (source URL, ce qui plaît)
+3. Reproduire dans une recette utilisant `vocab.py`, itérer jusqu'à match visuel
+4. La recette validée devient le "snippet" réutilisable
+
+**Status** : `[ ]` non démarré (à lancer en session dédiée, idée option b proposée à Papa Yann 2026-05-11 nuit).
+
+**Première recette cible probable** : un carrefour propre, parce que c'est le concept clé (Villejuif), et c'est celui où les recettes actuelles sont rejetées par Papa Yann.
 
 ---
 
@@ -81,7 +119,8 @@
 | EP-032 | MJ-09 · Trie les bus : déplacer 2 bus simultanément (multi-touch 2 doigts) | `[x]` |
 | EP-TILES | Pipeline tile-tools LimeZu (cartographie + recettes + mockups-routes + tile-picker + tile-pmo) | `[~]` |
 | EP-MJPOSE | MJ · Pose-tes-tiles (kids éditeur de map simplifié) | `[x]` |
-| EP-VOCAB | Module vocab.py + macros haut-niveau pour pipeline tile-tools (anti-erreurs, consolidation) | `[ ]` |
+| EP-VOCAB | Module vocab.py + pivot "refs visuelles" pour pipeline tile-tools (anti-erreurs, source unique) | `[~]` |
+| EP-REFS | Banque de références visuelles tile-tools (post-EP-VOCAB, briefs complexes) | `[ ]` |
 
 ---
 

@@ -25,12 +25,13 @@ Tu es l'étape **2/3** du pipeline. Tu **codes**, tu **rends le PNG**, et tu **i
 
 ## 📚 Première action OBLIGATOIRE (lecture ordonnée)
 
-1. `~/.claude/skills/maxplay-tiles/SKILL.md` — règles d'or
-2. `~/.claude/skills/maxplay-tiles/LESSONS.md` — 30+ leçons (spécialement L-013 à L-018)
-3. `game/web/tile-tools/cartography.json` — **lecture obligatoire complète** pour connaître le rôle exact de chaque tile
-4. `game/web/tile-tools/patterns.js` — recettes déjà validées (s'inspirer, ne pas dupliquer)
-5. `game/web/tile-tools/PIPELINE-MEMORY.md` — état pipeline + frictions à éviter
-6. **1 recette existante** dans `recipes/` pour calquer la convention de code (ex `test_carrefour_4voies.py` ou `test_virage_gauche.py`)
+1. `~/.claude/skills/maxplay-tiles/SKILL.md` — règles d'or (notamment Règle #1 vocab.py et Règle #2 0-invention)
+2. `~/.claude/skills/maxplay-tiles/LESSONS.md` — 30+ leçons (spécialement correction 5 du 2026-05-10 et correction 7 du 2026-05-11)
+3. **`game/web/tile-tools/vocab.py`** ⭐ — **SOURCE UNIQUE** des paths de tiles (depuis EP-VOCAB 2026-05-11). Lire tous les noms de constantes disponibles.
+4. `game/web/tile-tools/builders.py` — macros routes droites uniquement (`route_h`, `route_v`). Ne pas inventer d'autres macros.
+5. ⚠️ `game/web/tile-tools/cartography.json` — **DEPRECATED 2026-05-11**. Ne PAS s'y référer pour les choix de tile (contient des erreurs historiques sur `_14`/`_15`). Toujours préférer `vocab.py`.
+6. `game/web/tile-tools/PIPELINE-MEMORY.md` — état pipeline + frictions à éviter (notamment F-006 conflit doc, F-007 piège invention)
+7. **1 recette existante** dans `recipes/` pour calquer la convention de code. Préférer les recettes `_v2` (qui utilisent `vocab.py`) aux v1 historiques.
 
 ---
 
@@ -51,7 +52,9 @@ Tu es l'étape **2/3** du pipeline. Tu **codes**, tu **rends le PNG**, et tu **i
 
 ---
 
-## 🏗️ Format de la recette Python
+## 🏗️ Format de la recette Python (depuis EP-VOCAB 2026-05-11)
+
+**⭐ IMPORTANT** : ne plus déclarer les paths de tile en string. Utiliser `vocab.py` (Règle #1 du skill maxplay-tiles).
 
 ```python
 """<Titre> — <cols>×<rows>. Version <statut> <date>.
@@ -60,39 +63,40 @@ Tu es l'étape **2/3** du pipeline. Tu **codes**, tu **rends le PNG**, et tu **i
 
 Schema :
   - <points clés du layout>
+
+Référence visuelle : <chemin/URL de la ref validée par Papa Yann>
+  ⚠️ Si pas de ref validée, ne pas produire la recette — demander à game-tile-pmo.
 """
 
-# === Tiles ===
-# Surface principale
-ASPH = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png'
-DASH_V = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png'   # V propre
-DASH_H = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png'   # H propre
-CROIX = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_13.png'   # croisement +
+import sys
+from pathlib import Path
 
-# Trottoir uniforme
-TROTTOIR = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png'
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
-# Bords trottoir 1×1
-SW_N = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png'
-SW_S = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png'
-SW_W = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png'
-SW_E = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png'
-
-# INT corners (autour chaussée)
-INT_NE = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_7.png'
-INT_NW = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_5.png'
-INT_SE = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_1.png'
-INT_SW = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_3.png'
-
-# (Adapter selon la scène — ne déclarer que ce qui sert)
+from vocab import (  # noqa: E402
+    ASPHALT_PLAIN,
+    BORD_EST,
+    BORD_NORD,
+    BORD_OUEST,
+    BORD_SUD,
+    COIN_INT_NE,
+    COIN_INT_NW,
+    COIN_INT_SE,
+    COIN_INT_SW,
+    CROIX_INTERSECTION,
+    ROUTE_H_PROPRE,
+    ROUTE_V_PROPRE,
+    TROTTOIR_PLAIN,
+    # ... importer seulement ce dont la recette a besoin
+)
 
 # === Dimensions ===
 COLS, ROWS = <cols>, <rows>
 
 # === Construction ground ===
-ground = [[TROTTOIR] * COLS for _ in range(ROWS)]
+ground = [[TROTTOIR_PLAIN] * COLS for _ in range(ROWS)]
 
-# <Constructions par zones : asphalt, marquages, bords, coins>
+# <Constructions par zones : asphalt, marquages, bords, coins — en utilisant les constantes vocab>
 
 # === Construction objects (optionnel) ===
 objects = []  # ou rempli si arbres/bancs
@@ -106,6 +110,15 @@ SNIPPET = {
     'objects': objects,
 }
 ```
+
+**Pour routes droites simples uniquement**, possibilité d'utiliser les macros `builders.py` :
+
+```python
+from builders import route_h, route_v  # noqa: E402
+ground = route_h(longueur=14, anti_mono_cols=[4, 10])
+```
+
+⚠️ **NE PAS écrire de nouvelles macros** dans builders.py — sauf si Papa Yann en demande explicitement une après validation de refs visuelles (workflow EP-REFS).
 
 ---
 

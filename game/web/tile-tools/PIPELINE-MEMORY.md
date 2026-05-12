@@ -127,6 +127,20 @@ Main agent (Sonnet/Opus)
 - **Résolution** : créer `vocab.py` comme **source unique** (constantes nommées français), marquer `cartography.json` DEPRECATED (champ `_DEPRECATED` dans le JSON), pointer skill+agent vers vocab.py
 - **Pattern gravé** : "une source de vérité unique, sinon la mauvaise se rappellera à toi"
 
+### F-008 : Approche macro AVANT validation brique = catastrophe (2026-05-12)
+- **Symptôme** : 8 heures d'itérations ratées sur virages 13×13, tous "génériquement corrects" mais visuellement éclaboussés
+- **Cause** : coder une macro `virage_gauche()` sans avoir d'abord **rendu + validé isolément chaque tile candidate** en mini-contexte 3×3
+- **Résolution** : créer `brick-explorer.html` pour pré-valider chaque brique (3×3, fond contexte, vote Papa Yann). Zéro macro sans briques pré-validées.
+- **Pattern gravé** : "brique élémentaire validée AVANT macro" (LESSONS L-009)
+- **Outillage** : page interactive brick-explorer, dropdown "tile candidate" + boutons "valid ext / valid int / autre / reject"
+
+### F-009 : Conversion SW_1↔SW_2-6 aveugle = artefact (2026-05-12)
+- **Symptôme** : supposer que `Sidewalk_1_11` → `Sidewalk_2_11` (même géométrie). Faux : SW_1 #11 = bordure rayée H type a, mais SW_2-6 #11 = grosse courbe NW.
+- **Cause** : les 6 tilesets Sidewalk n'ont pas la même cartographie position-pour-position
+- **Résolution** : table de mapping SW_1 → SW_2-6 gravée dans `styles.py` (10 positions mappées, autres identiques)
+- **Pattern gravé** : "mapping SW_1 vs SW_2-6 figé" (LESSONS L-010, table complète)
+- **Archivage visuel** : `_compare_sw1_final_mapping.png` planche comparative validée avec Papa Yann
+
 ### F-007 : Inventer la composition de scènes = piège (2026-05-11, soir)
 - **Symptôme** : J'ai commencé à coder des macros `route_h`, `route_v` qui répliquent exactement les recettes existantes. Mais **Papa Yann trouve les recettes existantes pas OK visuellement** → mes macros héritaient du défaut → circulaire
 - **Cause** : confusion entre "documenter des constantes" (légitime, vocab.py) et "inventer comment composer" (illégitime, je n'ai pas l'œil de Papa Yann)
@@ -177,6 +191,24 @@ Main agent (Sonnet/Opus)
 - **Application** : ne pas continuer à exécuter une phase juste parce que je l'ai prévue ; signaler au moindre doute. C'est valorisé, pas pénalisé.
 - **Format challenge** : transmettre 5-7 observations comparatives (forme + fond), pas un audit complet. L'autre PMO trie et patche ce qui est pertinent dans son scope.
 
+### P-008 : Planche comparative = méthode validée pour vérifier une famille entière (2026-05-12)
+- **Observation** : au lieu de "render 60 PNG isolés, Papa Yann les regarde 1 par 1", générer 1 grosse image grille (N tiles × M tilesets, labellisée, chaque cellule mini-contexte 3×3) → validation instantanée
+- **Conséquence** : pour toute **famille entière de tiles** (bordures, coins, meubles, etc.), utiliser la planche-contact plutôt que PNG isolés
+- **Application** : script générique `scripts/compare_tilesets.py` réutilisable pour Asphalt, Grass, Wall, Sidewalk, Fence
+- **Archivage** : source de vérité visuelle figée (planche PNG = proof of concept)
+
+### P-009 : Brick-explorer.html = workflow pré-validation recommandé (2026-05-12)
+- **Observation** : création d'une page interactive pour valider **chaque tile candidate isolée** en contexte 3×3 (fond asphalte/trottoir au choix, vote simple courbe ext / point int / autre / rejeté)
+- **Conséquence** : avant de coder une macro, passer par brick-explorer pour pré-valider chaque brique avec Papa Yann
+- **Application** : chaque designer doit utiliser brick-explorer avant de commit une recette macro (virage, carrefour, immeuble, etc.)
+- **Pattern** : "brique élémentaire validée AVANT macro, jamais l'inverse"
+
+### P-010 : PIL lecture w/h obligatoire pour multi-cells (2026-05-12)
+- **Observation** : le présupposé "tile 48×48 px = 1×1 cellule" est FAUX pour 69% du tileset (sprites multi-cells). Vraie répartition : 3040 unitaires (31%) + 6473 multi-cells (69%) + 298 catalogues
+- **Conséquence** : avant d'inclure un PNG dans tile_picker_data.js, **lire ses dimensions réelles via PIL** (w/h en cellules = dimensions en px / 48)
+- **Application** : `build_tile_picker_data.py` refactorisé pour scanner récursivement avec PIL, jamais présumer 1×1
+- **Détection future** : si export tile-picker contient dimensions 1×1 pour un sprite 4×3 → data-corruption, bloquer
+
 ---
 
 ### 2026-05-12 — Clôture EP-VOCAB, livraison pipeline route+virages v3, intégration builders.py
@@ -196,11 +228,18 @@ Main agent (Sonnet/Opus)
 3. Playground mis à jour : `game/web/tools/vocab-playground.html` cards v3 + status validated
 **Verdict** : PASS 9/10 (aucune issue, reviewers ont juste signalé "visually clean").
 
-**Leçons à graver dans LESSONS.md** :
-- P-008 : Pipeline 3-sachants (simplifier→designer→reviewer) = unité travail pour recettes complexes (latence 8 min vs 40+ min tâtonnement)
-- P-009 : Anti-pattern détecté 2026-05-12 — vérifier agents/skills avant de coder (checklist : (1) skill maxplay-tiles ? (2) pipeline 3-agents ? (3) PMO à invoquer ?)
-- P-010 : Géométrie virage 3-chaussées = carré 7×7, 4 coins critiques, marquages s'arrêtent à la limite de la branche pure
-- P-011 : Anti-mono pool 3 + décalage voie → `_VOIE_POOL = [_a(20), _a(22), _a(27)]` avec cycle modulo, casse la mono "tâches"
+**Livrables créés session 2026-05-12 (après 8h tâtonnement macro)** :
+1. `styles.py` : module exposant `tile(style, n)` + résolution automatique SW_1↔SW_2-6 mapping
+2. `test_ref_papa_4virages.py` : recette RÉFÉRENCE CANONIQUE 14×14 (compo Papa Yann tile-picker) montrant 4 virages dans anneau
+3. `compare_tilesets*.py` : famille scripts générant planches comparatives (PNG grille labellisée pour validation visuelle)
+4. `build_tile_picker_data.py` : refonte scan PIL w/h vraies dims (non plus tout présumé 1×1) → 3040 unitaires + 6473 multi-cells + 298 catalogues séparés
+5. `brick-explorer.html` : page interactive validant chaque tile isolée (3×3, fond asphalte/trottoir, vote courbe ext / point int / autre / rejeté)
+
+**Leçons gravées dans LESSONS.md** :
+- L-009 : Brique élémentaire validée visuellement AVANT macro (correction 9)
+- L-010 : Mapping SW_1 vs SW_2-6 figé (correction 10, table complète)
+- L-011 : Planche comparative HTML/PNG = méthode validée (correction 11)
+- L-012 : Dimensions réelles via PIL obligatoires, non presumer 1×1 (correction 12)
 
 **Conséquence** : EP-VOCAB **clôturé 2026-05-12** (scope révisé post-pivot 2026-05-11). Briefs complexes reportés en EP-REFS (session dédiée).
 
@@ -212,6 +251,9 @@ Main agent (Sonnet/Opus)
 |-----------|----------------|---------|
 | Reviewer en Haiku suffit (verdict structuré rapide) | ✅ **VALIDÉE 2026-05-12** | < 1 min par recette, verdict fiable 9/10 PASS |
 | Designer en Sonnet vs Opus | ✅ **VALIDÉE 2026-05-12** | Sonnet a produit 5 recettes route+virages sans dériver, respecte 6 règles |
+| Planche comparative = efficace pour valider famille entière | ✅ **VALIDÉE 2026-05-12** | 1 PNG grille (Sidewalk 11-20 + 3 tilesets) validée en 1 coup d'œil, source de vérité archivée |
+| Brick-explorer = workflow pré-validation opérationnel | ✅ **IMPLÉMENTÉE 2026-05-12** | Page interactive validant chaque tile isolée (3×3, fond contexte, vote Papa Yann) |
+| PIL lecture w/h plutôt que présumer 1×1 | ✅ **VALIDÉE 2026-05-12** | `build_tile_picker_data.py` refactorisé, détecte 69% multi-cells correctement |
 | Simplifier nécessaire ou fusionnable avec designer | À affiner après 3 sessions | Observe si simplifier sort valeur ajoutée > 20% du temps |
 | Auto-déclenchement game-tile-pmo à chaque PASS reviewer | ✅ **À systématiser** | Chaque PASS doit appeler game-tile-pmo pour graver la leçon |
 

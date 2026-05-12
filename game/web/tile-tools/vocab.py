@@ -120,27 +120,41 @@ BORD_E: str = BORD_EST
 
 
 # ═══════════════════════════════════════════════════════════════════════════
-#  TROTTOIR — coins (carrefour ou bord de quartier)
+#  VIRAGE — 2 briques élémentaires par diagonale (validé Papa Yann 2026-05-12)
 # ═══════════════════════════════════════════════════════════════════════════
+#
+# Un virage = COURBE EXT (gros arc trottoir côté extérieur du virage)
+#           + POINT INT (petit accroche trottoir côté intérieur du virage)
+#           + routes droites (route_h / route_v) qui mènent au virage
+#           + asphalte plein dans l'angle entre les 2 routes
+#
+# Convention : le suffixe (SE/SW/NE/NW) indique vers QUELLE diagonale
+# pointe la tile (où est le coin du trottoir / le centre de la courbe).
+#
+# Source de vérité : brick-explorer.html validé 2026-05-12.
+# Les tiles Sidewalk_2_X ont exactement la même sémantique (variante beige).
 
-# Coins INT = coin où le trottoir convexe pointe vers la diagonale nommée.
-# Utilisés au coin d'un croisement ou au bord d'un quartier.
-COIN_INT_SE: str = _s(1)
-COIN_INT_SW: str = _s(3)
-COIN_INT_NE: str = _s(5)
-COIN_INT_NW: str = _s(7)
+# Petit accroche trottoir côté intérieur du virage (= côté concave de la route)
+POINT_INT_SE: str = _s(1)   # trottoir s'avance vers SE dans l'asphalte
+POINT_INT_SW: str = _s(3)   # vers SW
+POINT_INT_NE: str = _s(5)   # vers NE
+POINT_INT_NW: str = _s(7)   # vers NW
 
+# Gros arc trottoir côté extérieur du virage (= côté convexe de la route)
+COURBE_EXT_SE: str = _s(11)  # trottoir gros arc convexe SE
+COURBE_EXT_SW: str = _s(12)  # SW
+COURBE_EXT_NW: str = _s(13)  # NW
+COURBE_EXT_NE: str = _s(14)  # NE
 
-# ═══════════════════════════════════════════════════════════════════════════
-#  VIRAGES — arcs trottoir (route qui tourne à 90°)
-# ═══════════════════════════════════════════════════════════════════════════
-
-# Arc virage : asphalte d'un côté + arc trottoir convexe ou concave.
-# Le suffixe indique la position du coin INTÉRIEUR du virage.
-VIRAGE_INT_SE: str = _s(11)   # asphalte NW + arc trottoir convexe SE
-VIRAGE_INT_SW: str = _s(12)   # asphalte NE + arc trottoir convexe SW
-VIRAGE_INT_NW: str = _s(13)   # trottoir NW + arc asphalte concave SE
-VIRAGE_INT_NE: str = _s(14)   # trottoir NE + arc asphalte concave SW
+# ── Aliases dépréciés (compat avec recettes existantes — à migrer puis supprimer)
+COIN_INT_SE: str = POINT_INT_SE
+COIN_INT_SW: str = POINT_INT_SW
+COIN_INT_NE: str = POINT_INT_NE
+COIN_INT_NW: str = POINT_INT_NW
+VIRAGE_INT_SE: str = COURBE_EXT_SE
+VIRAGE_INT_SW: str = COURBE_EXT_SW
+VIRAGE_INT_NW: str = COURBE_EXT_NW
+VIRAGE_INT_NE: str = COURBE_EXT_NE
 
 
 # ═══════════════════════════════════════════════════════════════════════════

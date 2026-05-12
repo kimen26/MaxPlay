@@ -1,7 +1,14 @@
 ---
 maintenu_par: Directeur (décisions contenu) + Archiviste (structure physique)
-mis_a_jour: 2026-04-28
+mis_a_jour: 2026-05-12
 ---
+
+> ⚠️ **Refonte 2026-05-12 — non encore propagée intégralement dans ce fichier** :
+> - Étape 2 (Plan) supprimée par fusion avec étape 1 (Pitch+Plan)
+> - Architecte deprecated → matière intégrée au Conseiller
+> - Préfixes étapes (`1-pitch-plan.md`, `3-briefs/`, etc.) appliqués aux dossiers stories
+> - Archiviste élevé au rang de maillon central proactif (équivalent PMO côté forme)
+> - Source de vérité courante : `PROCESS.md` (10 étapes) + `pmo/INVARIANTS.md`
 
 # Cartographie des domaines — Narration MaxPlay
 
@@ -16,8 +23,8 @@ mis_a_jour: 2026-04-28
 | Agent | Modèle | Ce qu'il garantit | Ce qu'il ne fait PAS |
 |-------|--------|-------------------|----------------------|
 | **PMO** `narration-pmo` | Haiku | Tickets ouverts/fermés · décisions tracées · sprint-log à jour · max 3 tickets actifs | Décisions de contenu · arbitrage narratif |
-| **Directeur** `narration` | Opus | Sélection parmi 10 writers · pilotage rewrite consolidé · version finale · décisions contenu ambiguës | Indexation · création dossiers · archivage |
-| **Writers × 10** (9 libres + 1 guidé) | Opus 4.7 (Claude×2) · Kimi K2.6 (×4) · DeepSeek V4-Pro (×2) · Grok 4.3 (×2) | Version complète dans `stories/<NNN-slug>/versions-writers/` + note d'intention. Libres = FORME uniquement. Guidé = forme + annexe AXES 1-6. | Cohérence univers (c'est le GateKeeper qui vérifie) |
+| **Directeur** `narration` | Opus | Sélection parmi 14 writers · pilotage rewrite consolidé · version finale · décisions contenu ambiguës | Indexation · création dossiers · archivage |
+| **Writers × 14** (13 libres + 1 guidé, refonte v2 2026-05-12, "reco" = température créatif officielle par fournisseur) | Claude Opus/Sonnet/Haiku × déf/reco (×6) · Kimi K2.6 déf/reco/thinking/guidé (×4) · DeepSeek V4-Pro déf/reco (×2) · Grok 4.3 déf/reco (×2) | Version complète dans `stories/<NNN-slug>/4-versions-writers/` + note d'intention. Libres = FORME uniquement. Guidé = forme + axes 1-6 + trame story optionnelle (`3-briefs/brief-writer-guide.md`). Référence températures : `equipe/references/temperatures-llm.md`. | Cohérence univers (c'est le GateKeeper qui vérifie) |
 | **GateKeeper** `narration-gatekeeper` | Haiku | PASS/FAIL ennéagramme · univers · prénoms | Réécriture · style · contenu créatif |
 | **Archiviste** `narration-archiviste` | Haiku | Structure dossiers conforme · index à jour · README YAML rempli · lookup.yml cohérent | Décisions de contenu · création narrative |
 | **Science** `narration-science` | Haiku | Faits biologiques/physiques/écologiques validés | Style · structure · cohérence univers |
@@ -97,24 +104,23 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 
 | Fichier | Contenu | Qui crée | Étape PROCESS |
 |---------|---------|----------|---------------|
-| `stories/<NNN-slug>/pitch.md` | Pitch MOYEN 4 cases | Conseiller | 1 |
-| `stories/<NNN-slug>/plan-histoire.md` | Plan d'Histoire Kishōtenketsu | Architecte | 2 |
-| `stories/<NNN-slug>/briefs/{brief-univers,brief-personnages,brief-histoire}.md` | Briefs writers stateless | Directeur | 3 |
-| `stories/<NNN-slug>/versions-writers/*.md` | 10 versions (2 Claude Opus + 3 Kimi libre + 1 Kimi guidé + 2 DeepSeek + 2 Grok) + notes d'intention | Writers | 4 |
-| `stories/<NNN-slug>/lecteurs-temoins/{enfant-garcon,enfant-fille,dyade-papa-garcon,dyade-papa-fille,dyade-maman-garcon,dyade-maman-fille}.md` | 6 retours lecteurs texte libre | Lecteurs | 5 |
-| `stories/<NNN-slug>/selection.md` | Choix version base + éléments à récupérer + brief rewrite | Directeur | 6 |
-| `stories/<NNN-slug>/rewrite/v1.md` | Rewrite (1 cycle max) | Directeur | 7 |
-| `stories/<NNN-slug>/gatekeeper-verdict.md` | PASS/CORRECTIONS + motif | GateKeeper | 8 |
-| `stories/<NNN-slug>/kanban.md` | Suivi des 11 étapes (source de vérité reprise) | owner d'étape | toutes |
-| `stories/<NNN-slug>/synthese-lecteurs.md` | Consolidation Directeur des retours lecteurs (étape 5) | Directeur | 5 → 6 |
-| `stories/<NNN-slug>/relecture-rewrite/` | Sous-panel relecture rewrite (3-4 lecteurs ciblés) | Lecteurs | 9 |
-| `stories/<NNN-slug>/synthese.md` + `relecture.md` | Compilation + relecture finale Directeur | Directeur | 9 |
-| `stories/<NNN-slug>/texte.md` | **CANON** — figé post-GateKeeper PASS + auteur-validé | Directeur | 9 |
+| `stories/<NNN-slug>/1-pitch-plan.md` | Pitch+Plan fusionnés (4 cases + Kishōtenketsu léger) | Conseiller | 1 |
+| `stories/<NNN-slug>/3-briefs/{brief-univers,brief-personnages,brief-histoire,_writer-package}.md` | Briefs writers stateless (3 séparés + 1 autoporteur pour MCP externes) | Directeur | 3 |
+| `stories/<NNN-slug>/4-versions-writers/*.md` | 10 versions (2 Claude Opus + 3 Kimi libre + 1 Kimi guidé + 2 DeepSeek + 2 Grok) + notes d'intention | Writers | 4 |
+| `stories/<NNN-slug>/5-lecteurs-temoins/*.md` | 20 retours lecteurs (panel 6 transitoire pour stories <003) texte libre | Lecteurs | 5 |
+| `stories/<NNN-slug>/6-selection.md` | Choix version base + éléments à récupérer + brief rewrite | Directeur | 6 |
+| `stories/<NNN-slug>/7-rewrite/<llm>-rewrite-v1.md` | Rewrite (1 cycle max) | Writer top 1 | 7 |
+| `stories/<NNN-slug>/8-gatekeeper-verdict.md` | PASS/CORRECTIONS + motif | GateKeeper | 8 |
+| `stories/<NNN-slug>/kanban.md` | Suivi des 10 étapes (source de vérité reprise) | owner d'étape | toutes |
+| `stories/<NNN-slug>/5-synthese-lecteurs.md` | Consolidation Directeur des retours lecteurs (étape 5) | Directeur | 5 → 6 |
+| `stories/<NNN-slug>/9-relecture-rewrite/` | Panel 20 (ou 6 transitoire) re-relecture du rewrite | Lecteurs | 9 |
+| `stories/<NNN-slug>/10-texte.md` | **CANON** — figé post-GateKeeper PASS + auteur-validé | Directeur | 10 |
+| `stories/<NNN-slug>/10-synthese-finale.md` | Synthèse finale Directeur (post-canon) | Directeur | 10 |
 | `stories/<NNN-slug>/_archive/` | Versions abandonnées + anciennes vN (jamais d'overwrite) | tous | toutes |
 
 **Règle :** rien n'est effacé. Versions abandonnées → `_archive/`. Post-canon V2/V3 : `texte.md` actuel → `_archive/v1-YYYY-MM-DD.md`, nouveau `texte.md`.
 
-**Référence complète :** [`PROCESS.md`](PROCESS.md) (workflow militaire 11 étapes — refonte 2026-05-08, ajout étape 9 re-relecture rewrite).
+**Référence complète :** [`PROCESS.md`](PROCESS.md) (workflow militaire 10 étapes — refonte 2026-05-08, ajout étape 9 re-relecture rewrite).
 
 ---
 

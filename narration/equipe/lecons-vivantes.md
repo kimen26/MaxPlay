@@ -187,6 +187,62 @@ claude-rewrite-v1 (003) : kimi-run2 au présent a contaminé tout le rewrite, ki
 
 **Quote Papa Yann** : *« Que ce qui est normal à ses yeux aide les autres, comme la force du 8 ou le fun du 7 ou la précision du 1. »*
 
+---
+
+## Observations process
+
+> Patterns d'amélioration opérationnelle du PROCESS narratif.
+
+### OBS-003 — Cohabitation > migration : pattern pour fournisseurs multi-usages (2026-05-12)
+
+**Observation** : Ticket ARCHI-009 ("Migrer MCP `ask_kimi` vers API Moonshot officielle pour exposer `top_p` + mode thinking") attendait arbitrage. Analyse : l'endpoint gratuit `kimi.com/coding` et l'API officielle `api.moonshot.ai` servent deux régimes d'usage distincts (writers #8 #9 créatif payant vs général/défaut gratuit).
+
+**Pattern identifié** : quand 2 usages divergents du même fournisseur coexistent, **créer 2 MCP distincts avec env var séparée** plutôt que migrer le seul endpoint existant.
+
+**Décision 2026-05-12 — DEC-ARCHI-009** :
+- ✅ **Conserver** `ask_kimi` (gratuit, `api.kimi.com/coding`, env `MOONSHOT_API_KEY`) → writers #7 kimi-def + #10 kimi-guide + usage général
+- ✅ **Ajouter** `ask_kimi_payant` (officiel, `api.moonshot.ai/v1`, env `MOONSHOT_PAYANT_API_KEY`) → STRICTEMENT writers #8 kimi-reco + #9 kimi-thinking
+
+**Bénéfices** :
+- Préserve usages gratuits existants (questions tech, exploration, brainstorm)
+- Coûts engagés SEULEMENT là où réellement nécessaires (2 writers créatif)
+- Séparation nette (endpoints, env vars, intentions différentes)
+- Réversible facilement si contexte change (Moonshot baisse prix, ou gratuit expose top_p)
+
+**Enjeu** : Migration "all-or-nothing" = destructive pour les usages gratuits. Cohabitation = optimalité.
+
+**Anti-pattern à éviter** : Prétendre que "migrer le seul endpoint" est plus simple que "maintenir 2 MCP". C'est faux — les coûts cachés de perte d'usages gratuits > coûts de gestion 2 outils distincts.
+
+**Prochaine étape** : Appliquer ce pattern si un 3e fournisseur expose des capacités payantes intéressantes à côté de son offre gratuit.
+
+---
+
+### OBS-002 — Convention casting v2 : « max » était trompeur sémantiquement (2026-05-12)
+
+**Observation** : Config 10 writers (étape 4) utilisait terme `max` pour désigner température. Or chaque fournisseur officiel recommande une valeur **inférieure** au plafond max pour la creative writing (ex: Kimi reco 1.0 créatif vs max 1.0, DeepSeek reco 1.5 créatif vs max 2.0, Grok reco 1.2 créatif vs max 2.0).
+
+**Correction 2026-05-12** : Renommer partout `max` → `reco` (valeur recommandée créatif du fournisseur). Référence : `equipe/references/temperatures-llm.md` (à créer).
+
+**Enjeu** : Nommer un writer par `max` brut = confusion sémantique. Au-delà de la reco créatif officielle = perte de cohérence narrative (vérifié empiriquement : briefs writers reçoivent trop de conflits "modèle ne comprend pas message créatif au max absolu").
+
+**Prochaine étape** : Audit propagation `max` → `reco` dans INVARIANTS, PROCESS, agents writers (tous les sous-fichiers).
+
+**Anti-pattern à éviter** : Nommer un writer par degré de température sans contexte fournisseur officiel.
+
+---
+
+### OBS-001 — Calibration writers fixée trop tôt (2026-05-12)
+
+**Observation** : Config 10 writers était déterminée au projet V1 sans test de variance modèle+température. Hypothèse implicite : Opus > tous = pas validée.
+
+**Correction 2026-05-12** : Passage 10 → 14 writers pour tester Opus/Sonnet/Haiku Claude défaut vs créatif + Kimi thinking vs non-thinking + DeepSeek/Grok étendus.
+
+**Méthode** : Après STORY-002/003/004 (min. 3 histoires), comparer top 1 par modèle et réduire vers 6-8 writers optimaux (ticket ARCHI-008).
+
+**Enjeu** : Découvrir si qualité top 1 vient du modèle ou du couple modèle+température, et si un modèle "less-expensive" bien calibré = meilleur ROI qu'Opus défaut.
+
+**Prochaine étape** : log des résultats top 1 STORY-002-004 dans nouvelle section `Calibration writers — résultats évaluation` (à créer après 3e histoire).
+
 **Anti-pattern à éviter dans les briefs writers** :
 - ❌ Chercher à faire évoluer un perso hors de son type (« Nono qui dit moi je veux ! » = désintégration vers 3, pas son essence)
 - ❌ Empiler des négations explicatives (« 8 mais pas agressif, mais pas dur, mais pas… »)

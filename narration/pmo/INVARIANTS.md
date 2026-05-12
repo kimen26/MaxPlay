@@ -9,14 +9,76 @@
 
 | Métrique | Valeur | Notes |
 |----------|--------|-------|
-| Étapes PROCESS | **11** (0 à 10) | Owner / Inputs / Outputs / Critères PASS définis par étape |
-| Versions writers (étape 4) | **10** | 2 Claude + 4 Kimi (dont 1 guidé) + 2 DeepSeek + 2 Grok |
+| Étapes PROCESS | **10** (0, 1, 3-10 — étape 2 supprimée 2026-05-12 par fusion avec étape 1) | Owner / Inputs / Outputs / Critères PASS définis par étape |
+| Préfixage fichiers stories | **Oui depuis 2026-05-12** | `1-pitch-plan.md`, `3-briefs/`, `4-versions-writers/`, `5-lecteurs-temoins/`, `6-selection.md`, `7-rewrite/`, `8-gatekeeper-verdict.md`, `9-relecture-rewrite/`, `10-texte.md`. Fichiers transverses (kanban, README) sans préfixe. |
+| Versions writers (étape 4) | **14** (refonte 2026-05-12 v2 — calibration multi-modèles) | 6 Claude (2 Opus + 2 Sonnet + 2 Haiku, déf/**reco**) + 4 Kimi (déf/reco/thinking/guidé) + 2 DeepSeek (déf/reco) + 2 Grok (déf/reco) — détail bloc *Casting writers étape 4* ci-dessous. "reco" = température recommandée créatif officielle (cf. [`../equipe/references/temperatures-llm.md`](../equipe/references/temperatures-llm.md)) |
 | Panel lecteurs (étape 5) | **20** dès STORY-003. Transitoire **6** pour 002 (commencé avant la décision panel 20) |
 | Panel re-relecture (étape 9) | **20** dès STORY-003. Transitoire **6** pour 002 |
 | Validations auteur obligatoires | **3** : Étape 1 (Pitch), Étape 6 (Sélection), Étape 10 (Canon) |
 | Plafond rewrite (étape 7) | **1 cycle max** par histoire |
 | SLA "EN ATTENTE AUTEUR" | **3 jours** → au-delà : kanban 🔴 BLOQUÉ |
 | Max tickets actifs PMO | **3** simultanés |
+
+---
+
+## Casting writers étape 4 (14 versions — refonte calibration 2026-05-12)
+
+> **Source de vérité unique pour "combien de writers / quels modèles / libre vs guidé / température"**. Détail mécanique d'appel : `narration/equipe/PROCESS.md` L.108-140.
+> **Refonte 2026-05-12** : passage de 10 à 14 writers pour calibration modèles+température sur 3-5 histoires (réduction à config finale après). Test : Opus/Sonnet/Haiku défaut vs créatif + Kimi thinking vs non-thinking + DeepSeek/Grok étendus.
+
+| Bloc | # | Identité | Modèle | Thinking/Reasoning | Température | Top-p | Invocation | Brief |
+|------|---|----------|--------|--------------------|-------------|-------|------------|-------|
+| **Claude** | 1 | claude-opus-def | `claude-opus-4-7` | low | **défaut Anthropic** (param non envoyé, ≈1.0) | défaut | `narration-writer-claude-libre` | LIBRE |
+| | 2 | claude-opus-reco | `claude-opus-4-7` | low | **1.0** (plafond Anthropic = reco créatif) | défaut | `narration-writer-claude-libre` | LIBRE |
+| | 3 | claude-sonnet-def | `claude-sonnet-4-6` | low | défaut Anthropic | défaut | `narration-writer-claude-libre` | LIBRE |
+| | 4 | claude-sonnet-reco | `claude-sonnet-4-6` | low | 1.0 | défaut | `narration-writer-claude-libre` | LIBRE |
+| | 5 | claude-haiku-def | `claude-haiku-4-5` | low | défaut Anthropic | défaut | `narration-writer-claude-libre` | LIBRE |
+| | 6 | claude-haiku-reco | `claude-haiku-4-5` | low | 1.0 | défaut | `narration-writer-claude-libre` | LIBRE |
+| **Kimi** | 7 | kimi-def | `kimi-k2.6` | off | **0.6** (reco Moonshot Instant mode) | — (MCP gratuit) | `ask_kimi` (MCP gratuit) | LIBRE |
+| | 8 | kimi-reco | `kimi-k2.6` | off | **1.0** (haut de reco Moonshot) | **0.95** ✅ | **`ask_kimi_payant`** (MCP officiel) | LIBRE |
+| | 9 | kimi-thinking | `kimi-k2.6` | **on (thinking activé)** | **1.0 fixe** (doc K2.6 thinking) | 0.95 ✅ | **`ask_kimi_payant`** (`thinking: true`) | LIBRE |
+| | 10 | kimi-guide | `kimi-k2.6` | off | 0.6 (reco Instant) | — (MCP gratuit) | `narration-writer-kimi-guide` → `ask_kimi` gratuit | **GUIDÉ** (axes 1-6 + leçons + trame histoire) |
+| **DeepSeek** | 11 | deepseek-def | `deepseek-v4-pro` | off | **défaut DeepSeek** (1.0 API = 0.3 modèle réel) | défaut | `ask_deepseek` (MCP) | LIBRE |
+| | 12 | deepseek-reco | `deepseek-v4-pro` | off | **1.5** (reco officielle DeepSeek creative writing) | défaut | `ask_deepseek` (MCP) | LIBRE |
+| **Grok** | 13 | grok-def | `grok-4.3` | low | **défaut xAI** (≈1.0, param non envoyé) | défaut | `ask_grok` (MCP) | LIBRE |
+| | 14 | grok-reco | `grok-4.3` | low | **1.2** (haut reco créatif — au-delà 1.5 = incohérent) | défaut | `ask_grok` (MCP) | LIBRE |
+
+> **Règles "température"** :
+> - `def` = ne PAS envoyer le param. Laisse le fournisseur appliquer son défaut.
+> - `reco` = valeur officielle "creative writing" du fournisseur (cf. [`../equipe/references/temperatures-llm.md`](../equipe/references/temperatures-llm.md) — doc autorité).
+> - Référence Papa Yann 2026-05-12 : "max → reco" parce que `2.0` Grok/Kimi = incohérent narratif.
+>
+> ✅ **Cohabitation stricte MCP Kimi (refonte 2026-05-12 — résout ARCHI-009)** :
+> - **`ask_kimi`** (gratuit, endpoint `kimi.com/coding/v1`, env `MOONSHOT_API_KEY`) → writers #7 kimi-def + #10 kimi-guide + tout usage général
+> - **`ask_kimi_payant`** (officiel, endpoint `api.moonshot.ai/v1`, env `MOONSHOT_PAYANT_API_KEY`) → STRICTEMENT writers #8 kimi-reco (top_p 0.95) + #9 kimi-thinking (mode thinking)
+> - Détail : [`infra/mcp/MODELS.md`](../../infra/mcp/MODELS.md) § *Cohabitation stricte*.
+
+**Total : 13 writers LIBRES + 1 writer GUIDÉ = 14 versions.**
+
+**Évaluation** : après 3-5 histoires, arbitrage réduction à config finale (~6-8 writers optimaux). Ticket `ARCHI-NNN` pour suivi (cf. backlog).
+
+### Leviers de variance (imposables par Directeur dans `brief-histoire.md`)
+
+| Levier | Options |
+|--------|---------|
+| **Température** | Param MCP par writer (Claude : 0.0–1.0 / Kimi/DeepSeek/Grok : 0.0–2.0). Si non spécifiée → défaut modèle. |
+| **Angle narratif** | Sobre · Sensoriel · Dynamique (dialogues) · Instinct (libre) |
+| **POV / focal** | Wex témoin · perso A · perso B · narrateur invisible |
+| **Ouverture** | In medias res · ouverture lente · dialogue d'amorce |
+| **Longueur cible** | 400 mots · 550 mots · 700 mots |
+
+⚠️ Le bloc `## Les 4 Writers — angles assignés` de `equipe/ORGANIGRAMME.md` parle de **4 angles narratifs**, pas de 4 writers. C'est un levier de variance, pas une répartition writers.
+
+### 6 axes du writer GUIDÉ (annexe AXES 1-6 — `narration-writer-kimi-guide`)
+
+1. **Créature vivante** (objet/lieu/élément a une âme)
+2. **Geste avant parole** (action physique avant dialogue)
+3. **Onomatopée légère** (ploc, frou, tsing — pas BOUM)
+4. **Fin rituel** (clôture par geste répété, pas morale)
+5. **Mystère vs résolution** (laisser zone d'ombre)
+6. **Faute volontaire** (détail "imparfait" qui rend humain)
+
+Règle : le writer guidé active **2-3 axes librement, jamais 4+**. Source vivante : `equipe/lecons-vivantes.md`.
 
 ---
 
@@ -86,7 +148,7 @@ Source : [`../equipe/patte-narrative-maxplay.md`](../equipe/patte-narrative-maxp
 | # | Titre | Statut | Owner courant |
 |---|-------|--------|---------------|
 | 001 | Le Pont Cassé | ✅ canon (refonte 2026-05-08) | — |
-| 002 | Libellule Résonance | 🟢 étape 4 prête à lancer (Q-ouvertes auteur) | Directeur |
+| 002 | Libellule Résonance | 🟢 **étape 4 prête à lancer** (étapes 0/1/3 ✅, Q-ouvertes tranchées 2026-05-12, casting Wex+Juju+Nono) | Directeur |
 | 003+ | À démarrer | ⚪ — | — |
 
 ---

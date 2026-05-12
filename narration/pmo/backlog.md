@@ -20,6 +20,7 @@
 
 | Statut | ID | Titre | Priorité | Assigné | Prochaine action |
 |--------|-----|-------|----------|---------|------------------|
+| ⚪ | **ARCHI-008** | **Réduire casting writers après 3-5 histoires de calibration** | **Haute** (post-évaluation) | Auteur + PMO | Config 14 writers est test — après évaluation STORY-002/003/004, arbitrer réduction vers 6-8 writers optimaux. Comparer top 1 par modèle (Opus/Sonnet/Haiku Claude vs Kimi défaut/thinking/guidé vs DeepSeek vs Grok). Documenter ratio modèle/température gagnant dans `decisions.md`. À relancer PMO fin STORY-004. |
 | ⚪ | **VOIX-001** | **Créer agent `voice-director` (EP-026)** — markup émotionnel ElevenLabs | **Haute** | Auteur + Audio | Convertit didascalies FR (`*(doucement)*`) → tags v3 ElevenLabs (`[softly]`). Vocab autorisé dans `personnages/voix-meta/_CHEATSHEET-WRITERS.md`. Couvre jeu + narration. Pré-requis pour passer à l'audio des histoires. |
 | ⚪ | **VOIX-002** | **Créer voice_id ElevenLabs des 2 narrateurs (H + F)** | **Haute** | Auteur | Voice Design ElevenLabs depuis prompts `personnages/voix-meta/narrateur-h.md` + `narrateur-f.md`. Stocker voice_id dans frontmatter des fichiers. Pré-requis pour générer l'audio. |
 | ⚪ | **VOIX-003** | **Créer voice_id ElevenLabs des 10 persos (4-5 ans)** | Normale (après VOIX-002) | Auteur | Voice Design ElevenLabs depuis prompts `personnages/type-NN/voix.md` + `wex/voix.md`. Stocker voice_id dans frontmatter. F + M variant pour chaque type (sauf Wex M only). **Note 2026-05-12** : décision en cours sur "10 voix dédiées" vs "2-3 voix de base + tags variants" (test Wex v20 neutre en cours). |
@@ -60,6 +61,7 @@
 
 | Statut | ID | Titre | Date |
 |--------|-----|-------|------|
+| ✅ | ARCHI-009 | Cohabitation stricte MCP Kimi gratuit + payant (résout 3 Q-ouvertes) | 2026-05-12 |
 | ✅ | TEST-PROCESS-001 | 001 V2 chemin CORRECTION (test parallèle abandonné) | 2026-05-08 |
 | ✅ | TEST-PROCESS-003 | 003-le-pont-casse-v2 — PROCESS 11 étapes complet (canonisé 001) | 2026-05-08 |
 | ✅ | STORY-002-V2 | Le Rire qui reste — V2 (en pause arc 2, diffère à S2) | 2026-05-08 |

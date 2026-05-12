@@ -11,26 +11,44 @@ maintenu_par: Auteur (John) + agent narration-pmo
 
 ---
 
-## Modèles courants (état 2026-05-06)
+## Modèles courants (état 2026-05-12)
 
-| Outil MCP | LLM | Modèle | Endpoint | Mode thinking | Notes |
-|-----------|-----|--------|----------|---------------|-------|
-| `ask_grok` | xAI | `grok-4.3` | `https://api.x.ai/v1` | `reasoning_effort: "low"` (juste au-dessus de none) | 1M ctx, sorti mai 2026, -40% prix vs 4-fast |
-| `ask_kimi` | Moonshot AI | `kimi-k2.6` | `https://api.moonshot.ai/v1` | non-thinking (modèle base, pas Kimi-Thinking) | Sorti 2026-04-20, MoE 1T params / 32B actifs |
-| `ask_deepseek` | DeepSeek | `deepseek-v4-pro` (défaut) ou `deepseek-v4-flash` | `https://api.deepseek.com/v1` | `thinking: false` | V4-pro 1.6T params / 49B actifs |
-| `tts_elevenlabs` | ElevenLabs | `eleven_multilingual_v2` | `https://api.elevenlabs.io/v1` | — | TTS narration |
+| Outil MCP | LLM | Modèle | Endpoint réel | Mode thinking | Env var | Notes |
+|-----------|-----|--------|---------------|---------------|---------|-------|
+| `ask_grok` | xAI | `grok-4.3` | `https://api.x.ai/v1` | `reasoning_effort: "low"` | `XAI_API_KEY` | 1M ctx, sorti mai 2026, -40% prix vs 4-fast |
+| `ask_kimi` ⚠️ | Moonshot AI (endpoint coding passe-partout) | `kimi-for-coding` | `https://api.kimi.com/coding/v1` | non-thinking (non exposé) | `MOONSHOT_API_KEY` | **GRATUIT** — endpoint passe-partout. Pas de `top_p`, pas de mode thinking. Usage : kimi-def (#7) + kimi-guide (#10). |
+| `ask_kimi_payant` 🆕 (refonte 2026-05-12) | Moonshot AI OFFICIEL | `kimi-k2.6` | `https://api.moonshot.ai/v1` | `thinking: true/false` (exposé) | **`MOONSHOT_PAYANT_API_KEY`** | **PAYANT — usage STRICTEMENT writers narratifs kimi-reco (#8) + kimi-thinking (#9)**. Expose `top_p` + mode `thinking`. |
+| `ask_deepseek` | DeepSeek | `deepseek-v4-pro` (défaut) ou `deepseek-v4-flash` | `https://api.deepseek.com/v1` | `thinking: false` | `DEEPSEEK_API_KEY` | V4-pro 1.6T params / 49B actifs |
+| `tts_elevenlabs` | ElevenLabs | `eleven_multilingual_v2` | `https://api.elevenlabs.io/v1` | — | `ELEVENLABS_API_KEY` | TTS narration |
+
+### ⚠️ Cohabitation stricte `ask_kimi` (gratuit) vs `ask_kimi_payant` (officiel)
+
+**Règle** : on ne mélange JAMAIS les usages.
+
+| Writer | MCP à utiliser | Pourquoi |
+|--------|----------------|----------|
+| kimi-def (#7) | `ask_kimi` (gratuit) | Pas besoin de top_p ni thinking → endpoint coding suffit |
+| kimi-reco (#8) | **`ask_kimi_payant`** | Besoin `top_p: 0.95` couplé à `temperature: 1.0` (reco Moonshot) |
+| kimi-thinking (#9) | **`ask_kimi_payant`** avec `thinking: true` | Seul moyen d'activer le mode thinking K2.6 |
+| kimi-guide (#10) | `ask_kimi` (gratuit) | Temp 0.6 sans top_p — endpoint coding accepte |
+
+**Hors writers narratifs** : tout autre besoin Kimi (questions tech, exploration, etc.) → toujours `ask_kimi` (gratuit). Jamais le payant.
 
 ---
 
-## Casting writers narration (10 versions par histoire)
+## Casting writers narration (14 versions par histoire — refonte v2 2026-05-12)
 
-| Bloc | LLM | Rôle |
-|------|-----|------|
-| Claude × 2 | `claude-opus-4-7` (via agent) | libre — variance native |
-| Kimi × 3 | `kimi-k2.6` non-thinking | libre — variance native |
-| Kimi × 1 | `kimi-k2.6` non-thinking | **guidé** — annexe AXES 1-6 enrichie |
-| DeepSeek × 2 | `deepseek-v4-pro` non-thinking | libre |
-| Grok × 2 | `grok-4.3` `reasoning_effort: low` | libre |
+| Bloc | N | LLM | Rôle | MCP appelé |
+|------|---|-----|------|------------|
+| Claude | 6 | `claude-opus-4-7` / `sonnet-4-6` / `haiku-4-5` × déf/reco | libre — calibration multi-modèles | agent `narration-writer-claude-libre` (SDK direct, pas MCP) |
+| Kimi libre | 3 | `kimi-k2.6` (déf/reco/thinking) | libre — variance native + calibration | #7 → `ask_kimi` · #8 → `ask_kimi_payant` (top_p) · #9 → `ask_kimi_payant` (thinking) |
+| Kimi guidé | 1 | `kimi-k2.6` non-thinking | **guidé** — axes 1-6 + retours lecteurs + trame story | `ask_kimi` (gratuit, 0.6) |
+| DeepSeek | 2 | `deepseek-v4-pro` non-thinking × déf/reco | libre — calibration température | `ask_deepseek` |
+| Grok | 2 | `grok-4.3` `reasoning_effort: low` × déf/reco | libre — calibration température | `ask_grok` |
+
+**Total : 13 libres + 1 guidé = 14 versions.**
+Référence températures : [../../narration/equipe/references/temperatures-llm.md](../../narration/equipe/references/temperatures-llm.md).
+Détail complet : [../../narration/pmo/INVARIANTS.md](../../narration/pmo/INVARIANTS.md) § *Casting writers étape 4*.
 
 Cf. [equipe/PROCESS.md](../../narration/equipe/PROCESS.md) §4.
 
@@ -47,6 +65,28 @@ Cf. [equipe/PROCESS.md](../../narration/equipe/PROCESS.md) §4.
 ---
 
 ## Historique des changements
+
+### 2026-05-12 — Cohabitation stricte `ask_kimi` (gratuit) + `ask_kimi_payant` (officiel)
+
+**Décidé par** : Papa Yann, session 2026-05-12 (refonte casting v2 — 14 writers).
+
+**Changements** :
+- Nouvel outil MCP `ask_kimi_payant` ajouté dans [server.ts](server.ts) — endpoint `https://api.moonshot.ai/v1`, modèle `kimi-k2.6`, expose `top_p` + mode `thinking`.
+- Nouvelle env var **`MOONSHOT_PAYANT_API_KEY`** (à ajouter au niveau utilisateur Windows) — distincte de `MOONSHOT_API_KEY` (gratuit).
+- `ask_kimi` (existant, endpoint `kimi.com/coding/v1`) **conservé** pour usage général + writers #7 (kimi-def) et #10 (kimi-guide).
+- `ask_kimi_payant` (nouveau) **réservé** aux writers #8 (kimi-reco, top_p 0.95) et #9 (kimi-thinking, mode thinking).
+
+**Pourquoi** :
+- L'endpoint coding gratuit `kimi.com/coding` n'expose pas `top_p` ni mode thinking.
+- Moonshot recommande officiellement `top_p: 0.95` couplé à la température pour le créatif. Et K2.6 a un vrai mode thinking activable via API officielle.
+- Pour préserver les usages gratuits existants et n'engager des coûts que sur les 2 writers qui en ont vraiment besoin → 2 MCP distincts avec env var distincte.
+- Refonte casting v2 (10 → 14 writers) cf. [decisions.md](../../narration/pmo/decisions.md) 2026-05-12.
+
+**Liens** :
+- Ticket résolu : ARCHI-009 dans backlog.
+- Référence températures officielles : [../../narration/equipe/references/temperatures-llm.md](../../narration/equipe/references/temperatures-llm.md)
+
+---
 
 ### 2026-05-06 — Refonte casting + bascule modèles récents
 

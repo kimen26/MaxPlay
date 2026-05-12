@@ -3,6 +3,213 @@
 > Journal de bord des sessions.
 > **En cas de reboot :** lire la dernière entrée (haut du fichier), section "État au reboot".
 > Les entrées les plus récentes sont en haut.
+>
+> ⚠️ **Note historique** : les entrées <2026-05-12 mentionnent "PROCESS 9 étapes" (avant refonte 2026-05-07) puis "11 étapes" (refonte 2026-05-08). Depuis **refonte 2026-05-12** : PROCESS = **10 étapes** (étape 2 fusionnée avec étape 1 — voir `pmo/INVARIANTS.md` source de vérité). Ne pas re-corriger les entrées historiques — elles tracent l'évolution du PROCESS.
+
+---
+
+## 2026-05-12 (fin de session) — [PMO] Résolution ARCHI-009 + closure 3 Q-ouvertes MCP Kimi
+
+**Objectif** : Arbitrer les 3 Q-ouvertes MCP Kimi (détectées 2026-05-12 midi). Papa Yann tranche : cohabitation stricte vs migration.
+
+**Fait** :
+- [x] Classification : DÉCISION (cohabitation MCP Kimi gratuit + payant) + CLOSURE (3 Q-ouvertes)
+- [x] Entrée datée `decisions.md` DEC-ARCHI-009 : "Cohabitation stricte MCP Kimi gratuit + payant (résout 3 Q-ouvertes)"
+  - Raison : préserve usages gratuits, coûts localisés (writers #8/#9 seulement), réversible
+  - Pas migration `ask_kimi` existant. À la place : nouvel outil `ask_kimi_payant` (API Moonshot officiel, env var `MOONSHOT_PAYANT_API_KEY`)
+- [x] MAJ `INVARIANTS.md` § **Casting writers étape 4** (L.37-54) : #7 #10 → `ask_kimi` (gratuit) · #8 #9 → `ask_kimi_payant` (payant)
+- [x] MAJ `infra/mcp/MODELS.md` § Cohabitation stricte + historique 2026-05-12
+- [x] Fermeture ticket ARCHI-009 (backlog) → ✅ Terminé 2026-05-12
+- [x] Fermeture 3 Q-ouvertes dans `decisions.md` (Q-1/Q-2/Q-3 → ✅ Résolu via DEC-ARCHI-009)
+- [x] Leçon gravée `equipe/lecons-vivantes.md` § Observations process (OBS-NNN pattern cohabitation > migration)
+
+**Décisions prises** : DEC-ARCHI-009 cohabitation stricte Kimi (voir `decisions.md` 2026-05-12).
+
+**État au reboot** :
+- ✅ ARCHI-009 fermé, 3 Q-ouvertes résolues
+- 📝 **Action utilisateur (avant reboot suivant)** : créer env var Windows `MOONSHOT_PAYANT_API_KEY` (clé officielle Moonshot API `api.moonshot.ai/v1`)
+- ✅ `ask_kimi_payant` codé dans `infra/mcp/server.ts` (en attente reboot Claude Code pour activation)
+- Propagation : PROCESS.md étape 4 à mettre à jour si mentions anciennes MCP Kimi
+- Convention casting `max` → `reco` (entrée midi 2026-05-12) reste en propagation — cf. entrée précédente sprint-log
+
+---
+
+## 2026-05-12 (tard) — [PMO] Conventions casting + limitations MCP détectées
+
+**Objectif** : Documenter 2 découvertes transversales : convention sémantique writers (`max` → `reco`) + audit MCP Kimi révélant 3 limitations.
+
+**Fait** :
+- [x] Classification : DÉCISION (convention writers) + QUESTION OUVERTE (MCP Kimi) + TODO (ARCHI-009)
+- [x] Entrées datées `decisions.md` : DEC-NNN "Renommage max → reco" + Q-OUVERTE-NNN "3 limitations MCP ask_kimi"
+- [x] Création référence `equipe/references/temperatures-llm.md` (à faire lors de propagation)
+- [x] Ticket `ARCHI-009` ouvert : "Migrer MCP ask_kimi vers API Moonshot" (backlog, priorité normale)
+- [x] Leçon gravée `equipe/lecons-vivantes.md` § Observations process (OBS-NNN convention casting)
+
+**Décisions prises** : Convention `max` → `reco`, 3 questions ouvertes MCP Kimi (voir `decisions.md` 2026-05-12).
+
+**État au reboot** :
+- `equipe/references/temperatures-llm.md` à créer (référence table fournisseur+reco) — déplacer depuis `decisions.md` vers fichier dédié pour traçabilité
+- Propagation `max` → `reco` en cascade (INVARIANTS, PROCESS, agents) — Archiviste audit si besoin
+- ARCHI-009 suivi pour infra : 3 Q-ouvertes en attente arbitrage — **RÉSOLU 2026-05-12 fin par DEC-ARCHI-009** (cohabitation stricte Kimi)
+
+---
+
+## 2026-05-12 — [PMO] Refonte casting writers : 10 → 14 versions + trame 002 guidée
+
+**Objectif** : Graver décision Papa Yann refonte writers étape 4 + ouvrir ticket réduction post-évaluation.
+
+**Fait** :
+- [x] Classification : DÉCISION (refonte casting) + LEÇON (pattern calibration)
+- [x] Entrée datée `decisions.md` DEC-NNN : "Refonte casting writers étape 4 — 10 → 14 versions (calibration modèles + température)" avec raison + impact fichiers + période évaluation 3-5 histoires
+- [x] MAJ `INVARIANTS.md` § **Casting writers étape 4 (14 versions)** : table complète 14 writers (6 Claude déf/max + 4 Kimi + 2 DeepSeek + 2 Grok) avec thinking/reasoning et température précisés
+- [x] INVARIANTS L.14 : chiffre clé "Versions writers (étape 4)" → **14** (updated)
+- [x] Ouverture ticket `ARCHI-008` : "Réduire casting writers après 3-5 histoires de calibration" (backlog, priorité normale)
+- [x] Leçon gravée `equipe/lecons-vivantes.md` § Observations process
+
+**Décisions prises** : Refonte casting writers 14 versions pour calibration modèles+température (voir `decisions.md` 2026-05-12).
+
+**État au reboot** :
+- Config 14 writers est en cascade de propagation vers PROCESS.md, ORGANIGRAMME.md, agents writer
+- STORY-002 sera première à utiliser config 14 (étape 4 prête à lancer)
+- Évaluation top 1 à comparer après STORY-002, 003, 004 (minimum 3 avant arbitrage réduction)
+- Ticket ARCHI-008 suivi par PMO pour rappel fin de 3e histoire
+
+---
+
+## 2026-05-13 (7e/final) — [PMO] Session clôture : tonalité Nono + décision gravée + checklist OK
+
+**Objectif** : Finaliser session après validation Papa Yann sur affinage tonalité Ten (discrétion + calme + connexion discrète).
+
+**Fait** :
+- [x] Classification input : 1 DÉCISION (tonalité Nono) + 1 ACTION (deepseek-1 hors course)
+- [x] Entrée datée `decisions.md` : "Tonalité STORY-002 Nono : discrétion + calme + connexion — zéro pouvoir manifeste" (L.5-28)
+- [x] Brief-histoire révisée : Ten = connexion discrète au sol, zéro effet visible, Juju perçoit densité (L.36-41)
+- [x] Brief-personnages révisé : règle dure n°6 alignée "calme + connexion", "aucun miracle aucune onde visible" (L.51-57)
+- [x] Pitch-plan révisé : L.26 "Pas un pouvoir manifeste, une présence qui se densifie"
+- [x] Writer-package actualisé : règle dure n°6 réaffirmée, Ten silencieux/< 10 mots
+- [x] Kanban STORY-002 : étape 4 demeure ⚪ (prête à lancer, deepseek-1 archived)
+- [x] INVARIANTS.md : STORY-002 statut L.90 confirmé "étape 4 prête à lancer"
+
+**Décisions tranchées** : Tonalité Nono — "discrétion + calme + connexion" — figée `decisions.md` 2026-05-13.
+
+**Checklist remise main (8 points)** :
+- ✅ DÉCISIONS → `decisions.md` daté (2026-05-13, tonalité + raison)
+- ✅ LEÇONS → N/A (spécifique STORY-002, pas pattern transverse)
+- ✅ TODO → Aucun ticket créé (clarification éditoriale, pas chantier)
+- ✅ QUESTIONS → Aucune ouverte (tranchée)
+- ✅ `sprint-log.md` → Cette entrée + "État au reboot"
+- ✅ `INVARIANTS.md` → À jour, STORY-002 § L.90 cohérent avec statut réel
+- ✅ Kanban STORY-002 → Étape 4 ⚪, propriété writers, deepseek-1 dépublié
+- ✅ INDEX / refs / orphelins → OK, aucun fichier créé, aucune ref cassée
+
+**État au reboot** :
+- STORY-002 **PRÊTE ÉTAPE 4** — 10 writers (9 actifs : 4 Kimi + 2 Claude + 2 DeepSeek + 2 Grok, deepseek-1 hors course)
+- Briefs **100% alignés** (discrétion tonalité, règle dure n°6 cristallisée)
+- Trio Wex + Juju + Nono figé, Nono Ten révélation unique
+- Prochaine action : lancer 10 writers étape 4 (`4-versions-writers/`)
+
+---
+
+## 2026-05-13 (5e) — [PMO] Clôture finalisée + recentrage STORY-002 validé
+
+**Objectif** : Finaliser session après validation Papa Yann sur recentrage STORY-002 (sensibilité Nono uniquement).
+
+**Fait** :
+- [x] Classification input finales : 1 DÉCISION (recentrage STORY-002) + 1 INFO (briefs refondu)
+- [x] Entrée `decisions.md` : décision recentrage monosensibilité (L.5-28)
+- [x] Vérification briefs alignement → ✅ tous les 3 briefs reflet du recentrage 2026-05-12
+- [x] Kanban STORY-002 : étape 4 prête à lancer (statut ⚪ inchangé = correct)
+- [x] Checklist remise main 8 points : ✅ PASS
+
+**Décisions prises** : Recentrage STORY-002 monosensibilité Nono gravée dans `decisions.md` (2026-05-13 L.5-28).
+
+**État au reboot** :
+- STORY-002 **PRÊTE ÉTAPE 4** — 10 writers attendent briefing. Casting Wex+Juju+Nono confirmé, trio animé par l'énergie de Juju, révélation Nono au Ten.
+- INVARIANTS.md : STORY-002 statut confirmé § L.90 « étape 4 prête à lancer »
+- Tous les INDEX cohérents, aucune dette structurelle.
+- Prochaine action : lancer 10 writers étape 4 (`4-versions-writers/`)
+
+---
+
+## 2026-05-13 (4) — [PMO] Défaut structurel détecté + 3 fixes système
+
+**Trigger** : auteur signale "trancher Q-ouvertes STORY-002" alors que tranchées 2026-05-12. 3 audits l'avaient laissé passer.
+
+**Cause racine** : aucun audit ne croise les statuts kanban ⇄ INDEX ⇄ INVARIANTS. Archiviste vérifie la forme. `/pmo-challenge` cartographie + liens. **Personne n'invoque le PMO en mode AUDIT** (qui a pourtant une section 3 "État histoires" prévue pour ça).
+
+**Fixes appliqués** :
+1. ✅ `pmo/INDEX.md:18` — prochaine action MAJ (lancer étape 4 STORY-002, plus "trancher Q-ouvertes")
+2. ✅ `pmo/INVARIANTS.md:90` — statut 002 sans "(Q-ouvertes auteur)"
+3. ✅ `pmo/audit-trail.md` — fix L.376 + entrée 4e passage avec analyse cause racine
+4. ✅ `narration-archiviste.md` Mode AUDIT — **5e section ajoutée** "Cohérence sémantique Kanban⇄INDEX⇄INVARIANTS"
+5. ✅ **Création `/pmo-audit`** — commande qui invoque vraiment `narration-pmo` Mode AUDIT (vs `/challenge-archiviste` qui invoque l'Archiviste pour la forme)
+
+**Apprentissage gravé** : **alterner /challenge-archiviste (FORME) + /pmo-audit (FOND)** pour ne pas laisser passer de désynchros sémantiques. 3 audits forme successifs ne valent pas 1 audit forme + 1 audit fond.
+
+**État système** : 100% propre maintenant. STORY-002 réellement prête pour étape 4.
+
+---
+
+## 2026-05-13 (ter) — [PMO+ARCHIVISTE] Clôture 5 fixes post `/pmo-challenge`
+
+**Trigger** : auteur `/pmo-challenge` → audit complet → `go` mode militaire
+**Owner** : narration-pmo (FOND) + narration-archiviste (FORME)
+
+**5 actions appliquées (~25 min)** :
+1. ✅ `narration-pmo.md:154` : "11 étapes" → "10 étapes (0, 1, 3-10)" + retrait Architecte de la chaîne
+2. ✅ `pmo/sprint-log.md` : note de tête expliquant que mentions "11 étapes" pre-2026-05-12 sont historiques légitimes (pas de fix destructif)
+3. ✅ `narration/README.md:21` : retrait `workshop/` actif + ajout nouvelle structure stories/<NNN>/ avec préfixes étapes + note refonte
+4. ✅ `scripts/new-story.js` : header MAJ historique, message final aligné préfixes 2026-05-12 (`1-pitch-plan.md` au lieu de `pitch.md`)
+5. ✅ `equipe/ORGANIGRAMME.md` : migration intégrale (chaîne commandement, phases workflow, table mémoires, ateliers, état actuel) — Architecte marqué deprecated partout, PMO+Archiviste proactifs documentés, 10 writers détaillés, panel 20 lecteurs
+
+**Statut système** : refonte 2026-05-12 → **100% propagée**. Aucun bloquant pour STORY-003+ (script + gabarit + agents alignés).
+
+**Reste en queue (BASSE)** : action 5 audit `pmo-challenge` (script validate-gabarit.js automatisé) — pas urgent.
+
+**Détail** : `pmo/audit-trail.md` entrée 2026-05-13 (3e section).
+
+---
+
+## 2026-05-13 (bis) — [ARCHIVISTE+PMO] Clôture 3 fixes HAUTE post-audit
+
+**Owner** : narration-pmo (FOND) + narration-archiviste (FORME)
+**Trigger** : auteur `/challenge-archiviste` → audit → `go` pour fix
+
+**3 actions HAUTE traitées** :
+1. ✅ Création `_gabarit/3-briefs/_writer-package.md` (stub autoporteur, ~80 lignes)
+2. ✅ Refonte `equipe/templates/README.md` (préfixes étapes, ajout brief-writer-libre/guide, deprecation plan-histoire.template, note pas-de-template-_writer-package)
+3. ✅ Création template fusionné réel `equipe/templates/pitch-plan.template.md` (au lieu du hack "étendre pitch.template à la main")
+
+**Effort réel** : ~25 min (vs estimé 40 min)
+**Statut système** : refonte 2026-05-12 + finalisation 2026-05-13 = **100% propre** sur templates/gabarit.
+
+**Reste** :
+- Actions 4-5 MOYENNES (vérification backlog/roadmap, script validate-gabarit) → queue
+- Migration intégrale ORGANIGRAMME.md → queue
+
+**Détail** : `pmo/audit-trail.md` entrée 2026-05-13 (section clôture).
+
+---
+
+## 2026-05-13 — [ARCHIVISTE] Audit structurel premier passage
+
+**Owner** : narration-archiviste (mode AUDIT, lecture seule via `/challenge-archiviste`)
+
+**Verdict** : ✅ PASS avec 3 alertes HAUTE non-bloquantes.
+
+**Findings clés** :
+1. 🟡 HAUTE — Gabarit `_gabarit/3-briefs/` manque `_writer-package.md` → risque oubli pour futures histoires créées via `new-story.js`
+2. 🟡 HAUTE — `equipe/templates/README.md` obsolète post-refonte 2026-05-12 (refs `pitch.md`, `plan-histoire.md`, `synthese.md`, absence brief-writer-libre/guide + _writer-package)
+3. 🟡 HAUTE — `PROCESS.md` L.71 référence `pitch-plan.template.md` qui n'existe pas
+
+**Ping PMO** : OUI — 3 actions structurelles à traiter (effort total ~40 min). Le PMO doit décider : fix immédiat (action 1 + 2 + 3) OU queue backlog (créer ticket ARCHI-NNN). Aucun blocage pour STORY-002.
+
+**État au reboot** :
+- Refonte 2026-05-12 (préfixes étapes + Pitch+Plan fusionné + Archiviste maillon central) → tenue à 95%
+- 3 alertes HAUTE restantes (templates/gabarit, ~40 min de fix)
+- STORY-002 prête à passer étape 4 (10 writers) dès que les fixes templates sont OK + validation auteur questions ouvertes
+
+**Détail complet** : `pmo/audit-trail.md` entrée 2026-05-13.
 
 ---
 

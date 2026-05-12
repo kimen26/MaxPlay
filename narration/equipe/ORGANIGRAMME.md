@@ -2,20 +2,27 @@
 
 > **Ce fichier est la référence technique complète.**
 > **Pour le déroulé humain étape par étape, voir `PROCESS.md`.**
-> Référence permanente. Mis à jour si l'équipe évolue.
+> Référence permanente. Mis à jour 2026-05-13 (post-refonte 2026-05-12 + propagation intégrale).
+>
+> **État système 2026-05-13** :
+> - PROCESS = **10 étapes** (0, 1, 3-10). Étape 2 (Plan) supprimée par fusion avec étape 1 (Pitch+Plan).
+> - Conseiller produit `1-pitch-plan.md` (intègre matière statique ex-Architecte : Kishōtenketsu + boussole 4-5 ans).
+> - **Architecte deprecated** — agent en standby, conservé pour traçabilité. Ne pas l'invoquer.
+> - **PMO + Archiviste proactifs** (binôme FOND/FORME) — invoqués auto à chaque tour narration.
+> - **Source de vérité chiffres clés** : `pmo/INVARIANTS.md`.
 > Dernière mise à jour : 2026-05-11 (ajout narration-audio + narration-localisation + 10 writers + panel 20 lecteurs)
 
 ---
 
 ## Évolution post-refonte 2026-05-08
 
-Depuis le PROCESS militaire 11 étapes (2026-05-08) :
-- **Writers : 10** (et non 4) — 2 Claude + 3 Kimi libre + 1 Kimi guidé + 2 DeepSeek + 2 Grok
+Depuis le PROCESS militaire 10 étapes (2026-05-08, refonte casting v2 2026-05-12) :
+- **Writers : 14** (refonte v2 2026-05-12 — calibration multi-modèles) — 6 Claude (Opus/Sonnet/Haiku × déf/reco) + 4 Kimi (déf/reco/thinking/guidé) + 2 DeepSeek (déf/reco) + 2 Grok (déf/reco). "**reco**" = température recommandée créatif officielle par fournisseur (pas "max" — au-delà = incohérence narrative). Référence : [`references/temperatures-llm.md`](references/temperatures-llm.md). Période d'évaluation : 3-5 histoires, puis réduction (ticket ARCHI-008). Détail INVARIANTS § *Casting writers étape 4*.
 - **Panel lecteurs : 20** (et non 4) — 10 profils × 2 tranches d'âge (3-5 et 6-7 ans). Note transitoire : panel 6 reste valide pour histoires <005.
 - **2 agents post-canon** : `narration-audio` (production TTS ElevenLabs) + `narration-localisation` (portage cross-country)
 - **Agents support** : `narration-science` (validation factuelle), `narration-sensibilite` (topics sensibles), `narration-archiviste` (cohérence docs), `narration-lecteur` (enfant solo simulé), `narration-lecteur-dyade` (parent-enfant simulé)
 
-Détails dans `PROCESS.md` (source canonique des 11 étapes).
+Détails dans `PROCESS.md` (source canonique des 10 étapes).
 
 ---
 
@@ -28,33 +35,53 @@ AUTEUR (toi)
   │
   ├──→ CONSEILLER NARRATIF [narration-conseiller · Opus]
   │       ├── Binôme créatif : challenge, brainstorm, raffine
-  │       ├── Génère les pitches
+  │       ├── Produit `1-pitch-plan.md` (étape 1, fusion Pitch+Plan depuis 2026-05-12)
+  │       ├── Intègre la matière statique de l'ex-Architecte (Kishōtenketsu + boussole 4-5 ans)
   │       └── Maintient la CARTE NARRATIVE (arcs, saisons, personnages, mémoire équipe)
   │
-  ├──→ ARCHITECTE [narration-architecte · Sonnet]
-  │       └── Transforme le pitch validé en Plan d'Histoire
+  ├──→ ⚠️ ARCHITECTE [narration-architecte · DEPRECATED 2026-05-12]
+  │       └── Étape 2 supprimée. Matière intégrée au Conseiller. Agent en standby.
   │
   └──→ DIRECTEUR ÉDITORIAL [narration · Opus]
-          ├── Sélectionne la meilleure version parmi les 4 drafts
-          ├── Pilote le rewrite (brief + corrections)
-          └── Valide la version finale avant GateKeeper
+          ├── Owner étapes 3 (briefs) + 6 (sélection) + 10 (canon)
+          ├── Sélectionne la meilleure version parmi les 10 drafts (étape 6)
+          ├── Pilote le rewrite (mais writer top 1 garde la main, Directeur en repli) — étape 7
+          └── Canonise la version finale (étape 10)
 
-PMO [narration-pmo · Haiku · AUTONOME]
-  ├── Crée les dossiers stories/<NNN-slug>/ depuis le gabarit unifié
-  ├── Tient le backlog, les sprint-logs, les decisions
-  ├── Génère les index et met à jour les mémoires partagées
+PMO [narration-pmo · Haiku · PROACTIF depuis 2026-05-12]
+  ├── Invoqué automatiquement à chaque tour incluant un signal narration
+  ├── Garant FOND : INVARIANTS, decisions, backlog, sprint-log, audit-trail
+  ├── Binôme avec Archiviste (FORME)
   └── Alerte si blocage / oubli / incohérence documentaire
 
-WRITERS × 4 (parallèles, stateless, angles assignés)
-  ├── Writer A (Sobre)          — Kishōtenketsu rigoureux, gestes, narration sobre
-  ├── Writer B (Sensoriel)      — Textures, matières, poésie du concret
-  ├── Writer C (Dynamique)      — Dialogues vifs, rythme, échanges rapides
-  └── Writer D (Instinct/Libre) — Angle libre, surprise, ton auteur
-  → Chacun livre : 1 version complète (400-700 mots) + 1 note d'intention créative
+ARCHIVISTE [narration-archiviste · Haiku · PROACTIF depuis 2026-05-12]
+  ├── Maillon central de la STRUCTURE (équivalent PMO côté forme)
+  ├── Crée les dossiers stories/<NNN-slug>/ depuis le gabarit unifié
+  ├── Vérifie gabarit respecté, préfixes étapes, refs cassées, orphelins
+  ├── Mode AUDIT déclenchable via /challenge-archiviste
+  └── Communique au PMO via sprint-log si blocage de fond
 
-LECTEURS TÉMOINS (simulés, texte libre)
-  ├── Enfant seul × 2           — réaction émotionnelle pure
-  └── Dyade parent-enfant × 2   — réaction enfant + observations parent
+WRITERS × 14 (parallèles, stateless, refonte v2 2026-05-12 — calibration multi-modèles, "reco" = température créatif officielle)
+  ├── Claude × 6                — agent narration-writer-claude-libre
+  │     ├── opus-def + opus-reco       (`claude-opus-4-7`, low, défaut/1.0)
+  │     ├── sonnet-def + sonnet-reco   (`claude-sonnet-4-6`, low, défaut/1.0)
+  │     └── haiku-def + haiku-reco     (`claude-haiku-4-5`, low, défaut/1.0)
+  ├── Kimi × 4                  — MCP ask_kimi
+  │     ├── kimi-def (0.6 Instant) + kimi-reco (1.0 + top_p 0.95)
+  │     ├── kimi-thinking            (thinking activé, 1.0 fixe) ⚠️ MCP actuel ne supporte pas thinking
+  │     └── kimi-guide               — agent narration-writer-kimi-guide (GUIDÉ : axes 1-6 + trame story, 0.6)
+  ├── DeepSeek × 2              — MCP ask_deepseek
+  │     └── deepseek-def (défaut API=0.3 modèle) + deepseek-reco (1.5 creative)
+  └── Grok × 2                  — MCP ask_grok (`reasoning_effort: low`)
+        └── grok-def + grok-reco       (défaut/1.2)
+  → Chacun livre : 1 version complète (400-700 mots) + 1 note d'intention créative
+  → Référence températures : equipe/references/temperatures-llm.md
+  → Détail INVARIANTS.md § Casting writers étape 4. Évaluation : ticket ARCHI-008 réduction post 3-5 histoires.
+
+LECTEURS TÉMOINS — Panel 20 (refonte 2026-05-08)
+  ├── 10 profils × 2 tranches âge (3-5 ans + 6-7 ans)
+  ├── Enfants seuls × 12 + Dyades parent-enfant × 8
+  └── Panel 6 transitoire pour STORY-002 (et antérieures à la décision)
 
 GATEKEEPER [narration-gatekeeper · Haiku]
   └── Validation technique finale (prénoms, règles, longueur) → PASS ou corrections
@@ -85,17 +112,16 @@ AGENTS SUPPORT (consultés au besoin)
 
 ```
 Auteur
-  ├──→ Conseiller   (brainstorm, pitch, carte narrative)
-  ├──→ Directeur    (sélection, rewrite, validation)
-  └──→ PMO          (organisation, documents, index)
+  ├──→ Conseiller   (brainstorm, pitch+plan, carte narrative)
+  ├──→ Directeur    (sélection, rewrite, canon)
+  ├──→ PMO          (fond : décisions, backlog, sprint-log)
+  └──→ Archiviste   (forme : dossiers, gabarit, INDEX)
 
 Conseiller
   ├──→ Auteur       (propose, challenge, affûte)
-  ├──→ Architecte   (valide le pitch avant plan)
-  └──→ Directeur    (transmet la mémoire et les contraintes)
+  └──→ Directeur    (transmet pitch+plan validé via stories/<NNN>/1-pitch-plan.md)
 
-Architecte
-  └──→ Workshop     (produit le Plan d'Histoire)
+⚠️ Architecte — DEPRECATED 2026-05-12 (étape 2 supprimée, matière intégrée Conseiller)
 
 Directeur
   ├──→ Writers × 4  (brief + angles)
@@ -131,7 +157,7 @@ PMO
 |---------|-------|---------|-----------|
 | `equipe/memoire-conseiller.md` | Conseiller | Arcs, saisons, feedback lecteurs, patterns validés | Après chaque session |
 | `equipe/memoire-dir.md` | Directeur | Décisions de sélection, ce qui a fonctionné | Après chaque histoire |
-| `equipe/memoire-architecte.md` | Architecte | Plans qui ont bien/mal fonctionné | Après chaque histoire |
+| `equipe/memoire-architecte.md` | ⚠️ Architecte (deprecated 2026-05-12) | Conservé pour traçabilité — non maintenu | — |
 | `equipe/memoire-gatekeeper.md` | GateKeeper | Erreurs récurrentes, patterns à surveiller | Après chaque validation |
 
 ### Mémoire projet (PMO)
@@ -148,42 +174,48 @@ PMO
 
 ## Workflow complet
 
-### PHASE 0 — INTAKE
+### PHASE 0 — INTAKE (étape 0 PROCESS)
 
 ```
 Auteur dumpe une idée → INBOX.md (section ## YYYY-MM-DD — sujet)
     ↓
-Conseiller lit + discute avec l'auteur
+PMO (proactif) scanne INBOX → crée ticket dans backlog si action requise
     ↓
-Binôme valide un pitch → stories/<NNN-slug>/pitch.md
-    ↓
-PMO crée le dossier stories/<NNN-slug>/ + log dans sprint-log.md
+Archiviste (sur demande) crée le dossier stories/<NNN-slug>/ depuis _gabarit/
+    (préfixes étapes appliqués automatiquement par duplication du gabarit)
 ```
 
-### PHASE 1 — PLAN D'HISTOIRE
+### PHASE 1 — PITCH+PLAN (étape 1 PROCESS — refonte 2026-05-12)
 
 ```
-Architecte lit le pitch + mémoires + histoires précédentes
+Conseiller lit pitch+plan inputs (INBOX, INVARIANTS, decisions, personnages, univers, saisons, pmo)
     ↓
-Architecte produit → stories/<NNN-slug>/plan-histoire.md
-    (inclut : personnages, structure Kishōtenketsu, contraintes)
+Conseiller produit → stories/<NNN-slug>/1-pitch-plan.md
+    (depuis equipe/templates/pitch-plan.template.md)
+    (inclut : 4 cases pitch + plan léger Kishōtenketsu + boussole 4-5 ans)
     ↓
-Conseiller valide la cohérence avec la carte narrative
+✅ AUTEUR VALIDE (validation #1 sur 3 obligatoires)
     ↓
-PMO log
+PMO log + Archiviste vérifie kanban à jour
 ```
 
-### PHASE 2 — ÉCRITURE × 4 (parallèle)
+> ⚠️ Étape 2 (ancien Plan d'Histoire par l'Architecte) supprimée 2026-05-12 — fusionnée avec étape 1.
+
+### PHASE 2 — ÉCRITURE × 10 (parallèle) (étape 4 PROCESS)
+
+> Étape 3 = Briefs produits par le Directeur (3-briefs/ : univers, personnages, histoire, _writer-package).
 
 ```
-Directeur injecte à 4 writers simultanément :
-  - plan-histoire.md (inclut personnages, structure, contraintes)
-  - brief-univers.md (copie standard)
-  - Angle assigné + consigne spécifique
+Directeur injecte à 10 writers simultanément :
+  - Claude libre × 2  (agent narration-writer-claude-libre, lit 3-briefs/ via Read tool)
+  - Kimi libre × 3    (MCP ask_kimi, reçoit _writer-package.md inliné)
+  - Kimi guidé × 1    (agent narration-writer-kimi-guide, annexe AXES 1-6)
+  - DeepSeek × 2      (MCP ask_deepseek, reçoit _writer-package.md inliné)
+  - Grok × 2          (MCP ask_grok, reçoit _writer-package.md inliné)
 
 Chaque writer produit :
-  → stories/<NNN-slug>/version-{a,b,c,d}.md (texte complet 400-700 mots)
-  → + note d'intention créative dans le fichier
+  → stories/<NNN-slug>/4-versions-writers/<llm>-<id>.md (texte complet 400-700 mots)
+  → + note d'intention créative en fin de fichier
 
 Note d'intention attendue (exemple) :
 > "J'ai choisi la saison automnale parce que le vent porte les mots sans
@@ -271,8 +303,8 @@ PMO lance les scripts :
 Mémoires mises à jour :
   → memoire-conseiller.md (Conseiller)
   → memoire-dir.md (Directeur)
-  → memoire-architecte.md (Architecte)
   → memoire-gatekeeper.md (GateKeeper)
+  → (memoire-architecte.md : non maintenu, agent deprecated 2026-05-12)
     ↓
 PMO ferme ticket → backlog.md + decisions.md + sprint-log.md
     ↓
@@ -281,17 +313,19 @@ Archive : session résumée dans archive/YYYY-MM-DD-<titre>.md
 
 ---
 
-## Les 4 Writers — angles assignés
+## Les 4 angles narratifs — levier de variance
 
-| Writer | Source | Angle | Ce qu'il privilégie | Note d'intention |
-|--------|--------|-------|---------------------|------------------|
-| **A — Sobre** | Kimi / DeepSeek | Structure Kishōtenketsu rigoureuse | Gestes précis, narration sobre, silence actif | Obligatoire : pourquoi cette structure ? |
-| **B — Sensoriel** | Kimi / DeepSeek | Poésie du concret | Textures, matières, lumière, odeurs | Obligatoire : quel détail sensoriel porte l'histoire ? |
-| **C — Dynamique** | Grok | Dialogues vifs, rythme | Échanges rapides, répartie, silences comiques | Obligatoire : pourquoi le dialogue ici ? |
-| **D — Instinct** | Claude (Sonnet) | Angle libre, surprise | Ton auteur, ce qui est vrai pour cette histoire | Obligatoire : quelle a été ton intention personnelle ? |
+> ⚠️ **Ce sont 4 ANGLES (levier de variance), pas 4 writers.** La répartition réelle est **10 writers** (2 Claude + 4 Kimi dont 1 guidé + 2 DeepSeek + 2 Grok). Voir [`../pmo/INVARIANTS.md`](../pmo/INVARIANTS.md) § *Casting writers étape 4*.
+> Le Directeur Éditorial peut imposer un angle à un writer via `brief-histoire.md` (section *TON ANGLE / TA VARIANCE*).
 
-> Chaque writer écrit **une version complète** (400-700 mots). Pas d'extrait.
-> Chaque writer ajoute une **note d'intention créative** (pas technique).
+| Angle | Affinité modèle | Ce qu'il privilégie | Note d'intention |
+|-------|-----------------|---------------------|------------------|
+| **A — Sobre** | Kimi / DeepSeek | Structure Kishōtenketsu rigoureuse, gestes précis, silence actif | Obligatoire : pourquoi cette structure ? |
+| **B — Sensoriel** | Kimi / DeepSeek | Poésie du concret, textures, matières, lumière, odeurs | Obligatoire : quel détail sensoriel porte l'histoire ? |
+| **C — Dynamique** | Grok | Dialogues vifs, rythme, échanges rapides, répartie | Obligatoire : pourquoi le dialogue ici ? |
+| **D — Instinct** | Claude | Angle libre, surprise, ton auteur | Obligatoire : quelle a été ton intention personnelle ? |
+
+> Chaque version écrite est **complète** (400-700 mots) avec **note d'intention créative** (pas technique). Les 4 angles peuvent être distribués librement sur les 10 writers — ou laissés non assignés (variance native).
 
 ---
 
@@ -354,11 +388,10 @@ Archive : session résumée dans archive/YYYY-MM-DD-<titre>.md
 | Cérémonie | Qui | Quand | Data pull du Conseiller |
 |-----------|-----|-------|------------------------|
 | **Atelier Univers** | Toi + Conseiller | Régulier (pas lié à une histoire) | Univers, personnages, histoires précédentes, feedback lecteurs |
-| **Brainstorm Pitch** | Toi + Conseiller | Quand tu as une idée brute | INBOX.md, mémoire-conseiller.md, casting |
-| **Revue de Plan** | Conseiller + Architecte | Après l'Architecte | personnages/INDEX.md, univers/INDEX.md, histoires précédentes |
-| **Sélection** | Toi + Directeur | Après les lecteurs témoins | 4 versions + réactions |
-| **Review Finale** | Toi seul | Après GateKeeper PASS | rewrite.md |
-| **Rétro** | Conseiller seul | Après canonisation | Tout le dossier workshop |
+| **Brainstorm Pitch+Plan** | Toi + Conseiller | Quand tu as une idée brute | INBOX.md, mémoire-conseiller.md, casting, boussole 4-5 ans |
+| **Sélection** | Toi + Directeur | Après les 20 lecteurs témoins | 10 versions + 20 réactions + synthese-lecteurs.md |
+| **Review Finale** | Toi seul | Après GateKeeper PASS + re-relecture PASS | 7-rewrite/<llm>-rewrite-v1.md |
+| **Rétro** | Conseiller seul | Après canonisation | Tout le dossier stories/<NNN>/ |
 
 ## Kanban
 
@@ -367,11 +400,13 @@ Archive : session résumée dans archive/YYYY-MM-DD-<titre>.md
 
 ## État actuel
 
-- [x] Conseiller narratif réécrit (vrai binôme, questions ouvertes, construction d'univers)
-- [x] Architecte créé
+- [x] Conseiller narratif réécrit (vrai binôme, produit `1-pitch-plan.md` depuis 2026-05-12 — intègre matière Architecte)
+- [x] ~~Architecte créé~~ ⚠️ **DEPRECATED 2026-05-12** (étape 2 supprimée, matière intégrée Conseiller)
 - [x] GateKeeper créé
-- [x] Directeur réécrit (sélection + rewrite)
-- [x] Lecteurs témoins réécrits (texte libre, 4 versions)
+- [x] Directeur réécrit (briefs + sélection + canon — owner étapes 3/6/7-repli/10)
+- [x] Lecteurs témoins réécrits (texte libre, panel 20 — panel 6 transitoire pour STORY-002)
+- [x] PMO refondu proactif (2026-05-12) — invoqué auto à chaque tour narration
+- [x] Archiviste élevé maillon central proactif (2026-05-12) — binôme PMO côté forme
 - [x] Workflow 8 writers → 4 writers
 - [x] Terminologie mise à jour (Plan d'Histoire, Version finale, GateKeeper)
 - [x] Kanban global + kanban par histoire créés

@@ -113,6 +113,41 @@ server.tool(
 );
 
 server.tool(
+  "ask_kimi_payant",
+  "Pose une question à Kimi K2.6 via l'API Moonshot OFFICIELLE PAYANTE (platform.moonshot.ai). USAGE STRICTEMENT RÉSERVÉ aux 2 writers narratifs qui en ont besoin : kimi-reco (top_p 0.95 + temp 1.0) et kimi-thinking (mode thinking activé). Pour tout autre usage, utiliser ask_kimi (gratuit, endpoint passe-partout). Voir narration/pmo/INVARIANTS.md § Casting writers étape 4.",
+  {
+    prompt: z.string().describe("La question ou le texte à soumettre à Kimi (USAGE WRITERS NARRATIFS UNIQUEMENT)"),
+    context: z.string().optional().describe("Contexte optionnel (ex: _writer-package.md inliné)"),
+    temperature: z.number().min(0).max(2).optional().describe("Température (reco Moonshot : 0.6 Instant / 1.0 Thinking)"),
+    top_p: z.number().min(0).max(1).optional().describe("Top-p (reco Moonshot : 0.95 couplé à la température)"),
+    thinking: z.boolean().optional().default(false).describe("Mode thinking activé (true = kimi-thinking writer #9 ; false = mode Instant standard)"),
+  },
+  async ({ prompt, context, temperature, top_p, thinking }) => {
+    const apiKey = process.env.MOONSHOT_PAYANT_API_KEY;
+    if (!apiKey) return { content: [{ type: "text", text: "Erreur: MOONSHOT_PAYANT_API_KEY non définie. Cette key est distincte de MOONSHOT_API_KEY (gratuit) et réservée aux writers narratifs kimi-reco + kimi-thinking. Voir narration/equipe/references/temperatures-llm.md." }], isError: true };
+    const systemPrompt = context ? `Tu es un assistant expert. Contexte fourni:\n\n${context}` : "Tu es un assistant expert, précis et concis.";
+    const extraBody: Record<string, unknown> = {};
+    if (typeof top_p === "number") extraBody.top_p = top_p;
+    if (thinking === true) extraBody.thinking = true;
+    try {
+      const result = await callOpenAICompat(
+        "https://api.moonshot.ai/v1",
+        apiKey,
+        "kimi-k2.6",
+        systemPrompt,
+        prompt,
+        {},
+        temperature,
+        extraBody
+      );
+      return { content: [{ type: "text", text: result }] };
+    } catch (e) {
+      return { content: [{ type: "text", text: `Erreur Kimi PAYANT: ${(e as Error).message}` }], isError: true };
+    }
+  }
+);
+
+server.tool(
   "ask_deepseek",
   "Pose une question à DeepSeek V4. Modèle 'pro' (défaut, plus capable) ou 'flash' (rapide). Mode non-thinking. Promo -75% sur V4-Pro jusqu'au 2026-05-31.",
   {

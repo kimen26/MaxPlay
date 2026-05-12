@@ -2,6 +2,326 @@
 
 > **Règle :** Une décision ici est DÉFINITIVE jusqu'à nouvelle décision explicite datée.
 
+## 2026-05-12 — DEC-NNN : Renommage « max » → « reco » dans casting writers (convention sémantique)
+
+**Contexte** : convention initiale du casting writers (étape 4) utilisait `max` pour désigner la température « plafond du fournisseur ». Or chaque fournisseur officiel recommande une valeur **inférieure au plafond** pour la creative writing (ex: Kimi 1.0 max, DeepSeek 1.5 créatif, Grok 1.2 créatif), différente du maximum absolu.
+
+**Décision tranchée** :
+
+### Renommer `max` → `reco` (valeur recommandée fournisseur creative writing)
+
+**Raison** :
+- Claude API doc : `temperature` max = 1.0 (= reco créatif et max identiques pour Opus/Sonnet/Haiku)
+- Moonshot (Kimi) doc : max = 1.0, reco créatif = 1.0 (⚠️ au-delà = incohérence, + top_p: 0.95 obligatoire)
+- DeepSeek API : max = 2.0, **reco créatif = 1.5** (officiel, pas 2.0)
+- xAI Grok API : max = 2.0, **reco créatif = 1.2** (au-delà = perte cohérence narrative)
+
+**Nouvelle convention** :
+- `*-reco` = valeur **créative writing officielle** du fournisseur
+- Ne **jamais** nommer un writer par `max` brut (trop ambigu sémantiquement)
+- Référence stable : `narration/equipe/references/temperatures-llm.md` (à créer)
+
+**Impact fichiers** :
+- ✅ `equipe/references/temperatures-llm.md` (création) — table fournisseur + reco créatif par modèle
+- 🔄 `pmo/INVARIANTS.md` (MAJ § Casting writers étape 4) — renommer colonnes `max` → `reco`
+- 🔄 `equipe/PROCESS.md` (MAJ) — si mentions `max` température, renommer `reco`
+- 🔄 `equipe/ORGANIGRAMME.md` (si applicable)
+- 🔄 Agents writer (claude-libre, kimi-guide) — renommer `max` → `reco` en commentaires
+
+**Statut** : ✅ décision figée, propagation en cours.
+
+**Leçon gravée** (cf. `equipe/lecons-vivantes.md` § Observations process) :
+> *« OBS-NNN : Convention casting v2 — "max" était trompeur sémantiquement. Au-delà de la reco créatif officielle = perte de cohérence narrative. À cristalliser : ne JAMAIS nommer un writer par "max" brut, mais par la reco officielle du fournisseur. Référence : equipe/references/temperatures-llm.md. »*
+
+---
+
+## 2026-05-12 — Q-OUVERTE-NNN : 3 limitations MCP `ask_kimi` détectées dans `infra/mcp/server.ts`
+
+**Contexte** : audit du code MCP dans `infra/mcp/server.ts` L.82-113 révèle que l'endpoint utilisé pour Kimi n'expose pas toutes les options officielles Moonshot, bloquant certains designs de writers.
+
+**Questions ouvertes** :
+
+### Q-1 : Migrer `ask_kimi` de `kimi.com/coding` vers `platform.moonshot.ai` (API officielle) ?
+
+**Limitation actuelle** : endpoint `api.kimi.com/coding/v1` + modèle `kimi-for-coding`.
+- ✅ Passe-partout (accepte créatif)
+- ❌ Pas l'API Moonshot officielle
+- ❌ Pas accès à `top_p`, aux modèles K2.6/K2.5 explicites, au mode thinking
+
+**Bénéfice migration** :
+- Expose `top_p` (reco Moonshot créatif = `top_p: 0.95` couplé à température)
+- Expose mode thinking (instant vs thinking — distinction writer #9 kimi-thinking non réelle aujourd'hui)
+- Clarté modèle (K2.6 / K2.5 vs passe-partout `kimi-for-coding`)
+
+**Coût** : modification `infra/mcp/server.ts` + re-déploiement.
+
+**Priorité** : Normale. Bloquant pour writer #9 kimi-thinking être réellement différencié.
+
+---
+
+### Q-2 : Exposer `top_p` dans signature MCP `ask_kimi` ?
+
+**Dépend de** : Q-1 (migration API).
+
+**Bénéfice** : paramètre `top_p` utilisable dans briefs pour fine-tuning créatif selon Moonshot doctrine.
+
+---
+
+### Q-3 : Exposer mode `thinking` (instant vs thinking) dans signature MCP `ask_kimi` ?
+
+**Dépend de** : Q-1 (migration API).
+
+**Bénéfice** : writer #9 kimi-thinking devient réellement distinct (pas juste un alias sans raison).
+
+---
+
+**Statut** : ✅ Résolu 2026-05-12 par DEC-ARCHI-009 (voir ci-dessous).
+
+---
+
+## 2026-05-12 — DEC-ARCHI-009 : Cohabitation stricte MCP Kimi gratuit + payant (résout 3 Q-ouvertes)
+
+**Contexte** : 3 Q-ouvertes sur MCP `ask_kimi` attendaient budget. Papa Yann tranche : **pas de migration**, mais **ajout d'un 2e MCP distinct**.
+
+**Décision tranchée** :
+
+### Ne PAS migrer `ask_kimi` existant — AJOUTER `ask_kimi_payant` distinct
+
+**Raison** :
+- Préserve usages gratuits existants (questions tech, exploration)
+- Coûts engagés SEULEMENT sur les 2 writers qui en ont vraiment besoin (#8 kimi-reco, #9 kimi-thinking)
+- Séparation totale : `ask_kimi` ≠ `ask_kimi_payant`, env var distincte, endpoints distincts
+- Réversible facilement si Moonshot baisse les prix
+
+**Nouvelle config** :
+- **`ask_kimi`** (gratuit, endpoint `kimi.com/coding/v1`, env `MOONSHOT_API_KEY`) → writers #7 kimi-def + #10 kimi-guide + usage général
+- **`ask_kimi_payant`** (officiel, endpoint `api.moonshot.ai/v1`, env `MOONSHOT_PAYANT_API_KEY`) → STRICTEMENT writers #8 kimi-reco (top_p 0.95) + #9 kimi-thinking (mode thinking)
+
+**Impact fichiers** :
+- ✅ `infra/mcp/server.ts` (L.82-113) — nouvel outil `ask_kimi_payant`, endpoint `https://api.moonshot.ai/v1`, modèle `kimi-k2.6`
+- ✅ `infra/mcp/MODELS.md` — table modèles enrichie, section *Cohabitation stricte* explicitée (historique 2026-05-12 déjà là)
+- ✅ `narration/pmo/INVARIANTS.md` (L.37-54) — casting writers étape 4 : #7 #10 → `ask_kimi` · #8 #9 → `ask_kimi_payant`
+- 🔄 `narration/equipe/PROCESS.md` (étape 4) — si mentions MCP ancien, préciser distinction `ask_kimi` vs `ask_kimi_payant`
+- 📝 **Action utilisateur** : créer env var `MOONSHOT_PAYANT_API_KEY` (clé Moonshot API officielle) au niveau Windows utilisateur
+
+**Statut** : ✅ décision figée, 3 Q-ouvertes fermées.
+
+**Leçon gravée** (cf. `equipe/lecons-vivantes.md` § Observations process) :
+> *« OBS-NNN : Cohabitation > migration. Pattern : quand 2 usages divergents du même fournisseur, créer 2 MCP distincts avec env var distincte au lieu de retrofit destructif. Coûts localisés, usages préservés, réversible. Exemple : Kimi gratuit (coding) + payant (Moonshot API). »*
+
+# Décisions de fond — PMO Narration
+
+> **Règle :** Une décision ici est DÉFINITIVE jusqu'à nouvelle décision explicite datée.
+
+## 2026-05-12 — DEC-NNN : Refonte casting writers étape 4 — 10 → 14 versions (calibration modèles + température)
+
+**Contexte** : Papa Yann acte une refonte du casting writers étape 4 pour calibrer la config finale en testant tous les modèles (Opus/Sonnet/Haiku Claude + Kimi avec/sans thinking + DeepSeek/Grok) dans deux régimes de température (défaut vs max créatif).
+
+**Décision tranchée** :
+
+### Passage config writers de 10 à 14 versions — test calibration 3-5 histoires
+
+**Raison** :
+- Config 10 writers fixée trop tôt (début projet, avant leçons-vivantes consolidées).
+- Pas de comparaison multi-modèles à température variable.
+- Hypothèse à valider : top 1 provient-il du modèle le plus cher (Opus) ou peut-on avoir meilleure qualité de DeepSeek/Grok/Sonnet optimisés en température ?
+- Test scientifique : 14 versions → comparaison top 1 par modèle → réduction config finale après 3-5 histoires.
+
+**Nouvelle config (14 writers)** :
+1-6. Claude : Opus/Sonnet/Haiku × (défaut 0.5, créatif 1.0)
+7-10. Kimi : défaut + max + thinking + guidé
+11-12. DeepSeek : défaut + max (1.5)
+13-14. Grok : défaut + max (2.0)
+
+Détail complet : `narration/pmo/INVARIANTS.md` § **Casting writers étape 4 (14 versions)**.
+
+**Impact fichiers** :
+- ✅ `narration/pmo/INVARIANTS.md` L.24-39 (table 14 writers + critères évaluation)
+- 🔄 `narration/equipe/PROCESS.md` L.108-140 (tableau mécanique d'appel à adapter)
+- 🔄 `narration/equipe/ORGANIGRAMME.md` (cohérence 3 Sonnet + 2 Haiku + adjusted Opus)
+- 🔄 `narration/stories/<NNN>/briefs/brief-histoire.template.md` (section "angles assignés" → 14 variants ou simplifiée)
+- 🔄 Agents writer : `narration-writer-claude-libre` (déployer 3 sous-modèles ?), `narration-writer-kimi-guide` (trame 002 ajoutée)
+
+**Période d'évaluation** : 3-5 histoires (STORY-002 première à utiliser config 14).
+
+**Réduction finale** : ticket `ARCHI-008` ouvert (voir backlog) pour arbitrage → config 6-8 writers optimaux après évaluation.
+
+**Statut** : ✅ décision figée, config INVARIANTS MAJ, propagation en cours.
+
+---
+
+## 2026-05-13 (tard) — Tonalité STORY-002 Nono : discrétion + calme + connexion (zéro pouvoir manifeste)
+
+**Contexte** : Papa Yann demande d'affiner la tonalité de Nono en STORY-002 pour éviter tout effet spectaculaire. "Je veux bien que le truc de sensibilité vibration, soit discret et lié à la terre, la magie c'est le calme et la 'connexion'".
+
+**Décision tranchée** :
+
+### Tonalité révélation Nono — Connexion discrète (pas de pouvoir manifeste)
+
+**Clarification critère "Sensibilité Nono"** :
+
+- ✅ **Connexion discrète à la terre** : ce que Nono sent (vibration subtile du sol, calme, résonance qu'on capte sans la nommer)
+- ✅ **Magie = le calme et la connexion relationnelle** (pas un effet physique/visible)
+- ❌ **Zéro pouvoir manifeste** : pas d'onde visible, pas de frémissement déclenché par le geste de Nono, pas d'effet miraculeux sur la libellule ou la terre
+- ✅ **Présence qui se densifie** : Juju/Wex perçoivent que Nono est « plus là », plus ancré — effet intérieur/relationnel, pas spectaculaire
+
+**Implication** : Deepseek-1 (version déjà écrite) introduit une onde visible + frémissement → **ne passe pas le contrôle qualité tonalité**. À redéverrouiller avec brief révisé.
+
+**Briefs révisés** :
+- `1-pitch-plan.md` L.26 : "Pas un pouvoir manifeste, une présence qui se densifie"
+- `3-briefs/brief-histoire.md` L.36-41 : Ten = connexion discrète au sol, zéro effet visible, Juju perçoit une densité nouvelle
+- `3-briefs/brief-personnages.md` L.51-57 : "le calme et la résonance qu'on sent sans le dire", "aucun miracle, aucune onde visible — juste une présence plus dense"
+
+**Statut** : ✅ figée, briefs alignés, prêt étape 4 (deepseek-1 hors course, relancer 4 restants + 5 nouveaux = 9 writers libres).
+
+---
+
+## 2026-05-13 — Recentrage STORY-002 : sensibilité révélée Nono uniquement (décision finalisée)
+
+**Contexte** : Papa Yann valide direction "Nono avec la terre" (connexion au sol, vibrations). Demande d'aligner les briefs sur **une seule sensibilité révélée** au lieu de deux (Juju Plantes + Nono Vibration).
+
+**Décision tranchée** :
+
+### Recentrage STORY-002 — Pivot dualité → monosensibilité
+
+**Avant** : « Deux manières de sentir qui se rencontrent. » Juju révèle sa sensibilité aux plantes/racines, Nono révèle sa sensibilité aux vibrations.
+
+**Après** : **Nono seul a sa sensibilité révélée — connexion à la terre (vibrations du sol).** Juju anime le Sho (contact incarné, énergie), est témoin du Ten de Nono. Pas de révélation de sensibilité pour Juju en STORY-002 (elle garde son sensibilité Plantes pour une future histoire).
+
+**Pourquoi** : Trop de révélations simultanées diluait le dénouement. Ten plus lisible, plus discret, plus cohérent. Nono seul = focus narratif claire.
+
+**Impact briefs** :
+- ✅ `1-pitch-plan.md` L.24-26 — recentrage Ten sur Nono, geste libre au writer
+- ✅ `3-briefs/brief-histoire.md` L.36-41 — Ten = moment Nono, Juju perçoit sans comprendre, pas révélation Juju
+- ✅ `3-briefs/brief-personnages.md` L.51-55 — Juju "n'est pas le sujet de STORY-002", animatrice
+
+**Règle archivée** : "Juju a sa propre sensibilité (aux plantes/racines), mais **elle n'est pas le sujet de STORY-002**."
+
+**Statut** : ✅ finalisé, briefs recentrés 2026-05-12, prêt étape 4 (10 writers).
+
+---
+
+## 2026-05-12 (nuit) — Refonte structurelle PROCESS : 4 décisions
+
+**Contexte** : audit post-pmo-challenge a révélé que pitch + plan sont devenus quasi-identiques depuis le passage au "plan léger". Auteur questionne la pertinence du dossier `briefs/`, des fichiers préfixés par étape, du README, et du rôle de l'Architecte.
+
+**Décisions tranchées** :
+
+### 1. Préfixer les fichiers du dossier story par leur étape
+- `1-pitch-plan.md` (fusionné)
+- `3-briefs/` (étape 2 supprimée car fusionnée à étape 1, mais le préfixe reste 3 pour cohérence PROCESS)
+- `4-versions-writers/`
+- `5-lecteurs-temoins/`
+- `6-selection.md`
+- `7-rewrite/`
+- `8-gatekeeper-verdict.md`
+- `9-relecture-rewrite/`
+- `10-texte.md` (canon)
+
+**Pourquoi** : ordre chronologique évident dans le file explorer. À reboot, n'importe quel humain voit où on en est sans lire le kanban.
+
+### 2. Fusionner Pitch + Plan en `1-pitch-plan.md` (Conseiller seul, 1 validation auteur)
+- Le plan léger (30-80 lignes) est intégré au pitch.
+- 1 seule étape PROCESS au lieu de 2. Plus simple, moins de fichiers.
+- 1 seule validation auteur.
+
+**Pourquoi** : depuis la doctrine "plan léger" (2026-05-12), le plan ne contient plus le scénario phrase par phrase. Il contient juste les invariants structurels (Ki/Sho/Ten/Ketsu nommés, recentrage, garde-fous). C'est devenu du contenu de pitch enrichi.
+
+### 3. Supprimer l'Architecte du PROCESS narratif + Élever l'Archiviste au rang de maillon central
+- L'Architecte (`narration-architecte`, Sonnet) ne sert plus dans le workflow narratif.
+- Sa **matière statique** (Kishōtenketsu, calibrage 4-5 ans) est **intégrée** dans la fiche `narration-conseiller.md` (qui s'en sert pour rappeler les invariants quand pertinent — "il faut penser à...", "attention à...").
+- L'agent reste en standby (deprecated dans frontmatter) — pas supprimé pour traçabilité.
+
+**Pourquoi** : la matière narrative que l'Architecte apportait est **statique** (Kishōtenketsu = toujours les mêmes 4 temps, boussole péda 4-5 ans = règles stables). Pas besoin d'un agent dédié à chaque histoire pour la rappeler — le Conseiller l'a intégrée. **Mise à jour ponctuelle ensemble** quand les leçons-vivantes évoluent (pas à chaque histoire).
+
+### 4. Élever Archiviste au rang de **maillon central** du PROCESS militaire (équivalent PMO côté structure)
+- L'Archiviste (`narration-archiviste`, Haiku) devient **proactif** comme le PMO (refonte 2026-05-12 Option B).
+- **Invocation automatique** à chaque tour incluant un signal narration touchant **structure/fichier/dossier/gabarit**.
+- **Binôme PMO ↔ Archiviste** : PMO gère le **fond** (décisions, backlog, sprint-log, INVARIANTS), Archiviste gère la **forme** (structure dossiers, gabarit respecté, INDEX cohérents, refs cassées). Les deux communiquent : Archiviste détecte un fichier orphelin → passe l'info au PMO via sprint-log. PMO détecte une décision impactant la structure → ping Archiviste pour propager.
+- Ajout commande `/challenge-archiviste` (à créer comme skill ou simple invocation directe) pour audit structurel à la demande.
+
+**Mission étendue Archiviste** :
+- ✅ Création de module (déjà existant)
+- ✅ Indexation (déjà existant)
+- ✅ Vérification cohérence INDEX/dossiers (déjà existant)
+- 🆕 **Vérification gabarit respecté à chaque modif de dossier story** (pas juste sur demande)
+- 🆕 **Détection fichiers orphelins** (créés mais non référencés)
+- 🆕 **Détection préfixes manquants** (post-décision 2026-05-12 sur préfixes étapes)
+- 🆕 **Communication PMO** : passe TODO ou alertes via `sprint-log.md` ou ping direct
+
+**Pourquoi maillon central** : la dette de coordination (audit du 2026-05-12) a montré que les angles morts structurels (workshop/ référencé partout, briefs/ avec fichiers interdits, kanban désaligné) viennent du fait qu'**aucun agent ne surveille la structure en continu**. Avec PMO proactif (fond) + Archiviste proactif (forme), on couvre tout.
+
+### 4. Briefs/ : garder 4 fichiers (3 briefs + `_writer-package.md`)
+- Statut quo. Granularité préservée.
+- 3 briefs (univers/personnages/histoire) = lus par Claude writers (Read tool filesystem)
+- `_writer-package.md` = concaténation autoporteuse pour MCP externes (Kimi/DeepSeek/Grok stateless)
+- **Pas de README ni SYNTHESE-BRIEFS dans `briefs/`** (interdiction confirmée).
+
+### 5. README.md du dossier story : simplifier
+- Garder le frontmatter YAML (métadonnées : statut, persos, arc, production count)
+- Garder le résumé court (2-3 lignes, MAJ par Directeur étape 10)
+- Garder le lien vers kanban
+- **Retirer** : "Carte du dossier" (duplique gabarit), "Workflow audio" (vit dans agent `narration-audio`)
+- Cible : ~40 lignes max
+
+**Impact fichiers à appliquer** :
+
+| Action | Fichier(s) |
+|--------|------------|
+| Renommer | `stories/<NNN>/pitch.md` + `plan-histoire.md` → `1-pitch-plan.md` |
+| Renommer | `stories/<NNN>/briefs/` → `3-briefs/` |
+| Renommer | `stories/<NNN>/versions-writers/` → `4-versions-writers/` |
+| Renommer | `stories/<NNN>/lecteurs-temoins/` → `5-lecteurs-temoins/` |
+| Renommer | `stories/<NNN>/selection.md` → `6-selection.md` |
+| Renommer | `stories/<NNN>/rewrite/` → `7-rewrite/` |
+| Renommer | `stories/<NNN>/gatekeeper-verdict.md` → `8-gatekeeper-verdict.md` |
+| Renommer | `stories/<NNN>/relecture-rewrite/` → `9-relecture-rewrite/` |
+| Renommer | `stories/<NNN>/texte.md` → `10-texte.md` |
+| Refondre | `equipe/PROCESS.md` (suppression étape 2, fusion étape 1, MAJ inputs/outputs avec préfixes) |
+| Refondre | `narration-conseiller.md` (intègre Kishōtenketsu + boussole 4-5 ans) |
+| Mettre en standby | `narration-architecte.md` (frontmatter `deprecated: 2026-05-12 + raison`) |
+| Refondre | `_gabarit/README.md` (nouvelle arborescence + nouveau README simplifié) |
+| Adapter | `scripts/new-story.js` (création préfixes + 1-pitch-plan.md unique) |
+| MAJ | `stories/<NNN>/README.md` (simplifier) |
+| Migrer | STORY-001 et STORY-002 vers nouvelle structure |
+| MAJ | `pmo/INVARIANTS.md` (PROCESS 10 étapes au lieu de 11) |
+
+**Statut :** ✅ tranché. À appliquer en cascade.
+
+---
+
+## 2026-05-12 (soir) — Gravage doctrine PROCESS étapes 2/3/4 (plan léger + qui lit quoi + qui call qui)
+
+**Contexte :** Audit pmo-challenge a révélé des trous structurels dans PROCESS.md sur le degré de détail du plan-histoire (étape 2), la doctrine "qui lit quoi" des briefs (étape 3), et la mécanique d'appel concrète des writers (étape 4 — qui call quel MCP avec quel fichier).
+
+**Décisions gravées dans PROCESS.md** :
+
+1. **Étape 2 — Plan léger imposé** : le plan d'histoire donne les **invariants structurels** (trio, promesse du titre, recentrage Ten, sensibilités, contraintes dures) mais **PAS** le scénario phrase par phrase. Cible volumétrique : **50-80 lignes max**. Raison : si tous les writers connaissent les 4 temps précis, la variance s'effondre. La force d'avoir 10 LLM = chacun apporte son angle natif.
+
+2. **Étape 3 — Doctrine "qui lit quoi" gravée** :
+   - 3 briefs canoniques (`brief-univers.md`, `brief-personnages.md`, `brief-histoire.md`) = lus par writers **Claude** (agent local avec Read tool filesystem)
+   - 1 fichier `_writer-package.md` = concaténation autoporteuse pour writers **MCP externes** (Kimi/DeepSeek/Grok stateless sans accès filesystem)
+   - **Pas de `README.md` ni `SYNTHESE-BRIEFS.md`** dans `briefs/` (doublons à supprimer si trouvés)
+   - 4 fichiers max dans `briefs/`
+
+3. **Étape 4 — Mécanique d'appel gravée** :
+   - Claude libre ×2 → Agent tool sur `narration-writer-claude-libre`
+   - Kimi libre ×3 → **Directeur** call directement MCP `ask_kimi` (pas d'agent intermédiaire — décision : pas besoin de wrapper agent pour les writers libres MCP)
+   - Kimi guidé ×1 → Agent tool sur `narration-writer-kimi-guide` (qui call MCP `ask_kimi` avec annexe AXES)
+   - DeepSeek ×2 → **Directeur** call directement MCP `ask_deepseek`
+   - Grok ×2 → **Directeur** call directement MCP `ask_grok`
+
+**Impact fichiers :**
+- `equipe/PROCESS.md` étape 2 enrichi (doctrine plan léger) ✅
+- `equipe/PROCESS.md` étape 3 enrichi (qui lit quoi + interdiction README/SYNTHESE) ✅
+- `equipe/PROCESS.md` étape 4 enrichi (table mécanique d'appel writers) ✅
+- `.claude/agents/narration-writer-kimi-guide.md` corrigé (réf morte `ultime_debrief.md` → `lecons-vivantes.md` + casting V1 figé : `Jérem` → `Madie`) ✅
+- `.claude/agents/narration-writer-claude-libre.md` corrigé (casting V1 : `Jérem` → `Madie`) ✅ (fixé en 2026-05-12 matin)
+
+**Statut :** ✅ tranché.
+
+---
+
 ## 2026-05-12 — STORY-002 Libellule Résonance : 4 Q-ouvertes tranchées
 
 **Contexte :** SLA dépassé depuis 2026-05-11. Auteur a tranché en bloc le 2026-05-12 (soir).
@@ -30,9 +350,15 @@
 
 ## Questions ouvertes (en attente de tranchage auteur)
 
-| Date | Sujet | Contexte | Posée par | État |
-|------|-------|---------|-----------|------|
-| 2026-05-11 | **STORY-002 — Duo agités + lieu + animal** | Brainstorm Nono (T9). Wex + Polo confirmé ou remplacer Polo ? Mare/étang confirmé ? Libellule comme objet central confirmé ? Geste Nono « vibrer comme elles » à ajouter aux 5 ? | narration-pmo | Attente validation auteur < 24h |
+| # | Date | Sujet | Contexte | Posée par | État |
+|---|------|-------|---------|-----------|------|
+| ~~2026-05-11~~ | ~~STORY-002 — Duo agités + lieu + animal~~ | ~~Wex+Polo / mare / libellule / geste Nono~~ | — | ✅ **TRANCHÉ 2026-05-12** : Wex+Juju+Nono / étang amont / libellule = sensibilité Nono / pieds nus Nono. Voir entrée 2026-05-12 plus haut. |
+| Q1 | 2026-05-13 | **Self-challenge — narration-architecte deprecated** | Agent en standby depuis 2026-05-12 (fusion Pitch+Plan). Faut-il le supprimer définitivement, l'archiver dans `_archive/`, ou le laisser en deprecated indéfiniment ? | narration-pmo (audit 2026-05-13) | Pas urgent, à trancher avant prochaine session narration |
+| Q2 | 2026-05-13 | **Self-challenge — scission `audit-trail.md`** | Fichier ~450 lignes. Scinder en `audit-trail-archive-2026-05.md` + `audit-trail.md` actif ? Ou laisser et signaler ? | narration-pmo (audit 2026-05-13) | Pas urgent, cosmétique |
+| Q3 | 2026-05-13 | **Self-challenge — scission `decisions.md`** | Fichier ~1265 lignes (le plus volumineux du pôle). Scission `decisions-archive-YYYY-MM.md` + `decisions-actives.md` ? Risque : casser refs croisées (lecons-vivantes, audit-trail) | narration-pmo (audit 2026-05-13) | Pas urgent mais à prévoir |
+| Q4 | 2026-05-13 | **Self-challenge — `memoire-architecte.md` non maintenue** | Agent deprecated → mémoire ne reçoit plus de mises à jour. Archive dans `_archive/equipe/` ou laisse dormir ? | narration-pmo (audit 2026-05-13) | Pas urgent |
+| Q5 | 2026-05-13 | **Self-challenge — `narration-conseiller` matière statique** | Le Conseiller a intégré Kishōtenketsu + boussole 4-5 ans depuis le retrait de l'Architecte. Mais la matière vraie vit dans `personnages/theorie/pedagogie-enfance/`. Faut-il graver dans le conseiller (risque dérive si la théorie évolue) ou pointer vers ? Actuellement mixte. | narration-pmo (audit 2026-05-13) | À voir si dérive constatée |
+| Q6 | 2026-05-13 | **Self-challenge — auto-déclencher `/narration-pmo-audit`** | Mode AUDIT existe mais n'est jamais invoqué auto. Faut-il un hook (toutes les N sessions) ou laisser sur demande manuelle ? | narration-pmo (audit 2026-05-13) | Pattern à valider après quelques sessions d'usage manuel |
 
 ---
 

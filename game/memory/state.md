@@ -60,26 +60,45 @@ type: project
 
 ---
 
-## Session 2026-05-12 (intégration EP-VOCAB clôture + suite pipeline tile)
+## Session 2026-05-12 — 2 phases : pipeline route v3 validé (matin) + pivot brique-avant-macro (après-midi)
 
-**Synthèse game-tile-pmo (simplifier→designer→reviewer) :**
+### Phase 1 — Pipeline route v3 (matin, validé pipeline mais à revalider visuellement)
 
 **Fait** :
-- ✅ **5 recettes validées** par pipeline (9/10 reviewer) :
+- ✅ **3 recettes route validées** par pipeline ET visuellement par Papa Yann :
   - `test_route_h_7rows_v3.py` (14×7 route H 3-chaussées)
   - `test_route_v_7cols_v3.py` (7×14 route V 3-chaussées)
   - `test_papa_route_large.py` (17×9 compo Papa référence)
-  - `test_virage_gauche.py` / `_droit.py` / `_haut_gauche.py` / `_haut_droit.py` (4× 13×13 virages, carré intersection 7×7)
-- ✅ **`builders.py` v3** opérationnel : `route_h()/route_v()` macrifiées, alternance `_VOIE_POOL` cycle 3, anti-mono activé
+- ⚠️ **4 recettes virages 13×13** validées par pipeline (9/10 reviewer) MAIS **invalidées visuellement par Papa Yann** dans l'après-midi :
+  - `test_virage_gauche.py` / `_droit.py` / `_haut_gauche.py` / `_haut_droit.py`
+  - Verdict Papa Yann : "Totalement faux, terrible même" — pipeline a passé sur des fondations cassées
+- ✅ **`builders.py` v3** : `route_h()/route_v()` macrifiées, alternance `_VOIE_POOL` cycle 3, anti-mono activé
 - ✅ **`vocab.py`** source unique constantes tiles (validation auto)
 - ✅ **`vocab-playground.html`** synchronisé
-- ✅ **Workflow pipeline** validé : 1 cycle complet ≈8 min, verdict PASS 9/10
 
-**Leçons gravées** (LESSONS.md + PIPELINE-MEMORY.md maj) :
-- **L-025** : Géométrie virage 3-chaussées (carré 7×7 + table 4 coins critiques)
-- **L-026** : Anti-mono pool 3 + décalage cycle modulo
+### Phase 2 — Pivot brique-avant-macro (après-midi, après invalidation virages)
 
-**EP-VOCAB clôturé** `[x]` (phases 1-2 complètes, phases 3-5 → EP-REFS)
+**Découverte critique** : le pipeline simplifier→designer→reviewer a validé des recettes virages techniquement correctes (toutes les contraintes LESSONS respectées) mais **visuellement ratées**. Cause : `vocab.py` contenait des constantes inventées (`COIN_INT_SE = sw_1` etc.) que personne n'avait validé visuellement. Pipeline a propagé l'erreur.
+
+**Refonte complète** :
+- ✅ **`brick-explorer.html`** créé : page interactive pour valider chaque tile candidate isolée (mini-render 3×3, fond asphalte/trottoir, vote courbe/point/autre/rejeté)
+- ✅ **Mapping LimeZu SW_1 ↔ SW_2-6 figé** : découvert que SW_1 a 10 positions (#11-#20) décalées vs SW_2-6. Table figée dans `styles.py`
+- ✅ **`styles.py`** créé : module 6 styles (blanc/beige/gris_bleu/jaune/bleu/gris) + résolution auto mapping SW_1
+- ✅ **Méthode "planche comparative"** validée : `scripts/compare_tilesets*.py` (5 scripts) — 1 image grille = validation famille entière instantanée
+- ✅ **`tile-picker.html`** refondu : 9811 tiles (vs 3525, 36% → 100% couverture), dropdown famille dynamique, boutons variante 1-6 universels (pas que Sidewalk)
+- ✅ **`build_tile_picker_data.py`** : scan PIL lit vraies dimensions w/h (3040 unitaires + 6473 sprites + 298 planches au lieu de tout en 1×1)
+- ✅ **`test_ref_papa_4virages.py`** : RÉFÉRENCE CANONIQUE virages (14×14 compo Papa Yann tile-picker) — source de vérité pour reconstruction future
+
+**Leçons gravées (game-tile-pmo)** :
+- LESSONS.md : Corrections 9-12 (4 leçons) — voir LESSONS.md du skill maxplay-tiles
+- PIPELINE-MEMORY.md : F-008/F-009 (frictions), P-008/P-009/P-010 (patterns validés)
+- BACKLOG.md Leçons : L-029 (brique avant macro), L-030 (mapping SW_1), L-031 (planche comparative), L-032 (PIL multi-cells)
+
+**EP-VOCAB clôturé** `[x]` (phases 1-2 complètes, routes OK, briefs complexes → EP-REFS)
+
+**À refaire (post-pivot)** :
+- ❌ Les 4 virages 13×13 restent **techniquement présents mais visuellement invalidés**. Refonte attendue depuis la référence `test_ref_papa_4virages.py` + briques validées via brick-explorer.html.
+- 📝 EP à créer : EP-VIRAGES-V2 (refonte depuis ref Papa avec workflow brique-avant-macro)
 
 ---
 

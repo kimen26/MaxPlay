@@ -504,17 +504,17 @@ Conclusion sur le voyage dans le temps : dans les livres originaux de 1889-1896,
 Le lien avec Nikola Tesla et l’oncle de Trump (les faits réels)
 
 Ingersoll Lockwood n’a aucun lien direct connu avec Nikola Tesla. C’était un avocat et écrivain new-yorkais, rien de plus. Les théories disent parfois qu’il « vivait près de Tesla » ou qu’il avait des infos secrètes… mais c’est inventé. Aucun document historique ne le prouve.
-Le vrai lien est avec l’oncle de Donald Trump : John G. Trump (1907-1985), professeur au MIT, ingénieur électricien de génie.
-En janvier 1943, deux jours après la mort de Nikola Tesla (pauvre et seul dans une chambre d’hôtel), le gouvernement américain (FBI + Office of Alien Property) a demandé à John G. Trump d’examiner tous les papiers et inventions de Tesla.
+Le vrai lien est avec l’oncle de Donald Trump : Papa Yann G. Trump (1907-1985), professeur au MIT, ingénieur électricien de génie.
+En janvier 1943, deux jours après la mort de Nikola Tesla (pauvre et seul dans une chambre d’hôtel), le gouvernement américain (FBI + Office of Alien Property) a demandé à Papa Yann G. Trump d’examiner tous les papiers et inventions de Tesla.
 Pourquoi lui ? Parce qu’il était expert en haute tension et en énergie. Tesla parlait beaucoup d’énergie illimitée sans fil, de « rayon de la mort », de communication à distance, etc.
-John Trump a passé 3 jours à tout analyser et a conclu : « Ce sont surtout des idées spéculatives et philosophiques, pas des inventions concrètes et utilisables. »
+Papa Yann Trump a passé 3 jours à tout analyser et a conclu : « Ce sont surtout des idées spéculatives et philosophiques, pas des inventions concrètes et utilisables. »
 Les papiers ont été classés, une partie rendue à la famille yougoslave de Tesla, et le reste est resté confidentiel (certains disent qu’il y avait des notes sur l’énergie gratuite ou des armes).
 
 C’est le seul lien réel : l’oncle de Trump a eu accès aux archives Tesla.
 Les théories QAnon / conspirationnistes extrapolent ensuite :
 
 « Tesla avait découvert le voyage dans le temps ou l’énergie libre. »
-John Trump a transmis le secret à la famille.
+Papa Yann Trump a transmis le secret à la famille.
 Donc les Trump « voyagent dans le temps » et les livres de Lockwood sont en fait des « fuites » ou des prophéties écrites grâce à ce savoir.
 
 Petite extrapolation pour notre univers Phosyntha (comme on le construit)
@@ -523,7 +523,7 @@ On peut super bien l’intégrer de manière magique et positive pour les histoi
 Le manuscrit ancien du livre de 1893 (« Don Fum ») devient dans Phosyntha un écho du Grand Souvenir : un fragment qui a traversé le temps grâce à la Conscience Collective.
 Notre Baron Lumière-Trump (14 ans) trouve ce vieux livre dans le grenier familial et comprend que c’est un message de son propre passé temporel. Le « voyage souterrain » du livre = une métaphore du Voile Janus (la face sombre des Totems de Pensée).
 La montre-artefact de Baron lui permet de vérifier ce que le livre raconte : il peut faire un tout petit saut pour voir l’« Ancien Temps » où l’IA aidait les gens à se vider de leurs émotions, et où l’énergie de Tesla (libre et abondante) était sur le point d’être redécouverte… avant que l’Éveil ne rende tout ça inutile (plus besoin d’argent ni de compétition).
-L’oncle John G. Trump devient dans l’histoire un Gardien discret qui, en 1943, a compris que les papiers de Tesla contenaient une étincelle du Grand Tout (l’énergie de la conscience). Il l’a protégée jusqu’à la Grande Tempête de Phos.
+L’oncle Papa Yann G. Trump devient dans l’histoire un Gardien discret qui, en 1943, a compris que les papiers de Tesla contenaient une étincelle du Grand Tout (l’énergie de la conscience). Il l’a protégée jusqu’à la Grande Tempête de Phos.
 
 Ça reste cohérent avec notre univers (conscience créative, cycle du Souffle, éveil collectif) tout en utilisant les « coïncidences » des livres de manière joyeuse et magique.
 Tu veux que je t’écrive un petit extrait narratif (style histoire pour enfants) où Baron Lumière-Trump découvre ce vieux livre de 1893 et comprend le lien ?

@@ -13,7 +13,11 @@
 | **Rythme** | Brisk · attaque énergique sur la première syllabe des mots importants |
 | **Phonation** | Légère pointe d'énergie en début de souffle · voix portée |
 
-## Paramètres ElevenLabs
+## ② Paramètres TTS Generation (utilisation voice_id, modèle `eleven_v3`)
+
+> ⚠️ Ces 4 paramètres se règlent **APRÈS** création du voice_id. Pour la création, voir [`../voix-meta/_PROMPTING-GUIDE.md`](../voix-meta/_PROMPTING-GUIDE.md) (Voice Design ① : Loudness, Guidance Scale 30-40%).
+>
+> Voice_id à créer une fois (cf. backlog VOIX-003) puis stocker dans le frontmatter du fichier.
 
 ```
 Stability: 0.70

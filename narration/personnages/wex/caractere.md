@@ -96,3 +96,29 @@ Il contrôle sa vision causale. Il comprend son rôle dans l'équilibre du group
 Wex ne doit jamais être "expliqué" dans les premières histoires. Il agit juste au bon moment. Le lecteur sent qu'il sait quelque chose — sans savoir quoi. C'est ce mystère tranquille qui le rend magnétique.
 
 Ne pas sur-écrire Wex. Moins il parle, plus il est puissant.
+
+---
+
+## Signature vocale — 7 tics canon
+
+> Détails techniques complets dans [`voix.md`](voix.md). Ce qui suit est le résumé canon utile à tous les writers et au voice-director.
+
+Wex est **immédiatement reconnaissable à l'oreille** par 7 traits phonétiques répartis sur 3 ancrages culturels : observation IRL d'enfants de cet âge (Max), héritage lusophone de sa maman, et coloration prosodique franc-comtoise/suisse romande (territoire de Belfort).
+
+| # | Tic | Comment ça sonne | Fréquence | Origine |
+|---|-----|------------------|-----------|---------|
+| **1** | **Sifflement léger sur `s` et `ch`** | Petite fuite d'air audible (pas un zézaiement) | Constant | Physiologique (dents de lait) |
+| **2** | **`é` parasite devant S+consonne** | « un éstylo », « un éscargot » | 1/3-4 phrases | PT BR : *estilo, escargot* |
+| **3** | **`ouit` au lieu de `huit`** | tous les -uit deviennent -wi (ouit, nouit, fruite) | 1/3-4 phrases | PT BR (pas de /ɥ/) |
+| **4** | **`je` instable** | mixe « se », « ze », « je » selon le moment (« se sais pas », « ze veux », « je vais ») | Variable | Articulation enfantine, /ʒ/ pas figé |
+| **5** | **Bégaiement quand excité** | reprise 1ère syllabe 2-3× : « le-le-le bus ! », « j'ai-j'ai-j'ai vu ! » | Pics d'excitation uniquement | Observation Max IRL |
+| **6** | **Affirmations : fin en intonation BASSE** | descente prosodique, jamais upspeak — il affirme au lieu de questionner | Constant sur statements | Observation Max IRL |
+| **7** | **🆕 Questions : mélodie franc-comtoise/suisse romande** | montée puis redescente arrondie + légère avant-dernière syllabe allongée (« tu vienssss-tu ? »). Très subtil. | Constant sur questions | Coloration géographique (Belfort/Suisse romande) |
+
+> **Note technique 2026-05-11** : ces tics sont encodés dans `voix.md` v19 via **descripteurs anglais riches** (méthode officielle ElevenLabs Voice Design — pas IPA, pas phoneme tags). Si la voix générée ne rend pas un tic précis, le voice-director (EP-026) pourra injecter des **alias tags** au moment de produire chaque MP3 (ex. forcer `huit` → `ouitte` à la lecture).
+
+**Règle d'or pour les writers** : tu **n'écris rien de spécial** dans les dialogues de Wex. Continue en FR standard normal — « Je sais pas », « huit bus », « le bus arrive ». Le voice-director et le voice_id ElevenLabs ajoutent les tics à la lecture audio. C'est encodé dans le prompt vocal, **pas dans le texte écrit**.
+
+**Pourquoi ces tics** : signature reconnaissable cross-LLM, cross-langue, cross-version. Quand Wex sera traduit en EN/ES/PT/JP, on adaptera les tics aux phonétiques locales — mais l'idée de "petit décalage charmant hérité d'une mère étrangère + traits enfantins observés" reste universelle.
+
+**À décider plus tard** : si une histoire S1/S2 mentionne explicitement que sa maman est brésilienne (méta-référence : *« Wex, tu dis toujours ouit ! » — « Maman dit que c'est joli »*).

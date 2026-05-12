@@ -138,9 +138,9 @@ OUTILS PONCTUELS :
 
 ## Liens
 
-- [`PROCESS.md`](PROCESS.md) — workflow militaire 9 étapes
+- [`PROCESS.md`](PROCESS.md) — workflow militaire 11 étapes (refonte 2026-05-08)
 - [`templates/brief-histoire.template.md`](templates/brief-histoire.template.md) — brief writer central
-- [`exemples-canoniques.md`](exemples-canoniques.md) — mini-scénarios castés *(à valider en équipe)*
 - [`sources-narratologie.md`](sources-narratologie.md) — étude cross-culture des 6 familles narratives
+- [`lecons-vivantes.md`](lecons-vivantes.md) — patterns confirmés (P1-P10, G1-G6)
 - [`../pmo/decisions.md`](../pmo/decisions.md) — décisions tranchées (chantier 1 le 2026-04-30)
-- [`../arcs/`](../arcs/) — fiches d'arc (qualité humaine + problématique au niveau arc)
+- [`../saisons/saison-1/`](../saisons/saison-1/) — plan éditorial par arc (qualité humaine + problématique)

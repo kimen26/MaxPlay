@@ -184,7 +184,32 @@
       "Bash(mv equipe/voix/narrateur-h.md personnages/voix-meta/narrateur-h.md)",
       "Bash(mv equipe/voix/narrateur-f.md personnages/voix-meta/narrateur-f.md)",
       "Bash(mv equipe/voix/_CHEATSHEET-WRITERS.md personnages/voix-meta/_CHEATSHEET-WRITERS.md)",
-      "Bash(mv equipe/voix/_PROMPTING-GUIDE.md personnages/voix-meta/_PROMPTING-GUIDE.md)"
+      "Bash(mv equipe/voix/_PROMPTING-GUIDE.md personnages/voix-meta/_PROMPTING-GUIDE.md)",
+      "WebFetch(domain:www.youtube.com)",
+      "mcp__llm-copains__tts_elevenlabs",
+      "Bash(node -e 'const t = `Native French. Male, young adult squeaky and playful character voice — high-pitched, bright, light, with cartoon protagonist energy, French Sangoku or Naruto style. Studio quality. *)",
+      "Bash(node -e 'const t = `Native French. Male, young adult squeaky and playful character voice — high-pitched, bright, light, French Sangoku or Naruto cartoon style. Studio quality. *)",
+      "Bash(node -e 'const t = `Native French. Female, young adult bubbly cartoon character voice — high-pitched, bright, airy, French animation style. Studio quality. *)",
+      "Bash(node -e 'const t = `Native French. Male, young adult attentive cartoon character voice — clear, slightly tight, alert, French animation style \\(like a watchful young hero\\). Studio quality. *)",
+      "Bash(where uvx *)",
+      "Bash(where pip *)",
+      "Bash(where python *)",
+      "Bash(pip install *)",
+      "Bash(\"C:/Users/kimen/AppData/Roaming/Python/Python311/Scripts/elevenlabs-mcp.exe\" --help)",
+      "mcp__llm-copains__studio_audiobook_from_segments",
+      "Bash(where ffmpeg *)",
+      "Bash(ffmpeg -version)",
+      "PowerShell(winget install --id Gyan.FFmpeg -e --silent --accept-package-agreements --accept-source-agreements 2>&1)",
+      "Bash(\"C:/Users/kimen/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe\" -version)",
+      "Bash(ELEVENLABS_API_KEY=\"aa00a440e8665c7d53b1a1113bf8143a6e44720898843a448356d2d2b090a50d\" bun narration/scripts/generate-story-audio.js narration/stories/001-le-pont-casse/assets/audio/_segments-001-v2-kimi.json)",
+      "Bash(bun -e ' *)",
+      "Bash(\"C:/Users/kimen/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-8.1.1-full_build/bin/ffmpeg.exe\" -i /tmp/test-dialogue.mp3)",
+      "WebFetch(domain:elevenlabsmagazine.com)",
+      "Bash(ELEVENLABS_API_KEY=\"aa00a440e8665c7d53b1a1113bf8143a6e44720898843a448356d2d2b090a50d\" bun narration/scripts/test-wex-advanced.js)",
+      "Bash(ELEVENLABS_API_KEY=\"aa00a440e8665c7d53b1a1113bf8143a6e44720898843a448356d2d2b090a50d\" bun narration/scripts/test-graphique-cris.js)",
+      "Bash(mkdir -p \"C:/Users/kimen/.claude/skills/audio-direction-elevenlabs\" && echo \"OK\")",
+      "Edit(~/.claude/skills/audio-direction-elevenlabs/**)",
+      "Edit(~/.claude/skills/elevenlabs-voice-design/**)"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\temp",
@@ -195,7 +220,8 @@
       "C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude\\agents",
       "C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude",
       "C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\narration\\enneagramme\\ressources",
-      "C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\narration\\enneagramme\\personnages"
+      "C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\narration\\enneagramme\\personnages",
+      "c:\\tmp"
     ]
   },
   "enabledMcpjsonServers": [
@@ -209,7 +235,7 @@
           {
             "type": "http",
             "url": "http://localhost:3001/permission",
-            "timeout": 310
+            "timeout": 1210
           }
         ]
       }

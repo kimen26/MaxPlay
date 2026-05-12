@@ -85,26 +85,52 @@ Test grandeur nature du PROCESS militaire 11 étapes appliqué intégralement (p
 
 ---
 
-## Carte du dossier (post-canonisation)
+## Carte du dossier (post-restauration 2026-05-12)
 
 ```
 001-le-pont-casse/
-├── README.md              ← ce fichier (carte vivante)
-├── kanban.md              ← état final des 11 étapes (toutes ✅)
-├── pitch.md               ← étape 1
-├── plan-histoire.md       ← étape 2
-├── briefs/                ← étape 3 (matière writers, conservée pour cohérence)
+├── README.md                   ← ce fichier (carte vivante)
+├── kanban.md                   ← état final des 11 étapes (toutes ✅)
+├── pitch.md                    ← étape 1
+├── plan-histoire.md            ← étape 2
+├── briefs/                     ← étape 3
 │   ├── brief-univers.md
 │   ├── brief-personnages.md
-│   └── brief-histoire.md
-├── texte.md               ← VERSION CANON (étape 10)
-├── synthese-finale.md     ← compilation pipeline + décisions + patterns
-├── variantes-culturelles/ ← multi-culture (à produire ultérieurement)
-├── assets/                ← illustrations, audio TTS
-└── _archive/              ← rien pour le moment
+│   ├── brief-histoire.md
+│   └── _writer-package.md      ← brief autoporteur 8 runs
+├── versions-writers/           ← étape 4 (8 drafts + 8 notes intention)
+│   ├── claude-run1.md / run2.md
+│   ├── kimi-run1.md / run2.md
+│   ├── deepseek-run1.md / run2.md
+│   ├── grok-run1.md / run2.md
+│   └── _notes-intention/
+├── lecteurs-temoins/           ← étape 5 (6 fiches panel transitoire)
+│   ├── enfant-fille.md / enfant-garcon.md
+│   └── dyade-(maman|papa)-(fille|garcon).md
+├── synthese-lecteurs.md        ← étape 5bis (consolidation)
+├── selection.md                ← étape 6 (base kimi-run1 validée auteur)
+├── rewrite/                    ← étape 7
+│   ├── claude-rewrite-v1.md   ← régression (archive)
+│   └── _prompt-kimi-rewrite.md ← prompt utilisé
+├── texte.md                    ← VERSION CANON (étape 10 — kimi-rewrite-v2 finalisé)
+├── synthese-finale.md          ← compilation pipeline + décisions + patterns
+├── variantes-culturelles/      ← multi-culture (christ FR produit)
+│   └── fr/texte.md
+├── assets/                     ← illustrations, audio TTS
+└── _archive/
+    └── v1-ferretti/            ← pré-histoire V1 canon Ferretti (avant refonte 2026-05-08)
+        ├── lecteurs-temoins/papa-yann-relecture-2026-04-30.md  (source patte-papa-yann.md)
+        └── rewrite/v2-correction.md
 ```
 
-> **Matière de fabrication retirée** post-canonisation 2026-05-08 (versions-writers, lecteurs-temoins, rewrite, selection, synthese-lecteurs, gatekeeper-verdict, relecture-rewrite). Patterns extraits dans [`equipe/lecons-vivantes.md`](../../equipe/lecons-vivantes.md).
+> **Restauration 2026-05-12** : la fabrication complète a été restaurée via git (commit `37cda252`) après détection d'un bug d'exécution sur le commit `58b491ed` (canonisation 2026-05-08) qui avait supprimé la matière au lieu de l'archiver. La décision tranchée 2026-05-08 (`pmo/decisions.md` Décision C) prévoyait pourtant : « présence en `_archive/` pour traçabilité ».
+>
+> **Manquants définitifs** (n'ont jamais été commit en tant que fichiers standalone) :
+> - `gatekeeper-verdict.md` étape 8 → verdict PASS 24/24 tracé dans `kanban.md` + `synthese-finale.md`
+> - `relecture-rewrite/` étape 9 → verdicts 6×✅ tracés dans `kanban.md` + `synthese-finale.md`
+> - `kimi-rewrite-v1.md` / `kimi-rewrite-v2.md` séparés → la v2 finalisée = `texte.md` canon
+>
+> Patterns narratifs extraits dans [`equipe/lecons-vivantes.md`](../../equipe/lecons-vivantes.md).
 
 ---
 

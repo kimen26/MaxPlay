@@ -94,6 +94,13 @@ CI : [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) (assemble da
 - Ennéagramme = grille personnages (basée Chabreuil)
 - Référence externe : `C:\Users\kimen\SecondBrain\Ressources\Enneagramme\`
 
+## ⚙️ PMO Narration proactif (refonte 2026-05-12)
+
+**`narration-pmo` est invoqué AUTOMATIQUEMENT à chaque tour incluant un signal narration.** Cohérent avec `game-pmo` côté JEU. Signaux : personnage · histoire · voix · ElevenLabs · brief · kanban · décision · INDEX · équipe · univers · saison · arc · ennéagramme · cross-culture · pitch · rewrite · GateKeeper · lecteur · casting · INBOX dump.
+
+Source de vérité chiffres clés : [`narration/pmo/INVARIANTS.md`](narration/pmo/INVARIANTS.md) (10 versions / 20 lecteurs / casting / voice_ids / règles d'or).
+Audit trail : [`narration/pmo/audit-trail.md`](narration/pmo/audit-trail.md).
+
 ## Architecture en 4 piliers (refonte 2026-05-10)
 
 ```
@@ -110,7 +117,9 @@ narration/
 |---------|------|
 | [`narration/INDEX.md`](narration/INDEX.md) | **Point d'entrée pôle** — charger en premier |
 | [`narration/INBOX.md`](narration/INBOX.md) | Zone unique de dump brut sessions |
-| [`narration/pmo/INDEX.md`](narration/pmo/INDEX.md) | PMO — backlog, decisions, sprint-log, roadmap |
+| [`narration/pmo/INDEX.md`](narration/pmo/INDEX.md) | PMO — INVARIANTS, backlog, decisions, sprint-log, audit-trail, roadmap |
+| [`narration/pmo/INVARIANTS.md`](narration/pmo/INVARIANTS.md) | 🆕 **Source de vérité chiffres clés** (10/20/casting/voice_ids/règles d'or) |
+| [`narration/pmo/audit-trail.md`](narration/pmo/audit-trail.md) | 🆕 Traces audits + analyses cause racine (dette de coordination) |
 | [`narration/personnages/INDEX.md`](narration/personnages/INDEX.md) | **Pilier 1** — casting V1 figé + lookup + théorie ennéagramme + pédagogie 4-5 ans |
 | [`narration/univers/INDEX.md`](narration/univers/INDEX.md) | **Pilier 2** — carte du monde (fondements, vie-quotidienne, meta) |
 | [`narration/cross-culture/INDEX.md`](narration/cross-culture/INDEX.md) | **Pilier 3** — variantes par culture (prénoms, onomatopées, faune-flore, lieux, coutumes, saisons climat, castings nationaux) |
@@ -121,7 +130,12 @@ narration/
 | [`narration/equipe/patte-narrative-maxplay.md`](narration/equipe/patte-narrative-maxplay.md) | Patte B+D+C Kishōtenketsu+tranche de vie+cycle |
 | [`narration/equipe/templates/`](narration/equipe/templates/) | 10 gabarits réutilisables (pitch, plan, briefs, sélection, kanban, synthèse) |
 | [`narration/equipe/ORGANIGRAMME.md`](narration/equipe/ORGANIGRAMME.md) | Vue agents + chaîne de commandement |
-| [`narration/scripts/`](narration/scripts/) | CLI : new-story, archive-story, gatekeeper, validate, generate-index |
+| [`narration/scripts/`](narration/scripts/) | CLI : new-story, archive-story, gatekeeper, validate, generate-index, **generate-story-audio** (production MP3 multi-voix via text-to-dialogue + ffmpeg loudnorm) |
+
+## Production audio (skills globaux)
+🎙️ **Pour toute question audio / voix ElevenLabs**, 2 skills globaux auto-déclenchés :
+- **`~/.claude/skills/elevenlabs-voice-design/`** — CRÉATION d'une voix (Voice Design prompts, multilingue, voice cloning)
+- **`~/.claude/skills/audio-direction-elevenlabs/`** — PRODUCTION multi-voix (text-to-dialogue API, tags v3 catalogués, tricks de graphie, pronunciation dicts, voice settings, 14 anti-patterns, 12 cultures préparées). Skill PARENT + 8 sous-fichiers + journal de découvertes.
 
 ## Personnages
 Casting V1 « Christ » **figé** (2026-04-24, ajusté 2026-05-05) : Wex (hors-système, invariant cross-culture) + Melki/Mimi/Polo/**Madie**/Lulu/Pierrot/Raph/Juju/Nono. **4F/5M+Wex.**

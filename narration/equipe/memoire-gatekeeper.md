@@ -133,4 +133,4 @@ Les critères 9 (distribution sensorielle) et 13 (épilogue italique) ont été 
 - [`patte-papa-yann.md`](patte-papa-yann.md) — la patte de l'auteur (référence obligatoire)
 - [`patte-narrative-maxplay.md`](patte-narrative-maxplay.md) — patte stylistique projet (B+D+C)
 - [`PROCESS.md`](PROCESS.md) — étape 8 GateKeeper
-- Sources des audits : `stories/00X/lecteurs-temoins/papa-yann-relecture-2026-04-30.md`
+- Sources des audits : `stories/00X/lecteurs-temoins/john-relecture-2026-04-30.md`

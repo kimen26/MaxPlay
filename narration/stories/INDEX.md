@@ -1,6 +1,6 @@
 # Index des Histoires
 
-> Maintenu manuellement à chaque canonisation. Dernière mise à jour : 2026-05-08
+> Maintenu manuellement à chaque canonisation. Dernière mise à jour : 2026-05-12
 
 ---
 
@@ -9,6 +9,14 @@
 | # | Titre | Statut | Mots | Personnages | Thème principal |
 |---|-------|--------|------|-------------|-----------------|
 | 001 | [Le Pont Cassé](001-le-pont-casse/README.md) | canon (refonte 2026-05-08, ex-003-le-pont-casse-v2) | ~540 | Wex, Raph, Pierrot | promesse du titre tenue · soin collectif sans réparation |
+
+---
+
+## Histoires en production
+
+| # | Titre | Statut PROCESS | Owner courant | Personnages | Prochaine action |
+|---|-------|----------------|---------------|-------------|------------------|
+| 002 | [Libellule Résonance](002-libellule-resonance/README.md) | Étape 4 (10 versions writers) prête à lancer | Directeur (briefs ✅) | Wex, Polo, Nono | Lancer 10 writers après validation auteur questions ouvertes |
 
 ---
 
@@ -29,7 +37,7 @@ Les patterns observés sur les histoires supprimées sont consolidés dans [`equ
 
 Voir [axes-histoires-en-stock.md](axes-histoires-en-stock.md) — 10 unitaires + 5 transversaux.
 
-Prochaine histoire = **005** (numérotation continue). Brainstorm sujet/perso à venir.
+Prochaine histoire après 002 = **003** (renumérotation séquentielle, l'ancien 003-la-confidence ayant été supprimé). Brainstorm sujet/perso à venir.
 
 ---
 

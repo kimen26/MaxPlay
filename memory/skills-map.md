@@ -115,6 +115,7 @@ type: reference
 
 | Catégorie | Skills |
 |-----------|--------|
+| **🎙️ Audio / Voix ElevenLabs** | **`elevenlabs-voice-design`** (création voix : prompts Voice Design, multilingue, voice cloning) · **`audio-direction-elevenlabs`** (production multi-voix : text-to-dialogue API, tags v3 catalogués, tricks de graphie, pronunciation dicts, voice settings, 14 anti-patterns, 12 cultures préparées) |
 | Engineering | `tdd-workflow` · `e2e-testing` · `security-review` · `coding-standards` · `python-testing` · `plankton-code-quality` |
 | Frontend | `frontend-patterns` · `frontend-slides` |
 | Backend | `backend-patterns` · `api-design` |

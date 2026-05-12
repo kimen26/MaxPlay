@@ -130,7 +130,7 @@ Bun.serve({
       );
       console.log(`[PERM] Message envoyé sur Telegram pour ${reqId}`);
 
-      // Attendre la réponse Telegram (max 5 min)
+      // Attendre la réponse Telegram (max 20 min)
       const allow = await new Promise<boolean>((resolve) => {
         pendingPermissions.set(reqId, resolve);
         setTimeout(() => {
@@ -138,19 +138,24 @@ Bun.serve({
             pendingPermissions.delete(reqId);
             console.log(`[PERM] Timeout expiré pour ${reqId} → refus auto`);
             resolve(false);
-            bot.api.sendMessage(ALLOWED_CHAT_ID!, "⏰ Permission expirée (5 min) — refusée.").catch(() => {});
+            bot.api.sendMessage(ALLOWED_CHAT_ID!, "⏰ Permission expirée (20 min) — refusée.").catch(() => {});
           }
-        }, 5 * 60 * 1000);
+        }, 20 * 60 * 1000);
       });
 
       console.log(`[PERM] Décision pour ${reqId} : ${allow ? "ALLOW" : "DENY"}`);
 
-      // Format de réponse attendu par le hook PermissionRequest de Claude Code
-      return Response.json(
-        allow
-          ? { decision: "allow" }
-          : { decision: "deny", reason: "Refusé via Telegram" }
-      );
+      // Format attendu par PermissionRequest (Claude Code hooks, 2026-05) :
+      // { hookSpecificOutput: { hookEventName, decision: { behavior } } }
+      // L'ancien format { decision: "allow" } était ignoré silencieusement.
+      return Response.json({
+        hookSpecificOutput: {
+          hookEventName: "PermissionRequest",
+          decision: {
+            behavior: allow ? "allow" : "deny",
+          },
+        },
+      });
     }
 
     return new Response("Not found", { status: 404 });
@@ -437,5 +442,5 @@ function splitMessage(text: string, maxLen = 4000): string[] {
 
 bot.catch((err) => console.error(INSTANCE_TAG, "Bot error:", err));
 
-log(`🤖 MaxPlay Bot démarré… INSTANCE_ID=${INSTANCE_ID} pid=${process.pid} host=${hostname()}`);
+log(`🤖 MaxPlay Bot démarré… INSTANCE_ID=${INSTANCE_ID} pid=${process.pid} host=${hostname()} CLAUDE_TIMEOUT_MS=${CLAUDE_TIMEOUT_MS} PROJECT_PATH=${PROJECT_PATH}`);
 bot.start({ drop_pending_updates: true });

@@ -144,13 +144,24 @@ server.tool(
 
 server.tool(
   "tts_elevenlabs",
-  "Convertit du texte en audio via ElevenLabs. Retourne le chemin du fichier MP3 généré dans temp/.",
+  "Convertit du texte en audio via ElevenLabs. Retourne le chemin du fichier MP3 généré dans temp/. Pour utiliser les audio tags v3 (`[softly]`, `[laughs]`, `[whispers]`, etc.), passer `model_id: \"eleven_v3\"` (sinon les tags sont prononcés littéralement).",
   {
     text: z.string().max(5000).describe("Texte à synthétiser"),
     voice_id: z.string().optional().default("21m00Tcm4TlvDq8ikWAM").describe("ID de voix ElevenLabs (défaut: Rachel)"),
     output_name: z.string().optional().default("tts_output").describe("Nom du fichier de sortie (sans extension)"),
+    model_id: z
+      .enum(["eleven_v3", "eleven_multilingual_v2", "eleven_turbo_v2_5", "eleven_flash_v2_5"])
+      .optional()
+      .default("eleven_multilingual_v2")
+      .describe(
+        "Modèle ElevenLabs. `eleven_v3` (alpha) supporte les audio tags inline ([softly], [laughs], etc.). `eleven_multilingual_v2` (défaut) = stable, pas de tags. `turbo`/`flash` = temps réel low-latency."
+      ),
+    stability: z.number().min(0).max(1).optional().default(0.5).describe("Voice stability (0=créatif, 1=stable)"),
+    similarity_boost: z.number().min(0).max(1).optional().default(0.75).describe("Similarity boost (proximité voice_id source)"),
+    style: z.number().min(0).max(1).optional().default(0).describe("Style exaggeration (0=neutre, 1=très expressif). Recommandé 0.2-0.55 pour narration."),
+    speaker_boost: z.boolean().optional().default(false).describe("Speaker boost (clarté augmentée)"),
   },
-  async ({ text, voice_id, output_name }) => {
+  async ({ text, voice_id, output_name, model_id, stability, similarity_boost, style, speaker_boost }) => {
     const apiKey = process.env.ELEVENLABS_API_KEY;
     if (!apiKey) return { content: [{ type: "text", text: "Erreur: ELEVENLABS_API_KEY non définie." }], isError: true };
 
@@ -163,8 +174,13 @@ server.tool(
         },
         body: JSON.stringify({
           text,
-          model_id: "eleven_multilingual_v2",
-          voice_settings: { stability: 0.5, similarity_boost: 0.75 },
+          model_id,
+          voice_settings: {
+            stability,
+            similarity_boost,
+            style,
+            use_speaker_boost: speaker_boost,
+          },
         }),
       });
 
@@ -177,9 +193,206 @@ server.tool(
       const outputPath = `c:/ProjetsPerso/Claude_Projects/MaxPlay/temp/${output_name}.mp3`;
       await Bun.write(outputPath, audioBuffer);
 
-      return { content: [{ type: "text", text: `Audio généré : ${outputPath} (${Math.round(audioBuffer.byteLength / 1024)} KB)` }] };
+      return {
+        content: [
+          {
+            type: "text",
+            text: `Audio généré : ${outputPath} (${Math.round(audioBuffer.byteLength / 1024)} KB) · modèle: ${model_id} · stability: ${stability} · style: ${style}`,
+          },
+        ],
+      };
     } catch (e) {
       return { content: [{ type: "text", text: `Erreur ElevenLabs: ${(e as Error).message}` }], isError: true };
+    }
+  }
+);
+
+async function elevenLabsRequest(
+  apiKey: string,
+  path: string,
+  init: RequestInit = {}
+): Promise<Response> {
+  const headers = new Headers(init.headers);
+  headers.set("xi-api-key", apiKey);
+  const response = await fetch(`https://api.elevenlabs.io${path}`, {
+    ...init,
+    headers,
+  });
+  if (!response.ok) {
+    const errBody = await response.text();
+    throw new Error(`ElevenLabs ${response.status} on ${path}: ${errBody}`);
+  }
+  return response;
+}
+
+async function pollChapterReady(
+  apiKey: string,
+  projectId: string,
+  chapterId: string,
+  maxAttempts: number = 60,
+  delayMs: number = 5000
+): Promise<{ chapter_snapshot_id: string }> {
+  for (let attempt = 0; attempt < maxAttempts; attempt++) {
+    await new Promise((resolve) => setTimeout(resolve, delayMs));
+    const r = await elevenLabsRequest(
+      apiKey,
+      `/v1/studio/projects/${projectId}/chapters/${chapterId}`
+    );
+    const data = (await r.json()) as {
+      state: string;
+      conversion_progress?: number;
+      can_be_downloaded?: boolean;
+    };
+    if (data.state === "default" && data.can_be_downloaded !== false) {
+      const snapshotsRes = await elevenLabsRequest(
+        apiKey,
+        `/v1/studio/projects/${projectId}/chapters/${chapterId}/snapshots`
+      );
+      const snapshots = (await snapshotsRes.json()) as {
+        snapshots: { chapter_snapshot_id: string; created_at_unix: number }[];
+      };
+      const latest = snapshots.snapshots.sort(
+        (a, b) => b.created_at_unix - a.created_at_unix
+      )[0];
+      if (!latest) {
+        throw new Error("Conversion terminée mais aucun snapshot disponible.");
+      }
+      return { chapter_snapshot_id: latest.chapter_snapshot_id };
+    }
+  }
+  throw new Error(
+    `Conversion non terminée après ${(maxAttempts * delayMs) / 1000}s. Vérifier l'état du projet via l'UI ElevenLabs.`
+  );
+}
+
+server.tool(
+  "studio_audiobook_from_segments",
+  "Crée un projet ElevenCreative Studio multi-voix à partir de segments [{voice_id, text}], lance la conversion, récupère le MP3 final. Idéal pour audiobooks avec dialogues entre plusieurs personnages. Tous les audio tags v3 (`[softly]`, `[laughs]`, etc.) inline dans le texte sont supportés.",
+  {
+    project_name: z.string().describe("Nom du projet Studio (visible dans l'UI ElevenLabs)"),
+    segments: z
+      .array(
+        z.object({
+          voice_id: z.string().describe("ID de la voix ElevenLabs pour ce segment"),
+          text: z.string().describe("Texte du segment (avec audio tags v3 inline si modèle v3)"),
+        })
+      )
+      .min(1)
+      .describe("Liste ordonnée des segments à synthétiser, chacun avec son voice_id"),
+    output_path: z
+      .string()
+      .describe(
+        "Chemin absolu de sortie du fichier MP3 final (ex: c:/.../assets/audio/001-final.mp3)"
+      ),
+    model_id: z
+      .enum(["eleven_v3", "eleven_multilingual_v2", "eleven_turbo_v2_5", "eleven_flash_v2_5"])
+      .optional()
+      .default("eleven_v3")
+      .describe("Modèle (eleven_v3 par défaut pour supporter les audio tags inline)"),
+    quality_preset: z
+      .enum(["standard", "high", "ultra", "ultra_lossless"])
+      .optional()
+      .default("high")
+      .describe("Qualité audio finale"),
+    max_wait_seconds: z
+      .number()
+      .int()
+      .min(30)
+      .max(900)
+      .optional()
+      .default(300)
+      .describe("Temps max d'attente de la conversion (défaut 5 min)"),
+  },
+  async ({ project_name, segments, output_path, model_id, quality_preset, max_wait_seconds }) => {
+    const apiKey = process.env.ELEVENLABS_API_KEY;
+    if (!apiKey) {
+      return {
+        content: [{ type: "text", text: "Erreur: ELEVENLABS_API_KEY non définie." }],
+        isError: true,
+      };
+    }
+
+    try {
+      const chapterContent = [
+        {
+          name: project_name,
+          blocks: segments.map((s) => ({
+            sub_type: "p",
+            nodes: [
+              {
+                voice_id: s.voice_id,
+                text: s.text,
+                type: "tts_node",
+              },
+            ],
+          })),
+        },
+      ];
+
+      const formData = new FormData();
+      formData.append("name", project_name);
+      formData.append("from_content_json", JSON.stringify(chapterContent));
+      formData.append("default_paragraph_voice_id", segments[0]!.voice_id);
+      formData.append("default_model_id", model_id);
+      formData.append("quality_preset", quality_preset);
+      formData.append("auto_convert", "true");
+
+      const createRes = await elevenLabsRequest(apiKey, "/v1/studio/projects", {
+        method: "POST",
+        body: formData,
+      });
+      const createData = (await createRes.json()) as {
+        project: { project_id: string };
+      };
+      const projectId = createData.project.project_id;
+
+      const chaptersRes = await elevenLabsRequest(
+        apiKey,
+        `/v1/studio/projects/${projectId}/chapters`
+      );
+      const chaptersData = (await chaptersRes.json()) as {
+        chapters: { chapter_id: string }[];
+      };
+      const chapterId = chaptersData.chapters[0]?.chapter_id;
+      if (!chapterId) {
+        throw new Error(
+          `Projet ${projectId} créé mais aucun chapitre trouvé.`
+        );
+      }
+
+      const maxAttempts = Math.ceil(max_wait_seconds / 5);
+      const { chapter_snapshot_id } = await pollChapterReady(
+        apiKey,
+        projectId,
+        chapterId,
+        maxAttempts,
+        5000
+      );
+
+      const streamRes = await elevenLabsRequest(
+        apiKey,
+        `/v1/studio/projects/${projectId}/chapters/${chapterId}/snapshots/${chapter_snapshot_id}/stream`,
+        { method: "POST" }
+      );
+      const audioBuffer = await streamRes.arrayBuffer();
+      await Bun.write(output_path, audioBuffer);
+
+      const sizeKB = Math.round(audioBuffer.byteLength / 1024);
+      return {
+        content: [
+          {
+            type: "text",
+            text: `Audiobook généré : ${output_path} (${sizeKB} KB) · ${segments.length} segments · projet Studio ${projectId} · chapter ${chapterId} · snapshot ${chapter_snapshot_id}`,
+          },
+        ],
+      };
+    } catch (e) {
+      return {
+        content: [
+          { type: "text", text: `Erreur Studio audiobook: ${(e as Error).message}` },
+        ],
+        isError: true,
+      };
     }
   }
 );

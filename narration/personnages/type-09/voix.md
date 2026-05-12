@@ -13,7 +13,11 @@
 | **Rythme** | Lent et fluide · aucune urgence · tout prend son temps |
 | **Phonation** | "mmm" doux · "ah" doux · respiration lente et profonde · sourire serein |
 
-## Paramètres ElevenLabs
+## ② Paramètres TTS Generation (utilisation voice_id, modèle `eleven_v3`)
+
+> ⚠️ Ces 4 paramètres se règlent **APRÈS** création du voice_id. Pour la création, voir [`../voix-meta/_PROMPTING-GUIDE.md`](../voix-meta/_PROMPTING-GUIDE.md) (Voice Design ① : Loudness, Guidance Scale 30-40%).
+>
+> Voice_id à créer une fois (cf. backlog VOIX-003) puis stocker dans le frontmatter du fichier.
 
 ```
 Stability: 0.70

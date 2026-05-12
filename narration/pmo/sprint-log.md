@@ -6,9 +6,67 @@
 
 ---
 
+## 2026-05-11 (avant writers) — Passe PMO relecture briefs STORY-002
+
+**Objectif :** Valider briefs étape 3 (brief-univers, brief-personnages, brief-histoire, _writer-package) avant lancement 4 writers étape 4.
+
+**Fait :**
+- [x] Audit 5 min : scan négations dans 4 briefs → 15 négations détectées
+- [x] Test règle F sur chaque négation (« writer naïf l'évoquerait-il sans la négation ? »)
+- [x] Résultat : **ZÉRO négation gratuite** — toutes légitimes (risques réels documentés)
+- [x] Validation 14 critères patte Papa Yann — **PASS complet**
+- [x] Cohérence intra-briefs (univers ↔ personnages ↔ histoire ↔ package) — **OK**
+- [x] Zéro bug 001 transposé en 002 (adultes, morale dite, jugement narratif) — **OK**
+
+**Décisions prises :** 
+Aucune requise. Briefs **operationnels, PASS validé**.
+
+**Trace négations (5 hit clés) :**
+- « Aucun adulte en scène » = risque saison 1 réel → LÉGITIME
+- « Aucune morale dite » = pattern Papa Yann critique → LÉGITIME  
+- « Ne pas réduire Polo à impatient » = piège 001 connu → LÉGITIME
+- « Pas une défaite — une découverte » = cœur de STORY-002 → LÉGITIME
+- « Ne parle pas » (Ten muet) = signature Kishōtenketsu → LÉGITIME
+
+**État au reboot :**
+- STORY-002 : étape 3 ✅ TERMINÉE + ⏳ PASSE PMO APPROUVÉE
+- Étape 4 (4 writers Claude/Kimi/DeepSeek/Grok) : prête à lancer, aucun blocage
+- Kanban ligne 28 : passer étape 3 de ⏳ attente auteur → ✅ validée PMO + ⏳ prête writers
+
+---
+
+## 2026-05-11 (tard) — Brainstorm STORY-002 + observation infra timeout CLI
+
+**Objectif :** Continuer brainstorm STORY-002 (direction Nono, ennéatype T9), trancher duo agité + lieu + animal central.
+
+**Fait :**
+- [x] Brainstorm STORY-002 progressé : Wex + Polo (agités courent cherchent) + Nono observe intervient
+- [x] Objet central proposé : **libellule** (au lieu papillon/écureuil/oiseau)
+- [x] Lieu pressenti : bord de mare/étang
+- [x] Savoir-faire Nono : vibrer comme la libellule (resonance physique, aligné sensibilité T9 Harmonie figée)
+- [x] Ticket INFRA-001 créé : timeout CLI Claude 180s vs bot Telegram .env 600s
+- [x] Aucune décision actée ce tour (4 points renvoyés à auteur pour validation)
+
+**Décisions prises :** 
+Aucune. Attente validation auteur sur 4 points (voir section "Questions ouvertes" decisions.md).
+
+**Questions remontées à auteur :**
+1. Duo **Wex + Polo** confirmé ? (Wex acteur agité contrairement à attente passée ?)
+2. **Libellule** comme objet central — validation ?
+3. Lieu **mare/étang** confirmé ? 
+4. Geste Nono « vibrer comme elles » à ajouter aux 5 existants ?
+
+**État au reboot :**
+- STORY-002 : 🟡 En cours, direction + brainstorm établis, 4 points SLA < 24h (auteur répond, puis pitch+plan)
+- INFRA-001 : nouveau, priorité Normale, assigné Infra (survey CLI `--timeout` flag ou passage env bot Telegram)
+- Aucune canonisation ce tour. Backlog : 2 actifs (STORY-002 + ARCHI-006), 8 audio/voix en attente
+- Prochaine session : confirmer 4 points Nono → démarrer pitch STORY-002 (étape 1 PROCESS) → plan (étape 2)
+
+---
+
 ## 2026-05-11 (nuit) — Audit complet narration + fixes critiques + backlog audio
 
-**Contexte :** John ouvre session finale d'audit post-refonte 4 piliers — simulation 8 scénarios (nouvelle histoire, audio, cross-culture, localisation). Audit passe un skill `pmo-challenge` créé ce jour. 3 liens cassés CRITIQUES trouvés ET FIXÉS dans le même tour, conformément à décision auteur « fixe tout ! ».
+**Contexte :** Papa Yann ouvre session finale d'audit post-refonte 4 piliers — simulation 8 scénarios (nouvelle histoire, audio, cross-culture, localisation). Audit passe un skill `pmo-challenge` créé ce jour. 3 liens cassés CRITIQUES trouvés ET FIXÉS dans le même tour, conformément à décision auteur « fixe tout ! ».
 
 **Objectif :** 
 1. Vérifier cohérence end-to-end workflow 11 étapes (pitch → canon) + audio post-canon
@@ -82,7 +140,7 @@ Du skill game-pmo et audit, 6 challenges transmis pour narration-pmo :
 
 ## 2026-05-11 — Audit voix + comblement trous structurels (post-refonte 4 piliers)
 
-**Contexte :** John ouvre 2 chantiers avant le dashboard HTML :
+**Contexte :** Papa Yann ouvre 2 chantiers avant le dashboard HTML :
 1. **Voix des perso** : où sont les narrateurs H/F ? Les prompts perso ont des âges adultes (30 ans) alors qu'on voulait enfants 4-5
 2. **Audit complet du process** : simuler les cas d'usage (nouvelle histoire, audio, cross-country, etc.) et vérifier que tout est trouvable
 
@@ -91,7 +149,7 @@ Du skill game-pmo et audit, 6 challenges transmis pour narration-pmo :
 - Les narrateurs H/F existent dans `equipe/voix/narrateur-{h,f}.md` — **volontairement adultes** (ils racontent AUX enfants 3-9 ans)
 - Donc 100% des voix dans `personnages/` étaient obsolètes
 
-**Diagnostic (audit process) :** 8 scénarios simulés → 8 trous identifiés (du critique au mineur). 3 critiques traités, 4 mineurs à peupler au fil des histoires, 1 décision (tokens dans canon) à trancher avec John.
+**Diagnostic (audit process) :** 8 scénarios simulés → 8 trous identifiés (du critique au mineur). 3 critiques traités, 4 mineurs à peupler au fil des histoires, 1 décision (tokens dans canon) à trancher avec Papa Yann.
 
 **Phase A — Voix consolidées** ✅
 - 10 voix persos corrigées (cp `equipe/voix/type-NN-*.md` → `personnages/type-NN/voix.md`)
@@ -118,7 +176,7 @@ Du skill game-pmo et audit, 6 challenges transmis pour narration-pmo :
 
 ## 2026-05-10 (soir) — Refonte structurelle 4 piliers narratifs
 
-**Contexte :** ouverture crise structure par John après audit zone personnages/ennéagramme/voix/cultures/prénoms. Diagnostic : 4 erreurs casting V1 dans le catalogue prénoms, désynchronisations, doublon enneagramme↔personnages, cross-culture éclaté en 3 endroits.
+**Contexte :** ouverture crise structure par Papa Yann après audit zone personnages/ennéagramme/voix/cultures/prénoms. Diagnostic : 4 erreurs casting V1 dans le catalogue prénoms, désynchronisations, doublon enneagramme↔personnages, cross-culture éclaté en 3 endroits.
 
 **Fait (6 phases) :**
 - [x] **Phase 1** — Corrections critiques (Jérem→Madie, Polo Salomon→Paul, lookup.yml, brief-writer-libre, MEMORY globale Claude + feedback_prenoms_personnages)
@@ -455,7 +513,7 @@ Du skill game-pmo et audit, 6 challenges transmis pour narration-pmo :
 - [x] **Patte Papa Yann formalisée** dans `equipe/patte-papa-yann.md` — 7 reproches récurrents + 14 critères checklist
 - [x] **GateKeeper renforcé** : passage de 15 critères techniques à 26 critères (techniques + patte Papa Yann)
 - [x] Brief writer mis à jour avec checklist anti-Papa Yann express
-- [x] **Renommage John → Papa Yann** dans 24 fichiers
+- [x] **Renommage Papa Yann → Papa Yann** dans 24 fichiers
 - [x] **Suppression définitive** des dossiers `stories/003-la-confidence/`, `stories/004-cartable-a-trou/`, `stories/005-le-mardi/`, `stories/006-sept-a-rien/` (aucun n'avait été validé par Papa Yann)
 - [x] Idée *concours de dessins en lieu public bienveillant* sauvegardée dans `axes-histoires-en-stock.md` (axe A3-06)
 

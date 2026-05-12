@@ -209,7 +209,19 @@
       "Bash(ELEVENLABS_API_KEY=\"aa00a440e8665c7d53b1a1113bf8143a6e44720898843a448356d2d2b090a50d\" bun narration/scripts/test-graphique-cris.js)",
       "Bash(mkdir -p \"C:/Users/kimen/.claude/skills/audio-direction-elevenlabs\" && echo \"OK\")",
       "Edit(~/.claude/skills/audio-direction-elevenlabs/**)",
-      "Edit(~/.claude/skills/elevenlabs-voice-design/**)"
+      "Edit(~/.claude/skills/elevenlabs-voice-design/**)",
+      "Bash(rm -v selection.md synthese.md texte.md)",
+      "Bash(rm -v briefs/README.md briefs/SYNTHESE-BRIEFS.md)",
+      "Bash(mv -v versions-writers/claude-002.md _archive/claude-002-PRE-PIVOT-JUJU-2026-05-11.md)",
+      "Bash(rm -rf variantes-culturelles)",
+      "Bash(findstr \"^[0-9]\")",
+      "Bash(awk '{print $NF}')",
+      "Bash(grep -E \"\\\\.template\\\\.md|\\\\.md$\")",
+      "Bash(grep -E \"\\\\.md$\")",
+      "Bash(Get-ChildItem -Path \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\" -Directory)",
+      "Bash(Get-ChildItem -Path \"c:/ProjetsPerso/Claude_Projects/MaxPlay/.claude/agents\" -Filter \"*.md\")",
+      "Bash(Sort-Object Name)",
+      "Bash(grep -v \"\\\\.md$\")"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\temp",
@@ -236,6 +248,17 @@
             "type": "http",
             "url": "http://localhost:3001/permission",
             "timeout": 1210
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude\\hooks\\signal-detector.ps1\""
           }
         ]
       }

@@ -1,101 +1,43 @@
-"""Virage haut-droit — 13x13. Version v2 2026-05-12.
+"""Virage haut-droit — miroir H de haut_gauche. 12×13. 2026-05-12.
 
-Route 3-chaussees (7-wide) en L miroir H+V, pivot bas-gauche.
-Branche V descend du NORD (cols 0-6, rows 0-6), branche H part vers l'EST (rows 6-12).
-Carre intersection rows 6-12 x cols 0-6. Zone None rows 0-5 x cols 7-12.
+Route descend du NORD (cols 1-4) et tourne vers l'EST en bas (rows 2-6).
+Zone None (transparent) = rows 7-12 × cols 7-11.
 
-Schema:
-  - Branche V : cols 0-6, rows 0-6 (marquage V sur col 3 rows 1-5)
-  - Branche H : rows 6-12, cols 0-12 (marquage H sur row 9 cols 7-12)
-  - Coins : (12,0)=VIRAGE_INT_NW, (6,6)=COIN_INT_NE
-  - Coins neutres : (6,0)=TROTTOIR_PLAIN, (12,6)=TROTTOIR_PLAIN
+Miroir H de test_virage_haut_gauche.py : chaque row inversée col 0↔11.
+Swaps asymétriques appliqués : SW4↔SW8, SW3→SW1 (INT_SE), SW14→SW13 (EXT_NW), A3→A1 (PIVOT_L_SE).
 """
 
-import sys
-import os
-sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from vocab import (
-    TROTTOIR_PLAIN,
-    BORD_NORD, BORD_SUD, BORD_OUEST, BORD_EST,
-    ASPHALT_PLAIN, ASPHALT_PLAIN_ALT1, ASPHALT_PLAIN_ALT2,
-    ROUTE_H_PROPRE, ROUTE_V_PROPRE,
-    COIN_INT_NE,
-    VIRAGE_INT_NW,
+SW9, SW6, SW2, SW4, SW8 = (
+    'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png',
+    'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png',
+    'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png',
+    'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png',
+    'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png',
 )
+SW10 = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_10.png'  # transition asphalte/trottoir
+SW13 = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_13.png'  # EXT_NW (coin externe convexe NW)
+SW1  = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_1.png'   # INT_SE (transition coin interne)
+A2   = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png'   # marquage H pointillé
+A6   = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_6.png'   # alt marquage H (transition)
+A8   = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png'   # marquage V pointillé
+A1   = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_1.png'   # PIVOT_L SE (coin asphalte intérieur)
+A20  = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png'  # asphalte plain
+A22  = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_22.png'  # asphalte plain alt
 
-_VOIE_POOL = [ASPHALT_PLAIN, ASPHALT_PLAIN_ALT1, ASPHALT_PLAIN_ALT2]
+ground = [
+    [SW9, SW9, SW9, SW9, SW9, SW9, SW9, SW9, SW9, SW9, SW9, SW9],
+    [SW9, SW13, SW6, SW6, SW6, SW6, SW6, SW6, SW6, SW6, SW6, SW6],
+    [SW9, SW4, SW10, SW10, SW10, SW10, SW10, SW10, SW10, SW10, SW10, SW10],
+    [SW9, SW4, SW10, A1, A6, A6, A2, A2, A2, A2, A2, A2],
+    [SW9, SW4, SW10, A8, A20, A22, A20, A22, A20, A22, A20, A22],
+    [SW9, SW4, SW10, A8, A20, SW1, SW2, SW2, SW2, SW2, SW2, SW2],
+    [SW9, SW4, SW10, A8, SW10, SW8, SW9, SW9, SW9, SW9, SW9, SW9],
+    [SW9, SW4, SW10, A8, SW10, SW8, SW9, None, None, None, None, None],
+    [SW9, SW4, SW10, A8, A20,  SW8, SW9, None, None, None, None, None],
+    [SW9, SW4, SW10, A8, A22,  SW8, SW9, None, None, None, None, None],
+    [SW9, SW4, SW10, A8, SW10, SW8, SW9, None, None, None, None, None],
+    [SW9, SW4, SW10, A8, A20,  SW8, SW9, None, None, None, None, None],
+    [SW9, SW4, SW10, A8, SW10, SW8, SW9, None, None, None, None, None],
+]
 
-
-def _asph(r: int, c: int) -> str:
-    return _VOIE_POOL[(r + c) % 3]
-
-
-COLS, ROWS = 13, 13
-
-# Init grille None
-ground = [[None] * COLS for _ in range(ROWS)]
-
-# ── Branche V : cols 0-6, rows 0-6 ───────────────────────────────────────
-# row 0 : trottoir cols 0-6
-for c in range(0, 7):
-    ground[0][c] = TROTTOIR_PLAIN
-
-# rows 1-5 : branche V pure
-for r in range(1, 6):
-    ground[r][0] = BORD_OUEST
-    ground[r][1] = _asph(r, 1)
-    ground[r][2] = _asph(r, 2)
-    ground[r][3] = ROUTE_V_PROPRE   # marquage V col 3
-    ground[r][4] = _asph(r, 4)
-    ground[r][5] = _asph(r, 5)
-    ground[r][6] = BORD_EST
-
-# row 6 : (6,0)=TROTTOIR_PLAIN, bords N carre cols 1-5, (6,6)=COIN_INT_NE, trottoir cols 7-12
-ground[6][0] = TROTTOIR_PLAIN
-for c in range(1, 6):
-    ground[6][c] = BORD_NORD
-ground[6][6] = COIN_INT_NE
-for c in range(7, COLS):
-    ground[6][c] = TROTTOIR_PLAIN
-
-# ── Branche H : rows 7-12, cols 0-12 ─────────────────────────────────────
-# rows 7-11 : carre (cols 0-6) + branche pure (cols 7-12)
-for r in range(7, 12):
-    # Carre cols 0-6
-    ground[r][0] = BORD_OUEST
-    for c in range(1, 6):
-        ground[r][c] = _asph(r, c)
-    ground[r][6] = BORD_EST
-    # Branche pure cols 7-12
-    if r == 7:
-        for c in range(7, 13):
-            ground[r][c] = BORD_NORD
-    elif r == 8:
-        for c in range(7, 13):
-            ground[r][c] = _asph(r, c)
-    elif r == 9:
-        for c in range(7, 13):
-            ground[r][c] = ROUTE_H_PROPRE   # marquage H row 9
-    elif r == 10:
-        for c in range(7, 13):
-            ground[r][c] = _asph(r, c)
-    elif r == 11:
-        for c in range(7, 13):
-            ground[r][c] = BORD_SUD
-
-# row 12 : (12,0)=VIRAGE_INT_NW, bords S carre cols 1-5, (12,6)=TROTTOIR_PLAIN, trottoir cols 7-12
-ground[12][0] = VIRAGE_INT_NW
-for c in range(1, 6):
-    ground[12][c] = BORD_SUD
-ground[12][6] = TROTTOIR_PLAIN
-for c in range(7, COLS):
-    ground[12][c] = TROTTOIR_PLAIN
-
-SNIPPET = {
-    'name': 'virage_haut_droit',
-    'cols': COLS,
-    'rows': ROWS,
-    'ground': ground,
-    'objects': [],
-}
+SNIPPET = {'name': 'virage_haut_droit', 'cols': 12, 'rows': 13, 'ground': ground, 'objects': []}

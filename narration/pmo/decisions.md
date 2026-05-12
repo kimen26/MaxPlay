@@ -1,7 +1,38 @@
 # Décisions de fond — PMO Narration
 
 > **Règle :** Une décision ici est DÉFINITIVE jusqu'à nouvelle décision explicite datée.
+
+## 2026-05-12 — STORY-002 Libellule Résonance : 4 Q-ouvertes tranchées
+
+**Contexte :** SLA dépassé depuis 2026-05-11. Auteur a tranché en bloc le 2026-05-12 (soir).
+
+**Décisions :**
+1. **Casting** : pivot **Wex + Juju + Nono** (au lieu de Wex + Polo + Nono initial). Juju (T8 Challenger, sensibilité Plantes/terre) remplace Polo. Justification auteur : "Juju grosse énergie aussi". Trio passe à 1F+2M+Wex (au lieu de 2M+Wex).
+2. **Décor** : **Étang amont** (s'ouvre haut, en amont du ruisseau de 001). Continuité géographique avec 001.
+3. **Libellule** : **objet central = sensibilité révélée de Nono** (T9 Vibration collective). Pas juste motif récurrent — c'est par elle que la sensibilité de Nono se révèle au lecteur.
+4. **Geste signature Nono** : **pieds nus sur la terre** (sent la vibration monter par le sol). Cohérent T9 Pacificateur + sensibilité Vibration collective — la résonance passe par les pieds. **Geste signature Juju** : à voir après le texte (laisser le writer proposer, on observera).
+
+**Impact fichiers :**
+- `stories/002-libellule-resonance/pitch.md` → pivot Polo → Juju, ajuster duo, intégrer geste pieds nus
+- `stories/002-libellule-resonance/plan-histoire.md` → ajuster 4 temps avec Juju + geste signature
+- `stories/002-libellule-resonance/briefs/brief-personnages.md` → casting Wex+Juju+Nono + sensibilités (Plantes Juju + Vibration collective Nono) + geste signature pieds nus Juju
+- `stories/002-libellule-resonance/briefs/brief-histoire.md` → ajuster Ten (libellule révèle la résonance de Nono)
+- `stories/002-libellule-resonance/briefs/_writer-package.md` → propagation
+- `stories/002-libellule-resonance/kanban.md` → étape 3 ❌→✅ (à re-valider après pivot), étape 1 (pitch) validée
+
+**Statut :** ⏳ Le Directeur doit pivoter pitch/plan/briefs avant de relancer étape 4 (10 writers).
+
+---
+
 > En cas de doute : la dernière décision sur un sujet écrase les précédentes.
+
+---
+
+## Questions ouvertes (en attente de tranchage auteur)
+
+| Date | Sujet | Contexte | Posée par | État |
+|------|-------|---------|-----------|------|
+| 2026-05-11 | **STORY-002 — Duo agités + lieu + animal** | Brainstorm Nono (T9). Wex + Polo confirmé ou remplacer Polo ? Mare/étang confirmé ? Libellule comme objet central confirmé ? Geste Nono « vibrer comme elles » à ajouter aux 5 ? | narration-pmo | Attente validation auteur < 24h |
 
 ---
 
@@ -11,11 +42,13 @@
 
 | Date | Évolution | Raison | Impact |
 |------|-----------|--------|--------|
+| 2026-05-12 | **🎙️ Nouveau skill global `audio-direction-elevenlabs`** (parent + 8 sous-fichiers + journal + multi-culture INDEX) | Session production audio 001 : découverte text-to-dialogue API (multi-voix natif Starter+), 14 anti-patterns gravés (stammers KO, Brazilian accent KO, CA→SA, etc.), tricks de graphie validés (b-bus pédago), cartographie 12 cultures préparée | Skill global `~/.claude/skills/audio-direction-elevenlabs/` ; référencé dans `CLAUDE.md`, `memory/skills-map.md`, `narration/INDEX.md`, `personnages/voix-meta/README.md`, `equipe/INDEX.md`. Pour TOUTE prod audio multi-voix MaxPlay |
+| 2026-05-12 | **RÈGLE DURE : ne JAMAIS supprimer la matière de fabrication post-canon** | Incident `58b491ed` (canonisation 001) : `rm -rf legacy` de ~80 fichiers de fabrication (001 + 002 + 003-v2 + 004) au lieu de l'archivage prévu par décision 2026-05-08 Décision C. Détecté par Papa Yann 2026-05-12. Restauré via git. | `equipe/PROCESS.md` §Étape 10 enrichi (règle dure + incident référence) ; tout agent canonisant doit relire la règle avant `rm` |
 | 2026-05-08 | **PROCESS 9 → 11 étapes** (ajout étape 9 « Re-relecture rewrite » entre GateKeeper et Canon) | Détection trop tardive de régressions post-rewrite ; besoin de lecteurs sur le rewrite avant canonisation | `equipe/PROCESS.md` réécrit, `stories/_gabarit/` aligné, kanban étendu |
 | 2026-05-08 | **Writer du top 1 garde la main au rewrite** | Greffes substitutives détectées (claude-rewrite-v1 sur 001) → perte de la voix one-shot | Étape 7 PROCESS, brief-writer-libre.template, agents writer-claude-libre/writer-kimi-guide |
 | 2026-05-08 | **Panel lecteurs : 4 → 20** (10 profils × 2 tranches d'âge 3-5 et 6-7) | Cible Max prioritaire + détection anticipée 6-7 ans | Étape 5 PROCESS, agents lecteur/lecteur-dyade, gabarit story production.lecteurs_planifies |
 | 2026-05-08 | **Writers : 4 → 10** (2 Claude + 3 Kimi libre + 1 Kimi guidé + 2 DeepSeek + 2 Grok) | Variance maximale, exploration angle natif × 4 LLM | Étape 4 PROCESS, MODELS.md, gabarit story production.writers_planifies |
-| 2026-05-10 | **Restructuration 4 piliers** (personnages / univers / cross-culture / saisons) | Audit John : « c'est le bazard » — fragmentation cross-culture, doublon enneagramme | Toute la racine narration/ + INDEX + CLAUDE.md |
+| 2026-05-10 | **Restructuration 4 piliers** (personnages / univers / cross-culture / saisons) | Audit Papa Yann : « c'est le bazard » — fragmentation cross-culture, doublon enneagramme | Toute la racine narration/ + INDEX + CLAUDE.md |
 | 2026-05-11 | **Voix consolidées dans Pilier 1** (`personnages/voix-meta/` + `type-NN/voix.md` corrigées) | Doublon `equipe/voix/` vs `personnages/type-NN/voix.md` avec divergence (adultes vs enfants 4-5) | `personnages/voix-meta/`, suppression `equipe/voix/`, voix persos = 4-5 ans |
 | 2026-05-11 | **narration-pmo enrichi** (anti-patterns, mnémonique, tableau cartographie multi-fichiers) | Challenge transmis par game-pmo (5/6 challenges retenus, 1 décliné, 1 reporté) | `.claude/agents/narration-pmo.md` |
 
@@ -23,9 +56,37 @@
 
 ---
 
+## 2026-05-11 (nuit) — Voix narrateurs créées + prénom marque « Lumi » + pivot Wex futur
+
+**Voix narrateurs MaxPlay finalisées et prêtes à publier sur Voice Library ElevenLabs** :
+- Narrateur H : `Lumi - Playful, Theatrical, Warm` (timbre Pierre et le Loup / Gérard Philipe — interne uniquement)
+- Narratrice F : `Lumi - Singing, Tender, Lively` (timbre éveil musical / Virginie Albanese — interne uniquement)
+- Prompts ≤ 1000 chars, descriptions FR + EN ≤ 500 chars, **zero recette anti-copie**
+
+**Décision marque** : prénom **Lumi** retenu comme **prénom commun à toutes les voix MaxPlay** publiées sur Voice Library (narrateurs + futurs persos + castings cross-culture).
+
+**Raison** :
+- Court, universel FR/EN/IT/ES/JP, genre-neutre
+- Évocation « lumière » → lien avec la promesse marketing (« fait briller les histoires »)
+- Mémoire associative future : « Lumi Mimi » « Lumi Polo » etc.
+- 18 voix Lumi existent ElevenLabs (DE/FI/JA/etc.) mais **aucune en français** → différenciation par langue OK
+
+**Pivot futur tracé** : quand MaxPlay sera **public** (apps déployées, livres publiés, marque visible), **renommer Lumi → Wex** sur Voice Library = asset marketing croisé (« voix officielle des histoires de Wex »). Tant que projet privé, **Lumi protège l'univers** (anti-copie). Trigger : lancement public première story canon sur app mobile ou plateforme livre audio. ElevenLabs permet rename sans perdre voice_id ni historique usage.
+
+**Voice Library Payouts** : monétisation activable (~$0.03/1000 chars générés par autres utilisateurs, Stripe Connect, seuil $10, payout tous les 6-8j, +$11M payés à date côté ElevenLabs). À surveiller dashboard Earnings après publication.
+
+**Anti-copie strict appliqué** :
+- Description publique : zéro mot-clé technique (ténor/mezzo/pitch rise/onomatopée/Gérard Philipe/Virginie Albanese)
+- Framework impact : bénéfice émotionnel + use cases + CTA implicite uniquement
+- Stratégie : vendre la voix, pas la définir
+
+**Lien** : [`personnages/voix-meta/_PROMPTING-GUIDE.md`](../personnages/voix-meta/_PROMPTING-GUIDE.md) (playbook complet : prénom marque, publication step-by-step, monétisation Payouts, anti-patterns, cross-culture, descriptions impact).
+
+---
+
 ## 2026-05-11 (suite) — Tokenisation texte canon 001 + backlog audio + audit complet + challenges narration-pmo
 
-**Contexte :** Final audit tour — John valide Phase C tokens + découvertes structurel + challenges pmo de game-pmo transféré.
+**Contexte :** Final audit tour — Papa Yann valide Phase C tokens + découvertes structurel + challenges pmo de game-pmo transféré.
 
 **DÉCISION 1 — Phase C Tokenisation ✅ OUI, IMMÉDIAT**
 
@@ -49,7 +110,7 @@ Impact : doublon résolu, refs cassées narration-audio.md + narration-localisat
 
 **DÉCISION 3 — Challenges narration-pmo : 3 ignorés, 3 à planifier en INBOX ⚠️**
 
-Game-pmo a transmis 6 challenges pour enrichir narration-pmo (anti-patterns, checklist, mnémonique, cartographie, 3e mémoire). Analyse John :
+Game-pmo a transmis 6 challenges pour enrichir narration-pmo (anti-patterns, checklist, mnémonique, cartographie, 3e mémoire). Analyse Papa Yann :
 - C-1 (checklist hardcodée) : prise directe itération narration-pmo (ARCHI-006 en cours)
 - C-2 (rapport synthétique) : intégré dans structure sprint-log (done ✅)
 - C-3 (PIPELINE-MEMORY.md) : à planifier, non urgent (INBOX)
@@ -63,7 +124,7 @@ Game-pmo a transmis 6 challenges pour enrichir narration-pmo (anti-patterns, che
 
 ## 2026-05-11 — Voix consolidées dans Pilier 1 + comblement trous structurels post-refonte
 
-**Contexte :** audit voix ouvert par John (« y'avait un homme et une femme on avait préparé un prompt » + « age mid 30 ou teenage… on voulait plus petit nan ??? »).
+**Contexte :** audit voix ouvert par Papa Yann (« y'avait un homme et une femme on avait préparé un prompt » + « age mid 30 ou teenage… on voulait plus petit nan ??? »).
 
 **Décisions tranchées :**
 
@@ -93,7 +154,7 @@ Game-pmo a transmis 6 challenges pour enrichir narration-pmo (anti-patterns, che
 
 ## 2026-05-10 (soir) — Refonte structurelle en 4 piliers + cross-culture comme pilier propre
 
-**Contexte** : audit de la zone personnages/ennéagramme/voix/cultures/prénoms ouvert par John : *« c'est le bazard, j'aimerai un audit complet… structure claire, hypra claire pour toute l'équipe »*. Audit révèle 4 erreurs casting V1 dans le catalogue prénoms (Jérem au lieu de Madie, Polo « Salomon » au lieu de Paul), désynchronisation enneagramme/README, liens cassés vers stubs orphelins, 3e pilier cross-culture éclaté entre 3 dossiers, doublon enneagramme/ ↔ personnages/.
+**Contexte** : audit de la zone personnages/ennéagramme/voix/cultures/prénoms ouvert par Papa Yann : *« c'est le bazard, j'aimerai un audit complet… structure claire, hypra claire pour toute l'équipe »*. Audit révèle 4 erreurs casting V1 dans le catalogue prénoms (Jérem au lieu de Madie, Polo « Salomon » au lieu de Paul), désynchronisation enneagramme/README, liens cassés vers stubs orphelins, 3e pilier cross-culture éclaté entre 3 dossiers, doublon enneagramme/ ↔ personnages/.
 
 ### Décisions tranchées (autonomie auteur)
 
@@ -104,7 +165,7 @@ Game-pmo a transmis 6 challenges pour enrichir narration-pmo (anti-patterns, che
    - **Pilier 4 — `saisons/`** : plan éditorial (saison → arc → liens vers stories). Remplace `arcs/` à la racine.
    - **Opérationnel inchangé** : `stories/`, `equipe/`, `pmo/`, `scripts/`, `archive/`, `memory/`
 
-2. **Modèle hybride invariant/variant pour les persos** (tranché après challenge John « technique propre vs confort auteur ») :
+2. **Modèle hybride invariant/variant pour les persos** (tranché après challenge Papa Yann « technique propre vs confort auteur ») :
    - Personnages = invariant universel (ennéatype, voix-signature, gestes, sensibilité). Vit dans `personnages/type-NN/`.
    - Cross-culture = variant par pays (prénom, prononciation, décor local, voix-overrides 1 mot). Vit dans `cross-culture/castings-nationaux/<pays>/type-NN.md`.
    - Voix ElevenLabs : signature universelle + placeholder `{native_language}` substitué à la publication. Pas de duplication de prompt par culture.
@@ -317,7 +378,7 @@ Si un élément manque → flag auteur avant remise main : *"⚠️ PMO — [cat
    - Grok : `grok-4-fast-non-reasoning` → `grok-4.3` + `reasoning_effort: "low"` (juste au-dessus de none, évite le thinking long)
    - Kimi : suppression du paramètre `mode` (le mode `story`/moonshot-v1-32k ne marchait plus). Mono-mode `kimi-k2.6` non-thinking sur `api.moonshot.ai`
    - DeepSeek : `deepseek-chat` → `deepseek-v4-pro` non-thinking (défaut), `deepseek-v4-flash` en option. Promo -75% sur V4-Pro **jusqu'au 2026-05-31** (rappel sprint-log)
-   - Tous en **non-thinking** : décision John "pas de thinking mode" — réponses one-shot, pas de raisonnement qui lisse la créativité
+   - Tous en **non-thinking** : décision Papa Yann "pas de thinking mode" — réponses one-shot, pas de raisonnement qui lisse la créativité
    - Claude writers : `sonnet` → `claude-opus-4-7` (test du saut de modèle pour décaler le rang Claude qui plafonnait à 3-4)
 
 2. **Casting writers passe de 8 à 10 versions** :
@@ -606,11 +667,11 @@ Papa Yann n'a **lu aucune des 3 histoires existantes** (001 Pont Cassé canon, 0
 
 ---
 
-## 2026-04-30 — Renommage John → Papa Yann (auteur principal)
+## 2026-04-30 — Renommage Papa Yann → Papa Yann (auteur principal)
 
-**Décision :** L'auteur principal du projet MaxPlay s'appelle **Papa Yann** (pas "John" comme erronément écrit dans plusieurs fichiers depuis le début du chantier process militaire). Renommé partout dans `narration/**/*.md` (sauf 2 archives historiques où la trace reste).
+**Décision :** L'auteur principal du projet MaxPlay s'appelle **Papa Yann** (pas "Papa Yann" comme erronément écrit dans plusieurs fichiers depuis le début du chantier process militaire). Renommé partout dans `narration/**/*.md` (sauf 2 archives historiques où la trace reste).
 
-**Raison :** Erreur de l'orchestrateur (probable projection automatique). L'auteur s'est manifesté : *"Je ne m'appelle pas John c'est Papa Yann remplace everywhere."*
+**Raison :** Erreur de l'orchestrateur (probable projection automatique). L'auteur s'est manifesté : *"Je ne m'appelle pas Papa Yann c'est Papa Yann remplace everywhere."*
 
 ---
 
@@ -648,7 +709,7 @@ La checklist GateKeeper passe de **15 critères techniques** à **15 + 11 = 26 c
 - Épilogue italique (règle anti-épilogue actée le 2026-04-28)
 - 4 patterns Papa Yann détectés (jugement, lexique adulte, incohérences, lexique sombre)
 
-**Action :** lancer le PROCESS standard. La V1 reste en `_archive/v1-2026-04-24.md`. Idées Papa Yann pour la V2 dans `stories/001-le-pont-casse/lecteurs-temoins/papa-yann-relecture-2026-04-30.md`.
+**Action :** lancer le PROCESS standard. La V1 reste en `_archive/v1-2026-04-24.md`. Idées Papa Yann pour la V2 dans `stories/001-le-pont-casse/lecteurs-temoins/john-relecture-2026-04-30.md`.
 
 ---
 
@@ -665,7 +726,7 @@ La checklist GateKeeper passe de **15 critères techniques** à **15 + 11 = 26 c
 - Détails sensoriels concentrés en bloc (au lieu de distribués)
 - Reste rattachée à arc-2 Parole (en pause)
 
-**Action :** la V1 reste canon (la V2 sera traitée à la reprise de l'arc 2). Détails dans `stories/002-le-rire-qui-reste/lecteurs-temoins/papa-yann-relecture-2026-04-30.md`.
+**Action :** la V1 reste canon (la V2 sera traitée à la reprise de l'arc 2). Détails dans `stories/002-le-rire-qui-reste/lecteurs-temoins/john-relecture-2026-04-30.md`.
 
 ---
 
@@ -1109,6 +1170,33 @@ Aucun ne combine **archétypes universels (ennéatypes) + adaptation culturelle 
 **Impact :** STORY-005 créé dans backlog (Haute priorité, "À faire"). Éétape 1 (pitch) prête à lancer dès GO Papa Yann.
 
 **Statut :** ⏳ En attente auteur.
+
+---
+
+## 2026-05-11 — Méthodologie Voice Design unifiée pour les garçons (méthodo v24)
+
+**Contexte :** session intensive de création des voix garçons (Wex, Polo, Melki, Lulu, Nono) avec méthodologie commune + tics phonétiques abandonnés.
+
+**Décisions :**
+- ✅ **Structure de prompt unifiée** garçons : `Animated little guy voice for animation series` + curseurs (timbre/cadence/rire/énergie) variables par perso. Détails dans `personnages/voix-meta/_VOICE-IDS-CASTING.md`.
+- ✅ **Tics phonétiques abandonnés** (Wex) : plus de `ze`, `ouitte`, `é-stylo`, `b-bus` au niveau Voice Design. Si besoin de tics par perso → pronunciation dictionary niveau **génération TTS** (étage 2).
+- ✅ **Naming bibliothèque ElevenLabs** : convention `Lumi <prénom> <adjectif>` (ex: `Lumi Wex Héros`, `Lumi Polo Fier`, `Lumi Melki Précis`).
+- ✅ **Zéro négation dans Voice Design** (AP#16 confirmé empiriquement) — toujours reformuler en affirmatif.
+- ✅ **Pierrot existant conservé** (`ukIKjXqbiGGkqIz0SW5c`) — pas refait dans méthodo v24.
+- ⏳ **Lulu bloqué** par filtre Prohibited Use Policy après 9 itérations — à reprendre après cooldown.
+
+**Voice IDs gravés (5/5 garçons complet + Raph) — figés 2026-05-12 :**
+| Perso | Voice ID | Méthodo | Naming bibliothèque |
+|-------|----------|---------|---------------------|
+| Wex | `G54e8CyYslC2Y4ZupTlg` | v24 | Lumi Wex Héros |
+| Polo | `5wcx0KzRnrP48I5RCVD8` | v2 | Lumi Polo Fier |
+| Melki | `sWfumkYiI1QERQ5INqRQ` | v1 | Lumi Melki Précis |
+| Pierrot | `ukIKjXqbiGGkqIz0SW5c` | pré-v24 | (conservé) |
+| Lulu | `1XwHANMW4m2pxt7buPmQ` | filtre cumulatif vaincu | Lumi Lulu Léger |
+| Nono | `f3w48h8ngnWWnhO9XGb3` | v1 (companion) | Lumi Nono Paisible |
+| Raph | `Te5RKnm9ebwdEvZ1S5pS` | existant | — |
+
+**Impact apprentissage :** AP#15 (filtre cumulatif), AP#16 (négations interdites), AP#17 (compteur EL CRLF) ajoutés à `audio-direction-elevenlabs/07-anti-patterns.md`.
 
 ---
 

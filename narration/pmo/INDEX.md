@@ -9,12 +9,13 @@
 
 | Axe | Statut |
 |-----|--------|
-| Histoires canon | 2 — *Le Pont Cassé* (001) · *Le Rire qui reste* (002) |
-| Histoires en workshop | 1 — *La Confidence* (003) |
+| Histoires canon | 1 — *Le Pont Cassé* (001, refonte 2026-05-08) |
+| Histoires en production | 1 — *Libellule Résonance* (002, étape 4 prête à lancer) |
 | Axes en stock | 15 (10 unitaires + 5 transversaux) |
 | Personnages | 9 + Wex — casting V1 figé (2026-04-24) |
+| Voix ElevenLabs | **6/10 figées** — **5 garçons complet** (Wex/Polo/Melki/Pierrot/Lulu/Nono) + Raph. Reste 3 filles (Mimi/Madie/Juju) |
 | Nom univers | ❌ non tranché — 5 finalistes |
-| Prochaine action | Canoniser STORY-003 ou démarrer STORY-004 avec le nouveau workflow |
+| Prochaine action | Trancher Q-ouvertes STORY-002 puis lancer étape 4 (10 writers) |
 
 ---
 
@@ -22,10 +23,12 @@
 
 | Fichier | Rôle |
 |---------|------|
+| [**INVARIANTS.md**](INVARIANTS.md) | 🆕 **Source de vérité chiffres clés** (10 versions / 20 lecteurs / casting / voice_ids / règles d'or) |
 | [backlog.md](backlog.md) | Tickets actifs (max 3 en cours) + terminés |
 | [decisions.md](decisions.md) | Décisions définitives + questions ouvertes |
 | [sprint-log.md](sprint-log.md) | Journal de sessions — fait / à faire / blocages |
 | [roadmap.md](roadmap.md) | Vision moyen terme (horizons 3-6-12 mois) |
+| [audit-trail.md](audit-trail.md) | 🆕 Traces audits PMO + analyses cause racine |
 
 ---
 

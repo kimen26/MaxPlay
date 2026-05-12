@@ -118,7 +118,8 @@ narration/
 | [`equipe/sources-sciences.md`](equipe/sources-sciences.md) | Refs documentaires sciences |
 | [`equipe/sources-sensibilite.md`](equipe/sources-sensibilite.md) | Catalogue topics sensibles / conspirationnistes |
 | [`equipe/sources-narratologie.md`](equipe/sources-narratologie.md) | Étude narratologique cross-culture |
-| [`personnages/voix-meta/`](personnages/voix-meta/README.md) | **Voix méta** : narrateurs H/F adultes + cheatsheet didascalies + étude vocale 18 prompts ElevenLabs |
+| [`personnages/voix-meta/`](personnages/voix-meta/README.md) | **Voix méta** : narrateurs H/F + cheatsheet didascalies + preview-texts + alias-tags catalog + **`_VOICE-IDS-CASTING.md` (source de vérité méthodo v24)** + **`_SESSION-2026-05-11-RETOUR-EXP.md`** + étude vocale 18 prompts + playbook MaxPlay |
+| 🎙️ **Skills audio globaux** (auto-triggered) | `~/.claude/skills/elevenlabs-voice-design/` (CRÉATION voix — **MAJ 2026-05-12 avec AP#15/16/17**) · `~/.claude/skills/audio-direction-elevenlabs/` (**PRODUCTION** multi-voix : text-to-dialogue, tags v3, tricks graphie, dicts, voice settings, **17 anti-patterns**, 12 cultures) |
 | [`equipe/memoire-*.md`](equipe/) | Mémoires décentralisées par agent |
 
 ---

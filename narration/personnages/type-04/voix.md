@@ -13,7 +13,11 @@
 | **Rythme** | Lent · pauses dramatiques · silences chargés |
 | **Phonation** | Soupirs discrets · "oh" chuchoté · respiration audible |
 
-## Paramètres ElevenLabs
+## ② Paramètres TTS Generation (utilisation voice_id, modèle `eleven_v3`)
+
+> ⚠️ Ces 4 paramètres se règlent **APRÈS** création du voice_id. Pour la création, voir [`../voix-meta/_PROMPTING-GUIDE.md`](../voix-meta/_PROMPTING-GUIDE.md) (Voice Design ① : Loudness, Guidance Scale 30-40%).
+>
+> Voice_id à créer une fois (cf. backlog VOIX-003) puis stocker dans le frontmatter du fichier.
 
 ```
 Stability: 0.50

@@ -142,9 +142,9 @@
 | Champ | Valeur |
 |---|---|
 | **Owner** | Directeur (`narration`, Opus) |
-| **Inputs** | Les 10 versions + 6 retours lecteurs + `equipe/memoire-dir.md` + `equipe/patte-narrative-maxplay.md` |
+| **Inputs** | Les 10 versions + 20 retours lecteurs (ou 6 transitoire pour 002) + `equipe/memoire-dir.md` + `equipe/patte-narrative-maxplay.md` |
 | **Outputs** | <ul><li>`stories/<NNN-slug>/selection.md` (rempli depuis `equipe/templates/selection.template.md`)</li><li>`kanban.md` étape 6 ✅ + statut "EN ATTENTE AUTEUR"</li></ul> |
-| **Format `selection.md`** | <ul><li>**Version base choisie** (laquelle des 8 + pourquoi)</li><li>**Éléments à récupérer** d'autres versions (citations précises)</li><li>**Réactions lecteurs** à prendre en compte (citations + interprétation)</li><li>**Brief de rewrite** : ce qui doit changer, ce qui doit rester intact</li><li>**Tiebreak rule** : si 2 versions sont à égalité, le Directeur choisit celle qui colle le plus à la patte (B+D+C) — pas celle qui plaît le plus au lecteur enfant si elle dérive du Kishōtenketsu</li></ul> |
+| **Format `selection.md`** | <ul><li>**Version base choisie** (laquelle des 10 + pourquoi)</li><li>**Éléments à récupérer** d'autres versions (citations précises)</li><li>**Réactions lecteurs** à prendre en compte (citations + interprétation)</li><li>**Brief de rewrite** : ce qui doit changer, ce qui doit rester intact</li><li>**Tiebreak rule** : si 2 versions sont à égalité, le Directeur choisit celle qui colle le plus à la patte (B+D+C) — pas celle qui plaît le plus au lecteur enfant si elle dérive du Kishōtenketsu</li></ul> |
 | **Critères PASS** | <ul><li>`selection.md` rempli toutes sections</li><li>Choix justifié contre la patte narrative et les retours lecteurs</li><li>Brief rewrite actionnable (pas de "améliore globalement")</li></ul> |
 | **Condition de passage** | ✅ **Auteur valide la sélection** (peut accepter, ajuster, ou demander un changement de version base) |
 | **Point de reprise** | Si reboot : relire `selection.md` + statut kanban |
@@ -222,6 +222,37 @@
 
 **SLA auteur :** 3 jours. Au-delà : kanban 🔴 BLOQUÉ.
 
+### 🚨 RÈGLE DURE — Ne JAMAIS supprimer la matière de fabrication post-canon
+
+**Décision tranchée 2026-05-08 + incident 2026-05-12** :
+
+À la canonisation, la matière de fabrication (`versions-writers/`, `lecteurs-temoins/`, `rewrite/`, `selection.md`, `synthese-lecteurs.md`, `gatekeeper-verdict.md`, `relecture-rewrite/`) **doit être CONSERVÉE** pour traçabilité.
+
+**Deux options autorisées** :
+
+1. **Tout laisser en place** dans le dossier `stories/<NNN-slug>/` (simple — option par défaut)
+2. **Déplacer dans `stories/<NNN-slug>/_archive/fabrication-YYYY-MM-DD/`** si encombrement visuel devient gênant (avec note dans README)
+
+**Option interdite** : `rm -rf` ou `git rm` de cette matière. **Jamais.**
+
+#### Pourquoi cette règle
+
+- Permet à Papa Yann de relire les drafts writers et fiches lecteurs à tout moment (apprentissage continu)
+- Préserve les sources vivantes de mémoires actives (`patte-papa-yann.md` cite par exemple `papa-yann-relecture-2026-04-30.md`)
+- Permet aux agents futurs (Architecte, Conseiller, Directeur) d'analyser ce qui a marché ou pas
+- Évite de reconstruire à partir d'une analyse incomplète ou biaisée (la synthèse finale est forcément lossy)
+
+#### Incident référence 2026-05-12
+
+Le commit `58b491ed` du 2026-05-08 (« canonisation 001 Le Pont Cassé + refonte catalogue (`rm -rf legacy`) ») a supprimé **~80 fichiers** de fabrication (001 actuel + 002 complet + 003-v2 + 004) sans archivage. Restauré via `git checkout 37cda252 --` le 2026-05-12 après détection par Papa Yann (« on a perdu tous les dossiers de writers relecteur du 001 ou je rêve ??? »).
+
+**Cause racine** : l'agent qui a fait la canonisation a interprété la décision 2026-05-08 « nettoyage du commit » comme « suppression » alors que la décision tranchée disait littéralement « **présence en `_archive/` pour traçabilité** » (`pmo/decisions.md` 2026-05-08 Décision C).
+
+**Apprentissage pour les futurs canonisations** :
+- L'agent qui canonise doit relire `pmo/decisions.md` 2026-05-08 Décision C **avant** tout `rm`
+- Le PMO doit valider toute suppression de matière de fabrication avant qu'elle parte au commit
+- Si en doute → laisser en place, demander à Papa Yann
+
 ---
 
 ## Reprise après reboot
@@ -267,10 +298,11 @@ Procédure standard pour tout agent reprenant une histoire :
 
 ## Liens rapides
 
-- [`INDEX.md`](INDEX.md) — index complet de l'équipe (à créer)
+- [`INDEX.md`](INDEX.md) — index complet de l'équipe
 - [`ORGANIGRAMME.md`](ORGANIGRAMME.md) — agents et chaîne de commandement
 - [`cartographie-domaines.md`](cartographie-domaines.md) — où va quelle info
-- [`patte-narrative-maxplay.md`](patte-narrative-maxplay.md) — patte B+D+C (à créer, cascade chantier 1)
-- [`templates/`](templates/) — gabarits de briefs et docs (à créer)
+- [`patte-narrative-maxplay.md`](patte-narrative-maxplay.md) — patte B+D+C
+- [`templates/`](templates/) — 10 gabarits de briefs et docs
+- [`lecons-vivantes.md`](lecons-vivantes.md) — patterns confirmés (P1-P10, G1-G6)
 - [`../pmo/decisions.md`](../pmo/decisions.md) — décisions tranchées
-- [`../stories/_gabarit/`](../stories/_gabarit/) — gabarit de dossier histoire unifié (à réécrire)
+- [`../stories/_gabarit/`](../stories/_gabarit/) — gabarit de dossier histoire unifié

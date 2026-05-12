@@ -1,0 +1,94 @@
+"""Planche comparative avec swap SW_1 11<->21 et 12<->22 applique.
+
+Hypothese Papa Yann 2026-05-12 :
+  SW_1 est identique a SW_2-6 SAUF :
+    sw_1_11 <-> sw_1_21
+    sw_1_12 <-> sw_1_22
+  Tout le reste est identique entre les 6 tilesets.
+
+Si vrai : chaque ligne ici devrait montrer 6 formes identiques (juste couleur differente).
+"""
+
+from __future__ import annotations
+from pathlib import Path
+from PIL import Image, ImageDraw, ImageFont
+
+TILES_DIR = Path(r'c:\ProjetsPerso\Claude_Projects\MaxPlay\game\phaser\public\assets\tiles\roads')
+OUT_DIR = Path(__file__).parent.parent / 'recipes' / 'bricks'
+ASPH_BG_PATH = TILES_DIR / 'ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png'
+
+SWAP = {11: 21, 21: 11, 12: 22, 22: 12}
+
+
+def sw1_for_ref(n_ref: int) -> int:
+    return SWAP.get(n_ref, n_ref)
+
+
+def tile_path(family: int, n: int) -> Path:
+    return TILES_DIR / f'ME_Singles_City_Terrains_48x48_Sidewalk_{family}_{n}.png'
+
+
+def main() -> None:
+    RANGE_REF = list(range(1, 23))
+    TILESETS_REF = [2, 3, 4, 5, 6]
+
+    tile_zoom = 70
+    label_w = 100
+    cell_w = tile_zoom + 6
+    cell_h = tile_zoom + 6
+
+    cols = 1 + len(TILESETS_REF)
+    rows = len(RANGE_REF)
+    W = label_w + cols * cell_w + 16
+    H = rows * cell_h + 50
+
+    img = Image.new('RGB', (W, H), (30, 30, 40))
+    draw = ImageDraw.Draw(img)
+    try:
+        font = ImageFont.truetype("arial.ttf", 12)
+    except Exception:
+        font = ImageFont.load_default()
+
+    headers = ['SW_1 (swap)'] + [f'SW_{f}' for f in TILESETS_REF]
+    for ci, h in enumerate(headers):
+        x = label_w + ci * cell_w + 4
+        draw.text((x, 8), h, fill=(255, 230, 102), font=font)
+
+    asph_bg = Image.open(ASPH_BG_PATH).convert('RGBA').resize((tile_zoom, tile_zoom), Image.NEAREST)
+
+    for ri, n_ref in enumerate(RANGE_REF):
+        y = 40 + ri * cell_h
+        n_sw1 = sw1_for_ref(n_ref)
+        marker = ' *' if n_sw1 != n_ref else ''
+        draw.text((4, y + cell_h // 2 - 14), f'ref#{n_ref}', fill=(255, 255, 255), font=font)
+        if marker:
+            draw.text((4, y + cell_h // 2 + 2), f'sw1#{n_sw1}*', fill=(255, 200, 100), font=font)
+        else:
+            draw.text((4, y + cell_h // 2 + 2), f'sw1#{n_sw1}', fill=(160, 160, 160), font=font)
+
+        # Col 0 = SW_1 with swap
+        tp = tile_path(1, n_sw1)
+        x = label_w
+        if tp.exists():
+            tile = Image.open(tp).convert('RGBA').resize((tile_zoom, tile_zoom), Image.NEAREST)
+            bg = asph_bg.copy()
+            bg.paste(tile, (0, 0), tile)
+            img.paste(bg, (x, y))
+
+        # Cols 1+ = SW_2..6 at n_ref
+        for ci, family in enumerate(TILESETS_REF, start=1):
+            x = label_w + ci * cell_w
+            tp = tile_path(family, n_ref)
+            if tp.exists():
+                tile = Image.open(tp).convert('RGBA').resize((tile_zoom, tile_zoom), Image.NEAREST)
+                bg = asph_bg.copy()
+                bg.paste(tile, (0, 0), tile)
+                img.paste(bg, (x, y))
+
+    out = OUT_DIR / '_compare_sw1_swap_11-12_21-22.png'
+    img.save(out)
+    print(f'OK -> {out.relative_to(Path.cwd())}  ({W}x{H} px)')
+
+
+if __name__ == '__main__':
+    main()

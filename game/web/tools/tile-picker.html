@@ -90,6 +90,11 @@
   .export-actions { display: flex; gap: 6px; margin-top: 6px; }
   .filter-input { background: #2a3a5a; color: #fff; border: 1px solid #1f4480; padding: 4px 8px;
                   border-radius: 4px; font-size: 0.85rem; flex: 1; min-width: 120px; }
+  .style-tab { background: #2a3a5a; color: #aac; border: 1px solid #1f4480; padding: 3px 8px;
+              cursor: pointer; border-radius: 4px; font-size: 0.75rem; }
+  .style-tab:hover { background: #3a4a6a; color: #fff; }
+  .style-tab.active { background: #ffe066; color: #2a2a4a; border-color: #ffe066; font-weight: bold; }
+
   .cat-tab { background: #2a3a5a; color: #aac; border: 1px solid #1f4480; padding: 4px 8px;
              border-radius: 4px; cursor: pointer; font-size: 0.78rem; }
   .cat-tab:hover { background: #3a4a6a; color: #fff; }
@@ -121,14 +126,39 @@
 
   <section>
     <h2>📚 Bibliotheque (clique pour selectionner, ou drag vers la matrice)</h2>
-    <div class="desc">81 tiles : 27 Asphalt_1 + 54 Sidewalk_1. Filtre par categorie ou par numero.</div>
+    <div class="desc">~9800 tiles 48×48 (100% du tileset LimeZu). Filtre par catégorie, par famille (Sidewalk/Asphalt/Grass/…), par variante (1-6 = couleur/style), ou par texte.</div>
     <div style="padding: 6px 10px; background: #0a1530; display: flex; gap: 4px; flex-wrap: wrap;">
       <button class="cat-tab active" data-cat="all">🔍 Tout</button>
       <button class="cat-tab" data-cat="rue">🛣️ Rue</button>
-      <button class="cat-tab" data-cat="parc">🌳 Parc</button>
-      <button class="cat-tab" data-cat="jardin">🌸 Jardin</button>
       <button class="cat-tab" data-cat="building">🏠 Building</button>
-      <button class="cat-tab" data-cat="foret">🌲 Foret</button>
+      <button class="cat-tab" data-cat="parc">🌳 Parc</button>
+      <button class="cat-tab" data-cat="props">📦 Props</button>
+      <button class="cat-tab" data-cat="terrain">🌍 Terrain</button>
+      <button class="cat-tab" data-cat="vehicule">🚗 Véhicules</button>
+      <button class="cat-tab" data-cat="station">🚉 Station</button>
+      <button class="cat-tab" data-cat="camping">⛺ Camping</button>
+      <button class="cat-tab" data-cat="pool">🏊 Piscine</button>
+      <button class="cat-tab" data-cat="theme_17_garden">🌸 Garden</button>
+      <button class="cat-tab" data-cat="theme_21_beach">🏖️ Plage</button>
+      <button class="cat-tab" data-cat="theme_19_graveyard">⚰️ Cimetière</button>
+      <button class="cat-tab" data-cat="theme_20_subway_and_t">🚇 Métro</button>
+      <button class="cat-tab" data-cat="theme_23_military_bas">🪖 Militaire</button>
+      <button class="cat-tab" data-cat="theme_24_additional_h">🏠 Habitats+</button>
+      <button class="cat-tab" data-cat="planches" style="background: #4a3a0f;">📋 Planches</button>
+    </div>
+    <div style="padding: 6px 10px; background: #0a1530; display: flex; gap: 4px; flex-wrap: wrap; align-items: center; border-top: 1px solid #1f3470;">
+      <span style="color: #aac; font-size: 0.8rem; padding: 4px 6px;">Famille :</span>
+      <select id="family-select" style="background: #2a3a5a; color: #fff; border: 1px solid #1f4480; padding: 4px 8px; border-radius: 4px; font-size: 0.78rem;">
+        <option value="all">— Toutes —</option>
+      </select>
+      <span style="color: #aac; font-size: 0.8rem; padding: 4px 6px; margin-left: 10px;">Variante :</span>
+      <button class="style-tab active" data-variant="all">Toutes</button>
+      <button class="style-tab" data-variant="1" title="Variante 1">1</button>
+      <button class="style-tab" data-variant="2" title="Variante 2">2</button>
+      <button class="style-tab" data-variant="3" title="Variante 3">3</button>
+      <button class="style-tab" data-variant="4" title="Variante 4">4</button>
+      <button class="style-tab" data-variant="5" title="Variante 5">5</button>
+      <button class="style-tab" data-variant="6" title="Variante 6">6</button>
     </div>
     <div style="padding: 6px 10px; background: #0a1530;">
       <input type="text" id="filter" class="filter-input" placeholder="Filtrer (ex: 11, 12, 50, sw...)" />
@@ -137,6 +167,12 @@
       <span style="color: #aac;">Tile selectionnee :</span>
       <img id="selected-img" src="" alt="">
       <span id="selected-label" style="color: #ffe066; font-family: monospace;">aucune</span>
+      <button id="eraser-btn" onclick="selectEraser()"
+              style="margin-left: auto; background: #8a2a2a; color: #fff; border: 1px solid #aa3a3a;
+                     padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 0.78rem;"
+              title="Selectionne le mode gomme : click sur une cellule = supprime la tile">
+        🧹 Gomme
+      </button>
     </div>
     <div class="lib-body" id="lib-body">Chargement...</div>
   </section>
@@ -146,9 +182,9 @@
     <div class="desc">Click gauche cellule = pose la tile selectionnee. Click droit = efface. Tailles cellule fixes (echelle au choix).</div>
     <div class="mat-body">
       <div class="mat-controls">
-        <label>Cols : <input type="number" id="mat-cols" value="10" min="1" max="50"></label>
-        <label>Rows : <input type="number" id="mat-rows" value="10" min="1" max="50"></label>
-        <button onclick="rebuildMatrix()">Reconstruire</button>
+        <label>Cols : <input type="number" id="mat-cols" value="10" min="1" max="50" onchange="rebuildMatrix()"></label>
+        <label>Rows : <input type="number" id="mat-rows" value="10" min="1" max="50" onchange="rebuildMatrix()"></label>
+        <button onclick="rebuildMatrix()" title="Force reconstruction (utile si onchange a rate)">🔄 Reconstruire</button>
         <button onclick="clearMatrix()">Effacer tout</button>
         <button onclick="exportMatrix()" style="background: #6a3a0f;">📤 Export Python</button>
       </div>
@@ -183,6 +219,9 @@ let selectedTile = null;
 let matrixState = []; // [row][col] = {file, w, h} | null
 let MAT_COLS = 10, MAT_ROWS = 10;
 let currentCat = 'all';
+let currentFamily = 'all';   // 'all' | nom famille (ex: Sidewalk, Asphalt, Grass, Wall, ...)
+let currentVariant = 'all';  // 'all' | '1' | '2' | ... | '6'
+let currentTextFilter = '';
 
 const CAT_INFO = {
   all: 'Toutes les tiles',
@@ -191,6 +230,19 @@ const CAT_INFO = {
   jardin: 'Jardin (fleurs, plantes)',
   building: 'Building (murs, fenetres, toits)',
   foret: 'Foret (herbe, terre, broussailles)',
+  props: 'Props (mobilier, objets)',
+  terrain: 'Terrain (herbe, terre, eau, sable)',
+  vehicule: 'Vehicules',
+  station: 'Station / metro',
+  camping: 'Camping',
+  pool: 'Piscine',
+  theme_17_garden:        'Jardin (theme 17)',
+  theme_21_beach:         'Plage',
+  theme_19_graveyard:     'Cimetiere',
+  theme_20_subway_and_t:  'Metro / transports',
+  theme_23_military_bas:  'Base militaire',
+  theme_24_additional_h:  'Habitats supplementaires',
+  planches:               'Planches catalogue (>10x10 cells, atlas complets)',
 };
 
 function tileURL(filename) {
@@ -205,6 +257,54 @@ function getTilesForCat(cat) {
   return window.TILE_PICKER[cat] || [];
 }
 
+// Compte les familles + variantes parmi un tableau de tiles
+function indexFamilies(tiles) {
+  const byFamily = new Map();   // family -> Set(variant)
+  for (const t of tiles) {
+    if (!t.family) continue;
+    if (!byFamily.has(t.family)) byFamily.set(t.family, new Set());
+    if (t.variant != null) byFamily.get(t.family).add(t.variant);
+  }
+  return byFamily;
+}
+
+// Remplit le <select> des familles selon la cat. courante
+function refreshFamilyDropdown() {
+  const sel = document.getElementById('family-select');
+  if (!sel) return;
+  const tiles = getTilesForCat(currentCat);
+  const families = indexFamilies(tiles);
+  const sorted = [...families.keys()].sort((a, b) => {
+    return families.get(b).size - families.get(a).size || a.localeCompare(b);
+  });
+  const prev = currentFamily;
+  sel.innerHTML = '<option value="all">— Toutes —</option>' +
+    sorted.map(f => {
+      const nVar = families.get(f).size;
+      return `<option value="${f}">${f} (${nVar} variantes)</option>`;
+    }).join('');
+  // Conserve la selection si toujours valide
+  if (prev !== 'all' && sorted.includes(prev)) sel.value = prev;
+  else { sel.value = 'all'; currentFamily = 'all'; }
+}
+
+// Applique les filtres aux donnees (pas au DOM) et retourne le sous-ensemble
+function getFilteredTiles() {
+  const all = getTilesForCat(currentCat);
+  const q = currentTextFilter.toLowerCase();
+  return all.filter(t => {
+    if (currentFamily !== 'all' && t.family !== currentFamily) return false;
+    if (currentVariant !== 'all') {
+      if (String(t.variant) !== currentVariant) return false;
+    }
+    if (q) {
+      const text = ((t.name || '') + ' ' + (t.file || '')).toLowerCase();
+      if (!text.includes(q)) return false;
+    }
+    return true;
+  });
+}
+
 function buildLib() {
   const body = document.getElementById('lib-body');
   if (!window.TILE_PICKER) {
@@ -213,13 +313,17 @@ function buildLib() {
   }
   body.innerHTML = '';
 
-  const tiles = getTilesForCat(currentCat);
+  const tiles = getFilteredTiles();
+  const totalCat = getTilesForCat(currentCat).length;
+  const filterLabel = (tiles.length === totalCat)
+    ? `${tiles.length} tiles`
+    : `${tiles.length} / ${totalCat} tiles (filtres actifs)`;
   const div = document.createElement('div');
   div.className = 'lib-group';
-  div.innerHTML = `<div class="lib-group-title">${CAT_INFO[currentCat]} (${tiles.length} tiles)</div><div class="lib-grid"></div>`;
+  div.innerHTML = `<div class="lib-group-title">${CAT_INFO[currentCat] || currentCat} — ${filterLabel}</div><div class="lib-grid"></div>`;
   const grid = div.querySelector('.lib-grid');
 
-  // Limit display for perf (>500 tiles ralentit le navigateur). On affiche les 500 premiers + message.
+  // Limit display for perf (>500 tiles ralentit le navigateur).
   const MAX_DISPLAY = 500;
   const toShow = tiles.slice(0, MAX_DISPLAY);
 
@@ -265,18 +369,28 @@ function setCategory(cat) {
   document.querySelectorAll('.cat-tab').forEach(b => {
     b.classList.toggle('active', b.dataset.cat === cat);
   });
+  // Quand on change de cat, on reset family (le dropdown va etre repeuple)
+  currentFamily = 'all';
+  refreshFamilyDropdown();
   buildLib();
-  // re-apply current filter
-  const q = document.getElementById('filter').value;
-  applyFilter(q);
 }
 
-function applyFilter(q) {
-  q = q.toLowerCase().trim();
-  document.querySelectorAll('.lib-tile').forEach(t => {
-    const match = !q || (t.dataset.label || '').toLowerCase().includes(q) || (t.dataset.file || '').toLowerCase().includes(q);
-    t.style.display = match ? '' : 'none';
+function setFamily(family) {
+  currentFamily = family;
+  buildLib();
+}
+
+function setVariant(variant) {
+  currentVariant = variant;
+  document.querySelectorAll('.style-tab').forEach(b => {
+    b.classList.toggle('active', b.dataset.variant === variant);
   });
+  buildLib();
+}
+
+function setTextFilter(q) {
+  currentTextFilter = (q || '').trim();
+  buildLib();
 }
 
 function selectTile(tdiv) {
@@ -287,19 +401,48 @@ function selectTile(tdiv) {
     label: tdiv.dataset.label,
   };
   document.getElementById('selected-img').src = tileURL(selectedTile.file);
+  document.getElementById('selected-img').style.display = '';
   document.getElementById('selected-label').textContent = `${selectedTile.label} (${selectedTile.w}x${selectedTile.h})`;
   // visual highlight
   document.querySelectorAll('.lib-tile').forEach(t => t.style.outline = '');
   tdiv.style.outline = '2px solid #ffe066';
+  // Reset eraser button highlight
+  document.getElementById('eraser-btn').style.outline = '';
 }
 
-function buildMatrix() {
+function selectEraser() {
+  selectedTile = { eraser: true, w: 1, h: 1, label: 'Gomme' };
+  document.getElementById('selected-img').style.display = 'none';
+  document.getElementById('selected-label').textContent = '🧹 Gomme (click = efface)';
+  // Reset library tile highlights
+  document.querySelectorAll('.lib-tile').forEach(t => t.style.outline = '');
+  // Highlight eraser button
+  document.getElementById('eraser-btn').style.outline = '2px solid #ffe066';
+}
+
+function buildMatrix(preserveState = false) {
+  const oldState = preserveState ? matrixState : null;
   MAT_COLS = +document.getElementById('mat-cols').value || 10;
   MAT_ROWS = +document.getElementById('mat-rows').value || 10;
   const grid = document.getElementById('mat-grid');
   grid.style.gridTemplateColumns = `repeat(${MAT_COLS}, 1fr)`;
   grid.innerHTML = '';
+
+  // Nouvelle matrice vide
   matrixState = Array.from({length: MAT_ROWS}, () => Array(MAT_COLS).fill(null));
+
+  // Si on preserve : recopier le contenu de l'ancienne matrice (intersection)
+  if (oldState) {
+    const oldRows = oldState.length;
+    const oldCols = oldRows > 0 ? oldState[0].length : 0;
+    const copyRows = Math.min(MAT_ROWS, oldRows);
+    const copyCols = Math.min(MAT_COLS, oldCols);
+    for (let r = 0; r < copyRows; r++) {
+      for (let c = 0; c < copyCols; c++) {
+        if (oldState[r][c]) matrixState[r][c] = oldState[r][c];
+      }
+    }
+  }
 
   for (let r = 0; r < MAT_ROWS; r++) {
     for (let c = 0; c < MAT_COLS; c++) {
@@ -325,7 +468,11 @@ function buildMatrix() {
 
 function placeOnCell(r, c) {
   if (!selectedTile) {
-    alert('Selectionne une tile dans la bibliotheque d abord (clique dessus).');
+    alert('Selectionne une tile dans la bibliotheque d abord (clique dessus) ou clique 🧹 Gomme.');
+    return;
+  }
+  if (selectedTile.eraser) {
+    clearCell(r, c);
     return;
   }
   placeAt(r, c, selectedTile);
@@ -350,7 +497,12 @@ function clearMatrix() {
 }
 
 function rebuildMatrix() {
-  buildMatrix();
+  // Preserve l'etat (les tiles deja placees) lors d'un changement de dimensions.
+  // Si on agrandit : les anciennes restent. Si on retrecit : on tronque silencieusement.
+  const before = `${MAT_COLS}x${MAT_ROWS}`;
+  buildMatrix(true);
+  redraw();
+  console.log(`[tile-picker] rebuildMatrix ${before} -> ${MAT_COLS}x${MAT_ROWS} (cells=${MAT_COLS * MAT_ROWS})`);
 }
 
 function redraw() {
@@ -462,15 +614,28 @@ try {
   if (saved && ['mini','small','normal','big'].includes(saved)) setZoom(saved);
 } catch(e) {}
 
-// Filter bibliotheque
+// Filtre texte
 document.getElementById('filter').addEventListener('input', e => {
-  applyFilter(e.target.value);
+  setTextFilter(e.target.value);
 });
 
 // Onglets categorie
 document.querySelectorAll('.cat-tab').forEach(b => {
   b.addEventListener('click', () => setCategory(b.dataset.cat));
 });
+
+// Dropdown famille (Sidewalk, Asphalt, Grass, etc.)
+document.getElementById('family-select').addEventListener('change', e => {
+  setFamily(e.target.value);
+});
+
+// Boutons variante (1-6)
+document.querySelectorAll('.style-tab').forEach(b => {
+  b.addEventListener('click', () => setVariant(b.dataset.variant));
+});
+
+// Init dropdown au chargement
+refreshFamilyDropdown();
 
 // Import d'une recette via ?recipe=test_X.py
 function importRecipeFromURL() {

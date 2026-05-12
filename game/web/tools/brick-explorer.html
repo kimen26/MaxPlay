@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>MaxPlay — Brick Explorer (catalog interactif)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: #1a1a2e; font-family: 'Segoe UI', sans-serif; color: #fff; padding: 20px; }
+  h1 { color: #ffe066; font-size: 1.4rem; margin-bottom: 4px; }
+  p.sub { color: #aaa; font-size: 0.88rem; margin-bottom: 16px; line-height: 1.5; }
+
+  .layout { display: grid; grid-template-columns: 1fr 360px; gap: 20px; }
+
+  .grid-section { background: #16213e; border-radius: 8px; padding: 12px; }
+  .section-title { color: #ffe066; font-size: 1rem; margin-bottom: 8px; }
+
+  .tile-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+               gap: 6px; }
+
+  .tile-cell { background: #5f5f5f; border: 2px solid transparent; cursor: pointer;
+               border-radius: 4px; overflow: hidden; transition: border-color 0.15s; }
+  .tile-cell:hover { border-color: #ffe066; }
+  .tile-cell.selected { border-color: #4af; box-shadow: 0 0 8px #4af; }
+  .tile-cell img { width: 100%; height: 60px; display: block; image-rendering: pixelated;
+                   object-fit: cover; }
+  .tile-cell .label { background: #0a1530; color: #fff; font-size: 0.7rem;
+                      padding: 3px 4px; text-align: center; font-family: monospace; }
+
+  .tag { display: inline-block; padding: 2px 8px; font-size: 0.72rem; border-radius: 10px;
+         margin-left: 6px; color: #fff; font-weight: bold; }
+  .tag.candidate { background: #4a4; }
+  .tag.confirmed { background: #2a8a4a; }
+  .tag.rejected  { background: #8a2a2a; }
+
+  .panel { background: #16213e; border-radius: 8px; padding: 14px; position: sticky; top: 20px;
+           height: fit-content; }
+  .panel h2 { color: #ffe066; font-size: 1rem; margin-bottom: 8px; }
+  .preview-wrap { background: #2a4a2a; padding: 8px; border-radius: 6px;
+                  display: flex; align-items: center; justify-content: center; min-height: 220px; }
+  .preview-canvas { display: grid; grid-template-columns: repeat(3, 64px); gap: 0;
+                    background: #555; padding: 0; }
+  .preview-canvas .pcell { width: 64px; height: 64px; background-position: center;
+                           background-repeat: no-repeat; background-size: cover;
+                           image-rendering: pixelated; }
+  .bg-toggle { margin: 10px 0; display: flex; gap: 6px; }
+  .bg-toggle button { flex: 1; background: #0a1530; color: #fff; border: 1px solid #2a3a5a;
+                      padding: 6px 8px; cursor: pointer; border-radius: 4px; font-size: 0.8rem; }
+  .bg-toggle button.active { background: #2a5a8a; border-color: #4af; }
+
+  .verdict-row { display: flex; gap: 4px; margin: 8px 0; flex-wrap: wrap; }
+  .verdict-row button { flex: 1 1 calc(50% - 4px); padding: 6px 4px; cursor: pointer;
+                        border-radius: 4px; border: 1px solid #444; background: #0a1530;
+                        color: #fff; font-size: 0.78rem; }
+  .verdict-row button:hover { border-color: #ffe066; }
+
+  .selected-info { font-family: monospace; font-size: 0.85rem; color: #aac; margin: 8px 0;
+                   padding: 8px; background: #0a1530; border-radius: 4px; }
+
+  .verdicts-summary { margin-top: 14px; font-size: 0.82rem; }
+  .verdicts-summary .vline { padding: 4px 8px; margin: 2px 0; border-radius: 3px;
+                             font-family: monospace; }
+  .vline.courbe { background: #2a5a2a; }
+  .vline.point  { background: #2a4a8a; }
+  .vline.autre  { background: #5a4a2a; }
+  .vline.reject { background: #5a2a2a; }
+  .verdicts-summary button.export { width: 100%; background: #4a8a2a; color: #fff; border: 0;
+                                    padding: 8px; cursor: pointer; border-radius: 4px;
+                                    margin-top: 8px; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h1>🧱 Brick Explorer — catalog interactif LimeZu</h1>
+<p class="sub">
+  Clique sur une tile → tu vois son rendu en contexte (3×3) avec fond asphalte ou trottoir.<br>
+  Pour chaque tile, vote <strong>Courbe ext.</strong> (gros arc trottoir), <strong>Point int.</strong> (concave côté asphalte),
+  <strong>Autre</strong> (bord/transition/déco), ou <strong>Rejeté</strong>.<br>
+  À la fin → bouton <strong>Export verdicts</strong> en bas pour me les envoyer.
+</p>
+
+<div class="layout">
+
+<div>
+
+<div class="grid-section">
+<div class="section-title">Sidewalk_1 — coins candidats (1-22)</div>
+<div class="tile-grid" id="grid-sw1-coins"></div>
+</div>
+
+<div class="grid-section" style="margin-top: 16px;">
+<div class="section-title">Sidewalk_1 — tiles d'intérêt (50, virage tout-en-un)</div>
+<div class="tile-grid" id="grid-sw1-other"></div>
+</div>
+
+<div class="grid-section" style="margin-top: 16px;">
+<div class="section-title">Sidewalk_2 — variantes (à vérifier si pertinent)</div>
+<div class="tile-grid" id="grid-sw2"></div>
+</div>
+
+</div>
+
+<aside class="panel">
+<h2>Aperçu en contexte</h2>
+<div class="selected-info" id="selected-info">Aucune tile sélectionnée</div>
+
+<div class="bg-toggle">
+  <button class="active" data-bg="asphalt" onclick="setBg('asphalt')">Fond asphalte</button>
+  <button data-bg="trottoir" onclick="setBg('trottoir')">Fond trottoir</button>
+</div>
+
+<div class="preview-wrap">
+  <div class="preview-canvas" id="preview"></div>
+</div>
+
+<h2 style="margin-top: 14px;">Verdict</h2>
+<div class="verdict-row">
+  <button onclick="setVerdict('courbe')">🟢 Courbe ext.</button>
+  <button onclick="setVerdict('point')">🔵 Point int.</button>
+</div>
+<div class="verdict-row">
+  <button onclick="setVerdict('autre')">🟡 Autre (bord/déco)</button>
+  <button onclick="setVerdict('reject')">🔴 Rejeté</button>
+</div>
+<div class="verdict-row">
+  <button onclick="setVerdict(null)">↺ Effacer verdict</button>
+</div>
+
+<div class="verdicts-summary">
+  <div id="verdicts-list"></div>
+  <button class="export" onclick="exportVerdicts()">📋 Copier verdicts (JSON)</button>
+</div>
+</aside>
+
+</div>
+
+<script>
+const TILES_BASE = '../../phaser/public/assets/tiles/roads/';
+const ASPH = TILES_BASE + 'ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png';
+const TROT = TILES_BASE + 'ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png';
+
+const SW1_COINS = Array.from({length: 22}, (_, i) => i + 1);
+const SW1_OTHER = [50];
+const SW2 = [1,2,3,4,5,6,7,8,9,10,11,12,13,14];
+
+let selected = null;
+let bg = 'asphalt';
+const verdicts = JSON.parse(localStorage.getItem('brick_verdicts') || '{}');
+
+function tileUrl(family, n) {
+  if (family === 'sw1') return TILES_BASE + `ME_Singles_City_Terrains_48x48_Sidewalk_1_${n}.png`;
+  if (family === 'sw2') return TILES_BASE + `ME_Singles_City_Terrains_48x48_Sidewalk_2_${n}.png`;
+}
+
+function tileId(family, n) { return `${family}_${n}`; }
+
+function buildGrid(containerId, family, nums) {
+  const c = document.getElementById(containerId);
+  c.innerHTML = '';
+  for (const n of nums) {
+    const id = tileId(family, n);
+    const cell = document.createElement('div');
+    cell.className = 'tile-cell';
+    cell.dataset.id = id;
+    cell.dataset.family = family;
+    cell.dataset.num = n;
+    cell.onclick = () => select(id, family, n);
+    cell.innerHTML = `<img src="${tileUrl(family, n)}" loading="lazy"><div class="label">${family}_${n}</div>`;
+    if (verdicts[id]) cell.style.borderColor = verdictColor(verdicts[id]);
+    c.appendChild(cell);
+  }
+}
+
+function verdictColor(v) {
+  return { courbe: '#4a4', point: '#48f', autre: '#fa4', reject: '#f44' }[v] || 'transparent';
+}
+
+function select(id, family, n) {
+  document.querySelectorAll('.tile-cell.selected').forEach(e => e.classList.remove('selected'));
+  document.querySelectorAll(`[data-id="${id}"]`)[0].classList.add('selected');
+  selected = { id, family, n };
+  document.getElementById('selected-info').textContent = `Sélectionnée : ${id}`;
+  renderPreview();
+}
+
+function setBg(b) {
+  bg = b;
+  document.querySelectorAll('.bg-toggle button').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.bg === b);
+  });
+  renderPreview();
+}
+
+function renderPreview() {
+  const p = document.getElementById('preview');
+  p.innerHTML = '';
+  if (!selected) return;
+  const bgUrl = bg === 'asphalt' ? ASPH : TROT;
+  const tileUrl_ = tileUrl(selected.family, selected.n);
+  for (let r = 0; r < 3; r++) {
+    for (let c = 0; c < 3; c++) {
+      const cell = document.createElement('div');
+      cell.className = 'pcell';
+      const url = (r === 1 && c === 1) ? tileUrl_ : bgUrl;
+      cell.style.backgroundImage = `url('${url}')`;
+      p.appendChild(cell);
+    }
+  }
+}
+
+function setVerdict(v) {
+  if (!selected) return;
+  if (v === null) {
+    delete verdicts[selected.id];
+  } else {
+    verdicts[selected.id] = v;
+  }
+  localStorage.setItem('brick_verdicts', JSON.stringify(verdicts));
+  // Update cell border
+  const cell = document.querySelectorAll(`[data-id="${selected.id}"]`)[0];
+  if (cell) cell.style.borderColor = v ? verdictColor(v) : 'transparent';
+  refreshSummary();
+}
+
+function refreshSummary() {
+  const list = document.getElementById('verdicts-list');
+  const byVerdict = { courbe: [], point: [], autre: [], reject: [] };
+  for (const [id, v] of Object.entries(verdicts)) byVerdict[v]?.push(id);
+  let html = '';
+  for (const v of ['courbe', 'point', 'autre', 'reject']) {
+    if (byVerdict[v].length) {
+      const label = { courbe: '🟢 Courbe ext.', point: '🔵 Point int.', autre: '🟡 Autre', reject: '🔴 Rejeté' }[v];
+      html += `<div class="vline ${v}">${label} (${byVerdict[v].length}): ${byVerdict[v].join(', ')}</div>`;
+    }
+  }
+  list.innerHTML = html || '<em style="color:#888">Aucun verdict encore</em>';
+}
+
+function exportVerdicts() {
+  const out = JSON.stringify(verdicts, null, 2);
+  navigator.clipboard.writeText(out).then(() => {
+    alert('Verdicts copiés dans le presse-papier ! Colle-le dans le chat.');
+  });
+}
+
+// Init
+buildGrid('grid-sw1-coins', 'sw1', SW1_COINS);
+buildGrid('grid-sw1-other', 'sw1', SW1_OTHER);
+buildGrid('grid-sw2', 'sw2', SW2);
+refreshSummary();
+</script>
+
+</body>
+</html>

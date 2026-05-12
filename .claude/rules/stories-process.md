@@ -1,0 +1,84 @@
+---
+paths:
+  - "narration/stories/**"
+---
+
+# PROCESS militaire NARRATION — règles auto-chargées sur stories/**
+
+> Cette règle est **chargée automatiquement** dès que Claude lit/édite un fichier sous `narration/stories/`.
+> Source de vérité complète : [`narration/equipe/PROCESS.md`](../../narration/equipe/PROCESS.md).
+
+## 10 étapes — owner par étape
+
+| # | Étape | Owner | Output | ✅ valide auteur |
+|---|-------|-------|--------|------------------|
+| 0 | Dump idée | Auteur | `narration/INBOX.md` | — |
+| 1 | Pitch + plan léger (fusion) | `narration-conseiller` | `1-pitch-plan.md` | OUI |
+| 3 | Briefs | `narration` (Directeur Éditorial) | `3-briefs/{univers,personnages,histoire}.md` + `_writer-package.md` | — |
+| 4 | 10 versions writers | 2 Claude + 4 Kimi (dont 1 guidé) + 2 DeepSeek + 2 Grok | `4-versions-writers/*.md` (chacune avec note d'intention) | — |
+| 5 | 20 lecteurs témoins | `narration-lecteur` (10) + `narration-lecteur-dyade` (10) | `5-lecteurs-temoins/*.md` + `5-synthese-lecteurs.md` | — |
+| 6 | Sélection top + greffes | `narration` (Directeur) | `6-selection.md` | OUI |
+| 7 | Rewrite top 1 | Writer top 1 OU `narration` (si writer défaillant) | `7-rewrite/<llm>-rewrite-v1.md` | — |
+| 8 | GateKeeper | `narration-gatekeeper` | `8-gatekeeper-verdict.md` (PASS/corrections rapides) | — |
+| 9 | Panel 20 relit le rewrite | 20 lecteurs | `9-relecture-rewrite/` | — |
+| 10 | Canon + maj leçons | `narration` + `narration-pmo` | `10-texte.md` (CANON) + maj `equipe/lecons-vivantes.md` | OUI |
+
+> Étape 2 supprimée 2026-05-12 (fusion avec étape 1). Numérotation 3-10 conservée pour cohérence préfixes fichiers.
+
+## Règles MILITAIRES
+
+1. **Préfixes étapes obligatoires** : tout fichier produit dans `stories/<id>/` doit être préfixé `N-` (0, 1, 3-10). Pas de `pitch.md` nu — c'est `1-pitch-plan.md`.
+2. **Étape 1 + 3 obligent lecture** :
+   - [`narration/personnages/theorie/pedagogie-enfance/`](../../narration/personnages/theorie/pedagogie-enfance/README.md) — boussole 4-5 ans
+   - Ennéatypes pertinents de l'histoire
+3. **10 writers ≠ 10 textes identiques** — leviers de variance figés dans [`narration/pmo/INVARIANTS.md`](../../narration/pmo/INVARIANTS.md) § *Leviers de variance* :
+   - Angle / POV / ouverture / longueur / température
+4. **Rewrite plafond** : 1 rewrite max par story. Au-delà → recommencer depuis étape 1 (cause racine à analyser).
+5. **GateKeeper ne réécrit pas** : il valide PASS ou liste corrections rapides. Si grosse réécriture nécessaire → retour étape 7.
+6. **Canon = source de vérité** : `10-texte.md` figé après validation. Toute évolution = nouvelle story ou archive `_archive/`.
+7. **Note d'intention writer** : chaque writer DOIT joindre `_notes-intention/<llm>.md` expliquant ses choix créatifs.
+
+## Gabarit dossier story (vérifié par `narration-archiviste`)
+
+```
+narration/stories/<NNN-titre-slug>/
+├── 1-pitch-plan.md
+├── 3-briefs/
+│   ├── brief-univers.md
+│   ├── brief-personnages.md
+│   ├── brief-histoire.md
+│   └── _writer-package.md
+├── 4-versions-writers/
+│   ├── claude-libre.md · kimi-guide.md · …
+│   └── _notes-intention/<llm>.md
+├── 5-lecteurs-temoins/
+│   ├── enfant-fille.md · enfant-garcon.md
+│   ├── dyade-maman-fille.md · dyade-maman-garcon.md · …
+│   └── 5-synthese-lecteurs.md
+├── 6-selection.md
+├── 7-rewrite/<llm>-rewrite-v1.md
+├── 8-gatekeeper-verdict.md
+├── 9-relecture-rewrite/
+├── 10-texte.md            ← CANON
+├── kanban.md
+└── _archive/              ← versions pre-pivot
+```
+
+Modèle : [`narration/stories/_gabarit/`](../../narration/stories/_gabarit/).
+
+## Anti-patterns sur stories
+
+- ❌ Sauter une étape (ex : skip lecteurs étape 5)
+- ❌ Plus d'un rewrite (cf. plafond)
+- ❌ Texte canon `10-texte.md` modifié sans `_archive/` de l'ancien
+- ❌ Writer livre sans note d'intention
+- ❌ Inventer un prénom hors casting V1 figé (lookup obligatoire)
+- ❌ Briefs sans lecture préalable pédagogie 4-5 ans + ennéatypes
+
+## Quand auto-charger
+
+Cette règle se déclenche dès qu'un fichier sous `narration/stories/` est lu OU édité. Inclut : briefs en cours, versions writers, lecteurs, kanban, canon. Tout fichier de production narrative passe sous l'œil de cette règle.
+
+---
+
+_Refonte 2026-05-13 : extrait condensé de `equipe/PROCESS.md` (316 lignes) pour auto-chargement path-scoped. Le PROCESS complet reste source de vérité._

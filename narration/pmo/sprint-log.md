@@ -5,6 +5,37 @@
 > Les entrées les plus récentes sont en haut.
 >
 > ⚠️ **Note historique** : les entrées <2026-05-12 mentionnent "PROCESS 9 étapes" (avant refonte 2026-05-07) puis "11 étapes" (refonte 2026-05-08). Depuis **refonte 2026-05-12** : PROCESS = **10 étapes** (étape 2 fusionnée avec étape 1 — voir `pmo/INVARIANTS.md` source de vérité). Ne pas re-corriger les entrées historiques — elles tracent l'évolution du PROCESS.
+> 
+> ---
+> **Procédure clôture formalisée** (depuis 2026-05-13) : classification 6 catégories (DÉCISION / LEÇON / TODO / QUESTION / INFO / TRAITEMENT) + mise à jour PMO (sprint-log / decisions / backlog / lecons-vivantes) + checklist remise main 8 points. Voir `narration-pmo.md` § Procédure systématique.
+
+---
+
+## 2026-05-13 — [PMO CLÔTURE TOUR] INBOX formalisé + 7 tickets créés + ARCHI-006 formalisation PMO
+
+**Objectif** : procédure formelle clôture 2026-05-08 (INBOX dump + ARCHI + UNIVERS).
+
+**Fait** :
+- [x] Création `_inbox/README.md` — dépôt libre multi-pôles (JEU+NARRATION), format libre, règle 48h transit
+- [x] Nettoyage `narration/INBOX.md` : 3 sections distillées (voix 2026-05-11 → VOIX-002 tracking; challenges C-3/4/5/6 → 4 tickets ARCHI-009/010/011/012; univers exemples-canoniques → ARCHI-013 + UNIVERS-004/005)
+- [x] 7 tickets ajoutés `backlog.md` : ARCHI-009 (PIPELINE-MEMORY), ARCHI-010 (anti-patterns-narration), ARCHI-011 (mnémonique 1-ligne), ARCHI-012 (cartographie-fichiers), ARCHI-013 (exemples-canoniques), UNIVERS-004 (faune-flore), UNIVERS-005 (saisons-climat)
+- [x] Classification tour 2026-05-08 : 6 catégories (DÉCISION / LEÇON / TODO / QUESTION / INFO / TRAITEMENT)
+- [x] Leçon majeure du tour (STORY-002 étape 5) gravée dans `equipe/lecons-vivantes.md` : tension résonance jamais expliciter
+
+**Décisions enregistrées** :
+- DEC-INBOX : création dépôt libre `_inbox/README.md` (structure, règle 48h, pointeur INBOX.md)
+- DEC-PANEL-20 : 20 lecteurs OBLIGATOIRE (validation empirique STORY-002 étape 5)
+- DEC-TENSION-RESONANCE : jamais nommer/expliquer la résonance — rester implicite (propagé briefs étape 3)
+
+**Questions ouvertes** :
+- Réduction writers post-STORY-004 : test 14 writers → optimum ? (Arbitrage Auteur, voir ARCHI-008)
+
+**État au reboot** :
+- 2 tickets actifs : STORY-002 étape 6 + ARCHI-006 formalisation PMO
+- Backlog augmenté 7 tickets (structurés, priorité normale sauf ARCHI-006 priorité courante)
+- `_inbox/README.md` live, INBOX.md 3 sections marquées ✅ distillées
+- Prochains chantiers : ARCHI-006 formaliser agent narration-pmo (Haiku) + STORY-002 étape 6 sélection Directeur
+- Leçon gravée : tension résonance implicite toujours (critère vérification briefs étape 3 futures)
 
 ---
 

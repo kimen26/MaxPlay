@@ -2,6 +2,50 @@
 
 > **Règle :** Une décision ici est DÉFINITIVE jusqu'à nouvelle décision explicite datée.
 
+## 2026-05-13 — DEC-INBOX : Création dépôt libre multi-pôles `_inbox/README.md`
+
+**Auteur (Papa Yann)** : formalisation INBOX tour 2026-05-08.
+
+**Contexte** : INBOX.md narration croît sans structuration. Risque accumulation matière non-triée, confusion JEU/NARRATION, latence classification tickets. Besoin dépôt libre simple pour tous les pôles.
+
+**Décision tranchée** :
+
+### Création `_inbox/README.md` dépôt libre multi-pôles
+
+**Règles** :
+- **Localisation** : `_inbox/` racine (accessible JEU + NARRATION)
+- **Format** : libre — dump brut, pas de structuration
+- **Transit max** : 48 heures → PMO classe en tickets ou le supprime
+- **Pointeur** : chaque pôle INBOX.md pointe vers `../_inbox/README.md`
+- **Tri PMO** : classification 6 catégories (DÉCISION / LEÇON / TODO / QUESTION / INFO / TRAITEMENT)
+
+**Impact fichiers** :
+- ✅ `_inbox/README.md` (créé)
+- ✅ `narration/INBOX.md` : pointeur vers `../_inbox/README.md`
+- 🔄 `game/INBOX.md` : pointeur idem (orchestrateur game-pmo si besoin)
+
+**Statut** : ✅ Figée. INBOX.md narration nettoyé (3 sections distillées → 7 tickets).
+
+---
+
+## 2026-05-13 — DEC-ARCHI-006-ORDRE : Formalisation procédure PMO priorité courante
+
+**Auteur (Papa Yann)** : décision déplacement priorité ARCHI-006.
+
+**Contexte** : ARCHI-006 (formaliser agent `narration-pmo.md`) = documentation procédure clôture tour. Actuellement priorité "Normale". Mais elle déverrouille autonomie PMO (classification 6 catégories, checklist remise main, routing agents). Sans elle, prochains tours = manuels.
+
+**Décision tranchée** :
+
+### ARCHI-006 déplacé priorité Haute → Normale (courante)
+
+**Raison** : documente une procédure qui commence **déjà** ce tour (classification + sprint-log + decisions). Donc elle doit être formalisée avant fin STORY-002 étape 6 (sinon étape 7 rewrite perdra contexte).
+
+**Timeline** : ARCHI-006 en parallèle STORY-002 étape 6 sélection (ne bloque pas l'étape, mais sera prêt pour reboot suivant).
+
+**Statut** : ✅ Figée. Priorité = courante.
+
+---
+
 ## 2026-05-13 — DEC-VOIX-JUJU : Voice ID T8 Challenger figé (méthodo v24 fille validée, 1 essai)
 
 **Auteur (Papa Yann)** : création voice_id Juju 2026-05-13 via ElevenLabs Voice Design méthodo v24 transposée fille.
@@ -80,6 +124,34 @@ Speaker Boost: true
 > *« OBS-SONORITÉ-CASTING : collision trochée fermée-fermée (Polo↔Nono) détectable précocement lors du casting via phonétique 4-5 ans. Règle : avant de figer, tester trochées + diphtongues + répétabilité à voix haute. Dadou vs Nono = clair à l'oral. »*
 
 **Point d'attention BONUS** : `.claude/rules/personnages.md` L.10-13 contient contradiction — table affirme "Melki F" mais `lookup.yml` = "Melki M" (source de vérité). À corriger en parallèle comme fix cohérence.
+
+---
+
+## 2026-05-13 — DEC-TENSION-RESONANCE : JAMAIS expliciter la résonance (validé empiriquement 20 lecteurs, STORY-002)
+
+**Auteur (Papa Yann)** : observation synthèse lecteurs 2026-05-13 + PMO validation cascade décisions.
+
+**Contexte** : étape 5 STORY-002 livraison 20 lecteurs. Top net = kimi-reco-guide-v2 (16+/20). Toutes les versions mauvaises ou faibles ont une caractéristique commune : elles **nomment ou expliquent la résonance** (« la libellule les relie », « cette présence bienveillante qui résonne », « des âmes qui vibrent ensemble »). Les top scores l'oublient complètement — simplement la vivent par le geste, le silence, le détail.
+
+**Décision tranchée** :
+
+### JAMAIS expliciter la résonance — rester implicite et sensorielle
+
+**Raison** : 
+- Empirisme enfants 4-5 ans : nommer l'émotion abstraite = rupture du charme enfant
+- Top kimi-reco-guide-v2 ne l'énonce **jamais** — elle est dans Wex qui les relie, le silence de la libellule, le fait qu'ils se retrouvent
+- Bottom (grok-def, deepseek-def) : tous contiennent formulation adulte « résonner / vibrer / âme qui touche »
+- Panel 20 convergent : enfants et dyades disent « on sent que c'est magique, mais pas expliqué »
+
+**Impact briefs** :
+- ✅ `brief-histoire.md` STORY-003+ : ajouter à section "Univers implicite" règle obligatoire
+- ✅ `lecons-vivantes.md` : graver OBS-RESONANCE-IMPLICITE (voir ci-dessous)
+- ⚠️ Tous writers étape 4 : relecture PMO négations gratuites vérifiera compliance (pas de formulation « les âmes résonnent »)
+
+**Statut** : ✅ Figée. À appliquer immédiatement sur STORY-003 brief auteur.
+
+**Leçon** (gravée ci-dessous) :
+> *« OBS-RESONANCE-IMPLICITE : la résonance est un conteur majeur (lien entre trois + complétude) mais son énonciation la tue. Jamais nommer. Elle vit dans le geste de Wex (qui relie), le silence de l'animal, la présence commune. Empirisme 20 lecteurs : 16+ top scores omettent complètement le mot. »*
 
 ---
 

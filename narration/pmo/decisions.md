@@ -2,6 +2,38 @@
 
 > **Règle :** Une décision ici est DÉFINITIVE jusqu'à nouvelle décision explicite datée.
 
+## 2026-05-14 — DEC-TAGS-KIMI : Absorption catalogue ElevenLabs v3 (1806 tags)
+
+**Auteur (Papa Yann)** : "challenge, absorbe ce qui est bon et utile"
+
+**Contexte** : Kimi a extrait 1806 tags EL v3 avec classification 7 axes + guide enneatypes. Besoin de filtrer et intégrer dans la base MaxPlay.
+
+**Décisions tranchées** :
+
+### Absorption sélective (pas tous les 1806)
+- Critères : 👍 ≥ 5, adapté 4-6 ans, utile pour univers MaxPlay (Kishōtenketsu, enneatypes)
+- Source brute archivée : `personnages/voix-meta/tags-elevenlabs/` (référence permanente)
+- Sélection curated : `personnages/voix-meta/_TAGS-MAXPLAY-CURATED.md` (~70 tags)
+- Tags narrateur : `personnages/voix-meta/_NARRATEUR-TAGS.md` (26 tags)
+
+### Tags exclus T8 Juju — DÉFINITIF
+`[bellowing]` / `[explosive]` / `[booming]` → JAMAIS pour Juju ni aucun perso MaxPlay.
+Raison : violence sonore incompatible avec univers 4-6 ans. Juju est forte et directe, pas criarde.
+
+### Tags exclus T5 Lulu — DÉFINITIF  
+`[distant]` / `[mechanical]` → Lulu est concentré/observateur, pas détaché ni robotique.
+Remplacement : `[contemplative]` + `[analytical tone]` + `[objective]`.
+
+**Impact fichiers** :
+- ✅ `personnages/voix-meta/tags-elevenlabs/` (créé, 8 fichiers Kimi)
+- ✅ `personnages/voix-meta/_NARRATEUR-TAGS.md` (créé)
+- ✅ `personnages/voix-meta/_TAGS-MAXPLAY-CURATED.md` (créé)
+- ✅ 9 voix.md `type-XX/voix.md` (enrichis avec nouveaux tags)
+
+**Statut** : ✅ Figée 2026-05-14.
+
+---
+
 ## 2026-05-13 — DEC-INBOX : Création dépôt libre multi-pôles `_inbox/README.md`
 
 **Auteur (Papa Yann)** : formalisation INBOX tour 2026-05-08.
@@ -565,11 +597,14 @@ Détail complet : `narration/pmo/INVARIANTS.md` § **Casting writers étape 4 (1
 
 ---
 
-## Questions ouvertes (en attente de tranchage auteur)
+## Questions ouvertes STORY-002 (clôturées 2026-05-12 — voir entrée "DEC-TENSION-RESONANCE")
+
+> **✅ Toutes les Q-ouvertes STORY-002 sont tranchées depuis 2026-05-12.** Voir ci-dessous et entrée DEC-TENSION-RESONANCE pour les détails.
 
 | # | Date | Sujet | Contexte | Posée par | État |
 |---|------|-------|---------|-----------|------|
-| ~~2026-05-11~~ | ~~STORY-002 — Duo agités + lieu + animal~~ | ~~Wex+Polo / mare / libellule / geste Nono~~ | — | ✅ **TRANCHÉ 2026-05-12** : Wex+Juju+Nono / étang amont / libellule = sensibilité Nono / pieds nus Nono. Voir entrée 2026-05-12 plus haut. |
+| ~~Q-002-1~~ | ~~2026-05-11~~ | ~~STORY-002 — Duo agités + lieu + animal~~ | ~~Wex+Polo / mare / libellule / geste Nono~~ | — | ✅ **TRANCHÉ 2026-05-12 DEC-002-CASTING** : Wex+Juju+Nono / étang amont / libellule = sensibilité Nono / pieds nus Nono |
+| ~~Q-002-2~~ | ~~2026-05-12~~ | ~~STORY-002 — Nommer la résonance ou laisser implicite~~ | ~~Tension top scores omettent l'énonciation.~~ | — | ✅ **TRANCHÉ 2026-05-12 DEC-TENSION-RESONANCE** : JAMAIS expliciter. Rester sensoriel + implicite. Panel 20 validation empirique. |
 | Q1 | 2026-05-13 | **Self-challenge — narration-architecte deprecated** | Agent en standby depuis 2026-05-12 (fusion Pitch+Plan). Faut-il le supprimer définitivement, l'archiver dans `_archive/`, ou le laisser en deprecated indéfiniment ? | narration-pmo (audit 2026-05-13) | Pas urgent, à trancher avant prochaine session narration |
 | Q2 | 2026-05-13 | **Self-challenge — scission `audit-trail.md`** | Fichier ~450 lignes. Scinder en `audit-trail-archive-2026-05.md` + `audit-trail.md` actif ? Ou laisser et signaler ? | narration-pmo (audit 2026-05-13) | Pas urgent, cosmétique |
 | Q3 | 2026-05-13 | **Self-challenge — scission `decisions.md`** | Fichier ~1265 lignes (le plus volumineux du pôle). Scission `decisions-archive-YYYY-MM.md` + `decisions-actives.md` ? Risque : casser refs croisées (lecons-vivantes, audit-trail) | narration-pmo (audit 2026-05-13) | Pas urgent mais à prévoir |

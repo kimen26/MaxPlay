@@ -27,7 +27,7 @@
 | 3 | Briefs | Directeur | ✅ | 2026-05-12 | [`3-briefs/`](3-briefs/) (4 fichiers : brief-univers, brief-personnages, brief-histoire, _writer-package) |
 | 4 | **14 Versions writers** (refonte casting v2 2026-05-12) | 14 Writers | ✅ | 2026-05-13 | [`4-versions-writers/`](4-versions-writers/) — 14 versions + 1 régénération (kimi-reco-guide v1+v2) = **15 fichiers** |
 | 5 | **Panel 20 lecteurs** (10 profils × 2 tranches d'âge — règle 2026-05-13, dès STORY-002) | 20 Témoins | ✅ | 2026-05-13 | [`5-lecteurs-temoins/`](5-lecteurs-temoins/) — 20 fiches + [`5-synthese-lecteurs.md`](5-lecteurs-temoins/5-synthese-lecteurs.md) · **Top : kimi-reco-guide-v2** (16+/20 profils) |
-| 6 | Sélection (top 1-3 + greffes Directeur) | Directeur | ⏳ | — | [`6-selection.md`](6-selection.md) — attente arbitrage auteur |
+| 6 | Sélection (top 1-3 + greffes Directeur) | Directeur | ⏳ | 2026-05-13 | [`6-selection.md`](6-selection.md) — attente arbitrage auteur |
 | 7 | Rewrite | Writer du top 1 | ⚪ | — | [`7-rewrite/`](7-rewrite/) |
 | 8 | GateKeeper | GateKeeper | ⚪ | — | [`8-gatekeeper-verdict.md`](8-gatekeeper-verdict.md) |
 | 9 | Re-relecture (panel 20) | 20 Témoins | ⚪ | — | [`9-relecture-rewrite/`](9-relecture-rewrite/) |
@@ -38,7 +38,7 @@
 ## Validations auteur (3 obligatoires)
 
 - [x] **Étape 1 — Pitch** validé : 2026-05-12 (recentrage Nono uniquement finalisé)
-- [ ] **Étape 6 — Sélection** validée : ___ (date)
+- [ ] **Étape 6 — Sélection** validée : ___ (en attente arbitrage auteur — livrable `6-selection.md` prêt depuis 2026-05-13)
 - [ ] **Étape 10 — Canon finalisé** validé : ___ (date)
 
 **SLA :** 3 jours par validation. Au-delà → 🔴 BLOQUÉ + log auto `pmo/sprint-log.md`.

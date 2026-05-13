@@ -146,27 +146,4 @@ narration/
 
 ---
 
-## Workflow narratif (10 étapes)
-
-```
-0.  Auteur          → INBOX.md (idée brute)
-1.  Conseiller      → 1-pitch-plan.md                              ✅ valide auteur
-                     (fusion pitch + plan léger 2026-05-12 — Architecte deprecated)
-3.  Directeur       → 3-briefs/{univers, personnages, histoire}.md + _writer-package.md
-4.  10 Writers      → 4-versions-writers/ (2 Claude + 4 Kimi (dont 1 guidé) + 2 DeepSeek + 2 Grok)
-5.  20 Lecteurs     → 5-lecteurs-temoins/ + 5-synthese-lecteurs.md
-6.  Directeur       → 6-selection.md (base + greffes)              ✅ valide auteur
-7.  Writer top 1    → 7-rewrite/<llm>-rewrite-v1.md
-8.  GateKeeper      → 8-gatekeeper-verdict.md
-9.  Panel 20        → 9-relecture-rewrite/
-10. Directeur+PMO   → 10-texte.md (CANON) + maj lecons-vivantes.md ✅ valide auteur
-```
-
-> Étape 2 supprimée 2026-05-12 (fusion avec étape 1). Numérotation 3-10 conservée pour cohérence préfixes fichiers.
-
-**Règles obligatoires étape 1 et 3** : lecture de [`personnages/theorie/pedagogie-enfance/`](personnages/theorie/pedagogie-enfance/README.md) + ennéatypes pertinents.
-
----
-
-**Règle :** un INDEX ne contient jamais de contenu canon, seulement des pointeurs.
-Un fichier stable > 400 lignes → on scinde thématiquement.
+> Process complet 10 étapes → [`equipe/PROCESS.md`](equipe/PROCESS.md) · Règles → [`narration/CLAUDE.md`](CLAUDE.md)

@@ -113,8 +113,8 @@ Bilan : **4F / 5M + Wex**. Source : [`../personnages/INDEX.md`](../personnages/I
 | Dadou | `5wcx0KzRnrP48I5RCVD8` | v2 | Lumi Dadou Fier |
 | Melki | `sWfumkYiI1QERQ5INqRQ` | v1 | Lumi Melki Précis |
 | Pierrot | `ukIKjXqbiGGkqIz0SW5c` | pré-v24 | (conservé) |
-| Raph | `Te5RKnm9ebwdEvZ1S5pS` | — | — |
-| Lulu | `1XwHANMW4m2pxt7buPmQ` | filtre cumulatif vaincu | Lumi Lulu Léger |
+| Raph | `Te5RKnm9ebwdEvZ1S5pS` | pré-v24 (conservé) | Lumi Raph Vive |
+| Lulu | `1XwHANMW4m2pxt7buPmQ` | v1 (filtre cumulatif vaincu) | Lumi Lulu Léger |
 | Nono | `f3w48h8ngnWWnhO9XGb3` | pré-v24 (conservé) | Lumi Nono Paisible |
 | Juju | `WFNYCPhDQM9w07KAV6Be` | v1 (méthodo v24 fille) | Lumi Juju Solide |
 | Mimi | `aPQfyqve0ovOsJIl7EzX` | v1 (méthodo v24 fille) | Lumi Mimi Attentive |
@@ -153,7 +153,7 @@ Source : [`../equipe/patte-narrative-maxplay.md`](../equipe/patte-narrative-maxp
 | # | Titre | Statut | Owner courant |
 |---|-------|--------|---------------|
 | 001 | Le Pont Cassé | ✅ canon (refonte 2026-05-08) | — |
-| 002 | Libellule Résonance | 🟢 **étape 4 prête à lancer** (étapes 0/1/3 ✅, Q-ouvertes tranchées 2026-05-12, casting Wex+Juju+Nono, panel 20 lecteurs) | Directeur |
+| 002 | Libellule Résonance | 🟢 **étape 6 sélection en cours** (étapes 0-5 ✅, Q-ouvertes ✅ DEC-TENSION-RESONANCE 2026-05-12, casting Wex+Juju+Nono, panel 20 lecteurs ✅, top writers identifiés) | Directeur (arbitrage sélection) |
 | 003+ | À démarrer | ⚪ — | — |
 
 ---

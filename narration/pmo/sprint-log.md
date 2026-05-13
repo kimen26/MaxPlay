@@ -8,6 +8,17 @@
 
 ---
 
+## 2026-05-13 — [PMO] Voice ID Mimi (T2 Aidant) figé — Lumi Mimi Attentive
+
+**Fait** :
+- [x] `aPQfyqve0ovOsJIl7EzX` gravé dans type-02/voix.md + INVARIANTS + _VOICE-IDS-CASTING + pmo/INDEX (8/10)
+- [x] Prompt v24 fille 838 chars archivé dans type-02/voix.md
+- [x] Section "Filles à créer" mise à jour : reste Madie seulement
+
+**État au reboot** : 8/10 voix figées. Reste Madie (T4).
+
+---
+
 ## 2026-05-13 — [PMO] Voice ID Juju (T8 Challenger) figé — méthodo v24 fille validée 1 essai
 
 **Objectif** : graver création voice Juju + leçon méthodo v24 fille + bilan voix.

@@ -29,6 +29,15 @@
 | Journal sessions | [`pmo/sprint-log.md`](pmo/sprint-log.md) |
 | Traces audits + cause racine | [`pmo/audit-trail.md`](pmo/audit-trail.md) |
 
+## 📥 Zones INBOX (2 canaux, checkés par narration-pmo à chaque session)
+
+| Zone | Qui dépose | Format | PMO action |
+|------|-----------|--------|------------|
+| [`inbox/`](inbox/) | **Papa Yann** — fichiers manuels (articles, .md, notes brutes) | Libre | Lit → ticket INPUT-NNN → brainstorm avec Conseiller → distille |
+| [`INBOX.md`](INBOX.md) | **Bot Telegram + digests Claude** | Sections `## YYYY-MM-DD` | Idem |
+
+**Règle 48h** : tout fichier dans `inbox/` ou section dans `INBOX.md` doit être distillé ou tickété dans les 48h.
+
 ---
 
 ## 🧭 Table de routage NARRATION

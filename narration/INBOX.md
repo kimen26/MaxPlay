@@ -27,21 +27,7 @@
 
 ## 2026-05-11 — Tickets univers découverts : UNIVERS-004, UNIVERS-005 + exemples-canoniques
 
-**Source :** audit stubs cross-culture. Trois options :
-
-### Option A — Créer 2 tickets UNIVERS now (quota 3 actifs permet)
-
-- **UNIVERS-004** : Peupler cross-culture/faune-flore/ + lieux-locaux/ au fil des 5 prochaines histoires
-- **UNIVERS-005** : Peupler cross-culture/saisons-climat/ + coutumes-jeux-aliments/ au fil des 5 prochaines histoires
-
-### Option B — Brainstorm avec Directeur avant de ticketer
-
-Attendreque STORY-002 (Nono animal) se termine — servira comme premier test peuplement faune-flore. Puis ouvrir les 2 tickets avec matière concrète.
-
-### Option C — Tracker exemplrs-canoniques.md comme ARCHI
-
-`equipe/INDEX.md` mentionne « exemplrs-canoniques.md à créer post-Phase D » (lignes 41-43 de equipe/INDEX.md). Risque oubli si Phase D s'éloigne.
-Créer ticket ARCHI-008 : « Préempter création exemples-canoniques.md » = suivre Phase D timeline, et créer ébauche quand bon.
+> ✅ Distillé 2026-05-13 → tickets **UNIVERS-004** (faune-flore) · **UNIVERS-005** (saisons-climat + coutumes) · **ARCHI-013** (exemples-canoniques) dans `pmo/backlog.md`. Option B retenue : STORY-002 étape 6 = bon moment pour démarrer.
 
 ---
 

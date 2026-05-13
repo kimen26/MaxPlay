@@ -3,617 +3,561 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
-<title>Dino Lab – MaxPlay</title>
+<title>Dinos — MaxPlay</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
 html, body {
   width:100%; height:100dvh; overflow:hidden;
   font-family:'Nunito',sans-serif;
-  background:linear-gradient(135deg,#1a0a2e,#0a1a2e);
+  background:#0d1117; color:#fff;
   display:flex; flex-direction:column;
 }
 
-/* ── Header ── */
-#hdr {
-  flex-shrink:0; height:48px; background:rgba(0,0,0,0.4);
-  border-bottom:2px solid rgba(255,255,255,0.1);
+/* ── Shared header ── */
+.hdr {
+  flex-shrink:0; height:52px;
+  background:rgba(0,0,0,0.5); border-bottom:2px solid rgba(255,255,255,0.08);
   display:flex; align-items:center; padding:0 12px; gap:10px;
 }
-#hdr button {
-  background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2);
+.hdr-back {
+  background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2);
   border-radius:10px; color:#fff; font-family:'Nunito',sans-serif;
   font-weight:900; font-size:0.95rem; padding:6px 14px; cursor:pointer;
+  touch-action:manipulation;
 }
-#hdr .title { font-weight:900; color:#fff; font-size:1rem; }
-#hdr .badge {
-  margin-left:auto; background:#e94560; color:#fff;
-  padding:2px 10px; border-radius:20px; font-size:0.75rem; font-weight:900;
-}
-
-/* ── Tabs ── */
-.tabs {
-  flex-shrink:0; display:flex; gap:0;
-  background:rgba(0,0,0,0.3); border-bottom:2px solid rgba(255,255,255,0.1);
-}
-.tab-btn {
-  flex:1; background:transparent; border:none;
-  color:rgba(255,255,255,0.6); font-family:'Nunito',sans-serif;
-  font-weight:900; font-size:0.82rem; padding:10px 4px; cursor:pointer;
-  border-bottom:3px solid transparent; transition:all 0.15s;
-}
-.tab-btn.active { color:#ffe066; border-bottom-color:#ffe066; }
-
-/* ── Content ── */
-.tab-panel { display:none; flex:1; overflow-y:auto; overflow-x:hidden; min-height:0; }
-.tab-panel.active { display:flex; flex-direction:column; }
-
-/* ── Galerie ── */
-#galerie-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fill, minmax(140px, 1fr));
-  gap:10px; padding:12px;
+.hdr-title { font-weight:900; font-size:1rem; flex:1; }
+.hdr-speak {
+  background:rgba(255,220,0,0.2); border:1px solid rgba(255,220,0,0.4);
+  border-radius:10px; color:#ffe066; font-family:'Nunito',sans-serif;
+  font-weight:900; font-size:0.95rem; padding:6px 12px; cursor:pointer;
+  touch-action:manipulation;
 }
 
+/* ── Screens ── */
+.screen { display:none; flex:1; flex-direction:column; overflow:hidden; min-height:0; }
+.screen.active { display:flex; }
+
+/* ══════════════ MENU CATÉGORIES ══════════════ */
+#menu-scroll {
+  flex:1; overflow-y:auto; overflow-x:hidden; padding:14px 12px;
+  display:grid; grid-template-columns:1fr 1fr; gap:12px;
+}
+.cat-card {
+  border-radius:18px; padding:18px 12px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  cursor:pointer; touch-action:manipulation; user-select:none;
+  min-height:130px; position:relative; overflow:hidden;
+  transition:transform 0.15s;
+}
+.cat-card:active { transform:scale(0.94); }
+.cat-emoji { font-size:2.8rem; margin-bottom:8px; line-height:1; }
+.cat-label { font-size:0.95rem; font-weight:900; text-align:center; color:#fff; text-shadow:0 1px 4px rgba(0,0,0,0.5); }
+.cat-count { margin-top:4px; font-size:0.72rem; color:rgba(255,255,255,0.7); font-weight:700; }
+
+/* ══════════════ GRILLE DINOS ══════════════ */
+#grid-scroll {
+  flex:1; overflow-y:auto; overflow-x:hidden; padding:12px;
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(130px, 1fr)); gap:10px;
+}
 .dino-card {
-  background:rgba(255,255,255,0.06);
-  border:1px solid rgba(255,255,255,0.12);
-  border-radius:14px; padding:12px 8px;
+  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
+  border-radius:14px; padding:12px 8px 10px;
   display:flex; flex-direction:column; align-items:center;
-  cursor:pointer; user-select:none; touch-action:manipulation;
-  transition:transform 0.15s, box-shadow 0.15s;
+  cursor:pointer; touch-action:manipulation; user-select:none;
   position:relative; overflow:hidden;
+  transition:transform 0.12s, box-shadow 0.12s;
 }
-.dino-card:active { transform:scale(0.94); }
-.dino-card.bounce { animation:cardBounce 0.5s ease-out; }
+.dino-card:active { transform:scale(0.93); }
+.dino-card.bounce { animation:cardBounce 0.4s ease-out; }
 @keyframes cardBounce {
-  0%   { transform:scale(1) translateY(0); }
-  30%  { transform:scale(1.08) translateY(-14px); }
+  0%   { transform:scale(1); }
+  30%  { transform:scale(1.08) translateY(-10px); }
   60%  { transform:scale(0.96) translateY(2px); }
-  100% { transform:scale(1) translateY(0); }
+  100% { transform:scale(1); }
+}
+.card-img {
+  width:90px; height:70px; object-fit:contain;
+  filter:drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+  margin-bottom:8px;
+}
+.card-name { font-size:0.85rem; font-weight:900; color:#fff; text-align:center; margin-bottom:2px; }
+.card-regime { font-size:0.68rem; color:rgba(255,255,255,0.55); text-align:center; }
+.card-bar { position:absolute; bottom:0; left:0; right:0; height:3px; }
+
+/* ══════════════ FICHE DINO ══════════════ */
+#fiche-scroll {
+  flex:1; overflow-y:auto; overflow-x:hidden;
+  padding:0 0 30px 0;
 }
 
-.dino-visual {
-  font-size:3.2rem; margin-bottom:6px; line-height:1;
-  display:flex; align-items:center; justify-content:center;
-  height:70px;
+/* Hero */
+.fiche-hero {
+  position:relative; display:flex; align-items:center; justify-content:center;
+  padding:20px 16px 16px;
+  background:linear-gradient(180deg,rgba(0,0,0,0.3),transparent);
 }
-.dino-visual svg { filter:drop-shadow(0 2px 6px rgba(0,0,0,0.5)); }
-.dino-name { font-size:0.88rem; font-weight:900; color:#fff; text-align:center; margin-bottom:3px; }
-.dino-regime { font-size:0.7rem; color:rgba(255,255,255,0.6); text-align:center; }
-.dino-color-bar {
-  position:absolute; bottom:0; left:0; right:0; height:3px;
+.fiche-hero-img {
+  max-height:200px; max-width:100%; object-fit:contain;
+  filter:drop-shadow(0 4px 20px rgba(0,0,0,0.7));
 }
 
-/* Modale info */
-#dino-modal {
-  display:none; position:fixed; inset:0; z-index:50;
-  background:rgba(0,0,0,0.85); align-items:center; justify-content:center;
+/* Name block */
+.fiche-name-block {
+  padding:0 16px 16px;
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+}
+.fiche-name { font-size:1.8rem; font-weight:900; color:#ffe066; flex:1; min-width:0; }
+.fiche-full { font-size:0.8rem; color:rgba(255,255,255,0.4); font-style:italic; width:100%; }
+
+/* Info sections */
+.fiche-section {
+  margin:0 12px 10px;
+  background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);
+  border-radius:14px; padding:12px 14px;
+  display:flex; gap:10px; align-items:flex-start;
+}
+.fiche-section-icon { font-size:1.5rem; flex-shrink:0; margin-top:2px; }
+.fiche-section-body { flex:1; min-width:0; }
+.fiche-section-title {
+  font-size:0.72rem; font-weight:900; color:rgba(255,255,255,0.45);
+  text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px;
+}
+.fiche-section-text {
+  font-size:0.92rem; font-weight:700; color:#fff; line-height:1.45;
+}
+.fiche-section-sub {
+  font-size:0.78rem; color:rgba(255,255,255,0.55); margin-top:3px;
+}
+
+/* Stats row */
+.fiche-stats {
+  margin:0 12px 10px;
+  display:grid; grid-template-columns:1fr 1fr; gap:8px;
+}
+.stat-box {
+  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
+  border-radius:12px; padding:10px 12px;
+}
+.stat-label { font-size:0.68rem; font-weight:900; color:rgba(255,255,255,0.4); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:2px; }
+.stat-val { font-size:1rem; font-weight:900; color:#ffe066; }
+.stat-comp { font-size:0.72rem; color:rgba(255,255,255,0.5); margin-top:2px; line-height:1.3; }
+
+/* Speak button inside section */
+.speak-btn {
+  background:rgba(255,220,0,0.12); border:1px solid rgba(255,220,0,0.3);
+  border-radius:8px; color:#ffe066; font-family:'Nunito',sans-serif;
+  font-weight:900; font-size:0.8rem; padding:4px 10px;
+  cursor:pointer; touch-action:manipulation; flex-shrink:0;
+  align-self:center;
+}
+.speak-btn:active { background:rgba(255,220,0,0.25); }
+
+/* Highlight box (fait/superpower) */
+.fiche-highlight {
+  margin:0 12px 10px;
+  background:rgba(255,220,0,0.08); border:1px solid rgba(255,220,0,0.25);
+  border-radius:14px; padding:14px;
+  display:flex; gap:10px; align-items:flex-start;
+}
+.fiche-highlight-text {
+  font-size:0.95rem; font-weight:700; color:#ffe066; line-height:1.5; flex:1;
+}
+
+/* Extra gallery */
+.fiche-gallery-title {
+  margin:16px 12px 8px;
+  font-size:0.78rem; font-weight:900; color:rgba(255,255,255,0.4);
+  text-transform:uppercase; letter-spacing:0.07em;
+}
+.fiche-gallery {
+  margin:0 12px 10px;
+  display:flex; gap:8px; overflow-x:auto; padding-bottom:4px;
+}
+.fiche-gallery::-webkit-scrollbar { display:none; }
+.gallery-thumb {
+  flex-shrink:0; width:100px; height:75px; border-radius:10px;
+  object-fit:cover; border:1px solid rgba(255,255,255,0.15);
+  cursor:pointer; touch-action:manipulation;
+  background:rgba(255,255,255,0.05);
+}
+.gallery-thumb:active { opacity:0.7; }
+
+/* Lightbox */
+#lightbox {
+  display:none; position:fixed; inset:0; z-index:100;
+  background:rgba(0,0,0,0.92); align-items:center; justify-content:center;
   padding:20px;
 }
-#dino-modal.open { display:flex; }
-.modal-card {
-  background:#1a1a2e; border:2px solid rgba(255,255,255,0.15);
-  border-radius:20px; padding:20px; max-width:340px; width:100%;
-  text-align:center; animation:modalIn 0.25s ease-out;
-}
-@keyframes modalIn { from { transform:scale(0.8); opacity:0; } to { transform:scale(1); opacity:1; } }
-.modal-emoji { font-size:4rem; margin-bottom:8px; }
-.modal-name { font-size:1.4rem; font-weight:900; color:#ffe066; margin-bottom:2px; }
-.modal-full { font-size:0.78rem; color:rgba(255,255,255,0.5); margin-bottom:10px; font-style:italic; }
-.modal-grid { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:12px; }
-.modal-cell {
-  background:rgba(255,255,255,0.06); border-radius:8px;
-  padding:8px 6px; font-size:0.78rem; color:rgba(255,255,255,0.85);
-}
-.modal-cell strong { display:block; color:#ffe066; font-size:0.7rem; margin-bottom:2px; }
-.modal-fait {
-  background:rgba(255,230,100,0.1); border:1px solid rgba(255,230,100,0.3);
-  border-radius:10px; padding:10px; font-size:0.82rem; color:#ffe066;
-  line-height:1.5; margin-bottom:14px;
-}
-.modal-close {
-  background:#ffe066; border:none; border-radius:12px;
-  color:#1a1a2e; font-family:'Nunito',sans-serif; font-weight:900;
-  font-size:1rem; padding:10px 30px; cursor:pointer; width:100%;
+#lightbox.open { display:flex; }
+#lightbox img { max-width:100%; max-height:80dvh; border-radius:12px; object-fit:contain; }
+#lightbox-close {
+  position:absolute; top:14px; right:14px;
+  background:rgba(255,255,255,0.15); border:none; border-radius:50%;
+  color:#fff; font-size:1.4rem; width:40px; height:40px; cursor:pointer;
+  display:flex; align-items:center; justify-content:center;
+  font-weight:900; font-family:'Nunito',sans-serif;
 }
 
-/* ── Mini-jeu Google Dino ── */
-#jeu-panel {
-  padding:10px 12px; display:flex; flex-direction:column; gap:8px;
-}
-#game-info {
-  display:flex; align-items:center; justify-content:space-between;
-  padding:0 4px;
-}
-#score-display {
-  font-size:1.1rem; font-weight:900; color:#ffe066;
-}
-#best-display {
-  font-size:0.82rem; color:rgba(255,255,255,0.5); font-weight:700;
-}
-#game-container {
-  position:relative; touch-action:none;
-  border:2px solid rgba(255,255,255,0.15);
-  border-radius:14px; overflow:hidden;
-  background:linear-gradient(180deg,#1a2540 0%,#1a2540 65%,#2a2a2a 65%,#2a2a2a 100%);
-  cursor:pointer;
-}
-#game-canvas { display:block; width:100%; }
-#game-overlay {
-  position:absolute; inset:0; display:flex;
-  flex-direction:column; align-items:center; justify-content:center;
-  background:rgba(0,0,0,0.7); border-radius:12px;
-}
-#game-overlay .over-title { font-size:1.4rem; font-weight:900; color:#ffe066; margin-bottom:6px; }
-#game-overlay .over-sub   { font-size:0.88rem; color:rgba(255,255,255,0.7); margin-bottom:16px; }
-#game-overlay button {
-  background:#ffe066; border:none; border-radius:12px;
-  color:#1a1a2e; font-family:'Nunito',sans-serif; font-weight:900;
-  font-size:1rem; padding:10px 28px; cursor:pointer;
-}
+/* Speech pulse */
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.speaking { animation:pulse 0.8s infinite; }
 
-/* ── Idées ── */
-#idees-panel { padding:12px; display:flex; flex-direction:column; gap:10px; }
-.idee-card {
-  background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12);
-  border-radius:14px; padding:14px; cursor:pointer;
-  transition:background 0.15s;
-}
-.idee-card:active { background:rgba(255,255,255,0.12); }
-.idee-title { font-size:1rem; font-weight:900; color:#ffe066; margin-bottom:6px; }
-.idee-desc  { font-size:0.82rem; color:rgba(255,255,255,0.75); line-height:1.5; }
-.idee-tag {
-  display:inline-block; margin-top:8px;
-  padding:2px 10px; border-radius:20px;
-  font-size:0.72rem; font-weight:900; color:#fff;
-}
+/* Scroll area */
+::-webkit-scrollbar { width:4px; }
+::-webkit-scrollbar-track { background:transparent; }
+::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.2); border-radius:2px; }
 </style>
 </head>
 <body>
 
-<div id="hdr">
-  <button onclick="location.href='index.html'">← Retour</button>
-  <span class="title">🦖 Dino Lab</span>
-  <span class="badge">DEV</span>
+<!-- ══════════════ SCREEN: MENU ══════════════ -->
+<div id="screen-menu" class="screen active">
+  <div class="hdr">
+    <button class="hdr-back" onclick="location.href='index.html'">← Menu</button>
+    <span class="hdr-title">🦕 Les Dinosaures</span>
+    <button class="hdr-speak" onclick="speakText('Les dinosaures ! Choisis une famille !')">🔊</button>
+  </div>
+  <div id="menu-scroll"></div>
 </div>
 
-<div class="tabs">
-  <button class="tab-btn active" data-tab="galerie">🦕 Galerie</button>
-  <button class="tab-btn" data-tab="jeu">🎮 Jeu dino</button>
-  <button class="tab-btn" data-tab="idees">💡 Idées jeux</button>
+<!-- ══════════════ SCREEN: GRILLE ══════════════ -->
+<div id="screen-grid" class="screen">
+  <div class="hdr">
+    <button class="hdr-back" onclick="showMenu()">← Retour</button>
+    <span class="hdr-title" id="grid-title"></span>
+    <button class="hdr-speak" id="grid-speak-btn" onclick="speakCatIntro()">🔊</button>
+  </div>
+  <div id="grid-scroll"></div>
 </div>
 
-<!-- Galerie -->
-<div class="tab-panel active" id="tab-galerie">
-  <div id="galerie-grid"></div>
+<!-- ══════════════ SCREEN: FICHE ══════════════ -->
+<div id="screen-fiche" class="screen">
+  <div class="hdr">
+    <button class="hdr-back" onclick="showGrid()">← Retour</button>
+    <span class="hdr-title" id="fiche-hdr-name"></span>
+    <button class="hdr-speak" id="fiche-speak-btn" onclick="speakFicheDesc()">🔊</button>
+  </div>
+  <div id="fiche-scroll"></div>
 </div>
 
-<!-- Jeu -->
-<div class="tab-panel" id="tab-jeu">
-  <div id="jeu-panel">
-    <div id="game-info">
-      <span id="score-display">Score : 0</span>
-      <span id="best-display">Meilleur : 0</span>
+<!-- Lightbox -->
+<div id="lightbox" onclick="closeLightbox()">
+  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script src="js/dinos-data.js"></script>
+<script>
+
+/* ── TTS ── */
+let synth = window.speechSynthesis;
+let currentUtterance = null;
+
+function speakText(txt) {
+  if (!synth) return;
+  synth.cancel();
+  const u = new SpeechSynthesisUtterance(txt);
+  u.lang = 'fr-FR';
+  u.rate = 0.88;
+  u.pitch = 1.1;
+  currentUtterance = u;
+  synth.speak(u);
+}
+
+function stopSpeak() {
+  if (synth) synth.cancel();
+}
+
+/* ── State ── */
+let currentCatId = null;
+let currentDino  = null;
+
+/* ── Screens ── */
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + id).classList.add('active');
+  stopSpeak();
+}
+
+function showMenu() { showScreen('menu'); }
+
+function showGrid(catId) {
+  if (catId) currentCatId = catId;
+  showScreen('grid');
+  buildGrid(currentCatId);
+  const cat = DINO_CATEGORIES.find(c => c.id === currentCatId);
+  document.getElementById('grid-title').textContent = cat.emoji + ' ' + cat.label;
+  setTimeout(() => speakCatIntro(), 200);
+}
+
+function showFiche(dino) {
+  currentDino = dino;
+  showScreen('fiche');
+  buildFiche(dino);
+  document.getElementById('fiche-hdr-name').textContent = dino.name;
+  setTimeout(() => speakText(dino.name), 300);
+}
+
+/* ── Build menu ── */
+function buildMenu() {
+  const el = document.getElementById('menu-scroll');
+  el.innerHTML = '';
+  DINO_CATEGORIES.forEach(cat => {
+    const count = DINOS.filter(d => d.cat === cat.id).length;
+    const card = document.createElement('div');
+    card.className = 'cat-card';
+    card.style.background = cat.bg;
+    card.innerHTML = `
+      <div class="cat-emoji">${cat.emoji}</div>
+      <div class="cat-label">${cat.label}</div>
+      <div class="cat-count">${count} dinos</div>
+    `;
+    card.addEventListener('click', () => {
+      speakText(cat.label);
+      setTimeout(() => showGrid(cat.id), 400);
+    });
+    el.appendChild(card);
+  });
+}
+
+/* ── Build grid ── */
+function buildGrid(catId) {
+  const el = document.getElementById('grid-scroll');
+  el.innerHTML = '';
+  const dinos = DINOS.filter(d => d.cat === catId);
+  const cat   = DINO_CATEGORIES.find(c => c.id === catId);
+  dinos.forEach(d => {
+    const card = document.createElement('div');
+    card.className = 'dino-card';
+    card.innerHTML = `
+      <img class="card-img" src="img/dinos/${d.png}" alt="${d.name}" onerror="this.style.display='none'">
+      <div class="card-name">${d.name}</div>
+      <div class="card-regime">${d.regime}</div>
+      <div class="card-bar" style="background:${cat.color}"></div>
+    `;
+    card.addEventListener('click', () => {
+      card.classList.remove('bounce');
+      void card.offsetWidth;
+      card.classList.add('bounce');
+      speakText(d.name);
+      setTimeout(() => showFiche(d), 350);
+    });
+    el.appendChild(card);
+  });
+}
+
+/* ── Cat intro TTS ── */
+function speakCatIntro() {
+  const cat = DINO_CATEGORIES.find(c => c.id === currentCatId);
+  if (!cat) return;
+  const count = DINOS.filter(d => d.cat === currentCatId).length;
+  speakText(cat.label + ' ! ' + count + ' dinosaures. Tape sur un dino pour tout savoir !');
+}
+
+/* ── Build fiche ── */
+function speakFicheDesc() {
+  if (!currentDino) return;
+  const d = currentDino;
+  speakText(d.name + '. ' + d.desc + ' ' + d.fait);
+}
+
+function buildFiche(d) {
+  const cat = DINO_CATEGORIES.find(c => c.id === d.cat);
+  const scroll = document.getElementById('fiche-scroll');
+
+  // Extras par dino
+  const extras = DINO_EXTRAS[d.id] || [];
+
+  scroll.innerHTML = `
+    <!-- Hero -->
+    <div class="fiche-hero" style="background:linear-gradient(180deg,${cat.color}30,transparent)">
+      <img class="fiche-hero-img" src="img/dinos/${d.png}" alt="${d.name}" onerror="this.style.opacity='0'">
     </div>
-    <div id="game-container">
-      <canvas id="game-canvas"></canvas>
-      <div id="game-overlay">
-        <div class="over-title">🦖 T-Rex Runner</div>
-        <div class="over-sub">Tape pour sauter par-dessus les cactus !</div>
-        <button onclick="startGame()">▶ Jouer</button>
+
+    <!-- Nom -->
+    <div class="fiche-name-block">
+      <div>
+        <div class="fiche-name">${d.name}</div>
+        <div class="fiche-full">${d.full}</div>
+      </div>
+      <button class="speak-btn" onclick="speakText('${esc(d.name)}. ${esc(d.full)}')">🔊 Nom</button>
+    </div>
+
+    <!-- Époque & région -->
+    <div class="fiche-section">
+      <div class="fiche-section-icon">🕰️</div>
+      <div class="fiche-section-body">
+        <div class="fiche-section-title">Époque</div>
+        <div class="fiche-section-text">${d.epoque}</div>
+        <div class="fiche-section-sub">📍 ${d.region}</div>
+      </div>
+      <button class="speak-btn" onclick="speakText('${esc(d.name)} vivait ${esc(d.epoque)}, en ${esc(d.region)}.')">🔊</button>
+    </div>
+
+    <!-- Stats taille / poids -->
+    <div class="fiche-stats">
+      <div class="stat-box">
+        <div class="stat-label">📏 Taille</div>
+        <div class="stat-val">${d.taille_m} m</div>
+        <div class="stat-comp">${d.comp_taille}</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">⚖️ Poids</div>
+        <div class="stat-val">${d.poids_t >= 1 ? d.poids_t + ' t' : Math.round(d.poids_t * 1000) + ' kg'}</div>
+        <div class="stat-comp">${d.comp_poids}</div>
       </div>
     </div>
-    <div style="font-size:0.78rem;color:rgba(255,255,255,0.4);text-align:center;padding:0 4px;">
-      Tap écran ou barre espace pour sauter — score qui augmente avec la vitesse
+    <div style="text-align:right;padding:0 12px 6px">
+      <button class="speak-btn" onclick="speakText('${esc(d.name)} mesurait ${d.taille_m} mètres. ${esc(d.comp_taille)}. Il pesait ${d.poids_t >= 1 ? d.poids_t + ' tonnes' : Math.round(d.poids_t*1000) + ' kilos'}. ${esc(d.comp_poids)}.')">🔊 Taille</button>
     </div>
-  </div>
-</div>
 
-<!-- Idées -->
-<div class="tab-panel" id="tab-idees">
-  <div id="idees-panel">
-    <div class="idee-card">
-      <div class="idee-title">🃏 Memory Dinos</div>
-      <div class="idee-desc">6 à 8 paires de cartes retournées. Max retourne 2 cartes → si même dino = point ! Variante : paire nom + visuel. Simple et connu des 3-4 ans.</div>
-      <span class="idee-tag" style="background:#4a8a4a;">3-4 ans ✓</span>
-      <span class="idee-tag" style="background:#2a5a8a;margin-left:4px;">Mémoire visuelle</span>
+    <!-- Régime -->
+    <div class="fiche-section">
+      <div class="fiche-section-icon">🍽️</div>
+      <div class="fiche-section-body">
+        <div class="fiche-section-title">Que mange-t-il ?</div>
+        <div class="fiche-section-text">${d.regime}</div>
+        <div class="fiche-section-sub">Proies : ${d.proies}</div>
+      </div>
+      <button class="speak-btn" onclick="speakText('${esc(d.name)} mange ${esc(d.regime.replace(/[🥩🌿🐟]/g,''))}. ${esc(d.proies)}')">🔊</button>
     </div>
-    <div class="idee-card">
-      <div class="idee-title">🔊 Quel cri ?</div>
-      <div class="idee-desc">TTS dit un cri de dino exagéré ("RAAAWR !", "BAOOUM !"). Max choisit parmi 3 dinos sur l'écran. Travaille la reconnaissance auditive + association son/animal.</div>
-      <span class="idee-tag" style="background:#7a4a9a;">TTS</span>
-      <span class="idee-tag" style="background:#4a8a4a;margin-left:4px;">3-4 ans ✓</span>
-    </div>
-    <div class="idee-card">
-      <div class="idee-title">🍖 Herbivore ou Carnivore ?</div>
-      <div class="idee-desc">Un dino apparaît. Max doit choisir : herbe 🌿 ou viande 🥩. Simple binaire, idéal pour débuter. Feedback différent selon le régime (rugissement vs bruit de broyage).</div>
-      <span class="idee-tag" style="background:#4a8a4a;">3-4 ans ✓</span>
-      <span class="idee-tag" style="background:#c07820;margin-left:4px;">Classification</span>
-    </div>
-    <div class="idee-card">
-      <div class="idee-title">🦷 Trouve le T-Rex !</div>
-      <div class="idee-desc">3-4 dinos sur l'écran, certains bougent en fond. Max doit taper uniquement le T-Rex (ou le dino demandé). Difficulté : augmenter le nombre de dinos / réduire le temps.</div>
-      <span class="idee-tag" style="background:#c06030;">Réactivité</span>
-      <span class="idee-tag" style="background:#4a8a4a;margin-left:4px;">Identification</span>
-    </div>
-    <div class="idee-card">
-      <div class="idee-title">🥚 L'œuf mystère</div>
-      <div class="idee-desc">Un œuf tombe du ciel → il s'ouvre en tapant → quel dino en sort ? Max doit dire ou taper son nom parmi 3 choix. Suspens + révélation = fun garanti.</div>
-      <span class="idee-tag" style="background:#8a3a3a;">Animation</span>
-      <span class="idee-tag" style="background:#4a8a4a;margin-left:4px;">3-4 ans ✓</span>
-    </div>
-    <div class="idee-card">
-      <div class="idee-title">📏 Le plus grand ?</div>
-      <div class="idee-desc">2 dinos côte à côte à des tailles différentes. "Lequel est le plus grand ?" Intro à la comparaison de grandeur. Variante : le plus petit, le plus lourd (taille du dino = métaphore).</div>
-      <span class="idee-tag" style="background:#3a5a8a;">Comparaison</span>
-    </div>
-  </div>
-</div>
 
-<!-- Modale -->
-<div id="dino-modal" onclick="closeModal()">
-  <div class="modal-card" onclick="event.stopPropagation()">
-    <div class="modal-emoji" id="m-emoji"></div>
-    <div class="modal-name"  id="m-name"></div>
-    <div class="modal-full"  id="m-full"></div>
-    <div class="modal-grid">
-      <div class="modal-cell"><strong>Époque</strong><span id="m-ep"></span></div>
-      <div class="modal-cell"><strong>Régime</strong><span id="m-reg"></span></div>
-      <div class="modal-cell" style="grid-column:1/-1"><strong>Taille</strong><span id="m-tai"></span></div>
+    <!-- Superpower -->
+    <div class="fiche-highlight">
+      <div class="fiche-section-icon" style="font-size:1.8rem">⚡</div>
+      <div style="flex:1">
+        <div class="fiche-section-title" style="color:rgba(255,220,0,0.5)">Superpower</div>
+        <div class="fiche-highlight-text">${d.superpower}</div>
+      </div>
+      <button class="speak-btn" onclick="speakText('Superpower ! ${esc(d.superpower)}')">🔊</button>
     </div>
-    <div class="modal-fait" id="m-fait"></div>
-    <button class="modal-close" onclick="closeModal()">Fermer</button>
-  </div>
-</div>
 
-<script src="js/dinos.js"></script>
-<script>
-/* ─── Tabs ─── */
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
-    if (btn.dataset.tab === 'jeu') resizeCanvas();
-  });
-});
+    <!-- Chasseurs / proies -->
+    <div class="fiche-section">
+      <div class="fiche-section-icon">🎯</div>
+      <div class="fiche-section-body">
+        <div class="fiche-section-title">Qui le chasse ?</div>
+        <div class="fiche-section-text">${d.chasseurs}</div>
+      </div>
+      <button class="speak-btn" onclick="speakText('Qui chasse ${esc(d.name)} ? ${esc(d.chasseurs)}')">🔊</button>
+    </div>
 
-/* ─── Galerie ─── */
-const grid = document.getElementById('galerie-grid');
-DINOS.forEach(d => {
-  const card = document.createElement('div');
-  card.className = 'dino-card';
+    <!-- Amis -->
+    <div class="fiche-section">
+      <div class="fiche-section-icon">🤝</div>
+      <div class="fiche-section-body">
+        <div class="fiche-section-title">Vit-il avec des amis ?</div>
+        <div class="fiche-section-text">${d.amis}</div>
+      </div>
+      <button class="speak-btn" onclick="speakText('${esc(d.name)} : ${esc(d.amis)}')">🔊</button>
+    </div>
 
-  let visual = '';
-  if (d.png) {
-    const isJpg = d.png.endsWith('.jpg');
-    if (isJpg) {
-      visual = `<div class="dino-visual"><div style="background:rgba(255,255,255,0.92);border-radius:12px;padding:3px;display:flex;align-items:center;justify-content:center;height:76px;width:76px;"><img src="img/dinos/${d.png}" alt="${d.name}" style="height:70px;width:70px;object-fit:cover;border-radius:10px;"></div></div>`;
-    } else {
-      visual = `<div class="dino-visual"><img src="img/dinos/${d.png}" alt="${d.name}" style="height:70px;width:auto;object-fit:contain;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.5));"></div>`;
-    }
-  } else if (d.emoji) {
-    visual = `<div class="dino-visual" style="font-size:3.4rem;">${d.emoji}</div>`;
-  } else {
-    const svg = dinoSVG(d.id, 80);
-    visual = `<div class="dino-visual">${svg}</div>`;
-  }
+    <!-- Le saviez-vous -->
+    <div class="fiche-highlight" style="background:rgba(100,200,255,0.07);border-color:rgba(100,200,255,0.2)">
+      <div class="fiche-section-icon" style="font-size:1.8rem">💡</div>
+      <div style="flex:1">
+        <div class="fiche-section-title" style="color:rgba(100,200,255,0.5)">Le sais-tu ?</div>
+        <div class="fiche-highlight-text" style="color:#80d8ff">${d.fait}</div>
+      </div>
+      <button class="speak-btn" style="border-color:rgba(100,200,255,0.3);color:#80d8ff;background:rgba(100,200,255,0.1)"
+        onclick="speakText('Le savais-tu ? ${esc(d.fait)}')">🔊</button>
+    </div>
 
-  card.innerHTML = `
-    ${visual}
-    <div class="dino-name">${d.name}</div>
-    <div class="dino-regime">${d.regime}</div>
-    <div class="dino-color-bar" style="background:${d.color};"></div>
+    <!-- Description complète -->
+    <div class="fiche-section">
+      <div class="fiche-section-icon">📖</div>
+      <div class="fiche-section-body">
+        <div class="fiche-section-title">Description</div>
+        <div class="fiche-section-text" style="font-size:0.88rem;font-weight:400;line-height:1.55">${d.desc}</div>
+      </div>
+      <button class="speak-btn" onclick="speakText('${esc(d.desc)}')">🔊</button>
+    </div>
+
+    ${extras.length ? buildGalleryHTML(extras, d.name) : ''}
   `;
 
-  card.addEventListener('click', () => {
-    card.classList.remove('bounce');
-    void card.offsetWidth;
-    card.classList.add('bounce');
-    setTimeout(() => openModal(d), 80);
+  // Lightbox listeners
+  scroll.querySelectorAll('.gallery-thumb').forEach(img => {
+    img.addEventListener('click', () => openLightbox(img.src));
   });
-
-  grid.appendChild(card);
-});
-
-/* ─── Modale ─── */
-function openModal(d) {
-  const mEmoji = document.getElementById('m-emoji');
-  if (d.png) {
-    const isJpg = d.png.endsWith('.jpg');
-    if (isJpg) {
-      mEmoji.innerHTML = `<div style="background:rgba(255,255,255,0.92);border-radius:14px;padding:4px;display:inline-flex;"><img src="img/dinos/${d.png}" alt="${d.name}" style="height:90px;width:90px;object-fit:cover;border-radius:10px;"></div>`;
-    } else {
-      mEmoji.innerHTML = `<img src="img/dinos/${d.png}" alt="${d.name}" style="height:90px;width:auto;object-fit:contain;">`;
-    }
-  } else {
-    mEmoji.textContent = d.emoji || '🦕';
-  }
-  document.getElementById('m-name').textContent  = d.name;
-  document.getElementById('m-full').textContent  = d.full;
-  document.getElementById('m-ep').textContent    = d.epoque;
-  document.getElementById('m-reg').textContent   = d.regime;
-  document.getElementById('m-tai').textContent   = d.taille;
-  document.getElementById('m-fait').textContent  = '💡 ' + d.fait;
-  document.getElementById('dino-modal').classList.add('open');
-}
-function closeModal() {
-  document.getElementById('dino-modal').classList.remove('open');
 }
 
-/* ─── Mini-jeu Google Dino ─── */
-const canvas  = document.getElementById('game-canvas');
-const ctx     = canvas.getContext('2d');
-const overlay = document.getElementById('game-overlay');
-
-let W, H, GROUND_Y, PIXEL_SIZE;
-let gameRunning = false, gameOver = false;
-let score = 0, scoreF = 0, bestScore = 0, speed = 0;
-let dinoY = 0, velY = 0, jumping = false, jumpFrame = 0;
-let walkFrame = 0, walkTick = 0;
-let cacti = [], frame = 0;
-let lastTs = 0;
-
-// Preload dino image
-const dinoImg = new Image();
-dinoImg.src = 'img/dinos/T-Rex.png';
-let dinoImgReady = false;
-dinoImg.onload = () => { dinoImgReady = true; if (!gameRunning) drawIdle(); };
-
-function resizeCanvas() {
-  const container = document.getElementById('game-container');
-  W = container.clientWidth;
-  H = Math.max(140, Math.min(220, W * 0.35));
-  canvas.width = W;
-  canvas.height = H;
-  canvas.style.height = H + 'px';
-  GROUND_Y   = Math.round(H * 0.72);
-  PIXEL_SIZE = Math.max(3, Math.round(H / 50));
-  if (!gameRunning) drawIdle();
-}
-
-function drawIdle() {
-  ctx.clearRect(0, 0, W, H);
-  drawBg();
-  const ps = PIXEL_SIZE;
-  const dinoH = ps * 16;
-  const dx = Math.round(W * 0.12);
-  const dy = GROUND_Y - dinoH;
-  drawDino(dx, dy, 0, 0);
-  drawGround();
-}
-
-function drawDino(x, y, frameIdx, jumpOffset) {
-  const ps = PIXEL_SIZE;
-  const h = ps * 16;
-  const w = ps * 16; // image ratio ~ square
-  if (dinoImgReady) {
-    ctx.save();
-    // slight tilt when jumping, bob when running
-    const bob = (frameIdx === 1) ? -ps * 0.5 : 0;
-    if (jumping) {
-      ctx.translate(x + w/2, y + h/2);
-      ctx.rotate(-0.12);
-      ctx.drawImage(dinoImg, -w/2, -h/2, w, h);
-      ctx.restore();
-    } else {
-      ctx.drawImage(dinoImg, x, y + bob, w, h);
-      ctx.restore();
-    }
-  } else {
-    drawDinoPixel(ctx, x, y, ps, frameIdx, '#d24a1c');
-  }
-}
-
-function drawBg() {
-  ctx.fillStyle = '#1a2540';
-  ctx.fillRect(0, 0, W, GROUND_Y);
-  // stars
-  ctx.fillStyle = 'rgba(255,255,255,0.4)';
-  for (let i = 0; i < 20; i++) {
-    const sx = (i * 97 + 13) % W;
-    const sy = (i * 53 + 7) % GROUND_Y;
-    ctx.fillRect(sx, sy, 1, 1);
-  }
-}
-
-function drawGround() {
-  ctx.fillStyle = '#2a2a2a';
-  ctx.fillRect(0, GROUND_Y, W, H - GROUND_Y);
-  // kerb
-  const kh = Math.max(3, PIXEL_SIZE);
-  for (let x = 0; x < W; x += kh * 2) {
-    ctx.fillStyle = '#fff';
-    ctx.fillRect(x, GROUND_Y, kh, kh);
-    ctx.fillStyle = '#e3051c';
-    ctx.fillRect(x + kh, GROUND_Y, kh, kh);
-  }
-  // dashes (scrolling)
-  const dashOff = -(frame * speed * 0.8) % (W / 5);
-  ctx.fillStyle = '#f0c040';
-  for (let x = dashOff; x < W; x += W / 5) {
-    ctx.fillRect(x, GROUND_Y + kh * 2, W / 10, Math.max(2, PIXEL_SIZE / 2));
-  }
-}
-
-function drawCactus(x) {
-  const ps = PIXEL_SIZE;
-  const trunkW = ps * 3;
-  const trunkH = ps * 10;
-  const r = ps * 1.2;
-  const baseX = x + trunkW;
-
-  const grad = ctx.createLinearGradient(baseX, 0, baseX + trunkW, 0);
-  grad.addColorStop(0, '#1f7a1f');
-  grad.addColorStop(0.5, '#3aa83a');
-  grad.addColorStop(1, '#1f7a1f');
-  ctx.fillStyle = grad;
-
-  // Main trunk (rounded top)
-  roundedBar(baseX, GROUND_Y - trunkH, trunkW, trunkH, r);
-
-  // Left arm
-  const lArmY = GROUND_Y - trunkH * 0.5;
-  roundedBar(baseX - trunkW * 1.8, lArmY, trunkW * 1.8, ps * 2, r * 0.8);
-  roundedBar(baseX - trunkW * 1.8, lArmY - ps * 3, ps * 2, ps * 3, r * 0.7);
-
-  // Right arm
-  const rArmY = GROUND_Y - trunkH * 0.7;
-  roundedBar(baseX + trunkW, rArmY, trunkW * 1.6, ps * 2, r * 0.8);
-  roundedBar(baseX + trunkW * 2.2, rArmY - ps * 3, ps * 2, ps * 3, r * 0.7);
-
-  // Highlight stripe
-  ctx.fillStyle = 'rgba(255,255,255,0.18)';
-  ctx.fillRect(baseX + ps * 0.4, GROUND_Y - trunkH + ps, ps * 0.6, trunkH - ps * 2);
-
-  // Spines
-  ctx.strokeStyle = '#0d3d0d';
-  ctx.lineWidth = 1;
-  for (let i = 0; i < 4; i++) {
-    const sy = GROUND_Y - trunkH + ps * 1.5 + i * ps * 2.2;
-    ctx.beginPath();
-    ctx.moveTo(baseX + ps * 0.5, sy);
-    ctx.lineTo(baseX - ps * 0.3, sy - ps * 0.4);
-    ctx.moveTo(baseX + trunkW - ps * 0.5, sy + ps);
-    ctx.lineTo(baseX + trunkW + ps * 0.3, sy + ps * 0.6);
-    ctx.stroke();
-  }
-}
-
-function roundedBar(x, y, w, h, r) {
-  r = Math.min(r, w / 2, h / 2);
-  ctx.beginPath();
-  ctx.moveTo(x + r, y);
-  ctx.lineTo(x + w - r, y);
-  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
-  ctx.lineTo(x + w, y + h - r);
-  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
-  ctx.lineTo(x + r, y + h);
-  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
-  ctx.lineTo(x, y + r);
-  ctx.quadraticCurveTo(x, y, x + r, y);
-  ctx.closePath();
-  ctx.fill();
-}
-
-function gameLoop(ts) {
-  if (!gameRunning) return;
-
-  const dt = Math.min((ts - lastTs) / 1000, 0.05);
-  lastTs = ts;
-  frame++;
-
-  // Speed & score (accumulate float, display floor)
-  speed = 120 + score * 0.4;
-  scoreF += dt * 10;
-  score = Math.floor(scoreF);
-
-  // Walk animation
-  walkTick++;
-  if (walkTick > 10) { walkFrame = 1 - walkFrame; walkTick = 0; }
-
-  // Jump physics
-  const gravity = H * 2.2;
-  if (jumping) {
-    dinoY += velY * dt;
-    velY  += gravity * dt;
-    if (dinoY >= 0) { dinoY = 0; velY = 0; jumping = false; jumpFrame = 0; }
-  }
-
-  // Cacti: spawn
-  const minGap = W * 0.45;
-  const last = cacti[cacti.length - 1];
-  if (!last || last.x < W - minGap - Math.random() * W * 0.3) {
-    cacti.push({ x: W + 20 });
-  }
-  // Move & remove
-  cacti = cacti.filter(c => {
-    c.x -= speed * dt;
-    return c.x > -PIXEL_SIZE * 7;
-  });
-
-  // Collision
-  const ps = PIXEL_SIZE;
-  const dinoH = ps * 16, dinoW = ps * 12;
-  const dx = Math.round(W * 0.12);
-  const dinoTop = GROUND_Y - dinoH + dinoY;
-  const pad = ps * 2;
-  for (const c of cacti) {
-    const cw = ps * 7, ch = ps * 10;
-    if (
-      dx + pad < c.x + cw - pad &&
-      dx + dinoW - pad > c.x + pad &&
-      dinoTop + pad < GROUND_Y &&
-      dinoTop + dinoH - pad > GROUND_Y - ch
-    ) {
-      endGame();
-      return;
-    }
-  }
-
-  // Draw
-  ctx.clearRect(0, 0, W, H);
-  drawBg();
-  cacti.forEach(c => drawCactus(c.x));
-  drawGround();
-
-  const curFrame = jumping ? 2 : walkFrame;
-  const dinoX = dx;
-  const dinoTopY = GROUND_Y - dinoH + Math.round(dinoY);
-  drawDino(dinoX, dinoTopY, curFrame, Math.round(dinoY));
-
-  // Score
-  ctx.fillStyle = 'rgba(255,255,255,0.7)';
-  ctx.font = `bold ${Math.max(12, PIXEL_SIZE * 3.5)}px Nunito`;
-  ctx.textAlign = 'right';
-  ctx.fillText(String(score).padStart(5, '0'), W - 10, 28);
-  ctx.textAlign = 'left';
-
-  document.getElementById('score-display').textContent = 'Score : ' + score;
-  requestAnimationFrame(gameLoop);
-}
-
-function jump() {
-  if (!gameRunning) { startGame(); return; }
-  if (!jumping && dinoY >= 0) {
-    jumping  = true;
-    jumpFrame = 2;
-    velY = -Math.sqrt(2 * H * 2.2 * H * 0.36);
-  }
-}
-
-function startGame() {
-  score = 0; scoreF = 0; speed = 120; cacti = []; dinoY = 0; velY = 0;
-  jumping = false; frame = 0; walkFrame = 0; walkTick = 0;
-  gameOver = false; gameRunning = true;
-  overlay.style.display = 'none';
-  lastTs = performance.now();
-  requestAnimationFrame(gameLoop);
-}
-
-function endGame() {
-  gameRunning = false; gameOver = true;
-  if (score > bestScore) {
-    bestScore = score;
-    document.getElementById('best-display').textContent = 'Meilleur : ' + bestScore;
-  }
-  overlay.style.display = 'flex';
-  overlay.innerHTML = `
-    <div class="over-title">💀 Raté !</div>
-    <div class="over-sub">Score : <strong style="color:#ffe066">${score}</strong> &nbsp;|&nbsp; Meilleur : <strong style="color:#ffe066">${bestScore}</strong></div>
-    <button onclick="startGame()">🔄 Rejouer</button>
+function buildGalleryHTML(extras, name) {
+  const thumbs = extras.map(e =>
+    `<img class="gallery-thumb" src="img/dinos/${e.folder}/${e.file}" alt="${e.label || name}" title="${e.label || ''}">`
+  ).join('');
+  const labels = extras.map(e => `<span>${e.label || '?'}</span>`).join(' · ');
+  return `
+    <div class="fiche-gallery-title">📸 Plus d'images — <small style="font-weight:400;color:rgba(255,255,255,0.35)">${labels}</small></div>
+    <div class="fiche-gallery">${thumbs}</div>
   `;
 }
 
-// Tap / Space to jump
-document.getElementById('game-container').addEventListener('pointerdown', jump);
-document.addEventListener('keydown', e => { if (e.code === 'Space') { e.preventDefault(); jump(); } });
+function esc(s) {
+  return (s || '').replace(/'/g, '\\\'').replace(/"/g, '&quot;');
+}
 
-// Init
-window.addEventListener('resize', resizeCanvas);
-resizeCanvas();
+/* ── Lightbox ── */
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('open');
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+}
+
+/* ── Extras par dino ── */
+const DINO_EXTRAS = {
+  tyrannosaurus: [
+    { folder:'paws', file:'1_Huge_T_rex_Tooth_5_5_long_6_along.png',     label:'Dent T-Rex' },
+    { folder:'paws', file:'2_File_Trex_footprint_jpg_Wikimedia.png',       label:'Empreinte' },
+    { folder:'paws', file:'3_Fossilized_T_Rex_claw_Museum_of_Rockies.png', label:'Griffe fossile' },
+    { folder:'paws', file:'5_Tyrannosaurus_rex_Claw_Bone_Clones.png',      label:'Griffe' },
+    { folder:'paws', file:'7_T_Rex_Paw_Over_331_Royalty_Free_Licensable.png', label:'Patte' },
+    { folder:'variants', file:'2_T_Rex_may_have_been_covered_in_scales.png',   label:'Avec écailles' },
+    { folder:'variants', file:'4_It_s_a_Bird_It_s_a_Plane_It_s_a_Tyrannosaurus.png', label:'Avec plumes' },
+    { folder:'variants', file:'5_T_rex_With_Feathers_Photograph_by.png',   label:'Reconstitution' },
+    { folder:'scale',    file:'4_Kid_Kong_Rex_and_Humans_Size_Comparison.png', label:'Comparaison taille' },
+  ],
+  velociraptor: [
+    { folder:'paws',     file:'1_Velociraptor_s_dog_sized_cousin_with.png',    label:'Cousin raptor' },
+    { folder:'paws',     file:'4_Velociraptor_Replica_Paw_Claw_Dinosaur.png',  label:'Griffe replica' },
+    { folder:'scale',    file:'3_File_Vraptor_scale_png_Wikimedia.png',        label:'Taille réelle' },
+    { folder:'scale',    file:'8_Encountering_a_Life_size_Velociraptor.png',   label:'Taille vs humain' },
+    { folder:'variants', file:'3_Red_Feathered_Animatronic_Velociraptor.png',  label:'Avec plumes' },
+    { folder:'variants', file:'4_Velociraptor_Turkey_Sized_Feathered.png',     label:'Comme une dinde' },
+    { folder:'variants', file:'6_A_Feathered_Velociraptor_With_a_Hawk.png',    label:'Plumage' },
+    { folder:'variants', file:'8_Pack_Hunting_Raptors_What_is_the.png',        label:'Chasse en meute' },
+  ],
+  spinosaurus: [
+    { folder:'paws', file:'2_4_3_Fossil_Spinosaurus_Hand_Claw.png',   label:'Griffe main' },
+    { folder:'paws', file:'5_6_5_Spinosaurus_Claw_Fossil_for_Sale.png', label:'Griffe fossile' },
+  ],
+  stegosaurus: [
+    { folder:'paws', file:'3_Stegosaurus_Dinosaur_Footprint_Stock.png', label:'Empreinte' },
+    { folder:'paws', file:'6_First_steps_of_a_baby_Stegosaurus.png',    label:'Bébé Stégo' },
+  ],
+  triceratops: [
+    { folder:'paws',  file:'6_Triceratops_Dinosaur_Footprint_Stock.png',         label:'Empreinte' },
+    { folder:'scale', file:'1_File_Human_triceratops_size_comparison.png',        label:'Taille vs humain' },
+    { folder:'scale', file:'6_Comaprison_Between_Triceratops_Size.png',           label:'Comparaison' },
+    { folder:'variants', file:'3_Triceratops_in_four_colors_Free_Vecto.png',      label:'Coloris possibles' },
+  ],
+  diplodocus: [
+    { folder:'scale',    file:'2_Diplodocus_size_comparison_human.png',           label:'Taille vs humain' },
+    { folder:'scale',    file:'3_Diplodocus_by_Gustthank_on_DeviantAr.png',       label:'Illustration' },
+    { folder:'scale',    file:'4_Diplodocus_Images_Browse_17_530_Stock.png',      label:'Silhouette' },
+    { folder:'scale',    file:'5_Diplodocus_Dinosaur_Size_Fossil_Map.png',        label:'Squelette' },
+    { folder:'variants', file:'7_Amphicoelias_diplodocus_vector_cartoon.png',     label:'Cartoon' },
+  ],
+  iguanodon: [
+    { folder:'paws', file:'4_Iguanodon_dinosaur_fossil_foot_bones.png', label:'Os du pied' },
+  ],
+};
+
+/* ── Init ── */
+buildMenu();
 </script>
 </body>
 </html>

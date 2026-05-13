@@ -221,7 +221,12 @@
       "Bash(Get-ChildItem -Path \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\" -Directory)",
       "Bash(Get-ChildItem -Path \"c:/ProjetsPerso/Claude_Projects/MaxPlay/.claude/agents\" -Filter \"*.md\")",
       "Bash(Sort-Object Name)",
-      "Bash(grep -v \"\\\\.md$\")"
+      "Bash(grep -v \"\\\\.md$\")",
+      "Bash(echo \"EXIT:$?\")",
+      "Bash(mv kimi-reco.md kimi-k26-thinking.md)",
+      "Bash(mv kimi-def.md kimi-reco.md)",
+      "Bash(mv kimi-guide.md kimi-reco-guide.md)",
+      "mcp__llm-copains__ask_kimi_payant"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\temp",

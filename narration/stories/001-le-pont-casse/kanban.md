@@ -25,16 +25,15 @@
 | # | Étape | Owner | Statut | Date | Lien livrable |
 |---|---|---|---|---|---|
 | 0 | Idée | Auteur | ✅ | 2026-05-02 | Briefs Papa Yann session 2026-05-02 |
-| 1 | Pitch | Conseiller (`narration-conseiller`) | ✅ | 2026-05-02 | [`pitch.md`](pitch.md) — livré et validé Papa Yann (validation tacite par cadrage du brief minimal verbatim 2026-05-02) |
-| 2 | Plan | Architecte (`narration-architecte`) | ✅ | 2026-05-02 | [`plan-histoire.md`](plan-histoire.md) — livré PASS auto-validé. Révisé 2026-05-03 en mode minimal (recadrage Papa Yann). |
-| 3 | Briefs | Directeur (`narration`) | ✅ | 2026-05-04 | [`briefs/_writer-package.md`](briefs/_writer-package.md) (autoporteur, 8 runs) · [`briefs/brief-histoire.md`](briefs/brief-histoire.md) · [`briefs/brief-univers.md`](briefs/brief-univers.md) · [`briefs/brief-personnages.md`](briefs/brief-personnages.md) — **refonte Tour 2 (2026-05-04)** : trio Wex+Raph+Pierrot, variance natifs sans angles, règle promesse du titre |
-| 4 | Versions writers | 8 Writers | ✅ | 2026-05-04 | [`versions-writers/`](versions-writers/) — 8 versions livrées (claude×2, kimi×2, deepseek×2, grok×2) |
-| 5 | Lecteurs témoins | 6 Témoins (2 enfants seuls + 4 dyades) | ✅ | 2026-05-04 | [`lecteurs-temoins/`](lecteurs-temoins/) — 6 fiches livrées avec classements consolidés |
-| 6 | Sélection | Directeur | ✅ | 2026-05-08 | [`selection.md`](selection.md) — base **kimi-run1** validée auteur 2026-05-08 |
-| 7 | Rewrite | Auteur top 1 (Kimi K2) | ✅ | 2026-05-08 | [`rewrite/kimi-rewrite-v2.md`](rewrite/kimi-rewrite-v2.md) — comité éditorial : 2 intégrations sur 5 (« Clac. Clac. Clac. » additif + « comme un bracelet »), 3 écartées avec raisons argumentées. 540 mots. Archive : [`kimi-rewrite-v1.md`](rewrite/kimi-rewrite-v1.md) (minimaliste) + [`claude-rewrite-v1.md`](rewrite/claude-rewrite-v1.md) (régression). |
-| 8 | GateKeeper | GateKeeper (`narration-gatekeeper`) | ✅ | 2026-05-08 | [`gatekeeper-verdict.md`](gatekeeper-verdict.md) — **PASS (24/24 critères)** |
-| 9 | Re-relecture rewrite | 2 enfants + 4 dyades (panel 6 transitoire) | ✅ | 2026-05-08 | [`relecture-rewrite/`](relecture-rewrite/) — **6 × ✅** + 2 corrections légères appliquées (suppression « proprement » + simplification phrase plantation drapeau) |
-| 10 | Canon | Directeur + PMO | ✅ | 2026-05-08 | [`texte.md`](texte.md) — **CANON** + [`synthese-finale.md`](synthese-finale.md) + [`README.md`](README.md) frontmatter complet |
+| 1 | Pitch + Plan (historique : Pitch Conseiller 2026-05-02 + Plan Architecte 2026-05-02. Fusionnés 2026-05-12) | Conseiller | ✅ | 2026-05-02 | [`1-pitch-plan.md`](1-pitch-plan.md) (renommé+concat 2026-05-12) |
+| 3 | Briefs | Directeur | ✅ | 2026-05-04 | [`3-briefs/`](3-briefs/) — refonte Tour 2 (2026-05-04) : trio Wex+Raph+Pierrot, variance natifs sans angles |
+| 4 | Versions writers | 8 Writers (panel historique 8, panel 10 dès STORY-003) | ✅ | 2026-05-04 | [`4-versions-writers/`](4-versions-writers/) — 8 versions (claude×2, kimi×2, deepseek×2, grok×2) |
+| 5 | Lecteurs témoins | 6 Témoins (panel 6 transitoire) | ✅ | 2026-05-04 | [`5-lecteurs-temoins/`](5-lecteurs-temoins/) + [`5-synthese-lecteurs.md`](5-synthese-lecteurs.md) |
+| 6 | Sélection | Directeur | ✅ | 2026-05-08 | [`6-selection.md`](6-selection.md) — base **kimi-run1** validée |
+| 7 | Rewrite | Writer top 1 (Kimi K2) | ✅ | 2026-05-08 | [`7-rewrite/kimi-rewrite-v2.md`](7-rewrite/kimi-rewrite-v2.md) — 2 intégrations sur 5, 540 mots |
+| 8 | GateKeeper | GateKeeper | ✅ | 2026-05-08 | [`8-gatekeeper-verdict.md`](8-gatekeeper-verdict.md) — **PASS (24/24)** |
+| 9 | Re-relecture rewrite | Panel 6 transitoire | ✅ | 2026-05-08 | [`9-relecture-rewrite/`](9-relecture-rewrite/) — 6 × ✅ + 2 corrections légères |
+| 10 | Canon | Directeur + PMO | ✅ | 2026-05-08 | [`10-texte.md`](10-texte.md) — **CANON** + [`10-synthese-finale.md`](10-synthese-finale.md) |
 
 ---
 

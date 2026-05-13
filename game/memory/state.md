@@ -1,176 +1,87 @@
 ---
-name: État jeux MaxPlay
-description: État condensé du pôle jeu — jeux déployés, bugs actifs, règles critiques, backlog
+name: État pôle JEU MaxPlay
+description: État statique du pôle jeu — jeux déployés, bugs critiques en cours. Sessions et décisions migrées vers game/pmo/.
 type: project
 ---
 
-> Charger ce fichier au démarrage de toute session JEU. Puis lire `game/tasks/BACKLOG.md` pour le détail.
+> **Refonte 2026-05-13** : ce fichier ne contient plus que les **sources de vérité statiques** (état déploiement, fichiers clés, bugs critiques en cours).
+>
+> Sessions chronologiques → [`../pmo/sprint-log.md`](../pmo/sprint-log.md)
+> Décisions figées → [`../pmo/decisions.md`](../pmo/decisions.md)
+> Backlog tickets → [`../pmo/backlog.md`](../pmo/backlog.md)
+> Audits traçabilité → [`../pmo/audit-trail.md`](../pmo/audit-trail.md)
+> Chiffres clés → [`../pmo/INVARIANTS.md`](../pmo/INVARIANTS.md)
 
-## État déploiement (2026-05-03)
+---
 
-**22 jeux actifs** : mj-01, mj-04–06, mj-08–09, mj-11–13 (a/b/c), mj-14–20, max-adventure, **mj-pose-tiles** (🆕 kids 2026-05-10)
+## État déploiement (mis à jour à chaque ajout/retrait MJ)
+
+**22 jeux actifs** : mj-01, mj-04–06, mj-08–09, mj-11–13 (a/b/c), mj-14–20, max-adventure, **mj-pose-tiles** (kids 2026-05-10)
+
 **Retirés du menu** : mj-02, mj-03, mj-07, mj-10 (consolidés)
-**GitHub Pages** : `kimen26.github.io/MaxPlay/` — CI via `.github/workflows/deploy.yml`
 
-## Session 2026-05-08 → 2026-05-10 (EP-TILES + EP-MJPOSE)
-
-- ✅ Skill `~/.claude/skills/maxplay-tiles/` : SKILL.md (566 l) + LESSONS.md (30+ entrées)
-- ✅ Agent dédié `.claude/agents/tile-pmo.md` (Haiku) — à invoquer après correction user, découverte, fin session
-- ✅ `game/web/tools/` : hub + tile-picker (matrice drag&drop, 5 catégories, multi-tiles vraies dimensions, `?recipe=X.py`), tile-library-v3, mockups-routes (6 patterns échelle uniforme + bouton 🎨 Éditer)
-- ✅ `mj-pose-tiles.html` : 🦺🚧 mini-jeu kids (8×8 tactile, 5 catégories, bouton Lisser)
-- ✅ 13 recettes Python validées + 13 PNG (routes, virages, carrefour, rond-point, quartier, parking, voie bus, passages piétons)
-- ✅ Cartographie LimeZu corrigée — L-013 à L-018 (voir BACKLOG)
-- ✅ Workflow Propose → Édite → Apprend opérationnel
-
-## Session 2026-05-03
-
-- ✅ EP-021 vocab : MJ-08 "Au centre bus" / MJ-17 "Le garage" partout
-- ✅ EP-027 MJ-20 : progression Duolingo par langue + paliers + localStorage
-- ✅ EP-029 MJ-19 : 50-80 bus (avec doublons) au lieu de 20-30
-- ✅ EP-031 MJ-15 : niveau D (roues colorées) + niveau E (combo couleur+numéro)
-- ✅ EP-032 MJ-09 : multi-touch 2 doigts (Pointer Events + Map)
-- ✅ EP-033 : TTS annonce titre désactivé (laggait le démarrage)
-
-## Session 2026-05-11 (suite) — EP-VOCAB phases 1-2 + pivot
-
-**Contexte** : Papa Yann a cadré l'epic "ingénierie tile-tools" pour résoudre cause racine (galère sur "route droite propre", briefs complexes impossibles). Plein pouvoir donné.
-
-**Livré** (commit `feat(tile-tools): EP-VOCAB phases 1+2`) :
-- ✅ `game/web/tile-tools/vocab.py` : 46 constantes nommées français, validation auto au boot
-- ✅ `game/web/tile-tools/builders.py` : macros `route_h()` + `route_v()` testées + **SHA256 byte-identique** aux PNG existants
-- ✅ `game/web/tile-tools/RESEARCH-INSPIRATIONS.md` : 60+ liens capitalisés (LDtk, WFC, DualTilemap, Bitmask, Phaser, LimeZu)
-- ✅ Fix en passant : `test_voie_bus_v6.py` (`_15` SALE → `_8` PROPRE, oubli correction 5)
-- ✅ 2 recettes v2 exemple : `test_route_h_5rows_v2.py` + `test_route_v_5cols_v2.py`
-
-**🔀 Pivot Papa Yann (fin de session, validé)** :
-- Découverte : coder des macros (`virage`, `carrefour`…) = **inventer comment composer**. Or les recettes actuelles ne plaisent pas visuellement à Papa Yann → on reproduirait le défaut.
-- Nouvelle direction : **collecter des références visuelles** (screenshots LimeZu officiel, maps Pokemon, samples LDtk) → reproduire fidèlement → la "macro" devient une recette de référence validée.
-- EP-VOCAB phases 3-5 (macros virages/carrefour/T/refactor 13 recettes) **ANNULÉES**.
-- **EP-REFS ajouté au BACKLOG** (banque refs visuelles, à lancer en session dédiée).
-
-**Nettoyage effectué (clôture)** :
-- ✅ `cartography.json` marqué **DEPRECATED** (champ `_DEPRECATED` dans le JSON)
-- ✅ `game/web/tools/tile-library.html` + `tile-library-v2.html` → archivés dans `tools/_archive/` + card index retirée
-- ✅ `__pycache__/` purgés (gitignore créé)
-- ✅ `game/web/tile-tools/_archive/` créé avec inventaire candidats futurs (scripts debug, recettes non-auditées)
-- ⏳ Pas touché : scripts debug (render_debug, render_tmj, zoom_index, build_rondpoint_tmj, recolor_house) — à vérifier dépendances en session dédiée
-- ⏳ Pas touché : recettes passages piétons (non-auditées visuellement)
-
-**Fichier clé créé** : `game/web/tile-tools/vocab.py` = source UNIQUE pour les paths de tiles. Remplace cartography.json.
+**Production** : `https://kimen26.github.io/MaxPlay/` — CI via `.github/workflows/deploy.yml`
 
 ---
 
-## Session 2026-05-12 — 2 phases : pipeline route v3 validé (matin) + pivot brique-avant-macro (après-midi)
+## Bugs critiques en cours
 
-### Phase 1 — Pipeline route v3 (matin, validé pipeline mais à revalider visuellement)
+**Aucun bug critique actif** (vérifié 2026-05-13).
 
-**Fait** :
-- ✅ **3 recettes route validées** par pipeline ET visuellement par Papa Yann :
-  - `test_route_h_7rows_v3.py` (14×7 route H 3-chaussées)
-  - `test_route_v_7cols_v3.py` (7×14 route V 3-chaussées)
-  - `test_papa_route_large.py` (17×9 compo Papa référence)
-- ⚠️ **4 recettes virages 13×13** validées par pipeline (9/10 reviewer) MAIS **invalidées visuellement par Papa Yann** dans l'après-midi :
-  - `test_virage_gauche.py` / `_droit.py` / `_haut_gauche.py` / `_haut_droit.py`
-  - Verdict Papa Yann : "Totalement faux, terrible même" — pipeline a passé sur des fondations cassées
-- ✅ **`builders.py` v3** : `route_h()/route_v()` macrifiées, alternance `_VOIE_POOL` cycle 3, anti-mono activé
-- ✅ **`vocab.py`** source unique constantes tiles (validation auto)
-- ✅ **`vocab-playground.html`** synchronisé
+Max Adventure tourne en prod (vérifié 2026-05-03 : `kimen26.github.io/MaxPlay/max-adventure/` charge phaser-*.js et index-*.js correctement).
 
-### Phase 2 — Pivot brique-avant-macro (après-midi, après invalidation virages)
-
-**Découverte critique** : le pipeline simplifier→designer→reviewer a validé des recettes virages techniquement correctes (toutes les contraintes LESSONS respectées) mais **visuellement ratées**. Cause : `vocab.py` contenait des constantes inventées (`COIN_INT_SE = sw_1` etc.) que personne n'avait validé visuellement. Pipeline a propagé l'erreur.
-
-**Refonte complète** :
-- ✅ **`brick-explorer.html`** créé : page interactive pour valider chaque tile candidate isolée (mini-render 3×3, fond asphalte/trottoir, vote courbe/point/autre/rejeté)
-- ✅ **Mapping LimeZu SW_1 ↔ SW_2-6 figé** : découvert que SW_1 a 10 positions (#11-#20) décalées vs SW_2-6. Table figée dans `styles.py`
-- ✅ **`styles.py`** créé : module 6 styles (blanc/beige/gris_bleu/jaune/bleu/gris) + résolution auto mapping SW_1
-- ✅ **Méthode "planche comparative"** validée : `scripts/compare_tilesets*.py` (5 scripts) — 1 image grille = validation famille entière instantanée
-- ✅ **`tile-picker.html`** refondu : 9811 tiles (vs 3525, 36% → 100% couverture), dropdown famille dynamique, boutons variante 1-6 universels (pas que Sidewalk)
-- ✅ **`build_tile_picker_data.py`** : scan PIL lit vraies dimensions w/h (3040 unitaires + 6473 sprites + 298 planches au lieu de tout en 1×1)
-- ✅ **`test_ref_papa_4virages.py`** : RÉFÉRENCE CANONIQUE virages (14×14 compo Papa Yann tile-picker) — source de vérité pour reconstruction future
-
-**Leçons gravées (game-tile-pmo)** :
-- LESSONS.md : Corrections 9-12 (4 leçons) — voir LESSONS.md du skill maxplay-tiles
-- PIPELINE-MEMORY.md : F-008/F-009 (frictions), P-008/P-009/P-010 (patterns validés)
-- BACKLOG.md Leçons : L-029 (brique avant macro), L-030 (mapping SW_1), L-031 (planche comparative), L-032 (PIL multi-cells)
-
-**EP-VOCAB clôturé** `[x]` (phases 1-2 complètes, routes OK, briefs complexes → EP-REFS)
-
-**À refaire (post-pivot)** :
-- ❌ Les 4 virages 13×13 restent **techniquement présents mais visuellement invalidés**. Refonte attendue depuis la référence `test_ref_papa_4virages.py` + briques validées via brick-explorer.html.
-- 📝 EP à créer : EP-VIRAGES-V2 (refonte depuis ref Papa avec workflow brique-avant-macro)
+Faux bugs récemment vérifiés :
+- EP-022 MJ-04 "boucle infinie" : code conforme (compteur 10 tours + showEndScreen + playEndSound présents). Cf. `pmo/decisions.md` Q-ouverte #1 sur clôture définitive.
 
 ---
 
-## Bugs actifs
-
-Aucun. Max Adventure tourne en prod (vérifié 2026-05-03 : `kimen26.github.io/MaxPlay/max-adventure/` charge phaser-*.js et index-*.js correctement).
-
-**Vérifications 2026-05-11 (Session 14)** :
-- EP-022 MJ-04 "boucle infinie" : **faux bug** — code conforme depuis (compteur 10 tours + showEndScreen + playEndSound présents). BACKLOG désync corrigée.
-- mj-pose-tiles `_14`/`_15` SALE : **corrigé** par swap vers `_2`/`_8` propres (L-013 respectée).
-- mj-12 scope : **tranché Papa Yann** — dashboard sonore / découverte libre, pas un jeu à mécanique. Pas de refonte (L-024).
-
-**Convention pôle JEU à acter** : 2 types de MJ — (1) jeux à mécanique avec compteur + showEndScreen, (2) dashboards / découvertes libres (mj-12 1er du genre). game-mj-reviewer à enrichir avec reconnaissance du type (`data-mp-type="dashboard"` ?).
-
-## Backlog prioritaire
-
-| EP | Titre |
-|----|-------|
-| EP-TILES | Pipeline tile-tools : intégrer le quartier 16×12 dans Phaser (remplace grosse croix max-adventure), étendre à 24×18 puis 32×24 |
-| EP-023 | Menu carte de Villejuif (plan archivé : `_archive/docs-jeux-cadavres/MENU-MAP-VILLEJUIF.md`) |
-| EP-015 | Carnet de Max / Garage progression |
-| EP-026 | TTS ElevenLabs (voix clonées, agent voice-director) |
-
-## Règles critiques non-négociables
-
-- **Bus** : `busSVG()` / `busSVGHiddenNum()` depuis `game/web/js/bus-svg.js` — JAMAIS emoji 🚌 ni div CSS
-- **Couleurs** : `selectDistinctColors(pool, n, minDist=80)` pour tout quiz multi-couleurs
-- **UX** : zones tap min 80×80px · feedback < 200ms · zéro pénalité · sessions 3–8min
-- **Sons** : `victory-sounds.js` fins de partie · `sounds.js` AudioContext singleton
-- **Vocab Max** : centre bus = dodo · garage = réparation · village des bus = terminus (réservé)
-
-## Fichiers clés jeu
+## Fichiers clés jeu (référence)
 
 | Fichier | Rôle |
 |---------|------|
-| `game/web/js/bus-svg.js` | SVG bus — lire avant tout |
-| `game/web/js/data.js` | LIGNES (26 actives), DESTINATIONS |
-| `game/web/js/tracker.js` | Suivi progression localStorage |
-| `game/docs/ratp-colors.json` | Source de vérité couleurs+terminus |
-| `game/memory/stack.md` | Architecture complète + règles déploiement |
-| `game/memory/rules.md` | Règles UX/péda + designs validés |
-| `game/tasks/BACKLOG.md` | Source de vérité épics |
+| `web/js/bus-svg.js` | SVG bus — lire avant tout |
+| `web/js/data.js` | LIGNES (26 actives), DESTINATIONS |
+| `web/js/tracker.js` | Suivi progression localStorage |
+| `web/js/victory-sounds.js` | Mélodies fin de partie (4 par couleur) |
+| `web/js/sounds.js` | AudioContext singleton |
+| `docs/ratp-colors.json` | Source de vérité couleurs IDFM (26 actives + 362 référencées) |
+| `web/tile-tools/vocab.py` | Source unique constantes tiles (depuis 2026-05-12, remplace cartography.json deprecated) |
+| `web/tile-tools/styles.py` | Module 6 styles + mapping SW_1 ↔ SW_2-6 (depuis 2026-05-12) |
+| `web/tile-tools/recipes/test_ref_papa_4virages.py` | RÉFÉRENCE CANONIQUE virages (14×14 compo Papa Yann) |
+| `memory/stack.md` | Architecture complète + règles déploiement |
+| `memory/rules.md` | Règles UX/péda + designs validés |
+| `memory/VISION-LONG-TERME.md` | Vision Phase 2 WexWorld + pont narration↔jeu + app mobile |
+| `pmo/INVARIANTS.md` | **Source de vérité chiffres clés + casting tile** |
+| `pmo/decisions.md` | Décisions figées + questions ouvertes |
+| `pmo/sprint-log.md` | Journal sessions |
+| `pmo/backlog.md` | Tickets actifs (EP-xxx + L-xxx) |
+| `pmo/audit-trail.md` | Traces audits PMO |
 
-## Agents à appeler
+---
 
-| Agent | Modèle | Rôle |
-|-------|--------|------|
-| **`game-dev`** | Sonnet | Développement, correction, amélioration jeu (HTML vanilla + Phaser) |
-| **`game-pmo`** | Haiku | **PMO pôle JEU** — garant `state.md` + `BACKLOG.md`. À invoquer à chaque tour incluant un signal JEU. Orchestre les sous-spé. |
-| **`game-tile-pmo`** | Haiku | Sous-spé PMO pipeline tile-tools LimeZu (parent : game-pmo). Scope strict 5 fichiers : LESSONS, cartography.json, patterns.js, recipes_data.js, PIPELINE-MEMORY.md. |
-| **`game-tile-simplifier`** | Sonnet | Sachant tile #1/3 — image/desc → ANALYSE structurée |
-| **`game-tile-designer`** | Sonnet | Sachant tile #2/3 — ANALYSE → recette Python + PNG |
-| **`game-tile-reviewer`** | Haiku | Sachant tile #3/3 — verdict PASS/FAIL avec issues |
-| **`game-conseiller`** | Opus | **Binôme créatif transverse** — voix de Papa Yann, challenge, force de proposition, pont entre les 3 sous-domaines |
-| **`game-mj-pmo`** | Haiku | Sous-spé PMO mini-jeux HTML (parent : game-pmo). Scope strict : rules.md, stack.md, PIPELINE-MEMORY-MJ.md, docs/jeux/ |
-| **`game-mj-reviewer`** | Haiku | Sachant validateur MJ pré-livraison — checklist hardcodée 5 sections, verdict PASS/FAIL |
+## Équipe agents (référence rapide)
 
-**Architecture cible pôle JEU** (refonte 2026-05-11, Phase 1) :
-```
-game-pmo (parent)
-├── game-tile-pmo (sous-spé maps tile)        ✅
-├── game-mj-pmo (sous-spé mini-jeux HTML)     ✅ (créé 2026-05-11)
-└── game-wexworld-pmo (sous-spé Phaser)        ⏳ Phase 2
+| Agent | Modèle | Niveau | Mode |
+|-------|--------|--------|------|
+| `game-pmo` | Haiku | 1 (parent) | **AUTO** signal JEU |
+| `game-archiviste` | Haiku | 1 (parent) | **AUTO** signal structure |
+| `game-mj-pmo` | Haiku | 2 (enfant) | Invoqué par game-pmo |
+| `game-tile-pmo` | Haiku | 2 (enfant) | Invoqué par game-pmo |
+| `game-wexworld-pmo` | Haiku | 2 (enfant) | ⏳ Phase 2 |
+| `game-conseiller` | Opus | 3 | Manuel — question produit |
+| `game-dev` | Sonnet | 4 | Manuel — code |
+| `game-tile-simplifier` | Sonnet | 4 | Manuel — étape 1/3 tile |
+| `game-tile-designer` | Sonnet | 4 | Manuel — étape 2/3 tile |
+| `game-tile-reviewer` | Haiku | 4 | Manuel — étape 3/3 tile |
+| `game-mj-reviewer` | Haiku | 4 | Manuel — validateur MJ |
 
-Sachants :
-- game-conseiller (Opus, transverse)            ✅ (créé 2026-05-11)
-- game-dev (Sonnet, dev général)                ✅
-- game-mj-reviewer (Haiku, validateur MJ)       ✅ (créé 2026-05-11)
-- game-tile-{simplifier,designer,reviewer}      ✅
-- game-wexworld-{designer,tester}                ⏳ Phase 2
-```
+Détails complets : [`../EQUIPE.md`](../EQUIPE.md).
 
-**Boucle d'apprentissage** : 3 niveaux de mémoire par sous-spé (technique : LESSONS / rules / stack · méta-process : PIPELINE-MEMORY-* · transverse : auto-memory + VISION-LONG-TERME)
+---
 
-**Vision long terme** : voir [`memory/VISION-LONG-TERME.md`](./VISION-LONG-TERME.md) (Phase 2 WexWorld Pokemon-like, pont narration↔jeu, app mobile, diffusion grand public).
+## Commandes audit
+
+| Commande | Invoque | Cible |
+|----------|---------|-------|
+| `/game-pmo-audit` | `game-pmo` Mode AUDIT | FOND (décisions, statuts, cohérence sémantique) |
+| `/game-archiviste-audit` | `game-archiviste` Mode AUDIT | FORME (structure, refs, gabarit, orphelins) |

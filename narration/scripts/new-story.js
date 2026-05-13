@@ -3,7 +3,13 @@
  * new-story.js — Créer un nouveau dossier d'histoire à partir du gabarit unifié.
  * Usage : node narration/scripts/new-story.js NNN "titre-de-l-histoire"
  *
- * Crée stories/<NNN-slug>/ depuis stories/_gabarit/ (réécrit 2026-04-30, format unifié post-suppression workshop/).
+ * Crée stories/<NNN-slug>/ depuis stories/_gabarit/.
+ *
+ * Historique :
+ * - 2026-04-30 : format unifié post-suppression workshop/
+ * - 2026-05-12 : gabarit migré préfixes étapes (1-pitch-plan.md, 3-briefs/, 4-versions-writers/, etc.)
+ *                Le script duplique le gabarit tel quel, donc la nouvelle structure préfixée
+ *                est automatiquement appliquée à toute nouvelle histoire.
  */
 
 const fs = require('fs');
@@ -96,9 +102,10 @@ function main() {
   walkAndReplace(destDir);
 
   console.log(`✅ Histoire créée : stories/${folderName}/`);
-  console.log(`   → Éditez ${destDir}/pitch.md pour le pitch (étape 1)`);
-  console.log(`   → Mettez à jour ${destDir}/kanban.md au fil des étapes`);
+  console.log(`   → Éditez ${destDir}/1-pitch-plan.md (étape 1 Pitch+Plan fusionnés, refonte 2026-05-12)`);
+  console.log(`   → Mettez à jour ${destDir}/kanban.md au fil des 10 étapes`);
   console.log(`   → Workflow complet : narration/equipe/PROCESS.md`);
+  console.log(`   → Convention préfixes : 1-pitch-plan / 3-briefs / 4-versions-writers / 5-lecteurs-temoins / 6-selection / 7-rewrite / 8-gatekeeper / 9-relecture-rewrite / 10-texte`);
 }
 
 main();

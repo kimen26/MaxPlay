@@ -150,13 +150,34 @@
       "Bash(py --version)",
       "Bash(py scripts/render.py recipes/test_virage_haut_droit.py)",
       "Bash(py scripts/render.py recipes/test_virage_gauche.py)",
-      "Bash(py scripts/render.py recipes/test_virage_droit.py)"
+      "Bash(py scripts/render.py recipes/test_virage_droit.py)",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\game\" -Directory | ForEach-Object { $count = @\\(Get-ChildItem -Path $_.FullName -File -Recurse\\).Count; \"$\\($_.Name\\) : $count fichiers\" })",
+      "PowerShell(@\\(Get-ChildItem -Path \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\game\\\\web\\\\tile-tools\\\\scripts\\\\\" -File\\).Count)",
+      "PowerShell(@\\(Get-ChildItem -Path \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\game\\\\web\\\\tile-tools\\\\recipes\\\\\" -File\\).Count)",
+      "PowerShell(\\(Get-Item \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\game\\\\INDEX.md\"\\).LastWriteTime; \\(Get-Item \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\game\\\\memory\\\\state.md\"\\).LastWriteTime; \\(Get-Item \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\game\\\\tasks\\\\BACKLOG.md\"\\).LastWriteTime)",
+      "PowerShell(@\\(\"game-pmo\", \"game-mj-pmo\", \"game-tile-pmo\", \"game-dev\", \"game-conseiller\", \"game-tile-designer\", \"game-mj-reviewer\", \"game-tile-simplifier\", \"game-tile-reviewer\"\\) | ForEach-Object { if \\(Test-Path \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\.claude\\\\agents\\\\$_.md\"\\) { \"✅ $_\" } else { \"❌ $_\" } })",
+      "WebFetch(domain:docs.anthropic.com)",
+      "WebFetch(domain:www.anthropic.com)",
+      "Bash(mkdir -p \"C:/Users/kimen/.claude/skills/audit-claude-archi\" && ls \"C:/Users/kimen/.claude/skills/audit-claude-archi\")",
+      "Bash(mkdir -p \"c:/ProjetsPerso/Claude_Projects/MaxPlay/.claude/rules\" && echo \"OK\")",
+      "Bash(mkdir -p \"C:/Users/kimen/.claude/skills/challenge-roborock/references\" \"C:/Users/kimen/.claude/skills/challenge-roborock/scripts\")",
+      "Bash(node -e \"try { JSON.parse\\(require\\('fs'\\).readFileSync\\('c:/ProjetsPerso/Claude_Projects/MaxPlay/.claude/settings.json','utf8'\\)\\); console.log\\('JSON valide ✅'\\) } catch\\(e\\) { console.error\\('JSON invalide:', e.message\\) }\")",
+      "PowerShell('{\"prompt\":\"je veux refaire le mini-jeu mj-04 avec bus-svg\"}' | powershell -NoProfile -ExecutionPolicy Bypass -File \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\.claude\\\\hooks\\\\signal-detector.ps1\")",
+      "PowerShell('{\"prompt\":\"je veux écrire une histoire avec Polo et Mimi pour la saison 1\"}' | powershell -NoProfile -ExecutionPolicy Bypass -File \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\.claude\\\\hooks\\\\signal-detector.ps1\")",
+      "PowerShell('{\"prompt\":\"bonjour comment tu vas ?\"}' | powershell -NoProfile -ExecutionPolicy Bypass -File \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\.claude\\\\hooks\\\\signal-detector.ps1\")",
+      "PowerShell('{\"prompt\":\"je veux écrire une histoire avec Polo\"}' | powershell -NoProfile -ExecutionPolicy Bypass -File \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\.claude\\\\hooks\\\\signal-detector.ps1\")",
+      "PowerShell('{\"prompt\":\"je veux ecrire une histoire avec Polo\"}' | powershell -NoProfile -ExecutionPolicy Bypass -File \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\.claude\\\\hooks\\\\signal-detector.ps1\")",
+      "Bash(Get-ChildItem -Recurse -Path \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\" -Filter \"*polo*\" -ErrorAction SilentlyContinue)",
+      "Bash(Select-Object FullName)",
+      "Bash(powershell -NoProfile -Command ' *)"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projets",
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude\\agents",
       "C:\\Users\\kimen\\.claude\\skills",
-      "C:\\Users\\kimen\\.claude\\skills\\multi-agent-pmo"
+      "C:\\Users\\kimen\\.claude\\skills\\multi-agent-pmo",
+      "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude",
+      "C:\\Users\\kimen\\.claude\\skills\\challenge-roborock"
     ]
   },
   "hooks": {

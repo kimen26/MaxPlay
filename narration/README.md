@@ -14,15 +14,23 @@ narration/
 ├── INDEX.md                ← point d'entrée agent (toujours en premier)
 ├── INBOX.md                ← dump brut sessions (hook commit auto) — zone unique
 │
-├── personnages/            ← casting V1 figé + lookup + catalogue cross-culture
+├── personnages/            ← casting V1 figé + lookup + théorie ennéagramme + voix-meta
 ├── univers/                ← monde, systèmes, cycle, compagnons, vibration
-├── enneagramme/            ← système théorique (9 fiches + casting-mapping + situations)
-├── stories/                ← canon (texte.md + archives)
-├── workshop/               ← brouillons en cours (pitch · plan · 4 versions · rewrite)
-├── pmo/                    ← projet (backlog · decisions · sprint-log · roadmap)
-├── equipe/                 ← processus + organigramme + mémoires des agents
+├── cross-culture/          ← variantes par culture (prénoms, onomatopées, lieux, saisons)
+├── saisons/                ← plan éditorial (saisons → arcs → stories)
+├── stories/                ← TOUTES les histoires (canon + en production)
+│   └── <NNN-slug>/         ← un dossier par histoire, statut dans kanban.md
+│       ├── 1-pitch-plan.md ← étape 1
+│       ├── 3-briefs/       ← étape 3 (et ainsi de suite, préfixes par étape PROCESS)
+│       ├── ...
+│       └── 10-texte.md     ← étape 10 (CANON)
+├── pmo/                    ← projet (INVARIANTS · backlog · decisions · sprint-log · audit-trail · roadmap)
+├── equipe/                 ← processus + organigramme + templates + mémoires des agents
+├── scripts/                ← CLI (new-story, validate, generate-index, audio)
 └── archive/                ← sessions historiques (rien n'est effacé)
 ```
+
+> **Note refonte 2026-05-12** : le dossier `workshop/` (anciennement utilisé pour les brouillons en cours) a été supprimé le 2026-04-30. Toute la fabrication d'une histoire vit désormais dans `stories/<NNN-slug>/` avec préfixes étapes (`1-pitch-plan.md`, `3-briefs/`, etc.). Le **statut** (en cours / canon / abandonné) n'est plus une localisation, c'est une **propriété** lisible dans `kanban.md` + `README.md` du dossier histoire.
 
 > **Matière dormante** (analyses manga/Pokémon, niveaux Riso-Hudson) : déplacée dans `_archive/narration-reference/` à la racine projet — non chargée par les agents au quotidien.
 

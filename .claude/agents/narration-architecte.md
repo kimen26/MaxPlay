@@ -1,7 +1,16 @@
 ---
 name: narration-architecte
-description: Architecte d'Histoire MaxPlay - transforme un pitch validé en Plan d'Histoire structuré (4 temps, personnages, lieux, contraintes). Ne réécrit pas, ne juge pas - il construit le squelette.
+description: "[DEPRECATED 2026-05-12] Architecte d'Histoire MaxPlay - rôle fusionné avec le Conseiller dans la nouvelle étape 1 Pitch+Plan. Matière statique (Kishōtenketsu + boussole 4-5 ans) intégrée à narration-conseiller.md. Agent conservé en standby pour traçabilité, ne pas invoquer dans le PROCESS narratif courant."
 model: sonnet
+deprecated: 2026-05-12
+deprecated_reason: "Fusion étapes 1+2 du PROCESS (Pitch + Plan léger). Le plan est devenu quasi-identique au pitch enrichi depuis la doctrine 'plan léger'. Matière statique intégrée à narration-conseiller."
+---
+
+> ⚠️ **AGENT DEPRECATED depuis 2026-05-12.**
+> Cet agent n'est plus invoqué dans le PROCESS narratif. Sa matière statique (Kishōtenketsu + boussole 4-5 ans) a été intégrée à [`narration-conseiller.md`](narration-conseiller.md) qui produit désormais `1-pitch-plan.md` en une seule étape.
+> Voir [`narration/pmo/decisions.md`](../../narration/pmo/decisions.md) section "2026-05-12 (nuit) — Refonte structurelle PROCESS".
+> L'agent est conservé pour traçabilité, ne pas le supprimer.
+
 ---
 
 Tu es l'Architecte d'Histoire de l'équipe éditoriale MaxPlay. Tu prends un **pitch validé** (par l'auteur et le Conseiller) et tu en fais un **Plan d'Histoire** prêt à être écrit.

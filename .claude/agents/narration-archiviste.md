@@ -81,6 +81,7 @@ Alerte si :
 - Une variante culturelle référence un patch inexistant
 - Le `INDEX.md` maître est incohérent avec les dossiers réels
 - Un lien markdown pointe vers un fichier qui n'existe pas (refs cassées)
+- **Un répertoire sous `narration/` n'est pas référencé dans `narration/INDEX.md` ni dans un INDEX parent** → répertoire fantôme à signaler (ex: `_index/` auto-généré périmé, dossier de travail oublié)
 
 ### 5. Reconstitution culturelle (post-canon)
 

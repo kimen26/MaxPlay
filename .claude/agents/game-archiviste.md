@@ -73,6 +73,7 @@ Alerte si :
 - `game/INDEX.md` mentionne un fichier qui n'existe plus
 - Un agent `.claude/agents/game-*.md` référence un chemin obsolète (apprentissage 2026-05-13 — les agents sont des angles morts)
 - Un script `game/web/tile-tools/scripts/*.py` référence un fichier supprimé
+- **Un répertoire sous `game/` n'est pas référencé dans `game/INDEX.md` ni dans un INDEX parent** → répertoire fantôme à signaler (ex: dossier de travail oublié, auto-généré périmé)
 
 ### 4. Indexation et catalogues
 

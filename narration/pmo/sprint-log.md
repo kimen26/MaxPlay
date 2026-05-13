@@ -8,6 +8,16 @@
 
 ---
 
+## 2026-05-13 — [PMO] Voice ID Madie (T4 Individualiste) figé — Lumi Madie Vibrante
+
+**Fait** :
+- [x] `9JvOiMFLj8GdHK3Fcydn` gravé dans type-04/voix.md + INVARIANTS + _VOICE-IDS-CASTING + pmo/INDEX (9/10)
+- [x] Prompt v24 fille archivé dans type-04/voix.md
+
+**État au reboot** : 9/10 voix figées. Reste Nono (v24 à refaire).
+
+---
+
 ## 2026-05-13 — [PMO] Voice ID Mimi (T2 Aidant) figé — Lumi Mimi Attentive
 
 **Fait** :

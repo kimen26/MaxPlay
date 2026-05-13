@@ -19,30 +19,9 @@
 
 ---
 
-## 2026-05-11 — Challenges narration-pmo : C-3, C-4, C-5, C-6 à planifier
+## 2026-05-11 — Challenges narration-pmo : C-3, C-4, C-5, C-6
 
-**Source :** audit game-pmo transféré 6 challenges narration-pmo. Papa Yann a validé 2 : C-1 (checklist, → ARCHI-007), C-2 (rapport, done). 4 autres = à planifier.
-
-### C-3 — 3e niveau mémoire : PIPELINE-MEMORY.md
-
-Narration = 3 niveaux mémoire :
-1. sprint-log.md (« ce qu'on a fait cette session »)
-2. decisions.md (« choix structurels figés »)
-3. **PIPELINE-MEMORY.md** (« meta-process patterns », ex : checklist relecture brief, phases A/B/C template story, règles routing agents, SLA étapes)
-
-Actuellement diluées dans decisions.md. À extraire + struturer.
-
-### C-4 — Anti-patterns explicites
-
-Narration a des anti-patterns (ex : briefs avec négations gratuites, rewrite trop gourmands en idées, pitch sans trio d'action). Documenter dans `equipe/anti-patterns-narration.md`.
-
-### C-5 — Mnémonique 1-ligne
-
-Game-pmo : « Toile pas de moraline — c'est ça MaxPlay ». Narration besoin équivalent (cohésif, mémoriel). Candidate : « Souple pas de saule » ou TBD.
-
-### C-6 — Tableau cartographie multi-fichiers
-
-narration-pmo gère 30+ fichiers. Pas de tableau « Fichier / Rôle / Où tu y notes ». Créer cartographie visuelle = référence rapide pour diagnostiquer incohérence.
+> ✅ Distillé 2026-05-13 → tickets **ARCHI-009** (PIPELINE-MEMORY) · **ARCHI-010** (anti-patterns) · **ARCHI-011** (mnémonique) · **ARCHI-012** (cartographie fichiers) dans `pmo/backlog.md`.
 
 ---
 

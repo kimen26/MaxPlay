@@ -45,3 +45,36 @@ Speaker Boost: true
 - "Non, comme ça c'est pas bien rangé." *(fin descendante, conviction calme)*
 - "Attends... *(pause)* ...je vérifie d'abord." *(micro-inspiration avant "vérifie")*
 - "C'est bon. C'est comme il faut." *(deux cadences fermées, satisfaction sobre)*
+
+---
+
+## Langage naturel (4-6 ans)
+
+> Tournures caractéristiques dérivées de Chabreuil. Côté lumière au premier plan — ombre à doser.
+
+**Lumière** (perso épanoui, guide soigneux et fiable) :
+- "Regarde, comme ça c'est parfait !"
+- "Si on fait bien, c'est mieux."
+- "Je sais comment faire."
+- "C'est bien rangé maintenant."
+
+**Ombre** (réflexe automatique — correction, exaspération retenue) :
+- "C'est pas comme ça..."
+- "Faut recommencer."
+- "Ça va pas là."
+
+---
+
+## Tags writer ElevenLabs
+
+> Pour les writers : balises à intégrer dans les dialogues/didascalies. Max 2-3 tags par phrase.
+
+| Contexte | Tags | Exemple |
+|---|---|---|
+| Ton dominant (précis, soigné) | `[serious]` · `[confident]` · `[proper]` | `"- Comme ça. [serious]"` |
+| Correction bienveillante | `[corrects self]` · `[hesitant]` | `"- Attends... [corrects self] c'est pas tout à fait ça."` |
+| Satisfaction sobre | `[matter-of-fact]` · `[educated]` | `"- C'est bon. [matter-of-fact]"` |
+| Autorité douce | `[authoritative]` · `[stern]` | `"- Non, comme ça. [authoritative]"` |
+
+**Jamais** : `[excited]` désordonné · `[laughs]` gras · `[quickly]` — hors moment de joie soigné
+**Onomatopée signature** : aucune — Melki parle avec précision, pas d'onomatopée

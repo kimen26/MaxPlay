@@ -56,3 +56,37 @@ Speaker Boost: true
 - "Mm... t'as l'air triste. Tu veux qu'on s'assoie ?" *(mm doux, montée finale)*
 - "Je peux t'aider !" *(élan spontané, voyelle ouverte)*
 - "C'est pas grave, hein." *(lingering sur "hein", berçant)*
+
+---
+
+## Langage naturel (4-6 ans)
+
+> Tournures caractéristiques dérivées de Chabreuil. Côté lumière au premier plan — ombre à doser.
+
+**Lumière** (perso épanoui, chaleur et attention spontanée) :
+- "T'as besoin de quoi ?"
+- "Je vais t'aider !"
+- "Viens, je suis là."
+- "Tiens, prends ça."
+
+**Ombre** (réflexe automatique — aide non demandée, hypervigilance) :
+- "Mais... tu manges pas ?"
+- "Tu vas bien ?"
+- "J'avais apporté ça pour toi."
+
+---
+
+## Tags writer ElevenLabs
+
+> Pour les writers : balises à intégrer dans les dialogues/didascalies. Max 2-3 tags par phrase.
+
+| Contexte | Tags | Exemple |
+|---|---|---|
+| Ton dominant (douceur attentive) | `[softly]` · `[happily]` · `[warm]` | `"- Viens. [softly]"` |
+| Aide proposée | `[caring]` · `[curious]` | `"- T'as besoin de quoi ? [curious]"` |
+| Réconfort / compassion | `[compassionate]` ⚠️ · `[tender]` ⚠️ · `[sighs]` | `"- C'est pas grave. [compassionate]"` |
+| Joie d'aider | `[excited]` · `[gentle interjection]` | `"- Je vais t'aider ! [excited]"` |
+
+**Jamais** : `[shouts]` · `[confident]` dominant · `[serious]` prolongé
+**Onomatopée signature** : "mm" doux (interjection d'attention — pas une onomatopée bruitiste)
+**Note** : `[compassionate]` et `[tender]` ont 👍 faibles (5/4) — tester avant d'utiliser en prod

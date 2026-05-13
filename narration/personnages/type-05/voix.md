@@ -45,3 +45,38 @@ Speaker Boost: false
 - "En fait... *(pause)* ...c'est pas tout à fait ça." *(pause pré-correction, ton plat)*
 - "J'ai besoin d'observer encore un peu." *(informatif, sans demande d'approbation)*
 - "Logiquement, ça devrait marcher comme ça." *(léger drop final)*
+
+---
+
+## Langage naturel (4-6 ans)
+
+> Tournures caractéristiques dérivées de Chabreuil. Côté lumière au premier plan — ombre à doser.
+
+**Lumière** (perso épanoui, sait des choses, explique avec précision) :
+- "En fait..."
+- "Je sais pourquoi."
+- "C'est parce que..."
+- "Attends, j'ai vu quelque chose."
+- "C'est intéressant ça."
+
+**Ombre** (réflexe automatique — retrait, observation sans participation) :
+- "Chut, je regarde."
+- "J'ai pas fini de regarder."
+- *[silence d'observation prolongée]*
+
+---
+
+## Tags writer ElevenLabs
+
+> Pour les writers : balises à intégrer dans les dialogues/didascalies. Max 2-3 tags par phrase.
+
+| Contexte | Tags | Exemple |
+|---|---|---|
+| Ton dominant (précis, économe) | `[slowly]` · `[serious]` · `[pauses]` · `[measured]` | `"- En fait... [pauses] c'est pas ça."` |
+| Analyse / explication | `[analytical tone]` · `[objective]` · `[factual]` | `"- Logiquement... [analytical tone]"` |
+| Découverte (observation) | `[curious]` · `[contemplative]` | `"- Attends. [curious] J'ai vu quelque chose."` |
+| Explication factuelle | `[matter-of-fact]` · `[precise]` | `"- C'est parce que... [matter-of-fact]"` |
+
+**Jamais** : `[excited]` · `[quickly]` · `[shouts]` · `[laughs]` — hors moment de vraie surprise
+**Jamais** : `[distant]` · `[mechanical]` — Lulu est concentré, pas détaché ni robotique
+**Onomatopée signature** : "hmm" (longue réflexion avant de parler — interjection, pas bruitisme)

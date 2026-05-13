@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MJ-21 — Peins les bus</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none; }
+    body { font-family:'Nunito',sans-serif; background:linear-gradient(160deg,#0f1a2e,#1a2338 60%,#0a0f1a); height:100dvh; overflow:hidden; touch-action:none; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:900px; margin:0 auto; }
+
+    /* header */
+    .hdr { display:flex; align-items:center; padding:10px 16px; flex-shrink:0; background:linear-gradient(90deg,rgba(255,255,255,.1),rgba(255,255,255,.05)); border-bottom:1px solid rgba(255,255,255,.1); }
+    .back { color:#fff; text-decoration:none; font-size:1.5rem; margin-right:12px; padding:4px 8px; border-radius:8px; }
+    .back:active { background:rgba(255,255,255,.2); }
+    .htitle { color:#fff; font-size:1.2rem; font-weight:900; flex:1; }
+    .score-badge { background:rgba(255,255,255,.15); color:#ffe066; font-weight:900; padding:4px 12px; border-radius:20px; font-size:.9rem; }
+
+    /* target row */
+    .target-row { display:flex; align-items:center; justify-content:center; gap:14px; padding:10px 16px; flex-shrink:0; }
+    .t-arrow { color:#ffe066; font-size:2rem; flex-shrink:0; }
+    .t-color { display:flex; flex-direction:column; align-items:center; gap:3px; }
+    .t-swatch { width:68px; height:68px; border-radius:50%; border:4px solid rgba(255,255,255,.4); box-shadow:0 0 20px rgba(0,0,0,.5); }
+    .t-label { color:#fff; font-size:1rem; font-weight:900; }
+
+    /* bus animation zone */
+    .bus-zone { height:80px; position:relative; overflow:hidden; flex-shrink:0; margin:0 16px; }
+    .anim-bus { position:absolute; bottom:0; left:-200px; transition:left .7s ease; }
+    .anim-bus.enter { left:50%; transform:translateX(-50%); }
+    .anim-bus.exit  { left:110%; transform:translateX(0); }
+
+    /* info */
+    .info-bar { text-align:center; color:#ffe066; font-size:.95rem; font-weight:900; padding:4px 16px; min-height:24px; flex-shrink:0; }
+
+    /* glass */
+    .glass-zone { flex:1; display:flex; align-items:center; justify-content:center; }
+    .glass { width:130px; height:170px; background:rgba(255,255,255,.04); border:4px solid rgba(255,255,255,.5); border-top:none; border-radius:0 0 38px 38px; position:relative; overflow:hidden; }
+    .glass::before { content:''; position:absolute; top:-4px; left:-4px; right:-4px; height:4px; background:rgba(255,255,255,.5); border-radius:4px 4px 0 0; }
+    .g-liquid { position:absolute; bottom:0; left:0; right:0; height:0; transition:height .4s ease, background .5s ease; }
+    .g-drops { position:absolute; bottom:10px; left:0; right:0; display:flex; justify-content:center; gap:5px; z-index:2; }
+
+    /* flacons */
+    .flacons { display:flex; justify-content:center; gap:12px; padding:10px 16px 12px; flex-shrink:0; }
+    .flacon { flex:1; max-width:160px; min-height:92px; border-radius:18px; border:none; cursor:pointer; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:5px; font-family:inherit; font-weight:900; font-size:1rem; color:#fff; text-shadow:0 1px 4px rgba(0,0,0,.6); box-shadow:0 4px 16px rgba(0,0,0,.3); transition:transform .1s; }
+    .flacon:active { transform:scale(.92); }
+    .f-drop { width:28px; height:36px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; border:3px solid rgba(255,255,255,.5); }
+
+    /* controls */
+    .ctrls { display:flex; justify-content:center; padding:0 16px 10px; flex-shrink:0; }
+    .btn { padding:8px 24px; border-radius:24px; border:none; background:rgba(255,255,255,.15); color:#fff; font-weight:900; font-size:.95rem; font-family:inherit; cursor:pointer; }
+    .btn:active { background:rgba(255,255,255,.25); }
+
+    /* victory overlay */
+    .vo { position:fixed; inset:0; background:rgba(0,0,0,.9); backdrop-filter:blur(8px); display:flex; align-items:center; justify-content:center; z-index:1000; opacity:0; visibility:hidden; transition:all .5s; }
+    .vo.show { opacity:1; visibility:visible; }
+    .vc { text-align:center; padding:30px 20px; background:linear-gradient(135deg,#1a1a2e,#16213e); border-radius:24px; border:2px solid rgba(255,255,255,.1); max-width:92vw; }
+    .ve { font-size:3rem; margin-bottom:10px; animation:bounce 1s infinite; }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
+    .vt { font-size:1.8rem; color:#ffe066; margin-bottom:6px; }
+    .vs { color:#fff; margin-bottom:18px; font-size:.95rem; }
+    .vbtn { padding:12px 22px; border-radius:26px; text-decoration:none; font-weight:900; border:none; cursor:pointer; font-family:inherit; margin:0 6px; display:inline-block; color:#fff; }
+    .vbtn.p { background:linear-gradient(135deg,#00c47a,#00a86b); }
+    .vbtn.s { background:rgba(255,255,255,.15); }
+
+    /* flash */
+    .flash { position:fixed; top:50%; left:50%; transform:translate(-50%,-50%); background:rgba(10,10,30,.92); color:#fff; font-weight:900; font-size:1.2rem; padding:14px 26px; border-radius:16px; text-align:center; z-index:500; pointer-events:none; opacity:0; transition:opacity .3s; max-width:82vw; white-space:pre-line; }
+    .flash.show { opacity:1; }
+
+    /* flying drop */
+    .fdrop { position:fixed; pointer-events:none; z-index:200; width:20px; height:26px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; box-shadow:0 2px 6px rgba(0,0,0,.4); }
+  </style>
+</head>
+<body>
+<div id="app">
+  <div class="hdr">
+    <a href="index.html" class="back">←</a>
+    <span class="htitle">🎨 Peins les bus !</span>
+    <span class="score-badge" id="scoreBadge">0 / 10</span>
+  </div>
+
+  <div class="target-row" id="targetRow"></div>
+
+  <div class="bus-zone" id="busZone"></div>
+
+  <div class="info-bar" id="infoBar">Tape un flacon pour ajouter une goutte !</div>
+
+  <div class="glass-zone">
+    <div class="glass" id="glass">
+      <div class="g-liquid" id="gLiquid"></div>
+      <div class="g-drops" id="gDrops"></div>
+    </div>
+  </div>
+
+  <div class="flacons">
+    <button class="flacon" id="fR" style="background:linear-gradient(135deg,#C01818,#800C0C)" onclick="addDrop('R')">
+      <div class="f-drop" style="background:#CC2020"></div>
+      Rouge
+    </button>
+    <button class="flacon" id="fJ" style="background:linear-gradient(135deg,#C8A800,#886A00)" onclick="addDrop('J')">
+      <div class="f-drop" style="background:#E8C800"></div>
+      Jaune
+    </button>
+    <button class="flacon" id="fB" style="background:linear-gradient(135deg,#0C2EA0,#081A6A)" onclick="addDrop('B')">
+      <div class="f-drop" style="background:#1040B8"></div>
+      Bleu
+    </button>
+  </div>
+
+  <div class="ctrls">
+    <button class="btn" onclick="clearDrops()">🚿 Vider le verre</button>
+  </div>
+</div>
+
+<div class="vo" id="vo">
+  <div class="vc">
+    <div class="ve">🎉</div>
+    <h2 class="vt">Bravo !</h2>
+    <p class="vs">Tu as peint tous les bus ! 🚌🎨</p>
+    <button class="vbtn p" onclick="startGame();document.getElementById('vo').classList.remove('show')">🎲 Rejouer</button>
+    <a href="index.html" class="vbtn s">📋 Menu</a>
+  </div>
+</div>
+
+<div class="flash" id="flash"></div>
+
+<script src="js/sounds.js"></script>
+<script src="js/feedback.js"></script>
+<script src="js/bus-svg.js"></script>
+<script src="js/data.js"></script>
+<script>
+// Couleurs des flacons (R=rouge, J=jaune, B=bleu)
+const FHEX = { R:'#CC2020', J:'#E8C800', B:'#1040B8' };
+
+// Table de mélange peinture (règle pigments, pas RGB)
+// Clé = nR + nJ + nB (ex: '220' = 2R+2J+0B)
+const MIX = {
+  '400':{ hex:'#D42020', name:'rouge' },
+  '310':{ hex:'#E84A10', name:'rouge-orangé' },
+  '220':{ hex:'#F08000', name:'orange' },
+  '130':{ hex:'#F5A800', name:'jaune-orangé' },
+  '040':{ hex:'#E8C800', name:'jaune' },
+  '031':{ hex:'#90BC00', name:'vert clair' },
+  '022':{ hex:'#1A8040', name:'vert' },
+  '013':{ hex:'#009898', name:'turquoise' },
+  '004':{ hex:'#1040B8', name:'bleu' },
+  '103':{ hex:'#601890', name:'bleu-violet' },
+  '202':{ hex:'#8020A8', name:'violet' },
+  '301':{ hex:'#780C40', name:'bordeaux' },
+  '121':{ hex:'#587848', name:'olive' },
+  '211':{ hex:'#984030', name:'marron' },
+  '112':{ hex:'#505898', name:'bleu-gris' },
+};
+
+// Défis : clé recette → numéro de bus
+const DEFIS_BASE = [
+  { key:'400', num:'3'   },   // rouge
+  { key:'040', num:'1'   },   // jaune
+  { key:'004', num:'2'   },   // bleu
+  { key:'220', num:'21'  },   // orange
+  { key:'022', num:'12'  },   // vert
+  { key:'202', num:'14'  },   // violet
+  { key:'013', num:'380' },   // turquoise (3B+1J — demande utilisateur)
+  { key:'310', num:'7'   },   // rouge-orangé
+  { key:'103', num:'13'  },   // bleu-violet
+  { key:'130', num:'N42' },   // jaune-orangé
+];
+
+let drops=[], defis=[], idx=0, score=0, busy=false;
+
+function shuffle(a){ const b=[...a]; for(let i=b.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[b[i],b[j]]=[b[j],b[i]];} return b; }
+function sleep(ms){ return new Promise(r=>setTimeout(r,ms)); }
+function snd(fn){ try{ fn&&fn(); }catch(e){} }
+function mixKey(){ return drops.filter(d=>d==='R').length+''+drops.filter(d=>d==='J').length+''+drops.filter(d=>d==='B').length; }
+
+function startGame(){
+  drops=[]; defis=shuffle(DEFIS_BASE); idx=0; score=0; busy=false;
+  updScore(); loadDefi();
+  if(typeof Tracker!=='undefined') Tracker.startSession('mj-21');
+}
+
+function updScore(){ document.getElementById('scoreBadge').textContent=score+' / '+DEFIS_BASE.length; }
+
+function loadDefi(){
+  drops=[]; busy=false; renderGlass();
+  const d=defis[idx]; const m=MIX[d.key];
+  document.getElementById('targetRow').innerHTML=
+    '<div>'+busSVG('#8a95a3','#444',d.num,78)+'</div>'+
+    '<div class="t-arrow">→</div>'+
+    '<div class="t-color">'+
+      '<div class="t-swatch" style="background:'+m.hex+'"></div>'+
+      '<div class="t-label">'+m.name+'</div>'+
+    '</div>';
+  document.getElementById('infoBar').textContent='Bus '+d.num+' → fais du '+m.name+' !';
+}
+
+function renderGlass(){
+  const liq=document.getElementById('gLiquid');
+  const drow=document.getElementById('gDrops');
+  const k=mixKey();
+  const m=drops.length>0?MIX[k]:null;
+  liq.style.height=(drops.length/4*100)+'%';
+  liq.style.background=m?m.hex:'transparent';
+  drow.innerHTML='';
+  drops.forEach(d=>{
+    const el=document.createElement('div');
+    el.style.cssText='width:24px;height:24px;border-radius:50%;background:'+FHEX[d]+';border:2px solid rgba(255,255,255,.5);flex-shrink:0;';
+    drow.appendChild(el);
+  });
+}
+
+function addDrop(c){
+  if(busy||drops.length>=4) return;
+  drops.push(c);
+  snd(sndClick);
+  flyDrop(c);
+  renderGlass();
+  const rem=4-drops.length;
+  if(rem===0){ document.getElementById('infoBar').textContent='Verre plein ! On mélange…'; setTimeout(evaluate,500); }
+  else { document.getElementById('infoBar').textContent=rem===1?'Encore 1 goutte !':'Encore '+rem+' gouttes !'; }
+}
+
+function flyDrop(c){
+  const fEl=document.getElementById('f'+c);
+  const gEl=document.getElementById('glass');
+  if(!fEl||!gEl) return;
+  const fR=fEl.getBoundingClientRect();
+  const gR=gEl.getBoundingClientRect();
+  const el=document.createElement('div');
+  el.className='fdrop';
+  el.style.background=FHEX[c];
+  el.style.left=(fR.left+fR.width/2-10)+'px';
+  el.style.top=fR.top+'px';
+  el.style.transition='top .38s ease-in, opacity .15s';
+  document.body.appendChild(el);
+  requestAnimationFrame(()=>{ el.style.top=(gR.bottom-36)+'px'; });
+  setTimeout(()=>{ el.style.opacity='0'; setTimeout(()=>el.remove(),150); },390);
+}
+
+function evaluate(){
+  if(busy) return;
+  const d=defis[idx]; const k=mixKey();
+  if(k===d.key){
+    busy=true; score++; updScore();
+    snd(sndDing);
+    try{ confettiBurst&&confettiBurst(40); }catch(e){}
+    document.getElementById('infoBar').textContent='Parfait ! 🎉';
+    paintBus(d.num, MIX[d.key].hex, ()=>{
+      idx++;
+      if(idx>=defis.length){
+        setTimeout(()=>document.getElementById('vo').classList.add('show'),300);
+        if(typeof Tracker!=='undefined') Tracker.endSession(1,1);
+      } else { loadDefi(); }
+    });
+  } else {
+    const mm=MIX[k]; const mn=mm?mm.name:'une belle couleur';
+    snd(sndBuzz);
+    showFlash('C\'est '+mn+' !\nEssaie encore 🎨');
+    setTimeout(clearDrops,1300);
+  }
+}
+
+function clearDrops(){
+  drops=[]; renderGlass();
+  const d=defis[idx]; const m=MIX[d.key];
+  document.getElementById('infoBar').textContent='Bus '+d.num+' → fais du '+m.name+' !';
+}
+
+function showFlash(msg){
+  const el=document.getElementById('flash');
+  el.textContent=msg; el.classList.add('show');
+  setTimeout(()=>el.classList.remove('show'),1300);
+}
+
+async function paintBus(num, color, onDone){
+  const zone=document.getElementById('busZone');
+  zone.innerHTML='';
+  const bus=document.createElement('div');
+  bus.className='anim-bus';
+  bus.innerHTML=busSVG('#8a95a3','#444',num,100);
+  zone.appendChild(bus);
+  await sleep(60); bus.classList.add('enter'); await sleep(850);
+  const rect=bus.querySelector('rect[x="84"]');
+  if(rect){ rect.style.transition='fill .5s ease'; rect.setAttribute('fill',color); }
+  const txt=bus.querySelector('text');
+  if(txt){ txt.setAttribute('fill','#fff'); }
+  await sleep(700);
+  bus.classList.remove('enter'); bus.classList.add('exit'); await sleep(700);
+  zone.innerHTML='';
+  onDone&&onDone();
+}
+
+document.addEventListener('DOMContentLoaded', startGame);
+</script>
+<script src="js/tracker.js"></script>
+<script src="js/comments.js"></script>
+<script src="js/back-button.js"></script>
+</body>
+</html>

@@ -41,39 +41,6 @@ game/
 
 ---
 
-## Lecture obligatoire avant toute modif jeu
-
-| Étape | Fichier | Pourquoi |
-|-------|---------|----------|
-| 1 | [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md) | **Source de vérité chiffres clés** (règles UX, casting tile, état déploiement, fichiers clés) |
-| 2 | [`memory/state.md`](memory/state.md) | État déploiement statique (jeux actifs/retirés, bugs critiques) |
-| 3 | [`memory/rules.md`](memory/rules.md) | Règles UX non-négociables (zéro pénalité, feedback <200 ms, zones tap 80px+) |
-| 4 | [`memory/stack.md`](memory/stack.md) | Stack technique + règle bus SVG (toujours `busSVG()`) |
-| 5 | [`pmo/decisions.md`](pmo/decisions.md) | Décisions tranchées récentes (pivot brique-avant-macro, etc.) |
-| 6 | [`pmo/sprint-log.md`](pmo/sprint-log.md) | Dernière session (état au reboot) |
-| 7 | [`pmo/backlog.md`](pmo/backlog.md) | Épics EP-xxx + leçons L-xxx |
-| 8 | [`docs/jeux/INDEX.md`](docs/jeux/INDEX.md) | Spec game-by-game |
-
----
-
-## ⚙️ PMO + Archiviste proactifs (refonte 2026-05-13)
-
-**`game-pmo` est invoqué AUTOMATIQUEMENT à chaque tour incluant un signal JEU.** Cohérent avec `narration-pmo` côté NARRATION. Signaux : mini-jeu, MJ, mj-XX, bus-svg, victory-sounds, tile, recipe, LimeZu, cartography, patterns, rules.md, stack.md, Phaser, max-adventure, déploiement.
-
-**`game-archiviste` est invoqué AUTOMATIQUEMENT à chaque tour incluant un signal structure.** Signaux : création/modif/suppression fichier, dossier, INDEX, gabarit, refs cassées, recipe, LESSONS.
-
-**Binôme FOND/FORME** :
-- PMO (FOND) : décisions, backlog, sprint-log, INVARIANTS, audit-trail
-- Archiviste (FORME) : dossiers, gabarit respecté, refs valides, fichiers orphelins, préfixage
-
-**Sources de vérité** :
-- [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md) — chiffres clés (règles UX, casting tile, count MJ, recipes)
-- [`pmo/audit-trail.md`](pmo/audit-trail.md) — traces audits + analyses cause racine
-
-**Commandes audit** :
-- `/game-pmo-audit` — FOND (cohérence sémantique, statuts)
-- `/game-archiviste-audit` — FORME (gabarit, refs, orphelins)
-
 ---
 
 ## Équipe agents
@@ -115,14 +82,6 @@ Détails complets : [`EQUIPE.md`](EQUIPE.md).
   - `/mj-pose-tiles.html` → mini-jeu kids tileset
 
 ---
-
-## Règles non-négociables (résumé — détail dans `pmo/INVARIANTS.md`)
-
-1. **Bus** : toujours `busSVG()` / `busSVGHiddenNum()` de [`web/js/bus-svg.js`](web/js/bus-svg.js). Jamais d'emoji 🚌, jamais de div CSS colorée.
-2. **Couleurs** : toujours via `LIGNES` de [`web/js/data.js`](web/js/data.js). Jamais de hex hardcodé.
-3. **Zéro pénalité punitive** · **Feedback < 200 ms** · **Zones tap min 80 px** · **Sessions 3–8 min**.
-4. **Casting tile** (mnémonique) : `Asphalt_1_Variation_2` propre H · `_8` propre V · `_14` sale H · `_15` sale V.
-5. **vocab.py** = source unique constantes tiles depuis 2026-05-12 (`cartography.json` deprecated).
 
 ---
 

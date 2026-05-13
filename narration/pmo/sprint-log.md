@@ -11,6 +11,26 @@
 
 ---
 
+## 2026-05-14 — [PMO] Tags ElevenLabs v3 absorbés + 9 voix.md enrichis + catalogue narrateur créé
+
+**Objectif** : absorber contribution Kimi (1806 tags EL v3 + guide enneatypes) dans la base MaxPlay.
+
+**Fait** :
+- [x] Archivage `narration/inbox/Kimi_Agent_Tags & Enneatypes/` → `personnages/voix-meta/tags-elevenlabs/` (8 fichiers : JSON + CSV + md)
+- [x] Création `personnages/voix-meta/_NARRATEUR-TAGS.md` — 26 tags narrateur hors-dialogue, combos Ki/Shō/Ten/Ketsu
+- [x] Création `personnages/voix-meta/_TAGS-MAXPLAY-CURATED.md` — ~70 tags filtrés (👍 ≥ 5, 4-6 ans), organisés par usage
+- [x] Enrichissement 9 voix.md (T1–T9) avec nouveaux tags Kimi filtrés — T8 bellowing/explosive/booming exclus
+- [x] Suppression dossier inbox Kimi (distillé)
+
+**Décisions enregistrées** :
+- DEC-TAGS-KIMI : absorption sélective (pas tous les 1806) — filtre 👍 ≥ 5 + adapté 4-6 ans MaxPlay
+- DEC-TAGS-T8 : `[bellowing]` / `[explosive]` / `[booming]` EXCLUS Juju — trop violent univers 4-6 ans
+- DEC-TAGS-T5 : `[distant]` / `[mechanical]` EXCLUS Lulu — robotique/froid incompatible avec observateur-concentré
+
+**État** : ✅ Catalogue absorbé. Voix.md tous à jour.
+
+---
+
 ## 2026-05-13 — [PMO CLÔTURE TOUR] INBOX formalisé + 7 tickets créés + ARCHI-006 formalisation PMO
 
 **Objectif** : procédure formelle clôture 2026-05-08 (INBOX dump + ARCHI + UNIVERS).

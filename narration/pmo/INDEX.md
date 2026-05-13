@@ -13,9 +13,9 @@
 | Histoires en production | 1 — *Libellule Résonance* (002, étape 4 prête à lancer) |
 | Axes en stock | 15 (10 unitaires + 5 transversaux) |
 | Personnages | 9 + Wex — casting V1 figé (2026-04-24) |
-| Voix ElevenLabs | **6/10 figées** — **5 garçons complet** (Wex/Polo/Melki/Pierrot/Lulu/Nono) + Raph. Reste 3 filles (Mimi/Madie/Juju) |
+| Voix ElevenLabs | **6/10 figées** — **5 garçons complet** (Wex/Dadou/Melki/Pierrot/Lulu/Nono) + Raph. Reste 3 filles (Mimi/Madie/Juju) |
 | Nom univers | ❌ non tranché — 5 finalistes |
-| Prochaine action | Trancher Q-ouvertes STORY-002 puis lancer étape 4 (10 writers) |
+| Prochaine action | **Lancer étape 4 STORY-002** (10 writers) — Q-ouvertes tranchées 2026-05-12, étapes 0/1/3 ✅ |
 
 ---
 

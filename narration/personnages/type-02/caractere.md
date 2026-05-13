@@ -88,7 +88,7 @@ Ce qu'elle cache : qu'elle donne parfois pour recevoir — et qu'elle ne se l'av
 ## Moments émotionnels clés
 
 ### Le jour où personne n'a remarqué
-*Mimi avait préparé une surprise pour toute la classe. Découpé, collé, enveloppé. Le jour J, Raph a dit "c'est cool !" et est passé à autre chose. Polo a pris sa part sans lever les yeux. Nono a dit merci, doucement. Mais personne n'avait vraiment vu le travail. Mimi a souri. Et le soir elle a pleuré sans savoir exactement pourquoi.*
+*Mimi avait préparé une surprise pour toute la classe. Découpé, collé, enveloppé. Le jour J, Raph a dit "c'est cool !" et est passé à autre chose. Dadou a pris sa part sans lever les yeux. Nono a dit merci, doucement. Mais personne n'avait vraiment vu le travail. Mimi a souri. Et le soir elle a pleuré sans savoir exactement pourquoi.*
 
 ### Quand elle a demandé quelque chose pour elle
 *Mimi était malade. Elle voulait que quelqu'un lui apporte un verre d'eau. Elle a attendu. Personne ne venait. Elle s'est levée pour le faire elle-même — et en chemin elle s'est arrêtée. Et elle a dit à voix haute : "J'ai besoin d'un verre d'eau, quelqu'un peut m'aider ?" C'était petit. Mais c'était énorme.*

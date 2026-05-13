@@ -138,7 +138,7 @@ La paix. La présence qui rassure. Le point d'ancrage autour duquel les autres c
 - Juju T8 (affinité, force+douceur)
 - Raph T7 (affinité, énergie+douceur)
 - Pierrot T6 (affinité, paix+loyauté)
-- Polo T3 (complémentaire forte — élan+paix)
+- Dadou T3 (complémentaire forte — élan+paix)
 - Melki T1 (énergie inverse féconde)
 
 ### Garde-fou (à ne PAS faire)

@@ -106,14 +106,14 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 |---------|---------|----------|---------------|
 | `stories/<NNN-slug>/1-pitch-plan.md` | Pitch+Plan fusionnés (4 cases + Kishōtenketsu léger) | Conseiller | 1 |
 | `stories/<NNN-slug>/3-briefs/{brief-univers,brief-personnages,brief-histoire,_writer-package}.md` | Briefs writers stateless (3 séparés + 1 autoporteur pour MCP externes) | Directeur | 3 |
-| `stories/<NNN-slug>/4-versions-writers/*.md` | 10 versions (2 Claude Opus + 3 Kimi libre + 1 Kimi guidé + 2 DeepSeek + 2 Grok) + notes d'intention | Writers | 4 |
-| `stories/<NNN-slug>/5-lecteurs-temoins/*.md` | 20 retours lecteurs (panel 6 transitoire pour stories <003) texte libre | Lecteurs | 5 |
+| `stories/<NNN-slug>/4-versions-writers/*.md` | 14 versions (6 Claude Opus/Sonnet/Haiku × déf/reco + 4 Kimi déf/reco/thinking/guidé + 2 DeepSeek déf/reco + 2 Grok déf/reco) + notes d'intention | Writers | 4 |
+| `stories/<NNN-slug>/5-lecteurs-temoins/*.md` | 20 retours lecteurs (panel 20 obligatoire depuis STORY-002, décision 2026-05-13) texte libre | Lecteurs | 5 |
 | `stories/<NNN-slug>/6-selection.md` | Choix version base + éléments à récupérer + brief rewrite | Directeur | 6 |
 | `stories/<NNN-slug>/7-rewrite/<llm>-rewrite-v1.md` | Rewrite (1 cycle max) | Writer top 1 | 7 |
 | `stories/<NNN-slug>/8-gatekeeper-verdict.md` | PASS/CORRECTIONS + motif | GateKeeper | 8 |
 | `stories/<NNN-slug>/kanban.md` | Suivi des 10 étapes (source de vérité reprise) | owner d'étape | toutes |
 | `stories/<NNN-slug>/5-synthese-lecteurs.md` | Consolidation Directeur des retours lecteurs (étape 5) | Directeur | 5 → 6 |
-| `stories/<NNN-slug>/9-relecture-rewrite/` | Panel 20 (ou 6 transitoire) re-relecture du rewrite | Lecteurs | 9 |
+| `stories/<NNN-slug>/9-relecture-rewrite/` | Panel 20 re-relecture du rewrite (exception STORY-001 : panel 6) | Lecteurs | 9 |
 | `stories/<NNN-slug>/10-texte.md` | **CANON** — figé post-GateKeeper PASS + auteur-validé | Directeur | 10 |
 | `stories/<NNN-slug>/10-synthese-finale.md` | Synthèse finale Directeur (post-canon) | Directeur | 10 |
 | `stories/<NNN-slug>/_archive/` | Versions abandonnées + anciennes vN (jamais d'overwrite) | tous | toutes |

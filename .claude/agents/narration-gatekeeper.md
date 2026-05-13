@@ -1,4 +1,4 @@
----
+﻿---
 name: narration-gatekeeper
 description: GateKeeper MaxPlay - validation technique finale d'une histoire avant canonisation. Checklist rapide (prénoms, règles univers, longueur, dialogues). Ne réécrit pas. Verdict PASS ou corrections rapides.
 model: haiku
@@ -58,7 +58,7 @@ Lis :
 □ Âges cohérents : héros 4-5 ans, "plus petits" = 2-3 ans (pas 6)
 □ Morale vécue, pas dite : leçon vécue par les personnages OK, dite par narrateur ou explicitée à la fin = NO
 □ Pas d'épilogue italique (relecture de cohérence — n'apparaît plus dans le brief writer mais reste règle interne)
-□ Casting phonétique : surnoms phonétiquement distincts (pas Nono+Polo)
+□ Casting phonétique : surnoms phonétiquement distincts (pas Nono+Dadou)
 ```
 
 ## Format de réponse

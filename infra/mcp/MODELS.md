@@ -25,12 +25,14 @@ maintenu_par: Auteur (John) + agent narration-pmo
 
 **Règle** : on ne mélange JAMAIS les usages.
 
-| Writer | MCP à utiliser | Pourquoi |
-|--------|----------------|----------|
-| kimi-def (#7) | `ask_kimi` (gratuit) | Pas besoin de top_p ni thinking → endpoint coding suffit |
-| kimi-reco (#8) | **`ask_kimi_payant`** | Besoin `top_p: 0.95` couplé à `temperature: 1.0` (reco Moonshot) |
-| kimi-thinking (#9) | **`ask_kimi_payant`** avec `thinking: true` | Seul moyen d'activer le mode thinking K2.6 |
-| kimi-guide (#10) | `ask_kimi` (gratuit) | Temp 0.6 sans top_p — endpoint coding accepte |
+| Writer | MCP à utiliser | Modèle réel | Param distinctif |
+|--------|----------------|-------------|-------------------|
+| kimi-reco (#7) | `ask_kimi` (gratuit) | `kimi-for-coding` | temp 0.6 (reco Moonshot Instant créatif) |
+| kimi-k26-instant (#8) | **`ask_kimi_payant`** | `kimi-k2.6` | `thinking: {"type": "disabled"}` |
+| kimi-k26-thinking (#9) | **`ask_kimi_payant`** | `kimi-k2.6` | `thinking: {"type": "enabled"}` (= défaut K2.6) |
+| kimi-reco-guide (#10) | `ask_kimi` (gratuit) | `kimi-for-coding` | temp 0.6 + couche axes 1-6 + trame |
+
+**Note clé K2.6** : selon doc Moonshot officielle (https://platform.kimi.ai/docs/api/models-overview#parameter-comparison), `kimi-k2.6` a **temperature et top_p fixes** côté modèle — l'API ignore ce qu'on envoie. **Seul `thinking` est contrôlable**. C'est pourquoi #8 et #9 ne se différencient QUE par ce param.
 
 **Hors writers narratifs** : tout autre besoin Kimi (questions tech, exploration, etc.) → toujours `ask_kimi` (gratuit). Jamais le payant.
 
@@ -41,8 +43,8 @@ maintenu_par: Auteur (John) + agent narration-pmo
 | Bloc | N | LLM | Rôle | MCP appelé |
 |------|---|-----|------|------------|
 | Claude | 6 | `claude-opus-4-7` / `sonnet-4-6` / `haiku-4-5` × déf/reco | libre — calibration multi-modèles | agent `narration-writer-claude-libre` (SDK direct, pas MCP) |
-| Kimi libre | 3 | `kimi-k2.6` (déf/reco/thinking) | libre — variance native + calibration | #7 → `ask_kimi` · #8 → `ask_kimi_payant` (top_p) · #9 → `ask_kimi_payant` (thinking) |
-| Kimi guidé | 1 | `kimi-k2.6` non-thinking | **guidé** — axes 1-6 + retours lecteurs + trame story | `ask_kimi` (gratuit, 0.6) |
+| Kimi libre | 3 | `kimi-for-coding` (#7) + `kimi-k2.6` (#8 Instant, #9 Thinking) | libre — variance native + calibration | #7 kimi-reco → `ask_kimi` (gratuit) · #8 kimi-k26-instant → `ask_kimi_payant` (thinking disabled) · #9 kimi-k26-thinking → `ask_kimi_payant` (thinking enabled) |
+| Kimi guidé | 1 | `kimi-for-coding` | **guidé** — axes 1-6 + retours lecteurs + trame story | #10 kimi-reco-guide → `ask_kimi` (gratuit, 0.6) |
 | DeepSeek | 2 | `deepseek-v4-pro` non-thinking × déf/reco | libre — calibration température | `ask_deepseek` |
 | Grok | 2 | `grok-4.3` `reasoning_effort: low` × déf/reco | libre — calibration température | `ask_grok` |
 
@@ -64,7 +66,42 @@ Cf. [equipe/PROCESS.md](../../narration/equipe/PROCESS.md) §4.
 
 ---
 
+## 🛡️ Filet de sécurité — Logs auto (option A 2026-05-13)
+
+Chaque appel à `ask_kimi`, `ask_kimi_payant`, `ask_deepseek`, `ask_grok` est **automatiquement loggé** dans `infra/mcp/logs/<YYYY-MM-DD>/<timestamp>-<tool>-<hash>.md`.
+
+**Contenu du log** :
+- frontmatter : `tool`, `model`, `date` ISO, `request_body` (JSON)
+- corps : réponse brute du LLM
+
+**Pourquoi** : si le main thread Claude Code reçoit le texte mais crash/oublie/manque de contexte avant le `Write` tool de sauvegarde dans `narration/stories/...`, le texte reste **récupérable** sur le disque local. Filet contre la perte d'une génération créative coûteuse.
+
+**Garanties** :
+- Logging silent fail — n'interrompt JAMAIS l'appel principal en cas d'erreur d'écriture
+- Hash SHA-256 du contenu dans le nom de fichier = dédoublonnage si même réponse loggée 2x
+- Dossier **gitignored** (`.gitignore` → `infra/mcp/logs/`) — pas commit, pas envoyé
+
+**Nettoyage** : à toi de purger périodiquement. Pas de rotation auto pour l'instant (ticket ARCHI à ouvrir si besoin).
+
+---
+
 ## Historique des changements
+
+### 2026-05-13 — Logs auto MCP créatifs (option A — filet de sécurité)
+
+**Décidé par** : Papa Yann, session 2026-05-13.
+
+**Changements** :
+- `callOpenAICompat()` gagne un param optionnel `toolName`. Si fourni → log auto.
+- Nouveau dossier `infra/mcp/logs/` (gitignored).
+- Logging silent fail (try/catch interne, n'interrompt jamais l'appel).
+- 4 outils branchés : `ask_grok`, `ask_kimi`, `ask_kimi_payant`, `ask_deepseek`.
+
+**Pourquoi** : alternative à donner le droit d'écriture filesystem aux LLM distants (option B) — moins risqué (pas de prompt injection vers le filesystem, pas d'écrasement involontaire), tout en couvrant 95% du cas d'usage : récupérer un texte si main thread crash avant `Write`.
+
+**Liens** : DEC à ajouter dans `narration/pmo/decisions.md` 2026-05-13.
+
+---
 
 ### 2026-05-12 — Cohabitation stricte `ask_kimi` (gratuit) + `ask_kimi_payant` (officiel)
 

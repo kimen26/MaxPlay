@@ -55,7 +55,7 @@ Dans les textes, on écrit directement **Wex**. Il reste identique dans toutes l
 |----------|----------------|--------------------------|
 | Type1 / Titi1 | Melchisédech | **Melki** |
 | Type2 / Titi2 | Marie | **Mimi** |
-| Type3 / Titi3 | Paul | **Polo** |
+| Type3 / Titi3 | David | **Dadou** |
 | Type4 / Titi4 | Madeleine | **Madie** |
 | Type5 / Titi5 | Luc | **Lulu** |
 | Type6 / Titi6 | Pierre | **Pierrot** |

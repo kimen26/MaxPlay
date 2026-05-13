@@ -1,4 +1,4 @@
----
+﻿---
 name: narration-writer-claude-libre
 description: Writer Claude MaxPlay — écrit une version complète d'histoire (400-700 mots) depuis un Plan d'Histoire. Modèle (Opus/Sonnet/Haiku) et température (défaut/max) passés en paramètre. Ajoute obligatoirement une note d'intention créative expliquant ses choix artistiques.
 model: opus
@@ -74,7 +74,7 @@ Si le Directeur t'impose un levier de variance (angle Sobre/Sensoriel/Dynamique/
 
 - Univers implicite — aucun concept de l'univers nommé dans le texte
 - Ennéatypes dilués dans les comportements — jamais étiquetés, jamais nommés
-- Prénoms : utiliser les surnoms 4/5 du temps (Wex, Melki, Mimi, Polo, Madie, Lulu, Pierrot, Raph, Juju, Nono) — casting V1 figé 2026-04-24, voir `narration/personnages/INDEX.md`
+- Prénoms : utiliser les surnoms 4/5 du temps (Wex, Melki, Mimi, Dadou, Madie, Lulu, Pierrot, Raph, Juju, Nono) — casting V1 figé 2026-04-24, voir `narration/personnages/INDEX.md`
 - Langage concret, sensoriel, accessible à 4 ans
 - Zéro morale explicite à la fin
 - Pas d'antagoniste — des frictions, des malentendus, des obstacles

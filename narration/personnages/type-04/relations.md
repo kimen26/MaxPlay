@@ -12,6 +12,6 @@
 | Melki | 1 | Tension : Melki rationalise, Madie ressent. Mais Melki reconnaît secrètement la justesse du regard de Madie. |
 | Lulu | 5 | Affinité profonde. Tous les deux tournés vers l'intérieur, cherchent la profondeur. Amitié silencieuse. |
 | Juju | 8 | Juju la laisse tranquille. Elle ne la comprend pas mais elle la respecte. Elle apprécie ça. |
-| Polo | 3 | Tension esthétique. Polo veut briller. Madie veut être vraie. Mais ils se fascinent mutuellement. |
+| Dadou | 3 | Tension esthétique. Dadou veut briller. Madie veut être vraie. Mais ils se fascinent mutuellement. |
 | Pierrot | 6 | Madie trouve la constante anticipation de Pierrot épuisante. Pierrot trouve Madie trop imprévisible. |
 

@@ -18,7 +18,7 @@
 
 Depuis le PROCESS militaire 10 étapes (2026-05-08, refonte casting v2 2026-05-12) :
 - **Writers : 14** (refonte v2 2026-05-12 — calibration multi-modèles) — 6 Claude (Opus/Sonnet/Haiku × déf/reco) + 4 Kimi (déf/reco/thinking/guidé) + 2 DeepSeek (déf/reco) + 2 Grok (déf/reco). "**reco**" = température recommandée créatif officielle par fournisseur (pas "max" — au-delà = incohérence narrative). Référence : [`references/temperatures-llm.md`](references/temperatures-llm.md). Période d'évaluation : 3-5 histoires, puis réduction (ticket ARCHI-008). Détail INVARIANTS § *Casting writers étape 4*.
-- **Panel lecteurs : 20** (et non 4) — 10 profils × 2 tranches d'âge (3-5 et 6-7 ans). Note transitoire : panel 6 reste valide pour histoires <005.
+- **Panel lecteurs : 20** (et non 4) — 10 profils × 2 tranches d'âge (3-5 et 6-7 ans). Exception : STORY-001 conserve panel historique 6 lecteurs ; panel 20 obligatoire pour TOUTES stories actives à partir de STORY-002.
 - **2 agents post-canon** : `narration-audio` (production TTS ElevenLabs) + `narration-localisation` (portage cross-country)
 - **Agents support** : `narration-science` (validation factuelle), `narration-sensibilite` (topics sensibles), `narration-archiviste` (cohérence docs), `narration-lecteur` (enfant solo simulé), `narration-lecteur-dyade` (parent-enfant simulé)
 
@@ -66,10 +66,11 @@ WRITERS × 14 (parallèles, stateless, refonte v2 2026-05-12 — calibration mul
   │     ├── opus-def + opus-reco       (`claude-opus-4-7`, low, défaut/1.0)
   │     ├── sonnet-def + sonnet-reco   (`claude-sonnet-4-6`, low, défaut/1.0)
   │     └── haiku-def + haiku-reco     (`claude-haiku-4-5`, low, défaut/1.0)
-  ├── Kimi × 4                  — MCP ask_kimi
-  │     ├── kimi-def (0.6 Instant) + kimi-reco (1.0 + top_p 0.95)
-  │     ├── kimi-thinking            (thinking activé, 1.0 fixe) ⚠️ MCP actuel ne supporte pas thinking
-  │     └── kimi-guide               — agent narration-writer-kimi-guide (GUIDÉ : axes 1-6 + trame story, 0.6)
+  ├── Kimi × 4                  — 2 MCP distincts (cohabitation stricte)
+  │     ├── kimi-reco                — `ask_kimi` gratuit (`kimi-for-coding`, temp 0.6 reco Instant)
+  │     ├── kimi-k26-instant         — `ask_kimi_payant` (`kimi-k2.6`, thinking: disabled)
+  │     ├── kimi-k26-thinking        — `ask_kimi_payant` (`kimi-k2.6`, thinking: enabled = défaut K2.6)
+  │     └── kimi-reco-guide          — agent narration-writer-kimi-guide → `ask_kimi` gratuit (GUIDÉ : axes 1-6 + trame story)
   ├── DeepSeek × 2              — MCP ask_deepseek
   │     └── deepseek-def (défaut API=0.3 modèle) + deepseek-reco (1.5 creative)
   └── Grok × 2                  — MCP ask_grok (`reasoning_effort: low`)
@@ -78,10 +79,10 @@ WRITERS × 14 (parallèles, stateless, refonte v2 2026-05-12 — calibration mul
   → Référence températures : equipe/references/temperatures-llm.md
   → Détail INVARIANTS.md § Casting writers étape 4. Évaluation : ticket ARCHI-008 réduction post 3-5 histoires.
 
-LECTEURS TÉMOINS — Panel 20 (refonte 2026-05-08)
+LECTEURS TÉMOINS — Panel 20 (refonte 2026-05-08, décision 2026-05-13 : obligatoire dès STORY-002)
   ├── 10 profils × 2 tranches âge (3-5 ans + 6-7 ans)
   ├── Enfants seuls × 12 + Dyades parent-enfant × 8
-  └── Panel 6 transitoire pour STORY-002 (et antérieures à la décision)
+  └── Exception : STORY-001 conserve panel 6 lecteurs historique (ne pas refaire)
 
 GATEKEEPER [narration-gatekeeper · Haiku]
   └── Validation technique finale (prénoms, règles, longueur) → PASS ou corrections
@@ -404,7 +405,7 @@ Archive : session résumée dans archive/YYYY-MM-DD-<titre>.md
 - [x] ~~Architecte créé~~ ⚠️ **DEPRECATED 2026-05-12** (étape 2 supprimée, matière intégrée Conseiller)
 - [x] GateKeeper créé
 - [x] Directeur réécrit (briefs + sélection + canon — owner étapes 3/6/7-repli/10)
-- [x] Lecteurs témoins réécrits (texte libre, panel 20 — panel 6 transitoire pour STORY-002)
+- [x] Lecteurs témoins réécrits (texte libre, panel 20 OBLIGATOIRE dès STORY-002 — décision 2026-05-13)
 - [x] PMO refondu proactif (2026-05-12) — invoqué auto à chaque tour narration
 - [x] Archiviste élevé maillon central proactif (2026-05-12) — binôme PMO côté forme
 - [x] Workflow 8 writers → 4 writers

@@ -1,4 +1,4 @@
-# Les Sensibilités
+﻿# Les Sensibilités
 
 > Distillé depuis INBOX 2026-04-27 + session 2026-04-28. Décisions validées par l'auteur.
 
@@ -27,7 +27,7 @@ Ce n'est pas un pouvoir — c'est un **mode de perception du vivant** plus fin q
 | 5 | **Eau** | Flux, mémoire de l'eau, tout ce qui contient de l'eau (= tout le vivant), soin | **Mimi** (Type 2 — flux vital, soin, mémoire émotionnelle du corps) |
 | 6 | **Fréquence** | Son, Schumann (7.83Hz), vent, musique du monde, radar naturel | **Madie** (Type 4 — profondeur, vibration artistique) |
 | 7 | **Cosmos** | Astres, cycles, saisons, ionosphère, rotations, fenêtres Ponaire | **Raph** (Type 7 — expansion, voyages, cycles) |
-| 8 | **Forces** | Magnétisme, gravité, énergie, électricité naturelle, champs, ionosphère | **Polo** (Type 3 — énergie, attraction, puissance) |
+| 8 | **Forces** | Magnétisme, gravité, énergie, électricité naturelle, champs, ionosphère | **Dadou** (Type 3 — énergie, attraction, puissance) |
 | 9 | **Quantique** | Intrication, non-localité, mémoire collective, ADN comme clé de lecture | **Lulu** (Type 5 — connexions invisibles, ce qui est lié sans contact) |
 
 ---

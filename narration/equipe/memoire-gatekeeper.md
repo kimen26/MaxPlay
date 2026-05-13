@@ -1,4 +1,4 @@
-# Mémoire — GateKeeper
+﻿# Mémoire — GateKeeper
 
 > Mis à jour par `narration-gatekeeper` après chaque validation.
 > Format : `- YYYY-MM-DD | <histoire> | <pattern d'erreur>`
@@ -36,7 +36,7 @@
 - ☐ **Univers IMPLICITE strict** (aucun nouveau lieu/institution/concept non attesté dans `univers/`)
 - ☐ **Mots forts / sombres : usage justifié** (un mot dur dans une phrase anodine → flag. Mots adultes abstraits non posés → flag.)
 - ☐ **Lecture orale fluide** (pas saccadé, tirets cadratins à usage clair pas ambigu, pas d'expression inventée)
-- ☐ **Casting phonétique** (surnoms du duo phonétiquement distincts — pas Nono/Polo ensemble)
+- ☐ **Casting phonétique** (surnoms du duo phonétiquement distincts — pas Nono/Dadou ensemble)
 - ☐ **Âges cohérents** (persos plus petits 2-3 ans si héros 4-5 ans, pas 6)
 
 ### Critères retirés (2026-05-03)
@@ -65,7 +65,7 @@
 - Expression inventée : "jouer avec une dent en moins"
 - Incohérence physique : ballon "chaud du bois du banc" alors que sur les genoux
 - Pronoms ambigus (3 persos en train de s'envoyer le ballon)
-- Casting phonétique : Nono + Polo dans la même histoire = confusion
+- Casting phonétique : Nono + Dadou dans la même histoire = confusion
 - Détails sensoriels regroupés en un seul bloc
 
 ### 2026-04-30 | 003 La Confidence | Audit rétroactif Papa Yann (HISTOIRE NON CANONISÉE — abandonnée)

@@ -1,4 +1,4 @@
-# Théorie ennéagramme — Index
+﻿# Théorie ennéagramme — Index
 
 > **Sous-pilier de [`personnages/theorie/`](../README.md).** Théorie psychologique pour comprendre les 9 types incarnés dans le casting MaxPlay (Wex + 9 compagnons-ennéatypes).
 >
@@ -40,7 +40,7 @@
 |---|---------|-----------|-----------|-------------|
 | 1 | Perfectionniste | Melchisédech | **Melki** | Minéraux |
 | 2 | Aidant | Marie | **Mimi** | Eau |
-| 3 | Performeur | Paul | **Polo** | Forces |
+| 3 | Performeur | David | **Dadou** | Forces |
 | 4 | Individualiste | Madeleine | **Madie** | Fréquence |
 | 5 | Observateur | Luc | **Lulu** | Quantique |
 | 6 | Loyal | Pierre | **Pierrot** | Animaux |

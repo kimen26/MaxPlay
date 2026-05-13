@@ -12,7 +12,7 @@
 |---------|------|----------------|---------------|---------|-------------|-------|
 | [type-01/](type-01/) | Perfectionniste | Melchisédech | **Melki** | Être bon·ne | Minéraux | `titi_1_fr` |
 | [type-02/](type-02/) | Aidant | Marie (F) | **Mimi** | Être aimé·e | Eau | `titi_2_fr` |
-| [type-03/](type-03/) | Performeur | Paul | **Polo** | Être valorisé·e | Forces | `titi_3_fr` |
+| [type-03/](type-03/) | Performeur | David | **Dadou** | Être valorisé·e | Forces | `titi_3_fr` |
 | [type-04/](type-04/) | Individualiste | Madeleine (F) | **Madie** | Être soi-même | Fréquence | `titi_4_fr` |
 | [type-05/](type-05/) | Observateur | Luc | **Lulu** | Comprendre | Quantique | `titi_5_fr` |
 | [type-06/](type-06/) | Loyal | Pierre | **Pierrot** | Avoir du soutien | Animaux | `titi_6_fr` |
@@ -83,7 +83,7 @@ personnages/
 | **Wex** | hors-système | À définir précisément — piste : écoute des fausses notes / lien soin-bioélectrique | 🟡 NARR-003 |
 | Melki | T1 | Minéraux | ✅ figé |
 | Mimi | T2 | Eau | ✅ figé |
-| Polo | T3 | Forces | ✅ figé |
+| Dadou | T3 | Forces | ✅ figé |
 | Madie | T4 | Fréquence | ✅ figé |
 | Lulu | T5 | Quantique | ✅ figé |
 | Pierrot | T6 | Animaux | ✅ figé |

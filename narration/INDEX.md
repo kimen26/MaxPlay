@@ -1,4 +1,4 @@
-# Narration — Index racine
+﻿# Narration — Index racine
 
 > **Charger ce fichier en premier.** Lire les sous-fichiers seulement si la tâche le nécessite.
 > Architecture en **4 piliers narratifs + opérationnel** (refonte 2026-05-10).
@@ -9,7 +9,7 @@
 
 | Quoi | Statut |
 |------|--------|
-| **Casting V1** | ✅ figé 2026-04-24 (4F/5M+Wex) — Wex + Melki/Mimi/Polo/**Madie**/Lulu/Pierrot/Raph/Juju/Nono |
+| **Casting V1** | ✅ figé 2026-04-24 (4F/5M+Wex) — Wex + Melki/Mimi/Dadou/**Madie**/Lulu/Pierrot/Raph/Juju/Nono |
 | **Univers** | post-Éveil, Printemps de l'Éveil — distillé dans `univers/` |
 | **Direction narrative** | monde sobre, merveilleux discret (vu à travers l'enfant né dedans) · patte B+D+C (Kishōtenketsu + tranche de vie + cycle) |
 | **Histoires** | 001 *Le Pont Cassé* (canon 540 mots, 2026-05-08). Brainstorm arc 1 en cours (002-010). Direction Nono validée. Arc 2 (Parole) en pause. |
@@ -96,7 +96,7 @@ narration/
 | Fichier | Contenu |
 |---------|---------|
 | [`stories/INDEX.md`](stories/INDEX.md) | **Catalogue** des histoires |
-| [`stories/001-le-pont-casse/`](stories/001-le-pont-casse/) | Canon complet (540 mots, 11 étapes PROCESS) |
+| [`stories/001-le-pont-casse/`](stories/001-le-pont-casse/) | Canon complet (540 mots, 10 étapes PROCESS) |
 | [`stories/brainstorm-arc-1.md`](stories/brainstorm-arc-1.md) | Fiche brainstorm arc 1 (002-010) en cours |
 | [`stories/axes-histoires-en-stock.md`](stories/axes-histoires-en-stock.md) | Stock d'axes (10 unitaires + 5 transversaux) |
 | [`stories/_gabarit/`](stories/_gabarit/) | Dossier modèle à copier pour une nouvelle histoire |
@@ -108,7 +108,7 @@ narration/
 | Fichier | Rôle |
 |---------|------|
 | [`equipe/INDEX.md`](equipe/INDEX.md) | **Toujours — index équipe, arbre de décision agents** |
-| [`equipe/PROCESS.md`](equipe/PROCESS.md) | Workflow militaire 11 étapes (refonte 2026-05-08) |
+| [`equipe/PROCESS.md`](equipe/PROCESS.md) | Workflow militaire 10 étapes (refonte 2026-05-08) |
 | [`equipe/patte-narrative-maxplay.md`](equipe/patte-narrative-maxplay.md) | Patte B+D+C (Kishōtenketsu + tranche de vie + cycle) |
 | [`equipe/lecons-vivantes.md`](equipe/lecons-vivantes.md) | Document vivant des patterns confirmés (P1-P10, G1-G6) |
 | [`equipe/templates/`](equipe/templates/) | 10 gabarits réutilisables (pitch, plan, briefs, sélection, kanban, synthèse) |
@@ -146,23 +146,25 @@ narration/
 
 ---
 
-## Workflow narratif (11 étapes)
+## Workflow narratif (10 étapes)
 
 ```
 0.  Auteur          → INBOX.md (idée brute)
-1.  Conseiller      → pitch.md                                     ✅ valide auteur
-2.  Architecte      → plan-histoire.md
-3.  Directeur       → briefs/{univers, personnages, histoire}.md
-4.  10 Writers      → versions-writers/ (2 Claude + 4 Kimi (dont 1 guidé) + 2 DeepSeek + 2 Grok)
-5.  20 Lecteurs     → lecteurs-temoins/ + synthese-lecteurs.md
-6.  Directeur       → selection.md (base + greffes)                ✅ valide auteur
-7.  Writer top 1    → rewrite/<llm>-rewrite-v1.md
-8.  GateKeeper      → gatekeeper-verdict.md
-9.  3-4 Lecteurs    → relecture-rewrite/ (sous-panel léger)
-10. Directeur+PMO   → texte.md (CANON) + maj lecons-vivantes.md    ✅ valide auteur
+1.  Conseiller      → 1-pitch-plan.md                              ✅ valide auteur
+                     (fusion pitch + plan léger 2026-05-12 — Architecte deprecated)
+3.  Directeur       → 3-briefs/{univers, personnages, histoire}.md + _writer-package.md
+4.  10 Writers      → 4-versions-writers/ (2 Claude + 4 Kimi (dont 1 guidé) + 2 DeepSeek + 2 Grok)
+5.  20 Lecteurs     → 5-lecteurs-temoins/ + 5-synthese-lecteurs.md
+6.  Directeur       → 6-selection.md (base + greffes)              ✅ valide auteur
+7.  Writer top 1    → 7-rewrite/<llm>-rewrite-v1.md
+8.  GateKeeper      → 8-gatekeeper-verdict.md
+9.  Panel 20        → 9-relecture-rewrite/
+10. Directeur+PMO   → 10-texte.md (CANON) + maj lecons-vivantes.md ✅ valide auteur
 ```
 
-**Règles obligatoires étapes 1-3** : lecture de [`personnages/theorie/pedagogie-enfance/`](personnages/theorie/pedagogie-enfance/README.md) + ennéatypes pertinents.
+> Étape 2 supprimée 2026-05-12 (fusion avec étape 1). Numérotation 3-10 conservée pour cohérence préfixes fichiers.
+
+**Règles obligatoires étape 1 et 3** : lecture de [`personnages/theorie/pedagogie-enfance/`](personnages/theorie/pedagogie-enfance/README.md) + ennéatypes pertinents.
 
 ---
 

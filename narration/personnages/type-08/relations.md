@@ -12,6 +12,6 @@
 | Pierrot | 6 | Juju est un peu exaspérée par les peurs de Pierrot. Mais elle le protège instinctivement. |
 | Mimi | 2 | Mimi prend soin de Juju — ce qu'elle tolère mal en général, sauf d'elle. |
 | Lulu | 5 | Fascinée par le cerveau de Lulu. Relation étrange mais de respect mutuel. |
-| Polo | 3 | Compétition directe. Juju n'aime pas que Polo cache ce qu'il pense. |
+| Dadou | 3 | Compétition directe. Juju n'aime pas que Dadou cache ce qu'il pense. |
 | Madie | 4 | Elle ne comprend pas Madie mais elle la laisse tranquille — elle sait instinctivement qu'elle ne veut pas être "réparée". |
 

@@ -12,6 +12,6 @@
 | Lulu | 5 | Raph adore les connaissances de Lulu. Elle pose mille questions. Lulu finit par sourire. |
 | Melki | 1 | Tensions fréquentes. Melki dit *"fais attention"* et Raph dit *"c'est bon !"*. Mais au fond ils s'admirent. |
 | Mimi | 2 | Mimi prend soin de Raph. Raph l'adore. Risque : Raph ne réalise pas toujours que Mimi a besoin d'elle aussi. |
-| Polo | 3 | Compétition amicale. Qui est le plus cool ? Raph s'en fiche vite — Polo reste plus accroché au résultat. |
+| Dadou | 3 | Compétition amicale. Qui est le plus cool ? Raph s'en fiche vite — Dadou reste plus accroché au résultat. |
 | Madie | 4 | Raph ne comprend pas toujours pourquoi Madie est triste. Madie ne comprend pas pourquoi Raph court toujours. Mais ils se fascinent mutuellement. |
 

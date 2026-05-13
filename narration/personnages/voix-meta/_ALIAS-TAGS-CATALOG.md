@@ -131,7 +131,7 @@ Template :
 
 - [ ] Melki (1) — précision méthodique → tics ?
 - [ ] Mimi (2) — chaleur tendre → tics ?
-- [ ] Polo (3) — punchy énergique → tics ?
+- [ ] Dadou (3) — punchy énergique → tics ?
 - [ ] Madie (4) — mélancolie rêveuse → tics ?
 - [ ] Lulu (5) — observateur silencieux → tics ?
 - [ ] Pierrot (6) — alerte amical → tics ?

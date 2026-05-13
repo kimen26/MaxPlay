@@ -1,4 +1,4 @@
-# MaxPlay — Jeu éducatif & Univers narratif pour Max (3.5-4 ans)
+﻿# MaxPlay — Jeu éducatif & Univers narratif pour Max (3.5-4 ans)
 
 ## ACTION OBLIGATOIRE — avant toute réponse
 
@@ -7,7 +7,7 @@
 | Mots dans la demande | Pôle | Lire ensuite |
 |----------------------|------|-------------|
 | jeu · MJ · mini-jeu · bus · Phaser · mj-XX · tile · LimeZu · déploiement · `game/web` | **JEU** | [`game/CLAUDE.md`](game/CLAUDE.md) → [`game/INDEX.md`](game/INDEX.md) |
-| narration · histoire · personnage · univers · ennéagramme · cross-culture · saison · arc · Wex/Melki/Mimi/Polo/Madie/Lulu/Pierrot/Raph/Juju/Nono | **NARRATION** | [`narration/CLAUDE.md`](narration/CLAUDE.md) → [`narration/INDEX.md`](narration/INDEX.md) |
+| narration · histoire · personnage · univers · ennéagramme · cross-culture · saison · arc · Wex/Melki/Mimi/Dadou/Madie/Lulu/Pierrot/Raph/Juju/Nono | **NARRATION** | [`narration/CLAUDE.md`](narration/CLAUDE.md) → [`narration/INDEX.md`](narration/INDEX.md) |
 | idée brute · dump · brainstorm sans contexte clair | **?** | Demander : "C'est pour le jeu ou pour les histoires ?" |
 
 **Étape 2 — Annoncer avant d'agir :**

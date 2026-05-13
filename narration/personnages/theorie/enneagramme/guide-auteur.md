@@ -1,4 +1,4 @@
-# Guide de l'Auteur — Écrire les Personnages avec Justesse
+﻿# Guide de l'Auteur — Écrire les Personnages avec Justesse
 
 ## Ce dont chaque personnage a besoin d'entendre
 
@@ -8,7 +8,7 @@
 |------------|------------------------------|
 | **Melki (1)** | *"Tu es bien comme tu es."* / *"Tu es assez bonne."* |
 | **Mimi (2)** | *"Tu es aimée pour ce que tu es, pas pour ce que tu fais."* |
-| **Polo (3)** | *"Tu as de la valeur pour qui tu es, pas pour ce que tu accomplis."* |
+| **Dadou (3)** | *"Tu as de la valeur pour qui tu es, pas pour ce que tu accomplis."* |
 | **Madie (4)** | *"Tu es vue. Tu es comprise. Tu comptes."* |
 | **Lulu (5)** | *"Tu as tout ce qu'il faut."* / *"Tu peux faire confiance."* |
 | **Pierrot (6)** | *"Tu n'es pas seul. Je suis là."* / *"Tu peux te faire confiance."* |
@@ -48,7 +48,7 @@
 - Cherche les yeux de ses amis pour s'assurer qu'ils vont bien
 - Se lève la nuit pour aller voir si son petit frère dort bien
 
-**Polo (3) :**
+**Dadou (3) :**
 - Regarde si les autres le regardent avant de faire quelque chose
 - Adapte son accent / son vocabulaire selon avec qui il parle
 - Se redresse et sourit quand un adulte entre dans la pièce
@@ -101,9 +101,9 @@
 - Juju (8) : *"C'est qui ?"* — prêt à agir directement
 - Nono (9) : *"C'est pas grave, on peut réparer..."* — éteint le conflit
 
-**Triade Cœur (Mimi/Polo/Madie) — réaction émotionnelle :**
+**Triade Cœur (Mimi/Dadou/Madie) — réaction émotionnelle :**
 - Mimi (2) : *"Oh non, tu vas bien ?"* — soins en premier
-- Polo (3) : *"C'était pas moi !"* — protège son image
+- Dadou (3) : *"C'était pas moi !"* — protège son image
 - Madie (4) : *"C'est triste, c'était beau cet objet..."* — ressent la perte
 
 **Triade Tête (Lulu/Pierrot/Raph) — réaction mentale :**
@@ -121,7 +121,7 @@
 |------------|--------------------|---------------------------------|
 | **Melki (1)** | Refait, corrige, juge | Rit d'elle-même, laisse tomber |
 | **Mimi (2)** | Donne sans compter | Dit *"j'ai besoin de..."* et laisse les autres lui donner |
-| **Polo (3)** | Performe pour être aimé | Montre sa vulnérabilité et découvre qu'il est aimé quand même |
+| **Dadou (3)** | Performe pour être aimé | Montre sa vulnérabilité et découvre qu'il est aimé quand même |
 | **Madie (4)** | Plonge dans la mélancolie | Traduit sa douleur en action concrète et belle |
 | **Lulu (5)** | Accumule, observe | Partage, s'engage, agit avec confiance |
 | **Pierrot (6)** | Anticipe les catastrophes | Avance malgré la peur, fait confiance |
@@ -142,7 +142,7 @@
 | Lulu + Raph | Profondeur vs curiosité papillon | Raph apprend à creuser, Lulu à partager |
 | Madie + Nono | Intensité vs calme plat | Madie apprend la paix, Nono apprend la profondeur |
 | Pierrot + Juju | Peur vs courage impulsif | Pierrot apprend à agir, Juju à attendre |
-| Polo + Melki | Image vs vérité | Polo apprend l'authenticité |
+| Dadou + Melki | Image vs vérité | Dadou apprend l'authenticité |
 
 ---
 
@@ -180,7 +180,7 @@
 |------|-----------------|-------------------|-----------------|
 | Melki (1) | Légère correction | Tension visible, mâchoire serrée | Larmes de honte ou explosion brève |
 | Mimi (2) | Petite attention | Donne trop, s'efface | Explosion de rancœur / épuisement visible |
-| Polo (3) | Sourire forcé | Justifications défensives | Effondrement silencieux |
+| Dadou (3) | Sourire forcé | Justifications défensives | Effondrement silencieux |
 | Madie (4) | Regard mélancolique | Larmes pour "rien" | Retrait total / spiral émotionnel |
 | Lulu (5) | Silence | Monosyllabes | Disparition complète |
 | Pierrot (6) | Vérification discrète | Questions anxieuses | Paralysie / crise d'inquiétude |

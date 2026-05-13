@@ -131,7 +131,7 @@
 
 ---
 
-## 👦 Type 3 — Polo (performeur, plosives punchy, smile-in-voice)
+## 👦 Type 3 — Dadou (performeur, plosives punchy, smile-in-voice)
 
 ```
 [excited] Regardez ! Je sais faire ça. [happily] C'est moi qui gagne. Bon. On y va ?

@@ -1,4 +1,4 @@
----
+﻿---
 paths:
   - "narration/scripts/**"
   - "narration/personnages/voix-meta/**"
@@ -25,7 +25,7 @@ Le skill `audio-direction-elevenlabs` est PARENT (router) + 8 sous-fichiers (API
 [`narration/personnages/voix-meta/_VOICE-IDS-CASTING.md`](../../narration/personnages/voix-meta/_VOICE-IDS-CASTING.md) — **méthodo v24 figée 2026-05-11**.
 
 Contenu :
-- voice_ids par personnage (Wex, Melki, Mimi, Polo, Madie, Lulu, Pierrot, Raph, Juju, Nono)
+- voice_ids par personnage (Wex, Melki, Mimi, Dadou, Madie, Lulu, Pierrot, Raph, Juju, Nono)
 - Narrateurs H/F
 - Voice settings recommandés (stability, similarity_boost, style)
 - Pronunciation dicts personnalisés par perso

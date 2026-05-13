@@ -1,6 +1,6 @@
-# Index des Histoires
+﻿# Index des Histoires
 
-> Maintenu manuellement à chaque canonisation. Dernière mise à jour : 2026-05-12
+> Maintenu manuellement à chaque canonisation. Dernière mise à jour : 2026-05-12 (soir — refonte PROCESS 10 étapes + préfixes étapes).
 
 ---
 
@@ -16,7 +16,7 @@
 
 | # | Titre | Statut PROCESS | Owner courant | Personnages | Prochaine action |
 |---|-------|----------------|---------------|-------------|------------------|
-| 002 | [Libellule Résonance](002-libellule-resonance/README.md) | Étape 4 (10 versions writers) prête à lancer | Directeur (briefs ✅) | Wex, Polo, Nono | Lancer 10 writers après validation auteur questions ouvertes |
+| 002 | [Libellule Résonance](002-libellule-resonance/README.md) | Étape 4 (10 versions writers) prête à lancer | Directeur (briefs ✅) | Wex, Dadou, Nono | Lancer 10 writers après validation auteur questions ouvertes |
 
 ---
 
@@ -43,4 +43,19 @@ Prochaine histoire après 002 = **003** (renumérotation séquentielle, l'ancien
 
 ## Workflow par histoire
 
-Voir [`equipe/PROCESS.md`](../equipe/PROCESS.md) — 11 étapes (0 à 10).
+Voir [`equipe/PROCESS.md`](../equipe/PROCESS.md) — **10 étapes** (0, 1, 3-10 — étape 2 supprimée 2026-05-12 par fusion Pitch+Plan).
+
+### Convention préfixes fichiers (depuis 2026-05-12)
+
+Tout fichier ou dossier dans `stories/<NNN>/` est préfixé par le numéro de l'étape qui le produit :
+- `1-pitch-plan.md` (étape 1)
+- `3-briefs/` (étape 3 — 4 fichiers : brief-univers, brief-personnages, brief-histoire, _writer-package)
+- `4-versions-writers/` (étape 4)
+- `5-lecteurs-temoins/` + `5-synthese-lecteurs.md` (étape 5)
+- `6-selection.md` (étape 6)
+- `7-rewrite/` (étape 7)
+- `8-gatekeeper-verdict.md` (étape 8)
+- `9-relecture-rewrite/` (étape 9)
+- `10-texte.md` + `10-synthese-finale.md` (étape 10 — CANON)
+
+**Fichiers transverses sans préfixe** : `README.md`, `kanban.md`.

@@ -1,4 +1,4 @@
----
+﻿---
 titre: Pédagogie de l'enfance 4-7 ans — boussole MaxPlay
 date_creation: 2026-05-08
 maintenu_par: Conseiller (`narration-conseiller`)
@@ -175,7 +175,7 @@ Recherches sur albums « quiet kids » (Kirkus, PBS Parents, Introvert Dear) con
 **Règle anti-biais MaxPlay** : sur les 9 histoires, garantir que chaque ennéatype a **son moment-héros sensoriel** — pas son moment-héros action.
 
 - **Mimi T2 (aidante)** brille en remarquant un détail invisible
-- **Polo T3 (performeur)** brille quand il lâche son image pour partager une vraie joie
+- **Dadou T3 (performeur)** brille quand il lâche son image pour partager une vraie joie
 - **Madie T4 (sensible)** brille en transformant un manque en beauté
 - **Lulu T5 (observateur)** brille en remarquant ce que les autres ne voient pas
 - **Pierrot T6 (loyal)** brille en protégeant doucement
@@ -231,7 +231,7 @@ Identification corporelle/émotionnelle d'abord. Goût pour la miniature et le r
 
 1. **Calibrer 350-450 mots** chacune, structure Kishōtenketsu, fin sentie. Refrain ou onomatopée par histoire (transposable phonétiquement dans les 8 cultures cf. [`onomatopees-cross-culture.md`](onomatopees-cross-culture.md)).
 2. **Wex = miroir conscient, pas héros actif** — il regarde, sent, reconnaît. Sa présence valide le regard de l'enfant. Ne jamais lui donner l'action centrale ; toujours la fonction d'attestation.
-3. **Garantir 9 « moments-héros sensoriels »** — un par compagnon, un par histoire. Chaque ennéatype, calme ou expressif, a son geste précis qui résout/transforme la scène. Tableau de garantie à tenir : Melki, Mimi, Polo, Madie, Lulu, Pierrot, Raph, Juju, Nono.
+3. **Garantir 9 « moments-héros sensoriels »** — un par compagnon, un par histoire. Chaque ennéatype, calme ou expressif, a son geste précis qui résout/transforme la scène. Tableau de garantie à tenir : Melki, Mimi, Dadou, Madie, Lulu, Pierrot, Raph, Juju, Nono.
 4. **Privilégier les recoins du printemps** : flaque, bourgeon, fourmilière, talus, mare, ruisseau fin, terrier, abri sous feuille. Pas grands paysages — **miniatures vivantes** (Bachelard). Sobriété visuelle japonaise (Senzaki et al.).
 5. **Amitié montrée, pas dite** : regards croisés, gestes parallèles, objet partagé sans mot. Aucune déclaration verbale d'amitié — Tomasello est explicite : ce qui lie à 4 ans, c'est l'attention conjointe, pas la parole.
 

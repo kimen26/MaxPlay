@@ -1,8 +1,8 @@
-# Brief histoire — STORY-002 libellule-résonance
+﻿# Brief histoire — STORY-002 libellule-résonance
 
 > Brief opérationnel adressé à **un writer à la fois** (tutoiement).
 > Le contenu nécessaire à l'écriture est dans [`_writer-package.md`](_writer-package.md), autoporteur, identique pour tous les runs.
-> **Refonte 2026-05-12** : trio Polo → Juju · recentrage Ten sur Nono.
+> **Refonte 2026-05-12** : trio Dadou → Juju · recentrage Ten sur Nono.
 
 ---
 
@@ -98,7 +98,7 @@ La révélation peut être incarnée dans le geste de Nono et la réaction de Ju
 
 ## 7. Variance writers (refonte v2 2026-05-12 — STORY-002 = première story config 14)
 
-**14 versions** = 6 Claude (Opus/Sonnet/Haiku × défaut/**reco**) + 4 Kimi (déf/reco/thinking/guidé) + 2 DeepSeek (déf/reco) + 2 Grok (déf/reco). "reco" = température recommandée créatif officielle par fournisseur. Aucun angle sémantique imposé pour les 13 libres — la variance vient du **couple modèle+température**. Le writer GUIDÉ (kimi-guide) reçoit en plus la trame [`brief-writer-guide.md`](brief-writer-guide.md) (dialogue, sons, chansonnette, scène libellule, vision auteur).
+**14 versions** = 6 Claude (Opus/Sonnet/Haiku × défaut/**reco**) + 4 Kimi (kimi-reco / kimi-k26-instant / kimi-k26-thinking / kimi-reco-guide) + 2 DeepSeek (déf/reco) + 2 Grok (déf/reco). "reco" = température recommandée créatif officielle par fournisseur. Aucun angle sémantique imposé pour les 13 libres — la variance vient du **couple modèle+température** (ou **thinking enabled/disabled** pour K2.6). Le writer GUIDÉ (`kimi-reco-guide`) reçoit en plus la trame [`brief-writer-guide.md`](brief-writer-guide.md) (dialogue, sons, chansonnette, scène libellule, vision auteur).
 
 Voir [`narration/pmo/INVARIANTS.md`](../../../pmo/INVARIANTS.md) § *Casting writers étape 4* + [`narration/equipe/references/temperatures-llm.md`](../../../equipe/references/temperatures-llm.md) (référence officielle).
 

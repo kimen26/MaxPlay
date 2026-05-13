@@ -676,7 +676,7 @@ Les writers écrivent en français italique. La conversion en tags v3 se fait au
 
 - Court (2 syllabes), universel (FR/EN/IT/ES/JP), genre-neutre
 - Évoque la lumière → lien avec la promesse « faire briller les histoires »
-- Mémoire associative future : « Lumi Mimi » « Lumi Polo » pour les futures voix persos
+- Mémoire associative future : « Lumi Mimi » « Lumi Dadou » pour les futures voix persos
 - 18 voix « Lumi » existent déjà sur ElevenLabs (DE, FI, JA, etc.) mais **aucune en FR** → différenciation par langue OK
 
 ### Format ElevenLabs
@@ -699,7 +699,7 @@ Age       : Young / Adult / Child (selon perso)
 |-----------|--------|---------------|------------|
 | **Narrateurs adultes** | `Lumi <Rôle FR>` | `Lumi Conteuse` (F) · `Lumi Conteur` (H) | (à renommer) |
 | **Wex (hors-système)** | `Lumi Wex Rêveur` ✅ | — | `Lumi Wex Playful` |
-| **10 persos ennéatypés** | `Lumi <Prénom-canon> <Adjectif-FR-court>` | `Lumi Raph Pétillante` · `Lumi Pierrot Sincère` · `Lumi Mimi Tendre` · `Lumi Madie Rêveuse` · `Lumi Polo Punchy` · `Lumi Melki Précis` · `Lumi Lulu Calme` · `Lumi Juju Ferme` · `Lumi Nono Fluide` | `Lumi Raph Bubbly` · `Lumi Pierrot Alert` etc. |
+| **10 persos ennéatypés** | `Lumi <Prénom-canon> <Adjectif-FR-court>` | `Lumi Raph Pétillante` · `Lumi Pierrot Sincère` · `Lumi Mimi Tendre` · `Lumi Madie Rêveuse` · `Lumi Dadou Fier` · `Lumi Melki Précis` · `Lumi Lulu Léger` · `Lumi Juju Ferme` · `Lumi Nono Paisible` | `Lumi Raph Bubbly` · `Lumi Pierrot Alert` etc. |
 
 **Pourquoi cette structure** :
 1. **Brand fort** — le préfixe `Lumi` rend toutes les voix MaxPlay reconnaissables comme une famille produit (monétisation cross-voix possible)
@@ -717,7 +717,7 @@ Age       : Young / Adult / Child (selon perso)
 | `Tendre` (mixte) | Tender / Warm | Mimi | Chaleur affective |
 | `Joyeuse` (F) / `Joyeux` (M) | Cheerful / Happy | Persos lumineux | Plus large que pétillant |
 | `Espiègle` (mixte) | Mischievous / Playful | Persos malicieux | Plus littéraire que "joueur" |
-| `Punchy` (mixte) | Punchy | Polo, Juju | Mot anglais accepté dans FR moderne |
+| `Punchy` (mixte) | Punchy | Dadou, Juju | Mot anglais accepté dans FR moderne |
 | `Précis` (M) / `Précise` (F) | Precise | Melki | Méthodique T1 |
 | `Calme` (mixte) | Quiet | Lulu, Nono | Posé |
 | `Ferme` (mixte) | Firm | Juju | Décidée T8 |

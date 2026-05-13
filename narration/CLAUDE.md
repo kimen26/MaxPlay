@@ -1,4 +1,4 @@
-# PÔLE NARRATION — Règles auto-chargées
+﻿# PÔLE NARRATION — Règles auto-chargées
 
 > Ce fichier est **chargé automatiquement** par Claude Code dès qu'un fichier sous `narration/` est lu/édité ([doc Anthropic](https://code.claude.com/docs/en/memory#how-claude-md-files-load)).
 > Pour la **navigation humaine** (catalogue 4 piliers + équipe + PMO), voir [`INDEX.md`](INDEX.md).
@@ -59,7 +59,7 @@
 | 4 — Saisons | [`saisons/`](saisons/) | [`saisons/INDEX.md`](saisons/INDEX.md) (roadmap S1 en cours) |
 
 **Casting V1 « Christ » figé** (2026-04-24, ajusté 2026-05-05) :
-Wex (hors-système, invariant cross-culture) + Melki/Mimi/Polo/**Madie**/Lulu/Pierrot/Raph/Juju/Nono. **4F/5M+Wex.**
+Wex (hors-système, invariant cross-culture) + Melki/Mimi/Dadou/**Madie**/Lulu/Pierrot/Raph/Juju/Nono. **4F/5M+Wex.**
 Toujours lire [`personnages/INDEX.md`](personnages/INDEX.md) avant d'écrire un perso.
 
 ---

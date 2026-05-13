@@ -12,6 +12,6 @@
 | Nono | 9 | Ils se sécurisent mutuellement. Mais peuvent aussi spiraliser ensemble dans l'inquiétude. |
 | Melki | 1 | Melki apprécie la prudence de Pierrot. Ils partagent un sens des règles et du cadre. |
 | Lulu | 5 | Lulu analyse les risques, Pierrot anticipe les dangers. Complicité intellectuelle dans la précaution. |
-| Polo | 3 | Pierrot ne comprend pas que Polo fonce sans vérifier. Polo ne comprend pas que Pierrot vérifie tout. |
+| Dadou | 3 | Pierrot ne comprend pas que Dadou fonce sans vérifier. Dadou ne comprend pas que Pierrot vérifie tout. |
 | Madie | 4 | Madie est trop imprévisible pour Pierrot. Pierrot est trop anxieux pour Madie. Mais ils s'estiment. |
 

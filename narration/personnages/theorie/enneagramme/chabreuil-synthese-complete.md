@@ -1,11 +1,11 @@
----
+﻿---
 titre: "Synthèse exhaustive — Le Grand Livre de l'Ennéagramme (Chabreuil 2022)"
 source: "CHABREUIL Fabien & Patricia, Le Grand Livre de l'Ennéagramme, 3e édition, Eyrolles, 2022 (1466 lignes du PDF intégral)"
 date_synthese: 2026-05-08
 auteur_synthese: "narration-conseiller (Claude Opus)"
 usage_maxplay: |
   Input pour brainstorm 9 histoires courtes Arc 1 (Wex + 9 compagnons, 4-7 ans).
-  Casting V1 figé : Wex (héros hors-système) + Melki(T1) Mimi(T2) Polo(T3) Madie(T4)
+  Casting V1 figé : Wex (héros hors-système) + Melki(T1) Mimi(T2) Dadou(T3) Madie(T4)
   Lulu(T5) Pierrot(T6) Raph(T7) Juju(T8) Nono(T9).
   Principe fondateur : tous les types également beaux, fascinants, épanouis pour l'enfant.
   Pas de biais "expressifs > réservés". Mettre la lumière au premier plan, l'ombre au second.
@@ -188,7 +188,7 @@ Attention : **stress ≠ désintégration**. Un 7 qui gagne au loto se sentira e
 
 ---
 
-### Type 3 — Le Battant (MaxPlay : **Polo**)
+### Type 3 — Le Battant (MaxPlay : **Dadou**)
 
 **Sa lumière (essence).** Le 3 épanoui est **vrai, espérant, inspirant**. Il a redécouvert son authenticité : ses réalisations sont l'*expression* de qui il est, et non l'inverse. Il vit l'**espérance** — différente de l'espoir, elle est paisible, présente, ne dépend pas de conditions extérieures. Il a une valeur indépendante de ses succès. Sa flexibilité, sa capacité d'adaptation, son énergie deviennent des cadeaux pour le groupe : il *fait advenir* les choses, il entraîne, il donne envie. C'est l'enfant qui sait toujours *comment faire*, qui apprend vite, qui sait s'adapter au copain qu'il a en face.
 
@@ -484,7 +484,7 @@ Les flèches donnent une **profondeur dramatique gratuite** à chaque type :
 - Un type qui s'épanouit s'enrichit d'un autre type → l'évolution narrative est lisible, *attendue par le modèle*.
 - Pour un duo MaxPlay, jouer sur ces flèches permet de raconter comment **un personnage en crise** retrouve son centre, ou comment **un personnage déjà en lumière** révèle un trait surprenant.
 
-Exemple narratif : Polo (T3) en stress se désintègre vers le 9 (paresse, fuite TV) → c'est Mimi (T2) qui le réveille. Polo épanoui s'intègre vers le 6 (loyauté, lien) → il devient l'ami fidèle qu'on n'attendait pas.
+Exemple narratif : Dadou (T3) en stress se désintègre vers le 9 (paresse, fuite TV) → c'est Mimi (T2) qui le réveille. Dadou épanoui s'intègre vers le 6 (loyauté, lien) → il devient l'ami fidèle qu'on n'attendait pas.
 
 ---
 
@@ -602,7 +602,7 @@ Le chapitre 16 du Grand Livre détaille les 36 paires possibles (chaque type ave
 |-------|-------------------|-------------------|-----------|
 | **1 + 7** (Melki + Raph) | La rigueur joyeuse. Le 7 apprend à finir, le 1 apprend à rire. | Le 1 trouve le 7 « pas sérieux », le 7 trouve le 1 « rabat-joie ». | Construire une cabane : 1 fait les plans, 7 invente le scénario du jeu |
 | **2 + 5** (Mimi + Lulu) | La chaleur qui rejoint la lucidité. Mimi traduit Lulu, Lulu apprend à donner. | Mimi va trop vite vers Lulu qui se ferme. Lulu garde son savoir comme un trésor. | Lulu apprend à Mimi un secret de la nature. Mimi l'aide à trouver les mots pour le partager. |
-| **3 + 9** (Polo + Nono) | L'élan qui rencontre la paix. Polo entraîne Nono à exister, Nono ralentit Polo. | Polo trouve Nono trop lent. Nono trouve Polo épuisant. | Course où Nono finit en marchant et Polo l'attend au but, ravi. |
+| **3 + 9** (Dadou + Nono) | L'élan qui rencontre la paix. Dadou entraîne Nono à exister, Nono ralentit Dadou. | Dadou trouve Nono trop lent. Nono trouve Dadou épuisant. | Course où Nono finit en marchant et Dadou l'attend au but, ravi. |
 | **4 + 8** (Madie + Juju) | La profondeur émotionnelle qui rencontre la force franche. | Juju trouve Madie trop sensible, Madie trouve Juju brutal. | Madie pleure, Juju ne sait pas quoi faire — finit par juste s'asseoir à côté. |
 | **6 + 9** (Pierrot + Nono) | La loyauté qui rencontre la paix. Pierrot rassure Nono, Nono apaise Pierrot. | Pierrot doute, Nono évite le sujet. Mais ils tiennent ensemble. | Pierrot a peur du noir. Nono lui prend la main et chante doucement. |
 
@@ -619,7 +619,7 @@ Le chapitre 16 du Grand Livre détaille les 36 paires possibles (chaque type ave
 | Paire | Ce qui frictionne | Ce qui se sublime |
 |-------|-------------------|-------------------|
 | **1 + 9** (Melki + Nono) | 1 veut faire, 9 ralentit | 9 enseigne à 1 que « faire de son mieux » suffit |
-| **3 + 4** (Polo + Madie) | 3 vise l'image, 4 vise la vérité | 4 ramène 3 à son authenticité ; 3 sort 4 de la rumination |
+| **3 + 4** (Dadou + Madie) | 3 vise l'image, 4 vise la vérité | 4 ramène 3 à son authenticité ; 3 sort 4 de la rumination |
 | **5 + 7** (Lulu + Raph) | 5 garde, 7 disperse | 5 donne profondeur aux idées de 7 ; 7 sort 5 de sa tour |
 | **6 + 8** (Pierrot + Juju) | 6 doute, 8 fonce | 8 protège 6 ; 6 freine 8 quand le danger est imaginaire |
 
@@ -664,7 +664,7 @@ Les pays et les cultures ont des « ennéatypes culturels dominants » : des val
 1. **Casting V1 figé** : les ennéatypes ne changent pas. C'est le **prénom et les coutumes** qui s'adaptent.
 2. **Histoires « universelles »** : privilégier les paires qui se sublime *partout* (ex : 6+9 paix-loyauté, 2+5 chaleur-savoir — bien reçu en toutes cultures).
 3. **Histoires « culturellement marquées »** : utiliser un type valorisé localement comme **figure principale** (ex : un récit JP centré sur Nono(9) marche mieux qu'un récit centré sur Juju(8)).
-4. **Attention aux types « inhabituels »** : un récit FR centré sur Polo(3, succès américain) demande plus de travail pour faire aimer le personnage qu'un récit centré sur Lulu(5).
+4. **Attention aux types « inhabituels »** : un récit FR centré sur Dadou(3, succès américain) demande plus de travail pour faire aimer le personnage qu'un récit centré sur Lulu(5).
 5. **Wex est invariant cross-culture** : son prénom ne change pas, son rôle non plus (observateur/catalyseur).
 
 ---
@@ -693,7 +693,7 @@ Pour MaxPlay : nos histoires sont du **travail vertical en germe** — elles don
 | Instinctive | 5. Métanoïa | Instinctif sup. | Transformation au-delà des limites du type |
 | Instinctive | 6. Service | Instinctif sup. | Aider efficacement les autres sur leur chemin |
 
-Pour MaxPlay : chaque histoire peut **incarner une de ces étapes** sans la nommer. Ex : *Mimi pardonne à Polo qui l'avait oubliée* → étape 3.
+Pour MaxPlay : chaque histoire peut **incarner une de ces étapes** sans la nommer. Ex : *Mimi pardonne à Dadou qui l'avait oubliée* → étape 3.
 
 ### 8.3. L'essence type par type — en comportements observables
 
@@ -752,7 +752,7 @@ D'après les affinités déjà documentées dans `narration/personnages/theorie/
 | **4** | Wex + Madie (T4) | Madie est triste. Wex ne console pas, il accompagne. | Madie pleure pour une chose précise et belle. Wex s'assoit, regarde, ne dit rien. |
 | **5** | Wex + Pierrot (T6) | Pierrot a peur. Wex ne minimise pas. | Pierrot a peur du noir / d'un événement. Wex dit « moi aussi parfois » — pas « n'aie pas peur ». |
 | **6** | Wex + Melki (T1) | Melki rate. Wex montre que c'est ok. | Melki construit, ça s'effondre. Wex sourit, pas de jugement. Ils refont. |
-| **7** | Wex + Polo (T3) | Polo veut briller. Wex aime même quand Polo ne brille pas. | Polo rate son numéro. Wex applaudit pareil. Polo comprend. |
+| **7** | Wex + Dadou (T3) | Dadou veut briller. Wex aime même quand Dadou ne brille pas. | Dadou rate son numéro. Wex applaudit pareil. Dadou comprend. |
 | **8** | Wex + Raph (T7) | Raph fuit la peine. Wex accompagne dans la peine. | Quelque chose de triste arrive. Raph détourne. Wex reste avec la tristesse. |
 | **9** | Wex + Juju (T8) | Juju est fort. Wex valorise sa douceur. | Juju défend, puis pleure de fatigue. Wex le tient. |
 
@@ -764,8 +764,8 @@ Risque majeur identifié : les types **3, 7, 8** (énergie visible) sont plus fa
 
 1. **Mesurer le temps de scène** : chaque type doit avoir un nombre similaire d'histoires-vedettes dans l'arc.
 2. **Trouver le geste fort qui n'est pas spectaculaire** : pour 4 (Madie), c'est le silence après la beauté ; pour 5 (Lulu), c'est la phrase courte qui change tout ; pour 9 (Nono), c'est la main qui prend la main.
-3. **Ne jamais faire d'un type réservé un faire-valoir d'un type expressif** : Lulu ne sert pas à expliquer la lumière de Polo. Lulu est protagoniste à part entière dans son épisode.
-4. **Tester le pitch en remplaçant le type principal** : si le récit centré sur Madie marche aussi en remplaçant par Polo, c'est qu'il n'est pas vraiment centré sur Madie. Réécrire.
+3. **Ne jamais faire d'un type réservé un faire-valoir d'un type expressif** : Lulu ne sert pas à expliquer la lumière de Dadou. Lulu est protagoniste à part entière dans son épisode.
+4. **Tester le pitch en remplaçant le type principal** : si le récit centré sur Madie marche aussi en remplaçant par Dadou, c'est qu'il n'est pas vraiment centré sur Madie. Réécrire.
 5. **Se méfier de la « morale » implicite** : pas de « il faudrait que Lulu sorte plus de sa coquille ». Lulu est *bien* dans sa coquille — c'est sa lumière.
 
 ### 9.4. Motifs narratifs par type — geste / objet / moment
@@ -774,7 +774,7 @@ Risque majeur identifié : les types **3, 7, 8** (énergie visible) sont plus fa
 |------|----------|---------|----------------------|
 | **1 (Melki)** | Range. Aligne. Recommence. | Une boîte de rangement, un crayon affuté, une recette suivie | Quand il accepte qu'une chose imparfaite reste comme ça |
 | **2 (Mimi)** | Tend la main. Devine. Sert le goûter. | Un mouchoir prêté, une part de gâteau | Quand elle reçoit un cadeau pour elle-même et le savoure |
-| **3 (Polo)** | Court. Réussit. Présente fièrement. | Un trophée, une médaille, un dessin réussi | Quand il rate, et qu'il rit avec les autres |
+| **3 (Dadou)** | Court. Réussit. Présente fièrement. | Un trophée, une médaille, un dessin réussi | Quand il rate, et qu'il rit avec les autres |
 | **4 (Madie)** | Regarde longtemps. Touche doucement. Choisit avec soin. | Une feuille morte gardée, une couleur préférée | Quand elle joue dans la boue avec les autres et oublie d'être singulière |
 | **5 (Lulu)** | Observe. Ramasse. Range dans sa collection. | Un carnet d'observations, un livre, des cailloux triés | Quand il partage un secret qu'il garde depuis longtemps |
 | **6 (Pierrot)** | Vérifie. Demande. Tient bon. | Un doudou très usé, une carte du chemin | Quand il décide tout seul d'aller voir si le bruit était dangereux |

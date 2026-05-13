@@ -1,4 +1,4 @@
----
+﻿---
 name: Vision long terme pôle JEU MaxPlay
 description: Hypothèses, ambitions et chantiers futurs - à graver pour que les agents futurs puissent les consulter sans qu'on doive coder maintenant. Distinct du BACKLOG (tactique) et state.md (instantané).
 type: project
@@ -51,7 +51,7 @@ PÔLE JEU
 - Personnage joueur = Wex (le doudou hors-système de la narration) — c'est lui qui se balade dans le monde
 - Zones = lieux du Hub Ville (Dépôt bus, Musée Dinos, Mur Drapeaux, École Chiffres + futurs Piscine/Gare/Aéroport)
 - "Pokémons" à collecter = véhicules RATP (lignes métro 1-14, trams T1-T13, bus iconiques, RER A/B/C) + dinosaures + drapeaux
-- PNJ = personnages narration (Melki, Mimi, Polo, Madie, Lulu, Pierrot, Raph, Juju, Nono) → **pont narration↔jeu**
+- PNJ = personnages narration (Melki, Mimi, Dadou, Madie, Lulu, Pierrot, Raph, Juju, Nono) → **pont narration↔jeu**
 - Quêtes = mini-jeux contextualisés (les MJ existants insérés comme quêtes dans le monde)
 - Inventaire = le Garage (core loop déjà conçu dans rules.md)
 

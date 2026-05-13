@@ -1,4 +1,4 @@
-# Le Soin par les Fréquences — pratique vivante du monde post-Éveil
+﻿# Le Soin par les Fréquences — pratique vivante du monde post-Éveil
 
 > Source : distillation de matière brute (4 fichiers `INBOX.md` + grimoire `project_bioresonance_natation.md`) — 2026-04-29.
 >
@@ -139,7 +139,7 @@ Certaines Harmonies ont une figure de référence pour le soin par les plantes �
 3. **Lien avec les Compagnons Animaux** — un Compagnon peut-il **entendre** ce qu'un humain ne perçoit pas ? Probable.
 4. **Le cinquième élément (Minéral)** — on le garde ou on l'écarte ?
 5. **La figure de l'aîné·e des herbes** — personnage récurrent, ou rôle tournant entre adultes ?
-6. **Les peuples de l'eau** — un compagnon vient-il de là ? Polo ? Quelqu'un d'autre ?
+6. **Les peuples de l'eau** — un compagnon vient-il de là ? Dadou ? Quelqu'un d'autre ?
 7. **L'eau chargée** — règle de l'univers : ça marche toujours, jamais, ou seulement quand l'intention est juste ?
 
 ---

@@ -1,4 +1,4 @@
----
+﻿---
 name: État narration MaxPlay
 description: État condensé du pôle narration — histoires, casting, workflow, agents à appeler
 type: project
@@ -11,9 +11,9 @@ type: project
 | # | Titre | Statut | Persos |
 |---|-------|--------|--------|
 | 001 | Le Pont Cassé | ✅ canon | Wex · Melki · Juju |
-| 002 | Le Rire qui reste | ✅ canon | Wex · Nono · Polo |
+| 002 | Le Rire qui reste | ✅ canon | Wex · Nono · Dadou |
 | 003 | La Confidence | 🟡 workshop | Wex · Madie · Raph |
-| 004 | Cartable-à-trou | ⚪ à faire | Polo · Lulu · Mimi · Wex |
+| 004 | Cartable-à-trou | ⚪ à faire | Dadou · Lulu · Mimi · Wex |
 | 005 | Le Mardi | ⚪ à faire | Wex · Pierrot · Melki |
 | 006 | Sept à rien | ⚪ à faire | Juju · Mimi · Wex |
 
@@ -28,7 +28,7 @@ type: project
 | **Wex** | Wex | Héros hors-système | — |
 | **Melki** | Melchisédech | #1 Perfectionniste | Minéraux |
 | **Mimi** | Marie (F) | #2 Aidant | Eau |
-| **Polo** | Paul | #3 Performeur | Forces |
+| **Dadou** | David | #3 Performeur | Forces |
 | **Madie** | Madeleine | #4 Individualiste | Fréquence |
 | **Lulu** | Luc | #5 Observateur | Quantique |
 | **Pierrot** | Pierre | #6 Loyal | Animaux |

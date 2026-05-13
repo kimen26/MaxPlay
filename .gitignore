@@ -8,3 +8,8 @@ _site/
 Thumbs.db
 temp/
 *.zip
+
+# MCP llm-copains — logs auto des appels LLM créatifs (filet de sécurité option A 2026-05-13)
+# Chaque appel ask_kimi/ask_kimi_payant/ask_deepseek/ask_grok dump le résultat ici
+# pour récupération si main thread crash avant Write tool. Voir infra/mcp/MODELS.md.
+infra/mcp/logs/

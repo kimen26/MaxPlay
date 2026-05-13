@@ -1,8 +1,8 @@
-# Architecture cross-culture de l'univers
+﻿# Architecture cross-culture de l'univers
 
 > **Décision tranchée 2026-04-29.** Voir [`pmo/decisions.md`](../pmo/decisions.md) section *Architecture cross-culture du casting*.
 >
-> **Direction héritée** : merveilleux discret ([monde.md](monde.md)), univers implicite, ennéatypes dilués (cf. `pmo/decisions.md` 2026-04-24).
+> **Direction héritée** : merveilleux discret ([`../univers/fondements/monde.md`](../univers/fondements/monde.md)), univers implicite, ennéatypes dilués (cf. `pmo/decisions.md` 2026-04-24).
 
 ---
 
@@ -119,11 +119,11 @@ Si Wex **voyage** entre cultures (option A historique), il faudrait soit :
 
 ### Pourquoi
 
-L'univers MaxPlay rejoue **la même histoire archétypale** dans chaque culture : si Polo (FR Type 3) apprend X dans son casting, le Type 3 brésilien apprend probablement la même chose dans la version locale. **L'arc de chaque ennéatype est invariant** ; seuls le geste et le contexte changent.
+L'univers MaxPlay rejoue **la même histoire archétypale** dans chaque culture : si Dadou (FR Type 3) apprend X dans son casting, le Type 3 brésilien apprend probablement la même chose dans la version locale. **L'arc de chaque ennéatype est invariant** ; seuls le geste et le contexte changent.
 
 ### Implication
 
-Si l'auteur écrit STORY-007 « Polo perd son cahier » (FR), la version *br* devrait être **la même histoire archétypale** (Type 3 brésilien perd son objet d'identité), avec :
+Si l'auteur écrit STORY-007 « Dadou perd son cahier » (FR), la version *br* devrait être **la même histoire archétypale** (Type 3 brésilien perd son objet d'identité), avec :
 - Mêmes structure Kishōtenketsu
 - Même résolution archétypale
 - Variants : prénom, lieu, objet local, gestes culturels

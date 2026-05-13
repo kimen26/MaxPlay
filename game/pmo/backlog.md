@@ -1,4 +1,4 @@
-# Backlog — Pôle JEU
+﻿# Backlog — Pôle JEU
 
 > Source de vérité tickets actifs pôle JEU. Survit aux reboots de session.
 > **Déplacé 2026-05-13** depuis `game/tasks/BACKLOG.md` vers `game/pmo/backlog.md` (harmonisation Game ↔ Narration).
@@ -398,7 +398,7 @@ MaxPlay V0
 **Agent éditorial voix (nouveau)**
 - [ ] T-266 : Spec d'un nouvel agent `voice-director` : prend un texte brut (annonce de jeu, dialogue d'histoire) et l'enrichit en SSML/markup ElevenLabs (émotions, pauses, emphases, prononciation, voix par personnage)
 - [ ] T-267 : Définir le vocabulaire d'émotions : joyeux, doux, suspense, mystérieux, déçu, fier, complice…
-- [ ] T-268 : Mapper personnages (casting Christ : Wex, Melki, Mimi, Polo…) → voix ElevenLabs
+- [ ] T-268 : Mapper personnages (casting Christ : Wex, Melki, Mimi, Dadou…) → voix ElevenLabs
 - [ ] T-269 : Tester sur un texte court de chaque type (annonce jeu courte, victoire, dialogue narration)
 
 ### EP-025 – Max Adventure responsive (portrait mobile)

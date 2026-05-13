@@ -1,4 +1,4 @@
----
+﻿---
 titre: Brainstorm arc 1 — 9 histoires (002-010)
 date_creation: 2026-05-10
 maintenu_par: Auteur (Papa Yann) + Conseiller
@@ -31,7 +31,7 @@ Sources : [`saisons/saison-1/arc-1-objet-decor/fiche.md`](../saisons/saison-1/ar
 
 001 a valorisé **Wex + Raph (T7) + Pierrot (T6)**.
 
-**Reste à valoriser sur 002-010** : Melki (T1) · Mimi (T2) · Polo (T3) · Madie (T4) · Lulu (T5) · Juju (T8) · Nono (T9). En trio (2 compagnons × 9 histoires = 18 slots), chaque ennéatype valorisé **2 fois**.
+**Reste à valoriser sur 002-010** : Melki (T1) · Mimi (T2) · Dadou (T3) · Madie (T4) · Lulu (T5) · Juju (T8) · Nono (T9). En trio (2 compagnons × 9 histoires = 18 slots), chaque ennéatype valorisé **2 fois**.
 
 → Les **gestes/attitudes/habitudes/garde-fous** sont désormais intégrés directement dans les 9 fichiers `narration/personnages/type-XX/caractere.md` (section ajoutée 2026-05-10). Les writers et agents les trouveront automatiquement.
 
@@ -58,7 +58,7 @@ Sources : [`saisons/saison-1/arc-1-objet-decor/fiche.md`](../saisons/saison-1/ar
 5. Sourire silencieux après
 
 **Avec qui (à trancher)** :
-- **Polo (T3)** — élan + paix : Polo court, ralentit, apprend la patience qui fait venir
+- **Dadou (T3)** — élan + paix : Dadou court, ralentit, apprend la patience qui fait venir
 - **Raph (T7)** — énergie + douceur : Raph la tornade qui se pose un instant
 - **Juju (T8)** — force + douceur : Juju qui apprend que la douceur est une force aussi
 - *Autre paire à proposer ?*
@@ -78,7 +78,7 @@ Sources : [`saisons/saison-1/arc-1-objet-decor/fiche.md`](../saisons/saison-1/ar
 - **Madie (T4)** : pistes pas encore lancées (ajustée 2026-05-10 : danse/expression/intention vivante, pas que contemplation)
 - **Lulu (T5)** : pistes pas encore lancées
 - **Melki (T1)** : pistes pas encore lancées
-- **Polo (T3)** : pistes pas encore lancées (sauf si retenu en duo Nono)
+- **Dadou (T3)** : pistes pas encore lancées (sauf si retenu en duo Nono)
 - **Juju (T8)** : pistes pas encore lancées (sauf si retenue en duo Nono)
 - *(+ 2 slots pour doublons selon les choix)*
 
@@ -94,7 +94,7 @@ Sources : [`saisons/saison-1/arc-1-objet-decor/fiche.md`](../saisons/saison-1/ar
 
 ## TODO prochaine session
 
-1. **Trancher pour Nono** : duo (Polo / Raph / Juju / autre) + lieu
+1. **Trancher pour Nono** : duo (Dadou / Raph / Juju / autre) + lieu
 2. **Bidule/objet** précis (animal exact + ce que tient le 2e perso peut-être)
 3. **Ouverture / fermeture** de l'histoire (comment ça commence, comment ça finit)
 4. **Pitch d'1 phrase** + plan Kishōtenketsu en 4 lignes

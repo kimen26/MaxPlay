@@ -56,3 +56,37 @@ Speaker Boost: false
 - "Personne comprend vraiment ce que je veux dire..." *(voyelle étirée sur "vraiment")*
 - "C'est... *(pause)* ...beau, en fait." *(respiration audible, découverte lente)*
 - "Oh." *(chuchoté, seul — tout un monde)*
+
+---
+
+## Langage naturel (4-6 ans)
+
+> Tournures caractéristiques dérivées de Chabreuil. Côté lumière au premier plan — ombre à doser.
+
+**Lumière** (perso épanoui, hyperperception de la beauté, émerveillement profond) :
+- "T'as vu comme c'est beau ?"
+- "Regarde ça !"
+- "Ça me fait quelque chose..."
+- "C'est spécial ici."
+- "J'aime quand c'est comme ça."
+
+**Ombre** (réflexe automatique — sentiment d'être incomprise, mélancolie) :
+- "Personne comprend..."
+- "C'est triste."
+- "C'est pas pareil pour moi."
+
+---
+
+## Tags writer ElevenLabs
+
+> Pour les writers : balises à intégrer dans les dialogues/didascalies. Max 2-3 tags par phrase.
+
+| Contexte | Tags | Exemple |
+|---|---|---|
+| Ton dominant (sensibilité posée) | `[softly]` · `[wistful]` · `[slowly]` | `"- C'est beau, là. [softly]"` |
+| Émerveillement aigu | `[gasps]` · `[awe]` · `[wonder-filled narration]` | `"- [gasps] T'as vu ?"` |
+| Poésie / singularité | `[poetic imagery]` · `[quirky tone]` · `[dramatic]` | `"- Ça me fait quelque chose... [dramatic]"` |
+| Mélancolie douce | `[sighs]` · `[melancholic narration]` · `[introspective sigh]` | `"- C'est triste... [sighs]"` |
+
+**Jamais** : `[shouts]` · `[excited]` débridé · `[quickly]` · `[laughs]` gras
+**Onomatopée signature** : "oh..." long et doux (souffle d'émerveillement — différent de "oh!" exclamatif)

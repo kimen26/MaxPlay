@@ -120,6 +120,41 @@ Speaker Boost: true
 
 ---
 
+## Langage naturel (4-6 ans)
+
+> Tournures caractéristiques dérivées de Chabreuil. Côté lumière au premier plan — ombre à doser.
+
+**Lumière** (perso épanoui, enthousiasme contagieux, voit les possibles) :
+- "J'ai une idée !"
+- "Et après on fait quoi ?!"
+- "C'est trop bien !"
+- "Et aussi !"
+- "Imagine si..."
+
+**Ombre** (réflexe automatique — fuite de l'ennui, accumulation d'idées) :
+- "C'est trop long..."
+- "J'en ai marre."
+- "On fait autre chose ?"
+
+---
+
+## Tags writer ElevenLabs
+
+> Pour les writers : balises à intégrer dans les dialogues/didascalies. Max 2-3 tags par phrase.
+
+| Contexte | Tags | Exemple |
+|---|---|---|
+| Ton dominant (énergie pétillante) | `[excited]` · `[quickly]` · `[playful]` · `[bouncy]` | `"- J'ai une idée ! [excited]"` |
+| Joie débordante | `[cheerful]` · `[enthusiastic]` · `[yahoo]` | `"- C'est trop bien ! [yahoo]"` |
+| Rire / joie | `[laughs]` · `[giggles]` | `"- [laughs] T'as vu ça ?!"` |
+| Idée nouvelle (révélation) | `[gasps]` | `"- [gasps] Et si on..."` |
+| Moment doux (rare) | `[softly]` · `[curious]` | `"- Tu crois qu'elles vont où ? [curious]"` |
+
+**Jamais** : `[slowly]` · `[serious]` soutenu · `[wistful]` · `[sighs]` prolongé
+**Onomatopée signature** : "ouhou !" (joie pure — à signaler en note d'intention si utilisée)
+
+---
+
 ## Liens
 
 - Caractère : [`caractere.md`](caractere.md)

@@ -84,3 +84,39 @@ The voice that holds your hand without saying so. A presence that says what is, 
 ```
 
 > Stratégie impact appliquée : hook bénéfice ("tient la main sans le dire" / "holds your hand without saying so") + image expérientielle ("le sol semble plus stable" / "the ground feels firmer") + use cases publics (contes, héroïnes, 3-8 ans) + CTA via désir ("celle qu'on appelle quand il faut tenir bon" / "when you need to stand firm"). Zéro mot-clé technique reproductible. Cf. [`../voix-meta/_PROMPTING-GUIDE.md`](../voix-meta/_PROMPTING-GUIDE.md) §Description publique.
+
+---
+
+## Langage naturel (4-6 ans)
+
+> Tournures caractéristiques dérivées de Chabreuil. Côté lumière au premier plan — ombre à doser.
+
+**Lumière** (perso épanoui, franchise directe et protectrice) :
+- "Je vais le faire moi !"
+- "C'est bon, je m'en occupe."
+- "Dis ! Dis-moi vraiment."
+- "T'inquiète, je suis là."
+- "Bloublou !" *(contact joyeux avec le monde — STORY-002)*
+
+**Ombre** (réflexe automatique — confrontation directe) :
+- "C'est pas vrai !"
+- "C'est pas juste !"
+- "Réponds !"
+
+---
+
+## Tags writer ElevenLabs
+
+> Pour les writers : balises à intégrer dans les dialogues/didascalies. Max 2-3 tags par phrase.
+
+| Contexte | Tags | Exemple |
+|---|---|---|
+| Ton dominant (énergie haute) | `[excited]` · `[playful]` · `[vibrant]` | `"- T'as vu ça ? [excited]"` |
+| Commandement / leadership | `[commanding]` · `[assertive]` · `[dominant]` | `"- On fait comme ça. [commanding]"` |
+| Rire franc | `[laughs]` | `"- Picha-picha ! [laughs]"` |
+| Confrontation directe | `[confident]` · `[firm negation]` | `"- Non. [firm negation]"` |
+| Contact doux (rare) | `[softly]` · `[curious]` | `"- T'as besoin de quoi ? [softly]"` |
+
+**Jamais** : `[whispers]` · `[slowly]` · `[sighs]` prolongé — hors exception narrative forte
+**Jamais** : `[bellowing]` · `[explosive]` · `[booming]` — trop violent pour univers 4-6 ans
+**Onomatopées signature** : "bloublou" (STORY-002, inventée) · "picha" (catalogue eau — cross-culturel)

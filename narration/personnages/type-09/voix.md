@@ -45,3 +45,37 @@ Speaker Boost: false
 - "Mmm... on peut tous y aller ensemble, non ?" *(mmm d'ouverture, vague douce)*
 - "C'est bien comme ça." *(plat, serein, suffisant)*
 - "Ah... ouais." *(long, lent, apaisé — la solution vient de couler de source)*
+
+---
+
+## Langage naturel (4-6 ans)
+
+> Tournures caractéristiques dérivées de Chabreuil. Côté lumière au premier plan — ombre à doser.
+
+**Lumière** (perso épanoui, présence apaisante) :
+- "C'est bien aussi."
+- "On peut faire les deux."
+- "Ouais..." *(présence silencieuse, acquiescement lent)*
+- "Mmm..." *(pensée qui se pose sans se presser)*
+
+**Ombre** (réflexe automatique — effacement) :
+- "Ça m'est égal."
+- "Comme tu veux."
+- *[silence complet — présence sans mots]*
+
+---
+
+## Tags writer ElevenLabs
+
+> Pour les writers : balises à intégrer dans les dialogues/didascalies. Max 2-3 tags par phrase.
+
+| Contexte | Tags | Exemple |
+|---|---|---|
+| Ton dominant | `[softly]` · `[slowly]` · `[smooth flow]` | `"- C'est bien aussi. [softly]"` |
+| Silence expressif | `[pauses]` · `...` | `"- Ouais... [pauses] c'est là."` |
+| Sérénité (ambiance) | `[evening relaxed]` · `[gentle interjection]` | `"- On peut faire les deux. [evening relaxed]"` |
+| Émerveillement discret (Ten) | `[awe]` · `[gasps]` | `"- [awe] Elle est là."` |
+| Chuchotement complice | `[whispers]` | `"- [whispers] Chut."` |
+
+**Jamais** : `[excited]` · `[quickly]` · `[shouts]` · `[laughs]` franc — hors exception narrative forte
+**Onomatopée signature** : aucune — le silence est la signature de Nono

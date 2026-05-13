@@ -152,6 +152,16 @@ Native French. Parisian accent throughout. Young animated hero voice for animati
 
 ---
 
+## Tags ElevenLabs — Références (ajouté 2026-05-14)
+
+| Fichier | Contenu |
+|---------|---------|
+| [`_NARRATEUR-TAGS.md`](_NARRATEUR-TAGS.md) | 26 tags narrateur hors-dialogue + combos Ki/Shō/Ten/Ketsu |
+| [`_TAGS-MAXPLAY-CURATED.md`](_TAGS-MAXPLAY-CURATED.md) | ~70 tags filtrés MaxPlay (4-6 ans) organisés par usage |
+| [`tags-elevenlabs/`](tags-elevenlabs/) | Brut Kimi : 1806 tags JSON/CSV + guide enneatypes (référence) |
+
+---
+
 ## Anciens voice_id (dépréciés)
 
 - Wex v20-v23 : supprimés par utilisateur le 2026-05-11. Seul `G54e8CyYslC2Y4ZupTlg` (v24 Lumi Wex Héros) est actif.

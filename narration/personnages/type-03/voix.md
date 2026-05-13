@@ -47,3 +47,37 @@ Speaker Boost: true
 - "C'est moi qui gagne." *(descendant, factuel, pas méchant)*
 - "Regardez ! Je sais faire ça." *(attaque sur "regardez", énergie première syllabe)*
 - "Bon. On y va ?" *(efficace, minimal, prêt)*
+
+---
+
+## Langage naturel (4-6 ans)
+
+> Tournures caractéristiques dérivées de Chabreuil. Côté lumière au premier plan — ombre à doser.
+
+**Lumière** (perso épanoui, énergie entraînante, célèbre les victoires) :
+- "Allez !"
+- "On peut le faire !"
+- "On y est presque !"
+- "J'ai réussi !"
+- "On a gagné !"
+
+**Ombre** (réflexe automatique — besoin d'image, impatience) :
+- "C'est moi qui l'ai fait."
+- "On a gagné ou pas ?"
+- "C'est bon, faites confiance."
+
+---
+
+## Tags writer ElevenLabs
+
+> Pour les writers : balises à intégrer dans les dialogues/didascalies. Max 2-3 tags par phrase.
+
+| Contexte | Tags | Exemple |
+|---|---|---|
+| Ton dominant (énergie, efficacité) | `[excited]` · `[confident]` · `[quickly]` · `[projecting]` | `"- Allez ! [excited]"` |
+| Énergie vivante | `[vibrant]` · `[enthusiastic]` · `[cheerful]` | `"- On peut le faire ! [vibrant]"` |
+| Victoire | `[laughs]` · `[happily]` | `"- On a gagné ! [laughs]"` |
+| Décision rapide | `[matter-of-fact]` · `[confident rhythm]` | `"- On y va. [matter-of-fact]"` |
+
+**Jamais** : `[slowly]` · `[whispers]` · `[sighs]` — hors moment de vraie fatigue
+**Onomatopée signature** : "hop" (action, passage à l'acte — catalogue à vérifier)

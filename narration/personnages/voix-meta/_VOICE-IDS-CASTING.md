@@ -78,6 +78,7 @@ Détail complet : [`audio-direction-elevenlabs/07-anti-patterns.md`](C:/Users/ki
 
 | Perso | Type | Adjectif Lumi | Voice ID | Statut | Caractéristique vocale |
 |-------|------|---------------|----------|--------|------------------------|
+| **Mimi** | T2 Aidant | **Attentive** | `aPQfyqve0ovOsJIl7EzX` | ✅ **figé 2026-05-13** (Lumi Mimi Attentive) | aigu bright warm round, micro-lingerings voyelles, cadence montante, "mm" avant réponse |
 | **Raph** | T7 Enthousiaste | (à définir) | `Te5RKnm9ebwdEvZ1S5pS` | ✅ existant (avant méthodo v24, conservé) | (voix d'avant méthodo v24) |
 | **Juju** | T8 Challenger | **Solide** | `WFNYCPhDQM9w07KAV6Be` | ✅ **figé 2026-05-13** (Lumi Juju Solide) | aigu grounded bright, plant-and-deliver, plain-spoken steady |
 
@@ -140,9 +141,9 @@ Native French. Parisian accent throughout. Young animated hero voice for animati
 
 ## Filles — restent à créer (2F)
 
-- ⏳ Mimi (T2 Aidant — eau)
 - ⏳ Madie (T4 Individualiste — fréquence)
 
+✅ Mimi (T2 Aidant — eau) — voice_id `aPQfyqve0ovOsJIl7EzX` (Lumi Mimi Attentive, figé 2026-05-13)
 ✅ Raph (T7 Enthousiaste — cosmos) — voice_id `Te5RKnm9ebwdEvZ1S5pS` (existant pré-v24)
 ✅ Juju (T8 Challenger — plantes) — voice_id `WFNYCPhDQM9w07KAV6Be` (Lumi Juju Solide, figé 2026-05-13)
 

@@ -117,7 +117,8 @@ Bilan : **4F / 5M + Wex**. Source : [`../personnages/INDEX.md`](../personnages/I
 | Lulu | `1XwHANMW4m2pxt7buPmQ` | filtre cumulatif vaincu | Lumi Lulu Léger |
 | Nono | `f3w48h8ngnWWnhO9XGb3` | v1 (companion) | Lumi Nono Paisible |
 | Juju | `WFNYCPhDQM9w07KAV6Be` | v1 (méthodo v24 fille) | Lumi Juju Solide |
-| Mimi, Madie | ⏳ à créer (filles) | — | — |
+| Mimi | `aPQfyqve0ovOsJIl7EzX` | v1 (méthodo v24 fille) | Lumi Mimi Attentive |
+| Madie | ⏳ à créer (fille) | — | — |
 
 Détail complet : [`../personnages/voix-meta/_VOICE-IDS-CASTING.md`](../personnages/voix-meta/_VOICE-IDS-CASTING.md).
 **Historique** : Polo → Dadou (2026-05-13, voice_id conservé `5wcx0KzRnrP48I5RCVD8`, naming ElevenLabs "Lumi Polo Fier" → "Lumi Dadou Fier" par utilisateur).

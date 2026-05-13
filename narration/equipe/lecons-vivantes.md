@@ -67,6 +67,12 @@ remplace: ancien `stories/ultime_debrief.md` (figé au 2026-05-05) — désormai
 **Anti-leçon** : claude-rewrite-v1 (001) — tenter d'intégrer 4/5 d'un coup + basculer de temps verbal → régression syntaxique.
 **Règle** : rewrite top-1 ne saute que 2-3 idées max par session, pas 5 à la fois. Brief comité = palette, pas injonction. Argumenter chaque refus dans la note.
 
+### P8 — Résonance toujours IMPLICITE (validé 002 panel 20)
+
+**Origine** : STORY-002 étape 5 synthèse panel 20 lecteurs (2026-05-13). Top net = kimi-reco-guide-v2 (16+/20).
+**Anti-leçon** : toutes versions mauvaises/faibles énoncent la résonance (« la libellule les relie », « présence bienveillante qui résonne », « âmes qui vibrent »). Top scores l'oublient — simplement la vivent par geste, silence, détail.
+**Règle** : JAMAIS nommer l'émotion abstraite de lien. Elle vit dans : Wex qui les relie (geste), silence de l'animal, présence commune. Empirisme enfants 4-5 ans = nommer = rupture du charme. Brief étape 3 STORY-003+ ajoute obligation § Univers implicite.
+
 ---
 
 ## Pièges documentés
@@ -113,6 +119,59 @@ claude-rewrite-v1 (003) : kimi-run2 au présent a contaminé tout le rewrite, ki
 | **6** | Détail-faute volontaire | confirmé (001 V2 « ATENSION ») |
 
 → Détails et règles dans [`templates/brief-writer-guide.template.md`](templates/brief-writer-guide.template.md).
+
+---
+
+## Signal genre × accompagnement
+
+---
+
+## Découvertes méthodo voix (v24 validée)
+
+### OBS-METHODO-V24-FILLE-VALIDÉE
+
+La méthodo v24 garçons (header `Animated little guy voice`, physiologie aiguë, zéro négation, < 1000 chars) **se transpose directement en fille** via seule substitution du header (`Animated little girl character voice`). Validation Juju 1 essai = preuve empirique. À appliquer identiquement pour Mimi (T2) et Madie (T4).
+
+**Chiffres** : 
+- Juju : `WFNYCPhDQM9w07KAV6Be`, 858 chars, 1 essai OK
+- Voice settings recommandés : Stability 0.75 · Similarity Boost 0.65 · Style 0.50 · Speaker Boost ON
+
+### OBS-NAMING-ANTI-COPIE
+
+Stratégie de nommage Voice Library : adjectif choisi pour vendre l'impact **sans révéler la recette ennéa**. Juju "Solide" = court + percutant + vague (autorisé par framework) + ne révèle pas T8 "Être fort·e". Alternatives testées + rejetées : "Forte" (trop explicite), "Plantée"/"Ancrée" (trop botanique).
+
+---
+
+## Observations casting phonétique
+
+### OBS-SONORITÉ-CASTING
+
+Collision trochée fermée-fermée (Polo↔Nono) **détectable précocement** lors du casting via phonétique 4-5 ans. Règle : avant de figer un prénom, tester à voix haute :
+- Trochées + diphtongues (Polo `o-o` fermée-fermée vs Nono `o-o` identique)
+- Répétabilité (enfant 4 ans reprend-il facilement ?)
+- Dadou vs Nono = clair à l'oral. Polo vs Nono = confusion probable.
+
+(Decision 2026-05-13 : DEC-RENAME-POLO-DADOU, voir `decisions.md` pour justification complète.)
+
+---
+
+## Validations empiriques étape 5 STORY-002
+
+### OBS-RESONANCE-IMPLICITE
+
+La résonance est un conteur majeur (lien entre trois + complétude) mais **son énonciation la tue**. JAMAIS nommer. Elle vit dans :
+- Le geste de Wex (qui relie)
+- Le silence de l'animal
+- La présence commune sans explication
+
+Empirisme 20 lecteurs (STORY-002 étape 5) :
+- **Top 1 (16+/20)** : kimi-reco-guide-v2 — omission complète du mot "résonance"
+- **Top 2 scores** : pareil
+- **Bottom scores (grok-def, deepseek-def)** : tous contiennent formulation adulte (« les âmes résonnent », « présence bienveillante qui vibre »)
+
+Enfants et dyades convergent : "on sent que c'est magique, mais pas expliqué".
+
+**Impact briefs futurs** : ajouter à section "Univers implicite" des briefs histoire.
 
 ---
 

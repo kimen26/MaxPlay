@@ -242,6 +242,168 @@
 
 ---
 
+---
+
+## Ravi
+
+**Genre** : masculin
+**Origine** : Sanskrit via portugais brésilien — ravi ("soleil" en sanskrit)
+**Signification** : "soleil" — prénom d'origine indienne devenu très populaire au Brésil contemporain
+**Sonorité** : ferme et doux · 2 syllabes (ra-vi) · finale en i · ressenti chaud, solaire
+**Usage** : vivant, n°1 masculin Brésil 2025 — phénomène générationnel
+**Ennéatypes possibles** :
+- **Type 3 — Performeur** : *"soleil, rayonnement, éclat visible"* (sens direct)
+- **Type 7 — Épicurien** : *"chaleur joyeuse, vitalité solaire"* (lecture émotionnelle)
+
+**Statut** : brouillon
+**Source** : dump-inbox-2026-05-04
+
+---
+
+## Heitor
+
+**Genre** : masculin
+**Origine** : Portugais brésilien — Heitor (variante de Hector / grec *Hektor*)
+**Signification** : "celui qui tient, gardien, défenseur" — du grec *ekhein* ("tenir")
+**Sonorité** : ferme · 2 syllabes (hei-tor) · finale en r · ressenti solide, ancré
+**Usage** : vivant au Brésil, classique lusophone
+**Ennéatypes possibles** :
+- **Type 6 — Loyaliste** : *"gardien fidèle, celui qui tient bon"* (sens direct — alignement fort)
+- **Type 8 — Chef** : *"défenseur, force protectrice"* (lecture assertive)
+
+**Statut** : brouillon
+**Source** : dump-inbox-2026-05-04
+
+---
+
+## Miguel
+
+**Genre** : masculin
+**Origine** : Hébreu via portugais brésilien — *Mikha'el* ("qui est comme Dieu ?")
+**Signification** : "qui est comme Dieu ?" — question rhétorique d'humilité face au divin
+**Sonorité** : ferme · 2 syllabes (mi-guel) · finale en l · ressenti net, ancré
+**Usage** : vivant, très populaire au Brésil — classique catholique
+**Ennéatypes possibles** :
+- **Type 1 — Perfectionniste** : *"aspiration à l'idéal, question d'un absolu"* (sens : qui peut égaler le divin ?)
+- **Type 8 — Chef** : *"force divine, puissance protectrice"* (lecture guerrière de l'archange)
+
+**Statut** : brouillon
+**Source** : dump-inbox-2026-05-04
+
+---
+
+## Bernardo
+
+**Genre** : masculin
+**Origine** : Germanique via portugais — *Bernhard* ("ours fort, courageux comme un ours")
+**Signification** : "ours + fort = courage de l'ours"
+**Sonorité** : ferme · 3 syllabes (ber-nar-do) · finale en o · ressenti robuste, chaleureux
+**Usage** : vivant, populaire au Brésil, classique catholique (Saint Bernard)
+**Ennéatypes possibles** :
+- **Type 8 — Chef** : *"force de l'ours, courage protecteur"* (sens direct — alignement fort)
+- **Type 6 — Loyaliste** : *"fidélité d'un ours qui garde les siens"* (lecture défensive)
+
+**Statut** : brouillon
+**Source** : dump-inbox-2026-05-04
+
+---
+
+## Davi
+
+**Genre** : masculin
+**Origine** : Hébreu via portugais brésilien — *David* ("bien-aimé")
+**Signification** : "bien-aimé"
+**Sonorité** : doux · 2 syllabes (da-vi) · finale en i · ressenti tendre, simple
+**Usage** : vivant, très populaire au Brésil — variante orthographique de David
+**Ennéatypes possibles** :
+- **Type 2 — Altruiste** : *"l'aimé qui aime, le cœur accueilli"* (sens direct)
+- **Type 4 — Romantique** : *"bien-aimé, désir d'être reconnu dans sa singularité"* (lecture intérieure)
+
+**Statut** : brouillon
+**Source** : dump-inbox-2026-05-04
+
+---
+
+## Samuel
+
+**Genre** : masculin
+**Origine** : Hébreu via portugais brésilien — *Shemu'el* ("Dieu a entendu" ou "son nom est Dieu")
+**Signification** : "Dieu a entendu" — naissance réponse à une prière
+**Sonorité** : doux · 3 syllabes (sa-mu-el) · finale ouverte · ressenti posé, écouté
+**Usage** : vivant au Brésil, classique biblique catholique/protestant
+**Ennéatypes possibles** :
+- **Type 6 — Loyaliste** : *"celui qui a été entendu, qui entend à son tour"* (sens : l'écoute fidèle)
+- **Type 5 — Observateur** : *"prophète silencieux, sagesse de l'écoute"* (lecture contemplative)
+
+**Statut** : brouillon
+**Source** : dump-inbox-2026-05-04
+
+---
+
+## Helena
+
+**Genre** : féminin
+**Origine** : Grec via portugais brésilien — *Helénē* ("lumière, torche") ou "Selène = lune"
+**Signification** : "lumière, éclat" — étymologie grecque rayonnante
+**Sonorité** : doux · 3 syllabes (he-le-na) · finale ouverte · ressenti classique, lumineux
+**Usage** : vivant, n°1 féminin Brésil 2025 (avec variants)
+**Ennéatypes possibles** :
+- **Type 3 — Performeur** : *"lumière qui rayonne, présence éclatante"* (sens direct)
+- **Type 4 — Romantique** : *"beauté légendaire, lumière intérieure unique"* (lecture poétique — Hélène de Troie)
+
+**Statut** : brouillon
+**Source** : dump-inbox-2026-05-04
+
+---
+
+## Maitê
+
+**Genre** : féminin
+**Origine** : Basque via brésilien — *Maite* ("aimée, chérie")
+**Signification** : "aimée, bien-aimée" — terme d'affection basque entré dans le registre brésilien
+**Sonorité** : doux · 2 syllabes (mai-tê) · finale en voyelle accentuée · ressenti tendre, aimant
+**Usage** : vivant au Brésil, popularisé par une actrice (Maite Proença) — courant
+**Ennéatypes possibles** :
+- **Type 2 — Altruiste** : *"aimée qui aime, affection partagée"* (sens direct)
+- **Type 9 — Pacificateur** : *"douceur de celle qui est chérie, amour sans heurt"* (lecture apaisée)
+
+**Statut** : brouillon
+**Source** : dump-inbox-2026-05-04
+
+---
+
+## Aurora
+
+**Genre** : féminin
+**Origine** : Latin via portugais brésilien — *Aurora* ("aurore, aube")
+**Signification** : "aurore, lumière naissante du matin"
+**Sonorité** : très doux · 3 syllabes (au-ro-ra) · répétition vocalique · ressenti ample, naissant
+**Usage** : vivant au Brésil, populaire génération 2025 — classique latin
+**Ennéatypes possibles** :
+- **Type 7 — Épicurien** : *"joie du matin neuf, horizon toujours nouveau"* (sens direct — l'aurore ouvre sur l'espoir)
+- **Type 3 — Performeur** : *"lumière première, éclat du commencement"* (lecture lumineuse)
+
+**Statut** : brouillon
+**Source** : dump-inbox-2026-05-04
+
+---
+
+## Cecília
+
+**Genre** : féminin
+**Origine** : Latin via portugais brésilien — *Caecilia* (gens romaine) — sainte patronne des musiciens
+**Signification** : étymologie "aveugle" (caecus) mais sens symbolique : sainte Cécile = patronne de la musique, celle qui entend l'harmonie intérieure
+**Sonorité** : doux · 4 syllabes (ce-cí-li-a) · finale ouverte · ressenti lyrique, chantant
+**Usage** : vivant au Brésil, classique catholique
+**Ennéatypes possibles** :
+- **Type 4 — Romantique** : *"beauté intérieure, harmonie inouïe, l'art comme monde propre"* (sens symbolique : la musicienne qui entend ce que les autres n'entendent pas)
+- **Type 9 — Pacificateur** : *"harmonie musicale, paix par la beauté sonore"* (lecture apaisée)
+
+**Statut** : brouillon
+**Source** : dump-inbox-2026-05-04
+
+---
+
 ## Note culture
 
 Cette aire combine **deux strates** indissociables au Brésil :
@@ -249,10 +411,10 @@ Cette aire combine **deux strates** indissociables au Brésil :
 2. **Yoruba-Orisha** (afro-brésilien) : divinités vivantes, charge **très** lourde — usage restreint recommandé
 
 **Recommandation casting** :
-- Prénoms **directement utilisables** comme compagnons : Iara, Jaci, Guaraci, Iracema, Jurema, Curupira
+- Prénoms **directement utilisables** comme compagnons : Iara, Jaci, Guaraci, Iracema, Jurema, Curupira, Ravi, Davi, Maitê, Aurora, Cecília
 - Prénoms **à réserver** aux Gardiens ou évocations indirectes : Yemanjá, Oxum, Boitatá, Vitória-Régia
+- Prénoms **catholiques/universels naturalisés brésiliens** (strate 3) : Miguel, Heitor, Bernardo, Samuel, Helena
 - **Sensitivity check culturel** indispensable avant validation finale (consultation d'un⋅e brésilien⋅ne pratiquant⋅e candomblé pour les orishas)
 
-**Trous restants** :
-- Brésilien lusophone moderne (prénoms vivants type Lucas, Sofia, João) — fichier séparé à créer
-- Catégorisation type 6 enrichie ici (Boitatá, Boto, Anhangá, Curupira) — bonne nouvelle pour combler le trou identifié dans l'INDEX
+**Strate 3 ajoutée 2026-05-13** : prénoms brésiliens modernes d'origine hébreu/grec/latin/basque/sanskrit — top IBGE 2025. Complète les lacunes identifiées dans la "Note culture" précédente (fichier lusophone séparé non nécessaire finalement — intégré ici).
+- Catégorisation type 6 enrichie ici (Boitatá, Boto, Anhangá, Curupira, Heitor, Samuel) — bonne nouvelle pour combler le trou identifié dans l'INDEX

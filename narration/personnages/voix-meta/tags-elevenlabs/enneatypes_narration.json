@@ -1,0 +1,882 @@
+{
+  "meta": {
+    "contexte": "Livres audio enfants 4-8 ans",
+    "approche": "Ennéatypes pour personnages + Narrateur pour hors-dialogue",
+    "date_creation": "2025-06-17",
+    "total_personnages": 10,
+    "notes": "Chaque ennéatype a 3-4 tags UNIQUES qui lui sont propres + des tags partagés"
+  },
+  "narrateur": {
+    "role": "Narrateur principal (hors-dialogue)",
+    "description": "Voix chaleureuse et modulante qui raconte l'histoire, guide l'enfant, et donne vie au monde. Varie entre douceur, enthousiasme et mystère.",
+    "tags_narration": [
+      {
+        "tag": "[childlike narration]",
+        "description": "Speaker uses innocent narrative voice",
+        "category": "Narrative",
+        "thumbs_up": 15,
+        "thumbs_down": 5
+      },
+      {
+        "tag": "[calming narration]",
+        "description": "Speaker uses peaceful narrative tone",
+        "category": "Narrative",
+        "thumbs_up": 15,
+        "thumbs_down": 5
+      },
+      {
+        "tag": "[energetic narration]",
+        "description": "Speaker uses high-energy narrative style",
+        "category": "Narrative",
+        "thumbs_up": 15,
+        "thumbs_down": 4
+      },
+      {
+        "tag": "[wonder-filled narration]",
+        "description": "Speaker uses amazed narrative style",
+        "category": "Narrative",
+        "thumbs_up": 15,
+        "thumbs_down": 5
+      },
+      {
+        "tag": "[storybook style]",
+        "description": "Speaker uses children's storybook narrative",
+        "category": "Narrative",
+        "thumbs_up": 6,
+        "thumbs_down": 1
+      },
+      {
+        "tag": "[uplifting narration]",
+        "description": "Speaker uses inspiring narrative style",
+        "category": "Narrative",
+        "thumbs_up": 14,
+        "thumbs_down": 4
+      },
+      {
+        "tag": "[soothing narration]",
+        "description": "Speaker uses calming narrative tone",
+        "category": "Narrative",
+        "thumbs_up": 9,
+        "thumbs_down": 3
+      },
+      {
+        "tag": "[kids story tone]",
+        "description": "Speaker uses child-friendly narrative",
+        "category": "Narrative",
+        "thumbs_up": 6,
+        "thumbs_down": 2
+      },
+      {
+        "tag": "[fairytale style]",
+        "description": "Speaker uses classic fairytale narrative",
+        "category": "Narrative",
+        "thumbs_up": 12,
+        "thumbs_down": 4
+      }
+    ],
+    "tags_expression": [
+      {
+        "tag": "[animated]",
+        "description": "Speaker speaks with lively expression",
+        "category": "Styles",
+        "thumbs_up": 14,
+        "thumbs_down": 4
+      },
+      {
+        "tag": "[warm]",
+        "description": "Speaker speaks with friendly warmth",
+        "category": "Styles",
+        "thumbs_up": 9,
+        "thumbs_down": 2
+      },
+      {
+        "tag": "[rhythmic]",
+        "description": "Speaker speaks with musical rhythm",
+        "category": "Styles",
+        "thumbs_up": 15,
+        "thumbs_down": 4
+      },
+      {
+        "tag": "[simple]",
+        "description": "Speaker speaks in basic terms",
+        "category": "Styles",
+        "thumbs_up": 15,
+        "thumbs_down": 4
+      },
+      {
+        "tag": "[breathy]",
+        "description": "Speaker speaks with breathy vocal quality",
+        "category": "Styles",
+        "thumbs_up": 14,
+        "thumbs_down": 4
+      },
+      {
+        "tag": "[stage whisper]",
+        "description": "Speaker whispers theatrically",
+        "category": "Styles",
+        "thumbs_up": 15,
+        "thumbs_down": 5
+      }
+    ],
+    "tags_rythme": [
+      {
+        "tag": "[varied pace]",
+        "description": "Changing speed patterns",
+        "category": "Rhythm",
+        "thumbs_up": 15,
+        "thumbs_down": 5
+      },
+      {
+        "tag": "[smooth flow]",
+        "description": "Effortless continuity",
+        "category": "Rhythm",
+        "thumbs_up": 14,
+        "thumbs_down": 4
+      },
+      {
+        "tag": "[pauses]",
+        "description": "Strategic silence moments",
+        "category": "Rhythm",
+        "thumbs_up": 15,
+        "thumbs_down": 5
+      },
+      {
+        "tag": "[measured]",
+        "description": "Speaker speaks with careful pacing",
+        "category": "Styles",
+        "thumbs_up": 13,
+        "thumbs_down": 4
+      },
+      {
+        "tag": "[consistent pace]",
+        "description": "Steady, unchanging",
+        "category": "Rhythm",
+        "thumbs_up": 15,
+        "thumbs_down": 4
+      }
+    ],
+    "tags_interaction": [
+      {
+        "tag": "[building anticipation]",
+        "description": "Speaker builds anticipation in dialogue",
+        "category": "Dialogue",
+        "thumbs_up": 16,
+        "thumbs_down": 4
+      },
+      {
+        "tag": "[gentle interjection]",
+        "description": "Speaker makes a gentle interjection",
+        "category": "Dialogue",
+        "thumbs_up": 15,
+        "thumbs_down": 5
+      }
+    ],
+    "tags_vocal": [
+      {
+        "tag": "[chuckle break]",
+        "description": "Speaker breaks into chuckling",
+        "category": "Dialogue",
+        "thumbs_up": 4,
+        "thumbs_down": 2
+      },
+      {
+        "tag": "[laugh joyful]",
+        "description": "Happy, genuine laugh",
+        "category": "Vocal Effects",
+        "thumbs_up": 14,
+        "thumbs_down": 4
+      },
+      {
+        "tag": "[ohh]",
+        "description": "Wonder or realization",
+        "category": "Vocal Effects",
+        "thumbs_up": 15,
+        "thumbs_down": 4
+      },
+      {
+        "tag": "[hmm!]",
+        "description": "Surprised consideration",
+        "category": "Vocal Effects",
+        "thumbs_up": 14,
+        "thumbs_down": 4
+      }
+    ]
+  },
+  "enneatypes": {
+    "E1": {
+      "nom": "Le Réformateur",
+      "surnom": "Le Juste",
+      "description": "Perfectionniste, juste et intègre. Veut que tout soit correct et fait le bien. Parle avec précision et autorité bienveillante.",
+      "archetype_enfant": "Le petit professeur / Le chef de classe",
+      "tags": [
+        {
+          "...": "uniques",
+          "tags": [
+            {
+              "tag": "[corrects self]",
+              "description": "Speaker corrects themselves while speaking",
+              "category": "Dialogue",
+              "thumbs_up": 15,
+              "thumbs_down": 4,
+              "unique": true,
+              "pourquoi": "Corrige les autres avec bienveillance — essence du Type 1"
+            },
+            {
+              "tag": "[proper]",
+              "description": "Speaker uses correct formal language",
+              "category": "Styles",
+              "thumbs_up": 15,
+              "thumbs_down": 5,
+              "unique": true,
+              "pourquoi": "Langage correct et formel — le perfectionniste"
+            },
+            {
+              "tag": "[authoritative]",
+              "description": "Commanding respect",
+              "category": "Emotion",
+              "thumbs_up": 12,
+              "thumbs_down": 4,
+              "unique": true,
+              "pourquoi": "Autorité naturelle et juste — le leader intègre"
+            },
+            {
+              "tag": "[stern]",
+              "description": "Strict, severe",
+              "category": "Emotion",
+              "thumbs_up": 13,
+              "thumbs_down": 4,
+              "unique": true,
+              "pourquoi": "Sévérité bienveillante — quand il faut être ferme"
+            }
+          ]
+        },
+        {
+          "...": "partages",
+          "tags": [
+            {
+              "tag": "[measured]",
+              "description": "Speaker speaks with careful pacing",
+              "category": "Styles",
+              "thumbs_up": 13,
+              "thumbs_down": 4
+            },
+            {
+              "tag": "[precise]",
+              "description": "Speaker speaks with exact pronunciation",
+              "category": "Styles",
+              "thumbs_up": 9,
+              "thumbs_down": 2
+            },
+            {
+              "tag": "[educated]",
+              "description": "Speaker speaks with learning",
+              "category": "Styles",
+              "thumbs_up": 15,
+              "thumbs_down": 4
+            }
+          ]
+        }
+      ]
+    },
+    "E2": {
+      "nom": "L'Altruiste",
+      "surnom": "L'Aidant",
+      "description": "Généreux, chaleureux et attentionné. Pense aux autres avant lui-même. Parle avec douceur et compassion.",
+      "archetype_enfant": "Le grand frère protecteur / La petite maman",
+      "tags": [
+        {
+          "...": "uniques",
+          "tags": [
+            {
+              "tag": "[caring]",
+              "description": "Compassionate, loving",
+              "category": "Emotion",
+              "thumbs_up": 15,
+              "thumbs_down": 5,
+              "unique": true,
+              "pourquoi": "Compassion profonde — le cœur du Type 2"
+            },
+            {
+              "tag": "[compassionate]",
+              "description": "Empathetic, understanding",
+              "category": "Emotion",
+              "thumbs_up": 5,
+              "thumbs_down": 1,
+              "unique": true,
+              "pourquoi": "Empathie naturelle et inconditionnelle"
+            },
+            {
+              "tag": "[tender]",
+              "description": "Soft, affectionate",
+              "category": "Emotion",
+              "thumbs_up": 4,
+              "thumbs_down": 1,
+              "unique": true,
+              "pourquoi": "Délicatesse et tendresse dans la voix"
+            },
+            {
+              "tag": "[soothing narration]",
+              "description": "Speaker uses calming narrative tone",
+              "category": "Narrative",
+              "thumbs_up": 9,
+              "thumbs_down": 3,
+              "unique": true,
+              "pourquoi": "Voix apaisante qui console — le soigneur"
+            }
+          ]
+        },
+        {
+          "...": "partages",
+          "tags": [
+            {
+              "tag": "[warm]",
+              "description": "Speaker speaks with friendly warmth",
+              "category": "Styles",
+              "thumbs_up": 9,
+              "thumbs_down": 2
+            },
+            {
+              "tag": "[gentle interjection]",
+              "description": "Speaker makes a gentle interjection",
+              "category": "Dialogue",
+              "thumbs_up": 15,
+              "thumbs_down": 5
+            },
+            {
+              "tag": "[calming narration]",
+              "description": "Speaker uses peaceful narrative tone",
+              "category": "Narrative",
+              "thumbs_up": 15,
+              "thumbs_down": 5
+            }
+          ]
+        }
+      ]
+    },
+    "E3": {
+      "nom": "Le Performeur",
+      "surnom": "Le Triomphant",
+      "description": "Dynamique, confiant et ambitieux. Aime être le meilleur et briller. Parle avec énergie et assurance.",
+      "archetype_enfant": "Le meneur / La star de la classe",
+      "tags": [
+        {
+          "...": "uniques",
+          "tags": [
+            {
+              "tag": "[projecting]",
+              "description": "Speaker speaks to reach large audience",
+              "category": "Styles",
+              "thumbs_up": 15,
+              "thumbs_down": 5,
+              "unique": true,
+              "pourquoi": "Voix qui porte — le performeur aime être entendu"
+            },
+            {
+              "tag": "[vibrant]",
+              "description": "Lively, dynamic",
+              "category": "Emotion",
+              "thumbs_up": 14,
+              "thumbs_down": 5,
+              "unique": true,
+              "pourquoi": "Dynamisme et vivacité — plein de vie"
+            },
+            {
+              "tag": "[confident rhythm]",
+              "description": "Assured timing pattern",
+              "category": "Rhythm",
+              "thumbs_up": 8,
+              "thumbs_down": 2,
+              "unique": true,
+              "pourquoi": "Rythme assuré — l'assurance du vainqueur"
+            },
+            {
+              "tag": "[energetic afternoon]",
+              "description": "Speaker sounds vibrant and lively in the afternoon",
+              "category": "Mood",
+              "thumbs_up": 14,
+              "thumbs_down": 4,
+              "unique": true,
+              "pourquoi": "Énergie débordante à toute heure"
+            }
+          ]
+        },
+        {
+          "...": "partages",
+          "tags": [
+            {
+              "tag": "[animated]",
+              "description": "Speaker speaks with lively expression",
+              "category": "Styles",
+              "thumbs_up": 14,
+              "thumbs_down": 4
+            },
+            {
+              "tag": "[cheerful]",
+              "description": "Bright, upbeat mood",
+              "category": "Emotion",
+              "thumbs_up": 15,
+              "thumbs_down": 4
+            },
+            {
+              "tag": "[enthusiastic]",
+              "description": "Passionate excitement",
+              "category": "Emotion",
+              "thumbs_up": 15,
+              "thumbs_down": 5
+            }
+          ]
+        }
+      ]
+    },
+    "E4": {
+      "nom": "L'Artiste",
+      "surnom": "L'Original",
+      "description": "Créatif, original et sensible. Vit intensément ses émotions. Parle avec poésie et une touche de mélancolie.",
+      "archetype_enfant": "Le rêveur / La petite artiste",
+      "tags": [
+        {
+          "...": "uniques",
+          "tags": [
+            {
+              "tag": "[melancholic narration]",
+              "description": "Speaker uses sad, wistful narrative",
+              "category": "Narrative",
+              "thumbs_up": 7,
+              "thumbs_down": 2,
+              "unique": true,
+              "pourquoi": "Mélancolie poétique — l'âme du Type 4"
+            },
+            {
+              "tag": "[poetic imagery]",
+              "description": "Speaker uses vivid poetic narrative",
+              "category": "Narrative",
+              "thumbs_up": 7,
+              "thumbs_down": 2,
+              "unique": true,
+              "pourquoi": "Imaginaire riche et poétique — le créatif"
+            },
+            {
+              "tag": "[quirky tone]",
+              "description": "Speaker uses eccentric narrative style",
+              "category": "Narrative",
+              "thumbs_up": 15,
+              "thumbs_down": 4,
+              "unique": true,
+              "pourquoi": "Excentricité charmante — l'original"
+            },
+            {
+              "tag": "[wonder-filled narration]",
+              "description": "Speaker uses amazed narrative style",
+              "category": "Narrative",
+              "thumbs_up": 15,
+              "thumbs_down": 5,
+              "unique": true,
+              "pourquoi": "Émerveillement constant — voit la beauté partout"
+            }
+          ]
+        },
+        {
+          "...": "partages",
+          "tags": [
+            {
+              "tag": "[dramatic]",
+              "description": "Theatrical, intense",
+              "category": "Emotion",
+              "thumbs_up": 9,
+              "thumbs_down": 3
+            },
+            {
+              "tag": "[introspective sigh]",
+              "description": "Speaker releases an introspective sigh",
+              "category": "Introspective",
+              "thumbs_up": 15,
+              "thumbs_down": 4
+            },
+            {
+              "tag": "[emotional]",
+              "description": "Speaker speaks with feeling",
+              "category": "Styles",
+              "thumbs_up": 5,
+              "thumbs_down": 1
+            }
+          ]
+        }
+      ]
+    },
+    "E5": {
+      "nom": "L'Observateur",
+      "surnom": "Le Sage",
+      "description": "Curieux, analytique et sage. Aime comprendre le monde. Parle avec calme et détachement intellectuel.",
+      "archetype_enfant": "Le petit scientifique / Le philosophe",
+      "tags": [
+        {
+          "...": "uniques",
+          "tags": [
+            {
+              "tag": "[analytical tone]",
+              "description": "Speaker uses analytical narrative approach",
+              "category": "Narrative",
+              "thumbs_up": 9,
+              "thumbs_down": 2,
+              "unique": true,
+              "pourquoi": "Analyse logique — l'esprit scientifique"
+            },
+            {
+              "tag": "[distant]",
+              "description": "Speaker speaks with emotional distance",
+              "category": "Styles",
+              "thumbs_up": 15,
+              "thumbs_down": 4,
+              "unique": true,
+              "pourquoi": "Distance émotionnelle — l'observateur détaché"
+            },
+            {
+              "tag": "[mechanical]",
+              "description": "Speaker speaks like a machine",
+              "category": "Styles",
+              "thumbs_up": 15,
+              "thumbs_down": 4,
+              "unique": true,
+              "pourquoi": "Précision mécanique — le systématique"
+            },
+            {
+              "tag": "[objective]",
+              "description": "Speaker speaks impartially",
+              "category": "Styles",
+              "thumbs_up": 9,
+              "thumbs_down": 3,
+              "unique": true,
+              "pourquoi": "Objectivité totale — le chercheur de vérité"
+            }
+          ]
+        },
+        {
+          "...": "partages",
+          "tags": [
+            {
+              "tag": "[measured]",
+              "description": "Speaker speaks with careful pacing",
+              "category": "Styles",
+              "thumbs_up": 13,
+              "thumbs_down": 4
+            },
+            {
+              "tag": "[contemplative]",
+              "description": "Deep in thought",
+              "category": "Emotion",
+              "thumbs_up": 7,
+              "thumbs_down": 2
+            },
+            {
+              "tag": "[factual]",
+              "description": "Speaker speaks with just facts",
+              "category": "Styles",
+              "thumbs_up": 7,
+              "thumbs_down": 2
+            }
+          ]
+        }
+      ]
+    },
+    "E6": {
+      "nom": "Le Loyaliste",
+      "surnom": "Le Fidèle",
+      "description": "Loyal, prudent et responsable. Cherche la sécurité et la confiance. Parle avec hésitation mais un cœur fidèle.",
+      "archetype_enfant": "Le prudent / L'ami fidèle",
+      "tags": [
+        {
+          "...": "uniques",
+          "tags": [
+            {
+              "tag": "[hesitates]",
+              "description": "Speaker hesitates while speaking",
+              "category": "Dialogue",
+              "thumbs_up": 15,
+              "thumbs_down": 5,
+              "unique": true,
+              "pourquoi": "Hésitation caractéristique — vérifie avant d'agir"
+            },
+            {
+              "tag": "[apprehensive]",
+              "description": "Fearful anticipation",
+              "category": "Emotion",
+              "thumbs_up": 8,
+              "thumbs_down": 3,
+              "unique": true,
+              "pourquoi": "Appréhension naturelle — le méfiant bienveillant"
+            },
+            {
+              "tag": "[confirming tone]",
+              "description": "Speaker uses a tone to confirm something",
+              "category": "Dialogue",
+              "thumbs_up": 14,
+              "thumbs_down": 4,
+              "unique": true,
+              "pourquoi": "Cherche confirmation — besoin de validation"
+            },
+            {
+              "tag": "[anxious midday]",
+              "description": "Speaker sounds worried and tense at midday",
+              "category": "Mood",
+              "thumbs_up": 6,
+              "thumbs_down": 1,
+              "unique": true,
+              "pourquoi": "Anxiété diffuse — l'inquiet qui veut protéger"
+            }
+          ]
+        },
+        {
+          "...": "partages",
+          "tags": [
+            {
+              "tag": "[night cautious]",
+              "description": "Speaker sounds careful and wary at night",
+              "category": "Mood",
+              "thumbs_up": 4,
+              "thumbs_down": 1
+            },
+            {
+              "tag": "[steady]",
+              "description": "Consistent, even pace",
+              "category": "Rhythm",
+              "thumbs_up": 9,
+              "thumbs_down": 2
+            },
+            {
+              "tag": "[hesitant]",
+              "description": "Uncertain, cautious timing",
+              "category": "Rhythm",
+              "thumbs_up": 9,
+              "thumbs_down": 3
+            }
+          ]
+        }
+      ]
+    },
+    "E7": {
+      "nom": "L'Épicurien",
+      "surnom": "L'Enthousiaste",
+      "description": "Joyeux, enthousiaste et spontané. Vit pleinement chaque moment. Parle avec énergie contagieuse et rire facile.",
+      "archetype_enfant": "L'optimiste / Le boute-en-train",
+      "tags": [
+        {
+          "...": "uniques",
+          "tags": [
+            {
+              "tag": "[excited]",
+              "description": "Energetic enthusiasm",
+              "category": "Emotion",
+              "thumbs_up": 5,
+              "thumbs_down": 2,
+              "unique": true,
+              "pourquoi": "Excitation débordante — l'enthousiasme pur"
+            },
+            {
+              "tag": "[bouncy]",
+              "description": "Energetic, lively rhythm",
+              "category": "Rhythm",
+              "thumbs_up": 8,
+              "thumbs_down": 2,
+              "unique": true,
+              "pourquoi": "Rythme sautillant — l'énergie joyeuse"
+            },
+            {
+              "tag": "[commute upbeat]",
+              "description": "Speaker sounds cheerful and positive during commute",
+              "category": "Mood",
+              "thumbs_up": 12,
+              "thumbs_down": 4,
+              "unique": true,
+              "pourquoi": "Humeur toujours positive — l'optimiste"
+            },
+            {
+              "tag": "[evening playful]",
+              "description": "Speaker sounds fun and lighthearted in the evening",
+              "category": "Mood",
+              "thumbs_up": 12,
+              "thumbs_down": 4,
+              "unique": true,
+              "pourquoi": "Esprit joueur — le compagnon de jeu"
+            }
+          ]
+        },
+        {
+          "...": "partages",
+          "tags": [
+            {
+              "tag": "[cheerful]",
+              "description": "Bright, upbeat mood",
+              "category": "Emotion",
+              "thumbs_up": 15,
+              "thumbs_down": 4
+            },
+            {
+              "tag": "[laugh joyful]",
+              "description": "Happy, genuine laugh",
+              "category": "Vocal Effects",
+              "thumbs_up": 14,
+              "thumbs_down": 4
+            },
+            {
+              "tag": "[yahoo]",
+              "description": "Joyful exclamation",
+              "category": "Vocal Effects",
+              "thumbs_up": 15,
+              "thumbs_down": 4
+            }
+          ]
+        }
+      ]
+    },
+    "E8": {
+      "nom": "Le Chef",
+      "surnom": "Le Protecteur",
+      "description": "Fort, direct et protecteur. Défende les plus faibles avec passion. Parle avec puissance et assurance sans faille.",
+      "archetype_enfant": "Le héros / Le protecteur",
+      "tags": [
+        {
+          "...": "uniques",
+          "tags": [
+            {
+              "tag": "[bellowing]",
+              "description": "Speaker speaks very loudly",
+              "category": "Styles",
+              "thumbs_up": 15,
+              "thumbs_down": 4,
+              "unique": true,
+              "pourquoi": "Voix puissante et forte — le chef qui commande"
+            },
+            {
+              "tag": "[explosive]",
+              "description": "Speaker speaks with sudden bursts",
+              "category": "Styles",
+              "thumbs_up": 15,
+              "thumbs_down": 4,
+              "unique": true,
+              "pourquoi": "Énergie explosive — la puissance déchaînée"
+            },
+            {
+              "tag": "[commanding]",
+              "description": "Speaker speaks with authoritative tone",
+              "category": "Styles",
+              "thumbs_up": 8,
+              "thumbs_down": 2,
+              "unique": true,
+              "pourquoi": "Commandement naturel — le leader né"
+            },
+            {
+              "tag": "[dominant]",
+              "description": "Assertive, controlling",
+              "category": "Emotion",
+              "thumbs_up": 14,
+              "thumbs_down": 4,
+              "unique": true,
+              "pourquoi": "Présence dominante — le protecteur de tous"
+            }
+          ]
+        },
+        {
+          "...": "partages",
+          "tags": [
+            {
+              "tag": "[assertive]",
+              "description": "Speaker speaks confidently and firmly",
+              "category": "Styles",
+              "thumbs_up": 7,
+              "thumbs_down": 2
+            },
+            {
+              "tag": "[booming]",
+              "description": "Speaker speaks with resonant volume",
+              "category": "Styles",
+              "thumbs_up": 12,
+              "thumbs_down": 3
+            },
+            {
+              "tag": "[firm negation]",
+              "description": "Speaker firmly denies something",
+              "category": "Dialogue",
+              "thumbs_up": 15,
+              "thumbs_down": 5
+            }
+          ]
+        }
+      ]
+    },
+    "E9": {
+      "nom": "Le Médiateur",
+      "surnom": "Le Paix",
+      "description": "Paisible, conciliant et doux. Apaise les conflits et unit les autres. Parle avec calme et sérénité profonde.",
+      "archetype_enfant": "Le pacificateur / Le rêveur tranquille",
+      "tags": [
+        {
+          "...": "uniques",
+          "tags": [
+            {
+              "tag": "[calm morning]",
+              "description": "Speaker sounds peaceful and serene in the morning",
+              "category": "Mood",
+              "thumbs_up": 5,
+              "thumbs_down": 1,
+              "unique": true,
+              "pourquoi": "Calme matinal — la sérénité incarnée"
+            },
+            {
+              "tag": "[peaceful morning]",
+              "description": "Speaker sounds tranquil and relaxed in the morning",
+              "category": "Mood",
+              "thumbs_up": 5,
+              "thumbs_down": 1,
+              "unique": true,
+              "pourquoi": "Paix intérieure — l'harmonie absolue"
+            },
+            {
+              "tag": "[evening relaxed]",
+              "description": "Speaker sounds calm and at ease in the evening",
+              "category": "Mood",
+              "thumbs_up": 15,
+              "thumbs_down": 4,
+              "unique": true,
+              "pourquoi": "Détente totale — le zen enfantin"
+            },
+            {
+              "tag": "[evening mellow]",
+              "description": "Speaker sounds smooth and laid-back in the evening",
+              "category": "Mood",
+              "thumbs_up": 6,
+              "thumbs_down": 2,
+              "unique": true,
+              "pourquoi": "Douceur crépusculaire — le doux rêveur"
+            }
+          ]
+        },
+        {
+          "...": "partages",
+          "tags": [
+            {
+              "tag": "[gentle interjection]",
+              "description": "Speaker makes a gentle interjection",
+              "category": "Dialogue",
+              "thumbs_up": 15,
+              "thumbs_down": 5
+            },
+            {
+              "tag": "[smooth flow]",
+              "description": "Effortless continuity",
+              "category": "Rhythm",
+              "thumbs_up": 14,
+              "thumbs_down": 4
+            },
+            {
+              "tag": "[run softly]",
+              "description": "Speaker sounds like they are running softly",
+              "category": "Body States",
+              "thumbs_up": 15,
+              "thumbs_down": 5
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

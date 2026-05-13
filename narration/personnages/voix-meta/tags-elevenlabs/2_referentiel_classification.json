@@ -1,0 +1,177 @@
+{
+  "meta": {
+    "description": "Référentiel multi-axes pour la classification des tags ElevenLabs v3",
+    "date_creation": "2025-06-17",
+    "version": "1.0"
+  },
+  "axes": {
+    "valence_emotionnelle": {
+      "description": "Orientation émotionnelle générale",
+      "type": "simple",
+      "valeurs_possibles": [
+        "positif",
+        "negatif",
+        "neutre",
+        "ambivalent",
+        "non_applicable"
+      ],
+      "definitions": {
+        "positif": "Émotion ou état agréable, favorable (joie, amour, satisfaction)",
+        "negatif": "Émotion ou état désagréable, défavorable (colère, tristesse, peur)",
+        "neutre": "Sans charge émotionnelle particulière",
+        "ambivalent": "Mélange de sentiments ou ambiguïté émotionnelle",
+        "non_applicable": "Pas d'orientation émotionnelle pertinente"
+      }
+    },
+    "intensite": {
+      "description": "Niveau d'intensité de l'expression",
+      "type": "graduee",
+      "valeurs_possibles": [
+        "subtil",
+        "modere",
+        "fort",
+        "extreme",
+        "variable",
+        "non_applicable"
+      ],
+      "definitions": {
+        "subtil": "À peine perceptible, nuancé, délicat",
+        "modere": "Niveau moyen, équilibré",
+        "fort": "Intense, puissant, marqué",
+        "extreme": "Au maximum, dramatique, débordant",
+        "variable": "Changeant, fluctuant",
+        "non_applicable": "Intensité non pertinente"
+      }
+    },
+    "type_expression": {
+      "description": "Nature de l'expression vocale",
+      "type": "categorie",
+      "valeurs_possibles": [
+        "emotion",
+        "etat_physique",
+        "effet_technique",
+        "effet_sonore",
+        "environnement_acoustique",
+        "style_parole",
+        "rythme_tempo",
+        "narration",
+        "dialogue",
+        "humour",
+        "genre_narratif",
+        "accent_regional",
+        "humeur_tonale",
+        "reflexif_interieur",
+        "vocalisation_non_verbale"
+      ],
+      "definitions": {
+        "emotion": "État émotionnel exprimé (joie, colère, peur...)",
+        "etat_physique": "État corporel ou sensation physique (douleur, fatigue...)",
+        "effet_technique": "Traitement audio ou effet technique (reverb, auto-tune...)",
+        "effet_sonore": "Son non-vocal (applaudissements, alarmes...)",
+        "environnement_acoustique": "Contexte sonore ambiant (café, plage...)",
+        "style_parole": "Manière de parler (académique, assertif...)",
+        "rythme_tempo": "Rythme ou cadence de parole",
+        "narration": "Style de narration ou storytelling",
+        "dialogue": "Dynamique de conversation",
+        "humour": "Comique, drôle, amusant",
+        "genre_narratif": "Genre de récit (horreur, aventure...)",
+        "accent_regional": "Accent géographique",
+        "humeur_tonale": "Atmosphère ou ambiance générale",
+        "reflexif_interieur": "Pensée intérieure, introspection",
+        "vocalisation_non_verbale": "Son vocal sans mot (toux, rire...)"
+      }
+    },
+    "dimension_temporelle": {
+      "description": "Référence temporelle ou pacing",
+      "type": "mixed",
+      "valeurs_possibles": [
+        "matin",
+        "journee",
+        "soir",
+        "nuit",
+        "rapide",
+        "lent",
+        "modere",
+        "irregulier",
+        "non_applicable"
+      ],
+      "definitions": {
+        "matin": "Matinée, aube, réveil, début de journée",
+        "journee": "Plein jour, milieu de journée, après-midi",
+        "soir": "Crépuscule, coucher de soleil, soirée",
+        "nuit": "Nuit, minuit, tard, sommeil",
+        "rapide": "Parole rapide, urgent, précipité",
+        "lent": "Parole lente, posée, tranquille",
+        "modere": "Rythme normal, régulier",
+        "irregulier": "Rythme irrégulier, saccadé",
+        "non_applicable": "Pas de dimension temporelle"
+      }
+    },
+    "energie": {
+      "description": "Niveau d'énergie communiqué",
+      "type": "graduee",
+      "valeurs_possibles": [
+        "tres_basse",
+        "basse",
+        "moyenne",
+        "haute",
+        "tres_haute",
+        "non_applicable"
+      ],
+      "definitions": {
+        "tres_basse": "Épuisement, torpeur, inertie",
+        "basse": "Calme, relaxation, lenteur",
+        "moyenne": "Niveau standard, neutre",
+        "haute": "Dynamisme, activité, enthousiasme",
+        "tres_haute": "Excitation extrême, frénésie, explosion",
+        "non_applicable": "Énergie non pertinente"
+      }
+    },
+    "physiologie": {
+      "description": "Implication corporelle/physiologique",
+      "type": "categorie",
+      "valeurs_possibles": [
+        "respiration",
+        "douleur",
+        "sensation",
+        "geste",
+        "visage",
+        "non_applicable"
+      ],
+      "definitions": {
+        "respiration": "Relatif à la respiration (soupir, haletement...)",
+        "douleur": "Relatif à la douleur physique",
+        "sensation": "Sensation tactile ou corporelle (frisson, chaleur...)",
+        "geste": "Relatif à un mouvement corporel",
+        "visage": "Expression faciale (rougir, cligner...)",
+        "non_applicable": "Pas de composante physiologique"
+      }
+    },
+    "tonalite": {
+      "description": "Qualité de la voix/ton",
+      "type": "mixed",
+      "valeurs_possibles": [
+        "grave",
+        "aigue",
+        "douce",
+        "dure",
+        "chaude",
+        "froide",
+        "nasale",
+        "claire",
+        "non_applicable"
+      ],
+      "definitions": {
+        "grave": "Voix profonde, basse, rauque",
+        "aigue": "Voix haute, perçante, fine",
+        "douce": "Voix douce, suave, veloutée",
+        "dure": "Voix dure, sévère, abrasive",
+        "chaude": "Voix chaleureuse, accueillante",
+        "froide": "Voix froide, distante, détachée",
+        "nasale": "Voix nasale, nasillarde",
+        "claire": "Voix claire, cristalline, pure",
+        "non_applicable": "Tonalité non pertinente"
+      }
+    }
+  }
+}

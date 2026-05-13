@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>MJ-18 â€“ Tubes de couleurs</title>
+  <title>MJ-18 — Tubes de couleurs</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none; }
@@ -24,30 +24,36 @@
     .info {
       text-align:center; color:#ffe066; font-size:1rem; font-weight:900; padding:8px 16px;
     }
+    /* Deux rangées de tubes */
     .stage {
-      flex:1; display:flex; justify-content:center; align-items:flex-end;
-      gap:12px; padding:16px 10px 40px;
-      position:relative; flex-wrap:wrap;
+      flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center;
+      gap:14px; padding:10px 10px 16px;
+      position:relative;
+    }
+    .tube-row {
+      display:flex; justify-content:center; align-items:flex-end;
+      gap:10px; flex-wrap:nowrap;
     }
     .tube {
-      width:54px; height:240px;
+      width:50px; height:170px;
       background:rgba(255,255,255,0.08);
       border:4px solid rgba(255,255,255,0.55);
       border-top:none;
-      border-radius:0 0 30px 30px;
+      border-radius:0 0 28px 28px;
       position:relative;
       cursor:pointer;
       transition:transform 0.3s ease;
       overflow:hidden;
       display:flex; flex-direction:column-reverse;
       will-change:transform;
+      min-width:44px;
     }
     .tube::before {
       content:''; position:absolute; top:-8px; left:-4px; right:-4px; height:8px;
       background:rgba(255,255,255,0.55); border-radius:6px 6px 0 0;
     }
     .tube.selected {
-      transform:translateY(-24px);
+      transform:translateY(-20px);
       box-shadow:0 0 0 4px #ffe066, 0 8px 24px rgba(255,224,102,0.5);
     }
     .tube.full-mono {
@@ -57,18 +63,17 @@
       width:100%; height:25%;
       transition:height 0.3s ease;
     }
-    /* Goutte qui vole d'un tube Ã  l'autre */
     .drop {
       position:absolute;
-      width:28px; height:36px;
+      width:26px; height:34px;
       border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
       pointer-events:none; z-index:20;
       box-shadow:0 2px 6px rgba(0,0,0,0.4);
     }
 
-    .controls { display:flex; justify-content:center; gap:12px; padding:0 16px 12px; }
+    .controls { display:flex; justify-content:center; gap:10px; padding:0 16px 12px; flex-wrap:wrap; }
     .btn {
-      padding:10px 20px; border-radius:24px; border:none; background:rgba(255,255,255,0.15);
+      padding:10px 18px; border-radius:24px; border:none; background:rgba(255,255,255,0.15);
       color:#fff; font-weight:900; font-size:1rem; font-family:inherit; cursor:pointer;
     }
 
@@ -95,7 +100,6 @@
     .victory-btn.primary { background:linear-gradient(135deg,#00c47a,#00a86b); color:#fff; }
     .victory-btn.secondary { background:rgba(255,255,255,0.15); color:#fff; }
 
-    /* DÃ©filÃ© de bus bonus â€” scÃ¨ne animÃ©e tube â†’ bus */
     .paint-scene {
       position:relative; width:100%; height:200px; margin:10px 0;
       overflow:hidden; background:rgba(255,255,255,0.04);
@@ -133,27 +137,28 @@
 <body>
   <div id="app">
     <div class="hdr">
-      <a href="index.html" class="back">â†</a>
-      <span class="htitle">ðŸ§ª Tubes de couleurs</span>
+      <a href="index.html" class="back">←</a>
+      <span class="htitle">🧪 Tubes de couleurs</span>
     </div>
     <div class="info" id="info">Tape un tube, puis tape un autre pour verser !</div>
     <div class="stage" id="stage"></div>
     <div class="controls">
-      <button class="btn" onclick="changeColorCount(-1)">âˆ’</button>
-      <span style="color:#fff;font-weight:900;font-size:1rem;padding:0 4px;">ðŸ§ª <span id="tubeCountVal">4</span> couleurs</span>
+      <button class="btn" onclick="changeColorCount(-1)">−</button>
+      <span style="color:#fff;font-weight:900;font-size:1rem;padding:0 4px;">🧪 <span id="tubeCountVal">4</span> couleurs</span>
       <button class="btn" onclick="changeColorCount(1)">+</button>
-      <button class="btn" onclick="reset()">ðŸ”„</button>
+      <button class="btn" onclick="newGame()">🎲 Nouveau</button>
+      <button class="btn" onclick="resetSameColors()">🔄 Remélanger</button>
     </div>
   </div>
 
   <div class="victory-overlay" id="victoryOverlay">
     <div class="victory-content">
-      <div class="victory-emoji">ðŸŽ‰</div>
+      <div class="victory-emoji">🎉</div>
       <h2 class="victory-title">Bravo !</h2>
-      <p class="victory-text">Tu as triÃ© toutes les couleurs ! Regarde les bus repeints :</p>
+      <p class="victory-text">Tu as trié toutes les couleurs ! Regarde les bus repeints :</p>
       <div class="paint-scene" id="paintScene"></div>
-      <button class="victory-btn primary" onclick="reset();document.getElementById('victoryOverlay').classList.remove('show')">ðŸ”„ Rejouer</button>
-      <a href="index.html" class="victory-btn secondary">ðŸ“‹ Menu</a>
+      <button class="victory-btn primary" onclick="newGame();document.getElementById('victoryOverlay').classList.remove('show')">🎲 Nouveau jeu</button>
+      <a href="index.html" class="victory-btn secondary">📋 Menu</a>
     </div>
   </div>
 
@@ -162,26 +167,14 @@
   <script src="js/bus-svg.js"></script>
   <script src="js/data.js"></script>
   <script>
-    // MJ-18 V4 â€” nombre de tubes configurable, couleurs de bus rÃ©elles
     const TUBE_CAPACITY = 4;
     const TUBES_EMPTY = 2;
     const COLOR_COUNT_MIN = 3;
     const COLOR_COUNT_MAX = 8;
 
-    // Palette Ã©largie : couleurs IDFM rÃ©elles de bus connus
-    const ALL_BUS_THEMES = [
-      { num: '162', color: '#0064B1' }, // bleu
-      { num: '172', color: '#008C59' }, // vert
-      { num: '184', color: '#DCAC27' }, // jaune/or
-      { num: '186', color: '#B43C95' }, // magenta
-      { num: '323', color: '#E3000F' }, // rouge
-      { num: '131', color: '#FF8200' }, // orange
-      { num: '180', color: '#00AFCA' }, // cyan
-      { num: 'V7',  color: '#6EBE44' }, // vert pomme
-    ];
-
-    let colorCount = 4; // nombre de couleurs actif (= tubes remplis)
-    let BUS_THEMES = ALL_BUS_THEMES.slice(0, colorCount);
+    let colorCount = 4;
+    // Couleurs actives — sélectionnées depuis LIGNES via selectDistinctColors
+    let BUS_THEMES = [];
 
     let tubes = [];
     let selected = null;
@@ -196,24 +189,34 @@
       const next = colorCount + delta;
       if (next < COLOR_COUNT_MIN || next > COLOR_COUNT_MAX) return;
       colorCount = next;
-      BUS_THEMES = ALL_BUS_THEMES.slice(0, colorCount);
       updateCountDisplay();
-      reset();
+      newGame();
     }
 
-    function reset() {
+    // Nouveau jeu : nouvelles couleurs aléatoires depuis LIGNES
+    function newGame() {
+      BUS_THEMES = selectDistinctColors(LIGNES_UNIQUES, colorCount);
+      // Fallback si LIGNES_UNIQUES trop court
+      if (BUS_THEMES.length < colorCount) {
+        BUS_THEMES = selectDistinctColors(LIGNES, colorCount);
+      }
+      resetSameColors();
+    }
+
+    // Remélanger les mêmes couleurs (sans rechoisir)
+    function resetSameColors() {
       complete = false;
       animating = false;
+      selected = null;
+      if (BUS_THEMES.length === 0) { newGame(); return; }
       const COLORS = BUS_THEMES.map(t => t.color);
-      // MÃ©lange : TUBE_CAPACITY couches Ã— COLORS.length, rÃ©parti sur les tubes remplis
       const mix = [];
       COLORS.forEach(c => { for (let i=0;i<TUBE_CAPACITY;i++) mix.push(c); });
       for (let i=mix.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [mix[i],mix[j]]=[mix[j],mix[i]]; }
       tubes = [];
       for (let i=0;i<colorCount;i++) tubes.push(mix.slice(i*TUBE_CAPACITY, (i+1)*TUBE_CAPACITY));
       for (let i=0;i<TUBES_EMPTY;i++) tubes.push([]);
-      if (isSolved()) return reset();
-      selected = null;
+      if (isSolved()) return resetSameColors();
       render();
       if (typeof Tracker !== 'undefined') Tracker.startSession('mj-18');
     }
@@ -221,21 +224,32 @@
     function render() {
       const stage = document.getElementById('stage');
       stage.innerHTML = '';
-      tubes.forEach((t, idx) => {
-        const el = document.createElement('div');
-        el.className = 'tube';
-        el.dataset.idx = idx;
-        if (selected === idx) el.classList.add('selected');
-        if (isMonoFull(t)) el.classList.add('full-mono');
-        t.forEach(color => {
-          const layer = document.createElement('div');
-          layer.className = 'layer';
-          layer.style.background = color;
-          el.appendChild(layer);
-        });
-        el.addEventListener('click', () => onTap(idx));
-        stage.appendChild(el);
-      });
+      const total = tubes.length;
+      const perRow = Math.ceil(total / 2);
+
+      for (let row = 0; row < 2; row++) {
+        const rowDiv = document.createElement('div');
+        rowDiv.className = 'tube-row';
+        const start = row * perRow;
+        const end = Math.min(start + perRow, total);
+        for (let idx = start; idx < end; idx++) {
+          const t = tubes[idx];
+          const el = document.createElement('div');
+          el.className = 'tube';
+          el.dataset.idx = idx;
+          if (selected === idx) el.classList.add('selected');
+          if (isMonoFull(t)) el.classList.add('full-mono');
+          t.forEach(color => {
+            const layer = document.createElement('div');
+            layer.className = 'layer';
+            layer.style.background = color;
+            el.appendChild(layer);
+          });
+          el.addEventListener('click', () => onTap(idx));
+          rowDiv.appendChild(el);
+        }
+        stage.appendChild(rowDiv);
+      }
     }
 
     function isMonoFull(t) {
@@ -248,12 +262,11 @@
 
     function topColor(t) { return t.length ? t[t.length-1] : null; }
 
-    // Le tube source se penche vers le tube cible, puis une goutte
-    // suit une trajectoire en arc jusqu'Ã  la cible. Tube se redresse ensuite.
     function animateDrop(srcIdx, dstIdx, color, onDone) {
-      const stage = document.getElementById('stage');
-      const srcEl = stage.children[srcIdx];
-      const dstEl = stage.children[dstIdx];
+      // Trouver les éléments dans les 2 rangées
+      const allTubes = document.querySelectorAll('.tube');
+      const srcEl = allTubes[srcIdx];
+      const dstEl = allTubes[dstIdx];
       if (!srcEl || !dstEl) { onDone && onDone(); return; }
 
       const sRect = srcEl.getBoundingClientRect();
@@ -261,15 +274,14 @@
       const tiltLeft = dRect.left < sRect.left;
       const tiltDeg = tiltLeft ? -55 : 55;
 
-      // Penche le tube source vers la cible (pivot = coin haut cÃ´tÃ© cible)
       srcEl.style.transformOrigin = tiltLeft ? '100% 0%' : '0% 0%';
       srcEl.style.transform = `rotate(${tiltDeg}deg)`;
 
       setTimeout(() => {
         const sRect2 = srcEl.getBoundingClientRect();
-        const startX = (tiltLeft ? sRect2.left : sRect2.right) - 14;
+        const startX = (tiltLeft ? sRect2.left : sRect2.right) - 13;
         const startY = sRect2.top + 8;
-        const endX   = dRect.left + dRect.width/2 - 14;
+        const endX   = dRect.left + dRect.width/2 - 13;
         const endY   = dRect.top + 4;
 
         const drop = document.createElement('div');
@@ -286,7 +298,6 @@
         });
         setTimeout(() => {
           drop.remove();
-          // Redresse le tube
           srcEl.style.transform = '';
           setTimeout(() => { onDone && onDone(); }, 260);
         }, 520);
@@ -318,16 +329,16 @@
         return;
       }
 
-      // DÃ©selectionne d'abord (render rebuild les tubes) puis anime
       animating = true;
       const fromIdx = selected;
       const toIdx = idx;
       selected = null;
       render();
       animateDrop(fromIdx, toIdx, srcTop, () => {
+        const src2 = tubes[fromIdx], dst2 = tubes[toIdx];
         let moved = 0;
-        while (src.length && topColor(src) === srcTop && dst.length + moved < TUBE_CAPACITY) {
-          dst.push(src.pop());
+        while (src2.length && topColor(src2) === srcTop && dst2.length + moved < TUBE_CAPACITY) {
+          dst2.push(src2.pop());
           moved++;
         }
         if (typeof Tracker !== 'undefined') Tracker.logAnswer(true);
@@ -350,18 +361,17 @@
       runPaintParade();
     }
 
-    // Parade : un tube penche et verse sur un bus qui passe.
-    // Pour chaque couleur : bus entre (fenÃªtre grise) â†’ tube penche â†’ goutte tombe â†’ fenÃªtre prend la couleur â†’ bus sort.
     async function runPaintParade() {
       const scene = document.getElementById('paintScene');
       scene.innerHTML = '';
       const GREY = '#8a95a3';
 
       for (let i = 0; i < BUS_THEMES.length; i++) {
-        const color = BUS_THEMES[i].color;
-        const num = BUS_THEMES[i].num;
+        const theme = BUS_THEMES[i];
+        const color = theme.color;
+        const num = theme.num;
+        const textColor = theme.textColor || '#fff';
 
-        // Tube rempli de cette couleur
         const tube = document.createElement('div');
         tube.className = 'paint-tube';
         for (let k = 0; k < TUBE_CAPACITY; k++) {
@@ -372,21 +382,19 @@
         }
         scene.appendChild(tube);
 
-        // Bus qui entre avec fenÃªtre destination grise
+        // Bus entre avec fenêtre grise — numéro déjà affiché
         const bus = document.createElement('div');
         bus.className = 'paint-bus';
-        bus.innerHTML = busSVG(GREY, '#fff', num, 130);
+        bus.innerHTML = busSVG(GREY, '#333', num, 130);
         scene.appendChild(bus);
 
         await sleep(80);
         bus.classList.add('enter');
         await sleep(900);
 
-        // Tube penche
         tube.classList.add('pouring');
         await sleep(450);
 
-        // Goutte tombe du tube vers la fenÃªtre destination du bus
         const drop = document.createElement('div');
         drop.className = 'paint-drop';
         drop.style.background = color;
@@ -406,16 +414,18 @@
         await sleep(450);
         drop.style.opacity = '0';
 
-        // La fenÃªtre destination prend la couleur du tube
+        // Colorie la fenêtre destination du bus avec la vraie couleur de la ligne
         const destRect = bus.querySelector('rect[x="84"]');
         if (destRect) {
           destRect.style.transition = 'fill 0.45s ease';
           destRect.setAttribute('fill', color);
+          // Mise à jour couleur texte
+          const numText = bus.querySelector('text');
+          if (numText) numText.setAttribute('fill', textColor);
         }
         try { sndDing && sndDing(); } catch(e) {}
 
         await sleep(500);
-        // Tube se redresse + bus sort
         tube.classList.remove('pouring');
         bus.classList.remove('enter');
         bus.classList.add('exit');
@@ -430,7 +440,7 @@
 
     function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
-    document.addEventListener('DOMContentLoaded', () => { updateCountDisplay(); reset(); });
+    document.addEventListener('DOMContentLoaded', () => { updateCountDisplay(); newGame(); });
   </script>
   <script src="js/tracker.js"></script>
   <script src="js/comments.js"></script>

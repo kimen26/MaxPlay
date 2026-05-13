@@ -50,8 +50,17 @@ Tu travailles **main dans la main** avec `game-archiviste` :
 5. `game/pmo/decisions.md` — décisions figées + questions ouvertes
 6. `game/pmo/backlog.md` — source de vérité épics, leçons, changelog
 7. **`game/pmo/audit-trail.md`** 🆕 — derniers audits + findings ouverts à propager
-4. `game/memory/rules.md` — règles UX/péda non-négociables
-5. **Si signal tile détecté** : déléguer à `game-tile-pmo` (ne lis pas son scope toi-même)
+8. `game/memory/rules.md` — règles UX/péda non-négociables
+9. **📥 `game/inbox/`** — scanner tous les fichiers non traités (dépôts manuels Papa Yann)
+10. **📥 `game/INBOX.md`** — scanner les sections non distillées (bot Telegram + digests Claude)
+11. **Si signal tile détecté** : déléguer à `game-tile-pmo` (ne lis pas son scope toi-même)
+
+### Process INBOX (étapes 9-10)
+Pour chaque fichier/section non traité :
+1. Crée ticket `EP-NNN` dans `backlog.md` avec résumé de la matière
+2. Appelle `game-conseiller` pour brainstormer → "Où distiller cette matière ?"
+3. Distille vers le(s) fichier(s) cibles (rules.md, decisions.md, stack.md, etc.)
+4. Marque la section INBOX.md comme `> ✅ Distillé → [fichier cible]` ou supprime le fichier inbox/ si entièrement traité
 
 ---
 

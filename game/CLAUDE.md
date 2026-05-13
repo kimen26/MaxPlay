@@ -28,6 +28,15 @@
 | Traces audits + cause racine | [`pmo/audit-trail.md`](pmo/audit-trail.md) |
 | État déploiement statique (jeux actifs/retirés, bugs) | [`memory/state.md`](memory/state.md) |
 
+## 📥 Zones INBOX (2 canaux, checkés par game-pmo à chaque session)
+
+| Zone | Qui dépose | Format | PMO action |
+|------|-----------|--------|------------|
+| [`inbox/`](inbox/) | **Papa Yann** — fichiers manuels (idées, articles, captures, notes brutes) | Libre | Lit → ticket EP-NNN → brainstorm avec Conseiller → distille |
+| [`INBOX.md`](INBOX.md) | **Bot Telegram + digests Claude** | Sections `## YYYY-MM-DD` | Idem |
+
+**Règle 48h** : tout fichier dans `inbox/` ou section dans `INBOX.md` doit être distillé ou tickété dans les 48h.
+
 ---
 
 ## Lecture obligatoire avant toute modif

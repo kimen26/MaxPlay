@@ -74,6 +74,31 @@ Détail complet : [`audio-direction-elevenlabs/07-anti-patterns.md`](C:/Users/ki
 
 ---
 
+## État du casting filles
+
+| Perso | Type | Adjectif Lumi | Voice ID | Statut | Caractéristique vocale |
+|-------|------|---------------|----------|--------|------------------------|
+| **Raph** | T7 Enthousiaste | (à définir) | `Te5RKnm9ebwdEvZ1S5pS` | ✅ existant (avant méthodo v24, conservé) | (voix d'avant méthodo v24) |
+| **Juju** | T8 Challenger | **Solide** | `WFNYCPhDQM9w07KAV6Be` | ✅ **figé 2026-05-13** (Lumi Juju Solide) | aigu grounded bright, plant-and-deliver, plain-spoken steady |
+
+**Pivot méthodo v24 → fille** (2026-05-13) : header `Animated little girl character voice` (au lieu de `little guy`), physiologie aiguë (high-pitched, bright), zéro négation, `Parisian accent throughout` retiré (inutile sur voix qui passent au 1er coup). Juju validée en 1 essai avec ce template.
+
+### Description publique Voice Library — Juju (à coller sur ElevenLabs)
+
+**Title** : `Lumi Juju Solide`
+
+**Description FR** (416 chars) :
+```
+La voix qui tient la main sans le dire. Une présence qui dit ce qui est, sans détour, et fait tenir ce qui vacille. Vous l'écoutez et le sol semble plus stable sous vos pieds. Conçue pour les contes qui rassurent, les héroïnes qui ne fléchissent pas, les livres illustrés 3-8 ans où la franchise est tendre. Une voix qui protège ceux qui en ont besoin, sans jamais peser. Celle qu'on appelle quand il faut tenir bon.
+```
+
+**Description EN** (416 chars) :
+```
+The voice that holds your hand without saying so. A presence that says what is, plainly, and steadies what trembles. You listen and the ground feels firmer beneath you. Made for stories that reassure, for heroines who hold their ground, for illustrated books for ages 3-8 where honesty is tender. A voice that protects those who need it, without ever weighing them down. The one you call when you need to stand firm.
+```
+
+---
+
 ## Lulu — état détaillé du blocage
 
 **Itérations tentées (toutes ont fini bloquées par Prohibited Use Policy)** :
@@ -113,14 +138,15 @@ Native French. Parisian accent throughout. Young animated hero voice for animati
 
 ---
 
-## Filles à venir (4F)
+## Filles — restent à créer (2F)
 
-- Mimi (T2 Aidant — eau)
-- Madie (T4 Individualiste — fréquence)
-- Raph (T7 Enthousiaste — cosmos) — voice_id existant `Te5RKnm9ebwdEvZ1S5pS`
-- Juju (T8 Challenger — plantes)
+- ⏳ Mimi (T2 Aidant — eau)
+- ⏳ Madie (T4 Individualiste — fréquence)
 
-Stratégie filles : voir si on dérive de la méthodo `little guy` ou si on bascule sur `animated little girl character`. À décider après finalisation des 5 garçons.
+✅ Raph (T7 Enthousiaste — cosmos) — voice_id `Te5RKnm9ebwdEvZ1S5pS` (existant pré-v24)
+✅ Juju (T8 Challenger — plantes) — voice_id `WFNYCPhDQM9w07KAV6Be` (Lumi Juju Solide, figé 2026-05-13)
+
+**Stratégie filles tranchée 2026-05-13** : bascule sur `Animated little girl character voice` (méthodo v24 transposée, cf. section *État du casting filles*). Validation Juju en 1 essai.
 
 ---
 

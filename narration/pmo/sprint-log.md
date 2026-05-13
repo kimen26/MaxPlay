@@ -8,6 +8,27 @@
 
 ---
 
+## 2026-05-13 — [PMO] Voice ID Juju (T8 Challenger) figé — méthodo v24 fille validée 1 essai
+
+**Objectif** : graver création voice Juju + leçon méthodo v24 fille + bilan voix.
+
+**Fait** :
+- [x] Classification : DÉCISION (voix figée) + LEÇON (méthodo v24 fille transposée, validation empirique)
+- [x] Entrée datée `decisions.md` : DEC-VOIX-JUJU (voice_id + naming + méthodo + voice settings + descriptions publiques)
+- [x] `pmo/INVARIANTS.md` : voix IDs ajouté Juju (L.119), passage 6/10 → 7/10 voix figées
+- [x] Audit leçon : OBS-METHODO-V24-FILLE-VALIDÉE + OBS-NAMING-ANTI-COPIE (gravées dans decisions.md)
+
+**Décision tranchée** : DEC-VOIX-JUJU (cf. `decisions.md` — voice_id `WFNYCPhDQM9w07KAV6Be`, Lumi Juju Solide, 1 essai).
+
+**État au reboot** :
+- ✅ Source de vérité INVARIANTS corrigée (7/10 voix figées)
+- ✅ Voice ID figé dans decisions.md + type-08/voix.md
+- ✅ Leçons gravées (méthodo v24 fille + nommage anti-copie)
+- ⏳ Reste 2 filles : Mimi (T2) et Madie (T4) — stratégie : même méthodo v24 fille transposée, temp/boost optimisés après Raph (T7 déjà figée)
+- ℹ️ 7/10 voix production-ready (STORY-002 étape 8 peuvent utiliser Juju + filles)
+
+---
+
 ## 2026-05-13 — [PMO] Rename T3 Polo→Dadou + fix cohérence Melki genre
 
 **Objectif** : Arbitrage auteur collision sonore + graver décision + audit track.

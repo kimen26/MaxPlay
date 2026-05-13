@@ -269,6 +269,121 @@ Alternatives testées et rejetées :
 
 ---
 
+## 2026-05-14 — [ARCHIVISTE] Audit structurel complet pôle NARRATION (5 sections)
+
+**Mode** : Audit FORME complet + section 5 cohérence sémantique INDEX ⇄ Kanban.
+
+**Procédure** : 5 sections (FORME 1-4 + FOND sémantique 5) — lecture obligatoire INVARIANTS + audit-trail + INDEX + gabarit + PROCESS + ORGANIGRAMME avant analyse.
+
+### Résumé exécutif
+
+**Score global : 8.9/10 — PASS avec 3 corrections HAUTE requises.**
+
+Refonte structurelle 2026-05-12 (préfixes étapes, fusion pitch+plan, Archiviste proactif) **propagée à 100%** en structure (dossiers, gabarit, préfixes). Pas de fichiers orphelins, pas de refs cassées actives. Seule dette résiduelle = **désynchro sémantique INDEX.md** (2 lignes du même tableau qui disent des choses incompatibles sur STORY-002).
+
+### Findings par section
+
+**1. Préfixes étapes** ✅ **PASS** (10/10)
+- Tous les dossiers `stories/<NNN>/` préfixés selon convention 1-, 3-, 4-, 5-, 6-, 7-, 9-, 10-
+- Gabarit `_gabarit/` exemplaire
+- Aucun anti-pattern (fichiers nus, étapes sautées)
+
+**2. Gabarit respecté** ✅ **PASS** (10/10)
+- STORY-001 + STORY-002 : 4 briefs canoniques (univers, personnages, histoire, _writer-package)
+- Aucun fichier interdit dans `3-briefs/` (pas de README.md, pas de SYNTHESE)
+- STORY-002 bonus `brief-writer-guide.md` = variante autorisée (writer guidé)
+
+**3. Refs cassées** ✅ **PASS** (10/10)
+- Zéro lien markdown mort
+- Mentions "workshop/" historiques correctement datées dans audit-trail + sprint-log
+- Tous les chemins obsolètes propagés en 2026-05-12 (cf audit-trail L.460-467)
+
+**4. Fichiers orphelins** ✅ **PASS** (10/10)
+- Zéro orphelin actif
+- Deprecated (`memoire-architecte.md`, `plan-histoire.template.md`) signalés comme non-maintenus
+- Tous les fichiers pmo/, equipe/, stories/ sont référencés au moins 1 fois
+
+**5. Cohérence sémantique** 🟡 **PASS avec 3 HAUTE + 1 MOYENNE** (6.5/10)
+
+| # | Niveau | Finding | Cause |
+|---|--------|---------|-------|
+| 1 | 🔴 CRITIQUE | `INDEX.md` L.13 vs L.18 contradictoires : "étape 4 prête" vs "arbitrer sélection étape 6" | Tableau état instantané (L.13) non régénéré après corrections 2026-05-14. Ligne prochaine action (L.18) correcte. |
+| 2 | 🟡 HAUTE | Kanban 002 L.40-42 : validations auteur étape 6/10 vides, SLA floue | Étape 6 livrée 2026-05-13 mais date de validation non renseignée. |
+| 3 | 🟡 HAUTE | INVARIANTS L.117, 121 : Mimi/Madie voix affichent "—" ou "filtre cumulatif" (incomplet) | Voice Design encours, pas prioritaire avant étape 10 (audio), mais source de vérité doit refléter statut. |
+| 4 | 🟡 MOYENNE | decisions.md : Q-ouvertes 2026-05-12 clôturées mais sections historiques sans marqueur | Lecteur reprenant STORY-002 ne sait pas d'emblée si ces Q-ouvertes sont des blocages ou du passé. |
+
+### Corrections appliquées
+
+**Aucune correction appliquée lors de cet audit** (mode lecture seule). Archiviste délivre les findings au PMO pour validation auteur.
+
+### Ping PMO
+
+**OUI** — Archiviste recommande correction **immédiate** de finding #1 (1 min). Les trois autres HAUTE/MOYENNE peuvent aller en queue de backlog.
+
+### Pattern identificateur
+
+**Désynchro INDEX = habituel post-transition étape.** INDEX shift après étape +1 est un phénomène normal (étapes bougent rapide, INDEX suit moins vite). Aucun anti-pattern structurel. Système PMO proactif en place (ajout INVARIANTS 2026-05-12) prévient accumulation long-terme.
+
+---
+
+## 2026-05-14 — [PMO MODE AUDIT] Synchronisation INDEX post-étape 5 STORY-002
+
+**Mode** : Audit complet 5 sections (Architecture, Cohérence PROCESS, État histoires, Connaissances, Lean).
+
+**Procédure** : Lecture obligatoire pré-audit (INVARIANTS + audit-trail + stories/INDEX + decisions + backlog + sprint-log + PROCESS + ORGANIGRAMME + INBOX), puis 5 sections.
+
+### Findings par niveau
+
+**CRITIQUE (2)** :
+1. 3 INDEX désynchronisés vs kanban réel :
+   - `pmo/INDEX.md:18` dit "Lancer 10 writers" (étape 4)
+   - `pmo/INVARIANTS.md:156` dit "étape 4 prête à lancer (Q-ouvertes auteur)"
+   - `stories/INDEX.md:19` dit "Étape 4 (10 versions writers) prête à lancer"
+   - **RÉALITÉ** : kanban.md dit étape 6 (sélection), Q-ouvertes tranchées 2026-05-12, étapes 4-5 ✅
+   - **Cause racine** : INDEX mis à jour parallèlement par agents différents, non synchronisés post-étape-5
+
+2. Prochaine action invalide :
+   - `pmo/INDEX.md:18` dit "Lancer 10 writers après validation auteur questions ouvertes"
+   - **RÉALITÉ** : writers ✅ lancés étape 4 (2026-05-13), étape 5 lecteurs ✅ terminée
+   - Prochaine action = **Arbitrer sélection étape 6 (top 1-3 + greffes)**
+
+**HAUTE (2)** :
+1. Date transition étape 5→6 non renseignée :
+   - `kanban.md:30` colonne "Date" = "—" (vide)
+   - Recommandation : ajouter "2026-05-13" pour traçabilité SLA
+
+2. Q-ouvertes section dans `decisions.md` non purgée :
+   - Sections Q-ouvertes historiques (2026-05-12) toujours présentes sans marqueur de clôture
+   - Technique : marquer "✅ Clôturées 2026-05-12 DEC-TENSION-RESONANCE" pour clarté reprise
+
+### Corrections appliquées
+
+| # | Fichier | Changement | Statut |
+|---|---------|-----------|--------|
+| 1 | `pmo/INDEX.md:18` | "Lancer 10 writers..." → "Arbitrer sélection étape 6..." | ✅ |
+| 2 | `pmo/INVARIANTS.md:156` | "étape 4 prête à lancer (Q-ouvertes auteur)" → "étape 6 sélection en cours" | ✅ |
+| 3 | `stories/INDEX.md:19` | "Étape 4 (10 versions writers)..." → "Étape 6 Sélection..." | ✅ |
+| 4 | `kanban.md:30` | Colonne "Date" = "—" → "2026-05-13" | ✅ |
+| 5 | `decisions.md` Q-ouvertes | Ajouter marqueur clôture "✅ Clôturées DEC-TENSION-RESONANCE" | ✅ |
+
+### Verdict
+
+**Score global** : 8.8/10
+
+| Domaine | Score | Status |
+|---------|-------|--------|
+| Architecture/Découvrabilité | 10/10 | PASS |
+| Cohérence PROCESS | 10/10 | PASS |
+| État histoires | 4→10/10 | 🔴→✅ (post-fixes) |
+| Connaissances | 10/10 | PASS |
+| Lean | 10/10 | PASS |
+
+**Pattern identificateur** : INDEX shift post-étape-transition = habituel. Aucun anti-pattern structurel. Système de PPM/archiviste proactif en place empêche accumulation dette long-terme.
+
+**Prochain audit** : Après étape 6 Directeur arbitre sélection + approuve top 1 (avant rewrite étape 7).
+
+---
+
 ## Analyse cause racine : pourquoi tant de désynchros ?
 
 **Question Papa Yann** : « pkoi tout ca n'a pas été fait, ou laissé obsolète etc. y manque quelque chose ou kk'un kkpart nan ? »

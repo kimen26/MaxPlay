@@ -15,7 +15,7 @@ paths:
 | 0 | Dump idée | Auteur | `narration/INBOX.md` | — |
 | 1 | Pitch + plan léger (fusion) | `narration-conseiller` | `1-pitch-plan.md` | OUI |
 | 3 | Briefs | `narration` (Directeur Éditorial) | `3-briefs/{univers,personnages,histoire}.md` + `_writer-package.md` | — |
-| 4 | 10 versions writers | 2 Claude + 4 Kimi (dont 1 guidé) + 2 DeepSeek + 2 Grok | `4-versions-writers/*.md` (chacune avec note d'intention) | — |
+| 4 | **14 versions writers** (calibration multi-modèles v2 — refonte 2026-05-12) | 6 Claude (Opus/Sonnet/Haiku × déf/reco) + 4 Kimi (kimi-reco, kimi-k26-instant, kimi-k26-thinking, kimi-reco-guide) + 2 DeepSeek (déf/reco) + 2 Grok (déf/reco) | `4-versions-writers/*.md` (chacune avec note d'intention en fin de fichier) | — |
 | 5 | 20 lecteurs témoins | `narration-lecteur` (10) + `narration-lecteur-dyade` (10) | `5-lecteurs-temoins/*.md` + `5-synthese-lecteurs.md` | — |
 | 6 | Sélection top + greffes | `narration` (Directeur) | `6-selection.md` | OUI |
 | 7 | Rewrite top 1 | Writer top 1 OU `narration` (si writer défaillant) | `7-rewrite/<llm>-rewrite-v1.md` | — |
@@ -31,12 +31,12 @@ paths:
 2. **Étape 1 + 3 obligent lecture** :
    - [`narration/personnages/theorie/pedagogie-enfance/`](../../narration/personnages/theorie/pedagogie-enfance/README.md) — boussole 4-5 ans
    - Ennéatypes pertinents de l'histoire
-3. **10 writers ≠ 10 textes identiques** — leviers de variance figés dans [`narration/pmo/INVARIANTS.md`](../../narration/pmo/INVARIANTS.md) § *Leviers de variance* :
+3. **14 writers ≠ 14 textes identiques** — leviers de variance figés dans [`narration/pmo/INVARIANTS.md`](../../narration/pmo/INVARIANTS.md) § *Leviers de variance* :
    - Angle / POV / ouverture / longueur / température
 4. **Rewrite plafond** : 1 rewrite max par story. Au-delà → recommencer depuis étape 1 (cause racine à analyser).
 5. **GateKeeper ne réécrit pas** : il valide PASS ou liste corrections rapides. Si grosse réécriture nécessaire → retour étape 7.
 6. **Canon = source de vérité** : `10-texte.md` figé après validation. Toute évolution = nouvelle story ou archive `_archive/`.
-7. **Note d'intention writer** : chaque writer DOIT joindre `_notes-intention/<llm>.md` expliquant ses choix créatifs.
+7. **Note d'intention writer** : chaque writer DOIT joindre une note d'intention créative **en fin de son fichier writer** (après séparateur `---`), expliquant ses choix créatifs. Pas de fichier séparé. *(Refonte 2026-05-13 — l'ancien dossier `_notes-intention/` est obsolète.)*
 
 ## Gabarit dossier story (vérifié par `narration-archiviste`)
 
@@ -50,7 +50,7 @@ narration/stories/<NNN-titre-slug>/
 │   └── _writer-package.md
 ├── 4-versions-writers/
 │   ├── claude-libre.md · kimi-guide.md · …
-│   └── _notes-intention/<llm>.md
+│   └── (note d'intention en fin de chaque fichier writer, après ---)
 ├── 5-lecteurs-temoins/
 │   ├── enfant-fille.md · enfant-garcon.md
 │   ├── dyade-maman-fille.md · dyade-maman-garcon.md · …

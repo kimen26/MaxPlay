@@ -8,6 +8,76 @@
 
 ---
 
+## 2026-05-13 — [PMO] Rename T3 Polo→Dadou + fix cohérence Melki genre
+
+**Objectif** : Arbitrage auteur collision sonore + graver décision + audit track.
+
+**Fait** :
+- [x] Classification : DÉCISION (rename T3 + point attention Melki)
+- [x] Entrée datée `decisions.md` : DEC-RENAME-POLO-DADOU (raison collision Polo↔Nono, David T3 alignement, hypocoristique brésilien Dadou)
+- [x] `pmo/INVARIANTS.md` § Casting figé : Paul/Polo → David/Dadou (table L.93-94)
+- [x] `pmo/INVARIANTS.md` § Voice IDs : Polo → Dadou (line 112, voice_id conservé `5wcx0KzRnrP48I5RCVD8`)
+- [x] `pmo/INVARIANTS.md` § historique : dates + traces rename et voice_id preservé
+- [x] Audit-trail : cause racine + action cascade
+- [x] Leçon bonus : sonorité casting testable 4-5 ans (trochée, diphtongue, répétabilité)
+- [x] Point attention Melki : `.claude/rules/personnages.md` table incohérente (M vs F lookup) — flagué dans decisions.md
+
+**Décision tranchée** : DEC-RENAME-POLO-DADOU (voir `decisions.md`). Cascade ~85 fichiers = orchestrateur Claude. 001 canon non touché. Voice_id conservé.
+
+**État au reboot** :
+- ✅ Source de vérité INVARIANTS corrigée (casting + voice_ids)
+- ✅ Décision figée dans decisions.md
+- ✅ Leçon sonorité gravée
+- ⏳ Propagation FORME (~85 fichiers) : orchestrateur Claude + narration-archiviste vérification
+- ⏳ Fix Melki genre `.claude/rules/personnages.md` : orchestrateur Claude (simple line edit)
+- ℹ️ Aucun kanban impacté (001 figé, 002-003+ pas commencés)
+
+---
+
+## 2026-05-13 — [PMO] Correction erreur « panel 6 transitoire » jamais validée auteur
+
+**Objectif** : Corriger et fixer règle panel lecteurs (découverte erreur PMO, Papa Yann alerte).
+
+**Fait** :
+- [x] Classification : ERREUR PMO + DÉCISION
+- [x] Entrée datée `decisions.md` : "DEC-PANEL-20 — Panel 20 OBLIGATOIRE toutes stories (suppression dérive 6 transitoire)"
+- [x] `pmo/INVARIANTS.md` MAJ (source de vérité) : L.15-16 suppression "Transitoire 6", L.152 ajout "panel 20"
+- [x] `pmo/audit-trail.md` : entrée cause racine (PMO extrapolation silencieuse non-validée)
+- [x] **Reste (Archiviste)** : kanban 002, gabarits, PROCESS, templates, README
+
+**Décision tranchée** : DEC-PANEL-20 (voir `decisions.md`). Panel 20 partout, aucune transition/exception.
+
+**État au reboot** :
+- ✅ Source de vérité (INVARIANTS) corrigée
+- ✅ Décision figée
+- ⏳ Propagation FORME en attente (Archiviste)
+- ⏳ Kanban 002 : attn. dés qu'il mentionne "6 lecteurs"
+
+---
+
+## 2026-05-13 — [PMO] Option A logs auto MCP — filet de sécurité writers étape 4
+
+**Objectif** : Implémenter filet de sécurité contre perte générations writers stateless lors de STORY-002 étape 4 (14 writers parallèles).
+
+**Fait** :
+- [x] Classification : DÉCISION (option A logs auto)
+- [x] Entrée datée `decisions.md` : "Option A — Logs auto MCP créatifs (filet de sécurité writers étape 4)" (L.6-40)
+- [x] Code `infra/mcp/server.ts` : fonction logCall (fs/promises + crypto) + param toolName à callOpenAICompat, 4 outils branchés (ask_grok, ask_kimi, ask_kimi_payant, ask_deepseek)
+- [x] `.gitignore` : ajout `infra/mcp/logs/`
+- [x] `infra/mcp/MODELS.md` : section *Filet de sécurité* + historique 2026-05-13
+- [x] Build vérifié : `bun build` OK
+- [x] Leçon gravée `equipe/lecons-vivantes.md` § Observations process : pattern filet préventif
+
+**Décisions tranchées** : Option A logs auto MCP (voir `decisions.md` 2026-05-13).
+
+**État au reboot** :
+- ✅ Option A en prod, silencieux (aucune friction main thread)
+- ✅ Logs sauvés dans `infra/mcp/logs/` (gitignored) — récupérables en cas incident
+- ✅ STORY-002 étape 4 (14 writers) sera première à en bénéficier
+- ℹ️ Aucun ticket à ouvrir (amélioration faite, pas future)
+
+---
+
 ## 2026-05-12 (fin de session) — [PMO] Résolution ARCHI-009 + closure 3 Q-ouvertes MCP Kimi
 
 **Objectif** : Arbitrer les 3 Q-ouvertes MCP Kimi (détectées 2026-05-12 midi). Papa Yann tranche : cohabitation stricte vs migration.

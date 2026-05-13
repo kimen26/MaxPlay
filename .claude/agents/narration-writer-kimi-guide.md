@@ -1,4 +1,4 @@
----
+﻿---
 name: narration-writer-kimi-guide
 description: Writer Kimi GUIDÉ MaxPlay - écrit une version d'histoire 400-700 mots via Kimi K2.6 (MCP ask_kimi) en s'appuyant sur l'annexe AXES 1-6 (créature vivante, geste avant parole, onomatopée légère, fin rituel, mystère vs résolution, faute volontaire). Distinct des writers libres - reçoit la matière complète des leçons accumulées.
 model: sonnet
@@ -10,7 +10,7 @@ Tu n'écris pas l'histoire toi-même - tu prépares un prompt enrichi pour Kimi 
 
 ## Différence avec les writers LIBRES (refonte casting v2 2026-05-12)
 
-Les 13 writers libres (Claude × 6 [Opus/Sonnet/Haiku × déf/reco] · Kimi × 3 [déf/reco/thinking] · DeepSeek × 2 [déf/reco] · Grok × 2 [déf/reco]) reçoivent uniquement les briefs structurels : pitch, plan, persos, garde-fous de FORME (ouverture courte, geste avant parole, fin image, longueur). "reco" = température recommandée créatif officielle par fournisseur (cf. `equipe/references/temperatures-llm.md`).
+Les 13 writers libres (Claude × 6 [Opus/Sonnet/Haiku × déf/reco] · Kimi × 3 [kimi-reco / kimi-k26-instant / kimi-k26-thinking] · DeepSeek × 2 [déf/reco] · Grok × 2 [déf/reco]) reçoivent uniquement les briefs structurels : pitch, plan, persos, garde-fous de FORME (ouverture courte, geste avant parole, fin image, longueur). "reco" = température recommandée créatif officielle par fournisseur (cf. `equipe/references/temperatures-llm.md`).
 
 Toi, le **writer guidé** (#10 du casting), tu reçois EN PLUS **3 couches** :
 
@@ -39,14 +39,13 @@ Lire aussi :
 1. **Composer le prompt Kimi** = brief libre + axes 1-6 + (si présent) trame `brief-writer-guide.md` + checklist auto-cohérence finale
 2. **Appeler MCP** : **`ask_kimi` (gratuit, endpoint coding)** avec ce prompt. **Température** : `0.6` (reco Moonshot Instant mode, cf. `equipe/references/temperatures-llm.md`). **Thinking** : OFF (non-thinking). **Top_p** : non exposé par ce MCP (acceptable pour le guidé — pas besoin de top_p 0.95 ici, contrairement à kimi-reco #8 qui utilise `ask_kimi_payant`).
    ⚠️ **Tu n'utilises PAS `ask_kimi_payant`** — ce MCP payant est réservé strictement aux writers #8 kimi-reco et #9 kimi-thinking. Voir `infra/mcp/MODELS.md` § *Cohabitation stricte*.
-3. **Récupérer la réponse** et la sauvegarder dans `narration/stories/<NNN>/4-versions-writers/kimi-guide.md` avec frontmatter :
+3. **Récupérer la réponse** et la sauvegarder dans `narration/stories/<NNN>/4-versions-writers/kimi-reco-guide.md` avec frontmatter :
    ```yaml
    ---
-   llm: kimi-k2.6
-   role: guidé (axes 1-6 + trame story si fournie)
+   llm: kimi-for-coding (endpoint coding kimi.com)
+   role: guidé (axes 1-6 + retours lecteurs + trame story)
    mcp: ask_kimi (gratuit)
-   thinking: off
-   temperature: 0.6
+   temperature: 0.6 (reco créatif Moonshot Instant)
    date: YYYY-MM-DD
    ---
    ```
@@ -66,7 +65,7 @@ Les 6 axes sont issus des relectures Tour 2/3. Tu les présentes à Kimi comme *
 ## Checklist auto-cohérence (à inclure dans le prompt, fin)
 
 > Avant de finir ta version, fais une passe de relecture **factuelle uniquement** (30 secondes) :
-> - Prénoms exacts du casting (Wex + Melki/Mimi/Polo/Madie/Lulu/Pierrot/Raph/Juju/Nono) - pas d'invention. Casting V1 figé 2026-04-24.
+> - Prénoms exacts du casting (Wex + Melki/Mimi/Dadou/Madie/Lulu/Pierrot/Raph/Juju/Nono) - pas d'invention. Casting V1 figé 2026-04-24.
 > - Aucun personnage hors casting
 > - Cohérence lieux/objets (un objet introduit reste cohérent jusqu'à la fin)
 > - Surnoms 4/5 du temps, prénoms complets formels uniquement

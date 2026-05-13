@@ -1,4 +1,4 @@
-# Invariants Narration — Source de Vérité Unique
+﻿# Invariants Narration — Source de Vérité Unique
 
 > **Tout chiffre clé ou règle structurelle vit ICI.** Le reste du projet pointe vers ce fichier.
 > Si tu trouves un chiffre divergent ailleurs (ex: "8 versions" dans un kanban) → ce fichier gagne, l'autre est obsolète.
@@ -12,8 +12,8 @@
 | Étapes PROCESS | **10** (0, 1, 3-10 — étape 2 supprimée 2026-05-12 par fusion avec étape 1) | Owner / Inputs / Outputs / Critères PASS définis par étape |
 | Préfixage fichiers stories | **Oui depuis 2026-05-12** | `1-pitch-plan.md`, `3-briefs/`, `4-versions-writers/`, `5-lecteurs-temoins/`, `6-selection.md`, `7-rewrite/`, `8-gatekeeper-verdict.md`, `9-relecture-rewrite/`, `10-texte.md`. Fichiers transverses (kanban, README) sans préfixe. |
 | Versions writers (étape 4) | **14** (refonte 2026-05-12 v2 — calibration multi-modèles) | 6 Claude (2 Opus + 2 Sonnet + 2 Haiku, déf/**reco**) + 4 Kimi (déf/reco/thinking/guidé) + 2 DeepSeek (déf/reco) + 2 Grok (déf/reco) — détail bloc *Casting writers étape 4* ci-dessous. "reco" = température recommandée créatif officielle (cf. [`../equipe/references/temperatures-llm.md`](../equipe/references/temperatures-llm.md)) |
-| Panel lecteurs (étape 5) | **20** dès STORY-003. Transitoire **6** pour 002 (commencé avant la décision panel 20) |
-| Panel re-relecture (étape 9) | **20** dès STORY-003. Transitoire **6** pour 002 |
+| Panel lecteurs (étape 5) | **20** OBLIGATOIRE (toutes stories dès STORY-002) |
+| Panel re-relecture (étape 9) | **20** OBLIGATOIRE (toutes stories dès STORY-002) |
 | Validations auteur obligatoires | **3** : Étape 1 (Pitch), Étape 6 (Sélection), Étape 10 (Canon) |
 | Plafond rewrite (étape 7) | **1 cycle max** par histoire |
 | SLA "EN ATTENTE AUTEUR" | **3 jours** → au-delà : kanban 🔴 BLOQUÉ |
@@ -34,10 +34,10 @@
 | | 4 | claude-sonnet-reco | `claude-sonnet-4-6` | low | 1.0 | défaut | `narration-writer-claude-libre` | LIBRE |
 | | 5 | claude-haiku-def | `claude-haiku-4-5` | low | défaut Anthropic | défaut | `narration-writer-claude-libre` | LIBRE |
 | | 6 | claude-haiku-reco | `claude-haiku-4-5` | low | 1.0 | défaut | `narration-writer-claude-libre` | LIBRE |
-| **Kimi** | 7 | kimi-def | `kimi-k2.6` | off | **0.6** (reco Moonshot Instant mode) | — (MCP gratuit) | `ask_kimi` (MCP gratuit) | LIBRE |
-| | 8 | kimi-reco | `kimi-k2.6` | off | **1.0** (haut de reco Moonshot) | **0.95** ✅ | **`ask_kimi_payant`** (MCP officiel) | LIBRE |
-| | 9 | kimi-thinking | `kimi-k2.6` | **on (thinking activé)** | **1.0 fixe** (doc K2.6 thinking) | 0.95 ✅ | **`ask_kimi_payant`** (`thinking: true`) | LIBRE |
-| | 10 | kimi-guide | `kimi-k2.6` | off | 0.6 (reco Instant) | — (MCP gratuit) | `narration-writer-kimi-guide` → `ask_kimi` gratuit | **GUIDÉ** (axes 1-6 + leçons + trame histoire) |
+| **Kimi** | 7 | kimi-reco | `kimi-for-coding` (endpoint coding) | n/a | **0.6** (reco créatif Moonshot Instant) | — (param non exposé) | `ask_kimi` (MCP gratuit) | LIBRE |
+| | 8 | kimi-k26-instant | `kimi-k2.6` | **disabled** (forcer Instant) | fixe K2.6 (ignoré API) | 0.95 fixe K2.6 | **`ask_kimi_payant`** (`thinking: "disabled"`) | LIBRE |
+| | 9 | kimi-k26-thinking | `kimi-k2.6` | **enabled** (défaut K2.6) | fixe K2.6 (ignoré API) | 0.95 fixe K2.6 | **`ask_kimi_payant`** (`thinking: "enabled"` ou omis) | LIBRE |
+| | 10 | kimi-reco-guide | `kimi-for-coding` (endpoint coding) | n/a | 0.6 (reco créatif Instant) | — (param non exposé) | `narration-writer-kimi-guide` → `ask_kimi` gratuit | **GUIDÉ** (axes 1-6 + leçons + trame histoire) |
 | **DeepSeek** | 11 | deepseek-def | `deepseek-v4-pro` | off | **défaut DeepSeek** (1.0 API = 0.3 modèle réel) | défaut | `ask_deepseek` (MCP) | LIBRE |
 | | 12 | deepseek-reco | `deepseek-v4-pro` | off | **1.5** (reco officielle DeepSeek creative writing) | défaut | `ask_deepseek` (MCP) | LIBRE |
 | **Grok** | 13 | grok-def | `grok-4.3` | low | **défaut xAI** (≈1.0, param non envoyé) | défaut | `ask_grok` (MCP) | LIBRE |
@@ -49,8 +49,9 @@
 > - Référence Papa Yann 2026-05-12 : "max → reco" parce que `2.0` Grok/Kimi = incohérent narratif.
 >
 > ✅ **Cohabitation stricte MCP Kimi (refonte 2026-05-12 — résout ARCHI-009)** :
-> - **`ask_kimi`** (gratuit, endpoint `kimi.com/coding/v1`, env `MOONSHOT_API_KEY`) → writers #7 kimi-def + #10 kimi-guide + tout usage général
-> - **`ask_kimi_payant`** (officiel, endpoint `api.moonshot.ai/v1`, env `MOONSHOT_PAYANT_API_KEY`) → STRICTEMENT writers #8 kimi-reco (top_p 0.95) + #9 kimi-thinking (mode thinking)
+> - **`ask_kimi`** (gratuit, endpoint `kimi.com/coding/v1`, env `MOONSHOT_API_KEY`) → writers #7 kimi-reco + #10 kimi-reco-guide + tout usage général. Modèle `kimi-for-coding`. Temp 0.6 reco Moonshot Instant.
+> - **`ask_kimi_payant`** (officiel, endpoint `api.moonshot.ai/v1`, env `MOONSHOT_PAYANT_API_KEY`) → STRICTEMENT writers #8 kimi-k26-instant (thinking disabled) + #9 kimi-k26-thinking (thinking enabled). Modèle `kimi-k2.6`. Temp et top_p fixes par K2.6 (params ignorés par l'API — seul `thinking` est contrôlable, doc Moonshot).
+> - **Différenciation K2.6** : sur K2.6, le SEUL levier est `thinking: {"type": "enabled"\|"disabled"}`. Temp et top_p sont fixes côté modèle (doc officielle 2026-05-13 https://platform.kimi.ai/docs/api/models-overview#parameter-comparison).
 > - Détail : [`infra/mcp/MODELS.md`](../../infra/mcp/MODELS.md) § *Cohabitation stricte*.
 
 **Total : 13 writers LIBRES + 1 writer GUIDÉ = 14 versions.**
@@ -84,14 +85,14 @@ Règle : le writer guidé active **2-3 axes librement, jamais 4+**. Source vivan
 
 ## Casting figé (V1 Christ FR)
 
-10 persos (9 + Wex), figé 2026-04-24, ajusté 2026-05-05.
+10 persos (9 + Wex), figé 2026-04-24, ajusté 2026-05-05, **rename T3 2026-05-13**.
 
 | Type | Prénom complet | Diminutif | Sexe |
 |------|----------------|-----------|------|
 | 0 hors-système | Wex | Wex | invariant cross-culture |
 | 1 Perfectionniste | Melchisédech | Melki | M |
 | 2 Aidant | Marie | Mimi | F |
-| 3 Performeur | Paul | Polo | M |
+| 3 Performeur | David | Dadou | M |
 | 4 Individualiste | Madeleine | Madie | F |
 | 5 Observateur | Luc | Lulu | M |
 | 6 Loyal | Pierre | Pierrot | M |
@@ -100,15 +101,16 @@ Règle : le writer guidé active **2-3 axes librement, jamais 4+**. Source vivan
 | 9 Pacificateur | Noé | Nono | M |
 
 Bilan : **4F / 5M + Wex**. Source : [`../personnages/INDEX.md`](../personnages/INDEX.md).
+**Historique** : Polo (Paul) → Dadou (David) 2026-05-13 (collision sonore Polo↔Nono, voir `decisions.md` DEC-RENAME-POLO-DADOU).
 
 ---
 
-## Voice IDs ElevenLabs (état 2026-05-12)
+## Voice IDs ElevenLabs (état 2026-05-13)
 
 | Perso | Voice ID | Méthodo | Naming bibliothèque |
 |-------|----------|---------|---------------------|
 | Wex | `G54e8CyYslC2Y4ZupTlg` | v24 | Lumi Wex Héros |
-| Polo | `5wcx0KzRnrP48I5RCVD8` | v2 | Lumi Polo Fier |
+| Dadou | `5wcx0KzRnrP48I5RCVD8` | v2 | Lumi Dadou Fier |
 | Melki | `sWfumkYiI1QERQ5INqRQ` | v1 | Lumi Melki Précis |
 | Pierrot | `ukIKjXqbiGGkqIz0SW5c` | pré-v24 | (conservé) |
 | Raph | `Te5RKnm9ebwdEvZ1S5pS` | — | — |
@@ -117,6 +119,7 @@ Bilan : **4F / 5M + Wex**. Source : [`../personnages/INDEX.md`](../personnages/I
 | Mimi, Madie, Juju | ⏳ à créer (filles) | — | — |
 
 Détail complet : [`../personnages/voix-meta/_VOICE-IDS-CASTING.md`](../personnages/voix-meta/_VOICE-IDS-CASTING.md).
+**Historique** : Polo → Dadou (2026-05-13, voice_id conservé `5wcx0KzRnrP48I5RCVD8`, naming ElevenLabs "Lumi Polo Fier" → "Lumi Dadou Fier" par utilisateur).
 
 ---
 
@@ -148,7 +151,7 @@ Source : [`../equipe/patte-narrative-maxplay.md`](../equipe/patte-narrative-maxp
 | # | Titre | Statut | Owner courant |
 |---|-------|--------|---------------|
 | 001 | Le Pont Cassé | ✅ canon (refonte 2026-05-08) | — |
-| 002 | Libellule Résonance | 🟢 **étape 4 prête à lancer** (étapes 0/1/3 ✅, Q-ouvertes tranchées 2026-05-12, casting Wex+Juju+Nono) | Directeur |
+| 002 | Libellule Résonance | 🟢 **étape 4 prête à lancer** (étapes 0/1/3 ✅, Q-ouvertes tranchées 2026-05-12, casting Wex+Juju+Nono, panel 20 lecteurs) | Directeur |
 | 003+ | À démarrer | ⚪ — | — |
 
 ---

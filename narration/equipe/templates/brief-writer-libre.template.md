@@ -1,4 +1,4 @@
----
+﻿---
 template: brief-writer-libre
 version: 1.0
 date_creation: 2026-05-06
@@ -67,7 +67,7 @@ pourquoi cette fin. Pas de checklist technique. Dis ce qui t'a guidé.]
 
 - Univers **implicite** — aucun concept du monde nommé dans le texte
 - Ennéatypes **dilués** dans les comportements — jamais étiquetés ni nommés
-- **Surnoms 4/5 du temps** (Wex, Melki, Mimi, Polo, Madie, Lulu, Pierrot, Raph, Juju, Nono). Prénoms complets réservés au formel.
+- **Surnoms 4/5 du temps** (Wex, Melki, Mimi, Dadou, Madie, Lulu, Pierrot, Raph, Juju, Nono). Prénoms complets réservés au formel.
 - Langage concret, sensoriel, accessible à 4 ans
 - **Zéro morale explicite** à la fin
 - **Pas d'antagoniste** — frictions, malentendus, obstacles oui, méchants non

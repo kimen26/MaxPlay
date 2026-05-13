@@ -1,4 +1,6 @@
-# Voix Type 3 — Polo (Paul)
+﻿# Voix Type 3 — Dadou (David)
+
+> **Voice_id figé** : `5wcx0KzRnrP48I5RCVD8` — bibliothèque ElevenLabs **Lumi Dadou Fier** (rename 2026-05-13, ex-"Lumi Polo Fier" — voice_id conservé tel quel, juste renommé côté EL).
 
 **Ennéatype :** Performeur · **Sensibilité :** Forces · **Astre :** Soleil
 
@@ -40,7 +42,7 @@ Speaker Boost: true
 
 ---
 
-## Phrases types (Polo)
+## Phrases types (Dadou)
 
 - "C'est moi qui gagne." *(descendant, factuel, pas méchant)*
 - "Regardez ! Je sais faire ça." *(attaque sur "regardez", énergie première syllabe)*

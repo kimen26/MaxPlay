@@ -1,4 +1,4 @@
-# Symbolique ésotérique — 9 types ennéagramme
+﻿# Symbolique ésotérique — 9 types ennéagramme
 
 > Table de convergence extraite de 3 sources IA (Deepseek, Grok, Kimi) — 2026-04-27.
 > Chaque entrée = convergence forte (≥2 sources d'accord). Pas d'animaux totem (choix éditorial).
@@ -12,7 +12,7 @@
 |------|-------|-----------------|-------|-------------------|---------|
 | 1 | Melki | Diamant · Saphir blanc | Mercure | Argent / Blanc | Air |
 | 2 | Mimi | Quartz rose · Rhodonite | Lune | Rose / Rouge doux | Eau |
-| 3 | Polo | Citrine · Rubis | Soleil | Jaune / Or | Feu |
+| 3 | Dadou | Citrine · Rubis | Soleil | Jaune / Or | Feu |
 | 4 | Madie | Opale · Améthyste | Neptune | Violet / Indigo | Eau |
 | 5 | Lulu | Saphir · Lapis-lazuli | Uranus | Bleu nuit | Air |
 | 6 | Pierrot | Agate Blue Lace · Calcédoine | Saturne | Bleu ciel / Beige | Terre |
@@ -32,7 +32,7 @@
 - Quartz rose : compassion, don de soi — accord 3 sources
 - Lune : cycles, nourriture, douceur — accord 3 sources
 
-**Type 3 — Polo**
+**Type 3 — Dadou**
 - Citrine : énergie solaire, réussite, confiance — accord 2 sources (Grok préférait Rubis)
 - Soleil : performance, rayonnement, visibilité — accord 3 sources
 

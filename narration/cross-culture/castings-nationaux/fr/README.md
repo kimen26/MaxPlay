@@ -1,4 +1,4 @@
----
+﻿---
 code_pays: fr
 nom: France
 famille: Christ
@@ -20,7 +20,7 @@ casting_v1: true
 |------|-------|----------------|---------------|-------|
 | 1 — Perfectionniste | [type-01.md](type-01.md) | Melchisédech | **Melki** | M |
 | 2 — Aidant | [type-02.md](type-02.md) | Marie | **Mimi** | F |
-| 3 — Performeur | [type-03.md](type-03.md) | Paul | **Polo** | M |
+| 3 — Performeur | [type-03.md](type-03.md) | David | **Dadou** | M |
 | 4 — Individualiste | [type-04.md](type-04.md) | Madeleine | **Madie** | F |
 | 5 — Observateur | [type-05.md](type-05.md) | Luc | **Lulu** | M |
 | 6 — Loyal | [type-06.md](type-06.md) | Pierre | **Pierrot** | M |

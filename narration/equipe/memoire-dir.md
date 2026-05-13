@@ -1,4 +1,4 @@
-# Mémoire — Directeur Éditorial
+﻿# Mémoire — Directeur Éditorial
 
 > Mis à jour par `narration` après chaque décision importante.
 > Format : `- YYYY-MM-DD | <décision> | <raison>`
@@ -40,7 +40,7 @@
 ## Histoires validées (canon)
 
 - "Le Pont Cassé" — Wex + Melki (Titi1) + Juju (Titi8) — V1 complète, comité de lecture fait, épilogue italique (exception)
-- "Le Rire qui reste" — Wex + Nono (Titi9) + Polo (Titi3) — V1, 489 mots, Keeper PASS, pas de comité (série "La Parole" en cours), sans épilogue
+- "Le Rire qui reste" — Wex + Nono (Titi9) + Dadou (Titi3) — V1, 489 mots, Keeper PASS, pas de comité (série "La Parole" en cours), sans épilogue
 
 ## Patterns éditoriaux notés
 

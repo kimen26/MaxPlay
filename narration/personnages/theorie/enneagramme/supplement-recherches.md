@@ -1,4 +1,4 @@
-# Supplément — Recherches approfondies (Agents Web)
+﻿# Supplément — Recherches approfondies (Agents Web)
 
 *Données complémentaires issues des 3 agents de recherche web (2026-04-10)*
 *Sources : Enneagram Institute, Psychology Junkie, Making Mindfulness Fun, Dr. David Daniels, Integrative9*
@@ -13,8 +13,8 @@
 ### Mimi (Type 2) — L'empathie radar
 À table, elle remarque que son camarade n'a pas touché à son assiette. Elle ne dit rien à l'adulte. Elle se penche doucement et dit à voix basse : "T'aimes pas les carottes ? Moi non plus. Je mange les tiennes si tu veux." Elle ne veut pas qu'il soit signalé — elle veut juste qu'il soit bien.
 
-### Polo (Type 3) — La star naturelle
-Activité libre à l'école. Polo remarque que la maîtresse regarde. Il choisit spontanément la tâche la plus difficile visible. Commence. Regarde du coin de l'œil. La maîtresse hoche la tête. Il redouble d'effort. Il ne s'amuse pas — il performe. Et ça ne lui semble pas étrange du tout.
+### Dadou (Type 3) — La star naturelle
+Activité libre à l'école. Dadou remarque que la maîtresse regarde. Il choisit spontanément la tâche la plus difficile visible. Commence. Regarde du coin de l'œil. La maîtresse hoche la tête. Il redouble d'effort. Il ne s'amuse pas — il performe. Et ça ne lui semble pas étrange du tout.
 
 ### Madie (Type 4) — La profondeur à 5 ans
 Sa maman lui montre un coucher de soleil par la fenêtre. Les autres enfants continuent de jouer. Madie s'arrête. Reste immobile deux minutes. Puis dit : "C'est beau. Ça me rend triste." Sa maman demande pourquoi. Elle dit : "Parce que ça va disparaître."
@@ -94,7 +94,7 @@ Ce Pierrot-là est plus difficile à reconnaître comme un 6 — mais sous la br
 
 - **Melki (1)** : Apprend que la vraie perfection est d'accepter l'imperfection
 - **Mimi (2)** : Apprend qu'elle est aimée pour ce qu'elle est, pas pour ce qu'elle donne
-- **Polo (3)** : Apprend que sa valeur ne dépend pas de ce qu'il accomplit
+- **Dadou (3)** : Apprend que sa valeur ne dépend pas de ce qu'il accomplit
 - **Madie (4)** : Apprend que ce qu'elle appelle "manque" est en fait une sensibilité rare
 - **Lulu (5)** : Apprend que partager sa connaissance ne le vide pas — ça le nourrit
 - **Pierrot (6)** : Apprend que la sécurité vient de l'intérieur, pas de la vérification permanente

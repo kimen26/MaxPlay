@@ -1,8 +1,8 @@
-# Catalogue de prénoms — Univers Wex
+﻿# Catalogue de prénoms — Univers Wex
 
 > **Statut depuis 2026-04-29** : ce catalogue n'est **pas une matière en réserve** — c'est la **base opérationnelle** pour construire les **castings nationaux** de l'univers (cf. décision *Architecture cross-culture du casting*, [`../../pmo/decisions.md`](../../pmo/decisions.md)).
 >
-> **Vue d'ensemble** : ce catalogue rassemble les prénoms qualifiés pour les **9 compagnons d'ennéatype** dans chaque casting national. Le casting V1 « Christ » français (Wex + Melki/Mimi/Polo/Madie/Lulu/Pierrot/Raph/Juju/Nono) est figé — c'est **un casting parmi N**. Les **30 cultures qualifiées** ici = **30 castings potentiels**, à promouvoir progressivement en castings nationaux V2.
+> **Vue d'ensemble** : ce catalogue rassemble les prénoms qualifiés pour les **9 compagnons d'ennéatype** dans chaque casting national. Le casting V1 « Christ » français (Wex + Melki/Mimi/Dadou/Madie/Lulu/Pierrot/Raph/Juju/Nono) est figé — c'est **un casting parmi N**. Les **30 cultures qualifiées** ici = **30 castings potentiels**, à promouvoir progressivement en castings nationaux V2.
 >
 > **Wex** est invariant : prénom « Wex » dans tous les castings, ne figure pas dans le catalogue.
 
@@ -123,7 +123,7 @@ Comptage des **occurrences** de chaque type dans les fiches (un prénom peut êt
 |---|---|---:|---|
 | 1 — Perfectionniste | Melki | 29 | sanskrit, japonais, hébreu, arabe, latin, amazigh, persan |
 | 2 — Altruiste | Mimi | 26 | sanskrit, japonais, arabe, maori, peul, swahili (Amara) |
-| 3 — Performeur | Polo | 27 | sanskrit, japonais, latin, mongol, persan, amharique |
+| 3 — Performeur | Dadou | 27 | sanskrit, japonais, latin, mongol, persan, amharique |
 | 4 — Romantique | Madie | 28 | hébreu, japonais, araméen, mapuche, javanais |
 | 5 — Observateur | Lulu | 20 | sanskrit, japonais, grec, latin, araméen, inuit, égyptien |
 | 6 — Loyaliste | Pierrot | 19 | latin, japonais, araméen, javanais, viking, swahili, **brésilien (Boitatá/Boto/Curupira)**, **égyptien (Bès)**, **anges (Sariel/Barachiel)** |
@@ -164,7 +164,7 @@ Cultures **principales** envisagées (à arbitrer avec l'auteur) :
 |---|---|---|
 | 1 — Perfectionniste | Melki ← Melchisédech | Satya (sk), Makoto/Tadashi (jp), Adil (ar), Mariam (he/ar), Lunga (zoulou), Jom (wolof), Yanqha (aymara) |
 | 2 — Altruiste | Mimi ← Marie | Daya (sk), Kokoro (jp), Rahma (ar), Aroha (maori), Mano (touareg), Tabitha (araméen), Thandiwe (zoulou), Oumou (peul), Munay (quechua) |
-| 3 — Performeur | Polo ← Paul | Kiran/Ravi/Jaya (sk), Hikari/Taiga (jp), Apollon (gr), Victor (lat), Inti (quechua), Naran/Altan (mongol), Tsehaye (amharique) |
+| 3 — Performeur | Dadou ← David | Kiran/Ravi/Jaya (sk), Hikari/Taiga (jp), Apollon (gr), Victor (lat), Inti (quechua), Naran/Altan (mongol), Tsehaye (amharique) |
 | 4 — Romantique | Madie ← Madeleine | Lior/Uriel/Ézéchiel (he), Shizuku/Miyu (jp), Psykhe (gr), Talitha/Lyana (araméen), Berhane (amharique), Cahaya/Senja (java), Kallfü (mapuche) |
 | 5 — Observateur | Lulu ← Luc | Bodhi/Viveka (sk), Chie/Ken (jp), Sophia (gr), Sage (lat), Thot (égyptien), Maron (araméen), Isuma (inuit) |
 | 6 — Loyaliste | Pierrot ← Pierre/Kepha | Fidelis (lat), Mamoru (jp), Anubis (égyptien), Shamir/Kepha (araméen), Setia (java), Varðr (viking) |

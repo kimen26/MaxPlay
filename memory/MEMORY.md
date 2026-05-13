@@ -1,4 +1,4 @@
-# MaxPlay – Mémoire Projet
+﻿# MaxPlay – Mémoire Projet
 
 > Chargé automatiquement à chaque session. Rester sous 200 lignes.
 > Source de vérité = `game/tasks/BACKLOG.md`. Ici : contexte rapide pour démarrer.
@@ -48,7 +48,7 @@ Voir `memory/MAX_PROFILE.md` pour le profil complet.
   - Compagnons animaux hybrides liés à chaque enfant
   - Baron (voyageur temporel, Gardien des Portes)
   - **Nom de l'univers** : pas encore choisi (21 candidats dont Phosyntha, Egryntha, Veynara)
-- **Personnages nommés (casting Christ V1 figé 2026-04-24)** : Wex (#7 héros hors-système), Melki/Melchisédech (#1), Mimi/Marie F (#2), Polo/Paul (#3), Jérem/Jérémie (#4), Lulu/Luc (#5), Pierrot/Pierre (#6), Raph/Raphaëlle F (#7 ennéatype), Juju/Judith F (#8), Nono/Noé (#9)
+- **Personnages nommés (casting Christ V1 figé 2026-04-24)** : Wex (#7 héros hors-système), Melki/Melchisédech (#1), Mimi/Marie F (#2), Dadou/David (#3), Jérem/Jérémie (#4), Lulu/Luc (#5), Pierrot/Pierre (#6), Raph/Raphaëlle F (#7 ennéatype), Juju/Judith F (#8), Nono/Noé (#9)
 - **Docs narration** : `narration/` (INDEX.md + univers/{fondements,vie-quotidienne,meta} + enneagramme/ + personnages/ + stories/ + workshop/ + pmo/ + equipe/)
 
 ## Architecture déploiement (2026-03-21)

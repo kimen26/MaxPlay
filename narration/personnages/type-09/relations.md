@@ -12,6 +12,6 @@
 | Melki | 1 | Melki apprécie l'harmonie de Nono mais peut le trouver trop passif. Nono ne s'en offusque pas. |
 | Mimi | 2 | Ils prennent soin l'un de l'autre. Mais aucun des deux ne dit vraiment ce dont il a besoin. |
 | Lulu | 5 | Ils partagent l'amour du silence et de l'observation. Amitié tranquille et profonde. |
-| Polo | 3 | Polo ne comprend pas trop Nono. Il ne court pas après la victoire. Polo respecte ça malgré lui. |
+| Dadou | 3 | Dadou ne comprend pas trop Nono. Il ne court pas après la victoire. Dadou respecte ça malgré lui. |
 | Madie | 4 | Madie pense parfois que Nono n'a pas de profondeur. Nono ne se défend pas. Mais Madie finit par voir — la profondeur de Nono est juste calme. |
 

@@ -1,4 +1,4 @@
-# Fiche d'arc — Arc 1 : Découverte bienveillante
+﻿# Fiche d'arc — Arc 1 : Découverte bienveillante
 
 > **🟢 PRIORITÉ ACTUELLE — saison 1, premier arc.**
 > Document central. Lu par l'Architecte à chaque histoire de l'arc.
@@ -126,7 +126,7 @@ Hypothèses non tranchées :
 |-----------|--------|-------|
 | T1 | Melki | M |
 | T2 | Mimi | F |
-| T3 | Polo | M |
+| T3 | Dadou | M |
 | T4 | Madie | F |
 | T5 | Lulu | M |
 | T8 | Juju | F |

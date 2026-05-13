@@ -9,7 +9,7 @@
 
 **✅ Réussites — Casting GARÇONS COMPLET (5/5)** :
 - ✅ Wex v24 — `G54e8CyYslC2Y4ZupTlg` — Lumi Wex Héros (1 essai)
-- ✅ Polo v2 — `5wcx0KzRnrP48I5RCVD8` — Lumi Polo Fier (2 essais)
+- ✅ Polo v2 — `5wcx0KzRnrP48I5RCVD8` — Lumi Polo Fier (2 essais) *[renommé "Lumi Dadou Fier" 2026-05-13 — voice_id conservé, perso devenu Dadou (David)]*
 - ✅ Melki v1 — `sWfumkYiI1QERQ5INqRQ` — Lumi Melki Précis (1 essai)
 - ✅ Pierrot conservé — `ukIKjXqbiGGkqIz0SW5c`
 - ✅ **Lulu** — `1XwHANMW4m2pxt7buPmQ` — Lumi Lulu Léger (10 essais, filtre cumulatif vaincu)
@@ -106,7 +106,7 @@ Voice Design **n'applique PAS** les tics phonétiques décrits (`ze`, `ouitte`, 
 
 1. **Lulu** — Attendre cooldown filtre EL, retenter avec vocabulaire neuf
 2. **Nono** — Créer avec méthodo v24 (T9 Pacificateur, paisible, rire doux)
-3. **Validation adjectifs Lumi** — Polo Fier ? Melki Précis ? Pierrot Loyal ? Lulu Pensif ?
+3. **Validation adjectifs Lumi** — Dadou Fier ? Melki Précis ? Pierrot Loyal ? Lulu Pensif ?
 4. **Tester variance via tags v3** sur Wex (validation stratégie voix neutre + tags)
 5. **Mettre à jour `type-NN/voix.md`** avec voice_id final pour chaque perso
 6. **Refaire MP3 001 v3 final** avec casting refondu

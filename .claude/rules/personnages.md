@@ -1,4 +1,4 @@
----
+﻿---
 paths:
   - "narration/personnages/**"
   - "narration/cross-culture/castings-nationaux/**"
@@ -17,15 +17,15 @@ paths:
 | Type | Prénom FR | Genre | Notes |
 |------|-----------|-------|-------|
 | Wex | Wex | — | **Hors-système, invariant cross-culture** |
-| Type 1 | Melki | F | |
-| Type 2 | Mimi | F | |
-| Type 3 | Polo | M | |
-| Type 4 | Madie | F | Ajusté 2026-05-05 (anciennement "Élia") |
-| Type 5 | Lulu | M | |
-| Type 6 | Pierrot | M | |
-| Type 7 | Raph | M | |
-| Type 8 | Juju | F | |
-| Type 9 | Nono | M | |
+| Type 1 | Melki | M | Melchisédech |
+| Type 2 | Mimi | F | Marie |
+| Type 3 | Dadou | M | David (rename 2026-05-13, ex-Polo/Paul) |
+| Type 4 | Madie | F | Madeleine (ajusté 2026-05-05, anciennement "Élia") |
+| Type 5 | Lulu | M | Luc |
+| Type 6 | Pierrot | M | Pierre |
+| Type 7 | Raph | F | Raphaëlle |
+| Type 8 | Juju | F | Judith |
+| Type 9 | Nono | M | Noé |
 
 **Règle absolue** : ne JAMAIS inventer un prénom. Toujours résoudre via [`personnages/lookup.yml`](../../narration/personnages/lookup.yml).
 
@@ -36,7 +36,7 @@ Convention `TypeN/TitiN @origine` dans les brouillons (avant lookup) — voir [`
 Dans le texte canon → prénom final résolu via lookup.
 
 ### Surnoms 4/5 du temps
-- **80 % surnoms** (Mimi, Polo, Nono, Raph, Juju, Madie, Melki, Lulu, Pierrot) — c'est le défaut
+- **80 % surnoms** (Mimi, Dadou, Nono, Raph, Juju, Madie, Melki, Lulu, Pierrot) — c'est le défaut
 - **20 % prénoms complets** réservés au formel (présentations, moments solennels, adultes)
 - Source : `feedback_narration_surnoms.md`
 

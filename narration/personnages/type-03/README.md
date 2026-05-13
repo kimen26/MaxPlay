@@ -1,6 +1,6 @@
 # Type 03 — Le Performeur
 
-**Casting France :** Paul / **Polo** (M) · Token : `titi_3_fr`
+**Casting France :** David / **Dadou** (M) · Token : `titi_3_fr`
 **Sensibilité :** Forces
 
 ---

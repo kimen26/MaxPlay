@@ -2,6 +2,106 @@
 
 > **Règle :** Une décision ici est DÉFINITIVE jusqu'à nouvelle décision explicite datée.
 
+## 2026-05-13 — DEC-RENAME-POLO-DADOU : Rename T3 Polo → Dadou (David, collision sonore Polo↔Nono)
+
+**Auteur (Papa Yann)** : arbitrage direct 2026-05-13 sur collision sonore détectée.
+
+**Contexte** : Polo (`o-o` trochée fermée-fermée) et Nono (`o-o` même trochée) = confusion probable à l'oral chez Max (4 ans). David (biblique, roi-harpiste-héros) = T3 Performeur aligné avec patte "casting V1 Christ" existante.
+
+**Décision tranchée** :
+
+### Rename T3 : Polo (Paul) → Dadou (David)
+
+**Raison** :
+- Éviter collision sonore à l'oral (4 ans comprend mieux Dadou vs Nono que Polo vs Nono)
+- Dadou = hypocoristique courant brésilien (Davi → Dado/Dadinho/Dadou) — Max origines brésiliennes
+- David biblique (T3 Performeur) = alignement casting V1 Christ (apôtres + figures roi)
+
+**Voice_id CONSERVÉ** :
+- ID : `5wcx0KzRnrP48I5RCVD8`
+- Naming ElevenLabs : "Lumi Polo Fier" → "Lumi Dadou Fier" (renommage simple côté utilisateur, aucun new Voice Design)
+
+**Impact fichiers** :
+- ✅ `pmo/INVARIANTS.md` § *Casting figé* : Paul/Polo → David/Dadou
+- ✅ `pmo/INVARIANTS.md` § *Voice IDs* : ligne Polo → ligne Dadou (voice_id identique)
+- ✅ `narration/personnages/INDEX.md` § Casting V1 : type-03 Paul/Polo → David/Dadou
+- ✅ `narration/personnages/lookup.yml` : entrée "titi_3_fr" Polo → Dadou (résolveur)
+- 🔄 **~85 fichiers en cascade** (orchestrateur Claude, vérification narration-archiviste)
+- ❌ **001-canon figé NON TOUCHÉ** (Polo n'y apparaît pas)
+
+**Statut** : ✅ Décision figée. Propagation orchestrée en cascade.
+
+**Leçon** (bonus gravée `equipe/lecons-vivantes.md` § Observations casting) :
+> *« OBS-SONORITÉ-CASTING : collision trochée fermée-fermée (Polo↔Nono) détectable précocement lors du casting via phonétique 4-5 ans. Règle : avant de figer, tester trochées + diphtongues + répétabilité à voix haute. Dadou vs Nono = clair à l'oral. »*
+
+**Point d'attention BONUS** : `.claude/rules/personnages.md` L.10-13 contient contradiction — table affirme "Melki F" mais `lookup.yml` = "Melki M" (source de vérité). À corriger en parallèle comme fix cohérence.
+
+---
+
+## 2026-05-13 — DEC-PANEL-20 : Panel lecteurs 20 OBLIGATOIRE toutes stories (correction erreur PMO dérive « transitoire 6 »)
+
+**Contexte** : découverte erreur PMO 2026-05-13 — la mention « panel 6 transitoire pour STORY-002 » n'a **jamais été validée par l'auteur**. Cette dérive a été propagée en cascade dans INVARIANTS, décisions historiques, kanban 002, et plusieurs gabarits. Elle crée une confusion fondamentale : est-ce 6 ou 20 lecteurs pour STORY-002 ?
+
+**Chaîne causale de l'erreur** :
+1. Session 2026-05-12 : decision panel 20 tranchée (STORY-003+)
+2. PMO a extrapolé : « si 20 dès 003, alors impliciitement 6 pour 002 » (FAUX)
+3. Aucune DEC figée ni validation auteur pour cette dérive
+4. Propagée dans INVARIANTS L.15-16, kanban 002, audit-trail mentions multiples
+5. Audits 2026-05-13 l'ont laissée passer → auteur doit corriger
+
+**Décision tranchée** :
+
+### Panel 20 lecteurs OBLIGATOIRE pour TOUTES les stories (y compris 002)
+
+**Raison** :
+- Règle de cohérence : un standard, une seule courbe d'apprentissage
+- STORY-001 canonisée = historique figé (panel observé réel, pas touché)
+- STORY-002 + 003+ = panel 20 DÈS MAINTENANT, aucune transition
+- « Transitoire 6 » était une dérive sans fondement — l'annuler évite une exception permanente
+
+**Correction immédiate** :
+- ✅ `pmo/INVARIANTS.md` L.15-16 : suppression « Transitoire 6 pour 002 »
+- ✅ `pmo/INVARIANTS.md` L.152 : ajout « panel 20 lecteurs » dans statut STORY-002
+- Propagation FORME (Archiviste) : kanban 002, gabarits, PROCESS, README, templates
+
+**Statut** : ✅ INVARIANTS corrigés (source de vérité). Reste propagation Archiviste.
+
+**Leçon gravée** (cf. `equipe/lecons-vivantes.md`) :
+> *« OBS-PANEL-20 : PMO ne JAMAIS inventer une dérive (ex. « transitoire 6 ») sans validation explicite auteur. Quand un chiffre clé bouge, soit il existe une DEC datée + signée, soit il n'existe pas. L'extrapolation silencieuse = accumulation de contradictions. »*
+
+---
+
+## 2026-05-13 — DEC-NNN : Option A — Logs auto MCP créatifs (filet de sécurité writers étape 4)
+
+**Contexte** : Session 2026-05-13 étape 4 STORY-002 — 14 writers lancés en parallèle. Pour les 7 MCP stateless (Kimi×3, DeepSeek×2, Grok×2), main thread reçoit texte via contexte puis fait Write tool. **Risque** : crash/OOM/interruption entre réception et Write → texte perdu.
+
+**Décision tranchée** :
+
+### Implémenter Option A : Logs auto côté `server.ts` (filet de sécurité)
+
+**Raison** :
+- Faible coût (~25 lignes code, import node:fs/promises + crypto)
+- Faible risque (silent fail, gitignored, aucune exposition filesystem)
+- Capture 95% du bénéfice d'une sauvegarde fiable sans l'overhead de permission injection
+- Actif silencieusement — main thread continue sans friction
+
+**Mécanique** :
+- Chaque appel MCP (ask_grok, ask_kimi, ask_kimi_payant, ask_deepseek) logue **automatiquement** dans `infra/mcp/logs/<YYYY-MM-DD>/<timestamp>-<tool>-<hash>.md`
+- Logs gitignored — jamais committés
+- Filet capture : générations perdues → récupérables dans logs sur disque
+
+**Impact fichiers** :
+- ✅ `infra/mcp/server.ts` (L.82-113, ajout fonction logCall + param toolName à callOpenAICompat)
+- ✅ `.gitignore` (ajout `infra/mcp/logs/`)
+- ✅ `infra/mcp/MODELS.md` (section *Filet de sécurité* + historique 2026-05-13)
+
+**Statut** : ✅ Implémenté + build `bun build` OK.
+
+**Leçon** (gravée `equipe/lecons-vivantes.md` § Observations process) :
+> *« Filet de sécurité préventif > écriture directe LLM. Pattern : quand agent stateless externe génère contenu coûteux passé par contexte, dump auto côté infra (silent fail) plutôt que droit filesystem. Évite prompt injection + écrasement involontaire tout en garantissant récupérabilité. »*
+
+---
+
 ## 2026-05-12 — DEC-NNN : Renommage « max » → « reco » dans casting writers (convention sémantique)
 
 **Contexte** : convention initiale du casting writers (étape 4) utilisait `max` pour désigner la température « plafond du fournisseur ». Or chaque fournisseur officiel recommande une valeur **inférieure au plafond** pour la creative writing (ex: Kimi 1.0 max, DeepSeek 1.5 créatif, Grok 1.2 créatif), différente du maximum absolu.

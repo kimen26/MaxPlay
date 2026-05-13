@@ -1,4 +1,4 @@
-# Voice IDs — Casting MaxPlay (FR)
+﻿# Voice IDs — Casting MaxPlay (FR)
 
 > **Source de vérité** des voice_id ElevenLabs en cours de production.
 > Convention naming bibliothèque : `Lumi <prénom> <adjectif>`.
@@ -43,7 +43,7 @@ Persona: [PERSONA_LINE]. Emotion: [EMOTION_LINE].
 ⚠️ **Effet cumulatif** : un prompt qui passe à la 1ère génération peut être bloqué après 5-6 régénérations. Le filtre apprend dans la session.
 
 🎯 **Stratégies anti-filtre confirmées** :
-1. **Sauvegarder dès la 1ère génération OK** (règle absolue — c'est ce qui a sauvé Wex/Polo/Melki et fait perdre 2h sur Lulu)
+1. **Sauvegarder dès la 1ère génération OK** (règle absolue — c'est ce qui a sauvé Wex/Dadou/Melki et fait perdre 2h sur Lulu)
 2. **Pivoter vocabulaire** : `little guy` → `young hero` → `young character` → `companion`
 3. **Rajeunir par la physiologie** (very high-pitched + light + airy + thin + head voice) plutôt que la démographie (young child)
 4. **Cooldown 30 min-1h** débloque souvent une formulation kickée
@@ -66,7 +66,7 @@ Détail complet : [`audio-direction-elevenlabs/07-anti-patterns.md`](C:/Users/ki
 | Perso | Type | Adjectif Lumi | Voice ID | Statut | Caractéristique vocale |
 |-------|------|---------------|----------|--------|------------------------|
 | **Wex** | hors-système | **Héros** | `G54e8CyYslC2Y4ZupTlg` | ✅ **v24 figé** | aigu melodic light, singsong flowing, belly laughter, poète rêveur |
-| **Polo** | T3 Performeur | Fier (à valider) | `5wcx0KzRnrP48I5RCVD8` | ✅ **v2 figé** | aigu projected sparkling, crisp rhythmic driving, proud laughter |
+| **Dadou** | T3 Performeur | **Fier** | `5wcx0KzRnrP48I5RCVD8` | ✅ **v2 figé** (rename "Lumi Dadou Fier" 2026-05-13, ex-"Lumi Polo Fier" — voice_id conservé) | aigu projected sparkling, crisp rhythmic driving, proud laughter |
 | **Melki** | T1 Perfectionniste | Précis (à valider) | `sWfumkYiI1QERQ5INqRQ` | ✅ **v1 figé** | aigu precise attentive, measured métronomique, quiet satisfied chuckle |
 | **Pierrot** | T6 Loyal | Loyal (à valider) | `ukIKjXqbiGGkqIz0SW5c` | ✅ existant, conservé | (voix d'avant méthodo v24, gardée intentionnellement) |
 | **Lulu** | T5 Observateur | **Léger** | `1XwHANMW4m2pxt7buPmQ` | ✅ **figé 2026-05-12** (Lumi Lulu Léger) | aigu boyish thin airy, head voice, rire ouvert franc, curieux qui s'emballe sur les découvertes |
@@ -104,7 +104,7 @@ Native French. Parisian accent throughout. Young animated hero voice for animati
 
 - [ ] **Reprendre Lulu après cooldown filtre EL** (cf section ci-dessus)
 - [ ] Nono : créer voice_id avec méthodo v24
-- [ ] Valider adjectifs Lumi finaux (Polo Fier ? Melki Précis ? Pierrot Loyal ? Lulu Pensif ?)
+- [ ] Valider adjectifs Lumi finaux (Dadou Fier ? Melki Précis ? Pierrot Loyal ? Lulu Pensif ?)
 - [ ] Tester variance via tags v3 sur Wex (validation stratégie "voix neutre + tags")
 - [ ] Mettre à jour `personnages/type-NN/voix.md` avec voice_id final
 - [ ] Mettre à jour `_PREVIEW-TEXTS.md` avec nouveaux preview par perso

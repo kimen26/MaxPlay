@@ -1,4 +1,4 @@
----
+﻿---
 titre: Leçons vivantes — patterns narratifs MaxPlay
 date_creation: 2026-05-08
 maintenu_par: Conseiller (`narration-conseiller`) + Directeur (`narration`)
@@ -182,7 +182,7 @@ claude-rewrite-v1 (003) : kimi-run2 au présent a contaminé tout le rewrite, ki
 - Le **7 (Raph)** s'amuse, multiplie les idées, prévoit plein d'options.
 - Le **1 (Melki)** apporte sa précision, son sens du bien fait.
 - Le **2 (Mimi)** apporte son attention, son soin aux autres.
-- Le **3 (Polo)** apporte son élan, son envie de réussir.
+- Le **3 (Dadou)** apporte son élan, son envie de réussir.
 - Le **6 (Pierrot)** apporte sa loyauté, sa vigilance bienveillante.
 
 **Quote Papa Yann** : *« Que ce qui est normal à ses yeux aide les autres, comme la force du 8 ou le fun du 7 ou la précision du 1. »*
@@ -192,6 +192,31 @@ claude-rewrite-v1 (003) : kimi-run2 au présent a contaminé tout le rewrite, ki
 ## Observations process
 
 > Patterns d'amélioration opérationnelle du PROCESS narratif.
+
+### OBS-004 — Filet de sécurité préventif > écriture directe LLM (2026-05-13)
+
+**Observation** : Étape 4 (writers) avec 7+ MCP stateless externes (Kimi, DeepSeek, Grok) génère contenu coûteux passé par contexte main thread. Risque : crash/OOM/interruption entre réception LLM et Write tool → texte généré perdu.
+
+**Pattern identifié** : Quand agent stateless externe génère contenu précieux passé par contexte, implémenter **dump auto côté infra** (silent fail, aucune friction) plutôt que :
+- ❌ Migrer vers "write-back MCP" (risque prompt injection, complexité)
+- ❌ "Discipline humaine" (Write systématique juste après) — fragile sous charge
+
+**Décision 2026-05-13 — DEC-NNN** :
+- ✅ Logs auto dans `infra/mcp/logs/<date>/<ts>-<tool>-<hash>.md`
+- ✅ Function logCall (node:fs/promises + crypto) branchée sur 4 outils : ask_grok, ask_kimi, ask_kimi_payant, ask_deepseek
+- ✅ `.gitignore : infra/mcp/logs/` (jamais committés)
+
+**Bénéfices** :
+- Silent : main thread aucune friction (async, fire-and-forget)
+- Faible coût : ~25 lignes code, ~5 lignes config
+- Capture 95% du bénéfice sécurité sans overhead permission/filesystem
+- Réversible : suppression logs = pas d'impact code
+
+**Prochaine étape** : Post-STORY-002 étape 4 (premiers logs), vérifier fichiers bien nommés et exploitables (hashes uniques, timestamps utiles).
+
+**Anti-pattern à éviter** : Prétendre que "discipline humaine" suffit quand volume 7+ outils. Les incidents arrivent sous charge, pas en test lent.
+
+---
 
 ### OBS-003 — Cohabitation > migration : pattern pour fournisseurs multi-usages (2026-05-12)
 

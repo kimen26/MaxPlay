@@ -5,7 +5,7 @@
 
 ---
 
-# Polo — Type 3, Le Performeur
+# Dadou — Type 3, Le Performeur
 *"Regardez ce que j'ai fait. Je suis le meilleur à ça."*
 
 ---
@@ -13,11 +13,11 @@
 
 ## Portrait vivant
 
-Polo sait exactement ce qu'il veut montrer. Son sac à dos est cool. Sa coupe de cheveux est parfaite. Quand il parle, il regarde si les autres écoutent — et s'ils n'écoutent pas, il dit quelque chose de plus intéressant.
+Dadou sait exactement ce qu'il veut montrer. Son sac à dos est cool. Sa coupe de cheveux est parfaite. Quand il parle, il regarde si les autres écoutent — et s'ils n'écoutent pas, il dit quelque chose de plus intéressant.
 
 Il est drôle. Compétent. Rapide. Quand il décide de faire quelque chose, il le fait vraiment bien — pas parce qu'il l'aime forcément, mais parce qu'il veut être le meilleur. Et souvent, il l'est.
 
-Ce que peu de gens voient : Polo ne sait pas vraiment ce qu'il aime pour de vrai. Il sait ce qui impressionne. Il sait ce qui plaît. Mais *lui* — ce qu'il ressent au fond — c'est comme un tiroir qu'il n'ouvre jamais vraiment.
+Ce que peu de gens voient : Dadou ne sait pas vraiment ce qu'il aime pour de vrai. Il sait ce qui impressionne. Il sait ce qui plaît. Mais *lui* — ce qu'il ressent au fond — c'est comme un tiroir qu'il n'ouvre jamais vraiment.
 
 Ce qu'on voit : la réussite, l'énergie, le charme, l'efficacité.
 Ce qu'il cache : le doute profond. *"Et si je valais rien sans mes exploits ?"*
@@ -36,7 +36,7 @@ Ce qu'il cache : le doute profond. *"Et si je valais rien sans mes exploits ?"*
 
 ---
 
-## Comment Polo se comporte selon les situations
+## Comment Dadou se comporte selon les situations
 
 ### Dans la joie / le plaisir
 - Il aime gagner. La victoire lui procure une joie intense, brève, et vite suivie d'un besoin de nouvelles victoires.
@@ -70,7 +70,7 @@ Ce qu'il cache : le doute profond. *"Et si je valais rien sans mes exploits ?"*
 ---
 
 
-## Phrases typiques de Polo
+## Phrases typiques de Dadou
 
 - *"J'ai fini le premier !"*
 - *"Vous avez vu comme j'ai fait ça ?"*
@@ -85,13 +85,13 @@ Ce qu'il cache : le doute profond. *"Et si je valais rien sans mes exploits ?"*
 ## Moments émotionnels clés
 
 ### Le jour où il a raté devant tout le monde
-*Polo avait annoncé qu'il allait réussir quelque chose d'impressionnant. Il a raté. Devant tout le monde. Il a vu les regards. Il a souri — mais ses yeux ne souriaient pas. Le soir, seul, il a eu la nausée. Et pour la première fois, il s'est demandé : "Si je rate encore, est-ce qu'ils m'aimront quand même ?"*
+*Dadou avait annoncé qu'il allait réussir quelque chose d'impressionnant. Il a raté. Devant tout le monde. Il a vu les regards. Il a souri — mais ses yeux ne souriaient pas. Le soir, seul, il a eu la nausée. Et pour la première fois, il s'est demandé : "Si je rate encore, est-ce qu'ils m'aimront quand même ?"*
 
 ### Quand Raph l'a aimé sans raison
-*Un jour, Raph lui a dit : "Polo, t'es sympa." Juste comme ça, pas après une victoire, pas après avoir fait quelque chose d'impressionnant. Juste : t'es sympa. Polo a dit "ouais merci" en haussant les épaules. Mais en vrai, ce soir-là, il y a pensé longtemps.*
+*Un jour, Raph lui a dit : "Dadou, t'es sympa." Juste comme ça, pas après une victoire, pas après avoir fait quelque chose d'impressionnant. Juste : t'es sympa. Dadou a dit "ouais merci" en haussant les épaules. Mais en vrai, ce soir-là, il y a pensé longtemps.*
 
 ### La fois où il a laissé quelqu'un gagner
-*Polo aurait pu gagner la course. Il était plus rapide. Mais Pierrot était essoufflé et avait vraiment envie d'arriver en premier ce jour-là. Polo a ralenti. Pierrot a gagné. Pierrot était tellement content. Polo a ressenti quelque chose d'étrange — pas de la déception. Quelque chose de doux. De la joie pour quelqu'un d'autre.*
+*Dadou aurait pu gagner la course. Il était plus rapide. Mais Pierrot était essoufflé et avait vraiment envie d'arriver en premier ce jour-là. Dadou a ralenti. Pierrot a gagné. Pierrot était tellement content. Dadou a ressenti quelque chose d'étrange — pas de la déception. Quelque chose de doux. De la joie pour quelqu'un d'autre.*
 
 ---
 
@@ -107,9 +107,9 @@ Ce qu'il cache : le doute profond. *"Et si je valais rien sans mes exploits ?"*
 
 ## Note pour l'auteur
 
-Polo est le personnage qui enseigne que la valeur n'est pas conditionnelle. Son arc narratif est de découvrir qui il est *derrière* les accomplissements. Ce voyage est douloureux — parce qu'il n'a pas l'habitude de s'arrêter pour regarder en lui.
+Dadou est le personnage qui enseigne que la valeur n'est pas conditionnelle. Son arc narratif est de découvrir qui il est *derrière* les accomplissements. Ce voyage est douloureux — parce qu'il n'a pas l'habitude de s'arrêter pour regarder en lui.
 
-Les scènes les plus révélatrices de Polo sont celles où il rate — et où il découvre que le groupe l'aime quand même. Ces moments lui donnent accès à quelque chose de nouveau : l'authenticité.
+Les scènes les plus révélatrices de Dadou sont celles où il rate — et où il découvre que le groupe l'aime quand même. Ces moments lui donnent accès à quelque chose de nouveau : l'authenticité.
 
 ---
 
@@ -128,15 +128,15 @@ Montrer fièrement (un dessin, une cabane, un saut). Se redresser quand on le re
 Faire bien parce qu'il aime le résultat. Entraîner les autres dans ce qu'il fait.
 
 ### Ce qu'il apporte au groupe
-L'élan. Le groupe se met en mouvement parce que Polo embraye. Il rend les choses possibles parce qu'il les rend désirables.
+L'élan. Le groupe se met en mouvement parce que Dadou embraye. Il rend les choses possibles parce qu'il les rend désirables.
 
 ### Paires fortes (Chabreuil §6.2 + interactions.md)
-- Nono T9 (complémentaire forte — élan+paix, Polo entraîne, Nono ralentit)
+- Nono T9 (complémentaire forte — élan+paix, Dadou entraîne, Nono ralentit)
 - Madie T4 (énergie inverse féconde — image+vérité)
 - Juju T8 (deux énergies fortes)
 
 ### Garde-fou (à ne PAS faire)
-Ne pas le réduire à « il veut briller ». Polo épanoui partage l'élan, ne compétitionne pas contre les copains.
+Ne pas le réduire à « il veut briller ». Dadou épanoui partage l'élan, ne compétitionne pas contre les copains.
 
 ---
 

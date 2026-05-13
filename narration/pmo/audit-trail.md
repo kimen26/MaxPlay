@@ -4,6 +4,81 @@
 
 ---
 
+## 2026-05-13 — [PMO] Rename T3 Polo→Dadou : arbitrage auteur + propagation cascade
+
+**Mode** : Décision transverse + trace propagation
+
+**Cause racine identifiée** : collision trochée fermée-fermée Polo (`/ˈpo.lo/` = o-o) ↔ Nono (`/ˈno.no/` = o-o) potentiellement confondre à l'oral chez Max (4 ans). Sensibilité phonétique 4-5 ans : diphtongues ≠ trochées répétées.
+
+**Arbitrage Papa Yann** (2026-05-13) :
+- T3 Performeur: Paul → **David** (biblique, roi-harpiste, alignement casting V1 Christ)
+- Diminutif : Polo → **Dadou** (hypocoristique brésilien courant, Max origines BR)
+- Voice_id **préservé** : `5wcx0KzRnrP48I5RCVD8` (aucun new Voice Design, simple rename ElevenLabs côté utilisateur)
+
+**Propagation** :
+- ✅ INVARIANTS (source de vérité) : casting + voice_ids MAJ
+- ✅ decisions.md : DEC-RENAME-POLO-DADOU figée
+- 🔄 ~85 fichiers : orchestrateur Claude (cascade rename Polo→Dadou)
+  - `narration/personnages/INDEX.md` type-03
+  - `lookup.yml` résolveur titi_3_fr
+  - Tous `.md` mentionnant "Polo" ou "Paul"
+  - `.claude/agents/narration-*.md` si mentions
+- ❌ 001-canon : **PRÉSERVÉ** (Polo n'y apparaît pas)
+- ℹ️ Kanban 002-003 : inchangé (pas encore lancés)
+
+**Point d'attention BONUS** : `.claude/rules/personnages.md` L.10-13 table indique Melki=F mais lookup.yml=Melki=M. Contradiction flagée dans decisions.md, correction simple à cascader (line-fix).
+
+**Leçon** (OBS-SONORITÉ-CASTING gravée `equipe/lecons-vivantes.md`) :
+> *Phonétique casting critère de test 4-5 ans PRÉ-FIGÉ : trochées répétées (Polo vs Nono) + diphtongues + répétabilité voix haute = confusion orale. Dadou vs Nono = clearly distinct. Testing strategy : pré-audit sonore avant casting figé.*
+
+**Checklist propagation** :
+- [ ] Orchestrateur Claude : cascade ~85 fichiers
+- [ ] Narration-archiviste : vérification FORME (orphelins, refs cassées, gabarits)
+- [ ] Fix Melki genre `.claude/rules/personnages.md` (simple edit)
+- [ ] Après clôture : relecture sonore avant prochaine histoire (prévention)
+
+---
+
+## 2026-05-13 — [PMO] ERREUR DÉTECTÉE : dérive « panel 6 transitoire » jamais validée auteur
+
+**Mode** : Correction d'erreur PMO + cause racine
+
+**Symptôme** : Papa Yann hurle justement — la mention « panel 6 transitoire pour STORY-002 » a été propagée en cascade (INVARIANTS, kanban, audit-trail, gabarits) **sans jamais avoir été validée par lui**.
+
+**Cause racine identifiée** :
+
+| Stade | Qui | Action | Erreur |
+|-------|-----|--------|--------|
+| 1 | Directeur (session 2026-05-12) | Tranche : "panel 20 dès STORY-003" | ✅ VALIDÉ |
+| 2 | PMO (session 2026-05-12) | Enregistre dans INVARIANTS | ✅ CORRECT |
+| 3 | PMO (session 2026-05-12) | **Extrapolation silencieuse** : "donc 6 pour 002" | 🔴 **ERREUR** |
+| 4 | PMO (session 2026-05-12) | Propage dans INVARIANTS L.15-16 + audit-trail | 🔴 **AMPLIFICATION** |
+| 5 | Archiviste (session 2026-05-12) | Renomme kanban 002 avec "panel 6 transitoire" | 🔴 **PROPAGATION** |
+| 6 | 3 audits (session 2026-05-13) | Tous validés ✅ mais laissent passer la dérive | 🔴 **ANGLE MORT** |
+
+**Pattern identificateur** : **L'extrapolation silencieuse > validation explicite**. PMO a **inventé** une phrase ("si 20 dès 003, alors 6 pour 002") sans l'avoir vue tranchée nulle part.
+
+**Aucune décision historique ne trace ce "6 transitoire"** :
+- `decisions.md` 2026-05-12 : "panel 20" (rien sur 002 spécifique)
+- `sprint-log.md` 2026-05-12 : aucune mention "transitoire"
+- Pas de Q-ouverte demandant "que faire 002 avant le panel 20 définitif ?"
+
+**Correction** :
+
+- ✅ DEC-PANEL-20 gravée : panel 20 OBLIGATOIRE toutes stories (suppression « transitoire 6 »)
+- ✅ INVARIANTS corrigés (source de vérité)
+- 🔄 Archiviste doit propager dans kanban 002, gabarits, PROCESS, templates
+
+**Leçon** :
+
+| Règle | Énoncé |
+|-------|--------|
+| **À graver** | PMO ne JAMAIS inventer une dérive sans validation explicite auteur. Une extrapolation logique (« si X alors Y ») doit être tranchée **avant** d'être propagée. |
+| **Mécanisme** | Quand un PMO énonce "à partir de maintenant", c'est une décision = section `## YYYY-MM-DD — DEC-NNN` dans `decisions.md`. Si pas de "DEC", c'est une hypothèse, pas une règle. |
+| **Audit cross-check** | Les 3 audits (Archiviste ×2 + pmo-challenge) n'ont pas attrapé la dérive parce qu'ils vérifiaient la **FORME** (gabarit, refs, préfixes) pas la **SÉMANTIQUE** (est-ce que "panel 6" est validé quelque part ?). |
+
+---
+
 ## 2026-05-13 — [ARCHI] Refonte CLAUDE.md à 3 niveaux + rules path-scoped + hook signaux
 
 **Mode** : Décision architecturale majeure (transverse JEU+NARRATION).

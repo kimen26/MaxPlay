@@ -1,4 +1,4 @@
-# INBOX — Dump brut sessions (zone unique)
+﻿# INBOX — Dump brut sessions (zone unique)
 
 > **Zone de transit unique.** Tout ce qui arrive ici est matière brute, non validée, non définitive.
 > Plus aucun dossier `input-idees/` séparé : **tout passe par ce fichier**.
@@ -102,7 +102,7 @@ Créer ticket ARCHI-008 : « Préempter création exemples-canoniques.md » = su
 | 9 | Louis | Denise | Alexandre | Nathalie | Lucas | Mia |
 | 10 | Georges | Odette | Jérôme | Caroline | Maël | Chloé |
 | 11 | Maurice | Jacqueline | Pascal | Jennifer | Hugo | Inès |
-| 12 | Paul | Germaine | Philippe | Delphine | Sacha | Léa |
+| 12 | David | Germaine | Philippe | Delphine | Sacha | Léa |
 | 13 | Joseph | Lucienne | Frédéric | Karine | Théo | Romy |
 | 14 | Michel | Marthe | Olivier | Alexandra | Liam | Zoé |
 | 15 | Edmond | Thérèse | Éric | Audrey | Isaac | Nina |

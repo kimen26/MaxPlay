@@ -1,4 +1,4 @@
-# Patte Papa Yann — la voix de l'auteur
+﻿# Patte Papa Yann — la voix de l'auteur
 
 > **Distinct de [`patte-narrative-maxplay.md`](patte-narrative-maxplay.md).**
 > La **patte MaxPlay** = la signature stylistique du projet (Kishōtenketsu + tranche de vie + cycle).
@@ -66,7 +66,7 @@ Papa Yann détecte **toutes** les incohérences :
 #### Cohérence référentielle
 - ❌ "Il chercha la maison aux fenêtres" — quelle maison ? jamais mentionnée
 - ❌ "Le coin déchiré" — déchiré quand ? par qui ?
-- ❌ Pronoms ambigus ("Il l'a lancé vers Polo" — qui ?)
+- ❌ Pronoms ambigus ("Il l'a lancé vers Dadou" — qui ?)
 
 **Règle :** **chaque détail cité doit être cohérent et référé**. Pas de "détail orphelin" qui apparaît sans contexte.
 
@@ -127,10 +127,10 @@ Papa Yann lit à Max à voix haute. **Le mode dominant en saison 1, c'est l'audi
 
 ### A. Casting phonétique — éviter les surnoms proches
 
-**Nono + Polo** dans la même histoire = confusion phonétique pour l'enfant.
+**Nono + Dadou** dans la même histoire = confusion phonétique pour l'enfant.
 
 **Règle :** quand on choisit le duo/trio d'une histoire, **vérifier que les surnoms sont phonétiquement distincts** :
-- 🔴 Nono / Polo (rimes)
+- 🔴 Nono / Dadou (rimes)
 - 🟡 Mimi / Lulu (peut-être OK selon contexte)
 - ✅ Wex / Mimi (très distincts)
 

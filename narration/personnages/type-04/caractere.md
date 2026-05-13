@@ -134,7 +134,7 @@ Transformer un détail banal en quelque chose de remarquable. Vivre l'instant av
 ### Paires fortes (Chabreuil §6.2 + interactions.md)
 - Lulu T5 (affinité, compréhension silencieuse rare)
 - Juju T8 (émotionnelle+force franche)
-- Polo T3 (énergie inverse féconde)
+- Dadou T3 (énergie inverse féconde)
 
 ### Garde-fou (à ne PAS faire)
 Ne pas la mettre triste ou en retrait passif. Madie épanouie est expressive, fascinante, vivante — pas ténébreuse à 4 ans.

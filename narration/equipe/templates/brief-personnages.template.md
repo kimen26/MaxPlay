@@ -1,4 +1,4 @@
-# Brief personnages — STORY-NNN <slug>
+﻿# Brief personnages — STORY-NNN <slug>
 
 > **Stateless.** Copié par le Directeur depuis ce template. Le writer lit ce brief, pas les fiches `personnages/type-NN/`.
 > **Casting V1 figé (2026-04-24).** Aucune invention de prénom.
@@ -27,7 +27,7 @@ Chaque perso a une sensibilité propre. Pas de hiérarchie de savoir (« Wex sai
 | **Wex** | Wex | Héros hors-système (pas de type) | — | M |
 | **Melki** | Melchisédech | T1 Perfectionniste | Minéraux | M |
 | **Mimi** | Marie | T2 Aidant | Eau | F |
-| **Polo** | Paul | T3 Performeur | Forces | M |
+| **Dadou** | David | T3 Performeur | Forces | M |
 | **Madie** | Madeleine | T4 Individualiste | Fréquence | F |
 | **Lulu** | Luc | T5 Observateur | Quantique | M |
 | **Pierrot** | Pierre | T6 Loyal | Animaux | M |
@@ -80,7 +80,7 @@ Chaque perso a une sensibilité propre. Pas de hiérarchie de savoir (« Wex sai
 
 > *Lister les persos qui apparaissent dans d'autres histoires mais PAS celle-ci. Pour éviter qu'un writer les invite par erreur.*
 
-- *(ex : Polo, Lulu, Madie absents)*
+- *(ex : Dadou, Lulu, Madie absents)*
 
 ---
 

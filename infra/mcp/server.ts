@@ -1,11 +1,49 @@
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
+import { mkdir, writeFile } from "node:fs/promises";
+import { join, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+import { createHash } from "node:crypto";
 
 const server = new McpServer({
   name: "llm-copains",
   version: "2.0.0",
 });
+
+// Option A — Logs auto (filet de sécurité 2026-05-13)
+// Chaque appel LLM créatif est sauvegardé dans infra/mcp/logs/<date>/<timestamp>-<tool>-<hash>.md
+// → permet de récupérer un texte si main thread crash avant Write tool.
+// Dossier gitignored.
+const MCP_DIR = dirname(fileURLToPath(import.meta.url));
+const LOGS_DIR = join(MCP_DIR, "logs");
+
+async function logCall(
+  toolName: string,
+  model: string,
+  body: Record<string, unknown>,
+  responseText: string
+): Promise<void> {
+  try {
+    const now = new Date();
+    const dateDir = now.toISOString().slice(0, 10); // YYYY-MM-DD
+    const ts = now.toISOString().replace(/[:.]/g, "-");
+    const hash = createHash("sha256").update(responseText).digest("hex").slice(0, 8);
+    const dir = join(LOGS_DIR, dateDir);
+    await mkdir(dir, { recursive: true });
+    const filePath = join(dir, `${ts}-${toolName}-${hash}.md`);
+    const meta = [
+      `tool: ${toolName}`,
+      `model: ${model}`,
+      `date: ${now.toISOString()}`,
+      `request_body: ${JSON.stringify(body)}`,
+    ].join("\n");
+    const content = `---\n${meta}\n---\n\n${responseText}\n`;
+    await writeFile(filePath, content, "utf8");
+  } catch {
+    // Logging ne doit JAMAIS casser l'appel principal. Silent fail = OK.
+  }
+}
 
 async function callOpenAICompat(
   baseUrl: string,
@@ -15,7 +53,8 @@ async function callOpenAICompat(
   userPrompt: string,
   extraHeaders: Record<string, string> = {},
   temperature?: number,
-  extraBody: Record<string, unknown> = {}
+  extraBody: Record<string, unknown> = {},
+  toolName?: string
 ): Promise<string> {
   const body: Record<string, unknown> = {
     model,
@@ -46,7 +85,11 @@ async function callOpenAICompat(
   const data = (await response.json()) as {
     choices: { message: { content: string } }[];
   };
-  return data.choices[0]?.message?.content ?? "(réponse vide)";
+  const text = data.choices[0]?.message?.content ?? "(réponse vide)";
+  if (toolName) {
+    await logCall(toolName, model, body, text);
+  }
+  return text;
 }
 
 server.tool(
@@ -70,7 +113,8 @@ server.tool(
         prompt,
         {},
         temperature,
-        { reasoning_effort: "low" }
+        { reasoning_effort: "low" },
+        "ask_grok"
       );
       return { content: [{ type: "text", text: result }] };
     } catch (e) {
@@ -103,7 +147,9 @@ server.tool(
           "X-Client-Name": "claude-code",
           "X-Client-Version": "1.9.0",
         },
-        temperature
+        temperature,
+        {},
+        "ask_kimi"
       );
       return { content: [{ type: "text", text: result }] };
     } catch (e) {
@@ -114,13 +160,13 @@ server.tool(
 
 server.tool(
   "ask_kimi_payant",
-  "Pose une question à Kimi K2.6 via l'API Moonshot OFFICIELLE PAYANTE (platform.moonshot.ai). USAGE STRICTEMENT RÉSERVÉ aux 2 writers narratifs qui en ont besoin : kimi-reco (top_p 0.95 + temp 1.0) et kimi-thinking (mode thinking activé). Pour tout autre usage, utiliser ask_kimi (gratuit, endpoint passe-partout). Voir narration/pmo/INVARIANTS.md § Casting writers étape 4.",
+  "Pose une question à Kimi K2.6 via l'API Moonshot OFFICIELLE PAYANTE (platform.moonshot.ai). USAGE STRICTEMENT RÉSERVÉ aux 2 writers narratifs qui en ont besoin : kimi-reco (Instant, top_p 0.95, temp 1.0) et kimi-thinking (mode thinking activé, K2.6 défaut). Pour tout autre usage, utiliser ask_kimi (gratuit). Voir narration/pmo/INVARIANTS.md § Casting writers étape 4. NB : K2.6 utilise température fixe 1.0 et a le thinking ACTIVÉ par défaut — pour Instant il faut explicitement disabled.",
   {
     prompt: z.string().describe("La question ou le texte à soumettre à Kimi (USAGE WRITERS NARRATIFS UNIQUEMENT)"),
     context: z.string().optional().describe("Contexte optionnel (ex: _writer-package.md inliné)"),
-    temperature: z.number().min(0).max(2).optional().describe("Température (reco Moonshot : 0.6 Instant / 1.0 Thinking)"),
-    top_p: z.number().min(0).max(1).optional().describe("Top-p (reco Moonshot : 0.95 couplé à la température)"),
-    thinking: z.boolean().optional().default(false).describe("Mode thinking activé (true = kimi-thinking writer #9 ; false = mode Instant standard)"),
+    temperature: z.number().min(0).max(2).optional().describe("Température (K2.6 = 1.0 fixe selon doc Moonshot)"),
+    top_p: z.number().min(0).max(1).optional().describe("Top-p (reco Moonshot : 0.95)"),
+    thinking: z.enum(["enabled", "disabled"]).optional().describe("Mode thinking K2.6 — 'enabled' (writer #9 kimi-thinking, défaut K2.6) ou 'disabled' (writer #8 kimi-reco Instant). Si omis = défaut K2.6 = enabled."),
   },
   async ({ prompt, context, temperature, top_p, thinking }) => {
     const apiKey = process.env.MOONSHOT_PAYANT_API_KEY;
@@ -128,7 +174,7 @@ server.tool(
     const systemPrompt = context ? `Tu es un assistant expert. Contexte fourni:\n\n${context}` : "Tu es un assistant expert, précis et concis.";
     const extraBody: Record<string, unknown> = {};
     if (typeof top_p === "number") extraBody.top_p = top_p;
-    if (thinking === true) extraBody.thinking = true;
+    if (thinking) extraBody.thinking = { type: thinking };
     try {
       const result = await callOpenAICompat(
         "https://api.moonshot.ai/v1",
@@ -138,7 +184,8 @@ server.tool(
         prompt,
         {},
         temperature,
-        extraBody
+        extraBody,
+        "ask_kimi_payant"
       );
       return { content: [{ type: "text", text: result }] };
     } catch (e) {
@@ -168,7 +215,9 @@ server.tool(
         systemPrompt,
         prompt,
         {},
-        temperature
+        temperature,
+        {},
+        "ask_deepseek"
       );
       return { content: [{ type: "text", text: result }] };
     } catch (e) {

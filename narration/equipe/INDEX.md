@@ -1,7 +1,7 @@
 # Équipe éditoriale — INDEX
 
 > **Point d'entrée du dossier `equipe/`.** Charger ce fichier en premier pour savoir quoi lire selon la tâche.
-> Dernière mise à jour : 2026-05-11 (PROCESS 11 étapes depuis 2026-05-08, ajout templates 2026-05-07)
+> Dernière mise à jour : 2026-05-12 (PROCESS 10 étapes après fusion pitch+plan, Architecte deprecated, Archiviste élevé au rang de maillon central proactif)
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Tu veux… | Lis d'abord |
 |---|---|
-| Comprendre comment on écrit une histoire | [`PROCESS.md`](PROCESS.md) — workflow militaire 11 étapes |
+| Comprendre comment on écrit une histoire | [`PROCESS.md`](PROCESS.md) — workflow militaire 10 étapes |
 | Savoir qui fait quoi (agents, modèles, rôles) | [`ORGANIGRAMME.md`](ORGANIGRAMME.md) |
 | Trouver où ranger une info | [`cartographie-domaines.md`](cartographie-domaines.md) |
 | Comprendre la patte narrative MaxPlay | [`patte-narrative-maxplay.md`](patte-narrative-maxplay.md) |
@@ -26,7 +26,7 @@
 
 | Fichier | Rôle | Mis à jour par |
 |---|---|---|
-| [`PROCESS.md`](PROCESS.md) | Workflow militaire 11 étapes — owners, I/O, critères PASS, reprise | Directeur + Auteur |
+| [`PROCESS.md`](PROCESS.md) | Workflow militaire 10 étapes — owners, I/O, critères PASS, reprise | Directeur + Auteur |
 | [`ORGANIGRAMME.md`](ORGANIGRAMME.md) | Vue d'ensemble agents + chaîne de commandement + cérémonies | Directeur |
 | [`cartographie-domaines.md`](cartographie-domaines.md) | Où va quelle info, qui décide, invariants | Directeur + Archiviste |
 | [`patte-narrative-maxplay.md`](patte-narrative-maxplay.md) | Patte B+D+C : Kishōtenketsu noyau + tranche de vie voix + cycle cadre. Outils E/A doux. F écartée. ✅ Créé 2026-04-30. | Conseiller + Directeur |
@@ -40,14 +40,14 @@
 | Template | Sert à | Lu/rempli par |
 |---|---|---|
 | `pitch.template.md` | Étape 1 — pitch MOYEN 4 cases | Conseiller |
-| `plan-histoire.template.md` | Étape 2 — plan Kishōtenketsu | Architecte |
+| `plan-histoire.template.md` | ⚠️ Deprecated 2026-05-12 (étape 2 supprimée par fusion Pitch+Plan). À ne plus utiliser. Utiliser `pitch.template.md` étendu par le Conseiller. | — |
 | `brief-univers.template.md` | Étape 3 — règles univers stateless | Directeur |
 | `brief-personnages.template.md` | Étape 3 — casting figé + ennéatypes dilués | Directeur |
 | `brief-histoire.template.md` | Étape 3 — pitch + plan + contraintes + variance writers | Directeur |
 | **`brief-writer-libre.template.md`** | Étape 4 — brief commun aux 9 writers libres (forme uniquement, no contenu imposé) | Directeur |
 | **`brief-writer-guide.template.md`** | Étape 4 — brief enrichi pour le 1 writer guidé (Kimi) avec annexe AXES 1-6 | Directeur |
 | `selection.template.md` | Étape 6 — sélection Directeur post-lecteurs | Directeur |
-| `kanban.template.md` | Suivi des 11 étapes par histoire | PMO + owner d'étape |
+| `kanban.template.md` | Suivi des 10 étapes par histoire | PMO + owner d'étape |
 | `synthese.template.md` | Étape 9 — compilation analyses | Directeur |
 
 ### Configuration LLM
@@ -61,7 +61,7 @@
 | Fichier | Agent | Contenu | Fréquence MAJ |
 |---|---|---|---|
 | [`memoire-conseiller.md`](memoire-conseiller.md) | Conseiller (Opus) | Arcs, saisons, feedback lecteurs, patterns validés | Après chaque session |
-| [`memoire-architecte.md`](memoire-architecte.md) | Architecte (Sonnet) | Plans qui ont bien/mal fonctionné | Après chaque histoire |
+| [`memoire-architecte.md`](memoire-architecte.md) | ⚠️ Architecte (deprecated 2026-05-12) — fichier conservé pour traçabilité, agent en standby | — |
 | [`memoire-dir.md`](memoire-dir.md) | Directeur (Opus) | Décisions de sélection, ce qui a fonctionné | Après chaque histoire |
 | [`memoire-gatekeeper.md`](memoire-gatekeeper.md) | GateKeeper (Haiku) | Erreurs récurrentes, patterns à surveiller | Après chaque validation |
 
@@ -76,9 +76,9 @@
 | 🎙️ Skill global `~/.claude/skills/audio-direction-elevenlabs/` | **PRODUCTION audio multi-voix MaxPlay** : text-to-dialogue API, tags v3 catalogués + verdicts, tricks de graphie (b-bus pédago, 'mot subtle), pronunciation dicts, voice settings, 14 anti-patterns confirmés, 12 cultures préparées. Auto-trigger sur audio/voix/multi-voix/dialogue. Skill PARENT + 8 sous-fichiers indexés. | Audio + narration-audio + Voice Director |
 | [`profils-lecteurs.md`](profils-lecteurs.md) | Fiches profils lecteurs témoins (enfant 4-6, dyade) | Directeur |
 | [`../cross-culture/onomatopees/catalogue-onomatopees.md`](../cross-culture/onomatopees/catalogue-onomatopees.md) | **Catalogue 37 onomatopées** enfantines validées cross-langues (FR/EN/JA/ES/PT-BR/DE/AR/ZH). Pivot pour writers : 0 ou 1 onomatopée par histoire, choisie dans cette liste | Conseiller |
-| [`../personnages/theorie/pedagogie-enfance/`](../personnages/theorie/pedagogie-enfance/README.md) | **Boussole pédagogique 4-7 ans cross-culture** (Wellman, Tomasello, Vygotsky, Bachelard, Bruner, Thomas & Chess + albums jeunesse). Invariants cognitifs/affectifs, identification narrative, profils d'enfants, best-practices histoires courtes 4-5 ans. **À consulter avant brainstorm/plan/brief.** | Conseiller + Architecte |
+| [`../personnages/theorie/pedagogie-enfance/`](../personnages/theorie/pedagogie-enfance/README.md) | **Boussole pédagogique 4-7 ans cross-culture** (Wellman, Tomasello, Vygotsky, Bachelard, Bruner, Thomas & Chess + albums jeunesse). Invariants cognitifs/affectifs, identification narrative, profils d'enfants, best-practices histoires courtes 4-5 ans. **À consulter avant brainstorm/pitch+plan/brief.** | Conseiller (intégré 2026-05-12 — Architecte deprecated) |
 | [`../personnages/theorie/enneagramme/chabreuil-synthese-complete.md`](../personnages/theorie/enneagramme/chabreuil-synthese-complete.md) | **Synthèse exhaustive du Grand Livre Chabreuil 2022** (9181 mots, 10 sections). Concepts de base, 9 types détaillés (lumière prioritaire), ailes, flèches, instincts, **interactions 36 paires**, cross-culture, **essence et sublimation**, application MaxPlay (gestes/objets/moments par type, garde-fous anti-biais). | Conseiller |
-| [`lecons-vivantes.md`](lecons-vivantes.md) | **Document vivant** des patterns narratifs MaxPlay confirmés (P1-P6), pièges (G1-G6), axes 1-6, signal genre. Mis à jour à chaque canonisation. Lu par Conseiller (étape 1), Architecte (étape 2), writers via briefs. | Conseiller + Directeur |
+| [`lecons-vivantes.md`](lecons-vivantes.md) | **Document vivant** des patterns narratifs MaxPlay confirmés (P1-P6), pièges (G1-G6), axes 1-6, signal genre. Mis à jour à chaque canonisation. Lu par Conseiller (étape 1 Pitch+Plan), writers via briefs. | Conseiller + Directeur |
 
 ### Ressources vivantes
 
@@ -160,7 +160,7 @@ Statuts possibles : `pitch` · `plan` · `briefs` · `versions` · `lecteurs` ·
 
 ### SLA et alertes
 
-- **3 jours max** d'attente auteur sur étapes 1, 6, 10 (pitch, sélection, canon — PROCESS 11 étapes)
+- **3 jours max** d'attente auteur sur étapes 1, 6, 10 (pitch, sélection, canon — PROCESS 10 étapes)
 - Au-delà → kanban 🔴 BLOQUÉ + log auto `pmo/sprint-log.md`
 - PMO surveille et alerte
 

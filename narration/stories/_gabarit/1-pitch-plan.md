@@ -1,94 +1,62 @@
-# Plan d'Histoire — STORY-NNN <slug>
+# Pitch + Plan — STORY-NNN <slug>
 
-> Document produit par l'**Architecte** depuis le pitch validé.
+> Document produit par le **Conseiller** (refonte 2026-05-12 : pitch et plan fusionnés en 1 fichier).
 > Patte MaxPlay : **Kishōtenketsu noyau (B) + voix tranche de vie (D) + cadre cyclique (C)**.
+> Cible : 80-120 lignes max — au-delà = sur-cadrage qui compromet la variance des 10 writers.
 
 ---
 
-## Pitch (rappel)
+## 1. Pitch (4 cases)
 
 - **Objet titre :**
-- **Duo + Wex :**
-- **Lieu :**
-- **Moment d'ouverture (si défini) :**
-- **Arc rattaché :**
+- **Trio (2-3 persos du casting V1 + Wex) :**
+- **Lieu** (déjà connu de `univers/`) :
+- **Moment d'ouverture optionnel** *(1 phrase, si l'objet titre est faible)* :
 
 ---
 
-## Structure Kishōtenketsu
+## 2. Plan léger
 
-### Ki (起) — Pose la situation
+> **Invariants structurels uniquement.** Le détail phrase par phrase est laissé au writer.
 
-> *On installe le moment, le lieu, les présences. Pas de tension. Sensoriel.*
-
-### Sho (承) — On s'y installe
-
-> *On approfondit. Le quotidien continue. Détail qui compte sans qu'on le sache.*
-
-### Ten (転) — La bascule
-
-> *Un infime décalage. Pas un événement spectaculaire. Un regard qui change. Le micro-Ten : un camion qui passe, une lumière qui change, un mot qui tombe.*
-
-### Ketsu (結) — Ça se referme
-
-> *Presque comme c'était. Mais quelque chose a glissé. L'enfant ressent, ne reçoit pas une leçon.*
+- **Trio dans l'histoire** :
+  - <perso A> : qui agit (geste signature dans la scène)
+  - <perso B> : qui sent (résonance, sensibilité affleurante)
+  - Wex : qui catalyse (témoin lumineux)
+- **Promesse du titre** : par quoi elle se tient du début à la fin
+- **Recentrage Ten** : par quel perso ou objet passe la bascule *(sans décrire le geste précis)*
+- **Sensibilités révélées** : laquelle/lesquelles, comment (par contact, par résonance, par regard...)
+- **Garde-fous structurels** : Ten silencieux ou < 10 mots, Ketsu image (pas morale), pas d'adulte, pas d'antagoniste
+- **Contraintes dures** : longueur 400-700 mots, ≥ 2 répliques/perso, ≥ 1 échange 3+ répliques
 
 ---
 
-## Personnages dans la scène
+## 3. Métadonnées
 
-| Perso | Rôle dans la scène | Voix / micro-réactions à diluer |
-|---|---|---|
-| Wex | témoin présent (pouvoirs PAS activés en arc 1) | … |
-| <perso-A> | <rôle> | <3-4 micro-réactions ennéatype dilué, JAMAIS nommé> |
-| <perso-B> | <rôle> | … |
-
-**Surnoms 4/5 du temps · prénom complet uniquement formel/solennel.**
+- **Arc rattaché :** arc-1-objet-décor / arc-2-parole / arc-3-univers-specifique / arc-4-pouvoirs-wex
+- **Date pitch+plan :** YYYY-MM-DD
+- **Auteur du pitch+plan :** narration-conseiller (binôme Papa Yann)
+- **Statut :** ⏳ EN ATTENTE VALIDATION AUTEUR
 
 ---
 
-## Contraintes techniques
+## 4. Cohérence vérifiée par le Conseiller
 
-- **Longueur cible :** 400-700 mots
-- **Dialogues :** ≥ 2 répliques par perso, ≥ 1 échange de 3+ répliques
-- **Sans :** antagoniste · univers nommé · ennéatype étiqueté · parents en scène · narrateur qui commente
-- **Morale :** leçon vécue par les personnages OK, dite par narrateur ou explicitée à la fin = NO
-- **Compagnons :** ondes/couleurs si présents — jamais animaux
-- **Sensibilité :** différenciée (chaque perso perçoit ce que les autres ne perçoivent pas) — pas hiérarchie de savoir
-
----
-
-## Variance writers (étape 4)
-
-> *L'Architecte propose, le Directeur tranche en `brief-histoire.md`.*
-
-**4 versions core (config standard, prompt identique) :**
-- Claude · Kimi · DeepSeek · Grok
-
-**4 versions variance angularisées :**
-- Levier choisi : ☐ Angle narratif (Sobre/Sensoriel/Dynamique/Instinct) ☐ POV ☐ Ouverture ☐ Longueur cible
-- Détail :
-  - Claude variance 1 : <angle>
-  - Claude variance 2 : <angle>
-  - Kimi variance 1 : <angle>
-  - Kimi variance 2 : <angle>
-
----
-
-## Cohérence vérifiée
-
-- ☐ Cohérent avec `arcs/<arc-slug>/fiche.md` (qualité humaine + problématique de l'arc)
-- ☐ Cohérent avec `personnages/INDEX.md` (casting figé, surnoms, sensibilités)
+- ☐ Cohérent avec `saisons/saison-1/<arc-slug>/fiche.md` (qualité humaine + problématique de l'arc)
+- ☐ Cohérent avec `personnages/INDEX.md` (casting V1 figé, surnoms, sensibilités)
 - ☐ Cohérent avec `univers/INDEX.md` (lieu connu, règles tranchées)
+- ☐ Cohérent avec `pmo/INVARIANTS.md` (chiffres clés, casting, voice_ids)
 - ☐ Cohérent avec `pmo/decisions.md` (toutes les règles tranchées)
+- ☐ **Boussole péda 4-5 ans** appliquée (attention conjointe, causalité immédiate, max 3 infos, sensorialité dominante, gestes mimables, recoins Bachelard)
 
 ---
 
-## Notes Architecte
+## 5. Notes Conseiller (libres, non-bloquantes)
 
-> *Pourquoi cette structure ? Quel motif vise-t-on ? Quel risque a-t-on identifié ?*
+> *Qualité humaine pressentie · risque identifié · résonance avec histoires précédentes · suggestion d'angle pour les writers.*
+> **Ne pas être directif sur le contenu.** Laisser de la place à l'imagination des writers.
 
 ---
 
 **Date :** YYYY-MM-DD
-**Statut :** ⏳ DRAFT / ✅ PASS auto-validé Architecte / ❌ ITÉRATION DEMANDÉE par Conseiller
+**Statut :** ⏳ DRAFT / ⏳ EN ATTENTE VALIDATION AUTEUR / ✅ VALIDÉ AUTEUR

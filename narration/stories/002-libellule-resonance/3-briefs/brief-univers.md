@@ -1,7 +1,7 @@
 # Brief univers — STORY-002 libellule-résonance
 
 > Adressé à **un writer à la fois** (tutoiement).
-> Le contenu writer est dans [`_writer-package.md`](_writer-package.md).
+> Ce fichier est lu par les writers Claude (accès filesystem). Les writers MCP externes (Kimi/DeepSeek/Grok) reçoivent la version concaténée `_writer-package.md`.
 
 ---
 
@@ -26,7 +26,7 @@ Moment du jour, météo précise, type d'arbres, couleur exacte du ciel, intensi
 
 ## Trio
 
-**Polo · Nono · Wex.** Détails dans [`brief-personnages.md`](brief-personnages.md) et [`_writer-package.md`](_writer-package.md).
+**Wex · Juju · Nono.** Détails dans [`brief-personnages.md`](brief-personnages.md).
 
 ---
 
@@ -38,5 +38,5 @@ Moment du jour, météo précise, type d'arbres, couleur exacte du ciel, intensi
 
 ---
 
-**Date :** 2026-05-11  
+**Date :** 2026-05-11 · **Pivot trio :** 2026-05-12
 **Statut :** brief opérationnel finalisé.

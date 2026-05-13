@@ -2,6 +2,51 @@
 
 > **Règle :** Une décision ici est DÉFINITIVE jusqu'à nouvelle décision explicite datée.
 
+## 2026-05-13 — DEC-VOIX-JUJU : Voice ID T8 Challenger figé (méthodo v24 fille validée, 1 essai)
+
+**Auteur (Papa Yann)** : création voice_id Juju 2026-05-13 via ElevenLabs Voice Design méthodo v24 transposée fille.
+
+**Contexte** : T8 Challenger (Judith, Juju) — 6/10 voix figées depuis 2026-05-11/12. Restent 2 filles à créer (Mimi T2, Madie T4). Méthodo v24 garçons (header `Animated little guy voice`, physiologie aiguë, zéro négation) transposée fille via simple substitution `Animated little girl character voice` → validation empirique sur Juju en 1 essai.
+
+**Décision tranchée** :
+
+### Voice ID T8 Juju figé — méthodo v24 fille opérationnelle
+
+**Identité voix** :
+- **Voice_id** : `WFNYCPhDQM9w07KAV6Be` (créé 2026-05-13, 1 essai)
+- **Naming ElevenLabs** : `Lumi Juju Solide` (adjectif "Solide" choisi anti-copie strict — alts testées : Ferme, Plantée, Ancrée, Solidaire, Forte → rejeté "Forte" qui expose ressort T8 "Être fort·e")
+- **Méthodo** : v24 fille (header `Animated little girl character voice`, physiologie aiguë `high-pitched, bright, grounded, strong chesty edge`, zéro négation, < 1000 chars)
+- **Prompt utilisé** : 858 chars, archivé dans `type-08/voix.md` L.33-36
+
+**Voice settings recommandés** (utilisation TTS) :
+```
+Stability: 0.75
+Similarity Boost: 0.65
+Style: 0.50
+Speaker Boost: true
+```
+
+**Description publique Voice Library** (stratégie impact pur, anti-copie) :
+- **FR** (416 chars) : "La voix qui tient la main sans le dire. Une présence qui dit ce qui est, sans détour, et fait tenir ce qui vacille. Vous l'écoutez et le sol semble plus stable sous vos pieds. Conçue pour les contes qui rassurent, les héroïnes qui ne fléchissent pas, les livres illustrés 3-8 ans où la franchise est tendre. Une voix qui protège ceux qui en ont besoin, sans jamais peser. Celle qu'on appelle quand il faut tenir bon."
+- **EN** (416 chars) : "The voice that holds your hand without saying so. A presence that says what is, plainly, and steadies what trembles. You listen and the ground feels firmer beneath you. Made for stories that reassure, for heroines who hold their ground, for illustrated books for ages 3-8 where honesty is tender. A voice that protects those who need it, without ever weighing them down. The one you call when you need to stand firm."
+
+**Impact fichiers** :
+- ✅ `pmo/INVARIANTS.md` § *Voice IDs* : Juju + voice_id + naming (L.119)
+- ✅ `pmo/INVARIANTS.md` § *Casting figé* : passage 6/10 → 7/10 voix figées (L.108)
+- ✅ `personnages/type-08/voix.md` : voice_id frontmatter + prompt v24 fille + voice settings + descriptions publiques FR+EN
+- ✅ `personnages/voix-meta/_VOICE-IDS-CASTING.md` : section "État du casting filles" (Raph + Juju)
+- ✅ `pmo/INDEX.md` : mise à jour statut voix
+
+**Statut** : ✅ Voice_id figé. Prêt pour production audio story 002+ (étape 8 utilisation).
+
+**Leçon gravée** (cf. `equipe/lecons-vivantes.md` § Découvertes méthodo voix) :
+> *« OBS-METHODO-V24-FILLE-VALIDÉE : la méthodo v24 garçons (header `Animated little guy voice`, physiologie aiguë, zéro négation) se transpose en fille via seule substitution `Animated little girl character voice`. Validation Juju 1 essai = preuve empirique. À appliquer pour Mimi (T2) et Madie (T4). »*
+
+**Bonus leçon nommage Voice Library** (anti-copie stratégie) :
+> *« OBS-NAMING-ANTI-COPIE : adjectif choisi pour vendre l'impact sans révéler la recette ennéa. Juju "Solide" = court + percutant + vague (autorisé par framework description) + ne révèle pas T8 "Être fort·e". Alternatives : "Forte" = exposé direct (rejeté), "Plantée"/"Ancrée" = trop botanique. »*
+
+---
+
 ## 2026-05-13 — DEC-RENAME-POLO-DADOU : Rename T3 Polo → Dadou (David, collision sonore Polo↔Nono)
 
 **Auteur (Papa Yann)** : arbitrage direct 2026-05-13 sur collision sonore détectée.

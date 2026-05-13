@@ -4,6 +4,46 @@
 
 ---
 
+## 2026-05-13 — [VOIX] Juju figée : méthodo v24 fille validée empiriquement (1 essai)
+
+**Mode** : Leçon méthodo + validation stratégie nommage
+
+**Découverte** :
+
+La **méthodo v24 garçons** (header `Animated little guy voice`, physiologie aiguë `high-pitched, bright, etc.`, zéro négation, < 1000 chars) s'étend en fille par **simple substitution du header** :
+- ❌ `Animated little guy voice` 
+- ✅ `Animated little girl character voice`
+
+Tout le reste du prompt (physiologie, cadence, absence négations) reste identique. Résultat : Juju créée en 1 essai (vs 3.2 essais/voix moyenne), prompt 858 chars, style parfait "Challenger grounded direct".
+
+**Taux de succès méthodo v24** :
+- Garçons (5 voix) : 16 essais total = 3.2 essais/voix (Wex 1, Dadou 2, Melki 1, Lulu 6, Nono 6)
+- Fille (Juju) : 1 essai = **saut qualitatif** → règle applicabilité confirmer sur les 2 restantes (Mimi, Madie)
+
+**Stratégie nommage Voice Library — impact anti-copie** :
+
+Problème : l'adjectif de `Lumi <perso> <adj>` révèle parfois la recette ennéa (ex: "Forte" = T8 "Être fort·e" ultra-exposé).
+
+Solution Juju : **vendre l'impact émotionnel sans révéler la structure**.
+- Description FR/EN focus : "La voix qui tient la main" / "The voice that holds your hand" (bénéfice utilisateur)
+- Image expérientielle : "le sol semble plus stable" / "the ground feels firmer" (sensation non technique)
+- Use cases publics : contes rassurants, héroïnes 3-8 ans (vs "Challenger" qui exposerait T8)
+- CTA implicite : "celle qu'on appelle quand il faut tenir bon" (besoin sans structure)
+
+Adjectif "Solide" passe ce test : court, percutant, vague, autorisé par framework (pas nom-clé technique), ne révèle rien.
+
+Alternatives testées et rejetées :
+- "Forte" = expose T8 (rejeté)
+- "Plantée" = trop botanique (confusion possible avec Melki "Précis")
+- "Ferme" / "Ancrée" = peu distinctives (confusion)
+- "Solidaire" = trop long, non percutant
+
+**Implémentation** : prompt v24 fille gravée dans `type-08/voix.md`, stratégie nommage documentée dans `narration/personnages/voix-meta/_PROMPTING-GUIDE.md` § Description publique framework.
+
+**Verdict** : pattern transposable Mimi/Madie. Test : appliquer même méthodo v24 fille, ajuster `stability/similarity_boost/style` après Raph T7 (fille déjà figée).
+
+---
+
 ## 2026-05-13 — [PMO] Rename T3 Polo→Dadou : arbitrage auteur + propagation cascade
 
 **Mode** : Décision transverse + trace propagation

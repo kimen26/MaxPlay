@@ -2,6 +2,9 @@
 
 > **Zone de transit unique.** Tout ce qui arrive ici est matière brute, non validée, non définitive.
 > Plus aucun dossier `input-idees/` séparé : **tout passe par ce fichier**.
+> 
+> ℹ️ **Pour les idées sans pôle clarifié** : voir [`../_inbox/README.md`](../_inbox/README.md) — dépôt libre multi-pôles.
+>
 > **Règle dorée :** Max 48h de vie. Distiller vers `pmo/decisions.md` ou fichiers stables, puis supprimer la section.
 >
 > **Convention de section :**

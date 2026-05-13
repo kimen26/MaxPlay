@@ -115,7 +115,7 @@ Bilan : **4F / 5M + Wex**. Source : [`../personnages/INDEX.md`](../personnages/I
 | Pierrot | `ukIKjXqbiGGkqIz0SW5c` | pré-v24 | (conservé) |
 | Raph | `Te5RKnm9ebwdEvZ1S5pS` | — | — |
 | Lulu | `1XwHANMW4m2pxt7buPmQ` | filtre cumulatif vaincu | Lumi Lulu Léger |
-| Nono | `f3w48h8ngnWWnhO9XGb3` | v1 (companion) | Lumi Nono Paisible |
+| Nono | `f3w48h8ngnWWnhO9XGb3` | pré-v24 (conservé) | Lumi Nono Paisible |
 | Juju | `WFNYCPhDQM9w07KAV6Be` | v1 (méthodo v24 fille) | Lumi Juju Solide |
 | Mimi | `aPQfyqve0ovOsJIl7EzX` | v1 (méthodo v24 fille) | Lumi Mimi Attentive |
 | Madie | `9JvOiMFLj8GdHK3Fcydn` | v1 (méthodo v24 fille) | Lumi Madie Vibrante |

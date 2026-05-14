@@ -223,7 +223,8 @@
   let solved    = 0;
   let victoire  = false;
   let brunShown = false;
-  let mixedResult = null; // null = pas encore mixé · { hex, label } ou 'BRUN' après Mixer
+  let mixedResult = null; // null = pas encore mixé · { hex, label, pr, pj, pb } ou 'BRUN' après Mixer
+  let mixedRatios = null; // ratios du dernier mix (pour calculer le prochain)
   let order     = shuffle(DEFIS.map((_, i) => i));
   let defi      = DEFIS[order[0]];
 
@@ -245,14 +246,28 @@
 
     let layers = '';
     let emptyHint = '';
-    if (mixedResult !== null) {
-      // Après mixer : couleur unie dans le tube
+
+    if (mixedResult !== null && quarts.length === 0) {
+      // Après mixer, pas de nouvelles couches : tube rempli par la couleur du mix
       const hex = mixedResult === 'BRUN' ? '#6B4226' : mixedResult.hex;
       layers = `<rect x="0" y="${RIMH}" width="${SW}" height="${FILL_H}" fill="${hex}"/>`;
+    } else if (mixedResult !== null && quarts.length > 0) {
+      // Après mixer, avec nouvelles couches : fond (mix) + couches par-dessus
+      const bgHex = mixedResult === 'BRUN' ? '#6B4226' : mixedResult.hex;
+      const bgHeight = FILL_H - (quarts.length * LAYERH);
+      layers = `<rect x="0" y="${RIMH + bgHeight}" width="${SW}" height="${FILL_H - bgHeight}" fill="${bgHex}"/>`;
+
+      // Ajouter les couches par-dessus
+      layers += quarts.slice(0, 4).map((q, i) => {
+        const y = (RIMH + bgHeight + i * LAYERH).toFixed(1);
+        const h = (LAYERH + 1).toFixed(1);
+        return `<rect x="0" y="${y}" width="${SW}" height="${h}" fill="${QCOL[q]}"/>`;
+      }).join('');
     } else if (quarts.length === 0) {
+      // Pas encore mixé et pas de couches : tube vide
       emptyHint = `<text x="${SW/2}" y="${RIMH + FILL_H/2 + 5}" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-size="10" font-family="Nunito">vide</text>`;
     } else {
-      // Couches colorées (la plus ancienne en bas)
+      // Pas encore mixé, couches seules
       layers = quarts.slice(0, 4).map((q, i) => {
         const y = (BOT - LAYERH * (i + 1)).toFixed(1);
         const h = (LAYERH + 1).toFixed(1);
@@ -291,17 +306,18 @@
   }
 
   // ── MÉLANGE ───────────────────────────────────────────────────────
-  function calcMelange() {
-    const tot = counts.r + counts.j + counts.b;
+  function calcMelange(useCountsOpt) {
+    const c = useCountsOpt || counts;
+    const tot = c.r + c.j + c.b;
     if (tot === 0) return null;
-    const pr = counts.r / tot, pj = counts.j / tot, pb = counts.b / tot;
+    const pr = c.r / tot, pj = c.j / tot, pb = c.b / tot;
     if (pr > 0.18 && pj > 0.15 && pb > 0.15) return 'BRUN';
     let best = TABLE[0], bestD = Infinity;
-    for (const c of TABLE) {
-      const d = Math.hypot(pr - c.pr, pj - c.pj, pb - c.pb);
-      if (d < bestD) { bestD = d; best = c; }
+    for (const x of TABLE) {
+      const d = Math.hypot(pr - x.pr, pj - x.pj, pb - x.pb);
+      if (d < bestD) { bestD = d; best = x; }
     }
-    return best;   // { hex, label }
+    return best;   // { hex, label, pr, pj, pb, ... }
   }
 
   function isVictoire() {
@@ -372,7 +388,7 @@
   // ── ACTIONS ───────────────────────────────────────────────────────
   function addQuart(type) {
     if (victoire) return;
-    mixedResult = null; // reset : l'enfant doit remixer
+    // NE PAS reset mixedResult : on garde la base du mix précédent
     counts[type]++;
     quarts.push(type);
     if (quarts.length > 4) {
@@ -380,17 +396,17 @@
       counts[removed] = Math.max(0, counts[removed] - 1);
     }
     renderTube();               // seulement le tube, pas le bus
-    renderMixPreview(null);     // efface le résultat précédent
+    renderMixPreview(mixedResult);  // garde la preview du mix précédent visible
   }
 
   function enleverDernier() {
     if (quarts.length === 0) return;
-    mixedResult = null;
+    // NE PAS reset mixedResult : on garde la base du mix précédent
     const q = quarts.pop();
     counts[q] = Math.max(0, counts[q] - 1);
     victoire = false;
     renderTube();
-    renderMixPreview(null);
+    renderMixPreview(mixedResult);  // garde la preview visible
   }
 
   function mixer() {
@@ -401,7 +417,29 @@
     wrap.classList.add('shaking');
     wrap.addEventListener('animationend', () => {
       wrap.classList.remove('shaking');
-      mixedResult = calcMelange(); // révèle le résultat après l'animation
+
+      // Calculer le mélange avec la base du mix précédent + les quarts actuels
+      let totalCounts = { ...counts };
+      if (mixedRatios) {
+        // Ajouter un "quart virtuel" du mélange précédent (avec ses ratios)
+        totalCounts.r += mixedRatios.pr;
+        totalCounts.j += mixedRatios.pj;
+        totalCounts.b += mixedRatios.pb;
+      }
+
+      mixedResult = calcMelange(totalCounts);
+
+      // Sauvegarder les ratios pour le prochain mix
+      if (mixedResult === 'BRUN') {
+        // Le marron n'a pas de ratios exacts, on l'évalue à partir de la somme
+        const tot = totalCounts.r + totalCounts.j + totalCounts.b;
+        mixedRatios = { pr: totalCounts.r / tot, pj: totalCounts.j / tot, pb: totalCounts.b / tot };
+      } else {
+        mixedRatios = { pr: mixedResult.pr, pj: mixedResult.pj, pb: mixedResult.pb };
+      }
+
+      counts = {r:0, j:0, b:0};  // reset pour les nouvelles couches
+      quarts = [];
       renderAll();
     }, { once: true });
     playMix();
@@ -413,6 +451,7 @@
     victoire    = false;
     brunShown   = false;
     mixedResult = null;
+    mixedRatios = null;
     document.getElementById('brun-overlay').classList.remove('show');
     renderTube();
     renderBus(null);

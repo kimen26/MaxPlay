@@ -73,6 +73,9 @@
     .btn-ctrl { border-radius:22px; font-family:'Nunito',sans-serif; font-weight:900; font-size:0.9rem; padding:8px 20px; cursor:pointer; color:#fff; }
     .btn-ctrl:active { opacity:0.75; transform:scale(0.96); }
     .btn-vider  { background:rgba(255,255,255,0.1); border:2px solid rgba(255,255,255,0.25); }
+    .btn-hint   { background:rgba(255,220,80,0.15); border:2px solid rgba(255,220,80,0.5); color:#ffe066; display:none; }
+    .btn-hint.visible { display:block; animation:hintPulse 1.5s ease-in-out infinite alternate; }
+    @keyframes hintPulse { from { box-shadow:0 0 0px rgba(255,220,80,0.3); } to { box-shadow:0 0 10px rgba(255,220,80,0.7); } }
 
     /* Overlays */
     .overlay { position:fixed; inset:0; background:rgba(0,0,0,0.88); display:flex; align-items:center; justify-content:center; z-index:100; opacity:0; visibility:hidden; transition:all 0.4s; }
@@ -150,6 +153,7 @@
     <!-- Bouton vider (bas) -->
     <div class="ctrl-zone">
       <button class="btn-ctrl btn-vider" onclick="vider()">🚿 Vider</button>
+      <button class="btn-ctrl btn-hint" id="btn-hint" onclick="showHint()">💡 Indice</button>
     </div>
 
   </div>
@@ -170,6 +174,16 @@
       <span class="brun-emoji">💩</span>
       <div class="brun-text">Prrrout ! 💩<br>C'est du marron !<br>Lave le pinceau !</div>
       <button class="btn-laver" onclick="vider()">🚿 Laver !</button>
+    </div>
+  </div>
+
+  <!-- Overlay hint -->
+  <div class="overlay" id="hint-overlay" style="z-index:102;">
+    <div class="ov-box">
+      <div class="ov-emoji">💡</div>
+      <div class="ov-title" style="font-size:1.2rem;">Voilà le secret !</div>
+      <div class="ov-text" id="hint-text" style="font-size:1.3rem;letter-spacing:2px;"></div>
+      <button class="ov-btn" onclick="document.getElementById('hint-overlay').classList.remove('show')">OK !</button>
     </div>
   </div>
 
@@ -243,6 +257,7 @@
   let brunShown   = false;
   let mixedResult = null;         // null | { hex, label, ... } | 'BRUN'
   let mixedCounts = {r:0, j:0, b:0}; // doses réelles contenues dans le mix
+  let missCount   = 0;            // essais manqués sur le défi courant
   let order     = shuffle(DEFIS.map((_, i) => i));
   let defi      = DEFIS[order[0]];
 
@@ -473,6 +488,11 @@
       counts  = {r:0, j:0, b:0};
       quarts  = [];
       renderAll();
+      // Indice après 3 ratés
+      if (mixedResult !== 'BRUN' && !isVictoire()) {
+        missCount++;
+        if (missCount >= 3) document.getElementById('btn-hint').classList.add('visible');
+      }
     }, { once: true });
     playMix();
   }
@@ -522,7 +542,18 @@
     initDefi();
   }
 
+  function showHint() {
+    const parts = [];
+    if (defi.r > 0) parts.push(`${defi.r} 🔴`);
+    if (defi.j > 0) parts.push(`${defi.j} 🟡`);
+    if (defi.b > 0) parts.push(`${defi.b} 🔵`);
+    document.getElementById('hint-text').textContent = parts.join(' + ');
+    document.getElementById('hint-overlay').classList.add('show');
+  }
+
   function initDefi() {
+    missCount = 0;
+    document.getElementById('btn-hint').classList.remove('visible');
     document.getElementById('cible-cercle').style.background = defi.hex;
     document.getElementById('cible-tag').textContent  = `Ligne ${defi.num}`;
     document.getElementById('cible-sub').textContent  = defi.label;

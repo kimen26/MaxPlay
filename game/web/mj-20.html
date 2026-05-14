@@ -17,18 +17,17 @@
       color:#fff;
     }
     .game-header {
-      width:100%; max-width:680px; padding:14px 16px 10px;
-      display:flex; align-items:center; gap:12px;
+      display:flex; align-items:center; padding:8px 12px; flex-shrink:0;
+      background:rgba(0,0,0,0.25); border-bottom:1px solid rgba(255,255,255,0.08);
     }
     .back-btn {
-      text-decoration:none; background:rgba(255,255,255,0.15); color:#fff;
-      border:none; border-radius:50%; width:44px; height:44px;
-      display:flex; align-items:center; justify-content:center;
-      font-size:1.4rem; cursor:pointer; flex-shrink:0;
+      text-decoration:none; color:#fff; font-size:1.3rem;
+      background:rgba(255,255,255,0.12); border-radius:8px;
+      padding:4px 10px; font-weight:900; flex-shrink:0;
     }
-    .header-text { flex:1; }
-    .header-title { font-size:1.3rem; font-weight:900; }
-    .header-sub   { color:rgba(255,255,255,0.65); font-size:0.78rem; font-weight:700; }
+    .header-text { flex:1; padding-left:10px; }
+    .header-title { font-size:1.05rem; font-weight:900; }
+    .header-sub   { display:none; }
 
     .game-area {
       width:100%; max-width:680px; padding:0 16px 40px;
@@ -352,9 +351,7 @@
     <a href="index.html" class="back-btn">&#8592;</a>
     <div class="header-text">
       <div class="header-title">Compte dans toutes les langues !</div>
-      <div class="header-sub">1 Ã  20 Â· 8 langues Â· progression Duolingo</div>
     </div>
-    <div class="streak-badge" id="streakBadge" style="display:none"></div>
   </div>
 
   <div class="game-area">

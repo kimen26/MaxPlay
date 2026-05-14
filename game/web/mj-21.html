@@ -223,6 +223,7 @@
   let solved    = 0;
   let victoire  = false;
   let brunShown = false;
+  let mixedResult = null; // null = pas encore mixé · { hex, label } ou 'BRUN' après Mixer
   let order     = shuffle(DEFIS.map((_, i) => i));
   let defi      = DEFIS[order[0]];
 
@@ -242,17 +243,22 @@
     // Chemin du corps du tube : plat en haut, arrondi en bas
     const path = `M0,${RIMH} L0,${BOT-RX} Q0,${BOT} ${RX},${BOT} L${SW-RX},${BOT} Q${SW},${BOT} ${SW},${BOT-RX} L${SW},${RIMH} Z`;
 
-    // Couches colorées (la plus ancienne en bas)
-    const layers = quarts.slice(0, 4).map((q, i) => {
-      const y = (BOT - LAYERH * (i + 1)).toFixed(1);
-      const h = (LAYERH + 1).toFixed(1);
-      return `<rect x="0" y="${y}" width="${SW}" height="${h}" fill="${QCOL[q]}"/>`;
-    }).join('');
-
-    const isEmpty = quarts.length === 0;
-    const emptyHint = isEmpty
-      ? `<text x="${SW/2}" y="${RIMH + FILL_H/2 + 5}" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-size="10" font-family="Nunito">vide</text>`
-      : '';
+    let layers = '';
+    let emptyHint = '';
+    if (mixedResult !== null) {
+      // Après mixer : couleur unie dans le tube
+      const hex = mixedResult === 'BRUN' ? '#6B4226' : mixedResult.hex;
+      layers = `<rect x="0" y="${RIMH}" width="${SW}" height="${FILL_H}" fill="${hex}"/>`;
+    } else if (quarts.length === 0) {
+      emptyHint = `<text x="${SW/2}" y="${RIMH + FILL_H/2 + 5}" text-anchor="middle" fill="rgba(255,255,255,0.2)" font-size="10" font-family="Nunito">vide</text>`;
+    } else {
+      // Couches colorées (la plus ancienne en bas)
+      layers = quarts.slice(0, 4).map((q, i) => {
+        const y = (BOT - LAYERH * (i + 1)).toFixed(1);
+        const h = (LAYERH + 1).toFixed(1);
+        return `<rect x="0" y="${y}" width="${SW}" height="${h}" fill="${QCOL[q]}"/>`;
+      }).join('');
+    }
 
     const svg = `<svg width="${SW}" height="${SH}" viewBox="0 0 ${SW} ${SH}">
   <defs>
@@ -340,7 +346,7 @@
   }
 
   function renderAll() {
-    const m = calcMelange();
+    const m = mixedResult;
     const isBrun = m === 'BRUN';
     const hex = isBrun ? 'BRUN' : (m ? m.hex : null);
 
@@ -357,7 +363,7 @@
       document.getElementById('brun-overlay').classList.remove('show');
     }
 
-    if (!isBrun && !victoire && isVictoire()) {
+    if (!isBrun && !victoire && m && isVictoire()) {
       victoire = true;
       setTimeout(showVictoire, 350);
     }
@@ -366,38 +372,47 @@
   // ── ACTIONS ───────────────────────────────────────────────────────
   function addQuart(type) {
     if (victoire) return;
+    mixedResult = null; // reset : l'enfant doit remixer
     counts[type]++;
     quarts.push(type);
     if (quarts.length > 4) {
       const removed = quarts.shift();
       counts[removed] = Math.max(0, counts[removed] - 1);
     }
-    renderAll();
+    renderTube();               // seulement le tube, pas le bus
+    renderMixPreview(null);     // efface le résultat précédent
   }
 
   function enleverDernier() {
     if (quarts.length === 0) return;
+    mixedResult = null;
     const q = quarts.pop();
     counts[q] = Math.max(0, counts[q] - 1);
     victoire = false;
-    renderAll();
+    renderTube();
+    renderMixPreview(null);
   }
 
   function mixer() {
     if (quarts.length === 0) return;
     const wrap = document.getElementById('tube-wrap');
     wrap.classList.remove('shaking');
-    void wrap.offsetWidth;  // reflow pour relancer l'animation
+    void wrap.offsetWidth;
     wrap.classList.add('shaking');
-    wrap.addEventListener('animationend', () => wrap.classList.remove('shaking'), { once: true });
+    wrap.addEventListener('animationend', () => {
+      wrap.classList.remove('shaking');
+      mixedResult = calcMelange(); // révèle le résultat après l'animation
+      renderAll();
+    }, { once: true });
     playMix();
   }
 
   function vider() {
-    counts    = {r:0, j:0, b:0};
-    quarts    = [];
-    victoire  = false;
-    brunShown = false;
+    counts      = {r:0, j:0, b:0};
+    quarts      = [];
+    victoire    = false;
+    brunShown   = false;
+    mixedResult = null;
     document.getElementById('brun-overlay').classList.remove('show');
     renderTube();
     renderBus(null);

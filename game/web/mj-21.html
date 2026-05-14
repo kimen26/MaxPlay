@@ -17,10 +17,11 @@
     .htitle { color:#fff; font-size:1.2rem; font-weight:900; }
 
     /* Progress */
-    .progress-zone { display:flex; justify-content:center; gap:5px; padding:5px 16px 3px; flex-shrink:0; }
-    .prog-dot { width:14px; height:14px; border-radius:50%; border:2px solid rgba(255,255,255,0.25); background:rgba(255,255,255,0.08); transition:all 0.3s; }
-    .prog-dot.done { background:#00c47a; border-color:#00c47a; box-shadow:0 0 6px #00c47a88; }
-    .prog-dot.current { border-color:#ffe066; box-shadow:0 0 6px #ffe06688; }
+    .progress-zone { display:flex; flex-direction:column; align-items:center; gap:4px; padding:5px 16px 3px; flex-shrink:0; }
+    .prog-row { display:flex; gap:8px; align-items:flex-end; }
+    .prog-tube-wrap { display:flex; align-items:center; justify-content:center; }
+    .prog-tube-wrap.current { animation:progPulse 1s ease-in-out infinite alternate; }
+    @keyframes progPulse { from { filter:drop-shadow(0 0 0px #ffe066); } to { filter:drop-shadow(0 0 5px #ffe066cc); } }
 
     /* Pots */
     .pots-zone { display:flex; justify-content:center; gap:14px; padding:8px 16px 6px; flex-shrink:0; }
@@ -187,14 +188,21 @@
   <script src="js/sounds.js"></script>
   <script>
   const DEFIS = [
-    { r:4, j:0, b:0, hex:'#E8192C', label:'rouge',     num:'RER A', textColor:'#fff' },
-    { r:0, j:4, b:0, hex:'#FFCD00', label:'jaune',     num:'1',     textColor:'#333' },
-    { r:0, j:0, b:4, hex:'#003CA6', label:'bleu',      num:'2',     textColor:'#fff' },
-    { r:2, j:2, b:0, hex:'#FF7E2E', label:'orange',    num:'5',     textColor:'#fff' },
-    { r:0, j:2, b:2, hex:'#007852', label:'vert',      num:'12',    textColor:'#fff' },
-    { r:2, j:0, b:2, hex:'#62259D', label:'violet',    num:'14',    textColor:'#fff' },
-    { r:0, j:1, b:3, hex:'#00AACC', label:'turquoise', num:'380',   textColor:'#fff' },
-    { r:1, j:3, b:0, hex:'#FFAA00', label:'ambre',     num:'10',    textColor:'#333' },
+    { r:4, j:0, b:0, hex:'#E8192C', label:'rouge',        num:'RER A', textColor:'#fff' },
+    { r:0, j:4, b:0, hex:'#FFCD00', label:'jaune',        num:'1',     textColor:'#333' },
+    { r:0, j:0, b:4, hex:'#003CA6', label:'bleu',         num:'2',     textColor:'#fff' },
+    { r:2, j:2, b:0, hex:'#FF7E2E', label:'orange',       num:'5',     textColor:'#fff' },
+    { r:0, j:2, b:2, hex:'#007852', label:'vert',         num:'12',    textColor:'#fff' },
+    { r:2, j:0, b:2, hex:'#62259D', label:'violet',       num:'14',    textColor:'#fff' },
+    { r:0, j:1, b:3, hex:'#00AACC', label:'turquoise',    num:'380',   textColor:'#fff' },
+    { r:1, j:3, b:0, hex:'#FFAA00', label:'ambre',        num:'10',    textColor:'#333' },
+    { r:3, j:1, b:0, hex:'#FF5500', label:'orange foncé', num:'8',     textColor:'#fff' },
+    { r:3, j:0, b:1, hex:'#CC2266', label:'rose',         num:'4',     textColor:'#fff' },
+    { r:0, j:3, b:1, hex:'#44AA44', label:'vert clair',   num:'9',     textColor:'#fff' },
+    { r:1, j:0, b:3, hex:'#4040C0', label:'bleu violet',  num:'RER B', textColor:'#fff' },
+    { r:2, j:1, b:1, hex:'#CC5533', label:'brique',       num:'183',   textColor:'#fff' },
+    { r:1, j:2, b:1, hex:'#77AA44', label:'olive',        num:'21',    textColor:'#fff' },
+    { r:1, j:1, b:2, hex:'#4455AA', label:'ardoise',      num:'42',    textColor:'#fff' },
   ];
 
   const TABLE = [
@@ -208,8 +216,11 @@
     { pr:0.25, pj:0.75, pb:0,   hex:'#FFAA00', label:'ambre' },
     { pr:0.25, pj:0,    pb:0.75,hex:'#4040C0', label:'bleu violet' },
     { pr:0,    pj:0.25, pb:0.75,hex:'#00AACC', label:'turquoise' },
-    { pr:0.75, pj:0,    pb:0.25,hex:'#CC2266', label:'rose' },
-    { pr:0,    pj:0.75, pb:0.25,hex:'#44AA44', label:'vert clair' },
+    { pr:0.75, pj:0,    pb:0.25, hex:'#CC2266', label:'rose' },
+    { pr:0,    pj:0.75, pb:0.25, hex:'#44AA44', label:'vert clair' },
+    { pr:0.5,  pj:0.25, pb:0.25, hex:'#CC5533', label:'brique' },
+    { pr:0.25, pj:0.5,  pb:0.25, hex:'#77AA44', label:'olive' },
+    { pr:0.25, pj:0.25, pb:0.5,  hex:'#4455AA', label:'ardoise' },
   ];
 
   const QCOL  = { r:'#E8192C', j:'#FFCD00', b:'#003CA6' };
@@ -355,13 +366,41 @@
     }
   }
 
+  function miniTubeSVG(hex, state, idx) {
+    const W = 18, H = 40, RIMH = 6, BOT = 40, RX = 4;
+    const FILL_H = BOT - RIMH;
+    const path = `M0,${RIMH} L0,${BOT-RX} Q0,${BOT} ${RX},${BOT} L${W-RX},${BOT} Q${W},${BOT} ${W},${BOT-RX} L${W},${RIMH} Z`;
+    const cpId = `mtc${idx}`;
+    const strokeColor = state === 'current' ? '#ffe066' : 'rgba(255,255,255,0.3)';
+    const strokeW = state === 'current' ? '2' : '1.5';
+    const fillColor = state === 'done' ? hex : 'rgba(150,210,255,0.06)';
+    const filterStyle = state === 'done' ? `style="filter:drop-shadow(0 0 4px ${hex}88)"` : '';
+    const checkmark = state === 'done' ? `<text x="${W/2}" y="${RIMH + FILL_H/2 + 4}" text-anchor="middle" fill="rgba(255,255,255,0.9)" font-size="9" font-family="Nunito,sans-serif">✓</text>` : '';
+    return `<div class="prog-tube-wrap${state === 'current' ? ' current' : ''}">
+      <svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" ${filterStyle}>
+        <defs><clipPath id="${cpId}"><path d="${path}"/></clipPath></defs>
+        <path d="${path}" fill="${fillColor}" clip-path="url(#${cpId})"/>
+        <path d="${path}" fill="none" stroke="${strokeColor}" stroke-width="${strokeW}"/>
+        <rect x="2" y="0" width="${W-4}" height="${RIMH}" rx="2" fill="rgba(255,255,255,0.14)" stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+        ${checkmark}
+      </svg>
+    </div>`;
+  }
+
   function renderProgress() {
-    document.getElementById('progress').innerHTML = DEFIS.map((_, i) => {
-      let cls = 'prog-dot';
-      if (i < solved)        cls += ' done';
-      else if (i === solved) cls += ' current';
-      return `<div class="${cls}"></div>`;
-    }).join('');
+    const zone = document.getElementById('progress');
+    let html = '';
+    for (let row = 0; row < 3; row++) {
+      html += '<div class="prog-row">';
+      for (let col = 0; col < 5; col++) {
+        const i = row * 5 + col;
+        const d = DEFIS[order[i]];
+        const state = i < solved ? 'done' : i === solved ? 'current' : 'pending';
+        html += miniTubeSVG(d.hex, state, i);
+      }
+      html += '</div>';
+    }
+    zone.innerHTML = html;
   }
 
   function renderAll() {

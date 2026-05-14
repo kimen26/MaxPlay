@@ -2,6 +2,253 @@
 
 > **Règle :** Une décision ici est DÉFINITIVE jusqu'à nouvelle décision explicite datée.
 
+---
+
+## 2026-05-15 — Réfonte architecture briefs étape 3 (STORY-002 vague 3+)
+
+### DEC-BRIEF-ARCH-001 : Architecture briefs en 3 couches
+
+**Auteur (Papa Yann)** : décision 2026-05-15 post-analyse étape 5 STORY-002.
+
+**Contexte** : vague 2 briefs lancés à 14 writers ont produit forte convergence sur certains détails (gestes Nono, berge humide, Juju qui touche). Analyse : ces détails sont injectés dans le brief commun (Couche 2) au lieu de rester dans la vision auteur (Couche 3 guidé uniquement). Besoin architecture briefs formelle pour éviter convergence artificielle.
+
+**Décision tranchée** :
+
+#### Trois couches briefs
+
+**Couche 1 — STATIQUE UNIVERSELLE** (ne jamais injecter dans briefs per-story)
+- Contexte WexWorld (univers, ennéatypes implicites, Kishōtenketsu)
+- Casting (10 persos, traits archétypiques, langages naturels)
+- Kishōtenketsu mécanique (B+D+C = tranche de vie + cycle)
+- Règles écriture (univers implicite, surnoms 4/5, narration sobre, jamais résonance explicite)
+- Rôle Wex (observateur, catalyseur, relieur — jamais protagoniste)
+- Source permanent : `equipe/templates/couche-1-universel.md` (à créer)
+
+**Couche 2 — DYNAMIQUE PAR HISTOIRE** (brief commun pour tous 14 writers)
+- **Lieu** (1-2 phrases descriptives, touches sensorielles)
+- **Personnages de la story** (quels persos, leurs enjeux simples)
+- **Intention Ki/Sho/Ten/Ketsu** (1 intention simple par étape, pas détails)
+- Exemple Ki : « Mimi a perdu son caillou »
+- Exemple Ten : « Dadou lui montre trois solutions »
+- Contraintes objectives (longueur, POV, angle narratif optionnel)
+- **NE PAS INCLURE** : gestes spécifiques, onomatopées, descriptions détaillées, résolutions magiques
+- Source permanent : `brief-histoire.md` nouvelle version (à refondre)
+
+**Couche 3 — DYNAMIQUE PAR SESSION** (writer guidé seulement)
+- Vision auteur (idées brainstorm, directions créatives)
+- 6 axes Kishōtenketsu avec exemples spécifiques (créature, geste, onomatopée, rituel, mystère, faute)
+- Détails qui doivent absolument y être (la "signature" histoire)
+- Source permanent : annexe `brief-histoire.md` § *6 axes + vision guidé*
+
+**Conséquence** : writers libres (13) reçoivent Couche 2 uniquement = parité totale. Writer guidé (1) reçoit Couche 2 + Couche 3 = expertise/direction.
+
+**Impact fichiers** :
+- ✅ Créer `equipe/templates/couche-1-universel.md` (statique, référence)
+- ✅ Refondre `brief-histoire.md` gabarit (Couche 2) + annexe Couche 3
+- ✅ Créer `equipe/templates/_COUCHES-BRIEFS-ARCHITECTURE.md` (documentation design)
+- 🔄 STORY-002 vague 2 : audit si gestes/berge/Juju résolus dans analyse vs brief final
+
+**Statut** : ✅ Figée 2026-05-15. À appliquer immédiatement vague 3 + STORY-003+.
+
+---
+
+### DEC-BRIEF-ARCH-002 : _writer-package.md = package UNIQUE pour tous 14 writers
+
+**Auteur (Papa Yann)** : corollaire DEC-BRIEF-ARCH-001.
+
+**Contexte** : actuellement `_writer-package.md` contient des sections "pour writers libres" vs "pour writer guidé". Crée confusion et fragmentation. Si architecture briefs en 3 couches, alors package est identique pour tous (Couche 2 = commun), variance = modèle LLM + température seulement.
+
+**Décision tranchée** :
+
+#### _writer-package.md UNIQUE parité totale
+
+**Contenu package** (même pour tous) :
+- Couche 1 (référence statique, si besoin rafraîchir) : pointeur vers `equipe/templates/couche-1-universel.md`
+- Couche 2 (le brief) : intégral, sans distinction
+- Couche 3 (vision guidé) : INCLUS mais avec label clair « POUR WRITER GUIDÉ SEULEMENT »
+
+**Writers libres** : ignorent Couche 3. Système prompt minimal de chaque writer ("Exécute le brief ci-dessous, style [perso LLM]").
+
+**Writer guidé** : active Couche 3 via son système prompt dédié (`narration-writer-kimi-guide`), intègre 6 axes.
+
+**Parité** : tous reçoivent le **même package**, variance = runtime (modèle, température, système prompt du writer).
+
+**Impact fichiers** :
+- ✅ `stories/002-libellule-resonance/3-briefs/_writer-package.md` vague 3 : refonte format Couche 2 + Couche 3 labellisé
+- 🔄 Gabarit `equipe/templates/_writer-package.template.md` : mise à jour architecture
+
+**Statut** : ✅ Figée 2026-05-15. À appliquer immédiatement vague 3.
+
+---
+
+### DEC-BRIEF-ARCH-003 : Bug vague 2 identifié — gestes archétypiques injectés en Couche 2
+
+**Contexte** : analyse synthèse lecteurs étape 5 STORY-002 vague 2 révèle pattern convergence :
+- "Nono fait ses 5 gestes archétypiques" → résultat : tous writers incluent (ou tentent) les 5 gestes
+- "Berge en terre humide, racines visibles" → résultat : décor identique chez 8/14 writers
+- "Juju touche la terre/l'eau/les racines" → résultat : action identique chez 11/14 writers
+
+**Cause racine** : `_writer-package.md` vague 2 contient ces détails en Couche 2 (brief commun) = injection volontaire pour assurer "signature histoire". Mais signature doit rester **Couche 3 vision guidé uniquement**, pas Couche 2 = convergence artificielle.
+
+**Décision** :
+
+#### Bug confirmé — à corriger vague 3
+
+- **Ce qui s'est passé** : gestes + décor + action spécifiques ont été placés en brief commun pensant assurer cohérence. Résultat inverse : tous les writers convergent, variance disparaît.
+- **Correction vague 3** : déplacer ces détails vers Couche 3 (vision guidé) uniquement.
+- **Vérification** : avant lancer vague 3, audit `brief-histoire.md` vague 2 vs contenu briefs lancés (tracer injection).
+
+**Impact fichiers** :
+- 🔄 `stories/002-libellule-resonance/3-briefs/brief-histoire.md` : audit couche 2 vs 3, correction vague 3
+- ✅ `stories/002-libellule-resonance/3-briefs/_writer-package.md` vague 3 : gestes/décor/actions → Couche 3 uniquement
+
+**Statut** : ✅ Bug confirmé. À corriger immédiatement vague 3.
+
+**Leçon gravée** (cf. `equipe/lecons-vivantes.md`) :
+> *« OBS-CONVERGENCE-COUCHE2 : placer signature histoire (gestes, actions spécifiques, décor) en brief commun produit convergence artificielle. Brief commun = intentions Ki/Sho/Ten/Ketsu seulement. Signature = Couche 3 (vision guidé). »*
+
+---
+
+## 2026-05-15 — Évolutions PROCESS (STORY-002 vague 3+)
+
+### DEC-PROCESS-NEW-001 : Nouveau process STORY avec étape 0 brainstorm (Couche 0)
+
+**Auteur (Papa Yann)** : décision 2026-05-15 post-analyse étape 5-6 STORY-002.
+
+**Contexte** : architecture briefs 3 couches crée besoin nouvelle étape entre idée brute (INBOX) et brief commun (Couche 2). Besoin explorer vision auteur **avant** écrire brief — brainstorm avec 2-3 LLMs pour générer idées Ten, gestes, punchlines, énergie.
+
+**Décision tranchée** :
+
+#### Nouveau PROCESS STORY = 4 phases principales (avant étapes 3-10 inchangées)
+
+**Étape A — Auteur + Conseiller** :
+- Idée histoire brute (objet, lieu, axe, personnages)
+- Input : INBOX dump ou session auteur
+- Output : 1-pitch-plan.md (fusion pitch + plan léger, figée 2026-05-12)
+- Validation auteur obligatoire
+
+**Étape B — NOUVELLE : Brainstorm Couche 0** (Directeur + 2-3 LLMs) :
+- Exploration créative idées Ten (complications, détours)
+- Génération gestes archétypiques possibles
+- Récolte punchlines, onomatopées, énergie
+- Identification traits de caractère potentiels à ancrer (ex: Juju "chansonnette interrompue")
+- Input : 1-pitch-plan.md + ennéatypes pertinents
+- Output : `0-brainstorm-couche.md` (fiche exploration)
+- Alimente Couche 3 (guidé) uniquement + potentiellement tickets PMO traits de persos
+- **LLMs invités** : à valider (proposition = Kimi/DeepSeek/Grok)
+- **SLA** : 2-3 jours, pas bloquant (parallèle possible Couche 2)
+
+**Étape C — Brief Couche 2** (Directeur seul) :
+- Rédaction intentions Ki/Sho/Ten/Ketsu (simples, pas gestes spécifiques)
+- Injectée dans _writer-package.md Couche 2
+- Input : 1-pitch-plan.md (pitch) + 0-brainstorm-couche.md (idées, pas recettes)
+- Output : brief-histoire.md section Couche 2 + _writer-package.md
+- Validation auteur obligatoire (fusionnée avec sélection étape 6)
+
+**Étape D — Briefs Couches complets** (Directeur) :
+- Directeur crée _writer-package.md complet :
+  - Couche 1 : pointeur référence
+  - Couche 2 : brief tous writers
+  - Couche 3 : vision guidé + 6 axes (nourri par 0-brainstorm-couche.md)
+- Prêt étape 4 (14 writers)
+
+**Timeline** :
+- Étape A → B → C/D en parallèle possible
+- SLA totale Étapes A-D : 5-7 jours avant étape 4
+- Pas d'allongement PROCESS global (étape 2 supprimée 2026-05-12, étape B la remplace)
+
+**Conséquence** :
+- Writers 13 libres : invariant (Couche 2 uniquement)
+- Writer 1 guidé : enrichi par Couche 0 brainstorm (Couche 3 plus profonde)
+- Variance augmente (direction créative moins déterministe, plus exploratoire)
+
+**Impact fichiers** :
+- ✅ Créer `equipe/templates/0-brainstorm-couche.template.md`
+- ✅ Créer `stories/002-libellule-resonance/0-brainstorm-couche.md` vague 3
+- 🔄 `equipe/PROCESS.md` L.0-160 : MAJ description 4 étapes A-B-C-D avant étape 3
+- 🔄 `pmo/INVARIANTS.md` L.8-12 : MAJ "Étapes PROCESS" (clarifier A/B/C/D pré-étape-3)
+- 🔄 `stories/002-libellule-resonance/kanban.md` : insertion étape B entre étape 1 et 3 vague 3
+
+**Statut** : ✅ Figée 2026-05-15. À appliquer STORY-002 vague 3 (test), puis STORY-003+.
+
+**Bonus question ouverte** : réduction writers post-STORY-004 — Papa Yann annonce calibration 14→6-8 writers optimaux après 3-5 histoires. Arbitrage futur (voir ARCHI-008).
+
+---
+
+## 2026-05-15 — Traits de caractère (T8 Juju)
+
+### DEC-JUJU-T8-001 : Trait "Chansonnette interrompue à mi-phrase, reset brutal" = découverte STORY-002
+
+**Auteur (Papa Yann)** : observation 2026-05-15 étape 5 synthèse lecteurs.
+
+**Contexte** : vague 2 STORY-002, writer guidé (kimi-reco-guide-v2) a introduit scène Juju qui chante une chansonnette, s'interrompt brusquement, et « revient à la réalité » avec action physique immédiate (toucher terre). Plébiscitée 18/20 lecteurs comme trait caractère authentique Juju = T8 Challenger qui ne peut pas rester détachée/rêveuse longtemps.
+
+**Décision tranchée** :
+
+#### Trait Juju gravé : Chansonnette interrompue + reset brutal
+
+**Description** :
+- Juju peut se lancer dans chant léger, jeux de mots, rythmes
+- Mais elle revient brutalement à la réalité physique (action, geste, changement d'énergie)
+- Pas mélancolie ou rêverie prolongée — interruption est **volontaire + physique**
+- Alignement T8 : besoin d'action/présence immédiate > contemplation
+
+**Voice impact** :
+- Tags ElevenLabs utiles : `[bright]` + `[rhythmic]` pour chansonnette
+- Transition tags : `[back to reality]` ou `[grounded]` pour reset — à standardiser
+
+**Impact fichiers** :
+- ✅ `personnages/type-08/caractere.md` : ajouter section "Chansonnette interrompue" avec exemple STORY-002 v2
+- ✅ `personnages/type-08/voix.md` : ajouter tags recommandés (transition reset)
+- ✅ `pmo/INVARIANTS.md` § *Casting figé* : notation trait T8 dans marge
+- 🔄 Briefs STORY-003+: pour writer guidé, « explorer trait Juju chansonnette interruption si pertinent »
+
+**Statut** : ✅ Figée 2026-05-15. À appliquer immédiatement.
+
+**Leçon** (gravée `equipe/lecons-vivantes.md` § Traits ennéatypes) :
+> *« OBS-JUJU-CHANSONNETTE-RESET : T8 Challenger incapable rêverie prolongée. Chansonnette interrompue + reset brutal = signature vocale Juju. Plébiscite empirique : 18/20 lecteurs reconnaissent trait authentique. À utiliser briefs writer guidé comme direction exploratoire. »*
+
+---
+
+## 2026-05-15 — État histoires
+
+### DEC-STORY-002-VAGUE3 : STORY-002 relancée vague 3 (Couches briefs refondues)
+
+**Contexte** : STORY-002 étape 5 synthèse lecteurs analysée (2026-05-15). Architecture briefs identifiée défaillante (gestes en Couche 2 = convergence). Décision refonte 3 couches (DEC-BRIEF-ARCH-001/002/003) + PROCESS nouveau (DEC-PROCESS-NEW-001) + trait Juju (DEC-JUJU-T8-001) impactent relance.
+
+**Décision tranchée** :
+
+#### STORY-002 vague 3 — relance post-refonte
+
+**Périmètre étape 3-4 vague 3** :
+- Étape B (nouveau) : brainstorm Couche 0 (Directeur + LLMs)
+- Étape C : brief Couche 2 refondé (intentions Ki/Sho/Ten/Ketsu uniquement)
+- Étape D : Couches complets _writer-package.md (Couche 1/2/3)
+- Étape 4 : 14 writers (parité totale Couche 2)
+
+**Objectif vague 3** :
+- Démontrer variance augmente (gestes/actions/décor ≠ injectés centralement)
+- Valider architecture 3 couches
+- Confirmer writer guidé + Couche 0 brainstorm enrichissent direction créative
+- Tester LLMs Couche 0 (proposition Kimi/DeepSeek/Grok)
+
+**Timeline** :
+- Étape B lancée dès validation Papa Yann (2-3 jours)
+- Étape C-D : 3-4 jours
+- Étape 4 : immédiat après validation
+- Étape 5 : panel 20 (parallèle possible)
+- Clôture attaque : 10-12 jours post-validation
+
+**Fichiers à préparer** :
+- ✅ `stories/002-libellule-resonance/0-brainstorm-couche.md` (créer)
+- ✅ `stories/002-libellule-resonance/3-briefs/brief-histoire.md` (refondre Couche 2)
+- ✅ `stories/002-libellule-resonance/3-briefs/_writer-package.md` (refondre Couches 2/3)
+- 🔄 `stories/002-libellule-resonance/kanban.md` : étape B inserée, vague 3 marquée
+
+**Statut** : ✅ Figée 2026-05-15. Prête lancement dès validation Papa Yann sur LLMs Couche 0.
+
+---
+
 ## 2026-05-14 — DEC-TAGS-KIMI : Absorption catalogue ElevenLabs v3 (1806 tags)
 
 **Auteur (Papa Yann)** : "challenge, absorbe ce qui est bon et utile"
@@ -1801,3 +2048,130 @@ Aucun ne combine **archétypes universels (ennéatypes) + adaptation culturelle 
 | 15 | Mémoire narrative des lecteurs — les enfants connaîtront les histoires précédentes et feront des liens. Comment en tenir compte dans l'écriture (callbacks implicites, évolution persos, arcs longs) ? À partir de quelle histoire introduire ce niveau de couche ? | Non | — |
 | 16 | Quartier / communauté — nommé (Clairval, Tissé, Hameau de l'Aube, la Ronde…) ou volontairement anonyme ? Décision 26/04 a écarté les villes réelles, mais n'a pas tranché si on nomme la communauté/quartier. Trade-off : ancrage affectif (B) vs universalité cross-culture (A). | Non | `../univers/vie-quotidienne/geographie.md` |
 | 17 | ~~**V1 minimaliste vs V2 comité pour 003-v2**~~ **TRANCHÉ 2026-05-08** (V2 comité retenue, canonisée 001) | — | — |
+
+---
+
+## Propositions en cours (2026-05-15 — en attente validation Papa Yann)
+
+### PROP-KISHOTEN-SYSTEMPROMPT : Formulation Kishōtenketsu pour system prompt Couche 1
+
+**Contexte** : DEC-PROCESS-NEW-001 crée étape B (brainstorm Couche 0) + architecture briefs 3 couches. Besoin formaliser mécanisme Kishōtenketsu pour que writers le comprennent sans ambiguïté.
+
+**Proposition** (à valider) :
+
+#### Formulation recommandée pour system prompt writers
+
+**Pour tous writers (Couche 1 référence)** :
+```
+Kishōtenketsu : B (Début/Objet) + D (Développement/Complication) + C (Chute/Résolution) 
+= tranche de vie avec arc émotionnel simple + cycle (revenir au point de départ, transformé).
+
+- B : présenter situation/objet/personnage avec détail sensoriel
+- D : une complication/détour/question qui trouble l'équilibre
+- C : non pas une résolution magique, mais un retour au calme + transformation imperceptible
+- Cyclique : fin ressemble à début (lieu, personnage, geste) mais subtilité a changé
+
+Raison : convient 4-5 ans (clair, rassurant) + accepte ennéatypes implicites (chaque perso D différent).
+```
+
+**Questions ouvertes dans la proposition** :
+- Faut-il aussi inclure cycle "Ketsu" (4e acte clôture) ou 3 couches suffisent (B+D+C) ?
+- "Transformation imperceptible" — trop flou ? Proposer synonymes : "légère", "intérieure", "invisible" ?
+- Exemple concret dans brief ? Ou reléguer en annexe leçons-vivantes ?
+
+**Fichiers impactés si validée** :
+- `equipe/templates/couche-1-universel.md` : inclure formulation
+- `equipe/templates/_writer-package.template.md` : inclure section Kishōtenketsu
+- Writers system prompts : adapter chacun (Claude/Kimi/DeepSeek/Grok)
+
+**Statut** : ⏳ En attente validation Papa Yann.
+
+---
+
+### PROP-DIALOGUE-FIFTY-PERCENT : Variante règle "50% dialogue" — "35-50% dialogue, non obligatoire Ten"
+
+**Contexte** : analyse étape 5 STORY-002 vague 2 montre écarts variance sur % dialogue. Certains writers (grok-reco) poussent à 60%+ dialogue = perte description sensorielle. Autres (claude-opus-reco) restent à 25% = trop sobre. Besoin règle plus flexible.
+
+**Proposition** (à valider) :
+
+#### Assouplissement règle dialogue
+
+**Défaut actuel** : "50% dialogue obligatoire"
+
+**Variante proposée** : "35-50% dialogue. Dialogue non obligatoire pendant Ten (complications). Privilégier action physique/geste quand complication est gestuelle."
+
+**Raison** :
+- 35-50% = bandwidth pour variance (certains writers écriture sèche, autres bavardes)
+- Non-obligatoire Ten = laisse writer explorer geste-avant-parole pendant complications
+- Préserver dialogue pour Ki (présentation) et C (clôture ritual)
+
+**Contre-exemple (rejeter)** :
+- "Zéro dialogue" = trop contraignant
+- "Jusqu'à 70%" = trop dialogue, perd narration sensorielle
+
+**Fichiers impactés si validée** :
+- `brief-histoire.md` gabarit Couche 2 : ajuster ligne dialogue
+- `equipe/templates/couche-1-universel.md` : clarifier règle dialogue
+
+**Statut** : ⏳ En attente validation Papa Yann.
+
+---
+
+### PROP-COUCHE0-LLMS : Brainstorm Couche 0 — quels LLMs invités ?
+
+**Contexte** : DEC-PROCESS-NEW-001 crée étape B (brainstorm Couche 0). Besoin préciser : **quels LLMs** inviter pour cette étape d'exploration créative ?
+
+**Propositions à valider** :
+
+#### Option A (PROPOSÉE) : Kimi + DeepSeek + Grok (multi-perspective)
+- **Kimi** : excellence créative narratif, 0.6 reco créatif Instant
+- **DeepSeek** : riche/prolixe, 1.5 reco créatif, bon pour idées denses
+- **Grok** : énergie différente, 1.2 reco, souvent surprend
+- **Avantage** : 3 angles créatifs différents = idées variées pour vision guidé
+- **Coût** : 3 invocations MCP, temps 2-3 jours
+
+#### Option B (ALTERNATIVE) : Kimi seul (cohérence writer guidé)
+- **Kimi** : déjà writer guidé en étape 4, cohérence narrative
+- **Avantage** : cohérence amont/aval (même LLM pense brainstorm + écrit guidé)
+- **Inconvénient** : perte variance idées, moins exploratoire
+
+#### Option C (ALTERNATIVE) : Claude agents (Conseiller + spécialistes)
+- **Conseiller** : déjà intervient étape A (pitch)
+- **Avantage** : utilise agents existants, cohérence project
+- **Inconvénient** : pas testé intensivement en brainstorm créatif
+
+**Données validant Option A** :
+- Étape 4 STORY-002 vague 2 : 14 writers = variance. Couche 0 brainstorm multi-LLM = continuer.
+- Vague 3 sera test = mesurer si Couche 0 multi-LLM enrichit writer guidé vs simplifie.
+
+**Statut** : ⏳ En attente validation Papa Yann + décision ressource (coût MCP).
+
+---
+
+### PROP-PANEL-REDUCTION : Réduction panel lecteurs — refonte annoncée
+
+**Contexte** : Papa Yann 2026-05-15 (lors session STORY-002 étape 5-6) : "ENORMEMENT DE MATIÈRE exploitée mal, on garde le top 1 et fini en gros". Signal : panel 20 lecteurs produit trop d'avis, synthèse long, peu d'arbitrage Directeur.
+
+**État actuel** :
+- Panel 20 OBLIGATOIRE (validé empiriquement STORY-002)
+- Synthèse longueur : ~3000 mots (5-7 heures lecture + analyse)
+- Utilisation Directeur : sélectionne top 1-2, ignore reste
+
+**Proposition** (articulation Papa Yann — pas complètement tranchée) :
+
+#### Hypothèse refonte panel
+
+- **Réduire à 10-12 lecteurs** ? (calibrage)
+- **Ou garder 20, mais synthèse simplifiée** ? (keep data, lighter output)
+- **Ou multi-tour** : vague 1 (6 lecteurs rapide) → sélection, vague 2 (20 complet) si besoin approfondissement ?
+
+**Données présentes** :
+- STORY-002 top writer (kimi-reco-guide-v2) plaît fortement (16+/20)
+- Bottom 3 writers : évaluation stable (4-8/20), pas besoin 20 avis pour rejeter
+- Arbitrage principal : sélection vague 2 qui part en rewrite (étape 7)
+
+**Blocant ?** Non — panel 20 fonctionne, est question optimisation/vélocité.
+
+**Prochaine étape** : Papa Yann décide refonte post-STORY-004 (après test 3-5 histoires).
+
+**Statut** : ⏳ Question ouverte posée. Arbitrage post-STORY-004 (ticket ARCHI-008 tracking).

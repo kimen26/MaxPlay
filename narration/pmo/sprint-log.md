@@ -11,7 +11,62 @@
 
 ---
 
-## 2026-05-14 — [PMO] Tags ElevenLabs v3 absorbés + 9 voix.md enrichis + catalogue narrateur créé
+## 2026-05-15 — [NARRATION] STORY-002 étape 5-6 : réflexion architecture briefs + décisions de PROCESS
+
+**Objectif** : clôture session étape 5-6 — synthèse lecteurs analysée, architecture briefs refondée, 4 décisions de PROCESS tranchées, STORY-002 relancée vague 3.
+
+**Fait** :
+- [x] Classification tour : 6 DÉCISIONS + 1 PROPOSITION BONUS KISHŌTENKETSU + 5 PROPOSITIONS EN COURS
+- [x] DEC-BRIEF-ARCH-001 : architecture briefs 3 couches (STATIQUE / DYNAMIQUE PAR HISTOIRE / DYNAMIQUE PAR SESSION)
+- [x] DEC-BRIEF-ARCH-002 : _writer-package.md = package UNIQUE pour tous 14 writers (parité totale)
+- [x] DEC-BRIEF-ARCH-003 : bug identifié vague 2 (gestes Nono + berge humide injectés en Couche 2 au lieu Couche 1)
+- [x] DEC-PROCESS-NEW-001 : nouveau process STORY (étapes A/B/C/D) avec brainstorm Couche 0 à partir STORY-002 vague 3
+- [x] DEC-JUJU-T8-001 : "Chansonnette interrompue à mi-phrase, reset brutal" = trait de caractère T8 à ancrer dans type-08/caractere.md
+- [x] DEC-STORY-002-VAGUE3 : relance STORY-002 avec briefs refondus 3 couches + nouveau _writer-package.md
+
+**Décisions enregistrées** :
+- ✅ DEC-BRIEF-ARCH-001, DEC-BRIEF-ARCH-002, DEC-BRIEF-ARCH-003 → `pmo/decisions.md` § Réfonte briefs étape 3
+- ✅ DEC-PROCESS-NEW-001 → `pmo/decisions.md` § Évolutions PROCESS
+- ✅ DEC-JUJU-T8-001 → `pmo/decisions.md` § Traits de caractère (lié type-08)
+- ✅ DEC-STORY-002-VAGUE3 → `pmo/decisions.md` § État histoires
+
+**Propositions en cours** (pas tranchées, demande validation Papa Yann) :
+- Kishōtenketsu formulation system prompt Couche 1 → `lecons-vivantes.md` § PROPOSITIONS
+- "35-50% dialogue, non obligatoire pendant Ten" variante règle "50% dialogue"
+- Couche 0 brainstorm : LLMs invités (Kimi/DeepSeek/Grok ?) → à préciser
+- Réduction du panel lecteurs : Papa Yann annonce refonte, pas encore décidée
+
+**État au reboot** :
+- ✅ STORY-002 étape 5-6 analysée (20 lecteurs, synthèse disponible)
+- 🟡 Architecture briefs refondée (Couche 1/2/3 séparées) — prête implémentation
+- 🟡 Vague 3 STORY-002 : briefs à réécrire + nouveau _writer-package.md + 14 writers re-lancés
+- ⏳ Prochaine étape : attendre validation Papa Yann sur propositions en cours, puis lancer étape 4 vague 3
+- Checklist remise main : ✅ décisions figées dans decisions.md + ✅ propositions logées dans sprint-log + ✅ kanban 002 aligné
+
+---
+
+## 2026-05-14 — [PMO CLÔTURE SESSION 2] STORY-002 étape 4 vague 2 terminée + étape 5 lancée (20 lecteurs en cours)
+
+**Objectif** : clôture session 2 — vague 2 briefs corrigés lancée + 20 lecteurs panel étape 5 en production.
+
+**Fait** :
+- [x] Classification tour : TRAITEMENT IMMÉDIAT (kimi-reco.md sauvé) + TRAITEMENT IMMÉDIAT (profils-lecteurs.md mis à jour) + INFO (20 lecteurs lancés)
+- [x] `4-versions-writers/kimi-reco.md` régénéré (writer manquant session précédente) — récupéré depuis log MCP
+- [x] `equipe/profils-lecteurs.md` mis à jour — panel complet 20 lecteurs (6 enfants tranches A/B + 8 dyades + 2 DP + 2 DM + 2 DPF + 2 DMF)
+- [x] Étape 5 lancée : 20 lecteurs témoins en background (panel diversifié genres, âges, contextes parentaux)
+
+**Décisions prises ce tour** : aucune nouvelle — continuation plan étape 5.
+
+**État au reboot** :
+- ✅ Vague 2 complète (14 writers) — tous fichiers sauvés + top 1 = `kimi-reco-guide-v2.md`
+- 🟢 Étape 5 en cours : 20 lecteurs panel produisant leurs retours
+- ⏳ Prochaine étape : attendre production panel 20 + synthèse lecteurs (`5-synthese-lecteurs.md`)
+- SLA étape 5 : sans SLA auteur — production entièrement en background, synthèse attendue dans 1-2 jours
+- Prochaine action auteur : attendre synthèse lecteurs, puis arbitrer sélection étape 6 (top 1-3 writers)
+
+---
+
+## 2026-05-14 — [PMO SESSION 1] Tags ElevenLabs v3 absorbés + 9 voix.md enrichis + catalogue narrateur créé
 
 **Objectif** : absorber contribution Kimi (1806 tags EL v3 + guide enneatypes) dans la base MaxPlay.
 

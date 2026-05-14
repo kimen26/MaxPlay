@@ -7,6 +7,20 @@
 
 ---
 
+## 2026-05-14 — [ARCHIVISTE] Audit FORME (5 sections)
+
+**Trigger** : `/game-archiviste-audit` lancé par auteur.
+
+**Findings corrigés :**
+- F-001 (BASSE) : PNG orphelin `test_virage_haut_gauche_papa.png` → supprimé
+- F-002 (MOYENNE) : MJ-21 "Peins les bus !" non documenté → MAJ INVARIANTS.md + state.md + INDEX.md + CLAUDE.md (22→23 actifs)
+- F-003 (MOYENNE) : Recettes tile count INVARIANTS.md 13 → 20 (réalité `recipes/`)
+- F-004 : Faux positif (agents dans `.claude/agents/` projet, pas user-level)
+
+**Résultat** : 0 finding ouvert. Structure FORME conforme.
+
+---
+
 ## 2026-05-13 — Harmonisation Game ↔ Narration
 
 **Trigger** : auteur demande symétrie pôle JEU avec pôle NARRATION (qui a été refondue 2026-05-12 : PMO proactif + Archiviste maillon central + INVARIANTS source de vérité + audit-trail traçabilité).
@@ -68,9 +82,56 @@
 
 ---
 
+## 2026-05-14 — [PMO] Audit FOND (5 sections)
+
+**Trigger** : `/game-pmo-audit` mode AUDIT systématique (post-archiviste).
+
+**Contexte** : archiviste a exécuté audit FORME (2026-05-14), corrigé 3 findings + validé structure. PMO effectue audit FOND complémentaire.
+
+**Sections analysées (5)** :
+
+### 1. Architecture / Découvrabilité
+- ✅ `game/INDEX.md` : à jour (arborescence pmo/, equipe.md, 23 MJ)
+- ✅ Aucun fichier orphelin après correction archiviste
+- ✅ Aucun lien cassé majeur détecté
+
+### 2. Cohérence chiffres clés
+- ✅ INVARIANTS.md ⇄ state.md ⇄ decisions.md : cohérents
+- ✅ MJ actifs: 23 confirmés (post-MJ-21 2026-05-14)
+- ⚠️ **Finding F-101 (BASSE)** : "20 recettes tile validées" vs "30 fichiers .py total" → clarifier dans INVARIANTS.md L61
+
+### 3. État production
+- ✅ `memory/state.md` reflète état déployé (23 actifs, 0 bug critique)
+- ✅ EP-022 confirmé faux bug (décision 2026-05-11 loggée)
+- ✅ Sessions récentes loguées dans `pmo/sprint-log.md` (2026-05-13 x2, 2026-05-12)
+- ✅ Prochaine action identifiable : EP-TILES ou EP-REFS (backlog `[~]`)
+
+### 4. Connaissances / Skills
+- ✅ LESSONS.md à jour : Corrections 1-12 (brique-avant-macro, mapping SW, planche-contact, PIL)
+- ⚠️ **Finding F-102 (BASSE)** : L-xxx index non centralisé → créer `pmo/LESSONS-INDEX.md`
+- ⚠️ **Finding F-103 (BASSE)** : VISION-LONG-TERME.md dit "19 actifs" (obsolète) → MAJ "23 actifs (2026-05-14)"
+
+### 5. Lean / Anti-patterns
+- ✅ Doublons : AUCUN (structure post-refonte cleanée)
+- ✅ Décisions tranchées loggées (pivot 2026-05-12, harmonisation 2026-05-13)
+- ⚠️ **Finding F-104 (BASSE)** : stub `game/tasks/BACKLOG.md` non vérifié lisible
+
+**Findings résumé** : 
+- 4 BASSE (F-101 à F-104) — impacts mineurs, pas d'urgence
+- 0 MOYENNE/CRITIQUE ouverts (auto-clôturées par archiviste 2026-05-14)
+
+**Verdict** : ✅ **FOND OK**. Aucune incohérence sémantique détectée. Structure prête pour Phase 2 WexWorld scoping. Sous-PMOs (tile/mj) synchronisés.
+
+**Prochaines étapes recommandées** :
+1. Traiter F-101/F-102/F-103/F-104 en queue de session
+2. Trancher Q-ouverte #1 (EP-022 clôture définitive)
+3. Assigner EP-TILES ou EP-REFS en prochaine session
+
+---
+
 ## Prochain audit
 
 Recommandé après :
-- Création MJ-21+ ou refonte structurelle pôle JEU
-- Phase 2 WexWorld scoping
-- Toute refonte de gabarit / pipeline
+- Phase 2 WexWorld scoping (création game-wexworld-pmo)
+- Traitement 5+ findings en queue
+- Toute refonte majeure gabarit / INVARIANTS

@@ -13,3 +13,4 @@ temp/
 # Chaque appel ask_kimi/ask_kimi_payant/ask_deepseek/ask_grok dump le résultat ici
 # pour récupération si main thread crash avant Write tool. Voir infra/mcp/MODELS.md.
 infra/mcp/logs/
+game/web/img/dinos/brutes/

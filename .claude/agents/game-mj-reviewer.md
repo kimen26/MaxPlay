@@ -72,6 +72,7 @@ Tu es le **contrôleur qualité des mini-jeux HTML** MaxPlay. Tu évalues rigour
 | Check | Règle | Si violé |
 |---|---|---|
 | **HTML local pas de fetch JSON** | `feedback_html_local_no_fetch` : utiliser `<script src="data.js">` avec `window.NAME`, jamais `fetch()` sur JSON local | CRITIQUE (casse en file://) |
+| **Header gabarit canonique** | Header = `.hdr` + `<a>` + `.htitle` uniquement (~40px). Jamais `.game-header`, `.header-text`, `.header-title`, `.header-sub`, bouton rond 44px, double hauteur, sous-titre. Gabarit dans `mini-jeux.md`. | HAUTE |
 | **Multi-touch** | Si 2+ doigts requis (EP-032) : Pointer Events + Map (`activePointers`) | HAUTE |
 | **localStorage** | Progression via `tracker.js` (pas localStorage brut sans namespace) | MOYENNE |
 | **Police** | Fredoka One (Google Fonts) — pas d'autre police custom | MOYENNE |
@@ -129,6 +130,7 @@ Klaxon prout 1/20: [OUI / N/A / manquant]
 
 --- SECTION 4 : TECHNIQUE ---
 HTML local sans fetch JSON: [OUI / fetch détecté ligne N]
+Header gabarit canonique (.hdr): [OUI / variante inventée détectée]
 Multi-touch Pointer Events: [OUI / N/A / NON]
 localStorage via tracker.js: [OUI / brut détecté]
 Police Fredoka One: [OUI / autre]

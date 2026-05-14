@@ -111,7 +111,10 @@
 </div>
 
 <script>
-const ASSET = '../phaser/public/assets/tiles/';
+// Sur GitHub Pages, les tiles sont dans max-adventure/ (Phaser dist)
+// En local (file:// ou localhost), elles sont dans ../phaser/public/assets/tiles/
+const isPages = location.hostname.endsWith('.github.io') || location.hostname.endsWith('.pages.dev');
+const ASSET = isPages ? 'max-adventure/assets/tiles/' : '../phaser/public/assets/tiles/';
 
 // Categories - tiles SIMPLES adaptees enfant 4 ans
 // Toutes 1x1, focalise sur les briques de base

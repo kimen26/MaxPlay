@@ -56,9 +56,10 @@
 
 | Métrique | Valeur | Source |
 |----------|--------|--------|
-| MJ déployés au menu | **22 actifs** (mj-01, mj-04–06, mj-08–09, mj-11–13a/b/c, mj-14–20, max-adventure, mj-pose-tiles) | `memory/state.md` |
+| MJ déployés au menu | **23 actifs** (mj-01, mj-04–06, mj-08–09, mj-11–13a/b/c, mj-14–21, max-adventure, mj-pose-tiles) | `memory/state.md` |
 | MJ retirés du menu | **4 consolidés** (mj-02, mj-03, mj-07, mj-10) | `memory/state.md` |
-| Recettes tile validées | **13** (routes, virages 4, carrefour, rond-point, quartier, parking, voie bus, passages piétons) | `web/tile-tools/recipes/` |
+| Recettes tile post-v3 figées | **20** (routes h/v × 3 générations, virages × 4, carrefour × 2, rond-point, quartier, parking, voie bus, passages piétons × 2, refs papa × 3) | `web/tile-tools/recipes/` |
+| Fichiers scripts tile (all) | **30** (20 figées + debug, renders, archives) | `web/tile-tools/recipes/` + `scripts/` |
 | Référence canonique virages | `test_ref_papa_4virages.py` (14×14 compo Papa Yann tile-picker) | `web/tile-tools/recipes/` |
 | Couleurs RATP IDFM | 26 lignes actives + 362 référencées | `docs/ratp-colors.json` |
 | Tiles LimeZu inventoriées | 9811 (3040 unitaires + 6473 sprites + 298 planches) | `web/tile-tools/build_tile_picker_data.py` |

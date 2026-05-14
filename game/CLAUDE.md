@@ -99,7 +99,7 @@ GitHub Pages → `kimen26.github.io/MaxPlay/`
 
 CI : [`../.github/workflows/deploy.yml`](../.github/workflows/deploy.yml) (assemble dans `_site/` gitignored).
 
-**22 mini-jeux HTML actifs** (MJ-02/03/07/10 retirés du menu). Bugs critiques : voir [`memory/state.md`](memory/state.md).
+**23 mini-jeux HTML actifs** (MJ-02/03/07/10 retirés du menu). Bugs critiques : voir [`memory/state.md`](memory/state.md).
 
 ---
 

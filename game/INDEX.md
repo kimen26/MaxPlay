@@ -11,9 +11,9 @@
 game/
 ├── INDEX.md              ← ce fichier (carte d'entrée)
 ├── EQUIPE.md             ← 🆕 organigramme complet équipe (10 agents + 3 Phase 2)
-├── web/                  ← 22 mini-jeux HTML vanilla + mj-pose-tiles + tile-tools
+├── web/                  ← 23 mini-jeux HTML vanilla + mj-pose-tiles + tile-tools
 │   ├── index.html        ← menu
-│   ├── mj-XX.html        ← mini-jeux (22 actifs)
+│   ├── mj-XX.html        ← mini-jeux (23 actifs)
 │   ├── mj-pose-tiles.html ← mini-jeu kids tileset
 │   ├── js/               ← bus-svg.js, data.js, tracker.js, sounds.js, victory-sounds.js
 │   ├── tools/            ← hub : tile-picker, tile-library-v3, mockups-routes, brick-explorer

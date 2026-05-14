@@ -16,7 +16,7 @@ type: project
 
 ## État déploiement (mis à jour à chaque ajout/retrait MJ)
 
-**22 jeux actifs** : mj-01, mj-04–06, mj-08–09, mj-11–13 (a/b/c), mj-14–20, max-adventure, **mj-pose-tiles** (kids 2026-05-10)
+**23 jeux actifs** : mj-01, mj-04–06, mj-08–09, mj-11–13 (a/b/c), mj-14–21, max-adventure, **mj-pose-tiles** (kids 2026-05-10)
 
 **Retirés du menu** : mj-02, mj-03, mj-07, mj-10 (consolidés)
 

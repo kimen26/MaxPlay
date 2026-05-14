@@ -205,8 +205,8 @@
   <script src="js/data.js"></script>
   <script src="js/sounds.js"></script>
   <script>
-  // 8 défis — uniquement couleurs pures ou mélanges à 2 composantes (jamais 3 primaires ensemble)
-  // Chaque recette : r+j+b+w = 4 doses au total
+  // 12 défis — purs, mélanges 2-couleurs, couleurs claires avec blanc
+  // Recette : r+j+b+w = 4 doses au total
   const DEFIS = [
     { r:4, j:0, b:0, w:0, hex:'#E8192C', label:'rouge',      num:'RER A', textColor:'#fff' },
     { r:0, j:4, b:0, w:0, hex:'#FFCD00', label:'jaune',      num:'1',     textColor:'#333' },
@@ -216,6 +216,10 @@
     { r:2, j:0, b:2, w:0, hex:'#62259D', label:'violet',     num:'14',    textColor:'#fff' },
     { r:2, j:0, b:0, w:2, hex:'#F38C95', label:'rose',       num:'4',     textColor:'#333' },
     { r:0, j:1, b:3, w:0, hex:'#00AACC', label:'turquoise',  num:'380',   textColor:'#fff' },
+    { r:0, j:0, b:3, w:1, hex:'#87CEEB', label:'bleu ciel',  num:'13',    textColor:'#333' },
+    { r:0, j:2, b:0, w:2, hex:'#FFE680', label:'crème',      num:'57',    textColor:'#333' },
+    { r:1, j:0, b:1, w:2, hex:'#B994B4', label:'lavande',    num:'8',     textColor:'#333' },
+    { r:1, j:3, b:0, w:0, hex:'#FFAA00', label:'ambre',      num:'6',     textColor:'#333' },
   ];
 
   // Table de reconnaissance des mélanges (4 dimensions : r, j, b, w)
@@ -229,6 +233,9 @@
     { pr:0.5,  pj:0,    pb:0.5,  pw:0,    hex:'#62259D', label:'violet' },
     { pr:0.5,  pj:0,    pb:0,    pw:0.5,  hex:'#F38C95', label:'rose' },
     { pr:0,    pj:0.25, pb:0.75, pw:0,    hex:'#00AACC', label:'turquoise' },
+    { pr:0,    pj:0,    pb:0.75, pw:0.25, hex:'#87CEEB', label:'bleu ciel' },
+    { pr:0,    pj:0.5,  pb:0,    pw:0.5,  hex:'#FFE680', label:'crème' },
+    { pr:0.25, pj:0,    pb:0.25, pw:0.5,  hex:'#B994B4', label:'lavande' },
     { pr:0.25, pj:0.75, pb:0,    pw:0,    hex:'#FFAA00', label:'ambre' },
   ];
 
@@ -335,7 +342,15 @@
     const tot = mixedCounts.r + mixedCounts.j + mixedCounts.b + mixedCounts.w;
     if (tot === 0) return false;
     const pr = mixedCounts.r / tot, pj = mixedCounts.j / tot, pb = mixedCounts.b / tot, pw = mixedCounts.w / tot;
-    return Math.hypot(pr - defi.r/4, pj - defi.j/4, pb - defi.b/4, pw - defi.w/4) < 0.18;
+    return Math.hypot(pr - defi.r/4, pj - defi.j/4, pb - defi.b/4, pw - defi.w/4) < 0.28;
+  }
+
+  function isProche() {
+    const tot = mixedCounts.r + mixedCounts.j + mixedCounts.b + mixedCounts.w;
+    if (tot === 0) return false;
+    const pr = mixedCounts.r / tot, pj = mixedCounts.j / tot, pb = mixedCounts.b / tot, pw = mixedCounts.w / tot;
+    const d = Math.hypot(pr - defi.r/4, pj - defi.j/4, pb - defi.b/4, pw - defi.w/4);
+    return d >= 0.20 && d < 0.28;
   }
 
   // ── RENDUS ────────────────────────────────────────────────────────
@@ -467,8 +482,11 @@
     solved++;
     renderProgress();
     playKlaxon();
-    document.getElementById('ov-title').textContent = 'Super ! 🎉';
-    document.getElementById('ov-text').textContent  = `Le bus ${defi.num} est ${defi.label} !`;
+    const proche = isProche();
+    document.getElementById('ov-title').textContent = proche ? 'Presque parfait ! 🌟' : 'Super ! 🎉';
+    document.getElementById('ov-text').textContent  = proche
+      ? `Ta couleur était déjà bonne ! Le bus ${defi.num} est ${defi.label} !`
+      : `Le bus ${defi.num} est ${defi.label} !`;
     document.getElementById('overlay').classList.add('show');
   }
 

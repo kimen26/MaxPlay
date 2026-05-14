@@ -83,6 +83,7 @@ html, body {
 }
 .card-name { font-size:0.85rem; font-weight:900; color:#fff; text-align:center; margin-bottom:2px; }
 .card-regime { font-size:0.68rem; color:rgba(255,255,255,0.55); text-align:center; }
+.card-region { font-size:0.62rem; color:rgba(255,255,255,0.38); text-align:center; margin-top:2px; }
 .card-bar { position:absolute; bottom:0; left:0; right:0; height:3px; }
 
 /* ══════════════ FICHE DINO ══════════════ */
@@ -358,9 +359,10 @@ function buildGrid(catId) {
     const card = document.createElement('div');
     card.className = 'dino-card';
     card.innerHTML = `
-      <img class="card-img" src="img/dinos/${d.png}" alt="${d.name}" onerror="this.style.display='none'">
+      <img class="card-img" src="img/dinos/${d.png}" alt="${d.name}" loading="lazy" onerror="this.style.display='none'">
       <div class="card-name">${d.name}</div>
       <div class="card-regime">${d.regime}</div>
+      <div class="card-region">📍 ${d.region}</div>
       <div class="card-bar" style="background:${cat.color}"></div>
     `;
     card.addEventListener('click', () => {

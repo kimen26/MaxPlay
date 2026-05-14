@@ -53,7 +53,7 @@ html, body {
 .cat-card:active { transform:scale(0.94); }
 .cat-emoji { font-size:2.8rem; margin-bottom:8px; line-height:1; }
 .cat-label { font-size:0.95rem; font-weight:900; text-align:center; color:#fff; text-shadow:0 1px 4px rgba(0,0,0,0.5); }
-.cat-count { margin-top:4px; font-size:0.72rem; color:rgba(255,255,255,0.7); font-weight:700; }
+.cat-count { display:none; }
 
 /* ══════════════ GRILLE DINOS ══════════════ */
 #grid-scroll {
@@ -183,20 +183,47 @@ html, body {
 }
 .gallery-thumb:active { opacity:0.7; }
 
-/* Lightbox */
-#lightbox {
+/* Carousel plein écran */
+#carousel {
   display:none; position:fixed; inset:0; z-index:100;
-  background:rgba(0,0,0,0.92); align-items:center; justify-content:center;
-  padding:20px;
+  background:rgba(0,0,0,0.96); flex-direction:column;
+  align-items:center; justify-content:center;
 }
-#lightbox.open { display:flex; }
-#lightbox img { max-width:100%; max-height:80dvh; border-radius:12px; object-fit:contain; }
-#lightbox-close {
+#carousel.open { display:flex; }
+#carousel-track {
+  display:flex; align-items:center;
+  width:100%; overflow-x:auto; scroll-snap-type:x mandatory;
+  scroll-behavior:smooth; -webkit-overflow-scrolling:touch;
+  padding:0 16px; gap:16px;
+}
+#carousel-track::-webkit-scrollbar { display:none; }
+.carousel-slide {
+  flex-shrink:0; scroll-snap-align:center;
+  width:calc(100vw - 32px); display:flex;
+  align-items:center; justify-content:center;
+}
+.carousel-slide img {
+  max-width:100%; max-height:72dvh; border-radius:14px;
+  object-fit:contain;
+}
+#carousel-label {
+  margin-top:14px; font-size:0.9rem; font-weight:700;
+  color:rgba(255,255,255,0.6); text-align:center;
+}
+#carousel-dots {
+  display:flex; gap:7px; margin-top:10px; justify-content:center;
+}
+.c-dot {
+  width:8px; height:8px; border-radius:50%;
+  background:rgba(255,255,255,0.25); transition:background 0.2s;
+}
+.c-dot.active { background:#ffe066; }
+#carousel-close {
   position:absolute; top:14px; right:14px;
   background:rgba(255,255,255,0.15); border:none; border-radius:50%;
-  color:#fff; font-size:1.4rem; width:40px; height:40px; cursor:pointer;
+  color:#fff; font-size:1.4rem; width:44px; height:44px; cursor:pointer;
   display:flex; align-items:center; justify-content:center;
-  font-weight:900; font-family:'Nunito',sans-serif;
+  font-weight:900; font-family:'Nunito',sans-serif; touch-action:manipulation;
 }
 
 /* Speech pulse */
@@ -241,10 +268,12 @@ html, body {
   <div id="fiche-scroll"></div>
 </div>
 
-<!-- Lightbox -->
-<div id="lightbox" onclick="closeLightbox()">
-  <button id="lightbox-close" onclick="closeLightbox()">✕</button>
-  <img id="lightbox-img" src="" alt="">
+<!-- Carousel plein écran -->
+<div id="carousel">
+  <button id="carousel-close" onclick="closeCarousel()">✕</button>
+  <div id="carousel-track"></div>
+  <div id="carousel-label"></div>
+  <div id="carousel-dots"></div>
 </div>
 
 <script src="js/dinos-data.js"></script>
@@ -304,14 +333,12 @@ function buildMenu() {
   const el = document.getElementById('menu-scroll');
   el.innerHTML = '';
   DINO_CATEGORIES.forEach(cat => {
-    const count = DINOS.filter(d => d.cat === cat.id).length;
     const card = document.createElement('div');
     card.className = 'cat-card';
     card.style.background = cat.bg;
     card.innerHTML = `
       <div class="cat-emoji">${cat.emoji}</div>
       <div class="cat-label">${cat.label}</div>
-      <div class="cat-count">${count} dinos</div>
     `;
     card.addEventListener('click', () => {
       speakText(cat.label);
@@ -351,8 +378,7 @@ function buildGrid(catId) {
 function speakCatIntro() {
   const cat = DINO_CATEGORIES.find(c => c.id === currentCatId);
   if (!cat) return;
-  const count = DINOS.filter(d => d.cat === currentCatId).length;
-  speakText(cat.label + ' ! ' + count + ' dinosaures. Tape sur un dino pour tout savoir !');
+  speakText(cat.label + ' ! Tape sur un dino pour tout savoir !');
 }
 
 /* ── Build fiche ── */
@@ -477,10 +503,14 @@ function buildFiche(d) {
     ${extras.length ? buildGalleryHTML(extras, d.name) : ''}
   `;
 
-  // Lightbox listeners
-  scroll.querySelectorAll('.gallery-thumb').forEach(img => {
-    img.addEventListener('click', () => openLightbox(img.src));
-  });
+  // Carousel listeners
+  const thumbs = scroll.querySelectorAll('.gallery-thumb');
+  if (thumbs.length) {
+    const srcs = Array.from(thumbs).map(img => ({ src: img.src, label: img.title || img.alt || '' }));
+    thumbs.forEach((img, i) => {
+      img.addEventListener('click', () => openCarousel(srcs, i));
+    });
+  }
 }
 
 function buildGalleryHTML(extras, name) {
@@ -498,13 +528,51 @@ function esc(s) {
   return (s || '').replace(/'/g, '\\\'').replace(/"/g, '&quot;');
 }
 
-/* ── Lightbox ── */
-function openLightbox(src) {
-  document.getElementById('lightbox-img').src = src;
-  document.getElementById('lightbox').classList.add('open');
+/* ── Carousel ── */
+let carouselSrcs = [];
+let carouselIdx = 0;
+
+function openCarousel(srcs, idx) {
+  carouselSrcs = srcs;
+  carouselIdx = idx;
+  const track = document.getElementById('carousel-track');
+  const dots  = document.getElementById('carousel-dots');
+  track.innerHTML = srcs.map(s =>
+    `<div class="carousel-slide"><img src="${s.src}" alt="${s.label||''}"></div>`
+  ).join('');
+  dots.innerHTML = srcs.map((_, i) =>
+    `<div class="c-dot${i===idx?' active':''}"></div>`
+  ).join('');
+  document.getElementById('carousel').classList.add('open');
+  // Scroll to initial image
+  requestAnimationFrame(() => {
+    const slide = track.children[idx];
+    if (slide) slide.scrollIntoView({ behavior:'auto', block:'nearest', inline:'center' });
+  });
+  updateCarouselLabel(idx);
+  // Track scroll to update dots
+  track.addEventListener('scroll', onCarouselScroll, { passive:true });
 }
-function closeLightbox() {
-  document.getElementById('lightbox').classList.remove('open');
+
+function onCarouselScroll() {
+  const track = document.getElementById('carousel-track');
+  const slideWidth = track.clientWidth;
+  const newIdx = Math.round(track.scrollLeft / slideWidth);
+  if (newIdx !== carouselIdx) {
+    carouselIdx = newIdx;
+    updateCarouselLabel(newIdx);
+    document.querySelectorAll('.c-dot').forEach((d,i) => d.classList.toggle('active', i===newIdx));
+  }
+}
+
+function updateCarouselLabel(idx) {
+  const src = carouselSrcs[idx];
+  document.getElementById('carousel-label').textContent = src && src.label ? src.label : '';
+}
+
+function closeCarousel() {
+  document.getElementById('carousel').classList.remove('open');
+  document.getElementById('carousel-track').removeEventListener('scroll', onCarouselScroll);
 }
 
 /* ── Extras par dino ── */

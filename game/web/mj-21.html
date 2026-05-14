@@ -242,6 +242,56 @@
   const QCOL  = { r:'#E8192C', j:'#FFCD00', b:'#003CA6', w:'#EEEEEE' };
   const QBORD = { r:'rgba(255,255,255,0.5)', j:'rgba(0,0,0,0.25)', b:'rgba(255,255,255,0.5)', w:'rgba(0,0,0,0.2)' };
 
+  // RGB composantes de chaque couleur de base (pour interpolation réelle)
+  const BASE_RGB = {
+    r: [232, 25, 44],
+    j: [255, 205, 0],
+    b: [0, 60, 166],
+    w: [238, 238, 238],
+  };
+
+  function hexToRGB(hex) {
+    const h = hex.replace('#', '');
+    return [parseInt(h.substr(0,2),16), parseInt(h.substr(2,2),16), parseInt(h.substr(4,2),16)];
+  }
+
+  function rgbToHex(r, g, b) {
+    return '#' + [r,g,b].map(v => Math.round(v).toString(16).padStart(2,'0')).join('');
+  }
+
+  function blendCounts(c) {
+    const tot = c.r + c.j + c.b + c.w;
+    if (tot === 0) return null;
+    let R=0, G=0, B=0;
+    for (const [k, cnt] of Object.entries(c)) {
+      const [cr, cg, cb] = BASE_RGB[k];
+      R += cr * cnt / tot;
+      G += cg * cnt / tot;
+      B += cb * cnt / tot;
+    }
+    return [Math.round(R), Math.round(G), Math.round(B)];
+  }
+
+  function isBrunCounts(c) {
+    const tot = c.r + c.j + c.b + c.w;
+    if (tot === 0) return false;
+    return c.r/tot > 0.18 && c.j/tot > 0.15 && c.b/tot > 0.15;
+  }
+
+  function nearestLabel(R, G, B) {
+    let best = TABLE[0], bestD = Infinity;
+    for (const x of TABLE) {
+      const [xR,xG,xB] = hexToRGB(x.hex);
+      const d = Math.sqrt((R-xR)**2 + (G-xG)**2 + (B-xB)**2);
+      if (d < bestD) { bestD = d; best = x; }
+    }
+    return best.label;
+  }
+
+  function rgbDist(c1, c2) {
+    return Math.sqrt(((c1[0]-c2[0])/255)**2 + ((c1[1]-c2[1])/255)**2 + ((c1[2]-c2[2])/255)**2) / Math.sqrt(3);
+  }
+
   function shuffle(arr) {
     const a = [...arr];
     for (let i = a.length - 1; i > 0; i--) {
@@ -327,30 +377,28 @@
   function calcMelange(c) {
     const tot = c.r + c.j + c.b + c.w;
     if (tot === 0) return null;
-    const pr = c.r / tot, pj = c.j / tot, pb = c.b / tot, pw = c.w / tot;
-    // Brun : 3 primaires en proportion significative
-    if (pr > 0.18 && pj > 0.15 && pb > 0.15) return 'BRUN';
-    let best = TABLE[0], bestD = Infinity;
-    for (const x of TABLE) {
-      const d = Math.hypot(pr - x.pr, pj - x.pj, pb - x.pb, pw - x.pw);
-      if (d < bestD) { bestD = d; best = x; }
-    }
-    return best;
+    if (isBrunCounts(c)) return 'BRUN';
+    const rgb = blendCounts(c);
+    const hex = rgbToHex(rgb[0], rgb[1], rgb[2]);
+    const label = nearestLabel(rgb[0], rgb[1], rgb[2]);
+    return { hex, label };
   }
 
   function isVictoire() {
     const tot = mixedCounts.r + mixedCounts.j + mixedCounts.b + mixedCounts.w;
     if (tot === 0) return false;
-    const pr = mixedCounts.r / tot, pj = mixedCounts.j / tot, pb = mixedCounts.b / tot, pw = mixedCounts.w / tot;
-    return Math.hypot(pr - defi.r/4, pj - defi.j/4, pb - defi.b/4, pw - defi.w/4) < 0.28;
+    const actual = blendCounts(mixedCounts);
+    const ideal  = blendCounts({ r: defi.r, j: defi.j, b: defi.b, w: defi.w });
+    return rgbDist(actual, ideal) < 0.15;
   }
 
   function isProche() {
     const tot = mixedCounts.r + mixedCounts.j + mixedCounts.b + mixedCounts.w;
     if (tot === 0) return false;
-    const pr = mixedCounts.r / tot, pj = mixedCounts.j / tot, pb = mixedCounts.b / tot, pw = mixedCounts.w / tot;
-    const d = Math.hypot(pr - defi.r/4, pj - defi.j/4, pb - defi.b/4, pw - defi.w/4);
-    return d >= 0.20 && d < 0.28;
+    const actual = blendCounts(mixedCounts);
+    const ideal  = blendCounts({ r: defi.r, j: defi.j, b: defi.b, w: defi.w });
+    const d = rgbDist(actual, ideal);
+    return d >= 0.08 && d < 0.15;
   }
 
   // ── RENDUS ────────────────────────────────────────────────────────
@@ -413,6 +461,15 @@
   }
 
   // ── ACTIONS ───────────────────────────────────────────────────────
+  function livePreview() {
+    return calcMelange({
+      r: mixedCounts.r + counts.r,
+      j: mixedCounts.j + counts.j,
+      b: mixedCounts.b + counts.b,
+      w: mixedCounts.w + counts.w,
+    });
+  }
+
   function addQuart(type) {
     if (victoire) return;
     counts[type]++;
@@ -422,7 +479,7 @@
       counts[removed] = Math.max(0, counts[removed] - 1);
     }
     renderTube();
-    renderMixPreview(mixedResult);
+    renderMixPreview(livePreview());
   }
 
   function enleverDernier() {
@@ -431,7 +488,7 @@
     counts[q] = Math.max(0, counts[q] - 1);
     victoire = false;
     renderTube();
-    renderMixPreview(mixedResult);
+    renderMixPreview(livePreview());
   }
 
   function mixer() {

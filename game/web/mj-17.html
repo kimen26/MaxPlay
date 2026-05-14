@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
-<title>MJ-17 â€“ Le garage</title>
+<title>MJ-17 – Le garage</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
 <style>
 * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none; }
@@ -35,7 +35,7 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   background:linear-gradient(180deg, #1e3a5f 0%, #2a5f7a 45%, #4a7a52 45%, #3a5a3a 100%);
 }
 
-/* Ã‰tagÃ¨re d'outils â€” 2 rangÃ©es de 5, alignÃ©es */
+/* Étagère d'outils — 2 rangées de 5, alignées */
 #shelf {
   flex-shrink:0; display:grid; grid-template-columns:repeat(5,1fr);
   gap:6px; padding:8px 10px;
@@ -78,7 +78,7 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   flex:1; position:relative; overflow:hidden;
 }
 
-/* Bus actor â€” stationary (cible de drop) */
+/* Bus actor — stationary (cible de drop) */
 .bus-actor {
   position:absolute;
   transition:left 0.3s, top 0.3s;
@@ -86,7 +86,7 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 .bus-actor.hover-drop { transform:scale(1.05); filter:brightness(1.15); }
 .bus-actor svg { display:block; }
 
-/* Outil flottant (clone d'icÃ´ne station) */
+/* Outil flottant (clone d'icône station) */
 .tool-ghost {
   position:fixed; pointer-events:none; z-index:50;
   font-size:3rem; transform:translate(-50%,-50%);
@@ -133,7 +133,7 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   100% { opacity:0; transform:translate(-50%,-30px) scale(1.2); }
 }
 
-/* â”€â”€ Overlays de pannes â”€â”€ */
+/* ── Overlays de pannes ── */
 .fuel-gauge {
   position:absolute; top:-18px; right:-4px;
   width:42px; height:14px;
@@ -178,10 +178,10 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   66% { transform:translate(-6px,4px); }
 }
 
-/* Bus penchÃ© (pneus Ã  plat) */
+/* Bus penché (pneus à plat) */
 .tilt { transform:rotate(-3deg) translateY(4px); transition:transform 0.3s; }
 
-/* Vitre cassÃ©e */
+/* Vitre cassée */
 .broken-glass {
   position:absolute; pointer-events:none;
   animation:glassShimmer 1.3s ease-in-out infinite;
@@ -240,23 +240,23 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 <body data-mp-intro-emoji="🔧" data-mp-intro-title="Le garage" data-mp-intro-hint="Répare le bus !">
 <div id="app">
   <div id="hdr">
-    <a href="index.html">â†</a>
-    <div id="htitle">ðŸ”§ Le garage</div>
-    <div id="score-badge">â­ <span id="score">0</span></div>
+    <a href="index.html">←</a>
+    <div id="htitle">🔧 Le garage</div>
+    <div id="score-badge">⭐ <span id="score">0</span></div>
   </div>
 
   <div id="main">
     <div id="shelf">
-      <div class="tool" data-station="essence">â›½</div>
-      <div class="tool" data-station="lavage">ðŸ§½</div>
-      <div class="tool" data-station="pneus">ðŸ”§</div>
-      <div class="tool" data-station="vitre">ðŸªŸ</div>
-      <div class="tool" data-station="numero">ðŸ’»</div>
-      <div class="tool" data-station="essence">ðŸ›¢ï¸</div>
-      <div class="tool" data-station="lavage">ðŸ«§</div>
-      <div class="tool" data-station="numero">ðŸ“º</div>
-      <div class="tool" data-station="pneus">ðŸ› ï¸</div>
-      <div class="tool" data-station="vitre">ðŸ”¨</div>
+      <div class="tool" data-station="essence">⛽</div>
+      <div class="tool" data-station="lavage">🧽</div>
+      <div class="tool" data-station="pneus">🔧</div>
+      <div class="tool" data-station="vitre">🪟</div>
+      <div class="tool" data-station="numero">💻</div>
+      <div class="tool" data-station="essence">🛢️</div>
+      <div class="tool" data-station="lavage">🫧</div>
+      <div class="tool" data-station="numero">📺</div>
+      <div class="tool" data-station="pneus">🛠️</div>
+      <div class="tool" data-station="vitre">🔨</div>
     </div>
 
     <div id="bus-zone"></div>
@@ -273,12 +273,12 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   <script src="js/intro-splash.js"></script>
   <script src="js/back-button.js"></script>
 <script>
-// â”€â”€â”€ Lignes : sous-ensemble connu de Max, couleurs IDFM canoniques via data.js â”€â”€â”€
+// ─── Lignes : sous-ensemble connu de Max, couleurs IDFM canoniques via data.js ───
 const MJ17_NUMS = ['162', '172', '185', '186', '323', '131', '180', 'V7'];
 const LIGNES_MJ17 = LIGNES.filter(l => MJ17_NUMS.includes(l.num));
 
 const PANNES = ['essence', 'lavage', 'numero', 'pneus', 'couleur', 'vitre'];
-// L'ordinateur ðŸ’» rÃ©pare deux types de pannes : numÃ©ro masquÃ© ET mauvaise couleur
+// L'ordinateur 💻 répare deux types de pannes : numéro masqué ET mauvaise couleur
 const TOOL_FIXES = {
   essence: ['essence'],
   lavage:  ['lavage'],
@@ -307,7 +307,7 @@ function centerPos() {
   };
 }
 
-// â”€â”€â”€ Bus factory â”€â”€â”€
+// ─── Bus factory ───
 function makeBus(pannes) {
   const ligne = LIGNES_MJ17[Math.floor(Math.random() * LIGNES_MJ17.length)];
   const wrapper = document.createElement('div');
@@ -317,8 +317,8 @@ function makeBus(pannes) {
   wrapper.dataset.panne = pannes.join(','); // pour debug/css
 
   // SVG : carrosserie turquoise + couleur IDFM sur destination
-  // Pour "numero", numÃ©ro remplacÃ© par "?" muet
-  // Pour "couleur", la fenÃªtre destination prend une couleur d'une autre ligne (fausse)
+  // Pour "numero", numéro remplacé par "?" muet
+  // Pour "couleur", la fenêtre destination prend une couleur d'une autre ligne (fausse)
   const hasNumero = pannes.includes('numero');
   const hasCouleur = pannes.includes('couleur');
   let displayColor = ligne.color;
@@ -338,11 +338,11 @@ function makeBus(pannes) {
   if (hasCouleur) {
     const warn = document.createElement('div');
     warn.className = 'color-warn';
-    warn.textContent = 'âš ï¸';
+    warn.textContent = '⚠️';
     wrapper.appendChild(warn);
   }
 
-  // Overlays visuels (tous affichÃ©s simultanÃ©ment si plusieurs pannes)
+  // Overlays visuels (tous affichés simultanément si plusieurs pannes)
   if (pannes.includes('essence')) {
     const g = document.createElement('div');
     g.className = 'fuel-gauge';
@@ -356,7 +356,7 @@ function makeBus(pannes) {
     });
     const fly = document.createElement('div');
     fly.className = 'fly';
-    fly.textContent = 'ðŸª°';
+    fly.textContent = '🪰';
     wrapper.appendChild(fly);
   }
   if (pannes.includes('vitre')) {
@@ -405,7 +405,7 @@ function placeBusCenter(el) {
 }
 
 function nextPannes() {
-  // 1 panne par dÃ©faut, 35% de chance d'en avoir 2 diffÃ©rentes
+  // 1 panne par défaut, 35% de chance d'en avoir 2 différentes
   const first = PANNES[Math.floor(Math.random() * PANNES.length)];
   if (Math.random() < DOUBLE_PANNE_PCT) {
     const others = PANNES.filter(p => p !== first);
@@ -425,7 +425,7 @@ function spawnBus() {
   return bus;
 }
 
-// â”€â”€â”€ Patience (bus part tout seul si on est trop lent) â”€â”€â”€
+// ─── Patience (bus part tout seul si on est trop lent) ───
 function startPatience(bus) {
   const bar = document.createElement('div');
   bar.className = 'patience';
@@ -450,7 +450,7 @@ function stopPatience(bus) {
   if (bus._patienceTick) { clearInterval(bus._patienceTick); bus._patienceTick = null; }
 }
 
-// â”€â”€â”€ Drag & drop : depuis Ã©tagÃ¨re d'outils vers bus â”€â”€â”€
+// ─── Drag & drop : depuis étagère d'outils vers bus ───
 tools.forEach(t => attachToolDrag(t));
 
 function attachToolDrag(tool) {
@@ -515,7 +515,7 @@ function clearBusHover() {
   busZone.querySelectorAll('.bus-actor').forEach(b => b.classList.remove('hover-drop'));
 }
 
-// â”€â”€â”€ Drop handling â”€â”€â”€
+// ─── Drop handling ───
 function handleDrop(bus, toolType, station) {
   const fixables = TOOL_FIXES[toolType] || [toolType];
   const matched = (bus._pannes || []).find(p => fixables.includes(p));
@@ -541,18 +541,18 @@ function correctDrop(bus, station, panne) {
   if (typeof sndDing === 'function') sndDing();
   if (typeof Tracker !== 'undefined') Tracker.logAnswer(true);
 
-  // Retire la panne rÃ©parÃ©e
+  // Retire la panne réparée
   bus._pannes = bus._pannes.filter(p => p !== panne);
   setTimeout(() => repairAnim(bus, panne), 100);
 
   if (bus._pannes.length === 0) {
-    // Toutes les pannes sont rÃ©parÃ©es
+    // Toutes les pannes sont réparées
     bus._done = true;
     stopPatience(bus);
     if (bus._patienceBar) bus._patienceBar.remove();
     setTimeout(() => finishBus(bus), 1400);
   } else {
-    // Patience bonus pour la 2Ã¨me panne
+    // Patience bonus pour la 2ème panne
     bus._patienceStart = performance.now();
   }
 }
@@ -564,7 +564,7 @@ function leaveUnserved(bus) {
   if (bus._patienceBar) bus._patienceBar.remove();
   const sad = document.createElement('div');
   sad.className = 'sad-emote';
-  sad.textContent = 'ðŸ˜¢';
+  sad.textContent = '😢';
   bus.appendChild(sad);
   if (typeof sndBuzz === 'function') sndBuzz();
   bus.classList.add('bus-leave-sad');
@@ -578,7 +578,7 @@ function repairAnim(bus, panne) {
     for (let i = 0; i < 6; i++) {
       const sp = document.createElement('div');
       sp.className = 'sparkle';
-      sp.textContent = 'âœ¨';
+      sp.textContent = '✨';
       sp.style.left = (30 + i*18) + 'px';
       sp.style.top = '20px';
       sp.style.setProperty('--dx', ((Math.random()-0.5)*40) + 'px');
@@ -588,13 +588,13 @@ function repairAnim(bus, panne) {
   } else if (panne === 'essence') {
     const g = bus.querySelector('.fuel-gauge');
     if (g) {
-      // La classe .filled passe width:15% â†’ 100% via ::before transition, sans race condition
+      // La classe .filled passe width:15% → 100% via ::before transition, sans race condition
       g.classList.add('filled');
       // Petites gouttes qui tombent pour montrer qu'on remplit
       for (let i = 0; i < 5; i++) {
         const d = document.createElement('div');
         d.className = 'sparkle';
-        d.textContent = 'ðŸ’§';
+        d.textContent = '💧';
         d.style.left = (20 + i * 6) + 'px';
         d.style.top = '-10px';
         d.style.setProperty('--dx', ((Math.random()-0.5)*20) + 'px');
@@ -603,7 +603,7 @@ function repairAnim(bus, panne) {
       }
     }
   } else if (panne === 'numero') {
-    // Restaurer le numÃ©ro avec la vraie couleur de la ligne d'origine
+    // Restaurer le numéro avec la vraie couleur de la ligne d'origine
     const ligne = bus._ligne;
     const svg = bus.querySelector('svg');
     const numText = svg.querySelector('text');
@@ -612,7 +612,7 @@ function repairAnim(bus, panne) {
       numText.setAttribute('fill', ligne.textColor);
     }
   } else if (panne === 'couleur') {
-    // Corriger la couleur de la fenÃªtre destination vers la vraie couleur
+    // Corriger la couleur de la fenêtre destination vers la vraie couleur
     const ligne = bus._ligne;
     const svg = bus.querySelector('svg');
     const destRect = svg.querySelector('rect[x="84"]');
@@ -632,7 +632,7 @@ function repairAnim(bus, panne) {
     for (let i = 0; i < 5; i++) {
       const sp = document.createElement('div');
       sp.className = 'sparkle';
-      sp.textContent = 'âœ¨';
+      sp.textContent = '✨';
       sp.style.left = (10 + i*6) + 'px';
       sp.style.top = '12px';
       sp.style.setProperty('--dx', ((Math.random()-0.5)*30) + 'px');
@@ -667,7 +667,7 @@ function finishBus(bus) {
   score++;
   scoreEl.textContent = score;
   fireConfetti(bus);
-  // Petit bruit rigolo de moteur qui dÃ©marre quand le bus part (type Trilibus)
+  // Petit bruit rigolo de moteur qui démarre quand le bus part (type Trilibus)
   if (typeof sndMoteur === 'function') sndMoteur();
   if (typeof sndKlaxon === 'function') setTimeout(() => sndKlaxon(), 250);
 
@@ -686,12 +686,12 @@ function showEnd() {
   const ov = document.createElement('div');
   ov.style.cssText = 'position:fixed;inset:0;background:rgba(13,27,42,0.92);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;z-index:100;padding:20px;';
   ov.innerHTML = `
-    <div style="font-size:4rem;">ðŸŽ‰</div>
+    <div style="font-size:4rem;">🎉</div>
     <div style="font-size:1.6rem;font-weight:900;text-align:center;">Bravo !</div>
     <div style="font-size:1.2rem;font-weight:700;">Score : ${score} / ${TOTAL_BUS}</div>
     <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;">
-      <button id="replay" style="background:#ffe066;color:#1a1a1a;border:none;border-radius:14px;padding:12px 22px;font-size:1.1rem;font-weight:900;font-family:inherit;cursor:pointer;">ðŸ” Rejouer</button>
-      <button id="menu" style="background:rgba(255,255,255,0.15);color:#fff;border:2px solid rgba(255,255,255,0.3);border-radius:14px;padding:12px 22px;font-size:1.1rem;font-weight:900;font-family:inherit;cursor:pointer;">ðŸ  Menu</button>
+      <button id="replay" style="background:#ffe066;color:#1a1a1a;border:none;border-radius:14px;padding:12px 22px;font-size:1.1rem;font-weight:900;font-family:inherit;cursor:pointer;">🔁 Rejouer</button>
+      <button id="menu" style="background:rgba(255,255,255,0.15);color:#fff;border:2px solid rgba(255,255,255,0.3);border-radius:14px;padding:12px 22px;font-size:1.1rem;font-weight:900;font-family:inherit;cursor:pointer;">🏠 Menu</button>
     </div>
   `;
   document.body.appendChild(ov);
@@ -719,7 +719,7 @@ function fireConfetti(bus) {
     busZone.appendChild(c);
     setTimeout(() => c.remove(), 1400);
   }
-  const emojis = ['âœ¨','â­','ðŸŽŠ','ðŸ’«','ðŸŽ‰'];
+  const emojis = ['✨','⭐','🎊','💫','🎉'];
   for (let i = 0; i < 8; i++) {
     const s = document.createElement('div');
     s.className = 'sparkle';
@@ -732,7 +732,7 @@ function fireConfetti(bus) {
   }
 }
 
-// â”€â”€â”€ Start â”€â”€â”€
+// ─── Start ───
 window.addEventListener('load', () => {
   spawnBus();
 });

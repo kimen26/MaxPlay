@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
-<title>MJ-13b â€“ Monte dans le bon bus !</title>
+<title>MJ-13b – Monte dans le bon bus !</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
@@ -67,8 +67,8 @@ html, body {
 <body data-mp-intro-emoji="🚍" data-mp-intro-title="Combien montent ?" data-mp-intro-hint="Touche le bon nombre">
 
 <div id="hdr">
-  <button onclick="location.href='index.html'">â† Retour</button>
-  <span style="font-weight:900;color:#fff;">ðŸšŒ Monte dans le bus !</span>
+  <button onclick="location.href='index.html'">← Retour</button>
+  <span style="font-weight:900;color:#fff;">🚌 Monte dans le bus !</span>
   <div id="score">0 / 0</div>
 </div>
 
@@ -80,7 +80,7 @@ html, body {
 </div>
 
 <div id="q-bar">
-  <div class="q-text" id="q-text">Chargementâ€¦</div>
+  <div class="q-text" id="q-text">Chargement…</div>
 </div>
 
 <script src="js/bus-svg.js"></script>
@@ -93,7 +93,7 @@ html, body {
   <script src="js/intro-splash.js"></script>
   <script src="js/back-button.js"></script>
 <script>
-/* â•â• LED â•â• */
+/* ══ LED ══ */
 const DIGITS={
   '0':[1,1,1,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,1,1,1],
   '1':[0,0,1,0,0,1,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,0,1,1,1],
@@ -115,7 +115,7 @@ function ledSVG(ch,sq){
   return `<svg width="${sq}" height="${sq}" viewBox="0 0 ${sq} ${sq}" xmlns="http://www.w3.org/2000/svg" style="display:block;"><g transform="translate(${((sq-W)/2).toFixed(1)},${((sq-H)/2).toFixed(1)})">${d}</g></svg>`;
 }
 
-/* â•â• DIMS â•â• */
+/* ══ DIMS ══ */
 let FW,FCH,FP,FG,POLE_W,POLE_MARGIN,TOTAL_W,HDR_R;
 function calcDims(){
   const sw=window.innerWidth;
@@ -128,7 +128,7 @@ function calcDims(){
   TOTAL_W=FW+POLE_MARGIN+POLE_W+POLE_MARGIN+FW;
 }
 
-/* â•â• FICHE HTML â•â• */
+/* ══ FICHE HTML ══ */
 function ficheHTML(line,sec,isTarget){
   const iw=FW-FP*2,cz=Math.floor(iw*.667),mz=iw-cz,sq=Math.floor((cz-FG*2)/3);
   const s=Math.max(0,Math.round(Math.min(sec,99)));
@@ -165,7 +165,7 @@ function updateFicheTimer(line,sec){
   if(bot)bot.innerHTML=`${cell(c1)}${cell(c2)}${cell(c3)}<div class="fiche-min" style="width:${mz}px;height:${sq}px;font-size:${Math.max(8,Math.round(FW*.075))}px;">min</div>`;
 }
 
-/* â•â• POTEAU SVG â•â• */
+/* ══ POTEAU SVG ══ */
 function poleHeadSVG(r){
   const cx=r+2,cy=r+2,w=(r+2)*2,h=w,ly=cy+Math.round(r*.38);
   return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" xmlns="http://www.w3.org/2000/svg">
@@ -178,7 +178,7 @@ function poleHeadSVG(r){
   </svg>`;
 }
 
-/* â•â• TOUTES LES LIGNES (source: data.js / ratp-colors.json) â•â• */
+/* ══ TOUTES LES LIGNES (source: data.js / ratp-colors.json) ══ */
 const ALL_LINES=[
   {num:'162',  color:'#0064B1', textColor:'#fff'},
   {num:'172',  color:'#008C59', textColor:'#fff'},
@@ -207,7 +207,7 @@ const ALL_LINES=[
   {num:'M7',   color:'#FA9ABA', textColor:'#333'},
 ];
 
-/* â•â• Ã‰TAT â•â• */
+/* ══ ÉTAT ══ */
 const TOTAL=8;
 let lines=[],timers={};
 let targetNum='';
@@ -218,7 +218,7 @@ let qcm=null;
 function shuffle(a){return [...a].sort(()=>Math.random()-.5);}
 function updScore(){document.getElementById('score').textContent=`${score} / ${round}`;}
 
-/* â•â• PANNEAU â•â• */
+/* ══ PANNEAU ══ */
 function renderPanneau(){
   calcDims();
   const pz=document.getElementById('panel-zone');
@@ -239,7 +239,7 @@ function renderPanneau(){
     </div>`;
 }
 
-/* â•â• INIT ROUND â•â• */
+/* ══ INIT ROUND ══ */
 function initRound(){
   if(round>=TOTAL){showVictory();return;}
   answered=false;
@@ -250,7 +250,7 @@ function initRound(){
   const pool=shuffle([5,8,12,17,22,28,35,42,50]).slice(0,n);
   timers={};
   lines.forEach((l,i)=>timers[l.num]=pool[i]);
-  // Cible = alÃ©atoire parmi les lignes
+  // Cible = aléatoire parmi les lignes
   targetNum=lines[Math.floor(Math.random()*lines.length)].num;
 
   renderPanneau();
@@ -259,7 +259,7 @@ function initRound(){
   startBuses();
 }
 
-/* â•â• QUESTION â•â• */
+/* ══ QUESTION ══ */
 function renderQuestion(){
   const tl=lines.find(l=>l.num===targetNum);
   document.getElementById('q-text').innerHTML=
@@ -269,7 +269,7 @@ function renderQuestion(){
 
 function tts(t){ TTS.speak(t, { rate: 0.85, volume: 0.9 }); }
 
-/* â•â• TICK â€” toutes les 5s â•â• */
+/* ══ TICK — toutes les 5s ══ */
 function startTick(){
   if(tickId)clearInterval(tickId);
   tickId=setInterval(()=>{
@@ -288,7 +288,7 @@ function startTick(){
   },5000);
 }
 
-/* â•â• BUS â•â• */
+/* ══ BUS ══ */
 function spawnBus(){
   const road=document.getElementById('road');
   if(!road)return;
@@ -318,7 +318,7 @@ function stopAll(){
   document.querySelectorAll('.bus-anim').forEach(b=>b.remove());
 }
 
-/* â•â• INTERACTION â•â• */
+/* ══ INTERACTION ══ */
 function onFicheTap(num){
   if(answered)return;
   const el=document.getElementById(`fiche-${num}`);
@@ -343,7 +343,7 @@ function onFicheTap(num){
     const pika=new Audio('sounds/'+(['pikachu_mw38Ry2.mp3','pikachu_scream.mp3'][Math.floor(Math.random()*2)]));
     pika.volume=0.7; pika.play().catch(()=>{});
     qb.style.background='#1a4a1a';
-    qt.innerHTML=`<span style="color:#4CAF50;font-size:1.3rem;">âœ“ Bravo !</span>
+    qt.innerHTML=`<span style="color:#4CAF50;font-size:1.3rem;">✓ Bravo !</span>
       <span style="background:${tl.color};color:${tl.textColor};border-radius:8px;padding:3px 14px;font-size:1.4rem;font-weight:900;margin-left:8px;">${tl.num}</span>`;
     setTimeout(()=>{
       qb.style.background='';
@@ -362,7 +362,7 @@ function onFicheTap(num){
     playErrorSound();
     if(typeof Tracker!=='undefined')Tracker.logAnswer(false);
     qb.style.background='#4a1a1a';
-    qt.innerHTML=`<span style="color:#e53935;font-size:1rem;">C'Ã©tait le</span>
+    qt.innerHTML=`<span style="color:#e53935;font-size:1rem;">C'était le</span>
       <span style="background:${tl.color};color:${tl.textColor};border-radius:8px;padding:3px 14px;font-size:1.4rem;font-weight:900;margin-left:6px;">${tl.num}</span>`;
     setTimeout(()=>{
       qb.style.background='';
@@ -377,14 +377,14 @@ function onFicheTap(num){
   }
 }
 
-/* â•â• VICTOIRE â•â• */
+/* ══ VICTOIRE ══ */
 function showVictory(){
   stopAll();
   TTS.cancel();
   playEndSound(score,TOTAL);
   if(typeof Tracker!=='undefined')Tracker.endSession(score,TOTAL);
-  const stars=score>=7?'â­â­â­':score>=5?'â­â­':'â­';
-  const msg=score>=7?'Incroyable !':score>=5?'Bien jouÃ© !':'Continue !';
+  const stars=score>=7?'⭐⭐⭐':score>=5?'⭐⭐':'⭐';
+  const msg=score>=7?'Incroyable !':score>=5?'Bien joué !':'Continue !';
   document.getElementById('panel-zone').innerHTML='';
   document.getElementById('road').style.display='none';
   document.getElementById('q-bar').style.cssText='flex-direction:column;height:100%;min-height:auto;';
@@ -392,9 +392,9 @@ function showVictory(){
     <div style="display:flex;flex-direction:column;align-items:center;gap:16px;padding:20px;width:100%;">
       <div style="font-size:3rem;">${stars}</div>
       <div style="font-size:1.8rem;font-weight:900;color:#ffe066;">${msg}</div>
-      <div style="font-size:1.1rem;color:#fff;">${score} / ${TOTAL} bonne${score>1?'s':''} rÃ©ponse${score>1?'s':''}</div>
-      <button onclick="restart()" style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:900;padding:12px 32px;border-radius:14px;border:none;cursor:pointer;background:#ffe066;color:#111;">ðŸ”„ Rejouer</button>
-      <button onclick="location.href='index.html'" style="font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;padding:10px 24px;border-radius:12px;border:none;cursor:pointer;background:#2a2a4a;color:#fff;">â† Menu</button>
+      <div style="font-size:1.1rem;color:#fff;">${score} / ${TOTAL} bonne${score>1?'s':''} réponse${score>1?'s':''}</div>
+      <button onclick="restart()" style="font-family:'Nunito',sans-serif;font-size:1.1rem;font-weight:900;padding:12px 32px;border-radius:14px;border:none;cursor:pointer;background:#ffe066;color:#111;">🔄 Rejouer</button>
+      <button onclick="location.href='index.html'" style="font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;padding:10px 24px;border-radius:12px;border:none;cursor:pointer;background:#2a2a4a;color:#fff;">← Menu</button>
     </div>`;
 }
 function restart(){

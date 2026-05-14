@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>MJ-11 â€“ Quel pays ?</title>
+  <title>MJ-11 – Quel pays ?</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <!-- flag-icons CDN (260 drapeaux SVG) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css">
@@ -20,29 +20,24 @@
     }
 
     /* Header */
-    .game-header {
-      width: 100%;
-      max-width: 680px;
-      padding: 14px 16px 10px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .hdr {
+      display:flex; align-items:center; gap:10px;
+      padding:8px 12px; flex-shrink:0;
+      background:rgba(0,0,0,0.25);
+      border-bottom:1px solid rgba(255,255,255,0.08);
     }
-    .back-btn {
-      text-decoration: none;
-      background: rgba(255,255,255,0.15);
-      color: #fff;
-      border: none;
-      border-radius: 50%;
-      width: 44px; height: 44px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem;
-      cursor: pointer;
-      flex-shrink: 0;
+    .hdr a {
+      color:#fff; text-decoration:none; font-size:1.3rem;
+      background:rgba(255,255,255,0.12); border-radius:8px;
+      padding:4px 10px; font-weight:900; flex-shrink:0;
     }
-    .header-text { flex:1; }
-    .header-title { color:#fff; font-size:1.3rem; font-weight:900; }
-    .header-sub   { color:rgba(255,255,255,0.65); font-size:0.78rem; font-weight:700; }
+    .hdr a:active { background:rgba(255,255,255,0.25); }
+    .htitle { flex:1; font-size:1.05rem; font-weight:900; }
+    .hdr-btn {
+      background:rgba(255,255,255,0.12); border:none; border-radius:8px;
+      color:#fff; cursor:pointer; padding:4px 10px; font-size:1.2rem;
+      flex-shrink:0;
+    }
 
     /* Score */
     .score-bar {
@@ -87,10 +82,10 @@
     .bus-svg-container svg {
       filter: drop-shadow(0 6px 14px rgba(0,0,0,0.4));
     }
-    /* Flag inside bus window â€” calÃ© sur rect x=84 y=14 w=40 h=21 / viewBox 160Ã—80
+    /* Flag inside bus window — calé sur rect x=84 y=14 w=40 h=21 / viewBox 160×80
        Inset 2px pour voir le contour noir.
-       La fenÃªtre est trop large (ratio 40/21 â‰ˆ 1.9) pour un drapeau (ratio â‰ˆ 1.5).
-       â†’ fond noir + drapeau centrÃ© en object-fit:contain pour pillarbox automatique. */
+       La fenêtre est trop large (ratio 40/21 ≈ 1.9) pour un drapeau (ratio ≈ 1.5).
+       → fond noir + drapeau centré en object-fit:contain pour pillarbox automatique. */
     .flag-in-bus {
       position: absolute;
       top: calc(17.5% + 2px);
@@ -277,13 +272,10 @@
 </head>
 <body>
 
-  <div class="game-header">
-    <a href="index.html" class="back-btn">â†</a>
-    <div class="header-text">
-      <div class="header-title">ðŸŒ Quel pays ?</div>
-      <div class="header-sub">Trouve le drapeau !</div>
-    </div>
-    <button class="back-btn" onclick="speakCountry()" title="Ã‰couter le nom du pays" style="font-size:1.2rem">ðŸ”Š</button>
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">🌍 Quel pays ?</span>
+    <button class="hdr-btn" onclick="speakCountry()" title="Écouter le nom du pays">🔊</button>
   </div>
 
   <div class="score-bar" id="scoreBar"></div>
@@ -292,8 +284,8 @@
 
     <!-- Mode selector -->
     <div class="mode-row">
-      <button class="mode-btn active" id="modeKnown" onclick="setMode('known')">â­ Connus de Max</button>
-      <button class="mode-btn" id="modeAll" onclick="setMode('all')">ðŸŒ Tous les pays</button>
+      <button class="mode-btn active" id="modeKnown" onclick="setMode('known')">⭐ Connus de Max</button>
+      <button class="mode-btn" id="modeAll" onclick="setMode('all')">🌍 Tous les pays</button>
     </div>
 
     <!-- Bus avec drapeau -->
@@ -302,13 +294,13 @@
       <div class="flag-in-bus" id="flagInBus"></div>
     </div>
 
-    <!-- Bouton aide TTS â€” texte fixe, ne rÃ©vÃ¨le jamais le nom -->
+    <!-- Bouton aide TTS — texte fixe, ne révèle jamais le nom -->
     <button class="tts-btn" onclick="speakCountry()">
-      <span>ðŸ”Š</span>
-      <span>Ã‰couter</span>
+      <span>🔊</span>
+      <span>Écouter</span>
     </button>
 
-    <!-- Choix de rÃ©ponses -->
+    <!-- Choix de réponses -->
     <div class="choices" id="choices"></div>
 
   </div>
@@ -321,14 +313,14 @@
   <!-- Confettis drapeaux -->
   <canvas id="confettiCanvas"></canvas>
 
-  <!-- Ã‰cran victoire -->
+  <!-- Écran victoire -->
   <div id="victoryScreen">
-    <div class="victory-emoji" id="victoryEmoji">ðŸŒ</div>
+    <div class="victory-emoji" id="victoryEmoji">🌍</div>
     <div class="victory-title" id="victoryTitle">Bravo Max !</div>
     <div class="victory-msg" id="victoryMsg"></div>
     <div class="victory-score" id="victoryScore"></div>
     <button class="replay-btn" onclick="startGame()">Rejouer !</button>
-    <a href="index.html" style="color:rgba(255,255,255,0.6);font-size:0.9rem;font-weight:900;text-decoration:none;margin-top:-8px">â† Menu</a>
+    <a href="index.html" style="color:rgba(255,255,255,0.6);font-size:0.9rem;font-weight:900;text-decoration:none;margin-top:-8px">← Menu</a>
   </div>
 
   <script src="js/sounds.js"></script>
@@ -337,7 +329,7 @@
   <script src="js/bus-svg.js"></script>
   <script src="js/qcm-retry.js"></script>
   <script>
-    // â”€â”€â”€ DonnÃ©es pays â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Données pays ───────────────────────────────────────────────────────────
     // code ISO 3166-1 alpha-2 (pour flag-icons)
     // known: true = connu de Max (19 pays)
     const PAYS = [
@@ -345,47 +337,47 @@
       { code:'gb', nom:'Royaume-Uni',     known:true  },
       { code:'it', nom:'Italie',          known:true  },
       { code:'tn', nom:'Tunisie',         known:true  },
-      { code:'br', nom:'BrÃ©sil',          known:true  },
+      { code:'br', nom:'Brésil',          known:true  },
       { code:'ch', nom:'Suisse',          known:true  },
-      { code:'us', nom:'Ã‰tats-Unis',      known:true  },
+      { code:'us', nom:'États-Unis',      known:true  },
       { code:'cn', nom:'Chine',           known:true  },
       { code:'jp', nom:'Japon',           known:true  },
       { code:'ru', nom:'Russie',          known:true  },
       { code:'de', nom:'Allemagne',       known:true  },
-      { code:'eg', nom:'Ã‰gypte',          known:true  },
-      { code:'th', nom:'ThaÃ¯lande',       known:true  },
+      { code:'eg', nom:'Égypte',          known:true  },
+      { code:'th', nom:'Thaïlande',       known:true  },
       { code:'ma', nom:'Maroc',           known:true  },
       { code:'ar', nom:'Argentine',       known:true  },
       { code:'nl', nom:'Pays-Bas',        known:true  },
       { code:'lu', nom:'Luxembourg',      known:true  },
       { code:'kh', nom:'Cambodge',        known:true  },
       { code:'es', nom:'Espagne',         known:true  },
-      // Extra pays â€” non "connus" mais dans le pool complet
+      // Extra pays — non "connus" mais dans le pool complet
       { code:'pt', nom:'Portugal',        known:false },
       { code:'be', nom:'Belgique',        known:false },
       { code:'pl', nom:'Pologne',         known:false },
-      { code:'se', nom:'SuÃ¨de',           known:false },
-      { code:'no', nom:'NorvÃ¨ge',         known:false },
+      { code:'se', nom:'Suède',           known:false },
+      { code:'no', nom:'Norvège',         known:false },
       { code:'dk', nom:'Danemark',        known:false },
       { code:'fi', nom:'Finlande',        known:false },
       { code:'at', nom:'Autriche',        known:false },
-      { code:'gr', nom:'GrÃ¨ce',           known:false },
+      { code:'gr', nom:'Grèce',           known:false },
       { code:'tr', nom:'Turquie',         known:false },
       { code:'mx', nom:'Mexique',         known:false },
       { code:'ca', nom:'Canada',          known:false },
       { code:'au', nom:'Australie',       known:false },
       { code:'in', nom:'Inde',            known:false },
       { code:'za', nom:'Afrique du Sud',  known:false },
-      { code:'ng', nom:'NigÃ©ria',         known:false },
+      { code:'ng', nom:'Nigéria',         known:false },
       { code:'ke', nom:'Kenya',           known:false },
       { code:'gh', nom:'Ghana',           known:false },
-      { code:'sn', nom:'SÃ©nÃ©gal',         known:false },
-      { code:'ci', nom:'CÃ´te d\'Ivoire',  known:false },
+      { code:'sn', nom:'Sénégal',         known:false },
+      { code:'ci', nom:'Côte d\'Ivoire',  known:false },
       { code:'cm', nom:'Cameroun',        known:false },
-      { code:'dz', nom:'AlgÃ©rie',         known:false },
+      { code:'dz', nom:'Algérie',         known:false },
       { code:'ly', nom:'Libye',           known:false },
       { code:'sd', nom:'Soudan',          known:false },
-      { code:'et', nom:'Ã‰thiopie',        known:false },
+      { code:'et', nom:'Éthiopie',        known:false },
       { code:'tz', nom:'Tanzanie',        known:false },
       { code:'ug', nom:'Ouganda',         known:false },
       { code:'ao', nom:'Angola',          known:false },
@@ -394,14 +386,14 @@
       { code:'bo', nom:'Bolivie',         known:false },
       { code:'cl', nom:'Chili',           known:false },
       { code:'co', nom:'Colombie',        known:false },
-      { code:'pe', nom:'PÃ©rou',           known:false },
+      { code:'pe', nom:'Pérou',           known:false },
       { code:'ve', nom:'Venezuela',       known:false },
-      { code:'ec', nom:'Ã‰quateur',        known:false },
+      { code:'ec', nom:'Équateur',        known:false },
       { code:'uy', nom:'Uruguay',         known:false },
       { code:'py', nom:'Paraguay',        known:false },
-      { code:'kr', nom:'CorÃ©e du Sud',    known:false },
-      { code:'id', nom:'IndonÃ©sie',       known:false },
-      { code:'vn', nom:'ViÃªt Nam',        known:false },
+      { code:'kr', nom:'Corée du Sud',    known:false },
+      { code:'id', nom:'Indonésie',       known:false },
+      { code:'vn', nom:'Viêt Nam',        known:false },
       { code:'ph', nom:'Philippines',     known:false },
       { code:'sg', nom:'Singapour',       known:false },
       { code:'my', nom:'Malaisie',        known:false },
@@ -412,37 +404,37 @@
       { code:'ir', nom:'Iran',            known:false },
       { code:'iq', nom:'Irak',            known:false },
       { code:'sa', nom:'Arabie Saoudite', known:false },
-      { code:'ae', nom:'Ã‰mirats Arabes',  known:false },
-      { code:'il', nom:'IsraÃ«l',          known:false },
+      { code:'ae', nom:'Émirats Arabes',  known:false },
+      { code:'il', nom:'Israël',          known:false },
       { code:'jo', nom:'Jordanie',        known:false },
       { code:'lb', nom:'Liban',           known:false },
       { code:'sy', nom:'Syrie',           known:false },
       { code:'ua', nom:'Ukraine',         known:false },
       { code:'ro', nom:'Roumanie',        known:false },
       { code:'hu', nom:'Hongrie',         known:false },
-      { code:'cz', nom:'TchÃ©quie',        known:false },
+      { code:'cz', nom:'Tchéquie',        known:false },
       { code:'sk', nom:'Slovaquie',       known:false },
       { code:'hr', nom:'Croatie',         known:false },
       { code:'rs', nom:'Serbie',          known:false },
       { code:'bg', nom:'Bulgarie',        known:false },
-      { code:'nz', nom:'Nouvelle-ZÃ©lande',known:false },
-      { code:'pf', nom:'PolynÃ©sie fr.',   known:false },
+      { code:'nz', nom:'Nouvelle-Zélande',known:false },
+      { code:'pf', nom:'Polynésie fr.',   known:false },
       { code:'mq', nom:'Martinique',      known:false },
       { code:'gp', nom:'Guadeloupe',      known:false },
-      { code:'re', nom:'La RÃ©union',      known:false },
-      { code:'nc', nom:'Nvl-CalÃ©donie',   known:false },
+      { code:'re', nom:'La Réunion',      known:false },
+      { code:'nc', nom:'Nvl-Calédonie',   known:false },
       { code:'gf', nom:'Guyane',          known:false },
     ];
 
-    // â”€â”€â”€ Salutations dans la langue du pays â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Salutations dans la langue du pays ─────────────────────────────────────
     // [texte, code BCP-47]. Si la voix n'est pas dispo, SpeechSynthesis utilisera
-    // la voix par dÃ©faut â€” ce n'est pas grave, Max entend quand mÃªme un mot nouveau.
-    // Chaque pays : [salutation + "comment Ã§a va ?" dans la langue, code BCP-47]
+    // la voix par défaut — ce n'est pas grave, Max entend quand même un mot nouveau.
+    // Chaque pays : [salutation + "comment ça va ?" dans la langue, code BCP-47]
     const HELLO_EN  = 'Hello, how are you?';
-    const HELLO_ES  = 'Hola, Â¿cÃ³mo estÃ¡s?';
-    const HELLO_PT  = 'OlÃ¡, como vai?';
+    const HELLO_ES  = 'Hola, ¿cómo estás?';
+    const HELLO_PT  = 'Olá, como vai?';
     const HELLO_AR  = 'Salam, kif halak?';
-    const HELLO_FR  = 'Bonjour, comment Ã§a va ?';
+    const HELLO_FR  = 'Bonjour, comment ça va ?';
     const HELLO_SW  = 'Jambo, habari?';
     const GREETINGS = {
       fr:[HELLO_FR,'fr-FR'],
@@ -451,7 +443,7 @@
       it:['Ciao, come stai ?','it-IT'],
       tn:[HELLO_AR,'ar-TN'], eg:[HELLO_AR,'ar-EG'], ma:[HELLO_AR,'ar-MA'], dz:[HELLO_AR,'ar-DZ'], ly:[HELLO_AR,'ar-LY'], sd:[HELLO_AR,'ar-SD'], iq:[HELLO_AR,'ar-IQ'], sa:[HELLO_AR,'ar-SA'], ae:[HELLO_AR,'ar-AE'], jo:[HELLO_AR,'ar-JO'], lb:[HELLO_AR,'ar-LB'], sy:[HELLO_AR,'ar-SY'],
       br:[HELLO_PT,'pt-BR'], pt:[HELLO_PT,'pt-PT'], ao:[HELLO_PT,'pt-PT'], mz:[HELLO_PT,'pt-PT'],
-      ch:['GrÃ¼ezi, wie gaht s ?','de-CH'],
+      ch:['Grüezi, wie gaht s ?','de-CH'],
       cn:['Ni hao, ni hao ma ?','zh-CN'],
       jp:['Konnichiwa, o genki desu ka ?','ja-JP'],
       ru:['Privet, kak dela ?','ru-RU'],
@@ -459,22 +451,22 @@
       th:['Sawatdi, sabaidi mai ?','th-TH'],
       ar:[HELLO_ES,'es-AR'], es:[HELLO_ES,'es-ES'], mx:[HELLO_ES,'es-MX'], bo:[HELLO_ES,'es-BO'], cl:[HELLO_ES,'es-CL'], co:[HELLO_ES,'es-CO'], pe:[HELLO_ES,'es-PE'], ve:[HELLO_ES,'es-VE'], ec:[HELLO_ES,'es-EC'], uy:[HELLO_ES,'es-UY'], py:[HELLO_ES,'es-PY'],
       nl:['Hallo, hoe gaat het ?','nl-NL'],
-      lu:['Moien, wÃ©i geet et ?','fr-LU'],
+      lu:['Moien, wéi geet et ?','fr-LU'],
       kh:['Suostei, sok sabay te ?','km-KH'],
       be:[HELLO_FR,'fr-BE'], sn:[HELLO_FR,'fr-SN'], ci:[HELLO_FR,'fr-FR'], cm:[HELLO_FR,'fr-FR'], mg:[HELLO_FR,'fr-FR'], pf:['Ia orana, maita i ?','fr-FR'], mq:[HELLO_FR,'fr-FR'], gp:[HELLO_FR,'fr-FR'], re:[HELLO_FR,'fr-FR'], nc:[HELLO_FR,'fr-FR'], gf:[HELLO_FR,'fr-FR'],
-      pl:['CzeÅ›Ä‡, jak siÄ™ masz ?','pl-PL'],
-      se:['Hej, hur mÃ¥r du ?','sv-SE'],
+      pl:['Cześć, jak się masz ?','pl-PL'],
+      se:['Hej, hur mår du ?','sv-SE'],
       no:['Hei, hvordan har du det ?','nb-NO'],
       dk:['Hej, hvordan har du det ?','da-DK'],
-      fi:['Hei, mitÃ¤ kuuluu ?','fi-FI'],
+      fi:['Hei, mitä kuuluu ?','fi-FI'],
       gr:['Yassou, ti kanis ?','el-GR'],
-      tr:['Merhaba, nasÄ±lsÄ±n ?','tr-TR'],
-      in:['NamastÃ©, kaise ho ?','hi-IN'],
+      tr:['Merhaba, nasılsın ?','tr-TR'],
+      in:['Namasté, kaise ho ?','hi-IN'],
       ke:[HELLO_SW,'sw-KE'], tz:[HELLO_SW,'sw-TZ'], ug:[HELLO_SW,'sw-UG'],
       et:['Selam, endemn nesh ?','am-ET'],
       kr:['Annyeong, jal jinaesseo ?','ko-KR'],
       id:['Halo, apa kabar ?','id-ID'],
-      vn:['Xin chÃ o, báº¡n khá»e khÃ´ng ?','vi-VN'],
+      vn:['Xin chào, bạn khỏe không ?','vi-VN'],
       ph:['Kumusta, kumusta ka ?','fil-PH'],
       my:['Helo, apa khabar ?','ms-MY'],
       mm:['Mingalaba, nei kaung la ?','my-MM'],
@@ -485,14 +477,14 @@
       ua:['Pryvit, yak spravy ?','uk-UA'],
       ro:['Salut, ce mai faci ?','ro-RO'],
       hu:['Szia, hogy vagy ?','hu-HU'],
-      cz:['Ahoj, jak se mÃ¡Å¡ ?','cs-CZ'],
-      sk:['Ahoj, ako sa mÃ¡Å¡ ?','sk-SK'],
+      cz:['Ahoj, jak se máš ?','cs-CZ'],
+      sk:['Ahoj, ako sa máš ?','sk-SK'],
       hr:['Bok, kako si ?','hr-HR'],
       rs:['Zdravo, kako si ?','sr-RS'],
       bg:['Zdravei, kak si ?','bg-BG'],
     };
 
-    // â”€â”€â”€ Ã‰tat â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── État ────────────────────────────────────────────────────────────────────
     const ROUND_COUNT = 10;
     let mode = 'known';
     let pool = [];
@@ -501,7 +493,7 @@
     let score = 0;
     let qcm = null;
 
-    // â”€â”€â”€ Mode â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Mode ───────────────────────────────────────────────────────────────────
     function setMode(m) {
       mode = m;
       document.getElementById('modeKnown').classList.toggle('active', m === 'known');
@@ -509,7 +501,7 @@
       startGame();
     }
 
-    // â”€â”€â”€ DÃ©marrer / rejouer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Démarrer / rejouer ──────────────────────────────────────────────────────
     function startGame() {
       round = 0;
       score = 0;
@@ -518,7 +510,7 @@
       nextRound();
     }
 
-    // â”€â”€â”€ Tour suivant â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Tour suivant ────────────────────────────────────────────────────────────
     function nextRound() {
       if (round >= ROUND_COUNT) { showVictory(); return; }
       qcm = QcmRetry.create();
@@ -527,22 +519,22 @@
       // Score bar
       renderScoreBar();
 
-      // Bus SVG (carrosserie turquoise standard, fenÃªtre sera masquÃ©e par le drapeau)
+      // Bus SVG (carrosserie turquoise standard, fenêtre sera masquée par le drapeau)
       const busHTML = busSVG('#cccccc', '#333', '', 300);
       document.getElementById('busSVGContainer').innerHTML = busHTML;
 
-      // Drapeau dans la fenÃªtre du bus
+      // Drapeau dans la fenêtre du bus
       document.getElementById('flagInBus').innerHTML =
         `<span class="fi fi-${currentPays.code}" style="width:100%;height:100%;background-size:cover;background-position:center;display:block;border-radius:3px"></span>`;
 
       // Parler automatiquement (aide)
       setTimeout(speakCountry, 600);
 
-      // GÃ©nÃ©rer 4 choix
+      // Générer 4 choix
       renderChoices();
     }
 
-    // â”€â”€â”€ Choix â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Choix ──────────────────────────────────────────────────────────────────
     function renderChoices() {
       const usedPool = mode === 'known' ? PAYS.filter(p => p.known) : PAYS;
       const distractors = shuffle(usedPool.filter(p => p.code !== currentPays.code)).slice(0, 3);
@@ -559,7 +551,7 @@
       }).join('');
     }
 
-    // â”€â”€â”€ RÃ©ponse â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Réponse ────────────────────────────────────────────────────────────────
     function answer(code, btn) {
       if (btn.disabled) return;
       const isCorrect = code === currentPays.code;
@@ -572,11 +564,11 @@
         document.querySelectorAll('.choice-btn').forEach(b => { b.style.pointerEvents = 'none'; });
         if (res.points === 10) score++;
         sndDing();
-        showFeedback('ðŸŽ‰');
+        showFeedback('🎉');
         round++;
-        // ChaÃ®ne TTS : "France" â†’ pause â†’ "Bonjour comment Ã§a va ?" â†’ pause â†’ round suivant.
-        // On attend la fin rÃ©elle de la salutation (onEnd) au lieu d'un setTimeout fixe,
-        // sinon la phrase est coupÃ©e par le speakCountry() du round suivant.
+        // Chaîne TTS : "France" → pause → "Bonjour comment ça va ?" → pause → round suivant.
+        // On attend la fin réelle de la salutation (onEnd) au lieu d'un setTimeout fixe,
+        // sinon la phrase est coupée par le speakCountry() du round suivant.
         let advanced = false;
         const advance = () => { if (advanced) return; advanced = true; nextRound(); };
         const safety  = setTimeout(advance, 7000); // filet si onEnd ne tombe pas
@@ -584,7 +576,7 @@
         setTimeout(() => {
           speakGreetingThen(currentPays.code, () => {
             clearTimeout(safety);
-            setTimeout(advance, 500); // mini pause aprÃ¨s la salutation
+            setTimeout(advance, 500); // mini pause après la salutation
           });
         }, 1400);
       } else if (res.outcome === 'reveal') {
@@ -592,19 +584,19 @@
         QcmRetry.revealCorrect(document.getElementById('choices'), 'correct');
         document.querySelectorAll('.choice-btn').forEach(b => { b.style.pointerEvents = 'none'; });
         sndBuzz(); playErrorSound();
-        showFeedback('ðŸ’ª');
+        showFeedback('💪');
         setTimeout(() => speak(currentPays.nom), 300);
         round++;
         setTimeout(nextRound, 1800);
       } else {
         btn.classList.add('wrong'); btn.disabled = true;
         sndBuzz(); playErrorSound();
-        showFeedback('ðŸ¤”');
+        showFeedback('🤔');
         setTimeout(() => speak('Essaie encore !'), 200);
       }
     }
 
-    // â”€â”€â”€ Feedback â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Feedback ────────────────────────────────────────────────────────────────
     function showFeedback(emoji) {
       const el = document.getElementById('feedback');
       document.getElementById('feedbackEmoji').textContent = emoji;
@@ -612,7 +604,7 @@
       setTimeout(() => el.classList.remove('show'), 1200);
     }
 
-    // â”€â”€â”€ Score bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Score bar ───────────────────────────────────────────────────────────────
     function renderScoreBar() {
       const bar = document.getElementById('scoreBar');
       let html = '';
@@ -625,18 +617,18 @@
       bar.innerHTML = html;
     }
 
-    // â”€â”€â”€ Victoire â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Victoire ────────────────────────────────────────────────────────────────
     const VICTORY_DATA = [
       // 10/10
-      { min:10, max:10, emoji:'ðŸ†', title:'PARFAIT !!!', msg:'10 sur 10 ! Tu es un champion des drapeaux !', confetti:true, sound:'victory' },
+      { min:10, max:10, emoji:'🏆', title:'PARFAIT !!!', msg:'10 sur 10 ! Tu es un champion des drapeaux !', confetti:true, sound:'victory' },
       // 8-9
-      { min:8,  max:9,  emoji:'ðŸŒŸ', title:'Super Max !', msg:'Presque parfait ! Tu connais super bien les drapeaux !', confetti:false, sound:'bravo' },
+      { min:8,  max:9,  emoji:'🌟', title:'Super Max !', msg:'Presque parfait ! Tu connais super bien les drapeaux !', confetti:false, sound:'bravo' },
       // 6-7
-      { min:6,  max:7,  emoji:'ðŸ˜Š', title:'Bien jouÃ© !', msg:'C\'est bien ! Continue comme Ã§a, tu progresses !', confetti:false, sound:'ding' },
+      { min:6,  max:7,  emoji:'😊', title:'Bien joué !', msg:'C\'est bien ! Continue comme ça, tu progresses !', confetti:false, sound:'ding' },
       // 4-5
-      { min:4,  max:5,  emoji:'ðŸ’ª', title:'Pas mal !', msg:'Tu peux faire encore mieux la prochaine fois !', confetti:false, sound:'ding' },
+      { min:4,  max:5,  emoji:'💪', title:'Pas mal !', msg:'Tu peux faire encore mieux la prochaine fois !', confetti:false, sound:'ding' },
       // 0-3
-      { min:0,  max:3,  emoji:'ðŸšŒ', title:'On rÃ©essaie ?', msg:'C\'est difficile ! Essaie encore, tu vas progresser !', confetti:false, sound:'buzz' },
+      { min:0,  max:3,  emoji:'🚌', title:'On réessaie ?', msg:'C\'est difficile ! Essaie encore, tu vas progresser !', confetti:false, sound:'buzz' },
     ];
 
     function showVictory() {
@@ -657,8 +649,8 @@
       if (data.confetti) launchFlagConfetti();
     }
 
-    // â”€â”€â”€ Confettis drapeaux â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
-    // 40 drapeaux Ã©moji tombent en arc depuis le haut
+    // ─── Confettis drapeaux ──────────────────────────────────────────────────────
+    // 40 drapeaux émoji tombent en arc depuis le haut
     function launchFlagConfetti() {
       const canvas = document.getElementById('confettiCanvas');
       canvas.width = window.innerWidth;
@@ -668,7 +660,7 @@
 
       // Emojis drapeaux des pays connus
       const flags = PAYS.filter(p => p.known).map(p => {
-        // Convertit code ISO â†’ emoji drapeau (regional indicator symbols)
+        // Convertit code ISO → emoji drapeau (regional indicator symbols)
         const base = 0x1F1E6 - 'a'.charCodeAt(0);
         return String.fromCodePoint(base + p.code.charCodeAt(0), base + p.code.charCodeAt(1));
       });
@@ -716,7 +708,7 @@
       requestAnimationFrame(tick);
     }
 
-    // â”€â”€â”€ TTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── TTS ─────────────────────────────────────────────────────────────────────
     function speakCountry() {
       if (!currentPays) return;
       speak(currentPays.nom);
@@ -730,11 +722,11 @@
       const g = GREETINGS[code];
       if (!g) return;
       const [text, lang] = g;
-      // queued (pas de cancel) pour enchaÃ®ner aprÃ¨s speakCountry()
+      // queued (pas de cancel) pour enchaîner après speakCountry()
       TTS.speak(text, { lang, rate: 0.85, priority: false });
     }
 
-    // Variante qui appelle onEnd Ã  la fin de la salutation (pour enchaÃ®ner le round suivant).
+    // Variante qui appelle onEnd à la fin de la salutation (pour enchaîner le round suivant).
     function speakGreetingThen(code, onEnd) {
       const g = GREETINGS[code];
       if (!g) { onEnd && onEnd(); return; }
@@ -742,7 +734,7 @@
       TTS.speak(text, { lang, rate: 0.85, priority: false, onEnd });
     }
 
-    // â”€â”€â”€ Utilitaires â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Utilitaires ──────────────────────────────────────────────────────────────
     function shuffle(arr) {
       const a = [...arr];
       for (let i = a.length - 1; i > 0; i--) {
@@ -752,7 +744,7 @@
       return a;
     }
 
-    // â”€â”€â”€ Init â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+    // ─── Init ─────────────────────────────────────────────────────────────────────
     startGame();
   </script>
 <script src="js/tracker.js"></script>

@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
-<title>MJ-15 â€“ L'intrus</title>
+<title>MJ-15 – L'intrus</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
 <style>
 * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; user-select:none; }
@@ -11,7 +11,7 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 
 #app { display:flex; flex-direction:column; height:100dvh; max-width:700px; margin:0 auto; position:relative; }
 
-/* â”€â”€ Header â”€â”€ */
+/* ── Header ── */
 #hdr {
   flex-shrink:0; display:flex; align-items:center; gap:10px;
   padding:8px 12px; background:rgba(0,0,0,0.35);
@@ -30,7 +30,7 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   border-radius:20px; padding:4px 14px; font-size:0.95rem; flex-shrink:0;
 }
 
-/* â”€â”€ Indicateur de niveau â”€â”€ */
+/* ── Indicateur de niveau ── */
 #level-bar {
   flex-shrink:0; display:flex; align-items:center; justify-content:center;
   gap:8px; padding:6px 12px;
@@ -45,13 +45,13 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 .lvl-dot.active { background:#ffe066; box-shadow:0 0 8px #ffe066; }
 #level-label { font-size:0.82rem; font-weight:900; opacity:0.65; }
 
-/* â”€â”€ Zone principale â”€â”€ */
+/* ── Zone principale ── */
 #main {
   flex:1; display:flex; flex-direction:column; align-items:center;
   justify-content:space-evenly; padding:10px 12px 8px; overflow:hidden;
 }
 
-/* â”€â”€ Question â”€â”€ */
+/* ── Question ── */
 #q-label {
   font-size:1.15rem; font-weight:900; text-align:center;
   background:rgba(255,255,255,0.09); border-radius:18px;
@@ -59,13 +59,13 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   border:2px solid rgba(255,255,255,0.1);
 }
 
-/* â”€â”€ Hint â”€â”€ */
+/* ── Hint ── */
 #hint-label {
   font-size:0.8rem; font-weight:700; opacity:0.55;
   text-align:center; flex-shrink:0; padding:0 12px; min-height:18px;
 }
 
-/* â”€â”€ Grille des bus â”€â”€ */
+/* ── Grille des bus ── */
 #buses-wrap {
   flex-shrink:0;
   display:flex; flex-direction:column; align-items:center; gap:10px;
@@ -126,7 +126,7 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   60%     { transform:translateX(8px); }
 }
 
-/* Bus disparu aprÃ¨s bonne rÃ©ponse */
+/* Bus disparu après bonne réponse */
 .bus-btn.gone {
   opacity:0;
   transform:scale(0.5) translateY(-20px);
@@ -134,7 +134,7 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   pointer-events:none;
 }
 
-/* â”€â”€ Ã‰cran de fin â”€â”€ */
+/* ── Écran de fin ── */
 #end-screen {
   display:none; position:absolute; inset:0;
   background:rgba(13,27,42,0.96);
@@ -160,8 +160,8 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 
   <!-- Header -->
   <div id="hdr">
-    <a href="index.html">â†</a>
-    <span id="htitle">ðŸ” L'intrus</span>
+    <a href="index.html">←</a>
+    <span id="htitle">🔍 L'intrus</span>
     <div id="score-badge">0 / 0</div>
   </div>
 
@@ -188,11 +188,11 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 
   <!-- Fin de partie -->
   <div id="end-screen">
-    <div id="end-emoji">ðŸŽ‰</div>
+    <div id="end-emoji">🎉</div>
     <div id="end-msg"></div>
     <div id="end-score"></div>
     <button id="btn-replay" onclick="startGame()">Rejouer !</button>
-    <a href="index.html" style="color:#ffe066;font-weight:900;font-size:0.95rem;margin-top:4px;">â† Menu</a>
+    <a href="index.html" style="color:#ffe066;font-weight:900;font-size:0.95rem;margin-top:4px;">← Menu</a>
   </div>
 </div>
 
@@ -204,19 +204,19 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 <script src="js/comments.js"></script>
   <script src="js/back-button.js"></script>
 <script>
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
-//  MJ-15 â€” L'intrus
-//  5 rounds, 5 bus affichÃ©s, 1 intrus Ã  trouver
-//  Niveau A : couleur diffÃ©rente
-//  Niveau C : famille de ligne (Valouette / Noctilien / MÃ©tro / Standard)
-//  Niveau D : roues colorÃ©es (4 bus roues normales, 1 bus roues vives)
-//  Niveau E : double critÃ¨re â€” couleur ET numÃ©ro (pair/impair) faux ensemble
-//  (Ancien niveau B "pair vs impair" retirÃ© : trop long Ã  lire pour Max)
-// â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•â•
+// ═══════════════════════════════════════════════════════════════════════════
+//  MJ-15 — L'intrus
+//  5 rounds, 5 bus affichés, 1 intrus à trouver
+//  Niveau A : couleur différente
+//  Niveau C : famille de ligne (Valouette / Noctilien / Métro / Standard)
+//  Niveau D : roues colorées (4 bus roues normales, 1 bus roues vives)
+//  Niveau E : double critère — couleur ET numéro (pair/impair) faux ensemble
+//  (Ancien niveau B "pair vs impair" retiré : trop long à lire pour Max)
+// ═══════════════════════════════════════════════════════════════════════════
 
 const ROUNDS_PER_GAME = 5;
 
-// â”€â”€ Familles de lignes (niveau C) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Familles de lignes (niveau C) ──────────────────────────────────────────
 const FAMILIES = {
   valouette:  l => ['V2','V3','V4','V5','V6','V7'].includes(l.num),
   noctilien:  l => l.num.startsWith('N'),
@@ -232,13 +232,13 @@ const FAMILIES = {
 const FAMILY_NAMES = {
   valouette: 'Valouette',
   noctilien: 'Noctilien',
-  metro:     'MÃ©tro',
+  metro:     'Métro',
   rer:       'RER',
   standard:  'Bus standard',
 };
 
-// â”€â”€ ParitÃ© : est-ce qu'un numÃ©ro de ligne est "pair" ?
-// On ne considÃ¨re que les lignes dont le num est un entier.
+// ── Parité : est-ce qu'un numéro de ligne est "pair" ?
+// On ne considère que les lignes dont le num est un entier.
 function isPair(num) {
   const n = parseInt(num, 10);
   return !isNaN(n) && n % 2 === 0;
@@ -249,7 +249,7 @@ function isImpair(num) {
   return !isNaN(n) && n % 2 !== 0;
 }
 
-// â”€â”€ Utilitaires â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Utilitaires ────────────────────────────────────────────────────────────
 function shuffle(arr) {
   return [...arr].sort(() => Math.random() - 0.5);
 }
@@ -258,38 +258,38 @@ function pick(arr, n) {
   return shuffle(arr).slice(0, n);
 }
 
-// â”€â”€ Ã‰tat du jeu â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── État du jeu ────────────────────────────────────────────────────────────
 let score    = 0;
 let round    = 0;
 let intrusIdx = -1;   // index (0-4) du bus intrus
 let answered = false;
 
-// â”€â”€ GÃ©nÃ©ration des puzzles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Génération des puzzles ─────────────────────────────────────────────────
 
-// Courbe de difficultÃ© : A=couleur, C=famille, D=roues colorÃ©es, E=double critÃ¨re
+// Courbe de difficulté : A=couleur, C=famille, D=roues colorées, E=double critère
 const LEVEL_SCHEDULE = ['A', 'D', 'C', 'E', 'A'];
 function getLevel(r) {
   return LEVEL_SCHEDULE[(r - 1) % LEVEL_SCHEDULE.length] || 'A';
 }
 
-// Niveau A â€” couleur diffÃ©rente
+// Niveau A — couleur différente
 function generatePuzzleA() {
-  // 4 bus de la mÃªme couleur distincte, 1 bus d'une couleur clairement diffÃ©rente
-  // On utilise selectDistinctColors pour garantir que les 2 couleurs sont bien diffÃ©rentes
+  // 4 bus de la même couleur distincte, 1 bus d'une couleur clairement différente
+  // On utilise selectDistinctColors pour garantir que les 2 couleurs sont bien différentes
   const twoGroups = selectDistinctColors(LIGNES, 2, 100);
   if (twoGroups.length < 2) {
-    // Fallback : prendre les 2 premiÃ¨res lignes avec couleurs diffÃ©rentes
+    // Fallback : prendre les 2 premières lignes avec couleurs différentes
     twoGroups.push(...LIGNES.filter(l => l.color !== twoGroups[0].color).slice(0, 1));
   }
 
   const colorMaj = twoGroups[0];
   const colorMin = twoGroups[1];
 
-  // 4 bus de la couleur majoritaire (avec des numÃ©ros diffÃ©rents si possible)
+  // 4 bus de la couleur majoritaire (avec des numéros différents si possible)
   const poolMaj = LIGNES.filter(l => l.color === colorMaj.color);
   const poolMin = LIGNES.filter(l => l.color === colorMin.color);
 
-  // On veut 4 bus de la mÃªme couleur â€” si la couleur n'a qu'une ligne, on duplique
+  // On veut 4 bus de la même couleur — si la couleur n'a qu'une ligne, on duplique
   const majorBuses = [];
   const poolMajShuffled = shuffle(poolMaj);
   for (let i = 0; i < 4; i++) {
@@ -303,7 +303,7 @@ function generatePuzzleA() {
   const placed = new Array(5);
   positions.forEach((pos, i) => { placed[pos] = buses[i]; });
 
-  // L'intrus est le dernier bus insÃ©rÃ© (index 4 dans buses), retrouvons sa position
+  // L'intrus est le dernier bus inséré (index 4 dans buses), retrouvons sa position
   const intrusPos = positions[4];
 
   return {
@@ -314,7 +314,7 @@ function generatePuzzleA() {
   };
 }
 
-// Niveau B â€” pair vs impair
+// Niveau B — pair vs impair
 function generatePuzzleB() {
   const pairLignes   = LIGNES.filter(l => isPair(l.num));
   const impairLignes = LIGNES.filter(l => isImpair(l.num));
@@ -323,7 +323,7 @@ function generatePuzzleB() {
   const majority = pairLignes.length >= 4 ? pairLignes : impairLignes;
   const minority = pairLignes.length >= 4 ? impairLignes : pairLignes;
 
-  // Parfois on veut inverser alÃ©atoirement
+  // Parfois on veut inverser aléatoirement
   const useMinority = Math.random() < 0.5 && minority.length >= 4;
   const majPool = useMinority ? minority : majority;
   const minPool = useMinority ? majority : minority;
@@ -345,7 +345,7 @@ function generatePuzzleB() {
   };
 }
 
-// Niveau C â€” famille de ligne
+// Niveau C — famille de ligne
 function generatePuzzleC() {
   // Construire les pools par famille
   const famKeys = Object.keys(FAMILIES);
@@ -354,7 +354,7 @@ function generatePuzzleC() {
     famPools[k] = LIGNES.filter(FAMILIES[k]);
   });
 
-  // Choisir une famille majoritaire (â‰¥4 membres) et une famille intrus (â‰¥1)
+  // Choisir une famille majoritaire (≥4 membres) et une famille intrus (≥1)
   const validMaj = famKeys.filter(k => famPools[k].length >= 4);
   const validMin = famKeys.filter(k => famPools[k].length >= 1);
 
@@ -381,15 +381,15 @@ function generatePuzzleC() {
   return {
     buses: placed,
     intrusIdx: intrusPos,
-    hint: `4 bus sont de la famille ${hintMaj}â€¦`,
+    hint: `4 bus sont de la famille ${hintMaj}…`,
     level: 'C',
   };
 }
 
-// Niveau D â€” roues colorÃ©es
+// Niveau D — roues colorées
 // 4 bus avec roues noires/grises normales + 1 bus avec roues d'une couleur vive
 function generatePuzzleD() {
-  // 5 bus, peu importe couleur/numÃ©ro â€” seul l'intrus a des roues colorÃ©es
+  // 5 bus, peu importe couleur/numéro — seul l'intrus a des roues colorées
   const lignes = pick(LIGNES, 5);
   const wheelColors = ['#e94560', '#ffe066', '#00c47a', '#ff8c00', '#9b59b6'];
   const wheelColor = wheelColors[Math.floor(Math.random() * wheelColors.length)];
@@ -408,14 +408,14 @@ function generatePuzzleD() {
   };
 }
 
-// Niveau E â€” double critÃ¨re : couleur ET numÃ©ro (pair/impair) faux ensemble
-// 4 bus = mÃªme couleur + mÃªme paritÃ©. Intrus = couleur diffÃ©rente + paritÃ© opposÃ©e.
+// Niveau E — double critère : couleur ET numéro (pair/impair) faux ensemble
+// 4 bus = même couleur + même parité. Intrus = couleur différente + parité opposée.
 function generatePuzzleE() {
   const wantPair = Math.random() < 0.5;
   const majorityFilter = wantPair ? isPair : isImpair;
   const minorityFilter = wantPair ? isImpair : isPair;
 
-  // Grouper les lignes par couleur, majoritaire = couleur avec â‰¥4 numÃ©ros pair (ou impair)
+  // Grouper les lignes par couleur, majoritaire = couleur avec ≥4 numéros pair (ou impair)
   const byColor = {};
   LIGNES.forEach(l => {
     if (majorityFilter(l.num)) {
@@ -429,7 +429,7 @@ function generatePuzzleE() {
   const majColor = validMajColors[Math.floor(Math.random() * validMajColors.length)];
   const majPool = byColor[majColor];
 
-  // Intrus : ligne avec paritÃ© opposÃ©e ET couleur diffÃ©rente du majColor
+  // Intrus : ligne avec parité opposée ET couleur différente du majColor
   const minPool = LIGNES.filter(l => minorityFilter(l.num) && l.color !== majColor);
   if (minPool.length === 0) return generatePuzzleA();
 
@@ -445,7 +445,7 @@ function generatePuzzleE() {
   return {
     buses: placed,
     intrusIdx: intrusPos,
-    hint: 'Couleur ET numÃ©roâ€¦ deux choses Ã  voir !',
+    hint: 'Couleur ET numéro… deux choses à voir !',
     level: 'E',
   };
 }
@@ -468,12 +468,12 @@ function colorBusWheels(btnEl, color) {
   });
 }
 
-// â”€â”€ Rendu â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Rendu ──────────────────────────────────────────────────────────────────
 
 let currentPuzzle = null;
 
 function calcBusWidth() {
-  // Adapter la taille des bus selon la largeur de l'Ã©cran
+  // Adapter la taille des bus selon la largeur de l'écran
   // 5 bus : 2 sur la ligne haute, 3 sur la ligne basse
   // On vise ~140-180px de large par bus selon dispo
   const w = Math.min(window.innerWidth, 700);
@@ -502,7 +502,7 @@ function renderPuzzle(puzzle) {
                      + `<span class="bus-label">${getLineDisplayName(ligne.num)}</span>`;
     btn.addEventListener('click', () => onBusTap(idx, btn));
 
-    // Niveau D : seul l'intrus a des roues colorÃ©es
+    // Niveau D : seul l'intrus a des roues colorées
     if (puzzle.level === 'D' && idx === puzzle.intrusIdx) {
       colorBusWheels(btn, puzzle.wheelColor);
     }
@@ -515,14 +515,14 @@ function renderPuzzle(puzzle) {
   speak('Lequel ne va pas avec les autres ?');
 }
 
-// â”€â”€ Interaction â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Interaction ───────────────────────────────────────────────────────────
 
 function onBusTap(idx, btn) {
   if (answered) return;
   answered = true;
 
   if (idx === intrusIdx) {
-    // Bonne rÃ©ponse
+    // Bonne réponse
     score++;
     updateScore();
     btn.classList.add('flash-ok');
@@ -535,7 +535,7 @@ function onBusTap(idx, btn) {
     }, 400);
 
   } else {
-    // Mauvaise rÃ©ponse
+    // Mauvaise réponse
     btn.classList.add('flash-err');
     if (typeof Tracker !== 'undefined') Tracker.logAnswer(false);
     playErrorSound();
@@ -553,7 +553,7 @@ function onBusTap(idx, btn) {
   }
 }
 
-// â”€â”€ Sons / TTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Sons / TTS ─────────────────────────────────────────────────────────────
 
 function playSuccessBeep() {
   try {
@@ -574,7 +574,7 @@ function playSuccessBeep() {
 
 function speak(text) { TTS.speak(text); }
 
-// â”€â”€ Score / Rounds / Dots â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Score / Rounds / Dots ──────────────────────────────────────────────────
 
 function updateScore() {
   document.getElementById('score-badge').textContent = `${score} / ${round}`;
@@ -603,15 +603,15 @@ function nextRound() {
 
 function showEnd() {
   const pct   = score / ROUNDS_PER_GAME;
-  const emoji = pct >= 0.8 ? 'ðŸ†' : pct >= 0.5 ? 'ðŸŽ‰' : 'ðŸšŒ';
-  const msg   = pct >= 0.8 ? 'Incroyable ! Tu as trouvÃ© tous les intrus !'
-              : pct >= 0.5 ? 'Bien jouÃ© ! Tu es un dÃ©tective de bus !'
-              :               "Continue de t'entraÃ®ner, tu vas y arriver !";
+  const emoji = pct >= 0.8 ? '🏆' : pct >= 0.5 ? '🎉' : '🚌';
+  const msg   = pct >= 0.8 ? 'Incroyable ! Tu as trouvé tous les intrus !'
+              : pct >= 0.5 ? 'Bien joué ! Tu es un détective de bus !'
+              :               "Continue de t'entraîner, tu vas y arriver !";
 
   document.getElementById('end-emoji').textContent = emoji;
   document.getElementById('end-msg').textContent   = msg;
   document.getElementById('end-score').textContent =
-    `${score} bonne${score > 1 ? 's' : ''} rÃ©ponse${score > 1 ? 's' : ''} sur ${ROUNDS_PER_GAME}`;
+    `${score} bonne${score > 1 ? 's' : ''} réponse${score > 1 ? 's' : ''} sur ${ROUNDS_PER_GAME}`;
 
   document.getElementById('end-screen').classList.add('visible');
   playEndSound(score, ROUNDS_PER_GAME);
@@ -619,7 +619,7 @@ function showEnd() {
   if (typeof Tracker !== 'undefined') Tracker.endSession(score, ROUNDS_PER_GAME);
 }
 
-// â”€â”€ DÃ©marrage â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// ── Démarrage ──────────────────────────────────────────────────────────────
 
 function startGame() {
   score    = 0;

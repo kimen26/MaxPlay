@@ -109,7 +109,267 @@
 
 ---
 
-## 2026-05-15 — Évolutions PROCESS (STORY-002 vague 3+)
+## 2026-05-15 — Refonte structurelle fiches personnage (gabarit 4 fichiers)
+
+### DEC-PERSO-STRUCT-001 : Nouveau gabarit 4 fichiers par type-XX
+
+**Auteur (Papa Yann)** : décision 2026-05-15 post-refactor validation.
+
+**Contexte** : fiches personnage actuelles mélangent matière universelle (ennéatype), matière vivante (accumule au fil des histoires), matière production audio (ElevenLabs) et données de casting (voice_id national). Besoin séparation claire pour maintenabilité, éviter doublon ennéatype↔histoire, et produire briefs writers autoporteurs.
+
+**Décision tranchée** :
+
+#### 4 fichiers par type-XX (structure nouvell)
+
+```
+personnages/type-NN/
+├── README.md                    ← Cartographie légère des 4 fichiers + prénom/nom long
+├── enneagramme.md              ← Matière universelle (figée ou quasi)
+├── personnage.md               ← Portrait 360° vivant (croît avec narratif)
+├── alive.md                    ← Matière vivante (empirique, histoires)
+└── voix.md                     ← Strictement production audio
+```
+
+**Détail rôle chaque fichier** :
+
+1. **enneagramme.md** (Matière universelle) :
+   - Profil type ennéagramme universel (motivation, peur, désir, traits fondamentaux)
+   - Comportements par situation (face perte, face critique, face autorité)
+   - Niveaux santé/désintégration/intégration (structures fix + mouvements)
+   - Note auteur : contexte création type (symbole, inspiration historique/littéraire si pertinent)
+   - **Statut** : quasi-figée après étape 1-3 definition (peut évoluer avec arcs long-terme)
+
+2. **personnage.md** (Portrait 360° vivant) :
+   - Fusion `caractere.md` (ancien) + `relations.md` (ancien) :
+     - Portrait global du perso dans univers MaxPlay (pas universel, c'est NOTRE [Prenom])
+     - Traits de caractère observés narratifs (complètent ennéatype avec couleur locale/MaxPlay)
+     - Gestes signature observés (5-7 patterns, nourris par traits narrative pas par ennéatype)
+     - Phrases types (5-8 tournures verbales caractéristiques)
+     - Relations inter-types (comment interagit avec chacun des 8 autres persos)
+     - Sensibilités perso à Max (peurs, joies, déclencheurs émotionnels dans univers MaxPlay)
+   - **Rôle** : donne couleur MaxPlay au type universel ennéatype
+   - **Statut** : vit dans chaque histoire + enrichi archéologiquement lors canonisation
+
+3. **alive.md** (Matière vivante) :
+   - Grandit UNIQUEMENT quand histoire est canonisée (étape 10) :
+     - Tags writer ElevenLabs (signature vocale 4 couches : timbre, rythme, articulation, amplitude)
+     - Langage naturel 6-7 ans (phonétique progressante de Max, tournures Max-spécifiques)
+     - Phrases types du perso (au futur : mots/intonations Max-compréhensibles)
+     - Onomatopée signature du perso (1-2 sons distinctifs per perso)
+     - Mémoire vivante histoire-par-histoire (gravure canonisée de ce qui s'est RÉELLEMENT passé au perso)
+   - Inutile de remplir avant étape 10 — reste vide pendant brouillon/workshop/sélection
+   - **Rôle** : seule source vérité de ce qui est arrivé au perso au fil des histoires (arc réel)
+   - **Statut** : croît continu post-canonisation
+
+4. **voix.md** (Production audio strictement) :
+   - Signature vocale ElevenLabs 4 couches :
+     - Couche timbre : voice_id (où dans cross-culture/fr/type-NN.md) + description Voice Library
+     - Couche rythme : speed, pacing, pauses type
+     - Couche articulation : clarity, precision recommendations
+     - Couche amplitude : loudness range, peaks patterns
+   - Voice settings TTS recommandés : stability, similarity_boost, style (chiffres figés)
+   - Pronunciation dicts personnalisés (prénoms, mots difficiles MaxPlay)
+   - Preview texts (extraits textes canon ou briefs pour validation voix)
+   - Anti-patterns vocaux observés (ce qui sonne faux pour ce perso)
+   - **Rôle** : directif production audio, ne pas ajouter matière narratif
+   - **Statut** : figée après voice ID choisi (étape 1), peut évoluer avec découvertes ElevenLabs
+
+**Raison séparation** :
+- Ennéatype : stable, universel, partageable cross-project
+- Personnage : couleur MaxPlay, grandit arc narratif
+- Alive : archéologie empirique (ce qui s'est RÉELLEMENT passé), croît post-canon
+- Voix : technique production, figée, independant de narration
+
+**Impact fichiers** :
+- ✅ Créer `personnages/type-XX/_GABARIT-4-FICHIERS.md` (template refactoring)
+- ✅ Créer `personnages/type-XX/README.md` (1 cartographie par type)
+- 🔄 Refactor `personnages/type-XX/enneagramme.md` (garder universal, retirer MaxPlay-spécifique)
+- 🔄 Refactor `personnages/type-XX/caractere.md` → `personnages/type-XX/personnage.md` (fusionner relations)
+- ✅ Créer `personnages/type-XX/alive.md` (vide au départ)
+- 🔄 Refactor `personnages/type-XX/voix.md` (retirer traits narratif, garder production seule)
+
+**Statut** : ✅ Figée 2026-05-15. À appliquer immédiatement type-01 (Wex), puis types-XX progressif.
+
+---
+
+### DEC-PERSO-STRUCT-002 : Tags writer ElevenLabs → alive.md (pas voix.md)
+
+**Auteur (Papa Yann)** : corollaire DEC-PERSO-STRUCT-001.
+
+**Contexte** : tags writer ElevenLabs (`[excited]`, `[commanding]`, `[softly]`, etc.) sont liés au perso/ennéatype comportement et à la culture du narrateur, pas à la mécanique ElevenLabs pure. Actuellement éparpillés entre `voix.md` (technique) et descriptions ennéatype. Besoin centralisation cohérente.
+
+**Décision tranchée** :
+
+#### Tags ElevenLabs → alive.md § Signature vocale ElevenLabs
+
+**Raison** :
+- Tags ElevenLabs sont émergeants empiriques (découverts post-canonisation, pas prédéterminés)
+- Liés à comment le perso parle dans nos univers MaxPlay/cultures, pas techniquement
+- Changent potentiellement per histoire (Juju chansonnette = `[bright]` + `[rhythmic]`, Juju peureux = `[tentative]`)
+- Croissent avec expérience narrative → **mémoire vivante donc alive.md**
+
+**Contenu alive.md § Signature vocale ElevenLabs** :
+```
+### Signature vocale ElevenLabs (4 couches)
+
+**Couche timbre** : voice_id + descripteur Voice Library
+**Couche rythme** : speed, pacing, pauses
+**Couche articulation** : clarity, precision
+**Couche amplitude** : loudness range, peaks
+
+**Tags writer ElevenLabs** (découvertes empiriques) :
+- STORY-001 Canon : [softly], [warmly], [thoughtful]
+- STORY-002 Canon : [excited], [bright] (chansonnette), [grounded] (reset)
+- ...
+```
+
+**voix.md garde uniquement** :
+- Voice settings TTS : stability, similarity_boost, style (chiffres fixes)
+- Pronunciation dicts techniques
+- Preview texts
+- Anti-patterns vocaux
+
+**Impact fichiers** :
+- ✅ `personnages/type-XX/alive.md` : section § *Signature vocale ElevenLabs* avec tags observés
+- 🔄 `personnages/type-XX/voix.md` : retirer description tags (remplacer par lien → alive.md)
+- 📝 Leçon (`equipe/lecons-vivantes.md`) : tags empiriques, pas prédéterminés
+
+**Statut** : ✅ Figée 2026-05-15. À appliquer au fur à mesure canonisations.
+
+---
+
+### DEC-PERSO-STRUCT-003 : voice_id → cross-culture/castings-nationaux/ (pas voix.md)
+
+**Auteur (Papa Yann)** : corollaire DEC-PERSO-STRUCT-001.
+
+**Contexte** : voice_id ElevenLabs est donnée de **casting national** (EX: "Wex FR = voice_id xyz" vs "Wex JP = voice_id abc"). Actuellement stockée dans `personnages/type-XX/voix.md`. Mais elle appartient à cross-culture/castings-nationaux/fr/ car potentiellement dupliquée par culture. Besoin centralisation casting.
+
+**Décision tranchée** :
+
+#### voice_id → cross-culture/castings-nationaux/CC/type-NN.md
+
+**Détail** :
+- voice_id **migre vers** `narration/cross-culture/castings-nationaux/fr/type-NN.md` (et futur JP/, BR/, etc.)
+- Format cross-culture/fr/type-NN.md : 
+  ```
+  # Type-NN [PRENOM FR]
+  
+  | Casting | FR | JP | BR | ... |
+  | — | — | — | — | — |
+  | voice_id | xyz | abc | def | ... |
+  | voice_id_narrative | narrateur-h | narrateur-jp-h | ... |
+  ```
+- `personnages/type-XX/voix.md` **garde uniquement** : voice settings, pronunciation dicts, preview texts, anti-patterns vocaux (technique ElevenLabs)
+- Lien dans voix.md : "Voice ID casting → `cross-culture/castings-nationaux/fr/type-NN.md`"
+
+**Raison migration** :
+- Évite duplication (1 voice_id type-01 Wex en FR figé une fois, pas répété 10x en perso/voix.md)
+- Centralise données casting national (prêt pour JP/, BR/, etc.)
+- Sépare production technique (stays voix.md) de casting (goes cross-culture)
+
+**Impact fichiers** :
+- 🔄 `personages/type-XX/voix.md` : retirer voice_id, ajouter lien vers `cross-culture/castings-nationaux/fr/type-NN.md`
+- ✅ Créer ou MAJ `cross-culture/castings-nationaux/fr/type-NN.md` : tableau voice_id par culture
+- 🔄 `pmo/INVARIANTS.md` : centraliser référence voice_id casting (remplacer ancien pointer voix.md)
+
+**Statut** : ✅ Figée 2026-05-15. À appliquer progressif (FR consolidé, JP/BR à futur).
+
+---
+
+### DEC-PERSO-STRUCT-004 : Événements pré-inventés → SUPPRIMÉS (remplacés réactions-types)
+
+**Auteur (Papa Yann)** : décision 2026-05-15 refactor narratif.
+
+**Contexte** : fiches actuelles contiennent "Moments émotionnels clés pré-écrits" (ex: Juju "a peur dans cour maternelle", Nono "a perdu chien", etc.). C'est biographie fictive fixée avant que le perso ne vive. Crée faux naturalisme. Mieux : patterns comportementaux observables → _appliqués_ quand histoire met en scène déclencheur similaire.
+
+**Décision tranchée** :
+
+#### Supprimer événements pré-inventés → Ajouter réactions-types par déclencheur
+
+**Ce qui disparaît** (garder pour archive, pas dans fiches active) :
+```
+### Moments émotionnels clés (À SUPPRIMER)
+- Juju a eu peur à l'école
+- Nono a perdu son chien quand il était petit
+- etc.
+```
+
+**Ce qui arrive** (nouveau § personnage.md) :
+```
+### Réactions-types par déclencheur (observable behaviours)
+- Face à une perte : nie d'abord, puis pleure seule, ensuite gratitude sans explication
+- Face à une critique : se raidit, contre-attaque légère, puis accepte
+- Face à autorité : défi initial, puis curiosité, puis collaboration
+- etc.
+```
+
+**Avantage** :
+- Plus naturel — writer ne reproduit pas "moment clé figé", il voit comportement type
+- Permite variance — même déclencheur, contexte unique → variation comportement
+- Archive honnête — ce qui est RÉELLEMENT arrivé au perso vit dans alive.md post-canon, pas pré-inventé
+
+**Impact fichiers** :
+- 🔄 `personnages/type-XX/personnage.md` : ajouter § *Réactions-types par déclencheur* (5-8 déclencheurs pertinents type)
+- 📝 Suppression silencieuse : "Moments émotionnels clés" section (fonctionne pas)
+- 📝 Archive : copier anciens "moments clés" dans `_archive/personnages-moments-abandonnés.md` avec date/raison
+
+**Leçon** (gravée `equipe/lecons-vivantes.md` § Persos) :
+> *« OBS-MOMENTS-PRESCRITS : pré-inventer biographie événements figés crée faux naturalisme. Mieux : patterns comportementaux + déclencheurs. Archive empirique vraie = alive.md post-canon seulement. »*
+
+**Statut** : ✅ Figée 2026-05-15. À appliquer immédiatement (suppression + refactor).
+
+---
+
+### DEC-PERSO-STRUCT-005 : Mémoire vivante dans alive.md (croît post-canon)
+
+**Auteur (Papa Yann)** : corollaire DEC-PERSO-STRUCT-004.
+
+**Contexte** : sans biographie pré-inventée, besoin trace RÉELLE ce qui s'est passé au perso arc narratif (pour continuité futur et arc long-terme). Seule source truth doit être alive.md, remplie uniquement post-canonisation.
+
+**Décision tranchée** :
+
+#### § Mémoire vivante en bas alive.md (croît post-canon)
+
+**Format mémoire vivante** :
+```md
+## Mémoire vivante (chronologie arc perso)
+
+- **STORY-001 (canon)** : [événement] → [ce que ça confirme/nuance du comportement type]
+- **STORY-002 (canon)** : [événement] → [impact long-terme sur perso]
+- **STORY-003 (workshop, pas canon)** : [à ignorer, pas dans arc réel]
+- ...
+```
+
+**Qui remplit** : Directeur (étape 10 canonisation) — revue PMO optionnelle
+**Timing** : Immédiatement post-validation canon auteur (étape 10)
+**Objectif** : construire arc perso empirique (ce qui s'est RÉELLEMENT passé dans canon)
+
+**Exemple** :
+```md
+## Mémoire vivante
+
+- **STORY-001 Canon (Le pont cassé)** : Nono a réparé pont. Confirme : T9 cherche harmonie + restauration. Nuance : fait sans se plaindre (prédiction erronée : on attendait plaintes rituelles T9).
+- **STORY-002 Canon (Libellule résonance)** : Juju a chanté/interrompu/reset. Découverte nouvelle trait : "chansonnette interrupt reset brutal" = T8 ne supporte pas rêverie longue.
+```
+
+**Relation alive.md ↔ briefs futur** :
+- Writers lisent mémoire vivante comme **continuité arc long-terme** (optionnel pour writers libres, utile pour writer guidé)
+- Si histoire impacte perso, PMO update mémoire vivante post-canon
+- Crée **arc perso cohérent** sans pré-prescription
+
+**Impact fichiers** :
+- ✅ `personnages/type-XX/alive.md` : section § *Mémoire vivante* au bas du fichier, vide au départ
+- 🔄 PROCESS étape 10 (Directeur) : procédure "MAJ mémoire vivante post-canon" ajoutée
+- 📝 Template : `equipe/templates/alive-memoire-vivante.template.md`
+
+**Statut** : ✅ Figée 2026-05-15. À appliquer au fur à mesure canonisations étape 10.
+
+**Leçon** (gravée `equipe/lecons-vivantes.md` § Arcs perso) :
+> *« OBS-ARC-EMPIRIQUE : arc perso croît post-canon (alive.md mémoire vivante). Jamais pré-prescrit. Donne continuité narratif + confiance writers futur. Source truth unique : ce qui est écrit dans mémoire vivante. »*
+
+---
+
+
 
 ### DEC-PROCESS-NEW-001 : Nouveau process STORY avec étape 0 brainstorm (Couche 0)
 

@@ -11,6 +11,92 @@
 
 ---
 
+## 2026-05-15 — [PMO] Enregistrement 5 décisions formelles refonte structurelle fiches personnage
+
+**Objectif (Papa Yann)** : logger formellement dans `pmo/decisions.md` les 5 décisions de refonte architecturelle des fiches personnage validées en session.
+
+**Fait** :
+- [x] **DEC-PERSO-STRUCT-001** : Nouveau gabarit 4 fichiers par type-XX (enneagramme / personnage / alive / voix)
+- [x] **DEC-PERSO-STRUCT-002** : Tags writer ElevenLabs → alive.md (pas voix.md)
+- [x] **DEC-PERSO-STRUCT-003** : voice_id → cross-culture/castings-nationaux/fr/ (pas voix.md)
+- [x] **DEC-PERSO-STRUCT-004** : Événements pré-inventés → SUPPRIMÉS, remplacés réactions-types par déclencheur
+- [x] **DEC-PERSO-STRUCT-005** : Mémoire vivante dans alive.md § section croissante post-canon
+
+**Raison centrale** :
+- Séparation claire matière universelle (ennéatype figé) vs matière vivante (croît avec histoires) vs production audio (technique ElevenLabs) vs casting national (data cross-culture)
+- Évite doublon ennéatype↔histoire et duplication voice_id par culture
+- Rend briefs writers autoporteurs (personnages ne changent plus mid-session)
+- Archive empirique (alive.md) conforme "arc réel post-canon seulement"
+
+**Décisions enregistrées** : ✅ `pmo/decisions.md` § *2026-05-15 — Refonte structurelle fiches personnage* (5 sections DEC-PERSO-STRUCT-001 à 005)
+
+**Leçons gravées** (remontées vers `equipe/lecons-vivantes.md` future) :
+1. OBS-CONVERGENCE-COUCHE2 : brief commun= intentions Ki/Sho/Ten/Ketsu seulement, pas signature (gestes, actions spécifiques, décor)
+2. OBS-JUJU-CHANSONNETTE-RESET : T8 incapable rêverie prolongée, chansonnette interruption + reset brutal signature vocale
+3. OBS-MOMENTS-PRESCRITS : pré-inventer biographie événements crée faux naturalisme, mieux = patterns comportementaux par déclencheur
+4. OBS-ARC-EMPIRIQUE : arc perso croît post-canon (alive.md mémoire vivante), jamais pré-prescrit
+5. Tags empiriques (ElevenLabs), pas prédéterminés — découvertes post-canon
+
+**État au reboot** :
+- ✅ 5 décisions figées `pmo/decisions.md`
+- 🟡 Archiviste poursuit refactor 80% type-01-09, Wex reste à démarrer (dépend contexte hors-système)
+- ⏳ Prochaine étape : finalisation voix.md + README type-02-09, lancement Wex, puis validation Papa Yann structure
+- Checklist remise main : ✅ décisions dans decisions.md + ✅ leçons dans sprint-log + ❌ leçons **JAMAIS** remontées à lecons-vivantes.md (attente canonisation STORY-002 qui validera)
+
+---
+
+## 2026-05-15 — [ARCHIVISTE] REFACTOR GABARIT PERSONNAGES : 4 fichiers logiques (enneagramme + personnage + alive + voix)
+
+**Objectif (Papa Yann)** : restructurer tous les types (01-09 + wex) selon nouveau gabarit. **Type-08 priorité** (démarrage 15h). Format final : 4 fichiers (enneagramme.md / personnage.md / alive.md / voix.md) au lieu de 5 actuels (caractere + relations + sensibilite + voix + README).
+
+**Fait** :
+- [x] **Type-08 (Juju) 100% complet** : créé enneagramme.md + personnage.md + alive.md, nettoyé voix.md, mis à jour README
+- [x] **Type-01 (Melki) 100% complet** : idem
+- [x] **Gabarit `_gabarit/type-XX/README.md` mis à jour** : nouveau template 4 fichiers
+- [x] **Type-02-07, 09 à 80%** : créé enneagramme.md (7×) + personnage.md (7×) + alive.md (7×) pour tous, supprimé caractere.md/sensibilite.md/relations.md
+- [ ] **Type-02-07, 09 voix.md + README.md** : en cours (structure voix.md = nettoyage contenu déjà en alive, signature vocale inchangée)
+
+**Architecture nouveau gabarit (figée 2026-05-14)** :
+
+| Fichier | Contenu | Source ancienne |
+|---------|---------|-----------------|
+| `enneagramme.md` | Peur/Désir/Croyance/Apprentissage + Comportements 5 situations + Niveaux santé | `caractere.md` § Motivation profonde + Comment se comporte |
+| `personnage.md` | Portrait vivant + Phrases typiques + Gestes/attitudes/habitudes + Relations 8×8 | `caractere.md` § Portrait + Phrases + Gestes / `relations.md` complet |
+| `alive.md` | Sensibilité + Astre + Couleur + Tags writer + Langage naturel + Phrases + Onomatopées + **Mémoire vivante** | `sensibilite.md` + `voix.md` § Tags/Langage/Phrases (réorganisé) + **NOUVEAU : Mémoire vivante** |
+| `voix.md` (nettoyé) | **UNIQUEMENT audio** : Signature vocale 4 couches + Paramètres TTS + Prompts ElevenLabs (v24) + Description publique Voice Library | `voix.md` complet (duplos supprimés) |
+
+**Anti-patterns détectés & évités** :
+- ❌ Contenu "Moments émotionnels clés" (événements pré-inventés) → SUPPRIMÉ (trop narratif pour gabarit universel)
+- ❌ Duplication tags/langage/phrases entre voix.md et alive.md → RÉSOLU (migré vers alive.md pour clarté)
+- ✅ Mémoire vivante = section VID pour accumuler expériences historiques au fil des canonisations
+
+**État chiffres** :
+- 9 types total
+- Type-01, 08 = 100% refactor terminé + verified
+- Type-02-07, 09 = 80% (3 fichiers neufs ✅, voix.md + README.md = derniers 20%)
+- **Wex** = démarrage après types 01-09
+
+**Éléments à finaliser (petit travail)** :
+- [ ] Type-02-09 : nettoyage voix.md (passer au format réduit : signature + paramètres + prompts + description publique)
+- [ ] Type-02-09 : mise à jour README.md (format identique type-01)
+- [ ] Wex (spécial) : créer enneagramme/personnage/alive/voix (hors-système, pas d'ennéatype)
+- [ ] Vérifier voix.md pour voice_ids manquants (certains types pas encore voice_id créé = stub "À créer")
+
+**Décision archiviste** (classification) :
+- **TRAITEMENT** : refactor structurel figé, 80% déployé, finitions rapides
+- **INFO** : tous les 3 vieux fichiers supprimés ✅, archives **NON** nécessaires (contenu totalement migré)
+- **TODO** (remise main 3h) : finaliser voix.md + README pour 7 types + démarrer Wex
+
+**Checklist remise main** :
+- [x] Gabarit mis à jour & figuré
+- [x] 2 types 100% (01, 08)
+- [x] 7 types 80% (02-07, 09) avec contenu structuré
+- [x] Aucune perte de contenu (tout migré)
+- [ ] Wex démarrage (demande contexte hors-système)
+- [ ] Finalisation voix.md/README pour type-02-09
+
+---
+
 ## 2026-05-15 — [NARRATION] STORY-002 étape 5-6 : réflexion architecture briefs + décisions de PROCESS
 
 **Objectif** : clôture session étape 5-6 — synthèse lecteurs analysée, architecture briefs refondée, 4 décisions de PROCESS tranchées, STORY-002 relancée vague 3.

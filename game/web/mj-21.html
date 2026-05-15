@@ -33,9 +33,9 @@
     .pot-emoji { font-size:1.5rem; line-height:1; }
     .pot-lbl   { font-size:0.65rem; letter-spacing:0.5px; }
 
-    /* Tube à gauche, boutons à droite */
-    .tube-zone { display:flex; flex-direction:row; align-items:center; justify-content:center; gap:24px; flex:1; }
-    .tube-side { display:flex; flex-direction:column; align-items:stretch; gap:12px; }
+    /* Tube à gauche (nom couleur créée dessous), boutons centrés à droite */
+    .tube-zone { display:flex; flex-direction:row; align-items:center; justify-content:center; gap:26px; flex:1; }
+    .tube-col { display:flex; flex-direction:column; align-items:center; gap:8px; }
     .tube-wrap { position:relative; border-radius:10px; }
     @keyframes tubeShake {
       0%,100%{transform:rotate(0) scale(1);}
@@ -45,18 +45,18 @@
       75%{transform:rotate(9deg) scale(1.02);}
     }
     .tube-wrap.shaking { animation:tubeShake 0.55s ease; }
-    .tube-result { color:#ffe066; font-size:0.8rem; font-weight:900; min-height:1.2em; text-align:center; }
-    .tube-actions { display:flex; flex-direction:column; gap:12px; }
+    .tube-result { color:#ffe066; font-size:0.95rem; font-weight:900; min-height:1.3em; text-align:center; }
+    .tube-actions { display:flex; flex-direction:column; align-items:center; gap:14px; }
     .btn-tube { border-radius:16px; font-family:'Nunito',sans-serif; font-weight:900; font-size:1rem; padding:18px 22px; min-width:120px; cursor:pointer; color:#fff; }
     .btn-tube:active { opacity:0.72; transform:scale(0.91); }
     .btn-vider { background:rgba(255,255,255,0.09); border:2px solid rgba(255,255,255,0.22); }
     .btn-mixer { background:rgba(80,220,255,0.2); border:2px solid rgba(80,220,255,0.5); }
 
     /* Bus cible EN BAS + pastille couleur à trouver à côté (même hauteur) */
-    .bus-bas { display:flex; justify-content:center; align-items:flex-start; gap:18px; padding:6px 0 10px; flex-shrink:0; }
+    .bus-bas { display:flex; justify-content:center; align-items:center; gap:18px; padding:6px 0 10px; flex-shrink:0; }
     .bus-bas-wrap { position:relative; display:inline-flex; }
     .cible-col { display:flex; flex-direction:column; align-items:center; gap:6px; }
-    .cible-swatch { width:56px; height:85px; border-radius:14px; border:3px solid rgba(255,255,255,0.85); box-shadow:0 3px 10px rgba(0,0,0,0.45); }
+    .cible-swatch { width:78px; height:78px; border-radius:50%; border:3px solid rgba(255,255,255,0.85); box-shadow:0 3px 10px rgba(0,0,0,0.45); }
     .cible-name { font-size:1.05rem; font-weight:900; text-align:center; color:#fff; }
 
     /* Animation victoire : tube se renverse sur le bus */
@@ -118,15 +118,15 @@
     <button class="pot pot-blanc" onclick="addCouleur('w')"><span class="pot-emoji">&#11036;</span><span class="pot-lbl">BLANC</span></button>
   </div>
 
-  <!-- Tube à gauche, boutons à droite -->
+  <!-- Tube à gauche (nom couleur créée dessous), boutons centrés à droite -->
   <div class="tube-zone">
-    <div class="tube-wrap" id="tube-wrap"></div>
-    <div class="tube-side">
+    <div class="tube-col">
+      <div class="tube-wrap" id="tube-wrap"></div>
       <div class="tube-result" id="tube-result"></div>
-      <div class="tube-actions">
-        <button class="btn-tube btn-vider" onclick="viderTube()">&#128703; Vider</button>
-        <button class="btn-tube btn-mixer" id="btn-mixer" onclick="mixerTube()">&#128256; Mixer !</button>
-      </div>
+    </div>
+    <div class="tube-actions">
+      <button class="btn-tube btn-vider" onclick="viderTube()">&#128703; Vider</button>
+      <button class="btn-tube btn-mixer" id="btn-mixer" onclick="mixerTube()">&#128256; Mixer !</button>
     </div>
   </div>
 
@@ -366,6 +366,9 @@ async function showVictoire(){
   const tubeRect=tubeEl.getBoundingClientRect();
   const busRect=busEl.getBoundingClientRect();
 
+  // Masque le vrai tube pendant l'anim (sinon doublon fantôme à l'écran)
+  tubeEl.style.visibility='hidden';
+
   // Crée la scène d'animation
   const scene=document.getElementById('victoire-scene');
   scene.style.display='block';
@@ -419,6 +422,7 @@ async function showVictoire(){
   defi=DEFIS[order[defiIdx]];
   tube=newTube(); victoire=false; brunShown=false; mixerLocked=false;
   document.getElementById('brun-overlay').classList.remove('show');
+  document.getElementById('tube-wrap').style.visibility='visible';
   renderTube();
   renderBusBas(null);
   renderProgress();
@@ -431,6 +435,7 @@ function resetPartie(){
   defi=DEFIS[order[0]];
   tube=newTube();victoire=false;brunShown=false;mixerLocked=false;
   document.getElementById('brun-overlay').classList.remove('show');
+  document.getElementById('tube-wrap').style.visibility='visible';
   renderTube();renderBusBas(null);renderProgress();
 }
 

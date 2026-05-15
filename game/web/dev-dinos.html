@@ -692,6 +692,17 @@ function scrollToPeriode(id) {
   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+function showFiche(d) {
+  if (!d) return;
+  currentDino = d;
+  buildFiche(d);
+  const hdr = document.getElementById('fiche-hdr-name');
+  if (hdr) hdr.textContent = d.name;
+  showScreen('fiche');
+  const sc = document.getElementById('fiche-scroll');
+  if (sc) sc.scrollTop = 0;
+}
+
 function showFiche2(dinoId) {
   const dino = DINOS.find(d => d.id === dinoId);
   if (dino) showFiche(dino);

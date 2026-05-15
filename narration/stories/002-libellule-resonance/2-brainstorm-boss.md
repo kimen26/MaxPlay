@@ -23,12 +23,12 @@ Les 3 débordent — jeter des cailloux le plus loin, cueillir des trucs, tenter
 4. **Wex** (dans le vide, pour lui-même, sans regarder personne) : enchère sur **"ça fait fuir les animaux"** — sens figé, mots libres.
 5. **Au même moment** : Juju revient en courant, bute (racine ou caillou — libre), se rattrape à la main de Nono (déjà tendue).
 6. **Nono** suit le mouvement, tient la main. Sourit. **Battement de silence.**
-7. La libellule se pose sur la main libre de Nono.
+7. La libellule se pose sur la **main / doigt libre de Nono**.
 8. Nono soulève doucement — libellule devant le nez de Juju.
-9. **Juju** louche. Ose pas bouger (tomber / faire fuir).
-10. **Wex** en arrière-plan : gros yeux, **"oh" muet bouche ouverte**, tête penchée à 90°. Il vient de dire que ça fait fuir les animaux... et là la libellule est sur le nez de Juju. **Moment suspendu.**
+9. **Juju** louche. Ose pas bouger (tomber / faire fuir la bête).
+10. **Wex** en arrière-plan : yeux écarquillés, **"oh" muet bouche ouverte**, tête penchée à 45°. Il vient de dire que ça fait fuir les animaux... et là la libellule est sur le nez de Juju. **Moment suspendu.**
 11. **Nono** touche le nez de Juju : **"Gagné !"** — la libellule s'envole.
-12. **Fin** : libre au writer — fin douce Ghibli (contemplation, souffle, autre animal qui passe, silence qui s'étire) OU retour au jeu/autre activité.
+12. **Ketsu (fin)** : libre au writer — retour au calme (contemplation, souffle, autre animal qui passe, silence qui s'étire) OU retour au jeu / autre activité.
 
 ---
 

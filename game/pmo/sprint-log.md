@@ -9,6 +9,34 @@
 
 ---
 
+## 2026-05-16 — [DINOS] Encyclopédie déployée — 8 familles, Extinction, Pangée, audio DUO en attente
+
+**Owner** : Papa Yann (livraison MJ Dinos)
+
+**Livré** (committée + pushée master) :
+- 8 familles (2e catégorisation) + 4e mode menu
+- Cartes SVG continent dans chaque fiche
+- Écran Extinction (5 hypothèses) + intégration chronomap
+- Alias "Ptérodactyle" → Pteranodon
+- Pangée : 4 cartes Wikimedia Scotese/PALEOMAP (CC BY 4.0) en carrousel
+- Recâblage taille 50 dinos : référentiel Max validé (bus 12m/accordion 18m/Suzuki 4m/bus 2-étages/immeuble/éléphant/hippo/rhino), chiffres m+kg toujours + 3 mesures
+- **Bug critique résolu** : `showFiche is not defined` (ReferenceError l.786) — fonction supprimée lors édition antérieure, empêchait ouverture toute fiche
+  - **Leçon L-039** : éditions multiples qui suppriment fonctions appelées ailleurs → vérifier map appellations vs définitions après refonte
+
+**Audio DUO en cours** (non généré) :
+- Narrateur H + Wex sur encyclopédie
+- Script V0 Tricératops gravé : `game/docs/jeux/dino-encyclopedie/scripts-audio/triceratops-V0.md`
+- En attente challenge Papa Yann avant génération
+- Décision canon Wex côté narration-pmo : DEC-WEXDUO-JEU-001 (gravée)
+- Ticket suivi : **EP-039** créé
+
+**État au reboot** :
+- Dinos déployées, menu à jour
+- Audio roadmap figée en stratégie (DUO H+Wex)
+- Chantier audio = ticket `EP-039` en backlog
+
+---
+
 ## 2026-05-16 — [PMO] REX MJ-21 — 33 commits, 5 causes racines, leçons process
 
 **Owner** : game-pmo (signal utilisateur : "REX grave les leçons")

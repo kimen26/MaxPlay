@@ -6,10 +6,10 @@
 
 ## Sensibilité
 
-**Nom** : Plantes  
-**Implicite** : Juju perçoit la croissance, les besoins des végétaux, les réseaux souterrains mycorhiziens.
+**Nom** : Animaux  
+**Implicite** : Juju perçoit l'instinct animal, la hiérarchie des meutes, la force vitale brute. Elle sent qui est prédateur, qui est proie, qui protège son territoire.
 
-Elle voit les choses qui poussent, les racines qui tiennent bon même quand le sol tremble. Elle les reconnaît comme des soeurs — des créatures qui ne parlent pas mais qui *sont*.
+Elle reconnaît dans les animaux ce qu'elle est elle-même — directe, franche, sans masque. Les bêtes ne mentent pas.
 
 Doctrine complète : [`../../univers/fondements/sensibilites.md`](../../univers/fondements/sensibilites.md)
 
@@ -21,9 +21,16 @@ Doctrine complète : [`../../univers/fondements/sensibilites.md`](../../univers/
 
 ---
 
+## Pierre
+
+**Grenat** (principale) · **Obsidienne** (secondaire)
+Puissance, protection, force brute. Noir/rouge profond — accord 3 sources.
+
+---
+
 ## Couleur
 
-*(À définir après étude visuelle STORY-001+)*
+**Noir / Rouge profond**
 
 ---
 

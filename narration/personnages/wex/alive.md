@@ -4,9 +4,28 @@
 
 ---
 
+## Pierre
+
+**Turquoise** — pont entre les mondes, connexion cœur/gorge, unification des niveaux. Pierre ET couleur de Wex. Hors-système = hors-pierre unique, mais la turquoise couvre tous les domaines.
+
+---
+
+## Astre
+
+**—** *(aucun — le point zéro, l'absence qui relie tout)*
+Si besoin narratif ponctuel : **La Terre** (ici, maintenant, ancré dans tous les domaines).
+
+---
+
+## Élément
+
+**Éther** — substrat invisible qui relie et transcende les 4 éléments. Unanime 3 LLMs.
+
+---
+
 ## Couleur
 
-*(À définir après études visuelles S1+)*
+**Turquoise / Irisé**
 
 ---
 

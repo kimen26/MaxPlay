@@ -21,9 +21,16 @@ Doctrine complète : [`../../univers/fondements/sensibilites.md`](../../univers/
 
 ---
 
+## Pierre
+
+**Diamant** (principale) · **Saphir blanc** (secondaire)
+Pureté, clarté, résistance à l'imperfection. Incolore/blanc — accord 3 sources.
+
+---
+
 ## Couleur
 
-*(À définir après étude visuelle STORY-001+)*
+**Argent / Blanc**
 
 ---
 

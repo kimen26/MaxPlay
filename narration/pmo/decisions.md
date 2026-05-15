@@ -4,6 +4,108 @@
 
 ---
 
+## 2026-05-15 — DEC-SYMBOLIQUE-001 : Table symbolique v2 figée
+
+**Source** : challenge 3 LLMs (DeepSeek V4, Grok 4.3, Kimi K2) + validation Papa Yann.
+
+**Corrections pierres :**
+- Dadou T3 : Rubis (rouge ≠ Jaune/Or) → **Pyrite** (or des fous, jaune/or ✅)
+- Raph T7 : Lépidolite (lilas ≠ Vert/Orange) → **Aventurine verte** · Citrine verte → **Citrine**
+- Nono T9 : Sélénite (blanc ≠ Or pâle) → **Quartz rutile** (or pâle doré ✅) · Amazonite conservée
+
+**Corrections astres (erreurs dans alive.md) :**
+- Mimi T2 : Jupiter → **Lune** ✅
+- Madie T4 : Vénus → **Neptune** ✅
+- Lulu T5 : Neptune → **Uranus** ✅
+- Nono T9 : Lune → **Vénus** ✅
+
+**Échange sensibilités T6/T8 (2/3 LLMs + logique ennéagramme) :**
+- Pierrot T6 → **Plantes** (ancrage Saturne/Terre, sécurité végétale)
+- Juju T8 → **Animaux** (instinct de meute, franchise animale, prédation)
+
+**Wex complété (unanime 3 LLMs) :**
+- Pierre : **Turquoise** (pont entre niveaux)
+- Couleur : **Turquoise / Irisé**
+- Astre : **— (La Terre si besoin narratif)**
+- Élément : **Éther** (transcende les 4 éléments)
+
+**Fichiers mis à jour :**
+- `personnages/type-01 à 09/alive.md` : Pierre + Couleur + astres corrigés
+- `personnages/wex/alive.md` : Pierre + Astre + Élément + Couleur
+- `univers/fondements/sensibilites.md` : échange T6/T8
+- `personnages/theorie/enneagramme/symbolique.md` : table v2 complète
+
+**Statut** : ✅ Figée 2026-05-15.
+
+---
+
+## 2026-05-15 — DEC-SYMBOLIQUE-001 : Table symbolique figée v2
+
+**Auteur (Papa Yann)** : validation challenge 3 LLMs (DeepSeek V4, Grok 4.3, Kimi K2) sur table symbolique originale 2026-04-27.
+
+**Contexte** : table symbolique originale soumise à challenge par 3 LLMs indépendants. Analyse convergence + ajustements basés sur critères cohérence couleur/pierre/astre + ennéagramme. Corrections validées par Papa Yann 2026-05-15.
+
+**Décisions tranchées** :
+
+### Éléments (4 + Wex hors-système)
+
+1. **Wex** : **Éther** (unanime 3 LLMs — pont entre niveaux, hors-système justifié). Pas d'élément terrestre.
+
+### Couleur et pierre Wex
+
+2. **Couleur Wex** : **Turquoise / Irisé** (unanime 3 LLMs — connexion cœur/gorge, pont entre domaines).
+3. **Pierre Wex** : **Turquoise** (pierre ET couleur cohérentes, Wex hors-système).
+
+### Astre Wex
+
+4. **Astre Wex** : **Aucun** (2/3 LLMs — vide symbolique = force pour hors-système). Formulation : "— (La Terre si besoin narratif)".
+
+### Corrections astres (live.md v1 contenait des erreurs)
+
+5. **Mimi T2** : Corrigé Jupiter → **Lune** (erreur live.md).
+6. **Lulu T5** : Corrigé Neptune → **Uranus** (erreur live.md).
+7. **Madie T4** : Corrigé Vénus → **Neptune** (erreur live.md).
+8. **Nono T9** : Corrigé Lune → **Vénus** (erreur live.md).
+
+### Mutations pierres (cohérence couleur + ennéagramme)
+
+9. **Dadou T3** : Rubis retirée → **Pyrite** (jaune/or — cohérence Jaune/Or + "or des fous" clin d'œil T3 opportunité/duperie).
+10. **Raph T7** : Lépidolite (lilas) retirée → **Aventurine verte** (colle Vert/Orange + Jupiter boule de lumière). Citrine verte → **Citrine** (jaune-orange consolidée).
+11. **Nono T9** : Sélénite retirée → **Quartz rutile** (reflets dorés, or pâle ✅ cohérence Nono). Amazonite conservée (bleu ciel Nono acceptable).
+
+### Échange sensibilités T6/T8 (validé 2/3 LLMs)
+
+12. **Pierrot T6** : Sensibilité **Plantes** ← Animaux (ancrage Terre/Saturne, sécurité végétale de la transformation lente). Astres/couleur/pierres inchangés.
+13. **Juju T8** : Sensibilité **Animaux** ← Plantes (instinct de meute, force brute, prédation, Mars guerrier). Astres/couleur/pierres inchangés.
+
+### Table finale validée (v2 figée 2026-05-15)
+
+| Type | Perso | Pierre 1 | Pierre 2 | Astre | Couleur | Élément | Sensibilité |
+|------|-------|----------|----------|-------|---------|---------|-------------|
+| 1 | Melki | Diamant | Saphir blanc | Mercure | Argent/Blanc | Air | Minéraux |
+| 2 | Mimi | Quartz rose | Rhodonite | Lune | Rose/Rouge doux | Eau | Eau |
+| 3 | Dadou | Citrine | Pyrite | Soleil | Jaune/Or | Feu | Forces |
+| 4 | Madie | Opale | Améthyste | Neptune | Violet/Indigo | Eau | Fréquence |
+| 5 | Lulu | Saphir | Lapis-lazuli | Uranus | Bleu nuit | Air | Quantique |
+| 6 | Pierrot | Agate Blue Lace | Calcédoine | Saturne | Bleu ciel/Beige | Terre | **Plantes** |
+| 7 | Raph | Aventurine verte | Citrine | Jupiter | Vert/Orange | Feu | Cosmos |
+| 8 | Juju | Grenat | Obsidienne | Mars | Noir/Rouge profond | Feu | **Animaux** |
+| 9 | Nono | Quartz rutile | Amazonite | Vénus | Or pâle/Bleu ciel | Terre | Vibration collective |
+| — | Wex | Turquoise | — | — (La Terre si besoin) | Turquoise/Irisé | Éther | Vibration transversale |
+
+**Source** : challenge 3 LLMs indépendants (résultats convergents sur éléments/couleur/astre) + critères ennéa + Papa Yann validation 2026-05-15.
+
+**Fichiers impactés** (modifications Claude en cours) :
+- `narration/personnages/type-01/alive.md` à `type-09/alive.md` : mise à jour astres (corrections) + sensibilités T6/T8 (échange) + couleur+pierre sections si absentes
+- `narration/personnages/wex/alive.md` : turquoise, éther, astre vide
+- `narration/univers/fondements/sensibilites.md` : actualiser T6/T8 échange
+- `narration/cross-culture/castings-nationaux/fr/type-06.md` et `type-08.md` : sensibilité mention si présente
+- `narration/personnages/theorie/enneagramme/symbolique.md` : mise à jour table
+
+**Statut** : ✅ Figée 2026-05-15. Challenge 3 LLMs validé par auteur.
+
+---
+
 ## 2026-05-15 — DEC-GABARIT-PERSO-001 : Gabarit personnages figé
 
 **Auteur (Archiviste — Papa Yann validation)** : gravage structurel 2026-05-15.

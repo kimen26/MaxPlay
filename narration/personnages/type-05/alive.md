@@ -15,13 +15,20 @@ Doctrine complète : [`../../univers/fondements/sensibilites.md`](../../univers/
 
 ## Astre
 
-**Neptune** — Intuition, profondeur, découverte, mystère, savoir caché.
+**Uranus** — Originalité, intellect détaché, génie excentrique, perception non conventionnelle.
+
+---
+
+## Pierre
+
+**Saphir** (principale) · **Lapis-lazuli** (secondaire)
+Sagesse, connaissance accumulée, intellect. Bleu nuit — accord 3 sources.
 
 ---
 
 ## Couleur
 
-*(À définir après étude visuelle STORY-001+)*
+**Bleu nuit**
 
 ---
 

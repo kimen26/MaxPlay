@@ -6,19 +6,20 @@
 
 ---
 
-## Table principale
+## Table principale — v2 (2026-05-15, validée Papa Yann)
 
-| Type | Perso | Pierre / Cristal | Astre | Couleur dominante | Élément |
-|------|-------|-----------------|-------|-------------------|---------|
-| 1 | Melki | Diamant · Saphir blanc | Mercure | Argent / Blanc | Air |
-| 2 | Mimi | Quartz rose · Rhodonite | Lune | Rose / Rouge doux | Eau |
-| 3 | Dadou | Citrine · Rubis | Soleil | Jaune / Or | Feu |
-| 4 | Madie | Opale · Améthyste | Neptune | Violet / Indigo | Eau |
-| 5 | Lulu | Saphir · Lapis-lazuli | Uranus | Bleu nuit | Air |
-| 6 | Pierrot | Agate Blue Lace · Calcédoine | Saturne | Bleu ciel / Beige | Terre |
-| 7 | Raph | Lépidolite · Citrine verte | Jupiter | Vert / Orange | Feu |
-| 8 | Juju | Grenat · Obsidienne | Mars | Noir / Rouge profond | Feu |
-| 9 | Nono | Amazonite · Sélénite | Vénus | Or pâle / Bleu ciel | Terre |
+| Type | Perso | Pierre / Cristal | Astre | Couleur dominante | Élément | Sensibilité |
+|------|-------|-----------------|-------|-------------------|---------|-------------|
+| 1 | Melki | Diamant · Saphir blanc | Mercure | Argent / Blanc | Air | Minéraux |
+| 2 | Mimi | Quartz rose · Rhodonite | Lune | Rose / Rouge doux | Eau | Eau |
+| 3 | Dadou | Citrine · **Pyrite** | Soleil | Jaune / Or | Feu | Forces |
+| 4 | Madie | Opale · Améthyste | Neptune | Violet / Indigo | Eau | Fréquence |
+| 5 | Lulu | Saphir · Lapis-lazuli | Uranus | Bleu nuit | Air | Quantique |
+| 6 | Pierrot | Agate Blue Lace · Calcédoine | Saturne | Bleu ciel / Beige | Terre | **Plantes** |
+| 7 | Raph | **Aventurine verte · Citrine** | Jupiter | Vert / Orange | Feu | Cosmos |
+| 8 | Juju | Grenat · Obsidienne | Mars | Noir / Rouge profond | Feu | **Animaux** |
+| 9 | Nono | **Quartz rutile · Amazonite** | Vénus | Or pâle / Bleu ciel | Terre | Vibration collective |
+| — | **Wex** | **Turquoise** | **— (La Terre si besoin)** | **Turquoise / Irisé** | **Éther** | Vibration transversale |
 
 ---
 
@@ -33,7 +34,8 @@
 - Lune : cycles, nourriture, douceur — accord 3 sources
 
 **Type 3 — Dadou**
-- Citrine : énergie solaire, réussite, confiance — accord 2 sources (Grok préférait Rubis)
+- Citrine : énergie solaire, réussite, confiance — accord 2 sources
+- Pyrite : "or des fous", brillante, symbole de succès et d'apparence — remplace Rubis (rouge, incohérent avec Jaune/Or) — décision 2026-05-15
 - Soleil : performance, rayonnement, visibilité — accord 3 sources
 
 **Type 4 — Madie**
@@ -48,23 +50,30 @@
 - Agate Blue Lace : sécurité, calme, loyauté — accord 2 sources
 - Saturne : structure, discipline, fidélité aux règles — accord 3 sources
 
-**Type 7 — Raph / Wex (héros)**
-- Lépidolite : joie, légèreté, transformation — accord 2 sources
+**Type 7 — Raph**
+- Aventurine verte : chance, expansion, ouverture — remplace Lépidolite (lilas, incohérent avec Vert/Orange) — décision 2026-05-15
+- Citrine : énergie, joie, orange/jaune — remplace Citrine verte
 - Jupiter : expansion, enthousiasme, abondance — accord 3 sources
-- Note Wex : hors-système, aucun symbolique figé (délibérément)
 
 **Type 8 — Juju**
 - Obsidienne : puissance brute, protection — accord 3 sources
 - Mars : force, action, feu — accord 3 sources
 
 **Type 9 — Nono**
-- Sélénite : paix, clarté intérieure, fusion — accord 2 sources
+- Quartz rutile : or pâle doré, paix, clarté — remplace Sélénite (blanc, peu cohérent avec Or pâle) — décision 2026-05-15
+- Amazonite : bleu-vert/bleu ciel — conservée (accord 2 sources)
 - Vénus : harmonie, beauté, douceur — accord 3 sources (inattendu mais fort)
 
 ---
 
-## Wex — hors symbolique figé
+## Wex — hors symbolique figé (complété 2026-05-15)
 
-Wex est délibérément sans pierre ni astre assignés.
-Pas parce qu'il est "vide" — parce qu'il est **toutes les fréquences**.
-Si besoin narratif ponctuel : cristal arc-en-ciel (opale de feu) ou absence de pierre visible.
+| Attribut | Valeur | Note |
+|----------|--------|------|
+| Pierre | **Turquoise** | Pont entre niveaux, connexion cœur/gorge, hors-système |
+| Astre | **—** (La Terre si besoin narratif) | Vide = force pour hors-système |
+| Couleur | **Turquoise / Irisé** | Pierre et couleur identiques |
+| Élément | **Éther** | Relie et transcende les 4 éléments — unanime 3 LLMs |
+| Sensibilité | Vibration transversale | Pensée / émotion / envie × relations entre domaines |
+
+Pas parce qu'il est "vide" — parce qu'il est **toutes les fréquences**. La turquoise est la seule pierre qui couvre symboliquement toutes les fréquences à la fois.

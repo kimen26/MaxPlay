@@ -15,13 +15,20 @@ Doctrine complète : [`../../univers/fondements/sensibilites.md`](../../univers/
 
 ## Astre
 
-**Vénus** — Beauté, expression créative, sensibilité, profondeur émotionnelle, unicité.
+**Neptune** — Rêve, mystère, profondeur émotionnelle, idéal, mélancolie créatrice.
+
+---
+
+## Pierre
+
+**Opale** (principale) · **Améthyste** (secondaire)
+Unicité, profondeur émotionnelle, iridescence. Violet/indigo — accord 2-3 sources.
 
 ---
 
 ## Couleur
 
-*(À définir après étude visuelle STORY-001+)*
+**Violet / Indigo**
 
 ---
 

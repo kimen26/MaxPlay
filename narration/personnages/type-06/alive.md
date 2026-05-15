@@ -6,8 +6,8 @@
 
 ## Sensibilité
 
-**Nom** : Animaux  
-**Implicite** : Pierrot perçoit les comportements loyaux, les alliances, la confiance entre les créatures. Il sent qui est digne de confiance.
+**Nom** : Plantes  
+**Implicite** : Pierrot perçoit la croissance lente et sûre, les racines qui ancrent, les cycles végétaux qui reviennent toujours. Il sent ce qui pousse et ce qui tient — les structures invisibles sous la surface.
 
 Doctrine complète : [`../../univers/fondements/sensibilites.md`](../../univers/fondements/sensibilites.md)
 
@@ -19,9 +19,16 @@ Doctrine complète : [`../../univers/fondements/sensibilites.md`](../../univers/
 
 ---
 
+## Pierre
+
+**Agate Blue Lace** (principale) · **Calcédoine** (secondaire)
+Sécurité, calme, loyauté. Bleu ciel/beige — accord 2 sources.
+
+---
+
 ## Couleur
 
-*(À définir après étude visuelle STORY-001+)*
+**Bleu ciel / Beige**
 
 ---
 

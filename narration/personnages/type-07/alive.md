@@ -19,9 +19,16 @@ Doctrine complète : [`../../univers/fondements/sensibilites.md`](../../univers/
 
 ---
 
+## Pierre
+
+**Aventurine verte** (principale) · **Citrine** (secondaire)
+Chance, expansion, joie. Vert/orange — cohérence couleur garantie.
+
+---
+
 ## Couleur
 
-*(À définir après étude visuelle STORY-001+)*
+**Vert / Orange**
 
 ---
 

@@ -834,10 +834,8 @@ function regimelabel(regime) {
   return regime.replace(/[🥩🌿🐟🍃🌊]/g,'').replace(/\(.*?\)/g,'').trim();
 }
 function speakFiche(d) {
-  const poids = d.poids_t >= 1 ? d.poids_t + ' tonnes' : Math.round(d.poids_t*1000) + ' kilos';
   const txt = `${d.name} ! ${d.nom_etym||''} `
-    + `Il mesurait ${d.taille_m} mètres de long et ${d.hauteur_m||'?'} mètres de haut. `
-    + `Il pesait ${poids}. `
+    + `${_statsPhrase(d)} `
     + `C'est un ${regimelabel(d.regime).toLowerCase()}. `
     + `Il mange ${d.proies}. `
     + `${d.amis}. `
@@ -946,7 +944,7 @@ function buildFiche(d) {
     <!-- Stats longueur / hauteur / poids -->
     <div class="fiche-stats" style="grid-template-columns:1fr 1fr 1fr">
       <div class="stat-box">
-        <div class="stat-label">↔️ Longueur</div>
+        <div class="stat-label">${d.taille_vol ? '🪽 Ailes' : '↔️ Longueur'}</div>
         <div class="stat-val">${d.taille_m} m</div>
         <div class="stat-comp">${d.comp_taille}</div>
       </div>
@@ -957,7 +955,7 @@ function buildFiche(d) {
       </div>
       <div class="stat-box">
         <div class="stat-label">⚖️ Poids</div>
-        <div class="stat-val">${d.poids_t >= 1 ? d.poids_t + ' t' : Math.round(d.poids_t * 1000) + ' kg'}</div>
+        <div class="stat-val">${d.poids_t >= 1 ? Math.round(d.poids_t * 1000).toLocaleString('fr-FR') + ' kg' : Math.round(d.poids_t * 1000) + ' kg'}</div>
         <div class="stat-comp">${d.comp_poids}</div>
       </div>
     </div>
@@ -1158,9 +1156,7 @@ const DINO_EXTRAS = {
 function speakStatsDino(id) {
   const d = DINOS.find(x => x.id === id);
   if (!d) return;
-  const poids = d.poids_t >= 1 ? d.poids_t + ' tonnes' : Math.round(d.poids_t * 1000) + ' kilos';
-  const haut = d.comp_hauteur || (d.hauteur_m + ' mètres');
-  speakText(d.name + ' était ' + (d.comp_taille||'') + '. Et il était haut comme ' + haut + '. Il pesait ' + poids + ', ' + d.comp_poids);
+  speakText(d.name + ' ! ' + _statsPhrase(d));
 }
 
 /* ── Init ── */

@@ -170,29 +170,69 @@ const DINO_PERIODES = [
   },
 ];
 
-// ─── Comparaisons taille / poids (générées automatiquement) ───
+// ─── Comparaisons taille / poids (référentiel Max validé 2026-05-16) ───
+// Référentiels : Papa = 1,8 m · vélo = 1,7 m · voiture = 4 m · bus = 12 m ·
+//                bus anglais 2 étages ≈ 4,4 m haut · étage immeuble = 3 m ·
+//                éléphant = 5 t · hippopotame = 3 t · rhinocéros = 1 t ·
+//                grand chien = 30 kg · chat = 4 kg.
+// Les fonctions renvoient une comparaison SANS le chiffre (le chiffre exact
+// est affiché dans les stats et dit séparément par la lecture vocale).
+function _round1(x) { return Math.round(x * 10) / 10; }
+
+// LONGUEUR (nez → queue) — bus RATP Paris : standard = 12 m, accordéon = 18 m
 function _compLong(m) {
-  if (m >= 24) return `aussi long que ${Math.round(m/12*10)/10} immeubles de 4 étages couchés !`;
-  if (m >= 12) return `aussi long que ${Math.round(m/12*10)/10 === 1 ? 'un' : Math.round(m/12*10)/10} bus de ville (${m} m) !`;
-  if (m >= 6)  return `aussi long que ${Math.round(m/4*10)/10 === 1 ? 'une' : Math.round(m/4*10)/10} voiture${m>=8?'s':''} (${m} m) !`;
-  if (m >= 3)  return `aussi long que ${Math.round(m/1.8*10)/10} fois Papa (${m} m) !`;
-  if (m >= 1)  return `aussi long qu'un grand vélo (${m} m)`;
-  return `aussi petit qu'un chat (${Math.round(m*100)} cm) !`;
+  if (m >= 30) return `aussi long que ${Math.round(m / 18)} bus accordéon l'un derrière l'autre !`;
+  if (m >= 18) return `aussi long qu'un bus accordéon de Paris !`;
+  if (m >= 13) return `aussi long qu'un bus, plus une voiture devant !`;
+  if (m >= 10) return `aussi long qu'un bus de Paris !`;
+  if (m >= 8) {
+    const v = Math.round(m / 4);
+    return `aussi long que ${v} voitures garées à la suite !`;
+  }
+  if (m >= 3) {
+    const p = Math.round(m / 1.8);
+    return `aussi long que ${p} Papas couchés bout à bout !`;
+  }
+  if (m >= 1)  return `aussi long qu'un grand vélo !`;
+  if (m >= 0.5) return `aussi long qu'un gros chat !`;
+  return `tout petit, comme un poulet !`;
 }
+
+// HAUTEUR (sol → tête, debout)
 function _compHaut(m) {
-  if (m >= 6)  return `aussi haut qu'un immeuble de ${Math.round(m/3)} étages !`;
-  if (m >= 3.5) return `plus haut qu'un éléphant (${m} m) !`;
-  if (m >= 1.8) return `aussi haut que Papa (${m} m) !`;
-  if (m >= 1)  return `aussi haut qu'une porte (${m} m)`;
-  return `moins haut que toi (${Math.round(m*100)} cm) !`;
+  if (m >= 9) return `aussi haut qu'un immeuble de ${Math.round(m / 3)} étages !`;
+  if (m >= 6) return `aussi haut qu'une maison de 2 étages !`;
+  if (m >= 3.8) return `aussi haut qu'un bus anglais à deux étages !`;
+  if (m >= 3) return `aussi haut que deux Papas l'un sur l'autre !`;
+  if (m >= 1.8) return `aussi grand que Papa debout !`;
+  if (m >= 1) return `à peu près à la hauteur de Papa qui se baisse !`;
+  if (m >= 0.5) return `à ta hauteur à toi !`;
+  return `tout petit, plus bas que tes genoux !`;
 }
+
+// POIDS (gabarit animal)
 function _compPoids(t) {
-  if (t >= 50) return `aussi lourd que ${Math.round(t/5)} éléphants — un troupeau entier !`;
-  if (t >= 10) return `aussi lourd que ${Math.round(t/5)} éléphants !`;
-  if (t >= 3)  return `aussi lourd que ${Math.round(t/3*10)/10 === 1 ? 'un' : Math.round(t/3*10)/10} hippopotame${t>=6?'s':''} !`;
-  if (t >= 0.5) return `aussi lourd que ${Math.round(t/0.5)} rhinocéros !`;
-  if (t >= 0.1) return `aussi lourd que ${Math.round(t/0.03)} grands chiens !`;
-  return `aussi lourd qu'un gros chat (${Math.round(t*1000)} kg) !`;
+  if (t >= 10) return `aussi lourd que ${Math.round(t / 5)} éléphants !`;
+  if (t >= 3)  { const h = Math.round(t / 3); return h <= 1 ? `aussi lourd qu'un hippopotame !` : `aussi lourd que ${h} hippopotames !`; }
+  if (t >= 0.8) { const r = Math.round(t / 1); return r <= 1 ? `aussi lourd qu'un rhinocéros !` : `aussi lourd que ${r} rhinocéros !`; }
+  if (t >= 0.2) return `aussi lourd qu'un grand cochon !`;
+  if (t >= 0.07) return `aussi lourd qu'un gros chien !`;
+  if (t >= 0.015) return `aussi lourd qu'un chat bien dodu !`;
+  if (t >= 0.003) return `léger comme un petit chat !`;
+  return `léger comme un oiseau !`;
+}
+
+// Texte lecture vocale des 3 mesures (m + kg + comparaison)
+// fr() : virgule décimale pour que le TTS dise "un virgule huit" pas "un point huit"
+function _fr(n) { return String(n).replace('.', ' virgule '); }
+function _statsPhrase(d) {
+  const kg = d.poids_t >= 1
+    ? Math.round(d.poids_t) + ' mille kilos'
+    : Math.round(d.poids_t * 1000) + ' kilos';
+  const lng = d.taille_vol
+    ? `Il avait des ailes de ${_fr(d.taille_m)} mètres d'un bout à l'autre — ${d.comp_taille}`
+    : `Il mesurait ${_fr(d.taille_m)} mètres de long — ${d.comp_taille}`;
+  return `${lng} ${d.hauteur_m ? `Debout, il faisait ${_fr(d.hauteur_m)} mètres de haut — ${d.comp_hauteur} ` : ''}Et il pesait ${kg} — ${d.comp_poids}`;
 }
 
 const DINOS = [
@@ -1360,8 +1400,9 @@ const DINOS = [
     taille_m: 7,
     hauteur_m: 1.8,
     poids_t: 0.025,
-    comp_taille: 'envergure de 7 m — aussi large qu\'un avion léger !',
-    comp_hauteur: 'aussi haut que Papa debout (1,8 m)',
+    taille_vol: true,
+    comp_taille: 'ses ailes ouvertes étaient larges comme une voiture et demie !',
+    comp_hauteur: _compHaut(1.8),
     comp_poids: _compPoids(0.025),
     nom_etym: 'Son nom veut dire «aile sans dents» en grec — il volait avec de grandes ailes mais n\'avait pas de dents !',
     regime: '🐟 Piscivore',
@@ -1387,7 +1428,8 @@ const DINOS = [
     taille_m: 11,
     hauteur_m: 3.0,
     poids_t: 0.2,
-    comp_taille: 'envergure de 11 m — aussi large qu\'un avion de ligne !',
+    taille_vol: true,
+    comp_taille: 'ses ailes ouvertes étaient larges comme un bus de Paris !',
     comp_hauteur: _compHaut(3.0),
     comp_poids: _compPoids(0.2),
     nom_etym: 'Son nom vient de Quetzalcoatl, le grand serpent plumé des dieux aztèques — un nom de dieu pour le plus grand volant !',
@@ -1442,7 +1484,7 @@ const DINOS = [
     hauteur_m: 2.0,
     poids_t: 15,
     comp_taille: _compLong(17),
-    comp_hauteur: 'aussi large qu\'une petite voiture — dans l\'eau !',
+    comp_hauteur: 'son corps était large comme la voiture de Papa !',
     comp_poids: _compPoids(15),
     nom_etym: 'Son nom veut dire «lézard de la Meuse» — la Meuse est une rivière en Europe où on a trouvé ses os !',
     regime: '🐟 Carnivore marin',

@@ -108,6 +108,18 @@ C'est un **diff sémantique code ↔ loi figée**, ligne par ligne, citations ob
 | **Style flat cartoon** | Toca Boca / Tayo, arrondi, PAS pixel art (sauf WexWorld qui est l'exception) | MOYENNE |
 | **Palette 6-8 couleurs max** | Saturées, contraste élevé, contours gras | BASSE |
 
+### Section 6 — HAUTE — Couverture harnais de test (EP-038, créée 2026-05-16)
+
+> Proposée par game-conseiller au REX MJ-21. Le harnais machine remplace Papa Yann comme débogueur — un MJ non couvert = un MJ qui retombera dans les 33 commits.
+
+| Check | Règle | Si violé |
+|---|---|---|
+| **Spec existe** | `game/tests/mj-XX.spec.mjs` existe pour ce MJ | HAUTE (BASSE si tweak cosmétique trivial) |
+| **Spec passe** | `cd game/tests && npm run mj:test mj-XX` → VERT (le demander au main agent si tu ne peux pas l'exécuter) | CRITIQUE si rouge |
+| **Couvre la victoire** | Le spec rejoue un chemin gagnant et asserte l'état de victoire visible/non-vide | HAUTE |
+| **Couvre le figé** | ≥ 1 assert par ligne 🔒 du fichier `figees/mj-XX.md` | HAUTE |
+| **Smoke** | Le spec échoue sur toute `console.error`/`pageerror` | HAUTE |
+
 ---
 
 ## 📏 Format de sortie OBLIGATOIRE

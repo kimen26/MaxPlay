@@ -37,15 +37,52 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 **Pattern MJ-21** : layout codé 5 fois en parallèle conversation (5 commits refactor). Root cause : pas de screen mockup validé par Papa Yann AVANT dev.
 **Processus** : brève → **appel `game-conseiller` (Opus) 30 min** → layout proposé + mécanique + pédago → validation Papa Yann → figeage git (`game/docs/jeux/figees/mj-XX.md`) → dev contre design figé. Bénéfice : 4–5 commits layout évités.
 
+### L-039 – Éditions multiples = risque suppression fonctions appelées ailleurs
+**Dinos (2026-05-16)** : bug critique `showFiche is not defined` (ReferenceError l.786) — fonction supprimée lors édition antérieure de dinos-data.js, empêchait ouverture TOUTE fiche.
+**Leçon** : avant refonte ou suppression massive, mapper toutes les FONCTIONS APPELÉES vs DÉFINIES (grep ou AST) — valider aucune appelante orpheline. Outil : `grep -rn "showFiche" .` avant commit.
+
+### L-040 – Audio multi-voix = figeage texte amont obligatoire
+**Dinos audio (2026-05-16)** : chantier DUO Narrateur H + Wex sur 50 fiches, coût itération ElevenLabs important (loudness + timing + clarté entre voix = 2-3 tries min).
+**Processus** : figeage script + challenge Papa Yann AVANT envoi ElevenLabs. Validation 1 fiche test (Tricératops) avant généraliser 49 fiches.
+
 ---
 
 ## Épics
 
 ---
 
+## EP-039 – Narration audio DUO Narrateur H + Wex sur encyclopédie Dinos
+
+**Statut** : `[ ]` à faire — ⚠️ **en attente figeage textes + approbation Papa Yann**
+
+**Priorité** : 🟡 **MOYENNE** — enrichissement pédago post-déploiement MJ dinos
+
+**Contexte** : MJ encyclopédie dinos (mj-dinos) déployé avec 50 fiches (familles, extinction, pangée). Audio narration riche = profondeur pédago. Stratégie : duo Narrateur H (exposition) + Wex (commentaires transversaux/questions catalyseur).
+
+**Matière** :
+- Script V0 (Tricératops) gravé : `game/docs/jeux/dino-encyclopedie/scripts-audio/triceratops-V0.md`
+- Décision canon Wex figée côté narration-pmo : `DEC-WEXDUO-JEU-001`
+- Voice IDs : réutiliser casting narration (`narration/personnages/voix-meta/_VOICE-IDS-CASTING.md`)
+- Tags audio v3 (didascalies) : réutiliser catalog `~/.claude/skills/audio-direction-elevenlabs/`
+
+**À faire** :
+1. **T-400** : Challenge Papa Yann sur script V0 Tricératops (avant audio gen) — figer contenu
+2. **T-401** : Générer MP3 DUO sur Tricératops via ElevenLabs + text-to-dialogue (skill `studio_audiobook_from_segments`)
+3. **T-402** : Valider MP3 (loudness, timing, clarté) — rejeu itératif si besoin
+4. **T-403** : Répliquer sur 5 fiches phares (Stégosaure, Vélociraptor, T-Rex, Ptérodactyle, Diplodocus) pour valider process
+5. **T-404** : (Optionnel) Généraliser à 50 fiches si process validé
+
+**Leçon attachée** : L-040 (à créer) — "Audio multi-voix = figeage amont obligatoire" (coût itération ElevenLabs + timing entre voix)
+
+**Impact** : `game/docs/jeux/dino-encyclopedie/assets/audio/`, nouveau dossier `game/web/mj-dinos/audio/` (intégration HTML/diffusion fiche).
+
+**Dépendance** : Aucune — MJ dinos déjà verte, audio est enrichissement.
+
+---
+
 ## EP-038 – Harnais de test headless mini-jeux (Playwright)
 
-**Statut** : `[ ]` à faire — ⚠️ **décision dépendance Playwright (~200 Mo) en attente Papa Yann**
+**Statut** : `[~]` **pilote livré 2026-05-16** — Papa Yann a validé (priorité sécurité : Playwright 1.60 + Chromium 148 à jour, pas de version épinglée vieille). `game/tests/` opérationnel, `mj-21.spec.mjs` VERT sur HEAD / ROUGE sur commit buggé `bf5f5cde` (preuve rétro faite). Reste : généraliser 1 spec/MJ actif (T-382→T-384).
 
 **Priorité** : 🔥 **URGENTE** — plus gros levier optimisation (REX MJ-21 : ~60% des allers-retours évitables).
 
@@ -214,6 +251,8 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 | EP-032 | MJ-09 · Trie les bus : déplacer 2 bus simultanément (multi-touch 2 doigts) | `[x]` |
 | EP-035 | Fix encoding emojis tous les mini-jeux HTML (UTF-8 + vérification) | `[ ]` |
 | EP-036 | Gabarit header compact unifié tous les MJ (rétro-fit 20 fichiers) | `[ ]` |
+| EP-038 | Harnais de test headless mini-jeux (Playwright headless, 1 spec/MJ) | `[~]` pilote livré |
+| EP-039 | Narration audio DUO Narrateur H + Wex sur encyclopédie Dinos (50 fiches) | `[ ]` |
 | EP-TILES | Pipeline tile-tools LimeZu (cartographie + recettes + mockups-routes + tile-picker + tile-pmo) | `[~]` |
 | EP-MJPOSE | MJ · Pose-tes-tiles (kids éditeur de map simplifié) | `[x]` |
 | EP-VOCAB | Module vocab.py + pivot "refs visuelles" pour pipeline tile-tools (anti-erreurs, source unique) | `[x]` |

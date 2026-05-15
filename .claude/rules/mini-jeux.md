@@ -50,16 +50,34 @@ Avant **TOUT** `Edit`/`Write` sur `game/web/mj-XX.html` :
 - Pour data : utiliser `<script src="data.js">` qui assigne `window.NAME`
 - **Jamais** de `fetch('./data.json')` dans un mini-jeu local
 
+## 🧪 HARNAIS DE TEST OBLIGATOIRE avant tout push d'un mj-XX (EP-038)
+
+> Créé 2026-05-16 suite REX MJ-21 (33 commits, ~20 d'essais à l'aveugle). Papa Yann n'est plus le débogueur — la machine teste, lui juge le produit.
+
+**Avant CHAQUE `git push` touchant `game/web/mj-XX.html`** :
+
+```
+cd game/tests && npm run mj:test mj-XX
+```
+
+- **Vert** → push autorisé. **Rouge** → NE PAS pusher, corriger d'abord.
+- Stack : Playwright 1.60+ + Chromium (réel, headless). Pas jsdom (n'attrape pas SVG/animation).
+- 1 spec par MJ : `game/tests/mj-XX.spec.mjs` (~30-50 lignes : smoke console + chemin gagnant scripté + 1 assert par ligne 🔒 du fichier figé). Modèle : `mj-21.spec.mjs`.
+- Un MJ sans spec qui passe au harnais = un MJ qu'on ne pushe pas (sauf tweak cosmétique trivial).
+- **Règle 2-strikes** : 2e commit-fix sur le même symptôme → ajouter d'abord un cas qui reproduit le bug dans le spec (on ne teste pas un bug qu'on ne comprend pas → force la cause racine).
+
 ## Workflow MJ
 
 ```
-1. game-conseiller  → challenge l'idée (binôme créatif Opus)
-2. game-dev         → code HTML vanilla (Sonnet)
-3. game-mj-reviewer → checklist 5 sections : Bus/couleurs · UX 3.5-4 · Audio · Technique · Vocab/péda
-4. user valide      → game-mj-pmo grave (PIPELINE-MEMORY-MJ.md)
+0. game-conseiller  → cadrage 1 écran (layout+méca+péda) validé par Papa Yann AVANT code
+1. game-mj-pmo      → figeage initial game/docs/jeux/figees/mj-XX.md
+2. game-dev         → code HTML vanilla + game/tests/mj-XX.spec.mjs (ensemble)
+3. harnais          → cd game/tests && npm run mj:test mj-XX  (VERT obligatoire avant push)
+4. game-mj-reviewer → Section 0 (figé) + checklist 5 sections + Section 6 (couverture spec)
+5. Papa Yann valide → juge le RESSENTI (plus le débogueur) → game-mj-pmo grave
 ```
 
-Max 5 itérations reviewer ↔ dev.
+Voie express (patch/bugfix MJ existant) : lire figé → fix → harnais vert → push. Tweak cosmétique : direct (hook figeage = filet). Max 5 itérations reviewer ↔ dev.
 
 ## Structure d'un mini-jeu
 

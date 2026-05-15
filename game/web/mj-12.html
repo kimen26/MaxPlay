@@ -21,28 +21,29 @@
     .bus-cabin {
       width: 100%;
       max-width: 680px;
-      background: linear-gradient(180deg, #3d1f6b, #2a1250);
-      border-radius: 0 0 30px 30px;
-      padding: 12px 20px 18px;
+      background: rgba(0,0,0,0.25);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 6px 12px;
       display: flex;
       align-items: center;
-      gap: 16px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+      gap: 10px;
+      flex-shrink: 0;
     }
     .back-btn {
       text-decoration: none;
-      background: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.12);
       color: #fff;
       border: none;
-      border-radius: 50%;
-      width: 44px; height: 44px;
+      border-radius: 8px;
+      min-width: 44px; min-height: 36px;
+      padding: 4px 10px;
       display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem;
+      font-size: 1.3rem; font-weight: 900;
       cursor: pointer;
       flex-shrink: 0;
     }
-    .cabin-title   { color:#fff; font-size:1.3rem; font-weight:900; text-shadow:2px 2px 0 rgba(0,0,0,0.3); }
-    .cabin-subtitle{ color:rgba(255,255,255,0.7); font-size:0.8rem; font-weight:700; }
+    .cabin-title   { color:#fff; font-size:1rem; font-weight:900; }
+    .cabin-subtitle{ display:none; }
 
     /* Dashboard */
     .dashboard {

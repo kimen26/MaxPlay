@@ -1,43 +1,10 @@
 // ─── back-button.js — Composant retour menu unifié ───
 //
-// Règles MaxPlay appliquées :
-//   - Zone tap ≥ 80×80 px (rules.md, EP-MJ-AUDIT 2026-05-11)
-//   - Forme bus qui rentre au dépôt (rules.md ligne 15)
-//   - Feedback < 200ms (transition 150ms + scale 0.92)
-//   - Pas d'emoji 🚌 (stack.md règle critique)
-//
-// API :
-//   Auto-init au DOMContentLoaded : remplace tout élément ayant la classe `.back`,
-//   `.back-mj` ou les sélecteurs `#hdr a[href*="index.html"]`, `#hdr button[onclick*="index.html"]`.
-//
-//   Ou injection manuelle : window.injectBackButton(targetSelector, options)
-//
-// Options:
-//   - href: 'index.html' (défaut)
-//   - ariaLabel: 'Retour au menu' (défaut)
+// Flèche ← simple et sobre, header compact (~36px).
+// Auto-init au DOMContentLoaded : remplace tout élément .back / .back-mj / .back-btn.
 
 (function () {
   'use strict';
-
-  // SVG mini bus qui rentre au dépôt (vu de 3/4 face, plus mignon que le profil)
-  // Inspiré de bus-svg.js mais simplifié pour bouton 56×56 dans zone tap 80×80
-  const BUS_HOME_SVG = `
-    <svg viewBox="0 0 60 50" width="40" height="34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <!-- Carrosserie turquoise RATP -->
-      <rect x="6" y="14" width="42" height="22" rx="4" fill="#1abc9c"/>
-      <!-- Pare-brise -->
-      <rect x="10" y="18" width="14" height="8" rx="2" fill="#e8f4fa" opacity="0.85"/>
-      <!-- Phares -->
-      <circle cx="9" cy="33" r="2" fill="#ffe066"/>
-      <!-- Roues -->
-      <circle cx="15" cy="38" r="4" fill="#1a1a1a"/>
-      <circle cx="15" cy="38" r="1.5" fill="#666"/>
-      <circle cx="40" cy="38" r="4" fill="#1a1a1a"/>
-      <circle cx="40" cy="38" r="1.5" fill="#666"/>
-      <!-- Petite flèche dépôt -->
-      <path d="M50 22 L54 25 L50 28 L50 26 L46 26 L46 24 L50 24 Z" fill="#fff" opacity="0.9"/>
-    </svg>
-  `;
 
   function createBackButton(href, ariaLabel) {
     href = href || 'index.html';
@@ -47,27 +14,27 @@
     btn.href = href;
     btn.className = 'mp-back-btn';
     btn.setAttribute('aria-label', ariaLabel);
-    btn.innerHTML = BUS_HOME_SVG;
+    btn.textContent = '←';
 
-    // Style inline (autosuffisant, pas de dépendance CSS externe)
     btn.style.cssText = [
       'display:inline-flex',
       'align-items:center',
       'justify-content:center',
-      'width:80px',
-      'height:80px',
-      'min-width:80px',
-      'min-height:80px',
-      'background:linear-gradient(135deg,#00c47a,#00a060)',
+      'min-width:44px',
+      'min-height:36px',
+      'padding:4px 10px',
+      'color:#fff',
+      'font-size:1.3rem',
+      'font-weight:900',
+      'background:rgba(255,255,255,0.12)',
       'border:none',
-      'border-radius:16px',
+      'border-radius:8px',
       'cursor:pointer',
       'text-decoration:none',
-      'box-shadow:0 4px 12px rgba(0,196,122,0.35)',
-      'transition:transform 150ms ease,box-shadow 150ms ease',
       'flex-shrink:0',
       'touch-action:manipulation',
       '-webkit-tap-highlight-color:transparent',
+      'transition:background 150ms ease',
     ].join(';');
 
     btn.addEventListener('touchstart', () => {

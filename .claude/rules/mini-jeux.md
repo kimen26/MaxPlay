@@ -66,7 +66,7 @@ Max 5 itérations reviewer ↔ dev.
     #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
     .hdr {
       display:flex; align-items:center; gap:10px;
-      padding:8px 12px; flex-shrink:0;
+      padding:6px 12px; flex-shrink:0;
       background:rgba(0,0,0,0.25);
       border-bottom:1px solid rgba(255,255,255,0.08);
     }
@@ -76,7 +76,7 @@ Max 5 itérations reviewer ↔ dev.
       padding:4px 10px; font-weight:900; flex-shrink:0;
     }
     .hdr a:active { background:rgba(255,255,255,0.25); }
-    .htitle { flex:1; font-size:1.05rem; font-weight:900; }
+    .htitle { flex:1; font-size:1rem; font-weight:900; }
     /* --- FIN GABARIT HEADER --- */
   </style>
 </head>
@@ -104,7 +104,7 @@ Max 5 itérations reviewer ↔ dev.
 </html>
 ```
 
-**Règle header MILITAIRE** : copier le gabarit `.hdr` ci-dessus à la lettre. Ne jamais créer `.game-header`, `.header-text`, `.header-title`, `.header-sub` ou tout autre variante inventée. Le header fait ~40px de hauteur — pas plus.
+**Règle header MILITAIRE** : copier le gabarit `.hdr` ci-dessus à la lettre. Ne jamais créer `.game-header`, `.header-text`, `.header-title`, `.header-sub` ou tout autre variante inventée. Le header fait **~30px de hauteur** (`padding:6px 12px`). `back-button.js` injecte automatiquement la flèche ← sobre — ne pas créer un gros bouton bus manuellement.
 
 ## État jeux
 

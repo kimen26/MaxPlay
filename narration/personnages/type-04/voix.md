@@ -28,65 +28,25 @@ Style: 0.55
 Speaker Boost: false
 ```
 
-## Prompt ElevenLabs (F) — utilisé pour création voice_id 2026-05-13 (méthodo v24 fille)
+## Prompt ElevenLabs (F) — méthodo v24 (2026-05-13)
 
 > Native French. Animated little girl character voice for animation series — high-pitched, bright, expressive, dreamy. Studio quality.
 > Persona: a deep sensitive little dreamer who feels everything intensely and expresses it in waves. Alive and attentive, original, inward. Emotion: intense, poetic, singular, wondering.
 > High bright timbre with a warm dreamy edge and light breathiness. Clean articulate French diction, slow expressive consonants, deep resonant vowels, slight vocal weight. Flowing uneven cadence — variable rhythm following emotion. Pace varies: slows on emotional peaks, lifts on wonder. Sentence endings oscillate — some open (unresolved), some descending (gravity). Vocal range bright and weighted, expressive dynamic range. Soft wondering sigh when moved. Long soft exhale of feeling.
 > Conveys depth, sensitivity, singularity, beauty.
 
-### Ancien prompt (pré-méthodo v24 fille, archivé)
+## Prompt ElevenLabs (M) — méthodo v24
 
-> Native French. Female, young child around 4 to 5 years old. Studio quality.
-> Persona: dreamy introspective child. Emotion: gentle, melancholic, intimate.
-> Soft rolled R, sustained vowels stretched on emotional words. Slow pacing with charged pauses and loaded silences. Sentence endings descend softly with a faint melodic sadness — like an unanswered question. Discreet sighs and whispered "oh" moments. Slightly breathy modal child timbre with inner depth — not sad, just deep.
-
-⚠️ L'ancien prompt utilisait `young child around 4 to 5 years old` = blacklist Prohibited Use Policy ElevenLabs.
-
-## Prompt ElevenLabs (M)
-
-> Native French. Male, young child around 4 to 5 years old. Studio quality.
+> Native French. Animated little boy character voice for animation series — expressive, warm, dreamy. Studio quality.
 > Persona: dreamy introspective child. Emotion: gentle, melancholic, intimate.
 > Soft rolled R, sustained vowels on words that matter. Slow pacing with charged silences. Sentence endings descend softly, faintly melancholic. Faintly audible breath. Slightly breathy child timbre, present and inward — not sad, just deep.
 
----
+## Preview text Voice Design
 
-## Phrases types (Madie)
+*Attendre préview ElevenLabs — phrase de test avant finalisation audio.*
 
-- "Personne comprend vraiment ce que je veux dire..." *(voyelle étirée sur "vraiment")*
-- "C'est... *(pause)* ...beau, en fait." *(respiration audible, découverte lente)*
-- "Oh." *(chuchoté, seul — tout un monde)*
+## Description publique Voice Library
 
----
+**FR :** Voix douce et rêveuse d'une petite fille sensible, expressive et introvertie. Parfait pour les personnages rêveurs en littérature jeunesse.
 
-## Langage naturel (4-6 ans)
-
-> Tournures caractéristiques dérivées de Chabreuil. Côté lumière au premier plan — ombre à doser.
-
-**Lumière** (perso épanoui, hyperperception de la beauté, émerveillement profond) :
-- "T'as vu comme c'est beau ?"
-- "Regarde ça !"
-- "Ça me fait quelque chose..."
-- "C'est spécial ici."
-- "J'aime quand c'est comme ça."
-
-**Ombre** (réflexe automatique — sentiment d'être incomprise, mélancolie) :
-- "Personne comprend..."
-- "C'est triste."
-- "C'est pas pareil pour moi."
-
----
-
-## Tags writer ElevenLabs
-
-> Pour les writers : balises à intégrer dans les dialogues/didascalies. Max 2-3 tags par phrase.
-
-| Contexte | Tags | Exemple |
-|---|---|---|
-| Ton dominant (sensibilité posée) | `[softly]` · `[wistful]` · `[slowly]` | `"- C'est beau, là. [softly]"` |
-| Émerveillement aigu | `[gasps]` · `[awe]` · `[wonder-filled narration]` | `"- [gasps] T'as vu ?"` |
-| Poésie / singularité | `[poetic imagery]` · `[quirky tone]` · `[dramatic]` | `"- Ça me fait quelque chose... [dramatic]"` |
-| Mélancolie douce | `[sighs]` · `[melancholic narration]` · `[introspective sigh]` | `"- C'est triste... [sighs]"` |
-
-**Jamais** : `[shouts]` · `[excited]` débridé · `[quickly]` · `[laughs]` gras
-**Onomatopée signature** : "oh..." long et doux (souffle d'émerveillement — différent de "oh!" exclamatif)
+**EN :** Soft, dreamy little girl voice with expressive sensitivity and introspective quality. Perfect for sensitive, poetic characters in children's storytelling.

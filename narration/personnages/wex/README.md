@@ -7,8 +7,8 @@
 
 | Fichier | Contenu |
 |---------|---------|
-| [caractere.md](caractere.md) | Portrait, sensibilité, Cercle d'Harmonie, Vision causale, arcs |
-| [relations.md](relations.md) | Wex avec chacun des 9 |
-| [sensibilite.md](sensibilite.md) | Vibration transversale vs Vibration collective (Nono) |
-| [voix.md](voix.md) | Signature vocale ElevenLabs |
-| [../../cross-culture/castings-nationaux/fr/wex.md](../../cross-culture/castings-nationaux/fr/wex.md) | Identité universelle (un seul pays) |
+| [enneagramme.md](enneagramme.md) | ✗ Hors-système — pas d'ennéatype |
+| [personnage.md](personnage.md) | Portrait, sensibilité, Cercle d'Harmonie, Vision causale, arcs, relations |
+| [alive.md](alive.md) | Langage naturel, phrases types, mémoire vivante |
+| [voix.md](voix.md) | Signature vocale (7 tics), prompts ElevenLabs, paramètres TTS |
+| [../../cross-culture/castings-nationaux/fr/wex.md](../../cross-culture/castings-nationaux/fr/wex.md) | Identité universelle (invariant cross-culture) |

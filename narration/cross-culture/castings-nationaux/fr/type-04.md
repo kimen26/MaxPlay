@@ -7,6 +7,7 @@ genre: F
 token: titi_4_fr
 casting_v1: true
 prononciation_ipa: maˈdi
+voice_id: 9JvOiMFLj8GdHK3Fcydn
 ---
 
 # Madie (Madeleine) — Type 4, casting France
@@ -18,3 +19,9 @@ Diminutif "Madie" doux, singulier, mélancolique sans lourdeur.
 ## Usage
 - Diminutif 4/5 du temps : **Madie**
 - Prénom complet pour les moments solennels : Madeleine
+
+## Production audio
+
+**Voice ID ElevenLabs :** `9JvOiMFLj8GdHK3Fcydn`
+
+Voir [`../../../personnages/type-04/voix.md`](../../../personnages/type-04/voix.md) pour la signature vocale complète (Lumi Madie Vibrante, méthodo v24).

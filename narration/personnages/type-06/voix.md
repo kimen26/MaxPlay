@@ -112,49 +112,6 @@ Speaker Boost: true
 
 ---
 
-## Phrases types (Pierrot)
-
-- *"C'est sûr qu'on peut y aller ?"* (upspeak final, ton sincère interrogatif)
-- *"Moi je suis là, t'inquiète."* (descendant, résolu — quand il est rassuré)
-- *"Attends, attends — t'es sûr ?"* (accélération, répétition d'alerte)
-
----
-
-## Langage naturel (4-6 ans)
-
-> Tournures caractéristiques dérivées de Chabreuil. Côté lumière au premier plan — ombre à doser.
-
-**Lumière** (perso épanoui, loyal et protecteur, garde le groupe soudé) :
-- "On est ensemble."
-- "Je reste là."
-- "T'inquiète, je suis là."
-- "C'est quoi le plan ?"
-
-**Ombre** (réflexe automatique — anticipation du pire, doute) :
-- "Et si ça marche pas ?"
-- "T'es sûr ?"
-- "On vérifie ?"
-- "On sait jamais..."
-
----
-
-## Tags writer ElevenLabs
-
-> Pour les writers : balises à intégrer dans les dialogues/didascalies. Max 2-3 tags par phrase.
-
-| Contexte | Tags | Exemple |
-|---|---|---|
-| Ton dominant (vigilance attentive) | `[hesitant]` · `[curious]` · `[apprehensive]` | `"- T'es sûr ? [hesitant]"` |
-| Cherche confirmation | `[confirming tone]` · `[hesitates]` | `"- C'est bien par là ? [confirming tone]"` |
-| Rassuré / loyal | `[softly]` · `[chuckles]` | `"- Moi je suis là. [softly]"` |
-| Inquiet (voix basse) | `[whispers]` · `[sighs]` | `"- [whispers] Et si ça marche pas..."` |
-| Ferme (quand sûr) | `[confident]` | `"- On y va. [confident]"` |
-
-**Jamais** : `[shouts]` · `[excited]` seul · `[laughs]` franc non motivé
-**Onomatopée signature** : "pfff" (soupir d'inquiétude soulagée — à utiliser avec parcimonie)
-
----
-
 ## Liens
 
 - Caractère : [`caractere.md`](caractere.md)

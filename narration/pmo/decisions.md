@@ -2311,6 +2311,182 @@ Aucun ne combine **archétypes universels (ennéatypes) + adaptation culturelle 
 
 ---
 
+## 2026-05-15 — Refonte architecture système/utilisateur writers étape 4 (ALL 14 writers)
+
+### DEC-WRITER-ARCH-001 : System prompt unifiée + Brief utilisateur par histoire
+
+**Auteur (Papa Yann)** : décision 2026-05-15 post-brainstorm Couche 0 architecture.
+
+**Contexte** : architecture briefs 3 couches (DEC-BRIEF-ARCH-001/002/003) crée besoin nouvelle organisation writers étape 4. Actuellement : chaque writer a system prompt local + brief fichier externalisé (brief-univers.md + brief-personnages.md + _writer-package.md) = fragmentation. Besoin unification : system prompt pérenne (source vérité Couche 1 universelle) + brief utilisateur = Couche 2 + 3 concaténées.
+
+**Décision tranchée** :
+
+#### System prompt UNIQUE pour tous writers (14 versions)
+
+**Source de vérité** : `narration/equipe/_writer-system.md` (créé/MAJ 2026-05-15)
+
+**Contenu system prompt (Couche 1 universelle — figée par arc/saison)** :
+```
+1. Contexte WexWorld
+   - Univers, géographie mentale, ambiance
+   - Foundationals: no antagonist (Kishōtenketsu), life slice (B+D+C), cycle
+   
+2. Casting characters (10 types)
+   - Énneagram types (1-9 en FR : Melki/Mimi/Dadou/Madie/Lulu/Pierrot/Raph/Juju/Nono)
+   - Wex (hors-système, catalyst/observer, invariant cross-culture)
+   - Archetypes implicites (jamais nommés dans texte)
+   
+3. Kishōtenketsu mechanics
+   - B (Début) : présenter + sensorie
+   - D (Développement) : complication trouble + geste avant parole
+   - C (Chute/Clôture) : rituel + cycle retour
+   - Tonalité : sobre, enfant 4-5 ans, confiance rassurant
+   
+4. Règles d'or
+   - Univers IMPLICITE (no explicit "Sensibilité", "Résonance", "ennéatype")
+   - Surnoms 4/5 du temps (prénoms complets = formel seulement)
+   - Parents hors-scène (enfants résolvent entre eux)
+   - Pas de morale didactique (lecteur infère)
+   - Onomatopée ≤ 1 par histoire, catalogue fourni
+   - Writer top-1 garde main rewrite (pas greffe externe)
+   
+5. Format livrable
+   - ~500-700 mots (ou cible spécifiée Couche 2)
+   - Numérotation Ki/Sho/Ten/Ketsu optionnelle (ou omise si fluidité)
+   - Dialecte naturel 4-5 ans français (phonétique progressante Max)
+```
+
+**Why system.md (pas brief externalisé)** :
+- Pérenne par arc (Couche 1 = statique multi-story)
+- Validée auteur une seule fois (vs répétée par story)
+- Centralisée (1 source vérité, pas 3 fichiers fragmentés)
+- Compatible tous writers (Claude/Kimi/DeepSeek/Grok system params)
+- Auto-versioned par refonte arc/saison
+
+---
+
+#### Brief utilisateur = Couche 2 + Couche 3 concaténés (par histoire)
+
+**Source de vérité** : `stories/NNN-titre/3-briefs/brief-histoire.md` (refondre gabarit)
+
+**Pour TOUS 14 writers (parité totale)** :
+```markdown
+## Brief Histoire — STORY-NNN
+
+### Couche 2 — Commun à tous writers (14)
+
+**Lieu** (1-2 phrases, touches sensorielles)
+...
+
+**Personnages de l'histoire** (noms, enjeux simples)
+...
+
+**Intentions Ki/Sho/Ten/Ketsu** (1 intention simple par étape)
+- Ki : ...
+- Sho : ...
+- Ten : ...
+- Ketsu : ...
+
+**Contraintes objectives**
+- Longueur cible : 600 mots
+- POV : (optionnel — neutre par défaut)
+- Angle narrative : (optionnel — sobre par défaut)
+
+### Couche 3 — Pour writer GUIDÉ uniquement (1 kimi-reco-guide)
+
+**Vision auteur** (idées brainstorm, directions créatives)
+...
+
+**6 axes Kishōtenketsu** (exemples spécifiques)
+- Créature vivante : [exemple concret geste/son objet]
+- Geste avant parole : [exemple action Tu cherches]
+- Onomatopée légère : [exemple + source catalogue]
+- Fin rituel : [exemple geste répété/cyclique]
+- Mystère vs résolution : [exemple zone ombre acceptée]
+- Faute volontaire : [exemple détail "imparfait"]
+```
+
+**Writers libres (13)** : reçoivent brief avec Couche 3 labellisée mais IGNORENT (système prompt ne les enjoint pas)
+
+**Writer guidé (1 kimi-reco-guide)** : système prompt dédié `narration-writer-kimi-guide` active Couche 3 (6 axes) + leçons + trame
+
+---
+
+#### Invocation writers ALL 14 (unified pattern)
+
+**Pattern par writer** :
+```
+system = read(equipe/_writer-system.md)
+user = read(stories/NNN-titre/3-briefs/brief-histoire.md)
+
+case writer:
+  - claude-opus-def/reco, claude-sonnet-def/reco, claude-haiku-def/reco
+    → invoke narration-writer-claude-libre (system, user)
+    
+  - kimi-reco, kimi-k26-instant, kimi-k26-thinking
+    → invoke ask_kimi / ask_kimi_payant (system, user)
+    
+  - kimi-reco-guide
+    → invoke narration-writer-kimi-guide (system, user + leçons + 6 axes)
+    
+  - deepseek-def/reco, grok-def/reco
+    → invoke ask_deepseek / ask_grok (system, user)
+```
+
+---
+
+#### Impact fichiers à mettre à jour
+
+**Créer** :
+- ✅ `equipe/_writer-system.md` (créé 2026-05-15) — source vérité Couche 1 universelle
+- ✅ `equipe/templates/couche-2-brief-histoire-template.md` — gabarit refondre brief-histoire.md
+
+**Supprimer** (obsolète) :
+- ❌ `equipe/brief-univers.md` — contenu migré vers _writer-system.md Couche 1
+- ❌ `equipe/_writer-package.md` — remplacé brief-histoire.md Couche 2+3
+
+**Refondre gabarit** :
+- 🔄 `equipe/templates/brief-histoire.template.md` — intégrer Couche 2 + Couche 3 format
+
+**Mettre à jour tous writers** :
+- 🔄 `narration-writer-claude-libre.md` : recevoir (system, user) de brief-histoire.md, plus de lecture fichiers externalisés
+- 🔄 `narration-writer-kimi-guide.md` : intégrer système prompt _writer-system.md, activer Couche 3 (6 axes)
+- 🔄 Invocation etape 4 STORY-NNN : passer (system, user) en params au lieu de (brief-univers, brief-persos, package)
+
+**Actualiser INVARIANTS** :
+- 🔄 `pmo/INVARIANTS.md` § *Casting writers étape 4* : ajouter note "System = _writer-system.md, User = brief-histoire.md Couche 2+3"
+- 🔄 `pmo/INVARIANTS.md` § *Chiffres clés PROCESS* : brief-univers.md + _writer-package.md → OBSOLÈTES (raison : fusion Couche 1+2+3)
+
+**Affect PROCESS** :
+- 🔄 `equipe/PROCESS.md` § *Étape 3 (Briefs)* : ajouter procédure "Couche 1 vérifiée vs _writer-system.md", procédure "Couche 2/3 dans brief-histoire.md"
+- 🔄 `equipe/PROCESS.md` § *Étape 4 (Writers)* : invocation pattern unified (system, user, writer-type)
+
+---
+
+#### Raison refonte
+
+1. **Separation of concerns** : Couche 1 (universel) ≠ Couche 2 (histoire) ≠ Couche 3 (vision).
+2. **Source vérité unique** : system.md figée par arc, brief.md par story = deux rôles clairs.
+3. **Parité writers** : tous reçoivent même architecture (variance = modèle/température/système prompt type, pas fichiers mixtes).
+4. **Maintenabilité** : brief-univers.md évite duplication (pointé N fois), centralisé _writer-system.md.
+5. **Facilité cross-culture** : system.md = invariant (Wex, Kishōtenketsu) × stories, brief-histoire.md = per-story (customizable par culture futur).
+
+---
+
+#### Questions ouvertes (à arbitrer après STORY-002 vague 3)
+
+1. Faut-il ajouter "Personnages narrateurs H/F" dans system.md (pour multi-culture) ?
+2. Dichotomie Couche 3 : "6 axes" ou "6 axes + détails qui doivent absolument y être" (signature) ?
+3. Brief utilisateur : champ optionnel "Leviers de variance imposés" (ex: "POV Nono", "angle sensoriel") ou souplesse writer ?
+
+---
+
+**Statut** : ✅ Figée 2026-05-15. À appliquer immédiatement **vague 3 STORY-002** (test urgent) + STORY-003+.
+
+**Blocage** : aucun — découplage propre, compatible vague 3 launch immédiat.
+
+---
+
 ## Propositions en cours (2026-05-15 — en attente validation Papa Yann)
 
 ### PROP-KISHOTEN-SYSTEMPROMPT : Formulation Kishōtenketsu pour system prompt Couche 1

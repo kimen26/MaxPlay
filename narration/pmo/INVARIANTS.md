@@ -18,13 +18,15 @@
 | Plafond rewrite (étape 7) | **1 cycle max** par histoire |
 | SLA "EN ATTENTE AUTEUR" | **3 jours** → au-delà : kanban 🔴 BLOQUÉ |
 | Max tickets actifs PMO | **3** simultanés |
+| Fichiers obsolètes étape 3 | **brief-univers.md** (contenu → _writer-system.md), **_writer-package.md** (remplacé brief-histoire.md format Couche 2+3) — depuis 2026-05-15 DEC-WRITER-ARCH-001 |
 
 ---
 
-## Casting writers étape 4 (14 versions — refonte calibration 2026-05-12)
+## Casting writers étape 4 (14 versions — refonte calibration 2026-05-12 + architecture 2026-05-15)
 
 > **Source de vérité unique pour "combien de writers / quels modèles / libre vs guidé / température"**. Détail mécanique d'appel : `narration/equipe/PROCESS.md` L.108-140.
 > **Refonte 2026-05-12** : passage de 10 à 14 writers pour calibration modèles+température sur 3-5 histoires (réduction à config finale après). Test : Opus/Sonnet/Haiku défaut vs créatif + Kimi thinking vs non-thinking + DeepSeek/Grok étendus.
+> **Architecture system/user 2026-05-15** (DEC-WRITER-ARCH-001) : tous writers reçoivent **system = `equipe/_writer-system.md`** (Couche 1 universelle, figée par arc) + **user = `stories/NNN/3-briefs/brief-histoire.md`** (Couche 2 histoire + Couche 3 guidé). Conséquences : `brief-univers.md` OBSOLÈTE (contenu → system.md), `_writer-package.md` OBSOLÈTE (remplacé par split system/user).
 
 | Bloc | # | Identité | Modèle | Thinking/Reasoning | Température | Top-p | Invocation | Brief |
 |------|---|----------|--------|--------------------|-------------|-------|------------|-------|

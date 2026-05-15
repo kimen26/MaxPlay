@@ -1,14 +1,25 @@
-# Type XX — [Label]
+# Type XX — [Label] / [Prénom]
 
-**Casting [pays] :** [Prénom complet] / **[Diminutif]** ([Genre]) · Token : `titi_N_pays`
-**Sensibilité :** [Sensibilité]
+*Prénom complet : [Prénom complet] · Diminutif : **[Diminutif]** ([Genre]) · Casting France*
 
 ---
 
 | Fichier | Contenu |
 |---------|---------|
-| [caractere.md](caractere.md) | Portrait, motivations, comportements, arcs, phrases types |
-| [relations.md](relations.md) | Tableau des relations avec les 8 autres |
-| [sensibilite.md](sensibilite.md) | Description de la sensibilité |
-| [voix.md](voix.md) | Signature vocale ElevenLabs (4 couches + prompts) |
-| [`../../../cross-culture/castings-nationaux/[pays]/type-NN.md`](../../../cross-culture/castings-nationaux/) | Identité casting [pays] |
+| [enneagramme.md](enneagramme.md) | Profil T-XX universel, énergie, réactions, niveaux de santé |
+| [personnage.md](personnage.md) | Portrait [Prénom] 360°, relations inter-types |
+| [alive.md](alive.md) | Sensibilité, astre, couleur, langage naturel, tags writer, onomatopées, mémoire vivante |
+| [voix.md](voix.md) | Production audio ElevenLabs (signature vocale, paramètres, prompts) |
+| [../../cross-culture/castings-nationaux/fr/type-XX.md](../../cross-culture/castings-nationaux/fr/type-XX.md) | Voice_id, prénom/surnom FR |
+
+---
+
+**Sensibilité :** [Sensibilité]
+
+**Astre :** [Astre]
+
+**Type :** Ennéagramme XX — [Ailes + intégration/désintégration].
+
+---
+
+*Refactor gabarit 2026-05-14. 4 fichiers logiques : enneagramme (universel) + personnage (portrait + relations) + alive (sensibilité vivante) + voix (audio).*

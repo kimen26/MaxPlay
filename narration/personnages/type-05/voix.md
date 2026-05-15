@@ -26,57 +26,24 @@ Style: 0.10
 Speaker Boost: false
 ```
 
-## Prompt ElevenLabs (F)
+## Prompt ElevenLabs (F) — méthodo v24 (2026-05-13)
 
-> Native French. Female, young child around 4 to 5 years old. Studio quality.
+> Native French. Animated little girl character voice for animation series — precise, calm, observant. Studio quality.
 > Persona: calm precise observer. Emotion: neutral, focused, factual.
 > Dry precise consonants, economical neutral vowels. Flat plateau prosody with a slight downward drop at sentence ends — informative, never emotional. Measured pacing with reflective micro-pauses before precise terms. No fillers, no "uh" or "mm". Clear unembellished child timbre. Neutral tone, never cold — just concentrated.
 
-## Prompt ElevenLabs (M)
+## Prompt ElevenLabs (M) — méthodo v24
 
-> Native French. Male, young child around 4 to 5 years old. Studio quality.
+> Native French. Animated little boy character voice for animation series — precise, calm, observant. Studio quality.
 > Persona: calm methodical observer. Emotion: neutral, focused, factual.
 > Dry precise consonants, economical diction. Plateau prosody with slight downward drop at sentence ends. Measured pacing with micro-pauses before precise terms. No verbal fillers. Clear unembellished child timbre. Factual tone — not distant, just focused.
 
----
+## Preview text Voice Design
 
-## Phrases types (Lulu)
+*Attendre préview ElevenLabs — phrase de test avant finalisation audio.*
 
-- "En fait... *(pause)* ...c'est pas tout à fait ça." *(pause pré-correction, ton plat)*
-- "J'ai besoin d'observer encore un peu." *(informatif, sans demande d'approbation)*
-- "Logiquement, ça devrait marcher comme ça." *(léger drop final)*
+## Description publique Voice Library
 
----
+**FR :** Voix posée et précise d'un petit observateur curieux, avec ton informatif et concentration naturelle. Parfait pour les personnages méthodiques en littérature jeunesse.
 
-## Langage naturel (4-6 ans)
-
-> Tournures caractéristiques dérivées de Chabreuil. Côté lumière au premier plan — ombre à doser.
-
-**Lumière** (perso épanoui, sait des choses, explique avec précision) :
-- "En fait..."
-- "Je sais pourquoi."
-- "C'est parce que..."
-- "Attends, j'ai vu quelque chose."
-- "C'est intéressant ça."
-
-**Ombre** (réflexe automatique — retrait, observation sans participation) :
-- "Chut, je regarde."
-- "J'ai pas fini de regarder."
-- *[silence d'observation prolongée]*
-
----
-
-## Tags writer ElevenLabs
-
-> Pour les writers : balises à intégrer dans les dialogues/didascalies. Max 2-3 tags par phrase.
-
-| Contexte | Tags | Exemple |
-|---|---|---|
-| Ton dominant (précis, économe) | `[slowly]` · `[serious]` · `[pauses]` · `[measured]` | `"- En fait... [pauses] c'est pas ça."` |
-| Analyse / explication | `[analytical tone]` · `[objective]` · `[factual]` | `"- Logiquement... [analytical tone]"` |
-| Découverte (observation) | `[curious]` · `[contemplative]` | `"- Attends. [curious] J'ai vu quelque chose."` |
-| Explication factuelle | `[matter-of-fact]` · `[precise]` | `"- C'est parce que... [matter-of-fact]"` |
-
-**Jamais** : `[excited]` · `[quickly]` · `[shouts]` · `[laughs]` — hors moment de vraie surprise
-**Jamais** : `[distant]` · `[mechanical]` — Lulu est concentré, pas détaché ni robotique
-**Onomatopée signature** : "hmm" (longue réflexion avant de parler — interjection, pas bruitisme)
+**EN :** Calm, precise observer's voice with measured pacing and neutral focus. Perfect for analytical, curious characters in children's storytelling.

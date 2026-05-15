@@ -26,56 +26,24 @@ Style: 0.20
 Speaker Boost: false
 ```
 
-## Prompt ElevenLabs (F)
+## Prompt ElevenLabs (F) — méthodo v24 (2026-05-13)
 
-> Native French. Female, young child around 4 to 5 years old. Studio quality.
+> Native French. Animated little girl character voice for animation series — calm, fluid, serene. Studio quality.
 > Persona: serene peacemaker. Emotion: calm, soothing, unhurried.
 > Legato consonants flowing seamlessly with no ruptures. Gentle wave-like prosody, neither rising nor falling — gently rocking. Slow fluid pacing, no urgency, everything takes its time. Natural soft "mmm" and "ah" sounds, slow audible breath. Soft round child timbre. Effortless serenity, soothing without effort.
 
-## Prompt ElevenLabs (M)
+## Prompt ElevenLabs (M) — méthodo v24
 
-> Native French. Male, young child around 4 to 5 years old. Studio quality.
+> Native French. Animated little boy character voice for animation series — calm, fluid, serene. Studio quality.
 > Persona: serene peacemaker. Emotion: calm, fluid, peaceful.
 > Soft legato consonants, fluid throughout. Slow regular rhythm like a calm river. Natural soft "mmm" and "ah". Slow audible breath. Soft warm child timbre. Not drowsy — just at peace.
 
----
+## Preview text Voice Design
 
-## Phrases types (Nono)
+*Attendre préview ElevenLabs — phrase de test avant finalisation audio.*
 
-- "Mmm... on peut tous y aller ensemble, non ?" *(mmm d'ouverture, vague douce)*
-- "C'est bien comme ça." *(plat, serein, suffisant)*
-- "Ah... ouais." *(long, lent, apaisé — la solution vient de couler de source)*
+## Description publique Voice Library
 
----
+**FR :** Voix douce et fluide d'un petit pacificateur serein, avec prosodie ondulante et rythme lent. Parfait pour les personnages apaisants en littérature jeunesse.
 
-## Langage naturel (4-6 ans)
-
-> Tournures caractéristiques dérivées de Chabreuil. Côté lumière au premier plan — ombre à doser.
-
-**Lumière** (perso épanoui, présence apaisante) :
-- "C'est bien aussi."
-- "On peut faire les deux."
-- "Ouais..." *(présence silencieuse, acquiescement lent)*
-- "Mmm..." *(pensée qui se pose sans se presser)*
-
-**Ombre** (réflexe automatique — effacement) :
-- "Ça m'est égal."
-- "Comme tu veux."
-- *[silence complet — présence sans mots]*
-
----
-
-## Tags writer ElevenLabs
-
-> Pour les writers : balises à intégrer dans les dialogues/didascalies. Max 2-3 tags par phrase.
-
-| Contexte | Tags | Exemple |
-|---|---|---|
-| Ton dominant | `[softly]` · `[slowly]` · `[smooth flow]` | `"- C'est bien aussi. [softly]"` |
-| Silence expressif | `[pauses]` · `...` | `"- Ouais... [pauses] c'est là."` |
-| Sérénité (ambiance) | `[evening relaxed]` · `[gentle interjection]` | `"- On peut faire les deux. [evening relaxed]"` |
-| Émerveillement discret (Ten) | `[awe]` · `[gasps]` | `"- [awe] Elle est là."` |
-| Chuchotement complice | `[whispers]` | `"- [whispers] Chut."` |
-
-**Jamais** : `[excited]` · `[quickly]` · `[shouts]` · `[laughs]` franc — hors exception narrative forte
-**Onomatopée signature** : aucune — le silence est la signature de Nono
+**EN :** Calm, fluid voice with gentle wave-like phrasing and peaceful presence. Perfect for serene, peacemaking characters in children's storytelling.

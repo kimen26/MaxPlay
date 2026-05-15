@@ -38,11 +38,11 @@ personnages/
 ├── casting-mapping.md              ← pont théorie ↔ casting V1
 │
 ├── type-01..09/                    ← 9 fiches incarnées (INVARIANT)
-│   ├── README.md
-│   ├── caractere.md                ← ennéatype + gestes/attitudes/habitudes
-│   ├── relations.md                ← interactions avec les 8 autres
-│   ├── sensibilite.md              ← sensibilité différenciée
-│   └── voix.md                     ← signature vocale ElevenLabs (universelle)
+│   ├── README.md                   ← cartographie des 4 fichiers
+│   ├── enneagramme.md              ← profil universel (peur, désir, comportements, santé)
+│   ├── personnage.md               ← portrait 360° + relations inter-types
+│   ├── alive.md                    ← matière vivante (sensibilité, couleur, planète, tags writer, mémoire histoires)
+│   └── voix.md                     ← production audio ElevenLabs (settings, prompts)
 │
 ├── wex/                            ← idem pour Wex
 │
@@ -61,10 +61,12 @@ personnages/
 | Tu cherches… | Va lire… |
 |--------------|----------|
 | Le casting V1 français | Le tableau ci-dessus + [`type-NN/README.md`](type-01/README.md) |
-| Le caractère, geste signature, attitude d'un perso | [`type-NN/caractere.md`](type-01/caractere.md) |
-| La voix ElevenLabs d'un perso | [`type-NN/voix.md`](type-01/voix.md) |
-| La sensibilité différenciée d'un perso | [`type-NN/sensibilite.md`](type-01/sensibilite.md) |
-| Comment 2 persos interagissent | [`type-NN/relations.md`](type-01/relations.md) ou [`theorie/enneagramme/interactions-9x9.md`](theorie/enneagramme/interactions-9x9.md) |
+| Le profil ennéatype (peur, désir, comportements) | [`type-NN/enneagramme.md`](type-01/enneagramme.md) |
+| Le portrait vivant + relations avec les autres | [`type-NN/personnage.md`](type-01/personnage.md) |
+| La sensibilité, couleur, planète, tags writer, mémoire histoires | [`type-NN/alive.md`](type-01/alive.md) |
+| La voix ElevenLabs d'un perso (settings, prompts) | [`type-NN/voix.md`](type-01/voix.md) |
+| Le voice_id FR + prénom/surnom d'un perso | [`../cross-culture/castings-nationaux/fr/type-NN.md`](../cross-culture/castings-nationaux/fr/) |
+| Comment 2 persos interagissent | [`type-NN/personnage.md`](type-01/personnage.md) §Relations ou [`theorie/enneagramme/interactions-9x9.md`](theorie/enneagramme/interactions-9x9.md) |
 | Comprendre un ennéatype en profondeur | [`theorie/enneagramme/`](theorie/enneagramme/README.md) (Chabreuil, guide auteur) |
 | Comprendre Max le lecteur (4-5 ans) | [`theorie/pedagogie-enfance/`](theorie/pedagogie-enfance/README.md) |
 | Le prénom d'un perso dans une autre culture | [`../cross-culture/castings-nationaux/`](../cross-culture/castings-nationaux/INDEX.md) (FR figé, autres à construire) |

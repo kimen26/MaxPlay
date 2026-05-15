@@ -22,11 +22,10 @@
     .prog-dot.current { background:rgba(255,220,80,0.25); border-color:#ffe066; animation:dotPulse 1.2s ease-in-out infinite alternate; }
     @keyframes dotPulse { from{box-shadow:0 0 0px rgba(255,220,80,0.3);} to{box-shadow:0 0 8px rgba(255,220,80,0.8);} }
 
-    /* Bus cible en haut */
-    .cible-zone { display:flex; justify-content:center; align-items:center; padding:4px 16px 2px; flex-shrink:0; }
-    .cible-bus-wrap { position:relative; display:inline-flex; align-items:center; justify-content:center; transition:all 0.4s; }
-    .cible-dot { position:absolute; bottom:-6px; right:-6px; width:26px; height:26px; border-radius:50%; border:3px solid rgba(255,255,255,0.9); box-shadow:0 2px 8px rgba(0,0,0,0.5); }
-    .cible-label { color:rgba(255,255,255,0.7); font-size:0.7rem; font-weight:900; text-align:center; letter-spacing:0.5px; margin-top:4px; }
+    /* Label en haut (pas de bus ici) */
+    .consigne { text-align:center; padding:4px 16px 2px; flex-shrink:0; }
+    .consigne-text { color:#fff; font-size:0.85rem; font-weight:900; }
+    .consigne-dot { display:inline-block; width:18px; height:18px; border-radius:50%; vertical-align:middle; margin-left:6px; border:2px solid rgba(255,255,255,0.7); box-shadow:0 0 8px rgba(0,0,0,0.4); }
 
     /* Pots de couleur */
     .pots-zone { display:flex; justify-content:center; gap:8px; padding:6px 12px 4px; flex-shrink:0; }
@@ -39,11 +38,9 @@
     .pot-emoji { font-size:1.5rem; line-height:1; }
     .pot-lbl   { font-size:0.65rem; letter-spacing:0.5px; }
 
-    /* Zone centrale : tube + bus preview */
-    .central-zone { display:flex; flex-direction:column; align-items:center; gap:6px; padding:4px 0; flex:1; justify-content:center; }
-
-    .tube-col { display:flex; flex-direction:column; align-items:center; gap:4px; }
-    .tube-wrap { cursor:pointer; position:relative; border-radius:10px; }
+    /* Tube central */
+    .tube-zone { display:flex; flex-direction:column; align-items:center; gap:5px; flex:1; justify-content:center; }
+    .tube-wrap { position:relative; border-radius:10px; }
     @keyframes tubeShake {
       0%,100%{transform:rotate(0) scale(1);}
       15%{transform:rotate(-13deg) scale(1.04);}
@@ -53,19 +50,36 @@
     }
     .tube-wrap.shaking { animation:tubeShake 0.55s ease; }
     .tube-result { color:#ffe066; font-size:0.8rem; font-weight:900; min-height:1.2em; text-align:center; }
-
     .tube-actions { display:flex; gap:8px; }
-    .btn-tube { border-radius:14px; font-family:'Nunito',sans-serif; font-weight:900; font-size:0.8rem; padding:8px 14px; cursor:pointer; color:#fff; }
+    .btn-tube { border-radius:14px; font-family:'Nunito',sans-serif; font-weight:900; font-size:0.8rem; padding:9px 16px; cursor:pointer; color:#fff; }
     .btn-tube:active { opacity:0.72; transform:scale(0.91); }
     .btn-vider { background:rgba(255,255,255,0.09); border:2px solid rgba(255,255,255,0.22); }
     .btn-mixer { background:rgba(80,220,255,0.2); border:2px solid rgba(80,220,255,0.5); }
 
-    /* Bus preview sous le tube */
-    .bus-preview { min-height:60px; display:flex; align-items:center; justify-content:center; }
-    @keyframes busPop { 0%{transform:scale(0.6);opacity:0;} 60%{transform:scale(1.1);} 100%{transform:scale(1);opacity:1;} }
-    .bus-preview.pop { animation:busPop 0.4s ease; }
+    /* Bus cible EN BAS */
+    .bus-bas { display:flex; flex-direction:column; align-items:center; gap:3px; padding:4px 0 6px; flex-shrink:0; }
+    .bus-bas-wrap { position:relative; display:inline-flex; }
+    .bus-bas-dot { position:absolute; bottom:-5px; right:-5px; width:22px; height:22px; border-radius:50%; border:2.5px solid rgba(255,255,255,0.9); box-shadow:0 2px 6px rgba(0,0,0,0.5); }
+    .bus-bas-label { color:rgba(255,255,255,0.65); font-size:0.68rem; font-weight:900; text-align:center; }
 
-    .hint-row { display:flex; justify-content:center; padding:4px 0; flex-shrink:0; }
+    /* Animation victoire : tube se renverse sur le bus */
+    .victoire-scene { position:fixed; inset:0; pointer-events:none; z-index:50; }
+    .vtube {
+      position:absolute;
+      top:30%; left:50%; transform:translateX(-50%) rotate(0deg);
+      transform-origin:50% 0%;
+      transition:transform 0.6s cubic-bezier(.4,0,.2,1);
+    }
+    .vtube.renverse { transform:translateX(-50%) rotate(65deg); }
+    .vdrop {
+      position:absolute;
+      width:18px; height:24px;
+      border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+      pointer-events:none; opacity:0;
+    }
+
+    /* Hint */
+    .hint-row { display:flex; justify-content:center; padding:4px 0 6px; flex-shrink:0; }
     .btn-hint { background:rgba(255,220,80,0.15); border:2px solid rgba(255,220,80,0.5); color:#ffe066; border-radius:20px; font-family:'Nunito',sans-serif; font-weight:900; font-size:0.8rem; padding:5px 16px; cursor:pointer; animation:hintPulse 1.5s ease-in-out infinite alternate; }
     @keyframes hintPulse { from{box-shadow:0 0 0px rgba(255,220,80,0.3);} to{box-shadow:0 0 10px rgba(255,220,80,0.7);} }
 
@@ -99,49 +113,43 @@
 
   <div class="progress-zone" id="progress"></div>
 
-  <div class="cible-zone">
-    <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
-      <div class="cible-bus-wrap" id="cible-bus-wrap"><!-- injecté --></div>
-      <div class="cible-label" id="cible-label"></div>
-    </div>
+  <!-- Consigne texte en haut (pas de bus ici) -->
+  <div class="consigne">
+    <span class="consigne-text" id="consigne-text"></span>
   </div>
 
+  <!-- Pots de couleur -->
   <div class="pots-zone">
-    <button class="pot pot-rouge" onclick="addCouleur('r')">
-      <span class="pot-emoji">&#128308;</span>
-      <span class="pot-lbl">ROUGE</span>
-    </button>
-    <button class="pot pot-jaune" onclick="addCouleur('j')">
-      <span class="pot-emoji">&#128993;</span>
-      <span class="pot-lbl">JAUNE</span>
-    </button>
-    <button class="pot pot-bleu" onclick="addCouleur('b')">
-      <span class="pot-emoji">&#128309;</span>
-      <span class="pot-lbl">BLEU</span>
-    </button>
-    <button class="pot pot-blanc" onclick="addCouleur('w')">
-      <span class="pot-emoji">&#11036;</span>
-      <span class="pot-lbl">BLANC</span>
-    </button>
+    <button class="pot pot-rouge" onclick="addCouleur('r')"><span class="pot-emoji">&#128308;</span><span class="pot-lbl">ROUGE</span></button>
+    <button class="pot pot-jaune" onclick="addCouleur('j')"><span class="pot-emoji">&#128993;</span><span class="pot-lbl">JAUNE</span></button>
+    <button class="pot pot-bleu"  onclick="addCouleur('b')"><span class="pot-emoji">&#128309;</span><span class="pot-lbl">BLEU</span></button>
+    <button class="pot pot-blanc" onclick="addCouleur('w')"><span class="pot-emoji">&#11036;</span><span class="pot-lbl">BLANC</span></button>
   </div>
 
-  <div class="central-zone">
-    <div class="tube-col">
-      <div class="tube-wrap" id="tube-wrap-0"></div>
-      <div class="tube-result" id="tube-result-0"></div>
-      <div class="tube-actions">
-        <button class="btn-tube btn-vider" onclick="viderTube()">&#128703; Vider</button>
-        <button class="btn-tube btn-mixer" onclick="mixerTube()">&#128256; Mixer !</button>
-      </div>
+  <!-- Tube central -->
+  <div class="tube-zone">
+    <div class="tube-wrap" id="tube-wrap"></div>
+    <div class="tube-result" id="tube-result"></div>
+    <div class="tube-actions">
+      <button class="btn-tube btn-vider" onclick="viderTube()">&#128703; Vider</button>
+      <button class="btn-tube btn-mixer" id="btn-mixer" onclick="mixerTube()">&#128256; Mixer !</button>
     </div>
-    <div class="bus-preview" id="bus-preview"></div>
+  </div>
+
+  <!-- Bus cible EN BAS -->
+  <div class="bus-bas">
+    <div class="bus-bas-wrap" id="bus-bas-wrap"></div>
+    <div class="bus-bas-label" id="bus-bas-label"></div>
   </div>
 
   <div class="hint-row">
-    <button class="btn-hint" id="btn-hint" onclick="showHint()">&#128161; Indice</button>
+    <button class="btn-hint" onclick="showHint()">&#128161; Indice</button>
   </div>
 
 </div>
+
+<!-- Scène animation victoire -->
+<div class="victoire-scene" id="victoire-scene" style="display:none;"></div>
 
 <div class="brun-overlay" id="brun-overlay">
   <div class="brun-content">
@@ -156,8 +164,8 @@
     <div class="ov-emoji">&#128161;</div>
     <div class="ov-title" style="font-size:1.2rem;">Voil&#224; le secret !</div>
     <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:10px;">
-      <div id="hint-cible-cercle" style="width:44px;height:44px;border-radius:50%;border:3px solid rgba(255,255,255,0.85);flex-shrink:0;"></div>
-      <div style="color:#fff;font-size:1rem;font-weight:900;" id="hint-cible-label"></div>
+      <div id="hint-cercle" style="width:44px;height:44px;border-radius:50%;border:3px solid rgba(255,255,255,0.85);flex-shrink:0;"></div>
+      <div style="color:#fff;font-size:1rem;font-weight:900;" id="hint-label"></div>
     </div>
     <div class="ov-text" id="hint-text" style="font-size:1.3rem;letter-spacing:2px;"></div>
     <button class="ov-btn" onclick="document.getElementById('hint-overlay').classList.remove('show')">OK !</button>
@@ -177,25 +185,27 @@
 <script src="js/data.js"></script>
 <script src="js/sounds.js"></script>
 <script>
-// ── DÉFIS (recettes proportionnelles r/j/b/w + couleur IDFM exacte) ──
+// ── DÉFIS ─────────────────────────────────────────────────────────
 const DEFIS = [
-  { r:1, j:0, b:0, w:0, hex:'#E2231A', label:'rouge',       num:'RER A', textColor:'#fff'  },
-  { r:0, j:1, b:0, w:0, hex:'#FFCD00', label:'jaune',       num:'M1',    textColor:'#333'  },
-  { r:0, j:0, b:1, w:0, hex:'#0064B1', label:'bleu',        num:'162',   textColor:'#fff'  },
-  { r:0, j:1, b:1, w:0, hex:'#008C59', label:'vert',        num:'172',   textColor:'#fff'  },
-  { r:1, j:0, b:1, w:0, hex:'#652C90', label:'violet',      num:'132',   textColor:'#fff'  },
-  { r:1, j:0, b:0, w:1, hex:'#FF82B4', label:'rose',        num:'47',    textColor:'#333'  },
-  { r:0, j:1, b:3, w:0, hex:'#75CE89', label:'vert clair',  num:'380',   textColor:'#333'  },
-  { r:0, j:0, b:3, w:1, hex:'#4FA3DC', label:'bleu ciel',   num:'RER B', textColor:'#fff'  },
-  { r:1, j:1, b:0, w:0, hex:'#F58443', label:'orange',      num:'185',   textColor:'#333'  },
-  { r:1, j:3, b:0, w:0, hex:'#DCAC27', label:'or',          num:'184',   textColor:'#333'  },
-  { r:1, j:0, b:0, w:2, hex:'#FA9ABA', label:'rose pâle',   num:'M7',    textColor:'#333'  },
-  { r:1, j:0, b:1, w:2, hex:'#C9A2CD', label:'lavande',     num:'286',   textColor:'#333'  },
-  { r:2, j:2, b:1, w:0, hex:'#8D653A', label:'brun',        num:'131',   textColor:'#fff'  },
+  { r:1, j:0, b:0, w:0, hex:'#E2231A', label:'rouge',      num:'RER A', textColor:'#fff'  },
+  { r:0, j:1, b:0, w:0, hex:'#FFCD00', label:'jaune',      num:'M1',    textColor:'#333'  },
+  { r:0, j:0, b:1, w:0, hex:'#0064B1', label:'bleu',       num:'162',   textColor:'#fff'  },
+  { r:0, j:1, b:1, w:0, hex:'#008C59', label:'vert',       num:'172',   textColor:'#fff'  },
+  { r:1, j:0, b:1, w:0, hex:'#652C90', label:'violet',     num:'132',   textColor:'#fff'  },
+  { r:1, j:0, b:0, w:1, hex:'#FF82B4', label:'rose',       num:'47',    textColor:'#333'  },
+  { r:0, j:1, b:3, w:0, hex:'#75CE89', label:'vert clair', num:'380',   textColor:'#333'  },
+  { r:0, j:0, b:3, w:1, hex:'#4FA3DC', label:'bleu ciel',  num:'RER B', textColor:'#fff'  },
+  { r:1, j:1, b:0, w:0, hex:'#F58443', label:'orange',     num:'185',   textColor:'#333'  },
+  { r:1, j:3, b:0, w:0, hex:'#DCAC27', label:'or',         num:'184',   textColor:'#333'  },
+  { r:1, j:0, b:0, w:2, hex:'#FA9ABA', label:'rose pâle',  num:'M7',    textColor:'#333'  },
+  { r:1, j:0, b:1, w:2, hex:'#C9A2CD', label:'lavande',    num:'286',   textColor:'#333'  },
+  { r:2, j:2, b:1, w:0, hex:'#8D653A', label:'brun',       num:'131',   textColor:'#fff'  },
 ];
 
-const BASE_RGB = { r:[232,25,44], j:[255,205,0], b:[0,60,166], w:[238,238,238] };
-const QCOL     = { r:'#E8192C', j:'#FFD700', b:'#3344CC', w:'#EEEEEE' };
+// Couleurs primaires = défi à 1 seule couleur, pas besoin de Mixer
+const PRIMAIRES = new Set(DEFIS.filter(d => (d.r>0)+(d.j>0)+(d.b>0)+(d.w>0) === 1).map(d=>DEFIS.indexOf(d)));
+
+const QCOL = { r:'#E8192C', j:'#FFD700', b:'#3344CC', w:'#EEEEEE' };
 
 function shuffle(arr) {
   const a=[...arr];
@@ -203,266 +213,269 @@ function shuffle(arr) {
   return a;
 }
 
-// Trouve le défi dont les proportions matchent le mieux le tube
 function findBestDefi(t) {
-  const tot = t.r+t.j+t.b+t.w;
-  if (tot===0) return null;
+  const tot=t.r+t.j+t.b+t.w;
+  if(tot===0) return null;
   let best=null, bestDist=Infinity;
-  for (const d of DEFIS) {
-    const dTot = d.r+d.j+d.b+d.w;
+  for(const d of DEFIS){
+    const dTot=d.r+d.j+d.b+d.w;
     let dist=0;
-    for (const k of ['r','j','b','w']) dist += Math.abs(t[k]/tot - d[k]/dTot);
-    if (dist<bestDist) { bestDist=dist; best=d; }
+    for(const k of ['r','j','b','w']) dist+=Math.abs(t[k]/tot - d[k]/dTot);
+    if(dist<bestDist){bestDist=dist;best=d;}
   }
-  return { defi:best, dist:bestDist };
+  return {defi:best,dist:bestDist};
 }
 
-function isBrun(t) {
-  const tot=t.r+t.j+t.b+t.w;
-  if (tot===0) return false;
+function isBrun(t){
+  const tot=t.r+t.j+t.b+t.w; if(tot===0)return false;
   return t.r/tot>0.18 && t.j/tot>0.15 && t.b/tot>0.15;
 }
 
-// ── ÉTAT ─────────────────────────────────────────────────────────
-function newTube() { return {r:0,j:0,b:0,w:0,doses:[],mixed:null}; }
-let tube     = newTube();
-let defiIdx  = 0;
-let solved   = 0;
-let victoire = false;
-let brunShown= false;
-let order    = shuffle(DEFIS.map((_,i)=>i));
-let defi     = DEFIS[order[0]];
+// ── ÉTAT ──────────────────────────────────────────────────────────
+function newTube(){return{r:0,j:0,b:0,w:0,doses:[],mixed:null};}
+let tube=newTube(), defiIdx=0, solved=0, victoire=false, brunShown=false;
+let order=shuffle(DEFIS.map((_,i)=>i));
+let defi=DEFIS[order[0]];
 
-// ── TUBE SVG ─────────────────────────────────────────────────────
-function renderTubeSVG(t) {
-  const SW=64, SH=150, RIMH=14, BOT=SH, RX=12, FILL_H=BOT-RIMH;
+// ── RENDU TUBE SVG ────────────────────────────────────────────────
+function renderTubeSVG(t){
+  const SW=64,SH=150,RIMH=14,BOT=SH,RX=12,FILL_H=BOT-RIMH;
   const path=`M0,${RIMH} L0,${BOT-RX} Q0,${BOT} ${RX},${BOT} L${SW-RX},${BOT} Q${SW},${BOT} ${SW},${BOT-RX} L${SW},${RIMH} Z`;
   let layers='';
-  if (t.mixed) {
-    const bgHex = t.mixed==='BRUN' ? '#6B4226' : t.mixed.hex;
+  if(t.mixed){
+    const bg=t.mixed==='BRUN'?'#6B4226':t.mixed.hex;
     const tot=t.r+t.j+t.b+t.w;
-    const fH=Math.max(Math.min(tot/8,1)*FILL_H, 28);
-    const fY=(BOT-fH).toFixed(1);
-    layers=`<rect x="0" y="${fY}" width="${SW}" height="${(fH+1).toFixed(1)}" fill="${bgHex}"/>`;
-  } else if (t.doses.length>0) {
+    const fH=Math.max(Math.min(tot/8,1)*FILL_H,28);
+    layers=`<rect x="0" y="${(BOT-fH).toFixed(1)}" width="${SW}" height="${(fH+1).toFixed(1)}" fill="${bg}"/>`;
+  } else if(t.doses.length>0){
     const vis=t.doses.slice(-8);
     const dH=FILL_H/Math.max(vis.length,4);
     vis.forEach((q,i)=>{
-      const qY=(BOT-dH*(i+1)).toFixed(1);
-      layers+=`<rect x="0" y="${qY}" width="${SW}" height="${(dH+1).toFixed(1)}" fill="${QCOL[q]}"/>`;
+      layers+=`<rect x="0" y="${(BOT-dH*(i+1)).toFixed(1)}" width="${SW}" height="${(dH+1).toFixed(1)}" fill="${QCOL[q]}"/>`;
     });
   }
-  const emptyHint = t.doses.length===0 && !t.mixed
-    ? `<text x="${SW/2}" y="${RIMH+FILL_H/2+5}" text-anchor="middle" fill="rgba(255,255,255,0.18)" font-size="10" font-family="Nunito">vide</text>` : '';
+  const hint=t.doses.length===0&&!t.mixed
+    ?`<text x="${SW/2}" y="${RIMH+FILL_H/2+5}" text-anchor="middle" fill="rgba(255,255,255,0.18)" font-size="10" font-family="Nunito">vide</text>`:'';
   return `<svg width="${SW}" height="${SH}" viewBox="0 0 ${SW} ${SH}">
   <defs><clipPath id="tc"><path d="${path}"/></clipPath></defs>
   <path d="${path}" fill="rgba(150,210,255,0.08)" stroke="rgba(255,255,255,0.45)" stroke-width="2.5"/>
   <g clip-path="url(#tc)">${layers}</g>
   <rect x="5" y="${RIMH+5}" width="6" height="${FILL_H-20}" rx="3" fill="rgba(255,255,255,0.16)" clip-path="url(#tc)"/>
   <rect x="2" y="0" width="${SW-4}" height="${RIMH}" rx="5" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
-  ${emptyHint}
-</svg>`;
+  ${hint}</svg>`;
 }
 
-function renderTube() {
-  const wrap = document.getElementById('tube-wrap-0');
-  wrap.innerHTML = renderTubeSVG(tube);
-  const res = document.getElementById('tube-result-0');
-  if (tube.mixed && tube.mixed !== 'BRUN') {
-    res.textContent = tube.mixed.label;
-    res.style.color = '#ffe066';
-  } else if (tube.mixed === 'BRUN') {
-    res.innerHTML = '💩 marron';
-    res.style.color = '#cc8844';
-  } else {
-    res.textContent = '';
+function renderTube(){
+  document.getElementById('tube-wrap').innerHTML=renderTubeSVG(tube);
+  const res=document.getElementById('tube-result');
+  if(tube.mixed&&tube.mixed!=='BRUN'){res.textContent=tube.mixed.label;res.style.color='#ffe066';}
+  else if(tube.mixed==='BRUN'){res.innerHTML='💩 marron';res.style.color='#cc8844';}
+  else{res.textContent='';}
+}
+
+function renderConsigne(){
+  document.getElementById('consigne-text').innerHTML=
+    `Bus ${defi.num} — peins-le en <span style="color:${defi.hex}">${defi.label}</span> !`+
+    `<span class="consigne-dot" style="background:${defi.hex};"></span>`;
+}
+
+function renderBusBas(hex){
+  // Bus cible EN BAS, blanc par défaut, coloré à la victoire
+  const col=hex||'#FFFFFF';
+  const txt=hex?defi.textColor:'#333';
+  document.getElementById('bus-bas-wrap').innerHTML=
+    busSVG(col,txt,defi.num,170)+
+    `<div class="bus-bas-dot" style="background:${defi.hex};${hex?'box-shadow:0 0 12px '+defi.hex:''};"></div>`;
+  document.getElementById('bus-bas-label').textContent=
+    hex ? `✓ ${defi.label} !` : `Bus ${defi.num}`;
+  document.getElementById('bus-bas-label').style.color=hex?'#00c47a':'rgba(255,255,255,0.5)';
+}
+
+function renderProgress(){
+  let h='';
+  for(let i=0;i<DEFIS.length;i++){
+    const c=i<solved?'done':i===solved?'current':'';
+    h+=`<div class="prog-dot ${c}"></div>`;
   }
-}
-
-function renderCible(hex) {
-  // hex = null → bus blanc (défi en cours), hex → bus coloré (victoire)
-  const busHex = hex || '#FFFFFF';
-  const busText = hex ? defi.textColor : '#333';
-  const wrap = document.getElementById('cible-bus-wrap');
-  wrap.innerHTML = `${busSVG(busHex, busText, defi.num, 170)}<div class="cible-dot" style="background:${defi.hex};${hex?'box-shadow:0 0 14px '+defi.hex+';':''}"></div>`;
-  document.getElementById('cible-label').textContent = hex
-    ? `✓ ${defi.label} !`
-    : `Bus ${defi.num} — peins-le en ${defi.label} !`;
-  document.getElementById('cible-label').style.color = hex ? '#00c47a' : 'rgba(255,255,255,0.7)';
-}
-
-function renderBusPreview(hex) {
-  const zone = document.getElementById('bus-preview');
-  if (!hex) { zone.innerHTML=''; zone.classList.remove('pop'); return; }
-  zone.classList.remove('pop');
-  zone.offsetWidth;
-  zone.innerHTML = busSVG(hex, hex === '#FFCD00' ? '#333' : '#fff', defi.num, 130);
-  zone.classList.add('pop');
-}
-
-function renderProgress() {
-  let html='';
-  for (let i=0;i<DEFIS.length;i++) {
-    const cls=i<solved?'done':i===solved?'current':'';
-    html+=`<div class="prog-dot ${cls}"></div>`;
-  }
-  document.getElementById('progress').innerHTML=html;
+  document.getElementById('progress').innerHTML=h;
 }
 
 // ── ACTIONS ───────────────────────────────────────────────────────
-function addCouleur(type) {
-  if (victoire) return;
-  // Si le tube est déjà mixé, on repart de zéro proprement
-  if (tube.mixed) { tube = newTube(); renderBusPreview(null); }
+function addCouleur(type){
+  if(victoire)return;
+  if(tube.mixed){tube=newTube();}  // reset propre si déjà mixé
   tube[type]++;
   tube.doses.push(type);
   renderTube();
+  // Couleur primaire seule → victoire immédiate sans Mixer
+  checkPrimaire();
 }
 
-let mixerLocked = false;
-function mixerTube() {
-  if (victoire || mixerLocked) return;
-  const tot = tube.r+tube.j+tube.b+tube.w;
-  if (tot===0) return;
-  mixerLocked = true;
+function checkPrimaire(){
+  const tot=tube.r+tube.j+tube.b+tube.w;
+  // Primaire = 1 seule couleur utilisée
+  const nbTypes=['r','j','b','w'].filter(k=>tube[k]>0).length;
+  if(nbTypes!==1) return;
+  const {defi:matched,dist}=findBestDefi(tube);
+  if(matched===defi&&dist<0.1&&!victoire){
+    tube.mixed={hex:matched.hex,label:matched.label};
+    renderTube();
+    victoire=true;
+    setTimeout(showVictoire,300);
+  }
+}
+
+let mixerLocked=false;
+function mixerTube(){
+  if(victoire||mixerLocked)return;
+  const tot=tube.r+tube.j+tube.b+tube.w;
+  if(tot===0)return;
+  mixerLocked=true;
   playMix();
-  const wrap = document.getElementById('tube-wrap-0');
+  const wrap=document.getElementById('tube-wrap');
   wrap.classList.remove('shaking');
   wrap.offsetWidth;
   wrap.classList.add('shaking');
-  const defiBrun = defi.label==='brun';
-  setTimeout(() => {
-    mixerLocked = false;
+  setTimeout(()=>{
+    mixerLocked=false;
     wrap.classList.remove('shaking');
-    if (isBrun(tube) && !defiBrun) {
-      tube.mixed = 'BRUN';
+    if(isBrun(tube)&&defi.label!=='brun'){
+      tube.mixed='BRUN';
       renderTube();
-      renderBusPreview(null);
-      if (!brunShown) { brunShown=true; document.getElementById('brun-overlay').classList.add('show'); playBrun(); }
+      if(!brunShown){brunShown=true;document.getElementById('brun-overlay').classList.add('show');playBrun();}
       return;
     }
-    // Cherche le défi dont les proportions matchent le mieux — toujours la couleur IDFM la plus proche, jamais de gris
-    const { defi:matched, dist } = findBestDefi(tube);
-    tube.mixed = { hex: matched.hex, label: matched.label };
+    const {defi:matched,dist}=findBestDefi(tube);
+    tube.mixed={hex:matched.hex,label:matched.label};
     renderTube();
-    renderBusPreview(matched.hex);
-    // Victoire si le défi matché = défi en cours (tolérance 0.55)
-    if (matched === defi && dist < 0.55 && !victoire) {
-      victoire = true;
-      setTimeout(showVictoire, 500);
+    if(matched===defi&&dist<0.55&&!victoire){
+      victoire=true;
+      setTimeout(showVictoire,400);
     }
-  }, 500);
+  },500);
 }
 
-function viderTube() {
-  tube = newTube();
-  brunShown = false;
+function viderTube(){
+  tube=newTube(); brunShown=false;
   document.getElementById('brun-overlay').classList.remove('show');
   renderTube();
-  renderBusPreview(null);
 }
 
-// ── VICTOIRE ──────────────────────────────────────────────────────
-function showVictoire() {
+// ── VICTOIRE : animation tube renversé sur le bus ─────────────────
+function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
+
+async function showVictoire(){
   solved++;
   renderProgress();
   playKlaxon();
-  renderCible(defi.hex); // colorie le bus en haut
-  // auto-next après 2s
-  setTimeout(() => {
-    defiIdx++;
-    if (defiIdx >= DEFIS.length) { document.getElementById('fin-overlay').classList.add('show'); return; }
-    defi = DEFIS[order[defiIdx]];
-    tube = newTube();
-    victoire = false; brunShown = false; mixerLocked = false;
-    document.getElementById('brun-overlay').classList.remove('show');
-    renderTube();
-    renderBusPreview(null);
-    renderCible(null);
-    renderProgress();
-  }, 2200);
-}
 
-function resetPartie() {
-  document.getElementById('fin-overlay').classList.remove('show');
-  solved=0; defiIdx=0;
-  order=shuffle(DEFIS.map((_,i)=>i));
-  defi=DEFIS[order[0]];
+  // Récupère position du tube et du bus cible
+  const tubeEl=document.getElementById('tube-wrap');
+  const busEl=document.getElementById('bus-bas-wrap');
+  const tubeRect=tubeEl.getBoundingClientRect();
+  const busRect=busEl.getBoundingClientRect();
+
+  // Crée la scène d'animation
+  const scene=document.getElementById('victoire-scene');
+  scene.style.display='block';
+  scene.innerHTML='';
+
+  // Clone SVG du tube dans la scène, positionné par-dessus le vrai tube
+  const vt=document.createElement('div');
+  vt.className='vtube';
+  vt.style.top=tubeRect.top+'px';
+  vt.style.left=(tubeRect.left+tubeRect.width/2)+'px';
+  vt.innerHTML=renderTubeSVG(tube);
+  scene.appendChild(vt);
+
+  await sleep(80);
+  // Renverse le tube (rotation 65°)
+  vt.classList.add('renverse');
+  await sleep(550);
+
+  // Goutte de couleur qui tombe
+  const drop=document.createElement('div');
+  drop.className='vdrop';
+  const clr=tube.mixed&&tube.mixed!=='BRUN'?tube.mixed.hex:defi.hex;
+  drop.style.background=clr;
+  // Position : bout du tube renversé (approximation)
+  const cx=tubeRect.left+tubeRect.width/2;
+  const cy=tubeRect.top+tubeRect.height*0.7;
+  drop.style.left=cx+'px';
+  drop.style.top=cy+'px';
+  drop.style.position='absolute';
+  drop.style.opacity='1';
+  drop.style.boxShadow=`0 2px 8px ${clr}88`;
+  drop.style.transition='top 0.5s ease-in, opacity 0.15s 0.45s';
+  scene.appendChild(drop);
+  await sleep(20);
+  drop.style.top=(busRect.top+20)+'px';
+  await sleep(500);
+  drop.style.opacity='0';
+
+  // Colorie le bus en bas
+  renderBusBas(clr);
+  await sleep(300);
+
+  // Nettoie la scène
+  scene.style.display='none';
+  scene.innerHTML='';
+
+  // Auto-next après 1.8s
+  await sleep(1800);
+  defiIdx++;
+  if(defiIdx>=DEFIS.length){document.getElementById('fin-overlay').classList.add('show');return;}
+  defi=DEFIS[order[defiIdx]];
   tube=newTube(); victoire=false; brunShown=false; mixerLocked=false;
   document.getElementById('brun-overlay').classList.remove('show');
   renderTube();
-  renderBusPreview(null);
-  renderCible(null);
+  renderBusBas(null);
+  renderConsigne();
   renderProgress();
 }
 
-function showHint() {
+function resetPartie(){
+  document.getElementById('fin-overlay').classList.remove('show');
+  solved=0;defiIdx=0;
+  order=shuffle(DEFIS.map((_,i)=>i));
+  defi=DEFIS[order[0]];
+  tube=newTube();victoire=false;brunShown=false;mixerLocked=false;
+  document.getElementById('brun-overlay').classList.remove('show');
+  renderTube();renderBusBas(null);renderConsigne();renderProgress();
+}
+
+function showHint(){
   const parts=[];
   if(defi.r>0)parts.push(`${defi.r} 🔴`);
   if(defi.j>0)parts.push(`${defi.j} 🟡`);
   if(defi.b>0)parts.push(`${defi.b} 🔵`);
   if(defi.w>0)parts.push(`${defi.w} ⬜`);
-  document.getElementById('hint-cible-cercle').style.background=defi.hex;
-  document.getElementById('hint-cible-label').textContent=`Bus ${defi.num} — ${defi.label}`;
+  document.getElementById('hint-cercle').style.background=defi.hex;
+  document.getElementById('hint-label').textContent=`Bus ${defi.num} — ${defi.label}`;
   document.getElementById('hint-text').textContent=parts.join(' + ');
   document.getElementById('hint-overlay').classList.add('show');
 }
 
 // ── SHAKE ─────────────────────────────────────────────────────────
-let lastShakeTime=0, shakeAttached=false;
-function initShake() {
-  if (shakeAttached || !window.DeviceMotionEvent) return;
-  shakeAttached=true;
-  window.addEventListener('devicemotion', e => {
-    const a=e.acceleration; if (!a) return;
+let lastShake=0;
+if(window.DeviceMotionEvent){
+  window.addEventListener('devicemotion',e=>{
+    const a=e.acceleration;if(!a)return;
     const m=Math.sqrt(a.x*a.x+a.y*a.y+a.z*a.z);
-    if (m>25 && Date.now()-lastShakeTime>800) { lastShakeTime=Date.now(); mixerTube(); }
-  }, true);
+    if(m>25&&Date.now()-lastShake>800){lastShake=Date.now();mixerTube();}
+  },true);
 }
 
 // ── SONS ──────────────────────────────────────────────────────────
-function playKlaxon() {
-  try {
-    const ac=new AudioContext();
-    [523,659,784,1047].forEach((freq,i)=>{
-      const o=ac.createOscillator(),g=ac.createGain();
-      o.connect(g);g.connect(ac.destination);
-      o.frequency.value=freq; o.type='triangle';
-      const t=ac.currentTime+i*0.1;
-      g.gain.setValueAtTime(0.28,t); g.gain.exponentialRampToValueAtTime(0.001,t+0.15);
-      o.start(t); o.stop(t+0.15);
-    });
-  } catch(e){}
-}
-function playBrun() {
-  try {
-    const ac=new AudioContext(),o=ac.createOscillator(),g=ac.createGain();
-    o.connect(g);g.connect(ac.destination); o.type='sawtooth';
-    o.frequency.setValueAtTime(180,ac.currentTime);
-    o.frequency.exponentialRampToValueAtTime(35,ac.currentTime+0.55);
-    g.gain.setValueAtTime(0.4,ac.currentTime); g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.6);
-    o.start(); o.stop(ac.currentTime+0.6);
-  } catch(e){}
-}
-function playMix() {
-  try {
-    const ac=new AudioContext();
-    [400,600,350,700,300].forEach((f,i)=>{
-      const o=ac.createOscillator(),g=ac.createGain();
-      o.connect(g);g.connect(ac.destination); o.type='sine'; o.frequency.value=f;
-      const t=ac.currentTime+i*0.06;
-      g.gain.setValueAtTime(0.18,t); g.gain.exponentialRampToValueAtTime(0.001,t+0.1);
-      o.start(t); o.stop(t+0.1);
-    });
-  } catch(e){}
-}
+function playKlaxon(){try{const ac=new AudioContext();[523,659,784,1047].forEach((f,i)=>{const o=ac.createOscillator(),g=ac.createGain();o.connect(g);g.connect(ac.destination);o.frequency.value=f;o.type='triangle';const t=ac.currentTime+i*0.1;g.gain.setValueAtTime(0.28,t);g.gain.exponentialRampToValueAtTime(0.001,t+0.15);o.start(t);o.stop(t+0.15);});}catch(e){}}
+function playBrun(){try{const ac=new AudioContext(),o=ac.createOscillator(),g=ac.createGain();o.connect(g);g.connect(ac.destination);o.type='sawtooth';o.frequency.setValueAtTime(180,ac.currentTime);o.frequency.exponentialRampToValueAtTime(35,ac.currentTime+0.55);g.gain.setValueAtTime(0.4,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.6);o.start();o.stop(ac.currentTime+0.6);}catch(e){}}
+function playMix(){try{const ac=new AudioContext();[400,600,350,700,300].forEach((f,i)=>{const o=ac.createOscillator(),g=ac.createGain();o.connect(g);g.connect(ac.destination);o.type='sine';o.frequency.value=f;const t=ac.currentTime+i*0.06;g.gain.setValueAtTime(0.18,t);g.gain.exponentialRampToValueAtTime(0.001,t+0.1);o.start(t);o.stop(t+0.1);});}catch(e){}}
 
 // ── INIT ──────────────────────────────────────────────────────────
 renderTube();
-renderBusPreview(null);
-renderCible(null);
+renderBusBas(null);
+renderConsigne();
 renderProgress();
-initShake();
 </script>
 </body>
 </html>

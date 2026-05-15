@@ -15,7 +15,9 @@
 | Personnages | 9 + Wex — casting V1 figé (2026-04-24) |
 | Voix ElevenLabs | **10/10 figées** ✅ — Wex/Dadou/Melki/Pierrot/Lulu/Nono + Raph + Juju + Mimi + Madie. Casting voix complet 2026-05-13. |
 | Nom univers | ❌ non tranché — 5 finalistes |
-| Prochaine action | **Arbitrer sélection étape 6 STORY-002** (top 1-3 + greffes Directeur) — étapes 4-5 ✅, validation auteur 3e point (étape 10) reste |
+| Décisions jour même (2026-05-15) | DEC-BRIEF-ARCH-001/002/003 (briefs 3 couches) + DEC-WRITER-ARCH-001 (system/user writers) + DEC-PERSO-STRUCT-001/002/003/004/005 (fiches persos 4 fichiers) + DEC-PROCESS-NEW-001 (process étapes A/B/C/D) |
+| Implémentation urgente | **ARCHI-014** : appliquer DEC-WRITER-ARCH-001 vague 3 STORY-002 (créer gabarits, refondre briefs, adapter writers) |
+| Prochaine action | **ARCHI-014 + arbitrer sélection étape 6 STORY-002** en parallèle (implémentation system/user + validation top 1-3 + greffes Directeur) |
 
 ---
 

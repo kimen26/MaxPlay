@@ -9,6 +9,25 @@
 
 ---
 
+## 2026-05-14 — [MJ GABARIT] Header compact + fix encoding emojis (tous les MJ)
+
+**Owner** : Papa Yann (signal utilisateur)
+**Trigger** : Papa Yann signale 2 problèmes systématiques à travers TOUS les mini-jeux HTML :
+1. Caractères foireux / encoding cassé (textes + emojis)
+2. Bandeau titre + message mise à jour + bouton retour au menu **trop gros** — veut gabarit compacté comme mj-20 (commit e1bcd42a)
+
+**Fait** :
+- ✅ Classification : DÉCISION (gabarit canonique) + TODO (encoding + gabarit) + LEÇON (pattern unifié)
+- ✅ Création EP-035 (fix encoding emojis)
+- ✅ Création EP-036 (appliquer gabarit header compact mj-20 à tous les MJ)
+- ✅ Création L-033 (gabarit header canonique unifié = règle non-négociable)
+
+**État au reboot** :
+- Backlog mises à jour (EP-035, EP-036, L-033)
+- Décision figée : header unifié + compact = obligation futurs MJ + retro-fit existants
+
+---
+
 ## 2026-05-13 — [ARCHITECTURE CLAUDE] Refonte 3 niveaux + path-scoped rules
 
 **Owner** : refonte doc Anthropic (main agent + validation Papa Yann)

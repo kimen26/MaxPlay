@@ -13,6 +13,38 @@
 
 ---
 
+## EP-035 – Fix encoding emojis tous les mini-jeux HTML
+
+**Statut** : `[ ]` à faire
+
+**Contexte** : Papa Yann signale caractères foireux / encoding cassé dans textes + emojis partout dans les MJ HTML.
+
+**À faire** :
+1. Audit tous les MJ : vérifier charset UTF-8 `<meta charset="utf-8">`
+2. Vérifier tous les emojis encoded correctement (pas de fallback broken)
+3. Centraliser encoding + créer gabarit HTML standard (voir EP-036)
+
+**Impact** : 21 fichiers `web/mj-*.html` + `web/index.html`.
+
+---
+
+## EP-036 – Gabarit header compact unifié tous les mini-jeux (rétro-fit)
+
+**Statut** : `[ ]` à faire
+
+**Contexte** : Papa Yann signale bandeau titre trop gros dans tous les MJ. Commit e1bcd42a (mj-20 "header compact") montre le pattern : header une seule ligne, compact, petit.
+
+**À faire** :
+1. Figer gabarit `.hdr` canonique basé sur mj-20 fix (commit e1bcd42a)
+2. Appliquer à tous les MJ existants : mj-01–06, 08–09, 11–21, max-adventure (20 fichiers cibles — mj-20 déjà bon)
+3. Docs : ajouter gabarit obligatoire dans `memory/rules.md`
+
+**Raison** : uniformité UX + économise espace pour contenu jeu (sessions 3-8 min zéro perte).
+
+**Impact** : 21 fichiers `web/mj-*.html`, potentiellement `web/index.html` menu.
+
+---
+
 ## EP-VOCAB – Module vocab.py + pivot "refs visuelles" pour pipeline tile-tools
 
 **Statut** : `[x]` **clôturé 2026-05-12** (phases 1-2 terminées, phases 3-5 → EP-REFS)
@@ -120,6 +152,8 @@
 | EP-030 | MJ-17 · Le garage : 10 icônes en 2 lignes droites | `[x]` |
 | EP-031 | MJ-15 · L'intrus : niveau D roues colorées + intrus couleur+numéro wrong | `[x]` |
 | EP-032 | MJ-09 · Trie les bus : déplacer 2 bus simultanément (multi-touch 2 doigts) | `[x]` |
+| EP-035 | Fix encoding emojis tous les mini-jeux HTML (UTF-8 + vérification) | `[ ]` |
+| EP-036 | Gabarit header compact unifié tous les MJ (rétro-fit 20 fichiers) | `[ ]` |
 | EP-TILES | Pipeline tile-tools LimeZu (cartographie + recettes + mockups-routes + tile-picker + tile-pmo) | `[~]` |
 | EP-MJPOSE | MJ · Pose-tes-tiles (kids éditeur de map simplifié) | `[x]` |
 | EP-VOCAB | Module vocab.py + pivot "refs visuelles" pour pipeline tile-tools (anti-erreurs, source unique) | `[x]` |
@@ -559,6 +593,7 @@ MaxPlay V0
 | L-030 | 2026-05-12 | **Mapping LimeZu SW_1 ↔ SW_2-6 figé** : les 6 tilesets Sidewalk NE SONT PAS équivalents à numéro identique. SW_1 a 10 positions (#11-#20) décalées vs SW_2-6. Table de mapping dans `game/web/tile-tools/styles.py` (fonction `tile_for_form(style, n_ref)` applique le remap auto). Anti-pattern fatal : convertir `Sidewalk_1_X → Sidewalk_2_X` aveuglément = artefact garanti positions 11-20 | Session 2026-05-12 LESSONS L-010 + script `compare_tilesets_final.py` |
 | L-031 | 2026-05-12 | **Méthode "planche comparative"** validée : au lieu de rendre 60 PNG isolés (validation lourde), générer 1 grosse image grille (N tiles × M tilesets, labellisée). Validation Papa Yann en 1 coup d'œil au lieu de 22 cycles. Pattern à généraliser sur toutes familles (Asphalt/Grass/Wall/...). Scripts : `scripts/compare_tilesets*.py` | Session 2026-05-12 LESSONS L-011 |
 | L-032 | 2026-05-12 | **PIL lecture w/h obligatoire** avant inclusion dans `tile_picker_data.js` : 69% des PNG sont multi-cells (sprites meubles 2×3, voitures 4×2, façades 5×6, atlas 18×16). Présupposé "tile 48×48 = 1×1 cellule" = FAUX. Refonte `scripts/build_tile_picker_data.py` lit dimensions réelles, catégorie `planches` dédiée pour >10 cellules | Session 2026-05-12 LESSONS L-012, tile-picker passé 36% → 100% couverture (3525 → 9811 tiles) |
+| L-033 | 2026-05-14 | **Gabarit header `.hdr` canonique unifié** obligation tous les MJ HTML (existants + futurs). Pattern figé depuis mj-20 (commit e1bcd42a) : header une ligne, compact, petit. Raison : uniformité UX + économise espace contenu jeu (3-8 min sessions, zéro perte). Rétro-fit : 20 MJ cibles sauf mj-20 | Signal Papa Yann 2026-05-14, décision figée (EP-036 créé) |
 
 ---
 

@@ -97,13 +97,13 @@ server.tool(
   "Pose une question à Grok 4.3 (xAI). reasoning_effort='low' par défaut (juste au-dessus de none, évite le thinking long). Param 'temperature' optionnel (0.0=déterministe, 0.7=nominal, 1.0+=créatif).",
   {
     prompt: z.string().describe("La question ou le texte à soumettre à Grok"),
-    context: z.string().optional().describe("Contexte optionnel (ex: extrait de l'histoire)"),
+    system: z.string().optional().describe("Prompt système (rôle, règles, contexte statique). Passé tel quel sans préfixe."),
     temperature: z.number().min(0).max(2).optional().describe("Température LLM (0=déterministe, 0.7=nominal défaut Grok, 1.0+=plus créatif)"),
   },
-  async ({ prompt, context, temperature }) => {
+  async ({ prompt, system, temperature }) => {
     const apiKey = process.env.XAI_API_KEY;
     if (!apiKey) return { content: [{ type: "text", text: "Erreur: XAI_API_KEY non définie." }], isError: true };
-    const systemPrompt = context ? `Tu es un assistant expert. Contexte fourni:\n\n${context}` : "Tu es un assistant expert, précis et concis.";
+    const systemPrompt = system ?? "Tu es un assistant expert, précis et concis.";
     try {
       const result = await callOpenAICompat(
         "https://api.x.ai/v1",
@@ -128,13 +128,13 @@ server.tool(
   "Pose une question à Kimi K2 (via endpoint coding kimi.com qui accepte aussi du créatif/narratif, mode passe-partout). Param 'temperature' optionnel (0=déterministe, 0.6=nominal, 1.0+=créatif).",
   {
     prompt: z.string().describe("La question ou le texte à soumettre à Kimi"),
-    context: z.string().optional().describe("Contexte optionnel (ex: extrait de l'histoire)"),
+    system: z.string().optional().describe("Prompt système (rôle, règles, contexte statique). Passé tel quel sans préfixe."),
     temperature: z.number().min(0).max(2).optional().describe("Température LLM (Kimi défaut ~0.6 ; 0=déterministe, 1.0+=plus créatif)"),
   },
-  async ({ prompt, context, temperature }) => {
+  async ({ prompt, system, temperature }) => {
     const apiKey = process.env.MOONSHOT_API_KEY;
     if (!apiKey) return { content: [{ type: "text", text: "Erreur: MOONSHOT_API_KEY non définie." }], isError: true };
-    const systemPrompt = context ? `Tu es un assistant expert. Contexte fourni:\n\n${context}` : "Tu es un assistant expert, précis et concis.";
+    const systemPrompt = system ?? "Tu es un assistant expert, précis et concis.";
     try {
       const result = await callOpenAICompat(
         "https://api.kimi.com/coding/v1",
@@ -163,15 +163,15 @@ server.tool(
   "Pose une question à Kimi K2.6 via l'API Moonshot OFFICIELLE PAYANTE (platform.moonshot.ai). USAGE STRICTEMENT RÉSERVÉ aux 2 writers narratifs qui en ont besoin : kimi-reco (Instant, top_p 0.95, temp 1.0) et kimi-thinking (mode thinking activé, K2.6 défaut). Pour tout autre usage, utiliser ask_kimi (gratuit). Voir narration/pmo/INVARIANTS.md § Casting writers étape 4. NB : K2.6 utilise température fixe 1.0 et a le thinking ACTIVÉ par défaut — pour Instant il faut explicitement disabled.",
   {
     prompt: z.string().describe("La question ou le texte à soumettre à Kimi (USAGE WRITERS NARRATIFS UNIQUEMENT)"),
-    context: z.string().optional().describe("Contexte optionnel (ex: _writer-package.md inliné)"),
+    system: z.string().optional().describe("Prompt système (rôle, règles, contexte statique). Passé tel quel sans préfixe."),
     temperature: z.number().min(0).max(2).optional().describe("Température (K2.6 = 1.0 fixe selon doc Moonshot)"),
     top_p: z.number().min(0).max(1).optional().describe("Top-p (reco Moonshot : 0.95)"),
     thinking: z.enum(["enabled", "disabled"]).optional().describe("Mode thinking K2.6 — 'enabled' (writer #9 kimi-thinking, défaut K2.6) ou 'disabled' (writer #8 kimi-reco Instant). Si omis = défaut K2.6 = enabled."),
   },
-  async ({ prompt, context, temperature, top_p, thinking }) => {
+  async ({ prompt, system, temperature, top_p, thinking }) => {
     const apiKey = process.env.MOONSHOT_PAYANT_API_KEY;
     if (!apiKey) return { content: [{ type: "text", text: "Erreur: MOONSHOT_PAYANT_API_KEY non définie. Cette key est distincte de MOONSHOT_API_KEY (gratuit) et réservée aux writers narratifs kimi-reco + kimi-thinking. Voir narration/equipe/references/temperatures-llm.md." }], isError: true };
-    const systemPrompt = context ? `Tu es un assistant expert. Contexte fourni:\n\n${context}` : "Tu es un assistant expert, précis et concis.";
+    const systemPrompt = system ?? "Tu es un assistant expert, précis et concis.";
     const extraBody: Record<string, unknown> = {};
     if (typeof top_p === "number") extraBody.top_p = top_p;
     if (thinking) extraBody.thinking = { type: thinking };
@@ -199,14 +199,14 @@ server.tool(
   "Pose une question à DeepSeek V4. Modèle 'pro' (défaut, plus capable) ou 'flash' (rapide). Mode non-thinking. Promo -75% sur V4-Pro jusqu'au 2026-05-31.",
   {
     prompt: z.string().describe("La question ou le texte à soumettre à DeepSeek"),
-    context: z.string().optional().describe("Contexte optionnel"),
+    system: z.string().optional().describe("Prompt système (rôle, règles, contexte statique). Passé tel quel sans préfixe."),
     model: z.enum(["deepseek-v4-pro", "deepseek-v4-flash"]).optional().default("deepseek-v4-pro").describe("v4-pro = plus capable (1.6T params, promo -75% jusqu'au 2026-05-31) | v4-flash = rapide (284B params)"),
     temperature: z.number().min(0).max(2).optional().describe("Température LLM (DeepSeek défaut ~1.0 ; 0=déterministe, 1.5=plus créatif)"),
   },
-  async ({ prompt, context, model, temperature }) => {
+  async ({ prompt, system, model, temperature }) => {
     const apiKey = process.env.DEEPSEEK_API_KEY;
     if (!apiKey) return { content: [{ type: "text", text: "Erreur: DEEPSEEK_API_KEY non définie." }], isError: true };
-    const systemPrompt = context ? `Tu es un assistant expert. Contexte fourni:\n\n${context}` : "Tu es un assistant expert, précis et concis.";
+    const systemPrompt = system ?? "Tu es un assistant expert, précis et concis.";
     try {
       const result = await callOpenAICompat(
         "https://api.deepseek.com/v1",

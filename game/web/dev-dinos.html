@@ -168,17 +168,19 @@ html, body {
   font-size:0.95rem; font-weight:700; color:#ffe066; line-height:1.5; flex:1;
 }
 
-/* ── Pangée ── */
-.pangee-anim-wrap { cursor:pointer; margin-bottom:12px; }
-.pangee-svg { width:100%; max-width:320px; display:block; margin:0 auto; border-radius:10px; }
-.pangee-west, .pangee-east { transform-box:fill-box; transform-origin:center; }
-.pangee-west { animation:pangee-drift-w 5s ease-in-out infinite alternate; }
-.pangee-east { animation:pangee-drift-e 5s ease-in-out infinite alternate; }
-@keyframes pangee-drift-w { 0%,15% { transform:translateX(14px); } 85%,100% { transform:translateX(-6px); } }
-@keyframes pangee-drift-e { 0%,15% { transform:translateX(-14px); } 85%,100% { transform:translateX(20px); } }
-.pangee-caption { animation:pangee-cap 5s ease-in-out infinite alternate; }
-@keyframes pangee-cap { 0%,30% { opacity:0; } 60%,100% { opacity:1; } }
-.pangee-anim-hint { text-align:center; font-size:0.7rem; color:rgba(255,255,255,0.4); margin-top:5px; }
+/* ── Pangée carrousel ── */
+.pangee-carousel { position:relative; width:100%; aspect-ratio:2/1; border-radius:12px; overflow:hidden; background:#04263f; }
+.pangee-slides { width:100%; height:100%; position:relative; }
+.pangee-slide { position:absolute; inset:0; opacity:0; transition:opacity 0.7s ease; }
+.pangee-slide.active { opacity:1; }
+.pangee-img { width:100%; height:100%; object-fit:cover; display:block; }
+.pangee-slide-cap { position:absolute; left:0; bottom:0; right:0; padding:8px 12px; background:linear-gradient(transparent,rgba(0,0,0,0.7)); display:flex; align-items:baseline; gap:8px; }
+.pangee-slide-label { font-weight:900; font-size:1rem; color:#fff; }
+.pangee-slide-ma { font-size:0.72rem; color:rgba(255,255,255,0.7); }
+.pangee-dots { display:flex; gap:6px; justify-content:center; margin:10px 0 4px; flex-wrap:wrap; }
+.pangee-dot { background:rgba(80,160,255,0.12); border:1px solid rgba(80,160,255,0.25); color:rgba(180,220,255,0.8); border-radius:20px; padding:5px 12px; font-family:inherit; font-size:0.72rem; font-weight:900; cursor:pointer; touch-action:manipulation; }
+.pangee-dot.active { background:#3498db; border-color:#5dade2; color:#fff; }
+.pangee-credit { text-align:center; font-size:0.6rem; color:rgba(255,255,255,0.3); margin-bottom:10px; }
 .pangee-etapes { display:flex; flex-direction:column; gap:8px; margin-bottom:10px; }
 .pangee-etape { background:rgba(80,160,255,0.08); border:1px solid rgba(80,160,255,0.2); border-radius:10px; padding:9px 11px; cursor:pointer; }
 .pangee-etape:active { background:rgba(80,160,255,0.18); }
@@ -576,14 +578,29 @@ function buildMenuPeriode(el) {
   }).join('') + buildExtinctionBloc();
 
   el.appendChild(wrapper);
+  _pangeeIdx = 0;
+  pangeeStartAuto();
 }
 
 function buildPangeeBloc() {
-  // 3 états des continents (viewBox 0 0 200 90) — animés par CSS keyframes
-  // Trias = tout collé · Jurassique = fendu en 2 · Crétacé = écarté
+  const slides = PANGEE.etapes.map((e, i) => `
+    <div class="pangee-slide${i===0?' active':''}" data-idx="${i}">
+      <img class="pangee-img" src="${e.img}" alt="La Terre — ${e.label}" loading="lazy">
+      <div class="pangee-slide-cap">
+        <span class="pangee-slide-label">${e.label}</span>
+        <span class="pangee-slide-ma">${e.ma}</span>
+      </div>
+    </div>
+  `).join('');
+
+  const dots = PANGEE.etapes.map((e, i) =>
+    `<button class="pangee-dot${i===0?' active':''}" data-idx="${i}"
+      onclick="pangeeGoto(${i})" aria-label="${e.label}">${e.label}</button>`
+  ).join('');
+
   const etapesHtml = PANGEE.etapes.map(e => `
     <div class="pangee-etape" onclick="speakText('${esc(e.label)} : ${esc(e.titre)}. ${esc(e.texte)}')">
-      <div class="pangee-etape-label">${e.label}</div>
+      <div class="pangee-etape-label">${e.label} · ${esc(e.ma)}</div>
       <div class="pangee-etape-titre">${e.titre}</div>
       <div class="pangee-etape-texte">${e.texte}</div>
     </div>
@@ -601,17 +618,11 @@ function buildPangeeBloc() {
         </div>
       </div>
       <div style="padding:12px">
-        <div class="pangee-anim-wrap" onclick="speakText('${esc(PANGEE.intro)}')">
-          <svg viewBox="0 0 200 90" class="pangee-svg">
-            <rect x="0" y="0" width="200" height="90" fill="rgba(0,60,120,0.35)" rx="10"/>
-            <!-- Bloc Pangée gauche (Amériques) -->
-            <path class="pangee-west" d="M 70,20 L 95,18 L 100,35 L 96,55 L 88,70 L 76,72 L 68,58 L 66,38 Z" fill="#e67e22"/>
-            <!-- Bloc Pangée droite (Afrique/Eurasie) -->
-            <path class="pangee-east" d="M 100,18 L 130,16 L 138,32 L 134,52 L 124,68 L 110,70 L 102,54 L 100,36 Z" fill="#27ae60"/>
-            <text x="100" y="84" font-size="9" fill="rgba(255,255,255,0.5)" text-anchor="middle" class="pangee-caption">la Pangée se sépare…</text>
-          </svg>
-          <div class="pangee-anim-hint">▶ regarde les continents bouger</div>
+        <div class="pangee-carousel" id="pangee-carousel">
+          <div class="pangee-slides">${slides}</div>
         </div>
+        <div class="pangee-dots">${dots}</div>
+        <div class="pangee-credit">${PANGEE.credit}</div>
         <div class="pangee-etapes">${etapesHtml}</div>
         <div class="pangee-pourquoi" onclick="speakText('${esc(PANGEE.pourquoi)}')">
           💡 ${PANGEE.pourquoi}
@@ -622,6 +633,25 @@ function buildPangeeBloc() {
       </div>
     </div>
   `;
+}
+
+let _pangeeIdx = 0, _pangeeTimer = null;
+function pangeeGoto(idx) {
+  const car = document.getElementById('pangee-carousel');
+  if (!car) return;
+  const slides = car.querySelectorAll('.pangee-slide');
+  const dots = document.querySelectorAll('.pangee-dot');
+  if (!slides.length) return;
+  _pangeeIdx = (idx + slides.length) % slides.length;
+  slides.forEach((s, i) => s.classList.toggle('active', i === _pangeeIdx));
+  dots.forEach((d, i) => d.classList.toggle('active', i === _pangeeIdx));
+}
+function pangeeStartAuto() {
+  if (_pangeeTimer) clearInterval(_pangeeTimer);
+  _pangeeTimer = setInterval(() => {
+    if (!document.getElementById('pangee-carousel')) { clearInterval(_pangeeTimer); _pangeeTimer = null; return; }
+    pangeeGoto(_pangeeIdx + 1);
+  }, 2600);
 }
 
 function buildExtinctionBloc() {

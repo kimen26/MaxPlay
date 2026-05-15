@@ -422,7 +422,10 @@ function mixerTube(idx) {
     t.mixed={hex,label:nearestLabel(rgb[0],rgb[1],rgb[2]).label};
     renderTubes();
     const ideal=blendCounts({r:defi.r,j:defi.j,b:defi.b,w:defi.w});
-    if (rgbDist(rgb,ideal)<0.22&&!victoire) {
+    const dist=rgbDist(rgb,ideal);
+    // debug visible temporaire
+    document.getElementById('tube-result-'+idx).textContent = t.mixed.label+' d='+dist.toFixed(2);
+    if (dist<0.22&&!victoire) {
       victoire=true;
       setTimeout(showVictoire,650);
     }

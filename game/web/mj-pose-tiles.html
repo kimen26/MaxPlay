@@ -6,89 +6,127 @@
 <title>🦺 Pose-tes-tiles - Petit Ouvrier 🚧</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-  html, body { height: 100%; overflow: hidden; }
+  html, body { height: 100dvh; overflow: hidden; }
   body { background: linear-gradient(180deg, #ffd166 0%, #ffb627 100%);
          font-family: 'Comic Sans MS', 'Marker Felt', sans-serif; color: #2a2a4a;
-         display: flex; flex-direction: column; align-items: center; padding: 8px;
+         display: flex; flex-direction: column;
          touch-action: manipulation; user-select: none; }
 
-  h1 { font-size: 1.4rem; margin: 4px 0; text-align: center;
-       text-shadow: 2px 2px 0 rgba(255,255,255,0.5); }
+  /* ── En-tête compact ── */
+  .topbar { display: flex; align-items: center; justify-content: center;
+            padding: 4px 8px; flex-shrink: 0; position: relative; }
+  .topbar h1 { font-size: 1.1rem; text-shadow: 2px 2px 0 rgba(255,255,255,0.5); }
+  .helmet { font-size: 1.3rem; vertical-align: middle; }
 
-  .layout { display: flex; gap: 12px; max-width: 1200px; width: 100%; flex: 1; min-height: 0; }
-  @media (max-width: 800px) { .layout { flex-direction: column; } }
+  /* ── Layout principal ── */
+  .layout { display: flex; flex: 1; min-height: 0; gap: 8px; padding: 0 8px 8px; }
 
-  /* Grille de jeu */
-  .game-zone { background: #6abe30; border-radius: 12px; padding: 8px;
-               border: 4px solid #fff; box-shadow: 0 4px 0 rgba(0,0,0,0.2);
-               flex-shrink: 0; }
-  .grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 2px;
-          background: #4a8a20; padding: 2px; border-radius: 6px;
-          width: min(480px, calc(100vw - 40px)); aspect-ratio: 1; }
-  .cell { background: #6abe30; border-radius: 3px; position: relative;
-          aspect-ratio: 1; cursor: pointer; min-height: 40px; }
+  /* Paysage : grille à gauche, palette à droite */
+  @media (orientation: landscape) {
+    .layout { flex-direction: row; }
+    .game-zone { flex-shrink: 0; }
+    .palette { flex: 1; min-width: 220px; }
+  }
+  /* Portrait : grille en haut, palette en bas */
+  @media (orientation: portrait) {
+    .layout { flex-direction: column; }
+    .game-zone { flex-shrink: 0; display: flex; justify-content: center; }
+    .palette { flex: 1; min-height: 0; }
+  }
+
+  /* ── Grille ── */
+  .game-zone { }
+  .grid { display: grid; gap: 2px; background: #4a8a20; padding: 2px; border-radius: 8px;
+          border: 4px solid #fff; box-shadow: 0 4px 0 rgba(0,0,0,0.2); }
+  /* Portrait : grille tient dans ~45dvh */
+  @media (orientation: portrait) {
+    .grid { grid-template-columns: repeat(8, 1fr);
+            width: min(calc(45dvh - 8px), calc(100vw - 16px));
+            aspect-ratio: 1; }
+  }
+  @media (orientation: landscape) {
+    .grid { grid-template-columns: repeat(8, 1fr);
+            height: calc(100dvh - 56px);
+            aspect-ratio: 1; }
+  }
+  .cell { background: #6abe30; border-radius: 2px; position: relative;
+          aspect-ratio: 1; cursor: pointer; }
   .cell img { position: absolute; inset: 0; width: 100%; height: 100%;
               image-rendering: pixelated; image-rendering: crisp-edges;
               pointer-events: none; }
+  /* tile 2x1 : span sur 2 colonnes */
+  .cell img.span-h { width: 200%; z-index: 3; }
+  /* tile 1x2 : span sur 2 lignes */
+  .cell img.span-v { height: 200%; z-index: 3; }
   .cell.selected { outline: 3px solid #ffe066; z-index: 2; }
 
-  /* Palette */
-  .palette { background: #fff; border-radius: 12px; padding: 10px;
+  /* ── Palette ── */
+  .palette { background: #fff; border-radius: 12px; padding: 6px;
              border: 4px solid #fff; box-shadow: 0 4px 0 rgba(0,0,0,0.2);
-             display: flex; flex-direction: column; gap: 8px; flex: 1;
-             min-width: 280px; max-width: 360px; }
-  .cats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
-  .cat-btn { background: #f0f0f0; border: 3px solid transparent; border-radius: 8px;
-             padding: 6px 2px; cursor: pointer; font-size: 0.7rem; text-align: center;
-             min-height: 50px; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-  .cat-btn .emoji { font-size: 1.4rem; }
+             display: flex; flex-direction: column; gap: 5px; overflow: hidden; }
+
+  .cats { display: grid; grid-template-columns: repeat(6, 1fr); gap: 3px; flex-shrink: 0; }
+  .cat-btn { background: #f0f0f0; border: 2px solid transparent; border-radius: 7px;
+             padding: 4px 2px; cursor: pointer; font-size: 0.6rem; text-align: center;
+             display: flex; flex-direction: column; align-items: center; justify-content: center;
+             min-height: 44px; gap: 1px; }
+  .cat-btn .emoji { font-size: 1.3rem; line-height: 1; }
   .cat-btn.active { background: #ffe066; border-color: #2a2a4a; }
   .cat-btn:active { transform: scale(0.95); }
 
-  .tiles-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-                gap: 6px; overflow-y: auto; padding: 4px;
+  /* Tile sélectionnée (affichage nom) */
+  .selected-display { display: flex; align-items: center; gap: 6px; font-size: 0.78rem;
+                      padding: 3px 6px; background: #ffe066; border-radius: 5px;
+                      flex-shrink: 0; min-height: 30px; }
+  .selected-display img { width: 24px; height: 24px; image-rendering: pixelated; }
+
+  /* Grille de tiles — scroll activé */
+  .tiles-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(54px, 1fr));
+                gap: 5px; overflow-y: scroll; padding: 4px;
                 background: #f0f0f0; border-radius: 6px;
-                max-height: 260px; min-height: 120px; }
-  .tile-btn { background: #fff; border: 3px solid transparent; border-radius: 6px;
-              padding: 4px; cursor: pointer; aspect-ratio: 1; position: relative; }
+                flex: 1; min-height: 0;
+                /* scroll touch natif mobile */ -webkit-overflow-scrolling: touch; }
+  .tile-btn { background: #fff; border: 2px solid transparent; border-radius: 5px;
+              padding: 3px; cursor: pointer; position: relative;
+              display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .tile-btn .thumb { width: 100%; aspect-ratio: 1; position: relative; overflow: hidden; }
+  .tile-btn.wide .thumb { aspect-ratio: 2; }
+  .tile-btn.tall .thumb { aspect-ratio: 0.5; }
   .tile-btn img { width: 100%; height: 100%; image-rendering: pixelated;
-                  image-rendering: crisp-edges; pointer-events: none; }
+                  image-rendering: crisp-edges; pointer-events: none; object-fit: contain; }
+  .tile-btn .tname { font-size: 0.55rem; color: #555; text-align: center;
+                     line-height: 1.1; max-width: 100%; overflow: hidden;
+                     white-space: nowrap; text-overflow: ellipsis; }
   .tile-btn.active { border-color: #ff6b35; background: #ffe5d9; transform: scale(1.05); }
   .tile-btn:active { transform: scale(0.95); }
 
-  /* Toolbar */
-  .toolbar { display: flex; gap: 6px; flex-wrap: wrap; }
-  .tool-btn { background: #fff; border: 3px solid #2a2a4a; border-radius: 8px;
-              padding: 8px 12px; cursor: pointer; font-size: 0.95rem; font-weight: bold;
-              font-family: inherit; flex: 1; min-height: 48px; min-width: 100px;
-              box-shadow: 0 3px 0 rgba(0,0,0,0.2); }
-  .tool-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 rgba(0,0,0,0.2); }
+  /* ── Toolbar ── */
+  .toolbar { display: flex; gap: 4px; flex-shrink: 0; }
+  .tool-btn { background: #fff; border: 2px solid #2a2a4a; border-radius: 7px;
+              padding: 6px 4px; cursor: pointer; font-size: 0.78rem; font-weight: bold;
+              font-family: inherit; flex: 1; min-height: 40px;
+              box-shadow: 0 2px 0 rgba(0,0,0,0.2); }
+  .tool-btn:active { transform: translateY(2px); box-shadow: none; }
   .tool-btn.lisser { background: #ffe066; }
-  .tool-btn.gomme { background: #ff8b8b; }
-  .tool-btn.fini { background: #6abe30; color: #fff; }
+  .tool-btn.gomme  { background: #ff8b8b; }
+  .tool-btn.fini   { background: #6abe30; color: #fff; }
   .tool-btn.fini.success { background: #4caf50; animation: bounce 0.5s ease; }
-  @keyframes bounce { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
+  @keyframes bounce { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
 
-  .selected-display { display: flex; align-items: center; gap: 8px; font-size: 0.85rem;
-                      padding: 4px 8px; background: #ffe066; border-radius: 6px; min-height: 36px; }
-  .selected-display img { width: 32px; height: 32px; image-rendering: pixelated;
-                          image-rendering: crisp-edges; }
-
-  .back { position: absolute; top: 8px; left: 8px; background: rgba(255,255,255,0.9);
-          border: 2px solid #2a2a4a; border-radius: 50%; width: 44px; height: 44px;
-          font-size: 1.5rem; cursor: pointer; display: flex; align-items: center; justify-content: center; }
-
-  .helmet { font-size: 1.8rem; vertical-align: middle; }
+  /* Flèche retour (back-button.js la remplace) */
+  .back { position: absolute; left: 8px; top: 50%; transform: translateY(-50%);
+          color: #2a2a4a; text-decoration: none; font-size: 1.3rem; font-weight: 900;
+          background: rgba(255,255,255,0.7); border-radius: 8px; padding: 4px 8px; }
 </style>
 </head>
 <body>
 
-<a class="back" href="index.html" title="Retour menu">←</a>
-
-<h1><span class="helmet">🦺</span> Pose-tes-tiles <span class="helmet">🚧</span></h1>
+<div class="topbar">
+  <a class="back" href="index.html">←</a>
+  <h1><span class="helmet">🦺</span> Pose-tes-tiles <span class="helmet">🚧</span></h1>
+</div>
 
 <div class="layout">
-
   <div class="game-zone">
     <div class="grid" id="grid"></div>
   </div>
@@ -104,57 +142,72 @@
 
     <div class="toolbar">
       <button class="tool-btn lisser" onclick="lisser()">🦺 Lisser</button>
-      <button class="tool-btn gomme" onclick="if(confirm('Tout effacer ?')) clearAll()">🚧 Effacer</button>
+      <button class="tool-btn gomme" onclick="if(confirm('Tout effacer ?')) clearAll()">🗑️ Effacer</button>
       <button class="tool-btn fini" id="fini-btn" onclick="celebrer()">🎉 Fini !</button>
     </div>
   </div>
-
 </div>
 
 <script>
-// CDN jsDelivr : marche partout (file://, localhost, GitHub Pages)
 const ASSET = 'https://cdn.jsdelivr.net/gh/kimen26/MaxPlay@master/game/phaser/public/assets/tiles/';
 
-// Categories - sélection curatée : tiles 1x1 simples, bien regroupées, une seule couleur par famille
+// size : {w,h} — nb de cellules occupées. Défaut 1x1 si absent.
 const CATEGORIES = {
   rue: {
     label: 'Route', emoji: '🛣️',
     tiles: [
-      // Asphalte plain
       { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png', name: 'asphalte' },
-      // Lignes blanches H et V (mnémo : 2 propre H, 8 propre V)
       { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png',  name: 'ligne H' },
       { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png',  name: 'ligne V' },
-      // Croisement (+) et coins asphalte intérieurs
-      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_4.png',  name: 'croix' },
-      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_1.png',  name: 'coin SE' },
-      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_3.png',  name: 'coin SW' },
-      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_7.png',  name: 'coin NW' },
-      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_9.png',  name: 'coin NE' },
-      // Trottoir blanc (une seule couleur, uniforme)
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_4.png',  name: '+ croix' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_1.png',  name: 'coin ↘' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_3.png',  name: 'coin ↙' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_7.png',  name: 'coin ↖' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_9.png',  name: 'coin ↗' },
       { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png',   name: 'trottoir' },
       { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_10.png',  name: 'trottoir 2' },
-      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png',   name: 'trottoir bas' },
-      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png',   name: 'trottoir haut' },
-      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png',   name: 'trottoir gauche' },
-      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png',   name: 'trottoir droite' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png',   name: 'bord S' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png',   name: 'bord N' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png',   name: 'bord O' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png',   name: 'bord E' },
+    ],
+  },
+  bus: {
+    label: 'Bus', emoji: '🚌',
+    tiles: [
+      // Panneau arrêt
+      { file: 'stations/ME_Singles_Subway_and_Train_Station_48x48_Stop_Sign.png', name: 'panneau arrêt' },
+      // Sièges d'attente (2 tiles wide : _1 = gauche, _2 = droite)
+      { file: 'stations/ME_Singles_Subway_and_Train_Station_48x48_Orange_Single_Wait_Seat_1.png',  name: 'siège orange', size: {w:1,h:1} },
+      { file: 'stations/ME_Singles_Subway_and_Train_Station_48x48_White_Single_Wait_Seat_1.png',   name: 'siège blanc',  size: {w:1,h:1} },
+      { file: 'stations/ME_Singles_Subway_and_Train_Station_48x48_Black_Single_Wait_Seat_1.png',   name: 'siège noir',   size: {w:1,h:1} },
+      // Double siège (2x1)
+      { file: 'stations/ME_Singles_Subway_and_Train_Station_48x48_Orange_Couple_Wait_Seat_1.png',  name: 'banquette ora.', size: {w:2,h:1},
+        file2: 'stations/ME_Singles_Subway_and_Train_Station_48x48_Orange_Couple_Wait_Seat_2.png' },
+      { file: 'stations/ME_Singles_Subway_and_Train_Station_48x48_White_Couple_Wait_Seat_1.png',   name: 'banquette blc.', size: {w:2,h:1},
+        file2: 'stations/ME_Singles_Subway_and_Train_Station_48x48_White_Couple_Wait_Seat_2.png' },
+      // Parking
+      { file: 'props/ME_Singles_City_Props_48x48_Parking_Meter_1.png',           name: 'horodateur' },
+      { file: 'props/ME_Singles_City_Props_48x48_Underground_Parking_1.png',     name: 'parking 1' },
+      { file: 'props/ME_Singles_City_Props_48x48_Underground_Parking_2.png',     name: 'parking 2' },
+      { file: 'props/ME_Singles_City_Props_48x48_Underground_Parking_3.png',     name: 'parking 3' },
+      // Barrière
+      { file: 'props/ME_Singles_City_Props_48x48_Stop_Barrier_Front.png',        name: 'barrière' },
+      { file: 'props/ME_Singles_City_Props_48x48_Stop_Barrier_Up_Front.png',     name: 'barrière levée' },
     ],
   },
   parc: {
     label: 'Parc', emoji: '🌳',
     tiles: [
-      // Herbe (plusieurs teintes du même vert)
       { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_9.png', name: 'herbe' },
-      { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_7.png', name: 'herbe foncée' },
-      { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_8.png', name: 'herbe claire' },
-      // Buissons ronds 1x1 (même forme, couleurs différentes)
-      { file: 'parks/ME_Singles_Garden_48x48_Bush_1.png',  name: 'buisson vert' },
+      { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_7.png', name: 'herbe 2' },
+      { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_8.png', name: 'herbe 3' },
+      { file: 'parks/ME_Singles_Garden_48x48_Bush_1.png',  name: 'buisson 1' },
       { file: 'parks/ME_Singles_Garden_48x48_Bush_2.png',  name: 'buisson 2' },
-      { file: 'parks/ME_Singles_Garden_48x48_Bush_3.png',  name: 'buisson rond' },
+      { file: 'parks/ME_Singles_Garden_48x48_Bush_3.png',  name: 'buisson 3' },
       { file: 'parks/ME_Singles_Garden_48x48_Bush_4.png',  name: 'buisson 4' },
       { file: 'parks/ME_Singles_Garden_48x48_Bush_5.png',  name: 'buisson 5' },
       { file: 'parks/ME_Singles_Garden_48x48_Bush_10.png', name: 'buisson 6' },
-      // Banc et fontaine (1x1)
       { file: 'parks/ME_Singles_Garden_48x48_Big_Bench_Horizontal.png', name: 'banc H' },
       { file: 'parks/ME_Singles_Garden_48x48_Big_Bench_Vertical.png',   name: 'banc V' },
       { file: 'parks/ME_Singles_Garden_48x48_Fountain_1_1.png', name: 'fontaine' },
@@ -163,17 +216,15 @@ const CATEGORIES = {
   fleurs: {
     label: 'Fleurs', emoji: '🌸',
     tiles: [
-      // Petites fleurs 1x1 (une couleur simple par tile)
-      { file: 'parks/ME_Singles_Garden_48x48_Small_Red_Flower.png',        name: 'rouge' },
-      { file: 'parks/ME_Singles_Garden_48x48_Small_Pink_Flower.png',       name: 'rose' },
-      { file: 'parks/ME_Singles_Garden_48x48_Small_Yellow_Flower.png',     name: 'jaune' },
-      { file: 'parks/ME_Singles_Garden_48x48_Big_Light_Blue_Flower.png',   name: 'bleue' },
-      { file: 'parks/ME_Singles_Garden_48x48_Big_White_Flower.png',        name: 'blanche' },
-      { file: 'parks/ME_Singles_Garden_48x48_Big_Pink_Flower.png',         name: 'rose foncé' },
-      { file: 'parks/ME_Singles_Garden_48x48_Big_Red_Flower.png',          name: 'rouge foncé' },
-      { file: 'parks/ME_Singles_Garden_48x48_Big_Yellow_Flower.png',       name: 'jaune foncé' },
-      { file: 'parks/ME_Singles_Garden_48x48_Big_Sunflower.png',           name: 'tournesol' },
-      // Sprouts (pousses simples 1x1)
+      { file: 'parks/ME_Singles_Garden_48x48_Small_Red_Flower.png',    name: 'rouge' },
+      { file: 'parks/ME_Singles_Garden_48x48_Small_Pink_Flower.png',   name: 'rose' },
+      { file: 'parks/ME_Singles_Garden_48x48_Small_Yellow_Flower.png', name: 'jaune' },
+      { file: 'parks/ME_Singles_Garden_48x48_Big_Light_Blue_Flower.png', name: 'bleue' },
+      { file: 'parks/ME_Singles_Garden_48x48_Big_White_Flower.png',    name: 'blanche' },
+      { file: 'parks/ME_Singles_Garden_48x48_Big_Pink_Flower.png',     name: 'rose foncé' },
+      { file: 'parks/ME_Singles_Garden_48x48_Big_Red_Flower.png',      name: 'rouge foncé' },
+      { file: 'parks/ME_Singles_Garden_48x48_Big_Yellow_Flower.png',   name: 'jaune foncé' },
+      { file: 'parks/ME_Singles_Garden_48x48_Big_Sunflower.png',       name: 'tournesol' },
       { file: 'parks/ME_Singles_Garden_48x48_Big_Sprout_1.png', name: 'pousse 1' },
       { file: 'parks/ME_Singles_Garden_48x48_Big_Sprout_2.png', name: 'pousse 2' },
       { file: 'parks/ME_Singles_Garden_48x48_Big_Sprout_3.png', name: 'pousse 3' },
@@ -182,7 +233,6 @@ const CATEGORIES = {
   deco: {
     label: 'Déco', emoji: '🪑',
     tiles: [
-      // Mobilier urbain 1x1
       { file: 'props/ME_Singles_City_Props_48x48_Bench_1.png',       name: 'banc 1' },
       { file: 'props/ME_Singles_City_Props_48x48_Bench_2.png',       name: 'banc 2' },
       { file: 'props/ME_Singles_City_Props_48x48_Bench_3.png',       name: 'banc 3' },
@@ -194,35 +244,37 @@ const CATEGORIES = {
       { file: 'props/ME_Singles_City_Props_48x48_Dumpster_1.png',    name: 'benne' },
       { file: 'props/ME_Singles_City_Props_48x48_Dumpster_2.png',    name: 'benne 2' },
       { file: 'props/ME_Singles_City_Props_48x48_Black_Closed_Trash_Can.png', name: 'poubelle' },
-      { file: 'props/ME_Singles_City_Props_48x48_Info_Sign_1.png',   name: 'panneau info' },
-      { file: 'props/ME_Singles_City_Props_48x48_Danger_Sign_1.png', name: 'panneau danger' },
+      { file: 'props/ME_Singles_City_Props_48x48_Info_Sign_1.png',   name: 'info' },
+      { file: 'props/ME_Singles_City_Props_48x48_Danger_Sign_1.png', name: 'danger' },
     ],
   },
   maisons: {
     label: 'Maisons', emoji: '🏠',
     tiles: [
-      { file: 'buildings/ME_Singles_Generic_Building_48x48_Condo_1_1.png',  name: 'mur 1' },
-      { file: 'buildings/ME_Singles_Generic_Building_48x48_Condo_1_2.png',  name: 'mur 2' },
-      { file: 'buildings/ME_Singles_Generic_Building_48x48_Condo_1_3.png',  name: 'fenêtre' },
-      { file: 'buildings/ME_Singles_Generic_Building_48x48_Condo_1_4.png',  name: 'mur 4' },
-      { file: 'buildings/ME_Singles_Generic_Building_48x48_Condo_1_5.png',  name: 'mur 5' },
+      // Maisons jouets simples 1x1
+      { file: 'buildings/ME_Custom_Villas_48x48_Toy_House_Blue_1.png',   name: 'maison bleue' },
+      { file: 'buildings/ME_Custom_Villas_48x48_Toy_House_Blue_2.png',   name: 'maison bleue 2' },
+      { file: 'buildings/ME_Custom_Villas_48x48_Toy_House_Yellow_1.png', name: 'maison jaune' },
+      // Toits
       { file: 'buildings/ME_Singles_Floor_Modular_Building_48x48_Roof_1.png', name: 'toit 1' },
       { file: 'buildings/ME_Singles_Floor_Modular_Building_48x48_Roof_2.png', name: 'toit 2' },
       { file: 'buildings/ME_Singles_Floor_Modular_Building_48x48_Roof_3.png', name: 'toit 3' },
-      { file: 'buildings/ME_Custom_Villas_48x48_Toy_House_Blue_1.png',      name: 'maison bleue' },
-      { file: 'buildings/ME_Custom_Villas_48x48_Toy_House_Yellow_1.png',    name: 'maison jaune' },
+      // Façades extérieures (pas d'intérieur)
+      { file: 'buildings/ME_Singles_Generic_Building_48x48_Condo_1_1.png',  name: 'façade 1' },
+      { file: 'buildings/ME_Singles_Generic_Building_48x48_Condo_1_2.png',  name: 'façade 2' },
+      { file: 'buildings/ME_Singles_Generic_Building_48x48_Condo_1_3.png',  name: 'fenêtre' },
     ],
   },
 };
 
 const ASPHALTE = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png';
-const TROTTOIR = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png';
 const SW_N = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png';
 const SW_S = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png';
 const SW_W = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png';
 const SW_E = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png';
 
 const COLS = 8, ROWS = 8;
+// grid stocke { file, file2?, size? } ou null
 let grid = Array.from({length: ROWS}, () => Array(COLS).fill(null));
 let selectedTile = null;
 let currentCat = 'rue';
@@ -244,12 +296,35 @@ function buildCats() {
 function buildTiles() {
   const list = document.getElementById('tiles-list');
   list.innerHTML = '';
+  list.scrollTop = 0;
   const tiles = CATEGORIES[currentCat].tiles;
   for (const t of tiles) {
     const b = document.createElement('button');
-    b.className = 'tile-btn' + (selectedTile && selectedTile.file === t.file ? ' active' : '');
-    b.innerHTML = `<img src="${tileURL(t.file)}" alt="${t.name}">`;
-    b.title = t.name;
+    const isWide = t.size && t.size.w === 2;
+    const isTall = t.size && t.size.h === 2;
+    b.className = 'tile-btn' + (isWide ? ' wide' : '') + (isTall ? ' tall' : '') +
+                  (selectedTile && selectedTile.file === t.file ? ' active' : '');
+    const thumb = document.createElement('div');
+    thumb.className = 'thumb';
+    const img = document.createElement('img');
+    img.src = tileURL(t.file);
+    img.alt = t.name;
+    thumb.appendChild(img);
+    // Superpose la 2e tile pour preview 2x1
+    if (t.file2) {
+      const img2 = document.createElement('img');
+      img2.src = tileURL(t.file2);
+      img2.alt = '';
+      img2.style.cssText = 'position:absolute;left:50%;top:0;width:50%;height:100%;';
+      img.style.cssText = 'position:absolute;left:0;top:0;width:50%;height:100%;';
+      thumb.style.position = 'relative';
+      thumb.appendChild(img2);
+    }
+    const lbl = document.createElement('div');
+    lbl.className = 'tname';
+    lbl.textContent = t.name;
+    b.appendChild(thumb);
+    b.appendChild(lbl);
     b.onclick = () => selectTile(t);
     list.appendChild(b);
   }
@@ -258,7 +333,15 @@ function buildTiles() {
 function selectTile(t) {
   selectedTile = t;
   buildTiles();
-  document.getElementById('selected-text').textContent = t.name;
+  const disp = document.getElementById('selected-display');
+  disp.innerHTML = '';
+  const img = document.createElement('img');
+  img.src = tileURL(t.file);
+  img.alt = t.name;
+  const span = document.createElement('span');
+  span.textContent = t.name;
+  disp.appendChild(img);
+  disp.appendChild(span);
 }
 
 function buildGrid() {
@@ -272,9 +355,8 @@ function buildGrid() {
       cell.dataset.col = c;
       cell.onclick = () => placeOnCell(r, c);
       cell.oncontextmenu = e => { e.preventDefault(); clearCell(r, c); };
-      // long press for mobile
       let pressTimer;
-      cell.ontouchstart = () => { pressTimer = setTimeout(() => clearCell(r, c), 500); };
+      cell.ontouchstart = () => { pressTimer = setTimeout(() => clearCell(r, c), 600); };
       cell.ontouchend = () => clearTimeout(pressTimer);
       div.appendChild(cell);
     }
@@ -284,7 +366,23 @@ function buildGrid() {
 
 function placeOnCell(r, c) {
   if (!selectedTile) return;
-  grid[r][c] = selectedTile.file;
+  const t = selectedTile;
+  const w = t.size ? t.size.w : 1;
+  const h = t.size ? t.size.h : 1;
+
+  // Vérifie qu'on ne déborde pas
+  if (c + w > COLS || r + h > ROWS) return;
+
+  // Pose tile principale
+  grid[r][c] = { file: t.file, size: t.size };
+  // Pour une 2x1 : pose le morceau droit dans la case suivante
+  if (t.file2 && w === 2) {
+    grid[r][c+1] = { file: t.file2, size: {w:1,h:1}, _part2: true };
+  }
+  if (h === 2) {
+    for (let dr = 1; dr < h; dr++)
+      grid[r+dr][c] = { file: t.file, size: {w:1,h:1}, _part2: true };
+  }
   save();
   redraw();
 }
@@ -307,34 +405,28 @@ function redraw() {
     for (let c = 0; c < COLS; c++) {
       const cell = cells[r * COLS + c];
       const t = grid[r][c];
-      const img = cell.querySelector('img');
+      cell.innerHTML = '';
       if (t) {
-        if (img) img.src = tileURL(t);
-        else cell.insertAdjacentHTML('beforeend', `<img src="${tileURL(t)}" alt="">`);
-      } else if (img) {
-        img.remove();
+        const img = document.createElement('img');
+        img.src = tileURL(t.file);
+        img.alt = '';
+        cell.appendChild(img);
       }
     }
   }
 }
 
-// LISSAGE : autour de chaque asphalte, ajoute sw_2/4/6/8 si voisin = vide ou trottoir
 function lisser() {
-  const ASPHALTES = ['ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png',
-                     'ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_15.png',
-                     'ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_14.png'];
-  const isAsph = t => t && ASPHALTES.some(a => t.endsWith(a));
-  const newGrid = grid.map(row => [...row]);
+  const ASPHALTES = ['Asphalt_1_Variation_20.png', 'Asphalt_1_Variation_15.png', 'Asphalt_1_Variation_14.png'];
+  const isAsph = t => t && ASPHALTES.some(a => t.file && t.file.endsWith(a));
+  const newGrid = grid.map(row => row.map(c => c ? {...c} : null));
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c < COLS; c++) {
       if (!isAsph(grid[r][c])) continue;
-      // voisin N (r-1) si vide -> SW_N (mais sw_N va sur le voisin lui-meme)
-      // En fait : sw_N = trottoir-en-haut/asphalte-en-bas -> a poser SUR la cellule asphalte voisin N
-      // Donc ici je pose les bords AUTOUR de l'asphalte (cellule voisine vide).
-      if (r > 0 && !isAsph(grid[r-1][c]) && !grid[r-1][c]) newGrid[r-1][c] = SW_N;
-      if (r < ROWS-1 && !isAsph(grid[r+1][c]) && !grid[r+1][c]) newGrid[r+1][c] = SW_S;
-      if (c > 0 && !isAsph(grid[r][c-1]) && !grid[r][c-1]) newGrid[r][c-1] = SW_W;
-      if (c < COLS-1 && !isAsph(grid[r][c+1]) && !grid[r][c+1]) newGrid[r][c+1] = SW_E;
+      if (r > 0     && !isAsph(grid[r-1][c]) && !grid[r-1][c]) newGrid[r-1][c] = {file: SW_N};
+      if (r < ROWS-1 && !isAsph(grid[r+1][c]) && !grid[r+1][c]) newGrid[r+1][c] = {file: SW_S};
+      if (c > 0     && !isAsph(grid[r][c-1]) && !grid[r][c-1]) newGrid[r][c-1] = {file: SW_W};
+      if (c < COLS-1 && !isAsph(grid[r][c+1]) && !grid[r][c+1]) newGrid[r][c+1] = {file: SW_E};
     }
   }
   grid = newGrid;
@@ -346,16 +438,11 @@ function celebrer() {
   const btn = document.getElementById('fini-btn');
   btn.classList.add('success');
   btn.textContent = '🎉 Bravo !';
-  // Son + confettis (règles MaxPlay : feedback < 200ms + finir sur succès)
   try { if (window.playEndSound) playEndSound(10, 10); } catch(e) {}
   try { if (window.confettiBurst) confettiBurst(40); } catch(e) {}
-  setTimeout(() => {
-    btn.classList.remove('success');
-    btn.textContent = '🎉 Fini !';
-  }, 2500);
+  setTimeout(() => { btn.classList.remove('success'); btn.textContent = '🎉 Fini !'; }, 2500);
 }
 
-// localStorage
 function save() {
   try { localStorage.setItem('mj-pose-tiles', JSON.stringify(grid)); } catch(e) {}
 }
@@ -375,7 +462,6 @@ buildTiles();
 buildGrid();
 </script>
 
-<!-- Audio + composants partagés MaxPlay -->
 <script src="js/sounds.js"></script>
 <script src="js/victory-sounds.js"></script>
 <script src="js/feedback.js"></script>

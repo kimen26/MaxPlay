@@ -235,7 +235,8 @@
       "PowerShell(Get-ChildItem -Path \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\\\\personnages\\\\wex\" -Force | Select-Object Name, @{N=\"IsDir\";E={$_.PSIsContainer}})",
       "PowerShell(Get-ChildItem -Path \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\\\\personnages\\\\type-09\" -Force | Select-Object Name, @{N=\"IsDir\";E={$_.PSIsContainer}})",
       "PowerShell($content = Get-Content 'c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\\\\pmo\\\\INVARIANTS.md' -Raw; $content.Substring\\(1040, 200\\))",
-      "Bash(Get-ChildItem -Path \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\" -Directory)"
+      "Bash(Get-ChildItem -Path \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\" -Directory)",
+      "Bash(awk '{print $5, $6, $7, $8}')"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\temp",

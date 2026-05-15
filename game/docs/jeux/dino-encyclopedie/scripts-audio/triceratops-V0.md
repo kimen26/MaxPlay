@@ -1,7 +1,8 @@
 # Script audio V0 — Tricératops · Duo Narrateur H + Wex
 
-> **STATUT : V0 BROUILLON — pour relecture/challenge Papa Yann. AUCUNE génération lancée.**
+> **STATUT : V1 TEXTE VALIDÉ Papa Yann 2026-05-16. Prêt pour production ElevenLabs (pipeline narration-pmo).**
 > Structure validée : **mini-duos par bloc** (chaque bouton 🔊 de la fiche = un mini-dialogue), + 1 récap optionnel.
+> Validations auteur : « gourmand de salade » OK · Bloc 5 reformulé (« il a vraiment blessé le T-Rex… il est trop fort Tri-tri ! ») · pas de bloc 0 d'accroche, on entre direct.
 
 ---
 
@@ -99,7 +100,7 @@
 > Même pas ! Il se défendait très bien. On a retrouvé des os de T-Rex avec des marques de cornes de Tricératops.
 
 **WEX** `[excited]`
-> Il a vraiment piqué un T-Rex ?! Le petit guerrier !
+> Il a vraiment blessé le T-Rex ?! Incroyable ! Il est trop fort, Tri-tri !
 
 ---
 
@@ -134,10 +135,10 @@
 5. **Contenu factuel** : tiré 1:1 de `dinos-data.js` (id `triceratops`). Si tu changes le contenu là-bas, ce script doit être réécrit.
 6. **Univers implicite respecté** : aucun système/ennéatype nommé, pas de morale plaquée.
 
-### Questions ouvertes
-- [ ] Bloc 3 « gros gourmand de salade » — trop léger pour un herbivore de 12 t ? Ou ça fait sourire Max ?
-- [ ] Bloc 5 « petit guerrier » — Tricératops n'est pas petit (9 m). Garder pour l'effet affectueux ou corriger en « le guerrier » ?
-- [ ] Faut-il un bloc 0 « Wex présente » avant le bloc 1 (accroche) ou on entre direct dans le nom ?
+### Validations auteur 2026-05-16 (toutes tranchées)
+- [x] Bloc 3 « gros gourmand de salade » — **gardé** (fait sourire Max)
+- [x] Bloc 5 — reformulé : « Il a vraiment blessé le T-Rex ?! Incroyable ! Il est trop fort, Tri-tri ! » (« Tri-tri » = surnom affectueux Max)
+- [x] Pas de bloc 0 d'accroche — on entre direct dans le nom
 
 ---
 

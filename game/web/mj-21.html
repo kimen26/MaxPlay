@@ -25,6 +25,11 @@
     .btn-hint { background:rgba(255,220,80,0.15); border:2px solid rgba(255,220,80,0.5); color:#ffe066; border-radius:20px; font-family:'Nunito',sans-serif; font-weight:900; font-size:0.8rem; padding:4px 14px; cursor:pointer; animation:hintPulse 1.5s ease-in-out infinite alternate; display:block; }
     @keyframes hintPulse { from { box-shadow:0 0 0px rgba(255,220,80,0.3); } to { box-shadow:0 0 10px rgba(255,220,80,0.7); } }
 
+    .cible-zone { display:flex; justify-content:center; align-items:center; gap:14px; padding:6px 16px 2px; flex-shrink:0; }
+    .cible-bus-wrap { position:relative; display:inline-flex; align-items:center; justify-content:center; }
+    .cible-dot { position:absolute; bottom:-6px; right:-6px; width:28px; height:28px; border-radius:50%; border:3px solid rgba(255,255,255,0.9); box-shadow:0 2px 8px rgba(0,0,0,0.5); }
+    .cible-label { color:rgba(255,255,255,0.7); font-size:0.7rem; font-weight:900; text-align:center; letter-spacing:0.5px; }
+
     .tubes-zone { display:flex; justify-content:center; align-items:flex-start; gap:24px; padding:4px 16px 2px; flex-shrink:0; }
     .tube-col { display:flex; flex-direction:column; align-items:center; gap:3px; }
     .tube-letter { color:rgba(255,255,255,0.45); font-size:0.65rem; font-weight:900; letter-spacing:1.5px; }
@@ -83,6 +88,8 @@
   </div>
 
   <div class="progress-zone" id="progress"></div>
+
+  <div class="cible-zone" id="cible-zone"></div>
 
   <div class="pots-zone">
     <button class="pot pot-rouge" onclick="addCouleur('r')">
@@ -174,24 +181,25 @@
 <script src="js/sounds.js"></script>
 <script>
 // ── DÉFIS ────────────────────────────────────────────────────────
-// Recette : doses relatives (r+j+b+w — proportions, pas limitées à 4)
+// Vraies couleurs IDFM depuis LIGNES (data.js)
+// Recette : doses relatives r/j/b/w calibrées pour approcher le hex réel par mélange
 const DEFIS = [
-  { r:1, j:0, b:0, w:0, hex:'#E8192C', label:'rouge',      num:'RER A', textColor:'#fff'  },
-  { r:0, j:1, b:0, w:0, hex:'#FFCD00', label:'jaune',      num:'1',     textColor:'#333'  },
-  { r:0, j:0, b:1, w:0, hex:'#003CA6', label:'bleu',       num:'2',     textColor:'#fff'  },
-  { r:1, j:1, b:0, w:0, hex:'#FF7E2E', label:'orange',     num:'5',     textColor:'#fff'  },
-  { r:0, j:1, b:1, w:0, hex:'#007852', label:'vert',       num:'12',    textColor:'#fff'  },
-  { r:1, j:0, b:1, w:0, hex:'#62259D', label:'violet',     num:'14',    textColor:'#fff'  },
-  { r:1, j:0, b:0, w:1, hex:'#F38C95', label:'rose',       num:'4',     textColor:'#333'  },
-  { r:0, j:1, b:3, w:0, hex:'#00AACC', label:'turquoise',  num:'380',   textColor:'#fff'  },
-  { r:0, j:0, b:3, w:1, hex:'#87CEEB', label:'bleu ciel',  num:'13',    textColor:'#333'  },
-  { r:0, j:1, b:0, w:1, hex:'#FFE680', label:'creme',      num:'57',    textColor:'#333'  },
-  { r:1, j:0, b:1, w:2, hex:'#B994B4', label:'lavande',    num:'8',     textColor:'#333'  },
-  { r:1, j:3, b:0, w:0, hex:'#FFAA00', label:'ambre',      num:'6',     textColor:'#333'  },
-  { r:3, j:1, b:0, w:0, hex:'#FF4500', label:'corail',     num:'10',    textColor:'#fff'  },
-  { r:1, j:1, b:0, w:2, hex:'#F5C88A', label:'peche',      num:'18',    textColor:'#333'  },
-  { r:0, j:1, b:1, w:2, hex:'#88CCA4', label:'menthe',     num:'7',     textColor:'#333'  },
-  { r:1, j:0, b:0, w:3, hex:'#F7C4C8', label:'rose pale',  num:'3',     textColor:'#333'  },
+  { r:1, j:0, b:0, w:0, hex:'#E2231A', label:'rouge',        num:'RER A',  textColor:'#fff'  },
+  { r:0, j:1, b:0, w:0, hex:'#FFCD00', label:'jaune',        num:'M1',     textColor:'#333'  },
+  { r:0, j:0, b:1, w:0, hex:'#0064B1', label:'bleu',         num:'162',    textColor:'#fff'  },
+  { r:0, j:1, b:1, w:0, hex:'#008C59', label:'vert',         num:'172',    textColor:'#fff'  },
+  { r:1, j:0, b:1, w:0, hex:'#652C90', label:'violet',       num:'132',    textColor:'#fff'  },
+  { r:1, j:0, b:0, w:1, hex:'#FF82B4', label:'rose',         num:'47',     textColor:'#333'  },
+  { r:0, j:1, b:3, w:0, hex:'#75CE89', label:'vert clair',   num:'380',    textColor:'#333'  },
+  { r:0, j:0, b:3, w:1, hex:'#4FA3DC', label:'bleu ciel',    num:'RER B',  textColor:'#fff'  },
+  { r:1, j:1, b:0, w:0, hex:'#F58443', label:'orange',       num:'185',    textColor:'#333'  },
+  { r:0, j:0, b:1, w:1, hex:'#6ECA97', label:'vert menthe',  num:'M6',     textColor:'#333'  },
+  { r:1, j:0, b:1, w:2, hex:'#C9A2CD', label:'lavande',      num:'286',    textColor:'#333'  },
+  { r:1, j:3, b:0, w:0, hex:'#DCAC27', label:'or',           num:'184',    textColor:'#333'  },
+  { r:1, j:0, b:0, w:2, hex:'#FA9ABA', label:'rose pale',    num:'M7',     textColor:'#333'  },
+  { r:1, j:1, b:0, w:1, hex:'#CEC92A', label:'citron',       num:'323',    textColor:'#333'  },
+  { r:1, j:0, b:1, w:0, hex:'#B43C95', label:'magenta',      num:'186',    textColor:'#fff'  },
+  { r:2, j:2, b:1, w:0, hex:'#8D653A', label:'brun',         num:'131',    textColor:'#fff'  },
 ];
 
 // ── TABLE DE RECONNAISSANCE (nommage des couleurs obtenues) ──────
@@ -331,12 +339,25 @@ function renderTubes() {
       res.textContent=t.mixed.label;
       res.style.color='#ffe066';
     } else if (t.mixed==='BRUN') {
-      res.textContent='&#128169; marron';
+      res.innerHTML='💩 marron';
       res.style.color='#cc8844';
     } else {
       res.textContent='';
     }
   });
+}
+
+function renderCible() {
+  const zone = document.getElementById('cible-zone');
+  const busSvg = busSVG('#FFFFFF', '#333', defi.num, 180);
+  zone.innerHTML = `
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <div class="cible-bus-wrap">
+        ${busSvg}
+        <div class="cible-dot" style="background:${defi.hex};"></div>
+      </div>
+      <div class="cible-label">Bus ${defi.num} — peins-le en <span style="color:${defi.hex==='#FFCD00'||defi.hex.startsWith('#FF')||defi.hex==='#CEC92A'||defi.hex==='#DCAC27'||defi.hex==='#75CE89'||defi.hex==='#C9A2CD'||defi.hex==='#FA9ABA'?'#ffdd44':'#7dd9ff'}">${defi.label}</span> !</div>
+    </div>`;
 }
 
 function renderBus(hex) { /* bus affiché uniquement en overlay victoire */ }
@@ -366,18 +387,8 @@ function addCouleur(type) {
 }
 
 function checkAutoWin(t) {
-  const tot=t.r+t.j+t.b+t.w;
-  if (tot===0||isBrun(t)) return;
-  const actual=blendCounts(t);
-  const ideal=blendCounts({r:defi.r,j:defi.j,b:defi.b,w:defi.w});
-  if (rgbDist(actual,ideal)<0.08) {
-    const hex=rgbToHex(actual[0],actual[1],actual[2]);
-    t.mixed={hex,label:nearestLabel(actual[0],actual[1],actual[2]).label};
-    victoire=true;
-    renderTubes();
-    renderBus(t.mixed.hex);
-    setTimeout(showVictoire,300);
-  }
+  // Victoire uniquement après mixage manuel (bouton Mixer)
+  // Cette fonction ne fait plus rien — conservée pour compatibilité
 }
 
 function mixerTube(idx) {
@@ -390,7 +401,8 @@ function mixerTube(idx) {
   wrap.classList.remove('shaking');
   void wrap.offsetWidth;
   wrap.classList.add('shaking');
-  if (isBrun(t)) {
+  const defiBrun = defi.label==='brun';
+  if (isBrun(t) && !defiBrun) {
     t.mixed='BRUN';
     renderTubes();
     if (!brunShown) { brunShown=true; document.getElementById('brun-overlay').classList.add('show'); playBrun(); }
@@ -471,6 +483,7 @@ function showHint() {
 function initDefi() {
   renderTubes();
   renderProgress();
+  renderCible();
 }
 
 // ── SONS ──────────────────────────────────────────────────────────

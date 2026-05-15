@@ -74,6 +74,12 @@
       border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
       pointer-events:none; opacity:0;
     }
+    /* Confettis victoire */
+    .confetti { position:absolute; width:11px; height:15px; border-radius:2px; pointer-events:none; opacity:0; will-change:transform; }
+    @keyframes confettiFall {
+      0%   { opacity:1; transform:translate(0,0) rotate(0); }
+      100% { opacity:0; transform:translate(var(--dx),var(--dy)) rotate(var(--rot)); }
+    }
 
     /* Hint */
     .hint-row { display:flex; justify-content:center; padding:4px 0 6px; flex-shrink:0; }
@@ -409,20 +415,30 @@ async function showVictoire(){
 
   // Colorie le bus en bas
   renderBusBas(clr);
-  await sleep(300);
+  await sleep(250);
+
+  // 🎉 Confettis + le bus part en avant avec le bruit
+  spawnConfetti(scene, busEl.getBoundingClientRect());
+  playVroom();
+  busEl.style.transition='transform 0.85s cubic-bezier(.45,.05,.55,1)';
+  busEl.style.transform='translateX(125vw)';
+  await sleep(1100);
 
   // Nettoie la scène
   scene.style.display='none';
   scene.innerHTML='';
 
-  // Auto-next après 1.8s
-  await sleep(1800);
+  // Auto-next
+  await sleep(800);
   defiIdx++;
   if(defiIdx>=DEFIS.length){document.getElementById('fin-overlay').classList.add('show');return;}
   defi=DEFIS[order[defiIdx]];
   tube=newTube(); victoire=false; brunShown=false; mixerLocked=false;
   document.getElementById('brun-overlay').classList.remove('show');
   document.getElementById('tube-wrap').style.visibility='visible';
+  // Remet le bus à sa place sans rejouer l'anim de glisse
+  busEl.style.transition='none';
+  busEl.style.transform='';
   renderTube();
   renderBusBas(null);
   renderProgress();
@@ -436,6 +452,8 @@ function resetPartie(){
   tube=newTube();victoire=false;brunShown=false;mixerLocked=false;
   document.getElementById('brun-overlay').classList.remove('show');
   document.getElementById('tube-wrap').style.visibility='visible';
+  const be=document.getElementById('bus-bas-wrap');
+  be.style.transition='none'; be.style.transform='';
   renderTube();renderBusBas(null);renderProgress();
 }
 
@@ -465,6 +483,25 @@ if(window.DeviceMotionEvent){
 function playKlaxon(){try{const ac=new AudioContext();[523,659,784,1047].forEach((f,i)=>{const o=ac.createOscillator(),g=ac.createGain();o.connect(g);g.connect(ac.destination);o.frequency.value=f;o.type='triangle';const t=ac.currentTime+i*0.1;g.gain.setValueAtTime(0.28,t);g.gain.exponentialRampToValueAtTime(0.001,t+0.15);o.start(t);o.stop(t+0.15);});}catch(e){}}
 function playBrun(){try{const ac=new AudioContext(),o=ac.createOscillator(),g=ac.createGain();o.connect(g);g.connect(ac.destination);o.type='sawtooth';o.frequency.setValueAtTime(180,ac.currentTime);o.frequency.exponentialRampToValueAtTime(35,ac.currentTime+0.55);g.gain.setValueAtTime(0.4,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.6);o.start();o.stop(ac.currentTime+0.6);}catch(e){}}
 function playMix(){try{const ac=new AudioContext();[400,600,350,700,300].forEach((f,i)=>{const o=ac.createOscillator(),g=ac.createGain();o.connect(g);g.connect(ac.destination);o.type='sine';o.frequency.value=f;const t=ac.currentTime+i*0.06;g.gain.setValueAtTime(0.18,t);g.gain.exponentialRampToValueAtTime(0.001,t+0.1);o.start(t);o.stop(t+0.1);});}catch(e){}}
+function playVroom(){try{const ac=new AudioContext(),o=ac.createOscillator(),g=ac.createGain();o.connect(g);g.connect(ac.destination);o.type='sawtooth';const t=ac.currentTime;o.frequency.setValueAtTime(80,t);o.frequency.linearRampToValueAtTime(190,t+0.3);o.frequency.linearRampToValueAtTime(70,t+0.95);g.gain.setValueAtTime(0.0,t);g.gain.linearRampToValueAtTime(0.32,t+0.12);g.gain.exponentialRampToValueAtTime(0.001,t+0.95);o.start(t);o.stop(t+0.97);}catch(e){}}
+
+function spawnConfetti(scene,rect){
+  const cols=['#FFCD00','#E2231A','#0064B1','#00c47a','#F58443','#FF82B4','#ffffff'];
+  const ox=rect.left+rect.width/2, oy=rect.top+rect.height/2;
+  for(let i=0;i<32;i++){
+    const c=document.createElement('div');
+    c.className='confetti';
+    c.style.background=cols[i%cols.length];
+    c.style.left=ox+'px'; c.style.top=oy+'px';
+    const ang=Math.random()*Math.PI*2;
+    const dist=70+Math.random()*200;
+    c.style.setProperty('--dx',(Math.cos(ang)*dist)+'px');
+    c.style.setProperty('--dy',(Math.sin(ang)*dist*0.5+240+Math.random()*170)+'px');
+    c.style.setProperty('--rot',(Math.random()*720-360)+'deg');
+    c.style.animation=`confettiFall ${0.95+Math.random()*0.5}s ease-out ${Math.random()*0.12}s forwards`;
+    scene.appendChild(c);
+  }
+}
 
 // ── INIT ──────────────────────────────────────────────────────────
 renderTube();

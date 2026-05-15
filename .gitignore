@@ -14,3 +14,6 @@ temp/
 # pour récupération si main thread crash avant Write tool. Voir infra/mcp/MODELS.md.
 infra/mcp/logs/
 game/web/img/dinos/brutes/
+
+# Harnais de test mini-jeux (EP-038) — screenshots/artefacts de run, pas versionnés
+game/tests/.artifacts/

@@ -2,7 +2,7 @@
 numero: "002"
 slug: libellule-resonance
 titre: La Libellule et la Résonance
-statut: briefs              # pitch / briefs / writers / lecteurs / selection / rewrite / gatekeeper / re-relecture / canon / abandoned
+statut: lecteurs            # pitch / briefs / writers / lecteurs / selection / rewrite / gatekeeper / re-relecture / canon / abandoned
 version_active: null
 date_creation: 2026-05-11
 date_validation: null
@@ -42,10 +42,10 @@ variantes:
   disponibles: [christ]
 
 production:
-  writers_planifies: 10
-  writers_produits: 0
-  lecteurs_planifies: 6      # transitoire 002 (panel 20 dès STORY-003)
-  lecteurs_produits: 0
+  writers_planifies: 14      # refonte 2026-05-12 calibration multi-modèles (test 3-5 histoires)
+  writers_produits: 14       # vague 2 terminée 2026-05-14
+  lecteurs_planifies: 20     # DEC-PANEL-20 (obligatoire dès STORY-002)
+  lecteurs_produits: 0       # en cours étape 5 (production background 2026-05-14)
   rewrite_cycles: 0
   re_relecture_lecteurs: 0
   audio_produit: false

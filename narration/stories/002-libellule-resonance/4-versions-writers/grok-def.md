@@ -1,57 +1,41 @@
 ---
 llm: grok-4.3
 role: libre
-reasoning_effort: low
-temperature: défaut xAI (~1.0)
-date: 2026-05-13
+temperature: défaut
+date: 2026-05-14
+vague: 2
 ---
 
-# STORY-002 — Libellule-résonance (grok-def)
+Au bord de l'étang, l'eau était si claire qu'on voyait les têtards bouger entre les racines. C'était le mois de mai. Les herbes fines dansaient doucement.
 
-Juju s'accroupit au bord de l'eau transparente. Ses doigts plongent dans la vase tiède.
-— Regarde, Nono ! Les têtards font des ronds.
+Juju s'accroupit tout de suite, les mains dans la terre humide.
+— Regardez ! Elle est revenue !
+La libellule bleue passa en bourdonnant, rapide et brillante.
 
-Nono reste assis sur la berge, les pieds nus dans la terre humide. Il ne bouge pas beaucoup.
-— Ils sont tout doux, dit-il tout bas.
+Wex resta debout, les yeux grands.
+— Elle fait du bruit avec ses ailes.
 
-Wex, un peu plus loin sur une racine, observe.
-— Elle arrive, murmure-t-il.
+Juju avança les pieds nus sur la berge glissante.
+— C'est bon, je m'en occupe. Je vais la toucher.
+Elle mit une main dans l'eau fraîche et l'autre sur une racine qui sortait de la terre. La libellule fit un grand cercle et revint.
 
-Une libellule bleue apparaît au-dessus des roseaux. Ses ailes font un petit bruit sec, comme du papier froissé. Elle tourne, monte, redescend.
+Nono s'assit sans bruit, les jambes croisées. Il posa sa paume ouverte sur le sol mouillé et ferma les yeux un instant.
+— Mmm… on peut tous y aller ensemble, non ?
 
-Juju tend le bras.
-— Elle est venue voir les têtards aussi ?
-— Peut-être qu'elle a soif, répond Nono.
+Juju tourna la tête vers lui.
+— Tu crois qu'elle va rester ?
+— Ouais… dit Nono tout bas.
+— T'inquiète, je suis là, répondit Juju. Mais elle vole trop vite !
 
-La libellule passe tout près de Juju. Elle recule en riant.
-— Elle m'a frôlé la main !
-— Elle tourne encore, dit Wex. Elle aime l'étang.
+La libellule s'arrêta un moment au-dessus des roseaux. Ses ailes brillaient au soleil. Juju tendit encore la main, mais Nono ne bougea plus. Il garda sa paume contre la terre et souffla très doucement, comme un petit « mmm » qui ne faisait presque pas de bruit.
 
-Nono penche la tête. Il écoute quelque chose que les autres n'entendent pas tout de suite.
-— Elle vibre, dit-il. Comme la terre.
+La libellule descendit plus bas, tout près de l'eau. Elle resta là, à battre des ailes lentement, comme si elle écoutait.
 
-Juju se tourne vers lui.
-— Comment tu sais ?
-— Parce que je la sens dans mes pieds, répond Nono.
+Juju retira sa main de l'eau. Elle regarda Nono, puis la libellule, sans rien dire. Wex s'assit aussi.
 
-La libellule fait un grand cercle au-dessus de l'eau. Wex suit son vol du regard.
-— Elle revient toujours au même endroit.
-— Oui, dit Juju. Comme si elle cherchait quelque chose.
-
-Nono pose alors une main à plat sur la terre mouillée. Il ne bouge plus. Ses doigts s'enfoncent un peu entre les racines qui sortent. La libellule ralentit. Elle descend plus bas, presque à toucher la surface.
-
-Juju regarde Nono sans parler. Elle voit que la libellule s'est posée sur une feuille juste devant lui. Elle ne bouge plus non plus.
-
-Wex reste sur sa racine.
-— Elle est tranquille maintenant.
-
-La libellule ouvre et ferme ses ailes deux fois. L'eau fait de tout petits clapotis contre la berge. Juju sent la vase tiède sous ses genoux. Nono garde la main sur la terre. Personne ne dit rien pendant un long moment.
-
-La libellule s'envole enfin, mais pas loin. Elle reste au-dessus des roseaux, à tourner lentement, comme si elle gardait l'étang pour elle.
-
-Juju, Nono et Wex sont toujours là, immobiles, à regarder l'eau et le ciel bleu qui se reflète dedans.
+Les trois enfants restèrent assis côte à côte. La libellule continuait de voler au-dessus de l'étang, passant et repassant au même endroit, au-dessus des têtards et des racines. L'eau faisait de tout petits clapotis. Personne ne parlait plus.
 
 ---
 
-## Note d'intention (3-8 lignes)
-Histoire centrée sur la libellule et la résonance discrète de Nono avec la terre humide. Juju apporte l'énergie tactile, Wex le regard témoin. Un seul échange de trois répliques au milieu pour ancrer le dialogue. Le pivot (Ten) se fait par le simple geste de Nono sur la berge, sans parole ni effet spectaculaire. Fin muette et sensorielle sur l'image des trois enfants et de l'insecte qui reste.
+**Note d'intention**
+L'histoire suit strictement la structure Kishōtenketsu demandée : apparition de la libellule (Ki), action corporelle de Juju (Sho), bascule discrète par le geste calme de Nono (Ten, trois mots), puis image finale silencieuse (Ketsu). La sensibilité de Nono reste incarnée uniquement par sa posture et son « mmm », sans jamais être nommée ni expliquée. La libellule reste le fil visuel constant du début à la fin.

@@ -10,23 +10,37 @@
 
 ### Juju (fille)
 
-**Ennéatype dilué (jamais nommé) :** énergie pleine, présence physique, contact direct avec le monde. Elle TOUCHE pour comprendre — mains, pieds, peau. Pas brutalité — vitalité.
+**Ennéatype dilué (jamais nommé) :** énergie pleine, vitalité incarnée. Elle TOUCHE pour comprendre — mains, pieds, peau.
 
 **Dans cette histoire :** veut entrer en contact avec ce qui est là. La terre, l'eau, les racines. Elle approche la berge, mains tendues, présence corporelle assumée.
 
 **Ce qu'elle apporte au groupe** : l'énergie incarnée, le faire avec le corps. Elle ouvre les possibles par le geste.
 
-**À éviter** : ❌ "agressive", "brute", "impulsive", "incapable de patience". Elle est intense, pas dure. Elle veut toucher, pas posséder.
+**Phrases types (patte Juju) :**
+- "Je l'avais dit."
+- "C'est bon, je m'en occupe."
+- "Dis ! Dis-moi vraiment."
+- "T'inquiète, je suis là."
 
 ### Nono (garçon)
 
-**Ennéatype dilué (jamais nommé) :** présence apaisée, observateur, capte ce qui résonne. Pas passif — actif sensoriellement. Sa sensibilité passe par la vibration (sons, ondes, vibrations sous les pieds).
+**Ennéatype dilué (jamais nommé) :** présence apaisée, actif sensoriellement. Il écoute, capte ce qui résonne. Sa sensibilité passe par ce qui vibre sous ses pieds, dans l'air, dans le sol.
 
 **Dans cette histoire :** entend le bourdonnement de la libellule comme une vibration. Ne bouge pas pour attraper. Présent.
 
-**Ce qu'il apporte au groupe** : la résonance, la lenteur féconde, la perception de ce qui est juste là sans qu'on le voie.
+**Ce qu'il apporte au groupe** : la lenteur féconde, la perception de ce qui est juste là sans qu'on le voie.
 
-**À éviter** : ❌ "passif", "mou", "rêveur déconnecté". Il est dans une activité intérieure dense.
+**5 gestes archétypiques de Nono** (à utiliser librement, P9 leçons-vivantes) :
+1. S'asseoir / se poser
+2. Ouvrir la paume (main au sol ou vers l'autre)
+3. Fredonner doucement ("mmm")
+4. Faire un petit geste d'accueil silencieux
+5. Sourire sans parler
+
+**Phrases types (patte Nono) :**
+- "Mmm... on peut tous y aller ensemble, non ?"
+- "C'est bien comme ça."
+- "Ouais..." *(présence silencieuse, acquiescement lent)*
 
 ### Wex (catalyseur)
 

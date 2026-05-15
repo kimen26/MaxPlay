@@ -2,69 +2,41 @@
 llm: kimi-for-coding (endpoint coding kimi.com)
 role: libre
 mcp: ask_kimi (gratuit)
-temperature: 0.6 (reco créatif Moonshot Instant)
-date: 2026-05-13
-note_renommage: "Slug initialement kimi-def — renommé kimi-reco le 2026-05-13. Convention casting v2 : ce writer porte la reco créatif officielle (0.6) sur l'endpoint coding gratuit."
+temperature: 1.0
+date: 2026-05-14
+vague: 2
 ---
 
-# STORY-002 — Libellule-résonance (kimi-reco)
+L'étang amont brillait sous le soleil de mai. L'eau était si transparente qu'on voyait les têtards noirs frétiller entre les herbes fines du fond. Des roseaux hauts frissonnaient au bord, et des racines nues sortaient de la terre humide pour plonger dans l'eau. L'herbe sentait bon la pluie d'hier.
 
-Le soleil de mai chauffait la berge sans la dessécher. L'eau de l'étang restait transparente, si claire que les têtards semblaient nager dans l'air, entre les racines nues et les roseaux fins.
+Juju arriva la première. Elle avait enlevé ses chaussures dès le sentier.
+« Je l'avais dit ! s'écria-t-elle. On va voir plein de trucs ! »
+Elle s'agenouilla près de l'eau. Ses doigts piquetèrent la surface, puis caressèrent la terre molle comme du gâteau. Elle trouva une racine luisante et la toucha des deux mains.
+« C'est glissant et chaud à la fois, » dit-elle.
 
-Juju était arrivée la première. Elle avait enlevé ses chaussures. Ses orteils s'enfonçaient déjà dans la terre humide, froide, vivante. Nono se tenait un peu plus loin, les bras le long du corps, les yeux sur l'eau. Wex était assis sur une souche, le menton dans les mains.
+Nono s'approchait plus lentement. Il s'arrêta à chaque pas, sentant le sol sous ses pieds nus. Il ouvrit une paume vers le sol sans le toucher, comme pour attraper quelque chose d'invisible. Wex, debout un peu plus loin, regardait la surface de l'eau sans rien dire, les mains dans les poches.
 
-Un bourdonnement aigu traversa les roseaux.
+Soudain, une libellule bleue et longue sortit des roseaux. Elle traversa l'étang en dansant et se posa sur une tige courbée, juste devant Juju.
 
-— Elle tourne, dit Wex.
+« Oh ! » fit Juju. « C'est bon, je m'en occupe. »
+Elle tendit la main vers la tige pour montrer à Wex.
+« T'inquiète, je suis là, » dit-elle encore.
+Elle remua la terre humide du bout des doigts, suivit une racine jusqu'à l'eau. Nono s'accroupit près d'elle, immobile, une main ouverte vers la berge. Il fit un geste lent vers la libellule, comme pour dire bonjour sans parler. Puis il sourit, sans un mot.
 
-— Très vite, dit Nono.
+« Elle est toute bleue, » souffla Wex.
 
-Juju releva la tête. Une libellule iridescente tournoyait au-dessus des herbes, rapide, changeante, coupant l'air en lignes brisées.
+« Tu crois qu'elle a peur ? » demanda Juju.
+« Elle bouge pas, » dit Wex.
+« Mmm... on peut tous y aller ensemble, non ? » dit Nono.
+« C'est bien comme ça. »
 
-— Je veux la voir de près, dit Juju.
+Nono s'assit. Il ouvrit les deux paumes vers la berge.
 
-Elle avança d'un pas. La terre suintait entre ses doigts de pied. Elle se pencha, posa une paume à plat dans l'eau franche, sentit le froid lui lécher le poignet.
+La libellule ne bougea plus. Wex cligna des yeux. Il ôta ses chaussures à son tour et s'assit dans l'herbe fine, les pieds dans la terre fraîche.
 
-— Ça bouge en dessous, dit Nono.
-
-Les têtards ondulèrent. La libellule s'éleva, décrivit un cercle large.
-
-— Approche-toi pas trop, dit Wex.
-
-— Je touche pas la libellule, dit Juju. Je touche l'eau.
-
-Elle ramena une poignée de boue tiède, la laissa couler entre ses doigts. La libellule bourdonnait plus fort, ou peut-être plus près. Nono ne bougeait pas. Il écoutait. Pour lui, le bruit n'était pas seulement dans les oreilles. C'était une vibration qui venait du sol, qui montait par les racines.
-
-— Tu l'entends ? demanda Juju.
-
-— Elle vibre, dit-il.
-
-La libellule passa si près que l'air frémit. Juju sursauta, éclaboussa l'eau. Les cercles s'élargirent, brouillant les têtards. La libellule fuyait vers les hautes herbes.
-
-Juju s'avança encore. La berge cédait sous son poids. Elle voulait être là, dedans, parmi.
-
-— Nono, fais quelque chose, dit-elle.
-
-Nono regarda la terre sous ses pieds. Il s'accroupit lentement, sans précipitation, comme si le temps lui appartenait. Il posa une main ouverte sur la berge humide, entre deux racines. Ses doigts s'enfoncèrent d'un millimètre. Il resta là.
-
-Le bourdonnement changea. Pas de volume. De direction. La libellule stoppa sa fuite. Elle plana. Elle pivota dans l'air, suspendue, et revint.
-
-Juju retint son souffle. Ses mains s'arrêtèrent de bouger. Elle sentait la terre sous ses doigts, et l'eau, et le bourdonnement lointain. Elle ne bougea plus.
-
-Wex se pencha en avant sur sa souche.
-
-— Elle reste, dit-il.
-
-Nono ne dit rien. Sa paume restait sur la terre. L'humidité montait dans ses manches. Le bourdonnement de la libellule résonnait contre l'eau plate, contre les racines, contre la peau de sa main.
-
-Juju s'accroupit à son tour. Elle posa ses doigts, encore pleins de boue, à côté de ceux de Nono. La terre était la même. L'eau aussi. La libellule tournoyait maintenant au-dessus d'eux, basse, inspectant, brillante comme un morceau de ciel tombé.
-
-Les trois enfants restèrent ainsi. Le printemps tardif continuait son travail silencieux autour de l'étang. Les têtards reprirent leur danse. Les roseaux inclinèrent leurs têtes.
-
-La libellule ne partit pas.
+La libellule resta. L'eau coulait doucement entre les roseaux. Les têtards passaient en dansant sous les racines. Les trois enfants restaient là, immobiles, le printemps vif autour d'eux, les racines sous les doigts, le soleil dans l'eau claire, et le bourdonnement d'une libellule qui continuait de voler au ras des tiges, sans jamais s'éloigner.
 
 ---
 
-## Note d'intention (3-8 lignes)
-
-Ouverture ancrée dans la matière — terre, eau, froid — pour que le récit se vive dans le corps avant les mots. Rythme porté par les répliques courtes et l'activité physique de Juju, jusqu'au silence de Nono où le texte bascule dans le ressenti sans l'expliquer. La libellule demeure le seul centre du début à la fin, jamais possédée, toujours en mouvement. Fermeture en image fixe et rituel muet pour laisser l'émotion résonner sans conclusion.
+**Note d'intention :**
+L'histoire suit la structure kishōtenketsu pour offrir un récit sans conflit ni morale explicite, adapté à l'écoute des 4-5 ans. Nono exprime sa sensibilité tellurique uniquement par des gestes et des onomatopées, jamais nommée ni expliquée. Le Ten silencieux réduit à quelques mots invite le jeune auditeur à ressentir le calme plutôt qu'à le comprendre intellectuellement. Juju incarne l'action qui s'arrête pour laisser place à l'accueil. L'image finale des trois enfants avec la libellule ancre une sensation de paix active et partagée, où chaque mode de présence trouve sa place sans hiérarchie.

@@ -19,10 +19,16 @@
 ## 2. TRIO (Wex + Juju + Nono)
 
 ### Juju (fille)
-Énergie pleine, présence physique, contact direct avec le monde. Elle TOUCHE pour comprendre — mains, pieds, peau. Pas brutalité — vitalité. Dans cette histoire : veut entrer en contact avec ce qui est là. La terre, l'eau, les racines.
+Énergie pleine, vitalité incarnée. Elle TOUCHE pour comprendre — mains, pieds, peau. Dans cette histoire : veut entrer en contact avec ce qui est là. La terre, l'eau, les racines.
+
+**Phrases types (patte Juju) :** "Je l'avais dit." · "C'est bon, je m'en occupe." · "T'inquiète, je suis là."
 
 ### Nono (garçon)
-Présence apaisée, observateur, capte ce qui résonne. Pas passif — actif sensoriellement. Dans cette histoire : entend le bourdonnement de la libellule comme une vibration. Ne bouge pas pour attraper.
+Présence apaisée, actif sensoriellement. Il écoute, capte ce qui résonne. Sa sensibilité passe par ce qui vibre sous ses pieds, dans l'air, dans le sol. Dans cette histoire : entend le bourdonnement de la libellule comme une vibration. Ne bouge pas pour attraper.
+
+**5 gestes archétypiques de Nono** (utiliser librement) : s'asseoir/se poser · ouvrir la paume vers le sol · fredonner doucement "mmm" · petit geste d'accueil silencieux · sourire sans parler.
+
+**Phrases types (patte Nono) :** "Mmm... on peut tous y aller ensemble, non ?" · "C'est bien comme ça." · "Ouais..." *(présence, acquiescement lent)*
 
 ### Wex (catalyseur)
 Hors-système. Témoin lumineux. Trace ce qui se passe. Présent mais non acteur central. Peut avoir 2-3 répliques courtes.
@@ -45,7 +51,7 @@ Hors-système. Témoin lumineux. Trace ce qui se passe. Présent mais non acteur
 
 ## 4. PROMESSE DU TITRE
 
-La libellule reste au centre du récit, du début à la fin. Pas d'évasion. C'est par elle que la résonance se révèle.
+La libellule reste au centre du récit, du début à la fin. Pas d'évasion. C'est par elle que la sensibilité de Nono se révèle.
 
 ---
 
@@ -58,7 +64,8 @@ La libellule reste au centre du récit, du début à la fin. Pas d'évasion. C'e
 5. Ennéatype dilué. Jamais nommer "T8", "T9", "Challenger", "Pacificateur".
 6. Sensibilité de Nono **discrète**, jamais énoncée. Connexion à la terre = **calme + alignement**, pas pouvoir, pas vibration spectaculaire, pas onde visible. Juju ressent que *ça marche* sans mots. La sensibilité de Juju (plantes/racines) n'est pas le sujet de STORY-002 — elle anime le Sho, c'est tout.
 7. Pas d'antagoniste. Friction douce ou complémentarité, pas conflit.
-8. Zéro jugement narratif. Juju ≠ "impulsive"/"brute". Nono ≠ "passif"/"mou". Neutre toujours.
+8. Zéro jugement narratif. Juju est intense, incarnée — c'est sa nature. Nono est présent, ancré — c'est la sienne. Pas d'étiquette négative.
+9. **Résonance jamais nommée.** Le mot "résonance" n'apparaît pas dans le texte. La connexion vit dans les gestes et les silences — jamais dans un concept.
 
 ---
 

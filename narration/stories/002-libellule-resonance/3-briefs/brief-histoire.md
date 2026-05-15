@@ -74,12 +74,15 @@ Voir [`narration/equipe/patte-papa-yann.md`](../../../equipe/patte-papa-yann.md)
 
 | Critère | Application STORY-002 |
 |---------|----------------------|
-| **Zéro jugement narratif** | Juju ≠ "impulsive", "brute", "incapable de patience". Neutre : elle voulait toucher, elle approchait, elle faisait avec ses mains. Nono ≠ "passif", "rêveur déconnecté". Actif : il sentait, il posait les pieds, il était là. |
+| **Zéro jugement narratif** | Juju est intense, incarnée, elle fait avec son corps — c'est sa nature. Nono est présent, ancré, il sent avant de voir — c'est la sienne. Ces deux modes coexistent sans hiérarchie. |
 | **Cohérence physique** | La libellule reste rapide, insaisissable. La vibration ressentie par Nono = sensation physique réelle (son qui passe par les pieds = phénomène réel). Pas de miracula. |
 | **Univers implicite** | Étang amont connu, pas de nouveau concept. Juste : étang, eau, terre, racines, printemps. |
 | **Dialogue minimum** | ≥ 2 répliques par perso, ≥ 1 échange de 3+ répliques requis. Mais la majorité de STORY-002 est geste, silence, sensation — pas dialogue. |
 | **Ennéatype dilué** | Jamais nommer "T8", "T9", "Challenger", "Pacificateur". Les comportements parlent. |
 | **Recentrage Ten sur Nono** | Sa sensibilité se révèle aux 2 autres dans un geste/moment qu'on devine. Mais le trio reste équilibré en surface narrative — Juju et Wex agissent autant, parlent autant. |
+
+### Résonance jamais nommée (DEC-TENSION-RESONANCE 2026-05-13)
+Le mot "résonance" n'apparaît pas dans le texte. La connexion entre les enfants vit dans les gestes, les silences, les corps — jamais dans un concept. C'est la règle qui a fait gagner la vague 1 top 1.
 
 ### Pas d'adultes en scène (saison 1)
 Enfants seuls, du début à la fin.

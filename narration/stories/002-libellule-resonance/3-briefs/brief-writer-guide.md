@@ -43,6 +43,7 @@ Ce que les lecteurs (enfants + dyades) ont aimé sur 001 et qu'on veut retrouver
 - Le mot rare qu'un 4 ans ne comprendrait pas sans contexte
 - Le verbe "magique" / "magie" — on est dans le sensible, pas dans le surnaturel
 - L'onomatopée trop forte (BOUM, CRAC, BAM)
+- **Le mot "résonance"** — jamais dans le texte. La connexion vit dans les gestes, pas dans un concept.
 
 ---
 

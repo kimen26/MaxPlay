@@ -168,6 +168,18 @@ html, body {
   font-size:0.95rem; font-weight:700; color:#ffe066; line-height:1.5; flex:1;
 }
 
+/* ── Extinction ── */
+.ext-card { display:flex; gap:10px; background:rgba(255,80,0,0.08); border:1px solid rgba(255,80,0,0.2); border-radius:12px; padding:10px; cursor:pointer; }
+.ext-card:active { background:rgba(255,80,0,0.18); }
+.ext-card-emoji { font-size:2rem; flex-shrink:0; line-height:1; }
+.ext-card-body { flex:1; }
+.ext-card-titre { font-weight:900; font-size:0.88rem; color:#ff9060; margin-bottom:4px; }
+.ext-card-texte { font-size:0.75rem; color:rgba(255,255,255,0.75); line-height:1.4; }
+.ext-certitude { margin-top:5px; font-size:0.7rem; color:rgba(255,200,100,0.8); }
+.ext-certitude span { margin-left:4px; font-weight:700; }
+.ext-funfact { background:rgba(100,220,100,0.1); border:1px solid rgba(100,220,100,0.25); border-radius:12px; padding:10px 12px; font-size:0.78rem; color:rgba(200,255,200,0.9); cursor:pointer; line-height:1.4; font-weight:700; }
+.ext-funfact:active { background:rgba(100,220,100,0.2); }
+
 /* Extra gallery */
 .fiche-gallery-title {
   margin:16px 12px 8px;
@@ -332,7 +344,8 @@ html, body {
   </div>
   <!-- Sélecteur de mode -->
   <div id="mode-selector">
-    <button class="mode-btn active" id="mode-btn-regime"   onclick="setMode('regime')"   >🍽️ Ce qu'il mange</button>
+    <button class="mode-btn active" id="mode-btn-regime"    onclick="setMode('regime')"   >🍽️ Ce qu'il mange</button>
+    <button class="mode-btn"        id="mode-btn-famille"   onclick="setMode('famille')"  >🦖 Les familles</button>
     <button class="mode-btn"        id="mode-btn-continent" onclick="setMode('continent')">🌍 Où il vivait</button>
     <button class="mode-btn"        id="mode-btn-periode"   onclick="setMode('periode')"  >⏳ Quand il vivait</button>
   </div>
@@ -400,13 +413,12 @@ function setMode(mode) {
   document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('mode-btn-' + mode).classList.add('active');
   buildMenu();
-  // TTS
-  const labels = { regime: 'Ce qu\'il mange !', continent: 'Où il vivait !', periode: 'Quand il vivait !' };
+  const labels = { regime: 'Ce qu\'il mange !', famille: 'Les familles de dinos !', continent: 'Où il vivait !', periode: 'Quand il vivait !' };
   speakText(labels[mode] || '');
 }
 
 function speakMenuIntro() {
-  const labels = { regime: 'Les dinosaures ! Choisis ce que tu veux découvrir !', continent: 'Sur quel continent vivait le dinosaure ?', periode: 'À quelle époque vivait le dinosaure ?' };
+  const labels = { regime: 'Les dinosaures ! Choisis ce que tu veux découvrir !', famille: 'Les grandes familles de dinosaures !', continent: 'Sur quel continent vivait le dinosaure ?', periode: 'À quelle époque vivait le dinosaure ?' };
   speakText(labels[currentMode] || 'Les dinosaures !');
 }
 
@@ -423,11 +435,35 @@ function buildMenu() {
 
   if (currentMode === 'regime') {
     buildMenuRegime(el);
+  } else if (currentMode === 'famille') {
+    buildMenuFamille(el);
   } else if (currentMode === 'continent') {
     buildMenuContinent(el);
   } else if (currentMode === 'periode') {
     buildMenuPeriode(el);
   }
+}
+
+/* ── MENU famille ── */
+function buildMenuFamille(el) {
+  DINO_FAMILLES.forEach(fam => {
+    const count = DINOS.filter(d => d.famille === fam.id).length;
+    if (!count) return;
+    const card = document.createElement('div');
+    card.className = 'cat-card';
+    card.style.background = fam.bg;
+    card.innerHTML = `
+      <div class="cat-emoji">${fam.emoji}</div>
+      <div class="cat-label">${fam.label}</div>
+      <div style="font-size:0.65rem;opacity:0.7;margin-top:2px">${fam.desc}</div>
+      <div class="cat-count" style="display:block;font-size:0.72rem;opacity:0.6;margin-top:4px">${count} dinos</div>
+    `;
+    card.addEventListener('click', () => {
+      speakText(fam.label);
+      setTimeout(() => showGridFamille(fam.id), 400);
+    });
+    el.appendChild(card);
+  });
 }
 
 /* ── MENU régime (existant) ── */
@@ -515,9 +551,42 @@ function buildMenuPeriode(el) {
         <div class="chrono-dinos">${dinosHtml}</div>
       </div>
     `;
-  }).join('');
+  }).join('') + buildExtinctionBloc();
 
   el.appendChild(wrapper);
+}
+
+function buildExtinctionBloc() {
+  const hypHtml = EXTINCTION.hypotheses.map(h => `
+    <div class="ext-card" onclick="speakText('${esc(h.titre)}. ${esc(h.texte)}')">
+      <div class="ext-card-emoji">${h.emoji}</div>
+      <div class="ext-card-body">
+        <div class="ext-card-titre">${h.titre}</div>
+        <div class="ext-card-texte">${h.texte}</div>
+        ${h.certitude ? `<div class="ext-certitude">${h.certitude} <span>${h.label_certitude}</span></div>` : ''}
+      </div>
+    </div>
+  `).join('');
+
+  return `
+    <div class="chrono-periode" id="periode-extinction" style="margin-top:8px">
+      <div class="chrono-header" style="background:rgba(255,80,0,0.15);cursor:pointer"
+           onclick="speakText('La Grande Extinction ! Il y a 66 millions d\\u2019années, les dinosaures ont disparu. Mais pourquoi ?')">
+        <div class="chrono-emoji">☄️</div>
+        <div class="chrono-info">
+          <div class="chrono-label" style="color:#ff6b35">${EXTINCTION.titre}</div>
+          <div class="chrono-range">${EXTINCTION.soustitre}</div>
+          <div class="chrono-desc">Pourquoi les dinos ont-ils disparu ?</div>
+        </div>
+      </div>
+      <div style="padding:10px 12px;display:flex;flex-direction:column;gap:10px">
+        ${hypHtml}
+        <div class="ext-funfact" onclick="speakText('${esc(EXTINCTION.fun_fact)}')">
+          🐦 ${EXTINCTION.fun_fact}
+        </div>
+      </div>
+    </div>
+  `;
 }
 
 function scrollToPeriode(id) {
@@ -594,12 +663,43 @@ function buildGrid(catId) {
   });
 }
 
+/* ── GRID famille ── */
+function showGridFamille(famId) {
+  currentCatId = famId;
+  showScreen('grid');
+  const fam = DINO_FAMILLES.find(f => f.id === famId);
+  document.getElementById('grid-title').textContent = fam.emoji + ' ' + fam.label;
+  const el = document.getElementById('grid-scroll');
+  el.innerHTML = '';
+  const dinos = DINOS.filter(d => d.famille === famId);
+  dinos.forEach(d => {
+    const card = document.createElement('div');
+    card.className = 'dino-card';
+    card.innerHTML = `
+      <img class="card-img" src="img/dinos/${d.png}" alt="${d.name}" loading="lazy" onerror="this.style.display='none'">
+      <div class="card-name">${d.name}</div>
+      <div class="card-regime">${d.regime}</div>
+      <div class="card-region">📍 ${d.region}</div>
+      <div class="card-bar" style="background:${fam.color}"></div>
+    `;
+    card.addEventListener('click', () => {
+      card.classList.remove('bounce'); void card.offsetWidth; card.classList.add('bounce');
+      speakText(d.name);
+      setTimeout(() => showFiche(d), 350);
+    });
+    el.appendChild(card);
+  });
+  setTimeout(() => speakText(fam.label + ' ! Tape sur un dino pour tout savoir !'), 200);
+}
+
 /* ── Retour depuis grille ── */
 function showGrid(catId) {
   if (catId) currentCatId = catId;
   showScreen('grid');
   if (currentMode === 'continent') {
     showGridContinent(currentCatId);
+  } else if (currentMode === 'famille') {
+    showGridFamille(currentCatId);
   } else {
     showGridRegime(currentCatId);
   }
@@ -636,6 +736,49 @@ function speakFiche(d) {
   speakText(txt);
 }
 
+/* ── Carte SVG continents ── */
+function buildContinentMap(continent) {
+  const colors = {
+    'Amérique du Nord': '#e74c3c',
+    'Amérique du Sud':  '#e67e22',
+    'Europe':           '#3498db',
+    'Afrique':          '#f39c12',
+    'Asie':             '#e91e63',
+    'Antarctique':      '#00bcd4',
+  };
+  const dimColor = 'rgba(255,255,255,0.08)';
+  const activeColor = colors[continent] || '#fff';
+
+  // Formes simplifiées des continents (viewBox 0 0 200 110)
+  const shapes = {
+    'Amérique du Nord': 'M 18,8 L 44,8 L 52,18 L 56,28 L 52,42 L 44,50 L 34,54 L 26,48 L 18,36 L 14,24 Z',
+    'Amérique du Sud':  'M 34,58 L 46,56 L 52,66 L 54,80 L 50,96 L 40,104 L 30,100 L 26,86 L 28,72 Z',
+    'Europe':           'M 88,8 L 102,8 L 108,16 L 106,26 L 98,30 L 88,28 L 82,20 L 84,12 Z',
+    'Afrique':          'M 88,34 L 102,32 L 112,42 L 114,60 L 108,78 L 98,90 L 86,90 L 76,78 L 74,60 L 78,42 Z',
+    'Asie':             'M 110,8 L 148,8 L 162,20 L 168,36 L 158,52 L 142,56 L 124,50 L 112,36 L 108,20 Z',
+    'Antarctique':      'M 50,102 L 80,100 L 110,100 L 140,102 L 150,108 L 100,110 L 50,108 Z',
+  };
+
+  const continents = Object.keys(shapes);
+  const pathsHtml = continents.map(c => {
+    const isActive = c === continent;
+    return `<path d="${shapes[c]}" fill="${isActive ? activeColor : dimColor}" stroke="rgba(255,255,255,0.15)" stroke-width="0.8" ${isActive ? `filter="url(#glow)"` : ''}/>`;
+  }).join('');
+
+  const label = continent || '';
+  return `
+    <div style="display:flex;align-items:center;gap:10px">
+      <svg viewBox="0 0 200 112" width="130" height="73" style="border-radius:8px;background:rgba(0,60,120,0.3);flex-shrink:0">
+        <defs>
+          <filter id="glow"><feGaussianBlur stdDeviation="2.5" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        ${pathsHtml}
+      </svg>
+      <div style="font-size:0.78rem;color:${activeColor};font-weight:900;line-height:1.3">${label}</div>
+    </div>
+  `;
+}
+
 function buildFiche(d) {
   const cat = DINO_CATEGORIES.find(c => c.id === d.cat);
   const scroll = document.getElementById('fiche-scroll');
@@ -663,6 +806,7 @@ function buildFiche(d) {
     <div class="fiche-name-block">
       <div>
         <div class="fiche-name">${d.name}</div>
+        ${d.alias ? `<div style="font-size:0.72rem;color:rgba(255,200,100,0.8);font-weight:700;margin-top:1px">aussi appelé ${d.alias}</div>` : ''}
         <div class="fiche-full">${d.full}</div>
       </div>
       <button class="speak-btn" onclick="speakText('${esc(d.name)} ! Son vrai nom c\'est ${esc(d.full)}.')">🔊 Nom</button>
@@ -679,15 +823,15 @@ function buildFiche(d) {
     </div>` : ''}
 
     <!-- Époque & région -->
-    <div class="fiche-section">
+    <div class="fiche-section" style="align-items:flex-start">
       <div class="fiche-section-icon">🕰️</div>
-      <div class="fiche-section-body">
+      <div class="fiche-section-body" style="flex:1">
         <div class="fiche-section-title">Époque &amp; lieu</div>
         <div class="fiche-section-text">${d.epoque}</div>
         <div class="fiche-section-sub">📍 ${d.region}</div>
-        <div class="fiche-section-sub" style="margin-top:4px">🌍 ${d.continent || ''} · ${(DINO_PERIODES.find(p=>p.id===d.periode)||{}).label||''}</div>
+        <div style="margin-top:8px">${buildContinentMap(d.continent)}</div>
       </div>
-      <button class="speak-btn" onclick="speakText('${esc(d.name)} vivait il y a très très longtemps, en ${esc(d.region)}. C\'était pendant la période ${esc((DINO_PERIODES.find(p=>p.id===d.periode)||{}).label||d.epoque)}.')">🔊</button>
+      <button class="speak-btn" onclick="speakText('${esc(d.name)} vivait il y a très très longtemps, en ${esc(d.region)}.')">🔊</button>
     </div>
 
     <!-- Stats longueur / hauteur / poids -->

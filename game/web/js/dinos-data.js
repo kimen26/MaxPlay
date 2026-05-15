@@ -2,6 +2,69 @@
 // 50 dinos · données riches · FR · adapté 3-5 ans
 // Catégories : carnivores · herbivores · piscivores · omnivores · volants_marins
 
+// ─── Familles (2e catégorisation) ───
+const DINO_FAMILLES = [
+  { id: 'trex',       label: 'Les T-Rex',         emoji: '🦖', desc: 'Les grands chasseurs à deux pattes',      color: '#c0392b', bg: 'linear-gradient(135deg,#7b0000,#c0392b)' },
+  { id: 'cou_long',   label: 'Les Cou-longs',     emoji: '🦕', desc: 'Les géants au très long cou',             color: '#27ae60', bg: 'linear-gradient(135deg,#0a4a1e,#27ae60)' },
+  { id: 'arme',       label: 'Les Tout-blindés',  emoji: '🛡️', desc: 'Armure, piques et queue-massue',         color: '#7f8c8d', bg: 'linear-gradient(135deg,#2c3e50,#7f8c8d)' },
+  { id: 'cornu',      label: 'Les Cornus',        emoji: '🦏', desc: 'Cornes, crêtes et grandes collerettes',   color: '#f39c12', bg: 'linear-gradient(135deg,#7a5000,#f39c12)' },
+  { id: 'bec',        label: 'Les Becs-de-canard',emoji: '🦆', desc: 'Bec plat, crête et grands troupeaux',     color: '#8e44ad', bg: 'linear-gradient(135deg,#4a0080,#8e44ad)' },
+  { id: 'raptor',     label: 'Les Raptors',       emoji: '🦅', desc: 'Griffes mortelles et chasseurs malins',   color: '#e67e22', bg: 'linear-gradient(135deg,#7a3000,#e67e22)' },
+  { id: 'volant',     label: 'Volants & Marins',  emoji: '🦋', desc: 'Dans les airs et les mers préhistoriques',color: '#2980b9', bg: 'linear-gradient(135deg,#003366,#2980b9)' },
+  { id: 'bizarre',    label: 'Les Bizarres',      emoji: '🤪', desc: 'Inclassables et super originaux !',        color: '#16a085', bg: 'linear-gradient(135deg,#0a3d30,#16a085)' },
+];
+
+// ─── Extinction (écran spécial après Crétacé) ───
+const EXTINCTION = {
+  titre: 'La Grande Extinction',
+  soustitre: 'Il y a 66 millions d\'années…',
+  emoji: '☄️',
+  hypotheses: [
+    {
+      id: 'meteorite',
+      emoji: '☄️',
+      titre: 'La météorite géante',
+      texte: 'Un rocher de 10 km venu du ciel s\'écrase dans le Mexique actuel. L\'explosion est 10 milliards de fois plus puissante qu\'une bombe atomique. Tout brûle dans un rayon de milliers de kilomètres. C\'est la théorie la plus probable !',
+      certitude: '⭐⭐⭐⭐⭐',
+      label_certitude: 'Très probable',
+    },
+    {
+      id: 'volcan',
+      emoji: '🌋',
+      titre: 'Les super-volcans',
+      texte: 'En Inde, des volcans gigantesques crachent des laves et des gaz pendant des milliers d\'années. La fumée empoisonne l\'air et réchauffe la Terre. Les volcans Dekkan ont recouvert la moitié de l\'Inde de lave !',
+      certitude: '⭐⭐⭐⭐',
+      label_certitude: 'Très plausible',
+    },
+    {
+      id: 'cendres',
+      emoji: '🌑',
+      titre: 'Le nuage de cendres',
+      texte: 'Après le choc de la météorite, un nuage de poussière et de cendres cache le soleil pendant des mois… peut-être des années ! Sans soleil, les plantes meurent. Sans plantes, les herbivores meurent. Sans herbivores, les carnivores meurent.',
+      certitude: '⭐⭐⭐⭐⭐',
+      label_certitude: 'Presque certain',
+    },
+    {
+      id: 'froid',
+      emoji: '🥶',
+      titre: 'L\'hiver nucléaire',
+      texte: 'La Terre plonge dans le noir et le froid. La température chute de 10 à 20 degrés partout sur Terre. Les plantes tropicales meurent. Les océans refroidissent. C\'est un hiver qui dure des années !',
+      certitude: '⭐⭐⭐⭐',
+      label_certitude: 'Très probable',
+    },
+    {
+      id: 'survivants',
+      emoji: '🐦',
+      titre: 'Et les survivants ?',
+      texte: 'Les petits animaux qui mangeaient des graines et pouvaient se cacher survivent. Les oiseaux — qui sont de vrais dinosaures ! — passent à travers. Les crocodiles, les tortues, les lézards résistent. La vie repart… et des millions d\'années plus tard, les humains arrivent !',
+      certitude: null,
+      label_certitude: null,
+    },
+  ],
+  fun_fact: 'Les oiseaux sont de VRAIS dinosaures ! Chaque fois que Max voit un pigeon, il voit un dino !',
+};
+
+
 const DINO_CATEGORIES = [
   { id: 'carnivores',     label: 'Carnivores',       emoji: '🥩', color: '#c0392b', bg: 'linear-gradient(135deg,#7b0000,#c0392b)' },
   { id: 'herbivores',     label: 'Herbivores',       emoji: '🌿', color: '#27ae60', bg: 'linear-gradient(135deg,#0a4a1e,#27ae60)' },
@@ -95,6 +158,7 @@ const DINOS = [
     id: 'tyrannosaurus',
     name: 'T-Rex',
     full: 'Tyrannosaurus Rex',
+    famille: 'trex',
     cat: 'carnivores',
     epoque: 'Crétacé · il y a 66 millions d\'ans',
     region: 'Amérique du Nord',
@@ -119,6 +183,7 @@ const DINOS = [
   },
   {
     id: 'spinosaurus',
+    famille: 'trex',
     name: 'Spinosaure',
     full: 'Spinosaurus aegyptiacus',
     cat: 'piscivores',
@@ -145,6 +210,7 @@ const DINOS = [
   },
   {
     id: 'giganotosaurus',
+    famille: 'trex',
     name: 'Giganotosaure',
     full: 'Giganotosaurus carolinii',
     cat: 'carnivores',
@@ -171,6 +237,7 @@ const DINOS = [
   },
   {
     id: 'carcharodontosaurus',
+    famille: 'trex',
     name: 'Carcharodonto.',
     full: 'Carcharodontosaurus saharicus',
     cat: 'carnivores',
@@ -197,6 +264,7 @@ const DINOS = [
   },
   {
     id: 'acrocanthosaurus',
+    famille: 'trex',
     name: 'Acrocantho.',
     full: 'Acrocanthosaurus atokensis',
     cat: 'carnivores',
@@ -223,6 +291,7 @@ const DINOS = [
   },
   {
     id: 'allosaurus',
+    famille: 'trex',
     name: 'Allosaure',
     full: 'Allosaurus fragilis',
     cat: 'carnivores',
@@ -249,6 +318,7 @@ const DINOS = [
   },
   {
     id: 'tarbosaurus',
+    famille: 'trex',
     name: 'Tarbosaure',
     full: 'Tarbosaurus bataar',
     cat: 'carnivores',
@@ -275,6 +345,7 @@ const DINOS = [
   },
   {
     id: 'albertosaurus',
+    famille: 'trex',
     name: 'Albertosaure',
     full: 'Albertosaurus sarcophagus',
     cat: 'carnivores',
@@ -301,6 +372,7 @@ const DINOS = [
   },
   {
     id: 'gorgosaurus',
+    famille: 'trex',
     name: 'Gorgosaure',
     full: 'Gorgosaurus libratus',
     cat: 'carnivores',
@@ -327,6 +399,7 @@ const DINOS = [
   },
   {
     id: 'ceratosaurus',
+    famille: 'trex',
     name: 'Cératosaure',
     full: 'Ceratosaurus nasicornis',
     cat: 'carnivores',
@@ -353,6 +426,7 @@ const DINOS = [
   },
   {
     id: 'dilophosaurus',
+    famille: 'trex',
     name: 'Dilophosaure',
     full: 'Dilophosaurus wetherilli',
     cat: 'carnivores',
@@ -379,6 +453,7 @@ const DINOS = [
   },
   {
     id: 'carnotaurus',
+    famille: 'trex',
     name: 'Carnotaure',
     full: 'Carnotaurus sastrei',
     cat: 'carnivores',
@@ -405,6 +480,7 @@ const DINOS = [
   },
   {
     id: 'cryolophosaurus',
+    famille: 'trex',
     name: 'Cryolophosaure',
     full: 'Cryolophosaurus ellioti',
     cat: 'carnivores',
@@ -434,6 +510,7 @@ const DINOS = [
 
   {
     id: 'brachiosaurus',
+    famille: 'cou_long',
     name: 'Brachiosaure',
     full: 'Brachiosaurus altithorax',
     cat: 'herbivores',
@@ -460,6 +537,7 @@ const DINOS = [
   },
   {
     id: 'diplodocus',
+    famille: 'cou_long',
     name: 'Diplodocus',
     full: 'Diplodocus longus',
     cat: 'herbivores',
@@ -486,6 +564,7 @@ const DINOS = [
   },
   {
     id: 'apatosaurus',
+    famille: 'cou_long',
     name: 'Apatosaure',
     full: 'Apatosaurus louisae',
     cat: 'herbivores',
@@ -512,6 +591,7 @@ const DINOS = [
   },
   {
     id: 'camarasaurus',
+    famille: 'cou_long',
     name: 'Camarasaure',
     full: 'Camarasaurus lentus',
     cat: 'herbivores',
@@ -538,6 +618,7 @@ const DINOS = [
   },
   {
     id: 'amargasaurus',
+    famille: 'cou_long',
     name: 'Amargasaure',
     full: 'Amargasaurus cazaui',
     cat: 'herbivores',
@@ -564,6 +645,7 @@ const DINOS = [
   },
   {
     id: 'plateosaurus',
+    famille: 'cou_long',
     name: 'Plateosaure',
     full: 'Plateosaurus engelhardti',
     cat: 'herbivores',
@@ -593,6 +675,7 @@ const DINOS = [
 
   {
     id: 'ankylosaurus',
+    famille: 'arme',
     name: 'Ankylosaure',
     full: 'Ankylosaurus magniventris',
     cat: 'herbivores',
@@ -619,6 +702,7 @@ const DINOS = [
   },
   {
     id: 'euoplocephalus',
+    famille: 'arme',
     name: 'Euoplocéphale',
     full: 'Euoplocephalus tutus',
     cat: 'herbivores',
@@ -645,6 +729,7 @@ const DINOS = [
   },
   {
     id: 'stegosaurus',
+    famille: 'arme',
     name: 'Stégosaure',
     full: 'Stegosaurus ungulatus',
     cat: 'herbivores',
@@ -671,6 +756,7 @@ const DINOS = [
   },
   {
     id: 'kentrosaurus',
+    famille: 'arme',
     name: 'Kéntrosaure',
     full: 'Kentrosaurus aethiopicus',
     cat: 'herbivores',
@@ -700,6 +786,7 @@ const DINOS = [
 
   {
     id: 'triceratops',
+    famille: 'cornu',
     name: 'Tricératops',
     full: 'Triceratops horridus',
     cat: 'herbivores',
@@ -726,6 +813,7 @@ const DINOS = [
   },
   {
     id: 'styracosaurus',
+    famille: 'cornu',
     name: 'Styracosaure',
     full: 'Styracosaurus albertensis',
     cat: 'herbivores',
@@ -752,6 +840,7 @@ const DINOS = [
   },
   {
     id: 'protoceratops',
+    famille: 'cornu',
     name: 'Protocératops',
     full: 'Protoceratops andrewsi',
     cat: 'herbivores',
@@ -778,6 +867,7 @@ const DINOS = [
   },
   {
     id: 'psittacosaurus',
+    famille: 'cornu',
     name: 'Psittacosaure',
     full: 'Psittacosaurus mongoliensis',
     cat: 'herbivores',
@@ -804,6 +894,7 @@ const DINOS = [
   },
   {
     id: 'parasaurolophus',
+    famille: 'bec',
     name: 'Parasaurolophus',
     full: 'Parasaurolophus walkeri',
     cat: 'herbivores',
@@ -830,6 +921,7 @@ const DINOS = [
   },
   {
     id: 'corythosaurus',
+    famille: 'bec',
     name: 'Corythosaure',
     full: 'Corythosaurus casuarius',
     cat: 'herbivores',
@@ -856,6 +948,7 @@ const DINOS = [
   },
   {
     id: 'edmontosaurus',
+    famille: 'bec',
     name: 'Edmontosaure',
     full: 'Edmontosaurus regalis',
     cat: 'herbivores',
@@ -882,6 +975,7 @@ const DINOS = [
   },
   {
     id: 'maiasaura',
+    famille: 'bec',
     name: 'Maiasaura',
     full: 'Maiasaura peeblesorum',
     cat: 'herbivores',
@@ -908,6 +1002,7 @@ const DINOS = [
   },
   {
     id: 'iguanodon',
+    famille: 'bec',
     name: 'Iguanodon',
     full: 'Iguanodon bernissartensis',
     cat: 'herbivores',
@@ -934,6 +1029,7 @@ const DINOS = [
   },
   {
     id: 'pachycephalosaurus',
+    famille: 'bizarre',
     name: 'Pachycéphalo.',
     full: 'Pachycephalosaurus wyomingensis',
     cat: 'herbivores',
@@ -963,6 +1059,7 @@ const DINOS = [
 
   {
     id: 'velociraptor',
+    famille: 'raptor',
     name: 'Vélociraptor',
     full: 'Velociraptor mongoliensis',
     cat: 'carnivores',
@@ -989,6 +1086,7 @@ const DINOS = [
   },
   {
     id: 'deinonychus',
+    famille: 'raptor',
     name: 'Deinonychus',
     full: 'Deinonychus antirrhopus',
     cat: 'carnivores',
@@ -1015,6 +1113,7 @@ const DINOS = [
   },
   {
     id: 'utahraptor',
+    famille: 'raptor',
     name: 'Utahraptor',
     full: 'Utahraptor ostrommaysorum',
     cat: 'carnivores',
@@ -1041,6 +1140,7 @@ const DINOS = [
   },
   {
     id: 'microraptor',
+    famille: 'raptor',
     name: 'Microraptor',
     full: 'Microraptor gui',
     cat: 'volants_marins',
@@ -1067,6 +1167,7 @@ const DINOS = [
   },
   {
     id: 'troodon',
+    famille: 'raptor',
     name: 'Troodon',
     full: 'Troodon formosus',
     cat: 'omnivores',
@@ -1093,6 +1194,7 @@ const DINOS = [
   },
   {
     id: 'gallimimus',
+    famille: 'raptor',
     name: 'Gallimimus',
     full: 'Gallimimus bullatus',
     cat: 'omnivores',
@@ -1119,6 +1221,7 @@ const DINOS = [
   },
   {
     id: 'coelophysis',
+    famille: 'raptor',
     name: 'Coelophysis',
     full: 'Coelophysis bauri',
     cat: 'carnivores',
@@ -1145,6 +1248,7 @@ const DINOS = [
   },
   {
     id: 'compsognathus',
+    famille: 'raptor',
     name: 'Compsognathus',
     full: 'Compsognathus longipes',
     cat: 'carnivores',
@@ -1171,6 +1275,7 @@ const DINOS = [
   },
   {
     id: 'oviraptor',
+    famille: 'raptor',
     name: 'Oviraptor',
     full: 'Oviraptor philoceratops',
     cat: 'omnivores',
@@ -1200,7 +1305,9 @@ const DINOS = [
 
   {
     id: 'pteranodon',
+    famille: 'volant',
     name: 'Ptéranodon',
+    alias: 'Ptérodactyle',
     full: 'Pteranodon longiceps',
     cat: 'volants_marins',
     epoque: 'Crétacé · il y a 85 millions d\'ans',
@@ -1226,6 +1333,7 @@ const DINOS = [
   },
   {
     id: 'quetzalcoatlus',
+    famille: 'volant',
     name: 'Quetzalcoatlus',
     full: 'Quetzalcoatlus northropi',
     cat: 'volants_marins',
@@ -1252,6 +1360,7 @@ const DINOS = [
   },
   {
     id: 'archaeopteryx',
+    famille: 'volant',
     name: 'Archaeoptéryx',
     full: 'Archaeopteryx lithographica',
     cat: 'volants_marins',
@@ -1278,6 +1387,7 @@ const DINOS = [
   },
   {
     id: 'mosasaurus',
+    famille: 'volant',
     name: 'Mosasaure',
     full: 'Mosasaurus hoffmannii',
     cat: 'volants_marins',
@@ -1304,6 +1414,7 @@ const DINOS = [
   },
   {
     id: 'suchomimus',
+    famille: 'volant',
     name: 'Suchomimus',
     full: 'Suchomimus tenerensis',
     cat: 'piscivores',
@@ -1330,6 +1441,7 @@ const DINOS = [
   },
   {
     id: 'baryonyx',
+    famille: 'volant',
     name: 'Baryonyx',
     full: 'Baryonyx walkeri',
     cat: 'piscivores',
@@ -1356,6 +1468,7 @@ const DINOS = [
   },
   {
     id: 'therizinosaurus',
+    famille: 'bizarre',
     name: 'Therizinosaurus',
     full: 'Therizinosaurus cheloniformis',
     cat: 'herbivores',
@@ -1382,6 +1495,7 @@ const DINOS = [
   },
   {
     id: 'dimetrodon',
+    famille: 'bizarre',
     name: 'Dimétrodon',
     full: 'Dimetrodon grandis',
     cat: 'volants_marins',

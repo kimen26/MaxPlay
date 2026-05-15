@@ -11,6 +11,48 @@
 
 ---
 
+## 2026-05-15 — [PMO] DEC-WRITER-ARCH-001 : Refonte system/user architecture ALL 14 writers
+
+**Objectif (Papa Yann)** : enregistrer décision architectural majeure sur architecture system/user writers étape 4, corollaire des 3 décisions architecture briefs (DEC-BRIEF-ARCH-001/002/003).
+
+**Fait** :
+- [x] **DEC-WRITER-ARCH-001** : System prompt unifiée (`equipe/_writer-system.md` Couche 1) + Brief utilisateur (`stories/NNN/brief-histoire.md` Couche 2+3) pour ALL 14 writers
+- [x] Mise à jour INVARIANTS.md § *Casting writers étape 4* : note architecture system/user
+- [x] Mise à jour INVARIANTS.md § *Chiffres clés PROCESS* : brief-univers.md + _writer-package.md obsolètes depuis 2026-05-15
+- [x] Enregistrement decisions.md DEC-WRITER-ARCH-001 complet (impact fichiers, raisons, invocation pattern)
+
+**Raison centrale** :
+- Separation of concerns : Couche 1 universelle (system.md) ≠ Couche 2 histoire (brief-histoire.md) ≠ Couche 3 guidé (brief-histoire.md annexe)
+- Source vérité unique : system.md figée par arc (pérenne multi-story), brief-histoire.md per-story (customisable)
+- Parité writers TOTALE : tous reçoivent même architecture, variance = modèle/température/système prompt type uniquement
+- Invocation unified pattern : (system, user, writer-id) → compatible Claude/Kimi/DeepSeek/Grok
+
+**Décision enregistrée** : ✅ `pmo/decisions.md` § *2026-05-15 — Refonte architecture système/utilisateur writers étape 4*
+
+**Impact immédiat** :
+- ⏳ **VAGUE 3 STORY-002** : appliquer DEC-WRITER-ARCH-001 (test urgent, corollaire briefs 3 couches)
+- 🔄 Créer `equipe/_writer-system.md` (source vérité Couche 1) — déjà créé 2026-05-15 ? À vérifier.
+- 🔄 Refondre `equipe/templates/brief-histoire.template.md` : format Couche 2+3 intégré
+- 🔄 `narration-writer-claude-libre.md` : adapter recevoir (system, user) de brief-histoire.md
+- 🔄 `narration-writer-kimi-guide.md` : intégrer système prompt _writer-system.md
+- 🔄 `equipe/PROCESS.md` § *Étape 3 (Briefs)* : procédure Couche 1 vérifiée + Couche 2/3 dans brief-histoire.md
+- 🔄 `equipe/PROCESS.md` § *Étape 4 (Writers)* : invocation pattern unified (system, user, writer-type)
+
+**État au reboot** :
+- ✅ Décision figée `pmo/decisions.md`
+- ✅ INVARIANTS.md mis à jour (notes architecture + fichiers obsolètes)
+- ⏳ Implémentation détails : créer/refondre fichiers gabarit etape 3, adapter writers etape 4
+- ⏳ Priorité : STORY-002 vague 3 test application immédiate
+
+**Checklist remise main** :
+- [x] Décision dans decisions.md (complète avec impact fichiers + invocation pattern)
+- [x] INVARIANTS.md mis à jour (notes architecture claires)
+- [x] Sprint-log enregistrement (ce message)
+- [ ] `equipe/_writer-system.md` vérifiée existant (contenu Couche 1 complet)
+- [ ] Gabarits brief-histoire refondus et appliqués vague 3
+
+---
+
 ## 2026-05-15 — [PMO] Enregistrement 5 décisions formelles refonte structurelle fiches personnage
 
 **Objectif (Papa Yann)** : logger formellement dans `pmo/decisions.md` les 5 décisions de refonte architecturelle des fiches personnage validées en session.

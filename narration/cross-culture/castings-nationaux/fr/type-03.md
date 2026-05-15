@@ -7,6 +7,7 @@ genre: M
 token: titi_3_fr
 casting_v1: true
 prononciation_ipa: dadu
+voice_id: 5wcx0KzRnrP48I5RCVD8
 ---
 
 # Dadou (David) — Type 3, casting France
@@ -22,3 +23,9 @@ Diminutif "Dadou" hypocoristique courant brésilien (Davi → Dadinho/Dado/Dadou
 ## Historique
 - 2026-04-24 : casting V1 figé avec Paul/Polo (T3 Performeur).
 - 2026-05-13 : rename Paul/Polo → David/Dadou. Raison : collision sonore Polo (`o-o`) ↔ Nono (`o-o`) confirmée à l'oral pour un enfant 4 ans. David garde la veine biblique "Christ" du casting V1. Voice_id `5wcx0KzRnrP48I5RCVD8` conservé (renommé "Lumi Dadou Fier" côté ElevenLabs).
+
+## Production audio
+
+**Voice ID ElevenLabs :** `5wcx0KzRnrP48I5RCVD8`
+
+Voir [`../../../personnages/type-03/voix.md`](../../../personnages/type-03/voix.md) pour la signature vocale complète (Lumi Dadou Fier, méthodo v24).

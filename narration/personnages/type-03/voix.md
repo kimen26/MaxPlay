@@ -28,56 +28,24 @@ Style: 0.40
 Speaker Boost: true
 ```
 
-## Prompt ElevenLabs (F)
+## Prompt ElevenLabs (F) — méthodo v24 (2026-05-13)
 
-> Native French. Female, young child around 4 to 5 years old. Studio quality.
+> Native French. Animated little girl character voice for animation series — bright, clear, energetic. Studio quality.
 > Persona: confident little achiever. Emotion: assured, dynamic, focused.
 > Clean precise consonants, sharp sibilants, impeccable diction. Sentences end with a confident downward cadence — like a fact stated. Brisk pacing with energetic attack on the first syllable of important words. Voice carried forward with a slight initial puff of energy. Bright clear child timbre, naturally competent, never arrogant.
 
-## Prompt ElevenLabs (M)
+## Prompt ElevenLabs (M) — méthodo v24
 
-> Native French. Male, young child around 4 to 5 years old. Studio quality.
+> Native French. Animated little boy character voice for animation series — bright, clear, energetic. Studio quality.
 > Persona: confident little achiever. Emotion: assured, dynamic, focused.
 > Clean consonants, crisp diction, every word well-placed. Conclusive downward sentence endings. Brisk pace with vivid attack on first syllables. Voice carried forward with natural energy — present, not loud. Bright clear child timbre, naturally capable.
 
----
+## Preview text Voice Design
 
-## Phrases types (Dadou)
+*Attendre préview ElevenLabs — phrase de test avant finalisation audio.*
 
-- "C'est moi qui gagne." *(descendant, factuel, pas méchant)*
-- "Regardez ! Je sais faire ça." *(attaque sur "regardez", énergie première syllabe)*
-- "Bon. On y va ?" *(efficace, minimal, prêt)*
+## Description publique Voice Library
 
----
+**FR :** Voix claire et énergique d'un petit garçon confiant et dynamique. Parfait pour les personnages performeurs en littérature jeunesse.
 
-## Langage naturel (4-6 ans)
-
-> Tournures caractéristiques dérivées de Chabreuil. Côté lumière au premier plan — ombre à doser.
-
-**Lumière** (perso épanoui, énergie entraînante, célèbre les victoires) :
-- "Allez !"
-- "On peut le faire !"
-- "On y est presque !"
-- "J'ai réussi !"
-- "On a gagné !"
-
-**Ombre** (réflexe automatique — besoin d'image, impatience) :
-- "C'est moi qui l'ai fait."
-- "On a gagné ou pas ?"
-- "C'est bon, faites confiance."
-
----
-
-## Tags writer ElevenLabs
-
-> Pour les writers : balises à intégrer dans les dialogues/didascalies. Max 2-3 tags par phrase.
-
-| Contexte | Tags | Exemple |
-|---|---|---|
-| Ton dominant (énergie, efficacité) | `[excited]` · `[confident]` · `[quickly]` · `[projecting]` | `"- Allez ! [excited]"` |
-| Énergie vivante | `[vibrant]` · `[enthusiastic]` · `[cheerful]` | `"- On peut le faire ! [vibrant]"` |
-| Victoire | `[laughs]` · `[happily]` | `"- On a gagné ! [laughs]"` |
-| Décision rapide | `[matter-of-fact]` · `[confident rhythm]` | `"- On y va. [matter-of-fact]"` |
-
-**Jamais** : `[slowly]` · `[whispers]` · `[sighs]` — hors moment de vraie fatigue
-**Onomatopée signature** : "hop" (action, passage à l'acte — catalogue à vérifier)
+**EN :** Clear, energetic little boy voice with confident phrasing and brisk rhythm. Perfect for achievement-oriented characters in children's storytelling.

@@ -55,8 +55,8 @@
 | Règles d'or structurelles (univers implicite, surnoms 4/5, etc.) ? | [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md) § *Règles d'or* |
 | Patte narrative (B+D+C, Kishōtenketsu) ? | [`equipe/patte-narrative-maxplay.md`](equipe/patte-narrative-maxplay.md) |
 | Production audio multi-voix ElevenLabs ? | Skills globaux `~/.claude/skills/elevenlabs-voice-design/` + `audio-direction-elevenlabs/` |
-| Langage naturel / tournures verbales d'un perso (4-6 ans) ? | [`personnages/type-XX/voix.md`](personnages/) § *Langage naturel* — 9 types couverts (2026-05-14) |
-| Tags writer ElevenLabs par perso (signature vocale) ? | [`personnages/type-XX/voix.md`](personnages/) § *Tags writer ElevenLabs* — 8 tags max par perso |
+| Langage naturel / tournures verbales d'un perso (4-6 ans) ? | [`personnages/type-XX/alive.md`](personnages/) § *Langage naturel* — 9 types couverts |
+| Tags writer ElevenLabs par perso (signature vocale) ? | [`personnages/type-XX/alive.md`](personnages/) § *Tags writer ElevenLabs* — 8 tags max par perso |
 
 ---
 

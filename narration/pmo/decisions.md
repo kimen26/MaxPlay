@@ -4,6 +4,59 @@
 
 ---
 
+## 2026-05-16 — DEC-AUDIO-PRODUCTION-001 : Text-to-Dialogue API = méthode officielle multi-voix
+
+**Découverte fondée (2026-05-12, figée aujourd'hui 2026-05-16).**
+
+**Contexte** : BREAKTHROUGH empirique documenté dans `narration/personnages/voix-meta/_PROMPTING-GUIDE.md` § BREAKTHROUGH 2026-05-12. Méthode validée via tests 001 « Le Pont Cassé » (archives `/assets/audio/_archive-tests/_TEST-text-to-dialogue.mp3` + `_TEST-4voix-balanced.mp3`). Antérieurement : script `generate-story-audio.js` produit 32 appels TTS séparés → transitions abruptes, volumes inégaux, intonations cassées.
+
+**Décision FIGÉE** :
+
+### MÉTHODE OFFICIELLE = `POST /v1/text-to-dialogue` packetisé
+
+**Signature** :
+- Endpoint : `POST /v1/text-to-dialogue` (ElevenLabs)
+- Prerequis : Starter+ PAYG (inclus dans plan Creator)
+- Max caractères par requête : **2000 char** (total, y.c. tags v3 inline)
+- Voice IDs : jusqu'à 10 par appel
+- Audio tags : supportés avec modèle `eleven_v3`
+
+**Méthodologie production** :
+1. Diviser texte canon en paquets < 2000 char (avec tags v3 inline)
+2. Lancer 1 appel `text-to-dialogue` par paquet
+3. Concatener avec ffmpeg `loudnorm` : **2-3 paquets seulement** (pas 32 segments)
+4. Sortie : 1 MP3 multi-voix cohérent
+
+**Anti-pattern BANNI** (figé) :
+- ❌ 32+ appels TTS séparés (1 voice_id/appel)
+- ❌ Concat ffmpeg de 32 segments → intonations fausses
+- ❌ Normalisations volume dispersées → inégalité audible
+
+### Rôle RÉDUIT ffmpeg
+- **Avant** (ancien) : moteur principal (concat 32 segments)
+- **Maintenant** (nouveau) : colle légère (concat 2-3 paquets text-to-dialogue seulement) + loudnorm
+
+### Script `generate-story-audio.js` = DÉPRÉCIÉ
+- Fichier : `narration/scripts/generate-story-audio.js`
+- Raison : Implémente anti-pattern (32 TTS séparés)
+- Statut : À archiver / marquer déprécié (archiviste gère)
+- Remplacement : Futur script `generate-story-audio-v2.js` (text-to-dialogue packetisé)
+
+**Fichiers impactés** :
+- ✅ `narration/pmo/INVARIANTS.md` (ajout § Méthode audio officielle + 2000 char plafond)
+- ✅ `narration/pmo/decisions.md` (cette entrée, figée)
+- 📋 `.claude/rules/audio.md` (PROCESS MILITAIRE audio, commandé à archiviste)
+- 📋 `narration/pmo/backlog.md` (ticket création script v2)
+
+**Quota impact** (état 2026-05-16) :
+- Abo Creator : 69 015 / 122 867 car (~53 850 restants, reset 8 juin)
+- Avec text-to-dialogue : ~8-9 histoires/mois max (vs 3-4 ancien script)
+- Prochain pulse : STORY-002 audio après étape 10 canon
+
+**Statut** : ✅ Figée 2026-05-16. **JAMAIS RÉGRESSER SANS DÉCISION EXPLICITE.**
+
+---
+
 ## 2026-05-16 — Wex en duo narratif mini-jeu Dino-Encyclopédie (pôle JEU)
 
 **Auteur (Papa Yann)** : validation du principe via révision script V0 game/docs/jeux/dino-encyclopedie/scripts-audio/triceratops-V0.md

@@ -11,6 +11,111 @@
 
 ---
 
+## 2026-05-16 — DÉCISION AUDIO : Text-to-Dialogue API = méthode officielle + coordination archiviste
+
+**Objectif** : Graver la décision structurante audio (BREAKTHROUGH 2026-05-12) en FOND. Définir PROCESS MILITAIRE audio. Coordonner avec archiviste (FORME).
+
+**Fait** :
+- [x] Lecture BREAKTHROUGH dans `_PROMPTING-GUIDE.md` (text-to-dialogue API validée empiriquement)
+- [x] Création DEC-AUDIO-PRODUCTION-001 dans `decisions.md` (figée, jamais régresser)
+- [x] Mise à jour `INVARIANTS.md` § Production audio multi-voix (plafond 2000 char + méthodologie + anti-pattern)
+- [x] Création ticket `AUDIO-SCRIPT-V2` dans `backlog.md` (script production v2, haute priorité)
+- [x] Rédaction PROCESS MILITAIRE audio (5 sections, prêt pour archiviste)
+
+**Décisions prises** : DEC-AUDIO-PRODUCTION-001 (figée 2026-05-16, jamais régresser sans décision explicite).
+
+**Classification** : **DÉCISION** (audio figée) + **TRAITEMENT IMMÉDIAT** (graver multi-fichiers FOND) + **TODO** (AUDIO-SCRIPT-V2).
+
+**PROCESS MILITAIRE AUDIO — Proposé pour `.claude/rules/audio.md` (archiviste)**
+
+*(À inclure dans la règle auto-chargée dès que Claude touche un script audio/voix-meta/segments JSON)*
+
+### Étapes PROCESS audio (5 étapes linéaires)
+
+**Étape 0. Préparation texte canon**
+- Source : `stories/NNN/10-texte.md` (canon validé + GateKeeper PASS)
+- Markup : tags v3 inline `[softly]`, `[excited]`, etc. (catalogue dans skill `audio-direction-elevenlabs`)
+- Didascalies : `*(doucement)*` → markup voice-director (futur agent VOIX-001)
+- Entrée voice-director : texte brut + markup perso
+- Sortie : texte + tags v3 inline, prêt packetisation
+
+**Étape 1. Packetisation < 2000 char**
+- Diviser canon en paquets ≤ 2000 caractères (total, tags inclus)
+- Respecter boundaries logiques (phrases complètes, pas de cut mid-dialogue)
+- Vérifier tags v3 inline présents (minimum 1-2 par paquet pour contexte émotionnel)
+- Documenter paquets dans `_segments-NNN-vN-<llm>.json`
+
+**Étape 2. Appels API text-to-dialogue (1 par paquet)**
+- Endpoint : `POST /v1/text-to-dialogue` (ElevenLabs)
+- Voice IDs : tablir du casting, cf. `personnages/voix-meta/_VOICE-IDS-CASTING.md`
+- Modèle : `eleven_v3` (requis pour tags v3)
+- Voice settings : appliqués par voice_id (stability, similarity_boost, style), gravés dans `_VOICE-IDS-CASTING.md`
+- Sortie : 1 MP3 par paquet
+
+**Étape 3. Concat ffmpeg + loudnorm**
+- Entrée : 2-3 MP3 issus de text-to-dialogue (PAS 32 segments)
+- Commande ffmpeg : concat + `loudnorm -I -23 -TP -1.5 -LRA 11` (normalisation volume cohérente)
+- Sortie : 1 MP3 final multi-voix cohérent
+- Validation oreille (Papa Yann) : transitions fluides, volume équilibré, intonations respectées
+
+**Étape 4. Archivage + versioning**
+- Fichier final : `stories/NNN/assets/audio/NNN-story-audio-vN-<method>.mp3`
+- Metadata : frontmatter dans README story (durée, date, version script, voice_ids utilisées)
+- Archive anciennes générations : `stories/NNN/assets/audio/_archive-attempts/` (avec notes rejet si itérations)
+- Jamais supprimer les tentatives (traçabilité)
+
+### Anti-patterns AUDIO (BANNIR 100%)
+
+1. ❌ 32+ appels TTS séparés mono (1 voice_id/appel) → transitions abruptes
+2. ❌ Concat ffmpeg `-c copy` de 32 segments → volumes inégaux, intonations fausses
+3. ❌ Voice settings inventés (toujours lire `_VOICE-IDS-CASTING.md`)
+4. ❌ Tags v3 inventés (utiliser catalogue skill `audio-direction-elevenlabs`)
+5. ❌ Pronunciation dicts ignorés (erreurs prénoms spécifiques à Max, cultures)
+6. ❌ Loudnorm absent (volumes incohérents inter-histoires)
+7. ❌ Onomatopée en FR sur perso culture autre (ex: "Boum" sur Wex brésilien)
+
+### Règles obligatoires
+
+1. **Plafond dur 2000 char** : non négociable, API rejet au-delà
+2. **Text-to-dialogue API obligatoire** : pas de fallback TTS mono pour raisons "simplification"
+3. **Loudnorm systématique** : toujours appliquer la normalisation EBU R128
+4. **Tags v3 inline** : minimum 1-2 par paquet (contexte émotionnel obligatoire)
+5. **Voice settings gravés** : jamais d'invention, toujours table casting
+6. **Traçabilité maximale** : jamais supprimer tentatives, noter raisons rejets
+
+### Pré-requis avant lancement étape 0
+
+- ✅ VOIX-001 : agent voice-director créé (markup émotionnel)
+- ✅ VOIX-002/003 : voice_ids créés (narrateurs + 10 persos), figés dans `_VOICE-IDS-CASTING.md`
+- ✅ AUDIO-SCRIPT-V2 : script production (text-to-dialogue packetisé) implémenté et testé
+
+---
+
+**Coordination avec narration-archiviste (FORME)**
+
+→ **Signal à archiviste** : Décision audio figée (FOND) → gère toi la FORME (dépréciage script, règles structure, INDEX).
+
+**Actions archiviste (FORME) — à dérouler en parallèle** :
+1. **Déprécier `narration/scripts/generate-story-audio.js`** → commentaire en-tête "DEPRECATED (2026-05-16) — implémente anti-pattern 32 TTS. Utiliser generate-story-audio-v2.js."
+2. **Créer/mettre à jour `.claude/rules/audio.md`** → pose ce PROCESS MILITAIRE audio (5 étapes + anti-patterns + règles obligatoires)
+3. **Vérifier cohérence INDEX** : 
+   - `narration/INDEX.md` → mise à jour production audio méthode officielle
+   - `narration/scripts/INDEX.md` → générations de script (v1 déprécié + v2 nouveau)
+   - `narration/personnages/voix-meta/README.md` → méthodo v24 voix design + PROCESS audio
+4. **Scanner `.claude/agents/narration-*.md`** → références obsolètes aux anciens scripts (audit par archiviste, signaler findings)
+5. **Figeage du PROCESS** : après implémentation v2 + test réussi STORY-002, graver version du PROCESS militaire dans `equipe/PROCESS.md` § Étape 0-10 audio.
+
+**État au reboot** :
+- ✅ DEC-AUDIO-PRODUCTION-001 figée (`decisions.md`)
+- ✅ INVARIANTS.md mis à jour (plafond 2000 char + méthodologie)
+- ✅ Ticket AUDIO-SCRIPT-V2 créé (`backlog.md`, haute priorité)
+- ✅ Sprint-log mis à jour (cette entrée)
+- 📋 PROCESS MILITAIRE audio rédigé (prêt archiviste)
+- 🔄 En attente : archiviste applique FORME (dépréciation script, règles, INDEX)
+- ⏳ Prochain pulse : lancer AUDIO-SCRIPT-V2 après VOIX-001/002/003 terminés
+
+---
+
 ## 2026-05-16 — STORY-002 vague 3 : Couture Ten + validation PMO PASS — briefs prêts étape 4
 
 **Objectif** : Intégration feedback Conseiller sur vague 3 briefs + validation PMO finale avant lancement 14 writers étape 4.

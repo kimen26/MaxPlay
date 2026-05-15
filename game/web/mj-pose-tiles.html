@@ -45,9 +45,10 @@
   .cat-btn.active { background: #ffe066; border-color: #2a2a4a; }
   .cat-btn:active { transform: scale(0.95); }
 
-  .tiles-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
-                gap: 6px; flex: 1; overflow-y: auto; padding: 4px;
-                background: #f0f0f0; border-radius: 6px; min-height: 200px; }
+  .tiles-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+                gap: 6px; overflow-y: auto; padding: 4px;
+                background: #f0f0f0; border-radius: 6px;
+                max-height: 260px; min-height: 120px; }
   .tile-btn { background: #fff; border: 3px solid transparent; border-radius: 6px;
               padding: 4px; cursor: pointer; aspect-ratio: 1; position: relative; }
   .tile-btn img { width: 100%; height: 100%; image-rendering: pixelated;
@@ -114,60 +115,102 @@
 // CDN jsDelivr : marche partout (file://, localhost, GitHub Pages)
 const ASSET = 'https://cdn.jsdelivr.net/gh/kimen26/MaxPlay@master/game/phaser/public/assets/tiles/';
 
-// Categories - tiles SIMPLES adaptees enfant 4 ans
-// Toutes 1x1, focalise sur les briques de base
+// Categories - sélection curatée : tiles 1x1 simples, bien regroupées, une seule couleur par famille
 const CATEGORIES = {
   rue: {
-    label: 'Rue', emoji: '🛣️',
+    label: 'Route', emoji: '🛣️',
     tiles: [
+      // Asphalte plain
       { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png', name: 'asphalte' },
-      // L-013 fix 2026-05-11 : _15/_14 (sale) remplacés par _8/_2 (propres). Mnémo : "2 propre H, 8 propre V"
-      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png', name: 'route ligne V' },
-      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png', name: 'route ligne H' },
-      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png', name: 'trottoir' },
-      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_25.png', name: 'trottoir motif' },
-      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_27.png', name: 'trottoir clair' },
+      // Lignes blanches H et V (mnémo : 2 propre H, 8 propre V)
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png',  name: 'ligne H' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png',  name: 'ligne V' },
+      // Croisement (+) et coins asphalte intérieurs
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_4.png',  name: 'croix' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_1.png',  name: 'coin SE' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_3.png',  name: 'coin SW' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_7.png',  name: 'coin NW' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_9.png',  name: 'coin NE' },
+      // Trottoir blanc (une seule couleur, uniforme)
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png',   name: 'trottoir' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_10.png',  name: 'trottoir 2' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png',   name: 'trottoir bas' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png',   name: 'trottoir haut' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png',   name: 'trottoir gauche' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png',   name: 'trottoir droite' },
     ],
   },
   parc: {
     label: 'Parc', emoji: '🌳',
     tiles: [
+      // Herbe (plusieurs teintes du même vert)
       { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_9.png', name: 'herbe' },
-      { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_7.png', name: 'herbe 2' },
-      { file: 'parks/ME_Singles_Garden_48x48_Bush_1.png', name: 'buisson' },
-      { file: 'parks/ME_Singles_Garden_48x48_Bush_2.png', name: 'buisson 2' },
-      { file: 'parks/ME_Singles_Garden_48x48_Bush_10.png', name: 'buisson 3' },
+      { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_7.png', name: 'herbe foncée' },
+      { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_8.png', name: 'herbe claire' },
+      // Buissons ronds 1x1 (même forme, couleurs différentes)
+      { file: 'parks/ME_Singles_Garden_48x48_Bush_1.png',  name: 'buisson vert' },
+      { file: 'parks/ME_Singles_Garden_48x48_Bush_2.png',  name: 'buisson 2' },
+      { file: 'parks/ME_Singles_Garden_48x48_Bush_3.png',  name: 'buisson rond' },
+      { file: 'parks/ME_Singles_Garden_48x48_Bush_4.png',  name: 'buisson 4' },
+      { file: 'parks/ME_Singles_Garden_48x48_Bush_5.png',  name: 'buisson 5' },
+      { file: 'parks/ME_Singles_Garden_48x48_Bush_10.png', name: 'buisson 6' },
+      // Banc et fontaine (1x1)
+      { file: 'parks/ME_Singles_Garden_48x48_Big_Bench_Horizontal.png', name: 'banc H' },
+      { file: 'parks/ME_Singles_Garden_48x48_Big_Bench_Vertical.png',   name: 'banc V' },
+      { file: 'parks/ME_Singles_Garden_48x48_Fountain_1_1.png', name: 'fontaine' },
     ],
   },
-  jardin: {
-    label: 'Jardin', emoji: '🌸',
+  fleurs: {
+    label: 'Fleurs', emoji: '🌸',
     tiles: [
-      { file: 'parks/ME_Singles_Garden_48x48_Small_Red_Flower.png', name: 'fleur rouge' },
-      { file: 'parks/ME_Singles_Garden_48x48_Small_Pink_Flower.png', name: 'fleur rose' },
-      { file: 'parks/ME_Singles_Garden_48x48_Small_Yellow_Flower.png', name: 'fleur jaune' },
-      { file: 'parks/ME_Singles_Garden_48x48_Big_Light_Blue_Flower.png', name: 'fleur bleue' },
-      { file: 'parks/ME_Singles_Garden_48x48_Bush_3.png', name: 'buisson rond' },
+      // Petites fleurs 1x1 (une couleur simple par tile)
+      { file: 'parks/ME_Singles_Garden_48x48_Small_Red_Flower.png',        name: 'rouge' },
+      { file: 'parks/ME_Singles_Garden_48x48_Small_Pink_Flower.png',       name: 'rose' },
+      { file: 'parks/ME_Singles_Garden_48x48_Small_Yellow_Flower.png',     name: 'jaune' },
+      { file: 'parks/ME_Singles_Garden_48x48_Big_Light_Blue_Flower.png',   name: 'bleue' },
+      { file: 'parks/ME_Singles_Garden_48x48_Big_White_Flower.png',        name: 'blanche' },
+      { file: 'parks/ME_Singles_Garden_48x48_Big_Pink_Flower.png',         name: 'rose foncé' },
+      { file: 'parks/ME_Singles_Garden_48x48_Big_Red_Flower.png',          name: 'rouge foncé' },
+      { file: 'parks/ME_Singles_Garden_48x48_Big_Yellow_Flower.png',       name: 'jaune foncé' },
+      { file: 'parks/ME_Singles_Garden_48x48_Big_Sunflower.png',           name: 'tournesol' },
+      // Sprouts (pousses simples 1x1)
+      { file: 'parks/ME_Singles_Garden_48x48_Big_Sprout_1.png', name: 'pousse 1' },
+      { file: 'parks/ME_Singles_Garden_48x48_Big_Sprout_2.png', name: 'pousse 2' },
+      { file: 'parks/ME_Singles_Garden_48x48_Big_Sprout_3.png', name: 'pousse 3' },
+    ],
+  },
+  deco: {
+    label: 'Déco', emoji: '🪑',
+    tiles: [
+      // Mobilier urbain 1x1
+      { file: 'props/ME_Singles_City_Props_48x48_Bench_1.png',       name: 'banc 1' },
+      { file: 'props/ME_Singles_City_Props_48x48_Bench_2.png',       name: 'banc 2' },
+      { file: 'props/ME_Singles_City_Props_48x48_Bench_3.png',       name: 'banc 3' },
+      { file: 'props/ME_Singles_City_Props_48x48_Mailbox_1.png',     name: 'boîte lettres' },
+      { file: 'props/ME_Singles_City_Props_48x48_Hydrant_1.png',     name: 'bouche eau' },
+      { file: 'props/ME_Singles_City_Props_48x48_Phone_Booth_1.png', name: 'cabine' },
+      { file: 'props/ME_Singles_City_Props_48x48_Cone_3.png',        name: 'cône' },
+      { file: 'props/ME_Singles_City_Props_48x48_Cone_4.png',        name: 'cône 2' },
+      { file: 'props/ME_Singles_City_Props_48x48_Dumpster_1.png',    name: 'benne' },
+      { file: 'props/ME_Singles_City_Props_48x48_Dumpster_2.png',    name: 'benne 2' },
+      { file: 'props/ME_Singles_City_Props_48x48_Black_Closed_Trash_Can.png', name: 'poubelle' },
+      { file: 'props/ME_Singles_City_Props_48x48_Info_Sign_1.png',   name: 'panneau info' },
+      { file: 'props/ME_Singles_City_Props_48x48_Danger_Sign_1.png', name: 'panneau danger' },
     ],
   },
   maisons: {
     label: 'Maisons', emoji: '🏠',
     tiles: [
-      { file: 'buildings/ME_Singles_Generic_Building_48x48_Condo_1_1.png', name: 'mur 1' },
-      { file: 'buildings/ME_Singles_Generic_Building_48x48_Condo_1_2.png', name: 'mur 2' },
-      { file: 'buildings/ME_Singles_Generic_Building_48x48_Condo_1_3.png', name: 'fenetre' },
+      { file: 'buildings/ME_Singles_Generic_Building_48x48_Condo_1_1.png',  name: 'mur 1' },
+      { file: 'buildings/ME_Singles_Generic_Building_48x48_Condo_1_2.png',  name: 'mur 2' },
+      { file: 'buildings/ME_Singles_Generic_Building_48x48_Condo_1_3.png',  name: 'fenêtre' },
+      { file: 'buildings/ME_Singles_Generic_Building_48x48_Condo_1_4.png',  name: 'mur 4' },
+      { file: 'buildings/ME_Singles_Generic_Building_48x48_Condo_1_5.png',  name: 'mur 5' },
       { file: 'buildings/ME_Singles_Floor_Modular_Building_48x48_Roof_1.png', name: 'toit 1' },
       { file: 'buildings/ME_Singles_Floor_Modular_Building_48x48_Roof_2.png', name: 'toit 2' },
-    ],
-  },
-  foret: {
-    label: 'Forêt', emoji: '🌲',
-    tiles: [
-      { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_9.png', name: 'herbe' },
-      { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_7.png', name: 'herbe foncee' },
-      { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_8.png', name: 'herbe claire' },
-      { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Props_Dirt_1.png', name: 'terre' },
-      { file: 'parks/ME_Singles_Garden_48x48_Bush_15.png', name: 'fougere' },
-      { file: 'parks/ME_Singles_Garden_48x48_Bush_18.png', name: 'broussailles' },
+      { file: 'buildings/ME_Singles_Floor_Modular_Building_48x48_Roof_3.png', name: 'toit 3' },
+      { file: 'buildings/ME_Custom_Villas_48x48_Toy_House_Blue_1.png',      name: 'maison bleue' },
+      { file: 'buildings/ME_Custom_Villas_48x48_Toy_House_Yellow_1.png',    name: 'maison jaune' },
     ],
   },
 };

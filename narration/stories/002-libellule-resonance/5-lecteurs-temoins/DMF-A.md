@@ -4,7 +4,7 @@ type: dyade
 tranche: A (3-5 ans)
 dyade: maman-fille
 date: 2026-05-14
-story: 002-libellule-resonance
+story: 002-libellule-impossible
 ---
 
 # Lecteur Témoin DMF-A — Dyade maman-fille (3-5 ans)

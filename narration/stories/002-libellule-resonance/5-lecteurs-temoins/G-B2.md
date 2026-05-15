@@ -5,7 +5,7 @@ tranche: B (6-7 ans)
 genre: garçon
 personnalite: intro-observateur
 date: 2026-05-14
-story: 002-libellule-resonance
+story: 002-libellule-impossible
 ---
 
 # Lecteur Témoin G-B2 — Garçon, 6-7 ans, intro/observateur

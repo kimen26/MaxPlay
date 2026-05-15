@@ -5,7 +5,7 @@ tranche: A (3-5 ans)
 genre: garçon
 personnalite: intro-observateur
 date: 2026-05-14
-story: 002-libellule-resonance
+story: 002-libellule-impossible
 ---
 
 # Lecteur Témoin G-A2 — Garçon calme, 4 ans, aime les insectes

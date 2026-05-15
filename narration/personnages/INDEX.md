@@ -56,6 +56,51 @@ personnages/
 
 ---
 
+## Gabarit figé — structure 5 fichiers (2026-05-15)
+
+> **Règle MILITAIRE** : tout nouveau dossier `type-NN/` ou `wex/` doit copier exactement cette structure. Toute déviation = DÉCISION FORMELLE + note au README.
+
+### Gabarit standard (`type-01/` à `type-09/`)
+
+**5 fichiers obligatoires, dans cet ordre :**
+
+| # | Fichier | Sections attendues |
+|----|---------|-------------------|
+| 1 | **README.md** | En-tête avec prénom complet, diminutif, casting France<br>Tableau 4 fichiers + Sensibilité + Astre + Type ennéa + note refactor (si applicable) |
+| 2 | **enneagramme.md** | Motivation profonde (peur, désir, croyance)<br>Comportements en situations (sain, moyen, malsain)<br>Niveaux de santé détaillés<br>Note auteur (apprentissage, pistes futures) |
+| 3 | **personnage.md** | Portrait vivant (essence, description physique, énergie)<br>Phrases typiques (3-5 répliques caractéristiques)<br>Gestes/attitudes/habitudes (5-6 tics physiques)<br>Paires fortes (dyades ennéa pertinentes)<br>Garde-fou (anti-pattern perso)<br>Relations 8×8 (matrices interactions avec 8 autres) |
+| 4 | **alive.md** | Sensibilité (description perception spécifique perso)<br>Astre (lien symbolique)<br>Couleur (RGB si précis)<br>Tags writer ElevenLabs (max 8)<br>Langage naturel (tournures verbales 4-6 ans)<br>Onomatopées (son archétypique, 3-4)<br>Mémoire vivante (phrase clé gravée en vous) |
+| 5 | **voix.md** | Voice_id ElevenLabs (figé)<br>Signature vocale 4 couches (timbre, tempo, pitch, expressivité)<br>Paramètres TTS (stability, similarity_boost, style)<br>Prompt ElevenLabs (< 1000 car, structuré)<br>Description publique (pour social/promo) |
+
+**Où trouver le casting France (voice_id, prononciation IPA) :**
+→ [`../cross-culture/castings-nationaux/fr/type-NN.md`](../cross-culture/castings-nationaux/fr/)
+
+### Variante Wex (hors-système, justifiée — 2026-05-15)
+
+**Dossier `wex/` : même 5 fichiers, VARIANTE sections**
+
+| # | Fichier | Variante |
+|----|---------|----------|
+| 1 | **README.md** | En-tête : Statut (Héros universel), Token (wex), Sensibilité, **Power** (Vision causale)<br>Tableau 5 fichiers<br>Note : "Hors-système — variante justifiée du gabarit standard. Sections bonus : Cercle d'Harmonie, Vision causale, Arcs S1/S2/S3." |
+| 2 | **enneagramme.md** | ✗ **ABSENT** — Wex n'a pas d'ennéatype. Justification : "Hors-système" |
+| 3 | **personnage.md** | Même structure de base PLUS 3 sections bonus :<br>- Cercle d'Harmonie (liens symétriques avec les 9)<br>- Vision causale (arcs S2+, interaction systémique)<br>- Arcs (S1 catalyseur minimal, S2 apprentissage, S3+ complexification) |
+| 4 | **alive.md** | Même structure, avec note « By design : 7 tics phonétiques gravés dans voice_id » |
+| 5 | **voix.md** | Même structure PLUS tableau **7 tics phonétiques** (au lieu de 4 couches) |
+
+**Où trouver l'identité universelle :**
+→ [`../cross-culture/castings-nationaux/fr/wex.md`](../cross-culture/castings-nationaux/fr/) — invariant, ne change pas par culture.
+
+### Règle application
+
+**Toute création perso (`type-NN/` nouveau ou Wex remodelage) :**
+1. Copier l'intégralité du dossier template (voir lequel : standard ou Wex)
+2. Renommer dossier et fichiers
+3. Remplir chaque section
+4. Si besoin d'une 6e variante (future) : DÉCISION FORMELLE + tracer dans README
+5. **Anti-pattern** : ne jamais ajouter un 6e fichier sans validation (ex: `relations-specifiques.md` = à inclure dans `personnage.md`)
+
+---
+
 ## Lectures par usage
 
 | Tu cherches… | Va lire… |

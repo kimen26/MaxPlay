@@ -5,7 +5,7 @@ tranche: B (6-7 ans)
 genre: fille
 personnalite: normale
 date: 2026-05-14
-story: 002-libellule-resonance
+story: 002-libellule-impossible
 ---
 
 # Lecteur Témoin F-B1 — Fille normale, 6-7 ans

@@ -5,7 +5,7 @@ tranche: B (6-7 ans)
 genre: garçon
 personnalite: normal
 date: 2026-05-14
-story: 002-libellule-resonance
+story: 002-libellule-impossible
 ---
 
 # Lecteur Témoin G-B1 — Garçon normal, 6-7 ans

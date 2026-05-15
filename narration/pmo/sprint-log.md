@@ -1,4 +1,4 @@
-# Sprint Log — PMO Narration
+﻿# Sprint Log — PMO Narration
 
 > Journal de bord des sessions.
 > **En cas de reboot :** lire la dernière entrée (haut du fichier), section "État au reboot".
@@ -8,6 +8,31 @@
 > 
 > ---
 > **Procédure clôture formalisée** (depuis 2026-05-13) : classification 6 catégories (DÉCISION / LEÇON / TODO / QUESTION / INFO / TRAITEMENT) + mise à jour PMO (sprint-log / decisions / backlog / lecons-vivantes) + checklist remise main 8 points. Voir `narration-pmo.md` § Procédure systématique.
+
+---
+
+## 2026-05-15 (session Archiviste) — DEC-GABARIT-PERSO-001 : Gabarit personnages gravé
+
+**Action ARCHIVISTE** : gravage gabarit personnages dans sources d'autorité.
+
+**Fait** :
+- [x] Lecture gabarit de référence (type-08/Juju standard, wex/Wex variante)
+- [x] Documentation gabarit standard 5 fichiers : README/enneagramme/personnage/alive/voix + sections attendues
+- [x] Documentation variante Wex (sections bonus/ABSENT) 
+- [x] Mise à jour `narration/personnages/INDEX.md` section « Gabarit figé » (détail exhaustif)
+- [x] Mise à jour `.claude/rules/personnages.md` section « Gabarit figé » (concis + pointeur)
+- [x] Enregistrement DEC-GABARIT-PERSO-001 dans `decisions.md`
+
+**Classification** : **DÉCISION** (gravage structurel)
+
+**Impact** :
+- Tout agent (writer, archiviste, PMO) peut vérifier gabarit perso contre sources
+- Gabarit figé jusqu'à nouvelle DÉCISION explicite
+- Variante Wex formalisée et justifiée
+
+**État au reboot** :
+- ✅ Gabarit figé gravé dans 3 fichiers : INDEX (exhaustif), rules (concis), decisions (DEC-GABARIT-PERSO-001)
+- ⏳ Aucun action bloquante — gabarit prêt pour applications futures (nouveaux persos si univers s'élargit)
 
 ---
 
@@ -81,7 +106,7 @@
 
 ---
 
-## 2026-05-15 — STORY-002 Libellule-Résonance — Session brainstorm Phase A ✅ + Phase B 🟢
+## 2026-05-15 — STORY-002 La Libellule impossible — Session brainstorm Phase A ✅ + Phase B 🟢
 
 **Objectif (Papa Yann)** : Terminer étape 2 brainstorm boss (Phase A) + valider LLMs Phase B.
 

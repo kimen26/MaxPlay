@@ -4,7 +4,7 @@ type: dyade
 tranche: B (6-7 ans)
 dyade: papa-fille
 date: 2026-05-14
-story: 002-libellule-resonance
+story: 002-libellule-impossible
 ---
 
 # Dyade DPF-B — Papa lit à sa fille (6-7 ans)

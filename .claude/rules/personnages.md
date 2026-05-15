@@ -29,6 +29,22 @@ paths:
 
 **Règle absolue** : ne JAMAIS inventer un prénom. Toujours résoudre via [`personnages/lookup.yml`](../../narration/personnages/lookup.yml).
 
+## Gabarit figé (2026-05-15)
+
+**5 fichiers obligatoires par dossier** (standard ou Wex) — gravé [`narration/personnages/INDEX.md`](../../narration/personnages/INDEX.md) § Gabarit figé.
+
+### Standard (`type-01/` à `type-09/`)
+1. **README.md** — En-tête + tableau 4 fichiers + Sensibilité/Astre/Type ennéa + refactor note
+2. **enneagramme.md** — Motivation/comportements/santé + note auteur
+3. **personnage.md** — Portrait/phrases/gestes/paires/garde-fou/relations 8×8
+4. **alive.md** — Sensibilité/astre/couleur/tags writer/langage/onomatopées/mémoire
+5. **voix.md** — Voice_id/signature 4 couches/TTS params/prompt/description publique
+
+### Variante Wex
+Mêmes 5 fichiers, variantes : README (Statut/Power/hors-système) · enneagramme (ABSENT) · personnage (+ Cercle/Vision/Arcs) · alive (7 tics note) · voix (7 tics tableau).
+
+**Détail complet** : [`narration/personnages/INDEX.md`](../../narration/personnages/INDEX.md) § Gabarit figé.
+
 ## Règles d'écriture des persos
 
 ### Notation interne

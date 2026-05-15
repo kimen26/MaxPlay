@@ -64,6 +64,8 @@
 | [`memoire-architecte.md`](memoire-architecte.md) | ⚠️ Architecte (deprecated 2026-05-12) — fichier conservé pour traçabilité, agent en standby | — |
 | [`memoire-dir.md`](memoire-dir.md) | Directeur (Opus) | Décisions de sélection, ce qui a fonctionné | Après chaque histoire |
 | [`memoire-gatekeeper.md`](memoire-gatekeeper.md) | GateKeeper (Haiku) | Erreurs récurrentes, patterns à surveiller | Après chaque validation |
+| [`memoire-science.md`](memoire-science.md) | Science (Haiku) | Validations scientifiques effectuées, refs vulgarisation enfants | Après chaque validation |
+| [`memoire-sensibilite.md`](memoire-sensibilite.md) | Sensibilité (Sonnet) | Décisions topics sensibles enregistrées, posture éditoriale auteur | Après chaque décision |
 
 ### Sources documentaires
 

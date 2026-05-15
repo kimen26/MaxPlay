@@ -1,92 +1,83 @@
-﻿# Brief personnages — STORY-002 libellule-résonance
+# Brief personnages — STORY-002 La Libellule impossible
 
-> Adressé à **un writer à la fois** (tutoiement).
-> Ce fichier est lu par les writers Claude (accès filesystem). Les writers MCP externes reçoivent la version concaténée `_writer-package.md`.
-> Casting V1 figé (2026-04-24, ajusté 2026-05-05) — aucune invention de prénom.
+> **Stateless — Couche 2.** Reçu par tous les 14 writers (Claude via Read, MCP via inline).
+> Casting V1 figé (2026-04-24, ajusté 2026-05-05). Aucune invention de prénom.
+> **Vague 3 — 2026-05-15.**
 
 ---
 
-## Trio (Wex + Juju + Nono)
+## RÈGLES OBLIGATOIRES
+
+### Surnoms 4/5 du temps
+Le diminutif est utilisé dans 80% des occurrences. Le prénom complet est réservé aux moments formels ou solennels.
+
+### Ennéatypes DILUÉS, jamais étiquetés
+- Le type ne se nomme jamais dans le texte
+- Il se lit dans **3-4 micro-réactions** par perso (gestes, choix, silence, expression)
+- Pas de phrase explicative
+
+### Sensibilité différenciée
+Chaque perso perçoit ce que les autres ne perçoivent pas. Pas de hiérarchie de savoir.
+
+---
+
+## PERSONNAGES DANS CETTE HISTOIRE
+
+### Wex (toujours présent)
+- **Rôle :** témoin présent, pouvoirs PAS activés (arc 1)
+- **Voix :** peu parle, observe, présence sans intervention
+- **Dans cette histoire :** actif et curieux — il s'arrête par curiosité, pas par fatigue. Il tourne, il pointe, il remarque des détails que les autres ratent. Peut dire quelque chose de court, peut aussi rester silencieux.
+- **Geste type :** s'arrête net pour observer quelque chose d'inattendu · tourne sur lui-même en suivant la libellule des yeux · tête penchée à 90°, bouche entrouverte
+
+---
 
 ### Juju (fille)
+- **Ennéatype (jamais nommé) :** énergie directe, franche, contact physique assumé
+- **Sensibilité :** plantes (perçoit la croissance, les racines — implicite, pas nommé)
+- **3-4 micro-réactions à diluer dans cette histoire :**
+  1. Elle fonce, elle teste, elle propose des défis
+  2. Elle taquine directement, sans cruauté — vanne franche, pas méchante
+  3. Quand quelque chose l'arrête, elle marque une pause brève — bouche entrouverte — puis repart ou s'adapte
+  4. Elle ne reste pas dans la douceur longtemps : elle rebondit vite vers le suivant
+- **Voix / vocabulaire :**
+  - Phrases courtes, syllabes qui tapent
+  - Taquinerie validée (à utiliser ou adapter librement) :
+    - *"Nono, t'as des limaces dans les baskets, ou quoi ?"*
+    - *"Hé oh, ici on chasse, on fait pas racines !"*
+  - Ton direct, jamais cruel
 
-**Ennéatype dilué (jamais nommé) :** énergie pleine, vitalité incarnée. Elle TOUCHE pour comprendre — mains, pieds, peau.
-
-**Dans cette histoire :** veut entrer en contact avec ce qui est là. La terre, l'eau, les racines. Elle approche la berge, mains tendues, présence corporelle assumée.
-
-**Ce qu'elle apporte au groupe** : l'énergie incarnée, le faire avec le corps. Elle ouvre les possibles par le geste.
-
-**Phrases types (patte Juju) :**
-- "Je l'avais dit."
-- "C'est bon, je m'en occupe."
-- "Dis ! Dis-moi vraiment."
-- "T'inquiète, je suis là."
+---
 
 ### Nono (garçon)
-
-**Ennéatype dilué (jamais nommé) :** présence apaisée, actif sensoriellement. Il écoute, capte ce qui résonne. Sa sensibilité passe par ce qui vibre sous ses pieds, dans l'air, dans le sol.
-
-**Dans cette histoire :** entend le bourdonnement de la libellule comme une vibration. Ne bouge pas pour attraper. Présent.
-
-**Ce qu'il apporte au groupe** : la lenteur féconde, la perception de ce qui est juste là sans qu'on le voie.
-
-**5 gestes archétypiques de Nono** (à utiliser librement, P9 leçons-vivantes) :
-1. S'asseoir / se poser
-2. Ouvrir la paume (main au sol ou vers l'autre)
-3. Fredonner doucement ("mmm")
-4. Faire un petit geste d'accueil silencieux
-5. Sourire sans parler
-
-**Phrases types (patte Nono) :**
-- "Mmm... on peut tous y aller ensemble, non ?"
-- "C'est bien comme ça."
-- "Ouais..." *(présence silencieuse, acquiescement lent)*
-
-### Wex (catalyseur)
-
-**Hors-système ennéagramme.** Catalyseur silencieux, témoin lumineux. Trace ce qui se passe. Présent mais non acteur central.
-
-**Dans cette histoire :** observe le trio, marque la scène. Peut avoir 2-3 répliques courtes.
+- **Ennéatype (jamais nommé) :** présence apaisée, connexion à la terre, actif sensoriellement
+- **Sensibilité :** vibration collective (sent ce qui résonne, ce qui passe par le sol)
+- **3-4 micro-réactions à diluer dans cette histoire :**
+  1. Il décroche de l'énergie du groupe sans l'annoncer — pas de rupture, juste un glissement
+  2. Il fait quelque chose de physique, lent, silencieux (contact avec la terre)
+  3. Il ouvre la main, il attend — sans forcer, sans expliquer
+  4. Il sourit légèrement quand quelque chose arrive — pas de victoire, juste une présence
+- **Voix / vocabulaire :**
+  - Peu parle. Quand il parle : court, doux, jamais démonstratif
+  - Consonnes legato, tout s'enchaîne — rythme lent et fluide
+- **Ce qui est Couche 3 (guidé seulement — pas dans ce brief) :** le geste précis (pieds nus, paume ouverte…). Les writers libres trouvent leur propre version.
 
 ---
 
-## Casting phonétique
+## INTERACTIONS PRESSENTIES
 
-**Juju / Nono / Wex** : trois prénoms phonétiquement distincts (consonnes J/N/W, rythmes 2/2/1). Lisibles à voix haute par un parent à un enfant de 4 ans.
-
----
-
-## Surnoms 4/5 du temps
-
-Utiliser Juju, Nono, Wex dans le texte. Le prénom complet (Judith, Noé) **uniquement** dans un moment solennel ou émotionnel fort (rare en STORY-002).
+- Juju mène l'élan du début — Nono et Wex suivent dans leur propre façon
+- Juju lance une vanne quand Nono (et/ou Wex) décèle quelque chose — elle ne comprend pas encore
+- Wex s'arrête et observe — curieux, pas contemplatif
+- Nono fait quelque chose de calme · la libellule réagit · les autres voient
 
 ---
 
-## Sensibilité révélée dans STORY-002 (jamais nommée)
+## ABSENTS DE CETTE HISTOIRE
 
-- **Nono** : connexion à la terre — **le calme et la résonance qu'on sent sans le dire**. Ce qu'il capte : ce qui passe sous les pieds, les vibrations subtiles du monde au ras du sol, une présence apaisée. **La magie c'est cette connexion discrète, pas un pouvoir manifeste.** Le geste précis = libre au writer (immobilité, main posée, écoute qui s'intensifie — rien qui déclenche un effet visible).
-
-**Juju** a sa propre sensibilité (aux plantes/racines), mais **elle n'est pas le sujet de STORY-002**. Elle anime le début, elle est le témoin du Ten de Nono.
-
-**Règle dure** : jamais énoncer la sensibilité de Nono. Elle passe par les gestes, les attitudes, les détails sensoriels. **Aucun miracle, aucune onde visible — juste une présence plus dense.**
+Melki, Mimi, Dadou, Madie, Lulu, Pierrot, Raph — ne pas les faire apparaître.
 
 ---
 
-## Paires
-
-- **Juju ↔ Nono** : Juju anime le Sho (contact incarné, présence physique). Nono est le pivot du Ten (sa connexion à la terre se révèle). Pas de hiérarchie — rôles différents dans cette histoire.
-- **Wex ↔ trio** : témoin lumineux, présent sans interférer.
-
----
-
-## Liens
-
-- Casting V1 figé : [`narration/personnages/INDEX.md`](../../../personnages/INDEX.md)
-- Juju (T8) complet : [`narration/personnages/type-08/caractere.md`](../../../personnages/type-08/caractere.md)
-- Nono (T9) complet : [`narration/personnages/type-09/caractere.md`](../../../personnages/type-09/caractere.md)
-- Wex : [`narration/personnages/wex/caractere.md`](../../../personnages/wex/caractere.md)
-
----
-
-**Date :** 2026-05-11 · **Refonte trio Dadou → Juju :** 2026-05-12
-**Statut :** brief opérationnel finalisé.
+**Date :** 2026-05-15
+**Source casting :** `pmo/decisions.md` · `personnages/INDEX.md`
+**Vague :** 3 (refonte Couche 2 — DEC-BRIEF-ARCH-001)

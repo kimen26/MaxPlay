@@ -14,7 +14,8 @@ paths:
 |---|-------|-------|--------|------------------|
 | 0 | Dump idée | Auteur | `narration/INBOX.md` | — |
 | 1 | Pitch + plan léger (fusion) | `narration-conseiller` | `1-pitch-plan.md` | OUI |
-| 3 | Briefs | `narration` (Directeur Éditorial) | `3-briefs/{personnages,histoire}.md` (le system prompt WexWorld vit dans `_writer-system.md` par arc) | — |
+| 2 | **Brainstorm boss** (Phase A) + **Brainstorm équipe** (Phase B) | Phase A : Papa Yann + Conseiller · Phase B : Kimi + DeepSeek + Grok + Conseiller | Phase A : lieu / objet / trio / intention (dans kanban) · Phase B : matière brute briefs | Phase A : OUI (Papa Yann valide) |
+| 3 | Briefs | `narration` (Directeur Éditorial) | `3-briefs/{personnages,histoire}.md` (system prompt WexWorld → `_writer-system.md` par arc) | — |
 | 4 | **14 versions writers** (calibration multi-modèles v2 — refonte 2026-05-12) | 6 Claude (Opus/Sonnet/Haiku × déf/reco) + 4 Kimi (kimi-reco, kimi-k26-instant, kimi-k26-thinking, kimi-reco-guide) + 2 DeepSeek (déf/reco) + 2 Grok (déf/reco) | `4-versions-writers/*.md` (chacune avec note d'intention en fin de fichier) | — |
 | 5 | 20 lecteurs témoins | `narration-lecteur` (10) + `narration-lecteur-dyade` (10) | `5-lecteurs-temoins/*.md` + `5-synthese-lecteurs.md` | — |
 | 6 | Sélection top + greffes | `narration` (Directeur) | `6-selection.md` | OUI |
@@ -23,7 +24,7 @@ paths:
 | 9 | Panel 20 relit le rewrite | 20 lecteurs | `9-relecture-rewrite/` | — |
 | 10 | Canon + maj leçons | `narration` + `narration-pmo` | `10-texte.md` (CANON) + maj `equipe/lecons-vivantes.md` | OUI |
 
-> Étape 2 supprimée 2026-05-12 (fusion avec étape 1). Numérotation 3-10 conservée pour cohérence préfixes fichiers.
+> Étape 2 **recréée 2026-05-15** (DEC-PROCESS-002) : Brainstorm boss (Papa Yann + Conseiller) puis Brainstorm équipe (Kimi + DeepSeek + Grok). Comble le trou entre pitch validé et briefs writers.
 
 ## Règles MILITAIRES
 

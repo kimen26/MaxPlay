@@ -1,4 +1,4 @@
-﻿# Kanban — STORY-002 libellule-resonance
+﻿# Kanban — STORY-002 La Libellule impossible
 
 > **Source de vérité de l'étape en cours.** Lu en premier par tout agent qui reprend l'histoire.
 > Mis à jour par le **owner de l'étape en cours** dès qu'il termine son livrable.

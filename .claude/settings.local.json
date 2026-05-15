@@ -187,7 +187,10 @@
       "Bash(Select-Object -ExpandProperty FullName)",
       "Bash(Sort-Object)",
       "Bash(cp \"c:/ProjetsPerso/Claude_Projects/MaxPlay/.claude/agents/narration-architecte.md\" \"c:/ProjetsPerso/Claude_Projects/MaxPlay/_archive/narration-architecte-deprecated-2026-05-12.md\")",
-      "Bash(rm \"c:/ProjetsPerso/Claude_Projects/MaxPlay/.claude/agents/narration-architecte.md\")"
+      "Bash(rm \"c:/ProjetsPerso/Claude_Projects/MaxPlay/.claude/agents/narration-architecte.md\")",
+      "Bash(Get-ChildItem -Path \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\\\\equipe\" -Recurse -Force)",
+      "Bash(Select-Object FullName, Length, LastWriteTime)",
+      "Bash(ConvertTo-Json)"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projets",

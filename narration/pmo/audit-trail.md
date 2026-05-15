@@ -289,7 +289,7 @@ Alternatives testées et rejetées :
 | 3 | Suppression fichier fantôme `infra/mcp/nul` | ✅ | — |
 | 4 | Correction PROCESS.md §Étape 6 (10 versions / 20 lecteurs) | ✅ | `equipe/PROCESS.md` |
 | 5 | Nettoyage PROCESS.md §Liens rapides (retrait "à créer" obsolètes) | ✅ | `equipe/PROCESS.md` |
-| 6 | Alignement kanban 002 (étape 7 owner=Writer top 1, étape 9 panel 6 transitoire, validation auteur 3e=étape 10) | ✅ | `stories/002-libellule-resonance/kanban.md` |
+| 6 | Alignement kanban 002 (étape 7 owner=Writer top 1, étape 9 panel 6 transitoire, validation auteur 3e=étape 10) | ✅ | `stories/002-libellule-impossible/kanban.md` |
 | 7 | MAJ skill `elevenlabs-voice-design/SKILL.md` (AP#15/16/17 + méthodo v24) | ✅ | `~/.claude/skills/elevenlabs-voice-design/SKILL.md` |
 | 8 | MAJ `narration/INDEX.md` (ligne voix-meta complète + AP#17 + skills audio MAJ 2026-05-12) | ✅ | `narration/INDEX.md` |
 

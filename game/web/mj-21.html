@@ -9,33 +9,41 @@
   <style>
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none; }
     body { font-family:'Nunito',sans-serif; background:linear-gradient(160deg,#0f1a2e 0%,#1a2338 50%,#0a0f1a 100%); height:100dvh; overflow:hidden; touch-action:none; }
-    #app { display:flex; flex-direction:column; height:100dvh; max-width:600px; margin:0 auto; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:480px; margin:0 auto; }
 
     .hdr { display:flex; align-items:center; gap:10px; padding:6px 12px; background:rgba(0,0,0,0.25); border-bottom:1px solid rgba(255,255,255,0.08); flex-shrink:0; }
     .back { color:#fff; text-decoration:none; font-size:1.3rem; font-weight:900; padding:4px 10px; border-radius:8px; background:rgba(255,255,255,0.12); flex-shrink:0; }
     .back:active { background:rgba(255,255,255,0.25); }
     .htitle { color:#fff; font-size:1rem; font-weight:900; flex:1; }
 
-    .progress-zone { display:flex; justify-content:center; align-items:center; gap:6px; padding:6px 16px 4px; flex-shrink:0; }
-    .prog-dot { width:12px; height:12px; border-radius:50%; background:rgba(255,255,255,0.12); border:2px solid rgba(255,255,255,0.25); transition:all 0.3s; }
+    .progress-zone { display:flex; justify-content:center; align-items:center; gap:6px; padding:5px 16px 3px; flex-shrink:0; }
+    .prog-dot { width:11px; height:11px; border-radius:50%; background:rgba(255,255,255,0.12); border:2px solid rgba(255,255,255,0.25); transition:all 0.3s; }
     .prog-dot.done { background:#00c47a; border-color:#00c47a; box-shadow:0 0 6px #00c47a88; }
     .prog-dot.current { background:rgba(255,220,80,0.25); border-color:#ffe066; animation:dotPulse 1.2s ease-in-out infinite alternate; }
-    @keyframes dotPulse { from { box-shadow:0 0 0px rgba(255,220,80,0.3); } to { box-shadow:0 0 8px rgba(255,220,80,0.8); } }
+    @keyframes dotPulse { from{box-shadow:0 0 0px rgba(255,220,80,0.3);} to{box-shadow:0 0 8px rgba(255,220,80,0.8);} }
 
-    .hint-row { display:flex; justify-content:center; padding:2px 0; flex-shrink:0; min-height:28px; }
-    .btn-hint { background:rgba(255,220,80,0.15); border:2px solid rgba(255,220,80,0.5); color:#ffe066; border-radius:20px; font-family:'Nunito',sans-serif; font-weight:900; font-size:0.8rem; padding:4px 14px; cursor:pointer; animation:hintPulse 1.5s ease-in-out infinite alternate; display:block; }
-    @keyframes hintPulse { from { box-shadow:0 0 0px rgba(255,220,80,0.3); } to { box-shadow:0 0 10px rgba(255,220,80,0.7); } }
+    /* Bus cible en haut */
+    .cible-zone { display:flex; justify-content:center; align-items:center; padding:4px 16px 2px; flex-shrink:0; }
+    .cible-bus-wrap { position:relative; display:inline-flex; align-items:center; justify-content:center; transition:all 0.4s; }
+    .cible-dot { position:absolute; bottom:-6px; right:-6px; width:26px; height:26px; border-radius:50%; border:3px solid rgba(255,255,255,0.9); box-shadow:0 2px 8px rgba(0,0,0,0.5); }
+    .cible-label { color:rgba(255,255,255,0.7); font-size:0.7rem; font-weight:900; text-align:center; letter-spacing:0.5px; margin-top:4px; }
 
-    .cible-zone { display:flex; justify-content:center; align-items:center; gap:14px; padding:6px 16px 2px; flex-shrink:0; }
-    .cible-bus-wrap { position:relative; display:inline-flex; align-items:center; justify-content:center; }
-    .cible-dot { position:absolute; bottom:-6px; right:-6px; width:28px; height:28px; border-radius:50%; border:3px solid rgba(255,255,255,0.9); box-shadow:0 2px 8px rgba(0,0,0,0.5); }
-    .cible-label { color:rgba(255,255,255,0.7); font-size:0.7rem; font-weight:900; text-align:center; letter-spacing:0.5px; }
+    /* Pots de couleur */
+    .pots-zone { display:flex; justify-content:center; gap:8px; padding:6px 12px 4px; flex-shrink:0; }
+    .pot { width:72px; height:72px; border-radius:18px; border:none; cursor:pointer; font-family:'Nunito',sans-serif; font-weight:900; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; box-shadow:0 6px 20px rgba(0,0,0,0.5); transition:transform 0.1s, box-shadow 0.1s; }
+    .pot:active { transform:scale(0.88) translateY(3px); box-shadow:0 3px 8px rgba(0,0,0,0.4); }
+    .pot-rouge { background:radial-gradient(circle at 35% 30%, #FF5555, #CC0000); color:#fff; }
+    .pot-jaune { background:radial-gradient(circle at 35% 30%, #FFE855, #CCAA00); color:#333; }
+    .pot-bleu  { background:radial-gradient(circle at 35% 30%, #5577FF, #0033CC); color:#fff; }
+    .pot-blanc { background:radial-gradient(circle at 35% 30%, #FFFFFF, #CCCCCC); color:#333; border:2px solid rgba(0,0,0,0.12); }
+    .pot-emoji { font-size:1.5rem; line-height:1; }
+    .pot-lbl   { font-size:0.65rem; letter-spacing:0.5px; }
 
-    .tubes-zone { display:flex; justify-content:center; align-items:flex-start; gap:24px; padding:4px 16px 2px; flex-shrink:0; }
-    .tube-col { display:flex; flex-direction:column; align-items:center; gap:3px; }
-    .tube-letter { color:rgba(255,255,255,0.45); font-size:0.65rem; font-weight:900; letter-spacing:1.5px; }
-    .tube-wrap { cursor:pointer; position:relative; border-radius:10px; transition:filter 0.15s; }
-    .tube-wrap.active::after { content:''; position:absolute; inset:-5px; border-radius:14px; border:2.5px solid #ffe066; box-shadow:0 0 12px rgba(255,220,80,0.45); pointer-events:none; }
+    /* Zone centrale : tube + bus preview */
+    .central-zone { display:flex; flex-direction:column; align-items:center; gap:6px; padding:4px 0; flex:1; justify-content:center; }
+
+    .tube-col { display:flex; flex-direction:column; align-items:center; gap:4px; }
+    .tube-wrap { cursor:pointer; position:relative; border-radius:10px; }
     @keyframes tubeShake {
       0%,100%{transform:rotate(0) scale(1);}
       15%{transform:rotate(-13deg) scale(1.04);}
@@ -44,23 +52,32 @@
       75%{transform:rotate(9deg) scale(1.02);}
     }
     .tube-wrap.shaking { animation:tubeShake 0.55s ease; }
-    @keyframes victBus { 0%{transform:scale(0.85);opacity:0.3;} 60%{transform:scale(1.08);} 100%{transform:scale(1);opacity:1;} }
-    .tube-result { color:#ffe066; font-size:0.75rem; font-weight:900; min-height:1.1em; text-align:center; max-width:80px; }
-    .tube-actions { display:flex; gap:5px; }
-    .btn-tube { border-radius:12px; font-family:'Nunito',sans-serif; font-weight:900; font-size:0.72rem; padding:6px 9px; cursor:pointer; color:#fff; }
+    .tube-result { color:#ffe066; font-size:0.8rem; font-weight:900; min-height:1.2em; text-align:center; }
+
+    .tube-actions { display:flex; gap:8px; }
+    .btn-tube { border-radius:14px; font-family:'Nunito',sans-serif; font-weight:900; font-size:0.8rem; padding:8px 14px; cursor:pointer; color:#fff; }
     .btn-tube:active { opacity:0.72; transform:scale(0.91); }
     .btn-vider { background:rgba(255,255,255,0.09); border:2px solid rgba(255,255,255,0.22); }
-    .btn-mixer { background:rgba(80,220,255,0.18); border:2px solid rgba(80,220,255,0.45); }
+    .btn-mixer { background:rgba(80,220,255,0.2); border:2px solid rgba(80,220,255,0.5); }
 
-    .pots-zone { display:flex; justify-content:center; gap:10px; padding:8px 12px 6px; flex-shrink:0; }
-    .pot { width:78px; height:78px; border-radius:20px; border:none; cursor:pointer; font-family:'Nunito',sans-serif; font-weight:900; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; box-shadow:0 8px 24px rgba(0,0,0,0.5); transition:transform 0.1s, box-shadow 0.1s; }
-    .pot:active { transform:scale(0.89) translateY(3px); box-shadow:0 4px 10px rgba(0,0,0,0.4); }
-    .pot-rouge { background:radial-gradient(circle at 35% 30%, #FF5555, #CC0000); color:#fff; }
-    .pot-jaune { background:radial-gradient(circle at 35% 30%, #FFE855, #CCAA00); color:#333; }
-    .pot-bleu  { background:radial-gradient(circle at 35% 30%, #5577FF, #0033CC); color:#fff; }
-    .pot-blanc { background:radial-gradient(circle at 35% 30%, #FFFFFF, #CCCCCC); color:#333; border:2px solid rgba(0,0,0,0.12); }
-    .pot-emoji { font-size:1.6rem; line-height:1; }
-    .pot-lbl   { font-size:0.68rem; letter-spacing:0.5px; }
+    /* Bus preview sous le tube */
+    .bus-preview { min-height:60px; display:flex; align-items:center; justify-content:center; }
+    @keyframes busPop { 0%{transform:scale(0.6);opacity:0;} 60%{transform:scale(1.1);} 100%{transform:scale(1);opacity:1;} }
+    .bus-preview.pop { animation:busPop 0.4s ease; }
+
+    .hint-row { display:flex; justify-content:center; padding:4px 0; flex-shrink:0; }
+    .btn-hint { background:rgba(255,220,80,0.15); border:2px solid rgba(255,220,80,0.5); color:#ffe066; border-radius:20px; font-family:'Nunito',sans-serif; font-weight:900; font-size:0.8rem; padding:5px 16px; cursor:pointer; animation:hintPulse 1.5s ease-in-out infinite alternate; }
+    @keyframes hintPulse { from{box-shadow:0 0 0px rgba(255,220,80,0.3);} to{box-shadow:0 0 10px rgba(255,220,80,0.7);} }
+
+    /* Overlays */
+    .brun-overlay { position:fixed; inset:0; background:rgba(60,30,0,0.93); display:flex; align-items:center; justify-content:center; z-index:99; opacity:0; visibility:hidden; transition:all 0.3s; }
+    .brun-overlay.show { opacity:1; visibility:visible; }
+    .brun-content { text-align:center; padding:20px; }
+    .brun-emoji { font-size:4.5rem; display:block; animation:wobble 0.55s infinite; }
+    @keyframes wobble { 0%,100%{transform:rotate(-12deg) scale(1);} 50%{transform:rotate(12deg) scale(1.08);} }
+    .brun-text { color:#fff; font-size:1.3rem; font-weight:900; margin-top:10px; line-height:1.5; }
+    .btn-laver { background:rgba(255,255,255,0.2); color:#fff; border:2px solid rgba(255,255,255,0.4); border-radius:22px; font-family:'Nunito',sans-serif; font-weight:900; font-size:1rem; padding:10px 28px; cursor:pointer; margin-top:16px; display:inline-block; }
+    .btn-laver:active { background:rgba(255,255,255,0.35); }
 
     .overlay { position:fixed; inset:0; background:rgba(0,0,0,0.88); display:flex; align-items:center; justify-content:center; z-index:100; opacity:0; visibility:hidden; transition:all 0.4s; }
     .overlay.show { opacity:1; visibility:visible; }
@@ -70,15 +87,6 @@
     .ov-text  { color:#fff; font-size:1rem; margin-bottom:20px; line-height:1.4; }
     .ov-btn   { background:linear-gradient(135deg,#00c47a,#00a86b); color:#fff; border:none; border-radius:20px; font-family:'Nunito',sans-serif; font-weight:900; font-size:1.1rem; padding:12px 28px; cursor:pointer; }
     .ov-btn:active { opacity:0.8; }
-
-    .brun-overlay { position:fixed; inset:0; background:rgba(60,30,0,0.93); display:flex; align-items:center; justify-content:center; z-index:99; opacity:0; visibility:hidden; transition:all 0.3s; }
-    .brun-overlay.show { opacity:1; visibility:visible; }
-    .brun-content { text-align:center; padding:20px; }
-    .brun-emoji { font-size:4.5rem; display:block; animation:wobble 0.55s infinite; }
-    @keyframes wobble { 0%,100%{transform:rotate(-12deg) scale(1);} 50%{transform:rotate(12deg) scale(1.08);} }
-    .brun-text { color:#fff; font-size:1.3rem; font-weight:900; margin-top:10px; line-height:1.5; }
-    .btn-laver { background:rgba(255,255,255,0.2); color:#fff; border:2px solid rgba(255,255,255,0.4); border-radius:22px; font-family:'Nunito',sans-serif; font-weight:900; font-size:1rem; padding:10px 28px; cursor:pointer; margin-top:16px; display:inline-block; }
-    .btn-laver:active { background:rgba(255,255,255,0.35); }
   </style>
 </head>
 <body>
@@ -91,7 +99,12 @@
 
   <div class="progress-zone" id="progress"></div>
 
-  <div class="cible-zone" id="cible-zone"></div>
+  <div class="cible-zone">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:2px;">
+      <div class="cible-bus-wrap" id="cible-bus-wrap"><!-- injecté --></div>
+      <div class="cible-label" id="cible-label"></div>
+    </div>
+  </div>
 
   <div class="pots-zone">
     <button class="pot pot-rouge" onclick="addCouleur('r')">
@@ -112,25 +125,16 @@
     </button>
   </div>
 
-  <div class="tubes-zone">
+  <div class="central-zone">
     <div class="tube-col">
-      <div class="tube-letter">TUBE A</div>
-      <div class="tube-wrap active" id="tube-wrap-0" onclick="selectTube(0)"></div>
+      <div class="tube-wrap" id="tube-wrap-0"></div>
       <div class="tube-result" id="tube-result-0"></div>
       <div class="tube-actions">
-        <button class="btn-tube btn-vider" onclick="viderTube(0)">&#128703; Vider</button>
-        <button class="btn-tube btn-mixer" onclick="mixerTube(0)">&#128256; Mixer</button>
+        <button class="btn-tube btn-vider" onclick="viderTube()">&#128703; Vider</button>
+        <button class="btn-tube btn-mixer" onclick="mixerTube()">&#128256; Mixer !</button>
       </div>
     </div>
-    <div class="tube-col">
-      <div class="tube-letter">TUBE B</div>
-      <div class="tube-wrap" id="tube-wrap-1" onclick="selectTube(1)"></div>
-      <div class="tube-result" id="tube-result-1"></div>
-      <div class="tube-actions">
-        <button class="btn-tube btn-vider" onclick="viderTube(1)">&#128703; Vider</button>
-        <button class="btn-tube btn-mixer" onclick="mixerTube(1)">&#128256; Mixer</button>
-      </div>
-    </div>
+    <div class="bus-preview" id="bus-preview"></div>
   </div>
 
   <div class="hint-row">
@@ -139,20 +143,11 @@
 
 </div>
 
-<div class="overlay" id="overlay">
-  <div class="ov-box">
-    <div id="ov-bus" style="display:flex;justify-content:center;margin-bottom:10px;"></div>
-    <div class="ov-title" id="ov-title">Super !</div>
-    <div class="ov-text" id="ov-text">Le bus est peint !</div>
-    <button class="ov-btn" onclick="nextDefi()">Suivant &#8594;</button>
-  </div>
-</div>
-
 <div class="brun-overlay" id="brun-overlay">
   <div class="brun-content">
     <span class="brun-emoji">&#128169;</span>
     <div class="brun-text">Prrrout !<br>C'est du marron !<br>Lave le tube !</div>
-    <button class="btn-laver" onclick="viderActive()">&#128703; Laver !</button>
+    <button class="btn-laver" onclick="viderTube()">&#128703; Laver !</button>
   </div>
 </div>
 
@@ -182,145 +177,71 @@
 <script src="js/data.js"></script>
 <script src="js/sounds.js"></script>
 <script>
-// ── DÉFIS ────────────────────────────────────────────────────────
-// Vraies couleurs IDFM depuis LIGNES (data.js)
-// Recette : doses relatives r/j/b/w calibrées pour approcher le hex réel par mélange
+// ── DÉFIS (recettes proportionnelles r/j/b/w + couleur IDFM exacte) ──
 const DEFIS = [
-  { r:1, j:0, b:0, w:0, hex:'#E2231A', label:'rouge',        num:'RER A',  textColor:'#fff'  },
-  { r:0, j:1, b:0, w:0, hex:'#FFCD00', label:'jaune',        num:'M1',     textColor:'#333'  },
-  { r:0, j:0, b:1, w:0, hex:'#0064B1', label:'bleu',         num:'162',    textColor:'#fff'  },
-  { r:0, j:1, b:1, w:0, hex:'#008C59', label:'vert',         num:'172',    textColor:'#fff'  },
-  { r:1, j:0, b:1, w:0, hex:'#652C90', label:'violet',       num:'132',    textColor:'#fff'  },
-  { r:1, j:0, b:0, w:1, hex:'#FF82B4', label:'rose',         num:'47',     textColor:'#333'  },
-  { r:0, j:1, b:3, w:0, hex:'#75CE89', label:'vert clair',   num:'380',    textColor:'#333'  },
-  { r:0, j:0, b:3, w:1, hex:'#4FA3DC', label:'bleu ciel',    num:'RER B',  textColor:'#fff'  },
-  { r:1, j:1, b:0, w:0, hex:'#F58443', label:'orange',       num:'185',    textColor:'#333'  },
-  { r:0, j:0, b:1, w:1, hex:'#6ECA97', label:'vert menthe',  num:'M6',     textColor:'#333'  },
-  { r:1, j:0, b:1, w:2, hex:'#C9A2CD', label:'lavande',      num:'286',    textColor:'#333'  },
-  { r:1, j:3, b:0, w:0, hex:'#DCAC27', label:'or',           num:'184',    textColor:'#333'  },
-  { r:1, j:0, b:0, w:2, hex:'#FA9ABA', label:'rose pale',    num:'M7',     textColor:'#333'  },
-  { r:1, j:1, b:0, w:1, hex:'#CEC92A', label:'citron',       num:'323',    textColor:'#333'  },
-  { r:1, j:0, b:1, w:0, hex:'#B43C95', label:'magenta',      num:'186',    textColor:'#fff'  },
-  { r:2, j:2, b:1, w:0, hex:'#8D653A', label:'brun',         num:'131',    textColor:'#fff'  },
+  { r:1, j:0, b:0, w:0, hex:'#E2231A', label:'rouge',       num:'RER A', textColor:'#fff'  },
+  { r:0, j:1, b:0, w:0, hex:'#FFCD00', label:'jaune',       num:'M1',    textColor:'#333'  },
+  { r:0, j:0, b:1, w:0, hex:'#0064B1', label:'bleu',        num:'162',   textColor:'#fff'  },
+  { r:0, j:1, b:1, w:0, hex:'#008C59', label:'vert',        num:'172',   textColor:'#fff'  },
+  { r:1, j:0, b:1, w:0, hex:'#652C90', label:'violet',      num:'132',   textColor:'#fff'  },
+  { r:1, j:0, b:0, w:1, hex:'#FF82B4', label:'rose',        num:'47',    textColor:'#333'  },
+  { r:0, j:1, b:3, w:0, hex:'#75CE89', label:'vert clair',  num:'380',   textColor:'#333'  },
+  { r:0, j:0, b:3, w:1, hex:'#4FA3DC', label:'bleu ciel',   num:'RER B', textColor:'#fff'  },
+  { r:1, j:1, b:0, w:0, hex:'#F58443', label:'orange',      num:'185',   textColor:'#333'  },
+  { r:1, j:3, b:0, w:0, hex:'#DCAC27', label:'or',          num:'184',   textColor:'#333'  },
+  { r:1, j:0, b:0, w:2, hex:'#FA9ABA', label:'rose pâle',   num:'M7',    textColor:'#333'  },
+  { r:1, j:0, b:1, w:2, hex:'#C9A2CD', label:'lavande',     num:'286',   textColor:'#333'  },
+  { r:2, j:2, b:1, w:0, hex:'#8D653A', label:'brun',        num:'131',   textColor:'#fff'  },
 ];
 
-// ── TABLE DE RECONNAISSANCE (nommage des couleurs obtenues) ──────
-const TABLE = [
-  { pr:1,     pj:0,     pb:0,     pw:0,     hex:'#E8192C', label:'rouge'       },
-  { pr:0,     pj:1,     pb:0,     pw:0,     hex:'#FFCD00', label:'jaune'       },
-  { pr:0,     pj:0,     pb:1,     pw:0,     hex:'#003CA6', label:'bleu'        },
-  { pr:0,     pj:0,     pb:0,     pw:1,     hex:'#F5F5F5', label:'blanc'       },
-  { pr:0.5,   pj:0.5,   pb:0,     pw:0,     hex:'#FF7E2E', label:'orange'      },
-  { pr:0,     pj:0.5,   pb:0.5,   pw:0,     hex:'#007852', label:'vert'        },
-  { pr:0.5,   pj:0,     pb:0.5,   pw:0,     hex:'#62259D', label:'violet'      },
-  { pr:0.25,  pj:0.75,  pb:0,     pw:0,     hex:'#FFAA00', label:'ambre'       },
-  { pr:0.75,  pj:0.25,  pb:0,     pw:0,     hex:'#FF4500', label:'corail'      },
-  { pr:0,     pj:0.25,  pb:0.75,  pw:0,     hex:'#00AACC', label:'turquoise'   },
-  { pr:0,     pj:0.75,  pb:0.25,  pw:0,     hex:'#78C800', label:'vert lime'   },
-  { pr:0.75,  pj:0,     pb:0.25,  pw:0,     hex:'#8B1A7A', label:'bordeaux'    },
-  { pr:0.5,   pj:0,     pb:0,     pw:0.5,   hex:'#F38C95', label:'rose'        },
-  { pr:0,     pj:0,     pb:0.75,  pw:0.25,  hex:'#87CEEB', label:'bleu ciel'   },
-  { pr:0,     pj:0.5,   pb:0,     pw:0.5,   hex:'#FFE680', label:'creme'       },
-  { pr:0.25,  pj:0,     pb:0.25,  pw:0.5,   hex:'#B994B4', label:'lavande'     },
-  { pr:0.25,  pj:0.25,  pb:0,     pw:0.5,   hex:'#F5C88A', label:'peche'       },
-  { pr:0,     pj:0.25,  pb:0.25,  pw:0.5,   hex:'#88CCA4', label:'menthe'      },
-  { pr:0.25,  pj:0,     pb:0,     pw:0.75,  hex:'#F7C4C8', label:'rose pale'   },
-  { pr:0,     pj:0,     pb:0.5,   pw:0.5,   hex:'#A8C4D4', label:'bleu glace'  },
-  { pr:0,     pj:0.75,  pb:0,     pw:0.25,  hex:'#FFE080', label:'citron'      },
-  { pr:0.5,   pj:0.5,   pb:0,     pw:0.25,  hex:'#FFA055', label:'orange doux' },
-  { pr:0,     pj:0.5,   pb:0.5,   pw:0.25,  hex:'#4DAA80', label:'jade'        },
-  { pr:0.5,   pj:0,     pb:0.5,   pw:0.25,  hex:'#7A4A90', label:'prune'       },
-  { pr:0.2,   pj:0.5,   pb:0.3,   pw:0,     hex:'#6B8C2A', label:'olive'       },
-  { pr:0.33,  pj:0.33,  pb:0.33,  pw:0,     hex:'#7A4A2A', label:'marron'      },
-  { pr:0.5,   pj:0.25,  pb:0,     pw:0.25,  hex:'#F07040', label:'saumon'      },
-  { pr:0,     pj:0.5,   pb:0.25,  pw:0.25,  hex:'#88C870', label:'vert tendre' },
-  { pr:0.25,  pj:0.5,   pb:0,     pw:0.25,  hex:'#E0A840', label:'miel'        },
-  { pr:0,     pj:0.25,  pb:0.5,   pw:0.25,  hex:'#4488C8', label:'bleu ocean'  },
-];
+const BASE_RGB = { r:[232,25,44], j:[255,205,0], b:[0,60,166], w:[238,238,238] };
+const QCOL     = { r:'#E8192C', j:'#FFD700', b:'#3344CC', w:'#EEEEEE' };
 
-const BASE_RGB = {
-  r: [232, 25, 44],
-  j: [255, 205, 0],
-  b: [0, 60, 166],
-  w: [238, 238, 238],
-};
-
-const QCOL = { r:'#E8192C', j:'#FFD700', b:'#3344CC', w:'#EEEEEE' };
-
-function hexToRGB(hex) {
-  const h = hex.replace('#','');
-  return [parseInt(h.substr(0,2),16), parseInt(h.substr(2,2),16), parseInt(h.substr(4,2),16)];
-}
-function rgbToHex(r,g,b) {
-  return '#'+[r,g,b].map(v=>Math.round(v).toString(16).padStart(2,'0')).join('');
-}
-function blendCounts(c) {
-  const tot = c.r+c.j+c.b+c.w;
-  if (tot===0) return null;
-  let R=0,G=0,B=0;
-  for (const k of ['r','j','b','w']) {
-    const [cr,cg,cb] = BASE_RGB[k];
-    R+=cr*c[k]/tot; G+=cg*c[k]/tot; B+=cb*c[k]/tot;
-  }
-  return [Math.round(R),Math.round(G),Math.round(B)];
-}
-function isBrun(c) {
-  const tot = c.r+c.j+c.b+c.w;
-  if (tot===0) return false;
-  return c.r/tot>0.18 && c.j/tot>0.15 && c.b/tot>0.15;
-}
-function nearestLabel(R,G,B) {
-  let best=TABLE[0], bestD=Infinity;
-  for (const x of TABLE) {
-    const [xR,xG,xB]=hexToRGB(x.hex);
-    const d=Math.sqrt((R-xR)**2+(G-xG)**2+(B-xB)**2);
-    if (d<bestD){bestD=d;best=x;}
-  }
-  return best;
-}
-function rgbDist(c1,c2) {
-  return Math.sqrt(((c1[0]-c2[0])/255)**2+((c1[1]-c2[1])/255)**2+((c1[2]-c2[2])/255)**2)/Math.sqrt(3);
-}
-// Vérifie si les proportions r/j/b/w du tube correspondent à la recette du défi
-function recetteOk(t) {
-  const tot = t.r+t.j+t.b+t.w;
-  if (tot===0) return false;
-  const dTot = defi.r+defi.j+defi.b+defi.w;
-  if (dTot===0) return false;
-  for (const k of ['r','j','b','w']) {
-    const diff = Math.abs(t[k]/tot - defi[k]/dTot);
-    if (diff > 0.15) return false;
-  }
-  return true;
-}
 function shuffle(arr) {
   const a=[...arr];
   for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
   return a;
 }
 
+// Trouve le défi dont les proportions matchent le mieux le tube
+function findBestDefi(t) {
+  const tot = t.r+t.j+t.b+t.w;
+  if (tot===0) return null;
+  let best=null, bestDist=Infinity;
+  for (const d of DEFIS) {
+    const dTot = d.r+d.j+d.b+d.w;
+    let dist=0;
+    for (const k of ['r','j','b','w']) dist += Math.abs(t[k]/tot - d[k]/dTot);
+    if (dist<bestDist) { bestDist=dist; best=d; }
+  }
+  return { defi:best, dist:bestDist };
+}
+
+function isBrun(t) {
+  const tot=t.r+t.j+t.b+t.w;
+  if (tot===0) return false;
+  return t.r/tot>0.18 && t.j/tot>0.15 && t.b/tot>0.15;
+}
+
 // ── ÉTAT ─────────────────────────────────────────────────────────
-function newTube(id) { return {r:0,j:0,b:0,w:0,doses:[],mixed:null,id}; }
-let tubes    = [newTube(0), newTube(1)];
-let activeIdx= 0;
+function newTube() { return {r:0,j:0,b:0,w:0,doses:[],mixed:null}; }
+let tube     = newTube();
 let defiIdx  = 0;
 let solved   = 0;
 let victoire = false;
 let brunShown= false;
-let missCount= 0;
 let order    = shuffle(DEFIS.map((_,i)=>i));
 let defi     = DEFIS[order[0]];
 
 // ── TUBE SVG ─────────────────────────────────────────────────────
 function renderTubeSVG(t) {
-  const SW=50, SH=120, RIMH=12, BOT=SH, RX=10, FILL_H=BOT-RIMH;
+  const SW=64, SH=150, RIMH=14, BOT=SH, RX=12, FILL_H=BOT-RIMH;
   const path=`M0,${RIMH} L0,${BOT-RX} Q0,${BOT} ${RX},${BOT} L${SW-RX},${BOT} Q${SW},${BOT} ${SW},${BOT-RX} L${SW},${RIMH} Z`;
-  const id=`tc${t.id}`;
   let layers='';
   if (t.mixed) {
-    const bgHex = t.mixed==='BRUN'?'#6B4226':t.mixed.hex;
+    const bgHex = t.mixed==='BRUN' ? '#6B4226' : t.mixed.hex;
     const tot=t.r+t.j+t.b+t.w;
-    const fH=Math.max(Math.min(tot/8,1)*FILL_H, 22);
+    const fH=Math.max(Math.min(tot/8,1)*FILL_H, 28);
     const fY=(BOT-fH).toFixed(1);
     layers=`<rect x="0" y="${fY}" width="${SW}" height="${(fH+1).toFixed(1)}" fill="${bgHex}"/>`;
   } else if (t.doses.length>0) {
@@ -331,50 +252,53 @@ function renderTubeSVG(t) {
       layers+=`<rect x="0" y="${qY}" width="${SW}" height="${(dH+1).toFixed(1)}" fill="${QCOL[q]}"/>`;
     });
   }
-  const emptyHint=t.doses.length===0&&!t.mixed
-    ?`<text x="${SW/2}" y="${RIMH+FILL_H/2+5}" text-anchor="middle" fill="rgba(255,255,255,0.18)" font-size="9" font-family="Nunito">vide</text>`:'';
+  const emptyHint = t.doses.length===0 && !t.mixed
+    ? `<text x="${SW/2}" y="${RIMH+FILL_H/2+5}" text-anchor="middle" fill="rgba(255,255,255,0.18)" font-size="10" font-family="Nunito">vide</text>` : '';
   return `<svg width="${SW}" height="${SH}" viewBox="0 0 ${SW} ${SH}">
-  <defs><clipPath id="${id}"><path d="${path}"/></clipPath></defs>
+  <defs><clipPath id="tc"><path d="${path}"/></clipPath></defs>
   <path d="${path}" fill="rgba(150,210,255,0.08)" stroke="rgba(255,255,255,0.45)" stroke-width="2.5"/>
-  <g clip-path="url(#${id})">${layers}</g>
-  <rect x="4" y="${RIMH+4}" width="5" height="${FILL_H-16}" rx="2.5" fill="rgba(255,255,255,0.16)" clip-path="url(#${id})"/>
-  <rect x="2" y="0" width="${SW-4}" height="${RIMH}" rx="4" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+  <g clip-path="url(#tc)">${layers}</g>
+  <rect x="5" y="${RIMH+5}" width="6" height="${FILL_H-20}" rx="3" fill="rgba(255,255,255,0.16)" clip-path="url(#tc)"/>
+  <rect x="2" y="0" width="${SW-4}" height="${RIMH}" rx="5" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
   ${emptyHint}
 </svg>`;
 }
 
-function renderTubes() {
-  tubes.forEach((t,i)=>{
-    const wrap=document.getElementById(`tube-wrap-${i}`);
-    wrap.innerHTML=renderTubeSVG(t);
-    wrap.classList.toggle('active',i===activeIdx);
-    const res=document.getElementById(`tube-result-${i}`);
-    if (t.mixed&&t.mixed!=='BRUN') {
-      res.textContent=t.mixed.label;
-      res.style.color='#ffe066';
-    } else if (t.mixed==='BRUN') {
-      res.innerHTML='💩 marron';
-      res.style.color='#cc8844';
-    } else {
-      res.textContent='';
-    }
-  });
+function renderTube() {
+  const wrap = document.getElementById('tube-wrap-0');
+  wrap.innerHTML = renderTubeSVG(tube);
+  const res = document.getElementById('tube-result-0');
+  if (tube.mixed && tube.mixed !== 'BRUN') {
+    res.textContent = tube.mixed.label;
+    res.style.color = '#ffe066';
+  } else if (tube.mixed === 'BRUN') {
+    res.innerHTML = '💩 marron';
+    res.style.color = '#cc8844';
+  } else {
+    res.textContent = '';
+  }
 }
 
-function renderCible() {
-  const zone = document.getElementById('cible-zone');
-  const busSvg = busSVG('#FFFFFF', '#333', defi.num, 180);
-  zone.innerHTML = `
-    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
-      <div class="cible-bus-wrap">
-        ${busSvg}
-        <div class="cible-dot" style="background:${defi.hex};"></div>
-      </div>
-      <div class="cible-label">Bus ${defi.num} — peins-le en <span style="color:${defi.hex==='#FFCD00'||defi.hex.startsWith('#FF')||defi.hex==='#CEC92A'||defi.hex==='#DCAC27'||defi.hex==='#75CE89'||defi.hex==='#C9A2CD'||defi.hex==='#FA9ABA'?'#ffdd44':'#7dd9ff'}">${defi.label}</span> !</div>
-    </div>`;
+function renderCible(hex) {
+  // hex = null → bus blanc (défi en cours), hex → bus coloré (victoire)
+  const busHex = hex || '#FFFFFF';
+  const busText = hex ? defi.textColor : '#333';
+  const wrap = document.getElementById('cible-bus-wrap');
+  wrap.innerHTML = `${busSVG(busHex, busText, defi.num, 170)}<div class="cible-dot" style="background:${defi.hex};${hex?'box-shadow:0 0 14px '+defi.hex+';':''}"></div>`;
+  document.getElementById('cible-label').textContent = hex
+    ? `✓ ${defi.label} !`
+    : `Bus ${defi.num} — peins-le en ${defi.label} !`;
+  document.getElementById('cible-label').style.color = hex ? '#00c47a' : 'rgba(255,255,255,0.7)';
 }
 
-function renderBus(hex) { /* bus affiché uniquement en overlay victoire */ }
+function renderBusPreview(hex) {
+  const zone = document.getElementById('bus-preview');
+  if (!hex) { zone.innerHTML=''; zone.classList.remove('pop'); return; }
+  zone.classList.remove('pop');
+  zone.offsetWidth;
+  zone.innerHTML = busSVG(hex, hex === '#FFCD00' ? '#333' : '#fff', defi.num, 130);
+  zone.classList.add('pop');
+}
 
 function renderProgress() {
   let html='';
@@ -386,116 +310,92 @@ function renderProgress() {
 }
 
 // ── ACTIONS ───────────────────────────────────────────────────────
-function selectTube(idx) {
-  activeIdx=idx;
-  renderTubes();
-}
-
 function addCouleur(type) {
   if (victoire) return;
-  const t=tubes[activeIdx];
-  t[type]++;
-  t.doses.push(type);
-  renderTubes();
-  checkAutoWin(t);
-}
-
-function checkAutoWin(t) {
-  // Victoire uniquement après mixage manuel (bouton Mixer)
-  // Cette fonction ne fait plus rien — conservée pour compatibilité
+  tube[type]++;
+  tube.doses.push(type);
+  tube.mixed = null; // reset le mix si on rajoute
+  renderTube();
+  renderBusPreview(null);
 }
 
 let mixerLocked = false;
-function mixerTube(idx) {
-  if (victoire) return;
-  if (mixerLocked) return;
-  const t=tubes[idx];
-  const tot=t.r+t.j+t.b+t.w;
+function mixerTube() {
+  if (victoire || mixerLocked) return;
+  const tot = tube.r+tube.j+tube.b+tube.w;
   if (tot===0) return;
   mixerLocked = true;
-  activeIdx=idx;
   playMix();
-  const wrap=document.getElementById(`tube-wrap-${idx}`);
-  if (wrap) {
-    wrap.classList.remove('shaking');
-    wrap.offsetWidth;
-    wrap.classList.add('shaking');
-  }
+  const wrap = document.getElementById('tube-wrap-0');
+  wrap.classList.remove('shaking');
+  wrap.offsetWidth;
+  wrap.classList.add('shaking');
   const defiBrun = defi.label==='brun';
   setTimeout(() => {
     mixerLocked = false;
-    if (wrap) wrap.classList.remove('shaking');
-    if (isBrun(t) && !defiBrun) {
-      t.mixed='BRUN';
-      renderTubes();
+    wrap.classList.remove('shaking');
+    if (isBrun(tube) && !defiBrun) {
+      tube.mixed = 'BRUN';
+      renderTube();
+      renderBusPreview(null);
       if (!brunShown) { brunShown=true; document.getElementById('brun-overlay').classList.add('show'); playBrun(); }
       return;
     }
-    // Si recette correcte → couleur exacte IDFM, sinon blend calculé
-    const ok = recetteOk(t);
-    const hex = ok ? defi.hex : rgbToHex(...blendCounts(t));
-    const rgb = hexToRGB(hex);
-    t.mixed = { hex, label: ok ? defi.label : nearestLabel(rgb[0],rgb[1],rgb[2]).label };
-    renderTubes();
-    if (ok && !victoire) {
+    // Cherche le défi dont les proportions matchent le mieux
+    const { defi:matched, dist } = findBestDefi(tube);
+    const hex = dist < 0.5 ? matched.hex : '#888888'; // couleur du défi matché ou gris si rien ne colle
+    const label = dist < 0.5 ? matched.label : '?';
+    tube.mixed = { hex, label };
+    renderTube();
+    renderBusPreview(hex);
+    // Victoire si le défi matché = défi en cours
+    if (matched === defi && dist < 0.5 && !victoire) {
       victoire = true;
-      setTimeout(() => showVictoire(hex), 400);
+      setTimeout(showVictoire, 500);
     }
   }, 500);
 }
 
-function viderTube(idx) {
-  tubes[idx]=newTube(idx);
-  brunShown=false;
+function viderTube() {
+  tube = newTube();
+  brunShown = false;
   document.getElementById('brun-overlay').classList.remove('show');
-  renderTubes();
-  renderBus(null);
+  renderTube();
+  renderBusPreview(null);
 }
 
-function viderActive() { viderTube(activeIdx); }
-
 // ── VICTOIRE ──────────────────────────────────────────────────────
-function showVictoire(hex) {
+function showVictoire() {
   solved++;
   renderProgress();
   playKlaxon();
-  // Colorier le bus cible directement avec la vraie couleur IDFM
-  const zone = document.getElementById('cible-zone');
-  zone.innerHTML = `
-    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
-      <div class="cible-bus-wrap" style="animation:victBus 0.5s ease;">
-        ${busSVG(hex, defi.textColor, defi.num, 180)}
-        <div class="cible-dot" style="background:${hex};box-shadow:0 0 16px ${hex};"></div>
-      </div>
-      <div class="cible-label" style="color:#00c47a;font-size:0.85rem;">&#10003; ${defi.label} !</div>
-    </div>`;
-  // Passer au suivant après 2s
+  renderCible(defi.hex); // colorie le bus en haut
+  // auto-next après 2s
   setTimeout(() => {
     defiIdx++;
     if (defiIdx >= DEFIS.length) { document.getElementById('fin-overlay').classList.add('show'); return; }
     defi = DEFIS[order[defiIdx]];
-    resetTubes();
-    initDefi();
-  }, 2000);
+    tube = newTube();
+    victoire = false; brunShown = false; mixerLocked = false;
+    document.getElementById('brun-overlay').classList.remove('show');
+    renderTube();
+    renderBusPreview(null);
+    renderCible(null);
+    renderProgress();
+  }, 2200);
 }
-
-function nextDefi() { /* remplacé par auto-next dans showVictoire */ }
 
 function resetPartie() {
   document.getElementById('fin-overlay').classList.remove('show');
   solved=0; defiIdx=0;
   order=shuffle(DEFIS.map((_,i)=>i));
   defi=DEFIS[order[0]];
-  resetTubes();
-  initDefi();
-}
-
-function resetTubes() {
-  tubes=[newTube(0),newTube(1)];
-  activeIdx=0; victoire=false; brunShown=false; missCount=0; mixerLocked=false;
+  tube=newTube(); victoire=false; brunShown=false; mixerLocked=false;
   document.getElementById('brun-overlay').classList.remove('show');
-  renderTubes();
-  renderBus(null);
+  renderTube();
+  renderBusPreview(null);
+  renderCible(null);
+  renderProgress();
 }
 
 function showHint() {
@@ -510,30 +410,16 @@ function showHint() {
   document.getElementById('hint-overlay').classList.add('show');
 }
 
-function initDefi() {
-  renderTubes();
-  renderProgress();
-  renderCible();
-  attachShakeListener();
-}
-
-let lastShakeTime = 0;
-let shakeListenerAttached = false;
-function attachShakeListener() {
-  if (shakeListenerAttached || !window.DeviceMotionEvent) return;
-  shakeListenerAttached = true;
-  window.addEventListener('devicemotion', handleShake, true);
-}
-function handleShake(event) {
-  const accel = event.acceleration;
-  if (!accel) return;
-  const magnitude = Math.sqrt(accel.x*accel.x + accel.y*accel.y + accel.z*accel.z);
-  if (magnitude > 25 && Date.now() - lastShakeTime > 800) {
-    lastShakeTime = Date.now();
-    if (!victoire && tubes[activeIdx].r+tubes[activeIdx].j+tubes[activeIdx].b+tubes[activeIdx].w > 0) {
-      mixerTube(activeIdx);
-    }
-  }
+// ── SHAKE ─────────────────────────────────────────────────────────
+let lastShakeTime=0, shakeAttached=false;
+function initShake() {
+  if (shakeAttached || !window.DeviceMotionEvent) return;
+  shakeAttached=true;
+  window.addEventListener('devicemotion', e => {
+    const a=e.acceleration; if (!a) return;
+    const m=Math.sqrt(a.x*a.x+a.y*a.y+a.z*a.z);
+    if (m>25 && Date.now()-lastShakeTime>800) { lastShakeTime=Date.now(); mixerTube(); }
+  }, true);
 }
 
 // ── SONS ──────────────────────────────────────────────────────────
@@ -543,22 +429,21 @@ function playKlaxon() {
     [523,659,784,1047].forEach((freq,i)=>{
       const o=ac.createOscillator(),g=ac.createGain();
       o.connect(g);g.connect(ac.destination);
-      o.frequency.value=freq;o.type='triangle';
+      o.frequency.value=freq; o.type='triangle';
       const t=ac.currentTime+i*0.1;
-      g.gain.setValueAtTime(0.28,t);g.gain.exponentialRampToValueAtTime(0.001,t+0.15);
-      o.start(t);o.stop(t+0.15);
+      g.gain.setValueAtTime(0.28,t); g.gain.exponentialRampToValueAtTime(0.001,t+0.15);
+      o.start(t); o.stop(t+0.15);
     });
   } catch(e){}
 }
 function playBrun() {
   try {
     const ac=new AudioContext(),o=ac.createOscillator(),g=ac.createGain();
-    o.connect(g);g.connect(ac.destination);
-    o.type='sawtooth';
+    o.connect(g);g.connect(ac.destination); o.type='sawtooth';
     o.frequency.setValueAtTime(180,ac.currentTime);
     o.frequency.exponentialRampToValueAtTime(35,ac.currentTime+0.55);
-    g.gain.setValueAtTime(0.4,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.6);
-    o.start();o.stop(ac.currentTime+0.6);
+    g.gain.setValueAtTime(0.4,ac.currentTime); g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.6);
+    o.start(); o.stop(ac.currentTime+0.6);
   } catch(e){}
 }
 function playMix() {
@@ -566,15 +451,20 @@ function playMix() {
     const ac=new AudioContext();
     [400,600,350,700,300].forEach((f,i)=>{
       const o=ac.createOscillator(),g=ac.createGain();
-      o.connect(g);g.connect(ac.destination);o.type='sine';o.frequency.value=f;
+      o.connect(g);g.connect(ac.destination); o.type='sine'; o.frequency.value=f;
       const t=ac.currentTime+i*0.06;
-      g.gain.setValueAtTime(0.18,t);g.gain.exponentialRampToValueAtTime(0.001,t+0.1);
-      o.start(t);o.stop(t+0.1);
+      g.gain.setValueAtTime(0.18,t); g.gain.exponentialRampToValueAtTime(0.001,t+0.1);
+      o.start(t); o.stop(t+0.1);
     });
   } catch(e){}
 }
 
-initDefi();
+// ── INIT ──────────────────────────────────────────────────────────
+renderTube();
+renderBusPreview(null);
+renderCible(null);
+renderProgress();
+initShake();
 </script>
 </body>
 </html>

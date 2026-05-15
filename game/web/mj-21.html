@@ -21,12 +21,6 @@
     .prog-dot.current { background:rgba(255,220,80,0.25); border-color:#ffe066; animation:dotPulse 1.2s ease-in-out infinite alternate; }
     @keyframes dotPulse { from { box-shadow:0 0 0px rgba(255,220,80,0.3); } to { box-shadow:0 0 8px rgba(255,220,80,0.8); } }
 
-    .cible-row { display:flex; align-items:center; justify-content:center; gap:10px; padding:4px 12px 2px; flex-shrink:0; }
-    .cible-cercle { width:44px; height:44px; border-radius:50%; border:3px solid rgba(255,255,255,0.85); box-shadow:0 0 14px rgba(255,255,255,0.2); flex-shrink:0; }
-    .cible-info { display:flex; flex-direction:column; gap:1px; }
-    .cible-tag { color:#ffe066; font-size:0.85rem; font-weight:900; white-space:nowrap; }
-    .cible-sub { color:rgba(255,255,255,0.55); font-size:0.7rem; }
-
     .hint-row { display:flex; justify-content:center; padding:2px 0; flex-shrink:0; min-height:28px; }
     .btn-hint { background:rgba(255,220,80,0.15); border:2px solid rgba(255,220,80,0.5); color:#ffe066; border-radius:20px; font-family:'Nunito',sans-serif; font-weight:900; font-size:0.8rem; padding:4px 14px; cursor:pointer; animation:hintPulse 1.5s ease-in-out infinite alternate; display:block; }
     @keyframes hintPulse { from { box-shadow:0 0 0px rgba(255,220,80,0.3); } to { box-shadow:0 0 10px rgba(255,220,80,0.7); } }
@@ -130,14 +124,6 @@
     </div>
   </div>
 
-  <div class="cible-row">
-    <div class="cible-cercle" id="cible-cercle"></div>
-    <div class="cible-info">
-      <div class="cible-tag" id="cible-tag"></div>
-      <div class="cible-sub" id="cible-sub">cible</div>
-    </div>
-  </div>
-
   <div class="hint-row">
     <button class="btn-hint" id="btn-hint" onclick="showHint()">&#128161; Indice</button>
   </div>
@@ -165,6 +151,10 @@
   <div class="ov-box">
     <div class="ov-emoji">&#128161;</div>
     <div class="ov-title" style="font-size:1.2rem;">Voil&#224; le secret !</div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:10px;">
+      <div id="hint-cible-cercle" style="width:44px;height:44px;border-radius:50%;border:3px solid rgba(255,255,255,0.85);flex-shrink:0;"></div>
+      <div style="color:#fff;font-size:1rem;font-weight:900;" id="hint-cible-label"></div>
+    </div>
     <div class="ov-text" id="hint-text" style="font-size:1.3rem;letter-spacing:2px;"></div>
     <button class="ov-btn" onclick="document.getElementById('hint-overlay').classList.remove('show')">OK !</button>
   </div>
@@ -394,32 +384,28 @@ function mixerTube(idx) {
   const t=tubes[idx];
   const tot=t.r+t.j+t.b+t.w;
   if (tot===0||victoire) return;
-  selectTube(idx);
-  const wrap=document.getElementById(`tube-wrap-${idx}`);
-  wrap.classList.remove('shaking');
-  void wrap.offsetWidth;
-  wrap.classList.add('shaking');
+  activeIdx=idx;
   playMix();
-  setTimeout(()=>{
-    wrap.classList.remove('shaking');
-    if (isBrun(t)) {
-      t.mixed='BRUN';
-      renderTubes();
-      if (!brunShown) { brunShown=true; document.getElementById('brun-overlay').classList.add('show'); playBrun(); }
-      return;
-    }
+  let won=false;
+  if (isBrun(t)) {
+    t.mixed='BRUN';
+    renderTubes();
+    if (!brunShown) { brunShown=true; document.getElementById('brun-overlay').classList.add('show'); playBrun(); }
+  } else {
     const rgb=blendCounts(t);
     const hex=rgbToHex(rgb[0],rgb[1],rgb[2]);
     t.mixed={hex,label:nearestLabel(rgb[0],rgb[1],rgb[2]).label};
     renderTubes();
     const ideal=blendCounts({r:defi.r,j:defi.j,b:defi.b,w:defi.w});
-    if (rgbDist(rgb,ideal)<0.22&&!victoire) {
-      victoire=true;
-      setTimeout(showVictoire,350);
-    } else {
-      missCount++;
-    }
-  }, 600);
+    if (rgbDist(rgb,ideal)<0.22&&!victoire) { victoire=true; won=true; }
+    else { missCount++; }
+  }
+  const wrap=document.getElementById(`tube-wrap-${idx}`);
+  wrap.classList.remove('shaking');
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{
+    wrap.classList.add('shaking');
+    if (won) setTimeout(showVictoire,650);
+  }));
 }
 
 function viderTube(idx) {
@@ -477,14 +463,13 @@ function showHint() {
   if(defi.j>0)parts.push(`${defi.j} 🟡`);
   if(defi.b>0)parts.push(`${defi.b} 🔵`);
   if(defi.w>0)parts.push(`${defi.w} ⬜`);
+  document.getElementById('hint-cible-cercle').style.background=defi.hex;
+  document.getElementById('hint-cible-label').textContent=`Bus ${defi.num} — ${defi.label}`;
   document.getElementById('hint-text').textContent=parts.join(' + ');
   document.getElementById('hint-overlay').classList.add('show');
 }
 
 function initDefi() {
-  document.getElementById('cible-cercle').style.background=defi.hex;
-  document.getElementById('cible-tag').textContent=`Ligne ${defi.num}`;
-  document.getElementById('cible-sub').textContent=defi.label;
   renderTubes();
   renderProgress();
 }

@@ -312,11 +312,11 @@ function renderProgress() {
 // ── ACTIONS ───────────────────────────────────────────────────────
 function addCouleur(type) {
   if (victoire) return;
+  // Si le tube est déjà mixé, on repart de zéro proprement
+  if (tube.mixed) { tube = newTube(); renderBusPreview(null); }
   tube[type]++;
   tube.doses.push(type);
-  tube.mixed = null; // reset le mix si on rajoute
   renderTube();
-  renderBusPreview(null);
 }
 
 let mixerLocked = false;
@@ -341,15 +341,13 @@ function mixerTube() {
       if (!brunShown) { brunShown=true; document.getElementById('brun-overlay').classList.add('show'); playBrun(); }
       return;
     }
-    // Cherche le défi dont les proportions matchent le mieux
+    // Cherche le défi dont les proportions matchent le mieux — toujours la couleur IDFM la plus proche, jamais de gris
     const { defi:matched, dist } = findBestDefi(tube);
-    const hex = dist < 0.5 ? matched.hex : '#888888'; // couleur du défi matché ou gris si rien ne colle
-    const label = dist < 0.5 ? matched.label : '?';
-    tube.mixed = { hex, label };
+    tube.mixed = { hex: matched.hex, label: matched.label };
     renderTube();
-    renderBusPreview(hex);
-    // Victoire si le défi matché = défi en cours
-    if (matched === defi && dist < 0.5 && !victoire) {
+    renderBusPreview(matched.hex);
+    // Victoire si le défi matché = défi en cours (tolérance 0.55)
+    if (matched === defi && dist < 0.55 && !victoire) {
       victoire = true;
       setTimeout(showVictoire, 500);
     }

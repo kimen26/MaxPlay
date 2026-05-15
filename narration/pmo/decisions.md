@@ -4,6 +4,30 @@
 
 ---
 
+## 2026-05-16 — Wex en duo narratif mini-jeu Dino-Encyclopédie (pôle JEU)
+
+**Auteur (Papa Yann)** : validation du principe via révision script V0 game/docs/jeux/dino-encyclopedie/scripts-audio/triceratops-V0.md
+
+**Décision** : Wex peut intervenir en duo avec Narrateur H sur le mini-jeu dino-encyclopédie (pôle JEU). Rôle = observateur/catalyseur (questions de Max, émerveillement, remarque tendre). **Canon conforme** (`personnages/wex/personnage.md` § Rôle hors-système + univers implicite respecté, aucun système nommé).
+
+**Voice_ids attribués** (réutilisation figée v24) :
+- Narrateur H : `cbRcktt2xvoeFpdvW2wg`
+- Wex : `G54e8CyYslC2Y4ZupTlg` (v24 Lumi Wex Héros figé, cf. `personnages/voix-meta/_VOICE-IDS-CASTING.md` L.68)
+
+**Statut production** : V0 en attente validation auteur sur contenu dinos-data.js avant génération audio.
+
+---
+
+## 2026-05-16 — CORRECTION STRUCTURE : wex/voix.md voice_id obsolète
+
+**Problème détecté** : `narration/personnages/wex/voix.md` L.3 cite un voice_id dépréciée (MvACGLim6BRvCWyH21A6 v19, supprimé 2026-05-11). L'ID actif figé est `G54e8CyYslC2Y4ZupTlg` (v24).
+
+**Source d'autorité** : `personnages/voix-meta/_VOICE-IDS-CASTING.md` L.68 (table casting) + L.167-168 (anciens voice_id dépréciés).
+
+**Action** : **Correction immédiate requise** — signalée à narration-archiviste pour audit + correction.
+
+---
+
 ## 2026-05-16 — DEC-STORY-002-TEN-001 : Couture Ten B3→B4 + bug logique Wex + 2 angles morts
 
 **Auteur (Papa Yann)** : session 2026-05-16, vague 3 briefs STORY-002.

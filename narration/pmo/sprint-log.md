@@ -11,6 +11,39 @@
 
 ---
 
+## 2026-05-16 (complément PMO) — PROCESS Audio gravé dans PROCESS.md + signal archiviste
+
+**Objectif** : Formaliser le PROCESS MILITAIRE audio (FOND) en source de vérité unique. Passer consigne FORME à archiviste.
+
+**Fait** :
+- [x] Relecture DEC-AUDIO-PRODUCTION-001 et sprint-log 2026-05-16 § "DÉCISION AUDIO"
+- [x] Création section « PROCESS Audio — 5 étapes » dans `equipe/PROCESS.md` L.47-125
+- [x] Tableau owner-par-étape (Voice-director → Packetisation → Appels API → Concat+loudnorm → Archivage)
+- [x] Critères PASS chaque étape gravement (anti-patterns bannir 100% + pré-requis blocage)
+- [x] Lien référence `.claude/rules/audio.md` pour détail technique
+
+**Décisions prises** : Aucune nouvelle — DEC-AUDIO-PRODUCTION-001 déjà figée. Formalisation FOND complète.
+
+**Classification** : **TRAITEMENT IMMÉDIAT** (PROCESS gravé) + **TODO** (signal archiviste + mini-ticket delta D1).
+
+**Signal à narration-archiviste (FORME)** :
+
+→ **Actions attendues** (cf. sprint-log 2026-05-16 L.98-106) :
+1. **Déprécier `narration/scripts/generate-story-audio.js`** → commentaire en-tête DEPRECATED (ANTI-PATTERN 32 TTS)
+2. **Créer `.claude/rules/audio.md`** → copier PROCESS 5 étapes de ce sprint-log (lignes 29-85) + mécanique + anti-patterns. Auto-chargera dès que Claude touche script audio.
+3. **INDEX updates** : `narration/INDEX.md`, `narration/scripts/INDEX.md`, `personnages/voix-meta/README.md`
+4. **Audit agents** : scanner `.claude/agents/narration-*.md` pour refs obsolètes aux anciens scripts
+5. **✅ DONE — Ne plus faire (déjà complété)** : point 5 du signal obsolète (PROCESS dans PROCESS.md déjà gravé)
+
+**État au reboot** :
+- ✅ PROCESS Audio FOND = **source de vérité unique** dans `equipe/PROCESS.md` L.47-125
+- ✅ DEC-AUDIO-PRODUCTION-001 figée + INVARIANTS.md + decisions.md cohérents
+- ✅ AUDIO-SCRIPT-V2 ticket actif (haute priorité)
+- 📋 En attente archiviste : `.claude/rules/audio.md` + dépréciage script + INDEX updates
+- ⏳ Après archiviste : lancer AUDIO-SCRIPT-V2 + VOIX-001/002/003
+
+---
+
 ## 2026-05-16 — DÉCISION AUDIO : Text-to-Dialogue API = méthode officielle + coordination archiviste
 
 **Objectif** : Graver la décision structurante audio (BREAKTHROUGH 2026-05-12) en FOND. Définir PROCESS MILITAIRE audio. Coordonner avec archiviste (FORME).
@@ -96,7 +129,7 @@
 → **Signal à archiviste** : Décision audio figée (FOND) → gère toi la FORME (dépréciage script, règles structure, INDEX).
 
 **Actions archiviste (FORME) — à dérouler en parallèle** :
-1. **Déprécier `narration/scripts/generate-story-audio.js`** → commentaire en-tête "DEPRECATED (2026-05-16) — implémente anti-pattern 32 TTS. Utiliser generate-story-audio-v2.js."
+1. **Déprécier `narration/scripts/generate-story-audio.js`** → commentaire en-tête "DEPRECATED (2026-05-16) — implémente anti-pattern 32 TTS. Utiliser generate-story-dialogue.js."
 2. **Créer/mettre à jour `.claude/rules/audio.md`** → pose ce PROCESS MILITAIRE audio (5 étapes + anti-patterns + règles obligatoires)
 3. **Vérifier cohérence INDEX** : 
    - `narration/INDEX.md` → mise à jour production audio méthode officielle

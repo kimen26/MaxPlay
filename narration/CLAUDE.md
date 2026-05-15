@@ -100,14 +100,19 @@ Source de vérité : [`equipe/PROCESS.md`](equipe/PROCESS.md).
 
 ---
 
-## Production audio (skills globaux)
+## Production audio (PROCESS MILITAIRE depuis 2026-05-16)
+
+**Méthode OFFICIELLE** : text-to-dialogue API multi-voix natif (1 appel/paquet < 2000 char) + ffmpeg loudnorm final.
 
 🎙️ 2 skills globaux auto-triggered :
 - [`~/.claude/skills/elevenlabs-voice-design/`](C:/Users/kimen/.claude/skills/elevenlabs-voice-design/) — **CRÉATION** d'une voix (Voice Design prompts, multilingue, voice cloning)
-- [`~/.claude/skills/audio-direction-elevenlabs/`](C:/Users/kimen/.claude/skills/audio-direction-elevenlabs/) — **PRODUCTION** multi-voix (text-to-dialogue, tags v3, tricks graphie, pronunciation dicts, voice settings, 17 anti-patterns, 12 cultures)
+- [`~/.claude/skills/audio-direction-elevenlabs/`](C:/Users/kimen/.claude/skills/audio-direction-elevenlabs/) — **PRODUCTION** multi-voix (text-to-dialogue API, tags v3, tricks graphie, pronunciation dicts, voice settings, 20+ anti-patterns, 12 cultures)
 
-Source méthodo : [`personnages/voix-meta/_VOICE-IDS-CASTING.md`](personnages/voix-meta/_VOICE-IDS-CASTING.md).
-Script production : [`scripts/generate-story-audio.js`](scripts/generate-story-audio.js).
+Source méthodo : [`personnages/voix-meta/_VOICE-IDS-CASTING.md`](personnages/voix-meta/_VOICE-IDS-CASTING.md) + **règles auto-chargées** `.claude/rules/audio.md` (PROCESS MILITAIRE, gravé 2026-05-16).
+
+**Avant toute production RÉELLE** : consulter la **checklist fraîcheur API** dans le skill `audio-direction-elevenlabs/` (fichier [`~/.claude/skills/audio-direction-elevenlabs/00-freshness-protocol.md`](C:/Users/kimen/.claude/skills/audio-direction-elevenlabs/00-freshness-protocol.md)) — snapshot daté 2026-05-16.
+
+**Ancien script (obsolète)** : `_archive/generate-story-audio.js.DEPRECATED` (anti-pattern 32+ TTS mono, ne pas réutiliser).
 
 ---
 

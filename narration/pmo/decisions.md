@@ -40,7 +40,7 @@
 - Fichier : `narration/scripts/generate-story-audio.js`
 - Raison : Implémente anti-pattern (32 TTS séparés)
 - Statut : À archiver / marquer déprécié (archiviste gère)
-- Remplacement : Futur script `generate-story-audio-v2.js` (text-to-dialogue packetisé)
+- Remplacement : Script `narration/scripts/generate-story-dialogue.js` (text-to-dialogue packetisé, livré 2026-05-16 01:40)
 
 **Fichiers impactés** :
 - ✅ `narration/pmo/INVARIANTS.md` (ajout § Méthode audio officielle + 2000 char plafond)

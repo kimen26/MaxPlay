@@ -141,7 +141,7 @@ D�tail complet : [`../personnages/voix-meta/_VOICE-IDS-CASTING.md`](../personn
 | Audio tags supportés | Oui, avec `eleven_v3` | Catalogue complet dans skill `audio-direction-elevenlabs` |
 | Moteur concat final | ffmpeg `loudnorm` | Concat 2-3 paquets text-to-dialogue SEULEMENT (pas 32 segments) |
 | Anti-pattern | ❌ 32+ TTS séparés | Produit transitions abruptes, volumes inégaux, intonations cassées |
-| Script legacy | `narration/scripts/generate-story-audio.js` | DÉPRÉCIÉ (implémente anti-pattern). À archiver. Remplacé par v2 en création. |
+| Script legacy | `narration/scripts/generate-story-audio.js` | DÉPRÉCIÉ (implémente anti-pattern). Archivé 2026-05-16. Remplacé par `generate-story-dialogue.js` (livré 2026-05-16 01:40). |
 
 **Méthodologie** :
 1. Diviser texte canon en paquets < 2000 char (tags v3 inline inclus)

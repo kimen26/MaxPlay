@@ -256,9 +256,9 @@ function blendCounts(c) {
   const tot = c.r+c.j+c.b+c.w;
   if (tot===0) return null;
   let R=0,G=0,B=0;
-  for (const [k,cnt] of Object.entries(c)) {
+  for (const k of ['r','j','b','w']) {
     const [cr,cg,cb] = BASE_RGB[k];
-    R+=cr*cnt/tot; G+=cg*cnt/tot; B+=cb*cnt/tot;
+    R+=cr*c[k]/tot; G+=cg*c[k]/tot; B+=cb*c[k]/tot;
   }
   return [Math.round(R),Math.round(G),Math.round(B)];
 }
@@ -423,8 +423,6 @@ function mixerTube(idx) {
     renderTubes();
     const ideal=blendCounts({r:defi.r,j:defi.j,b:defi.b,w:defi.w});
     const dist=rgbDist(rgb,ideal);
-    // debug visible temporaire
-    document.getElementById('tube-result-'+idx).textContent = t.mixed.label+' d='+dist.toFixed(2);
     if (dist<0.22&&!victoire) {
       victoire=true;
       setTimeout(showVictoire,650);

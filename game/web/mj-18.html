@@ -170,7 +170,7 @@
     const TUBE_CAPACITY = 4;
     const TUBES_EMPTY = 2;
     const COLOR_COUNT_MIN = 3;
-    const COLOR_COUNT_MAX = 8;
+    const COLOR_COUNT_MAX = 13;
 
     let colorCount = 4;
     // Couleurs actives — sélectionnées depuis LIGNES via selectDistinctColors
@@ -225,9 +225,10 @@
       const stage = document.getElementById('stage');
       stage.innerHTML = '';
       const total = tubes.length;
-      const perRow = Math.ceil(total / 2);
+      const numRows = total > 10 ? 3 : 2;
+      const perRow = Math.ceil(total / numRows);
 
-      for (let row = 0; row < 2; row++) {
+      for (let row = 0; row < numRows; row++) {
         const rowDiv = document.createElement('div');
         rowDiv.className = 'tube-row';
         const start = row * perRow;

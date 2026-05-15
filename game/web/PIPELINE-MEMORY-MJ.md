@@ -39,6 +39,20 @@ Pipeline boucle d'apprentissage :
 
 ## 2. Décisions de design (chronologique)
 
+### 2026-05-15 — Système de FIGEAGE par jeu (incident MJ-21)
+
+**Cause racine** : aucune décision validée par Papa Yann n'avait d'adresse physique par-jeu. Elles vivaient dans le contexte conversationnel → effacées à chaque `/compact` → régression structurelle. Incident : décision « bus cible EN BAS » répétée >10× puis re-proposée « en haut » post-compact.
+
+**Décidé par Papa Yann + game-conseiller (co-boss)**. Système triple verrou :
+
+1. **Fichier LOI par jeu** : `game/docs/jeux/figees/mj-XX.md` (sections : Objectif / 🔒 Mécanique / 🔒 Layout / ❌ 🔒 Anti-régressions / Journal append-only / Zone ouverte). Seul `game-mj-pmo` y écrit (mot-pour-mot, jamais paraphrase). Seul Papa Yann défige.
+2. **Hook PreToolUse** `.claude/hooks/figees-injector.ps1` (générique tous MJ) : réinjecte le fichier figé dans le contexte avant chaque Edit/Write d'un `mj-*.html`. Survit au `/compact`. C'est la pièce maîtresse — rend la régression structurellement impossible, pas « déconseillée ».
+3. **Section 0 bloquante** dans `game-mj-reviewer` : diff sémantique code ↔ figé, citation obligatoire ligne par ligne, 1 ligne 🔒 violée = FAIL global immédiat.
+
+Renforts : bloc « ⛔ AVANT DE MODIFIER » dans `.claude/rules/mini-jeux.md`, ligne LOI dans `game/CLAUDE.md` (re-injecté post-compact), responsabilité N°1 ajoutée à `game-mj-pmo`. Premier fichier : `figees/mj-21.md`.
+
+**Trigger figeage** : formule Papa Yann (« OK c'est figé / validé / on fige / ne change plus X ») → main agent invoque `game-mj-pmo` immédiatement.
+
 ### 2026-05-11 — Décision Papa Yann sur scope mj-12
 
 **Trigger user** : *"nanan c'est bien garder comme plage de son tableau de bord, pas de jeu"*

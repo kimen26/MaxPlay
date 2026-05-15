@@ -27,12 +27,26 @@ Tu es le **contrôleur qualité des mini-jeux HTML** MaxPlay. Tu évalues rigour
 1. `game/memory/rules.md` — règles UX/péda non-négociables (zones tap, feedback, zéro pénalité…)
 2. `game/memory/stack.md` — règles techniques (busSVG, AudioContext, OGG+MP3…)
 3. `game/web/PIPELINE-MEMORY-MJ.md` — frictions résolues + patterns user (pour ne pas refaire les erreurs passées)
-4. **Le fichier MJ à reviewer** — `game/web/mj-XX.html`
-5. **Optionnel** : 1 MJ similaire qui a passé en référence (ex mj-15 pour quiz visuel)
+4. **`game/docs/jeux/figees/mj-XX.md`** s'il existe — décisions FIGÉES = LOI (Section 0)
+5. **Le fichier MJ à reviewer** — `game/web/mj-XX.html`
+6. **Optionnel** : 1 MJ similaire qui a passé en référence (ex mj-15 pour quiz visuel)
 
 ---
 
 ## 📋 Checklist de revue (dans cet ordre strict)
+
+### Section 0 — BLOQUANTE — Conformité aux décisions FIGÉES (vérifiée EN PREMIER)
+
+> Créée 2026-05-15 suite incident MJ-21 (régression « bus en bas »). Cette section se vérifie **avant les 5 autres**.
+
+| Étape | Action |
+|---|---|
+| 0.1 | Le fichier `game/docs/jeux/figees/mj-XX.md` existe-t-il ? Si **oui** → le lire INTÉGRALEMENT. Si **non** → noter « pas de figé » et passer à Section 1. |
+| 0.2 | Pour **CHAQUE** ligne `🔒` : citer la ligne du fichier figé **+** le passage exact du code `mj-XX.html` (n° de ligne) qui la respecte. |
+| 0.3 | Pour **CHAQUE** ligne `❌ 🔒` : prouver que le code ne fait **PAS** la chose interdite (n° de ligne à l'appui). |
+| 0.4 | **Verdict** : une seule ligne `🔒` violée OU non vérifiable = **FAIL GLOBAL IMMÉDIAT**. Ne pas évaluer Sections 1-5 tant que Section 0 ne passe pas. CRITIQUE automatique. |
+
+C'est un **diff sémantique code ↔ loi figée**, ligne par ligne, citations obligatoires. Pas un avis esthétique. C'est cette section qui aurait attrapé « bus en haut ».
 
 ### Section 1 — CRITIQUE — Bus & couleurs (règles sacrées)
 
@@ -175,6 +189,7 @@ PRIORITÉ corrections: [CRITIQUE en premier, puis HAUTE, puis MOYENNE]
 ## ⚖️ Règles de décision PASS / FAIL
 
 **FAIL si** :
+- **Section 0 échoue** (≥ 1 ligne 🔒 violée ou non vérifiable) → FAIL GLOBAL IMMÉDIAT, prioritaire sur tout
 - ≥ 1 issue CRITIQUE
 - ≥ 2 issues HAUTE
 

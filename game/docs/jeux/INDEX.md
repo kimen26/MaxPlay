@@ -30,6 +30,7 @@
 
 | Fichier | Quand le lire |
 |---------|--------------|
+| [figees/mj-XX.md](figees/) 🔒 | **LOI — lire AVANT toute modif de `mj-XX.html`.** Décisions figées par jeu, anti-régressions. Réinjecté par hook. Seul `game-mj-pmo` y écrit, seul Papa Yann défige. Créé 2026-05-15 (incident MJ-21) |
 | [GAMES_SPECS.md](GAMES_SPECS.md) | **Avant toute modif d'un jeu** — objectif péda, mécanique, pool de lignes |
 | [game-ideas.md](game-ideas.md) | Backlog créatif brut (non priorisé) |
 | [MENU-MAP-VILLEJUIF.md](MENU-MAP-VILLEJUIF.md) | Plan menu hybride carte Villejuif + grille jeux (non implémenté) |

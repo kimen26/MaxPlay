@@ -12,6 +12,7 @@
 - **Bus** : toujours `busSVG()` / `busSVGHiddenNum()` de [`web/js/bus-svg.js`](web/js/bus-svg.js). Jamais d'emoji 🚌, jamais de div CSS colorée.
 - **Couleurs** : toujours via `LIGNES` de [`web/js/data.js`](web/js/data.js). Jamais de hex hardcodé.
 - **UX** : zéro pénalité punitive · feedback < 200 ms · zones tap min 80 px · sessions 3-8 min.
+- **Décisions figées par jeu** : [`docs/jeux/figees/mj-XX.md`](docs/jeux/figees/) fait **LOI**. Jamais modifier un `mj-XX.html` sans l'avoir lu (hook `figees-injector.ps1` le réinjecte). Jamais contredire une ligne 🔒. Seul Papa Yann défige. Détail : [`../.claude/rules/mini-jeux.md`](../.claude/rules/mini-jeux.md) § ⛔ AVANT DE MODIFIER.
 
 ---
 

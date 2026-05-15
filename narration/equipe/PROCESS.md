@@ -46,6 +46,55 @@
 
 ---
 
+## PROCESS Audio — 5 étapes (workflow post-étape 10, décision figée 2026-05-16)
+
+> **Méthodologie officielle** : `POST /v1/text-to-dialogue` (ElevenLabs) packetisé < 2000 char. Source : [`../pmo/decisions.md`](../pmo/decisions.md) § DEC-AUDIO-PRODUCTION-001 (figée, jamais régresser). Détail technique complet : [`.claude/rules/audio.md`](./.claude/rules/audio.md) (auto-chargé dès que Claude touche script audio).
+
+### Vue d'ensemble — 5 étapes linéaires
+
+```
+(Après étape 10 Canon validé)
+
+0. Voice-director       (Agent VOIX-001)             → texte canon + tags v3 inline
+1. Packetisation        (Script production)          → paquets JSON < 2000 char
+2. Appels API           (ElevenLabs text-to-dialogue)→ MP3 par paquet
+3. Concat + loudnorm    (ffmpeg)                     → 1 MP3 final cohérent
+4. Archivage            (Papa Yann + PMO)            → versionning traçabilité
+```
+
+| Étape | Owner | Inputs | Outputs | Critères PASS |
+|-------|-------|--------|---------|---------------|
+| **0 Voice-director** | Agent VOIX-001 (futur) | `stories/NNN/10-texte.md` canon validé | Texte canon + tags v3 inline (`[softly]`, `[excited]`, etc.) + markup voice IDs | ✅ Tags cohérents avec [`personnages/voix-meta/_CHEATSHEET-WRITERS.md`](../personnages/voix-meta/_CHEATSHEET-WRITERS.md). Aucun tag inventé. Minimum 1-2 tags par 2000 char bloc. |
+| **1 Packetisation** | Script `generate-story-dialogue.js` | Voice-director output + voice_id casting | JSON `_segments-NNN-vN-<llm>.json` documentant paquets (`inputs:[{voice_id, text}]` format text-to-dialogue API) | ✅ Paquets < 2000 char (total, tags inclus). Boundaries logiques (phrases complètes). Voice IDs tablés dans [`../personnages/voix-meta/_VOICE-IDS-CASTING.md`](../personnages/voix-meta/_VOICE-IDS-CASTING.md). |
+| **2 Appels API** | Script production (loop packetisation) | JSON segments + EL_API_KEY | MP3 par paquet (0 concat, juste raw API outputs) | ✅ 1 appel `POST /v1/text-to-dialogue` par paquet. Modèle `eleven_v3`. Voice settings appliquées (gravées casting). Max 10 voice_ids/appel respecté. |
+| **3 Concat+loudnorm** | ffmpeg via script | 2-3 MP3 issus étape 2 | 1 MP3 final `NNN-story-audio-vN-<method>.mp3` | ✅ ffmpeg concat + `loudnorm -I -23 -TP -1.5 -LRA 11` appliqué. Transitions fluides testées à l'oreille. Volume homogène entre paquets. |
+| **4 Archivage** | Papa Yann (validation oreille) + PMO | MP3 final + JSON segments + request_ids | `stories/NNN/assets/audio/NNN-story-audio-vN-<method>.mp3` + metadata README (durée, date, voice_ids, version script) | ✅ MP3 accepté. Metadata complète dans `stories/NNN/assets/audio/_archive-attempts/`. Anciennes générations conservées (jamais supprimées). |
+
+### Pré-requis avant lancement
+
+| Ticket | Statut | Bloquer ? |
+|--------|--------|-----------|
+| **VOIX-001** — Créer agent voice-director | ⚪ À faire | ✅ **CRITIQUE** — sans voice-director, impossible markup tags v3 fiable |
+| **VOIX-002** — Créer voice_ids narrateurs (H+F) | ⚪ À faire | ✅ **CRITIQUE** — narrateurs requis pour toute histoire |
+| **VOIX-003** — Créer voice_ids 10 persos | ⚪ À faire | ⚠️ Déblockant différé — étape 1-4 réutilisent casting existant `_VOICE-IDS-CASTING.md` |
+| **AUDIO-SCRIPT-V2** — Implémentation script production | ⚪ À faire | ✅ **CRITIQUE** — sans script, étapes 1-3 = manuel infaisable |
+
+**Lancement audio production** : après VOIX-001 + AUDIO-SCRIPT-V2 complétés + test réussi sur STORY-002 ou STORY-003.
+
+### Anti-patterns AUDIO (bannir 100%)
+
+| Anti-pattern | Raison | Substitut |
+|--------------|--------|-----------|
+| 32+ appels TTS séparés (1 voice_id/appel) | Transitions abruptes, intonations cassées | `POST /v1/text-to-dialogue` avec 2-10 voice_ids par appel |
+| Concat ffmpeg `-c copy` de 32 segments | Volumes inégaux, perte d'intonation | Concat 2-3 MP3 text-to-dialogue seulement + loudnorm |
+| Voice settings inventés | Dérive sonore perso à perso | Utiliser `_VOICE-IDS-CASTING.md` (source autorité) |
+| Tags v3 inventés | Balises non supportées → API rejet/ignoré | Catalogue [`audio-direction-elevenlabs` skill](~/.claude/skills/audio-direction-elevenlabs/) ou `_CHEATSHEET-WRITERS.md` |
+| Loudnorm absent | Volumes incohérents inter-histoires | `ffmpeg -i concat.wav -af loudnorm -o final.mp3` obligatoire |
+| Pronunciation dict ignorés | Prénoms Max mal prononcés, incohérence cross-culture | Vérifier dicts dans `_VOICE-IDS-CASTING.md` + appliquer `pronunciation_dictionary_locators` API |
+| Onomatopée en FR sur perso culture autre | Incoherence culturelle (ex: "Boum" sur Wex brésilien) | Choisir variante cataloguée [`cross-culture/onomatopees/`](../cross-culture/onomatopees/) |
+
+---
+
 ## Étape 0 — Idée
 
 | Champ | Valeur |

@@ -4,6 +4,63 @@
 
 ---
 
+## 2026-05-16 (2e round) — [ARCHIVISTE] Finalisation refs audio — mise à jour generate-story-dialogue + freshness-protocol
+
+**Mode** : Finalisation FORME — références script + pointeurs skill
+
+**Contexte** :
+
+PMO a gravé PROCESS audio complet en `equipe/PROCESS.md` L.47-125 + décision DEC-AUDIO-PRODUCTION-001. Script `generate-story-dialogue.js` livré le 2026-05-16 01:40. Archiviste := finaliser refs FORME (pointeurs script correct + freshness-protocol ajouté).
+
+**Actions Archiviste (FORME)** :
+
+| Fichier | Action | Détail |
+|---------|--------|--------|
+| `equipe/PROCESS.md` L.68 | Correction nom script | `generate-story-audio-v2.js` → `generate-story-dialogue.js` (nom réel livré 2026-05-16) |
+| `narration/CLAUDE.md` L.103-114 | Ajout mention freshness-protocol | Ligne 112 : pointeur `~/.claude/skills/audio-direction-elevenlabs/00-freshness-protocol.md` + date snapshot 2026-05-16 |
+| Audit grep refs | Validation cross-refs | ✅ Aucune ref à `generate-story-audio` hors `_archive/` + mentions obsolète OK. Pointeur freshness-protocol ajouté à 1 place (CLAUDE.md). |
+| Cohérence tableau PROCESS.md audio (L.65-72) | Vérification | ✅ Tableau owner/inputs/outputs/critères PASS cohérent. Aucune divergence sémantique Kanban⇄INDEX détectée (PROCESS audio nouveau, zéro production réelle lancée). |
+
+**Statut** : ✅ RÉFÉRENCES PROPAGÉES — script pointeur correct en PROCESS.md + freshness-protocol adverti en CLAUDE.md. Zéro divergence sémantique. Prêt pour lancement VOIX-001/002.
+
+---
+
+## 2026-05-16 — [ARCHIVISTE] Dépréciassion PROCESS audio — implémentation structurelle de DEC-AUDIO-PRODUCTION-001
+
+**Mode** : Correction structurelle FORME + renforcement garde-fou (FOND fixé par narration-pmo)
+
+**Contexte** :
+
+narration-pmo a figé **DEC-AUDIO-PRODUCTION-001** (2026-05-16 14h) : Text-to-Dialogue API `POST /v1/text-to-dialogue` packetisé (plafond 2000 char/appel, concat 2-3 MP3 seulement, loudnorm final). Anti-pattern banni : 32+ appels TTS mono + concat brut.
+
+L'Archiviste (FORME) exécute le contenu : dépréciassion script legacy + renforcement garde-fou structurel.
+
+**Actions Archiviste (FORME)** :
+
+| Fichier | Action | Détail |
+|---------|--------|--------|
+| `scripts/generate-story-audio.js` | Bandeau ⛔ OBSOLÈTE + redirection | 30 lignes commentaire explicatif : anti-pattern + PROCESS officiel + renvoi narration-pmo |
+| `scripts/generate-story-audio.js` | Déplacement | Déplacé → `_archive/generate-story-audio.js.DEPRECATED` |
+| `_archive/INDEX.md` | Nouvelle section | Entrée datée : raison archivage DEC-AUDIO-001 + renvoi skill + PMO |
+| `.claude/rules/audio.md` | Section PROCESS MILITAIRE créée | DEC-AUDIO-001 + 3 subsections (règles enforced, anti-patterns bannis détaillés, référence skill global) |
+| `.claude/rules/audio.md` | Pipeline section remaniée | Suppression référence script obsolète, pointe directement skill global |
+| `.claude/rules/audio.md` | 17→20+ anti-patterns documentés | Catégorisation fine : voix/settings, tags/didascalies, phonétique, architecture. DEC-AUDIO-001 + anti-pattern principale en gras. |
+| `narration/CLAUDE.md` | Pointeur produit audio | Marque PROCESS MILITAIRE 2026-05-16 + skill officiel + old script → archive |
+| `equipe/INDEX.md` | Table sources-audio | Mise à jour skill audio-direction-elevenlabs (PROCESS MILITAIRE) + anti-pattern 32+ TTS souligné |
+
+**Cohérence cross-INDEX vérifiée** : aucune doc recommandant le script obsolète dans les autres INDEX ou CLAUDE.md trouvée. Cohérence POST-action vérifiée : tous les pointeurs vers production audio convergent sur skill global + rules audio.md enforced.
+
+**Synchronisation FOND** :
+
+narration-pmo a déjà gravé la décision dans :
+- `decisions.md` § DEC-AUDIO-PRODUCTION-001 (méthodo complète text-to-dialogue + anti-pattern)
+- `INVARIANTS.md` § Méthode audio officielle
+- `backlog.md` (ticket AUDIO-SCRIPT-V2 pour créer script texte-to-dialogue v2)
+
+**Statut** : ✅ STRUCTUREL COMPLET — PROCESS MILITAIRE gravé dans `.claude/rules/audio.md` (auto-charged), script obsolète archivé, tous pointeurs cohérents.
+
+---
+
 ## 2026-05-15 — [ARCHIVISTE] Nettoyage DEC-TENSION-RESONANCE — annulation sur-formalisation
 
 **Mode** : Correction directive auteur

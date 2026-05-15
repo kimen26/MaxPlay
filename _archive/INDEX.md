@@ -39,6 +39,12 @@ Ex-`docs/narration/reference/`. Contenu analysé mais jamais référencé active
 
 **+ `baron.md`** (ex-`docs/narration/univers/baron.md`) : inspiration univers écartée le 2026-04-17 (figure de voyageur temporel mise de côté). Conservée si une histoire ravive la piste.
 
+### `generate-story-audio.js.DEPRECATED` — Script AUDIO obsolète (2026-05-16)
+
+| Fichier | Raison archivage |
+|---------|------------------|
+| `generate-story-audio.js.DEPRECATED` | **Anti-pattern banni** (DEC-AUDIO-001). Implémentait multi-TTS mono (32+ appels API + concat ffmpeg brut) au lieu du PROCESS MILITAIRE officiel (text-to-dialogue API 1 appel par paquet < 2000 car + ffmpeg loudnorm 1-3 fois). Surcoûts API + incohérence loudness. PROCESS officiel dans `.claude/rules/audio.md` + skill `~/.claude/skills/audio-direction-elevenlabs/`. Migration demander narration-pmo. |
+
 ### `temp-assets-2026-04/` — Sons bruts pré-production
 
 Ex-`temp/` (partie sons). 26 fichiers audio (.mp3, .flac) + 1 script `gen-idfm.js` mort. ~2.8 Mo.

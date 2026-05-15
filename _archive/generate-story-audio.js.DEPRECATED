@@ -1,6 +1,19 @@
 #!/usr/bin/env bun
 /**
- * generate-story-audio.js
+ * ⛔ OBSOLÈTE — Anti-pattern banni (2026-05-16 DEC-AUDIO-001)
+ *
+ * NE PAS UTILISER. Ce script implémente l'anti-pattern multi-TTS mono (32+ appels API
+ * TTS standard + concat ffmpeg brut). Entraîne incohérence loudness et surcoûts API.
+ *
+ * PROCESS OFFICIEL : text-to-dialogue API (multi-voix 1 appel, plafond 2000 car)
+ * Voir PROCESS militaire audio dans narration/.claude/rules/audio.md § PROCESS MILITAIRE
+ * + skill global ~/.claude/skills/audio-direction-elevenlabs/
+ *
+ * Pour migrer une production, consulter narration-pmo.
+ * Fichier déplacé vers _archive/ (voir _archive/INDEX.md).
+ * ---
+ *
+ * generate-story-audio.js [DEPRECATED]
  *
  * Génère l'audio multi-voix d'une story MaxPlay depuis un JSON de segments
  * (format _segments-NNN-vX.json) en bypassant l'API Studio EL (whitelistée

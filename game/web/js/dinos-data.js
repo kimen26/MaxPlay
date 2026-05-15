@@ -10,6 +10,58 @@ const DINO_CATEGORIES = [
   { id: 'volants_marins', label: 'Volants & Marins', emoji: '🌊', color: '#8e44ad', bg: 'linear-gradient(135deg,#4a0080,#8e44ad)' },
 ];
 
+const DINO_CONTINENTS = [
+  { id: 'Amérique du Nord', label: 'Amérique du Nord', emoji: '🌎', color: '#e74c3c', bg: 'linear-gradient(135deg,#7b1010,#e74c3c)' },
+  { id: 'Amérique du Sud', label: 'Amérique du Sud',  emoji: '🌎', color: '#e67e22', bg: 'linear-gradient(135deg,#7a3000,#e67e22)' },
+  { id: 'Europe',           label: 'Europe',           emoji: '🌍', color: '#3498db', bg: 'linear-gradient(135deg,#003366,#3498db)' },
+  { id: 'Afrique',          label: 'Afrique',          emoji: '🌍', color: '#f39c12', bg: 'linear-gradient(135deg,#7a5000,#f39c12)' },
+  { id: 'Asie',             label: 'Asie',             emoji: '🌏', color: '#e91e63', bg: 'linear-gradient(135deg,#7b003a,#e91e63)' },
+  { id: 'Antarctique',      label: 'Antarctique',      emoji: '🧊', color: '#00bcd4', bg: 'linear-gradient(135deg,#003344,#00bcd4)' },
+];
+
+const DINO_PERIODES = [
+  {
+    id: 'permien',
+    label: 'Permien',
+    emoji: '🌋',
+    range: '280 Ma',
+    desc: 'Avant les dinosaures',
+    ma_start: 280, ma_end: 252,
+    color: '#795548',
+    bg: 'linear-gradient(135deg,#3e2723,#795548)',
+  },
+  {
+    id: 'trias',
+    label: 'Trias',
+    emoji: '🌿',
+    range: '252 – 201 Ma',
+    desc: 'Les premiers dinosaures',
+    ma_start: 252, ma_end: 201,
+    color: '#ff7043',
+    bg: 'linear-gradient(135deg,#7a1a00,#ff7043)',
+  },
+  {
+    id: 'jurassique',
+    label: 'Jurassique',
+    emoji: '🦕',
+    range: '201 – 145 Ma',
+    desc: 'Les géants sauropodes',
+    ma_start: 201, ma_end: 145,
+    color: '#66bb6a',
+    bg: 'linear-gradient(135deg,#1b5e20,#66bb6a)',
+  },
+  {
+    id: 'cretace',
+    label: 'Crétacé',
+    emoji: '🦖',
+    range: '145 – 66 Ma',
+    desc: 'Le règne du T-Rex',
+    ma_start: 145, ma_end: 66,
+    color: '#42a5f5',
+    bg: 'linear-gradient(135deg,#0d2a66,#42a5f5)',
+  },
+];
+
 const DINOS = [
 
   // ══════════════ 1. LES CHASSEURS ══════════════
@@ -34,6 +86,8 @@ const DINOS = [
     desc: 'Le T-Rex est le roi des dinosaures. Il avait une tête énorme, des dents géantes, et des bras tout petits. Mais attention, ses pattes arrière couraient très vite !',
     png: 'Tyrannosaurus.png',
     color: '#c0392b',
+    continent: 'Amérique du Nord',
+    periode: 'cretace',
   },
   {
     id: 'spinosaurus',
@@ -55,6 +109,8 @@ const DINOS = [
     desc: 'Le Spinosaure était encore plus grand que le T-Rex ! Il vivait près des rivières et attrapait d\'énormes poissons. Il avait une grande voile rouge sur le dos.',
     png: 'Spinosaurus.png',
     color: '#2471a3',
+    continent: 'Afrique',
+    periode: 'cretace',
   },
   {
     id: 'giganotosaurus',
@@ -76,6 +132,8 @@ const DINOS = [
     desc: 'Le Giganotosaure vivait en Amérique du Sud. Il était ÉNORME et chassait peut-être en groupe pour attraper des dinosaures encore plus grands que lui !',
     png: 'Giganotosaurus.png',
     color: '#a93226',
+    continent: 'Amérique du Sud',
+    periode: 'cretace',
   },
   {
     id: 'carcharodontosaurus',
@@ -97,6 +155,8 @@ const DINOS = [
     desc: 'Le Carcharodontosaure vivait en Afrique en même temps que le Spinosaure. Il avait des dents en forme de dents de requin pour découper sa nourriture.',
     png: 'Carcharodontosaurus.png',
     color: '#922b21',
+    continent: 'Afrique',
+    periode: 'cretace',
   },
   {
     id: 'acrocanthosaurus',
@@ -118,6 +178,8 @@ const DINOS = [
     desc: 'L\'Acrocanthosaure était le T-Rex de son époque. Il avait une grosse bosse de muscles sur le dos et chassait les dinosaures géants.',
     png: 'Acrocanthosaurus.png',
     color: '#8b1a1a',
+    continent: 'Amérique du Nord',
+    periode: 'cretace',
   },
   {
     id: 'allosaurus',
@@ -139,6 +201,8 @@ const DINOS = [
     desc: 'L\'Allosaure était le super chasseur du Jurassique. Il ouvrait sa mâchoire très grande pour frapper sa proie comme un coup de hache !',
     png: 'Allosaurus.png',
     color: '#b03a2e',
+    continent: 'Amérique du Nord',
+    periode: 'jurassique',
   },
   {
     id: 'tarbosaurus',
@@ -160,6 +224,8 @@ const DINOS = [
     desc: 'Le Tarbosaure était le T-Rex de l\'Asie ! Il vivait dans les déserts de Mongolie et ressemblait beaucoup à son cousin américain.',
     png: 'Tarbosaurus.png',
     color: '#96281b',
+    continent: 'Asie',
+    periode: 'cretace',
   },
   {
     id: 'albertosaurus',
@@ -181,6 +247,8 @@ const DINOS = [
     desc: 'L\'Albertosaure était plus petit que le T-Rex mais il était très malin. Il chassait peut-être en groupe comme les loups d\'aujourd\'hui !',
     png: 'Albertosaurus.png',
     color: '#922b21',
+    continent: 'Amérique du Nord',
+    periode: 'cretace',
   },
   {
     id: 'gorgosaurus',
@@ -202,6 +270,8 @@ const DINOS = [
     desc: 'Le Gorgosaure était un grand chasseur du Canada il y a très longtemps. Il courait vite et avait des dents très tranchantes.',
     png: 'Gorgosaurus.png',
     color: '#a83232',
+    continent: 'Amérique du Nord',
+    periode: 'cretace',
   },
   {
     id: 'ceratosaurus',
@@ -223,6 +293,8 @@ const DINOS = [
     desc: 'Le Cératosaure avait quelque chose de spécial : une corne sur le nez ! Il vivait au Jurassique et chassait de petits animaux et des poissons.',
     png: 'Ceratosaurus.png',
     color: '#a04020',
+    continent: 'Amérique du Nord',
+    periode: 'jurassique',
   },
   {
     id: 'dilophosaurus',
@@ -244,6 +316,8 @@ const DINOS = [
     desc: 'Le Dilophosaure avait deux belles crêtes colorées sur la tête. C\'est un des premiers grands dinosaures carnivores !',
     png: 'Dilophosaurus.png',
     color: '#b05a00',
+    continent: 'Amérique du Nord',
+    periode: 'jurassique',
   },
   {
     id: 'carnotaurus',
@@ -265,6 +339,8 @@ const DINOS = [
     desc: 'Le Carnotaure avait des cornes comme un taureau et courait très très vite ! C\'est un des dinos les plus rapides de toute son époque.',
     png: 'Carnotaurus.png',
     color: '#7d3c00',
+    continent: 'Amérique du Sud',
+    periode: 'cretace',
   },
   {
     id: 'cryolophosaurus',
@@ -286,6 +362,8 @@ const DINOS = [
     desc: 'Le Cryolophosaure vivait en Antarctique quand il faisait encore un peu chaud là-bas ! Il avait une crête rigolote et on l\'appelle parfois Elvisaurus !',
     png: 'Cryolophosaurus.png',
     color: '#1a5276',
+    continent: 'Antarctique',
+    periode: 'jurassique',
   },
 
   // ══════════════ 2. GÉANTS HERBIVORES ══════════════
@@ -310,6 +388,8 @@ const DINOS = [
     desc: 'Le Brachiosaure était immense ! Il mangeait les feuilles tout en haut des arbres. Il avait un très long cou et de grandes pattes avant. Un géant gentil !',
     png: 'Brachiosaurus.png',
     color: '#1e8449',
+    continent: 'Amérique du Nord',
+    periode: 'jurassique',
   },
   {
     id: 'diplodocus',
@@ -331,6 +411,8 @@ const DINOS = [
     desc: 'Le Diplodocus était l\'un des plus longs dinosaures. Il avait un très long cou ET une très longue queue. Cette queue faisait un énorme bruit de fouet pour effrayer les chasseurs !',
     png: 'Diplodocus.png',
     color: '#239b56',
+    continent: 'Amérique du Nord',
+    periode: 'jurassique',
   },
   {
     id: 'apatosaurus',
@@ -352,6 +434,8 @@ const DINOS = [
     desc: 'L\'Apatosaure est le géant gentil que beaucoup appellent Brontosaure. Il mangeait autant de plantes en un jour que toi en une année !',
     png: 'Apatosaurus.png',
     color: '#196f3d',
+    continent: 'Amérique du Nord',
+    periode: 'jurassique',
   },
   {
     id: 'camarasaurus',
@@ -373,6 +457,8 @@ const DINOS = [
     desc: 'Le Camarasaure était un dinosaure géant avec une grosse tête et de fortes dents. Il vivait en troupeau et s\'occupait bien de ses bébés.',
     png: 'Camarasaurus.png',
     color: '#17a589',
+    continent: 'Amérique du Nord',
+    periode: 'jurassique',
   },
   {
     id: 'amargasaurus',
@@ -394,6 +480,8 @@ const DINOS = [
     desc: 'L\'Amargasaure avait 2 rangées de grandes épines sur le cou et le dos. C\'était peut-être pour se défendre ou pour montrer à ses amis qu\'il était beau !',
     png: 'Amargasaurus.png',
     color: '#0e6655',
+    continent: 'Amérique du Sud',
+    periode: 'cretace',
   },
   {
     id: 'plateosaurus',
@@ -415,6 +503,8 @@ const DINOS = [
     desc: 'Le Plateosaure était l\'un des premiers grands dinosaures. Il vivait au Trias, longtemps avant le T-Rex. Il pouvait se lever sur ses pattes arrière pour manger plus haut !',
     png: 'Plateosaurus.png',
     color: '#148f77',
+    continent: 'Europe',
+    periode: 'trias',
   },
 
   // ══════════════ 3. LES TOUT BLINDÉS ══════════════
@@ -439,6 +529,8 @@ const DINOS = [
     desc: 'L\'Ankylosaure était le char d\'assaut des dinosaures ! Son dos était recouvert d\'une armure dure comme de la roche. Et sa queue finissait par une grosse boule qui cassait tout !',
     png: 'Ankylosaurus.png',
     color: '#626567',
+    continent: 'Amérique du Nord',
+    periode: 'cretace',
   },
   {
     id: 'euoplocephalus',
@@ -460,6 +552,8 @@ const DINOS = [
     desc: 'L\'Euoplocéphale était encore plus blindé que l\'Ankylosaure. Même ses paupières étaient faites d\'os ! Il avait aussi une queue-massue super puissante.',
     png: 'Euoplocephalus.png',
     color: '#717d7e',
+    continent: 'Amérique du Nord',
+    periode: 'cretace',
   },
   {
     id: 'stegosaurus',
@@ -481,6 +575,8 @@ const DINOS = [
     desc: 'Le Stégosaure avait de grandes plaques colorées sur le dos et 4 longues piques au bout de la queue. Ses plaques lui servaient peut-être de radiateur pour se réchauffer ou se refroidir !',
     png: 'Stegosaurus.png',
     color: '#5d6d7e',
+    continent: 'Amérique du Nord',
+    periode: 'jurassique',
   },
   {
     id: 'kentrosaurus',
@@ -502,6 +598,8 @@ const DINOS = [
     desc: 'Le Kéntrosaure était le cousin africain du Stégosaure. Il était plus petit mais avait encore plus de piques sur tout le corps. Même sur les épaules !',
     png: 'Kentrosaurus.png',
     color: '#4d5656',
+    continent: 'Afrique',
+    periode: 'jurassique',
   },
 
   // ══════════════ 4. CRESTÉS & CORNUS ══════════════
@@ -526,6 +624,8 @@ const DINOS = [
     desc: 'Le Tricératops avait 3 cornes et un grand bouclier osseux autour de la tête. Il n\'avait pas peur du T-Rex ! C\'était le grand guerrier des herbivores.',
     png: 'Triceratops.png',
     color: '#7d6608',
+    continent: 'Amérique du Nord',
+    periode: 'cretace',
   },
   {
     id: 'styracosaurus',
@@ -547,6 +647,8 @@ const DINOS = [
     desc: 'Le Styracosaure avait une magnifique couronne de cornes autour de la tête. Il vivait en grand troupeau pour se protéger des grands carnivores.',
     png: 'Styracosaurus.png',
     color: '#9a7d0a',
+    continent: 'Amérique du Nord',
+    periode: 'cretace',
   },
   {
     id: 'protoceratops',
@@ -568,6 +670,8 @@ const DINOS = [
     desc: 'Le Protocératops était le petit ancêtre des Tricératops. Il avait déjà une collerette mais pas encore de cornes. Et il se battait courageusement contre les Vélociraptors !',
     png: 'Protoceratops.png',
     color: '#b7950b',
+    continent: 'Asie',
+    periode: 'cretace',
   },
   {
     id: 'psittacosaurus',
@@ -589,6 +693,8 @@ const DINOS = [
     desc: 'Le Psittacosaure avait un bec comme un perroquet et de jolies plumes sur la queue. C\'est l\'ancêtre du Tricératops. Et les adultes gardaient les bébés comme une vraie école !',
     png: 'Psittacosaurus.png',
     color: '#9b7e04',
+    continent: 'Asie',
+    periode: 'cretace',
   },
   {
     id: 'parasaurolophus',
@@ -610,6 +716,8 @@ const DINOS = [
     desc: 'Le Parasaurolophus avait une grande crête creuse sur la tête. Il soufflait de l\'air dedans pour faire des sons très forts — comme un grand klaxon — pour parler avec son troupeau !',
     png: 'Parasaurolophus.png',
     color: '#6e2f8a',
+    continent: 'Amérique du Nord',
+    periode: 'cretace',
   },
   {
     id: 'corythosaurus',
@@ -631,6 +739,8 @@ const DINOS = [
     desc: 'Le Corythosaure portait une grande crête en forme de casque sur la tête. Cette crête lui servait à faire des sons pour parler avec ses amis du troupeau.',
     png: 'Corythosaurus.png',
     color: '#7d3c98',
+    continent: 'Amérique du Nord',
+    periode: 'cretace',
   },
   {
     id: 'edmontosaurus',
@@ -652,6 +762,8 @@ const DINOS = [
     desc: 'L\'Edmontosaure était un grand dino à bec de canard. Il vivait en immenses troupeaux et avait des centaines de dents pour broyer les plantes les plus dures !',
     png: 'Edmontosaurus.png',
     color: '#8e44ad',
+    continent: 'Amérique du Nord',
+    periode: 'cretace',
   },
   {
     id: 'maiasaura',
@@ -673,6 +785,8 @@ const DINOS = [
     desc: 'La Maiasaura était la meilleure maman de tous les dinosaures ! Elle construisait des nids, pondait des œufs, et nourrissait ses bébés pendant longtemps. Elle vivait en grand village avec d\'autres familles !',
     png: 'Maiasaura.png',
     color: '#9b59b6',
+    continent: 'Amérique du Nord',
+    periode: 'cretace',
   },
   {
     id: 'iguanodon',
@@ -694,6 +808,8 @@ const DINOS = [
     desc: 'L\'Iguanodon était un dino célèbre car c\'est l\'un des premiers découverts. Il avait un pique tranchant sur le pouce pour se défendre. Il marchait sur 4 pattes mais pouvait se lever sur 2 !',
     png: 'Iguanodon.png',
     color: '#a569bd',
+    continent: 'Europe',
+    periode: 'cretace',
   },
   {
     id: 'pachycephalosaurus',
@@ -715,6 +831,8 @@ const DINOS = [
     desc: 'Le Pachycephalosaure avait un crâne super épais, comme un casque de moto en os ! Les mâles se battaient en se frappant la tête comme les béliers font aujourd\'hui.',
     png: 'Pachycephalosaurus.png',
     color: '#884ea0',
+    continent: 'Amérique du Nord',
+    periode: 'cretace',
   },
 
   // ══════════════ 5. RAPACES MALINS ══════════════
@@ -739,6 +857,8 @@ const DINOS = [
     desc: 'Le Vélociraptor n\'était pas énorme — de la taille d\'un grand chien. Mais il était couvert de plumes et très très malin ! Il chassait en groupe comme les loups.',
     png: 'Velociraptor.png',
     color: '#d35400',
+    continent: 'Asie',
+    periode: 'cretace',
   },
   {
     id: 'deinonychus',
@@ -760,6 +880,8 @@ const DINOS = [
     desc: 'Le Deinonychus était le vrai modèle des raptors de Jurassic Park ! Il avait une énorme griffe tranchante et chassait en groupe. Super rapide et super malin !',
     png: 'Deinonychus.png',
     color: '#e67e22',
+    continent: 'Amérique du Nord',
+    periode: 'cretace',
   },
   {
     id: 'utahraptor',
@@ -781,6 +903,8 @@ const DINOS = [
     desc: 'L\'Utahraptor était un GÉANT parmi les raptors ! Il avait une griffe énorme, courait vite, et était très intelligent. Le super prédateur de son époque !',
     png: 'Utahraptor.png',
     color: '#ca6f1e',
+    continent: 'Amérique du Nord',
+    periode: 'cretace',
   },
   {
     id: 'microraptor',
@@ -802,6 +926,8 @@ const DINOS = [
     desc: 'Le Microraptor était minuscule avec 4 ailes ! Il planait entre les arbres en Chine pour attraper des lézards et des petits poissons. Incroyable !',
     png: 'Microraptor.png',
     color: '#a04000',
+    continent: 'Asie',
+    periode: 'cretace',
   },
   {
     id: 'troodon',
@@ -823,6 +949,8 @@ const DINOS = [
     desc: 'Le Troodon était le dinosaure le plus intelligent de tous ! Il avait de grands yeux pour voir la nuit, de longs bras habiles, et un cerveau énorme. Le professeur des dinosaures !',
     png: 'Troodon.png',
     color: '#b7770d',
+    continent: 'Amérique du Nord',
+    periode: 'cretace',
   },
   {
     id: 'gallimimus',
@@ -844,6 +972,8 @@ const DINOS = [
     desc: 'Le Gallimimus était le champion de la vitesse ! Il ressemblait à une grande autruche et courait en grand troupeau. Tellement rapide que même le T-Rex ne pouvait pas l\'attraper !',
     png: 'Gallimimus.png',
     color: '#d4a017',
+    continent: 'Asie',
+    periode: 'cretace',
   },
   {
     id: 'coelophysis',
@@ -865,6 +995,8 @@ const DINOS = [
     desc: 'Le Coelophysis était l\'un des tout premiers dinosaures. Petit et rapide, il chassait en meute. C\'est le grand ancêtre de tous les raptors qui viendront bien plus tard !',
     png: 'Coelophysis.png',
     color: '#b7770d',
+    continent: 'Amérique du Nord',
+    periode: 'trias',
   },
   {
     id: 'compsognathus',
@@ -886,6 +1018,8 @@ const DINOS = [
     desc: 'Le Compsognathus était minuscule — de la taille d\'un poulet ! Mais il courait très vite pour attraper des lézards et des insectes. Le plus petit chasseur du Jurassique !',
     png: 'Compsognathus.png',
     color: '#c27b00',
+    continent: 'Europe',
+    periode: 'jurassique',
   },
   {
     id: 'oviraptor',
@@ -907,6 +1041,8 @@ const DINOS = [
     desc: 'L\'Oviraptor a été injustement accusé de voler des œufs — en fait il couvait les siens comme un oiseau ! Il avait une belle crête colorée et était un excellent papa !',
     png: 'Oviraptor.png',
     color: '#d68910',
+    continent: 'Asie',
+    periode: 'cretace',
   },
 
   // ══════════════ 6. AIRS, MERS & BIZARRES ══════════════
@@ -931,6 +1067,8 @@ const DINOS = [
     desc: 'Le Ptéranodon n\'était pas un dinosaure mais un reptile volant ! Il avait une envergure énorme et planait sur les vents. Il pêchait en plongeant dans la mer comme un pélican géant !',
     png: 'Pteranodon.png',
     color: '#1a5276',
+    continent: 'Amérique du Nord',
+    periode: 'cretace',
   },
   {
     id: 'quetzalcoatlus',
@@ -952,6 +1090,8 @@ const DINOS = [
     desc: 'Le Quetzalcoatlus était le plus grand être volant de toute l\'histoire de la Terre ! Debout il était grand comme une girafe. Il volait sur des milliers de kilomètres.',
     png: 'Quetzalcoatlus.png',
     color: '#1f618d',
+    continent: 'Amérique du Nord',
+    periode: 'cretace',
   },
   {
     id: 'archaeopteryx',
@@ -973,6 +1113,8 @@ const DINOS = [
     desc: 'L\'Archaeoptéryx est l\'ancêtre de tous les oiseaux ! Il avait des plumes comme un oiseau mais aussi des dents et des griffes de dino. C\'est le premier oiseau du monde entier !',
     png: 'Archaeopteryx.png',
     color: '#2e86c1',
+    continent: 'Europe',
+    periode: 'jurassique',
   },
   {
     id: 'mosasaurus',
@@ -994,6 +1136,8 @@ const DINOS = [
     desc: 'Le Mosasaure était le monstre des mers préhistoriques ! Énorme comme un bus géant, il régnait sur tous les océans. Il mangeait même les requins et les ptérosaures !',
     png: 'Mosasaurus.png',
     color: '#154360',
+    continent: 'Europe',
+    periode: 'cretace',
   },
   {
     id: 'suchomimus',
@@ -1015,6 +1159,8 @@ const DINOS = [
     desc: 'Le Suchomimus était un dinosaure-crocodile ! Il avait un long museau avec des tas de dents pointues pour attraper des énormes poissons dans les rivières africaines.',
     png: 'Suchomimus.png',
     color: '#1a6a8a',
+    continent: 'Afrique',
+    periode: 'cretace',
   },
   {
     id: 'baryonyx',
@@ -1036,6 +1182,8 @@ const DINOS = [
     desc: 'Le Baryonyx avait une énorme griffe pour attraper les poissons, comme un ours pêcheur ! Découvert en Angleterre, on a trouvé du poisson dans son estomac. Un vrai pêcheur géant !',
     png: 'Baryonyx.png',
     color: '#2874a6',
+    continent: 'Europe',
+    periode: 'cretace',
   },
   {
     id: 'therizinosaurus',
@@ -1057,6 +1205,8 @@ const DINOS = [
     desc: 'Le Therizinosaurus avait les griffes les plus longues de toute l\'histoire des animaux — 1 mètre chacune ! Mais malgré ces griffes impressionnantes, il ne mangeait que des plantes et des feuilles !',
     png: 'Therizinosaurus.png',
     color: '#117864',
+    continent: 'Asie',
+    periode: 'cretace',
   },
   {
     id: 'dimetrodon',
@@ -1078,5 +1228,7 @@ const DINOS = [
     desc: 'Le Dimétrodon n\'est pas un dinosaure — c\'est un ancêtre des mammifères ! Il vivait bien avant les dinos. Sa grande voile sur le dos lui servait à se réchauffer au soleil.',
     png: 'Dimetrodon.png',
     color: '#0e6655',
+    continent: 'Amérique du Nord',
+    periode: 'permien',
   },
 ];

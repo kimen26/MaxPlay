@@ -43,6 +43,9 @@ html, body {
   flex:1; overflow-y:auto; overflow-x:hidden; padding:14px 12px;
   display:grid; grid-template-columns:1fr 1fr; gap:12px;
 }
+#menu-scroll.mode-periode {
+  display:flex; flex-direction:column; padding:0; overflow:hidden;
+}
 .cat-card {
   border-radius:18px; padding:18px 12px;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -231,6 +234,87 @@ html, body {
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
 .speaking { animation:pulse 0.8s infinite; }
 
+/* ══════════════ MODE SELECTOR ══════════════ */
+#mode-selector {
+  flex-shrink:0; display:flex; gap:6px; padding:8px 12px;
+  background:rgba(0,0,0,0.3); border-bottom:1px solid rgba(255,255,255,0.06);
+  overflow-x:auto; -webkit-overflow-scrolling:touch;
+}
+#mode-selector::-webkit-scrollbar { display:none; }
+.mode-btn {
+  flex-shrink:0; background:rgba(255,255,255,0.08);
+  border:1px solid rgba(255,255,255,0.15); border-radius:20px;
+  color:rgba(255,255,255,0.6); font-family:'Nunito',sans-serif;
+  font-weight:900; font-size:0.82rem; padding:6px 14px;
+  cursor:pointer; touch-action:manipulation; white-space:nowrap;
+  transition:background 0.15s, color 0.15s, border-color 0.15s;
+}
+.mode-btn.active {
+  background:rgba(255,220,0,0.18); border-color:rgba(255,220,0,0.5);
+  color:#ffe066;
+}
+.mode-btn:active { transform:scale(0.93); }
+
+/* ══════════════ CHRONOMAP ══════════════ */
+#chrono-scroll {
+  flex:1; overflow-y:auto; overflow-x:hidden; padding:10px 12px 20px;
+}
+.chrono-periode {
+  margin-bottom:16px; border-radius:16px; overflow:hidden;
+  border:1px solid rgba(255,255,255,0.08);
+}
+.chrono-header {
+  padding:12px 14px; display:flex; align-items:center; gap:10px;
+  cursor:pointer; touch-action:manipulation; user-select:none;
+}
+.chrono-header:active { opacity:0.8; }
+.chrono-emoji { font-size:2rem; }
+.chrono-info { flex:1; }
+.chrono-label { font-size:1.1rem; font-weight:900; color:#fff; }
+.chrono-range { font-size:0.75rem; color:rgba(255,255,255,0.5); margin-top:1px; }
+.chrono-desc  { font-size:0.78rem; color:rgba(255,255,255,0.65); margin-top:2px; }
+.chrono-count { font-size:0.75rem; font-weight:900; padding:4px 10px; border-radius:12px; background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.7); flex-shrink:0; }
+
+.chrono-bar-container {
+  padding:0 14px 8px;
+  background:rgba(0,0,0,0.2);
+}
+.chrono-bar-track {
+  height:6px; border-radius:3px; background:rgba(255,255,255,0.08);
+  position:relative; margin-bottom:2px;
+}
+.chrono-bar-fill { height:100%; border-radius:3px; }
+.chrono-bar-label { font-size:0.62rem; color:rgba(255,255,255,0.3); text-align:right; }
+
+.chrono-dinos {
+  padding:6px 10px 10px;
+  background:rgba(0,0,0,0.15);
+  display:grid; grid-template-columns:repeat(auto-fill, minmax(90px,1fr)); gap:6px;
+}
+.chrono-dino-thumb {
+  background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08);
+  border-radius:10px; padding:8px 6px 6px;
+  display:flex; flex-direction:column; align-items:center;
+  cursor:pointer; touch-action:manipulation; user-select:none;
+  transition:transform 0.12s;
+}
+.chrono-dino-thumb:active { transform:scale(0.9); }
+.chrono-dino-img { width:60px; height:44px; object-fit:contain; margin-bottom:4px; filter:drop-shadow(0 1px 4px rgba(0,0,0,0.5)); }
+.chrono-dino-name { font-size:0.66rem; font-weight:900; color:#fff; text-align:center; line-height:1.2; }
+
+/* Frise chronologique visuelle */
+.chrono-timeline {
+  display:flex; align-items:stretch; margin:0 12px 12px;
+  border-radius:10px; overflow:hidden; height:22px;
+}
+.chrono-tl-seg {
+  display:flex; align-items:center; justify-content:center;
+  font-size:0.6rem; font-weight:900; color:rgba(255,255,255,0.8);
+  cursor:pointer; touch-action:manipulation; transition:opacity 0.15s;
+  white-space:nowrap; overflow:hidden;
+}
+.chrono-tl-seg:hover { opacity:0.8; }
+
 /* Scroll area */
 ::-webkit-scrollbar { width:4px; }
 ::-webkit-scrollbar-track { background:transparent; }
@@ -244,7 +328,13 @@ html, body {
   <div class="hdr">
     <button class="hdr-back" onclick="location.href='index.html'">← Menu</button>
     <span class="hdr-title">🦕 Les Dinosaures</span>
-    <button class="hdr-speak" onclick="speakText('Les dinosaures ! Choisis une famille !')">🔊</button>
+    <button class="hdr-speak" id="menu-speak-btn" onclick="speakMenuIntro()">🔊</button>
+  </div>
+  <!-- Sélecteur de mode -->
+  <div id="mode-selector">
+    <button class="mode-btn active" id="mode-btn-regime"   onclick="setMode('regime')"   >🍽️ Ce qu'il mange</button>
+    <button class="mode-btn"        id="mode-btn-continent" onclick="setMode('continent')">🌍 Où il vivait</button>
+    <button class="mode-btn"        id="mode-btn-periode"   onclick="setMode('periode')"  >⏳ Quand il vivait</button>
   </div>
   <div id="menu-scroll"></div>
 </div>
@@ -281,27 +371,21 @@ html, body {
 <script>
 
 /* ── TTS ── */
-let synth = window.speechSynthesis;
-let currentUtterance = null;
+const synth = window.speechSynthesis;
 
 function speakText(txt) {
   if (!synth) return;
   synth.cancel();
   const u = new SpeechSynthesisUtterance(txt);
-  u.lang = 'fr-FR';
-  u.rate = 0.88;
-  u.pitch = 1.1;
-  currentUtterance = u;
+  u.lang = 'fr-FR'; u.rate = 0.88; u.pitch = 1.1;
   synth.speak(u);
 }
-
-function stopSpeak() {
-  if (synth) synth.cancel();
-}
+function stopSpeak() { if (synth) synth.cancel(); }
 
 /* ── State ── */
-let currentCatId = null;
-let currentDino  = null;
+let currentMode   = 'regime';
+let currentCatId  = null;
+let currentDino   = null;
 
 /* ── Screens ── */
 function showScreen(id) {
@@ -310,46 +394,182 @@ function showScreen(id) {
   stopSpeak();
 }
 
-function showMenu() { showScreen('menu'); }
-
-function showGrid(catId) {
-  if (catId) currentCatId = catId;
-  showScreen('grid');
-  buildGrid(currentCatId);
-  const cat = DINO_CATEGORIES.find(c => c.id === currentCatId);
-  document.getElementById('grid-title').textContent = cat.emoji + ' ' + cat.label;
-  setTimeout(() => speakCatIntro(), 200);
+/* ── Mode selector ── */
+function setMode(mode) {
+  currentMode = mode;
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('mode-btn-' + mode).classList.add('active');
+  buildMenu();
+  // TTS
+  const labels = { regime: 'Ce qu\'il mange !', continent: 'Où il vivait !', periode: 'Quand il vivait !' };
+  speakText(labels[mode] || '');
 }
 
-function showFiche(dino) {
-  currentDino = dino;
-  showScreen('fiche');
-  buildFiche(dino);
-  document.getElementById('fiche-hdr-name').textContent = dino.name;
-  setTimeout(() => speakText(dino.name), 300);
+function speakMenuIntro() {
+  const labels = { regime: 'Les dinosaures ! Choisis ce que tu veux découvrir !', continent: 'Sur quel continent vivait le dinosaure ?', periode: 'À quelle époque vivait le dinosaure ?' };
+  speakText(labels[currentMode] || 'Les dinosaures !');
 }
 
-/* ── Build menu ── */
+/* ── MENU principal ── */
+function showMenu() {
+  showScreen('menu');
+  buildMenu();
+}
+
 function buildMenu() {
   const el = document.getElementById('menu-scroll');
   el.innerHTML = '';
+  el.classList.remove('mode-periode');
+
+  if (currentMode === 'regime') {
+    buildMenuRegime(el);
+  } else if (currentMode === 'continent') {
+    buildMenuContinent(el);
+  } else if (currentMode === 'periode') {
+    buildMenuPeriode(el);
+  }
+}
+
+/* ── MENU régime (existant) ── */
+function buildMenuRegime(el) {
   DINO_CATEGORIES.forEach(cat => {
+    const count = DINOS.filter(d => d.cat === cat.id).length;
     const card = document.createElement('div');
     card.className = 'cat-card';
     card.style.background = cat.bg;
     card.innerHTML = `
       <div class="cat-emoji">${cat.emoji}</div>
       <div class="cat-label">${cat.label}</div>
+      <div class="cat-count" style="display:block;font-size:0.72rem;opacity:0.6;margin-top:4px">${count} dinos</div>
     `;
     card.addEventListener('click', () => {
       speakText(cat.label);
-      setTimeout(() => showGrid(cat.id), 400);
+      setTimeout(() => showGridRegime(cat.id), 400);
     });
     el.appendChild(card);
   });
 }
 
-/* ── Build grid ── */
+/* ── MENU continent ── */
+function buildMenuContinent(el) {
+  DINO_CONTINENTS.forEach(cont => {
+    const count = DINOS.filter(d => d.continent === cont.id).length;
+    if (!count) return;
+    const card = document.createElement('div');
+    card.className = 'cat-card';
+    card.style.background = cont.bg;
+    card.innerHTML = `
+      <div class="cat-emoji">${cont.emoji}</div>
+      <div class="cat-label">${cont.label}</div>
+      <div class="cat-count" style="display:block;font-size:0.72rem;opacity:0.6;margin-top:4px">${count} dinos</div>
+    `;
+    card.addEventListener('click', () => {
+      speakText(cont.label);
+      setTimeout(() => showGridContinent(cont.id), 400);
+    });
+    el.appendChild(card);
+  });
+}
+
+/* ── MENU période = chronomap inline ── */
+function buildMenuPeriode(el) {
+  el.classList.add('mode-periode');
+
+  // Frise proportionnelle
+  const totalMa = 280 - 66;
+  const friseHtml = `
+    <div class="chrono-timeline" style="margin:10px 12px 6px">
+      ${DINO_PERIODES.map(p => {
+        const span = p.ma_start - p.ma_end;
+        const pct  = Math.round(span / totalMa * 100);
+        return `<div class="chrono-tl-seg" style="width:${pct}%;background:${p.color};min-width:14px"
+          onclick="scrollToPeriode('${p.id}')">${p.emoji}</div>`;
+      }).join('')}
+    </div>
+  `;
+
+  const wrapper = document.createElement('div');
+  wrapper.id = 'chrono-scroll';
+  wrapper.style.cssText = 'flex:1;overflow-y:auto;overflow-x:hidden;padding:0 0 30px 0;';
+
+  wrapper.innerHTML = friseHtml + DINO_PERIODES.map(p => {
+    const dinos = DINOS.filter(d => d.periode === p.id);
+    if (!dinos.length) return '';
+    const dinosHtml = dinos.map(d => `
+      <div class="chrono-dino-thumb" onclick="speakText('${esc(d.name)}');setTimeout(()=>showFiche2('${d.id}'),300)">
+        <img class="chrono-dino-img" src="img/dinos/${d.png}" alt="${d.name}" loading="lazy" onerror="this.style.display='none'">
+        <div class="chrono-dino-name">${d.name}</div>
+      </div>
+    `).join('');
+    return `
+      <div class="chrono-periode" id="periode-${p.id}">
+        <div class="chrono-header" style="background:${p.color}22" onclick="speakText('${esc(p.label)}. ${esc(p.desc)}. ${dinos.length} dinosaures.')">
+          <div class="chrono-emoji">${p.emoji}</div>
+          <div class="chrono-info">
+            <div class="chrono-label">${p.label}</div>
+            <div class="chrono-range">il y a ${p.range}</div>
+            <div class="chrono-desc">${p.desc}</div>
+          </div>
+          <div class="chrono-count">${dinos.length} dinos</div>
+        </div>
+        <div class="chrono-dinos">${dinosHtml}</div>
+      </div>
+    `;
+  }).join('');
+
+  el.appendChild(wrapper);
+}
+
+function scrollToPeriode(id) {
+  const el = document.getElementById('periode-' + id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function showFiche2(dinoId) {
+  const dino = DINOS.find(d => d.id === dinoId);
+  if (dino) showFiche(dino);
+}
+
+/* ── GRID régime ── */
+function showGridRegime(catId) {
+  currentCatId = catId;
+  showScreen('grid');
+  buildGrid(catId);
+  const cat = DINO_CATEGORIES.find(c => c.id === catId);
+  document.getElementById('grid-title').textContent = cat.emoji + ' ' + cat.label;
+  setTimeout(() => speakText(cat.label + ' ! Tape sur un dino pour tout savoir !'), 200);
+}
+
+/* ── GRID continent ── */
+function showGridContinent(contId) {
+  currentCatId = contId;
+  showScreen('grid');
+  const cont = DINO_CONTINENTS.find(c => c.id === contId);
+  document.getElementById('grid-title').textContent = cont.emoji + ' ' + cont.label;
+  const el = document.getElementById('grid-scroll');
+  el.innerHTML = '';
+  const dinos = DINOS.filter(d => d.continent === contId);
+  dinos.forEach(d => {
+    const card = document.createElement('div');
+    card.className = 'dino-card';
+    card.innerHTML = `
+      <img class="card-img" src="img/dinos/${d.png}" alt="${d.name}" loading="lazy" onerror="this.style.display='none'">
+      <div class="card-name">${d.name}</div>
+      <div class="card-regime">${d.regime}</div>
+      <div class="card-region">⏳ ${DINO_PERIODES.find(p=>p.id===d.periode)?.label||d.epoque}</div>
+      <div class="card-bar" style="background:${cont.color}"></div>
+    `;
+    card.addEventListener('click', () => {
+      card.classList.remove('bounce'); void card.offsetWidth; card.classList.add('bounce');
+      speakText(d.name);
+      setTimeout(() => showFiche(d), 350);
+    });
+    el.appendChild(card);
+  });
+  setTimeout(() => speakText(cont.label + ' ! Tape sur un dino pour tout savoir !'), 200);
+}
+
+/* ── Build grid régime ── */
 function buildGrid(catId) {
   const el = document.getElementById('grid-scroll');
   el.innerHTML = '';
@@ -366,9 +586,7 @@ function buildGrid(catId) {
       <div class="card-bar" style="background:${cat.color}"></div>
     `;
     card.addEventListener('click', () => {
-      card.classList.remove('bounce');
-      void card.offsetWidth;
-      card.classList.add('bounce');
+      card.classList.remove('bounce'); void card.offsetWidth; card.classList.add('bounce');
       speakText(d.name);
       setTimeout(() => showFiche(d), 350);
     });
@@ -376,11 +594,21 @@ function buildGrid(catId) {
   });
 }
 
-/* ── Cat intro TTS ── */
+/* ── Retour depuis grille ── */
+function showGrid(catId) {
+  if (catId) currentCatId = catId;
+  showScreen('grid');
+  if (currentMode === 'continent') {
+    showGridContinent(currentCatId);
+  } else {
+    showGridRegime(currentCatId);
+  }
+}
+
+/* ── Cat intro TTS (legacy) ── */
 function speakCatIntro() {
   const cat = DINO_CATEGORIES.find(c => c.id === currentCatId);
-  if (!cat) return;
-  speakText(cat.label + ' ! Tape sur un dino pour tout savoir !');
+  if (cat) speakText(cat.label + ' ! Tape sur un dino pour tout savoir !');
 }
 
 /* ── Build fiche ── */
@@ -416,9 +644,10 @@ function buildFiche(d) {
     <div class="fiche-section">
       <div class="fiche-section-icon">🕰️</div>
       <div class="fiche-section-body">
-        <div class="fiche-section-title">Époque</div>
+        <div class="fiche-section-title">Époque &amp; lieu</div>
         <div class="fiche-section-text">${d.epoque}</div>
         <div class="fiche-section-sub">📍 ${d.region}</div>
+        <div class="fiche-section-sub" style="margin-top:4px">🌍 ${d.continent || ''} · ${(DINO_PERIODES.find(p=>p.id===d.periode)||{}).label||''}</div>
       </div>
       <button class="speak-btn" onclick="speakText('${esc(d.name)} vivait ${esc(d.epoque)}, en ${esc(d.region)}.')">🔊</button>
     </div>

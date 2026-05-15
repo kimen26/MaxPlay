@@ -14,6 +14,36 @@ const DINO_FAMILLES = [
   { id: 'bizarre',    label: 'Les Bizarres',      emoji: '🤪', desc: 'Inclassables et super originaux !',        color: '#16a085', bg: 'linear-gradient(135deg,#0a3d30,#16a085)' },
 ];
 
+// ─── La Pangée (intro chronomap) ───
+const PANGEE = {
+  titre: 'La Pangée',
+  soustitre: 'Quand tous les continents étaient collés !',
+  emoji: '🌍',
+  intro: 'Avant les dinosaures, tous les continents de la Terre étaient collés ensemble en un seul morceau géant ! On l\'appelle la Pangée. On pouvait marcher de l\'Afrique jusqu\'en Amérique à pied, sans bateau !',
+  etapes: [
+    {
+      periode: 'trias',
+      label: 'Trias',
+      titre: 'Tout est collé',
+      texte: 'Au temps des premiers dinosaures, toute la terre formait un seul super-continent : la Pangée. Il faisait très chaud et très sec partout.',
+    },
+    {
+      periode: 'jurassique',
+      label: 'Jurassique',
+      titre: 'Ça commence à se fendre',
+      texte: 'La Pangée se casse lentement en deux gros morceaux. Un grand océan s\'ouvre au milieu. Les dinosaures des deux côtés ne se voient plus !',
+    },
+    {
+      periode: 'cretace',
+      label: 'Crétacé',
+      titre: 'Ça s\'écarte',
+      texte: 'Les continents continuent de glisser tout doucement, comme des radeaux géants. Ça commence à ressembler à la Terre d\'aujourd\'hui !',
+    },
+  ],
+  fun_fact: 'Les continents bougent encore aujourd\'hui ! Mais très très lentement : à peine la vitesse à laquelle tes ongles poussent !',
+  pourquoi: 'C\'est pour ça que le Cryolophosaure vivait en Antarctique : à l\'époque il y faisait chaud, et c\'était collé aux autres terres !',
+};
+
 // ─── Extinction (écran spécial après Crétacé) ───
 const EXTINCTION = {
   titre: 'La Grande Extinction',

@@ -168,6 +168,28 @@ html, body {
   font-size:0.95rem; font-weight:700; color:#ffe066; line-height:1.5; flex:1;
 }
 
+/* ── Pangée ── */
+.pangee-anim-wrap { cursor:pointer; margin-bottom:12px; }
+.pangee-svg { width:100%; max-width:320px; display:block; margin:0 auto; border-radius:10px; }
+.pangee-west, .pangee-east { transform-box:fill-box; transform-origin:center; }
+.pangee-west { animation:pangee-drift-w 5s ease-in-out infinite alternate; }
+.pangee-east { animation:pangee-drift-e 5s ease-in-out infinite alternate; }
+@keyframes pangee-drift-w { 0%,15% { transform:translateX(14px); } 85%,100% { transform:translateX(-6px); } }
+@keyframes pangee-drift-e { 0%,15% { transform:translateX(-14px); } 85%,100% { transform:translateX(20px); } }
+.pangee-caption { animation:pangee-cap 5s ease-in-out infinite alternate; }
+@keyframes pangee-cap { 0%,30% { opacity:0; } 60%,100% { opacity:1; } }
+.pangee-anim-hint { text-align:center; font-size:0.7rem; color:rgba(255,255,255,0.4); margin-top:5px; }
+.pangee-etapes { display:flex; flex-direction:column; gap:8px; margin-bottom:10px; }
+.pangee-etape { background:rgba(80,160,255,0.08); border:1px solid rgba(80,160,255,0.2); border-radius:10px; padding:9px 11px; cursor:pointer; }
+.pangee-etape:active { background:rgba(80,160,255,0.18); }
+.pangee-etape-label { font-size:0.65rem; color:rgba(150,200,255,0.7); font-weight:900; text-transform:uppercase; letter-spacing:0.05em; }
+.pangee-etape-titre { font-size:0.85rem; font-weight:900; color:#85c1e9; margin:2px 0 3px; }
+.pangee-etape-texte { font-size:0.74rem; color:rgba(255,255,255,0.72); line-height:1.4; }
+.pangee-pourquoi { background:rgba(255,200,80,0.1); border:1px solid rgba(255,200,80,0.25); border-radius:10px; padding:9px 11px; font-size:0.75rem; color:rgba(255,225,160,0.9); cursor:pointer; line-height:1.4; margin-bottom:8px; font-weight:700; }
+.pangee-pourquoi:active { background:rgba(255,200,80,0.2); }
+.pangee-funfact { background:rgba(100,200,255,0.1); border:1px solid rgba(100,200,255,0.25); border-radius:10px; padding:9px 11px; font-size:0.75rem; color:rgba(180,225,255,0.9); cursor:pointer; line-height:1.4; font-weight:700; }
+.pangee-funfact:active { background:rgba(100,200,255,0.2); }
+
 /* ── Extinction ── */
 .ext-card { display:flex; gap:10px; background:rgba(255,80,0,0.08); border:1px solid rgba(255,80,0,0.2); border-radius:12px; padding:10px; cursor:pointer; }
 .ext-card:active { background:rgba(255,80,0,0.18); }
@@ -528,7 +550,7 @@ function buildMenuPeriode(el) {
   wrapper.id = 'chrono-scroll';
   wrapper.style.cssText = 'flex:1;overflow-y:auto;overflow-x:hidden;padding:0 0 30px 0;';
 
-  wrapper.innerHTML = friseHtml + DINO_PERIODES.map(p => {
+  wrapper.innerHTML = buildPangeeBloc() + friseHtml + DINO_PERIODES.map(p => {
     const dinos = DINOS.filter(d => d.periode === p.id);
     if (!dinos.length) return '';
     const dinosHtml = dinos.map(d => `
@@ -554,6 +576,52 @@ function buildMenuPeriode(el) {
   }).join('') + buildExtinctionBloc();
 
   el.appendChild(wrapper);
+}
+
+function buildPangeeBloc() {
+  // 3 états des continents (viewBox 0 0 200 90) — animés par CSS keyframes
+  // Trias = tout collé · Jurassique = fendu en 2 · Crétacé = écarté
+  const etapesHtml = PANGEE.etapes.map(e => `
+    <div class="pangee-etape" onclick="speakText('${esc(e.label)} : ${esc(e.titre)}. ${esc(e.texte)}')">
+      <div class="pangee-etape-label">${e.label}</div>
+      <div class="pangee-etape-titre">${e.titre}</div>
+      <div class="pangee-etape-texte">${e.texte}</div>
+    </div>
+  `).join('');
+
+  return `
+    <div class="chrono-periode" id="periode-pangee" style="margin:8px 0 4px">
+      <div class="chrono-header" style="background:rgba(80,160,255,0.15);cursor:pointer"
+           onclick="speakText('${esc(PANGEE.titre)}. ${esc(PANGEE.intro)}')">
+        <div class="chrono-emoji">🌍</div>
+        <div class="chrono-info">
+          <div class="chrono-label" style="color:#5dade2">${PANGEE.titre}</div>
+          <div class="chrono-range">${PANGEE.soustitre}</div>
+          <div class="chrono-desc">Avant et pendant les dinos !</div>
+        </div>
+      </div>
+      <div style="padding:12px">
+        <div class="pangee-anim-wrap" onclick="speakText('${esc(PANGEE.intro)}')">
+          <svg viewBox="0 0 200 90" class="pangee-svg">
+            <rect x="0" y="0" width="200" height="90" fill="rgba(0,60,120,0.35)" rx="10"/>
+            <!-- Bloc Pangée gauche (Amériques) -->
+            <path class="pangee-west" d="M 70,20 L 95,18 L 100,35 L 96,55 L 88,70 L 76,72 L 68,58 L 66,38 Z" fill="#e67e22"/>
+            <!-- Bloc Pangée droite (Afrique/Eurasie) -->
+            <path class="pangee-east" d="M 100,18 L 130,16 L 138,32 L 134,52 L 124,68 L 110,70 L 102,54 L 100,36 Z" fill="#27ae60"/>
+            <text x="100" y="84" font-size="9" fill="rgba(255,255,255,0.5)" text-anchor="middle" class="pangee-caption">la Pangée se sépare…</text>
+          </svg>
+          <div class="pangee-anim-hint">▶ regarde les continents bouger</div>
+        </div>
+        <div class="pangee-etapes">${etapesHtml}</div>
+        <div class="pangee-pourquoi" onclick="speakText('${esc(PANGEE.pourquoi)}')">
+          💡 ${PANGEE.pourquoi}
+        </div>
+        <div class="pangee-funfact" onclick="speakText('${esc(PANGEE.fun_fact)}')">
+          🌍 ${PANGEE.fun_fact}
+        </div>
+      </div>
+    </div>
+  `;
 }
 
 function buildExtinctionBloc() {

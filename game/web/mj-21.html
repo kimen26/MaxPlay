@@ -394,29 +394,33 @@ function checkAutoWin(t) {
 function mixerTube(idx) {
   const t=tubes[idx];
   const tot=t.r+t.j+t.b+t.w;
-  if (tot===0||victoire) return;
+  if (victoire) return;
+  if (tot===0) { console.log('tube vide'); return; }
   activeIdx=idx;
   playMix();
   const wrap=document.getElementById(`tube-wrap-${idx}`);
+  if (!wrap) { console.error('tube-wrap not found:', idx); return; }
   wrap.classList.remove('shaking');
   void wrap.offsetWidth;
   wrap.classList.add('shaking');
   const defiBrun = defi.label==='brun';
-  if (isBrun(t) && !defiBrun) {
-    t.mixed='BRUN';
+  setTimeout(() => {
+    if (isBrun(t) && !defiBrun) {
+      t.mixed='BRUN';
+      renderTubes();
+      if (!brunShown) { brunShown=true; document.getElementById('brun-overlay').classList.add('show'); playBrun(); }
+      return;
+    }
+    const rgb=blendCounts(t);
+    const hex=rgbToHex(rgb[0],rgb[1],rgb[2]);
+    t.mixed={hex,label:nearestLabel(rgb[0],rgb[1],rgb[2]).label};
     renderTubes();
-    if (!brunShown) { brunShown=true; document.getElementById('brun-overlay').classList.add('show'); playBrun(); }
-    return;
-  }
-  const rgb=blendCounts(t);
-  const hex=rgbToHex(rgb[0],rgb[1],rgb[2]);
-  t.mixed={hex,label:nearestLabel(rgb[0],rgb[1],rgb[2]).label};
-  renderTubes();
-  const ideal=blendCounts({r:defi.r,j:defi.j,b:defi.b,w:defi.w});
-  if (rgbDist(rgb,ideal)<0.22&&!victoire) {
-    victoire=true;
-    setTimeout(showVictoire,650);
-  }
+    const ideal=blendCounts({r:defi.r,j:defi.j,b:defi.b,w:defi.w});
+    if (rgbDist(rgb,ideal)<0.22&&!victoire) {
+      victoire=true;
+      setTimeout(showVictoire,650);
+    }
+  }, 550);
 }
 
 function viderTube(idx) {
@@ -484,6 +488,26 @@ function initDefi() {
   renderTubes();
   renderProgress();
   renderCible();
+  attachShakeListener();
+}
+
+let lastShakeTime = 0;
+let shakeListenerAttached = false;
+function attachShakeListener() {
+  if (shakeListenerAttached || !window.DeviceMotionEvent) return;
+  shakeListenerAttached = true;
+  window.addEventListener('devicemotion', handleShake, true);
+}
+function handleShake(event) {
+  const accel = event.acceleration;
+  if (!accel) return;
+  const magnitude = Math.sqrt(accel.x*accel.x + accel.y*accel.y + accel.z*accel.z);
+  if (magnitude > 25 && Date.now() - lastShakeTime > 800) {
+    lastShakeTime = Date.now();
+    if (!victoire && tubes[activeIdx].r+tubes[activeIdx].j+tubes[activeIdx].b+tubes[activeIdx].w > 0) {
+      mixerTube(activeIdx);
+    }
+  }
 }
 
 // ── SONS ──────────────────────────────────────────────────────────

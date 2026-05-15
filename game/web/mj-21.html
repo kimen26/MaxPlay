@@ -21,16 +21,14 @@
     .prog-dot.current { background:rgba(255,220,80,0.25); border-color:#ffe066; animation:dotPulse 1.2s ease-in-out infinite alternate; }
     @keyframes dotPulse { from { box-shadow:0 0 0px rgba(255,220,80,0.3); } to { box-shadow:0 0 8px rgba(255,220,80,0.8); } }
 
-    .bus-cible-row { display:flex; align-items:center; justify-content:center; gap:10px; padding:4px 12px 2px; flex-shrink:0; }
-    .cible-aside { display:flex; flex-direction:column; align-items:center; gap:3px; flex-shrink:0; }
-    .cible-cercle { width:54px; height:54px; border-radius:50%; border:4px solid rgba(255,255,255,0.85); box-shadow:0 0 18px rgba(255,255,255,0.2); }
+    .cible-row { display:flex; align-items:center; justify-content:center; gap:10px; padding:4px 12px 2px; flex-shrink:0; }
+    .cible-cercle { width:44px; height:44px; border-radius:50%; border:3px solid rgba(255,255,255,0.85); box-shadow:0 0 14px rgba(255,255,255,0.2); flex-shrink:0; }
+    .cible-info { display:flex; flex-direction:column; gap:1px; }
     .cible-tag { color:#ffe066; font-size:0.85rem; font-weight:900; white-space:nowrap; }
     .cible-sub { color:rgba(255,255,255,0.55); font-size:0.7rem; }
-    .bus-area { flex:1; display:flex; justify-content:center; align-items:center; min-width:0; }
 
-    .hint-row { display:flex; justify-content:center; padding:2px 0; flex-shrink:0; min-height:32px; }
-    .btn-hint { background:rgba(255,220,80,0.15); border:2px solid rgba(255,220,80,0.5); color:#ffe066; border-radius:20px; font-family:'Nunito',sans-serif; font-weight:900; font-size:0.85rem; padding:5px 16px; cursor:pointer; display:none; animation:hintPulse 1.5s ease-in-out infinite alternate; }
-    .btn-hint.visible { display:block; }
+    .hint-row { display:flex; justify-content:center; padding:2px 0; flex-shrink:0; min-height:28px; }
+    .btn-hint { background:rgba(255,220,80,0.15); border:2px solid rgba(255,220,80,0.5); color:#ffe066; border-radius:20px; font-family:'Nunito',sans-serif; font-weight:900; font-size:0.8rem; padding:4px 14px; cursor:pointer; animation:hintPulse 1.5s ease-in-out infinite alternate; display:block; }
     @keyframes hintPulse { from { box-shadow:0 0 0px rgba(255,220,80,0.3); } to { box-shadow:0 0 10px rgba(255,220,80,0.7); } }
 
     .tubes-zone { display:flex; justify-content:center; align-items:flex-start; gap:24px; padding:4px 16px 2px; flex-shrink:0; }
@@ -53,7 +51,7 @@
     .btn-vider { background:rgba(255,255,255,0.09); border:2px solid rgba(255,255,255,0.22); }
     .btn-mixer { background:rgba(80,220,255,0.18); border:2px solid rgba(80,220,255,0.45); }
 
-    .pots-zone { display:flex; justify-content:center; gap:10px; padding:8px 12px 14px; flex-shrink:0; margin-top:auto; }
+    .pots-zone { display:flex; justify-content:center; gap:10px; padding:8px 12px 6px; flex-shrink:0; }
     .pot { width:78px; height:78px; border-radius:20px; border:none; cursor:pointer; font-family:'Nunito',sans-serif; font-weight:900; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; box-shadow:0 8px 24px rgba(0,0,0,0.5); transition:transform 0.1s, box-shadow 0.1s; }
     .pot:active { transform:scale(0.89) translateY(3px); box-shadow:0 4px 10px rgba(0,0,0,0.4); }
     .pot-rouge { background:radial-gradient(circle at 35% 30%, #FF5555, #CC0000); color:#fff; }
@@ -92,17 +90,23 @@
 
   <div class="progress-zone" id="progress"></div>
 
-  <div class="bus-cible-row">
-    <div class="cible-aside">
-      <div class="cible-cercle" id="cible-cercle"></div>
-      <div class="cible-tag" id="cible-tag"></div>
-      <div class="cible-sub" id="cible-sub">cible</div>
-    </div>
-    <div class="bus-area" id="bus-zone"></div>
-  </div>
-
-  <div class="hint-row">
-    <button class="btn-hint" id="btn-hint" onclick="showHint()">&#128161; Indice</button>
+  <div class="pots-zone">
+    <button class="pot pot-rouge" onclick="addCouleur('r')">
+      <span class="pot-emoji">&#128308;</span>
+      <span class="pot-lbl">ROUGE</span>
+    </button>
+    <button class="pot pot-jaune" onclick="addCouleur('j')">
+      <span class="pot-emoji">&#128993;</span>
+      <span class="pot-lbl">JAUNE</span>
+    </button>
+    <button class="pot pot-bleu" onclick="addCouleur('b')">
+      <span class="pot-emoji">&#128309;</span>
+      <span class="pot-lbl">BLEU</span>
+    </button>
+    <button class="pot pot-blanc" onclick="addCouleur('w')">
+      <span class="pot-emoji">&#11036;</span>
+      <span class="pot-lbl">BLANC</span>
+    </button>
   </div>
 
   <div class="tubes-zone">
@@ -126,30 +130,23 @@
     </div>
   </div>
 
-  <div class="pots-zone">
-    <button class="pot pot-rouge" onclick="addCouleur('r')">
-      <span class="pot-emoji">&#128308;</span>
-      <span class="pot-lbl">ROUGE</span>
-    </button>
-    <button class="pot pot-jaune" onclick="addCouleur('j')">
-      <span class="pot-emoji">&#128993;</span>
-      <span class="pot-lbl">JAUNE</span>
-    </button>
-    <button class="pot pot-bleu" onclick="addCouleur('b')">
-      <span class="pot-emoji">&#128309;</span>
-      <span class="pot-lbl">BLEU</span>
-    </button>
-    <button class="pot pot-blanc" onclick="addCouleur('w')">
-      <span class="pot-emoji">&#11036;</span>
-      <span class="pot-lbl">BLANC</span>
-    </button>
+  <div class="cible-row">
+    <div class="cible-cercle" id="cible-cercle"></div>
+    <div class="cible-info">
+      <div class="cible-tag" id="cible-tag"></div>
+      <div class="cible-sub" id="cible-sub">cible</div>
+    </div>
+  </div>
+
+  <div class="hint-row">
+    <button class="btn-hint" id="btn-hint" onclick="showHint()">&#128161; Indice</button>
   </div>
 
 </div>
 
 <div class="overlay" id="overlay">
   <div class="ov-box">
-    <div class="ov-emoji">&#127881;</div>
+    <div id="ov-bus" style="display:flex;justify-content:center;margin-bottom:10px;"></div>
     <div class="ov-title" id="ov-title">Super !</div>
     <div class="ov-text" id="ov-text">Le bus est peint !</div>
     <button class="ov-btn" onclick="nextDefi()">Suivant &#8594;</button>
@@ -352,13 +349,7 @@ function renderTubes() {
   });
 }
 
-function renderBus(hex) {
-  const el=document.getElementById('bus-zone');
-  const c=hex==='BRUN'?'#6B4226':(hex||'#555566');
-  const tc=hex&&hex!=='BRUN'?defi.textColor:'#888';
-  const w=Math.min(210,window.innerWidth-150);
-  el.innerHTML=busSVG(c,tc,defi.num,w);
-}
+function renderBus(hex) { /* bus affiché uniquement en overlay victoire */ }
 
 function renderProgress() {
   let html='';
@@ -408,7 +399,8 @@ function mixerTube(idx) {
   wrap.classList.remove('shaking');
   void wrap.offsetWidth;
   wrap.classList.add('shaking');
-  wrap.addEventListener('animationend',()=>{
+  playMix();
+  setTimeout(()=>{
     wrap.classList.remove('shaking');
     if (isBrun(t)) {
       t.mixed='BRUN';
@@ -423,14 +415,11 @@ function mixerTube(idx) {
     const ideal=blendCounts({r:defi.r,j:defi.j,b:defi.b,w:defi.w});
     if (rgbDist(rgb,ideal)<0.22&&!victoire) {
       victoire=true;
-      renderBus(hex);
       setTimeout(showVictoire,350);
     } else {
       missCount++;
-      if (missCount>=3) document.getElementById('btn-hint').classList.add('visible');
     }
-  },{once:true});
-  playMix();
+  }, 600);
 }
 
 function viderTube(idx) {
@@ -448,6 +437,9 @@ function showVictoire() {
   solved++;
   renderProgress();
   playKlaxon();
+  const mixedTube = tubes.find(t=>t.mixed&&t.mixed!=='BRUN');
+  const hex = mixedTube ? mixedTube.mixed.hex : defi.hex;
+  document.getElementById('ov-bus').innerHTML = busSVG(hex, defi.textColor, defi.num, 220);
   document.getElementById('ov-title').textContent='Super ! 🎉';
   document.getElementById('ov-text').textContent=`Le bus ${defi.num} est ${defi.label} !`;
   document.getElementById('overlay').classList.add('show');
@@ -490,11 +482,9 @@ function showHint() {
 }
 
 function initDefi() {
-  document.getElementById('btn-hint').classList.remove('visible');
   document.getElementById('cible-cercle').style.background=defi.hex;
   document.getElementById('cible-tag').textContent=`Ligne ${defi.num}`;
   document.getElementById('cible-sub').textContent=defi.label;
-  renderBus(null);
   renderTubes();
   renderProgress();
 }

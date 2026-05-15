@@ -250,9 +250,9 @@ function renderTubeSVG(t,opts){
     const fH=frac*FILL_H;
     if(fH>0)layers=`<rect x="0" y="${(BOT-fH).toFixed(1)}" width="${SW}" height="${(fH+1).toFixed(1)}" fill="${opts.forceFill}"/>`;
   } else if(t.mixed){
+    // Une fois mixé c'est un liquide homogène : le tube est bien rempli (pas un fond de couches)
     const bg=t.mixed==='BRUN'?'#6B4226':t.mixed.hex;
-    const tot=t.r+t.j+t.b+t.w;
-    const fH=Math.max(Math.min(tot/8,1)*FILL_H,28);
+    const fH=FILL_H*0.72;
     layers=`<rect x="0" y="${(BOT-fH).toFixed(1)}" width="${SW}" height="${(fH+1).toFixed(1)}" fill="${bg}"/>`;
   } else if(t.doses.length>0){
     const vis=t.doses.slice(-8);

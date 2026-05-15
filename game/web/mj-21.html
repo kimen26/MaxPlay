@@ -196,7 +196,7 @@ const DEFIS = [
   { r:0, j:1, b:1, w:0, hex:'#008C59', label:'vert',       num:'172',   textColor:'#fff'  },
   { r:1, j:0, b:1, w:0, hex:'#652C90', label:'violet',     num:'132',   textColor:'#fff'  },
   { r:1, j:0, b:0, w:1, hex:'#FF82B4', label:'rose',       num:'47',    textColor:'#333'  },
-  { r:0, j:1, b:3, w:0, hex:'#75CE89', label:'vert clair', num:'380',   textColor:'#333'  },
+  { r:0, j:1, b:1, w:1, hex:'#75CE89', label:'vert clair', num:'380',   textColor:'#333'  },
   { r:0, j:0, b:3, w:1, hex:'#4FA3DC', label:'bleu ciel',  num:'RER B', textColor:'#fff'  },
   { r:1, j:1, b:0, w:0, hex:'#F58443', label:'orange',     num:'185',   textColor:'#333'  },
   { r:1, j:3, b:0, w:0, hex:'#DCAC27', label:'or',         num:'184',   textColor:'#333'  },
@@ -304,7 +304,9 @@ function renderProgress(){
 // ── ACTIONS ───────────────────────────────────────────────────────
 function addCouleur(type){
   if(victoire)return;
-  if(tube.mixed){tube=newTube();}  // reset propre si déjà mixé
+  // Ajouter une couleur après un mix : on GARDE le contenu (r/j/b/w + doses),
+  // on repasse juste en "à re-mixer" — on ne vide JAMAIS le travail de Max.
+  if(tube.mixed){tube.mixed=null;}
   tube[type]++;
   tube.doses.push(type);
   renderTube();

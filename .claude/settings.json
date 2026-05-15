@@ -234,7 +234,8 @@
       "PowerShell(Get-ChildItem -Path \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\\\\personnages\\\\type-08\" -Force | Select-Object Name, @{N=\"IsDir\";E={$_.PSIsContainer}})",
       "PowerShell(Get-ChildItem -Path \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\\\\personnages\\\\wex\" -Force | Select-Object Name, @{N=\"IsDir\";E={$_.PSIsContainer}})",
       "PowerShell(Get-ChildItem -Path \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\\\\personnages\\\\type-09\" -Force | Select-Object Name, @{N=\"IsDir\";E={$_.PSIsContainer}})",
-      "PowerShell($content = Get-Content 'c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\\\\pmo\\\\INVARIANTS.md' -Raw; $content.Substring\\(1040, 200\\))"
+      "PowerShell($content = Get-Content 'c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\\\\pmo\\\\INVARIANTS.md' -Raw; $content.Substring\\(1040, 200\\))",
+      "Bash(Get-ChildItem -Path \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\" -Directory)"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\temp",
@@ -285,6 +286,17 @@
             "type": "command",
             "command": "powershell -NoProfile -Command \"if (-not (Get-CimInstance Win32_Process -Filter \\\"Name='bun.exe'\\\" -ErrorAction SilentlyContinue | Where-Object { $_.CommandLine -match 'infra[\\\\/]bot[\\\\/]index\\.ts' })) { Start-Process bun -ArgumentList 'run','index.ts' -WorkingDirectory 'C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\infra\\bot' -WindowStyle Hidden -RedirectStandardOutput 'C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\infra\\bot\\bot.log' -RedirectStandardError 'C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\infra\\bot\\bot.err.log' }\"",
             "async": true
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude\\hooks\\figees-injector.ps1\""
           }
         ]
       }

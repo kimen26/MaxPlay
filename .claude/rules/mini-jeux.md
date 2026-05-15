@@ -11,6 +11,18 @@ paths:
 > Chargé automatiquement dès que Claude touche un mini-jeu HTML, ses assets JS, ou ses specs.
 > Source de vérité : [`game/pmo/INVARIANTS.md`](../../game/pmo/INVARIANTS.md) + [`game/memory/rules.md`](../../game/memory/rules.md) + [`game/memory/stack.md`](../../game/memory/stack.md).
 
+## ⛔ AVANT DE MODIFIER UN mj-XX.html — LECTURE OBLIGATOIRE
+
+Avant **TOUT** `Edit`/`Write` sur `game/web/mj-XX.html` :
+
+1. Lire [`game/docs/jeux/figees/mj-XX.md`](../../game/docs/jeux/figees/) s'il existe (le hook `figees-injector.ps1` le réinjecte automatiquement dans le contexte — le lire, pas l'ignorer).
+2. Chaque ligne **🔒 est LOI**. Chaque ligne **❌ 🔒 est une régression déjà commise — INTERDITE**.
+3. Si ton changement contredit une ligne 🔒 → **STOP**, demande à Papa Yann de défiger explicitement. Tu ne défiges JAMAIS de toi-même.
+4. Si le fichier n'existe pas et que tu codes un comportement **validé par Papa Yann** → le créer via `game-mj-pmo` (sinon perdu au prochain `/compact`).
+5. Quand Papa Yann dit « OK c'est figé / validé / on fige / ne change plus X » → invoquer `game-mj-pmo` IMMÉDIATEMENT pour graver la décision **mot pour mot** dans `figees/mj-XX.md`.
+
+> Système créé 2026-05-15 suite incident MJ-21 (décision « bus en bas » répétée >10× puis régressée). Triple verrou : hook PreToolUse + cette règle + ligne LOI dans `game/CLAUDE.md`. Vérification : `game-mj-reviewer` Section 0.
+
 ## Règles UX NON NÉGOCIABLES (cible 3.5-4 ans)
 
 1. **Zéro pénalité punitive** — pas de "perdu", pas de "raté", pas de chronos qui stressent.

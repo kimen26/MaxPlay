@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>MJ-21 — Peins les bus !</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none; }
@@ -43,6 +44,7 @@
       75%{transform:rotate(9deg) scale(1.02);}
     }
     .tube-wrap.shaking { animation:tubeShake 0.55s ease; }
+    @keyframes victBus { 0%{transform:scale(0.85);opacity:0.3;} 60%{transform:scale(1.08);} 100%{transform:scale(1);opacity:1;} }
     .tube-result { color:#ffe066; font-size:0.75rem; font-weight:900; min-height:1.1em; text-align:center; max-width:80px; }
     .tube-actions { display:flex; gap:5px; }
     .btn-tube { border-radius:12px; font-family:'Nunito',sans-serif; font-weight:900; font-size:0.72rem; padding:6px 9px; cursor:pointer; color:#fff; }
@@ -279,6 +281,18 @@ function nearestLabel(R,G,B) {
 function rgbDist(c1,c2) {
   return Math.sqrt(((c1[0]-c2[0])/255)**2+((c1[1]-c2[1])/255)**2+((c1[2]-c2[2])/255)**2)/Math.sqrt(3);
 }
+// Vérifie si les proportions r/j/b/w du tube correspondent à la recette du défi
+function recetteOk(t) {
+  const tot = t.r+t.j+t.b+t.w;
+  if (tot===0) return false;
+  const dTot = defi.r+defi.j+defi.b+defi.w;
+  if (dTot===0) return false;
+  for (const k of ['r','j','b','w']) {
+    const diff = Math.abs(t[k]/tot - defi[k]/dTot);
+    if (diff > 0.15) return false;
+  }
+  return true;
+}
 function shuffle(arr) {
   const a=[...arr];
   for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
@@ -404,7 +418,7 @@ function mixerTube(idx) {
   const wrap=document.getElementById(`tube-wrap-${idx}`);
   if (wrap) {
     wrap.classList.remove('shaking');
-    wrap.offsetWidth; // force reflow
+    wrap.offsetWidth;
     wrap.classList.add('shaking');
   }
   const defiBrun = defi.label==='brun';
@@ -417,15 +431,15 @@ function mixerTube(idx) {
       if (!brunShown) { brunShown=true; document.getElementById('brun-overlay').classList.add('show'); playBrun(); }
       return;
     }
-    const rgb=blendCounts(t);
-    const hex=rgbToHex(rgb[0],rgb[1],rgb[2]);
-    t.mixed={hex,label:nearestLabel(rgb[0],rgb[1],rgb[2]).label};
+    // Si recette correcte → couleur exacte IDFM, sinon blend calculé
+    const ok = recetteOk(t);
+    const hex = ok ? defi.hex : rgbToHex(...blendCounts(t));
+    const rgb = hexToRGB(hex);
+    t.mixed = { hex, label: ok ? defi.label : nearestLabel(rgb[0],rgb[1],rgb[2]).label };
     renderTubes();
-    const ideal=blendCounts({r:defi.r,j:defi.j,b:defi.b,w:defi.w});
-    const dist=rgbDist(rgb,ideal);
-    if (dist<0.22&&!victoire) {
-      victoire=true;
-      setTimeout(showVictoire,650);
+    if (ok && !victoire) {
+      victoire = true;
+      setTimeout(() => showVictoire(hex), 400);
     }
   }, 500);
 }
@@ -441,26 +455,31 @@ function viderTube(idx) {
 function viderActive() { viderTube(activeIdx); }
 
 // ── VICTOIRE ──────────────────────────────────────────────────────
-function showVictoire() {
+function showVictoire(hex) {
   solved++;
   renderProgress();
   playKlaxon();
-  const mixedTube = tubes.find(t=>t.mixed&&t.mixed!=='BRUN');
-  const hex = mixedTube ? mixedTube.mixed.hex : defi.hex;
-  document.getElementById('ov-bus').innerHTML = busSVG(hex, defi.textColor, defi.num, 220);
-  document.getElementById('ov-title').textContent='Super ! 🎉';
-  document.getElementById('ov-text').textContent=`Le bus ${defi.num} est ${defi.label} !`;
-  document.getElementById('overlay').classList.add('show');
+  // Colorier le bus cible directement avec la vraie couleur IDFM
+  const zone = document.getElementById('cible-zone');
+  zone.innerHTML = `
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <div class="cible-bus-wrap" style="animation:victBus 0.5s ease;">
+        ${busSVG(hex, defi.textColor, defi.num, 180)}
+        <div class="cible-dot" style="background:${hex};box-shadow:0 0 16px ${hex};"></div>
+      </div>
+      <div class="cible-label" style="color:#00c47a;font-size:0.85rem;">&#10003; ${defi.label} !</div>
+    </div>`;
+  // Passer au suivant après 2s
+  setTimeout(() => {
+    defiIdx++;
+    if (defiIdx >= DEFIS.length) { document.getElementById('fin-overlay').classList.add('show'); return; }
+    defi = DEFIS[order[defiIdx]];
+    resetTubes();
+    initDefi();
+  }, 2000);
 }
 
-function nextDefi() {
-  document.getElementById('overlay').classList.remove('show');
-  defiIdx++;
-  if (defiIdx>=DEFIS.length) { document.getElementById('fin-overlay').classList.add('show'); return; }
-  defi=DEFIS[order[defiIdx]];
-  resetTubes();
-  initDefi();
-}
+function nextDefi() { /* remplacé par auto-next dans showVictoire */ }
 
 function resetPartie() {
   document.getElementById('fin-overlay').classList.remove('show');

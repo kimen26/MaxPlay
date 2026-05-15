@@ -42,7 +42,7 @@ L'énergie monte. Les tentatives s'enchaînent, la libellule échappe encore. To
 
 ### Ten — la bascule (BEATS FIGÉS — ordre respecté)
 
-1. **Nono décroche** sans l'annoncer. Il enlève ses chaussures et ses chaussettes — pieds nus, contact avec la terre. Il s'arrête (debout ou accroupi — libre), tend la/les main(s). Un mot minuscule (*"Attends."*) ou rien — libre. Les autres **continuent quand même**.
+1. **Nono décroche** sans l'annoncer. Il enlève ses chaussures et ses chaussettes — pieds nus **sur l'herbe** au bord de l'étang (étang peu profond, herbe propre, pas de boue — endroit sûr). Contact avec la terre. Il s'arrête (debout ou accroupi — libre), tend la/les main(s). Un mot minuscule (*"Attends."*) ou rien — libre. Les autres **continuent quand même**.
 2. **Juju ne s'arrête JAMAIS** — elle court après les libellules tout du long. Elle balance sa vanne **en courant**, au passage, dans la direction de Nono : image **« épouvantail »** obligatoire (Nono planté, immobile, bras tendus → on dirait un épouvantail). Formulation exacte libre. **Sa chanson s'arrête net, en pleine phrase** (si elle chantonnait).
 3. **Wex s'arrête** (lui, il observe — c'est son truc). Il bugue sur la logique : un épouvantail, **ça fait FUIR** les bêtes — alors que là on veut justement que la libellule **VIENNE**. Donc dans sa tête, ce que fait Nono ne devrait pas marcher.
    - *Sens figé :* Wex pointe le paradoxe « épouvantail = fait fuir » vs « nous on veut que ça vienne ». Il dit ça pour lui-même, sans regarder personne, pas comme une objection à Nono.
@@ -55,7 +55,7 @@ L'énergie monte. Les tentatives s'enchaînent, la libellule échappe encore. To
 6. La libellule se pose sur la **main / le doigt libre de Nono**.
 7. Nono soulève doucement — libellule **devant le nez de Juju**.
 8. **Juju louche.** Ose pas bouger (tomber / faire fuir la bête).
-9. **Wex** en arrière-plan : **« oh » muet, bouche ouverte, yeux écarquillés, tête penchée ~45°**. Il vient de dire que ça fait fuir les animaux... et la libellule est là. **Moment suspendu.** (Pas de 2e réplique de Wex.)
+9. **Wex** en arrière-plan : **« oh » muet, bouche ouverte, yeux écarquillés, tête penchée comme un chien qui entend un bruit bizarre** (ou un petit oiseau intrigué). Il vient de dire que ça fait fuir les animaux... et la libellule est là. **Moment suspendu.** (Pas de 2e réplique de Wex.)
 10. **Nono** touche le nez de Juju : **« Gagné ! »** (figé — court, non explicatif). La libellule s'envole.
 
 ### Ketsu — ça se referme

@@ -39,6 +39,25 @@ Pipeline boucle d'apprentissage :
 
 ## 2. Décisions de design (chronologique)
 
+### 2026-05-16 — REX MJ-21 : 33 commits → pipeline 2 vitesses + harnais machine
+
+**Chiffres** : MJ-21 « Peins les bus! » = **33 commits** pour un mini-jeu simple. 3 sagas = ~25 commits : « Mixer cassé » (7 commits, vraie cause au 7e = `Object.entries(tube)` itérait clés non-couleur), « Bus en haut/bas » (~10 répétitions verbales, cause = pas de figeage → CORRIGÉ 2026-05-15), « Tube vide à la victoire » (4 commits, vraie cause au 4e = `clipPath id="tc"` dupliqué entre vrai tube + clone).
+
+**Diagnostic Conseiller (co-boss)** : il n'y a pas 5 causes mais **3 leviers réels**. Le goulot unique = **absence de boucle de feedback machine** (le main agent ne peut pas tester → Papa Yann = harnais humain → ~20 commits d'essais aveugles). Les causes « chasse aux symptômes » et « bugs pédago tardifs » sont des _symptômes_ du goulot (un replay machine les sortait en 1 run). Causes indépendantes : figeage (✅ résolu) + design amont.
+
+**Décisions process gravées** :
+1. **Pipeline MJ à 2 vitesses** (anti sur-process) :
+   - _MJ neuf à mécanique_ : tunnel complet — (0) cadrage 1-écran game-conseiller validé par Papa Yann AVANT code → (1) figeage initial game-mj-pmo → (2) game-dev code **+** spec de test ensemble → (3) game-mj-reviewer (Section 0 figé + couverture spec) → (4) validation Papa Yann **juge produit** (plus débogueur) → (5) gravure.
+   - _Patch / bugfix_ : voie express — lire figé → fix → harnais vert → push. 1 seule gate.
+   - _Tweak cosmétique_ : direct, hook figeage = filet.
+2. **Harnais de test machine OBLIGATOIRE avant tout push** (toutes vitesses). `npm run mj:test mj-XX` vert sinon pas de push, pas de Papa Yann.
+3. **jsdom REJETÉ par le Conseiller** : n'attrape qu'1 des 3 sagas (pas de rendu SVG ni rAF) → faux sentiment de sécurité. Cible = **Playwright headless (Chromium réel)**, réutiliser l'agent `e2e-runner` + skill `e2e-testing` existants. Spec minimale : smoke (console.error = fail) + chemin nominal scripté + screenshot fin + 1 assert par ligne 🔒. ~30-50 lignes/MJ, < 15s. _Décision dépendance Playwright (~200 Mo) = en attente Papa Yann._
+4. **Règle « 2 strikes » outillée** : à partir du 2e commit-fix sur le même symptôme, un cas de test reproduisant le bug DOIT être ajouté au harnais AVANT le fix (on ne peut pas tester un bug qu'on ne comprend pas → force la cause-racine).
+
+**Leçons** : L-032 figeage (✅) · L-034 id SVG unique obligatoire si clones DOM · L-035 valider recette couleur en image avant pédago · L-037 design amont obligatoire · EP-038 harnais Playwright (action n°1 vélocité). Détail backlog.md.
+
+**À implémenter dans l'ordre** : (1) harnais Playwright [seul à demander de l'outillage, 60% du ROI] → (2) gabarit cadrage 1-écran game-conseiller [coût zéro, activable tout de suite] → figeage déjà fait.
+
 ### 2026-05-15 — Système de FIGEAGE par jeu (incident MJ-21)
 
 **Cause racine** : aucune décision validée par Papa Yann n'avait d'adresse physique par-jeu. Elles vivaient dans le contexte conversationnel → effacées à chaque `/compact` → régression structurelle. Incident : décision « bus cible EN BAS » répétée >10× puis re-proposée « en haut » post-compact.

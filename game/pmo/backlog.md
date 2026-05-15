@@ -9,7 +9,67 @@
 
 ---
 
+## Leçons du pôle MJ (L-xxx)
+
+Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-05-16). Détail complet : [`PIPELINE-MEMORY-MJ.md`](PIPELINE-MEMORY-MJ.md).
+
+### L-032 – Figeage par mini-jeu = protection régression
+**Constat** : MJ-21 saga "bus en haut/bas" — 10 répétitions Papa Yann sans enregistrement → régression structurelle à chaque `/compact`. **Cause** : aucune décision figée dans code source, pas de priorité mécanique.
+**Fix** : système figeage (commit 565f98cb) — `game/docs/jeux/figees/mj-XX.md` + hook PreToolUse `figees-injector.ps1` + game-mj-reviewer Section 0. État : ✅ déployé, mj-21 protégé.
+
+### L-033 – Gabarit header compact = norme obligatoire
+**Contexte** : Papa Yann signale bandeau titre trop gros dans **tous** les MJ HTML. Pattern correct = mj-20 (commit e1bcd42a).
+**Action** : décision 2026-05-14 gravée — EP-036 rétro-fit tous les MJ + EP-035 encoding UTF-8 unifié.
+
+### L-034 – SVG id uniqueness = leçon visuelle
+**Saga MJ-21** : bug "tube vide à la victoire" — 4 commits avant diagnostic. Root cause : `<clipPath id="tc">` dupliqué entre tube vrai + clone animation → `url(#tc)` résolvait vers le mauvais clipPath → remplissage clone invisible.
+**Leçon** : SVG id duplicate = bug silencieux (zéro erreur console) — **check obligatoire si glitch post-animation**. Outils : `grep id= <file>` ou inspection DOM navigateur.
+
+### L-035 – Recettes couleur = validation RGB amont
+**Pédago tardive MJ-21** : "vert clair" contre-intuitif (jaune:1 bleu:3). Fix : jaune:1 bleu:1 blanc:1.
+**Règle** : chaque recette RGB → **préview PNG amont** avant déploiement pédago. Outils : Canvas simple ou Python PIL.
+
+### L-036 – Mutations structure tube = unitaires obligatoires
+**Bug MJ-21** : `addCouleur()` après mix vidait le tube entier — oubli réinitialisation `doses`.
+**Action** : L-036 → unitaires obligatoires sur mutation structure tube (ajout/reset/mix/blend). Couvrir les cas mixtes.
+
+### L-037 – Design amont + figeage = obligatoire multi-mécanique
+**Pattern MJ-21** : layout codé 5 fois en parallèle conversation (5 commits refactor). Root cause : pas de screen mockup validé par Papa Yann AVANT dev.
+**Processus** : brève → **appel `game-conseiller` (Opus) 30 min** → layout proposé + mécanique + pédago → validation Papa Yann → figeage git (`game/docs/jeux/figees/mj-XX.md`) → dev contre design figé. Bénéfice : 4–5 commits layout évités.
+
+---
+
 ## Épics
+
+---
+
+## EP-038 – Harnais de test headless mini-jeux (Playwright)
+
+**Statut** : `[ ]` à faire — ⚠️ **décision dépendance Playwright (~200 Mo) en attente Papa Yann**
+
+**Priorité** : 🔥 **URGENTE** — plus gros levier optimisation (REX MJ-21 : ~60% des allers-retours évitables).
+
+**Contexte** : MJ-21 a consommé ~20 commits du pattern « j'ai changé à l'aveugle, dis-moi si ça marche ». Cause racine : le main agent ne peut pas tester le mini-jeu lui-même → Papa Yann = harnais de test humain.
+
+**Concept** : Playwright headless (Chromium réel), PAS jsdom. **jsdom rejeté par game-conseiller** : pas de rendu SVG ni `requestAnimationFrame` → n'aurait attrapé qu'1 des 3 sagas MJ-21 (le crash), pas « tube vide » (clipPath) ni « mixer » (timing) → faux sentiment de sécurité. Playwright déjà utilisé dans le projet (cf. T-240/T-254) + agent `e2e-runner` + skill `e2e-testing` réutilisables.
+
+**Spec minimale par MJ** (~30-50 lignes, < 15s, ne PAS sur-construire) :
+1. **Smoke** : page charge, `pageerror`/`console.error` ⇒ échec immédiat _(aurait tué la saga « Object.entries »)_
+2. **Chemin nominal scripté** : simuler les clics de la partie gagnante → asserter l'élément de victoire **visible et non vide** (`boundingBox()` non nul + screenshot) _(aurait tué la saga « tube vide »)_
+3. **1 assert par ligne 🔒** du fichier figé _(double filet avec le figeage)_
+
+**À faire** :
+1. **T-380** : `npm run mj:test mj-XX` (Playwright) — runner + 1 spec par MJ
+2. **T-381** : Pilote rétro-actif `mj-21.spec.js` — doit être ROUGE sur les commits buggés, VERT sur HEAD (valide que le harnais aurait attrapé les 3 sagas)
+3. **T-382** : Si pilote concluant → généraliser (1 spec/MJ actif)
+4. **T-383** : game-dev lance `mj:test` AVANT chaque push (gate locale, pas de push si rouge)
+5. **T-384** : game-mj-reviewer Section 6 « le spec couvre victoire + chaque ligne 🔒 ? »
+
+**Bénéfice** : Papa Yann passe de _débogueur_ à _juge produit_. ~60% des allers-retours supprimés.
+
+> ⚠️ **Note FORME (à traiter par game-archiviste)** : les leçons gravées L-032/L-034 par game-pmo entrent en collision de numérotation avec des L-032/L-034 tile préexistants (2026-05-12). Renuméroter les leçons MJ de ce REX.
+
+**Impact** : `game/web/js/test-helper.js`, `game/web/tests/`, CI config.
 
 ---
 

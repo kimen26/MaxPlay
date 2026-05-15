@@ -241,7 +241,9 @@ let order=shuffle(DEFIS.map((_,i)=>i));
 let defi=DEFIS[order[0]];
 
 // ── RENDU TUBE SVG ────────────────────────────────────────────────
+let _tcN=0;
 function renderTubeSVG(t,opts){
+  const cid='tc'+(++_tcN);  // id clipPath UNIQUE (sinon collision vrai tube ↔ clone victoire)
   const SW=64,SH=150,RIMH=14,BOT=SH,RX=12,FILL_H=BOT-RIMH;
   const path=`M0,${RIMH} L0,${BOT-RX} Q0,${BOT} ${RX},${BOT} L${SW-RX},${BOT} Q${SW},${BOT} ${SW},${BOT-RX} L${SW},${RIMH} Z`;
   let layers='';
@@ -264,10 +266,10 @@ function renderTubeSVG(t,opts){
   const hint=(!opts||!opts.forceFill)&&t.doses.length===0&&!t.mixed
     ?`<text x="${SW/2}" y="${RIMH+FILL_H/2+5}" text-anchor="middle" fill="rgba(255,255,255,0.18)" font-size="10" font-family="Nunito">vide</text>`:'';
   return `<svg width="${SW}" height="${SH}" viewBox="0 0 ${SW} ${SH}">
-  <defs><clipPath id="tc"><path d="${path}"/></clipPath></defs>
+  <defs><clipPath id="${cid}"><path d="${path}"/></clipPath></defs>
   <path d="${path}" fill="rgba(150,210,255,0.08)" stroke="rgba(255,255,255,0.45)" stroke-width="2.5"/>
-  <g clip-path="url(#tc)">${layers}</g>
-  <rect x="5" y="${RIMH+5}" width="6" height="${FILL_H-20}" rx="3" fill="rgba(255,255,255,0.16)" clip-path="url(#tc)"/>
+  <g clip-path="url(#${cid})">${layers}</g>
+  <rect x="5" y="${RIMH+5}" width="6" height="${FILL_H-20}" rx="3" fill="rgba(255,255,255,0.16)" clip-path="url(#${cid})"/>
   <rect x="2" y="0" width="${SW-4}" height="${RIMH}" rx="5" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
   ${hint}</svg>`;
 }

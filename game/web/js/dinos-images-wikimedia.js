@@ -6,11 +6,14 @@ const DINO_WIKIMEDIA = {
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Tyrannosaurus_rex-1.svg/800px-Tyrannosaurus_rex-1.svg.png', label: 'T. rex illustration latérale', type: 'illustration' },
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Tyrannosaurus_rex_size_compared_to_a_giraffe%2C_a_human%2C_a_dog_and_a_fox.jpg/800px-Tyrannosaurus_rex_size_compared_to_a_giraffe%2C_a_human%2C_a_dog_and_a_fox.jpg', label: 'T. rex comparaison taille humain', type: 'size_comparison' },
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Tyrannosaurus_rex-human_0505.JPG/800px-Tyrannosaurus_rex-human_0505.JPG', label: 'T. rex vs humain', type: 'size_comparison' },
+    { url: 'https://upload.wikimedia.org/wikipedia/commons/6/61/202007_Tyrannosaurus_rex.svg', label: 'T. rex illustration moderne', type: 'illustration' },
+    { url: 'https://upload.wikimedia.org/wikipedia/commons/d/d2/Tyrannosaurus_rex_Reconstruction_by_Nobu_Tamura.jpg', label: 'T. rex reconstruction Nobu Tamura', type: 'illustration' },
   ],
   spinosaurus: [
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Spinosaurus_size_comparison.svg/800px-Spinosaurus_size_comparison.svg.png', label: 'Spinosaurus comparaison taille', type: 'size_comparison' },
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Human-spinosaurus_size_comparison.png/800px-Human-spinosaurus_size_comparison.png', label: 'Spinosaurus vs humain', type: 'size_comparison' },
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Spinosaurus_vector.svg/800px-Spinosaurus_vector.svg.png', label: 'Spinosaurus vecteur', type: 'illustration' },
+    { url: 'https://upload.wikimedia.org/wikipedia/commons/8/86/Spinosaurus_life_restoration_with_Onchopristis.jpg', label: 'Spinosaurus chassant sa proie', type: 'illustration' },
   ],
   giganotosaurus: [
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Giganotosaurus_Scale.svg/800px-Giganotosaurus_Scale.svg.png', label: 'Giganotosaurus échelle', type: 'size_comparison' },
@@ -27,6 +30,7 @@ const DINO_WIKIMEDIA = {
   allosaurus: [
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Allosaurus_size_comparison.svg/800px-Allosaurus_size_comparison.svg.png', label: 'Allosaurus comparaison taille', type: 'size_comparison' },
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Human-allosaurus_size_comparison.svg/800px-Human-allosaurus_size_comparison.svg.png', label: 'Allosaurus vs humain', type: 'size_comparison' },
+    { url: 'https://upload.wikimedia.org/wikipedia/commons/e/e2/202009_Allosaurus_fragilis.svg', label: 'Allosaurus illustration moderne', type: 'illustration' },
   ],
   tarbosaurus: [
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/Tarbosaurus_Scale.svg/800px-Tarbosaurus_Scale.svg.png', label: 'Tarbosaurus échelle', type: 'size_comparison' },
@@ -60,10 +64,12 @@ const DINO_WIKIMEDIA = {
   brachiosaurus: [
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Human-brachiosaurus_size_comparison.svg/800px-Human-brachiosaurus_size_comparison.svg.png', label: 'Brachiosaurus vs humain', type: 'size_comparison' },
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Brachiosaurus_scale.svg/800px-Brachiosaurus_scale.svg.png', label: 'Brachiosaurus échelle', type: 'size_comparison' },
+    { url: 'https://upload.wikimedia.org/wikipedia/commons/4/4b/FMNH_Brachiosaurus.JPG', label: 'Squelette musée Field Museum Chicago', type: 'fossil' },
   ],
   diplodocus: [
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Diplodocus-size-comparison.svg/800px-Diplodocus-size-comparison.svg.png', label: 'Diplodocus comparaison taille', type: 'size_comparison' },
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/202005_Diplodocus_carnegii.svg/800px-202005_Diplodocus_carnegii.svg.png', label: 'Diplodocus illustration', type: 'illustration' },
+    { url: 'https://upload.wikimedia.org/wikipedia/commons/7/73/Diplodocus_cknight.jpg', label: 'Diplodocus illustration Charles R. Knight', type: 'artwork' },
   ],
   apatosaurus: [
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Apatosaurus_Silhouette.svg/800px-Apatosaurus_Silhouette.svg.png', label: 'Apatosaurus silhouette', type: 'illustration' },
@@ -84,6 +90,7 @@ const DINO_WIKIMEDIA = {
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Ankylosaurus_Scale_V2.svg/800px-Ankylosaurus_Scale_V2.svg.png', label: 'Ankylosaurus échelle V2', type: 'size_comparison' },
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/202007_Ankylosaurus_magniventris.svg/800px-202007_Ankylosaurus_magniventris.svg.png', label: 'Ankylosaurus illustration', type: 'illustration' },
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Ankylosaurus_size.jpg/800px-Ankylosaurus_size.jpg', label: 'Ankylosaurus taille', type: 'size_comparison' },
+    { url: 'https://upload.wikimedia.org/wikipedia/commons/2/27/Ankylosaurus_silhouette.svg', label: 'Ankylosaurus silhouette', type: 'illustration' },
   ],
   euoplocephalus: [
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Human-euoplocephalus_size_comparison.svg/800px-Human-euoplocephalus_size_comparison.svg.png', label: 'Euoplocephalus vs humain', type: 'size_comparison' },
@@ -93,6 +100,7 @@ const DINO_WIKIMEDIA = {
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Stegosaurus_size_comparison.svg/800px-Stegosaurus_size_comparison.svg.png', label: 'Stegosaurus comparaison taille', type: 'size_comparison' },
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Stegosaurus_size.svg/800px-Stegosaurus_size.svg.png', label: 'Stegosaurus taille avec humain', type: 'size_comparison' },
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/202009_Stegosaurus_stenops.svg/800px-202009_Stegosaurus_stenops.svg.png', label: 'Stegosaurus illustration', type: 'illustration' },
+    { url: 'https://upload.wikimedia.org/wikipedia/commons/2/2a/Stegosaurus.svg', label: 'Stegosaurus dessin SVG', type: 'illustration' },
   ],
   kentrosaurus: [
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Kentrosaurus_Size_Comparison_by_PaleoGeek.svg/800px-Kentrosaurus_Size_Comparison_by_PaleoGeek.svg.png', label: 'Kentrosaurus comparaison PaleoGeek', type: 'size_comparison' },
@@ -102,6 +110,7 @@ const DINO_WIKIMEDIA = {
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Human-triceratops_size_comparison.svg/800px-Human-triceratops_size_comparison.svg.png', label: 'Triceratops vs humain', type: 'size_comparison' },
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Triceratops_Scale_V1.svg/800px-Triceratops_Scale_V1.svg.png', label: 'Triceratops échelle V1', type: 'size_comparison' },
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Tyrannosaurus-Triceratops-human_size_0487.JPG/800px-Tyrannosaurus-Triceratops-human_size_0487.JPG', label: 'T-Rex vs Triceratops vs humain', type: 'size_comparison' },
+    { url: 'https://upload.wikimedia.org/wikipedia/commons/4/4e/Triceratops_liveDB.jpg', label: 'Triceratops illustration vie', type: 'illustration' },
   ],
   styracosaurus: [
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Human-styracosaurus_size_comparison.svg/800px-Human-styracosaurus_size_comparison.svg.png', label: 'Styracosaurus vs humain', type: 'size_comparison' },
@@ -141,6 +150,7 @@ const DINO_WIKIMEDIA = {
   velociraptor: [
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Velociraptor_IRL_VS_JP_size_comparison.svg/800px-Velociraptor_IRL_VS_JP_size_comparison.svg.png', label: 'Velociraptor IRL vs Jurassic Park', type: 'size_comparison' },
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Vraptor_Scale.svg/800px-Vraptor_Scale.svg.png', label: 'Velociraptor échelle', type: 'size_comparison' },
+    { url: 'https://upload.wikimedia.org/wikipedia/commons/5/55/Velociraptor_Restoration.png', label: 'Velociraptor restauration avec plumes', type: 'illustration' },
   ],
   deinonychus: [
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Deinonychus_Scale.svg/800px-Deinonychus_Scale.svg.png', label: 'Deinonychus échelle', type: 'size_comparison' },
@@ -182,6 +192,7 @@ const DINO_WIKIMEDIA = {
   archaeopteryx: [
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Archaeopteryx_Scale.svg/800px-Archaeopteryx_Scale.svg.png', label: 'Archaeopteryx échelle', type: 'size_comparison' },
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/Archaeopteryx_lithographica_fossil.jpg/800px-Archaeopteryx_lithographica_fossil.jpg', label: 'Archaeopteryx fossile', type: 'fossil' },
+    { url: 'https://upload.wikimedia.org/wikipedia/commons/7/70/202010_Archaeopteryx_lithographica.svg', label: 'Archaeopteryx illustration moderne', type: 'illustration' },
   ],
   mosasaurus: [
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/MosaScale.svg/800px-MosaScale.svg.png', label: 'Mosasaurus échelle', type: 'size_comparison' },
@@ -199,6 +210,7 @@ const DINO_WIKIMEDIA = {
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/202007_Therizinosaurus_cheloniformis.svg/800px-202007_Therizinosaurus_cheloniformis.svg.png', label: 'Therizinosaurus illustration', type: 'illustration' },
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Therizinosaurus_scale.png/800px-Therizinosaurus_scale.png', label: 'Therizinosaurus échelle', type: 'size_comparison' },
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Therizinosaurus_size.png/800px-Therizinosaurus_size.png', label: 'Therizinosaurus taille', type: 'size_comparison' },
+    { url: 'https://upload.wikimedia.org/wikipedia/commons/5/5e/202007_Therizinosaurus_cheloniformis.svg', label: 'Therizinosaurus SVG direct', type: 'illustration' },
   ],
   dimetrodon: [
     { url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Dimetrodon_illustration_by_Ritterbush.svg/800px-Dimetrodon_illustration_by_Ritterbush.svg.png', label: 'Dimetrodon illustration Ritterbush', type: 'illustration' },

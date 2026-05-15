@@ -709,7 +709,7 @@ function buildFiche(d) {
       </div>
     </div>
     <div style="text-align:right;padding:0 12px 6px">
-      <button class="speak-btn" onclick="speakText('${esc(d.name)} était ${esc(d.comp_taille)} Et il était haut comme ${esc(d.comp_hauteur||d.hauteur_m+\' mètres\')}. Il pesait ${d.poids_t >= 1 ? d.poids_t + \' tonnes\' : Math.round(d.poids_t*1000) + \' kilos\'}, ${esc(d.comp_poids)}')">🔊 Taille</button>
+      <button class="speak-btn" onclick="speakStatsDino('${d.id}')">🔊 Taille</button>
     </div>
 
     <!-- Ce qu'il mange -->
@@ -901,6 +901,14 @@ const DINO_EXTRAS = {
     { folder:'paws', file:'4_Iguanodon_dinosaur_fossil_foot_bones.png', label:'Os du pied' },
   ],
 };
+
+function speakStatsDino(id) {
+  const d = DINOS.find(x => x.id === id);
+  if (!d) return;
+  const poids = d.poids_t >= 1 ? d.poids_t + ' tonnes' : Math.round(d.poids_t * 1000) + ' kilos';
+  const haut = d.comp_hauteur || (d.hauteur_m + ' mètres');
+  speakText(d.name + ' était ' + (d.comp_taille||'') + '. Et il était haut comme ' + haut + '. Il pesait ' + poids + ', ' + d.comp_poids);
+}
 
 /* ── Init ── */
 buildMenu();

@@ -9,6 +9,37 @@
 
 ---
 
+## 2026-05-16 — [PMO] REX MJ-21 — 33 commits, 5 causes racines, leçons process
+
+**Owner** : game-pmo (signal utilisateur : "REX grave les leçons")
+
+**Trigger** : Papa Yann demande REX sur MJ-21 "Peins les bus!" — 33 commits (≈40 allers-retours) en 3 jours. Trouve ça énorme, veut conclusions pour ne plus reproduire.
+
+**Fait** :
+- ✅ Création `game/pmo/PIPELINE-MEMORY-MJ.md` — entrée datée REX, 5 causes racines, propositions process, mesures
+- ✅ Création L-032 à L-037 (6 leçons) dans `backlog.md`
+- ✅ Création EP-038 (Harnais jsdom) — priorité 🔥 URGENTE, plus gros levier (~20 commits/chantier)
+- ✅ Extraction 4 axes optimisation : A. Harnais headless, B. Règle 2-strikes cause-racine, C. Design amont + figeage (L-037), D. Figeage (✅ déjà déployé)
+
+**5 causes racines identifiées** :
+1. Harnais test humain (PP) = tueur vélocité #1 → EP-038 jsdom
+2. Chasse symptômes au lieu causes (7 commits mixer) → L-038 (2-strikes rule)
+3. Bus en haut/bas : régression sans figeage → L-032 (figeage ok)
+4. Tube vide : clipPath id dupliqué → L-034 (SVG id-check)
+5. Layout refait 5× : pas design amont → L-037 (design amont obligatoire)
+
+**Bugs pédago tardifs** : 3 (recette RGB, addCouleur, mécanique) → L-035/L-036.
+
+**Potentiel optimisation** : ~20 commits (52% réduction si EP-038+process appliqués).
+
+**État au reboot** :
+- Leçons gravées pour prochains MJ
+- Système figeage ✅ (déjà live, mj-21 protégé)
+- Design amont proposé comme processus (pas exécuté, attente appel next MJ)
+- Harnais jsdom = chantier T-380 à T-384 (priorisation haute)
+
+---
+
 ## 2026-05-14 — [MJ GABARIT] Header compact + fix encoding emojis (tous les MJ)
 
 **Owner** : Papa Yann (signal utilisateur)

@@ -11,6 +11,137 @@
 
 ---
 
+## 2026-05-16 — STORY-002 vague 3 : Couture Ten + validation PMO PASS — briefs prêts étape 4
+
+**Objectif** : Intégration feedback Conseiller sur vague 3 briefs + validation PMO finale avant lancement 14 writers étape 4.
+
+**Fait** :
+- [x] Relecture feedback Conseiller sur briefs vague 3 (4 anomalies identifiées)
+- [x] Décision 1 — Juju mouvement continu Ten (signature T8, pas stop-parle-repart)
+- [x] Décision 2 — Wex énonce paradoxe épouvantail (Beat 8 Ten nouveau, sans conclusion)
+- [x] Décision 3 — Angle mort sécurité (pieds nus herbe propre, cadré sans over-emphasis)
+- [x] Décision 4 — Délexicaliser degré 45° → comparaison nature (chien/oiseau)
+- [x] Enregistrement DEC-STORY-002-TEN-001 dans `decisions.md` (4 tranches, fichiers impactés)
+- [x] Updates brief-histoire.md + _writer-package.md (beats Ten corrigés)
+- [x] Vérification cohérence avec DEC-SYMBOLIQUE-001 + DEC-JUJU-T8-001 (gravées)
+- [x] Vérification DEC-BRIEF-ARCH-001 (3 couches) appliquée vague 3 (OK)
+- [x] Final scan négations gratuites vague 3 (0 nouvelles, toutes 2026-05-16 légitimes)
+- [x] Kanban STORY-002 étape 3 → READY étape 4
+
+**Décisions prises** : DEC-STORY-002-TEN-001 (4 tranches) — figée 2026-05-16.
+
+**Classification** : **DÉCISION** (4 tranches figées) + **TRAITEMENT IMMÉDIAT** (briefs corrigés) + **INFO** (prêt lancement).
+
+**État au reboot** :
+- ✅ Briefs vague 3 VALIDÉS — **PMO PASS complet**
+- ✅ Aucune correction/itération requise avant étape 4
+- ✅ Kanban étape 3 → étape 4 ⚪ READY
+- ✅ Directeur peut lancer 14 writers immédiatement
+- 📍 Prochaine action : lancer étape 4 (14 writers, 2 Claude + 4 Kimi + 2 DeepSeek + 2 Grok + 3 runs parallèles Conseiller)
+
+---
+
+## 2026-05-15 — ARCHI-VISUEL-001 : Section identité visuelle créée
+
+**Objectif** : Structurer le stockage style visuel Wex World (logo saga, images par histoire, prompts).
+
+**Fait** :
+- [x] `narration/visual-identity/` créé (README + style-guide + logo-saga/prompts-log + gabarit histoire)
+- [x] Dossiers `001-le-pont-casse/` et `002-libellule-resonance/` créés dans visual-identity
+- [x] `stories/NNN/assets/images/` ajouté dans _gabarit, 001, 002
+- [x] `narration/INDEX.md` mis à jour (section Identité visuelle)
+- [x] DEC-VISUEL-001 enregistrée dans decisions.md
+
+**Décisions** : DEC-VISUEL-001 — dual architecture (central visual-identity + local stories/images).
+
+**Prochaines actions** :
+- Papa Yann verse le logo Grok + prompt dans `visual-identity/logo-saga/`
+- Papa Yann verse la cover 001 ChatGPT + prompt dans `visual-identity/001-le-pont-casse/`
+- Construire style-guide.md après les premières images versées
+
+---
+
+## 2026-05-16 — STORY-002 vague 3 briefs : Relecture PMO PASS — étape 4 débloquée
+
+**Objectif** : Relecture mécanique PROCESS L.127 des 2 briefs vague 3 (brief-personnages.md + brief-histoire.md) avant lancement étape 4 (14 writers).
+
+**Fait** :
+- [x] Relecture brief-personnages.md (103L) — frontière/autoportance/négations/casting
+- [x] Relecture brief-histoire.md (127L) — criteria PASS PROCESS L.127/plans Ki/Sho/Ten/Ketsu/beats figés/implicite
+- [x] Scan complet négations gratuites (15 hits, 100% légitimes, règle F passée)
+- [x] Vérification cohérence DEC-SYMBOLIQUE-001 (Juju=Animaux, Nono=Vibration collective) — gravées
+- [x] Vérification DEC-JUJU-T8-001 (signature chansonnette-s'arrête-net) — figée 3 fois dans briefs
+- [x] Vérification DEC-GABARIT-PERSO-001 (gabarit perso unifié) — structurellement OK
+
+**Critères PASS détail** :
+- ✅ 10 beats Ten verrouillés (L.45-54), formulation free pour writers
+- ✅ Pitch/plan/contraintes/garde-fous/leviers/boussole péda — 6/6 critères PROCESS §127
+- ✅ Autoportance totale : aucune ref `cf fichier X`, writers MCP reçoivent briefs inlinés + system
+- ✅ Univers implicite (jamais Wex World / Éveil / Totems / résonance)
+- ✅ Ennéatypes/sensibilités dilués (jamais nommés, jamais expliqués)
+- ✅ Casting V1 cohérent (Wex/Juju/Nono, 7 absents listés)
+- ✅ Frontière brief-perso=invariant / brief-histoire=spécifique story (zéro fuite)
+- ✅ Négations : 15 hits, toutes légitimes (tentation vraie écartée, règle F 100%)
+
+**Décisions** : Zéro alerte, briefs VALIDÉS pour lancement étape 4.
+
+**État au reboot** :
+- Kanban STORY-002 étape 3 → passe à étape 4 ⚪ (prêt)
+- Directeur peut lancer 14 writers immédiatement
+- Aucune correction/itération requise
+
+---
+
+## 2026-05-15 (fin de session) — STORY-002 : Brainstorm boss Phase A scène pivot figée
+
+**Objectif** : Finaliser vision brainstorm boss STORY-002 avec Papa Yann — scène pivot complète beats figés.
+
+**Fait** :
+- [x] Vision Papa Yann — scène pivot 11 beats figés (Couche 1 verrouillée)
+- [x] Implicites narratifs Nono/Juju/Wex validés (vibrations dormantes, jamais nommées)
+- [x] Formulations libres writer clarifiées (vanne Juju ≠ enchère Wex)
+- [x] Beats critiques gravés : "Je vais essayer quelque chose" / "T'as l'air d'un épouvantail" / "Ça fait fuir les animaux !?" / main tendue / buton / "oh" muet Wex / "Gagné !"
+- [x] MAJ `2-brainstorm-boss.md` § Vision Couche 0 + Couche 1 scène pivot
+- [x] MAJ `kanban.md` étape 2A (vision Couche 0+1 validée)
+
+**Classification** : **TRAITEMENT IMMÉDIAT** (mise à jour docs) + **INFO** (état au reboot)
+
+**État au reboot** :
+- ✅ Phase A brainstorm boss **CLÔTURÉE** — scène pivot figée (11 beats, implicites, formulations libres identifiées)
+- ⏳ Phase B brainstorm équipe : **EN ATTENTE AVIS CONSEILLER** avant lancement Kimi/DeepSeek/Grok sur Couche 0 (propositions 3 variantes implicites ? Nono seul pivot ? autres vecteurs d'harmonie ?)
+- 🔴 **POINT D'ATTENTION** : fichier `2-brainstorm-equipe.md` existant ne correspond pas à la nouvelle vision Phase A — sera refondé en Phase B v3 si validation Conseiller positive
+- ⏳ Étape 3C (briefs) à lancer après validation Conseiller + Phase B
+
+---
+
+## 2026-05-15 (fin de session) — DEC-SYMBOLIQUE-001 : Table symbolique figée v2
+
+**Objectif** : enregistrement formelle décision challenge 3 LLMs sur table symbolique + corrections astres + échange sensibilités T6/T8.
+
+**Fait** :
+- [x] Challenge 3 LLMs indépendants lancé (DeepSeek V4, Grok 4.3, Kimi K2) sur table symbolique 2026-04-27
+- [x] Analyse convergence et critères ennéa validée
+- [x] Corrections astres live.md v1 (Mimi/Lulu/Madie/Nono erreurs identifiées)
+- [x] Mutations pierres (Dadou Pyrite, Raph Aventurine/Citrine, Nono Quartz rutile)
+- [x] Échange sensibilités T6/T8 (Pierrot Plantes, Juju Animaux)
+- [x] Enregistrement DEC-SYMBOLIQUE-001 dans `decisions.md`
+- [x] Tracé table v2 figée 10 types + Wex
+
+**Classification** : **DÉCISION** (symbologie figée)
+
+**Impact** :
+- Tous les fichiers `alive.md` (type-01 à type-09 + wex) à MAJ (astres + sensibilités + couleur+pierre)
+- Univers sensibilités + cross-culture castings FR à propager
+- Théorie ennéa symbolique.md à mettre à jour
+
+**État au reboot** :
+- ✅ Table symbolique v2 figée dans `decisions.md` DEC-SYMBOLIQUE-001
+- ⏳ Propagation fichiers persos en cours (Claude applique corrections astres + sensibilités)
+- ⏳ Archiviste à valider propagation INDEX après modifications alive.md
+- ⏳ Aucun blocage — modifications de consolidation, pas nouvelle matière
+
+---
+
 ## 2026-05-15 (session Archiviste) — DEC-GABARIT-PERSO-001 : Gabarit personnages gravé
 
 **Action ARCHIVISTE** : gravage gabarit personnages dans sources d'autorité.

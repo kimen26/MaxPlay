@@ -4,6 +4,73 @@
 
 ---
 
+## 2026-05-16 — DEC-STORY-002-TEN-001 : Couture Ten B3→B4 + bug logique Wex + 2 angles morts
+
+**Auteur (Papa Yann)** : session 2026-05-16, vague 3 briefs STORY-002.
+
+**Contexte** : relecture créative Conseiller des briefs vague 3 a identifié une ellipse non-dite dans le Ten (entre la vanne de Juju et son retour-qui-bute). Papa Yann a tranché 4 décisions lors de la session.
+
+**Décisions tranchées** :
+
+### 1. Juju en mouvement continu (signature T8)
+
+**Problème** : ellipse visible entre « Juju balance sa vanne "Ça fait un drôle d'épouvantail" » et « Juju retour qui la bute ». Gap crée un trou causalité pour enfants 4-6 ans.
+
+**Solution** : Juju ne s'arrête JAMAIS pendant le Ten. Elle court après les libellules tout du long, balance sa vanne EN COURANT au passage, bute EN COURANT, se rattrape à la main de Nono. Flux continu = pas d'ellipse, causalité immédiate respectée. Cohérent avec signature T8 (elle rebondit, elle ne s'arrête pas).
+
+**Impact brief** : Beat 7 Ten → « Juju continue de courir, balance sa vanne "Ça fait un drôle..." au passage » (pas stop-parle-repart).
+
+### 2. Wex bugue sur la logique épouvantail (paradoxe énoncé, pas résolu)
+
+**Problème** : Nono dit "Je vais essayer quelque chose", Juju dit "Ça fait un drôle..." mais qui énonce le paradoxe « un épouvantail ça fait FUIR les bêtes alors que nous on veut que la libellule VIENNE » ?
+
+**Solution** : Wex s'arrête (lui il observe). Son enchère = il pointe le paradoxe à voix haute. Sens figé, mots libres au writer (3 formulations enfantine proposées dans brief). Wex dit ça pour lui-même, sans regarder personne, pas comme objection à Nono. Pas de 2e réplique, pas de conclusion à voix haute. Il énonce, c'est tout.
+
+**Impact brief** : Beat 8 Ten (nouveau) → « Wex s'arrête, observe, note à voix basse : [3 formulations libres] » avec instruction writer « Wex énonce le paradoxe sans intent confrontation ».
+
+### 3. Angle mort sécurité — pieds nus sur l'herbe sans risque
+
+**Problème** : Nono enlève chaussures+chaussettes pieds nus SUR L'HERBE au bord de l'étang. Parent qui lit à voix haute peut craindre message "pieds nus c'est ok n'importe où".
+
+**Solution** : Cadrage — l'étang est peu profond, herbe propre, pas de boue, pas de rocaille = endroit sûr pour pieds nus. Peut être mentionné légèrement dans le brief lieu (« herbe bien entretenue, sûre ») sans sur-emphasis.
+
+**Impact brief** : Couche 2 Lieu → ajouter « herbe propre et entretenue, sûre pour pieds nus » (une phrase discrète).
+
+### 4. Angle mort sur-cadrage — degré chiffré → comparaison naturelle
+
+**Problème** : brief vague 2 contenait « Wex tête penchée ~45° » = degré chiffré dans brief créatif = problème (jamais vu ça dans Kishōtenketsu). Crée impression très technique, pas narratif.
+
+**Solution** : Délexicaliser le degré → « tête penchée comme un chien qui entend un bruit bizarre / un petit oiseau intrigué ». Comparaison vivante, pas chiffré. Writer adapte/réinvente librement.
+
+**Impact brief** : Beat 8 Ten → remplacer « ~45° » par comparaison nature (writer choisit/crée sa variante).
+
+**Fichiers impactés** :
+- ✅ `narration/stories/002-libellule-resonance/3-briefs/brief-histoire.md` (commits e0d0c7b9 + 990f762b)
+- ✅ `narration/stories/002-libellule-resonance/3-briefs/_writer-package.md` (beats Ten ajustés)
+
+**Statut** : ✅ Figée 2026-05-16. Briefs vague 3 FINALISÉS et PRÊTS pour étape 4 (14 writers).
+
+---
+
+## 2026-05-15 — DEC-VISUEL-001 : Section identité visuelle Wex World créée
+
+**Périmètre** : logo saga + covers histoires + prompts-log + style-guide.
+
+**Décisions** :
+- `narration/visual-identity/` = source de vérité identité visuelle centrale (logo, style-guide, prompts par histoire)
+- `narration/stories/NNN/assets/images/` = assets locaux production par histoire
+- Modèles utilisés à ce jour : **Grok** (logo saga) · **ChatGPT DALL-E 3** (covers histoires)
+- Recommandation Midjourney v7 pour cohérence saga long terme (`--cref`/`--sref`)
+- Un `prompts-log.md` OBLIGATOIRE par dossier — toujours noter prompt exact + verdict + nom fichier
+- Style-guide à construire après premières générations validées (palette, grain, traitement Wex non encore figés)
+
+**Anti-patterns** :
+- ❌ Conserver une image sans son prompt
+- ❌ Générer sans lire le style-guide
+- ❌ Traitement de Wex différent d'une histoire à l'autre
+
+---
+
 ## 2026-05-15 — DEC-SYMBOLIQUE-001 : Table symbolique v2 figée
 
 **Source** : challenge 3 LLMs (DeepSeek V4, Grok 4.3, Kimi K2) + validation Papa Yann.

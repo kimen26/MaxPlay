@@ -103,6 +103,19 @@ narration/
 
 ---
 
+## Identité visuelle
+
+| Fichier | Contenu |
+|---------|---------|
+| [`visual-identity/README.md`](visual-identity/README.md) | **Index maître** — logo saga, couvertures, prompts |
+| [`visual-identity/style-guide.md`](visual-identity/style-guide.md) | Palette, grain, traitement Wex, cadre cover — **lire avant de générer** |
+| [`visual-identity/logo-saga/`](visual-identity/logo-saga/) | Logo Wex World (versions + prompts-log) |
+| [`visual-identity/NNN-titre/`](visual-identity/) | Un dossier par histoire (illustrations + prompts-log) |
+
+> Modèles utilisés : Grok (logo) · ChatGPT DALL-E 3 (covers) · Midjourney recommandé pour cohérence saga.
+
+---
+
 ## Équipe éditoriale (process & agents)
 
 | Fichier | Rôle |

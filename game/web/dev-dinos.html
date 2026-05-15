@@ -614,8 +614,26 @@ function speakCatIntro() {
 /* ── Build fiche ── */
 function speakFicheDesc() {
   if (!currentDino) return;
-  const d = currentDino;
-  speakText(d.name + '. ' + d.desc + ' ' + d.fait);
+  speakFiche(currentDino);
+}
+
+function regimeIcon(cat) {
+  const icons = { carnivores:'🥩', herbivores:'🌿', piscivores:'🐟', omnivores:'🍃', volants_marins:'🌊' };
+  return icons[cat] || '🍽️';
+}
+function regimelabel(regime) {
+  return regime.replace(/[🥩🌿🐟🍃🌊]/g,'').replace(/\(.*?\)/g,'').trim();
+}
+function speakFiche(d) {
+  const poids = d.poids_t >= 1 ? d.poids_t + ' tonnes' : Math.round(d.poids_t*1000) + ' kilos';
+  const txt = `${d.name} ! ${d.nom_etym||''} `
+    + `Il mesurait ${d.taille_m} mètres de long et ${d.hauteur_m||'?'} mètres de haut. `
+    + `Il pesait ${poids}. `
+    + `C'est un ${regimelabel(d.regime).toLowerCase()}. `
+    + `Il mange ${d.proies}. `
+    + `${d.amis}. `
+    + `Le savais-tu ? ${d.fait}`;
+  speakText(txt);
 }
 
 function buildFiche(d) {
@@ -637,7 +655,7 @@ function buildFiche(d) {
         <div class="fiche-name">${d.name}</div>
         <div class="fiche-full">${d.full}</div>
       </div>
-      <button class="speak-btn" onclick="speakText('${esc(d.name)}. ${esc(d.full)}. ${esc(d.nom_etym||'')}')">🔊 Nom</button>
+      <button class="speak-btn" onclick="speakText('${esc(d.name)} ! Son vrai nom c\'est ${esc(d.full)}.')">🔊 Nom</button>
     </div>
     ${d.nom_etym ? `
     <div class="fiche-highlight" style="background:rgba(180,130,255,0.08);border-color:rgba(180,130,255,0.25);margin-top:0">
@@ -659,7 +677,7 @@ function buildFiche(d) {
         <div class="fiche-section-sub">📍 ${d.region}</div>
         <div class="fiche-section-sub" style="margin-top:4px">🌍 ${d.continent || ''} · ${(DINO_PERIODES.find(p=>p.id===d.periode)||{}).label||''}</div>
       </div>
-      <button class="speak-btn" onclick="speakText('${esc(d.name)} vivait ${esc(d.epoque)}, en ${esc(d.region)}.')">🔊</button>
+      <button class="speak-btn" onclick="speakText('${esc(d.name)} vivait il y a très très longtemps, en ${esc(d.region)}. C\'était pendant la période ${esc((DINO_PERIODES.find(p=>p.id===d.periode)||{}).label||d.epoque)}.')">🔊</button>
     </div>
 
     <!-- Stats longueur / hauteur / poids -->
@@ -681,51 +699,55 @@ function buildFiche(d) {
       </div>
     </div>
     <div style="text-align:right;padding:0 12px 6px">
-      <button class="speak-btn" onclick="speakText('${esc(d.name)} mesurait ${d.taille_m} mètres de long et ${d.hauteur_m||'?'} mètres de haut. ${esc(d.comp_taille)}. Il pesait ${d.poids_t >= 1 ? d.poids_t + ' tonnes' : Math.round(d.poids_t*1000) + ' kilos'}. ${esc(d.comp_poids)}.')">🔊 Taille</button>
+      <button class="speak-btn" onclick="speakText('${esc(d.name)} était ${esc(d.comp_taille)} Et il était haut comme ${esc(d.comp_hauteur||d.hauteur_m+\' mètres\')}. Il pesait ${d.poids_t >= 1 ? d.poids_t + \' tonnes\' : Math.round(d.poids_t*1000) + \' kilos\'}, ${esc(d.comp_poids)}')">🔊 Taille</button>
     </div>
 
-    <!-- Régime -->
+    <!-- Ce qu'il mange -->
     <div class="fiche-section">
-      <div class="fiche-section-icon">🍽️</div>
+      <div class="fiche-section-icon">${regimeIcon(d.cat)}</div>
       <div class="fiche-section-body">
-        <div class="fiche-section-title">Que mange-t-il ?</div>
-        <div class="fiche-section-text">${d.regime}</div>
-        <div class="fiche-section-sub">Proies : ${d.proies}</div>
+        <div class="fiche-section-title">Ce qu'il mange</div>
+        <div class="fiche-section-text">${regimelabel(d.regime)}</div>
+        <div class="fiche-section-sub">${d.proies}</div>
       </div>
-      <button class="speak-btn" onclick="speakText('${esc(d.name)} mange ${esc(d.regime.replace(/[🥩🌿🐟]/g,''))}. ${esc(d.proies)}')">🔊</button>
+      <button class="speak-btn" onclick="speakText('${esc(d.name)} est ${esc(regimelabel(d.regime))}. Il mange ${esc(d.proies)}.')">🔊</button>
     </div>
 
     <!-- Superpower -->
     <div class="fiche-highlight">
       <div class="fiche-section-icon" style="font-size:1.8rem">⚡</div>
       <div style="flex:1">
-        <div class="fiche-section-title" style="color:rgba(255,220,0,0.5)">Superpower</div>
+        <div class="fiche-section-title" style="color:rgba(255,220,0,0.5)">Son super-pouvoir</div>
         <div class="fiche-highlight-text">${d.superpower}</div>
       </div>
-      <button class="speak-btn" onclick="speakText('Superpower ! ${esc(d.superpower)}')">🔊</button>
+      <button class="speak-btn" onclick="speakText('Son super-pouvoir ! ${esc(d.superpower)}')">🔊</button>
     </div>
 
-    <!-- Chasseurs / proies -->
+    <!-- Vie en groupe -->
+    <div class="fiche-section">
+      <div class="fiche-section-icon">🫂</div>
+      <div class="fiche-section-body">
+        <div class="fiche-section-title">Il vit…</div>
+        <div class="fiche-section-text">${d.amis}</div>
+      </div>
+      <button class="speak-btn" onclick="speakText('Comment vit ${esc(d.name)} ? ${esc(d.amis)}')">🔊</button>
+    </div>
+
+    <!-- Chasse & prédateurs -->
     <div class="fiche-section">
       <div class="fiche-section-icon">🎯</div>
       <div class="fiche-section-body">
-        <div class="fiche-section-title">Qui le chasse ?</div>
-        <div class="fiche-section-text">${d.chasseurs}</div>
+        <div class="fiche-section-title">Il chasse…</div>
+        <div class="fiche-section-text">${d.proies}</div>
+        <div class="fiche-section-sub" style="margin-top:6px">
+          <span style="opacity:0.5;font-size:0.7rem;text-transform:uppercase;letter-spacing:.05em">Ses ennemis :</span>
+          <span style="margin-left:4px">${d.chasseurs}</span>
+        </div>
       </div>
-      <button class="speak-btn" onclick="speakText('Qui chasse ${esc(d.name)} ? ${esc(d.chasseurs)}')">🔊</button>
+      <button class="speak-btn" onclick="speakText('${esc(d.name)} chasse ${esc(d.proies)}. Et qui ose l\'attaquer ? ${esc(d.chasseurs)}')">🔊</button>
     </div>
 
-    <!-- Amis -->
-    <div class="fiche-section">
-      <div class="fiche-section-icon">🤝</div>
-      <div class="fiche-section-body">
-        <div class="fiche-section-title">Vit-il avec des amis ?</div>
-        <div class="fiche-section-text">${d.amis}</div>
-      </div>
-      <button class="speak-btn" onclick="speakText('${esc(d.name)} : ${esc(d.amis)}')">🔊</button>
-    </div>
-
-    <!-- Le saviez-vous -->
+    <!-- Fun fact / Le sais-tu -->
     <div class="fiche-highlight" style="background:rgba(100,200,255,0.07);border-color:rgba(100,200,255,0.2)">
       <div class="fiche-section-icon" style="font-size:1.8rem">💡</div>
       <div style="flex:1">
@@ -736,11 +758,11 @@ function buildFiche(d) {
         onclick="speakText('Le savais-tu ? ${esc(d.fait)}')">🔊</button>
     </div>
 
-    <!-- Description complète -->
+    <!-- Description -->
     <div class="fiche-section">
-      <div class="fiche-section-icon">📖</div>
+      <div class="fiche-section-icon">📝</div>
       <div class="fiche-section-body">
-        <div class="fiche-section-title">Description</div>
+        <div class="fiche-section-title">En deux mots…</div>
         <div class="fiche-section-text" style="font-size:0.88rem;font-weight:400;line-height:1.55">${d.desc}</div>
       </div>
       <button class="speak-btn" onclick="speakText('${esc(d.desc)}')">🔊</button>

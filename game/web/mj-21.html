@@ -391,20 +391,26 @@ function checkAutoWin(t) {
   // Cette fonction ne fait plus rien — conservée pour compatibilité
 }
 
+let mixerLocked = false;
 function mixerTube(idx) {
+  if (victoire) return;
+  if (mixerLocked) return;
   const t=tubes[idx];
   const tot=t.r+t.j+t.b+t.w;
-  if (victoire) return;
-  if (tot===0) { console.log('tube vide'); return; }
+  if (tot===0) return;
+  mixerLocked = true;
   activeIdx=idx;
   playMix();
   const wrap=document.getElementById(`tube-wrap-${idx}`);
-  if (!wrap) { console.error('tube-wrap not found:', idx); return; }
-  wrap.classList.remove('shaking');
-  void wrap.offsetWidth;
-  wrap.classList.add('shaking');
+  if (wrap) {
+    wrap.classList.remove('shaking');
+    wrap.offsetWidth; // force reflow
+    wrap.classList.add('shaking');
+  }
   const defiBrun = defi.label==='brun';
   setTimeout(() => {
+    mixerLocked = false;
+    if (wrap) wrap.classList.remove('shaking');
     if (isBrun(t) && !defiBrun) {
       t.mixed='BRUN';
       renderTubes();
@@ -420,7 +426,7 @@ function mixerTube(idx) {
       victoire=true;
       setTimeout(showVictoire,650);
     }
-  }, 550);
+  }, 500);
 }
 
 function viderTube(idx) {
@@ -466,7 +472,7 @@ function resetPartie() {
 
 function resetTubes() {
   tubes=[newTube(0),newTube(1)];
-  activeIdx=0; victoire=false; brunShown=false; missCount=0;
+  activeIdx=0; victoire=false; brunShown=false; missCount=0; mixerLocked=false;
   document.getElementById('brun-overlay').classList.remove('show');
   renderTubes();
   renderBus(null);

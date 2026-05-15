@@ -42,10 +42,15 @@ L'énergie monte. Les tentatives s'enchaînent, la libellule échappe encore. To
 
 ### Ten — la bascule (BEATS FIGÉS — ordre respecté)
 
-1. **Nono décroche** sans l'annoncer. Il enlève ses chaussures et ses chaussettes — pieds nus, contact avec la terre. Il s'arrête (debout ou accroupi — libre), tend la/les main(s). Un mot minuscule (*"Attends."*) ou rien — libre. Les autres entendent/voient et **continuent quand même**.
-2. **Juju** lance sa vanne sur ce moment — image **« épouvantail »** obligatoire (formulation libre). **Sa chanson s'arrête net, en pleine phrase.**
-3. **Wex** (dans le vide, pour lui-même, sans regarder personne) enchérit : sens = *« mais un épouvantail, ça fait fuir les animaux ?! »* (mots libres).
-4. **Au même moment / quasi simultané** : Juju revient en courant, **bute** (racine/caillou — libre), se rattrape à la main de Nono. Elle reste là — équilibre, contact physique.
+1. **Nono décroche** sans l'annoncer. Il enlève ses chaussures et ses chaussettes — pieds nus, contact avec la terre. Il s'arrête (debout ou accroupi — libre), tend la/les main(s). Un mot minuscule (*"Attends."*) ou rien — libre. Les autres **continuent quand même**.
+2. **Juju ne s'arrête JAMAIS** — elle court après les libellules tout du long. Elle balance sa vanne **en courant**, au passage, dans la direction de Nono : image **« épouvantail »** obligatoire (Nono planté, immobile, bras tendus → on dirait un épouvantail). Formulation exacte libre. **Sa chanson s'arrête net, en pleine phrase** (si elle chantonnait).
+3. **Wex s'arrête** (lui, il observe — c'est son truc). Il bugue sur la logique : un épouvantail, **ça fait FUIR** les bêtes — alors que là on veut justement que la libellule **VIENNE**. Donc dans sa tête, ce que fait Nono ne devrait pas marcher.
+   - *Sens figé :* Wex pointe le paradoxe « épouvantail = fait fuir » vs « nous on veut que ça vienne ». Il dit ça pour lui-même, sans regarder personne, pas comme une objection à Nono.
+   - *Propositions de formulation (le writer choisit / adapte / réinvente — voix enfantine 4-6 ans) :*
+     - *« Ben... un épouvantail, ça fait partir les bêtes. Nous on veut qu'elle vienne, pourtant. »*
+     - *« Mais les épouvantails, ça fait peur aux animaux... c'est le contraire qu'on veut ! »*
+     - *« Un épouvantail ça chasse les oiseaux. Là, nous, on veut pas la chasser. »*
+4. **Sans s'arrêter de courir**, Juju **bute** (racine/caillou — libre), se rattrape à la main de Nono. Elle reste là — équilibre, contact physique. *(Flux continu : elle courait après la libellule, elle trébuche, elle s'accroche à Nono. Pas d'arrêt avant le buton.)*
 5. **Nono** tient la main. Sourit. **Battement de silence** (ce qu'on entend dedans = libre : cigale, eau, rien).
 6. La libellule se pose sur la **main / le doigt libre de Nono**.
 7. Nono soulève doucement — libellule **devant le nez de Juju**.
@@ -62,7 +67,7 @@ Libre au writer : retour au calme (contemplation, souffle, un autre animal qui p
 
 - **Nono** crée un champ de calme — sa sensibilité dormante. Aucun perso ne le dit.
 - **Juju** : la libellule la préfère parce que les animaux réagissent à elle — dormant. Personne ne dit "c'est parce que tu es douce avec les bêtes". Jamais.
-- **Wex** voit quelque chose se passer — son enchère devient un contre-pied ironique (il a "raison" en théorie, la libellule s'en fiche). L'effet se fabrique tout seul, ne le souligne pas.
+- **Wex** bugue sur la logique épouvantail (ça fait fuir → on veut l'inverse). Il a "raison" en théorie, et la libellule s'en fiche complètement : elle vient quand même. Ce contre-pied se fabrique tout seul entre le beat 3 et le beat 6 — **ne le souligne pas, ne le commente pas**. Wex ne tire aucune conclusion à voix haute.
 
 ---
 
@@ -121,6 +126,6 @@ Libre au writer : retour au calme (contemplation, souffle, un autre animal qui p
 
 ---
 
-**Date :** 2026-05-15
+**Date :** 2026-05-16
 **Source :** `2-brainstorm-boss.md` (beats figés) + `2-brainstorm-equipe.md` (matière filtrée) + `1-pitch-plan.md` + `pmo/decisions.md`
-**Vague :** 3 (refonte Couche 2 — beats figés intégrés)
+**Vague :** 3 (refonte Couche 2 — beats figés intégrés, couture B3→B4 corrigée : Juju mouvement continu + bug logique Wex)

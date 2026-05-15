@@ -386,26 +386,25 @@ function mixerTube(idx) {
   if (tot===0||victoire) return;
   activeIdx=idx;
   playMix();
-  let won=false;
+  const wrap=document.getElementById(`tube-wrap-${idx}`);
+  wrap.classList.remove('shaking');
+  void wrap.offsetWidth;
+  wrap.classList.add('shaking');
   if (isBrun(t)) {
     t.mixed='BRUN';
     renderTubes();
     if (!brunShown) { brunShown=true; document.getElementById('brun-overlay').classList.add('show'); playBrun(); }
-  } else {
-    const rgb=blendCounts(t);
-    const hex=rgbToHex(rgb[0],rgb[1],rgb[2]);
-    t.mixed={hex,label:nearestLabel(rgb[0],rgb[1],rgb[2]).label};
-    renderTubes();
-    const ideal=blendCounts({r:defi.r,j:defi.j,b:defi.b,w:defi.w});
-    if (rgbDist(rgb,ideal)<0.22&&!victoire) { victoire=true; won=true; }
-    else { missCount++; }
+    return;
   }
-  const wrap=document.getElementById(`tube-wrap-${idx}`);
-  wrap.classList.remove('shaking');
-  requestAnimationFrame(()=>requestAnimationFrame(()=>{
-    wrap.classList.add('shaking');
-    if (won) setTimeout(showVictoire,650);
-  }));
+  const rgb=blendCounts(t);
+  const hex=rgbToHex(rgb[0],rgb[1],rgb[2]);
+  t.mixed={hex,label:nearestLabel(rgb[0],rgb[1],rgb[2]).label};
+  renderTubes();
+  const ideal=blendCounts({r:defi.r,j:defi.j,b:defi.b,w:defi.w});
+  if (rgbDist(rgb,ideal)<0.22&&!victoire) {
+    victoire=true;
+    setTimeout(showVictoire,650);
+  }
 }
 
 function viderTube(idx) {

@@ -22,11 +22,6 @@
     .prog-dot.current { background:rgba(255,220,80,0.25); border-color:#ffe066; animation:dotPulse 1.2s ease-in-out infinite alternate; }
     @keyframes dotPulse { from{box-shadow:0 0 0px rgba(255,220,80,0.3);} to{box-shadow:0 0 8px rgba(255,220,80,0.8);} }
 
-    /* Label en haut (pas de bus ici) */
-    .consigne { text-align:center; padding:4px 16px 2px; flex-shrink:0; }
-    .consigne-text { color:#fff; font-size:0.85rem; font-weight:900; }
-    .consigne-dot { display:inline-block; width:18px; height:18px; border-radius:50%; vertical-align:middle; margin-left:6px; border:2px solid rgba(255,255,255,0.7); box-shadow:0 0 8px rgba(0,0,0,0.4); }
-
     /* Pots de couleur */
     .pots-zone { display:flex; justify-content:center; gap:8px; padding:6px 12px 4px; flex-shrink:0; }
     .pot { width:72px; height:72px; border-radius:18px; border:none; cursor:pointer; font-family:'Nunito',sans-serif; font-weight:900; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; box-shadow:0 6px 20px rgba(0,0,0,0.5); transition:transform 0.1s, box-shadow 0.1s; }
@@ -38,8 +33,9 @@
     .pot-emoji { font-size:1.5rem; line-height:1; }
     .pot-lbl   { font-size:0.65rem; letter-spacing:0.5px; }
 
-    /* Tube central */
-    .tube-zone { display:flex; flex-direction:column; align-items:center; gap:5px; flex:1; justify-content:center; }
+    /* Tube à gauche, boutons à droite */
+    .tube-zone { display:flex; flex-direction:row; align-items:center; justify-content:center; gap:24px; flex:1; }
+    .tube-side { display:flex; flex-direction:column; align-items:stretch; gap:12px; }
     .tube-wrap { position:relative; border-radius:10px; }
     @keyframes tubeShake {
       0%,100%{transform:rotate(0) scale(1);}
@@ -50,17 +46,18 @@
     }
     .tube-wrap.shaking { animation:tubeShake 0.55s ease; }
     .tube-result { color:#ffe066; font-size:0.8rem; font-weight:900; min-height:1.2em; text-align:center; }
-    .tube-actions { display:flex; gap:8px; }
-    .btn-tube { border-radius:14px; font-family:'Nunito',sans-serif; font-weight:900; font-size:0.8rem; padding:9px 16px; cursor:pointer; color:#fff; }
+    .tube-actions { display:flex; flex-direction:column; gap:12px; }
+    .btn-tube { border-radius:16px; font-family:'Nunito',sans-serif; font-weight:900; font-size:1rem; padding:18px 22px; min-width:120px; cursor:pointer; color:#fff; }
     .btn-tube:active { opacity:0.72; transform:scale(0.91); }
     .btn-vider { background:rgba(255,255,255,0.09); border:2px solid rgba(255,255,255,0.22); }
     .btn-mixer { background:rgba(80,220,255,0.2); border:2px solid rgba(80,220,255,0.5); }
 
-    /* Bus cible EN BAS */
-    .bus-bas { display:flex; flex-direction:column; align-items:center; gap:3px; padding:4px 0 6px; flex-shrink:0; }
+    /* Bus cible EN BAS + pastille couleur à trouver à côté (même hauteur) */
+    .bus-bas { display:flex; justify-content:center; align-items:flex-start; gap:18px; padding:6px 0 10px; flex-shrink:0; }
     .bus-bas-wrap { position:relative; display:inline-flex; }
-    .bus-bas-dot { position:absolute; bottom:-5px; right:-5px; width:22px; height:22px; border-radius:50%; border:2.5px solid rgba(255,255,255,0.9); box-shadow:0 2px 6px rgba(0,0,0,0.5); }
-    .bus-bas-label { color:rgba(255,255,255,0.65); font-size:0.68rem; font-weight:900; text-align:center; }
+    .cible-col { display:flex; flex-direction:column; align-items:center; gap:6px; }
+    .cible-swatch { width:56px; height:85px; border-radius:14px; border:3px solid rgba(255,255,255,0.85); box-shadow:0 3px 10px rgba(0,0,0,0.45); }
+    .cible-name { font-size:1.05rem; font-weight:900; text-align:center; color:#fff; }
 
     /* Animation victoire : tube se renverse sur le bus */
     .victoire-scene { position:fixed; inset:0; pointer-events:none; z-index:50; }
@@ -113,11 +110,6 @@
 
   <div class="progress-zone" id="progress"></div>
 
-  <!-- Consigne texte en haut (pas de bus ici) -->
-  <div class="consigne">
-    <span class="consigne-text" id="consigne-text"></span>
-  </div>
-
   <!-- Pots de couleur -->
   <div class="pots-zone">
     <button class="pot pot-rouge" onclick="addCouleur('r')"><span class="pot-emoji">&#128308;</span><span class="pot-lbl">ROUGE</span></button>
@@ -126,20 +118,25 @@
     <button class="pot pot-blanc" onclick="addCouleur('w')"><span class="pot-emoji">&#11036;</span><span class="pot-lbl">BLANC</span></button>
   </div>
 
-  <!-- Tube central -->
+  <!-- Tube à gauche, boutons à droite -->
   <div class="tube-zone">
     <div class="tube-wrap" id="tube-wrap"></div>
-    <div class="tube-result" id="tube-result"></div>
-    <div class="tube-actions">
-      <button class="btn-tube btn-vider" onclick="viderTube()">&#128703; Vider</button>
-      <button class="btn-tube btn-mixer" id="btn-mixer" onclick="mixerTube()">&#128256; Mixer !</button>
+    <div class="tube-side">
+      <div class="tube-result" id="tube-result"></div>
+      <div class="tube-actions">
+        <button class="btn-tube btn-vider" onclick="viderTube()">&#128703; Vider</button>
+        <button class="btn-tube btn-mixer" id="btn-mixer" onclick="mixerTube()">&#128256; Mixer !</button>
+      </div>
     </div>
   </div>
 
-  <!-- Bus cible EN BAS -->
+  <!-- Bus cible EN BAS + couleur à trouver à côté -->
   <div class="bus-bas">
     <div class="bus-bas-wrap" id="bus-bas-wrap"></div>
-    <div class="bus-bas-label" id="bus-bas-label"></div>
+    <div class="cible-col">
+      <div class="cible-swatch" id="cible-swatch"></div>
+      <div class="cible-name" id="cible-name"></div>
+    </div>
   </div>
 
   <div class="hint-row">
@@ -273,22 +270,16 @@ function renderTube(){
   else{res.textContent='';}
 }
 
-function renderConsigne(){
-  document.getElementById('consigne-text').innerHTML=
-    `Bus ${defi.num} — peins-le en <span style="color:${defi.hex}">${defi.label}</span> !`+
-    `<span class="consigne-dot" style="background:${defi.hex};"></span>`;
-}
-
 function renderBusBas(hex){
-  // Bus cible EN BAS, blanc par défaut, coloré à la victoire
+  // Bus cible EN BAS (blanc par défaut, coloré à la victoire)
   const col=hex||'#FFFFFF';
   const txt=hex?defi.textColor:'#333';
-  document.getElementById('bus-bas-wrap').innerHTML=
-    busSVG(col,txt,defi.num,170)+
-    `<div class="bus-bas-dot" style="background:${defi.hex};${hex?'box-shadow:0 0 12px '+defi.hex:''};"></div>`;
-  document.getElementById('bus-bas-label').textContent=
-    hex ? `✓ ${defi.label} !` : `Bus ${defi.num}`;
-  document.getElementById('bus-bas-label').style.color=hex?'#00c47a':'rgba(255,255,255,0.5)';
+  document.getElementById('bus-bas-wrap').innerHTML=busSVG(col,txt,defi.num,170);
+  // Pastille de la couleur à trouver, à côté du bus, même hauteur
+  document.getElementById('cible-swatch').style.background=defi.hex;
+  const nm=document.getElementById('cible-name');
+  nm.textContent=hex?`✓ ${defi.label} !`:defi.label;
+  nm.style.color=hex?'#00c47a':'#fff';
 }
 
 function renderProgress(){
@@ -430,7 +421,6 @@ async function showVictoire(){
   document.getElementById('brun-overlay').classList.remove('show');
   renderTube();
   renderBusBas(null);
-  renderConsigne();
   renderProgress();
 }
 
@@ -441,7 +431,7 @@ function resetPartie(){
   defi=DEFIS[order[0]];
   tube=newTube();victoire=false;brunShown=false;mixerLocked=false;
   document.getElementById('brun-overlay').classList.remove('show');
-  renderTube();renderBusBas(null);renderConsigne();renderProgress();
+  renderTube();renderBusBas(null);renderProgress();
 }
 
 function showHint(){
@@ -474,7 +464,6 @@ function playMix(){try{const ac=new AudioContext();[400,600,350,700,300].forEach
 // ── INIT ──────────────────────────────────────────────────────────
 renderTube();
 renderBusBas(null);
-renderConsigne();
 renderProgress();
 </script>
 </body>

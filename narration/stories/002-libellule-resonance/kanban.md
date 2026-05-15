@@ -24,8 +24,9 @@
 |---|---|---|---|---|---|
 | 0 | Idée (brainstorm) | Auteur | ✅ | 2026-05-12 | Wex + Juju + Nono · Libellule · Étang amont · Résonance (pivot Dadou → Juju 2026-05-12) |
 | 1 | Pitch + Plan (fusionnés depuis 2026-05-12) | Conseiller | ✅ | 2026-05-12 | [`1-pitch-plan.md`](1-pitch-plan.md) |
-| **B** | **Brainstorm Couche 0 (NOUVEAU — vague 3)** | Directeur + LLMs | ⚪ | — | [`0-brainstorm-couche.md`](0-brainstorm-couche.md) — étape exploratoire pré-briefs (DEC-PROCESS-NEW-001) |
-| **C** | **Briefs Couche 2 (refonte — vague 3)** | Directeur | ⚪ | — | [`3-briefs/`](3-briefs/) refondus : intentions Ki/Sho/Ten/Ketsu uniquement (DEC-BRIEF-ARCH-001) |
+| **2A** | **Brainstorm boss (Phase A)** | Papa Yann + Conseiller | ✅ | 2026-05-15 | [`2-brainstorm-boss.md`](2-brainstorm-boss.md) — vision Couche 0 validée auteur |
+| **2B** | **Brainstorm équipe (Phase B) v2** | Kimi + DeepSeek + Grok + Conseiller | ✅ | 2026-05-15 | [`2-brainstorm-equipe.md`](2-brainstorm-equipe.md) — matière brute 6 axes filtrée (faune/flore/actions/vannes/Wex/libellule/admiration) — **filtrage auteur appliqué 2026-05-15** |
+| **3C** | **Briefs Couche 2 (refonte — vague 3)** | Directeur | ⚪ | — | [`3-briefs/`](3-briefs/) refondus : intentions Ki/Sho/Ten/Ketsu uniquement (DEC-BRIEF-ARCH-001) + sensibilités + gestes |
 | **D** | **_writer-package complet Couches 1/2/3 (vague 3)** | Directeur | ⚪ | — | [`3-briefs/brief-histoire.md`](3-briefs/brief-histoire.md) refondé : Couche 1 ref → `equipe/_writer-system.md` + Couche 2 brief + Couche 3 vision guidé. Format : système/utilisateur (DEC-WRITER-ARCH-001) |
 | 3 | ~~Briefs~~ (archivé vague 1-2) | — | ❌ | 2026-05-12 | [`3-briefs/`](3-briefs/) — **REFONTE VAGUE 3 PRÉVUE** (voir étapes B/C/D) |
 | 4 | **14 Versions writers — VAGUE 3** (briefs system/user 2026-05-15) | 14 Writers | ⚪ | — | [`4-versions-writers/`](4-versions-writers/) — invocation: system=`equipe/_writer-system.md`, user=`3-briefs/brief-histoire.md` (DEC-WRITER-ARCH-001). Vague 2 archivée dans `_archive/vague-2/`, vague 1 reste `_archive/vague-1/` |
@@ -85,6 +86,24 @@
 
 **État** : ⏳ Avant lancement vague 3 — validation auteur attendue avant étape B.
 
+### 2026-05-15 — Phase B v2 clôturée ✅ : filtrage auteur appliqué
+
+**Contexte** : Phase B v1 a produit 3 narrations complètes (1700+ mots) au lieu de matière brute par axe. Anti-pattern détecté : formulation holistique « écrire une version brute » vs grain fin « listez X par axe ». Re-lancement urgent.
+
+**Décision Papa Yann (2026-05-15 matin)** : Re-lancer Kimi/DeepSeek/Grok avec 6 missions granulaires distinctes (énumération, pas narration).
+
+**6 axes Phase B v2 — Matière filtrée validée auteur (2026-05-15 fin de session)** :
+1. **Faune/flore mai** : ✅ Têtards, poule d'eau, bourdon · Roseau, mousse (retenue)
+2. **Actions/jeux trio** : ✅ Tableau Juju/Nono/Wex × 8 actions chacun (validé) · **⚠️ AXE 2 = contexte Directeur uniquement, JAMAIS injecter dans brief Couche 2** (risque convergence)
+3. **Vannes Juju T8** : ✅ 2 validées (limaces, pas racines) · 3e libre au writer
+4. **Wex** : ✅ Tourne + tête 90°/éclate rire · Répliques libres au writer
+5. **Libellule** : ✅ Couleur libre (bleu/vert/jaune), yeux énormes · 5 comportements vol + 3 sensations paume validés
+6. **Admiration** : ⚪ Libre au writer (en détail briefs étape 3C)
+
+**Statut** : ✅ Phase B v2 **CLÔTURÉE** — matière filtrée dans `2-brainstorm-equipe.md`. Prêt étape 3C.
+
+**Prochaines actions** : Directeur débute étape 3C (briefs Couche 2 intentions Ki/Sho/Ten/Ketsu) alimentée Phase B matière filtrée → lancement étape 4 vague 3 (14 writers).
+
 ---
 
 ### 2026-05-14 — Étape 5 ✅ Panel 20 lecteurs + synthèse Directeur
@@ -113,7 +132,7 @@ Corrections briefs avant relance :
 - Positif pur sur Juju/Nono (suppression négations OBS-001)
 - Phrases types injectées (Juju + Nono)
 - Gestes archétypiques Nono (P9) injectés
-- Règle résonance jamais nommée (DEC-TENSION-RESONANCE) ajoutée dans les 4 briefs
+- ~~Règle résonance jamais nommée~~ (DEC-TENSION-RESONANCE ANNULÉE 2026-05-15 — ce n'était pas une règle, bon sens narratif)
 - Onomatopées retirées des briefs (TODO créé dans leçons-vivantes pour travail futur par perso)
 - Vague 1 archivée dans `_archive/vague-1/` — top 1 (`kimi-reco-guide-v2.md`) conservé comme référence
 

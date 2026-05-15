@@ -13,9 +13,12 @@
          touch-action: manipulation; user-select: none; }
 
   /* ── En-tête compact ── */
-  .topbar { display: flex; align-items: center; gap: 8px;
+  .topbar { display: flex; align-items: center; gap: 6px;
             padding: 4px 8px; flex-shrink: 0; }
-  .topbar h1 { font-size: 0.85rem; opacity: 0.7; }
+  .topbar h1 { font-size: 0.8rem; opacity: 0.65; flex: 1; }
+  .topbar select { font-size: 0.78rem; font-family: inherit; border-radius: 6px;
+                   border: 2px solid #2a2a4a; padding: 2px 4px; background: #fff;
+                   color: #2a2a4a; cursor: pointer; flex-shrink: 0; }
 
   /* ── Layout principal ── */
   .layout { display: flex; flex: 1; min-height: 0; gap: 8px; padding: 0 8px 8px; }
@@ -34,29 +37,19 @@
   }
 
   /* ── Grille ── */
-  .game-zone { }
   .grid { display: grid; gap: 2px; background: #4a8a20; padding: 2px; border-radius: 8px;
           border: 4px solid #fff; box-shadow: 0 4px 0 rgba(0,0,0,0.2); }
-  /* Portrait : grille tient dans ~45dvh */
   @media (orientation: portrait) {
-    .grid { grid-template-columns: repeat(10, 1fr);
-            width: min(calc(45dvh - 8px), calc(100vw - 16px));
-            aspect-ratio: 1; }
+    .grid { width: min(calc(44dvh - 8px), calc(100vw - 16px)); aspect-ratio: 1; }
   }
   @media (orientation: landscape) {
-    .grid { grid-template-columns: repeat(10, 1fr);
-            height: calc(100dvh - 56px);
-            aspect-ratio: 1; }
+    .grid { height: calc(100dvh - 56px); aspect-ratio: 1; }
   }
   .cell { background: #6abe30; border-radius: 2px; position: relative;
           aspect-ratio: 1; cursor: pointer; }
   .cell img { position: absolute; inset: 0; width: 100%; height: 100%;
               image-rendering: pixelated; image-rendering: crisp-edges;
               pointer-events: none; }
-  /* tile 2x1 : span sur 2 colonnes */
-  .cell img.span-h { width: 200%; z-index: 3; }
-  /* tile 1x2 : span sur 2 lignes */
-  .cell img.span-v { height: 200%; z-index: 3; }
   .cell.selected { outline: 3px solid #ffe066; z-index: 2; }
 
   /* ── Palette ── */
@@ -84,13 +77,12 @@
                 gap: 5px; overflow-y: scroll; padding: 4px;
                 background: #f0f0f0; border-radius: 6px;
                 flex: 1; min-height: 0;
-                /* scroll touch natif mobile */ -webkit-overflow-scrolling: touch; }
+                -webkit-overflow-scrolling: touch; }
   .tile-btn { background: #fff; border: 2px solid transparent; border-radius: 5px;
               padding: 3px; cursor: pointer; position: relative;
               display: flex; flex-direction: column; align-items: center; gap: 2px; }
   .tile-btn .thumb { width: 100%; aspect-ratio: 1; position: relative; overflow: hidden; }
   .tile-btn.wide .thumb { aspect-ratio: 2; }
-  .tile-btn.tall .thumb { aspect-ratio: 0.5; }
   .tile-btn img { width: 100%; height: 100%; image-rendering: pixelated;
                   image-rendering: crisp-edges; pointer-events: none; object-fit: contain; }
   .tile-btn .tname { font-size: 0.55rem; color: #555; text-align: center;
@@ -112,7 +104,7 @@
   .tool-btn.fini.success { background: #4caf50; animation: bounce 0.5s ease; }
   @keyframes bounce { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
 
-  /* Flèche retour (back-button.js la remplace) */
+  /* Flèche retour */
   .back { color: #2a2a4a; text-decoration: none; font-size: 1.3rem; font-weight: 900;
           background: rgba(255,255,255,0.7); border-radius: 8px; padding: 4px 8px;
           flex-shrink: 0; }
@@ -123,6 +115,12 @@
 <div class="topbar">
   <a class="back" href="index.html">←</a>
   <h1>🦺 Pose-tes-tiles</h1>
+  <select id="grid-size-select" onchange="resizeGrid(+this.value)">
+    <option value="8" selected>8×8</option>
+    <option value="10">10×10</option>
+    <option value="12">12×12</option>
+    <option value="14">14×14</option>
+  </select>
 </div>
 
 <div class="layout">
@@ -140,7 +138,7 @@
     <div class="tiles-list" id="tiles-list"></div>
 
     <div class="toolbar">
-      <button class="tool-btn lisser" onclick="lisser()">🦺 Lisser</button>
+      <button class="tool-btn lisser" onclick="lisser()">🔧 Lisser</button>
       <button class="tool-btn gomme" onclick="if(confirm('Tout effacer ?')) clearAll()">🗑️ Effacer</button>
       <button class="tool-btn fini" id="fini-btn" onclick="celebrer()">🎉 Fini !</button>
     </div>
@@ -149,50 +147,70 @@
 
 <script>
 const ASSET = 'https://cdn.jsdelivr.net/gh/kimen26/MaxPlay@master/game/phaser/public/assets/tiles/';
+const VEH   = ASSET + 'animated/vehicles/';
 
-// size : {w,h} — nb de cellules occupées. Défaut 1x1 si absent.
 const CATEGORIES = {
   rue: {
     label: 'Route', emoji: '🛣️',
     tiles: [
+      // Asphalte de base
       { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png', name: 'asphalte' },
+      // Lignes blanches
       { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_2.png',  name: 'ligne H' },
       { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_8.png',  name: 'ligne V' },
       { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_4.png',  name: '+ croix' },
-      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_1.png',  name: 'coin ↘' },
-      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_3.png',  name: 'coin ↙' },
-      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_7.png',  name: 'coin ↖' },
-      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_9.png',  name: 'coin ↗' },
+      // Virages
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_1.png',  name: 'virage ↘' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_3.png',  name: 'virage ↙' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_7.png',  name: 'virage ↖' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_9.png',  name: 'virage ↗' },
+      // T-jonctions
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_5.png',  name: 'T haut' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_6.png',  name: 'T bas' },
+      // Marquages spéciaux
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_24.png', name: 'marquage' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_25.png', name: 'marquage 2' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_26.png', name: 'marquage 3' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_27.png', name: 'marquage 4' },
+      // Trottoir (bordures SW_1 : positions 9=centre, bords N/S/E/O, coins)
       { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_9.png',   name: 'trottoir' },
       { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_10.png',  name: 'trottoir 2' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_1.png',   name: 'trotto ↘' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_3.png',   name: 'trotto ↙' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_7.png',   name: 'trotto ↖' },
+      { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_5.png',   name: 'trotto ↗' },
       { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png',   name: 'bord S' },
       { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png',   name: 'bord N' },
       { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png',   name: 'bord O' },
       { file: 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png',   name: 'bord E' },
     ],
   },
-  bus: {
-    label: 'Bus', emoji: '🚌',
+  vehicules: {
+    label: 'Véhic.', emoji: '🚗',
     tiles: [
-      // Panneau arrêt
-      { file: 'stations/ME_Singles_Subway_and_Train_Station_48x48_Stop_Sign.png', name: 'panneau arrêt' },
-      // Sièges d'attente (2 tiles wide : _1 = gauche, _2 = droite)
-      { file: 'stations/ME_Singles_Subway_and_Train_Station_48x48_Orange_Single_Wait_Seat_1.png',  name: 'siège orange', size: {w:1,h:1} },
-      { file: 'stations/ME_Singles_Subway_and_Train_Station_48x48_White_Single_Wait_Seat_1.png',   name: 'siège blanc',  size: {w:1,h:1} },
-      { file: 'stations/ME_Singles_Subway_and_Train_Station_48x48_Black_Single_Wait_Seat_1.png',   name: 'siège noir',   size: {w:1,h:1} },
-      // Double siège (2x1)
-      { file: 'stations/ME_Singles_Subway_and_Train_Station_48x48_Orange_Couple_Wait_Seat_1.png',  name: 'banquette ora.', size: {w:2,h:1},
-        file2: 'stations/ME_Singles_Subway_and_Train_Station_48x48_Orange_Couple_Wait_Seat_2.png' },
-      { file: 'stations/ME_Singles_Subway_and_Train_Station_48x48_White_Couple_Wait_Seat_1.png',   name: 'banquette blc.', size: {w:2,h:1},
-        file2: 'stations/ME_Singles_Subway_and_Train_Station_48x48_White_Couple_Wait_Seat_2.png' },
-      // Parking
-      { file: 'props/ME_Singles_City_Props_48x48_Parking_Meter_1.png',           name: 'horodateur' },
-      { file: 'props/ME_Singles_City_Props_48x48_Underground_Parking_1.png',     name: 'parking 1' },
-      { file: 'props/ME_Singles_City_Props_48x48_Underground_Parking_2.png',     name: 'parking 2' },
-      { file: 'props/ME_Singles_City_Props_48x48_Underground_Parking_3.png',     name: 'parking 3' },
-      // Barrière
-      { file: 'props/ME_Singles_City_Props_48x48_Stop_Barrier_Front.png',        name: 'barrière' },
-      { file: 'props/ME_Singles_City_Props_48x48_Stop_Barrier_Up_Front.png',     name: 'barrière levée' },
+      // Bus (frame 1 = vue statique)
+      { file: 'animated/vehicles/Buses_48x48_1.png', name: 'bus ↓' },
+      { file: 'animated/vehicles/Buses_48x48_2.png', name: 'bus ↑' },
+      { file: 'animated/vehicles/Buses_48x48_3.png', name: 'bus →' },
+      { file: 'animated/vehicles/Buses_48x48_4.png', name: 'bus ←' },
+      { file: 'animated/vehicles/Buses_48x48_5.png', name: 'bus 5' },
+      { file: 'animated/vehicles/Buses_48x48_6.png', name: 'bus 6' },
+      // Voitures classiques (1 frame chacune)
+      { file: 'animated/vehicles/Car_classic_blue_complete_48x48.png',    name: 'voiture bleue' },
+      { file: 'animated/vehicles/Car_classic_red_complete_48x48.png',     name: 'voiture rouge' },
+      { file: 'animated/vehicles/Car_classic_green_complete_48x48.png',   name: 'voiture verte' },
+      { file: 'animated/vehicles/Car_classic_orange_complete_48x48.png',  name: 'voiture orange' },
+      { file: 'animated/vehicles/Car_classic_grey_complete_48x48.png',    name: 'voiture grise' },
+      { file: 'animated/vehicles/Car_classic_green_2_complete_48x48.png', name: 'voiture verte 2' },
+      // Voitures modèles 2-5 (frame 1)
+      { file: 'animated/vehicles/Car_2_complete_48x48_1.png', name: 'car 2 ↓' },
+      { file: 'animated/vehicles/Car_2_complete_48x48_3.png', name: 'car 2 →' },
+      { file: 'animated/vehicles/Car_3_48x48_1.png', name: 'car 3 ↓' },
+      { file: 'animated/vehicles/Car_3_48x48_3.png', name: 'car 3 →' },
+      { file: 'animated/vehicles/Car_4_48x48_1.png', name: 'car 4 ↓' },
+      { file: 'animated/vehicles/Car_4_48x48_3.png', name: 'car 4 →' },
+      // Horodateur (reste de l'ancienne catégorie bus)
+      { file: 'props/ME_Singles_City_Props_48x48_Parking_Meter_1.png', name: 'horodateur' },
     ],
   },
   parc: {
@@ -201,6 +219,7 @@ const CATEGORIES = {
       { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_9.png', name: 'herbe' },
       { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_7.png', name: 'herbe 2' },
       { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_8.png', name: 'herbe 3' },
+      { file: 'roads/ME_Singles_Terrains_and_Fences_48x48_Grass_2_1.png', name: 'herbe 4' },
       { file: 'parks/ME_Singles_Garden_48x48_Bush_1.png',  name: 'buisson 1' },
       { file: 'parks/ME_Singles_Garden_48x48_Bush_2.png',  name: 'buisson 2' },
       { file: 'parks/ME_Singles_Garden_48x48_Bush_3.png',  name: 'buisson 3' },
@@ -241,44 +260,63 @@ const CATEGORIES = {
       { file: 'props/ME_Singles_City_Props_48x48_Cone_3.png',        name: 'cône' },
       { file: 'props/ME_Singles_City_Props_48x48_Cone_4.png',        name: 'cône 2' },
       { file: 'props/ME_Singles_City_Props_48x48_Dumpster_1.png',    name: 'benne' },
-      { file: 'props/ME_Singles_City_Props_48x48_Dumpster_2.png',    name: 'benne 2' },
       { file: 'props/ME_Singles_City_Props_48x48_Black_Closed_Trash_Can.png', name: 'poubelle' },
       { file: 'props/ME_Singles_City_Props_48x48_Info_Sign_1.png',   name: 'info' },
       { file: 'props/ME_Singles_City_Props_48x48_Danger_Sign_1.png', name: 'danger' },
+      { file: 'stations/ME_Singles_Subway_and_Train_Station_48x48_Stop_Sign.png', name: 'arrêt bus' },
     ],
   },
   maisons: {
     label: 'Maisons', emoji: '🏠',
     tiles: [
-      // Maisons jouets simples 1x1
-      { file: 'buildings/ME_Custom_Villas_48x48_Toy_House_Blue_1.png',   name: 'maison bleue' },
-      { file: 'buildings/ME_Custom_Villas_48x48_Toy_House_Blue_2.png',   name: 'maison bleue 2' },
-      { file: 'buildings/ME_Custom_Villas_48x48_Toy_House_Yellow_1.png', name: 'maison jaune' },
-      // Toits
-      { file: 'buildings/ME_Singles_Floor_Modular_Building_48x48_Roof_1.png', name: 'toit 1' },
-      { file: 'buildings/ME_Singles_Floor_Modular_Building_48x48_Roof_2.png', name: 'toit 2' },
-      { file: 'buildings/ME_Singles_Floor_Modular_Building_48x48_Roof_3.png', name: 'toit 3' },
-      // Façades extérieures (pas d'intérieur)
-      { file: 'buildings/ME_Singles_Generic_Building_48x48_Condo_1_1.png',  name: 'façade 1' },
-      { file: 'buildings/ME_Singles_Generic_Building_48x48_Condo_1_2.png',  name: 'façade 2' },
-      { file: 'buildings/ME_Singles_Generic_Building_48x48_Condo_1_3.png',  name: 'fenêtre' },
+      // Maisons jouets colorées (Toy_House_1..8)
+      { file: 'buildings/ME_Singles_Villas_48x48_Toy_House_1.png', name: 'maison 1' },
+      { file: 'buildings/ME_Singles_Villas_48x48_Toy_House_2.png', name: 'maison 2' },
+      { file: 'buildings/ME_Singles_Villas_48x48_Toy_House_3.png', name: 'maison 3' },
+      { file: 'buildings/ME_Singles_Villas_48x48_Toy_House_4.png', name: 'maison 4' },
+      { file: 'buildings/ME_Singles_Villas_48x48_Toy_House_5.png', name: 'maison 5' },
+      { file: 'buildings/ME_Singles_Villas_48x48_Toy_House_6.png', name: 'maison 6' },
+      { file: 'buildings/ME_Singles_Villas_48x48_Toy_House_7.png', name: 'maison 7' },
+      { file: 'buildings/ME_Singles_Villas_48x48_Toy_House_8.png', name: 'maison 8' },
+      // Variantes bleues/jaunes custom
+      { file: 'buildings/ME_Custom_Villas_48x48_Toy_House_Blue_1.png',   name: 'bleue 1' },
+      { file: 'buildings/ME_Custom_Villas_48x48_Toy_House_Blue_2.png',   name: 'bleue 2' },
+      { file: 'buildings/ME_Custom_Villas_48x48_Toy_House_Yellow_1.png', name: 'jaune' },
     ],
   },
 };
 
-const ASPHALTE = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_20.png';
 const SW_N = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_6.png';
 const SW_S = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png';
 const SW_W = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png';
 const SW_E = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png';
 
-const COLS = 10, ROWS = 10;
-// grid stocke { file, file2?, size? } ou null
+let COLS = 8, ROWS = 8;
 let grid = Array.from({length: ROWS}, () => Array(COLS).fill(null));
 let selectedTile = null;
 let currentCat = 'rue';
 
 function tileURL(file) { return ASSET + file; }
+
+// ── Resize grid (pad or crop) ──────────────────────────────────────────────
+function resizeGrid(n) {
+  const oldGrid = grid;
+  const oldR = ROWS, oldC = COLS;
+  ROWS = n; COLS = n;
+  grid = Array.from({length: ROWS}, (_, r) =>
+    Array.from({length: COLS}, (_, c) =>
+      (r < oldR && c < oldC) ? (oldGrid[r][c] || null) : null
+    )
+  );
+  // Sync select
+  const sel = document.getElementById('grid-size-select');
+  if (sel) sel.value = n;
+  // Update CSS columns
+  const gridEl = document.getElementById('grid');
+  gridEl.style.gridTemplateColumns = `repeat(${COLS}, 1fr)`;
+  save();
+  buildGrid();
+}
 
 function buildCats() {
   const div = document.getElementById('cats');
@@ -300,8 +338,7 @@ function buildTiles() {
   for (const t of tiles) {
     const b = document.createElement('button');
     const isWide = t.size && t.size.w === 2;
-    const isTall = t.size && t.size.h === 2;
-    b.className = 'tile-btn' + (isWide ? ' wide' : '') + (isTall ? ' tall' : '') +
+    b.className = 'tile-btn' + (isWide ? ' wide' : '') +
                   (selectedTile && selectedTile.file === t.file ? ' active' : '');
     const thumb = document.createElement('div');
     thumb.className = 'thumb';
@@ -309,7 +346,6 @@ function buildTiles() {
     img.src = tileURL(t.file);
     img.alt = t.name;
     thumb.appendChild(img);
-    // Superpose la 2e tile pour preview 2x1
     if (t.file2) {
       const img2 = document.createElement('img');
       img2.src = tileURL(t.file2);
@@ -346,6 +382,7 @@ function selectTile(t) {
 function buildGrid() {
   const div = document.getElementById('grid');
   div.innerHTML = '';
+  div.style.gridTemplateColumns = `repeat(${COLS}, 1fr)`;
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c < COLS; c++) {
       const cell = document.createElement('div');
@@ -368,19 +405,10 @@ function placeOnCell(r, c) {
   const t = selectedTile;
   const w = t.size ? t.size.w : 1;
   const h = t.size ? t.size.h : 1;
-
-  // Vérifie qu'on ne déborde pas
   if (c + w > COLS || r + h > ROWS) return;
-
-  // Pose tile principale
   grid[r][c] = { file: t.file, size: t.size };
-  // Pour une 2x1 : pose le morceau droit dans la case suivante
   if (t.file2 && w === 2) {
     grid[r][c+1] = { file: t.file2, size: {w:1,h:1}, _part2: true };
-  }
-  if (h === 2) {
-    for (let dr = 1; dr < h; dr++)
-      grid[r+dr][c] = { file: t.file, size: {w:1,h:1}, _part2: true };
   }
   save();
   redraw();
@@ -403,6 +431,7 @@ function redraw() {
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c < COLS; c++) {
       const cell = cells[r * COLS + c];
+      if (!cell) continue;
       const t = grid[r][c];
       cell.innerHTML = '';
       if (t) {
@@ -415,17 +444,27 @@ function redraw() {
   }
 }
 
+// ── Lisser : pose trottoir autour de chaque case asphalte ─────────────────
 function lisser() {
-  const ASPHALTES = ['Asphalt_1_Variation_20.png', 'Asphalt_1_Variation_15.png', 'Asphalt_1_Variation_14.png'];
-  const isAsph = t => t && ASPHALTES.some(a => t.file && t.file.endsWith(a));
+  const ASPHALTES = ['Asphalt_1_Variation_20.png', 'Asphalt_1_Variation_14.png', 'Asphalt_1_Variation_15.png',
+                     'Asphalt_1_Variation_2.png', 'Asphalt_1_Variation_8.png', 'Asphalt_1_Variation_4.png',
+                     'Asphalt_1_Variation_1.png', 'Asphalt_1_Variation_3.png', 'Asphalt_1_Variation_5.png',
+                     'Asphalt_1_Variation_6.png', 'Asphalt_1_Variation_7.png', 'Asphalt_1_Variation_9.png',
+                     'Asphalt_1_Variation_24.png', 'Asphalt_1_Variation_25.png', 'Asphalt_1_Variation_26.png',
+                     'Asphalt_1_Variation_27.png'];
+  const isSW = t => t && t.file && (t.file.endsWith(SW_N) || t.file.endsWith(SW_S) || t.file.endsWith(SW_W) || t.file.endsWith(SW_E));
+  const isAsph = t => t && t.file && ASPHALTES.some(a => t.file.endsWith(a));
   const newGrid = grid.map(row => row.map(c => c ? {...c} : null));
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c < COLS; c++) {
       if (!isAsph(grid[r][c])) continue;
-      if (r > 0     && !isAsph(grid[r-1][c]) && !grid[r-1][c]) newGrid[r-1][c] = {file: SW_N};
-      if (r < ROWS-1 && !isAsph(grid[r+1][c]) && !grid[r+1][c]) newGrid[r+1][c] = {file: SW_S};
-      if (c > 0     && !isAsph(grid[r][c-1]) && !grid[r][c-1]) newGrid[r][c-1] = {file: SW_W};
-      if (c < COLS-1 && !isAsph(grid[r][c+1]) && !grid[r][c+1]) newGrid[r][c+1] = {file: SW_E};
+      const neighbors = [
+        [r-1,c, SW_N], [r+1,c, SW_S], [r,c-1, SW_W], [r,c+1, SW_E]
+      ];
+      for (const [nr, nc, sw] of neighbors) {
+        if (nr < 0 || nr >= ROWS || nc < 0 || nc >= COLS) continue;
+        if (!grid[nr][nc]) newGrid[nr][nc] = {file: sw};
+      }
     }
   }
   grid = newGrid;
@@ -443,14 +482,21 @@ function celebrer() {
 }
 
 function save() {
-  try { localStorage.setItem('mj-pose-tiles', JSON.stringify(grid)); } catch(e) {}
+  try { localStorage.setItem('mj-pose-tiles', JSON.stringify({cols: COLS, rows: ROWS, grid})); } catch(e) {}
 }
 function load() {
   try {
     const s = localStorage.getItem('mj-pose-tiles');
-    if (s) {
-      const arr = JSON.parse(s);
-      if (Array.isArray(arr) && arr.length === ROWS) grid = arr;
+    if (!s) return;
+    const data = JSON.parse(s);
+    // Support ancien format (tableau direct) et nouveau format {cols, rows, grid}
+    if (Array.isArray(data)) {
+      if (data.length === ROWS && data[0] && data[0].length === COLS) grid = data;
+    } else if (data && data.grid && data.cols && data.rows) {
+      COLS = data.cols; ROWS = data.rows;
+      grid = data.grid;
+      const sel = document.getElementById('grid-size-select');
+      if (sel) sel.value = COLS;
     }
   } catch(e) {}
 }

@@ -26,9 +26,9 @@
 | 1 | Pitch + Plan (fusionnés depuis 2026-05-12) | Conseiller | ✅ | 2026-05-12 | [`1-pitch-plan.md`](1-pitch-plan.md) |
 | **B** | **Brainstorm Couche 0 (NOUVEAU — vague 3)** | Directeur + LLMs | ⚪ | — | [`0-brainstorm-couche.md`](0-brainstorm-couche.md) — étape exploratoire pré-briefs (DEC-PROCESS-NEW-001) |
 | **C** | **Briefs Couche 2 (refonte — vague 3)** | Directeur | ⚪ | — | [`3-briefs/`](3-briefs/) refondus : intentions Ki/Sho/Ten/Ketsu uniquement (DEC-BRIEF-ARCH-001) |
-| **D** | **_writer-package complet Couches 1/2/3 (vague 3)** | Directeur | ⚪ | — | [`3-briefs/_writer-package.md`](3-briefs/_writer-package.md) refondé : Couche 1 ref + Couche 2 brief + Couche 3 vision guidé |
+| **D** | **_writer-package complet Couches 1/2/3 (vague 3)** | Directeur | ⚪ | — | [`3-briefs/brief-histoire.md`](3-briefs/brief-histoire.md) refondé : Couche 1 ref → `equipe/_writer-system.md` + Couche 2 brief + Couche 3 vision guidé. Format : système/utilisateur (DEC-WRITER-ARCH-001) |
 | 3 | ~~Briefs~~ (archivé vague 1-2) | — | ❌ | 2026-05-12 | [`3-briefs/`](3-briefs/) — **REFONTE VAGUE 3 PRÉVUE** (voir étapes B/C/D) |
-| 4 | **14 Versions writers — VAGUE 3** (briefs refondus 3 couches) | 14 Writers | ⚪ | — | [`4-versions-writers/`](4-versions-writers/) — vague 2 archivée dans `_archive/vague-2/`, vague 1 reste `_archive/vague-1/` |
+| 4 | **14 Versions writers — VAGUE 3** (briefs system/user 2026-05-15) | 14 Writers | ⚪ | — | [`4-versions-writers/`](4-versions-writers/) — invocation: system=`equipe/_writer-system.md`, user=`3-briefs/brief-histoire.md` (DEC-WRITER-ARCH-001). Vague 2 archivée dans `_archive/vague-2/`, vague 1 reste `_archive/vague-1/` |
 | 5 | **Panel 20 lecteurs + synthèse** | 20 Témoins + Directeur | ✅ | 2026-05-14 | [`5-lecteurs-temoins/`](5-lecteurs-temoins/) + [`5-synthese-lecteurs.md`](5-synthese-lecteurs.md) — verdict : `kimi-reco-guide` #1 chez 18/20 |
 | 6 | Sélection | Directeur | ⏳ | 2026-05-14 → 2026-05-15 | [`6-selection.md`](6-selection.md) — **EN ATTENTE AUTEUR** (validation vague 3 briefs avant sélection ETH vague 3, voir DEC-STORY-002-VAGUE3) |
 | 7 | Rewrite | Writer du top 1 | ⚪ | — | [`7-rewrite/`](7-rewrite/) |
@@ -62,7 +62,7 @@
 
 > *Notes libres du owner courant. Si 🔴 BLOQUÉ, expliquer ici.*
 
-### 2026-05-15 — Vague 3 décisions : architecture briefs refondée + PROCESS nouveau (DEC-BRIEF-ARCH-*, DEC-PROCESS-NEW-001)
+### 2026-05-15 — Décisions architecturales : briefs 3 couches + system/user writers + PROCESS nouveau (DEC-BRIEF-ARCH-*, DEC-WRITER-ARCH-001, DEC-PROCESS-NEW-001)
 
 **Contexte** : analyse étape 5 vague 2 révèle convergence artificielle (gestes Nono + berge humide + Juju touche eau = même chez 11/14 writers). Cause : détails signature injectés en brief commun (Couche 2) au lieu vision guidé (Couche 3).
 
@@ -70,6 +70,7 @@
 - **DEC-BRIEF-ARCH-001** : Architecture briefs en 3 couches (Couche 1 STATIQUE / Couche 2 DYNAMIQUE HISTOIRE / Couche 3 DYNAMIQUE GUIDÉ)
 - **DEC-BRIEF-ARCH-002** : _writer-package.md = package UNIQUE parité totale (variant = LLM + température)
 - **DEC-BRIEF-ARCH-003** : Bug vague 2 confirmé — gestes/décor/actions = Couche 3 (vision guidé) uniquement, pas Couche 2
+- **DEC-WRITER-ARCH-001** : Architecture system/user UNIFIÉE writers étape 4 (system = `equipe/_writer-system.md` Couche 1 pérenne, user = `brief-histoire.md` Couche 2+3 per-story). Obsolètes : `brief-univers.md`, `_writer-package.md` (remplacés split system/user). Ticket ARCHI-014 créé pour implémentation.
 - **DEC-PROCESS-NEW-001** : Nouveau process étapes A/B/C/D (ajout étape B brainstorm Couche 0) avant étape 3-10
 - **DEC-JUJU-T8-001** : Trait Juju gravé — "Chansonnette interrompue + reset brutal" (découverte vague 2, 18/20 plébiscite)
 

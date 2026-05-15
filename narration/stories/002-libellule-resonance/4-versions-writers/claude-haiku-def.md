@@ -1,72 +1,63 @@
-# Version Claude haiku def — La libellule
+---
+llm: claude-haiku-4-5
+role: libre
+temperature: défaut
+date: 2026-05-14
+vague: 2
+---
 
-**Modèle :** claude-haiku-4-5
-**Température :** défaut Anthropic
-**Thinking :** low
-**Longueur :** 548 mots
+# La Libellule et la Résonance
+
+L'étang était à peine troublé. Eau claire jusqu'au fond. On voyait les têtards qui traînaient entre les racines noyées, lents, presque endormis. Juju, Nono et Wex s'étaient arrêtés là parce que Juju avait envie d'entrer dedans.
+
+« Regarde comme c'est transparent, » dit Juju.
+
+Elle était déjà pieds nus, ses chaussures jetées derrière elle sans regarder. L'herbe était mouillée, tiède au-dessus, froide dessous. Elle descendit doucement vers la berge.
+
+Nono l'avait suivie. Il s'était arrêté juste avant l'eau, assis sur ses talons, immobile. Wex restait en haut, les yeux sur le groupe.
+
+« Tu rentres pas dedans ? » demanda Juju.
+
+« Je l'écoute d'abord, » répondit Nono.
+
+Juju sourit — ce genre de réponse, elle la connaissait. Elle continua. Ses doigts touchèrent l'eau. Elle la sentit bouger autour de ses paumes, vivante, pas morte comme elle l'avait cru. Des cercles se formaient à chaque fois qu'elle appuyait.
+
+Puis il y eut le bruit.
+
+Un bourdonnement aigu, mince, qui vint droit du ciel. Juju releva la tête. La libellule arrivait de loin, très rapide, ses ailes faisaient une brume orange et bleue. Elle passa à deux doigts du visage de Juju, qui se baissa en riant.
+
+« Elle nous dit bonjour, » dit Juju.
+
+La libellule tourna. Elle revint. Elle rasait l'eau maintenant, son corps pointu reflet du ciel, ses ailes qui faisaient trop de bruit pour quelque chose d'aussi petit.
+
+Juju resta comme ça — à moitié dans l'eau, à moitié dehors — ses mains ouvertes, regardant la libellule faire ses cercles.
+
+À côté d'elle, Nono n'avait pas bougé. Il regardait juste. Mais son respiration avait changé. Juju le sentit sans le voir. C'était comme quand il fredonnait, mais sans son. Une présence qui devenait plus épaisse.
+
+Puis il ôta ses chaussures.
+
+Il posa ses pieds nus sur la terre mouillée de la berge. Sa main gauche s'ouvrit. Il la posa là, doigts écartés, sur le sol. Il respirait lentement.
+
+Juju arrêta de faire bouger l'eau. Elle regarda Nono. Elle ne pouvait pas expliquer ce qu'elle voyait. Mais quelque chose devint vrai à ce moment. La libellule continua ses cercles. Nono ne la regardait plus.
+
+« Ça marche, » dit Juju doucement.
+
+Elle ne sut pas ce qui marchait. Mais elle le sut.
+
+Wex descendit à son tour. Tout doucement. Il y avait quelque chose là — entre la terre, la libellule, et les trois enfants — qui tenait. Qui respirait.
+
+La libellule disparut. Elle revint. Elle disparut encore. C'était juste une libellule. Rien d'extraordinaire.
+
+Mais maintenant l'étang tremblait avec eux.
 
 ---
 
-L'étang sent le mouillé tiède. Mai, fin de matinée. Wex est arrivé le premier, comme souvent. Il s'est assis sur la racine large, celle qui sort du sol comme un dos de gros animal. Juju arrive en courant. Nono arrive en marchant.
+**Note d'intention**
 
-— Y'a des têtards, dit Juju. Plein.
+**Ten** : j'ai choisi le geste des pieds nus + la main ouverte sur la terre, sans que Nono cherche quoi que ce soit. La "magie" vit dans l'immobilité et l'écoute, pas dans l'action.
 
-Elle se penche tout de suite, mains en visière. L'eau est claire. Les têtards font des virgules noires.
+**Silence** : le Ten est muet sauf "Ça marche" — une intuition de Juju, pas une explication. Nono n'énonce rien.
 
-— Ils bougent comme des points qui pensent, dit Nono.
+**Son** : j'ai gardé le bourdonnement de la libellule comme l'élément sonore clé du Sho. Le Ten reste acoustiquement différent — respiration de Nono, silence de son corps.
 
-Wex sourit sans rien dire. Il sort un caillou plat de sa poche, le tourne, le repose à côté de lui. C'est sa façon de marquer qu'il est là.
-
-C'est là qu'elle arrive.
-
-Un trait bleu. Très vite, vraiment. Elle passe au-dessus des roseaux, vire, plane, disparaît derrière un buisson, revient. Elle bourdonne — un bourdonnement net, métallique, doux. Les trois enfants lèvent la tête en même temps.
-
-— Une libellule, souffle Wex.
-
-Juju se relève d'un coup.
-
-— Je la veux pas attraper, dit-elle. Je veux toucher où elle est passée.
-
-Elle enlève une chaussure, puis l'autre. Pose les pieds sur la terre humide de la berge. Avance les mains vers les racines qui plongent dans l'eau. Touche la terre. Touche l'écorce. Touche l'eau froide. Ses doigts laissent des traces sombres sur la terre claire.
-
-— Elle est partie, dit Nono.
-
-— Elle va revenir, dit Juju. Elles reviennent toujours.
-
-La libellule revient. Elle fait un huit lent au-dessus de l'étang, ralentit presque, repart. Juju rit.
-
-— Tu vois ?
-
-Nono ne répond pas. Il s'est immobilisé. Pieds nus aussi maintenant — il les a enlevés sans qu'on le voie. Il regarde l'eau, mais pas vraiment. Il écoute. Le bourdonnement de la libellule, le clapot minuscule de l'eau, le bruit des roseaux qui se frottent. Et autre chose. Quelque chose qu'il sent par le bas, par les plantes des pieds. Comme si la terre faisait un bruit très lent qu'on entend pas avec les oreilles.
-
-Il ferme les yeux une seconde. Pas longtemps.
-
-Juju se retourne pour lui dire quelque chose. Elle s'arrête. Elle le regarde. Elle ne sait pas pourquoi, mais elle ne parle plus. Elle pose juste sa main sur la terre, à côté du pied de Nono. Comme pour vérifier. Elle reste là.
-
-Wex regarde les deux. Il prend son caillou plat et le pose, doucement, sur la racine, à mi-chemin entre Juju et Nono.
-
-— Voilà, dit Wex tout bas.
-
-La libellule repasse. Plus haut cette fois. Elle ne s'arrête pas. Elle ne s'arrêtera pas — Juju le sait maintenant, elle ne sait pas comment elle le sait.
-
-— Elle est bien, murmure Nono.
-
-— Oui, dit Juju.
-
-— Oui, dit Wex.
-
-Personne ne bouge. Les têtards continuent leurs virgules. L'eau continue son clapot. La terre continue son bruit lent qu'on n'entend pas. La libellule passe, repasse, vire au-dessus des roseaux.
-
-Les trois enfants restent.
-
----
-
-## Note d'intention
-
-J'ai voulu que la libellule entre vite, sans préambule, parce qu'à 4 ans on a pas le temps d'attendre qu'un texte se réchauffe. Le décor s'installe en trois phrases puis elle arrive.
-
-Le geste de Nono qui enlève ses chaussures « sans qu'on le voie » m'a paru juste : c'est exactement ça, sa connexion à la terre — elle ne fait pas de bruit, on la rate si on regarde ailleurs. Et c'est Juju qui la voit parce qu'elle est dans le contact, dans le corps. Sa main qui se pose à côté du pied de Nono, c'est ma version du Ten : pas un mot, juste un alignement.
-
-Le caillou plat de Wex est ma référence au pont cassé de l'histoire 001 — l'objet posé qui marque sans rien réparer. J'aime tirer ce fil-là entre les stories.
-
-Le « bruit lent qu'on entend pas » est ma façon d'écrire la vibration sans la spectaculariser. Pas d'onde, pas de magie visible. Juste une image qu'un enfant peut sentir : la terre qui parle bas.
+**Choix inattendu** : Nono ne regarde plus la libellule au moment du Ten. C'est son indifférence physique (il sent, il ne cherche pas) qui crée le basculement. Juju doit sentir cette densité d'inaction, non une action spectaculaire.

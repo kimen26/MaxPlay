@@ -1,83 +1,97 @@
-# Version Claude sonnet def — La libellule
+---
+llm: claude-sonnet-4-6
+role: libre
+temperature: défaut
+date: 2026-05-14
+vague: 2
+---
 
-**Modèle :** claude-sonnet-4-6
-**Température :** défaut Anthropic
-**Thinking :** low
-**Date :** 2026-05-13
-**Longueur :** 538 mots
+# La libellule et la résonance
+
+L'étang était petit, et le ciel se voyait dedans.
+
+Juju marchait au bord, les bras écartés comme une funambule. Nono suivait sans pressser. Wex tenait une brindille, sans raison, comme on tient une brindille quand on est Wex.
+
+— Regarde l'eau, dit Juju. Y'a des têtards.
+
+— Plein, dit Wex.
+
+Nono se pencha. Les têtards bougeaient en petites virgules noires. Le soleil faisait des ronds clairs sur le fond.
+
+C'est là qu'elle est arrivée.
+
+Bzzzz — une libellule. Bleue, peut-être verte, peut-être les deux. Elle passa devant le nez de Juju, vira, s'arrêta en l'air comme si elle réfléchissait, repartit.
+
+— Oh ! fit Juju.
+
+Elle tendit la main. La libellule était déjà ailleurs.
+
+— Elle est trop rapide, dit Juju. Trop trop rapide.
+
+— Ouais, dit Nono.
+
+Juju s'accroupit au bord. Elle enleva ses sandales et posa les pieds dans la vase tiède. Elle enfonça les doigts dans la terre humide, à côté d'une racine qui sortait comme un coude.
+
+— C'est tout mou, dit-elle. Viens toucher, Nono.
+
+— Mmm.
+
+Il ne vint pas tout de suite. Il regardait la libellule revenir, repartir, dessiner des huit invisibles au-dessus de l'eau.
+
+— Dis ! Viens vraiment, dit Juju. C'est bon, c'est doux.
+
+Nono s'approcha. Il ne s'accroupit pas. Il enleva juste ses chaussures et resta debout dans la terre, les bras le long du corps. Il ferma un peu les yeux.
+
+Wex le regardait. Wex avait toujours l'air de regarder pour deux.
+
+Juju malaxait la terre, faisait gicler un peu d'eau entre ses doigts, riait toute seule. Les têtards filaient. La libellule revint, plana au-dessus du genou de Juju, repartit vers les roseaux.
+
+Nono ne bougeait pas.
+
+Juju leva la tête. Elle allait dire quelque chose — *touche, c'est trop bien* — et puis non. Elle regarda Nono. Ses pieds dans la terre. Ses épaules basses. Sa bouche un peu ouverte, pas vraiment un sourire.
+
+Elle sentit quelque chose. Pas dans sa tête. Plus bas, dans le ventre, dans les mains qui s'arrêtèrent de jouer avec la boue.
+
+Elle ne dit rien.
+
+Wex non plus.
+
+La libellule revint. Elle se posa une seconde sur un roseau, juste une seconde, et le roseau plia à peine.
+
+— Elle est revenue, chuchota Wex.
+
+— Ouais, dit Nono, sans ouvrir les yeux.
+
+— Tu la vois ? demanda Juju, tout bas.
+
+— Mmm. Un peu. Je l'entends surtout.
+
+— Tu l'entends ?
+
+— Ouais. Ça fait comme dans les pieds.
+
+Juju regarda ses propres pieds dans la vase. Elle ne dit rien. Elle resta accroupie, les mains tranquilles sur les genoux maintenant. Wex s'assit dans l'herbe. La brindille était toujours dans sa main.
+
+Personne ne parla pendant un moment.
+
+La libellule fit encore deux ou trois passages, puis s'éloigna vers l'autre rive. Un têtard remonta toucher la surface et redescendit. Le soleil glissa un peu.
+
+Juju remit ses sandales lentement, sans secouer la terre. Nono rouvrit les yeux. Il sourit à Juju, qui sourit aussi, sans dire pourquoi.
+
+— On reste encore, dit Nono.
+
+— Ouais, dit Juju. On reste.
+
+Wex hocha la tête. La libellule repassa, loin, brillante, libre.
 
 ---
 
-L'étang sent l'herbe écrasée et l'eau tiède. Les têtards tournent en rond, lents, comme s'ils répétaient quelque chose.
+**Note d'intention**
 
-Juju arrive la première. Elle pose son sac, enlève ses sandales, et descend tout de suite vers la berge. La terre est noire et humide entre ses orteils.
-
-— C'est mou, dit-elle. Wex, viens voir, c'est trop mou.
-
-Wex la rejoint, marque la scène d'un petit hochement.
-
-— Mou comme du pain.
-
-— Mou comme rien d'autre.
-
-Nono reste un peu en arrière. Il regarde l'eau, puis le ciel, puis l'eau encore.
-
-Et là, elle arrive.
-
-La libellule.
-
-Bleue. Non — verte. Non — les deux. Elle passe au-dessus de l'étang en zigzag rapide, vire sec, plane une seconde, repart. On l'entend avant de la voir vraiment : un bruit fin de petit moteur, *zzzt*, qui s'éloigne et revient.
-
-— Là ! crie Juju. Là !
-
-Elle tend les mains vers la berge, comme si ses mains pouvaient répondre à la libellule. Elle attrape une racine qui sort de la terre, la suit du doigt jusqu'à l'eau. Elle plonge une main, ressort des cailloux, les pose sur la berge en ligne.
-
-— Wex, regarde, j'ai fait un pont. Petit.
-
-— Petit pont.
-
-— Très petit.
-
-La libellule revient. Elle passe à ras des roseaux, *zzzt-zzzt*, puis remonte. Juju essaie de la suivre avec sa main mouillée. Elle rit. La libellule, elle, ne voit pas Juju. Elle fait son chemin.
-
-Nono, lui, n'a pas bougé.
-
-Ou plutôt si — il a bougé d'une autre manière. Il a enlevé ses chaussures aussi, à un moment, sans rien dire. Il est descendu d'un pas. Il est resté.
-
-Il écoute.
-
-Pas la libellule. Quelque chose en dessous. Le sol contre la plante de ses pieds. C'est frais et c'est plein. Ça ne dit rien. Ça est là.
-
-La libellule repasse, *zzzt*. Nono ferme les yeux une seconde.
-
-Juju se retourne, prête à crier "Nono, viens, on fait un autre pont", et puis elle ne crie pas.
-
-Elle le regarde.
-
-Elle ne saurait pas dire pourquoi elle s'arrête. Nono est juste debout, pieds dans la terre, mains le long du corps. Rien de spécial. Mais quelque chose tient. Comme un meuble qui ne bouge plus quand on l'a bien posé. Juju sent ça avec son ventre, pas avec sa tête.
-
-— Wex, murmure-t-elle.
-
-Wex hoche.
-
-Personne ne parle pendant un petit moment. La libellule fait deux tours, trois tours. Elle se pose sur un roseau, repart aussitôt. Les têtards continuent leur ronde lente.
-
-Juju s'accroupit, finalement. Elle pose la paume sur la terre, à côté du pied de Nono. Elle ne dit rien. Elle fait juste comme lui, voir.
-
-— C'est calme, dit Nono.
-
-— Oui.
-
-— C'est calme partout.
-
-Wex s'assoit aussi, sur un talon, et touche la berge du bout des doigts.
-
-La libellule passe une dernière fois au-dessus d'eux. *Zzzt.* Elle s'en va vers les roseaux du fond, où la lumière fait des éclats. Personne ne la suit.
-
-Les trois restent là.
-
----
-
-## Note d'intention
-
-J'ai gardé le son *zzzt* comme petit pivot qui relie le début et la fin — la libellule ne ralentit jamais, c'est nous qui ralentissons. J'ai voulu que Juju soit pleinement dans le geste (le petit pont de cailloux, la racine suivie du doigt) avant de basculer comme témoin : son corps sait avant sa tête, et c'est sa **paume posée à côté du pied de Nono** qui dit la révélation sans la dire — pas un mot d'admiration, juste imiter. Le Ten est volontairement minuscule (pieds nus, yeux fermés, présence qui se densifie), pour rester sous le seuil de la "magie spectaculaire". J'ai choisi l'image du meuble bien posé pour décrire ce que Juju ressent — concret, mimable, accessible à 4 ans. Les répliques "C'est calme / Oui / C'est calme partout" sont l'échange à 3 que je voulais : trois battements, pas plus, et le mot calme qui s'élargit du local au monde.
+- **Ouverture** : phrase courte qui renverse le ciel dans l'étang — installer le calme et le motif "voir/sentir" sans le dire.
+- **Sensorialité** : vase tiède, racine-coude, têtards en virgules, roseau qui plie "à peine". Le concret enfantin avant tout abstraction.
+- **Rythme** : Sho long et tactile (Juju agit), Ten silencieux marqué par le retour à la ligne et l'arrêt des mains de Juju. Pas d'effet, juste un arrêt.
+- **Beat du Ten** : Juju lève la tête, allait parler, ne dit rien. C'est elle qui sent que ça tient — sans mot, le ventre, les mains qui s'arrêtent. La révélation passe par son corps à elle, pas par une démonstration de Nono.
+- **Onomatopée** : un seul "Bzzzz" à l'arrivée de la libellule, jouable à voix haute, pivot universel.
+- **Fermeture** : "On reste." Pas d'épilogue, pas de morale. La libellule repasse libre — promesse du titre tenue.
+- **Choix inattendu** : la brindille de Wex sans raison, et le "comme on tient une brindille quand on est Wex" — une caractérisation par tautologie, qui donne à Wex sa présence sans rôle assigné.

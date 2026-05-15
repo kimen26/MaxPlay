@@ -1,54 +1,64 @@
 ---
-llm: kimi-k2.6
+llm: kimi-k2.6-thinking
 role: libre
-mcp: ask_kimi_payant (officiel Moonshot)
-temperature: fixe K2.6 (param ignoré, doc Moonshot)
-top_p: 0.95 (fixe K2.6)
-thinking: enabled (défaut K2.6 quand thinking non envoyé explicitement)
-date: 2026-05-13
-note_renommage: "Slug initialement kimi-reco — renommé kimi-k26-thinking le 2026-05-13 car la doc Moonshot officielle a confirmé que K2.6 a thinking=enabled par défaut. Cette version a donc été générée avec thinking actif."
+temperature: 1.0
+thinking: enabled
+date: 2026-05-14
+vague: 2
 ---
 
-# STORY-002 — Libellule-résonance (kimi-k26-thinking)
+Le mois de mai chauffait l'étang amont. L'eau était si transparente qu'on voyait les têtards frétiller près du fond. Des racines nues plongeaient doucement dans l'eau. Des roseaux bruissaient. Des herbes fines dansaient sur la berge humide.
 
-En mai, au bord de l'étang amont, l'eau tenait encore la fraîcheur de la nuit. Elle était tellement claire que les têtards semblaient suspendus dans le vide, entre les pierres rondes et les reflets du ciel. La berge s'affaissait doucement sous des mottes de terre humide. Des racines tordaient leur bois gris jusqu'à frôler la surface. Derrière, les roseaux dressaient leurs tiges minces, et des herbes fines chatouillaient les chevilles qui passaient.
+Juju arriva la première. Ses bottes s'enfoncèrent dans la terre molle.
 
-Juju avait déjà retiré ses chaussures. Elle enfonçait ses orteils dans la boue tiède. Elle riait parce que ça chatouillait.
+— Je l'avais dit ! lança-t-elle. Il y a plein de choses ici !
 
-« Il y en a des centaines, » dit-elle en pointant l'eau du bout du nez.
+Nono la suivait. Il marchait lentement, le regard posé sur le sol, sur l'eau, sur le ciel.
 
-Une ombre brillante fendit l'air. Un bourdonnement aigu suivit, comme une ficelle tendue entre les roseaux.
+Wex était là aussi, debout, le visage tourné vers la lumière.
 
-Nono se tenait debout, les bras le long du corps. Il levait le menton.
+Soudain, un bourdonnement aigu fendit l'air. Une libellule passa. Rapide. Brillante. Bleue comme un morceau de ciel.
 
-« Tu l'entends ? » demanda Wex.
+— Oh ! fit Wex.
 
-Nono ferma les yeux une seconde. « Elle vibre dans mes oreilles. »
+Juju s'agenouilla aussitôt. Elle mit ses mains à plat dans la terre humide. Elle sentit le froid de l'eau lui monter entre les doigts. Elle toucha une racine, puis une autre.
 
-Juju tourna sur elle-même pour suivre le vol. « Elle va trop vite ! Viens par ici, Nono, l'eau mouille tes pieds. »
+— C'est bon, je m'en occupe ! dit-elle.
 
-« Pas besoin de bouger, » dit Nono.
+Elle avança un pied dans l'eau claire. Les têtards s'écartèrent en ondulant.
 
-Wex fixait le ciel près de la surface. « Elle tourne en cercle. Elle cherche. »
+Nono s'arrêta. Il regardait la libellule tourner au-dessus des roseaux.
 
-Juju s'accroupit. Elle enfonça ses deux mains dans la terre molle jusqu'aux poignets. Elle souleva une motte noirâtre et la laissa retomber en miettes. L'eau lui léchait les genoux. Elle attrapa une racine fine et la tira doucement, juste pour sentir la résistance du bois sous sa paume. Elle éclaboussa Wex avec ses mains pleines de boue.
+— C'est bien comme ça, dit-il.
 
-Wex esquissa un pas de côté. « Elle revient. »
+Juju sortit son autre pied de la boue. Elle éclaboussa un peu.
 
-La libellule revenait en effet. Plus bas cette fois. Son corps luisait d'un bleu si profond qu'on aurait dit une étincelle figée. Elle ralentissait. Elle planait au-dessus de l'eau, entre les enfants et les têtards qui s'éparpillaient.
+— T'inquiète, je suis là ! cria-t-elle en riant.
 
-Nono s'accroupit à son tour. Très lentement, il posa sa paume à plat sur la berge humide, entre deux racines. Il ne pressa pas. Il laissa ses doigts s'enfoncer de leur propre poids. Il resta là, le dos droit, le regard vers l'insecte. Il ne dit rien.
+— Mmm... on peut tous y aller ensemble, non ? dit Nono doucement.
 
-Juju le regarda. Elle regarda sa main sur la terre. Quelque chose dans son ventre se mit à battre au même rythme que le bourdonnement, sans qu'elle sache pourquoi. Elle retira ses mains de l'eau. Elle posa sa paume à côté de celle de Nono. La terre était froide, puis tiède. Elle sentait les grains sous sa peau.
+Mais la libellule s'éloigna vers le haut de la berge. Puis elle revint. Elle semblait chercher quelque chose.
 
-Wex s'agenouilla derrière eux. Il posa ses cinq doigts dans l'herbe fine, tout près. Il ne parla pas.
+— Elle revient, murmura Wex.
 
-La libellule suspendit son vol. Elle se posa sur un roseau sec, à la hauteur de leurs yeux. Si près qu'ils voyaient ses ailes trembler sans bruit, comme du verre chaud. Les têtards repassaient en dessous. Une goutte d'eau tomba d'une racine et fit un cercle parfait.
+Nono s'assit sur la terre humide. Il posa ses jambes en tailleur. Il ouvrit la paume de sa main droite vers le sol. Il ne disait rien. Ses doigts firent un tout petit mouvement, comme dire bonjour sans voix. Il fredonna :
 
-Juju, Nono et Wex restèrent là. Leurs trois ombres se touchaient sur la terre humide. La libellule bourdonna une fois, très doucement. Puis elle tourna sa tête vers l'étang, et les enfants tournèrent leur regard avec elle, vers l'eau claire qui allait loin, très loin, sous le printemps.
+— Mmm...
+
+Un sourire monta sur son visage. Pas un mot.
+
+La libellule s'arrêta. Elle se posa sur un roseau tout près. Ses ailes vibraient encore, très vite. Puis elles se calèrent.
+
+Juju releva la tête. Elle vit Nono, immobile, la main vers la terre. Elle vit la libellule qui ne partait pas. Elle retint son souffle. Elle ne dit rien. Elle sentait que ça marchait, sans savoir comment le dire.
+
+Wex s'accroupit à côté de Nono. Il posa un caillou plat sur la berge. Il ne dit rien non plus.
+
+La libellule repartit en l'air. Elle tourna une fois. Elle revint. Elle dansait au-dessus des trois enfants.
+
+Juju se rassit doucement. Elle posa ses mains de chaque côté de ses cuisses, dans la terre fraîche. Nono gardait sa paume ouverte. Wex regardait l'eau.
+
+Les têtards continuaient leur danse sous l'eau transparente. Les roseaux bruissaient. La libellule volait en rond, brillante, et le bourdonnement remplissait le printemps.
 
 ---
 
-## Note d'intention (3-8 lignes)
-
-L'ouverture pose une géographie du corps avant celle des mots : terre humide, racines visibles, eau transparente, pour que les enfants entrent par la peau. Le rythme alterne l'énergie physique de Juju (mains dans la boue, éclaboussures) et la présence immobile de Nono qui capte la vibration. Le Ten se fait sans parole car la connexion à la terre n'a pas besoin d'être nommée : le geste de la paume sur la berge suffit. Juju ressent par son ventre, pas par sa pensée. Wex reste le témoin qui pose les mots justes avant de se taire. Le Ketsu fige un rituel : trois enfants, une libellule, le même silence partagé.
+**Note d'intention :** Cette histoire confronte l'énergie tactile de Juju avec la présence silencieuse de Nono. Le Ten se joue dans le calme que Nono installe par son rapport au sol, sans explication ni spectacle. La libellule agit comme révélateur naturel : elle vient quand le silence est vrai. Le Ketsu propose un rituel sans parole où chaque enfant trouve sa place dans l'immobilité partagée. Aucune morale n'est énoncée ; l'image finale laisse le sens émerger librement pour l'auditeur.

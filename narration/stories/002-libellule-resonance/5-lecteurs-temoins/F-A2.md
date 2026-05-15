@@ -1,215 +1,213 @@
-# Lecteur Témoin F-A2 — Fille rêveuse, 4-5 ans
+---
+profil: F-A2
+type: enfant-seul
+tranche: A (3-5 ans)
+genre: fille
+personnalite: intro-observatrice
+date: 2026-05-14
+story: 002-libellule-resonance
+---
 
-> Profil : douce, introvertie, observatrice. Aime contempler, dessiner, les histoires lentes avec des images précises. Sensible aux ambiances, aux couleurs, à la lumière.
+# Lectrice Témoin F-A2 — Fille intro/observatrice, 3-5 ans
 
 ---
 
 ## Version claude-opus-def
 
-J'ai aimé : le petit canal que Juju creuse avec ses doigts et l'eau qui s'engouffre dedans, comme si l'eau attendait. Et la couleur bleue-verte-bleue de la libellule qui change selon la lumière, c'est beau ça. Le mot "Sous." dit par Nono — juste un mot mais on comprend tout.
+J'ai aimé : quand Nono s'assoit dans l'herbe et qu'il enlève ses chaussures sans rien dire. Et la libellule qui se pose sur son genou — c'est mon moment préféré. J'aurais voulu être Juju qui reste accroupie dans l'eau et qui écoute. Et aussi quand ils sont tous les trois assis en ligne avec leurs pieds.
 
-J'ai pas trop aimé : au début c'est un peu long avant qu'il se passe quelque chose. Y a beaucoup de détails et je sais plus trop où regarder.
+J'ai pas trop aimé : c'est long au début avec l'étang et les têtards. Moi j'attendais la libellule.
 
-Ce que je retiens : le petit canal qui devient une rivière. Et les trois enfants qui enlèvent leurs chaussures l'un après l'autre, tout doucement.
+Ce que je retiens : la libellule qui se pose sur le genou de Nono. Et les trois assis côte à côte avec leurs pieds boueux contre les pieds propres.
 
-Questions : pourquoi Nono il dit "Sous" ? Sous quoi ?
+Questions : pourquoi Juju elle dit "il fait quoi Nono" alors qu'elle voit bien ce qu'il fait ? C'est parce qu'elle comprend pas ?
 
 ---
 
 ## Version claude-opus-reco
 
-J'ai aimé : "C'est mou et c'est doux" — j'aurais dit exactement ça. Et les têtards qui reviennent à leur place tout seuls quand Juju retire ses mains, comme si tout se remettait en ordre. La libellule qui fait un huit au-dessus de l'eau, je voyais bien le dessin dans ma tête.
+J'ai aimé : "picha" — j'ai adoré ce bruit-là. Juju qui fait picha sur l'eau juste pour voir les ronds, c'est exactement ce que moi je fais. Et Wex qui dit quelque chose "pour personne, pour le dire" — j'ai aimé ça même si je comprends pas tout à fait pourquoi on dit des choses pour personne.
 
-J'ai pas trop aimé : le bout avec Juju qui "voulait dire quelque chose mais quoi elle ne savait pas" — moi aussi je comprends pas trop, ça part un peu dans du flou.
+J'ai pas trop aimé : il y a un passage qui est un peu difficile à suivre quand ça parle de "tenir un verre plein sans le renverser". C'est une image d'adulte ça.
 
-Ce que je retiens : la libellule sur le roseau qui plie à peine. Juju qui s'assied à côté de Nono, pieds dans l'eau.
+Ce que je retiens : "picha" sur l'eau. Et la libellule sur son roseau, ailes ouvertes, immobile.
 
-Questions : pourquoi Wex il hoche la tête "pour lui-même" ? Il a compris quelque chose ?
-
----
-
-## Version claude-sonnet-reco
-
-J'ai aimé : la boue qui fait tchok sous les pieds de Juju — j'entendais le bruit. L'eau froide en haut et tiède en bas, c'est pareil dans la piscine. Et "quelque chose se posait dans son ventre", j'aime bien cette image, comme un petit oiseau qui se pose.
-
-J'ai pas trop aimé : "elle aurait juré" c'est un mot d'adulte, je connais pas trop.
-
-Ce que je retiens : tchok. Et la libellule qui se pose sur le roseau à la fin et replie ses ailes.
-
-Questions : pourquoi Wex il pose sa joue sur la racine ?
+Questions : c'est quoi "ça allait" comme Juju elle sait pas pourquoi ça allait ? Pourquoi c'était bien même si Nono bougeait plus ?
 
 ---
 
 ## Version claude-sonnet-def
 
-J'ai aimé : le bruit zzzt zzzt de la libellule. Le petit pont de cailloux que Juju fait. Et "c'est calme partout" dit par Nono à la fin, c'est ma phrase préférée de cette histoire. Et le meuble bien posé, c'est une bonne image.
+J'ai aimé : "Bzzzz" — j'ai bien aimé faire ce bruit. Et quand Nono dit "Ça fait comme dans les pieds" — ça m'a beaucoup touchée. Et aussi Wex avec sa brindille sans raison. J'aurais voulu tenir une brindille moi aussi.
 
-J'ai pas trop aimé : c'est un peu court à la fin, j'aurais voulu rester encore un peu.
+J'ai pas trop aimé : la phrase "Elle sentit quelque chose. Pas dans sa tête. Plus bas, dans le ventre, dans les mains" — c'est un peu trop pour moi. Les adultes ça parle comme ça.
 
-Ce que je retiens : zzzt. La paume de Juju à côté du pied de Nono dans la terre.
+Ce que je retiens : "Ça fait comme dans les pieds" quand Nono parle de la libellule. Et Wex avec sa brindille.
 
-Questions : non, j'ai tout compris. C'est une histoire facile à imaginer.
+Questions : comment on entend la libellule dans les pieds ? Est-ce que moi si je mets mes pieds dans la terre je l'entends aussi ?
+
+---
+
+## Version claude-sonnet-reco
+
+J'ai aimé : quand Juju trouve un caillou tout rond et le pose comme un trésor — ça c'est quelque chose que je comprends très bien. Et "c'est froid dessous, c'est chaud dessus, c'est les deux" — j'aurais voulu dire ça moi aussi. Et quand Wex enlève ses chaussures sans qu'on lui demande à la fin.
+
+J'ai pas trop aimé : au milieu il y a beaucoup de choses qui se passent en même temps. Juju fait des trucs, Nono fait des trucs, Wex est là. Ça va vite.
+
+Ce que je retiens : le caillou tout rond posé comme un trésor. Et les trois debout dans la terre humide à la fin.
+
+Questions : pourquoi Wex il enlève ses chaussures tout seul, sans qu'on lui dise ? Il a compris quelque chose que moi j'ai pas compris ?
 
 ---
 
 ## Version claude-haiku-def
 
-J'ai aimé : les têtards qui font "des virgules noires" et "des points qui pensent" — Nono dit quelque chose de joli. Le caillou plat de Wex posé entre Juju et Nono. "Elle est bien" dit Nono — très simple et très bien.
+J'ai aimé : quand Nono dit "Je l'écoute d'abord" — c'est une belle réponse ça. Et la libellule qui "fait trop de bruit pour quelque chose d'aussi petit" — ça m'a fait rire un peu. C'est vrai qu'une petite bête qui fait autant de bruit c'est drôle.
 
-J'ai pas trop aimé : "le bruit lent qu'on entend pas" c'est un peu compliqué comme idée pour moi. Je comprends à moitié.
+J'ai pas trop aimé : "l'étang tremblait avec eux" à la fin — ça m'a un peu fait peur. Est-ce que l'étang il peut vraiment trembler ? Et aussi "une présence qui devenait plus épaisse" c'est une phrase que je comprends pas du tout.
 
-Ce que je retiens : le caillou plat posé sur la racine. Les trois "oui" à la fin.
+Ce que je retiens : Nono qui dit "Je l'écoute d'abord" avant d'entrer dans l'eau. Et la libellule avec ses ailes qui font trop de bruit.
 
-Questions : le caillou plat de Wex, c'est quoi ? Il l'a apporté de chez lui ?
+Questions : pourquoi l'étang il tremble avec eux ? C'est pas dangereux ça ?
 
 ---
 
 ## Version claude-haiku-reco
 
-J'ai aimé : l'étang "si plat qu'on voit le ciel dedans à l'envers, avec les nuages qui flottent au fond comme des poissons mous" — TRES belle image, je veux la dessiner. Nono déjà là "depuis un peu, j'écoutais", ça fait mystérieux. "Chut / pourquoi chut / parce que" — c'est drôle et c'est juste.
+J'ai aimé : le bourdonnement qui arrive d'abord avant qu'on voit la libellule — c'est comme dans la vraie vie. Et "les pieds dégoulinent" de Juju à la fin — j'adore quand les pieds dégoulinent. Et Juju qui s'assoit à côté de Nono sans demander pourquoi.
 
-J'ai pas trop aimé : les quatre ailes de la libellule et Juju qui essaie de compter, c'est un peu long comme passage.
+J'ai pas trop aimé : il y a beaucoup de descriptions au début — l'eau noire au bord, verte au large, mai, printemps, le soleil — c'est trop avant que les enfants arrivent vraiment. Et le passage avec "son corps comprend" c'est un mot d'adulte.
 
-Ce que je retiens : les nuages comme des poissons mous dans l'eau. Les trois traits que Wex dessine dans la terre.
+Ce que je retiens : les pieds de Nono qui s'enfoncent dans la boue. Et "C'est tout" tout à la fin — j'aime quand une histoire dit c'est tout et c'est vraiment tout.
 
-Questions : Nono il était là depuis combien de temps ? Depuis le matin ?
-
----
-
-## Version deepseek-def
-
-J'ai aimé : "deux vitres légères" pour les ailes — c'est joliment dit. Et Juju qui recule sans faire craquer l'herbe parce qu'elle veut pas déranger. La phrase "elle voit la terre sous lui qui le reconnaît" — je comprends même si c'est un peu poétique.
-
-J'ai pas trop aimé : à la fin, "la libellule écrit quelque chose que personne ne lirait sauf ceux qui ne cherchent pas à comprendre" — c'est trop compliqué pour moi, c'est une phrase d'adulte.
-
-Ce que je retiens : les ailes "deux vitres légères". Nono dont les yeux brillent "comme l'eau sous le ciel".
-
-Questions : "c'est toi qu'elle a choisie" dit Juju — pourquoi elle l'a choisi, la libellule ?
-
----
-
-## Version deepseek-reco
-
-J'ai aimé : Nono qui dit "Elle est déjà en train de me toucher" même si la libellule est loin — ça c'est ma réplique préférée de toutes les histoires. Et "la sève qui monte à l'envers" dans la paume de sa main. Et Juju qui dit "t'as rien fait mais t'as tout fait".
-
-J'ai pas trop aimé : c'est long. Après un moment j'avais envie que l'histoire se finisse. Y a beaucoup de mots et plusieurs fois je regardais ailleurs dans ma tête.
-
-Ce que je retiens : "Elle est déjà en train de me toucher." La trace de la paume de Nono dans la mousse.
-
-Questions : "j'ai laissé la place" dit Nono — la place à qui ?
+Questions : pourquoi Nono il sent le bourdonnement dans ses jambes ? Moi j'ai jamais senti ça dans mes jambes.
 
 ---
 
 ## Version kimi-reco
 
-J'ai aimé : "boue tiède" dans les doigts de Juju, c'est dégoûtant dans le bon sens. La libellule "brillante comme un morceau de ciel tombé". Et la fin où la libellule ne part pas — ça c'est ma fin préférée, j'aime quand les belles choses restent.
+J'ai aimé : "c'est glissant et chaud à la fois" — je comprends ça. Et quand la libellule ne bouge plus à la fin et qu'ils restent tous là avec elle. C'est comme une photo.
 
-J'ai pas trop aimé : "Nono, fais quelque chose" dit Juju — c'est bizarre, d'habitude dans les autres histoires personne lui demande de faire quelque chose, ça arrive tout seul.
+J'ai pas trop aimé : Juju elle dit "c'est bon je m'en occupe" deux fois et ça veut dire quoi exactement ? Elle s'occupe de quoi ? Et aussi Nono qui fait "un geste lent vers la libellule comme pour dire bonjour sans parler" — c'est un peu trop expliqué.
 
-Ce que je retiens : la libellule qui ne part pas. Les doigts de Juju à côté de ceux de Nono dans la terre.
+Ce que je retiens : la libellule qui reste là, à la fin, pendant que les enfants restent aussi. Ils se regardent tous sans bouger.
 
-Questions : pourquoi la libellule elle est restée cette fois ?
-
----
-
-## Version kimi-k26-thinking
-
-J'ai aimé : les herbes fines qui chatouillent les chevilles, j'ai senti ça dans mes jambes. L'ombre de la libellule "comme une ficelle tendue entre les roseaux". Et les trois ombres des enfants qui se touchent sur la terre, c'est beau comme image finale.
-
-J'ai pas trop aimé : "tellement claire qu'on voit les têtards pointer leur ombre noire sur le sable jaune" c'est beaucoup de mots pour une seule image, j'ai un peu du mal à suivre au début.
-
-Ce que je retiens : les trois ombres qui se touchent. La goutte d'eau qui tombe d'une racine et fait un cercle parfait.
-
-Questions : est-ce que la libellule elle sait que les enfants la regardent ?
-
----
-
-## Version kimi-reco-guide-v1
-
-J'ai aimé : "pâte à gâteau" dit Juju pour la boue — ça c'est vrai, c'est exactement comme ça que ça ressemble. La chansonnette qu'elle commence et qu'elle oublie au milieu — moi aussi ça m'arrive. Et "picha-picha" sous les pieds dans la boue.
-
-J'ai pas trop aimé : c'est très actif et remuant au début, y a beaucoup de discussions, et moi j'aurais aimé plus de silence et de calme. Juju parle beaucoup beaucoup.
-
-Ce que je retiens : picha-picha. Le roseau qui se balance très doucement sous le poids de la libellule.
-
-Questions : la chansonnette de Juju, elle l'a inventée ? Elle la connait d'avant ?
-
----
-
-## Version kimi-reco-guide-v2
-
-J'ai aimé : "bloublou" que dit Juju en cherchant comment s'appelle le bruit des têtards — c'est drôle. Et "printanière c'est pas un mot / si c'est un mot que je viens d'inventer". Et le tout dernier mot "l'odeur de la terre monte" — ça sent vraiment.
-
-J'ai pas trop aimé : c'est la version la plus longue je crois, y a beaucoup de choses qui se passent, j'étais un peu fatiguée avant la fin.
-
-Ce que je retiens : "bloublou" et "printanière". Nono qui dit "Chut." — juste chut, c'est suffisant.
-
-Questions : le canard qui passe à la fin, il a vu la libellule ?
+Questions : c'est quoi "on peut tous y aller ensemble" ? Aller où ? Dans l'eau ?
 
 ---
 
 ## Version kimi-k26-instant
 
-J'ai aimé : "ses ailes ne battaient pas, elles vibraient, invisibles" — j'ai jamais vu ça dit comme ça avant. Et "j'y suis" dit par Nono alors qu'il n'est pas dans l'eau — c'est mystérieux et ça me fait réfléchir. Et Juju qui à la fin pose son pied à côté de celui de Nono sur la racine, "plus dense, plus ancien, plus lent" — c'est très beau.
+J'ai aimé : Juju qui soulève une motte avec des vers et dit "les miens sont plus gros" — ça m'a fait rire. Et "le silence autour de lui comme une chose qu'on pouvait voir" — ça c'est une belle image même si c'est un peu difficile. Et Juju qui sort de l'eau et pose sa main à côté de celle de Nono.
 
-J'ai pas trop aimé : certains mots sont compliqués pour moi, comme "suspension" et "couture invisible". Je comprends à peu près mais c'est des mots pour les grands.
+J'ai pas trop aimé : il y a des vers roses qui se tortillent — beurk. Et aussi ça va un peu vite entre les moments.
 
-Ce que je retiens : "j'y suis, dit Nono." Le pied de Juju à côté du pied de Nono sur la racine.
+Ce que je retiens : Juju qui pose sa main à côté de celle de Nono dans l'herbe. Les deux mains côte à côte.
 
-Questions : "encore" dit Juju à la fin — elle veut que la libellule revienne ?
+Questions : "Elle nous nargue" dit Juju à la libellule — c'est quoi narguer ? La libellule elle fait ça exprès ?
+
+---
+
+## Version kimi-k26-thinking
+
+J'ai aimé : la libellule "bleue comme un morceau de ciel" — c'est beau. Et Wex qui pose un caillou plat sur la berge sans rien dire. Et quand Juju retient son souffle parce qu'elle sait que ça marche.
+
+J'ai pas trop aimé : c'est une histoire très calme mais il se passe pas beaucoup de choses pour moi. Les enfants arrivent, ils s'assoient, ils regardent. J'aurais voulu qu'il se passe quelque chose d'un peu plus inattendu.
+
+Ce que je retiens : "bleue comme un morceau de ciel". Et Wex qui pose un caillou plat, sans raison.
+
+Questions : pourquoi Wex il pose un caillou plat ? C'est pour la libellule ou pour rien ?
+
+---
+
+## Version kimi-reco-guide
+
+J'ai aimé : "Bloublou. Bloublou. Non, ça marche pas." — j'ai ri fort ! Et "tête de roseau" que Juju invente. Et "printanière c'est pas un mot — si c'est un mot que je viens d'inventer." Et surtout Nono qui dit juste "Chut" à la fin. Un seul mot et c'est le plus beau.
+
+J'ai pas trop aimé : c'est assez long. Vers le milieu avec toutes les blagues de Juju j'ai un peu oublié la libellule.
+
+Ce que je retiens : "Chut" de Nono quand Juju chuchote que la libellule l'aime bien. Et les chaussures de Nono posées en boule près de son sac.
+
+Questions : pourquoi Nono dit "Chut" alors que Juju elle chuchotait déjà ? Elle faisait pas de bruit elle.
+
+---
+
+## Version deepseek-def
+
+J'ai aimé : Nono qui "s'était déjà assis dans l'herbe" avant même que la libellule arrive — comme si lui il savait déjà ce qu'il faut faire. Et quand il dit "on peut tous la regarder ensemble, non ?" à la place de "attraper".
+
+J'ai pas trop aimé : c'est une histoire très gentille mais un peu trop sage. Juju elle fait pas assez de bêtises. Et la libellule elle arrive et elle repart et il se passe pas quelque chose de vraiment spécial pour moi.
+
+Ce que je retiens : Nono assis dans l'herbe avec ses paumes sur le sol, souriant, avant même que ça commence.
+
+Questions : pourquoi Juju elle dit "Je veux la toucher" au début et après elle est déçue mais elle reste quand même ? Elle a oublié qu'elle voulait la toucher ?
+
+---
+
+## Version deepseek-reco
+
+J'ai aimé : "un calme bizarre, doux comme quand on écoute un secret" — ça c'est une belle façon de dire quelque chose que moi je connais. Et la libellule qui penche la tête — j'ai adoré imaginer ça, une libellule qui penche la tête.
+
+J'ai pas trop aimé : la libellule qui penche la tête c'est trop comme si elle pense. Les libellules elles penchent pas la tête vraiment. Et "Vzzz" à la fin ça m'a fait sortir de l'histoire d'un coup.
+
+Ce que je retiens : "doux comme quand on écoute un secret". Et la main boueuse de Juju posée à plat dans l'herbe à côté de Nono.
+
+Questions : est-ce que les libellules elles penchent vraiment la tête ? Ou c'est dans l'histoire seulement ?
 
 ---
 
 ## Version grok-def
 
-J'ai aimé : c'est simple et je comprends tout. La libellule qui peut avoir soif — j'avais pas pensé à ça. "Je la sens dans mes pieds" dit Nono — direct et clair. La fin avec les trois enfants qui regardent l'eau et le ciel bleu dedans.
+J'ai aimé : c'est simple et facile à suivre. Juju elle avance dans l'eau avec ses pieds nus et elle touche une racine, une autre. Et à la fin les trois enfants assis côte à côte qui regardent. C'est doux.
 
-J'ai pas trop aimé : c'est un peu court et un peu vite. L'histoire finit avant que je sois bien dedans. Pas beaucoup de couleurs et d'images que j'ai envie de dessiner.
+J'ai pas trop aimé : c'est un peu court et je n'ai pas eu le temps d'être vraiment dans l'histoire. On n'a pas beaucoup de détails pour imaginer. La libellule elle fait battre ses ailes lentement vers la fin — comme si elle écoutait — mais c'est trop vite dit.
 
-Ce que je retiens : la libellule posée sur la feuille devant Nono. "Je la sens dans mes pieds."
+Ce que je retiens : les trois enfants côte à côte au bord de l'étang. L'eau qui fait de tout petits clapotis.
 
-Questions : pourquoi les ailes font un bruit "comme du papier froissé" — les ailes c'est pas du papier ?
+Questions : Nono il dit "on peut tous y aller ensemble, non ?" mais ils y vont pas vraiment ensemble. Ils restent juste assis. C'est ça "y aller" ?
 
 ---
 
 ## Version grok-reco
 
-J'ai aimé : "l'eau qui chante" dit Nono — jolie idée. "La terre semble répondre par une petite chaleur sous sa paume" — je voyais bien Nono sentir ça. C'est calme et doux cette version.
+J'ai aimé : quand Nono s'assoit doucement et pose sa main ouverte et ferme les yeux — je voyais très bien cette image. Et Juju qui pose ses propres mains dans la boue sans remuer, comme Nono. Et Wex qui dit simplement "Elle reste." — c'est beau trois mots comme ça.
 
-J'ai pas trop aimé : c'est encore plus court que l'autre grok. Je reste un peu sur ma faim, comme quand une histoire finit trop vite.
+J'ai pas trop aimé : "ses ailes vrombissant" c'est un mot dur à dire. Et "Elle reste" c'est dit par Wex mais moi j'aurais voulu que ce soit Juju qui le dise parce que c'est elle qui a tout changé.
 
-Ce que je retiens : l'eau qui chante. Les trois enfants les yeux posés sur la libellule.
+Ce que je retiens : Nono les yeux fermés avec sa paume sur le sol. Et "Elle reste" dit par Wex.
 
-Questions : "l'eau qui chante" — elle chante comment ?
-
----
-
-## Classement des 15 versions (de ma préférée à celle que j'ai moins aimée)
-
-1. **kimi-haiku-reco** (claude-haiku-reco) — les nuages comme des poissons mous dans l'eau, je dessinerai ça
-2. **claude-sonnet-def** — zzzt zzzt et "c'est calme partout", facile à imaginer et facile à lire
-3. **kimi-reco-guide-v2** — bloublou, printanière, et l'odeur de la terre au dernier mot
-4. **kimi-k26-instant** — "j'y suis" de Nono et le pied de Juju à côté de son pied
-5. **deepseek-reco** — "elle est déjà en train de me toucher", c'est ma réplique favorite de tout le tas
-6. **claude-sonnet-reco** — tchok et le ventre qui se pose
-7. **kimi-reco-guide-v1** — picha-picha et la chansonnette oubliée
-8. **claude-opus-def** — le canal qui devient une rivière, très beau mais un peu long
-9. **kimi-k26-thinking** — les trois ombres qui se touchent, joli mais compliqué au début
-10. **claude-haiku-def** — les trois oui et le caillou plat, simple et doux
-11. **kimi-reco** — la libellule qui reste à la fin, j'aime la fin mais le milieu est moins fort
-12. **claude-opus-reco** — beau mais j'accroche moins
-13. **deepseek-def** — beau mais la dernière phrase c'est trop pour moi
-14. **grok-reco** — calme et doux mais trop court, je suis déçue quand ça s'arrête
-15. **grok-def** — je comprends tout mais je rêve pas beaucoup
+Questions : pourquoi la libellule elle reste quand Nono ferme les yeux ? C'est parce qu'il fait calme ?
 
 ---
 
-## Top 3
+## Classement final des 14 versions
 
-**claude-haiku-reco** : pour les nuages comme des poissons mous, je peux voir cette image et la dessiner.
-**claude-sonnet-def** : pour zzzt zzzt et "c'est calme partout" — c'est l'histoire que je redemanderais ce soir.
-**kimi-reco-guide-v2** : pour bloublou, pour l'odeur de la terre au dernier mot, et parce que Juju m'a fait rire.
+Du moment que j'ai le plus aimé à celui que j'ai moins aimé.
 
-## Flop
+**1. kimi-reco-guide-v2** — Parce que Juju qui invente "Bloublou" et "printanière" et "tête de roseau" c'est exactement comme quand je joue, et le "Chut" de Nono à la fin c'est mon moment préféré de toutes les histoires. Cette version elle me ressemble.
 
-**grok-def** : je comprends bien mais je rêve pas. Après la lecture j'ai plus d'images dans la tête, juste l'histoire normale.
+**2. claude-opus-def** — La libellule qui se pose sur le genou de Nono c'est une image que je veux revoir. Et les trois enfants en ligne avec leurs pieds différents c'est très doux.
+
+**3. kimi-reco-guide (v1 === kimi-reco-guide)** — Même famille que la v2, un peu moins de bêtises de Juju mais le "Chut" est là aussi.
+
+**4. claude-sonnet-reco** — Le caillou rond posé comme un trésor et "c'est froid dessous c'est chaud dessus" — ces détails je les ai mis dans ma main en écoutant.
+
+**5. grok-reco** — "Elle reste" dit par Wex. Simple et très vrai. Et Nono qui ferme les yeux avec sa paume sur le sol.
+
+**6. claude-opus-reco** — "Picha" c'est mon deuxième bruit préféré après "Bloublou". Et Juju qui ouvre la bouche pour parler et qui ne parle pas.
+
+**7. kimi-k26-instant** — Les deux mains côte à côte dans l'herbe c'est l'image finale la plus douce de toutes.
+
+**8. claude-sonnet-def** — "Ça fait comme dans les pieds" j'ai longtemps pensé à ça. Mais les mots d'adulte au milieu m'ont un peu perdue.
+
+**9. deepseek-reco** — "Doux comme quand on écoute un secret" c'est joli. Mais la libellule qui penche la tête c'est pas très vrai.
+
+**10. kimi-k26-thinking** — "Bleue comme un morceau de ciel" c'est beau. Mais il se passe pas assez de choses pour moi.
+
+**11. claude-haiku-reco** — J'aime que le bruit arrive avant la libellule. Mais beaucoup de descriptions d'adultes.
+
+**12. claude-haiku-def** — "Je l'écoute d'abord" de Nono c'est ma phrase préférée de cette version. Mais "l'étang tremblait avec eux" m'a un peu fait peur.
+
+**13. grok-def** — Trop court pour moi. Je n'ai pas eu le temps d'être à l'étang vraiment.
+
+**14. deepseek-def** — Trop sage, pas assez de vraie vie. Juju elle fait pas assez de bêtises. L'histoire elle glisse sans que je me souviens de quelque chose de précis.

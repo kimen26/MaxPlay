@@ -49,7 +49,7 @@ Voir [`equipe/PROCESS.md`](../equipe/PROCESS.md) — **10 étapes** (0, 1, 3-10 
 
 Tout fichier ou dossier dans `stories/<NNN>/` est préfixé par le numéro de l'étape qui le produit :
 - `1-pitch-plan.md` (étape 1)
-- `3-briefs/` (étape 3 — 4 fichiers : brief-univers, brief-personnages, brief-histoire, _writer-package)
+- `3-briefs/` (étape 3 — 2 fichiers : brief-personnages, brief-histoire — system prompt WexWorld dans `_writer-system.md` par arc)
 - `4-versions-writers/` (étape 4)
 - `5-lecteurs-temoins/` + `5-synthese-lecteurs.md` (étape 5)
 - `6-selection.md` (étape 6)

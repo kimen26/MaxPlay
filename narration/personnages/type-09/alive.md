@@ -15,13 +15,20 @@ Doctrine complète : [`../../univers/fondements/sensibilites.md`](../../univers/
 
 ## Astre
 
-**Lune** — Harmonie, intuition émotionnelle, flux naturel, douceur, connexion.
+**Vénus** — Harmonie, beauté, douceur, paix, lien naturel entre les êtres.
+
+---
+
+## Pierre
+
+**Quartz rutile** (principale) · **Amazonite** (secondaire)
+Paix, clarté, fusion. Or pâle doré (Quartz rutile) + bleu-vert (Amazonite) — couvre les deux couleurs.
 
 ---
 
 ## Couleur
 
-*(À définir après étude visuelle STORY-001+)*
+**Or pâle / Bleu ciel**
 
 ---
 

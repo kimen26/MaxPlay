@@ -19,9 +19,16 @@ Doctrine complète : [`../../univers/fondements/sensibilites.md`](../../univers/
 
 ---
 
+## Pierre
+
+**Citrine** (principale) · **Pyrite** (secondaire)
+Énergie solaire, réussite, confiance. Jaune/or — cohérence couleur garantie. Pyrite = "or des fous", clin d'œil malicieux au T3 performeur.
+
+---
+
 ## Couleur
 
-*(À définir après étude visuelle STORY-001+)*
+**Jaune / Or**
 
 ---
 

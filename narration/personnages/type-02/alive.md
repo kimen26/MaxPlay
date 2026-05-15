@@ -15,13 +15,20 @@ Doctrine complète : [`../../univers/fondements/sensibilites.md`](../../univers/
 
 ## Astre
 
-**Jupiter** — Générosité, bienveillance, expansion du cœur, abondance du soin.
+**Lune** — Cycles, douceur, nourriture émotionnelle, connexion intuitive.
+
+---
+
+## Pierre
+
+**Quartz rose** (principale) · **Rhodonite** (secondaire)
+Compassion, don de soi, soin. Rose — accord 3 sources.
 
 ---
 
 ## Couleur
 
-*(À définir après étude visuelle STORY-001+)*
+**Rose / Rouge doux**
 
 ---
 

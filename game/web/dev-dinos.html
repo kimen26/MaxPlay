@@ -640,8 +640,18 @@ function buildFiche(d) {
   const cat = DINO_CATEGORIES.find(c => c.id === d.cat);
   const scroll = document.getElementById('fiche-scroll');
 
-  // Extras par dino
-  const extras = DINO_EXTRAS[d.id] || [];
+  // Fusion images locales + Wikimedia
+  const localExtras = (DINO_EXTRAS[d.id] || []).map(e => ({
+    src: `img/dinos/${e.folder}/${e.file}`,
+    label: e.label || d.name,
+    type: e.folder
+  }));
+  const wikiExtras = (typeof DINO_WIKIMEDIA !== 'undefined' ? (DINO_WIKIMEDIA[d.id] || []) : []).map(e => ({
+    src: e.url,
+    label: e.label || d.name,
+    type: e.type || 'wikimedia'
+  }));
+  const extras = [...localExtras, ...wikiExtras];
 
   scroll.innerHTML = `
     <!-- Hero -->
@@ -783,7 +793,7 @@ function buildFiche(d) {
 
 function buildGalleryHTML(extras, name) {
   const thumbs = extras.map(e =>
-    `<img class="gallery-thumb" src="img/dinos/${e.folder}/${e.file}" alt="${e.label || name}" title="${e.label || ''}">`
+    `<img class="gallery-thumb" src="${e.src}" alt="${e.label || name}" title="${e.label || ''}" loading="lazy">`
   ).join('');
   const labels = extras.map(e => `<span>${e.label || '?'}</span>`).join(' · ');
   return `
@@ -895,5 +905,6 @@ const DINO_EXTRAS = {
 /* ── Init ── */
 buildMenu();
 </script>
+<script src="js/dinos-images-wikimedia.js"></script>
 </body>
 </html>

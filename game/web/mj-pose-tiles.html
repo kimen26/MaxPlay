@@ -13,10 +13,9 @@
          touch-action: manipulation; user-select: none; }
 
   /* ── En-tête compact ── */
-  .topbar { display: flex; align-items: center; justify-content: center;
-            padding: 4px 8px; flex-shrink: 0; position: relative; }
-  .topbar h1 { font-size: 1.1rem; text-shadow: 2px 2px 0 rgba(255,255,255,0.5); }
-  .helmet { font-size: 1.3rem; vertical-align: middle; }
+  .topbar { display: flex; align-items: center; gap: 8px;
+            padding: 4px 8px; flex-shrink: 0; }
+  .topbar h1 { font-size: 0.85rem; opacity: 0.7; }
 
   /* ── Layout principal ── */
   .layout { display: flex; flex: 1; min-height: 0; gap: 8px; padding: 0 8px 8px; }
@@ -40,12 +39,12 @@
           border: 4px solid #fff; box-shadow: 0 4px 0 rgba(0,0,0,0.2); }
   /* Portrait : grille tient dans ~45dvh */
   @media (orientation: portrait) {
-    .grid { grid-template-columns: repeat(8, 1fr);
+    .grid { grid-template-columns: repeat(10, 1fr);
             width: min(calc(45dvh - 8px), calc(100vw - 16px));
             aspect-ratio: 1; }
   }
   @media (orientation: landscape) {
-    .grid { grid-template-columns: repeat(8, 1fr);
+    .grid { grid-template-columns: repeat(10, 1fr);
             height: calc(100dvh - 56px);
             aspect-ratio: 1; }
   }
@@ -114,16 +113,16 @@
   @keyframes bounce { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
 
   /* Flèche retour (back-button.js la remplace) */
-  .back { position: absolute; left: 8px; top: 50%; transform: translateY(-50%);
-          color: #2a2a4a; text-decoration: none; font-size: 1.3rem; font-weight: 900;
-          background: rgba(255,255,255,0.7); border-radius: 8px; padding: 4px 8px; }
+  .back { color: #2a2a4a; text-decoration: none; font-size: 1.3rem; font-weight: 900;
+          background: rgba(255,255,255,0.7); border-radius: 8px; padding: 4px 8px;
+          flex-shrink: 0; }
 </style>
 </head>
 <body>
 
 <div class="topbar">
   <a class="back" href="index.html">←</a>
-  <h1><span class="helmet">🦺</span> Pose-tes-tiles <span class="helmet">🚧</span></h1>
+  <h1>🦺 Pose-tes-tiles</h1>
 </div>
 
 <div class="layout">
@@ -273,7 +272,7 @@ const SW_S = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_2.png';
 const SW_W = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_4.png';
 const SW_E = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_8.png';
 
-const COLS = 8, ROWS = 8;
+const COLS = 10, ROWS = 10;
 // grid stocke { file, file2?, size? } ou null
 let grid = Array.from({length: ROWS}, () => Array(COLS).fill(null));
 let selectedTile = null;

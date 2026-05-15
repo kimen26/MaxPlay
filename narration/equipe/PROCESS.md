@@ -80,9 +80,30 @@
 
 ---
 
-## Étape 2 — *(supprimée 2026-05-12)*
+## Étape 2 — Brainstorm (2 phases séquentielles)
 
-> L'ancienne étape 2 (Plan d'Histoire par l'Architecte) est fusionnée avec l'étape 1. L'Architecte (`narration-architecte`) est mis en standby. Sa matière statique (Kishōtenketsu + boussole 4-5 ans) vit désormais dans `narration-conseiller.md`. La numérotation suivante (3-10) est conservée pour cohérence visuelle des préfixes de fichiers.
+> **Créée 2026-05-15** (DEC-PROCESS-002) : comble le trou entre le pitch validé (étape 1) et les briefs writers (étape 3). Deux phases : Papa Yann + Conseiller en amont, puis l'équipe LLM pour générer la matière des briefs.
+
+### Phase A — Brainstorm boss (Papa Yann + Conseiller)
+
+| Champ | Valeur |
+|---|---|
+| **Owner** | Papa Yann + `narration-conseiller` |
+| **Inputs** | `1-pitch-plan.md` validé |
+| **Objectif** | Définir le cadre de l'histoire : lieu précis · objet central · trio exact (2 persos + Wex) · intention émotionnelle |
+| **Output** | Décisions boss notées dans `kanban.md` étape 2 — alimente directement la Phase B |
+| **Condition de passage** | Papa Yann valide les 4 paramètres (lieu / objet / trio / intention) |
+
+### Phase B — Brainstorm équipe
+
+| Champ | Valeur |
+|---|---|
+| **Owner** | Directeur (`narration`) orchestre : Kimi + DeepSeek + Grok + Conseiller Claude |
+| **Inputs** | Décisions boss (Phase A) + `1-pitch-plan.md` + `pmo/INVARIANTS.md` + fiches persos `type-NN/alive.md` |
+| **Objectif** | Générer la matière brute des 2 briefs : portrait vivant des persos dans cette story + trame Ki/Sho/Ten/Ketsu + contraintes |
+| **Mécanique** | MCP `ask_kimi` + `ask_deepseek` + `ask_grok` en parallèle (system = `_writer-system.md`, user = pitch + paramètres boss). Conseiller synthétise. |
+| **Output** | Matière brute → alimente `3-briefs/brief-personnages.md` + `3-briefs/brief-histoire.md` à l'étape 3 |
+| **Condition de passage** | Matière suffisante pour que le Directeur produise les 2 briefs autoporteurs |
 
 ---
 

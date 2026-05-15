@@ -83,7 +83,9 @@ Toujours lire [`personnages/INDEX.md`](personnages/INDEX.md) avant d'écrire un 
 0.  Auteur          → INBOX.md (idée brute)
 1.  Conseiller      → 1-pitch-plan.md                              ✅ valide auteur
                      (fusion pitch + plan léger 2026-05-12)
-3.  Directeur       → 3-briefs/{personnages, histoire}.md  (system prompt WexWorld → `_writer-system.md` par arc)
+2.  Brainstorm boss (Papa Yann + Conseiller) → lieu / objet / trio / intention ✅ valide auteur
+    Brainstorm équipe (Kimi + DeepSeek + Grok + Conseiller) → matière brute briefs
+3.  Directeur       → 3-briefs/{personnages, histoire}.md  (system prompt → `_writer-system.md` par arc)
 4.  10 Writers      → 4-versions-writers/ (2 Claude + 4 Kimi (dont 1 guidé) + 2 DeepSeek + 2 Grok)
 5.  20 Lecteurs     → 5-lecteurs-temoins/ + 5-synthese-lecteurs.md
 6.  Directeur       → 6-selection.md (base + greffes)              ✅ valide auteur

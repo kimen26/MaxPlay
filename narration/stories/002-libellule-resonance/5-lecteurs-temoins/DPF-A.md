@@ -4,7 +4,7 @@ type: dyade
 tranche: A (3-5 ans)
 dyade: papa-fille
 date: 2026-05-14
-story: 002-libellule-resonance
+story: 002-libellule-impossible
 ---
 
 # Témoignage dyade DPF-A — Papa lit à sa fille (4 ans)

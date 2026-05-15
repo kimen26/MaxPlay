@@ -1,14 +1,10 @@
 ---
 maintenu_par: Directeur (décisions contenu) + Archiviste (structure physique)
-mis_a_jour: 2026-05-12
+mis_a_jour: 2026-05-15
 ---
 
-> ⚠️ **Refonte 2026-05-12 — non encore propagée intégralement dans ce fichier** :
-> - Étape 2 (Plan) supprimée par fusion avec étape 1 (Pitch+Plan)
-> - Architecte deprecated → matière intégrée au Conseiller
-> - Préfixes étapes (`1-pitch-plan.md`, `3-briefs/`, etc.) appliqués aux dossiers stories
-> - Archiviste élevé au rang de maillon central proactif (équivalent PMO côté forme)
-> - Source de vérité courante : `PROCESS.md` (10 étapes) + `pmo/INVARIANTS.md`
+> Source de vérité courante : `PROCESS.md` (10 étapes) + `pmo/INVARIANTS.md`
+> Dernières refontes : 2026-05-12 (fusion étape 1+2, Architecte deprecated) · 2026-05-15 (étape 2 recréée Brainstorm boss+équipe, system/user split writers, brief-univers + _writer-package obsolètes)
 
 # Cartographie des domaines — Narration MaxPlay
 
@@ -105,7 +101,7 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 | Fichier | Contenu | Qui crée | Étape PROCESS |
 |---------|---------|----------|---------------|
 | `stories/<NNN-slug>/1-pitch-plan.md` | Pitch+Plan fusionnés (4 cases + Kishōtenketsu léger) | Conseiller | 1 |
-| `stories/<NNN-slug>/3-briefs/{brief-univers,brief-personnages,brief-histoire,_writer-package}.md` | Briefs writers stateless (3 séparés + 1 autoporteur pour MCP externes) | Directeur | 3 |
+| `stories/<NNN-slug>/3-briefs/{brief-personnages,brief-histoire}.md` | Briefs writers per-story (system prompt WexWorld → `_writer-system.md` par arc) | Directeur | 3 |
 | `stories/<NNN-slug>/4-versions-writers/*.md` | 14 versions (6 Claude Opus/Sonnet/Haiku × déf/reco + 4 Kimi déf/reco/thinking/guidé + 2 DeepSeek déf/reco + 2 Grok déf/reco) + notes d'intention | Writers | 4 |
 | `stories/<NNN-slug>/5-lecteurs-temoins/*.md` | 20 retours lecteurs (panel 20 obligatoire depuis STORY-002, décision 2026-05-13) texte libre | Lecteurs | 5 |
 | `stories/<NNN-slug>/6-selection.md` | Choix version base + éléments à récupérer + brief rewrite | Directeur | 6 |
@@ -133,7 +129,7 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 |---------|---------|----------|----------------|-------------------|
 | `equipe/ORGANIGRAMME.md` | Workflow complet 6 phases | Directeur | Directeur + Auteur | Auteur |
 | `equipe/cartographie-domaines.md` | Ce fichier | Directeur | Directeur + Archiviste | Auteur |
-| `equipe/brief-univers.md` | Brief injection stateless | Archiviste (toutes les 5 histoires) | Archiviste | Directeur |
+| ~~`equipe/brief-univers.md`~~ | **OBSOLÈTE 2026-05-15** — contenu migré dans `saisons/saison-1/arc-1-objet-decor/_writer-system.md` | — | — | — |
 | `equipe/templates/plan-histoire.template.md` | Template Plan d'Histoire | Architecte | Architecte | Directeur |
 | `equipe/templates/selection.template.md` | Template sélection Directeur (ex-decision) | Directeur | Directeur | Directeur |
 | `equipe/templates/{pitch,brief-*,kanban,synthese}.template.md` | Templates restants (étapes 1, 3, kanban, 9) | owners respectifs | owners | Directeur |
@@ -272,7 +268,7 @@ Nouvelle info narrative
 3. **Rien n'est effacé** — archive ou déplace, ne supprime pas
 4. **INBOX.md** = transit — vider au fil des sessions
 5. **lookup.yml** = source de vérité prénoms — Archiviste maintient, Directeur décide en cas de conflit
-6. **`brief-univers.md` stateless** = toujours la version de `equipe/brief-univers.md` du jour — Archiviste recopie en Phase 1, ne pas éditer en workshop
+6. **System prompt writers** = `saisons/saison-1/arc-1-objet-decor/_writer-system.md` (figé par arc) — `brief-univers.md` OBSOLÈTE depuis 2026-05-15
 7. **PMO loggé à chaque phase** — sans log PMO, la phase n'est pas traçable
 8. **Un dossier workshop = une histoire** — pas de mélange entre titres
 9. **Saison 1 = prisme enfant pur** — les parents existent hors-cadre, ne sont **jamais** dans la scène. Pas de dialogue parent ↔ enfant, pas d'intervention parentale dans la résolution. Le foyer peut affleurer (un seuil, une voix au loin), le parent n'entre pas. Le filtre se relâche éventuellement en S2+ (modèle Bluey « bon assez parent »). Décision tranchée 2026-04-29 — voir `../pmo/decisions.md`.

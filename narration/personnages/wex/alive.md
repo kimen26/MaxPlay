@@ -1,22 +1,34 @@
 # Wex — Vivant
 
-**Sensibilité :** Vibration (transversale) — perçoit toutes les fréquences simultanément
 **Voix canon :** Lumi Wex Rêveur (méthodo v19, 7 tics phonétiques, hors-système)
+
+---
+
+## Couleur
+
+*(À définir après études visuelles S1+)*
+
+---
+
+## Tags writer ElevenLabs
+
+**Par design — writers n'ajoutent PAS de tags.**
+Wex a 7 tics phonétiques encodés directement dans le voice_id. La voix crée le caractère, pas les tags.
+Détail complet dans [voix.md](voix.md) § *7 tics canon Wex*.
 
 ---
 
 ## Langage naturel (4-6 ans)
 
-> Tournures caractéristiques du rêveur-observateur. Wex parle peu, mais quand il le fait, c'est précis ou intuitif — jamais bavard.
-
-**Lumière** (perso épanoui, présence apaisante, intuition juste) :
+**Lumière** (Wex épanoui — curieux, joyeux, présent, bienveillant) :
 - "Je sais pas pourquoi, mais..."
-- "On peut tous..." (inclusif, cercle)
+- "On peut tous ?" (inclusif, naturel)
 - "C'est bon ?" (vérification douce)
+- "Hé, vous avez vu ça ?"
 - "Viens." (simple, certain)
 - "Attends..." (pause avant d'agir)
 
-**Ombre** (réflexe automatique — somnolence entre deux espaces, détachement) :
+**Ombre** (Wex distrait — glissement de perception, "somnolence" non nommée) :
 - "Hein ?" (absent, revient de loin)
 - "Mm..." (pensée ailleurs)
 - *[silence long qui ne pèse pas]*
@@ -24,7 +36,7 @@
 
 ---
 
-## Phrases types (Wex)
+## Phrases types (voix)
 
 - *(silence)* "Viens." *(simple, il a déjà senti)*
 - "Je sais pas pourquoi, mais... je pense qu'il faut attendre là." *(intuition, pas d'explication)*
@@ -32,11 +44,9 @@
 
 ---
 
-## Tags audio (signature vocale via voix ElevenLabs)
+## Onomatopées signature
 
-Wex a une **signature vocale naturelle** encodée dans le voice_id (7 tics phonétiques). Les writers n'ajoutent PAS de tags — c'est la voix qui crée le caractère.
-
-> Détail complet dans [`voix.md`](voix.md) § *Signature vocale — 7 tics canon*.
+*(À définir après études narratives S1+)*
 
 ---
 
@@ -46,6 +56,4 @@ Wex a une **signature vocale naturelle** encodée dans le voice_id (7 tics phon�
 
 ---
 
-## Lien
-
-→ [`voix.md`](voix.md) pour la signature vocale et les paramètres TTS
+*Méthodo Voice Design v19 (2026-05-11). Voir [voix.md](voix.md) pour signature vocale et paramètres TTS.*

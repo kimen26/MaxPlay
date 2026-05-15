@@ -5,7 +5,7 @@ tranche: A (3-5 ans)
 genre: garçon
 personnalite: extra
 date: 2026-05-14
-story: 002-libellule-resonance
+story: 002-libellule-impossible
 ---
 
 # Lecteur Temoin G-A3 — Garcon extra, 3-5 ans

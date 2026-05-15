@@ -4,6 +4,51 @@
 
 ---
 
+## 2026-05-15 — DEC-GABARIT-PERSO-001 : Gabarit personnages figé
+
+**Auteur (Archiviste — Papa Yann validation)** : gravage structurel 2026-05-15.
+
+**Contexte** : tous les dossiers `type-NN/` (9 types) + `wex/` suivent une structure identique (5 fichiers, sections précises). Cette structure doit être gravée dans les 4 sources d'autorité (INDEX persos, rules, decisions, INVARIANTS) pour que tout agent (writer, archiviste, PMO) puisse vérifier et appliquer sans ambiguïté.
+
+**Décision tranchée** :
+
+### Gabarit STANDARD (`type-01/` à `type-09/`)
+
+**5 fichiers obligatoires, dans l'ordre :**
+1. **README.md** — En-tête (prénom, diminutif, casting FR) + tableau 4 fichiers + Sensibilité + Astre + Type ennéa + note refactor
+2. **enneagramme.md** — Motivation (peur, désir, croyance) + comportements situations + niveaux santé + note auteur
+3. **personnage.md** — Portrait (essence, physique, énergie) + phrases typiques + gestes/attitudes + paires fortes + garde-fou + relations 8×8
+4. **alive.md** — Sensibilité + astre + couleur + tags writer + langage naturel + onomatopées + mémoire vivante
+5. **voix.md** — Voice_id + signature vocale 4 couches + paramètres TTS + prompt ElevenLabs + description publique
+
+**Gabarit VARIANTE Wex (hors-système, justifiée)**
+
+Mêmes 5 fichiers, variantes :
+- **README.md** : Statut (Héros universel), Token (wex), Sensibilité, Power (Vision causale) — pas d'ennéatype
+- **enneagramme.md** : ✗ ABSENT (Wex n'a pas d'ennéatype)
+- **personnage.md** : sections bonus (Cercle d'Harmonie, Vision causale, Arcs S1/S2/S3)
+- **alive.md** : note « 7 tics phonétiques gravés dans voice_id »
+- **voix.md** : tableau 7 tics (au lieu de 4 couches)
+
+### Règle application
+
+**Toute création perso nouveau ou refactor** :
+- Copier dossier template complet (standard ou Wex)
+- Remplir intégralement chaque section
+- Toute déviation/omission = DÉCISION FORMELLE explicite + trace README
+
+**Où trouver casting France (voice_id, prononciation IPA)** :
+→ `narration/cross-culture/castings-nationaux/fr/type-NN.md` et `fr/wex.md`
+
+**Impact fichiers** (déjà effectué 2026-05-15) :
+- ✅ `narration/personnages/INDEX.md` : section « Gabarit figé » (détail complet)
+- ✅ `.claude/rules/personnages.md` : section « Gabarit figé » (concis, pointeur vers INDEX)
+- ✅ `narration/pmo/INVARIANTS.md` : mise à jour casting section (notation gabarit)
+
+**Statut** : ✅ Figée 2026-05-15. À appliquer immédiatement.
+
+---
+
 ## 2026-05-15 — Étape 2 recréée : Brainstorm boss + Brainstorm équipe
 
 ### DEC-PROCESS-002 : Étape 2 = Brainstorm (2 phases)
@@ -90,7 +135,7 @@
 **Parité** : tous reçoivent le **même package**, variance = runtime (modèle, température, système prompt du writer).
 
 **Impact fichiers** :
-- ✅ `stories/002-libellule-resonance/3-briefs/_writer-package.md` vague 3 : refonte format Couche 2 + Couche 3 labellisé
+- ✅ `stories/002-libellule-impossible/3-briefs/_writer-package.md` vague 3 : refonte format Couche 2 + Couche 3 labellisé
 - 🔄 Gabarit `equipe/templates/_writer-package.template.md` : mise à jour architecture
 
 **Statut** : ✅ Figée 2026-05-15. À appliquer immédiatement vague 3.
@@ -115,8 +160,8 @@
 - **Vérification** : avant lancer vague 3, audit `brief-histoire.md` vague 2 vs contenu briefs lancés (tracer injection).
 
 **Impact fichiers** :
-- 🔄 `stories/002-libellule-resonance/3-briefs/brief-histoire.md` : audit couche 2 vs 3, correction vague 3
-- ✅ `stories/002-libellule-resonance/3-briefs/_writer-package.md` vague 3 : gestes/décor/actions → Couche 3 uniquement
+- 🔄 `stories/002-libellule-impossible/3-briefs/brief-histoire.md` : audit couche 2 vs 3, correction vague 3
+- ✅ `stories/002-libellule-impossible/3-briefs/_writer-package.md` vague 3 : gestes/décor/actions → Couche 3 uniquement
 
 **Statut** : ✅ Bug confirmé. À corriger immédiatement vague 3.
 
@@ -440,10 +485,10 @@ personnages/type-NN/
 
 **Impact fichiers** :
 - ✅ Créer `equipe/templates/0-brainstorm-couche.template.md`
-- ✅ Créer `stories/002-libellule-resonance/0-brainstorm-couche.md` vague 3
+- ✅ Créer `stories/002-libellule-impossible/0-brainstorm-couche.md` vague 3
 - 🔄 `equipe/PROCESS.md` L.0-160 : MAJ description 4 étapes A-B-C-D avant étape 3
 - 🔄 `pmo/INVARIANTS.md` L.8-12 : MAJ "Étapes PROCESS" (clarifier A/B/C/D pré-étape-3)
-- 🔄 `stories/002-libellule-resonance/kanban.md` : insertion étape B entre étape 1 et 3 vague 3
+- 🔄 `stories/002-libellule-impossible/kanban.md` : insertion étape B entre étape 1 et 3 vague 3
 
 **Statut** : ✅ Figée 2026-05-15. À appliquer STORY-002 vague 3 (test), puis STORY-003+.
 
@@ -516,10 +561,10 @@ personnages/type-NN/
 - Clôture attaque : 10-12 jours post-validation
 
 **Fichiers à préparer** :
-- ✅ `stories/002-libellule-resonance/0-brainstorm-couche.md` (créer)
-- ✅ `stories/002-libellule-resonance/3-briefs/brief-histoire.md` (refondre Couche 2)
-- ✅ `stories/002-libellule-resonance/3-briefs/_writer-package.md` (refondre Couches 2/3)
-- 🔄 `stories/002-libellule-resonance/kanban.md` : étape B inserée, vague 3 marquée
+- ✅ `stories/002-libellule-impossible/0-brainstorm-couche.md` (créer)
+- ✅ `stories/002-libellule-impossible/3-briefs/brief-histoire.md` (refondre Couche 2)
+- ✅ `stories/002-libellule-impossible/3-briefs/_writer-package.md` (refondre Couches 2/3)
+- 🔄 `stories/002-libellule-impossible/kanban.md` : étape B inserée, vague 3 marquée
 
 **Statut** : ✅ Figée 2026-05-15. Prête lancement dès validation Papa Yann sur LLMs Couche 0.
 
@@ -1092,12 +1137,12 @@ Détail complet : `narration/pmo/INVARIANTS.md` § **Casting writers étape 4 (1
 4. **Geste signature Nono** : **pieds nus sur la terre** (sent la vibration monter par le sol). Cohérent T9 Pacificateur + sensibilité Vibration collective — la résonance passe par les pieds. **Geste signature Juju** : à voir après le texte (laisser le writer proposer, on observera).
 
 **Impact fichiers :**
-- `stories/002-libellule-resonance/pitch.md` → pivot Polo → Juju, ajuster duo, intégrer geste pieds nus
-- `stories/002-libellule-resonance/plan-histoire.md` → ajuster 4 temps avec Juju + geste signature
-- `stories/002-libellule-resonance/briefs/brief-personnages.md` → casting Wex+Juju+Nono + sensibilités (Plantes Juju + Vibration collective Nono) + geste signature pieds nus Juju
-- `stories/002-libellule-resonance/briefs/brief-histoire.md` → ajuster Ten (libellule révèle la résonance de Nono)
-- `stories/002-libellule-resonance/briefs/_writer-package.md` → propagation
-- `stories/002-libellule-resonance/kanban.md` → étape 3 ❌→✅ (à re-valider après pivot), étape 1 (pitch) validée
+- `stories/002-libellule-impossible/pitch.md` → pivot Polo → Juju, ajuster duo, intégrer geste pieds nus
+- `stories/002-libellule-impossible/plan-histoire.md` → ajuster 4 temps avec Juju + geste signature
+- `stories/002-libellule-impossible/briefs/brief-personnages.md` → casting Wex+Juju+Nono + sensibilités (Plantes Juju + Vibration collective Nono) + geste signature pieds nus Juju
+- `stories/002-libellule-impossible/briefs/brief-histoire.md` → ajuster Ten (libellule révèle la résonance de Nono)
+- `stories/002-libellule-impossible/briefs/_writer-package.md` → propagation
+- `stories/002-libellule-impossible/kanban.md` → étape 3 ❌→✅ (à re-valider après pivot), étape 1 (pitch) validée
 
 **Statut :** ⏳ Le Directeur doit pivoter pitch/plan/briefs avant de relancer étape 4 (10 writers).
 

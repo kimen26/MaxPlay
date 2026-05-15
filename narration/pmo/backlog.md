@@ -1,4 +1,4 @@
-# Backlog PMO Narration
+﻿# Backlog PMO Narration
 
 > **Règle :** 3 tickets actifs maximum. Pas plus.
 > **Format :** `STATUT | ID | Titre | Priorité | Assigné | Prochaine action`
@@ -11,7 +11,7 @@
 
 | Statut | ID | Titre | Priorité | Assigné | Prochaine action |
 |--------|-----|-------|----------|---------|------------------|
-| 🟡 | STORY-002 | Libellule Résonance — Étape 6 Sélection | **Haute** | Auteur (Directeur) | Arbitrer top 1-3 (kimi-reco-guide v1/v2 + claude-haiku-reco) + décider greffes. Puis étape 7 rewrite. Déc. DEC-TENSION-RESONANCE appliquée. |
+| 🟡 | STORY-002 | La Libellule impossible — Étape 6 Sélection | **Haute** | Auteur (Directeur) | Arbitrer top 1-3 (kimi-reco-guide v1/v2 + claude-haiku-reco) + décider greffes. Puis étape 7 rewrite. Déc. DEC-TENSION-RESONANCE appliquée. |
 | 🟡 | ARCHI-006 | Formaliser procédure PMO dans `narration-pmo.md` (agent Haiku) | Normale | narration-pmo | Créer doc agent reflet des décisions 2026-05-08 : classification input (6 catégories), routing, checklist remise main. Cible : PMO auto-guidé sans attendre instructions. |
 
 ---
@@ -52,7 +52,7 @@
 | ⚪ | STORY-004-ARC2 | Cartable-à-trou — Dadou · Lulu · Mimi · Wex (ARC 2) | Pause arc 2 | — | pitch validé — **arc 2 Parole en pause depuis 2026-04-30** (`stories/004-cartable-a-trou/pitch.md`) |
 | ⚪ | STORY-005-ARC2 | Le Mardi — Wex · Pierrot · Melki · graine (ARC 2) | Pause arc 2 | — | pitch validé — **arc 2 Parole en pause** (`stories/005-le-mardi/pitch.md`) |
 | ⚪ | STORY-006-ARC2 | Sept à rien — Juju · Mimi · Wex · blocs (ARC 2) | Pause arc 2 | — | pitch validé — **arc 2 Parole en pause** (`stories/006-sept-a-rien/pitch.md`) |
-| ⚪ | **UNIVERS-004** | **Peupler `cross-culture/faune-flore/`** — fil des histoires S1 | Normale (continue) | Conseiller + Auteur | STORY-002 (libellule, résonance) = premier candidat. Chaque histoire avec animal/plante remarquable → créer fiche `<espece>.md` pour portage cross-culture. Démarrer maintenant que STORY-002 est à l'étape 6. |
+| ⚪ | **UNIVERS-004** | **Peupler `cross-culture/faune-flore/`** — fil des histoires S1 | Normale (continue) | Conseiller + Auteur | STORY-002 (libellule impossible) = premier candidat. Chaque histoire avec animal/plante remarquable → créer fiche `<espece>.md` pour portage cross-culture. Démarrer maintenant que STORY-002 est à l'étape 6. |
 | ⚪ | **UNIVERS-005** | **Peupler `cross-culture/saisons-climat/` + coutumes-jeux-aliments/** — fil des histoires S1 | Normale (continue) | Conseiller + Auteur | Quand une histoire convoque une saison ou un rituel culturel fort → créer les fiches. Alimenter au fil de S1. |
 | ⚪ | **ARCHI-013** | **Créer `equipe/exemples-canoniques.md`** — ébauche post-Phase D | Normale | Directeur + PMO | `equipe/INDEX.md` lignes 41-43 mentionne ce fichier "à créer post-Phase D". Risque oubli si Phase D s'éloigne. Créer ébauche + tracker timeline Phase D. |
 | ⚪ | UNIVERS-002 | Définir `univers/societe.md` (Vocation · Pouvoir Intérieur · Mission du jour) | Normale | Auteur · Conseiller | À définir ensemble — concept "contribution joyeuse" remonté du Grok aetheria, demande explicite auteur, absent de l'univers actuel |

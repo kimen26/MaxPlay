@@ -16,7 +16,7 @@
 
 | # | Titre | Statut PROCESS | Owner courant | Personnages | Prochaine action |
 |---|-------|----------------|---------------|-------------|------------------|
-| 002 | [Libellule Résonance](002-libellule-resonance/README.md) | Étape 6 Sélection (top 1-3 + greffes) en cours | Directeur (arbitrage) | Wex, Juju, Nono | Choisir top 1-3 parmi 14 versions (étape 5 lecteurs ✅). Décider greffes éventuelles. Puis rewrite étape 7. |
+| 002 | [La Libellule impossible](002-libellule-resonance/README.md) | Étape 6 Sélection (top 1-3 + greffes) en cours | Directeur (arbitrage) | Wex, Juju, Nono | Choisir top 1-3 parmi 14 versions (étape 5 lecteurs ✅). Décider greffes éventuelles. Puis rewrite étape 7. |
 
 ---
 

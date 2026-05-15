@@ -200,7 +200,22 @@ Conseiller produit → stories/<NNN-slug>/1-pitch-plan.md
 PMO log + Archiviste vérifie kanban à jour
 ```
 
-> ⚠️ Étape 2 (ancien Plan d'Histoire par l'Architecte) supprimée 2026-05-12 — fusionnée avec étape 1.
+> **Étape 2 recréée 2026-05-15** (DEC-PROCESS-002) — Brainstorm boss + Brainstorm équipe. Voir PROCESS.md § Étape 2.
+
+### PHASE 1b — BRAINSTORM (étape 2 PROCESS — créée 2026-05-15)
+
+```
+Phase A — Brainstorm boss
+Papa Yann + Conseiller définissent : lieu / objet / trio / intention
+    ↓
+✅ AUTEUR VALIDE (4 paramètres)
+    ↓
+Phase B — Brainstorm équipe
+Directeur orchestre Kimi + DeepSeek + Grok + Conseiller (MCP en parallèle)
+    system = _writer-system.md · user = pitch + paramètres boss
+    ↓
+Matière brute briefs → alimente étape 3
+```
 
 ### PHASE 2 — ÉCRITURE × 10 (parallèle) (étape 4 PROCESS)
 

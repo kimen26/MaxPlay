@@ -1,175 +1,177 @@
-Ôªø# Invariants Narration ‚Äî Source de V√©rit√© Unique
+# Invariants Narration ó Source de VÈritÈ Unique
 
-> **Tout chiffre cl√© ou r√®gle structurelle vit ICI.** Le reste du projet pointe vers ce fichier.
-> Si tu trouves un chiffre divergent ailleurs (ex: "8 versions" dans un kanban) ‚Üí ce fichier gagne, l'autre est obsol√®te.
+> **Tout chiffre clÈ ou rËgle structurelle vit ICI.** Le reste du projet pointe vers ce fichier.
+> Si tu trouves un chiffre divergent ailleurs (ex: "8 versions" dans un kanban) ? ce fichier gagne, l'autre est obsolËte.
 
 ---
 
-## Chiffres cl√©s PROCESS (refonte 2026-05-08)
+## Chiffres clÈs PROCESS (refonte 2026-05-08)
 
-| M√©trique | Valeur | Notes |
+| MÈtrique | Valeur | Notes |
 |----------|--------|-------|
-| √âtapes PROCESS | **10** (0, 1, 3-10 ‚Äî √©tape 2 supprim√©e 2026-05-12 par fusion avec √©tape 1) | Owner / Inputs / Outputs / Crit√®res PASS d√©finis par √©tape |
-| Pr√©fixage fichiers stories | **Oui depuis 2026-05-12** | `1-pitch-plan.md`, `3-briefs/`, `4-versions-writers/`, `5-lecteurs-temoins/`, `6-selection.md`, `7-rewrite/`, `8-gatekeeper-verdict.md`, `9-relecture-rewrite/`, `10-texte.md`. Fichiers transverses (kanban, README) sans pr√©fixe. |
-| Versions writers (√©tape 4) | **14** (refonte 2026-05-12 v2 ‚Äî calibration multi-mod√®les) | 6 Claude (2 Opus + 2 Sonnet + 2 Haiku, d√©f/**reco**) + 4 Kimi (d√©f/reco/thinking/guid√©) + 2 DeepSeek (d√©f/reco) + 2 Grok (d√©f/reco) ‚Äî d√©tail bloc *Casting writers √©tape 4* ci-dessous. "reco" = temp√©rature recommand√©e cr√©atif officielle (cf. [`../equipe/references/temperatures-llm.md`](../equipe/references/temperatures-llm.md)) |
-| Panel lecteurs (√©tape 5) | **20** OBLIGATOIRE (toutes stories d√®s STORY-002) |
-| Panel re-relecture (√©tape 9) | **20** OBLIGATOIRE (toutes stories d√®s STORY-002) |
-| Validations auteur obligatoires | **3** : √âtape 1 (Pitch), √âtape 6 (S√©lection), √âtape 10 (Canon) |
-| Plafond rewrite (√©tape 7) | **1 cycle max** par histoire |
-| SLA "EN ATTENTE AUTEUR" | **3 jours** ‚Üí au-del√† : kanban üî¥ BLOQU√â |
-| Max tickets actifs PMO | **3** simultan√©s |
-| Fichiers obsol√®tes √©tape 3 | **brief-univers.md** (contenu ‚Üí _writer-system.md), **_writer-package.md** (remplac√© brief-histoire.md format Couche 2+3) ‚Äî depuis 2026-05-15 DEC-WRITER-ARCH-001 |
+| …tapes PROCESS | **10** (0, 1, 3-10 ó Ètape 2 supprimÈe 2026-05-12 par fusion avec Ètape 1) | Owner / Inputs / Outputs / CritËres PASS dÈfinis par Ètape |
+| PrÈfixage fichiers stories | **Oui depuis 2026-05-12** | `1-pitch-plan.md`, `3-briefs/`, `4-versions-writers/`, `5-lecteurs-temoins/`, `6-selection.md`, `7-rewrite/`, `8-gatekeeper-verdict.md`, `9-relecture-rewrite/`, `10-texte.md`. Fichiers transverses (kanban, README) sans prÈfixe. |
+| Versions writers (Ètape 4) | **14** (refonte 2026-05-12 v2 ó calibration multi-modËles) | 6 Claude (2 Opus + 2 Sonnet + 2 Haiku, dÈf/**reco**) + 4 Kimi (dÈf/reco/thinking/guidÈ) + 2 DeepSeek (dÈf/reco) + 2 Grok (dÈf/reco) ó dÈtail bloc *Casting writers Ètape 4* ci-dessous. "reco" = tempÈrature recommandÈe crÈatif officielle (cf. [`../equipe/references/temperatures-llm.md`](../equipe/references/temperatures-llm.md)) |
+| Panel lecteurs (Ètape 5) | **20** OBLIGATOIRE (toutes stories dËs STORY-002) |
+| Panel re-relecture (Ètape 9) | **20** OBLIGATOIRE (toutes stories dËs STORY-002) |
+| Validations auteur obligatoires | **3** : …tape 1 (Pitch), …tape 6 (SÈlection), …tape 10 (Canon) |
+| Plafond rewrite (Ètape 7) | **1 cycle max** par histoire |
+| SLA "EN ATTENTE AUTEUR" | **3 jours** ? au-del‡ : kanban ?? BLOQU… |
+| Max tickets actifs PMO | **3** simultanÈs |
+| Fichiers obsolËtes Ètape 3 | **brief-univers.md** (contenu ? _writer-system.md), **_writer-package.md** (remplacÈ brief-histoire.md format Couche 2+3) ó depuis 2026-05-15 DEC-WRITER-ARCH-001 |
 
 ---
 
-## Casting writers √©tape 4 (14 versions ‚Äî refonte calibration 2026-05-12 + architecture 2026-05-15)
+## Casting writers Ètape 4 (14 versions ó refonte calibration 2026-05-12 + architecture 2026-05-15)
 
-> **Source de v√©rit√© unique pour "combien de writers / quels mod√®les / libre vs guid√© / temp√©rature"**. D√©tail m√©canique d'appel : `narration/equipe/PROCESS.md` L.108-140.
-> **Refonte 2026-05-12** : passage de 10 √† 14 writers pour calibration mod√®les+temp√©rature sur 3-5 histoires (r√©duction √† config finale apr√®s). Test : Opus/Sonnet/Haiku d√©faut vs cr√©atif + Kimi thinking vs non-thinking + DeepSeek/Grok √©tendus.
-> **Architecture system/user 2026-05-15** (DEC-WRITER-ARCH-001) : tous writers re√ßoivent **system = `equipe/_writer-system.md`** (Couche 1 universelle, fig√©e par arc) + **user = `stories/NNN/3-briefs/brief-histoire.md`** (Couche 2 histoire + Couche 3 guid√©). Cons√©quences : `brief-univers.md` OBSOL√àTE (contenu ‚Üí system.md), `_writer-package.md` OBSOL√àTE (remplac√© par split system/user).
+> **Source de vÈritÈ unique pour "combien de writers / quels modËles / libre vs guidÈ / tempÈrature"**. DÈtail mÈcanique d'appel : `narration/equipe/PROCESS.md` L.108-140.
+> **Refonte 2026-05-12** : passage de 10 ‡ 14 writers pour calibration modËles+tempÈrature sur 3-5 histoires (rÈduction ‡ config finale aprËs). Test : Opus/Sonnet/Haiku dÈfaut vs crÈatif + Kimi thinking vs non-thinking + DeepSeek/Grok Ètendus.
+> **Architecture system/user 2026-05-15** (DEC-WRITER-ARCH-001) : tous writers reÁoivent **system = `equipe/_writer-system.md`** (Couche 1 universelle, figÈe par arc) + **user = `stories/NNN/3-briefs/brief-histoire.md`** (Couche 2 histoire + Couche 3 guidÈ). ConsÈquences : `brief-univers.md` OBSOL»TE (contenu ? system.md), `_writer-package.md` OBSOL»TE (remplacÈ par split system/user).
 
-| Bloc | # | Identit√© | Mod√®le | Thinking/Reasoning | Temp√©rature | Top-p | Invocation | Brief |
+| Bloc | # | IdentitÈ | ModËle | Thinking/Reasoning | TempÈrature | Top-p | Invocation | Brief |
 |------|---|----------|--------|--------------------|-------------|-------|------------|-------|
-| **Claude** | 1 | claude-opus-def | `claude-opus-4-7` | low | **d√©faut Anthropic** (param non envoy√©, ‚âà1.0) | d√©faut | `narration-writer-claude-libre` | LIBRE |
-| | 2 | claude-opus-reco | `claude-opus-4-7` | low | **1.0** (plafond Anthropic = reco cr√©atif) | d√©faut | `narration-writer-claude-libre` | LIBRE |
-| | 3 | claude-sonnet-def | `claude-sonnet-4-6` | low | d√©faut Anthropic | d√©faut | `narration-writer-claude-libre` | LIBRE |
-| | 4 | claude-sonnet-reco | `claude-sonnet-4-6` | low | 1.0 | d√©faut | `narration-writer-claude-libre` | LIBRE |
-| | 5 | claude-haiku-def | `claude-haiku-4-5` | low | d√©faut Anthropic | d√©faut | `narration-writer-claude-libre` | LIBRE |
-| | 6 | claude-haiku-reco | `claude-haiku-4-5` | low | 1.0 | d√©faut | `narration-writer-claude-libre` | LIBRE |
-| **Kimi** | 7 | kimi-reco | `kimi-for-coding` (endpoint coding) | n/a | **0.6** (reco cr√©atif Moonshot Instant) | ‚Äî (param non expos√©) | `ask_kimi` (MCP gratuit) | LIBRE |
-| | 8 | kimi-k26-instant | `kimi-k2.6` | **disabled** (forcer Instant) | fixe K2.6 (ignor√© API) | 0.95 fixe K2.6 | **`ask_kimi_payant`** (`thinking: "disabled"`) | LIBRE |
-| | 9 | kimi-k26-thinking | `kimi-k2.6` | **enabled** (d√©faut K2.6) | fixe K2.6 (ignor√© API) | 0.95 fixe K2.6 | **`ask_kimi_payant`** (`thinking: "enabled"` ou omis) | LIBRE |
-| | 10 | kimi-reco-guide | `kimi-for-coding` (endpoint coding) | n/a | 0.6 (reco cr√©atif Instant) | ‚Äî (param non expos√©) | `narration-writer-kimi-guide` ‚Üí `ask_kimi` gratuit | **GUID√â** (axes 1-6 + le√ßons + trame histoire) |
-| **DeepSeek** | 11 | deepseek-def | `deepseek-v4-pro` | off | **d√©faut DeepSeek** (1.0 API = 0.3 mod√®le r√©el) | d√©faut | `ask_deepseek` (MCP) | LIBRE |
-| | 12 | deepseek-reco | `deepseek-v4-pro` | off | **1.5** (reco officielle DeepSeek creative writing) | d√©faut | `ask_deepseek` (MCP) | LIBRE |
-| **Grok** | 13 | grok-def | `grok-4.3` | low | **d√©faut xAI** (‚âà1.0, param non envoy√©) | d√©faut | `ask_grok` (MCP) | LIBRE |
-| | 14 | grok-reco | `grok-4.3` | low | **1.2** (haut reco cr√©atif ‚Äî au-del√† 1.5 = incoh√©rent) | d√©faut | `ask_grok` (MCP) | LIBRE |
+| **Claude** | 1 | claude-opus-def | `claude-opus-4-7` | low | **dÈfaut Anthropic** (param non envoyÈ, ò1.0) | dÈfaut | `narration-writer-claude-libre` | LIBRE |
+| | 2 | claude-opus-reco | `claude-opus-4-7` | low | **1.0** (plafond Anthropic = reco crÈatif) | dÈfaut | `narration-writer-claude-libre` | LIBRE |
+| | 3 | claude-sonnet-def | `claude-sonnet-4-6` | low | dÈfaut Anthropic | dÈfaut | `narration-writer-claude-libre` | LIBRE |
+| | 4 | claude-sonnet-reco | `claude-sonnet-4-6` | low | 1.0 | dÈfaut | `narration-writer-claude-libre` | LIBRE |
+| | 5 | claude-haiku-def | `claude-haiku-4-5` | low | dÈfaut Anthropic | dÈfaut | `narration-writer-claude-libre` | LIBRE |
+| | 6 | claude-haiku-reco | `claude-haiku-4-5` | low | 1.0 | dÈfaut | `narration-writer-claude-libre` | LIBRE |
+| **Kimi** | 7 | kimi-reco | `kimi-for-coding` (endpoint coding) | n/a | **0.6** (reco crÈatif Moonshot Instant) | ó (param non exposÈ) | `ask_kimi` (MCP gratuit) | LIBRE |
+| | 8 | kimi-k26-instant | `kimi-k2.6` | **disabled** (forcer Instant) | fixe K2.6 (ignorÈ API) | 0.95 fixe K2.6 | **`ask_kimi_payant`** (`thinking: "disabled"`) | LIBRE |
+| | 9 | kimi-k26-thinking | `kimi-k2.6` | **enabled** (dÈfaut K2.6) | fixe K2.6 (ignorÈ API) | 0.95 fixe K2.6 | **`ask_kimi_payant`** (`thinking: "enabled"` ou omis) | LIBRE |
+| | 10 | kimi-reco-guide | `kimi-for-coding` (endpoint coding) | n/a | 0.6 (reco crÈatif Instant) | ó (param non exposÈ) | `narration-writer-kimi-guide` ? `ask_kimi` gratuit | **GUID…** (axes 1-6 + leÁons + trame histoire) |
+| **DeepSeek** | 11 | deepseek-def | `deepseek-v4-pro` | off | **dÈfaut DeepSeek** (1.0 API = 0.3 modËle rÈel) | dÈfaut | `ask_deepseek` (MCP) | LIBRE |
+| | 12 | deepseek-reco | `deepseek-v4-pro` | off | **1.5** (reco officielle DeepSeek creative writing) | dÈfaut | `ask_deepseek` (MCP) | LIBRE |
+| **Grok** | 13 | grok-def | `grok-4.3` | low | **dÈfaut xAI** (ò1.0, param non envoyÈ) | dÈfaut | `ask_grok` (MCP) | LIBRE |
+| | 14 | grok-reco | `grok-4.3` | low | **1.2** (haut reco crÈatif ó au-del‡ 1.5 = incohÈrent) | dÈfaut | `ask_grok` (MCP) | LIBRE |
 
-> **R√®gles "temp√©rature"** :
-> - `def` = ne PAS envoyer le param. Laisse le fournisseur appliquer son d√©faut.
-> - `reco` = valeur officielle "creative writing" du fournisseur (cf. [`../equipe/references/temperatures-llm.md`](../equipe/references/temperatures-llm.md) ‚Äî doc autorit√©).
-> - R√©f√©rence Papa Yann 2026-05-12 : "max ‚Üí reco" parce que `2.0` Grok/Kimi = incoh√©rent narratif.
+> **RËgles "tempÈrature"** :
+> - `def` = ne PAS envoyer le param. Laisse le fournisseur appliquer son dÈfaut.
+> - `reco` = valeur officielle "creative writing" du fournisseur (cf. [`../equipe/references/temperatures-llm.md`](../equipe/references/temperatures-llm.md) ó doc autoritÈ).
+> - RÈfÈrence Papa Yann 2026-05-12 : "max ? reco" parce que `2.0` Grok/Kimi = incohÈrent narratif.
 >
-> ‚úÖ **Cohabitation stricte MCP Kimi (refonte 2026-05-12 ‚Äî r√©sout ARCHI-009)** :
-> - **`ask_kimi`** (gratuit, endpoint `kimi.com/coding/v1`, env `MOONSHOT_API_KEY`) ‚Üí writers #7 kimi-reco + #10 kimi-reco-guide + tout usage g√©n√©ral. Mod√®le `kimi-for-coding`. Temp 0.6 reco Moonshot Instant.
-> - **`ask_kimi_payant`** (officiel, endpoint `api.moonshot.ai/v1`, env `MOONSHOT_PAYANT_API_KEY`) ‚Üí STRICTEMENT writers #8 kimi-k26-instant (thinking disabled) + #9 kimi-k26-thinking (thinking enabled). Mod√®le `kimi-k2.6`. Temp et top_p fixes par K2.6 (params ignor√©s par l'API ‚Äî seul `thinking` est contr√¥lable, doc Moonshot).
-> - **Diff√©renciation K2.6** : sur K2.6, le SEUL levier est `thinking: {"type": "enabled"\|"disabled"}`. Temp et top_p sont fixes c√¥t√© mod√®le (doc officielle 2026-05-13 https://platform.kimi.ai/docs/api/models-overview#parameter-comparison).
-> - D√©tail : [`infra/mcp/MODELS.md`](../../infra/mcp/MODELS.md) ¬ß *Cohabitation stricte*.
+> ? **Cohabitation stricte MCP Kimi (refonte 2026-05-12 ó rÈsout ARCHI-009)** :
+> - **`ask_kimi`** (gratuit, endpoint `kimi.com/coding/v1`, env `MOONSHOT_API_KEY`) ? writers #7 kimi-reco + #10 kimi-reco-guide + tout usage gÈnÈral. ModËle `kimi-for-coding`. Temp 0.6 reco Moonshot Instant.
+> - **`ask_kimi_payant`** (officiel, endpoint `api.moonshot.ai/v1`, env `MOONSHOT_PAYANT_API_KEY`) ? STRICTEMENT writers #8 kimi-k26-instant (thinking disabled) + #9 kimi-k26-thinking (thinking enabled). ModËle `kimi-k2.6`. Temp et top_p fixes par K2.6 (params ignorÈs par l'API ó seul `thinking` est contrÙlable, doc Moonshot).
+> - **DiffÈrenciation K2.6** : sur K2.6, le SEUL levier est `thinking: {"type": "enabled"\|"disabled"}`. Temp et top_p sont fixes cÙtÈ modËle (doc officielle 2026-05-13 https://platform.kimi.ai/docs/api/models-overview#parameter-comparison).
+> - DÈtail : [`infra/mcp/MODELS.md`](../../infra/mcp/MODELS.md) ß *Cohabitation stricte*.
 
-**Total : 13 writers LIBRES + 1 writer GUID√â = 14 versions.**
+**Total : 13 writers LIBRES + 1 writer GUID… = 14 versions.**
 
-**√âvaluation** : apr√®s 3-5 histoires, arbitrage r√©duction √† config finale (~6-8 writers optimaux). Ticket `ARCHI-NNN` pour suivi (cf. backlog).
+**…valuation** : aprËs 3-5 histoires, arbitrage rÈduction ‡ config finale (~6-8 writers optimaux). Ticket `ARCHI-NNN` pour suivi (cf. backlog).
 
 ### Leviers de variance (imposables par Directeur dans `brief-histoire.md`)
 
 | Levier | Options |
 |--------|---------|
-| **Temp√©rature** | Param MCP par writer (Claude : 0.0‚Äì1.0 / Kimi/DeepSeek/Grok : 0.0‚Äì2.0). Si non sp√©cifi√©e ‚Üí d√©faut mod√®le. |
-| **Angle narratif** | Sobre ¬∑ Sensoriel ¬∑ Dynamique (dialogues) ¬∑ Instinct (libre) |
-| **POV / focal** | Wex t√©moin ¬∑ perso A ¬∑ perso B ¬∑ narrateur invisible |
-| **Ouverture** | In medias res ¬∑ ouverture lente ¬∑ dialogue d'amorce |
-| **Longueur cible** | 400 mots ¬∑ 550 mots ¬∑ 700 mots |
+| **TempÈrature** | Param MCP par writer (Claude : 0.0ñ1.0 / Kimi/DeepSeek/Grok : 0.0ñ2.0). Si non spÈcifiÈe ? dÈfaut modËle. |
+| **Angle narratif** | Sobre ∑ Sensoriel ∑ Dynamique (dialogues) ∑ Instinct (libre) |
+| **POV / focal** | Wex tÈmoin ∑ perso A ∑ perso B ∑ narrateur invisible |
+| **Ouverture** | In medias res ∑ ouverture lente ∑ dialogue d'amorce |
+| **Longueur cible** | 400 mots ∑ 550 mots ∑ 700 mots |
 
-‚ö†Ô∏è Le bloc `## Les 4 Writers ‚Äî angles assign√©s` de `equipe/ORGANIGRAMME.md` parle de **4 angles narratifs**, pas de 4 writers. C'est un levier de variance, pas une r√©partition writers.
+?? Le bloc `## Les 4 Writers ó angles assignÈs` de `equipe/ORGANIGRAMME.md` parle de **4 angles narratifs**, pas de 4 writers. C'est un levier de variance, pas une rÈpartition writers.
 
-### 6 axes du writer GUID√â (annexe AXES 1-6 ‚Äî `narration-writer-kimi-guide`)
+### 6 axes du writer GUID… (annexe AXES 1-6 ó `narration-writer-kimi-guide`)
 
-1. **Cr√©ature vivante** (objet/lieu/√©l√©ment a une √¢me)
+1. **CrÈature vivante** (objet/lieu/ÈlÈment a une ‚me)
 2. **Geste avant parole** (action physique avant dialogue)
-3. **Onomatop√©e l√©g√®re** (ploc, frou, tsing ‚Äî pas BOUM)
-4. **Fin rituel** (cl√¥ture par geste r√©p√©t√©, pas morale)
-5. **Myst√®re vs r√©solution** (laisser zone d'ombre)
-6. **Faute volontaire** (d√©tail "imparfait" qui rend humain)
+3. **OnomatopÈe lÈgËre** (ploc, frou, tsing ó pas BOUM)
+4. **Fin rituel** (clÙture par geste rÈpÈtÈ, pas morale)
+5. **MystËre vs rÈsolution** (laisser zone d'ombre)
+6. **Faute volontaire** (dÈtail "imparfait" qui rend humain)
 
-R√®gle : le writer guid√© active **2-3 axes librement, jamais 4+**. Source vivante : `equipe/lecons-vivantes.md`.
+RËgle : le writer guidÈ active **2-3 axes librement, jamais 4+**. Source vivante : `equipe/lecons-vivantes.md`.
 
 ---
 
-## Casting fig√© (V1 Christ FR)
+## Casting figÈ (V1 Christ FR)
 
-10 persos (9 + Wex), fig√© 2026-04-24, ajust√© 2026-05-05, **rename T3 2026-05-13**.
+10 persos (9 + Wex), figÈ 2026-04-24, ajustÈ 2026-05-05, **rename T3 2026-05-13**.
 
-| Type | Pr√©nom complet | Diminutif | Sexe |
+**Gabarit structure** : chaque perso (`type-NN/` ou `wex/`) suit le gabarit fig√© 5 fichiers (DEC-GABARIT-PERSO-001, 2026-05-15) : README ¬∑ enneagramme ¬∑ personnage ¬∑ alive ¬∑ voix. Source d√©tail : [`../personnages/INDEX.md`](../personnages/INDEX.md) ¬ß Gabarit fig√©.
+
+| Type | PrÈnom complet | Diminutif | Sexe |
 |------|----------------|-----------|------|
-| 0 hors-syst√®me | Wex | Wex | invariant cross-culture |
-| 1 Perfectionniste | Melchis√©dech | Melki | M |
+| 0 hors-systËme | Wex | Wex | invariant cross-culture |
+| 1 Perfectionniste | MelchisÈdech | Melki | M |
 | 2 Aidant | Marie | Mimi | F |
 | 3 Performeur | David | Dadou | M |
 | 4 Individualiste | Madeleine | Madie | F |
 | 5 Observateur | Luc | Lulu | M |
 | 6 Loyal | Pierre | Pierrot | M |
-| 7 Enthousiaste | Rapha√´lle | Raph | F |
+| 7 Enthousiaste | RaphaÎlle | Raph | F |
 | 8 Challenger | Judith | Juju | F |
-| 9 Pacificateur | No√© | Nono | M |
+| 9 Pacificateur | NoÈ | Nono | M |
 
 Bilan : **4F / 5M + Wex**. Source : [`../personnages/INDEX.md`](../personnages/INDEX.md).
-**Historique** : Polo (Paul) ‚Üí Dadou (David) 2026-05-13 (collision sonore Polo‚ÜîNono, voir `decisions.md` DEC-RENAME-POLO-DADOU).
+**Historique** : Polo (Paul) ? Dadou (David) 2026-05-13 (collision sonore Polo?Nono, voir `decisions.md` DEC-RENAME-POLO-DADOU).
 
 ---
 
-## Voice IDs ElevenLabs (√©tat 2026-05-13)
+## Voice IDs ElevenLabs (Ètat 2026-05-13)
 
-| Perso | Voice ID | M√©thodo | Naming biblioth√®que |
+| Perso | Voice ID | MÈthodo | Naming bibliothËque |
 |-------|----------|---------|---------------------|
-| Wex | `G54e8CyYslC2Y4ZupTlg` | v24 | Lumi Wex H√©ros |
+| Wex | `G54e8CyYslC2Y4ZupTlg` | v24 | Lumi Wex HÈros |
 | Dadou | `5wcx0KzRnrP48I5RCVD8` | v2 | Lumi Dadou Fier |
-| Melki | `sWfumkYiI1QERQ5INqRQ` | v1 | Lumi Melki Pr√©cis |
-| Pierrot | `ukIKjXqbiGGkqIz0SW5c` | pr√©-v24 | (conserv√©) |
-| Raph | `Te5RKnm9ebwdEvZ1S5pS` | pr√©-v24 (conserv√©) | Lumi Raph Vive |
-| Lulu | `1XwHANMW4m2pxt7buPmQ` | v1 (filtre cumulatif vaincu) | Lumi Lulu L√©ger |
-| Nono | `f3w48h8ngnWWnhO9XGb3` | pr√©-v24 (conserv√©) | Lumi Nono Paisible |
-| Juju | `WFNYCPhDQM9w07KAV6Be` | v1 (m√©thodo v24 fille) | Lumi Juju Solide |
-| Mimi | `aPQfyqve0ovOsJIl7EzX` | v1 (m√©thodo v24 fille) | Lumi Mimi Attentive |
-| Madie | `9JvOiMFLj8GdHK3Fcydn` | v1 (m√©thodo v24 fille) | Lumi Madie Vibrante |
+| Melki | `sWfumkYiI1QERQ5INqRQ` | v1 | Lumi Melki PrÈcis |
+| Pierrot | `ukIKjXqbiGGkqIz0SW5c` | prÈ-v24 | (conservÈ) |
+| Raph | `Te5RKnm9ebwdEvZ1S5pS` | prÈ-v24 (conservÈ) | Lumi Raph Vive |
+| Lulu | `1XwHANMW4m2pxt7buPmQ` | v1 (filtre cumulatif vaincu) | Lumi Lulu LÈger |
+| Nono | `f3w48h8ngnWWnhO9XGb3` | prÈ-v24 (conservÈ) | Lumi Nono Paisible |
+| Juju | `WFNYCPhDQM9w07KAV6Be` | v1 (mÈthodo v24 fille) | Lumi Juju Solide |
+| Mimi | `aPQfyqve0ovOsJIl7EzX` | v1 (mÈthodo v24 fille) | Lumi Mimi Attentive |
+| Madie | `9JvOiMFLj8GdHK3Fcydn` | v1 (mÈthodo v24 fille) | Lumi Madie Vibrante |
 
-D√©tail complet : [`../personnages/voix-meta/_VOICE-IDS-CASTING.md`](../personnages/voix-meta/_VOICE-IDS-CASTING.md).
-**Historique** : Polo ‚Üí Dadou (2026-05-13, voice_id conserv√© `5wcx0KzRnrP48I5RCVD8`, naming ElevenLabs "Lumi Polo Fier" ‚Üí "Lumi Dadou Fier" par utilisateur).
+DÈtail complet : [`../personnages/voix-meta/_VOICE-IDS-CASTING.md`](../personnages/voix-meta/_VOICE-IDS-CASTING.md).
+**Historique** : Polo ? Dadou (2026-05-13, voice_id conservÈ `5wcx0KzRnrP48I5RCVD8`, naming ElevenLabs "Lumi Polo Fier" ? "Lumi Dadou Fier" par utilisateur).
 
 ---
 
 ## Patte narrative
 
-**B+D+C** : Kish≈çtenketsu + tranche de vie + cycle.
+**B+D+C** : Kishotenketsu + tranche de vie + cycle.
 
 Source : [`../equipe/patte-narrative-maxplay.md`](../equipe/patte-narrative-maxplay.md).
 
 ---
 
-## R√®gles d'or structurelles
+## RËgles d'or structurelles
 
-1. **Casting V1 fig√©** ‚Äî ne pas inventer de pr√©noms hors casting
-2. **Surnoms 4/5 du temps** dans les histoires ‚Äî pr√©nom complet r√©serv√© au solennel
-3. **Enn√©atype DILU√â** ‚Äî jamais nomm√© explicitement dans le texte
-4. **Univers IMPLICITE** ‚Äî pas d'exposition, montrer en touches l√©g√®res
-5. **Parents hors-sc√®ne** ‚Äî jamais d'adulte sauveur, l'histoire se r√©sout entre enfants
-6. **Pas de morale** ‚Äî la promesse du titre se tient, le lecteur inf√®re
-7. **Onomatop√©es 0 ou 1** par histoire, choisie dans `cross-culture/onomatopees/catalogue-onomatopees.md`
-8. **Writer du top 1 garde la main au rewrite** (r√®gle 2026-05-08) ‚Äî pas de greffes externes
-9. **Conservation mati√®re fabrication** ‚Äî `versions-writers/`, `lecteurs-temoins/`, etc. NE SONT JAMAIS SUPPRIM√âS apr√®s canonisation
-10. **Z√©ro n√©gation dans Voice Design ElevenLabs** (AP#16)
+1. **Casting V1 figÈ** ó ne pas inventer de prÈnoms hors casting
+2. **Surnoms 4/5 du temps** dans les histoires ó prÈnom complet rÈservÈ au solennel
+3. **EnnÈatype DILU…** ó jamais nommÈ explicitement dans le texte
+4. **Univers IMPLICITE** ó pas d'exposition, montrer en touches lÈgËres
+5. **Parents hors-scËne** ó jamais d'adulte sauveur, l'histoire se rÈsout entre enfants
+6. **Pas de morale** ó la promesse du titre se tient, le lecteur infËre
+7. **OnomatopÈes 0 ou 1** par histoire, choisie dans `cross-culture/onomatopees/catalogue-onomatopees.md`
+8. **Writer du top 1 garde la main au rewrite** (rËgle 2026-05-08) ó pas de greffes externes
+9. **Conservation matiËre fabrication** ó `versions-writers/`, `lecteurs-temoins/`, etc. NE SONT JAMAIS SUPPRIM…S aprËs canonisation
+10. **ZÈro nÈgation dans Voice Design ElevenLabs** (AP#16)
 
 ---
 
-## Histoires (√©tat production)
+## Histoires (Ètat production)
 
 | # | Titre | Statut | Owner courant |
 |---|-------|--------|---------------|
-| 001 | Le Pont Cass√© | ‚úÖ canon (refonte 2026-05-08) | ‚Äî |
-| 002 | Libellule R√©sonance | üü¢ **√©tape 6 s√©lection en cours** (√©tapes 0-5 ‚úÖ, Q-ouvertes ‚úÖ DEC-TENSION-RESONANCE 2026-05-12, casting Wex+Juju+Nono, panel 20 lecteurs ‚úÖ, top writers identifi√©s) | Directeur (arbitrage s√©lection) |
-| 003+ | √Ä d√©marrer | ‚ö™ ‚Äî | ‚Äî |
+| 001 | Le Pont CassÈ | ? canon (refonte 2026-05-08) | ó |
+| 002 | La La Libellule impossible | ?? **Ètape 6 sÈlection en cours** (Ètapes 0-5 ?, Q-ouvertes ? DEC-TENSION-RESONANCE 2026-05-12, casting Wex+Juju+Nono, panel 20 lecteurs ?, top writers identifiÈs) | Directeur (arbitrage sÈlection) |
+| 003+ | ¿ dÈmarrer | ? ó | ó |
 
 ---
 
 ## Comment utiliser ce fichier
 
 **Quand consulter** :
-- Avant d'√©crire un chiffre cl√© dans un kanban / pitch / brief
-- Avant de valider une d√©cision qui touche au PROCESS
+- Avant d'Ècrire un chiffre clÈ dans un kanban / pitch / brief
+- Avant de valider une dÈcision qui touche au PROCESS
 - En cas de doute "c'est 6 ou 20 lecteurs ?"
 
-**Quand mettre √† jour** :
-- Toute d√©cision qui modifie un chiffre cl√© ‚Üí MAJ ici **avant** de propager ailleurs
-- Toute cr√©ation d'un voice_id ‚Üí ajouter ici **et** dans `_VOICE-IDS-CASTING.md`
-- Toute √©volution casting ‚Üí ici + `personnages/INDEX.md`
+**Quand mettre ‡ jour** :
+- Toute dÈcision qui modifie un chiffre clÈ ? MAJ ici **avant** de propager ailleurs
+- Toute crÈation d'un voice_id ? ajouter ici **et** dans `_VOICE-IDS-CASTING.md`
+- Toute Èvolution casting ? ici + `personnages/INDEX.md`
 
-**R√®gle** : ce fichier est court par design (~100 lignes). Si tu veux ajouter une section longue ‚Üí la mettre ailleurs et pointer ici.
+**RËgle** : ce fichier est court par design (~100 lignes). Si tu veux ajouter une section longue ? la mettre ailleurs et pointer ici.

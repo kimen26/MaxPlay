@@ -5,7 +5,7 @@ tranche: B (6-7 ans)
 genre: fille
 personnalite: extra
 date: 2026-05-14
-story: 002-libellule-resonance
+story: 002-libellule-impossible
 ---
 
 # Lecteur F-B3 — Fille extra, 6-7 ans

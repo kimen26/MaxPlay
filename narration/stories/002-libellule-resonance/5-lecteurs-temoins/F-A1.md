@@ -5,7 +5,7 @@ tranche: A (3-5 ans)
 genre: fille
 personnalite: normale
 date: 2026-05-14
-story: 002-libellule-resonance
+story: 002-libellule-impossible
 ---
 
 # Lecteur Temoin F-A1 — Fille normale, 3-5 ans

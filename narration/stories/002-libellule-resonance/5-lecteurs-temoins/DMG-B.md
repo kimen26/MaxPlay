@@ -4,7 +4,7 @@ type: dyade
 tranche: B (6-7 ans)
 dyade: maman-garcon
 date: 2026-05-14
-story: 002-libellule-resonance
+story: 002-libellule-impossible
 ---
 
 # Lecteur Témoin — Dyade Maman-Garcon (DMG-B)

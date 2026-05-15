@@ -1,7 +1,7 @@
 ---
 numero: "002"
 slug: libellule-resonance
-titre: La Libellule et la Résonance
+titre: La Libellule impossible
 statut: lecteurs            # pitch / briefs / writers / lecteurs / selection / rewrite / gatekeeper / re-relecture / canon / abandoned
 version_active: null
 date_creation: 2026-05-11

@@ -228,7 +228,13 @@
       "Bash(mv kimi-guide.md kimi-reco-guide.md)",
       "mcp__llm-copains__ask_kimi_payant",
       "Bash(node)",
-      "Bash(cd \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\\\\stories\\\\002-libellule-resonance\" && mv 5-lecteurs-temoins/*.md \"_archive/vague-1/5-lecteurs-temoins/\" && echo \"Done lecteurs\" && ls 5-lecteurs-temoins/)"
+      "Bash(cd \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\\\\stories\\\\002-libellule-resonance\" && mv 5-lecteurs-temoins/*.md \"_archive/vague-1/5-lecteurs-temoins/\" && echo \"Done lecteurs\" && ls 5-lecteurs-temoins/)",
+      "Bash(powershell -Command ' *)",
+      "Bash(Get-ChildItem -Path \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\\\\personnages\\\\type-08\" -Force)",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\\\\personnages\\\\type-08\" -Force | Select-Object Name, @{N=\"IsDir\";E={$_.PSIsContainer}})",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\\\\personnages\\\\wex\" -Force | Select-Object Name, @{N=\"IsDir\";E={$_.PSIsContainer}})",
+      "PowerShell(Get-ChildItem -Path \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\\\\personnages\\\\type-09\" -Force | Select-Object Name, @{N=\"IsDir\";E={$_.PSIsContainer}})",
+      "PowerShell($content = Get-Content 'c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\\\\pmo\\\\INVARIANTS.md' -Raw; $content.Substring\\(1040, 200\\))"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\temp",

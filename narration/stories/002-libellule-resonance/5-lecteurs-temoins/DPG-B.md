@@ -4,7 +4,7 @@ type: dyade
 tranche: B (6-7 ans)
 dyade: papa-garcon
 date: 2026-05-14
-story: 002-libellule-resonance
+story: 002-libellule-impossible
 ---
 
 # Dyade DPG-B — Papa lit à son garçon (6-7 ans)

@@ -5,7 +5,7 @@ tranche: B (6-7 ans)
 genre: fille
 personnalite: intro-observatrice
 date: 2026-05-14
-story: 002-libellule-resonance
+story: 002-libellule-impossible
 ---
 
 # Lecteur F-B2 — Fille intro/observatrice, 6-7 ans

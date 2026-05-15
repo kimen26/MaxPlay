@@ -4,7 +4,7 @@ type: dyade
 tranche: A (3-5 ans)
 dyade: papa-garcon
 date: 2026-05-14
-story: 002-libellule-resonance
+story: 002-libellule-impossible
 ---
 
 # Lecteur Temoin DPG-A — Dyade Papa-Garcon (3-5 ans)

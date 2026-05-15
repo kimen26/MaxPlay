@@ -5,7 +5,7 @@ tranche: A (3-5 ans)
 genre: fille
 personnalite: intro-observatrice
 date: 2026-05-14
-story: 002-libellule-resonance
+story: 002-libellule-impossible
 ---
 
 # Lectrice Témoin F-A2 — Fille intro/observatrice, 3-5 ans

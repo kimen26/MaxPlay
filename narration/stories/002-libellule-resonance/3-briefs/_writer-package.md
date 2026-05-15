@@ -1,94 +1,94 @@
-ï»¿# Writer package â€” STORY-002 libellule-rÃ©sonance
+# Writer package — STORY-002 La Libellule impossible
 
-> **Fichier autoporteur** inlinÃ© dans le prompt envoyÃ© aux writers MCP externes (Kimi/DeepSeek/Grok) qui sont stateless et n'ont pas accÃ¨s au filesystem.
-> Aucune rÃ©fÃ©rence `cf fichier X` ici â€” tout est intÃ©grÃ©.
-> Les writers Claude lisent les 3 briefs sÃ©parÃ©s via Read tool, pas ce fichier.
+> **Fichier autoporteur** inliné dans le prompt envoyé aux writers MCP externes (Kimi/DeepSeek/Grok) qui sont stateless et n'ont pas accès au filesystem.
+> Aucune référence `cf fichier X` ici — tout est intégré.
+> Les writers Claude lisent les 3 briefs séparés via Read tool, pas ce fichier.
 
 ---
 
 ## 1. SUJET
 
-**Une libellule** au bord d'un **Ã©tang amont** (extension de la carte du Pont CassÃ©). Trois enfants. La sensibilitÃ© de Nono Ã  la terre â€” rÃ©vÃ©lÃ©e par la libellule.
+**Une libellule** au bord d'un **étang amont** (extension de la carte du Pont Cassé). Trois enfants. La sensibilité de Nono à la terre — révélée par la libellule.
 
 - **Saison :** printemps tardif (mai), printemps actif
-- **Lieu :** Ã©tang amont â€” eau transparente, tÃªtards visibles, berge en terre humide, racines visibles, roseaux, herbes fines
-- **Arc :** arc 1 â€” printemps de l'Ã‰veil, rÃ©vÃ©lation incarnÃ©e
+- **Lieu :** étang amont — eau transparente, têtards visibles, berge en terre humide, racines visibles, roseaux, herbes fines
+- **Arc :** arc 1 — printemps de l'Éveil, révélation incarnée
 
 ---
 
 ## 2. TRIO (Wex + Juju + Nono)
 
 ### Juju (fille)
-Ã‰nergie pleine, vitalitÃ© incarnÃ©e. Elle TOUCHE pour comprendre â€” mains, pieds, peau. Dans cette histoire : veut entrer en contact avec ce qui est lÃ . La terre, l'eau, les racines.
+Énergie pleine, vitalité incarnée. Elle TOUCHE pour comprendre — mains, pieds, peau. Dans cette histoire : veut entrer en contact avec ce qui est là. La terre, l'eau, les racines.
 
-**Phrases types (patte Juju) :** "Je l'avais dit." Â· "C'est bon, je m'en occupe." Â· "T'inquiÃ¨te, je suis lÃ ."
+**Phrases types (patte Juju) :** "Je l'avais dit." · "C'est bon, je m'en occupe." · "T'inquiète, je suis là."
 
-### Nono (garÃ§on)
-PrÃ©sence apaisÃ©e, actif sensoriellement. Il Ã©coute, capte ce qui rÃ©sonne. Sa sensibilitÃ© passe par ce qui vibre sous ses pieds, dans l'air, dans le sol. Dans cette histoire : entend le bourdonnement de la libellule comme une vibration. Ne bouge pas pour attraper.
+### Nono (garçon)
+Présence apaisée, actif sensoriellement. Il écoute, capte ce qui résonne. Sa sensibilité passe par ce qui vibre sous ses pieds, dans l'air, dans le sol. Dans cette histoire : entend le bourdonnement de la libellule comme une vibration. Ne bouge pas pour attraper.
 
-**5 gestes archÃ©typiques de Nono** (utiliser librement) : s'asseoir/se poser Â· ouvrir la paume vers le sol Â· fredonner doucement "mmm" Â· petit geste d'accueil silencieux Â· sourire sans parler.
+**5 gestes archétypiques de Nono** (utiliser librement) : s'asseoir/se poser · ouvrir la paume vers le sol · fredonner doucement "mmm" · petit geste d'accueil silencieux · sourire sans parler.
 
-**Phrases types (patte Nono) :** "Mmm... on peut tous y aller ensemble, non ?" Â· "C'est bien comme Ã§a." Â· "Ouais..." *(prÃ©sence, acquiescement lent)*
+**Phrases types (patte Nono) :** "Mmm... on peut tous y aller ensemble, non ?" · "C'est bien comme ça." · "Ouais..." *(présence, acquiescement lent)*
 
 ### Wex (catalyseur)
-Hors-systÃ¨me. TÃ©moin lumineux. Trace ce qui se passe. PrÃ©sent mais non acteur central. Peut avoir 2-3 rÃ©pliques courtes.
+Hors-système. Témoin lumineux. Trace ce qui se passe. Présent mais non acteur central. Peut avoir 2-3 répliques courtes.
 
-**Surnoms 4/5 du temps** : Juju, Nono, Wex. PrÃ©noms complets (Judith, NoÃ©) uniquement en moment solennel.
-**Casting phonÃ©tique** : J/N/W trois consonnes distinctes, rythmes 2/2/1.
+**Surnoms 4/5 du temps** : Juju, Nono, Wex. Prénoms complets (Judith, Noé) uniquement en moment solennel.
+**Casting phonétique** : J/N/W trois consonnes distinctes, rythmes 2/2/1.
 
 ---
 
-## 3. STRUCTURE â€” KishÅtenketsu (plan lÃ©ger)
+## 3. STRUCTURE — Kishotenketsu (plan léger)
 
-> Invariants ci-dessous. Le dÃ©tail phrase par phrase est Ã  toi.
+> Invariants ci-dessous. Le détail phrase par phrase est à toi.
 
-- **Ki** : trois enfants au bord de l'Ã©tang (mai, eau claire). La libellule apparaÃ®t â€” rapide, brillante, bourdonne.
-- **Sho** : Juju s'active (contact avec la berge, la terre, l'eau â€” elle fait avec son corps). Nono est lÃ , prÃ©sent, immobile. Wex observe. Animation du dÃ©but, la libellule tournoie.
-- **Ten â€” bascule passant par Nono** : sa connexion Ã  la terre se rÃ©vÃ¨le dans un geste/moment. **Le geste prÃ©cis = libre au writer.** Pas une explication. **La "magie" = le calme + la connexion** (pas de vibration spectaculaire, pas d'onde visible, pas de phÃ©nomÃ¨ne extÃ©rieur). Juju (de prÃ©fÃ©rence) perÃ§oit que *Ã§a marche* sans pouvoir le dire â€” elle n'a pas de mots, c'est une intuition de corps.
-- **Ketsu** : les trois restent lÃ . La libellule continue. Image ou rituel sans parole. Pas de morale dite.
+- **Ki** : trois enfants au bord de l'étang (mai, eau claire). La libellule apparaît — rapide, brillante, bourdonne.
+- **Sho** : Juju s'active (contact avec la berge, la terre, l'eau — elle fait avec son corps). Nono est là, présent, immobile. Wex observe. Animation du début, la libellule tournoie.
+- **Ten — bascule passant par Nono** : sa connexion à la terre se révèle dans un geste/moment. **Le geste précis = libre au writer.** Pas une explication. **La "magie" = le calme + la connexion** (pas de vibration spectaculaire, pas d'onde visible, pas de phénomène extérieur). Juju (de préférence) perçoit que *ça marche* sans pouvoir le dire — elle n'a pas de mots, c'est une intuition de corps.
+- **Ketsu** : les trois restent là. La libellule continue. Image ou rituel sans parole. Pas de morale dite.
 
 ---
 
 ## 4. PROMESSE DU TITRE
 
-La libellule reste au centre du rÃ©cit, du dÃ©but Ã  la fin. Pas d'Ã©vasion. C'est par elle que la sensibilitÃ© de Nono se rÃ©vÃ¨le.
+La libellule reste au centre du récit, du début à la fin. Pas d'évasion. C'est par elle que la sensibilité de Nono se révèle.
 
 ---
 
-## 5. RÃˆGLES DURES (saison 1)
+## 5. RÈGLES DURES (saison 1)
 
-1. Univers implicite. Aucun concept d'univers nommÃ©.
-2. Aucun adulte en scÃ¨ne. Enfants seuls.
-3. Aucune morale dite. La dÃ©couverte se vit, jamais Ã©noncÃ©e.
+1. Univers implicite. Aucun concept d'univers nommé.
+2. Aucun adulte en scène. Enfants seuls.
+3. Aucune morale dite. La découverte se vit, jamais énoncée.
 4. Promesse du titre tenue.
-5. EnnÃ©atype diluÃ©. Jamais nommer "T8", "T9", "Challenger", "Pacificateur".
-6. SensibilitÃ© de Nono **discrÃ¨te**, jamais Ã©noncÃ©e. Connexion Ã  la terre = **calme + alignement**, pas pouvoir, pas vibration spectaculaire, pas onde visible. Juju ressent que *Ã§a marche* sans mots. La sensibilitÃ© de Juju (plantes/racines) n'est pas le sujet de STORY-002 â€” elle anime le Sho, c'est tout.
-7. Pas d'antagoniste. Friction douce ou complÃ©mentaritÃ©, pas conflit.
-8. ZÃ©ro jugement narratif. Juju est intense, incarnÃ©e â€” c'est sa nature. Nono est prÃ©sent, ancrÃ© â€” c'est la sienne. Pas d'Ã©tiquette nÃ©gative.
-9. **RÃ©sonance jamais nommÃ©e.** Le mot "rÃ©sonance" n'apparaÃ®t pas dans le texte. La connexion vit dans les gestes et les silences â€” jamais dans un concept.
+5. Ennéatype dilué. Jamais nommer "T8", "T9", "Challenger", "Pacificateur".
+6. Sensibilité de Nono **discrète**, jamais énoncée. Connexion à la terre = **calme + alignement**, pas pouvoir, pas vibration spectaculaire, pas onde visible. Juju ressent que *ça marche* sans mots. La sensibilité de Juju (plantes/racines) n'est pas le sujet de STORY-002 — elle anime le Sho, c'est tout.
+7. Pas d'antagoniste. Friction douce ou complémentarité, pas conflit.
+8. Zéro jugement narratif. Juju est intense, incarnée — c'est sa nature. Nono est présent, ancré — c'est la sienne. Pas d'étiquette négative.
+9. **Résonance jamais nommée.** Le mot "résonance" n'apparaît pas dans le texte. La connexion vit dans les gestes et les silences — jamais dans un concept.
 
 ---
 
 ## 6. CONTRAINTES TECHNIQUES
 
 - **Longueur :** 400-700 mots (texte seul)
-- **Dialogues :** â‰¥ 2 rÃ©pliques par perso, â‰¥ 1 Ã©change de 3+ rÃ©pliques
+- **Dialogues :** = 2 répliques par perso, = 1 échange de 3+ répliques
 - **Ten silencieux** ou < 10 mots
 - **Ketsu image ou rituel**, pas explication
 
 ---
 
-## 7. CHECKLIST AUTO-COHÃ‰RENCE (30 secondes avant remise)
+## 7. CHECKLIST AUTO-COHÉRENCE (30 secondes avant remise)
 
-- PrÃ©noms exacts du casting (Wex + Melki, Mimi, Dadou, Madie, Lulu, Pierrot, Raph, Juju, Nono). Casting V1 figÃ©.
+- Prénoms exacts du casting (Wex + Melki, Mimi, Dadou, Madie, Lulu, Pierrot, Raph, Juju, Nono). Casting V1 figé.
 - Aucun personnage hors casting
 - Surnoms 4/5 du temps
 - Pas de "T8"/"T9"/"Challenger"/"Pacificateur" dans le texte
 - Pas de "j'ai compris" / "j'ai appris" / "maintenant on sait"
-- Pas d'adulte en scÃ¨ne
+- Pas d'adulte en scène
 - Cible 400-700 mots
 
-Ne change PAS la voix ni la structure â€” corrige seulement les bugs.
+Ne change PAS la voix ni la structure — corrige seulement les bugs.
 
 ---
 
@@ -99,16 +99,16 @@ Un fichier `versions-writers/<ton-id>.md` (ex: `kimi-1.md`, `deepseek-2.md`).
 Frontmatter minimal :
 ```yaml
 ---
-llm: <nom modÃ¨le>
-role: libre (ou guidÃ©)
+llm: <nom modèle>
+role: libre (ou guidé)
 temperature: <valeur>
 date: 2026-05-12
 ---
 ```
 
-**Note d'intention** en fin de fichier (3-8 lignes, aprÃ¨s sÃ©parateur `---`) : pourquoi ce choix d'ouverture / sensorialitÃ© / rythme / fermeture ?
+**Note d'intention** en fin de fichier (3-8 lignes, après séparateur `---`) : pourquoi ce choix d'ouverture / sensorialité / rythme / fermeture ?
 
 ---
 
-**Date :** 2026-05-11 Â· **Pivot trio Dadou â†’ Juju + recentrage Ten Nono :** 2026-05-12
-**Statut :** writer-package autoporteur finalisÃ©.
+**Date :** 2026-05-11 · **Pivot trio Dadou ? Juju + recentrage Ten Nono :** 2026-05-12
+**Statut :** writer-package autoporteur finalisé.

@@ -4,6 +4,38 @@
 
 ---
 
+## 2026-05-15 — [ARCHIVISTE] Nettoyage DEC-TENSION-RESONANCE — annulation sur-formalisation
+
+**Mode** : Correction directive auteur
+
+**Contexte & Décision** :
+
+Directive Papa Yann 2026-05-15 : « Ne jamais nommer la résonance » **n'est pas une règle**. C'est du bon sens narratif. La décision DEC-TENSION-RESONANCE (2026-05-13) sur-formalisait un principe implicite qui ne mérite pas d'énonciation négative.
+
+**Action Archiviste complète** :
+
+| Fichier | Action | Détail |
+|---------|--------|--------|
+| `decisions.md` | Reécrit entrée DEC-TENSION-RESONANCE | Marquée ~~ANNULÉE 2026-05-15~~ + passage archéologie : sur-formalisation d'un bon sens narratif |
+| `decisions.md` | Q-ouvertes STORY-002 | Ligne Q-002-2 mise à jour : référence DEC-TENSION-RESONANCE barrée |
+| `sprint-log.md` | Ligne décisions enregistrées | Barrée avec note 2026-05-15 |
+| `lecons-vivantes.md` | P8 reformulée | Titre « Univers implicite — résonance se vit, ne s'énonce pas » (observation neutre, pas règle) |
+| `kanban 002` | Ligne 135 | Barrée : ~~Règle résonance jamais nommée~~ + annotation DEC-TENSION-RESONANCE ANNULÉE |
+| `6-selection.md` | Tableau critères patte | Ligne « Résonance jamais nommée » → « Univers implicite » (reformulation) |
+| `5-synthese-lecteurs.md` | Points vigilance GateKeeper | "Règle résonance jamais nommée" → "L'univers implicite est-il préservé ?" |
+
+**Observation empirique CONSERVÉE** :
+
+`lecons-vivantes.md` § OBS-RESONANCE-IMPLICITE reste figée — observation empirique valide : panel 20 lecteurs convergent que résonance se vit (geste, silence, détail), ne s'énonce pas. Mais ce n'est **pas une règle à graver** dans les briefs.
+
+**Archives historiques** : aucune modification dans `_archive/vague-1/`, `_archive/vague-2/`, dossiers OLD-* — traces historiques intactes.
+
+**Commit** : `3d28ffdd` "fix(narration): annuler DEC-TENSION-RESONANCE — ce n'était pas une règle"
+
+**Statut** : ✅ NETTOYAGE COMPLET — directives auteur appliquées.
+
+---
+
 ## 2026-05-13 — [VOIX] Juju figée : méthodo v24 fille validée empiriquement (1 essai)
 
 **Mode** : Leçon méthodo + validation stratégie nommage

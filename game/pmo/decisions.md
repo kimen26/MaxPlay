@@ -8,6 +8,23 @@
 
 ---
 
+## 2026-05-14 — Gabarit header mini-jeux unifié et compact (obligation tous les MJ)
+
+**Contexte** : Papa Yann signale que le bandeau titre + message mise à jour + bouton retour est **trop gros** dans tous les mini-jeux. Le fix mj-20 (commit e1bcd42a "header compact — supprime double-hauteur title+subtitle, aligne sur pattern .hdr standard") montre le pattern attendu.
+
+**Décision** :
+1. **Gabarit header `.hdr` canonique** = nouveau standard obligatoire pour tous les mini-jeux (existants + futurs).
+2. **Caractéristiques** : header compact (une seule ligne, petite taille) inspiré de mj-20.
+3. **Rétro-fit** : tous les MJ existants SAUF mj-20 (qui valide le pattern).
+4. **Encoding emojis** : fix systématique UTF-8 + charset meta tag sur tous les MJ.
+5. **Impact fichiers** : `web/mj-*.html` (21 fichiers cibles), potentiellement `web/index.html` menu.
+
+**Raison** : uniformité UX + espace pour contenu jeu (max 3-8 min sessions, zéro perte d'espace).
+
+**Statut** : ✅ acté 2026-05-14.
+
+---
+
 ## 2026-05-13 — Refonte archi CLAUDE.md à 3 niveaux (doc Anthropic 2025)
 
 **Contexte** : auteur aligne la structure CLAUDE.md sur doc Anthropic officielle (nested CLAUDE.md + path-scoped `.claude/rules/`) pour :

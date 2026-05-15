@@ -204,15 +204,15 @@ PMO log + Archiviste vérifie kanban à jour
 
 ### PHASE 2 — ÉCRITURE × 10 (parallèle) (étape 4 PROCESS)
 
-> Étape 3 = Briefs produits par le Directeur (3-briefs/ : univers, personnages, histoire, _writer-package).
+> Étape 3 = Briefs produits par le Directeur (3-briefs/ : personnages, histoire). System prompt WexWorld → `_writer-system.md` par arc (Couche 1 pérenne).
 
 ```
-Directeur injecte à 10 writers simultanément :
-  - Claude libre × 2  (agent narration-writer-claude-libre, lit 3-briefs/ via Read tool)
-  - Kimi libre × 3    (MCP ask_kimi, reçoit _writer-package.md inliné)
+Directeur injecte à tous les writers (system + user) :
+  - Claude libre × 2  (agent narration-writer-claude-libre — system intégré dans .md, reçoit briefs en message)
+  - Kimi libre × 3    (MCP ask_kimi — system= _writer-system.md, user= briefs personnages+histoire)
   - Kimi guidé × 1    (agent narration-writer-kimi-guide, annexe AXES 1-6)
-  - DeepSeek × 2      (MCP ask_deepseek, reçoit _writer-package.md inliné)
-  - Grok × 2          (MCP ask_grok, reçoit _writer-package.md inliné)
+  - DeepSeek × 2      (MCP ask_deepseek — system= _writer-system.md, user= briefs personnages+histoire)
+  - Grok × 2          (MCP ask_grok — system= _writer-system.md, user= briefs personnages+histoire)
 
 Chaque writer produit :
   → stories/<NNN-slug>/4-versions-writers/<llm>-<id>.md (texte complet 400-700 mots)

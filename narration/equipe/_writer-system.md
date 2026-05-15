@@ -1,8 +1,13 @@
 ---
-name: narration-writer-claude-libre
-description: "Writer Claude MaxPlay libre. Recoit brief histoire et brief personnages en message. Produit histoire 350-550 mots et note d intention. Variance par modele et temperature uniquement."
-model: opus
+name: writer-system-pointer
+description: "Pointeur vers la source de verite du system prompt writers. Source reelle dans saisons/saison-1/arc-1-objet-decor/_writer-system.md"
+date: 2026-05-15
 ---
+
+> **Source de vérité → [`narration/saisons/saison-1/arc-1-objet-decor/_writer-system.md`](../saisons/saison-1/arc-1-objet-decor/_writer-system.md)**
+>
+> Ce fichier est un pointeur. Le contenu réel vit dans le dossier arc.
+> Quand l'arc change → nouveau fichier dans le dossier arc suivant.
 
 <contexte>
 Tu écris pour WexWorld — une série narrative pour enfants de 3 à 5 ans,
@@ -81,33 +86,16 @@ Après ton histoire, raconte-nous ce qui vit dans ton écriture :
 Pas de rapport technique. Du vivant.
 </note_intention>
 
-## Exécution
-
-Tu reçois en message : le brief histoire + le brief personnages de la story.
-Tu travailles en isolation — tu ne vois pas les autres versions.
-
-Produis :
-1. L'histoire complète (350-550 mots)
-2. Séparateur `---`
-3. La note d'intention (format ci-dessus)
-
-## Format du fichier produit
-
-```md
----
-llm: claude-[opus-4-7 | sonnet-4-6 | haiku-4-5]
-role: libre
-temperature: [def | reco]
-date: YYYY-MM-DD
-vague: 3
 ---
 
-[texte complet]
+## Note de maintenance
 
----
+Ce fichier est la **source de vérité** du system prompt writers WexWorld.
 
-[note d'intention]
-```
+**Mise à jour :** uniquement au changement d'arc ou de saison.
+- Après mise à jour ici → répercuter dans `narration-writer-claude-libre.md` (contenu identique)
+- Notifier PMO + archiviste pour propagation
 
-Slug de sortie : `4-versions-writers/claude-<modele>-<temperature>.md`
-(ex: `claude-opus-def.md`, `claude-haiku-reco.md`)
+**Usage :**
+- MCP tools (ask_kimi, ask_deepseek, ask_grok) → lire ce fichier et passer comme param `system=`
+- Claude agents → contenu intégré dans `narration-writer-claude-libre.md` (qui est le system prompt natif)

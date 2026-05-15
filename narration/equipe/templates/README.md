@@ -13,7 +13,7 @@
 | [`pitch-plan.template.md`](pitch-plan.template.md) | 1 | Conseiller | `1-pitch-plan.md` (**template fusionné réel créé 2026-05-13** — c'est celui-ci qu'il faut utiliser maintenant) |
 | ⚠️ [`pitch.template.md`](pitch.template.md) | ~~1~~ legacy | ~~Conseiller~~ | Ancien template pitch seul (pré-fusion 2026-05-12). Conservé pour traçabilité. Utiliser `pitch-plan.template.md` à la place. |
 | ⚠️ [`plan-histoire.template.md`](plan-histoire.template.md) | ~~2~~ deprecated | ~~Architecte~~ | Étape 2 supprimée 2026-05-12 (fusion avec étape 1). Template conservé pour traçabilité. |
-| [`brief-univers.template.md`](brief-univers.template.md) | 3 | Directeur | `3-briefs/brief-univers.md` |
+| ⚠️ [`brief-univers.template.md`](brief-univers.template.md) | ~~3~~ obsolète | — | Contenu migré dans `_writer-system.md` par arc (2026-05-15 DEC-WRITER-ARCH-001). Ne plus utiliser. |
 | [`brief-personnages.template.md`](brief-personnages.template.md) | 3 | Directeur | `3-briefs/brief-personnages.md` |
 | [`brief-histoire.template.md`](brief-histoire.template.md) | 3 | Directeur | `3-briefs/brief-histoire.md` |
 | [`brief-writer-libre.template.md`](brief-writer-libre.template.md) | 4 | Directeur (orchestre) | Injecté dans le prompt des 9 writers libres (Claude×2, Kimi libre ×3, DeepSeek×2, Grok×2) |
@@ -22,11 +22,13 @@
 | [`kanban.template.md`](kanban.template.md) | toutes | owner d'étape | `kanban.md` (sans préfixe — fichier transverse) |
 | [`synthese.template.md`](synthese.template.md) | 10 | Directeur | `10-synthese-finale.md` |
 
-### Pas de template séparé pour `_writer-package.md` (étape 3)
+### Architecture writers étape 4 (refonte 2026-05-15 DEC-WRITER-ARCH-001)
 
-Le fichier `_writer-package.md` (concaténation autoporteuse des 3 briefs pour les writers MCP externes Kimi/DeepSeek/Grok) **n'a pas son propre template** — il se construit en concaténant `brief-univers.md` + `brief-personnages.md` + `brief-histoire.md` au moment où le Directeur livre l'étape 3.
+`brief-univers.md` et `_writer-package.md` sont **obsolètes**. L'étape 3 ne produit plus que 2 fichiers : `brief-personnages.md` + `brief-histoire.md`.
 
-Stub de structure disponible dans `stories/_gabarit/3-briefs/_writer-package.md` (créé 2026-05-13 pour éviter l'oubli lors de la duplication du gabarit).
+Tous les writers (Claude agents + MCP Kimi/DeepSeek/Grok) reçoivent :
+- **system** = contenu de `saisons/saison-X/arc-Y/_writer-system.md` (Couche 1 pérenne, figée par arc)
+- **user** = `brief-personnages.md` + `brief-histoire.md` concaténés (Couche 2 per-story)
 
 ---
 

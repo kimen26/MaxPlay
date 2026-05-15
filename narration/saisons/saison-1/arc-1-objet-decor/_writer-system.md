@@ -1,7 +1,10 @@
 ---
-name: narration-writer-claude-libre
-description: "Writer Claude MaxPlay libre. Recoit brief histoire et brief personnages en message. Produit histoire 350-550 mots et note d intention. Variance par modele et temperature uniquement."
-model: opus
+name: writer-system
+description: "Prompt system permanent pour tous les writers WexWorld — Claude agents + LLM MCP (Kimi, DeepSeek, Grok). Mis a jour uniquement au changement d arc ou de saison. Contenu identique dans narration-writer-claude-libre.md."
+arc: 1
+saison: 1
+version: 1
+date: 2026-05-15
 ---
 
 <contexte>
@@ -81,33 +84,18 @@ Après ton histoire, raconte-nous ce qui vit dans ton écriture :
 Pas de rapport technique. Du vivant.
 </note_intention>
 
-## Exécution
-
-Tu reçois en message : le brief histoire + le brief personnages de la story.
-Tu travailles en isolation — tu ne vois pas les autres versions.
-
-Produis :
-1. L'histoire complète (350-550 mots)
-2. Séparateur `---`
-3. La note d'intention (format ci-dessus)
-
-## Format du fichier produit
-
-```md
----
-llm: claude-[opus-4-7 | sonnet-4-6 | haiku-4-5]
-role: libre
-temperature: [def | reco]
-date: YYYY-MM-DD
-vague: 3
 ---
 
-[texte complet]
+## Note de maintenance
 
----
+**Source de vérité** du system prompt writers — Arc 1, Saison 1.
 
-[note d'intention]
-```
+**Mise à jour :** uniquement au changement d'arc ou de saison.
+- Répercuter dans `narration-writer-claude-libre.md` (contenu identique)
+- Notifier PMO + archiviste pour propagation
 
-Slug de sortie : `4-versions-writers/claude-<modele>-<temperature>.md`
-(ex: `claude-opus-def.md`, `claude-haiku-reco.md`)
+**Usage :**
+- MCP tools (ask_kimi, ask_deepseek, ask_grok) → lire ce fichier, passer comme param `system=`
+- Claude agents → contenu intégré dans `.claude/agents/narration-writer-claude-libre.md`
+
+**Passage à Arc 2 :** ce fichier reste ici (archive arc 1). Créer `saisons/saison-1/arc-2-parole/_writer-system.md`.

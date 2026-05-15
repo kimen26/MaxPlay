@@ -50,6 +50,18 @@ remplace: ancien `stories/ultime_debrief.md` (figé au 2026-05-05) — désormai
 **Anti-leçon** : grok-run1 (001) « gardant son secret printanier » → enfants attendent une suite qui ne vient pas.
 **Règle** : la fin est un **geste, un objet planté, un bruit, une image qui tourne**. L'enfant doit pouvoir *refaire* ce qu'il a entendu.
 
+### TODO-ONOMATOPEES — Onomatopées signature par perso (à travailler, pas encore validées)
+
+> **TODO post-STORY-002** : définir les onomatopées signature de chaque perso (comme les phrases types et les gestes). Idées de départ à affiner par persona :
+> - **Raph (T7)** : sons de joie expressive — "Toulo toulo !", "Youpi !", fragments de chansonnettes inventées mal finies
+> - **Juju (T8)** : "Bloublou !" figée STORY-002 (contact joyeux avec le monde) — valider si signature ou ponctuelle
+> - **Nono (T9)** : pas d'onomatopée — *le silence est sa signature* (figé `type-09/voix.md`)
+> - **Wex** : à définir — observateur, probablement aussi du silence ou exclamation courte neutre
+> - Autres persos (Melki, Mimi, Dadou, Madie, Lulu, Pierrot) : à construire
+>
+> **Méthode à suivre** : brainstorm Auteur/Conseiller par perso → test à voix haute → figé dans `type-NN/voix.md` § Onomatopées signature → puis injecté dans les briefs futurs.
+> **Ne pas inventer pour une story** ce qui n'a pas été validé en amont.
+
 ### P5 — Onomatopée : 0 ou 1, jamais en cascade
 
 **Origine** : kimi-run2 (001) « Clac. Clac. Clac. » en ouverture seule = métronome efficace.

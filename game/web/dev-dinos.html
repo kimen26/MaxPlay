@@ -631,14 +631,24 @@ function buildFiche(d) {
       <img class="fiche-hero-img" src="img/dinos/${d.png}" alt="${d.name}" onerror="this.style.opacity='0'">
     </div>
 
-    <!-- Nom -->
+    <!-- Nom + étymologie -->
     <div class="fiche-name-block">
       <div>
         <div class="fiche-name">${d.name}</div>
         <div class="fiche-full">${d.full}</div>
       </div>
-      <button class="speak-btn" onclick="speakText('${esc(d.name)}. ${esc(d.full)}')">🔊 Nom</button>
+      <button class="speak-btn" onclick="speakText('${esc(d.name)}. ${esc(d.full)}. ${esc(d.nom_etym||'')}')">🔊 Nom</button>
     </div>
+    ${d.nom_etym ? `
+    <div class="fiche-highlight" style="background:rgba(180,130,255,0.08);border-color:rgba(180,130,255,0.25);margin-top:0">
+      <div class="fiche-section-icon" style="font-size:1.5rem">📖</div>
+      <div style="flex:1">
+        <div class="fiche-section-title" style="color:rgba(180,130,255,0.6)">Son nom veut dire…</div>
+        <div class="fiche-highlight-text" style="color:#d4aaff;font-size:0.9rem">${d.nom_etym}</div>
+      </div>
+      <button class="speak-btn" style="border-color:rgba(180,130,255,0.3);color:#d4aaff;background:rgba(180,130,255,0.1)"
+        onclick="speakText('${esc(d.nom_etym)}')">🔊</button>
+    </div>` : ''}
 
     <!-- Époque & région -->
     <div class="fiche-section">
@@ -652,12 +662,17 @@ function buildFiche(d) {
       <button class="speak-btn" onclick="speakText('${esc(d.name)} vivait ${esc(d.epoque)}, en ${esc(d.region)}.')">🔊</button>
     </div>
 
-    <!-- Stats taille / poids -->
-    <div class="fiche-stats">
+    <!-- Stats longueur / hauteur / poids -->
+    <div class="fiche-stats" style="grid-template-columns:1fr 1fr 1fr">
       <div class="stat-box">
-        <div class="stat-label">📏 Taille</div>
+        <div class="stat-label">↔️ Longueur</div>
         <div class="stat-val">${d.taille_m} m</div>
         <div class="stat-comp">${d.comp_taille}</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">↕️ Hauteur</div>
+        <div class="stat-val">${d.hauteur_m || '?'} m</div>
+        <div class="stat-comp">${d.comp_hauteur || ''}</div>
       </div>
       <div class="stat-box">
         <div class="stat-label">⚖️ Poids</div>
@@ -666,7 +681,7 @@ function buildFiche(d) {
       </div>
     </div>
     <div style="text-align:right;padding:0 12px 6px">
-      <button class="speak-btn" onclick="speakText('${esc(d.name)} mesurait ${d.taille_m} mètres. ${esc(d.comp_taille)}. Il pesait ${d.poids_t >= 1 ? d.poids_t + ' tonnes' : Math.round(d.poids_t*1000) + ' kilos'}. ${esc(d.comp_poids)}.')">🔊 Taille</button>
+      <button class="speak-btn" onclick="speakText('${esc(d.name)} mesurait ${d.taille_m} mètres de long et ${d.hauteur_m||'?'} mètres de haut. ${esc(d.comp_taille)}. Il pesait ${d.poids_t >= 1 ? d.poids_t + ' tonnes' : Math.round(d.poids_t*1000) + ' kilos'}. ${esc(d.comp_poids)}.')">🔊 Taille</button>
     </div>
 
     <!-- Régime -->

@@ -226,7 +226,9 @@
       "Bash(mv kimi-reco.md kimi-k26-thinking.md)",
       "Bash(mv kimi-def.md kimi-reco.md)",
       "Bash(mv kimi-guide.md kimi-reco-guide.md)",
-      "mcp__llm-copains__ask_kimi_payant"
+      "mcp__llm-copains__ask_kimi_payant",
+      "Bash(node)",
+      "Bash(cd \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\\\\stories\\\\002-libellule-resonance\" && mv 5-lecteurs-temoins/*.md \"_archive/vague-1/5-lecteurs-temoins/\" && echo \"Done lecteurs\" && ls 5-lecteurs-temoins/)"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\temp",
@@ -238,7 +240,8 @@
       "C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude",
       "C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\narration\\enneagramme\\ressources",
       "C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\narration\\enneagramme\\personnages",
-      "c:\\tmp"
+      "c:\\tmp",
+      "C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\narration\\stories\\002-libellule-resonance\\5-lecteurs-temoins"
     ]
   },
   "enabledMcpjsonServers": [
@@ -286,7 +289,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cd \"c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\game\" && npx tsc --noEmit 2>&1 | head -20"
+            "command": "powershell -NoProfile -Command \"$input = $input -join ''; $data = $input | ConvertFrom-Json -ErrorAction SilentlyContinue; $path = if ($data.tool_input.path) { $data.tool_input.path } elseif ($data.tool_input.file_path) { $data.tool_input.file_path } else { '' }; if ($path -match '[\\\\/]game[\\\\/]') { Set-Location 'c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\game'; npx tsc --noEmit 2>&1 | Select-Object -First 20 } else { Write-Output 'TSC skip (non-game file)' }\""
           }
         ]
       },

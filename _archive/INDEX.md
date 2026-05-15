@@ -45,6 +45,12 @@ Ex-`temp/` (partie sons). 26 fichiers audio (.mp3, .flac) + 1 script `gen-idfm.j
 
 > **Note importante :** Le pack pixel art `Design to sort/` (347 Mo, Modern Exteriors 16x16) et `Dino/` qui étaient dans l'ancien `temp/` ont été **laissés hors du repo** (toujours dans `temp/` racine, ignoré par `.gitignore`) pour ne pas gonfler le repo. Ils restent accessibles localement à l'utilisateur. Si un jour ces packs deviennent utiles, les déplacer vers `game/phaser/public/assets/` au moment de l'usage.
 
+### `narration-architecte-deprecated-2026-05-12.md` — Agent DEPRECATED
+
+| Fichier | Raison archivage |
+|---------|-----------------|
+| `narration-architecte-deprecated-2026-05-12.md` | Rôle fusionné avec `narration-conseiller` (étape 1 Pitch+Plan). Matière statique (Kishōtenketsu + boussole 4-5 ans) intégrée à narration-conseiller.md. Archivé 2026-05-15 (audit archi Claude). |
+
 ## Règle d'or
 
 Ne **rien** y ajouter sans une note dans ce fichier expliquant **quand**, **pourquoi**, et **comment retrouver** la matière. Un cadavre non documenté = un cadavre perdu.

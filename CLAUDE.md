@@ -17,25 +17,7 @@
 
 ---
 
-## 🚨 Signaux qui déclenchent les agents auto
-
-**Règle MILITAIRE** : tout tour incluant un signal **invoque automatiquement** l'agent correspondant.
-
-### Pôle JEU
-| Signal détecté | Agent auto invoqué |
-|----------------|---------------------|
-| mini-jeu · MJ · mj-XX · bus-svg · victory-sounds · tile · recipe · LimeZu · cartography · patterns · rules.md · stack.md · Phaser · max-adventure · déploiement | [`game-pmo`](.claude/agents/game-pmo.md) (FOND) |
-| création/modif/suppression fichier · dossier · INDEX · gabarit · refs cassées · recipe · LESSONS | [`game-archiviste`](.claude/agents/game-archiviste.md) (FORME) |
-
-### Pôle NARRATION
-| Signal détecté | Agent auto invoqué |
-|----------------|---------------------|
-| personnage · histoire · voix · ElevenLabs · brief · kanban · décision · équipe · univers · saison · arc · ennéagramme · cross-culture · pitch · rewrite · GateKeeper · lecteur · casting · INBOX dump | [`narration-pmo`](.claude/agents/narration-pmo.md) (FOND) |
-| création/modif/suppression fichier · dossier · gabarit · refs · préfixes étapes | [`narration-archiviste`](.claude/agents/narration-archiviste.md) (FORME) |
-
-> Un hook `UserPromptSubmit` rappelle ces déclencheurs à chaque prompt — voir [`.claude/hooks/signal-detector.ps1`](.claude/hooks/signal-detector.ps1).
-
----
+<!-- Signaux → agents auto : enforced de façon déterministe par le hook UserPromptSubmit (signal-detector.ps1). Voir .claude/settings.json. -->
 
 ## Arborescence
 
@@ -104,4 +86,4 @@ Plan → TodoWrite → Dev (subagents) → Verify → Commit → Docs
 
 ---
 
-_Refonte 2026-05-13 : architecture CLAUDE.md à 3 niveaux (racine léger + pôles + rules path-scoped). Conforme [`docs.anthropic.com`](https://code.claude.com/docs/en/memory). Racine < 100 lignes, seul re-injecté après `/compact`._
+_Refonte 2026-05-13 : architecture CLAUDE.md à 3 niveaux (racine léger + pôles + rules path-scoped). Conforme [`docs.anthropic.com`](https://code.claude.com/docs/en/memory). Audit 2026-05-15 : tableau signaux déplacé en commentaire HTML (enforced par hook, pas advisory). Racine < 90 lignes, seul re-injecté après `/compact`._

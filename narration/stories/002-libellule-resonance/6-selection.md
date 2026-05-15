@@ -25,7 +25,7 @@ statut: EN ATTENTE AUTEUR
 | Kishōtenketsu sans antagoniste | ✅ — La libellule n'est ni obstacle ni récompense. Le Ten passe par les pieds de Nono dans la terre. Le Ketsu passe par le canard qui passe en grognant. |
 | Ennéatypes dilués | ✅ — Nono range ses chaussettes dans ses chaussures. Juju jette les siennes et oublie sa chanson. Wex pose une branche dans le courant. Aucun lecteur n'a tenté de "deviner le type". |
 | Pas de morale | ✅ — "C'est tout." après le canard. Fermeture qui évite explicitement la chute morale. |
-| Résonance jamais nommée | ✅ — La seule des 14 versions à tenir la règle DEC-TENSION-RESONANCE de bout en bout. La résonance vit dans la chanson interrompue, le silence, le canard. |
+| Univers implicite | ✅ — La résonance vit dans la chanson interrompue, le silence, le canard. Jamais énoncée, juste vécue — comme il se doit. |
 | Univers implicite | ✅ — Pas de "résonance", pas de "Conscience Créative", pas de "Totems". |
 | Voix d'enfants | ✅ — "C'est pas un papa, c'est juste un gros." / "Elle est juste vivante." / Chansonnette oubliée à mi-phrase. Rythme oral : 6 dyades sur 8 cochent "parfait". |
 

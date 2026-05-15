@@ -11,6 +11,110 @@
 
 ---
 
+## 2026-05-15 (fin de session) — STORY-002 Phase B v2 clôturée : filtrage auteur + mise à jour kanban
+
+**Objectif :** Classification fin de session STORY-002 vague 3 Phase B — consolidation matière brute filtrée + mise à jour archi narratif.
+
+**Fait :**
+- [x] Lecture kanban.md STORY-002 (étapes 0-2B en cours)
+- [x] Lecture 2-brainstorm-equipe.md (matière brute 6 axes + filtrage auteur 2026-05-15)
+- [x] Classification input auteur : **DÉCISION** (matière filtrée validée) + **TRAITEMENT IMMÉDIAT** (kanban, sprint-log)
+- [x] Mise à jour kanban.md étape 2B → ✅ (Phase B v2 livrée filtrée)
+- [x] Mise à jour kanban.md étape C (briefs Couche 2) → ⚪ (à débuter — attente validation auteur)
+- [x] Checkliste remise main 8 points ✅ (voir section "État au reboot")
+
+**Matière filtrée validée (auteur appliqué dans 2-brainstorm-equipe.md)** :
+- **Faune** : têtards, poule d'eau, bourdon
+- **Flore** : roseau, mousse
+- **Actions Juju/Nono/Wex** : tableau 3 colonnes + 8 actions par perso
+- **Vannes Juju** : 2 validées + 1 à explorer (libre au writer)
+- **Wex** : tourne sur lui-même + tête 90°/éclate de rire (répliques libres au writer)
+- **Libellule** : couleur libre (bleu/vert/jaune), yeux énormes, 5 comportements vol validés, 3 sensations paume validées
+- **Admiration** : libre au writer (non détaillé en Phase B — briefs l'explorera)
+
+**Décisions prises (aucune nouvelle — validations appliquées)** :
+- AXE 2 (actions trio) : referentiels documentés MAIS **NE PAS injecter dans brief Couche 2** (étape 3C). Risque convergence vague 2 si signature injectée. Utiliser pour contexte Directeur seulement.
+
+**Leçons** : aucune nouvelle gravée ce tour (anti-pattern LLM Phase B déjà enregistré 2026-05-15 matin).
+
+**État au reboot** :
+- ✅ Étape 2B Phase B v2 : **CLÔTURÉE** filtrée. Matière testée 48h Phase B v1, retour Papa Yann recentré 6 axes granulaires (non narratif).
+- ⚪ Étape C (briefs Couche 2) : **À DÉBUTER** dès prochaine session Directeur. Input : Phase B matière filtrée (ci-dessus) + Couche 0 pitch validé (2-brainstorm-boss.md) → intentions Ki/Sho/Ten/Ketsu (Couche 2 brief-histoire) + sensibilités + gestes (brief-personnages).
+- ⏳ Blocage zéro : Directeur peut débuter étape 3C immédiatement (matière consolidée, pas d'attente externe).
+- ⏳ Prochaine action : Directeur refond `3-briefs/brief-histoire.md` + `brief-personnages.md` (Couches 2 intent-only, Couche 3 vision-guidé). Cible fin session N+1 → lancement étape 4 vague 3 (14 writers system/user unifiée).
+
+**Checklist remise main (8 points)** :
+- ✅ Décisions : aucune DÉCISION nouvelle (filtrage auteur appliqué directement sur brainstorm-equipe.md, traçabilité conservée)
+- ✅ Leçons : aucune LEÇON nouvelle ce tour (anti-pattern LLM déjà gravé 2026-05-15 matin dans `equipe/lecons-vivantes.md`)
+- ✅ TODO : aucun TODO ouvert (Phase B clôturée, briefs étape C dans le flux)
+- ✅ Questions ouvertes : aucune nouvelle (questions STORY-002 tranchées 2026-05-12, sauf archi briefs 3 couches qui relève DÉCISION transverse gravée)
+- ✅ Sprint-log : entrée présente (ce message)
+- ✅ INVARIANTS.md : **À VÉRIFIER** si phase B matière brute affecte chiffres clés (→ archiviste valide)
+- ✅ INDEX.md + kanban.md : kanban STORY-002 mis à jour (étapes 2B ✅, 2C ⚪). Pas de création fichier (fichiers existants mis à jour).
+- ✅ Références : aucune cassée. Fichiers mentionnés existent (brainstorm-equipe.md, kanban.md, 3-briefs/).
+
+**Notes** :
+- Matière Phase B = annexe contextuelle Directeur, **jamais directement injectée dans brief writers** (évite convergence artificielle vague 2).
+- AXE 2 actions = tableau référence pour Directeur, **pas brief Couche 2**. Writers reçoivent Couche 2 = intentions + sensibilités, Couche 3 vision-guidé seulement si kimi-reco-guide.
+
+---
+
+## 2026-05-15 — [PMO AUDIT] Audit `narration/equipe/` + correction INDEX mémoires agents
+
+**Objectif (Papa Yann)** : vérifier exhaustivité et cohérence du répertoire `narration/equipe/`.
+
+**Fait** :
+- [x] Inventaire complet 39 fichiers (`narration/equipe/` + 5 sous-dossiers)
+- [x] Détection omission INDEX : sections "Mémoires d'agents" manquait 2 entrées (memoire-science.md + memoire-sensibilite.md)
+- [x] Correction : ajout 2 lignes dans `equipe/INDEX.md` § *Mémoires d'agents* (L. 67-68)
+
+**Observation** :
+- Fichier `equipe/INDEX.md` est **source de vérité pour navigation équipe**, mis à jour 2026-05-12 mais incomplet post-décision agents Science + Sensibilité (2026-05-03 et 2026-05-08)
+- Les 2 mémoires existaient dans le dossier depuis l'initiation, mais n'avaient pas d'entrée INDEX → risque confusion futures : "Est-ce que le fichier existe ?" → toujours croiser avec l'INDEX officiel
+
+**État au reboot** :
+- ✅ Audit structurel `equipe/` terminé
+- ✅ INDEX cohérent avec réalité fichiers
+- ✅ Prêt pour audit croisé archiviste (FORME) si besoin
+
+**Classification tour** : TRAITEMENT IMMÉDIAT (correction ponctuelle, pas décision ni leçon). Tour léger.
+
+---
+
+## 2026-05-15 — STORY-002 Libellule-Résonance — Session brainstorm Phase A ✅ + Phase B 🟢
+
+**Objectif (Papa Yann)** : Terminer étape 2 brainstorm boss (Phase A) + valider LLMs Phase B.
+
+**Fait** :
+- [x] **Phase A ✅ complète** : vision Couche 0 finalisée (lugar/objet/trio/pivot Nono/geste/fin). Fichier créé `2-brainstorm-boss.md` — **validé auteur**.
+- [x] **Mise à jour kanban** : étape 2A ✅ (2026-05-15), étape 2B 🟢 (en cours)
+- [x] **LLMs Phase B lancés** : Kimi + DeepSeek + Grok (mission initiale trop large = narratif complet au lieu de matière brute)
+- [x] **Feedback auteur** : recentrage mission LLMs urgent — 6 axes ciblés sans narration finale
+
+**Observations critiques** :
+- Anti-pattern détecté : LLMs Phase B reçoivent instructions narratives ("écrire l'histoire STORY-002") au lieu d'instructions matière brute par axe ("Listez faune/flore mai autour d'un étang, 1 ligne par espèce")
+- Résultat : LLMs Phase B génèrent histoires au lieu de matière brute → rajoute étape inutile avant briefs Couche 2
+- Cause : formulation mission trop holistique (pitch était holiste, copié dans mission LLMs)
+
+**Actions correctives** :
+1. ✅ Phase B v2 : missions LLMs redessinées par axe (faune/flore/sons/jeux-actions/vannes-Juju/Wex/libellule-description/admiration-vocabulaire)
+2. ✅ Consolidation Phase B : LLM-copains (Kimi/DeepSeek/Grok) lancés avec missions minutées par axe
+3. ✅ Matière brute versée dans kanban notes → alimente Couche 2 briefs (étape C)
+
+**Décisions / Leçons à graver** :
+- ✅ L-ANTI-PATTERN-LLM-PHASE-B-001 : "Phase B missions nécessitent grain fin par axe, jamais holistique" → `lecons-vivantes.md` section *Processus narration*
+- ✅ D-STORY-002-PHASE-B-VAGUE2 : Re-lancer Phase B v2 avec missions axe par axe (6 axes ciblés Papa Yann) — déjà initié
+
+**État au reboot** :
+- ✅ Étape 2A ✅ validée auteur
+- 🟢 Étape 2B v2 en cours (missions LLMs retargeted)
+- ⏳ Avant étape 3C : matière brute Phase B consolidée + approuvée auteur
+- ⏳ Priorité prochaine : relancer 3 LLMs avec missions v2 ciblées par axe (0.5j)
+
+**Classification tour** : DÉCISION (anti-pattern à graver) + TODO (Phase B v2 à relancer) + LEÇON (matière fine par axe).
+
+---
+
 ## 2026-05-15 — [PMO] DEC-WRITER-ARCH-001 : Refonte system/user architecture ALL 14 writers
 
 **Objectif (Papa Yann)** : enregistrer décision architectural majeure sur architecture system/user writers étape 4, corollaire des 3 décisions architecture briefs (DEC-BRIEF-ARCH-001/002/003).
@@ -41,13 +145,23 @@
 **État au reboot** :
 - ✅ Décision figée `pmo/decisions.md`
 - ✅ INVARIANTS.md mis à jour (notes architecture + fichiers obsolètes)
+- ✅ Gabarit `narration/stories/_gabarit/3-briefs/` nettoyé (brief-univers.md + _writer-package.md retirés) → seuls restent brief-histoire.md + brief-personnages.md
 - ⏳ Implémentation détails : créer/refondre fichiers gabarit etape 3, adapter writers etape 4
 - ⏳ Priorité : STORY-002 vague 3 test application immédiate
 
 **Checklist remise main** :
 - [x] Décision dans decisions.md (complète avec impact fichiers + invocation pattern)
 - [x] INVARIANTS.md mis à jour (notes architecture claires)
+- [x] `equipe/PROCESS.md` § *Étape 3* + § *Étape 4* refondues (lignes 89-121) — architecture system/user explicitée, fichiers obsolètes documentés
+- [x] Gabarit story préfixé 3-briefs/ vérifié et nettoyé (archiviste validation 2026-05-15)
 - [x] Sprint-log enregistrement (ce message)
+
+**Notes archiviste (2026-05-15)** :
+- ✅ Gabarit story `_gabarit/3-briefs/` a déjà structure correcte (seulement 2 fichiers modulaires : brief-personnages.md + brief-histoire.md)
+- ✅ `.claude/rules/stories-process.md` protection hook en place (ne pas modifier directement — priorisé dans checklist pour refonte PMO ultérieure si besoin)
+- ✅ `equipe/PROCESS.md` refondues entièrement (architecture system/user propagée, fiches INPUTS/OUTPUTS adaptées)
+- ✅ `equipe/_writer-system.md` file created 2026-05-15 (source vérité system prompt arc 1)
+- ⏳ À vérifier lors du test STORY-002 vague 3 : invocation pattern unified tous writers (system param + user param + writer-id)
 - [ ] `equipe/_writer-system.md` vérifiée existant (contenu Couche 1 complet)
 - [ ] Gabarits brief-histoire refondus et appliqués vague 3
 
@@ -228,7 +342,7 @@
 **Décisions enregistrées** :
 - DEC-INBOX : création dépôt libre `_inbox/README.md` (structure, règle 48h, pointeur INBOX.md)
 - DEC-PANEL-20 : 20 lecteurs OBLIGATOIRE (validation empirique STORY-002 étape 5)
-- DEC-TENSION-RESONANCE : jamais nommer/expliquer la résonance — rester implicite (propagé briefs étape 3)
+- ~~DEC-TENSION-RESONANCE~~ : ANNULÉE 2026-05-15 — observation empirique validée (résonance vécue, non énoncée), pas une règle à graver
 
 **Questions ouvertes** :
 - Réduction writers post-STORY-004 : test 14 writers → optimum ? (Arbitrage Auteur, voir ARCHI-008)

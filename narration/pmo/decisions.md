@@ -4,6 +4,22 @@
 
 ---
 
+## 2026-05-15 — Étape 2 recréée : Brainstorm boss + Brainstorm équipe
+
+### DEC-PROCESS-002 : Étape 2 = Brainstorm (2 phases)
+
+**Auteur (Papa Yann)** : décision 2026-05-15 — valide lors de la session de refonte process writers.
+
+**Contexte** : l'étape 2 avait été supprimée en 2026-05-12 (fusion avec étape 1). Cela créait un trou entre le pitch validé (étape 1) et les briefs writers (étape 3) : personne ne définissait formellement le lieu / objet / trio / intention avant que le Directeur rédige les briefs.
+
+**Décision tranchée** : étape 2 recréée avec 2 phases séquentielles :
+- **Phase A — Brainstorm boss** : Papa Yann + Conseiller → définit lieu / objet / trio / intention. Validation auteur obligatoire.
+- **Phase B — Brainstorm équipe** : Kimi + DeepSeek + Grok + Conseiller (MCP en parallèle) → génère matière brute des briefs personnages + histoire.
+
+**Propagation** : PROCESS.md § Étape 2 · `.claude/rules/stories-process.md` · `narration/CLAUDE.md` · `ORGANIGRAMME.md`.
+
+---
+
 ## 2026-05-15 — Réfonte architecture briefs étape 3 (STORY-002 vague 3+)
 
 ### DEC-BRIEF-ARCH-001 : Architecture briefs en 3 couches
@@ -666,31 +682,18 @@ Speaker Boost: true
 
 ---
 
-## 2026-05-13 — DEC-TENSION-RESONANCE : JAMAIS expliciter la résonance (validé empiriquement 20 lecteurs, STORY-002)
+## ~~2026-05-13~~ → ❌ 2026-05-15 — DEC-TENSION-RESONANCE : ANNULÉE — ce n'est pas une règle, c'est du bon sens narratif
 
-**Auteur (Papa Yann)** : observation synthèse lecteurs 2026-05-13 + PMO validation cascade décisions.
+**Auteur (Papa Yann)** : 2026-05-15. La décision 2026-05-13 sur-formalisait un principe narratif simple qui ne mérite pas une énonciation négative.
 
-**Contexte** : étape 5 STORY-002 livraison 20 lecteurs. Top net = kimi-reco-guide-v2 (16+/20). Toutes les versions mauvaises ou faibles ont une caractéristique commune : elles **nomment ou expliquent la résonance** (« la libellule les relie », « cette présence bienveillante qui résonne », « des âmes qui vibrent ensemble »). Les top scores l'oublient complètement — simplement la vivent par le geste, le silence, le détail.
+**Raison** : Ce n'est pas une règle stricte « JAMAIS nommer ». C'est du bon sens : la résonance se vit, ne s'énonce pas. On n'en parle simplement pas. Archives historiques (vague-1, _archive, lecons-vivantes.md) conservent la trace empirique (20 lecteurs convergent), mais **supprimer la négation des fichiers de règles actifs**.
 
-**Décision tranchée** :
+**Impact** :
+- ❌ Supprimer toute mention de « DEC-TENSION-RESONANCE » ou « Règle résonance jamais nommée » des briefs actifs et règles
+- ✅ Conserver observation OBS-RESONANCE-IMPLICITE dans `lecons-vivantes.md` (donnée empirique utile pour les écrivains)
+- ✅ Conserver archives 002 (vague-1, _archive) — rien à modifier là-bas
 
-### JAMAIS expliciter la résonance — rester implicite et sensorielle
-
-**Raison** : 
-- Empirisme enfants 4-5 ans : nommer l'émotion abstraite = rupture du charme enfant
-- Top kimi-reco-guide-v2 ne l'énonce **jamais** — elle est dans Wex qui les relie, le silence de la libellule, le fait qu'ils se retrouvent
-- Bottom (grok-def, deepseek-def) : tous contiennent formulation adulte « résonner / vibrer / âme qui touche »
-- Panel 20 convergent : enfants et dyades disent « on sent que c'est magique, mais pas expliqué »
-
-**Impact briefs** :
-- ✅ `brief-histoire.md` STORY-003+ : ajouter à section "Univers implicite" règle obligatoire
-- ✅ `lecons-vivantes.md` : graver OBS-RESONANCE-IMPLICITE (voir ci-dessous)
-- ⚠️ Tous writers étape 4 : relecture PMO négations gratuites vérifiera compliance (pas de formulation « les âmes résonnent »)
-
-**Statut** : ✅ Figée. À appliquer immédiatement sur STORY-003 brief auteur.
-
-**Leçon** (gravée ci-dessous) :
-> *« OBS-RESONANCE-IMPLICITE : la résonance est un conteur majeur (lien entre trois + complétude) mais son énonciation la tue. Jamais nommer. Elle vit dans le geste de Wex (qui relie), le silence de l'animal, la présence commune. Empirisme 20 lecteurs : 16+ top scores omettent complètement le mot. »*
+**Statut** : ✅ ANNULÉE. À propager Archiviste (nettoyer briefs, kanban, leçons).
 
 ---
 
@@ -1111,7 +1114,7 @@ Détail complet : `narration/pmo/INVARIANTS.md` § **Casting writers étape 4 (1
 | # | Date | Sujet | Contexte | Posée par | État |
 |---|------|-------|---------|-----------|------|
 | ~~Q-002-1~~ | ~~2026-05-11~~ | ~~STORY-002 — Duo agités + lieu + animal~~ | ~~Wex+Polo / mare / libellule / geste Nono~~ | — | ✅ **TRANCHÉ 2026-05-12 DEC-002-CASTING** : Wex+Juju+Nono / étang amont / libellule = sensibilité Nono / pieds nus Nono |
-| ~~Q-002-2~~ | ~~2026-05-12~~ | ~~STORY-002 — Nommer la résonance ou laisser implicite~~ | ~~Tension top scores omettent l'énonciation.~~ | — | ✅ **TRANCHÉ 2026-05-12 DEC-TENSION-RESONANCE** : JAMAIS expliciter. Rester sensoriel + implicite. Panel 20 validation empirique. |
+| ~~Q-002-2~~ | ~~2026-05-12~~ | ~~STORY-002 — Nommer la résonance ou laisser implicite~~ | ~~Tension top scores omettent l'énonciation.~~ | — | ✅ **TRANCHÉ 2026-05-12 (DEC-TENSION-RESONANCE ANNULÉE 2026-05-15)** : Panel 20 validation empirique. Résonance se vit, ne s'énonce pas = bon sens narratif, pas une règle. |
 | Q1 | 2026-05-13 | **Self-challenge — narration-architecte deprecated** | Agent en standby depuis 2026-05-12 (fusion Pitch+Plan). Faut-il le supprimer définitivement, l'archiver dans `_archive/`, ou le laisser en deprecated indéfiniment ? | narration-pmo (audit 2026-05-13) | Pas urgent, à trancher avant prochaine session narration |
 | Q2 | 2026-05-13 | **Self-challenge — scission `audit-trail.md`** | Fichier ~450 lignes. Scinder en `audit-trail-archive-2026-05.md` + `audit-trail.md` actif ? Ou laisser et signaler ? | narration-pmo (audit 2026-05-13) | Pas urgent, cosmétique |
 | Q3 | 2026-05-13 | **Self-challenge — scission `decisions.md`** | Fichier ~1265 lignes (le plus volumineux du pôle). Scission `decisions-archive-YYYY-MM.md` + `decisions-actives.md` ? Risque : casser refs croisées (lecons-vivantes, audit-trail) | narration-pmo (audit 2026-05-13) | Pas urgent mais à prévoir |

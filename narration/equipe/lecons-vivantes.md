@@ -79,11 +79,11 @@ remplace: ancien `stories/ultime_debrief.md` (figé au 2026-05-05) — désormai
 **Anti-leçon** : claude-rewrite-v1 (001) — tenter d'intégrer 4/5 d'un coup + basculer de temps verbal → régression syntaxique.
 **Règle** : rewrite top-1 ne saute que 2-3 idées max par session, pas 5 à la fois. Brief comité = palette, pas injonction. Argumenter chaque refus dans la note.
 
-### P8 — Résonance toujours IMPLICITE (validé 002 panel 20)
+### P8 — Univers implicite — la résonance se vit, ne s'énonce pas (validé 002 panel 20)
 
 **Origine** : STORY-002 étape 5 synthèse panel 20 lecteurs (2026-05-13). Top net = kimi-reco-guide-v2 (16+/20).
-**Anti-leçon** : toutes versions mauvaises/faibles énoncent la résonance (« la libellule les relie », « présence bienveillante qui résonne », « âmes qui vibrent »). Top scores l'oublient — simplement la vivent par geste, silence, détail.
-**Règle** : JAMAIS nommer l'émotion abstraite de lien. Elle vit dans : Wex qui les relie (geste), silence de l'animal, présence commune. Empirisme enfants 4-5 ans = nommer = rupture du charme. Brief étape 3 STORY-003+ ajoute obligation § Univers implicite.
+**Observation** : toutes versions faibles énoncent la résonance (« la libellule les relie », « présence bienveillante qui résonne », « âmes qui vibrent »). Top scores l'oublient — simplement la vivent par geste, silence, détail.
+**Bon sens narratif** : l'émotion abstraite de lien ne se nomme pas. Elle vit dans : Wex qui ralentit (geste), silence de la libellule, présence commune sans explication. Enfants 4-5 ans : nommer = rupture du charme. Elle s'attrape par la sensorialité, pas par les mots.
 
 ---
 
@@ -324,6 +324,31 @@ Enfants et dyades convergent : "on sent que c'est magique, mais pas expliqué".
 **Prochaine étape** : Audit propagation `max` → `reco` dans INVARIANTS, PROCESS, agents writers (tous les sous-fichiers).
 
 **Anti-pattern à éviter** : Nommer un writer par degré de température sans contexte fournisseur officiel.
+
+---
+
+### L-ANTI-PATTERN-BRAINSTORM-PHASE-B-001 — Missions LLMs phase B : grain fin par axe, jamais holistique (2026-05-15)
+
+**Observation** : STORY-002 étape 2B phase 1 (2026-05-15 matin) : Kimi + DeepSeek + Grok lancés avec brief générique « écrire l'histoire STORY-002 en ayant en tête brainstorm phase A ». Résultat : 3 narrations complètes (1700+ mots chacune) générées, qui redondaient pitch et vision Couche 0. Étape intermédiaire inutile.
+
+**Cause racine** : formulation mission trop holistique. Brief Phase B copié du pitch (holiste) au lieu de décomposer en 6 axes grain fin ciblés par Papa Yann.
+
+**Anti-pattern confirmé** :
+- ❌ Phase B brief : « Écrivez une version brute de STORY-002 libellule-résonance »
+- ✅ Phase B brief grain fin : 6 missions séparées (chacune 10-20 lignes max)
+  1. Faune/flore/sons mai autour d'étang — énumérez
+  2. Actions/jeux des 3 enfants bruyants selon leurs profils
+  3. Vannes Juju (T8) authentiques à voix basse/haute/blague
+  4. Wex : comment il ralentit / s'arrête / dit ou dit rien
+  5. Libellule : description/couleurs/comportement/interaction Nono
+  6. Admiration : formes, vocabulaire, métaphores 4-6 ans compréhensibles
+
+**Règle future** :
+- Phase B jamais « narrer l'histoire »
+- Phase B toujours 6+ missions **disjointes** scannant les 6 axes ou les piliers pertinents (personnages, univers, cross-culture)
+- Par axe : 50-200 mots max, énumération > narration
+
+**Impact briefs** : avant de lancer une phase LLM brainstorm, décomposer toujours en grain fin matière brute plutôt que laisser LLM réassembler la narration.
 
 ---
 

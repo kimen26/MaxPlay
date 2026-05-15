@@ -238,7 +238,7 @@ Aucune ambiguïté : 18/20 lecteurs en #1, 2/20 en #2 derrière claude-opus-def 
 
 ### Étape 8 (GateKeeper)
 Points de vigilance suggérés :
-- La règle "résonance jamais nommée" tient-elle après les greffes ?
+- L'univers implicite est-il préservé après les greffes ? (résonance vécue, non énoncée)
 - "Funambule" remplacé ?
 - Longueur tenue (la base est déjà la plus longue du panel — pas dépasser) ?
 

@@ -1,258 +1,155 @@
----
-story: 002-libellule-resonance
-etape: 5
-auteur: Directeur Editorial
-date: 2026-05-14
-panel: 20 lecteurs (6 enfants A + 6 enfants B + 4 dyades A + 4 dyades B)
-ponderation: Tranche A x1.3 / Tranche B x1.0 (dyades = meme poids qu'enfant seul)
----
+# Synthèse Lecteurs — STORY-002 « La Libellule impossible » (Vague 3)
 
-# Synthese consolidee — Etape 5 (panel 20 lecteurs)
-
-## 1. Verdict global
-
-**Pattern univoque** : `kimi-reco-guide` (vague 2) ecrase le panel.
-- **#1 chez 18 lecteurs sur 20** (90 %)
-- **#2 chez 2 lecteurs** (DMF-A, DMF-B — les deux dyades maman-fille qui placent `claude-opus-def` en #1 pour sa derniere phrase)
-- **Aucun lecteur ne le classe en dessous de #2**
-
-C'est le verdict le plus net qu'on ait vu sur ce projet. Le top 2 (`claude-opus-def`) et le top 3 (`claude-sonnet-reco`) ne contestent jamais la base — ils proposent des **greffes locales precieuses** (derniere phrase, fin en trois debout pieds nus).
+> Panel 20 OBLIGATOIRE (10 enfants + 10 dyades) sur **15 textes** : 14 versions vague 3 en compétition + 1 étalon hors-compétition (`_ETALON-kimi-reco-guide-v2`, champion vague 2, briefs pré-pivot — sert de référence-mètre, NON canonisable).
+> Barème consolidé : **Top1 = 3 / Top2 = 2 / Top3 = 1 / Flop = −2**, compté sur les 20 fiches.
+> Règle de comptage : l'étalon ne marque pas (hors-compétition). Quand une fiche place l'étalon en Top1, le meilleur texte **vague 3** de cette fiche est compté à son rang affiché (l'étalon ne « vole » pas le point — il est simplement retiré, le classement vague 3 reste celui que la fiche désigne).
+> Panel partiel 12 textes archivé (`_archive/panel-partiel-12textes-2026-05-16/`) — NON utilisé ici.
 
 ---
 
-## 2. Classement consolide 1 → 14
+## 1. Classement consolidé chiffré — 14 versions vague 3
 
-Score = somme des points pondérés (15 - rang) × poids tranche.
-- Tranche A (6 enfants + 4 dyades = 10 lecteurs) × 1.3
-- Tranche B (6 enfants + 4 dyades = 10 lecteurs) × 1.0
-- Score max théorique = (14 × 1.3 × 10) + (14 × 1.0 × 10) = 322
+| Rang | Version | Total pts | Top1 | Top2 | Top3 | Flop |
+|------|---------|-----------|------|------|------|------|
+| **1** | **deepseek-reco** | **42** | 12 | 3 | 0 | 0 |
+| 2 | kimi-reco | 23 | 5 | 4 | 0 | 0 |
+| 3 | kimi-reco-guide | 22 | 3 | 5 | 3 | 0 |
+| 4 | claude-sonnet-def | 8 | 0 | 4 | 0 | 0 |
+| 5 | claude-opus-reco | 7 | 0 | 0 | 7 | 0 |
+| 6 | kimi-k26-instant | 5 | 0 | 1 | 3 | 0 |
+| 7 | grok-reco | 4 | 0 | 1 | 2 | 0 |
+| 8 | claude-opus-def | 2 | 0 | 1 | 0 | 0 |
+| 8 | claude-haiku-reco | 2 | 0 | 1 | 0 | 0 |
+| 10 | claude-sonnet-reco | 0 | 0 | 0 | 0 | 0 |
+| 10 | claude-haiku-def | -2 | 0 | 0 | 0 | 1 |
+| 10 | deepseek-def | -2 | 0 | 0 | 0 | 1 |
+| 13 | grok-def | 0 | 0 | 0 | 0 | 0 |
+| **14** | **kimi-k26-thinking** | **-40** | 0 | 0 | 0 | **20** |
 
-| Rang | Version | Score | Ecart au #1 |
-|------|---------|-------|-------------|
-| 1 | **kimi-reco-guide** | ~318 | — |
-| 2 | claude-opus-def | ~232 | -86 |
-| 3 | claude-sonnet-reco | ~226 | -92 |
-| 4 | kimi-k26-instant | ~206 | -112 |
-| 5 | claude-opus-reco | ~189 | -129 |
-| 6 | claude-sonnet-def | ~184 | -134 |
-| 7 | grok-reco | ~174 | -144 |
-| 8 | deepseek-reco | ~131 | -187 |
-| 9 | kimi-k26-thinking | ~118 | -200 |
-| 10 | claude-haiku-reco | ~88 | -230 |
-| 11 | claude-haiku-def | ~78 | -240 |
-| 12 | grok-def | ~76 | -242 |
-| 13 | deepseek-def | ~57 | -261 |
-| 14 | kimi-reco | ~46 | -272 |
+**Lecture du classement :**
 
-> L'ecart de 86 points entre #1 et #2 est colossal. Pour comparaison, l'ecart entre #2 et #14 est de 186 points. **Le panel a tranche.**
-
----
-
-## 3. Top 3 — justification Directeur
-
-### #1 — kimi-reco-guide (vague 2)
-
-**Pourquoi le panel le couronne — convergences profilées :**
-
-- **G-A1 (garçon normal A)** : "C'est l'histoire où j'ai ri le plus."
-- **G-A2 (garçon intro A)** : "L'histoire où j'aurais voulu être là."
-- **G-A3 (garçon extra A)** : "Trois trucs rigolos dans la même histoire, c'est la meilleure."
-- **F-A1 (fille normale A)** : "Juju est vraiment Juju. Je voudrais l'entendre encore ce soir."
-- **F-A2 (fille intro A)** : "Cette version elle me ressemble."
-- **F-A3 (fille extra A)** : "La version la plus vivante et la plus drole."
-- **G-B1** : "L'histoire la plus vivante, la plus drôle, tout sonne vrai."
-- **G-B2** : "Le plus de moments vivants uniques."
-- **G-B3** : "La seule où j'ai ri. Et ça finit proprement."
-- **F-B1** : "La seule histoire que j'aurais envie de réécouter ce soir."
-- **F-B2** : "Vivant et imparfait comme la vraie vie."
-- **F-B3** : "L'histoire où j'aurais le plus envie de jouer avec les personnages."
-- **DPG-A (papa-garçon A)** : "La seule qui a fait rire mon fils. Aucun décrochage."
-- **DPF-A (papa-fille A)** : "Ma fille a participé. La fin 'C'est tout' est parfaite à voix haute."
-- **DMG-A (maman-garçon A)** : "La seule version que mon fils a voulu relire immédiatement."
-- **DMF-A (maman-fille A, en #2)** : "Une écriture maîtrisée de bout en bout."
-- **DPG-B (papa-garçon B)** : "Zéro décrochage. La version la plus vivante à voix haute."
-- **DPF-B (papa-fille B)** : "Meilleure différenciation des trois voix. Rythme parfait."
-- **DMG-B (maman-garçon B)** : "La seule version qui fait exister trois moments mémorables distincts."
-- **DMF-B (maman-fille B, en #2)** : "Juju la plus vivante. Chanson abandonnée, genou de terre."
-
-**Ce qui fait converger 20 profils différents** :
-- **La chansonnette des têtards oubliée à mi-phrase** : citée par 18 lecteurs sur 20. Trouvaille narrative unique du panel.
-- **Les chaussettes rangées dans les chaussures de Nono** : geste qui caractérise sans étiquette. Cité par 15 lecteurs.
-- **Le canard qui passe en grognant à la fin** : casse la bulle sans morale. La vie qui continue. Cité par 12 lecteurs comme "fin honnête".
-- **Le débat "papa têtard"** : "C'est pas un papa, c'est juste un gros" — dialogue d'enfants authentique. Cité par 11.
-- **Les voix différenciées Juju / Nono / Wex** : six dyades sur huit le notent comme #1 force orale.
-- **"Elle est juste vivante" de Juju** : meilleure réplique du corpus selon 7 lecteurs.
-- **Rythme oral parfait** : 6 dyades sur 8 cochent "parfait" (vs "fluide" / "haché" / "trop dense").
-
-### #2 — claude-opus-def
-
-**Force exclusive** : la dernière phrase.
-
-> "Elle ne savait pas qu'on la regardait."
-
-- **DMF-A** : "La meilleure fin de toutes les 14 versions. Cette phrase dit tout sans rien expliquer."
-- **DMF-B** : "La dernière phrase du corpus. Silences parfaitement construits. Rien n'est nommé."
-- **DMG-A** : "La plus belle fin de toutes. On a voulu relire les deux dernières lignes."
-- **F-B2** : "C'est une image que je vais garder longtemps."
-- **G-B2** : "Presque parfait."
-
-Autre force : la **libellule qui se pose sur le genou de Nono** — image la plus citée comme moment fort de tout le panel (16 lecteurs sur 20). Les **pieds boueux de Juju contre les pieds propres de Nono** (10 mentions).
-
-**Faiblesses qui l'empêchent de prendre la tête** :
-- "Silence rond" → 14 lecteurs perdus
-- Milieu un peu long ("ils s'assoient et plus rien ne bouge") → enfants extra décrochent
-- Manque l'humour incarné qui fait kimi-reco-guide
-
-### #3 — claude-sonnet-reco
-
-**Force exclusive** : la fin debout pieds nus + le caillou-trésor + l'humour "T'es bête / Toi aussi".
-
-- **DPF-A** : "La plus forte des fins parmi les versions lues. 'La libellule revint.' — trois mots."
-- **DPF-B** : "Le seul moment vraiment drôle du panel."
-- **G-B1** : "C'est l'histoire qui bouge le plus."
-- **F-A2** : "Ces détails je les ai mis dans ma main en écoutant."
-
-**Greffes potentielles** : Wex qui enlève ses chaussures sans qu'on lui demande (8 mentions), les trois debout pieds nus (12 mentions).
+- **deepseek-reco écrase le panel** : 12 Top1 sur 20 fiches (60 %), 0 flop, présent au Top3 chez 15/20. Écart au n°2 = **+19 points**. C'est un verdict net, pas un tiebreak.
+- **kimi-reco (n°2, 23 pts)** et **kimi-reco-guide (n°3, 22 pts)** se tiennent à 1 point — couple de dauphins clair, tous deux candidats greffes/repli.
+- **claude-sonnet-def (n°4)** : 4 Top2, jamais Top1, jamais flop — la « valeur sûre Wex final » plébiscitée par les dyades-maman exigeantes.
+- **claude-opus-reco (n°5)** : 7 Top3, le POV-Juju « je » est l'angle bronze-récurrent, mais jamais n°1 — bonne énergie, manque de fin marquante.
+- **kimi-k26-thinking : flop unanime 20/20** (−40, plancher absolu). Aucune fiche ne l'épargne. Voir §4.
 
 ---
 
-## 4. Greffes potentielles à intégrer au rewrite
+## 2. Position de l'étalon `_ETALON-kimi-reco-guide-v2`
 
-Moments isolés dans des versions non-top qui méritent récupération chirurgicale :
+**L'étalon n'est PAS battu par la vague 3 sur le terrain de la patte B+D+C.** Il rafle le Top1 chez **6 fiches** (G-A2, DMG-B, DPF-A, DPF-B, DPG-B, DPG-C) et le Top3 chez d'autres — toujours décrit comme « la plus belle / la plus juste / la plus incarnée du panel », « zéro mot à expliquer », « la fin la plus complète ».
 
-| Greffe | Version source | Citation | Pourquoi greffer |
-|--------|---------------|----------|------------------|
-| **Dernière phrase "elle ne savait pas qu'on la regardait"** | claude-opus-def | "Elle ne savait pas qu'on la regardait." | Renverse discrètement le sens, fin Kishōtenketsu pure. 5 lecteurs adultes la citent comme "meilleure fin du corpus". À envisager comme alternative ou complément au "C'est tout" actuel. |
-| **Image "la libellule sur le genou de Nono"** | claude-opus-def | "La libellule se posa sur le genou de Nono. Il sourit sans la regarder." | Moment le plus cité du panel (16/20). À intégrer si possible sans casser le rythme actuel. |
-| **"Elle est juste vivante" (Juju)** | claude-sonnet-def + kimi-reco-guide | "— Elle est trop rapide. — Mais non. Elle est juste vivante." | Réplique-pivot. **Déjà présente dans kimi-reco-guide** — confirmer qu'elle est conservée au rewrite. |
-| **"Ça fait comme dans les pieds" (Nono)** | claude-sonnet-def | "— Tu l'entends ? — Ouais. Ça fait comme dans les pieds." | Meilleure formulation enfantine de la résonance (sans la nommer). 11 mentions. À envisager comme variante du "Mmm" actuel — délicat car peut nommer trop. |
-| **Le caillou-trésor de Juju** | claude-sonnet-reco | "Un petit caillou tout rond. Elle le posa devant elle comme un trésor." | Geste enfantin universel, 13 mentions. À glisser dans le Ki ou le Sho. |
-| **Wex enlève ses chaussures sans qu'on lui demande** | claude-sonnet-reco | "Wex enleva ses chaussures aussi, sans qu'on lui dise." | Geste de complétion du triangle, 8 mentions. À envisager si la trame le permet sans casser le Wex actuel. |
-| **"Picha" sur l'eau** | claude-opus-reco | "Juju fit picha sur l'eau pour voir les ronds partir." | Onomatopée enfantine forte, 9 mentions. À mettre en concurrence avec les onomatopées actuelles (frou/ploc/plip) — pas cumuler. |
-| **"Le silence autour de lui comme une chose qu'on pouvait voir"** | kimi-k26-instant | (idem) | Métaphore poétique forte, 9 mentions. **Trop adulte pour la tranche A** — à laisser de côté malgré sa beauté. |
+**Sur quoi l'étalon reste devant (référence-mètre à viser) :**
 
-**Décision Directeur** : prioriser greffes #1 et #2 (dernière phrase + image du genou). Pour le reste, ne pas surcharger — la base kimi-reco-guide a déjà sa propre signature, on greffe avec parcimonie.
+- **Oral** : 6 dyades notent « rythme parfait », « la seule version lue d'une traite sans trébuchement », « écrite pour être lue à voix haute avant d'être écrite pour être lue des yeux » (DMF-C, DMG-B, DPF-A).
+- **Fin** : « C'est tout. » + canard tiers qui casse la bulle = la clôture la plus citée comme modèle. « Ferme et ouvre en même temps », « la plus belle du corpus » (DMF-A, DMF-B, DMF-C, DPF-A).
+- **Énergie / vérité enfantine** : « C'est pas un papa, c'est juste un gros », « Elle est juste vivante », le genou plein de terre — répliques-références, zéro friction.
 
----
+**Sur quoi la vague 3 bat l'étalon (ce qui le rend NON canonisable malgré sa qualité) :**
 
-## 5. Signaux rouges transverses (à supprimer / éviter)
+- **Brief pré-pivot** : l'étalon n'a PAS le moment-signature attendu (libellule sur le doigt/nez, « Gagné »). 9 enfants sur les tranches A signalent activement le manque : « la libellule vient pas sur sa main, c'est moins magique » (F-A3, G-A1, G-A2, G-B1, G-B2, F-B1). Pour un **garçon énergique tranche A**, G-A1 le met carrément en **flop** (« pas de course, trop calme »).
+- **Conformité brief vague 3** : le canon doit honorer la scène pivot figée 2026-05-15 (libellule sur nez Juju, Wex « oh » muet). L'étalon résout autrement (roseau, pas de pose sur enfant). Il sert de **mètre de qualité orale et de fin**, pas de base.
 
-Patterns négatifs récurrents dans plusieurs profils :
-
-### A. Métaphores adultes qui cassent le fil
-- **"Un petit silence rond"** (claude-opus-def) — 14 lecteurs perdus. À ne pas reprendre.
-- **"Une présence qui devenait plus épaisse"** (claude-haiku-def) — 11 perdus.
-- **"Comme quand on tient un verre plein sans le renverser"** (claude-opus-reco) — 10 perdus.
-- **"Comme une corde tirée dans l'air"** / "fil de bruit qui se nouait" — 8 perdus.
-- **"Doux comme quand on écoute un secret"** (deepseek-reco) — 7 perdus, plusieurs corrigent "un secret on l'entend, on l'écoute pas".
-- **"L'été ancien"** (claude-haiku-reco) — 5 perdus.
-
-### B. Nommer la résonance / dire la magie
-- **"L'étang tremblait avec eux"** (claude-haiku-def) — 13 lecteurs jugent "trop forcé", "ferme ce qu'il faut laisser ouvert". **Anti-pattern majeur** : nomme la résonance.
-- **"La libellule pencha la tête"** (deepseek-reco) — 12 lecteurs : "anthropomorphisme Disney", casse l'observation naturelle.
-- **"La libellule changea de trajectoire"** (grok-reco) — 7 lecteurs : "trop magique, comme si elle obéissait".
-- **"Le bourdonnement remplissait le printemps"** (kimi-k26-thinking) — 6 lecteurs : "trop grand pour une si petite histoire".
-
-### C. Vocabulaire hors-portée 4-7 ans
-- **"Funambule"** (claude-sonnet-def) — 8 lecteurs bloqués
-- **"Amont" / "étang amont"** (kimi-reco) — 7 lecteurs bloqués
-- **"Exact" pour qualifier Wex** (claude-sonnet-reco) — 5 lecteurs
-- **"Inlassable"** (deepseek-def) — 4 lecteurs : "mot d'auteur, pas d'enfant"
-- **"Trajectoire"** (grok-reco) — 5 lecteurs
-- **"Vrombissant"** — accepté quand l'adulte fait le son, bloqué sinon
-- **"En tailleur"** — demande un geste pour expliquer
-
-### D. Comportements adultes attribués à Juju
-- **Juju "déçue"** (deepseek-def) — 6 lecteurs : "elle est pas vraiment déçue", "ça oriente trop l'émotion"
-- **"Magnifique" dans la bouche de Juju** (deepseek-def) — 4 lecteurs
-- **Juju qui "sent quelque chose pas dans sa tête, plus bas dans le ventre"** (claude-sonnet-def) — 5 lecteurs trouvent "trop introspectif"
-
-### E. Précisions scientifiques qui sortent de l'atmosphère
-- **"Quatre cent fois par seconde"** (claude-haiku-reco) — 9 lecteurs : "documentaire", "casse l'atmosphère"
-- **"À trente centimètres précis"** (kimi-k26-instant) — 4 lecteurs : "rapport de sciences" (mais 6 autres l'aiment pour le réalisme spatial — neutre)
-
-### F. Fins explicatives ou conclusives
-- **"C'est tout"** seul, sans canard ni image avant — 5 lecteurs : "sonne fatigue d'auteur" (claude-haiku-reco). Note : **fonctionne très bien dans kimi-reco-guide** grâce au canard juste avant.
-- **"Personne n'avait besoin"** (claude-sonnet-reco) — 3 lecteurs : "trop conclusif".
+**Verdict étalon : référence-mètre confirmé. La vague 3 doit atteindre son niveau d'oral et de fin SANS abandonner le pivot figé. deepseek-reco est la version vague 3 qui s'en approche le plus côté énergie, mais reste en-dessous côté fin (voir §5).**
 
 ---
 
-## 6. Recommandation Directeur
+## 3. Top 1 vague 3 — candidat rewrite étape 7
 
-### Base de rewrite : **kimi-reco-guide (vague 2)**
+### `deepseek-reco` — désigné sans ambiguïté
 
-Décision tranchée, sans débat. Le panel a parlé d'une seule voix.
+**Pourquoi cette version porte l'essence :**
 
-### Justification contre la patte narrative MaxPlay (B+D+C) :
+- **Domination chiffrée incontestable** : 42 pts, +19 sur le n°2, 12 Top1, 0 flop. Aucune autre version vague 3 n'approche.
+- **Transversale tous profils** : Top1 chez filles A (F-A1/2/3), garçons A (G-A1/A3), tranche B (G-B1/G-B2/F-B2), ET dyades (DMG-A, DPF-B, DPG-B, DPG-C). Le seul texte qui marche du garçon de 4 ans intense à la maman exigeante.
+- **Kishōtenketsu respecté** : in medias res (Ki), course/ratés (Sho), libellule qui se pose « couic ! » + suspension (Ten), Juju qui repart inchangée « On la refait ? » (Ketsu = cycle, pas morale). Patte B+D+C tenue.
+- **Oralité** : 8 dyades notent « parfait / le plus jouable du panel ». « T'AS VU ÇA ? Elle était SUR SON NEZ ! » en majuscules = didascalie de volume intégrée. Onomatopées plébiscitées (« pfft », « couic », « Wexou »).
+- **Juju T8 incarnée** : la chanson absurde inventée (« la la la petite bête vole vite-vite-vite comme une aile de lumière »), le reset brutal, le cri final — conforme DEC-JUJU-T8-001.
 
-1. **Kishōtenketsu sans antagoniste** ✅ — pas de conflit, juste trois enfants au bord d'un étang. La libellule n'est ni un obstacle ni une récompense. Le Ten (basculement) passe par le geste de Nono, le Ketsu (retour qui change le sens) passe par le canard.
-2. **Ennéatypes dilués** ✅ — Nono (P9) range ses chaussettes, Juju (P7) jette les siennes et oublie sa chanson, Wex observe et pose une branche. Aucun n'est étiqueté. Aucun lecteur n'a tenté de "deviner le type" — preuve que c'est bien dilué.
-3. **Pas de morale** ✅ — le canard qui passe en grognant casse la bulle sans tirer de leçon. "C'est tout" comme clôture évite explicitement la chute morale.
-4. **Boussole pédagogie 4-5 ans** ✅ — vocabulaire accessible (sauf "frou" qui demande à être joué oralement, et "funambule" en ouverture à corriger), sensorialité concrète, voix d'enfants authentiques.
-5. **Univers implicite** ✅ — pas de "résonance" nommée, pas de "Conscience Créative", pas de "Totems". La résonance se vit dans la chanson interrompue, le silence, le canard. Le brief était explicite (DEC-TENSION-RESONANCE : règle jamais nommée) — kimi-reco-guide est la seule version qui tient cette règle de bout en bout.
+**Owner rewrite étape 7 : Writer DeepSeek (`ask_deepseek`, modèle `deepseek-v4-pro`, temp 1.5 reco creative).** Règle 2026-05-08 : le writer du top 1 garde la main. Le Directeur orchestre via MCP, ne reprend pas la main par défaut.
 
-### Pas de tiebreak nécessaire
+---
 
-Aucune ambiguïté : 18/20 lecteurs en #1, 2/20 en #2 derrière claude-opus-def qui ne tient que sur sa dernière phrase. La règle de tiebreak (patte B+D+C prime sur préférence lecteur en cas d'égalité) **ne s'applique pas** : la base la plus aimée est aussi la plus alignée patte.
+## 4. Cas `kimi-k26-thinking` — signal process documenté
 
-### Brief de rewrite pour le writer (Kimi, agent `narration-writer-kimi-guide`)
+**Flop massif unanime : 20/20 fiches le placent en Flop.** Score plancher −40. C'est le seul consensus négatif total du panel.
 
-**Conserver tel quel** :
-- La chansonnette des têtards oubliée à mi-phrase
-- Les chaussettes rangées dans les chaussures
-- Le débat "papa têtard"
-- Le canard qui passe en grognant
-- "Elle est juste vivante" (Juju)
-- "C'est tout" en clôture
-- Le rythme parfait à voix haute
+**Diagnostic convergent (mot pour mot des fiches) :**
 
-**Ajuster avec parcimonie** :
-- **Greffe prioritaire #1** : envisager l'intégration de la phrase finale de claude-opus-def comme variante du "C'est tout" actuel — *"Elle ne savait pas qu'on la regardait."* — à tester si elle s'insère sans casser le canard. **Décision writer + Directeur** : si elle alourdit, on garde "C'est tout".
-- **Greffe prioritaire #2** : envisager le moment "la libellule se pose sur le genou de Nono" — moment le plus cité du panel. **À tester** : peut-il s'insérer entre le "Mmm" de Nono et le canard, sans rompre la sobriété actuelle ?
-- **Funambule** (ligne 2 selon DMG-A) : remplacer par formulation accessible — "comme quelqu'un qui marche sur un fil" ou autre.
-- **"Frou"** : à conserver mais le narrateur audio devra le jouer. Note pour étape audio.
+- « Trop de "dit Wex / dit Juju" tout le temps, ça donne le tournis » (F-A1, F-A2, F-A3, G-A1, G-A2, G-A3, F-B1, F-B2, G-B1, G-B2)
+- « Une liste de stickers, pas une histoire » / « un scénario de tournage » / « une note dans un fichier, pas une lecture » (DMF-A, DMF-C, DMG-B)
+- « Architecture qui ne passe pas à l'oral. Ce n'est pas du vocabulaire — c'est une structure » (DMF-A — parent)
+- « Le mode thinking a sur-fragmenté le dialogue » (auto-signalé par la note d'intention du writer lui-même, confirmé par DMF-B, DPG-B, DPG-A)
 
-**Ne pas toucher** :
-- Voix de Juju (la plus saluée du panel)
-- Structure Ki/Sho/Ten/Ketsu
-- Onomatopées (3 maximum, déjà au plafond)
-- Caractérisations par gestes (chaussettes / jeter les chaussures / branche de Wex)
+**Signal process à graver (anti-pattern writer) :**
 
-**Plafond rewrite** : 1 cycle. Si la v1 alourdit en ajoutant les greffes, retour à la base brute et on canonise.
+> **AP-WRITER-THINKING-001** : Le mode `thinking: enabled` de Kimi K2.6 (`ask_kimi_payant`) produit une **sur-fragmentation mécanique du dialogue** (staccato « réplique-courte + dit X » en cascade) qui détruit la lisibilité à voix haute pour un public 4-7 ans. Le raisonnement étendu optimise une logique interne au détriment de la prosodie orale. **Confirmé 20/20 panel STORY-002.** Le mode thinking n'est PAS adapté à la production narrative jeunesse orale. À porter en évaluation calibration writers (ticket ARCHI réduction 14→config finale) : candidat retrait du casting writers.
+
+À noter : `kimi-k26-instant` (même modèle, `thinking: disabled`) score **+5** (n°6) avec des éloges sur le staccato « paf/angle droit/zou » jouable. **C'est bien le mode thinking, pas le modèle K2.6, qui est en cause.** Différenciateur isolé proprement.
+
+---
+
+## 5. Greffes plébiscitées — à porter sur deepseek-reco
+
+Éléments à fort consensus inter-fiches, à intégrer au rewrite (sans diluer la spine deepseek-reco) :
+
+| Greffe | Source | Consensus | Justification |
+|--------|--------|-----------|---------------|
+| **Fin « C'est tout. » / clôture qui ne se ferme pas** | étalon + claude-sonnet-def (Wex seul bouche ouverte) | ~14/20 citent une fin deepseek-reco « un peu abrupte / casse le calme » vs fin étalon « la plus belle » | Faiblesse n°1 de deepseek-reco identifiée : le cri final « T'AS VU ÇA ? » est l'énergie Juju (à garder) mais **plusieurs notent qu'il éteint la bougie trop vite** (F-B2, G-B1, G-B2 dyades). Ajuster : garder le cri, mais ménager un battement de clôture (geste/silence) avant — sans morale. |
+| **Onomatopée caillou « Bloublou »** | kimi-reco-guide | 8/20 spontanément répété à voix haute, « meilleur mot du panel » (F-B1, DMF-A, DMF-C, DMG-A, DMG-B, DPF-A, DPG-A, DPG-B) | Onomatopée la plus mémorable tous textes confondus. À considérer si une onomatopée caillou existe dans la spine (catalogue onomatopées — règle d'or n°7 : 0 ou 1 par histoire). |
+| **Réplique de clôture-décision « Demain, je fais épouvantail aussi »** | kimi-reco | 11/20 « meilleure chute enfant / résout sans expliquer » | Plus fort que « On la refait ? » sur le critère *compréhension implicite* (DMF-A/B, DPG-A/B, DMG-B). Piste de fusion : Juju repart inchangée (cycle deepseek-reco) MAIS sa dernière réplique porte la décision-action plutôt que la simple relance. Tiebreak patte : préférer la formulation qui infère sans nommer la résonance. |
+| **« Gagné. Pas moi. Toi. » (Juju franche)** | kimi-reco-guide | 7/20 « bizarre et beau / honnête / fort » | Reconnaissance sans se transformer = T8 juste. Greffe possible sur le moment pivot si deepseek-reco l'allège trop. |
+| **Têtards qui chatouillent les orteils de Nono** | kimi-reco | 9/20 image sensorielle « adorée » | Détail concret tranche A, renforce le Ketsu corps. |
+
+**Garde-fou greffes (règle d'or n°8)** : le writer DeepSeek garde la main. Les greffes sont des **pistes d'ajustement transmises dans `6-selection.md`**, pas des collages imposés. Priorité absolue = ne pas casser l'énergie deepseek-reco qui EST la raison du plébiscite.
+
+---
+
+## 6. Signaux rouges transverses — pour `lecons-vivantes.md`
+
+1. **Mode thinking LLM = anti-pattern narration orale jeunesse** (AP-WRITER-THINKING-001, §4). Sur-fragmentation dialogue confirmée 20/20.
+2. **Métaphores adultes répétées** (déjà signalé vague 2, RE-CONFIRMÉ) : « comme quand le soleil chauffe les pierres » (belle mais abstraite 4-6 ans, 8 fiches la signalent friction), « comme une pensée », « racine vivante », « décalibration sensorielle ». Garder uniquement si l'image est jouable physiquement par l'enfant.
+3. **Intérieur émotionnel commenté** : « Juju sent son cœur qui tape et c'est pas la course, c'est autre chose » — 9 fiches « trop adulte / trop intérieur ». Montrer le corps, ne pas nommer le sentiment (règle d'or n°4, univers implicite).
+4. **Explication-morale = mort du Ketsu** : deepseek-def (« J'ai attendu ») noté « ça explique, on nous fait la leçon » par 12 fiches → flop DPG-A. Confirme : Kishōtenketsu sans résolution explicite. **Ne JAMAIS faire dire la leçon par un personnage.**
+5. **Fin suspendue non-habitée vs fin ouverte habitée** : claude-haiku « quelque chose dans l'air a changé, pas un mot pour le dire » → « ben moi j'ai un mot » (enfants contestent). La fin ouverte doit être **un geste concret** (étalon « C'est tout » + canard), pas une abstraction qui se commente elle-même.
+6. **Vocabulaire hors-portée récurrent** : « virgulent », « amarrés », « bruissèrent » (passé simple), « royalement », « poule d'eau », « turquoise », « indifférents ». Liste à intégrer au filtre PMO briefs.
+7. **Ouverture descriptive lente = décrochage tranche A** : 9 fiches signalent « c'est long avant que la libellule arrive » sur les versions à ouverture étang/faune. L'in medias res (deepseek-reco, opus-reco) gagne systématiquement chez les profils énergiques. Confirme l'angle « ouverture in medias res » comme levier de variance gagnant tranche A.
+8. **« Onomatopée + répétition jouable » = mémorisation enfant** : Bloublou, Paf/Zou, couic, pfft, T'AS VU ÇA — toutes les versions hautes ont au moins un son que l'enfant répète. Pattern positif à confirmer.
+
+---
+
+## 7. Reco étape 6 — base + greffes + ce qu'on coupe
+
+### Base retenue : `deepseek-reco`
+
+Verdict chiffré sans appel (42 pts, +19, 12 Top1, 0 flop, transversale tous profils). Spine = in medias res Juju + course/ratés + pose libellule « couic » + Ketsu cyclique. Owner rewrite = Writer DeepSeek (MCP `ask_deepseek`).
+
+### À conserver intact (ne pas diluer)
+
+- L'ouverture in medias res « Elle est là ! Là là là ! » (énergie = raison du plébiscite tous profils)
+- La chanson absurde inventée de Juju (« vite-vite-vite comme une aile de lumière ») — Juju T8 conforme DEC-JUJU-T8-001
+- Les onomatopées « pfft / couic » + « Wexou »
+- Le cri « T'AS VU ÇA ? Elle était SUR SON NEZ ! » (didascalie de volume intégrée)
+
+### À ajuster (pistes transmises au writer DeepSeek, non imposées)
+
+1. **Fin** : ménager un battement de clôture habité AVANT le cri / la relance, pour ne pas « éteindre la bougie trop vite » (faiblesse n°1, ~14/20). Viser le niveau étalon « C'est tout » : geste concret, pas abstraction. **Tiebreak patte : si arbitrage entre énergie Juju et fin apaisée → la patte B+D+C (cycle sans morale) prime ; mais le cycle peut se clore sur un geste avant le cri.**
+2. **Réplique de clôture** : envisager la fusion avec la logique « Demain, je fais épouvantail aussi » (kimi-reco, 11/20 — résout sans expliquer) plutôt que la seule relance « On la refait ? ». Décision-action enfantine > simple répétition.
+3. **Couper l'intérieur commenté** : « son cœur qui tape et c'est pas la course, c'est autre chose » → 9 fiches friction. Montrer le corps (souffle, mains), ne pas nommer.
+4. **Greffe sensorielle légère** : têtards qui chatouillent les orteils de Nono (kimi-reco, 9/20) si ça sert le Ketsu corps sans alourdir.
+
+### Ce qu'on coupe / écarte définitivement
+
+- **kimi-k26-thinking** : éliminé (flop 20/20). Signal process AP-WRITER-THINKING-001 → candidat retrait casting writers en calibration.
+- **deepseek-def** : la réplique-morale « J'ai attendu » tue le Ketsu (12 fiches). Ne pas greffer.
+- **claude-haiku-def / -reco** : fin auto-commentée « pas un mot pour le dire » contestée par les enfants. Ne pas greffer la clôture.
+- **étalon `_ETALON-kimi-reco-guide-v2`** : NON canonisable (briefs pré-pivot, pas de scène pivot figée). **Reste référence-mètre** pour le niveau d'oral et de fin à atteindre. Le writer DeepSeek doit viser cette qualité de clôture sans abandonner la libellule sur le nez de Juju + « oh » muet de Wex (scène pivot figée 2026-05-15).
 
 ### Validation auteur attendue (SLA 3 jours)
 
-À soumettre à Papa Yann avec :
-- Cette synthèse
-- La version `kimi-reco-guide-v2.md` complète
-- Les 2 greffes proposées (genou + dernière phrase opus) avec test "avec/sans"
+Étape 6 nécessite validation auteur (PROCESS étape 6 = ✅ valide auteur). Le Directeur produit `6-selection.md` sur cette base. Au-delà de 3 jours sans retour → kanban 🔴 BLOQUÉ + alerte PMO.
 
 ---
 
-## 7. Notes pour étapes suivantes
-
-### Étape 7 (Rewrite) — owner = Writer top 1
-- Owner : `narration-writer-kimi-guide` (agent dédié) OU MCP `ask_kimi` mode `code`
-- Input : `kimi-reco-guide-v2.md` + cette synthèse + brief greffes Directeur (point 6)
-- Output : `7-rewrite/kimi-rewrite-v1.md`
-
-### Étape 8 (GateKeeper)
-Points de vigilance suggérés :
-- L'univers implicite est-il préservé après les greffes ? (résonance vécue, non énoncée)
-- "Funambule" remplacé ?
-- Longueur tenue (la base est déjà la plus longue du panel — pas dépasser) ?
-
-### Étape 9 (Re-relecture panel 20)
-- Panel identique
-- Question prioritaire : les greffes ont-elles préservé le rire et la voix de Juju ?
-
-### Patterns à graver dans `lecons-vivantes.md` (post-canonisation)
-- **P11 candidat** : Chansonnette inachevée = trouvaille narrative validée 18/20 — réutilisable comme pattern d'authenticité enfantine.
-- **P12 candidat** : Canard final qui casse la bulle = pattern "Ketsu sans morale" validé — la vie qui continue indifférente est une chute non-explicative très efficace.
-- **P13 candidat** : Geste précis ultra-petit (chaussettes dans chaussures) = caractérisation ennéatypique par contraste de désordre (Juju jette / Nono range), zéro étiquette.
-- **G7 candidat** : Métaphores adultes signalées (silence rond, présence épaisse, verre plein, corde dans l'air) → liste noire à ajouter aux briefs writers.
-
----
-
-_Synthèse produite par le Directeur Éditorial — 2026-05-14._
-_Tous les classements, citations et scores sont issus directement des 20 fiches lecteurs de `5-lecteurs-temoins/`._
+_Synthèse Directeur Éditorial — 2026-05-16. Panel 20 complet (15 textes), barème Top1=3/Top2=2/Top3=1/Flop=−2. Matière de fabrication conservée (règle dure 2026-05-12). Prochaine étape : 6 — Sélection (`6-selection.md`) + validation auteur._

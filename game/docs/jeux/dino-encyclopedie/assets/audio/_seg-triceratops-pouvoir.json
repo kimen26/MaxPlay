@@ -1,0 +1,27 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Son super-pouvoir : trois cornes et un grand bouclier en os autour de la tête."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Un bouclier… mais pour se protéger de qui ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Du T-Rex ! Le Tricératops baissait la tête et fonçait avec ses cornes."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Comme un taureau super costaud !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "pronunciation_dictionary_locators": [],
+  "settings": {},
+  "language_code": "fr",
+  "seed": null,
+  "apply_text_normalization": "auto"
+}

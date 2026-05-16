@@ -198,28 +198,31 @@ function _compLong(m) {
   return `tout petit, comme un poulet !`;
 }
 
-// HAUTEUR (sol → tête, debout)
+// HAUTEUR (sol → tête, debout). Repère corps de Max (~1 m, 4 ans).
 function _compHaut(m) {
   if (m >= 9) return `aussi haut qu'un immeuble de ${Math.round(m / 3)} étages !`;
   if (m >= 6) return `aussi haut qu'une maison de 2 étages !`;
   if (m >= 3.8) return `aussi haut qu'un bus anglais à deux étages !`;
   if (m >= 3) return `aussi haut que deux Papas l'un sur l'autre !`;
   if (m >= 1.8) return `aussi grand que Papa debout !`;
-  if (m >= 1) return `à peu près à la hauteur de Papa qui se baisse !`;
-  if (m >= 0.5) return `à ta hauteur à toi !`;
+  if (m >= 1.3) return `plus grand que toi — il fallait lever la tête !`;
+  if (m >= 0.85) return `à peu près ta taille à toi !`;
+  if (m >= 0.45) return `il t'arrivait au nombril !`;
+  if (m >= 0.25) return `il t'arrivait aux genoux !`;
   return `tout petit, plus bas que tes genoux !`;
 }
 
-// POIDS (gabarit animal)
+// POIDS. Repère : Papa ≈ 80 kg, Max (toi) ≈ 16 kg.
 function _compPoids(t) {
   if (t >= 10) return `aussi lourd que ${Math.round(t / 5)} éléphants !`;
   if (t >= 3)  { const h = Math.round(t / 3); return h <= 1 ? `aussi lourd qu'un hippopotame !` : `aussi lourd que ${h} hippopotames !`; }
   if (t >= 0.8) { const r = Math.round(t / 1); return r <= 1 ? `aussi lourd qu'un rhinocéros !` : `aussi lourd que ${r} rhinocéros !`; }
   if (t >= 0.2) return `aussi lourd qu'un grand cochon !`;
-  if (t >= 0.07) return `aussi lourd qu'un gros chien !`;
-  if (t >= 0.015) return `aussi lourd qu'un chat bien dodu !`;
-  if (t >= 0.003) return `léger comme un petit chat !`;
-  return `léger comme un oiseau !`;
+  if (t >= 0.08) return `aussi lourd que Papa !`;
+  if (t >= 0.025) return `aussi lourd qu'un gros chien !`;
+  if (t >= 0.011) return `aussi lourd que toi !`;
+  if (t >= 0.0025) return `aussi lourd qu'un gros chat !`;
+  return `léger comme un petit oiseau !`;
 }
 
 // Texte lecture vocale des 3 mesures (m + kg + comparaison)
@@ -602,10 +605,10 @@ const DINOS = [
     epoque: 'Jurassique · il y a 150 millions d\'ans',
     region: 'Amérique du Nord, Afrique',
     taille_m: 26,
-    hauteur_m: 9.0,
+    hauteur_m: 13,
     poids_t: 60,
     comp_taille: _compLong(26),
-    comp_hauteur: _compHaut(9.0),
+    comp_hauteur: _compHaut(13),
     comp_poids: _compPoids(60),
     nom_etym: 'Son nom veut dire «lézard aux bras» en grec — ses pattes avant étaient plus longues que ses pattes arrière !',
     regime: '🌿 Herbivore',
@@ -630,10 +633,10 @@ const DINOS = [
     region: 'Amérique du Nord',
     taille_m: 27,
     hauteur_m: 4.5,
-    poids_t: 15,
+    poids_t: 12,
     comp_taille: _compLong(27),
     comp_hauteur: _compHaut(4.5),
-    comp_poids: _compPoids(15),
+    comp_poids: _compPoids(12),
     nom_etym: 'Son nom veut dire «double poutre» en grec — à cause de ses os de queue tout spéciaux !',
     regime: '🌿 Herbivore',
     superpower: 'Sa queue claquait comme un fouet — BOOM ! — pour faire peur aux chasseurs !',
@@ -656,10 +659,10 @@ const DINOS = [
     epoque: 'Jurassique · il y a 150 millions d\'ans',
     region: 'Amérique du Nord',
     taille_m: 22,
-    hauteur_m: 4.5,
+    hauteur_m: 7,
     poids_t: 25,
     comp_taille: _compLong(22),
-    comp_hauteur: _compHaut(4.5),
+    comp_hauteur: _compHaut(7),
     comp_poids: _compPoids(25),
     nom_etym: 'Son nom veut dire «lézard trompeur» en grec — ses os ont trompé les scientifiques pendant longtemps !',
     regime: '🌿 Herbivore',
@@ -683,10 +686,10 @@ const DINOS = [
     epoque: 'Jurassique · il y a 155 millions d\'ans',
     region: 'Amérique du Nord',
     taille_m: 18,
-    hauteur_m: 5.0,
+    hauteur_m: 9,
     poids_t: 18,
     comp_taille: _compLong(18),
-    comp_hauteur: _compHaut(5.0),
+    comp_hauteur: _compHaut(9),
     comp_poids: _compPoids(18),
     nom_etym: 'Son nom veut dire «lézard à chambres» en grec — ses os avaient des petits trous comme des chambres !',
     regime: '🌿 Herbivore',
@@ -1426,11 +1429,11 @@ const DINOS = [
     epoque: 'Crétacé · il y a 68 millions d\'ans',
     region: 'Amérique du Nord',
     taille_m: 11,
-    hauteur_m: 3.0,
+    hauteur_m: 5,
     poids_t: 0.2,
     taille_vol: true,
     comp_taille: 'ses ailes ouvertes étaient larges comme un bus de Paris !',
-    comp_hauteur: _compHaut(3.0),
+    comp_hauteur: _compHaut(5),
     comp_poids: _compPoids(0.2),
     nom_etym: 'Son nom vient de Quetzalcoatl, le grand serpent plumé des dieux aztèques — un nom de dieu pour le plus grand volant !',
     regime: '🥩 Carnivore (charognes, petits dinos)',
@@ -1482,10 +1485,10 @@ const DINOS = [
     region: 'Toutes les mers du monde',
     taille_m: 17,
     hauteur_m: 2.0,
-    poids_t: 15,
+    poids_t: 10,
     comp_taille: _compLong(17),
     comp_hauteur: 'son corps était large comme la voiture de Papa !',
-    comp_poids: _compPoids(15),
+    comp_poids: _compPoids(10),
     nom_etym: 'Son nom veut dire «lézard de la Meuse» — la Meuse est une rivière en Europe où on a trouvé ses os !',
     regime: '🐟 Carnivore marin',
     superpower: 'Le monstre marin — roi absolu de toutes les mers du Crétacé !',

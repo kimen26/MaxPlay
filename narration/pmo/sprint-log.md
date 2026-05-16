@@ -11,22 +11,30 @@
 
 ---
 
-## 2026-05-16 — PILOT AUDIO TRICÉRATOPS V1 LIVRÉE + Leçon process API
+## 2026-05-16 14:30 — EP-039 INDUSTRIALISATION 10 DINOS SCRIPTS AUDIO — 60 JSON + 10 MD GÉNÉRÉS
 
-**Objectif** : Graver la 1ère production audio duo Narrateur H + Wex réussie (mini-jeu Dino-Encyclopédie).
+**Objectif** : Industrialiser 9 dinos restantes post-Tricératops V0 validé. Template figé Tricératops = gabarit 6 blocs × 4 répliques. Ne pas coder manuellement 540 lignes.
 
 **Fait** :
-- [x] JSON payload créé : `game/docs/jeux/dino-encyclopedie/assets/audio/_segments-triceratops-v1.json` (24 inputs, 1792 char, model eleven_v3, tags v3 validés)
-- [x] **Appel API `POST /v1/text-to-dialogue` HTTP 200** — clé lue depuis MCP elevenlabs config (.claude.json)
-- [x] **MP3 généré** : `triceratops-v1.mp3` (1,7 MB, 106 sec, duo complet 6 blocs)
-- [x] Voice IDs réutilisés v24 figés : Narrateur `cbRcktt2xvoeFpdvW2wg` + Wex `G54e8CyYslC2Y4ZupTlg`
+- [x] Script Python `generate-audio-segments.py` crée 60 JSON (`_seg-<dinoId>-<bloc>.json`) + 10 .md récap
+- [x] **60 fichiers JSON générés** : 10 dinos × 6 blocs (nom/taille/regime/superpower/ennemis/funfact)
+- [x] **10 fichiers .md générés** : `scripts-audio/<dinoId>-V1.md` (archive + gabarit Tricératops répliqué)
+- [x] **Voix gravées (ne pas inventer)** : Narrateur H `cbRcktt2xvoeFpdvW2wg` + Wex v24 `G54e8CyYslC2Y4ZupTlg`
+- [x] **Modèle eleven_v3 obligatoire** (seul supportant tags v3 inline)
+- [x] **Total caractères dialogues** : ~14.7k chars / 51k quota = 36.3k restant ✅
+- [x] **Format validé** : 4 inputs/bloc (alternance Nar H + Wex), tags v3 limités 2-3/réplique, < 400 char/bloc
 
-**Décisions prises** : DEC-AUDIO-PRODUCTION-001 statut → **PROD V1 LIVRÉE** (attente validation Papa Yann sur écoute avant industrialisation 49 dinos restants).
+**Données sources utilisées** : `game/web/js/dinos-data.js` — 10 dinos id exacts : tyrannosaurus, spinosaurus, giganotosaurus, allosaurus, carnotaurus, brachiosaurus, diplodocus, ankylosaurus, stegosaurus, velociraptor.
 
-**Classification** : **TRAITEMENT IMMÉDIAT** + **LEÇON PROCESS API gravée**.
+**Données MANQUANTES (aucune détectée)** : toutes les 10 dinos ont nom_etym, regime, superpower, chasseurs, proies, fait complets dans la DB. ✅
 
-**⚠️ Leçon GRAVÉE : Accès API dans sous-agent** :
-Sous-agent (toi) **HORS répertoire projet** : pas d'accès `C:\Users\kimen\.claude.json` (où réside clé ElevenLabs). **Workaround validé** : main agent fait appel API (accès .claude.json), sous-agent reçoit MP3 fini. À prendre en compte pour production audio future : **toujours main agent pour POST /v1/text-to-dialogue**.
+**Classification** : **TRAITEMENT IMMÉDIAT** (industrialisation 100% mécanique, zéro créatif).
+
+**État au reboot** :
+- 60 JSON prêts pour text-to-dialogue (main agent appellera l'API, pas le sous-agent — voir leçon 2026-05-16 PILOT)
+- 10 .md récap archivés
+- Aucun fichier audio généré (wait Papa Yann validation pilot Tricératops, puis feu vert production 60)
+- **NE PAS COMMIT** — fichiers staging, attente décision audio
 
 **Fichiers impactés** :
 - ✅ `narration/pmo/decisions.md` DEC-AUDIO-PRODUCTION-001 v2 (pilot livré)

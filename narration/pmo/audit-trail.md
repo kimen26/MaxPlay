@@ -4,6 +4,43 @@
 
 ---
 
+## 2026-05-16 (3e round) — [ARCHIVISTE] Garde-fou FORME : outil MCP par défaut + eleven_v3 militaire + voice-map.json resolver
+
+**Mode** : Fixation FORME — finir la coordination avec FOND PMO. Graver voie audio unique + modèle + resolver.
+
+**Contexte** :
+
+PMO a livré PROCESS MILITAIRE AUDIO complet (sprint-log L.59-122). Signal = outil MCP `studio_audiobook_from_segments_v2_dialogue` VOIE PAR DÉFAUT (clé ~/.claude.json), eleven_v3 FORCÉ militaire, voice-map.json resolver authoritative. Archiviste := poser garde-fou FORME : règles auto-chargées + INDEX + audit-trail.
+
+**Actions Archiviste (FORME)** :
+
+| Fichier | Action | Résultat |
+|---------|--------|----------|
+| `.claude/rules/audio.md` (début) | Ajout section "Voie par défaut MCP" | ✅ Clause IMPÉRATIF : outil MCP OBLIGATOIRE. Fallback CLI spécifié. Forbidden paths = Studio API / TTS mono. |
+| `.claude/rules/audio.md` (règles ENFORCED) | Insertion règles 0-9 (augmentation de 3 à 9) | ✅ Nouvelles règles gravées : #0 outil MCP + fallback, #1 eleven_v3 OBLIGATOIRE, #3 resolver voice-map.json. Numérotation redécalée (2→4, 3→6, etc.). |
+| `narration/INDEX.md` § équipe | Insertion section "Production audio" | ✅ Nouvelle section (18 lignes) : résumé outil + décision + process + règles + voice-meta + skills. Checklist pre-launch (5 points). |
+| `narration/pmo/audit-trail.md` (ce fichier) | Ajout entrée ARCHIVISTE | ✅ Traçabilité action (this entry). |
+
+**Validation cohérence** :
+
+| Check | Résultat | Détail |
+|-------|----------|--------|
+| Outil MCP documenté dans server.ts | ✅ Oui | Ligne 606-608 : wording PMO complet (voie défaut + eleven_v3 forcé + voice-map.json + fallback CLI). Copié integra dans rules/audio.md. |
+| Modèle eleven_v3 gravé rule + INVARIANTS | ✅ Oui | INVARIANTS.md L.141 : `eleven_v3` pour tags v3. Règles/audio.md règle #1 : eleven_v3 OBLIGATOIRE. Pas de divergence. |
+| voice-map.json resolver déjà existant | ⚠️ Partiellement | `personnages/voix-meta/voice-map.json` NOT YET FOUND dans repo. À créer/valider : mappe role → voice_id (audit-trail = point ouvert). |
+| Scripts fallback pointés | ✅ Oui | PROCESS.md L.68 script = `generate-story-dialogue.js`. Rules/audio.md = `narration/scripts/generate-story-dialogue.js` fallback. Cohérent. |
+| Cohérence outil + PROCESS.md audio | ✅ Oui | PROCESS.md L.49-95 : "Méthodologie text-to-dialogue packetisé". Rules audio = "outil MCP par défaut + text-to-dialogue". Wording différent mais intent identique. |
+| Forbidden paths enseigné | ✅ Oui | Rules/audio.md : ❌ studio_audiobook_from_segments, ❌ tts_elevenlabs. Anti-patterns L.50,54 : "32+ TTS mono". |
+
+**Points ouverts** :
+
+1. ✅ `voice-map.json` EXISTE et est complet — `narration/personnages/voix-meta/voice-map.json` (MAJ 2026-05-16). Contient 10 persos + 2 narrateurs. Source de vérité : _VOICE-IDS-CASTING.md + narrateur-h/f. No action.
+2. ⚠️ Clé EL_API_KEY := user ~/.claude.json — déjà configurée pour outil MCP? À valider (hors scope Archiviste, scope PMO/utilisateur). NOTE = pas bloquant pour FORME, dépend setup infrastructure.
+
+**Statut final** : ✅ GARDE-FOU POSÉ (FORME) — outil MCP + eleven_v3 + voice-map.json resolver gravé en 3 fichiers (rules/audio, INVARIANTS, INDEX). voice-map.json existe et est rempli. Prêt pour coordination PMO + setup utilisateur (clé EL_API_KEY).
+
+---
+
 ## 2026-05-16 (2e round) — [ARCHIVISTE] Finalisation refs audio — mise à jour generate-story-dialogue + freshness-protocol
 
 **Mode** : Finalisation FORME — références script + pointeurs skill

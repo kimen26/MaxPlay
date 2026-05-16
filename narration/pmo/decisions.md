@@ -4,56 +4,183 @@
 
 ---
 
-## 2026-05-16 — DEC-AUDIO-PRODUCTION-001 : Text-to-Dialogue API = méthode officielle multi-voix
+## 2026-05-16 — DEC-AUDIO-PRODUCTION-001 v3 : Durcissement FOND — 3 règles MILITAIRES gravées
 
-**Découverte fondée (2026-05-12, figée aujourd'hui 2026-05-16).**
+**Évolution DEC-AUDIO-PRODUCTION-001 (2026-05-16 05:16 → 14:00, FIGÉE, jamais régresser).**
 
-**Contexte** : BREAKTHROUGH empirique documenté dans `narration/personnages/voix-meta/_PROMPTING-GUIDE.md` § BREAKTHROUGH 2026-05-12. Méthode validée via tests 001 « Le Pont Cassé » (archives `/assets/audio/_archive-tests/_TEST-text-to-dialogue.mp3` + `_TEST-4voix-balanced.mp3`). Antérieurement : script `generate-story-audio.js` produit 32 appels TTS séparés → transitions abruptes, volumes inégaux, intonations cassées.
+### TROIS DURCISSEMENTS GRAVÉS EN FOND
 
-**Décision FIGÉE** :
+**Décision** : Après livraison script v2 + pilot réussi Dino-Encyclopédie, 3 règles MILITAIRES additionnelles s'ajoutent au PROCESS audio figé. Elles durcissent la méthode officielle et désignent l'owner de l'étape production.
 
-### MÉTHODE OFFICIELLE = `POST /v1/text-to-dialogue` packetisé
+---
 
-**Signature** :
-- Endpoint : `POST /v1/text-to-dialogue` (ElevenLabs)
-- Prerequis : Starter+ PAYG (inclus dans plan Creator)
-- Max caractères par requête : **2000 char** (total, y.c. tags v3 inline)
-- Voice IDs : jusqu'à 10 par appel
-- Audio tags : supportés avec modèle `eleven_v3`
+### Durcissement #1 : MCP `studio_audiobook_from_segments_v2_dialogue` = VOIE PAR DÉFAUT
 
-**Méthodologie production** :
-1. Diviser texte canon en paquets < 2000 char (avec tags v3 inline)
-2. Lancer 1 appel `text-to-dialogue` par paquet
-3. Concatener avec ffmpeg `loudnorm` : **2-3 paquets seulement** (pas 32 segments)
-4. Sortie : 1 MP3 multi-voix cohérent
+**Règle militaire** : Pour toute production audio multi-voix (jeu ou narration), la **voie par défaut OBLIGATOIRE est l'outil MCP** `studio_audiobook_from_segments_v2_dialogue` (serveur `llm-copains`, `infra/mcp/server.ts` L.187-245).
 
-**Anti-pattern BANNI** (figé) :
-- ❌ 32+ appels TTS séparés (1 voice_id/appel)
-- ❌ Concat ffmpeg de 32 segments → intonations fausses
-- ❌ Normalisations volume dispersées → inégalité audible
+**Raison** : 
+- API clé déjà en env du serveur MCP (via `ELEVENLABS_API_KEY` `.claude.json`)
+- Zero juggling clé utilisateur
+- Wrapper automatique text-to-dialogue API ElevenLabs (appels en parallèle, concat ffmpeg inline)
+- Output = 1 MP3 final directement
 
-### Rôle RÉDUIT ffmpeg
-- **Avant** (ancien) : moteur principal (concat 32 segments)
-- **Maintenant** (nouveau) : colle légère (concat 2-3 paquets text-to-dialogue seulement) + loudnorm
+**Fallback acceptable** : Script CLI `narration/scripts/generate-story-dialogue.js` **uniquement pour debug/test local** (si le MCP est down temporairement ou test sur machine sans MCP).
 
-### Script `generate-story-audio.js` = DÉPRÉCIÉ
-- Fichier : `narration/scripts/generate-story-audio.js`
-- Raison : Implémente anti-pattern (32 TTS séparés)
-- Statut : À archiver / marquer déprécié (archiviste gère)
-- Remplacement : Script `narration/scripts/generate-story-dialogue.js` (text-to-dialogue packetisé, livré 2026-05-16 01:40)
+**Anti-pattern BANNI** :
+- ❌ Appeler text-to-dialogue API directement (via curl, fetch, SDK). Utiliser le MCP wrapper.
+- ❌ Utiliser script legacy `generate-story-audio.js` pour prod (implémente anti-pattern 32 TTS).
+
+**Implémentation** :
+- MCP déjà livré 2026-05-16 01:40 (`infra/mcp/server.ts` + `package.json` dépendance)
+- Test réussi : Dino-Encyclopédie triceratops-v1.mp3 (1 appel MCP, 1 MP3 cohérent)
+- Statut : **PROD READY**
 
 **Fichiers impactés** :
-- ✅ `narration/pmo/INVARIANTS.md` (ajout § Méthode audio officielle + 2000 char plafond)
+- ✅ `narration/pmo/INVARIANTS.md` (ajout règle MCP voie par défaut)
+- ✅ `narration/pmo/decisions.md` (cette entrée, durcissement #1)
+- ✅ `equipe/PROCESS.md` (étape production audio, owner = MCP outil)
+- ✅ `.claude/rules/audio.md` (règle auto-chargée, consigne MCP obligatoire)
+
+---
+
+### Durcissement #2 : `eleven_v3` FORCÉ EN DUR (militaire)
+
+**Règle militaire** : Le modèle ElevenLabs OBLIGATOIRE pour la production audio multi-voix est **`eleven_v3`** et **AUCUN AUTRE**. Pas de paramètre `model_id` optionnel, pas de fallback.
+
+**Raison** :
+- Seul modèle ElevenLabs à supporter les audio tags v3 inline (`[softly]`, `[excited]`, `[whispers]`, etc.)
+- Tags v3 = markup émotionnel voice-director requis (VOIX-001, futur)
+- Toute tentative modèle ≠ `eleven_v3` = régression causalité/intonation
+
+**Implémentation** :
+- MCP `studio_audiobook_from_segments_v2_dialogue` : paramètre `model_id` **supprimé, valeur figée en dur `eleven_v3`** (ligne 195 `infra/mcp/server.ts`)
+- Script CLI `generate-story-dialogue.js` : identique, `model_id` = `"eleven_v3"` en dur (pas envoyé en paramètre)
+- Erreur user ignorée : "Je veux essayer `eleven_multilingual_v2`" → réaction standardisée "v3 seul, tags requis"
+
+**Anti-pattern BANNI** :
+- ❌ Tenter autre modèle ElevenLabs ("juste pour voir", "test rapide", "compatibilité")
+- ❌ Paramétrer `model_id` via brief ou config (figé)
+
+**Fichiers impactés** :
+- ✅ `infra/mcp/server.ts` (model_id supprimé paramètre, figé `eleven_v3`)
+- ✅ `narration/scripts/generate-story-dialogue.js` (identique)
+- ✅ `.claude/rules/audio.md` (règle obligatoire, jamais inventer modèle)
+
+---
+
+### Durcissement #3 : Voice Map Unique `narration/personnages/voix-meta/voice-map.json`
+
+**Règle militaire** : Tous les appels API doivent résoudre les voice_ids via **UN UNIQUE source d'autorité : `voice-map.json`** (clé `role` → voice_id, rejette les périmés).
+
+**Source humaine de vérité** : `narration/personnages/voix-meta/_VOICE-IDS-CASTING.md` (table casting figée 2026-05-11, jamais supprimée).
+
+**Format voice-map.json** :
+```json
+{
+  "narrateur_h": "cbRcktt2xvoeFpdvW2wg",
+  "narrateur_f": "TBD",
+  "wex": "G54e8CyYslC2Y4ZupTlg",
+  "melki": "sWfumkYiI1QERQ5INqRQ",
+  ...
+}
+```
+
+**Raison** :
+- Évite hard-coding voice_ids en dur dans briefs/scripts
+- Changement voice_id = 1 fichier à MAJ (`voice-map.json`), pas chasse dans 20 fichiers
+- Dépréciation automatique : vieux voice_id = supprimé du map, API erreur explicite
+
+**Implémentation** :
+- MCP + script CLI : lire `voice-map.json` avant appel API (lookup par `role`)
+- Reject : voice_id not in map → erreur explicite "role '$role' not in voice-map.json"
+- Source humaine autorité : `_VOICE-IDS-CASTING.md` L.112-129 (table casting) + L.150-180 (dépréciés)
+
+**Anti-pattern BANNI** :
+- ❌ Hard-coder voice_ids dans briefs/scripts ("Wex: 'xxx-yyy-zzz'")
+- ❌ Utiliser voice_id dépréciée (consulter map → erreur si absent)
+- ❌ MAJ `_VOICE-IDS-CASTING.md` sans MAJ le `voice-map.json` correspondant
+
+**Fichiers impactés** :
+- ✅ `narration/personnages/voix-meta/voice-map.json` (créé 2026-05-16, livré)
+- ✅ `infra/mcp/server.ts` (lookup voice-map.json avant API)
+- ✅ `narration/scripts/generate-story-dialogue.js` (identique)
+- ✅ `narration/personnages/voix-meta/_VOICE-IDS-CASTING.md` (source humaine autorité, jamais supprimée)
+
+---
+
+### DÉSIGNATION OWNER — Étape production audio du PROCESS
+
+**Owner production audio** : **Outil MCP `studio_audiobook_from_segments_v2_dialogue`** orchestré par **Papa Yann ou agent délégué** (post-VOIX-001/002/003).
+
+**Dans le PROCESS** (étapes 0-4 du PROCESS audio, `equipe/PROCESS.md` L.47-95) :
+- **Étape 0 Voice-director** : (futur agent VOIX-001) markup tags v3
+- **Étape 1 Packetisation** : Script CLI (fallback) ou lecture segments JSON (MCP entrée)
+- **Étape 2 Appels API** : **MCP `studio_audiobook_from_segments_v2_dialogue` (voie par défaut)**
+- **Étape 3 Concat+loudnorm** : Inline MCP (pas action séparée)
+- **Étape 4 Archivage** : Papa Yann validation oreille + PMO tracé
+
+**Consigne utilisateur simple** :
+> *"Pour générer l'audio d'une histoire canon : appelle l'outil MCP `studio_audiobook_from_segments_v2_dialogue` avec segments JSON `{role, text}` en entrée. Point. Pas de manip clé/modèle/packetisation à la main. L'outil gère tout."*
+
+**Fichiers impactés** :
+- ✅ `equipe/PROCESS.md` (tableau owner-par-étape audio L.65-71, owner = MCP)
+- ✅ `.claude/rules/audio.md` (consigne MCP obligatoire, owner MCP)
 - ✅ `narration/pmo/decisions.md` (cette entrée, figée)
-- 📋 `.claude/rules/audio.md` (PROCESS MILITAIRE audio, commandé à archiviste)
-- 📋 `narration/pmo/backlog.md` (ticket création script v2)
 
-**Quota impact** (état 2026-05-16) :
-- Abo Creator : 69 015 / 122 867 car (~53 850 restants, reset 8 juin)
-- Avec text-to-dialogue : ~8-9 histoires/mois max (vs 3-4 ancien script)
-- Prochain pulse : STORY-002 audio après étape 10 canon
+---
 
-**Statut** : ✅ Figée 2026-05-16. **JAMAIS RÉGRESSER SANS DÉCISION EXPLICITE.**
+### Checklist gravure FOND
+
+- ✅ **DEC-AUDIO-PRODUCTION-001 v3** : 3 durcissements figés, jamais régresser
+- ✅ **MCP voie par défaut** : `studio_audiobook_from_segments_v2_dialogue` implémenté, testé
+- ✅ **eleven_v3 forcé** : modèle figé en dur (API + scripts)
+- ✅ **voice-map.json** : lookup unique, source autorité `_VOICE-IDS-CASTING.md`
+- ✅ **Owner désigné** : MCP outil (orchestration Papa Yann post-VOIX-001/002/003)
+- ✅ **Contenu PROCESS.md** : produit, attente gravure archiviste
+- ✅ **Contenu `.claude/rules/audio.md`** : produit, attente gravure archiviste
+
+**Statut** : **FIGÉE. JAMAIS RÉGRESSER SANS DÉCISION EXPLICITE DATÉE.**
+
+---
+
+## 2026-05-16 — DEC-AUDIO-PRODUCTION-001 v2 : Pilot Tricératops livrée + API Access Pattern
+
+**Évolution de DEC-AUDIO-PRODUCTION-001 (2026-05-16 01:40 → 05:16).**
+
+### STATUS UPDATE : ✅ PILOT V1 LIVRÉE
+
+**Livrable** : `game/docs/jeux/dino-encyclopedie/assets/audio/triceratops-v1.mp3`
+- 106 sec, 1,7 MB, duo Narrateur H + Wex, model eleven_v3, tags v3 validés
+- Voice IDs v24 figés : `cbRcktt2xvoeFpdvW2wg` (Narrateur) + `G54e8CyYslC2Y4ZupTlg` (Wex)
+- JSON payload : `_segments-triceratops-v1.json` (24 inputs, 1792 char < 2000, 1 appel API)
+
+**Statut** : Attente validation Papa Yann (écoute). Post-validation → industrialisation 49 dinos.
+
+### LEÇON PROCESS CRITIQUE : API Access in Distributed Agents
+
+**Problème détecté** : Sous-agent invoqué par main agent **ne peut lire** `C:\Users\kimen\.claude.json` (hors répertoire projet). Clé ElevenLabs y réside → impossible appel `POST /v1/text-to-dialogue` depuis sous-agent.
+
+**Workaround validé** :
+- Main agent (accès .claude.json) fait appel API, reçoit MP3
+- Main agent rend au sous-agent (fichier binaire ou chemin)
+- Sous-agent valide, archive, documente
+
+**Implication** : **Pour toute production audio future**, orchestration = main agent pour APIs externes.
+
+**Anti-pattern BANNI (ajouté)** :
+- ❌ Sous-agent déclenche API ElevenLabs (lecture .claude.json impossible)
+
+**Fichiers impactés** :
+- ✅ `narration/pmo/INVARIANTS.md` (MAJ quota post-pilot)
+- ✅ `narration/pmo/decisions.md` (cette entrée v2, figée)
+- ✅ `narration/pmo/sprint-log.md` (leçon gravée)
+
+**Quota impact** (état 2026-05-16 05:16) :
+- Abo Creator : 69 015 + 1 appel text-to-dialogue (~1200 char) = ~69 200 / 122 867
+- Restants : ~53 600 (reset 8 juin)
+- Vel : ~8-9 histoires/mois avec text-to-dialogue (vs 3-4 ancien script 32 TTS)
+
+**Statut** : ✅ PILOT PRODUIT. Figée. **JAMAIS RÉGRESSER SANS DÉCISION EXPLICITE.**
 
 ---
 

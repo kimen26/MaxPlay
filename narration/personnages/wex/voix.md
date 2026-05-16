@@ -1,6 +1,6 @@
 # Production Audio — Wex (Hors-système)
 
-> **Voice_id figé** : `MvACGLim6BRvCWyH21A6` — bibliothèque ElevenLabs **Lumi Wex Rêveur** (figé 2026-05-11, méthodo v19, hors-système).
+> **Voice_id figé** : `G54e8CyYslC2Y4ZupTlg` — bibliothèque ElevenLabs **Lumi Wex Rêveur** (figé 2026-05-11, méthodo v19, hors-système).
 
 ---
 

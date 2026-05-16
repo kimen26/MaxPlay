@@ -6,82 +6,114 @@ date: 2026-05-16
 vague: 3
 ---
 
-— Là ! Elle est LÀ !
+L'étang dort dans le creux de l'herbe. L'eau est si claire qu'on voit le fond,
+les racines brunes et les têtards qui virgulent entre les pierres. Les roseaux
+ne bougent presque pas. Sur l'eau, une lumière tremble, douce comme du miel.
 
-Je cours déjà. Mes pieds tapent l'herbe mouillée et la libellule file devant mon nez, bleue, non, verte, non, jaune quand le soleil tape dessus. L'air sent la mousse fraîche. Sous l'eau claire, des têtards gros comme des virgules font des petits points qui frétillent.
+Puis trois enfants arrivent, et le calme se réveille.
 
-Je fredonne en courant, une chanson sans paroles, juste pour mes jambes. La libellule s'arrête PILE en l'air. Une seconde. Sans bouger d'un poil. Puis elle file à angle droit. Puis elle monte tout droit comme une fusée. Puis elle glisse sur l'eau sans la toucher.
+Juju lance un caillou. *Ploc.* Des ronds s'élargissent sur l'eau, et elle rit
+déjà. Elle fredonne aussi, un petit air à elle, la-la-laaa, en sautant d'une
+touffe de mousse à l'autre.
 
-— Tu l'as vue ? je crie. Tu l'as VUE ?
+— Une libellule ! Là ! crie-t-elle.
 
-Wex la montre du doigt, la bouche grande ouverte.
+Elle file. La libellule brille de toutes ses ailes. Elle s'arrête pile en
+l'air, tourne à angle droit comme si elle suivait un coin invisible, puis
+décolle tout droit vers le ciel.
 
-— Elle a fait l'angle. T'as vu, elle a fait l'angle.
+— Reviens ! rit Juju, les bras grands ouverts.
 
-— Attrape-la, alors !
+Wex court derrière, le doigt tendu vers le bleu qui file. Il rate. La libellule
+glisse au ras de l'eau, frôle un têtard, remonte. Personne ne l'attrape.
+C'est raté, et c'est trop drôle. Juju repart, fredonne, fonce encore.
 
-On fonce tous les deux. Je plonge les deux mains en avant. Mes doigts se referment sur rien du tout. Wex tourne sur lui-même pour la suivre et tombe les fesses dans la mousse en riant.
+— Elle se moque de nous ! lance Wex.
 
-— Elle est trop rapide ! dit Wex.
+— Elle est trop rapide pour toi, taquine Juju en passant. Pas pour moi !
 
-— Encore une fois.
+Et elle bute presque sur un roseau, se rattrape, repart sans s'arrêter.
 
-Je relance ma chanson, plus fort. Je fonce, je saute, je retombe à plat ventre dans l'herbe, les mains vides. Un gros bourdon passe en grognant, lent et lourd, et je rigole toute seule. Je me relève déjà.
+Pendant ce temps, Nono a ralenti. Personne ne l'a vu glisser hors de la course.
+Il s'assoit dans l'herbe, enlève une chaussure, puis l'autre, puis ses
+chaussettes. Ses pieds nus se posent sur l'herbe fraîche. L'eau est basse ici,
+limpide et tranquille. Il se relève, très lentement, et il tend la main, paume
+ouverte vers le haut.
 
-Sauf que Nono, lui, il bouge plus.
+— Attends, dit-il, tout doux.
 
-Il s'est assis dans l'herbe sans rien dire. Il enlève une chaussure. Puis l'autre. Puis les chaussettes, qu'il roule en boule. Il pose ses pieds nus sur l'herbe fraîche, là où le sol est mou et mouillé. Il se relève tout doucement. Il ouvre une main, la paume vers le ciel. Il attend.
+Juju court toujours.
 
-— Attends..., il dit, pour personne.
+— Hé, l'épouvantail ! Tu plantes des carottes ? lance-t-elle en riant, sans
+s'arrêter une seconde.
 
-Moi je m'arrête pas. Jamais. Je cours après la libellule qui repart vers le milieu et je lance, à fond, en passant devant lui :
+Sa chanson s'arrête net, en plein milieu d'un la-la.
 
-— T'as vu l'épouvantail ! Planté comme un piquet, les bras en croix ! Allez, viens, ici on chasse, on fait pas raci—
+Wex, lui, s'arrête. Il fronce le nez.
 
-Ma chanson se coupe net. En plein milieu de mon mot.
+— Ben... un épouvantail, ça fait partir les bêtes, dit-il, pour lui tout seul.
+Nous, on veut qu'elle vienne, pourtant.
 
-Wex, lui, s'est arrêté. Il regarde Nono. Il regarde sa main ouverte. Il fronce le nez.
+Juju repart de plus belle, le regard en l'air, sur la libellule. Son pied
+accroche une racine. Elle tangue — et sa main attrape celle de Nono, juste à
+côté. Elle reste là, sans lâcher. Le silence se pose autour d'eux comme une
+plume.
 
-— Ben... un épouvantail, dit-il tout bas, pour lui tout seul, ça fait partir les bêtes. Nous on veut qu'elle vienne, pourtant.
+Nono tient sa main. Il sourit, à peine.
 
-Il se gratte la tête.
+Alors la libellule descend. Elle hésite. Elle se pose sur le doigt libre de
+Nono, sans un bruit. Ses ailes brillent comme du verre mouillé.
 
-Moi je cours toujours. Mon pied accroche une racine qui sort de la terre. Le sol penche, je pars en avant — et ma main attrape une autre main. La main de Nono. Chaude. Solide. Je me rattrape. Je reste là, le bras tendu, ma main dans la sienne.
+Nono lève la main, tout doucement, tout doucement, jusque devant le nez de
+Juju.
 
-Nono tient bon. Il dit rien. Il sourit, juste un peu.
+Juju louche. Elle n'ose plus bouger. Plus du tout.
 
-Silence.
+Wex ouvre la bouche. Aucun son. Ses yeux sont ronds comme deux billes, sa tête
+penche sur le côté, comme un petit chien qui écoute un bruit que personne
+d'autre n'entend.
 
-La libellule descend. Elle ralentit. Elle se pose sur le bout du doigt de Nono, sa main libre, légère comme une feuille.
+Nono pose un doigt sur le bout du nez de Juju.
 
-Nono lève le bras tout, tout doucement. La libellule monte avec. Elle arrive juste devant mon nez. Ses gros yeux ronds me regardent.
+— Gagné, dit-il.
 
-Je louche dessus. Je bouge plus du tout. J'ose même plus respirer.
+La libellule s'envole. Elle file vers les roseaux, tourne à angle droit, et
+disparaît dans la lumière.
 
-Wex ouvre grand la bouche. Pas un son. Ses yeux sont ronds comme des billes, sa tête penche sur le côté, comme un chien qui entend un drôle de bruit.
+Juju cligne des yeux. Puis elle éclate de rire, repart en courant le long de
+l'eau. Sa chanson recommence, là où elle s'était arrêtée. La-la-laaa.
 
-Tout est suspendu.
-
-Nono tend son autre doigt et touche le bout de mon nez.
-
-— Gagné !
-
-La libellule s'envole. Bleue, verte, jaune. Angle droit. Tout droit vers le ciel. Elle disparaît dans les roseaux.
-
-Je reste là une seconde, le nez encore tout chatouillé. Puis je ramasse un caillou. Wex éclate de rire, et moi je relance ma chanson, là où elle s'était cassée — comme si de rien n'était.
-
-— Bon. À l'eau, toi.
-
-*Plouf.* Les têtards se sauvent encore.
+L'étang frissonne un peu. Les têtards reprennent leur danse.
 
 ---
 
 **Note d'intention**
 
-Ce que j'ai voulu faire ressentir : l'histoire est racontée en « je », depuis l'intérieur de Juju, et elle s'ouvre en pleine course — pas un décor posé, un cri lancé. Je voulais que l'enfant soit *dans* les jambes qui tapent l'herbe avant de comprendre où il est. La différence de température entre deux façons d'être au monde se vit alors de l'intérieur : Juju ne *voit* pas Nono se calmer, elle est trop occupée à courir — c'est le lecteur qui le sent, dans le rythme qui s'apaise quand le « je » trébuche enfin et s'arrête. Le pivot n'est pas observé, il est subi : sa main attrape une autre main sans qu'elle l'ait décidé.
+Ce que j'ai voulu faire ressentir : la bascule entre l'agitation et le souffle
+retenu. L'enfant doit sentir le contraste dans son corps — d'abord ça court, ça
+rit, ça rate, et puis tout se ralentit jusqu'à ne plus oser respirer, comme
+quand on tient un secret au creux de la main. Pas comprendre — sentir l'air
+changer.
 
-Ce que j'ai apporté hors brief : la couleur instable de la libellule comme refrain (« bleue, non, verte, non, jaune »), lâchée dès la première phrase et reprise à la fin en écho fermé. Le « je fredonne pour mes jambes » — la chanson devient un moteur, pas un ornement, ce qui rend sa coupure « en plein milieu de mon mot » beaucoup plus physique. Et la chute : Juju ne dit rien du moment suspendu, elle relance sa chanson « là où elle s'était cassée — comme si de rien n'était », puis repart sur un caillou. L'énergie ne retombe pas, elle ricoche. Quelque chose a changé dans l'air, mais Juju, fidèle à elle-même, refuse de le nommer — et le texte aussi.
+Ce que j'ai apporté hors brief : l'image des têtards qui « virgulent » et qui
+« reprennent leur danse » à la fin — un cadre sensoriel qui ouvre et referme
+l'histoire, l'étang vivant avant et après les enfants. Le « ploc » unique du
+caillou comme seule onomatopée, jouable d'un souffle à voix haute. Le silence
+« qui se pose comme une plume » et la lumière « douce comme du miel », des
+images de la vie courante qu'un enfant de quatre ans reconnaît. La libellule
+qui « tourne à angle droit comme si elle suivait un coin invisible » — pour
+donner du mystère à son vol sans l'expliquer.
 
-Comment j'ai incarné chacun : **Juju** porte la narration et ne s'adoucit jamais — elle ne s'arrête pas une seule fois de son plein gré, sa tendresse est cachée dans le fait qu'elle se rattrape à Nono sans y penser, jamais dans un mot doux. Sa chanson coupée net en pleine syllabe (« on fait pas raci— ») est son cœur battant rendu audible. **Nono** fait des gestes, il n'est pas effacé : il défait ses chaussures une à une, pose les pieds, ouvre la main, lève le bras — des actions lentes mais réelles, vues depuis l'extérieur par une narratrice qui ne les comprend pas. Son « Gagné ! » est sec, non explicatif, presque taquin. **Wex** bugue sur la logique de l'épouvantail et reste coincé là, sans jamais résoudre — son « oh » muet, bouche ouverte, tête penchée comme un chien, est sa seule réponse au mystère. Il est dans le groupe, jamais au-dessus, et le POV Juju l'aide : on ne l'entend penser que ce qu'elle, distraite, capte au passage.
+Comment j'ai incarné chacun : Nono décroche sans un mot, par gestes lents et
+posés — c'est lui qui crée le silence autour du groupe, jamais dit. Juju ne
+freine jamais, même au pivot : elle vanne en courant, bute, se rattrape, et
+repart à rire à la fin — son énergie ne s'adoucit pas, sa tendresse reste
+cachée dans le contact de sa main. La libellule la choisit elle, par-dessus
+l'épaule de Nono — je l'ai laissé affleurer sans jamais le souligner. Wex
+observe, bugue tout seul à voix haute (« on veut qu'elle vienne, pourtant »),
+puis son « oh » muet, tête penchée comme un chien — il ne résout rien, le
+contre-pied se fait seul.
 
-Ce que j'ai écarté : l'ouverture descriptive du décor (le brief autorise une ouverture libre, l'angle de ce writer demande l'in medias res — j'ai donc fait entrer le lieu par fragments, à hauteur de course, plutôt qu'en tableau posé). J'ai aussi écarté toute insistance sur le « pourquoi » : la libellule vient, Wex bugue, et le contre-pied se fabrique tout seul — aucun lien explicite entre le calme de Nono et l'insecte, aucun regard appuyé entre les enfants. Le silence avant la pose reste volontairement nu : une seule ligne, « Silence. », pour laisser le vide travailler là où les mots gâcheraient.
+Ce que j'ai écarté : la fin « calme » plate. J'ai choisi le « ça repart » —
+Juju recourt, la chanson reprend pile où elle s'était cassée, la vie continue.
+Plus fidèle à son énergie, et ça laisse l'air vibrer sans conclure.

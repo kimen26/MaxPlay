@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MJ-21 — Peins les bus !</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none; }
+    body { font-family:'Nunito',sans-serif; background:linear-gradient(160deg,#0f1a2e 0%,#1a2338 50%,#0a0f1a 100%); height:100dvh; overflow:hidden; touch-action:none; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:600px; margin:0 auto; }
+
+    .hdr { display:flex; align-items:center; gap:10px; padding:6px 12px; background:rgba(0,0,0,0.25); border-bottom:1px solid rgba(255,255,255,0.08); flex-shrink:0; }
+    .back { color:#fff; text-decoration:none; font-size:1.3rem; font-weight:900; padding:4px 10px; border-radius:8px; background:rgba(255,255,255,0.12); flex-shrink:0; }
+    .back:active { background:rgba(255,255,255,0.25); }
+    .htitle { color:#fff; font-size:1rem; font-weight:900; flex:1; }
+
+    .progress-zone { display:flex; justify-content:center; align-items:center; gap:6px; padding:6px 16px 4px; flex-shrink:0; }
+    .prog-dot { width:12px; height:12px; border-radius:50%; background:rgba(255,255,255,0.12); border:2px solid rgba(255,255,255,0.25); transition:all 0.3s; }
+    .prog-dot.done { background:#00c47a; border-color:#00c47a; box-shadow:0 0 6px #00c47a88; }
+    .prog-dot.current { background:rgba(255,220,80,0.25); border-color:#ffe066; animation:dotPulse 1.2s ease-in-out infinite alternate; }
+    @keyframes dotPulse { from { box-shadow:0 0 0px rgba(255,220,80,0.3); } to { box-shadow:0 0 8px rgba(255,220,80,0.8); } }
+
+    .hint-row { display:flex; justify-content:center; padding:2px 0; flex-shrink:0; min-height:28px; }
+    .btn-hint { background:rgba(255,220,80,0.15); border:2px solid rgba(255,220,80,0.5); color:#ffe066; border-radius:20px; font-family:'Nunito',sans-serif; font-weight:900; font-size:0.8rem; padding:4px 14px; cursor:pointer; animation:hintPulse 1.5s ease-in-out infinite alternate; display:block; }
+    @keyframes hintPulse { from { box-shadow:0 0 0px rgba(255,220,80,0.3); } to { box-shadow:0 0 10px rgba(255,220,80,0.7); } }
+
+    .cible-zone { display:flex; justify-content:center; align-items:center; gap:14px; padding:6px 16px 2px; flex-shrink:0; }
+    .cible-bus-wrap { position:relative; display:inline-flex; align-items:center; justify-content:center; }
+    .cible-dot { position:absolute; bottom:-6px; right:-6px; width:28px; height:28px; border-radius:50%; border:3px solid rgba(255,255,255,0.9); box-shadow:0 2px 8px rgba(0,0,0,0.5); }
+    .cible-label { color:rgba(255,255,255,0.7); font-size:0.7rem; font-weight:900; text-align:center; letter-spacing:0.5px; }
+
+    .tubes-zone { display:flex; justify-content:center; align-items:flex-start; gap:24px; padding:4px 16px 2px; flex-shrink:0; }
+    .tube-col { display:flex; flex-direction:column; align-items:center; gap:3px; }
+    .tube-letter { color:rgba(255,255,255,0.45); font-size:0.65rem; font-weight:900; letter-spacing:1.5px; }
+    .tube-wrap { cursor:pointer; position:relative; border-radius:10px; transition:filter 0.15s; }
+    .tube-wrap.active::after { content:''; position:absolute; inset:-5px; border-radius:14px; border:2.5px solid #ffe066; box-shadow:0 0 12px rgba(255,220,80,0.45); pointer-events:none; }
+    @keyframes tubeShake {
+      0%,100%{transform:rotate(0) scale(1);}
+      15%{transform:rotate(-13deg) scale(1.04);}
+      35%{transform:rotate(13deg) scale(1.04);}
+      55%{transform:rotate(-9deg) scale(1.02);}
+      75%{transform:rotate(9deg) scale(1.02);}
+    }
+    .tube-wrap.shaking { animation:tubeShake 0.55s ease; }
+    .tube-result { color:#ffe066; font-size:0.75rem; font-weight:900; min-height:1.1em; text-align:center; max-width:80px; }
+    .tube-actions { display:flex; gap:5px; }
+    .btn-tube { border-radius:12px; font-family:'Nunito',sans-serif; font-weight:900; font-size:0.72rem; padding:6px 9px; cursor:pointer; color:#fff; }
+    .btn-tube:active { opacity:0.72; transform:scale(0.91); }
+    .btn-vider { background:rgba(255,255,255,0.09); border:2px solid rgba(255,255,255,0.22); }
+    .btn-mixer { background:rgba(80,220,255,0.18); border:2px solid rgba(80,220,255,0.45); }
+
+    .pots-zone { display:flex; justify-content:center; gap:10px; padding:8px 12px 6px; flex-shrink:0; }
+    .pot { width:78px; height:78px; border-radius:20px; border:none; cursor:pointer; font-family:'Nunito',sans-serif; font-weight:900; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; box-shadow:0 8px 24px rgba(0,0,0,0.5); transition:transform 0.1s, box-shadow 0.1s; }
+    .pot:active { transform:scale(0.89) translateY(3px); box-shadow:0 4px 10px rgba(0,0,0,0.4); }
+    .pot-rouge { background:radial-gradient(circle at 35% 30%, #FF5555, #CC0000); color:#fff; }
+    .pot-jaune { background:radial-gradient(circle at 35% 30%, #FFE855, #CCAA00); color:#333; }
+    .pot-bleu  { background:radial-gradient(circle at 35% 30%, #5577FF, #0033CC); color:#fff; }
+    .pot-blanc { background:radial-gradient(circle at 35% 30%, #FFFFFF, #CCCCCC); color:#333; border:2px solid rgba(0,0,0,0.12); }
+    .pot-emoji { font-size:1.6rem; line-height:1; }
+    .pot-lbl   { font-size:0.68rem; letter-spacing:0.5px; }
+
+    .overlay { position:fixed; inset:0; background:rgba(0,0,0,0.88); display:flex; align-items:center; justify-content:center; z-index:100; opacity:0; visibility:hidden; transition:all 0.4s; }
+    .overlay.show { opacity:1; visibility:visible; }
+    .ov-box { background:linear-gradient(135deg,#1a1a2e,#16213e); border-radius:24px; border:2px solid rgba(255,255,255,0.1); padding:28px 24px; text-align:center; max-width:320px; width:90%; }
+    .ov-emoji { font-size:3rem; margin-bottom:8px; }
+    .ov-title { font-size:1.6rem; color:#ffe066; font-weight:900; margin-bottom:8px; }
+    .ov-text  { color:#fff; font-size:1rem; margin-bottom:20px; line-height:1.4; }
+    .ov-btn   { background:linear-gradient(135deg,#00c47a,#00a86b); color:#fff; border:none; border-radius:20px; font-family:'Nunito',sans-serif; font-weight:900; font-size:1.1rem; padding:12px 28px; cursor:pointer; }
+    .ov-btn:active { opacity:0.8; }
+
+    .brun-overlay { position:fixed; inset:0; background:rgba(60,30,0,0.93); display:flex; align-items:center; justify-content:center; z-index:99; opacity:0; visibility:hidden; transition:all 0.3s; }
+    .brun-overlay.show { opacity:1; visibility:visible; }
+    .brun-content { text-align:center; padding:20px; }
+    .brun-emoji { font-size:4.5rem; display:block; animation:wobble 0.55s infinite; }
+    @keyframes wobble { 0%,100%{transform:rotate(-12deg) scale(1);} 50%{transform:rotate(12deg) scale(1.08);} }
+    .brun-text { color:#fff; font-size:1.3rem; font-weight:900; margin-top:10px; line-height:1.5; }
+    .btn-laver { background:rgba(255,255,255,0.2); color:#fff; border:2px solid rgba(255,255,255,0.4); border-radius:22px; font-family:'Nunito',sans-serif; font-weight:900; font-size:1rem; padding:10px 28px; cursor:pointer; margin-top:16px; display:inline-block; }
+    .btn-laver:active { background:rgba(255,255,255,0.35); }
+  </style>
+</head>
+<body>
+<div id="app">
+
+  <div class="hdr">
+    <a href="index.html" class="back">&#8592;</a>
+    <span class="htitle">🎨 Peins les bus !</span>
+  </div>
+
+  <div class="progress-zone" id="progress"></div>
+
+  <div class="cible-zone" id="cible-zone"></div>
+
+  <div class="pots-zone">
+    <button class="pot pot-rouge" onclick="addCouleur('r')">
+      <span class="pot-emoji">&#128308;</span>
+      <span class="pot-lbl">ROUGE</span>
+    </button>
+    <button class="pot pot-jaune" onclick="addCouleur('j')">
+      <span class="pot-emoji">&#128993;</span>
+      <span class="pot-lbl">JAUNE</span>
+    </button>
+    <button class="pot pot-bleu" onclick="addCouleur('b')">
+      <span class="pot-emoji">&#128309;</span>
+      <span class="pot-lbl">BLEU</span>
+    </button>
+    <button class="pot pot-blanc" onclick="addCouleur('w')">
+      <span class="pot-emoji">&#11036;</span>
+      <span class="pot-lbl">BLANC</span>
+    </button>
+  </div>
+
+  <div class="tubes-zone">
+    <div class="tube-col">
+      <div class="tube-letter">TUBE A</div>
+      <div class="tube-wrap active" id="tube-wrap-0" onclick="selectTube(0)"></div>
+      <div class="tube-result" id="tube-result-0"></div>
+      <div class="tube-actions">
+        <button class="btn-tube btn-vider" onclick="viderTube(0)">&#128703; Vider</button>
+        <button class="btn-tube btn-mixer" onclick="mixerTube(0)">&#128256; Mixer</button>
+      </div>
+    </div>
+    <div class="tube-col">
+      <div class="tube-letter">TUBE B</div>
+      <div class="tube-wrap" id="tube-wrap-1" onclick="selectTube(1)"></div>
+      <div class="tube-result" id="tube-result-1"></div>
+      <div class="tube-actions">
+        <button class="btn-tube btn-vider" onclick="viderTube(1)">&#128703; Vider</button>
+        <button class="btn-tube btn-mixer" onclick="mixerTube(1)">&#128256; Mixer</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="hint-row">
+    <button class="btn-hint" id="btn-hint" onclick="showHint()">&#128161; Indice</button>
+  </div>
+
+</div>
+
+<div class="overlay" id="overlay">
+  <div class="ov-box">
+    <div id="ov-bus" style="display:flex;justify-content:center;margin-bottom:10px;"></div>
+    <div class="ov-title" id="ov-title">Super !</div>
+    <div class="ov-text" id="ov-text">Le bus est peint !</div>
+    <button class="ov-btn" onclick="nextDefi()">Suivant &#8594;</button>
+  </div>
+</div>
+
+<div class="brun-overlay" id="brun-overlay">
+  <div class="brun-content">
+    <span class="brun-emoji">&#128169;</span>
+    <div class="brun-text">Prrrout !<br>C'est du marron !<br>Lave le tube !</div>
+    <button class="btn-laver" onclick="viderActive()">&#128703; Laver !</button>
+  </div>
+</div>
+
+<div class="overlay" id="hint-overlay" style="z-index:102;">
+  <div class="ov-box">
+    <div class="ov-emoji">&#128161;</div>
+    <div class="ov-title" style="font-size:1.2rem;">Voil&#224; le secret !</div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:10px;">
+      <div id="hint-cible-cercle" style="width:44px;height:44px;border-radius:50%;border:3px solid rgba(255,255,255,0.85);flex-shrink:0;"></div>
+      <div style="color:#fff;font-size:1rem;font-weight:900;" id="hint-cible-label"></div>
+    </div>
+    <div class="ov-text" id="hint-text" style="font-size:1.3rem;letter-spacing:2px;"></div>
+    <button class="ov-btn" onclick="document.getElementById('hint-overlay').classList.remove('show')">OK !</button>
+  </div>
+</div>
+
+<div class="overlay" id="fin-overlay" style="z-index:101;">
+  <div class="ov-box">
+    <div class="ov-emoji">&#128652;</div>
+    <div class="ov-title">Tous les bus sont peints !</div>
+    <div class="ov-text">Tu es un super peintre !</div>
+    <button class="ov-btn" onclick="resetPartie()">&#127912; Rejouer !</button>
+  </div>
+</div>
+
+<script src="js/bus-svg.js"></script>
+<script src="js/data.js"></script>
+<script src="js/sounds.js"></script>
+<script>
+// ── DÉFIS ────────────────────────────────────────────────────────
+// Vraies couleurs IDFM depuis LIGNES (data.js)
+// Recette : doses relatives r/j/b/w calibrées pour approcher le hex réel par mélange
+const DEFIS = [
+  { r:1, j:0, b:0, w:0, hex:'#E2231A', label:'rouge',        num:'RER A',  textColor:'#fff'  },
+  { r:0, j:1, b:0, w:0, hex:'#FFCD00', label:'jaune',        num:'M1',     textColor:'#333'  },
+  { r:0, j:0, b:1, w:0, hex:'#0064B1', label:'bleu',         num:'162',    textColor:'#fff'  },
+  { r:0, j:1, b:1, w:0, hex:'#008C59', label:'vert',         num:'172',    textColor:'#fff'  },
+  { r:1, j:0, b:1, w:0, hex:'#652C90', label:'violet',       num:'132',    textColor:'#fff'  },
+  { r:1, j:0, b:0, w:1, hex:'#FF82B4', label:'rose',         num:'47',     textColor:'#333'  },
+  { r:0, j:1, b:3, w:0, hex:'#75CE89', label:'vert clair',   num:'380',    textColor:'#333'  },
+  { r:0, j:0, b:3, w:1, hex:'#4FA3DC', label:'bleu ciel',    num:'RER B',  textColor:'#fff'  },
+  { r:1, j:1, b:0, w:0, hex:'#F58443', label:'orange',       num:'185',    textColor:'#333'  },
+  { r:0, j:0, b:1, w:1, hex:'#6ECA97', label:'vert menthe',  num:'M6',     textColor:'#333'  },
+  { r:1, j:0, b:1, w:2, hex:'#C9A2CD', label:'lavande',      num:'286',    textColor:'#333'  },
+  { r:1, j:3, b:0, w:0, hex:'#DCAC27', label:'or',           num:'184',    textColor:'#333'  },
+  { r:1, j:0, b:0, w:2, hex:'#FA9ABA', label:'rose pale',    num:'M7',     textColor:'#333'  },
+  { r:1, j:1, b:0, w:1, hex:'#CEC92A', label:'citron',       num:'323',    textColor:'#333'  },
+  { r:1, j:0, b:1, w:0, hex:'#B43C95', label:'magenta',      num:'186',    textColor:'#fff'  },
+  { r:2, j:2, b:1, w:0, hex:'#8D653A', label:'brun',         num:'131',    textColor:'#fff'  },
+];
+
+// ── TABLE DE RECONNAISSANCE (nommage des couleurs obtenues) ──────
+const TABLE = [
+  { pr:1,     pj:0,     pb:0,     pw:0,     hex:'#E8192C', label:'rouge'       },
+  { pr:0,     pj:1,     pb:0,     pw:0,     hex:'#FFCD00', label:'jaune'       },
+  { pr:0,     pj:0,     pb:1,     pw:0,     hex:'#003CA6', label:'bleu'        },
+  { pr:0,     pj:0,     pb:0,     pw:1,     hex:'#F5F5F5', label:'blanc'       },
+  { pr:0.5,   pj:0.5,   pb:0,     pw:0,     hex:'#FF7E2E', label:'orange'      },
+  { pr:0,     pj:0.5,   pb:0.5,   pw:0,     hex:'#007852', label:'vert'        },
+  { pr:0.5,   pj:0,     pb:0.5,   pw:0,     hex:'#62259D', label:'violet'      },
+  { pr:0.25,  pj:0.75,  pb:0,     pw:0,     hex:'#FFAA00', label:'ambre'       },
+  { pr:0.75,  pj:0.25,  pb:0,     pw:0,     hex:'#FF4500', label:'corail'      },
+  { pr:0,     pj:0.25,  pb:0.75,  pw:0,     hex:'#00AACC', label:'turquoise'   },
+  { pr:0,     pj:0.75,  pb:0.25,  pw:0,     hex:'#78C800', label:'vert lime'   },
+  { pr:0.75,  pj:0,     pb:0.25,  pw:0,     hex:'#8B1A7A', label:'bordeaux'    },
+  { pr:0.5,   pj:0,     pb:0,     pw:0.5,   hex:'#F38C95', label:'rose'        },
+  { pr:0,     pj:0,     pb:0.75,  pw:0.25,  hex:'#87CEEB', label:'bleu ciel'   },
+  { pr:0,     pj:0.5,   pb:0,     pw:0.5,   hex:'#FFE680', label:'creme'       },
+  { pr:0.25,  pj:0,     pb:0.25,  pw:0.5,   hex:'#B994B4', label:'lavande'     },
+  { pr:0.25,  pj:0.25,  pb:0,     pw:0.5,   hex:'#F5C88A', label:'peche'       },
+  { pr:0,     pj:0.25,  pb:0.25,  pw:0.5,   hex:'#88CCA4', label:'menthe'      },
+  { pr:0.25,  pj:0,     pb:0,     pw:0.75,  hex:'#F7C4C8', label:'rose pale'   },
+  { pr:0,     pj:0,     pb:0.5,   pw:0.5,   hex:'#A8C4D4', label:'bleu glace'  },
+  { pr:0,     pj:0.75,  pb:0,     pw:0.25,  hex:'#FFE080', label:'citron'      },
+  { pr:0.5,   pj:0.5,   pb:0,     pw:0.25,  hex:'#FFA055', label:'orange doux' },
+  { pr:0,     pj:0.5,   pb:0.5,   pw:0.25,  hex:'#4DAA80', label:'jade'        },
+  { pr:0.5,   pj:0,     pb:0.5,   pw:0.25,  hex:'#7A4A90', label:'prune'       },
+  { pr:0.2,   pj:0.5,   pb:0.3,   pw:0,     hex:'#6B8C2A', label:'olive'       },
+  { pr:0.33,  pj:0.33,  pb:0.33,  pw:0,     hex:'#7A4A2A', label:'marron'      },
+  { pr:0.5,   pj:0.25,  pb:0,     pw:0.25,  hex:'#F07040', label:'saumon'      },
+  { pr:0,     pj:0.5,   pb:0.25,  pw:0.25,  hex:'#88C870', label:'vert tendre' },
+  { pr:0.25,  pj:0.5,   pb:0,     pw:0.25,  hex:'#E0A840', label:'miel'        },
+  { pr:0,     pj:0.25,  pb:0.5,   pw:0.25,  hex:'#4488C8', label:'bleu ocean'  },
+];
+
+const BASE_RGB = {
+  r: [232, 25, 44],
+  j: [255, 205, 0],
+  b: [0, 60, 166],
+  w: [238, 238, 238],
+};
+
+const QCOL = { r:'#E8192C', j:'#FFD700', b:'#3344CC', w:'#EEEEEE' };
+
+function hexToRGB(hex) {
+  const h = hex.replace('#','');
+  return [parseInt(h.substr(0,2),16), parseInt(h.substr(2,2),16), parseInt(h.substr(4,2),16)];
+}
+function rgbToHex(r,g,b) {
+  return '#'+[r,g,b].map(v=>Math.round(v).toString(16).padStart(2,'0')).join('');
+}
+function blendCounts(c) {
+  const tot = c.r+c.j+c.b+c.w;
+  if (tot===0) return null;
+  let R=0,G=0,B=0;
+  for (const k of ['r','j','b','w']) {
+    const [cr,cg,cb] = BASE_RGB[k];
+    R+=cr*c[k]/tot; G+=cg*c[k]/tot; B+=cb*c[k]/tot;
+  }
+  return [Math.round(R),Math.round(G),Math.round(B)];
+}
+function isBrun(c) {
+  const tot = c.r+c.j+c.b+c.w;
+  if (tot===0) return false;
+  return c.r/tot>0.18 && c.j/tot>0.15 && c.b/tot>0.15;
+}
+function nearestLabel(R,G,B) {
+  let best=TABLE[0], bestD=Infinity;
+  for (const x of TABLE) {
+    const [xR,xG,xB]=hexToRGB(x.hex);
+    const d=Math.sqrt((R-xR)**2+(G-xG)**2+(B-xB)**2);
+    if (d<bestD){bestD=d;best=x;}
+  }
+  return best;
+}
+function rgbDist(c1,c2) {
+  return Math.sqrt(((c1[0]-c2[0])/255)**2+((c1[1]-c2[1])/255)**2+((c1[2]-c2[2])/255)**2)/Math.sqrt(3);
+}
+function shuffle(arr) {
+  const a=[...arr];
+  for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+
+// ── ÉTAT ─────────────────────────────────────────────────────────
+function newTube(id) { return {r:0,j:0,b:0,w:0,doses:[],mixed:null,id}; }
+let tubes    = [newTube(0), newTube(1)];
+let activeIdx= 0;
+let defiIdx  = 0;
+let solved   = 0;
+let victoire = false;
+let brunShown= false;
+let missCount= 0;
+let order    = shuffle(DEFIS.map((_,i)=>i));
+let defi     = DEFIS[order[0]];
+
+// ── TUBE SVG ─────────────────────────────────────────────────────
+function renderTubeSVG(t) {
+  const SW=50, SH=120, RIMH=12, BOT=SH, RX=10, FILL_H=BOT-RIMH;
+  const path=`M0,${RIMH} L0,${BOT-RX} Q0,${BOT} ${RX},${BOT} L${SW-RX},${BOT} Q${SW},${BOT} ${SW},${BOT-RX} L${SW},${RIMH} Z`;
+  const id=`tc${t.id}`;
+  let layers='';
+  if (t.mixed) {
+    const bgHex = t.mixed==='BRUN'?'#6B4226':t.mixed.hex;
+    const tot=t.r+t.j+t.b+t.w;
+    const fH=Math.max(Math.min(tot/8,1)*FILL_H, 22);
+    const fY=(BOT-fH).toFixed(1);
+    layers=`<rect x="0" y="${fY}" width="${SW}" height="${(fH+1).toFixed(1)}" fill="${bgHex}"/>`;
+  } else if (t.doses.length>0) {
+    const vis=t.doses.slice(-8);
+    const dH=FILL_H/Math.max(vis.length,4);
+    vis.forEach((q,i)=>{
+      const qY=(BOT-dH*(i+1)).toFixed(1);
+      layers+=`<rect x="0" y="${qY}" width="${SW}" height="${(dH+1).toFixed(1)}" fill="${QCOL[q]}"/>`;
+    });
+  }
+  const emptyHint=t.doses.length===0&&!t.mixed
+    ?`<text x="${SW/2}" y="${RIMH+FILL_H/2+5}" text-anchor="middle" fill="rgba(255,255,255,0.18)" font-size="9" font-family="Nunito">vide</text>`:'';
+  return `<svg width="${SW}" height="${SH}" viewBox="0 0 ${SW} ${SH}">
+  <defs><clipPath id="${id}"><path d="${path}"/></clipPath></defs>
+  <path d="${path}" fill="rgba(150,210,255,0.08)" stroke="rgba(255,255,255,0.45)" stroke-width="2.5"/>
+  <g clip-path="url(#${id})">${layers}</g>
+  <rect x="4" y="${RIMH+4}" width="5" height="${FILL_H-16}" rx="2.5" fill="rgba(255,255,255,0.16)" clip-path="url(#${id})"/>
+  <rect x="2" y="0" width="${SW-4}" height="${RIMH}" rx="4" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/>
+  ${emptyHint}
+</svg>`;
+}
+
+function renderTubes() {
+  tubes.forEach((t,i)=>{
+    const wrap=document.getElementById(`tube-wrap-${i}`);
+    wrap.innerHTML=renderTubeSVG(t);
+    wrap.classList.toggle('active',i===activeIdx);
+    const res=document.getElementById(`tube-result-${i}`);
+    if (t.mixed&&t.mixed!=='BRUN') {
+      res.textContent=t.mixed.label;
+      res.style.color='#ffe066';
+    } else if (t.mixed==='BRUN') {
+      res.innerHTML='💩 marron';
+      res.style.color='#cc8844';
+    } else {
+      res.textContent='';
+    }
+  });
+}
+
+function renderCible() {
+  const zone = document.getElementById('cible-zone');
+  const busSvg = busSVG('#FFFFFF', '#333', defi.num, 180);
+  zone.innerHTML = `
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <div class="cible-bus-wrap">
+        ${busSvg}
+        <div class="cible-dot" style="background:${defi.hex};"></div>
+      </div>
+      <div class="cible-label">Bus ${defi.num} — peins-le en <span style="color:${defi.hex==='#FFCD00'||defi.hex.startsWith('#FF')||defi.hex==='#CEC92A'||defi.hex==='#DCAC27'||defi.hex==='#75CE89'||defi.hex==='#C9A2CD'||defi.hex==='#FA9ABA'?'#ffdd44':'#7dd9ff'}">${defi.label}</span> !</div>
+    </div>`;
+}
+
+function renderBus(hex) { /* bus affiché uniquement en overlay victoire */ }
+
+function renderProgress() {
+  let html='';
+  for (let i=0;i<DEFIS.length;i++) {
+    const cls=i<solved?'done':i===solved?'current':'';
+    html+=`<div class="prog-dot ${cls}"></div>`;
+  }
+  document.getElementById('progress').innerHTML=html;
+}
+
+// ── ACTIONS ───────────────────────────────────────────────────────
+function selectTube(idx) {
+  activeIdx=idx;
+  renderTubes();
+}
+
+function addCouleur(type) {
+  if (victoire) return;
+  const t=tubes[activeIdx];
+  t[type]++;
+  t.doses.push(type);
+  renderTubes();
+  checkAutoWin(t);
+}
+
+function checkAutoWin(t) {
+  // Victoire uniquement après mixage manuel (bouton Mixer)
+  // Cette fonction ne fait plus rien — conservée pour compatibilité
+}
+
+let mixerLocked = false;
+function mixerTube(idx) {
+  if (victoire) return;
+  if (mixerLocked) return;
+  const t=tubes[idx];
+  const tot=t.r+t.j+t.b+t.w;
+  if (tot===0) return;
+  mixerLocked = true;
+  activeIdx=idx;
+  playMix();
+  const wrap=document.getElementById(`tube-wrap-${idx}`);
+  if (wrap) {
+    wrap.classList.remove('shaking');
+    wrap.offsetWidth; // force reflow
+    wrap.classList.add('shaking');
+  }
+  const defiBrun = defi.label==='brun';
+  setTimeout(() => {
+    mixerLocked = false;
+    if (wrap) wrap.classList.remove('shaking');
+    if (isBrun(t) && !defiBrun) {
+      t.mixed='BRUN';
+      renderTubes();
+      if (!brunShown) { brunShown=true; document.getElementById('brun-overlay').classList.add('show'); playBrun(); }
+      return;
+    }
+    const rgb=blendCounts(t);
+    const hex=rgbToHex(rgb[0],rgb[1],rgb[2]);
+    t.mixed={hex,label:nearestLabel(rgb[0],rgb[1],rgb[2]).label};
+    renderTubes();
+    const ideal=blendCounts({r:defi.r,j:defi.j,b:defi.b,w:defi.w});
+    const dist=rgbDist(rgb,ideal);
+    if (dist<0.22&&!victoire) {
+      victoire=true;
+      setTimeout(showVictoire,650);
+    }
+  }, 500);
+}
+
+function viderTube(idx) {
+  tubes[idx]=newTube(idx);
+  brunShown=false;
+  document.getElementById('brun-overlay').classList.remove('show');
+  renderTubes();
+  renderBus(null);
+}
+
+function viderActive() { viderTube(activeIdx); }
+
+// ── VICTOIRE ──────────────────────────────────────────────────────
+function showVictoire() {
+  solved++;
+  renderProgress();
+  playKlaxon();
+  const mixedTube = tubes.find(t=>t.mixed&&t.mixed!=='BRUN');
+  const hex = mixedTube ? mixedTube.mixed.hex : defi.hex;
+  document.getElementById('ov-bus').innerHTML = busSVG(hex, defi.textColor, defi.num, 220);
+  document.getElementById('ov-title').textContent='Super ! 🎉';
+  document.getElementById('ov-text').textContent=`Le bus ${defi.num} est ${defi.label} !`;
+  document.getElementById('overlay').classList.add('show');
+}
+
+function nextDefi() {
+  document.getElementById('overlay').classList.remove('show');
+  defiIdx++;
+  if (defiIdx>=DEFIS.length) { document.getElementById('fin-overlay').classList.add('show'); return; }
+  defi=DEFIS[order[defiIdx]];
+  resetTubes();
+  initDefi();
+}
+
+function resetPartie() {
+  document.getElementById('fin-overlay').classList.remove('show');
+  solved=0; defiIdx=0;
+  order=shuffle(DEFIS.map((_,i)=>i));
+  defi=DEFIS[order[0]];
+  resetTubes();
+  initDefi();
+}
+
+function resetTubes() {
+  tubes=[newTube(0),newTube(1)];
+  activeIdx=0; victoire=false; brunShown=false; missCount=0; mixerLocked=false;
+  document.getElementById('brun-overlay').classList.remove('show');
+  renderTubes();
+  renderBus(null);
+}
+
+function showHint() {
+  const parts=[];
+  if(defi.r>0)parts.push(`${defi.r} 🔴`);
+  if(defi.j>0)parts.push(`${defi.j} 🟡`);
+  if(defi.b>0)parts.push(`${defi.b} 🔵`);
+  if(defi.w>0)parts.push(`${defi.w} ⬜`);
+  document.getElementById('hint-cible-cercle').style.background=defi.hex;
+  document.getElementById('hint-cible-label').textContent=`Bus ${defi.num} — ${defi.label}`;
+  document.getElementById('hint-text').textContent=parts.join(' + ');
+  document.getElementById('hint-overlay').classList.add('show');
+}
+
+function initDefi() {
+  renderTubes();
+  renderProgress();
+  renderCible();
+  attachShakeListener();
+}
+
+let lastShakeTime = 0;
+let shakeListenerAttached = false;
+function attachShakeListener() {
+  if (shakeListenerAttached || !window.DeviceMotionEvent) return;
+  shakeListenerAttached = true;
+  window.addEventListener('devicemotion', handleShake, true);
+}
+function handleShake(event) {
+  const accel = event.acceleration;
+  if (!accel) return;
+  const magnitude = Math.sqrt(accel.x*accel.x + accel.y*accel.y + accel.z*accel.z);
+  if (magnitude > 25 && Date.now() - lastShakeTime > 800) {
+    lastShakeTime = Date.now();
+    if (!victoire && tubes[activeIdx].r+tubes[activeIdx].j+tubes[activeIdx].b+tubes[activeIdx].w > 0) {
+      mixerTube(activeIdx);
+    }
+  }
+}
+
+// ── SONS ──────────────────────────────────────────────────────────
+function playKlaxon() {
+  try {
+    const ac=new AudioContext();
+    [523,659,784,1047].forEach((freq,i)=>{
+      const o=ac.createOscillator(),g=ac.createGain();
+      o.connect(g);g.connect(ac.destination);
+      o.frequency.value=freq;o.type='triangle';
+      const t=ac.currentTime+i*0.1;
+      g.gain.setValueAtTime(0.28,t);g.gain.exponentialRampToValueAtTime(0.001,t+0.15);
+      o.start(t);o.stop(t+0.15);
+    });
+  } catch(e){}
+}
+function playBrun() {
+  try {
+    const ac=new AudioContext(),o=ac.createOscillator(),g=ac.createGain();
+    o.connect(g);g.connect(ac.destination);
+    o.type='sawtooth';
+    o.frequency.setValueAtTime(180,ac.currentTime);
+    o.frequency.exponentialRampToValueAtTime(35,ac.currentTime+0.55);
+    g.gain.setValueAtTime(0.4,ac.currentTime);g.gain.exponentialRampToValueAtTime(0.001,ac.currentTime+0.6);
+    o.start();o.stop(ac.currentTime+0.6);
+  } catch(e){}
+}
+function playMix() {
+  try {
+    const ac=new AudioContext();
+    [400,600,350,700,300].forEach((f,i)=>{
+      const o=ac.createOscillator(),g=ac.createGain();
+      o.connect(g);g.connect(ac.destination);o.type='sine';o.frequency.value=f;
+      const t=ac.currentTime+i*0.06;
+      g.gain.setValueAtTime(0.18,t);g.gain.exponentialRampToValueAtTime(0.001,t+0.1);
+      o.start(t);o.stop(t+0.1);
+    });
+  } catch(e){}
+}
+
+initDefi();
+</script>
+</body>
+</html>

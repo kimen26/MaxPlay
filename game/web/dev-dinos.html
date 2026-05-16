@@ -71,6 +71,20 @@ html, body {
   position:relative; overflow:hidden;
   transition:transform 0.12s, box-shadow 0.12s;
 }
+.badge {
+  position:absolute; top:6px; right:6px;
+  width:24px; height:24px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:0.8rem; font-weight:900;
+  box-shadow:0 2px 6px rgba(0,0,0,0.4);
+  z-index:10;
+}
+.badge-image {
+  background:rgba(100,200,255,0.85); color:#fff; border:1px solid rgba(180,220,255,0.5);
+}
+.badge-audio {
+  background:rgba(255,220,0,0.85); color:#000; border:1px solid rgba(255,255,100,0.5);
+}
 .dino-card:active { transform:scale(0.93); }
 .dino-card.bounce { animation:cardBounce 0.4s ease-out; }
 @keyframes cardBounce {
@@ -360,6 +374,7 @@ html, body {
 .chrono-dino-thumb:active { transform:scale(0.9); }
 .chrono-dino-img { width:60px; height:44px; object-fit:contain; margin-bottom:4px; filter:drop-shadow(0 1px 4px rgba(0,0,0,0.5)); }
 .chrono-dino-name { font-size:0.66rem; font-weight:900; color:#fff; text-align:center; line-height:1.2; }
+.chrono-dino-thumb .badge { top:3px; right:3px; width:18px; height:18px; font-size:0.65rem; }
 
 /* Frise chronologique visuelle */
 .chrono-timeline {
@@ -492,6 +507,17 @@ function buildMenu() {
   }
 }
 
+/* ── Helper pour les thumbs chrono avec badges ── */
+function buildChronoDinoThumb(d) {
+  return `
+    <div class="chrono-dino-thumb" onclick="speakText('${esc(d.name)}');setTimeout(()=>showFiche2('${d.id}'),300)">
+      <img class="chrono-dino-img" src="img/dinos/${d.png}" alt="${d.name}" loading="lazy" onerror="this.style.display='none'">
+      <div class="chrono-dino-name">${d.name}</div>
+      ${buildBadges(d.id)}
+    </div>
+  `;
+}
+
 /* ── MENU famille ── */
 function buildMenuFamille(el) {
   DINO_FAMILLES.forEach(fam => {
@@ -579,12 +605,7 @@ function buildMenuPeriode(el) {
   wrapper.innerHTML = buildPangeeBloc() + friseHtml + DINO_PERIODES.map(p => {
     const dinos = DINOS.filter(d => d.periode === p.id);
     if (!dinos.length) return '';
-    const dinosHtml = dinos.map(d => `
-      <div class="chrono-dino-thumb" onclick="speakText('${esc(d.name)}');setTimeout(()=>showFiche2('${d.id}'),300)">
-        <img class="chrono-dino-img" src="img/dinos/${d.png}" alt="${d.name}" loading="lazy" onerror="this.style.display='none'">
-        <div class="chrono-dino-name">${d.name}</div>
-      </div>
-    `).join('');
+    const dinosHtml = dinos.map(d => buildChronoDinoThumb(d)).join('');
     return `
       <div class="chrono-periode" id="periode-${p.id}">
         <div class="chrono-header" style="background:${p.color}22" onclick="speakText('${esc(p.label)}. ${esc(p.desc)}. ${dinos.length} dinosaures.')">
@@ -760,6 +781,7 @@ function showGridContinent(contId) {
       <div class="card-regime">${d.regime}</div>
       <div class="card-region">⏳ ${DINO_PERIODES.find(p=>p.id===d.periode)?.label||d.epoque}</div>
       <div class="card-bar" style="background:${cont.color}"></div>
+      ${buildBadges(d.id)}
     `;
     card.addEventListener('click', () => {
       card.classList.remove('bounce'); void card.offsetWidth; card.classList.add('bounce');
@@ -786,6 +808,7 @@ function buildGrid(catId) {
       <div class="card-regime">${d.regime}</div>
       <div class="card-region">📍 ${d.region}</div>
       <div class="card-bar" style="background:${cat.color}"></div>
+      ${buildBadges(d.id)}
     `;
     card.addEventListener('click', () => {
       card.classList.remove('bounce'); void card.offsetWidth; card.classList.add('bounce');
@@ -814,6 +837,7 @@ function showGridFamille(famId) {
       <div class="card-regime">${d.regime}</div>
       <div class="card-region">📍 ${d.region}</div>
       <div class="card-bar" style="background:${fam.color}"></div>
+      ${buildBadges(d.id)}
     `;
     card.addEventListener('click', () => {
       card.classList.remove('bounce'); void card.offsetWidth; card.classList.add('bounce');
@@ -856,6 +880,26 @@ function regimeIcon(cat) {
 }
 function regimelabel(regime) {
   return regime.replace(/[🥩🌿🐟🍃🌊]/g,'').replace(/\(.*?\)/g,'').trim();
+}
+
+/* ── Badges d'images et audio ── */
+function hasDinoImages(dinoId) {
+  const hasLocal = DINO_EXTRAS && DINO_EXTRAS[dinoId] && DINO_EXTRAS[dinoId].length > 0;
+  const hasWiki = typeof DINO_WIKIMEDIA !== 'undefined' && DINO_WIKIMEDIA[dinoId] && DINO_WIKIMEDIA[dinoId].length > 0;
+  return hasLocal || hasWiki;
+}
+function hasDinoAudio(dinoId) {
+  return DINO_AUDIO[dinoId] && DINO_AUDIO[dinoId].recap;
+}
+function buildBadges(dinoId) {
+  let html = '';
+  if (hasDinoAudio(dinoId)) {
+    html += '<div class="badge badge-audio" title="Voix ElevenLabs">⭐</div>';
+  }
+  if (hasDinoImages(dinoId)) {
+    html += '<div class="badge badge-image" title="Photos et images">📸</div>';
+  }
+  return html;
 }
 function speakFiche(d) {
   const txt = `${d.name} ! ${d.nom_etym||''} `
@@ -1190,16 +1234,25 @@ function speakStatsDino(id) {
 /* ── Audio duo Narrateur + Wex (industrialisable : 1 entrée par dino dispo) ──
    recap = gros bouton "écoute l'histoire" · blocs = mini-duos par section.
    Si un bloc manque → fallback synthèse vocale. */
+const _BLOCS6 = ['nom','taille','regime','pouvoir','ennemis','funfact'];
+function _audioSet(id, extra) {
+  const o = extra ? { ...extra } : {};
+  _BLOCS6.forEach(b => { o[b] = 'audio/dinos/' + id + '-' + b + '.mp3'; });
+  return o;
+}
+// Triceratops = pilote (a aussi un recap = gros bouton). Les 10 autres = 6 mini-duos seulement.
 const DINO_AUDIO = {
-  triceratops: {
-    recap:   'audio/dinos/triceratops-v1.mp3',
-    nom:     'audio/dinos/triceratops-nom.mp3',
-    taille:  'audio/dinos/triceratops-taille.mp3',
-    regime:  'audio/dinos/triceratops-regime.mp3',
-    pouvoir: 'audio/dinos/triceratops-pouvoir.mp3',
-    ennemis: 'audio/dinos/triceratops-ennemis.mp3',
-    funfact: 'audio/dinos/triceratops-funfact.mp3',
-  },
+  triceratops:    _audioSet('triceratops', { recap: 'audio/dinos/triceratops-v1.mp3' }),
+  tyrannosaurus:  _audioSet('tyrannosaurus'),
+  velociraptor:   _audioSet('velociraptor'),
+  stegosaurus:    _audioSet('stegosaurus'),
+  spinosaurus:    _audioSet('spinosaurus'),
+  giganotosaurus: _audioSet('giganotosaurus'),
+  brachiosaurus:  _audioSet('brachiosaurus'),
+  ankylosaurus:   _audioSet('ankylosaurus'),
+  diplodocus:     _audioSet('diplodocus'),
+  allosaurus:     _audioSet('allosaurus'),
+  carnotaurus:    _audioSet('carnotaurus'),
 };
 function dinoHasAudio(id) { return !!(DINO_AUDIO[id] && DINO_AUDIO[id].recap); }
 

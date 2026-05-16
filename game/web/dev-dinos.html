@@ -245,6 +245,45 @@ html, body {
 .ext-funfact { background:rgba(100,220,100,0.1); border:1px solid rgba(100,220,100,0.25); border-radius:12px; padding:10px 12px; font-size:0.78rem; color:rgba(200,255,200,0.9); cursor:pointer; line-height:1.4; font-weight:700; }
 .ext-funfact:active { background:rgba(100,220,100,0.2); }
 
+/* ── Fiche V1 : 4 grands panneaux colorés ── */
+.v1-hero { position:relative; height:170px; margin:12px 12px 0; border-radius:18px; overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.v1-hero-img { max-height:140px; max-width:80%; object-fit:contain; filter:drop-shadow(0 6px 14px rgba(0,0,0,0.55)); }
+.v1-hero-nm { position:absolute; left:16px; bottom:12px; text-shadow:0 2px 8px rgba(0,0,0,0.7); }
+.v1-hero-nm b { display:block; font-size:1.7rem; font-weight:900; line-height:1.1; }
+.v1-alias { display:block; font-size:0.74rem; color:#ffe0a0; font-weight:700; }
+.v1-lat { display:block; font-size:0.78rem; opacity:0.85; font-style:italic; }
+.v1-big {
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  width:calc(100% - 24px); margin:12px; min-height:62px; padding:15px 18px;
+  background:linear-gradient(135deg,#6a3093,#a044ff);
+  border:2px solid rgba(255,255,255,0.25); border-radius:16px;
+  color:#fff; font-family:'Nunito',sans-serif; font-weight:900; font-size:1.05rem;
+  cursor:pointer; touch-action:manipulation; box-shadow:0 4px 14px rgba(160,68,255,0.35);
+}
+.v1-big:active { transform:scale(0.98); }
+.v1-big.playing { background:linear-gradient(135deg,#c0392b,#e74c3c); animation:dino-story-pulse 1.1s ease-in-out infinite; }
+.v1-panel { position:relative; margin:0 12px 12px; border-radius:16px; padding:16px; }
+.v1-panel .v1-sp {
+  position:absolute; top:13px; right:13px; min-width:46px; height:40px;
+  background:rgba(255,255,255,0.16); border:1px solid rgba(255,255,255,0.25);
+  border-radius:11px; color:#fff; font-size:1.05rem; cursor:pointer; touch-action:manipulation;
+}
+.v1-panel .v1-sp.playing { background:#e74c3c; border-color:#ff8a7a; animation:dino-story-pulse 1.1s ease-in-out infinite; }
+.v1-pic { display:flex; align-items:center; gap:10px; margin-bottom:10px; padding-right:54px; }
+.v1-pic .v1-ic { font-size:2rem; line-height:1; }
+.v1-pic .v1-tt { font-weight:900; font-size:1.1rem; }
+.v1-panel p { font-size:0.92rem; line-height:1.5; margin:5px 0; }
+.v1-panel .v1-sub { font-size:0.8rem; opacity:0.8; margin:3px 0; }
+.v1-a { background:linear-gradient(135deg,#3a2a5a,#5a3d8a); }
+.v1-b { background:linear-gradient(135deg,#0a3a4a,#1a6a8a); }
+.v1-c { background:linear-gradient(135deg,#0a4a2a,#1a8a4a); }
+.v1-d { background:linear-gradient(135deg,#5a4a0a,#a0851a); }
+.v1-stats { display:flex; gap:8px; margin-top:6px; }
+.v1-stat { flex:1; background:rgba(0,0,0,0.3); border-radius:12px; padding:10px 6px; text-align:center; }
+.v1-stat .l { font-size:0.62rem; text-transform:uppercase; opacity:0.65; }
+.v1-stat .v { font-size:1.35rem; font-weight:900; color:#ffe066; margin:2px 0; }
+.v1-stat .c { font-size:0.66rem; opacity:0.85; line-height:1.25; }
+
 /* Extra gallery */
 .fiche-gallery-title {
   margin:16px 12px 8px;
@@ -976,134 +1015,61 @@ function buildFiche(d) {
   }));
   const extras = [...localExtras, ...wikiExtras];
 
+  const regEmoji = regimeIcon(d.cat);
+  const perLabel = (DINO_PERIODES.find(p => p.id === d.periode) || {}).label || '';
+
   scroll.innerHTML = `
-    <!-- Hero -->
-    <div class="fiche-hero" style="background:linear-gradient(180deg,${cat.color}30,transparent)">
-      <img class="fiche-hero-img" src="img/dinos/${d.png}" alt="${d.name}" onerror="this.style.opacity='0'">
+    <!-- HERO photo -->
+    <div class="v1-hero" style="background:linear-gradient(135deg,${cat.color},${cat.color}55)">
+      <img class="v1-hero-img" src="img/dinos/${d.png}" alt="${d.name}" onerror="this.style.display='none'">
+      <div class="v1-hero-nm">
+        <b>${d.name}</b>
+        ${d.alias ? `<span class="v1-alias">aussi appelé ${d.alias}</span>` : ''}
+        <span class="v1-lat">${d.full}</span>
+      </div>
     </div>
 
-    <!-- Nom + étymologie -->
-    <div class="fiche-name-block">
-      <div>
-        <div class="fiche-name">${d.name}</div>
-        ${d.alias ? `<div style="font-size:0.72rem;color:rgba(255,200,100,0.8);font-weight:700;margin-top:1px">aussi appelé ${d.alias}</div>` : ''}
-        <div class="fiche-full">${d.full}</div>
-      </div>
-      <button class="speak-btn" onclick="playBloc('${d.id}','nom','${esc(d.name)} ! ${esc(d.nom_etym||('Son vrai nom c\'est '+d.full))}',this)">🔊 Nom</button>
-    </div>
-    ${DINO_AUDIO[d.id] ? `
-    <button class="dino-story-btn" onclick="playDinoStory('${d.id}')" id="dino-story-btn">
-      🎙️ Écoute l'histoire de ${d.name} <span class="dino-story-eq">▶</span>
-    </button>` : ''}
-    ${d.nom_etym ? `
-    <div class="fiche-highlight" style="background:rgba(180,130,255,0.08);border-color:rgba(180,130,255,0.25);margin-top:0">
-      <div class="fiche-section-icon" style="font-size:1.5rem">📖</div>
-      <div style="flex:1">
-        <div class="fiche-section-title" style="color:rgba(180,130,255,0.6)">Son nom veut dire…</div>
-        <div class="fiche-highlight-text" style="color:#d4aaff;font-size:0.9rem">${d.nom_etym}</div>
-      </div>
-      <button class="speak-btn" style="border-color:rgba(180,130,255,0.3);color:#d4aaff;background:rgba(180,130,255,0.1)"
-        onclick="playBloc('${d.id}','nom','${esc(d.nom_etym)}',this)">🔊</button>
-    </div>` : ''}
+    <!-- BOUTON ÉCOUTE TOUT (en haut) -->
+    <button class="v1-big" onclick="playDinoStory('${d.id}')" id="dino-story-btn">
+      🎙️ Écoute toute l'histoire de ${d.name} <span class="dino-story-eq">▶</span>
+    </button>
 
-    <!-- Époque & région -->
-    <div class="fiche-section" style="align-items:flex-start">
-      <div class="fiche-section-icon">🕰️</div>
-      <div class="fiche-section-body" style="flex:1">
-        <div class="fiche-section-title">Époque &amp; lieu</div>
-        <div class="fiche-section-text">${d.epoque}</div>
-        <div class="fiche-section-sub">📍 ${d.region}</div>
-        <div style="margin-top:8px">${buildContinentMap(d.continent)}</div>
-      </div>
-      <button class="speak-btn" onclick="speakText('${esc(d.name)} vivait il y a très très longtemps, en ${esc(d.region)}.')">🔊</button>
+    <!-- BLOC 1 — Son histoire -->
+    <div class="v1-panel v1-a">
+      <button class="v1-sp" onclick="playBloc('${d.id}','nom','${esc(d.name)} ! ${esc(d.nom_etym||('Son vrai nom c\'est '+d.full))}',this)">🔊</button>
+      <div class="v1-pic"><span class="v1-ic">🦖</span><span class="v1-tt">Son histoire</span></div>
+      <p>${d.nom_etym || d.full}</p>
+      <p class="v1-sub">⏳ ${d.epoque}${perLabel ? ' · '+perLabel : ''}</p>
+      <p class="v1-sub">📍 ${d.region}</p>
+      <div style="margin-top:8px">${buildContinentMap(d.continent)}</div>
     </div>
 
-    <!-- Stats longueur / hauteur / poids -->
-    <div class="fiche-stats" style="grid-template-columns:1fr 1fr 1fr">
-      <div class="stat-box">
-        <div class="stat-label">${d.taille_vol ? '🪽 Ailes' : '↔️ Longueur'}</div>
-        <div class="stat-val">${d.taille_m} m</div>
-        <div class="stat-comp">${d.comp_taille}</div>
+    <!-- BLOC 2 — Sa taille -->
+    <div class="v1-panel v1-b">
+      <button class="v1-sp" onclick="playBlocTaille('${d.id}',this)">🔊</button>
+      <div class="v1-pic"><span class="v1-ic">📏</span><span class="v1-tt">Sa taille</span></div>
+      <div class="v1-stats">
+        <div class="v1-stat"><div class="l">${d.taille_vol ? '🪽 Ailes' : '↔️ Long'}</div><div class="v">${d.taille_m} m</div><div class="c">${d.comp_taille}</div></div>
+        <div class="v1-stat"><div class="l">↕️ Haut</div><div class="v">${d.hauteur_m || '?'} m</div><div class="c">${d.comp_hauteur || ''}</div></div>
+        <div class="v1-stat"><div class="l">⚖️ Poids</div><div class="v">${d.poids_t >= 1 ? Math.round(d.poids_t*1000).toLocaleString('fr-FR')+' kg' : Math.round(d.poids_t*1000)+' kg'}</div><div class="c">${d.comp_poids}</div></div>
       </div>
-      <div class="stat-box">
-        <div class="stat-label">↕️ Hauteur</div>
-        <div class="stat-val">${d.hauteur_m || '?'} m</div>
-        <div class="stat-comp">${d.comp_hauteur || ''}</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-label">⚖️ Poids</div>
-        <div class="stat-val">${d.poids_t >= 1 ? Math.round(d.poids_t * 1000).toLocaleString('fr-FR') + ' kg' : Math.round(d.poids_t * 1000) + ' kg'}</div>
-        <div class="stat-comp">${d.comp_poids}</div>
-      </div>
-    </div>
-    <div style="text-align:right;padding:0 12px 6px">
-      <button class="speak-btn" onclick="playBlocTaille('${d.id}',this)">🔊 Taille</button>
     </div>
 
-    <!-- Ce qu'il mange -->
-    <div class="fiche-section">
-      <div class="fiche-section-icon">${regimeIcon(d.cat)}</div>
-      <div class="fiche-section-body">
-        <div class="fiche-section-title">Ce qu'il mange</div>
-        <div class="fiche-section-text">${regimelabel(d.regime)}</div>
-        <div class="fiche-section-sub">${d.proies}</div>
-      </div>
-      <button class="speak-btn" onclick="playBloc('${d.id}','regime','${esc(d.name)} est ${esc(regimelabel(d.regime))}. Il mange ${esc(d.proies)}.',this)">🔊</button>
+    <!-- BLOC 3 — Sa vie de dino (emoji régime) -->
+    <div class="v1-panel v1-c">
+      <button class="v1-sp" onclick="playBloc('${d.id}','regime','${esc(d.name)} est ${esc(regimelabel(d.regime))}. Il mange ${esc(d.proies)}. ${esc(d.chasseurs)}. ${esc(d.amis)}',this)">🔊</button>
+      <div class="v1-pic"><span class="v1-ic">${regEmoji}</span><span class="v1-tt">Sa vie de dino</span></div>
+      <p><b>${regimelabel(d.regime)}</b> — ${d.proies}</p>
+      <p>🫂 ${d.amis}</p>
+      <p>🎯 Ses ennemis : ${d.chasseurs}</p>
     </div>
 
-    <!-- Superpower -->
-    <div class="fiche-highlight">
-      <div class="fiche-section-icon" style="font-size:1.8rem">⚡</div>
-      <div style="flex:1">
-        <div class="fiche-section-title" style="color:rgba(255,220,0,0.5)">Son super-pouvoir</div>
-        <div class="fiche-highlight-text">${d.superpower}</div>
-      </div>
-      <button class="speak-btn" onclick="playBloc('${d.id}','pouvoir','Son super-pouvoir ! ${esc(d.superpower)}',this)">🔊</button>
-    </div>
-
-    <!-- Vie en groupe -->
-    <div class="fiche-section">
-      <div class="fiche-section-icon">🫂</div>
-      <div class="fiche-section-body">
-        <div class="fiche-section-title">Il vit…</div>
-        <div class="fiche-section-text">${d.amis}</div>
-      </div>
-      <button class="speak-btn" onclick="speakText('Comment vit ${esc(d.name)} ? ${esc(d.amis)}')">🔊</button>
-    </div>
-
-    <!-- Chasse & prédateurs -->
-    <div class="fiche-section">
-      <div class="fiche-section-icon">🎯</div>
-      <div class="fiche-section-body">
-        <div class="fiche-section-title">Il chasse…</div>
-        <div class="fiche-section-text">${d.proies}</div>
-        <div class="fiche-section-sub" style="margin-top:6px">
-          <span style="opacity:0.5;font-size:0.7rem;text-transform:uppercase;letter-spacing:.05em">Ses ennemis :</span>
-          <span style="margin-left:4px">${d.chasseurs}</span>
-        </div>
-      </div>
-      <button class="speak-btn" onclick="playBloc('${d.id}','ennemis','${esc(d.name)} chasse ${esc(d.proies)}. Et qui ose l\'attaquer ? ${esc(d.chasseurs)}',this)">🔊</button>
-    </div>
-
-    <!-- Fun fact / Le sais-tu -->
-    <div class="fiche-highlight" style="background:rgba(100,200,255,0.07);border-color:rgba(100,200,255,0.2)">
-      <div class="fiche-section-icon" style="font-size:1.8rem">💡</div>
-      <div style="flex:1">
-        <div class="fiche-section-title" style="color:rgba(100,200,255,0.5)">Le sais-tu ?</div>
-        <div class="fiche-highlight-text" style="color:#80d8ff">${d.fait}</div>
-      </div>
-      <button class="speak-btn" style="border-color:rgba(100,200,255,0.3);color:#80d8ff;background:rgba(100,200,255,0.1)"
-        onclick="playBloc('${d.id}','funfact','Le savais-tu ? ${esc(d.fait)}',this)">🔊</button>
-    </div>
-
-    <!-- Description -->
-    <div class="fiche-section">
-      <div class="fiche-section-icon">📝</div>
-      <div class="fiche-section-body">
-        <div class="fiche-section-title">En deux mots…</div>
-        <div class="fiche-section-text" style="font-size:0.88rem;font-weight:400;line-height:1.55">${d.desc}</div>
-      </div>
-      <button class="speak-btn" onclick="speakText('${esc(d.desc)}')">🔊</button>
+    <!-- BLOC 4 — Le truc fou -->
+    <div class="v1-panel v1-d">
+      <button class="v1-sp" onclick="playBloc('${d.id}','funfact','Son super-pouvoir ! ${esc(d.superpower)} Le savais-tu ? ${esc(d.fait)}',this)">🔊</button>
+      <div class="v1-pic"><span class="v1-ic">✨</span><span class="v1-tt">Le truc fou</span></div>
+      <p><b>Super-pouvoir :</b> ${d.superpower}</p>
+      <p>💡 ${d.fait}</p>
     </div>
 
     ${extras.length ? buildGalleryHTML(extras, d.name) : ''}

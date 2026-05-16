@@ -67,25 +67,54 @@ async function callOpenAICompat(
   if (typeof temperature === "number") {
     body.temperature = temperature;
   }
-  const response = await fetch(`${baseUrl}/chat/completions`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${apiKey}`,
-      ...extraHeaders,
-    },
-    body: JSON.stringify(body),
-  });
+
+  const verbose = process.env.MCP_VERBOSE === "1";
+  const timeoutMs = Number(process.env.MCP_FETCH_TIMEOUT_MS ?? 600000);
+  const started = Date.now();
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  const log = (msg: string) => {
+    if (verbose) process.stderr.write(`[mcp:${toolName ?? "?"}] ${msg}\n`);
+  };
+
+  log(`→ POST ${baseUrl}/chat/completions model=${model} promptChars=${userPrompt.length} timeoutMs=${timeoutMs}`);
+
+  let response: Response;
+  try {
+    response = await fetch(`${baseUrl}/chat/completions`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${apiKey}`,
+        ...extraHeaders,
+      },
+      body: JSON.stringify(body),
+      signal: controller.signal,
+    });
+  } catch (e) {
+    clearTimeout(timer);
+    const elapsed = Date.now() - started;
+    const aborted = (e as Error).name === "AbortError";
+    const reason = aborted
+      ? `timeout after ${elapsed}ms (limite ${timeoutMs}ms) — endpoint ${baseUrl} n'a pas répondu`
+      : `network error after ${elapsed}ms: ${(e as Error).message}`;
+    log(`✗ ${reason}`);
+    throw new Error(reason);
+  }
+  clearTimeout(timer);
+  const elapsed = Date.now() - started;
 
   if (!response.ok) {
     const err = await response.text();
-    throw new Error(`API error ${response.status}: ${err}`);
+    log(`✗ HTTP ${response.status} after ${elapsed}ms: ${err.slice(0, 500)}`);
+    throw new Error(`API error ${response.status} (${elapsed}ms): ${err}`);
   }
 
   const data = (await response.json()) as {
     choices: { message: { content: string } }[];
   };
   const text = data.choices[0]?.message?.content ?? "(réponse vide)";
+  log(`✓ HTTP ${response.status} after ${elapsed}ms, responseChars=${text.length}`);
   if (toolName) {
     await logCall(toolName, model, body, text);
   }

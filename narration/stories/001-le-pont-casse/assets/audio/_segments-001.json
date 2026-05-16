@@ -2,8 +2,8 @@
   "project_name": "MaxPlay - 001 Le Pont Cassé",
   "voice_map": {
     "narrateur_h": "cbRcktt2xvoeFpdvW2wg",
-    "wex": "MvACGLim6BRvCWyH21A6",
-    "raph": "JseyaGd8TeBwmEBbFfmW",
+    "wex": "G54e8CyYslC2Y4ZupTlg",
+    "raph": "Te5RKnm9ebwdEvZ1S5pS",
     "pierrot": "ukIKjXqbiGGkqIz0SW5c"
   },
   "model_id": "eleven_v3",
@@ -26,7 +26,7 @@
       "text": "[hesitant] Wex posa le pied sur la première planche. Il s'arrêta net. Il pointa le doigt."
     },
     {
-      "voice_id": "MvACGLim6BRvCWyH21A6",
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
       "role": "wex",
       "text": "[gasps] Regardez ! [softly] Il y a un trou."
     },
@@ -41,7 +41,7 @@
       "text": "[excited] [quickly] Raph arriva en courant. Elle se pencha par-dessus la barrière."
     },
     {
-      "voice_id": "JseyaGd8TeBwmEBbFfmW",
+      "voice_id": "Te5RKnm9ebwdEvZ1S5pS",
       "role": "raph",
       "text": "[excited] Une fenêtre ! On dirait une fenêtre sur le ruisseau ! [curious] Est-ce qu'on voit des poissons ? [happily] Moi je veux voir des poissons ! [playful] Et si on appelait par le trou ?"
     },
@@ -51,7 +51,7 @@
       "text": "Elle mit ses mains en porte-voix."
     },
     {
-      "voice_id": "JseyaGd8TeBwmEBbFfmW",
+      "voice_id": "Te5RKnm9ebwdEvZ1S5pS",
       "role": "raph",
       "text": "[playful] Houlou !"
     },
@@ -76,12 +76,12 @@
       "text": "Wex se mit à plat ventre. Il approcha son œil de l'ouverture."
     },
     {
-      "voice_id": "MvACGLim6BRvCWyH21A6",
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
       "role": "wex",
       "text": "[curious] L'eau est toute froide. [softly] Je vois des cailloux blancs. [happily] Il y en a un qui brille !"
     },
     {
-      "voice_id": "JseyaGd8TeBwmEBbFfmW",
+      "voice_id": "Te5RKnm9ebwdEvZ1S5pS",
       "role": "raph",
       "text": "[excited] Moi je veux briller !"
     },
@@ -96,12 +96,12 @@
       "text": "Wex se releva. Il prit une grande inspiration."
     },
     {
-      "voice_id": "MvACGLim6BRvCWyH21A6",
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
       "role": "wex",
       "text": "[playful] On met un panneau !"
     },
     {
-      "voice_id": "JseyaGd8TeBwmEBbFfmW",
+      "voice_id": "Te5RKnm9ebwdEvZ1S5pS",
       "role": "raph",
       "text": "[curious] Avec du papier ?"
     },
@@ -116,7 +116,7 @@
       "text": "[playful] Raph tourna sur elle-même en cherchant."
     },
     {
-      "voice_id": "JseyaGd8TeBwmEBbFfmW",
+      "voice_id": "Te5RKnm9ebwdEvZ1S5pS",
       "role": "raph",
       "text": "[excited] Un bâton ! Un gros bâton planté comme un drapeau ! [happily] Pour que tout le monde voie avant d'arriver !"
     },
@@ -136,7 +136,7 @@
       "text": "[happily] Même les tout petits verront."
     },
     {
-      "voice_id": "MvACGLim6BRvCWyH21A6",
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
       "role": "wex",
       "text": "[playful] Ceux qui courent vite aussi."
     },
@@ -151,7 +151,7 @@
       "text": "[playful] Wex passa le premier. Il marcha sur la planche de gauche, en évitant le trou. Ses pas faisaient un bruit sec et joyeux. Raph passa sur la droite en faisant des bruits de cheval. [softly] Pierrot passa derrière. Il posa une main sur la barrière. De l'autre côté, ils s'arrêtèrent. Le ruisseau continuait son bruit sous le pont. Le drapeau jaune ondulait doucement dans l'air du printemps."
     },
     {
-      "voice_id": "JseyaGd8TeBwmEBbFfmW",
+      "voice_id": "Te5RKnm9ebwdEvZ1S5pS",
       "role": "raph",
       "text": "[curious] Il est là pour longtemps ?"
     },
@@ -161,7 +161,7 @@
       "text": "[softly] Tant qu'il fait beau."
     },
     {
-      "voice_id": "MvACGLim6BRvCWyH21A6",
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
       "role": "wex",
       "text": "[happily] On peut en remettre une autre demain. [softly] Si le vent l'emporte."
     },

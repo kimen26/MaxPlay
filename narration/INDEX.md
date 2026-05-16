@@ -137,6 +137,30 @@ narration/
 
 ---
 
+## Production audio (PROCESS MILITAIRE depuis 2026-05-16)
+
+**Voie officielle** : Outil MCP `studio_audiobook_from_segments_v2_dialogue` (clé ~/.claude.json).
+
+| Ressource | Rôle |
+|-----------|------|
+| **Outil MCP** | [`studio_audiobook_from_segments_v2_dialogue`](../../infra/mcp/server.ts#L606) — **VOIE PAR DÉFAUT** production multi-voix. Modèle `eleven_v3` forcé. Resolver : `voice-map.json`. Fallback CLI : `scripts/generate-story-dialogue.js`. |
+| **Décision figée** | [`pmo/decisions.md`](pmo/decisions.md) § DEC-AUDIO-PRODUCTION-001 — texte-to-dialogue API, packetisation ≤2000 char, ffmpeg loudnorm. **Jamais régresser.** |
+| **Process détaillé** | [`equipe/PROCESS.md`](equipe/PROCESS.md) § PROCESS Audio (5 étapes : voice-director markup → packetisation → API calls → concat loudnorm → archivage) |
+| **Règles auto-chargées** | [`.claude/rules/audio.md`](../../.claude/rules/audio.md) — **ENFORCED** dès que Claude touche script audio/segments JSON. Voie MCP + eleven_v3 + voice-map.json + 9 règles obligatoires + 10 anti-patterns bannis. |
+| **Voice-meta source** | [`personnages/voix-meta/_VOICE-IDS-CASTING.md`](personnages/voix-meta/_VOICE-IDS-CASTING.md) — méthodo v24 figée. Voice IDs + settings (stability/similarity_boost/style) par perso + narrateurs H/F + pronunciation dicts. |
+| **Voice resolver** | [`personnages/voix-meta/voice-map.json`](personnages/voix-meta/voice-map.json) — mappe authoritative `role` → `voice_id` (ex: `'wex'` → `'G54e8CyYslC2Y4ZupTlg'`). Source vérité pour outil MCP. |
+| **Cheatsheet markup** | [`personnages/voix-meta/_CHEATSHEET-WRITERS.md`](personnages/voix-meta/_CHEATSHEET-WRITERS.md) — catalogue tags v3 + didascalies par perso + preview-texts. À consulter avant voice-director markup. |
+| **Skills globaux** | `~/.claude/skills/elevenlabs-voice-design/` (CRÉATION voix) · `~/.claude/skills/audio-direction-elevenlabs/` (**PRODUCTION** multi-voix : API, tags v3, tricks graphie, pronunciation dicts, voice settings, 17+ anti-patterns, 12 cultures). Auto-trigger sur mots-clés audio. |
+
+**Checklist avant lancement** :
+- ✅ Outil MCP `studio_audiobook_from_segments_v2_dialogue` déclaré + clé EL_API_KEY dans ~/.claude.json
+- ✅ `voice-map.json` rempli (au moins roles : wex, narrateur_h, narrateur_f)
+- ✅ `_VOICE-IDS-CASTING.md` à jour (voice_ids + settings gravés)
+- ✅ Script fallback `generate-story-dialogue.js` disponible
+- ✅ ffmpeg installé (pour loudnorm concat)
+
+---
+
 ## PMO (gestion de projet)
 
 | Fichier | Rôle |

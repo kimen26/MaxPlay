@@ -101,6 +101,19 @@ The voice that holds your hand without saying so. A presence that says what is, 
 
 ---
 
+## État du casting narrateurs
+
+> Centralisé ici 2026-05-16 (étaient éparpillés dans `narrateur-h.md` / `narrateur-f.md` frontmatter). Source de vérité unique avec les 10 persos ci-dessus. Résolveur machine : [`voice-map.json`](voice-map.json).
+
+| Rôle | Clé resolver | Voice ID | Statut | Source frontmatter | Caractéristique vocale |
+|------|--------------|----------|--------|--------------------|------------------------|
+| **Narrateur H** | `narrateur_h` | `cbRcktt2xvoeFpdvW2wg` | ✅ **figé 2026-05-11** (v3.1) | [`narrateur-h.md`](narrateur-h.md) L.4 | Lumi — Playful, Theatrical, Warm (FR) |
+| **Narratrice F** | `narrateur_f` | `aHKEGRjW94hqXc6gaItG` | ✅ **figé 2026-05-11** (v3.1) | [`narrateur-f.md`](narrateur-f.md) L.4 | Lumi — Singing, Tender, Lively (FR) |
+
+Alias resolver : `narrateur` → `narrateur_h` (défaut).
+
+---
+
 ## Lulu — état détaillé du blocage
 
 **Itérations tentées (toutes ont fini bloquées par Prohibited Use Policy)** :

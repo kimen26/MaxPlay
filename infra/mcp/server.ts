@@ -2,9 +2,11 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 import { mkdir, writeFile } from "node:fs/promises";
+import { readFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
+import { execSync } from "node:child_process";
 
 const server = new McpServer({
   name: "llm-copains",
@@ -504,6 +506,208 @@ server.tool(
         content: [
           { type: "text", text: `Erreur Studio audiobook: ${(e as Error).message}` },
         ],
+        isError: true,
+      };
+    }
+  }
+);
+
+// ───────────────────────────────────────────────────────────────────────────
+// tts_dialogue_elevenlabs — méthode OFFICIELLE production audio MaxPlay
+// (DEC-AUDIO-PRODUCTION-001). text-to-dialogue multi-voix natif, packetisé
+// ≤2000 car, ffmpeg loudnorm. Resolver voice_id = voice-map.json (source unique).
+// ───────────────────────────────────────────────────────────────────────────
+
+const FFMPEG_BIN =
+  "C:/Users/kimen/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-8.1.1-full_build/bin/ffmpeg.exe";
+const DIALOGUE_CHAR_CAP = 2000;
+const DIALOGUE_SAFETY = 1900;
+const DIALOGUE_MAX_VOICES = 10;
+const VOICE_MAP_FILE = join(
+  MCP_DIR,
+  "..",
+  "..",
+  "narration",
+  "personnages",
+  "voix-meta",
+  "voice-map.json"
+);
+
+type VoiceMap = {
+  voices: Record<string, string>;
+  alias: Record<string, string>;
+  deprecated: Record<string, string>;
+};
+
+function loadVoiceMap(): VoiceMap {
+  try {
+    const m = JSON.parse(readFileSync(VOICE_MAP_FILE, "utf-8")) as {
+      voices?: Record<string, string>;
+      _alias?: Record<string, string>;
+      deprecated?: Record<string, string>;
+    };
+    return { voices: m.voices ?? {}, alias: m._alias ?? {}, deprecated: m.deprecated ?? {} };
+  } catch {
+    return { voices: {}, alias: {}, deprecated: {} };
+  }
+}
+
+function resolveVoice(
+  seg: { voice_id?: string; role?: string; voice?: string },
+  vmap: VoiceMap,
+  idx: number
+): string {
+  const rawKey = (seg.role ?? seg.voice ?? "").toString().trim().toLowerCase();
+  const key = vmap.alias[rawKey] ?? rawKey;
+  const mapped = key ? vmap.voices[key] : undefined;
+  if (mapped) return mapped;
+  if (seg.voice_id) {
+    if (vmap.deprecated[seg.voice_id]) {
+      throw new Error(
+        `seg #${idx} : voice_id PÉRIMÉ ${seg.voice_id} — ${vmap.deprecated[seg.voice_id]}`
+      );
+    }
+    return seg.voice_id;
+  }
+  throw new Error(`seg #${idx} : ni rôle connu ("${rawKey}") ni voice_id`);
+}
+
+function packetizeDialogue(
+  segments: { voice_id: string; text: string }[]
+): { voice_id: string; text: string }[][] {
+  const packets: { voice_id: string; text: string }[][] = [];
+  let current: { voice_id: string; text: string }[] = [];
+  let chars = 0;
+  let voices = new Set<string>();
+  for (const seg of segments) {
+    if (seg.text.length > DIALOGUE_CHAR_CAP) {
+      throw new Error(
+        `Segment trop long (${seg.text.length} > ${DIALOGUE_CHAR_CAP} car) — découper le canon en amont.`
+      );
+    }
+    const nextVoices = new Set(voices).add(seg.voice_id);
+    const overflow =
+      chars + seg.text.length > DIALOGUE_SAFETY || nextVoices.size > DIALOGUE_MAX_VOICES;
+    if (current.length > 0 && overflow) {
+      packets.push(current);
+      current = [];
+      chars = 0;
+      voices = new Set();
+    }
+    current = [...current, { voice_id: seg.voice_id, text: seg.text }];
+    chars += seg.text.length;
+    voices.add(seg.voice_id);
+  }
+  if (current.length > 0) packets.push(current);
+  return packets;
+}
+
+server.tool(
+  "studio_audiobook_from_segments_v2_dialogue",
+  "VOIE PAR DÉFAUT production audio MaxPlay (DEC-AUDIO-PRODUCTION-001) — c'est CET outil qu'on utilise pour générer l'audio d'une histoire, pas le script à la main. Multi-voix via POST /v1/text-to-dialogue, modèle eleven_v3 FORCÉ (militaire, seul à gérer les tags inline), packetisé ≤2000 car/appel + ffmpeg loudnorm. Résout les voix via voice-map.json (clé `role` ex: 'wex','narrateur_h' — autoritaire, refuse les voice_id périmés). Fallback CLI = narration/scripts/generate-story-dialogue.js. Ne PAS utiliser studio_audiobook_from_segments (Studio API verrouillée Enterprise) ni tts_elevenlabs (mono).",
+  {
+    project_name: z.string().describe("Nom du projet (libellé)"),
+    segments: z
+      .array(
+        z.object({
+          role: z
+            .string()
+            .optional()
+            .describe("Clé resolver : 'wex','narrateur_h','raph'… (recommandé — autoritaire via voice-map.json)"),
+          voice_id: z
+            .string()
+            .optional()
+            .describe("voice_id littéral (fallback si pas de role ; refusé si périmé)"),
+          text: z.string().describe("Texte du segment (tags v3 inline si eleven_v3)"),
+        })
+      )
+      .min(1)
+      .describe("Liste ordonnée des répliques"),
+    output_path: z.string().describe("Chemin absolu MP3 final (ex: c:/.../001-final.mp3)"),
+    language_code: z.string().optional().describe("ISO 639-1 (ex: 'fr') — optionnel"),
+    stability: z
+      .number()
+      .min(0)
+      .max(1)
+      .optional()
+      .describe("settings.stability text-to-dialogue (optionnel, défaut EL 0.5)"),
+  },
+  async ({ project_name, segments, output_path, language_code, stability }) => {
+    // RÈGLE MILITAIRE (DEC-AUDIO-PRODUCTION-001) : eleven_v3 OBLIGATOIRE
+    // (seul modèle gérant les audio tags inline du voice-director).
+    const model_id = "eleven_v3";
+    const apiKey = process.env.ELEVENLABS_API_KEY;
+    if (!apiKey) {
+      return {
+        content: [{ type: "text", text: "Erreur: ELEVENLABS_API_KEY non définie." }],
+        isError: true,
+      };
+    }
+    try {
+      const vmap = loadVoiceMap();
+      const resolved = segments.map((s, i) => ({
+        voice_id: resolveVoice(s, vmap, i),
+        text: s.text,
+      }));
+      const packets = packetizeDialogue(resolved);
+
+      const outDir = dirname(output_path);
+      const packetsDir = join(outDir, "packets");
+      await mkdir(packetsDir, { recursive: true });
+
+      const packetFiles: string[] = [];
+      for (let i = 0; i < packets.length; i++) {
+        const body: Record<string, unknown> = {
+          inputs: packets[i],
+          model_id,
+          output_format: "mp3_44100_128",
+        };
+        if (language_code) body.language_code = language_code;
+        if (typeof stability === "number") body.settings = { stability };
+        const r = await fetch("https://api.elevenlabs.io/v1/text-to-dialogue", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", "xi-api-key": apiKey },
+          body: JSON.stringify(body),
+        });
+        if (!r.ok) {
+          const err = await r.text();
+          throw new Error(`ElevenLabs ${r.status} (paquet ${i + 1}/${packets.length}): ${err}`);
+        }
+        const buf = await r.arrayBuffer();
+        const pktPath = join(packetsDir, `pkt-${String(i).padStart(2, "0")}.mp3`);
+        await Bun.write(pktPath, buf);
+        packetFiles.push(pktPath);
+      }
+
+      if (packetFiles.length === 1) {
+        execSync(
+          `"${FFMPEG_BIN}" -y -i "${packetFiles[0]}" -af "loudnorm=I=-16:TP=-1.5:LRA=11" -c:a libmp3lame -b:a 192k -ar 44100 "${output_path}"`,
+          { stdio: "ignore" }
+        );
+      } else {
+        const listPath = join(outDir, "concat-list.txt");
+        await writeFile(
+          listPath,
+          packetFiles.map((p) => `file '${p.replace(/\\/g, "/")}'`).join("\n"),
+          "utf-8"
+        );
+        execSync(
+          `"${FFMPEG_BIN}" -y -f concat -safe 0 -i "${listPath}" -af "loudnorm=I=-16:TP=-1.5:LRA=11" -c:a libmp3lame -b:a 192k -ar 44100 "${output_path}"`,
+          { stdio: "ignore" }
+        );
+      }
+
+      return {
+        content: [
+          {
+            type: "text",
+            text: `Audio dialogue généré : ${output_path} · ${resolved.length} segments → ${packets.length} paquet(s) text-to-dialogue · modèle ${model_id} · projet "${project_name}"`,
+          },
+        ],
+      };
+    } catch (e) {
+      return {
+        content: [{ type: "text", text: `Erreur dialogue EL: ${(e as Error).message}` }],
         isError: true,
       };
     }

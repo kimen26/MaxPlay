@@ -11,51 +11,49 @@
 
 ---
 
-## 2026-05-16 (complément PMO) — PROCESS Audio gravé dans PROCESS.md + signal archiviste
+## 2026-05-16 — PILOT AUDIO TRICÉRATOPS V1 LIVRÉE + Leçon process API
 
-**Objectif** : Formaliser le PROCESS MILITAIRE audio (FOND) en source de vérité unique. Passer consigne FORME à archiviste.
+**Objectif** : Graver la 1ère production audio duo Narrateur H + Wex réussie (mini-jeu Dino-Encyclopédie).
 
 **Fait** :
-- [x] Relecture DEC-AUDIO-PRODUCTION-001 et sprint-log 2026-05-16 § "DÉCISION AUDIO"
-- [x] Création section « PROCESS Audio — 5 étapes » dans `equipe/PROCESS.md` L.47-125
-- [x] Tableau owner-par-étape (Voice-director → Packetisation → Appels API → Concat+loudnorm → Archivage)
-- [x] Critères PASS chaque étape gravement (anti-patterns bannir 100% + pré-requis blocage)
-- [x] Lien référence `.claude/rules/audio.md` pour détail technique
+- [x] JSON payload créé : `game/docs/jeux/dino-encyclopedie/assets/audio/_segments-triceratops-v1.json` (24 inputs, 1792 char, model eleven_v3, tags v3 validés)
+- [x] **Appel API `POST /v1/text-to-dialogue` HTTP 200** — clé lue depuis MCP elevenlabs config (.claude.json)
+- [x] **MP3 généré** : `triceratops-v1.mp3` (1,7 MB, 106 sec, duo complet 6 blocs)
+- [x] Voice IDs réutilisés v24 figés : Narrateur `cbRcktt2xvoeFpdvW2wg` + Wex `G54e8CyYslC2Y4ZupTlg`
 
-**Décisions prises** : Aucune nouvelle — DEC-AUDIO-PRODUCTION-001 déjà figée. Formalisation FOND complète.
+**Décisions prises** : DEC-AUDIO-PRODUCTION-001 statut → **PROD V1 LIVRÉE** (attente validation Papa Yann sur écoute avant industrialisation 49 dinos restants).
 
-**Classification** : **TRAITEMENT IMMÉDIAT** (PROCESS gravé) + **TODO** (signal archiviste + mini-ticket delta D1).
+**Classification** : **TRAITEMENT IMMÉDIAT** + **LEÇON PROCESS API gravée**.
 
-**Signal à narration-archiviste (FORME)** :
+**⚠️ Leçon GRAVÉE : Accès API dans sous-agent** :
+Sous-agent (toi) **HORS répertoire projet** : pas d'accès `C:\Users\kimen\.claude.json` (où réside clé ElevenLabs). **Workaround validé** : main agent fait appel API (accès .claude.json), sous-agent reçoit MP3 fini. À prendre en compte pour production audio future : **toujours main agent pour POST /v1/text-to-dialogue**.
 
-→ **Actions attendues** (cf. sprint-log 2026-05-16 L.98-106) :
-1. **Déprécier `narration/scripts/generate-story-audio.js`** → commentaire en-tête DEPRECATED (ANTI-PATTERN 32 TTS)
-2. **Créer `.claude/rules/audio.md`** → copier PROCESS 5 étapes de ce sprint-log (lignes 29-85) + mécanique + anti-patterns. Auto-chargera dès que Claude touche script audio.
-3. **INDEX updates** : `narration/INDEX.md`, `narration/scripts/INDEX.md`, `personnages/voix-meta/README.md`
-4. **Audit agents** : scanner `.claude/agents/narration-*.md` pour refs obsolètes aux anciens scripts
-5. **✅ DONE — Ne plus faire (déjà complété)** : point 5 du signal obsolète (PROCESS dans PROCESS.md déjà gravé)
+**Fichiers impactés** :
+- ✅ `narration/pmo/decisions.md` DEC-AUDIO-PRODUCTION-001 v2 (pilot livré)
+- ✅ `narration/pmo/INVARIANTS.md` (MAJ quota ElevenLabs post-pilot)
+- ✅ `game/docs/jeux/dino-encyclopedie/assets/audio/triceratops-v1.mp3` (livrable)
 
 **État au reboot** :
-- ✅ PROCESS Audio FOND = **source de vérité unique** dans `equipe/PROCESS.md` L.47-125
-- ✅ DEC-AUDIO-PRODUCTION-001 figée + INVARIANTS.md + decisions.md cohérents
-- ✅ AUDIO-SCRIPT-V2 ticket actif (haute priorité)
-- 📋 En attente archiviste : `.claude/rules/audio.md` + dépréciage script + INDEX updates
-- ⏳ Après archiviste : lancer AUDIO-SCRIPT-V2 + VOIX-001/002/003
+- ✅ Pilot audio réussi = déverrouille chaîne jeu+audio (mini-jeux dino/animaux/etc.)
+- 📋 En attente Papa Yann : validation écoute triceratops-v1.mp3
+- 📋 Post-validation : industrialisation 49 dinos + jeux similaires
+- ✅ Leçon process API = gravée pour futur (main agent = API, sub = rendu)
 
 ---
 
-## 2026-05-16 — DÉCISION AUDIO : Text-to-Dialogue API = méthode officielle + coordination archiviste
+## 2026-05-16 — AUDIO DURCISSEMENT FOND : 3 règles MILITAIRES + Owner désigné + Archiviste coordination
 
-**Objectif** : Graver la décision structurante audio (BREAKTHROUGH 2026-05-12) en FOND. Définir PROCESS MILITAIRE audio. Coordonner avec archiviste (FORME).
+**Objectif** : Après livraison script v2 + pilot réussi Dino, graver 3 durcissements FOND qui solidifient la méthode audio officielle ET coordonner la propagation FORME avec archiviste.
 
 **Fait** :
-- [x] Lecture BREAKTHROUGH dans `_PROMPTING-GUIDE.md` (text-to-dialogue API validée empiriquement)
-- [x] Création DEC-AUDIO-PRODUCTION-001 dans `decisions.md` (figée, jamais régresser)
-- [x] Mise à jour `INVARIANTS.md` § Production audio multi-voix (plafond 2000 char + méthodologie + anti-pattern)
-- [x] Création ticket `AUDIO-SCRIPT-V2` dans `backlog.md` (script production v2, haute priorité)
-- [x] Rédaction PROCESS MILITAIRE audio (5 sections, prêt pour archiviste)
+- [x] **DEC-AUDIO-PRODUCTION-001 v3** : gravée 3 durcissements FOND (MCP voie défaut, eleven_v3 forcé, voice-map.json lookup unique)
+- [x] **INVARIANTS.md** : MAJ § Production audio (tableau MCP obligatoire, model forcé, voice-map, owner MCP)
+- [x] **Backlog** : AUDIO-SCRIPT-V2 fermé ✅, AUDIO-DELTA-D1 reste ouvert (audit API)
+- [x] **Contenu PROCESS.md prêt** : étapes 0-4 audio avec owner = MCP outil (table L.65-71, L.49-95)
+- [x] **Contenu `.claude/rules/audio.md` prêt** : règles militaires MCP + model + voice-map auto-chargées
+- [x] **Signal ARCHIVISTE** : noté dans sprint-log ci-après (coordonner FORME)
 
-**Décisions prises** : DEC-AUDIO-PRODUCTION-001 (figée 2026-05-16, jamais régresser sans décision explicite).
+**Décisions prises** : DEC-AUDIO-PRODUCTION-001 v3 (figée 2026-05-16 14:00, **JAMAIS régresser sans décision explicite datée**).
 
 **Classification** : **DÉCISION** (audio figée) + **TRAITEMENT IMMÉDIAT** (graver multi-fichiers FOND) + **TODO** (AUDIO-SCRIPT-V2).
 
@@ -138,11 +136,50 @@
 4. **Scanner `.claude/agents/narration-*.md`** → références obsolètes aux anciens scripts (audit par archiviste, signaler findings)
 5. **Figeage du PROCESS** : après implémentation v2 + test réussi STORY-002, graver version du PROCESS militaire dans `equipe/PROCESS.md` § Étape 0-10 audio.
 
+**Classification** : **DÉCISION** (3 durcissements figés) + **TRAITEMENT IMMÉDIAT** (gravis multi-fichiers FOND) + **COORDINATION** (archiviste FORME).
+
+---
+
+### COORDINATION ARCHIVISTE — Signaux FORME à traiter en parallèle
+
+**Signal à `narration-archiviste`** (via ce sprint-log) : Décision audio figée FOND (DEC-AUDIO-PRODUCTION-001 v3) → gère toi la propagation FORME.
+
+**Actions archiviste PRIORITAIRES** (ordre) :
+
+1. **Déprécier script legacy** : `narration/scripts/generate-story-audio.js`
+   - Ajouter commentaire en-tête : "DEPRECATED 2026-05-16 — implémente anti-pattern 32 TTS. Utiliser MCP `studio_audiobook_from_segments_v2_dialogue` ou script CLI `generate-story-dialogue.js` (fallback debug)."
+   - NE PAS SUPPRIMER (traçabilité), archiver ou laisser en place commenté.
+
+2. **Créer/MAJ `.claude/rules/audio.md`** (règle auto-chargée)
+   - Paths : `narration/scripts/**`, `narration/personnages/voix-meta/**`, `narration/stories/**/assets/audio/**`, `**/*-segments*.json`
+   - Contenu : Durcissement #1 (MCP voie défaut) + #2 (eleven_v3 forcé) + #3 (voice-map.json lookup)
+   - Format : structure actuelle conservée, ajouter section "3 durcissements 2026-05-16"
+
+3. **Cohérence INDEX** :
+   - `narration/INDEX.md` : méthodo audio = MCP outil (pas API directe)
+   - `narration/scripts/INDEX.md` : générations (v1 déprécié + v2 + MCP)
+   - `narration/personnages/voix-meta/README.md` : PROCESS audio ref vers `equipe/PROCESS.md` L.49-95
+   - `equipe/INDEX.md` : PROCESS audio section
+
+4. **Scanner agents obsolètes** (audit) :
+   - `.claude/agents/narration-*.md` : références à ancien script `generate-story-audio.js` → remplacer par MCP ou `generate-story-dialogue.js`
+   - Signaler findings PMO (pas acter, juste alerter)
+
+5. **Figeage PROCESS final** (après test STORY-002) :
+   - Une fois test STORY-002 post-étape 10 réussi, graver étapes 0-4 audio dans `equipe/PROCESS.md` L.49-95
+   - Owner = "MCP outil `studio_audiobook_from_segments_v2_dialogue` orchestré Papa Yann"
+   - Consigne simple : "appeller MCP, point"
+
+**Timing** :
+- Archiviste lance en parallèle (PMO = FOND figé, archiviste = FORME propagation)
+- Tant que VOIX-001/002 non créés, audio étape 0 bloquée anyway → archiviste peut traîner 3-4 jours
+- Post-test STORY-002 : urgence PROCESS figeage
+
 **État au reboot** :
-- ✅ DEC-AUDIO-PRODUCTION-001 figée (`decisions.md`)
-- ✅ INVARIANTS.md mis à jour (plafond 2000 char + méthodologie)
-- ✅ Ticket AUDIO-SCRIPT-V2 créé (`backlog.md`, haute priorité)
-- ✅ Sprint-log mis à jour (cette entrée)
+- ✅ **3 durcissements gravés FOND** (`decisions.md`, `INVARIANTS.md`, backlog fermé)
+- 📋 **En attente archiviste** : propagation FORME (script déprécié, règles audio.md, INDEX cohérence, audit agents, figeage PROCESS)
+- 📋 **Bloquant audio** : VOIX-001 (voice-director) + VOIX-002 (narrateurs) → débloque étape 0
+- 🟡 **En cours STORY-002** : étape 6 sélection, arbitrage top 1-3 nécessaire avant étape 7 rewrite
 - 📋 PROCESS MILITAIRE audio rédigé (prêt archiviste)
 - 🔄 En attente : archiviste applique FORME (dépréciation script, règles, INDEX)
 - ⏳ Prochain pulse : lancer AUDIO-SCRIPT-V2 après VOIX-001/002/003 terminés

@@ -31,19 +31,42 @@ Contenu :
 - Pronunciation dicts personnalisés par perso
 - Cheatsheet didascalies + preview-texts + alias-tags catalog
 
-## PROCESS MILITAIRE audio (Déc-AUDIO-001, 2026-05-16)
+## VOIE PAR DÉFAUT : Outil MCP (IMPÉRATIF)
 
-**Méthode OFFICIELLE** : text-to-dialogue API multi-voix natif (1 appel par paquet texte < 2000 car) + ffmpeg `loudnorm` final (1-3 passes seulement).
+**Outil obligatoire** : `studio_audiobook_from_segments_v2_dialogue` (MCP ElevenLabs, clé dans ~/.claude.json).
+
+**Fallback CLI UNIQUEMENT** : si outil MCP indisponible → `narration/scripts/generate-story-dialogue.js` (même méthodo).
+
+**Resolver voix** : `narration/personnages/voix-meta/voice-map.json` (autoritaire, mappe `role` → voice_id). Toujours via role (ex: `wex`, `narrateur_h`, `raph`) sauf si voice_id périmé.
+
+**Forbidden paths** :
+- ❌ `studio_audiobook_from_segments` (Studio API Enterprise verrouillée)
+- ❌ `tts_elevenlabs` (mono, anti-pattern)
+- ❌ Script fallback main agent (réservé sub-agent ou CLI CLI)
+
+---
+
+## PROCESS MILITAIRE audio (DEC-AUDIO-PRODUCTION-001 v3, figée 2026-05-16, jamais régresser)
+
+**Méthode OFFICIELLE** : MCP `studio_audiobook_from_segments_v2_dialogue` (wrapper text-to-dialogue API multi-voix natif) + 3 durcissements gravés 2026-05-16 14:00.
+
+**3 Durcissements FIGÉS (2026-05-16, jamais régresser sans décision datée explicite)** :
+- **#1 MCP voie par défaut obligatoire** : `studio_audiobook_from_segments_v2_dialogue` (clé ~/.claude.json env). Fallback CLI = `generate-story-dialogue.js` debug seulement.
+- **#2 Model `eleven_v3` forcé** : seul modèle tags v3 inline. Pas d'autre modèle, jamais inventer.
+- **#3 Voice-map.json lookup** : résolveur centralisé `role` → voice_id (source autorité = `_VOICE-IDS-CASTING.md`).
 
 ### Règles MILITAIRES production audio (ENFORCED)
 
-1. **text-to-dialogue API OBLIGATOIRE** pour multi-voix (pas text-to-speech mono 32+ appels).
-2. **Packetisation canon < 2000 char/appel** : split texte canon → 2-3 paquets max → 1 appel text-to-dialogue/paquet → 1 MP3/paquet.
-3. **Voice settings** : ne pas inventer — utiliser les valeurs gravées dans `_VOICE-IDS-CASTING.md`.
-4. **Tags audio v3** : utiliser le catalogue gravé dans `audio-direction-elevenlabs/`. Pas d'invention.
-5. **Pronunciation dicts** : un dict par perso, gravé. Modifier = MAJ `_VOICE-IDS-CASTING.md`.
-6. **Loudness normalization** : ffmpeg `loudnorm` obligatoire EN POST-PROD (concat 1-3 paquets seulement, pas 32+).
-7. **Format segments** : JSON figé. Voir [`narration/stories/001-le-pont-casse/assets/audio/_segments-001-v2-kimi.json`](../../narration/stories/001-le-pont-casse/assets/audio/) pour exemple.
+0. **Outil MCP par défaut (durcissement #1)** : `studio_audiobook_from_segments_v2_dialogue` (clé ~/.claude.json). Fallback = script `narration/scripts/generate-story-dialogue.js` debug seulement. Ne PAS inventer d'autres outils/APIs.
+1. **Modèle eleven_v3 OBLIGATOIRE (durcissement #2)** : seul modèle supportant tags v3 inline. Jamais `eleven_multilingual_v2` ou autres (ils ignorent/cassent les tags).
+2. **Resolver voix via voice-map.json (durcissement #3)** : lookup centralisé `role` → voice_id autoritative (source = `_VOICE-IDS-CASTING.md`). Jamais hardcoder voice_ids périmés.
+3. **text-to-dialogue API OBLIGATOIRE** pour multi-voix (pas text-to-speech mono 32+ appels).
+4. **Packetisation canon < 2000 char/appel** : split texte canon → 2-3 paquets max → 1 appel text-to-dialogue/paquet → 1 MP3/paquet.
+5. **Voice settings** : ne pas inventer — utiliser les valeurs gravées dans `_VOICE-IDS-CASTING.md`.
+6. **Tags audio v3** : utiliser le catalogue gravé dans `audio-direction-elevenlabs/`. Pas d'invention.
+7. **Pronunciation dicts** : un dict par perso, gravé. Modifier = MAJ `_VOICE-IDS-CASTING.md`.
+8. **Loudness normalization** : ffmpeg `loudnorm` obligatoire EN POST-PROD (concat 1-3 paquets seulement, pas 32+).
+9. **Format segments** : JSON figé. Voir [`narration/stories/001-le-pont-casse/assets/audio/_segments-001-v2-kimi.json`](../../narration/stories/001-le-pont-casse/assets/audio/) pour exemple.
 
 ### Anti-patterns bannis (depuis 2026-05-16)
 

@@ -201,12 +201,12 @@
       "Bash(ffmpeg -version)",
       "PowerShell(winget install --id Gyan.FFmpeg -e --silent --accept-package-agreements --accept-source-agreements 2>&1)",
       "Bash(\"C:/Users/kimen/AppData/Local/Microsoft/WinGet/Links/ffmpeg.exe\" -version)",
-      "Bash(ELEVENLABS_API_KEY=\"aa00a440e8665c7d53b1a1113bf8143a6e44720898843a448356d2d2b090a50d\" bun narration/scripts/generate-story-audio.js narration/stories/001-le-pont-casse/assets/audio/_segments-001-v2-kimi.json)",
+      "Bash(bun narration/scripts/generate-story-dialogue.js:*)",
       "Bash(bun -e ' *)",
       "Bash(\"C:/Users/kimen/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-8.1.1-full_build/bin/ffmpeg.exe\" -i /tmp/test-dialogue.mp3)",
       "WebFetch(domain:elevenlabsmagazine.com)",
-      "Bash(ELEVENLABS_API_KEY=\"aa00a440e8665c7d53b1a1113bf8143a6e44720898843a448356d2d2b090a50d\" bun narration/scripts/test-wex-advanced.js)",
-      "Bash(ELEVENLABS_API_KEY=\"aa00a440e8665c7d53b1a1113bf8143a6e44720898843a448356d2d2b090a50d\" bun narration/scripts/test-graphique-cris.js)",
+      "Bash(bun narration/scripts/test-wex-advanced.js)",
+      "Bash(bun narration/scripts/test-graphique-cris.js)",
       "Bash(mkdir -p \"C:/Users/kimen/.claude/skills/audio-direction-elevenlabs\" && echo \"OK\")",
       "Edit(~/.claude/skills/audio-direction-elevenlabs/**)",
       "Edit(~/.claude/skills/elevenlabs-voice-design/**)",
@@ -238,7 +238,8 @@
       "Bash(Get-ChildItem -Path \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\" -Directory)",
       "Bash(awk '{print $5, $6, $7, $8}')",
       "Bash(git add *)",
-      "Bash(cp claude-opus-def.md claude-opus-reco.md)"
+      "Bash(cp claude-opus-def.md claude-opus-reco.md)",
+      "Bash(awk 'f&&/^---$/{exit} /^---$/{c++; if\\(c==2\\){f=1; next}} f{print}' \"c:/ProjetsPerso/Claude_Projects/MaxPlay/narration/stories/002-libellule-resonance/4-versions-writers/claude-opus-def.md\")"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\temp",

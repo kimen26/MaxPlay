@@ -1,0 +1,29 @@
+{
+  "_comment": "RESOLVEUR voice_id MaxPlay — source unique pour la production audio. Genere/maintenu depuis _VOICE-IDS-CASTING.md + narrateur-h.md + narrateur-f.md. Verifie par narration-pmo RECHERCHE le 2026-05-16. Ne JAMAIS hardcoder un voice_id ailleurs : resoudre par cle via ce fichier.",
+  "_source_de_verite": [
+    "narration/personnages/voix-meta/_VOICE-IDS-CASTING.md (Wex + 9 persos)",
+    "narration/personnages/voix-meta/narrateur-h.md (frontmatter L.4)",
+    "narration/personnages/voix-meta/narrateur-f.md (frontmatter L.4)"
+  ],
+  "_maj": "2026-05-16",
+  "voices": {
+    "wex": "G54e8CyYslC2Y4ZupTlg",
+    "melki": "sWfumkYiI1QERQ5INqRQ",
+    "mimi": "aPQfyqve0ovOsJIl7EzX",
+    "dadou": "5wcx0KzRnrP48I5RCVD8",
+    "madie": "9JvOiMFLj8GdHK3Fcydn",
+    "lulu": "1XwHANMW4m2pxt7buPmQ",
+    "pierrot": "ukIKjXqbiGGkqIz0SW5c",
+    "raph": "Te5RKnm9ebwdEvZ1S5pS",
+    "juju": "WFNYCPhDQM9w07KAV6Be",
+    "nono": "f3w48h8ngnWWnhO9XGb3",
+    "narrateur_h": "cbRcktt2xvoeFpdvW2wg",
+    "narrateur_f": "aHKEGRjW94hqXc6gaItG"
+  },
+  "_alias": {
+    "narrateur": "narrateur_h"
+  },
+  "deprecated": {
+    "MvACGLim6BRvCWyH21A6": "ancien Wex (v20-v23, supprime par Papa Yann 2026-05-11) — utiliser wex=G54e8CyYslC2Y4ZupTlg"
+  }
+}

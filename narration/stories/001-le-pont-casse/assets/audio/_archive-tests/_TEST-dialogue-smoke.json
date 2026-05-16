@@ -1,0 +1,12 @@
+{
+  "project_name": "TEST smoke text-to-dialogue (2 narrateur + 2 Wex, tags v3)",
+  "model_id": "eleven_v3",
+  "language_code": "fr",
+  "output_path": "c:/ProjetsPerso/Claude_Projects/MaxPlay/narration/stories/001-le-pont-casse/assets/audio/_archive-tests/_TEST-dialogue-smoke.mp3",
+  "segments": [
+    {"voice_id": "cbRcktt2xvoeFpdvW2wg", "role": "narrateur", "text": "[softly] Le matin se levait doucement sur la vallée. Les oiseaux commençaient à peine à chanter."},
+    {"voice_id": "G54e8CyYslC2Y4ZupTlg", "role": "wex", "text": "[gasps] Regardez ! [excited] Il y a quelque chose qui brille là-bas, derrière le buisson !"},
+    {"voice_id": "cbRcktt2xvoeFpdvW2wg", "role": "narrateur", "text": "[slowly] Wex s'approcha tout doucement, le cœur qui battait fort."},
+    {"voice_id": "G54e8CyYslC2Y4ZupTlg", "role": "wex", "text": "[whispers] C'est tout petit... [giggles] et ça bouge tout seul !"}
+  ]
+}

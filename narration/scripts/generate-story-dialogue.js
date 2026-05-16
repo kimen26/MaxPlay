@@ -32,8 +32,81 @@
 
 import { join, dirname } from "node:path";
 import { mkdir, writeFile, readFile, rm } from "node:fs/promises";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { execSync } from "node:child_process";
+import { homedir } from "node:os";
+
+// Source unique du resolver voice_id (jamais hardcoder un id ailleurs).
+const VOICE_MAP_PATH = join(
+  dirname(new URL(import.meta.url).pathname.replace(/^\/([A-Za-z]:)/, "$1")),
+  "..",
+  "personnages",
+  "voix-meta",
+  "voice-map.json"
+);
+
+/**
+ * Résout la clé API depuis l'environnement, sinon depuis la config Claude
+ * globale (~/.claude.json → mcpServers.llm-copains.env). Source UNIQUE :
+ * la clé ne vit que là, jamais dans le repo.
+ */
+function resolveApiKey() {
+  if (process.env.ELEVENLABS_API_KEY) return process.env.ELEVENLABS_API_KEY;
+  try {
+    const cfg = JSON.parse(readFileSync(join(homedir(), ".claude.json"), "utf-8"));
+    const servers = cfg.mcpServers ?? {};
+    for (const name of ["llm-copains", "elevenlabs"]) {
+      const k = servers[name]?.env?.ELEVENLABS_API_KEY;
+      if (k) return k;
+    }
+  } catch {
+    /* config absente/illisible → erreur explicite plus bas */
+  }
+  return null;
+}
+
+function loadVoiceMap() {
+  try {
+    const m = JSON.parse(readFileSync(VOICE_MAP_PATH, "utf-8"));
+    return { voices: m.voices ?? {}, alias: m._alias ?? {}, deprecated: m.deprecated ?? {} };
+  } catch {
+    return { voices: {}, alias: {}, deprecated: {} };
+  }
+}
+
+/**
+ * Résout le voice_id d'un segment via voice-map.json (source de vérité).
+ * Priorité : clé `role`/`voice` → map (autoritaire). À défaut `voice_id`
+ * littéral, refusé s'il est dans la liste deprecated. Anti-périmage.
+ */
+function resolveVoiceId(seg, vmap, idx) {
+  const rawKey = (seg.role ?? seg.voice ?? "").toString().trim().toLowerCase();
+  const key = vmap.alias[rawKey] ?? rawKey;
+  const mapped = key ? vmap.voices[key] : undefined;
+
+  if (mapped) {
+    if (seg.voice_id && seg.voice_id !== mapped) {
+      console.warn(
+        `  ⚠ seg #${idx} "${rawKey}" : voice_id du JSON (${seg.voice_id}) ignoré → resolver autoritaire ${mapped}`
+      );
+    }
+    return mapped;
+  }
+  if (seg.voice_id) {
+    if (vmap.deprecated[seg.voice_id]) {
+      throw new Error(
+        `seg #${idx} : voice_id PÉRIMÉ ${seg.voice_id} — ${vmap.deprecated[seg.voice_id]}`
+      );
+    }
+    if (rawKey) {
+      console.warn(`  ⚠ seg #${idx} : rôle "${rawKey}" absent du voice-map → fallback voice_id littéral`);
+    }
+    return seg.voice_id;
+  }
+  throw new Error(
+    `seg #${idx} : ni rôle connu ("${rawKey}") ni voice_id — voir ${VOICE_MAP_PATH}`
+  );
+}
 
 const FFMPEG =
   "C:/Users/kimen/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-8.1.1-full_build/bin/ffmpeg.exe";
@@ -119,9 +192,11 @@ async function main() {
     console.error("Usage: bun generate-story-dialogue.js <segments.json>");
     process.exit(1);
   }
-  const apiKey = process.env.ELEVENLABS_API_KEY;
+  const apiKey = resolveApiKey();
   if (!apiKey) {
-    console.error("ERREUR: ELEVENLABS_API_KEY non définie");
+    console.error(
+      "ERREUR: clé ElevenLabs introuvable (ni $ELEVENLABS_API_KEY, ni ~/.claude.json mcpServers)"
+    );
     process.exit(1);
   }
 
@@ -136,22 +211,39 @@ async function main() {
     settings = null,
   } = config;
 
+  // RÈGLE MILITAIRE (DEC-AUDIO-PRODUCTION-001) : eleven_v3 OBLIGATOIRE.
+  // Seul v3 gère les audio tags inline ([softly], [gasps]…) du voice-director.
+  const MODEL = "eleven_v3";
+  if (model_id && model_id !== MODEL) {
+    console.warn(`  ⚠ model_id "${model_id}" du JSON IGNORÉ → eleven_v3 forcé (règle militaire audio)`);
+  }
+
   if (!Array.isArray(segments) || segments.length === 0) {
     console.error("ERREUR: 'segments' vide ou absent");
     process.exit(1);
   }
   for (const [i, s] of segments.entries()) {
-    if (!s.voice_id || typeof s.text !== "string") {
-      console.error(`ERREUR: segment #${i} invalide (voice_id + text requis)`);
+    if (typeof s.text !== "string") {
+      console.error(`ERREUR: segment #${i} invalide (text requis)`);
       process.exit(1);
     }
   }
 
-  const totalChars = segments.reduce((n, s) => n + s.text.length, 0);
-  console.log(`  → ${segments.length} segments, ${totalChars} car, modèle ${model_id}`);
+  const vmap = loadVoiceMap();
+  if (Object.keys(vmap.voices).length === 0) {
+    console.warn(`  ⚠ voice-map.json introuvable (${VOICE_MAP_PATH}) — fallback voice_id littéral`);
+  }
+  // Résolution autoritaire des voix AVANT packetisation (anti-périmage).
+  const resolvedSegments = segments.map((s, i) => ({
+    voice_id: resolveVoiceId(s, vmap, i),
+    text: s.text,
+  }));
+
+  const totalChars = resolvedSegments.reduce((n, s) => n + s.text.length, 0);
+  console.log(`  → ${resolvedSegments.length} segments, ${totalChars} car, modèle ${MODEL} (militaire)`);
 
   console.log(`[2/5] Packetisation (≤ ${SAFETY} car / ≤ ${MAX_VOICES} voix par paquet)...`);
-  const packets = packetize(segments);
+  const packets = packetize(resolvedSegments);
   packets.forEach((pk, i) => {
     const chars = pk.reduce((n, s) => n + s.text.length, 0);
     const voices = new Set(pk.map((s) => s.voice_id)).size;
@@ -172,7 +264,7 @@ async function main() {
     const { sizeBytes, requestId } = await dialoguePacket(
       apiKey,
       inputs,
-      model_id,
+      MODEL,
       language_code,
       settings,
       outPath

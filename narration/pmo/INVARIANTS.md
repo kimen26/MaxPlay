@@ -129,27 +129,33 @@ D�tail complet : [`../personnages/voix-meta/_VOICE-IDS-CASTING.md`](../personn
 
 ---
 
-## Production audio multi-voix (figée 2026-05-16)
+## Production audio multi-voix (figée 2026-05-16 + 3 durcissements 2026-05-16 14:00)
 
-**Méthode officielle** : `POST /v1/text-to-dialogue` (ElevenLabs Starter+ PAYG).
+**Méthode officielle** : MCP `studio_audiobook_from_segments_v2_dialogue` (wrapper text-to-dialogue ElevenLabs API).
 
 | Métrique | Valeur | Notes |
 |----------|--------|-------|
-| Endpoint officiel | `POST /v1/text-to-dialogue` | Multi-voix natif, cohérence prosodique, tags v3 inline supportés |
-| Plafond caractères par requête | **2000** (total, y.c. tags v3) | Dur. Diviser texte en paquets < 2000 char |
-| Voice IDs par appel | **Jusqu'à 10** | MaxPlay utilise 10 persos + narrateurs (2 max par appel réaliste) |
+| **Voie par défaut OBLIGATOIRE** | **MCP `studio_audiobook_from_segments_v2_dialogue`** (durcissement #1, 2026-05-16) | Ordrestre text-to-dialogue API, concat, loudnorm. Clé API en env MCP. Fallback = script CLI debug seulement. |
+| **Modèle ElevenLabs FORCÉ** | **`eleven_v3`** (durcissement #2, 2026-05-16) | Seul modèle supportant audio tags v3 inline (`[softly]`, `[excited]`, etc.). Pas d'autre modèle, pas de fallback, jamais inventer. |
+| **Résolveur voice_ids unique** | **`narration/personnages/voix-meta/voice-map.json`** (durcissement #3, 2026-05-16) | Lookup clé `role` → voice_id. Source humaine autorité = `_VOICE-IDS-CASTING.md`. Vieux voice_ids rejetés automatiquement. |
+| Endpoint API | `POST /v1/text-to-dialogue` (via MCP wrapper) | Multi-voix natif, cohérence prosodique |
+| Plafond caractères par requête | **2000** (total, y.c. tags v3) | Dur. MCP packetise auto. |
+| Voice IDs par appel | **Jusqu'à 10** | MaxPlay utilise 10 persos + narrateurs (2 max par appel) |
 | Audio tags supportés | Oui, avec `eleven_v3` | Catalogue complet dans skill `audio-direction-elevenlabs` |
 | Moteur concat final | ffmpeg `loudnorm` | Concat 2-3 paquets text-to-dialogue SEULEMENT (pas 32 segments) |
 | Anti-pattern | ❌ 32+ TTS séparés | Produit transitions abruptes, volumes inégaux, intonations cassées |
-| Script legacy | `narration/scripts/generate-story-audio.js` | DÉPRÉCIÉ (implémente anti-pattern). Archivé 2026-05-16. Remplacé par `generate-story-dialogue.js` (livré 2026-05-16 01:40). |
+| Script legacy | `narration/scripts/generate-story-audio.js` | DÉPRÉCIÉ (implémente anti-pattern). Archivé 2026-05-16. Remplacé par `generate-story-dialogue.js` (CLI fallback). |
 
 **Méthodologie** :
-1. Diviser texte canon en paquets < 2000 char (tags v3 inline inclus)
-2. Lancer 1 appel `text-to-dialogue` par paquet
-3. Concatener ffmpeg `loudnorm` des 2-3 paquets
-4. Sortie : 1 MP3 multi-voix cohérent
+1. Préparer texte canon + tags v3 inline (`[softly]`, `[excited]`, etc.)
+2. Créer JSON segments : `[{role: "wex", text: "..."}]`
+3. Appeler MCP `studio_audiobook_from_segments_v2_dialogue` (voice-map.json lookup auto)
+4. MCP packetise < 2000 char, 1 appel API par paquet, concat + loudnorm inline
+5. Sortie : 1 MP3 multi-voix cohérent
 
-**Source de vérité** : `pmo/decisions.md` DEC-AUDIO-PRODUCTION-001 (figée 2026-05-16).
+**Owner production audio** : MCP outil (orchestré par Papa Yann post-VOIX-001/002/003). Consigne : appeler MCP, point.
+
+**Source de vérité** : `pmo/decisions.md` DEC-AUDIO-PRODUCTION-001 v3 (figée 2026-05-16 14:00, jamais régresser sans décision explicite).
 
 ---
 

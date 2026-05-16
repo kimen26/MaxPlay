@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<title>Maquettes fiche dino — Brachiosaure</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+body { font-family:'Nunito',sans-serif; background:#05070d; color:#fff; padding:20px; }
+h1 { font-size:1.1rem; text-align:center; margin-bottom:6px; }
+.sub { text-align:center; color:#888; font-size:0.8rem; margin-bottom:24px; }
+.row { display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap; justify-content:center; }
+.mockup { width:380px; background:#0d1117; border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,0.08); }
+.mq-label { background:#1a2233; padding:10px 16px; font-weight:900; font-size:0.95rem; color:#7fd1ff; border-bottom:2px solid rgba(127,209,255,0.3); }
+.mq-label small { display:block; color:#8aa; font-weight:400; font-size:0.72rem; margin-top:2px; }
+.hdr { display:flex; align-items:center; gap:10px; padding:12px 14px; background:rgba(0,0,0,0.4); }
+.hdr .back { background:rgba(255,255,255,0.12); border-radius:8px; padding:5px 12px; font-weight:900; font-size:0.85rem; }
+.hdr .title { flex:1; font-weight:900; font-size:1rem; }
+.hdr .sp { background:rgba(255,220,0,0.2); border-radius:8px; padding:5px 10px; color:#ffe066; }
+.scroll { max-height:780px; overflow-y:auto; padding:14px; }
+.scroll::-webkit-scrollbar { width:6px; } .scroll::-webkit-scrollbar-thumb { background:#333; border-radius:3px; }
+
+/* ===== VARIANTE 1 : 4 grands panneaux colorés ===== */
+.v1-hero { position:relative; border-radius:16px; overflow:hidden; height:150px; background:linear-gradient(135deg,#1b5e20,#27ae60); display:flex; align-items:center; justify-content:center; margin-bottom:14px; }
+.v1-hero .emoji { font-size:5rem; filter:drop-shadow(0 4px 10px rgba(0,0,0,.5)); }
+.v1-hero .nm { position:absolute; bottom:10px; left:14px; }
+.v1-hero .nm b { font-size:1.5rem; font-weight:900; display:block; }
+.v1-hero .nm span { font-size:0.78rem; opacity:0.8; font-style:italic; }
+.v1-panel { border-radius:16px; padding:16px; margin-bottom:12px; position:relative; }
+.v1-panel .pic { display:flex; align-items:center; gap:10px; margin-bottom:10px; }
+.v1-panel .pic .ic { font-size:2rem; }
+.v1-panel .pic .tt { font-weight:900; font-size:1.05rem; text-transform:uppercase; letter-spacing:0.04em; }
+.v1-panel .sp { position:absolute; top:14px; right:14px; background:rgba(255,255,255,0.15); border-radius:10px; padding:6px 12px; font-size:0.9rem; }
+.v1-panel p { font-size:0.92rem; line-height:1.5; margin:5px 0; }
+.v1-a { background:linear-gradient(135deg,#3a2a5a,#5a3d8a); }
+.v1-b { background:linear-gradient(135deg,#0a3a4a,#1a6a8a); }
+.v1-c { background:linear-gradient(135deg,#0a4a2a,#1a8a4a); }
+.v1-d { background:linear-gradient(135deg,#5a4a0a,#a08a1a); }
+.v1-stats { display:flex; gap:8px; margin-top:8px; }
+.v1-stat { flex:1; background:rgba(0,0,0,0.3); border-radius:12px; padding:10px; text-align:center; }
+.v1-stat .v { font-size:1.4rem; font-weight:900; color:#ffe066; }
+.v1-stat .l { font-size:0.62rem; text-transform:uppercase; opacity:0.6; }
+.v1-stat .c { font-size:0.68rem; opacity:0.8; margin-top:3px; line-height:1.2; }
+.v1-big { width:100%; margin-top:10px; background:linear-gradient(135deg,#6a3093,#a044ff); border:0; color:#fff; font-family:inherit; font-weight:900; font-size:1.05rem; padding:16px; border-radius:14px; }
+
+/* ===== VARIANTE 2 : carte cartonnée + onglets ===== */
+.v2-card { background:linear-gradient(180deg,#1a2a1a,#0d1117); border-radius:18px; padding:18px; text-align:center; margin-bottom:14px; }
+.v2-card .emoji { font-size:5.5rem; }
+.v2-card .nm { font-size:1.8rem; font-weight:900; }
+.v2-card .lat { font-size:0.8rem; font-style:italic; opacity:0.6; margin-bottom:8px; }
+.v2-card .badge { display:inline-block; background:rgba(39,174,96,0.25); border:1px solid rgba(39,174,96,0.5); border-radius:20px; padding:4px 14px; font-size:0.8rem; font-weight:700; }
+.v2-tabs { display:flex; gap:6px; margin-bottom:12px; }
+.v2-tab { flex:1; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); border-radius:12px 12px 0 0; padding:10px 4px; text-align:center; font-size:0.7rem; font-weight:900; }
+.v2-tab.on { background:#1a6a8a; border-color:#2a9aca; }
+.v2-tab .e { font-size:1.4rem; display:block; }
+.v2-body { background:rgba(26,106,138,0.12); border:1px solid rgba(42,154,202,0.3); border-radius:0 0 14px 14px; padding:16px; min-height:160px; }
+.v2-body h3 { font-size:0.78rem; text-transform:uppercase; color:#7fd1ff; letter-spacing:0.05em; margin-bottom:8px; }
+.v2-body p { font-size:0.95rem; line-height:1.55; }
+.v2-body .sp { margin-top:12px; background:rgba(255,220,0,0.15); border:1px solid rgba(255,220,0,0.35); color:#ffe066; border-radius:10px; padding:10px; font-weight:900; font-size:0.85rem; width:100%; }
+.v2-statline { display:flex; justify-content:space-around; margin:10px 0; }
+.v2-statline div { text-align:center; }
+.v2-statline .v { font-size:1.5rem; font-weight:900; color:#ffe066; }
+.v2-statline .l { font-size:0.6rem; opacity:0.6; text-transform:uppercase; }
+
+/* ===== VARIANTE 3 : storytelling vertical façon livre ===== */
+.v3-top { text-align:center; padding:20px 14px; background:radial-gradient(circle at 50% 30%, #1a4a2a, #0d1117); border-radius:16px; margin-bottom:6px; }
+.v3-top .emoji { font-size:6rem; }
+.v3-top .nm { font-size:2rem; font-weight:900; margin-top:4px; }
+.v3-top .tag { font-size:0.85rem; opacity:0.7; }
+.v3-step { display:flex; gap:14px; padding:18px 8px; border-bottom:1px solid rgba(255,255,255,0.06); }
+.v3-num { flex-shrink:0; width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.6rem; }
+.v3-s1 .v3-num { background:#5a3d8a; } .v3-s2 .v3-num { background:#1a6a8a; }
+.v3-s3 .v3-num { background:#1a8a4a; } .v3-s4 .v3-num { background:#a08a1a; }
+.v3-ct { flex:1; }
+.v3-ct .k { font-size:0.72rem; text-transform:uppercase; opacity:0.55; letter-spacing:0.05em; font-weight:900; }
+.v3-ct .t { font-size:0.95rem; line-height:1.5; margin-top:4px; }
+.v3-ct .sp { margin-top:8px; display:inline-block; background:rgba(255,220,0,0.15); color:#ffe066; border-radius:18px; padding:5px 14px; font-size:0.8rem; font-weight:900; }
+.v3-stats { display:flex; gap:6px; margin-top:8px; }
+.v3-stats span { flex:1; background:rgba(255,255,255,0.05); border-radius:10px; padding:8px; text-align:center; font-size:0.7rem; }
+.v3-stats b { display:block; font-size:1.2rem; color:#ffe066; }
+</style>
+</head>
+<body>
+<h1>🦕 Maquettes fiche dino — Brachiosaure (3 variantes)</h1>
+<div class="sub">Même contenu, 3 mises en forme. Compare et choisis. Chaque 🔊 = joue le mini-duo Narrateur+Wex du bloc.</div>
+
+<div class="row">
+
+<!-- ============ VARIANTE 1 ============ -->
+<div class="mockup">
+  <div class="mq-label">VARIANTE 1 — 4 grands panneaux colorés <small>1 couleur par bloc · les 4 blocs audio sautent aux yeux</small></div>
+  <div class="hdr"><span class="back">← Retour</span><span class="title">Brachiosaure</span><span class="sp">🔊</span></div>
+  <div class="scroll">
+    <div class="v1-hero">
+      <div class="emoji">🦕</div>
+      <div class="nm"><b>Brachiosaure</b><span>Brachiosaurus altithorax</span></div>
+    </div>
+    <div class="v1-panel v1-a">
+      <div class="sp">🔊</div>
+      <div class="pic"><span class="ic">🦕</span><span class="tt">Qui c'est ?</span></div>
+      <p>Son nom veut dire «lézard aux bras» en grec — ses pattes avant étaient plus longues que ses pattes arrière !</p>
+      <p style="opacity:.8;font-size:.82rem">⏳ Jurassique · il y a 150 millions d'ans &nbsp;·&nbsp; 📍 Amérique du Nord, Afrique</p>
+    </div>
+    <div class="v1-panel v1-b">
+      <div class="sp">🔊</div>
+      <div class="pic"><span class="ic">📏</span><span class="tt">Sa taille</span></div>
+      <div class="v1-stats">
+        <div class="v1-stat"><div class="l">↔️ Long</div><div class="v">26 m</div><div class="c">un bus accordéon !</div></div>
+        <div class="v1-stat"><div class="l">↕️ Haut</div><div class="v">13 m</div><div class="c">immeuble 4 étages !</div></div>
+        <div class="v1-stat"><div class="l">⚖️ Poids</div><div class="v">60 t</div><div class="c">12 éléphants !</div></div>
+      </div>
+    </div>
+    <div class="v1-panel v1-c">
+      <div class="sp">🔊</div>
+      <div class="pic"><span class="ic">🌿</span><span class="tt">Sa vie</span></div>
+      <p><b>Herbivore</b> — il mangeait les plantes.</p>
+      <p>🫂 Vivait en troupeau — plus fort ensemble !</p>
+      <p>🎯 Seuls les très grands carnivores osaient attaquer les jeunes.</p>
+    </div>
+    <div class="v1-panel v1-d">
+      <div class="sp">🔊</div>
+      <div class="pic"><span class="ic">✨</span><span class="tt">Le truc fou !</span></div>
+      <p><b>Super-pouvoir :</b> mangeait les feuilles tout en haut des arbres que personne d'autre n'atteignait !</p>
+      <p>💡 Il avalait des pierres pour broyer sa nourriture dans son ventre — un moulin magique !</p>
+    </div>
+    <button class="v1-big">🎙️ Écoute toute l'histoire de Brachiosaure</button>
+  </div>
+</div>
+
+<!-- ============ VARIANTE 2 ============ -->
+<div class="mockup">
+  <div class="mq-label">VARIANTE 2 — Carte + onglets <small>1 carte héros, on tape un onglet pour chaque bloc (peu de scroll)</small></div>
+  <div class="hdr"><span class="back">← Retour</span><span class="title">Brachiosaure</span><span class="sp">🔊</span></div>
+  <div class="scroll">
+    <div class="v2-card">
+      <div class="emoji">🦕</div>
+      <div class="nm">Brachiosaure</div>
+      <div class="lat">Brachiosaurus altithorax</div>
+      <span class="badge">🌿 Herbivore · Jurassique</span>
+    </div>
+    <div class="v2-tabs">
+      <div class="v2-tab"><span class="e">🦕</span>Qui</div>
+      <div class="v2-tab on"><span class="e">📏</span>Taille</div>
+      <div class="v2-tab"><span class="e">🌿</span>Sa vie</div>
+      <div class="v2-tab"><span class="e">✨</span>Fou !</div>
+    </div>
+    <div class="v2-body">
+      <h3>📏 Sa taille</h3>
+      <div class="v2-statline">
+        <div><div class="v">26 m</div><div class="l">long</div></div>
+        <div><div class="v">13 m</div><div class="l">haut</div></div>
+        <div><div class="v">60 t</div><div class="l">poids</div></div>
+      </div>
+      <p>Aussi long qu'un bus accordéon de Paris, aussi haut qu'un immeuble de 4 étages, et aussi lourd que 12 éléphants !</p>
+      <button class="sp">🔊 Écouter Narrateur + Wex</button>
+    </div>
+    <p style="text-align:center;font-size:0.7rem;opacity:0.4;margin-top:10px">(tape un onglet pour changer de bloc · le 🔊 joue le mini-duo)</p>
+  </div>
+</div>
+
+<!-- ============ VARIANTE 3 ============ -->
+<div class="mockup">
+  <div class="mq-label">VARIANTE 3 — Histoire verticale (livre) <small>Lecture guidée 1→4 comme une page de livre illustré</small></div>
+  <div class="hdr"><span class="back">← Retour</span><span class="title">Brachiosaure</span><span class="sp">🔊</span></div>
+  <div class="scroll">
+    <div class="v3-top">
+      <div class="emoji">🦕</div>
+      <div class="nm">Brachiosaure</div>
+      <div class="tag">« lézard aux bras » · Brachiosaurus altithorax</div>
+    </div>
+    <div class="v3-step v3-s1">
+      <div class="v3-num">🦕</div>
+      <div class="v3-ct">
+        <div class="k">1 · Qui c'est ?</div>
+        <div class="t">Son nom veut dire «lézard aux bras» — ses pattes avant étaient plus longues que ses pattes arrière ! Il vivait au Jurassique, il y a 150 millions d'années.</div>
+        <span class="sp">🔊 écouter</span>
+      </div>
+    </div>
+    <div class="v3-step v3-s2">
+      <div class="v3-num">📏</div>
+      <div class="v3-ct">
+        <div class="k">2 · Sa taille</div>
+        <div class="v3-stats"><span><b>26m</b>long</span><span><b>13m</b>haut</span><span><b>60t</b>poids</span></div>
+        <div class="t" style="margin-top:6px">Aussi haut qu'un immeuble de 4 étages, aussi lourd que 12 éléphants !</div>
+        <span class="sp">🔊 écouter</span>
+      </div>
+    </div>
+    <div class="v3-step v3-s3">
+      <div class="v3-num">🌿</div>
+      <div class="v3-ct">
+        <div class="k">3 · Comment il vivait</div>
+        <div class="t">Herbivore géant et gentil. Il vivait en troupeau pour être plus fort. Seuls les très grands carnivores osaient s'approcher des bébés.</div>
+        <span class="sp">🔊 écouter</span>
+      </div>
+    </div>
+    <div class="v3-step v3-s4">
+      <div class="v3-num">✨</div>
+      <div class="v3-ct">
+        <div class="k">4 · Le truc fou !</div>
+        <div class="t">Il avalait des PIERRES pour broyer les plantes dans son ventre — un vrai moulin magique ! Et il mangeait là où personne d'autre n'atteignait.</div>
+        <span class="sp">🔊 écouter</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+</body>
+</html>

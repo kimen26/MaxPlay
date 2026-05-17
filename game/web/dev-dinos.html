@@ -1003,7 +1003,12 @@ function buildFiche(d) {
     label: e.label || d.name,
     type: e.type || 'wikimedia'
   }));
-  const extras = [...localExtras, ...wikiExtras];
+  const grokExtras = (typeof DINO_GROK !== 'undefined' ? (DINO_GROK[d.id] || []) : []).map(e => ({
+    src: e.url,
+    label: e.label || d.name,
+    type: 'grok'
+  }));
+  const extras = [...grokExtras, ...localExtras, ...wikiExtras];
 
   const regEmoji = regimeIcon(d.cat);
   const perLabel = (DINO_PERIODES.find(p => p.id === d.periode) || {}).label || '';
@@ -1265,5 +1270,6 @@ function playSpecial(which, btnEl) {
 buildMenu();
 </script>
 <script src="js/dinos-images-local.js"></script>
+<script src="js/dinos-images-grok.js"></script>
 </body>
 </html>

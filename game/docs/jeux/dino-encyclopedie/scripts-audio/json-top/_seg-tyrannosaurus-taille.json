@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Il mesurait 12 mètres de long — aussi long qu'un bus de Paris ! Debout, il faisait 4 mètres de haut — aussi haut qu'un bus anglais à deux étages ! Et il pesait 8 mille kilos — aussi lourd que 3 hippopotames !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious][gasps] Et ses bras ? À quoi ils servaient, ses bras tout petits, lui ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Bonne question ! Ses bras étaient minuscules, plus petits que les tiens. Les scientifiques pensent qu'il les utilisait pour se relever quand il tombait au sol — comme des petites béquilles. Ou peut-être pour tenir sa proie pendant qu'il mordait. Des petites choses, mais utiles !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Il mesurait 15 mètres de long — aussi long qu'un bus, plus une voiture devant ! Debout, il faisait 4 virgule 5 mètres de haut — aussi haut qu'un bus anglais à deux étages ! Et il pesait 9 mille kilos — aussi lourd que 3 hippopotames !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious][gasps] Plus grand que le T-Rex ?? Il était le chef alors ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Peut-être ! Il était plus long que le T-Rex. Mais il ne se rencontraient jamais car ils vivaient dans des endroits différents. Le Spinosaure régnait en Afrique, le T-Rex régnait en Amérique !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

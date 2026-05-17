@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Il mesurait 1 mètre 80 de long, aussi long qu'un grand vélo ! Debout, il faisait 50 centimètres de haut — il t'arrivait au nombril ! Et il pesait 15 kilos, aussi lourd qu'un gros chat."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious][happily] Un gros chat ? Tout petit comme ça ? Et il faisait peur quand même ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Exactement ! Le Vélociraptor était tout petit — mais ULTRA rapide et ultra malin ! C'était pas la taille qui le rendait dangereux, c'était sa vitesse et son intelligence. Comme une souris dans une maison — toute petite, mais tu la cherches longtemps ! Lui, c'était le roi des petits chasseurs."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

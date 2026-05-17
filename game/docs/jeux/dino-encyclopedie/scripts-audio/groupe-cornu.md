@@ -11,11 +11,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Tricératops ! Ton ami Tritri ! Son nom veut dire « face à trois cornes » — il avait exactement trois belles cornes sur la tête, une très longue et deux plus courtes ! Il vivait en Amérique du Nord, il y a 66 millions d'années.
+**NARRATEUR H** [excited] : Le Tricératops ! Ton ami Tritri ! Écoute son nom. « Tri », en grec ancien, ça veut dire TROIS. « Cérat », ça veut dire CORNE. Et « Ops », ça veut dire FACE. Alors « Tricératops »...
 
-**WEX** [curious] : Trois cornes ! Et la grande, elle était grande comment ?
+**WEX** [curious] : ...ça veut dire « face à trois cornes » ?!
 
-**NARRATEUR H** [happily] : La grande corne du front pouvait être aussi longue que TON bras tout entier ! Le grand Tritri, fort et courageux, n'avait peur de personne avec ses trois cornes !
+**NARRATEUR H** [happily] : EXACTEMENT ! Tu as trouvé tout seul, comme un vrai petit savant ! Ton ami Tritri avait trois cornes magnifiques sur la tête, et il vivait en Amérique du Nord, il y a 66 millions d'années !
 
 ---
 
@@ -53,11 +53,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Styracosaure ! Son nom veut dire « lézard à piques ». Sa collerette autour de la tête avait plein de grandes pointes pointues ! Il vivait au Canada, il y a 75 millions d'années. C'était le dinosaure le plus stylé !
+**NARRATEUR H** [excited] : Le Styracosaure ! Écoute bien son nom. « Styraco », en grec ancien, ça veut dire PIQUE, comme une lance pointue. Et « Saurus », ça veut dire LÉZARD. Alors « Styracosaure »...
 
-**WEX** [curious] : Une collerette avec des pointes ? C'était pour quoi ?
+**WEX** [curious] : ...ça veut dire « lézard à piques » ?!
 
-**NARRATEUR H** [serious] : Bonne question ! Les pointes, c'était peut-être pour faire peur à ses ennemis — « Attention, je suis dangereux ! » — ou pour montrer à ses amis qu'il était beau et fort. Une vraie couronne royale !
+**NARRATEUR H** [confident] : BRAVO ! Tu parles déjà grec ancien ! Et tu as raison — sa collerette avait plein de grandes pointes pointues, comme une couronne royale de guerrier ! Il vivait au Canada, il y a 75 millions d'années.
 
 ---
 
@@ -95,11 +95,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [softly] : Le Protocératops ! Son nom veut dire « premier visage à corne ». C'était le PREMIER dinosaure à avoir des cornes sur la tête ! Il vivait en Mongolie, il y a 75 millions d'années. C'était le grand-père de tous les dinosaures à cornes !
+**NARRATEUR H** [softly] : Le Protocératops ! Écoute bien. « Proto », en grec ancien, ça veut dire PREMIER. « Cérat », ça veut dire CORNE. Et « Ops », ça veut dire FACE. Alors « Protocératops »...
 
-**WEX** [curious] : Il était le papy de Tritri alors ?
+**WEX** [curious] : ...ça veut dire « première face à corne » ?!
 
-**NARRATEUR H** [serious][softly] : Oui ! Le Protocératops, c'était un très très ancien grand-parent du grand Tritri ! Bien bien bien après, le Tricératops et le Styracosaure vinrent au monde. Mais c'était grâce au Protocératops : lui, il a eu l'idée d'avoir des cornes ! Et le petit Tritri a hérité de ces belles cornes pointues !
+**NARRATEUR H** [serious][softly] : EXACTEMENT ! C'était le PREMIER dinosaure à avoir des cornes ! Il vivait en Mongolie, il y a 75 millions d'années. Et ton ami Tritri, le Tricératops, il est venu bien bien bien après, en héritage des cornes du Protocératops. C'était le grand-papy de tous les dinosaures à cornes !
 
 ---
 
@@ -137,11 +137,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [playful] : Le Psittacosaure ! Son nom veut dire « lézard perroquet ». Il avait un bec comme un perroquet — « pic pic pic » ! Il vivait en Asie, en Chine et en Mongolie, il y a 120 millions d'années. C'était l'oiseau préhistorique !
+**NARRATEUR H** [playful] : Le Psittacosaure ! Écoute bien son nom. « Psittaco », en grec ancien, ça veut dire PERROQUET. Et « Saurus », ça veut dire LÉZARD. Alors « Psittacosaure »...
 
-**WEX** [curious] : Un bec de perroquet ? Il parlait comme un perroquet ?
+**WEX** [curious] : ...ça veut dire « lézard perroquet » ?!
 
-**NARRATEUR H** [chuckles][softly] : Peut-être ! On ne sait pas ce qu'il disait — « squawk squawk » peut-être ? Mais son bec était parfait pour attraper les plantes et « crac crac crac » les manger avec puissance. Un petit perroquet préhistorique !
+**NARRATEUR H** [chuckles][softly] : BRAVO ! Et tu sais quoi ? Il avait un bec pointu comme un vrai perroquet — « pic pic pic » ! Il vivait en Asie, en Chine et en Mongolie, il y a 120 millions d'années. Un petit perroquet préhistorique avec un bec de guerrier !
 
 ---
 

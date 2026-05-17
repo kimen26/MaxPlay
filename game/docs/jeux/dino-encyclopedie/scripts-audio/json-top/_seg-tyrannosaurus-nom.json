@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Le T-Rex ! Son nom veut dire « lézard tyran » en grec ancien. C'était le roi de tous les dinosaures ! Il vivait en Amérique du Nord, il y a 66 millions d'années. C'était le dernier grand carnivore avant que tous les dinosaures disparaissent."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] 66 millions d'années ? C'est très très loin ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious][softly] C'est tellement, tellement loin… Avant les maisons, avant les voitures, avant même les grands-parents des grands-parents de ton papi ! Les dinosaures, c'était avant TOUT le monde. Le plus vieux roi de toute la Terre."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

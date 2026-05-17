@@ -12,11 +12,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : L'Ankylosaure ! Son nom veut dire « lézard rigide ». Tout son dos était couvert d'une armure dure comme du béton ! Il vivait en Amérique du Nord, il y a 66 millions d'années. C'était une vraie armure de dinosaure !
+**NARRATEUR H** [excited] : L'Ankylosaure ! Écoute bien son nom. « Ankylo », ça veut dire « soudé, rigide ». Et « -saurus », ça veut dire « lézard ». Alors « Ankylosaurus »...
 
-**WEX** [curious] : Armure dure comme du béton ? Pourquoi il avait besoin d'une armure ?
+**WEX** [curious] : ...ça veut dire « lézard soudé, rigide » ?!
 
-**NARRATEUR H** [serious] : Bonne question ! L'Ankylosaure était un herbivore — il mangeait des plantes. Mais il y avait des carnivores énormes qui voulaient le manger, comme le T-Rex ! L'armure, c'était pour se protéger. C'était son costume de chevalier !
+**NARRATEUR H** [happily] : EXACTEMENT ! Tu as trouvé tout seul, comme un petit savant ! Il vivait en Amérique du Nord, il y a 66 millions d'années, tout blindé d'une armure d'os !
 
 ---
 
@@ -56,11 +56,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : L'Euoplocéphale ! Son nom veut dire « tête bien protégée ». Sa tête avait une armure tout autour ! Il vivait au Canada, il y a 75 millions d'années. C'était un dinosaure blindé de la tête aux pieds !
+**NARRATEUR H** [excited] : L'Euoplocéphale ! Écoute bien. « Eu », c'est « bien » en grec. « -hoplo », ça veut dire « armure ». Et « -céphale », ça veut dire « tête ». Alors « Euoplocephalus »...
 
-**WEX** [curious] : Tête bien protégée ? Même ses yeux avaient une armure ?
+**WEX** [curious] : ...ça veut dire « tête bien armée » ?!
 
-**NARRATEUR H** [happily][softly] : Oui, oui, OUI ! Même SES YEUX avaient une armure osseuse ! Il avait des paupières blindées ! C'était le dinosaure le mieux protégé de toute l'histoire. Rien ne pouvait le blesser — pas même une griffe pointue !
+**NARRATEUR H** [confident] : BRAVO, tu parles déjà grec ancien ! Il vivait au Canada, il y a 75 millions d'années, avec une armure osseuse même autour de ses YEUX !
 
 ---
 
@@ -100,11 +100,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Stégosaure ! Son nom veut dire « lézard à toit ». Ses grandes plaques sur le dos ressemblaient aux tuiles d'une maison ! Il vivait en Amérique du Nord, il y a 155 millions d'années. C'était un dinosaure avec un toit magique !
+**NARRATEUR H** [excited] : Le Stégosaure ! Écoute bien. « Stégo » veut dire « toit » en grec. Et « -saurus », c'est « lézard ». Alors « Stegosaurus »...
 
-**WEX** [curious] : Un toit magique ? C'était quoi la magie ?
+**WEX** [curious] : ...ça veut dire « lézard toit » ?! Il avait un toit sur le dos ?!
 
-**NARRATEUR H** [softly][serious] : Pas vraiment magique, mais special ! Ces plaques, c'était pour se défendre, pour se chauffer au soleil, ou pour être beau et impressionner ses amis. Un dinosaure avec un costume super cool !
+**NARRATEUR H** [playful] : Presque ! C'étaient de GRANDES PLAQUES comme des tuiles ! Il vivait en Amérique du Nord, il y a 155 millions d'années, avec un costume de plaques magiques sur le dos !
 
 ---
 
@@ -144,11 +144,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Kéntrosaure ! Son nom veut dire « lézard pointu ». Il était couvert de pointes partout ! Il vivait en Afrique, en Tanzanie, il y a 155 millions d'années. C'était une vraie haie d'épines vivante !
+**NARRATEUR H** [excited] : Le Kéntrosaure ! Écoute bien son nom. « Kentro » veut dire « pointe, aiguillon » en grec. Et « -saurus », c'est « lézard ». Alors « Kentrosaurus »...
 
-**WEX** [curious][gasps] : Partout ? Même sur le cou ?
+**WEX** [curious][gasps] : ...ça veut dire « lézard pointu » ?! Il était tout pointu partout ?!
 
-**NARRATEUR H** [serious] : Oui ! Des épines sur le dos, sur les épaules, sur le cou — partout ! Même les carnivores les plus courageux avaient peur de s'en approcher. C'était comme une forteresse sur pattes !
+**NARRATEUR H** [serious][confident] : OUI ! Comme un gros hérisson préhistorique ! Il vivait en Afrique, en Tanzanie, il y a 155 millions d'années, couvert de piques d'aiguillons !
 
 ---
 

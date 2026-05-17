@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] C'était un carnivore. Il mangeait des petits animaux et des proies plus grandes. Il chassait peut-être en groupe, comme des loups. Il vivait en meute. Le Protocératops était sa proie préférée !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] En groupe ? Ils se parlaient entre eux ? Ils s'entendaient bien ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful][softly] Oui ! Les savants pensent qu'ils communiquaient ensemble. Peut-être avec des petits cris, ou des mouvements — comme les loups d'aujourd'hui qui hurlent pour se parler. Une vraie famille de chasseurs, mais dinosaurienne !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

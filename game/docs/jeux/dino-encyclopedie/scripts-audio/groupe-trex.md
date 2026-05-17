@@ -12,11 +12,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le T-Rex ! Son nom veut dire « lézard tyran » en grec ancien. C'était le roi de tous les dinosaures ! Il vivait en Amérique du Nord, il y a 66 millions d'années. C'était le dernier grand carnivore avant que tous les dinosaures disparaissent.
+**NARRATEUR H** [excited] : Le T-Rex ! Écoute son nom. « Tyrannos », ça veut dire le roi qui commande tout — le tyran ! En grec. Et « saurus », c'est le lézard ! Et « Rex » c'est ROI en latin. Alors « Tyrannosaure Rex »...
 
-**WEX** [curious] : 66 millions d'années ? C'est très très loin ?
+**WEX** [curious] : ...c'est « le lézard roi tyran » ?!
 
-**NARRATEUR H** [serious][softly] : C'est tellement, tellement loin… Avant les maisons, avant les voitures, avant même les grands-parents des grands-parents de ton papi ! Les dinosaures, c'était avant TOUT le monde. Le plus vieux roi de toute la Terre.
+**NARRATEUR H** [happily] : EXACTEMENT ! Tu as trouvé tout seul, comme un vrai petit savant ! Le T-Rex régnait en Amérique du Nord, il y a 66 millions d'années. Le dernier grand roi avant que les dinosaures disparaissent.
 
 
 ---
@@ -55,11 +55,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Spinosaure ! Son nom veut dire « lézard à épines » en latin. Il avait une grande voile sur le dos, comme un bateau ! Il vivait en Afrique du Nord, au Maroc et en Égypte, il y a 95 millions d'années.
+**NARRATEUR H** [excited] : Le Spinosaure ! « Spina » — c'est épine en latin. Et « saurus » — c'est lézard en grec ! Alors « Spinosaure »...
 
-**WEX** [curious] : Une voile sur le dos ? Il pouvait naviguer comme un bateau ?
+**WEX** [curious] : ...c'est « le lézard à épines » ??
 
-**NARRATEUR H** [playful] : Non, non ! La voile c'était pas pour naviguer. C'était juste sur son dos, faite de peau et d'os. Peut-être pour impressionner ses amis, ou pour attraper la chaleur du soleil. Comme un grand manteau coloré !
+**NARRATEUR H** [happily] : OUI ! Et regarde son dos — il avait UNE GRANDE VOILE d'épines, comme un bateau ! Il vivait en Afrique du Nord, en Égypte, il y a 95 millions d'années. C'était le roi des eaux !
 
 ---
 
@@ -97,11 +97,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Giganotosaure ! Son nom veut dire « lézard géant du sud ». Il vivait en Amérique du Sud, en Argentine, il y a 98 millions d'années. C'était l'un des trois plus grands carnivores du monde !
+**NARRATEUR H** [excited] : Le Giganotosaure ! « Giga » — ça veut dire géant en grec. « Notos » — c'est le sud ! Et « saurus » — c'est lézard ! Alors « Giganotosaure »...
 
-**WEX** [curious] : L'un des trois plus grands ? Y en avait des plus grands que lui ?
+**WEX** [curious] : ...c'est « le lézard géant du sud » ??
 
-**NARRATEUR H** [serious] : Oui ! Le T-Rex, le Spinosaure et le Giganotosaure — les trois rois carnivores du monde ! Mais ils vivaient tous à des endroits différents et à des moments différents. Jamais ensemble !
+**NARRATEUR H** [happily] : BRAVO le savant ! Il vivait en Amérique du Sud, en Argentine, il y a 98 millions d'années. L'un des trois plus grands rois carnivores du monde entier !
 
 ---
 
@@ -139,11 +139,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Carcharodontosaure ! Son nom veut dire « lézard aux dents de requin ». Ses dents ressemblaient exactement à celles d'un grand requin blanc ! Il vivait en Afrique du Nord, au Maroc et en Algérie, il y a 95 millions d'années.
+**NARRATEUR H** [excited] : Le Carcharodontosaure ! « Karkharos » — c'est pointu et coupant en grec, comme les dents d'un requin ! « Odonto » — c'est dent ! Et « saurus » — c'est lézard ! Alors « Carcharodontosaure »...
 
-**WEX** [curious] : Des dents de requin ? Les requins avaient des dents pointues comme les dinosaures ?
+**WEX** [curious] : ...c'est « le lézard aux dents coupantes » ??
 
-**NARRATEUR H** [softly] : Oui ! Les requins et le Carcharodontosaure avaient des dents TRÈS pointues pour découper la viande. Les deux étaient des super chasseurs — l'un dans l'eau, l'autre sur la terre !
+**NARRATEUR H** [confident] : EXACTEMENT ! Ses dents ressemblaient aux dents d'un grand requin blanc ! Il vivait en Afrique du Nord, en Égypte et en Algérie, il y a 95 millions d'années. Un super chasseur de l'Afrique !
 
 ---
 
@@ -181,11 +181,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : L'Acrocanthosaure ! Son nom veut dire « lézard aux épines hautes ». Il avait des pics sur le dos, comme un dragon ! Il vivait en Amérique du Nord, aux États-Unis, il y a 113 millions d'années.
+**NARRATEUR H** [excited] : L'Acrocanthosaure ! « Akros » — c'est en haut, le plus haut en grec. « Akantha » — c'est épine ! Et « saurus » — c'est lézard ! Alors « Acrocanthosaure »...
 
-**WEX** [curious] : Des épines sur le dos ? Pour faire peur ?
+**WEX** [curious] : ...c'est « le lézard aux épines hautes » ??
 
-**NARRATEUR H** [serious] : Oui ! Peut-être que les épines faisaient peur aux autres dinosaures. Ou peut-être que c'était juste beau. Comme les piques sur le dos d'un dragon !
+**NARRATEUR H** [happily] : TRÈS BIEN ! Il avait une grande crête d'épines sur le dos, comme un dragon ! Il vivait en Amérique du Nord, aux États-Unis, il y a 113 millions d'années. Un vrai dragon de l'époque !
 
 ---
 
@@ -223,11 +223,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : L'Allosaure ! Son nom veut dire « lézard différent » parce que ses os étaient différents des autres dinosaures. Il vivait en Amérique du Nord et en Europe, il y a 155 millions d'années.
+**NARRATEUR H** [excited] : L'Allosaure ! « Allos » — ça veut dire autre et différent en grec. Et « saurus » — c'est lézard ! Alors « Allosaure »...
 
-**WEX** [curious] : Il était malade ?
+**WEX** [curious] : ...c'est « le lézard différent » ??
 
-**NARRATEUR H** [serious] : Non, non ! C'était juste sa nature. Ses os avaient une forme unique. Les scientifiques savaient tout de suite : « Ah, c'est un Allosaure ! » Comme une signature à lui !
+**NARRATEUR H** [serious] : OUI ! Ses os avaient une forme unique, très spéciale. Les savants reconnaissaient tout de suite : « Ah, c'est un Allosaure ! » Il vivait en Amérique du Nord et en Europe, il y a 155 millions d'années. Le champion du Jurassique !
 
 ---
 
@@ -265,11 +265,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Tarbosaure ! Son nom veut dire « lézard terrifiant ». C'était le cousin du T-Rex en Asie ! Il vivait en Mongolie, dans le désert de Gobi, il y a 70 millions d'années.
+**NARRATEUR H** [excited] : Le Tarbosaure ! « Tarbos » — ça veut dire la peur, l'effroi en grec. Et « saurus » — c'est lézard ! Alors « Tarbosaure »...
 
-**WEX** [curious] : Un cousin du T-Rex ? Ils se ressemblaient ?
+**WEX** [curious] : ...c'est « le lézard qui fait peur » ??
 
-**NARRATEUR H** [serious] : Oui ! Ils étaient très ressemblants. Comme deux frères dans des pays différents. Mais le Tarbosaure avait un crâne un peu plus fin que le T-Rex.
+**NARRATEUR H** [confident] : PARFAIT le savant ! C'était le cousin du T-Rex en Asie ! Il vivait en Mongolie, dans le désert de Gobi, il y a 70 millions d'années. Deux rois du même sang dans deux continents !
 
 ---
 
@@ -307,11 +307,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : L'Albertosaure ! Son nom veut dire « lézard de l'Alberta », une région du Canada où on l'a trouvé. Il vivait là-bas, il y a 70 millions d'années.
+**NARRATEUR H** [excited] : L'Albertosaure ! « Alberta » — c'est une région du Canada. Et « saurus » — c'est lézard ! Alors « Albertosaure »...
 
-**WEX** [curious] : En Alberta ? Où c'est, l'Alberta ?
+**WEX** [curious] : ...c'est « le lézard de l'Alberta » ??
 
-**NARRATEUR H** [softly] : L'Albertosaure vivait au Canada, plus au nord. Deux cousins dans deux pays différents !
+**NARRATEUR H** [happily] : BRAVO ! L'Alberta, c'est une province au Canada, très loin au nord. Il vivait là-bas, il y a 70 millions d'années. Le roi du Canada, tandis que le T-Rex était roi plus au sud !
 
 ---
 
@@ -349,11 +349,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Gorgosaure ! Son nom veut dire « lézard féroce ». C'était un autre cousin du T-Rex qui vivait au Canada, il y a 76 millions d'années.
+**NARRATEUR H** [excited] : Le Gorgosaure ! « Gorgos » — ça veut dire féroce et terrible en grec. Et « saurus » — c'est lézard ! Alors « Gorgosaure »...
 
-**WEX** [curious] : Encore un cousin du T-Rex ? Ils en avait plein !
+**WEX** [curious] : ...c'est « le lézard féroce » ??
 
-**NARRATEUR H** [serious] : Oui ! Le T-Rex avait une grande famille : Tarbosaure en Asie, Gorgosaure au Canada, Albertosaure au Canada aussi. C'était la même grosse famille dispersée partout !
+**NARRATEUR H** [serious] : EXACTEMENT ! C'était un cousin du T-Rex au Canada, il y a 76 millions d'années. Le T-Rex avait une grande famille : des cousins en Asie, au Canada, partout sur la Terre !
 
 ---
 
@@ -391,11 +391,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Cératosaure ! Son nom veut dire « lézard à corne ». Il avait une corne sur le nez, comme une licorne ! Il vivait en Amérique du Nord et en Afrique, il y a 150 millions d'années.
+**NARRATEUR H** [excited] : Le Cératosaure ! « Kéras » — ça veut dire corne en grec. Et « saurus » — c'est lézard ! Alors « Cératosaure »...
 
-**WEX** [curious] : Une corne sur le nez ? Comme une licorne ??
+**WEX** [curious] : ...c'est « le lézard à corne » ??
 
-**NARRATEUR H** [serious] : Oui ! Une belle grande corne pointue sur le nez ! C'était le seul grand dinosaure carnivore avec une corne. Les autres avaient des dents, lui avait une corne !
+**NARRATEUR H** [happily] : OUI ! Une belle grande corne pointue sur le nez, comme une licorne ! Il vivait en Amérique du Nord et en Afrique, il y a 150 millions d'années. Le seul grand carnivore avec une vraie corne !
 
 ---
 
@@ -433,11 +433,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Dilophosaure ! Son nom veut dire « lézard à deux crêtes ». Il avait deux jolies crêtes sur la tête, comme une couronne ! Il vivait en Amérique du Nord, aux États-Unis, il y a 193 millions d'années.
+**NARRATEUR H** [excited] : Le Dilophosaure ! « Di » — c'est deux en grec. « Lophos » — c'est crête ! Et « saurus » — c'est lézard ! Alors « Dilophosaure »...
 
-**WEX** [curious] : Deux crêtes ? Comme une couronne de roi ??
+**WEX** [curious] : ...c'est « le lézard à deux crêtes » ??
 
-**NARRATEUR H** [playful] : Exactement ! Une couronne en deux parties, colorée, magnifique ! Le Dilophosaure était le roi de la beauté parmi les dinosaures carnivores !
+**NARRATEUR H** [playful] : BRAVO le paléontologue ! Deux crêtes colorées sur la tête, comme une couronne royale ! Il vivait en Amérique du Nord, aux États-Unis, il y a 193 millions d'années. Le roi de la beauté du Jurassique !
 
 ---
 
@@ -475,11 +475,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Carnotaure ! Son nom veut dire « taureau mangeur de viande ». Il avait des cornes de taureau au-dessus des yeux ! Il vivait en Amérique du Sud, en Argentine, il y a 72 millions d'années.
+**NARRATEUR H** [excited] : Le Carnotaure ! « Carnis » — c'est viande en latin. Et « taurus » — c'est taureau en latin aussi ! Alors « Carnotaure »...
 
-**WEX** [curious] : Un taureau carnivore ?? Les taureaux mangent de l'herbe normalement !
+**WEX** [curious] : ...c'est « le taureau carnivore » ??
 
-**NARRATEUR H** [playful] : Oui, les vrais taureaux sont herbivores. Mais le Carnotaure, lui, avait des cornes ET il mangeait de la viande ! Un taureau très spécial, très dangereux !
+**NARRATEUR H** [confident] : TRÈS BIEN ! Il avait des vraies cornes de taureau au-dessus des yeux ! Mais contrairement aux taureaux normaux, LUI il mangeait de la viande ! Il vivait en Amérique du Sud, en Argentine, il y a 72 millions d'années. Un taureau très spécial !
 
 ---
 
@@ -517,11 +517,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Cryolophosaure ! Son nom veut dire « lézard à crête de glace ». Il vivait en Antarctique ! Il y a 194 millions d'années, quand l'Antarctique était beaucoup moins froid et couvert de forêts.
+**NARRATEUR H** [excited] : Le Cryolophosaure ! « Kruos » — c'est glace en grec. « Lophos » — c'est crête ! Et « saurus » — c'est lézard ! Alors « Cryolophosaure »...
 
-**WEX** [curious][gasps] : En Antarctique ?! Là où c'est super froid ??
+**WEX** [curious][gasps] : ...c'est « le lézard à crête de glace » ?!
 
-**NARRATEUR H** [serious][softly] : Oui ! Mais il y a très très longtemps, l'Antarctique n'était pas glacée. C'était une forêt tropicale. Le Cryolophosaure était le roi de ce monde chaud et vert !
+**NARRATEUR H** [serious][softly] : EXACTEMENT ! Mais il y a 194 millions d'années, il vivait en Antarctique qui n'était PAS glacée — c'était une forêt tropicale ! Il était le roi du monde chaud vert de l'Antarctique lointain !
 
 ---
 

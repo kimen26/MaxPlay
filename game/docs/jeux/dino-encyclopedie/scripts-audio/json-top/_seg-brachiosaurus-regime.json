@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] C'était un herbivore. Il mangeait les feuilles tout en haut des arbres, là où les autres dinosaures ne pouvaient pas aller. Il vivait en troupeau avec sa famille. Seuls les très grands carnivores osaient parfois s'approcher du troupeau."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious][softly] Les bébés Brachiosaures ? Ils étaient aussi gros qu'un éléphant ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly] Au début, les bébés Brachiosaures naissaient minuscules — peut-être la taille d'une voiture ! Mais ils GRANDISSAIENT très vite. En quelques années, ils devenaient énormes. Et pendant ce temps, papa et maman les protégeaient des carnivores. Famille de géants !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

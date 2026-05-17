@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Sa queue faisait un BRUIT de fouet en claquant, un « BOOM » supersonique ! Plus fort qu'un pétard ! C'était pour faire peur aux chasseurs. Il claquait sa queue comme tu claques un fouet !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps][excited] BOOM ? Comme quoi de bruyant ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Imagine tu prends un drap et tu le secoues très très fort — il fait « FLAP FLAP ! » Lui, sa queue ressemblait à un drap géant — elle faisait un énorme CRACK en claquant, assez fort pour effrayer les lions dinosaures !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

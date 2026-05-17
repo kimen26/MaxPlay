@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] C'était un herbivore. Il mangeait des plantes. Il vivait en grand troupeau, des centaines ensemble ! L'Allosaure et le Cératosaure chassaient les jeunes Diplodocus."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Pourquoi ils chassaient les jeunes et pas les grands ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Parce que les jeunes étaient plus petits et plus faciles à attraper ! Les grands Diplodocus étaient trop énormes. Un dinosaure carnivore, même très affamé, ne peut pas manger une montagne ! C'était plus malin de chasser les petits."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] C'était peut-être le dinosaure carnivore le PLUS RAPIDE de tous ! Il pouvait courir jusqu'à 56 kilomètres par heure, aussi vite qu'une voiture en ville ! Ses bras étaient si petits qu'ils ne servaient presque à rien !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps][excited] 56 kilomètres ?? Aussi vite qu'une voiture ??"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] OUI ! VROOM VROOM ! C'était le dinosaure le plus rapide ! Un taureau-fusée ! Aucun dinosaure ne pouvait le rattraper ! C'était le champion de la vitesse absolue !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

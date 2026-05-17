@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Il avait DES PLUMES ! Vraiment, des vraies plumes comme un oiseau ! En 2007, on a trouvé des traces de plumes sur son bras. Il ne volait pas, mais il ressemblait à un oiseau de terre."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps][happily] Des plumes ?? Il était tout doux alors ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Sûrement tout doux, oui ! Et tu sais quoi ? Ces plumes, ça montre que les dinosaures et les oiseaux sont comme des frères. C'est fou, hein ? Les oiseaux d'aujourd'hui, les petits moineaux dans le jardin — ce sont les petits-enfants, très très lointains, des dinosaures !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

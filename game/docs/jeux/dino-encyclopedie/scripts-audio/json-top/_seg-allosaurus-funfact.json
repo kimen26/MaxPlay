@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Il ouvrait sa gueule TRÈS grande, comme une hache, pour frapper ses proies ! On a trouvé des centaines de ses os au même endroit, en Utah. Il y avait un cimetière d'Allosaures !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps][curious] Un cimetière entier ?? Ils mourraient tous ensemble ??"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious][softly] Peut-être qu'ils se battaient pour une proie, ou peut-être qu'une tempête les a piégés au même endroit. Les scientifiques trouvent ça très mystérieux. Mais c'est un trésor de fossiles !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

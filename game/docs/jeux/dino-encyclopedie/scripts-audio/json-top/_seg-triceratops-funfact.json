@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ses cornes faisaient 1 mètre de long chacune ! On a trouvé des os de T-Rex avec des marques de cornes de Tricératops : ils se battaient VRAIMENT ! Et en 2020, on a trouvé un fossile de T-Rex et Tricératops fossilisés en plein combat — figés pour toujours !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps][excited] Un fossile ensemble ? Ils sont encore là ? Tritri et son ennemi ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Oui ! À travers la roche, à travers 66 millions d'années, ils sont TOUJOURS en train de se battre ! Les scientifiques ont appelé le fossile « Les Dinosaures Combattants ». Tritri, mon ami brave, pour toujours !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

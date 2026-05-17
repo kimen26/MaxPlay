@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Son cerveau était gros comme une noix de cajou ! C'était le dinosaure avec le plus petit cerveau ! Mais sa queue avait 4 grandes piques qui pouvaient transpercer l'Allosaure ! Pas besoin d'être intelligent pour se défendre !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps][happily] Un cerveau comme une noix ? Il était bête ? Mais sa queue était intelligente ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited][chuckles] Ha ha ! Exactement ! Son cerveau était tout petit, mais son instinct était ULTRA bon ! Dès qu'un Allosaure arrivait, PAF ! WOOSH ! Il balançait sa queue et le carnivore s'enfuyait en criant ! Pas besoin de penser — juste réagir vite vite vite !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

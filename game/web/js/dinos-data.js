@@ -1,5 +1,5 @@
 // ─── Encyclopédie Dinosaures MaxPlay ───
-// 50 dinos · données riches · FR · adapté 3-5 ans
+// 51 dinos · données riches · FR · adapté 3-5 ans
 // Catégories : carnivores · herbivores · piscivores · omnivores · volants_marins
 
 // ─── Familles (2e catégorisation) ───
@@ -895,6 +895,33 @@ const DINOS = [
     fait: 'Ses cornes faisaient 1 mètre de long ! Et on a trouvé des os de T-Rex avec des marques de cornes de Tricératops — ils se battaient vraiment !',
     desc: 'Le Tricératops avait 3 cornes et un grand bouclier osseux autour de la tête. Il n\'avait pas peur du T-Rex ! C\'était le grand guerrier des herbivores.',
     png: 'Triceratops.png',
+    color: '#7d6608',
+    continent: 'Amérique du Nord',
+    periode: 'cretace',
+  },
+  {
+    id: 'torosaurus',
+    famille: 'cornu',
+    name: 'Torosaure',
+    full: 'Torosaurus latus',
+    cat: 'herbivores',
+    epoque: 'Crétacé · il y a 66 millions d\'ans',
+    region: 'Amérique du Nord',
+    taille_m: 8,
+    hauteur_m: 3.0,
+    poids_t: 8,
+    comp_taille: _compLong(8),
+    comp_hauteur: _compHaut(3.0),
+    comp_poids: _compPoids(8),
+    nom_etym: 'Son nom veut dire «lézard perforé» en grec — à cause des grands trous dans sa collerette ! (souvent on croit que ça veut dire «lézard taureau», mais non !)',
+    regime: '🌿 Herbivore',
+    superpower: 'La plus grande tête de TOUS les animaux qui ont marché sur Terre — sa collerette faisait presque 3 mètres !',
+    chasseurs: 'T-Rex — comme son cousin le Tricératops',
+    proies: 'Mange des plantes',
+    amis: 'Peut-être en petit groupe, comme les autres dinos à cornes',
+    fait: 'Sa collerette avait des grands trous (des fenêtres !), alors que celle du Tricératops était toute pleine. C\'est comme ça qu\'on les reconnaît !',
+    desc: 'Le Torosaure ressemblait beaucoup au Tricératops, mais avec une collerette ENCORE plus grande, percée de deux grands trous. Il avait le plus grand crâne de tous les animaux terrestres !',
+    png: 'grok/torosaurus_lot1_1_taille.jpg',
     color: '#7d6608',
     continent: 'Amérique du Nord',
     periode: 'cretace',

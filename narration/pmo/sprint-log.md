@@ -19,21 +19,20 @@
 - [x] **Brief vague 4 BOUSSOLE livré** : commit 2026-05-16 + apply DEC-BRIEF-VAGUE4-BOUSSOLE complet (intentions Ki/Sho/Ten/Ketsu, 6 causalités-ESSENCE, aucune phrase publiable, Couche 3 guidé seul)
 - [x] **14 writers produits complets** (commit 634c5041 2026-05-17 05:00) : 6 Claude + 2 DeepSeek + 2 Grok + 4 Kimi (kimi-reco, kimi-k26-instant, kimi-k26-thinking, kimi-reco-guide) — casting FIGÉ 14, aucune modification
 - [x] **Bug infra résolu** : `call-llm.mjs` passe en **streaming SSE** (résout fetch coupure silencieuse >5min passerelle réseau Moonshot) + **extension provider `kimi-payant` garde-fou** (writer K2.6 verrouillé) — 2 derniers K2.6 tenu 604s (K26-instant) / ~16min sans coupure (kimi-reco-guide)
-- [x] **DÉRIVE ANNULÉE** : PMO avait proposé retrait K2.6 thinking du casting permanent → Papa Yann REFUSÉ explicitement 2026-05-17. Casting 14 INCHANGÉ. Exclusion vague 4 K2.6 thinking = garde-fou probe, pas retrait figé. Corrigé dans sprint-log/kanban/leçons/INVARIANTS (4 fichiers)
-- [x] **État kanban STORY-002 étape 4 = ⚪ PRÊTE À LANCER** : brief conforme, 14 writers stock, infra stable
+- [x] **DÉRIVE ANNULÉE** : PMO avait proposé retrait K2.6 thinking du casting → Papa Yann REFUSÉ explicitement 2026-05-17. Casting 14 INCHANGÉ. **kimi-k26-thinking A ÉTÉ PRODUIT en vague 4** (fichier `kimi-k26-thinking.md`, commit 634c5041) comme les 13 autres — AUCUNE exclusion d'aucune sorte. Une proposition d'agent ne modifie jamais une règle figée (mémoire feedback-regle-figee-alerte).
+- [x] **État kanban STORY-002 étape 4 = ✅ 14/14 PRODUITS** : brief BOUSSOLE conforme, 14 writers générés, infra streaming OK
 
-**Décision mise à jour** : Casting 14 writers FIGÉ. K2.6 thinking #9 inclus définitivement (jamais exclu sans décision auteur datée explicite). Vague 4 exclut K2.6 thinking comme garde-fou (AP-WRITER-THINKING-001 : mode thinking fragmente intuition narrative sur briefs causalités BOUSSOLE), mais test futur possible sur nouveau brief type avant exclusion permanente.
+**Décision** : Casting 14 writers FIGÉ. kimi-k26-thinking inclus, **produit en vague 4 comme les 13 autres**. AP-WRITER-THINKING-001 = OBSERVATION (le mode thinking avait floppé 20/20 en vague 3 *avec l'ancien brief GPS sur-spécifié*) — c'est un fait mémorisé, PAS un retrait, PAS une exclusion, PAS un garde-fou. Le panel vague 4 jugera kimi-k26-thinking comme tous les autres.
 
 **Prochaines actions** :
-- Papa Yann valide lancement étape 4 vague 4 STORY-002 (brief prêt, writers stock, infra OK)
-- Ticket de suivi FUT-WRITER-K26-THINKING ouvert pour réévaluation systématique vague 5+
-- Aucune autre action PMO, étape 4 est "À LANCER"
+- Vague 4 = 14/14 produits. Étape 5 (panel 20 lecteurs) en attente décision Papa Yann.
+- Aucun ticket d'exclusion : kimi-k26-thinking est dans le casting figé, point.
 
 **Fichiers impactés** :
-- ✅ `narration/pmo/sprint-log.md` (correction dérive + clarification K2.6)
-- ✅ `narration/stories/002-libellule-resonance/kanban.md` (ligne 32 : 14 writers confirmés, K2.6 EXCLU vague 4 uniquement)
-- ✅ `narration/equipe/lecons-vivantes.md` (AP-WRITER-THINKING-001 : observation vague 3, pas retrait, casting figé)
-- ✅ `narration/pmo/INVARIANTS.md` (note casting FIGÉ 14, K2.6 exclusion vague 4 temporaire)
+- ✅ `narration/pmo/sprint-log.md` (dérive annulée — kimi-k26-thinking produit vague 4, aucune exclusion)
+- ✅ `narration/stories/002-libellule-resonance/kanban.md` (14/14 produits)
+- ✅ `narration/equipe/lecons-vivantes.md` (AP-WRITER-THINKING-001 = observation vague 3 sur ancien brief GPS, pas retrait)
+- ✅ `narration/pmo/INVARIANTS.md` (casting FIGÉ 14, aucune exclusion)
 
 **Classification** : TRAITEMENT (correction dérive) + INFO (consolidation état réel).
 

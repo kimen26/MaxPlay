@@ -450,11 +450,9 @@ Ces gestes deviennent **imitables par l'enfant lecteur**. Type 9 = **petit ma�
 
 ### AP-WRITER-THINKING-001 (observation casting K2.6 — vague 3)
 
-**Observation** : Kimi K2.6 mode `thinking: enabled` (sur-fragmentation mentale) utilisé sur briefs narratifs souple (Couche 2 causalités seules) → 20 refus / 20 essais (dernier test vague 3). Cause probable : thinking mode scanne CHAQUE causalité pour trouver des "erreurs logiques" ou des "points à clarifier", ce qui fragmente l'intuition narrative qui doit rester globale.
+**Observation (vague 3)** : Kimi K2.6 mode `thinking: enabled`, sur l'**ancien brief GPS sur-spécifié vague 3**, a produit un texte au dialogue staccato mécanique → classé flop par **20/20 lecteurs** du panel. Hypothèse : le mode thinking + une liste de 10 beats littéraux = sur-fragmentation. **NON re-testé en conditions BOUSSOLE jusqu'à la vague 4.**
 
-**Statut casting** : **CASTING 14 WRITERS FIGÉ. Retrait PROPOSÉ par PMO 2026-05-16, REFUSÉ par Papa Yann 2026-05-17 — aucune modification du casting permanent.**
+**Statut casting** : **CASTING 14 WRITERS FIGÉ, IMMUABLE.** Retrait PROPOSÉ par PMO 2026-05-16, **REFUSÉ par Papa Yann 2026-05-17**. kimi-k26-thinking **a été produit en vague 4 BOUSSOLE comme les 13 autres** (commit 634c5041) — AUCUNE exclusion d'aucune vague. Le panel vague 4 le jugera comme tous.
 
-**Garde-fou vague 4 STORY-002** : K2.6 thinking `enabled` EXCLU de cette vague comme mesure de prudence (test 20/20 flops = signal fort), mais **l'agent `narration-writer-kimi-k26-thinking` reste dans l'effectif casting stable** pour futures vagues dès réalignement brief ou nouvelle approche. Une proposition d'agent ne modifie jamais une règle figée sans décision auteur explicite.
-
-**Recommandation future** : Avant d'exclure un agent du casting, tester la cause : K2.6 thinking + brief BOUSSOLE (intentions) vs K2.6 thinking + brief détaillé (beats). Le 20/20 échec = brief Couche 2 trop souple pour le mode thinking, **pas nécessairement incompatibilité permanente**. Sujet = ticket FUT-WRITER-K26-THINKING dans backlog PM pour exploration systématique (hors vague 4).
+**Leçon de méthode** : une proposition d'agent (ici le retrait PMO) ne modifie JAMAIS une règle figée sans décision auteur explicite. AP-WRITER-THINKING-001 reste une **observation à surveiller** (le mode thinking sur brief GPS a échoué) — pas un motif d'exclusion. La vague 4 BOUSSOLE est précisément le re-test : on verra au panel si le brief boussole corrige le problème. Réf mémoire : feedback-regle-figee-alerte.
 

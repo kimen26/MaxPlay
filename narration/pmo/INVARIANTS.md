@@ -58,7 +58,7 @@
 
 **Total : 13 writers LIBRES + 1 writer GUID� = 14 versions.**
 
-**Note casting FIGÉ** : Casting 14 writers IMMUABLE. Retrait du writer #9 (kimi-k26-thinking) PROPOSÉ par PMO 2026-05-16, REFUSÉ par Papa Yann 2026-05-17. **CASTING PERMANENT = 14, jamais régresser sans décision auteur explicite datée.** Exclusion de #9 vague 4 STORY-002 UNIQUEMENT = garde-fou test (AP-WRITER-THINKING-001 : mode thinking incompatible briefs causalités BOUSSOLE), pas retrait définitif. Future vague = réévaluer sur nouveau brief ou new writer approach avant exclusion permanente.
+**Note casting FIGÉ** : Casting **14 writers IMMUABLE**. Retrait du writer #9 (kimi-k26-thinking) PROPOSÉ par PMO 2026-05-16, **REFUSÉ par Papa Yann 2026-05-17**. Le writer #9 est et reste dans le casting — **il a été produit en vague 4 STORY-002 comme les 13 autres** (commit 634c5041). AUCUNE exclusion d'aucune vague. AP-WRITER-THINKING-001 (flop 20/20 vague 3) = **observation** liée à l'ancien brief GPS sur-spécifié, PAS un motif de retrait/exclusion. Jamais régresser sans décision auteur explicite datée. Réf : mémoire feedback-regle-figee-alerte (un agent propose, ne décide jamais).
 
 **Évaluation** : après 3-5 histoires, arbitrage réduction à config finale (~6-8 writers optimaux). Ticket `ARCHI-NNN` pour suivi (cf. backlog).
 

@@ -1,8 +1,19 @@
 # Brief histoire — STORY-002 La Libellule impossible
 
-> **Stateless — user prompt Couche 2.** Reçu par tous les 14 writers (Claude via Read, MCP via inline).
+> **Stateless — user prompt Couche 2.** Reçu par tous les writers (Claude via Read, MCP via inline).
 > Tu écris seul. Tu n'as que ce brief + le brief personnages + le system prompt.
-> **Vague 3 — 2026-05-15** (refonte post-brainstorm boss).
+> **Vague 4 — 2026-05-17** (refonte BOUSSOLE après REX vague 3 : sur-spécification = mort de la fluidité).
+
+---
+
+## 0. COMMENT LIRE CE BRIEF (lis ça en premier)
+
+⚠️ **Ce brief est une BOUSSOLE, pas un GPS.** Il te donne ce qui doit **arriver** et **pourquoi** (la chaîne de causes). Il ne te donne **aucune phrase à écrire**.
+
+- **Aucune formulation de ce document ne doit apparaître telle quelle dans ton texte.** Si tu lis ici une tournure, c'est une *intention* — tisse-la avec tes mots, ne la recopie pas.
+- Ce qui est marqué **ESSENCE** = non négociable (la causalité, l'ordre). Ce qui est marqué **LIBRE** = entièrement à toi, vraiment.
+- Aucun choix « soit X soit Y » : ce qui est tranché est tranché, le reste t'appartient.
+- Pas de réplique pré-écrite. Aucun personnage n'a de phrase imposée.
 
 ---
 
@@ -10,64 +21,71 @@
 
 Une histoire complète de **400-700 mots** en français, pour un enfant de 3.5-5 ans.
 
-**Boussole 4-5 ans :** gestes mimables > concepts · causalité immédiate · max 3 infos en parallèle · textures/sons/lumières comptent plus que les idées · petits espaces > grands paysages · pensées intérieures montrées par gestes ou phrases courtes.
+**Boussole 4-5 ans :** gestes mimables > concepts · causalité immédiate · max 3 infos en parallèle · textures/sons/lumières comptent plus que les idées · petits espaces > grands paysages · pensées intérieures montrées par le corps, pas nommées.
 
-À la fin : ton texte **+ une note d'intention créative** (après `---` en fin de fichier) — pourquoi ces choix, créatif, pas technique.
+À la fin : ton texte **+ une note d'intention créative** (après `---`) — tes choix, créatif, pas technique.
 
 ---
 
 ## 2. PITCH
 
-- **Objet titre :** la libellule — rapide, brillante, impossible à attraper collectivement. Yeux énormes. Bleu/vert/jaune (libre).
-- **Trio :** Juju + Nono + Wex
-- **Lieu :** bord d'un étang/mare, printemps tardif (mai) — eau transparente, têtards, berge en terre humide, racines visibles, roseaux, mousse
+- **Objet titre :** la libellule — elle vole comme une **voiture de course** : s'arrête net en plein air, repart dans n'importe quelle direction, impossible à suivre.
+- **Trio :** Juju · Nono · Wex (à parts égales, aucun spectateur)
+- **Lieu :** bord d'un étang **pas profond du tout**, printemps. Le lieu vit : têtards, une poule d'eau (bec rouge-jaune), un bourdon, des roseaux, un arbre, de l'herbe.
 - **Moment d'ouverture :** libre
 
 ---
 
-## 3. PLAN (Kishōtenketsu)
+## 3. PLAN (Kishōtenketsu) — BOUSSOLE
 
-> Les **beats figés** ci-dessous sont la colonne vertébrale du Ten. Tu les respectes dans l'ordre.
-> Tout le reste — formulations, sons, micro-gestes, ouverture, rythme — est à toi.
+> Ci-dessous : ce qui doit ARRIVER et POURQUOI, dans cet ordre de cause à effet.
+> Le COMMENT — mots, sons, gestes, rythme, ouverture — est entièrement à toi.
 
-### Ki — poser le monde
-Trois enfants au bord de l'étang, énergie débordante. Cailloux jetés, trucs cueillis, course après la libellule. Beaucoup d'élan, beaucoup de bruit. Personne n'attrape rien. C'est rigolo, c'est raté, c'est bon enfant.
+### Ki — le bord de l'étang, plein d'énergie
+Trois enfants au bord d'un étang pas profond. Le lieu vit autour d'eux. Jeu libre, **chahut bienveillant, beaucoup de rire**, les trois à parts égales — aucun en retrait.
+> **ESSENCE :** les 3 impliqués à égalité, énergie horizontale joyeuse.
+> **LIBRE :** l'ouverture, quels animaux entrent, quels jeux, l'ordre des sensations.
 
-**Juju fredonne / chantonne** quelque chose pendant ce chaos (têtards, libellule, n'importe quoi — libre).
+### Sho — la libellule devient LE défi
+La libellule passe. Son vol de voiture de course les fascine : tous les trois veulent l'attraper. C'est là que leurs trois énergies se rejoignent — même envie, même élan, même échec joyeux qui recommence.
+> **ESSENCE :** la libellule = défi commun qui soude les 3 ; personne ne l'attrape.
+> **LIBRE :** les tentatives, la description du vol, les sons, qui tente quoi.
 
-**Vie du lieu (intégrer librement, ne pas tout lister) :** têtards · poule d'eau (bec rouge-jaune) · bourdon · roseaux · mousse. La libellule : s'arrête pile dans l'air · angle droit en un éclair · décolle à la verticale · glisse sur l'eau.
+### Ten — la bascule (chaîne de causes, AUCUN beat numéroté)
+Ce qui doit arriver, et pourquoi — le COMMENT est entièrement à toi :
 
-### Sho — on s'active
-L'énergie monte. Les tentatives s'enchaînent, la libellule échappe encore. Toujours rigolo, toujours raté.
+- **Nono cesse de courir** et se pose — debout, immobile, comme s'il se connectait à la terre. Il ne l'annonce pas. Les deux autres continuent leur chasse.
+- Son immobilité plantée au milieu du chahut **évoque malgré lui un épouvantail** — ce contraste est nommé dans le jeu.
+- **Wex bute sur le paradoxe** : un épouvantail fait FUIR les bêtes, or eux veulent que la libellule VIENNE. Il le pense pour lui, sans contredire personne, sans leçon. *(C'est un leurre : l'épouvantail ne fait rien venir — il sert juste à ce que Wex ait l'air d'avoir raison alors que le contraire arrive.)*
+- **Juju, lancée, entre en contact avec Nono sans le vouloir** (sa course la jette contre lui, sa main trouve la sienne — à toi). Happée, elle **se fige**, tout près de lui, dans son calme.
+- **C'est alors que la libellule vient se poser** — sur Nono. Le contact de Juju **et** le calme de Nono réunis : voilà ce qui la fait venir. Le contre-pied se fabrique seul — Wex vient de dire l'inverse de ce qui arrive. **Personne ne le souligne.** Bascule du bruit vers le suspendu.
+- Juju est à un souffle de la libellule, figée pour ne pas la faire fuir. Instant retenu, drôle et tendre.
+- **Nono ne la garde pas** : un geste vers Juju, il la **libère** — elle repart. C'est gagné parce qu'il l'a approchée puis relâchée, pas parce qu'il l'a prise.
 
-### Ten — la bascule (BEATS FIGÉS — ordre respecté)
-
-1. **Nono décroche** sans l'annoncer. Il enlève ses chaussures et ses chaussettes — pieds nus **sur l'herbe** au bord de l'étang (étang peu profond, herbe propre, pas de boue — endroit sûr). Contact avec la terre. Il s'arrête (debout ou accroupi — libre), tend la/les main(s). Un mot minuscule (*"Attends."*) ou rien — libre. Les autres **continuent quand même**.
-2. **Juju ne s'arrête JAMAIS** — elle court après les libellules tout du long. Elle balance sa vanne **en courant**, au passage, dans la direction de Nono : image **« épouvantail »** obligatoire (Nono planté, immobile, bras tendus → on dirait un épouvantail). Formulation exacte libre. **Sa chanson s'arrête net, en pleine phrase** (si elle chantonnait).
-3. **Wex s'arrête** (lui, il observe — c'est son truc). Il bugue sur la logique : un épouvantail, **ça fait FUIR** les bêtes — alors que là on veut justement que la libellule **VIENNE**. Donc dans sa tête, ce que fait Nono ne devrait pas marcher.
-   - *Sens figé :* Wex pointe le paradoxe « épouvantail = fait fuir » vs « nous on veut que ça vienne ». Il dit ça pour lui-même, sans regarder personne, pas comme une objection à Nono.
-   - *Propositions de formulation (le writer choisit / adapte / réinvente — voix enfantine 4-6 ans) :*
-     - *« Ben... un épouvantail, ça fait partir les bêtes. Nous on veut qu'elle vienne, pourtant. »*
-     - *« Mais les épouvantails, ça fait peur aux animaux... c'est le contraire qu'on veut ! »*
-     - *« Un épouvantail ça chasse les oiseaux. Là, nous, on veut pas la chasser. »*
-4. **Sans s'arrêter de courir**, Juju **bute** (racine/caillou — libre), se rattrape à la main de Nono. Elle reste là — équilibre, contact physique. *(Flux continu : elle courait après la libellule, elle trébuche, elle s'accroche à Nono. Pas d'arrêt avant le buton.)*
-5. **Nono** tient la main. Sourit. **Battement de silence** (ce qu'on entend dedans = libre : cigale, eau, rien).
-6. La libellule se pose sur la **main / le doigt libre de Nono**.
-7. Nono soulève doucement — libellule **devant le nez de Juju**.
-8. **Juju louche.** Ose pas bouger (tomber / faire fuir la bête).
-9. **Wex** en arrière-plan : **« oh » muet, bouche ouverte, yeux écarquillés, tête penchée comme un chien qui entend un bruit bizarre** (ou un petit oiseau intrigué). Il vient de dire que ça fait fuir les animaux... et la libellule est là. **Moment suspendu.** (Pas de 2e réplique de Wex.)
-10. **Nono** touche le nez de Juju : **« Gagné ! »** (figé — court, non explicatif). La libellule s'envole.
+> **ESSENCE NON NÉGOCIABLE (la causalité, jamais les mots) :**
+> 1. Nono décroche et se calme **sans le dire** (connexion à la terre) → les autres continuent.
+> 2. Son immobilité fait surgir l'image épouvantail dans le jeu.
+> 3. Wex bute sur le paradoxe épouvantail (fuir / on veut que ça vienne) — pour lui, jamais en leçon.
+> 4. Juju entre en contact avec Nono **sans le vouloir** et se fige.
+> 5. **VERROU : la libellule vient APRÈS le bug de Wex ET APRÈS le contact Juju-Nono.** Le contact + le calme réunis SONT la cause de sa venue. Cet ordre est intouchable.
+> 6. Nono **libère** la libellule (ne la garde pas) → victoire douce = avoir approché puis relâché. **On n'explique jamais ça.** Si un mot de victoire naît du texte, il ne désigne pas une prise (jamais « je l'ai eue », « attrapée ») — il célèbre l'instant.
+>
+> **LIBRE (tout le reste, vraiment) :** qui nomme l'épouvantail et comment · les mots exacts de Wex · COMMENT Juju entre en contact (percute, trébuche, main qui trouve une main) · ce qu'on entend dans le silence · le geste exact de Nono · le mot de victoire (s'il naît de ton texte — rien n'est figé).
 
 ### Ketsu — ça se referme
-Libre au writer : retour au calme (contemplation, souffle, un autre animal qui passe, silence qui s'étire) **OU** ça repart vers autre chose (jeu, rire). Pas de morale, pas d'explication.
+Retour au calme OU rebond vers autre chose. Une image, un souffle du lieu qui reprend sa vie — jamais une explication, jamais une morale, jamais un « j'ai compris ».
+> **ESSENCE :** pas de morale, complicité nouvelle non verbalisée.
+> **LIBRE :** la forme exacte de la clôture.
 
 ---
 
-## 4. CE QUI EST IMPLICITE (jamais nommé, jamais expliqué)
+## 4. L'IMPLICITE (jamais nommé, jamais expliqué — ne le SOULIGNE pas non plus)
 
-- **Nono** crée un champ de calme — sa sensibilité dormante. Aucun perso ne le dit.
-- **Juju** : la libellule la préfère parce que les animaux réagissent à elle — dormant. Personne ne dit "c'est parce que tu es douce avec les bêtes". Jamais.
-- **Wex** bugue sur la logique épouvantail (ça fait fuir → on veut l'inverse). Il a "raison" en théorie, et la libellule s'en fiche complètement : elle vient quand même. Ce contre-pied se fabrique tout seul entre le beat 3 et le beat 6 — **ne le souligne pas, ne le commente pas**. Wex ne tire aucune conclusion à voix haute.
+Ces trois choses sont vraies *sous* l'histoire. Le lecteur ne doit jamais les lire — il les sent ou pas. **Ne les rends pas visibles, ne les explique pas, ne les commente pas par un personnage.**
+
+- Le calme de Nono a quelque chose de particulier — mais c'est juste « Nono qui est comme ça ».
+- La libellule vient quand Juju est là — mais personne ne fait le lien, jamais.
+- Wex a « raison » en théorie et la nature s'en fiche — le contre-pied existe tout seul, ne le pointe pas.
 
 ---
 
@@ -75,8 +93,8 @@ Libre au writer : retour au calme (contemplation, souffle, un autre animal qui p
 
 *(Rempli par le Directeur à l'envoi — spécifique à chaque writer)*
 
-- **Angle narratif :** ☐ Sobre ☐ Sensoriel ☐ Dynamique (dialogues) ☐ Instinct (libre)
-- **POV / focal :** ☐ Wex témoin ☐ Juju ☐ Nono ☐ narrateur invisible
+- **Angle :** ☐ Sobre ☐ Sensoriel ☐ Dynamique (dialogues) ☐ Instinct (libre)
+- **POV :** ☐ Wex témoin ☐ Juju ☐ Nono ☐ narrateur invisible
 - **Ouverture :** ☐ in medias res ☐ ouverture lente ☐ dialogue d'amorce
 - **Longueur cible :** ☐ 400 ☐ 550 ☐ 700 mots
 
@@ -87,45 +105,38 @@ Libre au writer : retour au calme (contemplation, souffle, un autre animal qui p
 - Longueur : **400-700 mots**
 - Dialogues : ≥ 2 répliques par perso, ≥ 1 échange de 3+ répliques
 - Surnoms 4/5 du temps · prénom complet = formel/solennel seulement
-- Ennéatypes dilués (3-4 micro-réactions par perso, JAMAIS nommés)
-- Sensibilités dormantes — jamais nommées, jamais expliquées
-- Wex : présent, pouvoirs PAS activés (arc 1)
+- Ennéatypes dilués (jamais nommés ni étiquetés)
+- Wex : présent, pouvoirs PAS activés
 - Pas d'antagoniste · pas de morale dite · parents jamais en scène
 - Univers IMPLICITE (jamais nommer : Éveil, Totems, WexWorld, résonance, etc.)
-- Compagnons = ondes/couleurs si présents — jamais d'animaux parlants
+- Pas d'animaux parlants
 - Vocabulaire interdit : mort, mourir, crever, clochard, pistolet, pute, enculer
+- Vocabulaire hors-portée à éviter : funambule, amont, trajectoire, inlassable, virgulent
 
 ---
 
 ## 7. CE QUE CETTE HISTOIRE DOIT FAIRE RESSENTIR
 
-- La surprise de quelque chose qui arrive quand on arrête de courir après
-- La libellule qui choisit — sans qu'on l'explique
-- Le contre-pied doux de Wex (il dit l'inverse de ce qui arrive)
-- Un moment suspendu, drôle et tendre, qui ne casse pas la magie
+*(Un cap émotionnel — pas une consigne d'écriture.)*
+
+- La surprise de ce qui arrive quand on **arrête** de courir après
+- Quelque chose de vivant qui **choisit** de venir — sans qu'on sache pourquoi
+- Un instant suspendu, drôle et tendre, qui ne se casse pas
+- Gagner, ici, c'est **laisser repartir**
 
 ---
 
-## 8. GARDE-FOUS SPÉCIFIQUES
+## 8. RELECTURE AVANT ENVOI (writer)
 
-- **Juju ne se transforme pas** en douceur au pivot — sa chanson s'arrête NET (reset brutal), elle reste directe.
-- **Wex n'explique rien** — il observe, il enchérit dans le vide, puis « oh » muet. Pas de rôle de sage. Pas de 2e réplique.
-- **Nono : geste figé** (chaussures/chaussettes + main tendue + "Gagné !") mais sa posture (debout/accroupi), ses mots exacts, son rythme = libres.
-- **Le buton de Juju a une cause physique concrète** (racine, caillou) — pas un arrêt magique.
-
----
-
-## 9. RELECTURE AVANT ENVOI
-
-- Zéro adjectif jugeant un personnage
-- Comparaisons lisibles (aide à voir ? pas juste joli ?)
+- Zéro adjectif qui juge un personnage
+- Comparaisons lisibles par un enfant (ça l'aide à voir ?)
 - Univers implicite — aucun nom de concept posé
-- Lecture orale fluide
-- Pas de morale dite par le narrateur
-- Vocabulaire dans la portée 4-5 ans (pas de "funambule", "amont", "trajectoire", "inlassable")
+- Lecture orale fluide (lis ton texte à voix haute)
+- Pas de morale dite par le narrateur ni par un personnage
+- Aucune phrase de ce brief recopiée telle quelle
 
 ---
 
-**Date :** 2026-05-16
-**Source :** `2-brainstorm-boss.md` (beats figés) + `2-brainstorm-equipe.md` (matière filtrée) + `1-pitch-plan.md` + `pmo/decisions.md`
-**Vague :** 3 (refonte Couche 2 — beats figés intégrés, couture B3→B4 corrigée : Juju mouvement continu + bug logique Wex)
+**Date :** 2026-05-17
+**Source :** REX vague 3 + propositions consolidées (Conseiller socle + DeepSeek/Kimi convergence + corrections Papa Yann chronologie & libération) + validation Conseiller.
+**Vague :** 4 (refonte BOUSSOLE — 6 causalités-essence, COMMENT libéré, verrou Wex→contact→libellule, « Gagné ! » libéré, Nono libère).

@@ -912,11 +912,6 @@ function speakCatIntro() {
 }
 
 /* ── Build fiche ── */
-function speakFicheDesc() {
-  if (!currentDino) return;
-  speakFiche(currentDino);
-}
-
 function regimeIcon(cat) {
   const icons = { carnivores:'🥩', herbivores:'🌿', piscivores:'🐟', omnivores:'🍃', volants_marins:'🌊' };
   return icons[cat] || '🍽️';
@@ -944,16 +939,6 @@ function buildBadges(dinoId) {
   }
   return b ? `<div class="card-badges">${b}</div>` : '';
 }
-function speakFiche(d) {
-  const txt = `${d.name} ! ${d.nom_etym||''} `
-    + `${_statsPhrase(d)} `
-    + `C'est un ${regimelabel(d.regime).toLowerCase()}. `
-    + `Il mange ${d.proies}. `
-    + `${d.amis}. `
-    + `Le savais-tu ? ${d.fait}`;
-  speakText(txt);
-}
-
 /* ── Carte SVG continents ── */
 function buildContinentMap(continent) {
   const colors = {

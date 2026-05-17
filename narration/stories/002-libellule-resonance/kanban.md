@@ -26,10 +26,10 @@
 | 1 | Pitch + Plan (fusionnés depuis 2026-05-12) | Conseiller | ✅ | 2026-05-12 | [`1-pitch-plan.md`](1-pitch-plan.md) |
 | **2A** | **Brainstorm boss (Phase A)** | Papa Yann + Conseiller | ✅ | 2026-05-15 | [`2-brainstorm-boss.md`](2-brainstorm-boss.md) — vision Couche 0 + Couche 1 beats figés (11 beats, libellule sur nez Juju, Wex "oh" muet) — **scène pivot complète** validée auteur |
 | **2B** | **Brainstorm équipe (Phase B) v2** | Kimi + DeepSeek + Grok + Conseiller | ✅ | 2026-05-15 | [`2-brainstorm-equipe.md`](2-brainstorm-equipe.md) — matière brute 6 axes filtrée (faune/flore/actions/vannes/Wex/libellule/admiration) — **filtrage auteur appliqué 2026-05-15** |
-| **3C** | **Briefs Couche 2 (refonte — vague 3)** | Directeur | ✅ | 2026-05-16 | [`3-briefs/`](3-briefs/) — brief-personnages.md + brief-histoire.md refondus : intentions Ki/Sho/Ten/Ketsu + sensibilités + gestes, 10 beats Ten figés. **PMO relecture PASS 2026-05-16** — autoportance OK, négations 100% légitimes, cohérence DEC-SYMBOLIQUE/JUJU-T8/GABARIT complète. |
+| **3C** | **Briefs Couche 2 (refonte — vague 4 BOUSSOLE)** | Directeur | ✅ | 2026-05-17 | [`3-briefs/`](3-briefs/) — brief-personnages.md + brief-histoire.md refondus **EN BOUSSOLE** : intentions Ki/Sho/Ten/Ketsu (6 causalités-ESSENCE, zéro phrase publiable) + sensibilités + COUCHE 3 guidé seul. **PMO relecture PASS 2026-05-17** — aucune formulation publiable, verrous causaux transparents, Couche 3 isolée. Applique DEC-BRIEF-VAGUE4-BOUSSOLE. |
 | **D** | **_writer-package complet Couches 1/2/3 (vague 3)** | Directeur | ✅ | 2026-05-16 | [`3-briefs/brief-histoire.md`](3-briefs/brief-histoire.md) refondé : Couche 1 ref → `equipe/_writer-system.md` + Couche 2 brief + Couche 3 vision guidé. Format : système/utilisateur (DEC-WRITER-ARCH-001). **LIVRÉ** |
 | 3 | ~~Briefs~~ (archivé vague 1-2) | — | ❌ | 2026-05-12 | [`3-briefs/`](3-briefs/) — **REFONTE VAGUE 3 COMPLÉTÉE** (étapes B/C/D ✅) |
-| 4 | **14 Versions writers — VAGUE 3** (briefs system/user 2026-05-16) | 14 Writers | ⚪ | — | [`4-versions-writers/`](4-versions-writers/) — **DÉBLOQUÉE** — invocation: system=`equipe/_writer-system.md`, user=`3-briefs/brief-histoire.md` (DEC-WRITER-ARCH-001). Vague 2 archivée dans `_archive/vague-2/`, vague 1 reste `_archive/vague-1/` |
+| 4 | **14 Versions writers — VAGUE 4 BOUSSOLE** (briefs BOUSSOLE 2026-05-17) | 14 Writers | ⚪ | 2026-05-17 | [`4-versions-writers/`](4-versions-writers/) — **PRÊTE À LANCER** — invocation: system=`equipe/_writer-system.md`, user=`3-briefs/brief-histoire.md` (DEC-BRIEF-VAGUE4-BOUSSOLE appliqué). **Casting FIGÉ 14** : K2.6 thinking EXCLU vague 4 uniquement (AP-WRITER-THINKING-001 : mode incompatible briefs causalités). Papa Yann confirme 2026-05-17 casting permanent inchangé. Vague 3 archivée dans `_archive/vague-3/`, vague 1-2 restent `_archive/` |
 | 5 | **Panel 20 lecteurs + synthèse** | 20 Témoins + Directeur | ✅ | 2026-05-14 | [`5-lecteurs-temoins/`](5-lecteurs-temoins/) + [`5-synthese-lecteurs.md`](5-synthese-lecteurs.md) — verdict : `kimi-reco-guide` #1 chez 18/20 |
 | 6 | Sélection | Directeur | ⏳ | 2026-05-14 → 2026-05-15 | [`6-selection.md`](6-selection.md) — **EN ATTENTE AUTEUR** (validation vague 3 briefs avant sélection ETH vague 3, voir DEC-STORY-002-VAGUE3) |
 | 7 | Rewrite | Writer du top 1 | ⚪ | — | [`7-rewrite/`](7-rewrite/) |
@@ -62,6 +62,28 @@
 ## Notes & blocages
 
 > *Notes libres du owner courant. Si 🔴 BLOQUÉ, expliquer ici.*
+
+### 2026-05-17 — REX vague 3 + Refonte BOUSSOLE vague 4
+
+**Contexte** : Vague 3 convergence sur-spécifiée (10 beats Couche 2 = recopie mécanique). Étalon vague 2 jamais battu. Décision BOUSSOLE = intentions + 6 causalités-ESSENCE, zéro formulation publiable.
+
+**REX détaillé** :
+- Vague 3 brief = 10 beats numérotés en langage narratif → writers recopient (Nono geste identique 11/14, Juju contact eau 8/14, libellule comportement 9/14)
+- Vague 2 brief = 6 causalités + liberté complète → jamais battu en panel (18/20)
+- Conclusion : augmenter précision brief = augmenter convergence mécanique = tuer patte créative
+
+**Décision DEC-BRIEF-VAGUE4-BOUSSOLE** :
+- Brief Couche 2 = BOUSSOLE uniquement, jamais phrase publiable
+- Ten = 6 causalités-ESSENCE LIBRES (plus 10 beats numérotés)
+- Verrou unique (libellule APRÈS bug Wex + contact Juju-Nono) = intouchable
+- Couche 3 guidé = writer seul, jamais Couche 2
+- Chansonnette supprimée, Nono debout (contradiction interne vague 3 éliminée)
+
+**Application immédiate** : Brief STORY-002 vague 4 refondé en BOUSSOLE 2026-05-16. Prête à lancer étape 4 (14 writers, K2.6 thinking EXCLU vague 4 seulement).
+
+**Leçons gravées** : OBS-SURSPEC-BRIEFS (précision ≠ liberté) + AP-WRITER-THINKING-001 (Kimi K2.6 thinking incompatible briefs causalités).
+
+---
 
 ### 2026-05-15 — Décisions architecturales : briefs 3 couches + system/user writers + PROCESS nouveau (DEC-BRIEF-ARCH-*, DEC-WRITER-ARCH-001, DEC-PROCESS-NEW-001)
 

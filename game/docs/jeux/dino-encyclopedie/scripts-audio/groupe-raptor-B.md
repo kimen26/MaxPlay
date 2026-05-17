@@ -11,11 +11,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Coelophysis ! Son nom veut dire « forme creuse » en grec. Ses os étaient creux et légers comme les oiseaux ! Il vivait en Amérique du Nord, il y a 210 millions d'années. C'était l'un des PREMIERS carnivores de toute l'histoire des dinosaures !
+**NARRATEUR H** [excited] : Le Coelophysis ! Écoute bien son nom. « Coelo » — ça veut dire « creux » en grec ancien. Et « physis » — ça veut dire « forme » ! Alors « Coelophysis »...
 
-**WEX** [curious] : Les PREMIERS ? Les premiers avant le T-Rex ?
+**WEX** [curious] : ...ça veut dire « forme creuse » ?!
 
-**NARRATEUR H** [serious][softly] : Bien bien bien avant ! Le Coelophysis vivait presque 100 millions d'années avant le T-Rex. C'était le grand-père de tous les raptors qui viendront bien plus tard. L'ancêtre du monde des chasseurs petits et rapides.
+**NARRATEUR H** [confident] : EXACTEMENT ! Tu as trouvé tout seul, comme un vrai petit savant ! Il vivait en Amérique du Nord il y a 210 millions d'années — un des PREMIERS carnivores de l'histoire !
 
 ---
 
@@ -53,11 +53,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [playful] : Le Compsognathus ! Son nom veut dire « mâchoire élégante » en grec. Il avait une toute petite mâchoire très fine et très pointue ! Il vivait en Europe, il y a 150 millions d'années. C'était le plus PETIT dinosaure qu'on connaît !
+**NARRATEUR H** [excited] : Le Compsognathus ! Écoute bien son grand nom de savant. « Compso » — ça veut dire « élégant » en grec ancien. Et « gnathus » — ça veut dire « mâchoire » ! Alors « Compsognathus »...
 
-**WEX** [curious][happily] : Le PLUS petit ? Aussi petit que quoi ?
+**WEX** [curious] : ...ça veut dire « mâchoire élégante » ?!
 
-**NARRATEUR H** [excited][softly] : De la taille d'un poulet ! Tu le tenais dans tes deux mains, ce dino ! Et malgré sa taille, c'était un chasseur rapide qui attrapait des lézards et des insectes à la vitesse de l'éclair.
+**NARRATEUR H** [happily] : EXACTEMENT ! Tu parles déjà grec ancien ! Il vivait en Europe il y a 150 millions d'années, et c'était le plus PETIT dinosaure qu'on connaît — gros comme un poulet !
 
 ---
 
@@ -95,11 +95,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [playful] : L'Oviraptor ! Son nom veut dire « voleur d'œufs » en latin. Pendant longtemps, on croyait que c'était un vilain dinosaure qui volait les œufs des autres. Mais découverte INCROYABLE — c'était un mensonge ! Il vivait en Mongolie, il y a 75 millions d'années.
+**NARRATEUR H** [playful] : L'Oviraptor ! Écoute bien son nom. « Ovi » — ça veut dire « œuf » en latin. Et « raptor » — ça veut dire « voleur » en latin aussi ! Alors « Oviraptor »...
 
-**WEX** [curious][happily] : Un mensonge ? C'est pas possible ! Comment on s'est trompé si longtemps ?
+**WEX** [curious] : ...ça veut dire « voleur d'œufs » ?! Vilain dinosaure !
 
-**NARRATEUR H** [softly][excited] : On a trouvé des œufs avec le Oviraptor sur le dessus. Les savants ont cru : « Aha ! Il vole les œufs ! » Mais non ! Il gardait SES PROPRES œufs. Il était un PAPA POULE ! Les œufs, c'étaient les siens à protéger !
+**NARRATEUR H** [excited][softly] : EXACTEMENT ! Mais attends — tu as raison de crier vilain, mais c'était une FAUSSE accusation ! Il vivait en Mongolie il y a 75 millions d'années, et il gardait SES PROPRES œufs, comme un papa poule ! Un mensonge résolu !
 
 ---
 
@@ -137,11 +137,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Gallimimus ! Son nom veut dire « qui imite la poule » en grec et en latin. Il ressemblait à une grande autruche préhistorique ! Il vivait en Mongolie, il y a 70 millions d'années.
+**NARRATEUR H** [excited] : Le Gallimimus ! Écoute bien son nom. « Galli » — ça veut dire « poule » en latin. Et « mimus » — ça veut dire « qui imite » en grec ! Alors « Gallimimus »...
 
-**WEX** [curious][happily] : Une autruche préhistorique ? Ça existe, les autruches maintenant ?
+**WEX** [curious] : ...ça veut dire « qui imite la poule » ?!
 
-**NARRATEUR H** [playful][softly] : Exactement ! Les autruches d'aujourd'hui sont les héritières des dinosaures comme le Gallimimus. Il y a 70 millions d'années, le Gallimimus courait dans les déserts de Mongolie, tout seul ou en grand troupeau.
+**NARRATEUR H** [happily] : EXACTEMENT ! Tu parles latin ET grec maintenant ! Il vivait en Mongolie il y a 70 millions d'années, et il ressemblait à une GRANDE AUTRUCHE préhistorique !
 
 ---
 

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Il mesurait 26 mètres de long — aussi long qu'un bus accordéon de Paris ! Debout, il faisait 13 mètres de haut — aussi haut qu'un immeuble de 4 étages ! Et il pesait 60 mille kilos — aussi lourd que 12 éléphants !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] 12 éléphants ?? Dans une seule bête ?!"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] OUI ! Douze énormes éléphants, tu les mets ensemble, tu les mets sur une balance — et le Brachiosaure pèse autant ! C'était le plus lourd dinosaure herbivore du monde entier. Un immeuble qui marche !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

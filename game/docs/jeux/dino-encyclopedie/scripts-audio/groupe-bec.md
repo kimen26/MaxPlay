@@ -12,11 +12,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Parasaurolophus ! Son nom veut dire « près du lézard à crête ». Il avait une grande crête creuse sur la tête, comme un tuyau ! Il vivait en Amérique du Nord, il y a 76 millions d'années.
+**NARRATEUR H** [excited] : Le Parasaurolophus ! « Para », ça veut dire « à côté de » en grec ancien. Et « saurus », ça veut dire « lézard ». Et « lophus », c'est une « crête ». Alors « Parasaurolophus »...
 
-**WEX** [curious] : Une crête creuse ? Ça servait à quoi, une crête comme ça ?
+**WEX** [curious] : ...ça veut dire « le lézard à crête qui est à côté » ?!
 
-**NARRATEUR H** [playful] : Très bonne question ! Il soufflait dedans pour faire des sons, comme un trombone ou une trompette ! C'était sa musique préhistorique. Il appelait ses amis avec sa crête !
+**NARRATEUR H** [happily] : EXACTEMENT ! Tu as trouvé tout seul, comme un vrai petit paléontologue ! Son grand nom de savant, c'est Parasaurolophus walkeri, et il vivait en Amérique du Nord, il y a 76 millions d'années !
 
 ---
 
@@ -54,11 +54,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Corythosaure ! Son nom veut dire « lézard au casque de Corinthe ». Sa crête ressemblait à un casque de chevalier grec ! Il vivait au Canada, il y a 77 millions d'années.
+**NARRATEUR H** [excited] : Le Corythosaure ! « Corytho », ça veut dire « casque » en grec ancien — comme un casque corinthien ! Et « saurus », ça veut dire « lézard ». Alors « Corythosaure »...
 
-**WEX** [curious] : Un casque de chevalier sur la tête ? Il était un guerrier ?
+**WEX** [curious] : ...ça veut dire « lézard au casque » ?!
 
-**NARRATEUR H** [softly][chuckles] : Non, non ! C'était pas un vrai casque guerrier. C'était juste une belle crête colorée. Peut-être pour montrer « Regarde comme je suis beau ! » à ses amis. Un dinosaure très stylé !
+**NARRATEUR H** [happily] : EXACTEMENT ! Tu parles déjà du grec ancien ! Son grand nom de savant, c'est Corythosaurus casuarius, et il vivait au Canada, il y a 77 millions d'années !
 
 ---
 
@@ -96,11 +96,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : L'Edmontosaure ! Son nom veut dire « lézard d'Edmonton », une ville du Canada où on l'a trouvé. Il vivait en Amérique du Nord, il y a 68 millions d'années.
+**NARRATEUR H** [excited] : L'Edmontosaure ! « Edmonton », c'est une ville du Canada où on l'a découvert. Et « saurus », ça veut dire « lézard ». Alors « Edmontosaure »...
 
-**WEX** [curious] : Edmonton ? C'est quoi, Edmonton ?
+**WEX** [curious] : ...ça veut dire « lézard d'Edmonton » ?!
 
-**NARRATEUR H** [softly] : C'est une ville du Canada, très très loin vers le nord ! Quand les savants ont trouvé ses os, ils ont dit « Oh, c'est en Alberta, près d'Edmonton ! » Voilà comment il a eu son nom !
+**NARRATEUR H** [happily] : BRAVO LE SAVANT ! Son grand nom de savant, c'est Edmontosaurus regalis, et il vivait en Amérique du Nord, il y a 68 millions d'années !
 
 ---
 
@@ -138,11 +138,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : La Maiasaura ! Son nom veut dire « bonne maman lézard ». On a trouvé ses nids avec ses bébés : elle prenait soin d'eux ! Il y a 77 millions d'années en Amérique du Nord.
+**NARRATEUR H** [excited] : La Maiasaura ! « Maia », ça veut dire « bonne mère, nourrice » en grec ancien. Et « saura », ça veut dire « lézarde » au féminin. Alors « Maiasaura »...
 
-**WEX** [curious] : Une vraie maman dinosaure ? Qui gardait ses bébés ?
+**WEX** [curious] : ...ça veut dire « lézarde bonne maman » ?!
 
-**NARRATEUR H** [happily] : OUI ! C'était la meilleure maman dinosaure ! Elle construisait des nids, pondait des œufs, et nourrissait ses bébés pendant des semaines. Comme ta maman à toi !
+**NARRATEUR H** [happily] : EXACTEMENT ! Tu es un vrai petit savant ! Son grand nom de savant, c'est Maiasaura peeblesorum, et elle vivait en Amérique du Nord, il y a 77 millions d'années !
 
 ---
 
@@ -180,11 +180,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : L'Iguanodon ! Son nom veut dire « dent d'iguane ». Ses dents ressemblaient à celles d'un iguane ! Il vivait en Europe et en Amérique du Nord, il y a 125 millions d'années.
+**NARRATEUR H** [excited] : L'Iguanodon ! « Iguano », ça veut dire « iguane » — un gros lézard des Caraïbes. Et « odon », ça veut dire « dent » en grec ancien. Alors « Iguanodon »...
 
-**WEX** [curious] : Dent d'iguane ? C'est quoi, un iguane ?
+**WEX** [curious] : ...ça veut dire « dent d'iguane » ?!
 
-**NARRATEUR H** [softly] : Un iguane, c'est un gros lézard vert qui vit dans les arbres, en Amérique du Sud. Les dents de l'Iguanodon ressemblaient aux siennes. Voilà ! Les savants l'ont nommé comme ça !
+**NARRATEUR H** [happily] : EXACTEMENT TOI ! Comme un vrai paléontologue ! Son grand nom de savant, c'est Iguanodon bernissartensis, et il vivait en Europe et Amérique du Nord, il y a 125 millions d'années !
 
 ---
 

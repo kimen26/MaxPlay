@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Le T-Rex était un carnivore : il ne mangeait que de la viande ! Il chassait le Tricératops, l'Edmontosaure et l'Ankylosaure. Il vivait tout seul, comme un tigre. Personne n'osait l'attaquer : il était le chef absolu de son territoire !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et lui ? Il avait peur de quelqu'un ? Ou il était tout seul contre tout le monde ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Le T-Rex n'avait AUCUNE peur ! Il était tout seul, mais c'était le plus fort. Imagine une armée d'une seule personne — et cette personne est invincible. C'était ça, le T-Rex. Même les grands dinosaures à cornes se sauvaient quand ils le voyaient."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Le Stégosaure était un herbivore. Il mangeait des plantes. Il vivait peut-être en petit groupe. L'Allosaure le chassait, mais attention à sa queue avec des piques !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious][excited] Sa queue avait des piques ? Il pouvait vraiment se battre ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident][serious] OUI ! Sa queue avait 4 GRANDES piques qui pouvaient transpercer l'Allosaure ! C'était sa vraie arme. Pas besoin de dents ou de griffes — il avait une queue assassine !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

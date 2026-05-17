@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Il avalait des PIERRES pour broyer les plantes dans son ventre ! Ces pierres ont même un nom rigolo : des gastrolithes. C'était son moulin magique dans le ventre !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious][happily] Des pierres dans le ventre ? Ça faisait pas mal ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Non ! C'était exprès ! Toi, tu mâches ta nourriture — « clic clac » avec les dents. Lui, il avalait les feuilles sans mâcher, puis — PLOUF ! — il avalait les pierres. Et les pierres faisaient le travail des dents, tout au fond de son ventre. Un vrai moulin magique !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

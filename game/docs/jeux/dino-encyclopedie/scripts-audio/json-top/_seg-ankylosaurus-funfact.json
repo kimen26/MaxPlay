@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Sa queue finissait par une GROSSE BOULE d'os qui pouvait casser les pattes du T-Rex ! C'était comme une massue géante ! Un vrai char d'assaut avec un marteau à la fin de la queue !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps][happily] Un marteau à la fin de la queue ?! Il pouvait vraiment taper ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] OUI ! Il l'agitait comme ça — WOOSH WOOSH ! — et PAF ! Il frappait les dinosaures carnivores ! Imagine toi, tu as un bâton géant à la place de ta queue, et tu l'utilises comme une batte de baseball ! C'était son arme secrète !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

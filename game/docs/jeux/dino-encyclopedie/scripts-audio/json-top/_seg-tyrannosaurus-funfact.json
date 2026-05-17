@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ses dents faisaient 20 centimètres de long, plus grandes que ta main ! Il en avait 60 dans sa bouche ! Et sa morsure était la plus puissante de tous les animaux terrestres de tous les temps. Il pouvait écraser des os avec ses dents !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps][excited] WOW ! Écraser des os ? Comme quoi ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Imagine tu serres une branche très très fort dans ta main — elle casse, « CRACK ! » — eh bien le T-Rex, avec ses dents, écrasait les os comme toi tu écrases une branche ! Les os durs, durs, durs — deviennent miettes ! C'était le chasseur le plus dangereux de tous les dinosaures !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

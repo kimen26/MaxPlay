@@ -10,11 +10,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [playful] : Le Vélociraptor ! Son nom veut dire « voleur rapide ». Il courait très très vite ! Il vivait en Mongolie, dans le désert de Gobi, il y a 75 millions d'années.
+**NARRATEUR H** [excited] : Le Vélociraptor ! Son grand nom de savant, c'est Velociraptor mongoliensis. « Veloci » en latin, ça veut dire rapide. Et « raptor », c'est le voleur ! Alors Vélociraptor...
 
-**WEX** [curious] : Voleur rapide ? C'est un voleur ?
+**WEX** [curious] : ...ça veut dire le voleur RAPIDE ?!
 
-**NARRATEUR H** [softly][chuckles] : Non, non ! « Voleur rapide », c'est juste un nom que les savants ont donné parce qu'il attrapait ses proies très vite — comme un voleur qui vole ! Mais c'était pas un vrai voleur, juste un chasseur très très rapide.
+**NARRATEUR H** [happily] : PILE POIL ! Tu parles déjà comme un paléontologue ! Il vivait en Mongolie, dans le désert de Gobi, il y a 75 millions d'années.
 
 ---
 
@@ -52,11 +52,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Deinonychus ! Son nom veut dire « griffe terrible ». Il avait une ÉNORME griffe recourbée et super tranchante ! Il vivait en Amérique du Nord, il y a 115 millions d'années.
+**NARRATEUR H** [excited] : Le Deinonychus ! Son grand nom de savant, c'est Deinonychus antirrhopus. « Deino » en grec ancien, ça veut dire terrible, effrayant. Et « nychus », c'est la griffe ! Alors Deinonychus...
 
-**WEX** [curious] : Griffe terrible ? Comme les griffes d'un chat géant ?
+**WEX** [curious] : ...ça veut dire la GRIFFE TERRIBLE ?!
 
-**NARRATEUR H** [serious] : Mille fois plus dangereuse qu'un chat ! Sa griffe faisait 13 centimètres de long, longue comme ton doigt ! Et elle était recourbée comme un sabre. Il l'utilisait pour déchirer ses proies. Une arme mortelle !
+**NARRATEUR H** [confident] : EXACTEMENT ! Tu parles déjà grec ancien ! Il vivait en Amérique du Nord, il y a 115 millions d'années, avec une griffe recourbée longue comme ton doigt !
 
 ---
 
@@ -94,11 +94,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : L'Utahraptor ! Son nom veut dire « voleur de l'Utah ». C'était un GÉANT parmi les raptors ! Il vivait en Amérique du Nord, il y a 126 millions d'années.
+**NARRATEUR H** [excited] : L'Utahraptor ! Son grand nom de savant, c'est Utahraptor ostrommaysorum. « Utah », c'est un endroit aux États-Unis où on l'a trouvé. Et « raptor » en latin, c'est le voleur ! Alors Utahraptor...
 
-**WEX** [curious] : Un géant de raptors ? Il était encore énorme même pour un raptor ?
+**WEX** [curious] : ...ça veut dire le VOLEUR DE L'UTAH ?!
 
-**NARRATEUR H** [serious][excited] : OHHHHH oui ! L'Utahraptor était LE PLUS GRAND RAPTOR QUI AIT JAMAIS EXISTÉ ! Deux fois plus grand que le Vélociraptor ! Un vrai monstre !
+**NARRATEUR H** [confident][excited] : EXACTEMENT ! Bravo le savant ! Et tu sais quoi ? C'était LE PLUS GRAND RAPTOR QUI AIT JAMAIS EXISTÉ ! Deux fois plus grand que le Vélociraptor — un vrai géant !
 
 ---
 
@@ -136,11 +136,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [playful] : Le Microraptor ! Son nom veut dire « petit voleur ». Il était... MINUSCULE ! Il vivait en Chine, il y a 120 millions d'années.
+**NARRATEUR H** [playful] : Le Microraptor ! Son grand nom de savant, c'est Microraptor gui. « Micro » en grec, ça veut dire petit. Et « raptor » en latin, c'est le voleur ! Alors Microraptor...
 
-**WEX** [curious] : Minuscule ? Aussi minuscule que... quoi ?
+**WEX** [curious] : ...ça veut dire le PETIT VOLEUR ?!
 
-**NARRATEUR H** [softly][happily] : Minuscule comme un gros chat ! Peut-être même plus petit. Mais attention — il n'était pas tout seul comme un chat ordinaire. Le Microraptor, c'était SPÉCIAL !
+**NARRATEUR H** [happily] : EXACTEMENT ! Tu parles déjà grec et latin ! Il vivait en Chine, il y a 120 millions d'années — et c'était le plus acrobate des raptors !
 
 ---
 
@@ -178,11 +178,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited][serious] : Le Troodon ! Son nom veut dire « dent blessante ». Mais l'important, c'est pas ses dents — c'est son CERVEAU !
+**NARRATEUR H** [excited][serious] : Le Troodon ! Son grand nom de savant, c'est Troodon formosus. « Troo » en grec ancien, ça veut dire qui blesse, blessant. Et « odon », c'est la dent ! Alors Troodon...
 
-**WEX** [curious] : Son cerveau ? Les dinosaures, ils réfléchissaient ?
+**WEX** [curious] : ...ça veut dire la DENT QUI BLESSE ?!
 
-**NARRATEUR H** [confident] : Le Troodon, OUI ! C'était le dinosaure le PLUS INTELLIGENT qui ait jamais existé ! Le cerveau d'un génie !
+**NARRATEUR H** [confident] : EXACTEMENT ! Comme un vrai petit paléontologue ! Et ce qui est fou, c'est que l'important, c'était pas ses dents — c'était son CERVEAU ! Le dinosaure le plus intelligent qui ait jamais existé !
 
 ---
 

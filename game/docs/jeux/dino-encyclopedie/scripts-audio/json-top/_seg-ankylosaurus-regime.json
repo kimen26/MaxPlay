@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] L'Ankylosaure était un herbivore. Il mangeait des plantes. Il vivait seul ou en petit groupe. Le T-Rex essayait de le manger, mais c'était très difficile avec toute cette armure !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious][excited] Difficile ? Même le T-Rex ne pouvait pas le manger ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Exactement ! L'Ankylosaure était trop blindé. Ses plaques d'os étaient comme des briques cousues sur sa peau. Le T-Rex avait beau avoir une morsure énorme, il ne pouvait pas percer cette armure. C'était comme essayer de manger une voiture !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

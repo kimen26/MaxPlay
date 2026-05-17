@@ -11,11 +11,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Ptéranodon ! Son nom veut dire « aile sans dents ». Il avait de grandes ailes mais pas de dents ! ATTENTION : ce n'est PAS un dinosaure, c'est un reptile volant !
+**NARRATEUR H** [excited] : Le Ptéranodon ! Écoute bien son nom. « Ptér », ça veut dire « aile » en grec ancien. Et « anodon », ça veut dire « sans dents » ! Alors Ptéranodon...
 
-**WEX** [curious] : Pas un dinosaure ? Mais pourquoi alors il est dans l'encyclopédie ?
+**WEX** [curious] : ...ça veut dire « aile sans dents » ?!
 
-**NARRATEUR H** [softly] : Bonne question ! Le Ptéranodon vivait en même temps que les dinosaures, il y a 85 millions d'années. Il vole dans le ciel pendant que le T-Rex chasse sur terre ! C'était un ami de la Terre préhistorique !
+**NARRATEUR H** [happily] : EXACTEMENT ! Tu parles déjà grec ancien ! Et tu sais le plus fou ? Ce n'est PAS un dinosaure, c'est un reptile volant ! Il vivait en même temps que les dinosaures, il y a 85 millions d'années, dans le ciel pendant que le T-Rex chassait sur terre !
 
 ---
 
@@ -53,11 +53,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Quetzalcoatlus ! Son nom vient d'un dieu aztèque, le « serpent à plumes ». C'était le plus grand animal volant de tous les temps ! Il vivait en Amérique du Nord, il y a 68 millions d'années.
+**NARRATEUR H** [excited] : Le Quetzalcoatlus ! Son grand nom de savant vient du dieu aztèque Quetzalcoatl — le « serpent à plumes ». Les Aztèques, c'était un peuple ancien du Mexique. Et c'était le plus grand animal volant de TOUS les temps !
 
-**WEX** [curious][gasps] : Le PLUS grand animal volant ? Plus grand que l'avion de Papa ?
+**WEX** [curious][gasps] : Le PLUS grand animal volant ? Plus grand que l'avion de Papa ?!
 
-**NARRATEUR H** [serious] : Oui ! Aussi grand qu'un petit avion ! Ses ailes, quand il les ouvre, c'est comme un bus entier qui vole ! Un monstre des airs !
+**NARRATEUR H** [confident] : Bravo le savant ! Oui ! Aussi grand qu'un petit avion ! Ses ailes quand il les ouvre, c'est comme un bus entier qui vole ! Il vivait en Amérique du Nord, il y a 68 millions d'années. Un monstre des airs préhistorique !
 
 ---
 
@@ -95,11 +95,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [serious] : L'Archaeoptéryx ! Son nom veut dire « aile ancienne ». C'est l'un des tout premiers oiseaux du monde ! Il vivait en Allemagne, il y a 150 millions d'années.
+**NARRATEUR H** [serious] : L'Archaeoptéryx ! Écoute bien son nom savant. « Archaeo », ça veut dire « ancien » en grec. Et « pteryx », ça veut dire « aile » en grec. Alors Archaeoptéryx...
 
-**WEX** [curious] : Les tout premiers oiseaux ? Comment on le sait ?
+**WEX** [curious] : ...ça veut dire « aile ancienne » ?!
 
-**NARRATEUR H** [softly] : On a trouvé un fossile magnifique — comme si on avait figé un oiseau dans la pierre ! Ses plumes sont encore là, le fossile le plus beau du monde !
+**NARRATEUR H** [softly][happily] : EXACTEMENT ! C'est l'un des tout premiers oiseaux du monde ! Le chaînon manquant entre les dinosaures et les oiseaux d'aujourd'hui. Il vivait en Allemagne il y a 150 millions d'années, et on a trouvé son fossile magnifique — comme si on avait figé un oiseau dans la pierre !
 
 ---
 
@@ -137,11 +137,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Mosasaure ! Son nom veut dire « lézard de la Meuse ». C'est une rivière en Europe où on a trouvé ses os. ATTENTION : ce n'est PAS un dinosaure, c'est un reptile marin !
+**NARRATEUR H** [excited] : Le Mosasaure ! Écoute bien son nom. « Mosa », c'est la Meuse — une rivière en Europe où on a trouvé ses os. Et « saurus », en grec, ça veut dire « lézard ». Alors Mosasaure...
 
-**WEX** [curious] : Un reptile marin ? Comme un crocodile ?
+**WEX** [curious] : ...ça veut dire « lézard de la Meuse » ?!
 
-**NARRATEUR H** [serious] : Oui et non ! Il avait une queue plate comme un requin, des nageoires comme un poisson, mais c'était un reptile ! Le monstre des mers du Crétacé ! Il y a 70 millions d'années.
+**NARRATEUR H** [serious] : EXACTEMENT ! Et tu sais le plus fou ? Ce n'est PAS un dinosaure, c'est un reptile marin ! Il avait une queue plate comme un requin, des nageoires comme un poisson. Le monstre des mers du Crétacé, il y a 70 millions d'années !
 
 ---
 
@@ -179,11 +179,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Suchomimus ! Son nom veut dire « qui imite le crocodile ». Son museau ressemblait exactement à celui d'un crocodile ! Il vivait en Afrique, au Niger, il y a 112 millions d'années.
+**NARRATEUR H** [excited] : Le Suchomimus ! Écoute bien son nom. « Sucho », en grec, ça veut dire « crocodile ». Et « mimus », ça veut dire « qui imite ». Alors Suchomimus...
 
-**WEX** [curious] : Il imite le crocodile ? Comment ça imite ?
+**WEX** [curious] : ...ça veut dire « qui imite le crocodile » ?!
 
-**NARRATEUR H** [softly] : Son nez était long, pointu, avec plein de dents dedans, EXACTEMENT comme un crocodile ! Mais c'était un dinosaure, pas un crocodile ! Un dinosaure qui ressemblait à un crocodile !
+**NARRATEUR H** [happily][softly] : EXACTEMENT ! Son museau ressemblait EXACTEMENT à celui d'un crocodile — long, pointu, avec plein de dents pointues dedans ! Mais c'était un dinosaure piscivore, pas un crocodile ! Il vivait en Afrique, au Niger, il y a 112 millions d'années, et il pêchait dans les rivières comme un vrai professionnel !
 
 ---
 
@@ -221,11 +221,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Baryonyx ! Son nom veut dire « griffe lourde ». Il avait une énorme griffe de 30 centimètres sur le pouce ! Il vivait en Angleterre, il y a 125 millions d'années.
+**NARRATEUR H** [excited] : Le Baryonyx ! Écoute bien son nom. « Bary », en grec, ça veut dire « lourd ». Et « onyx », ça veut dire « griffe ». Alors Baryonyx...
 
-**WEX** [curious][gasps] : Une griffe de 30 centimètres ? Aussi longue que quoi ?
+**WEX** [curious][gasps] : ...ça veut dire « griffe lourde » ?!
 
-**NARRATEUR H** [serious] : Aussi longue que ta main entière ! Une griffe géante ! Pas pour se battre, mais pour PÊCHER — comme un ours dans la rivière !
+**NARRATEUR H** [confident] : EXACTEMENT ! Tu parles grec ! Il avait une énorme griffe de 30 centimètres sur le pouce — aussi longue que ta main entière ! Pas pour se battre, mais pour PÊCHER comme un ours dans la rivière ! Il vivait en Angleterre il y a 125 millions d'années et il attrapait les poissons avec sa griffe géante !
 
 ---
 

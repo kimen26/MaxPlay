@@ -12,11 +12,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Pachycéphalosaure ! Son nom veut dire « lézard à tête épaisse ». Son crâne était épais comme un casque de moto ! Il vivait en Amérique du Nord, il y a 70 millions d'années.
+**NARRATEUR H** [excited] : Le Pachycéphalosaure ! Écoute son grand nom de savant : Pachycephalosaurus wyomingensis. « Pachy », en grec ancien, ça veut dire « épais ». Et « céphalo », ça veut dire « tête ». Et « saurus », c'est « lézard ». Alors Pachycéphalosaure...
 
-**WEX** [curious] : Un crâne épais ? Il pouvait pas se faire mal en tombant ?
+**WEX** [curious] : ...ça veut dire « lézard à tête épaisse » ?!
 
-**NARRATEUR H** [playful] : Exactement ! Son crâne était plus dur que n'importe quel dinosaure. Les chocs ne lui faisaient rien. C'était comme marcher avec un casque de football géant sur la tête, tout le temps !
+**NARRATEUR H** [happily] : EXACTEMENT ! Tu parles déjà grec ancien ! Et sa tête était ULTRA épaisse, 25 centimètres, comme un casque de moto ! Il vivait en Amérique du Nord, il y a 70 millions d'années, et rien ne pouvait lui faire mal à la tête !
 
 ---
 
@@ -54,11 +54,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Therizinosaure ! Son nom veut dire « lézard à faux ». Il avait des griffes aussi longues et courbées qu'une faux de paysan ! Il vivait en Mongolie, il y a 70 millions d'années.
+**NARRATEUR H** [excited] : Le Thérizinosaurus ! Son grand nom, c'est Therizinosaurus cheloniformis. « Therizino », en grec ancien, ça veut dire « faucher ». Et « saurus », c'est « lézard ». Alors Thérizinosaurus...
 
-**WEX** [curious] : Comme une faux ? Une vraie arme de dinosaure ?
+**WEX** [curious][gasps] : ...ça veut dire « lézard à faux » ?! Comme l'arme du paysan ?!
 
-**NARRATEUR H** [serious][softly] : Ses griffes ressemblaient à une arme, c'est vrai ! Mais écoute bien : c'était un gentle giant, un géant gentil. Il ne se battait pas avec ses griffes. Il s'en servait pour... attraper les branches hautes !
+**NARRATEUR H** [confident] : Oui ! Mais psst... il ne s'en servait PAS pour se battre ! Il était herbivore ! Il avait les griffes les plus longues de tous les animaux — 1 mètre chacune — mais c'était juste pour attraper les branches hautes. Un géant pacifiste avec des armes de guerrier ! Il vivait en Mongolie, il y a 70 millions d'années.
 
 ---
 
@@ -96,11 +96,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [serious] : Le Dimétrodon ! Son nom veut dire « deux tailles de dents ». Il avait des dents courtes à l'avant et des dents longues à l'arrière ! ATTENTION : ce n'est PAS un dinosaure ! Il vivait il y a 280 millions d'années — AVANT tous les dinosaures !
+**NARRATEUR H** [serious] : Le Dimétrodon ! Son grand nom, c'est Dimetrodon grandis. « Di », en grec, ça veut dire « deux ». « Metro », c'est « mesure, taille ». Et « odon », c'est « dent ». Alors Dimétrodon...
 
-**WEX** [curious] : Pas un dinosaure ? Mais c'est quoi alors ?
+**WEX** [curious][gasps] : ...ça veut dire « deux tailles de dents » ?!
 
-**NARRATEUR H** [softly] : C'est un très très ancien grand-parent des animaux à poils comme nous — les chats, les chiens, et même toi et moi ! Il a vécu avant même que les dinosaures arrivent !
+**NARRATEUR H** [happily] : EXACTEMENT ! Des dents courtes à l'avant, des dents longues à l'arrière. Mais ATTENTION : ce n'est PAS un dinosaure ! Il vivait il y a 280 millions d'années — AVANT tous les dinosaures ! C'était un très très ancien grand-parent des animaux à poils comme nous — les chats, les chiens, et même toi et moi !
 
 ---
 

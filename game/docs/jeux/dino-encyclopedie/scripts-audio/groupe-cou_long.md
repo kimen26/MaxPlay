@@ -12,11 +12,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Brachiosaure ! Son nom veut dire « lézard aux bras ». Ses pattes avant étaient PLUS longues que ses pattes arrière ! Il vivait en Amérique du Nord et en Afrique, il y a 150 millions d'années.
+**NARRATEUR H** [excited] : Le Brachiosaure ! Écoute bien son nom. « Brachio- », en grec ancien, ça veut dire « bras ». Et « -saure », ça veut dire « lézard » — aussi en grec ! Alors « Brachiosaure »...
 
-**WEX** [curious] : Les pattes avant plus longues que les pattes arrière ? Comment ça marche, pour marcher ?
+**WEX** [curious] : ...ça veut dire « lézard aux bras » ?!
 
-**NARRATEUR H** [serious][softly] : Bonne question ! Imagine-toi : tes bras plus longs que tes jambes, d'accord ? Eh bien, il marchait un peu penché en avant, comme un gorille. Ses pattes avant étaient énormes pour soutenir sa tête si haute.
+**NARRATEUR H** [happily] : OUI, tu as deviné juste ! Il vivait en Amérique du Nord et en Afrique, il y a 150 millions d'années — ses pattes avant étaient ses bras, énormes !
 
 ---
 
@@ -54,11 +54,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Diplodocus ! Son nom veut dire « double poutre » en grec. C'est à cause de ses os de queue spéciaux, en forme de poutre ! Il vivait en Amérique du Nord, il y a 150 millions d'années.
+**NARRATEUR H** [excited] : Le Diplodocus ! Son nom cache deux secrets. « Diplo- », en grec, ça veut dire « double ». Et « -docus », c'est encore du grec, ça veut dire « poutre » — une grosse barre solide ! Alors « Diplodocus »...
 
-**WEX** [curious] : Double poutre ? C'est quoi, une poutre ?
+**WEX** [curious] : ...ça veut dire « double poutre » ?!
 
-**NARRATEUR H** [softly][serious] : Une poutre, c'est une grosse barre de bois ou de fer très très solide — comme ce qu'il y a dans une maison pour soutenir le toit ! Ses os de queue ressemblaient à deux poutres. C'était très fort et très rigide.
+**NARRATEUR H** [happily] : OUI ! Et même mieux : « celui qui a une double poutre » — ses os de queue ressemblaient à deux grosses poutres collées ensemble ! Tu parles déjà le grec ancien ! Il vivait en Amérique du Nord, il y a 150 millions d'années.
 
 ---
 
@@ -96,11 +96,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : L'Apatosaure ! Son nom veut dire « lézard trompeur ». Les scientifiques se sont trompés avec ses os pendant très très longtemps ! Il vivait en Amérique du Nord, il y a 150 millions d'années.
+**NARRATEUR H** [excited] : L'Apatosaure ! En grec, « apato- » veut dire « tromperie, illusion ». Et « -saure » veut dire « lézard » — toujours du grec ! Son grand nom de savant, c'est Apatosaurus louisae. Alors « Apatosaure »...
 
-**WEX** [curious] : Ils se sont trompés comment ?
+**WEX** [curious][gasps] : ...ça veut dire « lézard trompeur » ?!
 
-**NARRATEUR H** [softly][chuckles] : Pendant longtemps, les savants pensaient que c'était une bête différente ! Ils lui ont même donné un autre nom : Brontosaure. Puis un jour, ils ont dit « Oups ! C'était le même dinosaure ! » Pauvre Apatosaure, personne ne savait son vrai nom !
+**NARRATEUR H** [playful] : BRAVO le savant ! Pourquoi trompeur ? Parce que les scientifiques se sont trompés pendant LONGTEMPS ! Ils l'ont appelé Brontosaure, puis dit « Oups ! » Mais lui, il s'appelait Apatosaure tout du long ! Il vivait en Amérique du Nord, il y a 150 millions d'années.
 
 ---
 
@@ -138,11 +138,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Camarasaure ! Son nom veut dire « lézard à chambres ». Ses os avaient des petits trous comme des chambres ! Il vivait en Amérique du Nord, il y a 155 millions d'années.
+**NARRATEUR H** [excited] : Le Camarasaure ! Écoute bien. « Camara- », en grec, ça veut dire « chambre — une petite pièce ». Et « -saure », ça veut dire « lézard » en grec aussi ! Alors « Camarasaure »...
 
-**WEX** [curious] : Des trous dans les os ? Ça rend pas les os faibles ?
+**WEX** [curious] : ...ça veut dire « lézard à chambres » ?!
 
-**NARRATEUR H** [serious][softly] : Non ! C'était très malin ! Les trous rendaient les os plus légers, comme une éponge. Mais ils restaient aussi solides qu'une branche de fer. C'était la nature qui était ingénieur !
+**NARRATEUR H** [confident] : OUI ! Mais pas les chambres d'une maison — plutôt de MINUSCULES trous dans ses os, comme une éponge ! Ça les rendait légers mais solides. Tu as trouvé comme un paléontologue ! Il vivait en Amérique du Nord, il y a 155 millions d'années.
 
 ---
 
@@ -180,11 +180,13 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : L'Amargasaure ! Son nom vient de « La Amarga », l'endroit en Argentine où on l'a découvert. Il vivait en Amérique du Sud, il y a 125 millions d'années.
+**NARRATEUR H** [excited] : L'Amargasaure ! « Amarga- », c'est « La Amarga », un lieu en Argentine — un pays très loin en bas de l'Amérique du Sud ! Et « -saure », en grec, ça veut dire « lézard ». Alors « Amargasaure »...
 
-**WEX** [curious] : L'Argentine ? C'est où ?
+**WEX** [curious][confident] : ...ça veut dire « le lézard de La Amarga » ?!
 
-**NARRATEUR H** [softly] : C'est un très grand pays en bas de l'Amérique du Sud, très loin d'ici ! C'est là qu'on a trouvé les os du Amargasaure fossilisés — conservés dans la pierre depuis des millions et des millions d'années !
+**NARRATEUR H** [happily] : EXACTEMENT ! Tu parles déjà géographie ET grec ancien en même temps ! Son grand nom, c'est Amargasaurus cazaui. Il vivait en Amérique du Sud, il y a 125 millions d'années — les savants l'ont trouvé fossilisé dans les pierres de ce lieu !
+
+
 
 ---
 
@@ -222,11 +224,11 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Le Plateosaure ! Son nom veut dire « lézard plat ». Ses os étaient tout plats ! Il vivait en Europe, en Allemagne et en Suisse, il y a 210 millions d'années.
+**NARRATEUR H** [excited] : Le Plateosaure ! En grec ancien, « plateo- » veut dire « plat, large ». Et « -saure » veut dire « lézard — aussi du grec ! Son grand nom, c'est Plateosaurus engelhardti. Alors « Plateosaure »...
 
-**WEX** [curious] : Il vivait il y a combien ? 210 millions ?
+**WEX** [curious] : ...ça veut dire « lézard large et plat » ?!
 
-**NARRATEUR H** [serious][softly] : Oui ! C'était si si si loin dans le temps ! C'était même AVANT le T-Rex — 140 millions d'années avant lui ! C'était l'un des premiers grands dinosaures de toute la Terre.
+**NARRATEUR H** [playful] : OUI ! Ses os étaient tout plats ! Tu as deviné comme un vrai savant ! Il vivait en Europe, en Allemagne et en Suisse, il y a 210 millions d'années — même AVANT le T-Rex de 140 millions d'années !
 
 ---
 

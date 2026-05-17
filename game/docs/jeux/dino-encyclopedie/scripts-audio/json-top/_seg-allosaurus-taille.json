@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Il mesurait 10 mètres de long, aussi long qu'un bus. Il faisait 3 virgule 5 mètres de haut — aussi haut que deux Papas l'un sur l'autre ! Et il pesait 3 mille kilos — aussi lourd que 3 rhinocéros !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious][gasps] Moins gros que le T-Rex ! Il était pas aussi fort ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Moins gros, oui, mais très intelligent et très rapide ! La taille ne fait pas tout. L'Allosaure était le champion du Jurassique — il vivait 90 millions d'années avant le T-Rex !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

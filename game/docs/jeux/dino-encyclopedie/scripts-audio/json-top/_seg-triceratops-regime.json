@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] C'était un herbivore. Il mangeait des plantes. Il vivait peut-être en troupeau pour protéger les petits. Le T-Rex le chassait, mais le Tritri se défendait courageusement avec ses cornes ! C'était un dino courageux qui n'avait peur de personne."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il se battait contre le T-Rex ? Pour de vrai ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious][confident] Oui ! Le Tritri et le T-Rex se battaient vraiment ! Chacun avait une arme : le T-Rex avait ses dents énormes, et le Tritri avait ses cornes pointues. Des combats épiques, toi et moi !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

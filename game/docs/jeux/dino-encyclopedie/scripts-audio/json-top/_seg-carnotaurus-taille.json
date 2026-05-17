@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Il mesurait 8 mètres de long, aussi long que deux voitures garées l'une derrière l'autre. Il pesait 1 mille 500 kilos — aussi lourd que 2 rhinocéros ! Et il faisait 3 mètres de haut — aussi haut que deux Papas l'un sur l'autre !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious][gasps] Il avait des bras très petits aussi ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Oui ! Ses bras étaient TRÈS petits, encore plus petits que ceux du T-Rex ! Mais ça ne gênait pas, car ses cornes étaient sa vraie arme !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

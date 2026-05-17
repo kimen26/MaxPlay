@@ -1,165 +1,189 @@
 ---
-profil: G-A2
-age: 4 ans
-type: Garçon intro/observateur
-date: 2026-05-16
+lecteur: G-A2
+profil: Garçon intro/observateur — 4 ans
+date: 2026-05-17
+vague: 4
 ---
 
-# Lecteur Témoin G-A2 — Gabriel, 4 ans, calme et curieux
+# Fiche lecteur G-A2 — Garçon calme, 4 ans
 
-> Gabriel observe avant d'agir. Il aime les insectes, la nature, les gestes lents. Il pose beaucoup de questions "pourquoi". Il décroche quand il y a trop de bruit ou trop de monde qui fait des choses en même temps. Il accroche aux détails que les autres ne voient pas.
+> Petit garçon de 4 ans. Il parle doucement. Il observe longtemps avant de commenter.
+> Il aime les insectes, les coins d'eau, les moments tranquilles.
+> Il pose des "pourquoi ?" quand quelque chose ne lui semble pas logique.
+> Il décroche quand il y a trop de bruit ou trop de monde en même temps.
 
 ---
 
 ## Version claude-opus-def
 
-J'ai aimé : Nono qui enlève ses chaussettes tout doucement, j'aimais bien ça. Et le "Ploc" du caillou. Et aussi quand Wex penche la tête comme un chien, c'est drôle.
-J'ai pas trop aimé : Au debut y'a beaucoup de choses qui se passent en meme temps, Juju qui court et Wex et la libellule, j'étais un peu perdu.
-Ce que je retiens : Nono qui tend la main avec la paume ouverte vers le ciel. Et la libellule qui se pose sans faire de bruit.
-Questions : Pourquoi la libellule elle est venue sur Nono et pas sur Juju ou Wex ?
+J'ai aimé : La libellule qui se pose sur l'épaule de Nono. Et la boue qui fait *flotch*, j'aurais voulu faire pareil. Juju qui dit "on l'a eue" alors qu'on l'a pas eue — c'est rigolo.
+J'ai pas trop aimé : Au debut c'est long avant que la libellule arrive. Y'a beaucoup de mots que je connais pas, comme "vase tiede".
+Ce que je retiens : Le pied de Nono dans la boue a cote du pied de Juju. Et la libellule sur l'epaule.
+Questions : Pourquoi la libellule elle est venue ? Nono il a fait comment ?
 
 ---
 
 ## Version claude-opus-reco
 
-J'ai aimé : C'est Juju qui raconte et elle dit "je", c'est rigolo. J'aimais quand elle louche sur la libellule. Et "les têtards gros comme des virgules", j'ai rigolé.
-J'ai pas trop aimé : Ça va vite vite vite au début, j'arrivais pas bien à voir où c'était. Et parfois y'a trop de mots ensemble.
-Ce que je retiens : La libellule qui est "bleue, non verte, non jaune". Et Juju qui louche tellement que ses yeux se croisent.
-Questions : C'est quoi une virgule ? Pourquoi les têtards ça ressemble à ça ?
+J'ai aimé : On commence avec les pieds dans l'eau froide — moi j'aurais fait pareil. Juju qui dit "tenue" a la fin, c'est un drole de mot. Et le geste de Nono qui offre avec le doigt.
+J'ai pas trop aimé : "La poule d'eau fait son petit cri rouge et jaune" — les cris c'est pas rouge et jaune. J'ai pas compris ca.
+Ce que je retiens : Le souffle de Juju qui retient tout. Et le mot "tenue" dit tout bas.
+Questions : Pourquoi le cri est rouge et jaune ?
 
 ---
 
 ## Version claude-sonnet-def
 
-J'ai aimé : L'odeur de l'étang au début, "quelque chose de vert de vivant", j'aimais ça. Et Wex à la fin qui reste là bouche ouverte à regarder l'endroit où la libellule était. C'est comme moi des fois.
-J'ai pas trop aimé : Y'a des phrases longues avec beaucoup de virgules, j'étais un peu fatigué de suivre. Et Nono ramasse un caillou au début mais après on l'entend plus parler de ça, je trouvais bizarre.
-Ce que je retiens : Wex qui reste planté à regarder le vide à la fin. Et la libellule qui est "violette ou bleue ou les deux selon comment la lumière tombe".
-Questions : Pourquoi la lumière fait changer de couleur ?
+J'ai aimé : Quand Nono dit "l'etang est d'accord" — c'est drole, les etangs ca parle pas mais c'est quand meme vrai. Et Wex qui dit un truc sur l'epouvantail mais il trouve pas quoi. J'aime quand quelqu'un cherche.
+J'ai pas trop aimé : Trop de fois "les tetards continuent" et "la poule d'eau". J'ai l'impression que l'histoire recommence.
+Ce que je retiens : "L'etang est d'accord." Et la libellule qui "tourne la tete — si c'est une tete".
+Questions : Elle a une tete la libellule ? C'est quoi sa tete ?
 
 ---
 
 ## Version claude-sonnet-reco
 
-J'ai aimé : "Elle s'arrête comme on s'arrête quand quelque chose dans les pieds a décidé avant la tête." J'ai demandé à relire ce bout-là. Et les têtards à la fin qui continuent de nager, ils s'en fichent de tout.
-J'ai pas trop aimé : C'est un peu court à la fin, j'aurais voulu encore un moment.
-Ce que je retiens : "Quelque chose dans les pieds qui décide avant la tête." Et Nono avec les mains toujours ouvertes à la fin.
-Questions : Est-ce que les pieds peuvent décider tout seuls ?
+J'ai aimé : "Les ailes qui claquent comme du plastique froisse" — j'entends le bruit ! Et Nono qui dit "vraiment pas" a la fin, j'aime ca parce que c'est vrai il savait pas.
+J'ai pas trop aimé : Wex parle beaucoup de l'epouvantail. J'ai un peu perdu le fil de la libellule pendant ce moment-la.
+Ce que je retiens : Le bruit des ailes en plastique froisse. Et Juju qui donne un coup d'epaule a Nono.
+Questions : Pourquoi Nono il s'est arrete ? Il avait quelque chose dans le pied ?
 
 ---
 
 ## Version claude-haiku-def
 
-J'ai aimé : Wex qui fait juste "Oh", c'est drôle un "oh" sans voix. Et la libellule orange, c'est une belle couleur.
-J'ai pas trop aimé : Des fois les phrases sont très courtes puis très longues, j'avais du mal à respirer comme il faut en écoutant. Et au début y'a "Puis tout devient courant", je savais pas ce que ça voulait dire.
-Ce que je retiens : Wex avec la tête penchée et les yeux écarquillés et juste "Oh". Et la libellule qui disparait dans la lumière du midi.
-Questions : C'est quoi la lumière du midi ?
+J'ai aimé : Nono qui dit "attends" tout bas. Juste ca, "attends." Et que Juju sait qu'on l'a pas vraiment eue mais elle dit quand meme "on l'a eue".
+J'ai pas trop aimé : Beaucoup de mots difficiles. "Communion muette" dans la note — ca fait adulte. Et Nono qui a pas assez de paroles, c'est lui le plus interessant mais on l'entend peu.
+Ce que je retiens : "Attends." Le seul mot de Nono. Et la libellule "comme si le calme etait une branche."
+Questions : Pourquoi la libellule elle choisit Nono et pas les autres ?
 
 ---
 
 ## Version claude-haiku-reco
 
-J'ai aimé : "Elle louche tellement que ses yeux se croisent." J'ai essayé de faire pareil. Et Nono qui remet ses chaussettes à la fin, c'est normal ça, c'est ce qu'on fait.
-J'ai pas trop aimé : Au début y'a "elle court comme un fou", mais Juju c'est une fille, ça m'a embêté.
-Ce que je retiens : Juju qui louche et qui ose même plus respirer. Et "l'air sent un peu différent. C'est tout."
-Questions : Pourquoi l'air sent différent ? Qu'est-ce qui a changé ?
+J'ai aimé : Nono qui dit "on a attrape juste" — c'est ma phrase preferee de toutes les histoires ! C'est pas tout a fait "on a gagne" et c'est pas "on a rate" et c'est la bonne chose.
+J'ai pas trop aimé : "Quelque chose le traverse" — je comprends pas ce qui traverse Nono. C'est quoi le truc qui traverse ?
+Ce que je retiens : "On a attrape juste." Je veux dire ca a quelqu'un.
+Questions : C'est quoi qui traverse Nono ? C'est le vent ?
 
 ---
 
 ## Version deepseek-def
 
-J'ai aimé : Y'a beaucoup de dialogue, j'aimais bien entendre tout le monde parler. Et "on l'attrape ?" à la fin avec le papillon jaune, c'est rigolo de recommencer.
-J'ai pas trop aimé : Des fois y'a trop de répliques qui se suivent et j'avais du mal à savoir qui dit quoi. Et Nono dit "J'ai attendu" pour expliquer, moi j'aurais voulu qu'il explique pas.
-Ce que je retiens : "J'ai attendu", même si j'aurais voulu que ce soit pas dit. Et Juju qui dit "t'es là" à Nono quand elle se rattrape.
-Questions : Pourquoi la libellule elle vient quand on attend ?
+J'ai aimé : Les surnoms Fouine, Criquet, Caillou — c'est drole ! Caillou ca fait penser a quelqu'un qui bouge pas, comme Nono. Criquet ca saute, comme Juju. C'est bien trouve.
+J'ai pas trop aimé : Mais apres j'etais perdu parce que je savais plus si c'est Juju ou Criquet. Deux noms pour la meme personne c'est trop.
+Ce que je retiens : Caillou qui dit "oui, libre" a la fin. Et l'arc-en-ciel sur les ailes.
+Questions : Pourquoi ils ont deux noms ? Juju c'est plus son vrai nom ?
 
 ---
 
 ## Version deepseek-reco
 
-J'ai aimé : "Nono immobile comme un petit arbre tout neuf." C'est une belle image ça. Et la chanson de Juju qui s'arrête "même pas la fin du mot". Et Juju qui crie "T'AS VU CA ?" à la fin, c'est drôle.
-J'ai pas trop aimé : Y'a un passage où Juju sent son coeur qui tape "et c'est même pas la course, c'est autre chose", c'est un peu grand pour moi ça.
-Ce que je retiens : Nono comme un petit arbre tout neuf. Et Juju qui touche le nez de Nono à la fin pour voir si quelque chose reste.
-Questions : Pourquoi son coeur tape alors ?
+J'ai aimé : Nono qui appelle Juju "Jujube" a la fin — c'est tendre ! Et Wex qui dit "elle est venue" tout emerveille. Et Juju qui s'affale dans l'herbe en souriant.
+J'ai pas trop aimé : "Ma puce" dit par Wex — Wex c'est pas le papa. Ca m'a etonne.
+Ce que je retiens : "Jolie, hein, Jujube ?" dit par Nono. Et la libellule qui passe juste devant le nez de Juju.
+Questions : Wex c'est le grand frere ? Pourquoi il dit "ma puce" ?
 
 ---
 
 ## Version grok-def
 
-J'ai aimé : C'est calme et ça va pas trop vite. J'aimais bien que Wex lance des cailloux qui rebondissent sur l'eau. Et la fin c'est très court, on dirait que l'histoire respire.
-J'ai pas trop aimé : Y'a pas beaucoup de moments drôles, c'était un peu sérieux.
-Ce que je retiens : "Un battement de silence." Et Juju qui serre encore la main de Nono après que la libellule est partie.
-Questions : C'est quoi un battement de silence ?
+J'ai aimé : L'histoire c'est dans le corps de Nono. Je sens ses pieds dans l'eau tiede et ses orteils dans l'herbe. Ca c'est mon histoire preferee pour sentir les choses.
+J'ai pas trop aimé : La fin quand Juju dit "on recommence le jeu de l'epouvantail" — j'ai pas envie de recommencer, je veux rester dans le moment tranquille.
+Ce que je retiens : Les pieds de Nono dans l'eau qui le lechent. Et la main de Juju chaude sur le bras de Nono.
+Questions : Nono il a les pieds froids ou chauds ? Les deux ?
 
 ---
 
 ## Version grok-reco
 
-J'ai aimé : "Il souriait juste un tout petit peu, comme quand le soleil chauffe les pierres." J'ai compris ça, c'est une chaleur douce. Et Wex qui s'assoit dans l'herbe sans savoir pourquoi à la fin, moi je fais ça aussi.
-J'ai pas trop aimé : Rien que j'aimais pas trop. C'était bien.
-Ce que je retiens : Le sourire de Nono comme quand le soleil chauffe les pierres. Et les trois qui restent à regarder le ciel vide, les joues rouges.
-Questions : Les joues elles deviennent rouges pourquoi ? Parce qu'ils ont couru ?
+J'ai aimé : Juju qui pose sa joue sur le dos de Nono — c'est mon moment prefere de toutes les histoires. Tres doux. Et Wex qui sourit sans rien ajouter, c'est parfait pour Wex.
+J'ai pas trop aimé : La libellule elle est rouge au debut, puis bleue-verte dans d'autres histoires. La, elle est rouge. Ca m'a embrouille entre les histoires.
+Ce que je retiens : La joue de Juju sur le dos de Nono. Et "l'herbe qui remue comme si rien ne s'etait passe et que tout continuait en meme temps."
+Questions : La libellule elle change de couleur des fois ? Ou c'est une autre libellule ?
 
 ---
 
 ## Version kimi-reco
 
-J'ai aimé : "Demain je fais épouvantail aussi." C'est ce que j'aurais dit moi. Et les têtards qui font des chatouilles entre les orteils de Nono, j'aurais voulu essayer.
-J'ai pas trop aimé : Le début avec la poule d'eau et les bourdons et tout, c'est beaucoup de choses à imaginer en même temps.
-Ce que je retiens : Juju qui dit "demain je fais épouvantail aussi." Et Nono avec les pieds dans l'eau et les têtards.
-Questions : Les têtards ça chatouille vraiment ?
+J'ai aimé : Les enfants qui courent en criant "fusee verte ! voiture de course !" — j'aurais crie ca aussi. Et le silence qui grandit a la fin, j'entends le silence.
+J'ai pas trop aimé : Trop de "dit Juju / dit Wex / dit Nono" a la fin, ca ressemble a une liste. Et les têtards qui dansent c'est un peu bizarre, les tetards ca danse pas vraiment.
+Ce que je retiens : Le silence qui grandit. Et "elle nous a fait un bisou d'aile !"
+Questions : Les tetards ils dansent vraiment ou c'est pour de rire ?
 
 ---
 
 ## Version kimi-k26-instant
 
-J'ai aimé : C'est rapide et coupé, comme des petits morceaux. J'aimais bien "Paf. Angle droit. Monte tout droit. Glisse sur l'eau, le ventre qui frôle, zou, repart." On sent que la libellule va vite. Et Nono qui tend la main vers un têtard à la fin, comme s'il recommençait.
-J'ai pas trop aimé : Y'a des moments où il se passe beaucoup de choses très vite et j'arrivais plus à suivre.
-Ce que je retiens : "Paf. Angle droit." Et Nono qui attend encore à la fin avec sa main tendue.
-Questions : Il va attraper le têtard ?
+J'ai aimé : "Gagné — approchee" c'est tres beau, cette dispute douce entre Juju et Wex sur le mot. Et "une Juju muette, une Juju suspendue" — c'est marrant parce que c'est vrai Juju elle parle tout le temps.
+J'ai pas trop aimé : Le debut avec beaucoup de dialogue, j'ai mis du temps a savoir ou on est. C'est quoi l'endroit ? C'est quoi la saison ? J'ai cherche.
+Ce que je retiens : "Gagné" / "Approchee" — ce mini-debat de deux mots. Et le bourdon qui ressort de l'arbre a la fin comme si rien s'etait passe.
+Questions : Pourquoi le bourdon il etait dans le trou d'arbre ? Il avait peur ?
 
 ---
 
 ## Version kimi-k26-thinking
 
-J'ai pas trop aimé : Trop de "dit Wex" "dit Juju" "dit Wex" tout le temps. Y'a un moment où Wex dit quatre choses de suite sur les ailes et la couleur, c'est bizarre. J'arrêtais pas de me demander "mais là c'est qui qui parle ?". J'étais fatigué.
-J'ai aimé : Juju qui louche et qui demande "elle bat des cils ?", c'est drôle comme question. Et la fin avec les trois les orteils dans la mousse.
-Ce que je retiens : Juju qui louche et qui demande si la libellule bat des cils.
-Questions : Les libellules elles ont des cils ?
+J'ai aimé : Les chuchotements a la fin — tout le monde chuchote, meme Wex qui parle toujours. Ca m'a donne envie de chuchoter aussi. Et "vroum" qui revient a la fin c'est marrant.
+J'ai pas trop aimé : Le debut avec trop de points d'exclamation et trop de voix en meme temps. J'ai perdu qui dit quoi. Et le dialogue sans "dit X" c'est dur.
+Ce que je retiens : Tous qui chuchotent en meme temps. Et "bye bye dit Nono" — Nono il dit rarement des choses alors quand il dit quelque chose c'est special.
+Questions : Nono il dit "bye bye" pour vrai ou c'est dans sa tete ?
 
 ---
 
 ## Version kimi-reco-guide
 
-J'ai aimé : "Bloublou !" au début, c'est un mot rigolo. Et les chaussures de Nono posées "bien droits, comme deux petits bateaux amarrés", j'ai trouvé ça beau. Et Juju qui dit "Gagné. Pas moi. Toi." c'est gentil.
-J'ai pas trop aimé : Y'a des phrases longues avec beaucoup de virgules dedans, des fois je perdais le fil.
-Ce que je retiens : Les chaussures comme deux petits bateaux. Et "Gagné. Pas moi. Toi."
-Questions : Pourquoi la libellule elle choisit Nono ? Elle aime les gens calmes ?
+J'ai aimé : "Gagnee" dit par Juju, "relachee" dit par Nono — deux mots qui veulent pas dire la meme chose. Et "encore ? — attends — on attend" a la fin, c'est la vraie vie avec les enfants.
+J'ai pas trop aimé : Un peu trop de dialogue sans qu'il se passe vraiment quelque chose au debut. Et Nono qui dit "ca fait fuir" sans vraiment l'expliquer — j'ai mis du temps a comprendre qu'il parle de l'epouvantail.
+Ce que je retiens : "Gagnee — relachee." Et la fin ou ils attendent sans savoir combien de temps.
+Questions : Combien de temps ils attendent ? Une minute ? Toute la journee ?
 
 ---
 
-## Version _ETALON-kimi-reco-guide-v2
+## Version _ETALON-kimi-reco-guide-v2 (hors competition)
 
-J'ai aimé : Y'a un papa têtard. J'aimais Juju qui dit "si c'est un papa je l'avais dit" même si c'est pas vrai. Et la chanson "les têtards les têtards ils ont pas de pat-tes" c'est drôle. Et le "plip" minuscule du têtard au bon moment.
-J'ai pas trop aimé : La libellule elle se pose pas sur la main de Nono dans cette version, elle reste juste sur le roseau. J'étais un peu déçu.
-Ce que je retiens : "Les têtards ils ont pas de pat-tes." Et Juju avec un genou plein de terre et elle sait pas.
-Questions : Les têtards ils ont vraiment pas de pattes ? Et après ils en ont ?
+J'ai aimé : Juju qui enleve ses chaussures et les jette derriere elle — une qui atterrit semelle en l'air. J'ai ri. Et la chansonnette sur les tetards "ils ont pas de pat-tes" — c'est une vraie chanson d'enfant. Et Nono qui range ses chaussettes dans ses chaussures, bien range, alors que Juju c'est n'importe comment.
+J'ai pas trop aimé : La libellule elle se pose pas vraiment sur Nono, elle reste sur le roseau. Ca m'a un peu decu. Et la fin est tres douce mais il ne se passe plus grand chose.
+Ce que je retiens : La chaussette rangee dans la chaussure. Et Juju qui respire fort comme si elle avait retenu son souffle.
+Questions : Pourquoi Nono range ses chaussettes si bien ? C'est son habitude ?
 
 ---
 
-## CLASSEMENT G-A2
+## Version _ETALON-deepseek-reco-v3 (hors competition)
 
-### Top 3
+J'ai aimé : Juju qui louche parce que la libellule est trop pres de son nez — j'ai rit tres fort ! Et Nono qui touche le bout du nez de Juju avec son doigt et dit "gagne" — c'est une surprise que j'attendais pas du tout.
+J'ai pas trop aimé : L'histoire est longue. A la moitie j'ai commence a me demander quand la libellule arrive. Mais apres elle arrive et c'est bien.
+Ce que je retiens : Juju qui louche. Et "T'AS VU CA ? Elle etait SUR SON NEZ !" — les majuscules ca crie et j'entends Juju crier.
+Questions : Pourquoi Nono il touche le nez de Juju ? C'est pas la libellule qui gagne, c'est le nez de Juju ?
 
-1. **_ETALON-kimi-reco-guide-v2** — Le papa têtard. La chanson avec les pattes. Le "plip". C'est l'histoire qui me donnait le plus envie de rester au bord de l'étang. Les personnages font des choses normales d'enfants, pas juste courir après la libellule.
+---
 
-2. **kimi-reco-guide** — "Bloublou." Les chaussures-bateaux. "Gagné. Pas moi. Toi." C'est la version où j'ai le plus entendu les personnages parler comme de vrais enfants.
+## CLASSEMENT — Top 3 candidats (14 versions, hors etalons)
 
-3. **grok-reco** — Le sourire comme le soleil qui chauffe les pierres. Wex qui s'assoit sans savoir pourquoi. Rien de trop. C'est calme et ça me plaisait.
+**TOP 1 : claude-haiku-reco**
+"On a attrape juste." Cette phrase je veux la garder. L'histoire est courte, il se passe des choses dans le corps de Nono, et la fin c'est pas trop grand ni trop petit. Je la redemanderai ce soir.
 
-### Flop
+**TOP 2 : grok-reco**
+La joue de Juju sur le dos de Nono. Wex qui sourit sans parler. Et l'herbe qui continue. Tres doux, tres vrai. J'aurais voulu que ca dure encore un peu.
 
-**kimi-k26-thinking** — Trop de "dit Wex / dit Juju / dit Wex" tout le temps. J'étais fatigué avant la fin. Je voulais qu'on s'arrête.
+**TOP 3 : kimi-k26-instant**
+"Gagné" contre "approchee" — ce mini-debat m'a accroche. Nono qui dit rarement quelque chose alors quand il parle c'est important. Et le bourdon dans l'arbre qui ressort a la fin.
 
-### Version que je voudrais réentendre ce soir
+---
 
-**_ETALON-kimi-reco-guide-v2** — parce que les têtards ils ont pas de pattes et je veux savoir si c'est vrai.
+**FLOP : deepseek-def (les surnoms Fouine/Criquet/Caillou)**
+J'ai aime les surnoms au debut mais apres j'etais perdu entre les deux noms. Je savais pas si c'etait Juju ou Criquet. Ca m'a fatigue.
+
+---
+
+## Position des etalons
+
+**_ETALON-deepseek-reco-v3** : Elle serait dans mon top, entre la 2e et la 3e place. Juju qui louche c'est ma meilleure image de toutes. Mais l'histoire est longue.
+
+**_ETALON-kimi-reco-guide-v2** : Elle serait en 4e ou 5e place. La chaussette rangee et la chansonnette c'est tres bien. Mais la libellule elle se pose pas vraiment et ca me manque.
+
+---
+
+## Version redemandee ce soir
+
+**claude-haiku-reco** — parce que je veux reentendre "on a attrape juste" et voir si je comprends encore mieux ce que Nono voulait dire.

@@ -1,284 +1,311 @@
-# Lecteur Temoin — DMF-B
-## Dyade Maman + Fille 6-7 ans (vive, aime le caractere des persos)
+---
+profil: DMF-B
+dyade: maman + fille 6-7 ans (vive, aime le caractère des persos)
+date: 2026-05-17
+story: 002-libellule-resonance
+vague: 4
+---
 
-Profil panel : DMF-B (tranche B 6-7 ans)
-Maman : exigeante sur la qualite d'ecriture, juge l'oral, prefere les fins qui laissent de la place
-Fille : vive, compare aux histoires qu'elle connait, accrochee par les personnages qui font des choses memorables, reagit aux taquineries et aux personnalites marquees
-Dynamique : duo sensible aux atmospheres — mais la fille B7 est plus critique que la A, elle decroche si ca n'avance pas
+# Dyade DMF-B — Maman + Fille 6-7 ans
+
+> Profil dyade : maman exigeante sur la qualité d'écriture, préfère les fins ouvertes. Fille vive, 6-7 ans (tranche B), sensible au caractère des personnages, compare avec ce qu'elle connaît. Réagit aux taquineries et aux prises de décision des persos. Cette fiche couvre les 14 candidats + position des 2 étalons hors-compétition.
 
 ---
 
 ## Version claude-opus-def
 
-### Voix Fille
-J'ai aime : "Elle se moque de nous !" — Wex qui dit ca, c'est trop drole. Et Juju qui taquine en courant sans s'arreter, meme quand elle bute sur le roseau.
-J'ai pas compris : "virgulent" — les tetards qui virgulent, c'est quoi ca ?
-J'ai demande pendant la lecture : "Maman, elle est arretee vraiment la libellule dans l'air ?"
-Ce que je retiens : Nono qui enleve ses chaussettes une par une. Juju qui louche.
+### Voix Enfant
+J'ai aimé : quand Juju elle dit "on dirait un épouvantail" en courant — elle dit ça sans s'arrêter, c'est trop drôle. Et la boue qui fait "flotch", maman elle a dit "flotch" avec sa voix grave.
+J'ai pas compris : "quelque chose d'autre, qu'on ne savait pas nommer" à la fin — j'ai demandé c'était quoi.
+J'ai demandé pendant la lecture : "C'est quoi qu'on sent qu'on sait pas nommer ?"
+Ce que je retiens : les pieds de Juju dans la boue qui font flotch. La libellule posée sur l'épaule de Nono avec les ailes "comme deux gouttes de verre".
 
-### Voix Maman
-Ce qui a bien fonctionne a la lecture : Les phrases courtes du milieu — "Attends, dit-il, tout doux." — ca s'entend bien. Le rythme global est fluide, les dialogues sonnent juste. La chanson qui reprend "la ou elle s'etait arretee" a la fin, c'est une belle image qu'on peut porter a voix haute.
-Moments d'accroche / decroche : Accroche forte sur la vanne "l'epouvantail, tu plantes des carottes". Ma fille a ri. Leger flottement sur le debut — l'etang qui dort, les tetards qui virgulent — c'est beau mais ca retarde l'entree dans l'action pour un enfant de 6 ans.
-Vocabulaire problematique : "virgulent" — j'ai du m'arreter. "Limpide" aussi, j'ai glose vite.
-Rythme : fluide
-Note sur la fin : Tres bonne. La chanson qui reprend exactement ou elle s'etait cassee — c'est juste. Pas de morale, juste la vie qui repart. Ma fille a dit "c'est fini ?" avec une voix deçue, ce qui est bon signe.
+### Voix Parent
+Ce qui a bien fonctionné à la lecture : le rythme est très bien maîtrisé — les phrases courtes au moment de la course, puis un long souffle suspendu pour le Ten. "zip" et "frrt" sont jouables naturellement à voix haute. Le motif "personne ne va tout droit ici" de Juju en écho silencieux est savoureux : j'ai senti que ma fille ne l'a pas vu venir, mais elle a souri quand la libellule est venue sur Nono.
+Moments où mon enfant s'est accroché / a décroché : elle s'est penchée en avant au moment où Nono pose son pied dans la boue "à côté du sien, exprès". Elle a décroché sur la note de fin — "quelque chose d'autre, qu'on ne savait pas nommer" était trop abstrait pour elle.
+Vocabulaire ou tournure qui a posé problème : "la vase tiède" (j'ai dû expliquer "vase"). "il fronça le nez" — aucun problème.
+Rythme de la lecture à voix haute : parfait
+Note sur la fin : la fin abstraite "qu'on ne savait pas nommer" est belle sur le papier mais elle ferme mal à l'oral pour une enfant de 6-7 ans — elle a besoin d'une image concrète, pas d'une abstraction. J'ai dû ajouter une phrase de ma poche, ce que je n'aurais pas voulu faire.
 
 ---
 
 ## Version claude-opus-reco
 
-### Voix Fille
-J'ai aime : "Elle est trop rapide pour toi, pas pour moi !" — Juju dit ca en passant a fond, c'est parfait. Le "Plouf" du caillou a la fin.
-J'ai pas compris : "elle tanguait" — j'ai demande ce que ca voulait dire.
-J'ai demande pendant la lecture : "Pourquoi elle raconte en je ?"
-Ce que je retiens : Juju qui louche sur la libellule devant son nez. Le "Bon. A l'eau, toi." a la fin, c'est trop Juju.
+### Voix Enfant
+J'ai aimé : "Elle triche" — ça c'est Juju à fond, elle fait comme moi quand mon frère gagne. Et "Bouge pas, souffle-t-elle, minuscule" — le mot "minuscule" après tout le bruit, c'était rigolo à entendre.
+J'ai pas compris : "elle vole pas droit, elle décide après" — j'ai demandé si la libellule elle réfléchissait après.
+J'ai demandé pendant la lecture : "Les libellules elles pensent ?"
+Ce que je retiens : "Bouge pas" / "Je bouge pas" — les deux souffles, j'aurais voulu les dire moi-même. Le mot "Tenue" à la fin, si court.
 
-### Voix Maman
-Ce qui a bien fonctionne a la lecture : Le POV premiere personne est ambitieux et tient bien. L'in medias res — on est dans les jambes de Juju avant de savoir ou on est — est tres efficace a l'oral. Les onomatopees sont rares et bien placees. "Mon mot" coupe en pleine syllabe ("raci—") est une trouvaille sonore.
-Moments d'accroche / decroche : Ma fille a adhere immediatement au "je" et s'est projetee. Accroche maintenue jusqu'a la fin. Tres legere hesitation sur la description du gros bourdon — une image de trop dans le flot.
-Vocabulaire problematique : "tanguait" — j'ai explique. "in medias res" n'est pas dans le texte, mais le dispositif peut desorienter si l'enfant n'est pas habitue.
-Rythme : parfait
-Note sur la fin : Excellente. "Comme si de rien n'etait" sonne bien a voix haute. Le "Plouf" final repart sur l'energie de Juju sans rien expliquer. Ma fille a voulu savoir "et les tetards ils ont eu peur ?" — elle etait encore dedans.
+### Voix Parent
+Ce qui a bien fonctionné à la lecture : l'ouverture sur le cri "Ratée !" est un démarrage à voix haute formidable — ma fille a sursauté. Le rire "avec les épaules" de Nono est très visuel, j'ai pu jouer avec les intonations. Le dialogue "Bouge pas / Je bouge pas encore plus petit" est miraculeux à lire à deux voix : ma fille a voulu le répéter.
+Moments où mon enfant s'est accroché / a décroché : accrochée sur toute la séquence d'approche — elle a retenu son souffle avec Juju, c'était visible. Légère pause mentale sur "le monde indifférent à qui a eu raison" dans ma tête (note d'intention — pas dans le texte, bien sûr).
+Vocabulaire ou tournure qui a posé problème : "maugréait" dans la note d'intention (non dans le texte). Dans le texte : aucun.
+Rythme de la lecture à voix haute : parfait
+Note sur la fin : "Tenue" — un seul mot pour clore. C'est fort, ça sonne comme une petite victoire privée. Ma fille a demandé si Juju avait gagné, j'ai dit "presque", elle a souri. Fin idéale pour ce profil.
 
 ---
 
 ## Version claude-sonnet-def
 
-### Voix Fille
-J'ai aime : "T'as des limaces dans les baskets ?" — j'ai repete ca trois fois. Et Wex qui reste plante la, bouche ouverte, apres que tout le monde est reparti.
-J'ai pas compris : "indifferents a tout" — pourquoi les tetards ils s'en fichent ?
-J'ai demande pendant la lecture : "Elle repart en courant a la fin ?"
-Ce que je retiens : La chanson "quelque chose quelque chose" qui recommence. Wex bouche ouverte, tete penchee, tout seul a la fin.
+### Voix Enfant
+J'ai aimé : "C'est le meilleur plouf de l'étang" / "L'étang est d'accord" — j'ai rigolé. Nono qui dit "L'étang est d'accord" ça sonne bizarre et drôle.
+J'ai pas compris : "L'étang n'a rien remarqué" à la fin — j'ai demandé pourquoi l'étang il remarquait rien.
+J'ai demandé pendant la lecture : "Pourquoi l'étang il remarque rien ?"
+Ce que je retiens : "L'étang est d'accord" de Nono. La libellule qui "tourne la tête — si c'est une tête — vers elle" : j'ai fait répéter maman deux fois cette phrase.
 
-### Voix Maman
-Ce qui a bien fonctionne a la lecture : La chanson sans paroles de Juju en refrain est une idee tres forte — on peut la moduler a voix haute a chaque retour. Le couple "s'arrête net / reprend la ou elle l'avait laissee" cree une boucle sensorielle percutante. L'odeur en ouverture pose le lieu sans l'installer longuement.
-Moments d'accroche / decroche : Accroche forte sur "les limaces dans les baskets". Tres belle accroche sur Wex a la fin — ma fille a demande "il reste la tout seul ?" avec une voix inquiete, ce qui dit que le personnage avait du poids pour elle.
-Vocabulaire problematique : "royalement" — j'ai du gloser. Le titre "La libellule impossible" est un clin d'oeil d'adulte.
-Rythme : fluide
-Note sur la fin : Forte. Wex qui reste plante la, tete penchee, apres que tout le monde est reparti — c'est le meilleur ketsu du lot. Ce silence de Wex dit plus que n'importe quelle conclusion.
+### Voix Parent
+Ce qui a bien fonctionné à la lecture : les trois premières répliques sur les cailloux sont un bijou d'oral — courtes, rhythmées, naturelles. Le "si c'est une tête" est une perle d'humour discret qui fait sourire le parent sans que l'enfant soit largué. La poule d'eau qui revient à la fin comme boucle est élégante.
+Moments où mon enfant s'est accroché / a décroché : elle a ri aux éclats sur "L'étang est d'accord" — inattendu. Décroché très légèrement sur la fin car "L'étang n'a rien remarqué" est une image froide et abstraite pour 6-7 ans.
+Vocabulaire ou tournure qui a posé problème : "Sa voix est normale. Pas un cri. Juste ça." — j'ai dû re-expliquer pourquoi c'est la description de la voix.
+Rythme de la lecture à voix haute : parfait
+Note sur la fin : belle mais légèrement froide. Mon enfant a voulu savoir si Juju était contente — la fin ne le dit pas. Pour une fille de 6-7 ans qui aime les persos forts, un dernier geste de Juju aurait aidé.
 
 ---
 
 ## Version claude-sonnet-reco
 
-### Voix Fille
-J'ai aime : "Elle s'en fiche de toi !" — et Wex qui rit parce que c'est vrai. Et les tetes des tadards a la fin qui "continuent de nager, indifferents a tout".
-J'ai pas compris : "comme quand on coupe la musique" — j'ai compris mais j'ai demande quand meme.
-J'ai demande pendant la lecture : rien cette fois.
-Ce que je retiens : Nono les pieds dans l'herbe, les mains toujours ouvertes a la fin. Juju qui explose de rire.
+### Voix Enfant
+J'ai aimé : "C'est une voiture de course, mais sans roues" — j'ai crié "MAMAN elle dit ça pour de vrai dans l'histoire ?!". Et à la fin "T'avais décidé ça depuis le début, toi" / "Non. Vraiment pas." — j'ai adoré que Nono il dise vraiment pas.
+J'ai pas compris : "ailes comme du plastique froissé" — j'ai demandé si les libellules c'était en plastique.
+J'ai demandé pendant la lecture : "Les ailes c'est vraiment comme du plastique ?"
+Ce que je retiens : "Une voiture de course mais sans roues." Le "Vraiment pas" de Nono — il est trop honnête ce garçon.
 
-### Voix Maman
-Ce qui a bien fonctionne a la lecture : Tres epure. Les phrases nominales de Nono — "Chaussures, main ouverte, Attends. Puis Gagné." — sont ideales a voix haute, on peut y mettre toute la lenteur necessaire. La chanson coupee par la racine (accident physique, pas decision) est un beau dispositif. Wex qui fait "une bouche ronde sans son" est une image d'enfant tres reelle.
-Moments d'accroche / decroche : Leger decroche sur "quelque chose de bizarre dans tout ca — un epouvantail fait fuir" — le raisonnement de Wex est un peu plus introspectif ici, moins comique.
-Vocabulaire problematique : aucun bloquant.
-Rythme : parfait
-Note sur la fin : Juste. Les tetards qui "continuent de nager, indifferents a tout" — cette derniere image detend bien. Pas de fausse profondeur. Nono les mains toujours ouvertes est un beau detail.
+### Voix Parent
+Ce qui a bien fonctionné à la lecture : "plastique froissé" est une surprise sensorielle jouissive à lire à voix haute — inattendu, juste, enfantin. Le dialogue final "T'avais décidé ça" / "Non. Vraiment pas." est le meilleur échange de tout le panel pour incarner Nono : sobre, vrai, légèrement drôle. Ma fille l'a redemandé.
+Moments où mon enfant s'est accroché / a décroché : accrochée jusqu'au bout. Légère incompréhension sur "plastique froissé" mais elle a accepté l'image sans que ça casse le rythme.
+Vocabulaire ou tournure qui a posé problème : "plastique froissé" — nécessite une seconde pour passer, mais elle passe.
+Rythme de la lecture à voix haute : parfait
+Note sur la fin : le trio qui reste "à regarder l'endroit où elle a disparu" est une image ouverte et juste. Le coup d'épaule de Juju dit tout de sa personnalité sans explication. Une des fins les plus réussies du panel pour ce profil.
 
 ---
 
 ## Version claude-haiku-def
 
-### Voix Fille
-J'ai aime : "orange flamboyant" — la libellule orange, c'est different des autres. Wex qui dit juste "oh" sans voix.
-J'ai pas compris : "Un peu de temps" — le debut m'a perdue, j'ai pas compris ou on etait.
-J'ai demande pendant la lecture : "C'est quoi la mare ?"
-Ce que je retiens : Wex "Yeux ecarquilles. Tete penchee. Bouche ronde. Oh." — elle a mime ca.
+### Voix Enfant
+J'ai aimé : Nono "comme un arbre" — j'ai aimé l'idée qu'il devenait un arbre. Et "on l'a eue / mais pas vraiment" — Juju elle sait qu'on l'a pas eue, ça c'est malin.
+J'ai pas compris : "fendre une certitude" — j'ai pas compris ce mot.
+J'ai demandé pendant la lecture : "C'est quoi une certitude ?"
+Ce que je retiens : Nono "comme s'il venait de devenir un poteau, un arbre, une chose enracinée". Juju qui comprend toute seule qu'on l'a "juste vue de près".
 
-### Voix Maman
-Ce qui a bien fonctionne a la lecture : La sequence "Tout devient immobile" avec les personnages figes est un beau temps fort. "Il y a quelque chose dans l'air qui a change. Pas un mot pour le dire." — cette conclusion evite la morale proprement.
-Moments d'accroche / decroche : Debut haché — "Roseaux montent droit. Herbe verte, mousse epaisse." — le style telegraphique ne sert pas la lecture a voix haute, ca sonne liste plus que recit. Ma fille a eu du mal a entrer dans l'histoire. Le milieu se rattrape.
-Vocabulaire problematique : "mare" (j'ai dit "etang"). Le style staccato du debut necessite d'adapter l'intonation.
-Rythme : hache (debut), puis fluide
-Note sur la fin : Correcte. L'image finale reste un peu dans le dit ("il y a quelque chose") plutot que dans le senti. On aurait aime que ce soit plus incarne.
+### Voix Parent
+Ce qui a bien fonctionné à la lecture : "elle fend l'air comme on fend une certitude" est une belle phrase d'adulte qui glisse sans accrocher. "comme s'il venait de devenir un poteau, un arbre, une chose enracinée" est un climax physique intéressant à voix haute. La conscience de Juju sur "on l'a pas eue / on l'a juste vue de près" est touchante.
+Moments où mon enfant s'est accroché / a décroché : accrochée sur "Attends. Juste ça. Attends" — la répétition l'a arrêtée. Décroché sur "fendre une certitude" (vocabulaire adulte).
+Vocabulaire ou tournure qui a posé problème : "certitude" nécessite un arrêt. "ouïe" dans la note d'intention (hors texte — pas de problème).
+Rythme de la lecture à voix haute : fluide
+Note sur la fin : "L'étang reprend son silence" + "Nono ne dit rien. Puis il dit : Ouais." — le "Ouais" de Nono est délicieux. Fin très correcte mais un peu moins marquée que les meilleures du panel.
 
 ---
 
 ## Version claude-haiku-reco
 
-### Voix Fille
-J'ai aime : "elle louche tellement que ses yeux se croisent" — j'ai fait pareil ! Et "Nono remet ses chaussettes. Wex le regarde, vaguement, avant de recommencer a chercher des cailloux."
-J'ai pas compris : "vaguement" — c'est quoi vaguement ?
-J'ai demande pendant la lecture : "Pourquoi elle dit rien de beau sur la libellule a la fin ?"
-Ce que je retiens : Juju qui rit "sans faire de bruit". La libellule "rose qui traverse l'air en carres".
+### Voix Enfant
+J'ai aimé : "On a attrapé juste" — j'ai pas compris tout de suite et puis maman a relu et j'ai dit "c'est un peu comme quand on gagne sans gagner ?". Et "vivante comme le souffle d'un animal sauvage qui s'endort" — j'ai demandé c'était quoi l'animal.
+J'ai pas compris : "vivante comme le souffle d'un animal sauvage qui s'endort".
+J'ai demandé pendant la lecture : "Quel animal il dort ?"
+Ce que je retiens : "On a attrapé juste." J'ai répété ça trois fois en rentrant.
 
-### Voix Maman
-Ce qui a bien fonctionne a la lecture : Legerte de ton, phrase accessible, le "Rien n'a change. Et puis si. Quelque chose." en fin est beau et court. "Juste les yeux qui changent" pour decrire le sourire de Nono est une formule reussie.
-Moments d'accroche / decroche : "La libellule rose qui traverse l'air en carres" — la libellule rose surprend, les carres aussi (pour decrire les angles droits), j'ai du adapter. Sinon ma fille a suivi sans decrochage.
-Vocabulaire problematique : "vaguement" — non bloquant mais j'ai explique. "Rien n'a change. Et puis si." demande un leger temps d'adaptation a voix haute.
-Rythme : fluide
-Note sur la fin : Simple et efficace. Le "L'air sent un peu different. C'est tout." fonctionne bien a voix haute. Ma fille a dit "c'est bien ca" avec conviction, signe que c'etait juste pour elle.
-
----
-
-## Version deepseek-def
-
-### Voix Fille
-J'ai aime : "Presque, c'est pas assez, Nono !" — Juju qui taquine vraiment. Et "Comment t'as fait ?" "J'ai attendu." — c'est bien comme echange a la fin.
-J'ai pas compris : pourquoi ils repartent courir apres un papillon a la fin ?
-J'ai demande pendant la lecture : "Ils ont deja attrape la libellule ?"
-Ce que je retiens : Les "Merci Nono" / "Je te tiens" — c'est tres gentil.
-
-### Voix Maman
-Ce qui a bien fonctionne a la lecture : Les dialogues sont vivants et de vrai enfants. La question "Comment t'as fait ?" / "J'ai attendu." est la seule version qui donne une replique finale aussi claire — accessible, pas explicative.
-Moments d'accroche / decroche : La sequence "T'as failli tomber / Ouais t'es la / Je te tiens / Merci Nono" — ca tombe dans la mignonnerie explicite. La tendresse de Juju devient visible dans les mots alors qu'elle devrait rester dans les gestes. Ma fille a trouve ca "trop gentil", ce qui n'est pas un compliment de sa part. La fin avec le papillon relance bien l'energie mais sonne un peu bricole.
-Vocabulaire problematique : aucun bloquant.
-Rythme : fluide
-Note sur la fin : Trop fermee. "Il est fort, Nono." / "Tres fort." — la conclusion nominale affaiblit ce que le reste de l'histoire montrait sans le dire. Le "J'ai attendu." sauve la fin mais vient un peu tard.
-
----
-
-## Version deepseek-reco
-
-### Voix Fille
-J'ai aime : "T'as des limaces dans les baskets ou quoi, Wexou ?" — "Wexou" c'est trop drole ! Et Juju qui crie "T'AS VU CA ? Elle etait SUR SON NEZ !" apres, j'adore.
-J'ai pas compris : "pas son genre" — c'est pas le genre de Juju de s'arreter ?
-J'ai demande pendant la lecture : "Elle l'a pas lache sa main ?"
-Ce que je retiens : Juju qui tient encore la main de Nono apres que la libellule soit partie. Le "Wexou".
-
-### Voix Maman
-Ce qui a bien fonctionne a la lecture : La version la plus dynamique du lot. L'in medias res "Elle est LA !" claque bien. Les dialogues ont du rythme et de l'humour. "Wexou" est un petit truc d'enfant tout a fait juste. Le cri final "T'AS VU CA ?" restitue parfaitement l'energie de Juju sans rien expliquer.
-Moments d'accroche / decroche : La description de la chanson de Juju ("la la la petite bete vole vite-vite-vite comme une aile de lumiere la la") est un peu longue a voix haute — j'ai du la lire vite pour ne pas perdre le rythme. "Juju sent son coeur qui tape dans sa poitrine et c'est meme pas la course, c'est autre chose" — c'est joli mais ca commente l'interieur de Juju, ce qui tranche avec le reste.
-Vocabulaire problematique : aucun bloquant.
-Rythme : fluide
-Note sur la fin : Tres bonne energie. "On la refait ? Moi je veux la refaire !" — c'est parfaitement Juju. Nono qui attrape ses chaussures pieds nus en souriant : belle image finale, tout en corps.
-
----
-
-## Version grok-def
-
-### Voix Fille
-J'ai aime : "Tu joues a cache-cache ou quoi ?" — la libellule qui joue, c'est bien. Juju qui serre encore la main de Nono apres.
-J'ai pas compris : "les paupières qui battaient" — pourquoi Wex cligne des yeux ?
-J'ai demande pendant la lecture : rien.
-Ce que je retiens : La libellule qui descend "toute seule" sur le doigt de Nono. Wex et son petit "oh" reste dans la gorge.
-
-### Voix Maman
-Ce qui a bien fonctionne a la lecture : Sobre et propre. Chaque geste de Nono est la, rien de superflu. La libellule descend "toute seule" — ce choix simple est bien. "Les roseaux bruissèrent une fois, puis l'etang redevint calme" : belle cloture sonore.
-Moments d'accroche / decroche : Un peu court pour une fille de 6-7 ans qui veut des personnages bien differencies. Juju est un peu moins tranchee ici — ses vannes existent mais moins acerbes. Ma fille a trouve Wex "moins drole que d'habitude".
-Vocabulaire problematique : aucun bloquant.
-Rythme : fluide
-Note sur la fin : Efficace mais pas marquante. "L'etang redevint calme" est une fin correcte mais previsible. Pas de surprise de fin comme dans sonnet-def ou kimi-k26-instant.
-
----
-
-## Version grok-reco
-
-### Voix Fille
-J'ai aime : "Wex s'assit dans l'herbe sans savoir pourquoi." — c'est bizarre ca, c'est drole. Et Nono dont "les yeux vont doux".
-J'ai pas compris : "decrivit un grand cercle lent" — c'est complique ca.
-J'ai demande pendant la lecture : "Pourquoi Wex il s'assoit ?"
-Ce que je retiens : Wex assis dans l'herbe sans savoir pourquoi. Les trois enfants joues rouges, pieds dans la mousse.
-
-### Voix Maman
-Ce qui a bien fonctionne a la lecture : "Ses pattes etaient fraiches." pour la libellule sur le doigt de Nono — detail sensoriel inattendu, tres juste. "Comme quand le soleil chauffe les pierres" pour le sourire de Nono est une belle comparaison d'enfant. La fin — Wex assis dans l'herbe, les trois joues rouges — est paisible et incarnee.
-Moments d'accroche / decroche : "Les trois enfants couraient deja quand l'histoire commence" — cette metalepse narrative ("quand l'histoire commence") sort du recit, bizarre a voix haute. "Decrivit un grand cercle lent" est une tournure soutenue.
-Vocabulaire problematique : "decrivit" au sens de tracer une courbe — j'ai explique.
-Rythme : fluide
-Note sur la fin : Douce et bien posee. "Les trois restèrent un moment a regarder le ciel vide, les joues rouges, les pieds dans la mousse" — belle image finale, on la voit.
+### Voix Parent
+Ce qui a bien fonctionné à la lecture : "son corps qui sait avant la tête" est une belle idée implicite — Nono ancré, sans explication. La collision Juju-Nono "comme un souffle d'animal sauvage qui s'endort" est une image que j'ai adoré lire, même si ma fille a voulu savoir quel animal. "On a attrapé juste" est une punchline sobre et mémorable.
+Moments où mon enfant s'est accroché / a décroché : accrochée sur "On a attrapé juste" — elle l'a digéré à retardement, c'est un beau signal. Légère confusion sur l'image de l'animal endormi.
+Vocabulaire ou tournure qui a posé problème : "animal sauvage qui s'endort" crée une attente narrative non satisfaite (quel animal ?).
+Rythme de la lecture à voix haute : fluide
+Note sur la fin : "On a attrapé juste" est la meilleure dernière phrase des versions Haiku. Mais la mécanique de "Comment tu as fait ? / Rien" de Wex-Nono avant, suivi de "on a attrapé juste" demande une lecture à deux vitesses — potentiellement parfait si l'oral est bien articulé.
 
 ---
 
 ## Version kimi-reco
 
-### Voix Fille
-J'ai aime : "Demain je fais epouvantail aussi." — Juju qui dit ca a la fin, c'est trop bien ! Et Nono avec les pieds dans l'eau, les tetards qui lui font des chatouilles.
-J'ai pas compris : "virevolta" — la libellule elle a fait quoi ?
-J'ai demande pendant la lecture : "C'est quoi une poule d'eau ?"
-Ce que je retiens : "Demain je fais epouvantail aussi." Nono les orteils chatouilles par les tetards.
+### Voix Enfant
+J'ai aimé : "Je suis le vent !" / "Attrape-moi !" au début — Juju elle crie tout, c'est comme moi dans la cour. "Elle nous a fait un bisou d'aile !"
+J'ai pas compris : pourquoi y'a autant de "dit Juju" / "dit Wex" l'un après l'autre — j'ai demandé si c'était une chorale.
+J'ai demandé pendant la lecture : "Pourquoi ils parlent tous à la fois ?"
+Ce que je retiens : "Elle nous a fait un bisou d'aile !" — j'ai voulu le redire.
 
-### Voix Maman
-Ce qui a bien fonctionne a la lecture : La replique finale de Juju — "Demain je fais epouvantail aussi" — est la meilleure replique de cloture de tout le panel. Elle resout le contre-pied de Wex (epouvantail = chasser les betes) par l'action future de Juju, sans expliquer. C'est fort, drole, et parfaitement dans le personnage. Le rythme du debut est agreable — l'etang qui miroite, la poule d'eau — bien que la "poule d'eau" ait necessite une explication.
-Moments d'accroche / decroche : La replique de Wex "Moi je l'ai pas attrapee. Mais elle est venue." — tres belle, mais tres adulte dans sa formulation. J'ai senti que c'etait un peu haut.
-Vocabulaire problematique : "virevolta", "poule d'eau" — deux arrets.
-Rythme : fluide
-Note sur la fin : La meilleure fin du lot avec celle de claude-sonnet-def. "Demain je fais epouvantail aussi" dit tout et ne dit rien. Ma fille a rit fort.
+### Voix Parent
+Ce qui a bien fonctionné à la lecture : l'énergie brute du début est vraiment du niveau d'un 6-7 ans effervescent. "bisou d'aile" est une trouvaille enfantine authentique. Le contenu émotionnel est là.
+Moments où mon enfant s'est accroché / a décroché : décroché sur les longues séquences de tirets rapides "dit Juju / dit Wex / dit Juju" — à l'oral ça s'emballe et se noie. Le rythme perd sa direction.
+Vocabulaire ou tournure qui a posé problème : aucun mot difficile, mais la répétition des attributions de parole (dit Juju / dit Nono / dit Wex) crée un haché qui déconcentre à voix haute.
+Rythme de la lecture à voix haute : haché
+Note sur la fin : "Jolie, dit Nono" est touchante mais la fin est noyée dans la répétition précédente. L'impact est moindre que souhaité.
 
 ---
 
 ## Version kimi-k26-instant
 
-### Voix Fille
-J'ai aime : Nono qui remet pas ses chaussures et qui tend la main vers un tetard a la fin. La chanson de Juju qui reprend "la meme boucle, comme si rien".
-J'ai pas compris : "Ses joues gonflent" — pourquoi elle gonfle les joues ?
-J'ai demande pendant la lecture : "Elle a peur de respirer ?"
-Ce que je retiens : "Nono remet pas ses chaussures." — c'est tout petit et c'est bien. Wex "toujours penche, toujours l'air de chercher".
+### Voix Enfant
+J'ai aimé : "Les têtards sont des virgules" de Wex — j'ai demandé ce que c'est une virgule et maman m'a montré. Et "Gagné / Gagné quoi / Approchée" — ça c'était super parce que Wex il comprend pas et Juju elle explique avec juste un mot.
+J'ai pas compris : "Elle tournait un peu dans sa tête" (logique de l'épouvantail) — j'ai demandé si les épouvantails marchaient pour les libellules.
+J'ai demandé pendant la lecture : "Alors les épouvantails ça marche pas pour les libellules ?"
+Ce que je retiens : "Les têtards sont des virgules." "Approchée." — un mot qui dit tout.
 
-### Voix Maman
-Ce qui a bien fonctionne a la lecture : Le style le plus tranche du lot — phrases ultra-courtes, staccato mais contenu ("Elle coupe l'air comme un ciseau. Elle s'arrete. Paf. Angle droit."). Ca demande une lecture a voix haute bien rhythmee, mais quand on la tient c'est tres efficace. La chanson comme "boucle" est un bon dispositif. Nono qui tend la main vers un tetard a la fin — c'est une belle continuation en douceur.
-Moments d'accroche / decroche : "Ses joues gonflent" — image peu claire pour retenir son souffle. Le style tres hache exige un lecteur a l'aise avec les pauses — ca peut sembler aride si lu d'une traite.
-Vocabulaire problematique : aucun bloquant, le vocabulaire est tres simple.
-Rythme : hache mais efficace quand maitrise
-Note sur la fin : Ouverte et juste. Le ketsu qui "repart" sans conclure — Nono pieds nus qui tend la main vers un tetard — prolonge l'histoire plutot que de la fermer. Ma fille a dit "et le tetard il vient ?" ce qui veut dire qu'elle voulait continuer.
+### Voix Parent
+Ce qui a bien fonctionné à la lecture : "Gagné quoi ? / Approchée" est un échange d'une précision rare — court, juste, enfantin et sage à la fois. Ma fille a souri comme si elle venait de comprendre quelque chose. "Les têtards sont des virgules" ouvre très bien. La libellule sur le poignet, le geste de partage de Nono — tout est respectueux et propre.
+Moments où mon enfant s'est accroché / a décroché : accrochée sur le paradoxe de Wex et la libellule qui arrive quand même. Aucun décrochage notable.
+Vocabulaire ou tournure qui a posé problème : "vroum" répété dans les échanges post-libellule — joyeux mais légèrement forcé.
+Rythme de la lecture à voix haute : fluide
+Note sur la fin : "Approchée" seul mot de Juju après "Gagné quoi ?" est la meilleure répartie de tout le panel. Fin sobre et intelligente.
 
 ---
 
 ## Version kimi-k26-thinking
 
-### Voix Fille
-J'ai aime : La libellule qui dit "Elle nage !" / "Pas vrai !" / "Si si !" — c'est rigolo comme echange. Et "Floc !"
-J'ai pas compris : pourquoi ils parlent tous si vite et si court ?
-J'ai demande pendant la lecture : "Maman pourquoi ils disent la meme chose ?"
-Ce que je retiens : "Floc !" dans la mousse. Le "Gagné !" de Nono.
+### Voix Enfant
+J'ai aimé : "Chut / Pourquoi chut / Bouge pas" — Nono qui gère tout le monde sans expliquer pourquoi, j'adorais l'attendre. Et "Bye bye, dit Nono" — il dit au revoir à la libellule comme à une copine.
+J'ai pas compris : "les chuchotements retenus" — c'est dans la note, pas dans le texte. Dans le texte j'ai tout compris.
+J'ai demandé pendant la lecture : "Nono il aime les libellules pour de vrai ?"
+Ce que je retiens : "Bye bye, dit Nono." Les cinq "Vroum" à la fin en écho, c'était drôle.
 
-### Voix Maman
-Ce qui a bien fonctionne a la lecture : Le debut avec les echanges rapides entre Juju et Wex a de l'energie. La scene du pivot (chaussures enlevees, "Attends") est bien executee. "La-la-la... pouf." pour la chanson coupee est net.
-Moments d'accroche / decroche : Le probleme majeur est structure : la premiere moitie est un collage de repliques monosyllabiques ("Elle fonce ! / J'arrive ! / Attends-moi ! / Par ici ! / Non, la !") qui sature rapidement. A voix haute c'est epuisant — on dirait une liste de stickers, pas une histoire. Ma fille a dit "c'est bizarre" apres deux pages. Le fond est la mais la forme trahit le mode thinking qui a sur-fragmente.
-Vocabulaire problematique : aucun probleme de vocabulaire, mais probleme de lisibilite a l'oral.
-Rythme : hache, epuisant
-Note sur la fin : Correcte mais effacee apres la fatigue du debut. "Les trois enfants restèrent au bord de l'eau, les orteils dans la mousse" est une belle image de fin mais on n'a plus d'energie pour l'entendre.
+### Voix Parent
+Ce qui a bien fonctionné à la lecture : le "Chut / Toi aussi bouge pas / Je bouge pas" est parfait à voix haute — je pouvais différencier les voix nettement. "Bye bye" de Nono à la fin est délicieux, discret, juste. Le texte est le plus accessible à lire à voix haute du panel Kimi — phrases très courtes, dialogue clair.
+Moments où mon enfant s'est accroché / a décroché : accrochée jusqu'à la fin. La séquence des chuchotements ("Elle est bleue / Elle brille / Trop près") a fait ralentir ma lecture naturellement — bonne mécanique.
+Vocabulaire ou tournure qui a posé problème : aucun. C'est la version la plus simple à articuler.
+Rythme de la lecture à voix haute : parfait
+Note sur la fin : "Bye bye / Partie / Elle a fait vroum / Vroum / Vroum" — la clôture en écho est lumineuse et adaptée à 6-7 ans. Ma fille a dit "vroum" avec moi. C'est peut-être la fin la plus jouable à voix haute de tout le panel.
 
 ---
 
 ## Version kimi-reco-guide
 
-### Voix Fille
-J'ai aime : "Bloublou !" — c'est marrant comme son pour un caillou ! Et "les chaussures posees cote a cote sur la mousse, bien droits, comme deux petits bateaux amarres".
-J'ai pas compris : "decalibration sensorielle" — non c'est dans la note, pas dans le texte.
-J'ai demande pendant la lecture : "Pourquoi elle dit 'Gagné. Pas moi. Toi.' ?"
-Ce que je retiens : "Gagné, repeta-t-elle. Pas moi. Toi." — c'est bizarre et c'est beau. Les deux petits bateaux.
+### Voix Enfant
+J'ai aimé : "Gagnée ! / Relâchée / Relâchée" — j'ai adoré que Juju dise gagnée et que Nono et Wex disent relâchée tous les deux, c'est comme une correction gentille. Et "Encore ? / Attends / On attend / Combien ? / Un peu / Un peu / Et après ? / On court / Tout de suite !" — j'ai voulu finir les phrases.
+J'ai pas compris : "micro-rituel corporel" dans la note (hors texte).
+J'ai demandé pendant la lecture : (rien — trop absorbée)
+Ce que je retiens : "Gagnée / Relâchée / Relâchée" — le trio. La fin "Tout de suite !" de Juju.
 
-### Voix Maman
-Ce qui a bien fonctionne a la lecture : La version la plus litteraire du lot. "Les chaussures posees cote a cote, bien droites, comme deux petits bateaux amarres" — c'est une image rare et tres juste, que j'ai ralentie pour qu'elle existe. "Ses doigts serrèrent ceux de Nono comme dans une racine vivante" — beau. "Gagné. Pas moi. Toi." de Juju — replique inattendue qui dit quelque chose de sa generosite sans la nommer.
-Moments d'accroche / decroche : C'est dense pour une fille de 6-7 ans — la note d'intention est longue et tres fine, la version elle-meme est ambitieuse (la chaussette oubliee sur le genou, le "Bloublou" onomatopee unique, la chanson qui repart "ailleurs dans la melodie"). Tout ca demande un lecteur parent qui sait doser. Ma fille a suivi mais elle est vive — une enfant moins active se serait perdue au milieu.
-Vocabulaire problematique : "amarres" — j'ai explique. "Crispa" — j'ai adapte a voix haute.
-Rythme : dense mais fluide quand on le tient
-Note sur la fin : La plus travaillee. La chaussette oubliee sur le genou de Nono, Juju qui touche l'eau du bout des doigts, la chanson qui repart "ailleurs" dans la melodie — trois details de fin qui laissent de la place. Ma fille a reste silencieuse deux secondes, ce qui est rare.
-
----
-
-## Version _ETALON-kimi-reco-guide-v2 (hors-competition)
-
-### Voix Fille
-J'ai aime : "Elle est juste vivante." — Juju qui dit ca a Nono, c'est ma phrase preferee de toutes les histoires. Et Juju le genou plein de terre qui sait pas.
-J'ai pas compris : pourquoi la libellule elle vient pas sur le doigt de Nono ici ? Elle se pose sur un roseau, c'est pas pareil.
-J'ai demande pendant la lecture : "Elle part a la fin la libellule ?"
-Ce que je retiens : "Elle est juste vivante." Juju et son genou plein de terre.
-
-### Voix Maman
-Ce qui a bien fonctionne a la lecture : L'histoire la plus economique et la plus juste du panel complet. Chaque geste compte double. "Il est juste la." pour Nono — trois mots qui font tout. Le canard qui casse la bulle — la vie qui continue, pas une conclusion. "Reste comme ca." dit Juju tout bas, et c'est sa seule tendresse visible. On entend vraiment les personnages.
-Moments d'accroche / decroche : Ma fille a ete un peu deçue qu'il ne se passe pas de "truc" avec la libellule — pas de doigt sur le nez, pas de "Gagne". Elle cherchait un moment fort visible. La beaute de cette version est dans la retenue, ce qui demande un enfant et un parent a l'ecoute.
-Vocabulaire problematique : aucun bloquant.
-Rythme : parfait
-Note sur la fin : La plus belle du lot. "C'est tout." — deux mots qui ferment et ouvrent en meme temps. Wex qui regarde le courant emporter la brindille d'un demi-centimetre, Juju la main dans la boue : ce sont des gestes d'enfants vrais, pas de recit. J'ai eu envie de relire.
+### Voix Parent
+Ce qui a bien fonctionné à la lecture : le début "T'es toute verte / C'est de la peinture !" installe Juju immédiatement. "Gagnée / Relâchée / Relâchée" est une correction douce et magique — le trio dit plus en trois mots qu'un paragraphe. La séquence finale en ping-pong "Encore / Attends / Combien / Un peu" est un délice oral que j'ai joué à trois voix sans effort.
+Moments où mon enfant s'est accroché / a décroché : aucun décrochage. Elle a essayé de compléter les phrases à voix haute à la fin.
+Vocabulaire ou tournure qui a posé problème : "Nono répète le serrage de ses doigts au rythme de sa respiration" est dans la note pas dans le texte — aucun problème. Dans le texte : "ses doigts se serraient et se desserraient" — ça passe bien.
+Rythme de la lecture à voix haute : parfait
+Note sur la fin : la fin "Tout de suite / On court vite / On court vite / Juju tapa dans ses mains / Personne ne bougea tout de suite / Puis ils rirent" — c'est une fin ouverte et joyeuse, parfaite pour les relecture. Une des trois meilleures fins du panel.
 
 ---
 
-## Classement DMF-B
+## Version deepseek-def
 
-### Top 3
+### Voix Enfant
+J'ai aimé : "Caillou dit : Mmm." — j'ai rigolé parce que "Mmm" c'est comme quand je dis rien. Mais j'ai demandé pourquoi Nono il s'appelait Caillou.
+J'ai pas compris : pourquoi Nono il s'appelle Caillou et Juju elle s'appelle Criquet — j'ai demandé si c'était les mêmes enfants.
+J'ai demandé pendant la lecture : "Nono c'est Caillou pour de vrai ?"
+Ce que je retiens : "Mmm" de Caillou / Nono. "On l'a eue sans la prendre. C'est mieux, non ?"
 
-**1. kimi-reco** — "Demain je fais epouvantail aussi." Une replique de fin qui resout tout sans expliquer. Juju reste Juju jusqu'au bout, elle apprend sans le dire. Ma fille a rit fort et voulu qu'on la relise.
+### Voix Parent
+Ce qui a bien fonctionné à la lecture : "On l'a eue sans la prendre. C'est mieux, non ?" est une belle formulation de Criquet/Juju qui sonne vraie. La poule d'eau qui glisse "sans bruit" en clôture est élégante. La mécanique narrative est propre.
+Moments où mon enfant s'est accroché / a décroché : gros accroc sur les surnoms inventés — Fouine / Criquet / Caillou. Ma fille a été déstabilisée : elle connaît Juju, Nono, Wex. Changer les noms sans raison perceptible a cassé le plaisir.
+Vocabulaire ou tournure qui a posé problème : les surnoms inventés (Fouine/Criquet/Caillou) contredisent le casting connu — problème narratif, pas de vocabulaire.
+Rythme de la lecture à voix haute : fluide malgré l'accroc sur les noms
+Note sur la fin : "Oui, libre. dit Caillou." — beau mot de fin, mais l'accroc sur les noms a réduit son impact pour ma fille.
 
-**2. claude-sonnet-def** — Wex reste plante seul a la fin, bouche ouverte. C'est le meilleur ketsu du lot. La chanson "quelque chose quelque chose" comme refrain est une idee solide a voix haute.
+---
 
-**3. deepseek-reco** — La plus dynamique, la plus vivante dans les dialogues. "Wexou" et le cri final "T'AS VU CA ?" restituent parfaitement l'energie de Juju. Ma fille a demande a reentendre la fin.
+## Version deepseek-reco
+
+### Voix Enfant
+J'ai aimé : "Les têtards me chatouillent, Wexi !" — elle l'appelle Wexi ! Trop mignon. Et "Jolie, hein, Jujube ?" de Nono à la fin — il l'appelle Jujube !
+J'ai pas compris : "maugréait en souriant" — j'ai demandé ce que c'est maugréer.
+J'ai demandé pendant la lecture : "C'est quoi maugréer ?"
+Ce que je retiens : "Wexi" et "Jujube" — les deux petits noms qu'ils se donnent.
+
+### Voix Parent
+Ce qui a bien fonctionné à la lecture : les diminutifs "Wexi" / "Jujube" sont une touche affective qui fait beaucoup d'effet sur une fille de 6-7 ans — ma fille a souri aux deux. "Jolie, hein, Jujube ?" de Nono pour clore est la réplique finale la plus affectueuse du panel. La libellule qui passe "juste devant le visage de Juju" avant de monter est une belle image.
+Moments où mon enfant s'est accroché / a décroché : accrochée sur les diminutifs. Pause sur "maugréait" (un seul mot difficile). Légèrement moins tendue pendant le Ten que dans les meilleures versions — l'immobilité de Nono est moins magnétique ici.
+Vocabulaire ou tournure qui a posé problème : "maugréait" — à expliquer.
+Rythme de la lecture à voix haute : fluide
+Note sur la fin : "Jolie, hein, Jujube ?" est tendre et bien dans la bouche de Nono, mais c'est une fin fermée (émotion nommée) là où les meilleures fins du panel restent ouvertes. Elle convient à ce profil affectif.
+
+---
+
+## Version grok-def
+
+### Voix Enfant
+J'ai aimé : on est dans le corps de Nono ! Il sent l'herbe entre ses orteils, l'eau qui le lèche. Maman elle lisait avec une voix douce. Et "On recommence le jeu de l'épouvantail ?" — Juju elle veut recommencer !
+J'ai pas compris : "le ventre chaud du soleil, les bras qui se balançaient tout seuls" — j'ai demandé si Nono il était endormi.
+J'ai demandé pendant la lecture : "Il est endormi Nono ?"
+Ce que je retiens : l'herbe qui chatouille les orteils de Nono. "On recommence le jeu de l'épouvantail ?"
+
+### Voix Parent
+Ce qui a bien fonctionné à la lecture : le POV corps de Nono est jouissif à lire — "les pieds qui tapaient le sol mou" donne une sensation tactile immédiate. "On recommence le jeu de l'épouvantail ?" de Juju pour finir est une question ouverte et joyeuse qui donne envie de relire. La présence de Juju "collée" avec "le contact était chaud" est très réussie.
+Moments où mon enfant s'est accroché / a décroché : accrochée sur les sensations corporelles — les orteils, l'eau tiède. Légère confusion sur le fait qu'on soit dans la tête de Nono sans que ce soit dit.
+Vocabulaire ou tournure qui a posé problème : "mollets" — j'ai dû montrer où c'est. "joncs" — expliqué rapidement.
+Rythme de la lecture à voix haute : fluide
+Note sur la fin : "L'herbe remuait autour de leurs jambes... Juju posa sa joue contre le dos de Nono" — image tendre et juste. Wex "sourit sans rien ajouter" est très beau. Belle fin.
+
+---
+
+## Version grok-reco
+
+### Voix Enfant
+J'ai aimé : "Elle bouge pas / Si, elle respire" de grok-reco — j'ai demandé comment on voit qu'une libellule respire. Et "J'avais dit que l'épouvantail faisait peur" de Wex qui sait qu'il avait tort.
+J'ai pas compris : non, j'ai tout compris.
+J'ai demandé pendant la lecture : "Comment on voit qu'une libellule respire ?"
+Ce que je retiens : Juju "presque riants" dans son souffle — elle rit même quand elle chuchote. La joue de Juju posée contre le dos de Nono à la fin.
+
+### Voix Parent
+Ce qui a bien fonctionné à la lecture : "presque riants" dans le souffle de Juju est une observation microscopique et exacte — la libellule est drôle même quand on se tait. L'image finale "Juju posa sa joue contre le dos de Nono, juste le temps d'un souffle" est probablement la plus belle image de clôture du panel entier — tendre, fugace, parfaite pour ce profil mère-fille. Wex qui "sourit sans rien ajouter" est son meilleur moment dans tout le panel.
+Moments où mon enfant s'est accroché / a décroché : aucun décrochage. Pleinement dans le texte du début à la fin.
+Vocabulaire ou tournure qui a posé problème : aucun.
+Rythme de la lecture à voix haute : parfait
+Note sur la fin : la joue de Juju contre le dos de Nono est une fin physique et implicite — le contraire d'une morale. Ma fille a posé sa tête sur mon épaule exactement à ce moment. C'est la fin que je relirais le plus.
+
+---
+
+## ETALON _ETALON-deepseek-reco-v3 (hors-compétition)
+
+### Voix Enfant
+J'ai aimé : "T'AS VU ÇA ? Elle était SUR SON NEZ !" de Juju en majuscules — maman elle a crié et j'ai rigolé. Et Nono qui touche le bout du nez de Juju avec son doigt — "Gagné" dit tout bas.
+J'ai pas compris : "Juju louche" — j'ai demandé si elle était malade.
+J'ai demandé pendant la lecture : "Pourquoi elle louche ?"
+Ce que je retiens : Nono qui touche le bout du nez de Juju. Juju qui crie "T'AS VU ÇA" en courant vers Wex.
+
+### Voix Parent
+Ce qui a bien fonctionné à la lecture : l'étalon V3 a une énergie narrative supérieure à la moyenne de la V4 — le doigt sur le nez de Juju, "Gagné" tout bas, le "T'AS VU ÇA" explosif. L'écriture de la chanson absurde de Juju est un sommet de caractérisation. L'immobilité de Nono (pieds nus, paumes ouvertes sur l'eau transparente) est l'image la plus poétique du panel toutes versions confondues.
+Moments où mon enfant s'est accroché / a décroché : aucun décrochage, très forte implication. Quelques images d'adulte (Juju "sent dans son corps") passent sans problème.
+Rythme de la lecture à voix haute : parfait
+Note sur la fin : meilleure fin explosive du panel — "T'AS VU ÇA" + Nono qui sourit pieds nus + "On la refait". C'est aussi la seule fin de tout le corpus où l'enfant voulait repartir immédiatement.
+Position dans le panel : si cet étalon était candidat, il serait dans le top 2. Il fixe la barre pour la V4.
+
+---
+
+## ETALON _ETALON-kimi-reco-guide-v2 (hors-compétition)
+
+### Voix Enfant
+J'ai aimé : "Elle a des ailes en verre !" / "Elle est juste vivante" — Juju elle répond à Nono avec des mots trop beaux. Et la libellule sur le roseau à un pas de Nono — Juju qui se fige avec une main dans la boue.
+J'ai pas compris : (rien de particulier)
+J'ai demandé pendant la lecture : "C'est vrai les libellules elles s'approchent si on bouge pas ?"
+Ce que je retiens : Juju avec "un genou plein de terre et elle ne le sait pas". La libellule sur le roseau à un pas de Nono.
+
+### Voix Parent
+Ce qui a bien fonctionné à la lecture : la vague 2 est plus dépouillée que la V4 — moins de mots, plus de présence. "Elle est juste vivante" de Juju comme réponse à Nono est une phrase enfantine parfaite. Le rythme haiku de la fin (la branche qui s'en va d'un demi-centimètre) est beau et calme.
+Rythme de la lecture à voix haute : parfait
+Note sur la fin : "Les trois sont là, à l'étang. La libellule, plus loin, continue. C'est tout." — c'est l'une des fins les plus sobres et les plus satisfaisantes du corpus entier. Plus posée que les V4. Elle me fait penser que la V4 a parfois trop voulu conclure.
+Position dans le panel : si cet étalon était candidat, il serait dans le top 1 ou 2. Il fixe le niveau de sobriété maximale à atteindre.
+
+---
+
+## Classement Final DMF-B
+
+### Top 3 (14 candidats seulement)
+
+**1. grok-reco**
+La joue de Juju posée contre le dos de Nono "juste le temps d'un souffle" est la plus belle image de clôture du panel. Wex "souriant sans rien ajouter" est son meilleur moment. Aucun vocabulaire difficile. Aucun décrochage. Ma fille a posé sa tête sur mon épaule au moment de la fin. C'est le seul texte du panel où le corps de l'enfant à côté de moi a répondu à l'histoire.
+
+**2. kimi-reco-guide**
+"Gagnée / Relâchée / Relâchée" est la plus belle correction douce du panel. La fin en ping-pong "Encore / Attends / Un peu" est la plus jouable à voix haute. Ma fille a essayé de compléter les phrases — signal fort d'implication. C'est le texte que j'aurais le plus envie de lire en spectacle avec ma fille.
+
+**3. claude-opus-reco**
+L'ouverture "Ratée !" et le duo "Bouge pas / Je bouge pas encore plus petit" sont des sommets d'écriture orale. "Tenue" en un mot pour clore est parfait pour ce profil. C'est la version la plus exigeante d'écriture que ce profil peut pleinement absorber.
 
 ### Flop
 
-**kimi-k26-thinking** — Le mode thinking a produit un collage de repliques monosyllabiques en premiere partie. Epuisant a voix haute. Le fond est la mais la forme empeche la lecture.
+**deepseek-def**
+Les surnoms inventés (Fouine/Criquet/Caillou) ont cassé l'immersion dès le début. Ma fille a passé la moitié de la lecture à vérifier si c'était vraiment Juju et Nono. L'histoire en elle-même est correcte, mais cette décision de re-nommage est rédhibitoire pour une enfant qui connaît les personnages.
 
----
+### Position des 2 étalons
 
-## Version redemandee
+Les deux étalons (deepseek-reco-v3 et kimi-reco-guide-v2) sont au-dessus de la moyenne de la V4. Si classés comme candidats, deepseek-reco-v3 serait #1 et kimi-reco-guide-v2 serait #1 ou #2 ex-aequo avec grok-reco. La V4 a progressé en dialogues et en fin orale, mais n'a pas encore atteint la densité sensorielle de l'étalon V3 ni la sobriété de l'étalon V2.
 
-**kimi-reco** — "Maman, on peut la relire ?" La replique finale a fait rire ma fille et elle voulait entendre les tetards-chatouilles de Nono une deuxieme fois.
+### Version redemandée
+
+**grok-reco**
+Ma fille a demandé "Relis la fin" exactement au passage de la joue de Juju contre le dos de Nono. J'ai relu. Elle a reposé sa tête sur mon épaule. Pas besoin d'en dire plus.

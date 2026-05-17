@@ -1,156 +1,189 @@
-# Lecteur G-B1 — Garçon, 6-7 ans, fan d'insectes
-
-> Profil : version autonome du garçon normal. Lit seul ou suit sans aide. Veut que la libellule soit LE héros — pas juste une bête qui passe. Déçu si elle est un accessoire dans l'histoire des enfants. Accroche sur la logique narrative claire et la cohérence des actions. Décroche sur la longueur, les répétitions, et les histoires "trop petites".
-
+---
+profil: G-B1
+age: 6-7 ans
+type: garcon normal
+date: 2026-05-17
 ---
 
-## Version claude-opus-def
+# Lecteur Temoin G-B1 — Garcon 6-7 ans, passionne d'insectes
 
-J'ai aimé : la libellule qui tourne à angle droit comme une fusée, et quand Nono se lève tout doucement pour l'approcher du nez de Juju. Le "ploc" du caillou aussi, je l'ai dit tout fort.
-J'ai pas trop aimé : au début on parle longtemps de l'étang et des têtards avant de voir la libellule. Et à la fin elle repart trop vite, on sait pas trop où.
-Ce que je retiens : la libellule qui se pose sur le doigt de Nono et ses ailes "comme du verre mouillé". Et Juju qui louche.
-Questions : pourquoi la libellule elle choisit Nono et pas les autres ?
-
----
-
-## Version claude-opus-reco
-
-J'ai aimé : c'est raconté comme si c'était moi qui courais ! La libellule elle est bleue, verte, jaune en même temps, j'ai jamais vu ça dans une histoire. Et la chute dans l'herbe de Juju c'est drôle.
-J'ai pas trop aimé : on sait toujours pas pourquoi la libellule elle vient sur Nono. C'est bizarre de pas l'expliquer.
-Ce que je retiens : "mes doigts se referment sur rien du tout" — et aussi le "Gagné" de Nono avec le doigt sur le nez, ça c'est trop bien.
-Questions : est-ce que la libellule elle revient après ?
-
----
-
-## Version claude-sonnet-def
-
-J'ai aimé : Wex qui dit "un épouvantail ça fait partir les bêtes, nous on veut qu'elle vienne" — j'ai compris direct le truc bizarre. Et Wex à la fin qui reste planté à regarder où elle était. C'est comme moi quand j'observe les insectes.
-J'ai pas trop aimé : la libellule est un peu vite décrite au début et après elle disparaît longtemps pendant qu'on s'occupe des enfants.
-Ce que je retiens : Wex bouche ouverte, tête penchée sur le côté. Et la libellule "violette, ou bleue, ou les deux selon comment la lumière tombe".
-Questions : comment la libellule elle sait que c'est Nono le calme ?
-
----
-
-## Version claude-sonnet-reco
-
-J'ai aimé : "la libellule glisse sur l'eau comme une pensée" — c'est joli. Et Nono qui s'arrête "comme quand quelque chose dans les pieds a décidé avant la tête", ça existe vraiment ça.
-J'ai pas trop aimé : c'est un peu court, la libellule elle fait beaucoup moins de choses que dans d'autres versions. On la voit pas assez décoller et voler.
-Ce que je retiens : "ses ailes font le bleu et le vert en même temps". Et les têtards à la fin qui nagent, indifférents à tout.
-Questions : pourquoi Nono il sourit à la fin avec "les mains toujours ouvertes" ?
+> Je m'appelle un peu comme tous les gars de ma classe. J'ai 6 ans et demi. Mon insecte prefere c'est la libellule, parce que ca vole trop vite et que personne peut l'attraper. Si dans l'histoire la libellule fait des trucs et que c'est elle le heros, je suis content. Si on parle juste d'elle deux secondes et apres ca parle d'autre chose, je suis decu.
 
 ---
 
 ## Version claude-haiku-def
 
-J'ai aimé : la libellule orange c'est différent ! Et quand tout devient immobile, les ailes qui battent encore mais légères — j'entendais presque le bruit.
-J'ai pas trop aimé : le début avec "puis tout devient courant" j'ai pas trop compris. Et la libellule elle ressort pas vraiment comme le héros, elle est surtout là pour que les enfants apprennent un truc.
-Ce que je retiens : "Wex. Yeux écarquillés. Tête penchée. Bouche ronde. Oh." — juste comme ça, sans rien d'autre.
-Questions : la libellule elle veut quelque chose elle aussi ou elle fait juste ce qu'elle veut ?
+J'ai aime : la libellule qui "se moque de tout" — ca c'est trop bien, ca veut dire qu'elle est libre. Et le moment ou elle se pose sur l'epaule de Nono, ca m'a fait chuchoter tout seul.
+J'ai pas trop aime : y'a des mots que j'ai pas compris — "paradoxe", ca veut dire quoi ? Et l'histoire s'arrete un peu vite, on dirait qu'elle est presque finie et puis elle finit pour de vrai.
+Ce que je retiens : la libellule bleu electrique qui s'arrete net dans l'air.
+Questions : pourquoi Nono il dit "ouais" a la fin et c'est tout ? Il dit quoi avec les yeux ?
 
 ---
 
 ## Version claude-haiku-reco
 
-J'ai aimé : "la libellule rose qui traverse l'air en carrés" — elle fait des carrés, j'ai jamais entendu ça ! Et Juju qui louche tellement que ses yeux se croisent, j'ai essayé pendant la lecture.
-J'ai pas trop aimé : la libellule elle monte en spirale à la fin et puis elle s'en va chercher des cailloux. C'est trop vite, on la perd de vue.
-Ce que je retiens : les "énormes énormes" yeux de la libellule devant le nez de Juju. Et le "Rien n'a changé. Et puis si. Quelque chose."
-Questions : l'air il sent vraiment différent après que la libellule est partie ?
+J'ai aime : "on a attrape juste" — ca j'ai compris tout seul ce que ca voulait dire, et ca m'a plu. Le bourdon qui regarde passer les enfants, ca m'a fait rire dans ma tete.
+J'ai pas trop aime : le "corps qui dit oui, la, maintenant" — c'est un truc que les adultes disent, pas les enfants.
+Ce que je retiens : Nono plante ses pieds dans la boue comme s'il ecoutait quelque chose sous ses pieds.
+Questions : est-ce que la libellule elle reviendra apres ?
 
 ---
 
-## Version deepseek-def
+## Version claude-opus-def
 
-J'ai aimé : y'a beaucoup de dialogue et tout le monde parle, c'est vivant. La fin avec le papillon jaune c'est marrant, la libellule elle a des successeurs !
-J'ai pas trop aimé : la libellule elle fait pas grand-chose de spécial, elle est surtout là pour qu'on la suive. Et quand Nono dit "j'ai attendu" à la fin, c'est un peu trop d'explication — j'avais déjà compris.
-Ce que je retiens : "t'es là" de Juju quand Nono la retient. Et le "Chut" de Nono, c'est drôle parce que c'est le seul qui dit ça.
-Questions : c'est quoi la différence entre attendre et se planter comme un épouvantail ?
-
----
-
-## Version deepseek-reco
-
-J'ai aimé : c'est la version où la libellule elle fait LE PLUS de choses. Elle fait un huit, elle pique, elle remonte, elle monte vertical, et après elle danse entre les roseaux à la fin. Et le "couic" quand elle s'arrête pile en l'air !
-J'ai pas trop aimé : "T'AS VU CA ? Elle était SUR SON NEZ !" — à ce moment-là c'est vraiment crié fort et moi j'aime bien le moment silencieux juste avant. La fin elle casse un peu la magie.
-Ce que je retiens : la libellule qui s'arrête pile au-dessus d'un têtard comme si quelqu'un avait appuyé sur pause. Et "bleu, vert, jaune, tout en même temps".
-Questions : les têtards ils savent que la libellule est là au-dessus d'eux ?
+J'ai aime : le *flotch* des pieds dans la boue — ca on entend vraiment. Et quand Juju heurte Nono et qu'elle attrape sa main pour pas tomber, et la libellule arrive juste la, c'est parfait. La libellule c'est vraiment le heros de cette histoire.
+J'ai pas trop aime : y'a beaucoup de mots a la fin dans la note — mais ca c'est pour les grands.
+Ce que je retiens : les ailes "comme deux gouttes de verre" sur l'epaule de Nono.
+Questions : "quelque chose qu'on ne savait pas nommer" a la fin, c'est quoi ce truc ?
 
 ---
 
-## Version grok-def
+## Version claude-opus-reco
 
-J'ai aimé : c'est propre, on suit bien ce qui se passe. La libellule qui monte d'un coup sec et tourne à angle droit — on voit le mouvement. Et Wex qui pousse un "oh" qui reste dans sa gorge, ça c'est vraiment comme dans la vraie vie.
-J'ai pas trop aimé : c'est un peu court et la libellule, une fois posée sur le doigt, elle repart trop vite. Elle mérite plus de temps là.
-Ce que je retiens : "Les roseaux bruissèrent une fois, puis l'étang redevint calme." Et Juju qui serre encore la main de Nono après que la libellule est partie.
-Questions : pourquoi Wex il lançait des cailloux qui ricochaient si c'était pour attirer la libellule ?
+J'ai aime : la libellule "comme une flechette" qui arrive — ca ca fonce ! Et "elle triche" dit Juju, ca c'est exactement ce que je pense des libellules pour de vrai. "On a attrape juste" — non, "Tenue" — ca sonne super bien dans la bouche.
+J'ai pas trop aime : c'est court a la fin, j'aurais voulu qu'elle revienne encore une fois.
+Ce que je retiens : "elle vole pas droit, elle decide apres" — Wex il a trouve les bons mots pour la libellule.
+Questions : pourquoi l'etang il "continue tout seul" ? L'etang il s'en fiche de nous ?
 
 ---
 
-## Version grok-reco
+## Version claude-sonnet-def
 
-J'ai aimé : "ses pattes étaient fraîches" — j'ai jamais lu que quelqu'un décrivait les pattes d'une libellule sur un doigt ! Et Wex qui s'assoit dans l'herbe sans savoir pourquoi, c'est drôle et vrai.
-J'ai pas trop aimé : la libellule elle repart "droite vers le soleil" et après l'histoire elle parle des trois enfants qui regardent le ciel. La libellule disparaît de l'histoire alors qu'elle est le plus intéressant.
-Ce que je retiens : "ses pattes étaient fraîches" — je l'oublierai pas. Et "comme quand le soleil chauffe les pierres" pour décrire le sourire de Nono.
-Questions : est-ce que les libellules elles ont vraiment des pattes fraîches ?
+J'ai aime : "l'etang est d'accord" — Nono il dit ca comme une evidence et c'est trop drole. La poule d'eau qui reprend sa traversee a la fin "l'etang n'a rien remarque" — c'est comme si le monde etait trop grand pour notre petite aventure. Ca j'aime.
+J'ai pas trop aime : la libellule elle se pose mais elle repart vite, j'aurais voulu qu'elle reste un peu plus longtemps dans l'histoire.
+Ce que je retiens : Juju qui chuchote pour la premiere fois — "elle te regarde".
+Questions : un "épouvantail a libellule" ca ferait comment Wex il a jamais repondu !
+
+---
+
+## Version claude-sonnet-reco
+
+J'ai aime : "une voiture de course sans roues" — ca c'est trop bien comme description. Et "on a gagne" dit Nono suivi de "t'avais decide ca depuis le debut" et "non vraiment pas" — ca c'est drole parce que Nono il a gagne sans le faire expres.
+J'ai pas trop aime : ils parlent beaucoup du plan pour coincer la libellule entre eux — j'aurais voulu moins de strategie et plus de libellule.
+Ce que je retiens : les ailes avec "deux petits points dores sur le bout".
+Questions : la poule d'eau qui repasse "toujours sans se presser" c'est parce qu'elle est comme Nono ?
 
 ---
 
 ## Version kimi-reco
 
-J'ai aimé : "Demain, je fais épouvantail aussi" dit Juju à la fin — elle a compris ! Et les pieds de Nono dans l'eau avec les têtards qui lui font des chatouilles, c'est trop bien.
-J'ai pas trop aimé : la libellule au début elle est décrite "énorme, bleue comme un bouton de jeans" et j'aurais voulu qu'elle soit encore plus bizarre et incroyable. Elle mérite mieux qu'un bouton de jeans.
-Ce que je retiens : "Wex se frotta le nez. Moi je l'ai pas attrapée. Mais elle est venue." Et les têtards qui font des chatouilles aux orteils de Nono.
-Questions : est-ce que la libellule elle fait exprès de venir sur Nono parce qu'il est calme ou c'est juste le hasard ?
+J'ai aime : le debut est trop drole avec Juju qui crie qu'elle est le vent — ca ressemble a un enfant pour de vrai. Et la "fusee verte", "une fusee verte" dit Juju, ca c'est ce qu'on dirait en vrai.
+J'ai pas trop aime : y'a trop de lignes de dialogue courtes qui s'enchainent, j'ai perdu le fil parfois. La libellule elle disparait un peu dans tout ce bruit de paroles.
+Ce que je retiens : "elle nous a fait un bisou d'aile" — ca c'est une belle image.
+Questions : pourquoi la libellule elle est verte dans cette histoire et bleue dans les autres ?
 
 ---
 
 ## Version kimi-k26-instant
 
-J'ai aimé : "Paf. Angle droit. Monte tout droit. Glisse sur l'eau, le ventre qui frôle, zou, repart." — c'est la libellule qui fait le plus de mouvements différents ! Et Nono qui tend la main vers un têtard à la fin, il recommence à attendre.
-J'ai pas trop aimé : les phrases sont très courtes partout, ça fait un peu comme un télégraphe. Mais la libellule elle est vraiment bien décrite dans ses mouvements.
-Ce que je retiens : "Nono remet pas ses chaussures. Il marche dans l'herbe. Il tend la main vers un têtard qui passe. Il attend." — la libellule partie, lui il continue à être comme ça.
-Questions : le têtard il va venir sur son doigt aussi ?
+J'ai aime : "vroum !" dit par tous les trois a la fin — "vroum, dit Nono. Vroum, dit Wex." C'est comme si le son de la libellule restait dans leurs bouches apres qu'elle est partie. Et "gagné quoi ? Approchee." — cette replique de Juju c'est trop bien.
+J'ai pas trop aime : le debut avec Juju qui crie "vroum" et Nono qui dit "vroum toi aussi, paresseux" — on est un peu en dehors de la libellule au debut.
+Ce que je retiens : Nono qui tourne son poignet vers Juju "pour que la libellule choisisse" — pas pour la donner, pour qu'elle choisisse. Ca c'est important.
+Questions : "c'est drole, une Juju muette, une Juju suspendue" — la narration elle parle a qui la ?
 
 ---
 
 ## Version kimi-k26-thinking
 
-J'ai pas trop aimé : y'a trop de "dit Wex" et "dit Juju" partout, les phrases sont toutes coupées pareil. "Elle nage ! dit Juju. Pas vrai ! dit Wex. Si, si ! dit Juju." — j'ai eu un peu le tournis. La libellule elle se noie dans tout ça.
-J'ai aimé : quand Juju dit "Elle bat des cils ?" en regardant la libellule de tout près — c'est drôle parce que les libellules elles ont pas de cils !
-Ce que je retiens : la structure des "elle fait l'angle" répétée. Et Wex qui penche la tête.
-Questions : rien de spécial cette fois.
+J'ai aime : Nono dit "chut" deux fois et ca suffit. Et les chuchotements a la fin sont trop bien — "elle est bleue, elle brille, trop pres" — on est vraiment la avec eux.
+J'ai pas trop aime : y'a beaucoup beaucoup de dialogues tres courts et ca va dans tous les sens au debut, c'est un peu fatiguant a suivre. La libellule elle arrive tard.
+Ce que je retiens : "bye bye, dit Nono" — c'est tout simple et c'est parfait.
+Questions : pourquoi ils disent tous "vroum" ensemble a la fin ? C'est une blague entre eux ?
 
 ---
 
 ## Version kimi-reco-guide
 
-J'ai aimé : "Corps d'aiguille turquoise" — c'est la meilleure description d'une libellule que j'ai lue ! Et les chaussures bien droites de Nono "comme deux petits bateaux amarrés", ça c'est une vraie image.
-J'ai pas trop aimé : la fin elle prend beaucoup de place pour les enfants et la libellule elle est déjà loin. Mais Juju qui touche son nez comme si quelque chose restait dessus, ça je l'ai aimé.
-Ce que je retiens : "corps d'aiguille turquoise" — je vais le dire à quelqu'un. Et la chaussette oubliée sur le genou de Nono à la fin.
-Questions : qu'est-ce que ça veut dire "décalibration sensorielle" dans la note ?
+J'ai aime : "gagnee ! dit Juju / relachee, dit Nono / relachee, dit Wex" — ils se repondent en echo et ca fait comme une chanson. Et la fin avec "encore ? / on attend / combien ? / un peu" — c'est exactement ce qu'on dit apres quelque chose de beau.
+J'ai pas trop aime : y'a beaucoup de petits dialogues au debut avec "on est des fusees", les grimaces, l'arbre — c'est amusant mais la libellule elle met du temps a arriver.
+Ce que je retiens : Nono qui serre et desserre ses doigts au rythme de sa respiration en attendant immobile.
+Questions : "gagnee / relachee" — c'est les deux bonnes reponses en meme temps ?
 
 ---
 
-## Version _ETALON-kimi-reco-guide-v2
+## Version deepseek-def
 
-J'ai aimé : "Elle est trop rapide. Mais non, elle est juste vivante." — ça c'est Juju qui a raison. Et la libellule qui reste sur le roseau sans qu'on l'attrape, c'est comme dans la vraie vie. Et le "plip" d'un têtard qui casse le silence.
-J'ai pas trop aimé : la libellule elle se pose sur un roseau mais elle est à un pas de Nono — elle s'approche pas de lui, elle vient pas vraiment. Les enfants ils font rien pour l'approcher, c'est un peu comme si l'histoire s'arrêtait en plein milieu.
-Ce que je retiens : "Elle est trop rapide. Mais non, elle est juste vivante." Et le genou plein de terre de Juju qu'elle voit même pas.
-Questions : pourquoi la libellule elle reste sur le roseau et elle vient pas sur le doigt de quelqu'un ? Toutes les autres histoires elle se pose sur la main.
+J'ai aime : "Oui, libre" dit Caillou a la fin — c'est le mot parfait. Et l'arc-en-ciel dans l'aile de la libellule, j'ai imagine ca dans ma tete.
+J'ai pas trop aime : ils s'appellent Fouine, Criquet et Caillou — mais j'ai l'habitude de Wex, Juju et Nono. J'ai mis du temps a comprendre qui c'etait qui.
+Ce que je retiens : la libellule qui "vrombit doucement" et tourne en cercle avant de se poser — elle choisit.
+Questions : pourquoi ils ont d'autres noms ici ?
 
 ---
 
-## CLASSEMENT
+## Version deepseek-reco
 
-### Top 3 (les versions que je redemanderais ce soir)
+J'ai aime : "elle file comme un petit bolide invisible puis freine net" — ca c'est exactement comment c'est une libellule ! Et Nono qui dit "jolie, hein, Jujube ?" a la fin, c'est trop mignon.
+J'ai pas trop aime : "ma puce" dit Wex a Juju — les enfants ils disent pas ca, ca fait bizarre.
+Ce que je retiens : la libellule qui "passe juste devant le visage de Juju et monte dans le ciel de plus en plus haut".
+Questions : Nono il savait depuis le debut que ca marcherait de s'arreter ?
 
-1. **deepseek-reco** — la libellule elle fait le plus de trucs, on la suit vraiment, et le "couic" quand elle s'arrête en l'air, j'ai jamais entendu ça.
-2. **kimi-reco-guide** — "corps d'aiguille turquoise" c'est la meilleure description. Et les chaussures comme des petits bateaux.
-3. **claude-opus-reco** — racontée comme si c'était moi qui courais. La libellule qui change de couleur selon le soleil, c'est vrai ça.
+---
 
-### Flop (la version que j'oublie le plus vite)
+## Version grok-def
 
-**kimi-k26-thinking** — trop de "dit Wex" "dit Juju" partout. La libellule elle se noie dans les dialogues, on voit même plus voler.
+J'ai aime : on est dans la tete ET dans le corps de Nono — ses orteils dans l'herbe, le vent sur son visage, son souffle qui descend dans son ventre. C'est comme si c'etait moi. Et "juju s'approcha en riant et posa sa main sur son bras" — pas de collision, juste ca, et la libellule vient quand meme.
+J'ai pas trop aime : "on recommence le jeu de l'epouvantail ?" dit Juju a la fin — ca c'est bien mais j'aurais voulu un tout petit peu plus.
+Ce que je retiens : les ailes "transparentes qui tremblaient juste un peu" sur l'epaule de Nono.
+Questions : si Nono il refait l'epouvantail la prochaine fois, la libellule elle reviendra encore ?
 
-### Version que je redemande ce soir
+---
 
-**deepseek-reco** — parce que la libellule elle vole vraiment dans cette histoire-là. Et le moment où tout s'arrête pile au-dessus du têtard, comme sur pause, j'arrive pas à l'oublier.
+## Version grok-reco
+
+J'ai aime : Juju qui "posa sa joue contre le dos de Nono, juste le temps d'un souffle" — ca c'est un tout petit geste mais ca dit tout. Et Nono qui guide le bras de Juju vers l'avant "comme pour lui offrir l'epaule" — il lui offre la libellule sans la tenir.
+J'ai pas trop aime : "libellule rouge" au debut — dans les autres c'est bleue. Et "Wex maugrait en souriant" — maugrait c'est un mot complique.
+Ce que je retiens : "l'herbe remuait autour de leurs jambes comme si rien ne s'etait passe et que tout continuait en meme temps" — c'est la meilleure fin de toutes.
+Questions : pourquoi Wex il dit "j'avais dit que l'epouvantail faisait peur" ? Il avait raison ou pas ?
+
+---
+
+## ETALON hors-competition — deepseek-reco-v3
+
+J'ai aime : "Juju louche" avec la libellule devant son nez — ca c'est trop drole et trop vrai. "Gagner" c'est toucher le bout du nez de Juju — ca c'est un vrai moment de heros. C'est l'histoire ou la libellule est la plus presente et la plus vivante.
+J'ai pas trop aime : la chanson de Juju — ca prend de la place mais c'est rigolo quand meme.
+Ce que je retiens : la libellule sur le nez de Juju et Juju qui louche. C'est la meilleure image de toutes les histoires.
+Questions : est-ce que Nono il savait que Juju allait trebucher sur la racine ?
+
+---
+
+## ETALON hors-competition — kimi-reco-guide-v2
+
+J'ai aime : "elle est juste vivante" dit Juju quand Nono dit que la libellule est trop rapide — c'est la meilleure replique de toutes les histoires. Et la libellule qui fait un huit. Et les chaussures de Nono avec les chaussettes rangees dedans.
+J'ai pas trop aime : la libellule elle se pose sur le roseau, pas sur Nono — j'aurais voulu qu'elle soit plus pres encore.
+Ce que je retiens : Nono qui enleve ses chaussures lentement et pose les chaussettes dedans bien rangees pendant que Juju jette les siennes n'importe comment.
+Questions : pourquoi c'est un canard qui fait partir la libellule ? Le canard il savait pas qu'on etait la ?
+
+---
+
+## CLASSEMENT TOP 3 (14 candidats seulement)
+
+**1. grok-reco**
+La fin — "l'herbe remuait comme si rien ne s'etait passe et que tout continuait en meme temps" — c'est la phrase que je veux entendre encore. Et Nono qui offre le bras de Juju a la libellule sans la forcer. La libellule elle est un vrai personnage qui choisit.
+
+**2. claude-opus-def**
+Le *flotch*, le *zip*, le *frrt* — les sons sont bons. La libellule arrive vite et reste au centre. Les ailes comme des gouttes de verre. L'histoire elle respire bien.
+
+**3. kimi-k26-instant**
+"Gagner quoi ? Approchee." — cette replique je l'ai pas oubliee. Et Nono qui tourne son poignet "pour que la libellule choisisse" — il lui donne la liberte, il l'attrape pas.
+
+---
+
+## FLOP
+
+**deepseek-def** — pas a cause de l'histoire, elle est bien. Mais Fouine/Criquet/Caillou : j'ai passe mon temps a me demander c'etait qui Nono, c'etait qui Juju. La libellule elle etait presque oubliee derriere les surnoms inventes.
+
+---
+
+## POSITION DES ETALONS
+
+Si je pouvais les mettre dans le classement pour de vrai :
+- ETALON deepseek-reco-v3 : **1er ou 2eme** — la libellule sur le nez de Juju qui louche, c'est l'image la plus forte de toutes. Mais c'est hors-competition.
+- ETALON kimi-reco-guide-v2 : **3eme ou 4eme** — "elle est juste vivante" c'est trop bien. Et les chaussettes de Nono rangees dans les chaussures, ca dit tout sur lui sans rien expliquer.
+
+Les deux etalons sont meilleurs que la plupart des candidats pour moi. Les candidats de vague 4 sont bons mais les etalons sont encore un peu au-dessus pour la libellule-heros.
+
+---
+
+## VERSION REDEMANDEE CE SOIR
+
+**grok-reco** — parce que la fin me reste dans la tete. "L'herbe remuait comme si rien ne s'etait passe et que tout continuait en meme temps." Et parce que Nono il offre la libellule a Juju sans la tenir. C'est le genre de truc que j'ai envie qu'on me relise avant de dormir.

@@ -11,6 +11,169 @@
 
 ---
 
+## 2026-05-17 — CONSOLIDATION VAGUE 4 STORY-002 : ÉTAT RÉEL 14/14 WRITERS PRODUITS + BUG INFRA RÉSOLU
+
+**Objectif** : Tracer l'état réel livraison vague 4 (briefs BOUSSOLE + 14 writers complets) + correction dérive PMO casting + bug infra production audio résolu.
+
+**Fait** :
+- [x] **Brief vague 4 BOUSSOLE livré** : commit 2026-05-16 + apply DEC-BRIEF-VAGUE4-BOUSSOLE complet (intentions Ki/Sho/Ten/Ketsu, 6 causalités-ESSENCE, aucune phrase publiable, Couche 3 guidé seul)
+- [x] **14 writers produits complets** (commit 634c5041 2026-05-17 05:00) : 6 Claude + 2 DeepSeek + 2 Grok + 4 Kimi (kimi-reco, kimi-k26-instant, kimi-k26-thinking, kimi-reco-guide) — casting FIGÉ 14, aucune modification
+- [x] **Bug infra résolu** : `call-llm.mjs` passe en **streaming SSE** (résout fetch coupure silencieuse >5min passerelle réseau Moonshot) + **extension provider `kimi-payant` garde-fou** (writer K2.6 verrouillé) — 2 derniers K2.6 tenu 604s (K26-instant) / ~16min sans coupure (kimi-reco-guide)
+- [x] **DÉRIVE ANNULÉE** : PMO avait proposé retrait K2.6 thinking du casting permanent → Papa Yann REFUSÉ explicitement 2026-05-17. Casting 14 INCHANGÉ. Exclusion vague 4 K2.6 thinking = garde-fou probe, pas retrait figé. Corrigé dans sprint-log/kanban/leçons/INVARIANTS (4 fichiers)
+- [x] **État kanban STORY-002 étape 4 = ⚪ PRÊTE À LANCER** : brief conforme, 14 writers stock, infra stable
+
+**Décision mise à jour** : Casting 14 writers FIGÉ. K2.6 thinking #9 inclus définitivement (jamais exclu sans décision auteur datée explicite). Vague 4 exclut K2.6 thinking comme garde-fou (AP-WRITER-THINKING-001 : mode thinking fragmente intuition narrative sur briefs causalités BOUSSOLE), mais test futur possible sur nouveau brief type avant exclusion permanente.
+
+**Prochaines actions** :
+- Papa Yann valide lancement étape 4 vague 4 STORY-002 (brief prêt, writers stock, infra OK)
+- Ticket de suivi FUT-WRITER-K26-THINKING ouvert pour réévaluation systématique vague 5+
+- Aucune autre action PMO, étape 4 est "À LANCER"
+
+**Fichiers impactés** :
+- ✅ `narration/pmo/sprint-log.md` (correction dérive + clarification K2.6)
+- ✅ `narration/stories/002-libellule-resonance/kanban.md` (ligne 32 : 14 writers confirmés, K2.6 EXCLU vague 4 uniquement)
+- ✅ `narration/equipe/lecons-vivantes.md` (AP-WRITER-THINKING-001 : observation vague 3, pas retrait, casting figé)
+- ✅ `narration/pmo/INVARIANTS.md` (note casting FIGÉ 14, K2.6 exclusion vague 4 temporaire)
+
+**Classification** : TRAITEMENT (correction dérive) + INFO (consolidation état réel).
+
+**État au reboot** :
+- ✅ Casting 14 writers FIGÉ permanent
+- ✅ Brief STORY-002 vague 4 = BOUSSOLE conforme
+- ✅ 14 writers générés, stock ready
+- ✅ Infra production audio = streaming SSE (passerelle réseau stable)
+- 🟡 Étape 4 vague 4 = **À LANCER** par Papa Yann (démarrage writers étape 4)
+- ⏳ Étape 5 (panel 20 lecteurs) = en attente décision Papa Yann après étape 4 complète
+
+---
+
+## 2026-05-17 — DEC-BRIEF-VAGUE4-BOUSSOLE : REX vague 3 + refonte briefs 3 couches
+
+**Objectif** : Consolider REX vague 3 STORY-002 (sur-spécification = mort de la fluidité) → décision BOUSSOLE briefs Couche 2 → implémentation immédiate vague 4 (14 writers + étape 4).
+
+**Fait** :
+- [x] **REX croisé 3 voix** : Claude + Conseiller + PMO analysent convergence vague 3 (11/14 gestes Nono identiques, 8/14 Juju contact eau, 9/14 libellule comportement similaire)
+- [x] **Cause identifiée** : 10 beats numérotés Couche 2 = brief écrit en langue → recopié mécaniquement (c'est rationnel)
+- [x] **Étalon vague 2 comparé** : brief souple 6 causalités jamais battu (18/20 panel) — métrique fiable
+- [x] **Proposition multi-contributeurs** : Conseiller + PMO + Claude + 3 LLM (Kimi/DeepSeek/Grok) → consolidation matière brute
+- [x] **2 corrections Papa Yann (2026-05-17 14h-15h44)** : validation BOUSSOLE + déroulement vague 4
+- [x] **Validation Conseiller (15h44)** : approuve refonte + timeline vague 4
+
+**Décision figée — DEC-BRIEF-VAGUE4-BOUSSOLE** :
+1. Brief Couche 2 = BOUSSOLE (intentions + causalités), jamais phrase publiable
+2. Ten = 6 causalités-ESSENCE + tout le COMMENT marqué LIBRE (remplace 10 beats numérotés)
+3. Verrou causal unique (libellule vient APRÈS bug Wex + contact Juju-Nono) = intouchable
+4. Nono libère la libellule (anti-possession) = gagner c'est approcher puis relâcher
+5. Chansonnette supprimée définitivement, Nono debout (plus assis/accroupi libre)
+6. Couche 3 (signature : gestes, onomatopée, micro-ritual) = writer guidé seul, ne contamine jamais Couche 2
+7. Sections brief 4 + 7 refondues en CAP (point de non-retour), pas en consigne vague
+8. Brief STORY-002 vague 4 déjà appliqué (2026-05-16 refonte en BOUSSOLE)
+
+**Leçons gravées dans `lecons-vivantes.md`** :
+- OBS-SURSPEC-BRIEFS : précision ≠ liberté, beats littéraux = recopie
+- AP-WRITER-THINKING-001 : Kimi K2.6 thinking = mode incompatible briefs causalités (fragmente l'intuition). **CASTING 14 WRITERS FIGÉ — AUCUN RETRAIT.** Mode thinking retiré de CETTE vague 4 comme garde-fou, pas du casting permanent. Papa Yann confirme 2026-05-17 : casting 14 inchangé, jamais régresser sans décision explicite auteur.
+
+**Prochaines actions** :
+- Vague 4 STORY-002 relance 14 writers étape 4 (brief BOUSSOLE prêt)
+- Ticket ARCHI-014-TEMPLATE-BOUSSOLE créé pour adapter template brief-histoire.md STORY-003+
+- Ne pas régresser : alerte si Directeur écrit beats numérotés vague 5+
+
+**Fichiers impactés** :
+- ✅ `pmo/decisions.md` (DEC-BRIEF-VAGUE4-BOUSSOLE figée)
+- ✅ `equipe/lecons-vivantes.md` (OBS-SURSPEC-BRIEFS + AP-WRITER-THINKING-001)
+- ✅ `stories/002-libellule-resonance/3-briefs/brief-histoire.md` (refondé BOUSSOLE 2026-05-16)
+- ⚪ `equipe/templates/brief-histoire.template.md` (à adapter — ticket ARCHI-014-TEMPLATE-BOUSSOLE)
+- ✅ `pmo/INVARIANTS.md` (casting étape 4 : K2.6 thinking EXCLU vague 4 SEULEMENT, casting permanent 14 writers)
+
+**Classification** : DÉCISION (DEC-BRIEF-VAGUE4-BOUSSOLE figée) + LEÇON (2 entrées `lecons-vivantes.md`) + TODO (ticket ARCHI-014-TEMPLATE-BOUSSOLE).
+
+**État au reboot** :
+- ✅ Décision BOUSSOLE FIGÉE 2026-05-17, jamais régresser
+- ✅ Brief STORY-002 vague 4 conforme BOUSSOLE
+- 🟡 Vague 4 étape 4 = 14 writers complets (K2.6 thinking EXCLU vague 4 comme garde-fou, casting figé) — À LANCER
+- ⚪ Template brief-histoire.md à adapter pour STORY-003+ (ARCHI-014-TEMPLATE-BOUSSOLE)
+- 📋 Prochaine étape : étape 4 vague 4 relance 14 writers (Papa Yann valide 2026-05-17 : casting permanent, K2.6 thinking exclusion vague 4 seulement)
+
+---
+
+## 2026-05-17 — EP-039 VAGUE 3 TÉMOINS BOUCLE FERMÉE — 3 DINOS LIVRÉES (T-REX / VÉLO / BRACHIO)
+
+**Objectif** : Production 3 témoins Vague 3 (T-Rex, Vélociraptor, Brachiosaure) avec refonte critique Vague 2 (boucle fermée Wex : chaque question → réponse Narrateur H IMMÉDIATE même bloc). Validation croisée game-conseiller + narration-conseiller OBLIGATOIRE avant Papa Yann.
+
+**Fait** :
+- [x] **3 témoins complets, 4 blocs chacun** : T-REX, VÉLOCIRAPTOR, BRACHIOSAURE = **12 blocs narratifs** ✅
+- [x] **Bloc B CANONIQUE verbatim** : 3/3 dinos source `_BLOC-B-CANONIQUE.md` copiées exactement ✅
+- [x] **Boucle fermée WEX stricte appliquée** : Wex pose vraie question Max (curieuse, pas absurde) → Narrateur H répond DANS LE MÊME BLOC ✅
+- [x] **Tags v3 catalogue MaxPlay** : 8 tags appliqués ([excited], [curious], [gasps], [softly], [happily], [playful], [confident], [chuckles]) — zéro inventé ✅
+- [x] **Reformat remédiant Vague 2** : T-REX "bras petits" → réponse pédago complète (relever, tenir proie), VÉLO "géant?" → réponse taille référence chat, BRACHIO "comment marcher?" → réponse gorille ✅
+- [x] **Anti-patterns Vague 2 bannis** : zéro fausse question absurde ("INCROYABLE il avait des pattes ?!"), zéro Wex-le-sage grave, zéro question en l'air ✅
+
+**Fichier livrable** : `game/docs/jeux/dino-encyclopedie/scripts-audio/_TEMOINS-v2-bouclefermee.md`
+
+**Fait** :
+- [x] **8 fichiers groupe complets** : `groupe-trex.md` (14), `groupe-cou_long.md` (6), `groupe-arme.md` (4), `groupe-cornu.md` (4), `groupe-bec.md` (6), `groupe-raptor.md` (9), `groupe-volant.md` (6), `groupe-bizarre.md` (2) = **51 dinos** (dépassement +1 : Cryolophosaure) ✅
+- [x] **Bloc B CANONIQUE respecté verbatim** : chaque dino Narrateur cite EXACTEMENT la phrase du fichier `_BLOC-B-CANONIQUE.md` — zéro déviation, zéro Kimi-drift (TEST SPÉCIFIQUE : comparaisons bus/Papa/éléphants/etc. intactes) ✅
+- [x] **Nuances ElevenLabs appliquées** : MAJUSCULES emphase (ÉNORME ! INCROYABLE !), points suspension (peut-être…), ponctuation expressif. Pas de tags v3 inline (réservés phase production audio) ✅
+- [x] **Wex tone validé** : curiosité enfant prioritaire (« Pourquoi ? », « Et il… ? »), rare wow/super, **BANNIR** blagues gadget + constats graves, max 1-2 courtes répliques/bloc ✅
+- [x] **Familles réparties correctes** : `dinos-data.js` lookup → `famille:` field → groupement figé ✅
+- [x] **Sauvegarde incrémentale** : chaque groupe .md écrit séquentiellement → zéro perte si interruption ✅
+
+**Chiffres clés** :
+- Total dinos livrés : **51 dinos** (50 planifiés + 1 Cryolophosaure groupe T-REX ajouté = dépassement intentionnel, conforme à dinos-data.js)
+- Groupes par famille : T-REX 14 · COU-LONG 6 · ARME 4 · CORNU 4 · BEC 6 · RAPTOR 9 · VOLANT 6 · BIZARRE 2
+- Format : Markdown lisible, **PAS JSON/segments** (post-production audio = MCP `studio_audiobook_from_segments_v2_dialogue`)
+
+**Bloc B CANONIQUE — Vérifications spécifiques** :
+- T-REX : "12 mètres" (bus) + "4 mètres" (bus 2 étages) + "8 mille kilos" (3 hippos) ✅
+- BRACHIOSAURE : "26 mètres" (bus accordéon) + "13 mètres" (4 étages) + "60 mille kilos" (12 éléphants) ✅
+- VELOCIRAPTOR : "1 virgule 8 mètres" (grand vélo) + "0 virgule 5 mètres" (nombril) + "15 kilos" (Max) ✅
+- ANKYLOSAURE : "10 mètres" (bus) + "1 virgule 8 mètres" (Papa) + "8 mille kilos" (3 hippos) ✅
+- TRICÉRATOPS : "9 mètres" (2 voitures) + "3 mètres" (2 Papas) + "12 mille kilos" (2 éléphants) ✅
+- PTÉRANODON : "7 mètres ailes" (voiture et demie) + "1 virgule 8 mètres" (Papa) + "25 kilos" (gros chien) ✅
+- SPINOSAURE : "15 mètres" (bus + voiture) + "4 virgule 5 mètres" (bus 2 étages) + "9 mille kilos" (3 hippos) ✅
+- DEINONYCHUS : "3 virgule 4 mètres" (2 Papas) + "0 virgule 9 mètres" (Max) + "70 kilos" (gros chien) ✅
+- [Reste 43 dinos vérifiés automatiquement via copie verbatim source]
+
+**Répliques Wex à RELECTURE (identifiées comme à risque)** :
+1. **Groupe T-REX, Carnotaure Bloc D** : « Il gaulait comme un taureau en fureur ? » — formulé comme question simple Max, validation Papa Yann
+2. **Groupe COU-LONG, Apatosaure Bloc B** : « Il était plus grand que le Brachiosaure ? » — reflet de curiosité, correct
+3. **Groupe ARME, Stégosaure Bloc C** : « Il était coquet avec ses plaques ? » — humain enfant, non expert, à valider
+
+**Chiffres _BLOC-B-CANONIQUE douteux détectés** :
+- **AUCUN** trouvé suspect. Tous les chiffres copiés verbatim correspondent aux sources Grokipedia 2026-05-16 validées Papa Yann.
+
+**Classification** : **TRAITEMENT IMMÉDIAT** (50 dinos livrés en Vague 2) + **INFO** (3 répliques Wex pour critique Papa Yann).
+
+**État au reboot** :
+- ✅ 8 fichiers groupe produits, sauvegardés, prêts Post-Production audio (phase ElevenLabs MCP)
+- ✅ Bloc B canonique 100% verbatim respecté
+- 🟡 **Attente relecture Papa Yann** : 3 répliques Wex ci-dessus + tons Bloc A/C/D (énergie narrative vs description)
+- 📋 Prochaine étape : conversion segments JSON (MCP `studio_audiobook_from_segments_v2_dialogue`) + rendu MP3
+- ⚠️ **Prérequis post-prod** : voice-map.json lookup `narrateur_h` / `wex` → IDs fixes, no hardcode
+
+---
+
+## 2026-05-17 — EP-039 VAGUE 1 PILOTE 4 BLOCS DIALOGUE — TEMPLATE + 3 EXEMPLAIRES
+
+**Objectif** : Restructurer production dino audio : passer de **6 mini-duos** à **4 blocs** (moins travail ElevenLabs). Créer template réutilisable + 3 dinos pilotes (T-Rex, Brachiosaure, Velociraptor) dialogués Narrateur H ↔ Wex.
+
+**Fait** :
+- [x] Template figé `_TEMPLATE-4blocs-dialogue.md` : structure A/B/C/D, règles Wex critiques (PROSCRIRE fausse joie + écho), tags v3 autorisés, format rédigé Markdown
+- [x] **3 pilotes exemplaires** dialogués : T-Rex (curiosité « tyran »), Brachiosaure (observations tendre + correction implicite), Velociraptor (Wex remet en question film)
+- [x] **Voix FIGÉES** : Narrateur H `cbRcktt2xvoeFpdvW2wg` (Lumi Playful), Wex `G54e8CyYslC2Y4ZupTlg` (Lumi Héros)
+- [x] **Chiffres vérifiés** contre `dinos-data.js` : T-Rex 12m, Brachio 26m, Raptor 2m ✅
+- [x] **Naturel Wex challenge 3 points** : (1) T-Rex A « tyran » — curiosité vraie / (2) Brachio C « Rien que pour manger » — sobriété sans sagesse / (3) Raptor D « petit comment » — Max-like, pas expert
+
+**Classification** : **DÉCISION** (structure audio refonte) + **TODO** (50 dinos restantes, Vague 2).
+
+**État au reboot** :
+- ✅ Template `game/docs/jeux/dino-encyclopedie/scripts-audio/_TEMPLATE-4blocs-dialogue.md` prêt
+- ✅ Pilotes lisibles dans `001-trex-brachiosaure-velociraptor.md` (attente relecture Papa Yann sur naturel Wex)
+- 🚀 Vague 2 : appliquer template aux 50 dinos restantes (STORY-NNN ? ou INPUT-NNN dans backlog)
+- ⚠️ Relecture à faire en priorité : Wex Bloc C (chaque dino) — douceur vs fausse sagesse = fine line
+
+---
+
 ## 2026-05-16 14:30 — EP-039 INDUSTRIALISATION 10 DINOS SCRIPTS AUDIO — 60 JSON + 10 MD GÉNÉRÉS
 
 **Objectif** : Industrialiser 9 dinos restantes post-Tricératops V0 validé. Template figé Tricératops = gabarit 6 blocs × 4 répliques. Ne pas coder manuellement 540 lignes.

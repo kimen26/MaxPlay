@@ -1,435 +1,460 @@
 ---
-titre: Leçons vivantes — patterns narratifs MaxPlay
+titre: Leï¿½ons vivantes ï¿½ patterns narratifs MaxPlay
 date_creation: 2026-05-08
 maintenu_par: Conseiller (`narration-conseiller`) + Directeur (`narration`)
-mise_a_jour: à chaque canonisation (étape 10) — section dédiée par histoire
-remplace: ancien `stories/ultime_debrief.md` (figé au 2026-05-05) — désormais ce fichier vit et grandit
+mise_a_jour: ï¿½ chaque canonisation (ï¿½tape 10) ï¿½ section dï¿½diï¿½e par histoire
+remplace: ancien `stories/ultime_debrief.md` (figï¿½ au 2026-05-05) ï¿½ dï¿½sormais ce fichier vit et grandit
 ---
 
-# Leçons vivantes — patterns narratifs MaxPlay
+# Leï¿½ons vivantes ï¿½ patterns narratifs MaxPlay
 
-> **Document vivant.** Mis à jour à chaque canonisation d'histoire (étape 10 du PROCESS). Source pour le Conseiller (étape 1 pitch), l'Architecte (étape 2 plan), et les writers via les briefs.
-> **Différence avec `ultime_debrief.md`** : celui-ci était une photo figée 2026-05-05. Ce fichier est cumulatif et corrigé.
+> **Document vivant.** Mis ï¿½ jour ï¿½ chaque canonisation d'histoire (ï¿½tape 10 du PROCESS). Source pour le Conseiller (ï¿½tape 1 pitch), l'Architecte (ï¿½tape 2 plan), et les writers via les briefs.
+> **Diffï¿½rence avec `ultime_debrief.md`** : celui-ci ï¿½tait une photo figï¿½e 2026-05-05. Ce fichier est cumulatif et corrigï¿½.
 
 ---
 
 ## SOMMAIRE
 
-1. [Patterns confirmés](#patterns-confirmés) — ce qui marche, vérifié sur N histoires
-2. [Pièges documentés](#pièges-documentés) — ce qui décroche / casse, à éviter
-3. [Axes narratifs (1-6)](#axes-narratifs) — palette pour writers guidés
-4. [Signal genre × accompagnement](#signal-genre-accompagnement) — qui aime quoi
-5. [Patterns en observation](#patterns-en-observation) — pas encore confirmés, à valider
-6. [Historique des révisions](#historique-des-révisions)
+1. [Patterns confirmï¿½s](#patterns-confirmï¿½s) ï¿½ ce qui marche, vï¿½rifiï¿½ sur N histoires
+2. [Piï¿½ges documentï¿½s](#piï¿½ges-documentï¿½s) ï¿½ ce qui dï¿½croche / casse, ï¿½ ï¿½viter
+3. [Axes narratifs (1-6)](#axes-narratifs) ï¿½ palette pour writers guidï¿½s
+4. [Signal genre ï¿½ accompagnement](#signal-genre-accompagnement) ï¿½ qui aime quoi
+5. [Patterns en observation](#patterns-en-observation) ï¿½ pas encore confirmï¿½s, ï¿½ valider
+6. [Historique des rï¿½visions](#historique-des-rï¿½visions)
 
 ---
 
-## Patterns confirmés
+## Patterns confirmï¿½s
 
-> ? Vérifiés sur 2+ histoires avec des panels lecteurs convergents.
+> ? Vï¿½rifiï¿½s sur 2+ histoires avec des panels lecteurs convergents.
 
-### P1 — Ouverture rapide (= 2 phrases de contexte)
+### P1 ï¿½ Ouverture rapide (= 2 phrases de contexte)
 
 **Origine** : kimi-run1 (001), claude-run1 (001) en haut du classement.
-**Anti-leçon** : grok-run1 (001) : 3 phrases de saules/soleil/feuilles ? décrochage 6/6 lecteurs.
-**Règle** : maximum 2 phrases avant l'action ou l'arrivée du trio.
+**Anti-leï¿½on** : grok-run1 (001) : 3 phrases de saules/soleil/feuilles ? dï¿½crochage 6/6 lecteurs.
+**Rï¿½gle** : maximum 2 phrases avant l'action ou l'arrivï¿½e du trio.
 
-### P2 — Geste physique avant réplique
+### P2 ï¿½ Geste physique avant rï¿½plique
 
-**Origine** : kimi-run2 (001) « Pierrot garde sa main autour du poignet de Raph […] comme un bracelet ». Cité top par 3 lecteurs.
-**Règle** : les enfants **font** avant de **dire**. S'allonger, ramper, tracer, cueillir. Le mouvement crée la voix.
+**Origine** : kimi-run2 (001) ï¿½ Pierrot garde sa main autour du poignet de Raph [ï¿½] comme un bracelet ï¿½. Citï¿½ top par 3 lecteurs.
+**Rï¿½gle** : les enfants **font** avant de **dire**. S'allonger, ramper, tracer, cueillir. Le mouvement crï¿½e la voix.
 
-### P3 — Promesse du titre tenue
+### P3 ï¿½ Promesse du titre tenue
 
-**Origine** : kimi-run1 (001) drapeau-pissenlit ne répare pas le pont, le marque. Cité par 5/6 lecteurs.
-**Règle** : l'objet du titre reste au centre. Jamais évacué, jamais réparé/résolu de force.
+**Origine** : kimi-run1 (001) drapeau-pissenlit ne rï¿½pare pas le pont, le marque. Citï¿½ par 5/6 lecteurs.
+**Rï¿½gle** : l'objet du titre reste au centre. Jamais ï¿½vacuï¿½, jamais rï¿½parï¿½/rï¿½solu de force.
 
-### P4 — Fin = rituel physique ou image, pas explication
+### P4 ï¿½ Fin = rituel physique ou image, pas explication
 
-**Origine** : kimi-run2 (001) « Au revoir fenêtre / À plus tard » répété spontanément par 2 lecteurs.
-**Anti-leçon** : grok-run1 (001) « gardant son secret printanier » ? enfants attendent une suite qui ne vient pas.
-**Règle** : la fin est un **geste, un objet planté, un bruit, une image qui tourne**. L'enfant doit pouvoir *refaire* ce qu'il a entendu.
+**Origine** : kimi-run2 (001) ï¿½ Au revoir fenï¿½tre / ï¿½ plus tard ï¿½ rï¿½pï¿½tï¿½ spontanï¿½ment par 2 lecteurs.
+**Anti-leï¿½on** : grok-run1 (001) ï¿½ gardant son secret printanier ï¿½ ? enfants attendent une suite qui ne vient pas.
+**Rï¿½gle** : la fin est un **geste, un objet plantï¿½, un bruit, une image qui tourne**. L'enfant doit pouvoir *refaire* ce qu'il a entendu.
 
-### TODO-ONOMATOPEES — Onomatopées signature par perso (à travailler, pas encore validées)
+### TODO-ONOMATOPEES ï¿½ Onomatopï¿½es signature par perso (ï¿½ travailler, pas encore validï¿½es)
 
-> **TODO post-STORY-002** : définir les onomatopées signature de chaque perso (comme les phrases types et les gestes). Idées de départ à affiner par persona :
-> - **Raph (T7)** : sons de joie expressive — "Toulo toulo !", "Youpi !", fragments de chansonnettes inventées mal finies
-> - **Juju (T8)** : "Bloublou !" figée STORY-002 (contact joyeux avec le monde) — valider si signature ou ponctuelle
-> - **Nono (T9)** : pas d'onomatopée — *le silence est sa signature* (figé `type-09/voix.md`)
-> - **Wex** : à définir — observateur, probablement aussi du silence ou exclamation courte neutre
-> - Autres persos (Melki, Mimi, Dadou, Madie, Lulu, Pierrot) : à construire
+> **TODO post-STORY-002** : dï¿½finir les onomatopï¿½es signature de chaque perso (comme les phrases types et les gestes). Idï¿½es de dï¿½part ï¿½ affiner par persona :
+> - **Raph (T7)** : sons de joie expressive ï¿½ "Toulo toulo !", "Youpi !", fragments de chansonnettes inventï¿½es mal finies
+> - **Juju (T8)** : "Bloublou !" figï¿½e STORY-002 (contact joyeux avec le monde) ï¿½ valider si signature ou ponctuelle
+> - **Nono (T9)** : pas d'onomatopï¿½e ï¿½ *le silence est sa signature* (figï¿½ `type-09/voix.md`)
+> - **Wex** : ï¿½ dï¿½finir ï¿½ observateur, probablement aussi du silence ou exclamation courte neutre
+> - Autres persos (Melki, Mimi, Dadou, Madie, Lulu, Pierrot) : ï¿½ construire
 >
-> **Méthode à suivre** : brainstorm Auteur/Conseiller par perso ? test à voix haute ? figé dans `type-NN/voix.md` § Onomatopées signature ? puis injecté dans les briefs futurs.
-> **Ne pas inventer pour une story** ce qui n'a pas été validé en amont.
+> **Mï¿½thode ï¿½ suivre** : brainstorm Auteur/Conseiller par perso ? test ï¿½ voix haute ? figï¿½ dans `type-NN/voix.md` ï¿½ Onomatopï¿½es signature ? puis injectï¿½ dans les briefs futurs.
+> **Ne pas inventer pour une story** ce qui n'a pas ï¿½tï¿½ validï¿½ en amont.
 
-### P5 — Onomatopée : 0 ou 1, jamais en cascade
+### P5 ï¿½ Onomatopï¿½e : 0 ou 1, jamais en cascade
 
-**Origine** : kimi-run2 (001) « Clac. Clac. Clac. » en ouverture seule = métronome efficace.
-**Anti-leçon** : grok-run2 (001) « plop-plop glou-glou clap-clap-clap cric boum » = enfants perdus.
-**Règle** : voir [`../cross-culture/onomatopees/catalogue-onomatopees.md`](../cross-culture/onomatopees/catalogue-onomatopees.md). Test à voix haute obligatoire.
+**Origine** : kimi-run2 (001) ï¿½ Clac. Clac. Clac. ï¿½ en ouverture seule = mï¿½tronome efficace.
+**Anti-leï¿½on** : grok-run2 (001) ï¿½ plop-plop glou-glou clap-clap-clap cric boum ï¿½ = enfants perdus.
+**Rï¿½gle** : voir [`../cross-culture/onomatopees/catalogue-onomatopees.md`](../cross-culture/onomatopees/catalogue-onomatopees.md). Test ï¿½ voix haute obligatoire.
 
-### P6 — 3 voix distinctes lisibles
+### P6 ï¿½ 3 voix distinctes lisibles
 
-**Origine** : kimi-run1 (001) Wex pose / Raph explose / Pierrot protège. Lisibilité immédiate.
-**Règle** : chaque enfant du trio a un mode d'action différent (constat / question / corps). Pas de hiérarchie.
+**Origine** : kimi-run1 (001) Wex pose / Raph explose / Pierrot protï¿½ge. Lisibilitï¿½ immï¿½diate.
+**Rï¿½gle** : chaque enfant du trio a un mode d'action diffï¿½rent (constat / question / corps). Pas de hiï¿½rarchie.
 
-### P7 — Rewrite comité éditorial : sélection légère sur idées externes
+### P7 ï¿½ Rewrite comitï¿½ ï¿½ditorial : sï¿½lection lï¿½gï¿½re sur idï¿½es externes
 
-**Origine** : kimi-rewrite-v2 (001) — comité transmet 5 idées (Clac, bracelet, écaille, au revoir, bras moulin), writer accepte 2/5 avec justification argumentée.
-**Anti-leçon** : claude-rewrite-v1 (001) — tenter d'intégrer 4/5 d'un coup + basculer de temps verbal ? régression syntaxique.
-**Règle** : rewrite top-1 ne saute que 2-3 idées max par session, pas 5 à la fois. Brief comité = palette, pas injonction. Argumenter chaque refus dans la note.
+**Origine** : kimi-rewrite-v2 (001) ï¿½ comitï¿½ transmet 5 idï¿½es (Clac, bracelet, ï¿½caille, au revoir, bras moulin), writer accepte 2/5 avec justification argumentï¿½e.
+**Anti-leï¿½on** : claude-rewrite-v1 (001) ï¿½ tenter d'intï¿½grer 4/5 d'un coup + basculer de temps verbal ? rï¿½gression syntaxique.
+**Rï¿½gle** : rewrite top-1 ne saute que 2-3 idï¿½es max par session, pas 5 ï¿½ la fois. Brief comitï¿½ = palette, pas injonction. Argumenter chaque refus dans la note.
 
-### P8 — Univers implicite — la résonance se vit, ne s'énonce pas (validé 002 panel 20)
+### P8 ï¿½ Univers implicite ï¿½ la rï¿½sonance se vit, ne s'ï¿½nonce pas (validï¿½ 002 panel 20)
 
-**Origine** : STORY-002 étape 5 synthèse panel 20 lecteurs (2026-05-13). Top net = kimi-reco-guide-v2 (16+/20).
-**Observation** : toutes versions faibles énoncent la résonance (« la libellule les relie », « présence bienveillante qui résonne », « âmes qui vibrent »). Top scores l'oublient — simplement la vivent par geste, silence, détail.
-**Bon sens narratif** : l'émotion abstraite de lien ne se nomme pas. Elle vit dans : Wex qui ralentit (geste), silence de la libellule, présence commune sans explication. Enfants 4-5 ans : nommer = rupture du charme. Elle s'attrape par la sensorialité, pas par les mots.
+**Origine** : STORY-002 ï¿½tape 5 synthï¿½se panel 20 lecteurs (2026-05-13). Top net = kimi-reco-guide-v2 (16+/20).
+**Observation** : toutes versions faibles ï¿½noncent la rï¿½sonance (ï¿½ la libellule les relie ï¿½, ï¿½ prï¿½sence bienveillante qui rï¿½sonne ï¿½, ï¿½ ï¿½mes qui vibrent ï¿½). Top scores l'oublient ï¿½ simplement la vivent par geste, silence, dï¿½tail.
+**Bon sens narratif** : l'ï¿½motion abstraite de lien ne se nomme pas. Elle vit dans : Wex qui ralentit (geste), silence de la libellule, prï¿½sence commune sans explication. Enfants 4-5 ans : nommer = rupture du charme. Elle s'attrape par la sensorialitï¿½, pas par les mots.
 
 ---
 
-## Pièges documentés
+## Piï¿½ges documentï¿½s
 
-> ? Vérifiés sur 2+ histoires.
+> ? Vï¿½rifiï¿½s sur 2+ histoires.
 
-### G1 — Formules adultes en clôture
-« Gardant son secret printanier » (grok-run1), « gratitude du ruisseau » (grok-run1), « parfait, maintenant le pont est à nous » (grok-run2).
-**Effet** : décrochage adulte, l'enfant ne peut pas s'y retrouver.
+### G1 ï¿½ Formules adultes en clï¿½ture
+ï¿½ Gardant son secret printanier ï¿½ (grok-run1), ï¿½ gratitude du ruisseau ï¿½ (grok-run1), ï¿½ parfait, maintenant le pont est ï¿½ nous ï¿½ (grok-run2).
+**Effet** : dï¿½crochage adulte, l'enfant ne peut pas s'y retrouver.
 
-### G2 — Italique pensée > 2 lignes
-**Effet** : ralentissement, enfant lecteur confus (« elle pense ça ? »).
-**Corrige** : dire à voix haute ou clipper.
+### G2 ï¿½ Italique pensï¿½e > 2 lignes
+**Effet** : ralentissement, enfant lecteur confus (ï¿½ elle pense ï¿½a ? ï¿½).
+**Corrige** : dire ï¿½ voix haute ou clipper.
 
-### G3 — Action sans raison enfant
-Logique adulte d'efficacité.
-**Corrige** : montrer l'intention brève dans le geste.
+### G3 ï¿½ Action sans raison enfant
+Logique adulte d'efficacitï¿½.
+**Corrige** : montrer l'intention brï¿½ve dans le geste.
 
-### G4 — Discours ternaire didactique
-deepseek-run1 (003) : « le pont est toujours cassé / on a fait attention / et celui qui vient après aussi ».
-**Effet** : « ça fait un peu discours d'école » (enfant garçon).
+### G4 ï¿½ Discours ternaire didactique
+deepseek-run1 (003) : ï¿½ le pont est toujours cassï¿½ / on a fait attention / et celui qui vient aprï¿½s aussi ï¿½.
+**Effet** : ï¿½ ï¿½a fait un peu discours d'ï¿½cole ï¿½ (enfant garï¿½on).
 
-### G5 — Greffes substitutives au lieu d'additives (cas du rewrite)
-claude-rewrite-v1 (003) : ouverture sensorielle de kimi-run1 ÉCRASÉE par « Clac Clac Clac » au lieu d'être enrichie.
-**Règle** : si on greffe, on **ajoute**, on **ne remplace pas** ce qui faisait gagner la base.
+### G5 ï¿½ Greffes substitutives au lieu d'additives (cas du rewrite)
+claude-rewrite-v1 (003) : ouverture sensorielle de kimi-run1 ï¿½CRASï¿½E par ï¿½ Clac Clac Clac ï¿½ au lieu d'ï¿½tre enrichie.
+**Rï¿½gle** : si on greffe, on **ajoute**, on **ne remplace pas** ce qui faisait gagner la base.
 
-### G6 — Bascule de temps verbal lors d'une greffe
-claude-rewrite-v1 (003) : kimi-run2 au présent a contaminé tout le rewrite, kimi-run1 perdait son imparfait.
-**Règle** : conjuguer la greffe au temps de la base.
+### G6 ï¿½ Bascule de temps verbal lors d'une greffe
+claude-rewrite-v1 (003) : kimi-run2 au prï¿½sent a contaminï¿½ tout le rewrite, kimi-run1 perdait son imparfait.
+**Rï¿½gle** : conjuguer la greffe au temps de la base.
 
 ---
 
 ## Axes narratifs
 
-> Palette pour writers guidés (cf. [`templates/brief-writer-guide.template.md`](templates/brief-writer-guide.template.md)).
+> Palette pour writers guidï¿½s (cf. [`templates/brief-writer-guide.template.md`](templates/brief-writer-guide.template.md)).
 
 | # | Axe | Statut |
 |---|-----|--------|
-| **1** | Créature vivante | confirmé (004 kimi-run1 salamandre) |
-| **2** | Geste physique avant réplique | confirmé |
-| **3** | Onomatopée légère intégrée | confirmé |
-| **4** | Fin avec rituel physique | confirmé |
-| **5** | Mystère vs résolution (choix conscient) | confirmé (clivage genre identifié) |
-| **6** | Détail-faute volontaire | confirmé (001 V2 « ATENSION ») |
+| **1** | Crï¿½ature vivante | confirmï¿½ (004 kimi-run1 salamandre) |
+| **2** | Geste physique avant rï¿½plique | confirmï¿½ |
+| **3** | Onomatopï¿½e lï¿½gï¿½re intï¿½grï¿½e | confirmï¿½ |
+| **4** | Fin avec rituel physique | confirmï¿½ |
+| **5** | Mystï¿½re vs rï¿½solution (choix conscient) | confirmï¿½ (clivage genre identifiï¿½) |
+| **6** | Dï¿½tail-faute volontaire | confirmï¿½ (001 V2 ï¿½ ATENSION ï¿½) |
 
-? Détails et règles dans [`templates/brief-writer-guide.template.md`](templates/brief-writer-guide.template.md).
-
----
-
-## Signal genre × accompagnement
+? Dï¿½tails et rï¿½gles dans [`templates/brief-writer-guide.template.md`](templates/brief-writer-guide.template.md).
 
 ---
 
-## Découvertes méthodo voix (v24 validée)
+## Signal genre ï¿½ accompagnement
 
-### OBS-METHODO-V24-FILLE-VALIDÉE
+---
 
-La méthodo v24 garçons (header `Animated little guy voice`, physiologie aiguë, zéro négation, < 1000 chars) **se transpose directement en fille** via seule substitution du header (`Animated little girl character voice`). Validation Juju 1 essai = preuve empirique. À appliquer identiquement pour Mimi (T2) et Madie (T4).
+## Dï¿½couvertes mï¿½thodo voix (v24 validï¿½e)
+
+### OBS-METHODO-V24-FILLE-VALIDï¿½E
+
+La mï¿½thodo v24 garï¿½ons (header `Animated little guy voice`, physiologie aiguï¿½, zï¿½ro nï¿½gation, < 1000 chars) **se transpose directement en fille** via seule substitution du header (`Animated little girl character voice`). Validation Juju 1 essai = preuve empirique. ï¿½ appliquer identiquement pour Mimi (T2) et Madie (T4).
 
 **Chiffres** : 
 - Juju : `WFNYCPhDQM9w07KAV6Be`, 858 chars, 1 essai OK
-- Voice settings recommandés : Stability 0.75 · Similarity Boost 0.65 · Style 0.50 · Speaker Boost ON
+- Voice settings recommandï¿½s : Stability 0.75 ï¿½ Similarity Boost 0.65 ï¿½ Style 0.50 ï¿½ Speaker Boost ON
 
 ### OBS-NAMING-ANTI-COPIE
 
-Stratégie de nommage Voice Library : adjectif choisi pour vendre l'impact **sans révéler la recette ennéa**. Juju "Solide" = court + percutant + vague (autorisé par framework) + ne révèle pas T8 "Être fort·e". Alternatives testées + rejetées : "Forte" (trop explicite), "Plantée"/"Ancrée" (trop botanique).
+Stratï¿½gie de nommage Voice Library : adjectif choisi pour vendre l'impact **sans rï¿½vï¿½ler la recette ennï¿½a**. Juju "Solide" = court + percutant + vague (autorisï¿½ par framework) + ne rï¿½vï¿½le pas T8 "ï¿½tre fortï¿½e". Alternatives testï¿½es + rejetï¿½es : "Forte" (trop explicite), "Plantï¿½e"/"Ancrï¿½e" (trop botanique).
 
 ---
 
-## Observations casting phonétique
+## Observations casting phonï¿½tique
 
-### OBS-SONORITÉ-CASTING
+### OBS-SONORITï¿½-CASTING
 
-Collision trochée fermée-fermée (Polo?Nono) **détectable précocement** lors du casting via phonétique 4-5 ans. Règle : avant de figer un prénom, tester à voix haute :
-- Trochées + diphtongues (Polo `o-o` fermée-fermée vs Nono `o-o` identique)
-- Répétabilité (enfant 4 ans reprend-il facilement ?)
-- Dadou vs Nono = clair à l'oral. Polo vs Nono = confusion probable.
+Collision trochï¿½e fermï¿½e-fermï¿½e (Polo?Nono) **dï¿½tectable prï¿½cocement** lors du casting via phonï¿½tique 4-5 ans. Rï¿½gle : avant de figer un prï¿½nom, tester ï¿½ voix haute :
+- Trochï¿½es + diphtongues (Polo `o-o` fermï¿½e-fermï¿½e vs Nono `o-o` identique)
+- Rï¿½pï¿½tabilitï¿½ (enfant 4 ans reprend-il facilement ?)
+- Dadou vs Nono = clair ï¿½ l'oral. Polo vs Nono = confusion probable.
 
-(Decision 2026-05-13 : DEC-RENAME-POLO-DADOU, voir `decisions.md` pour justification complète.)
+(Decision 2026-05-13 : DEC-RENAME-POLO-DADOU, voir `decisions.md` pour justification complï¿½te.)
 
 ---
 
-## Validations empiriques étape 5 STORY-002
+## Validations empiriques ï¿½tape 5 STORY-002
 
 ### OBS-RESONANCE-IMPLICITE
 
-La résonance est un conteur majeur (lien entre trois + complétude) mais **son énonciation la tue**. JAMAIS nommer. Elle vit dans :
+La rï¿½sonance est un conteur majeur (lien entre trois + complï¿½tude) mais **son ï¿½nonciation la tue**. JAMAIS nommer. Elle vit dans :
 - Le geste de Wex (qui relie)
 - Le silence de l'animal
-- La présence commune sans explication
+- La prï¿½sence commune sans explication
 
-Empirisme 20 lecteurs (STORY-002 étape 5) :
-- **Top 1 (16+/20)** : kimi-reco-guide-v2 — omission complète du mot "résonance"
+Empirisme 20 lecteurs (STORY-002 ï¿½tape 5) :
+- **Top 1 (16+/20)** : kimi-reco-guide-v2 ï¿½ omission complï¿½te du mot "rï¿½sonance"
 - **Top 2 scores** : pareil
-- **Bottom scores (grok-def, deepseek-def)** : tous contiennent formulation adulte (« les âmes résonnent », « présence bienveillante qui vibre »)
+- **Bottom scores (grok-def, deepseek-def)** : tous contiennent formulation adulte (ï¿½ les ï¿½mes rï¿½sonnent ï¿½, ï¿½ prï¿½sence bienveillante qui vibre ï¿½)
 
-Enfants et dyades convergent : "on sent que c'est magique, mais pas expliqué".
+Enfants et dyades convergent : "on sent que c'est magique, mais pas expliquï¿½".
 
-**Impact briefs futurs** : ajouter à section "Univers implicite" des briefs histoire.
+**Impact briefs futurs** : ajouter ï¿½ section "Univers implicite" des briefs histoire.
 
 ---
 
-## Signal genre × accompagnement
+## Signal genre ï¿½ accompagnement
 
-> Confirmé sur le panel à 6 lecteurs (001 V2, 003-v2, 004). À re-vérifier avec panel 20.
+> Confirmï¿½ sur le panel ï¿½ 6 lecteurs (001 V2, 003-v2, 004). ï¿½ re-vï¿½rifier avec panel 20.
 
-| Profil | Préfère | Décroche sur |
+| Profil | Prï¿½fï¿½re | Dï¿½croche sur |
 |--------|---------|--------------|
-| **Garçon (seul)** | Proprioception, bruits, mouvements à imiter, créatures spectaculaires | Long avant que ça bouge, formes adultes, fins sans action |
-| **Fille (seule)** | Intériorité, créatures, finales douces, geste tendre nommé | Descriptions adultes, méchanceté entre persos |
-| **Dyade maman** | Silences, intériorité, moments d'émotion retenue | Descriptions qui demandent d'énoncer tout (perte du non-dit) |
-| **Dyade papa** | Rythme, action, clarté qui-fait-quoi, verbes d'action clairs | Intro lente, fin philosophique sans image |
+| **Garï¿½on (seul)** | Proprioception, bruits, mouvements ï¿½ imiter, crï¿½atures spectaculaires | Long avant que ï¿½a bouge, formes adultes, fins sans action |
+| **Fille (seule)** | Intï¿½rioritï¿½, crï¿½atures, finales douces, geste tendre nommï¿½ | Descriptions adultes, mï¿½chancetï¿½ entre persos |
+| **Dyade maman** | Silences, intï¿½rioritï¿½, moments d'ï¿½motion retenue | Descriptions qui demandent d'ï¿½noncer tout (perte du non-dit) |
+| **Dyade papa** | Rythme, action, clartï¿½ qui-fait-quoi, verbes d'action clairs | Intro lente, fin philosophique sans image |
 
 ---
 
-## Patterns méta-process (opérationnels)
+## Patterns mï¿½ta-process (opï¿½rationnels)
 
-> ? Vérifiés en audit 2026-05-11 — applicables au pôle narration et jeu.
+> ? Vï¿½rifiï¿½s en audit 2026-05-11 ï¿½ applicables au pï¿½le narration et jeu.
 
-### M1 — Audit pôle systématique = outil utile
+### M1 ï¿½ Audit pï¿½le systï¿½matique = outil utile
 
-**Origine** : skill `pmo-challenge` créé game-pmo (2026-05-11). Simulation 8 scénarios (nouvelle histoire, audio, cross-culture, localisation) ? détecte trous structurels rapidement.
+**Origine** : skill `pmo-challenge` crï¿½ï¿½ game-pmo (2026-05-11). Simulation 8 scï¿½narios (nouvelle histoire, audio, cross-culture, localisation) ? dï¿½tecte trous structurels rapidement.
 
-**Règle** : appliquer audit pôle **post-refonte majeure** (ex : 4 piliers, PROCESS 9?11 étapes, agents restructure) et **pré-déploiement critique** (ex : avant lancer S2 avec casting multi-pays).
+**Rï¿½gle** : appliquer audit pï¿½le **post-refonte majeure** (ex : 4 piliers, PROCESS 9?11 ï¿½tapes, agents restructure) et **prï¿½-dï¿½ploiement critique** (ex : avant lancer S2 avec casting multi-pays).
 
-**Résultat 001** : 3 liens cassés détectés + fixés dans le même tour (narration-audio.md, narration-localisation.md, equipe/INDEX.md).
+**Rï¿½sultat 001** : 3 liens cassï¿½s dï¿½tectï¿½s + fixï¿½s dans le mï¿½me tour (narration-audio.md, narration-localisation.md, equipe/INDEX.md).
 
-### M2 — Distinction PMO spécialiste vs PMO polyvalent
+### M2 ï¿½ Distinction PMO spï¿½cialiste vs PMO polyvalent
 
-**Contexte** : jeu = 3 sachants tile + 2 PMO ; narration = 1 PMO seul (couvre entièrement son pôle).
+**Contexte** : jeu = 3 sachants tile + 2 PMO ; narration = 1 PMO seul (couvre entiï¿½rement son pï¿½le).
 
-**Hypothèse à tester** : si narration grandit (10+ agents, 50+ fichiers), faudra-t-il PMO spécialisés ? À revisiter en S2.
+**Hypothï¿½se ï¿½ tester** : si narration grandit (10+ agents, 50+ fichiers), faudra-t-il PMO spï¿½cialisï¿½s ? ï¿½ revisiter en S2.
 
-### M3 — Challenges transmis = enrichissement itératif du PMO
+### M3 ï¿½ Challenges transmis = enrichissement itï¿½ratif du PMO
 
-**Protocole** : quand on découvre des améliorations opérationnelles au PMO (checklist, anti-patterns, mnémoniques, cartographie), les graver en tickets ARCHI séquencés.
+**Protocole** : quand on dï¿½couvre des amï¿½liorations opï¿½rationnelles au PMO (checklist, anti-patterns, mnï¿½moniques, cartographie), les graver en tickets ARCHI sï¿½quencï¿½s.
 
-**Exemple 2026-05-11** : game-pmo a transmis 6 challenges ; narration-pmo en a retenu 2 pour itération immédiate (C-1, C-2 ? ARCHI-007), 4 en INBOX pour planification (C-3..C-6).
+**Exemple 2026-05-11** : game-pmo a transmis 6 challenges ; narration-pmo en a retenu 2 pour itï¿½ration immï¿½diate (C-1, C-2 ? ARCHI-007), 4 en INBOX pour planification (C-3..C-6).
 
 ---
 
 ## Patterns en observation
 
-> ? À valider sur 2+ histoires supplémentaires.
+> ? ï¿½ valider sur 2+ histoires supplï¿½mentaires.
 
-### O1 — Imparfait comme registre de conte
-**Origine** : kimi-run1 (003) en imparfait domine vs kimi-run2 au présent (#2 mais derrière).
-**Hypothèse** : l'imparfait porte mieux le « il était une fois » diffus, le présent va trop vite.
-**À tester** : sur 005, comparer 2 versions au même angle, l'une à l'imparfait, l'autre au présent.
+### O1 ï¿½ Imparfait comme registre de conte
+**Origine** : kimi-run1 (003) en imparfait domine vs kimi-run2 au prï¿½sent (#2 mais derriï¿½re).
+**Hypothï¿½se** : l'imparfait porte mieux le ï¿½ il ï¿½tait une fois ï¿½ diffus, le prï¿½sent va trop vite.
+**ï¿½ tester** : sur 005, comparer 2 versions au mï¿½me angle, l'une ï¿½ l'imparfait, l'autre au prï¿½sent.
 
-### O2 — Adulte présent mais non-résolutif
+### O2 ï¿½ Adulte prï¿½sent mais non-rï¿½solutif
 **Origine** : 001 canon V1 (Monsieur Ferretti) > V2 sans Ferretti.
-**Hypothèse** : un adulte qui transmet en silence (mélancolie) apporte une émotion non-remplaçable. Mais un adulte qui résout casse l'autonomie des enfants.
-**À tester** : sur 005+ insérer un adulte présent qui n'agit pas, mesurer l'effet.
+**Hypothï¿½se** : un adulte qui transmet en silence (mï¿½lancolie) apporte une ï¿½motion non-remplaï¿½able. Mais un adulte qui rï¿½sout casse l'autonomie des enfants.
+**ï¿½ tester** : sur 005+ insï¿½rer un adulte prï¿½sent qui n'agit pas, mesurer l'effet.
 
-### P8 — Tous les types épanouis, chacun dans sa nature (PRINCIPE FONDATEUR arc 1)
+### P8 ï¿½ Tous les types ï¿½panouis, chacun dans sa nature (PRINCIPE FONDATEUR arc 1)
 
-**Origine** : décision Papa Yann 2026-05-08 (reformulée 2026-05-10).
+**Origine** : dï¿½cision Papa Yann 2026-05-08 (reformulï¿½e 2026-05-10).
 
-**Règle** : chaque ennéatype est présenté **épanoui dans sa nature propre** et **apporte sa singularité** au groupe ou à la petite équipe de l'histoire. Pas de transformation forcée, pas d'obligation à sortir de son type, pas de négation. Le type **EST** et ce qu'il est aide naturellement les autres.
+**Rï¿½gle** : chaque ennï¿½atype est prï¿½sentï¿½ **ï¿½panoui dans sa nature propre** et **apporte sa singularitï¿½** au groupe ou ï¿½ la petite ï¿½quipe de l'histoire. Pas de transformation forcï¿½e, pas d'obligation ï¿½ sortir de son type, pas de nï¿½gation. Le type **EST** et ce qu'il est aide naturellement les autres.
 
-- Le **5 (Lulu)** observe, contemple, possède l'info, compare, réfléchit, **apporte sa vision** quand l'équipe en a besoin. Il joue et partage à sa manière.
-- Le **8 (Juju)** est fort, protège, courage. Pas agressif, pas de gros mots — juste sa solidité tranquille et son courage qui rassure les autres.
-- Le **9 (Nono)** reste **médiateur**, pacificateur, présence apaisante. Pas le mettre sur des choix tranchés ou de l'affirmation forte (= contre sa nature).
-- Le **4 (Madie)** est différente, **impressionne par ses idées**, anime de sa singularité.
-- Le **7 (Raph)** s'amuse, multiplie les idées, prévoit plein d'options.
-- Le **1 (Melki)** apporte sa précision, son sens du bien fait.
+- Le **5 (Lulu)** observe, contemple, possï¿½de l'info, compare, rï¿½flï¿½chit, **apporte sa vision** quand l'ï¿½quipe en a besoin. Il joue et partage ï¿½ sa maniï¿½re.
+- Le **8 (Juju)** est fort, protï¿½ge, courage. Pas agressif, pas de gros mots ï¿½ juste sa soliditï¿½ tranquille et son courage qui rassure les autres.
+- Le **9 (Nono)** reste **mï¿½diateur**, pacificateur, prï¿½sence apaisante. Pas le mettre sur des choix tranchï¿½s ou de l'affirmation forte (= contre sa nature).
+- Le **4 (Madie)** est diffï¿½rente, **impressionne par ses idï¿½es**, anime de sa singularitï¿½.
+- Le **7 (Raph)** s'amuse, multiplie les idï¿½es, prï¿½voit plein d'options.
+- Le **1 (Melki)** apporte sa prï¿½cision, son sens du bien fait.
 - Le **2 (Mimi)** apporte son attention, son soin aux autres.
-- Le **3 (Dadou)** apporte son élan, son envie de réussir.
-- Le **6 (Pierrot)** apporte sa loyauté, sa vigilance bienveillante.
+- Le **3 (Dadou)** apporte son ï¿½lan, son envie de rï¿½ussir.
+- Le **6 (Pierrot)** apporte sa loyautï¿½, sa vigilance bienveillante.
 
-**Quote Papa Yann** : *« Que ce qui est normal à ses yeux aide les autres, comme la force du 8 ou le fun du 7 ou la précision du 1. »*
+**Quote Papa Yann** : *ï¿½ Que ce qui est normal ï¿½ ses yeux aide les autres, comme la force du 8 ou le fun du 7 ou la prï¿½cision du 1. ï¿½*
 
 ---
 
 ## Observations process
 
-> Patterns d'amélioration opérationnelle du PROCESS narratif.
+> Patterns d'amï¿½lioration opï¿½rationnelle du PROCESS narratif.
 
-### OBS-004 — Filet de sécurité préventif > écriture directe LLM (2026-05-13)
+### OBS-004 ï¿½ Filet de sï¿½curitï¿½ prï¿½ventif > ï¿½criture directe LLM (2026-05-13)
 
-**Observation** : Étape 4 (writers) avec 7+ MCP stateless externes (Kimi, DeepSeek, Grok) génère contenu coûteux passé par contexte main thread. Risque : crash/OOM/interruption entre réception LLM et Write tool ? texte généré perdu.
+**Observation** : ï¿½tape 4 (writers) avec 7+ MCP stateless externes (Kimi, DeepSeek, Grok) gï¿½nï¿½re contenu coï¿½teux passï¿½ par contexte main thread. Risque : crash/OOM/interruption entre rï¿½ception LLM et Write tool ? texte gï¿½nï¿½rï¿½ perdu.
 
-**Pattern identifié** : Quand agent stateless externe génère contenu précieux passé par contexte, implémenter **dump auto côté infra** (silent fail, aucune friction) plutôt que :
-- ? Migrer vers "write-back MCP" (risque prompt injection, complexité)
-- ? "Discipline humaine" (Write systématique juste après) — fragile sous charge
+**Pattern identifiï¿½** : Quand agent stateless externe gï¿½nï¿½re contenu prï¿½cieux passï¿½ par contexte, implï¿½menter **dump auto cï¿½tï¿½ infra** (silent fail, aucune friction) plutï¿½t que :
+- ? Migrer vers "write-back MCP" (risque prompt injection, complexitï¿½)
+- ? "Discipline humaine" (Write systï¿½matique juste aprï¿½s) ï¿½ fragile sous charge
 
-**Décision 2026-05-13 — DEC-NNN** :
+**Dï¿½cision 2026-05-13 ï¿½ DEC-NNN** :
 - ? Logs auto dans `infra/mcp/logs/<date>/<ts>-<tool>-<hash>.md`
-- ? Function logCall (node:fs/promises + crypto) branchée sur 4 outils : ask_grok, ask_kimi, ask_kimi_payant, ask_deepseek
-- ? `.gitignore : infra/mcp/logs/` (jamais committés)
+- ? Function logCall (node:fs/promises + crypto) branchï¿½e sur 4 outils : ask_grok, ask_kimi, ask_kimi_payant, ask_deepseek
+- ? `.gitignore : infra/mcp/logs/` (jamais committï¿½s)
 
-**Bénéfices** :
+**Bï¿½nï¿½fices** :
 - Silent : main thread aucune friction (async, fire-and-forget)
-- Faible coût : ~25 lignes code, ~5 lignes config
-- Capture 95% du bénéfice sécurité sans overhead permission/filesystem
-- Réversible : suppression logs = pas d'impact code
+- Faible coï¿½t : ~25 lignes code, ~5 lignes config
+- Capture 95% du bï¿½nï¿½fice sï¿½curitï¿½ sans overhead permission/filesystem
+- Rï¿½versible : suppression logs = pas d'impact code
 
-**Prochaine étape** : Post-STORY-002 étape 4 (premiers logs), vérifier fichiers bien nommés et exploitables (hashes uniques, timestamps utiles).
+**Prochaine ï¿½tape** : Post-STORY-002 ï¿½tape 4 (premiers logs), vï¿½rifier fichiers bien nommï¿½s et exploitables (hashes uniques, timestamps utiles).
 
-**Anti-pattern à éviter** : Prétendre que "discipline humaine" suffit quand volume 7+ outils. Les incidents arrivent sous charge, pas en test lent.
+**Anti-pattern ï¿½ ï¿½viter** : Prï¿½tendre que "discipline humaine" suffit quand volume 7+ outils. Les incidents arrivent sous charge, pas en test lent.
 
 ---
 
-### OBS-003 — Cohabitation > migration : pattern pour fournisseurs multi-usages (2026-05-12)
+### OBS-003 ï¿½ Cohabitation > migration : pattern pour fournisseurs multi-usages (2026-05-12)
 
-**Observation** : Ticket ARCHI-009 ("Migrer MCP `ask_kimi` vers API Moonshot officielle pour exposer `top_p` + mode thinking") attendait arbitrage. Analyse : l'endpoint gratuit `kimi.com/coding` et l'API officielle `api.moonshot.ai` servent deux régimes d'usage distincts (writers #8 #9 créatif payant vs général/défaut gratuit).
+**Observation** : Ticket ARCHI-009 ("Migrer MCP `ask_kimi` vers API Moonshot officielle pour exposer `top_p` + mode thinking") attendait arbitrage. Analyse : l'endpoint gratuit `kimi.com/coding` et l'API officielle `api.moonshot.ai` servent deux rï¿½gimes d'usage distincts (writers #8 #9 crï¿½atif payant vs gï¿½nï¿½ral/dï¿½faut gratuit).
 
-**Pattern identifié** : quand 2 usages divergents du même fournisseur coexistent, **créer 2 MCP distincts avec env var séparée** plutôt que migrer le seul endpoint existant.
+**Pattern identifiï¿½** : quand 2 usages divergents du mï¿½me fournisseur coexistent, **crï¿½er 2 MCP distincts avec env var sï¿½parï¿½e** plutï¿½t que migrer le seul endpoint existant.
 
-**Décision 2026-05-12 — DEC-ARCHI-009** :
-- ? **Conserver** `ask_kimi` (gratuit, `api.kimi.com/coding`, env `MOONSHOT_API_KEY`) ? writers #7 kimi-def + #10 kimi-guide + usage général
+**Dï¿½cision 2026-05-12 ï¿½ DEC-ARCHI-009** :
+- ? **Conserver** `ask_kimi` (gratuit, `api.kimi.com/coding`, env `MOONSHOT_API_KEY`) ? writers #7 kimi-def + #10 kimi-guide + usage gï¿½nï¿½ral
 - ? **Ajouter** `ask_kimi_payant` (officiel, `api.moonshot.ai/v1`, env `MOONSHOT_PAYANT_API_KEY`) ? STRICTEMENT writers #8 kimi-reco + #9 kimi-thinking
 
-**Bénéfices** :
-- Préserve usages gratuits existants (questions tech, exploration, brainstorm)
-- Coûts engagés SEULEMENT là où réellement nécessaires (2 writers créatif)
-- Séparation nette (endpoints, env vars, intentions différentes)
-- Réversible facilement si contexte change (Moonshot baisse prix, ou gratuit expose top_p)
+**Bï¿½nï¿½fices** :
+- Prï¿½serve usages gratuits existants (questions tech, exploration, brainstorm)
+- Coï¿½ts engagï¿½s SEULEMENT lï¿½ oï¿½ rï¿½ellement nï¿½cessaires (2 writers crï¿½atif)
+- Sï¿½paration nette (endpoints, env vars, intentions diffï¿½rentes)
+- Rï¿½versible facilement si contexte change (Moonshot baisse prix, ou gratuit expose top_p)
 
-**Enjeu** : Migration "all-or-nothing" = destructive pour les usages gratuits. Cohabitation = optimalité.
+**Enjeu** : Migration "all-or-nothing" = destructive pour les usages gratuits. Cohabitation = optimalitï¿½.
 
-**Anti-pattern à éviter** : Prétendre que "migrer le seul endpoint" est plus simple que "maintenir 2 MCP". C'est faux — les coûts cachés de perte d'usages gratuits > coûts de gestion 2 outils distincts.
+**Anti-pattern ï¿½ ï¿½viter** : Prï¿½tendre que "migrer le seul endpoint" est plus simple que "maintenir 2 MCP". C'est faux ï¿½ les coï¿½ts cachï¿½s de perte d'usages gratuits > coï¿½ts de gestion 2 outils distincts.
 
-**Prochaine étape** : Appliquer ce pattern si un 3e fournisseur expose des capacités payantes intéressantes à côté de son offre gratuit.
-
----
-
-### OBS-002 — Convention casting v2 : « max » était trompeur sémantiquement (2026-05-12)
-
-**Observation** : Config 10 writers (étape 4) utilisait terme `max` pour désigner température. Or chaque fournisseur officiel recommande une valeur **inférieure** au plafond max pour la creative writing (ex: Kimi reco 1.0 créatif vs max 1.0, DeepSeek reco 1.5 créatif vs max 2.0, Grok reco 1.2 créatif vs max 2.0).
-
-**Correction 2026-05-12** : Renommer partout `max` ? `reco` (valeur recommandée créatif du fournisseur). Référence : `equipe/references/temperatures-llm.md` (à créer).
-
-**Enjeu** : Nommer un writer par `max` brut = confusion sémantique. Au-delà de la reco créatif officielle = perte de cohérence narrative (vérifié empiriquement : briefs writers reçoivent trop de conflits "modèle ne comprend pas message créatif au max absolu").
-
-**Prochaine étape** : Audit propagation `max` ? `reco` dans INVARIANTS, PROCESS, agents writers (tous les sous-fichiers).
-
-**Anti-pattern à éviter** : Nommer un writer par degré de température sans contexte fournisseur officiel.
+**Prochaine ï¿½tape** : Appliquer ce pattern si un 3e fournisseur expose des capacitï¿½s payantes intï¿½ressantes ï¿½ cï¿½tï¿½ de son offre gratuit.
 
 ---
 
-### L-ANTI-PATTERN-BRAINSTORM-PHASE-B-001 — Missions LLMs phase B : grain fin par axe, jamais holistique (2026-05-15)
+### OBS-002 ï¿½ Convention casting v2 : ï¿½ max ï¿½ ï¿½tait trompeur sï¿½mantiquement (2026-05-12)
 
-**Observation** : STORY-002 étape 2B phase 1 (2026-05-15 matin) : Kimi + DeepSeek + Grok lancés avec brief générique « écrire l'histoire STORY-002 en ayant en tête brainstorm phase A ». Résultat : 3 narrations complètes (1700+ mots chacune) générées, qui redondaient pitch et vision Couche 0. Étape intermédiaire inutile.
+**Observation** : Config 10 writers (ï¿½tape 4) utilisait terme `max` pour dï¿½signer tempï¿½rature. Or chaque fournisseur officiel recommande une valeur **infï¿½rieure** au plafond max pour la creative writing (ex: Kimi reco 1.0 crï¿½atif vs max 1.0, DeepSeek reco 1.5 crï¿½atif vs max 2.0, Grok reco 1.2 crï¿½atif vs max 2.0).
 
-**Cause racine** : formulation mission trop holistique. Brief Phase B copié du pitch (holiste) au lieu de décomposer en 6 axes grain fin ciblés par Papa Yann.
+**Correction 2026-05-12** : Renommer partout `max` ? `reco` (valeur recommandï¿½e crï¿½atif du fournisseur). Rï¿½fï¿½rence : `equipe/references/temperatures-llm.md` (ï¿½ crï¿½er).
 
-**Anti-pattern confirmé** :
-- ? Phase B brief : « Écrivez une version brute de STORY-002 libellule-impossible »
-- ? Phase B brief grain fin : 6 missions séparées (chacune 10-20 lignes max)
-  1. Faune/flore/sons mai autour d'étang — énumérez
+**Enjeu** : Nommer un writer par `max` brut = confusion sï¿½mantique. Au-delï¿½ de la reco crï¿½atif officielle = perte de cohï¿½rence narrative (vï¿½rifiï¿½ empiriquement : briefs writers reï¿½oivent trop de conflits "modï¿½le ne comprend pas message crï¿½atif au max absolu").
+
+**Prochaine ï¿½tape** : Audit propagation `max` ? `reco` dans INVARIANTS, PROCESS, agents writers (tous les sous-fichiers).
+
+**Anti-pattern ï¿½ ï¿½viter** : Nommer un writer par degrï¿½ de tempï¿½rature sans contexte fournisseur officiel.
+
+---
+
+### L-ANTI-PATTERN-BRAINSTORM-PHASE-B-001 ï¿½ Missions LLMs phase B : grain fin par axe, jamais holistique (2026-05-15)
+
+**Observation** : STORY-002 ï¿½tape 2B phase 1 (2026-05-15 matin) : Kimi + DeepSeek + Grok lancï¿½s avec brief gï¿½nï¿½rique ï¿½ ï¿½crire l'histoire STORY-002 en ayant en tï¿½te brainstorm phase A ï¿½. Rï¿½sultat : 3 narrations complï¿½tes (1700+ mots chacune) gï¿½nï¿½rï¿½es, qui redondaient pitch et vision Couche 0. ï¿½tape intermï¿½diaire inutile.
+
+**Cause racine** : formulation mission trop holistique. Brief Phase B copiï¿½ du pitch (holiste) au lieu de dï¿½composer en 6 axes grain fin ciblï¿½s par Papa Yann.
+
+**Anti-pattern confirmï¿½** :
+- ? Phase B brief : ï¿½ ï¿½crivez une version brute de STORY-002 libellule-impossible ï¿½
+- ? Phase B brief grain fin : 6 missions sï¿½parï¿½es (chacune 10-20 lignes max)
+  1. Faune/flore/sons mai autour d'ï¿½tang ï¿½ ï¿½numï¿½rez
   2. Actions/jeux des 3 enfants bruyants selon leurs profils
-  3. Vannes Juju (T8) authentiques à voix basse/haute/blague
-  4. Wex : comment il ralentit / s'arrête / dit ou dit rien
+  3. Vannes Juju (T8) authentiques ï¿½ voix basse/haute/blague
+  4. Wex : comment il ralentit / s'arrï¿½te / dit ou dit rien
   5. Libellule : description/couleurs/comportement/interaction Nono
-  6. Admiration : formes, vocabulaire, métaphores 4-6 ans compréhensibles
+  6. Admiration : formes, vocabulaire, mï¿½taphores 4-6 ans comprï¿½hensibles
 
-**Règle future** :
-- Phase B jamais « narrer l'histoire »
+**Rï¿½gle future** :
+- Phase B jamais ï¿½ narrer l'histoire ï¿½
 - Phase B toujours 6+ missions **disjointes** scannant les 6 axes ou les piliers pertinents (personnages, univers, cross-culture)
-- Par axe : 50-200 mots max, énumération > narration
+- Par axe : 50-200 mots max, ï¿½numï¿½ration > narration
 
-**Impact briefs** : avant de lancer une phase LLM brainstorm, décomposer toujours en grain fin matière brute plutôt que laisser LLM réassembler la narration.
+**Impact briefs** : avant de lancer une phase LLM brainstorm, dï¿½composer toujours en grain fin matiï¿½re brute plutï¿½t que laisser LLM rï¿½assembler la narration.
 
 ---
 
-### OBS-001 — Calibration writers fixée trop tôt (2026-05-12)
+### OBS-001 ï¿½ Calibration writers fixï¿½e trop tï¿½t (2026-05-12)
 
-**Observation** : Config 10 writers était déterminée au projet V1 sans test de variance modèle+température. Hypothèse implicite : Opus > tous = pas validée.
+**Observation** : Config 10 writers ï¿½tait dï¿½terminï¿½e au projet V1 sans test de variance modï¿½le+tempï¿½rature. Hypothï¿½se implicite : Opus > tous = pas validï¿½e.
 
-**Correction 2026-05-12** : Passage 10 ? 14 writers pour tester Opus/Sonnet/Haiku Claude défaut vs créatif + Kimi thinking vs non-thinking + DeepSeek/Grok étendus.
+**Correction 2026-05-12** : Passage 10 ? 14 writers pour tester Opus/Sonnet/Haiku Claude dï¿½faut vs crï¿½atif + Kimi thinking vs non-thinking + DeepSeek/Grok ï¿½tendus.
 
-**Méthode** : Après STORY-002/003/004 (min. 3 histoires), comparer top 1 par modèle et réduire vers 6-8 writers optimaux (ticket ARCHI-008).
+**Mï¿½thode** : Aprï¿½s STORY-002/003/004 (min. 3 histoires), comparer top 1 par modï¿½le et rï¿½duire vers 6-8 writers optimaux (ticket ARCHI-008).
 
-**Enjeu** : Découvrir si qualité top 1 vient du modèle ou du couple modèle+température, et si un modèle "less-expensive" bien calibré = meilleur ROI qu'Opus défaut.
+**Enjeu** : Dï¿½couvrir si qualitï¿½ top 1 vient du modï¿½le ou du couple modï¿½le+tempï¿½rature, et si un modï¿½le "less-expensive" bien calibrï¿½ = meilleur ROI qu'Opus dï¿½faut.
 
-**Prochaine étape** : log des résultats top 1 STORY-002-004 dans nouvelle section `Calibration writers — résultats évaluation` (à créer après 3e histoire).
+**Prochaine ï¿½tape** : log des rï¿½sultats top 1 STORY-002-004 dans nouvelle section `Calibration writers ï¿½ rï¿½sultats ï¿½valuation` (ï¿½ crï¿½er aprï¿½s 3e histoire).
 
-**Anti-pattern à éviter dans les briefs writers** :
-- ? Chercher à faire évoluer un perso hors de son type (« Nono qui dit moi je veux ! » = désintégration vers 3, pas son essence)
-- ? Empiler des négations explicatives (« 8 mais pas agressif, mais pas dur, mais pas… »)
+**Anti-pattern ï¿½ ï¿½viter dans les briefs writers** :
+- ? Chercher ï¿½ faire ï¿½voluer un perso hors de son type (ï¿½ Nono qui dit moi je veux ! ï¿½ = dï¿½sintï¿½gration vers 3, pas son essence)
+- ? Empiler des nï¿½gations explicatives (ï¿½ 8 mais pas agressif, mais pas dur, mais pasï¿½ ï¿½)
 - ? Mettre un perso introverti en faire-valoir d'un expressif
 
-**Bon réflexe brief** : **dire ce que le type EST**, **son geste / attitude / habitude** caractéristique, ce qu'il apporte. Pas besoin d'expliquer ce qu'il n'est pas — le writer ne mettra pas de hard-core puisqu'on est en bienveillance arc 1, c'est déjà cadré.
+**Bon rï¿½flexe brief** : **dire ce que le type EST**, **son geste / attitude / habitude** caractï¿½ristique, ce qu'il apporte. Pas besoin d'expliquer ce qu'il n'est pas ï¿½ le writer ne mettra pas de hard-core puisqu'on est en bienveillance arc 1, c'est dï¿½jï¿½ cadrï¿½.
 
-**Précédent 001** : on n'avait pas du tout discuté de cet équilibre type par type au moment du brief, et le résultat est juste — Wex pose, Raph explose, Pierrot protège — chacun dans sa nature, chacun lumineux. À ne pas sur-prescrire dans les futurs briefs.
+**Prï¿½cï¿½dent 001** : on n'avait pas du tout discutï¿½ de cet ï¿½quilibre type par type au moment du brief, et le rï¿½sultat est juste ï¿½ Wex pose, Raph explose, Pierrot protï¿½ge ï¿½ chacun dans sa nature, chacun lumineux. ï¿½ ne pas sur-prescrire dans les futurs briefs.
 
-**Niveau brief writer (matière mince) vs niveau pilotage Conseiller-Auteur (matière épaisse)** : on accumule beaucoup de connaissance Chabreuil et patterns en amont (Conseiller + Auteur), mais on n'envoie au writer que **l'essentiel** — le geste, l'attitude, la situation. Trop d'instructions étouffe.
+**Niveau brief writer (matiï¿½re mince) vs niveau pilotage Conseiller-Auteur (matiï¿½re ï¿½paisse)** : on accumule beaucoup de connaissance Chabreuil et patterns en amont (Conseiller + Auteur), mais on n'envoie au writer que **l'essentiel** ï¿½ le geste, l'attitude, la situation. Trop d'instructions ï¿½touffe.
 
 ---
 
-### O3 — Emprunts japonais en VF
+### O3 ï¿½ Emprunts japonais en VF
 **Origine** : `onomatopees-cross-culture.md` recommande **pota-pota** (goutte), **saku-saku** (croustillant), **picha-picha** (pieds dans flaque).
-**Hypothèse** : les enfants français adoptent rapidement.
-**À tester** : sur 005, glisser 1 emprunt JA, mesurer mémorisation.
+**Hypothï¿½se** : les enfants franï¿½ais adoptent rapidement.
+**ï¿½ tester** : sur 005, glisser 1 emprunt JA, mesurer mï¿½morisation.
 
-### P9 — Type 9 DOIT FAIRE (pas seulement ÊTRE)
+### P9 ï¿½ Type 9 DOIT FAIRE (pas seulement ï¿½TRE)
 
-**Origine** : brainstorm casting 2026-05-10. Observation : "présence" seule ? imitable pour enfant 4 ans. Type 9 (Nono) a besoin de **gestes actifs dans sa nature**.
+**Origine** : brainstorm casting 2026-05-10. Observation : "prï¿½sence" seule ? imitable pour enfant 4 ans. Type 9 (Nono) a besoin de **gestes actifs dans sa nature**.
 
-**Règle** : Type 9 n'est jamais passif. Il agit. **5 gestes archétypiques** :
+**Rï¿½gle** : Type 9 n'est jamais passif. Il agit. **5 gestes archï¿½typiques** :
 1. S'asseoir / se poser
 2. Ouvrir la paume (main au sol ou vers l'autre)
-3. Fredonner doucement (« mmm »)
+3. Fredonner doucement (ï¿½ mmm ï¿½)
 4. Faire un petit signe / geste d'accueil
 5. Sourire silencieux
 
-Ces gestes deviennent **imitables par l'enfant lecteur**. Type 9 = **petit maître silencieux** (modèle Totoro). Il ne parle pas forcément beaucoup, mais il FAIT quelque chose que l'autre peut apprendre par mimétisme.
+Ces gestes deviennent **imitables par l'enfant lecteur**. Type 9 = **petit maï¿½tre silencieux** (modï¿½le Totoro). Il ne parle pas forcï¿½ment beaucoup, mais il FAIT quelque chose que l'autre peut apprendre par mimï¿½tisme.
 
-**Anti-pattern** : Nono juste « présent et tranquille » sans aucun geste actif. **Non, c'est plate pour un 4 ans.**
+**Anti-pattern** : Nono juste ï¿½ prï¿½sent et tranquille ï¿½ sans aucun geste actif. **Non, c'est plate pour un 4 ans.**
 
-**Exemple bon** (à valider étape 5 lecteurs 002-Nono) : Nono s'assoit, main ouverte au sol, fredonne. Copain l'imite. Animal s'approche. Accroche de savoir-faire « on obtient certaines choses en ralentissant ».
+**Exemple bon** (ï¿½ valider ï¿½tape 5 lecteurs 002-Nono) : Nono s'assoit, main ouverte au sol, fredonne. Copain l'imite. Animal s'approche. Accroche de savoir-faire ï¿½ on obtient certaines choses en ralentissant ï¿½.
 
-### P10 — Brainstorm gestes figés immédiatement en doc
+### P10 ï¿½ Brainstorm gestes figï¿½s immï¿½diatement en doc
 
-**Origine** : brainstorm casting arc 1 2026-05-10. Constat : matière brassée en session brainstorm Auteur/Conseiller = non figée = réinventée à chaque histoire. Sinon writers trouvent pas, agents le re-proposent, perte de cohérence.
+**Origine** : brainstorm casting arc 1 2026-05-10. Constat : matiï¿½re brassï¿½e en session brainstorm Auteur/Conseiller = non figï¿½e = rï¿½inventï¿½e ï¿½ chaque histoire. Sinon writers trouvent pas, agents le re-proposent, perte de cohï¿½rence.
 
-**Règle** : Dès qu'un **geste, attitude, habitude, garde-fou d'un type** est validé en session, il est **immédiatement enregistré dans le fichier `type-NN/caractere.md`** (section "Gestes/attitudes/habitudes"). Devient source de vérité pour tous les writers et agents.
+**Rï¿½gle** : Dï¿½s qu'un **geste, attitude, habitude, garde-fou d'un type** est validï¿½ en session, il est **immï¿½diatement enregistrï¿½ dans le fichier `type-NN/caractere.md`** (section "Gestes/attitudes/habitudes"). Devient source de vï¿½ritï¿½ pour tous les writers et agents.
 
-**Exemple** : Type 4 Madie 2026-05-10 = « expression, acteur, danse, intention vivante ». Ligne ajoutée dans `type-04/caractere.md`, visible pour tout writer future. Type 5 Lulu = « discret, observateur, en léger retrait » ? idem `type-05/caractere.md`.
+**Exemple** : Type 4 Madie 2026-05-10 = ï¿½ expression, acteur, danse, intention vivante ï¿½. Ligne ajoutï¿½e dans `type-04/caractere.md`, visible pour tout writer future. Type 5 Lulu = ï¿½ discret, observateur, en lï¿½ger retrait ï¿½ ? idem `type-05/caractere.md`.
 
-**Bénéfice** : 
+**Bï¿½nï¿½fice** : 
 - Writers trouvent automatiquement la doc des persos
-- Pas de téléphone arabe (brainstorm Conseiller ? brief Auteur ? brief writer)
-- Traçabilité dans git
-- Réutilisable d'une histoire à la suivante
+- Pas de tï¿½lï¿½phone arabe (brainstorm Conseiller ? brief Auteur ? brief writer)
+- Traï¿½abilitï¿½ dans git
+- Rï¿½utilisable d'une histoire ï¿½ la suivante
 
 ---
 
-## Historique des révisions
+## Historique des rï¿½visions
 
-| Date | Histoire canonisée | Nouveautés ajoutées | Révisions |
+| Date | Histoire canonisï¿½e | Nouveautï¿½s ajoutï¿½es | Rï¿½visions |
 |------|--------------------|---------------------|-----------|
-| 2026-05-10 | brainstorm arc 1 casting | P9 ajouté (Type 9 DOIT FAIRE, 5 gestes archétypiques), P10 ajouté (gestes figés immédiatement en doc) | Intégration observations casting Madie/Lulu/Nono |
-| 2026-05-08 | **001 Le Pont Cassé (canon)** ex-003-v2 | P7 ajouté (rewrite comité éditorial, 2-3 idées max) | Refonte complète catalogue : ancien 001, 002, 004 supprimés. ultime_debrief.md + SYNTHESE-2026-05-06.md supprimés (info migrée ici) |
-| 2026-05-08 | (création) | P1-P6, G1-G6, axes 1-6, signal genre, O1-O3 | Initialisation |
+| 2026-05-10 | brainstorm arc 1 casting | P9 ajoutï¿½ (Type 9 DOIT FAIRE, 5 gestes archï¿½typiques), P10 ajoutï¿½ (gestes figï¿½s immï¿½diatement en doc) | Intï¿½gration observations casting Madie/Lulu/Nono |
+| 2026-05-08 | **001 Le Pont Cassï¿½ (canon)** ex-003-v2 | P7 ajoutï¿½ (rewrite comitï¿½ ï¿½ditorial, 2-3 idï¿½es max) | Refonte complï¿½te catalogue : ancien 001, 002, 004 supprimï¿½s. ultime_debrief.md + SYNTHESE-2026-05-06.md supprimï¿½s (info migrï¿½e ici) |
+| 2026-05-08 | (crï¿½ation) | P1-P6, G1-G6, axes 1-6, signal genre, O1-O3 | Initialisation |
 
 ---
 
 ## Pointeurs
 
-- Catalogue onomatopées : [`onomatopees-cross-culture.md`](onomatopees-cross-culture.md)
+- Catalogue onomatopï¿½es : [`onomatopees-cross-culture.md`](onomatopees-cross-culture.md)
 - Templates briefs writers : [`templates/brief-writer-libre.template.md`](templates/brief-writer-libre.template.md), [`templates/brief-writer-guide.template.md`](templates/brief-writer-guide.template.md)
 - Process : [`PROCESS.md`](PROCESS.md)
 - Profils lecteurs (panel 20) : [`profils-lecteurs.md`](profils-lecteurs.md)
 - Patte narrative : [`patte-narrative-maxplay.md`](patte-narrative-maxplay.md)
-- Archive : anciennes photos figées supprimées 2026-05-08 (`ultime_debrief.md`, `SYNTHESE-2026-05-06.md`). Patterns consolidés dans ce document vivant.
+- Archive : anciennes photos figï¿½es supprimï¿½es 2026-05-08 (`ultime_debrief.md`, `SYNTHESE-2026-05-06.md`). Patterns consolidï¿½s dans ce document vivant.
+
+---
+
+## 2026-05-17 â€” Pieges sur briefs et writers
+
+### OBS-SURSPEC-BRIEFS (vague 3 STORY-002 loupe)
+
+**Observation** : Augmenter la prÃ©cision d'un brief commun (beats littÃ©raux, rÃ©pliques verbatim, gestes microscopiques) crÃ©e convergence mÃ©canique ET tue la patte crÃ©ative des writers. Vague 3 STORY-002 = 10 beats numÃ©rotÃ©s figÃ©s Couche 2 â†’ gestes Nono identiques 11/14, Juju mÃªme contact eau 8/14, comportement libellule similaire 9/14. Ã‰talon vague 2 (brief souple, 6 causalitÃ©s-ESSENCE, pas de phrase publiable) jamais battu (18/20 panel).
+
+**Cause racine** : Brief Ã©crit en langue-texte = recopiÃ© mÃ©caniquement (c'est rationnel â€” un beat "Nono se pose, debout immobile, comme s'il se connectait Ã  la terre" en FR = writer le copie mot pour mot).
+
+**RÃ¨gle d'or** : Couche 2 (brief commun) = INTENTIONS + CHAÃŽNE DE CAUSES, jamais une phrase publiable. Signature (gestes prÃ©cis, onomatopÃ©e, micro-ritual) = Couche 3 (vision guidÃ© writers seuls).
+
+**Application** : STORY-002 vague 4 brief refondÃ© en BOUSSOLE (6 causalitÃ©s-ESSENCE, zÃ©ro formulation publiable). RÃ©sultat : writers libÃ©rÃ©s de la recopie, fluiditÃ© retrouvÃ©e. GravÃ© dans DEC-BRIEF-VAGUE4-BOUSSOLE.
+
+### AP-WRITER-THINKING-001 (observation casting K2.6 â€” vague 3)
+
+**Observation** : Kimi K2.6 mode `thinking: enabled` (sur-fragmentation mentale) utilisÃ© sur briefs narratifs souple (Couche 2 causalitÃ©s seules) â†’ 20 refus / 20 essais (dernier test vague 3). Cause probable : thinking mode scanne CHAQUE causalitÃ© pour trouver des "erreurs logiques" ou des "points Ã  clarifier", ce qui fragmente l'intuition narrative qui doit rester globale.
+
+**Statut casting** : **CASTING 14 WRITERS FIGÃ‰. Retrait PROPOSÃ‰ par PMO 2026-05-16, REFUSÃ‰ par Papa Yann 2026-05-17 â€” aucune modification du casting permanent.**
+
+**Garde-fou vague 4 STORY-002** : K2.6 thinking `enabled` EXCLU de cette vague comme mesure de prudence (test 20/20 flops = signal fort), mais **l'agent `narration-writer-kimi-k26-thinking` reste dans l'effectif casting stable** pour futures vagues dÃ¨s rÃ©alignement brief ou nouvelle approche. Une proposition d'agent ne modifie jamais une rÃ¨gle figÃ©e sans dÃ©cision auteur explicite.
+
+**Recommandation future** : Avant d'exclure un agent du casting, tester la cause : K2.6 thinking + brief BOUSSOLE (intentions) vs K2.6 thinking + brief dÃ©taillÃ© (beats). Le 20/20 Ã©chec = brief Couche 2 trop souple pour le mode thinking, **pas nÃ©cessairement incompatibilitÃ© permanente**. Sujet = ticket FUT-WRITER-K26-THINKING dans backlog PM pour exploration systÃ©matique (hors vague 4).
+

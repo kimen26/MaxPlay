@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Et tu sais le truc le plus fou ? Les continents bougent ENCORE aujourd'hui ! Oui ! En ce moment même, l'Afrique et l'Europe s'écartent tout doucement. Le Canada et la France s'éloignent l'un de l'autre. Mais c'est tellement tellement lent que tu le vois pas."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious][gasps] Ça bouge MAINTENANT ? Sous mes pieds, là ?!"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Oui ! En ce moment même ! Mais à peine à la vitesse à laquelle tes ongles poussent — tellement lent que tu le sens pas du tout ! Si tu attends cent ans, les continents auront bougé de la longueur d'une main. Tout petit petit ! Mais sur des millions d'années, ça fait des milliers de kilomètres ! La Terre, elle est vivante — elle bouge, tout doucement, pour toujours !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

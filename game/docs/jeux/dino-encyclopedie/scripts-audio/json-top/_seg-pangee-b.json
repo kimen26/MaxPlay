@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Mais la Terre, elle bouge ! Au temps des premiers dinosaures, tout était encore collé en un seul bloc. Puis, tout doucement, pendant très très longtemps, les morceaux se sont écartés — comme deux grands radeaux qui glissent loin l'un de l'autre. Un immense océan s'ouvre entre les deux ! Les dinosaures d'un côté ne peuvent plus voir ceux de l'autre."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps][curious] Ça s'est cassé d'un coup ? CRAC ?!"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly] Non non, très très lentement ! Pendant des millions d'années, ça se fend tout doucement. Les continents s'écartent comme des radeaux géants qui flottent loin les uns des autres. Et après très très longtemps, ils arrivent là où ils sont maintenant, aujourd'hui."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

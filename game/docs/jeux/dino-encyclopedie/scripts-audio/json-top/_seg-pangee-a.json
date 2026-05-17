@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Il y a très très longtemps, bien avant même les dinosaures, la Terre ressemblait à un énorme puzzle ! Tous les continents étaient collés ensemble en un seul morceau géant : l'Afrique, l'Amérique, l'Europe, tout ! On appelle ça la Pangée."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Collés ensemble ? Tout d'un bloc ?!"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactement ! Tu pouvais marcher d'Afrique jusqu'en Amérique à pied, sans bateau ! Un seul géant continent, comme un radeau GÉANT dans l'océan. Et partout, il faisait très très chaud et très très sec !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

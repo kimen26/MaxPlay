@@ -706,6 +706,9 @@ function buildPangeeBloc() {
         </div>
       </div>
       <div style="padding:12px">
+        <button class="v1-big" onclick="playSpecial('pangee',this)" id="pangee-story-btn" style="margin:0 0 12px">
+          🎙️ Écoute l'histoire de la Pangée <span class="dino-story-eq">▶</span>
+        </button>
         <div class="pangee-carousel" id="pangee-carousel">
           <div class="pangee-slides">${slides}</div>
         </div>
@@ -766,6 +769,9 @@ function buildExtinctionBloc() {
         </div>
       </div>
       <div style="padding:10px 12px;display:flex;flex-direction:column;gap:10px">
+        <button class="v1-big" onclick="playSpecial('extinction',this)" id="extinction-story-btn" style="margin:0">
+          🎙️ Écoute l'histoire de la Grande Extinction <span class="dino-story-eq">▶</span>
+        </button>
         ${hypHtml}
         <div class="ext-funfact" onclick="speakText('${esc(EXTINCTION.fun_fact)}')">
           🐦 ${EXTINCTION.fun_fact}
@@ -1239,6 +1245,20 @@ function playDinoStory(id) {
 function playBlocTaille(id, btnEl) {
   const d = DINOS.find(x => x.id === id);
   playBloc(id, 'taille', d ? (d.name + ' ! ' + _statsPhrase(d)) : '', btnEl);
+}
+// Récap audio Pangée / Extinction (which = 'pangee' | 'extinction')
+function playSpecial(which, btnEl) {
+  const src = 'audio/dinos/special-' + which + '-recap.mp3';
+  stopSpeak();
+  const wasThis = (_dinoAudioBtn === btnEl && _dinoAudio);
+  _stopDinoAudio();
+  if (wasThis) return;
+  _dinoAudio = new Audio(src);
+  _dinoAudioBtn = btnEl || null;
+  if (_dinoAudioBtn) _dinoAudioBtn.classList.add('playing');
+  _dinoAudio.onended = _stopDinoAudio;
+  _dinoAudio.onerror = _stopDinoAudio;
+  _dinoAudio.play().catch(_stopDinoAudio);
 }
 
 /* ── Init ── */

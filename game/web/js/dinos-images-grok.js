@@ -335,6 +335,23 @@ const DINO_GROK = {
       "type": "grok"
     }
   ],
+  "torosaurus": [
+    {
+      "url": "img/dinos/grok/torosaurus_lot1_1_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/torosaurus_lot1_2_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/torosaurus_lot1_3_chasse.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    }
+  ],
   "triceratops": [
     {
       "url": "img/dinos/grok/triceratops_lot1_1_taille.jpg",

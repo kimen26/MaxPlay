@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] L'Ankylosaure ! Son nom veut dire « lézard rigide ». Tout son dos était couvert d'une armure dure comme du béton ! Il vivait en Amérique du Nord, il y a 66 millions d'années. C'était une vraie armure de dinosaure !"
+      "text": "[excited] L'Ankylosaure ! Écoute bien son nom. « Ankylo », ça veut dire « soudé, rigide ». Et « -saurus », ça veut dire « lézard ». Alors « Ankylosaurus »..."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Armure dure comme du béton ? Pourquoi il avait besoin d'une armure ?"
+      "text": "[curious] ...ça veut dire « lézard soudé, rigide » ?!"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Bonne question ! L'Ankylosaure était un herbivore — il mangeait des plantes. Mais il y avait des carnivores énormes qui voulaient le manger, comme le T-Rex ! L'armure, c'était pour se protéger. C'était son costume de chevalier !"
+      "text": "[happily] EXACTEMENT ! Tu as trouvé tout seul, comme un petit savant ! Il vivait en Amérique du Nord, il y a 66 millions d'années, tout blindé d'une armure d'os !"
     }
   ],
   "model_id": "eleven_v3",

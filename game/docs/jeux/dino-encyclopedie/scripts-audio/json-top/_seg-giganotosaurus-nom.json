@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Le Giganotosaure ! Son nom veut dire « lézard géant du sud ». Il vivait en Amérique du Sud, en Argentine, il y a 98 millions d'années. C'était l'un des trois plus grands carnivores du monde !"
+      "text": "[excited] Le Giganotosaure ! « Giga » — ça veut dire géant en grec. « Notos » — c'est le sud ! Et « saurus » — c'est lézard ! Alors « Giganotosaure »..."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] L'un des trois plus grands ? Y en avait des plus grands que lui ?"
+      "text": "[curious] ...c'est « le lézard géant du sud » ??"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Oui ! Le T-Rex, le Spinosaure et le Giganotosaure — les trois rois carnivores du monde ! Mais ils vivaient tous à des endroits différents et à des moments différents. Jamais ensemble !"
+      "text": "[happily] BRAVO le savant ! Il vivait en Amérique du Sud, en Argentine, il y a 98 millions d'années. L'un des trois plus grands rois carnivores du monde entier !"
     }
   ],
   "model_id": "eleven_v3",

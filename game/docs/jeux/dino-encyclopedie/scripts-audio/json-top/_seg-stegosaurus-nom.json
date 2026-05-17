@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Le Stégosaure ! Son nom veut dire « lézard à toit ». Ses grandes plaques sur le dos ressemblaient aux tuiles d'une maison ! Il vivait en Amérique du Nord, il y a 155 millions d'années. C'était un dinosaure avec un toit magique !"
+      "text": "[excited] Le Stégosaure ! Écoute bien. « Stégo » veut dire « toit » en grec. Et « -saurus », c'est « lézard ». Alors « Stegosaurus »..."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Un toit magique ? C'était quoi la magie ?"
+      "text": "[curious] ...ça veut dire « lézard toit » ?! Il avait un toit sur le dos ?!"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[softly][serious] Pas vraiment magique, mais special ! Ces plaques, c'était pour se défendre, pour se chauffer au soleil, ou pour être beau et impressionner ses amis. Un dinosaure avec un costume super cool !"
+      "text": "[playful] Presque ! C'étaient de GRANDES PLAQUES comme des tuiles ! Il vivait en Amérique du Nord, il y a 155 millions d'années, avec un costume de plaques magiques sur le dos !"
     }
   ],
   "model_id": "eleven_v3",

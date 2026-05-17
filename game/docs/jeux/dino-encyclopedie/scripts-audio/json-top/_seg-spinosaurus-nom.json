@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Le Spinosaure ! Son nom veut dire « lézard à épines » en latin. Il avait une grande voile sur le dos, comme un bateau ! Il vivait en Afrique du Nord, au Maroc et en Égypte, il y a 95 millions d'années."
+      "text": "[excited] Le Spinosaure ! « Spina » — c'est épine en latin. Et « saurus » — c'est lézard en grec ! Alors « Spinosaure »..."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Une voile sur le dos ? Il pouvait naviguer comme un bateau ?"
+      "text": "[curious] ...c'est « le lézard à épines » ??"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Non, non ! La voile c'était pas pour naviguer. C'était juste sur son dos, faite de peau et d'os. Peut-être pour impressionner ses amis, ou pour attraper la chaleur du soleil. Comme un grand manteau coloré !"
+      "text": "[happily] OUI ! Et regarde son dos — il avait UNE GRANDE VOILE d'épines, comme un bateau ! Il vivait en Afrique du Nord, en Égypte, il y a 95 millions d'années. C'était le roi des eaux !"
     }
   ],
   "model_id": "eleven_v3",

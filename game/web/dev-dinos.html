@@ -1189,16 +1189,16 @@ function speakStatsDino(id) {
 /* ── Audio duo Narrateur + Wex (industrialisable : 1 entrée par dino dispo) ──
    recap = gros bouton "écoute l'histoire" · blocs = mini-duos par section.
    Si un bloc manque → fallback synthèse vocale. */
-const _BLOCS6 = ['nom','taille','regime','pouvoir','ennemis','funfact'];
-function _audioSet(id, extra) {
-  // recap par convention : <id>-recap.mp3 (ffmpeg concat des 6 blocs). extra peut l'override.
-  const o = { recap: 'audio/dinos/' + id + '-recap.mp3', ...(extra || {}) };
-  _BLOCS6.forEach(b => { o[b] = 'audio/dinos/' + id + '-' + b + '.mp3'; });
+// 4 blocs audio (refonte 2026-05-17) : nom / taille / regime / funfact + recap (ffmpeg concat).
+const _BLOCS4 = ['nom','taille','regime','funfact'];
+function _audioSet(id) {
+  const o = { recap: 'audio/dinos/' + id + '-recap.mp3' };
+  _BLOCS4.forEach(b => { o[b] = 'audio/dinos/' + id + '-' + b + '.mp3'; });
   return o;
 }
-// Tous ont recap (gros bouton) + 6 mini-duos. Triceratops garde son recap API d'origine.
+// Top 11 dinos avec audio ElevenLabs (duo Narrateur+Wex, 4 blocs). Le reste = TTS live navigateur.
 const DINO_AUDIO = {
-  triceratops:    _audioSet('triceratops', { recap: 'audio/dinos/triceratops-v1.mp3' }),
+  triceratops:    _audioSet('triceratops'),
   tyrannosaurus:  _audioSet('tyrannosaurus'),
   velociraptor:   _audioSet('velociraptor'),
   stegosaurus:    _audioSet('stegosaurus'),

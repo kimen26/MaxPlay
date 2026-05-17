@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] L'Allosaure ! Son nom veut dire « lézard différent » parce que ses os étaient différents des autres dinosaures. Il vivait en Amérique du Nord et en Europe, il y a 155 millions d'années."
+      "text": "[excited] L'Allosaure ! « Allos » — ça veut dire autre et différent en grec. Et « saurus » — c'est lézard ! Alors « Allosaure »..."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il était malade ?"
+      "text": "[curious] ...c'est « le lézard différent » ??"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[serious] Non, non ! C'était juste sa nature. Ses os avaient une forme unique. Les scientifiques savaient tout de suite : « Ah, c'est un Allosaure ! » Comme une signature à lui !"
+      "text": "[serious] OUI ! Ses os avaient une forme unique, très spéciale. Les savants reconnaissaient tout de suite : « Ah, c'est un Allosaure ! » Il vivait en Amérique du Nord et en Europe, il y a 155 millions d'années. Le champion du Jurassique !"
     }
   ],
   "model_id": "eleven_v3",

@@ -2,15 +2,15 @@
   "inputs": [
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[excited] Le Diplodocus ! Son nom veut dire « double poutre » en grec. C'est à cause de ses os de queue spéciaux, en forme de poutre ! Il vivait en Amérique du Nord, il y a 150 millions d'années."
+      "text": "[excited] Le Diplodocus ! Son nom cache deux secrets. « Diplo- », en grec, ça veut dire « double ». Et « -docus », c'est encore du grec, ça veut dire « poutre » — une grosse barre solide ! Alors « Diplodocus »..."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Double poutre ? C'est quoi, une poutre ?"
+      "text": "[curious] ...ça veut dire « double poutre » ?!"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[softly][serious] Une poutre, c'est une grosse barre de bois ou de fer très très solide — comme ce qu'il y a dans une maison pour soutenir le toit ! Ses os de queue ressemblaient à deux poutres. C'était très fort et très rigide."
+      "text": "[happily] OUI ! Et même mieux : « celui qui a une double poutre » — ses os de queue ressemblaient à deux grosses poutres collées ensemble ! Tu parles déjà le grec ancien ! Il vivait en Amérique du Nord, il y a 150 millions d'années."
     }
   ],
   "model_id": "eleven_v3",

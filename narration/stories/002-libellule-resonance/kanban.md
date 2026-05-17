@@ -29,8 +29,8 @@
 | **3C** | **Briefs Couche 2 (refonte — vague 4 BOUSSOLE)** | Directeur | ✅ | 2026-05-17 | [`3-briefs/`](3-briefs/) — brief-personnages.md + brief-histoire.md refondus **EN BOUSSOLE** : intentions Ki/Sho/Ten/Ketsu (6 causalités-ESSENCE, zéro phrase publiable) + sensibilités + COUCHE 3 guidé seul. **PMO relecture PASS 2026-05-17** — aucune formulation publiable, verrous causaux transparents, Couche 3 isolée. Applique DEC-BRIEF-VAGUE4-BOUSSOLE. |
 | **D** | **_writer-package complet Couches 1/2/3 (vague 3)** | Directeur | ✅ | 2026-05-16 | [`3-briefs/brief-histoire.md`](3-briefs/brief-histoire.md) refondé : Couche 1 ref → `equipe/_writer-system.md` + Couche 2 brief + Couche 3 vision guidé. Format : système/utilisateur (DEC-WRITER-ARCH-001). **LIVRÉ** |
 | 3 | ~~Briefs~~ (archivé vague 1-2) | — | ❌ | 2026-05-12 | [`3-briefs/`](3-briefs/) — **REFONTE VAGUE 3 COMPLÉTÉE** (étapes B/C/D ✅) |
-| 4 | **14 Versions writers — VAGUE 4 BOUSSOLE** (briefs BOUSSOLE 2026-05-17) | 14 Writers | ⚪ | 2026-05-17 | [`4-versions-writers/`](4-versions-writers/) — **PRÊTE À LANCER** — invocation: system=`equipe/_writer-system.md`, user=`3-briefs/brief-histoire.md` (DEC-BRIEF-VAGUE4-BOUSSOLE appliqué). **Casting FIGÉ 14** : K2.6 thinking EXCLU vague 4 uniquement (AP-WRITER-THINKING-001 : mode incompatible briefs causalités). Papa Yann confirme 2026-05-17 casting permanent inchangé. Vague 3 archivée dans `_archive/vague-3/`, vague 1-2 restent `_archive/` |
-| 5 | **Panel 20 lecteurs + synthèse** | 20 Témoins + Directeur | ✅ | 2026-05-14 | [`5-lecteurs-temoins/`](5-lecteurs-temoins/) + [`5-synthese-lecteurs.md`](5-synthese-lecteurs.md) — verdict : `kimi-reco-guide` #1 chez 18/20 |
+| 4 | **14 Versions writers — VAGUE 4 BOUSSOLE** | 14 Writers | ✅ | 2026-05-17 | [`4-versions-writers/`](4-versions-writers/) — **14/14 PRODUITS** (commit 634c5041) : 6 Claude + 2 DeepSeek + 2 Grok + 4 Kimi (kimi-reco, kimi-k26-instant, **kimi-k26-thinking**, kimi-reco-guide). DEC-BRIEF-VAGUE4-BOUSSOLE appliqué. **Casting FIGÉ 14, AUCUNE exclusion** — kimi-k26-thinking produit comme les 13 autres (retrait proposé PMO 2026-05-16, REFUSÉ Papa Yann 2026-05-17). Bug infra résolu : CLI streaming SSE. Vague 3 archivée `_archive/vague-3/` |
+| 5 | **Panel 20 lecteurs + synthèse** | 20 Témoins + Directeur | ⚪ | — | À RELANCER sur les **14 vague 4** (panels vague 2 et 3 archivés dans `_archive/`). En attente décision Papa Yann. |
 | 6 | Sélection | Directeur | ⏳ | 2026-05-14 → 2026-05-15 | [`6-selection.md`](6-selection.md) — **EN ATTENTE AUTEUR** (validation vague 3 briefs avant sélection ETH vague 3, voir DEC-STORY-002-VAGUE3) |
 | 7 | Rewrite | Writer du top 1 | ⚪ | — | [`7-rewrite/`](7-rewrite/) |
 | 8 | GateKeeper | GateKeeper | ⚪ | — | [`8-gatekeeper-verdict.md`](8-gatekeeper-verdict.md) |
@@ -79,7 +79,7 @@
 - Couche 3 guidé = writer seul, jamais Couche 2
 - Chansonnette supprimée, Nono debout (contradiction interne vague 3 éliminée)
 
-**Application immédiate** : Brief STORY-002 vague 4 refondé en BOUSSOLE 2026-05-16. Prête à lancer étape 4 (14 writers, K2.6 thinking EXCLU vague 4 seulement).
+**Application** : Brief STORY-002 vague 4 refondé en BOUSSOLE 2026-05-17. Étape 4 ✅ **14/14 writers produits** (casting figé 14, kimi-k26-thinking inclus comme les 13 autres — aucune exclusion). Bug infra résolu (CLI streaming SSE). Étape 5 (panel) en attente décision Papa Yann.
 
 **Leçons gravées** : OBS-SURSPEC-BRIEFS (précision ≠ liberté) + AP-WRITER-THINKING-001 (Kimi K2.6 thinking incompatible briefs causalités).
 

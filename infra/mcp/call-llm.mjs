@@ -33,6 +33,24 @@ const promptFile = arg("prompt");
 const temperature = arg("temperature");
 const timeoutMs = Number(arg("timeout-ms", "540000")); // 9 min < 600s cap Bash
 const outFile = arg("out");
+const writer = arg("writer");          // requis pour provider kimi-payant (garde-fou)
+const thinking = arg("thinking");      // "enabled" | "disabled" — requis pour kimi-payant
+
+// ── GARDE-FOU RÈGLE FIGÉE ──────────────────────────────────────────────
+// Le canal payant Moonshot est STRICTEMENT réservé à 2 writers du casting
+// figé : kimi-k26-instant et kimi-k26-thinking. Toute autre valeur de
+// --writer (ou son absence) sur provider=kimi-payant = refus immédiat.
+// Voir mémoire feedback-kimi-payant-interdit / feedback-regle-figee-alerte.
+const PAYANT_WRITERS_AUTORISES = ["kimi-k26-instant", "kimi-k26-thinking"];
+if (provider === "kimi-payant") {
+  if (!writer || !PAYANT_WRITERS_AUTORISES.includes(writer)) {
+    console.error(
+      `ERREUR GARDE-FOU: provider 'kimi-payant' réservé à ${PAYANT_WRITERS_AUTORISES.join(" / ")}. ` +
+      `Reçu --writer='${writer ?? "(absent)"}'. Refus. Règle figée — voir mémoire feedback-kimi-payant-interdit.`
+    );
+    process.exit(3);
+  }
+}
 
 if (!systemFile || !promptFile) {
   console.error("ERREUR: --system <file> et --prompt <file> obligatoires.");
@@ -74,6 +92,15 @@ const PROVIDERS = {
     keyEnv: "XAI_API_KEY",
     headers: {},
   },
+  // PAYANT — accès verrouillé par le garde-fou --writer ci-dessus.
+  // Existe pour les 2 writers k26 dont la génération longue dépasse le
+  // transport MCP (~250s). Le CLI contourne le transport, pas la règle.
+  "kimi-payant": {
+    baseUrl: "https://api.moonshot.ai/v1",
+    model: "kimi-k2.6",
+    keyEnv: "MOONSHOT_PAYANT_API_KEY",
+    headers: {},
+  },
 };
 
 const p = PROVIDERS[provider];
@@ -98,6 +125,20 @@ const body = {
   ],
 };
 if (temperature !== undefined) body.temperature = Number(temperature);
+// Modèle payant K2.6 : thinking explicite (enabled = kimi-k26-thinking,
+// disabled = kimi-k26-instant). Contrainte API : temp 0.6 si disabled, 1 si enabled.
+if (provider === "kimi-payant" && thinking) {
+  body.thinking = { type: thinking };
+}
+
+// STREAMING OBLIGATOIRE (doc officielle Moonshot/Kimi) :
+// en non-stream, une génération longue (~5-8 min pour 550 mots) laisse la
+// connexion HTTP silencieuse → une passerelle réseau intermédiaire la coupe
+// (« fetch failed » ~5min, AVANT le timeout serveur de 2h et AVANT notre
+// AbortController). Le stream renvoie les tokens en continu → connexion
+// jamais muette → plus aucune coupure passerelle. Source :
+// platform.moonshot.ai/docs/guide/utilize-the-streaming-output-feature.
+body.stream = true;
 
 const started = Date.now();
 const controller = new AbortController();
@@ -124,16 +165,45 @@ try {
   if (!res.ok) {
     const errText = await res.text();
     process.stderr.write(`[call-llm] ✗ HTTP ${res.status} after ${elapsed}ms: ${errText.slice(0, 500)}\n`);
-    process.exit(1);
+    process.exitCode = 1;
+    throw new Error(`HTTP ${res.status}`);
   }
 
-  const data = await res.json();
-  const text = data?.choices?.[0]?.message?.content ?? "";
-  if (!text) {
-    process.stderr.write(`[call-llm] ✗ réponse vide after ${elapsed}ms\n`);
-    process.exit(1);
+  // Lecture du flux SSE : chaque event = "data: {json}\n\n", fin = "data: [DONE]".
+  // On réassemble choices[0].delta.content. La connexion reçoit des octets en
+  // continu → aucune passerelle ne la coupe pour silence.
+  const decoder = new TextDecoder();
+  let buffer = "";
+  let text = "";
+  let lastBeat = Date.now();
+  for await (const chunk of res.body) {
+    buffer += decoder.decode(chunk, { stream: true });
+    const lines = buffer.split("\n");
+    buffer = lines.pop() ?? "";        // garde la ligne partielle
+    for (const line of lines) {
+      const t = line.trim();
+      if (!t || !t.startsWith("data:")) continue;
+      const payload = t.slice(5).trim();
+      if (payload === "[DONE]") continue;
+      try {
+        const j = JSON.parse(payload);
+        const piece = j?.choices?.[0]?.delta?.content;
+        if (piece) text += piece;
+      } catch { /* ligne SSE non-JSON (keep-alive) : ignore */ }
+    }
+    // Battement de progression toutes les ~30s pour visibilité.
+    if (Date.now() - lastBeat > 30000) {
+      lastBeat = Date.now();
+      process.stderr.write(`[call-llm] … stream en cours, ${text.length} chars à ${((Date.now()-started)/1000)|0}s\n`);
+    }
   }
-  process.stderr.write(`[call-llm] ✓ HTTP ${res.status} after ${elapsed}ms, responseChars=${text.length}\n`);
+  const elapsedFull = Date.now() - started;
+  if (!text) {
+    process.stderr.write(`[call-llm] ✗ stream vide after ${elapsedFull}ms\n`);
+    process.exitCode = 1;
+    throw new Error("stream vide");
+  }
+  process.stderr.write(`[call-llm] ✓ stream OK after ${elapsedFull}ms, responseChars=${text.length}\n`);
 
   if (outFile) {
     writeFileSync(outFile, text, "utf8");

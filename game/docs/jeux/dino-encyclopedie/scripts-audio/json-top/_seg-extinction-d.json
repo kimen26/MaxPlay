@@ -1,0 +1,24 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited][happily] Les PETITS animaux, eux, ils survivent ! Les petits qui peuvent se cacher, qui n'ont pas besoin de tant, tant, tant de nourriture. Et les OISEAUX ? Ils survivent aussi. Tu sais pourquoi ? Parce que les oiseaux sont de VRAIS dinosaures ! C'est fou, hein ?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps][happily] Les oiseaux ? Des dinosaures ?! Pour de vrai ?!"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful][confident] VRAIMENT ! Et tu sais quoi d'encore plus fou ? La prochaine fois que tu vois un pigeon dans la rue, ou un moineau, ou un corbeau : TU VOIS UN DINOSAURE ! Les oiseaux d'aujourd'hui, c'est les bébés-bébés-bébés des dinosaures de l'époque. La vie n'a jamais arrêté. Elle a juste changé de forme. Et c'est pour ça que les dinosaures ne sont jamais vraiment partis. Ils sont partout ! Ils volent dans le ciel, c'est cool, non ?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[happily] Oui ! Le pigeon = un dino ! J'adore !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

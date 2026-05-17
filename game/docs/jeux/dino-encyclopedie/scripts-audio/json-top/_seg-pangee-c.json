@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Pourquoi je te raconte ça ? Parce que ça change TOUT pour les dinosaures ! Regarde le Cryolophosaure : il vivait en Antarctique au Jurassique. Mais tu sais quoi ? À l'époque, l'Antarctique n'était pas glacé et blanc comme maintenant. C'était chaud et boisé, parce que ça faisait partie de la Pangée collée au reste du monde !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious][excited] L'Antarctique, CHAUD ?? Pas froid du tout ?!"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Pas froid du tout ! Quand la Terre change de forme, le froid et le chaud changent aussi. Le Cryolophosaure vivait tranquille en Antarctique tout chaud, avec des arbres et du soleil !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

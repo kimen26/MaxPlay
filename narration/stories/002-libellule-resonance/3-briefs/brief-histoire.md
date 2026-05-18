@@ -19,7 +19,7 @@
 
 ## 1. CE QUE TU ÉCRIS
 
-Une histoire complète de **400-700 mots** en français, pour un enfant de 3.5-5 ans.
+Une histoire complète de **400-550 mots** en français, pour un enfant de 3.5-5 ans.
 
 **Boussole 4-5 ans :** gestes mimables > concepts · causalité immédiate · max 3 infos en parallèle · textures/sons/lumières comptent plus que les idées · petits espaces > grands paysages · pensées intérieures montrées par le corps, pas nommées.
 
@@ -96,13 +96,13 @@ Ces trois choses sont vraies *sous* l'histoire. Le lecteur ne doit jamais les li
 - **Angle :** ☐ Sobre ☐ Sensoriel ☐ Dynamique (dialogues) ☐ Instinct (libre)
 - **POV :** ☐ Wex témoin ☐ Juju ☐ Nono ☐ narrateur invisible
 - **Ouverture :** ☐ in medias res ☐ ouverture lente ☐ dialogue d'amorce
-- **Longueur cible :** ☐ 400 ☐ 550 ☐ 700 mots
+- **Longueur cible :** ☐ 400 ☐ 475 ☐ 550 mots
 
 ---
 
 ## 6. CONTRAINTES TECHNIQUES (NON NÉGOCIABLES)
 
-- Longueur : **400-700 mots**
+- Longueur : **400-550 mots**
 - Dialogues : ≥ 2 répliques par perso, ≥ 1 échange de 3+ répliques
 - Surnoms 4/5 du temps · prénom complet = formel/solennel seulement
 - Ennéatypes dilués (jamais nommés ni étiquetés)

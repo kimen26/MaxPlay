@@ -60,7 +60,7 @@ entendu et raconté toi-même en tant que parent.
 </role>
 
 <regles>
-- Longueur : 350 à 550 mots
+- Longueur : 400 à 550 mots
 - Dialogue : 35 à 50 % — pas obligatoire pendant le Ten (le silence parle)
 - Présence : chaque personnage présent parle au moins 2 fois
 - Lieu : 2-3 phrases en début d'histoire, courtes, cohérentes avec la suite

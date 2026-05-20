@@ -56,7 +56,7 @@
     <span class="consigne-text" id="consigneText">Chargement de la carte…</span>
   </div>
   <div class="map-zone">
-    <svg id="mapSvg" viewBox="0 0 900 700" preserveAspectRatio="xMidYMid meet"></svg>
+    <svg id="mapSvg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet"></svg>
   </div>
   <div class="ctrl-zone">
     <button class="btn-ok" id="btnOk" onclick="confirmer()">✓ C'est ça !</button>
@@ -67,40 +67,35 @@
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/topojson@3/dist/topojson.min.js"></script>
 <script>
-// ── Données pays (ISO numeric → données jeu) ─────────────────────────────────
+// ── Données pays + coordonnées SVG approximées ──────────────────────────────────
 const EU_PAYS = {
-  250: { name:'France',          flag:'🇫🇷', art:'la ',  col:'#4a7fd4' },
-  276: { name:'Allemagne',       flag:'🇩🇪', art:"l'",   col:'#c5a020' },
-  724: { name:'Espagne',         flag:'🇪🇸', art:"l'",   col:'#c94040' },
-  380: { name:'Italie',          flag:'🇮🇹', art:"l'",   col:'#e07030' },
-  826: { name:'Royaume-Uni',     flag:'🇬🇧', art:'le ',  col:'#7c4db8' },
-  616: { name:'Pologne',         flag:'🇵🇱', art:'la ',  col:'#d45070' },
-  528: { name:'Pays-Bas',        flag:'🇳🇱', art:'les ', col:'#c03030' },
-  56:  { name:'Belgique',        flag:'🇧🇪', art:'la ',  col:'#b88020' },
-  756: { name:'Suisse',          flag:'🇨🇭', art:'la ',  col:'#b83050' },
-  40:  { name:'Autriche',        flag:'🇦🇹', art:"l'",   col:'#7c3080' },
-  752: { name:'Suède',           flag:'🇸🇪', art:'la ',  col:'#2080be' },
-  578: { name:'Norvège',         flag:'🇳🇴', art:'la ',  col:'#c57020' },
-  300: { name:'Grèce',           flag:'🇬🇷', art:'la ',  col:'#1a7060' },
-  642: { name:'Roumanie',        flag:'🇷🇴', art:'la ',  col:'#3062c0' },
-  620: { name:'Portugal',        flag:'🇵🇹', art:'le ',  col:'#3a9050' },
-  208: { name:'Danemark',        flag:'🇩🇰', art:'le ',  col:'#a82020' },
-  372: { name:'Irlande',         flag:'🇮🇪', art:"l'",   col:'#206030' },
-  191: { name:'Croatie',         flag:'🇭🇷', art:'la ',  col:'#507030' },
-  688: { name:'Serbie',          flag:'🇷🇸', art:'la ',  col:'#405070' },
-  703: { name:'Slovaquie',       flag:'🇸🇰', art:'la ',  col:'#205020' },
-  203: { name:'Rép. Tchèque',    flag:'🇨🇿', art:'la ',  col:'#1a5090' },
-  348: { name:'Hongrie',         flag:'🇭🇺', art:'la ',  col:'#b03030' },
-  100: { name:'Bulgarie',        flag:'🇧🇬', art:'la ',  col:'#307050' },
-  804: { name:'Ukraine',         flag:'🇺🇦', art:"l'",   col:'#3a6090' },
-  246: { name:'Finlande',        flag:'🇫🇮', art:'la ',  col:'#008880' },
+  250: { name:'France',          flag:'🇫🇷', art:'la ',  col:'#4a7fd4', sx:450, sy:550, w:120, h:130 },
+  276: { name:'Allemagne',       flag:'🇩🇪', art:"l'",   col:'#c5a020', sx:550, sy:400, w:100, h:90 },
+  724: { name:'Espagne',         flag:'🇪🇸', art:"l'",   col:'#c94040', sx:300, sy:550, w:100, h:120 },
+  380: { name:'Italie',          flag:'🇮🇹', art:"l'",   col:'#e07030', sx:550, sy:580, w:60, h:120 },
+  826: { name:'Royaume-Uni',     flag:'🇬🇧', art:'le ',  col:'#7c4db8', sx:350, sy:380, w:70, h:110 },
+  616: { name:'Pologne',         flag:'🇵🇱', art:'la ',  col:'#d45070', sx:620, sy:380, w:90, h:100 },
+  528: { name:'Pays-Bas',        flag:'🇳🇱', art:'les ', col:'#c03030', sx:480, sy:350, w:40, h:50 },
+  56:  { name:'Belgique',        flag:'🇧🇪', art:'la ',  col:'#b88020', sx:480, sy:370, w:40, h:40 },
+  756: { name:'Suisse',          flag:'🇨🇭', art:'la ',  col:'#b83050', sx:520, sy:450, w:40, h:40 },
+  40:  { name:'Autriche',        flag:'🇦🇹', art:"l'",   col:'#7c3080', sx:600, sy:430, w:60, h:60 },
+  752: { name:'Suède',           flag:'🇸🇪', art:'la ',  col:'#2080be', sx:620, sy:250, w:80, h:140 },
+  578: { name:'Norvège',         flag:'🇳🇴', art:'la ',  col:'#c57020', sx:500, sy:220, w:100, h:150 },
+  300: { name:'Grèce',           flag:'🇬🇷', art:'la ',  col:'#1a7060', sx:650, sy:650, w:60, h:80 },
+  642: { name:'Roumanie',        flag:'🇷🇴', art:'la ',  col:'#3062c0', sx:680, sy:500, w:70, h:100 },
+  620: { name:'Portugal',        flag:'🇵🇹', art:'le ',  col:'#3a9050', sx:250, sy:550, w:50, h:80 },
+  208: { name:'Danemark',        flag:'🇩🇰', art:'le ',  col:'#a82020', sx:550, sy:310, w:50, h:40 },
+  372: { name:'Irlande',         flag:'🇮🇪', art:"l'",   col:'#206030', sx:310, sy:380, w:50, h:80 },
+  191: { name:'Croatie',         flag:'🇭🇷', art:'la ',  col:'#507030', sx:630, sy:520, w:50, h:50 },
+  688: { name:'Serbie',          flag:'🇷🇸', art:'la ',  col:'#405070', sx:650, sy:530, w:50, h:50 },
+  703: { name:'Slovaquie',       flag:'🇸🇰', art:'la ',  col:'#205020', sx:640, sy:430, w:50, h:40 },
+  203: { name:'Rép. Tchèque',    flag:'🇨🇿', art:'la ',  col:'#1a5090', sx:600, sy:390, w:60, h:50 },
+  348: { name:'Hongrie',         flag:'🇭🇺', art:'la ',  col:'#b03030', sx:640, sy:460, w:60, h:50 },
+  100: { name:'Bulgarie',        flag:'🇧🇬', art:'la ',  col:'#307050', sx:700, sy:550, w:60, h:60 },
+  804: { name:'Ukraine',         flag:'🇺🇦', art:"l'",   col:'#3a6090', sx:720, sy:430, w:80, h:120 },
+  246: { name:'Finlande',        flag:'🇫🇮', art:'la ',  col:'#008880', sx:700, sy:280, w:60, h:100 },
 };
-
-// Pays visibles en gris (contexte géographique, non jouables)
-const CONTEXT_IDS = new Set([112, 498, 8, 807, 499, 70, 440, 428, 233, 442, 352, 643]);
 
 const EU_IDS = new Set(Object.keys(EU_PAYS).map(Number));
 
@@ -110,56 +105,28 @@ const LEVELS = {
   difficile: Object.keys(EU_PAYS).map(Number)
 };
 
-// ── Zone de projection Europe ─────────────────────────────────────────────────
-// lon [-13, 42], lat [34, 72] → SVG 900×700
-const EUROPE_BBOX = {
-  type:'Feature',
-  geometry:{ type:'Polygon', coordinates:[[[-13,34],[42,34],[42,72],[-13,72],[-13,34]]] }
-};
-
 // ── État ──────────────────────────────────────────────────────────────────────
 let currentLevel = 'facile';
 let queue = [], qIdx = 0, selected = null;
 const foundSet = new Set();
-let worldFeatures = [], pathGen;
 
 // ── SVG + ocean ───────────────────────────────────────────────────────────────
 const svgEl = document.getElementById('mapSvg');
 const oceanRect = document.createElementNS('http://www.w3.org/2000/svg','rect');
-oceanRect.setAttribute('width',900); oceanRect.setAttribute('height',700);
+oceanRect.setAttribute('x','0'); oceanRect.setAttribute('y','0');
+oceanRect.setAttribute('width','1000'); oceanRect.setAttribute('height','1000');
 oceanRect.setAttribute('fill','#1e3a5f');
 svgEl.appendChild(oceanRect);
 
 // ── Rendu carte ───────────────────────────────────────────────────────────────
-function makePath(feature, fill, stroke, sw, onClick) {
-  const d = pathGen(feature);
-  if (!d) return null;
-  const p = document.createElementNS('http://www.w3.org/2000/svg','path');
-  p.setAttribute('d', d);
-  p.setAttribute('fill', fill);
-  p.setAttribute('stroke', stroke);
-  p.setAttribute('stroke-width', sw);
-  p.setAttribute('stroke-linejoin','round');
-  if (onClick) { p.style.cursor = 'pointer'; p.addEventListener('click', onClick); }
-  else { p.style.pointerEvents = 'none'; }
-  return p;
-}
-
 function renderMap() {
   // Vider sauf l'océan (premier enfant)
   while (svgEl.childNodes.length > 1) svgEl.removeChild(svgEl.lastChild);
 
   const activeSet = new Set(LEVELS[currentLevel]);
 
-  // Contexte (gris foncé)
-  worldFeatures.filter(f => CONTEXT_IDS.has(+f.id)).forEach(f => {
-    const p = makePath(f, '#1c2d3d', '#111e2a', 0.5, null);
-    if (p) svgEl.appendChild(p);
-  });
-
   // Pays du jeu
-  worldFeatures.filter(f => EU_IDS.has(+f.id)).forEach(f => {
-    const id = +f.id;
+  EU_IDS.forEach(id => {
     const data = EU_PAYS[id];
     const isActive = activeSet.has(id);
     const isFound  = foundSet.has(id);
@@ -167,46 +134,49 @@ function renderMap() {
 
     let fill, stroke, sw, onClick = null;
     if (isFound) {
-      fill='#22c55e'; stroke='#15803d'; sw=2;
+      fill='#22c55e'; stroke='#15803d'; sw=3;
     } else if (isSel) {
-      fill='#ff9500'; stroke='#ffb700'; sw=2.5;
+      fill='#ff9500'; stroke='#ffb700'; sw=4;
     } else if (isActive) {
-      fill=data.col; stroke='#0a1520'; sw=1.2;
+      fill=data.col; stroke='#0a1520'; sw=1.5;
       onClick = () => selectPays(id);
     } else {
       fill='#243040'; stroke='#18222c'; sw=0.8;
     }
 
-    const p = makePath(f, fill, stroke, sw, onClick);
-    if (!p) return;
-    if (isSel) p.setAttribute('class','selected-pulse');
-    svgEl.appendChild(p);
-  });
+    const rect = document.createElementNS('http://www.w3.org/2000/svg','rect');
+    rect.setAttribute('x', data.sx - data.w/2);
+    rect.setAttribute('y', data.sy - data.h/2);
+    rect.setAttribute('width', data.w);
+    rect.setAttribute('height', data.h);
+    rect.setAttribute('fill', fill);
+    rect.setAttribute('stroke', stroke);
+    rect.setAttribute('stroke-width', sw);
+    rect.setAttribute('rx', '4');
+    if (onClick) {
+      rect.style.cursor = 'pointer';
+      rect.addEventListener('click', onClick);
+    } else {
+      rect.style.pointerEvents = 'none';
+    }
+    if (isSel) rect.setAttribute('class','selected-pulse');
+    svgEl.appendChild(rect);
 
-  // Labels texte courts
-  worldFeatures.filter(f => EU_IDS.has(+f.id)).forEach(f => {
-    const id = +f.id;
-    if (!activeSet.has(id) && !foundSet.has(id)) return;
-
-    const c = pathGen.centroid(f);
-    if (!c || isNaN(c[0]) || isNaN(c[1])) return;
-    if (c[0] < 0 || c[0] > 900 || c[1] < 0 || c[1] > 700) return;
-
-    const n = EU_PAYS[id].name;
-    const short = n.length > 9 ? n.substring(0,7)+'.' : n;
-
+    // Label pays (court)
+    const n = data.name;
+    const short = n.length > 8 ? n.substring(0,6)+'.' : n;
     const txt = document.createElementNS('http://www.w3.org/2000/svg','text');
-    txt.setAttribute('x', c[0]);
-    txt.setAttribute('y', c[1]);
+    txt.setAttribute('x', data.sx);
+    txt.setAttribute('y', data.sy);
     txt.setAttribute('text-anchor','middle');
     txt.setAttribute('dominant-baseline','middle');
-    txt.setAttribute('font-size','7.5');
-    txt.setAttribute('fill','rgba(255,255,255,0.85)');
+    txt.setAttribute('font-size','11');
+    txt.setAttribute('fill','rgba(255,255,255,0.9)');
     txt.setAttribute('font-family','system-ui,sans-serif');
     txt.setAttribute('font-weight','700');
     txt.setAttribute('pointer-events','none');
-    txt.setAttribute('stroke','rgba(0,0,0,0.4)');
-    txt.setAttribute('stroke-width','0.3');
+    txt.setAttribute('stroke','rgba(0,0,0,0.5)');
+    txt.setAttribute('stroke-width','0.4');
     txt.textContent = short;
     svgEl.appendChild(txt);
   });
@@ -314,20 +284,9 @@ function initLevel(lvl) {
 }
 
 // ── Init ──────────────────────────────────────────────────────────────────────
-async function init() {
-  try {
-    const world = await d3.json('https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json');
-    worldFeatures = topojson.feature(world, world.objects.countries).features;
-
-    const projection = d3.geoMercator()
-      .fitExtent([[10,10],[890,690]], EUROPE_BBOX);
-    pathGen = d3.geoPath().projection(projection);
-
-    const lvl = new URLSearchParams(location.search).get('level') || 'facile';
-    initLevel(lvl);
-  } catch(e) {
-    document.getElementById('consigneText').textContent = '⚠️ Erreur réseau — ouvre via GitHub Pages';
-  }
+function init() {
+  const lvl = new URLSearchParams(location.search).get('level') || 'facile';
+  initLevel(lvl);
 }
 
 init();

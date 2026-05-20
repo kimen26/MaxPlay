@@ -47,17 +47,23 @@ const files = fs.readdirSync(DIR).filter(f=>/\.(jpg|png|jpeg|webp)$/i.test(f)).s
 const map = {};
 let skipped=0;
 for (const f of files) {
-  // Pattern 1 : <id>_lot<N>_<n>_<vue>.jpg
+  // Pattern 1 : <id>_lot<N>_<n>_<vue>.jpg  (lots originaux Grok mai)
   let m = f.match(/^([a-z_]+)_lot(\d+)_(\d+)_(taille|environnement|chasse|sa_vie|qui_le_chasse)\.(jpg|png|jpeg|webp)$/i);
-  // Pattern 2 : <id>_<vue>.jpg (nouvelle livraison simple)
-  if (!m) m = f.match(/^([a-z_]+?)_(taille|environnement|chasse|sa_vie|qui_le_chasse)\.(jpg|png|jpeg|webp)$/i);
+  let id, vue;
+  if (m) { id=m[1]; vue=m[4].toLowerCase(); }
+  // Pattern 2 : <id>_inbox2_<N>_<vue>.jpg  (livraison inbox2 avec vue)
+  if (!m) { m = f.match(/^([a-z_]+)_inbox2_(\d+)_(taille|environnement|chasse|sa_vie|qui_le_chasse)\.(jpg|png|jpeg|webp)$/i);
+            if (m) { id=m[1]; vue=m[3].toLowerCase(); } }
+  // Pattern 3 : <id>_inbox2_<N>.jpg → IGNORÉ pour l'instant (en attente de classement par vue dino par dino)
+  // Pattern 4 : <id>_<vue>.jpg  (nouvelle livraison simple)
+  if (!m) { m = f.match(/^([a-z_]+?)_(taille|environnement|chasse|sa_vie|qui_le_chasse)\.(jpg|png|jpeg|webp)$/i);
+            if (m) { id=m[1]; vue=m[2].toLowerCase(); } }
   if (!m) { console.log('SKIP regex:',f); skipped++; continue; }
-  const id = m[1];
-  const vue = (m[4] || m[2]).toLowerCase();
   const key = f.replace(/\.(jpg|png|jpeg|webp)$/i,'');
   if (SKIP_DINO.has(id)) continue;
   if (KO.has(key)) continue;
-  (map[id]=map[id]||[]).push({ url:'img/dinos/grok/'+f, label:VUE[vue]||vue, type:'grok' });
+  const label = vue==='generique' ? 'Image' : (VUE[vue]||vue);
+  (map[id]=map[id]||[]).push({ url:'img/dinos/grok/'+f, label, type:'grok' });
 }
 
 // Ordre stable des vues dans la galerie

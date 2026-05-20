@@ -284,6 +284,23 @@ html, body {
 .v1-stat .v { font-size:1.35rem; font-weight:900; color:#ffe066; margin:2px 0; }
 .v1-stat .c { font-size:0.66rem; opacity:0.85; line-height:1.25; }
 
+/* Bloc vidéo */
+.fiche-video-wrap {
+  margin:14px 12px 4px;
+  border-radius:14px; overflow:hidden;
+  background:rgba(0,0,0,0.35);
+  border:2px solid rgba(231,76,60,0.6);
+  box-shadow:0 4px 16px rgba(0,0,0,0.4);
+}
+.fiche-video-title {
+  font-size:0.85rem; font-weight:900;
+  padding:10px 14px 6px; color:#fff;
+  background:linear-gradient(90deg,rgba(231,76,60,0.35),rgba(231,76,60,0.1));
+}
+.fiche-video {
+  width:100%; display:block; max-height:50vh; background:#000;
+}
+
 /* Extra gallery */
 .fiche-gallery-title {
   margin:16px 12px 8px;
@@ -1067,6 +1084,12 @@ function buildFiche(d) {
       <p>💡 ${d.fait}</p>
     </div>
 
+    ${DINO_VIDEOS[d.id] ? `
+      <div class="fiche-video-wrap">
+        <div class="fiche-video-title">🎬 ${DINO_VIDEOS[d.id].title || 'Vidéo'}</div>
+        <video class="fiche-video" src="${DINO_VIDEOS[d.id].src}" controls playsinline preload="metadata"></video>
+      </div>
+    ` : ''}
     ${extras.length ? buildGalleryHTML(extras, d.name) : ''}
   `;
 
@@ -1201,6 +1224,10 @@ function speakStatsDino(id) {
    recap = gros bouton "écoute l'histoire" · blocs = mini-duos par section.
    Si un bloc manque → fallback synthèse vocale. */
 // 4 blocs audio (refonte 2026-05-17) : nom / taille / regime / funfact + recap (ffmpeg concat).
+// Vidéos par dino (MP4 local, autoplay non, controls oui)
+const DINO_VIDEOS = {
+  triceratops: { src: 'video/dinos/triceratops-combat.mp4', title: 'Tricératops contre T-Rex !' },
+};
 const _BLOCS4 = ['nom','taille','regime','funfact'];
 function _audioSet(id) {
   const o = { recap: 'audio/dinos/' + id + '-recap.mp3' };

@@ -2,428 +2,332 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>MJ-22 — Trouve le pays !</title>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: linear-gradient(135deg, #87ceeb 0%, #e0f6ff 100%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 16px;
-    }
-    .game-container {
-      width: 100%;
-      max-width: 800px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-    header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 22px;
-      font-weight: bold;
-      color: #333;
-    }
-    .back-btn {
-      background: #f0f0f0;
-      border: none;
-      width: 40px;
-      height: 40px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 20px;
-      transition: background 200ms;
-    }
-    .back-btn:active { background: #e0e0e0; }
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; touch-action:manipulation; }
+    body { background:#1a1a2e; font-family:system-ui,sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
 
-    .consigne {
-      text-align: center;
-      font-size: 18px;
-      color: #333;
-      font-weight: 500;
-      margin: 4px 0;
-    }
-    .drapeau-cible {
-      font-size: 72px;
-      text-align: center;
-      margin: 4px 0;
-    }
-    .map-container {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 1.4;
-      background: linear-gradient(135deg, #f0f8ff 0%, #e6f3ff 100%);
-      border: 2px solid #ccc;
-      border-radius: 8px;
-      overflow: hidden;
-    }
-    svg {
-      width: 100%;
-      height: 100%;
-    }
-    .pays {
-      fill: #d3d3d3;
-      stroke: #666;
-      stroke-width: 1;
-      cursor: pointer;
-      transition: fill 150ms, filter 150ms;
-    }
-    .pays:hover {
-      fill: #a9a9a9;
-      filter: drop-shadow(0 0 3px rgba(0,0,0,0.3));
-    }
-    .pays.highlight {
-      fill: #ff8c00;
-      stroke: #ff6500;
-      stroke-width: 2;
-      animation: pulse 500ms ease-in-out;
-    }
-    @keyframes pulse {
-      0%, 100% { fill: #ff8c00; }
-      50% { fill: #ffa500; }
-    }
-    .pays-label {
-      font-size: 10px;
-      fill: #333;
-      font-weight: bold;
-      pointer-events: none;
-      text-anchor: middle;
-      dominant-baseline: middle;
-    }
+    /* GABARIT HEADER CANONIQUE */
+    .hdr { display:flex; align-items:center; gap:10px; padding:6px 12px; flex-shrink:0; background:rgba(0,0,0,0.25); border-bottom:1px solid rgba(255,255,255,0.08); }
+    .hdr a { color:#fff; text-decoration:none; font-size:1.3rem; background:rgba(255,255,255,0.12); border-radius:8px; padding:4px 10px; font-weight:900; flex-shrink:0; }
+    .hdr a:active { background:rgba(255,255,255,0.25); }
+    .htitle { flex:1; font-size:1rem; font-weight:900; }
 
-    .victoire-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.8);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      animation: fadeIn 300ms;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    .victoire-content {
-      text-align: center;
-      background: white;
-      padding: 40px 32px;
-      border-radius: 16px;
-      animation: scaleIn 500ms cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    @keyframes scaleIn {
-      from { transform: scale(0.2); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-    .drapeau-victoire {
-      font-size: 140px;
-      margin: 16px 0;
-      animation: bounce 600ms cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-    @keyframes bounce {
-      0% { transform: scale(0); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
-    .victoire-text {
-      font-size: 26px;
-      font-weight: bold;
-      color: #333;
-      margin: 16px 0;
-    }
+    /* Consigne */
+    .consigne-zone { display:flex; align-items:center; justify-content:center; gap:10px; padding:8px 12px; flex-shrink:0; background:rgba(0,0,0,0.2); min-height:56px; }
+    .drapeau-hint { font-size:2.2rem; }
+    .consigne-text { font-size:1.1rem; font-weight:700; }
 
-    .controls {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .confirm-btn {
-      padding: 12px 28px;
-      font-size: 16px;
-      font-weight: 600;
-      background: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      display: none;
-      transition: background 200ms, transform 100ms;
-    }
-    .confirm-btn.show {
-      display: inline-block;
-    }
-    .confirm-btn:active {
-      transform: scale(0.96);
-      background: #45a049;
-    }
+    /* Map */
+    .map-zone { flex:1; min-height:0; padding:4px; display:flex; }
+    #mapSvg { width:100%; height:100%; }
 
-    .level-info {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px;
-      background: #f5f5f5;
-      border-radius: 8px;
-      margin-top: 4px;
-    }
-    .progress {
-      display: flex;
-      gap: 6px;
-    }
-    .progress-dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #ddd;
-      transition: background 300ms;
-    }
-    .progress-dot.active {
-      background: #4CAF50;
-    }
-    .level-label {
-      font-size: 13px;
-      color: #666;
-      font-weight: 600;
-      text-transform: uppercase;
-    }
+    .country { stroke:#0d1b2a; stroke-width:1.2; cursor:pointer; transition:filter 120ms; }
+    .country.inactive { fill:#263546; stroke:#1e2d3d; cursor:default; pointer-events:none; }
+    .country.active:active { filter:brightness(1.4); }
+    .country.selected { stroke:#ff8c00; stroke-width:3; filter:drop-shadow(0 0 8px rgba(255,140,0,0.9)); animation:puls 0.9s ease-in-out infinite; }
+    @keyframes puls { 0%,100%{filter:drop-shadow(0 0 6px rgba(255,140,0,0.6))} 50%{filter:drop-shadow(0 0 14px rgba(255,180,0,1))} }
+    .country.found { fill:#22c55e !important; stroke:#15803d; stroke-width:2; filter:none; animation:none; cursor:default; pointer-events:none; }
+
+    .cname { font-size:8px; fill:rgba(255,255,255,0.8); font-family:system-ui,sans-serif; font-weight:700; pointer-events:none; text-anchor:middle; dominant-baseline:middle; }
+
+    /* Controls */
+    .ctrl-zone { padding:6px 12px; flex-shrink:0; display:flex; justify-content:center; min-height:50px; align-items:center; }
+    .btn-ok { display:none; padding:10px 32px; font-size:1rem; font-weight:900; background:#22c55e; color:#fff; border:none; border-radius:12px; cursor:pointer; font-family:inherit; box-shadow:0 4px 0 #15803d; }
+    .btn-ok.show { display:block; }
+    .btn-ok:active { transform:translateY(3px); box-shadow:0 1px 0 #15803d; }
+
+    /* Level bar */
+    .lvl-bar { display:flex; justify-content:space-between; align-items:center; padding:5px 12px; background:rgba(0,0,0,0.3); flex-shrink:0; }
+    .dots { display:flex; gap:5px; }
+    .dot { width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.25); transition:background 300ms; }
+    .dot.done { background:#22c55e; }
+    .lvl-label { font-size:0.8rem; font-weight:700; color:rgba(255,255,255,0.6); }
+
+    /* Victoire */
+    .overlay { position:fixed; inset:0; background:rgba(0,0,0,0.88); display:flex; align-items:center; justify-content:center; z-index:99; animation:fi 200ms; }
+    @keyframes fi { from{opacity:0} to{opacity:1} }
+    .vcard { background:#fff; border-radius:20px; padding:28px 36px; text-align:center; animation:po 350ms cubic-bezier(0.34,1.56,0.64,1); max-width:90vw; }
+    @keyframes po { from{transform:scale(0.2);opacity:0} to{transform:scale(1);opacity:1} }
+    .vflag { font-size:110px; line-height:1.1; }
+    .vname { font-size:1.6rem; font-weight:900; color:#333; margin-top:6px; }
+    .vbtn { margin-top:14px; padding:10px 24px; background:#22c55e; color:#fff; border:none; border-radius:10px; font-size:1rem; font-weight:900; cursor:pointer; font-family:inherit; }
+    .fin-btn { margin-top:14px; padding:10px 20px; background:#3b82f6; color:#fff; border:none; border-radius:10px; font-size:1rem; font-weight:900; cursor:pointer; font-family:inherit; }
   </style>
 </head>
 <body>
-  <div class="game-container">
-    <header>
-      <button class="back-btn" onclick="window.history.back()">←</button>
-      <span>🗺️ Trouve le pays !</span>
-    </header>
-
-    <div class="consigne" id="consigne">Trouve la France !</div>
-    <div class="drapeau-cible" id="drapeau-cible">🇫🇷</div>
-
-    <div class="map-container">
-      <svg id="mapSvg" viewBox="0 0 1200 850" preserveAspectRatio="xMidYMid meet">
-        <!-- Background -->
-        <rect width="1200" height="850" fill="#f0f8ff"/>
-      </svg>
-    </div>
-
-    <div class="controls">
-      <button class="confirm-btn" id="confirmBtn" onclick="confirmer()">✓ C'est ça !</button>
-    </div>
-
-    <div class="level-info">
-      <div class="progress" id="progress"></div>
-      <div class="level-label" id="level-label">Facile</div>
-    </div>
+<div id="app">
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">🗺️ Trouve le pays !</span>
   </div>
 
-  <script>
-    function speak(text) {
-      const msg = new SpeechSynthesisUtterance(text);
-      msg.lang = 'fr-FR';
-      msg.rate = 0.9;
-      msg.pitch = 1.2;
-      window.speechSynthesis.cancel();
-      window.speechSynthesis.speak(msg);
+  <div class="consigne-zone">
+    <span class="drapeau-hint" id="drapeauHint"></span>
+    <span class="consigne-text" id="consigneText">...</span>
+  </div>
+
+  <div class="map-zone">
+    <svg id="mapSvg" viewBox="0 0 900 700" preserveAspectRatio="xMidYMid meet"></svg>
+  </div>
+
+  <div class="ctrl-zone">
+    <button class="btn-ok" id="btnOk" onclick="confirmer()">✓ C'est ça !</button>
+  </div>
+
+  <div class="lvl-bar">
+    <div class="dots" id="dotsEl"></div>
+    <div class="lvl-label" id="lvlLabel">Facile</div>
+  </div>
+</div>
+
+<script>
+// ── Projection géographique ─────────────────────────────────────────────────
+// lon [-12, 42] → x [0, 900]   lat [34, 72] → y [700, 0]
+const LON0=-12, LON1=42, LAT0=34, LAT1=72, VW=900, VH=700;
+
+function px(lo, la) {
+  return [
+    Math.round((lo - LON0) / (LON1 - LON0) * VW),
+    Math.round((1 - (la - LAT0) / (LAT1 - LAT0)) * VH)
+  ];
+}
+function polyPts(coords) {
+  return coords.map(([lo,la]) => px(lo,la).join(',')).join(' ');
+}
+function centroid(coords) {
+  let sx=0, sy=0;
+  coords.forEach(([lo,la]) => { const [x,y]=px(lo,la); sx+=x; sy+=y; });
+  return [Math.round(sx/coords.length), Math.round(sy/coords.length)];
+}
+
+// ── Données pays ────────────────────────────────────────────────────────────
+// art = article français avec espace intégré (ou apostrophe pour voyelle)
+// Ordre de rendu : grand → petit (les petits passent par-dessus)
+const PAYS_LIST = [
+  { name:'Ukraine',              flag:'🇺🇦', art:"l'",   col:'#4a7fa8',
+    coords:[[22,52.5],[38,52],[38,45.5],[28.5,45.5],[22,48.5]] },
+  { name:'France',               flag:'🇫🇷', art:"la ",  col:'#5b8cce',
+    coords:[[-4.8,48.4],[-1.8,51],[2.5,51.1],[8.1,48.8],[7.6,43.7],[3.2,43.5],[-0.2,43.3],[-1.7,43.6],[-2.5,47.5],[-4.5,47.4]] },
+  { name:'Espagne',              flag:'🇪🇸', art:"l'",   col:'#c94040',
+    coords:[[-9,43.8],[-2,43.5],[3.3,43.4],[3.3,42.4],[0.7,40.7],[0.8,37.9],[-1.4,36.7],[-5.6,36],[-9.3,37],[-9.5,39],[-8.8,42]] },
+  { name:'Norvège',              flag:'🇳🇴', art:"la ",  col:'#c5852a',
+    coords:[[5,57.8],[8,58],[11,59.5],[12,63],[14,66],[18,70],[28,71.2],[30,70],[30,69],[18,68],[14,63],[13,59],[10,57]] },
+  { name:'Suède',                flag:'🇸🇪', art:"la ",  col:'#2596be',
+    coords:[[11,56],[12.5,56.5],[18,57],[20,59],[24.5,65],[27,69.5],[28,70.5],[18,70],[14,66],[12,63],[12,59]] },
+  { name:'Finlande',             flag:'🇫🇮', art:"la ",  col:'#00a89c',
+    coords:[[20,59.5],[28,60],[30,62],[29,65],[28,70.5],[24.5,65]] },
+  { name:'Pologne',              flag:'🇵🇱', art:"la ",  col:'#d4607a',
+    coords:[[14,54.5],[19,54.5],[24.1,54.3],[23.5,50.4],[22,49],[18.5,50.2],[15,51]] },
+  { name:'Allemagne',            flag:'🇩🇪', art:"l'",   col:'#c5a028',
+    coords:[[5.9,51],[8,55],[12.7,55],[14.5,53.2],[15,51],[12.5,50],[13.5,48.5],[10.5,47.4],[7.9,47.4],[6.8,49]] },
+  { name:'Roumanie',             flag:'🇷🇴', art:"la ",  col:'#3a72c0',
+    coords:[[22,48.5],[29.5,48.5],[29.5,44],[22,44]] },
+  { name:'Italie',               flag:'🇮🇹', art:"l'",   col:'#e07b39',
+    coords:[[6.6,44],[8,45.9],[13.5,46],[14.5,41],[16.5,38],[15.5,37.5],[12,38],[9.5,40.5],[7.5,43.8]] },
+  { name:'Royaume-Uni',          flag:'🇬🇧', art:"le ",  col:'#7c4db8',
+    coords:[[-5.5,50],[-2.2,50.7],[1.8,51.4],[1.7,53],[0.3,53.5],[-0.3,54.5],[-2.2,55],[-3,56.5],[-5,57.5],[-6.5,58.5],[-3.5,59.4],[-1.8,58],[-3,57],[-1.3,55],[-2.5,53],[-3.5,51.5],[-5.7,50]] },
+  { name:'Bulgarie',             flag:'🇧🇬', art:"la ",  col:'#408060',
+    coords:[[22.5,44],[28.5,44],[28.5,41.5],[22.5,41.5]] },
+  { name:'Grèce',                flag:'🇬🇷', art:"la ",  col:'#1a8060',
+    coords:[[20,42],[26.5,42],[26.5,37.5],[22,37],[20,39.5]] },
+  { name:'Hongrie',              flag:'🇭🇺', art:"la ",  col:'#c04040',
+    coords:[[16,48.5],[22.5,48.5],[22.5,46],[16,46]] },
+  { name:'République Tchèque',   flag:'🇨🇿', art:"la ",  col:'#2060a0',
+    coords:[[12.5,51],[18,51],[18,49],[12.5,49]] },
+  { name:'Croatie',              flag:'🇭🇷', art:"la ",  col:'#607840',
+    coords:[[13.5,46.5],[19,46.5],[19,43],[16,43],[13.5,45]] },
+  { name:'Serbie',               flag:'🇷🇸', art:"la ",  col:'#506080',
+    coords:[[19,46],[22.5,46],[22.5,43],[19,43]] },
+  { name:'Autriche',             flag:'🇦🇹', art:"l'",   col:'#7c3a8c',
+    coords:[[10,48.5],[17,48.5],[17,46.5],[10,47]] },
+  { name:'Slovaquie',            flag:'🇸🇰', art:"la ",  col:'#306030',
+    coords:[[17,49.5],[22.5,49.5],[22.5,48],[17,48]] },
+  { name:'Portugal',             flag:'🇵🇹', art:"le ",  col:'#3a9e60',
+    coords:[[-9.5,42],[-6.2,42],[-6.8,37],[-9.5,37]] },
+  { name:'Danemark',             flag:'🇩🇰', art:"le ",  col:'#a83030',
+    coords:[[8,57.8],[10.7,57.8],[12.5,56.5],[11,55.8],[9.5,55],[8,55]] },
+  { name:'Irlande',              flag:'🇮🇪', art:"l'",   col:'#286840',
+    coords:[[-10.5,55.5],[-6,55.5],[-6,51.5],[-10.5,52]] },
+  { name:'Pays-Bas',             flag:'🇳🇱', art:"les ", col:'#c03a3a',
+    coords:[[3.4,53.5],[7.2,53.5],[7.2,51],[6.4,51],[3.4,51.5]] },
+  { name:'Belgique',             flag:'🇧🇪', art:"la ",  col:'#b8942a',
+    coords:[[2.5,51.5],[6.4,51],[6.3,49.5],[2.8,49.5]] },
+  { name:'Suisse',               flag:'🇨🇭', art:"la ",  col:'#b84060',
+    coords:[[5.9,47.8],[10.5,47.8],[10.5,46],[6,46]] },
+];
+
+const PAYS = {};
+PAYS_LIST.forEach(p => { PAYS[p.name] = p; });
+
+const LEVELS = {
+  facile:    ['France','Espagne','Italie','Allemagne','Royaume-Uni'],
+  moyen:     ['France','Espagne','Italie','Allemagne','Royaume-Uni','Portugal','Belgique','Pays-Bas','Suisse','Autriche','Pologne','Suède','Norvège','Grèce','Roumanie'],
+  difficile: PAYS_LIST.map(p => p.name)
+};
+
+// ── État ─────────────────────────────────────────────────────────────────────
+let levelName = 'facile';
+let queue = [];
+let qIdx = 0;
+let selected = null;
+const foundSet = new Set();
+
+// ── Rendu SVG ─────────────────────────────────────────────────────────────────
+const svg = document.getElementById('mapSvg');
+
+function renderMap() {
+  svg.innerHTML = '';
+  // Fond océan
+  const bg = document.createElementNS('http://www.w3.org/2000/svg','rect');
+  bg.setAttribute('width',VW); bg.setAttribute('height',VH); bg.setAttribute('fill','#1e3a5f');
+  svg.appendChild(bg);
+
+  const activeSet = new Set(LEVELS[levelName]);
+
+  PAYS_LIST.forEach(data => {
+    const { name, col, coords } = data;
+    const isActive = activeSet.has(name);
+    const isFound  = foundSet.has(name);
+    const isSel    = selected === name;
+
+    const poly = document.createElementNS('http://www.w3.org/2000/svg','polygon');
+    poly.setAttribute('points', polyPts(coords));
+    poly.classList.add('country');
+
+    if (isFound) {
+      poly.classList.add('found');
+    } else if (!isActive) {
+      poly.classList.add('inactive');
+    } else {
+      poly.classList.add('active');
+      poly.setAttribute('fill', isSel ? '#ff8c00' : col);
+      if (isSel) poly.classList.add('selected');
+      poly.setAttribute('data-name', name);
+      poly.addEventListener('click', () => selectPays(name));
     }
+    svg.appendChild(poly);
 
-    const levels = {
-      facile: [
-        'France', 'Allemagne', 'Italie', 'Espagne', 'Royaume-Uni'
-      ],
-      moyen: [
-        'France', 'Allemagne', 'Italie', 'Espagne', 'Royaume-Uni',
-        'Pologne', 'Roumanie', 'Grèce', 'Suède', 'Norvège',
-        'Belgique', 'Pays-Bas', 'Suisse', 'Autriche', 'Portugal'
-      ],
-      difficile: [
-        'France', 'Allemagne', 'Italie', 'Espagne', 'Royaume-Uni',
-        'Pologne', 'Roumanie', 'Grèce', 'Suède', 'Norvège',
-        'Belgique', 'Pays-Bas', 'Suisse', 'Autriche', 'Portugal',
-        'Hongrie', 'Bulgarie', 'République Tchèque', 'Slovaquie', 'Croatie',
-        'Slovénie', 'Bosnie-Herzégovine', 'Serbie', 'Albanie', 'Macédoine'
-      ]
-    };
-
-    const flags = {
-      'France': '🇫🇷', 'Allemagne': '🇩🇪', 'Italie': '🇮🇹', 'Espagne': '🇪🇸',
-      'Royaume-Uni': '🇬🇧', 'Pologne': '🇵🇱', 'Roumanie': '🇷🇴', 'Grèce': '🇬🇷',
-      'Suède': '🇸🇪', 'Norvège': '🇳🇴', 'Belgique': '🇧🇪', 'Pays-Bas': '🇳🇱',
-      'Suisse': '🇨🇭', 'Autriche': '🇦🇹', 'Portugal': '🇵🇹', 'Hongrie': '🇭🇺',
-      'Bulgarie': '🇧🇬', 'République Tchèque': '🇨🇿', 'Slovaquie': '🇸🇰',
-      'Croatie': '🇭🇷', 'Slovénie': '🇸🇮', 'Bosnie-Herzégovine': '🇧🇦',
-      'Serbie': '🇷🇸', 'Albanie': '🇦🇱', 'Macédoine': '🇲🇰'
-    };
-
-    const countryShapes = {
-      'France': { x: 140, y: 280, w: 130, h: 150 },
-      'Allemagne': { x: 280, y: 180, w: 120, h: 130 },
-      'Italie': { x: 340, y: 350, w: 80, h: 150 },
-      'Espagne': { x: 70, y: 300, w: 130, h: 150 },
-      'Royaume-Uni': { x: 20, y: 120, w: 100, h: 140 },
-      'Pologne': { x: 420, y: 150, w: 120, h: 130 },
-      'Roumanie': { x: 580, y: 220, w: 110, h: 130 },
-      'Grèce': { x: 480, y: 420, w: 100, h: 120 },
-      'Suède': { x: 380, y: 20, w: 110, h: 150 },
-      'Norvège': { x: 260, y: 10, w: 100, h: 130 },
-      'Belgique': { x: 160, y: 180, w: 50, h: 60 },
-      'Pays-Bas': { x: 190, y: 140, w: 60, h: 50 },
-      'Suisse': { x: 220, y: 240, w: 60, h: 70 },
-      'Autriche': { x: 350, y: 200, w: 80, h: 80 },
-      'Portugal': { x: 40, y: 330, w: 70, h: 100 },
-      'Hongrie': { x: 420, y: 250, w: 100, h: 90 },
-      'Bulgarie': { x: 540, y: 300, w: 100, h: 110 },
-      'République Tchèque': { x: 380, y: 150, w: 90, h: 80 },
-      'Slovaquie': { x: 440, y: 190, w: 100, h: 80 },
-      'Croatie': { x: 380, y: 310, w: 90, h: 80 },
-      'Slovénie': { x: 330, y: 270, w: 60, h: 60 },
-      'Bosnie-Herzégovine': { x: 360, y: 330, w: 80, h: 80 },
-      'Serbie': { x: 440, y: 280, w: 90, h: 90 },
-      'Albanie': { x: 460, y: 360, w: 70, h: 80 },
-      'Macédoine': { x: 500, y: 380, w: 70, h: 70 }
-    };
-
-    let currentLevel = 'facile';
-    let currentCountries = [];
-    let currentIndex = 0;
-    let selectedCountry = null;
-
-    function createMap() {
-      const svg = document.getElementById('mapSvg');
-      svg.innerHTML = '<rect width="1200" height="850" fill="#f0f8ff"/>';
-
-      currentCountries.forEach(country => {
-        const shape = countryShapes[country];
-        const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
-        rect.setAttribute('x', shape.x);
-        rect.setAttribute('y', shape.y);
-        rect.setAttribute('width', shape.w);
-        rect.setAttribute('height', shape.h);
-        rect.setAttribute('class', 'pays');
-        rect.setAttribute('id', `country-${country}`);
-        rect.setAttribute('data-country', country);
-        rect.onclick = () => selectCountry(country);
-        svg.appendChild(rect);
-
-        const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        label.setAttribute('x', shape.x + shape.w / 2);
-        label.setAttribute('y', shape.y + shape.h / 2);
-        label.setAttribute('class', 'pays-label');
-        label.textContent = country.substring(0, 3).toUpperCase();
-        svg.appendChild(label);
-      });
+    // Label court centré
+    if (isActive || isFound) {
+      const [cx,cy] = centroid(coords);
+      const lbl = document.createElementNS('http://www.w3.org/2000/svg','text');
+      lbl.setAttribute('x',cx); lbl.setAttribute('y',cy);
+      lbl.classList.add('cname');
+      const short = name.length > 7 ? name.substring(0,5)+'.' : name;
+      lbl.textContent = short;
+      svg.appendChild(lbl);
     }
+  });
+}
 
-    function selectCountry(country) {
-      if (selectedCountry && selectedCountry !== country) {
-        document.getElementById(`country-${selectedCountry}`).classList.remove('highlight');
-      }
-      selectedCountry = country;
-      document.getElementById(`country-${country}`).classList.add('highlight');
-      document.getElementById('confirmBtn').classList.add('show');
-    }
+// ── Logique jeu ───────────────────────────────────────────────────────────────
+function speak(txt) {
+  const u = new SpeechSynthesisUtterance(txt);
+  u.lang='fr-FR'; u.rate=0.85; u.pitch=1.1;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(u);
+}
 
-    function confirmer() {
-      if (selectedCountry === currentCountries[currentIndex]) {
-        victoire();
-      } else {
-        speak(`Non, ce n'est pas ça. Cherche bien.`);
-        document.getElementById(`country-${selectedCountry}`).classList.remove('highlight');
-        selectedCountry = null;
-        document.getElementById('confirmBtn').classList.remove('show');
-      }
-    }
+function selectPays(name) {
+  if (foundSet.has(name)) return;
+  selected = name;
+  renderMap();
+  document.getElementById('btnOk').classList.add('show');
+}
 
-    function victoire() {
-      const country = currentCountries[currentIndex];
-      const flag = flags[country];
+function confirmer() {
+  const target = queue[qIdx];
+  if (selected === target) {
+    victoire(target);
+  } else {
+    speak('Non, cherche encore !');
+    selected = null;
+    document.getElementById('btnOk').classList.remove('show');
+    renderMap();
+  }
+}
 
-      speak(`Bravo ! C'est la ${country} !`);
+function victoire(name) {
+  const data = PAYS[name];
+  foundSet.add(name);
+  selected = null;
+  document.getElementById('btnOk').classList.remove('show');
+  renderMap();
+  speak(`Bravo ! C'est ${data.art}${name} !`);
 
-      const overlay = document.createElement('div');
-      overlay.className = 'victoire-overlay';
-      overlay.innerHTML = `
-        <div class="victoire-content">
-          <div class="drapeau-victoire">${flag}</div>
-          <div class="victoire-text">${country}</div>
-        </div>
-      `;
-      document.body.appendChild(overlay);
+  const ov = document.createElement('div');
+  ov.className = 'overlay';
+  ov.innerHTML = `
+    <div class="vcard">
+      <div class="vflag">${data.flag}</div>
+      <div class="vname">${name}</div>
+      <button class="vbtn" onclick="this.closest('.overlay').remove();nextPays()">Suivant →</button>
+    </div>`;
+  document.body.appendChild(ov);
 
-      setTimeout(() => {
-        overlay.remove();
-        currentIndex++;
-        if (currentIndex < currentCountries.length) {
-          nextCountry();
-        } else {
-          finJeu();
-        }
-      }, 2500);
-    }
+  setTimeout(() => { if (document.body.contains(ov)) { ov.remove(); nextPays(); } }, 3000);
+}
 
-    function nextCountry() {
-      selectedCountry = null;
-      document.getElementById('confirmBtn').classList.remove('show');
-      const country = currentCountries[currentIndex];
-      const flag = flags[country];
-      const article = country === 'Royaume-Uni' ? 'le' : country.charAt(0) === 'A' ? 'l\'' : 'la';
-      document.getElementById('consigne').textContent = `Trouve ${article} ${country} !`;
-      document.getElementById('drapeau-cible').textContent = flag;
-      speak(`Trouve ${article} ${country} !`);
-      updateProgress();
-    }
+function nextPays() {
+  updateDots();
+  qIdx++;
+  if (qIdx >= queue.length) { finJeu(); return; }
+  showConsigne();
+}
 
-    function updateProgress() {
-      const progress = document.getElementById('progress');
-      progress.innerHTML = '';
-      const maxDots = Math.min(currentCountries.length, 10);
-      for (let i = 0; i < maxDots; i++) {
-        const dot = document.createElement('div');
-        dot.className = `progress-dot ${i < currentIndex ? 'active' : ''}`;
-        progress.appendChild(dot);
-      }
-    }
+function showConsigne() {
+  const name = queue[qIdx];
+  const data = PAYS[name];
+  const consigne = `Trouve ${data.art}${name} !`;
+  document.getElementById('drapeauHint').textContent = data.flag;
+  document.getElementById('consigneText').textContent = consigne;
+  speak(consigne);
+}
 
-    function finJeu() {
-      const overlay = document.createElement('div');
-      overlay.className = 'victoire-overlay';
-      overlay.innerHTML = `
-        <div class="victoire-content">
-          <div style="font-size: 100px; margin: 16px 0; animation: bounce 600ms cubic-bezier(0.34, 1.56, 0.64, 1);">🎉</div>
-          <div class="victoire-text">Bravo Max ! Tu as trouvé tous les pays !</div>
-          <button onclick="window.history.back()" style="padding: 12px 28px; background: #4CAF50; color: white; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; margin-top: 16px; font-weight: 600;">Retour</button>
-        </div>
-      `;
-      document.body.appendChild(overlay);
-    }
+function updateDots() {
+  const el = document.getElementById('dotsEl');
+  el.innerHTML = '';
+  const n = Math.min(queue.length, 10);
+  for (let i=0;i<n;i++) {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i < qIdx ? ' done' : '');
+    el.appendChild(d);
+  }
+}
 
-    function initLevel(level) {
-      currentLevel = level;
-      currentCountries = [...levels[level]].sort(() => Math.random() - 0.5);
-      currentIndex = 0;
-      selectedCountry = null;
-      const labelMap = { 'facile': 'Facile', 'moyen': 'Moyen', 'difficile': 'Difficile' };
-      document.getElementById('level-label').textContent = labelMap[level];
-      createMap();
-      nextCountry();
-    }
+function finJeu() {
+  speak('Bravo Max ! Tu as trouvé tous les pays !');
+  const ov = document.createElement('div');
+  ov.className = 'overlay';
+  ov.innerHTML = `
+    <div class="vcard">
+      <div class="vflag">🎉</div>
+      <div class="vname">Bravo Max !</div>
+      <div style="color:#666;margin:8px 0;font-size:0.95rem">Tu as trouvé tous les pays !</div>
+      <button class="vbtn" onclick="window.location.reload()">Rejouer</button>
+      <button class="fin-btn" onclick="window.location.href='index.html'">Menu</button>
+    </div>`;
+  document.body.appendChild(ov);
+}
 
-    const urlParams = new URLSearchParams(window.location.search);
-    const level = urlParams.get('level') || 'facile';
-    initLevel(level);
-  </script>
+function initLevel(lvl) {
+  levelName = lvl;
+  const pays = LEVELS[lvl];
+  queue = [...pays].sort(() => Math.random() - 0.5);
+  qIdx = 0; selected = null; foundSet.clear();
+  const labels = {facile:'🌟 Facile', moyen:'⭐⭐ Moyen', difficile:'⭐⭐⭐ Expert'};
+  document.getElementById('lvlLabel').textContent = labels[lvl];
+  renderMap();
+  updateDots();
+  showConsigne();
+}
+
+// ── Init ──────────────────────────────────────────────────────────────────────
+const lvl = new URLSearchParams(location.search).get('level') || 'facile';
+initLevel(lvl);
+</script>
 </body>
 </html>

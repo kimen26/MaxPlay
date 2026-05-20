@@ -1,7 +1,13 @@
+// Génère game/web/js/dinos-images-grok.js depuis game/web/img/dinos/grok/
+// Naming attendu (2 formes acceptées) :
+//   <id>_lot<N>_<n>_<vue>.jpg       (lots Grok originaux)
+//   <id>_<vue>.jpg                  (nouvelle livraison simple)
+// Vues : taille | environnement | sa_vie | qui_le_chasse | chasse (legacy = mappé sur 'sa_vie')
 const fs=require('fs'),path=require('path');
 const DIR='c:/ProjetsPerso/Claude_Projects/MaxPlay/game/web/img/dinos/grok';
 const OUT='c:/ProjetsPerso/Claude_Projects/MaxPlay/game/web/js/dinos-images-grok.js';
-// KO exclus (verdicts agents revue visuelle 2026-05-17)
+
+// KO exclus (verdicts agents revue visuelle 2026-05-17 + revue herbivores 2026-05-20)
 const KO = new Set([
  'spinosaurus_lot2_2_environnement',
  'giganotosaurus_lot1_3_chasse','giganotosaurus_lot2_3_chasse','giganotosaurus_lot4_1_taille','giganotosaurus_lot4_2_environnement',
@@ -18,25 +24,55 @@ const KO = new Set([
  'kentrosaurus_lot1_1_taille','kentrosaurus_lot1_2_environnement','kentrosaurus_lot1_3_chasse',
  'styracosaurus_lot1_2_environnement',
  'pachycephalosaurus_lot1_1_taille','pachycephalosaurus_lot1_2_environnement','pachycephalosaurus_lot1_3_chasse',
+ // Revue 2026-05-20 (nouvelle règle herbivores sans prédateur)
+ 'ankylosaurus_lot1_3_chasse',           // T-Rex présent
+ 'triceratops_lot1_3_chasse',            // T-Rex présent (Tritri à regen)
+ 'styracosaurus_lot1_3_chasse',          // T-Rex présent
+ 'stegosaurus_lot1_3_chasse',            // théropode présent
+ 'camarasaurus_lot3_3_chasse',           // théropode en arrière-plan + tête diplodocoïde
+ 'brachiosaurus_lot1_3_chasse',          // pattes avant pas plus longues + bébés disproportionnés
 ]);
-// torosaurus exclu entièrement (hors-jeu)
-const SKIP_DINO = new Set([]); // torosaurus ajoute au jeu 2026-05-17
-const VUE = { taille:'Sa taille', environnement:'Son environnement', chasse:'Sa vie' };
-const files = fs.readdirSync(DIR).filter(f=>f.endsWith('.jpg')).sort();
+const SKIP_DINO = new Set([]);
+
+// Labels FR par vue
+const VUE = {
+  taille:'Sa taille',
+  environnement:'Son environnement',
+  sa_vie:'Sa vie',
+  qui_le_chasse:'Qui le chasse',
+  chasse:'Sa vie', // legacy lot Grok mai 2026 (= broutage/action, pas prédateur)
+};
+
+const files = fs.readdirSync(DIR).filter(f=>/\.(jpg|png|jpeg|webp)$/i.test(f)).sort();
 const map = {};
+let skipped=0;
 for (const f of files) {
-  const m = f.match(/^([a-z_]+)_lot(\d+)_(\d+)_([a-z]+)\.jpg$/);
-  if (!m) { console.log('SKIP regex:',f); continue; }
-  const [,id,,,vue]=m;
-  const key = f.replace('.jpg','');
+  // Pattern 1 : <id>_lot<N>_<n>_<vue>.jpg
+  let m = f.match(/^([a-z_]+)_lot(\d+)_(\d+)_(taille|environnement|chasse|sa_vie|qui_le_chasse)\.(jpg|png|jpeg|webp)$/i);
+  // Pattern 2 : <id>_<vue>.jpg (nouvelle livraison simple)
+  if (!m) m = f.match(/^([a-z_]+?)_(taille|environnement|chasse|sa_vie|qui_le_chasse)\.(jpg|png|jpeg|webp)$/i);
+  if (!m) { console.log('SKIP regex:',f); skipped++; continue; }
+  const id = m[1];
+  const vue = (m[4] || m[2]).toLowerCase();
+  const key = f.replace(/\.(jpg|png|jpeg|webp)$/i,'');
   if (SKIP_DINO.has(id)) continue;
   if (KO.has(key)) continue;
-  (map[id]=map[id]||[]).push({ url:`img/dinos/grok/${f}`, label:`${VUE[vue]||vue}`, type:'grok' });
+  (map[id]=map[id]||[]).push({ url:'img/dinos/grok/'+f, label:VUE[vue]||vue, type:'grok' });
 }
+
+// Ordre stable des vues dans la galerie
+const ORDER = ['Sa taille','Son environnement','Sa vie','Qui le chasse'];
+for (const id of Object.keys(map)) {
+  map[id].sort((a,b) => {
+    const ai = ORDER.indexOf(a.label); const bi = ORDER.indexOf(b.label);
+    return (ai<0?99:ai) - (bi<0?99:bi);
+  });
+}
+
 let out='// Images dino — générées par IA (Grok), libres de droit.\n';
-out+='// Filtrées par revue visuelle agents 2026-05-17 (KO anatomiques exclus).\n';
-out+='// Généré automatiquement — ne pas éditer à la main.\n\n';
+out+='// Filtrées par revue visuelle agents (KO anatomiques + herbivores sans prédateur).\n';
+out+='// Généré automatiquement par _gen-grok.cjs — ne pas éditer à la main.\n\n';
 out+='const DINO_GROK = '+JSON.stringify(map,null,2)+';\n';
 fs.writeFileSync(OUT,out,'utf8');
 const totDino=Object.keys(map).length, totImg=Object.values(map).reduce((a,b)=>a+b.length,0);
-console.log('Dinos avec images OK:',totDino,'| Images OK:',totImg,'/ 100');
+console.log('Dinos avec images OK:',totDino,'| Images OK:',totImg,'| Skipped (regex):',skipped);

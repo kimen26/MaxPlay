@@ -329,6 +329,11 @@ const DINO_GROK = {
   ],
   "triceratops": [
     {
+      "url": "img/dinos/grok/triceratops_inbox2_1_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
+    {
       "url": "img/dinos/grok/triceratops_lot1_1_taille.jpg",
       "label": "Sa taille",
       "type": "grok"
@@ -336,6 +341,26 @@ const DINO_GROK = {
     {
       "url": "img/dinos/grok/triceratops_lot1_2_environnement.jpg",
       "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/triceratops_inbox2_2_sa_vie.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/triceratops_inbox2_1_qui_le_chasse.jpg",
+      "label": "Qui le chasse",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/triceratops_inbox2_3_qui_le_chasse.jpg",
+      "label": "Qui le chasse",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/triceratops_inbox2_4_qui_le_chasse.jpg",
+      "label": "Qui le chasse",
       "type": "grok"
     }
   ],

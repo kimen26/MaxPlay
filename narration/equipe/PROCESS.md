@@ -29,7 +29,7 @@
 0.  Idée                    (Auteur)                   → INBOX.md section datée
 1.  Pitch+Plan              (Conseiller)               ✅ valide auteur     → 1-pitch-plan.md
 3.  Briefs                  (Directeur)                                    → 3-briefs/
-4.  Versions writers        (10 Writers parallèles)                        → 4-versions-writers/
+4.  Versions writers        (14 versions writers — calibration multi-modèles, refonte 2026-05-12)                        → 4-versions-writers/
 5.  Lecteurs témoins        (Panel cible : 20 lecteurs)                    → 5-lecteurs-temoins/
 6.  Sélection               (Directeur)                ✅ valide auteur    → 6-selection.md
 7.  Rewrite                 (Writer du top 1, 1 cycle max)                 → 7-rewrite/

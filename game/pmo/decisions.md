@@ -8,6 +8,63 @@
 
 ---
 
+## 2026-05-21 — Clôture EP-022 (faux bug MJ-04 archivé) + Processus décisions figées
+
+**Contexte** : audit FOND détecte que EP-022 "MJ-04 boucle infinie" était un **faux bug depuis 2026-05-11**. Trois sous-tâches T-220/221/222 déjà implémentées, mais ticket traîne en backlog sans clôture officielle. **Symptôme plus large** : décisions 2026-05-14 (gabarit header) prise mais EP-035/036 non assignés → traîne 7j sans exécution.
+
+**Décisions figées** :
+
+1. **EP-022 archivé** comme faux bug (code a toujours été conforme).
+   - Marquer `[!]` bloqué dans backlog.md (jamais exécuté comme bug, pédago-fantôme).
+   - Leçon : audit pmo-challenge doit **vérifier le code** d'un ticket avant de le relayer.
+
+2. **Processus décisions → exécution (MILITAIRE, 2026-05-21+)** :
+   - **Toute décision = ticket backlog assigné (EP-xxx) + deadline + owner explicite**.
+   - Pas de décision flottante non exécutée (cause EP-035/036 traîne 7j, frotte user).
+   - **Format minimal** : `Décision N°X (date) | EP-NNN | Owner: game-dev | Deadline: 2026-05-YY | Raison`.
+   - PMO checklist sessions : "Aucune décision > 3j sans ticket assigné ?" — si OUI, alerte rouge ⚠️.
+
+**Impact** : EP-022 clôturé. Q-ouverte #1 **TRANCHÉE**. Process EP-035/036 renforcé (assignation + deadline immédiate).
+
+**Statut** : ✅ acté 2026-05-21.
+
+---
+
+## 2026-05-17 — Charte dino figée (noms, prédation, étymologie, audio 4-blocs)
+
+**Contexte** : EP-039 encyclopédie dinos V1 déployée. Validation par panel lecteur enfants (7, moy 7.5-8.5/10) sur 50 fiches.
+
+**Décisions tranchées** :
+1. **Noms latin/grec GARDÉS** — jamais vulgariser (Tricératops = Tri-cérat-ops, pas "Tête à trois cornes"). Pédago étymologie = force du projet.
+2. **Prédation VRAIE** (os qui craquent, chasse, régime carné) — Max 3.5-4 ans accepte la vie sauvage. **PAS gore** : pas de sang, pas de viscères, pas de cannibalisme (Coelophysis corrigé).
+3. **Bloc A = mécanique racines** (étymologie décomposée) — source de vérité pédago gravée `_ETYMO-RACINES-50.md`.
+4. **Structure audio = 4 blocs** (pas 6) : Histoire + Taille + Vie + TrucFou + Recap. Boucle fermée (question Wex → réponse Narrateur obligatoire).
+5. **Surnom Tritri** = affectueux pour Tricératops (Max le préfère, auto-validé).
+
+**Raison** : résonance pédagogique + légitimité scientifique + engagement Max mesuré (7.5-8.5/10).
+
+**Statut** : ✅ acté 2026-05-17.
+
+---
+
+## 2026-05-17 — Process validation contenu 3-passes (avant prod audio DUO)
+
+**Contexte** : EP-039 audio DUO Narrateur H + Wex = coût itération ElevenLabs élévé (loudness + timing + clarté entre voix = 2-3 tries min).
+
+**Décision** :
+1. Tout texte dino passe **3 passes validation** AVANT envoi ElevenLabs :
+   - **Pass 1** : game-conseiller (étymo fact-check, narratif, structure)
+   - **Pass 2** : narration-conseiller (voix-meta, tags v3, didascalies)
+   - **Pass 3** : panel lecteur enfants (pédago, engagement, clarté)
+2. Corrections appliquées, stats gravées (exemple : `_ETYMO-RACINES-50.md`).
+3. Validation 1 fiche test (Tricératops) AVANT généraliser (49 autres).
+
+**Raison** : minimiser itérations post-prod audio (coût ElevenLabs + delays).
+
+**Statut** : ✅ acté, procédure validée 2026-05-17 (panel = 7 enfants).
+
+---
+
 ## 2026-05-14 — Gabarit header mini-jeux unifié et compact (obligation tous les MJ)
 
 **Contexte** : Papa Yann signale que le bandeau titre + message mise à jour + bouton retour est **trop gros** dans tous les mini-jeux. Le fix mj-20 (commit e1bcd42a "header compact — supprime double-hauteur title+subtitle, aligne sur pattern .hdr standard") montre le pattern attendu.
@@ -187,11 +244,11 @@ Sachants :
 
 ## Questions ouvertes (à trancher)
 
-| # | Question | Bloquant ? | Fichier |
-|---|----------|-----------|---------|
-| 1 | EP-022 MJ-04 "boucle infinie" : vérifié faux bug 2026-05-11 (code conforme depuis). À acter clôture définitive du ticket dans backlog ? | Non | `pmo/backlog.md` |
-| 2 | `game-mj-reviewer` à enrichir avec reconnaissance du type MJ (mécanique vs dashboard) — attribut `data-mp-type="dashboard"` ? | Non | `.claude/agents/game-mj-reviewer.md` |
-| 3 | Recettes passages piétons non-auditées visuellement (depuis 2026-05-11) — vérifier ou archiver ? | Non | `game/web/tile-tools/recipes/` |
-| 4 | Scripts debug (`render_debug`, `render_tmj`, `zoom_index`, `build_rondpoint_tmj`, `recolor_house`) — dépendances à vérifier avant archivage éventuel | Non | `game/web/tile-tools/scripts/` |
-| 5 | EP-REFS (banque refs visuelles LimeZu officiel + Pokemon + LDtk) — quand lancer la session dédiée ? | Non | `pmo/backlog.md` |
-| 6 | Phase 2 WexWorld — quand commencer le scoping (création `game-wexworld-pmo` + `game-wexworld-designer` + `game-wexworld-tester`) ? | Non | `memory/VISION-LONG-TERME.md` |
+| # | Question | Statut 2026-05-21 | Fichier |
+|---|----------|------------------|---------|
+| 1 | EP-022 MJ-04 "boucle infinie" : vérifié faux bug 2026-05-11 (code conforme depuis). À acter clôture définitive ? | ✅ **TRANCHÉ** — archivé faux bug (cf. décision 2026-05-21) | `pmo/backlog.md` |
+| 2 | `game-mj-reviewer` à enrichir avec reconnaissance du type MJ (mécanique vs dashboard) — attribut `data-mp-type="dashboard"` ? | 📌 **REPORTE** — low-priority, future itération (nice-to-have) | `.claude/agents/game-mj-reviewer.md` |
+| 3 | Recettes passages piétons non-auditées visuellement (depuis 2026-05-11) — vérifier ou archiver ? | 📌 **REPORTE** → **T-NNN** (tâche tile-pmo, explore 2026-06-15) | `game/web/tile-tools/recipes/` |
+| 4 | Scripts debug (`render_debug`, `render_tmj`, `zoom_index`, `build_rondpoint_tmj`, `recolor_house`) — dépendances à vérifier avant archivage ? | 📌 **REPORTE** → **T-NNN** (tâche archiviste, explore 2026-06-01) | `game/web/tile-tools/scripts/` |
+| 5 | EP-REFS (banque refs visuelles LimeZu officiel + Pokemon + LDtk) — quand lancer la session dédiée ? | 📌 **REPORTE** — Phase 1.5, après EP-037/038/035/036 fermés (fin mai) | `pmo/backlog.md` |
+| 6 | Phase 2 WexWorld — quand commencer le scoping (agents + design) ? | 📌 **REPORTE** — après Phase 1 complétée + Phase 2 briefing Papa Yann | `memory/VISION-LONG-TERME.md` |

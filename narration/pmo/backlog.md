@@ -13,6 +13,7 @@
 |--------|-----|-------|----------|---------|------------------|
 | 🟡 | STORY-002 | La Libellule impossible — Étape 6 Sélection | **Haute** | Auteur (Directeur) | Arbitrer top 1-3 (kimi-reco-guide v1/v2 + claude-haiku-reco) + décider greffes. Puis étape 7 rewrite. Déc. DEC-TENSION-RESONANCE appliquée. |
 | 🟡 | ARCHI-006 | Formaliser procédure PMO dans `narration-pmo.md` (agent Haiku) | Normale | narration-pmo | Créer doc agent reflet des décisions 2026-05-08 : classification input (6 catégories), routing, checklist remise main. Cible : PMO auto-guidé sans attendre instructions. |
+| 🟡 | **ARCHI-014-TEMPLATE-BOUSSOLE** | **Adapter template brief-histoire.md = BOUSSOLE (DEC-BRIEF-VAGUE4)** | **Haute** | Directeur + PMO | Créer `equipe/templates/brief-histoire-v4-BOUSSOLE.template.md` (intentions + 6 causalités-ESSENCE, zéro phrase publiable). Documenter différence BOUSSOLE vs GPS. Repercuter dans STORY-003+ avant étape 3. **Bloqué** si brief STORY-003 écrit sans template. |
 
 ---
 

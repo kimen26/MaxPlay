@@ -9,31 +9,56 @@
 
 ---
 
-## 2026-05-16 — [DINOS] Encyclopédie déployée — 8 familles, Extinction, Pangée, audio DUO en attente
+## Prochaine action (priorité courante)
 
-**Owner** : Papa Yann (livraison MJ Dinos)
+**⏳ Au reboot 2026-05-21** :
 
-**Livré** (committée + pushée master) :
-- 8 familles (2e catégorisation) + 4e mode menu
-- Cartes SVG continent dans chaque fiche
-- Écran Extinction (5 hypothèses) + intégration chronomap
-- Alias "Ptérodactyle" → Pteranodon
-- Pangée : 4 cartes Wikimedia Scotese/PALEOMAP (CC BY 4.0) en carrousel
-- Recâblage taille 50 dinos : référentiel Max validé (bus 12m/accordion 18m/Suzuki 4m/bus 2-étages/immeuble/éléphant/hippo/rhino), chiffres m+kg toujours + 3 mesures
-- **Bug critique résolu** : `showFiche is not defined` (ReferenceError l.786) — fonction supprimée lors édition antérieure, empêchait ouverture toute fiche
-  - **Leçon L-039** : éditions multiples qui suppriment fonctions appelées ailleurs → vérifier map appellations vs définitions après refonte
+1. **🔥 URGENTE** — **EP-035 + EP-036** (header compact + encoding) : signalé critique par Papa Yann 2026-05-14 (traîne 7j). Assigner à `game-dev` ou `game-mj-pmo` + deadline fin semaine. User-facing, UX debt.
 
-**Audio DUO en cours** (non généré) :
-- Narrateur H + Wex sur encyclopédie
-- Script V0 Tricératops gravé : `game/docs/jeux/dino-encyclopedie/scripts-audio/triceratops-V0.md`
-- En attente challenge Papa Yann avant génération
-- Décision canon Wex côté narration-pmo : DEC-WEXDUO-JEU-001 (gravée)
-- Ticket suivi : **EP-039** créé
+2. **🔥 URGENTE** — **EP-038 Playwright** (T-380/381/382/383/384) : pilote livré 2026-05-16, plus gros levier optimisation (60% reduction commits). Généraliser 1 spec/MJ actif en parallèle EP-035/036.
+
+3. **📅 HAUTE** — **EP-037** (figeage 20 MJ restants) : rétro-fit system figeage (gravé 2026-05-15 mj-21 only). Inclure comme tasks T-xxx annexe à EP-038 ou batch script.
+
+4. **📌 Pédago** — **Audit leçons** (2026-05-21) : renumérotation L-032..L-041 → L-050..L-059 (collision tile évitée). Convention fixée : L-000..049 tile, L-050+ MJ.
+
+---
+
+## 2026-05-17 — [DINOS] Audio V1 refondue 4-blocs + audio top 11 + process validation 3-passes
+⏰ CLÔTURE EP-039 (pilote) — encyclopédie complète + audio DUO intégré.
+
+**Owner** : Papa Yann + game-conseiller + narration-conseiller + panel lecteur (7 enfants, moy 7.5-8.5/10)
+
+**Livré** (committée + pushée master, commits c74db61d + d33dac3b) :
+1. **50 scripts audio réécrits 4-blocs** : boucle fermée (question Wex → réponse Narrateur obligatoire)
+   - **Bloc A (Son histoire)** : **mécanique racines** (décompose nom : "tri=trois, cérat=corne, ops=face → face à trois cornes"), étymologie fact-checkée
+   - Bloc B (Sa taille) : 3 comparateurs Max validés (bus/dino/objet familier)
+   - Bloc C (Sa vie de dino) : régime + comportement
+   - Bloc D (Le truc fou) : fun-fact unique
+   - **Recap audio** (button "Écoute tout") : 4 blocs concaténés + loudnorm ffmpeg
+2. **Validation contenu 3-passes figée** :
+   - Pass 1 : game-conseiller (étymo fact-check + narratif)
+   - Pass 2 : narration-conseiller (voix-meta check + tags v3 audios)
+   - Pass 3 : panel lecteur enfants (pédago + engagement)
+   - Corrections appliquées, stats qualité gravées dans `_ETYMO-RACINES-50.md`
+3. **Audio top 11 généré** (ElevenLabs text-to-dialogue DUO) : 44 MP3 (11 dinos × 4 blocs)
+   - Tritri (Tricératops) = préféré Max + 10 stars (Ankylosaure, Stégosaure, Vélociraptor, T-Rex, Diplodocus, Parasaurolophus, Iguanodon, Spinosaure, Ptérodactyle, Compsognathus)
+   - 39 autres dinos = TTS live navigateur (fallback)
+4. **Charte dino FIGÉE** : noms latin/grec gardés · prédation vraie OK (os qui craquent) · PAS gore · PAS cannibalisme (Coelophysis corrigé)
+
+**Décisions figées** :
+- Structure audio = 4 blocs (était 6) + recap
+- Process validation = 3 passes (game-conseiller + narration-conseiller + panel lecteur) AVANT prod audio
+- Mécanique racines en Bloc A = source pédago étymologie
+- Tritri = surnom affectueux Tricératops (Max le préfère)
+
+**Leçons** :
+- **L-058** : Audio multi-voix = figeage texte amont obligatoire (coût itération ElevenLabs)
+- **L-059** : Découpage agents parallèles efficace (9-11 agents) → RE-GREP anti-patterns + count blocs après (risque oubli)
 
 **État au reboot** :
-- Dinos déployées, menu à jour
-- Audio roadmap figée en stratégie (DUO H+Wex)
-- Chantier audio = ticket `EP-039` en backlog
+- ✅ EP-039 **CLÔTURÉ** — encyclopédie V1 avec audio top 11 déployée
+- Dinos testables par Max 2026-05-17
+- Audio roadmap pour 39 autres dinos : TTS live pour 2026-05-17, DUO complétude = future itération (non bloquant)
 
 ---
 
@@ -47,16 +72,16 @@
 - ✅ Création `game/pmo/PIPELINE-MEMORY-MJ.md` — entrée datée REX, 5 causes racines, propositions process, mesures
 - ✅ Création L-032 à L-037 (6 leçons) dans `backlog.md`
 - ✅ Création EP-038 (Harnais jsdom) — priorité 🔥 URGENTE, plus gros levier (~20 commits/chantier)
-- ✅ Extraction 4 axes optimisation : A. Harnais headless, B. Règle 2-strikes cause-racine, C. Design amont + figeage (L-037), D. Figeage (✅ déjà déployé)
+- ✅ Extraction 4 axes optimisation : A. Harnais headless, B. Règle 2-strikes cause-racine, C. Design amont + figeage (L-055), D. Figeage (✅ déjà déployé)
 
 **5 causes racines identifiées** :
 1. Harnais test humain (PP) = tueur vélocité #1 → EP-038 jsdom
-2. Chasse symptômes au lieu causes (7 commits mixer) → L-038 (2-strikes rule)
-3. Bus en haut/bas : régression sans figeage → L-032 (figeage ok)
-4. Tube vide : clipPath id dupliqué → L-034 (SVG id-check)
-5. Layout refait 5× : pas design amont → L-037 (design amont obligatoire)
+2. Chasse symptômes au lieu causes (7 commits mixer) → 2-strikes rule (pattern, pas de L-xxx assigné)
+3. Bus en haut/bas : régression sans figeage → L-050 (figeage ok)
+4. Tube vide : clipPath id dupliqué → L-052 (SVG id-check)
+5. Layout refait 5× : pas design amont → L-055 (design amont obligatoire)
 
-**Bugs pédago tardifs** : 3 (recette RGB, addCouleur, mécanique) → L-035/L-036.
+**Bugs pédago tardifs** : 3 (recette RGB, addCouleur, mécanique) → L-053/L-054.
 
 **Potentiel optimisation** : ~20 commits (52% réduction si EP-038+process appliqués).
 

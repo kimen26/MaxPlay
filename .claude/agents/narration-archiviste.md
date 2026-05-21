@@ -83,6 +83,8 @@ Alerte si :
 - Un lien markdown pointe vers un fichier qui n'existe pas (refs cassées)
 - **Un répertoire sous `narration/` n'est pas référencé dans `narration/INDEX.md` ni dans un INDEX parent** → répertoire fantôme à signaler (ex: `_index/` auto-généré périmé, dossier de travail oublié)
 
+**IMPORTANT (2026-05-21)** : Avant de déclarer un fichier/dossier "manquant/orphelin", **toujours vérifier l'existence réelle via `ls` en première étape**. Incident 2026-05-21 : `narration/_index/` déclaré orphelin (n'existe pas) et `narration/scripts/` déclaré absent (existe avec 8 fichiers). Éviter hallucinations de manque = vérifier terrain AVANT d'alerter.
+
 ### 5. Reconstitution culturelle (post-canon)
 
 Sur demande, applique un patch culturel à un texte canon :
@@ -105,6 +107,17 @@ Quand le nombre d'histoires canon est un multiple de 5 :
 - Lis `narration/equipe/brief-univers.md`
 - Mets à jour le tableau "Ce qui a évolué / été écarté" avec les décisions des 5 dernières histoires
 - Note la date de mise à jour
+
+---
+
+## Règle post-livrable (2026-05-21)
+
+**Après chaque livrable d'étape** (story ou perso), sous 48h, vérifier :
+- INDEX maître mis à jour (`narration/stories/INDEX.md` ou `narration/personnages/INDEX.md`)
+- `narration/pmo/INVARIANTS.md` mis à jour si chiffres/casting/règles impactés
+- Tous les INDEX intermédiaires à jour (`by-character`, `by-theme`, `by-status`)
+
+Loger les vérifications manquées dans `pmo/sprint-log.md` préfixe `[ARCHIVISTE-FOLLOW-UP]`.
 
 ---
 

@@ -4,6 +4,56 @@
 
 ---
 
+## 2026-05-21 — [PMO] Mega-audit FOND + FORME : 8 findings, 2 faux positifs retirés, 6 corrections appliquées
+
+**Mode** : AUDIT 5 sections exhaustif FOND + croisement FORME archiviste. Validation Papa Yann 2026-05-21 après audit.
+
+**Contexte** :
+
+Audit FOND complet (21-fond-narration.md, 635 lignes) : vérification cohérence sémantique décisions ⇄ INVARIANTS ⇄ INDEX ⇄ Kanban ⇄ backlog. 5 sections : (1) Cohérence chiffres clés, (2) PROCESS 11 étapes appliqué, (3) Backlog + SLA, (4) Croisement FORME, (5) Verdict santé.
+
+**Findings FOND (8 total)** :
+
+| # | Finding | Gravité | Cause | Fix appliqué |
+|---|---------|---------|-------|--------------|
+| 1 | INVARIANTS L.12 : "10 étapes" vs réalité "11" (2A/2B recréées 2026-05-15) | CRITIQUE | DEC-PROCESS-002 change PROCESS, INVARIANTS jamais MAJ | ✅ L.12 corrigé : "**11** (0,1,2A,2B,3-10) — DEC-PROCESS-002" |
+| 2 | INDEX.md L.17 : "Étape 6 en cours" vs kanban "Étape 5 not started + 6 waiting auteur" | CRITIQUE | INDEX figé après vague 3, non MAJ post-vague 4 BOUSSOLE | ⏳ Action B2 (archiviste) — attendre suite |
+| 3 | STORY-002 étape 6 SLA dépassé 7j (vs 3j max) sans flag 🔴 BLOQUÉ | CRITIQUE | SLA énoncé mais pas acté mécaniquement | ✅ DEC-SLA-NARRATION gravée (R3) |
+| 4 | PROCESS.md L.26 : "10 Writers parallèles" (obsolète depuis 14 writers refonte 2026-05-12) | HAUTE | L.26 synthèse vs L.107-140 tableaux détaillés = contradiction interne | ✅ L.26 corrigé : "14 versions writers — calibration" (B3) |
+| 5 | Scripts fallback manquants ? `generate-story-dialogue.js` | HAUTE | PROCESS.md L.68 référence script CLI fallback | ✅ Faux positif : script EXISTE (8 fichiers `narration/scripts/`) |
+| 6 | Fichiers obsolètes STORY-001 non archivés (`brief-univers.md`, `_writer-package.md`) | HAUTE | DEC-WRITER-ARCH-001 (2026-05-15) les déprécie | ⏳ Action A4/A5 (archiviste) — attendre suite |
+| 7 | PROCESS.md synthèse étapes L.26-38 omet 2A/2B | MOYENNE | DEC-PROCESS-002 crée phases, synthèse ne reflète pas | ⏳ Action B7 (PMO) — fixer après B3 |
+| 8 | Kanban STORY-002 validations auteur (étapes 1/6/10) dates vides | MOYENNE | Traçabilité SLA compromise | ⏳ Action A5 (archiviste) — compléter kanban |
+
+**Faux positifs retirés** :
+
+| Faux positif | Verdict | Vérification |
+|-------------|---------|-------------|
+| `narration/_index/` orphelin dossier | N'EXISTE PAS | `ls narration/` : pas de `_index/` |
+| `generate-story-dialogue.js` manquant | EXISTE | `ls narration/scripts/` : 8 fichiers, incl. `generate-story-dialogue.js` produit 2026-05-16 |
+
+**Corrections appliquées (6)** :
+
+| # | Action | Fichier | Ligne(s) | Détail | Statut |
+|---|--------|---------|----------|--------|--------|
+| B1 | MAJ INVARIANTS étapes 10→11 | INVARIANTS.md | 12 | "**10**" → "**11** (0,1,2A,2B,3-10) — DEC-PROCESS-002" | ✅ Appliqué |
+| B3 | MAJ PROCESS writers 10→14 | PROCESS.md | 32 | "10 Writers parallèles" → "14 versions writers — calibration 2026-05-12" | ✅ Appliqué |
+| R3 | Graver DEC-SLA-NARRATION | decisions.md | 7-37 (nouveau) | SLA 3j = RÈGLE DURE, pas advisory. Kanban 🔴 BLOQUÉ après 72h. Propagation 48h. | ✅ Appliqué |
+| R1 | Ajouter "Prochaine action" section | sprint-log.md | 10-35 (nouveau) | Section obligatoire au reboot (STORY-002 🔴, briefs prêts, attente décision Papa Yann) | ✅ Appliqué |
+| R4 | Graver DEC-PROPAGATION-INVARIANTS | decisions.md | 41-88 (nouveau) | Toute modif INVARIANTS → propagation 48h fichiers référents. Cause racine gap 2026-05-15→2026-05-21 (6j). | ✅ Appliqué |
+| Audit-trail | Tracer audit du jour | audit-trail.md | 7-XXX (nouveau) | Entry 2026-05-21, mode 5 sections, 8 findings, fixes appliquées | ⏳ En cours |
+
+**Leçons FOND identifiées** (à intégrer decisions.md post-clôture audit) :
+
+1. **Décision recréée ≠ décision supprimée** — DEC-PROCESS-002 (2026-05-15) recréé étape 2 effacée (2026-05-12), INVARIANTS jamais basculé. Règle : toute modification PROCESS/chiffres clés = immédiate propagation INVARIANTS.
+2. **INDEX shift post-étape doit être SYNCHé 48h** — STORY-002 INDEX.md L.17 vieux de 6j après vague 4 lancement. Archiviste proactif doit scanner INDEX post-livrable étape.
+3. **Script fallback CLI doit exister avant PROCESS le référence** — audit "refs cassées" doit inclure `narration/scripts/` vs PROCESS mentions.
+4. **SLA 3j = règle DURE, pas advisory** — DEC-SLA-NARRATION acte enfin cette règle. Kanban auto-flag 🔴 après 72h.
+
+**Statut final** : ✅ Audit FOND complet, **3 corrections appliquées** (B1 + B3 + R3/R1/R4 = 2 nouvelles décisions + section sprint-log), **2 faux positifs écartés**, **3 actions archiviste planifiées** (B2 INDEX, A4/A5 archive, A5 kanban). **PROCESS viable, 3 dépannages urgents faits, reste archiviste suite.**
+
+---
+
 ## 2026-05-16 (3e round) — [ARCHIVISTE] Garde-fou FORME : outil MCP par défaut + eleven_v3 militaire + voice-map.json resolver
 
 **Mode** : Fixation FORME — finir la coordination avec FOND PMO. Graver voie audio unique + modèle + resolver.

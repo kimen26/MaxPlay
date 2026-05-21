@@ -4,6 +4,130 @@
 
 ---
 
+## 2026-05-21 — DEC-SLA-NARRATION : SLA 3j automatisé — kanban passe 🔴 BLOQUÉ à 72h sans réponse auteur
+
+**Contexte** : Audit FOND 2026-05-21 détecte STORY-002 étape 6 en attente auteur depuis 2026-05-14 (7 jours) sans flag automatique. SLA = 3 jours (INVARIANTS.md L.19 + PROCESS.md L.43), jamais acté formellement en décision ni appliqué mécaniquement (advisory uniquement). Blocage : briefs vague 4 BOUSSOLE refondus 2026-05-17, attente validation Papa Yann pour relancer 14 writers étape 4.
+
+**Cause racine** : SLA énoncé dans INVARIANTS (source vérité) mais jamais gravé en règle opérationnelle. Aucun mécanisme PMO automatisé ne flag le kanban après 72h. Incident reprise difficile (session suivante cherche l'état étape 6).
+
+**DÉCISION FIGÉE — DEC-SLA-NARRATION (2026-05-21, jamais modifier sans date + raison explicite)** :
+
+1. **SLA 3 jours = RÈGLE DURE, pas advisory** : quand un kanban histoire passe en "EN ATTENTE AUTEUR" sur une étape clé (1, 6, 10), le PMO scrute activement. Au-delà de 72h : kanban bascule AUTOMATIQUEMENT en 🔴 BLOQUÉ + log dans sprint-log.md = "(date) SLA étape X dépassé X jours, attente décision Papa Yann pour (sujet)".
+
+2. **Étapes surveillées** : 1 (Pitch validation), 6 (Sélection validation), 10 (Canon validation). Autres étapes = SLA normal (pas bloqué auteur, circule).
+
+3. **Mécanique PMO** : À chaque session (au moins 1x/jour si tâche narration active), le PMO :
+   - Lit tous les kanban `stories/*/kanban.md`
+   - Cherche statuts "⏳ EN ATTENTE AUTEUR"
+   - Compare date d'entrée vs aujourd'hui
+   - Si > 72h : passe symbole 🔴 BLOQUÉ + ajoute note "SLA dépassé (N jours)" + alerte auteur via sprint-log
+
+4. **Alert auteur = sprint-log** : Chaque dépasse SLA finit dans "État au reboot" du sprint-log courant pour visibilité Papa Yann immédiate.
+
+5. **Exceptions documentées** : si Papa Yann note délibérément "SLA waived until YYYY-MM-DD pour raison X", le PMO respecte = pas de flag 🔴 avant cette date.
+
+**Fichiers impactés** :
+- ✅ `narration/pmo/INVARIANTS.md` (SLA mentionné L.19, maintenant acté)
+- ✅ `narration/pmo/decisions.md` (cette entrée, figée)
+- ✅ `narration/pmo/sprint-log.md` (mécanique PMO en "État au reboot", ajoutée session 2026-05-21)
+- ⚪ `narration/equipe/PROCESS.md` (optionnel : enrichir L.43 SLA = RÈGLE DURE, pas soft)
+
+**Application immédiate** : STORY-002 étape 6 passe 🔴 BLOQUÉ (7 jours vs 3j). Log dans sprint-log 2026-05-21.
+
+**Statut** : **FIGÉE. JAMAIS RÉGRESSER SANS DÉCISION EXPLICITE DATÉE.**
+
+---
+
+## 2026-05-21 — DEC-PROPAGATION-INVARIANTS : Règle propagation INVARIANTS → fichiers référents (48h SLA)
+
+**Contexte** : Audit FOND 2026-05-21 détecte que l'étape 2 recréée (DEC-PROCESS-002, 2026-05-15) a modifié la structure PROCESS (0,1,2A,2B,3-10 = **11 étapes de facto**, pas 10) mais INVARIANTS.md n'a été MAJ que le jour de l'audit (2026-05-21). Entre 2026-05-15 et 2026-05-21 = 6 jours sans propagation. Risque : lecteur relisant INVARIANTS voit "10 étapes" et est confus par documents appliquant 11.
+
+**Cause racine** : Aucune règle explicite de propagation. INVARIANTS changé → que faut-il mettre à jour ? Où ? Par qui ? SLA ?
+
+**DÉCISION FIGÉE — DEC-PROPAGATION-INVARIANTS (2026-05-21, jamais modifier sans date + raison explicite)** :
+
+1. **INVARIANTS.md = source de vérité unique**. Chiffres clés : étapes PROCESS, versions writers, panel lecteurs, SLA, casting, voice_ids, règles d'or. Aucun chiffre clé n'existe ailleurs que dans INVARIANTS (ou y pointe).
+
+2. **Toute modification dans INVARIANTS déclenche une passe propagation 48h** :
+   - Identifier les 3-5 fichiers qui CITENT ou APPLIQUENT ce chiffre clé
+   - Relire ces fichiers = vérifier alignement avec nouveau INVARIANTS
+   - Si divergence : mettre à jour ou noter raison (ex: "doc legacy, dépréciée, voir INVARIANTS")
+   - Graver la date propagation dans sprint-log ("2026-05-21 : MAJ INVARIANTS étapes 11 → fichiers propagés : decisions.md, PROCESS.md, INDEX.md, sprint-log.md, kanban STORY-002")
+
+3. **Responsable** : narration-pmo (toi). Automatiquement après chaque édition INVARIANTS = chercher les impacts avant de clôturer.
+
+4. **Exemple passage** :
+   - 2026-05-15 : DEC-PROCESS-002 crée étapes 2A/2B
+   - 2026-05-15 17h : décision figée en decisions.md ✅
+   - 2026-05-15 18h-2026-05-21 : **GAP = 6 jours, aucune propagation INVARIANTS** ❌
+   - 2026-05-21 : audit découvre dérive, MAJ INVARIANTS L.12 + propagation simultanée ✅
+   - Objectif : GAP ≤ 48h
+
+5. **Anti-pattern banni** : une décision qui change un chiffre clé finit en decisions.md, MAIS rien dans INVARIANTS = source de vérité fausse. Audit découvrira 6j après.
+
+**Fichiers impactés** :
+- ✅ `narration/pmo/INVARIANTS.md` (règle de propagation ajoutée ici)
+- ✅ `narration/pmo/decisions.md` (cette entrée, figée)
+- ✅ `narration/pmo/sprint-log.md` (mécanique "propagation réalisée" dans État au reboot)
+
+**Prochaines actions** :
+- Chaque nouvelle décision éditorialisant un chiffre clé = log automatique "À propager dans INVARIANTS.md" dans le même entry decisions.md.
+- PMO = relire INVARIANTS avant chaque session (pas long, ~100 lignes source vérité).
+
+**Statut** : **FIGÉE. JAMAIS RÉGRESSER SANS DÉCISION EXPLICITE DATÉE.**
+
+---
+
+## 2026-05-17 — DEC-BRIEF-VAGUE4-BOUSSOLE : Correction d'application — briefs en BOUSSOLE, jamais phrase publiable
+
+**Contexte** : REX vague 3 STORY-002 révèle sur-spécification Couche 2 = brief détaillé en 10 beats numérotés figés entraîne convergence mécanique des writers (gestes Nono, berge humide, Juju contact eau copiés à l'identique 11/14 writers). Constat : quand on écrit un beat en langue-texte, le writer le recopie. Étalon vague 2 (brief souple, boussole) jamais battu en score panel.
+
+**Processus décision** : REX 3 voix (Claude + Conseiller + PMO) → proposition multi-contributeurs (Conseiller + PMO + Claude + 3 LLM copains Kimi/DeepSeek/Grok) → consolidation → 2 corrections Papa Yann → validation finale Conseiller (15h44 2026-05-17).
+
+**DÉCISION FIGÉE — DEC-BRIEF-VAGUE4-BOUSSOLE (2026-05-17, jamais modifier sans date + raison explicite)** :
+
+1. **Brief Couche 2 = BOUSSOLE, jamais GPS** : intentions + causalités uniquement. **Aucune formulation du brief ne doit apparaître telle quelle dans le texte writer.** Un beat rédigé en langue = recopié. Une intention sera tissée.
+
+2. **Ten n'est plus 10 beats numérotés, c'est 6 causalités-ESSENCE** + tout le COMMENT marqué LIBRE. Exemple STORY-002 Ten :
+   - Nono décroche + se calme → les autres continuent (ESSENCE, jamais figé en mots)
+   - Son immobilité fait surgir l'image épouvantail (ESSENCE, mais pas le mot exact)
+   - Wex bute sur le paradoxe (ESSENCE, pas sa réplique exacte)
+   - Juju entre en contact Nono sans le vouloir + se fige (ESSENCE, pas le geste exact)
+   - **VERROU UNIQUE CAUSAL** : libellule vient APRÈS bug Wex ET APRÈS contact Juju-Nono (intouchable)
+   - Nono libère la libellule (ne la garde pas) (ESSENCE, pas le mouvement exact)
+
+3. **« Gagné ! » LIBÉRÉ** : Un mot figé est recopié. L'essence = victoire douce (approcher puis relâcher). Si mot de victoire naît du texte, il ne désigne pas une prise. La formulation change d'un writer à l'autre — c'est OK. **Nono ne dit jamais « je l'ai eue » ou « attrapée »** (ce dernier mot = prise, rompt l'essence).
+
+4. **Nono LIBÈRE la libellule (anti-possession)** : gagner = approcher puis relâcher. Jamais expliqué. Nono ne la garde pas = il la pose sur Juju ou la regarde partir. Silence, pas sermon.
+
+5. **Chansonnette SUPPRIMÉE définitivement** : vague 3 STORY-002 a essayé de la réinjecter, résultat = confus (enfant demande "pourquoi elle chante ?"). Nono debout (plus de "assis/accroupi libre"). La contradiction interne vague 3 (épouvantail planteur assis vs debout flottant) = éliminée.
+
+6. **Couche 3 (signature : gestes précis, onomatopée, micro-rituel)** = writer guidé SEUL. Ne contamine jamais Couche 2. Exemple : "Nono trace un cercle au sol avant de s'immobiliser" = Couche 3, pas Couche 2.
+
+7. **Sections brief 4 (implicite) et 7 (ressentir) refondues en CAP, pas en consigne** : au lieu de "rend l'univers implicite" (consigne vague qui crée une convergence "faire discret"), dire "L'enfant ne doit pas sortir du charme, donc zéro énumération, zéro adjectif adulte (bienveillant, magnifique, complicité nouvelle)." C'est un CAP = point de non-retour, pas un mode à activer.
+
+8. **Vague 4 STORY-002 déjà appliquée** : brief-histoire.md refondé 2026-05-16 17h en BOUSSOLE (10 beats → 6 causalités-ESSENCE, aucune phrase publiable, Couche 3 guidé seul). Test : 14 writers vague 4 en préparation.
+
+**Prochaines actions** :
+- Appliquer la règle BOUSSOLE immédiatement : vague 4 STORY-002 relance 14 writers (étape 4).
+- Répercuter dans template : créer `equipe/templates/brief-histoire.template-v4-BOUSSOLE.md` pour STORY-003+ (ticket ARCHI-014-TEMPLATE-BOUSSOLE).
+- Ne pas régresser : si Directeur écrire un brief vague 5 avec beats numérotés = alerte PMO immédiate avant lancement writers.
+
+**Fichiers impactés** :
+- ✅ `narration/stories/002-libellule-resonance/3-briefs/brief-histoire.md` (refondé 2026-05-16, applique BOUSSOLE)
+- ✅ `narration/pmo/decisions.md` (cette entrée, figée)
+- ⚪ `equipe/templates/brief-histoire.template.md` (à adapter + créer ticket ARCHI-014-TEMPLATE-BOUSSOLE)
+
+**Blocage levé** : étape 4 vague 4 STORY-002 peut démarrer.
+
+**Statut** : **FIGÉE. JAMAIS RÉGRESSER SANS DÉCISION EXPLICITE DATÉE.**
+
+**Cohérence avec DEC-BRIEF-ARCH-001 (3 couches)** : DEC-BRIEF-VAGUE4-BOUSSOLE N'EST PAS une contradiction de DEC-BRIEF-ARCH-001. C'est une **CORRECTION D'APPLICATION de Couche 2**. La structure reste : Couche 1 (system prompt statique) · Couche 2 (brief histoire dynamique) · Couche 3 (vision guidé writers seuls). La correction : Couche 2 doit être une BOUSSOLE (intentions + causalités), jamais une phrase publiable. Sinon les writers recopient au lieu de tisser.
+
+**Traçabilité croisée** : DEC-BRIEF-ARCH-001 (structure) ← fixe ← DEC-BRIEF-VAGUE4-BOUSSOLE (contenu Couche 2).
+
+---
+
 ## 2026-05-16 — DEC-AUDIO-PRODUCTION-001 v3 : Durcissement FOND — 3 règles MILITAIRES gravées
 
 **Évolution DEC-AUDIO-PRODUCTION-001 (2026-05-16 05:16 → 14:00, FIGÉE, jamais régresser).**

@@ -31,7 +31,7 @@
 | 3 | ~~Briefs~~ (archivé vague 1-2) | — | ❌ | 2026-05-12 | [`3-briefs/`](3-briefs/) — **REFONTE VAGUE 3 COMPLÉTÉE** (étapes B/C/D ✅) |
 | 4 | **14 Versions writers — VAGUE 4 BOUSSOLE** | 14 Writers | ✅ | 2026-05-17 | [`4-versions-writers/`](4-versions-writers/) — **14/14 PRODUITS** (commit 634c5041) : 6 Claude + 2 DeepSeek + 2 Grok + 4 Kimi (kimi-reco, kimi-k26-instant, **kimi-k26-thinking**, kimi-reco-guide). DEC-BRIEF-VAGUE4-BOUSSOLE appliqué. **Casting FIGÉ 14, AUCUNE exclusion** — kimi-k26-thinking produit comme les 13 autres (retrait proposé PMO 2026-05-16, REFUSÉ Papa Yann 2026-05-17). Bug infra résolu : CLI streaming SSE. Vague 3 archivée `_archive/vague-3/` |
 | 5 | **Panel 20 lecteurs + synthèse** | 20 Témoins + Directeur | ⚪ | — | À RELANCER sur les **14 vague 4** (panels vague 2 et 3 archivés dans `_archive/`). En attente décision Papa Yann. |
-| 6 | Sélection | Directeur | ⏳ | 2026-05-14 → 2026-05-15 | [`6-selection.md`](6-selection.md) — **EN ATTENTE AUTEUR** (validation vague 3 briefs avant sélection ETH vague 3, voir DEC-STORY-002-VAGUE3) |
+| 6 | Sélection | Directeur | 🔴 | 2026-05-14 → 2026-05-21 (SLA 3j dépassé) | [`6-selection.md`](6-selection.md) — **BLOQUÉ** (SLA dépassé depuis 2026-05-17 — en attente décision Papa Yann sur étape 5 panel 20 lecteurs relance vague 4) |
 | 7 | Rewrite | Writer du top 1 | ⚪ | — | [`7-rewrite/`](7-rewrite/) |
 | 8 | GateKeeper | GateKeeper | ⚪ | — | [`8-gatekeeper-verdict.md`](8-gatekeeper-verdict.md) |
 | 9 | Re-relecture (panel 20) | 20 Témoins | ⚪ | — | [`9-relecture-rewrite/`](9-relecture-rewrite/) |
@@ -42,7 +42,7 @@
 ## Validations auteur (3 obligatoires)
 
 - [x] **Étape 1 — Pitch** validé : 2026-05-12 (recentrage Nono uniquement finalisé)
-- [ ] **Étape 6 — Sélection** validée : ___ (vague 2 en cours)
+- [ ] **Étape 6 — Sélection** validée : ___ (en attente relance étape 5 Panel 20 — vague 4)
 - [ ] **Étape 10 — Canon finalisé** validé : ___ (date)
 
 **SLA :** 3 jours par validation. Au-delà → 🔴 BLOQUÉ + log auto `pmo/sprint-log.md`.

@@ -74,6 +74,7 @@ Alerte si :
 - Un agent `.claude/agents/game-*.md` référence un chemin obsolète (apprentissage 2026-05-13 — les agents sont des angles morts)
 - Un script `game/web/tile-tools/scripts/*.py` référence un fichier supprimé
 - **Un répertoire sous `game/` n'est pas référencé dans `game/INDEX.md` ni dans un INDEX parent** → répertoire fantôme à signaler (ex: dossier de travail oublié, auto-généré périmé)
+- ⚠️ **R5 (anti-faux-positif, incident 2026-05-21)** : AVANT de déclarer un fichier/dossier « manquant », « orphelin » ou « fantôme », **vérifie son existence réelle** (`ls`/Glob). Un scan partiel peut faire halluciner un manque. Incident : `narration/scripts/` déclaré manquant alors qu'il contenait 8 fichiers.
 
 ### 4. Indexation et catalogues
 
@@ -104,6 +105,7 @@ Quand un changement structurel se produit :
 - Nouvelle recette tile validée → MAJ `INVARIANTS.md` count recipes
 - Nouveau pattern validé → MAJ `~/.claude/skills/maxplay-tiles/LESSONS.md` (via game-tile-pmo)
 - Refonte structurelle (préfixes, dossiers) → scanner `.claude/agents/game-*.md` + `scripts/*.py` pour références obsolètes
+- ⚠️ **R2 (propagation, 2026-05-21)** : après tout livrable d'étape ou changement structurel, vérifier que `INDEX.md` + `INVARIANTS.md` sont à jour **sous 48h** (anti-drift des chiffres de vérité)
 
 ---
 

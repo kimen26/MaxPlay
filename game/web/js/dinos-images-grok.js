@@ -5,8 +5,18 @@
 const DINO_GROK = {
   "albertosaurus": [
     {
+      "url": "img/dinos/grok/albertosaurus_inbox2_1_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
+    {
       "url": "img/dinos/grok/albertosaurus_lot1_1_taille.jpg",
       "label": "Sa taille",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/albertosaurus_inbox2_4_environnement.jpg",
+      "label": "Son environnement",
       "type": "grok"
     },
     {
@@ -64,24 +74,59 @@ const DINO_GROK = {
   ],
   "amargasaurus": [
     {
+      "url": "img/dinos/grok/amargasaurus_inbox2_5_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
+    {
       "url": "img/dinos/grok/amargasaurus_lot1_1_taille.jpg",
       "label": "Sa taille",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/amargasaurus_inbox2_4_sa_vie.jpg",
+      "label": "Sa vie",
       "type": "grok"
     }
   ],
   "ankylosaurus": [
+    {
+      "url": "img/dinos/grok/ankylosaurus_inbox2_1_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
     {
       "url": "img/dinos/grok/ankylosaurus_lot1_1_taille.jpg",
       "label": "Sa taille",
       "type": "grok"
     },
     {
+      "url": "img/dinos/grok/ankylosaurus_inbox2_2_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/ankylosaurus_inbox2_4_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
       "url": "img/dinos/grok/ankylosaurus_lot1_2_environnement.jpg",
       "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/ankylosaurus_inbox2_3_qui_le_chasse.jpg",
+      "label": "Qui le chasse",
       "type": "grok"
     }
   ],
   "apatosaurus": [
+    {
+      "url": "img/dinos/grok/apatosaurus_inbox2_4_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
     {
       "url": "img/dinos/grok/apatosaurus_lot1_1_taille.jpg",
       "label": "Sa taille",
@@ -93,6 +138,16 @@ const DINO_GROK = {
       "type": "grok"
     },
     {
+      "url": "img/dinos/grok/apatosaurus_inbox2_2_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/apatosaurus_inbox2_5_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
       "url": "img/dinos/grok/apatosaurus_lot1_2_environnement.jpg",
       "label": "Son environnement",
       "type": "grok"
@@ -100,6 +155,16 @@ const DINO_GROK = {
     {
       "url": "img/dinos/grok/apatosaurus_lot2_2_environnement.jpg",
       "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/apatosaurus_inbox2_3_sa_vie.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/apatosaurus_inbox2_6_sa_vie.jpg",
+      "label": "Sa vie",
       "type": "grok"
     },
     {
@@ -114,6 +179,11 @@ const DINO_GROK = {
     }
   ],
   "brachiosaurus": [
+    {
+      "url": "img/dinos/grok/brachiosaurus_inbox2_4_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
     {
       "url": "img/dinos/grok/brachiosaurus_lot1_1_taille.jpg",
       "label": "Sa taille",
@@ -135,12 +205,27 @@ const DINO_GROK = {
       "type": "grok"
     },
     {
+      "url": "img/dinos/grok/brachiosaurus_inbox2_5_sa_vie.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    },
+    {
       "url": "img/dinos/grok/brachiosaurus_lot2_3_chasse.jpg",
       "label": "Sa vie",
       "type": "grok"
     }
   ],
   "camarasaurus": [
+    {
+      "url": "img/dinos/grok/camarasaurus_inbox2_1_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/camarasaurus_inbox2_2_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
     {
       "url": "img/dinos/grok/camarasaurus_lot1_1_taille.jpg",
       "label": "Sa taille",
@@ -154,6 +239,11 @@ const DINO_GROK = {
     {
       "url": "img/dinos/grok/camarasaurus_lot3_1_taille.jpg",
       "label": "Sa taille",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/camarasaurus_inbox2_3_environnement.jpg",
+      "label": "Son environnement",
       "type": "grok"
     },
     {
@@ -174,6 +264,11 @@ const DINO_GROK = {
       "type": "grok"
     },
     {
+      "url": "img/dinos/grok/carcharodontosaurus_inbox2_1_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
       "url": "img/dinos/grok/carcharodontosaurus_lot1_2_environnement.jpg",
       "label": "Son environnement",
       "type": "grok"
@@ -189,7 +284,29 @@ const DINO_GROK = {
       "type": "grok"
     }
   ],
+  "ceratosaurus": [
+    {
+      "url": "img/dinos/grok/ceratosaurus_inbox2_2_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/ceratosaurus_inbox2_5_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/ceratosaurus_inbox2_6_sa_vie.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    }
+  ],
   "dilophosaurus": [
+    {
+      "url": "img/dinos/grok/dilophosaurus_inbox2_1_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
     {
       "url": "img/dinos/grok/dilophosaurus_lot1_1_taille.jpg",
       "label": "Sa taille",
@@ -197,6 +314,21 @@ const DINO_GROK = {
     }
   ],
   "diplodocus": [
+    {
+      "url": "img/dinos/grok/diplodocus_inbox2_6_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/diplodocus_inbox2_2_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/diplodocus_inbox2_5_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
     {
       "url": "img/dinos/grok/diplodocus_lot1_2_environnement.jpg",
       "label": "Son environnement",
@@ -208,6 +340,11 @@ const DINO_GROK = {
       "type": "grok"
     },
     {
+      "url": "img/dinos/grok/diplodocus_inbox2_3_sa_vie.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    },
+    {
       "url": "img/dinos/grok/diplodocus_lot1_3_chasse.jpg",
       "label": "Sa vie",
       "type": "grok"
@@ -215,6 +352,13 @@ const DINO_GROK = {
     {
       "url": "img/dinos/grok/diplodocus_lot2_3_chasse.jpg",
       "label": "Sa vie",
+      "type": "grok"
+    }
+  ],
+  "euoplocephalus": [
+    {
+      "url": "img/dinos/grok/euoplocephalus_inbox2_2_environnement.jpg",
+      "label": "Son environnement",
       "type": "grok"
     }
   ],
@@ -235,6 +379,11 @@ const DINO_GROK = {
       "type": "grok"
     },
     {
+      "url": "img/dinos/grok/giganotosaurus_inbox2_1_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
       "url": "img/dinos/grok/giganotosaurus_lot1_2_environnement.jpg",
       "label": "Son environnement",
       "type": "grok"
@@ -252,15 +401,49 @@ const DINO_GROK = {
   ],
   "gorgosaurus": [
     {
+      "url": "img/dinos/grok/gorgosaurus_inbox2_5_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
       "url": "img/dinos/grok/gorgosaurus_lot1_3_chasse.jpg",
       "label": "Sa vie",
       "type": "grok"
     }
   ],
+  "kentrosaurus": [
+    {
+      "url": "img/dinos/grok/kentrosaurus_inbox2_4_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    }
+  ],
+  "pachycephalosaurus": [
+    {
+      "url": "img/dinos/grok/pachycephalosaurus_inbox2_1_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    }
+  ],
   "plateosaurus": [
+    {
+      "url": "img/dinos/grok/plateosaurus_inbox2_1_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/plateosaurus_inbox2_3_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
     {
       "url": "img/dinos/grok/plateosaurus_lot1_2_environnement.jpg",
       "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/plateosaurus_inbox2_2_sa_vie.jpg",
+      "label": "Sa vie",
       "type": "grok"
     },
     {
@@ -298,19 +481,91 @@ const DINO_GROK = {
   ],
   "stegosaurus": [
     {
+      "url": "img/dinos/grok/stegosaurus_inbox2_1_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/stegosaurus_inbox2_2_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
       "url": "img/dinos/grok/stegosaurus_lot1_2_environnement.jpg",
       "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/stegosaurus_inbox2_5_sa_vie.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/stegosaurus_inbox2_3_qui_le_chasse.jpg",
+      "label": "Qui le chasse",
       "type": "grok"
     }
   ],
   "styracosaurus": [
     {
+      "url": "img/dinos/grok/styracosaurus_inbox2_1_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
+    {
       "url": "img/dinos/grok/styracosaurus_lot1_1_taille.jpg",
       "label": "Sa taille",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/styracosaurus_inbox2_3_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/styracosaurus_inbox2_4_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/styracosaurus_inbox2_2_sa_vie.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/styracosaurus_inbox2_5_sa_vie.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    }
+  ],
+  "tarbosaurus": [
+    {
+      "url": "img/dinos/grok/tarbosaurus_inbox2_4_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/tarbosaurus_inbox2_2_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/tarbosaurus_inbox2_5_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/tarbosaurus_inbox2_6_sa_vie.jpg",
+      "label": "Sa vie",
       "type": "grok"
     }
   ],
   "torosaurus": [
+    {
+      "url": "img/dinos/grok/torosaurus_inbox2_2_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
     {
       "url": "img/dinos/grok/torosaurus_lot1_1_taille.jpg",
       "label": "Sa taille",

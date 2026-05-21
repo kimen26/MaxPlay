@@ -183,6 +183,16 @@ Renforts : bloc « ⛔ AVANT DE MODIFIER » dans `.claude/rules/mini-jeux.md`, l
 
 ---
 
+### 2026-05-19 — MJ-22 « Trouve le pays ! » figé + harnais vert
+
+**Trigger user** : Cahier des charges approuvé, commit 077de505 pushé. Papa Yann valide mécanique : clic → highlight orange + confirm → victoire overlay 2.5s.
+
+**Décision** : figeage complet MJ-22 dans `game/docs/jeux/figees/mj-22.md` (section Mécanique / Layout / TTS / Niveaux / Anti-régressions). Test harness créé `game/tests/mj-22.spec.mjs` (11 asserts sur les 3 décisions figées : drapeau cible 72px, méca gagnante complète, progress dots).
+
+**Résultat** : harnais vert, aucune correction nécessaire. Prêt pour game-mj-reviewer (Section 0 figé).
+
+---
+
 ## 4. Patterns user observés
 
 ### P-001 : Vision en 3 sous-domaines (2026-05-11)

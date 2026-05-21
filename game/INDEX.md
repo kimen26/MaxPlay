@@ -72,6 +72,13 @@ Détails complets : [`EQUIPE.md`](EQUIPE.md).
 
 ---
 
+## Mémoires process (REX méta-pipeline)
+
+- **Pipeline mini-jeux** : [`web/PIPELINE-MEMORY-MJ.md`](web/PIPELINE-MEMORY-MJ.md) — frictions résolues, évolution agents MJ (créé 2026-05-11, leçons EP-021 + EP-022)
+- **Pipeline tile-tools** : [`web/tile-tools/PIPELINE-MEMORY.md`](web/tile-tools/PIPELINE-MEMORY.md) — journal design tiles, leçons simplifier/designer/reviewer, erreurs gravées LESSONS.md
+
+---
+
 ## Déploiement
 
 - CI : [`../.github/workflows/deploy.yml`](../.github/workflows/deploy.yml)
@@ -104,6 +111,34 @@ Détails complets : [`EQUIPE.md`](EQUIPE.md).
 5. game-pmo intègre synthèse, game-archiviste vérifie structure
 
 **Skill associé** : [`~/.claude/skills/maxplay-tiles/SKILL.md`](C:/Users/kimen/.claude/skills/maxplay-tiles/SKILL.md) + [`LESSONS.md`](C:/Users/kimen/.claude/skills/maxplay-tiles/LESSONS.md) (30+ leçons gravées).
+
+---
+
+## Scripts Python tile (`web/tile-tools/scripts/`)
+
+**22 scripts** d'infrastructure & rendu pipeline LimeZu :
+
+| Script | Rôle |
+|--------|------|
+| `render.py` | **Compositeur PIL** — convertit `recipes/test_X.py` en PNG (workflow obligatoire : render → Read → critique) |
+| `render_debug.py` | Idem + grille rouge + coordonnées (debug visuel col/row) |
+| `render_tmj.py` | Exporteur Tiled JSON (compatibilité TMJ) |
+| `build_tilesheet.py` | Assemble spritesheet de synthèse depuis thèmes LimeZu |
+| `build_tile_picker_data.py` | Indexe 9811 tiles catégorisées (Rue/Parc/Jardin/Maison/Forêt) pour `tile-picker.html` |
+| `build_rondpoint_tmj.py` | Générateur rond-point spécialisé |
+| `catalog_families.py` | Planches-contact par famille (2220 familles, 6222 variants) |
+| `catalog_sheet.py` | Anciennes planches (remplacé par `catalog_families`) |
+| `compare_sidewalk_styles.py` | Comparaison 6 styles Sidewalk côte à côte → PNG |
+| `compare_tilesets.py`, `compare_tilesets_final.py`, `compare_tilesets_rotation.py`, `compare_tilesets_shifted.py`, `compare_tilesets_swap.py` | Outils de comparaison tilesets (legacy, debug) |
+| `export_recipes_to_js.py` | Export format Python → JavaScript (patterns.js) |
+| `import_themes.py` | Importe LimeZu Theme Sorter (24 thèmes) → `phaser/public/assets/tiles/` |
+| `inventory.py` | Indexation legacy (3563 tiles + dimensions natives) |
+| `index_asphalt.py` | Planches zoomées Asphalt (legacy) |
+| `zoom_index.py` | Zooms génériques (legacy) |
+| `make_catalog_sheets.py` | Planches legacy globales (remplacé) |
+| `recolor_house.py` | Utilitaire recoloration maison ad-hoc |
+
+**Workflow obligatoire** : écrire `recipes/test_X.py` → `python render.py recipes/test_X.py` → Read PNG → critique → itérer. Détail : [`web/tile-tools/README.md`](web/tile-tools/README.md).
 
 ---
 

@@ -1,13 +1,27 @@
 ﻿# Sprint Log — PMO Narration
 
 > Journal de bord des sessions.
-> **En cas de reboot :** lire la dernière entrée (haut du fichier), section "État au reboot".
+> **En cas de reboot :** lire D'ABORD la section "## Prochaine action" (ci-dessous), puis la dernière entrée (haut du fichier), section "État au reboot".
 > Les entrées les plus récentes sont en haut.
 >
 > ⚠️ **Note historique** : les entrées <2026-05-12 mentionnent "PROCESS 9 étapes" (avant refonte 2026-05-07) puis "11 étapes" (refonte 2026-05-08). Depuis **refonte 2026-05-12** : PROCESS = **10 étapes** (étape 2 fusionnée avec étape 1 — voir `pmo/INVARIANTS.md` source de vérité). Ne pas re-corriger les entrées historiques — elles tracent l'évolution du PROCESS.
 > 
 > ---
 > **Procédure clôture formalisée** (depuis 2026-05-13) : classification 6 catégories (DÉCISION / LEÇON / TODO / QUESTION / INFO / TRAITEMENT) + mise à jour PMO (sprint-log / decisions / backlog / lecons-vivantes) + checklist remise main 8 points. Voir `narration-pmo.md` § Procédure systématique.
+
+---
+
+## Prochaine action — OBLIGATOIRE avant toute session
+
+**Contexte prioritaire** (mis à jour 2026-05-21 par audit FOND) :
+
+| Priorité | Action | Statut | Notes |
+|----------|--------|--------|-------|
+| 🔴 BLOCAGE | STORY-002 étape 6 = **BLOQUÉ** (SLA 3j dépassé 7 jours depuis 2026-05-14) | Kanban marqué 🔴 2026-05-21 | Briefs vague 4 BOUSSOLE prêts, attente validation Papa Yann pour relancer 14 writers étape 4 |
+| ⚪ À FAIRE | Décision Papa Yann : relancer vague 4 sur STORY-002 étape 4 ? | En attente | Panel 20 lecteurs (étape 5) en attente étape 4 complète |
+| ⚪ À FAIRE | Vérifier kanban autres stories (aucun SLA dépassé attendu) | Prochain reboot | Mécanique SLA 3j 🔴 maintenant opérationnelle (DEC-SLA-NARRATION) |
+
+**Règle** : cette section = POINT D'ENTRÉE session. Jamais ignorer. Papa Yann lit ici en premier = plan d'action transparent.
 
 ---
 

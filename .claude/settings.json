@@ -10,6 +10,7 @@
       "Bash(npx vite --host)",
       "Bash(npx tsx *)",
       "Bash(node -e \"*:*)",
+      "Bash(git:*)",
       "Edit(~/.claude/skills/narration-manga/**)",
       "Edit(~/.claude/skills/narration-storytelling/**)",
       "Edit(~/.claude/skills/narration-prose/**)",
@@ -239,7 +240,41 @@
       "Bash(awk '{print $5, $6, $7, $8}')",
       "Bash(git add *)",
       "Bash(cp claude-opus-def.md claude-opus-reco.md)",
-      "Bash(awk 'f&&/^---$/{exit} /^---$/{c++; if\\(c==2\\){f=1; next}} f{print}' \"c:/ProjetsPerso/Claude_Projects/MaxPlay/narration/stories/002-libellule-resonance/4-versions-writers/claude-opus-def.md\")"
+      "Bash(awk 'f&&/^---$/{exit} /^---$/{c++; if\\(c==2\\){f=1; next}} f{print}' \"c:/ProjetsPerso/Claude_Projects/MaxPlay/narration/stories/002-libellule-resonance/4-versions-writers/claude-opus-def.md\")",
+      "Bash(node -e \"const fs=require\\('fs'\\);const p=require\\('os'\\).homedir\\(\\)+'/.claude.json';const j=JSON.parse\\(fs.readFileSync\\(p,'utf8'\\)\\);const s=\\(j.mcpServers&&j.mcpServers['llm-copains']\\)||{};console.log\\('found llm-copains:', !!j.mcpServers['llm-copains']\\);console.log\\('env keys:', Object.keys\\(s.env||{}\\).join\\(','\\)\\);\")",
+      "Bash(printf 'Tu es concis.')",
+      "Bash(printf 'Reponds juste: PING-OK-CLI')",
+      "Bash(node call-llm.mjs --provider kimi --system /tmp/sys_test.txt --prompt /tmp/prompt_test.txt --temperature 0 --timeout-ms 120000)",
+      "Bash(mkdir -p _archive/panel-partiel-12textes-2026-05-16)",
+      "Bash(mv 5-lecteurs-temoins/*.md _archive/panel-partiel-12textes-2026-05-16/)",
+      "Bash(mv 5-synthese-lecteurs.md _archive/panel-partiel-12textes-2026-05-16/)",
+      "Bash(ls /mnt/c/ProjetsPerso/Claude_Projects/MaxPlay/narration/stories/002-libellule-resonance/5-lecteurs-temoins/ 2>/dev/null || echo \"DOSSIER ABSENT\")",
+      "Read(//mnt/c/ProjetsPerso/Claude_Projects/MaxPlay/narration/stories/002-libellule-resonance/**)",
+      "Bash(mkdir -p /mnt/c/ProjetsPerso/Claude_Projects/MaxPlay/narration/stories/002-libellule-resonance/5-lecteurs-temoins)",
+      "PowerShell(New-Item -ItemType Directory -Force \"C:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\\\\stories\\\\002-libellule-resonance\\\\5-lecteurs-temoins\")",
+      "Bash(cat)",
+      "Bash(node call-llm.mjs --provider kimi --system /tmp/v4_sys.txt --prompt /tmp/v4_prompt.txt --temperature 0.6 --timeout-ms 540000 --out /tmp/v4_kimi.txt)",
+      "Read(//tmp/**)",
+      "Read(//c/tmp/**)",
+      "Bash(python3 -c \"text = open\\('c:/ProjetsPerso/Claude_Projects/MaxPlay/narration/stories/002-libellule-resonance/4-versions-writers/claude-sonnet-reco.md', encoding='utf-8'\\).read\\(\\); parts = text.split\\('\\\\n---\\\\n'\\); story_start = text.find\\('\\\\n## La libellule'\\); story_end = text.find\\('\\\\n---\\\\n\\\\n## Note'\\); story = text[story_start:story_end]; print\\(len\\(story.split\\(\\)\\)\\)\")",
+      "Bash(node call-llm.mjs --provider kimi --system /tmp/v4w_sys.txt --prompt /tmp/v4w_prompt.txt --temperature 0.6 --timeout-ms 540000 --out /tmp/v4_kimi_reco.txt)",
+      "Bash(node call-llm.mjs --provider kimi --system /tmp/v4w_sys.txt --prompt /tmp/v4w_prompt.txt --temperature 0.6 --timeout-ms 480000 --out /tmp/v4_kimi_reco.txt)",
+      "Bash(cat > *)",
+      "Bash(node call-llm.mjs --provider kimi --system /tmp/v4w_sys.txt --prompt /tmp/v4g_prompt.txt --temperature 0.6 --timeout-ms 480000 --out /tmp/v4_kimi_guide.txt)",
+      "Bash(timeout 90 node call-llm.mjs --provider kimi --system /tmp/ps.txt --prompt /tmp/pp.txt --temperature 0.6 --timeout-ms 80000)",
+      "Bash(echo \"---exit:$?---\")",
+      "Bash(node -e \"const fs=require\\('fs'\\);const j=JSON.parse\\(fs.readFileSync\\(require\\('os'\\).homedir\\(\\)+'/.claude.json','utf8'\\)\\);const e=j.mcpServers['llm-copains'].env;console.log\\('MOONSHOT_PAYANT_API_KEY présente:', !!e.MOONSHOT_PAYANT_API_KEY\\);\")",
+      "Bash(node --check call-llm.mjs)",
+      "Bash(node call-llm.mjs --provider kimi-payant --system /tmp/ps.txt --prompt /tmp/pp.txt)",
+      "Bash(echo \"exit:$?\")",
+      "Bash(node call-llm.mjs --provider kimi-payant --writer kimi-reco --system /tmp/ps.txt --prompt /tmp/pp.txt)",
+      "Bash(node call-llm.mjs --provider kimi-payant --writer kimi-k26-thinking --thinking enabled --temperature 1 --system /tmp/v4w_sys.txt --prompt /tmp/v4w_prompt.txt --timeout-ms 540000 --out /tmp/v4_kimi_thinking.txt)",
+      "Bash(node call-llm.mjs --provider kimi --system /tmp/v4w_sys.txt --prompt /tmp/v4g_prompt.txt --temperature 0.6 --timeout-ms 540000 --out /tmp/v4_kimi_guide.txt)",
+      "Bash(node call-llm.mjs --provider kimi --system /tmp/ps.txt --prompt /tmp/pp.txt --temperature 0.6 --timeout-ms 120000)",
+      "Bash(node call-llm.mjs --provider kimi --system /tmp/v4w_sys.txt --prompt /tmp/v4w_prompt.txt --temperature 0.6 --timeout-ms 600000 --out /tmp/v4_kimi_reco.txt)",
+      "Bash(node call-llm.mjs --provider kimi --system /tmp/v4w_sys.txt --prompt /tmp/v4g_prompt.txt --temperature 0.6 --timeout-ms 900000 --out /tmp/v4_kimi_guide.txt)",
+      "Bash(node call-llm.mjs --provider kimi-payant --writer kimi-k26-thinking --thinking enabled --temperature 1 --system /tmp/v4w_sys.txt --prompt /tmp/v4w_prompt.txt --timeout-ms 900000 --out /tmp/v4_kimi_thinking.txt)",
+      "Bash(dir \"c:\\\\ProjetsPerso\\\\Claude_Projects\\\\MaxPlay\\\\narration\\\\stories\\\\002-libellule-resonance\\\\4-versions-writers\")"
     ],
     "additionalDirectories": [
       "c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\temp",
@@ -252,7 +287,9 @@
       "C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\narration\\enneagramme\\ressources",
       "C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\narration\\enneagramme\\personnages",
       "c:\\tmp",
-      "C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\narration\\stories\\002-libellule-resonance\\5-lecteurs-temoins"
+      "C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\narration\\stories\\002-libellule-resonance\\5-lecteurs-temoins",
+      "\\mnt\\c\\ProjetsPerso\\Claude_Projects\\MaxPlay\\narration\\stories\\002-libellule-resonance",
+      "\\tmp"
     ]
   },
   "enabledMcpjsonServers": [
@@ -264,8 +301,8 @@
         "matcher": "*",
         "hooks": [
           {
-            "type": "http",
-            "url": "http://localhost:3001/permission",
+            "type": "command",
+            "command": "bun \"c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\infra\\bot\\permission-hook.ts\"",
             "timeout": 1210
           }
         ]

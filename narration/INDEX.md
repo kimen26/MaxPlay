@@ -116,6 +116,15 @@ narration/
 
 ---
 
+## Mémoire & notes opérationnelles
+
+| Fichier | Contenu |
+|---------|---------|
+| [`memory/state.md`](memory/state.md) | État instantané projet (statuts stories, décisions en cours, SLAs) |
+| [`memory/business/`](memory/business/) | Notes métier (monétisation, roadmap long terme) |
+
+---
+
 ## Équipe éditoriale (process & agents)
 
 | Fichier | Rôle |

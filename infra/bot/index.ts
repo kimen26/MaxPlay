@@ -34,8 +34,26 @@ type Message = { role: "user" | "assistant"; content: string };
 
 const histories = new Map<number, Message[]>();
 
+// Mode de présence : "ici" = picker natif VSCode interactif + Telegram en copie
+// lecture seule ; "dehors" = picker local supprimé, réponse via boutons Telegram.
+type PresenceMode = "ici" | "dehors";
+let presenceMode: PresenceMode = "ici";
+
 // Permissions en attente : reqId → { resolve }
 const pendingPermissions = new Map<string, (allow: boolean) => void>();
+
+// Questions AskUserQuestion en attente : `${reqId}_${qIdx}` → { resolve, options }
+type AskOption = { label: string; description?: string };
+type AskQuestion = {
+  question: string;
+  header?: string;
+  multiSelect?: boolean;
+  options: AskOption[];
+};
+const pendingAsks = new Map<
+  string,
+  { resolve: (label: string | null) => void; options: AskOption[] }
+>();
 
 // ─── Buffer pour messages longs découpés par Telegram ─────────────────────────
 
@@ -158,6 +176,91 @@ Bun.serve({
       });
     }
 
+    // ─── AskUserQuestion : afficher la question + 1 bouton par option ────────────
+    if (url.pathname === "/ask" && req.method === "POST") {
+      if (ALLOWED_CHAT_ID === null) {
+        // Pas de Telegram configuré → on annule pour laisser l'UI locale gérer.
+        return Response.json({ cancelled: true });
+      }
+
+      let body: { questions?: AskQuestion[] } = {};
+      try {
+        body = (await req.json()) as typeof body;
+      } catch {
+        return Response.json({ cancelled: true });
+      }
+
+      const questions = body.questions ?? [];
+      if (questions.length === 0) return Response.json({ cancelled: true });
+
+      // Mode "ici" : on notifie sur Telegram (lecture seule) et on laisse le picker
+      // natif VSCode gérer la réponse (le hook recevra { mode: "ici" } → allow).
+      if (presenceMode === "ici") {
+        for (const q of questions) {
+          const optLines = (q.options ?? [])
+            .map((o) => (o.description ? `• *${o.label}* — ${o.description}` : `• *${o.label}*`))
+            .join("\n");
+          await bot.api
+            .sendMessage(
+              ALLOWED_CHAT_ID,
+              `💻 *${q.header ?? "Question"}* _(réponds dans VSCode)_\n\n${q.question}\n\n${optLines}`,
+              { parse_mode: "Markdown" }
+            )
+            .catch(() => {});
+        }
+        console.log(`[ASK] mode=ici → notification seule, picker local`);
+        return Response.json({ mode: "ici" });
+      }
+
+      const reqId = randomUUID().slice(0, 8);
+      console.log(`[ASK] mode=dehors → ${reqId}, ${questions.length} question(s)`);
+
+      const answers: { header?: string; question: string; answer: string }[] = [];
+
+      // Une question à la fois (single-select). multiSelect → premier tap = réponse.
+      for (let qIdx = 0; qIdx < questions.length; qIdx++) {
+        const q = questions[qIdx]!;
+        const opts = q.options ?? [];
+
+        const keyboard = new InlineKeyboard();
+        opts.forEach((opt, oIdx) => {
+          keyboard.text(opt.label, `ask_${reqId}_${qIdx}_${oIdx}`).row();
+        });
+        keyboard.text("✋ Annuler", `ask_${reqId}_${qIdx}_cancel`);
+
+        const optLines = opts
+          .map((o) => (o.description ? `• *${o.label}* — ${o.description}` : `• *${o.label}*`))
+          .join("\n");
+
+        await bot.api.sendMessage(
+          ALLOWED_CHAT_ID,
+          `❓ *${q.header ?? "Question"}*\n\n${q.question}\n\n${optLines}`,
+          { parse_mode: "Markdown", reply_markup: keyboard }
+        );
+
+        const key = `${reqId}_${qIdx}`;
+        const choice = await new Promise<string | null>((resolve) => {
+          pendingAsks.set(key, { resolve, options: opts });
+          setTimeout(() => {
+            if (pendingAsks.has(key)) {
+              pendingAsks.delete(key);
+              console.log(`[ASK] Timeout question ${key} → annulée`);
+              resolve(null);
+            }
+          }, 19 * 60 * 1000);
+        });
+
+        if (choice === null) {
+          console.log(`[ASK] ${reqId} annulée à la question ${qIdx}`);
+          return Response.json({ cancelled: true });
+        }
+        answers.push({ header: q.header, question: q.question, answer: choice });
+      }
+
+      console.log(`[ASK] ${reqId} complète : ${answers.map((a) => a.answer).join(" | ")}`);
+      return Response.json({ answers });
+    }
+
     return new Response("Not found", { status: 404 });
   },
 });
@@ -176,7 +279,10 @@ bot.command("start", async (ctx) => {
 bot.command("status", async (ctx) => {
   if (!isAllowed(ctx)) return;
   const count = getHistory(ctx.chat.id).length / 2;
-  await ctx.reply(`✅ Bot actif · Claude Code prêt · Projet : MaxPlay\n📝 ${count} échange(s) en mémoire`);
+  const modeLabel = presenceMode === "ici" ? "💻 ICI" : "📱 DEHORS";
+  await ctx.reply(
+    `✅ Bot actif · Claude Code prêt · Projet : MaxPlay\n📝 ${count} échange(s) en mémoire\n🧭 Mode : ${modeLabel} (/mode)`
+  );
 });
 
 bot.command("whoami", async (ctx) => {
@@ -194,6 +300,32 @@ bot.command("reset", async (ctx) => {
   if (!isAllowed(ctx)) return;
   histories.delete(ctx.chat.id);
   await ctx.reply("🗑️ Historique effacé. Nouvelle conversation.");
+});
+
+bot.command("ici", async (ctx) => {
+  if (!isAllowed(ctx)) return;
+  presenceMode = "ici";
+  await ctx.reply(
+    "💻 Mode *ICI* — tu réponds aux questions dans VSCode. Telegram en reçoit une copie pour info.",
+    { parse_mode: "Markdown" }
+  );
+});
+
+bot.command("dehors", async (ctx) => {
+  if (!isAllowed(ctx)) return;
+  presenceMode = "dehors";
+  await ctx.reply(
+    "📱 Mode *DEHORS* — les questions arrivent ici avec des boutons, tu réponds depuis Telegram.",
+    { parse_mode: "Markdown" }
+  );
+});
+
+bot.command("mode", async (ctx) => {
+  if (!isAllowed(ctx)) return;
+  const label = presenceMode === "ici" ? "💻 ICI (réponse VSCode)" : "📱 DEHORS (réponse Telegram)";
+  await ctx.reply(`Mode actuel : *${label}*\n\n/ici · /dehors pour basculer.`, {
+    parse_mode: "Markdown",
+  });
 });
 
 // ─── Messages → Claude ────────────────────────────────────────────────────────
@@ -301,6 +433,35 @@ bot.on("callback_query:data", async (ctx) => {
       console.log(`[CALLBACK] reqId ${reqId} introuvable dans pendingPermissions`);
       await ctx.editMessageText("⚠️ Cette demande a déjà été traitée ou a expiré.").catch(() => {});
     }
+    return;
+  }
+
+  if (data.startsWith("ask_")) {
+    // Format : ask_<reqId>_<qIdx>_<oIdx|cancel>
+    const rest = data.slice("ask_".length);
+    const lastSep = rest.lastIndexOf("_");
+    const key = rest.slice(0, lastSep); // `${reqId}_${qIdx}`
+    const optPart = rest.slice(lastSep + 1);
+    const pending = pendingAsks.get(key);
+    pendingAsks.delete(key);
+
+    if (!pending) {
+      await ctx.editMessageText("⚠️ Cette question a déjà été traitée ou a expiré.").catch(() => {});
+      return;
+    }
+
+    if (optPart === "cancel") {
+      pending.resolve(null);
+      await ctx.editMessageText("✋ Question annulée.").catch(() => {});
+      return;
+    }
+
+    const oIdx = parseInt(optPart, 10);
+    const label = pending.options[oIdx]?.label ?? null;
+    pending.resolve(label);
+    await ctx
+      .editMessageText(`✅ Réponse : *${label ?? "?"}*`, { parse_mode: "Markdown" })
+      .catch(() => ctx.editMessageText(`✅ Réponse : ${label ?? "?"}`).catch(() => {}));
     return;
   }
 

@@ -11,39 +11,47 @@
 
 ## Leçons du pôle MJ (L-xxx)
 
+**Convention de numérotation** (fixée 2026-05-21) :
+- **L-000..L-049** : leçons tile (réservées pour skill `maxplay-tiles/LESSONS.md`)
+- **L-050+** : leçons mini-jeux/MJ (process, REX, patterns)
+
 Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-05-16). Détail complet : [`PIPELINE-MEMORY-MJ.md`](PIPELINE-MEMORY-MJ.md).
 
-### L-032 – Figeage par mini-jeu = protection régression
+### L-050 – Figeage par mini-jeu = protection régression
 **Constat** : MJ-21 saga "bus en haut/bas" — 10 répétitions Papa Yann sans enregistrement → régression structurelle à chaque `/compact`. **Cause** : aucune décision figée dans code source, pas de priorité mécanique.
 **Fix** : système figeage (commit 565f98cb) — `game/docs/jeux/figees/mj-XX.md` + hook PreToolUse `figees-injector.ps1` + game-mj-reviewer Section 0. État : ✅ déployé, mj-21 protégé.
 
-### L-033 – Gabarit header compact = norme obligatoire
+### L-051 – Gabarit header compact = norme obligatoire
 **Contexte** : Papa Yann signale bandeau titre trop gros dans **tous** les MJ HTML. Pattern correct = mj-20 (commit e1bcd42a).
 **Action** : décision 2026-05-14 gravée — EP-036 rétro-fit tous les MJ + EP-035 encoding UTF-8 unifié.
 
-### L-034 – SVG id uniqueness = leçon visuelle
+### L-052 – SVG id uniqueness = leçon visuelle
 **Saga MJ-21** : bug "tube vide à la victoire" — 4 commits avant diagnostic. Root cause : `<clipPath id="tc">` dupliqué entre tube vrai + clone animation → `url(#tc)` résolvait vers le mauvais clipPath → remplissage clone invisible.
 **Leçon** : SVG id duplicate = bug silencieux (zéro erreur console) — **check obligatoire si glitch post-animation**. Outils : `grep id= <file>` ou inspection DOM navigateur.
 
-### L-035 – Recettes couleur = validation RGB amont
+### L-053 – Recettes couleur = validation RGB amont
 **Pédago tardive MJ-21** : "vert clair" contre-intuitif (jaune:1 bleu:3). Fix : jaune:1 bleu:1 blanc:1.
 **Règle** : chaque recette RGB → **préview PNG amont** avant déploiement pédago. Outils : Canvas simple ou Python PIL.
 
-### L-036 – Mutations structure tube = unitaires obligatoires
+### L-054 – Mutations structure tube = unitaires obligatoires
 **Bug MJ-21** : `addCouleur()` après mix vidait le tube entier — oubli réinitialisation `doses`.
-**Action** : L-036 → unitaires obligatoires sur mutation structure tube (ajout/reset/mix/blend). Couvrir les cas mixtes.
+**Action** : L-054 → unitaires obligatoires sur mutation structure tube (ajout/reset/mix/blend). Couvrir les cas mixtes.
 
-### L-037 – Design amont + figeage = obligatoire multi-mécanique
+### L-055 – Design amont + figeage = obligatoire multi-mécanique
 **Pattern MJ-21** : layout codé 5 fois en parallèle conversation (5 commits refactor). Root cause : pas de screen mockup validé par Papa Yann AVANT dev.
 **Processus** : brève → **appel `game-conseiller` (Opus) 30 min** → layout proposé + mécanique + pédago → validation Papa Yann → figeage git (`game/docs/jeux/figees/mj-XX.md`) → dev contre design figé. Bénéfice : 4–5 commits layout évités.
 
-### L-039 – Éditions multiples = risque suppression fonctions appelées ailleurs
+### L-057 – Éditions multiples = risque suppression fonctions appelées ailleurs
 **Dinos (2026-05-16)** : bug critique `showFiche is not defined` (ReferenceError l.786) — fonction supprimée lors édition antérieure de dinos-data.js, empêchait ouverture TOUTE fiche.
 **Leçon** : avant refonte ou suppression massive, mapper toutes les FONCTIONS APPELÉES vs DÉFINIES (grep ou AST) — valider aucune appelante orpheline. Outil : `grep -rn "showFiche" .` avant commit.
 
-### L-040 – Audio multi-voix = figeage texte amont obligatoire
-**Dinos audio (2026-05-16)** : chantier DUO Narrateur H + Wex sur 50 fiches, coût itération ElevenLabs important (loudness + timing + clarté entre voix = 2-3 tries min).
-**Processus** : figeage script + challenge Papa Yann AVANT envoi ElevenLabs. Validation 1 fiche test (Tricératops) avant généraliser 49 fiches.
+### L-058 – Audio multi-voix = figeage texte amont obligatoire
+**Dinos audio (2026-05-17)** : chantier DUO Narrateur H + Wex sur 50 fiches, coût itération ElevenLabs important (loudness + timing + clarté entre voix = 2-3 tries min).
+**Processus figé** : figeage script (3-passes validation) + challenge Papa Yann AVANT envoi ElevenLabs. Validation 1 fiche test (Tricératops) avant généraliser (49 autres). Application réussie : 44 MP3 top 11 en 1 pass, zéro itération post-prod.
+
+### L-059 – Découpage agents parallèles efficace → RE-GREP anti-patterns après
+**Dinos (2026-05-17)** : 9-11 agents parallèles (étymo fact-check, game-conseiller, narration-conseiller, panel lecteur) = efficace pour grosse tâche d'écriture/correction. **Piège** : un agent oublie Gallimimus, un autre n'écrase pas le bon Bloc Coelophysis (éditions en conflit).
+**Leçon** : après découpage agents parallèles, toujours RE-GREP anti-patterns + count blocs/dinos avant merge. Outil : `grep -c "Bloc A" _ETYMO-RACINES-50.md` → doit = 50, `grep "Gallimimus"` → doit être présent.
 
 ---
 
@@ -139,6 +147,26 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 **Raison** : uniformité UX + économise espace pour contenu jeu (sessions 3-8 min zéro perte).
 
 **Impact** : 21 fichiers `web/mj-*.html`, potentiellement `web/index.html` menu.
+
+---
+
+## EP-037 – Rétro-fit figeage 20 MJ restants (protection régression)
+
+**Statut** : `[ ]` à faire
+
+**Priorité** : 🔥 **URGENTE** (prévention, sécurité production)
+
+**Contexte** : Système figeage gravé 2026-05-15 (commit 565f98cb) — `game/docs/jeux/figees/mj-XX.md` + hook PreToolUse `figees-injector.ps1` + game-mj-reviewer Section 0. Actuellement **seul mj-21 protégé**. Les 20 autres MJ actifs exposés à regressions type "bus en haut/bas" (REX MJ-21, 10 répétitions sans enregistrement).
+
+**À faire** :
+1. **Rétro-fit template** : copier `game/docs/jeux/figees/mj-21.md` → `game/docs/jeux/figees/mj-{01,04,05,06,08,09,11,12,13a,13b,13c,14,15,16,17,18,19,20,22,max-adventure}.md`
+2. **Figer décisions visuelles/mécanique** pour chaque MJ (lire `web/mj-XX.html` + brève Papa Yann du moment du déploiement initial)
+3. **Valider hook** : `figees-injector.ps1` doit charger `.md` pour chaque MJ avant édition
+4. **Documentation** : mettre à jour `memory/rules.md` § figeage obligatoire (non-négociable pour tout nouveau MJ)
+
+**Raison** : figeage = seule protection contre regressions silencieuses entre sessions (incidents 2026-05-13 à 2026-05-16). Coût : 30 min batch script ou 1h rétro-fit manuel.
+
+**Impact** : `game/docs/jeux/figees/` (20 fichiers créés), hook config, documentation.
 
 ---
 
@@ -491,13 +519,13 @@ MaxPlay V0
 > Au lancement de chaque MJ, `tracker.startSession()` lançait `_announceTitle()` (TTS du nom du jeu). Cause des lags au démarrage. Désactivé 2026-05-03 — l'utilisateur n'en a pas besoin, les jeux gardent leurs TTS pédagogiques en cours de partie.
 - [x] T-330 : Commenter l'appel `_announceTitle(id)` dans `tracker.startSession()`
 
-### EP-022 – MJ-04 fin de partie ✅ (résolu, vérifié 2026-05-11)
-> ~~Aujourd'hui MJ-04 boucle infinie sans `endSession`.~~ Code conforme depuis (date inconnue, audit 2026-05-11 a découvert que les 3 sous-tâches étaient implémentées sans coche). Désync sommaire ↔ détail corrigée.
-- [x] T-220 : Compteur 10 tours présent (`MAX_QUESTIONS = 10` + check `questionCount >= MAX_QUESTIONS` dans `nextQuestion()`)
-- [x] T-221 : Écran fin de partie présent (`showEndScreen()` avec `Tracker.endSession(score, MAX_QUESTIONS * 10)`)
-- [x] T-222 : `playEndSound(score, MAX_QUESTIONS * 10)` appelé dans `showEndScreen()`
+### EP-022 – MJ-04 fin de partie [!] **FAUX BUG ARCHIVÉ 2026-05-21**
+> ~~Aujourd'hui MJ-04 boucle infinie sans `endSession`.~~ Code conforme depuis (date inconnue, audit 2026-05-11 a découvert que les 3 sous-tâches étaient implémentées sans coche). Désync sommaire ↔ détail corrigée. **Jamais exécuté comme bug** (était pédago-fantôme, non-bloquant).
+- [!] T-220 : Compteur 10 tours DÉJÀ IMPLÉMENTÉ
+- [!] T-221 : Écran fin de partie DÉJÀ IMPLÉMENTÉ
+- [!] T-222 : Sonnerie victoire DÉJÀ IMPLÉMENTÉ
 
-**Leçon méthodologique** (gravée Session 14) : un audit `pmo-challenge` doit **vérifier le code** d'un ticket avant de le relayer comme actif. Lire BACKLOG ne suffit pas — risque de relayer des "bugs fantômes".
+**Clôture 2026-05-21** : faux bug confirmé, jamais exécuté. Archivé pour traçabilité (Leçon méthodologique : audit pmo-challenge doit **vérifier le code** d'un ticket avant de le relayer). Supprimé de backlog actif.
 
 ### EP-023 – Menu hybride Carte de Villejuif ✅
 > Page d'accueil = map Villejuif (haut) + grille classique (bas). Implémenté dans `game/web/index.html` avec `.map-hotspot`, tooltips et liens vers chaque MJ.

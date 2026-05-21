@@ -9,7 +9,7 @@
 
 | M�trique | Valeur | Notes |
 |----------|--------|-------|
-| �tapes PROCESS | **10** (0, 1, 3-10 � �tape 2 supprim�e 2026-05-12 par fusion avec �tape 1) | Owner / Inputs / Outputs / Crit�res PASS d�finis par �tape |
+| �tapes PROCESS | **11** (0, 1, 3-10 � �tape 2 supprim�e 2026-05-12 par fusion avec �tape 1) | Owner / Inputs / Outputs / Crit�res PASS d�finis par �tape |
 | Pr�fixage fichiers stories | **Oui depuis 2026-05-12** | `1-pitch-plan.md`, `3-briefs/`, `4-versions-writers/`, `5-lecteurs-temoins/`, `6-selection.md`, `7-rewrite/`, `8-gatekeeper-verdict.md`, `9-relecture-rewrite/`, `10-texte.md`. Fichiers transverses (kanban, README) sans pr�fixe. |
 | Versions writers (�tape 4) | **14** (refonte 2026-05-12 v2 � calibration multi-mod�les) | 6 Claude (2 Opus + 2 Sonnet + 2 Haiku, d�f/**reco**) + 4 Kimi (d�f/reco/thinking/guid�) + 2 DeepSeek (d�f/reco) + 2 Grok (d�f/reco) � d�tail bloc *Casting writers �tape 4* ci-dessous. "reco" = temp�rature recommand�e cr�atif officielle (cf. [`../equipe/references/temperatures-llm.md`](../equipe/references/temperatures-llm.md)) |
 | Panel lecteurs (�tape 5) | **20** OBLIGATOIRE (toutes stories d�s STORY-002) |

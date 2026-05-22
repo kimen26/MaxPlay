@@ -34,15 +34,10 @@ type Message = { role: "user" | "assistant"; content: string };
 
 const histories = new Map<number, Message[]>();
 
-// Mode de présence : "ici" = picker natif VSCode interactif + Telegram en copie
-// lecture seule ; "dehors" = picker local supprimé, réponse via boutons Telegram.
-type PresenceMode = "ici" | "dehors";
-let presenceMode: PresenceMode = "ici";
-
 // Permissions en attente : reqId → { resolve }
 const pendingPermissions = new Map<string, (allow: boolean) => void>();
 
-// Questions AskUserQuestion en attente : `${reqId}_${qIdx}` → { resolve, options }
+// ─── AskUserQuestion : course Telegram ⇄ page web VSCode (premier arrivé gagne) ──
 type AskOption = { label: string; description?: string };
 type AskQuestion = {
   question: string;
@@ -50,10 +45,109 @@ type AskQuestion = {
   multiSelect?: boolean;
   options: AskOption[];
 };
-const pendingAsks = new Map<
-  string,
-  { resolve: (label: string | null) => void; options: AskOption[] }
->();
+
+// Une question est active à la fois (le hook bloque, donc séquentiel).
+interface AskEntry {
+  key: string; // `${reqId}_${qIdx}`
+  header?: string;
+  question: string;
+  options: AskOption[];
+  resolve: (label: string | null) => void;
+  tgMessageId?: number;
+  answered: boolean;
+}
+const asks = new Map<string, AskEntry>();
+let currentAsk: AskEntry | null = null;
+
+// Résolution partagée : appelée par un tap Telegram OU un clic sur la page web.
+// Le premier gagne ; les appels suivants sont ignorés (déjà répondu).
+async function resolveAsk(key: string, label: string | null, via: "telegram" | "vscode") {
+  const entry = asks.get(key);
+  if (!entry || entry.answered) return false;
+  entry.answered = true;
+  asks.delete(key);
+  if (currentAsk?.key === key) currentAsk = null;
+
+  // Refléter le résultat sur le message Telegram, quel que soit le côté gagnant.
+  if (entry.tgMessageId && ALLOWED_CHAT_ID !== null) {
+    const txt =
+      label === null
+        ? "✋ Question annulée."
+        : `✅ Réponse (${via === "vscode" ? "VSCode" : "Telegram"}) : ${label}`;
+    await bot.api.editMessageText(ALLOWED_CHAT_ID, entry.tgMessageId, txt).catch(() => {});
+  }
+
+  entry.resolve(label);
+  return true;
+}
+
+// Page web servie sur /q : poll /q/current, affiche la question + boutons, POST /q/answer.
+const ASK_PAGE_HTML = `<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MaxPlay — Question</title>
+<style>
+  :root { color-scheme: dark; }
+  body { margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    background:#0d1117; color:#e6edf3; padding:24px; max-width:640px; margin:0 auto; }
+  #header { font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:#7d8590; }
+  #question { font-size:20px; font-weight:600; margin:8px 0 20px; line-height:1.4; }
+  button.opt { display:block; width:100%; text-align:left; margin:8px 0; padding:14px 16px;
+    background:#161b22; color:#e6edf3; border:1px solid #30363d; border-radius:10px;
+    font-size:16px; cursor:pointer; transition:.12s; }
+  button.opt:hover { background:#1f6feb22; border-color:#1f6feb; }
+  button.opt .desc { display:block; font-size:13px; color:#7d8590; margin-top:4px; }
+  #cancel { margin-top:16px; background:transparent; border:none; color:#7d8590;
+    cursor:pointer; font-size:14px; }
+  #idle, #done { color:#7d8590; font-size:16px; text-align:center; padding:40px 0; }
+  .ok { color:#3fb950; }
+</style>
+</head>
+<body>
+  <div id="app"><div id="idle">⏳ En attente d'une question…</div></div>
+<script>
+let lastKey = null, locked = false;
+async function tick() {
+  if (locked) return;
+  try {
+    const r = await fetch('/q/current', { cache: 'no-store' });
+    const d = await r.json();
+    const app = document.getElementById('app');
+    if (!d.pending) { lastKey = null; app.innerHTML = '<div id="idle">⏳ En attente d\\'une question…</div>'; return; }
+    if (d.key === lastKey) return;
+    lastKey = d.key;
+    let h = '<div id="header">' + esc(d.header) + '</div><div id="question">' + esc(d.question) + '</div>';
+    d.options.forEach((o, i) => {
+      h += '<button class="opt" data-i="' + i + '">' + esc(o.label) +
+        (o.description ? '<span class="desc">' + esc(o.description) + '</span>' : '') + '</button>';
+    });
+    h += '<button id="cancel">✋ Annuler</button>';
+    app.innerHTML = h;
+    app.querySelectorAll('button.opt').forEach(b =>
+      b.onclick = () => answer({ key: d.key, oIdx: +b.dataset.i }));
+    document.getElementById('cancel').onclick = () => answer({ key: d.key, cancel: true });
+  } catch (e) { /* bot redémarre, on réessaie */ }
+}
+async function answer(payload) {
+  locked = true;
+  try {
+    const r = await fetch('/q/answer', { method:'POST', headers:{'content-type':'application/json'}, body: JSON.stringify(payload) });
+    const d = await r.json();
+    document.getElementById('app').innerHTML = d.ok
+      ? '<div id="done" class="ok">✅ Réponse envoyée.</div>'
+      : '<div id="done">↪️ Déjà répondu ailleurs.</div>';
+  } catch (e) {
+    document.getElementById('app').innerHTML = '<div id="done">⚠️ Erreur réseau.</div>';
+  }
+  setTimeout(() => { locked = false; lastKey = null; }, 1500);
+}
+function esc(s) { return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+setInterval(tick, 1200); tick();
+</script>
+</body>
+</html>`;
 
 // ─── Buffer pour messages longs découpés par Telegram ─────────────────────────
 
@@ -176,7 +270,7 @@ Bun.serve({
       });
     }
 
-    // ─── AskUserQuestion : afficher la question + 1 bouton par option ────────────
+    // ─── AskUserQuestion : course Telegram ⇄ page web VSCode ────────────────────
     if (url.pathname === "/ask" && req.method === "POST") {
       if (ALLOWED_CHAT_ID === null) {
         // Pas de Telegram configuré → on annule pour laisser l'UI locale gérer.
@@ -193,59 +287,51 @@ Bun.serve({
       const questions = body.questions ?? [];
       if (questions.length === 0) return Response.json({ cancelled: true });
 
-      // Mode "ici" : on notifie sur Telegram (lecture seule) et on laisse le picker
-      // natif VSCode gérer la réponse (le hook recevra { mode: "ici" } → allow).
-      if (presenceMode === "ici") {
-        for (const q of questions) {
-          const optLines = (q.options ?? [])
-            .map((o) => (o.description ? `• *${o.label}* — ${o.description}` : `• *${o.label}*`))
-            .join("\n");
-          await bot.api
-            .sendMessage(
-              ALLOWED_CHAT_ID,
-              `💻 *${q.header ?? "Question"}* _(réponds dans VSCode)_\n\n${q.question}\n\n${optLines}`,
-              { parse_mode: "Markdown" }
-            )
-            .catch(() => {});
-        }
-        console.log(`[ASK] mode=ici → notification seule, picker local`);
-        return Response.json({ mode: "ici" });
-      }
-
       const reqId = randomUUID().slice(0, 8);
-      console.log(`[ASK] mode=dehors → ${reqId}, ${questions.length} question(s)`);
+      console.log(`[ASK] ${reqId} — ${questions.length} question(s)`);
 
       const answers: { header?: string; question: string; answer: string }[] = [];
 
-      // Une question à la fois (single-select). multiSelect → premier tap = réponse.
+      // Une question à la fois (single-select). multiSelect → premier choix = réponse.
       for (let qIdx = 0; qIdx < questions.length; qIdx++) {
         const q = questions[qIdx]!;
         const opts = q.options ?? [];
+        const key = `${reqId}_${qIdx}`;
 
         const keyboard = new InlineKeyboard();
         opts.forEach((opt, oIdx) => {
-          keyboard.text(opt.label, `ask_${reqId}_${qIdx}_${oIdx}`).row();
+          keyboard.text(opt.label, `ask_${key}_${oIdx}`).row();
         });
-        keyboard.text("✋ Annuler", `ask_${reqId}_${qIdx}_cancel`);
+        keyboard.text("✋ Annuler", `ask_${key}_cancel`);
 
         const optLines = opts
           .map((o) => (o.description ? `• *${o.label}* — ${o.description}` : `• *${o.label}*`))
           .join("\n");
 
-        await bot.api.sendMessage(
+        const sent = await bot.api.sendMessage(
           ALLOWED_CHAT_ID,
-          `❓ *${q.header ?? "Question"}*\n\n${q.question}\n\n${optLines}`,
+          `❓ *${q.header ?? "Question"}*\n\n${q.question}\n\n${optLines}\n\n💻 ou réponds dans VSCode : http://localhost:3001/q`,
           { parse_mode: "Markdown", reply_markup: keyboard }
         );
 
-        const key = `${reqId}_${qIdx}`;
+        const entry: AskEntry = {
+          key,
+          header: q.header,
+          question: q.question,
+          options: opts,
+          resolve: () => {},
+          tgMessageId: sent.message_id,
+          answered: false,
+        };
+
         const choice = await new Promise<string | null>((resolve) => {
-          pendingAsks.set(key, { resolve, options: opts });
+          entry.resolve = resolve;
+          asks.set(key, entry);
+          currentAsk = entry;
           setTimeout(() => {
-            if (pendingAsks.has(key)) {
-              pendingAsks.delete(key);
-              console.log(`[ASK] Timeout question ${key} → annulée`);
-              resolve(null);
+            if (asks.has(key)) {
+              console.log(`[ASK] Timeout ${key} → annulée`);
+              void resolveAsk(key, null, "telegram");
             }
           }, 19 * 60 * 1000);
         });
@@ -259,6 +345,39 @@ Bun.serve({
 
       console.log(`[ASK] ${reqId} complète : ${answers.map((a) => a.answer).join(" | ")}`);
       return Response.json({ answers });
+    }
+
+    // ─── Page web VSCode : question courante (poll) ─────────────────────────────
+    if (url.pathname === "/q/current" && req.method === "GET") {
+      if (!currentAsk) return Response.json({ pending: false });
+      return Response.json({
+        pending: true,
+        key: currentAsk.key,
+        header: currentAsk.header ?? "Question",
+        question: currentAsk.question,
+        options: currentAsk.options.map((o) => ({ label: o.label, description: o.description })),
+      });
+    }
+
+    if (url.pathname === "/q/answer" && req.method === "POST") {
+      let b: { key?: string; oIdx?: number; cancel?: boolean } = {};
+      try {
+        b = (await req.json()) as typeof b;
+      } catch {
+        return Response.json({ ok: false }, { status: 400 });
+      }
+      if (!b.key) return Response.json({ ok: false }, { status: 400 });
+      const entry = asks.get(b.key);
+      if (!entry) return Response.json({ ok: false, reason: "expired" });
+      const label = b.cancel ? null : entry.options[b.oIdx ?? -1]?.label ?? null;
+      const ok = await resolveAsk(b.key, label, "vscode");
+      return Response.json({ ok });
+    }
+
+    if (url.pathname === "/q" && req.method === "GET") {
+      return new Response(ASK_PAGE_HTML, {
+        headers: { "content-type": "text/html; charset=utf-8" },
+      });
     }
 
     return new Response("Not found", { status: 404 });
@@ -279,10 +398,7 @@ bot.command("start", async (ctx) => {
 bot.command("status", async (ctx) => {
   if (!isAllowed(ctx)) return;
   const count = getHistory(ctx.chat.id).length / 2;
-  const modeLabel = presenceMode === "ici" ? "💻 ICI" : "📱 DEHORS";
-  await ctx.reply(
-    `✅ Bot actif · Claude Code prêt · Projet : MaxPlay\n📝 ${count} échange(s) en mémoire\n🧭 Mode : ${modeLabel} (/mode)`
-  );
+  await ctx.reply(`✅ Bot actif · Claude Code prêt · Projet : MaxPlay\n📝 ${count} échange(s) en mémoire`);
 });
 
 bot.command("whoami", async (ctx) => {
@@ -300,32 +416,6 @@ bot.command("reset", async (ctx) => {
   if (!isAllowed(ctx)) return;
   histories.delete(ctx.chat.id);
   await ctx.reply("🗑️ Historique effacé. Nouvelle conversation.");
-});
-
-bot.command("ici", async (ctx) => {
-  if (!isAllowed(ctx)) return;
-  presenceMode = "ici";
-  await ctx.reply(
-    "💻 Mode *ICI* — tu réponds aux questions dans VSCode. Telegram en reçoit une copie pour info.",
-    { parse_mode: "Markdown" }
-  );
-});
-
-bot.command("dehors", async (ctx) => {
-  if (!isAllowed(ctx)) return;
-  presenceMode = "dehors";
-  await ctx.reply(
-    "📱 Mode *DEHORS* — les questions arrivent ici avec des boutons, tu réponds depuis Telegram.",
-    { parse_mode: "Markdown" }
-  );
-});
-
-bot.command("mode", async (ctx) => {
-  if (!isAllowed(ctx)) return;
-  const label = presenceMode === "ici" ? "💻 ICI (réponse VSCode)" : "📱 DEHORS (réponse Telegram)";
-  await ctx.reply(`Mode actuel : *${label}*\n\n/ici · /dehors pour basculer.`, {
-    parse_mode: "Markdown",
-  });
 });
 
 // ─── Messages → Claude ────────────────────────────────────────────────────────
@@ -437,31 +527,21 @@ bot.on("callback_query:data", async (ctx) => {
   }
 
   if (data.startsWith("ask_")) {
-    // Format : ask_<reqId>_<qIdx>_<oIdx|cancel>
+    // Format : ask_<reqId>_<qIdx>_<oIdx|cancel> → key = `${reqId}_${qIdx}`
     const rest = data.slice("ask_".length);
     const lastSep = rest.lastIndexOf("_");
-    const key = rest.slice(0, lastSep); // `${reqId}_${qIdx}`
+    const key = rest.slice(0, lastSep);
     const optPart = rest.slice(lastSep + 1);
-    const pending = pendingAsks.get(key);
-    pendingAsks.delete(key);
 
-    if (!pending) {
-      await ctx.editMessageText("⚠️ Cette question a déjà été traitée ou a expiré.").catch(() => {});
+    const entry = asks.get(key);
+    if (!entry) {
+      await ctx.editMessageText("↪️ Déjà répondu ailleurs (ou expiré).").catch(() => {});
       return;
     }
 
-    if (optPart === "cancel") {
-      pending.resolve(null);
-      await ctx.editMessageText("✋ Question annulée.").catch(() => {});
-      return;
-    }
-
-    const oIdx = parseInt(optPart, 10);
-    const label = pending.options[oIdx]?.label ?? null;
-    pending.resolve(label);
-    await ctx
-      .editMessageText(`✅ Réponse : *${label ?? "?"}*`, { parse_mode: "Markdown" })
-      .catch(() => ctx.editMessageText(`✅ Réponse : ${label ?? "?"}`).catch(() => {}));
+    const label = optPart === "cancel" ? null : entry.options[parseInt(optPart, 10)]?.label ?? null;
+    // resolveAsk édite déjà le message Telegram avec le résultat.
+    await resolveAsk(key, label, "telegram");
     return;
   }
 

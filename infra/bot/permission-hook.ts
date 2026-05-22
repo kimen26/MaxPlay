@@ -92,14 +92,7 @@ async function main() {
       const res = await postJson("/ask", { questions }, WAIT_MS);
       const data = (await res.json()) as
         | { answers: { header?: string; question: string; answer: string }[] }
-        | { cancelled: true }
-        | { mode: "ici" };
-
-      if ("mode" in data && data.mode === "ici") {
-        // Mode ICI : on autorise, le picker natif VSCode gère la réponse.
-        process.stdout.write(allowDecision());
-        process.exit(0);
-      }
+        | { cancelled: true };
 
       if ("cancelled" in data && data.cancelled) {
         // L'utilisateur a refusé de répondre → on bloque proprement.

@@ -1,5 +1,7 @@
 # Audit MaxPlay — Avril 2026
 
+> ⚠️ **SNAPSHOT HISTORIQUE figé (avril 2026)** — couvre MJ-01→17 uniquement. Le projet est depuis passé à 21 MJ + l'encyclopédie dinosaure (60 dinos). Pour l'**état actuel**, voir [`game/memory/state.md`](../../memory/state.md) et [`game/pmo/`](../../pmo/). Conservé comme photographie d'époque, pas comme doc vivant.
+
 Revue complète des mini-jeux (MJ-01 → MJ-17), plan de factorisation, benchmark externe et roadmap technique.
 
 ## 📑 Les 4 livrables
@@ -16,7 +18,7 @@ Revue complète des mini-jeux (MJ-01 → MJ-17), plan de factorisation, benchmar
 - Source : [`game/web/`](../../web/) — HTML vanilla des 17 mini-jeux
 - Utilitaires partagés : [`game/web/js/`](../../web/js/) (bus-svg, sounds, feedback, data, qcm-retry, tracker…)
 - Backlog vivant : [`tasks/BACKLOG.md`](../../tasks/BACKLOG.md)
-- Profil cible : [`docs/MAX_PROFILE.md`](../MAX_PROFILE.md)
+- Profil cible : [`memory/MAX_PROFILE.md`](../../../memory/MAX_PROFILE.md)
 - Specs historiques : [`game/docs/jeux/GAMES_SPECS.md`](../jeux/GAMES_SPECS.md)
 
 ## 🧭 Ordre de lecture conseillé

@@ -89,6 +89,18 @@ const DINO_GROK = {
       "type": "grok"
     }
   ],
+  "anchiceratops": [
+    {
+      "url": "img/dinos/grok/anchiceratops_lot2_1_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/anchiceratops_lot2_1_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    }
+  ],
   "ankylosaurus": [
     {
       "url": "img/dinos/grok/ankylosaurus_inbox2_1_taille.jpg",
@@ -113,6 +125,11 @@ const DINO_GROK = {
     {
       "url": "img/dinos/grok/ankylosaurus_lot1_2_environnement.jpg",
       "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/ankylosaurus_lot2_1_sa_vie.jpg",
+      "label": "Sa vie",
       "type": "grok"
     },
     {
@@ -174,6 +191,23 @@ const DINO_GROK = {
     },
     {
       "url": "img/dinos/grok/apatosaurus_lot2_3_chasse.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    }
+  ],
+  "baryonyx": [
+    {
+      "url": "img/dinos/grok/baryonyx_lot2_1_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/baryonyx_lot2_1_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/baryonyx_lot2_1_sa_vie.jpg",
       "label": "Sa vie",
       "type": "grok"
     }
@@ -284,6 +318,18 @@ const DINO_GROK = {
       "type": "grok"
     }
   ],
+  "centrosaurus": [
+    {
+      "url": "img/dinos/grok/centrosaurus_lot2_1_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/centrosaurus_lot2_1_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    }
+  ],
   "ceratosaurus": [
     {
       "url": "img/dinos/grok/ceratosaurus_inbox2_2_environnement.jpg",
@@ -297,6 +343,42 @@ const DINO_GROK = {
     },
     {
       "url": "img/dinos/grok/ceratosaurus_inbox2_6_sa_vie.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    }
+  ],
+  "chasmosaurus": [
+    {
+      "url": "img/dinos/grok/chasmosaurus_lot2_1_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/chasmosaurus_lot2_1_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    }
+  ],
+  "compsognathus": [
+    {
+      "url": "img/dinos/grok/compsognathus_lot2_1_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/compsognathus_lot2_1_sa_vie.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    }
+  ],
+  "diabloceratops": [
+    {
+      "url": "img/dinos/grok/diabloceratops_lot2_1_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/diabloceratops_lot2_1_sa_vie.jpg",
       "label": "Sa vie",
       "type": "grok"
     }
@@ -418,10 +500,63 @@ const DINO_GROK = {
       "type": "grok"
     }
   ],
+  "kosmoceratops": [
+    {
+      "url": "img/dinos/grok/kosmoceratops_lot2_1_sa_vie.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    }
+  ],
   "pachycephalosaurus": [
     {
       "url": "img/dinos/grok/pachycephalosaurus_inbox2_1_taille.jpg",
       "label": "Sa taille",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/pachycephalosaurus_lot2_1_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/pachycephalosaurus_lot2_1_sa_vie.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    }
+  ],
+  "pachyrhinosaurus": [
+    {
+      "url": "img/dinos/grok/pachyrhinosaurus_lot2_1_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    }
+  ],
+  "parasaurolophus": [
+    {
+      "url": "img/dinos/grok/parasaurolophus_lot2_1_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/parasaurolophus_lot2_1_sa_vie.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    }
+  ],
+  "pentaceratops": [
+    {
+      "url": "img/dinos/grok/pentaceratops_lot2_1_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/pentaceratops_lot2_1_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/pentaceratops_lot2_1_sa_vie.jpg",
+      "label": "Sa vie",
       "type": "grok"
     }
   ],
@@ -448,6 +583,25 @@ const DINO_GROK = {
     },
     {
       "url": "img/dinos/grok/plateosaurus_lot1_3_chasse.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    }
+  ],
+  "protoceratops": [
+    {
+      "url": "img/dinos/grok/protoceratops_lot2_1_sa_vie.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    }
+  ],
+  "psittacosaurus": [
+    {
+      "url": "img/dinos/grok/psittacosaurus_lot2_1_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/psittacosaurus_lot2_1_sa_vie.jpg",
       "label": "Sa vie",
       "type": "grok"
     }
@@ -486,6 +640,11 @@ const DINO_GROK = {
       "type": "grok"
     },
     {
+      "url": "img/dinos/grok/stegosaurus_lot2_1_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
+    {
       "url": "img/dinos/grok/stegosaurus_inbox2_2_environnement.jpg",
       "label": "Son environnement",
       "type": "grok"
@@ -497,6 +656,11 @@ const DINO_GROK = {
     },
     {
       "url": "img/dinos/grok/stegosaurus_inbox2_5_sa_vie.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/stegosaurus_lot2_1_sa_vie.jpg",
       "label": "Sa vie",
       "type": "grok"
     },
@@ -534,6 +698,23 @@ const DINO_GROK = {
     },
     {
       "url": "img/dinos/grok/styracosaurus_inbox2_5_sa_vie.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/styracosaurus_lot2_1_sa_vie.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    }
+  ],
+  "suchomimus": [
+    {
+      "url": "img/dinos/grok/suchomimus_lot2_1_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/suchomimus_lot2_1_sa_vie.jpg",
       "label": "Sa vie",
       "type": "grok"
     }
@@ -594,12 +775,42 @@ const DINO_GROK = {
       "type": "grok"
     },
     {
+      "url": "img/dinos/grok/triceratops_lot2_1_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/triceratops_lot2_2_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
+    {
       "url": "img/dinos/grok/triceratops_lot1_2_environnement.jpg",
       "label": "Son environnement",
       "type": "grok"
     },
     {
+      "url": "img/dinos/grok/triceratops_lot2_1_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/triceratops_lot2_2_environnement.jpg",
+      "label": "Son environnement",
+      "type": "grok"
+    },
+    {
       "url": "img/dinos/grok/triceratops_inbox2_2_sa_vie.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/triceratops_lot2_1_sa_vie.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/triceratops_lot2_2_sa_vie.jpg",
       "label": "Sa vie",
       "type": "grok"
     },
@@ -632,6 +843,18 @@ const DINO_GROK = {
     },
     {
       "url": "img/dinos/grok/tyrannosaurus_lot1_3_chasse.jpg",
+      "label": "Sa vie",
+      "type": "grok"
+    }
+  ],
+  "utahceratops": [
+    {
+      "url": "img/dinos/grok/utahceratops_lot2_1_taille.jpg",
+      "label": "Sa taille",
+      "type": "grok"
+    },
+    {
+      "url": "img/dinos/grok/utahceratops_lot2_1_sa_vie.jpg",
       "label": "Sa vie",
       "type": "grok"
     }

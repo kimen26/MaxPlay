@@ -301,8 +301,8 @@
         "matcher": "*",
         "hooks": [
           {
-            "type": "command",
-            "command": "bun \"c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\infra\\bot\\permission-hook.ts\"",
+            "type": "http",
+            "url": "http://localhost:3001/permission",
             "timeout": 1210
           }
         ]

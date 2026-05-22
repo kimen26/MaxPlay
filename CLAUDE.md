@@ -49,6 +49,7 @@ Origines brésiliennes. Détails : [`memory/MAX_PROFILE.md`](memory/MAX_PROFILE.
 ## Principes transverses
 
 - **Simplicity First** · **No Laziness** · **Minimal Impact** · Plan mode pour 3+ étapes
+- **JAMAIS de `AskUserQuestion`** (formulaire dynamique), ni en JEU ni en NARRATION — poser les questions **en texte dans la réponse**, façon chatbot (« Tu préfères A ou B ? »). Le picker natif ne se relaie pas sur le bot Telegram.
 - Toujours lire l'INDEX du pôle avant de répondre sur un sujet de fond
 - Ne jamais répondre de mémoire sur un chiffre/casting/voice_id — invoquer le PMO en mode RECHERCHE
 - Après correction utilisateur → leçon dans `game/pmo/backlog.md` (JEU) ou `narration/pmo/decisions.md` (NARRATION)

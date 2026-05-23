@@ -43,7 +43,8 @@ html, body {
 
 /* ══════════════ MENU CATÉGORIES ══════════════ */
 #menu-scroll {
-  flex:1; overflow-y:auto; overflow-x:hidden; padding:14px 12px;
+  flex:1; min-height:0; overflow-y:auto; overflow-x:hidden; padding:14px 12px;
+  -webkit-overflow-scrolling:touch;
   display:grid; grid-template-columns:1fr 1fr; gap:12px;
 }
 #menu-scroll.mode-periode {
@@ -63,9 +64,13 @@ html, body {
 
 /* ══════════════ GRILLE DINOS ══════════════ */
 #grid-scroll {
-  flex:1; overflow-y:auto; overflow-x:hidden; padding:12px;
+  flex:1; min-height:0; overflow-y:auto; overflow-x:hidden; padding:12px;
+  -webkit-overflow-scrolling:touch;
   display:grid; grid-template-columns:repeat(auto-fill, minmax(130px, 1fr)); gap:10px;
 }
+#grid-scroll::-webkit-scrollbar { width:6px; }
+#grid-scroll::-webkit-scrollbar-track { background:rgba(255,255,255,0.05); border-radius:3px; }
+#grid-scroll::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.3); border-radius:3px; }
 .dino-card {
   background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
   border-radius:14px; padding:12px 8px 10px;
@@ -112,7 +117,8 @@ html, body {
 
 /* ══════════════ FICHE DINO ══════════════ */
 #fiche-scroll {
-  flex:1; overflow-y:auto; overflow-x:hidden;
+  flex:1; min-height:0; overflow-y:auto; overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
   padding:0 0 30px 0;
 }
 

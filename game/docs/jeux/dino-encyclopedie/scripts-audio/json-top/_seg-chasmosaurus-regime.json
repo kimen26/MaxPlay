@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Sa grande collerette, ce n'était pas pour se cacher : c'était pour se faire BEAU et faire peur. Ce gentil mangeur de plantes vivait en troupeau, et quand un chasseur approchait, il dressait sa collerette géante pour paraître ENCORE plus grand !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ça marchait ? Le chasseur avait peur ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Souvent oui ! Un dino qui devient soudain deux fois plus grand, ça fait réfléchir n'importe quel chasseur !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

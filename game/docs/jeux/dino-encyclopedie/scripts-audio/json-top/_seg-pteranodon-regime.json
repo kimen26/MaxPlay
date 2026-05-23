@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Il vivait au bord de la mer, en grandes colonies sur les falaises. Et pour manger, il faisait quelque chose de spectaculaire : il PLONGEAIT du ciel vers l'eau pour attraper des poissons avec son bec !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il plongeait dans l'eau comme moi à la piscine ?!"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Presque ! Il piquait vers la mer, hop, attrapait un poisson avec son grand bec, et hop, repartait dans le ciel ! Un vrai pêcheur volant !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Voici un autre cousin de Tritri ! Son nom parle de sa collerette. « Kentron », en grec ancien, ça veut dire POINTE, une petite pique. Et « saurus », LÉZARD. Alors « Centrosaure »..."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ...ça veut dire « le lézard à pointes » ?!"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] EXACTEMENT ! Toute sa collerette était bordée de petites pointes ! Et il avait une seule grande corne sur le nez, recourbée comme un croissant !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

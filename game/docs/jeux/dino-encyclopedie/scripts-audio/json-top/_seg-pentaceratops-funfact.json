@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Sa tête, avec la grande collerette, mesurait plus de DEUX mètres ! C'est une des plus grandes têtes de tous les animaux qui ont marché sur la Terre !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps][excited] Deux mètres ?! Mais c'est plus grand que Papa !"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Plus grand que Papa debout, rien que sa tête ! Imagine : une tête plus haute qu'un grand monsieur ! Le Pentacératops, le champion de la grosse tête !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

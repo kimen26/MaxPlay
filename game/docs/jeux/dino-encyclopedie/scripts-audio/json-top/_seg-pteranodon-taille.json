@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Il avait des ailes de 7 mètres d'un bout à l'autre — ses ailes ouvertes étaient larges comme une voiture et demie ! Debout, il faisait 1 mètre 80 de haut — aussi grand que Papa debout ! Et il pesait 25 kilos — aussi lourd qu'un gros chien !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Des ailes larges comme une voiture et demie ! Mais léger comme un chien !"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Eh oui ! Léger comme une plume, pour bien voler ! Des os tout creux, comme les oiseaux d'aujourd'hui."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

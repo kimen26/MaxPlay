@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ce cousin de Tritri est très spécial ! Écoute son nom. « Pachy », en grec, ça veut dire ÉPAIS. « Rhino », ça veut dire NEZ. Et « saurus », ça veut dire LÉZARD. Alors « Pachyrhinosaure »..."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ...ça veut dire « lézard au nez tout épais » ?!"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] EXACTEMENT ! Moi, je l'appelle le dino-casque, tu vas comprendre pourquoi ! Parce qu'il lui MANQUAIT quelque chose que tous ses cousins avaient..."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

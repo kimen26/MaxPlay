@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Le grand chasseur Gorgosaure le poursuivait. Alors pour se protéger, le Centrosaure faisait quelque chose d'incroyable : il se rassemblait avec plein, plein, PLEIN d'autres Centrosaures !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Plein d'amis pour se protéger ? Genre dix ? Vingt ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Encore PLUS ! En se serrant tous ensemble, le chasseur n'osait jamais approcher un troupeau aussi grand. Et tu sais combien ils étaient... ?"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Il habitait dans les marais — tu sais, comme une grande piscine pleine de boue ! Là, il broutait des plantes toute la journée, en troupeau. Et un grand chasseur féroce rôdait pas loin."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Avec toutes ses cornes, il pouvait se défendre ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Oh oui ! Avec autant de cornes sur la tête, le chasseur réfléchissait à deux fois avant d'approcher !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

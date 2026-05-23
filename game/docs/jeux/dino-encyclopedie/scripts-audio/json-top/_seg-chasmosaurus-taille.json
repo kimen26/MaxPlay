@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Il mesurait 4 mètres et demi de long — aussi long que 3 Papas couchés bout à bout ! Debout, il faisait 1 mètre et demi de haut — plus grand que toi, il fallait lever la tête ! Et il pesait 2 mille kilos — aussi lourd que 2 rhinocéros !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] 2 rhinocéros ! Et une collerette pleine de trous !"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Une immense collerette, oui ! La plus surprenante de toute la famille à cornes !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

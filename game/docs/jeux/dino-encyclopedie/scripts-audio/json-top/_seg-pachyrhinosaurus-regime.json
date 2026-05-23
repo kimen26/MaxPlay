@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Voilà ce qui est rigolo : tous ses cousins ont une corne pointue sur le nez... lui, NON ! Il broutait des plantes en grand troupeau, pendant que le grand chasseur Albertosaure rôdait autour."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Pas de corne ?! Mais alors il a quoi sur le nez ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Un gros casque d'os tout plat ! Une grosse bosse solide à la place de la corne. Le seul de la famille comme ça !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

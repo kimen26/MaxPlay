@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Le truc fou, c'est ce gros casque sur son nez ! Les savants pensent qu'il s'en servait pour se cogner la tête contre ses copains !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps][curious] Se cogner la tête ?! Mais ça fait pas mal ?!"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Pas avec un casque pareil ! Comme les vaches qui se poussent avec le front, BOUM contre BOUM, tout doucement, pour jouer et savoir qui est le plus fort. Le dino-casque, mon ami !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

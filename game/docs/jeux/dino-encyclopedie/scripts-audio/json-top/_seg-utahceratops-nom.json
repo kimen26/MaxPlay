@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ce cousin de Tritri a un nom facile ! « Utah », c'est le nom d'un endroit en Amérique, là où on l'a trouvé. Et « cératops », « face à cornes ». Alors « Utahcératops »..."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ...ça veut dire « la face à cornes de l'Utah » ?!"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] EXACTEMENT ! Comme si on t'appelait « l'enfant de Villejuif » ! Et il avait des cornes vraiment spéciales, pas comme celles de Tritri..."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

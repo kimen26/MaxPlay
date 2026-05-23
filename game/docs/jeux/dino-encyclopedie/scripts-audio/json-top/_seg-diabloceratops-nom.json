@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Celui-là, son nom va te faire rire ! « Diablo », en espagnol, ça veut dire... DIABLE ! Et « cératops », tu le sais maintenant, ça veut dire « face à cornes ». Alors « Diablocératops »..."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ...ça veut dire « la face cornue du diable » ?!"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] EXACTEMENT ! À cause de ses deux grandes cornes dressées sur la tête, on dirait un petit diable ! Mais attends que je te dise un secret tout à l'heure..."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

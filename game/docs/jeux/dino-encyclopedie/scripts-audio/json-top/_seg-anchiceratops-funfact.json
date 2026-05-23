@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Voilà pourquoi je l'appelle le dino-à-billes ! Tout autour de sa collerette, il avait de gros boutons d'os tout ronds, comme des billes collées en rang !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Des billes sur sa tête ?! Pour jouer ?!"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Pas pour jouer, pour faire joli et impressionner ! Et sa collerette avait une drôle de forme : presque carrée, comme une petite porte derrière sa tête ! Le seul dino avec une porte sur le dos de la tête !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

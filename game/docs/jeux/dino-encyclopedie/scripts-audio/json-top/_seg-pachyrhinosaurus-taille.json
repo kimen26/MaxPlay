@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Il mesurait 7 mètres de long — aussi long que 4 Papas couchés bout à bout ! Debout, il faisait 2 mètres de haut — aussi grand que Papa debout ! Et il pesait 4 mille kilos — aussi lourd qu'un hippopotame !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] 4 Papas de long ! Un des plus grands de la famille !"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Un grand costaud, oui ! Avec une tête énorme et un nez vraiment particulier..."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

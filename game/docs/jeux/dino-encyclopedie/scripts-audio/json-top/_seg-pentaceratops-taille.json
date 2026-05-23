@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Il mesurait 6 mètres de long — aussi long que 3 Papas couchés bout à bout ! Debout, il faisait 2 mètres de haut — aussi grand que Papa debout ! Et il pesait 3 mille kilos — aussi lourd que 3 rhinocéros !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Trois rhinocéros ! Et cinq cornes ! Quel costaud !"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Une tête comme aucun autre dinosaure... tu vas voir !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

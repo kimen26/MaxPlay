@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Il mesurait 4 mètres et demi de long — aussi long que 3 Papas couchés bout à bout ! Debout, il faisait 1 mètre et demi de haut — plus grand que toi, il fallait lever la tête ! Et il pesait 1 mille kilos — aussi lourd qu'un rhinocéros !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Aussi lourd qu'un rhinocéros ! Et tout décoré en plus !"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Oui ! Un gros bébé costaud, avec la plus belle tête de tous les dinos à cornes !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

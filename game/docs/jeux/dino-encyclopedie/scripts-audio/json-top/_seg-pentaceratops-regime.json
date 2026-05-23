@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Pour se protéger des grands chasseurs à l'affût, le Pentacératops avait un bouclier : sa collerette ÉNORME, immense, qui couvrait tout son cou. Et le reste du temps, ce gentil herbivore broutait des plantes en troupeau."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Sa collerette était si grande que ça ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Immense ! Elle lui couvrait tout le cou comme un grand bouclier. Mais le plus fou, c'est toute sa tête..."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

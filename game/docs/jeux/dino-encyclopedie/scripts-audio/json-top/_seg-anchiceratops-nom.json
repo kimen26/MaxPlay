@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Voici un cousin de Tritri avec une drôle de tête ! Son nom « Anchi », en grec ancien, veut dire VOISIN, tout proche. Et « cératops », « face à cornes ». Alors « Anchicératops »..."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ...ça veut dire « la face à cornes voisine » ?!"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] EXACTEMENT ! Les savants l'ont appelé comme ça parce qu'il ressemble beaucoup à ses cousins. Mais moi je l'appelle le dino-à-billes — tu vas comprendre tout à l'heure !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

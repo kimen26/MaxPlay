@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Le plus chouette, c'est qu'il n'était pas tout seul : il partageait son grand marais plein de boue et d'eau avec un autre dino à cornes, le Kosmocératops, celui qui a quinze cornes !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ils habitaient ensemble ? Ils étaient copains ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Voisins, en tout cas ! Deux géants à cornes dans le même marais, à la même époque. Chacun son coin, mais le même grand jardin de boue !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

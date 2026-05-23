@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] C'était un brouteur de plantes tranquille, qui vivait en troupeau. Un grand chasseur rôdait par là, mais l'Einiosaure savait se défendre avec sa drôle de corne pointée en avant."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Sa corne servait à se battre ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] À se défendre, surtout ! Une corne pointée vers l'avant, ça tient les chasseurs à distance !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

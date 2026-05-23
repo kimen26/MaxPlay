@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Il vivait tout près des rivières, où il y avait plein de plantes bien vertes à brouter. En troupeau, bien sûr ! Et le grand chasseur Albertosaure rôdait dans le coin."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Près des rivières ? Il aimait l'eau ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Il aimait surtout les bonnes plantes qui poussent près de l'eau ! Un vrai gourmand de verdure fraîche."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

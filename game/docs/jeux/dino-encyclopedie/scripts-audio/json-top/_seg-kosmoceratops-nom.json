@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Voici un cousin de ton ami Tritri : le Kosmocératops ! Écoute son nom. « Kosmos », en grec ancien, ça veut dire ORNEMENT, une jolie décoration. « Cérat », ça veut dire CORNE. Et « Ops », ça veut dire FACE. Alors « Kosmocératops »..."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ...ça veut dire « face cornue toute décorée » ?!"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] EXACTEMENT ! Tu as trouvé tout seul ! C'était le dino le plus DÉCORÉ de tous. Et tu vas voir, sa tête cache un record incroyable... Il vivait en Amérique du Nord, il y a 76 millions d'années !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

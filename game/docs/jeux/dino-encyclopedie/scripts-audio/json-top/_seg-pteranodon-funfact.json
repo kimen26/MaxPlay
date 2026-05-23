@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Et voilà le secret important : le Ptéranodon n'était PAS un dinosaure ! C'était un reptile volant, un cousin des dinos, mais pas un vrai dino !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps][curious] Pas un dino ?! Mais il vivait avec eux ?!"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Oui, au même moment, dans le même monde ! Et sa grande crête pointue derrière la tête, c'était comme le gouvernail d'un bateau : ça l'aidait à diriger son vol dans le vent. Le roi des airs, mon ami, mais pas un dinosaure !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

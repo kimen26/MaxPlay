@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Il mesurait 5 mètres et demi de long — aussi long que 3 Papas couchés bout à bout ! Debout, il faisait 1 mètre 80 de haut — aussi grand que Papa debout ! Et il pesait 3 mille kilos — aussi lourd que 3 rhinocéros !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Aussi grand que Papa ! Avec une corne en croissant !"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Une belle corne recourbée sur le nez, oui ! Mais ce n'est pas ça le plus fou chez lui..."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

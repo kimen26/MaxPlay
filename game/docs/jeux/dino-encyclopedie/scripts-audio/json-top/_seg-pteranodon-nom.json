@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Attention, celui-là est très spécial : il VOLAIT dans le ciel ! Écoute son nom. « Ptéro », en grec ancien, ça veut dire AILE. Et « anodon », ça veut dire SANS DENTS. Alors « Ptéranodon »..."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ...ça veut dire « l'aile sans dents » ?!"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] EXACTEMENT ! De grandes ailes, et un bec tout lisse SANS la moindre dent ! Mais attention, je vais te confier un secret important sur lui..."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

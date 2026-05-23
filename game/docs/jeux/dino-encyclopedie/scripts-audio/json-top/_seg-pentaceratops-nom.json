@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Encore un cousin de Tritri, et son nom cache un chiffre ! « Penta », en grec ancien, ça veut dire CINQ. Et « cératops », « face à cornes ». Alors « Pentacératops »..."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ...ça veut dire « la face à CINQ cornes » ?!"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] EXACTEMENT ! Cinq ! Trois vraies cornes, plus deux petites pointes sur les joues. Mais ce n'est pas ses cornes le plus fou chez lui... c'est sa TÊTE !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

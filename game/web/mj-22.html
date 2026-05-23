@@ -18,15 +18,15 @@
     #drapeau-cible { font-size:4.5rem; line-height:1; }
     #consigne { font-size:1.1rem; font-weight:700; }
 
-    .map-zone { flex:1; min-height:0; display:flex; padding:8px; }
+    .map-zone { flex:1; min-height:0; display:flex; padding:8px; background:#1e3a5f; }
     #mapSvg { width:100%; height:100%; }
 
-    .country { cursor:pointer; stroke:#0a1520; stroke-width:1.5; transition:all 150ms; }
+    .country { cursor:pointer; fill:#4a7fd4; stroke:#0a1520; stroke-width:0.5; transition:all 150ms; }
     .country:hover { filter:brightness(1.15); }
-    .country.highlight { fill:#ff9500 !important; stroke:#ffb700; stroke-width:2; filter:drop-shadow(0 0 8px rgba(255,149,0,0.9)); animation:pulse 0.7s ease-in-out infinite; }
+    .country.highlight { fill:#ff9500 !important; stroke:#ffb700; stroke-width:1; filter:drop-shadow(0 0 8px rgba(255,149,0,0.9)); animation:pulse 0.7s ease-in-out infinite; }
     @keyframes pulse { 0%,100%{filter:drop-shadow(0 0 8px rgba(255,149,0,0.9))} 50%{filter:drop-shadow(0 0 14px rgba(255,183,0,1))} }
-    .country.found { fill:#22c55e !important; stroke:#15803d; stroke-width:1.5; pointer-events:none; }
-    .country.inactive { fill:#243040; stroke:#18222c; stroke-width:0.8; pointer-events:none; opacity:0.55; }
+    .country.found { fill:#22c55e !important; stroke:#15803d; stroke-width:0.5; pointer-events:none; }
+    .country.inactive { fill:#243040; stroke:#18222c; stroke-width:0.4; pointer-events:none; opacity:0.55; }
 
     .ctrl-zone { padding:6px 12px; flex-shrink:0; display:flex; justify-content:center; min-height:52px; align-items:center; }
     #confirmBtn { display:none; padding:10px 36px; font-size:1rem; font-weight:900; background:#22c55e; color:#fff; border:none; border-radius:14px; cursor:pointer; font-family:inherit; box-shadow:0 4px 0 #15803d; }
@@ -60,7 +60,7 @@
     <span id="consigne">Chargement…</span>
   </div>
   <div class="map-zone">
-    <svg id="mapSvg" viewBox="0 0 1000 700" preserveAspectRatio="xMidYMid meet"></svg>
+    <svg id="mapSvg" viewBox="0 0 680 520" preserveAspectRatio="xMidYMid meet"></svg>
   </div>
   <div class="ctrl-zone">
     <button id="confirmBtn" onclick="confirmer()">✓ C'est ça !</button>
@@ -72,98 +72,93 @@
 </div>
 
 <script>
-// Carte Europe avec vraies formes géographiques simplifiées
+// Carte Europe réelle depuis Wikimedia Commons
+// IDs ISO mappés aux données des pays
 const PAYS = {
   // Niveaux facile (5)
-  250:  { name:'France',          flag:'🇫🇷', art:'la ',  polygon:'150,250 220,230 240,260 245,320 150,350 100,310' },
-  276:  { name:'Allemagne',       flag:'🇩🇪', art:"l'",   polygon:'260,220 310,210 315,280 285,290' },
-  724:  { name:'Espagne',         flag:'🇪🇸', art:"l'",   polygon:'80,280 150,260 145,370 100,380' },
-  380:  { name:'Italie',          flag:'🇮🇹', art:"l'",   polygon:'250,300 270,295 280,390 260,400' },
-  826:  { name:'Royaume-Uni',     flag:'🇬🇧', art:'le ',  polygon:'60,200 90,190 95,290 65,295' },
+  'fr':  { name:'France',          flag:'🇫🇷', art:'la ' },
+  'de':  { name:'Allemagne',       flag:'🇩🇪', art:"l'" },
+  'es':  { name:'Espagne',         flag:'🇪🇸', art:"l'" },
+  'it':  { name:'Italie',          flag:'🇮🇹', art:"l'" },
+  'gb':  { name:'Royaume-Uni',     flag:'🇬🇧', art:'le ' },
 
   // Niveaux moyen (+ 10)
-  620:  { name:'Portugal',        flag:'🇵🇹', art:'le ',  polygon:'70,310 100,300 105,360 75,370' },
-  56:   { name:'Belgique',        flag:'🇧🇪', art:'la ',  polygon:'160,240 180,235 182,260 162,265' },
-  528:  { name:'Pays-Bas',        flag:'🇳🇱', art:'les ', polygon:'170,220 190,215 192,245 172,250' },
-  756:  { name:'Suisse',          flag:'🇨🇭', art:'la ',  polygon:'210,270 230,265 232,290 212,295' },
-  40:   { name:'Autriche',        flag:'🇦🇹', art:"l'",   polygon:'280,260 310,255 315,285 295,290' },
-  616:  { name:'Pologne',         flag:'🇵🇱', art:'la ',  polygon:'320,190 370,185 375,260 330,270' },
-  752:  { name:'Suède',           flag:'🇸🇪', art:'la ',  polygon:'340,80 370,75 375,220 345,225' },
-  578:  { name:'Norvège',         flag:'🇳🇴', art:'la ',  polygon:'280,50 310,45 315,190 300,200' },
-  300:  { name:'Grèce',           flag:'🇬🇷', art:'la ',  polygon:'400,350 425,345 430,420 405,425' },
-  642:  { name:'Roumanie',        flag:'🇷🇴', art:'la ',  polygon:'410,270 450,260 455,330 420,340' },
+  'pt':  { name:'Portugal',        flag:'🇵🇹', art:'le ' },
+  'be':  { name:'Belgique',        flag:'🇧🇪', art:'la ' },
+  'nl':  { name:'Pays-Bas',        flag:'🇳🇱', art:'les ' },
+  'ch':  { name:'Suisse',          flag:'🇨🇭', art:'la ' },
+  'at':  { name:'Autriche',        flag:'🇦🇹', art:"l'" },
+  'pl':  { name:'Pologne',         flag:'🇵🇱', art:'la ' },
+  'se':  { name:'Suède',           flag:'🇸🇪', art:'la ' },
+  'no':  { name:'Norvège',         flag:'🇳🇴', art:'la ' },
+  'gr':  { name:'Grèce',           flag:'🇬🇷', art:'la ' },
+  'ro':  { name:'Roumanie',        flag:'🇷🇴', art:'la ' },
 
   // Niveaux difficile (+ extras)
-  208:  { name:'Danemark',        flag:'🇩🇰', art:'le ',  polygon:'280,200 300,195 302,230 282,235' },
-  372:  { name:'Irlande',         flag:'🇮🇪', art:"l'",   polygon:'40,240 70,230 75,320 45,330' },
-  191:  { name:'Croatie',         flag:'🇭🇷', art:'la ',  polygon:'320,310 340,305 345,330 325,335' },
-  688:  { name:'Serbie',          flag:'🇷🇸', art:'la ',  polygon:'350,310 375,305 380,330 355,335' },
-  703:  { name:'Slovaquie',       flag:'🇸🇰', art:'la ',  polygon:'340,260 365,255 370,280 345,285' },
-  203:  { name:'Rép. Tchèque',    flag:'🇨🇿', art:'la ',  polygon:'310,240 335,235 340,265 315,270' },
-  348:  { name:'Hongrie',         flag:'🇭🇺', art:'la ',  polygon:'340,280 365,275 370,310 345,315' },
-  100:  { name:'Bulgarie',        flag:'🇧🇬', art:'la ',  polygon:'400,320 430,315 435,350 405,355' },
-  804:  { name:'Ukraine',         flag:'🇺🇦', art:"l'",   polygon:'420,240 480,230 485,310 430,320' },
-  246:  { name:'Finlande',        flag:'🇫🇮', art:'la ',  polygon:'420,80 460,70 465,200 425,210' },
-  344:  { name:'Islande',         flag:'🇮🇸', art:"l'",   polygon:'20,120 50,110 55,170 25,180' },
-  196:  { name:'Chypre',          flag:'🇨🇾', art:'la ',  polygon:'460,420 480,415 485,440 465,445' },
-  440:  { name:'Lituanie',        flag:'🇱🇹', art:'la ',  polygon:'380,180 410,175 415,210 385,215' },
-  428:  { name:'Lettonie',        flag:'🇱🇻', art:'la ',  polygon:'390,140 420,135 425,170 395,175' },
-  233:  { name:'Estonie',         flag:'🇪🇪', art:"l'",   polygon:'400,100 430,95 435,130 405,135' },
-  702:  { name:'Slovénie',        flag:'🇸🇮', art:'la ',  polygon:'290,300 315,295 320,320 295,325' },
-  070:  { name:'Bosnie-Herzégovine', flag:'🇧🇦', art:'la ', polygon:'310,320 335,315 340,345 315,350' },
-  008:  { name:'Albanie',         flag:'🇦🇱', art:"l'",   polygon:'350,340 370,335 375,360 355,365' },
-  807:  { name:'Macédoine',       flag:'🇲🇰', art:'la ',  polygon:'360,350 380,345 385,370 365,375' },
-  498:  { name:'Monténégro',      flag:'🇲🇪', art:'le ',  polygon:'320,340 335,335 340,355 325,360' },
+  'dk':  { name:'Danemark',        flag:'🇩🇰', art:'le ' },
+  'ie':  { name:'Irlande',         flag:'🇮🇪', art:"l'" },
+  'hr':  { name:'Croatie',         flag:'🇭🇷', art:'la ' },
+  'rs':  { name:'Serbie',          flag:'🇷🇸', art:'la ' },
+  'sk':  { name:'Slovaquie',       flag:'🇸🇰', art:'la ' },
+  'cz':  { name:'Rép. Tchèque',    flag:'🇨🇿', art:'la ' },
+  'hu':  { name:'Hongrie',         flag:'🇭🇺', art:'la ' },
+  'bg':  { name:'Bulgarie',        flag:'🇧🇬', art:'la ' },
+  'ua':  { name:'Ukraine',         flag:'🇺🇦', art:"l'" },
+  'fi':  { name:'Finlande',        flag:'🇫🇮', art:'la ' },
+  'is':  { name:'Islande',         flag:'🇮🇸', art:"l'" },
+  'cy':  { name:'Chypre',          flag:'🇨🇾', art:'la ' },
+  'lt':  { name:'Lituanie',        flag:'🇱🇹', art:'la ' },
+  'lv':  { name:'Lettonie',        flag:'🇱🇻', art:'la ' },
+  'ee':  { name:'Estonie',         flag:'🇪🇪', art:"l'" },
+  'si':  { name:'Slovénie',        flag:'🇸🇮', art:'la ' },
+  'ba':  { name:'Bosnie-Herzégovine', flag:'🇧🇦', art:'la ' },
+  'al':  { name:'Albanie',         flag:'🇦🇱', art:"l'" },
+  'mk':  { name:'Macédoine',       flag:'🇲🇰', art:'la ' },
+  'me':  { name:'Monténégro',      flag:'🇲🇪', art:'le ' },
 };
 
 const LEVELS = {
-  facile:    [250, 724, 380, 276, 826],
-  moyen:     [250, 724, 380, 276, 826, 620, 56, 528, 756, 40, 616, 752, 578, 300, 642],
-  difficile: Object.keys(PAYS).map(Number)
+  facile:    ['fr', 'es', 'it', 'de', 'gb'],
+  moyen:     ['fr', 'es', 'it', 'de', 'gb', 'pt', 'be', 'nl', 'ch', 'at', 'pl', 'se', 'no', 'gr', 'ro'],
+  difficile: Object.keys(PAYS)
 };
 
 let currentLevel = 'facile';
 let queue = [], qIdx = 0, selected = null;
 const foundSet = new Set();
+let svgLoaded = false;
 
 function renderMap() {
   const svg = document.getElementById('mapSvg');
-  svg.innerHTML = '';
-
-  // Océan
-  const ocean = document.createElementNS('http://www.w3.org/2000/svg','rect');
-  ocean.setAttribute('width','1000'); ocean.setAttribute('height','700');
-  ocean.setAttribute('fill','#1e3a5f');
-  svg.appendChild(ocean);
+  if (!svgLoaded) return;
 
   const activeSet = new Set(LEVELS[currentLevel]);
+  const allElements = svg.querySelectorAll('[data-iso]');
 
-  Object.entries(PAYS).forEach(([id, data]) => {
-    const numId = Number(id);
-    const isActive = activeSet.has(numId);
-    const isFound = foundSet.has(numId);
-    const isSel = selected === numId;
+  allElements.forEach(elem => {
+    const iso = elem.getAttribute('data-iso');
+    const isActive = activeSet.has(iso);
+    const isFound = foundSet.has(iso);
+    const isSel = selected === iso;
 
-    const poly = document.createElementNS('http://www.w3.org/2000/svg','polygon');
-    poly.setAttribute('points', data.polygon);
-    poly.setAttribute('data-country', data.name);
-    poly.setAttribute('class', 'country');
+    elem.classList.remove('highlight', 'found', 'inactive');
+    elem.classList.add('country');
 
     if (isFound) {
-      poly.classList.add('found');
+      elem.classList.add('found');
     } else if (isSel) {
-      poly.classList.add('highlight');
+      elem.classList.add('highlight');
     } else if (!isActive) {
-      poly.classList.add('inactive');
-    } else {
-      poly.setAttribute('fill', '#4a7fd4');
+      elem.classList.add('inactive');
     }
 
     if (isActive && !isFound) {
-      poly.addEventListener('click', () => selectCountry(numId));
+      elem.style.cursor = 'pointer';
+      elem.onclick = (e) => { e.stopPropagation(); selectCountry(iso); };
+    } else {
+      elem.style.cursor = 'default';
+      elem.onclick = null;
     }
-
-    svg.appendChild(poly);
   });
 }
 
@@ -174,9 +169,9 @@ function speak(txt) {
   speechSynthesis.speak(u);
 }
 
-function selectCountry(id) {
-  if (foundSet.has(id)) return;
-  selected = id;
+function selectCountry(iso) {
+  if (foundSet.has(iso)) return;
+  selected = iso;
   renderMap();
   document.getElementById('confirmBtn').classList.add('show');
 }
@@ -193,9 +188,9 @@ function confirmer() {
   }
 }
 
-function victoire(id) {
-  const data = PAYS[id];
-  foundSet.add(id);
+function victoire(iso) {
+  const data = PAYS[iso];
+  foundSet.add(iso);
   selected = null;
   document.getElementById('confirmBtn').classList.remove('show');
   renderMap();
@@ -221,8 +216,8 @@ function nextCountry() {
 }
 
 function showConsigne() {
-  const id = queue[qIdx];
-  const data = PAYS[id];
+  const iso = queue[qIdx];
+  const data = PAYS[iso];
   const consigne = `Trouve ${data.art}${data.name} !`;
   document.getElementById('drapeau-cible').textContent = data.flag;
   document.getElementById('consigne').textContent = consigne;
@@ -255,6 +250,36 @@ function finGame() {
   document.body.appendChild(ov);
 }
 
+async function loadSvgMap() {
+  try {
+    const response = await fetch('https://upload.wikimedia.org/wikipedia/commons/a/a7/Blank_map_of_Europe_%28with_disputed_regions%29.svg');
+    if (!response.ok) throw new Error('SVG load failed');
+    const svgText = await response.text();
+    const parser = new DOMParser();
+    const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
+    const svg = document.getElementById('mapSvg');
+
+    // Copy all paths from Wikimedia to our container
+    svgDoc.querySelectorAll('path').forEach(path => {
+      const iso = path.getAttribute('id');
+      if (iso && iso.length === 2 && PAYS[iso]) {
+        const clone = path.cloneNode();
+        const data = PAYS[iso];
+        clone.setAttribute('data-iso', iso);
+        clone.setAttribute('data-country', data.name);
+        clone.removeAttribute('id');
+        clone.removeAttribute('style');
+        svg.appendChild(clone);
+      }
+    });
+
+    svgLoaded = true;
+  } catch (e) {
+    console.error('SVG load error:', e);
+    document.getElementById('consigne').textContent = 'Erreur carte...';
+  }
+}
+
 function initLevel(lvl) {
   currentLevel = lvl;
   const ids = LEVELS[lvl];
@@ -262,14 +287,16 @@ function initLevel(lvl) {
   qIdx = 0; selected = null; foundSet.clear();
   const labels = {facile:'🌟 Facile', moyen:'⭐⭐ Moyen', difficile:'⭐⭐⭐ Expert'};
   document.getElementById('lvlLabel').textContent = labels[lvl];
-  renderMap();
-  updateDots();
-  showConsigne();
+  if (svgLoaded) {
+    renderMap();
+    updateDots();
+    showConsigne();
+  }
 }
 
 function init() {
   const lvl = new URLSearchParams(location.search).get('level') || 'facile';
-  initLevel(lvl);
+  loadSvgMap().then(() => initLevel(lvl));
 }
 
 init();

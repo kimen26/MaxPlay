@@ -11,15 +11,51 @@
 
 ## Prochaine action (priorité courante)
 
-**⏳ Au reboot 2026-05-21** :
+**⏳ Au reboot 2026-05-31** :
 
-1. **🔥 URGENTE** — **EP-035 + EP-036** (header compact + encoding) : signalé critique par Papa Yann 2026-05-14 (traîne 7j). Assigner à `game-dev` ou `game-mj-pmo` + deadline fin semaine. User-facing, UX debt.
+1. **🔥 URGENTE** — **EP-035 + EP-036** (header compact + encoding) : signalé critique par Papa Yann 2026-05-14 (traîne 14j). Assigner à `game-dev` ou `game-mj-pmo` + deadline fin semaine. User-facing, UX debt.
 
 2. **🔥 URGENTE** — **EP-038 Playwright** (T-380/381/382/383/384) : pilote livré 2026-05-16, plus gros levier optimisation (60% reduction commits). Généraliser 1 spec/MJ actif en parallèle EP-035/036.
 
 3. **📅 HAUTE** — **EP-037** (figeage 20 MJ restants) : rétro-fit system figeage (gravé 2026-05-15 mj-21 only). Inclure comme tasks T-xxx annexe à EP-038 ou batch script.
 
-4. **📌 Pédago** — **Audit leçons** (2026-05-21) : renumérotation L-032..L-041 → L-050..L-059 (collision tile évitée). Convention fixée : L-000..049 tile, L-050+ MJ.
+4. **📌 Pédago** — **EP-039 progression** : 39 dinos restants en TTS live navigateur (reste d'année). Pas urgent.
+
+---
+
+## 2026-05-30 — [DINOS] Parasaurolophus audio V2 complet — PROCESS pédagogique 3-passes validé
+
+**Owner** : Papa Yann + game-conseiller + narration-conseiller + panel lecteur enfants 2 (Léo 8/10, Jade 9/10 émotion)
+
+**Livré** (committée + pushée master, commit 6be120ed) :
+1. **Parasaurolophus V2 refondu** : 4 blocs + ping-pong étymologique avec Wex co-chercheur
+   - **Bloc A (Son histoire)** : **ping-pong Wex** (Wex pose question, Narrateur décompose racines). Pa-ra-sau-ro-lo-phus : saurus=lézard, lophus=crête creuse. "Para" abstrait retiré → 2 racines imagées uniquement
+   - Bloc B (Sa taille) : conservé
+   - Bloc C (Sa vie) : chanteur du troupeau (crête = protection vocale)
+   - Bloc D (Truc fou) : "savants"→"scientifiques" + "machine chanta pour première fois" + "premier dino-musicien"
+   - **Fin dé-doublée** : Narrateur « il chante encore » + Wex « pour toujours »
+2. **Panel enfants 2-personnes validation** : Léo (8) 8/10 émotion (touchant, pas triste), Jade (9) 10/10 (fin tendre captée). Friction mineure : Bloc A étymologie trop lourde oral → RESOLUE ping-pong/syllabique
+3. **4 blocs MP3 + récap générés** ElevenLabs text-to-dialogue DUO (~2389 car., budget restant 20498/122867, reset 11 juin)
+4. **Validation 3-passes figée** :
+   - Pass 1 (game-conseiller) : étymo fact-check + narratif OK ✅
+   - Pass 2 (narration-conseiller) : voice-meta v3 tags OK ✅
+   - Pass 3 (panel enfants) : pédago engagement OK ✅
+   - Workflow : corrections appliquées → 1 re-gen audio → testée avant push
+
+**Décisions figées** :
+- Ping-pong Wex = pattern écriture audio DUO efficace (co-chercheur explicite)
+- Découpage syllabique Pa-ra-sau-ro-lo-phus = lecture enfant-friendly
+- Fin dé-doublée = pattern clôture émotion
+
+**Leçons** :
+- **L-060** : Ping-pong Wex comme pattern d'écriture audio DUO — co-chercheur explicite active attention enfant + simplifie étymologie complexe
+- **L-061** : Panel enfants 2-3 personnes rapide = suffisant pour validation pédago/émotion (économise temps sans perte qualité)
+
+**État au reboot** :
+- ✅ EP-039 CLÔTURE PILOTE — Parasaurolophus audio V2 déployée, PROCESS pédagogique 3-passes validé
+- 22/60 dinos en audio EL premium (11 originaux + 10 cornes + Parasaurolophus)
+- 39 dinos restants : TTS live navigateur (bonne qualité, pas bloquant, itération future si demande)
+- PROCESS RÉUTILISABLE : ping-pong Wex + panel 2-3 enfants pour tous les blocs audio futurs
 
 ---
 

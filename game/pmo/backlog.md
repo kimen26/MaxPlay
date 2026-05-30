@@ -53,6 +53,12 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 **Dinos (2026-05-17)** : 9-11 agents parallèles (étymo fact-check, game-conseiller, narration-conseiller, panel lecteur) = efficace pour grosse tâche d'écriture/correction. **Piège** : un agent oublie Gallimimus, un autre n'écrase pas le bon Bloc Coelophysis (éditions en conflit).
 **Leçon** : après découpage agents parallèles, toujours RE-GREP anti-patterns + count blocs/dinos avant merge. Outil : `grep -c "Bloc A" _ETYMO-RACINES-50.md` → doit = 50, `grep "Gallimimus"` → doit être présent.
 
+### L-060 – Ping-pong Wex = pattern écriture audio DUO efficace
+**Dinos (2026-05-30)** : Parasaurolophus V2 Bloc A (étymologie Pa-ra-sau-ro-lo-phus). V1 lourd oral → pivot ping-pong (Wex pose question, Narrateur décompose racines). **Résultat** : attention enfant captée, étymologie vivante (dialogue vs exposé), Wex participe au mystère dino-musicien. Réutilisable : tout bloc complexe (étymologie, concept sci, histoire) → co-chercheur explicite active pédago.
+
+### L-061 – Panel enfants 2-3 personnes = validation pédago/émotion rapide
+**Dinos (2026-05-30)** : itération Parasaurolophus V2. Crainte panel 7 enfants lourd. Test : Léo (8/10) + Jade (10/10 fin tendre captée). Friction Bloc A résolue ping-pong. **ROI** : 2-3 enfants âge cible = feedback pédagogiquement actionnable sans perte qualité, 15 min vs 90 min. Pattern solide pour validations futures.
+
 ---
 
 ## Épics
@@ -61,30 +67,32 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 
 ## EP-039 – Narration audio DUO Narrateur H + Wex sur encyclopédie Dinos
 
-**Statut** : `[ ]` à faire — ⚠️ **en attente figeage textes + approbation Papa Yann**
+**Statut** : `[~]` **CLÔTURE PILOTE 2026-05-30** — Parasaurolophus V2 audio déployée, PROCESS 3-passes validé
 
-**Priorité** : 🟡 **MOYENNE** — enrichissement pédago post-déploiement MJ dinos
+**Priorité** : 🟡 **MOYENNE** — enrichissement pédago post-déploiement MJ dinos (progression continue)
 
-**Contexte** : MJ encyclopédie dinos (mj-dinos) déployé avec 50 fiches (familles, extinction, pangée). Audio narration riche = profondeur pédago. Stratégie : duo Narrateur H (exposition) + Wex (commentaires transversaux/questions catalyseur).
+**Contexte** : MJ encyclopédie dinos (mj-dinos) déployé avec 60 fiches. Audio narration riche = profondeur pédago. Stratégie : duo Narrateur H (exposition) + Wex (co-chercheur, questions catalyseur).
 
-**Matière** :
-- Script V0 (Tricératops) gravé : `game/docs/jeux/dino-encyclopedie/scripts-audio/triceratops-V0.md`
-- Décision canon Wex figée côté narration-pmo : `DEC-WEXDUO-JEU-001`
-- Voice IDs : réutiliser casting narration (`narration/personnages/voix-meta/_VOICE-IDS-CASTING.md`)
-- Tags audio v3 (didascalies) : réutiliser catalog `~/.claude/skills/audio-direction-elevenlabs/`
+**Pilote délivré (2026-05-30)** :
+- ✅ **Parasaurolophus V2** : 4 blocs + ping-pong Wex + fin dé-doublée
+- ✅ **Validation 3-passes** : game-conseiller (étymo/narratif) + narration-conseiller (voix v3) + panel enfants 2 (Léo+Jade, 8/10-10/10)
+- ✅ **4 MP3 DUO** : générés ElevenLabs text-to-dialogue, commit 6be120ed
+- ✅ **PROCESS RÉUTILISABLE** : L-060 (ping-pong Wex pattern) + L-061 (panel 2-3 enfants rapide)
 
-**À faire** :
-1. **T-400** : Challenge Papa Yann sur script V0 Tricératops (avant audio gen) — figer contenu
-2. **T-401** : Générer MP3 DUO sur Tricératops via ElevenLabs + text-to-dialogue (skill `studio_audiobook_from_segments`)
-3. **T-402** : Valider MP3 (loudness, timing, clarté) — rejeu itératif si besoin
-4. **T-403** : Répliquer sur 5 fiches phares (Stégosaure, Vélociraptor, T-Rex, Ptérodactyle, Diplodocus) pour valider process
-5. **T-404** : (Optionnel) Généraliser à 50 fiches si process validé
+**État progression** :
+- 22/60 dinos en audio EL premium (11 originaux + 10 cornes + Parasaurolophus)
+- 39 dinos restants : TTS live navigateur (bonne qualité, pas bloquant, future itération)
 
-**Leçon attachée** : L-040 (à créer) — "Audio multi-voix = figeage amont obligatoire" (coût itération ElevenLabs + timing entre voix)
+**À faire (progression)** :
+1. **T-405** : Généraliser ping-pong Wex à 5 fiches phares (Stégosaure, Vélociraptor, T-Rex, Ptérodactyle, Diplodocus) — valider process à plus grande échelle
+2. **T-406** : (Optionnel) Compléter 39 dinos restants si temps/budget ElevenLabs — sinon TTS live suffisant
+3. **T-407** : Documentation PROCESS audio DUO réutilisable dans skill `audio-direction-elevenlabs/`
 
-**Impact** : `game/docs/jeux/dino-encyclopedie/assets/audio/`, nouveau dossier `game/web/mj-dinos/audio/` (intégration HTML/diffusion fiche).
+**Leçons attachées** : L-060, L-061
 
-**Dépendance** : Aucune — MJ dinos déjà verte, audio est enrichissement.
+**Impact** : `game/docs/jeux/dino-encyclopedie/scripts-audio/parasaurolophus-V2.md`, `game/web/audio/dinos/parasaurolophus-*.mp3`, DEV-DINOS.html étendu.
+
+**Dépendance** : Aucune — MJ dinos opérationnel, audio enrichissement progressif.
 
 ---
 
@@ -280,7 +288,7 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 | EP-035 | Fix encoding emojis tous les mini-jeux HTML (UTF-8 + vérification) | `[ ]` |
 | EP-036 | Gabarit header compact unifié tous les MJ (rétro-fit 20 fichiers) | `[ ]` |
 | EP-038 | Harnais de test headless mini-jeux (Playwright headless, 1 spec/MJ) | `[~]` pilote livré |
-| EP-039 | Narration audio DUO Narrateur H + Wex sur encyclopédie Dinos (50 fiches) | `[ ]` |
+| EP-039 | Narration audio DUO Narrateur H + Wex sur encyclopédie Dinos (60 fiches) | `[~]` clôture pilote |
 | EP-TILES | Pipeline tile-tools LimeZu (cartographie + recettes + mockups-routes + tile-picker + tile-pmo) | `[~]` |
 | EP-MJPOSE | MJ · Pose-tes-tiles (kids éditeur de map simplifié) | `[x]` |
 | EP-VOCAB | Module vocab.py + pivot "refs visuelles" pour pipeline tile-tools (anti-erreurs, source unique) | `[x]` |

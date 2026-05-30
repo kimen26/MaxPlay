@@ -17,7 +17,7 @@ const MAP = {
   centrosaurus:'CENTROSAURE',
   chasmosaurus:'CHASMOSAURE', anchiceratops:'ANCHICÉRATOPS',
   utahceratops:'UTAHCÉRATOPS', einiosaurus:'EINIOSAURE',
-  pteranodon:'PTÉRANODON',
+  pteranodon:'PTÉRANODON', parasaurolophus:'PARASAUROLOPHUS',
 };
 const BLOCS = { 'A':'nom', 'B':'taille', 'C':'regime', 'D':'funfact' };
 

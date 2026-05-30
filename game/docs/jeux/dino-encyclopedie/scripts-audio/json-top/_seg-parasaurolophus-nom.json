@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Aujourd'hui, je te présente un dinosaure très spécial... un dinosaure qui faisait de la MUSIQUE ! Écoute bien son nom : Pa-ra-sau-ro-lo-phus. Il y a un secret caché dedans. Tu veux le trouver avec moi ?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Oui !"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[curious] « Saurus », en grec ancien, ça veut dire « lézard ». Comme presque tous les dinos. Et « lophus »... ça veut dire « crête ». Tu sais, ce qu'il avait sur la tête."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Un lézard... avec une crête ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] EXACTEMENT, tu as trouvé tout seul ! Le « lézard à crête » ! Et cette crête, longue et courbée vers l'arrière... c'était son trésor. Tu vas comprendre pourquoi. Il vivait en Amérique du Nord, il y a 76 millions d'années."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

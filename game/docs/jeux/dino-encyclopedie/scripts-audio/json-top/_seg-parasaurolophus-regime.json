@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly] C'était un gentil herbivore, qui broutait des plantes tranquillement. Et il n'était jamais tout seul : il vivait en grand troupeau, entouré de toute sa famille, des grands et des tout-petits."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et quand un chasseur arrivait, comme le T-Rex ? Ils faisaient comment, les petits ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] C'est là que sa crête devenait magique ! Dès qu'il voyait le danger, le Parasaurolophus soufflait très fort dedans : « HOOONK ! » Un cri grave, puissant, qui résonnait dans toute la forêt. Et tous les autres l'entendaient, même très loin, et hop — toute la famille se mettait à l'abri, ensemble. Sa voix protégeait ceux qu'il aimait."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

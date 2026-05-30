@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Il mesurait 10 mètres de long — aussi long qu'un bus de Paris ! Debout, il faisait 3 mètres et demi de haut — aussi haut que deux Papas l'un sur l'autre ! Et il pesait 3 mille kilos — aussi lourd que 3 rhinocéros !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Grand comme un bus ?! Mais... un bus, ça fait du bruit avec son klaxon. Et lui ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Ah, quelle bonne question ! Lui aussi faisait du bruit... mais pas avec un klaxon. Avec sa TÊTE ! Attends, je te raconte."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

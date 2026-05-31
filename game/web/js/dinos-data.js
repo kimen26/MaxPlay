@@ -179,49 +179,67 @@ const DINO_PERIODES = [
 // est affiché dans les stats et dit séparément par la lecture vocale).
 function _round1(x) { return Math.round(x * 10) / 10; }
 
-// LONGUEUR (nez → queue) — bus RATP Paris : standard = 12 m, accordéon = 18 m
+// ─── Échelle de référence figée 2026-06-01 (voir docs/jeux/dino-encyclopedie/_ECHELLE-REFERENTIEL.md) ───
+// Repères : Papa 1,8 m · enfant 4 ans 1 m · voiture 1,5 m haut · porte 2 m · but de foot 2,44 m ·
+// panier de basket 3,05 m · bus anglais 4,4 m · lampadaire 6 m · étage 3 m · bus RATP 12 m · accordéon 18 m.
+// Règle : jamais un arrondi qui ment de plus de ~10 %.
+function _qty(n, sing, plur) { return n <= 1 ? `un ${sing}` : `${n} ${plur}`; }
+
+// LONGUEUR (nez → bout de la queue, allongé / garé). Objet familier d'abord.
 function _compLong(m) {
-  if (m >= 30) return `aussi long que ${Math.round(m / 18)} bus accordéon l'un derrière l'autre !`;
-  if (m >= 18) return `aussi long qu'un bus accordéon de Paris !`;
-  if (m >= 13) return `aussi long qu'un bus, plus une voiture devant !`;
-  if (m >= 10) return `aussi long qu'un bus de Paris !`;
-  if (m >= 8) {
-    const v = Math.round(m / 4);
-    return `aussi long que ${v} voitures garées à la suite !`;
-  }
-  if (m >= 3) {
-    const p = Math.round(m / 1.8);
-    return `aussi long que ${p} Papas couchés bout à bout !`;
-  }
-  if (m >= 1)  return `aussi long qu'un grand vélo !`;
-  if (m >= 0.5) return `aussi long qu'un gros chat !`;
+  if (m >= 30)  return `comme un bus accordéon et un bus, l'un derrière l'autre !`;
+  if (m >= 24)  return `comme deux bus l'un derrière l'autre !`;
+  if (m >= 16)  return `aussi long qu'un bus accordéon !`;
+  if (m >= 11)  return `aussi long qu'un bus RATP !`;
+  if (m >= 8.5) return `aussi long qu'un camion !`;
+  if (m >= 7)   return `comme deux voitures l'une derrière l'autre !`;
+  if (m >= 5.6) return `aussi long qu'une rue à deux voies est large — il barrait la route !`;
+  if (m >= 4.3) return `aussi long qu'un grand 4×4 !`;
+  if (m >= 3.3) return `comme une petite voiture !`;
+  if (m >= 2.4) return `comme trois enfants de 4 ans allongés !`;
+  if (m >= 1.9) return `aussi long qu'une moto !`;
+  if (m >= 1.7) return `comme un grand Papa allongé par terre !`;
+  if (m >= 1.35) return `aussi long qu'un vélo !`;
+  if (m >= 0.8) return `comme un grand chien — un labrador !`;
+  if (m >= 0.45) return `comme un gros chat allongé !`;
   return `tout petit, comme un poulet !`;
 }
 
-// HAUTEUR (sol → tête, debout). Repère corps de Max (~1 m, 4 ans).
+// HAUTEUR (sol → tête, debout). Bipède = hanche ; quadrupède = épaule ; cou vertical = tête.
 function _compHaut(m) {
-  if (m >= 9) return `aussi haut qu'un immeuble de ${Math.round(m / 3)} étages !`;
-  if (m >= 6) return `aussi haut qu'une maison de 2 étages !`;
-  if (m >= 3.8) return `aussi haut qu'un bus anglais à deux étages !`;
-  if (m >= 3) return `aussi haut que deux Papas l'un sur l'autre !`;
-  if (m >= 1.8) return `aussi grand que Papa debout !`;
-  if (m >= 1.3) return `plus grand que toi — il fallait lever la tête !`;
-  if (m >= 0.85) return `à peu près ta taille à toi !`;
-  if (m >= 0.45) return `il t'arrivait au nombril !`;
+  if (m >= 11)  return `aussi haut qu'un immeuble de ${Math.round(m / 3)} étages !`;
+  if (m >= 7.5) return `aussi haut qu'un immeuble de trois étages !`;
+  if (m >= 5.6) return `aussi haut qu'un lampadaire !`;
+  if (m >= 4.8) return `presque trois Papas l'un sur l'autre !`;
+  if (m >= 4.0) return `aussi haut qu'un bus anglais à deux étages !`;
+  if (m >= 3.3) return `comme deux Papas l'un sur l'autre !`;
+  if (m >= 2.8) return `aussi haut qu'un panier de basket !`;
+  if (m >= 2.3) return `aussi haut qu'un but de foot !`;
+  if (m >= 2.1) return `comme Papa qui te porte tout en haut sur ses épaules !`;
+  if (m >= 1.9) return `aussi haut qu'une porte !`;
+  if (m >= 1.7) return `aussi grand que Papa debout !`;
+  if (m >= 1.25) return `aussi haut qu'une voiture — il fallait lever la tête !`;
+  if (m >= 0.85) return `aussi grand qu'un enfant de 4 ans !`;
+  if (m >= 0.65) return `il t'arrivait au nombril !`;
+  if (m >= 0.45) return `il t'arrivait aux fesses !`;
   if (m >= 0.25) return `il t'arrivait aux genoux !`;
-  return `tout petit, plus bas que tes genoux !`;
+  return `plus bas que tes genoux !`;
 }
 
-// POIDS. Repère : Papa ≈ 80 kg, Max (toi) ≈ 16 kg.
+// POIDS (t). Repères : chat 4 kg · enfant 4 ans 16 kg · gros chien 30 kg · enfant 10 ans 50 kg ·
+// Papa 80 kg · gros cochon 200 kg · vache 0,7 t · rhino 1,5 t · hippo 3 t · éléphant 6 t.
 function _compPoids(t) {
-  if (t >= 10) return `aussi lourd que ${Math.round(t / 5)} éléphants !`;
-  if (t >= 3)  { const h = Math.round(t / 3); return h <= 1 ? `aussi lourd qu'un hippopotame !` : `aussi lourd que ${h} hippopotames !`; }
-  if (t >= 0.8) { const r = Math.round(t / 1); return r <= 1 ? `aussi lourd qu'un rhinocéros !` : `aussi lourd que ${r} rhinocéros !`; }
-  if (t >= 0.2) return `aussi lourd qu'un grand cochon !`;
-  if (t >= 0.08) return `aussi lourd que Papa !`;
-  if (t >= 0.025) return `aussi lourd qu'un gros chien !`;
-  if (t >= 0.011) return `aussi lourd que toi !`;
-  if (t >= 0.0025) return `aussi lourd qu'un gros chat !`;
+  if (t >= 11)   return `aussi lourd que ${_qty(Math.round(t / 6), 'éléphant', 'éléphants')} !`;
+  if (t >= 4)    return `aussi lourd que ${_qty(Math.round(t / 3), 'hippopotame', 'hippopotames')} !`;
+  if (t >= 2)    return `aussi lourd que ${_qty(Math.round(t / 1.5), 'rhinocéros', 'rhinocéros')} !`;
+  if (t >= 1.2)  return `aussi lourd qu'un rhinocéros !`;
+  if (t >= 0.5)  return `aussi lourd qu'une vache !`;
+  if (t >= 0.13) return `aussi lourd qu'un gros cochon !`;
+  if (t >= 0.065) return `aussi lourd que Papa !`;
+  if (t >= 0.04) return `aussi lourd qu'un grand enfant de 10 ans !`;
+  if (t >= 0.022) return `aussi lourd qu'un gros chien !`;
+  if (t >= 0.011) return `aussi lourd qu'un enfant de 4 ans !`;
+  if (t >= 0.0035) return `aussi lourd qu'un gros chat !`;
   return `léger comme un petit oiseau !`;
 }
 
@@ -251,10 +269,10 @@ const DINOS = [
     epoque: 'Crétacé · il y a 66 millions d\'ans',
     region: 'Amérique du Nord',
     taille_m: 12,
-    hauteur_m: 4.0,
+    hauteur_m: 4,
     poids_t: 8,
     comp_taille: _compLong(12),
-    comp_hauteur: _compHaut(4.0),
+    comp_hauteur: _compHaut(4),
     comp_poids: _compPoids(8),
     nom_etym: 'Son nom veut dire «lézard tyran» en grec — c\'est le lézard qui commande tout le monde !',
     regime: '🥩 Carnivore',
@@ -278,11 +296,11 @@ const DINOS = [
     epoque: 'Crétacé · il y a 95 millions d\'ans',
     region: 'Afrique du Nord',
     taille_m: 15,
-    hauteur_m: 4.5,
-    poids_t: 9,
+    hauteur_m: 4,
+    poids_t: 7,
     comp_taille: _compLong(15),
-    comp_hauteur: _compHaut(4.5),
-    comp_poids: _compPoids(9),
+    comp_hauteur: _compHaut(4),
+    comp_poids: _compPoids(7),
     nom_etym: 'Son nom veut dire «lézard à épines» en latin — il avait une grande voile sur le dos !',
     regime: '🐟 Piscivore (mange du poisson !)',
     superpower: 'Nager comme un crocodile géant ! Il adorait l\'eau.',
@@ -305,11 +323,11 @@ const DINOS = [
     epoque: 'Crétacé · il y a 98 millions d\'ans',
     region: 'Amérique du Sud',
     taille_m: 13,
-    hauteur_m: 4.0,
-    poids_t: 8,
+    hauteur_m: 4,
+    poids_t: 7,
     comp_taille: _compLong(13),
-    comp_hauteur: _compHaut(4.0),
-    comp_poids: _compPoids(8),
+    comp_hauteur: _compHaut(4),
+    comp_poids: _compPoids(7),
     nom_etym: 'Son nom veut dire «lézard géant du sud» en grec — il vivait très loin au sud !',
     regime: '🥩 Carnivore',
     superpower: 'Chassait en groupe pour attaquer les ÉNORMES sauropodes !',
@@ -326,7 +344,7 @@ const DINOS = [
   {
     id: 'carcharodontosaurus',
     famille: 'trex',
-    name: 'Carcharodonto.',
+    name: 'Carcharodontosaure',
     full: 'Carcharodontosaurus saharicus',
     cat: 'carnivores',
     epoque: 'Crétacé · il y a 95 millions d\'ans',
@@ -353,7 +371,7 @@ const DINOS = [
   {
     id: 'acrocanthosaurus',
     famille: 'trex',
-    name: 'Acrocantho.',
+    name: 'Acrocanthosaure',
     full: 'Acrocanthosaurus atokensis',
     cat: 'carnivores',
     epoque: 'Crétacé · il y a 113 millions d\'ans',
@@ -385,12 +403,12 @@ const DINOS = [
     cat: 'carnivores',
     epoque: 'Jurassique · il y a 155 millions d\'ans',
     region: 'Amérique du Nord, Europe',
-    taille_m: 10,
+    taille_m: 9.5,
     hauteur_m: 3.5,
-    poids_t: 2.5,
-    comp_taille: _compLong(10),
+    poids_t: 2.3,
+    comp_taille: _compLong(9.5),
     comp_hauteur: _compHaut(3.5),
-    comp_poids: _compPoids(2.5),
+    comp_poids: _compPoids(2.3),
     nom_etym: 'Son nom veut dire «lézard différent» en grec — ses os étaient différents de tous les autres !',
     regime: '🥩 Carnivore',
     superpower: 'Ouvrait sa gueule TRÈS grande comme une hache pour frapper !',
@@ -413,10 +431,10 @@ const DINOS = [
     epoque: 'Crétacé · il y a 70 millions d\'ans',
     region: 'Asie (Mongolie)',
     taille_m: 10,
-    hauteur_m: 4.0,
+    hauteur_m: 4,
     poids_t: 5,
     comp_taille: _compLong(10),
-    comp_hauteur: _compHaut(4.0),
+    comp_hauteur: _compHaut(4),
     comp_poids: _compPoids(5),
     nom_etym: 'Son nom veut dire «lézard qui fait peur» en grec — tout le monde avait peur de lui !',
     regime: '🥩 Carnivore',
@@ -439,11 +457,11 @@ const DINOS = [
     cat: 'carnivores',
     epoque: 'Crétacé · il y a 70 millions d\'ans',
     region: 'Canada',
-    taille_m: 9,
-    hauteur_m: 3.0,
+    taille_m: 9.5,
+    hauteur_m: 3,
     poids_t: 2,
-    comp_taille: _compLong(9),
-    comp_hauteur: _compHaut(3.0),
+    comp_taille: _compLong(9.5),
+    comp_hauteur: _compHaut(3),
     comp_poids: _compPoids(2),
     nom_etym: 'Son nom veut dire «lézard de l\'Alberta» — c\'est l\'endroit au Canada où on l\'a trouvé !',
     regime: '🥩 Carnivore',
@@ -493,12 +511,12 @@ const DINOS = [
     cat: 'carnivores',
     epoque: 'Jurassique · il y a 150 millions d\'ans',
     region: 'Amérique du Nord, Afrique',
-    taille_m: 6,
+    taille_m: 5.5,
     hauteur_m: 2.5,
-    poids_t: 0.5,
-    comp_taille: _compLong(6),
+    poids_t: 0.7,
+    comp_taille: _compLong(5.5),
     comp_hauteur: _compHaut(2.5),
-    comp_poids: _compPoids(0.5),
+    comp_poids: _compPoids(0.7),
     nom_etym: 'Son nom veut dire «lézard à corne» en grec — il avait une corne sur le nez !',
     regime: '🥩 Carnivore',
     superpower: 'Il avait UNE corne sur le nez — unique chez les grands carnivores !',
@@ -520,12 +538,12 @@ const DINOS = [
     cat: 'carnivores',
     epoque: 'Jurassique · il y a 193 millions d\'ans',
     region: 'Amérique du Nord',
-    taille_m: 6,
-    hauteur_m: 2.5,
-    poids_t: 0.4,
-    comp_taille: _compLong(6),
-    comp_hauteur: _compHaut(2.5),
-    comp_poids: _compPoids(0.4),
+    taille_m: 7,
+    hauteur_m: 2.4,
+    poids_t: 0.43,
+    comp_taille: _compLong(7),
+    comp_hauteur: _compHaut(2.4),
+    comp_poids: _compPoids(0.43),
     nom_etym: 'Son nom veut dire «lézard à deux crêtes» en grec — il avait deux jolies crêtes sur la tête !',
     regime: '🥩 Carnivore',
     superpower: '2 crêtes colorées sur la tête comme un chapeau de fête !',
@@ -548,11 +566,11 @@ const DINOS = [
     epoque: 'Crétacé · il y a 72 millions d\'ans',
     region: 'Amérique du Sud',
     taille_m: 8,
-    hauteur_m: 3.0,
-    poids_t: 1.5,
+    hauteur_m: 2.5,
+    poids_t: 1.6,
     comp_taille: _compLong(8),
-    comp_hauteur: _compHaut(3.0),
-    comp_poids: _compPoids(1.5),
+    comp_hauteur: _compHaut(2.5),
+    comp_poids: _compPoids(1.6),
     nom_etym: 'Son nom veut dire «taureau qui mange de la viande» en latin — un taureau carnivore !',
     regime: '🥩 Carnivore',
     superpower: 'Le chasseur le PLUS RAPIDE parmi les grands carnivores — jusqu\'à 56 km/h !',
@@ -576,10 +594,10 @@ const DINOS = [
     region: 'Antarctique !',
     taille_m: 6.5,
     hauteur_m: 2.5,
-    poids_t: 0.5,
+    poids_t: 0.4,
     comp_taille: _compLong(6.5),
     comp_hauteur: _compHaut(2.5),
-    comp_poids: _compPoids(0.5),
+    comp_poids: _compPoids(0.4),
     nom_etym: 'Son nom veut dire «lézard à crête de glace» en grec — il vivait en Antarctique, là où tout est gelé !',
     regime: '🥩 Carnivore',
     superpower: 'Vivait en Antarctique ! Le dino des neiges !',
@@ -604,19 +622,20 @@ const DINOS = [
     cat: 'herbivores',
     epoque: 'Jurassique · il y a 150 millions d\'ans',
     region: 'Amérique du Nord, Afrique',
-    taille_m: 26,
+    taille_m: 22,
     hauteur_m: 13,
-    poids_t: 60,
-    comp_taille: _compLong(26),
+    poids_t: 47,
+    queue_note: 'Chez lui, ce n\'est pas la queue qui fait la taille : c\'est son immense COU dressé vers le ciel !',
+    comp_taille: _compLong(22),
     comp_hauteur: _compHaut(13),
-    comp_poids: _compPoids(60),
+    comp_poids: _compPoids(47),
     nom_etym: 'Son nom veut dire «lézard aux bras» en grec — ses pattes avant étaient plus longues que ses pattes arrière !',
     regime: '🌿 Herbivore',
     superpower: 'Mangeait les feuilles tout en haut des arbres que les autres ne pouvaient pas atteindre !',
     chasseurs: 'Seulement les très grands carnivores osaient attaquer les jeunes',
     proies: 'Mange des plantes',
     amis: 'Vivait en troupeau — plus fort ensemble !',
-    fait: 'Sa tête était à 13 mètres de haut — aussi haut qu\'une maison ! Pour avaler, il avalait des pierres pour broyer sa nourriture dans son estomac.',
+    fait: 'Sa tête était à 13 mètres de haut — aussi haut qu\'un immeuble de quatre étages ! Pour avaler, il avalait des pierres pour broyer sa nourriture dans son estomac.',
     desc: 'Le Brachiosaure était immense ! Il mangeait les feuilles tout en haut des arbres. Il avait un très long cou et de grandes pattes avant. Un géant gentil !',
     png: 'Brachiosaurus.png',
     color: '#1e8449',
@@ -634,6 +653,7 @@ const DINOS = [
     taille_m: 27,
     hauteur_m: 4.5,
     poids_t: 12,
+    queue_note: 'Sur ses 27 mètres, la queue-fouet fait presque la moitié — à peu près 13 mètres à elle toute seule !',
     comp_taille: _compLong(27),
     comp_hauteur: _compHaut(4.5),
     comp_poids: _compPoids(12),
@@ -659,11 +679,12 @@ const DINOS = [
     epoque: 'Jurassique · il y a 150 millions d\'ans',
     region: 'Amérique du Nord',
     taille_m: 22,
-    hauteur_m: 7,
-    poids_t: 25,
+    hauteur_m: 4.5,
+    poids_t: 23,
+    queue_note: 'Une grande partie de sa longueur, c\'est sa très longue queue tenue à l\'horizontale.',
     comp_taille: _compLong(22),
-    comp_hauteur: _compHaut(7),
-    comp_poids: _compPoids(25),
+    comp_hauteur: _compHaut(4.5),
+    comp_poids: _compPoids(23),
     nom_etym: 'Son nom veut dire «lézard trompeur» en grec — ses os ont trompé les scientifiques pendant longtemps !',
     regime: '🌿 Herbivore',
     superpower: 'Un cou de 6 mètres pour manger des feuilles très haut !',
@@ -685,11 +706,11 @@ const DINOS = [
     cat: 'herbivores',
     epoque: 'Jurassique · il y a 155 millions d\'ans',
     region: 'Amérique du Nord',
-    taille_m: 18,
-    hauteur_m: 9,
+    taille_m: 15,
+    hauteur_m: 6,
     poids_t: 18,
-    comp_taille: _compLong(18),
-    comp_hauteur: _compHaut(9),
+    comp_taille: _compLong(15),
+    comp_hauteur: _compHaut(6),
     comp_poids: _compPoids(18),
     nom_etym: 'Son nom veut dire «lézard à chambres» en grec — ses os avaient des petits trous comme des chambres !',
     regime: '🌿 Herbivore',
@@ -741,10 +762,10 @@ const DINOS = [
     region: 'Europe',
     taille_m: 8,
     hauteur_m: 2.8,
-    poids_t: 4,
+    poids_t: 2,
     comp_taille: _compLong(8),
     comp_hauteur: _compHaut(2.8),
-    comp_poids: _compPoids(4),
+    comp_poids: _compPoids(2),
     nom_etym: 'Son nom veut dire «lézard plat» en grec — ses os étaient tout plats !',
     regime: '🌿 Herbivore',
     superpower: 'L\'un des PREMIERS grands dinosaures herbivores — le pionnier !',
@@ -769,12 +790,12 @@ const DINOS = [
     cat: 'herbivores',
     epoque: 'Crétacé · il y a 66 millions d\'ans',
     region: 'Amérique du Nord',
-    taille_m: 10,
+    taille_m: 7,
     hauteur_m: 1.8,
-    poids_t: 8,
-    comp_taille: _compLong(10),
+    poids_t: 6,
+    comp_taille: _compLong(7),
     comp_hauteur: _compHaut(1.8),
-    comp_poids: _compPoids(8),
+    comp_poids: _compPoids(6),
     nom_etym: 'Son nom veut dire «lézard rigide» en grec — tout son dos était couvert d\'une armure dure !',
     regime: '🌿 Herbivore',
     superpower: 'Son dos était une armure de plaques osseuses + une queue-massue pour casser les os du T-Rex !',
@@ -798,10 +819,10 @@ const DINOS = [
     region: 'Canada',
     taille_m: 6,
     hauteur_m: 1.5,
-    poids_t: 2.5,
+    poids_t: 2.2,
     comp_taille: _compLong(6),
     comp_hauteur: _compHaut(1.5),
-    comp_poids: _compPoids(2.5),
+    comp_poids: _compPoids(2.2),
     nom_etym: 'Son nom veut dire «tête bien protégée» en grec — sa tête avait une armure tout autour !',
     regime: '🌿 Herbivore',
     superpower: 'Même ses paupières étaient blindées ! Rien ne pouvait le blesser !',
@@ -881,11 +902,11 @@ const DINOS = [
     epoque: 'Crétacé · il y a 66 millions d\'ans',
     region: 'Amérique du Nord',
     taille_m: 9,
-    hauteur_m: 3.0,
-    poids_t: 12,
+    hauteur_m: 3,
+    poids_t: 9,
     comp_taille: _compLong(9),
-    comp_hauteur: _compHaut(3.0),
-    comp_poids: _compPoids(12),
+    comp_hauteur: _compHaut(3),
+    comp_poids: _compPoids(9),
     nom_etym: 'Son nom veut dire «face à trois cornes» en grec — il avait exactement trois belles cornes !',
     regime: '🌿 Herbivore',
     superpower: '3 cornes et une collerette osseuse géante — le bouclier parfait contre le T-Rex !',
@@ -908,10 +929,10 @@ const DINOS = [
     epoque: 'Crétacé · il y a 66 millions d\'ans',
     region: 'Amérique du Nord',
     taille_m: 8,
-    hauteur_m: 3.0,
+    hauteur_m: 3,
     poids_t: 8,
     comp_taille: _compLong(8),
-    comp_hauteur: _compHaut(3.0),
+    comp_hauteur: _compHaut(3),
     comp_poids: _compPoids(8),
     nom_etym: 'Son nom veut dire «lézard perforé» en grec — à cause des grands trous dans sa collerette ! (souvent on croit que ça veut dire «lézard taureau», mais non !)',
     regime: '🌿 Herbivore',
@@ -936,10 +957,10 @@ const DINOS = [
     region: 'Canada',
     taille_m: 5.5,
     hauteur_m: 1.8,
-    poids_t: 3,
+    poids_t: 2.7,
     comp_taille: _compLong(5.5),
     comp_hauteur: _compHaut(1.8),
-    comp_poids: _compPoids(3),
+    comp_poids: _compPoids(2.7),
     nom_etym: 'Son nom veut dire «lézard à piques» en grec — sa collerette avait plein de grandes pointes !',
     regime: '🌿 Herbivore',
     superpower: 'Une couronne de 6 grandes cornes autour de la collerette — le dino le plus décoré !',
@@ -961,12 +982,12 @@ const DINOS = [
     cat: 'herbivores',
     epoque: 'Crétacé · il y a 75 millions d\'ans',
     region: 'Asie (Mongolie)',
-    taille_m: 1.8,
+    taille_m: 1.9,
     hauteur_m: 0.6,
-    poids_t: 0.18,
-    comp_taille: _compLong(1.8),
+    poids_t: 0.08,
+    comp_taille: _compLong(1.9),
     comp_hauteur: _compHaut(0.6),
-    comp_poids: _compPoids(0.18),
+    comp_poids: _compPoids(0.08),
     nom_etym: 'Son nom veut dire «premier visage à corne» en grec — c\'est un ancêtre des dinos à cornes !',
     regime: '🌿 Herbivore',
     superpower: 'Le grand-père de tous les dinos à cornes ! Et une mâchoire très puissante.',
@@ -988,10 +1009,11 @@ const DINOS = [
     cat: 'herbivores',
     epoque: 'Crétacé · il y a 120 millions d\'ans',
     region: 'Asie',
-    taille_m: 1.5,
+    taille_m: 1.8,
     hauteur_m: 0.5,
     poids_t: 0.02,
-    comp_taille: _compLong(1.5),
+    queue_note: 'Sa queue faisait presque la moitié de sa longueur.',
+    comp_taille: _compLong(1.8),
     comp_hauteur: _compHaut(0.5),
     comp_poids: _compPoids(0.02),
     nom_etym: 'Son nom veut dire «lézard perroquet» en grec — sa tête ressemblait à un bec de perroquet !',
@@ -1017,10 +1039,10 @@ const DINOS = [
     region: 'Canada',
     taille_m: 5.5,
     hauteur_m: 1.8,
-    poids_t: 2.5,
+    poids_t: 2,
     comp_taille: _compLong(5.5),
     comp_hauteur: _compHaut(1.8),
-    comp_poids: _compPoids(2.5),
+    comp_poids: _compPoids(2),
     nom_etym: 'Son nom veut dire «lézard à pointes» en grec — sa collerette était bordée de petites pointes !',
     regime: '🌿 Herbivore',
     superpower: 'Une seule grande corne sur le nez, recourbée comme un croissant !',
@@ -1097,10 +1119,10 @@ const DINOS = [
     epoque: 'Crétacé · il y a 72 millions d\'ans',
     region: 'Canada',
     taille_m: 7,
-    hauteur_m: 2.0,
+    hauteur_m: 2,
     poids_t: 4,
     comp_taille: _compLong(7),
-    comp_hauteur: _compHaut(2.0),
+    comp_hauteur: _compHaut(2),
     comp_poids: _compPoids(4),
     nom_etym: 'Son nom veut dire «lézard au nez épais» en grec — il avait une grosse bosse d\'os sur le nez !',
     regime: '🌿 Herbivore',
@@ -1124,11 +1146,11 @@ const DINOS = [
     epoque: 'Crétacé · il y a 75 millions d\'ans',
     region: 'États-Unis',
     taille_m: 6,
-    hauteur_m: 2.0,
-    poids_t: 2.5,
+    hauteur_m: 2,
+    poids_t: 5,
     comp_taille: _compLong(6),
-    comp_hauteur: _compHaut(2.0),
-    comp_poids: _compPoids(2.5),
+    comp_hauteur: _compHaut(2),
+    comp_poids: _compPoids(5),
     nom_etym: 'Son nom veut dire «face à cinq cornes» en grec — penta veut dire cinq ! (3 vraies cornes + 2 pointes sur les joues)',
     regime: '🌿 Herbivore',
     superpower: 'Une des plus GRANDES têtes de tous les animaux qui ont marché sur Terre — presque aussi grande qu\'un Papa !',
@@ -1152,10 +1174,10 @@ const DINOS = [
     region: 'Canada',
     taille_m: 4.3,
     hauteur_m: 1.5,
-    poids_t: 1.2,
+    poids_t: 1.3,
     comp_taille: _compLong(4.3),
     comp_hauteur: _compHaut(1.5),
-    comp_poids: _compPoids(1.2),
+    comp_poids: _compPoids(1.3),
     nom_etym: 'Son nom veut dire «face cornue voisine» en grec — les savants l\'ont trouvé proche des autres dinos à cornes !',
     regime: '🌿 Herbivore',
     superpower: 'Sa collerette était bordée de gros boutons d\'os tout ronds, comme des billes collées tout autour !',
@@ -1231,12 +1253,12 @@ const DINOS = [
     cat: 'herbivores',
     epoque: 'Crétacé · il y a 76 millions d\'ans',
     region: 'États-Unis',
-    taille_m: 5,
+    taille_m: 6,
     hauteur_m: 1.8,
-    poids_t: 2,
-    comp_taille: _compLong(5),
+    poids_t: 3.5,
+    comp_taille: _compLong(6),
     comp_hauteur: _compHaut(1.8),
-    comp_poids: _compPoids(2),
+    comp_poids: _compPoids(3.5),
     nom_etym: 'Son nom veut dire «face cornue de l\'Utah» — comme l\'État américain où on l\'a trouvé !',
     regime: '🌿 Herbivore',
     superpower: 'Ses cornes ne pointent pas devant, mais sur les CÔTÉS, comme une vache !',
@@ -1285,12 +1307,12 @@ const DINOS = [
     cat: 'herbivores',
     epoque: 'Crétacé · il y a 77 millions d\'ans',
     region: 'Canada',
-    taille_m: 9,
-    hauteur_m: 3.0,
-    poids_t: 4,
-    comp_taille: _compLong(9),
-    comp_hauteur: _compHaut(3.0),
-    comp_poids: _compPoids(4),
+    taille_m: 8,
+    hauteur_m: 3,
+    poids_t: 3.5,
+    comp_taille: _compLong(8),
+    comp_hauteur: _compHaut(3),
+    comp_poids: _compPoids(3.5),
     nom_etym: 'Son nom veut dire «lézard au casque de Corinthe» en grec — sa crête ressemblait à un casque de chevalier !',
     regime: '🌿 Herbivore',
     superpower: 'Sa crête en forme de casque servait de klaxon ET de radiateur !',
@@ -1388,7 +1410,7 @@ const DINOS = [
   {
     id: 'pachycephalosaurus',
     famille: 'bizarre',
-    name: 'Pachycéphalo.',
+    name: 'Pachycéphalosaure',
     full: 'Pachycephalosaurus wyomingensis',
     cat: 'herbivores',
     epoque: 'Crétacé · il y a 70 millions d\'ans',
@@ -1423,10 +1445,11 @@ const DINOS = [
     cat: 'carnivores',
     epoque: 'Crétacé · il y a 75 millions d\'ans',
     region: 'Asie (Mongolie)',
-    taille_m: 1.8,
+    taille_m: 2,
     hauteur_m: 0.5,
     poids_t: 0.015,
-    comp_taille: _compLong(1.8),
+    queue_note: 'Sa queue raide faisait la moitié de sa longueur : voilà pourquoi il est tout petit mais tout en longueur !',
+    comp_taille: _compLong(2),
     comp_hauteur: _compHaut(0.5),
     comp_poids: _compPoids(0.015),
     nom_etym: 'Son nom veut dire «voleur rapide» en latin — il courait très vite pour attraper sa nourriture !',
@@ -1452,10 +1475,10 @@ const DINOS = [
     region: 'Amérique du Nord',
     taille_m: 3.4,
     hauteur_m: 0.9,
-    poids_t: 0.07,
+    poids_t: 0.08,
     comp_taille: _compLong(3.4),
     comp_hauteur: _compHaut(0.9),
-    comp_poids: _compPoids(0.07),
+    comp_poids: _compPoids(0.08),
     nom_etym: 'Son nom veut dire «griffe terrible» en grec — il avait une grande griffe recourbée très coupante !',
     regime: '🥩 Carnivore',
     superpower: 'Sa grande griffe de 13 cm était une arme mortelle pour accrocher sa proie !',
@@ -1478,10 +1501,10 @@ const DINOS = [
     epoque: 'Crétacé · il y a 126 millions d\'ans',
     region: 'Amérique du Nord',
     taille_m: 6,
-    hauteur_m: 2.0,
+    hauteur_m: 2,
     poids_t: 0.5,
     comp_taille: _compLong(6),
-    comp_hauteur: _compHaut(2.0),
+    comp_hauteur: _compHaut(2),
     comp_poids: _compPoids(0.5),
     nom_etym: 'Son nom veut dire «voleur de l\'Utah» — l\'Utah est l\'endroit aux États-Unis où on l\'a trouvé !',
     regime: '🥩 Carnivore',
@@ -1531,10 +1554,10 @@ const DINOS = [
     cat: 'omnivores',
     epoque: 'Crétacé · il y a 75 millions d\'ans',
     region: 'Amérique du Nord',
-    taille_m: 2,
+    taille_m: 2.2,
     hauteur_m: 0.9,
     poids_t: 0.05,
-    comp_taille: _compLong(2),
+    comp_taille: _compLong(2.2),
     comp_hauteur: _compHaut(0.9),
     comp_poids: _compPoids(0.05),
     nom_etym: 'Son nom veut dire «dent blessante» en grec — ses petites dents avaient des bords tranchants !',
@@ -1559,10 +1582,10 @@ const DINOS = [
     epoque: 'Crétacé · il y a 70 millions d\'ans',
     region: 'Asie (Mongolie)',
     taille_m: 6,
-    hauteur_m: 2.0,
+    hauteur_m: 2,
     poids_t: 0.44,
     comp_taille: _compLong(6),
-    comp_hauteur: _compHaut(2.0),
+    comp_hauteur: _compHaut(2),
     comp_poids: _compPoids(0.44),
     nom_etym: 'Son nom veut dire «qui imite la poule» en latin — il ressemblait à une très grande poule qui court vite !',
     regime: '🌿 Omnivore (mange tout !)',
@@ -1586,11 +1609,12 @@ const DINOS = [
     epoque: 'Trias · il y a 210 millions d\'ans',
     region: 'Amérique du Nord',
     taille_m: 3,
-    hauteur_m: 1.0,
-    poids_t: 0.025,
+    hauteur_m: 1,
+    poids_t: 0.02,
+    queue_note: 'Sa longue queue raide faisait plus de la moitié de sa longueur.',
     comp_taille: _compLong(3),
-    comp_hauteur: _compHaut(1.0),
-    comp_poids: _compPoids(0.025),
+    comp_hauteur: _compHaut(1),
+    comp_poids: _compPoids(0.02),
     nom_etym: 'Son nom veut dire «forme creuse» en grec — ses os étaient creux et légers comme les oiseaux !',
     regime: '🥩 Carnivore',
     superpower: 'L\'un des PREMIERS carnivores ! Le grand-père de tous les raptors !',
@@ -1670,7 +1694,7 @@ const DINOS = [
     cat: 'volants_marins',
     epoque: 'Crétacé · il y a 85 millions d\'ans',
     region: 'Amérique du Nord (Kansas)',
-    taille_m: 7,
+    taille_m: 6,
     hauteur_m: 1.8,
     poids_t: 0.025,
     taille_vol: true,
@@ -1707,12 +1731,12 @@ const DINOS = [
     comp_poids: _compPoids(0.2),
     nom_etym: 'Son nom vient de Quetzalcoatl, le grand serpent plumé des dieux aztèques — un nom de dieu pour le plus grand volant !',
     regime: '🥩 Carnivore (charognes, petits dinos)',
-    superpower: 'Le plus grand animal volant de TOUS LES TEMPS ! Aussi haut qu\'une girafe debout !',
+    superpower: 'Le plus grand animal volant de TOUS LES TEMPS ! Debout, presque trois Papas l\'un sur l\'autre !',
     chasseurs: 'Aucun ne pouvait l\'attraper dans les airs',
     proies: 'Petits dinosaures, charognes',
     amis: 'Solitaire ou petit groupe',
-    fait: 'Debout au sol il mesurait 5 mètres de haut — aussi grand qu\'une girafe ! Le plus grand être volant qui ait jamais existé !',
-    desc: 'Le Quetzalcoatlus était le plus grand être volant de toute l\'histoire de la Terre ! Debout il était grand comme une girafe. Il volait sur des milliers de kilomètres.',
+    fait: 'Debout au sol il mesurait 5 mètres de haut — presque trois Papas l\'un sur l\'autre… et pourtant il VOLAIT ! Le plus grand être volant qui ait jamais existé !',
+    desc: 'Le Quetzalcoatlus était le plus grand être volant de toute l\'histoire de la Terre ! Debout, il était presque aussi haut que trois Papas l\'un sur l\'autre. Il volait sur des milliers de kilomètres.',
     png: 'Quetzalcoatlus.png',
     color: '#1f618d',
     continent: 'Amérique du Nord',
@@ -1754,7 +1778,7 @@ const DINOS = [
     epoque: 'Crétacé · il y a 70 millions d\'ans',
     region: 'Toutes les mers du monde',
     taille_m: 17,
-    hauteur_m: 2.0,
+    hauteur_m: 2,
     poids_t: 10,
     comp_taille: _compLong(17),
     comp_hauteur: 'son corps était large comme la voiture de Papa !',
@@ -1782,10 +1806,10 @@ const DINOS = [
     region: 'Afrique (Niger)',
     taille_m: 11,
     hauteur_m: 3.5,
-    poids_t: 3,
+    poids_t: 4.5,
     comp_taille: _compLong(11),
     comp_hauteur: _compHaut(3.5),
-    comp_poids: _compPoids(3),
+    comp_poids: _compPoids(4.5),
     nom_etym: 'Son nom veut dire «qui imite le crocodile» en grec — son museau long ressemblait exactement à celui d\'un crocodile !',
     regime: '🐟 Piscivore',
     superpower: 'Un long museau comme un crocodile pour attraper des poissons géants !',
@@ -1835,10 +1859,10 @@ const DINOS = [
     epoque: 'Crétacé · il y a 70 millions d\'ans',
     region: 'Asie (Mongolie)',
     taille_m: 10,
-    hauteur_m: 5.0,
+    hauteur_m: 5,
     poids_t: 5,
     comp_taille: _compLong(10),
-    comp_hauteur: _compHaut(5.0),
+    comp_hauteur: _compHaut(5),
     comp_poids: _compPoids(5),
     nom_etym: 'Son nom veut dire «lézard à faux» en grec — ses griffes étaient aussi longues et courbées qu\'une faux !',
     regime: '🌿 Herbivore',

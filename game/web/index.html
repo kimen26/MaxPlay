@@ -2,235 +2,103 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MaxPlay – Les Jeux de Max</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>MaxPlay – Les jeux de Max</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚌</text></svg>">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
   <style>
-    * { margin:0; padding:0; box-sizing:border-box; }
-
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
     body {
-      font-family: 'Nunito', sans-serif;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      min-height: 100dvh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px 16px 40px;
+      font-family:'Nunito',sans-serif;
+      background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+      min-height:100dvh; display:flex; flex-direction:column; align-items:center;
+      padding:18px 16px calc(34px + env(safe-area-inset-bottom));
     }
 
-    .header {
-      text-align: center;
-      margin-bottom: 28px;
+    /* ── Header (identité conservée : bus qui défile + jingle) ── */
+    .header { text-align:center; margin-bottom:18px; }
+    .header .bus-tagline { color:rgba(255,255,255,0.9); font-size:0.95rem; font-weight:700; margin-bottom:8px; }
+    .header .bus-display { display:flex; justify-content:center; align-items:center; min-height:80px; margin-bottom:6px; }
+    .header .bus-display svg { transition:opacity 0.5s ease; }
+    .header .bus-display.fading svg { opacity:0; }
+    .header h1 { color:#fff; font-size:2.4rem; font-weight:900; text-shadow:3px 3px 0 rgba(0,0,0,0.2); margin:4px 0 2px; }
+    .header .subtitle { color:rgba(255,255,255,0.9); font-size:1.05rem; font-weight:700; }
+
+    /* ── Sections par pilier ── */
+    .board { width:100%; max-width:760px; }
+    .section { color:#fff; font-size:1.25rem; font-weight:900; text-shadow:2px 2px 0 rgba(0,0,0,0.18);
+               margin:22px 4px 12px; display:flex; align-items:center; gap:8px; }
+    .section .count { font-size:0.8rem; font-weight:800; color:rgba(255,255,255,0.75); background:rgba(255,255,255,0.15);
+                      padding:2px 9px; border-radius:12px; }
+
+    .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:13px; }
+
+    /* ── Carte de jeu ── */
+    .card {
+      position:relative; background:#fff; border:none; border-radius:18px; padding:16px 12px 13px;
+      display:flex; flex-direction:column; align-items:center; text-align:center; gap:4px;
+      box-shadow:0 8px 22px rgba(0,0,0,0.18); cursor:pointer; font-family:inherit; color:#333;
+      min-height:128px; transition:transform 0.15s, box-shadow 0.15s;
     }
-    .header .bus-tagline {
-      color: rgba(255,255,255,0.9);
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: 0.3px;
-      margin-bottom: 10px;
-    }
-    .header .bus-display {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 90px;
-      margin-bottom: 8px;
-    }
-    .header .bus-display svg {
-      transition: opacity 0.5s ease;
-    }
-    .header .bus-display.fading svg { opacity: 0; }
-    .header h1 {
-      color: #fff;
-      font-size: 2.6rem;
-      font-weight: 900;
-      text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
-      margin: 6px 0 4px;
-    }
-    .header .subtitle {
-      color: rgba(255,255,255,0.9);
-      font-size: 1.1rem;
-      font-weight: 700;
+    .card:active { transform:scale(0.96); }
+    .card .emoji { font-size:2.3rem; line-height:1; margin-top:2px; }
+    .card .title { font-size:1rem; font-weight:900; color:#1a1a1a; line-height:1.15; }
+    .card .desc  { font-size:0.74rem; color:#777; line-height:1.3; }
+
+    /* étoiles */
+    .stars { margin-top:auto; padding-top:6px; display:flex; align-items:center; gap:2px; flex-wrap:wrap; justify-content:center; }
+    .star { font-size:1.05rem; color:#dcdce4; line-height:1; }
+    .star.on { color:#FFC107; text-shadow:0 1px 2px rgba(255,160,0,0.4); }
+    .stars.maxed .trophy {
+      font-size:0.62rem; font-weight:900; color:#fff; background:linear-gradient(135deg,#ffb300,#ff7043);
+      padding:2px 7px; border-radius:10px; margin-left:4px; letter-spacing:0.3px;
     }
 
-    /* Grille 2 colonnes fixe */
-    .games-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      width: 100%;
-      max-width: 720px;
+    /* carte verrouillée */
+    .card.locked { filter:grayscale(0.9); opacity:0.62; box-shadow:0 4px 12px rgba(0,0,0,0.12); }
+    .card.locked::after {
+      content:'🔒'; position:absolute; top:8px; right:10px; font-size:1.1rem; filter:none;
     }
+    .card .lock { margin-top:auto; padding-top:6px; font-size:0.7rem; font-weight:900; color:#5a5a7a; }
 
-    /* Carte Max Adventure : pleine largeur */
-    .game-card.full-width {
-      grid-column: 1 / -1;
-    }
+    /* secousse (feedback non punitif) */
+    @keyframes shake { 0%,100%{transform:translateX(0);} 25%{transform:translateX(-6px);} 75%{transform:translateX(6px);} }
+    .shake { animation:shake 0.35s; }
 
-    .game-card {
-      background: #fff;
-      border-radius: 18px;
-      padding: 18px 14px;
-      text-decoration: none;
-      color: #333;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.18);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      transition: transform 0.2s, box-shadow 0.2s;
-      position: relative;
+    /* toast info */
+    .toast {
+      position:fixed; left:50%; bottom:calc(24px + env(safe-area-inset-bottom)); transform:translateX(-50%);
+      background:rgba(0,0,0,0.85); color:#fff; padding:11px 18px; border-radius:16px; font-weight:800;
+      font-size:0.92rem; box-shadow:0 6px 20px rgba(0,0,0,0.4); opacity:0; pointer-events:none;
+      transition:opacity 0.25s, transform 0.25s; z-index:50; max-width:90vw; text-align:center;
     }
-    .game-card:active { transform: scale(0.97); }
+    .toast.show { opacity:1; transform:translateX(-50%) translateY(-4px); }
 
-    .game-number {
-      position: absolute;
-      top: -10px;
-      left: 14px;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: #fff;
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1rem;
-      font-weight: 900;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+    /* ── Modale code (déverrouillage dinos) ── */
+    .modal { position:fixed; inset:0; background:rgba(20,16,40,0.72); display:none; align-items:center; justify-content:center;
+             padding:20px; z-index:100; }
+    .modal.show { display:flex; }
+    .modal-box { background:#fff; border-radius:22px; padding:24px 22px; width:100%; max-width:340px; text-align:center;
+                 box-shadow:0 18px 50px rgba(0,0,0,0.4); }
+    .modal-box .m-emoji { font-size:2.6rem; }
+    .modal-box h3 { font-size:1.2rem; font-weight:900; color:#1a1a2e; margin:6px 0 4px; }
+    .modal-box p  { font-size:0.85rem; color:#777; margin-bottom:14px; }
+    .modal-box input {
+      width:100%; padding:13px; font-size:1.3rem; font-weight:900; text-align:center; text-transform:uppercase;
+      letter-spacing:3px; border:3px solid #d5d5e5; border-radius:14px; font-family:inherit; color:#333; outline:none;
     }
+    .modal-box input:focus { border-color:#7a4a9a; }
+    .modal-msg { min-height:20px; font-size:0.82rem; font-weight:800; color:#e53935; margin-top:8px; }
+    .modal-actions { display:flex; gap:10px; margin-top:14px; }
+    .modal-actions button {
+      flex:1; padding:13px; border:none; border-radius:14px; font-family:inherit; font-weight:900; font-size:1rem;
+      cursor:pointer;
+    }
+    .btn-go     { background:linear-gradient(135deg,#7a4a9a,#4a8a4a); color:#fff; }
+    .btn-cancel { background:#eee; color:#555; }
 
-    .game-emoji { font-size: 2.4rem; margin: 10px 0 6px; }
-
-    .game-title {
-      font-size: 1rem;
-      font-weight: 900;
-      color: #1a1a1a;
-      margin-bottom: 5px;
-      line-height: 1.2;
-    }
-
-    .game-desc {
-      font-size: 0.78rem;
-      color: #777;
-      line-height: 1.4;
-    }
-
-    .badge {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 3px 10px;
-      border-radius: 20px;
-      font-size: 0.7rem;
-      font-weight: 900;
-    }
-    .badge.new  { background: #4CAF50; color: #fff; }
-    .badge.tts  { background: linear-gradient(135deg,#667eea,#764ba2); color: #fff; }
-    .badge.big  { background: #ff6b35; color: #fff; }
-
-    /* Carte grand jeu */
-    .game-card.full-width .game-emoji { font-size: 3rem; }
-    .game-card.full-width .game-title { font-size: 1.3rem; }
-    .game-card.full-width .game-desc  { font-size: 0.9rem; max-width: 360px; }
-
-    footer {
-      margin-top: 30px;
-      color: rgba(255,255,255,0.75);
-      font-size: 0.9rem;
-      text-align: center;
-    }
-
-    /* === Carte de Villejuif (menu map) === */
-    .villejuif-map {
-      position: relative;
-      width: 100%;
-      max-width: 720px;
-      aspect-ratio: 4 / 5;
-      margin-bottom: 28px;
-      border-radius: 22px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-      background: #aee9b5;
-    }
-    .villejuif-map .map-svg {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%;
-      display: block;
-    }
-    .villejuif-map .map-label {
-      position: absolute;
-      top: 10px; left: 14px;
-      background: rgba(255,255,255,0.92);
-      color: #333;
-      padding: 5px 12px;
-      border-radius: 16px;
-      font-weight: 900;
-      font-size: 0.85rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
-    }
-    .map-hotspot {
-      position: absolute;
-      transform: translate(-50%, -50%);
-      width: 56px; height: 56px;
-      border-radius: 50%;
-      background: rgba(255,255,255,0.95);
-      border: 3px solid #fff;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.7rem;
-      text-decoration: none;
-      transition: transform 0.15s;
-      z-index: 2;
-    }
-    .map-hotspot:active { transform: translate(-50%, -50%) scale(0.88); }
-    .map-hotspot .hotspot-num {
-      position: absolute;
-      bottom: -6px; right: -6px;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      color: #fff;
-      width: 22px; height: 22px;
-      border-radius: 50%;
-      font-size: 0.65rem;
-      font-weight: 900;
-      display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
-    }
-    .map-hotspot.big {
-      width: 72px; height: 72px;
-      font-size: 2.1rem;
-      background: linear-gradient(135deg, #ffd54f, #ff9800);
-      border-color: #fff5d6;
-    }
-    .map-tooltip {
-      position: absolute;
-      top: calc(100% + 4px);
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(0,0,0,0.78);
-      color: #fff;
-      padding: 3px 8px;
-      border-radius: 8px;
-      font-size: 0.7rem;
-      white-space: nowrap;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.2s;
-    }
-    .map-hotspot:hover .map-tooltip,
-    .map-hotspot:focus .map-tooltip { opacity: 1; }
-
-    .grid-toggle {
-      width: 100%;
-      max-width: 720px;
-      margin-bottom: 14px;
-      text-align: center;
-      color: rgba(255,255,255,0.85);
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-    }
+    footer { margin-top:26px; color:rgba(255,255,255,0.75); font-size:0.9rem; text-align:center; }
+    footer a { color:rgba(255,255,255,0.3); font-size:0.7rem; text-decoration:none; font-weight:700; letter-spacing:1px; }
   </style>
 </head>
 <body>
@@ -238,444 +106,138 @@
     <p class="bus-tagline">Aujourd'hui Max prend le...</p>
     <div class="bus-display" id="busDisplay" aria-live="polite"></div>
     <h1>MaxPlay</h1>
-    <p class="subtitle">Les jeux de bus pour Max !</p>
+    <p class="subtitle">Les jeux de Max !</p>
   </div>
 
-  <div class="villejuif-map" aria-label="Carte du quartier">
-    <div class="map-label">🗺️ Le quartier</div>
-    <svg class="map-svg" viewBox="0 0 400 500" preserveAspectRatio="xMidYMid slice" font-family="'Arial Rounded MT Bold', Arial, sans-serif">
-      <!-- Fond herbe -->
-      <rect width="400" height="500" fill="#6db56d"/>
-      <!-- Herbe texturée (quelques touffes) -->
-      <circle cx="160" cy="60" r="5" fill="#5a9e5a" opacity="0.5"/>
-      <circle cx="340" cy="180" r="4" fill="#5a9e5a" opacity="0.5"/>
-      <circle cx="60" cy="380" r="5" fill="#5a9e5a" opacity="0.4"/>
-
-      <!-- ROUTES (fond gris) -->
-      <rect x="0" y="222" width="400" height="36" fill="#a0a0a0"/>
-      <rect x="182" y="0" width="36" height="500" fill="#a0a0a0"/>
-      <!-- lignes blanches routes -->
-      <line x1="0" y1="240" x2="182" y2="240" stroke="white" stroke-width="2" stroke-dasharray="14,10" opacity="0.7"/>
-      <line x1="218" y1="240" x2="400" y2="240" stroke="white" stroke-width="2" stroke-dasharray="14,10" opacity="0.7"/>
-      <line x1="200" y1="0" x2="200" y2="222" stroke="white" stroke-width="2" stroke-dasharray="14,10" opacity="0.7"/>
-      <line x1="200" y1="258" x2="200" y2="500" stroke="white" stroke-width="2" stroke-dasharray="14,10" opacity="0.7"/>
-      <!-- trottoirs clairs -->
-      <rect x="0" y="218" width="400" height="4" fill="#c8c8c8"/>
-      <rect x="0" y="258" width="400" height="4" fill="#c8c8c8"/>
-      <rect x="178" y="0" width="4" height="500" fill="#c8c8c8"/>
-      <rect x="218" y="0" width="4" height="500" fill="#c8c8c8"/>
-
-      <!-- ═══ ÉCOLE (haut-gauche) ═══ -->
-      <rect x="8" y="8" width="166" height="206" fill="#5c6bc0" rx="10"/>
-      <!-- toit triangulaire -->
-      <polygon points="8,50 91,8 174,50" fill="#3949ab"/>
-      <!-- fenêtres en grille -->
-      <rect x="22" y="58" width="36" height="28" fill="white" opacity="0.85" rx="3"/>
-      <rect x="66" y="58" width="36" height="28" fill="white" opacity="0.85" rx="3"/>
-      <rect x="110" y="58" width="36" height="28" fill="white" opacity="0.85" rx="3"/>
-      <rect x="22" y="96" width="36" height="28" fill="white" opacity="0.85" rx="3"/>
-      <rect x="66" y="96" width="36" height="28" fill="white" opacity="0.85" rx="3"/>
-      <rect x="110" y="96" width="36" height="28" fill="white" opacity="0.85" rx="3"/>
-      <!-- porte école -->
-      <rect x="70" y="155" width="34" height="51" fill="#ffca28" rx="4"/>
-      <circle cx="99" cy="181" r="3" fill="#7b4f00"/>
-      <!-- drapeau -->
-      <line x1="144" y1="58" x2="144" y2="20" stroke="#fff" stroke-width="2"/>
-      <rect x="144" y="20" width="18" height="12" fill="#ef5350"/>
-      <!-- label -->
-      <text x="91" y="196" text-anchor="middle" fill="white" font-size="13" font-weight="bold">ÉCOLE</text>
-
-      <!-- ═══ MONDE (haut-droite) ═══ -->
-      <rect x="222" y="8" width="170" height="206" fill="#00838f" rx="10"/>
-      <!-- globe stylisé -->
-      <circle cx="307" cy="100" r="58" fill="#0277bd" opacity="0.7"/>
-      <ellipse cx="307" cy="100" rx="28" ry="58" fill="none" stroke="white" stroke-width="1.5" opacity="0.6"/>
-      <ellipse cx="307" cy="100" rx="58" ry="22" fill="none" stroke="white" stroke-width="1.5" opacity="0.6"/>
-      <!-- continents très simplifiés -->
-      <ellipse cx="290" cy="85" rx="16" ry="12" fill="#4caf50" opacity="0.8"/>
-      <ellipse cx="325" cy="108" rx="12" ry="9" fill="#4caf50" opacity="0.8"/>
-      <ellipse cx="297" cy="112" rx="7" ry="5" fill="#81c784" opacity="0.8"/>
-      <!-- label -->
-      <text x="307" y="182" text-anchor="middle" fill="white" font-size="13" font-weight="bold">MONDE</text>
-
-      <!-- ═══ ABRI BUS (sur route gauche) ═══ -->
-      <!-- poteau -->
-      <rect x="98" y="204" width="5" height="54" fill="#546e7a"/>
-      <!-- toit abri -->
-      <rect x="60" y="210" width="60" height="8" fill="#37474f" rx="2"/>
-      <!-- paroi vitrée -->
-      <rect x="62" y="218" width="56" height="26" fill="#b0bec5" rx="2" opacity="0.7"/>
-      <!-- panneau LED -->
-      <rect x="64" y="220" width="52" height="16" fill="#1a237e" rx="1"/>
-      <text x="90" y="232" text-anchor="middle" fill="#00e5ff" font-size="8" font-weight="bold">BUS ▶ 3 min</text>
-
-      <!-- ═══ PARC (bas-gauche) ═══ -->
-      <rect x="8" y="262" width="166" height="230" fill="#388e3c" rx="10"/>
-      <!-- arbres -->
-      <circle cx="50" cy="305" r="22" fill="#2e7d32"/>
-      <circle cx="90" cy="290" r="18" fill="#43a047"/>
-      <circle cx="130" cy="305" r="20" fill="#2e7d32"/>
-      <circle cx="65" cy="348" r="15" fill="#388e3c"/>
-      <circle cx="115" cy="350" r="17" fill="#43a047"/>
-      <!-- mare -->
-      <ellipse cx="90" cy="420" rx="50" ry="30" fill="#29b6f6" opacity="0.65"/>
-      <ellipse cx="76" cy="413" rx="8" ry="4" fill="white" opacity="0.4"/>
-      <ellipse cx="104" cy="428" rx="6" ry="3" fill="white" opacity="0.4"/>
-      <!-- canard -->
-      <circle cx="82" cy="418" r="5" fill="#fff9c4"/>
-      <circle cx="86" cy="415" r="3" fill="#fff9c4"/>
-      <!-- label -->
-      <text x="91" y="476" text-anchor="middle" fill="white" font-size="13" font-weight="bold">PARC</text>
-
-      <!-- ═══ CENTRE BUS (bas-centre, x=182 à x=304) ═══ -->
-      <rect x="182" y="262" width="122" height="230" fill="#e65100" rx="10"/>
-      <!-- façade -->
-      <rect x="188" y="272" width="110" height="100" fill="#bf360c" rx="5"/>
-      <!-- portes bus (2) -->
-      <rect x="192" y="280" width="44" height="82" fill="#311b92" rx="3"/>
-      <rect x="244" y="280" width="48" height="82" fill="#311b92" rx="3"/>
-      <line x1="214" y1="280" x2="214" y2="362" stroke="#512da8" stroke-width="2"/>
-      <line x1="268" y1="280" x2="268" y2="362" stroke="#512da8" stroke-width="2"/>
-      <!-- bus garé bleu -->
-      <rect x="188" y="376" width="110" height="34" fill="#1565c0" rx="5"/>
-      <rect x="194" y="382" width="12" height="14" fill="white" rx="2" opacity="0.8"/>
-      <rect x="210" y="382" width="12" height="14" fill="white" rx="2" opacity="0.8"/>
-      <rect x="226" y="382" width="12" height="14" fill="white" rx="2" opacity="0.8"/>
-      <!-- enseigne -->
-      <rect x="186" y="420" width="112" height="20" fill="#ff6f00" rx="3"/>
-      <text x="242" y="434" text-anchor="middle" fill="white" font-size="10" font-weight="bold">CENTRE BUS</text>
-      <text x="242" y="474" text-anchor="middle" fill="#ffccbc" font-size="9">Dépôt · Lignes</text>
-
-      <!-- ═══ GARAGE (bas-droite, x=312 à x=392) ═══ -->
-      <rect x="312" y="262" width="80" height="230" fill="#546e7a" rx="10"/>
-      <!-- porte garage -->
-      <rect x="320" y="272" width="64" height="88" fill="#37474f" rx="3"/>
-      <!-- grille porte -->
-      <line x1="320" y1="292" x2="384" y2="292" stroke="#607d8b" stroke-width="2.5"/>
-      <line x1="320" y1="312" x2="384" y2="312" stroke="#607d8b" stroke-width="2.5"/>
-      <line x1="320" y1="332" x2="384" y2="332" stroke="#607d8b" stroke-width="2.5"/>
-      <line x1="320" y1="352" x2="384" y2="352" stroke="#607d8b" stroke-width="2.5"/>
-      <line x1="352" y1="272" x2="352" y2="360" stroke="#607d8b" stroke-width="2"/>
-      <!-- outil clé à molette -->
-      <rect x="330" y="370" width="44" height="28" fill="#455a64" rx="3"/>
-      <text x="352" y="390" text-anchor="middle" font-size="18">🔧</text>
-      <!-- bus rouge garé -->
-      <rect x="318" y="406" width="66" height="30" fill="#c62828" rx="4"/>
-      <rect x="322" y="412" width="10" height="12" fill="white" rx="1" opacity="0.8"/>
-      <rect x="336" y="412" width="10" height="12" fill="white" rx="1" opacity="0.8"/>
-      <!-- label -->
-      <text x="352" y="454" text-anchor="middle" fill="white" font-size="11" font-weight="bold">GARAGE</text>
-      <text x="352" y="474" text-anchor="middle" fill="#cfd8dc" font-size="9">Réparation</text>
-
-      <!-- ═══ intersection centrale — étoile Max Adventure ═══ -->
-      <circle cx="200" cy="240" r="18" fill="#ffd600" opacity="0.9"/>
-      <text x="200" y="246" text-anchor="middle" font-size="18">🎮</text>
-    </svg>
-
-    <!-- ══ HOTSPOTS ÉCOLE ══ -->
-    <a href="mj-04.html" class="map-hotspot" style="left:14%; top:20%;" title="Compte les passagers">
-      👥<span class="hotspot-num">4</span><span class="map-tooltip">Compte les passagers</span>
-    </a>
-    <a href="mj-06.html" class="map-hotspot" style="left:30%; top:12%;" title="Lis la phrase">
-      📖<span class="hotspot-num">6</span><span class="map-tooltip">Lis la phrase</span>
-    </a>
-    <a href="mj-15.html" class="map-hotspot" style="left:14%; top:34%;" title="L'intrus">
-      🔍<span class="hotspot-num">15</span><span class="map-tooltip">L'intrus</span>
-    </a>
-    <a href="mj-16.html" class="map-hotspot" style="left:32%; top:34%;" title="Complète la suite">
-      📈<span class="hotspot-num">16</span><span class="map-tooltip">Complète la suite</span>
-    </a>
-
-    <!-- ══ HOTSPOTS MONDE ══ -->
-    <a href="mj-11.html" class="map-hotspot" style="left:66%; top:18%;" title="Quel pays ?">
-      🌍<span class="hotspot-num">11</span><span class="map-tooltip">Quel pays ?</span>
-    </a>
-    <a href="mj-20.html" class="map-hotspot" style="left:84%; top:30%;" title="8 langues">
-      🌐<span class="hotspot-num">20</span><span class="map-tooltip">8 langues</span>
-    </a>
-
-    <!-- ══ HOTSPOTS ARRÊT DE BUS (sur la route) ══ -->
-    <a href="mj-13a.html" class="map-hotspot" style="left:22%; top:47%;" title="Arrêt RATP">
-      🚏<span class="hotspot-num">13</span><span class="map-tooltip">Arrêt de bus</span>
-    </a>
-    <a href="mj-05.html" class="map-hotspot" style="left:42%; top:47%;" title="La bonne place">
-      🪑<span class="hotspot-num">5</span><span class="map-tooltip">La bonne place</span>
-    </a>
-
-    <!-- ══ HOTSPOT MAX ADVENTURE (intersection centrale) ══ -->
-    <a href="max-adventure.html" class="map-hotspot big" style="left:50%; top:47%;" title="Max Adventure">
-      🎮<span class="map-tooltip">Max Adventure</span>
-    </a>
-
-    <!-- ══ HOTSPOT PARC ══ -->
-    <a href="mj-12.html" class="map-hotspot" style="left:24%; top:76%;" title="Sons">
-      🎵<span class="hotspot-num">12</span><span class="map-tooltip">Sons</span>
-    </a>
-
-    <!-- ══ HOTSPOTS CENTRE BUS ══ -->
-    <a href="mj-08.html" class="map-hotspot" style="left:56%; top:64%;" title="Au centre bus">
-      🅿️<span class="hotspot-num">8</span><span class="map-tooltip">Au centre bus</span>
-    </a>
-    <a href="mj-01.html" class="map-hotspot" style="left:70%; top:64%;" title="Quiz Bus">
-      🚌<span class="hotspot-num">1</span><span class="map-tooltip">Quiz Bus</span>
-    </a>
-    <a href="mj-14.html" class="map-hotspot" style="left:56%; top:82%;" title="Grille des bus">
-      🔲<span class="hotspot-num">14</span><span class="map-tooltip">Grille des bus</span>
-    </a>
-
-    <!-- ══ HOTSPOTS GARAGE ══ -->
-    <a href="mj-09.html" class="map-hotspot" style="left:70%; top:82%;" title="Trie les bus">
-      🗂️<span class="hotspot-num">9</span><span class="map-tooltip">Trie les bus</span>
-    </a>
-    <a href="mj-17.html" class="map-hotspot" style="left:84%; top:64%;" title="Garage (réparation)">
-      🔧<span class="hotspot-num">17</span><span class="map-tooltip">Garage (réparation)</span>
-    </a>
-    <a href="mj-18.html" class="map-hotspot" style="left:84%; top:82%;" title="Tubes couleurs">
-      🧪<span class="hotspot-num">18</span><span class="map-tooltip">Tubes couleurs</span>
-    </a>
-    <a href="mj-19.html" class="map-hotspot" style="left:84%; top:47%;" title="Trouve le bus">
-      🎯<span class="hotspot-num">19</span><span class="map-tooltip">Trouve le bus</span>
-    </a>
-  </div>
-
-  <div class="grid-toggle">↓ Tous les jeux ↓</div>
-
-  <div class="games-grid">
-
-    <a href="mj-01.html" class="game-card">
-      <div class="game-number">1</div>
-      <div class="game-emoji">🚌</div>
-      <div class="game-title">Quiz Bus (mix)</div>
-      <div class="game-desc">10 tours — couleur, numéro et écoute mélangés !</div>
-      <span class="badge tts">TTS</span>
-    </a>
-
-    <a href="mj-04.html" class="game-card">
-      <div class="game-number">4</div>
-      <div class="game-emoji">👥</div>
-      <div class="game-title">Compte les passagers</div>
-      <div class="game-desc">Combien de passagers en tout ?</div>
-    </a>
-
-    <a href="mj-05.html" class="game-card">
-      <div class="game-number">5</div>
-      <div class="game-emoji">🪑</div>
-      <div class="game-title">La bonne place</div>
-      <div class="game-desc">Combien peuvent encore monter ?</div>
-    </a>
-
-    <a href="mj-06.html" class="game-card">
-      <div class="game-number">6</div>
-      <div class="game-emoji">📖</div>
-      <div class="game-title">Lis la phrase</div>
-      <div class="game-desc">Quel mot manque dans la phrase ?</div>
-    </a>
-
-    <a href="mj-08.html" class="game-card">
-      <div class="game-number">8</div>
-      <div class="game-emoji">🅿️</div>
-      <div class="game-title">Au centre bus</div>
-      <div class="game-desc">Range les bus à leur place pour la nuit !</div>
-    </a>
-
-    <a href="mj-09.html" class="game-card">
-      <div class="game-number">9</div>
-      <div class="game-emoji">🗂️</div>
-      <div class="game-title">Trie les bus !</div>
-      <div class="game-desc">Range-les dans leur famille de couleur !</div>
-    </a>
-
-    <a href="mj-11.html" class="game-card">
-      <div class="game-number">11</div>
-      <div class="game-emoji">🌍</div>
-      <div class="game-title">Quel pays ?</div>
-      <div class="game-desc">Trouve le pays du drapeau ! L'audio t'aide !</div>
-      <span class="badge tts">TTS</span>
-    </a>
-
-    <a href="mj-12.html" class="game-card">
-      <div class="game-number">12</div>
-      <div class="game-emoji">🎵</div>
-      <div class="game-title">Nouveaux sons</div>
-      <div class="game-desc">Bus, Mario, Pokémon et plein de sons secrets !</div>
-      <span class="badge new">NEW</span>
-    </a>
-
-    <a href="mj-13a.html" class="game-card">
-      <div class="game-number">13a</div>
-      <div class="game-emoji">🥇</div>
-      <div class="game-title">Le premier bus</div>
-      <div class="game-desc">Quel bus arrive en premier à l'arrêt ?</div>
-      <span class="badge new">NEW</span>
-    </a>
-
-    <a href="mj-13b.html" class="game-card">
-      <div class="game-number">13b</div>
-      <div class="game-emoji">🚌</div>
-      <div class="game-title">Monte dans le bus !</div>
-      <div class="game-desc">Trouve et appuie sur le bon bus !</div>
-      <span class="badge new">NEW</span>
-    </a>
-
-    <a href="mj-13c.html" class="game-card">
-      <div class="game-number">13c</div>
-      <div class="game-emoji">🔢</div>
-      <div class="game-title">Combien avant ?</div>
-      <div class="game-desc">Compte les bus avant celui demandé !</div>
-      <span class="badge new">NEW</span>
-    </a>
-
-    <a href="mj-14.html" class="game-card">
-      <div class="game-number">14</div>
-      <div class="game-emoji">🔲</div>
-      <div class="game-title">La grille des bus</div>
-      <div class="game-desc">Quel bus manque dans la grille ? Trouve le pattern !</div>
-    </a>
-
-    <a href="mj-15.html" class="game-card">
-      <div class="game-number">15</div>
-      <div class="game-emoji">🔍</div>
-      <div class="game-title">L'intrus</div>
-      <div class="game-desc">4 bus ont quelque chose en commun… lequel est l'intrus ?</div>
-      <span class="badge new">NEW</span>
-    </a>
-
-    <a href="mj-16.html" class="game-card">
-      <div class="game-number">16</div>
-      <div class="game-emoji">📈</div>
-      <div class="game-title">Complète la suite</div>
-      <div class="game-desc">Couleurs, tailles… qu'est-ce qui vient ensuite ?</div>
-      <span class="badge new">NEW</span>
-    </a>
-
-    <a href="mj-17.html" class="game-card">
-      <div class="game-number">17</div>
-      <div class="game-emoji">🔧</div>
-      <div class="game-title">Le garage</div>
-      <div class="game-desc">Essence, lavage, numéro, pneus — répare les bus !</div>
-      <span class="badge new">NEW</span>
-    </a>
-
-    <a href="mj-18.html" class="game-card">
-      <div class="game-number">18</div>
-      <div class="game-emoji">🧪</div>
-      <div class="game-title">Tubes de couleurs</div>
-      <div class="game-desc">Verse les couleurs pour trier les tubes !</div>
-      <span class="badge new">NEW</span>
-    </a>
-
-    <a href="mj-19.html" class="game-card">
-      <div class="game-number">19</div>
-      <div class="game-emoji">🎯</div>
-      <div class="game-title">Trouve le bus !</div>
-      <div class="game-desc">Repère le bon bus qui bouge dans tous les sens !</div>
-      <span class="badge new">NEW</span>
-    </a>
-
-    <a href="mj-20.html" class="game-card">
-      <div class="game-number">20</div>
-      <div class="game-emoji">🔢</div>
-      <div class="game-title">Compte en 8 langues</div>
-      <div class="game-desc">Apprends à compter de 1 à 20 dans toutes les langues !</div>
-      <span class="badge new">NEW</span>
-    </a>
-
-    <a href="mj-21.html" class="game-card">
-      <div class="game-number">21</div>
-      <div class="game-emoji">🎨</div>
-      <div class="game-title">Peins les bus !</div>
-      <div class="game-desc">Mélange rouge, jaune et bleu pour retrouver la couleur du bus !</div>
-      <span class="badge new">NEW</span>
-    </a>
-
-    <a href="mj-22.html" class="game-card">
-      <div class="game-number">22</div>
-      <div class="game-emoji">🗺️</div>
-      <div class="game-title">Trouve le pays !</div>
-      <div class="game-desc">Localise les 25 pays d'Europe et flag les drapeaux !</div>
-      <span class="badge new">NEW</span>
-    </a>
-
-    <a href="max-adventure.html" class="game-card full-width">
-      <div class="game-number">★</div>
-      <div class="game-emoji">🎮</div>
-      <div class="game-title">Max Adventure</div>
-      <div class="game-desc">Conduis ton bus dans la ville, collecte les passagers et explore Villejuif !</div>
-      <span class="badge big">Grand Jeu</span>
-    </a>
-
-    <a href="dev-dinos.html?v=7" class="game-card full-width" style="background:linear-gradient(135deg,#1a0a2e,#0a1a2e);border:2px solid #7a4a9a;">
-      <div class="game-number" style="background:linear-gradient(135deg,#7a4a9a,#4a8a4a);">🦖</div>
-      <div class="game-emoji">🦕</div>
-      <div class="game-title" style="color:#e2e8f0;">🦕 Encyclopédie Dinos</div>
-      <div class="game-desc" style="color:#94a3b8;">50 dinos · 6 catégories · Fiches riches · TTS partout · Photos</div>
-      <span class="badge" style="background:#7a4a9a;color:#fff;">DEV</span>
-    </a>
-
-    <a href="dev-lab.html" class="game-card full-width" style="background:linear-gradient(135deg,#1a1a2e,#16213e);border:2px solid #0f3460;">
-      <div class="game-number" style="background:linear-gradient(135deg,#e94560,#0f3460);">🛠</div>
-      <div class="game-emoji">🔬</div>
-      <div class="game-title" style="color:#e2e8f0;">Dev Lab</div>
-      <div class="game-desc" style="color:#94a3b8;">Sandbox · Animations · Manette · Écran projecteur</div>
-      <span class="badge" style="background:#e94560;color:#fff;">DEV</span>
-    </a>
-
-    <a href="mj-pose-tiles.html" class="game-card full-width" style="background:linear-gradient(135deg,#ffd166,#ffb627);border:2px solid #ff8c00;">
-      <div class="game-number" style="background:#ff6b35;color:#fff;">🦺</div>
-      <div class="game-emoji">🚧</div>
-      <div class="game-title" style="color:#2a2a4a;">Pose-tes-tiles</div>
-      <div class="game-desc" style="color:#3a3a5a;">Petit ouvrier ! Choisis tes pièces et construis ta ville. 5 thèmes : rue, parc, jardin, maisons, forêt.</div>
-      <span class="badge new">NEW</span>
-    </a>
-
-  </div>
+  <main class="board" id="board"><!-- généré depuis catalog.js --></main>
 
   <footer>
     🚌 Fait avec ❤️ pour Max
-    <br>
-    <a href="suivi.html" style="color:rgba(255,255,255,0.25);font-size:0.7rem;text-decoration:none;font-weight:700;letter-spacing:1px;">
-      📊 Suivi parental
-    </a>
+    <br><a href="suivi.html">📊 Suivi parental</a>
   </footer>
 
+  <!-- Modale code (déverrouillage par mot-clé — local, aucun compte) -->
+  <div class="modal" id="code-modal" aria-hidden="true">
+    <div class="modal-box">
+      <div class="m-emoji">🦕</div>
+      <h3>Un code secret ?</h3>
+      <p>Demande le mot magique à un grand pour ouvrir les dinos !</p>
+      <input id="code-input" type="text" inputmode="text" autocomplete="off" placeholder="• • • • • •" aria-label="Code">
+      <div class="modal-msg" id="code-msg"></div>
+      <div class="modal-actions">
+        <button class="btn-cancel" id="code-cancel">Plus tard</button>
+        <button class="btn-go" id="code-go">Ouvrir !</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="js/catalog.js"></script>
+  <script src="js/stars.js"></script>
+  <script src="js/unlock.js"></script>
   <script src="js/data.js"></script>
   <script src="js/bus-svg.js"></script>
   <script>
-    // Cycle des bus préférés de Max dans le header — fade toutes les 3.5s
+  (function () {
+    const CAT = window.MAXPLAY_CATALOG || [];
+    const board = document.getElementById('board');
+    const modal = document.getElementById('code-modal');
+    const input = document.getElementById('code-input');
+    const msg   = document.getElementById('code-msg');
+    const toast = document.getElementById('toast');
+
+    // ── Rendu ────────────────────────────────────────────────────────────
+    function starsHtml(id) {
+      const max = window.Stars ? Stars.max(id) : 0;
+      if (!max) return '';
+      const got = Stars.get(id);
+      let s = '';
+      for (let i = 0; i < max; i++) s += `<span class="star ${i < got ? 'on' : ''}">★</span>`;
+      const done = got >= max;
+      return `<div class="stars ${done ? 'maxed' : ''}">${s}${done ? '<span class="trophy">MAXIMUM 🏆</span>' : ''}</div>`;
+    }
+
+    function cardHtml(e) {
+      const unlocked = Unlock.isUnlocked(e.id);
+      const reason = Unlock.lockedReason(e.id);
+      const lockTxt = reason === 'code' ? '🔑 Code secret' : '⭐ À débloquer';
+      const inner = unlocked ? starsHtml(e.id) : `<span class="lock">${lockTxt}</span>`;
+      return `<button class="card ${unlocked ? '' : 'locked'}" data-id="${e.id}" data-url="${e.url}" data-reason="${reason || ''}">
+        <span class="emoji">${e.emoji}</span>
+        <span class="title">${e.titre}</span>
+        <span class="desc">${e.desc}</span>
+        ${inner}
+      </button>`;
+    }
+
+    function sectionHtml(title, items) {
+      if (!items.length) return '';
+      return `<h2 class="section">${title}<span class="count">${items.length}</span></h2>
+              <div class="grid">${items.map(cardHtml).join('')}</div>`;
+    }
+
+    function render() {
+      const jeux  = CAT.filter(e => e.pilier === 'jeux');
+      const seq   = jeux.filter(e => e.access === 'sequence');
+      const free  = jeux.filter(e => e.access === 'free');
+      const dinos = CAT.filter(e => e.pilier === 'dinos');
+      board.innerHTML =
+        sectionHtml('🚌 Le parcours de Max', seq) +
+        sectionHtml('🎮 En accès libre', free) +
+        sectionHtml('🦕 Les dinos', dinos);
+    }
+
+    // ── Interactions ──────────────────────────────────────────────────────
+    function showToast(txt) {
+      toast.textContent = txt; toast.classList.add('show');
+      clearTimeout(showToast._t); showToast._t = setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    board.addEventListener('click', (ev) => {
+      const card = ev.target.closest('.card'); if (!card) return;
+      const id = card.dataset.id, url = card.dataset.url;
+      if (Unlock.isUnlocked(id)) { location.href = url; return; }
+      if (card.dataset.reason === 'code') { openModal(); }
+      else { card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake');
+             showToast('Finis le jeu d\'avant pour débloquer ! ⭐'); }
+    });
+
+    function openModal() { msg.textContent = ''; input.value = ''; modal.classList.add('show'); setTimeout(() => input.focus(), 50); }
+    function closeModal() { modal.classList.remove('show'); }
+
+    async function validateCode() {
+      const r = await Unlock.redeem(input.value);
+      if (r.ok) { closeModal(); render(); showToast('Bravo ! Les dinos sont ouverts ! 🦕'); }
+      else { msg.textContent = 'Code pas bon — redemande à un grand 🙂';
+             const box = modal.querySelector('.modal-box'); box.classList.remove('shake'); void box.offsetWidth; box.classList.add('shake'); }
+    }
+
+    document.getElementById('code-go').addEventListener('click', validateCode);
+    document.getElementById('code-cancel').addEventListener('click', closeModal);
+    input.addEventListener('keydown', (e) => { if (e.key === 'Enter') validateCode(); });
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+    render();
+
+    // ── Header : bus préféré qui défile (identité conservée) ──────────────
     (function cycleBus() {
       const display = document.getElementById('busDisplay');
       if (!display || typeof LIGNES === 'undefined' || typeof busSVG !== 'function') return;
-
-      // Mélange aléatoire des lignes pour ne pas commencer toujours par 162
       const pool = LIGNES.slice().sort(() => Math.random() - 0.5);
       let idx = 0;
-
-      const render = () => {
-        const l = pool[idx];
-        display.innerHTML = busSVG(l.color, l.textColor, l.num, 200);
-        idx = (idx + 1) % pool.length;
-      };
-
-      render();
-      setInterval(() => {
-        display.classList.add('fading');
-        setTimeout(() => {
-          render();
-          display.classList.remove('fading');
-        }, 500);
-      }, 3500);
+      const draw = () => { const l = pool[idx]; display.innerHTML = busSVG(l.color, l.textColor, l.num, 200); idx = (idx + 1) % pool.length; };
+      draw();
+      setInterval(() => { display.classList.add('fading'); setTimeout(() => { draw(); display.classList.remove('fading'); }, 500); }, 3500);
     })();
 
-    // Jingle aléatoire RATP ou SNCF au chargement de la page
+    // ── Jingle au 1er clic (identité conservée) ───────────────────────────
     const JINGLES = ['sounds/ratp-jingle.mp3', 'sounds/sncf-france-jingle.mp3'];
     const jingle = new Audio(JINGLES[Math.floor(Math.random() * JINGLES.length)]);
     jingle.volume = 0.5;
-    document.addEventListener('click', function playOnce() {
-      jingle.play().catch(() => {});
-      document.removeEventListener('click', playOnce);
-    }, { once: true });
-    // Tenter autoplay direct (marche si page déjà visitée)
+    document.addEventListener('click', function once() { jingle.play().catch(() => {}); document.removeEventListener('click', once); }, { once: true });
     jingle.play().catch(() => {});
+  })();
   </script>
 </body>
 </html>

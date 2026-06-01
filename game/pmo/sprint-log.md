@@ -9,6 +9,31 @@
 
 ---
 
+## 2026-06-01 — [DINOS] Filtrage 60→50 + Reclassement scientifique = Phase figée EP-039
+
+**Owner** : Papa Yann
+
+**Décision gravée** :
+1. **Filtrage 10 dinos redondants** : Maiasaura (homonyme) + 9 cératopsiens quasi-identiques
+2. **Apatosaure bi-nom** : « Apatosaure (Brontosaure) »
+3. **Reclassement scientifique** : Suchomimus/Baryonyx → trex · Dimétrodon → volant
+4. **Hiérarchie 1 niveau** : 8 familles simple (trex, cou_long, arme, cornu, bec, raptor, volant, bizarre)
+5. **Textes explic 3-pôles validés** : Grok/Kimi/DeepSeek 2026-06-01
+6. **UI enrichie** : DINO_FAMILLES_INTRO + bouton 🔊 "C'est quoi ce nom ?"
+7. **RÈGLE FIGÉE** : zéro Wex/univers dans encyclopédie (factuel seul)
+
+**État** : 50 dinos finalisées, prêtes TTS production (49 restants après Parasaurolophus).
+
+**Fichiers touchés** :
+- `game/web/js/dinos-data.js` : 50 fiches
+- `game/web/dev-dinos.html` : UI familles + INTRO
+- `pmo/decisions.md` : entrée figée
+- `pmo/INVARIANTS.md` : "50 fiches finale"
+
+**Prochaine étape** : TTS audio DUO 49 fiches (processus 3-passes validé 2026-05-17/30).
+
+---
+
 ## Prochaine action (priorité courante)
 
 **⏳ Au reboot 2026-05-31** :

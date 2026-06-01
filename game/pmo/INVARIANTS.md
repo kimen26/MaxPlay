@@ -58,6 +58,7 @@
 |----------|--------|--------|
 | MJ déployés au menu | **23 actifs** (mj-01, mj-04–06, mj-08–09, mj-11–13a/b/c, mj-14–21, max-adventure, mj-pose-tiles) | `memory/state.md` |
 | MJ retirés du menu | **4 consolidés** (mj-02, mj-03, mj-07, mj-10) | `memory/state.md` |
+| Encyclopédie dinos | **50 fiches finale** (filtrage 60→50 validé 2026-06-01, 10 redondants/inconnus retirés, Apatosaure bi-nom, reclassement scientifique appliqué) | `game/web/js/dinos-data.js` |
 | Recettes tile validées | **20** (`test_*.py` dans `recipes/` — routes h/v × 3 générations, virages × 4, carrefour × 2, rond-point, quartier, parking, voie bus, passages piétons × 2, refs papa × 3) | `web/tile-tools/recipes/test_*.py` |
 | Scripts utilitaires tile (all) | **30+** (20 recettes validées + utilitaires build/render/debug dans `scripts/`) | `web/tile-tools/recipes/` + `scripts/` |
 | Référence canonique virages | `test_ref_papa_4virages.py` (14×14 compo Papa Yann tile-picker) | `web/tile-tools/recipes/` |

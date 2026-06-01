@@ -1,6 +1,6 @@
-// test-unlock.mjs — logique étoiles (dérivées) + déblocage + code (sans navigateur)
+// test-unlock.mjs — logique étoiles (dérivées) + déblocage (2★) + code (sans navigateur)
 // Les étoiles se déduisent de localStorage['maxplay_progress'] (écrit par tracker.js).
-// On simule donc la progression réelle.
+// Règle figée : le suivant s'ouvre à 2 parties 100% (2★). Bâcler n'ouvre RIEN.
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
@@ -15,7 +15,6 @@ globalThis.localStorage = {
   removeItem: k => { delete mem[k]; },
 };
 
-// Simule la progression que tracker.js écrirait
 function seed(id, { plays = 0, perfect = 0 } = {}) {
   const d = JSON.parse(mem['maxplay_progress'] || '{}');
   d.games = d.games || {};
@@ -26,30 +25,33 @@ function seed(id, { plays = 0, perfect = 0 } = {}) {
 }
 
 const win = {};
-function reload() { for (const f of ['catalog.js', 'stars.js', 'unlock.js']) new Function('window', readFileSync(resolve(JS, f), 'utf8'))(win); }
-reload();
-let { Stars, Unlock } = win;
+for (const f of ['catalog.js', 'stars.js', 'unlock.js']) new Function('window', readFileSync(resolve(JS, f), 'utf8'))(win);
+const { Stars, Unlock } = win;
 
 let fail = 0;
 const ok = (name, cond) => { console.log(`  ${cond ? '\x1b[32mPASS\x1b[0m' : '\x1b[31mFAIL\x1b[0m'}  ${name}`); if (!cond) fail++; };
 
-console.log('\n══ Étoiles (dérivées) + déblocage + code ══\n');
+console.log('\n══ Étoiles (dérivées) + déblocage 2★ + code ══\n');
+ok('seuil de déblocage = 2★',            Unlock.UNLOCK_STARS === 2);
 ok('mj-01 ouvert (1er de la séquence)',  Unlock.isUnlocked('mj-01') === true);
 ok('mj-04 verrouillé au départ',         Unlock.isUnlocked('mj-04') === false);
 ok('mj-12 (libre) ouvert',               Unlock.isUnlocked('mj-12') === true);
-ok('max-adventure ouvert (libre)',       Unlock.isUnlocked('max-adventure') === true);
 ok('dinos verrouillé (code requis)',     Unlock.isUnlocked('dinos') === false);
-ok('mj-01 : 0 étoile au départ',         Stars.get('mj-01') === 0);
 
-// 1 partie à 100% sur mj-01 → 1★ → mj-04 s'ouvre (option B)
+// 1 partie 100% = 1★ → PAS encore assez (il en faut 2)
 seed('mj-01', { perfect: 1 });
-ok('1★ sur mj-01 (partie 100%)',         Stars.get('mj-01') === 1);
-ok('1★ → mj-04 débloqué',                Unlock.isUnlocked('mj-04') === true);
+ok('1★ sur mj-01',                       Stars.get('mj-01') === 1);
+ok('1★ NE débloque PAS mj-04 (il faut 2★)', Unlock.isUnlocked('mj-04') === false);
 
-// Garde-fou anti-blocage : 4 essais sans réussite ouvrent aussi le suivant
-seed('mj-04', { plays: 4, perfect: 0 });
-ok('mj-04 sans étoile mais 4 essais',    Stars.get('mj-04') === 0 && Stars.plays('mj-04') === 4);
-ok('4 essais → mj-05 débloqué (anti-blocage)', Unlock.isUnlocked('mj-05') === true);
+// 2 parties 100% = 2★ → ouvre mj-04
+seed('mj-01', { perfect: 2 });
+ok('2★ sur mj-01',                       Stars.get('mj-01') === 2);
+ok('2★ → mj-04 débloqué',                Unlock.isUnlocked('mj-04') === true);
+
+// Bâcler n'ouvre RIEN : beaucoup d'essais, 0 réussite → reste fermé
+seed('mj-04', { plays: 9, perfect: 0 });
+ok('mj-04 : 9 essais, 0 étoile',         Stars.get('mj-04') === 0 && Stars.plays('mj-04') === 9);
+ok('bâcler (9 essais, 0★) → mj-05 RESTE fermé', Unlock.isUnlocked('mj-05') === false);
 
 // Plafond maxStars (mj-01 = 3)
 seed('mj-01', { perfect: 9 });

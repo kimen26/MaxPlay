@@ -66,7 +66,7 @@
     // Niveau = étoiles déjà gagnées + 1 (dérivé, aucun stockage en plus).
     // Une manche sans révélation (100%) → +1★ (tracker) → niveau +1 au prochain lancement.
     const GAME_ID = 'mj-04';
-    const MAX_QUESTIONS = 6;
+    const MAX_QUESTIONS = 8; // 4 au niveau courant + 4 à des niveaux inférieurs (manche mixte)
 
     // Paliers : le nombre de passagers monte avec le niveau
     const LEVELS = [
@@ -83,7 +83,7 @@
       ? shuffle
       : (a) => a.map(x => [Math.random(), x]).sort((p, q) => p[0] - q[0]).map(p => p[1]);
 
-    let level = 1, score = 0, streak = 0, questionCount = 0, reveals = 0, qcm = null, correctAnswer = 0;
+    let level = 1, score = 0, streak = 0, questionCount = 0, reveals = 0, qcm = null, correctAnswer = 0, qLevels = [];
 
     function starsGot() { return window.Stars ? Stars.get(GAME_ID) : 0; }
     function currentLevel() { return Math.min(LEVELS.length, starsGot() + 1); }
@@ -99,6 +99,12 @@
 
     function init() {
       level = currentLevel();
+      // Manche mixte : 4 questions au niveau courant (le « dur ») + 4 à des niveaux
+      // inférieurs tirés au hasard (au niveau 1 → 8 faciles). Pas « que dur d'un coup ».
+      const hard = [level, level, level, level];
+      const easy = [];
+      for (let i = 0; i < 4; i++) easy.push(level <= 1 ? 1 : 1 + Math.floor(Math.random() * (level - 1)));
+      qLevels = _shuffle([...hard, ...easy]);
       score = 0; streak = 0; questionCount = 0; reveals = 0;
       document.getElementById('score').textContent = '0';
       document.getElementById('streak').textContent = '';
@@ -112,7 +118,8 @@
       qcm = QcmRetry.create();
       hideHint();
 
-      const L = LEVELS[level - 1];
+      const qLvl = qLevels[questionCount - 1] || level;   // niveau de CETTE question (manche mixte)
+      const L = LEVELS[qLvl - 1];
       const total = L.min + Math.floor(Math.random() * (L.max - L.min + 1));
       correctAnswer = total;
 

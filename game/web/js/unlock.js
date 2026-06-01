@@ -31,6 +31,8 @@
   function isUnlocked(id) {
     const e = entry(id);
     if (!e) return false;
+    // Console parent (suivi.html) : { unlockAll:true } ouvre TOUT (jeux + dinos)
+    try { if ((JSON.parse(localStorage.getItem('maxplay_admin')) || {}).unlockAll) return true; } catch (e2) {}
     if (e.access === 'free') return true;
     if (e.access === 'code') return !!loadUnlocks()[(e.unlock && e.unlock.bundle) || e.id];
     if (e.access === 'sequence') {

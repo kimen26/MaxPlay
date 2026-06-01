@@ -65,5 +65,12 @@ const good = await Unlock.redeem('  tritri ');
 ok('code TRITRI accepté',                good.ok === true && good.bundle === 'dinos');
 ok('dinos débloqué après code',          Unlock.isUnlocked('dinos') === true);
 
+// Console parent : "tout débloquer" ouvre tout, même sans étoiles ni code
+mem['maxplay_admin'] = JSON.stringify({ unlockAll: true });
+ok('console parent → mj-13c ouvert (sans étoiles)', Unlock.isUnlocked('mj-13c') === true);
+ok('console parent → dinos ouvert (sans code)',     Unlock.isUnlocked('dinos') === true);
+delete mem['maxplay_admin'];
+ok('progression remise → mj-13c re-verrouillé',     Unlock.isUnlocked('mj-13c') === false);
+
 console.log(fail === 0 ? '\n\x1b[32m✓ logique OK\x1b[0m\n' : `\n\x1b[31m✗ ${fail} échec(s)\x1b[0m\n`);
 process.exit(fail ? 1 : 0);

@@ -568,7 +568,7 @@ function setMode(mode) {
 }
 
 function speakMenuIntro() {
-  const labels = { regime: 'Les dinosaures ! Choisis ce que tu veux découvrir !', famille: 'Les grandes familles de dinosaures !', continent: 'Sur quel continent vivait le dinosaure ?', periode: 'À quelle époque vivait le dinosaure ?' };
+  const labels = { regime: 'Les dinosaures ! Choisis ce que tu veux découvrir !', famille: (typeof DINO_FAMILLES_INTRO !== 'undefined' ? DINO_FAMILLES_INTRO : 'Les grandes familles de dinosaures !'), continent: 'Sur quel continent vivait le dinosaure ?', periode: 'À quelle époque vivait le dinosaure ?' };
   speakText(labels[currentMode] || 'Les dinosaures !');
 }
 
@@ -607,6 +607,13 @@ function buildChronoDinoThumb(d) {
 
 /* ── MENU famille ── */
 function buildMenuFamille(el) {
+  if (typeof DINO_FAMILLES_INTRO !== 'undefined') {
+    const intro = document.createElement('div');
+    intro.style.cssText = 'grid-column:1/-1;font-size:0.8rem;line-height:1.4;opacity:0.85;padding:8px 12px;margin-bottom:4px;background:rgba(255,255,255,0.06);border-radius:10px;cursor:pointer';
+    intro.textContent = '👋 ' + DINO_FAMILLES_INTRO;
+    intro.onclick = () => speakText(DINO_FAMILLES_INTRO);
+    el.appendChild(intro);
+  }
   DINO_FAMILLES.forEach(fam => {
     const count = DINOS.filter(d => d.famille === fam.id).length;
     if (!count) return;
@@ -616,11 +623,20 @@ function buildMenuFamille(el) {
     card.innerHTML = `
       <div class="cat-emoji">${fam.emoji}</div>
       <div class="cat-label">${fam.label}</div>
+      ${fam.savant ? `<div style="font-size:0.62rem;opacity:0.55;margin-top:1px;font-style:italic">on les appelle ${fam.savant}</div>` : ''}
       <div style="font-size:0.65rem;opacity:0.7;margin-top:2px">${fam.desc}</div>
       <div class="cat-count" style="display:block;font-size:0.72rem;opacity:0.6;margin-top:4px">${count} dinos</div>
+      ${fam.explic ? `<button class="fam-explic-btn" style="margin-top:6px;background:rgba(255,255,255,0.18);border:none;border-radius:999px;color:#fff;font-size:0.72rem;font-weight:700;padding:5px 12px;cursor:pointer">🔊 C'est quoi ce nom ?</button>` : ''}
     `;
+    const explicBtn = card.querySelector('.fam-explic-btn');
+    if (explicBtn) {
+      explicBtn.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        speakText(fam.explic);
+      });
+    }
     card.addEventListener('click', () => {
-      speakText(fam.label);
+      speakText(fam.savant ? `${fam.label}. On les appelle ${fam.savant}` : fam.label);
       setTimeout(() => showGridFamille(fam.id), 400);
     });
     el.appendChild(card);
@@ -917,7 +933,7 @@ function showGridFamille(famId) {
   currentCatId = famId;
   showScreen('grid');
   const fam = DINO_FAMILLES.find(f => f.id === famId);
-  document.getElementById('grid-title').textContent = fam.emoji + ' ' + fam.label;
+  document.getElementById('grid-title').textContent = fam.emoji + ' ' + fam.label + (fam.savant ? ' — ' + fam.savant : '');
   const el = document.getElementById('grid-scroll');
   el.innerHTML = '';
   const dinos = DINOS.filter(d => d.famille === famId);

@@ -59,6 +59,15 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 ### L-061 – Panel enfants 2-3 personnes = validation pédago/émotion rapide
 **Dinos (2026-05-30)** : itération Parasaurolophus V2. Crainte panel 7 enfants lourd. Test : Léo (8/10) + Jade (10/10 fin tendre captée). Friction Bloc A résolue ping-pong. **ROI** : 2-3 enfants âge cible = feedback pédagogiquement actionnable sans perte qualité, 15 min vs 90 min. Pattern solide pour validations futures.
 
+### L-062 – Filtrage scientifique (homonymes + quasi-doublons) = lisibilité enfant max
+**Dinos (2026-06-01)** : 60→50 fiches. 10 retirés : Maiasaura (sonne "Mosasaure"), 9 cératopsiens quasi-identiques (Kosmocératops, Pachyrhinosaure, Psittacosaure, etc.). **Leçon** : encyclopédie dense < lisibilité enfant. Pas besoin 9 cornus au talon quasi-pareils. Filtrage validé Papa Yann = qualité > quantité.
+
+### L-063 – Reclassement scientifique (théropodes terrestres vs marins) = validité + clarté
+**Dinos (2026-06-01)** : Suchomimus/Baryonyx (terr terrestres, cousins Spino) passent volant → trex. Dimétrodon (pas vraiment dino) passe bizarre → volant. **Leçon** : arborescence 1-niveau (pas Saurischien) + classification réelle > affichage = pédago honnête.
+
+### L-064 – Apatosaure bi-nom (Apatosaure/Brontosaure) = honnêteté étymologie
+**Dinos (2026-06-01)** : 2 noms historiques pour 1 dinosaure. Plutôt que choisir, expliciter ("les savants l'appelaient Brontosaure, maintenant c'est Apatosaure"). **Leçon** : science c'est corriger. Enfants 3.5-4 ans acceptent "on a changé d'avis" si clair.
+
 ---
 
 ## Épics
@@ -78,6 +87,14 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 - ✅ **Validation 3-passes** : game-conseiller (étymo/narratif) + narration-conseiller (voix v3) + panel enfants 2 (Léo+Jade, 8/10-10/10)
 - ✅ **4 MP3 DUO** : générés ElevenLabs text-to-dialogue, commit 6be120ed
 - ✅ **PROCESS RÉUTILISABLE** : L-060 (ping-pong Wex pattern) + L-061 (panel 2-3 enfants rapide)
+
+**Phase figée (2026-06-01)** :
+- ✅ **50 dinos finale** : filtrage 60→50 (scientifique + homonymes), reclassement (théropodes, marins), Apatosaure bi-nom
+- ✅ **8 familles hiérarchie 1-niveau** : trex, cou_long, arme, cornu, bec, raptor, volant, bizarre
+- ✅ **Textes explic validés** : 3-pôles Grok/Kimi/DeepSeek 2026-06-01
+- ✅ **UI enrichie** : DINO_FAMILLES_INTRO + bouton 🔊 "C'est quoi ce nom ?"
+- ✅ **RÈGLE FIGÉE** : zéro Wex/univers dans encyclopédie (factuel seul)
+- ⏳ **Production TTS DUO** : 49 fiches (Parasaurolophus déjà en prod)
 
 **État progression** :
 - 22/60 dinos en audio EL premium (11 originaux + 10 cornes + Parasaurolophus)

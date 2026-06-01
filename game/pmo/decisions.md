@@ -8,6 +8,45 @@
 
 ---
 
+## 2026-06-01 — Filtrage + Reclassement scientifique encyclopédie dinos (EP-039 phase figée)
+
+**Contexte** : EP-039 audio DUO Narrateur H + Wex lancé 2026-05-17, pilote (Parasaurolophus) validé 2026-05-30. Phase production 50 dinos restants : stratégie figée pour éviter redondance/confusion Max.
+
+**Décisions figées** :
+
+1. **Filtrage 60 → 50** : **10 dinos retirés scientifiquement redondants/inconnus** (validé Papa Yann 2026-06-01) :
+   - Maiasaura (sonne trop "Mosasaure", confusion homonyme)
+   - 9 cératopsiens quasi-identiques : Kosmocératops, Pachyrhinosaure, Psittacosaure, Diablocératops, Einiosaure, Utahcératops, Anchicératops, Centrosaure, Chasmosaure
+
+2. **Apatosaure bi-nom figé** : renommé « Apatosaure (Brontosaure) » — 2 noms explicités dans fiche pour éviter confusion enfants ("pourquoi 2 noms ?").
+
+3. **Reclassement scientifique** :
+   - Suchomimus + Baryonyx : déplacés volant → trex (ce sont des théropodes terrestres, cousins directs Spinosaure)
+   - Dimétrodon : déplacé bizarre → volant (groupe "pas vraiment des dinos", bien signalé)
+
+4. **Hiérarchie familles = 1 seul niveau** (pas Saurischien/Ornithischien = trop abstrait 4 ans) :
+   - 8 familles : trex, cou_long, arme, cornu, bec, raptor, volant, bizarre
+   - Chaque fiche = nom simple + mot savant grec (sous-titre) + explication décomposition racines + "qui est connu + qui mange" (champ explic narrable à voix haute)
+
+5. **Textes explications validés 3-pôles** : Grok/Kimi/DeepSeek panel 2026-06-01, révision finale optionnelle après test TTS (pas re-validation si mineur).
+
+6. **UI enrichie** :
+   - DINO_FAMILLES_INTRO = mot d'ouverture écran familles (tease mystère)
+   - Bouton 🔊 "C'est quoi ce nom ?" par carte dino = narration étymologie courte
+
+7. **RÈGLE FIGÉE** : **zéro Wex, zéro univers narratif** dans menus encyclopédie. Rester factuel/encyclopédique (Wex + univers = contexte audio narration seulement).
+
+**Impact fichiers** :
+- `game/web/js/dinos-data.js` : 50 fiches
+- `game/web/dev-dinos.html` : 8 familles UI + INTRO + bouton 🔊
+- `game/pmo/INVARIANTS.md` L59 : "**50 fiches finale**"
+
+**Raison** : lisibilité enfant (pas surcharge homonymie), validité scientifique rigoureuse, UX encyclopédie sobre (pas dilution narrative).
+
+**Statut** : ✅ acté 2026-06-01, prêt production TTS 49 fiches.
+
+---
+
 ## 2026-05-21 — Clôture EP-022 (faux bug MJ-04 archivé) + Processus décisions figées
 
 **Contexte** : audit FOND détecte que EP-022 "MJ-04 boucle infinie" était un **faux bug depuis 2026-05-11**. Trois sous-tâches T-220/221/222 déjà implémentées, mais ticket traîne en backlog sans clôture officielle. **Symptôme plus large** : décisions 2026-05-14 (gabarit header) prise mais EP-035/036 non assignés → traîne 7j sans exécution.

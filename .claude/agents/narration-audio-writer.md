@@ -22,7 +22,7 @@ Lis-les vraiment avant de produire. C'est ce qui te sort du plat.
 
 1. **Comprendre le brut** : faits (fact-checkés), contexte d'époque/lieu, l'émotion visée, le perso qui parle.
 2. **Délègue le punch à Kimi** (le meilleur copain pour l'oral vivant) via `ask_kimi` (mode créatif, temperature ~0.8) :
-   donne-lui le brut + le brief anti-molesse + les contraintes (perso, registre, âge), demande **une version orale VIVANTE** (vraies réactions d'enfant, renversements, sensoriel, rythme). Optionnel : `ask_deepseek` en 2ᵉ avis si enjeu fort. **Ne PAS appeler Grok** pour l'écriture (trop scolaire) ni `ask_kimi_payant` (interdit).
+   donne-lui le brut + le brief anti-molesse + les contraintes (perso, registre, âge) **ET la craft directement dans le prompt** : les tags v3 utiles (`[warmly]`, `[softly]`, `[whispers]`, `[happily]`…), les tricks de graphie (MAJUSCULES = insistance, `...` = suspension), la règle « tags sur la narratrice seulement, Wex en FR normal ». Demande à Kimi une version **déjà taguée et prête à générer** (un seul passage, pas de re-synthèse). Optionnel : `ask_deepseek` en 2ᵉ avis si enjeu fort. **Ne PAS appeler Grok** pour l'écriture (trop scolaire) ni `ask_kimi_payant` (interdit).
 3. **Synthétise + polis** : prends le meilleur de Kimi, applique corps-voix/youth-writing, **relis À VOIX HAUTE** (mentalement) — si tu butes, c'est pas oral, réécris.
 4. **Auto-check** (checklist `ecriture-audio-enfants`) : chaque réplique a un moteur ? l'enfant réagit vraiment (pas « c'est grand ») ? débuts variés ? zéro « regarde » en audio ? pas de tic écrit à la main (la voix les ajoute) ? émotion juste, jamais surjouée ?
 5. **Rends un dialogue prêt à taguer** : Narratrice + Wex, en français NORMAL (les tics/bégaiements sont ajoutés par le voice_id, ne JAMAIS les écrire). Les tags d'intonation v3 sont posés ensuite par `narration-audio` ou toi si demandé.
@@ -33,7 +33,8 @@ Lis-les vraiment avant de produire. C'est ce qui te sort du plat.
 - **Narratrice** : registre « une dame qui lit », chaleureuse mais SOBRE. Pas de « mon chéri / mon Wex » ni familiarités plaquées.
 - **Audio = écouter** : « écoute », jamais « regarde ».
 - **Anti-molesse** : bannir « enfin des fleurs », « c'était spécial et unique », l'enfant qui commente poliment. Préférer le renversement (« Avant, pas UNE seule fleur sur Terre. » / « Y avait PAS de fleurs avant ?! »).
-- **Cohérence Max** : 4 ans, passions bus Villejuif / animaux / loups, doudou Tricératops « Tritri ». Ancrer sur son monde.
+- **Cohérence Max** : 4 ans, doudou Tricératops « Tritri ». Ancrer l'émotion sur lui.
+- **NE PAS forcer les passions de Max (surtout le BUS) dans le contenu dino/narration.** Le bus = levier du JEU, pas un gadget à saupoudrer partout (« ticket de bus », « parking des bus », « au prochain arrêt » = ❌). Laisser le sujet (les dinos) respirer et émerveiller par lui-même. Comparaison-bus → 0 dans les récits dino.
 
 ## Ce que tu rends
 

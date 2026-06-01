@@ -178,14 +178,11 @@
     }
 
     function render() {
-      const jeux  = CAT.filter(e => e.pilier === 'jeux');
-      const seq   = jeux.filter(e => e.access === 'sequence');
-      const free  = jeux.filter(e => e.access === 'free');
-      const dinos = CAT.filter(e => e.pilier === 'dinos');
-      board.innerHTML =
-        sectionHtml('🚌 Le parcours de Max', seq) +
-        sectionHtml('🎮 En accès libre', free) +
-        sectionHtml('🦕 Les dinos', dinos);
+      const cats = window.MAXPLAY_CATEGORIES || [];
+      board.innerHTML = cats.map(c => {
+        const items = CAT.filter(e => e.category === c.id);
+        return sectionHtml(`${c.emoji} ${c.label}`, items);
+      }).join('');
     }
 
     // ── Interactions ──────────────────────────────────────────────────────

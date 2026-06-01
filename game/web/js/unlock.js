@@ -4,9 +4,9 @@
 //
 //  3 modes (champ catalog.access) :
 //    'sequence' : chaîne de mini-jeux. Le 1er est ouvert ; chaque jeu ouvre le
-//                 SUIVANT dès que le précédent a 1★ (une partie 100%) — option B :
-//                 on débloque tôt, maxStars reste le trophée. Garde-fou anti-blocage :
-//                 ouvert aussi après UNLOCK_TRIES essais (Max n'est jamais coincé).
+//                 SUIVANT quand le précédent a UNLOCK_STARS ★ (parties à 100%).
+//                 Bâcler n'ouvre RIEN — le déblocage se mérite ; l'aide passe par
+//                 des explications/indices DANS le jeu, jamais par un déblocage gratuit.
 //    'free'     : toujours accessible (bacs à sable : Max Adventure, Pose-tiles, sons).
 //    'code'     : déverrouillé par un mot-clé. V0 = validation LOCALE ; V-final = serveur
 //                 (activation/anti-partage) — redeem() est ASYNC pour que seul l'intérieur
@@ -17,8 +17,8 @@
 // ─────────────────────────────────────────────────────────────────────────
 (function (global) {
   const KEY = 'maxplay_unlocks';
-  const UNLOCK_STARS = 1; // étoile(s) sur le jeu précédent pour ouvrir le suivant (option B)
-  const UNLOCK_TRIES = 4; // ...OU nb d'essais (garde-fou : jamais de cul-de-sac pour Max)
+  const UNLOCK_STARS = 2; // 2 parties à 100% sur le jeu précédent pour ouvrir le suivant
+                          // (décision Papa Yann 2026-06-01 : le déblocage se mérite).
 
   const catalog = () => global.MAXPLAY_CATALOG || [];
   const entry = (id) => catalog().find(e => e.id === id) || null;
@@ -36,11 +36,9 @@
     if (e.access === 'sequence') {
       const seq = sequence();
       const i = seq.findIndex(s => s.id === id);
-      if (i <= 0) return true;                           // 1er jeu (ou introuvable) = ouvert
+      if (i <= 0) return true;                       // 1er jeu (ou introuvable) = ouvert
       const prev = seq[i - 1].id;
-      const stars = S() ? S().get(prev) : 0;
-      const tries = S() ? S().plays(prev) : 0;
-      return stars >= UNLOCK_STARS || tries >= UNLOCK_TRIES;
+      return (S() ? S().get(prev) : 0) >= UNLOCK_STARS; // se mérite : 2★ sur le précédent
     }
     return false;
   }
@@ -49,7 +47,7 @@
     const e = entry(id);
     if (!e || isUnlocked(id)) return null;
     if (e.access === 'code') return 'code';                // → demander le mot-clé à un adulte
-    if (e.access === 'sequence') return 'finish-previous'; // → jouer le jeu précédent
+    if (e.access === 'sequence') return 'finish-previous'; // → gagner 2★ au jeu précédent
     return 'locked';
   }
 
@@ -73,5 +71,5 @@
     }));
   }
 
-  global.Unlock = { isUnlocked, lockedReason, redeem, all, UNLOCK_STARS, UNLOCK_TRIES };
+  global.Unlock = { isUnlocked, lockedReason, redeem, all, UNLOCK_STARS };
 })(window);

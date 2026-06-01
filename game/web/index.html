@@ -200,7 +200,7 @@
       if (Unlock.isUnlocked(id)) { location.href = url; return; }
       if (card.dataset.reason === 'code') { openModal(); }
       else { card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake');
-             showToast('Finis le jeu d\'avant pour débloquer ! ⭐'); }
+             showToast(`Gagne ${Unlock.UNLOCK_STARS} ⭐ au jeu d'avant pour l'ouvrir !`); }
     });
 
     function openModal() { msg.textContent = ''; input.value = ''; modal.classList.add('show'); setTimeout(() => input.focus(), 50); }

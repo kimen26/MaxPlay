@@ -11,7 +11,7 @@ export async function run({ page, ok }) {
   ok('démarre au Niveau 1', (((await page.locator('#levelbar').textContent()) || '').includes('Niveau 1')));
 
   // 6 manches parfaites
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 8; i++) {
     await page.waitForSelector('.ch[data-correct="1"]', { timeout: 6000 });
     await page.click('.ch[data-correct="1"]');
     await page.waitForTimeout(1250);

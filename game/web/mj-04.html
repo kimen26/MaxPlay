@@ -8,91 +8,101 @@
   <link rel="stylesheet" href="css/style.css">
   <style>
     #gameScr { background: linear-gradient(160deg, #1a3a2a, #1a2a3a); }
-    .pax-group {
-      display: flex;
-      gap: 8px;
-      padding: 8px 12px;
-      background: #ffffff10;
-      border-radius: 12px;
-      margin: 4px;
-    }
-    .pax {
-      font-size: 2.2rem;
-      animation: popIn 0.3s ease-out;
-    }
-    @keyframes popIn {
-      from { transform: scale(0); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-    .groups-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-      margin: 12px 0;
-    }
+    .pax-group { display: flex; gap: 8px; padding: 8px 12px; background: #ffffff10; border-radius: 12px; margin: 4px; }
+    .pax { font-size: 2.2rem; animation: popIn 0.3s ease-out; }
+    @keyframes popIn { from { transform: scale(0); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .groups-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin: 12px 0; }
+    .groups-container.dense .pax { font-size: 1.55rem; }
+
+    /* Bandeau niveau + étoiles (contrat de difficulté MaxPlay) */
+    .levelbar { display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; padding:4px 12px 0; }
+    .lvl-num { font-weight:900; font-size:0.92rem; color:#ffe066; background:#ffffff14; padding:3px 12px; border-radius:14px; }
+    .lvl-stars { display:flex; gap:2px; }
+    .lvl-star { font-size:1.1rem; color:#ffffff2e; line-height:1; }
+    .lvl-star.on { color:#FFC107; text-shadow:0 1px 2px rgba(255,160,0,0.4); }
+
+    /* Indice de méthode (aide, jamais la réponse) */
+    .hint { text-align:center; font-weight:800; color:#ffd166; font-size:0.95rem; min-height:1.3em; opacity:0; transition:opacity .2s; padding:6px 12px 0; }
+    .hint.show { opacity:1; }
   </style>
 </head>
 <body data-mp-intro-emoji="🚌" data-mp-intro-title="Compte les passagers" data-mp-intro-hint="Combien sont montés ?">
   <div id="app">
-    <!-- Header -->
     <div class="hdr">
       <a href="index.html" class="back">←</a>
       <span class="htitle">👥 Compte les passagers</span>
     </div>
-    
-    <!-- Score -->
+
     <div class="scorebar">
       <span class="scoretxt">Score</span>
       <span class="scoreval" id="score">0</span>
       <span class="streak" id="streak"></span>
     </div>
-    
-    <!-- Question -->
-    <div class="qbox" style="padding:20px 12px;">
-      <div class="groups-container" id="groups">
-        <!-- Groupes générés par JS -->
-      </div>
-      <div class="qtxt" style="font-size:1.2rem;margin-top:12px;">
-        Combien de passagers en tout ?
-      </div>
+
+    <!-- Bandeau niveau (Niveau X/N + étoiles déjà gagnées) -->
+    <div class="levelbar" id="levelbar"></div>
+
+    <div class="qbox" style="padding:16px 12px;">
+      <div class="groups-container" id="groups"></div>
+      <div class="qtxt" style="font-size:1.2rem;margin-top:10px;">Combien de passagers en tout ?</div>
+      <div class="hint" id="hint"></div>
     </div>
-    
-    <!-- Choices -->
-    <div class="choices" id="choices" style="grid-template-columns:repeat(4,1fr);padding:0 12px;">
-      <!-- Généré par JS -->
-    </div>
+
+    <div class="choices" id="choices" style="grid-template-columns:repeat(4,1fr);padding:0 12px;"></div>
   </div>
-  
-  <!-- Feedback overlay -->
+
   <div id="fbOverlay"></div>
-  
-  <!-- Scripts -->
+
+  <!-- Scripts : catalog + stars AVANT le jeu (le niveau dérive des étoiles) -->
   <script src="js/sounds.js"></script>
   <script src="js/feedback.js"></script>
   <script src="js/data.js"></script>
   <script src="js/qcm-retry.js"></script>
   <script src="js/victory-sounds.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/stars.js"></script>
   <script>
-    // ─── MJ-03a: Compte les passagers ───
-    // Des passagers arrivent par GROUPES → Max compte le total
-    // Groupements visuels: 2+3+3 plutôt que 8 en ligne
+    // ─── MJ-04 : Compte les passagers — PILOTE du contrat de difficulté ───
+    // Niveau = étoiles déjà gagnées + 1 (dérivé, aucun stockage en plus).
+    // Une manche sans révélation (100%) → +1★ (tracker) → niveau +1 au prochain lancement.
+    const GAME_ID = 'mj-04';
+    const MAX_QUESTIONS = 6;
 
-    const MAX_QUESTIONS = 10;
-    let score = 0;
-    let streak = 0;
-    let questionCount = 0;
-    let qcm = null;
-    let correctAnswer = 0;
-    
+    // Paliers : le nombre de passagers monte avec le niveau
+    const LEVELS = [
+      { min: 2,  max: 5  },  // Niveau 1
+      { min: 4,  max: 8  },  // Niveau 2
+      { min: 6,  max: 12 },  // Niveau 3
+      { min: 9,  max: 16 },  // Niveau 4
+      { min: 13, max: 22 },  // Niveau 5
+    ];
+    const maxStars = (window.Stars && Stars.max(GAME_ID)) || LEVELS.length;
+
     const EMOJIS = ['🧍', '🧍‍♂️', '🧍‍♀️', '👨', '👩', '👴', '👵'];
-    
+    const _shuffle = (typeof shuffle === 'function')
+      ? shuffle
+      : (a) => a.map(x => [Math.random(), x]).sort((p, q) => p[0] - q[0]).map(p => p[1]);
+
+    let level = 1, score = 0, streak = 0, questionCount = 0, reveals = 0, qcm = null, correctAnswer = 0;
+
+    function starsGot() { return window.Stars ? Stars.get(GAME_ID) : 0; }
+    function currentLevel() { return Math.min(LEVELS.length, starsGot() + 1); }
+
+    function renderLevelBar() {
+      const lb = document.getElementById('levelbar');
+      if (!lb) return;
+      const got = starsGot();
+      let s = '';
+      for (let i = 0; i < maxStars; i++) s += `<span class="lvl-star ${i < got ? 'on' : ''}">★</span>`;
+      lb.innerHTML = `<span class="lvl-num">Niveau ${level}/${maxStars}</span><span class="lvl-stars">${s}</span>`;
+    }
+
     function init() {
-      score = 0;
-      streak = 0;
-      questionCount = 0;
+      level = currentLevel();
+      score = 0; streak = 0; questionCount = 0; reveals = 0;
       document.getElementById('score').textContent = '0';
       document.getElementById('streak').textContent = '';
+      renderLevelBar();
       nextQuestion();
     }
 
@@ -100,48 +110,36 @@
       if (questionCount >= MAX_QUESTIONS) { showEndScreen(); return; }
       questionCount++;
       qcm = QcmRetry.create();
-      
-      // Générer un total entre 3 et 10
-      const total = 3 + Math.floor(Math.random() * 8);
+      hideHint();
+
+      const L = LEVELS[level - 1];
+      const total = L.min + Math.floor(Math.random() * (L.max - L.min + 1));
       correctAnswer = total;
-      
-      // Décomposer en groupes (max 3 par groupe)
+
       const groups = decomposeIntoGroups(total);
-      
-      // Afficher les groupes
       const container = document.getElementById('groups');
       container.innerHTML = '';
-      
+      container.classList.toggle('dense', total > 12);
       const emoji = EMOJIS[Math.floor(Math.random() * EMOJIS.length)];
-      
+
       groups.forEach((count, i) => {
         const groupDiv = document.createElement('div');
         groupDiv.className = 'pax-group';
-        groupDiv.style.animationDelay = `${i * 0.2}s`;
-        
+        groupDiv.style.animationDelay = `${i * 0.15}s`;
         for (let j = 0; j < count; j++) {
           const span = document.createElement('span');
           span.className = 'pax';
           span.textContent = emoji;
-          span.style.animationDelay = `${i * 0.2 + j * 0.05}s`;
+          span.style.animationDelay = `${i * 0.15 + j * 0.04}s`;
           groupDiv.appendChild(span);
         }
-        
         container.appendChild(groupDiv);
       });
-      
-      // Générer les choix
-      const wrongs = [];
-      for (let v = 1; v <= 12; v++) {
-        if (v !== correctAnswer) wrongs.push(v);
-      }
-      const options = [correctAnswer, ...shuffle(wrongs).slice(0, 3)];
-      
-      // Afficher les choix
+
+      const options = makeChoices(correctAnswer);
       const choicesDiv = document.getElementById('choices');
       choicesDiv.innerHTML = '';
-      
-      shuffle(options).forEach(num => {
+      options.forEach(num => {
         const btn = document.createElement('button');
         btn.className = 'ch';
         btn.style.fontSize = '1.4rem';
@@ -152,44 +150,48 @@
         choicesDiv.appendChild(btn);
       });
     }
-    
-    // Décompose un nombre en groupes de max 3
+
+    // Décompose en groupes de max 3 (plus facile à compter par paquets)
     function decomposeIntoGroups(n) {
       const groups = [];
       let remaining = n;
-      
       while (remaining > 0) {
-        // Groupe aléatoire entre 2 et 3 (ou 1 si reste 1)
         let groupSize;
-        if (remaining === 1) {
-          groupSize = 1;
-        } else if (remaining === 2) {
-          groupSize = 2;
-        } else {
-          groupSize = 2 + Math.floor(Math.random() * 2); // 2 ou 3
-        }
+        if (remaining === 1) groupSize = 1;
+        else if (remaining === 2) groupSize = 2;
+        else groupSize = 2 + Math.floor(Math.random() * 2);
         groups.push(groupSize);
         remaining -= groupSize;
       }
-      
       return groups;
     }
-    
+
+    // Distracteurs PROCHES du bon nombre (vrai défi de comptage)
+    function makeChoices(ans) {
+      const near = [ans - 1, ans + 1, ans - 2, ans + 2, ans - 3, ans + 3].filter(v => v >= 1 && v !== ans);
+      const distract = _shuffle([...new Set(near)]).slice(0, 3);
+      let n = ans + 4;
+      while (distract.length < 3) { if (n >= 1 && n !== ans && !distract.includes(n)) distract.push(n); n++; }
+      return _shuffle([ans, ...distract]);
+    }
+
     function answer(isCorrect, btn) {
       if (btn.disabled) return;
       const res = QcmRetry.handle(qcm, isCorrect);
       if (res.outcome === 'ignored') return;
-      if ((res.outcome === 'correct' || res.outcome === 'reveal') && typeof Tracker !== 'undefined') Tracker.logAnswer(res.outcome === 'correct');
+      if ((res.outcome === 'correct' || res.outcome === 'reveal') && typeof Tracker !== 'undefined')
+        Tracker.logAnswer(res.outcome === 'correct');
 
       if (res.outcome === 'correct') {
         btn.classList.add('ok');
         score += res.points;
         if (res.streakInc) streak++; else streak = 0;
-        if (streak >= 3) confetti();
-        sndDing(); showFB(true);
+        if (streak >= 3 && typeof confetti === 'function') confetti();
+        sndDing(); showFB(true); hideHint();
         updateBar();
-        setTimeout(nextQuestion, 1200);
+        setTimeout(nextQuestion, 1100);
       } else if (res.outcome === 'reveal') {
+        reveals++;                          // une révélation = manche non parfaite (pas d'étoile)
         btn.classList.add('ko'); btn.disabled = true;
         streak = 0;
         QcmRetry.revealCorrect(document.getElementById('choices'));
@@ -197,12 +199,20 @@
         updateBar();
         setTimeout(nextQuestion, 1600);
       } else {
+        // mauvaise réponse mais il lui reste des essais → INDICE de méthode, jamais la réponse
         btn.classList.add('ko'); btn.disabled = true;
         streak = 0;
         sndBuzz(); showFB(false);
+        showHint();
         updateBar();
       }
     }
+
+    function showHint() {
+      const h = document.getElementById('hint');
+      if (h) { h.textContent = '💡 Compte chaque petit groupe, puis ajoute-les !'; h.classList.add('show'); }
+    }
+    function hideHint() { const h = document.getElementById('hint'); if (h) h.classList.remove('show'); }
 
     function updateBar() {
       document.getElementById('score').textContent = score;
@@ -212,12 +222,25 @@
     function showEndScreen() {
       if (typeof Tracker !== 'undefined') Tracker.endSession(score, MAX_QUESTIONS * 10);
       if (typeof playEndSound === 'function') playEndSound(score, MAX_QUESTIONS * 10);
-      if (typeof confetti === 'function') confetti();
+
+      const perfect = reveals === 0;              // manche sans révélation = 100%
+      const got = starsGot();                     // étoiles APRÈS enregistrement de la manche
+      let head, sub;
+      if (perfect && got >= maxStars) { head = '🏆'; sub = 'MAXIMUM ! Tu as toutes les étoiles !'; }
+      else if (perfect) { head = '⭐'; sub = `Bravo ! Une étoile gagnée !<br>Niveau ${Math.min(maxStars, got + 1)} débloqué !`; }
+      else { head = '👍'; sub = `Bien joué, ${score} points !<br>Réussis sans te tromper pour gagner une étoile ⭐`; }
+      if (perfect && typeof confetti === 'function') confetti();
+
+      let starsRow = '';
+      for (let i = 0; i < maxStars; i++)
+        starsRow += `<span style="font-size:2.1rem;color:${i < got ? '#FFC107' : '#ffffff33'}">★</span>`;
+
       document.getElementById('app').innerHTML = `
-        <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100dvh;text-align:center;padding:20px;">
-          <div style="font-size:5rem;margin-bottom:20px;">🏆</div>
-          <h2 style="font-size:2rem;margin-bottom:20px;color:#ffe066;">Super !</h2>
-          <p style="font-size:1.4rem;margin-bottom:30px;">Tu as fait <strong>${score}</strong> points !</p>
+        <div id="endscreen" data-perfect="${perfect ? 1 : 0}" data-stars="${got}"
+             style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100dvh;text-align:center;padding:20px;">
+          <div style="font-size:5rem;margin-bottom:14px;">${head}</div>
+          <h2 style="font-size:1.7rem;margin-bottom:14px;color:#ffe066;line-height:1.3;">${sub}</h2>
+          <div style="margin-bottom:24px;letter-spacing:3px;">${starsRow}</div>
           <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
             <a href="mj-04.html" style="background:#00c47a;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">🔄 Rejouer</a>
             <a href="index.html" style="background:#ffffff22;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">📋 Menu</a>
@@ -225,7 +248,6 @@
         </div>`;
     }
 
-    // Démarrer
     init();
   </script>
   <script src="js/tracker.js"></script>

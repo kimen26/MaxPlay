@@ -153,6 +153,39 @@ html,body { font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; min
 
 <div id="page">
 
+  <!-- Console parent : déblocage des jeux -->
+  <div id="admin-console" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:16px;margin-bottom:22px;">
+    <div style="font-weight:900;font-size:0.95rem;margin-bottom:4px;">🔧 Console parent</div>
+    <div style="font-size:0.82rem;opacity:0.65;margin-bottom:12px;">Déblocage des jeux : <strong id="admin-state">…</strong></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <button class="hdr-btn" id="btn-unlock-all" style="background:#00c47a;color:#fff;">🔓 Tout débloquer</button>
+      <button class="hdr-btn" id="btn-progression">🔒 Remettre la progression</button>
+      <button class="hdr-btn danger" id="btn-reset-all">♻️ Tout réinitialiser</button>
+    </div>
+    <div style="font-size:0.72rem;opacity:0.45;margin-top:8px;">« Tout débloquer » ouvre tous les jeux et les dinos pour Max. « Progression » réactive le déblocage par étoiles.</div>
+  </div>
+  <script>
+  (function () {
+    const ADMIN_KEY = 'maxplay_admin';
+    const st = () => { try { return JSON.parse(localStorage.getItem(ADMIN_KEY)) || {}; } catch (e) { return {}; } };
+    function paint() {
+      const on = !!st().unlockAll;
+      document.getElementById('admin-state').textContent = on ? '🔓 Tout ouvert' : '🔒 Progression (étoiles)';
+      document.getElementById('btn-unlock-all').style.opacity = on ? '0.5' : '1';
+      document.getElementById('btn-progression').style.opacity = on ? '1' : '0.5';
+    }
+    function setAll(on) { localStorage.setItem(ADMIN_KEY, JSON.stringify({ ...st(), unlockAll: !!on })); paint(); }
+    document.getElementById('btn-unlock-all').onclick = () => setAll(true);
+    document.getElementById('btn-progression').onclick = () => setAll(false);
+    document.getElementById('btn-reset-all').onclick = () => {
+      if (!confirm('Tout réinitialiser : progression, étoiles et déblocages ?')) return;
+      ['maxplay_progress', 'maxplay_stars', 'maxplay_unlocks'].forEach(k => localStorage.removeItem(k));
+      location.reload();
+    };
+    paint();
+  })();
+  </script>
+
   <!-- État vide -->
   <div id="empty-state">
     <div class="big">🚌</div>

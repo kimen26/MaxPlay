@@ -36,11 +36,11 @@
     if (e.access === 'free') return true;
     if (e.access === 'code') return !!loadUnlocks()[(e.unlock && e.unlock.bundle) || e.id];
     if (e.access === 'sequence') {
-      const seq = sequence();
+      // Chaîne PAR CATÉGORIE : 1er de la catégorie ouvert, suivants à 2★ sur le précédent
+      const seq = catalog().filter(x => x.access === 'sequence' && x.category === e.category);
       const i = seq.findIndex(s => s.id === id);
-      if (i <= 0) return true;                       // 1er jeu (ou introuvable) = ouvert
-      const prev = seq[i - 1].id;
-      return (S() ? S().get(prev) : 0) >= UNLOCK_STARS; // se mérite : 2★ sur le précédent
+      if (i <= 0) return true;
+      return (S() ? S().get(seq[i - 1].id) : 0) >= UNLOCK_STARS;
     }
     return false;
   }

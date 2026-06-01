@@ -7,10 +7,11 @@ export async function run({ page, ok }) {
   ok('cartes générées depuis le catalogue (≥ 18)', cards >= 18, `count=${cards}`);
 
   const sections = await page.locator('h2.section').count();
-  ok('3 sections (parcours / libre / dinos)', sections === 3, `sections=${sections}`);
+  ok('sections par catégorie (≥ 8)', sections >= 8, `sections=${sections}`);
 
-  ok('mj-01 ouvert (1er de la séquence)', !(await cls('mj-01')).includes('locked'));
-  ok('mj-04 verrouillé au départ',        (await cls('mj-04')).includes('locked'));
+  ok('mj-04 ouvert (1er de Compter)',     !(await cls('mj-04')).includes('locked'));
+  ok('mj-01 ouvert (1er de Couleurs)',    !(await cls('mj-01')).includes('locked'));
+  ok('mj-13c verrouillé (2e de Compter)', (await cls('mj-13c')).includes('locked'));
   ok('mj-12 (accès libre) ouvert',        !(await cls('mj-12')).includes('locked'));
   ok('dino verrouillé + raison "code"',
      (await page.locator('.card[data-id="dinos"]').getAttribute('data-reason')) === 'code');

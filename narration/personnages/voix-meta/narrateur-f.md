@@ -116,6 +116,19 @@ Speaker Boost: false
 - Audio → **« écoute »**, jamais « regarde ». Registre : **une dame qui lit**, chaleureuse mais sobre — pas de « mon chéri ».
 - **Wex (l'enfant) n'a AUCUNE balise** : sa voix encode déjà son caractère.
 
+### ⏱️ Dosage & rythme (leçon clé — figée 2026-06-02, test v7→v8→v9)
+
+**RYTHME D'ABORD, émotion par petites touches.** Pour un enfant de 4 ans, l'énergie prime.
+- ❌ **Empiler les tags « lents »** (`[pauses]` + `[awe]` + `[whispers]` + `[softly]`) → ça **plombe et traîne** (test v8 : « étonnamment plus lent », Papa Yann préférait presque la version vive sans).
+- ✅ **Recette validée (v9)** : `[happily]` comme **défaut vif** partout, + seulement **2-3 PICS chirurgicaux par épisode** :
+  - 1 `[gasps]` sur le grand waouh · 1 `[chuckles]` sur la complicité · `[whispers]`/`[softly]` **uniquement** sur le suspense et le moment tendre (Tritri).
+- ❌ **Pas de `[pauses]`** : les `...` donnent déjà la micro-respiration, sans casser le tempo.
+- Trop lent = mou, autant que trop plat. Le bon dosage : **vivante, avec du relief, jamais qui traîne.**
+
+### Registre (rappel)
+
+**Mode documentaire + dialogue avec l'enfant.** Une **dame qui lit** : claire, chaleureuse, qui partage l'émerveillement et met des étoiles dans les yeux — mais **sobre**. Pas une conteuse qui roucoule, pas de familiarités (« mon chéri »). Elle dialogue avec Wex (l'enfant) : elle lui pose des questions (`[curious]`), réagit à ses étonnements, corrige ses erreurs avec tendresse (jamais d'humiliation).
+
 ### ⚙️ Settings en mode DIALOGUE (text-to-dialogue / eleven_v3)
 
 ```

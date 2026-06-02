@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+  <title>MJ-23 — Lis le mot</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔤</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none; }
+    body { font-family:'Nunito',sans-serif; background:linear-gradient(160deg,#2a1a3a,#1a2a3a); color:#fff; height:100dvh; overflow:hidden; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:520px; margin:0 auto; }
+
+    .hdr { display:flex; align-items:center; gap:10px; padding:6px 12px; flex-shrink:0; background:rgba(0,0,0,0.25); border-bottom:1px solid rgba(255,255,255,0.08); }
+    .hdr a { color:#fff; text-decoration:none; font-size:1.3rem; background:rgba(255,255,255,0.12); border-radius:8px; padding:4px 10px; font-weight:900; flex-shrink:0; }
+    .hdr a:active { background:rgba(255,255,255,0.25); }
+    .htitle { flex:1; font-size:1rem; font-weight:900; }
+    #levelbar { font-weight:900; color:#ffe066; background:rgba(255,255,255,0.14); border-radius:10px; padding:3px 12px; font-size:0.85rem; }
+
+    .counter { text-align:center; font-size:0.85rem; opacity:0.65; font-weight:700; padding:8px 0 2px; }
+    .instruction { text-align:center; font-size:0.95rem; opacity:0.8; font-weight:700; }
+
+    .word-box { display:flex; align-items:center; justify-content:center; padding:14px 12px 6px; }
+    .word { font-size:2.8rem; font-weight:900; letter-spacing:5px; color:#fff; text-align:center; text-shadow:2px 2px 0 rgba(0,0,0,0.25); }
+
+    .choices { flex:1; display:grid; grid-template-columns:1fr 1fr; gap:14px; padding:10px 16px 6px; align-content:center; }
+    .ch {
+      background:#fff; border:4px solid transparent; border-radius:22px; cursor:pointer;
+      display:flex; align-items:center; justify-content:center; min-height:0;
+      box-shadow:0 6px 16px rgba(0,0,0,0.28); transition:transform 0.12s; font-family:inherit;
+    }
+    .ch:active { transform:scale(0.94); }
+    .ch img { width:74px; height:74px; pointer-events:none; }
+    .ch.ok { border-color:#00c47a; background:#e7fff4; }
+    .ch.ko { border-color:#ff4455; background:#ffe9ec; }
+
+    .hintline { text-align:center; color:#ffe066; font-weight:900; font-size:0.92rem; min-height:24px; padding:2px 12px 10px; }
+
+    .end { position:fixed; inset:0; background:rgba(20,16,40,0.92); display:none; flex-direction:column; align-items:center; justify-content:center; gap:14px; padding:20px; z-index:50; text-align:center; }
+    .end.show { display:flex; }
+    .end .big { font-size:5rem; }
+    .end h2 { font-size:2rem; color:#ffe066; }
+    .end .btns { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
+    .end a { padding:14px 28px; border-radius:28px; text-decoration:none; font-weight:900; font-size:1.1rem; }
+    .end .replay { background:#00c47a; color:#fff; }
+    .end .menu { background:rgba(255,255,255,0.18); color:#fff; }
+  </style>
+</head>
+<body data-mp-intro-emoji="🔤" data-mp-intro-title="Lis le mot" data-mp-intro-hint="Trouve la bonne image">
+<div id="app">
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">🔤 Lis le mot</span>
+    <span id="levelbar">Niveau 1</span>
+  </div>
+
+  <div class="counter" id="counter">Question 1 / 8</div>
+  <div class="instruction">Lis le mot, puis touche la bonne image</div>
+
+  <div class="word-box"><div class="word" id="word">—</div></div>
+
+  <div class="choices" id="choices"></div>
+
+  <div class="hintline" id="hintline"></div>
+</div>
+
+<div class="end" id="end">
+  <div class="big" id="end-emoji">🏆</div>
+  <h2 id="end-title">Parfait !</h2>
+  <p id="end-score" style="font-size:1.2rem;"></p>
+  <p id="end-sub" style="font-size:0.95rem;opacity:0.85;"></p>
+  <div class="btns">
+    <a class="replay" href="mj-23.html">🔄 Rejouer</a>
+    <a class="menu" href="index.html">📋 Menu</a>
+  </div>
+</div>
+
+<script src="js/sounds.js"></script>
+<script src="js/victory-sounds.js"></script>
+<script src="js/feedback.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/stars.js"></script>
+<script src="js/qcm-retry.js"></script>
+<script>
+  // ─── MJ-23 : Lis le mot (mot écrit → choisir l'image) ───
+  // PAS d'audio : Max lit en décortiquant. Images = Twemoji (rendu identique partout).
+  // 5 paliers = longueur du mot + graphèmes où la lettre ne se prononce pas seule.
+  const TW = cp => `https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/${cp}.svg`;
+
+  // Banque : { w: mot, cp: code Twemoji, lv: palier 0..4 }
+  const WORDS = [
+    // N1 — court, régulier (chaque lettre = 1 son)
+    { w:'CHAT', cp:'1f431', lv:0 }, { w:'OURS', cp:'1f43b', lv:0 }, { w:'LUNE', cp:'1f319', lv:0 },
+    { w:'VÉLO', cp:'1f6b2', lv:0 }, { w:'ROBE', cp:'1f457', lv:0 }, { w:'MOTO', cp:'1f3cd', lv:0 },
+    { w:'CLÉ', cp:'1f511', lv:0 },  { w:'LIT', cp:'1f6cf', lv:0 },  { w:'BÉBÉ', cp:'1f476', lv:0 },
+    { w:'SAC', cp:'1f392', lv:0 },
+    // N2 — un peu plus long, réguliers
+    { w:'POMME', cp:'1f34e', lv:1 }, { w:'BANANE', cp:'1f34c', lv:1 }, { w:'TOMATE', cp:'1f345', lv:1 },
+    { w:'CAROTTE', cp:'1f955', lv:1 }, { w:'SALADE', cp:'1f957', lv:1 }, { w:'PIZZA', cp:'1f355', lv:1 },
+    { w:'TORTUE', cp:'1f422', lv:1 }, { w:'KOALA', cp:'1f428', lv:1 }, { w:'ZÈBRE', cp:'1f993', lv:1 },
+    { w:'ROBOT', cp:'1f916', lv:1 },
+    // N3 — digrammes OU / ON
+    { w:'LOUP', cp:'1f43a', lv:2 }, { w:'HIBOU', cp:'1f989', lv:2 }, { w:'MOUTON', cp:'1f411', lv:2 },
+    { w:'BONBON', cp:'1f36c', lv:2 }, { w:'COCHON', cp:'1f437', lv:2 }, { w:'DRAGON', cp:'1f409', lv:2 },
+    { w:'CITRON', cp:'1f34b', lv:2 }, { w:'SOURIS', cp:'1f42d', lv:2 }, { w:'PONT', cp:'1f309', lv:2 },
+    { w:'BALLON', cp:'26bd', lv:2 },
+    // N4 — AI / OI / EI / nasales EN-AN
+    { w:'LAIT', cp:'1f95b', lv:3 }, { w:'ROI', cp:'1f934', lv:3 }, { w:'ÉTOILE', cp:'2b50', lv:3 },
+    { w:'POISSON', cp:'1f41f', lv:3 }, { w:'MAISON', cp:'1f3e0', lv:3 }, { w:'VOITURE', cp:'1f697', lv:3 },
+    { w:'POIRE', cp:'1f350', lv:3 }, { w:'FRAISE', cp:'1f353', lv:3 }, { w:'REINE', cp:'1f478', lv:3 },
+    { w:'DENT', cp:'1f9b7', lv:3 },
+    // N5 — EAU/AU + mots longs multi-graphèmes
+    { w:'BATEAU', cp:'26f5', lv:4 }, { w:'GÂTEAU', cp:'1f382', lv:4 }, { w:'OISEAU', cp:'1f426', lv:4 },
+    { w:'CADEAU', cp:'1f381', lv:4 }, { w:'ESCARGOT', cp:'1f40c', lv:4 }, { w:'ÉLÉPHANT', cp:'1f418', lv:4 },
+    { w:'PAPILLON', cp:'1f98b', lv:4 }, { w:'DINOSAURE', cp:'1f995', lv:4 }, { w:'CHÂTEAU', cp:'1f3f0', lv:4 },
+    { w:'CHAMEAU', cp:'1f42b', lv:4 },
+  ];
+
+  const MAX_QUESTIONS = 8;
+  const level = Math.max(0, Math.min(4, (window.Stars ? Stars.get('mj-23') : 0)));
+
+  function shuffle(a) { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
+  function rnd(a, b) { return a + Math.floor(Math.random() * (b - a + 1)); }
+  function buildSchedule() {
+    const hard = Array(4).fill(level);
+    const easy = [];
+    for (let i = 0; i < 4; i++) easy.push(level <= 0 ? 0 : Math.floor(Math.random() * level));
+    return shuffle([...hard, ...easy]);
+  }
+
+  let schedule = buildSchedule();
+  let questionCount = 0, correctCount = 0, locked = false, qcm = null, current = null;
+
+  function setLevelBadge() { const lb = document.getElementById('levelbar'); if (lb) lb.textContent = 'Niveau ' + (level + 1); }
+
+  function pickWord(lv) {
+    const pool = WORDS.filter(w => w.lv === lv);
+    return pool[rnd(0, pool.length - 1)];
+  }
+
+  function nextQuestion() {
+    if (questionCount >= MAX_QUESTIONS) { showEnd(); return; }
+    const lv = schedule[questionCount];
+    questionCount++;
+    locked = false;
+    qcm = QcmRetry.create();
+    current = pickWord(lv);
+
+    document.getElementById('counter').textContent = `Question ${questionCount} / ${MAX_QUESTIONS} · Niveau ${level + 1}`;
+    document.getElementById('word').textContent = current.w;
+    document.getElementById('hintline').textContent = '';
+
+    // 3 distracteurs (images différentes), + la bonne → mélangés
+    const distractors = shuffle(WORDS.filter(w => w.cp !== current.cp)).slice(0, 3);
+    const choices = shuffle([current, ...distractors]);
+
+    const c = document.getElementById('choices');
+    c.innerHTML = '';
+    choices.forEach(item => {
+      const b = document.createElement('button');
+      b.className = 'ch';
+      if (item.cp === current.cp) b.dataset.correct = '1';
+      b.innerHTML = `<img src="${TW(item.cp)}" alt="">`;
+      b.onclick = () => answer(item.cp === current.cp, b);
+      c.appendChild(b);
+    });
+  }
+
+  function answer(isCorrect, btn) {
+    if (locked) return;
+    const res = QcmRetry.handle(qcm, isCorrect);
+    if (res.outcome === 'ignored') return;
+
+    if (res.outcome === 'correct') {
+      locked = true;
+      btn.classList.add('ok');
+      document.querySelectorAll('#choices .ch').forEach(b => b.style.pointerEvents = 'none');
+      correctCount++;
+      if (typeof sndDing === 'function') sndDing();
+      if (typeof showFB === 'function') showFB(true);
+      if (typeof confetti === 'function') confetti();
+      if (typeof Tracker !== 'undefined') Tracker.logAnswer(true);
+      setTimeout(nextQuestion, 1300);
+    } else if (res.outcome === 'reveal') {
+      locked = true;
+      btn.classList.add('ko');
+      document.querySelectorAll('#choices .ch').forEach(b => {
+        b.style.pointerEvents = 'none';
+        if (b.dataset.correct === '1') b.classList.add('ok');
+      });
+      if (typeof sndBuzz === 'function') sndBuzz();
+      if (typeof playErrorSound === 'function') playErrorSound();
+      if (typeof showFB === 'function') showFB(false);
+      if (typeof Tracker !== 'undefined') Tracker.logAnswer(false);
+      setTimeout(nextQuestion, 1700);
+    } else {
+      // mauvaise réponse, on peut réessayer → indice de méthode, jamais la réponse
+      btn.classList.add('ko'); btn.disabled = true;
+      if (typeof playErrorSound === 'function') playErrorSound();
+      document.getElementById('hintline').textContent = '💡 Lis bien chaque lettre du mot, doucement.';
+    }
+  }
+
+  function showEnd() {
+    if (typeof Tracker !== 'undefined') Tracker.endSession(correctCount, MAX_QUESTIONS);
+    if (typeof playEndSound === 'function') playEndSound(correctCount, MAX_QUESTIONS);
+    if (typeof confetti === 'function') confetti();
+    const perfect = correctCount >= MAX_QUESTIONS;
+    const end = document.getElementById('end');
+    end.dataset.perfect = perfect ? '1' : '0';
+    end.dataset.correct = String(correctCount);
+    document.getElementById('end-emoji').textContent = perfect ? '🏆' : '🎉';
+    document.getElementById('end-title').textContent = perfect ? 'Parfait !' : 'Bien joué !';
+    document.getElementById('end-score').textContent = `${correctCount} / ${MAX_QUESTIONS} bonnes réponses`;
+    document.getElementById('end-sub').textContent = perfect
+      ? '⭐ Tu gagnes une étoile !'
+      : 'Réussis tout sans te tromper pour gagner une étoile ⭐';
+    end.classList.add('show');
+  }
+
+  setLevelBadge();
+  nextQuestion();
+</script>
+<script src="js/tracker.js"></script>
+<script src="js/comments.js"></script>
+<script src="js/intro-splash.js"></script>
+<script src="js/back-button.js"></script>
+</body>
+</html>

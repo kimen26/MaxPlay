@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Galerie SVG — options thèmes MaxPlay</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  body {
+    font-family:'Nunito',sans-serif; color:#fff;
+    background:linear-gradient(160deg,#0f1a2e,#1a2338 55%,#0a0f1a);
+    min-height:100dvh; padding:18px 14px 60px;
+  }
+  .wrap { max-width:760px; margin:0 auto; }
+  h1 { font-size:1.5rem; font-weight:900; }
+  .intro { font-size:0.9rem; opacity:0.8; margin:6px 0 18px; line-height:1.5; }
+  h2 { font-size:1.15rem; font-weight:900; margin:26px 0 4px; color:#ffe066; border-bottom:2px solid rgba(255,224,102,0.25); padding-bottom:6px; }
+  .note { font-size:0.82rem; opacity:0.7; margin:6px 0 14px; line-height:1.5; }
+
+  /* Cartes objets */
+  .obj { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:16px; padding:12px 14px; margin-bottom:12px; }
+  .obj-head { display:flex; align-items:baseline; gap:10px; flex-wrap:wrap; margin-bottom:8px; }
+  .obj-name { font-size:1.05rem; font-weight:900; }
+  .obj-tag { font-size:0.72rem; font-weight:700; border-radius:20px; padding:2px 9px; }
+  .tag-full { background:rgba(0,196,122,0.2); color:#4be39b; border:1px solid #00c47a55; }
+  .tag-color { background:rgba(80,160,255,0.18); color:#8fc1ff; border:1px solid #50a0ff55; }
+  .variants { display:flex; gap:14px; flex-wrap:wrap; align-items:flex-end; }
+  .v { display:flex; flex-direction:column; align-items:center; gap:4px; }
+  .v svg { display:block; }
+  .v small { font-size:0.68rem; opacity:0.55; }
+
+  /* Section emojis */
+  .emoji-table { width:100%; border-collapse:collapse; }
+  .emoji-table th { font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; opacity:0.6; padding:8px 4px; border-bottom:1px solid rgba(255,255,255,0.15); }
+  .emoji-table td { text-align:center; padding:10px 4px; border-bottom:1px solid rgba(255,255,255,0.06); }
+  .emoji-table .word { font-weight:900; font-size:1.1rem; text-align:left; }
+  .emoji-table .nat { font-size:2.1rem; line-height:1; }
+  .emoji-table img { width:42px; height:42px; display:inline-block; }
+  .src-cards { display:flex; gap:10px; flex-wrap:wrap; margin-top:14px; }
+  .src { flex:1; min-width:200px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:12px; padding:10px 12px; }
+  .src b { color:#ffe066; }
+  .src p { font-size:0.8rem; opacity:0.8; line-height:1.45; margin-top:3px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🎨 Galerie SVG — options de thèmes</h1>
+  <p class="intro">
+    Tout ce qui suit est <b>dessiné en SVG pur</b> (pas une image, pas un emoji),
+    <b>paramétrable</b> exactement comme le bus : on choisit la <b>couleur</b> et on pose un <b>numéro</b>.
+    But : remplacer le bus dans les jeux par un thème universel (voiture, dino, poisson…).
+    <br>👉 Dis-moi lesquels te plaisent, je les affine et je les branche.
+  </p>
+
+  <h2>1 · Objets « porte-numéro » (couleur + numéro, comme le bus)</h2>
+  <p class="note">Ceux-là remplacent le bus dans <i>tous</i> les jeux (couleurs, compter, logique, « trouve qui bouge »).</p>
+  <div id="full"></div>
+
+  <h2>2 · Objets « couleur seule » (tri, mélange, déco)</h2>
+  <p class="note">Pas de numéro naturel, mais parfaits pour les jeux de couleur/tri.</p>
+  <div id="coloronly"></div>
+
+  <h2>3 · Catalogues d'emojis / dessins libres (pour le jeu « Lire »)</h2>
+  <p class="note">
+    Oui, ça existe — des <b>milliers</b> de mini-dessins en SVG, libres et téléchargeables.
+    Gros avantage sur l'emoji « système » : <b>même rendu sur tous les téléphones</b> (un 🦊 ne se ressemble pas
+    sur iPhone vs Android) et style « dessin mignon » constant. On charge via CDN (comme les drapeaux de MJ-20) ou on télécharge les ~80 utiles.
+  </p>
+  <table class="emoji-table" id="emojiTable">
+    <thead><tr><th class="word">Mot</th><th>Emoji système<br>(varie)</th><th>Twemoji<br>(SVG libre)</th><th>OpenMoji<br>(SVG libre)</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  <div class="src-cards">
+    <div class="src"><b>OpenMoji</b> — 4000+ dessins, CC BY-SA, style enfant rond. <p>openmoji.org · le plus « mignon », recommandé.</p></div>
+    <div class="src"><b>Twemoji</b> — 3500+, CC-BY (Twitter). <p>très répandu, CDN fiable jsdelivr.</p></div>
+    <div class="src"><b>Noto Emoji</b> — Google, OFL/Apache. <p>style proche Android.</p></div>
+  </div>
+</div>
+
+<script src="js/bus-svg.js"></script>
+<script>
+// ── Générateurs SVG paramétriques : fn(color, textColor, num, w) ───────────
+function disc(cx, cy, r, num, textColor) {
+  return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="#fff" stroke="#111" stroke-width="2"/>
+    <text x="${cx}" y="${cy+0.5}" font-family="Arial" font-size="${r*1.1}" font-weight="bold" fill="#111" text-anchor="middle" dominant-baseline="central">${num}</text>`;
+}
+function label(cx, cy, num, fill, size) {
+  return `<text x="${cx}" y="${cy}" font-family="Arial" font-size="${size}" font-weight="bold" fill="${fill}" text-anchor="middle" dominant-baseline="central">${num}</text>`;
+}
+
+// Voiture de course
+function carSVG(c, tc, num, w) { return `<svg viewBox="0 0 170 100" width="${w}" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="85" cy="92" rx="70" ry="6" fill="rgba(0,0,0,0.25)"/>
+  <path d="M8,70 Q8,56 24,54 L52,54 L66,36 Q70,32 78,32 L104,32 Q112,32 116,38 L126,54 L150,56 Q162,58 162,70 L162,76 Q162,80 158,80 L12,80 Q8,80 8,76 Z" fill="${c}" stroke="#111" stroke-width="2.5"/>
+  <path d="M68,52 L78,40 L102,40 L112,52 Z" fill="#bfe3ff" stroke="#111" stroke-width="1.5"/>
+  <rect x="2" y="46" width="12" height="7" rx="2" fill="${c}" stroke="#111" stroke-width="1.5"/>
+  ${disc(92,64,13,num,tc)}
+  <circle cx="150" cy="66" r="4" fill="#ffd54a" stroke="#111" stroke-width="1"/>
+  <circle cx="46" cy="80" r="15" fill="#2b2b2b" stroke="#111" stroke-width="2"/><circle cx="46" cy="80" r="7" fill="#888"/>
+  <circle cx="124" cy="80" r="15" fill="#2b2b2b" stroke="#111" stroke-width="2"/><circle cx="124" cy="80" r="7" fill="#888"/>
+</svg>`; }
+
+// Train / petite loco
+function trainSVG(c, tc, num, w) { return `<svg viewBox="0 0 170 110" width="${w}" xmlns="http://www.w3.org/2000/svg">
+  <rect x="20" y="34" width="120" height="50" rx="8" fill="${c}" stroke="#111" stroke-width="2.5"/>
+  <rect x="120" y="20" width="26" height="64" rx="6" fill="${c}" stroke="#111" stroke-width="2.5"/>
+  <rect x="40" y="14" width="14" height="22" rx="3" fill="#555" stroke="#111" stroke-width="2"/>
+  <ellipse cx="47" cy="13" rx="11" ry="5" fill="#ccc" opacity="0.7"/>
+  <rect x="126" y="30" width="15" height="15" rx="2" fill="#bfe3ff" stroke="#111" stroke-width="1.5"/>
+  ${disc(70,58,15,num,tc)}
+  <rect x="14" y="84" width="138" height="8" rx="3" fill="#444"/>
+  <circle cx="46" cy="96" r="11" fill="#2b2b2b" stroke="#111" stroke-width="2"/><circle cx="46" cy="96" r="5" fill="#888"/>
+  <circle cx="92" cy="96" r="11" fill="#2b2b2b" stroke="#111" stroke-width="2"/><circle cx="92" cy="96" r="5" fill="#888"/>
+  <circle cx="132" cy="96" r="11" fill="#2b2b2b" stroke="#111" stroke-width="2"/><circle cx="132" cy="96" r="5" fill="#888"/>
+</svg>`; }
+
+// Montgolfière
+function balloonHotSVG(c, tc, num, w) { return `<svg viewBox="0 0 120 175" width="${w*0.7}" xmlns="http://www.w3.org/2000/svg">
+  <path d="M60,8 C92,8 104,40 104,62 C104,92 78,110 60,118 C42,110 16,92 16,62 C16,40 28,8 60,8 Z" fill="${c}" stroke="#111" stroke-width="2.5"/>
+  <path d="M60,8 C50,30 50,96 60,118" fill="none" stroke="rgba(0,0,0,0.18)" stroke-width="2"/>
+  <path d="M60,8 C70,30 70,96 60,118" fill="none" stroke="rgba(0,0,0,0.18)" stroke-width="2"/>
+  ${label(60,60,num,tc,24)}
+  <line x1="50" y1="116" x2="50" y2="142" stroke="#111" stroke-width="1.5"/>
+  <line x1="70" y1="116" x2="70" y2="142" stroke="#111" stroke-width="1.5"/>
+  <rect x="47" y="140" width="26" height="20" rx="3" fill="#9c6b3f" stroke="#111" stroke-width="2"/>
+  <line x1="47" y1="147" x2="73" y2="147" stroke="#6b4423" stroke-width="1.5"/>
+</svg>`; }
+
+// Ballon de baudruche
+function partyBalloonSVG(c, tc, num, w) { return `<svg viewBox="0 0 100 160" width="${w*0.6}" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="50" cy="56" rx="40" ry="48" fill="${c}" stroke="#111" stroke-width="2.5"/>
+  <ellipse cx="36" cy="40" rx="10" ry="14" fill="rgba(255,255,255,0.35)"/>
+  ${label(50,58,num,tc,22)}
+  <polygon points="44,100 56,100 50,112" fill="${c}" stroke="#111" stroke-width="1.5"/>
+  <path d="M50,112 Q60,128 46,138 Q58,148 50,158" fill="none" stroke="#999" stroke-width="2"/>
+</svg>`; }
+
+// Fusée
+function rocketSVG(c, tc, num, w) { return `<svg viewBox="0 0 100 170" width="${w*0.62}" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="50,6 70,46 30,46" fill="#e8413a" stroke="#111" stroke-width="2"/>
+  <rect x="30" y="42" width="40" height="84" rx="20" fill="${c}" stroke="#111" stroke-width="2.5"/>
+  <polygon points="30,104 12,142 30,130" fill="#e8413a" stroke="#111" stroke-width="2"/>
+  <polygon points="70,104 88,142 70,130" fill="#e8413a" stroke="#111" stroke-width="2"/>
+  <circle cx="50" cy="66" r="11" fill="#bfe3ff" stroke="#111" stroke-width="2"/>
+  ${label(50,96,num,tc,20)}
+  <path d="M40,126 Q50,160 60,126 Z" fill="#ffb030"/>
+  <path d="M45,126 Q50,148 55,126 Z" fill="#ffe066"/>
+</svg>`; }
+
+// Poisson
+function fishSVG(c, tc, num, w) { return `<svg viewBox="0 0 175 100" width="${w}" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="128,50 165,24 165,76" fill="${c}" stroke="#111" stroke-width="2.5"/>
+  <ellipse cx="74" cy="50" rx="62" ry="33" fill="${c}" stroke="#111" stroke-width="2.5"/>
+  <path d="M60,18 Q80,4 96,20 Z" fill="${c}" stroke="#111" stroke-width="2"/>
+  <circle cx="34" cy="42" r="8" fill="#fff" stroke="#111" stroke-width="1.5"/><circle cx="32" cy="42" r="3.5" fill="#111"/>
+  ${label(86,55,num,tc,22)}
+  <circle cx="14" cy="30" r="4" fill="#bfe3ff" opacity="0.8"/><circle cx="6" cy="44" r="3" fill="#bfe3ff" opacity="0.7"/>
+</svg>`; }
+
+// Dino (mignon, stylisé)
+function dinoSVG(c, tc, num, w) { return `<svg viewBox="0 0 180 135" width="${w}" xmlns="http://www.w3.org/2000/svg">
+  <ellipse cx="92" cy="120" rx="74" ry="7" fill="rgba(0,0,0,0.22)"/>
+  <path d="M150,78 Q182,72 176,98 Q160,96 142,96 Z" fill="${c}" stroke="#111" stroke-width="2.5"/>
+  <ellipse cx="92" cy="82" rx="58" ry="36" fill="${c}" stroke="#111" stroke-width="2.5"/>
+  <path d="M48,84 Q30,40 50,24 Q66,12 72,30 Q60,40 64,78 Z" fill="${c}" stroke="#111" stroke-width="2.5"/>
+  <ellipse cx="56" cy="24" rx="18" ry="14" fill="${c}" stroke="#111" stroke-width="2.5"/>
+  <circle cx="50" cy="22" r="3" fill="#111"/>
+  <path d="M86,62 q6,-10 12,0 q6,-10 12,0 q6,-10 12,0" fill="none" stroke="rgba(0,0,0,0.25)" stroke-width="2"/>
+  ${label(98,90,num,tc,22)}
+  <rect x="66" y="110" width="14" height="20" rx="5" fill="${c}" stroke="#111" stroke-width="2"/>
+  <rect x="104" y="110" width="14" height="20" rx="5" fill="${c}" stroke="#111" stroke-width="2"/>
+</svg>`; }
+
+// Maison (numéro = n° de rue, naturel)
+function houseSVG(c, tc, num, w) { return `<svg viewBox="0 0 140 130" width="${w*0.85}" xmlns="http://www.w3.org/2000/svg">
+  <rect x="24" y="58" width="92" height="62" fill="${c}" stroke="#111" stroke-width="2.5"/>
+  <polygon points="14,60 70,16 126,60" fill="#c0392b" stroke="#111" stroke-width="2.5"/>
+  <rect x="58" y="84" width="26" height="36" rx="2" fill="#6b4423" stroke="#111" stroke-width="2"/>
+  ${label(71,96,num,'#fff',12)}
+  <rect x="34" y="70" width="20" height="20" fill="#bfe3ff" stroke="#111" stroke-width="2"/>
+  <circle cx="78" cy="103" r="2" fill="#ffd54a"/>
+</svg>`; }
+
+// ── Couleur seule ──────────────────────────────────────────────────────────
+function treeSVG(c, tc, num, w) { return `<svg viewBox="0 0 120 145" width="${w*0.75}" xmlns="http://www.w3.org/2000/svg">
+  <rect x="52" y="92" width="16" height="42" rx="4" fill="#8d5a2b" stroke="#111" stroke-width="2"/>
+  <circle cx="60" cy="56" r="38" fill="${c}" stroke="#111" stroke-width="2.5"/>
+  <circle cx="34" cy="80" r="24" fill="${c}" stroke="#111" stroke-width="2.5"/>
+  <circle cx="86" cy="80" r="24" fill="${c}" stroke="#111" stroke-width="2.5"/>
+</svg>`; }
+
+function flowerSVG(c, tc, num, w) { let p=''; for(let i=0;i<6;i++){const a=i*Math.PI/3;const x=60+Math.cos(a)*30;const y=60+Math.sin(a)*30;p+=`<ellipse cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" rx="16" ry="11" fill="${c}" stroke="#111" stroke-width="2" transform="rotate(${(a*180/Math.PI).toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})"/>`;}
+  return `<svg viewBox="0 0 120 120" width="${w*0.7}" xmlns="http://www.w3.org/2000/svg">${p}<circle cx="60" cy="60" r="19" fill="#ffd54a" stroke="#111" stroke-width="2"/></svg>`; }
+
+function starSVG(c, tc, num, w) { const pts=[];for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5;const r=i%2?22:48;pts.push(`${(60+Math.cos(a)*r).toFixed(1)},${(60+Math.sin(a)*r).toFixed(1)}`);}return `<svg viewBox="0 0 120 120" width="${w*0.7}" xmlns="http://www.w3.org/2000/svg"><polygon points="${pts.join(' ')}" fill="${c}" stroke="#111" stroke-width="2.5"/></svg>`; }
+
+function heartSVG(c, tc, num, w) { return `<svg viewBox="0 0 120 112" width="${w*0.7}" xmlns="http://www.w3.org/2000/svg"><path d="M60,102 C10,66 16,24 44,24 C56,24 60,34 60,40 C60,34 64,24 76,24 C104,24 110,66 60,102 Z" fill="${c}" stroke="#111" stroke-width="2.5"/></svg>`; }
+
+// ── Rendu de la galerie ─────────────────────────────────────────────────────
+const COLORS = ['#e8413a','#2f7ff0','#2bb673','#ffce3a','#8e44ad'];
+const TCS    = { '#e8413a':'#fff','#2f7ff0':'#fff','#2bb673':'#fff','#ffce3a':'#333','#8e44ad':'#fff' };
+const NUMS   = ['12','7','3'];
+
+const FULL = [
+  { name:'🚌 Bus (référence actuelle)', fn:(c,t,n,w)=>busSVG(c,t,n,w), tag:'roule' },
+  { name:'🚗 Voiture de course',        fn:carSVG,            tag:'roule' },
+  { name:'🚂 Petit train',              fn:trainSVG,          tag:'roule' },
+  { name:'🎈 Montgolfière',             fn:balloonHotSVG,     tag:'flotte' },
+  { name:'🎈 Ballon',                   fn:partyBalloonSVG,   tag:'flotte' },
+  { name:'🚀 Fusée',                    fn:rocketSVG,         tag:'vole' },
+  { name:'🐟 Poisson',                  fn:fishSVG,           tag:'nage' },
+  { name:'🦕 Dino (esquisse)',          fn:dinoSVG,           tag:'marche' },
+  { name:'🏠 Maison (n° de rue)',       fn:houseSVG,          tag:'fixe' },
+];
+const COLORONLY = [
+  { name:'🌳 Arbre',  fn:treeSVG },
+  { name:'🌸 Fleur',  fn:flowerSVG },
+  { name:'⭐ Étoile', fn:starSVG },
+  { name:'❤️ Cœur',   fn:heartSVG },
+];
+
+function renderObj(o, withNum) {
+  const cols = COLORS.slice(0, 3);
+  const vars = cols.map((c,i)=>`<div class="v">${o.fn(c, TCS[c]||'#fff', withNum?NUMS[i]:'', 130)}<small>${c}</small></div>`).join('');
+  return `<div class="obj">
+    <div class="obj-head"><span class="obj-name">${o.name}</span>
+      <span class="obj-tag ${withNum?'tag-full':'tag-color'}">${withNum?'couleur + numéro · '+o.tag:'couleur seule'}</span>
+    </div>
+    <div class="variants">${vars}</div>
+  </div>`;
+}
+document.getElementById('full').innerHTML = FULL.map(o=>renderObj(o,true)).join('');
+document.getElementById('coloronly').innerHTML = COLORONLY.map(o=>renderObj(o,false)).join('');
+
+// ── Section emojis : système vs Twemoji vs OpenMoji ─────────────────────────
+const WORDS = [
+  { w:'CHAT',      e:'🐱', cp:'1f431' },
+  { w:'LOUP',      e:'🐺', cp:'1f43a' },
+  { w:'OURS',      e:'🐻', cp:'1f43b' },
+  { w:'LAPIN',     e:'🐰', cp:'1f430' },
+  { w:'POISSON',   e:'🐟', cp:'1f41f' },
+  { w:'ESCARGOT',  e:'🐌', cp:'1f40c' },
+  { w:'ÉLÉPHANT',  e:'🐘', cp:'1f418' },
+  { w:'DINOSAURE', e:'🦕', cp:'1f995' },
+  { w:'GÂTEAU',    e:'🎂', cp:'1f382' },
+  { w:'BATEAU',    e:'⛵', cp:'26f5' },
+];
+document.querySelector('#emojiTable tbody').innerHTML = WORDS.map(x=>`
+  <tr>
+    <td class="word">${x.w}</td>
+    <td class="nat">${x.e}</td>
+    <td><img loading="lazy" alt="${x.w}" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/${x.cp}.svg"></td>
+    <td><img loading="lazy" alt="${x.w}" src="https://openmoji.org/data/color/svg/${x.cp.toUpperCase()}.svg"></td>
+  </tr>`).join('');
+</script>
+</body>
+</html>

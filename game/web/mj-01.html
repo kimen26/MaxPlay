@@ -68,6 +68,7 @@
       <span class="scoretxt">Score</span>
       <span class="scoreval" id="score">0</span>
       <span class="streak" id="streak"></span>
+      <span id="levelbar" style="margin-left:auto;font-weight:900;color:#ffe066;background:#ffffff1f;border-radius:10px;padding:3px 12px;font-size:0.85rem;">Niveau 1</span>
     </div>
 
     <div class="qbox" id="qbox">
@@ -92,6 +93,8 @@
   <script src="js/feedback.js"></script>
   <script src="js/data.js"></script>
   <script src="js/bus-svg.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/stars.js"></script>
   <script src="js/qcm-retry.js"></script>
   <script>
     // ─── MJ-01 MIX : 10 tours alternant 3 modes ───
@@ -100,6 +103,12 @@
     // Mode C (vocal)   : bus blanc caché + TTS → choisir le numéro
     const MAX_QUESTIONS = 10;
     const MODES = ['color', 'number', 'voice'];
+
+    // Paliers (doc _PALIERS) — type de question. Niveau = Stars.get+1.
+    // N1-2 couleur seule (3 puis 4 choix) · N3 +numéro · N4 +écoute · N5 mix complet.
+    const level = Math.max(0, Math.min(4, (window.Stars ? Stars.get('mj-01') : 0)));
+    const ALLOWED = [['color'], ['color'], ['color','number'], ['color','number','voice'], ['color','number','voice']][level];
+    const NCHOICES = [3, 4, 4, 4, 6][level];
 
     const POOL_COLOR  = LIGNES.filter(l => l.num !== 'TVM');
     const POOL_NUMBER = LIGNES.filter(l => !['V6','2234','N22','TVM'].includes(l.num));
@@ -127,7 +136,7 @@
     function buildModeOrder() {
       // 10 tours : mélange équilibré ≈ 3-4 de chaque mode
       const base = [];
-      for (let i = 0; i < MAX_QUESTIONS; i++) base.push(MODES[i % MODES.length]);
+      for (let i = 0; i < MAX_QUESTIONS; i++) base.push(ALLOWED[i % ALLOWED.length]);
       return shuffle(base);
     }
 
@@ -136,12 +145,18 @@
       modeOrder = buildModeOrder();
       document.getElementById('score').textContent = '0';
       document.getElementById('streak').textContent = '';
+      setLevelBadge();
       nextQuestion();
     }
 
     function setBadge(mode) {
       const map = { color: '🎨 COULEUR', number: '🔢 NUMÉRO', voice: '🔊 ÉCOUTE' };
       document.getElementById('modeBadge').textContent = map[mode];
+    }
+
+    function setLevelBadge() {
+      const lb = document.getElementById('levelbar');
+      if (lb) lb.textContent = 'Niveau ' + (level + 1);
     }
 
     function nextQuestion() {
@@ -176,7 +191,7 @@
       const uniqueColors = POOL_COLOR
         .filter(l => l.color !== currentLine.color)
         .filter((l, i, a) => a.findIndex(x => x.color === l.color) === i);
-      const wrongs = selectDistinctColors(uniqueColors, 5);
+      const wrongs = selectDistinctColors(uniqueColors, NCHOICES - 1);
 
       const options = [
         { color: currentLine.color, isCorrect: true },
@@ -230,7 +245,7 @@
         busSVGHiddenNum(currentLine.color, currentLine.textColor, currentLine.num, 200);
 
       const wrongs = selectDistinctColors(
-        LIGNES.filter(l => l.num !== currentLine.num), 5
+        LIGNES.filter(l => l.num !== currentLine.num), NCHOICES - 1
       );
       const options = [
         { line: currentLine, isCorrect: true },
@@ -291,7 +306,7 @@
 
       setTimeout(speakTarget, 300);
 
-      const wrongs = shuffle(LIGNES.filter(l => l.num !== currentLine.num)).slice(0, 5);
+      const wrongs = shuffle(LIGNES.filter(l => l.num !== currentLine.num)).slice(0, NCHOICES - 1);
       const options = [
         { line: currentLine, isCorrect: true },
         ...wrongs.map(l => ({ line: l, isCorrect: false }))

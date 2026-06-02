@@ -87,6 +87,44 @@ Speaker Boost: false
 
 ---
 
+## 🎨 Marque de fabrique — tags signature (mode documentaire + dialogue enfant)
+
+> Figé 2026-06-02 (récits dino, narratrice qui dialogue avec Wex). Tags du **catalogue officiel** uniquement ([`audio-direction-elevenlabs/02-tags-catalog.md`](C:/Users/kimen/.claude/skills/audio-direction-elevenlabs/02-tags-catalog.md)). Skill d'écriture : [`ecriture-audio-enfants`](C:/Users/kimen/.claude/skills/ecriture-audio-enfants/SKILL.md).
+
+### Sa signature (4 tags récurrents = son identité)
+
+| Tag | Rôle dans sa voix | Quand |
+|-----|-------------------|-------|
+| **`[gasps]`** ✅ | l'émerveillement partagé (« Oh ! ») | une découverte, un géant, un fait fou |
+| **`[chuckles]`** ✅ | la complicité tendre, le sourire | une bêtise rigolote, un clin d'œil à l'enfant |
+| **`[softly]` / `[whispers]`** ✅ | la tendresse et la confidence | les moments doux (Tritri), le suspense, la coda |
+| **`[awe]`** 🔬 | le grand émerveillement posé | l'immensité (géants, ciel, temps) |
+
+### Sa palette élargie (validés ✅)
+
+`[happily]` (chaleur-joie de fond) · `[playful]` (espiègle) · `[curious]` (pose une question à l'enfant) · `[giggles]` (petit rire) · `[excited]` (pic d'énergie, rare) · `[sighs]` (respiration / soulagement) · `[pauses]` + `...` (suspense) · `[slowly]` (le mystère monte).
+
+### Doubles favoris
+
+`[curious][softly]` (question douce) · `[whispers][softly]` (confidence intime) · `[happily][gasps]` (joie + waouh) · `[awe][slowly]` (grand émerveillement ralenti).
+
+### Règles dures
+
+- ❌ **Jamais `[warmly]`** (hors catalogue, n'existe pas). Chaleur = `[happily]` ; tendresse = `[softly]`.
+- **Max 2-3 tags / phrase** (sinon voix instable). Les **pauses se placent AVANT** la phrase à faire respirer.
+- **MAJUSCULES** sur les mots-chocs (BOUM, PLUMES, ÉNORME) = punch (graphie, voir [`03-tricks-graphie.md`](C:/Users/kimen/.claude/skills/audio-direction-elevenlabs/03-tricks-graphie.md)).
+- Audio → **« écoute »**, jamais « regarde ». Registre : **une dame qui lit**, chaleureuse mais sobre — pas de « mon chéri ».
+- **Wex (l'enfant) n'a AUCUNE balise** : sa voix encode déjà son caractère.
+
+### ⚙️ Settings en mode DIALOGUE (text-to-dialogue / eleven_v3)
+
+```
+stability: 0.4        ← validé 2026-06-02 (récit dino)
+```
+⚠️ En **dialogue**, l'API n'expose **QUE `stability`** — `style` / `similarity_boost` ne sont PAS réglables (≠ voix mono ci-dessus, où style 0.25 etc. s'appliquent). La chaleur passe donc par les **tags + la graphie + l'écriture**, pas par un slider.
+
+---
+
 ## Prompt ElevenLabs (Voice Design) — v3.1 (Virginie Albanese — éveil musical + théâtre habité)
 
 > **Référence sonore visée 2026-05-11** : **Virginie Albanese** — auteure-compositrice et intervenante musicale enfants à Gironde (« L'éveil en musique avec Virginie »). Comptines, onomatopées, gestes, présence pédagogique-chaleureuse-proche des enfants. **Voix chantante en parlant**, douce et claire, sait jouer onomatopées + ralentir-accélérer. Ajout MaxPlay : dynamique théâtre habité (mystère, tension légère, tendresse) + sans surjeu.

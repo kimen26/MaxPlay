@@ -459,6 +459,9 @@ html, body {
   transition:transform 0.12s;
 }
 .chrono-dino-thumb:active { transform:scale(0.9); }
+.journey-intro { margin:6px 12px 12px; padding:10px 12px; border-radius:12px; background:rgba(255,255,255,0.06); font-size:0.85rem; line-height:1.4; color:rgba(255,255,255,0.85); }
+.journey-ep { margin:0 10px 12px; border-radius:14px; overflow:hidden; background:rgba(0,0,0,0.18); }
+.journey-ep .chrono-header { cursor:default; }
 .chrono-dino-img { width:60px; height:44px; object-fit:contain; margin-bottom:4px; filter:drop-shadow(0 1px 4px rgba(0,0,0,0.5)); }
 .chrono-dino-name { font-size:0.66rem; font-weight:900; color:#fff; text-align:center; line-height:1.2; }
 .chrono-dino-thumb .card-badges { top:3px; right:3px; gap:3px; }
@@ -497,7 +500,7 @@ html, body {
     <button class="mode-btn active" id="mode-btn-regime"    onclick="setMode('regime')"   >🍽️ Ce qu'il mange</button>
     <button class="mode-btn"        id="mode-btn-famille"   onclick="setMode('famille')"  >🦖 Les familles</button>
     <button class="mode-btn"        id="mode-btn-continent" onclick="setMode('continent')">🌍 Où il vivait</button>
-    <button class="mode-btn"        id="mode-btn-periode"   onclick="setMode('periode')"  >⏳ Quand il vivait</button>
+    <button class="mode-btn"        id="mode-btn-periode"   onclick="setMode('periode')"  >⏳ Le voyage</button>
   </div>
   <div id="menu-scroll"></div>
 </div>
@@ -563,7 +566,7 @@ function setMode(mode) {
   document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('mode-btn-' + mode).classList.add('active');
   buildMenu();
-  const labels = { regime: 'Ce qu\'il mange !', famille: 'Les familles de dinos !', continent: 'Où il vivait !', periode: 'Quand il vivait !' };
+  const labels = { regime: 'Ce qu\'il mange !', famille: 'Les familles de dinos !', continent: 'Où il vivait !', periode: 'Le voyage dans le temps !' };
   speakText(labels[mode] || '');
 }
 
@@ -685,49 +688,65 @@ function buildMenuContinent(el) {
 }
 
 /* ── MENU période = chronomap inline ── */
+// ─── Le voyage dans le temps (8 épisodes audio · story-first) ───
+const JOURNEY = [
+  { id:'intro',          emoji:'🌍', label:'Le grand voyage',              date:'à la recherche de Tritri',  color:'#5dade2', dinos:[] },
+  { id:'trias',          emoji:'🌋', label:'Le Trias',                     date:"il y a 250 millions d'années", color:'#ff7043', dinos:['coelophysis','plateosaurus'] },
+  { id:'jurassique',     emoji:'🦕', label:'Le Jurassique',                date:"il y a 150 millions d'années", color:'#66bb6a', dinos:['diplodocus','brachiosaurus','allosaurus'] },
+  { id:'cretace',        emoji:'🦖', label:'Le Crétacé',                   date:"il y a 100 millions d'années", color:'#42a5f5', dinos:['tyrannosaurus','triceratops','velociraptor'] },
+  { id:'extinction',     emoji:'☄️', label:'La Grande Extinction',         date:"il y a 66 millions d'années",  color:'#ff6b35', dinos:['triceratops','tyrannosaurus'] },
+  { id:'mammiferes',     emoji:'🐯', label:'L’ère des mammifères',    date:'après les dinos',           color:'#a1887f', dinos:[] },
+  { id:'glace-mammouth', emoji:'🦣', label:'L’âge de glace & le mammouth', date:"l'époque du froid",    color:'#00bcd4', dinos:[] },
+  { id:'paleo',          emoji:'🔬', label:'La paléontologie',             date:'aujourd’hui',          color:'#9b59b6', dinos:[] },
+];
+
 function buildMenuPeriode(el) {
   el.classList.add('mode-periode');
-
-  // Frise proportionnelle
-  const totalMa = 280 - 66;
-  const friseHtml = `
-    <div class="chrono-timeline" style="margin:10px 12px 6px">
-      ${DINO_PERIODES.map(p => {
-        const span = p.ma_start - p.ma_end;
-        const pct  = Math.round(span / totalMa * 100);
-        return `<div class="chrono-tl-seg" style="width:${pct}%;background:${p.color};min-width:14px"
-          onclick="scrollToPeriode('${p.id}')">${p.emoji}</div>`;
-      }).join('')}
-    </div>
-  `;
-
   const wrapper = document.createElement('div');
   wrapper.id = 'chrono-scroll';
-  wrapper.style.cssText = 'flex:1;overflow-y:auto;overflow-x:hidden;padding:0 0 30px 0;';
+  wrapper.style.cssText = 'flex:1;overflow-y:auto;overflow-x:hidden;padding:8px 0 30px 0;';
 
-  wrapper.innerHTML = buildPangeeBloc() + friseHtml + DINO_PERIODES.map(p => {
-    const dinos = DINOS.filter(d => d.periode === p.id);
-    if (!dinos.length) return '';
-    const dinosHtml = dinos.map(d => buildChronoDinoThumb(d)).join('');
-    return `
-      <div class="chrono-periode" id="periode-${p.id}">
-        <div class="chrono-header" style="background:${p.color}22" onclick="speakText('${esc(p.label)}. ${esc(p.desc)}. ${dinos.length} dinosaures.')">
-          <div class="chrono-emoji">${p.emoji}</div>
-          <div class="chrono-info">
-            <div class="chrono-label">${p.label}</div>
-            <div class="chrono-range">il y a ${p.range}</div>
-            <div class="chrono-desc">${p.desc}</div>
+  wrapper.innerHTML =
+    `<div class="journey-intro">🦕 Le voyage dans le temps, raconté. Appuie sur <b>▶</b> pour écouter chaque époque, de la première vie jusqu'à aujourd'hui.</div>` +
+    JOURNEY.map(ep => {
+      const dinos = ep.dinos.map(id => DINOS.find(d => d.id === id)).filter(Boolean);
+      const dinosHtml = dinos.length
+        ? `<div class="chrono-dinos">${dinos.map(buildChronoDinoThumb).join('')}</div>` : '';
+      return `
+        <div class="chrono-periode journey-ep" style="border-left:5px solid ${ep.color}">
+          <div class="chrono-header" style="background:${ep.color}22">
+            <div class="chrono-emoji">${ep.emoji}</div>
+            <div class="chrono-info">
+              <div class="chrono-label">${ep.label}</div>
+              <div class="chrono-range">${ep.date}</div>
+            </div>
           </div>
-          <div class="chrono-count">${dinos.length} dinos</div>
+          <div style="padding:10px 12px 12px">
+            <button class="v1-big" onclick="playRecit('${ep.id}',this)" id="recit-${ep.id}-btn" style="margin:0 0 ${dinosHtml ? '10px' : '0'}">
+              🎙️ Écoute ${ep.label} <span class="dino-story-eq">▶</span>
+            </button>
+            ${dinosHtml}
+          </div>
         </div>
-        <div class="chrono-dinos">${dinosHtml}</div>
-      </div>
-    `;
-  }).join('') + buildExtinctionBloc();
+      `;
+    }).join('');
 
   el.appendChild(wrapper);
-  _pangeeIdx = 0;
-  pangeeStartAuto();
+}
+
+// Joue le récit d'époque (audio/dinos/recit-<id>.mp3). Re-tap = stop.
+function playRecit(id, btnEl) {
+  const src = 'audio/dinos/recit-' + id + '.mp3';
+  stopSpeak();
+  const wasThis = (_dinoAudioBtn === btnEl && _dinoAudio);
+  _stopDinoAudio();
+  if (wasThis) return;
+  _dinoAudio = new Audio(src);
+  _dinoAudioBtn = btnEl || null;
+  if (_dinoAudioBtn) _dinoAudioBtn.classList.add('playing');
+  _dinoAudio.onended = _stopDinoAudio;
+  _dinoAudio.onerror = _stopDinoAudio;
+  _dinoAudio.play().catch(_stopDinoAudio);
 }
 
 function buildPangeeBloc() {

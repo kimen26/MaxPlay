@@ -164,6 +164,7 @@
   <div class="hdr">
     <a href="index.html" class="back">←</a>
     <span class="htitle">🗂️ Trie les bus !</span>
+    <span id="levelbar" style="font-weight:900;color:#ffe066;background:rgba(255,255,255,0.14);border-radius:10px;padding:3px 12px;font-size:0.85rem;">Niveau 1</span>
   </div>
   <div class="scorebar">
     <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
@@ -191,6 +192,8 @@
 <script src="js/feedback.js"></script>
 <script src="js/data.js"></script>
 <script src="js/bus-svg.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/stars.js"></script>
 <script src="js/drag-drop.js"></script>
 <script>
   // ─── MJ-09 : Trie les bus ! ───
@@ -299,9 +302,27 @@
     return FAMILIES.find(f => f.id === id) || null;
   }
 
-  // Pool complet : bus connus de Max + métros + RER + tramways — limité à 30
-  const _POOL = [...LIGNES, ...METRO_RER_TRAM];
-  const ALL_BUSES = _POOL.sort(() => Math.random() - 0.5).slice(0, 30);
+  // ── Paliers (doc _PALIERS) : nb de familles + nb de bus. Niveau = Stars.get+1 ──
+  const level = Math.max(0, Math.min(4, (window.Stars ? Stars.get('mj-09') : 0)));
+  const FAM_COUNT = [2, 3, 4, 5, 6][level];
+  const BUS_COUNT = [4, 8, 12, 18, 26][level];
+  (function(){ const lb = document.getElementById('levelbar'); if (lb) lb.textContent = 'Niveau ' + (level + 1); })();
+  const ACTIVE_FAMILIES = FAMILIES.slice(0, FAM_COUNT);
+
+  function _shuffle(a) { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
+  // Ne garder que les véhicules des familles actives, ≥1 par famille puis compléter
+  function pickBuses() {
+    const _POOL = [...LIGNES, ...METRO_RER_TRAM];
+    const eligible = _POOL.filter(l => { const f = getFamilyForLine(l); return f && ACTIVE_FAMILIES.some(af => af.id === f.id); });
+    const byFam = {}; ACTIVE_FAMILIES.forEach(f => byFam[f.id] = []);
+    _shuffle(eligible).forEach(l => { const f = getFamilyForLine(l); if (f && byFam[f.id]) byFam[f.id].push(l); });
+    const out = [];
+    ACTIVE_FAMILIES.forEach(f => { if (byFam[f.id].length) out.push(byFam[f.id].shift()); });
+    const rest = _shuffle(Object.values(byFam).flat());
+    for (const l of rest) { if (out.length >= BUS_COUNT) break; out.push(l); }
+    return _shuffle(out).slice(0, BUS_COUNT);
+  }
+  const ALL_BUSES = pickBuses();
 
   const BUS_WIDTH = 90;
   const SNAP_DIST = 90;
@@ -313,7 +334,7 @@
   const totalBuses = ALL_BUSES.length;
   // Suivi : combien dans chaque boîte
   const boxCounts = {};
-  FAMILIES.forEach(f => boxCounts[f.id] = 0);
+  ACTIVE_FAMILIES.forEach(f => boxCounts[f.id] = 0);
 
   // ── TTS (via js/tts.js) ──
   function speakLine(line) {
@@ -370,7 +391,7 @@
   function buildBoxes() {
     const col = document.getElementById('boxZone');
     col.innerHTML = '';
-    FAMILIES.forEach(fam => {
+    ACTIVE_FAMILIES.forEach(fam => {
       const box = document.createElement('div');
       box.className = 'family-box';
       box.dataset.family = fam.id;
@@ -568,7 +589,7 @@ function highlightBox(bus) {
   function showParade() {
     const container = document.getElementById('paradeFamilies');
     container.innerHTML = '';
-    FAMILIES.forEach((fam, fi) => {
+    ACTIVE_FAMILIES.forEach((fam, fi) => {
       const lignesInFam = ALL_BUSES.filter(l => fam.colors.includes(l.color));
       if (!lignesInFam.length) return;
       const row = document.createElement('div');

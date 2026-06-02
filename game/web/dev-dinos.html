@@ -62,6 +62,42 @@ html, body {
 .cat-label { font-size:0.95rem; font-weight:900; text-align:center; color:#fff; text-shadow:0 1px 4px rgba(0,0,0,0.5); }
 .cat-count { display:none; }
 
+/* ── Cartes FAMILLE (horizontales, pleine largeur, vignette + texte) ── */
+.fam-intro {
+  grid-column:1/-1; font-size:0.82rem; line-height:1.45; opacity:0.9;
+  padding:10px 14px; margin-bottom:2px; background:rgba(255,255,255,0.06);
+  border-radius:12px; cursor:pointer;
+}
+.fam-card {
+  grid-column:1/-1; display:flex; align-items:stretch; gap:12px;
+  border-radius:18px; padding:10px; cursor:pointer; touch-action:manipulation;
+  user-select:none; transition:transform 0.15s; overflow:hidden;
+}
+.fam-card:active { transform:scale(0.97); }
+.fam-thumb {
+  flex-shrink:0; width:96px; border-radius:14px; overflow:hidden;
+  background:rgba(255,255,255,0.14); display:flex; align-items:center; justify-content:center;
+}
+.fam-thumb img { width:100%; height:100%; object-fit:cover; }
+.fam-thumb-emoji { font-size:3rem; }
+.fam-body { flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center; gap:2px; }
+.fam-label { font-size:1.05rem; font-weight:900; color:#fff; text-shadow:0 1px 4px rgba(0,0,0,0.55); line-height:1.15; }
+.fam-savant { font-size:0.7rem; opacity:0.62; font-style:italic; }
+.fam-desc { font-size:0.78rem; opacity:0.92; line-height:1.3; margin-top:2px; }
+.fam-count { font-size:0.74rem; font-weight:800; opacity:0.78; margin-top:5px; }
+
+/* Bandeau d'explication en haut de la grille d'une famille */
+.fam-explic-banner {
+  grid-column:1/-1; display:flex; gap:10px; align-items:flex-start;
+  background:rgba(255,255,255,0.08); border-radius:14px; padding:12px 14px; margin-bottom:2px;
+}
+.fam-explic-banner p { font-size:0.84rem; line-height:1.45; opacity:0.95; margin:0; }
+.fam-explic-play {
+  flex-shrink:0; width:40px; height:40px; border-radius:50%; border:none; cursor:pointer;
+  background:rgba(255,255,255,0.2); color:#fff; font-size:1.2rem; line-height:1;
+}
+.fam-explic-play:active { transform:scale(0.9); }
+
 /* ══════════════ GRILLE DINOS ══════════════ */
 #grid-scroll {
   flex:1; min-height:0; overflow-y:auto; overflow-x:hidden; padding:14px;
@@ -499,7 +535,6 @@ html, body {
   <div id="mode-selector">
     <button class="mode-btn active" id="mode-btn-regime"    onclick="setMode('regime')"   >🍽️ Ce qu'il mange</button>
     <button class="mode-btn"        id="mode-btn-famille"   onclick="setMode('famille')"  >🦖 Les familles</button>
-    <button class="mode-btn"        id="mode-btn-continent" onclick="setMode('continent')">🌍 Où il vivait</button>
     <button class="mode-btn"        id="mode-btn-periode"   onclick="setMode('periode')"  >⏳ Le voyage</button>
   </div>
   <div id="menu-scroll"></div>
@@ -547,6 +582,29 @@ function speakText(txt) {
 }
 function stopSpeak() { if (synth) synth.cancel(); }
 
+/* ── Voix réelle des MENUS (MP3 ElevenLabs) ──
+   Narrateur H : accueil / régime / familles · Narratrice F : voyage.
+   Si le MP3 manque ou ne charge pas → fallback speechSynthesis (on garde toujours l'existant). */
+const MENU_VOICE = {
+  accueil:  'audio/dinos/menu-accueil.mp3',
+  regime:   'audio/dinos/menu-regime.mp3',
+  famille:  'audio/dinos/menu-familles.mp3',
+  periode:  'audio/dinos/menu-voyage.mp3',
+};
+let _menuAudio = null;
+function _stopMenuAudio() { if (_menuAudio) { _menuAudio.pause(); _menuAudio = null; } }
+function playMenuVoice(key, fallbackTxt) {
+  stopSpeak();
+  _stopMenuAudio();
+  if (typeof _stopDinoAudio === 'function') _stopDinoAudio();
+  const src = MENU_VOICE[key];
+  if (!src) { if (fallbackTxt) speakText(fallbackTxt); return; }
+  _menuAudio = new Audio(src);
+  _menuAudio.onended = _stopMenuAudio;
+  _menuAudio.onerror = () => { _stopMenuAudio(); if (fallbackTxt) speakText(fallbackTxt); };
+  _menuAudio.play().catch(() => { _stopMenuAudio(); if (fallbackTxt) speakText(fallbackTxt); });
+}
+
 /* ── State ── */
 let currentMode   = 'regime';
 let currentCatId  = null;
@@ -557,22 +615,30 @@ function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById('screen-' + id).classList.add('active');
   stopSpeak();
+  _stopMenuAudio();
   if (typeof _stopDinoAudio === 'function') _stopDinoAudio();
 }
 
 /* ── Mode selector ── */
+// Fallback TTS si le MP3 menu manque (on garde toujours l'existant).
+const MENU_FALLBACK = {
+  regime:  'Les dinosaures ne mangeaient pas tous la même chose. Les carnivores mangeaient de la viande. Les herbivores mangeaient des plantes.',
+  famille: (typeof DINO_FAMILLES_INTRO !== 'undefined' ? DINO_FAMILLES_INTRO : 'Les grandes familles de dinosaures !'),
+  periode: 'Le grand voyage dans le temps ! On remonte très loin, à la recherche de Tritri.',
+};
 function setMode(mode) {
   currentMode = mode;
   document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('mode-btn-' + mode).classList.add('active');
   buildMenu();
-  const labels = { regime: 'Ce qu\'il mange !', famille: 'Les familles de dinos !', continent: 'Où il vivait !', periode: 'Le voyage dans le temps !' };
-  speakText(labels[mode] || '');
+  playMenuVoice(mode, MENU_FALLBACK[mode] || '');
 }
 
 function speakMenuIntro() {
-  const labels = { regime: 'Les dinosaures ! Choisis ce que tu veux découvrir !', famille: (typeof DINO_FAMILLES_INTRO !== 'undefined' ? DINO_FAMILLES_INTRO : 'Les grandes familles de dinosaures !'), continent: 'Sur quel continent vivait le dinosaure ?', periode: 'À quelle époque vivait le dinosaure ?' };
-  speakText(labels[currentMode] || 'Les dinosaures !');
+  // Le 🔊 du header en mode régime (l'accueil) joue le message d'accueil général (les 3 façons).
+  const key = (currentMode === 'regime') ? 'accueil' : currentMode;
+  const fb = (currentMode === 'regime') ? 'Les dinosaures ! Tu vas les découvrir de trois façons. Choisis ce que tu veux !' : (MENU_FALLBACK[currentMode] || 'Les dinosaures !');
+  playMenuVoice(key, fb);
 }
 
 /* ── MENU principal ── */
@@ -608,11 +674,18 @@ function buildChronoDinoThumb(d) {
   `;
 }
 
-/* ── MENU famille ── */
+/* ── MENU famille ──
+   Carte horizontale : vignette photo (dino emblème) + bloc texte complet, rien n'est coupé.
+   FAM_EMBLEME = png montré sur la vignette de chaque famille. */
+const FAM_EMBLEME = {
+  trex: 'Tyrannosaurus.png', cou_long: 'Brachiosaurus.png', arme: 'Stegosaurus.png',
+  cornu: 'Triceratops.png', bec: 'Parasaurolophus.png', raptor: 'Velociraptor.png',
+  volant: 'Pteranodon.png', bizarre: 'Pachycephalosaurus.png',
+};
 function buildMenuFamille(el) {
   if (typeof DINO_FAMILLES_INTRO !== 'undefined') {
     const intro = document.createElement('div');
-    intro.style.cssText = 'grid-column:1/-1;font-size:0.8rem;line-height:1.4;opacity:0.85;padding:8px 12px;margin-bottom:4px;background:rgba(255,255,255,0.06);border-radius:10px;cursor:pointer';
+    intro.className = 'fam-intro';
     intro.textContent = '👋 ' + DINO_FAMILLES_INTRO;
     intro.onclick = () => speakText(DINO_FAMILLES_INTRO);
     el.appendChild(intro);
@@ -620,24 +693,22 @@ function buildMenuFamille(el) {
   DINO_FAMILLES.forEach(fam => {
     const count = DINOS.filter(d => d.famille === fam.id).length;
     if (!count) return;
+    const png = FAM_EMBLEME[fam.id];
     const card = document.createElement('div');
-    card.className = 'cat-card';
+    card.className = 'fam-card';
     card.style.background = fam.bg;
     card.innerHTML = `
-      <div class="cat-emoji">${fam.emoji}</div>
-      <div class="cat-label">${fam.label}</div>
-      ${fam.savant ? `<div style="font-size:0.62rem;opacity:0.55;margin-top:1px;font-style:italic">on les appelle ${fam.savant}</div>` : ''}
-      <div style="font-size:0.65rem;opacity:0.7;margin-top:2px">${fam.desc}</div>
-      <div class="cat-count" style="display:block;font-size:0.72rem;opacity:0.6;margin-top:4px">${count} dinos</div>
-      ${fam.explic ? `<button class="fam-explic-btn" style="margin-top:6px;background:rgba(255,255,255,0.18);border:none;border-radius:999px;color:#fff;font-size:0.72rem;font-weight:700;padding:5px 12px;cursor:pointer">🔊 C'est quoi ce nom ?</button>` : ''}
+      <div class="fam-thumb">
+        ${png ? `<img src="img/dinos/${png}" alt="${fam.label}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : ''}
+        <span class="fam-thumb-emoji" ${png ? 'style="display:none"' : ''}>${fam.emoji}</span>
+      </div>
+      <div class="fam-body">
+        <div class="fam-label">${fam.emoji} ${fam.label}</div>
+        ${fam.savant ? `<div class="fam-savant">on les appelle ${fam.savant}</div>` : ''}
+        <div class="fam-desc">${fam.desc}</div>
+        <div class="fam-count">${count} dinos →</div>
+      </div>
     `;
-    const explicBtn = card.querySelector('.fam-explic-btn');
-    if (explicBtn) {
-      explicBtn.addEventListener('click', (ev) => {
-        ev.stopPropagation();
-        speakText(fam.explic);
-      });
-    }
     card.addEventListener('click', () => {
       speakText(fam.savant ? `${fam.label}. On les appelle ${fam.savant}` : fam.label);
       setTimeout(() => showGridFamille(fam.id), 400);
@@ -955,6 +1026,17 @@ function showGridFamille(famId) {
   document.getElementById('grid-title').textContent = fam.emoji + ' ' + fam.label + (fam.savant ? ' — ' + fam.savant : '');
   const el = document.getElementById('grid-scroll');
   el.innerHTML = '';
+  // Bandeau d'explication (pourquoi on les a regroupés) — réutilise fam.explic validé panel 3 LLM
+  if (fam.explic) {
+    const banner = document.createElement('div');
+    banner.className = 'fam-explic-banner';
+    banner.innerHTML = `
+      <button class="fam-explic-play" aria-label="Écouter">🔊</button>
+      <p>${fam.explic}</p>
+    `;
+    banner.querySelector('.fam-explic-play').addEventListener('click', (ev) => { ev.stopPropagation(); speakText(fam.explic); });
+    el.appendChild(banner);
+  }
   const dinos = DINOS.filter(d => d.famille === famId);
   dinos.forEach(d => {
     const card = document.createElement('div');
@@ -1103,10 +1185,10 @@ function buildFiche(d) {
       </div>
     </div>
 
-    <!-- BOUTON ÉCOUTE TOUT (en haut) -->
-    <button class="v1-big" onclick="playDinoStory('${d.id}')" id="dino-story-btn">
+    <!-- BOUTON ÉCOUTE TOUT (en haut) — affiché seulement si l'audio complet existe -->
+    ${dinoHasAudio(d.id) ? `<button class="v1-big" onclick="playDinoStory('${d.id}')" id="dino-story-btn">
       🎙️ Écoute toute l'histoire de ${d.name} <span class="dino-story-eq">▶</span>
-    </button>
+    </button>` : ''}
 
     <!-- BLOC 1 — Son histoire -->
     <div class="v1-panel v1-a">

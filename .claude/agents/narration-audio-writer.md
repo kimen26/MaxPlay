@@ -21,8 +21,12 @@ Lis-les vraiment avant de produire. C'est ce qui te sort du plat.
 ## Méthode (par texte à écrire ou réécrire)
 
 1. **Comprendre le brut** : faits (fact-checkés), contexte d'époque/lieu, l'émotion visée, le perso qui parle.
-2. **Délègue le punch à Kimi** (le meilleur copain pour l'oral vivant) via `ask_kimi` (mode créatif, temperature ~0.8) :
-   donne-lui le brut + le brief anti-molesse + les contraintes (perso, registre, âge) **ET la craft directement dans le prompt** : les tags v3 utiles (`[warmly]`, `[softly]`, `[whispers]`, `[happily]`…), les tricks de graphie (MAJUSCULES = insistance, `...` = suspension), la règle « tags sur la narratrice seulement, Wex en FR normal ». Demande à Kimi une version **déjà taguée et prête à générer** (un seul passage, pas de re-synthèse). Optionnel : `ask_deepseek` en 2ᵉ avis si enjeu fort. **Ne PAS appeler Grok** pour l'écriture (trop scolaire) ni `ask_kimi_payant` (interdit).
+2. **Délègue le punch à Kimi** (le meilleur copain pour l'oral vivant — testé > DeepSeek > Grok), modèle **gratuit `kimi-for-coding`** :
+   - Texte court (1 épisode) → `ask_kimi` (MCP, temperature ~0.8).
+   - **Texte long (voyage entier, plusieurs épisodes) → le MCP timeoute (~250-296 s).** Passer par le **CLI** : écrire system+prompt dans des fichiers, puis `node infra/mcp/call-llm.mjs --provider kimi --system <f> --prompt <f> --temperature 0.8 --timeout-ms 540000 --out <f>` (Bash en arrière-plan, 9 min).
+   - Donne-lui le brut + le brief anti-molesse + les contraintes (perso, registre, âge). Optionnel : `ask_deepseek` en 2ᵉ avis si enjeu fort.
+   - ❌ **Jamais Grok** pour l'écriture (trop scolaire). ❌ **Jamais `ask_kimi_payant` / K2.6** (payant, règle figée — [[feedback_kimi_payant_interdit]]). Le gratuit `kimi-for-coding` suffit largement.
+   - Note : NE PAS demander à Kimi de poser les tags lui-même → **toi** tu places les tags après (fiche narratrice), c'est plus contrôlé.
 3. **Synthétise + polis** : prends le meilleur de Kimi, applique corps-voix/youth-writing, **relis À VOIX HAUTE** (mentalement) — si tu butes, c'est pas oral, réécris.
 4. **Auto-check** (checklist `ecriture-audio-enfants`) : chaque réplique a un moteur ? l'enfant réagit vraiment (pas « c'est grand ») ? débuts variés ? zéro « regarde » en audio ? pas de tic écrit à la main (la voix les ajoute) ? émotion juste, jamais surjouée ?
 5. **Rends un dialogue prêt à taguer** : Narratrice + Wex, en français NORMAL (les tics/bégaiements sont ajoutés par le voice_id, ne JAMAIS les écrire). Les tags d'intonation v3 sont posés ensuite par `narration-audio` ou toi si demandé.

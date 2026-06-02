@@ -23,6 +23,7 @@
     .back:active { background:rgba(255,255,255,0.25); }
     .htitle { color:#fff; font-size:1rem; font-weight:900; flex:1; }
     .score { color:#ffe066; font-weight:900; }
+    .lvl { color:#fff; font-weight:900; font-size:0.8rem; background:rgba(255,255,255,0.14); border-radius:10px; padding:2px 8px; }
     .quest {
       text-align:center; padding:12px 16px;
       color:#fff; font-size:1.2rem; font-weight:900;
@@ -81,6 +82,7 @@
     <div class="hdr">
       <a href="index.html" class="back">←</a>
       <span class="htitle">🎯 Trouve le bus !</span>
+      <span class="lvl" id="levelbar">Niveau 1</span>
       <span class="score" id="score">0/7</span>
     </div>
     <div class="quest" id="quest">Trouve le bus <b>162</b> !</div>
@@ -93,16 +95,28 @@
   <script src="js/feedback.js"></script>
   <script src="js/data.js"></script>
   <script src="js/bus-svg.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/stars.js"></script>
   <script>
     // MJ-19 V1 — Hidden in plain sight
     // N bus se déplacent, Max doit taper celui demandé. 5 rounds.
 
     const ROUNDS = 7;
-    const BUS_COUNT_MIN = 50;
-    const BUS_COUNT_MAX = 80;
     const BUS_WIDTH = 80;
-    const SPEED_MIN = 28;  // px/sec
-    const SPEED_MAX = 75;
+
+    // ── Paliers de difficulté (doc _PALIERS-DIFFICULTE.md) ──
+    // Niveau = étoiles gagnées + 1. N1 ULTRA-SIMPLE (peu de bus, lents),
+    // puis densité + vitesse montent. N5 = l'ancien jeu (50-80 bus rapides).
+    const LEVELS = [
+      { count:[10,12], speed:[14,24] },  // N1
+      { count:[14,16], speed:[18,32] },  // N2
+      { count:[20,25], speed:[24,44] },  // N3
+      { count:[30,40], speed:[34,58] },  // N4
+      { count:[50,80], speed:[28,75] },  // N5 (l'ancien)
+    ];
+    const level = Math.max(0, Math.min(LEVELS.length - 1,
+      (window.Stars ? Stars.get('mj-19') : 0)));
+    const CFG = LEVELS[level];
 
     let round = 0;
     let score = 0;
@@ -122,7 +136,7 @@
       movers = [];
 
       // Pool : nombre aléatoire de bus, doublons autorisés (LIGNES ~26 mais on veut 50-80 bus)
-      const busCount = Math.floor(rand(BUS_COUNT_MIN, BUS_COUNT_MAX + 1));
+      const busCount = Math.floor(rand(CFG.count[0], CFG.count[1] + 1));
       const pool = [];
       while (pool.length < busCount) {
         const shuffled = LIGNES.slice().sort(() => Math.random() - 0.5);
@@ -135,11 +149,14 @@
       const target = pick(pool);
       targetNum = target.num;
       document.getElementById('quest').innerHTML = `Trouve le bus <b>${targetNum}</b> !`;
-      try { speechSynthesis && speechSynthesis.cancel(); } catch(e){}
+      // Garde WebKit/iOS : SpeechSynthesisUtterance peut être absent (crash sinon)
       try {
-        const u = new SpeechSynthesisUtterance(`Trouve le bus ${targetNum}`);
-        u.lang='fr-FR'; u.rate=0.95;
-        speechSynthesis.speak(u);
+        if (window.speechSynthesis && 'SpeechSynthesisUtterance' in window) {
+          speechSynthesis.cancel();
+          const u = new SpeechSynthesisUtterance(`Trouve le bus ${targetNum}`);
+          u.lang='fr-FR'; u.rate=0.95;
+          speechSynthesis.speak(u);
+        }
       } catch(e) {}
 
       const aRect = arena.getBoundingClientRect();
@@ -156,7 +173,7 @@
         const x = rand(10, Math.max(10, W - bw - 10));
         const y = rand(10, Math.max(10, H - bh - 10));
         // 60% de bus quasi-horizontaux (gauche↔droite), 40% libres
-        const sp = rand(SPEED_MIN, SPEED_MAX);
+        const sp = rand(CFG.speed[0], CFG.speed[1]);
         let vx, vy;
         if (Math.random() < 0.6) {
           vx = (Math.random() < 0.5 ? -1 : 1) * sp;
@@ -274,6 +291,8 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
+      const lb = document.getElementById('levelbar');
+      if (lb) lb.textContent = 'Niveau ' + (level + 1);
       if (typeof Tracker !== 'undefined') Tracker.startSession('mj-19');
       startRound();
     });

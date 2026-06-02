@@ -76,6 +76,7 @@ html, body {
 <div id="hdr">
   <button onclick="location.href='index.html'">← Retour</button>
   <span style="font-weight:900;color:#fff;">🔢 Combien avant ?</span>
+  <span id="levelbar" style="margin-left:auto;font-weight:900;color:#ffe066;background:#2a2a4a;border-radius:10px;padding:3px 12px;font-size:0.85rem;">Niveau 1</span>
   <div id="score">0 / 0</div>
 </div>
 
@@ -91,6 +92,8 @@ html, body {
 </div>
 
 <script src="js/bus-svg.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/stars.js"></script>
 <script src="js/sounds.js"></script>
 <script src="js/tts.js"></script>
 <script src="js/victory-sounds.js"></script>
@@ -223,6 +226,19 @@ let score=0,round=0,answered=false;
 let tickId=null,busId=null;
 let qcm=null;
 
+/* ══ PALIERS (doc _PALIERS-DIFFICULTE.md) — niveau = étoiles + 1 ══ */
+const LV_FILE=[3,5,6,8,10]; // taille de la file de bus par palier
+const level=Math.max(0,Math.min(LV_FILE.length-1,(window.Stars?Stars.get('mj-13c'):0)));
+(function(){const lb=document.getElementById('levelbar');if(lb)lb.textContent='Niveau '+(level+1);})();
+// Manche mixte : 4 manches au palier courant + 4 plus faciles (mélangées)
+function buildFileSchedule(){
+  const hard=Array(4).fill(LV_FILE[level]);
+  const easy=[];
+  for(let i=0;i<4;i++){const lo=level<=0?0:Math.floor(Math.random()*level);easy.push(LV_FILE[lo]);}
+  return shuffle([...hard,...easy]);
+}
+let fileSchedule=buildFileSchedule();
+
 function shuffle(a){return [...a].sort(()=>Math.random()-.5);}
 function updScore(){document.getElementById('score').textContent=`${score} / ${round}`;}
 
@@ -253,10 +269,11 @@ function initRound(){
   answered=false;
   qcm=QcmRetry.create();
   stopAll();
-  const n=4+Math.floor(Math.random()*3); // 4 à 6 pour avoir du comptage
+  const n=fileSchedule[round]||LV_FILE[level]; // taille de file selon le palier (manche mixte)
   lines=shuffle(ALL_LINES).slice(0,n);
-  // timers espacés, tous distincts
-  const pool=shuffle([5,9,13,18,24,30,38,46]).slice(0,n);
+  // timers croissants tous distincts, assignés aléatoirement
+  const pool=[]; let tcur=4+Math.floor(Math.random()*4);
+  for(let i=0;i<n;i++){pool.push(tcur); tcur+=4+Math.floor(Math.random()*6);}
   timers={};
   lines.forEach((l,i)=>timers[l.num]=pool[i]);
 
@@ -284,7 +301,7 @@ function renderQuestion(){
 function renderButtons(){
   const qb=document.getElementById('q-bar');
   qb.querySelectorAll('.btn-count').forEach(e=>e.remove());
-  const maxBtn=Math.min(lines.length-1,5);
+  const maxBtn=lines.length-1;
   for(let i=0;i<=maxBtn;i++){
     const b=document.createElement('button');
     b.className='btn-count';
@@ -408,7 +425,7 @@ function onAnswer(isCorrect,btn){
     if(btn){btn.style.background='#e53935';btn.disabled=true;}
     playErrorSound();
     if(tickId){clearInterval(tickId);tickId=null;}
-    tts('Essaie encore !');
+    tts('Compte les bus AVANT le bus demandé, un par un.');
   }
 }
 
@@ -433,7 +450,7 @@ function showVictory(){
     </div>`;
 }
 function restart(){
-  score=0;round=0;
+  score=0;round=0;fileSchedule=buildFileSchedule();
   stopEndSound();
   document.getElementById('road').style.display='';
   document.getElementById('q-bar').style.cssText='';

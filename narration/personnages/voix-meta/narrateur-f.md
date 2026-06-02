@@ -102,7 +102,13 @@ Speaker Boost: false
 
 ### Sa palette élargie (validés ✅)
 
-`[happily]` (chaleur-joie de fond) · `[playful]` (espiègle) · `[curious]` (pose une question à l'enfant) · `[giggles]` (petit rire) · `[excited]` (pic d'énergie, rare) · `[sighs]` (respiration / soulagement) · `[pauses]` + `...` (suspense) · `[slowly]` (le mystère monte).
+`[happily]` (chaleur-joie de fond) · `[playful]` (espiègle) · `[curious]` (pose une question à l'enfant) · `[giggles]` (petit rire) · `[excited]` (pic d'énergie) · `[dramatic tone]` (suspense / révélation / danger — adopté 2026-06 pour les BOUM, la météorite, « bientôt quelque chose d'important ») · `[sighs]` (respiration / soulagement).
+
+### ⚠️ Graphie (pas juste les tags)
+
+- **On ne chuchote pas un bruit FORT** : un BOUM, un CLAC → en **MAJUSCULES** (graphie), JAMAIS `[whispers]`. Le `[whispers]`/`[curious]` va sur le « Écoute… » qui PRÉCÈDE, pas sur l'onomatopée.
+- MAJUSCULES = punch sur les mots-chocs (BOUM, PLUMES, ÉNORME, UNE seule fleur).
+- `...` = micro-respiration naturelle (suffit, pas besoin de `[pauses]` qui ralentit trop — voir dosage).
 
 ### Doubles favoris
 

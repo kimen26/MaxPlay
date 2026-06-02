@@ -1,0 +1,30 @@
+// Pilote MJ-19 — Trouve le bus : paliers de difficulté.
+// Régression corrigée 2026-06-02 : N1 partait à 50-80 bus rapides (injouable, a énervé Max).
+// Désormais N1 = 10-12 bus lents. On vérifie le palier d'entrée + un tap gagnant.
+export async function run({ page, ok }) {
+  // Démarrage à froid (aucune étoile) → Niveau 1
+  await page.evaluate(() => localStorage.clear());
+  await page.reload({ waitUntil: 'networkidle' });
+
+  ok('bandeau Niveau présent', (await page.locator('#levelbar').count()) === 1);
+  ok('démarre au Niveau 1',
+     (((await page.locator('#levelbar').textContent()) || '').includes('Niveau 1')));
+
+  await page.waitForSelector('.bus-mover', { timeout: 5000 });
+  const n = await page.locator('.bus-mover').count();
+  ok('Niveau 1 = 10 à 12 bus (plus 50+)', n >= 10 && n <= 12, `count=${n}`);
+
+  // Cible annoncée
+  const target = ((await page.locator('.quest b').textContent()) || '').trim();
+  ok('cible annoncée', target.length > 0, `target="${target}"`);
+
+  // Un tap gagnant : dispatch direct sur un bus cible
+  // (cible mobile → dispatchEvent évite la flakiness d'un clic réel sur élément animé)
+  const before = ((await page.locator('#score').textContent()) || '').trim();
+  const targets = page.locator('.bus-mover', { has: page.locator(`text="${target}"`) });
+  ok('au moins un bus cible présent', (await targets.count()) > 0);
+  await targets.first().dispatchEvent('click');
+  await page.waitForTimeout(900);
+  const after = ((await page.locator('#score').textContent()) || '').trim();
+  ok('tap correct → score avance', before !== after, `${before} -> ${after}`);
+}

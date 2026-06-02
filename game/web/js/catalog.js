@@ -44,6 +44,7 @@ window.MAXPLAY_CATALOG = [
   // ─── 🔤 Lire ───
   { id:'mj-06',  category:'lire',     titre:'Lis la phrase',        emoji:'📖', desc:'Quel mot manque dans la phrase ?',    url:'mj-06.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
   { id:'mj-13b', category:'lire',     titre:'Monte dans le bus !',  emoji:'🚌', desc:'Trouve et appuie sur le bon bus !',   url:'mj-13b.html', type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
+  { id:'mj-23',  category:'lire',     titre:'Lis le mot',           emoji:'🔤', desc:'Lis le mot, trouve la bonne image !',url:'mj-23.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
 
   // ─── 🧩 Logique ───
   { id:'mj-13a', category:'logique',  titre:'Le premier bus',       emoji:'🥇', desc:'Quel bus arrive en premier ?',       url:'mj-13a.html', type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },

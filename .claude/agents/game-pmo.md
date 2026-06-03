@@ -57,10 +57,13 @@ Tu travailles **main dans la main** avec `game-archiviste` :
 
 ### Process INBOX (étapes 9-10)
 Pour chaque fichier/section non traité :
+0. **Tri pôle** : si l'item concerne le **DINO** (encyclopédie, voyage, dev-dinos, récit/famille dino, Tritri) → **ne le traite pas toi-même**. Crée le ticket dans `dino/pmo/backlog.md` et passe la main à `dino-pmo` (le dino a sa propre gouvernance depuis 2026-06-03 ; il n'a pas d'INBOX propre, c'est toi qui routes).
 1. Crée ticket `EP-NNN` dans `backlog.md` avec résumé de la matière
 2. Appelle `game-conseiller` pour brainstormer → "Où distiller cette matière ?"
 3. Distille vers le(s) fichier(s) cibles (rules.md, decisions.md, stack.md, etc.)
 4. Marque la section INBOX.md comme `> ✅ Distillé → [fichier cible]` ou supprime le fichier inbox/ si entièrement traité
+
+> **Ticket transverse** : si un chantier touche aussi le dino, note-le dans les deux backlogs avec cross-ref `EP-xxx ⇄ EP-Dxx`. **Max Adventure** (dormant, EP-024) reste sous JEU ; son travail tile/map passe par `game-tile-pmo`. Quand il sera réactivé → sous-PMO dédié (comme `game-wexworld-pmo`).
 
 ---
 

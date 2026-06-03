@@ -2,6 +2,24 @@
 
 > Traces des audits FOND (`dino-pmo`) et FORME (`dino-archiviste`). Entrée datée par audit.
 
+## 2026-06-03 — Premier audit croisé FOND + FORME (post-création)
+
+**Lancé** via `/dino-pmo-audit` + `/dino-archiviste-audit` (2 agents en parallèle).
+
+**Adjudication (vérité terrain par le main agent)** :
+- ⚖️ **Count dinos = 50** (autoritatif `DINOS.length`). Le PMO a **halluciné « 59 »** (grep-comptage des `id:` incluant dinos + familles + catégories) → **faux positif écarté**. L'Archiviste avait raison (50). Leçon : toujours adjuger un claim de count par `DINOS.length`, jamais par grep `id:`.
+
+**Findings traités (fix appliqué)** :
+- ✅ EP-D01 / Q-DINO-2 **résolus** : count = 50. Stale corrigés → `dino/content/INDEX.md` (60→50 + liens `../../../web`→`../../game/web`), header `dinos-data.js` (60→50, `volants_marins` retiré du commentaire).
+- ✅ **8 orphelins** `recit-cretace-v2..v9.mp3` supprimés (itérations supersédées, le code ne charge que `recit-cretace.mp3`).
+- ✅ **5 scripts** `content/` : chemins `game/docs/jeux/dino-encyclopedie` → `dino/content` corrigés (sortie/lecture après le move).
+
+**Confirmé sain (les 2 agents)** : gabarit `dino/` complet (5 fichiers pmo + figées) · 9 familles noms scientifiques · casting voix cohérent INVARIANTS⇄voice-map⇄figée · audio (8 récits + 4 menus + 2 spéciaux + 22 dinos) présent et référencé · Tritri sans Max/doudou respecté · zéro bus en récit · liens markdown dino/** résolvent.
+
+**Verdict** : pôle **opérationnel et sain**. 0 CRITIQUE réel (le « 59 » était faux), findings BASSE traités. Reste : EP-D02 (audio des ~28 dinos restants) ouvert, basse priorité.
+
+---
+
 ## 2026-06-03 — Création + audit de cohérence initial
 
 **Contexte** : création du pôle (déplacement contenu + gouvernance).

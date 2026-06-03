@@ -183,5 +183,5 @@ for(const d of D){
   lines.push('');
 }
 
-fs.writeFileSync(ROOT+'game/docs/jeux/dino-encyclopedie/_PROMPTS-GROK.txt', lines.join('\n'), 'utf8');
+fs.writeFileSync(ROOT+'dino/content/_PROMPTS-GROK.txt', lines.join('\n'), 'utf8');
 console.log('Prompts générés:', lines.filter(l=>l.startsWith('[')).length);

@@ -6,7 +6,7 @@
 
 | ID | Sujet | Priorité | État |
 |----|-------|----------|------|
-| EP-D01 | Vérifier count dinos (50 réel vs 60 ancien INDEX) — entrées manquantes ? | 🟡 moyenne | ouvert |
+| EP-D01 | ~~Vérifier count dinos (50 réel vs 60 ancien INDEX)~~ → **RÉSOLU 2026-06-03** : count autoritatif = **50** (`DINOS.length`). L'ancien « 60 » comptait des entrées non finalisées. Stale corrigés (INDEX, header data). | — | ✅ fermé |
 | EP-D02 | Audio des ~28 dinos sans recap (génération progressive vs TTS) | 🟢 basse | ouvert |
 | EP-D03 | Visuels/illustrations des écrans d'époque du voyage (optionnel) | 🟢 basse | idée |
 

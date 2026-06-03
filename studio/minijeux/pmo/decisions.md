@@ -8,6 +8,10 @@
 
 ---
 
+## 2026-06-03 — Refonte archi monorepo (site/ + studio/) + Phase 6 DÉFÉRÉE
+Migration complète : `game/web` → **`site/`** (déployé), `game/`+`dino/`+`narration/`+`game/phaser` → **`studio/{minijeux,dino,narration,max-adventure}`**. Racine propre. App testée (screenshots), CI à jour, hooks/rules/signal verts. 6 commits.
+**Phase 6 (reorg interne `site/` en sous-dossiers `platform/minijeux/dino`) = DÉFÉRÉE** (validé Papa Yann). Raison : gain surtout dev-side/cosmétique, coût = surgery HTML + re-test des 22 jeux. **Pas de reset progression** (gameId = nom de fichier via `tracker.js` `_detectGameId`, folder-indépendant). **À faire au déploiement narration** (3ᵉ domaine dans site/) OU pass dédié « URLs propres + redirections », pas avant.
+
 ## 2026-06-01 — Filtrage + Reclassement scientifique encyclopédie dinos (EP-039 phase figée)
 
 **Contexte** : EP-039 audio DUO Narrateur H + Wex lancé 2026-05-17, pilote (Parasaurolophus) validé 2026-05-30. Phase production 50 dinos restants : stratégie figée pour éviter redondance/confusion Max.

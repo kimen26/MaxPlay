@@ -1,16 +1,16 @@
 # PÔLE JEU — Règles auto-chargées
 
-> Ce fichier est **chargé automatiquement** par Claude Code dès qu'un fichier sous `game/` est lu/édité (mécanisme nested CLAUDE.md, [doc Anthropic](https://code.claude.com/docs/en/memory#how-claude-md-files-load)).
+> Ce fichier est **chargé automatiquement** par Claude Code dès qu'un fichier sous `studio/minijeux/` est lu/édité (mécanisme nested CLAUDE.md, [doc Anthropic](https://code.claude.com/docs/en/memory#how-claude-md-files-load)).
 > Pour la **navigation humaine** (catalogue fichiers/équipe/déploiement), voir [`INDEX.md`](INDEX.md).
-> ⚠️ Ce fichier **n'est PAS re-injecté après `/compact`** — il rechargera quand Claude touchera un fichier de `game/`.
+> ⚠️ Ce fichier **n'est PAS re-injecté après `/compact`** — il rechargera quand Claude touchera un fichier de `studio/minijeux/`.
 
 ---
 
 ## Principes pôle JEU (non négociables)
 
 - **Simplicity First** · **No Laziness** · **Minimal Impact** · Plan mode pour 3+ étapes
-- **Bus** : toujours `busSVG()` / `busSVGHiddenNum()` de [`web/js/bus-svg.js`](../../site/js/bus-svg.js). Jamais d'emoji 🚌, jamais de div CSS colorée.
-- **Couleurs** : toujours via `LIGNES` de [`web/js/data.js`](../../site/js/data.js). Jamais de hex hardcodé.
+- **Bus** : toujours `busSVG()` / `busSVGHiddenNum()` de [`site/js/bus-svg.js`](../../site/js/bus-svg.js). Jamais d'emoji 🚌, jamais de div CSS colorée.
+- **Couleurs** : toujours via `LIGNES` de [`site/js/data.js`](../../site/js/data.js). Jamais de hex hardcodé.
 - **UX** : zéro pénalité punitive · feedback < 200 ms · zones tap min 80 px · sessions 3-8 min.
 - **Décisions figées par jeu** : [`docs/jeux/figees/mj-XX.md`](docs/jeux/figees/) fait **LOI**. Jamais modifier un `mj-XX.html` sans l'avoir lu (hook `figees-injector.ps1` le réinjecte). Jamais contredire une ligne 🔒. Seul Papa Yann défige. Détail : [`../.claude/rules/mini-jeux.md`](../../.claude/rules/mini-jeux.md) § ⛔ AVANT DE MODIFIER.
 
@@ -93,7 +93,7 @@
 ## Stack & déploiement
 
 GitHub Pages → `kimen26.github.io/MaxPlay/`
-- `/` → [`web/index.html`](../../site/index.html) (menu mj-01..20 + max-adventure)
+- `/` → [`site/index.html`](../../site/index.html) (menu mj-01..20 + max-adventure)
 - `/mj-XX.html` → HTML vanilla
 - `/max-adventure/` → Phaser TS+Vite build (CI uniquement)
 - `/mj-pose-tiles.html` → mini-jeu kids tileset

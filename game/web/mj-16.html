@@ -216,6 +216,7 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   <div id="hdr">
     <a href="index.html">←</a>
     <span id="htitle">📈 Complète la suite</span>
+    <span id="levelbar" style="font-weight:900;color:#ffe066;background:rgba(255,255,255,0.14);border-radius:10px;padding:3px 12px;font-size:0.85rem;">Niveau 1</span>
     <div id="score-badge">0 / 0</div>
   </div>
 
@@ -254,6 +255,8 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 
 <script src="js/bus-svg.js"></script>
 <script src="js/data.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/stars.js"></script>
 <script src="js/victory-sounds.js"></script>
 <script src="js/tts.js"></script>
 <script src="js/tracker.js"></script>
@@ -570,8 +573,18 @@ const PATTERN_GENERATORS = [
   generateBodyAB,
 ];
 
+// Paliers (doc _PALIERS) : type de motif. Niveau = Stars.get+1.
+const level = Math.max(0, Math.min(4, (window.Stars ? Stars.get('mj-16') : 0)));
+const LEVEL_POOLS = [
+  [generateAltAB],                                                         // N1 couleur ABAB
+  [generateSizeUp, generateSizeDown],                                      // N2 taille
+  [generateAltABC, generateAltAABB],                                       // N3 motif ABC / AABB
+  [generateNumUp, generateNumDown, generateNumUpBy2, generateNumDownBy2],  // N4 suite numérique
+  [generateBodyAB, generateAltABC, generateNumUpBy2, generateSizeUp],      // N5 combinés
+];
 function generatePuzzle(_roundNum) {
-  const fn = PATTERN_GENERATORS[Math.floor(Math.random() * PATTERN_GENERATORS.length)];
+  const pool = LEVEL_POOLS[level];
+  const fn = pool[Math.floor(Math.random() * pool.length)];
   return fn();
 }
 
@@ -581,6 +594,7 @@ function generatePuzzle(_roundNum) {
 let score    = 0;
 let round    = 0;
 let answered = false;
+let wrongThisRound = false;
 let currentPuzzle = null;
 
 // ── Rendu ────────────────────────────────────────────────────────────────────
@@ -588,6 +602,7 @@ let currentPuzzle = null;
 function renderPuzzle(puzzle) {
   currentPuzzle = puzzle;
   answered      = false;
+  wrongThisRound = false;
 
   const seqBusW    = calcSeqBusWidth(puzzle.sequence.length + 1);
   const choiceBusW = calcChoiceBusWidth();
@@ -661,41 +676,27 @@ function renderPuzzle(puzzle) {
 
 function onChoiceTap(btn, item, answer) {
   if (answered) return;
-  answered = true;
 
-  const isCorrect = item.correct;
-
-  if (isCorrect) {
-    // Bonne réponse
-    score++;
+  if (item.correct) {
+    // Bonne réponse — étoile seulement si aucune erreur dans la manche
+    answered = true;
+    if (!wrongThisRound) score++;
     updateScore();
     btn.classList.add('correct');
-    if (typeof Tracker !== 'undefined') Tracker.logAnswer(true);
+    if (typeof Tracker !== 'undefined') Tracker.logAnswer(!wrongThisRound);
     playSuccessBeep();
-
-    // Remplir la case mystère
     setTimeout(() => {
       fillMysteryCell(answer);
       setTimeout(nextRound, 700);
     }, 350);
 
   } else {
-    // Mauvaise réponse
+    // Mauvaise réponse → on NE révèle PAS, on laisse réessayer (indice déjà affiché en haut)
+    wrongThisRound = true;
     btn.classList.add('wrong');
-    if (typeof Tracker !== 'undefined') Tracker.logAnswer(false);
+    btn.disabled = true;
     playErrorSound();
-
-    setTimeout(() => {
-      btn.classList.remove('wrong');
-      // Révèle la bonne réponse
-      const allBtns = document.querySelectorAll('.choice-btn');
-      allBtns.forEach(b => {
-        if (b.dataset.correct === '1') b.classList.add('reveal');
-      });
-      // Remplir quand même la case mystère
-      fillMysteryCell(answer);
-      setTimeout(nextRound, 1100);
-    }, 450);
+    setTimeout(() => btn.classList.remove('wrong'), 450);
   }
 }
 
@@ -780,6 +781,7 @@ function startGame() {
   score    = 0;
   round    = 1;
   answered = false;
+  const lb = document.getElementById('levelbar'); if (lb) lb.textContent = 'Niveau ' + (level + 1);
   stopEndSound();
   document.getElementById('end-screen').classList.remove('visible');
   updateScore();

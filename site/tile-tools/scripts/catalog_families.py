@@ -16,9 +16,9 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 THEMES = Path(
-    r"c:/ProjetsPerso/Claude_Projects/MaxPlay/game/phaser/public/assets/tiles/themes"
+    r"c:/ProjetsPerso/Claude_Projects/MaxPlay/studio/max-adventure/public/assets/tiles/themes"
 )
-OUT = Path(r"c:/ProjetsPerso/Claude_Projects/MaxPlay/game/web/tile-tools/families")
+OUT = Path(r"c:/ProjetsPerso/Claude_Projects/MaxPlay/site/tile-tools/families")
 OUT.mkdir(exist_ok=True)
 
 ZOOM = 3

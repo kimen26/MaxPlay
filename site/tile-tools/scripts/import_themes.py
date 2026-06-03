@@ -1,4 +1,4 @@
-"""Import ME_Theme_Sorter complet vers game/phaser/public/assets/tiles/themes/.
+"""Import ME_Theme_Sorter complet vers studio/max-adventure/public/assets/tiles/themes/.
 
 Structure cible :
   themes/
@@ -26,7 +26,7 @@ SRC = Path(
     r"Modern_Exteriors_48x48/ME_Theme_Sorter_48x48"
 )
 DST = Path(
-    r"C:/ProjetsPerso/Claude_Projects/MaxPlay/game/phaser/public/assets/tiles/themes"
+    r"C:/ProjetsPerso/Claude_Projects/MaxPlay/studio/max-adventure/public/assets/tiles/themes"
 )
 
 THEME_RE = re.compile(r"^(\d+)_(.+?)_(?:Singles_)?48x48$")

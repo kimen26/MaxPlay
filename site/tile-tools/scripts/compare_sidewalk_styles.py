@@ -19,7 +19,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 THEMES = Path(
-    r"C:/ProjetsPerso/Claude_Projects/MaxPlay/game/phaser/public/assets/tiles/themes"
+    r"C:/ProjetsPerso/Claude_Projects/MaxPlay/studio/max-adventure/public/assets/tiles/themes"
 )
 CITY = THEMES / "02_city_terrains"
 OUT = Path(__file__).parent / "compare_sidewalk_styles.png"

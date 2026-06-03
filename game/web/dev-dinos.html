@@ -50,6 +50,10 @@ html, body {
 #menu-scroll.mode-periode {
   display:flex; flex-direction:column; padding:0; overflow:hidden;
 }
+/* Mode familles : liste verticale (cartes horizontales pleine largeur, hauteur libre) */
+#menu-scroll.mode-famille {
+  display:flex; flex-direction:column; gap:12px;
+}
 .cat-card {
   border-radius:18px; padding:18px 12px;
   display:flex; flex-direction:column; align-items:center; justify-content:center;
@@ -69,22 +73,23 @@ html, body {
   border-radius:12px; cursor:pointer;
 }
 .fam-card {
-  grid-column:1/-1; display:flex; align-items:stretch; gap:12px;
-  border-radius:18px; padding:10px; cursor:pointer; touch-action:manipulation;
-  user-select:none; transition:transform 0.15s; overflow:hidden;
+  display:flex; align-items:center; gap:14px;
+  border-radius:18px; padding:12px; cursor:pointer; touch-action:manipulation;
+  user-select:none; transition:transform 0.15s;
+  width:100%; max-width:560px; margin:0 auto;
 }
-.fam-card:active { transform:scale(0.97); }
+.fam-card:active { transform:scale(0.98); }
 .fam-thumb {
-  flex-shrink:0; width:96px; border-radius:14px; overflow:hidden;
-  background:rgba(255,255,255,0.14); display:flex; align-items:center; justify-content:center;
+  flex-shrink:0; width:90px; height:90px; border-radius:14px; overflow:hidden;
+  background:rgba(255,255,255,0.16); display:flex; align-items:center; justify-content:center;
 }
 .fam-thumb img { width:100%; height:100%; object-fit:cover; }
-.fam-thumb-emoji { font-size:3rem; }
-.fam-body { flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center; gap:2px; }
-.fam-label { font-size:1.05rem; font-weight:900; color:#fff; text-shadow:0 1px 4px rgba(0,0,0,0.55); line-height:1.15; }
-.fam-savant { font-size:0.7rem; opacity:0.62; font-style:italic; }
-.fam-desc { font-size:0.78rem; opacity:0.92; line-height:1.3; margin-top:2px; }
-.fam-count { font-size:0.74rem; font-weight:800; opacity:0.78; margin-top:5px; }
+.fam-thumb-emoji { font-size:2.8rem; }
+.fam-body { flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center; gap:3px; }
+.fam-label { font-size:1.02rem; font-weight:900; color:#fff; text-shadow:0 1px 4px rgba(0,0,0,0.55); line-height:1.2; }
+.fam-savant { font-size:0.72rem; opacity:0.66; font-style:italic; line-height:1.2; }
+.fam-desc { font-size:0.8rem; opacity:0.94; line-height:1.3; }
+.fam-count { font-size:0.76rem; font-weight:800; opacity:0.82; margin-top:3px; }
 
 /* Bandeau d'explication en haut de la grille d'une famille */
 .fam-explic-banner {
@@ -533,8 +538,8 @@ html, body {
   </div>
   <!-- Sélecteur de mode -->
   <div id="mode-selector">
-    <button class="mode-btn active" id="mode-btn-regime"    onclick="setMode('regime')"   >🍽️ Ce qu'il mange</button>
-    <button class="mode-btn"        id="mode-btn-famille"   onclick="setMode('famille')"  >🦖 Les familles</button>
+    <button class="mode-btn active" id="mode-btn-famille"   onclick="setMode('famille')"  >🦖 Les familles</button>
+    <button class="mode-btn"        id="mode-btn-regime"    onclick="setMode('regime')"   >🍽️ Ce qu'il mange</button>
     <button class="mode-btn"        id="mode-btn-periode"   onclick="setMode('periode')"  >⏳ Le voyage</button>
   </div>
   <div id="menu-scroll"></div>
@@ -606,7 +611,7 @@ function playMenuVoice(key, fallbackTxt) {
 }
 
 /* ── State ── */
-let currentMode   = 'regime';
+let currentMode   = 'famille';
 let currentCatId  = null;
 let currentDino   = null;
 
@@ -635,10 +640,8 @@ function setMode(mode) {
 }
 
 function speakMenuIntro() {
-  // Le 🔊 du header en mode régime (l'accueil) joue le message d'accueil général (les 3 façons).
-  const key = (currentMode === 'regime') ? 'accueil' : currentMode;
-  const fb = (currentMode === 'regime') ? 'Les dinosaures ! Tu vas les découvrir de trois façons. Choisis ce que tu veux !' : (MENU_FALLBACK[currentMode] || 'Les dinosaures !');
-  playMenuVoice(key, fb);
+  // Le 🔊 du header joue l'explication du mode courant.
+  playMenuVoice(currentMode, MENU_FALLBACK[currentMode] || 'Les dinosaures !');
 }
 
 /* ── MENU principal ── */
@@ -650,11 +653,12 @@ function showMenu() {
 function buildMenu() {
   const el = document.getElementById('menu-scroll');
   el.innerHTML = '';
-  el.classList.remove('mode-periode');
+  el.classList.remove('mode-periode', 'mode-famille');
 
   if (currentMode === 'regime') {
     buildMenuRegime(el);
   } else if (currentMode === 'famille') {
+    el.classList.add('mode-famille');
     buildMenuFamille(el);
   } else if (currentMode === 'continent') {
     buildMenuContinent(el);

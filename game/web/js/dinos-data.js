@@ -28,9 +28,12 @@ const DINO_FAMILLES = [
   { id: 'raptor',     sci: 'Dromæosaures',   label: 'les chasseurs à griffes',     savant: 'les dromæosaures',        emoji: '🦅', desc: 'Griffes-faucilles et chasseurs malins',     color: '#e67e22', bg: 'linear-gradient(135deg,#7a3000,#e67e22)',
     sci_sens: 'En grec, dromæo veut dire qui court, et saure, le lézard.',
     explic: 'Dromæosaures ! En grec, dromæo veut dire qui court vite, et saure, le lézard : les lézards coureurs. Ce sont des cousins des théropodes, mais plus petits, rapides et malins, avec une grande griffe recourbée comme un croissant à chaque pied pour attraper leurs proies. Ils mangeaient de la viande. Les vedettes : le Vélociraptor et le grand Deinonychus.' },
-  { id: 'volant',     sci: 'Volants & Marins', label: 'pas vraiment des dinos !',  savant: 'pas vraiment des dinos !',emoji: '🦋', desc: 'Dans les airs et les mers préhistoriques',  color: '#2980b9', bg: 'linear-gradient(135deg,#003366,#2980b9)',
-    sci_sens: 'Attention : ce ne sont pas des dinosaures, mais des cousins !',
-    explic: 'Attention : ceux-là ne sont pas des dinosaures ! C\'étaient des cousins qui vivaient à la même époque. Certains volaient dans le ciel, comme le Ptéranodon et le Quetzalcoatlus. D\'autres nageaient dans la mer, comme le Mosasaure. Ils mangeaient du poisson et d\'autres animaux. Et le Dimétrodon vivait même avant les dinos !' },
+  { id: 'pterosaures', sci: 'Ptérosaures',    label: 'les reptiles volants',        savant: 'les ptérosaures',         emoji: '🦅', desc: 'De grandes ailes de peau pour voler',      color: '#2980b9', bg: 'linear-gradient(135deg,#1a5276,#2980b9)',
+    sci_sens: 'En grec, ptéro veut dire aile, et saure, le lézard.',
+    explic: 'Ptérosaures ! En grec, ptéro veut dire aile, et saure, le lézard : les lézards ailés. Attention, ce ne sont pas des dinosaures, mais leurs cousins ! Ils planaient sur de grandes ailes de peau, comme un cerf-volant vivant. Les connus : le Ptéranodon, et l\'immense Quetzalcoatlus, grand comme un petit avion !' },
+  { id: 'volant',     sci: 'Pas des dinosaures !', label: 'ils vivaient avec les dinos', savant: 'des cousins, pas des dinos', emoji: '🌊', desc: 'Ni dinos, ni ptérosaures… des surprises !', color: '#16607a', bg: 'linear-gradient(135deg,#0a3d52,#16607a)',
+    sci_sens: 'Surprise : ce ne sont pas des dinosaures du tout !',
+    explic: 'Attention, ce ne sont pas des dinosaures ! Le Mosasaure était un énorme reptile qui nageait dans la mer, comme un crocodile géant. Et le Dimétrodon, avec sa grande voile sur le dos, vivait très très longtemps avant les dinosaures — c\'est même un cousin lointain des mammifères, comme toi !' },
   { id: 'bizarre',    sci: 'Les inclassables', label: 'têtes dures & curiosités',  savant: 'têtes dures & curiosités',emoji: '🤯', desc: 'Inclassables et super originaux !',         color: '#16a085', bg: 'linear-gradient(135deg,#0a3d30,#16a085)',
     sci_sens: 'Trop spéciaux pour entrer dans une seule famille !',
     explic: 'Des dinos trop spéciaux pour entrer dans une famille ! Le Pachycéphalosaure — en grec, pachy veut dire épais, céphalo veut dire tête, donc tête épaisse — se donnait des coups de crâne comme un bélier. Il mangeait des plantes. Et le Therizinosaurus avait des griffes géantes mais ne mangeait que des feuilles !' },
@@ -1440,7 +1443,7 @@ const DINOS = [
 
   {
     id: 'pteranodon',
-    famille: 'volant',
+    famille: 'pterosaures',
     name: 'Ptéranodon',
     alias: 'Ptérodactyle',
     full: 'Pteranodon longiceps',
@@ -1469,7 +1472,7 @@ const DINOS = [
   },
   {
     id: 'quetzalcoatlus',
-    famille: 'volant',
+    famille: 'pterosaures',
     name: 'Quetzalcoatlus',
     full: 'Quetzalcoatlus northropi',
     cat: 'carnivores',
@@ -1497,7 +1500,7 @@ const DINOS = [
   },
   {
     id: 'archaeopteryx',
-    famille: 'volant',
+    famille: 'raptor',
     name: 'Archaeoptéryx',
     full: 'Archaeopteryx lithographica',
     cat: 'carnivores',

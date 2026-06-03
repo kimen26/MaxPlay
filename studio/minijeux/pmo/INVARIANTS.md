@@ -59,11 +59,11 @@
 | MJ déployés au menu | **23 actifs** (mj-01, mj-04–06, mj-08–09, mj-11–13a/b/c, mj-14–21, max-adventure, mj-pose-tiles) | `memory/state.md` |
 | MJ retirés du menu | **4 consolidés** (mj-02, mj-03, mj-07, mj-10) | `memory/state.md` |
 | Encyclopédie dinos | **50 fiches finale** (filtrage 60→50 validé 2026-06-01, 10 redondants/inconnus retirés, Apatosaure bi-nom, reclassement scientifique appliqué) | `site/js/dinos-data.js` |
-| Recettes tile validées | **20** (`test_*.py` dans `recipes/` — routes h/v × 3 générations, virages × 4, carrefour × 2, rond-point, quartier, parking, voie bus, passages piétons × 2, refs papa × 3) | `web/tile-tools/recipes/test_*.py` |
-| Scripts utilitaires tile (all) | **30+** (20 recettes validées + utilitaires build/render/debug dans `scripts/`) | `web/tile-tools/recipes/` + `scripts/` |
-| Référence canonique virages | `test_ref_papa_4virages.py` (14×14 compo Papa Yann tile-picker) | `web/tile-tools/recipes/` |
+| Recettes tile validées | **20** (`test_*.py` dans `recipes/` — routes h/v × 3 générations, virages × 4, carrefour × 2, rond-point, quartier, parking, voie bus, passages piétons × 2, refs papa × 3) | `site/tile-tools/recipes/test_*.py` |
+| Scripts utilitaires tile (all) | **30+** (20 recettes validées + utilitaires build/render/debug dans `scripts/`) | `site/tile-tools/recipes/` + `scripts/` |
+| Référence canonique virages | `test_ref_papa_4virages.py` (14×14 compo Papa Yann tile-picker) | `site/tile-tools/recipes/` |
 | Couleurs RATP IDFM | 26 lignes actives + 362 référencées | `docs/ratp-colors.json` |
-| Tiles LimeZu inventoriées | 9811 (3040 unitaires + 6473 sprites + 298 planches) | `web/tile-tools/build_tile_picker_data.py` |
+| Tiles LimeZu inventoriées | 9811 (3040 unitaires + 6473 sprites + 298 planches) | `site/tile-tools/build_tile_picker_data.py` |
 
 **Production URL** : `https://kimen26.github.io/MaxPlay/` (CI via `.github/workflows/deploy.yml`).
 
@@ -73,11 +73,11 @@
 
 | Règle | Source |
 |-------|--------|
-| Bus toujours `busSVG()` / `busSVGHiddenNum()` depuis `web/js/bus-svg.js` — **JAMAIS** emoji 🚌 ni div CSS coloré | `memory/rules.md` |
+| Bus toujours `busSVG()` / `busSVGHiddenNum()` depuis `site/js/bus-svg.js` — **JAMAIS** emoji 🚌 ni div CSS coloré | `memory/rules.md` |
 | Quiz multi-couleurs : `selectDistinctColors(pool, n, minDist=80)` | `memory/rules.md` |
-| Sons fins de partie : `victory-sounds.js` (4 mélodies par couleur métal/or/argent/bronze) | `web/js/victory-sounds.js` |
-| AudioContext singleton : `sounds.js` | `web/js/sounds.js` |
-| Suivi progression : `tracker.js` (localStorage `mj_xx_*`) | `web/js/tracker.js` |
+| Sons fins de partie : `victory-sounds.js` (4 mélodies par couleur métal/or/argent/bronze) | `site/js/victory-sounds.js` |
+| AudioContext singleton : `sounds.js` | `site/js/sounds.js` |
+| Suivi progression : `tracker.js` (localStorage `mj_xx_*`) | `site/js/tracker.js` |
 
 ---
 
@@ -97,7 +97,7 @@
 |--------|-------|
 | Mini-jeux HTML | Vanilla HTML + CSS + JS (sans framework) |
 | Phaser | Phaser 3 + Vite + TypeScript strict |
-| Build Phaser | `npm run build` dans `phaser/` → `dist/` |
+| Build Phaser | `npm run build` dans `studio/max-adventure/` → `dist/` |
 | Déploiement | GitHub Pages via `.github/workflows/deploy.yml` (assemble dans `_site/` gitignored) |
 
 Détails complets : [`../memory/stack.md`](../memory/stack.md).

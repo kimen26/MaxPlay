@@ -117,7 +117,7 @@ Migration complète : `game/web` → **`site/`** (déployé), `game/`+`dino/`+`n
 2. **Caractéristiques** : header compact (une seule ligne, petite taille) inspiré de mj-20.
 3. **Rétro-fit** : tous les MJ existants SAUF mj-20 (qui valide le pattern).
 4. **Encoding emojis** : fix systématique UTF-8 + charset meta tag sur tous les MJ.
-5. **Impact fichiers** : `web/mj-*.html` (21 fichiers cibles), potentiellement `web/index.html` menu.
+5. **Impact fichiers** : `site/mj-*.html` (21 fichiers cibles), potentiellement `site/index.html` menu.
 
 **Raison** : uniformité UX + espace pour contenu jeu (max 3-8 min sessions, zéro perte d'espace).
 
@@ -274,7 +274,7 @@ Sachants :
 
 | Règle | Détail |
 |-------|--------|
-| **Bus invariant** | `busSVG()` / `busSVGHiddenNum()` depuis `web/js/bus-svg.js` — JAMAIS emoji 🚌 ni div CSS coloré |
+| **Bus invariant** | `busSVG()` / `busSVGHiddenNum()` depuis `site/js/bus-svg.js` — JAMAIS emoji 🚌 ni div CSS coloré |
 | **Quiz couleurs** | `selectDistinctColors(pool, n, minDist=80)` |
 | **UX tap** | Zones min 80×80 px |
 | **Feedback** | < 200 ms |

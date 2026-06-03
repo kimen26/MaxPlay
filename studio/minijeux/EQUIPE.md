@@ -49,7 +49,7 @@
 |-------|--------|--------|-----------------|------------------------|
 | **game-pmo** | Haiku | 1 (parent) | **AUTO** à chaque tour signal JEU | Tout : nouveau MJ, refonte tile, modif rules, décision, dump backlog, fin de session |
 | **game-archiviste** | Haiku | 1 (parent) | **AUTO** à chaque tour signal structure | Création/suppression fichier, nouveau dossier, modif INDEX, gabarit, refs cassées, recipe, LESSONS |
-| **game-mj-pmo** | Haiku | 2 (enfant) | Sur signal `mj-XX`, `rules.md`/`stack.md`, `web/` par game-pmo | Toute modif touchant les 5 fichiers MJ |
+| **game-mj-pmo** | Haiku | 2 (enfant) | Sur signal `mj-XX`, `rules.md`/`stack.md`, `site/` par game-pmo | Toute modif touchant les 5 fichiers MJ |
 | **game-tile-pmo** | Haiku | 2 (enfant) | Sur signal `tile`, `recipe`, `LimeZu`, `cartography`, `patterns` par game-pmo | Toute modif touchant tile-tools |
 | **game-wexworld-pmo** | Haiku | 2 (enfant) | ⏳ Phase 2 | À activer quand WexWorld démarre |
 | **game-conseiller** | Opus | 3 | Manuel — question produit/UX/vision | Quand auteur dit "qu'est-ce que t'en penses ?", "comment on aborde X ?", "challenge cette idée" |
@@ -98,9 +98,9 @@ game-dev → game-mj-reviewer   (après livraison code MJ)
 | `memory/rules.md` | game-pmo | Règles UX/péda + designs validés | Nouvelle règle non-négociable validée |
 | `memory/stack.md` | game-dev | Stack technique + archi déploiement | Refonte stack |
 | `memory/VISION-LONG-TERME.md` | game-conseiller + game-pmo | Vision Phase 2 + roadmap | Inflexion stratégique |
-| `web/tile-tools/LESSONS.md` *(skill)* | game-tile-pmo | 30+ leçons tile gravées | Chaque correction tile validée |
-| `web/tile-tools/PIPELINE-MEMORY.md` | game-tile-pmo | Frictions F-xxx + Patterns P-xxx | Chaque session pipeline tile |
-| `web/PIPELINE-MEMORY-MJ.md` | game-mj-pmo | Leçons mini-jeux gravées | Chaque session MJ |
+| `site/tile-tools/LESSONS.md` *(skill)* | game-tile-pmo | 30+ leçons tile gravées | Chaque correction tile validée |
+| `site/tile-tools/PIPELINE-MEMORY.md` | game-tile-pmo | Frictions F-xxx + Patterns P-xxx | Chaque session pipeline tile |
+| `site/PIPELINE-MEMORY-MJ.md` | game-mj-pmo | Leçons mini-jeux gravées | Chaque session MJ |
 
 ---
 
@@ -110,7 +110,7 @@ game-dev → game-mj-reviewer   (après livraison code MJ)
 1. Auteur dump idée → game-pmo log dans sprint-log
 2. game-conseiller (Opus) challenge si question produit/UX
 3. game-dev (Sonnet) implémente le MJ (HTML vanilla + bus-svg.js + sounds.js + tracker.js)
-4. game-archiviste (auto) vérifie : préfixe mj-NN, référencé dans web/index.html, busSVG utilisé
+4. game-archiviste (auto) vérifie : préfixe mj-NN, référencé dans site/index.html, busSVG utilisé
 5. game-mj-reviewer (Haiku) verdict 5 sections (max 5 iter) :
    - Bus & couleurs : busSVG() utilisé, selectDistinctColors si quiz
    - UX 3.5-4 ans : zones tap 80px+, feedback < 200 ms, zéro pénalité

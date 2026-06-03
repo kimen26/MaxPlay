@@ -26,4 +26,4 @@ Un panneau affiche N bus avec leur temps d'attente → toucher **celui qui arriv
 - 🔒 Bandeau **« Niveau X »** (`#levelbar`). Bus via `busSVG()`.
 
 ## Test
-`game/tests/mj-13a.spec.mjs` — N1 = 2 bus + Niveau 1 + tap gagnant. Vert avant push.
+`studio/minijeux/tests/mj-13a.spec.mjs` — N1 = 2 bus + Niveau 1 + tap gagnant. Vert avant push.

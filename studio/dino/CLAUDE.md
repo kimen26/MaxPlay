@@ -80,7 +80,7 @@ Après correction utilisateur → leçon dans [`pmo/backlog.md`](pmo/backlog.md)
 
 - Catalogue navigable : [`INDEX.md`](INDEX.md)
 - Décisions verrouillées : [`figees/encyclopedie.md`](figees/encyclopedie.md)
-- Pôles voisins : [`../game/CLAUDE.md`](../minijeux/CLAUDE.md) · [`../narration/CLAUDE.md`](../narration/CLAUDE.md)
+- Pôles voisins : [`../minijeux/CLAUDE.md`](../minijeux/CLAUDE.md) · [`../narration/CLAUDE.md`](../narration/CLAUDE.md)
 
 ---
 

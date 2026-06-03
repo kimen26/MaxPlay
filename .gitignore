@@ -17,3 +17,6 @@ site/img/dinos/brutes/
 
 # Harnais de test mini-jeux (EP-038) — screenshots/artefacts de run, pas versionnés
 studio/minijeux/tests/.artifacts/
+
+# Worktrees d'agents en arrière-plan (Agent tool isolation:worktree) — registered+locked, hors versionning
+.claude/worktrees/

@@ -3,7 +3,7 @@
 > **Règle :** Une décision ici est DÉFINITIVE jusqu'à nouvelle décision explicite datée.
 > En cas de doute : la dernière décision sur un sujet écrase les précédentes.
 >
-> Équivalent côté Narration : [`../../narration/pmo/decisions.md`](../../narration/pmo/decisions.md).
+> Équivalent côté Narration : [`../../studio/narration/pmo/decisions.md`](../../studio/narration/pmo/decisions.md).
 > Créé 2026-05-13 (extraction depuis `memory/state.md` lors de l'harmonisation Game ↔ Narration).
 
 ---
@@ -139,7 +139,7 @@
 **Impact** :
 - `CLAUDE.md` racine : sections équipe agents déplacées vers `.claude/agents/game-pmo.md`, pôles compactées
 - `game/CLAUDE.md` : PMO + Archiviste + INVARIANTS + équipe agents résumé
-- `narration/CLAUDE.md` : symétrique
+- `studio/narration/CLAUDE.md` : symétrique
 - `.claude/rules/` : 6 fichiers créés (tile-tools, mini-jeux, stories-process, personnages, univers, audio)
 
 **Réf doc Anthropic** : [claude.com/docs/memory#how-claude-md-files-load](https://code.claude.com/docs/en/memory#how-claude-md-files-load) (nested CLAUDE.md, path-scoped rules, hook timing).
@@ -153,11 +153,11 @@
 **Contexte** : pôle Narration refondu 2026-05-12 (PMO proactif + Archiviste + INVARIANTS + audit-trail). Auteur demande la même rigueur côté JEU.
 
 **Décisions tranchées** :
-1. **Création `game/pmo/`** comme dossier dédié (équivalent `narration/pmo/`).
+1. **Création `game/pmo/`** comme dossier dédié (équivalent `studio/narration/pmo/`).
 2. **Création `game-archiviste`** (Haiku, AUTO chaque signal structure) — équivalent `narration-archiviste`.
 3. **Préfixage commandes strict net** : `/challenge-archiviste` → `/narration-archiviste-audit`, `/pmo-audit` → `/narration-pmo-audit`, création `/game-pmo-audit` et `/game-archiviste-audit`.
 4. **`game/memory/state.md` réduit** aux sources de vérité statiques (jeux actifs, règles non-négociables, fichiers clés). Sessions migrées vers `sprint-log.md`, décisions vers `decisions.md` (ce fichier).
-5. **`game/tasks/BACKLOG.md` déplacé** vers `game/pmo/backlog.md` (cohérence avec narration/pmo/backlog.md).
+5. **`game/tasks/BACKLOG.md` déplacé** vers `game/pmo/backlog.md` (cohérence avec studio/narration/pmo/backlog.md).
 
 **Impact** : voir `audit-trail.md` entrée 2026-05-13.
 

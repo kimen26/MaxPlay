@@ -40,7 +40,7 @@ $dinoMatch = $lowerPrompt -match $dinoKeywords
 $structMatch = $lowerPrompt -match $structureKeywords
 
 $pathGame = $lowerPrompt -match 'game/'
-$pathNarration = $lowerPrompt -match 'narration/'
+$pathNarration = $lowerPrompt -match 'studio/narration/'
 $pathDino = $lowerPrompt -match 'studio/dino/|dev-dinos|dinos-data|audio/dinos'
 
 $reminders = @()

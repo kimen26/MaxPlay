@@ -2004,7 +2004,7 @@ Si un élément manque → flag auteur avant remise main : *"⚠️ PMO — [cat
 
 **Décisions** :
 
-1. **LLM mis à jour** ([infra/mcp/MODELS.md](../../infra/mcp/MODELS.md)) :
+1. **LLM mis à jour** ([infra/mcp/MODELS.md](../../../infra/mcp/MODELS.md)) :
    - Grok : `grok-4-fast-non-reasoning` → `grok-4.3` + `reasoning_effort: "low"` (juste au-dessus de none, évite le thinking long)
    - Kimi : suppression du paramètre `mode` (le mode `story`/moonshot-v1-32k ne marchait plus). Mono-mode `kimi-k2.6` non-thinking sur `api.moonshot.ai`
    - DeepSeek : `deepseek-chat` → `deepseek-v4-pro` non-thinking (défaut), `deepseek-v4-flash` en option. Promo -75% sur V4-Pro **jusqu'au 2026-05-31** (rappel sprint-log)
@@ -2019,7 +2019,7 @@ Si un élément manque → flag auteur avant remise main : *"⚠️ PMO — [cat
 
 3. **Séparation libre / guidé** :
    - **9 writers LIBRES** : reçoivent uniquement règles de FORME (ouverture courte, geste avant parole, fin image, longueur, promesse du titre). **Aucune indication de contenu** (pas d'animal, d'onomatopée, d'objet imposé). Variance native préservée. Template : [`brief-writer-libre.template.md`](../equipe/templates/brief-writer-libre.template.md)
-   - **1 writer GUIDÉ** : reçoit en plus l'**Annexe AXES 1-6** issue des 100+ relectures (créature vivante, geste avant parole, onomatopée légère, fin rituel, mystère vs résolution, faute volontaire). Active 2-3 axes max, jamais 4+. Template : [`brief-writer-guide.template.md`](../equipe/templates/brief-writer-guide.template.md). Agent : [`narration-writer-kimi-guide`](../../.claude/agents/narration-writer-kimi-guide.md)
+   - **1 writer GUIDÉ** : reçoit en plus l'**Annexe AXES 1-6** issue des 100+ relectures (créature vivante, geste avant parole, onomatopée légère, fin rituel, mystère vs résolution, faute volontaire). Active 2-3 axes max, jamais 4+. Template : [`brief-writer-guide.template.md`](../equipe/templates/brief-writer-guide.template.md). Agent : [`narration-writer-kimi-guide`](../../../.claude/agents/narration-writer-kimi-guide.md)
 
 4. **Checklist auto-cohérence en fin de brief (tous writers)** : passe factuelle 30s avant remise (prénoms, lieux, objets cohérents). Pas de réécriture créative — corrige uniquement les bugs. Une 2e passe créative dilue la voix one-shot.
 
@@ -2035,8 +2035,8 @@ Si un élément manque → flag auteur avant remise main : *"⚠️ PMO — [cat
 - Si les 4 Kimi convergent trop, perte de variance inter-LLM → à mesurer après 3-5 histoires
 
 **Impact fichiers** :
-- Modifié : [`infra/mcp/server.ts`](../../infra/mcp/server.ts), [`PROCESS.md`](../equipe/PROCESS.md), [`narration-writer-claude-libre.md`](../../.claude/agents/narration-writer-claude-libre.md)
-- Créé : [`MODELS.md`](../../infra/mcp/MODELS.md), [`narration-writer-kimi-guide.md`](../../.claude/agents/narration-writer-kimi-guide.md), [`brief-writer-libre.template.md`](../equipe/templates/brief-writer-libre.template.md), [`brief-writer-guide.template.md`](../equipe/templates/brief-writer-guide.template.md)
+- Modifié : [`infra/mcp/server.ts`](../../../infra/mcp/server.ts), [`PROCESS.md`](../equipe/PROCESS.md), [`narration-writer-claude-libre.md`](../../../.claude/agents/narration-writer-claude-libre.md)
+- Créé : [`MODELS.md`](../../../infra/mcp/MODELS.md), [`narration-writer-kimi-guide.md`](../../../.claude/agents/narration-writer-kimi-guide.md), [`brief-writer-libre.template.md`](../equipe/templates/brief-writer-libre.template.md), [`brief-writer-guide.template.md`](../equipe/templates/brief-writer-guide.template.md)
 - Mémoire MaxPlay : `feedback_kimi_mode_code.md` mise à jour (mode unique désormais)
 
 ---

@@ -35,7 +35,7 @@ Lecture **avant** étape 1 (pitch), 2 (plan) et 3 (briefs writers) du [`PROCESS.
 **Critères PASS étapes 1-3 incluent désormais** : « ressources péda consultées, choix calibrés 4-5 ans ».
 
 Agents concernés :
-- [`narration-conseiller`](../../../../.claude/agents/narration-conseiller.md) — lecture au démarrage de toute session de brainstorm
+- [`narration-conseiller`](../../../../../.claude/agents/narration-conseiller.md) — lecture au démarrage de toute session de brainstorm
 - [`narration-architecte`](../../../../.claude/agents/narration-architecte.md) — lecture avant chaque plan d'histoire
 - Writers (Claude/Kimi/DeepSeek/Grok via briefs) — la péda est dans le brief, pas à lire séparément
 

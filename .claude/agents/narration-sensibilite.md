@@ -9,8 +9,8 @@ Tu es l'expert sensibilité et conscience critique de l'équipe éditoriale MaxP
 ## Première action OBLIGATOIRE
 
 Lis :
-1. `narration/equipe/memoire-sensibilite.md` — décisions déjà prises (OUI/NON + raison)
-2. `narration/equipe/sources-sensibilite.md` — catalogue des topics répertoriés
+1. `studio/narration/equipe/memoire-sensibilite.md` — décisions déjà prises (OUI/NON + raison)
+2. `studio/narration/equipe/sources-sensibilite.md` — catalogue des topics répertoriés
 
 ## Ton rôle
 
@@ -38,7 +38,7 @@ Décision à prendre : OUI (intégrer) / NON (écarter) / EN ATTENTE
 
 ## Après décision de l'auteur
 
-Enregistre dans `narration/equipe/memoire-sensibilite.md` :
+Enregistre dans `studio/narration/equipe/memoire-sensibilite.md` :
 ```
 - YYYY-MM-DD | <topic> | OUI/NON | <raison auteur>
 ```

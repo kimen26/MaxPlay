@@ -118,7 +118,7 @@ CI : [`../.github/workflows/deploy.yml`](../.github/workflows/deploy.yml) (assem
 - Catalogue navigable : [`INDEX.md`](INDEX.md)
 - Équipe détaillée : [`EQUIPE.md`](EQUIPE.md)
 - Vision long terme (Phase 2 WexWorld) : [`memory/VISION-LONG-TERME.md`](memory/VISION-LONG-TERME.md)
-- Pôle voisin : [`../narration/CLAUDE.md`](../narration/CLAUDE.md)
+- Pôle voisin : [`../studio/narration/CLAUDE.md`](../studio/narration/CLAUDE.md)
 
 ---
 

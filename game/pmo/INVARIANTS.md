@@ -3,7 +3,7 @@
 > **Tout chiffre clé ou règle structurelle vit ICI.** Le reste du pôle pointe vers ce fichier.
 > Si tu trouves un chiffre divergent ailleurs → ce fichier gagne, l'autre est obsolète.
 >
-> Équivalent côté Narration : [`../../narration/pmo/INVARIANTS.md`](../../narration/pmo/INVARIANTS.md).
+> Équivalent côté Narration : [`../../studio/narration/pmo/INVARIANTS.md`](../../studio/narration/pmo/INVARIANTS.md).
 > Créé 2026-05-13 lors de l'harmonisation Game ↔ Narration (Phase A1).
 
 ---
@@ -120,7 +120,7 @@ Détails complets : [`../memory/stack.md`](../memory/stack.md).
 | 4 Pipeline tile | `game-tile-reviewer` | Haiku | Manuel — étape 3/3 |
 | 4 Validateur MJ | `game-mj-reviewer` | Haiku | Manuel |
 
-Détails : [`../EQUIPE.md`](../EQUIPE.md) (équivalent narration/equipe/ORGANIGRAMME.md).
+Détails : [`../EQUIPE.md`](../EQUIPE.md) (équivalent studio/narration/equipe/ORGANIGRAMME.md).
 
 ---
 

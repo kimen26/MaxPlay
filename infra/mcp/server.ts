@@ -191,7 +191,7 @@ server.tool(
 
 server.tool(
   "ask_kimi_payant",
-  "Pose une question à Kimi K2.6 via l'API Moonshot OFFICIELLE PAYANTE (platform.moonshot.ai). USAGE STRICTEMENT RÉSERVÉ aux 2 writers narratifs qui en ont besoin : kimi-reco (Instant, top_p 0.95, temp 1.0) et kimi-thinking (mode thinking activé, K2.6 défaut). Pour tout autre usage, utiliser ask_kimi (gratuit). Voir narration/pmo/INVARIANTS.md § Casting writers étape 4. NB : K2.6 utilise température fixe 1.0 et a le thinking ACTIVÉ par défaut — pour Instant il faut explicitement disabled.",
+  "Pose une question à Kimi K2.6 via l'API Moonshot OFFICIELLE PAYANTE (platform.moonshot.ai). USAGE STRICTEMENT RÉSERVÉ aux 2 writers narratifs qui en ont besoin : kimi-reco (Instant, top_p 0.95, temp 1.0) et kimi-thinking (mode thinking activé, K2.6 défaut). Pour tout autre usage, utiliser ask_kimi (gratuit). Voir studio/narration/pmo/INVARIANTS.md § Casting writers étape 4. NB : K2.6 utilise température fixe 1.0 et a le thinking ACTIVÉ par défaut — pour Instant il faut explicitement disabled.",
   {
     prompt: z.string().describe("La question ou le texte à soumettre à Kimi (USAGE WRITERS NARRATIFS UNIQUEMENT)"),
     system: z.string().optional().describe("Prompt système (rôle, règles, contexte statique). Passé tel quel sans préfixe."),
@@ -201,7 +201,7 @@ server.tool(
   },
   async ({ prompt, system, temperature, top_p, thinking }) => {
     const apiKey = process.env.MOONSHOT_PAYANT_API_KEY;
-    if (!apiKey) return { content: [{ type: "text", text: "Erreur: MOONSHOT_PAYANT_API_KEY non définie. Cette key est distincte de MOONSHOT_API_KEY (gratuit) et réservée aux writers narratifs kimi-reco + kimi-thinking. Voir narration/equipe/references/temperatures-llm.md." }], isError: true };
+    if (!apiKey) return { content: [{ type: "text", text: "Erreur: MOONSHOT_PAYANT_API_KEY non définie. Cette key est distincte de MOONSHOT_API_KEY (gratuit) et réservée aux writers narratifs kimi-reco + kimi-thinking. Voir studio/narration/equipe/references/temperatures-llm.md." }], isError: true };
     const systemPrompt = system ?? "Tu es un assistant expert, précis et concis.";
     const extraBody: Record<string, unknown> = {};
     if (typeof top_p === "number") extraBody.top_p = top_p;
@@ -604,7 +604,7 @@ function packetizeDialogue(
 
 server.tool(
   "studio_audiobook_from_segments_v2_dialogue",
-  "VOIE PAR DÉFAUT production audio MaxPlay (DEC-AUDIO-PRODUCTION-001) — c'est CET outil qu'on utilise pour générer l'audio d'une histoire, pas le script à la main. Multi-voix via POST /v1/text-to-dialogue, modèle eleven_v3 FORCÉ (militaire, seul à gérer les tags inline), packetisé ≤2000 car/appel + ffmpeg loudnorm. Résout les voix via voice-map.json (clé `role` ex: 'wex','narrateur_h' — autoritaire, refuse les voice_id périmés). Fallback CLI = narration/scripts/generate-story-dialogue.js. Ne PAS utiliser studio_audiobook_from_segments (Studio API verrouillée Enterprise) ni tts_elevenlabs (mono).",
+  "VOIE PAR DÉFAUT production audio MaxPlay (DEC-AUDIO-PRODUCTION-001) — c'est CET outil qu'on utilise pour générer l'audio d'une histoire, pas le script à la main. Multi-voix via POST /v1/text-to-dialogue, modèle eleven_v3 FORCÉ (militaire, seul à gérer les tags inline), packetisé ≤2000 car/appel + ffmpeg loudnorm. Résout les voix via voice-map.json (clé `role` ex: 'wex','narrateur_h' — autoritaire, refuse les voice_id périmés). Fallback CLI = studio/narration/scripts/generate-story-dialogue.js. Ne PAS utiliser studio_audiobook_from_segments (Studio API verrouillée Enterprise) ni tts_elevenlabs (mono).",
   {
     project_name: z.string().describe("Nom du projet (libellé)"),
     segments: z

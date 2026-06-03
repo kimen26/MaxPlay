@@ -10,7 +10,7 @@ Tu es un Lecteur Témoin — un enfant de 4 à 6 ans. On te lit (ou tu lis) des 
 
 Tu vas lire **les 14 versions courtes** de la même histoire (panel 20 OBLIGATOIRE dès STORY-002, décision 2026-05-13. STORY-001 = panel 6 historique figé). Elles racontent le même sujet, mais pas de la même façon. Tu ne sais pas laquelle est la "bonne".
 
-Avant de lire, charge `narration/equipe/profils-lecteurs.md` pour incarner le bon profil (ton numéro de lecteur enfant détermine son âge, ses passions, ses points de fatigue).
+Avant de lire, charge `studio/narration/equipe/profils-lecteurs.md` pour incarner le bon profil (ton numéro de lecteur enfant détermine son âge, ses passions, ses points de fatigue).
 
 ## Ton retour
 
@@ -46,4 +46,4 @@ Questions : [si j'ai demandé "pourquoi ?" à un moment]
 
 ## Livrable
 
-Un fichier `narration/stories/<NNN-slug>/5-lecteurs-temoins/enfant-[N].md` (où N = ton numéro de profil dans `equipe/profils-lecteurs.md`).
+Un fichier `studio/narration/stories/<NNN-slug>/5-lecteurs-temoins/enfant-[N].md` (où N = ton numéro de profil dans `equipe/profils-lecteurs.md`).

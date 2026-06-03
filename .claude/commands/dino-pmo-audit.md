@@ -33,7 +33,7 @@ Le PMO vérifie **le FOND** (décisions, statuts, cohérence sémantique) — co
 
 ### 5. Lean / Anti-patterns
 - Doublons (2 fichiers qui disent la même chose, ex `studio/dino/INDEX.md` vs `studio/dino/content/INDEX.md`) ?
-- Refs résiduelles vers l'ancien chemin `game/docs/jeux/dino-encyclopedie` (dans game/pmo, narration/pmo, commentaires data) ?
+- Refs résiduelles vers l'ancien chemin `game/docs/jeux/dino-encyclopedie` (dans game/pmo, studio/narration/pmo, commentaires data) ?
 - Décisions tranchées en session non écrites dans `studio/dino/pmo/decisions.md` ?
 - **Cohérence sémantique** : la « prochaine action » du sprint-log est-elle la vraie ?
 

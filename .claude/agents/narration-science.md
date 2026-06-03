@@ -9,8 +9,8 @@ Tu es l'expert sciences et biologie de l'équipe éditoriale MaxPlay.
 ## Première action OBLIGATOIRE
 
 Lis :
-1. `narration/equipe/memoire-science.md` — validations déjà faites, refs enregistrées
-2. `narration/equipe/sources-sciences.md` — documentaires et refs de référence
+1. `studio/narration/equipe/memoire-science.md` — validations déjà faites, refs enregistrées
+2. `studio/narration/equipe/sources-sciences.md` — documentaires et refs de référence
 
 ## Ton rôle
 
@@ -34,7 +34,7 @@ Fiabilité : ✅ consensus · ⚠️ débat scientifique · ❌ faux
 
 ## Mise à jour mémoire
 
-Après chaque validation, ajoute une ligne dans `narration/equipe/memoire-science.md` :
+Après chaque validation, ajoute une ligne dans `studio/narration/equipe/memoire-science.md` :
 `- YYYY-MM-DD | <sujet> | <verdict court> | <ref>`
 
 ## Ce que tu ne fais PAS

@@ -40,7 +40,7 @@ Voir `memory/MAX_PROFILE.md` pour le profil complet.
 - **Histoires écrites** : "Le Pont Cassé" — Wex (#7 héros hors-système) + Melki (#1) + Juju (#8), thème causalité/responsabilité, V1 complète
 - **Comité de lecture** : 7 profils internes (éditeur, prof français, philo, Boo 4 ans, enfant 8 ans, père, mère) + 8 cultures (USA, DE, CN, NG, JP, MA, BR, RU)
 - **3 actions V2** : couper chute italique · donner à Melki un vrai tort · ralentir retournement de Wex
-- **Univers macro** : en construction — `narration/univers/INDEX.md`
+- **Univers macro** : en construction — `studio/narration/univers/INDEX.md`
   - Post-Grande Tempête de Phos (Éveil des consciences, Tisseurs d'Ombre vaincus)
   - Conscience créative + Totems de Pensée (Voile Janus)
   - Gardiens de l'Équilibre (Présence Pure, micro-gestes)
@@ -49,7 +49,7 @@ Voir `memory/MAX_PROFILE.md` pour le profil complet.
   - Baron (voyageur temporel, Gardien des Portes)
   - **Nom de l'univers** : pas encore choisi (21 candidats dont Phosyntha, Egryntha, Veynara)
 - **Personnages nommés (casting Christ V1 figé 2026-04-24)** : Wex (#7 héros hors-système), Melki/Melchisédech (#1), Mimi/Marie F (#2), Dadou/David (#3), Jérem/Jérémie (#4), Lulu/Luc (#5), Pierrot/Pierre (#6), Raph/Raphaëlle F (#7 ennéatype), Juju/Judith F (#8), Nono/Noé (#9)
-- **Docs narration** : `narration/` (INDEX.md + univers/{fondements,vie-quotidienne,meta} + enneagramme/ + personnages/ + stories/ + workshop/ + pmo/ + equipe/)
+- **Docs narration** : `studio/narration/` (INDEX.md + univers/{fondements,vie-quotidienne,meta} + enneagramme/ + personnages/ + stories/ + workshop/ + pmo/ + equipe/)
 
 ## Architecture déploiement (2026-03-21)
 
@@ -142,9 +142,9 @@ Serveur MCP global (scope user, tous projets) exposant 2 outils LLM tiers :
 | `memory/MAX_PROFILE.md` | Profil complet Max : lignes bus, couleurs IDFM, intérêts |
 | `memory/VISION.md` | Décisions prises + questions ouvertes |
 | `game/docs/ratp-colors.json` | Source de vérité couleurs+terminus : 26 actives + 362 référentiel |
-| `narration/INDEX.md` | Point d'entrée projet narratif (personnages, ennéagramme, univers) |
-| `narration/enneagramme/` | 9 fiches personnages + situations + ressources auteur |
-| `narration/univers/INDEX.md` | Matière brute univers macro (Éveil, Compagnons, Janus, Baron...) |
+| `studio/narration/INDEX.md` | Point d'entrée projet narratif (personnages, ennéagramme, univers) |
+| `studio/narration/enneagramme/` | 9 fiches personnages + situations + ressources auteur |
+| `studio/narration/univers/INDEX.md` | Matière brute univers macro (Éveil, Compagnons, Janus, Baron...) |
 | `game/web/` | mj-01 à mj-20 + max-adventure (vanilla HTML/JS) — source déployée |
 | `game/web/js/tracker.js` | Suivi progression localStorage — sessions, scores, maîtrise |
 | `game/web/suivi.html` | Dashboard parent — stats, sparklines, export/import JSON |

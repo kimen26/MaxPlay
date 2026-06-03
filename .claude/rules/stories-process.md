@@ -1,18 +1,18 @@
 ---
 paths:
-  - "narration/stories/**"
+  - "studio/narration/stories/**"
 ---
 
 # PROCESS militaire NARRATION — règles auto-chargées sur stories/**
 
-> Cette règle est **chargée automatiquement** dès que Claude lit/édite un fichier sous `narration/stories/`.
-> Source de vérité complète : [`narration/equipe/PROCESS.md`](../../narration/equipe/PROCESS.md).
+> Cette règle est **chargée automatiquement** dès que Claude lit/édite un fichier sous `studio/narration/stories/`.
+> Source de vérité complète : [`studio/narration/equipe/PROCESS.md`](../../studio/narration/equipe/PROCESS.md).
 
 ## 10 étapes — owner par étape
 
 | # | Étape | Owner | Output | ✅ valide auteur |
 |---|-------|-------|--------|------------------|
-| 0 | Dump idée | Auteur | `narration/INBOX.md` | — |
+| 0 | Dump idée | Auteur | `studio/narration/INBOX.md` | — |
 | 1 | Pitch + plan léger (fusion) | `narration-conseiller` | `1-pitch-plan.md` | OUI |
 | 2 | **Brainstorm boss** (Phase A) + **Brainstorm équipe** (Phase B) | Phase A : Papa Yann + Conseiller · Phase B : Kimi + DeepSeek + Grok + Conseiller | Phase A : lieu / objet / trio / intention (dans kanban) · Phase B : matière brute briefs | Phase A : OUI (Papa Yann valide) |
 | 3 | Briefs | `narration` (Directeur Éditorial) | `3-briefs/{personnages,histoire}.md` (system prompt WexWorld → `_writer-system.md` par arc) | — |
@@ -30,9 +30,9 @@ paths:
 
 1. **Préfixes étapes obligatoires** : tout fichier produit dans `stories/<id>/` doit être préfixé `N-` (0, 1, 3-10). Pas de `pitch.md` nu — c'est `1-pitch-plan.md`.
 2. **Étape 1 + 3 obligent lecture** :
-   - [`narration/personnages/theorie/pedagogie-enfance/`](../../narration/personnages/theorie/pedagogie-enfance/README.md) — boussole 4-5 ans
+   - [`studio/narration/personnages/theorie/pedagogie-enfance/`](../../studio/narration/personnages/theorie/pedagogie-enfance/README.md) — boussole 4-5 ans
    - Ennéatypes pertinents de l'histoire
-3. **14 writers ≠ 14 textes identiques** — leviers de variance figés dans [`narration/pmo/INVARIANTS.md`](../../narration/pmo/INVARIANTS.md) § *Leviers de variance* :
+3. **14 writers ≠ 14 textes identiques** — leviers de variance figés dans [`studio/narration/pmo/INVARIANTS.md`](../../studio/narration/pmo/INVARIANTS.md) § *Leviers de variance* :
    - Angle / POV / ouverture / longueur / température
 4. **Rewrite plafond** : 1 rewrite max par story. Au-delà → recommencer depuis étape 1 (cause racine à analyser).
 5. **GateKeeper ne réécrit pas** : il valide PASS ou liste corrections rapides. Si grosse réécriture nécessaire → retour étape 7.
@@ -42,7 +42,7 @@ paths:
 ## Gabarit dossier story (vérifié par `narration-archiviste`)
 
 ```
-narration/stories/<NNN-titre-slug>/
+studio/narration/stories/<NNN-titre-slug>/
 ├── 1-pitch-plan.md
 ├── 3-briefs/
 │   ├── brief-personnages.md
@@ -63,7 +63,7 @@ narration/stories/<NNN-titre-slug>/
 └── _archive/              ← versions pre-pivot
 ```
 
-Modèle : [`narration/stories/_gabarit/`](../../narration/stories/_gabarit/).
+Modèle : [`studio/narration/stories/_gabarit/`](../../studio/narration/stories/_gabarit/).
 
 ## Anti-patterns sur stories
 
@@ -76,7 +76,7 @@ Modèle : [`narration/stories/_gabarit/`](../../narration/stories/_gabarit/).
 
 ## Quand auto-charger
 
-Cette règle se déclenche dès qu'un fichier sous `narration/stories/` est lu OU édité. Inclut : briefs en cours, versions writers, lecteurs, kanban, canon. Tout fichier de production narrative passe sous l'œil de cette règle.
+Cette règle se déclenche dès qu'un fichier sous `studio/narration/stories/` est lu OU édité. Inclut : briefs en cours, versions writers, lecteurs, kanban, canon. Tout fichier de production narrative passe sous l'œil de cette règle.
 
 ---
 

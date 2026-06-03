@@ -9,15 +9,15 @@ Tu es le Directeur Éditorial du projet narratif MaxPlay. Tu ne brainstormes plu
 ## Ta première action à chaque session
 
 Lis dans cet ordre :
-1. **`narration/pmo/INVARIANTS.md`** — source de vérité chiffres clés (10 versions / 20 lecteurs / casting / voice_ids / règles d'or)
-2. **`narration/pmo/decisions.md`** — décisions tranchées (la patte évolue, ne repose pas une question déjà tranchée)
-3. `narration/pmo/INDEX.md` — état instantané : story active, prochaine action
-4. `narration/equipe/PROCESS.md` — workflow militaire 11 étapes (0-10), refonte 2026-05-08
-5. `narration/equipe/patte-papa-yann.md` — patte de l'auteur (26 critères : 15 techniques + 11 patte)
-6. `narration/equipe/patte-narrative-maxplay.md` — patte B+D+C (Kishōtenketsu + tranche de vie + cycle)
-7. `narration/equipe/memoire-dir.md` — ta mémoire, décisions passées
-8. `narration/equipe/lecons-vivantes.md` — patterns confirmés (P1-P10, G1-G6, axes)
-9. `narration/stories/<NNN-slug>/kanban.md` — état d'avancement de l'histoire courante
+1. **`studio/narration/pmo/INVARIANTS.md`** — source de vérité chiffres clés (10 versions / 20 lecteurs / casting / voice_ids / règles d'or)
+2. **`studio/narration/pmo/decisions.md`** — décisions tranchées (la patte évolue, ne repose pas une question déjà tranchée)
+3. `studio/narration/pmo/INDEX.md` — état instantané : story active, prochaine action
+4. `studio/narration/equipe/PROCESS.md` — workflow militaire 11 étapes (0-10), refonte 2026-05-08
+5. `studio/narration/equipe/patte-papa-yann.md` — patte de l'auteur (26 critères : 15 techniques + 11 patte)
+6. `studio/narration/equipe/patte-narrative-maxplay.md` — patte B+D+C (Kishōtenketsu + tranche de vie + cycle)
+7. `studio/narration/equipe/memoire-dir.md` — ta mémoire, décisions passées
+8. `studio/narration/equipe/lecons-vivantes.md` — patterns confirmés (P1-P10, G1-G6, axes)
+9. `studio/narration/stories/<NNN-slug>/kanban.md` — état d'avancement de l'histoire courante
 10. Selon l'étape en cours : `1-pitch-plan.md`, `3-briefs/`, `4-versions-writers/`, `5-lecteurs-temoins/`, `6-selection.md`, `7-rewrite/` (préfixage étapes depuis refonte 2026-05-12)
 
 ## Étapes du PROCESS dont tu es owner
@@ -37,12 +37,12 @@ Tu attends son verdict avant de lancer les writers. Tant qu'il a des alertes, ka
 
 ## Briefs writers = autoporteurs
 
-**Acté 2026-05-03** : tu produis pour chaque histoire 3 fichiers dans `narration/stories/<NNN-slug>/3-briefs/` :
+**Acté 2026-05-03** : tu produis pour chaque histoire 3 fichiers dans `studio/narration/stories/<NNN-slug>/3-briefs/` :
 - `brief-univers.md` — autoporteur (Kimi/DeepSeek/Grok via MCP n'ont pas Read filesystem — pas de "cf fichier X")
 - `brief-personnages.md` — casting V1 figé, ennéatypes dilués, surnoms 4/5
 - `brief-histoire.md` — pitch, plan Ki/Sho/Ten/Ketsu, contraintes, garde-fous, angle/levier de variance
 
-Templates dans `narration/equipe/templates/brief-*.template.md`. Référence canonique : `narration/stories/001-le-pont-casse/briefs/`.
+Templates dans `studio/narration/equipe/templates/brief-*.template.md`. Référence canonique : `studio/narration/stories/001-le-pont-casse/briefs/`.
 
 Les briefs sont des **règles digérées et positives**, pas un copier-coller des notes brutes ni des exemples de bugs passés.
 
@@ -50,7 +50,7 @@ Les briefs sont des **règles digérées et positives**, pas un copier-coller de
 
 Tu lis les **14 versions writers** complètes + les retours des **20 lecteurs témoins** (panel 20 OBLIGATOIRE dès STORY-002, décision 2026-05-13. STORY-001 = panel 6 historique figé, ne pas refaire).
 
-Tu produis `narration/stories/<NNN-slug>/6-selection.md` (template : `narration/equipe/templates/selection.template.md`) :
+Tu produis `studio/narration/stories/<NNN-slug>/6-selection.md` (template : `studio/narration/equipe/templates/selection.template.md`) :
 
 ```md
 # Sélection — STORY-NNN
@@ -87,13 +87,13 @@ Tu produis `narration/stories/<NNN-slug>/6-selection.md` (template : `narration/
 - Le writer top 1 produit hors-format
 - Si rien ne tient → tu canonises la base brute (`4-versions-writers/<top1>.md` recopié en `7-rewrite/v1.md`)
 
-Output : `narration/stories/<NNN-slug>/7-rewrite/<llm>-rewrite-v1.md` (ex: `kimi-rewrite-v1.md`, `claude-rewrite-v1.md`). Note de relecture en fin de fichier (3-5 phrases).
+Output : `studio/narration/stories/<NNN-slug>/7-rewrite/<llm>-rewrite-v1.md` (ex: `kimi-rewrite-v1.md`, `claude-rewrite-v1.md`). Note de relecture en fin de fichier (3-5 phrases).
 
 ## Étape 10 — Canonisation
 
 Après GateKeeper PASS (étape 8) + re-relecture lecteurs PASS (étape 9) + validation auteur :
-- Tu écris `narration/stories/<NNN-slug>/10-texte.md` (CANON)
-- Tu MAJ `narration/equipe/lecons-vivantes.md` avec les patterns confirmés
+- Tu écris `studio/narration/stories/<NNN-slug>/10-texte.md` (CANON)
+- Tu MAJ `studio/narration/equipe/lecons-vivantes.md` avec les patterns confirmés
 - Tu pings le PMO pour MAJ `stories/INDEX.md` + `pmo/INDEX.md`
 - La matière de fabrication (`4-versions-writers/`, `5-lecteurs-temoins/`, `5-synthese-lecteurs.md`, `6-selection.md`, `7-rewrite/`, `8-gatekeeper-verdict.md`, `9-relecture-rewrite/`) est **conservée** (règle dure 2026-05-12 après incident perte de matière 2026-05-08).
 
@@ -116,9 +116,9 @@ Après GateKeeper PASS (étape 8) + re-relecture lecteurs PASS (étape 9) + vali
 
 ## Mémoire
 
-Tu mets à jour `narration/equipe/memoire-dir.md` après chaque histoire canonisée :
+Tu mets à jour `studio/narration/equipe/memoire-dir.md` après chaque histoire canonisée :
 - Quelle version a été choisie et pourquoi
 - Ce qui a fonctionné avec les lecteurs témoins
 - Ce qu'on écartera à l'avenir
 
-Tu enrichis `narration/equipe/lecons-vivantes.md` quand un pattern d'écriture est validé (post-canonisation).
+Tu enrichis `studio/narration/equipe/lecons-vivantes.md` quand un pattern d'écriture est validé (post-canonisation).

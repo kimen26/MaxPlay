@@ -39,17 +39,17 @@ Décidé par Papa Yann le 2026-04-30 — saturation face aux réponses-menu :
 
 Lis dans cet ordre. C'est ton **data pull** obligatoire. Tu ne poses pas une question sans avoir ces données en tête :
 
-1. `narration/pmo/INDEX.md` — **état instantané** : histoires en cours, prochaine action prioritaire
-2. `narration/equipe/memoire-conseiller.md` — ce que vous avez déjà décidé ensemble
-3. `narration/stories/INDEX.md` — quelles histoires existent, qui a eu son moment
-4. `narration/personnages/INDEX.md` + `lookup.yml` — qui existe, qui manque, qui a évolué
-5. `narration/personnages/theorie/pedagogie-enfance/README.md` — **boussole 4-5 ans** (cheat-sheet : théorie de l'esprit, attention conjointe, jeu symbolique, recoins Bachelard, causalité immédiate, max 3 infos, sensorialité dominante)
-6. `narration/personnages/theorie/enneagramme/chabreuil-synthese-complete.md` §8.3 — comportements 4-7 ans par type
-7. `narration/saisons/saison-1/<arc-courant>/fiche.md` — cadre de l'arc en cours
-8. `narration/univers/INDEX.md` — les règles du monde, ce qui est tranché, ce qui est flou
-9. `narration/cross-culture/INDEX.md` — variantes par culture si l'idée touche un casting non-FR
-10. `narration/INBOX.md` — ce que l'auteur a dumpé récemment
-11. `narration/equipe/memoire-dir.md` — ce que le Directeur a retenu des histoires passées
+1. `studio/narration/pmo/INDEX.md` — **état instantané** : histoires en cours, prochaine action prioritaire
+2. `studio/narration/equipe/memoire-conseiller.md` — ce que vous avez déjà décidé ensemble
+3. `studio/narration/stories/INDEX.md` — quelles histoires existent, qui a eu son moment
+4. `studio/narration/personnages/INDEX.md` + `lookup.yml` — qui existe, qui manque, qui a évolué
+5. `studio/narration/personnages/theorie/pedagogie-enfance/README.md` — **boussole 4-5 ans** (cheat-sheet : théorie de l'esprit, attention conjointe, jeu symbolique, recoins Bachelard, causalité immédiate, max 3 infos, sensorialité dominante)
+6. `studio/narration/personnages/theorie/enneagramme/chabreuil-synthese-complete.md` §8.3 — comportements 4-7 ans par type
+7. `studio/narration/saisons/saison-1/<arc-courant>/fiche.md` — cadre de l'arc en cours
+8. `studio/narration/univers/INDEX.md` — les règles du monde, ce qui est tranché, ce qui est flou
+9. `studio/narration/cross-culture/INDEX.md` — variantes par culture si l'idée touche un casting non-FR
+10. `studio/narration/INBOX.md` — ce que l'auteur a dumpé récemment
+11. `studio/narration/equipe/memoire-dir.md` — ce que le Directeur a retenu des histoires passées
 
 ---
 
@@ -107,7 +107,7 @@ Quand tu produis un `1-pitch-plan.md`, vérifie les 4 temps :
 6. **Théorie de l'esprit naissante** : un perso pense quelque chose que l'autre ne sait pas — accessible si l'écart est tangible (un objet caché, un geste vu en coin)
 7. **Recoins Bachelard** : un coin, un creux, un dessous — un lieu "à soi" dans le lieu commun
 
-Source complète : [`narration/personnages/theorie/pedagogie-enfance/README.md`](../../narration/personnages/theorie/pedagogie-enfance/README.md).
+Source complète : [`studio/narration/personnages/theorie/pedagogie-enfance/README.md`](../../studio/narration/personnages/theorie/pedagogie-enfance/README.md).
 
 ## Ton rôle : binôme de construction
 
@@ -163,7 +163,7 @@ Si l'auteur est à sec, tu proposes 3 pitches en t'appuyant sur :
 
 ## Mémoire
 
-Tu mets à jour `narration/equipe/memoire-conseiller.md` après **chaque session** :
+Tu mets à jour `studio/narration/equipe/memoire-conseiller.md` après **chaque session** :
 - Ce que vous avez tranché ensemble
 - Les questions ouvertes qui restent
 - Les nouvelles connexions découvertes

@@ -36,7 +36,7 @@ Tu travailles **main dans la main** avec `narration-archiviste` :
 **Quand le Directeur (ou l'auteur via le Directeur) pose une question "combien / quels / où est / c'est quoi X" qui touche un chiffre clé du pôle**, tu es invoqué en mode RECHERCHE :
 
 1. **Tu ne réponds JAMAIS de mémoire.** Tu ouvres le fichier source.
-2. **Source par défaut : `narration/pmo/INVARIANTS.md`** — il contient :
+2. **Source par défaut : `studio/narration/pmo/INVARIANTS.md`** — il contient :
    - Casting writers étape 4 (10 writers, modèles, libre vs guidé, températures)
    - Leviers de variance (angle / POV / ouverture / longueur / température)
    - 6 axes du writer guidé
@@ -68,15 +68,15 @@ Tu travailles **main dans la main** avec `narration-archiviste` :
 ## Première action OBLIGATOIRE
 
 Lis dans l'ordre :
-1. **`narration/pmo/INVARIANTS.md`** 🆕 — source de vérité chiffres clés (10 versions / 20 lecteurs / casting / voice_ids / règles d'or). **À consulter avant toute écriture d'un chiffre clé.**
-2. `narration/pmo/sprint-log.md` — dernière session (début du fichier)
-3. `narration/pmo/backlog.md` — tickets actifs
-4. `narration/pmo/decisions.md` — décisions figées + questions ouvertes
-5. **`narration/pmo/audit-trail.md`** 🆕 — derniers audits + findings ouverts à propager
-6. `narration/equipe/PROCESS.md` — workflow militaire **10 étapes (refonte 2026-05-12)** : 0 Idée, 1 Pitch+Plan ✅ (fusion 2026-05-12), 3 Briefs, 4 Versions writers (10), 5 Lecteurs (panel 20), 6 Sélection ✅, 7 Rewrite, 8 GateKeeper, 9 Re-relecture rewrite, 10 Canon ✅. **Étape 2 supprimée** par fusion avec étape 1.
-7. **Pour chaque histoire en cours** : `narration/stories/<NNN-slug>/kanban.md` — source de vérité de l'étape en cours
-8. **📥 `narration/inbox/`** — scanner tous les fichiers non traités (dépôts manuels Papa Yann)
-9. **📥 `narration/INBOX.md`** — scanner les sections non distillées (bot Telegram + digests Claude)
+1. **`studio/narration/pmo/INVARIANTS.md`** 🆕 — source de vérité chiffres clés (10 versions / 20 lecteurs / casting / voice_ids / règles d'or). **À consulter avant toute écriture d'un chiffre clé.**
+2. `studio/narration/pmo/sprint-log.md` — dernière session (début du fichier)
+3. `studio/narration/pmo/backlog.md` — tickets actifs
+4. `studio/narration/pmo/decisions.md` — décisions figées + questions ouvertes
+5. **`studio/narration/pmo/audit-trail.md`** 🆕 — derniers audits + findings ouverts à propager
+6. `studio/narration/equipe/PROCESS.md` — workflow militaire **10 étapes (refonte 2026-05-12)** : 0 Idée, 1 Pitch+Plan ✅ (fusion 2026-05-12), 3 Briefs, 4 Versions writers (10), 5 Lecteurs (panel 20), 6 Sélection ✅, 7 Rewrite, 8 GateKeeper, 9 Re-relecture rewrite, 10 Canon ✅. **Étape 2 supprimée** par fusion avec étape 1.
+7. **Pour chaque histoire en cours** : `studio/narration/stories/<NNN-slug>/kanban.md` — source de vérité de l'étape en cours
+8. **📥 `studio/narration/inbox/`** — scanner tous les fichiers non traités (dépôts manuels Papa Yann)
+9. **📥 `studio/narration/INBOX.md`** — scanner les sections non distillées (bot Telegram + digests Claude)
 
 ### Process INBOX (étapes 8-9)
 Pour chaque fichier/section non traité :
@@ -91,7 +91,7 @@ Pour chaque fichier/section non traité :
 - **Tiens le backlog** : ouvrir, déplacer, fermer les tickets dans `pmo/backlog.md`
 - **Logues les sessions** : chaque session de travail laisse une trace dans `pmo/sprint-log.md`
 - **Enregistres les décisions** : toute décision validée va dans `pmo/decisions.md` avec date + raison
-- **Scanne les inputs** : lis `narration/inbox/` (dépôts manuels) ET `INBOX.md` (bot/digests) — crée tickets INPUT-NNN + brainstorme avec Conseiller + distille
+- **Scanne les inputs** : lis `studio/narration/inbox/` (dépôts manuels) ET `INBOX.md` (bot/digests) — crée tickets INPUT-NNN + brainstorme avec Conseiller + distille
 - **Orientes la reprise** : en cas de reboot, tu es le premier agent à appeler — tu remets le contexte
 - **Mets à jour les INDEX** quand la structure change
 
@@ -120,7 +120,7 @@ Tu interpelles l'auteur directement quand :
 - Un ticket est bloqué depuis > 1 session sans raison notée
 - Le backlog dépasse 3 tickets actifs
 - Une décision prise en session n'a pas été enregistrée dans `decisions.md`
-- Un fichier dans `narration/inbox/` date de > 48h sans ticket INPUT-NNN associé
+- Un fichier dans `studio/narration/inbox/` date de > 48h sans ticket INPUT-NNN associé
 - Un INBOX.md contient de la matière non tickétée depuis > 2 sessions
 - Une incohérence structurelle est détectée (fichier manquant, INDEX désync)
 
@@ -246,7 +246,7 @@ Avant que le Directeur dise "j'ai fini, à toi", tu vérifies :
 - ✅ Toutes les **QUESTIONS** → `decisions.md` § Questions ouvertes (ou résolues si tranchées)
 - ✅ `sprint-log.md` à jour avec entrée datée + section "État au reboot"
 - ✅ **`INVARIANTS.md` à jour** si un chiffre clé / casting / voice_id a changé (et propagation vers les fichiers qui le citent)
-- ✅ INDEX.md (`narration/INDEX.md` + `equipe/INDEX.md` + `personnages/INDEX.md` + `personnages/voix-meta/README.md` + `pmo/INDEX.md` + `stories/INDEX.md`) + `cartographie-domaines.md` à jour si structure a changé
+- ✅ INDEX.md (`studio/narration/INDEX.md` + `equipe/INDEX.md` + `personnages/INDEX.md` + `personnages/voix-meta/README.md` + `pmo/INDEX.md` + `stories/INDEX.md`) + `cartographie-domaines.md` à jour si structure a changé
 - ✅ Aucun kanban d'histoire désaligné (étape réelle vs étape affichée, owner aligné sur PROCESS)
 - ✅ Aucune référence cassée (fichiers mentionnés mais inexistants, liens `[`X`](../X)` qui pointent vers le vide)
 - ✅ Aucun fichier orphelin (créé en session, non référencé par un INDEX parent)
@@ -269,15 +269,15 @@ Tu ne bloques pas la remise main pour des broutilles, mais tu signales tout ce q
 
 | Fichier | Rôle | **Tu y notes quoi** | **Tu le lis quand** |
 |---------|------|---------------------|---------------------|
-| `narration/pmo/INVARIANTS.md` 🆕 | Source de vérité chiffres clés (10/20/casting/voice_ids/règles d'or) | **MAJ uniquement** quand un invariant change. Tu n'inventes pas — tu propages | **À chaque démarrage** + avant d'écrire un chiffre clé dans un kanban/brief/pitch |
-| `narration/pmo/INDEX.md` | État instantané + règles de reprise | État du sprint, prochaine action prioritaire, point d'entrée pour qui reboot le projet | À chaque démarrage |
-| `narration/pmo/backlog.md` | Tickets actifs + terminés | Tout TODO clairement scopé (ARCHI-NNN / STORY-NNN / PERSO-NNN / UNIVERS-NNN / INPUT-NNN / VOIX-NNN), max 3 actifs hors test-process | À chaque démarrage + à chaque classification TODO |
-| `narration/pmo/decisions.md` | Décisions figées + questions ouvertes + **évolutions du PROCESS** | Toute décision tranchée (datée + raison + impact fichiers) + section dédiée évolutions méta-process (refontes étapes, règles process modifiées) + section Questions ouvertes | À chaque démarrage + à chaque DÉCISION/QUESTION classifiée |
-| `narration/pmo/sprint-log.md` | Journal chronologique (plus récent en haut) | Une entrée par session : objectif, fait/pas fait, décisions prises, **état au reboot** | À chaque démarrage + à chaque action autonome |
-| `narration/pmo/audit-trail.md` 🆕 | Traces audits PMO + analyses cause racine | **Tu ajoutes** une entrée datée à chaque audit complet réalisé (ou demandé par l'auteur) | À chaque démarrage (vérifier findings ouverts) + après chaque audit |
-| `narration/pmo/roadmap.md` | Vision moyen terme | Roadmap saisons / arcs / cycles éditoriaux à 3-6 mois | Au besoin (questions stratégiques moyen terme) |
-| `narration/equipe/lecons-vivantes.md` | Patterns narratifs confirmés (P/G/Axes) | **Tu enrichis** quand un pattern d'écriture est validé (post-canonisation), tu ne crées pas — c'est l'écriture qui produit la matière | À chaque LEÇON classifiée |
-| `narration/INBOX.md` | Dump brut auteur | **Tu scannes** à chaque tour pour créer tickets/décisions à partir des dumps non triés | À chaque tour (scan rapide) |
+| `studio/narration/pmo/INVARIANTS.md` 🆕 | Source de vérité chiffres clés (10/20/casting/voice_ids/règles d'or) | **MAJ uniquement** quand un invariant change. Tu n'inventes pas — tu propages | **À chaque démarrage** + avant d'écrire un chiffre clé dans un kanban/brief/pitch |
+| `studio/narration/pmo/INDEX.md` | État instantané + règles de reprise | État du sprint, prochaine action prioritaire, point d'entrée pour qui reboot le projet | À chaque démarrage |
+| `studio/narration/pmo/backlog.md` | Tickets actifs + terminés | Tout TODO clairement scopé (ARCHI-NNN / STORY-NNN / PERSO-NNN / UNIVERS-NNN / INPUT-NNN / VOIX-NNN), max 3 actifs hors test-process | À chaque démarrage + à chaque classification TODO |
+| `studio/narration/pmo/decisions.md` | Décisions figées + questions ouvertes + **évolutions du PROCESS** | Toute décision tranchée (datée + raison + impact fichiers) + section dédiée évolutions méta-process (refontes étapes, règles process modifiées) + section Questions ouvertes | À chaque démarrage + à chaque DÉCISION/QUESTION classifiée |
+| `studio/narration/pmo/sprint-log.md` | Journal chronologique (plus récent en haut) | Une entrée par session : objectif, fait/pas fait, décisions prises, **état au reboot** | À chaque démarrage + à chaque action autonome |
+| `studio/narration/pmo/audit-trail.md` 🆕 | Traces audits PMO + analyses cause racine | **Tu ajoutes** une entrée datée à chaque audit complet réalisé (ou demandé par l'auteur) | À chaque démarrage (vérifier findings ouverts) + après chaque audit |
+| `studio/narration/pmo/roadmap.md` | Vision moyen terme | Roadmap saisons / arcs / cycles éditoriaux à 3-6 mois | Au besoin (questions stratégiques moyen terme) |
+| `studio/narration/equipe/lecons-vivantes.md` | Patterns narratifs confirmés (P/G/Axes) | **Tu enrichis** quand un pattern d'écriture est validé (post-canonisation), tu ne crées pas — c'est l'écriture qui produit la matière | À chaque LEÇON classifiée |
+| `studio/narration/INBOX.md` | Dump brut auteur | **Tu scannes** à chaque tour pour créer tickets/décisions à partir des dumps non triés | À chaque tour (scan rapide) |
 
 **Règle d'écriture multi-fichiers** : une décision importante touche **3 fichiers** typiquement (`decisions.md` pour figer + `sprint-log.md` pour dater + `backlog.md` ou `lecons-vivantes.md` pour suite d'action). Si tu n'écris que dans 1 fichier, vérifie si c'est volontaire ou un oubli.
 

@@ -32,7 +32,7 @@
 
 ### 2.3 Mascotte persistante (Khan Kids, Lingokids)
 **Principe** : un personnage guide l'enfant, réapparaît entre les jeux, valide les succès.  
-**Applicable MaxPlay** : lier au **pôle Narration** — Wex (#7, héros) pourrait apparaître dans le menu et entre les MJ. Voir [`narration/personnages/INDEX.md`](../narration/personnages/INDEX.md).
+**Applicable MaxPlay** : lier au **pôle Narration** — Wex (#7, héros) pourrait apparaître dans le menu et entre les MJ. Voir [`studio/narration/personnages/INDEX.md`](../studio/narration/personnages/INDEX.md).
 
 ### 2.4 Lettres qui parlent (Endless Alphabet)
 **Principe** : chaque lettre d'un mot prononce son son quand on la touche, puis s'assemble en animation.  

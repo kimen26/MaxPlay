@@ -54,7 +54,7 @@
 > - **`ask_kimi`** (gratuit, endpoint `kimi.com/coding/v1`, env `MOONSHOT_API_KEY`) ? writers #7 kimi-reco + #10 kimi-reco-guide + tout usage g�n�ral. Mod�le `kimi-for-coding`. Temp 0.6 reco Moonshot Instant.
 > - **`ask_kimi_payant`** (officiel, endpoint `api.moonshot.ai/v1`, env `MOONSHOT_PAYANT_API_KEY`) ? STRICTEMENT writers #8 kimi-k26-instant (thinking disabled) + #9 kimi-k26-thinking (thinking enabled). Mod�le `kimi-k2.6`. Temp et top_p fixes par K2.6 (params ignor�s par l'API � seul `thinking` est contr�lable, doc Moonshot).
 > - **Diff�renciation K2.6** : sur K2.6, le SEUL levier est `thinking: {"type": "enabled"\|"disabled"}`. Temp et top_p sont fixes c�t� mod�le (doc officielle 2026-05-13 https://platform.kimi.ai/docs/api/models-overview#parameter-comparison).
-> - D�tail : [`infra/mcp/MODELS.md`](../../infra/mcp/MODELS.md) � *Cohabitation stricte*.
+> - D�tail : [`infra/mcp/MODELS.md`](../../../infra/mcp/MODELS.md) � *Cohabitation stricte*.
 
 **Total : 13 writers LIBRES + 1 writer GUID� = 14 versions.**
 

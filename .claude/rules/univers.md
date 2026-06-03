@@ -1,14 +1,14 @@
 ---
 paths:
-  - "narration/univers/**"
-  - "narration/cross-culture/**"
-  - "narration/saisons/**"
+  - "studio/narration/univers/**"
+  - "studio/narration/cross-culture/**"
+  - "studio/narration/saisons/**"
 ---
 
 # Univers + Cross-culture + Saisons — règles auto-chargées
 
 > Chargé automatiquement dès que Claude touche un fichier univers, cross-culture ou saison.
-> Source de vérité : [`narration/univers/INDEX.md`](../../narration/univers/INDEX.md) + [`narration/cross-culture/INDEX.md`](../../narration/cross-culture/INDEX.md) + [`narration/cross-culture/doctrine.md`](../../narration/cross-culture/doctrine.md).
+> Source de vérité : [`studio/narration/univers/INDEX.md`](../../studio/narration/univers/INDEX.md) + [`studio/narration/cross-culture/INDEX.md`](../../studio/narration/cross-culture/INDEX.md) + [`studio/narration/cross-culture/doctrine.md`](../../studio/narration/cross-culture/doctrine.md).
 
 ## Règle d'or : UNIVERS IMPLICITE
 
@@ -28,7 +28,7 @@ Source : `feedback_narration_implicite.md`.
 - **Tranche de vie** — moment, objet, sensation au centre
 - **Cycle** — retour, rituel, saison qui revient
 
-Détail : [`narration/equipe/patte-narrative-maxplay.md`](../../narration/equipe/patte-narrative-maxplay.md).
+Détail : [`studio/narration/equipe/patte-narrative-maxplay.md`](../../studio/narration/equipe/patte-narrative-maxplay.md).
 
 ## Cosmologie (matière vivante uniquement)
 
@@ -42,20 +42,20 @@ Détail : [`narration/equipe/patte-narrative-maxplay.md`](../../narration/equipe
 | Vibration | Frisson, harmonie, geste juste vs faux |
 | 9 sensibilités | Façons de réagir des enfants (sans les nommer) |
 
-Tout cela vit dans [`univers/fondements/`](../../narration/univers/fondements/) — référence auteur, JAMAIS texte canon.
+Tout cela vit dans [`univers/fondements/`](../../studio/narration/univers/fondements/) — référence auteur, JAMAIS texte canon.
 
 ## Direction narrative actuelle (2026-05-12)
 
 - **Monde sobre, merveilleux discret** vu à travers l'enfant né dedans
 - **Post-Éveil, Printemps de l'Éveil** — cadre temporel
-- **Nom univers** non tranché — voir [`univers/meta/nom-candidats.md`](../../narration/univers/meta/nom-candidats.md)
+- **Nom univers** non tranché — voir [`univers/meta/nom-candidats.md`](../../studio/narration/univers/meta/nom-candidats.md)
 - **Arc 1** (Objet & Décor) en cours — priorité
 - **Arc 2** (Parole) en pause
 - **Direction Nono validée**
 
 ## Doctrine cross-culture
 
-Source complète : [`cross-culture/doctrine.md`](../../narration/cross-culture/doctrine.md).
+Source complète : [`cross-culture/doctrine.md`](../../studio/narration/cross-culture/doctrine.md).
 
 ### Bulles
 Chaque culture vit sa version localement complète. Une histoire FR n'a pas besoin de mentionner les autres cultures.
@@ -69,12 +69,12 @@ Quand 2 cultures se rencontrent dans une histoire → moment de douceur, jamais 
 - ❌ Onomatopée FR plaquée sur scène non-FR
 
 ### Variantes par culture
-- **Prénoms** : [`cross-culture/castings-nationaux/`](../../narration/cross-culture/castings-nationaux/INDEX.md)
-- **Onomatopées** (37 validées) : [`cross-culture/onomatopees/`](../../narration/cross-culture/onomatopees/INDEX.md)
-- **Faune-flore** : [`cross-culture/faune-flore/`](../../narration/cross-culture/faune-flore/INDEX.md) (à peupler)
-- **Lieux locaux** : [`cross-culture/lieux-locaux/`](../../narration/cross-culture/lieux-locaux/INDEX.md) (à peupler)
-- **Coutumes-jeux-aliments** : [`cross-culture/coutumes-jeux-aliments/`](../../narration/cross-culture/coutumes-jeux-aliments/INDEX.md) (à peupler)
-- **Saisons-climat** : [`cross-culture/saisons-climat/`](../../narration/cross-culture/saisons-climat/INDEX.md) (à peupler)
+- **Prénoms** : [`cross-culture/castings-nationaux/`](../../studio/narration/cross-culture/castings-nationaux/INDEX.md)
+- **Onomatopées** (37 validées) : [`cross-culture/onomatopees/`](../../studio/narration/cross-culture/onomatopees/INDEX.md)
+- **Faune-flore** : [`cross-culture/faune-flore/`](../../studio/narration/cross-culture/faune-flore/INDEX.md) (à peupler)
+- **Lieux locaux** : [`cross-culture/lieux-locaux/`](../../studio/narration/cross-culture/lieux-locaux/INDEX.md) (à peupler)
+- **Coutumes-jeux-aliments** : [`cross-culture/coutumes-jeux-aliments/`](../../studio/narration/cross-culture/coutumes-jeux-aliments/INDEX.md) (à peupler)
+- **Saisons-climat** : [`cross-culture/saisons-climat/`](../../studio/narration/cross-culture/saisons-climat/INDEX.md) (à peupler)
 
 ## Plan éditorial (saisons)
 
@@ -86,7 +86,7 @@ Saison 1 — 4 arcs
 └── Arc 4 (Pouvoirs Wex)      ← fil rouge fin de saison
 ```
 
-Détail : [`saisons/INDEX.md`](../../narration/saisons/INDEX.md).
+Détail : [`saisons/INDEX.md`](../../studio/narration/saisons/INDEX.md).
 
 ## Règles INDEX (forme)
 

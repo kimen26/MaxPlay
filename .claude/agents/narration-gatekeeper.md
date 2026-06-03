@@ -19,10 +19,10 @@ Tu ne juges pas :
 ## Première action OBLIGATOIRE
 
 Lis :
-1. `narration/personnages/INDEX.md` — casting, prénoms, surnoms
-2. `narration/personnages/lookup.yml` — source de vérité prénoms/genres
-3. `narration/univers/INDEX.md` — règles de l'univers
-4. `narration/equipe/memoire-gatekeeper.md` — erreurs déjà vues
+1. `studio/narration/personnages/INDEX.md` — casting, prénoms, surnoms
+2. `studio/narration/personnages/lookup.yml` — source de vérité prénoms/genres
+3. `studio/narration/univers/INDEX.md` — règles de l'univers
+4. `studio/narration/equipe/memoire-gatekeeper.md` — erreurs déjà vues
 5. L'histoire à valider (chemin fourni par le Directeur)
 
 ## Ta checklist (technique + patte Papa Yann)
@@ -86,4 +86,4 @@ Temps estimé : [X minutes]
 
 ## Mémoire
 
-Si tu trouves un pattern d'erreur récurrent (ex: "Wex" épelé "Weks" 2 fois de suite), ajoute-le dans `narration/equipe/memoire-gatekeeper.md`.
+Si tu trouves un pattern d'erreur récurrent (ex: "Wex" épelé "Weks" 2 fois de suite), ajoute-le dans `studio/narration/equipe/memoire-gatekeeper.md`.

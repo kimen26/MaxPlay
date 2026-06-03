@@ -2,7 +2,7 @@
 
 > Source de vérité tickets actifs pôle JEU. Survit aux reboots de session.
 > **Déplacé 2026-05-13** depuis `game/tasks/BACKLOG.md` vers `game/pmo/backlog.md` (harmonisation Game ↔ Narration).
-> Équivalent côté Narration : [`../../narration/pmo/backlog.md`](../../narration/pmo/backlog.md).
+> Équivalent côté Narration : [`../../studio/narration/pmo/backlog.md`](../../studio/narration/pmo/backlog.md).
 >
 > IDs stables : `EP-001` épics, `T-001` tâches, `D-001` décisions, `L-001` leçons.
 > Statuts : `[ ]` à faire · `[~]` en cours · `[x]` terminé · `[!]` bloqué · `[?]` à décider

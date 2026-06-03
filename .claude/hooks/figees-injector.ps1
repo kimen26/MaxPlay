@@ -22,7 +22,7 @@ if (-not $path) { exit 0 }
 $norm = $path -replace '\\', '/'
 
 # Cible : .../game/web/mj-<slug>.html  (mini-jeux → game/docs/jeux/figees/<slug>.md)
-# OU     : pôle DINO (code game/web/dino + dossier dino/) → dino/figees/encyclopedie.md
+# OU     : pôle DINO (code game/web/dino + dossier studio/dino/) → studio/dino/figees/encyclopedie.md
 $root = 'c:\ProjetsPerso\Claude_Projects\MaxPlay'
 $slug = ''
 $figPath = ''
@@ -33,9 +33,9 @@ if ($norm -match 'game/web/(mj-[\w-]+)\.html$') {
 elseif ($norm -match 'game/web/dev-dinos\.html$' -or
         $norm -match 'game/web/js/dinos-data\.js$' -or
         $norm -match 'game/web/audio/dinos/(recit|menu)-[\w-]+\.mp3$' -or
-        $norm -match '/dino/') {
+        $norm -match '/studio/dino/') {
     $slug = 'encyclopedie'   # pôle DINO
-    $figPath = Join-Path $root 'dino\figees\encyclopedie.md'
+    $figPath = Join-Path $root 'studio\dino\figees\encyclopedie.md'
 }
 else { exit 0 }
 

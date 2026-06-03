@@ -42,12 +42,12 @@ type: reference
 
 ### Équipe Dino (pôle transverse — créé 2026-06-03)
 
-> Encyclopédie dino + voyage dans le temps. Code déployé dans `game/web/` (dev-dinos, dinos-data, audio/dinos, img/dinos), gouvernance dans `dino/`. Lié par [`.claude/rules/dino.md`](../.claude/rules/dino.md). Audits : `/dino-pmo-audit` + `/dino-archiviste-audit`.
+> Encyclopédie dino + voyage dans le temps. Code déployé dans `game/web/` (dev-dinos, dinos-data, audio/dinos, img/dinos), gouvernance dans `studio/dino/`. Lié par [`.claude/rules/dino.md`](../.claude/rules/dino.md). Audits : `/dino-pmo-audit` + `/dino-archiviste-audit`.
 
 | Agent | Modèle | Utiliser quand |
 |-------|--------|----------------|
-| `dino-pmo` | Haiku | **PMO pôle DINO** (FOND) — persistance `dino/pmo/` (INVARIANTS, decisions, sprint-log, backlog, audit-trail) + figée. À invoquer sur signal dino. |
-| `dino-archiviste` | Haiku | **Archiviste pôle DINO** (FORME) — structure `dino/`, refs, orphelins audio/png. Surveille aussi le code dino dans `game/web/`. |
+| `dino-pmo` | Haiku | **PMO pôle DINO** (FOND) — persistance `studio/dino/pmo/` (INVARIANTS, decisions, sprint-log, backlog, audit-trail) + figée. À invoquer sur signal dino. |
+| `dino-archiviste` | Haiku | **Archiviste pôle DINO** (FORME) — structure `studio/dino/`, refs, orphelins audio/png. Surveille aussi le code dino dans `game/web/`. |
 | `dino-conseiller` | Sonnet | **Binôme créatif DINO** — écriture récits/fiches, péda 4 ans, fact-check Grokipedia, taxonomie, écriture audio narrée. |
 
 > **Anciens agents supprimés :** `narration-writer-a`, `narration-writer-b`, `narration-writer-c`, `narration-writer-claude-ancre`, `narration-keeper`, `narration-showrunner`

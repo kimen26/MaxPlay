@@ -7,11 +7,11 @@
 
 | Quoi | Fichier |
 |------|---------|
-| UI encyclopédie (3 onglets) | [`../game/web/dev-dinos.html`](../game/web/dev-dinos.html) |
-| Données 50 dinos + 9 familles + échelle | [`../game/web/js/dinos-data.js`](../game/web/js/dinos-data.js) |
-| Audio (8 récits + 4 menus + 2 spéciaux + 22 dinos) | [`../game/web/audio/dinos/`](../game/web/audio/dinos/) |
-| Images dino | [`../game/web/img/dinos/`](../game/web/img/dinos/) |
-| Galeries images (local + grok) | [`../game/web/js/dinos-images-local.js`](../game/web/js/) · `dinos-images-grok.js` |
+| UI encyclopédie (3 onglets) | [`../game/web/dev-dinos.html`](../../game/web/dev-dinos.html) |
+| Données 50 dinos + 9 familles + échelle | [`../game/web/js/dinos-data.js`](../../game/web/js/dinos-data.js) |
+| Audio (8 récits + 4 menus + 2 spéciaux + 22 dinos) | [`../game/web/audio/dinos/`](../../game/web/audio/dinos/) |
+| Images dino | [`../game/web/img/dinos/`](../../game/web/img/dinos/) |
+| Galeries images (local + grok) | [`../game/web/js/dinos-images-local.js`](../../game/web/js/) · `dinos-images-grok.js` |
 
 ## 🗂️ Gouvernance (pmo/)
 

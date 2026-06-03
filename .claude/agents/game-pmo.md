@@ -57,7 +57,7 @@ Tu travailles **main dans la main** avec `game-archiviste` :
 
 ### Process INBOX (étapes 9-10)
 Pour chaque fichier/section non traité :
-0. **Tri pôle** : si l'item concerne le **DINO** (encyclopédie, voyage, dev-dinos, récit/famille dino, Tritri) → **ne le traite pas toi-même**. Crée le ticket dans `dino/pmo/backlog.md` et passe la main à `dino-pmo` (le dino a sa propre gouvernance depuis 2026-06-03 ; il n'a pas d'INBOX propre, c'est toi qui routes).
+0. **Tri pôle** : si l'item concerne le **DINO** (encyclopédie, voyage, dev-dinos, récit/famille dino, Tritri) → **ne le traite pas toi-même**. Crée le ticket dans `studio/dino/pmo/backlog.md` et passe la main à `dino-pmo` (le dino a sa propre gouvernance depuis 2026-06-03 ; il n'a pas d'INBOX propre, c'est toi qui routes).
 1. Crée ticket `EP-NNN` dans `backlog.md` avec résumé de la matière
 2. Appelle `game-conseiller` pour brainstormer → "Où distiller cette matière ?"
 3. Distille vers le(s) fichier(s) cibles (rules.md, decisions.md, stack.md, etc.)

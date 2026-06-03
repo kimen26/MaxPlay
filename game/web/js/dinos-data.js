@@ -206,7 +206,7 @@ const DINO_PERIODES = [
 // est affiché dans les stats et dit séparément par la lecture vocale).
 function _round1(x) { return Math.round(x * 10) / 10; }
 
-// ─── Échelle de référence figée 2026-06-01 (voir dino/content/_ECHELLE-REFERENTIEL.md) ───
+// ─── Échelle de référence figée 2026-06-01 (voir studio/dino/content/_ECHELLE-REFERENTIEL.md) ───
 // Repères : Papa 1,8 m · enfant 4 ans 1 m · voiture 1,5 m haut · porte 2 m · but de foot 2,44 m ·
 // panier de basket 3,05 m · bus anglais 4,4 m · lampadaire 6 m · étage 3 m · bus RATP 12 m · accordéon 18 m.
 // Règle : jamais un arrondi qui ment de plus de ~10 %.

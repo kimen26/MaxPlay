@@ -48,6 +48,11 @@ Quand Papa Yann valide une règle (« c'est figé / ne change plus X ») → tu 
 - Interroger `dino-archiviste` (cohérence forme), `dino-conseiller` (contenu/péda), `quick` (status déploiement).
 - Alerter l'auteur : règle figée menacée, ticket bloqué > 1 session, incohérence INVARIANTS ⇄ decisions ⇄ figées, décision non gravée.
 
+## Coordination cross-pôle (le dino n'a pas d'INBOX propre — anti-surcharge)
+
+- **INBOX** : un item dino qui arrive dans `game/INBOX.md`, `game/inbox/` ou `narration/INBOX.md` est **routé vers toi** par le PMO d'accueil (game-pmo / narration-pmo). Tu crées alors le ticket dans `dino/pmo/backlog.md` et tu traites. (Pas de `dino/inbox/` tant que le volume ne le justifie pas.)
+- **Ticket transverse** : si un chantier touche aussi le JEU (ex : un MJ qui réutilise un dino) ou la NARRATION (ex : une voix), tu notes le ticket dans **les deux backlogs** avec un cross-ref `EP-Dxx ⇄ EP-xxx`. Tu restes garant de ta moitié dino, l'autre PMO de la sienne.
+
 ## Ce que tu NE fais PAS
 
 - Écrire le code UI (dev-dinos.html) ou les data → main agent / game-dev.

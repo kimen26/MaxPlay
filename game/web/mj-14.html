@@ -176,6 +176,7 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   <div id="hdr">
     <a href="index.html">←</a>
     <span id="htitle">🔲 La grille</span>
+    <span id="levelbar" style="font-weight:900;color:#ffe066;background:rgba(255,255,255,0.14);border-radius:10px;padding:3px 12px;font-size:0.85rem;">Niveau 1</span>
     <div id="score-badge">0 / 0</div>
   </div>
 
@@ -218,6 +219,8 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 
 <script src="js/bus-svg.js"></script>
 <script src="js/data.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/stars.js"></script>
 <script src="js/victory-sounds.js"></script>
 <script src="js/tts.js"></script>
 <script src="js/tracker.js"></script>
@@ -245,25 +248,20 @@ let levelSchedule = []; // tirage aléatoire en début de partie
 // C : LIGNE + COLONNE (ligne = axe1, colonne = axe2)
 // D : CARRÉ LATIN — chaque ligne ET chaque colonne contient les 3 motifs une
 //     seule fois (pattern Raven classique, pas de diagonale ambiguë).
+// Paliers (doc _PALIERS) : types de pattern autorisés. Niveau = Stars.get+1.
+const STAR_LV = Math.max(0, Math.min(4, (window.Stars ? Stars.get('mj-14') : 0)));
+const ALLOWED = [['A'], ['A','B'], ['A','B','C'], ['A','B','C','D'], ['C','D']][STAR_LV];
 function buildLevelSchedule(n) {
-  // Répartition : 2 A, 2 B, 3 C, 1 D (pour n=8). On mélange MAIS on garantit
-  // qu'on démarre par un niveau facile (A ou B) pour une entrée douce.
   const pool = [];
-  const quota = { A: 2, B: 2, C: 3, D: 1 };
-  Object.entries(quota).forEach(([lvl, count]) => {
-    for (let i = 0; i < count; i++) pool.push(lvl);
-  });
-  while (pool.length < n) pool.push('C');
-  // Shuffle Fisher-Yates
+  for (let i = 0; i < n; i++) pool.push(ALLOWED[i % ALLOWED.length]);
+  // Mélange Fisher-Yates
   for (let i = pool.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [pool[i], pool[j]] = [pool[j], pool[i]];
   }
-  // Round 1 doit être A ou B : si ce n'est pas le cas on échange avec le premier A/B trouvé.
-  if (pool[0] !== 'A' && pool[0] !== 'B') {
-    const swapIdx = pool.findIndex((l, i) => i > 0 && (l === 'A' || l === 'B'));
-    if (swapIdx > 0) [pool[0], pool[swapIdx]] = [pool[swapIdx], pool[0]];
-  }
+  // Démarrer par le motif le plus simple disponible (entrée douce)
+  const easyFirst = ALLOWED.includes('A') ? 'A' : ALLOWED.includes('B') ? 'B' : ALLOWED[0];
+  if (pool[0] !== easyFirst) { const k = pool.indexOf(easyFirst); if (k > 0) [pool[0], pool[k]] = [pool[k], pool[0]]; }
   return pool.slice(0, n);
 }
 function getLevel(r) {
@@ -650,6 +648,7 @@ function renderPuzzle(puzzle) {
     }
 
     btn.dataset.key = key;
+    if (key === answerKey) btn.dataset.correct = '1';
     btn.innerHTML = content + `<span class="choice-label">${label}</span>`;
     btn.addEventListener('click', () => onChoice(key, btn, puzzle));
     choicesEl.appendChild(btn);
@@ -823,6 +822,7 @@ function startGame() {
   score = 0;
   round = 1;
   answered = false;
+  const lb = document.getElementById('levelbar'); if (lb) lb.textContent = 'Niveau ' + (STAR_LV + 1);
   levelSchedule = buildLevelSchedule(ROUNDS_PER_GAME);
   renderDots();
   document.getElementById('end-screen').classList.remove('visible');

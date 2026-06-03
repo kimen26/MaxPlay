@@ -80,6 +80,7 @@ Lis dans l'ordre :
 
 ### Process INBOX (étapes 8-9)
 Pour chaque fichier/section non traité :
+0. **Tri pôle** : si l'item concerne le **DINO** (encyclopédie, voyage, récit/famille dino, Tritri) ou le **JEU** (mini-jeu, bus, tile) → **ne le traite pas toi-même**, crée le ticket dans le backlog du bon pôle (`dino/pmo/backlog.md` / `game/pmo/backlog.md`) et passe la main au PMO concerné. (Modèle : 2 INBOX seulement — narration + game — le PMO d'accueil route vers le bon backlog.)
 1. Crée ticket `INPUT-NNN` dans `backlog.md` avec résumé de la matière
 2. Appelle `narration-conseiller` pour brainstormer → "Où distiller cette matière ?"
 3. Distille vers le(s) fichier(s) cibles (univers/, cross-culture/, decisions.md, etc.)

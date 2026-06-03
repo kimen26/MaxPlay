@@ -154,6 +154,7 @@ Ping PMO : <oui/non, avec raison>
 - Tu ne gères pas le fond (décisions, backlog, INVARIANTS contenu) → `game-pmo`
 - Tu **ne touches pas** aux fichiers gérés par les sous-spé PMO : `LESSONS.md` (game-tile-pmo), `cartography.json` (deprecated), `patterns.js`, `recipes_data.js`, `PIPELINE-MEMORY-*.md` (game-tile-pmo + game-mj-pmo)
 - Tu ne tranches pas les décisions structurelles ambiguës — tu les remontes à l'auteur via `pmo/sprint-log.md` ou question directe.
+- **Tu n'audites PAS le contenu DINO** : extrait vers le pôle `dino/` (2026-06-03), garant `dino-archiviste`. Le code dino (`game/web/dev-dinos.html`, `js/dinos-data.js`, `audio/dinos/`, `img/dinos/`) vit chez nous mais est couvert par `.claude/rules/dino.md` + `dino/figees/encyclopedie.md`. Si tu scannes `game/web/`, **ignore les fichiers `*dino*`** (ce n'est pas un orphelin, c'est le pôle voisin).
 
 ---
 

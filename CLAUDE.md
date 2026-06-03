@@ -13,6 +13,8 @@
 
 > ⚠️ **DINO est transverse** : son code est déployé depuis `game/web/` (dev-dinos.html, dinos-data.js, audio/dinos, img/dinos) mais sa gouvernance vit dans `dino/`. La rule [`.claude/rules/dino.md`](.claude/rules/dino.md) charge les règles dino où que vive le fichier.
 
+> 🏛️ **Modèle : 1 plateforme · N domaines autonomes.** MaxPlay = une **app de restitution** (PWA déployée depuis `game/web/` → GitHub Pages) qui héberge des domaines **indépendants à GED/PMO propres** : mini-jeux (`game/`) · dino (`dino/`, déployé dans game/web/) · narration (`narration/`, descendra dans game/web/ quand prête) · tile/Max Adventure (futur). `game/` porte 2 casquettes — **plateforme** (menu, stars, unlock, CI) **+** domaine **mini-jeux** — OK tant qu'ils dominent ; sinon extraire une couche plateforme. Tenant déployé ailleurs = pôle d'autoring + **rule path-scoped** (pattern dino, validé). **INBOX** : 2 boîtes (game, narration), le PMO d'accueil **trie par domaine → bon backlog**. Pas de prolifération.
+
 **Étape 2 — Annoncer avant d'agir :**
 *"Mode [JEU/NARRATION] — je charge [fichier] puis j'agis."*
 

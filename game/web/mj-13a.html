@@ -75,6 +75,7 @@ html, body {
 <div id="hdr">
   <button onclick="location.href='index.html'">← Retour</button>
   <span style="font-weight:900;color:#fff;">🚏 Le premier bus</span>
+  <span id="levelbar" style="margin-left:auto;font-weight:900;color:#ffe066;background:#2a2a4a;border-radius:10px;padding:3px 12px;font-size:0.85rem;">Niveau 1</span>
   <div id="score">0 / 0</div>
 </div>
 
@@ -90,6 +91,8 @@ html, body {
 </div>
 
 <script src="js/bus-svg.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/stars.js"></script>
 <script src="js/sounds.js"></script>
 <script src="js/tts.js"></script>
 <script src="js/victory-sounds.js"></script>
@@ -223,6 +226,14 @@ let tickId=null,busId=null;
 let qcm=null;
 
 function shuffle(a){return [...a].sort(()=>Math.random()-.5);}
+
+/* ══ PALIERS (doc _PALIERS) — nb de bus + écart horaire. Niveau = Stars.get+1 ══ */
+const LV_N=[2,3,4,5,6];
+const level=Math.max(0,Math.min(LV_N.length-1,(window.Stars?Stars.get('mj-13a'):0)));
+const MIN_GAP=level>=3?1:3; // N4-N5 : minutes proches ; sinon écart net
+(function(){const lb=document.getElementById('levelbar');if(lb)lb.textContent='Niveau '+(level+1);})();
+function buildNSchedule(){const hard=Array(4).fill(LV_N[level]);const easy=[];for(let i=0;i<4;i++)easy.push(LV_N[level<=0?0:Math.floor(Math.random()*level)]);return shuffle([...hard,...easy]);}
+let nSchedule=buildNSchedule();
 function updScore(){document.getElementById('score').textContent=`${score} / ${round}`;}
 
 /* ══ PANNEAU ══ */
@@ -252,7 +263,7 @@ function initRound(){
   answered=false;
   qcm=QcmRetry.create();
   stopAll();
-  const n=3+Math.floor(Math.random()*4); // 3 à 6 lignes
+  const n=nSchedule[round]||LV_N[level]; // nb de bus selon le palier (manche mixte)
   lines=shuffle(ALL_LINES).slice(0,n);
   // timers : valeurs entières aléatoires entre 2 et 59, toutes différentes,
   // espacées d'au moins 3 minutes pour éviter les bus "quasi ex aequo".
@@ -260,7 +271,7 @@ function initRound(){
   let attempts=0;
   while(pool.length<n && attempts<200){
     const v=2+Math.floor(Math.random()*58); // 2..59
-    if(pool.every(x=>Math.abs(x-v)>=3))pool.push(v);
+    if(pool.every(x=>Math.abs(x-v)>=MIN_GAP))pool.push(v);
     attempts++;
   }
   // Fallback : si pas assez de valeurs espacées, on complète avec du random simple
@@ -423,7 +434,7 @@ function showVictory(){
     </div>`;
 }
 function restart(){
-  score=0;round=0;
+  score=0;round=0;nSchedule=buildNSchedule();
   stopEndSound();
   document.getElementById('road').style.display='';
   document.getElementById('q-bar').style.cssText='';

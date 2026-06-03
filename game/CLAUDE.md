@@ -102,6 +102,8 @@ CI : [`../.github/workflows/deploy.yml`](../.github/workflows/deploy.yml) (assem
 
 **23 mini-jeux HTML actifs** (MJ-02/03/07/10 retirés du menu). Bugs critiques : voir [`memory/state.md`](memory/state.md).
 
+> ⚠️ **Locataire DINO dans `web/`** : `dev-dinos.html`, `js/dinos-data.js`, `audio/dinos/`, `img/dinos/`, `js/dinos-images-*.js` sont **déployés depuis ici mais appartiennent au pôle DINO** (`../dino/`, depuis 2026-06-03). Pour y toucher → règles auto-chargées via [`../.claude/rules/dino.md`](../.claude/rules/dino.md) + figée [`../dino/figees/encyclopedie.md`](../dino/figees/encyclopedie.md). Ne PAS appliquer les règles MJ (bus SVG, figées mj-XX) au dino. `game-pmo`/`game-archiviste` ne gèrent pas le dino → `dino-pmo`/`dino-archiviste`.
+
 ---
 
 ## Commandes audit

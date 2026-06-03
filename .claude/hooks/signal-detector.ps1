@@ -41,12 +41,12 @@ $structMatch = $lowerPrompt -match $structureKeywords
 
 $pathGame = $lowerPrompt -match 'game/'
 $pathNarration = $lowerPrompt -match 'narration/'
-$pathDino = $lowerPrompt -match 'dino/|dev-dinos|dinos-data|audio/dinos'
+$pathDino = $lowerPrompt -match 'studio/dino/|dev-dinos|dinos-data|audio/dinos'
 
 $reminders = @()
 
 if ($dinoMatch -or $pathDino) {
-    $reminders += "[SIGNAL DINO detecte] -> invoquer dino-pmo (FOND) automatiquement. Si modif structure : aussi dino-archiviste (FORME). Contenu/peda/ecriture : dino-conseiller. Verifier dino/figees/encyclopedie.md (Tritri, audio, UI)."
+    $reminders += "[SIGNAL DINO detecte] -> invoquer dino-pmo (FOND) automatiquement. Si modif structure : aussi dino-archiviste (FORME). Contenu/peda/ecriture : dino-conseiller. Verifier studio/dino/figees/encyclopedie.md (Tritri, audio, UI)."
 }
 
 if (($gameMatch -or $pathGame) -and -not ($dinoMatch -or $pathDino)) {

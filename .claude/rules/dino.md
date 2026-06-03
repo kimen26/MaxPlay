@@ -1,6 +1,6 @@
 ---
 paths:
-  - "dino/**"
+  - "studio/dino/**"
   - "game/web/dev-dinos.html"
   - "game/web/js/dinos-data.js"
   - "game/web/js/dinos-images-local.js"
@@ -11,13 +11,13 @@ paths:
 
 # Pôle DINO — règles auto-chargées (path-scoped)
 
-> Chargé dès que Claude touche un fichier dino, **où qu'il vive** : le dossier `dino/` (gouvernance + contenu) OU le code déployé sous `game/web/` (dev-dinos, data, audio, img).
-> C'est le **pont** entre le code (dans game/) et le pôle (dans dino/), puisqu'un nested CLAUDE.md ne se charge que selon l'emplacement du fichier.
+> Chargé dès que Claude touche un fichier dino, **où qu'il vive** : le dossier `studio/dino/` (gouvernance + contenu) OU le code déployé sous `game/web/` (dev-dinos, data, audio, img).
+> C'est le **pont** entre le code (dans game/) et le pôle (dans studio/dino/), puisqu'un nested CLAUDE.md ne se charge que selon l'emplacement du fichier.
 
 ## Réflexe à l'ouverture
 
-1. Lire [`dino/CLAUDE.md`](../../dino/CLAUDE.md) (règles pôle) + [`dino/figees/encyclopedie.md`](../../dino/figees/encyclopedie.md) (🔒 décisions verrouillées — le hook `figees-injector` les réinjecte aussi avant un Edit).
-2. Ne jamais répondre de mémoire sur un chiffre/casting → invoquer `dino-pmo` en lecture de [`dino/pmo/INVARIANTS.md`](../../dino/pmo/INVARIANTS.md).
+1. Lire [`studio/dino/CLAUDE.md`](../../studio/dino/CLAUDE.md) (règles pôle) + [`studio/dino/figees/encyclopedie.md`](../../studio/dino/figees/encyclopedie.md) (🔒 décisions verrouillées — le hook `figees-injector` les réinjecte aussi avant un Edit).
+2. Ne jamais répondre de mémoire sur un chiffre/casting → invoquer `dino-pmo` en lecture de [`studio/dino/pmo/INVARIANTS.md`](../../studio/dino/pmo/INVARIANTS.md).
 
 ## Agents proactifs (auto sur signal DINO)
 
@@ -36,8 +36,8 @@ paths:
 
 ## Toujours
 
-Papa Yann teste via GitHub Pages → **commit + push** après toute modif dino. Après correction → leçon `dino/pmo/backlog.md` (+ figée si règle). Screenshot/test avant de soumettre une modif UI.
+Papa Yann teste via GitHub Pages → **commit + push** après toute modif dino. Après correction → leçon `studio/dino/pmo/backlog.md` (+ figée si règle). Screenshot/test avant de soumettre une modif UI.
 
 ---
 
-_Créé 2026-06-03 avec le pôle DINO. Lie le code (game/web/) au pôle (dino/) via path-scoping, mécanisme Anthropic pour règles ciblées indépendantes de l'emplacement._
+_Créé 2026-06-03 avec le pôle DINO. Lie le code (game/web/) au pôle (studio/dino/) via path-scoping, mécanisme Anthropic pour règles ciblées indépendantes de l'emplacement._

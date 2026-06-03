@@ -28,19 +28,28 @@ $gameKeywords = 'mini-jeu|mini jeu|mj-\d|bus-svg|victory-sounds|\btile\b|recipe|
 # === Signaux NARRATION ===
 $narrationKeywords = '\bpersonnage|\bhistoire\b|\bvoix\b|elevenlabs|\bbrief\b|kanban|équipe narrat|\bunivers\b|\bsaison\b|\barc\b|ennéagramme|cross-culture|\bpitch\b|rewrite|gatekeeper|\blecteur\b|\bcasting\b|\binbox\b|\bwex\b|\bmelki\b|\bmimi\b|\bpolo\b|\bmadie\b|\blulu\b|pierrot|\braph\b|\bjuju\b|\bnono\b|kishōtenketsu|kishotenketsu'
 
+# === Signaux DINO ===
+$dinoKeywords = '\bdino\b|\bdinos\b|dinosaure|encyclopédie|dev-dinos|\btritri\b|ptérosaure|cératopsien|théropode|sauropode|récit.*époque|époque.*dino|le voyage dans le temps|tricératops|tyrannosaure|\bt-rex\b|mosasaure|paléonto'
+
 # === Signaux structure (transverses) ===
 $structureKeywords = 'créer.*(fichier|dossier|nouveau)|nouveau dossier|nouveau fichier|supprimer.*(fichier|dossier)|gabarit|refs cassées|orphelin|index\.md|refonte|déplacer|renommer'
 
 $gameMatch = $lowerPrompt -match $gameKeywords
 $narrationMatch = $lowerPrompt -match $narrationKeywords
+$dinoMatch = $lowerPrompt -match $dinoKeywords
 $structMatch = $lowerPrompt -match $structureKeywords
 
 $pathGame = $lowerPrompt -match 'game/'
 $pathNarration = $lowerPrompt -match 'narration/'
+$pathDino = $lowerPrompt -match 'dino/|dev-dinos|dinos-data|audio/dinos'
 
 $reminders = @()
 
-if ($gameMatch -or $pathGame) {
+if ($dinoMatch -or $pathDino) {
+    $reminders += "[SIGNAL DINO detecte] -> invoquer dino-pmo (FOND) automatiquement. Si modif structure : aussi dino-archiviste (FORME). Contenu/peda/ecriture : dino-conseiller. Verifier dino/figees/encyclopedie.md (Tritri, audio, UI)."
+}
+
+if (($gameMatch -or $pathGame) -and -not ($dinoMatch -or $pathDino)) {
     $reminders += "[SIGNAL JEU detecte] -> invoquer game-pmo (FOND) automatiquement. Si modif structure : aussi game-archiviste (FORME)."
 }
 
@@ -48,7 +57,7 @@ if ($narrationMatch -or $pathNarration) {
     $reminders += "[SIGNAL NARRATION detecte] -> invoquer narration-pmo (FOND) automatiquement. Si modif structure : aussi narration-archiviste (FORME)."
 }
 
-if ($structMatch -and -not ($gameMatch -or $narrationMatch -or $pathGame -or $pathNarration)) {
+if ($structMatch -and -not ($gameMatch -or $narrationMatch -or $dinoMatch -or $pathGame -or $pathNarration -or $pathDino)) {
     $reminders += "[SIGNAL STRUCTURE detecte sans pole clair] -> demander le pole a l'utilisateur OU deduire du chemin avant d'invoquer l'archiviste."
 }
 

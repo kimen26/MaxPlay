@@ -1,6 +1,6 @@
 # Encyclopédie Dinosaure (EP-039) — INDEX
 
-> Point d'entrée du dossier. Jeu : [`game/web/dev-dinos.html`](../../../web/dev-dinos.html) · Données : [`game/web/js/dinos-data.js`](../../../web/js/dinos-data.js) (60 dinos).
+> Point d'entrée du dossier. Jeu : [`game/web/dev-dinos.html`](../../game/web/dev-dinos.html) · Données : [`game/web/js/dinos-data.js`](../../game/web/js/dinos-data.js) (50 dinos).
 > Rangé 2026-05-23 (suppression de 5 artefacts one-shot consommés).
 
 ## 📐 Process & méthode (à lire en premier)
@@ -44,6 +44,7 @@
 
 ## État
 
-- **60 dinos** dans le jeu (51 + 9 cératopsiens ajoutés 2026-05-22).
+- **50 dinos** dans le jeu (compté autoritatif `DINOS.length` 2026-06-03 ; l'ancien « 60 » comptait des entrées non finalisées).
+- ⚠️ Catalogue du **pôle** : voir [`../INDEX.md`](../INDEX.md). Ce fichier-ci décrit le **dossier `content/`** (scripts + sources).
 - Audio ElevenLabs : top 11 + Pangée + Extinction. Reste = TTS navigateur (quota EL limité).
 - Images : à compléter via `_PROMPTS-GROK.txt`. À regénérer : Torosaure, Einiosaure (anatomie ratée).

@@ -22,5 +22,5 @@ Menus en voix ElevenLabs (narrateur_h + narrateur_f pour le voyage), accroches *
 ## Questions ouvertes
 
 - **Q-DINO-1** : faut-il faire apparaître « Ptérosaures » de façon encore plus visible (ex sous-titre dans la fiche des 2 ptérosaures) ? (soulevé 2026-06-03)
-- **Q-DINO-2** : count réel = 50 dinos (l'ancien INDEX disait 60). Vérifier s'il manque des entrées attendues ou si 60 comptait dinos+variantes. (à trancher)
+- ~~**Q-DINO-2** : count réel = 50 dinos~~ → **TRANCHÉ 2026-06-03** : count autoritatif = **50** (`DINOS.length`). Le « 60 » était périmé. Confirmé par audit FORME + vérité terrain (le PMO avait halluciné « 59 » en grep-comptant dinos+familles+catégories).
 - **Q-DINO-3** : les ~28 dinos sans audio complet → génération progressive ou TTS navigateur acceptable ? (quota EL)

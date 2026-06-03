@@ -1,6 +1,6 @@
 // ─── Encyclopédie Dinosaures MaxPlay ───
-// 60 dinos · données riches · FR · adapté 3-5 ans
-// Catégories : carnivores · herbivores · piscivores · omnivores · volants_marins
+// 50 dinos · données riches · FR · adapté 3-5 ans
+// Catégories : carnivores · herbivores · piscivores · omnivores
 
 // ─── Familles (2e catégorisation) ───
 // label = nom simple (visible en gros) · savant = le vrai mot des savants (sous-titre discret)

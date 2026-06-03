@@ -39,4 +39,4 @@ DINOS.forEach(d => {
 });
 
 fs.writeFileSync(__dirname + '/FICHES-CONTENU.md', out, 'utf8');
-console.log('OK ' + DINOS.length + ' fiches -> game/docs/jeux/dino-encyclopedie/FICHES-CONTENU.md (' + out.length + ' car)');
+console.log('OK ' + DINOS.length + ' fiches -> dino/content/FICHES-CONTENU.md (' + out.length + ' car)');

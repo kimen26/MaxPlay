@@ -7,7 +7,7 @@ for d in $DINOS; do
     src="${pair%%:*}"; dst="${pair##*:}"
     O="game/web/audio/dinos/${d}-${dst}.mp3"
     if [ "$d" = "tyrannosaurus" ] && [ "$dst" = "nom" ] && [ -f "$O" ]; then echo "SKIP ${d}-${dst} (test deja fait)"; continue; fi
-    J="game/docs/jeux/dino-encyclopedie/assets/audio/_seg-${d}-${src}.json"
+    J="dino/content/assets/audio/_seg-${d}-${src}.json"
     if [ ! -f "$J" ]; then echo "KO  ${d}-${dst} JSON-absent"; KO=$((KO+1)); continue; fi
     H=$(curl -s -w "%{http_code}" -X POST "https://api.elevenlabs.io/v1/text-to-dialogue" -H "xi-api-key: $KEY" -H "Content-Type: application/json" -d @"$J" --output "$O" --max-time 60)
     SZ=$(stat -c%s "$O" 2>/dev/null || echo 0)

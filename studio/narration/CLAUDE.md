@@ -1,8 +1,8 @@
 ﻿# PÔLE NARRATION — Règles auto-chargées
 
-> Ce fichier est **chargé automatiquement** par Claude Code dès qu'un fichier sous `narration/` est lu/édité ([doc Anthropic](https://code.claude.com/docs/en/memory#how-claude-md-files-load)).
+> Ce fichier est **chargé automatiquement** dès qu'un fichier sous `studio/narration/` est lu/édité ([doc Anthropic](https://code.claude.com/docs/en/memory#how-claude-md-files-load)).
 > Pour la **navigation humaine** (catalogue 4 piliers + équipe + PMO), voir [`INDEX.md`](INDEX.md).
-> ⚠️ Ce fichier **n'est PAS re-injecté après `/compact`** — il rechargera quand Claude touchera un fichier de `narration/`.
+> ⚠️ Ce fichier **n'est PAS re-injecté après `/compact`** — il rechargera quand Claude touchera un fichier de `studio/narration/`. (Quand narration déploiera dans `site/`, ses règles ops passeront par une rule path-scopée, comme dino.)
 
 ---
 

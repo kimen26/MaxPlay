@@ -1,6 +1,6 @@
 # PÔLE JEU — Règles auto-chargées
 
-> Ce fichier est **chargé automatiquement** par Claude Code dès qu'un fichier sous `studio/minijeux/` est lu/édité (mécanisme nested CLAUDE.md, [doc Anthropic](https://code.claude.com/docs/en/memory#how-claude-md-files-load)).
+> Ce fichier (gouvernance) est **chargé automatiquement** dès qu'un fichier sous `studio/minijeux/` est lu/édité (nested CLAUDE.md, [doc Anthropic](https://code.claude.com/docs/en/memory#how-claude-md-files-load)). ⚠️ Le **code déployé** (`site/mj-*.html`, `site/js/`) charge la **rule** [`.claude/rules/mini-jeux.md`](../../.claude/rules/mini-jeux.md), **pas ce fichier** — la rule porte les règles ops (bus, figées, harnais), ce CLAUDE.md = navigation/gouvernance.
 > Pour la **navigation humaine** (catalogue fichiers/équipe/déploiement), voir [`INDEX.md`](INDEX.md).
 > ⚠️ Ce fichier **n'est PAS re-injecté après `/compact`** — il rechargera quand Claude touchera un fichier de `studio/minijeux/`.
 

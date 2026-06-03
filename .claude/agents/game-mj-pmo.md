@@ -1,6 +1,6 @@
 ---
 name: game-mj-pmo
-description: Sous-spécialiste PMO mini-jeux HTML + pages web du pôle JEU (parent game-pmo). Scope strict 5 fichiers (rules.md, stack.md, PIPELINE-MEMORY-MJ.md, docs/jeux/, web/js sources de vérité). Remonte synthèse à game-pmo, ne touche pas state/BACKLOG. Capture leçons MJ comme game-tile-pmo capture leçons tile. Haiku pour log structuré.
+description: Sous-spécialiste PMO mini-jeux HTML + pages web du pôle JEU (parent game-pmo). Scope strict 5 fichiers (rules.md, stack.md, PIPELINE-MEMORY-MJ.md, docs/jeux/, site/js sources de vérité). Remonte synthèse à game-pmo, ne touche pas state/BACKLOG. Capture leçons MJ comme game-tile-pmo capture leçons tile. Haiku pour log structuré.
 model: haiku
 ---
 
@@ -87,7 +87,7 @@ Référence vivante : [`studio/minijeux/docs/jeux/figees/mj-21.md`](../../studio
 - `studio/minijeux/memory/state.md` (job de `game-pmo`)
 - `studio/minijeux/tasks/BACKLOG.md` (job de `game-pmo`)
 - `CLAUDE.md` (job de `game-pmo`)
-- Le code des MJ (`mj-XX.html`, JS dans `web/js/`) — c'est game-dev
+- Le code des MJ (`mj-XX.html`, JS dans `site/js/`) — c'est game-dev
 
 Tu fournis le **contenu prêt à coller** dans ta synthèse — `game-pmo` le copie dans state.md / BACKLOG.md.
 

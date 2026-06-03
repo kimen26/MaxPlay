@@ -1,6 +1,6 @@
 // Génère FICHES-CONTENU.md : contenu réel des 50 fiches dino (relecture Papa Yann)
 const fs = require('fs');
-let s = fs.readFileSync(__dirname + '/../../../web/js/dinos-data.js', 'utf8');
+let s = fs.readFileSync(__dirname + '/../../game/web/js/dinos-data.js', 'utf8');
 eval(s.replace(/const /g, 'var '));
 
 const per = id => (DINO_PERIODES.find(p => p.id === id) || {}).label || id || '';

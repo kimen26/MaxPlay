@@ -21,9 +21,18 @@ if (-not $path) { exit 0 }
 # Normalise les separateurs
 $norm = $path -replace '\\', '/'
 
-# Cible : .../game/web/mj-<slug>.html
-if ($norm -notmatch 'game/web/(mj-[\w-]+)\.html$') { exit 0 }
-$slug = $Matches[1]   # ex: mj-21  ou  mj-pose-tiles
+# Cible : .../game/web/mj-<slug>.html  (mini-jeux)
+# OU     : dev-dinos.html / dinos-data.js / audio recit-*|menu-* (encyclopedie dino)
+$slug = ''
+if ($norm -match 'game/web/(mj-[\w-]+)\.html$') {
+    $slug = $Matches[1]   # ex: mj-21  ou  mj-pose-tiles
+}
+elseif ($norm -match 'game/web/dev-dinos\.html$' -or
+        $norm -match 'game/web/js/dinos-data\.js$' -or
+        $norm -match 'game/web/audio/dinos/(recit|menu)-[\w-]+\.mp3$') {
+    $slug = 'dino-encyclopedie'   # figees/dino-encyclopedie.md
+}
+else { exit 0 }
 
 $root = 'c:\ProjetsPerso\Claude_Projects\MaxPlay'
 $figPath = Join-Path $root ("game\docs\jeux\figees\{0}.md" -f $slug)

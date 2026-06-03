@@ -15,8 +15,8 @@ Revue complète des mini-jeux (MJ-01 → MJ-17), plan de factorisation, benchmar
 
 ## 🔗 Liens transverses
 
-- Source : [`game/web/`](../../web/) — HTML vanilla des 17 mini-jeux
-- Utilitaires partagés : [`game/web/js/`](../../web/js/) (bus-svg, sounds, feedback, data, qcm-retry, tracker…)
+- Source : [`site/`](../../web/) — HTML vanilla des 17 mini-jeux
+- Utilitaires partagés : [`site/js/`](../../web/js/) (bus-svg, sounds, feedback, data, qcm-retry, tracker…)
 - Backlog vivant : [`tasks/BACKLOG.md`](../../tasks/BACKLOG.md)
 - Profil cible : [`memory/MAX_PROFILE.md`](../../../memory/MAX_PROFILE.md)
 - Specs historiques : [`game/docs/jeux/GAMES_SPECS.md`](../jeux/GAMES_SPECS.md)
@@ -32,5 +32,5 @@ Revue complète des mini-jeux (MJ-01 → MJ-17), plan de factorisation, benchmar
 
 - **Date** : 2026-04-22 (roadmap ajoutée)
 - **Périmètre** : 17 MJ HTML vanilla (MJ-01 → MJ-17) + dev-lab + max-adventure + suivi + menu
-- **Volume analysé** : ~14 000 lignes HTML/JS (`wc -l game/web/**`)
+- **Volume analysé** : ~14 000 lignes HTML/JS (`wc -l site/**`)
 - **Hors périmètre** : Phaser build MJ-07 (hub 2D à revoir séparément)

@@ -1,11 +1,11 @@
-// Génère game/web/js/dinos-images-grok.js depuis game/web/img/dinos/grok/
+// Génère site/js/dinos-images-grok.js depuis site/img/dinos/grok/
 // Naming attendu (2 formes acceptées) :
 //   <id>_lot<N>_<n>_<vue>.jpg       (lots Grok originaux)
 //   <id>_<vue>.jpg                  (nouvelle livraison simple)
 // Vues : taille | environnement | sa_vie | qui_le_chasse | chasse (legacy = mappé sur 'sa_vie')
 const fs=require('fs'),path=require('path');
-const DIR='c:/ProjetsPerso/Claude_Projects/MaxPlay/game/web/img/dinos/grok';
-const OUT='c:/ProjetsPerso/Claude_Projects/MaxPlay/game/web/js/dinos-images-grok.js';
+const DIR='c:/ProjetsPerso/Claude_Projects/MaxPlay/site/img/dinos/grok';
+const OUT='c:/ProjetsPerso/Claude_Projects/MaxPlay/site/js/dinos-images-grok.js';
 
 // KO exclus (verdicts agents revue visuelle 2026-05-17 + revue herbivores 2026-05-20)
 const KO = new Set([

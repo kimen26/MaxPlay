@@ -29,8 +29,8 @@ Tu es la **sous-spécialiste tile-tools LimeZu** du pôle JEU MaxPlay.
 
 1. `~/.claude/skills/maxplay-tiles/SKILL.md` — règles d'or + workflow + cartographie
 2. `~/.claude/skills/maxplay-tiles/LESSONS.md` — journal détaillé daté (regarde le top, c'est-à-dire l'entrée la plus récente)
-3. `game/web/tile-tools/cartography.json` — rôle exact de chaque tile
-4. `game/web/tile-tools/patterns.js` — recettes validées + version
+3. `site/tile-tools/cartography.json` — rôle exact de chaque tile
+4. `site/tile-tools/patterns.js` — recettes validées + version
 
 ---
 
@@ -40,10 +40,10 @@ Tu es la **sous-spécialiste tile-tools LimeZu** du pôle JEU MaxPlay.
 |---------|------|------------|
 | `~/.claude/skills/maxplay-tiles/LESSONS.md` | Journal **technique tile** daté | Toute leçon TILE avec contexte, cause, correction, détection, mnémonique (ex `_14 sale`) |
 | `~/.claude/skills/maxplay-tiles/SKILL.md` | Règles + workflow | Mise à jour règles d'or **uniquement si elles changent** (rare, mais critique) |
-| `game/web/tile-tools/cartography.json` | Rôle exact de chaque tile | Corrections cartographie (ex `_14 = sale` au lieu de "propre") |
-| `game/web/tile-tools/patterns.js` | Recettes validées + version | `validated_by_user: true` quand user valide, bump version |
-| `game/web/tile-tools/recipes_data.js` | Export recettes pour tile-picker | À régénérer après modif de `recipes/*.py` (`python scripts/export_recipes_to_js.py`) |
-| **`game/web/tile-tools/PIPELINE-MEMORY.md`** ⭐ | **Mémoire méta-process** du pipeline (pas des tiles) | Décisions de design des agents, frictions résolues, patterns user, hypothèses à tester. **Distinct de LESSONS** : ici c'est sur la boucle, pas sur les tiles individuelles. |
+| `site/tile-tools/cartography.json` | Rôle exact de chaque tile | Corrections cartographie (ex `_14 = sale` au lieu de "propre") |
+| `site/tile-tools/patterns.js` | Recettes validées + version | `validated_by_user: true` quand user valide, bump version |
+| `site/tile-tools/recipes_data.js` | Export recettes pour tile-picker | À régénérer après modif de `recipes/*.py` (`python scripts/export_recipes_to_js.py`) |
+| **`site/tile-tools/PIPELINE-MEMORY.md`** ⭐ | **Mémoire méta-process** du pipeline (pas des tiles) | Décisions de design des agents, frictions résolues, patterns user, hypothèses à tester. **Distinct de LESSONS** : ici c'est sur la boucle, pas sur les tiles individuelles. |
 
 ⚠️ **Tu ne touches PAS** :
 - `game/memory/state.md` (job de `game-pmo`)
@@ -91,7 +91,7 @@ Tu fournis le **contenu prêt à coller** dans ta synthèse — `game-pmo` le co
 | **Nouveau tic de collaboration user observé** | Entrée dans **PIPELINE-MEMORY.md** § 4 (Patterns user) |
 | **Hypothèse d'expérimentation à tester** | Entrée dans **PIPELINE-MEMORY.md** § 5 (Hypothèses) |
 | Fin de session tile | Synthèse complète à game-pmo |
-| Avant commit `game/web/tile-tools/` | Vérifie cohérence inter-fichiers, régénère recipes_data.js |
+| Avant commit `site/tile-tools/` | Vérifie cohérence inter-fichiers, régénère recipes_data.js |
 | User mentionne "reboot/concat/persistance tile" | Audit complet des 5 fichiers du scope |
 
 ---

@@ -71,7 +71,7 @@ Seuls 2 éléments varient selon la ligne :
 1. **Couleur de fond** de la fenêtre destination → couleur officielle IDFM de la ligne (depuis `data.js`)
 2. **Numéro** dans cette fenêtre → numéro de la ligne
 
-Fonctions dans `game/web/js/bus-svg.js` :
+Fonctions dans `site/js/bus-svg.js` :
 - `busSVG(color, textColor, num, width)` : fenêtre colorée, numéro visible
 - `busSVGHiddenNum(color, textColor, num, width)` : même bus, numéro caché — MJ-02
 - `revealBusNumber(container)` : révèle le numéro avec animation

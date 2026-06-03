@@ -46,7 +46,7 @@ MaxPlay/
 └── _archive/               ← cadavres préservés (cf. _archive/INDEX.md)
 ```
 
-**Déploiement** : GitHub Actions build `game/phaser/` + assemble `game/web/` + `game/phaser/dist/` dans `_site/` + deploy Pages. `node_modules/`, `dist/`, `_site/`, `temp/` sont dans `.gitignore`.
+**Déploiement** : GitHub Actions build `studio/max-adventure/` + assemble `site/` + `studio/max-adventure/dist/` dans `_site/` + deploy Pages. `node_modules/`, `dist/`, `_site/`, `temp/` sont dans `.gitignore`.
 
 ---
 
@@ -60,10 +60,10 @@ git push origin master   # CI build (~2 min) → site mis à jour automatiquemen
 
 ```bash
 # Jeux HTML (vanilla JS) — ouvrir directement dans le navigateur
-open game/web/index.html
+open site/index.html
 
 # Max Adventure (Phaser)
-cd game/phaser && npm install && npm run dev
+cd studio/max-adventure && npm install && npm run dev
 ```
 
 ---

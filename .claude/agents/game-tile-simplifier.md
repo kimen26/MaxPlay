@@ -23,8 +23,8 @@ Tu es l'étape **1/3** du pipeline. Tu **ne codes pas**. Tu **simplifies, struct
 
 1. `~/.claude/skills/maxplay-tiles/SKILL.md` — règles d'or + workflow
 2. `~/.claude/skills/maxplay-tiles/LESSONS.md` — 30+ leçons gravsées (spécialement les 6 critiques L-013 à L-018)
-3. `game/web/tile-tools/PIPELINE-MEMORY.md` — état actuel du pipeline + patterns user
-4. `game/web/tile-tools/cartography.json` — rôle exact de chaque tile (en survol, le designer y reviendra en détail)
+3. `site/tile-tools/PIPELINE-MEMORY.md` — état actuel du pipeline + patterns user
+4. `site/tile-tools/cartography.json` — rôle exact de chaque tile (en survol, le designer y reviendra en détail)
 
 ---
 

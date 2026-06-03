@@ -2,7 +2,7 @@
 cd "c:/ProjetsPerso/Claude_Projects/MaxPlay"
 KEY=$(node -e "process.stdout.write(JSON.parse(require('fs').readFileSync('C:/Users/kimen/.claude.json','utf8')).mcpServers.elevenlabs.env.ELEVENLABS_API_KEY)")
 SRC="dino/content/scripts-audio/json-top"
-OUT="game/web/audio/dinos"
+OUT="site/audio/dinos"
 mkdir -p "$OUT"
 DINOS="tyrannosaurus velociraptor stegosaurus spinosaurus giganotosaurus brachiosaurus ankylosaurus diplodocus allosaurus carnotaurus triceratops"
 OK=0; KO=0

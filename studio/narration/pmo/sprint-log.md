@@ -235,7 +235,7 @@
 - [x] **Total caractères dialogues** : ~14.7k chars / 51k quota = 36.3k restant ✅
 - [x] **Format validé** : 4 inputs/bloc (alternance Nar H + Wex), tags v3 limités 2-3/réplique, < 400 char/bloc
 
-**Données sources utilisées** : `game/web/js/dinos-data.js` — 10 dinos id exacts : tyrannosaurus, spinosaurus, giganotosaurus, allosaurus, carnotaurus, brachiosaurus, diplodocus, ankylosaurus, stegosaurus, velociraptor.
+**Données sources utilisées** : `site/js/dinos-data.js` — 10 dinos id exacts : tyrannosaurus, spinosaurus, giganotosaurus, allosaurus, carnotaurus, brachiosaurus, diplodocus, ankylosaurus, stegosaurus, velociraptor.
 
 **Données MANQUANTES (aucune détectée)** : toutes les 10 dinos ont nom_etym, regime, superpower, chasseurs, proies, fait complets dans la DB. ✅
 

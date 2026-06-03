@@ -1,5 +1,5 @@
 # figees-injector.ps1 — Hook PreToolUse (Edit|Write)
-# Si on s'apprete a modifier un game/web/mj-XX.html qui possede un fichier
+# Si on s'apprete a modifier un site/mj-XX.html qui possede un fichier
 # de DECISIONS FIGEES (game/docs/jeux/figees/mj-XX.md), on REINJECTE son
 # contenu dans le contexte AVANT l'edit, avec une banniere STOP.
 # But : rendre la regression structurellement impossible meme apres /compact.
@@ -21,18 +21,18 @@ if (-not $path) { exit 0 }
 # Normalise les separateurs
 $norm = $path -replace '\\', '/'
 
-# Cible : .../game/web/mj-<slug>.html  (mini-jeux → game/docs/jeux/figees/<slug>.md)
-# OU     : pôle DINO (code game/web/dino + dossier studio/dino/) → studio/dino/figees/encyclopedie.md
+# Cible : .../site/mj-<slug>.html  (mini-jeux → game/docs/jeux/figees/<slug>.md)
+# OU     : pôle DINO (code site/dino + dossier studio/dino/) → studio/dino/figees/encyclopedie.md
 $root = 'c:\ProjetsPerso\Claude_Projects\MaxPlay'
 $slug = ''
 $figPath = ''
-if ($norm -match 'game/web/(mj-[\w-]+)\.html$') {
+if ($norm -match 'site/(mj-[\w-]+)\.html$') {
     $slug = $Matches[1]   # ex: mj-21  ou  mj-pose-tiles
     $figPath = Join-Path $root ("game\docs\jeux\figees\{0}.md" -f $slug)
 }
-elseif ($norm -match 'game/web/dev-dinos\.html$' -or
-        $norm -match 'game/web/js/dinos-data\.js$' -or
-        $norm -match 'game/web/audio/dinos/(recit|menu)-[\w-]+\.mp3$' -or
+elseif ($norm -match 'site/dev-dinos\.html$' -or
+        $norm -match 'site/js/dinos-data\.js$' -or
+        $norm -match 'site/audio/dinos/(recit|menu)-[\w-]+\.mp3$' -or
         $norm -match '/studio/dino/') {
     $slug = 'encyclopedie'   # pôle DINO
     $figPath = Join-Path $root 'studio\dino\figees\encyclopedie.md'

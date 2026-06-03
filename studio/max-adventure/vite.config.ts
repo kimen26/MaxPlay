@@ -21,7 +21,7 @@ export default defineConfig({
   },
   plugins: [
     {
-      // Dev only: sert game/web/ sous /web/* pour la navigation locale (sibling dir post-reorg)
+      // Dev only: sert site/ sous /web/* pour la navigation locale (sibling dir post-reorg)
       name: 'serve-game-web',
       configureServer(server) {
         const gameWebDir = path.resolve(process.cwd(), '../web');

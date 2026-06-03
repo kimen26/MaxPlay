@@ -3,7 +3,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const devDinosPath = path.resolve(__dirname, '../web/dev-dinos.html');
+const devDinosPath = path.resolve(__dirname, '../../site/dev-dinos.html');
 const fileUrl = `file:///${devDinosPath.replace(/\\/g, '/')}`;
 
 async function test() {

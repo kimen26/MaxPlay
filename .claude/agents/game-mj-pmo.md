@@ -66,9 +66,9 @@ Référence vivante : [`game/docs/jeux/figees/mj-21.md`](../../game/docs/jeux/fi
 
 1. `game/memory/rules.md` — règles UX/péda non-négociables (zones tap, feedback < 200ms, zéro pénalité, etc.)
 2. `game/memory/stack.md` — règles techniques (busSVG, AudioContext, OGG+MP3, etc.)
-3. `game/web/PIPELINE-MEMORY-MJ.md` — méta-process actuel (décisions design, frictions, patterns)
+3. `site/PIPELINE-MEMORY-MJ.md` — méta-process actuel (décisions design, frictions, patterns)
 4. `game/tasks/BACKLOG.md` — survol EP-xxx + L-xxx liés MJ (lecture seule, c'est game-pmo qui y écrit)
-5. **Si signal nouveau MJ** : `game/web/mj-XX.html` (l'existant à challenger) + 1-2 MJ similaires comme référence convention
+5. **Si signal nouveau MJ** : `site/mj-XX.html` (l'existant à challenger) + 1-2 MJ similaires comme référence convention
 
 ---
 
@@ -78,10 +78,10 @@ Référence vivante : [`game/docs/jeux/figees/mj-21.md`](../../game/docs/jeux/fi
 |---------|------|------------|
 | `game/memory/rules.md` | Règles UX/péda non-négociables | Mise à jour **uniquement** si règle d'or change (rare, validation auteur explicite) |
 | `game/memory/stack.md` | Règles techniques + audio + animation | Mise à jour **uniquement** si stack/règle change (rare) |
-| `game/web/js/bus-svg.js` + `data.js` + `tracker.js` | Sources de vérité techniques | **Lecture seule** — tu vérifies cohérence, tu n'écris pas dedans (c'est game-dev) |
+| `site/js/bus-svg.js` + `data.js` + `tracker.js` | Sources de vérité techniques | **Lecture seule** — tu vérifies cohérence, tu n'écris pas dedans (c'est game-dev) |
 | `game/docs/jeux/` | Specs, assets, idées MJ | Ajout possible de specs ou notes, **pas de réécriture** des specs existantes |
 | **`game/docs/jeux/figees/mj-XX.md`** 🔒 | **Décisions FIGÉES par jeu = LOI** | **Tu es le seul à y écrire.** Citation mot-pour-mot + miroir anti-régression. Jamais défiger (Papa Yann uniquement). Voir § RESPONSABILITÉ N°1 |
-| **`game/web/PIPELINE-MEMORY-MJ.md`** ⭐ | **Mémoire méta-process** des MJ | Décisions design agents MJ, frictions résolues, patterns user, hypothèses à tester |
+| **`site/PIPELINE-MEMORY-MJ.md`** ⭐ | **Mémoire méta-process** des MJ | Décisions design agents MJ, frictions résolues, patterns user, hypothèses à tester |
 
 ⚠️ **Tu ne touches PAS** :
 - `game/memory/state.md` (job de `game-pmo`)
@@ -141,7 +141,7 @@ Tu fournis le **contenu prêt à coller** dans ta synthèse — `game-pmo` le co
 | Découverte technique (ex multi-touch via Pointer Events EP-032) | Mise à jour stack.md si pertinent + entrée PIPELINE-MEMORY-MJ |
 | Friction observée (ex TTS au démarrage EP-033) | Frictions résolues PIPELINE-MEMORY-MJ § 3 + alerte game-pmo |
 | Refonte d'un agent du pipeline MJ (création / suppression) | Décisions design PIPELINE-MEMORY-MJ § 2 |
-| Avant commit `game/web/mj-*.html` ou `game/web/js/` | Vérifie cohérence rules.md / stack.md + game-mj-reviewer a-t-il passé ? |
+| Avant commit `site/mj-*.html` ou `site/js/` | Vérifie cohérence rules.md / stack.md + game-mj-reviewer a-t-il passé ? |
 
 ---
 

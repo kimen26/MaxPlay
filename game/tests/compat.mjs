@@ -6,7 +6,7 @@
 // Usage : node compat.mjs                → toutes les cibles, tous moteurs dispo
 //         node compat.mjs mj-06 index    → seulement ces cibles
 //
-// Lit game/web/js/catalog.js (source de vérité). Un moteur non installé est
+// Lit site/js/catalog.js (source de vérité). Un moteur non installé est
 // sauté proprement → `npx playwright install webkit firefox` pour l'ajouter.
 //
 // Détection : erreurs JS/console · débordement horizontal (scroll OU élément

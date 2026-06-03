@@ -2,7 +2,7 @@
 """
 Générateur de segments audio (JSON text-to-dialogue) pour 10 dinos.
 Produit 60 fichiers JSON (10 dinos × 6 blocs) + 10 fichiers .md récap.
-Données sources : game/web/js/dinos-data.js
+Données sources : site/js/dinos-data.js
 Template : Tricératops V0 validé 2026-05-16.
 """
 

@@ -10,15 +10,15 @@
 |------|--------|
 | Jeux déployés | MJ-01 à MJ-20 — voir [tasks/BACKLOG.md](../../tasks/BACKLOG.md) pour détail par jeu |
 | Jeux actifs (menu) | MJ-01, 04–06, 08–09, 11–17, 20 (MJ-02, 03, 07, 10 retirés du menu) |
-| Stack | HTML vanilla · `game/web/js/` partagé · GitHub Pages |
+| Stack | HTML vanilla · `site/js/` partagé · GitHub Pages |
 | Audit technique | ✅ fait (2026-04-22) — voir `../audit/` |
 
 ---
 
 ## Règles non-négociables
 
-1. **Bus** : toujours `busSVG()` / `busSVGHiddenNum()` de [`game/web/js/bus-svg.js`](../../web/js/bus-svg.js). Jamais d'emoji 🚌, jamais de div CSS colorée.
-2. **Couleurs** : toujours depuis [`game/web/js/data.js`](../../web/js/data.js) → `LIGNES`. Jamais de hex hardcodé.
+1. **Bus** : toujours `busSVG()` / `busSVGHiddenNum()` de [`site/js/bus-svg.js`](../../web/js/bus-svg.js). Jamais d'emoji 🚌, jamais de div CSS colorée.
+2. **Couleurs** : toujours depuis [`site/js/data.js`](../../web/js/data.js) → `LIGNES`. Jamais de hex hardcodé.
 3. **Pool multi-couleurs** : `selectDistinctColors(pool, n)` — anti-doublons visuels.
 4. **UX** : zéro pénalité punitive · feedback < 200ms · zones tap min 80px · sessions 3–8 min.
 
@@ -65,8 +65,8 @@
 
 ```
 GitHub Pages → kimen26.github.io/MaxPlay/
-├── /              ← game/web/index.html (menu)
-├── /mj-XX.html    ← HTML vanilla (source: game/web/)
+├── /              ← site/index.html (menu)
+├── /mj-XX.html    ← HTML vanilla (source: site/)
 └── /mj-07/        ← Phaser build (CI uniquement)
 ```
 

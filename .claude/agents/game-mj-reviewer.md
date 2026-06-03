@@ -13,7 +13,7 @@ Tu es le **contrôleur qualité des mini-jeux HTML** MaxPlay. Tu évalues rigour
 ## 🎯 1 goal, 1 input, 1 output, 1 handoff
 
 - **Goal** : verdict PASS / FAIL fiable avec issues numérotées et corrections précises, pour qu'aucun MJ ne soit livré en violation des règles non-négociables.
-- **Input** : fichier `game/web/mj-XX.html` (nouveau ou modifié) + optionnellement le BILAN game-dev + contexte (quelle mécanique, quel apprentissage visé).
+- **Input** : fichier `site/mj-XX.html` (nouveau ou modifié) + optionnellement le BILAN game-dev + contexte (quelle mécanique, quel apprentissage visé).
 - **Output** : rapport de revue structuré avec verdict + issues + corrections suggérées.
 - **Handoff** :
   - Si FAIL → retour `game-dev` (max 5 iter)
@@ -26,9 +26,9 @@ Tu es le **contrôleur qualité des mini-jeux HTML** MaxPlay. Tu évalues rigour
 
 1. `game/memory/rules.md` — règles UX/péda non-négociables (zones tap, feedback, zéro pénalité…)
 2. `game/memory/stack.md` — règles techniques (busSVG, AudioContext, OGG+MP3…)
-3. `game/web/PIPELINE-MEMORY-MJ.md` — frictions résolues + patterns user (pour ne pas refaire les erreurs passées)
+3. `site/PIPELINE-MEMORY-MJ.md` — frictions résolues + patterns user (pour ne pas refaire les erreurs passées)
 4. **`game/docs/jeux/figees/mj-XX.md`** s'il existe — décisions FIGÉES = LOI (Section 0)
-5. **Le fichier MJ à reviewer** — `game/web/mj-XX.html`
+5. **Le fichier MJ à reviewer** — `site/mj-XX.html`
 6. **Optionnel** : 1 MJ similaire qui a passé en référence (ex mj-15 pour quiz visuel)
 
 ---
@@ -90,7 +90,7 @@ C'est un **diff sémantique code ↔ loi figée**, ligne par ligne, citations ob
 | **Multi-touch** | Si 2+ doigts requis (EP-032) : Pointer Events + Map (`activePointers`) | HAUTE |
 | **localStorage** | Progression via `tracker.js` (pas localStorage brut sans namespace) | MOYENNE |
 | **Police** | Fredoka One (Google Fonts) — pas d'autre police custom | MOYENNE |
-| **Lien dans index.html** | Si nouveau MJ : ajouté dans la grille `game/web/index.html` | HAUTE |
+| **Lien dans index.html** | Si nouveau MJ : ajouté dans la grille `site/index.html` | HAUTE |
 | **Responsive mobile** | Viewport meta + layout responsive (tablette landscape + portrait) | HAUTE |
 | **Pas d'emoji jeux** | Aucun emoji dans graphismes du jeu (rendu inconsistant multi-OS) | HAUTE |
 | **Build clean** | Pas de console.log oubliés en prod | BASSE |

@@ -1,17 +1,17 @@
 ---
 paths:
   - "studio/dino/**"
-  - "game/web/dev-dinos.html"
-  - "game/web/js/dinos-data.js"
-  - "game/web/js/dinos-images-local.js"
-  - "game/web/js/dinos-images-grok.js"
-  - "game/web/audio/dinos/**"
-  - "game/web/img/dinos/**"
+  - "site/dev-dinos.html"
+  - "site/js/dinos-data.js"
+  - "site/js/dinos-images-local.js"
+  - "site/js/dinos-images-grok.js"
+  - "site/audio/dinos/**"
+  - "site/img/dinos/**"
 ---
 
 # Pôle DINO — règles auto-chargées (path-scoped)
 
-> Chargé dès que Claude touche un fichier dino, **où qu'il vive** : le dossier `studio/dino/` (gouvernance + contenu) OU le code déployé sous `game/web/` (dev-dinos, data, audio, img).
+> Chargé dès que Claude touche un fichier dino, **où qu'il vive** : le dossier `studio/dino/` (gouvernance + contenu) OU le code déployé sous `site/` (dev-dinos, data, audio, img).
 > C'est le **pont** entre le code (dans game/) et le pôle (dans studio/dino/), puisqu'un nested CLAUDE.md ne se charge que selon l'emplacement du fichier.
 
 ## Réflexe à l'ouverture
@@ -40,4 +40,4 @@ Papa Yann teste via GitHub Pages → **commit + push** après toute modif dino. 
 
 ---
 
-_Créé 2026-06-03 avec le pôle DINO. Lie le code (game/web/) au pôle (studio/dino/) via path-scoping, mécanisme Anthropic pour règles ciblées indépendantes de l'emplacement._
+_Créé 2026-06-03 avec le pôle DINO. Lie le code (site/) au pôle (studio/dino/) via path-scoping, mécanisme Anthropic pour règles ciblées indépendantes de l'emplacement._

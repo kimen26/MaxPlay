@@ -6,17 +6,17 @@ Tu invoques l'agent `dino-pmo` en **Mode AUDIT** sur l'ensemble du pôle DINO.
 
 Le PMO vérifie **le FOND** (décisions, statuts, cohérence sémantique) — complémentaire à `/dino-archiviste-audit` (FORME : refs, orphelins, gabarit).
 
-> ⚠️ Pôle **transverse** : le code vit dans `game/web/` (dev-dinos.html, dinos-data.js, audio/dinos, img/dinos), la gouvernance dans `studio/dino/`. L'audit couvre les deux.
+> ⚠️ Pôle **transverse** : le code vit dans `site/` (dev-dinos.html, dinos-data.js, audio/dinos, img/dinos), la gouvernance dans `studio/dino/`. L'audit couvre les deux.
 
 ## Procédure (5 sections obligatoires — depuis `dino-pmo.md` Mode AUDIT)
 
 ### 1. Architecture / Découvrabilité
-- `studio/dino/INDEX.md` à jour (pointe le code game/web/ + le contenu studio/dino/content/) ?
+- `studio/dino/INDEX.md` à jour (pointe le code site/ + le contenu studio/dino/content/) ?
 - Fichiers `studio/dino/content/` orphelins (non référencés par l'INDEX) ?
 - Liens markdown cassés dans `studio/dino/**` ?
 
 ### 2. Cohérence chiffres clés
-- `studio/dino/pmo/INVARIANTS.md` ⇄ **data réelle** `game/web/js/dinos-data.js` : count dinos (`DINOS.length`), count familles (`DINO_FAMILLES`), count régimes (`DINO_CATEGORIES`) cohérents ?
+- `studio/dino/pmo/INVARIANTS.md` ⇄ **data réelle** `site/js/dinos-data.js` : count dinos (`DINOS.length`), count familles (`DINO_FAMILLES`), count régimes (`DINO_CATEGORIES`) cohérents ?
 - Échelle référentiel (enfant 1 m … bus accordéon 18 m) cohérente entre INVARIANTS et `_compLong/_compHaut/_compPoids` du code ?
 - Casting voix (narrateur_h / narrateur_f / wex) cohérent INVARIANTS ⇄ voice-map.json ⇄ figée ?
 - **EP-D01** : count réel (50 ?) vs ancien « 60 » — tranché ?

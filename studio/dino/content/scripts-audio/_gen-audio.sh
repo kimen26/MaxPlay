@@ -5,7 +5,7 @@ OK=0; KO=0
 for d in $DINOS; do
   for pair in nom:nom taille:taille regime:regime superpower:pouvoir ennemis:ennemis funfact:funfact; do
     src="${pair%%:*}"; dst="${pair##*:}"
-    O="game/web/audio/dinos/${d}-${dst}.mp3"
+    O="site/audio/dinos/${d}-${dst}.mp3"
     if [ "$d" = "tyrannosaurus" ] && [ "$dst" = "nom" ] && [ -f "$O" ]; then echo "SKIP ${d}-${dst} (test deja fait)"; continue; fi
     J="dino/content/assets/audio/_seg-${d}-${src}.json"
     if [ ! -f "$J" ]; then echo "KO  ${d}-${dst} JSON-absent"; KO=$((KO+1)); continue; fi

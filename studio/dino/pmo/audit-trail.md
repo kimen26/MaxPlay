@@ -10,7 +10,7 @@
 - ⚖️ **Count dinos = 50** (autoritatif `DINOS.length`). Le PMO a **halluciné « 59 »** (grep-comptage des `id:` incluant dinos + familles + catégories) → **faux positif écarté**. L'Archiviste avait raison (50). Leçon : toujours adjuger un claim de count par `DINOS.length`, jamais par grep `id:`.
 
 **Findings traités (fix appliqué)** :
-- ✅ EP-D01 / Q-DINO-2 **résolus** : count = 50. Stale corrigés → `dino/content/INDEX.md` (60→50 + liens `../../../web`→`../../game/web`), header `dinos-data.js` (60→50, `volants_marins` retiré du commentaire).
+- ✅ EP-D01 / Q-DINO-2 **résolus** : count = 50. Stale corrigés → `dino/content/INDEX.md` (60→50 + liens `../../../web`→`../../site`), header `dinos-data.js` (60→50, `volants_marins` retiré du commentaire).
 - ✅ **8 orphelins** `recit-cretace-v2..v9.mp3` supprimés (itérations supersédées, le code ne charge que `recit-cretace.mp3`).
 - ✅ **5 scripts** `content/` : chemins `game/docs/jeux/dino-encyclopedie` → `dino/content` corrigés (sortie/lecture après le move).
 
@@ -26,9 +26,9 @@
 
 **Findings traités** :
 - ✅ Move `dino-encyclopedie/` → `dino/content/` sans perte (217 fichiers, rename git, historique préservé).
-- ✅ Chemins relatifs des 2 scripts code-couplés corrigés (`../../../web` → `../../game/web`), résolution testée.
-- ✅ Hook figeage étendu (dino/** + code game/web/ dino → `dino/figees/encyclopedie.md`), testé OK.
-- ✅ Refs internes de la figée corrigées (`../dino-encyclopedie/` → `../content/`, `../../web` → `../../game/web`).
+- ✅ Chemins relatifs des 2 scripts code-couplés corrigés (`../../../web` → `../../site`), résolution testée.
+- ✅ Hook figeage étendu (dino/** + code site/ dino → `dino/figees/encyclopedie.md`), testé OK.
+- ✅ Refs internes de la figée corrigées (`../dino-encyclopedie/` → `../content/`, `../../web` → `../../site`).
 
 **À surveiller (reste ouvert)** :
 - 🟡 Count dinos : INVARIANTS dit 50 (réel `DINOS.length`), ancien INDEX disait 60 → EP-D01.

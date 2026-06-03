@@ -162,6 +162,7 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   <div id="hdr">
     <a href="index.html">←</a>
     <span id="htitle">🔍 L'intrus</span>
+    <span id="levelbar" style="font-weight:900;color:#ffe066;background:rgba(255,255,255,0.14);border-radius:10px;padding:3px 12px;font-size:0.85rem;">Niveau 1</span>
     <div id="score-badge">0 / 0</div>
   </div>
 
@@ -198,6 +199,8 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 
 <script src="js/bus-svg.js"></script>
 <script src="js/data.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/stars.js"></script>
 <script src="js/victory-sounds.js"></script>
 <script src="js/tts.js"></script>
 <script src="js/tracker.js"></script>
@@ -263,14 +266,19 @@ let score    = 0;
 let round    = 0;
 let intrusIdx = -1;   // index (0-4) du bus intrus
 let answered = false;
+let wrongThisRound = false;
 
 // ── Génération des puzzles ─────────────────────────────────────────────────
 
-// Courbe de difficulté : A=couleur, C=famille, D=roues colorées, E=double critère
-const LEVEL_SCHEDULE = ['A', 'D', 'C', 'E', 'A'];
-function getLevel(r) {
-  return LEVEL_SCHEDULE[(r - 1) % LEVEL_SCHEDULE.length] || 'A';
-}
+// Paliers (doc _PALIERS) : critère de l'intrus. Niveau = Stars.get+1.
+const level = Math.max(0, Math.min(4, (window.Stars ? Stars.get('mj-15') : 0)));
+const CRIT = [
+  ['A'],          // N1 couleur (évident)
+  ['A','D'],      // N2 + roues colorées
+  ['A','D','C'],  // N3 + famille
+  ['C','E'],      // N4 famille + double critère
+  ['E'],          // N5 double critère (subtil)
+][level];
 
 // Niveau A — couleur différente
 function generatePuzzleA() {
@@ -450,11 +458,11 @@ function generatePuzzleE() {
   };
 }
 
-function generatePuzzle(roundNum) {
-  const level = getLevel(roundNum);
-  if (level === 'A') return generatePuzzleA();
-  if (level === 'D') return generatePuzzleD();
-  if (level === 'E') return generatePuzzleE();
+function generatePuzzle(_roundNum) {
+  const t = CRIT[Math.floor(Math.random() * CRIT.length)];
+  if (t === 'A') return generatePuzzleA();
+  if (t === 'D') return generatePuzzleD();
+  if (t === 'E') return generatePuzzleE();
   return generatePuzzleC();
 }
 
@@ -484,6 +492,7 @@ function calcBusWidth() {
 function renderPuzzle(puzzle) {
   currentPuzzle = puzzle;
   answered      = false;
+  wrongThisRound = false;
   intrusIdx     = puzzle.intrusIdx;
 
   document.getElementById('hint-label').textContent = puzzle.hint;
@@ -519,37 +528,27 @@ function renderPuzzle(puzzle) {
 
 function onBusTap(idx, btn) {
   if (answered) return;
-  answered = true;
 
   if (idx === intrusIdx) {
-    // Bonne réponse
-    score++;
+    // Bonne réponse — étoile seulement si aucune erreur dans la manche
+    answered = true;
+    if (!wrongThisRound) score++;
     updateScore();
     btn.classList.add('flash-ok');
-    if (typeof Tracker !== 'undefined') Tracker.logAnswer(true);
+    if (typeof Tracker !== 'undefined') Tracker.logAnswer(!wrongThisRound);
     playSuccessBeep();
-
     setTimeout(() => {
       btn.classList.add('gone');
       setTimeout(nextRound, 500);
     }, 400);
 
   } else {
-    // Mauvaise réponse
+    // Mauvaise réponse → on NE révèle PAS l'intrus, on laisse réessayer (+ indice)
+    wrongThisRound = true;
     btn.classList.add('flash-err');
-    if (typeof Tracker !== 'undefined') Tracker.logAnswer(false);
     playErrorSound();
-
-    setTimeout(() => {
-      btn.classList.remove('flash-err');
-      // Montrer le bon bus
-      const correctBtn = document.querySelector(`.bus-btn[data-idx="${intrusIdx}"]`);
-      if (correctBtn) {
-        correctBtn.classList.add('flash-ok');
-        correctBtn.style.borderColor = '#ffe066';
-      }
-      setTimeout(nextRound, 900);
-    }, 500);
+    document.getElementById('hint-label').textContent = '💡 ' + (currentPuzzle ? currentPuzzle.hint : '');
+    setTimeout(() => btn.classList.remove('flash-err'), 450);
   }
 }
 
@@ -625,6 +624,7 @@ function startGame() {
   score    = 0;
   round    = 1;
   answered = false;
+  const lb = document.getElementById('levelbar'); if (lb) lb.textContent = 'Niveau ' + (level + 1);
   stopEndSound();
   document.getElementById('end-screen').classList.remove('visible');
   updateScore();

@@ -3,12 +3,13 @@
 > Encyclopédie audio des époques pour Max (4 ans). On explique les ÉPOQUES (monde, grands changements, dinos célèbres NOMMÉS) — les détails de chaque dino vont dans les FICHES, pas ici.
 > Voix : NARRATRICE `narrateur_f` (signature `[gasps]` `[chuckles]` `[curious]` `[excited]` `[playful]` `[happily]` `[softly]` ; test `[dramatic tone]` pour le drame/révélation) · WEX `wex` (FR normal, AUCUNE balise). `eleven_v3`, stability 0,4.
 > Règles : vrais noms + vraies dates DITS · « écoute » jamais « regarde » · zéro bus · BOUM en MAJUSCULES (pas de `[whispers]`) · fil rouge Tritri trouvé au Crétacé (plus de « pas encore » après) · pas de coda.
+> 🔒 TRITRI (FIGÉ Papa Yann 2026-06-03) : Tritri = running gag de Wex (« y'avait Tritri ? et maintenant ? »), c'est juste son DINOSAURE PRÉFÉRÉ (un Tricératops). JAMAIS dire « Max », JAMAIS « doudou », JAMAIS « peluche ». Joie de le trouver au Crétacé. Ne JAMAIS régresser.
 > 8 segments : intro · trias · jurassique · cretace · extinction · mammiferes · glace-mammouth · paleo.
 
 ---
 
 ## INTRO  (recit-intro.mp3)
-NARRATRICE: [happily] Prêt à remonter le temps, Wex ? On part à la recherche de Tritri, [chuckles] le doudou de Max.
+NARRATRICE: [happily] Prêt à remonter le temps, Wex ? On part chercher Tritri, [chuckles] ton dinosaure préféré.
 WEX: Oui ! Il est où ?
 NARRATRICE: [softly] Au tout début, il y a presque quatre milliards d'années, la vie naît. Minuscule, dans l'eau. Et des milliards d'années passent avant les dinosaures.
 WEX: Avec Tritri ?

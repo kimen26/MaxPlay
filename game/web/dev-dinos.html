@@ -500,9 +500,21 @@ html, body {
   transition:transform 0.12s;
 }
 .chrono-dino-thumb:active { transform:scale(0.9); }
+.chrono-dino-static { cursor:default; }
+.chrono-dino-static:active { transform:none; }
 .journey-intro { margin:6px 12px 12px; padding:10px 12px; border-radius:12px; background:rgba(255,255,255,0.06); font-size:0.85rem; line-height:1.4; color:rgba(255,255,255,0.85); }
-.journey-ep { margin:0 10px 12px; border-radius:14px; overflow:hidden; background:rgba(0,0,0,0.18); }
-.journey-ep .chrono-header { cursor:default; }
+.journey-ep { margin:0 10px 12px; border-radius:14px; overflow:hidden; background:rgba(0,0,0,0.18); position:relative; transition:box-shadow 0.2s; }
+.journey-ep .chrono-header { cursor:default; position:relative; }
+/* Pastille d'état dans le header (✓ écouté · 👉 à écouter ensuite) */
+.ep-status { flex-shrink:0; width:30px; text-align:center; font-size:1.3rem; line-height:1; }
+.journey-ep.ep-done  .ep-status::after { content:'✅'; }
+.journey-ep.ep-next:not(.ep-done) .ep-status::after { content:'👉'; animation:ep-nudge 1s ease-in-out infinite; display:inline-block; }
+@keyframes ep-nudge { 0%,100%{ transform:translateX(0); } 50%{ transform:translateX(-4px); } }
+/* Épisode écouté : bouton verdit, légèrement estompé */
+.journey-ep.ep-done .v1-big { background:linear-gradient(135deg,#1e7e34,#28a745); opacity:0.92; }
+.journey-ep.ep-done .v1-big .dino-story-eq::before { content:'✓ '; }
+/* Prochain à écouter : liseré lumineux */
+.journey-ep.ep-next:not(.ep-done) { box-shadow:0 0 0 2px rgba(255,255,255,0.55), 0 0 14px rgba(255,255,255,0.25); }
 .chrono-dino-img { width:60px; height:44px; object-fit:contain; margin-bottom:4px; filter:drop-shadow(0 1px 4px rgba(0,0,0,0.5)); }
 .chrono-dino-name { font-size:0.66rem; font-weight:900; color:#fff; text-align:center; line-height:1.2; }
 .chrono-dino-thumb .card-badges { top:3px; right:3px; gap:3px; }
@@ -667,13 +679,12 @@ function buildMenu() {
   }
 }
 
-/* ── Helper pour les thumbs chrono avec badges ── */
+/* ── Helper pour les thumbs chrono (décoratives dans le voyage : image + nom, PAS de lien) ── */
 function buildChronoDinoThumb(d) {
   return `
-    <div class="chrono-dino-thumb" onclick="speakText('${esc(d.name)}');setTimeout(()=>showFiche2('${d.id}'),300)">
+    <div class="chrono-dino-thumb chrono-dino-static">
       <img class="chrono-dino-img" src="img/dinos/${d.png}" alt="${d.name}" loading="lazy" onerror="this.style.display='none'">
       <div class="chrono-dino-name">${d.name}</div>
-      ${buildBadges(d.id)}
     </div>
   `;
 }
@@ -687,36 +698,36 @@ const FAM_EMBLEME = {
   volant: 'Pteranodon.png', bizarre: 'Pachycephalosaurus.png',
 };
 function buildMenuFamille(el) {
-  if (typeof DINO_FAMILLES_INTRO !== 'undefined') {
-    const intro = document.createElement('div');
-    intro.className = 'fam-intro';
-    intro.textContent = '👋 ' + DINO_FAMILLES_INTRO;
-    intro.onclick = () => speakText(DINO_FAMILLES_INTRO);
-    el.appendChild(intro);
-  }
+  // Intro COURTE et accrocheuse (le détail vit dans chaque carte / au clic)
+  const intro = document.createElement('div');
+  intro.className = 'fam-intro';
+  intro.innerHTML = `<button class="fam-explic-play" aria-label="Écouter">🔊</button><p>Chaque famille a un nom rigolo de savant. Touche une carte pour découvrir le sien !</p>`;
+  intro.querySelector('.fam-explic-play').addEventListener('click', (ev) => { ev.stopPropagation(); speakText('Chaque famille a un nom rigolo de savant. Touche une carte pour découvrir le sien !'); });
+  el.appendChild(intro);
+
   DINO_FAMILLES.forEach(fam => {
     const count = DINOS.filter(d => d.famille === fam.id).length;
     if (!count) return;
     const png = FAM_EMBLEME[fam.id];
+    const title = fam.sci || fam.label;        // nom scientifique en GROS
+    const sub   = fam.label || '';             // surnom en sous-titre
     const card = document.createElement('div');
     card.className = 'fam-card';
     card.style.background = fam.bg;
     card.innerHTML = `
       <div class="fam-thumb">
-        ${png ? `<img src="img/dinos/${png}" alt="${fam.label}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : ''}
+        ${png ? `<img src="img/dinos/${png}" alt="${title}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : ''}
         <span class="fam-thumb-emoji" ${png ? 'style="display:none"' : ''}>${fam.emoji}</span>
       </div>
       <div class="fam-body">
-        <div class="fam-label">${fam.emoji} ${fam.label}</div>
-        ${fam.savant ? `<div class="fam-savant">on les appelle ${fam.savant}</div>` : ''}
+        <div class="fam-label">${fam.emoji} ${title}</div>
+        ${sub ? `<div class="fam-savant">${sub}</div>` : ''}
         <div class="fam-desc">${fam.desc}</div>
         <div class="fam-count">${count} dinos →</div>
       </div>
     `;
-    card.addEventListener('click', () => {
-      speakText(fam.savant ? `${fam.label}. On les appelle ${fam.savant}` : fam.label);
-      setTimeout(() => showGridFamille(fam.id), 400);
-    });
+    // Un seul son : on entre dans la grille, c'est elle qui dit le nom + l'origine grecque.
+    card.addEventListener('click', () => { setTimeout(() => showGridFamille(fam.id), 250); });
     el.appendChild(card);
   });
 }
@@ -733,10 +744,8 @@ function buildMenuRegime(el) {
       <div class="cat-label">${cat.label}</div>
       <div class="cat-count" style="display:block;font-size:0.72rem;opacity:0.6;margin-top:4px">${count} dinos</div>
     `;
-    card.addEventListener('click', () => {
-      speakText(cat.label);
-      setTimeout(() => showGridRegime(cat.id), 400);
-    });
+    // Un seul son : c'est la grille qui annonce (évite le double "Carnivore" + "Carnivore ! Tape…")
+    card.addEventListener('click', () => { setTimeout(() => showGridRegime(cat.id), 250); });
     el.appendChild(card);
   });
 }
@@ -777,24 +786,26 @@ const JOURNEY = [
 
 function buildMenuPeriode(el) {
   el.classList.add('mode-periode');
+  _journeyDone = new Set(); // reset de l'avancement à chaque ouverture du voyage
   const wrapper = document.createElement('div');
   wrapper.id = 'chrono-scroll';
   wrapper.style.cssText = 'flex:1;overflow-y:auto;overflow-x:hidden;padding:8px 0 30px 0;';
 
   wrapper.innerHTML =
-    `<div class="journey-intro">🦕 Le voyage dans le temps, raconté. Appuie sur <b>▶</b> pour écouter chaque époque, de la première vie jusqu'à aujourd'hui.</div>` +
+    `<div class="journey-intro">🦕 Le voyage dans le temps, raconté. Appuie sur <b>▶</b> pour écouter chaque époque, de la première vie jusqu'à aujourd'hui. La flèche <b>👉</b> montre où continuer.</div>` +
     JOURNEY.map(ep => {
       const dinos = ep.dinos.map(id => DINOS.find(d => d.id === id)).filter(Boolean);
       const dinosHtml = dinos.length
         ? `<div class="chrono-dinos">${dinos.map(buildChronoDinoThumb).join('')}</div>` : '';
       return `
-        <div class="chrono-periode journey-ep" style="border-left:5px solid ${ep.color}">
+        <div class="chrono-periode journey-ep" data-ep="${ep.id}" style="border-left:5px solid ${ep.color}">
           <div class="chrono-header" style="background:${ep.color}22">
             <div class="chrono-emoji">${ep.emoji}</div>
             <div class="chrono-info">
               <div class="chrono-label">${ep.label}</div>
               <div class="chrono-range">${ep.date}</div>
             </div>
+            <div class="ep-status" aria-hidden="true"></div>
           </div>
           <div style="padding:10px 12px 12px">
             <button class="v1-big" onclick="playRecit('${ep.id}',this)" id="recit-${ep.id}-btn" style="margin:0 0 ${dinosHtml ? '10px' : '0'}">
@@ -807,9 +818,30 @@ function buildMenuPeriode(el) {
     }).join('');
 
   el.appendChild(wrapper);
+  _refreshJourneyNext(); // pointe la 1re époque dès l'ouverture
 }
 
-// Joue le récit d'époque (audio/dinos/recit-<id>.mp3). Re-tap = stop.
+// Avancement du voyage : épisodes écoutés (mémoire de SESSION uniquement, vidé à chaque ouverture du menu).
+let _journeyDone = new Set();
+// Marque un épisode comme écouté + met à jour le fléchage "à écouter ensuite".
+function _markRecitDone(id) {
+  if (!id) return;
+  _journeyDone.add(id);
+  const ep = document.querySelector('.journey-ep[data-ep="' + id + '"]');
+  if (ep) ep.classList.add('ep-done');
+  _refreshJourneyNext();
+}
+// Pointe la prochaine époque non écoutée (premier épisode de JOURNEY pas dans _journeyDone).
+function _refreshJourneyNext() {
+  document.querySelectorAll('.journey-ep.ep-next').forEach(e => e.classList.remove('ep-next'));
+  const next = JOURNEY.find(ep => !_journeyDone.has(ep.id));
+  if (next) {
+    const el = document.querySelector('.journey-ep[data-ep="' + next.id + '"]');
+    if (el) el.classList.add('ep-next');
+  }
+}
+
+// Joue le récit d'époque (audio/dinos/recit-<id>.mp3). Re-tap = stop. Fin = marqué écouté.
 function playRecit(id, btnEl) {
   const src = 'audio/dinos/recit-' + id + '.mp3';
   stopSpeak();
@@ -819,7 +851,7 @@ function playRecit(id, btnEl) {
   _dinoAudio = new Audio(src);
   _dinoAudioBtn = btnEl || null;
   if (_dinoAudioBtn) _dinoAudioBtn.classList.add('playing');
-  _dinoAudio.onended = _stopDinoAudio;
+  _dinoAudio.onended = () => { _stopDinoAudio(); _markRecitDone(id); };
   _dinoAudio.onerror = _stopDinoAudio;
   _dinoAudio.play().catch(_stopDinoAudio);
 }
@@ -1027,7 +1059,8 @@ function showGridFamille(famId) {
   currentCatId = famId;
   showScreen('grid');
   const fam = DINO_FAMILLES.find(f => f.id === famId);
-  document.getElementById('grid-title').textContent = fam.emoji + ' ' + fam.label + (fam.savant ? ' — ' + fam.savant : '');
+  const title = fam.sci || fam.label;
+  document.getElementById('grid-title').textContent = fam.emoji + ' ' + title;
   const el = document.getElementById('grid-scroll');
   el.innerHTML = '';
   // Bandeau d'explication (pourquoi on les a regroupés) — réutilise fam.explic validé panel 3 LLM
@@ -1036,7 +1069,7 @@ function showGridFamille(famId) {
     banner.className = 'fam-explic-banner';
     banner.innerHTML = `
       <button class="fam-explic-play" aria-label="Écouter">🔊</button>
-      <p>${fam.explic}</p>
+      <p><b>${title}</b>${fam.label && fam.label !== title ? ` <span style="opacity:.7">— ${fam.label}</span>` : ''}<br>${fam.explic}</p>
     `;
     banner.querySelector('.fam-explic-play').addEventListener('click', (ev) => { ev.stopPropagation(); speakText(fam.explic); });
     el.appendChild(banner);
@@ -1060,7 +1093,9 @@ function showGridFamille(famId) {
     });
     el.appendChild(card);
   });
-  setTimeout(() => speakText(fam.label + ' ! Tape sur un dino pour tout savoir !'), 200);
+  // En entrant : on dit le nom scientifique + son origine grecque (Q3), une seule fois.
+  const intro = (fam.sci || fam.label) + ' ! ' + (fam.sci_sens || '');
+  setTimeout(() => speakText(intro.trim()), 200);
 }
 
 /* ── Retour depuis grille ── */

@@ -15,19 +15,19 @@ L'Archiviste vérifie **la structure** (équivalent du PMO côté forme) :
 - Les scripts respectent leur convention (render.py, render_*.py, build_*.py, compare_*.py) ?
 
 ### 2. Gabarit respecté
-- Structure `game/` conforme : `web/`, `phaser/`, `docs/`, `memory/`, `pmo/`, `tasks/` (stub redirection seulement) ?
-- `game/pmo/` contient bien les 5 fichiers attendus : INVARIANTS, decisions, sprint-log, backlog, audit-trail ?
+- Structure `studio/minijeux/` conforme : `web/`, `phaser/`, `docs/`, `memory/`, `pmo/`, `tasks/` (stub redirection seulement) ?
+- `studio/minijeux/pmo/` contient bien les 5 fichiers attendus : INVARIANTS, decisions, sprint-log, backlog, audit-trail ?
 - Aucun fichier prématuré dans les sous-dossiers ?
 - Pas de fichiers interdits dans tile-tools/ (cartography.json doit rester `_DEPRECATED`) ?
 
 ### 3. Refs cassées
-- Tous les liens markdown `[texte](chemin)` dans `game/**/*.md` pointent vers des fichiers existants ?
+- Tous les liens markdown `[texte](chemin)` dans `studio/minijeux/**/*.md` pointent vers des fichiers existants ?
 - Tous les agents `.claude/agents/game-*.md` référencent-ils des chemins valides ?
 - Les recettes Python ne référencent-elles que `vocab.py` (source unique) et pas `cartography.json` deprecated ?
-- `game/tasks/BACKLOG.md` → `game/pmo/backlog.md` (stub redirection présent ?)
+- `studio/minijeux/tasks/BACKLOG.md` → `studio/minijeux/pmo/backlog.md` (stub redirection présent ?)
 
 ### 4. Fichiers orphelins
-- Chaque fichier `.md` dans `game/` est-il référencé par au moins un INDEX ou un autre fichier ?
+- Chaque fichier `.md` dans `studio/minijeux/` est-il référencé par au moins un INDEX ou un autre fichier ?
 - Chaque recette `test_*.py` est-elle référencée par `patterns.js` / `recipes_data.js` ou un INDEX ?
 - Chaque MJ `mj-XX.html` est-il référencé par `web/index.html` (sauf si retiré du menu volontairement) ?
 

@@ -24,10 +24,10 @@ Tu es le **contrôleur qualité des mini-jeux HTML** MaxPlay. Tu évalues rigour
 
 ## 📚 Première action OBLIGATOIRE (lecture ordonnée)
 
-1. `game/memory/rules.md` — règles UX/péda non-négociables (zones tap, feedback, zéro pénalité…)
-2. `game/memory/stack.md` — règles techniques (busSVG, AudioContext, OGG+MP3…)
+1. `studio/minijeux/memory/rules.md` — règles UX/péda non-négociables (zones tap, feedback, zéro pénalité…)
+2. `studio/minijeux/memory/stack.md` — règles techniques (busSVG, AudioContext, OGG+MP3…)
 3. `site/PIPELINE-MEMORY-MJ.md` — frictions résolues + patterns user (pour ne pas refaire les erreurs passées)
-4. **`game/docs/jeux/figees/mj-XX.md`** s'il existe — décisions FIGÉES = LOI (Section 0)
+4. **`studio/minijeux/docs/jeux/figees/mj-XX.md`** s'il existe — décisions FIGÉES = LOI (Section 0)
 5. **Le fichier MJ à reviewer** — `site/mj-XX.html`
 6. **Optionnel** : 1 MJ similaire qui a passé en référence (ex mj-15 pour quiz visuel)
 
@@ -41,7 +41,7 @@ Tu es le **contrôleur qualité des mini-jeux HTML** MaxPlay. Tu évalues rigour
 
 | Étape | Action |
 |---|---|
-| 0.1 | Le fichier `game/docs/jeux/figees/mj-XX.md` existe-t-il ? Si **oui** → le lire INTÉGRALEMENT. Si **non** → noter « pas de figé » et passer à Section 1. |
+| 0.1 | Le fichier `studio/minijeux/docs/jeux/figees/mj-XX.md` existe-t-il ? Si **oui** → le lire INTÉGRALEMENT. Si **non** → noter « pas de figé » et passer à Section 1. |
 | 0.2 | Pour **CHAQUE** ligne `🔒` : citer la ligne du fichier figé **+** le passage exact du code `mj-XX.html` (n° de ligne) qui la respecte. |
 | 0.3 | Pour **CHAQUE** ligne `❌ 🔒` : prouver que le code ne fait **PAS** la chose interdite (n° de ligne à l'appui). |
 | 0.4 | **Verdict** : une seule ligne `🔒` violée OU non vérifiable = **FAIL GLOBAL IMMÉDIAT**. Ne pas évaluer Sections 1-5 tant que Section 0 ne passe pas. CRITIQUE automatique. |
@@ -114,8 +114,8 @@ C'est un **diff sémantique code ↔ loi figée**, ligne par ligne, citations ob
 
 | Check | Règle | Si violé |
 |---|---|---|
-| **Spec existe** | `game/tests/mj-XX.spec.mjs` existe pour ce MJ | HAUTE (BASSE si tweak cosmétique trivial) |
-| **Spec passe** | `cd game/tests && npm run mj:test mj-XX` → VERT (le demander au main agent si tu ne peux pas l'exécuter) | CRITIQUE si rouge |
+| **Spec existe** | `studio/minijeux/tests/mj-XX.spec.mjs` existe pour ce MJ | HAUTE (BASSE si tweak cosmétique trivial) |
+| **Spec passe** | `cd studio/minijeux/tests && npm run mj:test mj-XX` → VERT (le demander au main agent si tu ne peux pas l'exécuter) | CRITIQUE si rouge |
 | **Couvre la victoire** | Le spec rejoue un chemin gagnant et asserte l'état de victoire visible/non-vide | HAUTE |
 | **Couvre le figé** | ≥ 1 assert par ligne 🔒 du fichier `figees/mj-XX.md` | HAUTE |
 | **Smoke** | Le spec échoue sur toute `console.error`/`pageerror` | HAUTE |

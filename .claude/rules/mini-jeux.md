@@ -3,25 +3,25 @@ paths:
   - "site/mj-*.html"
   - "site/index.html"
   - "site/js/**"
-  - "game/docs/jeux/**"
+  - "studio/minijeux/docs/jeux/**"
 ---
 
 # Mini-jeux HTML — règles auto-chargées
 
 > Chargé automatiquement dès que Claude touche un mini-jeu HTML, ses assets JS, ou ses specs.
-> Source de vérité : [`game/pmo/INVARIANTS.md`](../../game/pmo/INVARIANTS.md) + [`game/memory/rules.md`](../../game/memory/rules.md) + [`game/memory/stack.md`](../../game/memory/stack.md).
+> Source de vérité : [`studio/minijeux/pmo/INVARIANTS.md`](../../studio/minijeux/pmo/INVARIANTS.md) + [`studio/minijeux/memory/rules.md`](../../studio/minijeux/memory/rules.md) + [`studio/minijeux/memory/stack.md`](../../studio/minijeux/memory/stack.md).
 
 ## ⛔ AVANT DE MODIFIER UN mj-XX.html — LECTURE OBLIGATOIRE
 
 Avant **TOUT** `Edit`/`Write` sur `site/mj-XX.html` :
 
-1. Lire [`game/docs/jeux/figees/mj-XX.md`](../../game/docs/jeux/figees/) s'il existe (le hook `figees-injector.ps1` le réinjecte automatiquement dans le contexte — le lire, pas l'ignorer).
+1. Lire [`studio/minijeux/docs/jeux/figees/mj-XX.md`](../../studio/minijeux/docs/jeux/figees/) s'il existe (le hook `figees-injector.ps1` le réinjecte automatiquement dans le contexte — le lire, pas l'ignorer).
 2. Chaque ligne **🔒 est LOI**. Chaque ligne **❌ 🔒 est une régression déjà commise — INTERDITE**.
 3. Si ton changement contredit une ligne 🔒 → **STOP**, demande à Papa Yann de défiger explicitement. Tu ne défiges JAMAIS de toi-même.
 4. Si le fichier n'existe pas et que tu codes un comportement **validé par Papa Yann** → le créer via `game-mj-pmo` (sinon perdu au prochain `/compact`).
 5. Quand Papa Yann dit « OK c'est figé / validé / on fige / ne change plus X » → invoquer `game-mj-pmo` IMMÉDIATEMENT pour graver la décision **mot pour mot** dans `figees/mj-XX.md`.
 
-> Système créé 2026-05-15 suite incident MJ-21 (décision « bus en bas » répétée >10× puis régressée). Triple verrou : hook PreToolUse + cette règle + ligne LOI dans `game/CLAUDE.md`. Vérification : `game-mj-reviewer` Section 0.
+> Système créé 2026-05-15 suite incident MJ-21 (décision « bus en bas » répétée >10× puis régressée). Triple verrou : hook PreToolUse + cette règle + ligne LOI dans `studio/minijeux/CLAUDE.md`. Vérification : `game-mj-reviewer` Section 0.
 
 ## Règles UX NON NÉGOCIABLES (cible 3.5-4 ans)
 
@@ -42,7 +42,7 @@ Avant **TOUT** `Edit`/`Write` sur `site/mj-XX.html` :
 
 - **TOUJOURS** utiliser `LIGNES` de [`site/js/data.js`](../../site/js/data.js)
 - **JAMAIS** de hex couleur hardcodé dans le HTML/JS du jeu
-- Source de vérité IDFM : [`game/docs/ratp-colors.json`](../../game/docs/ratp-colors.json) (26 actives + 362 réf)
+- Source de vérité IDFM : [`studio/minijeux/docs/ratp-colors.json`](../../studio/minijeux/docs/ratp-colors.json) (26 actives + 362 réf)
 
 ## Règles HTML local (gravée 2026-05)
 
@@ -57,12 +57,12 @@ Avant **TOUT** `Edit`/`Write` sur `site/mj-XX.html` :
 **Avant CHAQUE `git push` touchant `site/mj-XX.html`** :
 
 ```
-cd game/tests && npm run mj:test mj-XX
+cd studio/minijeux/tests && npm run mj:test mj-XX
 ```
 
 - **Vert** → push autorisé. **Rouge** → NE PAS pusher, corriger d'abord.
 - Stack : Playwright 1.60+ + Chromium (réel, headless). Pas jsdom (n'attrape pas SVG/animation).
-- 1 spec par MJ : `game/tests/mj-XX.spec.mjs` (~30-50 lignes : smoke console + chemin gagnant scripté + 1 assert par ligne 🔒 du fichier figé). Modèle : `mj-21.spec.mjs`.
+- 1 spec par MJ : `studio/minijeux/tests/mj-XX.spec.mjs` (~30-50 lignes : smoke console + chemin gagnant scripté + 1 assert par ligne 🔒 du fichier figé). Modèle : `mj-21.spec.mjs`.
 - Un MJ sans spec qui passe au harnais = un MJ qu'on ne pushe pas (sauf tweak cosmétique trivial).
 - **Règle 2-strikes** : 2e commit-fix sur le même symptôme → ajouter d'abord un cas qui reproduit le bug dans le spec (on ne teste pas un bug qu'on ne comprend pas → force la cause racine).
 
@@ -70,9 +70,9 @@ cd game/tests && npm run mj:test mj-XX
 
 ```
 0. game-conseiller  → cadrage 1 écran (layout+méca+péda) validé par Papa Yann AVANT code
-1. game-mj-pmo      → figeage initial game/docs/jeux/figees/mj-XX.md
-2. game-dev         → code HTML vanilla + game/tests/mj-XX.spec.mjs (ensemble)
-3. harnais          → cd game/tests && npm run mj:test mj-XX  (VERT obligatoire avant push)
+1. game-mj-pmo      → figeage initial studio/minijeux/docs/jeux/figees/mj-XX.md
+2. game-dev         → code HTML vanilla + studio/minijeux/tests/mj-XX.spec.mjs (ensemble)
+3. harnais          → cd studio/minijeux/tests && npm run mj:test mj-XX  (VERT obligatoire avant push)
 4. game-mj-reviewer → Section 0 (figé) + checklist 5 sections + Section 6 (couverture spec)
 5. Papa Yann valide → juge le RESSENTI (plus le débogueur) → game-mj-pmo grave
 ```
@@ -139,7 +139,7 @@ Voie express (patch/bugfix MJ existant) : lire figé → fix → harnais vert �
 ## État jeux
 
 - **22 mini-jeux actifs** (MJ-01 à MJ-20 + max-adventure + mj-pose-tiles)
-- **Retirés du menu** : MJ-02/03/07/10 (voir [`game/memory/state.md`](../../game/memory/state.md))
+- **Retirés du menu** : MJ-02/03/07/10 (voir [`studio/minijeux/memory/state.md`](../../studio/minijeux/memory/state.md))
 - **Bugs critiques** : voir state.md (EP-024 Max Adventure, EP-022 MJ-04 boucle)
 
 ## Anti-patterns sur mini-jeux
@@ -154,10 +154,10 @@ Voie express (patch/bugfix MJ existant) : lire figé → fix → harnais vert �
 
 ## Cross-références
 
-- État déploiement : [`game/memory/state.md`](../../game/memory/state.md)
-- Règles UX détaillées : [`game/memory/rules.md`](../../game/memory/rules.md)
-- Stack technique : [`game/memory/stack.md`](../../game/memory/stack.md)
-- Specs jeu par jeu : [`game/docs/jeux/INDEX.md`](../../game/docs/jeux/INDEX.md)
+- État déploiement : [`studio/minijeux/memory/state.md`](../../studio/minijeux/memory/state.md)
+- Règles UX détaillées : [`studio/minijeux/memory/rules.md`](../../studio/minijeux/memory/rules.md)
+- Stack technique : [`studio/minijeux/memory/stack.md`](../../studio/minijeux/memory/stack.md)
+- Specs jeu par jeu : [`studio/minijeux/docs/jeux/INDEX.md`](../../studio/minijeux/docs/jeux/INDEX.md)
 - Sous-PMO MJ : [`.claude/agents/game-mj-pmo.md`](../agents/game-mj-pmo.md)
 
 ---

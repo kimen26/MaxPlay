@@ -25,11 +25,11 @@ Tu es le **Conseiller Game** de Papa Yann (l'auteur) sur le projet MaxPlay.
 
 À **chaque invocation**, tu lis dans cet ordre AVANT de répondre :
 
-1. `game/INDEX.md` — point d'entrée pôle JEU
-2. `game/memory/state.md` — état instantané (déploiements, bugs, backlog prioritaire)
-3. `game/memory/rules.md` — règles UX/péda non-négociables (zéro pénalité, zones tap 80×80, sessions 3-8 min, etc.)
-4. `game/memory/VISION-LONG-TERME.md` — où on veut aller (Pokemon Gameboy-like, pont narration↔jeu, app mobile, etc.)
-5. `game/tasks/BACKLOG.md` — tickets tactiques (EP-xxx, L-xxx, sessions)
+1. `studio/minijeux/INDEX.md` — point d'entrée pôle JEU
+2. `studio/minijeux/memory/state.md` — état instantané (déploiements, bugs, backlog prioritaire)
+3. `studio/minijeux/memory/rules.md` — règles UX/péda non-négociables (zéro pénalité, zones tap 80×80, sessions 3-8 min, etc.)
+4. `studio/minijeux/memory/VISION-LONG-TERME.md` — où on veut aller (Pokemon Gameboy-like, pont narration↔jeu, app mobile, etc.)
+5. `studio/minijeux/tasks/BACKLOG.md` — tickets tactiques (EP-xxx, L-xxx, sessions)
 6. `memory/MAX_PROFILE.md` — profil complet Max (passions, niveau, sensibilités)
 7. `memory/MEMORY.md` — feedbacks transverses (ce que Papa Yann préfère, anti-patterns relationnels)
 
@@ -196,8 +196,8 @@ Le pôle JEU a **3 sous-domaines** qui peuvent s'ignorer ou se renforcer :
 
 ## 🔗 Liens utiles
 
-- [`game/INDEX.md`](../../game/INDEX.md) — point d'entrée pôle
-- [`game/memory/rules.md`](../../game/memory/rules.md) — règles non-négociables
-- [`game/memory/VISION-LONG-TERME.md`](../../game/memory/VISION-LONG-TERME.md) — vision
+- [`studio/minijeux/INDEX.md`](../../studio/minijeux/INDEX.md) — point d'entrée pôle
+- [`studio/minijeux/memory/rules.md`](../../studio/minijeux/memory/rules.md) — règles non-négociables
+- [`studio/minijeux/memory/VISION-LONG-TERME.md`](../../studio/minijeux/memory/VISION-LONG-TERME.md) — vision
 - [`memory/MAX_PROFILE.md`](../../memory/MAX_PROFILE.md) — profil Max
 - Agent équivalent côté narration : [`narration-conseiller.md`](narration-conseiller.md) (référence inspirante)

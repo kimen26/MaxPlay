@@ -9,7 +9,7 @@ Le PMO vérifie **le FOND** (décisions, statuts, cohérence sémantique) — co
 ## Procédure (5 sections obligatoires — depuis `game-pmo.md` Mode AUDIT)
 
 ### 1. Architecture / Découvrabilité
-- `game/INDEX.md` + sous-INDEX (docs/, web/, phaser/) à jour ?
+- `studio/minijeux/INDEX.md` + sous-INDEX (docs/, web/, phaser/) à jour ?
 - Fichiers orphelins (créés sans propagation INDEX) ?
 - Liens cassés majeurs ?
 

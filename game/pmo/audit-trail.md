@@ -2,7 +2,7 @@
 
 > Trace des audits PMO + analyses cause racine. À lire pour comprendre **pourquoi** une dette de coordination s'accumule.
 >
-> Équivalent côté Narration : [`../../narration/pmo/audit-trail.md`](../../narration/pmo/audit-trail.md).
+> Équivalent côté Narration : [`../../studio/narration/pmo/audit-trail.md`](../../studio/narration/pmo/audit-trail.md).
 > Créé 2026-05-13 lors de l'harmonisation Game ↔ Narration (Phase A2).
 
 ---
@@ -61,14 +61,14 @@
 
 **Phase D — INDEX et docs** :
 13. ✅ `game/INDEX.md` refondu (arborescence pmo/, équipe complète)
-14. ✅ `game/EQUIPE.md` créé (équivalent `narration/equipe/ORGANIGRAMME.md`)
+14. ✅ `game/EQUIPE.md` créé (équivalent `studio/narration/equipe/ORGANIGRAMME.md`)
 15. ✅ `CLAUDE.md` racine MAJ (section Game enrichie comme Narration)
 
 **Reste en queue** :
-- 6 findings self-challenge Narration (gravés dans `narration/pmo/decisions.md` § Questions ouvertes) :
+- 6 findings self-challenge Narration (gravés dans `studio/narration/pmo/decisions.md` § Questions ouvertes) :
   - Suppression vs archive `narration-architecte.md`
-  - Scission `narration/pmo/audit-trail.md` (~450 lignes)
-  - Scission `narration/pmo/decisions.md` (~1265 lignes)
+  - Scission `studio/narration/pmo/audit-trail.md` (~450 lignes)
+  - Scission `studio/narration/pmo/decisions.md` (~1265 lignes)
   - Gestion `memoire-architecte.md` non maintenue
   - Conseiller : matière statique gravée vs pointeur ?
   - Auto-déclencher `/narration-pmo-audit` proactivement ?

@@ -49,7 +49,7 @@ Ces overrides vivent dans [`../../cross-culture/castings-nationaux/<pays>/voix-n
 
 - Pilier Personnages : [`../INDEX.md`](../INDEX.md)
 - Voix incarnées (10 + Wex) : [`../type-01/voix.md`](../type-01/voix.md) … [`../wex/voix.md`](../wex/voix.md)
-- Agent audio : [`.claude/agents/narration-audio.md`](../../../.claude/agents/narration-audio.md)
+- Agent audio : [`.claude/agents/narration-audio.md`](../../../../.claude/agents/narration-audio.md)
 - MCP TTS : `mcp__llm-copains__tts_elevenlabs`
 - 🎙️ **Skills globaux ElevenLabs** (auto-trigger sur mots-clés audio/voix) :
   - `~/.claude/skills/elevenlabs-voice-design/SKILL.md` — **CRÉATION** d'une voix (prompts Voice Design, multilingue)

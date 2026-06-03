@@ -1,5 +1,5 @@
 # Stop hook — narration-pmo-check.ps1
-# Si le tour a modifié des fichiers narration/** ou .claude/agents/narration-*.md
+# Si le tour a modifié des fichiers studio/narration/** ou .claude/agents/narration-*.md
 # ET que l'agent narration-pmo n'a pas été invoqué dans ce tour,
 # bloque la fin de tour avec un message rappelant d'invoquer le PMO.
 #
@@ -79,7 +79,7 @@ foreach ($line in $lines) {
 if ($narration_touched -and -not $pmo_invoked) {
     # Bloque la fin de tour avec message vers stderr (Claude le voit)
     $msg = @"
-[hook narration-pmo-check] Mode NARRATION détecté ce tour : des fichiers narration/** ou agents narration-* ont été modifiés.
+[hook narration-pmo-check] Mode NARRATION détecté ce tour : des fichiers studio/narration/** ou agents narration-* ont été modifiés.
 
 Avant de rendre la main à l'auteur, invoquer l'agent narration-pmo (Haiku) avec la procédure formelle 2026-05-08 :
   - Classification du tour (6 catégories : DÉCISION / LEÇON / TODO / QUESTION / INFO / TRAITEMENT IMMÉDIAT)

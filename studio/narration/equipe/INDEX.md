@@ -31,7 +31,7 @@
 | [`cartographie-domaines.md`](cartographie-domaines.md) | Où va quelle info, qui décide, invariants | Directeur + Archiviste |
 | [`patte-narrative-maxplay.md`](patte-narrative-maxplay.md) | Patte B+D+C : Kishōtenketsu noyau + tranche de vie voix + cycle cadre. Outils E/A doux. F écartée. ✅ Créé 2026-04-30. | Conseiller + Directeur |
 | [`patte-papa-yann.md`](patte-papa-yann.md) | **Patte de l'auteur** — 7 reproches récurrents + 14 critères checklist anti-Papa Yann (anti-jugement, anti-littéraire, cohérence stricte, etc.). ✅ Créé 2026-04-30 depuis relectures 001+002+003. | Papa Yann + Directeur + GateKeeper |
-| [`../../.claude/agents/README.md`](../../.claude/agents/README.md) | **⚠ Règle frontmatter YAML agents** — interdits `:` interne + em-dash `—` + `×` dans description non quotée. Diagnostic + correctif documenté 2026-05-02. À LIRE avant de créer/modifier un agent. | Tous |
+| [`../../.claude/agents/README.md`](../../../.claude/agents/README.md) | **⚠ Règle frontmatter YAML agents** — interdits `:` interne + em-dash `—` + `×` dans description non quotée. Diagnostic + correctif documenté 2026-05-02. À LIRE avant de créer/modifier un agent. | Tous |
 
 ### Templates (gabarits réutilisables)
 
@@ -54,7 +54,7 @@
 
 | Fichier | Sert à |
 |---|---|
-| [`../../infra/mcp/MODELS.md`](../../infra/mcp/MODELS.md) | Source de vérité des modèles LLM utilisés (Grok 4.3, Kimi K2.6, DeepSeek V4-Pro). Dépréciations à surveiller. Historique des changements. |
+| [`../../infra/mcp/MODELS.md`](../../../infra/mcp/MODELS.md) | Source de vérité des modèles LLM utilisés (Grok 4.3, Kimi K2.6, DeepSeek V4-Pro). Dépréciations à surveiller. Historique des changements. |
 
 ### Mémoires d'agents
 

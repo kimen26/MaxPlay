@@ -4,7 +4,7 @@
 > **En cas de reboot :** lire la dernière entrée (haut du fichier), section "État au reboot".
 > Les entrées les plus récentes sont en haut.
 >
-> Équivalent côté Narration : [`../../narration/pmo/sprint-log.md`](../../narration/pmo/sprint-log.md).
+> Équivalent côté Narration : [`../../studio/narration/pmo/sprint-log.md`](../../studio/narration/pmo/sprint-log.md).
 > Créé 2026-05-13 (extraction depuis `memory/state.md` lors de l'harmonisation Game ↔ Narration).
 
 ---
@@ -190,7 +190,7 @@
 
 **État au reboot** :
 - Archi CLAUDE.md alignée doc Anthropic officielle (nested + path-scoped)
-- Zéro coût contexte tant que fichier sous `game/` ou `narration/` non touché
+- Zéro coût contexte tant que fichier sous `game/` ou `studio/narration/` non touché
 - Source de vérité 1/N préservée (INVARIANTS ← rules ← skills)
 - Commandes `/game-pmo-audit` et `/narration-pmo-audit` préfixées automatiquement en signal détection
 
@@ -217,7 +217,7 @@
 - Pôle JEU symétrique avec pôle Narration : PMO + Archiviste proactifs (binôme FOND/FORME) + INVARIANTS + audit-trail
 - Toutes les commandes sont préfixées par pôle : `<pôle>-<agent>-<action>`
 - 5 trous critiques côté Game fermés
-- 6 questions self-challenge Narration gravées en queue dans `narration/pmo/decisions.md`
+- 6 questions self-challenge Narration gravées en queue dans `studio/narration/pmo/decisions.md`
 
 ---
 

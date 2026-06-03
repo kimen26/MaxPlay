@@ -49,10 +49,10 @@ maintenu_par: Auteur (John) + agent narration-pmo
 | Grok | 2 | `grok-4.3` `reasoning_effort: low` × déf/reco | libre — calibration température | `ask_grok` |
 
 **Total : 13 libres + 1 guidé = 14 versions.**
-Référence températures : [../../narration/equipe/references/temperatures-llm.md](../../narration/equipe/references/temperatures-llm.md).
-Détail complet : [../../narration/pmo/INVARIANTS.md](../../narration/pmo/INVARIANTS.md) § *Casting writers étape 4*.
+Référence températures : [../../studio/narration/equipe/references/temperatures-llm.md](../../studio/narration/equipe/references/temperatures-llm.md).
+Détail complet : [../../studio/narration/pmo/INVARIANTS.md](../../studio/narration/pmo/INVARIANTS.md) § *Casting writers étape 4*.
 
-Cf. [equipe/PROCESS.md](../../narration/equipe/PROCESS.md) §4.
+Cf. [equipe/PROCESS.md](../../studio/narration/equipe/PROCESS.md) §4.
 
 ---
 
@@ -61,7 +61,7 @@ Cf. [equipe/PROCESS.md](../../narration/equipe/PROCESS.md) §4.
 | Date | Action |
 |------|--------|
 | **2026-05-25** | Kimi K2 series **discontinuation** (K2.6 reste OK, mais surveiller les release notes) |
-| **2026-05-31** | Fin promo DeepSeek -75% sur V4-Pro → vérifier coût, basculer V4-Flash si trop cher. Rappel dans [pmo/sprint-log.md](../../narration/pmo/sprint-log.md) |
+| **2026-05-31** | Fin promo DeepSeek -75% sur V4-Pro → vérifier coût, basculer V4-Flash si trop cher. Rappel dans [pmo/sprint-log.md](../../studio/narration/pmo/sprint-log.md) |
 | **2026-07-24** | Dépréciation noms `deepseek-chat` / `deepseek-reasoner` côté DeepSeek (déjà migrés ici, OK) |
 
 ---
@@ -74,7 +74,7 @@ Chaque appel à `ask_kimi`, `ask_kimi_payant`, `ask_deepseek`, `ask_grok` est **
 - frontmatter : `tool`, `model`, `date` ISO, `request_body` (JSON)
 - corps : réponse brute du LLM
 
-**Pourquoi** : si le main thread Claude Code reçoit le texte mais crash/oublie/manque de contexte avant le `Write` tool de sauvegarde dans `narration/stories/...`, le texte reste **récupérable** sur le disque local. Filet contre la perte d'une génération créative coûteuse.
+**Pourquoi** : si le main thread Claude Code reçoit le texte mais crash/oublie/manque de contexte avant le `Write` tool de sauvegarde dans `studio/narration/stories/...`, le texte reste **récupérable** sur le disque local. Filet contre la perte d'une génération créative coûteuse.
 
 **Garanties** :
 - Logging silent fail — n'interrompt JAMAIS l'appel principal en cas d'erreur d'écriture
@@ -99,7 +99,7 @@ Chaque appel à `ask_kimi`, `ask_kimi_payant`, `ask_deepseek`, `ask_grok` est **
 
 **Pourquoi** : alternative à donner le droit d'écriture filesystem aux LLM distants (option B) — moins risqué (pas de prompt injection vers le filesystem, pas d'écrasement involontaire), tout en couvrant 95% du cas d'usage : récupérer un texte si main thread crash avant `Write`.
 
-**Liens** : DEC à ajouter dans `narration/pmo/decisions.md` 2026-05-13.
+**Liens** : DEC à ajouter dans `studio/narration/pmo/decisions.md` 2026-05-13.
 
 ---
 
@@ -117,11 +117,11 @@ Chaque appel à `ask_kimi`, `ask_kimi_payant`, `ask_deepseek`, `ask_grok` est **
 - L'endpoint coding gratuit `kimi.com/coding` n'expose pas `top_p` ni mode thinking.
 - Moonshot recommande officiellement `top_p: 0.95` couplé à la température pour le créatif. Et K2.6 a un vrai mode thinking activable via API officielle.
 - Pour préserver les usages gratuits existants et n'engager des coûts que sur les 2 writers qui en ont vraiment besoin → 2 MCP distincts avec env var distincte.
-- Refonte casting v2 (10 → 14 writers) cf. [decisions.md](../../narration/pmo/decisions.md) 2026-05-12.
+- Refonte casting v2 (10 → 14 writers) cf. [decisions.md](../../studio/narration/pmo/decisions.md) 2026-05-12.
 
 **Liens** :
 - Ticket résolu : ARCHI-009 dans backlog.
-- Référence températures officielles : [../../narration/equipe/references/temperatures-llm.md](../../narration/equipe/references/temperatures-llm.md)
+- Référence températures officielles : [../../studio/narration/equipe/references/temperatures-llm.md](../../studio/narration/equipe/references/temperatures-llm.md)
 
 ---
 
@@ -144,7 +144,7 @@ Chaque appel à `ask_kimi`, `ask_kimi_payant`, `ask_deepseek`, `ask_grok` est **
 
 **Liens** :
 - Commit : à venir
-- Décision PMO : [pmo/decisions.md](../../narration/pmo/decisions.md) entrée 2026-05-06
+- Décision PMO : [pmo/decisions.md](../../studio/narration/pmo/decisions.md) entrée 2026-05-06
 - Mémoire obsolète archivée : `feedback_kimi_mode_code.md` (mode `story` n'existe plus)
 
 ---
@@ -160,7 +160,7 @@ Validé sur Tour 3 (004 pont-casse-temperatures) : convergence kimi-run1 #1 conf
 
 1. Modifier `infra/mcp/server.ts` (le nom du modèle, l'endpoint, ou les params)
 2. Mettre à jour ce fichier (`MODELS.md`) — tableau + historique
-3. Notifier le PMO : entrée datée dans `narration/pmo/decisions.md`
+3. Notifier le PMO : entrée datée dans `studio/narration/pmo/decisions.md`
 4. **Reboot Claude Code** pour recharger le serveur MCP
 5. Tester via `ToolSearch` que le schéma exposé est bien le nouveau
 
@@ -170,6 +170,6 @@ Validé sur Tour 3 (004 pont-casse-temperatures) : convergence kimi-run1 #1 conf
 
 - Code MCP : [server.ts](server.ts)
 - Bot Telegram (consommateur) : [../bot/index.ts](../bot/index.ts)
-- Cartographie agents : [../../narration/equipe/cartographie-domaines.md](../../narration/equipe/cartographie-domaines.md)
-- Process : [../../narration/equipe/PROCESS.md](../../narration/equipe/PROCESS.md)
-- Décisions : [../../narration/pmo/decisions.md](../../narration/pmo/decisions.md)
+- Cartographie agents : [../../studio/narration/equipe/cartographie-domaines.md](../../studio/narration/equipe/cartographie-domaines.md)
+- Process : [../../studio/narration/equipe/PROCESS.md](../../studio/narration/equipe/PROCESS.md)
+- Décisions : [../../studio/narration/pmo/decisions.md](../../studio/narration/pmo/decisions.md)

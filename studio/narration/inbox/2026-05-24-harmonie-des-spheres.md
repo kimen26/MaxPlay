@@ -58,7 +58,7 @@ Très proche de 2 Enoch : Dieu a tout réglé avec une précision parfaite (mouv
 
 ### 🎯 Wex = celui qui entend la musique des sphères
 
-C'est l'angle le plus fort. Wex est déjà « observateur quantique / catalyseur / relieur » (cf. [`project_wex_world_observateur.md`](../../memory/) dans la mémoire utilisateur). L'Harmonie des Sphères donne une **matière sensorielle** à ce rôle :
+C'est l'angle le plus fort. Wex est déjà « observateur quantique / catalyseur / relieur » (cf. [`project_wex_world_observateur.md`](../../../memory) dans la mémoire utilisateur). L'Harmonie des Sphères donne une **matière sensorielle** à ce rôle :
 
 - Wex perçoit un **bourdonnement / accord** que les autres n'entendent pas.
 - Quand l'ordre est respecté → la musique est belle (claire, accordée).

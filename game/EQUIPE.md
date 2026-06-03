@@ -5,7 +5,7 @@
 > **Pour les chiffres clés**, voir [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md).
 > Mis à jour 2026-05-13 (harmonisation Game ↔ Narration — création game-archiviste, refonte structure pmo/).
 >
-> Équivalent côté Narration : [`../narration/equipe/ORGANIGRAMME.md`](../narration/equipe/ORGANIGRAMME.md).
+> Équivalent côté Narration : [`../studio/narration/equipe/ORGANIGRAMME.md`](../studio/narration/equipe/ORGANIGRAMME.md).
 
 ---
 

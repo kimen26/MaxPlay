@@ -38,6 +38,6 @@ Si match dans une ligne `description:` → cause probable.
 
 ## Liens
 
-- Liste des agents narration et leur rôle : [`narration/equipe/ORGANIGRAMME.md`](../../narration/equipe/ORGANIGRAMME.md)
-- Index équipe narration : [`narration/equipe/INDEX.md`](../../narration/equipe/INDEX.md)
-- Process militaire 9 étapes : [`narration/equipe/PROCESS.md`](../../narration/equipe/PROCESS.md)
+- Liste des agents narration et leur rôle : [`studio/narration/equipe/ORGANIGRAMME.md`](../../studio/narration/equipe/ORGANIGRAMME.md)
+- Index équipe narration : [`studio/narration/equipe/INDEX.md`](../../studio/narration/equipe/INDEX.md)
+- Process militaire 9 étapes : [`studio/narration/equipe/PROCESS.md`](../../studio/narration/equipe/PROCESS.md)

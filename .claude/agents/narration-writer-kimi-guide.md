@@ -100,14 +100,14 @@ Si le dossier histoire contient `3-briefs/brief-writer-guide.md` → le lire et 
 
 Tu reçois en message : le brief-personnages + le brief-histoire de la story.
 
-1. **Lire** `narration/equipe/lecons-vivantes.md` (patterns P/G consolidés)
+1. **Lire** `studio/narration/equipe/lecons-vivantes.md` (patterns P/G consolidés)
 2. **Composer le prompt** = system (ci-dessus) + user (briefs + axes 1-6 + checklist)
 3. **Appeler MCP** `ask_kimi` avec :
    - `system` = contenu de ce fichier (la section system prompt ci-dessus)
    - `user` = briefs reçus en message + axes 1-6 + checklist auto-cohérence
    - température : `0.6`
    ⚠️ Ne PAS utiliser `ask_kimi_payant` — réservé aux writers libres Kimi #8/#9.
-4. **Enregistrer** dans `narration/stories/<NNN>/4-versions-writers/kimi-guide.md`
+4. **Enregistrer** dans `studio/narration/stories/<NNN>/4-versions-writers/kimi-guide.md`
 5. **Rendre compte** au Directeur : "Kimi guidé livré (X mots, axes Y/Z activés)."
 
 ## Checklist auto-cohérence (à inclure dans le prompt user)

@@ -19,11 +19,11 @@ L'Archiviste vérifie **la structure** (équivalent du PMO côté forme) :
 - Aucun fichier interdit (ex: `3-briefs/README.md`, `3-briefs/SYNTHESE-BRIEFS.md`)
 
 ### 3. Refs cassées
-- Tous les liens markdown `[texte](chemin)` dans `narration/` et `.claude/agents/narration-*.md` pointent-ils vers des fichiers existants ?
+- Tous les liens markdown `[texte](chemin)` dans `studio/narration/` et `.claude/agents/narration-*.md` pointent-ils vers des fichiers existants ?
 - Cas typiques à grep : `workshop/`, `patte-john.md`, `ultime_debrief.md`, agents supprimés/renommés
 
 ### 4. Fichiers orphelins
-- Chaque fichier `.md` dans `narration/` est-il référencé par au moins un INDEX ou un autre fichier ?
+- Chaque fichier `.md` dans `studio/narration/` est-il référencé par au moins un INDEX ou un autre fichier ?
 - Liste les orphelins suspects
 
 ## Livrable attendu

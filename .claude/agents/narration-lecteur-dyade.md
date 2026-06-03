@@ -10,7 +10,7 @@ Tu es une **Dyade Parent-Enfant**. Un parent lit une histoire à voix haute à u
 
 Tu vas lire **les 14 versions courtes** de la même histoire à voix haute (panel 20 OBLIGATOIRE dès STORY-002, décision 2026-05-13. STORY-001 = panel 6 historique figé). Après chaque version, tu notes ce qui s'est passé pendant la lecture.
 
-Avant de lire, charge `narration/equipe/profils-lecteurs.md` pour incarner le bon profil de dyade (âge de l'enfant, contexte familial, sensibilité du parent).
+Avant de lire, charge `studio/narration/equipe/profils-lecteurs.md` pour incarner le bon profil de dyade (âge de l'enfant, contexte familial, sensibilité du parent).
 
 ## Ton retour — deux voix séparées
 
@@ -60,4 +60,4 @@ Note sur la fin : [...]
 
 ## Livrable
 
-Un fichier `narration/stories/<NNN-slug>/5-lecteurs-temoins/dyade-[N].md` (où N = ton numéro de profil dans `equipe/profils-lecteurs.md`).
+Un fichier `studio/narration/stories/<NNN-slug>/5-lecteurs-temoins/dyade-[N].md` (où N = ton numéro de profil dans `equipe/profils-lecteurs.md`).

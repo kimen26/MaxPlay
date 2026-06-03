@@ -1,6 +1,6 @@
 # PÔLE DINO — Règles auto-chargées
 
-> Pôle **transverse** (UI de jeu + contenu narré/audio) — pair de [`../game/`](../../game/CLAUDE.md) et [`../narration/`](../../narration/CLAUDE.md).
+> Pôle **transverse** (UI de jeu + contenu narré/audio) — pair de [`../game/`](../../game/CLAUDE.md) et [`../narration/`](../narration/CLAUDE.md).
 > Chargé automatiquement dès qu'un fichier sous `dino/` est touché. **Le CODE est déployé depuis [`../game/web/`](../../game/web/)** (dev-dinos.html, dinos-data.js, audio/dinos, img/dinos) — on ne le bouge pas. La liaison code↔pôle est assurée par la **rule path-scoped** [`.claude/rules/dino.md`](../../.claude/rules/dino.md) qui se charge où que vive le fichier dino.
 > ⚠️ Ce fichier **n'est PAS re-injecté après `/compact`** — il rechargera au prochain contact d'un fichier dino. Le routage racine, lui, survit.
 
@@ -58,7 +58,7 @@ Fiches dino : nom_etym (étymo expliquée) + taille (échelle honnête) + régim
 
 ## 🔊 Audio (PROCESS MILITAIRE — voir figée + skill)
 
-- Voix : **narrateur_h** (menus accueil/régime/familles) · **narrateur_f** (voyage + 8 récits). Résolus via [`../narration/personnages/voix-meta/voice-map.json`](../../narration/personnages/voix-meta/voice-map.json).
+- Voix : **narrateur_h** (menus accueil/régime/familles) · **narrateur_f** (voyage + 8 récits). Résolus via [`../narration/personnages/voix-meta/voice-map.json`](../narration/personnages/voix-meta/voice-map.json).
 - Récits multi-voix = MCP `studio_audiobook_from_segments_v2_dialogue` (eleven_v3, stability 0,4). Accroches menu mono = `text_to_speech`. Loudnorm en post.
 - **Accroche de menu = 2-7 s.** Récit d'époque = ~10-25 s.
 - **AVANT toute génération** : `grep -niE "max|doudou|peluche|bus" <texte>` → si match (hors échelle-bus), STOP. (Process figée.)
@@ -80,7 +80,7 @@ Après correction utilisateur → leçon dans [`pmo/backlog.md`](pmo/backlog.md)
 
 - Catalogue navigable : [`INDEX.md`](INDEX.md)
 - Décisions verrouillées : [`figees/encyclopedie.md`](figees/encyclopedie.md)
-- Pôles voisins : [`../game/CLAUDE.md`](../../game/CLAUDE.md) · [`../narration/CLAUDE.md`](../../narration/CLAUDE.md)
+- Pôles voisins : [`../game/CLAUDE.md`](../../game/CLAUDE.md) · [`../narration/CLAUDE.md`](../narration/CLAUDE.md)
 
 ---
 

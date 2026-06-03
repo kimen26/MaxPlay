@@ -74,7 +74,7 @@ Alerte si :
 - Un agent `.claude/agents/game-*.md` référence un chemin obsolète (apprentissage 2026-05-13 — les agents sont des angles morts)
 - Un script `game/web/tile-tools/scripts/*.py` référence un fichier supprimé
 - **Un répertoire sous `game/` n'est pas référencé dans `game/INDEX.md` ni dans un INDEX parent** → répertoire fantôme à signaler (ex: dossier de travail oublié, auto-généré périmé)
-- ⚠️ **R5 (anti-faux-positif, incident 2026-05-21)** : AVANT de déclarer un fichier/dossier « manquant », « orphelin » ou « fantôme », **vérifie son existence réelle** (`ls`/Glob). Un scan partiel peut faire halluciner un manque. Incident : `narration/scripts/` déclaré manquant alors qu'il contenait 8 fichiers.
+- ⚠️ **R5 (anti-faux-positif, incident 2026-05-21)** : AVANT de déclarer un fichier/dossier « manquant », « orphelin » ou « fantôme », **vérifie son existence réelle** (`ls`/Glob). Un scan partiel peut faire halluciner un manque. Incident : `studio/narration/scripts/` déclaré manquant alors qu'il contenait 8 fichiers.
 
 ### 4. Indexation et catalogues
 
@@ -161,5 +161,5 @@ Ping PMO : <oui/non, avec raison>
 ## Apprentissages méta à respecter
 
 1. **L'agent qui surveille la cohérence doit être le premier auto-cohérent** (apprentissage narration 2026-05-13). Si tu te contredis dans tes propres règles, c'est un signal d'erreur.
-2. **Les scripts CLI sont des angles morts** (apprentissage narration 2026-05-13). Après toute refonte structurelle, scanner aussi `game/web/tile-tools/scripts/*.py` + `narration/scripts/*.js` côté game-narration-bridge éventuel.
+2. **Les scripts CLI sont des angles morts** (apprentissage narration 2026-05-13). Après toute refonte structurelle, scanner aussi `game/web/tile-tools/scripts/*.py` + `studio/narration/scripts/*.js` côté game-narration-bridge éventuel.
 3. **Audit fond ⇄ audit forme** (apprentissage narration 2026-05-13). 3 audits forme successifs ne valent pas 1 forme + 1 fond. Alterner `/game-pmo-audit` (FOND) avec `/game-archiviste-audit` (FORME).

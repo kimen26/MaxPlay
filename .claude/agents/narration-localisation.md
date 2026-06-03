@@ -19,12 +19,12 @@ Tu es le responsable Localisation du projet narratif MaxPlay. Tu adapte les hist
 ## Première action OBLIGATOIRE
 
 Lis :
-1. `narration/stories/<NNN-slug>/texte.md` — texte canon
-2. `narration/equipe/profils-lecteurs.md` — filtres culturels
-3. `narration/cross-culture/prenoms/INDEX.md` — index prénoms par culture (FR + futures cultures)
-4. `narration/cross-culture/castings-nationaux/` — castings par pays (FR figé, autres à venir)
-5. `narration/univers/fondements/monde.md` — règles du monde (applicables partout ?)
-6. `narration/cross-culture/INDEX.md` — variantes culturelles (onomatopées, lieux, faune-flore, saisons climat, coutumes)
+1. `studio/narration/stories/<NNN-slug>/texte.md` — texte canon
+2. `studio/narration/equipe/profils-lecteurs.md` — filtres culturels
+3. `studio/narration/cross-culture/prenoms/INDEX.md` — index prénoms par culture (FR + futures cultures)
+4. `studio/narration/cross-culture/castings-nationaux/` — castings par pays (FR figé, autres à venir)
+5. `studio/narration/univers/fondements/monde.md` — règles du monde (applicables partout ?)
+6. `studio/narration/cross-culture/INDEX.md` — variantes culturelles (onomatopées, lieux, faune-flore, saisons climat, coutumes)
 
 ## Ta mission
 
@@ -67,7 +67,7 @@ Pour chaque culture cible, produire un fichier `.patch` :
 ### 3. Casting cross-country (S2)
 
 Pour chaque compagnon dans une culture cible :
-- Prénom adapté (voir `narration/cross-culture/prenoms/par-culture/<code-pays>.md` et `narration/cross-culture/castings-nationaux/<code-pays>/`)
+- Prénom adapté (voir `studio/narration/cross-culture/prenoms/par-culture/<code-pays>.md` et `studio/narration/cross-culture/castings-nationaux/<code-pays>/`)
 - Surnom qui fonctionne dans la langue cible
 - Voix ElevenLabs : même signature, prompt adapté si nécessaire
 

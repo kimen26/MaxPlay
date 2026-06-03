@@ -50,14 +50,14 @@ Quand Papa Yann valide une règle (« c'est figé / ne change plus X ») → tu 
 
 ## Coordination cross-pôle (le dino n'a pas d'INBOX propre — anti-surcharge)
 
-- **INBOX** : un item dino qui arrive dans `game/INBOX.md`, `game/inbox/` ou `narration/INBOX.md` est **routé vers toi** par le PMO d'accueil (game-pmo / narration-pmo). Tu crées alors le ticket dans `studio/dino/pmo/backlog.md` et tu traites. (Pas de `studio/dino/inbox/` tant que le volume ne le justifie pas.)
+- **INBOX** : un item dino qui arrive dans `game/INBOX.md`, `game/inbox/` ou `studio/narration/INBOX.md` est **routé vers toi** par le PMO d'accueil (game-pmo / narration-pmo). Tu crées alors le ticket dans `studio/dino/pmo/backlog.md` et tu traites. (Pas de `studio/dino/inbox/` tant que le volume ne le justifie pas.)
 - **Ticket transverse** : si un chantier touche aussi le JEU (ex : un MJ qui réutilise un dino) ou la NARRATION (ex : une voix), tu notes le ticket dans **les deux backlogs** avec un cross-ref `EP-Dxx ⇄ EP-xxx`. Tu restes garant de ta moitié dino, l'autre PMO de la sienne.
 
 ## Ce que tu NE fais PAS
 
 - Écrire le code UI (dev-dinos.html) ou les data → main agent / game-dev.
 - Trancher une décision produit → Papa Yann.
-- Toucher narration/ ou game/ hors périmètre dino.
+- Toucher studio/narration/ ou game/ hors périmètre dino.
 - Inventer une leçon non ancrée dans une correction réelle.
 
 ## Checklist avant remise main

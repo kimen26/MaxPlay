@@ -1,8 +1,8 @@
 ﻿---
 paths:
-  - "narration/scripts/**"
-  - "narration/personnages/voix-meta/**"
-  - "narration/stories/**/assets/audio/**"
+  - "studio/narration/scripts/**"
+  - "studio/narration/personnages/voix-meta/**"
+  - "studio/narration/stories/**/assets/audio/**"
   - "**/*-segments*.json"
 ---
 
@@ -22,7 +22,7 @@ Le skill `audio-direction-elevenlabs` est PARENT (router) + 8 sous-fichiers (API
 
 ## Source de vérité voix MaxPlay
 
-[`narration/personnages/voix-meta/_VOICE-IDS-CASTING.md`](../../narration/personnages/voix-meta/_VOICE-IDS-CASTING.md) — **méthodo v24 figée 2026-05-11**.
+[`studio/narration/personnages/voix-meta/_VOICE-IDS-CASTING.md`](../../studio/narration/personnages/voix-meta/_VOICE-IDS-CASTING.md) — **méthodo v24 figée 2026-05-11**.
 
 Contenu :
 - voice_ids par personnage (Wex, Melki, Mimi, Dadou, Madie, Lulu, Pierrot, Raph, Juju, Nono)
@@ -35,9 +35,9 @@ Contenu :
 
 **Outil obligatoire** : `studio_audiobook_from_segments_v2_dialogue` (MCP ElevenLabs, clé dans ~/.claude.json).
 
-**Fallback CLI UNIQUEMENT** : si outil MCP indisponible → `narration/scripts/generate-story-dialogue.js` (même méthodo).
+**Fallback CLI UNIQUEMENT** : si outil MCP indisponible → `studio/narration/scripts/generate-story-dialogue.js` (même méthodo).
 
-**Resolver voix** : `narration/personnages/voix-meta/voice-map.json` (autoritaire, mappe `role` → voice_id). Toujours via role (ex: `wex`, `narrateur_h`, `raph`) sauf si voice_id périmé.
+**Resolver voix** : `studio/narration/personnages/voix-meta/voice-map.json` (autoritaire, mappe `role` → voice_id). Toujours via role (ex: `wex`, `narrateur_h`, `raph`) sauf si voice_id périmé.
 
 **Forbidden paths** :
 - ❌ `studio_audiobook_from_segments` (Studio API Enterprise verrouillée)
@@ -57,7 +57,7 @@ Contenu :
 
 ### Règles MILITAIRES production audio (ENFORCED)
 
-0. **Outil MCP par défaut (durcissement #1)** : `studio_audiobook_from_segments_v2_dialogue` (clé ~/.claude.json). Fallback = script `narration/scripts/generate-story-dialogue.js` debug seulement. Ne PAS inventer d'autres outils/APIs.
+0. **Outil MCP par défaut (durcissement #1)** : `studio_audiobook_from_segments_v2_dialogue` (clé ~/.claude.json). Fallback = script `studio/narration/scripts/generate-story-dialogue.js` debug seulement. Ne PAS inventer d'autres outils/APIs.
 1. **Modèle eleven_v3 OBLIGATOIRE (durcissement #2)** : seul modèle supportant tags v3 inline. Jamais `eleven_multilingual_v2` ou autres (ils ignorent/cassent les tags).
 2. **Resolver voix via voice-map.json (durcissement #3)** : lookup centralisé `role` → voice_id autoritative (source = `_VOICE-IDS-CASTING.md`). Jamais hardcoder voice_ids périmés.
 3. **text-to-dialogue API OBLIGATOIRE** pour multi-voix (pas text-to-speech mono 32+ appels).
@@ -66,7 +66,7 @@ Contenu :
 6. **Tags audio v3** : utiliser le catalogue gravé dans `audio-direction-elevenlabs/`. Pas d'invention.
 7. **Pronunciation dicts** : un dict par perso, gravé. Modifier = MAJ `_VOICE-IDS-CASTING.md`.
 8. **Loudness normalization** : ffmpeg `loudnorm` obligatoire EN POST-PROD (concat 1-3 paquets seulement, pas 32+).
-9. **Format segments** : JSON figé. Voir [`narration/stories/001-le-pont-casse/assets/audio/_segments-001-v2-kimi.json`](../../narration/stories/001-le-pont-casse/assets/audio/) pour exemple.
+9. **Format segments** : JSON figé. Voir [`studio/narration/stories/001-le-pont-casse/assets/audio/_segments-001-v2-kimi.json`](../../studio/narration/stories/001-le-pont-casse/assets/audio/) pour exemple.
 
 ### Anti-patterns bannis (depuis 2026-05-16)
 
@@ -124,9 +124,9 @@ Le skill `audio-direction-elevenlabs/` couvre la production multi-culturelle :
 
 ## Cross-références
 
-- Session retour exp : [`personnages/voix-meta/_SESSION-2026-05-11-RETOUR-EXP.md`](../../narration/personnages/voix-meta/_SESSION-2026-05-11-RETOUR-EXP.md)
-- Étude vocale 18 prompts : [`personnages/voix-meta/`](../../narration/personnages/voix-meta/)
-- Playbook MaxPlay : [`personnages/voix-meta/`](../../narration/personnages/voix-meta/)
+- Session retour exp : [`personnages/voix-meta/_SESSION-2026-05-11-RETOUR-EXP.md`](../../studio/narration/personnages/voix-meta/_SESSION-2026-05-11-RETOUR-EXP.md)
+- Étude vocale 18 prompts : [`personnages/voix-meta/`](../../studio/narration/personnages/voix-meta/)
+- Playbook MaxPlay : [`personnages/voix-meta/`](../../studio/narration/personnages/voix-meta/)
 
 ---
 

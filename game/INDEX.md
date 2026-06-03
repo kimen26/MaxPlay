@@ -3,7 +3,7 @@
 > Point d'entrée du pôle JEU. Lu en premier par tout agent qui touche au code/spec/asset des mini-jeux ou des tiles.
 > Refonte 2026-05-13 (harmonisation Game ↔ Narration — création game-archiviste, dossier pmo/ dédié, préfixage commandes).
 >
-> Équivalent côté Narration : [`../narration/INDEX.md`](../narration/INDEX.md).
+> Équivalent côté Narration : [`../studio/narration/INDEX.md`](../studio/narration/INDEX.md).
 
 ## Carte du pôle
 
@@ -150,7 +150,7 @@ Détails complets : [`EQUIPE.md`](EQUIPE.md).
 
 ## Pôle voisin
 
-NARRATION : [`../narration/INDEX.md`](../narration/INDEX.md) — univers narratif (post-Phase 4).
+NARRATION : [`../studio/narration/INDEX.md`](../studio/narration/INDEX.md) — univers narratif (post-Phase 4).
 
 ---
 

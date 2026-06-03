@@ -25,8 +25,8 @@
 **État** : 50 dinos finalisées, prêtes TTS production (49 restants après Parasaurolophus).
 
 **Fichiers touchés** :
-- `game/web/js/dinos-data.js` : 50 fiches
-- `game/web/dev-dinos.html` : UI familles + INTRO
+- `site/js/dinos-data.js` : 50 fiches
+- `site/dev-dinos.html` : UI familles + INTRO
 - `pmo/decisions.md` : entrée figée
 - `pmo/INVARIANTS.md` : "50 fiches finale"
 
@@ -181,8 +181,8 @@
 **Fait** :
 - ✅ Refonte CLAUDE.md racine : 219 → 107 lignes (synopsis pôles + commandes trans)
 - ✅ Création `game/CLAUDE.md` (113 l) : PMO+Archiviste auto + règles d'or LimeZu + équipe agents + pointeurs
-- ✅ Création `.claude/rules/tile-tools.md` (80 l) : paths: `game/web/tile-tools/**`, `game/web/tools/**` — mnémonique 2/8/14/15 + Sidewalk_1 mapping + vocab.py source unique + brique avant macro
-- ✅ Création `.claude/rules/mini-jeux.md` (103 l) : paths: `game/web/mj-*.html`, `game/web/index.html` — UX zéro-pénalité, feedback <200ms, zones tap 80px, busSVG obligatoire, couleurs IDFM LIGNES
+- ✅ Création `.claude/rules/tile-tools.md` (80 l) : paths: `site/tile-tools/**`, `site/tools/**` — mnémonique 2/8/14/15 + Sidewalk_1 mapping + vocab.py source unique + brique avant macro
+- ✅ Création `.claude/rules/mini-jeux.md` (103 l) : paths: `site/mj-*.html`, `site/index.html` — UX zéro-pénalité, feedback <200ms, zones tap 80px, busSVG obligatoire, couleurs IDFM LIGNES
 - ✅ Création `.claude/rules/` 4 fichiers Narration symétriques : stories-process, personnages, univers, audio (183 l total)
 - ✅ Hook UserPromptSubmit : auto-rappel `/game-pmo` ou `/narration-pmo` si signal détecté
 
@@ -267,9 +267,9 @@
 **Contexte** : Papa Yann cadre l'epic "ingénierie tile-tools" pour résoudre cause racine (galère sur "route droite propre", briefs complexes impossibles). Plein pouvoir donné.
 
 **Livré** (commit `feat(tile-tools): EP-VOCAB phases 1+2`) :
-- ✅ `game/web/tile-tools/vocab.py` : 46 constantes nommées français, validation auto au boot
-- ✅ `game/web/tile-tools/builders.py` : macros `route_h()` + `route_v()` testées + **SHA256 byte-identique** aux PNG existants
-- ✅ `game/web/tile-tools/RESEARCH-INSPIRATIONS.md` : 60+ liens capitalisés (LDtk, WFC, DualTilemap, Bitmask, Phaser, LimeZu)
+- ✅ `site/tile-tools/vocab.py` : 46 constantes nommées français, validation auto au boot
+- ✅ `site/tile-tools/builders.py` : macros `route_h()` + `route_v()` testées + **SHA256 byte-identique** aux PNG existants
+- ✅ `site/tile-tools/RESEARCH-INSPIRATIONS.md` : 60+ liens capitalisés (LDtk, WFC, DualTilemap, Bitmask, Phaser, LimeZu)
 - ✅ Fix en passant : `test_voie_bus_v6.py` (`_15` SALE → `_8` PROPRE, oubli correction 5)
 - ✅ 2 recettes v2 exemple : `test_route_h_5rows_v2.py` + `test_route_v_5cols_v2.py`
 
@@ -281,9 +281,9 @@
 
 **Nettoyage effectué (clôture)** :
 - ✅ `cartography.json` marqué **DEPRECATED**
-- ✅ `game/web/tools/tile-library.html` + `tile-library-v2.html` → archivés
+- ✅ `site/tools/tile-library.html` + `tile-library-v2.html` → archivés
 - ✅ `__pycache__/` purgés (gitignore créé)
-- ✅ `game/web/tile-tools/_archive/` créé avec inventaire candidats futurs
+- ✅ `site/tile-tools/_archive/` créé avec inventaire candidats futurs
 - ⏳ Scripts debug + recettes passages piétons : pas touchés (Q-ouvertes #3 et #4 dans decisions.md)
 
 **Vérifications passées** :
@@ -311,7 +311,7 @@
 **Livré** :
 - ✅ Skill `~/.claude/skills/maxplay-tiles/` : SKILL.md (566 l) + LESSONS.md (30+ entrées)
 - ✅ Agent dédié `.claude/agents/game-tile-pmo.md` (Haiku)
-- ✅ `game/web/tools/` : hub + tile-picker (matrice drag&drop, 5 catégories, multi-tiles vraies dimensions, `?recipe=X.py`), tile-library-v3, mockups-routes (6 patterns échelle uniforme + bouton 🎨 Éditer)
+- ✅ `site/tools/` : hub + tile-picker (matrice drag&drop, 5 catégories, multi-tiles vraies dimensions, `?recipe=X.py`), tile-library-v3, mockups-routes (6 patterns échelle uniforme + bouton 🎨 Éditer)
 - ✅ `mj-pose-tiles.html` : 🦺🚧 mini-jeu kids (8×8 tactile, 5 catégories, bouton Lisser)
 - ✅ 13 recettes Python validées + 13 PNG (routes, virages, carrefour, rond-point, quartier, parking, voie bus, passages piétons)
 - ✅ Cartographie LimeZu corrigée — L-013 à L-018

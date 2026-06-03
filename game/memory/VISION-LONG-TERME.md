@@ -197,6 +197,6 @@ narration-pmo (histoire canonisée étape 10)
 - [`game/tasks/BACKLOG.md`](../tasks/BACKLOG.md) — tickets tactiques
 - [`game/memory/rules.md`](./rules.md) — règles UX/péda non-négociables
 - [`game/memory/stack.md`](./stack.md) — stack technique
-- [`game/web/tile-tools/PIPELINE-MEMORY.md`](../web/tile-tools/PIPELINE-MEMORY.md) — méta-process pipeline tile
-- [`game/web/PIPELINE-MEMORY-MJ.md`](../web/PIPELINE-MEMORY-MJ.md) — méta-process pipeline mini-jeux (créé 2026-05-11)
+- [`site/tile-tools/PIPELINE-MEMORY.md`](../web/tile-tools/PIPELINE-MEMORY.md) — méta-process pipeline tile
+- [`site/PIPELINE-MEMORY-MJ.md`](../web/PIPELINE-MEMORY-MJ.md) — méta-process pipeline mini-jeux (créé 2026-05-11)
 - [`studio/narration/INDEX.md`](../../studio/narration/INDEX.md) — pôle narration (pour le futur pont narration↔jeu)

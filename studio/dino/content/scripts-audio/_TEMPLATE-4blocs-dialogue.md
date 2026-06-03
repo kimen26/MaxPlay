@@ -107,7 +107,7 @@ MaxPlay autorise ces tags inline (max 2 par réplique) :
    - **Narrateur H** = `cbRcktt2xvoeFpdvW2wg` (Lumi Playful Theatrical Warm FR)
    - **Wex** = `G54e8CyYslC2Y4ZupTlg` (Lumi Héros — aigu melodic light, singsong flowing)
 3. **Modèle ElevenLabs** : `eleven_v3` (supporte tags inline)
-4. **Factualité** : Chiffres de référence dans `game/web/js/dinos-data.js` (longueur/poids/taille = source autorité, corriger si divergence Kimi)
+4. **Factualité** : Chiffres de référence dans `site/js/dinos-data.js` (longueur/poids/taille = source autorité, corriger si divergence Kimi)
 5. **Tonalité Narrateur** : enthousiaste mais factuel, professeur du Muséum. Tonalité Wex : curieux, observateur, jamais le maître.
 
 ---
@@ -116,7 +116,7 @@ MaxPlay autorise ces tags inline (max 2 par réplique) :
 
 - **Fiches factuelles** : `game/inbox/FICHES-RESTRUCTUREES.md` (bloc A/B/C/D de base, en monologue)
 - **Tonalité alternative** : `game/inbox/grok.md` (~13 dinos, tone plus court/fun)
-- **Chiffres** : `game/web/js/dinos-data.js` (fonction `_statsPhrase` — source autorité)
+- **Chiffres** : `site/js/dinos-data.js` (fonction `_statsPhrase` — source autorité)
 - **Perso Wex** : `narration/personnages/wex/personnage.md` (garde-fou principal)
 
 ---

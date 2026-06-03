@@ -1,7 +1,7 @@
 # PÔLE DINO — Règles auto-chargées
 
 > Pôle **transverse** (UI de jeu + contenu narré/audio) — pair de [`../game/`](../../game/CLAUDE.md) et [`../narration/`](../narration/CLAUDE.md).
-> Chargé automatiquement dès qu'un fichier sous `dino/` est touché. **Le CODE est déployé depuis [`../game/web/`](../../game/web/)** (dev-dinos.html, dinos-data.js, audio/dinos, img/dinos) — on ne le bouge pas. La liaison code↔pôle est assurée par la **rule path-scoped** [`.claude/rules/dino.md`](../../.claude/rules/dino.md) qui se charge où que vive le fichier dino.
+> Chargé automatiquement dès qu'un fichier sous `dino/` est touché. **Le CODE est déployé depuis [`../site/`](../../site/)** (dev-dinos.html, dinos-data.js, audio/dinos, img/dinos) — on ne le bouge pas. La liaison code↔pôle est assurée par la **rule path-scoped** [`.claude/rules/dino.md`](../../.claude/rules/dino.md) qui se charge où que vive le fichier dino.
 > ⚠️ Ce fichier **n'est PAS re-injecté après `/compact`** — il rechargera au prochain contact d'un fichier dino. Le routage racine, lui, survit.
 
 ---
@@ -36,10 +36,10 @@
 
 | Quoi | Où |
 |------|-----|
-| **UI / code** (déployé GitHub Pages) | [`../game/web/dev-dinos.html`](../../game/web/dev-dinos.html) |
-| **Données 50 dinos** | [`../game/web/js/dinos-data.js`](../../game/web/js/dinos-data.js) |
-| **Audio** (récits, menus, fiches) | [`../game/web/audio/dinos/`](../../game/web/audio/dinos/) |
-| **Images** | [`../game/web/img/dinos/`](../../game/web/img/dinos/) |
+| **UI / code** (déployé GitHub Pages) | [`../site/dev-dinos.html`](../../site/dev-dinos.html) |
+| **Données 50 dinos** | [`../site/js/dinos-data.js`](../../site/js/dinos-data.js) |
+| **Audio** (récits, menus, fiches) | [`../site/audio/dinos/`](../../site/audio/dinos/) |
+| **Images** | [`../site/img/dinos/`](../../site/img/dinos/) |
 | **Sources contenu** (récits, échelle, étymo, factcheck, process) | [`content/`](content/) |
 | **Scripts** (gén audio, grok, json) | [`content/`](content/) (chemins absolus ou CWD-racine) |
 
@@ -84,4 +84,4 @@ Après correction utilisateur → leçon dans [`pmo/backlog.md`](pmo/backlog.md)
 
 ---
 
-_Créé 2026-06-03 : pôle DINO extrait de game/ (transverse jeu+narration). Code déployé reste dans game/web/, lié par `.claude/rules/dino.md`. Voir [`pmo/audit-trail.md`](pmo/audit-trail.md)._
+_Créé 2026-06-03 : pôle DINO extrait de game/ (transverse jeu+narration). Code déployé reste dans site/, lié par `.claude/rules/dino.md`. Voir [`pmo/audit-trail.md`](pmo/audit-trail.md)._

@@ -1,8 +1,8 @@
 ---
 paths:
-  - "game/web/tile-tools/**"
-  - "game/web/tools/**"
-  - "game/web/mj-pose-tiles.html"
+  - "site/tile-tools/**"
+  - "site/tools/**"
+  - "site/mj-pose-tiles.html"
 ---
 
 # Tile-tools LimeZu — règles auto-chargées
@@ -72,8 +72,8 @@ Après PASS → user valide → `game-tile-pmo` grave leçons (`LESSONS.md` + `P
 - Skill : [`~/.claude/skills/maxplay-tiles/SKILL.md`](C:/Users/kimen/.claude/skills/maxplay-tiles/SKILL.md)
 - Leçons : [`~/.claude/skills/maxplay-tiles/LESSONS.md`](C:/Users/kimen/.claude/skills/maxplay-tiles/LESSONS.md)
 - PMO sous-spé : [`.claude/agents/game-tile-pmo.md`](../agents/game-tile-pmo.md)
-- Pipeline mémoire : `game/web/tile-tools/PIPELINE-MEMORY.md`
-- README pipeline : [`game/web/tile-tools/README.md`](../../game/web/tile-tools/README.md)
+- Pipeline mémoire : `site/tile-tools/PIPELINE-MEMORY.md`
+- README pipeline : [`site/tile-tools/README.md`](../../site/tile-tools/README.md)
 
 ---
 

@@ -3,15 +3,15 @@
 > Encyclopédie dinosaure + voyage dans le temps pour Max (4 ans). Pôle transverse (jeu + audio narré).
 > Règles auto-chargées : [`CLAUDE.md`](CLAUDE.md). Décisions verrouillées : [`figees/encyclopedie.md`](figees/encyclopedie.md).
 
-## 🎮 Le produit (code déployé — dans game/web/)
+## 🎮 Le produit (code déployé — dans site/)
 
 | Quoi | Fichier |
 |------|---------|
-| UI encyclopédie (3 onglets) | [`../game/web/dev-dinos.html`](../../game/web/dev-dinos.html) |
-| Données 50 dinos + 9 familles + échelle | [`../game/web/js/dinos-data.js`](../../game/web/js/dinos-data.js) |
-| Audio (8 récits + 4 menus + 2 spéciaux + 22 dinos) | [`../game/web/audio/dinos/`](../../game/web/audio/dinos/) |
-| Images dino | [`../game/web/img/dinos/`](../../game/web/img/dinos/) |
-| Galeries images (local + grok) | [`../game/web/js/dinos-images-local.js`](../../game/web/js/) · `dinos-images-grok.js` |
+| UI encyclopédie (3 onglets) | [`../site/dev-dinos.html`](../../site/dev-dinos.html) |
+| Données 50 dinos + 9 familles + échelle | [`../site/js/dinos-data.js`](../../site/js/dinos-data.js) |
+| Audio (8 récits + 4 menus + 2 spéciaux + 22 dinos) | [`../site/audio/dinos/`](../../site/audio/dinos/) |
+| Images dino | [`../site/img/dinos/`](../../site/img/dinos/) |
+| Galeries images (local + grok) | [`../site/js/dinos-images-local.js`](../../site/js/) · `dinos-images-grok.js` |
 
 ## 🗂️ Gouvernance (pmo/)
 
@@ -52,7 +52,7 @@
 | Agent | Rôle |
 |-------|------|
 | `dino-pmo` (haiku) | FOND — persistance pmo/, décisions, leçons |
-| `dino-archiviste` (haiku) | FORME — structure, refs, gabarit, surveille le code game/web/ dino |
+| `dino-archiviste` (haiku) | FORME — structure, refs, gabarit, surveille le code site/ dino |
 | `dino-conseiller` (sonnet) | Créatif — péda 4 ans, fact-check Grokipedia, écriture audio, taxo |
 
 ## État (2026-06-03)

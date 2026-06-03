@@ -13,4 +13,4 @@
 
 **Décidé :** voir `decisions.md` (pôle, Tritri, scission familles, régimes alimentaires, voix menus).
 
-**État au reboot :** pôle DINO opérationnel. Code dans game/web/ (déployé). 50 dinos / 9 familles / 4 régimes. Tout commité + poussé (GitHub Pages).
+**État au reboot :** pôle DINO opérationnel. Code dans site/ (déployé). 50 dinos / 9 familles / 4 régimes. Tout commité + poussé (GitHub Pages).

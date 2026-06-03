@@ -1,12 +1,12 @@
 ---
-description: Audit structurel du pôle DINO via l'Archiviste (FORME) — vérifie gabarit studio/dino/, refs cassées, fichiers orphelins, cohérence audio (recit/menu/blocs) vs data, png vs dinos. Surveille aussi le code déployé dans game/web/. Complémentaire à /dino-pmo-audit (FOND). Communique findings au dino-pmo.
+description: Audit structurel du pôle DINO via l'Archiviste (FORME) — vérifie gabarit studio/dino/, refs cassées, fichiers orphelins, cohérence audio (recit/menu/blocs) vs data, png vs dinos. Surveille aussi le code déployé dans site/. Complémentaire à /dino-pmo-audit (FOND). Communique findings au dino-pmo.
 ---
 
 Tu invoques l'agent `dino-archiviste` en **mode AUDIT** sur l'ensemble du pôle DINO.
 
 L'Archiviste vérifie **la structure** (équivalent du PMO côté forme).
 
-> ⚠️ Particularité : le code dino vit **hors du dossier studio/dino/** (déployé dans `game/web/`). L'audit couvre les **deux** : `studio/dino/**` ET `game/web/{dev-dinos.html, js/dinos-data.js, audio/dinos/, img/dinos/}`.
+> ⚠️ Particularité : le code dino vit **hors du dossier studio/dino/** (déployé dans `site/`). L'audit couvre les **deux** : `studio/dino/**` ET `site/{dev-dinos.html, js/dinos-data.js, audio/dinos/, img/dinos/}`.
 
 ## Procédure (5 sections obligatoires)
 
@@ -22,13 +22,13 @@ L'Archiviste vérifie **la structure** (équivalent du PMO côté forme).
 
 ### 3. Refs cassées
 - Tous les liens markdown `[texte](chemin)` dans `studio/dino/**/*.md` pointent vers des fichiers existants ?
-- Les 2 scripts code-couplés (`content/_blocB-canonique-50.cjs`, `content/_export-fiches.cjs`) résolvent-ils bien `../../game/web/js/dinos-data.js` ?
+- Les 2 scripts code-couplés (`content/_blocB-canonique-50.cjs`, `content/_export-fiches.cjs`) résolvent-ils bien `../../site/js/dinos-data.js` ?
 - Le hook `figees-injector.ps1` pointe bien vers `studio/dino/figees/encyclopedie.md` ?
 - La rule `.claude/rules/dino.md` couvre bien les chemins du code (dev-dinos, dinos-data, audio/dinos, img/dinos) + studio/dino/** ?
 
 ### 4. Fichiers orphelins
 - Chaque `.md` de `studio/dino/content/` est-il référencé par `studio/dino/INDEX.md` ou un autre fichier ?
-- **Chaque audio `recit-*`/`menu-*`/bloc dans `game/web/audio/dinos/` est-il référencé par le code** (`DINO_AUDIO`, `JOURNEY`, `MENU_VOICE`) ? Inversement, chaque audio référencé existe-t-il ?
+- **Chaque audio `recit-*`/`menu-*`/bloc dans `site/audio/dinos/` est-il référencé par le code** (`DINO_AUDIO`, `JOURNEY`, `MENU_VOICE`) ? Inversement, chaque audio référencé existe-t-il ?
 - Chaque `png` de dino (`dinos-data.js`) existe-t-il dans `img/dinos/` ?
 
 ### 5. Cohérence sémantique

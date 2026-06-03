@@ -1,8 +1,8 @@
 ---
 paths:
-  - "game/web/mj-*.html"
-  - "game/web/index.html"
-  - "game/web/js/**"
+  - "site/mj-*.html"
+  - "site/index.html"
+  - "site/js/**"
   - "game/docs/jeux/**"
 ---
 
@@ -13,7 +13,7 @@ paths:
 
 ## ⛔ AVANT DE MODIFIER UN mj-XX.html — LECTURE OBLIGATOIRE
 
-Avant **TOUT** `Edit`/`Write` sur `game/web/mj-XX.html` :
+Avant **TOUT** `Edit`/`Write` sur `site/mj-XX.html` :
 
 1. Lire [`game/docs/jeux/figees/mj-XX.md`](../../game/docs/jeux/figees/) s'il existe (le hook `figees-injector.ps1` le réinjecte automatiquement dans le contexte — le lire, pas l'ignorer).
 2. Chaque ligne **🔒 est LOI**. Chaque ligne **❌ 🔒 est une régression déjà commise — INTERDITE**.
@@ -33,14 +33,14 @@ Avant **TOUT** `Edit`/`Write` sur `game/web/mj-XX.html` :
 
 ## Règles bus SVG (gravée incident session 6)
 
-- **TOUJOURS** utiliser `busSVG()` ou `busSVGHiddenNum()` de [`game/web/js/bus-svg.js`](../../game/web/js/bus-svg.js)
+- **TOUJOURS** utiliser `busSVG()` ou `busSVGHiddenNum()` de [`site/js/bus-svg.js`](../../site/js/bus-svg.js)
 - **JAMAIS** d'emoji 🚌 dans un mini-jeu
 - **JAMAIS** de `<div>` CSS coloré qui imite un bus
 - Pour quiz multi-couleurs : `selectDistinctColors(pool, n)` — garantit lisibilité
 
 ## Règles couleurs IDFM
 
-- **TOUJOURS** utiliser `LIGNES` de [`game/web/js/data.js`](../../game/web/js/data.js)
+- **TOUJOURS** utiliser `LIGNES` de [`site/js/data.js`](../../site/js/data.js)
 - **JAMAIS** de hex couleur hardcodé dans le HTML/JS du jeu
 - Source de vérité IDFM : [`game/docs/ratp-colors.json`](../../game/docs/ratp-colors.json) (26 actives + 362 réf)
 
@@ -54,7 +54,7 @@ Avant **TOUT** `Edit`/`Write` sur `game/web/mj-XX.html` :
 
 > Créé 2026-05-16 suite REX MJ-21 (33 commits, ~20 d'essais à l'aveugle). Papa Yann n'est plus le débogueur — la machine teste, lui juge le produit.
 
-**Avant CHAQUE `git push` touchant `game/web/mj-XX.html`** :
+**Avant CHAQUE `git push` touchant `site/mj-XX.html`** :
 
 ```
 cd game/tests && npm run mj:test mj-XX

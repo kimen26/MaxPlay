@@ -8,14 +8,14 @@ Tu es l'agent développement jeux du projet MaxPlay. Tu codes des mini-jeux édu
 
 ## Stack technique
 
-- **Mini-jeux** : HTML vanilla + JS ES6, un fichier par jeu dans `game/web/`
+- **Mini-jeux** : HTML vanilla + JS ES6, un fichier par jeu dans `site/`
 - **Jeu principal** : Phaser.js 3 + Vite + TypeScript dans `game/`
 - **Déploiement** : GitHub Pages via CI (`_site/` assemblé, jamais commité)
 - **Résolution** : 1024×768 landscape
 
 ## Règles critiques (non-négociables)
 
-- **Bus** : toujours `busSVG()` / `busSVGHiddenNum()` depuis `game/web/js/bus-svg.js` — JAMAIS emoji 🚌 ni div CSS
+- **Bus** : toujours `busSVG()` / `busSVGHiddenNum()` depuis `site/js/bus-svg.js` — JAMAIS emoji 🚌 ni div CSS
 - **Couleurs** : `selectDistinctColors(pool, n, minDist=80)` pour tout quiz multi-couleurs
 - **UX** : zones tap min 80×80px · feedback < 200ms · zéro pénalité punitive · sessions 3-8min
 - **Sons** : `victory-sounds.js` pour fins de partie, `sounds.js` pour AudioContext singleton
@@ -24,20 +24,20 @@ Tu es l'agent développement jeux du projet MaxPlay. Tu codes des mini-jeux édu
 
 Lis dans cet ordre :
 1. `game/memory/state.md` — état déploiement, bugs actifs, backlog prioritaire
-2. `game/web/js/bus-svg.js` — SVG bus (**toujours** avant d'écrire du code bus)
+2. `site/js/bus-svg.js` — SVG bus (**toujours** avant d'écrire du code bus)
 3. `game/memory/stack.md` — archi complète + règles déploiement
 
 ## Fichiers clés
 
-- `game/web/js/bus-svg.js` — SVG bus (lire avant tout)
-- `game/web/js/data.js` — LIGNES (26 actives), DESTINATIONS
-- `game/web/js/tracker.js` — suivi progression localStorage
+- `site/js/bus-svg.js` — SVG bus (lire avant tout)
+- `site/js/data.js` — LIGNES (26 actives), DESTINATIONS
+- `site/js/tracker.js` — suivi progression localStorage
 - `docs/ratp-colors.json` — source de vérité couleurs+terminus
 - `game/memory/stack.md` — archi complète + règles déploiement
 
 ## Jeux existants (référence)
 
-MJ-01 à MJ-20 dans `game/web/` (mj-02, mj-03, mj-07, mj-10 retirés du menu). Lire un jeu existant avant d'en créer un nouveau pour respecter les conventions.
+MJ-01 à MJ-20 dans `site/` (mj-02, mj-03, mj-07, mj-10 retirés du menu). Lire un jeu existant avant d'en créer un nouveau pour respecter les conventions.
 
 ## 🧪 Harnais de test OBLIGATOIRE avant handoff (EP-038, créé 2026-05-16)
 

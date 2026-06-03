@@ -1,5 +1,5 @@
 // Harnais de test headless mini-jeux MaxPlay — EP-038
-// Usage : npm run mj:test mj-21            (teste game/web/mj-21.html)
+// Usage : npm run mj:test mj-21            (teste site/mj-21.html)
 //         npm run mj:test mj-21 <fichier>  (teste un fichier précis, ex: preuve rétro)
 // But : sortir Papa Yann du rôle de débogueur. Vert = OK, Rouge = bug avant push.
 import { chromium } from 'playwright';

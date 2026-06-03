@@ -51,7 +51,7 @@ Lis dans cet ordre :
 
 ### 1. Vérification structure tile-tools (proactive)
 
-À chaque modif d'un fichier dans `game/web/tile-tools/`, vérifie automatiquement :
+À chaque modif d'un fichier dans `site/tile-tools/`, vérifie automatiquement :
 - ✅ Toute nouvelle recette `test_*.py` a un PNG associé (générée via render.py)
 - ✅ Toute recette validée visuellement est référencée dans `patterns.js` ou `recipes_data.js`
 - ✅ `vocab.py` reste source unique (pas de constantes inventées en dur dans les recettes)
@@ -60,7 +60,7 @@ Lis dans cet ordre :
 
 ### 2. Vérification structure mini-jeux (proactive)
 
-À chaque modif dans `game/web/mj-*.html` ou `game/web/js/`, vérifie :
+À chaque modif dans `site/mj-*.html` ou `site/js/`, vérifie :
 - ✅ Tous les MJ utilisent `busSVG()` / `busSVGHiddenNum()`, jamais emoji 🚌
 - ✅ Tous les MJ "à mécanique" ont compteur + showEndScreen + playEndSound (cf. décision L-024)
 - ✅ Les MJ "dashboards" sont marqués (proposition : `data-mp-type="dashboard"`)
@@ -72,7 +72,7 @@ Alerte si :
 - Un lien markdown dans `game/**/*.md` pointe vers un fichier qui n'existe pas
 - `game/INDEX.md` mentionne un fichier qui n'existe plus
 - Un agent `.claude/agents/game-*.md` référence un chemin obsolète (apprentissage 2026-05-13 — les agents sont des angles morts)
-- Un script `game/web/tile-tools/scripts/*.py` référence un fichier supprimé
+- Un script `site/tile-tools/scripts/*.py` référence un fichier supprimé
 - **Un répertoire sous `game/` n'est pas référencé dans `game/INDEX.md` ni dans un INDEX parent** → répertoire fantôme à signaler (ex: dossier de travail oublié, auto-généré périmé)
 - ⚠️ **R5 (anti-faux-positif, incident 2026-05-21)** : AVANT de déclarer un fichier/dossier « manquant », « orphelin » ou « fantôme », **vérifie son existence réelle** (`ls`/Glob). Un scan partiel peut faire halluciner un manque. Incident : `studio/narration/scripts/` déclaré manquant alors qu'il contenait 8 fichiers.
 
@@ -154,12 +154,12 @@ Ping PMO : <oui/non, avec raison>
 - Tu ne gères pas le fond (décisions, backlog, INVARIANTS contenu) → `game-pmo`
 - Tu **ne touches pas** aux fichiers gérés par les sous-spé PMO : `LESSONS.md` (game-tile-pmo), `cartography.json` (deprecated), `patterns.js`, `recipes_data.js`, `PIPELINE-MEMORY-*.md` (game-tile-pmo + game-mj-pmo)
 - Tu ne tranches pas les décisions structurelles ambiguës — tu les remontes à l'auteur via `pmo/sprint-log.md` ou question directe.
-- **Tu n'audites PAS le contenu DINO** : extrait vers le pôle `dino/` (2026-06-03), garant `dino-archiviste`. Le code dino (`game/web/dev-dinos.html`, `js/dinos-data.js`, `audio/dinos/`, `img/dinos/`) vit chez nous mais est couvert par `.claude/rules/dino.md` + `studio/dino/figees/encyclopedie.md`. Si tu scannes `game/web/`, **ignore les fichiers `*dino*`** (ce n'est pas un orphelin, c'est le pôle voisin).
+- **Tu n'audites PAS le contenu DINO** : extrait vers le pôle `dino/` (2026-06-03), garant `dino-archiviste`. Le code dino (`site/dev-dinos.html`, `js/dinos-data.js`, `audio/dinos/`, `img/dinos/`) vit chez nous mais est couvert par `.claude/rules/dino.md` + `studio/dino/figees/encyclopedie.md`. Si tu scannes `site/`, **ignore les fichiers `*dino*`** (ce n'est pas un orphelin, c'est le pôle voisin).
 
 ---
 
 ## Apprentissages méta à respecter
 
 1. **L'agent qui surveille la cohérence doit être le premier auto-cohérent** (apprentissage narration 2026-05-13). Si tu te contredis dans tes propres règles, c'est un signal d'erreur.
-2. **Les scripts CLI sont des angles morts** (apprentissage narration 2026-05-13). Après toute refonte structurelle, scanner aussi `game/web/tile-tools/scripts/*.py` + `studio/narration/scripts/*.js` côté game-narration-bridge éventuel.
+2. **Les scripts CLI sont des angles morts** (apprentissage narration 2026-05-13). Après toute refonte structurelle, scanner aussi `site/tile-tools/scripts/*.py` + `studio/narration/scripts/*.js` côté game-narration-bridge éventuel.
 3. **Audit fond ⇄ audit forme** (apprentissage narration 2026-05-13). 3 audits forme successifs ne valent pas 1 forme + 1 fond. Alterner `/game-pmo-audit` (FOND) avec `/game-archiviste-audit` (FORME).

@@ -34,9 +34,9 @@ Tu es le **Conseiller Game** de Papa Yann (l'auteur) sur le projet MaxPlay.
 7. `memory/MEMORY.md` — feedbacks transverses (ce que Papa Yann préfère, anti-patterns relationnels)
 
 **Sur sujet sous-domaine spécifique**, lire en plus :
-- Mini-jeux : `game/web/PIPELINE-MEMORY-MJ.md` + 1-2 fiches MJ-XX existantes pour conventions
-- Tile : `game/web/tile-tools/PIPELINE-MEMORY.md` + `~/.claude/skills/maxplay-tiles/SKILL.md`
-- WexWorld : (à venir) `game/phaser/PIPELINE-MEMORY-WEXWORLD.md` + sources Phaser
+- Mini-jeux : `site/PIPELINE-MEMORY-MJ.md` + 1-2 fiches MJ-XX existantes pour conventions
+- Tile : `site/tile-tools/PIPELINE-MEMORY.md` + `~/.claude/skills/maxplay-tiles/SKILL.md`
+- WexWorld : (à venir) `studio/max-adventure/PIPELINE-MEMORY-WEXWORLD.md` + sources Phaser
 
 ---
 

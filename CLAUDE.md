@@ -6,14 +6,14 @@
 
 | Mots dans la demande | Pôle | Lire ensuite |
 |----------------------|------|-------------|
-| jeu · MJ · mini-jeu · bus · Phaser · mj-XX · tile · LimeZu · déploiement · `game/web` | **JEU** | [`game/CLAUDE.md`](game/CLAUDE.md) → [`game/INDEX.md`](game/INDEX.md) |
+| jeu · MJ · mini-jeu · bus · Phaser · mj-XX · tile · LimeZu · déploiement · `site` | **JEU** | [`game/CLAUDE.md`](game/CLAUDE.md) → [`game/INDEX.md`](game/INDEX.md) |
 | dino · dinosaure · encyclopédie · voyage (époque) · récit dino · famille dino · Tritri · dev-dinos | **DINO** | [`studio/dino/CLAUDE.md`](studio/dino/CLAUDE.md) → [`studio/dino/INDEX.md`](studio/dino/INDEX.md) |
 | narration · histoire · personnage · univers · ennéagramme · cross-culture · saison · arc · Wex/Melki/Mimi/Dadou/Madie/Lulu/Pierrot/Raph/Juju/Nono | **NARRATION** | [`studio/narration/CLAUDE.md`](studio/narration/CLAUDE.md) → [`studio/narration/INDEX.md`](studio/narration/INDEX.md) |
 | idée brute · dump · brainstorm sans contexte clair | **?** | Demander : "C'est pour le jeu, les dinos ou les histoires ?" |
 
-> ⚠️ **DINO est transverse** : son code est déployé depuis `game/web/` (dev-dinos.html, dinos-data.js, audio/dinos, img/dinos) mais sa gouvernance vit dans `studio/dino/`. La rule [`.claude/rules/dino.md`](.claude/rules/dino.md) charge les règles dino où que vive le fichier.
+> ⚠️ **DINO est transverse** : son code est déployé depuis `site/` (dev-dinos.html, dinos-data.js, audio/dinos, img/dinos) mais sa gouvernance vit dans `studio/dino/`. La rule [`.claude/rules/dino.md`](.claude/rules/dino.md) charge les règles dino où que vive le fichier.
 
-> 🏛️ **Modèle : 1 plateforme · N domaines autonomes.** MaxPlay = une **app de restitution** (PWA déployée depuis `game/web/` → GitHub Pages) qui héberge des domaines **indépendants à GED/PMO propres** : mini-jeux (`game/`) · dino (`studio/dino/`, déployé dans game/web/) · narration (`studio/narration/`, descendra dans game/web/ quand prête) · tile/Max Adventure (futur). `game/` porte 2 casquettes — **plateforme** (menu, stars, unlock, CI) **+** domaine **mini-jeux** — OK tant qu'ils dominent ; sinon extraire une couche plateforme. Tenant déployé ailleurs = pôle d'autoring + **rule path-scoped** (pattern dino, validé). **INBOX** : 2 boîtes (game, narration), le PMO d'accueil **trie par domaine → bon backlog**. Pas de prolifération.
+> 🏛️ **Modèle : 1 plateforme · N domaines autonomes.** MaxPlay = une **app de restitution** (PWA déployée depuis `site/` → GitHub Pages) qui héberge des domaines **indépendants à GED/PMO propres** : mini-jeux (`game/`) · dino (`studio/dino/`, déployé dans site/) · narration (`studio/narration/`, descendra dans site/ quand prête) · tile/Max Adventure (futur). `game/` porte 2 casquettes — **plateforme** (menu, stars, unlock, CI) **+** domaine **mini-jeux** — OK tant qu'ils dominent ; sinon extraire une couche plateforme. Tenant déployé ailleurs = pôle d'autoring + **rule path-scoped** (pattern dino, validé). **INBOX** : 2 boîtes (game, narration), le PMO d'accueil **trie par domaine → bon backlog**. Pas de prolifération.
 
 **Étape 2 — Annoncer avant d'agir :**
 *"Mode [JEU/NARRATION] — je charge [fichier] puis j'agis."*
@@ -31,7 +31,7 @@ MaxPlay/
 ├── CLAUDE.md             ← ce fichier (routage + commun)
 ├── game/                 ← PÔLE JEU → game/CLAUDE.md (auto-loaded)
 ├── studio/               ← pôles d'autoring (non déployés)
-│   ├── dino/             ← PÔLE DINO → studio/dino/CLAUDE.md (code déployé dans game/web/, lié par rules/dino.md)
+│   ├── dino/             ← PÔLE DINO → studio/dino/CLAUDE.md (code déployé dans site/, lié par rules/dino.md)
 │   └── narration/        ← PÔLE NARRATION → studio/narration/CLAUDE.md (auto-loaded)
 ├── infra/                ← bot Telegram + serveur MCP llm-copains
 ├── memory/               ← transverse : MEMORY, MAX_PROFILE, VISION

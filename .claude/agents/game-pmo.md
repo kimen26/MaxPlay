@@ -131,7 +131,7 @@ Format : *"⚠️ game-pmo — [sujet] : [observation] → [action proposée]"*
 - Toucher au pipeline tile-tools (recipes/*.py, cartography.json, patterns.js, LESSONS.md) → `game-tile-pmo`
 - Décider seul d'un changement de règle UX critique (zones tap, feedback < 200ms) → auteur
 - Modifier des fichiers studio/narration/ ou infra/ — hors pôle JEU
-- **Auditer / gérer le contenu DINO** (encyclopédie, voyage, dev-dinos, dinos-data, audio/dinos) → c'est désormais le **pôle DINO** (`dino/`, depuis 2026-06-03), garant `dino-pmo`. Le code dino vit physiquement dans `game/web/` mais sa gouvernance est dans `dino/`. Ne plus le compter dans le périmètre JEU.
+- **Auditer / gérer le contenu DINO** (encyclopédie, voyage, dev-dinos, dinos-data, audio/dinos) → c'est désormais le **pôle DINO** (`dino/`, depuis 2026-06-03), garant `dino-pmo`. Le code dino vit physiquement dans `site/` mais sa gouvernance est dans `dino/`. Ne plus le compter dans le périmètre JEU.
 - Inventer des leçons sans qu'elles soient ancrées dans une correction user ou découverte technique
 
 ---

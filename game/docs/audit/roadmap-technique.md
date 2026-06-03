@@ -6,7 +6,7 @@
 ## 1. Cadre
 
 - **Cible** : Max, 3.5-4 ans aujourd'hui, jouera 2-5 ans (projet long terme).
-- **Contrainte forte** : simplicité d'ajout d'un jeu (1 fichier HTML dans `game/web/` + 1 carte menu).
+- **Contrainte forte** : simplicité d'ajout d'un jeu (1 fichier HTML dans `site/` + 1 carte menu).
 - **Contrainte déploiement** : GitHub Pages statique (pas de backend).
 - **Stack actuelle** : HTML vanilla + JS ES5/ES6 sans bundler (17 MJ) + 1 Phaser/Vite (MJ-07).
 - **Budget temps** : soirs / week-ends. Tout chantier > 1 jour doit pouvoir se faire par lots.
@@ -54,7 +54,7 @@ Priorités immédiates, faisables en une soirée.
 **Décision proposée : garder vanilla pour HTML, TS seulement côté Phaser.**  
 - Vanilla = ajout d'un MJ en 1 fichier, zéro ceremony, déploiement trivial.
 - TS utile quand : >20 MJ, besoin de types partagés, équipe >1 dev.
-- Seuil de bascule : quand `game/web/js/` dépasse ~10 modules ou qu'on a besoin de génériques.
+- Seuil de bascule : quand `site/js/` dépasse ~10 modules ou qu'on a besoin de génériques.
 
 ### 5.2 PWA oui/non ?
 **Décision proposée : oui, vague 2, courant 2026.**  

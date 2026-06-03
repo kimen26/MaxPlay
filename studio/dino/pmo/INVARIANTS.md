@@ -7,7 +7,7 @@
 
 | Quoi | Valeur | Source |
 |------|--------|--------|
-| Dinos (entrées `DINOS`) | **50** | `game/web/js/dinos-data.js` |
+| Dinos (entrées `DINOS`) | **50** | `site/js/dinos-data.js` |
 | Familles (`DINO_FAMILLES`) | **9** | idem |
 | Régimes alimentaires (`DINO_CATEGORIES`) | **4** | idem |
 | Récits d'époque (voyage) | **8** | `audio/dinos/recit-*.mp3` |

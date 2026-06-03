@@ -1,6 +1,6 @@
 # Encyclopédie Dinosaure (EP-039) — INDEX
 
-> Point d'entrée du dossier. Jeu : [`game/web/dev-dinos.html`](../../../game/web/dev-dinos.html) · Données : [`game/web/js/dinos-data.js`](../../../game/web/js/dinos-data.js) (50 dinos).
+> Point d'entrée du dossier. Jeu : [`site/dev-dinos.html`](../../../site/dev-dinos.html) · Données : [`site/js/dinos-data.js`](../../../site/js/dinos-data.js) (50 dinos).
 > Rangé 2026-05-23 (suppression de 5 artefacts one-shot consommés).
 
 ## 📐 Process & méthode (à lire en premier)

@@ -107,7 +107,7 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 
 **Leçons attachées** : L-060, L-061
 
-**Impact** : `game/docs/jeux/dino-encyclopedie/scripts-audio/parasaurolophus-V2.md`, `game/web/audio/dinos/parasaurolophus-*.mp3`, DEV-DINOS.html étendu.
+**Impact** : `game/docs/jeux/dino-encyclopedie/scripts-audio/parasaurolophus-V2.md`, `site/audio/dinos/parasaurolophus-*.mp3`, DEV-DINOS.html étendu.
 
 **Dépendance** : Aucune — MJ dinos opérationnel, audio enrichissement progressif.
 
@@ -139,7 +139,7 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 
 > ⚠️ **Note FORME (à traiter par game-archiviste)** : les leçons gravées L-032/L-034 par game-pmo entrent en collision de numérotation avec des L-032/L-034 tile préexistants (2026-05-12). Renuméroter les leçons MJ de ce REX.
 
-**Impact** : `game/web/js/test-helper.js`, `game/web/tests/`, CI config.
+**Impact** : `site/js/test-helper.js`, `site/tests/`, CI config.
 
 ---
 
@@ -214,14 +214,14 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 
 ### Livrables phase 1+2 (LIVRÉS ✅)
 
-- **`game/web/tile-tools/vocab.py`** : 46 constantes nommées français (validation auto au boot), source UNIQUE pour les paths de tiles. Anti-erreur radical : plus de choix entre `_2` et `_14`.
-- **`game/web/tile-tools/builders.py`** : `route_h()` + `route_v()` (les 2 seuls cas où "ligne droite trivial" ≠ invention). Tests assertions + **SHA256 byte-identique** aux PNG existants → macros validées techniquement.
-- **`game/web/tile-tools/recipes/test_route_h_5rows_v2.py`** + `test_route_v_5cols_v2.py` : recettes exemple utilisant les macros.
+- **`site/tile-tools/vocab.py`** : 46 constantes nommées français (validation auto au boot), source UNIQUE pour les paths de tiles. Anti-erreur radical : plus de choix entre `_2` et `_14`.
+- **`site/tile-tools/builders.py`** : `route_h()` + `route_v()` (les 2 seuls cas où "ligne droite trivial" ≠ invention). Tests assertions + **SHA256 byte-identique** aux PNG existants → macros validées techniquement.
+- **`site/tile-tools/recipes/test_route_h_5rows_v2.py`** + `test_route_v_5cols_v2.py` : recettes exemple utilisant les macros.
 - **Fix passing** : `test_voie_bus_v6.py` Variation_15 (sale) → Variation_8 (propre) — bug oublié lors correction 5.
-- **`game/web/tile-tools/RESEARCH-INSPIRATIONS.md`** : 60+ liens capitalisés (LDtk, WFC, Dual Tilemap, bitmask, Phaser tutos, LimeZu officiel, AI tools).
-- **`game/web/tile-tools/cartography.json`** : marqué DEPRECATED dans le JSON (champ `_DEPRECATED`).
-- **`game/web/tools/_archive/`** : tile-library.html + tile-library-v2.html archivés (legacy, URLs cassées).
-- **`game/web/tile-tools/_archive/`** : créé avec README pour futurs déplacements ciblés.
+- **`site/tile-tools/RESEARCH-INSPIRATIONS.md`** : 60+ liens capitalisés (LDtk, WFC, Dual Tilemap, bitmask, Phaser tutos, LimeZu officiel, AI tools).
+- **`site/tile-tools/cartography.json`** : marqué DEPRECATED dans le JSON (champ `_DEPRECATED`).
+- **`site/tools/_archive/`** : tile-library.html + tile-library-v2.html archivés (legacy, URLs cassées).
+- **`site/tile-tools/_archive/`** : créé avec README pour futurs déplacements ciblés.
 
 ### Phases abandonnées (suite au pivot)
 
@@ -255,7 +255,7 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 
 **Workflow proposé** :
 1. Pour chaque concept manquant : collecter 2-3 refs → Papa Yann valide visuellement
-2. Stocker dans `game/web/tile-tools/references/<concept>/ref-001.png` + `ref-001.md` (source URL, ce qui plaît)
+2. Stocker dans `site/tile-tools/references/<concept>/ref-001.png` + `ref-001.md` (source URL, ce qui plaît)
 3. Reproduire dans une recette utilisant `vocab.py`, itérer jusqu'à match visuel
 4. La recette validée devient le "snippet" réutilisable
 
@@ -318,7 +318,7 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 
 ```
 MaxPlay V0
-├── game/web/index.html     ← Menu 2 colonnes (14 mini-jeux + Max Adventure)
+├── site/index.html     ← Menu 2 colonnes (14 mini-jeux + Max Adventure)
 │   ├── mj-01.html · Quelle couleur ?
 │   ├── mj-02.html · Quel numéro ?
 │   ├── mj-03.html · Devine le numéro (TTS) — pool 362 lignes IDFM
@@ -553,7 +553,7 @@ MaxPlay V0
 **Clôture 2026-05-21** : faux bug confirmé, jamais exécuté. Archivé pour traçabilité (Leçon méthodologique : audit pmo-challenge doit **vérifier le code** d'un ticket avant de le relayer). Supprimé de backlog actif.
 
 ### EP-023 – Menu hybride Carte de Villejuif ✅
-> Page d'accueil = map Villejuif (haut) + grille classique (bas). Implémenté dans `game/web/index.html` avec `.map-hotspot`, tooltips et liens vers chaque MJ.
+> Page d'accueil = map Villejuif (haut) + grille classique (bas). Implémenté dans `site/index.html` avec `.map-hotspot`, tooltips et liens vers chaque MJ.
 - [x] T-230 : Valider emplacements V1 avec utilisateur
 - [x] T-231 : Layout map (dimensions, échelle, choix illustration vs tileset LimeZu)
 - [x] T-232 : Coordonnées x,y des emojis hotspots
@@ -576,7 +576,7 @@ MaxPlay V0
 **Infra TTS**
 - [ ] T-260 : Setup MCP ElevenLabs dans `~/.claude/settings.json` (clé API utilisateur)
 - [ ] T-261 : Sélection / clonage de voix (3-5 voix : narrateur doux, voix enfant joyeuse, voix grave/calme, voix vive/excitée…)
-- [ ] T-262 : Script de génération bouclant sur `GAME_META` → `game/web/sounds/titles/mj-XX.mp3`
+- [ ] T-262 : Script de génération bouclant sur `GAME_META` → `site/sounds/titles/mj-XX.mp3`
 - [ ] T-263 : Modifier `tracker.js._announceTitle` : si MP3 existe → `new Audio()`, sinon fallback `speechSynthesis`
 - [ ] T-264 : Régénération à la demande quand un jeu est renommé
 - [ ] T-265 : Pipeline narration : 1 histoire → découpe par voix → MP3 par segment → lecteur audio web
@@ -604,8 +604,8 @@ MaxPlay V0
 
 ### EP-004 – Architecture V0
 - [x] T-031 : Sandbox codée – SandboxScene.ts (prototype top-down)
-- [x] T-080 : Supprimer `game/web/index.html` v1 (version pédagogiquement cassée) → backup dans `temp/`
-- [x] T-081 : Créer nouvelle structure `game/web/` avec composants partagés (SVG bus, feedback, score)
+- [x] T-080 : Supprimer `site/index.html` v1 (version pédagogiquement cassée) → backup dans `temp/`
+- [x] T-081 : Créer nouvelle structure `site/` avec composants partagés (SVG bus, feedback, score)
 - [x] T-082 : Composant partagé BusCard (SVG + ligne + couleur + état masqué/révélé)
 - [x] T-083 : Composant partagé FeedbackOverlay (succès / erreur / encouragement)
 - [x] T-084 : Hub menu principal (7 mini-jeux, accès direct)
@@ -722,7 +722,7 @@ MaxPlay V0
 | L-003 | 2026-03-07 | CLAUDE.md = instructions opérationnelles Claude, pas de la doc projet | Confusion format initial |
 | L-004 | 2026-03-08 | Le prénom de l'enfant est Max, pas Tom | Correction critique session 2 |
 | L-005 | 2026-03-08 | Sandbox avant de coder le mini-jeu – le game feel se décide en jouant | EP-004 |
-| L-006 | 2026-03-10 | Afficher la réponse dans la question = zéro défi pédagogique (ex: couleur visible dans le quiz couleur) | Jeux v1 game/web cassés pédagogiquement |
+| L-006 | 2026-03-10 | Afficher la réponse dans la question = zéro défi pédagogique (ex: couleur visible dans le quiz couleur) | Jeux v1 site cassés pédagogiquement |
 | L-007 | 2026-03-10 | Toujours vérifier les incohérences entre docs (VISION vs BACKLOG ici) avant chaque session | Pixel art vs flat design, même date, deux docs différents |
 | L-008 | 2026-03-10 | Max est très avancé – ne pas sous-estimer. Il connaît 20 lignes par cœur, chiffres jusqu'aux milliers, lecture phonétique | Calibrage MJ-01/02/03b |
 | L-009 | 2026-03-15 | Sidewalk 1–6 = 6 STYLES différents (textures distinctes), pas des orientations. Utiliser 1 seul style par zone + sidewalk2 pour varier max 2–3 points | map-mockups pipeline |
@@ -742,7 +742,7 @@ MaxPlay V0
 | L-023 | 2026-05-11 | **Audit `pmo-challenge` doit vérifier le code** d'un ticket avant de le relayer comme bug actif. Lire BACKLOG seul = risque de "bugs fantômes" (cas EP-022 mj-04 : 3 sous-tâches implémentées sans coche, audit l'a relayé comme actif) | Anti-pattern méta gravé Session 14 |
 | L-024 | 2026-05-11 | **mj-12 = plage de sons / tableau de bord, PAS un jeu** (décision Papa Yann 2026-05-11). Pas de mécanique gagnant, pas de refonte en quiz. Concept = "explore les sons" (bus, Mario, Pokémon, sons secrets). Garder tel quel, l'intro splash actuelle "Joue avec les sons / Touche les boutons pour écouter" reflète bien ce scope | Décision auteur, clôture point out-of-scope Session 14 |
 | L-029 | 2026-05-12 | **Brique élémentaire validée visuellement AVANT macro** : ne jamais écrire de macro de composition (virage, carrefour, intersection) sans avoir d'abord validé chaque tile candidate isolée (mini-render 3×3) avec Papa Yann. Anti-pattern fatal : inventer des constantes `COIN_INT_SE = sw_X` sans avoir vérifié visuellement. Coût de violation : 8h ratées sur virages 13×13. Méthode validée : `brick-explorer.html` (page interactive vote courbe/point/autre) | Session 2026-05-12 LESSONS L-009 (skill maxplay-tiles) |
-| L-030 | 2026-05-12 | **Mapping LimeZu SW_1 ↔ SW_2-6 figé** : les 6 tilesets Sidewalk NE SONT PAS équivalents à numéro identique. SW_1 a 10 positions (#11-#20) décalées vs SW_2-6. Table de mapping dans `game/web/tile-tools/styles.py` (fonction `tile_for_form(style, n_ref)` applique le remap auto). Anti-pattern fatal : convertir `Sidewalk_1_X → Sidewalk_2_X` aveuglément = artefact garanti positions 11-20 | Session 2026-05-12 LESSONS L-010 + script `compare_tilesets_final.py` |
+| L-030 | 2026-05-12 | **Mapping LimeZu SW_1 ↔ SW_2-6 figé** : les 6 tilesets Sidewalk NE SONT PAS équivalents à numéro identique. SW_1 a 10 positions (#11-#20) décalées vs SW_2-6. Table de mapping dans `site/tile-tools/styles.py` (fonction `tile_for_form(style, n_ref)` applique le remap auto). Anti-pattern fatal : convertir `Sidewalk_1_X → Sidewalk_2_X` aveuglément = artefact garanti positions 11-20 | Session 2026-05-12 LESSONS L-010 + script `compare_tilesets_final.py` |
 | L-031 | 2026-05-12 | **Méthode "planche comparative"** validée : au lieu de rendre 60 PNG isolés (validation lourde), générer 1 grosse image grille (N tiles × M tilesets, labellisée). Validation Papa Yann en 1 coup d'œil au lieu de 22 cycles. Pattern à généraliser sur toutes familles (Asphalt/Grass/Wall/...). Scripts : `scripts/compare_tilesets*.py` | Session 2026-05-12 LESSONS L-011 |
 | L-032 | 2026-05-12 | **PIL lecture w/h obligatoire** avant inclusion dans `tile_picker_data.js` : 69% des PNG sont multi-cells (sprites meubles 2×3, voitures 4×2, façades 5×6, atlas 18×16). Présupposé "tile 48×48 = 1×1 cellule" = FAUX. Refonte `scripts/build_tile_picker_data.py` lit dimensions réelles, catégorie `planches` dédiée pour >10 cellules | Session 2026-05-12 LESSONS L-012, tile-picker passé 36% → 100% couverture (3525 → 9811 tiles) |
 | L-033 | 2026-05-14 | **Gabarit header `.hdr` canonique unifié** obligation tous les MJ HTML (existants + futurs). Pattern figé depuis mj-20 (commit e1bcd42a) : header une ligne, compact, petit. Raison : uniformité UX + économise espace contenu jeu (3-8 min sessions, zéro perte). Rétro-fit : 20 MJ cibles sauf mj-20 | Signal Papa Yann 2026-05-14, décision figée (EP-036 créé) |
@@ -753,7 +753,7 @@ MaxPlay V0
 
 ### Fait (Phase 1)
 - ✅ Création 3 agents : `game-conseiller` (Opus transverse) · `game-mj-pmo` (Haiku sous-spé) · `game-mj-reviewer` (Haiku validateur)
-- ✅ `game/web/PIPELINE-MEMORY-MJ.md` créé (méta-process MJ, 3 niveaux mémoire)
+- ✅ `site/PIPELINE-MEMORY-MJ.md` créé (méta-process MJ, 3 niveaux mémoire)
 - ✅ `game/memory/VISION-LONG-TERME.md` créé (Phase 2 WexWorld + pont narration↔jeu + hypothèses)
 - ✅ Skill global `pmo-design` renommé depuis `multi-agent-pmo` + nouveau skill `pmo-challenge` (~/.claude/skills/)
 - ✅ Challenge réciproque narration-pmo : 5/5 retenus, patchs appliqués (OBS-1 à OBS-5)
@@ -780,7 +780,7 @@ MaxPlay V0
 ### Fait
 - [x] Skill `~/.claude/skills/maxplay-tiles/` créé avec SKILL.md (566 lignes) + LESSONS.md (30+ entrées datées)
 - [x] Agent `.claude/agents/tile-pmo.md` créé (Haiku, capture systématique des leçons tile)
-- [x] Dossier `game/web/tools/` créé : hub `index.html` + déplacement tile-library-v3 + tile-picker
+- [x] Dossier `site/tools/` créé : hub `index.html` + déplacement tile-library-v3 + tile-picker
 - [x] **tile-picker.html** : bibliothèque 81 tiles + matrice 10×10 drag&drop + 5 catégories (Rue/Parc/Jardin/Building/Forêt) + sélecteur d'échelle (Mini/Petit/Normal/Grand) + multi-tiles à vraies dimensions + import via `?recipe=X.py` + auto-copy clipboard sur Export
 - [x] **mockups-routes.html** : 6 patterns à échelle uniforme (route V/H, virage gauche, carrefour, rond-point, quartier) + bouton 🎨 Éditer → ouvre tile-picker pré-rempli
 - [x] **mj-pose-tiles.html** : mini-jeu enfant "petit ouvrier" 🦺🚧 — 8×8 tactile, 5 catégories simplifiées, bouton "Lisser" auto-bords, localStorage
@@ -913,8 +913,8 @@ MaxPlay V0
 - **Refonte déploiement** :
   - `docs/` nettoyé (seuls les .md conservés, -41 MB)
   - `vite.config.ts` : base conditionnel `process.env.CI ? '/MaxPlay/mj-07/' : './'`
-  - `game/web/mj-07.html` : message "localhost" → bouton "Jouer" vers `./mj-07/`
-  - `HubScene.ts` : URLs `/game/web/mj-X.html` → `../mj-X.html` (prod-ready)
+  - `site/mj-07.html` : message "localhost" → bouton "Jouer" vers `./mj-07/`
+  - `HubScene.ts` : URLs `/site/mj-X.html` → `../mj-X.html` (prod-ready)
   - `deploy.yml` : workflow build Phaser + assemble `_site/` + deploy Pages
   - `.gitignore` : `_site/` ajouté
 - **Résultat** : un seul `git push` déploie tout. MJ-07 accessible en ligne. Base solide long terme.
@@ -933,7 +933,7 @@ Setup complet infrastructure. EP-001 terminé. Scaffold Phaser.js créé.
 ### 2026-03-10 – Session 3
 - Hooks Claude activés (SessionStart confirmé)
 - Revue complète architecture + pédagogie
-- **Problème identifié** : jeux game/web v1 pédagogiquement cassés (réponse visible)
+- **Problème identifié** : jeux site v1 pédagogiquement cassés (réponse visible)
 - **Architecture V0 décidée** : Option C (HTML quiz + Phaser sandbox)
 - SVG bus side-view fourni par l'utilisateur → rangé + template dynamique créé
 - `game/src/utils/bus-svg.ts` créé (createBusSvg, createBusDataUrl)
@@ -944,9 +944,9 @@ Setup complet infrastructure. EP-001 terminé. Scaffold Phaser.js créé.
 
 ### 2026-03-10 – Session 4 (soir)
 - **BACKLOG.md mis à jour** avec les échanges utilisateur
-- **Structure game/web/ nettoyée** – nouvelle architecture propre :
+- **Structure site/ nettoyée** – nouvelle architecture propre :
   ```
-  game/web/
+  site/
   ├── index.html          ← Hub menu (7 mini-jeux)
   ├── css/
   │   └── style.css       ← Styles partagés
@@ -963,7 +963,7 @@ Setup complet infrastructure. EP-001 terminé. Scaffold Phaser.js créé.
   ├── mj-05.html          ← Quel bus ?
   └── mj-06.html          ← Au garage !
   ```
-- **Ancien index.html v1** archivé dans `temp/game/web-v1-backup.html`
+- **Ancien index.html v1** archivé dans `temp/site-v1-backup.html`
 - **MJ-01 à MJ-06 fonctionnels** en HTML vanilla
 - **MJ-07 (Phaser)** reste dans `game/` avec SandboxScene.ts
   - MJ-01 : Max connait 20 lignes par cœur (centaines incluses), TVM exclu

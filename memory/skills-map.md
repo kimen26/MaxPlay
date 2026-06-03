@@ -42,12 +42,12 @@ type: reference
 
 ### Équipe Dino (pôle transverse — créé 2026-06-03)
 
-> Encyclopédie dino + voyage dans le temps. Code déployé dans `game/web/` (dev-dinos, dinos-data, audio/dinos, img/dinos), gouvernance dans `studio/dino/`. Lié par [`.claude/rules/dino.md`](../.claude/rules/dino.md). Audits : `/dino-pmo-audit` + `/dino-archiviste-audit`.
+> Encyclopédie dino + voyage dans le temps. Code déployé dans `site/` (dev-dinos, dinos-data, audio/dinos, img/dinos), gouvernance dans `studio/dino/`. Lié par [`.claude/rules/dino.md`](../.claude/rules/dino.md). Audits : `/dino-pmo-audit` + `/dino-archiviste-audit`.
 
 | Agent | Modèle | Utiliser quand |
 |-------|--------|----------------|
 | `dino-pmo` | Haiku | **PMO pôle DINO** (FOND) — persistance `studio/dino/pmo/` (INVARIANTS, decisions, sprint-log, backlog, audit-trail) + figée. À invoquer sur signal dino. |
-| `dino-archiviste` | Haiku | **Archiviste pôle DINO** (FORME) — structure `studio/dino/`, refs, orphelins audio/png. Surveille aussi le code dino dans `game/web/`. |
+| `dino-archiviste` | Haiku | **Archiviste pôle DINO** (FORME) — structure `studio/dino/`, refs, orphelins audio/png. Surveille aussi le code dino dans `site/`. |
 | `dino-conseiller` | Sonnet | **Binôme créatif DINO** — écriture récits/fiches, péda 4 ans, fact-check Grokipedia, taxonomie, écriture audio narrée. |
 
 > **Anciens agents supprimés :** `narration-writer-a`, `narration-writer-b`, `narration-writer-c`, `narration-writer-claude-ancre`, `narration-keeper`, `narration-showrunner`
@@ -98,7 +98,7 @@ type: reference
 | `gamepad-inputs` | Manette 8BitDo FC30, Web Gamepad API, dual-input manette+tactile |
 | `performance-opt` | **PROACTIF** — optimisation assets, texture atlas, object pooling, draw calls |
 | `game-mechanics` | Mécaniques jeu 3-5 ans, level design, difficulté adaptative |
-| `maxplay-tiles` | Tileset LimeZu Modern Exteriors — méthode militaire, cartographie, voisinage, pattern modulaire bas/milieu/haut. Outils : [`game/web/tools/index.html`](../game/web/tools/index.html) (hub) → mockups-routes (échelle uniforme) + tile-library-v3 (patterns) + tile-picker (matrice drag&drop, supporte `?recipe=X.py`). Workflow Propose → Édite → Apprend avec sous-agent [`game-tile-pmo`](../.claude/agents/game-tile-pmo.md) (parent : [`game-pmo`](../.claude/agents/game-pmo.md)). Mini-jeu kids : [`mj-pose-tiles.html`](../game/web/mj-pose-tiles.html). |
+| `maxplay-tiles` | Tileset LimeZu Modern Exteriors — méthode militaire, cartographie, voisinage, pattern modulaire bas/milieu/haut. Outils : [`site/tools/index.html`](../site/tools/index.html) (hub) → mockups-routes (échelle uniforme) + tile-library-v3 (patterns) + tile-picker (matrice drag&drop, supporte `?recipe=X.py`). Workflow Propose → Édite → Apprend avec sous-agent [`game-tile-pmo`](../.claude/agents/game-tile-pmo.md) (parent : [`game-pmo`](../.claude/agents/game-pmo.md)). Mini-jeu kids : [`mj-pose-tiles.html`](../site/mj-pose-tiles.html). |
 
 ### Business/Content (existants)
 | Skill | Utiliser quand |

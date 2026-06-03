@@ -8,7 +8,7 @@ paths:
 # Tile-tools LimeZu — règles auto-chargées
 
 > Chargé automatiquement dès que Claude touche un fichier du pipeline tile-tools ou des outils tile.
-> Source de vérité : [`game/pmo/INVARIANTS.md`](../../game/pmo/INVARIANTS.md) + skill global [`~/.claude/skills/maxplay-tiles/LESSONS.md`](C:/Users/kimen/.claude/skills/maxplay-tiles/LESSONS.md) (30+ leçons gravées).
+> Source de vérité : [`studio/minijeux/pmo/INVARIANTS.md`](../../studio/minijeux/pmo/INVARIANTS.md) + skill global [`~/.claude/skills/maxplay-tiles/LESSONS.md`](C:/Users/kimen/.claude/skills/maxplay-tiles/LESSONS.md) (30+ leçons gravées).
 
 ## Règles d'or NON NÉGOCIABLES
 

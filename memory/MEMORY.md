@@ -1,7 +1,7 @@
 ﻿# MaxPlay – Mémoire Projet
 
 > Chargé automatiquement à chaque session. Rester sous 200 lignes.
-> Source de vérité = `game/tasks/BACKLOG.md`. Ici : contexte rapide pour démarrer.
+> Source de vérité = `studio/minijeux/tasks/BACKLOG.md`. Ici : contexte rapide pour démarrer.
 
 ## Projet
 
@@ -63,7 +63,7 @@ GitHub Pages → kimen26.github.io/MaxPlay/
 
 **CI** : `.github/workflows/deploy.yml` build Phaser (`CI=true` → base `/MaxPlay/max-adventure/`) puis assemble dans `_site/`
 
-**game/dist/**, **_site/** : dans `.gitignore`, jamais commités
+**studio/minijeux/dist/**, **_site/** : dans `.gitignore`, jamais commités
 
 ## Décisions clés MJ-11 (drapeaux)
 
@@ -137,11 +137,11 @@ Serveur MCP global (scope user, tous projets) exposant 2 outils LLM tiers :
 
 | Fichier | Rôle |
 |---------|------|
-| `game/tasks/BACKLOG.md` | Source de vérité : épics, tâches, décisions, leçons |
+| `studio/minijeux/tasks/BACKLOG.md` | Source de vérité : épics, tâches, décisions, leçons |
 | `_archive/docs-meta-cadavres/README-docs-old.md` (archivé) | Carte de toute la documentation — point d'entrée |
 | `memory/MAX_PROFILE.md` | Profil complet Max : lignes bus, couleurs IDFM, intérêts |
 | `memory/VISION.md` | Décisions prises + questions ouvertes |
-| `game/docs/ratp-colors.json` | Source de vérité couleurs+terminus : 26 actives + 362 référentiel |
+| `studio/minijeux/docs/ratp-colors.json` | Source de vérité couleurs+terminus : 26 actives + 362 référentiel |
 | `studio/narration/INDEX.md` | Point d'entrée projet narratif (personnages, ennéagramme, univers) |
 | `studio/narration/enneagramme/` | 9 fiches personnages + situations + ressources auteur |
 | `studio/narration/univers/INDEX.md` | Matière brute univers macro (Éveil, Compagnons, Janus, Baron...) |

@@ -12,7 +12,7 @@ paths:
 # Pôle DINO — règles auto-chargées (path-scoped)
 
 > Chargé dès que Claude touche un fichier dino, **où qu'il vive** : le dossier `studio/dino/` (gouvernance + contenu) OU le code déployé sous `site/` (dev-dinos, data, audio, img).
-> C'est le **pont** entre le code (dans game/) et le pôle (dans studio/dino/), puisqu'un nested CLAUDE.md ne se charge que selon l'emplacement du fichier.
+> C'est le **pont** entre le code (dans studio/minijeux/) et le pôle (dans studio/dino/), puisqu'un nested CLAUDE.md ne se charge que selon l'emplacement du fichier.
 
 ## Réflexe à l'ouverture
 

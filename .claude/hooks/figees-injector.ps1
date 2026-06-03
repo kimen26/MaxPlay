@@ -1,6 +1,6 @@
 # figees-injector.ps1 — Hook PreToolUse (Edit|Write)
 # Si on s'apprete a modifier un site/mj-XX.html qui possede un fichier
-# de DECISIONS FIGEES (game/docs/jeux/figees/mj-XX.md), on REINJECTE son
+# de DECISIONS FIGEES (studio/minijeux/docs/jeux/figees/mj-XX.md), on REINJECTE son
 # contenu dans le contexte AVANT l'edit, avec une banniere STOP.
 # But : rendre la regression structurellement impossible meme apres /compact.
 # Cree 2026-05-15 suite incident MJ-21 (refonte process figeage).
@@ -21,14 +21,14 @@ if (-not $path) { exit 0 }
 # Normalise les separateurs
 $norm = $path -replace '\\', '/'
 
-# Cible : .../site/mj-<slug>.html  (mini-jeux → game/docs/jeux/figees/<slug>.md)
+# Cible : .../site/mj-<slug>.html  (mini-jeux → studio/minijeux/docs/jeux/figees/<slug>.md)
 # OU     : pôle DINO (code site/dino + dossier studio/dino/) → studio/dino/figees/encyclopedie.md
 $root = 'c:\ProjetsPerso\Claude_Projects\MaxPlay'
 $slug = ''
 $figPath = ''
 if ($norm -match 'site/(mj-[\w-]+)\.html$') {
     $slug = $Matches[1]   # ex: mj-21  ou  mj-pose-tiles
-    $figPath = Join-Path $root ("game\docs\jeux\figees\{0}.md" -f $slug)
+    $figPath = Join-Path $root ("studio\minijeux\docs\jeux\figees\{0}.md" -f $slug)
 }
 elseif ($norm -match 'site/dev-dinos\.html$' -or
         $norm -match 'site/js/dinos-data\.js$' -or
@@ -49,7 +49,7 @@ AVANT de continuer. Une ligne ❌ 🔒 est une regression deja commise :
 INTERDITE. Si ton changement contredit une ligne 🔒, n'edite pas --
 demande a Papa Yann de defiger explicitement.
 
-------- game/docs/jeux/figees/$slug.md -------
+------- studio/minijeux/docs/jeux/figees/$slug.md -------
 $contenu
 ------- fin fichier LOI -------
 ==================================================================
@@ -59,7 +59,7 @@ $contenu
 ==================================================================
 NOTE -- $slug.html n'a PAS de fichier de decisions figees.
 Si tu codes ici un comportement deja valide par Papa Yann, tu DOIS
-creer game/docs/jeux/figees/$slug.md via game-mj-pmo pour le figer
+creer studio/minijeux/docs/jeux/figees/$slug.md via game-mj-pmo pour le figer
 (sinon il sera perdu au prochain /compact).
 ==================================================================
 "@

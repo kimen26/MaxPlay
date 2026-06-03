@@ -143,7 +143,7 @@ Après correction utilisateur → leçon dans [`pmo/decisions.md`](pmo/decisions
 - Catalogue navigable : [`INDEX.md`](INDEX.md)
 - Process complet : [`equipe/PROCESS.md`](equipe/PROCESS.md)
 - INBOX dump : [`INBOX.md`](INBOX.md)
-- Pôles voisins : [`../game/CLAUDE.md`](../../game/CLAUDE.md) · [`../studio/dino/CLAUDE.md`](../dino/CLAUDE.md)
+- Pôles voisins : [`../game/CLAUDE.md`](../minijeux/CLAUDE.md) · [`../studio/dino/CLAUDE.md`](../dino/CLAUDE.md)
 
 > ℹ️ Le **pôle DINO** (`../studio/dino/`, créé 2026-06-03) est **consommateur** de la narration : il utilise les voix (`personnages/voix-meta/voice-map.json` → `narrateur_h`, `narrateur_f`, `wex`) et les skills audio (`ecriture-audio-enfants`, `audio-direction-elevenlabs`). Il a sa propre gouvernance (`dino-pmo`/`dino-archiviste`/`dino-conseiller`). `narration-pmo` ne gère pas le contenu dino, mais toute évolution du casting de voix l'impacte.
 

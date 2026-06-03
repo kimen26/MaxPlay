@@ -1,6 +1,6 @@
 # PÔLE DINO — Règles auto-chargées
 
-> Pôle **transverse** (UI de jeu + contenu narré/audio) — pair de [`../game/`](../../game/CLAUDE.md) et [`../narration/`](../narration/CLAUDE.md).
+> Pôle **transverse** (UI de jeu + contenu narré/audio) — pair de [`../game/`](../minijeux/CLAUDE.md) et [`../narration/`](../narration/CLAUDE.md).
 > Chargé automatiquement dès qu'un fichier sous `dino/` est touché. **Le CODE est déployé depuis [`../site/`](../../site/)** (dev-dinos.html, dinos-data.js, audio/dinos, img/dinos) — on ne le bouge pas. La liaison code↔pôle est assurée par la **rule path-scoped** [`.claude/rules/dino.md`](../../.claude/rules/dino.md) qui se charge où que vive le fichier dino.
 > ⚠️ Ce fichier **n'est PAS re-injecté après `/compact`** — il rechargera au prochain contact d'un fichier dino. Le routage racine, lui, survit.
 
@@ -80,7 +80,7 @@ Après correction utilisateur → leçon dans [`pmo/backlog.md`](pmo/backlog.md)
 
 - Catalogue navigable : [`INDEX.md`](INDEX.md)
 - Décisions verrouillées : [`figees/encyclopedie.md`](figees/encyclopedie.md)
-- Pôles voisins : [`../game/CLAUDE.md`](../../game/CLAUDE.md) · [`../narration/CLAUDE.md`](../narration/CLAUDE.md)
+- Pôles voisins : [`../game/CLAUDE.md`](../minijeux/CLAUDE.md) · [`../narration/CLAUDE.md`](../narration/CLAUDE.md)
 
 ---
 

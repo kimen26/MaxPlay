@@ -7,8 +7,11 @@
 | Mots dans la demande | Pôle | Lire ensuite |
 |----------------------|------|-------------|
 | jeu · MJ · mini-jeu · bus · Phaser · mj-XX · tile · LimeZu · déploiement · `game/web` | **JEU** | [`game/CLAUDE.md`](game/CLAUDE.md) → [`game/INDEX.md`](game/INDEX.md) |
+| dino · dinosaure · encyclopédie · voyage (époque) · récit dino · famille dino · Tritri · dev-dinos | **DINO** | [`dino/CLAUDE.md`](dino/CLAUDE.md) → [`dino/INDEX.md`](dino/INDEX.md) |
 | narration · histoire · personnage · univers · ennéagramme · cross-culture · saison · arc · Wex/Melki/Mimi/Dadou/Madie/Lulu/Pierrot/Raph/Juju/Nono | **NARRATION** | [`narration/CLAUDE.md`](narration/CLAUDE.md) → [`narration/INDEX.md`](narration/INDEX.md) |
-| idée brute · dump · brainstorm sans contexte clair | **?** | Demander : "C'est pour le jeu ou pour les histoires ?" |
+| idée brute · dump · brainstorm sans contexte clair | **?** | Demander : "C'est pour le jeu, les dinos ou les histoires ?" |
+
+> ⚠️ **DINO est transverse** : son code est déployé depuis `game/web/` (dev-dinos.html, dinos-data.js, audio/dinos, img/dinos) mais sa gouvernance vit dans `dino/`. La rule [`.claude/rules/dino.md`](.claude/rules/dino.md) charge les règles dino où que vive le fichier.
 
 **Étape 2 — Annoncer avant d'agir :**
 *"Mode [JEU/NARRATION] — je charge [fichier] puis j'agis."*
@@ -25,12 +28,13 @@
 MaxPlay/
 ├── CLAUDE.md             ← ce fichier (routage + commun)
 ├── game/                 ← PÔLE JEU → game/CLAUDE.md (auto-loaded)
+├── dino/                 ← PÔLE DINO → dino/CLAUDE.md (code déployé dans game/web/, lié par rules/dino.md)
 ├── narration/            ← PÔLE NARRATION → narration/CLAUDE.md (auto-loaded)
 ├── infra/                ← bot Telegram + serveur MCP llm-copains
 ├── memory/               ← transverse : MEMORY, MAX_PROFILE, VISION
 ├── _archive/             ← cadavres préservés (avec INDEX expliquant chaque entrée)
 ├── .claude/
-│   ├── agents/           ← 21 sous-agents (PMO, sachants, reviewers)
+│   ├── agents/           ← 24 sous-agents (PMO, sachants, reviewers, conseillers)
 │   ├── hooks/            ← scripts hooks déterministes
 │   ├── rules/            ← règles path-scoped (chargées quand fichier match)
 │   └── settings.json     ← config hooks + permissions

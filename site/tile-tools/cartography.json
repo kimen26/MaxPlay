@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "generated": "2026-05-04",
-  "_DEPRECATED": "⚠️ DEPRECATED 2026-05-11 (EP-VOCAB) — Ce fichier contient des erreurs (ligne 22 dit _14=H propre, c'est FAUX). Source de vérité : game/web/tile-tools/vocab.py + ~/.claude/skills/maxplay-tiles/LESSONS.md correction 5 du 2026-05-10. Gardé pour rétrocompatibilité tile-picker JS uniquement.",
+  "_DEPRECATED": "⚠️ DEPRECATED 2026-05-11 (EP-VOCAB) — Ce fichier contient des erreurs (ligne 22 dit _14=H propre, c'est FAUX). Source de vérité : site/tile-tools/vocab.py + ~/.claude/skills/maxplay-tiles/LESSONS.md correction 5 du 2026-05-10. Gardé pour rétrocompatibilité tile-picker JS uniquement.",
   "comment": "Cartographie militaire des tiles LimeZu pour MaxPlay. Chaque tile a un rôle précis. Vérifié visuellement.",
 
   "_legend": {

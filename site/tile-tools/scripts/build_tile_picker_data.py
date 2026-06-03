@@ -13,7 +13,7 @@ Strategie (refonte 2026-05-12 apres detection Papa Yann d'erreur w/h=1x1 systema
     n           : numero de tile dans la famille
     is_planche  : True si > 10 cellules dans une dimension (atlas complet)
 
-Output : game/web/tile-tools/tile_picker_data.js
+Output : site/tile-tools/tile_picker_data.js
 """
 
 from __future__ import annotations

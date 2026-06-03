@@ -40,7 +40,7 @@ Les `.js` sont des copies des `.json` chargées via `<script src>` (file:// bloq
 | Script | Sortie |
 |--------|--------|
 | `render.py` | Compositeur PIL — `python scripts/render.py recipes/test_X.py` → PNG à côté |
-| `import_themes.py` | Copie ME_Theme_Sorter → `game/phaser/public/assets/tiles/themes/<NN>/` + `_index.json` |
+| `import_themes.py` | Copie ME_Theme_Sorter → `studio/max-adventure/public/assets/tiles/themes/<NN>/` + `_index.json` |
 | `catalog_families.py` | Planches-contact par famille → `families/<theme>/<family>.png` |
 | `compare_sidewalk_styles.py` | `compare_sidewalk_styles.png` — 6 styles Sidewalk côte à côte |
 | `make_catalog_sheets.py` | 24 planches legacy (remplacé par `catalog_families.py`) |

@@ -16,4 +16,4 @@ infra/mcp/logs/
 site/img/dinos/brutes/
 
 # Harnais de test mini-jeux (EP-038) — screenshots/artefacts de run, pas versionnés
-game/tests/.artifacts/
+studio/minijeux/tests/.artifacts/

@@ -27,7 +27,7 @@
 
 ```
 MaxPlay/
-├── game/                   ← PÔLE JEU
+├── studio/minijeux/                   ← PÔLE JEU
 │   ├── web/                ← 21 mini-jeux HTML vanilla (déployés à /)
 │   ├── phaser/             ← max-adventure Phaser TS+Vite (déployé à /max-adventure/)
 │   ├── docs/               ← specs, audit, recherche, ratp-colors.json

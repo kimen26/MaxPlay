@@ -2,7 +2,7 @@
 
 > **Quoi** : journal des décisions de design, frictions résolues, retours user sur la **boucle elle-même** du pipeline tile-tools.
 > Pas un journal des tiles (ça c'est `~/.claude/skills/maxplay-tiles/LESSONS.md`).
-> Pas un journal projet (ça c'est `game/tasks/BACKLOG.md`).
+> Pas un journal projet (ça c'est `studio/minijeux/tasks/BACKLOG.md`).
 > **C'est le journal de comment notre système d'agents tile évolue.**
 >
 > **Garant** : [`game-tile-pmo`](../../../.claude/agents/game-tile-pmo.md) — ajoute une entrée datée à chaque session où le pipeline lui-même change.
@@ -225,7 +225,7 @@ Main agent (Sonnet/Opus)
      - `test_virage_droit.py` (pivot haut-gauche, miroir H) ✅
      - `test_virage_haut_gauche.py` (pivot bas-droite, miroir V) ✅
      - `test_virage_haut_droit.py` (pivot bas-gauche, miroir H+V) ✅
-3. Playground mis à jour : `game/web/tools/vocab-playground.html` cards v3 + status validated
+3. Playground mis à jour : `site/tools/vocab-playground.html` cards v3 + status validated
 **Verdict** : PASS 9/10 (aucune issue, reviewers ont juste signalé "visually clean").
 
 **Livrables créés session 2026-05-12 (après 8h tâtonnement macro)** :

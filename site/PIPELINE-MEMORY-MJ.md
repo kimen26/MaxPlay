@@ -1,8 +1,8 @@
 # PIPELINE-MEMORY-MJ — Mémoire méta-process du pipeline mini-jeux HTML
 
 > **Quoi** : journal des décisions de design, frictions résolues, retours user sur **la boucle elle-même** du pipeline mini-jeux MaxPlay.
-> Pas un journal des règles UX/péda (ça c'est `game/memory/rules.md`).
-> Pas un journal projet (ça c'est `game/tasks/BACKLOG.md`).
+> Pas un journal des règles UX/péda (ça c'est `studio/minijeux/memory/rules.md`).
+> Pas un journal projet (ça c'est `studio/minijeux/tasks/BACKLOG.md`).
 > **C'est le journal de comment notre système d'agents MJ évolue.**
 >
 > **Garant** : [`game-mj-pmo`](../../.claude/agents/game-mj-pmo.md) — ajoute une entrée datée à chaque session où le pipeline MJ lui-même change.
@@ -51,7 +51,7 @@ Pipeline boucle d'apprentissage :
    - _Patch / bugfix_ : voie express — lire figé → fix → harnais vert → push. 1 seule gate.
    - _Tweak cosmétique_ : direct, hook figeage = filet.
 2. **Harnais de test machine OBLIGATOIRE avant tout push** (toutes vitesses). `npm run mj:test mj-XX` vert sinon pas de push, pas de Papa Yann.
-3. **jsdom REJETÉ par le Conseiller** : n'attrape qu'1 des 3 sagas (pas de rendu SVG ni rAF) → faux sentiment de sécurité. Cible = **Playwright headless (Chromium réel)**. Spec minimale : smoke (console.error = fail) + chemin nominal scripté + screenshot fin + 1 assert par ligne 🔒. ~30-50 lignes/MJ, < 15s. **✅ VALIDÉ + OPÉRATIONNEL 2026-05-16** (Papa Yann a tranché : à jour pour la sécurité, pas de version épinglée vieille). Stack : Playwright 1.60.0 + Chromium 148 (build 1223). Setup dans `game/tests/` (`package.json`, `run.mjs` générique, `mj-21.spec.mjs` pilote). Commande : `cd game/tests && npm run mj:test mj-XX`. **Preuve rétro faite** : pilote ROUGE sur commit buggé `bf5f5cde` (`clipPath id UNIQUE` → `ids=[tc,tc]`, la cause racine exacte), VERT 7/7 sur HEAD. Le harnais aurait tué la saga "tube vide" en 1 run sans Papa Yann.
+3. **jsdom REJETÉ par le Conseiller** : n'attrape qu'1 des 3 sagas (pas de rendu SVG ni rAF) → faux sentiment de sécurité. Cible = **Playwright headless (Chromium réel)**. Spec minimale : smoke (console.error = fail) + chemin nominal scripté + screenshot fin + 1 assert par ligne 🔒. ~30-50 lignes/MJ, < 15s. **✅ VALIDÉ + OPÉRATIONNEL 2026-05-16** (Papa Yann a tranché : à jour pour la sécurité, pas de version épinglée vieille). Stack : Playwright 1.60.0 + Chromium 148 (build 1223). Setup dans `studio/minijeux/tests/` (`package.json`, `run.mjs` générique, `mj-21.spec.mjs` pilote). Commande : `cd studio/minijeux/tests && npm run mj:test mj-XX`. **Preuve rétro faite** : pilote ROUGE sur commit buggé `bf5f5cde` (`clipPath id UNIQUE` → `ids=[tc,tc]`, la cause racine exacte), VERT 7/7 sur HEAD. Le harnais aurait tué la saga "tube vide" en 1 run sans Papa Yann.
 4. **Règle « 2 strikes » outillée** : à partir du 2e commit-fix sur le même symptôme, un cas de test reproduisant le bug DOIT être ajouté au harnais AVANT le fix (on ne peut pas tester un bug qu'on ne comprend pas → force la cause-racine).
 
 **Leçons** : L-032 figeage (✅) · L-034 id SVG unique obligatoire si clones DOM · L-035 valider recette couleur en image avant pédago · L-037 design amont obligatoire · EP-038 harnais Playwright (action n°1 vélocité). Détail backlog.md.
@@ -64,11 +64,11 @@ Pipeline boucle d'apprentissage :
 
 **Décidé par Papa Yann + game-conseiller (co-boss)**. Système triple verrou :
 
-1. **Fichier LOI par jeu** : `game/docs/jeux/figees/mj-XX.md` (sections : Objectif / 🔒 Mécanique / 🔒 Layout / ❌ 🔒 Anti-régressions / Journal append-only / Zone ouverte). Seul `game-mj-pmo` y écrit (mot-pour-mot, jamais paraphrase). Seul Papa Yann défige.
+1. **Fichier LOI par jeu** : `studio/minijeux/docs/jeux/figees/mj-XX.md` (sections : Objectif / 🔒 Mécanique / 🔒 Layout / ❌ 🔒 Anti-régressions / Journal append-only / Zone ouverte). Seul `game-mj-pmo` y écrit (mot-pour-mot, jamais paraphrase). Seul Papa Yann défige.
 2. **Hook PreToolUse** `.claude/hooks/figees-injector.ps1` (générique tous MJ) : réinjecte le fichier figé dans le contexte avant chaque Edit/Write d'un `mj-*.html`. Survit au `/compact`. C'est la pièce maîtresse — rend la régression structurellement impossible, pas « déconseillée ».
 3. **Section 0 bloquante** dans `game-mj-reviewer` : diff sémantique code ↔ figé, citation obligatoire ligne par ligne, 1 ligne 🔒 violée = FAIL global immédiat.
 
-Renforts : bloc « ⛔ AVANT DE MODIFIER » dans `.claude/rules/mini-jeux.md`, ligne LOI dans `game/CLAUDE.md` (re-injecté post-compact), responsabilité N°1 ajoutée à `game-mj-pmo`. Premier fichier : `figees/mj-21.md`.
+Renforts : bloc « ⛔ AVANT DE MODIFIER » dans `.claude/rules/mini-jeux.md`, ligne LOI dans `studio/minijeux/CLAUDE.md` (re-injecté post-compact), responsabilité N°1 ajoutée à `game-mj-pmo`. Premier fichier : `figees/mj-21.md`.
 
 **Trigger figeage** : formule Papa Yann (« OK c'est figé / validé / on fige / ne change plus X ») → main agent invoque `game-mj-pmo` immédiatement.
 
@@ -97,8 +97,8 @@ Renforts : bloc « ⛔ AVANT DE MODIFIER » dans `.claude/rules/mini-jeux.md`, l
 **Décision** : créer 2 composants partagés (back-button.js + intro-splash.js) + neutraliser `.scorebar` dans le CSS partagé, puis batch des MJ. Approche **composants > duplications** pour gain durable.
 
 **Composants créés** :
-- `game/web/js/back-button.js` : bouton 80×80 avec mini-bus SVG, auto-replace sélecteurs `.back`, `.back-mj`, `.back-btn`, `#hdr a/button[href|onclick*="index.html"]`
-- `game/web/js/intro-splash.js` : splash 1.5s avec auto-init via `data-mp-intro-emoji|title|hint` sur `<body>`, skippable au tap
+- `site/js/back-button.js` : bouton 80×80 avec mini-bus SVG, auto-replace sélecteurs `.back`, `.back-mj`, `.back-btn`, `#hdr a/button[href|onclick*="index.html"]`
+- `site/js/intro-splash.js` : splash 1.5s avec auto-init via `data-mp-intro-emoji|title|hint` sur `<body>`, skippable au tap
 
 **Fichiers patchés** :
 - `style.css` : `.scorebar/.scoretxt/.scoreval/.streak` → `display:none !important`. `.back` upgraded 48×48 → 80×80. Ajout `.progressbar` (alternative non-numérique).
@@ -127,7 +127,7 @@ Renforts : bloc « ⛔ AVANT DE MODIFIER » dans `.claude/rules/mini-jeux.md`, l
 - `game-mj-pmo.md` (sous-spé PMO Haiku)
 - `game-mj-reviewer.md` (validateur Haiku, checklist 5 sections)
 - `game-conseiller.md` (Opus, ta voix)
-- `game/memory/VISION-LONG-TERME.md` (créé en parallèle pour graver Phase 2 + 3)
+- `studio/minijeux/memory/VISION-LONG-TERME.md` (créé en parallèle pour graver Phase 2 + 3)
 
 ---
 
@@ -187,7 +187,7 @@ Renforts : bloc « ⛔ AVANT DE MODIFIER » dans `.claude/rules/mini-jeux.md`, l
 
 **Trigger user** : Cahier des charges approuvé, commit 077de505 pushé. Papa Yann valide mécanique : clic → highlight orange + confirm → victoire overlay 2.5s.
 
-**Décision** : figeage complet MJ-22 dans `game/docs/jeux/figees/mj-22.md` (section Mécanique / Layout / TTS / Niveaux / Anti-régressions). Test harness créé `game/tests/mj-22.spec.mjs` (11 asserts sur les 3 décisions figées : drapeau cible 72px, méca gagnante complète, progress dots).
+**Décision** : figeage complet MJ-22 dans `studio/minijeux/docs/jeux/figees/mj-22.md` (section Mécanique / Layout / TTS / Niveaux / Anti-régressions). Test harness créé `studio/minijeux/tests/mj-22.spec.mjs` (11 asserts sur les 3 décisions figées : drapeau cible 72px, méca gagnante complète, progress dots).
 
 **Résultat** : harnais vert, aucune correction nécessaire. Prêt pour game-mj-reviewer (Section 0 figé).
 

@@ -25,6 +25,41 @@
 
 ---
 
+## 2026-05-24 — SCANNAGE INPUT INBOX (suite) : HARMONIE DES SPHÈRES — TICKET INPUT-005 CRÉÉ
+
+**Objectif** : Traiter le 2e dépôt Papa Yann « Harmonie des Sphères » (Pythagore/Platon/Kepler), suite directe d'INPUT-004.
+
+**Fait** :
+- [x] Inbox : `narration/inbox/2026-05-24-harmonie-des-spheres.md` (brut intégral + 4 pistes intégration + 4 Q-ouvertes)
+- [x] Ticket `INPUT-005` créé en backlog (priorité Haute, compagnon INPUT-004)
+- [x] Cohérence : aligné avec `project_wex_world_observateur.md` (Wex catalyseur/relieur) + `project_bioresonance_natation.md` (accordeur d'âmes). Piste forte : **Wex entend la musique des sphères** (note qui détonne = signal qu'un ami va mal). Fusion biorésonance + sphères = même métaphore sous 2 habillages.
+
+**Prochaine action** :
+- Brainstorm Conseiller commun INPUT-004 + INPUT-005 (mêmes thèmes, à traiter ensemble)
+- Décider unification « ordre cosmique » + « harmonie des sphères » dans un seul fichier `univers/`
+
+**État au reboot** : INPUT-004 + INPUT-005 en backlog, attendent brainstorm. Règle 48h : distillation attendue 2026-05-26.
+
+---
+
+## 2026-05-24 — SCANNAGE INPUT INBOX : COSMOS/ORDRE COSMIQUE — TICKET INPUT-004 CRÉÉ
+
+**Objectif** : Traiter le dépôt Papa Yann « Cosmos/ordre/Platon/Stoïciens/Enoch » (brainstorm brut + pistes intégration univers).
+
+**Fait** :
+- [x] Ticket `INPUT-004` créé dans `pmo/backlog.md` (priorité Haute)
+- [x] Vérification cohérence avec mémoire : `project_wex_world_observateur.md` (Wex observateur quantique) ✅ **ALIGNÉ**
+- [x] Vérification cohérence avec `project_bioresonance_natation.md` (grimoire vivant) ✅ **FAMILLE IDÉES** (ordre cosmique = harmonie sous-jacente, comme biorésonance = accord d'âmes)
+
+**Prochaine action** :
+- Brainstorm Conseiller sur 4 questions ouvertes (distillation 4 ans · saison/arc · biorésonance · Wex musicien)
+- Intégration univers : créer `univers/cosmos-ordre.md` ou fusionner avec piste Logos stoïcien
+- Lier Wex observateur quantique ↔ Logos (intelligence cosmique) — métaphore quantique cohérente
+
+**État au reboot** : INPUT-004 en backlog, attend brainstorm. Aucun STORY impacté. Règle 48h : distillation attendue 2026-05-26.
+
+---
+
 ## 2026-05-17 — CONSOLIDATION VAGUE 4 STORY-002 : ÉTAT RÉEL 14/14 WRITERS PRODUITS + BUG INFRA RÉSOLU
 
 **Objectif** : Tracer l'état réel livraison vague 4 (briefs BOUSSOLE + 14 writers complets) + correction dérive PMO casting + bug infra production audio résolu.

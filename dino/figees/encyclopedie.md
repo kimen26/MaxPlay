@@ -1,9 +1,9 @@
 # 🔒 FIGÉ — Encyclopédie Dino & Voyage dans le temps
 
-> Décisions verrouillées par Papa Yann. Le hook `figees-injector` réinjecte ce fichier dès qu'on touche `dev-dinos.html`, `dinos-data.js`, ou un audio `recit-*`/`menu-*`.
+> Décisions verrouillées par Papa Yann. Le hook `figees-injector` réinjecte ce fichier dès qu'on touche `dev-dinos.html`, `dinos-data.js`, un audio `recit-*`/`menu-*`, ou un fichier de `dino/`.
 > Chaque ligne 🔒 est LOI. Chaque ligne ❌ 🔒 est une régression DÉJÀ commise — interdite. Seul Papa Yann défige (alerte rouge obligatoire avant tout changement d'une ligne 🔒).
 
-Fichiers concernés : [`game/web/dev-dinos.html`](../../web/dev-dinos.html) · [`game/web/js/dinos-data.js`](../../web/js/dinos-data.js) · [`game/web/audio/dinos/`](../../web/audio/dinos/) · source dialogue [`_RECITS-EPOQUES-DIALOGUE.md`](../dino-encyclopedie/_RECITS-EPOQUES-DIALOGUE.md).
+Fichiers concernés : [`game/web/dev-dinos.html`](../../game/web/dev-dinos.html) · [`game/web/js/dinos-data.js`](../../game/web/js/dinos-data.js) · [`game/web/audio/dinos/`](../../game/web/audio/dinos/) · source dialogue [`_RECITS-EPOQUES-DIALOGUE.md`](../content/_RECITS-EPOQUES-DIALOGUE.md).
 
 ---
 
@@ -53,7 +53,7 @@ Fichiers concernés : [`game/web/dev-dinos.html`](../../web/dev-dinos.html) · [
 
 > Né de l'incident « doudou de Max » (2026-06-03) : un audio généré AVANT une consigne, jamais re-vérifié. Ce process ferme le trou.
 
-1. **TEXTE D'ABORD, dans la source.** Tout récit/accroche vit en clair dans [`_RECITS-EPOQUES-DIALOGUE.md`](../dino-encyclopedie/_RECITS-EPOQUES-DIALOGUE.md) (récits) ou est écrit ici. On ne génère JAMAIS d'audio d'un texte qui n'est pas écrit/relu.
+1. **TEXTE D'ABORD, dans la source.** Tout récit/accroche vit en clair dans [`_RECITS-EPOQUES-DIALOGUE.md`](../content/_RECITS-EPOQUES-DIALOGUE.md) (récits) ou est écrit ici. On ne génère JAMAIS d'audio d'un texte qui n'est pas écrit/relu.
 2. **CHECK INTERDITS avant génération** (obligatoire) — grep le texte :
    ```
    grep -niE "max|doudou|peluche|nounours|\bbus\b" <texte>

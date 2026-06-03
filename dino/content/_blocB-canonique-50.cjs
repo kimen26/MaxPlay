@@ -1,7 +1,7 @@
 // Fige le Bloc B (Taille) canonique des 50 dinos depuis dinos-data.js (source de vérité validée + fact-checkée Grokipedia).
 // narration-pmo DOIT recopier ce texte verbatim pour le Narrateur du Bloc B. Interdit de réinventer les chiffres/comparaisons.
 const fs = require('fs');
-let s = fs.readFileSync(__dirname + '/../../../web/js/dinos-data.js', 'utf8');
+let s = fs.readFileSync(__dirname + '/../../game/web/js/dinos-data.js', 'utf8');
 eval(s.replace(/const /g, 'var '));
 
 let out = '# BLOC B CANONIQUE — 50 dinos (source: dinos-data.js, NE PAS RÉINVENTER)\n\n';

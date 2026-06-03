@@ -1,7 +1,7 @@
 # PÔLE DINO — Règles auto-chargées
 
-> Pôle **transverse** (UI de jeu + contenu narré/audio) — pair de [`../game/`](../minijeux/CLAUDE.md) et [`../narration/`](../narration/CLAUDE.md).
-> Chargé automatiquement dès qu'un fichier sous `dino/` est touché. **Le CODE est déployé depuis [`../site/`](../../site/)** (dev-dinos.html, dinos-data.js, audio/dinos, img/dinos) — on ne le bouge pas. La liaison code↔pôle est assurée par la **rule path-scoped** [`.claude/rules/dino.md`](../../.claude/rules/dino.md) qui se charge où que vive le fichier dino.
+> Pôle **transverse** (UI de jeu + contenu narré/audio) — pair de [`../minijeux/`](../minijeux/CLAUDE.md) et [`../narration/`](../narration/CLAUDE.md).
+> Chargé dès qu'un fichier sous `studio/dino/` (gouvernance) est touché. **Le CODE est déployé depuis [`../../site/`](../../site/)** (dev-dinos.html, dinos-data.js, audio/dinos, img/dinos). ⚠️ Éditer le code déployé charge la **rule** [`.claude/rules/dino.md`](../../.claude/rules/dino.md), **pas ce fichier** — la rule porte les règles ops, ce CLAUDE.md = navigation/gouvernance.
 > ⚠️ Ce fichier **n'est PAS re-injecté après `/compact`** — il rechargera au prochain contact d'un fichier dino. Le routage racine, lui, survit.
 
 ---

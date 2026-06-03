@@ -9,13 +9,13 @@ Le PMO vérifie **le FOND** (décisions, statuts, cohérence sémantique) — co
 ## Procédure (5 sections obligatoires — depuis `game-pmo.md` Mode AUDIT)
 
 ### 1. Architecture / Découvrabilité
-- `studio/minijeux/INDEX.md` + sous-INDEX (docs/, web/, phaser/) à jour ?
+- `studio/minijeux/INDEX.md` + sous-INDEX (docs/, memory/, pmo/) à jour ?
 - Fichiers orphelins (créés sans propagation INDEX) ?
 - Liens cassés majeurs ?
 
 ### 2. Cohérence chiffres clés
 - `pmo/INVARIANTS.md` ⇄ `memory/state.md` ⇄ `pmo/decisions.md` cohérents entre eux ?
-- Count MJ déployés ? (table INVARIANTS = état réel `web/index.html` ?)
+- Count MJ déployés ? (table INVARIANTS = état réel `site/index.html` ?)
 - Casting tile (Asphalt 2/8/14/15) ?
 - Recettes validées count ?
 - Voice IDs (côté Narration uniquement — vérifier qu'aucune ref ne traîne côté Game par erreur)

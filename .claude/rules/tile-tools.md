@@ -61,11 +61,11 @@ Après PASS → user valide → `game-tile-pmo` grave leçons (`LESSONS.md` + `P
 
 | Outil | Usage |
 |-------|-------|
-| `web/tools/index.html` | **Hub** point d'entrée |
-| `web/tools/mockups-routes.html` | Mockups échelle uniforme + bouton "Éditer" → tile-picker |
-| `web/tools/tile-library-v3.html` | Patterns prêts à l'emploi |
-| `web/tools/tile-picker.html` | 9811 tiles catégorisées + matrice drag&drop + export Python |
-| `web/tools/brick-explorer.html` | Validation tile par tile (mini-render 3×3) |
+| `site/tools/index.html` | **Hub** point d'entrée |
+| `site/tools/mockups-routes.html` | Mockups échelle uniforme + bouton "Éditer" → tile-picker |
+| `site/tools/tile-library-v3.html` | Patterns prêts à l'emploi |
+| `site/tools/tile-picker.html` | 9811 tiles catégorisées + matrice drag&drop + export Python |
+| `site/tools/brick-explorer.html` | Validation tile par tile (mini-render 3×3) |
 
 ## Cross-références
 

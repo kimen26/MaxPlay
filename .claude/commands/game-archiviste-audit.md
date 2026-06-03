@@ -15,7 +15,7 @@ L'Archiviste vérifie **la structure** (équivalent du PMO côté forme) :
 - Les scripts respectent leur convention (render.py, render_*.py, build_*.py, compare_*.py) ?
 
 ### 2. Gabarit respecté
-- Structure `studio/minijeux/` conforme : `web/`, `phaser/`, `docs/`, `memory/`, `pmo/`, `tasks/` (stub redirection seulement) ?
+- Structure `studio/minijeux/` conforme : `docs/`, `memory/`, `pmo/`, `tasks/` (stub redirection), `inbox/`, `tests/` ? (⚠️ le **code** est déployé dans `site/` ; le **Phaser** est dans `studio/max-adventure/` — tous deux HORS du dossier pôle depuis la migration 2026-06-04)
 - `studio/minijeux/pmo/` contient bien les 5 fichiers attendus : INVARIANTS, decisions, sprint-log, backlog, audit-trail ?
 - Aucun fichier prématuré dans les sous-dossiers ?
 - Pas de fichiers interdits dans tile-tools/ (cartography.json doit rester `_DEPRECATED`) ?
@@ -29,10 +29,10 @@ L'Archiviste vérifie **la structure** (équivalent du PMO côté forme) :
 ### 4. Fichiers orphelins
 - Chaque fichier `.md` dans `studio/minijeux/` est-il référencé par au moins un INDEX ou un autre fichier ?
 - Chaque recette `test_*.py` est-elle référencée par `patterns.js` / `recipes_data.js` ou un INDEX ?
-- Chaque MJ `mj-XX.html` est-il référencé par `web/index.html` (sauf si retiré du menu volontairement) ?
+- Chaque MJ `mj-XX.html` (dans `site/`) est-il référencé par `site/index.html` (sauf si retiré du menu volontairement) ?
 
 ### 5. Cohérence sémantique (apprentissage 2026-05-13 narration)
-- Le count MJ déployés dans `INVARIANTS.md` ⇄ `state.md` ⇄ `web/index.html` est-il cohérent ?
+- Le count MJ déployés dans `INVARIANTS.md` ⇄ `state.md` ⇄ `site/index.html` est-il cohérent ?
 - Le casting tile (variation 2/8/14/15) est-il cohérent dans `INVARIANTS.md` ⇄ `memory/rules.md` ⇄ `~/.claude/skills/maxplay-tiles/SKILL.md` ?
 - La "prochaine action" affichée dans `pmo/INDEX.md` (si existe) ou `state.md` est-elle la vraie prochaine action selon le sprint-log + backlog ?
 

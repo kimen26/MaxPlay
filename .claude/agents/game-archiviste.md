@@ -64,7 +64,7 @@ Lis dans cet ordre :
 - ✅ Tous les MJ utilisent `busSVG()` / `busSVGHiddenNum()`, jamais emoji 🚌
 - ✅ Tous les MJ "à mécanique" ont compteur + showEndScreen + playEndSound (cf. décision L-024)
 - ✅ Les MJ "dashboards" sont marqués (proposition : `data-mp-type="dashboard"`)
-- ✅ Pas de MJ orphelin dans `web/` (non-référencé par `web/index.html`)
+- ✅ Pas de MJ orphelin dans `site/` (non-référencé par `site/index.html`)
 
 ### 3. Vérification cohérence INDEX/refs
 
@@ -79,7 +79,7 @@ Alerte si :
 ### 4. Indexation et catalogues
 
 À la demande ou auto :
-- Régénère catalogue des MJ déployés (depuis `web/index.html`)
+- Régénère catalogue des MJ déployés (depuis `site/index.html`)
 - Régénère catalogue des recettes tile validées (depuis `recipes/` + `patterns.js`)
 - Régénère catalogue des LESSONS (depuis `~/.claude/skills/maxplay-tiles/LESSONS.md`)
 
@@ -116,7 +116,7 @@ Quand l'auteur demande un audit structurel ou que tu détectes 5+ modifs sans pr
 **Procédure audit structurel (5 sections)** :
 
 1. **Préfixes et conventions** — tous les fichiers respectent-ils les conventions (mj-NN.html, test_*.py, etc.) ?
-2. **Gabarit respecté** — structure `studio/minijeux/` conforme à la doc ? (web/, phaser/, docs/, memory/, pmo/, tasks/)
+2. **Gabarit respecté** — structure `studio/minijeux/` conforme à la doc ? (docs/, memory/, pmo/, tasks/, inbox/, tests/)
 3. **Refs cassées** — tous les liens markdown dans studio/minijeux/ + agents `game-*.md` pointent vers fichiers existants ?
 4. **Fichiers orphelins** — chaque fichier (.md, .py, .html, .js) est-il référencé par au moins un INDEX, agent, script ou autre ?
 5. **Cohérence sémantique** (apprentissage 2026-05-13 narration) — pour chaque concept clé :

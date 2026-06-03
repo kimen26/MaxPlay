@@ -249,7 +249,7 @@ Quand l'auteur demande un audit ou que tu détectes 5+ modifs sans propagation `
 
 **Procédure audit (5 sections)** :
 
-1. **Architecture / Découvrabilité** — `studio/minijeux/INDEX.md` + sous-INDEX (docs/, web/, phaser/) à jour ? Fichiers orphelins ? Liens cassés majeurs ?
+1. **Architecture / Découvrabilité** — `studio/minijeux/INDEX.md` + sous-INDEX (docs/, memory/, pmo/) à jour ? Fichiers orphelins ? Liens cassés majeurs ?
 2. **Cohérence chiffres clés** — `pmo/INVARIANTS.md` ⇄ `memory/state.md` ⇄ `pmo/decisions.md` cohérents ? Count MJ déployés ? Casting tile (variation 2/8/14/15) ? Recettes validées count ?
 3. **État production** — `memory/state.md` reflète vraiment l'état déployé ? Bugs critiques en cours = vrais bugs (pas faux comme EP-022) ? Sessions récentes loguées ?
 4. **Connaissances / Skills** — Skills MaxPlay (`maxplay-tiles/LESSONS.md`, `audio-direction-elevenlabs`, etc.) à jour avec apprentissages récents ? Les leçons L-xxx de `pmo/backlog.md` sont-elles consolidées vers SKILL.md / LESSONS.md ?

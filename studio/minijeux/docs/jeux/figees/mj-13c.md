@@ -29,4 +29,4 @@ Un panneau d'arrêt affiche N bus avec leur temps d'attente. Question : **combie
 - 🔒 Bus via `busSVG()` ; couleurs via les lignes (jamais hex en dur ailleurs).
 
 ## Test
-`game/tests/mj-13c.spec.mjs` — N1 = 3 bus + réponse correcte → Bravo. Vert avant push.
+`studio/minijeux/tests/mj-13c.spec.mjs` — N1 = 3 bus + réponse correcte → Bravo. Vert avant push.

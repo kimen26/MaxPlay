@@ -19,7 +19,7 @@ Revue complète des mini-jeux (MJ-01 → MJ-17), plan de factorisation, benchmar
 - Utilitaires partagés : [`site/js/`](../../../../site/js) (bus-svg, sounds, feedback, data, qcm-retry, tracker…)
 - Backlog vivant : [`tasks/BACKLOG.md`](../../tasks/BACKLOG.md)
 - Profil cible : [`memory/MAX_PROFILE.md`](../../../../memory/MAX_PROFILE.md)
-- Specs historiques : [`game/docs/jeux/GAMES_SPECS.md`](../jeux/GAMES_SPECS.md)
+- Specs historiques : [`studio/minijeux/docs/jeux/GAMES_SPECS.md`](../jeux/GAMES_SPECS.md)
 
 ## 🧭 Ordre de lecture conseillé
 

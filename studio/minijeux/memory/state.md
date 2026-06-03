@@ -39,15 +39,15 @@ Faux bugs récemment vérifiés :
 
 | Fichier | Rôle |
 |---------|------|
-| `web/js/bus-svg.js` | SVG bus — lire avant tout |
-| `web/js/data.js` | LIGNES (26 actives), DESTINATIONS |
-| `web/js/tracker.js` | Suivi progression localStorage |
-| `web/js/victory-sounds.js` | Mélodies fin de partie (4 par couleur) |
-| `web/js/sounds.js` | AudioContext singleton |
+| `site/js/bus-svg.js` | SVG bus — lire avant tout |
+| `site/js/data.js` | LIGNES (26 actives), DESTINATIONS |
+| `site/js/tracker.js` | Suivi progression localStorage |
+| `site/js/victory-sounds.js` | Mélodies fin de partie (4 par couleur) |
+| `site/js/sounds.js` | AudioContext singleton |
 | `docs/ratp-colors.json` | Source de vérité couleurs IDFM (26 actives + 362 référencées) |
-| `web/tile-tools/vocab.py` | Source unique constantes tiles (depuis 2026-05-12, remplace cartography.json deprecated) |
-| `web/tile-tools/styles.py` | Module 6 styles + mapping SW_1 ↔ SW_2-6 (depuis 2026-05-12) |
-| `web/tile-tools/recipes/test_ref_papa_4virages.py` | RÉFÉRENCE CANONIQUE virages (14×14 compo Papa Yann) |
+| `site/tile-tools/vocab.py` | Source unique constantes tiles (depuis 2026-05-12, remplace cartography.json deprecated) |
+| `site/tile-tools/styles.py` | Module 6 styles + mapping SW_1 ↔ SW_2-6 (depuis 2026-05-12) |
+| `site/tile-tools/recipes/test_ref_papa_4virages.py` | RÉFÉRENCE CANONIQUE virages (14×14 compo Papa Yann) |
 | `memory/stack.md` | Architecture complète + règles déploiement |
 | `memory/rules.md` | Règles UX/péda + designs validés |
 | `memory/VISION-LONG-TERME.md` | Vision Phase 2 WexWorld + pont narration↔jeu + app mobile |

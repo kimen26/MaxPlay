@@ -7,7 +7,7 @@ type: project
 ## Stack
 
 - **Jeux HTML** : HTML vanilla + JavaScript ES6 (site/)
-- **Jeu Phaser** : Phaser.js 3 + Vite + TypeScript strict (game/)
+- **Jeu Phaser** : Phaser.js 3 + Vite + TypeScript strict (studio/max-adventure/)
 - **Assets** : SVG/PNG — jamais d'emoji pour les bus ni pour aucun graphisme de jeu (rendu inconsistant multi-OS)
 - **Résolution** : 1024×768 landscape (Phaser), responsive mobile (HTML)
 
@@ -17,15 +17,15 @@ type: project
 GitHub Pages → kimen26.github.io/MaxPlay/
 ├── /                    ← site/index.html (menu 2 colonnes)
 ├── /mj-01.html à /mj-20.html  ← jeux HTML vanilla (mj-02/03/07/10 retirés)
-└── /max-adventure/      ← Phaser build (game/dist/ copié par CI)
+└── /max-adventure/      ← Phaser build (studio/max-adventure/dist/ copié par CI)
     max-adventure.html   ← splash → ./max-adventure/
 ```
 
 - Source HTML : `site/`
-- Source Phaser : `game/` (build → `game/dist/`)
+- Source Phaser : `studio/max-adventure/` (build → `studio/max-adventure/dist/`)
 - CI : `.github/workflows/deploy.yml` assemble dans `_site/` (non commité)
-- `docs/` = uniquement des .md de documentation
-- `game/dist/` et `_site/` dans `.gitignore`
+- `studio/minijeux/docs/` = specs/audit/recherche (.md)
+- `dist/` (motif générique, couvre `studio/max-adventure/dist/`) et `_site/` dans `.gitignore`
 
 ## Règle critique bus
 

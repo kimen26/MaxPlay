@@ -1,4 +1,4 @@
-﻿# Backlog — Pôle JEU
+# Backlog — Pôle JEU
 
 > Source de vérité tickets actifs pôle JEU. Survit aux reboots de session.
 > **Déplacé 2026-05-13** depuis `game/tasks/BACKLOG.md` vers `game/pmo/backlog.md` (harmonisation Game ↔ Narration).
@@ -19,7 +19,7 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 
 ### L-050 – Figeage par mini-jeu = protection régression
 **Constat** : MJ-21 saga "bus en haut/bas" — 10 répétitions Papa Yann sans enregistrement → régression structurelle à chaque `/compact`. **Cause** : aucune décision figée dans code source, pas de priorité mécanique.
-**Fix** : système figeage (commit 565f98cb) — `game/docs/jeux/figees/mj-XX.md` + hook PreToolUse `figees-injector.ps1` + game-mj-reviewer Section 0. État : ✅ déployé, mj-21 protégé.
+**Fix** : système figeage (commit 565f98cb) — `studio/minijeux/docs/jeux/figees/mj-XX.md` + hook PreToolUse `figees-injector.ps1` + game-mj-reviewer Section 0. État : ✅ déployé, mj-21 protégé.
 
 ### L-051 – Gabarit header compact = norme obligatoire
 **Contexte** : Papa Yann signale bandeau titre trop gros dans **tous** les MJ HTML. Pattern correct = mj-20 (commit e1bcd42a).
@@ -39,7 +39,7 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 
 ### L-055 – Design amont + figeage = obligatoire multi-mécanique
 **Pattern MJ-21** : layout codé 5 fois en parallèle conversation (5 commits refactor). Root cause : pas de screen mockup validé par Papa Yann AVANT dev.
-**Processus** : brève → **appel `game-conseiller` (Opus) 30 min** → layout proposé + mécanique + pédago → validation Papa Yann → figeage git (`game/docs/jeux/figees/mj-XX.md`) → dev contre design figé. Bénéfice : 4–5 commits layout évités.
+**Processus** : brève → **appel `game-conseiller` (Opus) 30 min** → layout proposé + mécanique + pédago → validation Papa Yann → figeage git (`studio/minijeux/docs/jeux/figees/mj-XX.md`) → dev contre design figé. Bénéfice : 4–5 commits layout évités.
 
 ### L-057 – Éditions multiples = risque suppression fonctions appelées ailleurs
 **Dinos (2026-05-16)** : bug critique `showFiche is not defined` (ReferenceError l.786) — fonction supprimée lors édition antérieure de dinos-data.js, empêchait ouverture TOUTE fiche.
@@ -107,7 +107,7 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 
 **Leçons attachées** : L-060, L-061
 
-**Impact** : `game/docs/jeux/dino-encyclopedie/scripts-audio/parasaurolophus-V2.md`, `site/audio/dinos/parasaurolophus-*.mp3`, DEV-DINOS.html étendu.
+**Impact** : `studio/dino/content/scripts-audio/parasaurolophus-V2.md`, `site/audio/dinos/parasaurolophus-*.mp3`, DEV-DINOS.html étendu.
 
 **Dépendance** : Aucune — MJ dinos opérationnel, audio enrichissement progressif.
 
@@ -115,7 +115,7 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 
 ## EP-038 – Harnais de test headless mini-jeux (Playwright)
 
-**Statut** : `[~]` **pilote livré 2026-05-16** — Papa Yann a validé (priorité sécurité : Playwright 1.60 + Chromium 148 à jour, pas de version épinglée vieille). `game/tests/` opérationnel, `mj-21.spec.mjs` VERT sur HEAD / ROUGE sur commit buggé `bf5f5cde` (preuve rétro faite). Reste : généraliser 1 spec/MJ actif (T-382→T-384).
+**Statut** : `[~]` **pilote livré 2026-05-16** — Papa Yann a validé (priorité sécurité : Playwright 1.60 + Chromium 148 à jour, pas de version épinglée vieille). `studio/minijeux/tests/` opérationnel, `mj-21.spec.mjs` VERT sur HEAD / ROUGE sur commit buggé `bf5f5cde` (preuve rétro faite). Reste : généraliser 1 spec/MJ actif (T-382→T-384).
 
 **Priorité** : 🔥 **URGENTE** — plus gros levier optimisation (REX MJ-21 : ~60% des allers-retours évitables).
 
@@ -139,7 +139,7 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 
 > ⚠️ **Note FORME (à traiter par game-archiviste)** : les leçons gravées L-032/L-034 par game-pmo entrent en collision de numérotation avec des L-032/L-034 tile préexistants (2026-05-12). Renuméroter les leçons MJ de ce REX.
 
-**Impact** : `site/js/test-helper.js`, `site/tests/`, CI config.
+**Impact** : `site/js/test-helper.js`, `studio/minijeux/tests/`, CI config.
 
 ---
 
@@ -154,7 +154,7 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 2. Vérifier tous les emojis encoded correctement (pas de fallback broken)
 3. Centraliser encoding + créer gabarit HTML standard (voir EP-036)
 
-**Impact** : 21 fichiers `web/mj-*.html` + `web/index.html`.
+**Impact** : 21 fichiers `site/mj-*.html` + `site/index.html`.
 
 ---
 
@@ -171,7 +171,7 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 
 **Raison** : uniformité UX + économise espace pour contenu jeu (sessions 3-8 min zéro perte).
 
-**Impact** : 21 fichiers `web/mj-*.html`, potentiellement `web/index.html` menu.
+**Impact** : 21 fichiers `site/mj-*.html`, potentiellement `site/index.html` menu.
 
 ---
 
@@ -181,17 +181,17 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 
 **Priorité** : 🔥 **URGENTE** (prévention, sécurité production)
 
-**Contexte** : Système figeage gravé 2026-05-15 (commit 565f98cb) — `game/docs/jeux/figees/mj-XX.md` + hook PreToolUse `figees-injector.ps1` + game-mj-reviewer Section 0. Actuellement **seul mj-21 protégé**. Les 20 autres MJ actifs exposés à regressions type "bus en haut/bas" (REX MJ-21, 10 répétitions sans enregistrement).
+**Contexte** : Système figeage gravé 2026-05-15 (commit 565f98cb) — `studio/minijeux/docs/jeux/figees/mj-XX.md` + hook PreToolUse `figees-injector.ps1` + game-mj-reviewer Section 0. Actuellement **seul mj-21 protégé**. Les 20 autres MJ actifs exposés à regressions type "bus en haut/bas" (REX MJ-21, 10 répétitions sans enregistrement).
 
 **À faire** :
-1. **Rétro-fit template** : copier `game/docs/jeux/figees/mj-21.md` → `game/docs/jeux/figees/mj-{01,04,05,06,08,09,11,12,13a,13b,13c,14,15,16,17,18,19,20,22,max-adventure}.md`
-2. **Figer décisions visuelles/mécanique** pour chaque MJ (lire `web/mj-XX.html` + brève Papa Yann du moment du déploiement initial)
+1. **Rétro-fit template** : copier `studio/minijeux/docs/jeux/figees/mj-21.md` → `studio/minijeux/docs/jeux/figees/mj-{01,04,05,06,08,09,11,12,13a,13b,13c,14,15,16,17,18,19,20,22,max-adventure}.md`
+2. **Figer décisions visuelles/mécanique** pour chaque MJ (lire `site/mj-XX.html` + brève Papa Yann du moment du déploiement initial)
 3. **Valider hook** : `figees-injector.ps1` doit charger `.md` pour chaque MJ avant édition
 4. **Documentation** : mettre à jour `memory/rules.md` § figeage obligatoire (non-négociable pour tout nouveau MJ)
 
 **Raison** : figeage = seule protection contre regressions silencieuses entre sessions (incidents 2026-05-13 à 2026-05-16). Coût : 30 min batch script ou 1h rétro-fit manuel.
 
-**Impact** : `game/docs/jeux/figees/` (20 fichiers créés), hook config, documentation.
+**Impact** : `studio/minijeux/docs/jeux/figees/` (20 fichiers créés), hook config, documentation.
 
 ---
 

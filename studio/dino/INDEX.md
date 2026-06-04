@@ -36,6 +36,7 @@
 | [`content/_ETYMO-COMPLET-60.md`](content/_ETYMO-COMPLET-60.md) · [`-RACINES-50`](content/_ETYMO-RACINES-50.md) | Étymologies grec/latin |
 | [`content/_FACTCHECK-9-CERATOPSIENS.md`](content/_FACTCHECK-9-CERATOPSIENS.md) | Table de vérité cératopsiens |
 | [`content/_BLOC-B-CANONIQUE.md`](content/_BLOC-B-CANONIQUE.md) | Bloc Taille verbatim (anti-dérive chiffres) |
+| [`content/_FICHES-DINOS-GROKIPEDIA.md`](content/_FICHES-DINOS-GROKIPEDIA.md) | **50 fiches contexte-prompt image** (source Grokipédia) : forme/taille/cornes/peau/dents/pieds · habitat · régime précis · prédateurs · copains · bébés-œufs + **5 prompts d'image/dino** (environnement, enfant 1 m, famille, manger, chassé) |
 
 ## 🛠️ Scripts (content/)
 

@@ -155,22 +155,12 @@ const DINO_GROK = {
       "type": "grok"
     },
     {
-      "url": "img/dinos/grok/apatosaurus_inbox2_2_environnement.jpg",
-      "label": "Son environnement",
-      "type": "grok"
-    },
-    {
       "url": "img/dinos/grok/apatosaurus_inbox2_5_environnement.jpg",
       "label": "Son environnement",
       "type": "grok"
     },
     {
       "url": "img/dinos/grok/apatosaurus_lot1_2_environnement.jpg",
-      "label": "Son environnement",
-      "type": "grok"
-    },
-    {
-      "url": "img/dinos/grok/apatosaurus_lot2_2_environnement.jpg",
       "label": "Son environnement",
       "type": "grok"
     },
@@ -204,11 +194,6 @@ const DINO_GROK = {
     {
       "url": "img/dinos/grok/baryonyx_lot2_1_environnement.jpg",
       "label": "Son environnement",
-      "type": "grok"
-    },
-    {
-      "url": "img/dinos/grok/baryonyx_lot2_1_sa_vie.jpg",
-      "label": "Sa vie",
       "type": "grok"
     }
   ],
@@ -340,11 +325,6 @@ const DINO_GROK = {
       "url": "img/dinos/grok/ceratosaurus_inbox2_5_environnement.jpg",
       "label": "Son environnement",
       "type": "grok"
-    },
-    {
-      "url": "img/dinos/grok/ceratosaurus_inbox2_6_sa_vie.jpg",
-      "label": "Sa vie",
-      "type": "grok"
     }
   ],
   "chasmosaurus": [
@@ -402,22 +382,12 @@ const DINO_GROK = {
       "type": "grok"
     },
     {
-      "url": "img/dinos/grok/diplodocus_inbox2_2_environnement.jpg",
-      "label": "Son environnement",
-      "type": "grok"
-    },
-    {
       "url": "img/dinos/grok/diplodocus_inbox2_5_environnement.jpg",
       "label": "Son environnement",
       "type": "grok"
     },
     {
       "url": "img/dinos/grok/diplodocus_lot1_2_environnement.jpg",
-      "label": "Son environnement",
-      "type": "grok"
-    },
-    {
-      "url": "img/dinos/grok/diplodocus_lot2_2_environnement.jpg",
       "label": "Son environnement",
       "type": "grok"
     },
@@ -485,11 +455,6 @@ const DINO_GROK = {
     {
       "url": "img/dinos/grok/gorgosaurus_inbox2_5_environnement.jpg",
       "label": "Son environnement",
-      "type": "grok"
-    },
-    {
-      "url": "img/dinos/grok/gorgosaurus_lot1_3_chasse.jpg",
-      "label": "Sa vie",
       "type": "grok"
     }
   ],
@@ -642,11 +607,6 @@ const DINO_GROK = {
     {
       "url": "img/dinos/grok/stegosaurus_lot2_1_taille.jpg",
       "label": "Sa taille",
-      "type": "grok"
-    },
-    {
-      "url": "img/dinos/grok/stegosaurus_inbox2_2_environnement.jpg",
-      "label": "Son environnement",
       "type": "grok"
     },
     {

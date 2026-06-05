@@ -9,6 +9,8 @@
 | EP-D01 | ~~Vérifier count dinos (50 réel vs 60 ancien INDEX)~~ → **RÉSOLU 2026-06-03** : count autoritatif = **50** (`DINOS.length`). L'ancien « 60 » comptait des entrées non finalisées. Stale corrigés (INDEX, header data). | — | ✅ fermé |
 | EP-D02 | Audio des ~28 dinos sans recap (génération progressive vs TTS) | 🟢 basse | ouvert |
 | EP-D03 | Visuels/illustrations des écrans d'époque du voyage (optionnel) | 🟢 basse | idée |
+| EP-D04 | 🚩 **Réécriture V2-émotionnelle audio INACHEVÉE** — seul `scripts-audio/parasaurolophus-V2.md` est fait (angle émotion + boucle fermée + tags `[happily][softly][gasps]`). Les ~21 autres dinos audio restent en **V1 factuel** (industrialisé EP-039, `*-V1.md`). À compléter sur le modèle Parasaurolophus (émotion + fluidité). | 🟡 moyenne | **ouvert — flag Papa Yann 2026-06-06** |
+| EP-D05 | 🚩 **Audio désynchronisé après correction data (2026-06-06)** — 11 dinos corrigés (taille/poids/régime/amis vs Grokipédia). Leurs scripts `*-V1.md` + MP3 sont **sourcés de `dinos-data.js`** → ils portent les ANCIENS chiffres, à régénérer. Prioritaires (ont déjà l'audio) : **T-Rex** (12→13 m), **Diplodocus** (27→26 m), **Allosaure** (2,3→2 t), **Vélociraptor** (retrait « meute »). | 🟡 moyenne | ouvert |
 
 ## Leçons (L-xxx)
 
@@ -17,8 +19,12 @@
 - **L-D03** — Un nom de famille = **nom scientifique honnête**. Ne pas renommer un groupe hétérogène d'un seul mot faux (ne pas appeler « Ptérosaures » un lot qui contient un mosasaure + un synapside).
 - **L-D04** — Une accroche de menu s'écoute en **2-7 s** ; au-delà c'est un cours, l'enfant décroche. Le détail va dans les sections, pas dans l'accroche.
 - **L-D05** — Tout audio doit passer le **grep-interdits** (`max|doudou|peluche|bus`) AVANT génération. L'incident « doudou de Max » venait d'un audio généré avant la consigne et jamais re-vérifié.
+- **L-D06** — Les scripts/MP3 audio sont **sourcés de `dinos-data.js`** : toute correction de chiffre/fait dans la data **désynchronise l'audio existant**. Réflexe : corriger la data → **flaguer la régénération audio** (EP-D05). Ne jamais toucher un chiffre sans signaler l'audio à refaire.
 
 ## Changelog
+
+### Session 2026-06-06
+Audit qualité images (P1-P4 : doublons/watermarks/mauvaises espèces/wiki-anglais) + nettoyage **169 orphelins** (0 restant). **50 fiches contexte-prompt Grokipédia** (`_FICHES-DINOS-GROKIPEDIA.md`, récupéré via Playwright). **Data-check Grokipédia** : 13 corrections appliquées à `dinos-data.js`. 🚩 Flags audio : **EP-D04** (V2-émotionnelle inachevée) + **EP-D05** (audio désync après fix data). Leçon **L-D06** (data→audio). Réflexe gravé en mémoire : WebFetch 403 → Playwright.
 
 ### Session 2026-06-03
 Refonte UI + audio + création du pôle DINO (voir `sprint-log.md`). Décisions : pôle pair, Tritri sans méta, scission familles, régimes alimentaires, voix menus. Leçons L-D01→L-D05 gravées.

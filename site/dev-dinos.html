@@ -553,6 +553,7 @@ html, body {
     <button class="mode-btn active" id="mode-btn-famille"   onclick="setMode('famille')"  >🦖 Les familles</button>
     <button class="mode-btn"        id="mode-btn-regime"    onclick="setMode('regime')"   >🍽️ Ce qu'il mange</button>
     <button class="mode-btn"        id="mode-btn-periode"   onclick="setMode('periode')"  >⏳ Le voyage</button>
+    <button class="mode-btn"        id="mode-btn-dico"      onclick="setMode('dico')"     >📖 Le dico</button>
   </div>
   <div id="menu-scroll"></div>
 </div>
@@ -585,6 +586,7 @@ html, body {
 </div>
 
 <script src="js/dinos-data.js"></script>
+<script src="js/dinos-racines.js"></script>
 <script>
 
 /* ── TTS ── */
@@ -642,6 +644,7 @@ const MENU_FALLBACK = {
   regime:  'Les dinosaures ne mangeaient pas tous la même chose. Les carnivores mangeaient de la viande. Les herbivores mangeaient des plantes.',
   famille: (typeof DINO_FAMILLES_INTRO !== 'undefined' ? DINO_FAMILLES_INTRO : 'Les grandes familles de dinosaures !'),
   periode: 'Le grand voyage dans le temps ! On remonte très loin, à la recherche de Tritri.',
+  dico:    'Les noms des dinos sont faits de petits mots de savants ! Touche un mot pour l\'écouter.',
 };
 function setMode(mode) {
   currentMode = mode;
@@ -665,7 +668,7 @@ function showMenu() {
 function buildMenu() {
   const el = document.getElementById('menu-scroll');
   el.innerHTML = '';
-  el.classList.remove('mode-periode', 'mode-famille');
+  el.classList.remove('mode-periode', 'mode-famille', 'mode-dico');
 
   if (currentMode === 'regime') {
     buildMenuRegime(el);
@@ -674,6 +677,9 @@ function buildMenu() {
     buildMenuFamille(el);
   } else if (currentMode === 'periode') {
     buildMenuPeriode(el);
+  } else if (currentMode === 'dico') {
+    el.classList.add('mode-dico');
+    buildMenuDico(el);
   }
 }
 
@@ -726,6 +732,58 @@ function buildMenuFamille(el) {
     `;
     // Un seul son : on entre dans la grille, c'est elle qui dit le nom + l'origine grecque.
     card.addEventListener('click', () => { setTimeout(() => showGridFamille(fam.id), 250); });
+    el.appendChild(card);
+  });
+}
+
+/* ── MENU dico (racines grec/latin · source: js/dinos-racines.js, généré) ── */
+function buildMenuDico(el) {
+  if (!document.getElementById('dico-style')) {
+    const st = document.createElement('style'); st.id = 'dico-style';
+    st.textContent = `
+      #menu-scroll.mode-dico { padding:8px 10px 24px; overflow-y:auto; }
+      .dico-card { background:#fff; border-radius:16px; padding:12px 14px; margin:8px 0; box-shadow:0 2px 6px rgba(0,0,0,.12); cursor:pointer; }
+      .dico-card:active { transform:scale(.98); }
+      .dico-head { display:flex; align-items:baseline; flex-wrap:wrap; gap:8px; }
+      .dico-root { font-size:1.8rem; font-weight:800; color:#2c3e50; }
+      .dico-sens { font-size:1.1rem; color:#16a085; font-weight:700; }
+      .dico-langue { font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; color:#fff; background:#7f8c8d; border-radius:8px; padding:2px 8px; }
+      .dico-langue.latin { background:#c0392b; } .dico-langue.grec { background:#2980b9; }
+      .dico-dinos { display:flex; align-items:center; gap:6px; margin-top:8px; flex-wrap:wrap; }
+      .dico-thumb { width:42px; height:42px; object-fit:contain; }
+      .dico-count { font-size:.8rem; opacity:.6; margin-left:4px; }
+    `;
+    document.head.appendChild(st);
+  }
+  const intro = document.createElement('div');
+  intro.className = 'fam-intro';
+  intro.innerHTML = `<button class="fam-explic-play" aria-label="Écouter">🔊</button><p>Les noms des dinos sont faits de petits mots de savants ! Touche un mot pour l'écouter.</p>`;
+  intro.querySelector('.fam-explic-play').addEventListener('click', ev => { ev.stopPropagation(); speakText(MENU_FALLBACK.dico); });
+  el.appendChild(intro);
+
+  if (typeof DINO_RACINES === 'undefined' || !DINO_RACINES.racines) {
+    const p = document.createElement('p'); p.style.padding = '16px'; p.textContent = 'Le dico arrive bientôt !'; el.appendChild(p); return;
+  }
+  const byId = {}; DINOS.forEach(d => byId[d.id] = d);
+  DINO_RACINES.racines.filter(r => r.type === 'racine').forEach(r => {
+    const card = document.createElement('div');
+    card.className = 'dico-card';
+    const thumbs = r.dinos.slice(0, 6).map(id => {
+      const d = byId[id]; if (!d || !d.png) return '';
+      return `<img class="dico-thumb" src="img/dinos/${d.png}" alt="${d.name}" title="${d.name}" loading="lazy" onerror="this.style.display='none'">`;
+    }).join('');
+    const langue = r.langue || '';
+    card.innerHTML = `
+      <div class="dico-head">
+        <span class="dico-root">${r.cle}</span>
+        <span class="dico-sens">= ${r.sens}</span>
+        ${langue ? `<span class="dico-langue ${langue}">${langue}</span>` : ''}
+      </div>
+      <div class="dico-dinos">${thumbs}<span class="dico-count">${r.n} dino${r.n > 1 ? 's' : ''}</span></div>
+    `;
+    const mot = r.cle.replace(/-/g, '');
+    const phrase = `${mot}${langue ? ', en ' + langue + ',' : ''} ça veut dire : ${r.sens}.`;
+    card.addEventListener('click', () => speakText(phrase));
     el.appendChild(card);
   });
 }

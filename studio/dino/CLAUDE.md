@@ -50,10 +50,11 @@
 
 ## 🦕 Le produit (rappel)
 
-Encyclopédie dino pour Max (4 ans), 3 onglets :
+Encyclopédie dino pour Max (4 ans), 4 onglets :
 1. **Les familles** (défaut) — 9 familles, **nom scientifique en titre** (Théropodes…) + surnom + origine grecque dite en entrant.
 2. **Ce qu'il mange** — 4 régimes **alimentaires** (carnivores/herbivores/piscivores/omnivores).
 3. **Le voyage** — 8 récits d'époque audio (Narratrice F + Wex), fil rouge Tritri trouvé au Crétacé. Indicateur d'avancement (reset session).
+4. **Le dico** — racines grec/latin récurrentes (69 racines, tap = écoute). Source `js/dinos-racines.js` (généré depuis `content/sources/etymo/`). [ajouté 2026-06-08]
 
 Fiches dino : nom_etym (étymo expliquée) + taille (échelle honnête) + régime + funfact + audio si dispo.
 

@@ -5,6 +5,7 @@ paths:
   - "site/js/dinos-data.js"
   - "site/js/dinos-images-local.js"
   - "site/js/dinos-images-grok.js"
+  - "site/js/dinos-racines.js"
   - "site/audio/dinos/**"
   - "site/img/dinos/**"
 ---
@@ -31,7 +32,7 @@ paths:
 - 🔒 **Tritri** = running gag Wex (dino préféré). JAMAIS « Max », « doudou », « peluche ».
 - 🔒 **Encyclopédie = vrai** : vrais noms + vraies dates. Terme savant nouveau → expliqué (« ptérosaure » → « reptile volant comme le Ptéranodon »).
 - 🔒 **Échelle honnête** : aucune comparaison qui ment > 10 %. **Bus interdit dans les récits narrés** (OK en échelle de taille des fiches).
-- 🔒 **3 onglets** : Familles (défaut, titres = noms scientifiques) · Ce qu'il mange (régimes alimentaires) · Le voyage (8 récits, avancement reset session).
+- 🔒 **4 onglets** : Familles (défaut, titres = noms scientifiques) · Ce qu'il mange (régimes alimentaires) · Le voyage (8 récits, avancement reset session) · **Le dico** (racines grec/latin, source `js/dinos-racines.js` généré). [4ᵉ onglet ajouté 2026-06-08]
 - 🔒 **Audio** : « écoute » jamais « regarde » · Wex FR standard sans tic écrit · accroche menu 2-7 s · narrateur_h (menus) / narrateur_f (voyage) · eleven_v3 stability 0,4 · loudnorm.
 - 🔒 **AVANT toute génération audio** : `grep -niE "max|doudou|peluche|bus" <texte>` → match (hors échelle) = STOP.
 

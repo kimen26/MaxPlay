@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-27 – Lis le nom du dino</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    #app { background: linear-gradient(160deg,#3a2c1a,#241a10); }
+    .read-panel { text-align:center; margin:10px 12px 4px; }
+    .read-hint { font-size:.9rem; font-weight:700; color:#d9b382; margin-bottom:4px; }
+    .read-word {
+      display:inline-block; font-size:2.4rem; font-weight:900; color:#fff;
+      background:rgba(255,255,255,0.08); border:3px solid #d9a441;
+      border-radius:16px; padding:8px 28px; letter-spacing:.5px; line-height:1.1;
+    }
+    .question-counter { text-align:center; font-size:.85rem; opacity:.7; margin-top:8px; }
+    .choices {
+      display:grid; grid-template-columns:repeat(2,1fr); gap:12px;
+      padding:12px; max-width:520px; margin:0 auto;
+    }
+    .dino-card {
+      background:#fff; border-radius:18px; padding:8px; border:5px solid transparent;
+      box-shadow:0 5px 14px #0005; cursor:pointer; display:flex; align-items:center; justify-content:center;
+      min-height:120px; transition:transform .12s, border-color .15s;
+    }
+    .dino-card:active { transform:scale(.94); }
+    .dino-card img { width:100%; height:108px; object-fit:contain; pointer-events:none; }
+    .dino-card.ok { border-color:#00c47a; background:#d6fbe7; }
+    .dino-card.ko { border-color:#ff5a5a; opacity:.5; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="hdr">
+      <a href="index.html" class="back">←</a>
+      <span class="htitle">📖 Lis le nom du dino</span>
+    </div>
+    <div class="scorebar">
+      <span class="scoretxt">Score</span>
+      <span class="scoreval" id="score">0</span>
+      <span class="streak" id="streak"></span>
+      <span id="levelbar" style="margin-left:auto;font-weight:900;color:#ffe066;background:#ffffff1f;border-radius:10px;padding:3px 12px;font-size:.85rem;">Niveau 1</span>
+    </div>
+
+    <div class="qbox">
+      <div class="read-panel">
+        <div class="read-hint">Lis bien… trouve ce dino 👇</div>
+        <div class="read-word" id="word">…</div>
+      </div>
+      <div class="question-counter" id="qcounter">1 / 10</div>
+    </div>
+
+    <div class="choices" id="choices"></div>
+  </div>
+
+  <div id="fbOverlay"></div>
+
+  <script src="js/sounds.js"></script>
+  <script src="js/victory-sounds.js"></script>
+  <script src="js/feedback.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/stars.js"></script>
+  <script src="js/qcm-retry.js"></script>
+  <script src="js/dinos-data.js"></script>
+  <script>
+    // ─── MJ-27 — Lis le nom du dino (LECTURE PURE, aucun son d'aide) ───
+    // Affiche le nom écrit + 6 vraies images de l'encyclopédie. Max lit et trouve.
+    const SRC = (typeof DINOS !== 'undefined') ? DINOS : (window.DINOS || []);
+    const MISSING = new Set(['Archelon.png','Elasmosaurus.png','Liopleurodon.png','Shastasaurus.png','Shonisaurus.png']);
+    // Pool = dinos avec image top-level valide (pas de sous-dossier, fichier présent)
+    const POOL = SRC.filter(d => d.png && d.name && !d.png.includes('/') && !MISSING.has(d.png));
+
+    const NCHOICES = 6;
+    const MAX_Q = 10;
+    const level = Math.max(0, Math.min(2, (window.Stars ? Stars.get('mj-27') : 0)));
+    // Difficulté = ressemblance des intrus (N3 = même famille → faut VRAIMENT lire)
+    const SAME_FAMILY = level >= 2;
+    const MIX_FAMILY  = level === 1;
+
+    let score = 0, streak = 0, qCount = 0, qcm = null, target = null;
+
+    function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+    function init(){
+      document.getElementById('levelbar').textContent = 'Niveau ' + (level+1);
+      nextQuestion();
+    }
+
+    function nextQuestion(){
+      if (qCount >= MAX_Q) return showEnd();
+      qcm = QcmRetry.create();
+      qCount++;
+      document.getElementById('qcounter').textContent = qCount + ' / ' + MAX_Q;
+
+      target = POOL[Math.floor(Math.random()*POOL.length)];
+
+      let distract;
+      if (SAME_FAMILY){
+        const sameFam = POOL.filter(d => d.famille === target.famille && d.id !== target.id);
+        distract = shuffle(sameFam).slice(0, NCHOICES-1);
+        if (distract.length < NCHOICES-1){ // compléter si famille trop petite
+          const rest = shuffle(POOL.filter(d => d.id !== target.id && !distract.includes(d)));
+          distract = distract.concat(rest).slice(0, NCHOICES-1);
+        }
+      } else {
+        distract = shuffle(POOL.filter(d => d.id !== target.id)).slice(0, NCHOICES-1);
+      }
+
+      const opts = shuffle([{ d: target, correct:true }, ...distract.map(d => ({ d, correct:false }))]);
+
+      document.getElementById('word').textContent = target.name;   // le MOT à lire (aucun son)
+
+      const box = document.getElementById('choices');
+      box.innerHTML = '';
+      opts.forEach(o => {
+        const b = document.createElement('button');
+        b.className = 'dino-card';
+        if (o.correct) b.dataset.correct = '1';
+        b.innerHTML = '<img src="img/dinos/' + o.d.png + '" alt="">';
+        b.onclick = () => answer(o.correct, b);
+        box.appendChild(b);
+      });
+    }
+
+    function answer(correct, btn){
+      if (btn.disabled) return;
+      const res = QcmRetry.handle(qcm, correct);
+      if (res.outcome === 'ignored') return;
+      if ((res.outcome==='correct'||res.outcome==='reveal') && typeof Tracker!=='undefined') Tracker.logAnswer(res.outcome==='correct');
+      if (res.outcome === 'correct'){
+        btn.classList.add('ok'); score += res.points;
+        streak = res.streakInc ? streak+1 : 0;
+        sndDing(); showFB(true); updateScore();
+        setTimeout(nextQuestion, 1200);
+      } else if (res.outcome === 'reveal'){
+        btn.classList.add('ko'); btn.disabled = true; streak = 0;
+        document.querySelectorAll('.dino-card[data-correct="1"]').forEach(b=>b.classList.add('ok'));
+        playErrorSound(); sndBuzz(); showFB(false); updateScore();
+        setTimeout(nextQuestion, 1800);
+      } else {
+        btn.classList.add('ko'); btn.disabled = true; streak = 0;
+        playErrorSound(); sndBuzz(); showFB(false); updateScore();
+      }
+    }
+
+    function updateScore(){
+      document.getElementById('score').textContent = score;
+      document.getElementById('streak').textContent = streak >= 2 ? '🔥×'+streak : '';
+    }
+
+    function showEnd(){
+      if (typeof Tracker!=='undefined') Tracker.endSession(score, MAX_Q*10);
+      playEndSound(score, MAX_Q*10); confetti();
+      document.getElementById('app').innerHTML =
+        '<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100dvh;text-align:center;padding:20px;">'
+        + '<div style="font-size:5rem;margin-bottom:16px;">📖</div>'
+        + '<h2 style="font-size:2rem;color:#ffe066;margin-bottom:16px;">Champion de lecture !</h2>'
+        + '<p style="font-size:1.3rem;margin-bottom:26px;">Tu as fait <strong>'+score+'</strong> points !</p>'
+        + '<div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">'
+        + '<a href="mj-27.html" style="background:#00c47a;color:#fff;padding:14px 28px;border-radius:30px;text-decoration:none;font-weight:900;">🔄 Rejouer</a>'
+        + '<a href="index.html" style="background:#ffffff22;color:#fff;padding:14px 28px;border-radius:30px;text-decoration:none;font-weight:900;">📋 Menu</a>'
+        + '</div></div>';
+    }
+
+    init();
+  </script>
+  <script src="js/tracker.js"></script>
+  <script src="js/comments.js"></script>
+  <script src="js/back-button.js"></script>
+</body>
+</html>

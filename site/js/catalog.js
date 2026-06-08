@@ -75,4 +75,5 @@ window.MAXPLAY_CATALOG = [
   { id:'mj-24', category:'dinos', titre:'Trouve le dino',     emoji:'🦕', desc:'Trouve le bon dino par son nom !',       url:'mj-24.html', type:'html', orientation:'any', access:'sequence', maxStars:3, unlock:null, tag:'tts', status:'live' },
   { id:'mj-25', category:'dinos', titre:'Pareil pas pareil',  emoji:'🔍', desc:'Trouve le dino identique !',             url:'mj-25.html', type:'html', orientation:'any', access:'sequence', maxStars:3, unlock:null, tag:'tts', status:'live' },
   { id:'mj-26', category:'dinos', titre:'Compte les dinos',   emoji:'🔢', desc:'Combien de dinos ? Compte-les !',        url:'mj-26.html', type:'html', orientation:'any', access:'sequence', maxStars:3, unlock:null, tag:'tts', status:'live' },
+  { id:'mj-27', category:'dinos', titre:'Lis le nom du dino', emoji:'📖', desc:'Lis le nom, trouve le bon dino !',       url:'mj-27.html', type:'html', orientation:'any', access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
 ];

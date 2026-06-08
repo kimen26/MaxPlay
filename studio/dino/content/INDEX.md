@@ -12,6 +12,7 @@
 | [`data/`](data/) | 🎯 **Donnée structurée** — nourrit les features (dico, quiz, fiches) | [`data/INDEX.md`](data/INDEX.md) |
 | [`scripts/`](scripts/) | 🛠️ **Outils** — génèrent audio / images / exports | [`scripts/INDEX.md`](scripts/INDEX.md) |
 | [`scripts-audio/`](scripts-audio/) | 🎙️ **Dialogues** Wex/Narrateur (`groupe-*`, `special-*`, template) + cache `json-top/` | — |
+| [`assets/`](assets/) | 🎨 **Assets visuels** — banque 215 silhouettes dino par famille (PNG noir/transparent, mini-jeux) | [`assets/silhouettes/_INDEX.md`](assets/silhouettes/_INDEX.md) |
 | [`inbox/`](inbox/) | 📥 **Brut non trié** — matière à exploiter | — |
 
 ## 🔁 Le flux (de la source au produit déployé)

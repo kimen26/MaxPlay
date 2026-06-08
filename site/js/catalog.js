@@ -72,4 +72,7 @@ window.MAXPLAY_CATALOG = [
   // ─── 🦕 Dinos (déverrouillage par code) ───
   // TODO Sprint 2 : renommer dev-dinos.html → dinos.html (PAS tant que Papa Yann bosse dessus)
   { id:'dinos', category:'dinos', titre:'Encyclopédie Dinos', emoji:'🦕', desc:'50 dinos · 6 familles · fiches riches · audio', url:'dev-dinos.html?v=7', type:'encyclo', orientation:'any', access:'code', maxStars:0, unlock:{ code:'TRITRI', bundle:'dinos' }, tag:'tts', status:'wip' },
+  { id:'mj-24', category:'dinos', titre:'Trouve le dino',     emoji:'🦕', desc:'Trouve le bon dino par son nom !',       url:'mj-24.html', type:'html', orientation:'any', access:'sequence', maxStars:3, unlock:null, tag:'tts', status:'live' },
+  { id:'mj-25', category:'dinos', titre:'Pareil pas pareil',  emoji:'🔍', desc:'Trouve le dino identique !',             url:'mj-25.html', type:'html', orientation:'any', access:'sequence', maxStars:3, unlock:null, tag:'tts', status:'live' },
+  { id:'mj-26', category:'dinos', titre:'Compte les dinos',   emoji:'🔢', desc:'Combien de dinos ? Compte-les !',        url:'mj-26.html', type:'html', orientation:'any', access:'sequence', maxStars:3, unlock:null, tag:'tts', status:'live' },
 ];

@@ -30,6 +30,9 @@
 
 ## Changelog
 
+### Session 2026-06-09 (suite — accroches audio)
+**Vraies voix EL sur les accroches familles + régimes (fin de la dame TTS sur les menus dino).** 13 MP3 générés (9 `menu-fam-<id>` + 4 `menu-regime-<cat>`), narrateur_h (Lumi). Carnivore via `text-to-dialogue` eleven_v3 (tags `[dramatic tone][whispers][laughs]` = vrai rire « maléfique » voulu par Papa Yann), les 12 autres en `text_to_speech` eleven_multilingual_v2. Étymo découpée par accroche (Théro=bête sauvage, pode=pied…) + image fun. **Câblage** `dev-dinos.html` : `MENU_FAM_VOICE`/`MENU_REGIME_VOICE` (pattern `MENU_VOICE` + fallback dame), joués **auto** à l'entrée de grille (`showGridFamille`/`showGridRegime`). **Dame retirée** : bandeau famille (D), tap-nom dino (E), intro menu famille (G), taps secondaires Pangée/Extinction (F). Test Chromium : bons MP3 requêtés, 0 erreur JS. Commit `67e9268b`, poussé. **Reste** : images 5 marins (grok), Dico audio (EP-D06), grosse régen V2 dinos (EP-D04/D05, après 11/06). Textes figés : `scripts-audio/_ACCROCHES-MENU-FAMILLES-REGIMES.md`.
+
 ### Session 2026-06-09
 **Refonte taxo familles** : famille **Énaliosaures** créée (6 reptiles marins : Mosasaure + Élasmosaure/Liopleurodon/Archélon/Shonisaure/Shastasaure, fiches dino-conseiller fact-checkées Grokipédia). « Inclassables » dissoute (Therizinosaurus→Théropodes, Pachycéphalosaure→Cératopsiens) ; « Pas des dinosaures ! »→« Avant les dinosaures » (Dimétrodon seul). **Menu continent effacé** (code mort). **55 dinos / 9 familles / 4 régimes** (INVARIANTS maj). À SUIVRE : images 5 marins (grok), audio accroches familles+régimes (textes figés `scripts-audio/_ACCROCHES-MENU-FAMILLES-REGIMES.md`), Dimétrodon à reclasser (futur « Avant les dinos »).
 

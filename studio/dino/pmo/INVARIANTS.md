@@ -11,7 +11,7 @@
 | Familles (`DINO_FAMILLES`) | **9** | idem |
 | Régimes alimentaires (`DINO_CATEGORIES`) | **4** | idem |
 | Récits d'époque (voyage) | **8** | `audio/dinos/recit-*.mp3` |
-| Accroches menu (voix réelle) | **4** | `audio/dinos/menu-*.mp3` |
+| Accroches menu (voix réelle) | **17** | `audio/dinos/menu-*.mp3` (4 onglets + 9 familles `menu-fam-*` + 4 régimes `menu-regime-*`) |
 | Spéciaux (Pangée, Extinction) | **2** | `audio/dinos/special-*.mp3` |
 | Dinos avec audio complet (recap+4 blocs) | **22** | `DINO_AUDIO` |
 

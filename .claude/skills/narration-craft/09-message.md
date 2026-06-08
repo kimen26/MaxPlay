@@ -191,7 +191,7 @@ Dans les contes Ubuntu, le héros qui revient seul a échoué. Le héros qui rev
 → Condescendant. L'enfant l'a compris avant le personnage. Il est traité comme moins intelligent.
 
 **La récompense immédiate et disproportionnée :**
-*Raph aide son ami et immédiatement tout le monde l'applaudit et il gagne un prix.*
+*Raph aide son ami et immédiatement tout le monde l'applaudit et elle gagne un prix.*
 → Enseigne que la bonté est instrumentale, pas intrinsèque.
 
 **La punition sans nuance :**
@@ -201,16 +201,16 @@ Dans les contes Ubuntu, le héros qui revient seul a échoué. Le héros qui rev
 ### Ce qui fonctionne
 
 **La conséquence naturelle :**
-Raph ne finit pas son travail → son ami ne peut pas utiliser ce qu'il avait promis → la déception de l'ami est visible. Pas de commentaire. L'enfant voit la chaîne.
+Raph ne finit pas son travail → son ami ne peut pas utiliser ce qu'elle avait promis → la déception de l'ami est visible. Pas de commentaire. L'enfant voit la chaîne.
 
 **La leçon incarnée dans un geste :**
-Juju pourrait intervenir brutalement mais il *attend*. On voit son effort. Puis l'ami règle son problème seul. Juju sourit. Aucun dialogue n'est nécessaire.
+Juju pourrait intervenir brutalement mais elle *attend*. On voit son effort. Puis l'ami règle son problème seul. Juju sourit. Aucun dialogue n'est nécessaire.
 
 **La question ouverte à la fin :**
 *L'histoire finit. Le personnage est changé mais ne le dit pas. Le lecteur se demande : est-ce que lui aussi aurait pu faire ça ?*
 
 **Le personnage qui se trompe et qui n'est pas puni :**
-Melki recommence son dessin. Elle est déçue d'elle-même. Puis elle voit que son premier dessin est exposé au mur. Elle le regarde longtemps. C'est tout.
+Melki recommence son dessin. Il est déçu de lui-même. Puis il voit que son premier dessin est exposé au mur. Il le regarde longtemps. C'est tout.
 
 ---
 
@@ -239,9 +239,9 @@ Melki recommence son dessin. Elle est déçue d'elle-même. Puis elle voit que s
 ```
 
 **Exemples :**
-- **Raph (7)** : Ne finit jamais rien → Son ami a besoin de lui maintenant → Il reste. Il est fatigué mais il reste. → L'ami dit "merci" en le regardant vraiment. Raph sourit, surpris.
-- **Juju (8)** : Résout tout seul → Son ami pleure devant lui → Juju hésite. Pose une main sur l'épaule. Ne dit rien. → L'ami ne pleure plus.
-- **Nono (9)** : "Ça m'est égal" → On lui demande vraiment ce qu'elle veut → Long silence. → "Je... j'aimerais... jouer à ça." → Et le monde ne s'effondre pas.
+- **Raph (7)** : Ne finit jamais rien → Son ami a besoin de lui maintenant → Elle reste. Elle est fatiguée mais elle reste. → L'ami dit "merci" en la regardant vraiment. Raph sourit, surprise.
+- **Juju (8)** : Résout tout seule → Son ami pleure devant elle → Juju hésite. Pose une main sur l'épaule. Ne dit rien. → L'ami ne pleure plus.
+- **Nono (9)** : "Ça m'est égal" → On lui demande vraiment ce qu'il veut → Long silence. → "Je... j'aimerais... jouer à ça." → Et le monde ne s'effondre pas.
 
 ---
 

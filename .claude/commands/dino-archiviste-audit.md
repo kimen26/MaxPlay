@@ -12,7 +12,7 @@ L'Archiviste vérifie **la structure** (équivalent du PMO côté forme).
 
 ### 1. Préfixes et conventions de nommage
 - Audio nommé `recit-<id>.mp3`, `menu-<id>.mp3`, `<dino>-{recap,nom,taille,regime,funfact}.mp3` ?
-- Scripts `content/` respectent leur convention (`_gen-*`, `_md2json*`, etc.) ?
+- Scripts `content/scripts/{audio,images-grok,export}/` respectent leur convention (`_gen-*`, `_md2json*`, etc.) ?
 - Frontmatter agents `dino-*.md` : pas de `:` interne, pas d'em-dash, pas de `x` multiplication dans description non quotée ?
 
 ### 2. Gabarit respecté
@@ -22,12 +22,12 @@ L'Archiviste vérifie **la structure** (équivalent du PMO côté forme).
 
 ### 3. Refs cassées
 - Tous les liens markdown `[texte](chemin)` dans `studio/dino/**/*.md` pointent vers des fichiers existants ?
-- Les 2 scripts code-couplés (`content/_blocB-canonique-50.cjs`, `content/_export-fiches.cjs`) résolvent-ils bien `../../site/js/dinos-data.js` ?
+- Les scripts code-couplés `content/scripts/export/{_blocB-canonique-50,_export-fiches,_etymo2racines}.cjs` résolvent-ils bien leur source (`../../../../../site/js/dinos-data.js` ou `../../sources/etymo/…`) ? Et `content/scripts/audio/_md2json*.cjs` → `../../scripts-audio/` ?
 - Le hook `figees-injector.ps1` pointe bien vers `studio/dino/figees/encyclopedie.md` ?
 - La rule `.claude/rules/dino.md` couvre bien les chemins du code (dev-dinos, dinos-data, audio/dinos, img/dinos) + studio/dino/** ?
 
 ### 4. Fichiers orphelins
-- Chaque `.md` de `studio/dino/content/` est-il référencé par `studio/dino/INDEX.md` ou un autre fichier ?
+- Chaque `.md` de `studio/dino/content/**` (sources/, scripts-audio/, inbox/) est-il référencé par un INDEX (`content/INDEX.md` hub + sous-INDEX) ou un autre fichier ?
 - **Chaque audio `recit-*`/`menu-*`/bloc dans `site/audio/dinos/` est-il référencé par le code** (`DINO_AUDIO`, `JOURNEY`, `MENU_VOICE`) ? Inversement, chaque audio référencé existe-t-il ?
 - Chaque `png` de dino (`dinos-data.js`) existe-t-il dans `img/dinos/` ?
 

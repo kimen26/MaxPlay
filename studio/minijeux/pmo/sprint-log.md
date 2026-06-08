@@ -9,6 +9,30 @@
 
 ---
 
+## 2026-06-08 — [PISTE PRODUIT] Lassitude bus Max + exploration thème dino (EP-041)
+
+**Trigger** : Signal Papa Yann observé dans session DINO (2026-06-08) — Max n'a plus envie de jouer aux mini-jeux bus actuels.
+
+**Fait** :
+1. Créé ticket **EP-041** (PISTE / EXPLORATION) — 3 mécaniques brutes : tri-couleur SVG dino + quiz dino + duel
+2. Classé comme cross-pole JEU × DINO (données DINO stables via EP-039, mécaniques MJ = domaine JEU)
+3. Posé risque technique : asset silhouette/ombre dino = pipeline visuel à évaluer (existe-t-il PNG dégradable, ou faut-il créer 50 silhouettes ?)
+4. Processus proposé : design + prototype 5 dinos + test Max + décision go/no-go
+
+**Décisions** :
+- Brique avant macro (L-055 pattern) : prototype limité AVANT scaling à 50
+- Classement PISTE/EXPLORATION : dépend retour Max, priorité à Papa Yann
+
+**Dépendance** :
+- EP-039 clôture pilote (données stables ✅)
+- Asset silhouette : à évaluer
+
+**État au reboot** :
+- EP-041 en backlog.md + sprint-log
+- Prochaine étape = design rapide (game-conseiller) si Papa Yann valide l'approche
+
+---
+
 ## 2026-06-01 — [DINOS] Filtrage 60→50 + Reclassement scientifique = Phase figée EP-039
 
 **Owner** : Papa Yann

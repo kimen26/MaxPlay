@@ -18,6 +18,7 @@ paths:
 
 1. Lire [`studio/dino/CLAUDE.md`](../../studio/dino/CLAUDE.md) (règles pôle) + [`studio/dino/figees/encyclopedie.md`](../../studio/dino/figees/encyclopedie.md) (🔒 décisions verrouillées — le hook `figees-injector` les réinjecte aussi avant un Edit).
 2. Ne jamais répondre de mémoire sur un chiffre/casting → invoquer `dino-pmo` en lecture de [`studio/dino/pmo/INVARIANTS.md`](../../studio/dino/pmo/INVARIANTS.md).
+3. **Ranger / trouver dans `content/`** (réorg 2026-06-08) : `sources/` = 📚 vérité (jamais réinventer) · `data/` = 🎯 généré (régénérer via `scripts/export/`, **ne jamais éditer à la main**) · `scripts/` = 🛠️ outils (audio · images-grok · export) · `scripts-audio/` = dialogues · `inbox/` = 📥 brut. Carte : [`studio/dino/content/INDEX.md`](../../studio/dino/content/INDEX.md).
 
 ## Agents proactifs (auto sur signal DINO)
 

@@ -24,29 +24,33 @@
 | [`pmo/audit-trail.md`](pmo/audit-trail.md) | Traces audits |
 | [`figees/encyclopedie.md`](figees/encyclopedie.md) | 🔒 Décisions verrouillées (Tritri, audio, UI) |
 
-## 📚 Sources contenu (content/ — ne jamais réinventer)
+## 📚 Sources contenu (`content/` — ne jamais réinventer)
 
-| Fichier | Contenu |
+> Cartographie détaillée : [`content/INDEX.md`](content/INDEX.md) (hub) + 1 INDEX par sous-dossier.
+
+| Dossier | Contenu |
 |---------|---------|
-| [`content/_PROCESS-DIALOGUE-PEDAGOGIQUE.md`](content/_PROCESS-DIALOGUE-PEDAGOGIQUE.md) | LA méthode dialogue 4 ans (charte→factcheck→écriture→panel→boucles) |
-| [`content/_RECITS-EPOQUES-DIALOGUE.md`](content/_RECITS-EPOQUES-DIALOGUE.md) | Dialogue final des 8 récits d'époque (source audio) |
-| [`content/_RECITS-EPOQUES-FOND.md`](content/_RECITS-EPOQUES-FOND.md) · [`-BRUT`](content/_RECITS-EPOQUES-BRUT.md) | Fond factuel + brouillon des récits |
-| [`content/_ECHELLE-REFERENTIEL.md`](content/_ECHELLE-REFERENTIEL.md) | Échelle de comparaison honnête (référentiel) |
-| [`content/_DINOS-MESURES-CONSOLIDE.md`](content/_DINOS-MESURES-CONSOLIDE.md) | Mesures consolidées (taille/poids cross-checkées) |
-| [`content/_ETYMO-COMPLET-60.md`](content/_ETYMO-COMPLET-60.md) · [`-RACINES-50`](content/_ETYMO-RACINES-50.md) | Étymologies grec/latin |
-| [`content/_FACTCHECK-9-CERATOPSIENS.md`](content/_FACTCHECK-9-CERATOPSIENS.md) | Table de vérité cératopsiens |
-| [`content/_BLOC-B-CANONIQUE.md`](content/_BLOC-B-CANONIQUE.md) | Bloc Taille verbatim (anti-dérive chiffres) |
-| [`content/_FICHES-DINOS-GROKIPEDIA.md`](content/_FICHES-DINOS-GROKIPEDIA.md) | **50 fiches contexte-prompt image** (source Grokipédia) : forme/taille/cornes/peau/dents/pieds · habitat · régime précis · prédateurs · copains · bébés-œufs + **5 prompts d'image/dino** (environnement, enfant 1 m, famille, manger, chassé) |
+| [`content/sources/recits/`](content/sources/recits/) | 8 récits d'époque : FOND (factuel) · BRUT (brouillon) · DIALOGUE (final, source audio) |
+| [`content/sources/fiches/`](content/sources/fiches/) | 50 fiches Grokipédia (contexte-prompt image) · datacheck 2026-06 · factcheck 9 cératopsiens |
+| [`content/sources/mesures/`](content/sources/mesures/) | Mesures consolidées · échelle référentiel · Bloc B canonique (taille verbatim, anti-dérive) |
+| [`content/sources/etymo/`](content/sources/etymo/) | Étymologies grec/latin (racines-50, complet-60) |
+| [`content/sources/_PROCESS-DIALOGUE-PEDAGOGIQUE.md`](content/sources/_PROCESS-DIALOGUE-PEDAGOGIQUE.md) | LA méthode dialogue 4 ans (charte→factcheck→écriture→panel→boucles) |
+| [`content/inbox/`](content/inbox/) | Matière brute non exploitée (PDF Fiches distillé) |
 
-## 🛠️ Scripts (content/)
+## 🎯 Données structurées (`content/data/` — nourrit les features)
 
-| Script | Rôle |
-|--------|------|
-| [`content/generate-audio-segments.py`](content/generate-audio-segments.py) · `_gen-audio-*.sh` · `_gen-recaps.sh` | Génération audio dino |
-| [`content/_md2json*.cjs`](content/) | Scripts md → JSON text-to-dialogue |
-| [`content/_gen-grok.cjs`](content/_gen-grok.cjs) · `_gen-prompts-grok.cjs` | Galerie images Grok |
-| [`content/_export-fiches.cjs`](content/_export-fiches.cjs) · `_blocB-canonique-50.cjs` | Exports depuis dinos-data |
-| [`content/scripts-audio/`](content/scripts-audio/) | Scripts dialogue par groupe + JSON |
+| Fichier | Rôle |
+|---------|------|
+| [`content/data/racines.json`](content/data/racines.json) | Dictionnaire racines grec/latin (69 racines) + décompo par dino. Source de la future page **Dico**, du **Quiz** et des fiches. Régénéré par [`scripts/export/_etymo2racines.cjs`](content/scripts/export/_etymo2racines.cjs). |
+
+## 🛠️ Scripts (`content/scripts/`)
+
+| Dossier | Rôle |
+|---------|------|
+| [`content/scripts/audio/`](content/scripts/audio/) | `_md2json*.cjs` (md → JSON text-to-dialogue) · `_gen-audio-*.sh` (curl → MP3) · `_gen-recaps.sh` |
+| [`content/scripts/images-grok/`](content/scripts/images-grok/) | `_gen-grok.cjs` (galerie img → js) · `_gen-prompts-grok.cjs` (prompts Grok) |
+| [`content/scripts/export/`](content/scripts/export/) | `_blocB-canonique-50.cjs` · `_export-fiches.cjs` · `_etymo2racines.cjs` (regénèrent depuis dinos-data / source) |
+| [`content/scripts-audio/`](content/scripts-audio/) | Scripts dialogue Wex/Narrateur : `groupe-*.md`, `special-*.md`, template, témoins, `json-top/` (cache JSON) |
 
 ## 👥 Équipe (.claude/agents/)
 

@@ -2,7 +2,7 @@
 // Usage: node _md2json.cjs
 const fs = require('fs');
 const path = require('path');
-const DIR = path.join(__dirname, 'scripts-audio');
+const DIR = path.join(__dirname, '..', '..', 'scripts-audio');
 const OUT = path.join(DIR, 'json-top');
 fs.mkdirSync(OUT, { recursive: true });
 

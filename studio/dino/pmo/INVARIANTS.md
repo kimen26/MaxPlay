@@ -1,7 +1,7 @@
 # INVARIANTS — Pôle DINO
 
 > Source de vérité des **chiffres clés**. MAJ uniquement si un invariant change (par `dino-pmo`).
-> Dernière vérif : 2026-06-03.
+> Dernière vérif : 2026-06-08 (réorg content/ = structure uniquement, chiffres inchangés).
 
 ## Counts
 

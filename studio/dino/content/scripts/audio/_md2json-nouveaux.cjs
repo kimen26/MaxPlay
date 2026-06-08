@@ -3,7 +3,7 @@
 // Le mapping id<->NOM (MAJ tel qu'écrit dans les ##) est ci-dessous.
 const fs = require('fs');
 const path = require('path');
-const DIR = path.join(__dirname, 'scripts-audio');
+const DIR = path.join(__dirname, '..', '..', 'scripts-audio');
 const OUT = path.join(DIR, 'json-top');
 fs.mkdirSync(OUT, { recursive: true });
 

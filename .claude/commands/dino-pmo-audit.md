@@ -32,7 +32,7 @@ Le PMO vérifie **le FOND** (décisions, statuts, cohérence sémantique) — co
 - Mémoire globale (`reference_audio_kit_enfant`, `feedback_dialogue_naturel`) cohérente avec les décisions récentes ?
 
 ### 5. Lean / Anti-patterns
-- Doublons (2 fichiers qui disent la même chose, ex `studio/dino/INDEX.md` vs `studio/dino/content/INDEX.md`) ?
+- Doublons (2 fichiers qui disent la même chose) ? NB : `studio/dino/INDEX.md` (catalogue du **pôle**) et `studio/dino/content/INDEX.md` (hub du **dossier content**) ont des rôles **distincts** depuis la réorg 2026-06-08 — ce n'est pas un doublon tant que chacun reste dans son rôle.
 - Refs résiduelles vers l'ancien chemin `studio/minijeux/docs/jeux/dino-encyclopedie` (dans studio/minijeux/pmo, studio/narration/pmo, commentaires data) ?
 - Décisions tranchées en session non écrites dans `studio/dino/pmo/decisions.md` ?
 - **Cohérence sémantique** : la « prochaine action » du sprint-log est-elle la vraie ?

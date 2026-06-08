@@ -3,7 +3,7 @@
 # Usage: bash _gen-audio-nouveaux.sh "kosmoceratops diabloceratops ..."
 cd "c:/ProjetsPerso/Claude_Projects/MaxPlay"
 KEY=$(node -e "process.stdout.write(JSON.parse(require('fs').readFileSync('C:/Users/kimen/.claude.json','utf8')).mcpServers.elevenlabs.env.ELEVENLABS_API_KEY)")
-SRC="dino/content/scripts-audio/json-top"
+SRC="studio/dino/content/scripts-audio/json-top"
 OUT="site/audio/dinos"
 mkdir -p "$OUT"
 DINOS="$1"

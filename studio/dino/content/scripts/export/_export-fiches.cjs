@@ -1,6 +1,6 @@
 // Génère FICHES-CONTENU.md : contenu réel des 50 fiches dino (relecture Papa Yann)
 const fs = require('fs');
-let s = fs.readFileSync(__dirname + '/../../site/js/dinos-data.js', 'utf8');
+let s = fs.readFileSync(__dirname + '/../../../../../site/js/dinos-data.js', 'utf8');
 eval(s.replace(/const /g, 'var '));
 
 const per = id => (DINO_PERIODES.find(p => p.id === id) || {}).label || id || '';
@@ -38,5 +38,5 @@ DINOS.forEach(d => {
   out += `- **Description** : ${d.desc}\n\n`;
 });
 
-fs.writeFileSync(__dirname + '/FICHES-CONTENU.md', out, 'utf8');
-console.log('OK ' + DINOS.length + ' fiches -> dino/content/FICHES-CONTENU.md (' + out.length + ' car)');
+fs.writeFileSync(__dirname + '/../../sources/fiches/_FICHES-CONTENU.md', out, 'utf8');
+console.log('OK ' + DINOS.length + ' fiches -> sources/fiches/_FICHES-CONTENU.md (' + out.length + ' car)');

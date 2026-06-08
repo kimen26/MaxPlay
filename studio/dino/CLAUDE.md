@@ -40,8 +40,11 @@
 | **Données 50 dinos** | [`../site/js/dinos-data.js`](../../site/js/dinos-data.js) |
 | **Audio** (récits, menus, fiches) | [`../site/audio/dinos/`](../../site/audio/dinos/) |
 | **Images** | [`../site/img/dinos/`](../../site/img/dinos/) |
-| **Sources contenu** (récits, échelle, étymo, factcheck, process) | [`content/`](content/) |
-| **Scripts** (gén audio, grok, json) | [`content/`](content/) (chemins absolus ou CWD-racine) |
+| **Sources contenu** (récits, échelle, étymo, factcheck, process) | [`content/sources/`](content/sources/) (recits · fiches · mesures · etymo) |
+| **Données structurées** (racines dico/quiz) | [`content/data/racines.json`](content/data/racines.json) |
+| **Scripts** (audio, grok, export/regen) | [`content/scripts/`](content/scripts/) (audio · images-grok · export) |
+| **Matière brute non triée** | [`content/inbox/`](content/inbox/) |
+| **Carte du dossier content** | [`content/INDEX.md`](content/INDEX.md) (hub + sous-INDEX) |
 
 ---
 

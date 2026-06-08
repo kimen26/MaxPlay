@@ -265,7 +265,43 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 
 ---
 
+## EP-041 – Renouvellement mini-jeux — lassitude bus, exploration piste thème dino
 
+**Statut** : `[?]` **PISTE / EXPLORATION** — signalé par Papa Yann 2026-06-08 (session DINO)
+
+**Priorité** : 🟠 **À ÉVALUER** — dépend retour Max sur prototype
+
+**Contexte** : Max (4 ans) montre lassitude envers les mini-jeux bus actuels (thème répétitif, 23 jeux déployés depuis 2026-03). Piste : renouvellement thématique vers **dino** (Max adore les dinos, cf. encyclopédie 50 fiches + audio en cours, EP-039).
+
+**Idées brutes (non figées)** :
+1. **Mini-jeu tri-couleur dino** : regrouper dinos par couleur (silhouettes/SVG + ombres ou dégradés) — mécanique tri/glisser — rythme rapide (3-8 min)
+2. **Quiz dino** : amélioration lecture phonétique (noms dinos) — associer fiche + nom audio — feedback positif
+3. **Duel dino X vs Y** : comparer 2 dinos (plus gros/plus rapide/etc.) — apprentissage comparative + traits dino
+
+**État données** : 
+- Dino-data existant dans `site/js/dinos-data.js` (50 dinos finales, propriétés `color`, `png`, `taille`, `régime`)
+- Nouveau dictionnaire racines future dans `studio/dino/content/data/racines.json` (non encore intégré à site/)
+
+**Risque technique** : 
+- Tri-couleur SVG/silhouette = **besoin asset visuel par dino** (silhouette + ombre ou dégradé) — pas encore inventorié ; à évaluer si possible partir de PNG existants en post-prod (silhouette dégradée)
+
+**Classification** : 
+- **Cross-pole JEU × DINO** — données DINO bien avancées (EP-039), mécaniques MJ = domaine JEU
+- **Brique avant macro** : prototype tri-couleur avec 3-5 dinos d'abord, tester sur Max, valider l'engagement AVANT scaling
+
+**À faire (si approuvé)** :
+1. **T-408** : Conception rapide (15 min, game-conseiller) → écran mockup tri-couleur + règles claires
+2. **T-409** : Prototype 1 MJ (mj-dino-tri-couleur) avec 5 dinos test + code tri simple (drag/drop ou boutons color-zone)
+3. **T-410** : Test Max + retour engagement (2-3 jours de jeu libre). Si verdict "plus envie", pivoter vers autre mécanique
+4. **T-411** : Si go, généraliser à 50 dinos + refine asset pipeline (silhouettes ou dégradés uniformes)
+
+**Leçons** : Écho de L-055 (design amont + figeage = obligatoire) et L-062 (filtrage = lisibilité max) — ici il s'agit de re-motiver un enfant, not just code quality.
+
+**Impact** : Potentiellement 1-3 nouveaux MJ (mj-XX-dino-*), nouvelles assets visuelles (silhouettes dino), intégration `site/js/dinos-data.js`.
+
+**Dépendance** : EP-039 (dino-data stable) ; optionnel (enrichissement long terme, pas bloquant pour prod actuelle).
+
+---
 
 | ID | Titre | Statut |
 |----|-------|--------|
@@ -311,6 +347,7 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 | EP-VOCAB | Module vocab.py + pivot "refs visuelles" pour pipeline tile-tools (anti-erreurs, source unique) | `[x]` |
 | EP-MACRO-VIRAGE | Macro `virage(direction, ...)` dans builders.py (DRY consolidation 4 recettes manuelles, basse priorité) | `[ ]` |
 | EP-REFS | Banque de références visuelles tile-tools (post-EP-VOCAB, briefs complexes) | `[ ]` |
+| EP-041 | Renouvellement mini-jeux — lassitude bus, exploration piste thème dino (tri-couleur, quiz, duel) | `[?]` PISTE |
 
 ---
 

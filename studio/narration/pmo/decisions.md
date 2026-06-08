@@ -4,6 +4,90 @@
 
 ---
 
+## 2026-06-08 — DEC-NARR-CRAFT-RESURRECTION : Résurrection bibliothèque CRAFT narratif — 16 skills masterclass
+
+**Auteur (Papa Yann)** : décision 2026-06-08 — activation nouvelle de la bibliothèque CRAFT narratif pour l'pipeline éditorial.
+
+**Contexte** : Bibliothèque de 16 skills CRAFT narratif (masterclass storytelling, voix, sensoriel, comedie, développement, prose, scénario, micro, message, lieu, manga, théâtre, musique, imperfection, jeu, ennéagramme) parquée depuis > 2025 en `~/.claude/skills/99-deprecated/`. Résurrection décidée pour câbler dans le PROCESS narration : **brief Conseiller (étape 2B) + rewrite final (étape 7)**.
+
+**Décision tranchée** :
+
+### 1. Création skill PARENT-ROUTER `narration-craft`
+
+- **Périmètre** : routeur qui délègue vers 16 sous-fichiers spécialisés (1 par masterclass)
+- **Localisation** : créer dans `/studio/narration/equipe/skills/narration-craft/` (scoped au projet, pas global)
+- **Charge** : ~200 lignes total (index + délégation 16 domaines)
+
+### 2. Extraction 16 skills depuis deprecated
+
+| # | Nom | Domaine | Rôle dans PROCESS |
+|----|------|---------|-------------------|
+| 1 | storytelling | Narrative arcs | Brief histoire (causalités Ki/Sho/Ten/Ketsu) |
+| 2 | voix-direction | Voice design | Brief Couche 3 (signature vocale perso) |
+| 3 | sensoriel | Sensory triggers | Brief univers (atmosphère, textures) |
+| 4 | comedie | Character play | Brief personnages (jeux de rôle, énergie) |
+| 5 | developpement | Character growth | Brief personnages (arcs S1-S3) |
+| 6 | prose | Writing craft | Rewrite final (fluidité, rythme) |
+| 7 | scenario | Scene structure | Brief histoire (nœuds dramatiques) |
+| 8 | micro | Dialogue finesse | Rewrite final (répliques naturelles) |
+| 9 | message | Thematic depth | Brief univers (sans morale explicite) |
+| 10 | lieu | World design | Brief lieu (détails sensoriel) |
+| 11 | manga | Visual narrative | Brief univers (imagerie cohérente) |
+| 12 | theatre | Performance | Rewrite final (mise en scène interne) |
+| 13 | musique | Cadence & rhythm | Rewrite final (musicalité texte) |
+| 14 | imperfection | Flawed authenticity | Brief Couche 3 (axiome 6 : faute volontaire) |
+| 15 | jeu | Playfulness | Brief univers (légèreté, non-lourdeur) |
+| 16 | enneagramme | Type dynamics | Brief personnages (interactions 9×9) |
+
+### 3. **INVARIANT CASTING REMAPPÉ — Jamais inventer prénoms ANCIEN casting**
+
+**RÈGLE GRAVÉE** : Tous les 16 skills CRAFT OBLIGATOIREMENT utilisent **CASTING V1 FIGÉ** (Wex + Melki/Mimi/Dadou/Madie/Lulu/Pierrot/Raph/Juju/Nono, 4F/5M).
+
+**Ancien casting DEPRECATED** (de avant 2026-04-24) :
+- Léo, Sam, Lila, Élia, Camille, Victor, Iris, Theo, Noa (+ variantes)
+
+**Remap obligatoire** pour chaque skill qui mentionne un type/prénom par ancien casting :
+- Comparer table ennéatype (Type 1-9) — mapping direct par position type
+- **ACCENT GENRES** : changements de genres à acter (Ex: Type 4 = Élia F → Madie F OK, Type 6 = Victor M → Pierrot M OK, Type 8 = Iris F → Juju F OK)
+- Revalider contenu narratif si genre-dependent (gestes, intonation, relations)
+
+**Anti-pattern** : ne **PAS** renommer les anciens prénoms dans les CONTENUS narratifs des skills (les skills sont des méthodologies, pas des histoires). Les exemples textes utilisent les NOUVEAUX prénoms figés V1.
+
+### 4. Câblage PROCESS (étapes applicables)
+
+**Étape 2B — Brainstorm équipe** (briefs matière brute) :
+- Appeler narration-craft `sensoriel` + `lieu` + `enneagramme` (pour matière univers/persos)
+
+**Étape 3 — Briefs écrit par Directeur** :
+- Directeur peut invoquer `storytelling` + `scenario` pour structurer le brief histoire (causalités)
+- Directeur peut invoquer `voix-direction` pour Couche 3 vision guidé
+
+**Étape 7 — Rewrite final** :
+- Writer top 1 peut invoquer `prose` + `micro` + `theatre` + `musique` pour affinage rewrite
+- GateKeeper peut invoquer `imperfection` pour vérifier axiome 6
+
+**Étape 10 — Canonisation** :
+- PMO peut invoquer `message` + `jeu` pour vérifier non-moralisation + légèreté
+
+### 5. **Prochaines actions** (à tracker en backlog)
+
+| Ticket | Titre | Priorité | Assigné | Prochaine action |
+|--------|-------|----------|---------|------------------|
+| **CRAFT-001** | **Créer skill parent `narration-craft/` + sous-structure 16 domaines** | **Critique** | PMO | Router fichier (~200 lignes) + délégation 16 domaines. Chaque domaine = pointeur vers contenu (à extraire depuis deprecated ou existant). Cible : fin 2026-06-09. |
+| **CRAFT-002** | **Extraire + remapper 16 skills depuis deprecated** | **Critique** | Directeur + Dev | Lire `~/.claude/skills/99-deprecated/`, extraire 16 files, appliquer remap casting ANCIEN→V1 (accords genre inclus), valider narratif. Cible : fin 2026-06-10. |
+| **CRAFT-003** | **Implémenter câblage PROCESS : étapes 2B/3/7/10** | **Haute** | PMO | Modifier `equipe/PROCESS.md` : ajouter invoke `narration-craft` par étape. Tester 1 appel sur STORY-002 rewrite. Cible : 2026-06-11. |
+| **CRAFT-004** | **Tester intégration CRAFT dans rewrite STORY-002** | **Haute** | Auteur | Lancer rewrite étape 7 avec `narration-craft` (`prose` + `micro` + `theatre`). Feedback : util ? Timing ? Cible : 2026-06-12. |
+
+**Fichiers impactés** :
+- ✅ `narration/pmo/decisions.md` (cette entrée, figée)
+- ✅ `narration/pmo/INVARIANTS.md` (ajout section casting V1 obligatoire, remap anti-pattern)
+- 🔄 `narration/pmo/backlog.md` (4 tickets CRAFT-001 à 004 créés)
+- 🔄 `narration/pmo/sprint-log.md` (3 tâches créées, État au reboot)
+
+**Statut** : **FIGÉE 2026-06-08. JAMAIS RÉGRESSER SANS DÉCISION EXPLICITE DATÉE.**
+
+---
+
 ## 2026-05-21 — DEC-SLA-NARRATION : SLA 3j automatisé — kanban passe 🔴 BLOQUÉ à 72h sans réponse auteur
 
 **Contexte** : Audit FOND 2026-05-21 détecte STORY-002 étape 6 en attente auteur depuis 2026-05-14 (7 jours) sans flag automatique. SLA = 3 jours (INVARIANTS.md L.19 + PROCESS.md L.43), jamais acté formellement en décision ni appliqué mécaniquement (advisory uniquement). Blocage : briefs vague 4 BOUSSOLE refondus 2026-05-17, attente validation Papa Yann pour relancer 14 writers étape 4.

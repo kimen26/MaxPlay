@@ -25,6 +25,35 @@
 
 ---
 
+## 2026-06-08 — RÉSURRECTION CRAFT NARRATIF : DEC-NARR-CRAFT-RESURRECTION FIGÉE + 4 TICKETS CRÉÉS
+
+**Objectif** : Logger décision Papa Yann 2026-06-08 — activation bibliothèque CRAFT (16 skills masterclass) pour pipeline éditorial. Graver invariants casting V1 obligatoire. Créer tickets d'implémentation CRAFT-001 à 004.
+
+**Fait** :
+- [x] **DEC-NARR-CRAFT-RESURRECTION figée dans `decisions.md`** : résurrection 16 skills (storytelling, voix, sensoriel, comedie, développement, prose, scénario, micro, message, lieu, manga, théâtre, musique, imperfection, jeu, ennéagramme)
+- [x] **Invariant casting V1 gravé dans `INVARIANTS.md`** : tous skills CRAFT OBLIGATOIREMENT utilisent casting V1 figé (Wex + Melki/Mimi/Dadou/Madie/Lulu/Pierrot/Raph/Juju/Nono). Ancien casting (Léo/Sam/Lila/Élia/Camille/Victor/Iris/Theo/Noa) STRICTEMENT interdit. Remap type-by-type avec accords genre à acter. Anti-pattern banni.
+- [x] **4 tickets CRAFT-001 à 004 créés dans `backlog.md`** :
+  - **CRAFT-001** : Créer skill parent router narration-craft/ (~200 lignes) | Cible 2026-06-09
+  - **CRAFT-002** : Extraire + remapper 16 skills deprecated, casting V1 | Cible 2026-06-10
+  - **CRAFT-003** : Câbler PROCESS (étapes 2B/3/7/10) | Cible 2026-06-11
+  - **CRAFT-004** : Tester intégration rewrite STORY-002 étape 7 | Cible 2026-06-12
+
+**Décisions applicables** :
+1. Skill parent `narration-craft/` scope projet (pas ~/.claude/skills global)
+2. 16 masterclass résurgissent depuis `~/.claude/skills/99-deprecated/` (ou recréés si inexistant)
+3. Câblage : étape 2B (brainstorm sensoriel/lieu/enneagramme) + étape 3 (story/scenario) + étape 7 (prose/micro/theatre/musique) + étape 10 (message/jeu check)
+4. Remap casting grain-fin : genre-changes à adapter narratif (Type 4 Élia→Madie F ok, Type 5 Camille→Lulu M, adapter, Type 6 Victor→Pierrot M, adapter)
+
+**Classification** : DÉCISION + TODO (4 tickets créés).
+
+**État au reboot** :
+- ✅ DEC-NARR-CRAFT-RESURRECTION figée
+- ✅ Casting V1 gravé INVARIANTS.md
+- 🟡 CRAFT-001-004 en backlog, attente démarrage
+- ⏳ STORY-002 étape 6 reste BLOQUÉ (SLA 3j dépassé)
+
+---
+
 ## 2026-05-24 — SCANNAGE INPUT INBOX (suite) : HARMONIE DES SPHÈRES — TICKET INPUT-005 CRÉÉ
 
 **Objectif** : Traiter le 2e dépôt Papa Yann « Harmonie des Sphères » (Pythagore/Platon/Kepler), suite directe d'INPUT-004.

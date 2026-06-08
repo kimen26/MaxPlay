@@ -169,6 +169,32 @@ Source : [`../equipe/patte-narrative-maxplay.md`](../equipe/patte-narrative-maxp
 
 ---
 
+## Casting V1 — Obligatoire pour skills CRAFT (DEC-NARR-CRAFT-RESURRECTION 2026-06-08)
+
+**Tous les skills CRAFT (16 masterclass narrative) OBLIGATOIREMENT utilisent CASTING V1 FIXÉ** (Wex + 9 types, 4F/5M).
+
+**Ancien casting DEPRECATED** (avant 2026-04-24) : Léo, Sam, Lila, Élia, Camille, Victor, Iris, Theo, Noa — ne JAMAIS invoquer dans un skill CRAFT.
+
+**Remap type-by-type (ANCIEN → V1)** — ⚠️ **corrigé 2026-06-08** (la 1ʳᵉ version mélangeait les types : elle appariait les vieux prénoms aux types dans l'ordre de la liste au lieu de leur ennéatype réel) :
+- Type 1 Perfectionniste: **Élia** (F) → **Melki** (M) ⚠️ genre change
+- Type 2 Aidant: **Camille** (F) → **Mimi** (F)
+- Type 3 Performeur: **Victor** (M) → **Dadou** (M)
+- Type 4 Individualiste: **Iris** (F) → **Madie** (F)
+- Type 5 Observateur: **Theo** (M) → **Lulu** (M)
+- Type 6 Loyal: **Noa** (M) → **Pierrot** (M)
+- Type 7 Enthousiaste: **Léo** (M) → **Raph** (F) ⚠️ genre change
+- Type 8 Challenger: **Sam** (M) → **Juju** (F) ⚠️ genre change
+- Type 9 Pacificateur: **Lila** (F) → **Nono** (M) ⚠️ genre change
+- Type 0 hors-système: Wex → **Wex** (invariant)
+
+⚠️ **4 changements de genre** (types 1, 7, 8, 9) → au remap, corriger les accords dans les phrases d'exemple (« toute seule » → « tout seul », pronoms, participes).
+
+**Résultat remap** : 4F (Mimi/Madie/Raph/Juju) + 5M (Melki/Dadou/Lulu/Pierrot/Nono) + Wex = **V1 CANON partout**.
+
+**Anti-pattern banni** : utiliser vieux prénoms (Léo, Élia, Victor, etc.) dans un skill CRAFT. Remap systématique ou rejeter le skill comme dépréciée.
+
+---
+
 ## R�gles d'or structurelles
 
 1. **Casting V1 fig�** � ne pas inventer de pr�noms hors casting

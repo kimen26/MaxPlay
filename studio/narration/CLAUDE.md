@@ -100,6 +100,24 @@ Source de vérité : [`equipe/PROCESS.md`](equipe/PROCESS.md).
 
 ---
 
+## 🎨 Craft narratif (le *comment* écrire)
+
+Skill routeur [`narration-craft`](../../.claude/skills/narration-craft/SKILL.md) — **15 masterclasses** (structures Kishōtenketsu/Save the Cat/Pixar, voix Roald Dahl, sensoriel, comédie, développement enfant Piaget/Erikson, prose, scénario, micro, message, lieu, manga, théâtre, musique, imperfection, jeu). **Charger le sous-fichier pertinent à l'étape**, jamais d'office :
+
+| Étape PROCESS | Sous-fichier |
+|---|---|
+| 1 Pitch+Plan | `01-storytelling` |
+| 3 Briefs writers | `05-developpement` (calibrage 4-6) |
+| 4 Écriture | `03-sensoriel` + `04-comedie` |
+| 7 Rewrite | `06-prose` + `02-voix` |
+| Audio | `16-oralite` *(gap à créer)* |
+
+- 🛑 **Cliffhanger / open-loop : OK au milieu, JAMAIS à la fin** (patte Kishōtenketsu apaisant).
+- Casting **V1** dans tous les exemples. **Ennéagramme = vérité dans [`personnages/theorie/enneagramme/`](personnages/theorie/enneagramme/)**, le craft ne fait qu'illustrer.
+- Auto-rappel via rule path-scopée [`.claude/rules/narration-craft.md`](../../.claude/rules/narration-craft.md) (pointeurs only).
+
+---
+
 ## Production audio (PROCESS MILITAIRE depuis 2026-05-16)
 
 **Méthode OFFICIELLE** : text-to-dialogue API multi-voix natif (1 appel/paquet < 2000 char) + ffmpeg loudnorm final.

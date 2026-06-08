@@ -29,7 +29,7 @@ Beethoven radicalise la forme sonate : ses développements sont des combats. Dan
 
 **Leçon narrative :** le personnage de l'exposition n'est pas le personnage de la réexposition. La réexposition n'est pas une répétition — c'est une *victoire ou une défaite* sur le matériau initial.
 
-**Application enfants :** Raph (type 7) est introduit en courant partout (thème A vif) avec Juju qui l'ancre (thème B grave). Le développement : Raph se perd parce qu'il va trop vite. La réexposition : Raph revient, mais maintenant il *choisit* de courir — différence entre impulsion et liberté.
+**Application enfants :** Raph (type 7) est introduit en courant partout (thème A vif) avec Juju qui l'ancre (thème B grave). Le développement : Raph se perd parce qu'elle va trop vite. La réexposition : Raph revient, mais maintenant elle *choisit* de courir — différence entre impulsion et liberté.
 
 ---
 
@@ -52,7 +52,7 @@ Ce qui rend les variations puissantes : le spectateur *connaît* le thème. Il p
 
 **En narration :** Un personnage établit une peur ou une croyance limitante (thème). Chaque scène la réactive sous une forme différente (variation). La scène finale : le personnage fait face à la version la plus intense du thème.
 
-**Application Ennéagramme :** Nono (type 9) fuit le conflit. Variation 1 : conflit mineur avec une amie, elle se tait. Variation 2 : conflit majeur avec son frère, elle part. Variation 3 : conflit existentiel avec elle-même, elle *reste*. Même thème (évitement), trois degrés de conscience.
+**Application Ennéagramme :** Nono (type 9) fuit le conflit. Variation 1 : conflit mineur avec une amie, il se tait. Variation 2 : conflit majeur avec son frère, il part. Variation 3 : conflit existentiel avec lui-même, il *reste*. Même thème (évitement), trois degrés de conscience.
 
 ---
 
@@ -159,7 +159,7 @@ Dans *Chihiro* : quand les parents se transforment en cochons, l'orchestre dispa
 
 **Technique : le silence actif.** Avant un moment fort, supprimer progressivement les sons non essentiels. Le lecteur *sent* que quelque chose arrive sans savoir quoi.
 
-**En écriture enfants :** le silence d'un personnage en dit plus que ses mots. Nono (type 9) qui ne répond pas quand on lui demande ce qu'elle veut — ce silence *est* son problème central.
+**En écriture enfants :** le silence d'un personnage en dit plus que ses mots. Nono (type 9) qui ne répond pas quand on lui demande ce qu'il veut — ce silence *est* son problème central.
 
 ---
 

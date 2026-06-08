@@ -38,7 +38,7 @@ Le moment magique d'une scène :
 
 Exemples :
 - Raph propose un jeu → tout le monde dit "non" (écart → Raph doit s'adapter)
-- Juju veut résoudre seul → l'ami a besoin d'autre chose (gap → Juju doit changer de réponse)
+- Juju veut résoudre seule → l'ami a besoin d'autre chose (gap → Juju doit changer de réponse)
 
 ---
 

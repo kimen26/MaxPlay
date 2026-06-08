@@ -132,7 +132,7 @@ J.K. Rowling a littéralement écrit chaque tome pour des lecteurs légèrement 
 |-----------|------------------------------|-------------------|
 | **Raph (7)** | Anxieux-ambivalent possible | Fuit en avant pour éviter l'absence de sécurité |
 | **Juju (8)** | Évitant probable | A appris que la vulnérabilité est dangereuse |
-| **Nono (9)** | Sécure avec tendance à l'effacement | La connexion est vitale, elle s'efface pour la préserver |
+| **Nono (9)** | Sécure avec tendance à l'effacement | La connexion est vitale, il s'efface pour la préserver |
 | **Melki (1)** | Anxieux-ambivalent | L'approbation conditionnelle → perfectionnisme |
 | **Mimi (2)** | Anxieux-ambivalent | "Si je prends soin de toi, tu resteras" |
 | **Dadou (3)** | Évitant vers l'anxieux | La performance = amour conditionnel internalisé |
@@ -197,7 +197,7 @@ Sally met un objet dans la boîte A et part. Anne le déplace dans la boîte B. 
 
 ### La Progression Narrative
 
-**Raph à 5 ans** ne ment pas parce qu'il a peur d'être grondé. **Raph à 8 ans** ne ment pas parce que ça blesserait Nono. **Raph à 12 ans** décide qu'un mensonge *spécifique* est justifié pour protéger quelqu'un — et vit avec les conséquences.
+**Raph à 5 ans** ne ment pas parce qu'elle a peur d'être grondé. **Raph à 8 ans** ne ment pas parce que ça blesserait Nono. **Raph à 12 ans** décide qu'un mensonge *spécifique* est justifié pour protéger quelqu'un — et vit avec les conséquences.
 
 Ce n'est pas de la régression — c'est de l'élaboration. Le même personnage, à des niveaux de sophistication différents.
 
@@ -226,7 +226,7 @@ Le personnage de 10 ans ne régresse pas en nourrisson. Il retrouve un comportem
 | **Raph (7)** | → type 1 (rigide, autocritique, contrôlant — le contraire de lui-même) |
 | **Juju (8)** | → type 5 (se retire, observe, accumule de l'information, ne parle plus) |
 | **Nono (9)** | → type 6 (anxieux, cherche des conseils, s'appuie sur les autres) |
-| **Melki (1)** | → type 4 (dramatique, intérieur, sentiment d'être incomprise) |
+| **Melki (1)** | → type 4 (dramatique, intérieur, sentiment d'être incompris) |
 | **Mimi (2)** | → type 8 (agressive, revendique ses besoins pour la première fois) |
 | **Dadou (3)** | → type 9 (s'efface, évite les décisions, attend) |
 | **Madie (4)** | → type 2 (cherche à plaire, abandonne son unicité pour être aimée) |
@@ -239,7 +239,7 @@ Le personnage de 10 ans ne régresse pas en nourrisson. Il retrouve un comportem
 
 ### Ce Qui Reste et Ce Qui Change
 
-**Ce qui reste (le type Ennéagramme) :** le type est une structure de base — elle ne disparaît pas. Raph sera toujours le garçon qui cherche le plaisir et fuit la douleur.
+**Ce qui reste (le type Ennéagramme) :** le type est une structure de base — elle ne disparaît pas. Raph sera toujours la fille qui cherche le plaisir et fuit la douleur.
 
 **Ce qui change :**
 - La *façon* dont le type se manifeste
@@ -251,7 +251,7 @@ Le personnage de 10 ans ne régresse pas en nourrisson. Il retrouve un comportem
 | | **5-6 ans** | **8-9 ans** | **11-12 ans** |
 |---|---|---|---|
 | **Raph (7)** | Fuit en courant. Sourit toujours. | Comprend que fuir coûte quelque chose. | Peut rester dans une conversation difficile — quelques minutes. |
-| **Juju (8)** | "C'est moi le chef." Combat physique. | Comprend qu'il peut gagner par la ruse. Protège les plus petits. | La force peut être au service de quelque chose de plus grand. |
+| **Juju (8)** | "C'est moi le chef." Combat physique. | Comprend qu'elle peut gagner par la ruse. Protège les plus petits. | La force peut être au service de quelque chose de plus grand. |
 | **Nono (9)** | Acquiesce à tout. Invisible. | Commence à dire "je veux" — rarement, en chuchotant. | A un avis. L'exprime quand c'est *vraiment* important. |
 | **Melki (1)** | "C'est pas comme ça qu'on fait." Colère rentrée. | Comprend qu'il y a plusieurs bonnes façons. | Peut se pardonner une erreur — avec effort. |
 | **Mimi (2)** | Prend toujours soin des autres. Ne sait pas ce qu'elle veut. | Commence à avoir des préférences. Les cache encore. | Peut demander de l'aide sans se sentir indigne. |

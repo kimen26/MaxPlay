@@ -95,7 +95,7 @@ Les dialogues clés sont souvent *sous-écrits* intentionnellement. Jesse utilis
 | Personnage | Marque de dialogue |
 |-----------|--------------------------|
 | **Raph (7)** | Commence une phrase, l'abandonne, repart. "Ouais mais tu sais ce qu'on devrait — non attends, j'ai mieux !" |
-| **Juju (8)** | Réponses trop courtes quand il est blessé. "Ça m'est égal." (alors que non) |
+| **Juju (8)** | Réponses trop courtes quand elle est blessée. "Ça m'est égal." (alors que non) |
 | **Nono (9)** | S'efface en plein milieu. "Je crois que... enfin, peu importe." |
 | **Melki (1)** | Corrige les autres à mi-phrase sans s'en rendre compte. "— Non, c'est pas comme ça qu'on dit." |
 | **Mimi (2)** | Ses demandes commencent comme des offres. "Tu veux pas qu'on... enfin si t'as envie." |
@@ -220,7 +220,7 @@ L'auteur qui "fait des fautes" sans savoir les règles est négligent. L'auteur 
 **Arc bloqué (réaliste) :** Tony Soprano comprend, lors de plusieurs moments dans la série, exactement ce qu'il est. Il le comprend et continue. Ce refus de changer malgré la conscience est plus dévastateur que n'importe quelle tragédie classique.
 
 **Pour les personnages enfants :**
-Un enfant de 7 ans peut *voir* clairement son problème (Melki sait qu'elle est trop rigide, Raph sait qu'il fuit) — et ne pas pouvoir le résoudre dans cet épisode. C'est juste. Les enfants ne se transforment pas en leçon par épisode. Ils avancent lentement, régressent, réavancent.
+Un enfant de 7 ans peut *voir* clairement son problème (Melki sait qu'il est trop rigide, Raph sait qu'elle fuit) — et ne pas pouvoir le résoudre dans cet épisode. C'est juste. Les enfants ne se transforment pas en leçon par épisode. Ils avancent lentement, régressent, réavancent.
 
 **La règle d'honnêteté :** Ne pas forcer la transformation. La résolution forcée ment sur la vie. Un personnage imparfait à la fin peut être plus précieux qu'un personnage "guéri".
 
@@ -230,13 +230,13 @@ Un enfant de 7 ans peut *voir* clairement son problème (Melki sait qu'elle est 
 
 Ces détails ne "servent" à rien dans le plot. Ils rendent les personnages *réels*.
 
-**Raph (7)** : dit toujours "je sais" au début d'une explication — même quand il ne sait pas encore. Ses chaussures sont toujours mal lacées du côté gauche. Commence à dessiner quelque chose, l'abandonne à mi-chemin. Sourit quand il est nerveux exactement comme quand il est content.
+**Raph (7)** : dit toujours "je sais" au début d'une explication — même quand elle ne sait pas encore. Ses chaussures sont toujours mal lacées du côté gauche. Commence à dessiner quelque chose, l'abandonne à mi-chemin. Sourit quand elle est nerveuse exactement comme quand elle est contente.
 
-**Juju (8)** : garde toujours un caillou dans sa poche droite — jamais expliqué. Refuse la première offre d'aide — accepte la deuxième silencieusement. Quand il pleure, il sort de la pièce d'abord. A une voix plus douce avec les animaux qu'avec les humains.
+**Juju (8)** : garde toujours un caillou dans sa poche droite — jamais expliqué. Refuse la première offre d'aide — accepte la deuxième silencieusement. Quand elle pleure, elle sort de la pièce d'abord. A une voix plus douce avec les animaux qu'avec les humains.
 
-**Nono (9)** : tourne ses cheveux trois fois avant de répondre à une question difficile. Commence toujours à ranger les affaires des autres avant les siennes. A une chanson qu'elle fredonne sans s'en rendre compte.
+**Nono (9)** : tourne ses cheveux trois fois avant de répondre à une question difficile. Commence toujours à ranger les affaires des autres avant les siennes. A une chanson qu'il fredonne sans s'en rendre compte.
 
-**Melki (1)** : ses crayons sont dans un ordre précis — mais quand elle est stressée, l'ordre change et elle s'en rend compte *après*. Relit deux fois ce qu'elle écrit même quand elle sait que c'est juste.
+**Melki (1)** : ses crayons sont dans un ordre précis — mais quand il est stressé, l'ordre change et il s'en rend compte *après*. Relit deux fois ce qu'il écrit même quand il sait que c'est juste.
 
 **Mimi (2)** : propose toujours quelque chose à boire avant de demander comment ça va. Ses propres affaires sont souvent à moitié rangées. Ne termine presque jamais ses propres repas.
 

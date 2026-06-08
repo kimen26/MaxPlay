@@ -111,7 +111,7 @@ Pour ancrer un lieu en 3-4 phrases :
 > La forêt était sombre et inquiétante.
 
 **Bon :**
-> Les arbres étaient si serrés que Juju ne voyait plus le ciel. L'air sentait la mousse et quelque chose d'autre — sucré, presque comme une tarte, ce qui était bizarre. Il s'arrêta. Quelque part au-dessus, quelque chose respirait.
+> Les arbres étaient si serrés que Juju ne voyait plus le ciel. L'air sentait la mousse et quelque chose d'autre — sucré, presque comme une tarte, ce qui était bizarre. Elle s'arrêta. Quelque part au-dessus, quelque chose respirait.
 
 **Déconstruction :**
 - Détail visuel précis : arbres serrés, ciel invisible
@@ -277,8 +277,8 @@ Chaque personnage habite l'espace différemment. Comment il *perçoit* un lieu r
 
 | Personnage | Son sanctuaire | Sa perception de l'espace hostile | Ce qu'il remarque en premier |
 |-----------|---------------|-----------------------------------|------------------------------|
-| **Raph (7)** | Partout où il peut courir, créer, inventer. Pas de murs fixes. | Un espace *fermé* où il ne peut pas sortir quand il veut. | Les sorties possibles. Les gens. Les couleurs. |
-| **Juju (8)** | Un espace où il a le contrôle. Sa chambre avec ses règles. | Un espace où quelqu'un d'autre commande et où il ne peut pas *agir*. | Les rapports de force. Qui est en position de domination. |
+| **Raph (7)** | Partout où elle peut courir, créer, inventer. Pas de murs fixes. | Un espace *fermé* où elle ne peut pas sortir quand elle veut. | Les sorties possibles. Les gens. Les couleurs. |
+| **Juju (8)** | Un espace où elle a le contrôle. Sa chambre avec ses règles. | Un espace où quelqu'un d'autre commande et où elle ne peut pas *agir*. | Les rapports de force. Qui est en position de domination. |
 | **Nono (9)** | Un espace calme, sans conflit. La nature. Un hamac. | Un espace avec trop de bruit, trop de tension, trop de demandes. | L'ambiance générale. Est-ce que c'est paisible ? Tendu ? |
 | **Melki (1)** | Un espace *ordonné*. Où tout est à sa place. Son bureau. | Un espace en désordre, sale, où les règles ne sont pas respectées. | Les imperfections et désordres. Les choses mal rangées. |
 | **Mimi (2)** | L'espace où les autres ont besoin d'elle. La cuisine, le salon. | Un espace où elle est seule et où personne ne la voit. | Les gens. Leurs expressions. Ont-ils l'air de bien aller ? |

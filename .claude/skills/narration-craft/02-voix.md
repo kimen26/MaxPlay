@@ -61,7 +61,7 @@ Les tantes de James l'ont maltraité → elles finissent écrasées par une pêc
 
 **La règle Dahl :** la justice narrative doit être *visible et satisfaisante*. Elle n'a pas besoin d'être réaliste — elle doit être *juste*.
 
-**Pour les histoires Ennéagramme :** quand un personnage entraîne des conséquences négatives par son comportement, la "punition" doit découler *directement* de ce comportement. Melki qui impose ses règles trop strictement finit par être toute seule → sa rigidité cause exactement ce qu'elle craignait.
+**Pour les histoires Ennéagramme :** quand un personnage entraîne des conséquences négatives par son comportement, la "punition" doit découler *directement* de ce comportement. Melki qui impose ses règles trop strictement finit par être tout seul → sa rigidité cause exactement ce qu'il craignait.
 
 ---
 
@@ -286,10 +286,10 @@ Si chaque personnage *racontait l'histoire*, comment le ferait-il ? Sa voix rév
 | Personnage | Type de phrase | Biais narratif | Risque principal |
 |-----------|---------------|----------------|-----------------|
 | **Raph (7)** | Courtes, enthousiastes, avec tirets — "Et là — tu vois pas ? — c'était INCROYABLE." | Amplifie le positif, minimise la douleur réelle. | L'histoire paraît légère même quand elle est sérieuse. Le lecteur ne croit pas sa souffrance. |
-| **Juju (8)** | Phrases directes, peu de conditionnels. "Il est venu. Il a essayé. Il est reparti." | Montre les faits bruts, omet ses propres vulnérabilités. | On ne voit pas ce qui le touche vraiment. Le récit manque d'accès émotionnel. |
+| **Juju (8)** | Phrases directes, peu de conditionnels. "Il est venu. Il a essayé. Il est reparti." | Montre les faits bruts, omet ses propres vulnérabilités. | On ne voit pas ce qui la touche vraiment. Le récit manque d'accès émotionnel. |
 | **Nono (9)** | Longues phrases flottantes, beaucoup de "peut-être", "je crois". "Il faisait presque beau, enfin..." | Efface son point de vue, donne beaucoup de place aux autres. | L'histoire n'a pas de centre. On perd le fil de qui est le narrateur. |
 | **Melki (1)** | Précise, ordonnée, chronologique. Corrige ses propres formulations. "Il était — non, il semblait — 14h30." | Montre les manquements des autres, s'exclut de ses propres jugements. | L'histoire est juste mais froide. Le lecteur ne peut pas s'attacher. |
-| **Mimi (2)** | Pleine d'attention aux autres. "Raph avait l'air fatigué, ça se voyait à ses yeux. Nono ne mangeait pas assez." | Raconte les autres avec précision, se raconte peu. | Le lecteur ne sait pas ce que Mimi veut vraiment. Elle disparaît dans son propre récit. |
+| **Mimi (2)** | Pleine d'attention aux autres. "Raph avait l'air fatiguée, ça se voyait à ses yeux. Nono ne mangeait pas assez." | Raconte les autres avec précision, se raconte peu. | Le lecteur ne sait pas ce que Mimi veut vraiment. Elle disparaît dans son propre récit. |
 | **Dadou (3)** | Efficace, claire, bien construite. Formulations légèrement revues *après* ("En fait ce qui s'est passé c'est..."). | Restructure les événements pour que sa performance soit valorisée. | Les échecs sont minimisés ou absents. Le récit manque de vérité. |
 | **Madie (4)** | Poétique, avec des images inattendues. Longues pauses. Métaphores. | Transforme les événements en significations profondes — parfois surinterpretées. | Le lecteur se perd dans les métaphores. Les faits deviennent secondaires. |
 | **Lulu (5)** | Détaillée, analytique, passive. "À 14h32, l'événement A a causé l'événement B, qui a produit C." | Excelle à décrire ce qui se passe, ne décrit pas ce qu'il ressent. | L'histoire est précise mais manque de chaleur. Personne ne *veut* quelque chose dans ce récit. |
@@ -299,7 +299,7 @@ Si chaque personnage *racontait l'histoire*, comment le ferait-il ? Sa voix rév
 
 **Pour les histoires à plusieurs narrateurs :** donner à chaque personnage un *chapitre* ou une *scène* narré de son point de vue. La même scène racontée par Raph puis par Lulu sera radicalement différente — et les deux lectures combinées créent une vérité plus grande que l'une ou l'autre.
 
-**Pour la cohérence vocale :** si un personnage est narrateur, *chaque phrase* doit être filtrée par son type. Raph ne dirait pas "l'atmosphère était mélancolique". Il dirait "c'était bizarre — trop silencieux, tu vois ?"
+**Pour la cohérence vocale :** si un personnage est narrateur, *chaque phrase* doit être filtrée par son type. Raph ne dirait pas "l'atmosphère était mélancolique". Elle dirait "c'était bizarre — trop silencieux, tu vois ?"
 
 ---
 

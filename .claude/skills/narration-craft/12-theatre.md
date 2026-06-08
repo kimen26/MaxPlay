@@ -63,8 +63,8 @@ Dans *Le Cid* (1637), Corneille étire les 24 heures et multiplie les lieux dans
 Le monologue interne d'un personnage doit avoir la *logique de ce personnage*, pas celle de l'auteur.
 
 - Lulu (type 5) ne pense pas en métaphores — il catégorise.
-- Juju (type 8) ne se pose pas de questions — il établit des faits.
-- Nono (type 9) ne conclut pas — elle observe et laisse en suspens.
+- Juju (type 8) ne se pose pas de questions — elle établit des faits.
+- Nono (type 9) ne conclut pas — il observe et laisse en suspens.
 - Raph (type 7) ne finit pas ses pensées — une nouvelle surgit avant.
 
 ---
@@ -134,7 +134,7 @@ Née en Italie au XVIe siècle, la Commedia dell'arte est un théâtre d'improvi
 La Commedia dell'arte *présuppose* que chaque type a un *masque visible* et un *désir caché* :
 
 - Dadou (type 3) = Il Capitano inversé : les succès sont réels, mais la peur sous-jacente (être sans valeur) est la même.
-- Melki (type 1) = Il Dottore inversé : sa rigueur est réelle, mais elle cache la peur d'être imparfaite.
+- Melki (type 1) = Il Dottore inversé : sa rigueur est réelle, mais elle cache la peur d'être imparfait.
 - Raph (type 7) = Arlecchino lumineux : la fête perpétuelle masque une peur de la douleur.
 
 ---
@@ -237,7 +237,7 @@ Au théâtre, la contrainte est d'abord économique, puis elle devient esthétiq
 **Exercice :** écrire une scène en se donnant la règle : *personne ne peut sortir*. Voir ce qui se révèle quand les personnages ne peuvent pas éviter la confrontation.
 
 **Application Ennéagramme :**
-- Nono (type 9) dans une pièce close avec Juju (type 8) : elle ne peut pas partir. Elle doit *répondre*. Cette impossibilité est sa transformation.
+- Nono (type 9) dans une pièce close avec Juju (type 8) : il ne peut pas partir. Il doit *répondre*. Cette impossibilité est sa transformation.
 - Lulu (type 5) dans une pièce close avec Raph (type 7) : il ne peut pas observer depuis le coin. Il est *dedans*.
 
 ---
@@ -252,7 +252,7 @@ Au théâtre, la contrainte est d'abord économique, puis elle devient esthétiq
 - **Mimi (2)** : dans les coulisses à aider tout le monde, puis elle y va quand on dit qu'on a besoin d'elle.
 
 **Présents mais en retrait :**
-- **Nono (9)** : peut monter mais préfère être le décor. Elle est l'arbre parfait. La crise = quand on lui dit qu'elle doit avoir un rôle *principal*.
+- **Nono (9)** : peut monter mais préfère être le décor. Il est l'arbre parfait. La crise = quand on lui dit qu'il doit avoir un rôle *principal*.
 - **Pierrot (6)** : monte sur scène mais surveille les issues. Sa performance est bonne mais tendue.
 
 **Dans les coulisses :**

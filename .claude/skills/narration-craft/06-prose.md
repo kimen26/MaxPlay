@@ -236,9 +236,9 @@ CONCRET  : Madie resta immobile deux minutes face à la fenêtre.
 *(Voir aussi skill enneagramme)*
 
 Chaque personnage parle DEPUIS son type, jamais SUR son type.
-- Raph (7) ne dit pas "j'ai peur de m'ennuyer" → il propose une autre idée avant que la première soit finie
-- Melki (1) ne dit pas "je suis perfectionniste" → elle refait le dessin en silence
-- Nono (9) ne dit pas "je m'efface" → elle dit "ça m'est égal" avec un sourire qui dit autre chose
+- Raph (7) ne dit pas "j'ai peur de m'ennuyer" → elle propose une autre idée avant que la première soit finie
+- Melki (1) ne dit pas "je suis perfectionniste" → il refait le dessin en silence
+- Nono (9) ne dit pas "je m'efface" → il dit "ça m'est égal" avec un sourire qui dit autre chose
 
 ### Sonorités pour l'oral
 Les histoires pour enfants sont souvent *lues à voix haute*. Les sonorités comptent double.

@@ -40,7 +40,7 @@ Fichiers concernés : [`site/dev-dinos.html`](../../../site/dev-dinos.html) · [
 
 ## 🔒 UI dev-dinos (FIGÉ 2026-06-03)
 
-- 🔒 **3 onglets seulement** dans l'ordre : **Les familles** (défaut) · Ce qu'il mange · Le voyage. (« Où il vivait » retiré ; le 📍 région reste DANS la fiche.)
+- 🔒 **4 onglets** dans l'ordre : **Les familles** (défaut) · Ce qu'il mange · Le voyage · **Le dico**. (« Où il vivait » retiré ; le 📍 région reste DANS la fiche. **Le dico** ajouté **2026-06-08 — décision Papa Yann** ; racines grec/latin, source `js/dinos-racines.js` généré depuis `content/sources/etymo/_ETYMO-RACINES-50.md`.)
 - 🔒 **Familles** : titre = **nom scientifique** (`sci` : Théropodes…), surnom (`label`) en sous-titre, origine grecque (`sci_sens`) dite en entrant dans la grille. Cartes en liste verticale (pas grid) pour ne rien couper.
 - 🔒 **« Ce qu'il mange »** = catégories **alimentaires uniquement** (carnivores/herbivores/piscivores/omnivores). ❌ 🔒 Pas de catégorie morphologique ici (« Volants & Marins » retiré — ces animaux sont reclassés dans leur vrai régime ; la famille « Volants & Marins » reste, elle, dans l'onglet Familles).
 - 🔒 **Un seul son par transition** : entrer dans une catégorie/famille ne déclenche QU'UN TTS (celui de la grille). ❌ 🔒 Pas de double « Carnivore » + « Carnivore ! Tape sur un dino ».

@@ -6,6 +6,8 @@
 |---------|---------|-----------|--------|
 | [`racines.json`](racines.json) | `racines[]` : 69 racines grec/latin triées par fréquence (`-saure` 29 dinos, `-odon` 5…) · `dinos{}` : décompo + sens recomposé + statut `nom_etym` | [`../scripts/export/_etymo2racines.cjs`](../scripts/export/_etymo2racines.cjs) | [`../sources/etymo/_ETYMO-RACINES-50.md`](../sources/etymo/_ETYMO-RACINES-50.md) |
 
+> **Jumeau déployé** : `_etymo2racines.cjs` émet aussi `site/js/dinos-racines.js` (`const DINO_RACINES`), consommé par l'onglet **Le dico** de `dev-dinos.html` (le `file://` ne peut pas `fetch` un `.json` → on déploie un `.js`).
+
 ## Consommateurs prévus
 
 - **Page Dico Latin/Grec** : `racines` filtrées `type=racine`, triées par `n` (les plus récurrentes d'abord).

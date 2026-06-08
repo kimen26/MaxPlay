@@ -7,8 +7,9 @@
 
 | Quoi | Fichier |
 |------|---------|
-| UI encyclopédie (3 onglets) | [`../site/dev-dinos.html`](../../site/dev-dinos.html) |
+| UI encyclopédie (4 onglets) | [`../site/dev-dinos.html`](../../site/dev-dinos.html) |
 | Données 50 dinos + 9 familles + échelle | [`../site/js/dinos-data.js`](../../site/js/dinos-data.js) |
+| Racines dico (généré, onglet Le dico) | [`../site/js/dinos-racines.js`](../../site/js/dinos-racines.js) |
 | Audio (8 récits + 4 menus + 2 spéciaux + 22 dinos) | [`../site/audio/dinos/`](../../site/audio/dinos/) |
 | Images dino | [`../site/img/dinos/`](../../site/img/dinos/) |
 | Galeries images (local + grok) | [`../site/js/dinos-images-local.js`](../../site/js/) · `dinos-images-grok.js` |

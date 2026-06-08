@@ -2,6 +2,18 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-06-09 — Banque de silhouettes dino (assets/)
+
+**Fait :**
+- **9 planches SVG** (tracés monochromes, déposées inbox) extraites → **215 silhouettes PNG** noir/transparent, détourées, despeckle (préserve multi-parties : squelettes en traits, paires d'empreintes).
+- **Rangé par famille** : `content/assets/silhouettes/<famille>/` — theropode 56 · trex 40 · sauropode 44 · stegosaure 17 · ankylosaure 8 · **ceratopsien 20 (Tritri 🦕)** · hadrosaure 12 · pterosaure 11 · divers 7 (non-dinos : plésiosaures, plantes, squelettes, empreintes).
+- **Nommage traçable** `famille-sNNrRcC.png` (sheet/ligne/colonne). `_INDEX.md` + `manifest.json` (lecture machine, pioche par famille). SVG sources archivés `_sources/` + sortis de l'inbox.
+- Pipeline rejouable : render Chromium (Playwright `studio/minijeux/tests`) → découpe grille → seuillage → bbox → despeckle.
+
+**Décidé :** classement **famille = fiable**, **espèce = approximative** (à valider `dino-conseiller` avant usage pédagogique nommé). Spinosaures à dos voilé rangés sous `theropode/`.
+
+**État au reboot :** banque visuelle dispo pour mini-jeux (`content/assets/silhouettes/`). 20 tricératops dispos pour Tritri. Aucun impact code déployé (site/ inchangé). content/INDEX.md MAJ (ligne `assets/`).
+
 ## 2026-06-08 — Réorg `studio/dino/content/` + features backlog
 
 **Fait :**

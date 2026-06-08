@@ -672,8 +672,6 @@ function buildMenu() {
   } else if (currentMode === 'famille') {
     el.classList.add('mode-famille');
     buildMenuFamille(el);
-  } else if (currentMode === 'continent') {
-    buildMenuContinent(el);
   } else if (currentMode === 'periode') {
     buildMenuPeriode(el);
   }
@@ -746,27 +744,6 @@ function buildMenuRegime(el) {
     `;
     // Un seul son : c'est la grille qui annonce (évite le double "Carnivore" + "Carnivore ! Tape…")
     card.addEventListener('click', () => { setTimeout(() => showGridRegime(cat.id), 250); });
-    el.appendChild(card);
-  });
-}
-
-/* ── MENU continent ── */
-function buildMenuContinent(el) {
-  DINO_CONTINENTS.forEach(cont => {
-    const count = DINOS.filter(d => d.continent === cont.id).length;
-    if (!count) return;
-    const card = document.createElement('div');
-    card.className = 'cat-card';
-    card.style.background = cont.bg;
-    card.innerHTML = `
-      <div class="cat-emoji">${cont.emoji}</div>
-      <div class="cat-label">${cont.label}</div>
-      <div class="cat-count" style="display:block;font-size:0.72rem;opacity:0.6;margin-top:4px">${count} dinos</div>
-    `;
-    card.addEventListener('click', () => {
-      speakText(cont.label);
-      setTimeout(() => showGridContinent(cont.id), 400);
-    });
     el.appendChild(card);
   });
 }
@@ -998,36 +975,6 @@ function showGridRegime(catId) {
   setTimeout(() => speakText(cat.label + ' ! Tape sur un dino pour tout savoir !'), 200);
 }
 
-/* ── GRID continent ── */
-function showGridContinent(contId) {
-  currentCatId = contId;
-  showScreen('grid');
-  const cont = DINO_CONTINENTS.find(c => c.id === contId);
-  document.getElementById('grid-title').textContent = cont.emoji + ' ' + cont.label;
-  const el = document.getElementById('grid-scroll');
-  el.innerHTML = '';
-  const dinos = DINOS.filter(d => d.continent === contId);
-  dinos.forEach(d => {
-    const card = document.createElement('div');
-    card.className = 'dino-card';
-    card.innerHTML = `
-      <img class="card-img" src="img/dinos/${d.png}" alt="${d.name}" loading="lazy" onerror="this.style.display='none'">
-      <div class="card-name">${d.name}</div>
-      <div class="card-regime">${d.regime}</div>
-      <div class="card-region">⏳ ${DINO_PERIODES.find(p=>p.id===d.periode)?.label||d.epoque}</div>
-      <div class="card-bar" style="background:${cont.color}"></div>
-      ${buildBadges(d.id)}
-    `;
-    card.addEventListener('click', () => {
-      card.classList.remove('bounce'); void card.offsetWidth; card.classList.add('bounce');
-      speakText(d.name);
-      setTimeout(() => showFiche(d), 350);
-    });
-    el.appendChild(card);
-  });
-  setTimeout(() => speakText(cont.label + ' ! Tape sur un dino pour tout savoir !'), 200);
-}
-
 /* ── Build grid régime ── */
 function buildGrid(catId) {
   const el = document.getElementById('grid-scroll');
@@ -1102,9 +1049,7 @@ function showGridFamille(famId) {
 function showGrid(catId) {
   if (catId) currentCatId = catId;
   showScreen('grid');
-  if (currentMode === 'continent') {
-    showGridContinent(currentCatId);
-  } else if (currentMode === 'famille') {
+  if (currentMode === 'famille') {
     showGridFamille(currentCatId);
   } else {
     showGridRegime(currentCatId);

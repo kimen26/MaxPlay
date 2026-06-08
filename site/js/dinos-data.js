@@ -145,15 +145,6 @@ const DINO_CATEGORIES = [
   { id: 'omnivores',      label: 'Omnivores',        emoji: '🍃', color: '#e67e22', bg: 'linear-gradient(135deg,#7a3000,#e67e22)' },
 ];
 
-const DINO_CONTINENTS = [
-  { id: 'Amérique du Nord', label: 'Amérique du Nord', emoji: '🌎', color: '#e74c3c', bg: 'linear-gradient(135deg,#7b1010,#e74c3c)' },
-  { id: 'Amérique du Sud', label: 'Amérique du Sud',  emoji: '🌎', color: '#e67e22', bg: 'linear-gradient(135deg,#7a3000,#e67e22)' },
-  { id: 'Europe',           label: 'Europe',           emoji: '🌍', color: '#3498db', bg: 'linear-gradient(135deg,#003366,#3498db)' },
-  { id: 'Afrique',          label: 'Afrique',          emoji: '🌍', color: '#f39c12', bg: 'linear-gradient(135deg,#7a5000,#f39c12)' },
-  { id: 'Asie',             label: 'Asie',             emoji: '🌏', color: '#e91e63', bg: 'linear-gradient(135deg,#7b003a,#e91e63)' },
-  { id: 'Antarctique',      label: 'Antarctique',      emoji: '🧊', color: '#00bcd4', bg: 'linear-gradient(135deg,#003344,#00bcd4)' },
-];
-
 const DINO_PERIODES = [
   {
     id: 'permien',

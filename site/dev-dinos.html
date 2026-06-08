@@ -612,17 +612,33 @@ const MENU_VOICE = {
 };
 let _menuAudio = null;
 function _stopMenuAudio() { if (_menuAudio) { _menuAudio.pause(); _menuAudio = null; } }
-function playMenuVoice(key, fallbackTxt) {
+function _playMenuSrc(src, fallbackTxt) {
   stopSpeak();
   _stopMenuAudio();
   if (typeof _stopDinoAudio === 'function') _stopDinoAudio();
-  const src = MENU_VOICE[key];
   if (!src) { if (fallbackTxt) speakText(fallbackTxt); return; }
   _menuAudio = new Audio(src);
   _menuAudio.onended = _stopMenuAudio;
   _menuAudio.onerror = () => { _stopMenuAudio(); if (fallbackTxt) speakText(fallbackTxt); };
   _menuAudio.play().catch(() => { _stopMenuAudio(); if (fallbackTxt) speakText(fallbackTxt); });
 }
+function playMenuVoice(key, fallbackTxt) { _playMenuSrc(MENU_VOICE[key], fallbackTxt); }
+
+/* ── Accroches FAMILLE / RÉGIME (vraies voix ElevenLabs, jouées à l'entrée de la grille) ──
+   id famille → menu-fam-<id>.mp3 · id régime → menu-regime-<cat>.mp3. Fallback speechSynthesis si MP3 absent. */
+const MENU_FAM_VOICE = {
+  trex: 'audio/dinos/menu-fam-trex.mp3', cou_long: 'audio/dinos/menu-fam-cou_long.mp3',
+  arme: 'audio/dinos/menu-fam-arme.mp3', cornu: 'audio/dinos/menu-fam-cornu.mp3',
+  bec: 'audio/dinos/menu-fam-bec.mp3', raptor: 'audio/dinos/menu-fam-raptor.mp3',
+  pterosaures: 'audio/dinos/menu-fam-pterosaures.mp3', enaliosaures: 'audio/dinos/menu-fam-enaliosaures.mp3',
+  volant: 'audio/dinos/menu-fam-volant.mp3',
+};
+const MENU_REGIME_VOICE = {
+  carnivores: 'audio/dinos/menu-regime-carnivores.mp3', herbivores: 'audio/dinos/menu-regime-herbivores.mp3',
+  piscivores: 'audio/dinos/menu-regime-piscivores.mp3', omnivores: 'audio/dinos/menu-regime-omnivores.mp3',
+};
+function playFamVoice(famId, fallbackTxt) { _playMenuSrc(MENU_FAM_VOICE[famId], fallbackTxt); }
+function playRegimeVoice(catId, fallbackTxt) { _playMenuSrc(MENU_REGIME_VOICE[catId], fallbackTxt); }
 
 /* ── State ── */
 let currentMode   = 'famille';
@@ -705,8 +721,7 @@ function buildMenuFamille(el) {
   // Intro COURTE et accrocheuse (le détail vit dans chaque carte / au clic)
   const intro = document.createElement('div');
   intro.className = 'fam-intro';
-  intro.innerHTML = `<button class="fam-explic-play" aria-label="Écouter">🔊</button><p>Chaque famille a un nom rigolo de savant. Touche une carte pour découvrir le sien !</p>`;
-  intro.querySelector('.fam-explic-play').addEventListener('click', (ev) => { ev.stopPropagation(); speakText('Chaque famille a un nom rigolo de savant. Touche une carte pour découvrir le sien !'); });
+  intro.innerHTML = `<p>Chaque famille a un nom rigolo de savant. Touche une carte pour découvrir le sien !</p>`;
   el.appendChild(intro);
 
   DINO_FAMILLES.forEach(fam => {
@@ -908,7 +923,7 @@ function buildPangeeBloc() {
   ).join('');
 
   const etapesHtml = PANGEE.etapes.map(e => `
-    <div class="pangee-etape" onclick="speakText('${esc(e.label)} : ${esc(e.titre)}. ${esc(e.texte)}')">
+    <div class="pangee-etape">
       <div class="pangee-etape-label">${e.label} · ${esc(e.ma)}</div>
       <div class="pangee-etape-titre">${e.titre}</div>
       <div class="pangee-etape-texte">${e.texte}</div>
@@ -917,8 +932,7 @@ function buildPangeeBloc() {
 
   return `
     <div class="chrono-periode" id="periode-pangee" style="margin:8px 0 4px">
-      <div class="chrono-header" style="background:rgba(80,160,255,0.15);cursor:pointer"
-           onclick="speakText('${esc(PANGEE.titre)}. ${esc(PANGEE.intro)}')">
+      <div class="chrono-header" style="background:rgba(80,160,255,0.15)">
         <div class="chrono-emoji">🌍</div>
         <div class="chrono-info">
           <div class="chrono-label" style="color:#5dade2">${PANGEE.titre}</div>
@@ -936,10 +950,10 @@ function buildPangeeBloc() {
         <div class="pangee-dots">${dots}</div>
         <div class="pangee-credit">${PANGEE.credit}</div>
         <div class="pangee-etapes">${etapesHtml}</div>
-        <div class="pangee-pourquoi" onclick="speakText('${esc(PANGEE.pourquoi)}')">
+        <div class="pangee-pourquoi">
           💡 ${PANGEE.pourquoi}
         </div>
-        <div class="pangee-funfact" onclick="speakText('${esc(PANGEE.fun_fact)}')">
+        <div class="pangee-funfact">
           🌍 ${PANGEE.fun_fact}
         </div>
       </div>
@@ -968,7 +982,7 @@ function pangeeStartAuto() {
 
 function buildExtinctionBloc() {
   const hypHtml = EXTINCTION.hypotheses.map(h => `
-    <div class="ext-card" onclick="speakText('${esc(h.titre)}. ${esc(h.texte)}')">
+    <div class="ext-card">
       <div class="ext-card-emoji">${h.emoji}</div>
       <div class="ext-card-body">
         <div class="ext-card-titre">${h.titre}</div>
@@ -980,8 +994,7 @@ function buildExtinctionBloc() {
 
   return `
     <div class="chrono-periode" id="periode-extinction" style="margin-top:8px">
-      <div class="chrono-header" style="background:rgba(255,80,0,0.15);cursor:pointer"
-           onclick="speakText('La Grande Extinction ! Il y a 66 millions d\\u2019années, les dinosaures ont disparu. Mais pourquoi ?')">
+      <div class="chrono-header" style="background:rgba(255,80,0,0.15)">
         <div class="chrono-emoji">☄️</div>
         <div class="chrono-info">
           <div class="chrono-label" style="color:#ff6b35">${EXTINCTION.titre}</div>
@@ -994,7 +1007,7 @@ function buildExtinctionBloc() {
           🎙️ Écoute l'histoire de la Grande Extinction <span class="dino-story-eq">▶</span>
         </button>
         ${hypHtml}
-        <div class="ext-funfact" onclick="speakText('${esc(EXTINCTION.fun_fact)}')">
+        <div class="ext-funfact">
           🐦 ${EXTINCTION.fun_fact}
         </div>
       </div>
@@ -1030,7 +1043,8 @@ function showGridRegime(catId) {
   buildGrid(catId);
   const cat = DINO_CATEGORIES.find(c => c.id === catId);
   document.getElementById('grid-title').textContent = cat.emoji + ' ' + cat.label;
-  setTimeout(() => speakText(cat.label + ' ! Tape sur un dino pour tout savoir !'), 200);
+  // Accroche régime = vraie voix ElevenLabs (étymo + fun), fallback dame si MP3 absent.
+  setTimeout(() => playRegimeVoice(catId, cat.label + ' ! Tape sur un dino pour tout savoir !'), 200);
 }
 
 /* ── Build grid régime ── */
@@ -1052,7 +1066,6 @@ function buildGrid(catId) {
     `;
     card.addEventListener('click', () => {
       card.classList.remove('bounce'); void card.offsetWidth; card.classList.add('bounce');
-      speakText(d.name);
       setTimeout(() => showFiche(d), 350);
     });
     el.appendChild(card);
@@ -1073,10 +1086,8 @@ function showGridFamille(famId) {
     const banner = document.createElement('div');
     banner.className = 'fam-explic-banner';
     banner.innerHTML = `
-      <button class="fam-explic-play" aria-label="Écouter">🔊</button>
       <p><b>${title}</b>${fam.label && fam.label !== title ? ` <span style="opacity:.7">— ${fam.label}</span>` : ''}<br>${fam.explic}</p>
     `;
-    banner.querySelector('.fam-explic-play').addEventListener('click', (ev) => { ev.stopPropagation(); speakText(fam.explic); });
     el.appendChild(banner);
   }
   const dinos = DINOS.filter(d => d.famille === famId);
@@ -1093,14 +1104,13 @@ function showGridFamille(famId) {
     `;
     card.addEventListener('click', () => {
       card.classList.remove('bounce'); void card.offsetWidth; card.classList.add('bounce');
-      speakText(d.name);
       setTimeout(() => showFiche(d), 350);
     });
     el.appendChild(card);
   });
-  // En entrant : on dit le nom scientifique + son origine grecque (Q3), une seule fois.
+  // En entrant : accroche famille = vraie voix ElevenLabs (étymo découpée + image fun), fallback dame.
   const intro = (fam.sci || fam.label) + ' ! ' + (fam.sci_sens || '');
-  setTimeout(() => speakText(intro.trim()), 200);
+  setTimeout(() => playFamVoice(famId, intro.trim()), 200);
 }
 
 /* ── Retour depuis grille ── */

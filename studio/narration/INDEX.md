@@ -47,6 +47,17 @@ narration/
 
 ---
 
+## 🎨 Craft narratif (le *comment* écrire)
+
+| Ressource | Quand |
+|-----------|-------|
+| [`narration-craft`](../../.claude/skills/narration-craft/SKILL.md) — skill **routeur**, 15 masterclasses (structures, voix, sensoriel, comédie, développement, prose…) | Brief (structure+voix) · écriture (sensoriel+comédie) · rewrite (prose+voix). Charge le sous-fichier pertinent à la demande |
+| Rule auto-chargée [`.claude/rules/narration-craft.md`](../../.claude/rules/narration-craft.md) | Pointeurs auto dès qu'on touche `stories/`, `equipe/`, `personnages/` (anti-pollution) |
+
+> 🛑 Garde-fou : cliffhanger/open-loop OK au milieu, **jamais à la fin** (patte Kishōtenketsu apaisant). Ennéagramme : vérité = `personnages/theorie/enneagramme/`, le craft ne fait qu'illustrer.
+
+---
+
 ## Pilier 2 — Univers
 
 | Fichier | Contenu |

@@ -30,6 +30,9 @@
 
 ## Changelog
 
+### Session 2026-06-09
+**Refonte taxo familles** : famille **Énaliosaures** créée (6 reptiles marins : Mosasaure + Élasmosaure/Liopleurodon/Archélon/Shonisaure/Shastasaure, fiches dino-conseiller fact-checkées Grokipédia). « Inclassables » dissoute (Therizinosaurus→Théropodes, Pachycéphalosaure→Cératopsiens) ; « Pas des dinosaures ! »→« Avant les dinosaures » (Dimétrodon seul). **Menu continent effacé** (code mort). **55 dinos / 9 familles / 4 régimes** (INVARIANTS maj). À SUIVRE : images 5 marins (grok), audio accroches familles+régimes (textes figés `scripts-audio/_ACCROCHES-MENU-FAMILLES-REGIMES.md`), Dimétrodon à reclasser (futur « Avant les dinos »).
+
 ### Session 2026-06-08
 **Réorg `studio/dino/content/`** : 5 dossiers thématiques (sources/data/scripts/scripts-audio/inbox). `__dirname` réparés, régen-diff valide non-régression. INDEX refondus. **Suppression validée** : 12 scripts dialogue superseded (anciens `*-V1.md` ×10, `triceratops-V0.md`, `parasaurolophus-V2.md`) + `generate-audio-segments.py` (ancien pipeline) + `_gen-audio.sh` + 68 segments MP3 périmés. **Nouveau** : `data/racines.json` (69 racines greco-latin). **Features backlog ajoutées** : 5 tickets EP-D06→EP-D10 (Dico, Mini-jeu tri, Duel, Forces/faiblesses, Quiz). **Flags** : Flag A (canon périmé vs data), Flag B (brouillon 001-trex à confirmer). Chiffres invariants OK (50/9/4/22/8/4).
 

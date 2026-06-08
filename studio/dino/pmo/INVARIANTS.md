@@ -7,7 +7,7 @@
 
 | Quoi | Valeur | Source |
 |------|--------|--------|
-| Dinos (entrées `DINOS`) | **50** | `site/js/dinos-data.js` |
+| Dinos (entrées `DINOS`) | **55** | `site/js/dinos-data.js` |
 | Familles (`DINO_FAMILLES`) | **9** | idem |
 | Régimes alimentaires (`DINO_CATEGORIES`) | **4** | idem |
 | Récits d'époque (voyage) | **8** | `audio/dinos/recit-*.mp3` |
@@ -17,12 +17,13 @@
 
 ## 9 familles (nom scientifique = titre)
 
-Théropodes (15) · Sauropodes (6) · Thyréophores (4) · Cératopsiens (5) · Ornithopodes (4) · Dromæosaures (10) · **Ptérosaures (2)** · **Pas des dinosaures ! (2)** · Les inclassables (2).
+Théropodes (16) · Sauropodes (6) · Thyréophores (4) · Cératopsiens (6) · Ornithopodes (4) · Dromæosaures (10) · Ptérosaures (2) · **Énaliosaures (6)** · **Avant les dinosaures (1, Dimétrodon)**.
+> Refonte taxo 2026-06-09 : famille **Énaliosaures** (6 reptiles marins) créée ; « Inclassables » dissoute (Therizinosaurus → Théropodes, Pachycéphalosaure → Cératopsiens) ; « Pas des dinosaures ! » recentrée sur Dimétrodon → « Avant les dinosaures ».
 Champs par famille : `sci` (titre scientifique) · `label` (surnom) · `sci_sens` (origine grecque dite en entrant) · `explic` (explication longue 🔊).
 
 ## 4 régimes alimentaires
 
-Carnivores (22) · Herbivores (21) · Piscivores (4) · Omnivores (3). **Pas de catégorie morphologique** ici (ex « Volants & Marins » retiré 2026-06-03).
+Carnivores (24) · Herbivores (21) · Piscivores (7) · Omnivores (3). **Pas de catégorie morphologique** ici (ex « Volants & Marins » retiré 2026-06-03).
 
 ## Échelle de comparaison HONNÊTE (référentiel figé)
 

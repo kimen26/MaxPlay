@@ -640,6 +640,14 @@ const MENU_REGIME_VOICE = {
 function playFamVoice(famId, fallbackTxt) { _playMenuSrc(MENU_FAM_VOICE[famId], fallbackTxt); }
 function playRegimeVoice(catId, fallbackTxt) { _playMenuSrc(MENU_REGIME_VOICE[catId], fallbackTxt); }
 
+/* ── Dico : dialogue 2 voix (narrateur explique la racine + Wex donne les exemples de dinos) ──
+   clé racine (r.cle) → audio/dinos/dico-<slug>.mp3. Racines sans MP3 = fallback dame jusqu'à génération. */
+const DICO_VOICE = {"-saure":"dico-saure","-odon":"dico-odon","-raptor":"dico-raptor","-lophe":"dico-lophe","cérat-":"dico-cerat","-céphale":"dico-cephale","-mime":"dico-mime","-onyx":"dico-onyx","-ops":"dico-ops","di-":"dico-di","-cantho-":"dico-cantho","-oplo-":"dico-oplo","-physis":"dico-physis","-taurus":"dico-taurus","acro-":"dico-acro","allo-":"dico-allo","an-":"dico-an","apato-":"dico-apato","brachio-":"dico-brachio","camara-":"dico-camara","carcharo-":"dico-carcharo","carno-":"dico-carno","cryo-":"dico-cryo","diplo-":"dico-diplo","eu-":"dico-eu","gorgo-":"dico-gorgo","maia-":"dico-maia","noto-":"dico-noto","ovi-":"dico-ovi","para-":"dico-para","plateo-":"dico-plateo","proto-":"dico-proto","rex":"dico-rex","tarbo-":"dico-tarbo","tri-":"dico-tri","tyrannos-":"dico-tyrannos","veloci-":"dico-veloci"};
+function playDicoVoice(cle, fallbackTxt) {
+  const slug = DICO_VOICE[cle];
+  _playMenuSrc(slug ? 'audio/dinos/' + slug + '.mp3' : null, fallbackTxt);
+}
+
 /* ── State ── */
 let currentMode   = 'famille';
 let currentCatId  = null;
@@ -772,8 +780,7 @@ function buildMenuDico(el) {
   }
   const intro = document.createElement('div');
   intro.className = 'fam-intro';
-  intro.innerHTML = `<button class="fam-explic-play" aria-label="Écouter">🔊</button><p>Les noms des dinos sont faits de petits mots de savants ! Touche un mot pour l'écouter.</p>`;
-  intro.querySelector('.fam-explic-play').addEventListener('click', ev => { ev.stopPropagation(); speakText(MENU_FALLBACK.dico); });
+  intro.innerHTML = `<p>Les noms des dinos sont faits de petits mots de savants ! Touche un mot pour l'écouter.</p>`;
   el.appendChild(intro);
 
   if (typeof DINO_RACINES === 'undefined' || !DINO_RACINES.racines) {
@@ -798,7 +805,8 @@ function buildMenuDico(el) {
     `;
     const mot = r.cle.replace(/-/g, '');
     const phrase = `${mot}${langue ? ', en ' + langue + ',' : ''} ça veut dire : ${r.sens}.`;
-    card.addEventListener('click', () => speakText(phrase));
+    // Tap = dialogue 2 voix (narrateur + Wex) si le MP3 existe, sinon fallback dame.
+    card.addEventListener('click', () => playDicoVoice(r.cle, phrase));
     el.appendChild(card);
   });
 }

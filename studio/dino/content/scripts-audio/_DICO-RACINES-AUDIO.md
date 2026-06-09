@@ -1,5 +1,5 @@
 # Scripts audio — Le dico (racines grec/latin)
-# EP-D06 · Voix : narrateur_h · Générer APRES le 11/06 (quota EL)
+# EP-D06 · Voix : narrateur_h + wex · Format : dialogue 2 voix · Générer APRES le 11/06 (quota EL)
 # Source de vérité : content/data/racines.json (69 entrées)
 
 ---
@@ -36,88 +36,506 @@ concernée DOIT le signaler quand il cite ce dino.
 
 ---
 
+## FORMAT DIALOGUE 2 VOIX
+
+Chaque clip est une ligne `narrateur_h:` suivie d'une ligne `wex:`.
+- `narrateur_h` : explique la racine (langue, sens, formes multiples si applicable).
+- `wex` : rebondit avec enthousiasme, donne des exemples de dinos avec tirets.
+- Tags v3 légers sur wex uniquement, avec parcimonie.
+- Terminaisons multiples : Wex montre les DEUX formes sur des dinos différents.
+
+---
+
 ## CLIPS RACINES (61 entrées, type "racine")
 ### Ordre : fréquence décroissante, puis alphabétique
 
-| cle | langue | slug mp3 | texte du clip |
-|-----|--------|----------|---------------|
-| `-saure` | grec | `dico-saure` | *-saure* ou *-sau-rus*, en grec ça veut dire lézard. Ty-ran-no-**saurus**, Brachio-**saure**, Ankylo-**saure**… presque tous les dinos portent ce mot — c'est pareil ! |
-| `-odon` | grec | `dico-odon` | *-o-don* ou *-o-don-to-*, en grec ça veut dire dent. Igua-no-**don**, Pté-ra-no-**don**, Troo-**don** — c'est leur dent qui leur a donné leur nom ! |
-| `-raptor` | latin | `dico-raptor` | *-rap-tor*, en latin ça veut dire voleur. Vé-lo-ci-**raptor**, Ovi-**raptor**, Utah-**raptor** — des chasseurs qui volent la proie ! |
-| `-lophe` | grec | `dico-lophe` | *-lo-phe* ou *-lo-phus*, en grec ça veut dire crête. Di-lo-pho-**saure** avait deux crêtes, Para-sau-ro-**lophus** une immense — c'est pareil ! |
-| `cérat-` | grec | `dico-cerat` | *cé-rat-*, en grec ça veut dire corne. Tri-cé-ra-tops, Pro-to-cé-ra-tops, Cé-ra-to-saure — tous des dinos à cornes ! |
-| `-céphale` | grec | `dico-cephale` | *-cé-phale* ou *-cé-pha-lo-*, en grec ça veut dire tête. Eu-o-plo-cé-**phale**, Pa-chy-cé-phalo-**saure** — c'est leur tête spéciale qui les a nommés ! |
-| `-mime` | grec | `dico-mime` | *-mi-me* ou *-mi-mus*, en grec ça veut dire qui imite. Gal-li-**mimus**, Su-cho-**mimus** — des dinos qui imitaient d'autres animaux ! |
-| `-onyx` | grec | `dico-onyx` | *-o-nyx* ou *-ny-chus*, en grec ça veut dire griffe. Ba-ryo-**nyx**, Dei-no-**nychus** — nommés pour leur griffe redoutable ! |
-| `-ops` | grec | `dico-ops` | *-ops*, en grec ça veut dire face, visage. Tri-cé-ra-**tops**, Pro-to-cé-ra-**tops** — leur face à cornes les a nommés ! |
-| `di-` | grec | `dico-di` | *di-*, en grec ça veut dire deux. Di-**lo**-phosaure avait deux crêtes, Di-**mé**-trodon avait deux tailles de dents — di-, toujours deux ! |
-| `-cantho-` | grec | `dico-cantho` | *-can-tho-*, en grec ça veut dire épine, piquant. A-cro-**can-tho**-saure en avait dans le dos, très hautes ! |
-| `-docus / dokos` | grec | `dico-docus` | *-do-cus*, en grec ça veut dire poutre. Di-plo-**do-cus** — un dos solide comme une double poutre ! |
-| `-gnathus / gnathos` | grec | `dico-gnathus` | *-gna-thus*, en grec ça veut dire mâchoire. Comp-so-**gna-thus** — nommé pour sa fine mâchoire élégante ! |
-| `-metro- / metron` | grec | `dico-metro` | *-mé-tro-*, en grec ça veut dire mesure, taille. Di-**mé-tro**-don avait deux tailles de dents différentes ! |
-| `-oplo-` | grec | `dico-oplo` | *-o-plo-*, en grec ça veut dire arme, armure. Eu-**o-plo**-céphale — bien armé, bien protégé ! |
-| `-physis` | grec | `dico-physis` | *-phy-sis*, en grec ça veut dire forme, nature. Coe-lo-**phy-sis** — nommé pour la forme creuse de ses os ! |
-| `-pteryx / pterux` | grec | `dico-pteryx` | *-pté-ryx*, en grec ça veut dire aile, plume. Ar-chaeo-**pté-ryx** — la vieille aile, le premier oiseau connu ! |
-| `-taurus` | latin | `dico-taurus` | *-tau-rus*, en latin ça veut dire taureau. Car-no-**tau-rus** — une tête de taureau sur un corps de carnivore ! |
-| `acro-` | grec | `dico-acro` | *a-cro-*, en grec ça veut dire en haut, le plus haut. **A-cro**-cantho-saure — ses épines pointaient tout en haut ! |
-| `allo-` | grec | `dico-allo` | *al-lo-*, en grec ça veut dire autre, différent. **Al-lo**-saure — un lézard différent des autres, pas facile à classer ! |
-| `an-` | grec | `dico-an` | *an-*, en grec ça veut dire sans. Pté-ra-no-**don** — *an-odon*, sans dents, une aile sans dents ! |
-| `anky- / ankylo-` | grec | `dico-anky` | *an-ky-lo-*, en grec ça veut dire courbé, soudé, rigide. **An-ky-lo**-saure — tout son dos était soudé, dur comme du roc ! |
-| `apato-` | grec | `dico-apato` | *a-pa-to-*, en grec ça veut dire tromperie, illusion. **A-pa-to**-saure — nommé parce qu'il a trompé les savants, ses os ressemblaient à un autre dino ! |
-| `archaeo- / arkhaios` | grec | `dico-archaeo` | *ar-chaeo-*, en grec ça veut dire ancien, du début. **Ar-chaeo**-ptéryx — la très vieille aile, un des premiers animaux à plumes ! |
-| `bary- / barus` | grec | `dico-bary` | *ba-ry-*, en grec ça veut dire lourd. **Ba-ry**-onyx — une griffe très lourde, très puissante ! |
-| `brachio-` | grec | `dico-brachio` | *bra-chio-*, en grec ça veut dire bras. **Bra-chio**-saure — nommé pour ses bras avant immenses, bien plus grands que ses pattes arrière ! |
-| `camara-` | grec | `dico-camara` | *ca-ma-ra-*, en grec ça veut dire chambre, pièce voûtée. **Ca-ma-ra**-saure — ses vertèbres avaient des petites chambres creuses à l'intérieur ! |
-| `carcharo-` | grec | `dico-carcharo` | *car-cha-ro-*, en grec ça veut dire pointu, coupant. **Car-cha-ro**-donto-saure — des dents coupantes comme celles d'un requin ! |
-| `carno-` | latin | `dico-carno` | *car-no-*, en latin ça veut dire viande, chair. **Car-no**-taure — un mangeur de viande avec une tête de taureau ! |
-| `coelo- / koilos` | grec | `dico-coelo` | *coe-lo-*, en grec ça veut dire creux. **Coe-lo**-physis — ses os étaient creux et légers, comme les oiseaux aujourd'hui ! |
-| `compso- / kompsos` | grec | `dico-compso` | *comp-so-*, en grec ça veut dire élégant, joli, délicat. **Comp-so**-gnathus — un tout petit dino à la mâchoire fine et élégante ! |
-| `corytho- / korus` | grec | `dico-corytho` | *co-ry-tho-*, en grec ça veut dire casque. **Co-ry-tho**-saure — sa crête en forme de casque sur le dessus de la tête ! |
-| `cryo-` | grec | `dico-cryo` | *cry-o-*, en grec ça veut dire glace, froid. **Cry-o**-lopho-saure — trouvé en Antarctique, dans les glaces ! |
-| `deino- / deinos` | grec | `dico-deino` | *dei-no-*, en grec ça veut dire terrible, effrayant. **Dei-no**-nychus — la griffe terrible, un chasseur redoutable ! |
-| `diplo-` | grec | `dico-diplo` | *di-plo-*, en grec ça veut dire double. **Di-plo**-docus — une double poutre dans le dos pour porter son immense queue ! |
-| `eu-` | grec | `dico-eu` | *eu-*, en grec ça veut dire bien. **Eu**-oplo-céphale — bien armé, bien protégé de partout ! |
-| `galli-` | latin | `dico-galli` | *gal-li-*, en latin ça veut dire coq, poule. **Gal-li**-mimus — il courait comme une poule, en latin, et il imitait en grec ! |
-| `giga- / gigas` | grec | `dico-giga` | *gi-ga-*, en grec ça veut dire géant. **Gi-ga**-noto-saure — un géant du sud, un des plus grands carnivores ! |
-| `gorgo-` | grec | `dico-gorgo` | *gor-go-*, en grec ça veut dire féroce, terrible. **Gor-go**-saure — féroce comme une Gorgone de la mythologie grecque ! |
-| `kentro- / kentron` | grec | `dico-kentro` | *ken-tro-*, en grec ça veut dire pointe, aiguillon. **Ken-tro**-saure — couvert de pointes acérées sur tout le dos ! |
-| `maia-` | grec | `dico-maia` | *ma-ia-*, en grec ça veut dire bonne mère, nourrice. **Ma-ia**-saura — une maman dino qui soignait ses petits dans le nid ! |
-| `micro- / mikros` | grec | `dico-micro` | *mi-cro-*, en grec ça veut dire petit. **Mi-cro**-raptor — le petit en grec, voleur en latin — un tout petit voleur à quatre ailes ! |
-| `noto-` | grec | `dico-noto` | *no-to-*, en grec ça veut dire du sud. Gi-ga-**no-to**-saure — le géant du **sud**, trouvé en Argentine ! |
-| `ovi-` | latin | `dico-ovi` | *o-vi-*, en latin ça veut dire œuf. **O-vi**-raptor — voleur d'œufs en latin, surpris près d'un nid ! |
-| `pachy- / pakhus` | grec | `dico-pachy` | *pa-chy-*, en grec ça veut dire épais. **Pa-chy**-céphalo-saure — une tête au crâne épais comme du béton pour se battre ! |
-| `para-` | grec | `dico-para` | *pa-ra-*, en grec ça veut dire à côté de, proche de. **Pa-ra**-saurolophus — proche du lézard à crête, mais pas tout à fait pareil ! |
-| `plateo-` | grec | `dico-plateo` | *pla-teo-*, en grec ça veut dire large, plat. **Pla-teo**-saure — un corps large et plat, un des premiers grands herbivores ! |
-| `proto-` | grec | `dico-proto` | *pro-to-*, en grec ça veut dire premier. **Pro-to**-cératops — le premier à corne, l'ancêtre du Tricératops ! |
-| `psittaco- / psittakos` | grec | `dico-psittaco` | *psit-ta-co-*, en grec ça veut dire perroquet. **Psit-ta-co**-saure — son bec recourbé ressemblait à celui d'un perroquet ! |
-| `ptér- / pteron` | grec | `dico-pter` | *pté-r-*, en grec ça veut dire aile. **Pté**-ra-no-don — aile, sans, dent : une aile sans dents ! |
-| `rex` | latin | `dico-rex` | *rex*, en latin ça veut dire roi. Tyranno-**rex** — le roi des tyrans, le roi des dinosaures ! |
-| `spino-` | latin | `dico-spino` | *spi-no-*, en latin ça veut dire épine. **Spi-no**-saure — épine en latin, lézard en grec — ses grandes épines dans le dos lui ont donné son nom ! |
-| `stégo- / stegos` | grec | `dico-stego` | *sté-go-*, en grec ça veut dire toit. **Sté-go**-saure — ses grandes plaques dans le dos ressemblaient aux tuiles d'un toit ! |
-| `styraco- / sturax` | grec | `dico-styraco` | *sty-ra-co-*, en grec ça veut dire pointe de lance, pique. **Sty-ra-co**-saure — sa fraise était couverte de longues piques ! |
-| `sucho- / soukhos` | grec | `dico-sucho` | *su-cho-*, en grec ça veut dire crocodile. **Su-cho**-mimus — il imitait le crocodile avec son long museau pour pêcher ! |
-| `tarbo-` | grec | `dico-tarbo` | *tar-bo-*, en grec ça veut dire la peur, l'effroi. **Tar-bo**-saure — un dino qui faisait peur, cousin du T-Rex en Asie ! |
-| `therizino- / therizo` | grec | `dico-therizino` | *thé-ri-zi-no-*, en grec ça veut dire faucher, couper. **Thé-ri-zi-no**-saure — ses griffes immenses fauchaient les plantes comme une faux ! |
-| `tri-` | grec | `dico-tri` | *tri-*, en grec ça veut dire trois. **Tri**-cératops — trois cornes, trois, comme le mot grec ! |
-| `troo- / titrosko` | grec | `dico-troo` | *troo-*, en grec ça veut dire blesser, qui blesse. **Troo**-don — la dent qui blesse, un chasseur au regard très intelligent ! |
-| `tyrannos-` | grec | `dico-tyrannos` | *ty-ran-nos-*, en grec ça veut dire roi qui commande tout, tyran. **Ty-ran-no**-saure Rex — le tyran, le roi des lézards, le roi ! |
-| `veloci-` | latin | `dico-veloci` | *vé-lo-ci-*, en latin ça veut dire rapide. **Vé-lo-ci**-raptor — le voleur rapide, tellement rapide qu'il te rattrapait en courant ! |
+---
+
+**`-saure`** | grec | `dico-saure`
+
+narrateur_h: *-saure* ou *-sau-rus*, en grec ça veut dire lézard — c'est pareil !
+wex: [excited] Comme le Bra-chio-**saure** et le Ty-ran-no-**saurus** — même mot, deux façons de l'écrire !
+
+---
+
+**`-odon`** | grec | `dico-odon`
+
+narrateur_h: *-o-don* ou *-o-don-to-*, en grec ça veut dire dent — c'est pareil !
+wex: [happily] Igua-no-**don**, Pté-ra-no-**don**, Troo-**don** — tous nommés pour leurs dents !
+
+---
+
+**`-raptor`** | latin | `dico-raptor`
+
+narrateur_h: *-rap-tor*, en latin ça veut dire voleur.
+wex: [excited] Vé-lo-ci-**raptor**, Ovi-**raptor**, Utah-**raptor** — des voleurs rapides comme l'éclair !
+
+---
+
+**`-lophe`** | grec | `dico-lophe`
+
+narrateur_h: *-lo-phe* ou *-lo-phus*, en grec ça veut dire crête — c'est pareil !
+wex: [happily] Di-lo-pho-**saure** avait deux crêtes, et Para-sau-ro-**lophus** en avait une immense !
+
+---
+
+**`cérat-`** | grec | `dico-cerat`
+
+narrateur_h: *cé-rat-*, en grec ça veut dire corne.
+wex: [excited] Tri-**cé-ra**-tops, Pro-to-**cé-ra**-tops, **Cé-ra**-to-saure — tous des dinos à cornes !
+
+---
+
+**`-céphale`** | grec | `dico-cephale`
+
+narrateur_h: *-cé-phale* ou *-cé-pha-lo-*, en grec ça veut dire tête — c'est pareil !
+wex: [happily] Eu-o-plo-**céphale** et Pa-chy-**céphalo**-saure — tous les deux nommés pour leur tête spéciale !
+
+---
+
+**`-mime`** | grec | `dico-mime`
+
+narrateur_h: *-mi-me* ou *-mi-mus*, en grec ça veut dire qui imite — c'est pareil !
+wex: [excited] Gal-li-**mimus** imitait la poule, Su-cho-**mimus** imitait le crocodile — des champions !
+
+---
+
+**`-onyx`** | grec | `dico-onyx`
+
+narrateur_h: *-o-nyx* ou *-ny-chus*, en grec ça veut dire griffe — c'est pareil !
+wex: [excited] Ba-ryo-**nyx** et Dei-no-**nychus** — deux dinos nommés pour leur griffe redoutable !
+
+---
+
+**`-ops`** | grec | `dico-ops`
+
+narrateur_h: *-ops*, en grec ça veut dire face, visage.
+wex: [happily] Tri-cé-ra-**tops**, Pro-to-cé-ra-**tops** — leur face à cornes leur a donné leur nom !
+
+---
+
+**`di-`** | grec | `dico-di`
+
+narrateur_h: *di-*, en grec ça veut dire deux.
+wex: [excited] **Di**-lo-pho-saure avait deux crêtes, **Di**-mé-tro-don avait deux tailles de dents — di, toujours deux !
+
+---
+
+**`-cantho-`** | grec | `dico-cantho`
+
+narrateur_h: *-can-tho-*, en grec ça veut dire épine, piquant.
+wex: [happily] A-cro-**cantho**-saure en avait dans le dos, très très hautes !
+
+---
+
+**`-docus`** | grec | `dico-docus`
+
+narrateur_h: *-do-cus*, en grec ça veut dire poutre.
+wex: [excited] Di-plo-**docus** — un dos solide comme une double poutre pour porter son énorme queue !
+
+---
+
+**`-gnathus`** | grec | `dico-gnathus`
+
+narrateur_h: *-gna-thus*, en grec ça veut dire mâchoire.
+wex: [happily] Comp-so-**gnathus** — nommé pour sa fine mâchoire élégante. Un tout petit dino !
+
+---
+
+**`-metro-`** | grec | `dico-metro`
+
+narrateur_h: *-mé-tro-*, en grec ça veut dire mesure, taille.
+wex: [excited] Di-**mé-tro**-don avait deux tailles de dents différentes — les savants l'ont tout de suite remarqué !
+
+---
+
+**`-oplo-`** | grec | `dico-oplo`
+
+narrateur_h: *-o-plo-*, en grec ça veut dire arme, armure.
+wex: [happily] Eu-**oplo**-céphale — bien armé, bien protégé de partout, rien ne pouvait l'arrêter !
+
+---
+
+**`-physis`** | grec | `dico-physis`
+
+narrateur_h: *-phy-sis*, en grec ça veut dire forme, nature.
+wex: [excited] Coe-lo-**physis** — ses os avaient une forme creuse et légère, comme les oiseaux !
+
+---
+
+**`-pteryx`** | grec | `dico-pteryx`
+
+narrateur_h: *-pté-ryx*, en grec ça veut dire aile, plume.
+wex: [happily] Ar-chaeo-**ptéryx** — la vieille aile, un des tout premiers animaux à plumes connus !
+
+---
+
+**`-taurus`** | latin | `dico-taurus`
+
+narrateur_h: *-tau-rus*, en latin ça veut dire taureau.
+wex: [excited] Car-no-**taurus** — une tête de taureau sur un corps de chasseur, en latin !
+
+---
+
+**`acro-`** | grec | `dico-acro`
+
+narrateur_h: *a-cro-*, en grec ça veut dire en haut, le plus haut.
+wex: [happily] **Acro**-cantho-saure — ses grandes épines pointaient tout en haut de son dos !
+
+---
+
+**`allo-`** | grec | `dico-allo`
+
+narrateur_h: *al-lo-*, en grec ça veut dire autre, différent.
+wex: [excited] **Allo**-saure — un lézard tellement différent des autres que les savants ne savaient pas où le classer !
+
+---
+
+**`an-`** | grec | `dico-an`
+
+narrateur_h: *an-*, en grec ça veut dire sans.
+wex: [happily] Pté-ra-no-**don** — *an-odon* : sans dents ! Une grande aile sans une seule dent !
+
+---
+
+**`anky-`** | grec | `dico-anky`
+
+narrateur_h: *an-ky-lo-*, en grec ça veut dire courbé, soudé, rigide.
+wex: [excited] **Ankylo**-saure — tout son dos était soudé, dur comme du roc, impossible à mordre !
+
+---
+
+**`apato-`** | grec | `dico-apato`
+
+narrateur_h: *a-pa-to-*, en grec ça veut dire tromperie, illusion.
+wex: [happily] **Apato**-saure — il a trompé les savants ! Ses os ressemblaient à un autre dino !
+
+---
+
+**`archaeo-`** | grec | `dico-archaeo`
+
+narrateur_h: *ar-chaeo-*, en grec ça veut dire ancien, du début.
+wex: [excited] **Archaeo**-ptéryx — la très vieille aile, un des premiers animaux à plumes de toute l'histoire !
+
+---
+
+**`bary-`** | grec | `dico-bary`
+
+narrateur_h: *ba-ry-*, en grec ça veut dire lourd.
+wex: [happily] **Bary**-onyx — une griffe très lourde, très puissante, pour attraper les poissons !
+
+---
+
+**`brachio-`** | grec | `dico-brachio`
+
+narrateur_h: *bra-chio-*, en grec ça veut dire bras.
+wex: [excited] **Brachio**-saure — ses bras avant étaient immenses, bien plus grands que ses pattes arrière !
+
+---
+
+**`camara-`** | grec | `dico-camara`
+
+narrateur_h: *ca-ma-ra-*, en grec ça veut dire chambre, pièce voûtée.
+wex: [happily] **Camara**-saure — ses vertèbres avaient de petites chambres creuses à l'intérieur, comme de toutes petites pièces !
+
+---
+
+**`carcharo-`** | grec | `dico-carcharo`
+
+narrateur_h: *car-cha-ro-*, en grec ça veut dire pointu, coupant.
+wex: [excited] **Carcharo**-donto-saure — des dents coupantes comme celles d'un requin, tranchantes !
+
+---
+
+**`carno-`** | latin | `dico-carno`
+
+narrateur_h: *car-no-*, en latin ça veut dire viande, chair.
+wex: [happily] **Carno**-taure — un mangeur de viande avec une tête de taureau, en latin !
+
+---
+
+**`coelo-`** | grec | `dico-coelo`
+
+narrateur_h: *coe-lo-*, en grec ça veut dire creux.
+wex: [excited] **Coelo**-physis — ses os étaient creux et légers, comme les oiseaux d'aujourd'hui !
+
+---
+
+**`compso-`** | grec | `dico-compso`
+
+narrateur_h: *comp-so-*, en grec ça veut dire élégant, joli, délicat.
+wex: [happily] **Compso**-gnathus — un tout petit dino à la mâchoire fine et élégante !
+
+---
+
+**`corytho-`** | grec | `dico-corytho`
+
+narrateur_h: *co-ry-tho-*, en grec ça veut dire casque.
+wex: [excited] **Corytho**-saure — sa crête avait exactement la forme d'un casque sur le dessus de la tête !
+
+---
+
+**`cryo-`** | grec | `dico-cryo`
+
+narrateur_h: *cry-o-*, en grec ça veut dire glace, froid.
+wex: [happily] **Cryo**-lopho-saure — trouvé en Antarctique, dans les glaces, très loin dans le sud !
+
+---
+
+**`deino-`** | grec | `dico-deino`
+
+narrateur_h: *dei-no-*, en grec ça veut dire terrible, effrayant.
+wex: [excited] **Deino**-nychus — la griffe terrible ! Un chasseur vraiment redoutable !
+
+---
+
+**`diplo-`** | grec | `dico-diplo`
+
+narrateur_h: *di-plo-*, en grec ça veut dire double.
+wex: [happily] **Diplo**-docus — une double poutre dans le dos pour porter son immense queue !
+
+---
+
+**`eu-`** | grec | `dico-eu`
+
+narrateur_h: *eu-*, en grec ça veut dire bien.
+wex: [excited] **Eu**-oplo-céphale — bien armé, bien protégé, bien solide de partout !
+
+---
+
+**`galli-`** | latin + grec | `dico-galli`
+
+narrateur_h: *gal-li-*, en latin ça veut dire coq, poule. Et *-mimus* en grec veut dire qui imite — deux langues dans un seul nom !
+wex: [happily] **Galli**-mimus — il courait comme une poule et imitait les autres animaux. Un drôle de dino !
+
+---
+
+**`giga-`** | grec | `dico-giga`
+
+narrateur_h: *gi-ga-*, en grec ça veut dire géant.
+wex: [excited] **Giga**-noto-saure — un géant du sud, un des plus grands carnivores qui ait jamais existé !
+
+---
+
+**`gorgo-`** | grec | `dico-gorgo`
+
+narrateur_h: *gor-go-*, en grec ça veut dire terrible, effrayant — comme la Gorgone de la mythologie grecque.
+wex: [happily] **Gorgo**-saure — féroce comme un monstre de légende, un grand chasseur d'Amérique du Nord !
+
+---
+
+**`kentro-`** | grec | `dico-kentro`
+
+narrateur_h: *ken-tro-*, en grec ça veut dire pointe, aiguillon.
+wex: [excited] **Kentro**-saure — couvert de pointes acérées sur tout le dos, pas facile à attraper !
+
+---
+
+**`maia-`** | grec | `dico-maia`
+
+narrateur_h: *ma-ia-*, en grec ça veut dire bonne mère, nourrice.
+wex: [happily] **Maia**-saura — une maman dino qui soignait ses petits dans le nid. Les savants l'ont bien remarqué !
+
+---
+
+**`micro-`** | grec | `dico-micro`
+
+narrateur_h: *mi-cro-*, en grec ça veut dire petit. Et *-raptor* en latin veut dire voleur — deux langues dans un seul nom !
+wex: [excited] **Micro**-raptor — le petit voleur à quatre ailes ! Tout petit en grec, voleur en latin !
+
+---
+
+**`noto-`** | grec | `dico-noto`
+
+narrateur_h: *no-to-*, en grec ça veut dire du sud.
+wex: [happily] Giga-**noto**-saure — le géant du **sud**, trouvé tout en bas en Argentine !
+
+---
+
+**`ovi-`** | latin | `dico-ovi`
+
+narrateur_h: *o-vi-*, en latin ça veut dire œuf.
+wex: [excited] **Ovi**-raptor — voleur d'œufs en latin ! On l'a surpris tout près d'un nid !
+
+---
+
+**`pachy-`** | grec | `dico-pachy`
+
+narrateur_h: *pa-chy-*, en grec ça veut dire épais.
+wex: [happily] **Pachy**-céphalo-saure — une tête au crâne épais comme du béton pour foncer dans ses rivaux !
+
+---
+
+**`para-`** | grec | `dico-para`
+
+narrateur_h: *pa-ra-*, en grec ça veut dire à côté de, proche de.
+wex: [excited] **Para**-saurolophus — proche du lézard à crête, mais pas tout à fait pareil — un cousin !
+
+---
+
+**`plateo-`** | grec | `dico-plateo`
+
+narrateur_h: *pla-teo-*, en grec ça veut dire large, plat.
+wex: [happily] **Plateo**-saure — un corps large et plat, un des premiers grands herbivores de l'histoire !
+
+---
+
+**`proto-`** | grec | `dico-proto`
+
+narrateur_h: *pro-to-*, en grec ça veut dire premier.
+wex: [excited] **Proto**-cératops — le premier à cornes, l'ancêtre du Tri-cé-ra-tops !
+
+---
+
+**`psittaco-`** | grec | `dico-psittaco`
+
+narrateur_h: *psit-ta-co-*, en grec ça veut dire perroquet.
+wex: [happily] **Psittaco**-saure — son bec recourbé ressemblait exactement à celui d'un perroquet !
+
+---
+
+**`ptér-`** | grec | `dico-pter`
+
+narrateur_h: *pté-r-*, en grec ça veut dire aile.
+wex: [excited] **Pté**-ra-no-don — aile, sans, dent : une grande aile sans une seule dent !
+
+---
+
+**`rex`** | latin | `dico-rex`
+
+narrateur_h: *rex*, en latin ça veut dire roi.
+wex: [happily] Ty-ranno-**rex** — le roi des tyrans, le roi des lézards, le roi de tous les dinos !
+
+---
+
+**`spino-`** | latin | `dico-spino`
+
+narrateur_h: *spi-no-*, en latin ça veut dire épine. Et *-saurus* en grec veut dire lézard — deux langues dans un seul nom !
+wex: [excited] **Spino**-saurus — épine en latin, lézard en grec — ses grandes épines dans le dos lui ont donné son nom !
+
+---
+
+**`stégo-`** | grec | `dico-stego`
+
+narrateur_h: *sté-go-*, en grec ça veut dire toit.
+wex: [happily] **Stégo**-saure — ses grandes plaques dans le dos ressemblaient aux tuiles d'un toit !
+
+---
+
+**`styraco-`** | grec | `dico-styraco`
+
+narrateur_h: *sty-ra-co-*, en grec ça veut dire pointe de lance, pique.
+wex: [excited] **Styraco**-saure — sa fraise était couverte de longues piques, comme des lances !
+
+---
+
+**`sucho-`** | grec | `dico-sucho`
+
+narrateur_h: *su-cho-*, en grec ça veut dire crocodile.
+wex: [happily] **Sucho**-mimus — il imitait le crocodile avec son long museau pour attraper les poissons !
+
+---
+
+**`tarbo-`** | grec | `dico-tarbo`
+
+narrateur_h: *tar-bo-*, en grec ça veut dire la peur, l'effroi.
+wex: [excited] **Tarbo**-saure — un dino qui faisait vraiment peur, le cousin du T-Rex en Asie !
+
+---
+
+**`therizino-`** | grec | `dico-therizino`
+
+narrateur_h: *thé-ri-zi-no-*, en grec ça veut dire faucher, couper.
+wex: [happily] **Therizino**-saure — ses griffes immenses fauchaient les plantes comme une faux. Impressionnant !
+
+---
+
+**`tri-`** | grec | `dico-tri`
+
+narrateur_h: *tri-*, en grec ça veut dire trois.
+wex: [excited] **Tri**-cératops — trois cornes ! Trois, comme le mot grec, toujours trois !
+
+---
+
+**`troo-`** | grec | `dico-troo`
+
+narrateur_h: *troo-*, en grec ça veut dire blesser, qui blesse.
+wex: [happily] **Troo**-don — la dent qui blesse. Un chasseur très intelligent, aux yeux grands ouverts !
+
+---
+
+**`tyrannos-`** | grec | `dico-tyrannos`
+
+narrateur_h: *ty-ran-nos-*, en grec ça veut dire roi qui commande tout, tyran.
+wex: [excited] **Tyranno**-saure Rex — le tyran, le roi des lézards, le roi de tout ! Le plus célèbre de tous !
+
+---
+
+**`veloci-`** | latin | `dico-veloci`
+
+narrateur_h: *vé-lo-ci-*, en latin ça veut dire rapide.
+wex: [happily] **Véloci**-raptor — le voleur rapide ! Tellement rapide qu'il rattrapait tout ce qu'il chassait !
 
 ---
 
 ## CLIPS NOMS PROPRES (8 entrées, type "nom_propre")
 ### Groupés en section dédiée — à diffuser ou non selon décision UI
 
-| cle | slug mp3 | texte du clip |
-|-----|----------|---------------|
-| `Alberto-` | `dico-alberto` | *Al-ber-to-*, c'est l'Alberta — une grande région du Canada où on a trouvé ce lézard fossile ! |
-| `Amarga-` | `dico-amarga` | *A-mar-ga-*, c'est La Amarga — un lieu en Argentine où on a trouvé ses os pour la première fois ! |
-| `Edmonto-` | `dico-edmonto` | *Ed-mon-to-*, c'est Edmonton — une ville du Canada, là où on a trouvé son squelette ! |
-| `iguano-` | `dico-iguano` | *i-gua-no-*, c'est l'iguane — un reptile des Caraïbes, pas du grec ! L'Iguanodon avait des dents qui ressemblaient à celles de l'iguane ! |
-| `Mosa-` | `dico-mosa` | *Mo-sa-*, c'est la Meuse — une rivière d'Europe, en latin. Le Mo-sa-saure, c'est le lézard de la Meuse ! |
-| `Quetzalcoatl-` | `dico-quetzalcoatl` | *Quet-zal-coa-tl-*, c'est Quetzalcoatl — le dieu serpent à plumes des Aztèques. Un reptile volant grand comme un avion ! |
-| `Utah-` | `dico-utah` | *U-tah-*, c'est l'Utah — un État des États-Unis où on a découvert ce grand raptor ! |
-| `-us` | `dico-us` | *-us*, c'est juste la terminaison latine des noms savants — comme le *-us* de Quetzalcoatl-**us**. Ça ne veut rien dire de spécial, c'est juste la grammaire ! |
+---
+
+**`Alberto-`** | `dico-alberto`
+
+narrateur_h: *Al-ber-to-*, c'est l'Alberta — une grande région du Canada où on a trouvé les fossiles de ce dino.
+wex: [happily] **Alberto**-saure — trouvé au Canada, un grand chasseur du nord, cousin du T-Rex !
+
+---
+
+**`Amarga-`** | `dico-amarga`
+
+narrateur_h: *A-mar-ga-*, c'est La Amarga — un lieu en Argentine où on a découvert ses os pour la première fois.
+wex: [excited] **Amarga**-saure — un long cou, deux petites cornes, trouvé tout en bas en Amérique du Sud !
+
+---
+
+**`Edmonto-`** | `dico-edmonto`
+
+narrateur_h: *Ed-mon-to-*, c'est Edmonton — une ville du Canada, là où on a découvert son squelette.
+wex: [happily] **Edmonto**-saure — un grand herbivore au bec de canard, trouvé à Edmonton au Canada !
+
+---
+
+**`iguano-`** | `dico-iguano`
+
+narrateur_h: *i-gua-no-*, c'est l'iguane — un reptile des îles des Caraïbes, pas un mot grec ni latin !
+wex: [excited] Igua-no-**don** — ses dents ressemblaient à celles de l'iguane. Un mot des îles pour un dino géant !
+
+---
+
+**`Mosa-`** | `dico-mosa`
+
+narrateur_h: *Mo-sa-*, c'est la Meuse — une rivière d'Europe, son nom vient du latin.
+wex: [happily] **Mosa**-saure — le lézard de la Meuse, trouvé près de cette rivière en Europe !
+
+---
+
+**`Quetzalcoatl-`** | `dico-quetzalcoatl`
+
+narrateur_h: *Quet-zal-coa-tl-*, c'est Quetzalcoatl — le dieu serpent à plumes des Aztèques, un peuple d'Amérique.
+wex: [excited] **Quetzalcoatl**-us — un reptile volant grand comme un avion ! Nommé comme un dieu aztèque !
+
+---
+
+**`Utah-`** | `dico-utah`
+
+narrateur_h: *U-tah-*, c'est l'Utah — un État des États-Unis où on a découvert ce grand raptor.
+wex: [happily] **Utah**-raptor — le voleur de l'Utah ! Un des plus grands raptors jamais trouvés !
+
+---
+
+**`-us`** | `dico-us`
+
+narrateur_h: *-us*, c'est la terminaison latine des noms savants. Ça ne veut rien dire de spécial — c'est juste la grammaire latine.
+wex: [excited] Comme Quetzalcoatl-**us**, Diplodoc-**us**, Tyrannosaurus — le *-us* à la fin, c'est juste du latin !
 
 ---
 
@@ -139,8 +557,8 @@ concernée DOIT le signaler quand il cite ce dino.
 
 4. **`Amargasaurus`** : le JSON note `a_corriger` avec la mention que le clip oublie le sens de *-saurus* = lézard. Bien inclus dans le clip `dico-amarga` (le clip des noms propres dit juste le lieu — normal pour un nom propre) ; mais la FICHE dino elle-même doit corriger selon la note du JSON.
 
-5. **`iguano-`** : le JSON dit « *iguana* vient de l'espagnol (du taïno *iwana*) ». Le clip dit "des Caraïbes, pas du grec" — véridique, mais la formulation exacte du peuple Taïno mérite confirmation. Pas de risque pour le clip 4 ans (niveau approprié), mais noter pour les adultes.
+5. **`iguano-`** : le JSON dit « *iguana* vient de l'espagnol (du taïno *iwana*) ». Le clip dit "des îles des Caraïbes, pas du grec ni du latin" — véridique et un peu plus précis que l'original. La formulation exacte du peuple Taïno mérite confirmation. Pas de risque pour le clip 4 ans (niveau approprié), mais noter pour les adultes.
 
 ---
 
-_Créé 2026-06-09 · EP-D06 · Textes seuls, pas d'audio généré · 69 clips total · Source : content/data/racines.json (fact-checké)._
+_Mis à jour 2026-06-09 · EP-D06 · Format dialogue 2 voix (narrateur_h + wex) · 69 clips total · Source : content/data/racines.json (fact-checké)._

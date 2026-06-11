@@ -259,6 +259,12 @@ html, body {
 .dino-story-btn.playing .dino-story-eq { font-size:0; }
 .dino-story-btn.playing .dino-story-eq::before { font-size:1.2rem; }
 @keyframes dino-story-pulse { 0%,100% { box-shadow:0 4px 14px rgba(231,76,60,0.4); } 50% { box-shadow:0 4px 22px rgba(231,76,60,0.75); } }
+/* Pastille version texte audio (repère Papa Yann : V1 = ancien texte, V2 = réécrit naturel) */
+.audio-ver {
+  font-size:0.62rem; font-weight:900; letter-spacing:0.5px;
+  background:rgba(0,0,0,0.3); border-radius:6px; padding:2px 6px;
+  margin-left:6px; opacity:0.75; align-self:center;
+}
 
 /* ── Pangée carrousel ── */
 .pangee-carousel { position:relative; width:100%; aspect-ratio:2/1; border-radius:12px; overflow:hidden; background:#04263f; }
@@ -1247,7 +1253,7 @@ function buildFiche(d) {
 
     <!-- BOUTON ÉCOUTE TOUT (en haut) — affiché seulement si l'audio complet existe -->
     ${dinoHasAudio(d.id) ? `<button class="v1-big" onclick="playDinoStory('${d.id}')" id="dino-story-btn">
-      🎙️ Écoute toute l'histoire de ${d.name} <span class="dino-story-eq">▶</span>
+      🎙️ Écoute toute l'histoire de ${d.name} <span class="dino-story-eq">▶</span><span class="audio-ver">${dinoAudioVersion(d.id)}</span>
     </button>` : ''}
 
     <!-- BLOC 1 — Son histoire -->
@@ -1470,6 +1476,10 @@ const DINO_AUDIO = {
   parasaurolophus:  _audioSet('parasaurolophus'),
 };
 function dinoHasAudio(id) { return !!(DINO_AUDIO[id] && DINO_AUDIO[id].recap); }
+// Version du TEXTE audio — V1 = industrialisé EP-039 (2026-05), V2 = réécriture naturelle/fluide (2026-06+).
+// Badge sur le bouton violet pour Papa Yann : un V1 = candidat à relancer. Absent du map = V1.
+const DINO_AUDIO_VERSION = {};
+function dinoAudioVersion(id) { return DINO_AUDIO_VERSION[id] || 'V1'; }
 
 let _dinoAudio = null, _dinoAudioBtn = null;
 function _stopDinoAudio() {

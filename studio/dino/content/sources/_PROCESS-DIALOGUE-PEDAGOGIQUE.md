@@ -3,6 +3,22 @@
 > Process forgé sur EP-039 (dino-encyclopédie, 2026-05-17). Qualité validée par Papa Yann.
 > **À réutiliser pour TOUT contenu audio/dialogue pédagogique MaxPlay** (autres encyclopédies, histoires éducatives, mini-jeux narrés…).
 
+## ⚓ Le process DINO est UNIQUE (gravé Papa Yann 2026-06-11)
+
+C'est LE process de création de contenu dino — on fait comme ça, pas autrement. Il **emprunte** des outils aux pôles voisins **sans jamais les modifier** ; ce qui doit diverger vit ici, dans `studio/dino/`.
+
+| On EMPRUNTE (lecture seule, jamais modifié pour dino) | On POSSÈDE (vit dans studio/dino/) |
+|---|---|
+| Skill `ecriture-audio-enfants` (métier écriture orale) | CE process doc |
+| Skill `audio-direction-elevenlabs` (tags v3, graphie gras-séparé, ponctuation) | Template 4 blocs (`scripts-audio/_TEMPLATE-4blocs-dialogue.md`) |
+| Agent `narration-lecteur` (panel enfants) — ⚠️ **PAS la dyade** | Charte figée dino (`figees/encyclopedie.md`) |
+| Agents `game-conseiller` + `narration-conseiller` (double validation) | Banque questions d'enfants (ci-dessous, enrichie à chaque panel) |
+| `voice-map.json` + MCP `studio_audiobook_from_segments_v2_dialogue` | Scripts dialogues + tables de vérité |
+
+**Pourquoi pas la dyade** : la dyade simule un parent qui lit à voix haute (pôle narration, histoires). Les dinos = l'enfant **seul sur la tablette, qui réagit à la voix directement** → panel enfants direct (`narration-lecteur`, 2 enfants contrastés), c'est le test du vrai usage.
+
+**Boucle interactions** : les vraies questions relevées par le panel deviennent les répliques de Wex des prochains dialogues (l'enfant du panel demande « il avait peur ? » → Wex posera cette question → le Narrateur répond). C'est la demande Papa Yann « leurs vraies questions → des interactions ».
+
 ## Pourquoi ce process
 
 Un texte « correct » n'est pas un texte qui **accroche un enfant de 4 ans** et qui est **factuellement juste**. Il faut 3 regards complémentaires + des boucles de correction. C'est ce qui a fait passer les dinos de « bâclé » à « super quali ».

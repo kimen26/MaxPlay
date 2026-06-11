@@ -312,8 +312,4 @@ body {
   line-height:64px; text-align:center; font-size:3.4rem; color:#ffd633;
   filter:drop-shadow(0 0 14px #ffd633aa); pointer-events:none; z-index:9999;
 }
-.kiss-pop {
-  position:fixed; font-size:2.6rem; pointer-events:none; z-index:9999;
-  animation:kissPop .9s ease-out forwards;
-}
-@keyframes kissPop { 0%{transform:scale(0);opacity:0} 30%{transform:scale(1.4);opacity:1} 100%{transform:scale(1) translateY(-40px);opacity:0} }
+.fly-star.mini { width:40px; height:40px; line-height:40px; font-size:2rem; left:-20px; top:-20px; }

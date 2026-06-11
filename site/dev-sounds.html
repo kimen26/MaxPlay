@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!--
+  DEV-SOUNDS — Zone ADMIN de revue des sons (hors menu, prod clean).
+  Papa Yann ecoute chaque son et note sa FORCE/INTENTION :
+  🏆 Hyper victoire (fin de jeu, etoile) / ⭐ Victoire d'etape (bonne reponse) /
+  🔔 Doux-feedback / 🗑️ Jeter.
+  Verdicts en localStorage. « 📋 Copier le bilan » → presse-papier → coller dans le chat Claude.
+-->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ADMIN — Revue des sons</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+    body { font-family:'Nunito',sans-serif; background:#16202c; color:#fff; padding-bottom:60px; }
+    .topbar {
+      position:sticky; top:0; z-index:50; background:#0d141d; padding:10px 14px;
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap; border-bottom:1px solid #ffffff14;
+    }
+    .topbar h1 { font-size:1rem; }
+    .topbar .counts { font-size:.8rem; opacity:.8; }
+    .btn { border:none; border-radius:20px; padding:8px 16px; font-weight:900; font-family:inherit; cursor:pointer; font-size:.85rem; }
+    .btn-copy { background:#00c47a; color:#fff; margin-left:auto; }
+    .btn-reset { background:#ffffff22; color:#fff; }
+    .sec-title { font-size:1.05rem; font-weight:900; color:#ffe066; margin:18px 14px 8px; }
+    .legend { font-size:.78rem; opacity:.75; margin:8px 14px 0; line-height:1.6; }
+    .list { display:flex; flex-direction:column; gap:8px; padding:8px 14px; }
+    .row {
+      background:#ffffff0d; border-radius:12px; padding:10px 12px; border:2px solid transparent;
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    }
+    .row.hyper { border-color:#ffd63388; }
+    .row.etape { border-color:#00c47a88; }
+    .row.doux  { border-color:#3b82f688; }
+    .row.trash { border-color:#ff445588; opacity:.45; }
+    .play {
+      width:44px; height:44px; border-radius:50%; border:none; cursor:pointer;
+      background:#3b82f6; color:#fff; font-size:1.2rem; flex-shrink:0;
+    }
+    .meta { flex:1; min-width:180px; }
+    .meta .nm { font-weight:900; font-size:.9rem; word-break:break-all; }
+    .meta .use { font-size:.7rem; opacity:.6; margin-top:2px; }
+    .verdicts { display:flex; gap:5px; }
+    .verdicts button {
+      border:none; border-radius:8px; padding:8px 10px; cursor:pointer; font-size:1rem;
+      background:#ffffff14; transition:.1s;
+    }
+    .verdicts button.sel-hyper { background:#ffd633; }
+    .verdicts button.sel-etape { background:#00c47a; }
+    .verdicts button.sel-doux  { background:#3b82f6; }
+    .verdicts button.sel-trash { background:#ff4455; }
+    .toast {
+      position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
+      background:#00c47a; color:#fff; font-weight:900; padding:12px 24px; border-radius:30px;
+      opacity:0; transition:opacity .3s; pointer-events:none; z-index:99;
+    }
+    .toast.show { opacity:1; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <h1>🔊 Revue des sons <span class="counts" id="counts"></span></h1>
+    <button class="btn btn-copy" id="copyBtn">📋 Copier le bilan</button>
+    <button class="btn btn-reset" id="resetBtn">↺ Reset</button>
+  </div>
+  <div class="legend">
+    🏆 = HYPER victoire (fin de jeu, étoile) · ⭐ = victoire d'étape (bonne réponse) ·
+    🔔 = doux / feedback neutre · 🗑️ = jeter. Re-cliquer = annuler.
+  </div>
+  <div id="content"></div>
+  <div class="toast" id="toast">Bilan copié ! Colle-le dans le chat Claude.</div>
+
+  <script src="js/sounds.js"></script>
+  <script>
+    const KEY = 'sound_review';
+
+    // MP3 reels (site/sounds/) + usage actuel dans le code
+    const MP3S = [
+      { f:'victory-mario-series-hq-super-smash-bros.mp3', use:'GOLDEN étoile (mj-golden.js) + victoire fin de jeu (victory-sounds.js)' },
+      { f:'ff7_victory.mp3',            use:'victoire fin de jeu (victory-sounds.js)' },
+      { f:'zelda-tresor.mp3',           use:'victoire fin de jeu (victory-sounds.js)' },
+      { f:'Gagné.mp3',                  use:'victoire fin de jeu (victory-sounds.js)' },
+      { f:'super-max.mp3',              use:'victoire fin de jeu (victory-sounds.js)' },
+      { f:'perdu.mp3',                  use:'défaite fin de jeu (victory-sounds.js)' },
+      { f:'motus-boule-noire_cTY2JG4.mp3', use:'défaite fin de jeu (victory-sounds.js)' },
+      { f:'among-us-role-reveal-sound.mp3', use:'défaite fin de jeu (victory-sounds.js)' },
+      { f:'perfect-fart.mp3',           use:'son erreur (victory-sounds.js)' },
+      { f:'honk-sound.mp3',             use:'son erreur (victory-sounds.js)' },
+      { f:'pew.mp3',                    use:'son erreur (victory-sounds.js)' },
+      { f:'super-mario-coin-sound.mp3', use:'(non câblé)' },
+      { f:'mario coin hit.mp3',         use:'(non câblé)' },
+      { f:'maro-jump-sound-effect_1.mp3', use:'(non câblé)' },
+      { f:'pokemon lvl up.mp3',         use:'(non câblé)' },
+      { f:'pikachu_mw38Ry2.mp3',        use:'(non câblé)' },
+      { f:'pikachu_scream.mp3',         use:'(non câblé)' },
+      { f:'ratp-jingle.mp3',            use:'(non câblé)' },
+      { f:'sncf-france-jingle.mp3',     use:'(non câblé)' },
+      { f:'freesound_community-bus-doors-sound-effect-44034.mp3', use:'portes de bus (jeux bus)' },
+      { f:'freesound_community-bus-pop-85054.mp3', use:'POP du bizou étoile (mj-golden.js)' },
+    ];
+    // Sons synthetiques (Web Audio, sounds.js)
+    const SYNTHS = [
+      { f:'sndDing',    use:'bonne réponse STANDARD (golden)' },
+      { f:'sndBuzz',    use:'raté doux STANDARD (golden)' },
+      { f:'sndBravo',   use:'fin sans étoile (golden) — arpège joyeux' },
+      { f:'sndVictory', use:'fanfare courte (ancien standard)' },
+      { f:'sndKlaxon',  use:'défilé de bus (busParade)' },
+      { f:'sndCount',   use:'tic-tac comptage' },
+      { f:'sndMoteur',  use:'moteur de bus' },
+      { f:'sndPinpon',  use:'pin-pon' },
+      { f:'sndPorte',   use:'porte' },
+      { f:'sndProut',   use:'prout' },
+      { f:'sndRire',    use:'rire' },
+      { f:'sndTschh',   use:'tschh (frein)' },
+    ];
+
+    function load() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } }
+    function save(v) { localStorage.setItem(KEY, JSON.stringify(v)); }
+
+    let current = null;
+    function playMp3(f) {
+      if (current) { current.pause(); current = null; }
+      current = new Audio('sounds/' + f);
+      current.volume = 0.9;
+      current.play().catch(() => {});
+    }
+    function playSynth(fn) {
+      if (current) { current.pause(); current = null; }
+      try { window[fn](); } catch (e) {}
+    }
+
+    const VLABEL = { hyper:'🏆', etape:'⭐', doux:'🔔', trash:'🗑️' };
+
+    function updateCounts() {
+      const v = load(), total = MP3S.length + SYNTHS.length;
+      const done = Object.keys(v).length;
+      document.getElementById('counts').textContent = '— ' + done + '/' + total + ' notés';
+    }
+
+    function row(item, isSynth) {
+      const v = load();
+      const verdict = v[item.f] || '';
+      const d = document.createElement('div');
+      d.className = 'row ' + verdict;
+      d.innerHTML =
+        '<button class="play">▶</button>'
+        + '<div class="meta"><div class="nm">' + item.f + '</div><div class="use">' + item.use + '</div></div>'
+        + '<div class="verdicts">'
+        + ['hyper','etape','doux','trash'].map(k =>
+            '<button data-v="' + k + '" class="' + (verdict === k ? 'sel-' + k : '') + '">' + VLABEL[k] + '</button>'
+          ).join('')
+        + '</div>';
+      d.querySelector('.play').onclick = () => isSynth ? playSynth(item.f) : playMp3(item.f);
+      d.querySelectorAll('.verdicts button').forEach(b => {
+        b.onclick = () => {
+          const cur = load();
+          if (cur[item.f] === b.dataset.v) delete cur[item.f];
+          else cur[item.f] = b.dataset.v;
+          save(cur);
+          render();
+        };
+      });
+      return d;
+    }
+
+    function render() {
+      const c = document.getElementById('content');
+      c.innerHTML = '';
+      const t1 = document.createElement('div'); t1.className = 'sec-title'; t1.textContent = '🎵 Sons MP3 (' + MP3S.length + ')';
+      c.appendChild(t1);
+      const l1 = document.createElement('div'); l1.className = 'list';
+      MP3S.forEach(m => l1.appendChild(row(m, false)));
+      c.appendChild(l1);
+      const t2 = document.createElement('div'); t2.className = 'sec-title'; t2.textContent = '🎹 Sons synthétiques (' + SYNTHS.length + ')';
+      c.appendChild(t2);
+      const l2 = document.createElement('div'); l2.className = 'list';
+      SYNTHS.forEach(m => l2.appendChild(row(m, true)));
+      c.appendChild(l2);
+      updateCounts();
+    }
+
+    document.getElementById('copyBtn').onclick = () => {
+      const v = load();
+      const lines = ['BILAN SONS — ' + new Date().toISOString().slice(0, 10)];
+      for (const k of ['hyper', 'etape', 'doux', 'trash']) {
+        const label = { hyper:'🏆 HYPER VICTOIRE', etape:'⭐ VICTOIRE D\'ÉTAPE', doux:'🔔 DOUX/FEEDBACK', trash:'🗑️ À JETER' }[k];
+        const items = Object.keys(v).filter(s => v[s] === k);
+        lines.push('', label + ' (' + items.length + ') :');
+        items.forEach(s => lines.push('- ' + s));
+      }
+      const total = MP3S.length + SYNTHS.length;
+      lines.push('', '(non notés : ' + (total - Object.keys(v).length) + '/' + total + ')');
+      navigator.clipboard.writeText(lines.join('\n')).then(() => {
+        const t = document.getElementById('toast');
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 2200);
+      });
+    };
+    document.getElementById('resetBtn').onclick = () => {
+      if (confirm('Effacer tous les verdicts ?')) { localStorage.removeItem(KEY); render(); }
+    };
+
+    render();
+  </script>
+</body>
+</html>

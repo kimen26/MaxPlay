@@ -47,8 +47,36 @@ Simuler **2 enfants 4 ans contrastés** (G vif / F calme-sensible). Réaction **
 ### 5. Corrections post-panel + re-vérif
 Appliquer les corrections critiques. **TOUJOURS re-grep les anti-patterns + recompter** (un agent oublie/dérape — ex Gallimimus oublié, Coelophysis pas écrasé au bon endroit). Ne jamais faire confiance au rapport d'agent sans vérif machine.
 
+### 5.5 — 🚧 CHECKLIST GARDE-FOU PRÉ-EL (barrière obligatoire avant toute génération)
+
+> Codée depuis les retours d'écoute Papa Yann (REX pilotes 2026-06-11). **Chaque ligne se vérifie sur le texte AVANT de l'envoyer à ElevenLabs.** Une génération coûte des crédits — on ne paie pas pour réentendre une erreur déjà connue.
+
+**A. PRONONCIATION** (→ détail : [`scripts-audio/_LEXIQUE-PRONONCIATION.md`](../scripts-audio/_LEXIQUE-PRONONCIATION.md))
+- [ ] Tout nom savant est **respellé** selon le lexique (« Mo-sa-saure » pas « Mosasaurus », « Thé- » pas « The- »).
+- [ ] **Aucune CAPITALE sur un mot court** (< 4 lettres) — « ROI » se lit « roui ». Emphase par la ponctuation.
+- [ ] Décomposition syllabique sur la **forme française** (jamais « -sau-rus »).
+
+**B. ÉTYMOLOGIE — toujours le sens**
+- [ ] Quand on décompose un nom, **chaque morceau reçoit son sens** dans la foulée. Jamais lâcher « Tyranno… » sans dire « = le tyran ». (Un mot savant sans son sens = l'enfant décroche — cf L-D01.)
+
+**C. PAS DE REDITE**
+- [ ] Aucune image/idée n'est répétée d'un bloc à l'autre (ex : la branche sèche ET le bras = on tourne en rond). Une chose est dite **une fois**. Exception : si c'est **l'enfant (Wex) qui rebondit** dessus — là c'est voulu.
+
+**D. COMPARAISONS DE TAILLE** (→ référentiel : [`pmo/INVARIANTS.md`](../../pmo/INVARIANTS.md) § échelle)
+- [ ] Chaque comparaison vient **du référentiel figé** ET est **vraie** (vérifiée). Bannis : « 2 piscines » (faux, une piscine ≈ 25-50 m), « 2× Papa bras levés » (flou), « plus long que moi à ma naissance » (faux + info inconnue).
+- [ ] Repères valides : enfant 4 ans = **1 m** (« aussi grand que toi »), Papa = 1,8 m, bus RATP = 12 m, **girafe ≈ 5 m**, bus accordéon = 18 m. Une griffe d'1 m → « **aussi grande que toi en entier** ».
+
+**E. MÉTAPHORES**
+- [ ] Concrètes et **fluides**, jamais obscures. « Un éclair » → décrire l'action réelle (« il bondissait hors de l'eau et HOP »).
+
+**F. CE QUI MARCHE (à garder)**
+- [ ] Une solitude/un comportement étrange est **expliqué par du physique** (« territoire immense, il lui fallait trop de viande pour partager ») — l'enfant sensible reste sinon suspendu.
+
+> ✅ Tout coché → on peut envoyer à EL. ❌ Une case vide → on corrige le **texte**, pas l'audio.
+
 ### 6. Hand-back Papa Yann → validation finale → prod audio
 Audio (ElevenLabs text-to-dialogue) **seulement après** texte figé (chaque modif = re-génération payante).
+**Réflexe préventif** : pour un nouveau lot, faire d'abord le **preview phonétique groupé** (1 clip qui dit tous les noms à risque, Papa Yann valide d'un coup) avant de produire les dialogues complets — cf `_LEXIQUE-PRONONCIATION.md` §4.
 
 ---
 

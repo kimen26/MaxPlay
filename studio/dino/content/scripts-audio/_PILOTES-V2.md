@@ -31,7 +31,7 @@
 
 ### Bloc A — Présentation
 
-**NARRATEUR H** [excited] : Le T-Rex ! Écoute son nom : Ty-ran-no-saurus Rex. Trois morceaux. « Tyrannos », en grec, c'est le maître tout-puissant — celui à qui personne ne dit non. « Saurus », c'est le lézard. Et « Rex » en latin... c'est le ROI.
+**NARRATEUR H** [excited] : Le T-Rex ! Écoute son nom : Ty-ran-no-saurus Rex. Trois morceaux. « Tyrannos », en grec, c'est le tyran — le maître tout-puissant, celui à qui personne ne dit non. « Saurus », c'est le lézard. Et « Rex », en latin... c'est le roi !
 
 **WEX** [curious] : Donc c'est « le lézard-roi tyran » ?
 
@@ -41,7 +41,7 @@
 
 ### Bloc B — Sa taille
 
-**NARRATEUR H** [excited] : Il mesurait 13 mètres de long — plus long qu'un bus de Paris, avec encore une voiture devant ! Debout sur ses pattes, 4 mètres de haut. Et il pesait 8 000 kilos — aussi lourd que trois hippopotames.
+**NARRATEUR H** [excited] : Il mesurait 13 mètres de long — plus long qu'un bus de Paris, et encore un mètre de plus ! Debout sur ses pattes, 4 mètres de haut. Et il pesait 8 000 kilos — aussi lourd que trois hippopotames.
 
 **WEX** [curious] : Et ses bras tout petits... à quoi ils servaient ?
 
@@ -65,7 +65,7 @@
 
 **WEX** [gasps] : Les os durs... il les cassait comment ?
 
-**NARRATEUR H** [playful] : Imagine une branche sèche dans tes mains — CRACK, elle cède. Lui, avec ses dents, il faisait ça sur des os épais comme ton bras. Les os devenaient miettes. C'était le chasseur le plus redoutable de toute l'histoire des dinosaures.
+**NARRATEUR H** [playful] : Tu sais, quand on casse une branche sèche... CRACK ! Eh bien lui, il faisait pareil — avec des OS. Les os devenaient miettes. C'était le chasseur le plus redoutable de toute l'histoire des dinosaures.
 
 ---
 
@@ -85,7 +85,7 @@ Bloc D Narrateur : 196 | Wex : 37 | Narrateur bis : 195 = 428
 
 ### Bloc A — Présentation
 
-**NARRATEUR H** [excited] : Le Mosasaure. Un monstre des mers — une gueule immense, un corps de serpent géant, des mâchoires qui écrasaient tout. Mo-sa-sau-rus. Son nom vient d'une rivière d'Europe : la Meuse — en latin, « Mosa ». Bien avant les voitures, bien avant les châteaux, des ouvriers creusaient la roche dans les carrières de Maastricht — et ils ont sorti du calcaire une mâchoire GÉANTE. Ils ne savaient pas ce que c'était. C'était lui. « Saurus » — le lézard. Le lézard de la Meuse.
+**NARRATEUR H** [excited] : Le Mosasaure. Un monstre des mers — une gueule immense, un corps de serpent géant. Mo-sa-saure. Son nom vient d'une rivière d'Europe : la Meuse — en latin, « Mosa ». Bien avant les voitures, bien avant les châteaux, des ouvriers creusaient la roche dans les carrières de Maastricht — et ils ont sorti du calcaire une mâchoire GÉANTE. Ils ne savaient pas ce que c'était. C'était lui. « Saure » — le lézard. Le lézard de la Meuse.
 
 **WEX** [curious] : C'est un dinosaure alors ?
 
@@ -95,11 +95,11 @@ Bloc D Narrateur : 196 | Wex : 37 | Narrateur bis : 195 = 428
 
 ### Bloc B — Sa taille
 
-**NARRATEUR H** [excited] : Dix-sept mètres de long. Imagine : un bus de Paris... puis encore un bus derrière. Ça fait à peu près ça. Dix tonnes. Un corps en serpent géant avec quatre nageoires-palettes et une queue en forme de croissant pour fendre l'eau.
+**NARRATEUR H** [excited] : Dix-sept mètres de long — presque aussi long qu'un bus accordéon, ces grands bus pliés en deux ! Dix tonnes. Un corps de serpent géant, quatre nageoires-palettes, et une queue en forme de croissant pour fendre l'eau.
 
-**WEX** [gasps] : Dix-sept mètres... il rentrerait pas dans une piscine ?
+**WEX** [curious] : Et sa tête... elle était grande comment ?
 
-**NARRATEUR H** [playful] : Même pas dans deux piscines mises bout à bout ! Et sa tête, elle seule, était aussi longue qu'une table de cuisine. Une machine de guerre des mers.
+**NARRATEUR H** [playful] : Sa tête, à elle seule, était aussi longue qu'une table de cuisine. Une machine de guerre des mers.
 
 ---
 
@@ -115,11 +115,11 @@ Bloc D Narrateur : 196 | Wex : 37 | Narrateur bis : 195 = 428
 
 ### Bloc D — Le truc fou !
 
-**NARRATEUR H** [excited] : Il attrapait les reptiles volants — comme le Ptéranodon, ce reptile ailé qui planait au-dessus de l'eau — EN PLEIN VOL. Il surgissait de la surface, et... disparu. Et il avait DEUX rangées de dents : une externe, une interne sur le palais. Rien ne pouvait glisser de sa gueule.
+**NARRATEUR H** [excited] : Le Ptéranodon, ce grand reptile ailé, planait au ras de l'eau pour pêcher. Et quand il rasait les vagues d'un peu trop près... le Mosasaure bondissait hors de l'eau — et HOP, attrapé en plein vol ! Et il avait DEUX rangées de dents : une devant, et une cachée au fond du palais. Rien ne pouvait glisser de sa gueule.
 
 **WEX** [gasps] : Il chopait des trucs qui volaient... depuis l'eau ?
 
-**NARRATEUR H** [confident] : Depuis la mer. Un éclair. Ce n'était pas seulement le roi de la mer — il contrôlait aussi les airs au-dessus. Le prédateur le plus total du Crétacé.
+**NARRATEUR H** [confident] : Depuis la mer ! Il n'était pas seulement le roi de l'eau — il surveillait aussi le ciel au-dessus. Le prédateur le plus total du Crétacé.
 
 ---
 
@@ -139,7 +139,7 @@ Bloc D Narrateur : 241 | Wex : 49 | Narrateur bis : 170 = 460
 
 ### Bloc A — Présentation
 
-**NARRATEUR H** [excited] : The-ri-zi-no-saurus. Deux morceaux grecs. « Therizino »... ça veut dire faucher — comme une faux, cette lame courbée pour couper l'herbe. « Saurus », le lézard. En entier : le lézard-faux. Et tu vas comprendre pourquoi.
+**NARRATEUR H** [excited] : Thé-ri-zi-no-saurus. Deux morceaux grecs. « Thérizino »... ça veut dire faucher — comme une faux, cette lame courbée pour couper l'herbe. « Saurus », le lézard. En entier : le lézard-faux. Et tu vas comprendre pourquoi.
 
 **WEX** [curious] : C'est quoi une faux ?
 
@@ -149,11 +149,11 @@ Bloc D Narrateur : 241 | Wex : 49 | Narrateur bis : 170 = 460
 
 ### Bloc B — Sa taille
 
-**NARRATEUR H** [excited] : Dix mètres de long. Cinq mètres de haut — presque deux fois Papa les bras levés ! Cinq tonnes. Mais ce qui étonne encore plus, c'est ses bras : longs, longs, longs. Et au bout... des griffes d'UN MÈTRE chacune.
+**NARRATEUR H** [excited] : Dix mètres de long. Cinq mètres de haut — aussi haut qu'une girafe ! Cinq tonnes. Mais ce qui étonne encore plus, c'est ses bras : longs, longs, longs. Et au bout... des griffes d'UN MÈTRE chacune.
 
-**WEX** [gasps] : Un mètre de griffe... c'est plus long que moi à ma naissance ?
+**WEX** [gasps] : Un mètre ?! Mais... c'est grand comme moi, ça.
 
-**NARRATEUR H** [playful] : À peu près, oui. Trois griffes par main. Les plus longues de TOUT le monde animal — aucun animal, jamais, n'a eu des griffes aussi grandes. Un record qui tient encore aujourd'hui.
+**NARRATEUR H** [playful] : Exactement — UNE seule griffe, aussi grande que toi en entier ! Trois par main. Les plus longues de tout le monde animal — aucun animal, jamais, n'a eu des griffes aussi grandes. Un record qui tient encore aujourd'hui.
 
 ---
 

@@ -8,9 +8,12 @@
 //  ÉTOILE = SANS FAUTE : toutes les questions réussies du 1er coup (billes vertes).
 //
 //  Billes : v1 vert (1er coup) · v2 jaune (2e) · v3 orange (3e) · v4 rouge (révélé).
-//  Fin sans-faute : l'étoile fait un tour d'écran, bizou à la caméra (💋 + pop),
-//  va se ranger dans la zone de 3 badges, son Mario (MP3 réel), message niveau.
+//  Mini-célébrations aléatoires en cours de jeu (confettis / étoile filante).
+//  Fin sans-faute : l'étoile fait un tour d'écran, BIZOU = elle remonte et prend
+//  TOUT L'ÉCRAN (zoom plein cadre + pop sonore), puis va se ranger dans la zone
+//  de 3 badges. Son Mario (MP3 réel), message niveau.
 //  Fin avec erreurs : pas d'étoile — écran encourageant, jamais punitif.
+//  Pas de "Bravo" parlé à chaque étape : juste sndDing (son de réussite).
 //
 //  Usage (après catalog.js/stars.js si le jeu est au catalogue) :
 //    const G = Golden.setup('mj-24');     // → G.level (0..2), G.totalQ (4/6/8)
@@ -68,12 +71,36 @@
         if (nx) nx.classList.add('cur');
       }
       this._answered++;
-      if (attempts === 1) this._firstTry++;
+      if (attempts === 1) {
+        this._firstTry++;
+        // mini-celebration ALEATOIRE en cours de jeu (variete avant le bizou final)
+        if (this._answered < this.totalQ) this.microCelebrate();
+      }
       // Étoile = sans faute → seul le 1er coup compte comme "correct" pour la progression
       try { if (typeof Tracker !== 'undefined') Tracker.logAnswer(attempts === 1); } catch (e) {}
     },
 
     isPerfect() { return this._firstTry >= this.totalQ; },
+
+    // Petite fete aleatoire pendant le jeu : parfois confettis, parfois etoile filante, parfois rien.
+    microCelebrate() {
+      const r = Math.random();
+      if (r < 0.35) { try { confetti(); } catch (e) {} }
+      else if (r < 0.6) this._miniStar();
+    },
+    _miniStar() {
+      const s = document.createElement('div');
+      s.className = 'fly-star mini';
+      s.textContent = '★';
+      document.body.appendChild(s);
+      const W = innerWidth, H = innerHeight;
+      const y1 = H * (0.2 + Math.random() * 0.5), y2 = y1 - 60 - Math.random() * 80;
+      const fromLeft = Math.random() < 0.5;
+      s.animate([
+        { transform: 'translate(' + (fromLeft ? -60 : W + 60) + 'px,' + y1 + 'px) scale(.7) rotate(0deg)', opacity: 0.9 },
+        { transform: 'translate(' + (fromLeft ? W + 60 : -60) + 'px,' + y2 + 'px) scale(1) rotate(' + (fromLeft ? 360 : -360) + 'deg)', opacity: 0.9 },
+      ], { duration: 900, easing: 'ease-out' }).onfinish = () => s.remove();
+    },
 
     showEnd(opts) {
       opts = opts || {};
@@ -123,7 +150,7 @@
       }
     },
 
-    // L'étoile : tour d'écran → bizou caméra (💋+pop) → atterrit dans le badge.
+    // L'étoile : tour d'écran → BIZOU (zoom plein écran + pop) → atterrit dans le badge.
     _starFlight(slotIndex, celebrate) {
       const star = document.createElement('div');
       star.className = 'fly-star';
@@ -137,28 +164,23 @@
       const r = slot ? slot.getBoundingClientRect() : { left: W / 2 - 20, top: 60, width: 40, height: 40 };
       const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
 
+      // BIZOU = l'etoile remonte et PREND TOUT L'ECRAN (zoom plein cadre), puis file au badge.
+      const FULL = (Math.max(W, H) * 1.25) / 64;   // scale pour remplir l'ecran (etoile 64px)
       const kf = [
         { transform: 'translate(' + (W / 2) + 'px,' + (H + 60) + 'px) scale(1) rotate(0deg)', offset: 0 },
         { transform: 'translate(' + (W * 0.85) + 'px,' + (H * 0.62) + 'px) scale(1.15) rotate(25deg)', offset: 0.14 },
         { transform: 'translate(' + (W * 0.82) + 'px,' + (H * 0.16) + 'px) scale(1.2) rotate(-15deg)', offset: 0.3 },
         { transform: 'translate(' + (W * 0.16) + 'px,' + (H * 0.14) + 'px) scale(1.2) rotate(15deg)', offset: 0.45 },
-        { transform: 'translate(' + (W * 0.18) + 'px,' + (H * 0.62) + 'px) scale(1.3) rotate(-20deg)', offset: 0.58 },
-        { transform: 'translate(' + (W / 2) + 'px,' + (H / 2) + 'px) scale(3.6) rotate(0deg)', offset: 0.74 },   // bizou : gros plan caméra
-        { transform: 'translate(' + (W / 2) + 'px,' + (H / 2) + 'px) scale(3.1) rotate(-6deg)', offset: 0.82 },  // smack
-        { transform: 'translate(' + cx + 'px,' + cy + 'px) scale(0.45) rotate(0deg)', offset: 1 },               // file au badge
+        { transform: 'translate(' + (W * 0.18) + 'px,' + (H * 0.62) + 'px) scale(1.3) rotate(-20deg)', offset: 0.56 },
+        { transform: 'translate(' + (W / 2) + 'px,' + (H / 2) + 'px) scale(' + FULL + ') rotate(0deg)', offset: 0.74 },        // BIZOU : plein ecran
+        { transform: 'translate(' + (W / 2) + 'px,' + (H / 2) + 'px) scale(' + (FULL * 0.92) + ') rotate(-4deg)', offset: 0.8 }, // smack
+        { transform: 'translate(' + cx + 'px,' + cy + 'px) scale(0.45) rotate(0deg)', offset: 1 },                              // file au badge
       ];
       const anim = star.animate(kf, { duration: 2700, easing: 'ease-in-out', fill: 'forwards' });
 
-      // 💋 + pop au moment du bizou (~74-82%)
+      // pop sonore au pic du bizou (l'etoile plein ecran)
       setTimeout(() => {
         try { const k = new Audio('sounds/freesound_community-bus-pop-85054.mp3'); k.volume = 0.8; k.play().catch(() => {}); } catch (e) {}
-        const kiss = document.createElement('div');
-        kiss.className = 'kiss-pop';
-        kiss.textContent = '💋';
-        kiss.style.left = (W / 2 + 44) + 'px';
-        kiss.style.top = (H / 2 - 70) + 'px';
-        document.body.appendChild(kiss);
-        setTimeout(() => kiss.remove(), 900);
       }, 2000);
 
       anim.onfinish = () => {

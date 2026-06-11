@@ -129,8 +129,7 @@
         btn.classList.add('ok'); score += res.points;
         streak = res.streakInc ? streak+1 : 0;
         sndDing(); G.notePip(qCount-1, res.attempts);
-        speak('Bravo ! Pareil !');
-        setTimeout(nextQuestion, 1300);
+        setTimeout(nextQuestion, 950);
       } else if (res.outcome === 'reveal'){
         btn.classList.add('ko'); btn.disabled = true; streak = 0;
         document.querySelectorAll('.dino-tile[data-correct="1"]').forEach(b=>b.classList.add('ok'));

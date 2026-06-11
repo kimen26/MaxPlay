@@ -139,8 +139,7 @@
         btn.classList.add('ok'); score += res.points;
         streak = res.streakInc ? streak+1 : 0;
         sndDing(); G.notePip(qCount-1, res.attempts);
-        countAloud();
-        setTimeout(nextQuestion, 1700);
+        setTimeout(nextQuestion, 950);
       } else if (res.outcome === 'reveal'){
         btn.classList.add('ko'); btn.disabled = true; streak = 0;
         document.querySelectorAll('.num-btn[data-correct="1"]').forEach(b=>b.classList.add('ok'));

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!--
+  DEV-SILHOUETTES — Zone ADMIN de revue des silhouettes dino (hors menu, prod clean).
+  Papa Yann passe les 208 silhouettes en revue : ✅ Valide / 🗑️ À jeter / ⚠️ Pas le bon dino.
+  Verdicts stockés en localStorage. Bouton « 📋 Copier le bilan » → presse-papier →
+  coller le texte dans le chat Claude qui supprime/corrige les fichiers.
+-->
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ADMIN — Revue silhouettes dino</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
+    body { font-family:'Nunito',sans-serif; background:#16202c; color:#fff; padding-bottom:60px; }
+    .topbar {
+      position:sticky; top:0; z-index:50; background:#0d141d; padding:10px 14px;
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap; border-bottom:1px solid #ffffff14;
+    }
+    .topbar h1 { font-size:1rem; }
+    .topbar .counts { font-size:.8rem; opacity:.8; }
+    .btn {
+      border:none; border-radius:20px; padding:8px 16px; font-weight:900; font-family:inherit;
+      cursor:pointer; font-size:.85rem;
+    }
+    .btn-copy { background:#00c47a; color:#fff; margin-left:auto; }
+    .btn-reset { background:#ffffff22; color:#fff; }
+    .btn-filter { background:#ffffff14; color:#fff; }
+    .btn-filter.on { background:#3b82f6; }
+    .fam-title { font-size:1.1rem; font-weight:900; color:#ffe066; margin:18px 14px 8px; }
+    .fam-sub { font-size:.75rem; opacity:.6; font-weight:700; margin-left:8px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(150px, 1fr)); gap:10px; padding:0 14px; }
+    .card { background:#ffffff0d; border-radius:12px; padding:8px; border:2px solid transparent; }
+    .card.ok    { border-color:#00c47a55; opacity:.55; }
+    .card.trash { border-color:#ff445588; opacity:.4; }
+    .card.wrong { border-color:#F5844388; opacity:.55; }
+    .card .imgbox { background:#fff; border-radius:8px; height:110px; display:flex; align-items:center; justify-content:center; margin-bottom:6px; }
+    .card img { max-width:96%; max-height:100px; object-fit:contain; }
+    .card .name { font-size:.62rem; opacity:.65; word-break:break-all; margin-bottom:6px; }
+    .verdicts { display:flex; gap:4px; }
+    .verdicts button {
+      flex:1; border:none; border-radius:8px; padding:7px 0; cursor:pointer; font-size:1rem;
+      background:#ffffff14; transition:.1s;
+    }
+    .verdicts button.sel-ok    { background:#00c47a; }
+    .verdicts button.sel-trash { background:#ff4455; }
+    .verdicts button.sel-wrong { background:#F58443; }
+    .toast {
+      position:fixed; bottom:20px; left:50%; transform:translateX(-50%);
+      background:#00c47a; color:#fff; font-weight:900; padding:12px 24px; border-radius:30px;
+      opacity:0; transition:opacity .3s; pointer-events:none; z-index:99;
+    }
+    .toast.show { opacity:1; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <h1>🦕 Revue silhouettes <span class="counts" id="counts"></span></h1>
+    <button class="btn btn-filter" id="fToTri">À trier</button>
+    <button class="btn btn-filter" id="fAll">Tout</button>
+    <button class="btn btn-copy" id="copyBtn">📋 Copier le bilan</button>
+    <button class="btn btn-reset" id="resetBtn">↺ Reset</button>
+  </div>
+  <div id="content"></div>
+  <div class="toast" id="toast">Bilan copié ! Colle-le dans le chat Claude.</div>
+
+  <script src="js/dino-silhouettes.js"></script>
+  <script>
+    const KEY = 'silhouette_review';
+    const SIL = window.DINO_SILHOUETTES, LAB = window.DINO_FAMILY_LABELS || {};
+    let filterToTri = false;
+
+    function load() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } }
+    function save(v) { localStorage.setItem(KEY, JSON.stringify(v)); }
+
+    function updateCounts() {
+      const v = load(), all = Object.values(SIL).flat();
+      const done = all.filter(s => v[s]).length;
+      const trash = all.filter(s => v[s] === 'trash').length;
+      const wrong = all.filter(s => v[s] === 'wrong').length;
+      document.getElementById('counts').textContent =
+        '— ' + done + '/' + all.length + ' triées · 🗑️' + trash + ' · ⚠️' + wrong;
+    }
+
+    function render() {
+      const v = load();
+      const c = document.getElementById('content');
+      c.innerHTML = '';
+      for (const fam of Object.keys(SIL)) {
+        const srcs = SIL[fam].filter(s => !filterToTri || !v[s]);
+        if (!srcs.length) continue;
+        const lab = LAB[fam] || { nom: fam, emoji: '' };
+        const h = document.createElement('div');
+        h.className = 'fam-title';
+        h.innerHTML = lab.emoji + ' ' + fam + ' <span class="fam-sub">(' + lab.nom + ') — ' + srcs.length + ' image(s)</span>';
+        c.appendChild(h);
+        const g = document.createElement('div');
+        g.className = 'grid';
+        srcs.forEach(src => {
+          const verdict = v[src] || '';
+          const card = document.createElement('div');
+          card.className = 'card ' + verdict;
+          card.innerHTML =
+            '<div class="imgbox"><img loading="lazy" src="' + src + '" alt=""></div>'
+            + '<div class="name">' + src.split('/').pop() + '</div>'
+            + '<div class="verdicts">'
+            + '<button title="Valide" class="' + (verdict === 'ok' ? 'sel-ok' : '') + '" data-v="ok">✅</button>'
+            + '<button title="À jeter (moche)" class="' + (verdict === 'trash' ? 'sel-trash' : '') + '" data-v="trash">🗑️</button>'
+            + '<button title="Pas le bon dino / à challenger" class="' + (verdict === 'wrong' ? 'sel-wrong' : '') + '" data-v="wrong">⚠️</button>'
+            + '</div>';
+          card.querySelectorAll('button').forEach(b => {
+            b.onclick = () => {
+              const cur = load();
+              // re-cliquer le même verdict = annuler
+              if (cur[src] === b.dataset.v) delete cur[src];
+              else cur[src] = b.dataset.v;
+              save(cur);
+              render(); updateCounts();
+            };
+          });
+          g.appendChild(card);
+        });
+        c.appendChild(g);
+      }
+      updateCounts();
+    }
+
+    document.getElementById('copyBtn').onclick = () => {
+      const v = load();
+      const lines = ['BILAN SILHOUETTES DINO — ' + new Date().toISOString().slice(0, 10)];
+      for (const verdict of ['trash', 'wrong', 'ok']) {
+        const label = { trash: '🗑️ À JETER', wrong: '⚠️ PAS LE BON DINO / À CHALLENGER', ok: '✅ VALIDES' }[verdict];
+        const items = Object.keys(v).filter(s => v[s] === verdict);
+        lines.push('', label + ' (' + items.length + ') :');
+        items.forEach(s => lines.push('- ' + s));
+      }
+      const all = Object.values(SIL).flat();
+      const rest = all.filter(s => !v[s]);
+      lines.push('', '(non triées : ' + rest.length + '/' + all.length + ')');
+      navigator.clipboard.writeText(lines.join('\n')).then(() => {
+        const t = document.getElementById('toast');
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 2200);
+      });
+    };
+    document.getElementById('resetBtn').onclick = () => {
+      if (confirm('Effacer tous les verdicts ?')) { localStorage.removeItem(KEY); render(); }
+    };
+    document.getElementById('fToTri').onclick = (e) => { filterToTri = true; e.target.classList.add('on'); document.getElementById('fAll').classList.remove('on'); render(); };
+    document.getElementById('fAll').onclick = (e) => { filterToTri = false; e.target.classList.add('on'); document.getElementById('fToTri').classList.remove('on'); render(); };
+
+    render();
+  </script>
+</body>
+</html>

@@ -36,6 +36,7 @@ Carnivores (24) · Herbivores (21) · Piscivores (7) · Omnivores (3). **Pas de 
 | But de foot (haut) | 2,44 m |
 | Panier de basket | 3,05 m |
 | Bus anglais 2 étages (haut) | 4,4 m |
+| Girafe (haut) | ~5 m |
 | Lampadaire | 6 m |
 | Bus RATP (long) | 12 m |
 | Bus accordéon (long) | 18 m |

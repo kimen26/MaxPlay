@@ -62,6 +62,7 @@ Réutiliser ces **patterns de réaction enfant** pour écrire les dialogues Wex 
 - recomposition de mot : « ...donc ça veut dire "face à trois cornes" ?! »
 - ancrage corps/quotidien : « il m'arrivait au nombril ?! » · « aussi lourd que MOI ? » · « comme Minou (mon chat) ? »
 - casser un mythe : « le film ne dit pas la vérité ? »
+- *(panel pilotes V2, 2026-06-11)* : « il vivait tout seul ? il avait pas de famille ? » · « comment il voyait ce qui volait au-dessus, il regardait vers le haut sous l'eau ? » · « il était triste d'être tout le temps dans l'eau ? » · « c'est le champion des griffes ? » · « mais pourquoi la nature fait des surprises ? »
 
 **À BANNIR (détecté par les conseillers)** :
 - fausse question évidente (« il avait des pattes ? »)

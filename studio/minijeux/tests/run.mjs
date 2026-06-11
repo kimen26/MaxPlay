@@ -13,7 +13,7 @@ if (!mj) { console.error('Usage: npm run mj:test <mj-XX> [fichier.html]'); proce
 
 const htmlPath = process.argv[3]
   ? resolve(process.argv[3])
-  : resolve(__dir, '..', 'web', `${mj}.html`);
+  : resolve(__dir, '..', '..', '..', 'site', `${mj}.html`);
 
 const artifacts = resolve(__dir, '.artifacts');
 mkdirSync(artifacts, { recursive: true });

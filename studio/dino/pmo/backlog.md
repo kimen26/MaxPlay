@@ -27,6 +27,8 @@
 - **L-D04** — Une accroche de menu s'écoute en **2-7 s** ; au-delà c'est un cours, l'enfant décroche. Le détail va dans les sections, pas dans l'accroche.
 - **L-D05** — Tout audio doit passer le **grep-interdits** (`max|doudou|peluche|bus`) AVANT génération. L'incident « doudou de Max » venait d'un audio généré avant la consigne et jamais re-vérifié.
 - **L-D06** — Les scripts/MP3 audio sont **sourcés de `dinos-data.js`** : toute correction de chiffre/fait dans la data **désynchronise l'audio existant**. Réflexe : corriger la data → **flaguer la régénération audio** (EP-D05). Ne jamais toucher un chiffre sans signaler l'audio à refaire.
+- **L-D07** — **Pièges de prononciation eleven_v3** (REX pilotes 2026-06-11) : (1) MAJUSCULES sur un mot court → lu bizarrement (« le ROI » → « roui ») — emphase par ponctuation, pas par CAPS sur <4 lettres ; (2) noms latins en « -us » → S final avalé (« Mo-sa-sau-rus » → « ru ») — **découper les syllabes sur la forme FRANÇAISE** (« Mo-sa-saure ») ; (3) « The- » en début de mot → lu à l'anglaise (« zé ») — écrire « Thé- ».
+- **L-D08** — **Comparaisons de taille UNIQUEMENT depuis le référentiel figé** (INVARIANTS § échelle). Inventer une comparaison = mensonge quasi garanti (REX : « 2 piscines » pour 17 m alors qu'1 piscine = 25-50 m ; « 2× Papa bras levés » flou ; « plus long que moi à ma naissance » faux). Le référentiel a la bonne réponse : 17 m ≈ bus accordéon (18 m), 5 m ≈ girafe, 1 m = l'enfant lui-même.
 
 ## Changelog
 

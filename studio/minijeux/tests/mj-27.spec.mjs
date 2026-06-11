@@ -4,7 +4,8 @@ export async function run({ page, ok }) {
   await page.reload({ waitUntil: 'networkidle' });
 
   ok('DINOS chargé', await page.evaluate(() => typeof DINOS !== 'undefined' && DINOS.length > 10));
-  ok('démarre au Niveau 1', (((await page.locator('#levelbar').textContent()) || '').includes('Niveau 1')));
+  ok('8 billes de progression (standard golden)', (await page.locator('.pip').count()) === 8);
+  ok('1re bille marquée courante', (await page.locator('.pip.cur').count()) === 1);
 
   await page.waitForSelector('#word', { timeout: 5000 });
   ok('un nom à lire est affiché', (((await page.locator('#word').textContent()) || '').trim().length > 1));
@@ -25,6 +26,6 @@ export async function run({ page, ok }) {
     await page.click('.dino-card[data-correct="1"]').catch(() => {});
     await page.waitForTimeout(1300);
   }
-  const score = parseInt((await page.locator('#score').textContent()) || '0', 10);
-  ok('3 bonnes réponses → score > 0', score > 0, `score=${score}`);
+  const v1 = await page.locator('.pip.v1').count();
+  ok('3 bonnes réponses → 3 billes vertes', v1 === 3, `billes vertes=${v1}`);
 }

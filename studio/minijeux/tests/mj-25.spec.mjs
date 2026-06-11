@@ -4,7 +4,8 @@ export async function run({ page, ok }) {
   await page.reload({ waitUntil: 'networkidle' });
 
   ok('manifest silhouettes chargé', await page.evaluate(() => !!window.DINO_SILHOUETTES));
-  ok('démarre au Niveau 1', (((await page.locator('#levelbar').textContent()) || '').includes('Niveau 1')));
+  ok('8 billes de progression (standard golden)', (await page.locator('.pip').count()) === 8);
+  ok('1re bille marquée courante', (await page.locator('.pip.cur').count()) === 1);
 
   await page.waitForSelector('#refCard img', { timeout: 5000 });
   ok('référence affichée', (await page.locator('#refCard img').count()) === 1);
@@ -28,6 +29,6 @@ export async function run({ page, ok }) {
     await page.click('.dino-tile[data-correct="1"]').catch(() => {});
     await page.waitForTimeout(1400);
   }
-  const score = parseInt((await page.locator('#score').textContent()) || '0', 10);
-  ok('3 bonnes réponses → score > 0', score > 0, `score=${score}`);
+  const v1 = await page.locator('.pip.v1').count();
+  ok('3 bonnes réponses → 3 billes vertes', v1 === 3, `billes vertes=${v1}`);
 }

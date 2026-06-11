@@ -275,3 +275,45 @@ body {
 }
 
 /* portrait supporté — pas d'overlay forcé */
+
+/* ─── STANDARD GOLDEN (studio/minijeux/docs/STANDARD-MJ.md) ─────────────────
+   Billes de progression + zone badges 3 étoiles + animation étoile/bizou.
+   Utilisé via js/mj-golden.js. */
+
+.pips { display:flex; gap:6px; align-items:center; justify-content:center; padding:8px 12px 2px; flex-wrap:wrap; }
+.pip { width:16px; height:16px; border-radius:50%; background:rgba(255,255,255,0.18); border:2px solid rgba(255,255,255,0.25); transition:background .3s, transform .2s; }
+.pip.cur { transform:scale(1.25); border-color:#fff; }
+.pip.v1 { background:#00c47a; border-color:#00c47a; }   /* 1er coup */
+.pip.v2 { background:#ffe066; border-color:#ffe066; }   /* 2e coup  */
+.pip.v3 { background:#F58443; border-color:#F58443; }   /* 3e coup  */
+.pip.v4 { background:#ff4455; border-color:#ff4455; }   /* révélé   */
+
+.end-wrap { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100dvh; text-align:center; padding:20px; }
+.badge-zone { display:flex; gap:18px; margin-bottom:26px; }
+.badge-slot {
+  width:64px; height:64px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:2.6rem; color:#ffffff22;
+  background:#ffffff0d; border:3px dashed #ffffff2e;
+}
+.badge-slot.filled { color:#ffd633; border:3px solid #ffd63366; background:#ffd6331a; filter:drop-shadow(0 0 10px #ffd63366); }
+.badge-slot.pop { animation:slotPop .5s ease-out; }
+@keyframes slotPop { 0%{transform:scale(1)} 45%{transform:scale(1.45)} 100%{transform:scale(1)} }
+
+.end-title { font-size:1.9rem; font-weight:900; color:var(--accent-gold); margin:6px 0 8px; opacity:0; animation:fadeUp .4s ease forwards; }
+.end-sub { font-size:1.2rem; font-weight:700; margin-bottom:24px; opacity:0; animation:fadeUp .4s ease forwards; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+.end-btns { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; opacity:0; animation:fadeUp .4s ease forwards; }
+.end-btns a { padding:16px 30px; border-radius:30px; text-decoration:none; font-weight:900; min-height:56px; display:flex; align-items:center; color:#fff; }
+
+/* étoile volante (tour d'écran + bizou) — centrée sur son point via marges négatives */
+.fly-star {
+  position:fixed; left:-32px; top:-32px; width:64px; height:64px;
+  line-height:64px; text-align:center; font-size:3.4rem; color:#ffd633;
+  filter:drop-shadow(0 0 14px #ffd633aa); pointer-events:none; z-index:9999;
+}
+.kiss-pop {
+  position:fixed; font-size:2.6rem; pointer-events:none; z-index:9999;
+  animation:kissPop .9s ease-out forwards;
+}
+@keyframes kissPop { 0%{transform:scale(0);opacity:0} 30%{transform:scale(1.4);opacity:1} 100%{transform:scale(1) translateY(-40px);opacity:0} }

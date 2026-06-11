@@ -27,11 +27,26 @@ Chaque bille = une question. Sa couleur dit comment Max l'a réussie :
 
 La bille de la question courante est neutre (grise) tant qu'elle n'est pas répondue.
 
+## Système d'étoiles & niveaux (validé Papa Yann 2026-06-11, remplace « 8 questions fixes »)
+
+**ÉTOILE = SANS FAUTE** (toutes les questions au 1er coup = toutes les billes vertes). Jouer avec des erreurs ne donne JAMAIS l'étoile (incident : étoile obtenue avec 80 % d'erreurs → corrigé).
+
+| Étoiles acquises | Niveau | Questions | Si sans-faute |
+|------------------|--------|-----------|----------------|
+| 0 | **Niveau 1** (simple) | **4** | → étoile 1, passe Niveau 2 |
+| 1 | **Niveau 2** (plus dur) | **6** | → étoile 2, passe Niveau 3 |
+| 2-3 | **Niveau 3** (MAX, on y reste) | **8** | → étoile 3 |
+
+**Implémentation : brique partagée [`site/js/mj-golden.js`](../../../site/js/mj-golden.js)** (`Golden.setup/buildPips/notePip/showEnd`) + styles dans `css/style.css` § STANDARD GOLDEN. Ne PAS dupliquer cette logique dans un jeu.
+
+**Célébration sans-faute** : l'étoile fait un tour d'écran → **bizou à la caméra** (gros plan + 💋 + son pop) → va se ranger dans la **zone de 3 badges** (avancement) → message « Tu as gagné l'étoile niveau N ! Recommence et essaie de gagner la N+1ᵉ ! » + son Mario MP3 réel + confettis/défilé bus.
+**Sans étoile** (erreurs) : écran encourageant « Bien joué ! Fais un sans-faute pour gagner l'étoile ! » — jamais punitif.
+
 ## Règles d'or NON négociables
 
-- **8 questions** par partie (validé).
+- **Questions par niveau : 4/6/8** (pilotées par `Golden.setup`, jamais en dur).
 - **ZÉRO score chiffré visible** (règle < 6 ans — `.scorebar` masquée par `style.css`).
-- **PAS d'étoile par bonne réponse.** L'étoile = **déblocage de niveau en FIN de jeu**, façon étoile de Mario (son `sndVictory` + animation étoile). `maxStars:5` paliers par jeu (catalog.js).
+- **PAS d'étoile ni d'overlay par bonne réponse** — son discret (`sndDing`) + bille colorée, c'est tout.
 - **Zéro pénalité** : `QcmRetry` laisse réessayer, révèle la bonne réponse après 3 erreurs sans punir.
 - **Zones tap ≥ 80px** (`var(--min-tap-size)`).
 - **100 % local** : aucun CDN de librairie JS (offline-ready pour la PWA). Seule la font Google est tolérée (dégrade gracieusement).

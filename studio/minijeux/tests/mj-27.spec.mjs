@@ -4,7 +4,7 @@ export async function run({ page, ok }) {
   await page.reload({ waitUntil: 'networkidle' });
 
   ok('DINOS chargé', await page.evaluate(() => typeof DINOS !== 'undefined' && DINOS.length > 10));
-  ok('8 billes de progression (standard golden)', (await page.locator('.pip').count()) === 8);
+  ok('Niveau 1 = 4 billes (standard golden : 4/6/8 selon etoiles)', (await page.locator('.pip').count()) === 4);
   ok('1re bille marquée courante', (await page.locator('.pip.cur').count()) === 1);
 
   await page.waitForSelector('#word', { timeout: 5000 });

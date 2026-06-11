@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <!--
-  GOLDEN B - JEU DE REFERENCE STANDARD MAXPLAY
-  Mecanique : compter les bus. Celebration : etoile qui se remplit + Mario + defile de bus.
-  Memes regles que gold-a. PAR REPONSE : son discret + bille. AUCUNE etoile par reponse.
-  Standard : studio/minijeux/docs/STANDARD-MJ.md
+  GOLDEN B - JEU DE REFERENCE STANDARD MAXPLAY (studio/minijeux/docs/STANDARD-MJ.md)
+  Mecanique : compter les bus. Celebration custom : defile de bus (busParade).
+  Toute la logique standard vit dans js/mj-golden.js + css/style.css.
 -->
 <html lang="fr">
 <head>
@@ -13,31 +12,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    .pips { display:flex; gap:6px; align-items:center; justify-content:center; padding:10px 12px 4px; flex-wrap:wrap; }
-    .pip { width:16px; height:16px; border-radius:50%; background:rgba(255,255,255,0.18); border:2px solid rgba(255,255,255,0.25); transition:background .3s, transform .2s; }
-    .pip.cur { transform:scale(1.25); border-color:#fff; }
-    .pip.v1 { background:#00c47a; border-color:#00c47a; }
-    .pip.v2 { background:#ffe066; border-color:#ffe066; }
-    .pip.v3 { background:#F58443; border-color:#F58443; }
-    .pip.v4 { background:#ff4455; border-color:#ff4455; }
     .bus-scene { display:flex; flex-wrap:wrap; gap:10px; align-items:center; justify-content:center; min-height:130px; padding:10px; }
     .bus-scene .bus-svg { width:74px; height:auto; }
     .choices.nums { grid-template-columns:repeat(3,1fr); }
     .ch.num-cell { font-size:2rem; }
-
-    .end-wrap { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100dvh; text-align:center; padding:20px; }
-    .star-stage { position:relative; width:160px; height:160px; margin-bottom:8px; }
-    .star-empty, .star-fill { position:absolute; inset:0; font-size:9rem; line-height:160px; }
-    .star-empty { color:#ffffff22; }
-    .star-fill { color:#ffd633; filter:drop-shadow(0 0 14px #ffd63399); clip-path: inset(100% 0 0 0); transition: clip-path 1.1s cubic-bezier(.2,.8,.2,1); }
-    .star-fill.full { clip-path: inset(0 0 0 0); }
-    .star-stage.pop { animation: starPop .5s ease-out .9s both; }
-    @keyframes starPop { 0%{transform:scale(1)} 40%{transform:scale(1.25) rotate(-6deg)} 70%{transform:scale(.95) rotate(4deg)} 100%{transform:scale(1)} }
-    .end-title { font-size:2rem; color:var(--accent-gold); margin:6px 0 8px; opacity:0; animation: fadeUp .4s ease .9s forwards; }
-    .end-sub { font-size:1.2rem; margin-bottom:24px; opacity:0; animation: fadeUp .4s ease 1.1s forwards; }
-    @keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
-    .end-btns { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; opacity:0; animation: fadeUp .4s ease 1.3s forwards; }
-    .end-btns a { padding:16px 30px; border-radius:30px; text-decoration:none; font-weight:900; min-height:56px; display:flex; align-items:center; color:#fff; }
   </style>
 </head>
 <body>
@@ -60,35 +38,17 @@
 <script src="js/bus-svg.js"></script>
 <script src="js/data.js"></script>
 <script src="js/qcm-retry.js"></script>
+<script src="js/mj-golden.js"></script>
 <script src="js/tracker.js"></script>
 <script src="js/comments.js"></script>
 <script src="js/back-button.js"></script>
 <script>
-  const GAME_ID = 'mj-gold-b';
-  const TOTAL_Q = 8;
+  const G = Golden.setup('mj-gold-b');
+
   let qIndex = 0, qcm = null;
 
-  // Son Mario de victoire = MP3 REEL existant (on ne synthetise rien).
-  function sndMarioStar() {
-    try { const a = new Audio('sounds/victory-mario-series-hq-super-smash-bros.mp3'); a.volume = 0.85; a.play().catch(() => {}); } catch (e) {}
-  }
-
-  function buildPips() {
-    const box = document.getElementById('pips'); box.innerHTML = '';
-    for (let i = 0; i < TOTAL_Q; i++) {
-      const d = document.createElement('div');
-      d.className = 'pip' + (i === 0 ? ' cur' : ''); d.id = 'pip' + i;
-      box.appendChild(d);
-    }
-  }
-  function colorPip(i, attempts) {
-    const p = document.getElementById('pip' + i); if (!p) return;
-    p.classList.remove('cur'); p.classList.add('v' + Math.min(attempts, 4));
-    const next = document.getElementById('pip' + (i + 1)); if (next) next.classList.add('cur');
-  }
-
   function nextQuestion() {
-    if (qIndex >= TOTAL_Q) return showEnd();
+    if (qIndex >= G.totalQ) return G.showEnd({ replayUrl: 'mj-gold-b.html', celebrate: () => busParade() });
     qcm = QcmRetry.create();
     const count = 1 + Math.floor(Math.random() * 5);
     const scene = document.getElementById('scene'); scene.innerHTML = '';
@@ -116,20 +76,17 @@
   function answer(correct, btn) {
     const res = QcmRetry.handle(qcm, correct);
     if (res.outcome === 'ignored') return;
-    if (typeof Tracker !== 'undefined' && (res.outcome === 'correct' || res.outcome === 'reveal'))
-      Tracker.logAnswer(res.outcome === 'correct');
-
     if (res.outcome === 'correct') {
       btn.classList.add('ok');
       sndDing();
-      colorPip(qIndex, res.attempts);
+      G.notePip(qIndex, res.attempts);
       qIndex++;
       setTimeout(nextQuestion, 950);
     } else if (res.outcome === 'reveal') {
       btn.classList.add('ko');
       QcmRetry.revealCorrect(document.getElementById('choices'), 'ok');
       sndBuzz();
-      colorPip(qIndex, 4);
+      G.notePip(qIndex, 4);
       qIndex++;
       setTimeout(nextQuestion, 1400);
     } else {
@@ -138,32 +95,7 @@
     }
   }
 
-  function showEnd() {
-    if (typeof Tracker !== 'undefined') Tracker.endSession(TOTAL_Q, TOTAL_Q);
-    document.getElementById('app').innerHTML =
-      '<div class="end-wrap">'
-      + '<div class="star-stage" id="starStage">'
-      + '  <div class="star-empty">★</div>'
-      + '  <div class="star-fill" id="starFill">★</div>'
-      + '</div>'
-      + '<div class="end-title">Super Max&nbsp;!</div>'
-      + '<div class="end-sub">Tu as gagné une étoile&nbsp;!</div>'
-      + '<div class="end-btns">'
-      + '  <a href="mj-gold-b.html" style="background:var(--accent-success);">🔄 Rejouer</a>'
-      + '  <a href="index.html" style="background:#ffffff22;">📋 Menu</a>'
-      + '</div></div>';
-
-    requestAnimationFrame(() => {
-      setTimeout(() => {
-        document.getElementById('starFill').classList.add('full');
-        document.getElementById('starStage').classList.add('pop');
-        sndMarioStar();
-      }, 120);
-      setTimeout(() => { busParade(); }, 1100);   // defile de bus + klaxon quand l'etoile est pleine
-    });
-  }
-
-  buildPips();
+  G.buildPips();
   nextQuestion();
 </script>
 </body>

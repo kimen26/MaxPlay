@@ -2,13 +2,27 @@ import { Bot, Context, InlineKeyboard } from "grammy";
 import { hostname } from "os";
 import { randomUUID } from "crypto";
 import { spawn } from "child_process";
+import { appendFileSync } from "fs";
+import { join } from "path";
 
 const INSTANCE_ID = randomUUID().slice(0, 8);
 const INSTANCE_TAG = `[${INSTANCE_ID}@${hostname()}#${process.pid}]`;
 const STARTED_AT = new Date().toISOString();
 
+// Log fichier en APPEND : les redirections Start-Process tronquent les logs de
+// l'instance vivante quand un doublon démarre — le fichier append survit.
+const LOG_FILE = join(import.meta.dir, "bot.run.log");
+
 function log(...args: unknown[]) {
-  console.log(INSTANCE_TAG, ...args);
+  const line = `${new Date().toISOString()} ${INSTANCE_TAG} ${args
+    .map((a) => (a instanceof Error ? a.stack ?? a.message : String(a)))
+    .join(" ")}`;
+  console.log(line);
+  try {
+    appendFileSync(LOG_FILE, line + "\n");
+  } catch {
+    // disque indisponible — on garde au moins la console
+  }
 }
 
 const BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN;
@@ -88,7 +102,8 @@ function buildPromptWithHistory(chatId: number, userMessage: string): string {
 
 // ─── HTTP server (port 3001) — permissions Claude Code ───────────────────────
 
-Bun.serve({
+try {
+  Bun.serve({
   port: 3001,
   async fetch(req) {
     const url = new URL(req.url);
@@ -113,7 +128,7 @@ Bun.serve({
       const tool_name = (body.tool_name ?? body.tool ?? "outil inconnu") as string;
       const tool_input = body.tool_input ?? body;
       const reqId = randomUUID();
-      console.log(`[PERM] Nouvelle demande ${reqId} — outil: ${tool_name}`);
+      log(`[PERM] Nouvelle demande ${reqId} — outil: ${tool_name}`);
 
       // Formater l'input pour affichage
       const inputStr = JSON.stringify(tool_input, null, 2);
@@ -128,7 +143,7 @@ Bun.serve({
         `🔐 *Demande de permission*\n\n*Outil :* \`${tool_name}\`\n\n\`\`\`json\n${preview}\n\`\`\``,
         { parse_mode: "Markdown", reply_markup: keyboard }
       );
-      console.log(`[PERM] Message envoyé sur Telegram pour ${reqId}`);
+      log(`[PERM] Message envoyé sur Telegram pour ${reqId}`);
 
       // Attendre la réponse Telegram (max 20 min)
       const allow = await new Promise<boolean>((resolve) => {
@@ -136,14 +151,14 @@ Bun.serve({
         setTimeout(() => {
           if (pendingPermissions.has(reqId)) {
             pendingPermissions.delete(reqId);
-            console.log(`[PERM] Timeout expiré pour ${reqId} → refus auto`);
+            log(`[PERM] Timeout expiré pour ${reqId} → refus auto`);
             resolve(false);
             bot.api.sendMessage(ALLOWED_CHAT_ID!, "⏰ Permission expirée (20 min) — refusée.").catch(() => {});
           }
         }, 20 * 60 * 1000);
       });
 
-      console.log(`[PERM] Décision pour ${reqId} : ${allow ? "ALLOW" : "DENY"}`);
+      log(`[PERM] Décision pour ${reqId} : ${allow ? "ALLOW" : "DENY"}`);
 
       // Format attendu par PermissionRequest (Claude Code hooks, 2026-05) :
       // { hookSpecificOutput: { hookEventName, decision: { behavior } } }
@@ -160,7 +175,14 @@ Bun.serve({
 
     return new Response("Not found", { status: 404 });
   },
-});
+  });
+} catch (err) {
+  log(
+    `❌ Port 3001 indisponible — une autre instance du bot tourne déjà ? Arrêt propre.`,
+    err instanceof Error ? err.message : String(err)
+  );
+  process.exit(1);
+}
 
 log("🌐 HTTP server démarré sur port 3001 (permissions)");
 
@@ -253,9 +275,25 @@ async function processUserMessage(
     thinkingId = msg.message_id;
   }
 
+  // Battement de cœur : le message d'attente est édité toutes les 60s pour que
+  // l'utilisateur voie que le bot est vivant (avant : silence total jusqu'au timeout).
+  const t0 = Date.now();
+  const heartbeat = setInterval(() => {
+    const sec = Math.round((Date.now() - t0) / 1000);
+    bot.api
+      .editMessageText(
+        chatId,
+        thinkingId!,
+        `${AGENT_EMOJI[agent]} Claude travaille toujours… ${sec}s _(agent : ${agent})_`,
+        { parse_mode: "Markdown" }
+      )
+      .catch(() => {});
+  }, 60_000);
+
   try {
     const promptWithHistory = buildPromptWithHistory(chatId, userMessage);
     const response = await runClaude(promptWithHistory, agent);
+    clearInterval(heartbeat);
 
     addToHistory(chatId, "user", userMessage);
     addToHistory(chatId, "assistant", response.slice(0, 1000));
@@ -267,12 +305,14 @@ async function processUserMessage(
         .catch(() => bot.api.sendMessage(chatId, chunk));
     }
   } catch (err) {
-    await bot.api.deleteMessage(chatId, thinkingId).catch(() => {});
-    await bot.api.sendMessage(
-      chatId,
-      `❌ Erreur : ${err instanceof Error ? err.message : String(err)}`
-    );
-    console.error(err);
+    clearInterval(heartbeat);
+    const errMsg = `❌ Erreur : ${err instanceof Error ? err.message : String(err)}`;
+    log(`❌ processUserMessage chat=${chatId}`, err instanceof Error ? err : String(err));
+    // Éditer le message d'attente est plus fiable que delete+send (un seul appel API)
+    await bot.api.editMessageText(chatId, thinkingId, errMsg).catch(async () => {
+      await bot.api.deleteMessage(chatId, thinkingId!).catch(() => {});
+      await bot.api.sendMessage(chatId, errMsg).catch(() => {});
+    });
   }
 }
 
@@ -280,25 +320,25 @@ async function processUserMessage(
 
 bot.on("callback_query:data", async (ctx) => {
   const data = ctx.callbackQuery.data;
-  console.log(`[CALLBACK] Reçu : ${data}`);
+  log(`[CALLBACK] Reçu : ${data}`);
 
   try {
     await ctx.answerCallbackQuery();
   } catch (e) {
-    console.log("[CALLBACK] answerCallbackQuery a échoué :", e);
+    log("[CALLBACK] answerCallbackQuery a échoué :", e);
   }
 
   if (data.startsWith("perm_allow_")) {
     const reqId = data.replace("perm_allow_", "");
-    console.log(`[CALLBACK] Autoriser demandé pour ${reqId}`);
+    log(`[CALLBACK] Autoriser demandé pour ${reqId}`);
     const resolve = pendingPermissions.get(reqId);
     pendingPermissions.delete(reqId);
     if (resolve) {
-      console.log(`[CALLBACK] Résolution ALLOW pour ${reqId}`);
+      log(`[CALLBACK] Résolution ALLOW pour ${reqId}`);
       resolve(true);
-      await ctx.editMessageText("✅ Permission accordée.").catch((e) => console.log("[CALLBACK] editMessageText fail:", e));
+      await ctx.editMessageText("✅ Permission accordée.").catch((e) => log("[CALLBACK] editMessageText fail:", e));
     } else {
-      console.log(`[CALLBACK] reqId ${reqId} introuvable dans pendingPermissions`);
+      log(`[CALLBACK] reqId ${reqId} introuvable dans pendingPermissions`);
       await ctx.editMessageText("⚠️ Cette demande a déjà été traitée ou a expiré.").catch(() => {});
     }
     return;
@@ -306,15 +346,15 @@ bot.on("callback_query:data", async (ctx) => {
 
   if (data.startsWith("perm_deny_")) {
     const reqId = data.replace("perm_deny_", "");
-    console.log(`[CALLBACK] Refus demandé pour ${reqId}`);
+    log(`[CALLBACK] Refus demandé pour ${reqId}`);
     const resolve = pendingPermissions.get(reqId);
     pendingPermissions.delete(reqId);
     if (resolve) {
-      console.log(`[CALLBACK] Résolution DENY pour ${reqId}`);
+      log(`[CALLBACK] Résolution DENY pour ${reqId}`);
       resolve(false);
-      await ctx.editMessageText("❌ Permission refusée.").catch((e) => console.log("[CALLBACK] editMessageText fail:", e));
+      await ctx.editMessageText("❌ Permission refusée.").catch((e) => log("[CALLBACK] editMessageText fail:", e));
     } else {
-      console.log(`[CALLBACK] reqId ${reqId} introuvable dans pendingPermissions`);
+      log(`[CALLBACK] reqId ${reqId} introuvable dans pendingPermissions`);
       await ctx.editMessageText("⚠️ Cette demande a déjà été traitée ou a expiré.").catch(() => {});
     }
     return;
@@ -328,39 +368,67 @@ function isAllowed(ctx: Context): boolean {
   return ctx.chat?.id === ALLOWED_CHAT_ID;
 }
 
-type Agent = "narration" | "game-dev" | "quick";
+type Agent = "narration" | "game-dev" | "dino" | "max-adventure" | "quick";
 
+// Casting V1 figé (2026-04-24, ajusté 2026-05-05) : Wex + Melki/Mimi/Dadou/Madie/Lulu/Pierrot/Raph/Juju/Nono
 const NARRATION_KEYWORDS = [
   "histoire", "histoir", "personnage", "narration", "univers", "ennéagramme",
-  "wex", "melki", "mimi", "polo", "jérem", "lulu", "pierrot", "raph", "juju", "nono",
-  "léo", "sam", "élia", "lila", "camille", "victor", "iris", "theo", "noa",
-  "pont cassé", "éveil", "phos", "gardien", "totem", "compagnon",
+  "wex", "melki", "mimi", "dadou", "madie", "lulu", "pierrot", "raph", "juju", "nono",
+  "pont cassé", "libellule", "éveil", "gardien", "totem", "compagnon",
   "arc", "chapitre", "scène", "dialogue", "récit", "conte",
   "écris", "écri", "rédige", "invente", "imagine", "crée une histoire",
 ];
 
 const GAME_KEYWORDS = [
-  "jeu", "mini-jeu", "mj-", "code", "bug", "html", "javascript", "phaser",
+  "jeu", "mini-jeu", "mj-", "code", "bug", "html", "javascript",
   "bus svg", "déploie", "deploy", "github", "menu", "index.html",
-  "tracker", "son", "victoire", "couleur", "svg", "score",
+  "tracker", "son", "victoire", "couleur", "svg", "score", "étoile",
   "crée un jeu", "nouveau jeu", "corrige", "répare", "ajoute",
+];
+
+const DINO_KEYWORDS = [
+  "dino", "dinosaure", "tritri", "tricératops", "encyclopédie", "fiche dino",
+  "dev-dinos", "jurassique", "crétacé", "trias", "fossile", "paléo",
+  "t-rex", "tyrannosaure", "raptor", "mammouth", "mégafaune", "préhistoire",
+  "voyage époque", "famille dino",
+];
+
+const MAX_ADVENTURE_KEYWORDS = [
+  "max adventure", "max-adventure", "phaser", "tile", "tilemap", "tileset",
+  "limezu", "carte top-down", "pixel-map",
 ];
 
 function detectAgent(message: string): Agent {
   const lower = message.toLowerCase();
+  const score = (keywords: string[]) =>
+    keywords.filter((k) => lower.includes(k)).length;
 
-  const narrationScore = NARRATION_KEYWORDS.filter((k) => lower.includes(k)).length;
-  const gameScore = GAME_KEYWORDS.filter((k) => lower.includes(k)).length;
+  const scores: [Agent, number][] = [
+    ["dino", score(DINO_KEYWORDS)],
+    ["max-adventure", score(MAX_ADVENTURE_KEYWORDS)],
+    ["narration", score(NARRATION_KEYWORDS)],
+    ["game-dev", score(GAME_KEYWORDS)],
+  ];
 
-  if (narrationScore > gameScore && narrationScore > 0) return "narration";
-  if (gameScore > narrationScore && gameScore > 0) return "game-dev";
-  return "quick";
+  const best = scores.reduce((a, b) => (b[1] > a[1] ? b : a));
+  return best[1] > 0 ? best[0] : "quick";
 }
 
 const AGENT_EMOJI: Record<Agent, string> = {
   "narration": "📖",
   "game-dev": "🎮",
+  "dino": "🦖",
+  "max-adventure": "🗺️",
   "quick": "⚡",
+};
+
+// Indication de pôle injectée dans le prompt pour aider le routage CLAUDE.md côté CLI
+const AGENT_POLE_HINT: Record<Agent, string> = {
+  "narration": "Pôle NARRATION (studio/narration/)",
+  "game-dev": "Pôle JEU — mini-jeux (studio/minijeux/)",
+  "dino": "Pôle DINO (studio/dino/, déployé dans site/)",
+  "max-adventure": "Pôle JEU — Max Adventure tiles (studio/max-adventure/)",
+  "quick": "Question rapide, pas de pôle particulier",
 };
 
 async function runClaude(prompt: string, agent: Agent = "quick"): Promise<string> {
@@ -371,11 +439,14 @@ async function runClaude(prompt: string, agent: Agent = "quick"): Promise<string
   const modelMap: Record<Agent, string> = {
     "narration": "opus",
     "game-dev": "sonnet",
+    "dino": "sonnet",
+    "max-adventure": "sonnet",
     "quick": "haiku",
   };
 
   const model = modelMap[agent];
-  log(`🚀 runClaude[${callId}] agent=${agent} model=${model} promptLen=${prompt.length} (via CLI)`);
+  const routedPrompt = `[Message reçu via le bot Telegram MaxPlay — aiguillage : ${AGENT_POLE_HINT[agent]}]\n\n${prompt}`;
+  log(`🚀 runClaude[${callId}] agent=${agent} model=${model} promptLen=${routedPrompt.length} (via CLI)`);
 
   return new Promise<string>((resolve, reject) => {
     const args = ["-p", "--model", model, "--permission-mode", "bypassPermissions"];
@@ -392,6 +463,14 @@ async function runClaude(prompt: string, agent: Agent = "quick"): Promise<string
     const timer = setTimeout(() => {
       timedOut = true;
       child.kill();
+      // Sous Windows, le SIGTERM émulé peut être ignoré — kill forcé en filet
+      setTimeout(() => {
+        try {
+          child.kill("SIGKILL");
+        } catch {
+          // process déjà mort
+        }
+      }, 5000);
     }, CLAUDE_TIMEOUT_MS);
 
     child.stdout.on("data", (chunk) => { stdout += chunk.toString(); });
@@ -409,24 +488,25 @@ async function runClaude(prompt: string, agent: Agent = "quick"): Promise<string
       const dt = Date.now() - t0;
 
       if (timedOut) {
-        log(`❌ runClaude[${callId}] timeout=${CLAUDE_TIMEOUT_MS}ms`);
-        reject(new Error(`Erreur Claude: timeout après ${CLAUDE_TIMEOUT_MS}ms`));
+        log(`❌ runClaude[${callId}] timeout=${CLAUDE_TIMEOUT_MS}ms stderr="${stderr.trim().slice(0, 300)}"`);
+        reject(new Error(`Erreur Claude: timeout après ${Math.round(CLAUDE_TIMEOUT_MS / 60000)} min`));
         return;
       }
 
       if (code !== 0) {
         const errMsg = stderr.trim() || `exit code ${code}`;
-        log(`❌ runClaude[${callId}] exit=${code} duration=${dt}ms stderr="${errMsg.slice(0, 200)}"`);
+        log(`❌ runClaude[${callId}] exit=${code} duration=${dt}ms stderr="${errMsg.slice(0, 300)}"`);
         reject(new Error(`Erreur Claude: ${errMsg.slice(0, 500)}`));
         return;
       }
 
       const responseText = stdout.trim();
       log(`✅ runClaude[${callId}] exit=0 duration=${dt}ms responseLen=${responseText.length}`);
+      if (stderr.trim()) log(`⚠️ runClaude[${callId}] stderr non vide: "${stderr.trim().slice(0, 200)}"`);
       resolve(responseText || "(pas de réponse)");
     });
 
-    child.stdin.write(prompt);
+    child.stdin.write(routedPrompt);
     child.stdin.end();
   });
 }
@@ -440,7 +520,12 @@ function splitMessage(text: string, maxLen = 4000): string[] {
   return chunks;
 }
 
-bot.catch((err) => console.error(INSTANCE_TAG, "Bot error:", err));
+bot.catch((err) => log("❌ Bot error:", err.error instanceof Error ? err.error : String(err.error)));
+
+process.on("uncaughtException", (err) => log("❌ uncaughtException:", err));
+process.on("unhandledRejection", (reason) =>
+  log("❌ unhandledRejection:", reason instanceof Error ? reason : String(reason))
+);
 
 log(`🤖 MaxPlay Bot démarré… INSTANCE_ID=${INSTANCE_ID} pid=${process.pid} host=${hostname()} CLAUDE_TIMEOUT_MS=${CLAUDE_TIMEOUT_MS} PROJECT_PATH=${PROJECT_PATH}`);
 bot.start({ drop_pending_updates: true });

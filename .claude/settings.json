@@ -325,7 +325,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "powershell -NoProfile -Command \"if (-not (Get-CimInstance Win32_Process -Filter \\\"Name='bun.exe'\\\" -ErrorAction SilentlyContinue | Where-Object { $_.CommandLine -match 'infra[\\\\/]bot[\\\\/]index\\.ts' })) { Start-Process bun -ArgumentList 'run','index.ts' -WorkingDirectory 'C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\infra\\bot' -WindowStyle Hidden -RedirectStandardOutput 'C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\infra\\bot\\bot.log' -RedirectStandardError 'C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\infra\\bot\\bot.err.log' }\"",
+            "command": "powershell -NoProfile -Command \"if (-not (Get-CimInstance Win32_Process -Filter \\\"Name='bun.exe'\\\" -ErrorAction SilentlyContinue | Where-Object { $_.CommandLine -match 'run index\\.ts' })) { Start-Process bun -ArgumentList 'run','index.ts' -WorkingDirectory 'C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\infra\\bot' -WindowStyle Hidden -RedirectStandardOutput 'C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\infra\\bot\\bot-start.log' -RedirectStandardError 'C:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\infra\\bot\\bot-start.err.log' }\"",
             "async": true
           }
         ]
@@ -348,7 +348,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "powershell -NoProfile -Command \"$input = $input -join ''; $data = $input | ConvertFrom-Json -ErrorAction SilentlyContinue; $path = if ($data.tool_input.path) { $data.tool_input.path } elseif ($data.tool_input.file_path) { $data.tool_input.file_path } else { '' }; if ($path -match '[\\\\/]game[\\\\/]') { Set-Location 'c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\game'; npx tsc --noEmit 2>&1 | Select-Object -First 20 } else { Write-Output 'TSC skip (non-game file)' }\""
+            "command": "powershell -NoProfile -Command \"$input = $input -join ''; $data = $input | ConvertFrom-Json -ErrorAction SilentlyContinue; $path = if ($data.tool_input.path) { $data.tool_input.path } elseif ($data.tool_input.file_path) { $data.tool_input.file_path } else { '' }; if ($path -match '[\\/]max-adventure[\\/].*\\.ts$') { Set-Location 'c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\studio\\max-adventure'; npx tsc --noEmit 2>&1 | Select-Object -First 20 } else { Write-Output 'TSC skip (non-TS or non-max-adventure file)' }\""
           }
         ]
       },

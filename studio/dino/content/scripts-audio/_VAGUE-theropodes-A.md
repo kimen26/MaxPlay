@@ -32,7 +32,7 @@
 
 ### Bloc B — Sa taille
 
-**NARRATEUR H** [excited] : Quinze mètres de long — aussi long qu'un bus accordéon ! Quatre mètres de haut — aussi haut qu'un bus anglais à deux étages. Sept tonnes — aussi lourd que deux hippopotames. Et ce qui étonne tout le monde, c'est la voile sur son dos : 2 mètres de haut — comme une porte d'entrée, dressée là au milieu de son dos.
+**NARRATEUR H** [excited] : Quinze mètres de long — aussi long qu'un bus RATP ! Quatre mètres de haut — aussi haut qu'un bus anglais à deux étages. Sept tonnes — aussi lourd que deux hippopotames. Et ce qui étonne tout le monde, c'est la voile sur son dos : 2 mètres de haut — comme une porte d'entrée, dressée là au milieu de son dos.
 
 **WEX** [gasps] : Une porte sur le dos... elle servait à quoi ?
 
@@ -142,9 +142,9 @@ Bloc D Narrateur : 252 | Wex : 49 | Narrateur bis : 129 = 430
 
 **NARRATEUR H** [excited] : Treize mètres de long — aussi long qu'un bus RATP. Trois mètres et quatre-vingts de haut — aussi haut qu'un bus anglais à deux étages. Sept tonnes — aussi lourd que deux hippopotames. Et soixante dents en lame, jusqu'à 20 centimètres chacune.
 
-**WEX** [gasps] : Vingt centimètres... c'est presque aussi long que ma main et mon bras réunis.
+**WEX** [gasps] : Vingt centimètres... c'est plus long que ma main !
 
-**NARRATEUR H** [playful] : Chaque dent avait la taille de ton avant-bras. Et il en avait soixante. Une gueule comme une boîte à outils — avec soixante couteaux dedans.
+**NARRATEUR H** [playful] : Chaque dent était plus longue que ta main entière. Et il en avait soixante. Une gueule comme une boîte à outils — avec soixante couteaux dedans.
 
 ---
 

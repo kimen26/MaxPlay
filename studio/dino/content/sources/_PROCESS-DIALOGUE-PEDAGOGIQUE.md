@@ -62,9 +62,11 @@ Appliquer les corrections critiques. **TOUJOURS re-grep les anti-patterns + reco
 **C. PAS DE REDITE**
 - [ ] Aucune image/idée n'est répétée d'un bloc à l'autre (ex : la branche sèche ET le bras = on tourne en rond). Une chose est dite **une fois**. Exception : si c'est **l'enfant (Wex) qui rebondit** dessus — là c'est voulu.
 
-**D. COMPARAISONS DE TAILLE** (→ référentiel : [`pmo/INVARIANTS.md`](../../pmo/INVARIANTS.md) § échelle)
-- [ ] Chaque comparaison vient **du référentiel figé** ET est **vraie** (vérifiée). Bannis : « 2 piscines » (faux, une piscine ≈ 25-50 m), « 2× Papa bras levés » (flou), « plus long que moi à ma naissance » (faux + info inconnue).
-- [ ] Repères valides : enfant 4 ans = **1 m** (« aussi grand que toi »), Papa = 1,8 m, bus RATP = 12 m, **girafe ≈ 5 m**, bus accordéon = 18 m. Une griffe d'1 m → « **aussi grande que toi en entier** ».
+**D. COMPARAISONS DE TAILLE — 🔒 TABLE VALIDÉE, MESURES STRICTES** (Papa Yann 2026-06-11)
+- [ ] ⚠️ **On N'INVENTE JAMAIS une comparaison.** Le système est **déjà codé** : `_compLong` / `_compHaut` / `_compPoids` dans `site/js/dinos-data.js` donnent **LA** comparaison validée de CHAQUE dino (garantie « ne ment pas > 10 % »). Le bloc Taille de l'audio **reprend MOT POUR MOT** la sortie de ces fonctions (long + haut + poids du dino).
+- [ ] Pour obtenir les 3 phrases d'un dino : faire calculer `_compLong(taille_m)`, `_compHaut(hauteur_m)`, `_compPoids(poids_t)` (ou lire `_statsPhrase`). **Aucune comparaison hors de cette sortie.**
+- [ ] Bannis ABSOLUS (mensonges déjà commis) : « aux chevilles » pour 2,5 m (faux : c'est « aussi haut qu'un but de foot »), « 2 piscines », « 2× Papa bras levés », « plus long que toi bébé », toute comparaison avec **« peut-être »** (si on ne sait pas, on ne le dit pas).
+- [ ] Repères du référentiel (rappel) : enfant **1 m** · Papa **1,8 m** · but de foot **2,44 m** · panier basket **3,05 m** · bus 2 étages **4,4 m** · girafe **5 m** · lampadaire **6 m** · bus RATP **12 m** · bus accordéon **18 m**. Poids : chat 4 kg · enfant 16 kg · Papa 80 kg · vache 0,7 t · rhino 1,5 t · hippo 3 t · éléphant 6 t.
 
 **E. MÉTAPHORES**
 - [ ] Concrètes et **fluides**, jamais obscures. « Un éclair » → décrire l'action réelle (« il bondissait hors de l'eau et HOP »).

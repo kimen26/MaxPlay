@@ -1487,6 +1487,16 @@ const DINO_AUDIO = {
   dilophosaurus:       _audioSet('dilophosaurus'),
   cryolophosaurus:     _audioSet('cryolophosaurus'),
   baryonyx:            _audioSet('baryonyx'),
+  // Vague Sauropodes + Armure/Cornes V2 (2026-06-12)
+  apatosaurus:        _audioSet('apatosaurus'),
+  camarasaurus:       _audioSet('camarasaurus'),
+  amargasaurus:       _audioSet('amargasaurus'),
+  plateosaurus:       _audioSet('plateosaurus'),
+  euoplocephalus:     _audioSet('euoplocephalus'),
+  kentrosaurus:       _audioSet('kentrosaurus'),
+  torosaurus:         _audioSet('torosaurus'),
+  protoceratops:      _audioSet('protoceratops'),
+  pachycephalosaurus: _audioSet('pachycephalosaurus'),
 };
 function dinoHasAudio(id) { return !!(DINO_AUDIO[id] && DINO_AUDIO[id].recap); }
 // Version du TEXTE audio — V1 = industrialisé EP-039 (2026-05), V2 = réécriture naturelle/fluide (2026-06+).
@@ -1496,6 +1506,9 @@ const DINO_AUDIO_VERSION = {
   // Vague Théropodes V2 (2026-06-12)
   spinosaurus: 'V2', giganotosaurus: 'V2', carcharodontosaurus: 'V2', allosaurus: 'V2', tarbosaurus: 'V2',
   albertosaurus: 'V2', ceratosaurus: 'V2', dilophosaurus: 'V2', carnotaurus: 'V2', cryolophosaurus: 'V2', baryonyx: 'V2',
+  // Vague Sauropodes + Armure/Cornes V2 (2026-06-12)
+  apatosaurus: 'V2', camarasaurus: 'V2', amargasaurus: 'V2', plateosaurus: 'V2',
+  euoplocephalus: 'V2', kentrosaurus: 'V2', torosaurus: 'V2', protoceratops: 'V2', pachycephalosaurus: 'V2',
 };
 function dinoAudioVersion(id) { return DINO_AUDIO_VERSION[id] || 'V1'; }
 

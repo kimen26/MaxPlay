@@ -34,6 +34,7 @@ MaxPlay/
 │   ├── minijeux/         ← PÔLE JEU → studio/minijeux/CLAUDE.md (code déployé dans site/)
 │   ├── dino/             ← PÔLE DINO → studio/dino/CLAUDE.md (code déployé dans site/, lié par rules/dino.md)
 │   ├── narration/        ← PÔLE NARRATION → studio/narration/CLAUDE.md
+│   ├── lunii/            ← distribution Lunii (STUdio) → studio/lunii/README.md
 │   └── max-adventure/    ← source Phaser (build → site/max-adventure/)
 ├── infra/                ← bot Telegram + serveur MCP llm-copains
 ├── memory/               ← transverse : MEMORY, MAX_PROFILE, VISION

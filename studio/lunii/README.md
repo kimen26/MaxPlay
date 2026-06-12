@@ -66,11 +66,25 @@ WiFi. La version conditionne le risque (v1/v2 = très fiable, v3 = prudence).
 
 ---
 
-## Idées de premiers packs
+## Packs construits
+
+| Pack | Script | Contenu | Statut |
+|------|--------|---------|--------|
+| **Tritri le Tricératops** (2026-06-12) | [`scripts/build-tritri-pack.mjs`](scripts/build-tritri-pack.mjs) | Cover (image+nom) → récit 5 blocs concat+loudnorm (≈4 min) | En bibliothèque locale, à transférer |
+
+La Lunii de Max est une **v2** (confirmé 2026-06-12) — terrain sûr.
+Les packs ajoutés cohabitent avec les histoires achetées et les enregistrements micro de
+l'appli : ils apparaissent comme des packs supplémentaires sur la molette, rien n'est écrasé.
+
+Les zips de packs vivent dans `%UserProfile%\.studio\library\` (PAS dans le repo git —
+seuls les scripts de build, rejouables, sont versionnés). UUIDs figés dans les scripts
+pour que les rebuilds ne créent pas de doublons.
+
+## Idées de prochains packs
 
 - **Pack « Histoires de Wex »** : menu → 001 Le pont cassé · 002 La libellule (audio canon déjà produits)
 - **Pack « Dinos de Max »** : menu par dino (molette = choisir son dino) → récit audio de
-  la fiche (Tritri en premier, évidemment 🦕)
+  la fiche, autres familles après Tritri
 
 ## Sources
 

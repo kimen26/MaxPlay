@@ -2,6 +2,17 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-06-12 — Premier pack Lunii « Tritri le Tricératops »
+
+**Fait :**
+- **Nouveau canal de distribution** : pôle `studio/lunii/` créé (STUdio 0.4.2 + JDK 17 installés, doc complète `studio/lunii/README.md`). La Lunii de Max = **v2** (terrain sûr, validé Papa Yann).
+- **Pack Tritri construit** : script rejouable [`studio/lunii/scripts/build-tritri-pack.mjs`](../../lunii/scripts/build-tritri-pack.mjs) — cover (image 320x240 + bloc nom) → récit complet (5 blocs site/audio/dinos/triceratops-*.mp3 concat + **loudnorm**, 44.1kHz mono, ≈4 min) → retour cover. UUIDs figés (rebuild stable). Zip déposé dans `~/.studio/library/`, **vérifié lu par l'API STUdio** (titre + vignette OK).
+- Réutilise les MP3 ElevenLabs existants tels quels (zéro régénération, process audio respecté).
+
+**Décidé :** packs Lunii = assemblage d'audio déjà canon, jamais de contenu neuf hors process. Prochain candidat : pack « Histoires de Wex » (001+002).
+
+**État au reboot :** pack en bibliothèque STUdio locale, en attente du transfert USB par Papa Yann (Lunii branchée + Luniistore fermé → glisser-déposer).
+
 ## 2026-06-09 — Banque de silhouettes dino (assets/)
 
 **Fait :**

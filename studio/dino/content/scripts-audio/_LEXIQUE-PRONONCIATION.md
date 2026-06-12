@@ -60,6 +60,7 @@
 | Shonisaure | **Cho-ni-saure** | sh→ch |
 | Shastasaure | **Chas-ta-saure** | sh→ch |
 | Archélon | **Ar-ké-lon** | ch→k |
+| Ophthalmosaure | **Of-tal-mo-saure** | ph→f, th→t |
 
 ---
 

@@ -1,5 +1,21 @@
 # Bot MaxPlay — architecture auth
 
+## Refonte fiabilité 2026-06-12
+
+- **Logs** : le bot écrit lui-même dans `bot.run.log` (append, survit aux redémarrages).
+  Les fichiers `bot-start.log`/`bot-start.err.log` ne contiennent que les erreurs de
+  lancement du hook SessionStart. Ne plus se fier à `bot.log`/`bot.err.log` (obsolètes).
+- **Aiguilleur 5 agents** : narration (opus) · game-dev (sonnet) · dino (sonnet) ·
+  max-adventure (sonnet) · quick (haiku). Le pôle détecté est injecté en tête de prompt
+  pour aider le routage CLAUDE.md côté CLI.
+- **Anti-zombie** : timeout → `kill()` puis `SIGKILL` forcé 5s après (sous Windows le
+  SIGTERM émulé peut être ignoré → avant, la promesse ne se réglait jamais et le
+  message « Claude réfléchit » restait affiché à vie sans erreur).
+- **Erreurs visibles** : l'erreur édite le message d'attente (1 seul appel API) au lieu
+  de delete+send. Battement de cœur toutes les 60s pendant le traitement.
+- **Singleton** : le port 3001 sert de verrou — un doublon log l'erreur dans
+  `bot.run.log` et s'arrête proprement.
+
 ## ✅ Le bot utilise la CLI `claude` (login Claude Code), PAS le SDK
 
 Depuis 2026-05-01 le bot **shell-exec** la CLI `claude` au lieu d'appeler le SDK

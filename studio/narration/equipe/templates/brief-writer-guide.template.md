@@ -13,7 +13,7 @@ usage: Brief enrichi pour le 1 writer GUIDÉ (Kimi K2.6 guidé). Inclut tout le 
 
 ## Section 1 — Tout le brief LIBRE
 
-[Inclure ici l'intégralité de `brief-writer-libre.template.md` : "Tu es", "Tu lis", "Tu produis", "Garde-fous de FORME", "Règles d'univers", "Checklist auto-cohérence", "Tu ne fais PAS"]
+[Inclure ici l'intégralité de `brief-writer-libre.template.md` (ACTIF) : "Tu es", "Tu lis", "Tu produis", "Garde-fous de FORME", "Règles d'univers", "Checklist auto-cohérence", "Tu ne fais PAS"]
 
 ---
 

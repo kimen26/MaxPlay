@@ -107,7 +107,7 @@ narration/
 | Fichier | Contenu |
 |---------|---------|
 | [`stories/INDEX.md`](stories/INDEX.md) | **Catalogue** des histoires |
-| [`stories/001-le-pont-casse/`](stories/001-le-pont-casse/) | Canon complet (540 mots, 10 étapes PROCESS) |
+| [`stories/001-le-pont-casse/`](stories/001-le-pont-casse/) | Canon complet (540 mots, 11 étapes PROCESS) |
 | [`stories/brainstorm-arc-1.md`](stories/brainstorm-arc-1.md) | Fiche brainstorm arc 1 (002-010) en cours |
 | [`stories/axes-histoires-en-stock.md`](stories/axes-histoires-en-stock.md) | Stock d'axes (10 unitaires + 5 transversaux) |
 | [`stories/_gabarit/`](stories/_gabarit/) | Dossier modèle à copier pour une nouvelle histoire |
@@ -141,7 +141,7 @@ narration/
 | Fichier | Rôle |
 |---------|------|
 | [`equipe/INDEX.md`](equipe/INDEX.md) | **Toujours — index équipe, arbre de décision agents** |
-| [`equipe/PROCESS.md`](equipe/PROCESS.md) | Workflow militaire 10 étapes (refonte 2026-05-08) |
+| [`equipe/PROCESS.md`](equipe/PROCESS.md) | Workflow militaire 11 étapes 0-10 (étape 2 = Brainstorm) |
 | [`equipe/patte-narrative-maxplay.md`](equipe/patte-narrative-maxplay.md) | Patte B+D+C (Kishōtenketsu + tranche de vie + cycle) |
 | [`equipe/lecons-vivantes.md`](equipe/lecons-vivantes.md) | Document vivant des patterns confirmés (P1-P10, G1-G6) |
 | [`equipe/templates/`](equipe/templates/) | 10 gabarits réutilisables (pitch, plan, briefs, sélection, kanban, synthèse) |
@@ -203,4 +203,4 @@ narration/
 
 ---
 
-> Process complet 10 étapes → [`equipe/PROCESS.md`](equipe/PROCESS.md) · Règles → [`narration/CLAUDE.md`](CLAUDE.md)
+> Process complet 11 étapes → [`equipe/PROCESS.md`](equipe/PROCESS.md) · Règles → [`narration/CLAUDE.md`](CLAUDE.md)

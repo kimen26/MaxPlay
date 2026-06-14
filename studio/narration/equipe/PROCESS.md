@@ -23,22 +23,25 @@
 
 ---
 
-## Vue d'ensemble — 10 étapes (refonte 2026-05-12)
+## Vue d'ensemble — 11 étapes (0 à 10)
+
+> **Chiffre canonique : 11 étapes, numérotées 0 à 10.** L'étape 2 (Brainstorm) existe depuis 2026-05-15. Source unique du chiffre : [`../pmo/INVARIANTS.md`](../pmo/INVARIANTS.md).
 
 ```
 0.  Idée                    (Auteur)                   → INBOX.md section datée
 1.  Pitch+Plan              (Conseiller)               ✅ valide auteur     → 1-pitch-plan.md
+2.  Brainstorm              (2A boss ✅ + 2B équipe Kimi/DeepSeek/Grok)     → kanban + matière briefs
 3.  Briefs                  (Directeur)                                    → 3-briefs/
-4.  Versions writers        (14 versions writers — calibration multi-modèles, refonte 2026-05-12)                        → 4-versions-writers/
-5.  Lecteurs témoins        (Panel cible : 20 lecteurs)                    → 5-lecteurs-temoins/
-6.  Sélection               (Directeur)                ✅ valide auteur    → 6-selection.md
+4.  Versions writers        (14 versions — calibration multi-modèles)      → 4-versions-writers/
+5.  Lecteurs témoins        (Panel : 20 lecteurs)                          → 5-lecteurs-temoins/
+6.  Sélection               (Directeur)                ✅ valide auteur     → 6-selection.md
 7.  Rewrite                 (Writer du top 1, 1 cycle max)                 → 7-rewrite/
 8.  GateKeeper              (Haiku)                                        → 8-gatekeeper-verdict.md
-9.  Re-relecture rewrite    (3-4 lecteurs ciblés)                          → 9-relecture-rewrite/
-10. Canon                   (Directeur + PMO)          ✅ valide auteur    → 10-texte.md
+9.  Re-relecture rewrite    (Panel : 20 lecteurs)                          → 9-relecture-rewrite/
+10. Canon                   (Directeur + PMO)          ✅ valide auteur     → 10-texte.md
 ```
 
-> **Étape 2 supprimée 2026-05-12** : fusion avec étape 1 (le plan léger était devenu quasi-identique au pitch). L'Architecte est mis en standby. Le Conseiller produit désormais pitch+plan en un seul fichier `1-pitch-plan.md`. La numérotation 3-10 est conservée pour cohérence visuelle des préfixes.
+> **Historique étape 2** : l'étape 2 d'origine (Plan, Architecte) a été **fusionnée dans l'étape 1** le 2026-05-12. Le créneau « 2 » a ensuite été **réutilisé pour le Brainstorm** (DEC-PROCESS-002, 2026-05-15). L'Architecte reste supprimé.
 
 **SLA :** 3 jours max sur chaque attente auteur (étapes 1/6/10). Au-delà → `kanban.md` passe en 🔴 BLOQUÉ + log auto dans `pmo/sprint-log.md`.
 

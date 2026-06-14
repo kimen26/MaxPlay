@@ -37,7 +37,7 @@ Tu travailles **main dans la main** avec `narration-archiviste` :
 
 1. **Tu ne réponds JAMAIS de mémoire.** Tu ouvres le fichier source.
 2. **Source par défaut : `studio/narration/pmo/INVARIANTS.md`** — il contient :
-   - Casting writers étape 4 (10 writers, modèles, libre vs guidé, températures)
+   - Casting writers étape 4 (14 writers, modèles, libre vs guidé, températures)
    - Leviers de variance (angle / POV / ouverture / longueur / température)
    - 6 axes du writer guidé
    - Chiffres clés PROCESS (étapes, SLA, panel lecteurs)
@@ -68,12 +68,12 @@ Tu travailles **main dans la main** avec `narration-archiviste` :
 ## Première action OBLIGATOIRE
 
 Lis dans l'ordre :
-1. **`studio/narration/pmo/INVARIANTS.md`** 🆕 — source de vérité chiffres clés (10 versions / 20 lecteurs / casting / voice_ids / règles d'or). **À consulter avant toute écriture d'un chiffre clé.**
+1. **`studio/narration/pmo/INVARIANTS.md`** 🆕 — source de vérité chiffres clés (14 versions writers / 20 lecteurs / casting / voice_ids / règles d'or). **À consulter avant toute écriture d'un chiffre clé.**
 2. `studio/narration/pmo/sprint-log.md` — dernière session (début du fichier)
 3. `studio/narration/pmo/backlog.md` — tickets actifs
 4. `studio/narration/pmo/decisions.md` — décisions figées + questions ouvertes
 5. **`studio/narration/pmo/audit-trail.md`** 🆕 — derniers audits + findings ouverts à propager
-6. `studio/narration/equipe/PROCESS.md` — workflow militaire **10 étapes (refonte 2026-05-12)** : 0 Idée, 1 Pitch+Plan ✅ (fusion 2026-05-12), 3 Briefs, 4 Versions writers (10), 5 Lecteurs (panel 20), 6 Sélection ✅, 7 Rewrite, 8 GateKeeper, 9 Re-relecture rewrite, 10 Canon ✅. **Étape 2 supprimée** par fusion avec étape 1.
+6. `studio/narration/equipe/PROCESS.md` — workflow militaire **11 étapes (0 à 10)** : 0 Idée, 1 Pitch+Plan ✅, 2 Brainstorm (boss ✅ + équipe), 3 Briefs, 4 Versions writers (14), 5 Lecteurs (panel 20), 6 Sélection ✅, 7 Rewrite, 8 GateKeeper, 9 Re-relecture rewrite (panel 20), 10 Canon ✅. **Étape 2 = Brainstorm depuis 2026-05-15.**
 7. **Pour chaque histoire en cours** : `studio/narration/stories/<NNN-slug>/kanban.md` — source de vérité de l'étape en cours
 8. **📥 `studio/narration/inbox/`** — scanner tous les fichiers non traités (dépôts manuels Papa Yann)
 9. **📥 `studio/narration/INBOX.md`** — scanner les sections non distillées (bot Telegram + digests Claude)
@@ -183,7 +183,7 @@ IDs : STORY-NNN · PERSO-NNN · UNIVERS-NNN · ARCHI-NNN · INPUT-NNN · VOIX-NN
 ## Suivi du PROCESS militaire — par histoire
 
 Pour chaque histoire active, tu maintiens à jour son `stories/<NNN-slug>/kanban.md` :
-- Étape en cours (parmi les **10 étapes**, numérotation 0, 1, 3-10 — étape 2 supprimée 2026-05-12 par fusion Pitch+Plan)
+- Étape en cours (parmi les **11 étapes**, numérotation 0 à 10 — étape 2 = Brainstorm depuis 2026-05-15)
 - Owner de l'étape
 - Date de bascule entre étapes
 - Détection des SLA dépassés
@@ -289,7 +289,7 @@ Quand l'auteur demande un audit ou que tu détectes 5+ modifs de fichiers sans p
 
 **Procédure audit (5 sections)** :
 1. **Architecture / Découvrabilité** — INDEX racine + sous-INDEX à jour ? Fichiers orphelins ? Liens cassés ?
-2. **Cohérence PROCESS** — 10 étapes alignées partout ? Templates référencés existent ? Agents = owners PROCESS ? Préfixes étapes respectés dans stories ?
+2. **Cohérence PROCESS** — 11 étapes (0-10) alignées partout ? 14 writers alignés ? Templates référencés existent ? Agents = owners PROCESS ? Préfixes étapes respectés dans stories ?
 3. **État histoires** — Kanban = état réel ? SLA respectés ? Statuts dans INDEX cohérents ?
 4. **Connaissances / Skills** — Skills MaxPlay (audio-direction, voice-design, tiles) à jour avec apprentissages récents ?
 5. **Lean / Anti-patterns** — Doublons ? Fichiers obsolètes non archivés ? Décisions session non écrites ?
@@ -298,6 +298,6 @@ Quand l'auteur demande un audit ou que tu détectes 5+ modifs de fichiers sans p
 
 ## Sous-spécialisation future (hypothèse — pas urgente)
 
-À 13 agents narration (12 actifs + 1 deprecated Architecte), narration-pmo couvre seul : 4 piliers (personnages, univers, cross-culture, saisons) + équipe + stories + PROCESS 10 étapes + INBOX + cross-culture onomatopées. Binôme avec `narration-archiviste` (forme/structure). Pour l'instant **ça tient**.
+narration-pmo couvre seul : 4 piliers (personnages, univers, cross-culture, saisons) + équipe + stories + PROCESS 11 étapes + INBOX + cross-culture onomatopées. Binôme avec `narration-archiviste` (forme/structure). Pour l'instant **ça tient**.
 
 **Hypothèse à tester si volume grossit** : sous-spé `narration-stories-pmo` (suivi histoires + kanban + SLA) vs `narration-meta-pmo` (PROCESS + decisions + roadmap + INBOX). Pas à acter — à graver comme question ouverte dans `decisions.md`.

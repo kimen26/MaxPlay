@@ -2,7 +2,7 @@
 
 > **Source de vérité de l'étape en cours.** Lu en premier par tout agent qui reprend l'histoire.
 > Mis à jour par le **owner de l'étape en cours** dès qu'il termine son livrable.
-> Refonte 2026-05-12 : PROCESS passé à 10 étapes (étape 2 supprimée, fusion Pitch+Plan).
+> PROCESS = 11 étapes (0 à 10). Étape 2 = Brainstorm (boss + équipe) depuis 2026-05-15.
 
 ---
 

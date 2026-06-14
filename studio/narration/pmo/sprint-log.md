@@ -25,6 +25,29 @@
 
 ---
 
+## 2026-06-14 — TOILETTAGE BACKLOG POST-AUDIT COMPLET : 4 TICKETS CLOS SUR PREUVE
+
+**Objectif** : Appliquer remontées audit FOND 2026-06-14 (main agent) — clore tickets dont les livrables existent et sont validés.
+
+**Fait** :
+- [x] **VOIX-002 → ✅ TERMINÉ 2026-05-16** : narrateurs H+F voice_ids créés dans `voice-map.json` (cbRcktt2xvoeFpdvW2wg + aHKEGRjW94hqXc6gaItG). Prêt pour prod audio dino.
+- [x] **CRAFT-001 + CRAFT-002 → ✅ TERMINÉ 2026-06-03** : skill parent `narration-craft/` + 16-18 sous-fichiers (storytelling → execution, gaps oralité/refrains). SKILL.md L.36 confirme casting V1 figé appliqué. Prêt câblage PROCESS étapes 2B/3/7/10.
+- [x] **ARCHI-014 → ✅ TERMINÉ 2026-05-16** : `_writer-system.md` créé. STORY-002 kanban L.30 confirme brief-histoire refondé format système/utilisateur (DEC-WRITER-ARCH-001). Gabarits adaptés, PROCESS étape 3-4 évasé.
+- [x] **VOIX-001 → ✅ REQUALIFIÉ (COUVERT 2026-06-14)** : rôle "voice-director" (markup tags v3) assuré par `narration-audio` (pose tags) + `narration-audio-writer` (oralité). Agents rénovés 2026-06-14. Pas besoin agent séparé — pré-requis audio levé. NOTE : ticket était CRITIQUE (pré-requis) → impact SLA positif.
+- [x] **ARCHI-CLEAN-TEMPLATES → ✅ FAIT 2026-06-14** : archivage 3 templates (pitch.template.md, plan-histoire.template.md, brief-univers.template.md) + nettoyage refs (cartographie, INDEX, leçons-vivantes, brief-writer-guide). **Confirmation** : `brief-writer-libre.template.md` ACTIF — PAS archivé (injecté MCP writers étape 4). Vérification finale : 0 lien cassé. Refs stockées dans `_archive/README.md`.
+
+**Décisions applicables** :
+- 4 tickets ancrage audit = preuve fichier + changement backlog status ✅
+- Reclassement VOIX-001 = couvert par refonte agents, non "supprimé"
+- ARCHI-CLEAN-TEMPLATES = ticket structurel séquencé après ARCHI-014 (deps)
+
+**État au reboot** :
+- Backlog toiletté : 4 clos, 1 créé (5 changements de statut)
+- Tickets actifs restants : STORY-002 (étape 6 BLOQUÉ SLA) + ARCHI-006 + ARCHI-014-TEMPLATE-BOUSSOLE = 3 actifs (max respecté)
+- Décision figée applicable : DEC-AUDIO-PRODUCTION-001 v3 durcissements levés (VOIX-001 couvert)
+
+---
+
 ## 2026-06-08 — RÉSURRECTION CRAFT NARRATIF : DEC-NARR-CRAFT-RESURRECTION FIGÉE + 4 TICKETS CRÉÉS
 
 **Objectif** : Logger décision Papa Yann 2026-06-08 — activation bibliothèque CRAFT (16 skills masterclass) pour pipeline éditorial. Graver invariants casting V1 obligatoire. Créer tickets d'implémentation CRAFT-001 à 004.

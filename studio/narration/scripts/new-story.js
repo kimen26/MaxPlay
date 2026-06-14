@@ -103,7 +103,7 @@ function main() {
 
   console.log(`✅ Histoire créée : stories/${folderName}/`);
   console.log(`   → Éditez ${destDir}/1-pitch-plan.md (étape 1 Pitch+Plan fusionnés, refonte 2026-05-12)`);
-  console.log(`   → Mettez à jour ${destDir}/kanban.md au fil des 10 étapes`);
+  console.log(`   → Mettez à jour ${destDir}/kanban.md au fil des 11 étapes (0-10)`);
   console.log(`   → Workflow complet : narration/equipe/PROCESS.md`);
   console.log(`   → Convention préfixes : 1-pitch-plan / 3-briefs / 4-versions-writers / 5-lecteurs-temoins / 6-selection / 7-rewrite / 8-gatekeeper / 9-relecture-rewrite / 10-texte`);
 }

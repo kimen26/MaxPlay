@@ -229,7 +229,7 @@ Identification corporelle/émotionnelle d'abord. Goût pour la miniature et le r
 
 ## 7. Implications pour le brainstorm MaxPlay arc 1 (9 histoires printemps)
 
-1. **Calibrer 350-450 mots** chacune, structure Kishōtenketsu, fin sentie. Refrain ou onomatopée par histoire (transposable phonétiquement dans les 8 cultures cf. [`onomatopees-cross-culture.md`](onomatopees-cross-culture.md)).
+1. **Calibrer 350-450 mots** chacune, structure Kishōtenketsu, fin sentie. Refrain ou onomatopée par histoire (transposable phonétiquement dans les 8 cultures cf. [`catalogue-onomatopees.md`](../../../cross-culture/onomatopees/catalogue-onomatopees.md)).
 2. **Wex = miroir conscient, pas héros actif** — il regarde, sent, reconnaît. Sa présence valide le regard de l'enfant. Ne jamais lui donner l'action centrale ; toujours la fonction d'attestation.
 3. **Garantir 9 « moments-héros sensoriels »** — un par compagnon, un par histoire. Chaque ennéatype, calme ou expressif, a son geste précis qui résout/transforme la scène. Tableau de garantie à tenir : Melki, Mimi, Dadou, Madie, Lulu, Pierrot, Raph, Juju, Nono.
 4. **Privilégier les recoins du printemps** : flaque, bourgeon, fourmilière, talus, mare, ruisseau fin, terrier, abri sous feuille. Pas grands paysages — **miniatures vivantes** (Bachelard). Sobriété visuelle japonaise (Senzaki et al.).

@@ -34,7 +34,7 @@ Lis dans cet ordre :
 2. `studio/narration/pmo/audit-trail.md` — derniers findings structurels ouverts
 3. `studio/narration/stories/INDEX.md` — catalogue maître
 4. `studio/narration/stories/_gabarit/` — **structure type de référence** (la source de vérité du gabarit story)
-5. `studio/narration/equipe/PROCESS.md` — workflow militaire 10 étapes (refonte 2026-05-12)
+5. `studio/narration/equipe/PROCESS.md` — workflow militaire 11 étapes (0 à 10 ; chiffre canonique = INVARIANTS.md)
 6. `studio/narration/equipe/ORGANIGRAMME.md` — agents et chaîne de commandement
 
 ---

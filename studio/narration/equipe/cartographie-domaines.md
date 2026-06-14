@@ -3,7 +3,7 @@ maintenu_par: Directeur (décisions contenu) + Archiviste (structure physique)
 mis_a_jour: 2026-05-15
 ---
 
-> Source de vérité courante : `PROCESS.md` (10 étapes) + `pmo/INVARIANTS.md`
+> Source de vérité courante : `PROCESS.md` (11 étapes, 0-10) + `pmo/INVARIANTS.md`
 > Dernières refontes : 2026-05-12 (fusion étape 1+2, Architecte deprecated) · 2026-05-15 (étape 2 recréée Brainstorm boss+équipe, system/user split writers, brief-univers + _writer-package obsolètes)
 
 # Cartographie des domaines — Narration MaxPlay
@@ -107,7 +107,7 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 | `stories/<NNN-slug>/6-selection.md` | Choix version base + éléments à récupérer + brief rewrite | Directeur | 6 |
 | `stories/<NNN-slug>/7-rewrite/<llm>-rewrite-v1.md` | Rewrite (1 cycle max) | Writer top 1 | 7 |
 | `stories/<NNN-slug>/8-gatekeeper-verdict.md` | PASS/CORRECTIONS + motif | GateKeeper | 8 |
-| `stories/<NNN-slug>/kanban.md` | Suivi des 10 étapes (source de vérité reprise) | owner d'étape | toutes |
+| `stories/<NNN-slug>/kanban.md` | Suivi des 11 étapes (source de vérité reprise) | owner d'étape | toutes |
 | `stories/<NNN-slug>/5-synthese-lecteurs.md` | Consolidation Directeur des retours lecteurs (étape 5) | Directeur | 5 → 6 |
 | `stories/<NNN-slug>/9-relecture-rewrite/` | Panel 20 re-relecture du rewrite (exception STORY-001 : panel 6) | Lecteurs | 9 |
 | `stories/<NNN-slug>/10-texte.md` | **CANON** — figé post-GateKeeper PASS + auteur-validé | Directeur | 10 |
@@ -116,7 +116,7 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 
 **Règle :** rien n'est effacé. Versions abandonnées → `_archive/`. Post-canon V2/V3 : `texte.md` actuel → `_archive/v1-YYYY-MM-DD.md`, nouveau `texte.md`.
 
-**Référence complète :** [`PROCESS.md`](PROCESS.md) (workflow militaire 10 étapes — refonte 2026-05-08, ajout étape 9 re-relecture rewrite).
+**Référence complète :** [`PROCESS.md`](PROCESS.md) (workflow militaire 11 étapes, 0-10 — étape 2 = Brainstorm depuis 2026-05-15).
 
 ---
 
@@ -130,13 +130,13 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 | `equipe/ORGANIGRAMME.md` | Workflow complet 6 phases | Directeur | Directeur + Auteur | Auteur |
 | `equipe/cartographie-domaines.md` | Ce fichier | Directeur | Directeur + Archiviste | Auteur |
 | ~~`equipe/brief-univers.md`~~ | **OBSOLÈTE 2026-05-15** — contenu migré dans `saisons/saison-1/arc-1-objet-decor/_writer-system.md` | — | — | — |
-| `equipe/templates/plan-histoire.template.md` | Template Plan d'Histoire | Architecte | Architecte | Directeur |
+| ⚠️ **ARCHIVÉ 2026-06-14** — `equipe/templates/_archive/plan-histoire.template.md` | Template Plan d'Histoire (étape 2 supprimée 2026-05-12) — **Ne plus utiliser.** Contenu fusionné dans `pitch-plan.template.md`. | Architecte (deprecated) | — | — |
 | `equipe/templates/selection.template.md` | Template sélection Directeur (ex-decision) | Directeur | Directeur | Directeur |
 | `equipe/templates/{pitch,brief-*,kanban,synthese}.template.md` | Templates restants (étapes 1, 3, kanban, 9) | owners respectifs | owners | Directeur |
 | `stories/_gabarit/` | Gabarit de dossier histoire (copie de référence) | Archiviste | Archiviste | Archiviste |
 | `equipe/memoire-dir.md` | Mémoire Directeur inter-sessions | Directeur | Directeur | Directeur |
 | `equipe/memoire-conseiller.md` | Mémoire Conseiller (arcs, saisons, feedback) | Conseiller | Conseiller | Directeur |
-| `equipe/memoire-architecte.md` | Mémoire Architecte (plans, structures) | Architecte | Architecte | Directeur |
+| `_archive/memoire-architecte.md` | ⚠️ Mémoire Architecte — **agent supprimé 2026-05-12**, fichier archivé pour traçabilité, non maintenu | — | — | — |
 | `equipe/memoire-gatekeeper.md` | Mémoire GateKeeper (erreurs récurrentes) | GateKeeper | GateKeeper | — |
 | `equipe/profils-lecteurs.md` | Fiches 7 profils + 8 cultures | Directeur | Directeur | Directeur |
 | `equipe/sources-sciences.md` | Références documentaires | Science | Science | Science |
@@ -191,7 +191,7 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 | `infra/mcp/MODELS.md` | Configuration LLM (Grok 4.3 / Kimi K2.6 / DeepSeek V4-Pro) — dépréciations + historique | Auteur + PMO |
 | `narration/cross-culture/onomatopees/catalogue-onomatopees.md` | Catalogue 37 onomatopées cross-langues (FR/EN/JA/ES/PT-BR/DE/AR/ZH) | Conseiller |
 | `narration/equipe/lecons-vivantes.md` | Document vivant des patterns narratifs (P1-P6, G1-G6, axes) — mis à jour à chaque canonisation | Conseiller + Directeur |
-| `narration/equipe/templates/brief-writer-libre.template.md` | Brief commun aux 9 writers libres (forme uniquement) | Directeur |
+| `narration/equipe/templates/brief-writer-libre.template.md` | Brief commun aux 9 writers libres (forme uniquement) — **ACTIF, injecté dans tous les prompts writers étape 4. Pas d'archivage.** | Directeur |
 | `narration/equipe/templates/brief-writer-guide.template.md` | Brief enrichi pour 1 writer guidé (annexe AXES 1-6) | Directeur |
 | `.claude/agents/narration-archiviste.md` | Archiviste | Auteur |
 | `.claude/agents/narration-science.md` | Science | Auteur |

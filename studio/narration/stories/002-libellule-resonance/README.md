@@ -73,6 +73,6 @@ relations:
 
 ## Liens
 
-- Workflow PROCESS : [`../../equipe/PROCESS.md`](../../equipe/PROCESS.md) (10 étapes, refonte 2026-05-12)
+- Workflow PROCESS : [`../../equipe/PROCESS.md`](../../equipe/PROCESS.md) (11 étapes 0-10, étape 2 = Brainstorm)
 - Invariants : [`../../pmo/INVARIANTS.md`](../../pmo/INVARIANTS.md)
 - Décisions : [`../../pmo/decisions.md`](../../pmo/decisions.md)

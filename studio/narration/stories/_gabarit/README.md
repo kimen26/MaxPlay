@@ -80,6 +80,6 @@ _(2-3 lignes, pas de spoiler de fin. Rempli par le Directeur à l'étape 10.)_
 
 ## Liens
 
-- Détail process : [`../../equipe/PROCESS.md`](../../equipe/PROCESS.md) (10 étapes, refonte 2026-05-12)
+- Détail process : [`../../equipe/PROCESS.md`](../../equipe/PROCESS.md) (11 étapes 0-10, étape 2 = Brainstorm)
 - Gabarit complet : [`../_gabarit/`](../_gabarit/)
 - Invariants : [`../../pmo/INVARIANTS.md`](../../pmo/INVARIANTS.md)

@@ -23,7 +23,7 @@
 
 | Source de vérité | Fichier |
 |------------------|---------|
-| Chiffres clés (10 versions / 20 lecteurs / casting / voice_ids / règles d'or) | [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md) |
+| Chiffres clés (14 versions writers / 20 lecteurs / casting / voice_ids / règles d'or) | [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md) |
 | Décisions définitives + questions ouvertes | [`pmo/decisions.md`](pmo/decisions.md) |
 | Tickets actifs (max 3 en cours) | [`pmo/backlog.md`](pmo/backlog.md) |
 | Journal sessions | [`pmo/sprint-log.md`](pmo/sprint-log.md) |
@@ -75,9 +75,9 @@ Toujours lire [`personnages/INDEX.md`](personnages/INDEX.md) avant d'écrire un 
 
 ---
 
-## PROCESS militaire 10 étapes
+## PROCESS militaire 11 étapes (0 à 10)
 
-> ⚠️ Détail complet **auto-chargé** par `.claude/rules/stories-process.md` dès que Claude touche `narration/stories/**`. Résumé pour navigation :
+> ⚠️ Détail complet **auto-chargé** par `.claude/rules/stories-process.md` dès que Claude touche `narration/stories/**`. Chiffres canoniques (étapes, writers, lecteurs) = [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md). Résumé pour navigation :
 
 ```
 0.  Auteur          → INBOX.md (idée brute)
@@ -86,7 +86,7 @@ Toujours lire [`personnages/INDEX.md`](personnages/INDEX.md) avant d'écrire un 
 2.  Brainstorm boss (Papa Yann + Conseiller) → lieu / objet / trio / intention ✅ valide auteur
     Brainstorm équipe (Kimi + DeepSeek + Grok + Conseiller) → matière brute briefs
 3.  Directeur       → 3-briefs/{personnages, histoire}.md  (system prompt → `_writer-system.md` par arc)
-4.  10 Writers      → 4-versions-writers/ (2 Claude + 4 Kimi (dont 1 guidé) + 2 DeepSeek + 2 Grok)
+4.  14 Writers      → 4-versions-writers/ (6 Claude + 4 Kimi (dont 1 guidé) + 2 DeepSeek + 2 Grok — INVARIANTS)
 5.  20 Lecteurs     → 5-lecteurs-temoins/ + 5-synthese-lecteurs.md
 6.  Directeur       → 6-selection.md (base + greffes)              ✅ valide auteur
 7.  Writer top 1    → 7-rewrite/<llm>-rewrite-v1.md

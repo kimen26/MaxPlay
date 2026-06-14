@@ -1,6 +1,6 @@
 ﻿# Index des Histoires
 
-> Maintenu manuellement à chaque canonisation. Dernière mise à jour : 2026-05-12 (soir — refonte PROCESS 10 étapes + préfixes étapes).
+> Maintenu manuellement à chaque canonisation. Dernière mise à jour : 2026-06-14 (PROCESS 11 étapes 0-10 + préfixes étapes).
 
 ---
 
@@ -27,7 +27,7 @@ Refonte complète du catalogue narratif. Décisions :
 - **001 nouveau** = ex-`003-le-pont-casse-v2` (kimi-rewrite-v2 canonisé). Auteur top 1 = Kimi K2.
 - **Suppressions définitives** (rm -rf) : ancien 001 (canon V1 Monsieur Ferretti + V2 correction), 002 (Le Rire qui reste), 004 (Pont Cassé Températures — test variance), 003-la-confidence (workshop abandonné), `series/`, `ultime_debrief.md`, `ultime_relecture.md`, `SYNTHESE-2026-05-06.md`.
 - **Conservé** : `_gabarit/` (modèle), `axes-histoires-en-stock.md` (stock d'idées pour brainstorm 005+).
-- **Justification** : base propre pour repartir avec la BONNE structure (PROCESS 11 étapes, panel 20 lecteurs, casting writers 10, lecons-vivantes vivant).
+- **Justification** : base propre pour repartir avec la BONNE structure (PROCESS 11 étapes, panel 20 lecteurs, casting writers 14, lecons-vivantes vivant).
 
 Les patterns observés sur les histoires supprimées sont consolidés dans [`equipe/lecons-vivantes.md`](../equipe/lecons-vivantes.md) (P1-P7, G1-G6, axes 1-6).
 
@@ -43,7 +43,7 @@ Prochaine histoire après 002 = **003** (renumérotation séquentielle, l'ancien
 
 ## Workflow par histoire
 
-Voir [`equipe/PROCESS.md`](../equipe/PROCESS.md) — **10 étapes** (0, 1, 3-10 — étape 2 supprimée 2026-05-12 par fusion Pitch+Plan).
+Voir [`equipe/PROCESS.md`](../equipe/PROCESS.md) — **11 étapes** (0 à 10 ; étape 2 = Brainstorm depuis 2026-05-15).
 
 ### Convention préfixes fichiers (depuis 2026-05-12)
 

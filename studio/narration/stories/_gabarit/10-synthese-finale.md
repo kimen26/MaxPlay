@@ -81,7 +81,6 @@
 
 - ☐ `memoire-conseiller.md` mis à jour (patterns validés, retours lecteurs)
 - ☐ `memoire-dir.md` mis à jour (décisions de sélection, pourquoi cette version a gagné)
-- ☐ `memoire-architecte.md` mis à jour (plan qui a bien/mal fonctionné)
 - ☐ `memoire-gatekeeper.md` mis à jour (erreurs récurrentes, patterns à surveiller)
 - ☐ `pmo/decisions.md` mis à jour (si nouvelles règles)
 - ☐ `arcs/<arc-slug>/fiche.md` mis à jour (si l'histoire affine la qualité d'arc)

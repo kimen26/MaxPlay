@@ -8,7 +8,7 @@ paths:
 > Cette règle est **chargée automatiquement** dès que Claude lit/édite un fichier sous `studio/narration/stories/`.
 > Source de vérité complète : [`studio/narration/equipe/PROCESS.md`](../../studio/narration/equipe/PROCESS.md).
 
-## 10 étapes — owner par étape
+## 11 étapes (0 à 10) — owner par étape
 
 | # | Étape | Owner | Output | ✅ valide auteur |
 |---|-------|-------|--------|------------------|
@@ -51,8 +51,8 @@ studio/narration/stories/<NNN-titre-slug>/
 │   ├── claude-libre.md · kimi-guide.md · …
 │   └── (note d'intention en fin de chaque fichier writer, après ---)
 ├── 5-lecteurs-temoins/
-│   ├── enfant-fille.md · enfant-garcon.md
-│   ├── dyade-maman-fille.md · dyade-maman-garcon.md · …
+│   ├── G-A1.md · F-A2.md · …  (codes profils, voir equipe/profils-lecteurs.md)
+│   ├── DPG-A.md · DMF-B.md · …
 │   └── 5-synthese-lecteurs.md
 ├── 6-selection.md
 ├── 7-rewrite/<llm>-rewrite-v1.md

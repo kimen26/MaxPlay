@@ -1,7 +1,7 @@
 # Équipe éditoriale — INDEX
 
 > **Point d'entrée du dossier `equipe/`.** Charger ce fichier en premier pour savoir quoi lire selon la tâche.
-> Dernière mise à jour : 2026-05-12 (PROCESS 10 étapes après fusion pitch+plan, Architecte deprecated, Archiviste élevé au rang de maillon central proactif)
+> Dernière mise à jour : 2026-06-14 (PROCESS 11 étapes 0-10, étape 2 = Brainstorm, Architecte supprimé, templates obsolètes archivés)
 
 ---
 
@@ -9,7 +9,7 @@
 
 | Tu veux… | Lis d'abord |
 |---|---|
-| Comprendre comment on écrit une histoire | [`PROCESS.md`](PROCESS.md) — workflow militaire 10 étapes |
+| Comprendre comment on écrit une histoire | [`PROCESS.md`](PROCESS.md) — workflow militaire 11 étapes (0-10) |
 | Savoir qui fait quoi (agents, modèles, rôles) | [`ORGANIGRAMME.md`](ORGANIGRAMME.md) |
 | Trouver où ranger une info | [`cartographie-domaines.md`](cartographie-domaines.md) |
 | Comprendre la patte narrative MaxPlay | [`patte-narrative-maxplay.md`](patte-narrative-maxplay.md) |
@@ -26,7 +26,7 @@
 
 | Fichier | Rôle | Mis à jour par |
 |---|---|---|
-| [`PROCESS.md`](PROCESS.md) | Workflow militaire 10 étapes — owners, I/O, critères PASS, reprise | Directeur + Auteur |
+| [`PROCESS.md`](PROCESS.md) | Workflow militaire 11 étapes (0-10) — owners, I/O, critères PASS, reprise | Directeur + Auteur |
 | [`ORGANIGRAMME.md`](ORGANIGRAMME.md) | Vue d'ensemble agents + chaîne de commandement + cérémonies | Directeur |
 | [`cartographie-domaines.md`](cartographie-domaines.md) | Où va quelle info, qui décide, invariants | Directeur + Archiviste |
 | [`patte-narrative-maxplay.md`](patte-narrative-maxplay.md) | Patte B+D+C : Kishōtenketsu noyau + tranche de vie voix + cycle cadre. Outils E/A doux. F écartée. ✅ Créé 2026-04-30. | Conseiller + Directeur |
@@ -39,15 +39,16 @@
 
 | Template | Sert à | Lu/rempli par |
 |---|---|---|
-| `pitch.template.md` | Étape 1 — pitch MOYEN 4 cases | Conseiller |
-| `plan-histoire.template.md` | ⚠️ Deprecated 2026-05-12 (étape 2 supprimée par fusion Pitch+Plan). À ne plus utiliser. Utiliser `pitch.template.md` étendu par le Conseiller. | — |
-| `brief-univers.template.md` | Étape 3 — règles univers stateless | Directeur |
+| **`pitch-plan.template.md`** | **Étape 1 — pitch+plan fusionnés (template actuel 2026-05-13).** | Conseiller |
+| ⚠️ **ARCHIVÉ 2026-06-14** — `pitch.template.md` | ~~Étape 1~~ — legacy, pré-fusion. Contenu migré vers `pitch-plan.template.md`. Ne plus utiliser. | — |
+| ⚠️ **ARCHIVÉ 2026-06-14** — `plan-histoire.template.md` | ~~Étape 2~~ — supprimée 2026-05-12 (fusion avec étape 1). Contenu migré vers `pitch-plan.template.md`. Ne plus utiliser. | — |
+| ⚠️ **ARCHIVÉ 2026-06-14** — `brief-univers.template.md` | ~~Étape 3~~ — contenu migré dans `_writer-system.md` par arc (2026-05-15). Ne plus utiliser. | — |
 | `brief-personnages.template.md` | Étape 3 — casting figé + ennéatypes dilués | Directeur |
 | `brief-histoire.template.md` | Étape 3 — pitch + plan + contraintes + variance writers | Directeur |
-| **`brief-writer-libre.template.md`** | Étape 4 — brief commun aux 9 writers libres (forme uniquement, no contenu imposé) | Directeur |
+| **`brief-writer-libre.template.md`** | **Étape 4 — ACTIF** — brief commun aux 9 writers libres (forme uniquement, no contenu imposé). Injecté dans tous les prompts writers. **Ne pas archiver.** | Directeur |
 | **`brief-writer-guide.template.md`** | Étape 4 — brief enrichi pour le 1 writer guidé (Kimi) avec annexe AXES 1-6 | Directeur |
 | `selection.template.md` | Étape 6 — sélection Directeur post-lecteurs | Directeur |
-| `kanban.template.md` | Suivi des 10 étapes par histoire | PMO + owner d'étape |
+| `kanban.template.md` | Suivi des 11 étapes par histoire | PMO + owner d'étape |
 | `synthese.template.md` | Étape 9 — compilation analyses | Directeur |
 
 ### Configuration LLM
@@ -162,7 +163,7 @@ Statuts possibles : `pitch` · `plan` · `briefs` · `versions` · `lecteurs` ·
 
 ### SLA et alertes
 
-- **3 jours max** d'attente auteur sur étapes 1, 6, 10 (pitch, sélection, canon — PROCESS 10 étapes)
+- **3 jours max** d'attente auteur sur étapes 1, 6, 10 (pitch, sélection, canon — PROCESS 11 étapes)
 - Au-delà → kanban 🔴 BLOQUÉ + log auto `pmo/sprint-log.md`
 - PMO surveille et alerte
 

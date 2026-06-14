@@ -1,61 +1,61 @@
-# Pitch + Plan — STORY-002 La Libellule impossible
+# Pitch + Plan Â— STORY-002 La Libellule impossible
 
-> Document produit par le **Conseiller** (refonte 2026-05-12 : pitch et plan fusionnés).
+> Document produit par le **Conseiller** (refonte 2026-05-12 : pitch et plan fusionnÃ©s).
 > Patte : **Kishotenketsu noyau (B) + voix tranche de vie (D) + cadre cyclique (C)**.
 
 ---
 
 ## 1. Pitch (4 cases)
 
-- **Objet titre** : **la libellule** — rapide, brillante, impossible à attraper. Bourdonne. Vire, plane, disparaît, revient. La chose extraordinaire qu'on ne peut pas garder, mais qu'on peut sentir.
-- **Trio (Wex + Juju + Nono)** : Juju (T8, énergie/contact) · Nono (T9, résonance) · Wex (catalyseur silencieux). Juju et Wex posent l'animation du début. Nono est le pivot du Ten.
-- **Lieu** : **étang amont de la rivière** — extension map du Pont Cassé. Eau transparente, têtards, berge en terre, racines visibles, printemps tardif (mai).
-- **Moment d'ouverture optionnel** : *laissé libre au writer.*
+- **Objet titre** : **la libellule** Â— rapide, brillante, impossible Ã  attraper. Bourdonne. Vire, plane, disparaÃ®t, revient. La chose extraordinaire qu'on ne peut pas garder, mais qu'on peut sentir.
+- **Trio (Wex + Juju + Nono)** : Juju (T8, Ã©nergie/contact) Â· Nono (T9, rÃ©sonance) Â· Wex (catalyseur silencieux). Juju et Wex posent l'animation du dÃ©but. Nono est le pivot du Ten.
+- **Lieu** : **Ã©tang amont de la riviÃ¨re** Â— extension map du Pont CassÃ©. Eau transparente, tÃªtards, berge en terre, racines visibles, printemps tardif (mai).
+- **Moment d'ouverture optionnel** : *laissÃ© libre au writer.*
 
 ---
 
-## 2. Plan léger
+## 2. Plan lÃ©ger
 
 - **Trio dans l'histoire** :
   - Juju agit (toucher terre/eau/racines)
   - Nono sent (entend la libellule comme une vibration)
-  - Wex catalyse (observe, marque la scène)
-- **Promesse du titre** : la libellule reste au centre du début à la fin. Pas d'évasion. C'est par elle que la résonance se révèle.
-- **Recentrage Ten** : passe par **Nono**. Sa sensibilité à la terre se révèle aux 2 autres dans un geste/moment qu'on devine. Le geste précis = laissé libre au writer. Pas une explication — une présence qui devient soudain plus dense.
-- **Sensibilité révélée** :
-  - **Nono** : connexion discrète à la terre (le calme, la vibration subtile qui passe sous les pieds, la résonance qu'on sent sans la dire) — révélée par la libellule qui active son écoute. Pas un pouvoir manifeste, une présence qui se densifie.
-- **Garde-fous structurels** : Ten silencieux ou < 10 mots · Ketsu image/rituel sans parole · pas d'adulte · pas d'antagoniste · pas de morale dite · ennéatypes dilués (jamais T8/T9/Challenger/Pacificateur dans le texte)
-- **Contraintes dures** : 400-700 mots · = 2 répliques par perso · = 1 échange de 3+ répliques
+  - Wex catalyse (observe, marque la scÃ¨ne)
+- **Promesse du titre** : la libellule reste au centre du dÃ©but Ã  la fin. Pas d'Ã©vasion. C'est par elle que la rÃ©sonance se rÃ©vÃ¨le.
+- **Recentrage Ten** : passe par **Nono**. Sa sensibilitÃ© Ã  la terre se rÃ©vÃ¨le aux 2 autres dans un geste/moment qu'on devine. Le geste prÃ©cis = laissÃ© libre au writer. Pas une explication Â— une prÃ©sence qui devient soudain plus dense.
+- **SensibilitÃ© rÃ©vÃ©lÃ©e** :
+  - **Nono** : connexion discrÃ¨te Ã  la terre (le calme, la vibration subtile qui passe sous les pieds, la rÃ©sonance qu'on sent sans la dire) Â— rÃ©vÃ©lÃ©e par la libellule qui active son Ã©coute. Pas un pouvoir manifeste, une prÃ©sence qui se densifie.
+- **Garde-fous structurels** : Ten silencieux ou < 10 mots Â· Ketsu image/rituel sans parole Â· pas d'adulte Â· pas d'antagoniste Â· pas de morale dite Â· ennÃ©atypes diluÃ©s (jamais T8/T9/Challenger/Pacificateur dans le texte)
+- **Contraintes dures** : 400-700 mots Â· = 2 rÃ©pliques par perso Â· = 1 Ã©change de 3+ rÃ©pliques
 
 ---
 
-## 3. Métadonnées
+## 3. MÃ©tadonnÃ©es
 
-- **Arc rattaché :** arc-1-objet-décor (printemps de l'Éveil, bienveillance)
-- **Date pitch+plan :** 2026-05-11 · **Pivot trio Dadou ? Juju + refonte fusion :** 2026-05-12
-- **Auteur du pitch+plan :** narration-conseiller (binôme Papa Yann)
-- **Statut :** ? VALIDÉ AUTEUR (2026-05-12)
-- **Bilan genre** : 1F + 2M + Wex (amélioration vs initial 2M+Wex pré-pivot)
+- **Arc rattachÃ© :** arc-1-objet-dÃ©cor (printemps de l'Ã‰veil, bienveillance)
+- **Date pitch+plan :** 2026-05-11 Â· **Pivot trio Dadou ? Juju + refonte fusion :** 2026-05-12
+- **Auteur du pitch+plan :** narration-conseiller (binÃ´me Papa Yann)
+- **Statut :** ? VALIDÃ‰ AUTEUR (2026-05-12)
+- **Bilan genre** : 1F + 2M + Wex (amÃ©lioration vs initial 2M+Wex prÃ©-pivot)
 
 ---
 
-## 4. Cohérence vérifiée par le Conseiller
+## 4. CohÃ©rence vÃ©rifiÃ©e par le Conseiller
 
-- ? Cohérent avec `saisons/saison-1/arc-1-objet-decor/`
-- ? Cohérent avec `personnages/INDEX.md` (casting V1 figé, Juju T8 + Nono T9)
-- ? Cohérent avec `univers/INDEX.md` (étang amont = extension Pont Cassé)
-- ? Cohérent avec `pmo/INVARIANTS.md`
-- ? Cohérent avec `pmo/decisions.md`
-- ? Boussole péda 4-5 ans appliquée (1 lieu commun, causalité directe via libellule, sensorialité forte, gestes mimables)
+- ? CohÃ©rent avec `saisons/saison-1/arc-1-objet-decor/`
+- ? CohÃ©rent avec `personnages/INDEX.md` (casting V1 figÃ©, Juju T8 + Nono T9)
+- ? CohÃ©rent avec `univers/INDEX.md` (Ã©tang amont = extension Pont CassÃ©)
+- ? CohÃ©rent avec `pmo/INVARIANTS.md`
+- ? CohÃ©rent avec `pmo/decisions.md`
+- ? Boussole pÃ©da 4-5 ans appliquÃ©e (1 lieu commun, causalitÃ© directe via libellule, sensorialitÃ© forte, gestes mimables)
 
 ---
 
 ## 5. Notes Conseiller (libres, non-bloquantes)
 
-**Qualité humaine pressentie** : arc-1 expose objets qui révèlent. STORY-001 (pont cassé) a révélé **vigilance** (observer, marquer sans réparer). STORY-002 révèle **la sensibilité à la terre** : être présent différemment, sentir ce qui passe par le sol, sans que les autres le voient tout de suite. Wex et Juju posent le cadre. Nono révèle quelque chose de silencieux et réel.
+**QualitÃ© humaine pressentie** : arc-1 expose objets qui rÃ©vÃ¨lent. STORY-001 (pont cassÃ©) a rÃ©vÃ©lÃ© **vigilance** (observer, marquer sans rÃ©parer). STORY-002 rÃ©vÃ¨le **la sensibilitÃ© Ã  la terre** : Ãªtre prÃ©sent diffÃ©remment, sentir ce qui passe par le sol, sans que les autres le voient tout de suite. Wex et Juju posent le cadre. Nono rÃ©vÃ¨le quelque chose de silencieux et rÃ©el.
 
-**Recentrage Ten Nono** : sa sensibilité se révèle aux 2 autres dans un moment qu'on devine. Mais le trio reste équilibré en surface narrative — Juju et Wex agissent autant, parlent autant. Ennéatype dilué = jamais nommer T8/T9.
+**Recentrage Ten Nono** : sa sensibilitÃ© se rÃ©vÃ¨le aux 2 autres dans un moment qu'on devine. Mais le trio reste Ã©quilibrÃ© en surface narrative Â— Juju et Wex agissent autant, parlent autant. EnnÃ©atype diluÃ© = jamais nommer T8/T9.
 
-**Suggestion (non-directive)** : laisser le writer trouver le geste qui révèle Nono. Pieds nus, hocher la tête, main sur la poitrine — toutes options. **Surtout pas figer**.
+**Suggestion (non-directive)** : laisser le writer trouver le geste qui rÃ©vÃ¨le Nono. Pieds nus, hocher la tÃªte, main sur la poitrine Â— toutes options. **Surtout pas figer**.
 
-**Pivot historique** : initialement Dadou (T3), remplacé par Juju (T8) le 2026-05-12 sur décision auteur ("grosse énergie aussi"). La doctrine "énergie/contact terre" remplace "performeur qui veut attraper".
+**Pivot historique** : initialement Dadou (T3), remplacÃ© par Juju (T8) le 2026-05-12 sur dÃ©cision auteur ("grosse Ã©nergie aussi"). La doctrine "Ã©nergie/contact terre" remplace "performeur qui veut attraper".

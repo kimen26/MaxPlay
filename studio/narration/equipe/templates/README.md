@@ -2,7 +2,7 @@
 
 > **Tous les templates produits par le PROCESS éditorial MaxPlay.**
 > Copier le template, remplir, déposer dans `stories/<NNN-slug>/` au bon emplacement (avec préfixe étape).
-> Référence du workflow : [`../PROCESS.md`](../PROCESS.md) (10 étapes — refonte 2026-05-12).
+> Référence du workflow : [`../PROCESS.md`](../PROCESS.md) (11 étapes, 0-10 — étape 2 = Brainstorm).
 
 ---
 
@@ -11,12 +11,12 @@
 | Template | Étape PROCESS | Owner qui remplit | Cible dans le dossier histoire (préfixé) |
 |---|---|---|---|
 | [`pitch-plan.template.md`](pitch-plan.template.md) | 1 | Conseiller | `1-pitch-plan.md` (**template fusionné réel créé 2026-05-13** — c'est celui-ci qu'il faut utiliser maintenant) |
-| ⚠️ [`pitch.template.md`](pitch.template.md) | ~~1~~ legacy | ~~Conseiller~~ | Ancien template pitch seul (pré-fusion 2026-05-12). Conservé pour traçabilité. Utiliser `pitch-plan.template.md` à la place. |
-| ⚠️ [`plan-histoire.template.md`](plan-histoire.template.md) | ~~2~~ deprecated | ~~Architecte~~ | Étape 2 supprimée 2026-05-12 (fusion avec étape 1). Template conservé pour traçabilité. |
-| ⚠️ [`brief-univers.template.md`](brief-univers.template.md) | ~~3~~ obsolète | — | Contenu migré dans `_writer-system.md` par arc (2026-05-15 DEC-WRITER-ARCH-001). Ne plus utiliser. |
+| ⚠️ **ARCHIVÉ 2026-06-14** — `_archive/pitch.template.md` | ~~1~~ legacy | ~~Conseiller~~ | Ancien template pitch seul (pré-fusion 2026-05-12). Archivé pour traçabilité. Utiliser `pitch-plan.template.md` à la place. |
+| ⚠️ **ARCHIVÉ 2026-06-14** — `_archive/plan-histoire.template.md` | ~~2~~ deprecated | ~~Architecte~~ | Étape 2 supprimée 2026-05-12 (fusion avec étape 1). Archivé pour traçabilité. |
+| ⚠️ **ARCHIVÉ 2026-06-14** — `_archive/brief-univers.template.md` | ~~3~~ obsolète | — | Contenu migré dans `_writer-system.md` par arc (2026-05-15 DEC-WRITER-ARCH-001). Archivé pour traçabilité. |
 | [`brief-personnages.template.md`](brief-personnages.template.md) | 3 | Directeur | `3-briefs/brief-personnages.md` |
 | [`brief-histoire.template.md`](brief-histoire.template.md) | 3 | Directeur | `3-briefs/brief-histoire.md` |
-| [`brief-writer-libre.template.md`](brief-writer-libre.template.md) | 4 | Directeur (orchestre) | Injecté dans le prompt des 9 writers libres (Claude×2, Kimi libre ×3, DeepSeek×2, Grok×2) |
+| **[`brief-writer-libre.template.md`](brief-writer-libre.template.md)** | **4 — ACTIF** | Directeur (orchestre) | **Ne pas archiver.** Injecté dans le prompt des 9 writers libres (Claude×2, Kimi libre ×3, DeepSeek×2, Grok×2). |
 | [`brief-writer-guide.template.md`](brief-writer-guide.template.md) | 4 | Directeur (orchestre) | Injecté dans le prompt du writer Kimi guidé (annexe AXES 1-6) |
 | [`selection.template.md`](selection.template.md) | 6 | Directeur | `6-selection.md` |
 | [`kanban.template.md`](kanban.template.md) | toutes | owner d'étape | `kanban.md` (sans préfixe — fichier transverse) |
@@ -59,6 +59,12 @@ Tout fichier ou dossier dans `stories/<NNN>/` est préfixé par le numéro de l'
 ---
 
 ## Mises à jour récentes
+
+**2026-06-14 — Archivage 3 templates obsolètes (ARCHI-CLEAN-TEMPLATES)**
+- ✅ Déplacé `pitch.template.md`, `plan-histoire.template.md`, `brief-univers.template.md` vers `_archive/` (refs nettoyées d'abord)
+- ✅ Confirmé `brief-writer-libre.template.md` ACTIF — pas d'archivage (injecté MCP writers étape 4)
+- ✅ MAJ cartographie + INDEX + leçons-vivantes (refs actualisées)
+- ✅ Vérification : 0 lien cassé après archivage
 
 **2026-05-13 — Refonte README templates post-refonte 2026-05-12**
 - MAJ tableau : nouveaux noms cibles préfixés (`1-pitch-plan.md`, `3-briefs/brief-*.md`, `6-selection.md`, `10-synthese-finale.md`)

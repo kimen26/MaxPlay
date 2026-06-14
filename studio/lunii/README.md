@@ -3,6 +3,9 @@
 > Canal de **distribution physique** : pousser les histoires MaxPlay (narration + récits
 > dino) sur la Lunii de Max via STUdio. Ce pôle ne crée pas de contenu — il emballe et
 > transfère ce que produisent les pôles NARRATION et DINO.
+>
+> 📋 **Règles d'or + pourquoi pas de PMO** → [`CLAUDE.md`](CLAUDE.md) (auto-chargé). Ce
+> README = la doc détaillée (install, pipeline, pièges) + l'INDEX du pôle.
 
 ---
 

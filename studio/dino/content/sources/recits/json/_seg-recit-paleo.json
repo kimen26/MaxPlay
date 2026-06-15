@@ -1,0 +1,60 @@
+{
+  "inputs": [
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily][excited] Et nous voilà aujourd'hui ! [curious] Comment on sait tout ça ? [gasps] Grâce à la paléontologie."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] C'est quoi ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[curious][playful] Des savants, les paléontologues, grattent la terre. [excited] Ils trouvent des os, des dents, des empreintes, des œufs. [softly] Ils les nettoient avec une brosse à dents, tout doucement."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et après ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited][quickly] Ils remettent des centaines d'os ensemble, comme un puzzle géant ! [happily] Ils devinent comment il marchait et ce qu'il mangeait."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ils savent tout ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[playful][chuckles] Presque tout ! [softly] Mais pas les couleurs. [serious] Personne ne sait. [happily] Alors les dessinateurs inventent."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Le T-Rex était vert ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited][playful] Peut-être ! [gasps] Ou couvert de plumes : une énorme poule carnivore ! [happily] Le Tri-cé-ra-tops, bleu ? Rose ? [playful] À taches jaunes ? [shouts] À toi d'imaginer !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[happily] Moi je dis orange."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[chuckles][happily] Orange. Parfait. [softly] Et maintenant, un petit humain écoute ces histoires. La vie continue, depuis la première bactérie jusqu'au moineau sur le balcon."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] On peut re-écouter ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily][excited] Quand tu veux. [playful] Le voyage est là, toujours prêt."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

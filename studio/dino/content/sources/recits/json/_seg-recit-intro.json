@@ -1,0 +1,48 @@
+{
+  "inputs": [
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily][excited] Prêt à remonter le temps, Wex ? On part de tout au début."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Tout au début ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[softly][pauses] Au tout début, il y a presque quatre milliards d'années. La Terre est chaude et vide. [serious] Pas d'animaux. Pas de plantes. Rien."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Rien du tout ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[curious][pauses] Puis dans l'eau, [softly] minuscule, une toute petite bactérie apparaît. [gasps] Si petite qu'on ne la verrait pas !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Et après ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited][quickly] Des algues ! Des petits poissons ! [gasps] Puis un animal sort de l'eau : un gros lézard, ancêtre des grenouilles, des reptiles, et même de nous !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il marche ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily][playful] Il marche ! [excited] Et après des millions d'années, arrivent les dinosaures. Tu viens ?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Oui !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

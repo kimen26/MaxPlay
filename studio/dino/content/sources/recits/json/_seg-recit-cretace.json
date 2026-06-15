@@ -1,0 +1,44 @@
+{
+  "inputs": [
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[curious][excited] Le Crétacé ! Il y a cent millions d'années. [playful] Son nom vient de « craie » : les falaises blanches sont faites de cette roche."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily][excited] Blanches ! [gasps] Des milliards de petites algues mortes se sont accumulées au fond des mers chaudes. [softly] Les continents se séparent encore."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited][quickly] Partout ! [shouts] En Amérique du Nord, le T-Rex et le Tri-cé-ra-tops ! [happily] En Afrique, le Spino-saure. [playful] En Asie, le Vé-lo-ci-rap-tor et le Tar-bo-saure."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Le Vélociraptor avait des plumes ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[playful][laughs] Comme un gros dindon ! [excited] Et dans les airs, le Que-tzal-co-at-lus. [gasps] Dans les mers, le Mo-sa-saure domine les océans !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et les plantes ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[gasps][excited] Pour la première fois, des fleurs ! [happily] Des fruits ! [playful] Des abeilles ! [shouts] Le monde devient coloré !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Wouah…"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily][softly] On continue ? [serious] À la fin du Crétacé, il se passe quelque chose d'énorme."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

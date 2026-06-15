@@ -1,0 +1,52 @@
+{
+  "inputs": [
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily][excited] Le Trias ! Il y a deux cent cinquante millions d'années. [playful] Ce nom vient de « trois » : trois groupes d'animaux partagent la Terre."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Lesquels ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[curious] Les dinosaures, tout petits. [serious] Les reptiles à gueule de crocodile, eux ils dominent. [softly] Et les ancêtres des mammifères, gros comme des souris."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Les dinosaures sont petits ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[playful][laughs] Tout petits ! [happily] Le Cé-lo-fy-sis et le Pla-té-o-saure sont là. [softly] Personne ne sait encore qu'ils deviendront les rois."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et la Terre ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited] Un seul continent : la Pangée ! [playful] L'Afrique et l'Amérique du Sud sont collées. [serious] Au milieu, un désert brûlant."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il y a des plantes ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[softly] Des fougères et des conifères. [gasps] Mais pas une fleur ! [playful] Les plantes se reproduisent avec des spores, de petites poussières."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Wouah…"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily][excited] On continue ? Le Jurassique ! [shouts] Et là, tout devient ÉNORME !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

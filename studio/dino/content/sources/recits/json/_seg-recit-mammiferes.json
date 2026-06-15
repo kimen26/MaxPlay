@@ -1,0 +1,48 @@
+{
+  "inputs": [
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily][excited] L'ère des mammifères commence ! [gasps] Le ciel redevient clair. Le temps redevient doux. Les forêts repoussent."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il fait chaud ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[playful][happily] Chaud et humide, comme une grande serre. [softly] Les mammifères, cachés sous les pattes des dinosaures, peuvent enfin grandir."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ils deviennent quoi ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited][quickly] Énormes ! [shouts] Le Smilo-don, le tigre à dents de sabre ! [happily] Un paresseux géant, gros comme un éléphant. [gasps] Le Ti-ta-no-boa, un serpent de treize mètres !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Treize mètres ?!"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[gasps][excited] Long comme une maison ! [playful] Et certains mammifères retournent vivre dans l'eau : les baleines et les dauphins. [softly] Les bébés boivent du lait… [pauses] sous l'eau."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Du lait sous l'eau ?!"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[chuckles][playful] Sous l'eau ! [happily] On continue ?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited] Oui !"
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

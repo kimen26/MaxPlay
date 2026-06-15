@@ -1,0 +1,44 @@
+{
+  "inputs": [
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily][excited] Plus tard, le froid revient. [serious] Vraiment froid. [gasps] C'est l'âge de glace. Les continents sont recouverts de glace pendant des millions d'années."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il neige partout ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[playful][happily] Beaucoup ! [excited] La glace s'étend sur l'Europe et l'Amérique du Nord. [softly] Les animaux s'adaptent : fourrure épaisse, gras sous la peau."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Quels animaux ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited][quickly] Le mammouth laineux, un cousin de l'éléphant avec des poils jusqu'aux pieds ! [happily] Le tigre à dents de sabre. Les loups. Les ours des cavernes."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il y a des humains ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily][excited] Oui ! [gasps] Des humains très anciens. [playful] Ils chassent, ils allument du feu, ils dessinent des mammouths sur les murs."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] On continue ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[softly][happily] On continue. [pauses] On approche de nous. [softly] De aujourd'hui."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

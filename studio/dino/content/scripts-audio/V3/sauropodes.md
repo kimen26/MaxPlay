@@ -32,7 +32,7 @@
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [excited] : Le Brachiosaure avalait des PIERRES pour broyer les plantes dans son ventre. Des gastrolithes, son moulin interne.
+**NARRATEUR H** [excited] : Certains savants pensent que le Brachiosaure avalait des PIERRES pour broyer les plantes dans son ventre. Des gastrolithes, un moulin interne.
 
 **WEX** [curious] : Des cailloux dans le ventre.
 
@@ -239,7 +239,7 @@
 
 ### BLOC B — Taille
 
-**NARRATEUR H** [excited] : 37 mètres de long — comme un bus accordéon et un bus, l'un derrière l'autre. 12 mètres de haut — aussi haut qu'un immeuble de 4 étages. 70 mille kilos — aussi lourd que 12 éléphants.
+**NARRATEUR H** [excited] : 37 mètres de long — comme un bus accordéon et un bus, l'un derrière l'autre. Cou dressé vers le ciel, 12 mètres de haut — aussi haut qu'un immeuble de 4 étages. 70 mille kilos — aussi lourd que 12 éléphants.
 
 **WEX** [gasps] : 12 éléphants.
 

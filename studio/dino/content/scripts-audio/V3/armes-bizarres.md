@@ -222,7 +222,7 @@
 
 **WEX** [curious][gasps] : Et la voile sur le dos ? Elle faisait quelle taille ?
 
-**NARRATEUR H** [playful] : Elle pouvait faire 1 mètre 50 de haut. Une grande voile de peau tendue sur des épines.
+**NARRATEUR H** [playful] : Elle pouvait faire un mètre de haut. Une grande voile de peau tendue sur des épines.
 
 ### BLOC C — Comment il vivait
 

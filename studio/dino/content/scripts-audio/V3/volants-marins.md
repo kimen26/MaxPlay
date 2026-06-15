@@ -70,7 +70,7 @@
 
 ### BLOC C — Comment il vivait
 
-**NARRATEUR H** [serious] : Carnivore. Il mangeait de petits animaux au sol, des insectes et des crustacés. Il vivait seul ou en petit groupe. Personne ne pouvait l'attraper en l'air.
+**NARRATEUR H** [serious] : Carnivore. Il marchait dans les plaines et attrapait de petits animaux au sol, des lézards, un peu comme une cigogne géante. Il vivait seul ou en petit groupe. Personne ne pouvait l'attraper en l'air.
 
 **WEX** [curious] : Il mangeait par terre ?
 
@@ -118,7 +118,7 @@
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [excited] : C'est l'ancêtre de TOUS les oiseaux du monde. Les moineaux, les aigles, les poules... tous ses petits-enfants. Il avait des plumes, des dents et des griffes en même temps.
+**NARRATEUR H** [excited] : C'est l'un des ancêtres des oiseaux du monde. Les moineaux, les aigles, les poules... de sa grande famille. Il avait des plumes, des dents et des griffes en même temps.
 
 **WEX** [gasps] : Même les poules ?
 

@@ -6,9 +6,9 @@
 
 | Script | Rôle | Lit | Écrit |
 |--------|------|-----|-------|
-| `_md2json.cjs` | md → JSON text-to-dialogue (top 11) | `../../scripts-audio/groupe-*.md` | `../../scripts-audio/json-top/` |
-| `_md2json-nouveaux.cjs <f.md>` | idem (nouveaux dinos, 1 fichier) | `../../scripts-audio/<f>.md` | `json-top/` |
-| `_md2json-special.cjs` | idem (pangée / extinction) | `../../scripts-audio/special-*.md` | `json-top/` |
+| `_md2json.cjs` | md → JSON text-to-dialogue (top 11) | `../scripts-audio/groupe-*.md` | `../scripts-audio/json-top/` |
+| `_md2json-nouveaux.cjs <f.md>` | idem (nouveaux dinos, 1 fichier) | `../scripts-audio/<f>.md` | `json-top/` |
+| `_md2json-special.cjs` | idem (pangée / extinction) | `../scripts-audio/special-*.md` | `json-top/` |
 | `_gen-audio-top.sh` · `_gen-audio-nouveaux.sh` | curl text-to-dialogue → MP3 — ⚠️ **coût API ElevenLabs** | `json-top/` | `site/audio/dinos/` |
 | `_gen-recaps.sh "id…"` | concat 4 blocs → recap (ffmpeg loudnorm, **0 API**) | `site/audio/dinos/` | idem |
 

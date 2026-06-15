@@ -1,13 +1,13 @@
 # INVARIANTS — Pôle DINO
 
 > Source de vérité des **chiffres clés**. MAJ uniquement si un invariant change (par `dino-pmo`).
-> Dernière vérif : 2026-06-08 (réorg content/ = structure uniquement, chiffres inchangés).
+> Dernière vérif : 2026-06-15 (corrections V3 + fact-check paléo appliqués, count 48→51 + 2 poids recalés).
 
 ## Counts
 
 | Quoi | Valeur | Source |
 |------|--------|--------|
-| Dinos (entrées `DINOS`) | **51** | `site/js/dinos-data.js` |
+| Dinos (entrées `DINOS`) | **51** | `site/js/dinos-data.js` (✅ 2026-06-15 : +3 dinos Patagotitan/Centrosaurus/Ichthyosaurus) |
 | Familles (`DINO_FAMILLES`) | **9** | idem |
 | Régimes alimentaires (`DINO_CATEGORIES`) | **4** | idem |
 | Récits d'époque (voyage) | **8** | `audio/dinos/recit-*.mp3` |

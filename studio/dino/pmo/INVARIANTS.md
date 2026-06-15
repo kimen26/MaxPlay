@@ -13,7 +13,7 @@
 | Récits d'époque (voyage) | **8** | `audio/dinos/recit-*.mp3` |
 | Accroches menu (voix réelle) | **17** | `audio/dinos/menu-*.mp3` (4 onglets + 9 familles `menu-fam-*` + 4 régimes `menu-regime-*`) |
 | Spéciaux (Pangée, Extinction) | **2** | `audio/dinos/special-*.mp3` |
-| Dinos avec audio complet (recap+4 blocs) | **22** | `DINO_AUDIO` |
+| Dinos avec audio complet (recap+4 blocs) | **51** | `DINO_AUDIO` (✅ 2026-06-15 suite 3 : production V3 complète) |
 
 ## 9 familles (nom scientifique = titre)
 

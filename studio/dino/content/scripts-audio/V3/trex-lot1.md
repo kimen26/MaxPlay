@@ -22,6 +22,10 @@
 
 **NARRATEUR H** [playful] : Oui. Le Tricératops, l'Edmontosaure et l'Ankylosaure vivaient dans son royaume.
 
+**WEX** [softly] : Le Tricératops. C'est Tritri.
+
+**NARRATEUR H** [happily] : Oui, ton préféré vivait juste à côté du roi. Et il savait se défendre.
+
 ### BLOC B — Taille
 
 **NARRATEUR H** [excited] : 13 mètres de long — aussi long qu'un bus RATP. 4 mètres de haut — aussi haut qu'un bus anglais à deux étages. 8 mille kilos — aussi lourd que 2 hippopotames.

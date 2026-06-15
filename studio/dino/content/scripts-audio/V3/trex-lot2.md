@@ -197,7 +197,7 @@
 
 **WEX** [curious] : Lézard à crête de glace.
 
-**NARRATEUR H** [happily] : Oui. Il vivait en Antarctique, il y a 194 millions d'années. Mais à l'époque, l'Antarctique était une forêt tropicale chaude.
+**NARRATEUR H** [happily] : Oui. Il vivait en Antarctique, il y a 190 millions d'années. Mais à l'époque, l'Antarctique était couvert de forêts, et il faisait doux.
 
 **WEX** [curious] : Pas de glace alors.
 

@@ -7,7 +7,7 @@
 
 | Quoi | Valeur | Source |
 |------|--------|--------|
-| Dinos (entrées `DINOS`) | **48** | `site/js/dinos-data.js` |
+| Dinos (entrées `DINOS`) | **51** | `site/js/dinos-data.js` |
 | Familles (`DINO_FAMILLES`) | **9** | idem |
 | Régimes alimentaires (`DINO_CATEGORIES`) | **4** | idem |
 | Récits d'époque (voyage) | **8** | `audio/dinos/recit-*.mp3` |
@@ -17,7 +17,9 @@
 
 ## 9 familles (nom scientifique = titre)
 
-Théropodes (16) · Sauropodes (6) · Thyréophores (4) · Cératopsiens (6) · Ornithopodes (4) · Dromæosaures (10) · Ptérosaures (2) · **Énaliosaures (6)** · **Avant les dinosaures (1, Dimétrodon)**.
+Théropodes (16) · Sauropodes (7) · Thyréophores (4) · Cératopsiens (6) · Ornithopodes (4) · Dromæosaures (10) · Ptérosaures (2) · **Énaliosaures (7)** · **Avant les dinosaures (1, Dimétrodon)**.
+> +3 entrées 2026-06-15 (relecture V3) : Patagotitan (Sauropodes 6→7), Centrosaure (Cératopsiens), Ichthyosaurus communis (Énaliosaures 6→7) — fiches audio V3 existaient sans entrée data. Count 48 → **51**.
+> ⚠️ Les libellés ci-dessus (noms scientifiques) ne mappent pas 1:1 les clés techniques `famille` de dinos-data.js (`trex`/`cou_long`/`arme`/`cornu`/`bec`/`raptor`/`pterosaures`/`enaliosaures`/`volant`). Counts techniques réels 2026-06-15 : trex 13 · cou_long 7 · arme 4 · cornu 6 · bec 3 · raptor 8 · pterosaures 2 · enaliosaures 7 · volant 1. Régimes : carnivores 20 · herbivores 21 · piscivores 7 · omnivores 3. **À réconcilier par dino-archiviste** (écart libellés/clés préexistant).
 > Refonte taxo 2026-06-09 : famille **Énaliosaures** (6 reptiles marins) créée ; « Inclassables » dissoute (Therizinosaurus → Théropodes, Pachycéphalosaure → Cératopsiens) ; « Pas des dinosaures ! » recentrée sur Dimétrodon → « Avant les dinosaures ».
 Champs par famille : `sci` (titre scientifique) · `label` (surnom) · `sci_sens` (origine grecque dite en entrant) · `explic` (explication longue 🔊).
 
@@ -60,3 +62,4 @@ Résolus via `narration/personnages/voix-meta/voice-map.json`. Modèle **eleven_
 - 🔒 Encyclopédie = vrais noms + vraies dates. Terme savant nouveau → expliqué (ex « ptérosaure » → « reptile volant comme le Ptéranodon »).
 - 🔒 Voyage : vignettes décoratives (pas de lien), avancement reset session.
 - 🔒 Fiche : bouton audio masqué si pas d'audio complet.
+- 🔒 **2 règles ajoutées 2026-06-15** (Papa Yann relecture V3) : **PAS de référence culturelle d'adulte** (chanteur/marque/film/onomatopée) → image concrète enfant. **PRÉDATION dite avec vérité, jamais gore** (chasser/manger = normal, on le dit ; images physiques OK sans s'attarder ; 0 sang/torture/agonie). Voir `figees/encyclopedie.md` § PAS de référence... et § PRÉDATION dite avec...

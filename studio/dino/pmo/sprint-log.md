@@ -2,6 +2,31 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-06-15 (suite 2) — FACT-CHECK PALÉO APPLIQUÉ + ARCHIVAGE PLANIFIÉ
+
+**Fait :**
+- **Fact-check paléontologue complet** : 51 fiches audio V3 + 3 nouveaux dinos passés au crible scientifique (Wikipedia EN source, Grokipedia 403). **Verdict : 43 ✅ / 6 ⚠️ / 4 🔴**.
+- **CORRECTIONS PALÉO APPLIQUÉES** (Papa Yann a dit "corrige tout") :
+  - 🔴 **Cryolophosaure** : « forêt tropicale chaude » FAUX (climat Antarctique Jurassique = tempéré 17°C doux) → script BLOC A/C corrigé « forêts, il faisait doux ». Date 194→190 Ma alignée dinos-data.js.
+  - 🔴 **Centrosaure** : poids 3 t hors tolérance 10% vs Gregory Paul 2010 (2,5 t) → dinos-data.js ajusté 2,5 t. _compPoids mise à jour, « 2 rhinos » conservé comparaison.
+  - 🔴 **Archéoptéryx** : « l'ancêtre de TOUS les oiseaux » faux (Anchiornis + avialiens plus anciens) → BLOC D corrigé « l'un des ancêtres ».
+  - 🔴 **Dimétrodon** : voile « 1 m 50 » surestimé (D. grandis ~1-1,2 m) → BLOC B corrigé « un mètre ».
+  - ⚠️ **Patagotitan** : hauteur « 12 m » OK mais manque précision « cou dressé » → BLOC B ajout « cou levé vers ciel, comme 4 étages ».
+  - ⚠️ **Brachiosaure gastrolithes** : hypothèse débattue, pas fait établi → BLOC D changé « Certains savants pensent que… ».
+  - ⚠️ **Protocératops** : « ancêtre des Tricératops » = groupe-frère pas ancêtre direct → BLOC A corrigé « l'un des tout premiers dinos à cornes, cousin lointain ».
+  - ⚠️ **Quetzalcoatlus régime** : « insectes + crustacés » moins précis qu'actuel consensus (petits animaux sol, lézards) → BLOC C neutralisé « comme une cigogne géante ».
+- **POINT OUVERT LAISSÉ** : Liopleurodon poids 5 t (data + script « 2 hippos ») vs Wikipedia ~1,8 t — débat 1,8-5 t selon méthode. NON corrigé (changerait « 2 hippos » → « 1 rhino », gros impact récit). **Q-DINO-11 nouvelles ouverte** : Papa Yann décide.
+- **VÉRIFS FINALES** : dinos-data.js JS valide (`node --check`), count 51 ✅, grep-interdits 0 (max/doudou/peluche/nounours/regarde/réf-adulte/tropical), Tritri = 3 fiches OK co-localisées Crétacé.
+- **CRÉDITS EL** : 52 828 / 122 630 chars utilisés (~69 800 dispo, reset ~9 juillet). Suffisant batch 51 MP3.
+- **AUDIT ARCHIVISTE** (dino-archiviste constat) : pas fusion urgente fichiers (phases distinctes), 2 trous index notés : relectures V3+factcheck pas content/INDEX.md ; scripts-audio/ sans INDEX global. **RECO ARCHIVAGE** : 8 fichiers _RELECTURE + _FACTCHECK V3 vers `_archive/sessions/2026-06-15-relecture-v3/` APRÈS clôture (pas avant). **Inventaire factchecks existants** : `sources/fiches/_FICHES-DINOS-GROKIPEDIA.md` (référentiel durable), `_DATACHECK-GROKIPEDIA-2026-06.md` (snapshot appliqué), `_FACTCHECK-9-CERATOPSIENS.md` (table vérité 2026-05-22).
+
+**État au reboot :**
+- 51 dinos fiches V3 = **CORPS FINAL VALIDÉ scientifiquement** avant prod audio
+- Q-DINO-7/8/9/10 = TRANCHÉ/RÉSOLU · Q-DINO-11 = NOUVELLE (Liopleurodon poids)
+- 2 tickets PMO créés : EP-ARCH-01 (archiver session relecture V3) + EP-D16 (créer scripts-audio/INDEX.md + indexer factchecks content/INDEX.md)
+- 2 leçons : L-D13 (fact-check paléo = passe distincte ; un fait peut être daté/réfuté même si chiffre dans data)
+- Corpus prêt MCP `studio_audiobook_from_segments_v2_dialogue` (feu vert production)
+
 ## 2026-06-15 (suite) — CORRECTIONS V3 APPLIQUÉES + 2 RÈGLES FIGÉES GRAVÉES
 
 **Fait :**

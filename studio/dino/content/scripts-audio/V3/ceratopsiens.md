@@ -94,7 +94,7 @@
 
 **WEX** [curious] : Le premier dinosaure à cornes.
 
-**NARRATEUR H** [happily] : Exactement. C'était l'ancêtre des grands Tricératops. Il vivait en Mongolie, en Asie, il y a 75 millions d'années, avec le Vélociraptor.
+**NARRATEUR H** [happily] : Exactement. C'était un des tout premiers dinosaures à cornes, un cousin lointain des grands Tricératops. Il vivait en Mongolie, en Asie, il y a 75 millions d'années, avec le Vélociraptor.
 
 ### BLOC B — Taille
 

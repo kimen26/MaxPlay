@@ -221,7 +221,7 @@
 
 **WEX** [curious] : Des herbivores en Antarctique.
 
-**NARRATEUR H** [playful] : Oui. La forêt tropicale nourrissait plein de plantes, et donc plein d'herbivores. Le Cryolophosaure les chassait dans la verdure.
+**NARRATEUR H** [playful] : Oui. La forêt nourrissait plein de plantes, et donc plein d'herbivores. Le Cryolophosaure les chassait dans la verdure.
 
 ---
 

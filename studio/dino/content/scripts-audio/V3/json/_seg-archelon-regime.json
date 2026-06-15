@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Carnivore. Elle mangeait des méduses, des calmars et des mollusques à coquille molle. Elle vivait seule. Le Tylosaurus, un grand mosasaure, et les requins préhistoriques pouvaient l'attaquer."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Sa carapace était dure ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Non. Elle était en peau coriace, comme la tortue luth. Pas une carapace dure comme les tortues d'aujourd'hui."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

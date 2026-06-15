@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Il avait une crête colorée sur la tête, comme un perroquet, et une queue en drapeau. Les scientifiques pensent qu'il dansait pour séduire sa compagne."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Il dansait ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Oui. Des pas de danse et des couleurs vives pour dire : « Je serai un bon papa. » Le dino le plus romantique du Crétacé."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

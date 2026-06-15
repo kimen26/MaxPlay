@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 10 mètres de long — aussi long qu'un camion. 5 mètres de haut — presque trois Papas l'un sur l'autre. 5 tonnes — aussi lourd que deux hippopotames."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious][gasps] Et ses griffes ? Elles étaient grandes comment ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] UN MÈTRE chacune. Les PLUS LONGUES griffes de tous les animaux de l'histoire."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

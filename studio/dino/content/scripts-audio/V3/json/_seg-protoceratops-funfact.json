@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] On a trouvé un fossile incroyable : un Vélociraptor et un Protocératops morts en plein combat, ensevelis par une tempête de sable."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Figés ensemble pour toujours."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Oui. Une bataille figée dans la pierre. Le petit Protocératops était un vrai guerrier."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

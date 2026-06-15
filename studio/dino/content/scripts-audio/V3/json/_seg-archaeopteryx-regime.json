@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Carnivore. Il mangeait des insectes et de petits lézards. Il vivait seul dans les forêts. Les prédateurs plus grands le chassaient, alors il devait être très rapide."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il volait bien ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Il planait plus qu'il ne volait, comme les écureuils volants. Il courait, sautait, planait — un mélange de tout."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

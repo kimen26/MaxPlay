@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Daï-no-ni-kuss. « Deino » en grec, c'est terrible, effrayant. Et « nychus », c'est la griffe. La griffe terrible."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Une grosse griffe."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactement. Il vivait en Amérique du Nord, il y a 115 millions d'années. C'est le vrai modèle des raptors de Jurassic Park."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ceux du film, c'était lui ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Presque. Dans le film on les appelle Vélociraptors, mais en vrai ils ressemblaient au Deinonychus."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

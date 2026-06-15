@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Di-mé-tro-don. Trois morceaux grecs. « Di », c'est « deux ». « Métron », c'est « mesure ». Et « odon », c'est « dent »."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Deux mesures de dents."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactement. Des petites dents devant, des grandes derrière. Mais attention : ce n'est PAS un dinosaure. Il vivait 280 millions d'années avant eux, en Amérique du Nord."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Avant les dinosaures ? C'était quoi alors ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Un lointain cousin des mammifères. Oui, un peu comme toi, mais en version reptile avec une voile sur le dos."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

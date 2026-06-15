@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ar-ké-lon. « Arché », c'est le chef, le premier. Et « chelôn », c'est la tortue. La tortue numéro un."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] La plus grande tortue ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] De tous les temps. Et ce n'est pas un dinosaure : c'est un énaliosaure, une tortue de mer géante. Elle vivait au Crétacé, il y a 75 millions d'années, dans la mer intérieure d'Amérique du Nord."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Elle nageait avec les dinosaures ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] En même temps qu'eux, mais dans la mer. Le T-Rex était sur terre."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

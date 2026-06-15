@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Herbivore. Il broutait en troupeau. Il marchait sur 4 pattes, mais pouvait se lever sur 2 pour courir vite quand il avait peur."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Comme un kangourou."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Exactement. Quatre pattes au calme, deux pattes pour la course. Le Baryonyx et les carnosaures le surveillaient."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

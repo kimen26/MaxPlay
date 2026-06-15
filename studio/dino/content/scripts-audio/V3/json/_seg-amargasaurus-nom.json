@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] A-mar-ga-saure. « Amarga » vient de La Amarga, un lieu en Argentine. Le lézard de La Amarga."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il vivait tout au sud ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Oui, en Amérique du Sud, il y a 125 millions d'années. À l'époque, c'était chaud et vert. Les grands carnivores d'Argentine rôdaient autour de ses petits groupes."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

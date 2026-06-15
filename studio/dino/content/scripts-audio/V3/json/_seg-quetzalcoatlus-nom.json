@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Kèt-zal-ko-atluss. Son nom vient du dieu aztèque Quetzalcoatl — le serpent à plumes. Et ce reptile volant était le plus grand animal volant de tous les temps."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious][gasps] Plus grand qu'un avion ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Aussi grand qu'un petit avion. Il vivait en Amérique du Nord, il y a 68 millions d'années. Un monstre des airs."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] C'est un dinosaure ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Non. Un ptérosaure, un cousin volant des reptiles. Pas un dinosaure."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 7 mètres de long — comme deux voitures l'une derrière l'autre. 1 mètre 80 de haut — aussi grand que Papa debout. 6 tonnes — aussi lourd que 2 hippopotames."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious][gasps] Aussi lourd que deux hippopotames ? Et il était tout bas ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Oui. Quatre pattes courtes et un gros corps près du sol. Une vraie forteresse vivante."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

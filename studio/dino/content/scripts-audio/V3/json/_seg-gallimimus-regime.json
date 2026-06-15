@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Omnivore. Il mangeait des plantes, des œufs, des petits animaux. Il vivait en grand troupeau. Le T-Rex le chassait, mais ne l'attrapait presque jamais."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Pourquoi le T-Rex n'y arrivait pas ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Trop rapide, trop léger, trop malin. Le T-Rex était puissant mais lourd. Le Gallimimus filait comme une flèche."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Pa-ra-sau-ro-lofe. En grec ancien, « para » veut dire « à côté de », « proche de ». « Sauro », c'est le lézard. Et « lophus », c'est la crête. Le lézard à crête d'à côté."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il avait une grosse crête sur la tête."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactement. Une longue crête creuse en arrière. Il vivait en Amérique du Nord, il y a 76 millions d'années."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et les méchants dinosaures, ils étaient là aussi ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Oui. Le T-Rex et le Gorgosaure chassaient dans le coin. Alors son troupeau devait être très vigilant."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

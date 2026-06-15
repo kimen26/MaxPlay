@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 10 mètres de long — aussi long qu'un camion. 3 mètres 50 de haut — comme deux Papas l'un sur l'autre. Et 2 tonnes 5 — aussi lourd que 2 rhinocéros."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious][gasps] Deux rhinocéros, tout ça dans un seul dino ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Oui. Deux rhinocéros. Un géant à bec de canard avec un tuyau sur la tête."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

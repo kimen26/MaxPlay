@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Il mesurait 0 virgule 5 mètre de long — aussi long qu'un gros chat. Debout, 0 virgule 3 mètre de haut — il t'arrivait aux genoux. Et il pesait 1 kilo — léger comme un petit oiseau."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Tout petit."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Tout petit, tout léger. Parfait pour planer d'arbre en arbre."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

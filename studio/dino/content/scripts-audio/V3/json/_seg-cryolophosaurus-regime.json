@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] C'était un carnivore. Il chassait les dinosaures herbivores de l'Antarctique. Il vivait peut-être en groupe. Les dinosaures plus grands pouvaient le chasser."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Des herbivores en Antarctique."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Oui. La forêt nourrissait plein de plantes, et donc plein d'herbivores. Le Cryolophosaure les chassait dans la verdure."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

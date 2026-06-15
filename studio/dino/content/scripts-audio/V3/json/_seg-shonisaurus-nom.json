@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Cho-ni-saure. Deux morceaux. « Shoni » vient des monts Shoshone, dans le Nevada — c'est là qu'on a trouvé ses os. Et « saure », c'est le lézard. Le lézard des monts Shoshone."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Dans le désert ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Oui, mais à l'époque c'était la mer. Et attention : ce n'est pas un dinosaure. C'est un ichtyosaure, un reptile marin. Il vivait au Trias, il y a 230 millions d'années."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Avant les gros dinosaures."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Longtemps avant le T-Rex. Lui, il nageait déjà comme un dauphin géant."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

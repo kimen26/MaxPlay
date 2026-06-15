@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 3 mètres 40 de long — comme deux Papas couchés bout à bout. 90 centimètres de haut — à peu près ta taille à toi. Et 80 kilos — aussi lourd que Papa."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious][gasps] De ma taille ? Avec des griffes ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Oui. Un chien de ta taille, mais avec des griffes de 13 centimètres et une queue raide pour tenir l'équilibre."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

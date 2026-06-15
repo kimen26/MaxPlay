@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Mo-sa-saure. Son nom vient de la Meuse — « Mosa » en latin — une rivière d'Europe où on a trouvé ses os. Et « saure », c'est le lézard. Le lézard de la Meuse."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] C'est un dinosaure ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Non. C'est un énaliosaure, un reptile marin géant. Cousin lointain des varans et des serpents. Il nageait dans toutes les mers du monde, il y a 70 millions d'années."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Pendant que les dinosaures étaient sur terre."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Exactement. Lui, il régnait sous l'eau."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

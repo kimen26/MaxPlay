@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ka-ma-ra-saure. En grec, « kamara » veut dire chambre, une petite pièce. Le lézard à chambres."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il avait des chambres dans le corps ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Des trous creux dans ses os, comme une éponge. Ça l'allégeait. C'était le sauropode le plus commun d'Amérique du Nord, il y a 155 millions d'années."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

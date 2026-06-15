@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Pté-ra-no-don. Trois morceaux grecs. « Ptér », c'est l'aile. « An », c'est « sans ». Et « odon », c'est la dent. Alors Ptéranodon..."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] ...l'aile sans dents."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactement. Attention : ce n'est PAS un dinosaure. C'est un ptérosaure, un reptile volant. Il vivait au Crétacé, il y a 85 millions d'années, au-dessus des mers d'Amérique du Nord."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Comme le Quetzalcoatlus ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Un peu plus petit. Dans le même ciel que le T-Rex, au-dessus des mers du Kansas."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

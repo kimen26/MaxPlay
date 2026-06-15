@@ -2,6 +2,24 @@
 
 > Traces des audits FOND (`dino-pmo`) et FORME (`dino-archiviste`). Entrée datée par audit.
 
+## 2026-06-15 (suite) — Logging corrections V3 appliquées (PMO FOND)
+
+**Décision Papa Yann 2026-06-15** : toutes les corrections relecture V3 appliquées LIVE.
+
+**Findings appliqués** :
+- ✅ **EP-D13 FAIT** : typos audio (« alone »/« un torpille »/accents) corrigées sur 7 scripts · échelles recalculées _compLong/_compHaut (Shonisaure + 5 « bus RATP ») · poids _compPoids (Tricé/Toro) · 3 dinos data (Patagotitan/Centrosaure/Ichthyosaurus communis). Count 48→51, INVARIANTS MAJ.
+- ✅ **EP-D14 FAIT** : Q-DINO-7=OUI → Tritri 3 touches ceratopsiens, Wex, fluides.
+- ✅ **EP-D15 FAIT** : patterns « réfléchissait » résorption · réfs adultes (Elvis/Ferrari/JP/vroum) RETIRÉES.
+- ✅ **2 règles figées nouvelles** : 🔒 PAS référence adulte, 🔒 PRÉDATION vraie jamais gore. Gravées figees/encyclopedie.md (déjà en place).
+- ✅ **Grep-interdits final** : 0 max/doudou/peluche/nounours/bus-hors-échelle sur 7 scripts.
+- ✅ **Q-DINO-7/8/9/10 tous TRANCHÉ/RÉSOLU** : Tritri oui, 3 dinos data créées, sensibilité retraitée, bus corrigés.
+
+**État post-corrections** : **51 fiches V3 FINAL** prêtes production audio MCP. Leçons L-D10/L-D11/L-D12 gravées backlog.md.
+
+**Verdict** : pôle DINO = **corpus final validé 2026-06-15**, prêt pour `studio_audiobook_from_segments_v2_dialogue`.
+
+---
+
 ## 2026-06-03 — Premier audit croisé FOND + FORME (post-création)
 
 **Lancé** via `/dino-pmo-audit` + `/dino-archiviste-audit` (2 agents en parallèle).

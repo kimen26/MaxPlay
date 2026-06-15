@@ -2,6 +2,31 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-06-15 (suite 3 — PRODUCTION AUDIO V3 FINALISÉE — 51 DINOS, 255 MP3)
+
+**Fait :**
+- **Pipeline production créé et validé** : `studio/dino/content/scripts/audio/_md2json-v3.cjs` (lit 7 scripts V3, dérive id depuis nom latin titre, génère 204 segments JSON `text-to-dialogue` dans `scripts-audio/V3/json/`). Robuste CRLF/LF.
+- **Batch production audio complète** : MCP `studio_audiobook_from_segments_v2_dialogue` (eleven_v3, voice_ids narrateur_h + wex via voice-map), loudnorm ffmpeg post-prod. **51 dinos × 5 blocs = 255 MP3** générés → `site/audio/dinos/` (durées : 15-28 s/bloc, recap 80-90 s). Pilote Tricératops validé en premier (15:18 → 15:45 UTC), puis batch 50 autres en 6 vagues.
+- **2 nouveaux dinos câblés** dans `DINO_AUDIO` (dev-dinos.html) : **patagotitan** (nouveau dino data 2026-06-15, Patagotitan 35 m sauropode) · **ichthyosaurus** (dinos-data.js entrée créée, ichthyosaurus communis reptile marin). Tous les 51 dinos maintenant en `DINO_AUDIO` avec clé 'V3'.
+- **Badge déploiement** : `DINO_AUDIO_VERSION` en 'V3' visible sur le bouton violet audio (tous les 51). Déploiement GitHub Pages pousse automatiquement (commit 59e55169).
+- **Test Chromium final** : 51 dinos, tous avec audio, tous V3 ✅, patagotitan + ichthyosaurus chargent, 0 erreur JS, `DINOS.length === 51` ✅.
+- **Budget ElevenLabs** : tenu dans les limites. Restant 34 321 / 122 630 chars (reset ~9 juillet). Pas de rachat nécessaire.
+- **REX qualité agent batch** : sous-agent narration-audio a produit un tableau récapitulatif avec NOMS dinos hallucés (argentinosaurus, styracosaurus, supersaurus, etc.) mais vérification disque réelle confirme les 51 BONS dinos avec 5 MP3 chacun, générés aujourd'hui ~15:xx UTC, 0 manquant, 0 parasite. **Leçon L-D14 gravée** : toujours vérifier les claims agent batch sur disque (git/ls), ne pas croire au tableau récap.
+
+**Bloquants résolus :**
+- ✅ **EP-D04 (V2 inachevée)** → RÉSOLU : tout l'audio est en V3 synchronisé avec dinos-data.js corrigé 2026-06-15 (fact-check paléo appliqué).
+- ✅ **EP-D05 (désync data)** → RÉSOLU : idem, tous les 51 MP3 en V3.
+
+**Question tranchée :**
+- ✅ **Q-DINO-11** (Liopleurodon poids 5t vs 1,8t débat scientifique) → **TRANCHÉ** : Papa Yann « on garde 5t, on s'en tape », comparaison script « 2 hippos » inchangée. Valeur haute documentée acceptée.
+
+**État au reboot :**
+- **51 dinos × 5 blocs = 255 MP3** générés, déployés, testés ✅
+- **DINO_AUDIO V3 complet**, tous les dinos câblés
+- **EP-D04/D05 RÉSOLUS** (remplacés par V3 complète)
+- **EP-ARCH-01/D16 restent ouverts** (archivage session relecture + indexation factchecks)
+- **Pôle DINO audio = PRODUCTION FINALE ATTEINTE**
+
 ## 2026-06-15 (suite 2) — FACT-CHECK PALÉO APPLIQUÉ + ARCHIVAGE PLANIFIÉ
 
 **Fait :**

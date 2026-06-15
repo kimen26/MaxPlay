@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] O-vi-rap-tor. « Ovi » en latin, c'est l'œuf. Et « raptor », c'est le voleur. Le voleur d'œufs."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il volait des œufs ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Non. C'était une fausse accusation. Il vivait en Mongolie, il y a 75 millions d'années, et il gardait SES propres œufs comme un bon papa."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] On lui avait fait un procès injuste."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly] Exactement. Les savants se sont trompés. C'était un excellent parent, pas un voleur."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

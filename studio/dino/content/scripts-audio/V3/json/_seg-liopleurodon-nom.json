@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Li-o-pleu-ro-don. Trois morceaux grecs. « Leios », c'est lisse. « Pleura », c'est le côté. Et « odon », c'est la dent. La dent aux flancs lisses."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] C'est un dinosaure ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Non. C'est un pliosaure, un énaliosaure — un reptile marin au cou court et à la grande gueule. Il vivait au Jurassique, il y a 165 millions d'années, en France et en Angleterre."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] En France ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Oui. Il chassait dans nos mers à l'époque."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

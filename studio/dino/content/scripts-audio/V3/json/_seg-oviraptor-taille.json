@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 2 mètres de long — aussi long qu'une moto. 90 centimètres de haut — il t'arrivait au cœur. Et 35 kilos — aussi lourd qu'un gros chien."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious][gasps] Un papa dinosaure de 35 kilos ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Oui. Il s'asseyait sur ses œufs et les couvait pour les garder au chaud. Un papa poule préhistorique."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Di-plo-do-kuss. En grec, « diplo » veut dire double, et « dokos » veut dire poutre. La double poutre."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Deux poutres où ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Dans les os de sa queue. Il vivait en Amérique du Nord, il y a 150 millions d'années, avec Brachiosaure et Apatosaure. L'Allosaure et le Cératosaure chassaient les jeunes."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

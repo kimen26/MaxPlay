@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 17 mètres de long — comme deux bus l'un derrière l'autre. 2 mètres de haut — aussi haut qu'une porte. Dix mille kilos — aussi lourd que 3 hippopotames. Son corps était large comme une grosse voiture."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] 17 mètres ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Imagine deux voitures l'une derrière l'autre, mais qui nagent, avec une queue de requin et une gueule immense."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Cen-tro-saure. En grec, « kentron » veut dire pointe, petite pique. Et « saure » veut dire lézard. Le lézard à pointes."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Des pointes partout."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Toute sa collerette était bordée de petites pointes. Il vivait au Canada, il y a 75 millions d'années. Le Gorgosaure le poursuivait."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

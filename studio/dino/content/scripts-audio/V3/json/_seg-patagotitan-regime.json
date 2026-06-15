@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Herbivore. Il mangeait des feuilles d'arbres gigantesques, tout en haut. Il vivait en troupeau. Les Giganotosaures et les Mapusaura le chassaient en meute."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Des chasseurs en meute contre lui."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[softly] Oui. Même le Titanosaure géant avait peur. Les Giganotosaures l'attaquaient par groupe, comme des loups contre un éléphant."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

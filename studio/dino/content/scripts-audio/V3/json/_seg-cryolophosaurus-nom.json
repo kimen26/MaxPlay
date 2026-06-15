@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Cri-o-lo-fo-saure. « Cryo », en grec, c'est la glace, le froid. « Lopho », c'est une crête. Et « saure », c'est « lézard »."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Lézard à crête de glace."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Oui. Il vivait en Antarctique, il y a 190 millions d'années. Mais à l'époque, l'Antarctique était couvert de forêts, et il faisait doux."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Pas de glace alors."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Pas du tout. Il y avait des arbres, des plantes et des herbivores à chasser. Un monde vert tout au sud."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

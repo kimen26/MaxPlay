@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Le Carnotaure pouvait courir jusqu'à 56 kilomètres par heure. Aussi vite qu'un lion. Et ses bras étaient si petits qu'ils ne servaient presque à rien."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] 56 kilomètres par heure. Un taureau-fusée."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Le champion de la vitesse parmi les gros carnivores. Même ses tout petits bras ne le ralentissaient pas."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

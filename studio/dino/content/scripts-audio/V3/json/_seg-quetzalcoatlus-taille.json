@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ses ailes faisaient 11 mètres d'envergure — larges comme un bus de Paris. Debout au sol, il faisait 5 mètres de haut — aussi haut qu'une girafe. Et il pesait 200 kilos — comme un gros cochon."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] 5 mètres ? Mais comment il décollait ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] En courant comme un oiseau géant, puis en prenant le vent. Ses os étaient creux et très légers."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Pro-to-sé-ra-tops. En grec, « proto » veut dire premier, « cérat » veut dire corne, et « ops » veut dire face. La première face à corne."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Le premier dinosaure à cornes."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactement. C'était un des tout premiers dinosaures à cornes, un cousin lointain des grands Tricératops. Il vivait en Mongolie, en Asie, il y a 75 millions d'années, avec le Vélociraptor."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

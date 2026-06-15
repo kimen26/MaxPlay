@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 13 mètres de long — aussi long qu'un bus RATP. La moitié, c'était son cou. Il faisait 1 mètre de haut à l'épaule — aussi grand qu'un enfant de 4 ans. Et il pesait 2 mille 500 kilos — aussi lourd que 2 rhinocéros."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] La moitié c'était le cou ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] 7 mètres de cou tout seul. 72 vertèbres. Le cou le plus long de tous les reptiles."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] En 1868, un savant a collé la tête de l'Élasmosaure... à l'autre bout. Il avait confondu le cou et la queue. Son rival lui a dit : tu l'as mis à l'envers."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] La tête à la place de la queue ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Oui. La plus grande bourde de la paléontologie. Heureusement, on a recollé dans le bon sens."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

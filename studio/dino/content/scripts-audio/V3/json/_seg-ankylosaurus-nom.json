@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] An-ki-lo-saure. En grec ancien, « ankylo » veut dire « soudé, rigide » — comme quelque chose de très dur et qui ne plie pas. Et « saure », c'est « lézard »."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Lézard rigide. Comme un gros caillou qui marche."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactement. Il vivait en Amérique du Nord, il y a 66 millions d'années, tout recouvert d'armure."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et les méchants dinosaures, ils l'embêtaient ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Le T-Rex essayait, mais cette carapace de pierre avec sa massue au bout de la queue, c'était trop dur à croquer. À côté de lui vivaient aussi le Tricératops et l'Edmontosaure."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

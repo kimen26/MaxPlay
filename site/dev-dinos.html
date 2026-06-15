@@ -1514,22 +1514,26 @@ const DINO_AUDIO = {
   archelon:         _audioSet('archelon'),
   shonisaurus:      _audioSet('shonisaurus'),
   dimetrodon:       _audioSet('dimetrodon'),
+  // Nouveaux dinos V3 (2026-06-15)
+  patagotitan:      _audioSet('patagotitan'),
+  ichthyosaurus:    _audioSet('ichthyosaurus'),
 };
 function dinoHasAudio(id) { return !!(DINO_AUDIO[id] && DINO_AUDIO[id].recap); }
 // Version du TEXTE audio — V1 = industrialisé EP-039 (2026-05), V2 = réécriture naturelle/fluide (2026-06+).
 // Badge sur le bouton violet pour Papa Yann : un V1 = candidat à relancer. Absent du map = V1.
+// V3 = corpus dialogue corrigé (relecture multi-agents + fact-check paléo), régénéré 2026-06-15.
+// Les 51 dinos de l'encyclopédie sont en V3 (texte court interactif Narrateur+Wex, échelles canon, Tritri).
 const DINO_AUDIO_VERSION = {
-  tyrannosaurus: 'V2', mosasaurus: 'V2', therizinosaurus: 'V2',
-  // Vague Théropodes V2 (2026-06-12)
-  spinosaurus: 'V2', giganotosaurus: 'V2', carcharodontosaurus: 'V2', allosaurus: 'V2', tarbosaurus: 'V2',
-  albertosaurus: 'V2', ceratosaurus: 'V2', dilophosaurus: 'V2', carnotaurus: 'V2', cryolophosaurus: 'V2', baryonyx: 'V2',
-  // Vague Sauropodes + Armure/Cornes V2 (2026-06-12)
-  apatosaurus: 'V2', camarasaurus: 'V2', amargasaurus: 'V2', plateosaurus: 'V2',
-  euoplocephalus: 'V2', kentrosaurus: 'V2', torosaurus: 'V2', protoceratops: 'V2', pachycephalosaurus: 'V2',
-  // Vague Becs/Raptors/Volants/Marins/Dimétrodon V2 (2026-06-12)
-  edmontosaurus: 'V2', iguanodon: 'V2', deinonychus: 'V2', utahraptor: 'V2', troodon: 'V2',
-  microraptor: 'V2', gallimimus: 'V2', oviraptor: 'V2', archaeopteryx: 'V2', quetzalcoatlus: 'V2',
-  elasmosaurus: 'V2', ophthalmosaurus: 'V2', liopleurodon: 'V2', archelon: 'V2', shonisaurus: 'V2', dimetrodon: 'V2',
+  triceratops: 'V3', tyrannosaurus: 'V3', spinosaurus: 'V3', giganotosaurus: 'V3', carcharodontosaurus: 'V3',
+  allosaurus: 'V3', tarbosaurus: 'V3', baryonyx: 'V3', albertosaurus: 'V3', ceratosaurus: 'V3',
+  dilophosaurus: 'V3', carnotaurus: 'V3', cryolophosaurus: 'V3', brachiosaurus: 'V3', diplodocus: 'V3',
+  apatosaurus: 'V3', camarasaurus: 'V3', amargasaurus: 'V3', plateosaurus: 'V3', patagotitan: 'V3',
+  torosaurus: 'V3', protoceratops: 'V3', pentaceratops: 'V3', centrosaurus: 'V3', pteranodon: 'V3',
+  quetzalcoatlus: 'V3', archaeopteryx: 'V3', mosasaurus: 'V3', elasmosaurus: 'V3', ophthalmosaurus: 'V3',
+  liopleurodon: 'V3', archelon: 'V3', shonisaurus: 'V3', ichthyosaurus: 'V3', ankylosaurus: 'V3',
+  euoplocephalus: 'V3', stegosaurus: 'V3', kentrosaurus: 'V3', therizinosaurus: 'V3', dimetrodon: 'V3',
+  parasaurolophus: 'V3', edmontosaurus: 'V3', iguanodon: 'V3', pachycephalosaurus: 'V3', velociraptor: 'V3',
+  deinonychus: 'V3', utahraptor: 'V3', microraptor: 'V3', troodon: 'V3', gallimimus: 'V3', oviraptor: 'V3',
 };
 function dinoAudioVersion(id) { return DINO_AUDIO_VERSION[id] || 'V1'; }
 

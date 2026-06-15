@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Il était herbivore : il broutait des plantes. Il vivait seul ou en petit groupe. Le T-Rex pouvait l'attaquer, mais son armure était trop épaisse."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Même les dents du T-Rex ne passaient pas ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Non. Son dos était couvert de plaques osseuses soudées ensemble. Le T-Rex ne pouvait pas le mordre par-dessus."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

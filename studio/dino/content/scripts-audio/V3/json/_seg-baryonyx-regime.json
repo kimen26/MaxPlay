@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Piscivore. Il mangeait des poissons et parfois des petits dinosaures. On a trouvé des écailles de poisson ET des os d'Iguanodon dans son estomac. Il vivait seul ou en petit groupe."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il mangeait de tout."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Un vrai gourmet. Poisson au menu, et parfois un morceau d'Iguanodon en dessert."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

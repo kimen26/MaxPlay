@@ -3,7 +3,7 @@
 > Décisions verrouillées par Papa Yann. Le hook `figees-injector` réinjecte ce fichier dès qu'on touche `dev-dinos.html`, `dinos-data.js`, un audio `recit-*`/`menu-*`, ou un fichier de `dino/`.
 > Chaque ligne 🔒 est LOI. Chaque ligne ❌ 🔒 est une régression DÉJÀ commise — interdite. Seul Papa Yann défige (alerte rouge obligatoire avant tout changement d'une ligne 🔒).
 
-Fichiers concernés : [`site/dev-dinos.html`](../../../site/dev-dinos.html) · [`site/js/dinos-data.js`](../../../site/js/dinos-data.js) · [`site/audio/dinos/`](../../../site/audio/dinos/) · source dialogue [`_RECITS-EPOQUES-DIALOGUE.md`](../content/_RECITS-EPOQUES-DIALOGUE.md).
+Fichiers concernés : [`site/dev-dinos.html`](../../../site/dev-dinos.html) · [`site/js/dinos-data.js`](../../../site/js/dinos-data.js) · [`site/audio/dinos/`](../../../site/audio/dinos/) · source dialogue [`_RECITS-EPOQUES-DIALOGUE.md`](../content/sources/recits/_RECITS-EPOQUES-DIALOGUE.md).
 
 ---
 
@@ -30,6 +30,24 @@ Fichiers concernés : [`site/dev-dinos.html`](../../../site/dev-dinos.html) · [
 - 🔒 On DIT les **vrais noms** (Trias, Jurassique, Crétacé, Théropodes…) et les **vraies dates/chiffres** (« il y a 250 millions d'années »).
 - 🔒 Un terme savant prononcé doit être **expliqué** s'il est nouveau pour l'enfant. Ex : « ptérosaure » seul = ❌ → « reptile volant, comme le Ptéranodon » ✅ (le Ptéranodon est dans le jeu, lui).
 - ❌ 🔒 Flou édulcorant (« il y a si longtemps qu'on ne peut pas compter ») = nian-nian, banni.
+
+## 🔒 PAS de référence culturelle d'ADULTE (FIGÉ 2026-06-15)
+
+> Décision Papa Yann suite relecture V3 : un panel d'enfants (4-8 ans) n'a compris AUCUNE des références d'adultes. « Ça dégage. »
+
+- ❌ 🔒 **Aucune référence que l'enfant de 4 ans ne capte pas** : chanteur (Elvis, « rock'n'roll »), marque (Ferrari), film/franchise (Jurassic Park nommé), onomatopée-jouet plaquée (« vroum vroum »).
+- ✅ **Remplacer par une image concrète à hauteur d'enfant** : « aussi vite qu'un lion » (pas « Ferrari »), « une crête comme une vague » (pas « la coupe d'Elvis »).
+- ✅ **Exception pédagogique** : démystifier un mythe de film est OK *si l'info vraie tient seule sans nommer la franchise* (ex : « dans les films on les montre sans plumes, mais le vrai Vélociraptor avait des plumes »).
+
+> Régressions corrigées 2026-06-15 : « Elvisaurus / roi du rock » (Cryolophosaure), « vroum vroum » (Carnotaure), « Ferrari des dinosaures » (Gallimimus), « dino-bus du Canada » (Edmontosaure).
+
+## 🔒 PRÉDATION dite avec VÉRITÉ, jamais GORE (FIGÉ 2026-06-15)
+
+> Décision Papa Yann : « c'est normal qu'on ait des dinos qui mangent les autres » — la chasse fait partie du vrai. On adoucit UN POIL le curseur, sans jamais tomber dans le gore.
+
+- ✅ 🔒 **La prédation se DIT** : chasser pour manger, attraper une proie, se défendre avec ses cornes/sa massue = NORMAL et VRAI. Ne pas l'édulcorer ni la cacher.
+- ❌ 🔒 **JAMAIS de gore** : pas de sang, pas de torture, pas d'agonie, pas de détail de souffrance. (Voir mémoire [[feedback-dino-violence-juste]].)
+- 🎚️ **Curseur (adouci un poil 2026-06-15)** : préférer la formule sobre et factuelle (« il chassait les herbivores », « il attrapait sa proie ») à l'insistance crue. Les images très physiques (os « réduits en miettes », saut pour gober une proie en plein vol) restent permises mais **sans s'attarder** — une phrase, on passe. Le but : vrai, simple, pas appuyé.
 
 ## 🔒 AUDIO — registres & durées (FIGÉ)
 

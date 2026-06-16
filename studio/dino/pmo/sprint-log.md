@@ -2,6 +2,27 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-06-17 — Skill global « Dino Images Lunii » + 9 Emblèmes de familles validés
+
+**Fait :**
+- **Création skill global `~/.claude/skills/dino-images-lunii/`** : pipeline prouvé pour générer images Lunii. Contient : SKILL.md (doc) · EMBLEMES.md (charte + mapping 9 familles) · 3 scripts (launch-brave.ps1, gpt-gen.mjs, to-lunii.sh) · image de référence figée (Théropodes V3 PNG 320×240). Workflow : ChatGPT logué via Brave + Playwright CDP 9222 → conversion ffmpeg format Lunii (320×240, 16 gris, fond gris clair UNI, sans alpha → BMP RLE4 STUdio).
+- **9 emblèmes de familles + 1 couverture produits & validés Papa Yann**. Rangés `studio/dino/content/lunii/` : familles/ (PNG finaux) · _sources-hd/ (sources HD couleur) · INDEX.md (mapping). Mapping : 01 Théropodes (griffures+viande+pattes) · 02 Sauropodes (cou+feuille) · 03 Thyréophores (plaques+massue) · 04 Cératopsiens (tête ornée+cornes+collerette) · 05 Ornithopodes (crête Parasaurolophus+bec+main Iguanodon pouce-poignard) · 06 Dromæosaures (patte emplumée+griffe-faucille+griffures) · 07 Ptérosaures (ailes déployées) · 08 Énaliosaures (cou+nageoire vagues) · 09 Avant les dinos (Dimétrodon à voile). Couverture = scène groupe 4:3 « toutes les familles ».
+- **Charte de style figée (style C)** : dessin BD contour net + ombrage gris simple, **fond gris clair UNI** (jamais de cercle/médaillon/cadre autour), emblème-CONCEPT (signature famille, pas portrait dino-star), centré, sans texte. Réf = Théropodes V3.
+- **2 règles figées nouvelles gravées** : ✅ **Griffures = prédateurs uniquement** (Théropodes, Dromæosaures) ; jamais sur herbivore. ✅ **Piège ChatGPT anti-cadre** : ajoute souvent médaillon → exiger « fond gris uni, SANS cadre/cercle ».
+- **Format Lunii fixé** : 320×240, 16 niveaux gris, sans alpha. Couverture = 4:3 (sinon letterbox).
+- **Specs par dino précis** → lire `studio/dino/content/sources/fiches/_FICHES-DINOS-GROKIPEDIA.md` (source vérité, ne pas réinventer).
+
+**Décidé :**
+- Skill global =  source de vérité pipeline Lunii (réutilisable dans d'autres projets).
+- Emblèmes figés = réutilisables comme vignettes menu / cartes / décoratives du site future. Non déployées site/ pour l'instant (composants Lunii seuls).
+- Prochaine étape : intégrer images dans packs Lunii (ex « Famille Théropodes » avec images+audio).
+
+**État au reboot :**
+- ✅ **Skill `dino-images-lunii/` en place et documenté**
+- ✅ **9 emblèmes + couverture en `studio/dino/content/lunii/`**
+- ✅ **2 règles images figées gravées**
+- 📍 Étape suivante : création packs complets « famille + récit » (blend images + 51 MP3 V3)
+
 ## 2026-06-15 (suite 3 — PRODUCTION AUDIO V3 FINALISÉE — 51 DINOS, 255 MP3)
 
 **Fait :**

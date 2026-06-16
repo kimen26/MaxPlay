@@ -14,6 +14,10 @@ Tritri = dino préféré de Wex (Tricératops), running gag. **JAMAIS** « Max �
 ## 2026-06-03 — « Ce qu'il mange » = alimentaire pur
 Retrait de la catégorie morphologique « Volants & Marins » des régimes. Les animaux reclassés dans leur vrai régime. **Raison** : un onglet « ce qu'il mange » ne contient que des régimes alimentaires.
 
+## 2026-06-17 (suite) — Inversion charte images Lunii : fond noir + sujet blanc (VALIDÉE Papa Yann)
+
+**Fait** : après production + relecture papa Yann des 9 emblèmes + couverture Lunii (voir EP-D17), décision inversion visuelle pour meilleur rendu écran Lunii. Charte passe de « fond gris clair UNI » → « **INVERSÉ : fond NOIR, sujet BLANC** ». Processus : générer toujours sur fond clair via ChatGPT (zéro coût re-dérivation), puis conversion pipeline to-lunii.sh inverse automatiquement vers fond noir + trait blanc, posterise 16 gris, letterbox noir. 9 emblèmes + couverture re-dérivés depuis sources HD (gratuit, sans rappeler ChatGPT) et remplacés dans `studio/dino/content/lunii/`. **Raison** : le sujet « brille » sur noir (meilleur contraste écran Lunii vieille) ; le vide (ancien gris clair) devient logiquement noir. **Impact** : règle figée inversée, skill global `dino-images-lunii/` maintenu à jour (to-lunii.sh assure conversion auto). **Source vérité** : `content/sources/fiches/_FICHES-DINOS-GROKIPEDIA.md`.
+
 ## 2026-06-17 — Skill global « Dino Images Lunii » créé + charte visuelle figée
 
 **Fait** : création skill global `~/.claude/skills/dino-images-lunii/` (pipeline prouvé ChatGPT/Brave/Playwright CDP → ffmpeg Lunii). 9 emblèmes familles + 1 couverture produits et validés Papa Yann. **Décision** : 2 règles images figées gravées dans `figees/encyclopedie.md` (charte style C + griffures prédateurs uniquement). Source specs vérité : `content/sources/fiches/_FICHES-DINOS-GROKIPEDIA.md`. **Raison** : images Lunii sont atome visuelle réutilisable (packs Lunii, future vignettes site). **Impact** : packs Lunii complets peuvent débuter (images + 51 MP3 V3 bloc).

@@ -2,6 +2,21 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-06-17 (suite 2) — Inversion charte images Lunii : fond noir + sujet blanc (validée Papa Yann)
+
+**Fait :**
+- **Décision inversion visuelle appliquée** : charte images Lunii passe de « fond gris clair UNI » → « **INVERSÉ : fond NOIR, sujet BLANC** ». Meilleur rendu écran Lunii (sujet brille sur noir, vide devient logiquement noir).
+- **Processus production :** génération toujours sur fond clair via ChatGPT (zéro coût, sans rappeler GPT) → conversion pipeline to-lunii.sh inverse automatiquement en sortie (fond noir + trait blanc, posterise 16 gris, letterbox noir).
+- **9 emblèmes + 1 couverture re-dérivés** depuis sources HD (gratuit, pas de coût GPT) et remplacés dans `studio/dino/content/lunii/familles/` + `cover/`.
+- **Règle figée mise à jour** : `figees/encyclopedie.md` § « IMAGES LUNII » modifiée, titre complété « (FIGÉ 2026-06-17, inversé 2026-06-17) ».
+- **Décision gravée** : entrée `decisions.md` datée 2026-06-17 (suite) + texte complet raison/impact.
+
+**État au reboot :**
+- ✅ **Charte images Lunii inversée et gravée**
+- ✅ **9 emblèmes + couverture remplacés (fond noir/sujet blanc)**
+- ✅ **Skill `dino-images-lunii/` maintenu à jour (to-lunii.sh assure conversion)**
+- **Packs Lunii prêts pour composition finale** (images finales + 51 MP3 V3 bloc)
+
 ## 2026-06-17 — Skill global « Dino Images Lunii » + 9 Emblèmes de familles validés
 
 **Fait :**

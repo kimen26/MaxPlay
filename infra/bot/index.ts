@@ -528,4 +528,38 @@ process.on("unhandledRejection", (reason) =>
 );
 
 log(`🤖 MaxPlay Bot démarré… INSTANCE_ID=${INSTANCE_ID} pid=${process.pid} host=${hostname()} CLAUDE_TIMEOUT_MS=${CLAUDE_TIMEOUT_MS} PROJECT_PATH=${PROJECT_PATH}`);
-bot.start({ drop_pending_updates: true });
+
+// ─── Polling résilient ────────────────────────────────────────────────────────
+// bot.start() ne se résout que lorsque le polling s'arrête. Une erreur dedans (ex:
+// 409 Conflict = une autre instance/un test a appelé getUpdates) rejetait la promesse
+// SANS être catchée → unhandledRejection → polling mort pour toujours, mais process et
+// serveur HTTP encore vivants = ZOMBIE PARTIEL silencieux (cause du « jamais de réponse »).
+// On relance désormais le polling avec backoff. Un 409 transitoire est absorbé ; un
+// conflit durable (vrai doublon) finit par faire exit → le garde-fou port 3001 + le hook
+// SessionStart garantissent qu'une seule instance saine tourne.
+const MAX_POLLING_RETRIES = 6;
+
+async function runPolling() {
+  for (let attempt = 1; attempt <= MAX_POLLING_RETRIES; attempt++) {
+    try {
+      await bot.start({
+        drop_pending_updates: true,
+        onStart: (me) =>
+          log(`✅ Polling Telegram actif @${me.username} (tentative ${attempt}/${MAX_POLLING_RETRIES})`),
+      });
+      log("ℹ️ Polling arrêté normalement.");
+      return;
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : String(err);
+      const isConflict = msg.includes("409") || msg.includes("Conflict");
+      log(`❌ Polling crashé (tentative ${attempt}/${MAX_POLLING_RETRIES})${isConflict ? " [409 conflit]" : ""}:`, msg);
+      if (attempt >= MAX_POLLING_RETRIES) {
+        log("🛑 Trop d'échecs de polling — arrêt du process (le hook SessionStart relancera une instance saine).");
+        process.exit(1);
+      }
+      await new Promise((r) => setTimeout(r, 5000));
+    }
+  }
+}
+
+runPolling();

@@ -41,6 +41,17 @@ Fichiers concernés : [`site/dev-dinos.html`](../../../site/dev-dinos.html) · [
 
 > Régressions corrigées 2026-06-15 : « Elvisaurus / roi du rock » (Cryolophosaure), « vroum vroum » (Carnotaure), « Ferrari des dinosaures » (Gallimimus), « dino-bus du Canada » (Edmontosaure).
 
+## 🔒 IMAGES LUNII — charte visuelle figée (FIGÉ 2026-06-17)
+
+> Décision Papa Yann suite production 9 emblèmes + couverture. Skill `dino-images-lunii/` = source vérité. Specs par dino dans `content/sources/fiches/_FICHES-DINOS-GROKIPEDIA.md`.
+
+- 🔒 **Style** : dessin BD contour net + ombrage gris simple, **fond gris clair UNI** (jamais cercle/médaillon/cadre autour).
+- 🔒 **Concept-emblème** : chaque image = signature de la FAMILLE, pas portrait d'une dino-star. Ex : Théropodes = pattes+viande+griffures ; Sauropodes = cou+feuille.
+- 🔒 **Griffures = prédateurs uniquement** : Théropodes et Dromæosaures SEULS ont le droit aux griffures (signature d'énergie). Jamais sur herbivore.
+- ❌ 🔒 **Piège ChatGPT** : ajoute souvent médaillon/cercle → exiger « fond gris uni, SANS cadre/cercle » avant génération.
+- 🔒 **Format Lunii** : 320×240 pixels, 16 niveaux gris, sans alpha (BMP RLE4 STUdio). Couverture en 4:3 (sinon letterbox).
+- 🔒 **Source des specs** : toujours `studio/dino/content/sources/fiches/_FICHES-DINOS-GROKIPEDIA.md` (vérité terrain, ne pas réinventer).
+
 ## 🔒 PRÉDATION dite avec VÉRITÉ, jamais GORE (FIGÉ 2026-06-15)
 
 > Décision Papa Yann : « c'est normal qu'on ait des dinos qui mangent les autres » — la chasse fait partie du vrai. On adoucit UN POIL le curseur, sans jamais tomber dans le gore.

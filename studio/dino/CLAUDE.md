@@ -40,6 +40,7 @@
 | **Données 50 dinos** | [`../site/js/dinos-data.js`](../../site/js/dinos-data.js) |
 | **Audio** (récits, menus, fiches) | [`../site/audio/dinos/`](../../site/audio/dinos/) |
 | **Images** | [`../site/img/dinos/`](../../site/img/dinos/) |
+| **Images Lunii** (emblèmes familles + couverture, fond noir natif — source interne, non déployée) | [`content/lunii/`](content/lunii/INDEX.md) · skill `dino-images-lunii` · assemblées par [`../lunii/`](../lunii/CLAUDE.md) |
 | **Sources contenu** (récits, échelle, étymo, factcheck, process) | [`content/sources/`](content/sources/) (recits · fiches · mesures · etymo) |
 | **Données structurées** (racines dico/quiz) | [`content/data/racines.json`](content/data/racines.json) |
 | **Scripts** (audio, grok, export/regen) | [`content/scripts/`](content/scripts/) (audio · images-grok · export) |

@@ -13,6 +13,7 @@
 | [`scripts/`](scripts/) | 🛠️ **Outils** — génèrent audio / images / exports | [`scripts/INDEX.md`](scripts/INDEX.md) |
 | [`scripts-audio/`](scripts-audio/) | 🎙️ **Dialogues** Wex/Narrateur (`groupe-*`, `special-*`, template) + cache `json-top/` | — |
 | [`assets/`](assets/) | 🎨 **Assets visuels** — banque 215 silhouettes dino par famille (PNG noir/transparent, mini-jeux) | [`assets/silhouettes/_INDEX.md`](assets/silhouettes/_INDEX.md) |
+| [`lunii/`](lunii/) | 🎒 **Images Lunii** — 9 emblèmes familles + couverture (320×240, 16 gris, **fond noir natif**). Produites par skill `dino-images-lunii`, consommées par `studio/lunii/scripts/build-dinos-pack.mjs` | [`lunii/INDEX.md`](lunii/INDEX.md) |
 | [`inbox/`](inbox/) | 📥 **Brut non trié** — matière à exploiter | — |
 
 ## 🔁 Le flux (de la source au produit déployé)

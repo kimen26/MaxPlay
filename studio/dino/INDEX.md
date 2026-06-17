@@ -13,6 +13,7 @@
 | Audio (8 récits + 4 menus + 2 spéciaux + 22 dinos) | [`../site/audio/dinos/`](../../site/audio/dinos/) |
 | Images dino | [`../site/img/dinos/`](../../site/img/dinos/) |
 | Galeries images (local + grok) | [`../site/js/dinos-images-local.js`](../../site/js/) · `dinos-images-grok.js` |
+| 🎒 Images Lunii (emblèmes familles + couverture, fond noir natif) | [`content/lunii/`](content/lunii/INDEX.md) → assemblées par [`../lunii/`](../lunii/CLAUDE.md) |
 
 ## 🗂️ Gouvernance (pmo/)
 

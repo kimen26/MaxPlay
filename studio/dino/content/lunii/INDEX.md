@@ -35,11 +35,19 @@ Le menu « Les familles » de l'encyclopédie (source noms : [`site/js/dinos-dat
 - **Griffures** = signature d'énergie réservée aux **prédateurs** (Théropodes, Dromæosaures uniquement).
 - **Jamais de cadre/cercle/médaillon** autour (incident récurrent ChatGPT — toujours exiger « fond uni, sans cadre »).
 
-## Régénérer / ajouter
+## Chaîne complète (PRODUIRE → STOCKER → ASSEMBLER → DISTRIBUER)
 
-Voir le skill [`dino-images-lunii`](../../../../../Users/kimen/.claude/skills/dino-images-lunii/SKILL.md) :
-`launch-brave.ps1` → `gpt-gen.mjs "<prompt>" out.png` → `to-lunii.sh out.png final.png`.
-Spécificités par dino précis : [`../sources/fiches/_FICHES-DINOS-GROKIPEDIA.md`](../sources/fiches/_FICHES-DINOS-GROKIPEDIA.md).
+```
+1. PRODUIRE   skill ~/.claude/skills/dino-images-lunii/ (ChatGPT piloté dans Brave)
+              launch-brave.ps1 → gpt-gen.mjs "<prompt fond noir natif>" out.png → to-lunii.sh
+2. STOCKER    ICI → familles/NN-*.png (finaux 320×240) + _sources-hd/ (sources couleur)
+3. ASSEMBLER  studio/lunii/scripts/build-dinos-pack.mjs (consomme familles/ + MP3 → pack .zip)
+4. DISTRIBUER STUdio (localhost:8080) → Lunii v2 USB de Max   [pôle ../../../lunii/]
+```
+
+- Specs par dino précis (signature, scènes) : [`../sources/fiches/_FICHES-DINOS-GROKIPEDIA.md`](../sources/fiches/_FICHES-DINOS-GROKIPEDIA.md).
+- Charte & pièges : skill [`dino-images-lunii`](../../../../../Users/kimen/.claude/skills/dino-images-lunii/SKILL.md) · pôle assemblage [`../../../lunii/CLAUDE.md`](../../../lunii/CLAUDE.md) (+ `LESSONS-MOTEUR.md`).
+- ⚠️ **EP-D17 en cours** : les `familles/*.png` actuels sont l'ancien rendu (inversion post). À **régénérer en fond noir NATIF** (voir [`../../pmo/backlog.md`](../../pmo/backlog.md)).
 
 ---
 

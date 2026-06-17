@@ -2,6 +2,22 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-06-17 (suite 3) — Clarification DÉCISION : images Lunii FOND NOIR NATIF (pas inversion post)
+
+**Fait :**
+- **Clarification décision Papa Yann** : le processus précédent (fond clair généré + inversion post) n'était qu'un pis-aller. La **vraie bonne charte** = **régénérer les images conçues d'emblée pour fond noir** (composition pensée sombre = meilleur rendu Lunii).
+- **Raison** : une inversion simple n'est pas vraiment « belle ». Sujet blanc sur noir « brille » mieux quand l'image est composée pour sombre d'emblée.
+- **Ticket EP-D17 créé** : action à démarrer « régénérer 10 images (couverture + 9 emblèmes) en fond noir natif ». Specs : skill `dino-images-lunii/` + brief GPT « fond noir d'emblée, pas fond clair à inverser ». Critère done : PNG 320×240 16 gris validés Papa Yann, sombre natif.
+- **Charte INDEX.md mise à jour** : `studio/dino/content/lunii/INDEX.md` corrections lignes 9, 33 (« fond gris clair » → « fond noir natif », « inversion » → « natif »).
+- **Décision gravée** : `decisions.md` entrée datée 2026-06-17 (suite) clarifiée contexte + raison + impact EP-D17.
+- **Figée confirmée** : `figees/encyclopedie.md` § IMAGES LUNII déjà correcte (fond noir/sujet blanc), juste besoin de clarifier prompts GPT dès la conception.
+
+**État au reboot :**
+- ✅ **Décision clarifiée** : fond noir natif (pas inversion)
+- ✅ **Ticket EP-D17 en backlog** : régénérer 10 images
+- ✅ **Charte INDEX mise à jour**
+- **À faire** : lancer skill `dino-images-lunii/` avec brief « fond noir d'emblée »
+
 ## 2026-06-17 (suite 2) — Inversion charte images Lunii : fond noir + sujet blanc (validée Papa Yann)
 
 **Fait :**

@@ -46,6 +46,7 @@ Fichiers concernés : [`site/dev-dinos.html`](../../../site/dev-dinos.html) · [
 > Décision Papa Yann suite production 9 emblèmes + couverture. Skill `dino-images-lunii/` = source vérité. Specs par dino dans `content/sources/fiches/_FICHES-DINOS-GROKIPEDIA.md`.
 
 - 🔒 **Style** : dessin BD contour net + ombrage gris simple, **FOND NOIR NATIF, sujet BLANC** : composer **directement sur fond noir** dès la génération ChatGPT (composition pensée sombre, le sujet clair « brille »). **PAS d'inversion post** (l'inversion mécanique d'une image fond-clair n'est pas belle — clarifié Papa Yann 2026-06-17). Jamais cercle/médaillon/cadre autour.
+  - **POURQUOI (raison technique figée)** : l'écran Lunii est **rétro-éclairé** → un pixel **noir n'est PAS allumé**. Donc fond noir = le « vide » s'éteint, et seul le sujet (clair) s'illumine et ressort. C'est la raison physique de la règle — ne jamais régresser vers un fond clair.
 - 🔒 **Concept-emblème** : chaque image = signature de la FAMILLE, pas portrait d'une dino-star. Ex : Théropodes = pattes+viande+griffures ; Sauropodes = cou+feuille.
 - 🔒 **Griffures = prédateurs uniquement** : Théropodes et Dromæosaures SEULS ont le droit aux griffures (signature d'énergie). Jamais sur herbivore.
 - ❌ 🔒 **Piège ChatGPT** : ajoute souvent médaillon/cercle → exiger « fond noir uni, SANS cadre/cercle » avant génération.

@@ -14,9 +14,27 @@ Tritri = dino préféré de Wex (Tricératops), running gag. **JAMAIS** « Max �
 ## 2026-06-03 — « Ce qu'il mange » = alimentaire pur
 Retrait de la catégorie morphologique « Volants & Marins » des régimes. Les animaux reclassés dans leur vrai régime. **Raison** : un onglet « ce qu'il mange » ne contient que des régimes alimentaires.
 
-## 2026-06-17 (suite) — Inversion charte images Lunii : fond noir + sujet blanc (VALIDÉE Papa Yann)
+## 2026-06-17 (suite) — Inversion charte images Lunii → Vraie charte FOND NOIR NATIF (DÉCISION Papa Yann)
 
-**Fait** : après production + relecture papa Yann des 9 emblèmes + couverture Lunii (voir EP-D17), décision inversion visuelle pour meilleur rendu écran Lunii. Charte passe de « fond gris clair UNI » → « **INVERSÉ : fond NOIR, sujet BLANC** ». Processus : générer toujours sur fond clair via ChatGPT (zéro coût re-dérivation), puis conversion pipeline to-lunii.sh inverse automatiquement vers fond noir + trait blanc, posterise 16 gris, letterbox noir. 9 emblèmes + couverture re-dérivés depuis sources HD (gratuit, sans rappeler ChatGPT) et remplacés dans `studio/dino/content/lunii/`. **Raison** : le sujet « brille » sur noir (meilleur contraste écran Lunii vieille) ; le vide (ancien gris clair) devient logiquement noir. **Impact** : règle figée inversée, skill global `dino-images-lunii/` maintenu à jour (to-lunii.sh assure conversion auto). **Source vérité** : `content/sources/fiches/_FICHES-DINOS-GROKIPEDIA.md`.
+**Contexte** : après production + relecture Papa Yann des 9 emblèmes + couverture Lunii, dérivation brute « fond gris clair + inversion post-production » révèle un problème : une inversion simple n'est pas réellement « belle ». Les images ne sont pas conçues pour un fond noir.
+
+**Décision Papa Yann (2026-06-17)** :
+- ❌ **Ne PAS utiliser l'inversion** (fond clair généré, puis invermis après coup) — c'est un pis-aller visuel, pas un vrai rendu.
+- ✅ **Régénérer NATIVEMENT sur fond noir** : composer les images dès la conception pour écran Lunii sombre. Sujet blanc/gris clair brille naturellement sur le noir.
+- **Processus** : re-dériver prompts GPT avec brief « fond noir d'emblée, pas fond clair à inverser » → ChatGPT génère composition pensée sombre → PNG 320×240 16 gris directement bon.
+
+**Raison** :
+- Le rendu Lunii (écran derrière plastique, 16 gris vieille tech) bénéficie énormément du contraste noir/blanc.
+- Sujet blanc sur noir « brille » et ressort bien. Fond noir = plus logique (le vide devient noir, pas gris clair dégueulasse).
+- Composition pensée sombre >> composition pensée claire + inversée après.
+
+**Impact** :
+- **Ticket EP-D17 créé** : régénérer 10 images (couverture + 9 emblèmes) en fond noir natif (pas inversion post).
+- **Règle figée mise à jour** : `figees/encyclopedie.md` § IMAGES LUNII → clarifier « fond noir natif dès la conception » (les images actuelles sont à refaire).
+- **Charte INDEX.md mise à jour** : `studio/dino/content/lunii/INDEX.md` ligne 9 correction « gris clair » → « noir natif ».
+- **À faire aussi** : 51 images dinos (quand elles arrivent) suivront la même règle « fond noir natif ».
+
+**Source vérité** : `content/sources/fiches/_FICHES-DINOS-GROKIPEDIA.md` (specs style/concept par famille).
 
 ## 2026-06-17 — Skill global « Dino Images Lunii » créé + charte visuelle figée
 

@@ -6,10 +6,10 @@
 ## Format Lunii (contrainte technique)
 
 - **320×240 px**, **16 niveaux de gris** (posterisé), **sans alpha**.
-- **INVERSÉ — fond NOIR, sujet BLANC** (figé 2026-06-17) : meilleur rendu sur l'écran Lunii, le sujet « brille » et le vide disparaît.
+- **FOND NOIR NATIF, sujet BLANC** (figé 2026-06-17) : meilleur rendu sur l'écran Lunii, le sujet « brille » et le vide disparaît. **Les images doivent être CONÇUES pour fond noir dès la dérivation** (pas une inversion post-production). Composition pensée sombre = meilleur contraste.
 - La boîte stocke en **BMP RLE4** ; STUdio convertit le PNG au transfert.
-- **Conception** : ChatGPT génère un dessin sur fond CLAIR → le pipeline `to-lunii.sh` **inverse** en sortie (fond clair → noir, trait → blanc). On juge toujours sur le PNG inversé final.
-- `familles/` = PNG finaux inversés (ce que Max verra). `_sources-hd/` = sources couleur HD ChatGPT (pour re-dériver si besoin, gratuit).
+- **Conception** : ChatGPT génère un dessin **directement sur fond NOIR** (brief : « fond noir d'emblée, composition sombre »). PNG final 320×240 16 gris = directement bon pour Lunii. Pas d'inversion post.
+- `familles/` = PNG finaux (ce que Max verra). `_sources-hd/` = sources couleur HD ChatGPT (pour re-dériver si besoin, gratuit). À REFAIRE avec brief « fond noir natif ».
 
 ## Mapping menu → image
 
@@ -30,7 +30,7 @@ Le menu « Les familles » de l'encyclopédie (source noms : [`site/js/dinos-dat
 
 ## Charte de style (figée — voir skill)
 
-- Style C : dessin BD **contour net** + **ombrage gris simple**, emblème centré, sans texte. (Généré sur fond clair, **rendu final inversé fond noir**.)
+- Style C : dessin BD **contour net** + **ombrage gris simple**, emblème centré, sans texte. (Généré **directement sur fond noir natif**, composition pensée sombre — pas d'inversion post.)
 - **Emblème-concept** (élément signature de la famille), pas un portrait de dino-star.
 - **Griffures** = signature d'énergie réservée aux **prédateurs** (Théropodes, Dromæosaures uniquement).
 - **Jamais de cadre/cercle/médaillon** autour (incident récurrent ChatGPT — toujours exiger « fond uni, sans cadre »).

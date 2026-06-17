@@ -34,11 +34,22 @@ sprint-log du **pôle source** (dino ou narration), pas ici.
 
 ---
 
-## Comment on bosse
+## Comment on bosse — ENTRÉE des tâches Lunii (process end-to-end)
+
+> 👉 **Ce fichier est le point d'entrée de toute tâche Lunii** (images comme audio comme packs). Le rule [`.claude/rules/lunii.md`](../../.claude/rules/lunii.md) le fait charger même quand on touche les images côté dino.
 
 ```
-Audio canon (dino/narration) → scripts/build-<nom>-pack.mjs → ~/.studio/library/
-   → STUdio (localhost:8080) → brancher Lunii USB → glisser-déposer → testé par Max
+CONTENU CANON (pôles sources : dino / narration)
+  ├─ AUDIO   : MP3 déjà canon (process narration/dino, jamais créé ici)
+  └─ IMAGES  : skill global dino-images-lunii (ChatGPT piloté dans Brave)
+               → 320×240, 16 gris, FOND NOIR NATIF (écran rétro-éclairé)
+               → stockées dans studio/dino/content/lunii/familles/ (+ _sources-hd/)
+                        │
+                        ▼
+ASSEMBLER  scripts/build-<nom>-pack.mjs  (combine images + MP3 → pack .zip)
+                        │
+                        ▼
+~/.studio/library/ → STUdio (localhost:8080) → Lunii v2 USB → testé par Max
 ```
 
 - **Lancer STUdio** : `C:\ProjetsPerso\Tools\studio-lunii\studio-web-ui-0.4.2\studio-windows.bat` → http://localhost:8080
@@ -46,6 +57,16 @@ Audio canon (dino/narration) → scripts/build-<nom>-pack.mjs → ~/.studio/libr
 - Après transfert validé par Papa Yann → noter le pack dans le tableau du README + sprint-log du pôle source.
 
 ---
+
+## 🎛️ Construire un pack (AVANT de coder un build)
+
+- **Skill** [`lunii-pack-builder`](C:/Users/kimen/.claude/skills/lunii-pack-builder/SKILL.md) — format story.json v1, format binaire FS (ni/li/ri/si décodé), **controlSettings** (wheel/ok/home/pause/autoplay), patterns de nav (menu, 2 niveaux, série chrono, étiquette/contenu), validation reader Java.
+- **Journal moteur** [`LESSONS-MOTEUR.md`](LESSONS-MOTEUR.md) — pièges VÉRIFIÉS (à enrichir à chaque découverte) :
+  - 🚨 node `autoplay:true` → **`ok:true` obligatoire** (sinon l'audio reboucle + image figée).
+  - 🚨 bouton **home = sortir du pack** : squareOne `home:true` + `homeTransition:null` (sinon coincé dans le pack).
+  - `home:false`/`ok:false` + transition non-null = piège issue #100 (crash).
+  - Audio : **+300 ms de silence de tête** (sinon 1ʳᵉ syllabe coupée).
+  - Images : **fond noir natif** (pas inversion), 320×240, 16 gris.
 
 ## Pointeurs
 

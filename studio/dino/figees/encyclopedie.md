@@ -41,14 +41,14 @@ Fichiers concernés : [`site/dev-dinos.html`](../../../site/dev-dinos.html) · [
 
 > Régressions corrigées 2026-06-15 : « Elvisaurus / roi du rock » (Cryolophosaure), « vroum vroum » (Carnotaure), « Ferrari des dinosaures » (Gallimimus), « dino-bus du Canada » (Edmontosaure).
 
-## 🔒 IMAGES LUNII — charte visuelle figée (FIGÉ 2026-06-17, inversé 2026-06-17)
+## 🔒 IMAGES LUNII — charte visuelle figée (FIGÉ 2026-06-17, fond noir NATIF 2026-06-17)
 
 > Décision Papa Yann suite production 9 emblèmes + couverture. Skill `dino-images-lunii/` = source vérité. Specs par dino dans `content/sources/fiches/_FICHES-DINOS-GROKIPEDIA.md`.
 
-- 🔒 **Style** : dessin BD contour net + ombrage gris simple, **INVERSÉ : fond NOIR, sujet BLANC** (la voie par défaut : on génère sur fond clair via ChatGPT, puis conversion Lunii inverse en sortie vers fond noir + trait blanc). Jamais cercle/médaillon/cadre autour.
+- 🔒 **Style** : dessin BD contour net + ombrage gris simple, **FOND NOIR NATIF, sujet BLANC** : composer **directement sur fond noir** dès la génération ChatGPT (composition pensée sombre, le sujet clair « brille »). **PAS d'inversion post** (l'inversion mécanique d'une image fond-clair n'est pas belle — clarifié Papa Yann 2026-06-17). Jamais cercle/médaillon/cadre autour.
 - 🔒 **Concept-emblème** : chaque image = signature de la FAMILLE, pas portrait d'une dino-star. Ex : Théropodes = pattes+viande+griffures ; Sauropodes = cou+feuille.
 - 🔒 **Griffures = prédateurs uniquement** : Théropodes et Dromæosaures SEULS ont le droit aux griffures (signature d'énergie). Jamais sur herbivore.
-- ❌ 🔒 **Piège ChatGPT** : ajoute souvent médaillon/cercle → exiger « fond gris uni, SANS cadre/cercle » avant génération.
+- ❌ 🔒 **Piège ChatGPT** : ajoute souvent médaillon/cercle → exiger « fond noir uni, SANS cadre/cercle » avant génération.
 - 🔒 **Format Lunii** : 320×240 pixels, 16 niveaux gris, sans alpha (BMP RLE4 STUdio). Couverture en 4:3 (sinon letterbox).
 - 🔒 **Source des specs** : toujours `studio/dino/content/sources/fiches/_FICHES-DINOS-GROKIPEDIA.md` (vérité terrain, ne pas réinventer).
 

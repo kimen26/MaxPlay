@@ -2,7 +2,7 @@
   "inputs": [
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily][excited] Le Jurassique ! Il y a cent cinquante millions d'années. [playful] Ce nom vient des montagnes du Jura, entre la France et la Suisse."
+      "text": "[excited][playful] On arrive au [serious] Jurassique ! [happily] Il y a cent cinquante millions d'années. [chuckles] Son nom vient des montagnes du Jura, entre la France et la Suisse."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -10,7 +10,7 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[chuckles][playful] Pas loin ! [excited] La Pangée se fend en deux : le nord et le sud. [gasps] Un océan s'ouvre au milieu ! Il fait chaud et humide."
+      "text": "[laughs][playful] Pas loin ! [excited] La Pangée se fend en deux : le nord et le sud. [gasps] Un océan s'ouvre au milieu ! Il fait chaud et humide."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -18,7 +18,7 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[playful][laughs] Si, tout autour ! [happily] Mais pas au milieu. [excited] Des forêts de fougères gigantesques poussent partout."
+      "text": "[deadpan][chuckles] Si, tout autour ! [happily] Mais pas au milieu. [excited] Des forêts de fougères [shouts] gigantesques poussent partout."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -26,23 +26,31 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[excited][quickly] Tant de nourriture que les herbivores deviennent ÉNORMES ! [shouts] Le Di-plo-do-cus ! Le Bra-ki-o-saure !"
+      "text": "[happily][chuckles] Oh oui ! [quickly] Tant de nourriture que les herbivores deviennent [awe][shouts] ÉNORMES ! [shouts] Le Diplodocus ! Le Brachio-saure !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Et ceux qui mangent de la viande ?"
+      "text": "[curious] Et pour ceux qui mangent de la viande ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[softly][serious] Les carnivores aussi grandissent. [happily] L'Allo-saure, le Céra-to-saure. [gasps] Et dans les airs, le Pté-ranodon, un reptile volant !"
+      "text": "[happily] Oui, tout est lié ! [softly][serious] Les carnivores aussi grandissent. [happily] Le Allo-saure, le Cerato-saure. [gasps] Et il y avait aussi les piscivores : dans les airs, le Ptéranodon, un reptile volant ! [excited] Et dans les mers, le Plésio-saure, un reptile avec un long cou !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
       "text": "[gasps] Wouah…"
     },
     {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited][curious] Et quoi d'autre ?"
+    },
+    {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily][excited] On continue ? Le Crétacé !"
+      "text": "[excited][quickly] Des millions d'années passent encore. [playful] Puis, [pauses] les continents s'éloignent encore. [gasps] Il se passe plein de choses. [lighthearted][playful] Tu veux savoir quoi ?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited][playful] OUIII !!"
     }
   ],
   "model_id": "eleven_v3",

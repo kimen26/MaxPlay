@@ -2,7 +2,7 @@
   "inputs": [
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily][excited] Plus tard, le froid revient. [serious] Vraiment froid. [gasps] C'est l'âge de glace. Les continents sont recouverts de glace pendant des millions d'années."
+      "text": "[excited][playful] On arrive à l'[serious] âge de glace ! [happily] Plus tard, le froid revient. [serious] Vraiment froid. [gasps] Les continents sont recouverts de glace pendant des millions d'années."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -26,15 +26,55 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily][excited] Oui ! [gasps] Des humains très anciens. [playful] Ils chassent, ils allument du feu, ils dessinent des mammouths sur les murs."
+      "text": "[happily][excited] Oui ! [gasps] Il y a environ deux millions et demi d'années, en Afrique, apparaissent les premiers humains. [playful] Ils marchent debout, ils sont omnivores : ils mangent des plantes, des fruits, des graines, de la viande. [softly] Ce sont des chasseurs-cueilleurs."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] On continue ?"
+      "text": "[curious] Comme nous ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[softly][happily] On continue. [pauses] On approche de nous. [softly] De aujourd'hui."
+      "text": "[playful][happily] Pas tout à fait ! [excited] Il y a environ trois cent mille ans, arrivent les Homo sapiens. [gasps] Lui, c'est notre ancêtre direct : les humains comme nous aujourd'hui."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et après ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited][quickly] Les humains deviennent très malins. [happily] Ils allument le feu, parlent, font des outils pointus. [softly] Ils chassent les gros animaux, se protègent du froid."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ils sont les rois ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily][excited] Les rois de la planète ! [gasps] Le prédateur ultime. [quickly] Ils élèvent des animaux, cultivent des plantes, construisent des villages, des villes, des routes, des ponts, des bateaux."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Encore ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited][quickly] Encore ! [gasps] Ils inventent l'électricité, la machine à vapeur, le moteur. [happily] La voiture, le bus, le train, le téléphone."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Wouah !"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[excited][quickly] Et ils volent ! [happily] En montgolfière, en avion, en fusée. [softly] Les humains apprennent à dominer les animaux, la nature, les forces de la physique."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited][curious] Et quoi d'autre ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[softly][happily] On arrive presque à aujourd'hui. [pauses] Tu es prêt à découvrir comment on sait tout ça ? [pauses]"
     }
   ],
   "model_id": "eleven_v3",

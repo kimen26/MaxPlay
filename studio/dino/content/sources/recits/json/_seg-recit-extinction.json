@@ -2,7 +2,7 @@
   "inputs": [
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[dramatic tone][serious] Il y a soixante-six millions d'années. [softly] Une météorite tombe du ciel. [gasps] Dix kilomètres de large — grande comme Paris."
+      "text": "[serious][softly] Il y a soixante-six millions d'années. [pauses] Une météorite tombe du ciel. [gasps] Dix kilomètres de large — grande comme Paris."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -10,7 +10,7 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[softly][serious] Énorme. [pauses] Elle s'écrase au Mexique, sur la péninsule du Yucatán, à Chi-cxu-lub. [shouts] KA-BOOM ! [excited] Des tremblements de terre ! Des tsunamis !"
+      "text": "[softly][serious] Énorme. [pauses] Elle s'écrase au Mexique, sur la péninsule du Yucatán, à Chicxulub. [shouts] KA-BOOM ! [excited] Des tremblements de terre ! Des tsunamis !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -35,6 +35,14 @@
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
       "text": "[excited][happily] Exactement ! [gasps] Le moineau sur le balcon, c'est un dinosaure vivant. Les crocodiles, les tortues, les grenouilles survivent aussi."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited][curious] Et quoi d'autre ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] Le temps passe. [playful] Puis, [pauses] le ciel redevient clair. [gasps] Et de nouveaux animaux vont grandir… [pauses]"
     }
   ],
   "model_id": "eleven_v3",

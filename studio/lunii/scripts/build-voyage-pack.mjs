@@ -34,7 +34,7 @@ const UUID_COVER = "1f0a2b3c-4d5e-6f70-8a91-b2c3d4e5f601";
 // Ordre corrigé : Intro → Trias → Jurassique → Crétacé → Extinction → Mammifères → Glace → Paléontologie
 // UUIDs FIGÉS par époque (un rebuild produit le même pack, pas de doublon)
 const EPOQUES = [
-  { n: 1, key: "intro",          titre: "Le depart",       audio: "recit-intro-V5-VALIDE.mp3", image: "ep-intro.png",         uuid: "a1000000-0000-4000-8000-000000000001" },
+  { n: 1, key: "intro",          titre: "Le depart",       audio: "recit-intro.mp3",           image: "ep-intro.png",         uuid: "a1000000-0000-4000-8000-000000000001" },
   { n: 2, key: "trias",          titre: "Le Trias",        audio: "recit-trias.mp3",           image: "ep-trias.png",         uuid: "a1000000-0000-4000-8000-000000000002" },
   { n: 3, key: "jurassique",     titre: "Le Jurassique",   audio: "recit-jurassique.mp3",      image: "ep-jurassique.png",    uuid: "a1000000-0000-4000-8000-000000000003" },
   { n: 4, key: "cretace",        titre: "Le Cretace",      audio: "recit-cretace.mp3",         image: "ep-cretace.png",       uuid: "a1000000-0000-4000-8000-000000000004" },
@@ -61,8 +61,10 @@ function sha1(buf) {
 for (const e of EPOQUES) {
   const a = join(AUDIO_DIR, e.audio);
   const i = join(IMG_DIR, e.image);
+  const t = join(AUDIO_DIR, `menu-ep-${e.key}.mp3`); // titre court (étiquette menu)
   if (!existsSync(a)) throw new Error(`Audio introuvable : ${a}`);
   if (!existsSync(i)) throw new Error(`Image introuvable : ${i}`);
+  if (!existsSync(t)) throw new Error(`Titre court introuvable : ${t}`);
 }
 const coverAudio = join(AUDIO_DIR, "menu-voyage.mp3");
 if (!existsSync(coverAudio)) throw new Error(`Audio cover introuvable : ${coverAudio}`);
@@ -95,6 +97,9 @@ for (const e of EPOQUES) {
     "-af", "adelay=300|300,loudnorm", "-ar", "44100", "-ac", "1", "-b:a", "128k", join(tmp, `ep-${e.key}.mp3`)], `recit ${e.key}`);
   e.imgAsset = addAsset(imgPath, ".png");
   e.audioAsset = addAsset(join(tmp, `ep-${e.key}.mp3`), ".mp3");
+  // étiquette de menu (niveau 2) : titre court parlé (déjà pad+loudnorm), même image que le récit
+  e.titleAsset = addAsset(join(AUDIO_DIR, `menu-ep-${e.key}.mp3`), ".mp3");
+  e.uuidTitle = `a2000000-0000-4000-8000-00000000000${e.n}`;
 }
 
 // thumbnail du pack = la cover image
@@ -112,6 +117,11 @@ writeFileSync(join(tmp, "staging", "thumbnail.png"), readFileSync(coverImgPath))
 //   home=true + homeTransition → retour menu
 //   wheel=false → pas de choix pendant le récit
 
+// NAVIGATION 2 NIVEAUX (fix 2026-06-19 : avant, les options du menu étaient les récits
+// complets eux-mêmes → parcourir la molette lançait le récit direct. Maintenant :
+//   MENU (molette) → 8 ÉTIQUETTES (titre court 1-2s) → OK → RÉCIT complet
+//   Parcourir le menu ne joue QUE le titre court (pas le récit). Lecture = au clic.
+//   Étiquettes : autoplay=false (comme les options de menu du pack dinos) → pas d'auto-lecture.
 const stageNodes = [
   {
     uuid: UUID_COVER,
@@ -119,28 +129,41 @@ const stageNodes = [
     name: "Menu epoques",
     image: assets.coverImage,
     audio: assets.coverAudio,
-    okTransition: { actionNode: "action-choix-epoque", optionIndex: 0 },
+    okTransition: { actionNode: "action-menu", optionIndex: 0 },
     homeTransition: null, // home:true + null = sortir du pack vers biblio
     controlSettings: { wheel: true, ok: true, home: true, pause: false, autoplay: false },
   },
 ];
 
 for (const e of EPOQUES) {
+  // ÉTIQUETTE (option de menu, niveau 2) : image époque + titre court parlé
+  stageNodes.push({
+    uuid: e.uuidTitle,
+    name: `Etiquette ${e.n} - ${e.titre}`,
+    image: e.imgAsset,
+    audio: e.titleAsset,
+    okTransition: { actionNode: `action-recit-${e.key}`, optionIndex: 0 }, // OK → lance le récit
+    homeTransition: { actionNode: "action-back-menu", optionIndex: 0 },     // maison → retour menu
+    controlSettings: { wheel: false, ok: true, home: true, pause: false, autoplay: false },
+  });
+  // RÉCIT complet : lecture au clic, fin → retour menu
   stageNodes.push({
     uuid: e.uuid,
     name: `Recit ${e.n} - ${e.titre}`,
     image: e.imgAsset,
     audio: e.audioAsset,
-    okTransition: { actionNode: "action-back-menu", optionIndex: 0 }, // fin → retour menu
-    homeTransition: { actionNode: "action-back-menu", optionIndex: 0 }, // maison → retour menu
+    okTransition: { actionNode: "action-back-menu", optionIndex: 0 },       // fin (autoplay) / OK → retour menu
+    homeTransition: { actionNode: "action-back-menu", optionIndex: 0 },      // maison → retour menu
     controlSettings: { wheel: false, ok: true, home: true, pause: true, autoplay: true },
   });
 }
 
 const actionNodes = [
   { id: "action-back-menu", name: "Retour menu", options: [UUID_COVER] },
-  // Le menu présente les 8 récits dans l'ordre (molette)
-  { id: "action-choix-epoque", name: "Choix epoque", options: EPOQUES.map((e) => e.uuid) },
+  // Le menu (molette) parcourt les 8 ÉTIQUETTES (titres courts), pas les récits
+  { id: "action-menu", name: "Choix epoque", options: EPOQUES.map((e) => e.uuidTitle) },
+  // chaque étiquette → son récit
+  ...EPOQUES.map((e) => ({ id: `action-recit-${e.key}`, name: `Recit ${e.key}`, options: [e.uuid] })),
 ];
 
 // ─── Remap des id d'actionNode lisibles → UUID stables ────────────────────────

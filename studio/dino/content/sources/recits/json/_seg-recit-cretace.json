@@ -2,15 +2,19 @@
   "inputs": [
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[curious][excited] Le Crétacé ! Il y a cent millions d'années. [playful] Son nom vient de « craie » : les falaises blanches sont faites de cette roche."
+      "text": "[excited][playful] On arrive au [serious] Crétacé ! [happily] Il y a cent millions d'années. [chuckles] Son nom vient de « craie » : les falaises blanches sont faites de cette roche."
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
       "text": "[happily][excited] Blanches ! [gasps] Des milliards de petites algues mortes se sont accumulées au fond des mers chaudes. [softly] Les continents se séparent encore."
     },
     {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Y a des dinos partout ?"
+    },
+    {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[excited][quickly] Partout ! [shouts] En Amérique du Nord, le T-Rex et le Tri-cé-ra-tops ! [happily] En Afrique, le Spino-saure. [playful] En Asie, le Vé-lo-ci-rap-tor et le Tar-bo-saure."
+      "text": "[excited][quickly] Partout ! [shouts] En Amérique du Nord, le T-Rex et le Tricératops ! [happily] En Afrique, le Spino-saure. [playful] En Asie, le Vélociraptor et le Tarbo-saure."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -18,7 +22,7 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[playful][laughs] Comme un gros dindon ! [excited] Et dans les airs, le Que-tzal-co-at-lus. [gasps] Dans les mers, le Mo-sa-saure domine les océans !"
+      "text": "[playful][laughs] Comme un gros dindon ! [excited] Et dans les airs, le Quetzalcoatlus. [gasps] Dans les mers, le Mosa-saure domine les océans !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -33,8 +37,12 @@
       "text": "[gasps] Wouah…"
     },
     {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited][curious] Et quoi d'autre ?"
+    },
+    {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily][softly] On continue ? [serious] À la fin du Crétacé, il se passe quelque chose d'énorme."
+      "text": "[softly][serious] Le temps passe. [pauses] Mais à la fin de cette époque, le ciel s'assombrit… [pauses]"
     }
   ],
   "model_id": "eleven_v3",

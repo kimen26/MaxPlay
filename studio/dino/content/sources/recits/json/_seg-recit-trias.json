@@ -2,7 +2,7 @@
   "inputs": [
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily][excited] Le Trias ! Il y a deux cent cinquante millions d'années. [playful] Ce nom vient de « trois » : trois groupes d'animaux partagent la Terre."
+      "text": "[happily] On arrive au [serious] Trias ! [happily] Il y a deux cent cinquante millions d'années. [playful] Ce nom vient de « trois » : trois groupes d'animaux partagent la Terre."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
@@ -10,39 +10,43 @@
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[curious] Les dinosaures, tout petits. [serious] Les reptiles à gueule de crocodile, eux ils dominent. [softly] Et les ancêtres des mammifères, gros comme des souris."
+      "text": "[matter-of-fact] Les dinosaures, tout petits. Les reptiles à [deadpan] gueule de crocodile, eux ils [serious] dominent. Et les ancêtres des mammifères, [playful] gros comme des souris."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Les dinosaures sont petits ?"
+      "text": "[hesitant] Ah bon ? [laughs] ... [curious] Les dinosaures sont tout petits ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[playful][laughs] Tout petits ! [happily] Le Cé-lo-fy-sis et le Pla-té-o-saure sont là. [softly] Personne ne sait encore qu'ils deviendront les rois."
+      "text": "[laughs] Tout petits ! [happily] Plus petit qu'un chien. [serious] Le Coelophysis, [serious] le Plateosaurus, et [serious] le Eoraptor sont là. [matter-of-fact] Le Eoraptor chasse les petits lézards et les insectes."
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[reflective] Personne ne sait encore qu'ils deviendront les rois."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Et la Terre ?"
+      "text": "[curious] Et les plantes ? Elles ont évolué aussi ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[excited] Un seul continent : la Pangée ! [playful] L'Afrique et l'Amérique du Sud sont collées. [serious] Au milieu, un désert brûlant."
-    },
-    {
-      "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il y a des plantes ?"
+      "text": "[happily] Oui ! [matter-of-fact] Des fougères, des conifères, des mousses. [serious] Mais pour l'instant pas d'herbe, pas une fleur ! Les plantes se reproduisent avec des [playful] spores, de petites poussières transportées par le vent ou les animaux."
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[softly] Des fougères et des conifères. [gasps] Mais pas une fleur ! [playful] Les plantes se reproduisent avec des spores, de petites poussières."
+      "text": "[awe] Et tu sais quoi ? [excited] Il n'y a qu'un seul continent : la Pangée ! [matter-of-fact] Un croissant de terre géant, avec tous les continents collés dedans."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
       "text": "[gasps] Wouah…"
     },
     {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited][curious] Et quoi d'autre ?"
+    },
+    {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily][excited] On continue ? Le Jurassique ! [shouts] Et là, tout devient ÉNORME !"
+      "text": "[excited] Des millions d'années passent. [playful] Puis, [pauses] la Terre bouge. [pauses] Le climat change. [playful] Et [laughs] les dinosaures commencent à grandir… [pauses]"
     }
   ],
   "model_id": "eleven_v3",

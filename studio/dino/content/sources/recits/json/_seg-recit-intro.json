@@ -2,43 +2,67 @@
   "inputs": [
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily][excited] Prêt à remonter le temps, Wex ? On part de tout au début."
+      "text": "[happily][excited] Prêt à remonter le temps, Wex ? [conversational tone] On va commencer par le commencement..."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Tout au début ?"
+      "text": "[curious] Avant les Dinosaures ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[softly][pauses] Au tout début, il y a presque quatre milliards d'années. La Terre est chaude et vide. [serious] Pas d'animaux. Pas de plantes. Rien."
+      "text": "[chuckles] Oh Oui ! [happily] bien avant ! [serious] au tout, tout début, il y a presque quatre milliards d'années. [matter-of-fact] La Terre est chaude et vide. [serious] Pas d'animaux. Pas de plantes. [pauses] Rien !"
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Rien du tout ?"
+      "text": "[curious] ah [gasp] incroyable..."
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[curious][pauses] Puis dans l'eau, [softly] minuscule, une toute petite bactérie apparaît. [gasps] Si petite qu'on ne la verrait pas !"
+      "text": "[curious][pauses] Puis, dans l'eau, [softly] une MInuscule, [happily]une toute petite bactérie apparaît."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[excited] Et après ?"
+      "text": "[playful][excited] Et après ?!!"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[excited][quickly] Des algues ! Des petits poissons ! [gasps] Puis un animal sort de l'eau : un gros lézard, ancêtre des grenouilles, des reptiles, et même de nous !"
+      "text": "[playful] Après ? [excited][quickly] Des algues, [gasps] des petits poissons, [gasps][matter-of-fact] puis des vers, du corail, des méduses, des petites bêtes à carapace."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Il marche ?"
+      "text": "[curious] Et tout ça, ça vit seulement dans l'eau ?"
     },
     {
       "voice_id": "aHKEGRjW94hqXc6gaItG",
-      "text": "[happily][playful] Il marche ! [excited] Et après des millions d'années, arrivent les dinosaures. Tu viens ?"
+      "text": "[happily] Oui ! [serious] Il n'y a encore aucune vie sur la terre ferme. [excited] Puis un animal sort de l'eau : un gros lézard avec quatre pattes."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[excited] Oui !"
+      "text": "[curious] Et les plantes ? Elles \"sortent\" aussi de l'eau ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] Oui, à peu près au même moment ! [matter-of-fact] Des mousses toutes simples, puis des fougères. [softly] Elles poussent sur la terre ferme, [happily]et ça devient vert. [gasps] Alors les animaux à quatre pattes ont de quoi manger, [excited]et ils s'installent !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious][excited] Mais, il y avait des carnivores ??!"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[playful] Bien sûr ! [matter-of-fact] Dans l'eau, les gros poissons mangeaient les petits. [excited] Et sur la terre, les gros lézards mangeaient les petits insectes. [serious] Il y a toujours des carnivores et des herbivores."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] C'est quoi après ?"
+    },
+    {
+      "voice_id": "aHKEGRjW94hqXc6gaItG",
+      "text": "[happily] Après, on avance dans le temps. [excited] Des millions d'années se passent. [gasps] Et puis… [chuckles] Tu veux savoir la suite ?"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[excited][playful] OUII !!"
     }
   ],
   "model_id": "eleven_v3",

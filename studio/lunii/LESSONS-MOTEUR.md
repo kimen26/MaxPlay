@@ -70,6 +70,22 @@
 - **Règle** : `home:false` + `homeTransition` non-null = piège #100 (crash). `home:true` + `homeTransition:null` = **sortie du pack** (sûr). cf. [discussion #191](https://github.com/marian-m12l/studio/discussions/191).
 - **Voyage 2026-06-19** : `home:true` sur le squareOne (Cover/Menu fusionné) + `homeTransition:null` = sortie du pack. Sur les récits : `home:true` + `homeTransition → action-back-menu` = retour au menu (pas sortie du pack). Validé.
 
+### BUG-4 — STUdio « Failed to fetch packs from device » : index `.pi` orphelin (RÉSOLU 2026-06-19)
+- **Symptôme** (vraie boîte, firmware 2.22, STUdio 0.4.2) : la Lunii est détectée (« Device is plugged ») mais STUdio affiche en rouge **« Failed to fetch packs from device »** et n'affiche **aucun pack** côté device. (Confondu d'abord avec un souci de library — non : c'est la lecture du **device** qui plante.)
+- **Cause racine** : l'**index `.pi`** (à la racine de la carte SD, fichier **caché**) liste les packs installés = des **UUID de 16 octets concaténés** (`taille .pi / 16` = nombre de packs). Chaque pack a un dossier dans **`.content/`** nommé par les **8 DERNIERS caractères hex de l'UUID** (⚠️ PAS les premiers). Un transfert interrompu/raté avait **ajouté 2 UUID à `.pi`** (nos packs voyage `1f0a…f601` + dinos `3f0a…f603`) **sans écrire leurs dossiers `.content/`** → 2 entrées **orphelines** → STUdio plante en lisant la liste.
+- **Diagnostic (lecture seule)** : décoder `.pi` (PowerShell `ReadAllBytes`, boucle de 16 octets) ; pour chaque UUID, tester `Test-Path "D:\.content\<8 derniers hex en MAJ>"`. Les entrées sans dossier = orphelines à retirer.
+- **Fix appliqué** :
+  1. **Fermer STUdio D'ABORD** : le backend java (port **8080**) tient/sonde le device → toute écriture directe échoue avec *« Un périphérique qui n'existe pas a été spécifié »*. `Stop-Process` du PID qui écoute sur 8080.
+  2. **Backup** `.pi` / `.md` / `.cfg` / `version` (+ dump hex de `.pi`) → `c:\tmp\lunii-backup\`.
+  3. **Tronquer `.pi`** pour ne garder que les entrées avec dossier (ici **176 → 144 octets** = 9 packs d'usine ; les orphelins = les 2×16 derniers octets). Gérer l'attribut caché : `attrib -h` avant write, `attrib +h` après.
+  4. **Relancer STUdio** → device lu, 9 packs OK.
+- **Règles gravées** :
+  - 🔑 Dossiers `.content/` = **8 DERNIERS** hex de l'UUID (pas les premiers).
+  - 🔑 **Fermer STUdio avant toute écriture directe sur la SD** (conflit USB, cf. règle Luniistore-fermé-pendant-STUdio).
+  - 🔑 **Toujours backup `.pi` avant de le toucher** (garde-fou : abandonner si la taille n'est pas un multiple de 16 attendu).
+  - 🔑 **NE JAMAIS « ajouter » un pack en éditant `.pi` à la main** : le transfert passe par STUdio (qui écrit `.pi` ET `.content/`). Un demi-transfert (index sans contenu) casse la lecture du device. ➡️ donc re-transférer voyage/dinos **via STUdio**, pas en bidouillant l'index.
+- **Statut** : RÉSOLU 2026-06-19. Backup conservé `c:\tmp\lunii-backup\` (`pi-original.hex` = index avant fix).
+
 ## 🧪 Protocole de test d'un pack (sans / avec boîte)
 
 1. **Sans boîte** : `ArchiveStoryPackReader.read()` (Java) → pas d'exception = lisible.

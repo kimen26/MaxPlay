@@ -95,4 +95,21 @@
 
 ---
 
-_Créé 2026-06-17 lors de la construction du pack « Les dinos de Max ». Tient le journal des comportements moteur observés. À enrichir à chaque découverte (Papa Yann : « note bien tout ce qu'on voit, qu'on fait, améliorer, évoluer »)._
+## 🛠️ Ops STUdio & device — lancer / arrêter / diagnostiquer (REX 2026-06-19)
+
+Script de contrôle réutilisable : [`scripts/studio-ctl.ps1`](scripts/studio-ctl.ps1) — `start` | `stop` | `status` | `packs`.
+
+- **Lancer STUdio** : ⚠️ le `.bat` fourni (`studio-windows.bat`) **échoue souvent sur cette machine** :
+  - `java` **n'est PAS sur le PATH système** → le `.bat` ne trouve pas java et sort sans rien lancer. Java réel = `C:\Program Files\Eclipse Adoptium\jdk-17.x\bin\java.exe` (**chemin absolu obligatoire**).
+  - son `copy` des jars **prompte** quand les jars existent déjà (en lancement non-interactif → bloque/sort).
+  - → utiliser `studio-ctl.ps1 start` (lance java en chemin absolu, poll 8080, logs dans `%TEMP%\studio-*.log`).
+- **Arrêter STUdio AVANT d'écrire sur la SD** : le backend java (port 8080) **tient le lecteur D:** → toute écriture directe échoue (« Un périphérique qui n'existe pas a été spécifié »). `studio-ctl.ps1 stop` avant de toucher `.pi`/`.content`, relancer après. (Même esprit que « Luniistore fermé pendant STUdio ».)
+- **Vérifier que la boîte se lit (sans l'UI)** : API REST STUdio →
+  - `GET http://localhost:8080/api/device/infos`
+  - `GET http://localhost:8080/api/device/packs` → liste `{uuid, folderName, sizeInBytes, title?}` = **le fetch qui plante quand `.pi` est incohérent** (cf. BUG-4). S'il renvoie la liste → device OK. (`studio-ctl.ps1 packs`.)
+- **Trouver la Lunii** : `Get-Volume | Where FileSystemLabel -eq 'LUNII'` → lecteur (ex `D:`), FAT32, ~14 Go.
+- **Windows « Analyser et réparer ce lecteur »** : apparaît après un **remontage brusque** (ex. on a tué java alors qu'il tenait D:) → dirty bit FAT32 posé. **Réparer est SÛR** (FAT32 ; chkdsk corrige les métadonnées du FS, ne touche pas le contenu des packs) **et recommandé AVANT un transfert**. ⚠️ faire `stop` STUdio d'abord pour que chkdsk **verrouille D: sans redémarrage**. Données vérifiables intactes via l'API `packs` avant/après.
+
+---
+
+_Créé 2026-06-17 lors de la construction du pack « Les dinos de Max ». Tient le journal des comportements moteur observés. À enrichir à chaque découverte (Papa Yann : « note bien tout ce qu'on voit, qu'on fait, améliorer, évoluer »). Section Ops + BUG-4 ajoutées 2026-06-19 (session infra/debug device)._

@@ -52,7 +52,7 @@ ASSEMBLER  scripts/build-<nom>-pack.mjs  (combine images + MP3 → pack .zip)
 ~/.studio/library/ → STUdio (localhost:8080) → Lunii v2 USB → testé par Max
 ```
 
-- **Lancer STUdio** : `C:\ProjetsPerso\Tools\studio-lunii\studio-web-ui-0.4.2\studio-windows.bat` → http://localhost:8080
+- **Lancer STUdio** : `powershell -File scripts/studio-ctl.ps1 start` → http://localhost:8080 (⚠️ le `.bat` fourni échoue sur cette machine — `java` pas dans le PATH ; cf. LESSONS-MOTEUR § Ops). `stop`/`status`/`packs` aussi dispo.
 - **Nouveau pack** : copier `scripts/build-tritri-pack.mjs` comme modèle (cover + récit + UUIDs figés).
 - Après transfert validé par Papa Yann → noter le pack dans le tableau du README + sprint-log du pôle source.
 

@@ -11,9 +11,10 @@
 
 | Statut | ID | Titre | Priorité | Assigné | Prochaine action |
 |--------|-----|-------|----------|---------|------------------|
-| 🟡 | STORY-002 | La Libellule impossible — Étape 6 Sélection | **Haute** | Auteur (Directeur) | Arbitrer top 1-3 (kimi-reco-guide v1/v2 + claude-haiku-reco) + décider greffes. Puis étape 7 rewrite. Déc. DEC-TENSION-RESONANCE appliquée. |
+| 🔴 | **STORY-002-SELECTION-REFONTE** | **La Libellule impossible — Étape 6 Refonte complète (vague 4 + duel goût)** | **CRITIQUE** | Directeur + PMO | 6-selection.md périmé (vague 2). Refaire : utiliser synthese-lecteurs vague 4 (2026-05-17), appliquer intention Directeur (DEC-BRIEF-CURSEUR), générer duel-data JSON (12 duels + finale). Attendre résultat Duel de goût. Blocker étape 7. Cible : dès duel-data prêt. |
 | 🟡 | ARCHI-006 | Formaliser procédure PMO dans `narration-pmo.md` (agent Haiku) | Normale | narration-pmo | Créer doc agent reflet des décisions 2026-05-08 : classification input (6 catégories), routing, checklist remise main. Cible : PMO auto-guidé sans attendre instructions. |
-| 🟡 | **ARCHI-014-TEMPLATE-BOUSSOLE** | **Adapter template brief-histoire.md = BOUSSOLE (DEC-BRIEF-VAGUE4)** | **Haute** | Directeur + PMO | Créer `equipe/templates/brief-histoire-v4-BOUSSOLE.template.md` (intentions + 6 causalités-ESSENCE, zéro phrase publiable). Documenter différence BOUSSOLE vs GPS. Repercuter dans STORY-003+ avant étape 3. **Bloqué** si brief STORY-003 écrit sans template. |
+| 🟡 | **ARCHI-014-TEMPLATE-BOUSSOLE** | **Adapter template brief-histoire.md = BOUSSOLE (DEC-BRIEF-CURSEUR)** | **Haute** | Directeur + PMO | Créer `equipe/templates/brief-histoire-v4-BOUSSOLE.template.md` (intentions + 6 causalités-ESSENCE, zéro phrase publiable). Section « Intention Directeur » obligatoire. Documenter différence BOUSSOLE vs GPS. Repercuter dans STORY-003+ avant étape 3. **Bloqué** si brief STORY-003 écrit sans template. |
+| 🟡 | **ARCHI-DUEL-001** | **MVP « Duel de goût » — site/duel.html + site/duel-data.js** | **Haute** | Dev | Créer PWA légère site/duel.html + code JS duel-data.js (12 duels + finale). Génération auto des duels depuis vague 4 STORY-002. Offline capable, export JSON. Intégration MCP script post-étape 5. Cible : 2026-07-10. |
 
 ---
 
@@ -21,6 +22,8 @@
 
 | Statut | ID | Titre | Priorité | Assigné | Prochaine action |
 |--------|-----|-------|----------|---------|------------------|
+| ⚪ | **TEST-PANEL-CALIBRATION** | **Test calibration panel 12 (one-shot)** | **Haute** | Auteur + Dev | Tester 2 paires benchmarks DEC-PANEL-V2 : paire 1 (écart connu vague 3 kimi vs grok) + paire 2 (quasi-identique). Mesurer reproductibilité. Décisif pour go/no-go full 12 panel STORY-003+. Cible : fin 2026-07-15. |
+| ⚪ | **PROPAGATE-DEC-PANEL** | **Propager DEC-PANEL-V2 + DEC-BRIEF-CURSEUR dans INVARIANTS + PROCESS** | **Haute** | PMO | MAJ INVARIANTS.md § Chiffres clés (panel 20 → 12, structure 4 groupes × 3 modèles). MAJ PROCESS.md étapes 5 et 9 (owner, mécanique lecteurs). Ajouter section « Intention Directeur » dans brief-histoire template. Cible : 2026-07-08. |
 | ⚪ | **CRAFT-001** | **Créer skill parent `narration-craft/` + sous-structure 16 domaines** | **Critique** | PMO | Router fichier (~200 lignes) + délégation 16 domaines. Chaque domaine = pointeur vers contenu (à extraire depuis deprecated ou existant). **Cible : fin 2026-06-09.** DEC-NARR-CRAFT-RESURRECTION. |
 | ⚪ | **CRAFT-002** | **Extraire + remapper 16 skills depuis deprecated** | **Critique** | Directeur + Dev | Lire `~/.claude/skills/99-deprecated/`, extraire 16 files, appliquer remap casting ANCIEN→V1 (accords genre inclus), valider narratif. **Cible : fin 2026-06-10.** Voir INVARIANTS.md casting remap table. |
 | ⚪ | **CRAFT-003** | **Implémenter câblage PROCESS : étapes 2B/3/7/10** | **Haute** | PMO | Modifier `equipe/PROCESS.md` : ajouter invoke `narration-craft` par étape. Tester 1 appel sur STORY-002 rewrite. **Cible : 2026-06-11.** |

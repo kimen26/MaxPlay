@@ -4,6 +4,141 @@
 
 ---
 
+## 2026-07-03 — DEC-BRIEF-CURSEUR : Brief writers en BOUSSOLE + intention « moment physique mémorable »
+
+**Auteur (Papa Yann)** : décision 2026-07-03 après audit-challenge complet — refonte procédure brief writers pour écriture guidée (writer seul) + anti-Streisand.
+
+**Contexte** : vague 3 STORY-002 a révélé risque silencieux : quand l'auteur a une version mentale précise en tête (11 itérations libellule) et l'injecte en beat numéroté → writers clones (11/14 identiques sur détails mineurs). Antidote : fixer l'intention comme critère sélection étape 6, jamais comme beat décrit.
+
+**Décision tranchée** :
+
+1. **Brief writers = BOUSSOLE + 1 intention obligatoire** : au lieu de laisser l'auteur imposer une mise en scène détaillée, capturer son intention métier unique en **1 ligne d'intention forte** = critère de sélection étape 6. "Produis UN moment physique mémorable/participatif" = exemple intention obligatoire S1.
+
+2. **Règle ANTI-STREISAND gravée** : si l'auteur a une version précise en tête (cas vague 3 libellule = 10 itérations mentales figurées en 10 beats), elle n'entre PAS dans le brief writers. À la place : transformer en UNE intention, puis faire figurer l'intention comme critère sélection (*"retenir la version qui sent le mieux la tension Nono immobile / libellule apparition"*). L'essence de ce que l'auteur demande est préservée, le COMMENT reste libre writers.
+
+3. **Intention obligatoire par histoire** : chaque story doit avoir 1 intention métier explicite (ex. "Nono libère vs retient", "Juju en mouvement continu"). Section dans `brief-histoire.md` : `## Intention Directeur`. Le writer guidé la reçoit en Couche 3. Les 13 libres ne la reçoivent pas (parité). À l'étape 6, Directeur valide que la version sélectionnée honore cette intention.
+
+4. **Intégration briefs** : template `brief-histoire-v4-BOUSSOLE.template.md` à créer/adapter. Section nouvelle « Intention Directeur » (1-2 lignes). Section « Enjeux » reste (lieu, persos, causalités Ki/Sho/Ten/Ketsu), mais aucune phrase finalisée = BOUSSOLE figée.
+
+**Fichiers impactés** :
+- ✅ `narration/pmo/decisions.md` (cette entrée, figée)
+- 🔄 `equipe/templates/brief-histoire-v4-BOUSSOLE.template.md` (ticket ARCHI-014-TEMPLATE-BOUSSOLE)
+- 🔄 STORY-003+ : appliquer dès le pitch (intention déclarée) + briefs (Couche 2 + intention ligne)
+
+**Statut** : **FIGÉE 2026-07-03. JAMAIS RÉGRESSER SANS DÉCISION EXPLICITE DATÉE.**
+
+---
+
+## 2026-07-03 — DEC-PANEL-V2 : 🚨 CHANGEMENT DE RÈGLE FIGÉE — Panel 20 → Panel 12 calls (modèles hétérogènes)
+
+**Auteur (Papa Yann)** : validation explicite 2026-07-03 — panel lecteurs REFONDÉ pour divergence empirique.
+
+**Contexte** : panel 20 (tous Sonnet étape 5 + étape 9) crée risque consensus mécanique = tous les LLM sont Claude, même température, même critères évaluation. Vague 3 STORY-002 : panel homogène → scores convergents sur gestes mineurs (11/14 writers identiques). Besoin : tester empiriquement si divergence perceptuelle est réelle ou artefact de l'outil.
+
+**Décision tranchée** :
+
+1. **🚨 NOUVELLE RÈGLE FIGÉE (2026-07-03)** — Panel 20 → **Panel 12 calls** (étapes 5 + 9 identiques, unifiées). Structure :
+   - **4 groupes profils** : garçon seul + fille seule + dyade papa + dyade maman (répartition neutre)
+   - **3 modèles hétérogènes par appel** : Sonnet 4.6 (référence) + Kimi K2.6 forfait code (créatif, logique) + Haiku 4.5 OU DeepSeek (agilité, vitesse)
+   - **Total** : 4 groupes × 3 modèles = 12 appels
+   - **Output par appel** : 2 tranches âge (3-5 et 6-7) rendues comme 1 dyade ✅
+
+2. **Calibration one-shot obligatoire** : avant full deployment, tester 2 paires de benchmarks :
+   - **Paire 1 — écart connu** : utiliser vague 3 STORY-002 (ancien kimi-run1 vs grok-run1), mesurer reproductibilité écart
+   - **Paire 2 — quasi-identique** : sélectionner 2 versions écrites identiques du corpus, mesurer faux positif convergence
+
+3. **SLA + expectation** : 12 calls = ~3× moins cher que 20 (CoT pricing), plus rapide (parallélisation 4 groupes). Charge computation : OK pour full S1.
+
+**Fichiers impactés** :
+- ✅ `narration/pmo/INVARIANTS.md` (MAJ § *Chiffres clés PROCESS* panel 20 → 12 calls, détail structure 4 groupes × 3 modèles)
+- ✅ `narration/pmo/decisions.md` (cette entrée, figée 2026-07-03)
+- 🔄 `equipe/PROCESS.md` (étapes 5 et 9 ; owner + mécanique 4 groupes ; invocation MCP hétérogène)
+- 🔄 Kanban STORY-002 (étapes 5 et 9 à relancer post-approbation infrastructure)
+
+**Status expérimental** : Test one-shot démarrage immédiat. Résultats décisif pour STORY-003+ (go/no-go full 12 panel).
+
+**Statut** : **FIGÉE 2026-07-03. JAMAIS RÉGRESSER SANS DÉCISION EXPLICITE DATÉE PAPA YANN.**
+
+---
+
+## 2026-07-03 — DEC-DUEL-DE-GOUT : Création outil « Duel de goût » — app site/duel.html + gouvernance gout/
+
+**Auteur (Papa Yann)** : validation 2026-07-03 — instrument de calibration Directeur + feedback boucle fermée.
+
+**Contexte** : après étape 5 (20/12 lecteurs) + sélection étape 6, Directeur choisit top 3. Difficultés passées : subjectivité pure VS émergence de goût structuré. Besoin : outil ludique + tractable (PWA sur téléphone Papa Yann) pour **mémoriser, confronter, valider le goût émergent**.
+
+**Décision tranchée** :
+
+### 1. Architecture outil « Duel de goût »
+
+**Plateforme** : site/duel.html (PWA légère, offline capable)
+- Affiche **~12 duels anonymisés** (fragments 100-200 mots, code de version tête cache)
+- Affiche **1 finale textes entiers** (top 2 ou 3 vague N)
+- Papa Yann clique (versant gauche / droite / égalité)
+- Output JSON : `{version: "kimi-reco-guide-v1", opponent: "grok-reco-v1", winner: "left"|"right"|"tie", timestamp, story: "002"}`
+- Auto-export et upload quand connexion disponible
+
+**Gouvernance** : nouvelle sous-arborescence `studio/narration/gout/`
+- **README.md** : procédure duel + règles lecture + anti-patterns
+- **memoire-papa-yann.md** : accumulation préférences (descripteurs craft, pas phrases verbatim) — relecture obligatoire Directeur étapes 3 + 6
+- **palmares-writers.md** : classement writers par modèle (top 1 Sonnet, top 1 Kimi, etc.) + notes descriptives
+
+### 2. RÈGLE DURE : anti-verbatim dans la mémoire
+
+**Mémoire de goût stocke DESCRIPTEURS, jamais phrases corpus** :
+- ✅ "rythme rapide, énumération facile, terminaison molle" (descripteur)
+- ✅ "sonorité / plosives / continuantes dominantes" (descripteur craft)
+- ❌ "Nono regarda la libellule venir" (verbatim corpus — INTERDIT)
+
+**Raison** : anti-contamination inter-histoires. Si l'histoire 003 hérite d'un verbatim de 002 → convergence artificielle story-to-story.
+
+### 3. Mécanisme feedback → briefs étape 3
+
+**Boucle étape 5 → 6 → 3 (STORY-003)** :
+- Après duel STORY-002 : **memoire-papa-yann.md enrichie** avec descripteurs figés
+- **palmares-writers.md** updaté (top 1 Sonnet : Sonnet-reco v1, notes : "rythme piano, geste précis, retenue émotionnelle")
+- Étape 3 STORY-003 : **Directeur lit memoire + palmares** → ajuste les axes 6 du writer guidé (Couche 3)
+- Cas : "puisque top Sonnet aime la retenue émotionnelle, guidé doit explorer tension inverse (débordement) pour divergence"
+
+### 4. Graphe historique goût
+
+Site/duel-data.js stocke l'historique (STORY-001 → 002 → 003…) :
+- Permet de chercher "quels duels ont pointé vers 'geste précis'?" 
+- Tracking auto-enrichissement palette goût sur S1
+- Prédiction S2 : "probablement on va chercher des variantes 'instinct vs retenue'" ← émergence top-down
+
+**Fichiers impactés** :
+- ✅ `narration/pmo/decisions.md` (cette entrée, figée)
+- 🔄 Créer `studio/narration/gout/README.md` + `memoire-papa-yann.md` + `palmares-writers.md`
+- 🔄 Créer `site/duel.html` + `site/duel-data.js` (MVP)
+- 🔄 Ticket ARCHI-DUEL-001 : implémentation front (Vue/Svelte simple, offline)
+
+**Statut** : **FIGÉE 2026-07-03. JAMAIS RÉGRESSER SANS DÉCISION EXPLICITE DATÉE.**
+
+---
+
+## 2026-07-03 — ALERTE URGENT : STORY-002 étape 6-selection.md PÉRIMÉ + ordonnance refonte
+
+**Auteur (narration-pmo)** : détection audit 2026-07-03 — timing critique.
+
+**Problème détecté** :
+- `stories/002-libellule-resonance/6-selection.md` daté 2026-05-14 (dernière édition)
+- Sélectionne **kimi-reco-guide vague 2** → top 1 (21 pts panel 20 vague 2)
+- **MAIS** : `5-synthese-lecteurs.md` daté 2026-05-17 (vague 4 BOUSSOLE, panel 20 nouveau) désigne **grok-reco v4** top 1
+- **ÉCART** : 2 sélections contradictoires, la seconde jamais intégrée à 6-selection
+
+**Ordonnance** :
+1. **Refaire 6-selection.md complètement** : utiliser données vague 4 (2026-05-17), appliquer critère neuf "Intention Directeur" (DEC-BRIEF-CURSEUR), sélectionner top 1 + top 2 + top 3 depuis vague 4 BOUSSOLE
+2. **Duel de goût = instrument validation** : top 4 de vague 4 + finale grok-reco vs kimi-k26-instant → Papa Yann joue duel → résultat confirme ou contredit sélection papier étape 6
+3. **Kanban STORY-002 étape 6** : mettre à jour à BLOQUÉ (attente décision Directeur post-duel) jusqu'à refonte 6-selection
+4. **Attente duel-data.js** : une fois générée, le duel STORY-002 (12 duels + finale) est prêt (MCP script le peuple depuis vague 4)
+
+**Ticket créé** : **STORY-002-SELECTION-REFONTE** (priorité CRITIQUE, blocker étape 7).
+
+**Statut** : ⚠️ **ACTION IMMÉDIATE REQUISE.**
+
+---
+
 ## 2026-06-08 — DEC-NARR-CRAFT-RESURRECTION : Résurrection bibliothèque CRAFT narratif — 16 skills masterclass
 
 **Auteur (Papa Yann)** : décision 2026-06-08 — activation nouvelle de la bibliothèque CRAFT narratif pour l'pipeline éditorial.

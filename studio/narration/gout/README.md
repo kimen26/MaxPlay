@@ -1,0 +1,52 @@
+# Duel de goût — gouvernance (créé 2026-07-03)
+
+> Outil transverse de capture du goût de l'auteur (Papa Yann). Premier client : pôle NARRATION.
+> Conçu data-driven : dino & co brancheront leur propre `duel-data.js` plus tard.
+
+## Le problème résolu
+
+Lire 14 histoires entières = mur. Le goût de l'auteur n'entrait jamais dans la machine,
+donc le pipeline optimisait contre la patte (abstraite) mais jamais contre l'auteur.
+Le duel réduit son effort à ~12 taps de 10 secondes + 2 lectures complètes (la finale).
+
+## Architecture
+
+| Pièce | Chemin | Rôle |
+|-------|--------|------|
+| App | [`site/duel.html`](../../../site/duel.html) | UI mobile A/B (PWA GitHub Pages) — fragments anonymisés, chips craft, export JSON |
+| Données | [`site/duel-data.js`](../../../site/duel-data.js) | Générées par le Directeur à l'étape 6 (fragments du top panel + pépites des éliminées) |
+| Mémoire de goût | [`memoire-papa-yann.md`](memoire-papa-yann.md) | Descripteurs craft cumulés — lecture OBLIGATOIRE du Directeur (étapes 3 et 6) |
+| Palmarès writers | [`palmares-writers.md`](palmares-writers.md) | Qui gagne quoi, sur quel type de moment — alimente les micro-briefs |
+
+## Protocole (cycle par histoire)
+
+```
+Étape 5 finie (panel) → Directeur génère duel-data.js :
+   · ~10-12 duels de FRAGMENTS (ouvertures, dialogues, moments, chutes, fins)
+     depuis le top 4 + pépites isolées des éliminées
+   · 1 duel FINAL : les 2 histoires entières finalistes
+→ commit + push (GitHub Pages)
+→ Papa Yann joue sur téléphone (kimen26.github.io/MaxPlay/duel.html)
+→ il colle le JSON exporté à Claude (Telegram ou session)
+→ INGESTION par le Directeur :
+   1. la finale + les duels confirment/infirment la base de 6-selection.md
+   2. les fragments gagnants d'AUTRES versions → greffes candidates (max 2-3, réécrites
+      par le writer de la base dans SA voix — jamais de collage verbatim)
+   3. chaque choix + chips → ABSTRACTION en descripteur craft → memoire-papa-yann.md
+   4. maj palmares-writers.md
+```
+
+## 🔒 RÈGLES DURES
+
+1. **ANTI-VERBATIM (anti-Streisand du goût)** : la mémoire de goût ne stocke JAMAIS de
+   phrases issues des histoires. On stocke le POURQUOI décrit en vocabulaire craft
+   (rythme, sonorité, attaque, chute, voix narrative, fluidité orale, registre).
+   ❌ « il aime "la belle libellule" » → la phrase contaminerait l'histoire de l'escargot.
+   ✅ « entrée par sensation corporelle (chaleur, matière) avant le décor ».
+   Corollaire : **les briefs writers ne citent jamais d'exemples verbatim tirés du corpus.**
+2. **ANONYMAT** : l'UI n'affiche jamais quel writer a écrit quoi (anti-biais). Les sources
+   voyagent dans le JSON pour l'ingestion seulement.
+3. **PAS DE FRANKENSTEIN** : le duel ne fabrique pas une histoire par collage. Il désigne
+   UNE base entière + des greffes d'intention absorbées au rewrite (mécanisme étape 6-7 existant).
+4. Un descripteur entre dans la mémoire comme **hypothèse** (1 signal) et devient **confirmé**
+   à partir de 3 signaux concordants sur ≥ 2 histoires. Un contre-signal le repasse en hypothèse.

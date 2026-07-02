@@ -11,15 +11,48 @@
 
 ---
 
+## 2026-07-03 — AUDIT-CHALLENGE SESSION : 4 DÉCISIONS VALIDÉES PAR PAPA YANN (fondations refonte vague 5)
+
+**Objectif** : Graver les 4 décisions validées par Papa Yann (audit-challenge 2026-07-03), initialiser tickets propagation.
+
+**Décisions gravées** :
+- [x] **DEC-BRIEF-CURSEUR** : brief writers = BOUSSOLE + 1 intention obligatoire (anti-Streisand rule). Critère sélection étape 6.
+- [x] **DEC-PANEL-V2** : 🚨 panel 20 → panel 12 calls (4 groupes × 3 modèles hétérogènes : Sonnet + Kimi + Haiku/DeepSeek). Test calibration one-shot avant full deploy.
+- [x] **DEC-DUEL-DE-GOUT** : outil site/duel.html (PWA) + gouvernance studio/narration/gout/ (memoire-papa-yann.md + palmares-writers.md, anti-verbatim). Feedback boucle étape 5 → 6 → 3 STORY-003+.
+- [x] **ALERTE URGENT** : STORY-002 étape 6-selection.md périmé (vague 2, daté 2026-05-14). Refonte imminente (utiliser vague 4 2026-05-17). Duel goût = instrument validation.
+
+**Tickets créés** :
+- 🔴 STORY-002-SELECTION-REFONTE (CRITIQUE, blocker étape 7)
+- ⚪ TEST-PANEL-CALIBRATION (Haute, go/no-go full 12 panel)
+- ⚪ PROPAGATE-DEC-PANEL (Haute, MAJ INVARIANTS + PROCESS)
+- 🟡 ARCHI-DUEL-001 (Haute, MVP PWA)
+
+**Fichiers modifiés** :
+- ✅ `pmo/decisions.md` : 4 entrées datées 2026-07-03 (stack — récentes en haut)
+- ✅ `pmo/backlog.md` : 4 tickets reclassés/créés
+- 📝 `pmo/INVARIANTS.md` : MAJ à venir (ticket PROPAGATE-DEC-PANEL, SLA 48h)
+- 📝 `equipe/PROCESS.md` : MAJ étapes 5 + 9 à venir
+
+**État au reboot** :
+- **3 tickets EN COURS** : STORY-002-SELECTION-REFONTE (🔴 BLOQUÉ, impératif) + ARCHI-006 + ARCHI-014-TEMPLATE-BOUSSOLE (7 EN COURS avant cette session)
+- **Attente immédiate** : refonte 6-selection.md STORY-002 (utiliser vague 4, intention critère), puis duel-data génération (ARCHI-DUEL-001)
+- **Propagation 48h** : INVARIANTS.md § panel + PROCESS.md étapes 5/9 (ticket PROPAGATE)
+- **Test calibration** : 2 paires benchmarks (décision go/no-go 12 panel avant STORY-003)
+
+**Décisions figées** : aucune question ouverte. Toutes 4 validées Papa Yann = exécution.
+
+---
+
 ## Prochaine action — OBLIGATOIRE avant toute session
 
-**Contexte prioritaire** (mis à jour 2026-05-21 par audit FOND) :
+**Contexte prioritaire** (mis à jour 2026-07-03 post audit-challenge) :
 
 | Priorité | Action | Statut | Notes |
 |----------|--------|--------|-------|
-| 🔴 BLOCAGE | STORY-002 étape 6 = **BLOQUÉ** (SLA 3j dépassé 7 jours depuis 2026-05-14) | Kanban marqué 🔴 2026-05-21 | Briefs vague 4 BOUSSOLE prêts, attente validation Papa Yann pour relancer 14 writers étape 4 |
-| ⚪ À FAIRE | Décision Papa Yann : relancer vague 4 sur STORY-002 étape 4 ? | En attente | Panel 20 lecteurs (étape 5) en attente étape 4 complète |
-| ⚪ À FAIRE | Vérifier kanban autres stories (aucun SLA dépassé attendu) | Prochain reboot | Mécanique SLA 3j 🔴 maintenant opérationnelle (DEC-SLA-NARRATION) |
+| 🔴 **CRITIQUE** | **STORY-002 étape 6 REFONTE complète** (DEC-PANEL-V2 + vague 4 actuelle) | Kanban 🔴 BLOQUÉ | Utiliser données vague 4 (2026-05-17), appliquer critère « Intention Directeur ». Générer duel-data.js (12 duels + finale). Attendre résultat Duel de goût (site/duel.html MVP). **Blocker étape 7 rewrite.** |
+| ⚪ À FAIRE | Test calibration panel 12 (2 paires benchmarks) | En attente démarrage | Valider reproductibilité écart (vague 3 kimi vs grok) + faux positif convergence (paire quasi-identique). Décisif go/no-go pour full 12 panel STORY-003+. |
+| ⚪ À FAIRE | Propager DEC-PANEL-V2 + DEC-BRIEF-CURSEUR dans INVARIANTS + PROCESS (SLA 48h) | En attente | MAJ § panel (20→12), section Intention Directeur. **Critère** : zero lien cassé après propagation. |
+| ⚪ À FAIRE | Vérifier kanban autres stories (aucun SLA dépassé attendu) | Prochain reboot | Mécanique SLA 3j 🔴 opérationnelle depuis 2026-05-21 (DEC-SLA-NARRATION). |
 
 **Règle** : cette section = POINT D'ENTRÉE session. Jamais ignorer. Papa Yann lit ici en premier = plan d'action transparent.
 

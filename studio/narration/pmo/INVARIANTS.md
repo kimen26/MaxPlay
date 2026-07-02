@@ -12,9 +12,10 @@
 | Étapes PROCESS | **11** (numérotées 0 à 10) | Owner / Inputs / Outputs / Critères PASS définis par étape. Étape 2 = Brainstorm (boss + équipe) depuis DEC-PROCESS-002. |
 | Préfixage fichiers stories | **Oui depuis 2026-05-12** | `1-pitch-plan.md`, `3-briefs/`, `4-versions-writers/`, `5-lecteurs-temoins/`, `6-selection.md`, `7-rewrite/`, `8-gatekeeper-verdict.md`, `9-relecture-rewrite/`, `10-texte.md`. Fichiers transverses (kanban, README) sans préfixe. |
 | Versions writers (étape 4) | **14** (refonte 2026-05-12 v2 — calibration multi-modèles) | 6 Claude (2 Opus + 2 Sonnet + 2 Haiku, déf/**reco**) + 4 Kimi (déf/reco/thinking/guidé) + 2 DeepSeek (déf/reco) + 2 Grok (déf/reco) — détail bloc *Casting writers étape 4* ci-dessous. "reco" = température recommandée créatif officielle (cf. [`../equipe/references/temperatures-llm.md`](../equipe/references/temperatures-llm.md)) |
-| Panel lecteurs (étape 5) | **20** OBLIGATOIRE (toutes stories dès STORY-002) |
-| Panel re-relecture (étape 9) | **20** OBLIGATOIRE (toutes stories dès STORY-002) |
+| Panel lecteurs (étape 5) | **12 calls** (refonte 2026-07-03 DEC-PANEL-V2 — hétérogène) | 4 groupes profils (garçon seul / fille seule / dyade papa / dyade maman) × 3 modèles (Sonnet + Kimi + Haiku/DeepSeek). Chaque call : 2 tranches âge (3-5 + 6-7) en 1 dyade. Test calibration one-shot obligatoire avant STORY-003. Détail : bloc *Panel lecteurs hétérogène* ci-dessous. |
+| Panel re-relecture (étape 9) | **12 calls** (structure identique étape 5 depuis 2026-07-03) | Unifiées : mêmes 4 groupes × 3 modèles. |
 | Validations auteur obligatoires | **3** : étape 1 (Pitch), étape 6 (Sélection), étape 10 (Canon) — la Phase A du Brainstorm (2A) ajoute un point de validation léger, hors compte des 3 jalons durs |
+| Intention Directeur (étape 3) | **1 ligne obligatoire par histoire** (DEC-BRIEF-CURSEUR 2026-07-03) | Section « Intention Directeur » dans brief-histoire.md. Critère sélection étape 6. Anti-Streisand : intention métier fixe, mise en scène writers libre. Ex: « Nono libère vs retient », « moment physique mémorable ». |
 | Plafond rewrite (étape 7) | **1 cycle max** par histoire |
 | SLA "EN ATTENTE AUTEUR" | **3 jours** → au-delà : kanban 🔴 BLOQUÉ |
 | Max tickets actifs PMO | **3** simultanés |
@@ -82,6 +83,36 @@
 6. **Faute volontaire** (détail "imparfait" qui rend humain)
 
 Règle : le writer guidé active **2-3 axes librement, jamais 4+**. Source vivante : `equipe/lecons-vivantes.md`.
+
+---
+
+## Panel lecteurs hétérogène (refonte 2026-07-03 DEC-PANEL-V2)
+
+**Changement règle figée 2026-07-03** : panel 20 → **panel 12 calls** (étapes 5 + 9 unifiées).
+
+**Structure 4 groupes profils × 3 modèles** :
+
+| Groupe | Profil | Modèle 1 | Modèle 2 | Modèle 3 | Output |
+|--------|--------|----------|----------|----------|--------|
+| 1 | Garçon seul (4.5 ans) | Sonnet 4.6 | Kimi K2.6 forfait code | Haiku 4.5 | 1 call → 2 tranches âge (3-5 + 6-7) dyade ✅ |
+| 2 | Fille seule (4.5 ans) | Sonnet 4.6 | Kimi K2.6 forfait code | Haiku 4.5 | idem |
+| 3 | Dyade Papa-Enfant | Sonnet 4.6 | Kimi K2.6 forfait code | DeepSeek V4 | idem |
+| 4 | Dyade Maman-Enfant | Sonnet 4.6 | Kimi K2.6 forfait code | DeepSeek V4 | idem |
+
+**Bilan** : 4 calls × 3 modèles = **12 appels totaux** (vs 20 précédemment). Chaque call rend 2 tranches (3-5 + 6-7) comme 1 diade.
+
+**Rationale** : 
+- Panel homogène (20 Sonnet) créait risque convergence mécanique (vague 3 STORY-002 : 11/14 writers identiques gestes mineurs)
+- Modèles hétérogènes (Sonnet standard + Kimi créatif + Haiku/DeepSeek agilité) testent divergence réelle perceptuelle
+- 12 calls = ~3× moins cher (CoT pricing), plus rapide
+
+**Test calibration obligatoire** (DEC-PANEL-V2) : avant full deployment STORY-003+, tester 2 paires de benchmarks :
+- Paire 1 : écart connu (vague 3 kimi-run1 vs grok-run1), mesurer reproductibilité
+- Paire 2 : quasi-identique, mesurer faux positif convergence
+
+**Ticket tracking** : TEST-PANEL-CALIBRATION (à faire 2026-07-03, cible 2026-07-15).
+
+**Source de vérité** : `pmo/decisions.md` DEC-PANEL-V2 (figée 2026-07-03).
 
 ---
 

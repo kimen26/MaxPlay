@@ -127,6 +127,16 @@ narration/
 
 ---
 
+## Duel de goût (créé 2026-07-03)
+
+| Fichier | Contenu |
+|---------|---------|
+| [`gout/README.md`](gout/README.md) | **Protocole duel de goût** (app `site/duel.html`, règles dures anti-verbatim/anonymat/anti-Frankenstein) |
+| [`gout/memoire-papa-yann.md`](gout/memoire-papa-yann.md) | Mémoire de goût auteur — **lecture obligatoire Directeur étapes 3 et 6** (descripteurs craft, jamais de verbatim) |
+| [`gout/palmares-writers.md`](gout/palmares-writers.md) | Track record writers + angles pour micro-briefs |
+
+---
+
 ## Mémoire & notes opérationnelles
 
 | Fichier | Contenu |

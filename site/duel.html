@@ -94,9 +94,11 @@
   </div>
 
   <div class="chips-panel hidden" id="ecran-chips">
-    <h3>Ce qui m'a fait choisir <span style="color:#e6dfc8">(1 à 3, optionnel)</span></h3>
-    <div class="chips" id="chips-pourquoi"></div>
-    <h3>Le perdant pèche par…</h3>
+    <div id="bloc-pourquoi">
+      <h3>Ce qui m'a fait choisir <span style="color:#e6dfc8">(1 à 3, optionnel)</span></h3>
+      <div class="chips" id="chips-pourquoi"></div>
+    </div>
+    <h3 id="h3-defauts">Le perdant pèche par…</h3>
     <div class="chips" id="chips-defauts"></div>
     <button class="valider" onclick="suivant()">Duel suivant →</button>
   </div>
@@ -149,19 +151,27 @@ function choisir(choix) {
   if (choix === 'a' || choix === 'b') {
     document.getElementById('carte' + choix.toUpperCase()).classList.add('choisie');
     setTimeout(montrerChips, 180);
+  } else if (choix === 'aucun') {
+    // aucun des deux → on demande POURQUOI ça ne va pas (défauts communs)
+    montrerChips();
   } else {
-    // égalité / aucun → pas de chips, on enchaîne
+    // égalité → les deux tiennent, pas de chips, on enchaîne
     enregistrer();
     avancer();
   }
 }
 
 function montrerChips() {
+  var refus = (choixCourant === 'aucun');
   var zp = document.getElementById('chips-pourquoi');
   var zd = document.getElementById('chips-defauts');
   zp.innerHTML = ''; zd.innerHTML = '';
   D.chips.pourquoi.forEach(function(c){ zp.appendChild(mkChip(c, chipsChoisies, false)); });
   D.chips.defauts.forEach(function(c){ zd.appendChild(mkChip(c, defautsChoisis, true)); });
+  // Refus des deux → pas de « ce qui m'a fait choisir », juste pourquoi ça pèche
+  document.getElementById('bloc-pourquoi').classList.toggle('hidden', refus);
+  document.getElementById('h3-defauts').textContent =
+    refus ? 'Pourquoi aucun des deux ? (ce qui pèche)' : 'Le perdant pèche par…';
   document.getElementById('ecran-duel').classList.add('hidden');
   document.getElementById('neutres').classList.add('hidden');
   document.getElementById('ecran-chips').classList.remove('hidden');

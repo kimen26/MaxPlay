@@ -1243,7 +1243,7 @@ function buildFiche(d) {
   scroll.innerHTML = `
     <!-- HERO photo -->
     <div class="v1-hero" style="background:linear-gradient(135deg,${cat.color},${cat.color}55)">
-      <img class="v1-hero-img" src="img/dinos/${d.png}" alt="${d.name}" onerror="this.style.display='none'">
+      <img class="v1-hero-img" src="img/dinos/paleoart/${d.png}" alt="${d.name}" onerror="this.onerror=null;this.src='img/dinos/${d.png}';this.onerror=function(){this.style.display='none'}">
       <div class="v1-hero-nm">
         <b>${d.name}</b>
         ${d.alias ? `<span class="v1-alias">aussi appelé ${d.alias}</span>` : ''}
@@ -1379,178 +1379,316 @@ function closeCarousel() {
   document.getElementById('carousel-track').removeEventListener('scroll', onCarouselScroll);
 }
 
-/* ── Extras par dino ── */
+/* ── Extras par dino (images paléoart générées 2026-06-28) ── */
 const DINO_EXTRAS = {
-  albertosaurus: [
-    { folder:'paleoart', file:'albertosaurus_manger.jpg', label:'Ce qu’il mange' },
-    { folder:'paleoart', file:'albertosaurus_paris.jpg', label:'Dans Paris !' },
-    { folder:'paleoart', file:'albertosaurus_ecosysteme.jpg', label:'Son monde' },
-    { folder:'paleoart', file:'albertosaurus_funfact.jpg', label:'Le savais-tu ?' },
+  albertosaurus:[
+    {folder:'paleoart',file:'Albertosaurus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Albertosaurus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Albertosaurus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Albertosaurus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Albertosaurus_funfact.png',label:'Le savais-tu ?'},
   ],
-  allosaurus: [
-    { folder:'paleoart', file:'allosaurus_manger.jpg', label:'Ce qu’il mange' },
-    { folder:'paleoart', file:'allosaurus_paris.jpg', label:'Dans Paris !' },
-    { folder:'paleoart', file:'allosaurus_ecosysteme.jpg', label:'Son monde' },
-    { folder:'paleoart', file:'allosaurus_funfact.jpg', label:'Le savais-tu ?' },
-    { folder:'paws', file:'3_Dinosaur_footprints_how_do_they_form.png', label:'Empreinte (3 doigts)' },
+  allosaurus:[
+    {folder:'paleoart',file:'Allosaurus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Allosaurus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Allosaurus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Allosaurus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Allosaurus_funfact.png',label:'Le savais-tu ?'},
   ],
-  archaeopteryx: [
-    { folder:'paleoart', file:'archaeopteryx_manger.jpg', label:'Ce qu’il mange' },
-    { folder:'paleoart', file:'archaeopteryx_paris.jpg', label:'Dans Paris !' },
-    { folder:'paleoart', file:'archaeopteryx_ecosysteme.jpg', label:'Son monde' },
+  amargasaurus:[
+    {folder:'paleoart',file:'Amargasaurus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Amargasaurus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Amargasaurus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Amargasaurus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Amargasaurus_funfact.png',label:'Le savais-tu ?'},
   ],
-  baryonyx: [
-    { folder:'paleoart', file:'baryonyx_manger.jpg', label:'Ce qu’il mange' },
-    { folder:'paleoart', file:'baryonyx_paris.jpg', label:'Dans Paris !' },
-    { folder:'paleoart', file:'baryonyx_ecosysteme.jpg', label:'Son monde' },
-    { folder:'paleoart', file:'baryonyx_funfact.jpg', label:'Le savais-tu ?' },
+  amargasaurus_test:[
   ],
-  carcharodontosaurus: [
-    { folder:'paws', file:'8_66_million_year_old_dinosaur_footprint.png', label:'Empreinte fossile' },
+  ankylosaurus:[
+    {folder:'paleoart',file:'Ankylosaurus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Ankylosaurus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Ankylosaurus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Ankylosaurus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Ankylosaurus_funfact.png',label:'Le savais-tu ?'},
   ],
-  carnotaurus: [
-    { folder:'paleoart', file:'carnotaurus_manger.jpg', label:'Ce qu’il mange' },
-    { folder:'paleoart', file:'carnotaurus_paris.jpg', label:'Dans Paris !' },
-    { folder:'paleoart', file:'carnotaurus_ecosysteme.jpg', label:'Son monde' },
-    { folder:'paleoart', file:'carnotaurus_funfact.jpg', label:'Le savais-tu ?' },
+  apatosaurus:[
+    {folder:'paleoart',file:'Apatosaurus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Apatosaurus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Apatosaurus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Apatosaurus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Apatosaurus_funfact.png',label:'Le savais-tu ?'},
   ],
-  ceratosaurus: [
-    { folder:'paleoart', file:'ceratosaurus_manger.jpg', label:'Ce qu’il mange' },
-    { folder:'paleoart', file:'ceratosaurus_paris.jpg', label:'Dans Paris !' },
-    { folder:'paleoart', file:'ceratosaurus_ecosysteme.jpg', label:'Son monde' },
-    { folder:'paleoart', file:'ceratosaurus_funfact.jpg', label:'Le savais-tu ?' },
+  archaeopteryx:[
+    {folder:'paleoart',file:'Archaeopteryx_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Archaeopteryx_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Archaeopteryx_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Archaeopteryx_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Archaeopteryx_funfact.png',label:'Le savais-tu ?'},
   ],
-  cryolophosaurus: [
-    { folder:'paleoart', file:'cryolophosaurus_manger.jpg', label:'Ce qu’il mange' },
-    { folder:'paleoart', file:'cryolophosaurus_paris.jpg', label:'Dans Paris !' },
-    { folder:'paleoart', file:'cryolophosaurus_ecosysteme.jpg', label:'Son monde' },
-    { folder:'paleoart', file:'cryolophosaurus_funfact.jpg', label:'Le savais-tu ?' },
+  archelon:[
+    {folder:'paleoart',file:'Archelon_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Archelon_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Archelon_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Archelon_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Archelon_funfact.png',label:'Le savais-tu ?'},
   ],
-  deinonychus: [
-    { folder:'paleoart', file:'deinonychus_manger.jpg', label:'Ce qu’il mange' },
-    { folder:'paleoart', file:'deinonychus_paris.jpg', label:'Dans Paris !' },
-    { folder:'paleoart', file:'deinonychus_ecosysteme.jpg', label:'Son monde' },
-    { folder:'paleoart', file:'deinonychus_funfact.jpg', label:'Le savais-tu ?' },
+  baryonyx:[
+    {folder:'paleoart',file:'Baryonyx_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Baryonyx_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Baryonyx_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Baryonyx_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Baryonyx_funfact.png',label:'Le savais-tu ?'},
   ],
-  diplodocus: [
-    { folder:'scale', file:'2_Diplodocus_size_comparison_human.png', label:'Taille vs humain' },
-    { folder:'scale', file:'3_Diplodocus_by_Gustthank_on_DeviantAr.png', label:'Illustration' },
-    { folder:'scale', file:'4_Diplodocus_Images_Browse_17_530_Stock.png', label:'Silhouette' },
-    { folder:'scale', file:'5_Diplodocus_Dinosaur_Size_Fossil_Map.png', label:'Squelette' },
-    { folder:'variants', file:'7_Amphicoelias_diplodocus_vector_cartoon.png', label:'Cartoon' },
+  brachiosaurus:[
+    {folder:'paleoart',file:'Brachiosaurus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Brachiosaurus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Brachiosaurus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Brachiosaurus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Brachiosaurus_funfact.png',label:'Le savais-tu ?'},
   ],
-  gallimimus: [
-    { folder:'paleoart', file:'gallimimus_manger.jpg', label:'Ce qu’il mange' },
-    { folder:'paleoart', file:'gallimimus_paris.jpg', label:'Dans Paris !' },
-    { folder:'paleoart', file:'gallimimus_ecosysteme.jpg', label:'Son monde' },
-    { folder:'paleoart', file:'gallimimus_funfact.jpg', label:'Le savais-tu ?' },
+  camarasaurus:[
+    {folder:'paleoart',file:'Camarasaurus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Camarasaurus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Camarasaurus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Camarasaurus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Camarasaurus_funfact.png',label:'Le savais-tu ?'},
   ],
-  giganotosaurus: [
-    { folder:'paleoart', file:'giganotosaurus_manger.jpg', label:'Ce qu’il mange' },
-    { folder:'paleoart', file:'giganotosaurus_paris.jpg', label:'Dans Paris !' },
-    { folder:'paleoart', file:'giganotosaurus_ecosysteme.jpg', label:'Son monde' },
-    { folder:'paleoart', file:'giganotosaurus_funfact.jpg', label:'Le savais-tu ?' },
-    { folder:'paws', file:'1_81_Fossil_Dinosaur_Theropod_Claw.png', label:'Griffe de théropode' },
+  carcharodontosaurus:[
+    {folder:'paleoart',file:'Carcharodontosaurus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Carcharodontosaurus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Carcharodontosaurus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Carcharodontosaurus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Carcharodontosaurus_funfact.png',label:'Le savais-tu ?'},
   ],
-  iguanodon: [
-    { folder:'paws', file:'4_Iguanodon_dinosaur_fossil_foot_bones.png', label:'Os du pied' },
+  carnotaurus:[
+    {folder:'paleoart',file:'Carnotaurus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Carnotaurus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Carnotaurus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Carnotaurus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Carnotaurus_funfact.png',label:'Le savais-tu ?'},
   ],
-  microraptor: [
-    { folder:'paleoart', file:'microraptor_manger.jpg', label:'Ce qu’il mange' },
-    { folder:'paleoart', file:'microraptor_paris.jpg', label:'Dans Paris !' },
-    { folder:'paleoart', file:'microraptor_ecosysteme.jpg', label:'Son monde' },
-    { folder:'paleoart', file:'microraptor_funfact.jpg', label:'Le savais-tu ?' },
+  centrosaurus:[
+    {folder:'paleoart',file:'Centrosaurus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Centrosaurus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Centrosaurus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Centrosaurus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Centrosaurus_funfact.png',label:'Le savais-tu ?'},
   ],
-  oviraptor: [
-    { folder:'paleoart', file:'oviraptor_manger.jpg', label:'Ce qu’il mange' },
-    { folder:'paleoart', file:'oviraptor_paris.jpg', label:'Dans Paris !' },
-    { folder:'paleoart', file:'oviraptor_ecosysteme.jpg', label:'Son monde' },
-    { folder:'paleoart', file:'oviraptor_funfact.jpg', label:'Le savais-tu ?' },
+  ceratosaurus:[
+    {folder:'paleoart',file:'Ceratosaurus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Ceratosaurus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Ceratosaurus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Ceratosaurus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Ceratosaurus_funfact.png',label:'Le savais-tu ?'},
   ],
-  spinosaurus: [
-    { folder:'paleoart', file:'spinosaurus_manger.jpg', label:'Ce qu’il mange' },
-    { folder:'paleoart', file:'spinosaurus_paris.jpg', label:'Dans Paris !' },
-    { folder:'paleoart', file:'spinosaurus_ecosysteme.jpg', label:'Son monde' },
-    { folder:'paleoart', file:'spinosaurus_funfact.jpg', label:'Le savais-tu ?' },
-    { folder:'paws', file:'2_4_3_Fossil_Spinosaurus_Hand_Claw.png', label:'Griffe main' },
-    { folder:'paws', file:'5_6_5_Spinosaurus_Claw_Fossil_for_Sale.png', label:'Griffe fossile' },
+  cryolophosaurus:[
+    {folder:'paleoart',file:'Cryolophosaurus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Cryolophosaurus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Cryolophosaurus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Cryolophosaurus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Cryolophosaurus_funfact.png',label:'Le savais-tu ?'},
   ],
-  stegosaurus: [
-    { folder:'paleoart', file:'stegosaurus_manger.jpg', label:'Ce qu’il mange' },
-    { folder:'paleoart', file:'stegosaurus_ecosysteme.jpg', label:'Son monde' },
-    { folder:'paleoart', file:'stegosaurus_funfact.jpg', label:'Le savais-tu ?' },
+  deinonychus:[
+    {folder:'paleoart',file:'Deinonychus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Deinonychus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Deinonychus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Deinonychus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Deinonychus_funfact.png',label:'Le savais-tu ?'},
   ],
-  tarbosaurus: [
-    { folder:'paleoart', file:'tarbosaurus_manger.jpg', label:'Ce qu’il mange' },
-    { folder:'paleoart', file:'tarbosaurus_paris.jpg', label:'Dans Paris !' },
-    { folder:'paleoart', file:'tarbosaurus_ecosysteme.jpg', label:'Son monde' },
-    { folder:'paleoart', file:'tarbosaurus_funfact.jpg', label:'Le savais-tu ?' },
+  dilophosaurus:[
+    {folder:'paleoart',file:'Dilophosaurus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Dilophosaurus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Dilophosaurus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Dilophosaurus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Dilophosaurus_funfact.png',label:'Le savais-tu ?'},
   ],
-  therizinosaurus: [
-    { folder:'paleoart', file:'therizinosaurus_manger.jpg', label:'Ce qu’il mange' },
-    { folder:'paleoart', file:'therizinosaurus_paris.jpg', label:'Dans Paris !' },
-    { folder:'paleoart', file:'therizinosaurus_funfact.jpg', label:'Le savais-tu ?' },
+  dimetrodon:[
+    {folder:'paleoart',file:'Dimetrodon_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Dimetrodon_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Dimetrodon_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Dimetrodon_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Dimetrodon_funfact.png',label:'Le savais-tu ?'},
   ],
-  triceratops: [
-    { folder:'paleoart', file:'triceratops_manger.jpg', label:'Ce qu’il mange' },
-    { folder:'paleoart', file:'triceratops_paris.jpg', label:'Dans Paris !' },
-    { folder:'paleoart', file:'triceratops_ecosysteme.jpg', label:'Son monde' },
-    { folder:'paleoart', file:'triceratops_funfact.jpg', label:'Le savais-tu ?' },
-    { folder:'scale', file:'0_Triceratops_face_a_un_enfant.png', label:'Face à toi' },
-    { folder:'scale', file:'1_File_Human_triceratops_size_comparison.png', label:'Taille vs humain' },
-    { folder:'scale', file:'6_Comaprison_Between_Triceratops_Size.png', label:'Comparaison' },
-    { folder:'variants', file:'3_Triceratops_in_four_colors_Free_Vecto.png', label:'Coloris possibles' },
+  diplodocus:[
+    {folder:'paleoart',file:'Diplodocus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Diplodocus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Diplodocus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Diplodocus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Diplodocus_funfact.png',label:'Le savais-tu ?'},
   ],
-  troodon: [
-    { folder:'paleoart', file:'troodon_manger.jpg', label:'Ce qu’il mange' },
-    { folder:'paleoart', file:'troodon_paris.jpg', label:'Dans Paris !' },
-    { folder:'paleoart', file:'troodon_ecosysteme.jpg', label:'Son monde' },
-    { folder:'paleoart', file:'troodon_funfact.jpg', label:'Le savais-tu ?' },
+  edmontosaurus:[
+    {folder:'paleoart',file:'Edmontosaurus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Edmontosaurus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Edmontosaurus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Edmontosaurus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Edmontosaurus_funfact.png',label:'Le savais-tu ?'},
   ],
-  tyrannosaurus: [
-    { folder:'paleoart', file:'tyrannosaurus_manger.jpg', label:'Ce qu’il mange' },
-    { folder:'paleoart', file:'tyrannosaurus_paris.jpg', label:'Dans Paris !' },
-    { folder:'paleoart', file:'tyrannosaurus_ecosysteme.jpg', label:'Son monde' },
-    { folder:'paleoart', file:'tyrannosaurus_dents.jpg', label:'Ses dents' },
-    { folder:'scale', file:'0_Trex_face_a_un_enfant.png', label:'Face à toi' },
-    { folder:'paws', file:'1_Huge_T_rex_Tooth_5_5_long_6_along.png', label:'Dent T-Rex' },
-    { folder:'paws', file:'2_File_Trex_footprint_jpg_Wikimedia.png', label:'Empreinte' },
-    { folder:'paws', file:'7_T_Rex_Paw_Over_331_Royalty_Free_Licensable.png', label:'Patte' },
-    { folder:'variants', file:'4_It_s_a_Bird_It_s_a_Plane_It_s_a_Tyrannosaurus.png', label:'Avec plumes' },
-    { folder:'variants', file:'5_T_rex_With_Feathers_Photograph_by.png', label:'Reconstitution' },
-    { folder:'scale', file:'4_Kid_Kong_Rex_and_Humans_Size_Comparison.png', label:'Comparaison taille' },
+  elasmosaurus:[
+    {folder:'paleoart',file:'Elasmosaurus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Elasmosaurus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Elasmosaurus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Elasmosaurus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Elasmosaurus_funfact.png',label:'Le savais-tu ?'},
   ],
-  utahraptor: [
-    { folder:'paleoart', file:'utahraptor_manger.jpg', label:'Ce qu’il mange' },
-    { folder:'paleoart', file:'utahraptor_paris.jpg', label:'Dans Paris !' },
-    { folder:'paleoart', file:'utahraptor_ecosysteme.jpg', label:'Son monde' },
-    { folder:'paleoart', file:'utahraptor_funfact.jpg', label:'Le savais-tu ?' },
+  euoplocephalus:[
+    {folder:'paleoart',file:'Euoplocephalus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Euoplocephalus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Euoplocephalus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Euoplocephalus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Euoplocephalus_funfact.png',label:'Le savais-tu ?'},
   ],
-  velociraptor: [
-    { folder:'paleoart', file:'velociraptor_manger.jpg', label:'Ce qu’il mange' },
-    { folder:'paleoart', file:'velociraptor_paris.jpg', label:'Dans Paris !' },
-    { folder:'paleoart', file:'velociraptor_ecosysteme.jpg', label:'Son monde' },
-    { folder:'paleoart', file:'velociraptor_funfact.jpg', label:'Le savais-tu ?' },
-    { folder:'paws', file:'1_Velociraptor_s_dog_sized_cousin_with.png', label:'Cousin raptor' },
-    { folder:'paws', file:'4_Velociraptor_Replica_Paw_Claw_Dinosaur.png', label:'Griffe replica' },
-    { folder:'scale', file:'3_File_Vraptor_scale_png_Wikimedia.png', label:'Taille réelle' },
-    { folder:'scale', file:'8_Encountering_a_Life_size_Velociraptor.png', label:'Taille vs humain' },
-    { folder:'variants', file:'3_Red_Feathered_Animatronic_Velociraptor.png', label:'Avec plumes' },
-    { folder:'variants', file:'8_Pack_Hunting_Raptors_What_is_the.png', label:'Chasse en meute' },
+  gallimimus:[
+    {folder:'paleoart',file:'Gallimimus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Gallimimus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Gallimimus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Gallimimus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Gallimimus_funfact.png',label:'Le savais-tu ?'},
   ],
-}
-
-function speakStatsDino(id) {
-  const d = DINOS.find(x => x.id === id);
-  if (!d) return;
-  speakText(d.name + ' ! ' + _statsPhrase(d));
-}
-
-/* ── Audio duo Narrateur + Wex (industrialisable : 1 entrée par dino dispo) ──
-   recap = gros bouton "écoute l'histoire" · blocs = mini-duos par section.
-   Si un bloc manque → fallback synthèse vocale. */
-// 4 blocs audio (refonte 2026-05-17) : nom / taille / regime / funfact + recap (ffmpeg concat).
-// Vidéos par dino (MP4 local, autoplay non, controls oui)
+  giganotosaurus:[
+    {folder:'paleoart',file:'Giganotosaurus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Giganotosaurus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Giganotosaurus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Giganotosaurus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Giganotosaurus_funfact.png',label:'Le savais-tu ?'},
+  ],
+  ichthyosaurus:[
+    {folder:'paleoart',file:'Ichthyosaurus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Ichthyosaurus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Ichthyosaurus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Ichthyosaurus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Ichthyosaurus_funfact.png',label:'Le savais-tu ?'},
+  ],
+  iguanodon:[
+    {folder:'paleoart',file:'Iguanodon_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Iguanodon_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Iguanodon_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Iguanodon_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Iguanodon_funfact.png',label:'Le savais-tu ?'},
+  ],
+  kentrosaurus:[
+    {folder:'paleoart',file:'Kentrosaurus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Kentrosaurus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Kentrosaurus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Kentrosaurus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Kentrosaurus_funfact.png',label:'Le savais-tu ?'},
+  ],
+  liopleurodon:[
+    {folder:'paleoart',file:'Liopleurodon_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Liopleurodon_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Liopleurodon_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Liopleurodon_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Liopleurodon_funfact.png',label:'Le savais-tu ?'},
+  ],
+  microraptor:[
+    {folder:'paleoart',file:'Microraptor_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Microraptor_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Microraptor_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Microraptor_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Microraptor_funfact.png',label:'Le savais-tu ?'},
+  ],
+  mosasaurus:[
+    {folder:'paleoart',file:'Mosasaurus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Mosasaurus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Mosasaurus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Mosasaurus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Mosasaurus_funfact.png',label:'Le savais-tu ?'},
+  ],
+  pachycephalosaurus:[
+    {folder:'paleoart',file:'Pachycephalosaurus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Pachycephalosaurus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Pachycephalosaurus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Pachycephalosaurus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Pachycephalosaurus_funfact.png',label:'Le savais-tu ?'},
+  ],
+  parasaurolophus:[
+    {folder:'paleoart',file:'Parasaurolophus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Parasaurolophus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Parasaurolophus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Parasaurolophus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Parasaurolophus_funfact.png',label:'Le savais-tu ?'},
+  ],
+  patagotitan:[
+    {folder:'paleoart',file:'Patagotitan_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Patagotitan_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Patagotitan_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Patagotitan_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Patagotitan_funfact.png',label:'Le savais-tu ?'},
+  ],
+  pentaceratops:[
+    {folder:'paleoart',file:'Pentaceratops_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Pentaceratops_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Pentaceratops_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Pentaceratops_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Pentaceratops_funfact.png',label:'Le savais-tu ?'},
+  ],
+  plateosaurus:[
+    {folder:'paleoart',file:'Plateosaurus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Plateosaurus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Plateosaurus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Plateosaurus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Plateosaurus_funfact.png',label:'Le savais-tu ?'},
+  ],
+  protoceratops:[
+    {folder:'paleoart',file:'Protoceratops_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Protoceratops_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Protoceratops_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Protoceratops_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Protoceratops_funfact.png',label:'Le savais-tu ?'},
+  ],
+  pteranodon:[
+    {folder:'paleoart',file:'Pteranodon_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Pteranodon_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Pteranodon_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Pteranodon_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Pteranodon_funfact.png',label:'Le savais-tu ?'},
+  ],
+  quetzalcoatlus:[
+    {folder:'paleoart',file:'Quetzalcoatlus_headshot.png',label:'Gros plan'},
+    {folder:'paleoart',file:'Quetzalcoatlus_manger.png',label:'Ce qu'il mange'},
+    {folder:'paleoart',file:'Quetzalcoatlus_paris.png',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Quetzalcoatlus_ecosysteme.png',label:'Son monde'},
+    {folder:'paleoart',file:'Quetzalcoatlus_funfact.png',label:'Le savais-tu ?'},
+  ],
+  ophthalmosaurus:[
+    {folder:'paleoart',file:'Ophthalmosaurus_headshot.png',label:'Gros plan'},
+  ],
+  oviraptor:[
+    {folder:'paleoart',file:'Oviraptor_headshot.png',label:'Gros plan'},
+  ],
+  shonisaurus:[
+    {folder:'paleoart',file:'Shonisaurus_headshot.png',label:'Gros plan'},
+  ],
+  spinosaurus:[
+    {folder:'paleoart',file:'Spinosaurus_headshot.png',label:'Gros plan'},
+  ],
+  stegosaurus:[
+    {folder:'paleoart',file:'Stegosaurus_headshot.png',label:'Gros plan'},
+  ],
+  tarbosaurus:[
+    {folder:'paleoart',file:'Tarbosaurus_headshot.png',label:'Gros plan'},
+  ],
+  therizinosaurus:[
+    {folder:'paleoart',file:'Therizinosaurus_headshot.png',label:'Gros plan'},
+  ],
+  torosaurus:[
+    {folder:'paleoart',file:'Torosaurus_headshot.png',label:'Gros plan'},
+  ],
+  triceratops:[
+    {folder:'paleoart',file:'Triceratops_headshot.png',label:'Gros plan'},
+  ],
+  troodon:[
+    {folder:'paleoart',file:'Troodon_headshot.png',label:'Gros plan'},
+  ],
+  tyrannosaurus:[
+    {folder:'paleoart',file:'Tyrannosaurus_headshot.png',label:'Gros plan'},
+  ],
+  utahraptor:[
+    {folder:'paleoart',file:'Utahraptor_headshot.png',label:'Gros plan'},
+  ],
+  velociraptor:[
+    {folder:'paleoart',file:'Velociraptor_headshot.png',label:'Gros plan'},
+  ],
+};
 const DINO_VIDEOS = {
   triceratops:  { src: 'video/dinos/triceratops-combat.mp4',   title: 'Tricératops contre T-Rex !' },
   tyrannosaurus:{ src: 'video/dinos/tyrannosaurus-attaque.mp4', title: 'Le T-Rex en action !' },

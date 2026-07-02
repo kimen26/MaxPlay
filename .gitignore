@@ -14,6 +14,12 @@ temp/
 # pour récupération si main thread crash avant Write tool. Voir infra/mcp/MODELS.md.
 infra/mcp/logs/
 site/img/dinos/brutes/
+# Zones de staging images dino (bruts HD ChatGPT/Grok, non déployés — gardés en local pour retouches)
+site/img/dinos/_new-xxl/
+site/img/dinos/_new-coloriage/
+site/img/dinos/_new-headshots/
+site/img/dinos/_new-ombre/
+site/img/dinos/coloriage-test/
 
 # Harnais de test mini-jeux (EP-038) — screenshots/artefacts de run, pas versionnés
 studio/minijeux/tests/.artifacts/

@@ -50,3 +50,11 @@ Le duel réduit son effort à ~12 taps de 10 secondes + 2 lectures complètes (l
    UNE base entière + des greffes d'intention absorbées au rewrite (mécanisme étape 6-7 existant).
 4. Un descripteur entre dans la mémoire comme **hypothèse** (1 signal) et devient **confirmé**
    à partir de 3 signaux concordants sur ≥ 2 histoires. Un contre-signal le repasse en hypothèse.
+
+## Journal des évolutions UI
+
+- **2026-07-03** — *Raisons de refus.* « aucun des deux 👎 » ouvre désormais un écran
+  **« Pourquoi aucun des deux ? »** (puces de défauts) au lieu d'enchaîner à vide.
+  Le JSON remonte alors `choix:"aucun"` + `defautsPerdant:[…]` (défauts communs des deux
+  fragments), `pourquoi` restant vide. « ≈ égalité » reste sans raison (les deux tiennent).
+  Retour vague 4 STORY-002 : sur `aucun`, on ne savait pas *pourquoi* ça ne passait pas.

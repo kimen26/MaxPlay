@@ -85,6 +85,12 @@ remplace: ancien `stories/ultime_debrief.md` (figé au 2026-05-05)  désormais
 **Observation** : toutes versions faibles énoncent la résonance (« la libellule les relie », « présence bienveillante qui résonne », « âmes qui vibrent »). Top scores l'oublient  simplement la vivent par geste, silence, détail.
 **Bon sens narratif** : l'émotion abstraite de lien ne se nomme pas. Elle vit dans : Wex qui ralentit (geste), silence de la libellule, présence commune sans explication. Enfants 4-5 ans : nommer = rupture du charme. Elle s'attrape par la sensorialité, pas par les mots.
 
+### P9  Défauts capturés structurés ≠ phrases rejetées
+
+**Origine** : duel.html feedback (2026-07-03) — quand Papa Yann clique « aucun des deux 👎 », l'app demande POURQUOI (rythme cassé ? vocabulaire ? tension ?) au lieu d'enchaîner sans raison. Structurer les rejets = levier clé pour mémoire-papa-yann.md.
+**Règle** : le duel capture `defautsPerdant:[…]` (catégories de défauts) pas phrases verbatim. La mémoire stocke le PATTERN (« ouverture trop lente », « tension coupée ») pas l'exemple exact. Corollaire : **anti-Streisand du goût** = protège la créativité writers futures sans contaminer leurs briefs.
+**Application** : mémoire-papa-yann.md grandit en **hypothèses structurées** (1 signal = observation) → **confirmées** (3+ signaux concordants ≥ 2 histoires). Briefs et rewrites futurs adaptent sans clonage verbatim.
+
 ---
 
 ## Pièges documentés

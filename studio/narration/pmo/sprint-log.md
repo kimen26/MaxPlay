@@ -11,6 +11,26 @@
 
 ---
 
+## 2026-07-03 (fin de session) — Correction duel.html : capture raisons de refus
+
+**Objectif :** Améliorer UX app « Duel de goût » suite retour utilisateur vague 4 STORY-002 (« Il faut dire quand on refuse pourquoi ça va pas aussi »).
+
+**Fait :**
+- [x] site/duel.html : écran supplémentaire « Pourquoi aucun des deux ? » (chips défauts communs) quand choix "aucun des deux 👎" (commit 90458c73)
+- [x] JSON output révisé : `choix:"aucun"` + `defautsPerdant:[…]` au lieu de `pourquoi:[]` vides
+- [x] gout/README.md enrichi : journal évolutions UI (L.55-61), tracé décision 2026-07-03
+
+**Décisions prises :** aucune (exécution du support infrastructural de DEC-DUEL-DE-GOUT 2026-07-03)
+
+**Leçon** : pattern "capture structurée des défauts" → utile pour futurs épisodes (alimente mémoire-papa-yann.md)
+
+**État au reboot :**
+- Duel.html opérationnel, prêt pour génération duel-data STORY-002 vague 4 (ticket ARCHI-DUEL-001)
+- STORY-002-SELECTION-REFONTE (🔴 BLOQUÉ) peut s'accélérer : app ready pour collecte Papa Yann
+- 3 tickets EN COURS inchangés : STORY-002-SELECTION-REFONTE + ARCHI-006 + ARCHI-014-TEMPLATE-BOUSSOLE
+
+---
+
 ## 2026-07-03 — AUDIT-CHALLENGE SESSION : 4 DÉCISIONS VALIDÉES PAR PAPA YANN (fondations refonte vague 5)
 
 **Objectif** : Graver les 4 décisions validées par Papa Yann (audit-challenge 2026-07-03), initialiser tickets propagation.

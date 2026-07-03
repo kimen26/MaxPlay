@@ -4,6 +4,32 @@
 
 ---
 
+## 2026-07-03 (POST-DIAGNOSTIC) — DEC-KIMI-TIMEOUT-MCP : Générateurs longs + transport MCP (~250s limit)
+
+**Auteur (PMO/Diagnostic)** : découverte 2026-07-03 post-reprise audit vague 5 STORY-002. **Diagnostic figé** — anti-pattern panne/infra rejeté.
+
+**Contexte** : Vague 5 STORY-002 — 3 writers Kimi (gratuit reco + reco-guide gratuit + k26-thinking payant) échoués identiquement « socket connection closed unexpectedly ~72-97s ». Diagnostic initial posait "panne infra Moonshot" → FAUX.
+
+**Découverte racinaire** :
+- **Cause réelle** : timeout transport MCP Claude Code (~250s non configurable, cf. `reference_mcp_tool_timeout.md` memory)
+- **Mécanisme** : générations writer longues (188s, 396s parfois > 250s sur briefs+corpus) dépassent plafond transport MCP avant que Moonshot ne rende. MCP ferme socket.
+- **Faux diagnostic** : la panne est du transport, pas du serveur. Moonshot répond vite (test prompt sonde passe), mais sur gros payloads, MCP coupe avant réponse.
+
+**Décision tranchée** :
+1. **Ne JAMAIS conclure "panne infra"** sur échec MCP writer long — la cause = timeout transport MCP (mécanisme established), pas infra Moonshot
+2. **Fallback CLI obligatoire** : `node infra/mcp/call-llm.mjs --writer <id> --model kimi-k2.7-code` (gratuit, timeout 540s Bash possible, hors transport MCP)
+3. **Appliquer étape 4** : mention fallback CLI dans `equipe/PROCESS.md` § Étape 4 writers longs (ticket ARCHI-015 mineur)
+
+**Fichiers impactés** :
+- ✅ `narration/pmo/decisions.md` (cette entrée, figée)
+- ✅ `equipe/lecons-vivantes.md` § LP2 (leçon processus + diagnostic)
+- ✅ `narration/pmo/backlog.md` (ticket AUDIO-KIMI-PANNE-VAGUE5 → reclassé ✅ RÉSOLU)
+- 🔄 `equipe/PROCESS.md` § Étape 4 (ticket ARCHI-015 light — ajouter mention fallback CLI)
+
+**Statut** : **FIGÉE 2026-07-03. Diagnostic irréversible.**
+
+---
+
 ## 2026-07-03 (22:50) — DEC-BRIEF-CURSEUR CLARIFIÉE : Brief writers en BOUSSOLE + intention + ÉQUITÉ INPUT stricte
 
 **Auteur (Papa Yann)** : décision initiale 2026-07-03 post audit-challenge, **CLARIFIÉE 2026-07-03 22:50** — épilogue correction.

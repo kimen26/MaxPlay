@@ -11,6 +11,32 @@
 
 ---
 
+## 2026-07-03 (POST-DIAGNOSTIC, PMO correction) — KIMI-MCP-TIMEOUT RESÉQUENCÉ : Diagnostic faux corrigé, leçon gravée
+
+**Objectif** : Corriger le diagnostic FAUX du Directeur ("panne infra Moonshot") et graver la leçon processus KIMI-MCP-TIMEOUT.
+
+**Fait** :
+- [x] **Diagnostic réputé FAUX** : ticket AUDIO-KIMI-PANNE-VAGUE5 mentionnait "panne infra passerelle Moonshot" → **REJETÉ**. Cause réelle = timeout transport MCP Claude Code (~250s limit non configurable), pas panne réseau.
+- [x] **Mécanisme établi** : générations writer longues (188s, 396s, parfois > 250s sur prompts briefs+corpus) dépassent plafond MCP avant que Moonshot ne rende. Transport MCP ferme la socket.
+- [x] **Solution déjà en place depuis 2026-05-17** : CLI `infra/mcp/call-llm.mjs` (timeout Bash 540s+, **hors MCP transport**) fait le même fetch. N'a pas été tenté cette reprise.
+- [x] **Leçon LP2 gravée** : `equipe/lecons-vivantes.md` § Leçons de processus → LP2-KIMI-MCP-TIMEOUT documentée (règle : NE PAS conclure "panne infra", basculer sur CLI).
+- [x] **Décision DEC-KIMI-TIMEOUT-MCP figée** : `narration/pmo/decisions.md` (diagnostic + fallback obligatoire + application étape 4)
+- [x] **Ticket reclassifié** : `AUDIO-KIMI-PANNE-VAGUE5` → ✅ RÉSOLU (cause connue, solution en place)
+
+**Fichiers modifiés** :
+- ✅ `pmo/backlog.md` (reclassement ticket)
+- ✅ `pmo/decisions.md` (DEC-KIMI-TIMEOUT-MCP nouvelle)
+- ✅ `equipe/lecons-vivantes.md` (LP2 processus)
+- 🔄 `equipe/PROCESS.md` (ticket ARCHI-015 light — fallback CLI mention, non bloquant)
+
+**État au reboot** :
+- **Vague 5 STORY-002 = 11 writers produits** (non pas 14) — écart documenté, conforme PROCESS
+- **Diagnostic KIMI terminé** : c'est MCP transport, pas infra
+- **Solution CLI existe et peut être utilisée** pour STORY-003+ si writer long sur MCP
+- **3 tickets EN COURS inchangés** : STORY-002-SELECTION-REFONTE (🔴 BLOQUÉ) + ARCHI-006 + ARCHI-014-TEMPLATE-BOUSSOLE
+
+---
+
 ## 2026-07-03 (post-session, PMO reprise) — VAGUE 5 STORY-002 CONSOLIDATION : Correction mesure + écart Kimi 3 writers + leçons
 
 **Objectif** : Consolider les faits de la reprise PMO vague 5 (correction et leçons) avec traçabilité.

@@ -117,6 +117,23 @@ remplace: ancien `stories/ultime_debrief.md` (figé au 2026-05-05)  désormais
 3. Fixer la longueur cible **une valeur pour tous**
 4. Writer déclarant sa note intention.
 
+### LP2 — KIMI-MCP-TIMEOUT : Générations longues + timeout transport MCP (2026-07-03 diagnostic)
+
+**Contexte découvert** : Vague 5 STORY-002 — 3 writers Kimi (gratuit reco + reco-guide gratuit + k26-thinking payant) échoués identiquement « socket connection closed unexpectedly ~72-97s ». Diagnostic initial (panne infra Moonshot) était FAUX.
+
+**Cause réelle identifiée** : Timeout du **transport MCP de Claude Code (~250s non configurable)**, pas panne réseau. Les générations writer longues (188s, 396s, parfois > 250s sur gros prompts) dépassent le plafond MCP avant que le serveur Moonshot ne rende. Le transport coupe la socket.
+
+**Solution déjà en place** : CLI `infra/mcp/call-llm.mjs` (timeout Bash 540s-600s possible, **hors MCP transport**) fait le même fetch que le serveur MCP. Réserve pour TOUT writer long (Kimi surtout, mais aussi DeepSeek/Grok qui peuvent dérouler).
+
+**Règle gravée** :
+1. Échec MCP d'un writer/lecteur en génération longue → **NE PAS conclure « panne infra »**
+2. **Basculer sur CLI fallback** : `node infra/mcp/call-llm.mjs --writer <id> --model kimi-k2.7-code` (gratuit), ou `--thinking enabled` pour payant (si décision validée)
+3. **Re-diagnostiquer « panne » seulement après échec du CLI aussi** (rare — timeout 540s CLI surtout jamais atteint en pratique)
+
+**Source de vérité** : `reference_mcp_tool_timeout.md` (memory) — `MCP_TOOL_TIMEOUT n'existe pas (Claude Code)` — tool-call MCP coupé ~250s, non configurable.
+
+**Application étape 4** : Ajouter mention fallback CLI dans `equipe/PROCESS.md` § Étape 4 (ticket mineur, non bloquant). Tous les writers « longs » savent pivot sur CLI dès now.
+
 ---
 
 ## Pièges documentés

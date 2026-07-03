@@ -56,6 +56,7 @@
 > - **`ask_kimi_payant`** (officiel, endpoint `api.moonshot.ai/v1`, env `MOONSHOT_PAYANT_API_KEY`) → STRICTEMENT writers #8 kimi-k26-instant (thinking disabled) + #9 kimi-k26-thinking (thinking enabled). Modèle `kimi-k2.6`. Temp et top_p fixes par K2.6 (params ignorés par l'API — seul `thinking` est contrôlable, doc Moonshot).
 > - **Différenciation K2.6** : sur K2.6, le SEUL levier est `thinking: {"type": "enabled"|"disabled"}`. Temp et top_p sont fixes côté modèle (doc officielle 2026-05-13 https://platform.kimi.ai/docs/api/models-overview#parameter-comparison).
 > - Détail : [`infra/mcp/MODELS.md`](../../../infra/mcp/MODELS.md) — *Cohabitation stricte*.
+> - ⚠️ **Timeout transport MCP Claude Code (~250s max, non configurable)** : générations writer longues (188s+) peuvent dépassar le plafond MCP. Fallback CLI : `node infra/mcp/call-llm.mjs --writer <id>` (timeout 540s Bash, hors transport MCP). Cf. DEC-KIMI-TIMEOUT-MCP + LP2 leçons-vivantes.md. Vague 5 STORY-002 exemple.
 
 **Total : 13 writers LIBRES + 1 writer GUIDÉ = 14 versions.**
 

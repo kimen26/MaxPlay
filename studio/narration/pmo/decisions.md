@@ -4,28 +4,37 @@
 
 ---
 
-## 2026-07-03 — DEC-BRIEF-CURSEUR : Brief writers en BOUSSOLE + intention « moment physique mémorable »
+## 2026-07-03 (22:50) — DEC-BRIEF-CURSEUR CLARIFIÉE : Brief writers en BOUSSOLE + intention + ÉQUITÉ INPUT stricte
 
-**Auteur (Papa Yann)** : décision 2026-07-03 après audit-challenge complet — refonte procédure brief writers pour écriture guidée (writer seul) + anti-Streisand.
+**Auteur (Papa Yann)** : décision initiale 2026-07-03 post audit-challenge, **CLARIFIÉE 2026-07-03 22:50** — épilogue correction.
 
 **Contexte** : vague 3 STORY-002 a révélé risque silencieux : quand l'auteur a une version mentale précise en tête (11 itérations libellule) et l'injecte en beat numéroté → writers clones (11/14 identiques sur détails mineurs). Antidote : fixer l'intention comme critère sélection étape 6, jamais comme beat décrit.
 
-**Décision tranchée** :
+**Décision tranchée (cœur inchangé)** :
 
 1. **Brief writers = BOUSSOLE + 1 intention obligatoire** : au lieu de laisser l'auteur imposer une mise en scène détaillée, capturer son intention métier unique en **1 ligne d'intention forte** = critère de sélection étape 6. "Produis UN moment physique mémorable/participatif" = exemple intention obligatoire S1.
 
 2. **Règle ANTI-STREISAND gravée** : si l'auteur a une version précise en tête (cas vague 3 libellule = 10 itérations mentales figurées en 10 beats), elle n'entre PAS dans le brief writers. À la place : transformer en UNE intention, puis faire figurer l'intention comme critère sélection (*"retenir la version qui sent le mieux la tension Nono immobile / libellule apparition"*). L'essence de ce que l'auteur demande est préservée, le COMMENT reste libre writers.
 
-3. **Intention obligatoire par histoire** : chaque story doit avoir 1 intention métier explicite (ex. "Nono libère vs retient", "Juju en mouvement continu"). Section dans `brief-histoire.md` : `## Intention Directeur`. Le writer guidé la reçoit en Couche 3. Les 13 libres ne la reçoivent pas (parité). À l'étape 6, Directeur valide que la version sélectionnée honore cette intention.
+3. **CORRECTION 2026-07-03 22:50 — ÉQUITÉ INPUT stricte**  :
+   - **Les 14 writers reçoivent TOUS exactement le même input** : brief-histoire commun + menu d'angles COMMUN (pas d'assignation individuelle)
+   - **Longueur cible IDENTIQUE** pour tous (ex. vague 5 : 400-550 mots) — jamais de cible par writer
+   - **Variance en OUTPUT uniquement** : le menu propose des idées / chaque writer pioche librement OU ignore, et DÉCLARE dans sa note d'intention ce qu'il a choisi et troquoi (observable au palmarès)
+   - **Anti-pattern banni** : « j'assigne l'angle 3 à Claude Opus, angle 5 à Kimi » = rupture d'équité. Tous reçoivent tous les angles, chacun choisit.
+   - Verbatim Papa Yann : « tout le monde a et fait pareil en INPUT... pourquoi pas demander au llm dans ses commentaires de dire ce qu'il a choisi et trouvé pertinent ».
+   - **Leçon gravée** : l'égalité d'input est un **principe d'équité du concours écrivains** — la variance s'observe en sortie (choix déclarés + notes intention), elle ne se fabrique PAS en entrée.
 
-4. **Intégration briefs** : template `brief-histoire-v4-BOUSSOLE.template.md` à créer/adapter. Section nouvelle « Intention Directeur » (1-2 lignes). Section « Enjeux » reste (lieu, persos, causalités Ki/Sho/Ten/Ketsu), mais aucune phrase finalisée = BOUSSOLE figée.
+4. **Intention obligatoire par histoire** : chaque story doit avoir 1 intention métier explicite (ex. "Nono libère vs retient", "Juju en mouvement continu"). Section dans `brief-histoire.md` : `## Intention Directeur`. Le writer guidé la reçoit en Couche 3. Les 13 libres ne la reçoivent pas (parité). À l'étape 6, Directeur valide que la version sélectionnée honore cette intention.
+
+5. **Intégration briefs** : template `brief-histoire-v4-BOUSSOLE.template.md` à créer/adapter. Section nouvelle « Intention Directeur » (1-2 lignes). Section « Enjeux » reste (lieu, persos, causalités Ki/Sho/Ten/Ketsu), mais aucune phrase finalisée = BOUSSOLE figée. **Menu d'angles** unique, en INPUT commun, sectionné clairement.
 
 **Fichiers impactés** :
-- ✅ `narration/pmo/decisions.md` (cette entrée, figée)
+- ✅ `narration/pmo/decisions.md` (cette entrée, figée + clarifiée)
+- 🔄 `equipe/lecons-vivantes.md` (ajouter LEÇON « Équité input concours écrivains »)
 - 🔄 `equipe/templates/brief-histoire-v4-BOUSSOLE.template.md` (ticket ARCHI-014-TEMPLATE-BOUSSOLE)
-- 🔄 STORY-003+ : appliquer dès le pitch (intention déclarée) + briefs (Couche 2 + intention ligne)
+- 🔄 STORY-003+ : appliquer dès le pitch (intention déclarée) + briefs (Couche 2 + intention + menu unique commun)
 
-**Statut** : **FIGÉE 2026-07-03. JAMAIS RÉGRESSER SANS DÉCISION EXPLICITE DATÉE.**
+**Statut** : **FIGÉE 2026-07-03. JAMAIS RÉGRESSER SANS DÉCISION EXPLICITE DATÉE PAPA YANN.**
 
 ---
 
@@ -58,6 +67,55 @@
 **Status expérimental** : Test one-shot démarrage immédiat. Résultats décisif pour STORY-003+ (go/no-go full 12 panel).
 
 **Statut** : **FIGÉE 2026-07-03. JAMAIS RÉGRESSER SANS DÉCISION EXPLICITE DATÉE PAPA YANN.**
+
+---
+
+## 2026-07-03 (22:45) — REX DUEL STORY-002 : Papa Yann refuse les 2 champions panel — DATA MAJEURE
+
+**Auteur (narration-pmo)** : logé d'après REX Papa Yann 2026-07-03.
+
+**Fait** : duel goût STORY-002 joué (11 fragments duellés, 1 finale). Résultat : Papa Yann refuse en entier les 2 champions du panel (grok-reco 21 pts, kimi-k26-instant 18 pts sur 20 lecteurs).
+
+**Raisons texto Papa Yann** :
+1. Trop longs tous les deux (déroule au lieu de suggérer)
+2. Grok-reco vague 4 = aucun vrai dialogue (monologue Narrateur)
+3. Kimi-k26-instant vague 4 = dialogues de fin reposent sur punchline-pirouette type réplique maligne (panel l'adore, lui trouve ça « terrible »)
+
+**Signal critique** : divergence majeure auteur ↔ panel sur le registre de sortie. Quand le panel s'extasie sur une chute-pirouette, méfiance structurelle. Pattern à surveiller STORY-003+.
+
+**Ingestion dans memoire-papa-yann.md** :
+- ✅ Descripteur confirmé « exigence globale > panel » (2e signal forte)
+- ✅ Contre-goût gravé : « Chute punchline/réplique maligne = rejet auteur (alors panel adore) »
+- ✅ Défaut tueur renforcé : « Trop long / déroule son idée » aussi valable au texte entier
+- ✅ Défaut nouveau : « Texte entier sans vrai dialogue = rejet »
+
+**Impact** : refonte URGENTE 6-selection.md STORY-002 = base vague 4 (données brutes) + duel goût comme critère sélection (absent du panel point brut). Étape 7 rewrite peut débuter post-décision Directeur sur base finale.
+
+**Statut** : ✅ Logé REX. Ticket STORY-002-SELECTION-REFONTE reste 🔴 BLOQUÉ.
+
+---
+
+## 2026-07-03 (22:50) — DEC-KIMI-GRATUIT-CODING : Canal `kimi-for-coding` = K2.7-Code pour 2 writers gratuits Kimi
+
+**Auteur (Papa Yann)** : décision épilogue 2026-07-03 clarifiée — changement infra writers Kimi.
+
+**Décision tranchée** :
+
+Les 2 writers Kimi gratuits (**#7 kimi-reco** + **#10 kimi-reco-guide**) utilisent dorénavant le canal **`kimi-for-coding`** (API `api.kimi.com/coding/v1`, env `MOONSHOT_API_KEY`) avec le modèle **K2.7-Code** (dernière version stable Kimi Code).
+
+**Rationale** : K2.7-Code offre une balance stabilité + créativité supérieure à K2.6 pour la narration créative légère (pas CoT épais, pas reasoning lourd). À tester vague 5 STORY-003+ en comparaison STORY-002 vague 4 (base).
+
+**Différences cohabitation Kimi** (refonte 2026-05-12, inchangée) :
+- **`ask_kimi` gratuit** → `kimi-for-coding` endpoint + K2.7-Code : writers #7 (reco) + #10 (guidé)
+- **`ask_kimi_payant`** (officiel api.moonshot.ai) → Réservé STRICTEMENT writers #8 + #9 (K2.6 avec thinking contrôle)
+
+**Fichiers impactés** :
+- ✅ `narration/pmo/INVARIANTS.md` (déjà cohérent L.40, aucun changement; juste vérifier modèle = K2.7)
+- 🔄 `equipe/PROCESS.md` § Étape 4 casting writers (clarifier modèle K2.7-Code pour writers gratuits Kimi)
+- 🔄 `.claude/agents/narration-writer-kimi-guide` (check endpoint + modèle)
+- 🔄 `infra/mcp/MODELS.md` § Cohabitation (doc de référence technique)
+
+**Statut** : **FIGÉE 2026-07-03. JAMAIS RÉGRESSER SANS DÉCISION EXPLICITE DATÉE.**
 
 ---
 

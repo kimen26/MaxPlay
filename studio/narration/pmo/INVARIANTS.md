@@ -37,10 +37,10 @@
 | | 4 | claude-sonnet-reco | `claude-sonnet-5` | low | 1.0 | défaut | `narration-writer-claude-libre` | LIBRE |
 | | 5 | claude-haiku-def | `claude-haiku-4-5` | low | défaut Anthropic | défaut | `narration-writer-claude-libre` | LIBRE |
 | | 6 | claude-haiku-reco | `claude-haiku-4-5` | low | 1.0 | défaut | `narration-writer-claude-libre` | LIBRE |
-| **Kimi** | 7 | kimi-reco | `kimi-for-coding` (endpoint coding) | n/a | **0.6** (reco créatif Moonshot Instant) | — (param non exposé) | `ask_kimi` (MCP gratuit) | LIBRE |
-| | 8 | kimi-k26-instant | `kimi-k2.6` | **disabled** (forcer Instant) | fixe K2.6 (ignoré API) | 0.95 fixe K2.6 | **`ask_kimi_payant`** (`thinking: "disabled"`) | LIBRE |
-| | 9 | kimi-k26-thinking | `kimi-k2.6` | **enabled** (défaut K2.6) | fixe K2.6 (ignoré API) | 0.95 fixe K2.6 | **`ask_kimi_payant`** (`thinking: "enabled"` ou omis) | LIBRE |
-| | 10 | kimi-reco-guide | `kimi-for-coding` (endpoint coding) | n/a | 0.6 (reco créatif Instant) | — (param non exposé) | `narration-writer-kimi-guide` → `ask_kimi` gratuit | **GUIDÉ** (axes 1-6 + leçons + trame histoire) |
+| **Kimi** | 7 | kimi-reco | `kimi-k2.7-code` (gratuit endpoint `api.kimi.com/coding/v1`) | n/a | **0.6** (reco créatif Moonshot Instant) | — (param non exposé) | `ask_kimi` (MCP gratuit) | LIBRE |
+| | 8 | kimi-k26-instant | `kimi-k2.6` (payant endpoint `api.moonshot.ai/v1`) | **disabled** (forcer Instant) | fixe K2.6 (ignoré API) | 0.95 fixe K2.6 | **`ask_kimi_payant`** (`thinking: "disabled"`) | LIBRE |
+| | 9 | kimi-k26-thinking | `kimi-k2.6` (payant endpoint `api.moonshot.ai/v1`) | **enabled** (défaut K2.6) | fixe K2.6 (ignoré API) | 0.95 fixe K2.6 | **`ask_kimi_payant`** (`thinking: "enabled"` ou omis) | LIBRE |
+| | 10 | kimi-reco-guide | `kimi-k2.7-code` (gratuit endpoint `api.kimi.com/coding/v1`) | n/a | 0.6 (reco créatif Instant) | — (param non exposé) | `narration-writer-kimi-guide` → `ask_kimi` gratuit | **GUIDÉ** (axes 1-6 + leçons + trame histoire) |
 | **DeepSeek** | 11 | deepseek-def | `deepseek-v4-pro` | off | **défaut DeepSeek** (1.0 API = 0.3 modèle réel) | défaut | `ask_deepseek` (MCP) | LIBRE |
 | | 12 | deepseek-reco | `deepseek-v4-pro` | off | **1.5** (reco officielle DeepSeek creative writing) | défaut | `ask_deepseek` (MCP) | LIBRE |
 | **Grok** | 13 | grok-def | `grok-4.3` | low | **défaut xAI** (≈1.0, param non envoyé) | défaut | `ask_grok` (MCP) | LIBRE |

@@ -16,7 +16,7 @@ maintenu_par: Auteur (John) + agent narration-pmo
 | Outil MCP | LLM | Modèle | Endpoint réel | Mode thinking | Env var | Notes |
 |-----------|-----|--------|---------------|---------------|---------|-------|
 | `ask_grok` | xAI | `grok-4.3` | `https://api.x.ai/v1` | `reasoning_effort: "low"` | `XAI_API_KEY` | 1M ctx, sorti mai 2026, -40% prix vs 4-fast |
-| `ask_kimi` ⚠️ | Moonshot AI (endpoint coding passe-partout) | `kimi-for-coding` | `https://api.kimi.com/coding/v1` | non-thinking (non exposé) | `MOONSHOT_API_KEY` | **GRATUIT** — endpoint passe-partout. Pas de `top_p`, pas de mode thinking. Usage : kimi-def (#7) + kimi-guide (#10). |
+| `ask_kimi` ⚠️ | Moonshot AI (endpoint coding gratuit) | `kimi-k2.7-code` | `https://api.kimi.com/coding/v1` | non-thinking (non exposé) | `MOONSHOT_API_KEY` | **GRATUIT** — endpoint passe-partout. Modèle K2.7-Code depuis 2026-07-03. Pas de `top_p`, pas de mode thinking. Usage : kimi-reco (#7) + kimi-reco-guide (#10). |
 | `ask_kimi_payant` 🆕 (refonte 2026-05-12) | Moonshot AI OFFICIEL | `kimi-k2.6` | `https://api.moonshot.ai/v1` | `thinking: true/false` (exposé) | **`MOONSHOT_PAYANT_API_KEY`** | **PAYANT — usage STRICTEMENT writers narratifs kimi-reco (#8) + kimi-thinking (#9)**. Expose `top_p` + mode `thinking`. |
 | `ask_deepseek` | DeepSeek | `deepseek-v4-pro` (défaut) ou `deepseek-v4-flash` | `https://api.deepseek.com/v1` | `thinking: false` | `DEEPSEEK_API_KEY` | V4-pro 1.6T params / 49B actifs |
 | `tts_elevenlabs` | ElevenLabs | `eleven_multilingual_v2` | `https://api.elevenlabs.io/v1` | — | `ELEVENLABS_API_KEY` | TTS narration |
@@ -27,10 +27,10 @@ maintenu_par: Auteur (John) + agent narration-pmo
 
 | Writer | MCP à utiliser | Modèle réel | Param distinctif |
 |--------|----------------|-------------|-------------------|
-| kimi-reco (#7) | `ask_kimi` (gratuit) | `kimi-for-coding` | temp 0.6 (reco Moonshot Instant créatif) |
+| kimi-reco (#7) | `ask_kimi` (gratuit) | `kimi-k2.7-code` (depuis 2026-07-03) | temp 0.6 (reco Moonshot Instant créatif) |
 | kimi-k26-instant (#8) | **`ask_kimi_payant`** | `kimi-k2.6` | `thinking: {"type": "disabled"}` |
 | kimi-k26-thinking (#9) | **`ask_kimi_payant`** | `kimi-k2.6` | `thinking: {"type": "enabled"}` (= défaut K2.6) |
-| kimi-reco-guide (#10) | `ask_kimi` (gratuit) | `kimi-for-coding` | temp 0.6 + couche axes 1-6 + trame |
+| kimi-reco-guide (#10) | `ask_kimi` (gratuit) | `kimi-k2.7-code` (depuis 2026-07-03) | temp 0.6 + couche axes 1-6 + trame |
 
 **Note clé K2.6** : selon doc Moonshot officielle (https://platform.kimi.ai/docs/api/models-overview#parameter-comparison), `kimi-k2.6` a **temperature et top_p fixes** côté modèle — l'API ignore ce qu'on envoie. **Seul `thinking` est contrôlable**. C'est pourquoi #8 et #9 ne se différencient QUE par ce param.
 

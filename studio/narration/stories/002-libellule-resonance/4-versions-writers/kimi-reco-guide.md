@@ -23,7 +23,7 @@ Nono marchait derrière. De temps en temps, il ramassait un caillou rond et le p
 
 — J'arrive.
 
-Il posa son caillou et courut. Ses pas enfonçaient dans la boue molle. Les trois passèrent devant le saule en hurlant, sans savoir qui avait gagné.
+Il posa son caillou et courut. Les trois passèrent devant le saule en hurlant, sans savoir qui avait gagné.
 
 C'est alors que Wex s'arrêta net.
 
@@ -43,7 +43,7 @@ Wex tendit la main. La libellule fit un looping autour de son doigt et s'éloign
 
 — Encore ! cria Juju.
 
-Ils tournèrent autour de l'étang. La libellule tournait avec eux, en plus vite. Elle s'arrêta au-dessus de l'eau. Ils s'arrêtèrent, hors d'haleine.
+Ils tournèrent autour de l'étang. La libellule s'arrêta au-dessus de l'eau. Ils s'arrêtèrent, hors d'haleine.
 
 — Elle se moque de nous, dit Juju en riant.
 
@@ -79,7 +79,7 @@ Nono souleva très lentement une main. Il effleura le roseau du bout des doigts.
 
 Les trois regardèrent la bête s'éloigner au-dessus de l'eau. Elle s'arrêta une dernière fois, toute petite, toute bleue, puis disparut vers les saules.
 
-Juju se redressa. Elle secoua ses jambes endormies.
+Juju se redressa.
 
 — On l'a presque eue.
 

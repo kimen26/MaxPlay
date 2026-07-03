@@ -27,6 +27,14 @@ paths:
 - **`dino-archiviste`** (FORME) — structure, refs, audio/png orphelins, surveille code+dossier.
 - **`dino-conseiller`** (créatif) — écriture récits/fiches, péda 4 ans, fact-check Grokipedia, taxo.
 
+## 🏛️ Doctrine GED (DEC-GED-001, figée 2026-07-03 — détail : `pmo/decisions.md` + `pmo/INVARIANTS.md` § Doctrine)
+
+- 🔒 **CANON SANS NUMÉRO** : le fichier qui fait foi porte un nom stable sans version (ex `RECITS-EPOQUES.md`, jamais `-V5`). Les anciennes versions vont dans un `_archive/` local daté. On DÉSIGNE le canon, on ne SUPPRIME jamais ([[feedback_narration_info_loss]]).
+- 🔒 **ZÉRO CHIFFRE EN DUR** : aucun INDEX/README/CLAUDE.md/rule ne recopie un count (dinos, familles…). On POINTE vers `pmo/INVARIANTS.md` (SEUL tracker autorisé à citer des chiffres) ou `site/js/dinos-data.js`. **⚠️ Portée = GOUVERNANCE uniquement.** Le **contenu narré** (récits, fiches audio) DOIT au contraire dire les vrais chiffres (« il y a 66 millions d'années », « 9 mètres ») — règle figée anti-nian-nian. Ne JAMAIS édulcorer un chiffre dans un texte que l'enfant entend au nom de « zéro chiffre ».
+- 🔒 **FRONTIÈRE AUTORING / PRODUIT** : une feature (mini-jeu, page) ne lit QUE `site/js/dinos-data.js` + assets `site/img/dinos/` référencés (nommés par `id`). Jamais elle ne monte lire dans `studio/` (non déployé). Donnée manquante → descend dans dinos-data.js via un script d'export.
+- 🔒 **CHECKLIST « DINO COMPLET »** (8 axes) : hero · 5 scènes paléoart · coloriage · 5 segments audio · silhouette · fiche fact-checkée+relue-péda · étymo · mesures. Suivi via l'outil généré `_ETAT-DINOS.md` (dino-archiviste). Playbook « nouveau dino → quoi faire » : [`studio/dino/content/sources/_PLAYBOOK-DINO-NOUVEAU.md`](../../studio/dino/content/sources/_PLAYBOOK-DINO-NOUVEAU.md).
+- 🟡 **STOP silhouettes** : 3 zones coexistent, fusion reportée au 1er mini-jeu qui les consomme — ne pas relancer d'ombres. Voir `content/assets/silhouettes/_STOP-3-ZONES.md`.
+
 ## Règles dures (résumé — détail dans figées)
 
 - 🔒 **Tritri** = running gag Wex (dino préféré). JAMAIS « Max », « doudou », « peluche ».

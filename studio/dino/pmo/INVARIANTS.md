@@ -8,8 +8,8 @@
 
 | Quoi | Valeur | Source |
 |------|--------|--------|
-| Dinos (entrées `DINOS`) | **59** | `site/js/dinos-data.js` (✅ 2026-07-03 : +8 dinos Cénozoïque — Mammuthus/Smilodon/Megatherium/Paraceratherium/Glyptodon/Aenocyon/Coelodonta/Titanis) |
-| Familles (`DINO_FAMILLES`) | **11** | idem (✅ 2026-07-03 : +2 familles `mammiferes` + `oiseaux`) |
+| Dinos (entrées `DINOS`) | **60** | `site/js/dinos-data.js` (✅ 2026-07-03 : +8 dinos Cénozoïque Mammuthus/Smilodon/Megatherium/Paraceratherium/Glyptodon/Aenocyon/Coelodonta/Titanis + 1 Crétacé Edmontonia) |
+| Familles (`DINO_FAMILLES`) | **11** | idem (✅ 2026-07-03 : +2 familles `mammiferes` + `oiseaux` ; famille `arme` passe 4→5 dinos) |
 | Régimes alimentaires (`DINO_CATEGORIES`) | **4** | idem (inchangé) |
 | Périodes (`DINO_PERIODES`) | **5** | ✅ 2026-07-03 : ajout `cenozoique` (66 Ma → aujourd'hui), rejoins les 4 antérieures (Triassic, Jurassic, Crétacé, Autres) |
 | Récits d'époque (voyage) | **8** | `audio/dinos/recit-*.mp3` |
@@ -19,7 +19,7 @@
 
 ## 11 familles (nom scientifique = titre)
 
-**Dinosaures (9 familles, 51 dinos)** : Théropodes (16) · Sauropodes (7) · Thyréophores (4) · Cératopsiens (6) · Ornithopodes (4) · Dromæosaures (10) · Ptérosaures (2) · Énaliosaures (7) · Avant les dinosaures (1, Dimétrodon).
+**Dinosaures (9 familles, 52 dinos)** : Théropodes (13) · Sauropodes (7) · Thyréophores (5) · Cératopsiens (6) · Ornithopodes (3) · Dromæosaures (8) · Ptérosaures (2) · Énaliosaures (7) · Avant les dinosaures (1, Dimétrodon).
 
 **Mégafaune Cénozoïque (2 familles, 8 dinos, 2026-07-03)** — clés techniques `mammiferes` + `oiseaux` :
 - **Mammifères** `mammiferes` (7) : Mammouth (`mammuthus`, *Mammuthus primigenius*) · Smilodon (`smilodon`, *S. fatalis*) · Mégathère (`megatherium`, *Megatherium americanum*) · Paracérathérium (`paraceratherium`) · Glyptodon (`glyptodon`) · Loup terrible (`aenocyon`, *Aenocyon dirus*) · Rhino laineux (`coelodonta`, *Coelodonta antiquitatis*)
@@ -27,7 +27,7 @@
 
 > ✅ **Vérif fact-check 2026-07-03** : 7/8 Grokipedia + 1 Wikipedia (Titanis). Chiffres honnêtes, échelle `_compLong/_compHaut/_compPoids` validée. Titanis corrigé 2,5m→1,9m.
 > ⚠️ **Taxo assumée** : les *terror birds* (Titanis) sont des OISEAUX, pas des mammifères → famille séparée (décision Papa Yann 2026-07-03, honnêteté taxo L-D03). Loup terrible + Rhino laineux sont bien des **mammifères** (`famille: 'mammiferes'` dans la data — répartition vérifiée `node` : mammiferes=7, oiseaux=1).
-> +3 entrées 2026-06-15 (relecture V3) : Patagotitan (Sauropodes 6→7), Centrosaure (Cératopsiens), Ichthyosaurus communis (Énaliosaures 6→7) — fiches audio V3 existaient sans entrée data. Count 48 → **51**. Count 51→59 2026-07-03 (8 Cénozoïque).
+> +3 entrées 2026-06-15 (relecture V3) : Patagotitan (Sauropodes 6→7), Centrosaure (Cératopsiens), Ichthyosaurus communis (Énaliosaures 6→7) — fiches audio V3 existaient sans entrée data. Count 48 → **51**. Puis 2026-07-03 : 51 → 59 (8 Cénozoïque) → **60** (Edmontonia, Thyréophores 4→5). Total dinos classiques = 52 + mégafaune 8 = 60.
 > ⚠️ Les libellés ci-dessus (noms scientifiques) ne mappent pas 1:1 les clés techniques `famille` de dinos-data.js (`trex`/`cou_long`/`arme`/`cornu`/`bec`/`raptor`/`pterosaures`/`enaliosaures`/`volant`). **À réconcilier par dino-archiviste** (écart libellés/clés préexistant).
 > Refonte taxo 2026-06-09 : famille **Énaliosaures** (6 reptiles marins) créée ; « Inclassables » dissoute (Therizinosaurus → Théropodes, Pachycéphalosaure → Cératopsiens) ; « Pas des dinosaures ! » recentrée sur Dimétrodon → « Avant les dinosaures ».
 Champs par famille : `sci` (titre scientifique) · `label` (surnom) · `sci_sens` (origine grecque dite en entrant) · `explic` (explication longue 🔊).

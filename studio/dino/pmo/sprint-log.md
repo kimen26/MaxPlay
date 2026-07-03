@@ -2,6 +2,22 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-07-03 — TÂCHE AUTONOME : Ajout Edmontonia (60e dino) — commit 4354ac68
+
+**Livré** :
+- **1 dino Crétacé intégrée** : Edmontonia (nodosauridé, armure dorsale), id `edmontonia`, famille `arme`, **periode `cretace`**.
+- **Taille/poids honnête** : 6,6 m / 3 tonnes (Wikipedia EN). Fonction `_compLong/_compHaut/_compPoids` appliquées.
+- **Dialogues V3 écrits** : 4 blocs (Bloc A étymologie « edmont- », Bloc B tailles comparées, Bloc C vie/groupe, Bloc D « truc fou »), narrateur_h + Wex, tags v3, **4 segments JSON prêts** (`_seg-edmontonia-*.json` dans attente V3/json/).
+- **Grep-interdits passé** ✅ (0 max/doudou/peluche/bus).
+- **INVARIANTS maj** : dinos **59→60**, famille `arme` **4→5** dinos (Stégosaure, Ankylosaure, Nodosaure, Euoplocéphale → **+Edmontonia**). Autres counts OK (11 familles, 4 régimes, 5 périodes).
+
+**État** :
+- ✅ Edmontonia data + dialogues V3 + 4 segments JSON prêts
+- ⏳ **Audio MP3 + image paléoart** en attente (inclus dans EP-D19 quota EL reset ~9 juillet)
+- ✅ **Count réel vérifié disque** : 60 dinos total, répartition trex 13, raptor 8, cou_long 7, enaliosaures 7, mammiferes 7, cornu 6, arme 5, bec 3, pterosaures 2, oiseaux 1, volant 1.
+
+---
+
 ## 2026-07-03 — SESSION FAMILLE MAMMIFÈRES + OISEAUX : Cénozoïque mégafaune intégrée (commit ab818798)
 
 **Livré** :
@@ -32,6 +48,36 @@
 - ✅ **32 segments JSON V3 prêts**, audio EN ATTENTE quota EL reset
 - ✅ **8 images paléoart attendues** (futures)
 - ⏳ **EP-D19 ouvert** (audio post-reset 9 juillet)
+
+
+---
+
+## 2026-07-03 — SESSION AUDIT IMAGES (supra méga audit complet)
+
+**Livré** :
+- **Audit 1 294 images** dans 19 répertoires — inventaire structuré + hash MD5 + vérification technique + audit visuel sémantique.
+- **Rapport complet** : `studio/dino/pmo/audit-images-RAPPORT.md` avec synthèse, findings, recommandations, index proposé.
+- **Fichiers d'audit** : INVENTAIRE.json (index), DINOS-REF.json (59 espèces), TECHNIQUE.json (problèmes).
+
+**Findings** :
+- **179 fichiers timeout** à nettoyer (captures d'erreur, pas des images dinos)
+- **33 groupes doublons hash** — dont 6 inter-espèces (Carcharodontosaurus/Centrosaurus = erreur batch)
+- **8 dinos Cénozoïque sans images XXL** (normal, ajout récent)
+- **Qualité globale** : ⭐⭐⭐⭐⭐ — paléoarts XXL excellents
+- **12 images "fort potentiel vidéo"** identifiées (écossystème, funfact, Paris)
+
+**Décisions** :
+- Aucune suppression effectuée (rapport seul, validation utilisateur requise)
+- Index centralisé proposé (JSON mapping image ↔ espèce ↔ scène ↔ qualité)
+
+**EN ATTENTE** :
+- **EP-D20** : Nettoyage timeout + regénération doublons + images Cénozoïque
+- **EP-D21** : Test vidéo à partir des 12 images coups de cœur
+
+**État au reboot** :
+- ✅ Audit images complet livré
+- ⏳ EP-D20 ouvert (nettoyage + regénération)
+- ⏳ EP-D21 ouvert (test vidéo)
 
 ---
 

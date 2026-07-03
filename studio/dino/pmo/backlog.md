@@ -6,7 +6,7 @@
 
 | ID | Sujet | Priorité | État |
 |----|-------|----------|------|
-| **EP-D19** | 🎙️ **AUDIO Cénozoïque (8 dinos mégafaune — quota EL BLOQUÉ)** — production audio 32 segments JSON (Mammuthus, Smilodon, Megatherium, Paraceratherium, Glyptodon, Aenocyon, Coelodonta, Titanis × 4 blocs + recap) via MCP `studio_audiobook_from_segments_v2_dialogue` eleven_v3 voice_ids narrateur_h/wex, loudnorm post-prod, **ATTENTE RESET EL ~9 juillet 2026** (quota 118055/122630 char, restant ~4575). Segments JSON figés dans `V3/json/`. Action après reset : générer 40 MP3, câbler `DINO_AUDIO` dev-dinos.html, tester Chromium. | 🔴 **BLOQUÉE** | ouvert — en attente quota |
+| **EP-D19** | 🎙️ **AUDIO Cénozoïque mégafaune + Edmontonia (9 dinos — quota EL BLOQUÉ)** — production audio 36 segments JSON (Mammuthus, Smilodon, Megatherium, Paraceratherium, Glyptodon, Aenocyon, Coelodonta, Titanis × 4 blocs + recap + **Edmontonia × 4 blocs**) via MCP `studio_audiobook_from_segments_v2_dialogue` eleven_v3 voice_ids narrateur_h/wex, loudnorm post-prod, **ATTENTE RESET EL ~9 juillet 2026** (quota épuisé). Segments JSON figés dans `V3/json/`. Action après reset : générer 45 MP3 (32 mégafaune + 4 edmontonia + recaps), câbler `DINO_AUDIO` dev-dinos.html, tester Chromium. Images paléoart attente (8 mégafaune + Edmontonia future). | 🔴 **BLOQUÉE** | ouvert — en attente quota |
 | | | | |
 
 ---

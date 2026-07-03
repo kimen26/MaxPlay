@@ -82,17 +82,24 @@ Une histoire complète de **400-700 mots** en français, à destination d'un enf
 
 ---
 
-## 5bis. GOÛT AUTEUR (contraintes tirées de `gout/memoire-papa-yann.md` — jamais de verbatim)
+## 5bis. GOÛT AUTEUR — en QUALITÉS à atteindre, JAMAIS en recettes
 
-> *Le Directeur traduit ici la mémoire de goût en consignes craft. INTERDIT de citer des phrases
-> d'histoires précédentes (anti-contamination). Exemples de descripteurs, à actualiser par story :*
+> 🔒 **DEC-GOÛT-RECETTE-VS-QUALITÉ (2026-07-04)** : les goûts s'expriment en **qualités du
+> résultat** (« l'ouverture doit couler »), jamais en **recettes de fabrication** (« entre par
+> la sensation »). REX vague 5 : la recette « ouverture corporelle » a produit le même template
+> pile-de-sensations chez tous les tops — conformité mécanique = Streisand niveau 2.
+> INTERDIT aussi : citer des phrases d'histoires précédentes (anti-contamination).
 
-- ☐ **UN moment physique mémorable/participatif** (intention obligatoire — le COMMENT est à toi)
-- ☐ Clarté avant tout : on sait toujours qui parle, qui fait quoi (tueur n°1 = confusion)
+- ☐ **FLUIDITÉ (critère n°1, confirmé)** : chaque phrase appelle la suivante (cause, geste,
+  regard, réponse). Une suite de constats juxtaposés — même courts, même sensoriels — n'est
+  PAS fluide. Test : lue à voix haute, l'ouverture doit couler sans « reprise de souffle à froid ».
+- ☐ **Chaque détail travaille** : un élément de décor qui ne sert ni l'action ni l'émotion dégage.
+- ☐ Clarté : on sait toujours qui parle, qui fait quoi (tueur n°1 = confusion)
 - ☐ Économie : suggérer plutôt que dérouler (tueur n°2 = longueur)
 - ☐ Dialogues présents, attribués, naturels — jamais de cascade non attribuée
 - ☐ Pas de chute-pirouette / punchline maligne en clôture
-- *(+ descripteurs actifs de la mémoire de goût au moment du brief)*
+- ☐ **UN moment physique mémorable/participatif** (intention — le COMMENT est à toi)
+- *(+ qualités actives de la mémoire de goût au moment du brief)*
 
 ---
 

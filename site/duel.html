@@ -5,75 +5,111 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>Duel de goût</title>
 <style>
+  /* ── La veillée au bord de l'étang ─────────────────────────
+     nuit  #0E1A1E   l'eau au crépuscule (fond)
+     berge #16262C   surfaces / cartes
+     ligne #23383F   bordures hairline
+     lueur #EFE6D0   ivoire lampe de chevet (texte)
+     libellule #74C7DE  l'accent unique
+     mousse #86B979  positif · argile #C97B5D  négatif
+     roseau #8FA096  secondaire                              */
   * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
   body {
     font-family: Georgia, 'Times New Roman', serif;
-    background:#1a1f16; color:#f0ead8;
+    background:#0E1A1E;
+    background-image: radial-gradient(ellipse 120% 60% at 50% -10%, rgba(239,230,208,.07), transparent 60%);
+    color:#EFE6D0;
     min-height:100vh; display:flex; flex-direction:column;
   }
-  header {
-    padding:14px 16px 10px; text-align:center;
-    font-family:-apple-system, system-ui, sans-serif;
+  header { padding:16px 16px 10px; text-align:center; }
+  header .titre {
+    font-family:Georgia, serif; font-style:italic; font-weight:400;
+    font-size:21px; color:#EFE6D0; letter-spacing:.5px;
   }
-  header .titre { font-size:14px; letter-spacing:2px; text-transform:uppercase; color:#9ab27e; }
-  header .cat { font-size:18px; font-weight:700; margin-top:6px; }
-  .progress { height:5px; background:#2c3325; border-radius:3px; margin:10px 16px 0; overflow:hidden; }
-  .progress > div { height:100%; background:#9ab27e; border-radius:3px; transition:width .3s; }
-  main { flex:1; display:flex; flex-direction:column; gap:12px; padding:14px 14px 8px; overflow-y:auto; }
+  header .titre svg { vertical-align:-4px; margin-right:7px; }
+  header .cat {
+    font-family:-apple-system, system-ui, sans-serif;
+    font-size:11.5px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase;
+    color:#8FA096; margin-top:8px;
+  }
+  .progress {
+    height:2px; background:#23383F; border-radius:2px;
+    margin:12px 24px 0; overflow:visible; position:relative;
+  }
+  .progress > div {
+    height:100%; background:linear-gradient(90deg, rgba(116,199,222,.25), #74C7DE);
+    border-radius:2px; transition:width .5s cubic-bezier(.22,1,.36,1); position:relative;
+  }
+  .progress > div::after {
+    content:''; position:absolute; right:-4px; top:-3px; width:8px; height:8px;
+    border-radius:50%; background:#74C7DE;
+    box-shadow:0 0 10px 2px rgba(116,199,222,.55);
+  }
+  main { flex:1; display:flex; flex-direction:column; gap:14px; padding:16px 14px 8px; overflow-y:auto; }
   .carte {
-    background:#242b1e; border:2px solid #3a4530; border-radius:14px;
-    padding:16px 16px 14px; cursor:pointer; position:relative;
-    transition:border-color .15s, transform .1s;
+    background:#16262C; border:1px solid #23383F; border-radius:16px;
+    padding:18px 17px 15px; cursor:pointer; position:relative;
+    transition:border-color .2s, transform .12s, box-shadow .2s;
     min-height:88px;
   }
   .carte:active { transform:scale(.985); }
-  .carte.choisie { border-color:#9ab27e; background:#2b3521; }
-  .carte .lettre {
-    position:absolute; top:-11px; left:14px; background:#9ab27e; color:#1a1f16;
-    font-family:system-ui, sans-serif; font-weight:800; font-size:13px;
-    padding:2px 10px; border-radius:10px;
+  .carte.choisie {
+    border-color:#74C7DE; box-shadow:0 0 0 1px #74C7DE, 0 4px 24px rgba(116,199,222,.12);
   }
-  .carte .txt { font-size:16.5px; line-height:1.55; white-space:pre-wrap; }
-  .carte.longue .txt { font-size:15px; max-height:38vh; overflow-y:auto; }
-  .carte .meta { font-family:system-ui,sans-serif; font-size:11px; color:#7a8a68; font-style:italic; margin-top:8px; }
-  .neutres { display:flex; gap:10px; justify-content:center; padding:2px 14px 6px; }
+  .carte .lettre {
+    position:absolute; top:-10px; left:16px; background:#0E1A1E; color:#74C7DE;
+    border:1px solid #23383F; font-family:system-ui, sans-serif; font-weight:700;
+    font-size:12px; letter-spacing:1px; padding:2px 11px; border-radius:10px;
+  }
+  .carte.choisie .lettre { background:#74C7DE; color:#0E1A1E; border-color:#74C7DE; }
+  .carte .txt { font-size:17px; line-height:1.68; white-space:pre-wrap; }
+  .carte.longue .txt { font-size:15.5px; line-height:1.7; max-height:38vh; overflow-y:auto; }
+  .carte .meta { font-family:system-ui,sans-serif; font-size:11px; color:#8FA096; font-style:italic; margin-top:8px; }
+  .neutres { display:flex; gap:10px; justify-content:center; padding:4px 14px 10px; }
   .neutres button {
-    font-family:system-ui,sans-serif; font-size:13px; color:#a8b096;
-    background:#242b1e; border:1px solid #3a4530; border-radius:20px;
+    font-family:system-ui,sans-serif; font-size:13px; color:#8FA096;
+    background:transparent; border:1px solid #23383F; border-radius:20px;
     padding:9px 18px; cursor:pointer;
   }
+  .neutres button:active { border-color:#8FA096; }
   /* écran chips */
-  .chips-panel { padding:6px 14px 14px; }
-  .chips-panel h3 { font-family:system-ui,sans-serif; font-size:14px; color:#9ab27e; margin:10px 0 8px; }
+  .chips-panel { padding:8px 16px 16px; font-family:system-ui,sans-serif; }
+  .chips-panel h3 { font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:#86B979; margin:14px 0 8px; }
+  .chips-panel h3#h3-defauts, .chips-panel h3.neg { color:#C97B5D; }
   .chips { display:flex; flex-wrap:wrap; gap:8px; }
   .chip {
     font-family:system-ui,sans-serif; font-size:13.5px;
-    background:#242b1e; border:1px solid #3a4530; border-radius:18px;
-    padding:9px 14px; cursor:pointer; color:#e6dfc8;
+    background:transparent; border:1px solid #23383F; border-radius:18px;
+    padding:9px 14px; cursor:pointer; color:#EFE6D0;
+    transition:background .15s, border-color .15s;
   }
-  .chip.on { background:#9ab27e; color:#1a1f16; border-color:#9ab27e; font-weight:600; }
-  .chip.neg.on { background:#c08a6a; border-color:#c08a6a; }
+  .chip.on { background:#86B979; color:#0E1A1E; border-color:#86B979; font-weight:600; }
+  .chip.neg.on { background:#C97B5D; border-color:#C97B5D; color:#0E1A1E; }
   .valider {
-    display:block; width:calc(100% - 28px); margin:14px auto 8px;
-    font-family:system-ui,sans-serif; font-size:16px; font-weight:700;
-    background:#9ab27e; color:#1a1f16; border:none; border-radius:12px;
-    padding:14px; cursor:pointer;
+    display:block; width:calc(100% - 32px); margin:18px auto 8px;
+    font-family:system-ui,sans-serif; font-size:15.5px; font-weight:700;
+    background:#74C7DE; color:#0E1A1E; border:none; border-radius:13px;
+    padding:14px; cursor:pointer; letter-spacing:.3px;
   }
   /* écran final */
-  .final { padding:20px 16px; }
-  .final h2 { font-family:system-ui,sans-serif; font-size:20px; color:#9ab27e; margin-bottom:12px; }
-  .final p { font-size:15px; line-height:1.5; margin-bottom:12px; font-family:system-ui,sans-serif; color:#c9c2ac; }
+  .final { padding:22px 18px; }
+  .final h2 { font-family:Georgia,serif; font-style:italic; font-weight:400; font-size:22px; color:#74C7DE; margin-bottom:12px; }
+  .final p { font-size:14.5px; line-height:1.55; margin-bottom:12px; font-family:system-ui,sans-serif; color:#B9BFA9; }
   textarea {
-    width:100%; height:130px; background:#12160e; color:#9ab27e;
-    border:1px solid #3a4530; border-radius:10px; padding:10px;
-    font-family:monospace; font-size:11px;
+    width:100%; height:130px; background:#0A1316; color:#74C7DE;
+    border:1px solid #23383F; border-radius:10px; padding:10px;
+    font-family:ui-monospace, monospace; font-size:11px;
   }
   .hidden { display:none !important; }
+  @media (prefers-reduced-motion: reduce) {
+    .progress > div { transition:none; }
+    .carte { transition:none; }
+  }
 </style>
 </head>
 <body>
   <header>
-    <div class="titre">⚔️ Duel de goût</div>
+    <div class="titre"><svg width="30" height="16" viewBox="0 0 30 16" fill="none" aria-hidden="true"><ellipse cx="10" cy="6" rx="9" ry="2.6" fill="#74C7DE" opacity=".35" transform="rotate(-16 10 6)"/><ellipse cx="20" cy="6" rx="9" ry="2.6" fill="#74C7DE" opacity=".35" transform="rotate(16 20 6)"/><ellipse cx="11" cy="9.5" rx="7" ry="2" fill="#74C7DE" opacity=".55" transform="rotate(-24 11 9.5)"/><ellipse cx="19" cy="9.5" rx="7" ry="2" fill="#74C7DE" opacity=".55" transform="rotate(24 19 9.5)"/><rect x="14.4" y="3.5" width="1.6" height="11" rx="0.8" fill="#74C7DE"/><circle cx="15.2" cy="3.2" r="1.7" fill="#74C7DE"/></svg>Duel de goût</div>
     <div class="cat" id="categorie"></div>
     <div class="progress"><div id="bar" style="width:0%"></div></div>
   </header>

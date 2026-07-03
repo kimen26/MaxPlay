@@ -93,6 +93,31 @@ remplace: ancien `stories/ultime_debrief.md` (figé au 2026-05-05)  désormais
 
 ---
 
+## Leçons de processus
+
+> Gouvernance d'écriture, équité concours, workflow. Gravées via corrections auteur post-audit.
+
+### LP1  Équité input = principe d'equity du concours écrivains (DEC-BRIEF-CURSEUR clarifiée 2026-07-03)
+
+**Décision** : Papa Yann 2026-07-03 — clarification après audit-challenge STORY-002 vague 4.
+
+**Règle gravée** :
+- **Les 14 writers reçoivent TOUS exactement le même brief** : pas d'assignation d'angle individuelle à l'input
+- **Menu d'angles unique et commun** : le menu propose les idées (narrative angles, POV, longueur, registre), chaque writer pioche LIBREMENT ou ignore
+- **Longueur cible IDENTIQUE** pour tous (ex. vague 5 : 400-550 mots) — jamais de cible différente par writer
+- **Variance observée en OUTPUT** : chaque writer DÉCLARE sa note d'intention (« j'ai choisi l'angle sensoriel + POV Wex témoin ») — cette déclaration est observable au palmarès duel étape 6
+- **Anti-pattern banni** : « j'assigne angle 3 à Opus, angle 5 à Kimi, longueur 450 à Sonnet » = rupture d'équité, crée des copies programmées
+
+**Rationale** : l'équité d'entrée préserve la divergence naturelle writers. La variance se fabrique en OUTPUT (choix déclarés) pas en INPUT (micro-directives). Quand l'auteur fabrique la variance en entrée, writers deviennent des clones finement contrôlés.
+
+**Application** : STORY-003+ — brief-histoire template doit clairement :
+1. Lister « Intention Directeur » (1 ligne)
+2. Proposer le menu d'angles en **section COMMUNE UNE FOIS** (pas 14 copies légèrement différentes)
+3. Fixer la longueur cible **une valeur pour tous**
+4. Writer déclarant sa note intention.
+
+---
+
 ## Pièges documentés
 
 > ? Vérifiés sur 2+ histoires.

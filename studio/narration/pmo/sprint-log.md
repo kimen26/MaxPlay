@@ -11,6 +11,31 @@
 
 ---
 
+## 2026-07-03 (22:50, POST-AUDIT correction) — CLARIFICATIONS 3 DÉCISIONS : Équité input writers + canal Kimi gratuit + leçon processus
+
+**Objectif** : Logger les clarifications apportées par Papa Yann en épilogue du duel (2026-07-03 22:50).
+
+**Fait** :
+- [x] **DEC-BRIEF-CURSEUR clarifiée** : brief commun + menu d'angles UNIQUE (pas assignation individuelle par writer). Longueur cible IDENTIQUE. Variance en OUTPUT (notes intention déclarées). Leçon LP1 gravée dans lecons-vivantes.md.
+- [x] **DEC-KIMI-GRATUIT-CODING entrée** : writers #7 + #10 Kimi utilisent `kimi-for-coding` endpoint + K2.7-Code modèle (efficacité narratif > K2.6).
+- [x] **Mécanique "note intention writer"** : 14 writers déclarent ce qu'ils ont choisi du menu (observable). Critère sélection étape 6.
+
+**Décisions figées** : aucune nouvelle — clarification + affinement de DEC-BRIEF-CURSEUR existante.
+
+**Leçons gravées** : LP1 (équité input) dans `equipe/lecons-vivantes.md`.
+
+**Fichiers modifiés** :
+- ✅ `pmo/decisions.md` : DEC-BRIEF-CURSEUR clarifiée + DEC-KIMI-GRATUIT-CODING nouvelles
+- ✅ `equipe/lecons-vivantes.md` : section LP1 Équité input gravée
+- 🔄 Propagation : template brief-histoire-v4-BOUSSOLE (ticket ARCHI-014-TEMPLATE-BOUSSOLE en cours)
+
+**État au reboot** :
+- **3 tickets EN COURS inchangés** : STORY-002-SELECTION-REFONTE (🔴 BLOQUÉ) + ARCHI-006 + ARCHI-014-TEMPLATE-BOUSSOLE
+- **Attente** : ARCHI-014 doit figurer clarification sur "menu d'angles UNIQUE commun" dans brief-histoire template
+- **Prochaine action** : lancer ARCHI-014 (template adaptation) + déclencher TEST-PANEL-CALIBRATION
+
+---
+
 ## 2026-07-03 (22:45, fin de session) — REX DUEL STORY-002 : Papa Yann refuse 2 champions + données majorantes
 
 **Objectif :** Logger le REX duel opérationnel et les données collectées de Papa Yann.

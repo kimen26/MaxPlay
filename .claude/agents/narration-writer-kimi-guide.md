@@ -123,7 +123,8 @@ Tu reçois en message : le brief-personnages + le brief-histoire de la story.
 
 ```md
 ---
-llm: kimi-for-coding
+llm: kimi-k2.7-code
+endpoint: api.kimi.com/coding/v1 (gratuit)
 role: guidé (axes 1-6)
 mcp: ask_kimi
 temperature: 0.6

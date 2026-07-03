@@ -1,102 +1,85 @@
 # Brief personnages — STORY-002 La Libellule impossible
 
-> **Stateless — user prompt Couche 2.** Reçu par tous les 14 writers (Claude via Read, MCP via inline).
-> Casting V1 figé (2026-04-24, ajusté 2026-05-05). Aucune invention de prénom.
-> **Vague 3 — 2026-05-15** (refonte post-brainstorm boss, gabarit perso unifié).
+> **Stateless — user prompt.** Reçu par les 14 writers (Claude via Read, MCP via inline).
+> Casting V1 figé (2026-04-24, ajusté 2026-05-05). **Aucune invention de prénom, aucun diminutif hors ceux listés.**
+> **Vague 5 — 2026-07-03** (fond inchangé vs vague 4 ; format rafraîchi + libellule bleue).
 
 ---
 
 ## RÈGLES OBLIGATOIRES
 
 ### Surnoms 4/5 du temps
-Le diminutif est utilisé dans 80% des occurrences. Le prénom complet est réservé aux moments formels ou solennels.
+On dit **Juju, Nono, Wex** presque partout. Les prénoms complets (Judith, Noé) sont réservés à un moment solennel rare — ici, probablement aucun. **Aucun autre diminutif** (pas de « Ju », « No », « Juju-chérie » ni surnom inventé).
 
 ### Ennéatypes DILUÉS, jamais étiquetés
-- Le type ne se nomme jamais dans le texte.
-- Il se lit dans **3-4 micro-réactions** par perso (gestes, choix, silence, expression).
-- Aucune phrase explicative.
+Le type ne se nomme jamais dans le texte. Il se lit dans 3-4 micro-réactions par perso (gestes, choix, silence, expression). Aucune phrase explicative sur qui est qui.
 
 ### Sensibilité différenciée — DORMANTE
-- Chaque perso perçoit ce que les autres ne perçoivent pas.
-- En arc 1, les sensibilités sont **dormantes** : jamais nommées, jamais expliquées, jamais un pouvoir visible.
-- Pas de hiérarchie de savoir. Aucun perso ne "comprend" ce qui se passe.
+Chaque enfant perçoit ce que les deux autres ne perçoivent pas. En arc 1 ces sensibilités sont **dormantes** : jamais nommées, jamais expliquées, jamais un pouvoir visible. Personne ne « comprend » ce qui se passe. Pas de hiérarchie de savoir.
 
 ---
 
-## PERSONNAGES DANS CETTE HISTOIRE
+## LE TRIO DE CETTE HISTOIRE
 
-> Gabarit identique pour les 3. Wex est un perso comme les autres dans cette histoire.
+> Les trois sont à parts égales. Aucun spectateur, aucun sage au-dessus.
 
----
+### Juju (fille)
+- **Ce qu'elle EST :** énergie haute, franche, directe. Prend de la place sans écraser. Teste le réel avec son corps : elle fonce, elle lance des défis, elle taquine — jamais méchante, jamais de gros mots. Sa tendresse est cachée sous l'élan.
+- **Sensibilité (dormante, jamais dite) :** les bêtes viennent vers elle. La libellule la « préfère » — mais personne ne le remarque, jamais.
+- **Micro-réactions à diluer :**
+  1. Elle fonce, elle propose, elle relance dès qu'un jeu retombe.
+  2. Elle taquine à voix franche, syllabes qui tapent, jamais cruelle.
+  3. Quand un truc la coupe : pause courte, bouche entrouverte, puis elle repart vite.
+  4. Elle ne s'attarde pas dans la douceur — elle rebondit.
+- **Voix :** phrases courtes qui claquent. Ton direct et chaud.
+- **Garde-fou :** elle ne devient PAS douce au pivot. Elle reste Juju, même figée. Pas de domination, pas d'agressivité.
 
-### Wex
+### Nono (garçon)
+- **Ce qu'il EST :** présence calme et ACTIVE. Il ne prend pas de place mais il est bien là. Il décroche de l'agitation sans l'annoncer. Peu de mots. Il FAIT des gestes lents — jamais effacé, jamais passif.
+- **Sensibilité (dormante, jamais dite) :** autour de lui, ça se pose. Un champ de calme. Jamais nommé.
+- **Micro-réactions à diluer :**
+  1. Il décroche de l'énergie du groupe sans rupture — un glissement.
+  2. Il fait un geste physique, lent, silencieux.
+  3. Il ouvre la main, il attend — sans forcer, sans expliquer.
+  4. Il sourit à peine quand quelque chose arrive — pas une victoire, une présence.
+- **Voix :** rare, courte, douce. Un mot minuscule suffit — ou rien. Rythme lent, consonnes qui coulent.
+- **Garde-fou :** il AGIT (se poser, tendre la main, ouvrir l'espace). Sa lumière est active, pas une absence.
 
-- **Posture (hors-système, jamais nommée) :** observateur joyeux, curieux, présent. Pas un sage, n'explique rien, ne détient pas la réponse. Il remarque des trucs. Pouvoirs PAS activés (arc 1).
-- **Sensibilité (dormante, jamais nommée) :** il perçoit quelque chose se passer entre Nono et Juju — sans mots, sans comprendre. Aucune explication.
-- **3-4 micro-réactions à diluer :**
-  1. Il s'arrête net — il s'immobilise d'un coup quand quelque chose capte son attention
-  2. Tête penchée, yeux écarquillés, bouche entrouverte quand il voit quelque chose d'inattendu
-  3. Tourne sur lui-même ou montre du doigt pour suivre la libellule — souvent sans rien dire d'abord
-  4. Peut éclater de rire de ce qu'il voit — l'enthousiasme sort quand il le sent
-- **Voix / vocabulaire :**
-  - Peu de mots. Phrases courtes. *"Hé, vous avez vu ça ?"* · *"Attends..."* · *"Viens."*
-  - Peut parler dans le vide, pour lui-même, sans regarder personne
-- **Garde-fou :** Wex n'explique pas, ne commente pas ce qu'il perçoit, ne reste pas en retrait. Il est dans le groupe, pas au-dessus. Pas de réplique omnisciente.
-
----
-
-### Juju
-
-- **Ennéatype (jamais nommé) :** prend de la place naturellement, ne ment jamais, franche, directe, teste la réalité. Sa tendresse est cachée. Énergie haute, contact physique assumé.
-- **Sensibilité (dormante, jamais nommée) :** les animaux réagissent à elle. La libellule la préfère — jamais dit, jamais expliqué. Ce n'est pas un pouvoir. Juste : la bête vient.
-- **3-4 micro-réactions à diluer :**
-  1. Elle fonce, elle teste, elle propose/lance des défis
-  2. Elle taquine directement, sans cruauté — vanne franche, jamais méchante
-  3. Quand quelque chose l'arrête, pause brève — bouche entrouverte — puis elle repart ou s'adapte vite
-  4. Elle ne reste pas dans la douceur : elle rebondit vite vers le suivant
-- **Voix / vocabulaire :**
-  - Phrases courtes, syllabes qui tapent. Ton direct, jamais cruel.
-  - **Pattern chansonnette (signature T8 — DEC-JUJU-T8-001) :** Juju fredonne/chantonne souvent quand elle joue. Quand quelque chose la coupe, la chanson **s'arrête net, en pleine phrase** — reset brutal, jamais un fondu doux. C'est invariant : vrai dans toutes ses histoires.
-  - Vannes à disposition (utiliser, adapter, ou en inventer) :
-    - *"Nono, t'as des limaces dans les baskets, ou quoi ?"*
-    - *"Hé oh, ici on chasse, on fait pas racines !"*
-- **Garde-fou :** pas d'agressivité, pas de gros mots, pas de domination. Juju épanouie protège, ne brutalise jamais. Elle ne se transforme PAS en douceur au pivot — elle reste Juju.
-
----
-
-### Nono
-
-- **Ennéatype (jamais nommé) :** présence apaisée, ne prend pas de place mais EST là. Décroche de l'énergie du groupe sans l'annoncer. Peu de mots. Sa lumière est ACTIVE — il fait des gestes, il n'est pas effacé.
-- **Sensibilité (dormante, jamais nommée) :** sa présence crée un champ de calme. Jamais nommé, jamais expliqué.
-- **3-4 micro-réactions à diluer :**
-  1. Il décroche de l'énergie collective sans rupture — juste un glissement
-  2. Il fait quelque chose de physique, lent, silencieux (contact avec la terre)
-  3. Il ouvre la main, il attend — sans forcer, sans expliquer
-  4. Il sourit légèrement quand quelque chose arrive — pas de victoire, juste une présence
-- **Voix / vocabulaire :**
-  - Peu parle. Quand il parle : court, doux, jamais démonstratif. Consonnes legato, rythme lent et fluide.
-  - *"Attends..."* · *"C'est pas grave."* · un mot minuscule suffit (ou rien)
-- **Garde-fou :** ne pas le rendre passif/effacé. Nono épanoui FAIT des gestes (s'asseoir, tendre la main, ouvrir l'espace) — sa lumière est active, pas une absence.
+### Wex (garçon, hors-système)
+- **Ce qu'il EST :** observateur joyeux et curieux, dans le groupe et pas au-dessus. Il n'explique rien, ne détient aucune réponse, ne fait pas le sage. Il remarque des choses, parfois tout haut pour lui-même. Pouvoirs PAS activés (arc 1).
+- **Sensibilité (dormante, jamais dite) :** il sent qu'il se passe quelque chose entre les deux autres — sans mots, sans comprendre.
+- **Micro-réactions à diluer :**
+  1. Il s'arrête net quand un détail l'attrape.
+  2. Tête penchée, yeux ronds, bouche entrouverte devant l'inattendu.
+  3. Il suit la libellule du doigt ou en tournant, souvent sans un mot d'abord.
+  4. Il peut éclater de rire de ce qu'il voit.
+- **Voix :** peu de mots, phrases très courtes. Il peut parler dans le vide, pour lui.
+- **Garde-fou :** pas de réplique omnisciente, pas de commentaire de ce qu'il perçoit, pas de retrait. Il joue avec eux.
 
 ---
 
 ## DYNAMIQUE DU TRIO (invariant)
 
-- Juju mène l'élan — énergie haute, vannes, chansonnette. Nono et Wex suivent à leur façon.
-- Juju lance des vannes quand quelque chose la dépasse — elle ne comprend pas encore, elle taquine.
-- Wex observe, peut parler dans le vide pour lui-même, ne commente jamais ce qu'il perçoit.
-- Nono décroche sans annoncer, fait un geste calme, peu de mots.
+- Juju mène l'élan (énergie, taquineries) ; les deux autres suivent à leur façon.
+- Nono décroche sans prévenir, fait un geste calme, parle peu.
+- Wex observe, peut se parler à lui-même, ne commente jamais ce qu'il sent.
 
-> Le déroulé précis de CETTE histoire (beats, gestes spécifiques, répliques figées) → **brief-histoire.md**.
+> Le déroulé de CETTE histoire → **brief-histoire.md**. Ton angle personnel → **micro-briefs.md**.
+
+---
+
+## DÉTAIL SÉRIE À RESPECTER
+
+- **La libellule est BLEUE.** (Cohérence de la série — ne pas la faire verte ni jaune.) Le reste de son apparence (yeux, taille, vol) t'appartient.
 
 ---
 
 ## ABSENTS DE CETTE HISTOIRE
 
-Melki, Mimi, Dadou, Madie, Lulu, Pierrot, Raph — ne pas les faire apparaître.
+Melki, Mimi, Dadou, Madie, Lulu, Pierrot, Raph — ne pas les faire apparaître, ne pas les citer.
 
 ---
 
-**Date :** 2026-05-16
-**Source casting :** `personnages/wex|type-08|type-09/{personnage,alive}.md` + `pmo/decisions.md` (DEC-JUJU-T8-001, DEC-SYMBOLIQUE-001)
-**Vague :** 3 (refonte Couche 2 — gabarit perso unifié Wex/Juju/Nono, **invariant only** — beats story → brief-histoire.md)
+**Date :** 2026-07-03
+**Source casting :** `personnages/wex|type-08|type-09/{personnage,alive}.md` + `pmo/decisions.md` (DEC-JUJU-T8-001)
+**Vague :** 5 (fond identique vague 4 ; format resserré, libellule bleue figée, aucun diminutif hors lookup)

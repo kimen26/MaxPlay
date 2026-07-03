@@ -26,10 +26,12 @@
 | 1 | Pitch + Plan (fusionnés depuis 2026-05-12) | Conseiller | ✅ | 2026-05-12 | [`1-pitch-plan.md`](1-pitch-plan.md) |
 | **2A** | **Brainstorm boss (Phase A)** | Papa Yann + Conseiller | ✅ | 2026-05-15 | [`2-brainstorm-boss.md`](2-brainstorm-boss.md) — vision Couche 0 + Couche 1 beats figés (11 beats, libellule sur nez Juju, Wex "oh" muet) — **scène pivot complète** validée auteur |
 | **2B** | **Brainstorm équipe (Phase B) v2** | Kimi + DeepSeek + Grok + Conseiller | ✅ | 2026-05-15 | [`2-brainstorm-equipe.md`](2-brainstorm-equipe.md) — matière brute 6 axes filtrée (faune/flore/actions/vannes/Wex/libellule/admiration) — **filtrage auteur appliqué 2026-05-15** |
-| **3C** | **Briefs Couche 2 (refonte — vague 4 BOUSSOLE)** | Directeur | ✅ | 2026-05-17 | [`3-briefs/`](3-briefs/) — brief-personnages.md + brief-histoire.md refondus **EN BOUSSOLE** : intentions Ki/Sho/Ten/Ketsu (6 causalités-ESSENCE, zéro phrase publiable) + sensibilités + COUCHE 3 guidé seul. **PMO relecture PASS 2026-05-17** — aucune formulation publiable, verrous causaux transparents, Couche 3 isolée. Applique DEC-BRIEF-VAGUE4-BOUSSOLE. |
+| **3-V5** | **Briefs VAGUE 5 (refonte goût — DEC-BRIEF-CURSEUR)** | Directeur | 🟢→⏳PMO | 2026-07-03 | [`3-briefs/`](3-briefs/) — **3 fichiers from scratch** : `brief-personnages.md` (fond inchangé, libellule bleue figée, aucun diminutif hors lookup) + `brief-histoire.md` (BOUSSOLE resserrée 400-550 mots, images épouvantail/nez **LIBÉRÉES**, seul verrou causal Juju↔Nono→libellule, **§5bis GOÛT AUTEUR** rempli) + `micro-briefs.md` (**14 angles DISTINCTS** depuis palmarès). Vague 4 archivée `_archive/3-briefs-vague4-2026-05-17/`. **En attente relecture PMO** avant étape 4. |
+| **3C** | ~~Briefs vague 4 BOUSSOLE~~ (archivé) | Directeur | ✅ | 2026-05-17 | Archivé `_archive/3-briefs-vague4-2026-05-17/` — dictait encore épouvantail + nez (images héritées brainstorm boss). Remplacé par vague 5. |
 | **D** | **_writer-package complet Couches 1/2/3 (vague 3)** | Directeur | ✅ | 2026-05-16 | [`3-briefs/brief-histoire.md`](3-briefs/brief-histoire.md) refondé : Couche 1 ref → `equipe/_writer-system.md` + Couche 2 brief + Couche 3 vision guidé. Format : système/utilisateur (DEC-WRITER-ARCH-001). **LIVRÉ** |
 | 3 | ~~Briefs~~ (archivé vague 1-2) | — | ❌ | 2026-05-12 | [`3-briefs/`](3-briefs/) — **REFONTE VAGUE 3 COMPLÉTÉE** (étapes B/C/D ✅) |
-| 4 | **14 Versions writers — VAGUE 4 BOUSSOLE** | 14 Writers | ✅ | 2026-05-17 | [`4-versions-writers/`](4-versions-writers/) — **14/14 PRODUITS** (commit 634c5041) : 6 Claude + 2 DeepSeek + 2 Grok + 4 Kimi (kimi-reco, kimi-k26-instant, **kimi-k26-thinking**, kimi-reco-guide). DEC-BRIEF-VAGUE4-BOUSSOLE appliqué. **Casting FIGÉ 14, AUCUNE exclusion** — kimi-k26-thinking produit comme les 13 autres (retrait proposé PMO 2026-05-16, REFUSÉ Papa Yann 2026-05-17). Bug infra résolu : CLI streaming SSE. Vague 3 archivée `_archive/vague-3/` |
+| 4 | **14 Versions writers — VAGUE 5** | 14 Writers | ⚪ | — | [`4-versions-writers/`](4-versions-writers/) — **À RELANCER sur briefs vague 5** dès relecture PMO PASS. Kimi via canal `kimi-for-coding` prioritaire. Chaque writer reçoit son micro-brief (`micro-briefs.md`). Versions vague 4 à archiver `_archive/4-versions-vague4/` avant relance. |
+| 4-v4 | ~~14 Versions writers vague 4~~ | 14 Writers | ✅ | 2026-05-17 | Produites (commit 634c5041). À archiver avant relance vague 5. |
 | 5 | **Panel 20 lecteurs + synthèse** | 20 Témoins + Directeur | ⚪ | — | À RELANCER sur les **14 vague 4** (panels vague 2 et 3 archivés dans `_archive/`). En attente décision Papa Yann. |
 | 6 | Sélection | Directeur | 🔴 | 2026-05-14 → 2026-05-21 (SLA 3j dépassé) | [`6-selection.md`](6-selection.md) — **BLOQUÉ** (SLA dépassé depuis 2026-05-17 — en attente décision Papa Yann sur étape 5 panel 20 lecteurs relance vague 4) |
 | 7 | Rewrite | Writer du top 1 | ⚪ | — | [`7-rewrite/`](7-rewrite/) |
@@ -62,6 +64,23 @@
 ## Notes & blocages
 
 > *Notes libres du owner courant. Si 🔴 BLOQUÉ, expliquer ici.*
+
+### 2026-07-03 — VAGUE 5 : refonte briefs goût (DEC-BRIEF-CURSEUR)
+
+**Contexte** : après le duel de goût 002 (vague 4), l'auteur a rejeté les 2 champions du panel. Refonte du PROCESS (micro-briefs par writer, lecture `gout/` obligatoire). Les briefs vague 4, bien qu'en boussole, **dictaient encore** l'épouvantail et le nez de Juju (images héritées du brainstorm boss beats 8-11).
+
+**Produit (3 fichiers from scratch)** :
+- `brief-personnages.md` : fond vague 4 inchangé, format rafraîchi, **libellule BLEUE figée** (fin de l'ambiguïté couleur vague 4), aucun diminutif hors Juju/Nono/Wex.
+- `brief-histoire.md` : BOUSSOLE resserrée **400-550 mots**, **images épouvantail + nez LIBÉRÉES** (matière writer, plus dictées), seul le **verrou causal** (libellule APRÈS contact Juju↔Nono) reste ESSENCE, **§5bis GOÛT AUTEUR** rempli (clarté qui-parle, économie, dialogues attribués, pas de pirouette, 1 moment physique mimable en intention).
+- `micro-briefs.md` : **14 angles DISTINCTS** assignés depuis `gout/palmares-writers.md` (Kimi = attribution obligatoire · Grok-reco = dernière phrase courte + bleu cohérent · Opus = suspension sensorielle · Sonnet = Ketsu sobre · Haiku = phrase-culte · DeepSeek = 🚨 zéro renommage/diminutif · etc.).
+
+**Règles dures respectées** : zéro verbatim d'histoires précédentes · zéro beat de mise en scène · gag du nez non dicté · libellule bleue · briefs autoporteurs.
+
+**Vague 4 archivée** : `_archive/3-briefs-vague4-2026-05-17/` (+ README).
+
+**Prochaine action** : relecture PMO (négations gratuites + cohérence) → si PASS, étape 4 relance 14 writers vague 5.
+
+---
 
 ### 2026-05-17 — REX vague 3 + Refonte BOUSSOLE vague 4
 

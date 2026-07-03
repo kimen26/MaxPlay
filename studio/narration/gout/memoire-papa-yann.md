@@ -28,13 +28,19 @@ _(rien encore — 1 seule histoire duellée)_
 | Défaut | Signaux |
 |--------|---------|
 | Confusion (on ne sait pas qui parle / ce qui se passe) | 3 (duel 002) |
-| Trop long / déroule son idée | 1 |
+| **Trop long / déroule son idée** — vaut aussi pour le texte entier | 3 (duel 002 + verbatim finale) |
+| Texte entier sans aucun vrai dialogue = rejet (il faut des voix qui se répondent) | 1 (verbatim finale 002) |
+| Chute qui repose sur une réplique-pirouette / punchline maligne — le panel adore, lui trouve ça « terrible » | 1 fort (duel 002 : chute refusée + finale rejetée en partie pour ses dialogues de fin) |
 
-## ⚠️ Trous de données connus
+## Divergences auteur ↔ panel (à surveiller)
 
-- Duel 002 joué sur l'UI v1 : les 6 refus « aucun des deux » (dont LA FINALE) sont **sans
-  raisons** — l'écran de défauts sur refus n'existait pas encore (corrigé 2026-07-03).
-  → Le POURQUOI du rejet des deux finalistes est la donnée manquante n°1.
+- La chute jugée « meilleure du panel » par les 20 lecteurs a été **refusée** par l'auteur
+  (registre pirouette verbale). Quand le panel s'extasie sur une punchline, méfiance.
+
+## ⚠️ Trous de données comblés
+
+- ~~Raisons des refus v1 inconnues~~ → récupérées en texte 2026-07-03 : longueur des deux
+  finalistes, absence de dialogue dans l'une, chutes dialoguées déjà invalidées dans l'autre.
 
 ## Journal d'ingestion
 

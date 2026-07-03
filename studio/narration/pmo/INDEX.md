@@ -10,7 +10,7 @@
 | Axe | Statut |
 |-----|--------|
 | Histoires canon | 1 — *Le Pont Cassé* (001, refonte 2026-05-08) |
-| Histoires en production | 1 — *Libellule Résonance* (002, étape 6 sélection en cours) |
+| Histoires en production | 1 — *Libellule Résonance* (002, étape 6 sélection en cours, vague 5 + panel v2 complétés 2026-07-03) |
 | Axes en stock | 15 (10 unitaires + 5 transversaux) |
 | Personnages | 9 + Wex — casting V1 figé (2026-04-24) |
 | Voix ElevenLabs | **10/10 figées** ✅ — Wex/Dadou/Melki/Pierrot/Lulu/Nono + Raph + Juju + Mimi + Madie. Casting voix complet 2026-05-13. |

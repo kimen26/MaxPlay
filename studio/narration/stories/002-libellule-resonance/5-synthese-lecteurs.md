@@ -22,7 +22,7 @@
 ¹ `G-extra-haiku` produit par une session concurrente (profil garçon extra-verti) — conservé (matière supplémentaire, pas contradictoire).
 ² Fiches de **substitution** produites à la reprise : la voix **Kimi était indisponible sur les 4 groupes** (blocage infra socket ~72-97 s sur `ask_kimi` gratuit ET `ask_kimi_payant`, gros prompts uniquement — 4 tentatives, 4 échecs). Le PROCESS panel v2 prévoit « Haiku OU DeepSeek » en 3e colonne : Kimi a donc été remplacé par le 3e modèle hétérogène disponible pour conserver **3 modèles distincts par groupe**. Chaque groupe a bien Sonnet + Haiku + DeepSeek.
 
-**Conséquence méthodo** : l'axe de variance « modèle-lecteur » est préservé (3 modèles hétérogènes partout), mais **Kimi est absent du panel**. Aucun avis Kimi-lecteur cette vague (à noter pour le REX infra). Le corpus jugé = **11 versions writers** (les 3 Kimi-writers manquent aussi — même panne infra ; cf. rapport reprise). Classement porte donc sur 11 versions, pas 14.
+**Conséquence méthodo** : l'axe de variance « modèle-lecteur » est préservé (3 modèles hétérogènes partout), mais **Kimi est absent du panel comme voix-lecteur**. Aucun avis Kimi-lecteur cette vague (à noter pour le REX infra). Le corpus **noté par le panel** = **11 versions writers**. Les 3 Kimi-writers étaient absents **au moment du passage des lecteurs**, mais ont été **récupérés depuis** via le CLI `call-llm.mjs` (timeout du transport MCP sur générations longues — **pas** une panne infra Moonshot ; voir ADDENDUM en bas de fichier, qui corrige la mention « même panne infra »). Le classement des §1-§5 porte donc sur **11 versions notées** ; les 3 Kimi sont traités en **addendum Directeur** (évaluation hors panel, non notée par les lecteurs).
 
 ---
 
@@ -125,5 +125,52 @@ C'est **l'enseignement majeur** de cette vague. kimi-k26-instant est :
 
 ---
 
-**Fiches sources** : `5-lecteurs-temoins/` (13 fiches). **Corpus jugé** : 11 versions writers (`4-versions-writers/`).
-**Écarts** : Kimi absent (writers ×3 + lecteurs ×4) — panne infra socket, non récupérable cette session.
+**Fiches sources** : `5-lecteurs-temoins/` (13 fiches). **Corpus jugé par le panel** : 11 versions writers (`4-versions-writers/`).
+**Écarts panel** : Kimi absent en tant que **voix-lecteur** (×4 substitués par DeepSeek/Haiku). En revanche les **3 Kimi-writers ont été récupérés hors panel** — voir addendum ci-dessous.
+
+---
+
+## ADDENDUM VAGUE 5 — 3 writers Kimi hors panel initial
+
+> ⚠️ **Statut honnête** : ces 3 versions **n'ont PAS été notées par le panel des 13 lecteurs.** Elles ont été récupérées **après** le passage des lecteurs, via le CLI `call-llm.mjs` (contournement du timeout du transport MCP sur générations longues 188-396 s — et **non** une panne infra Moonshot : le canal Kimi répond en ~1.9 s). Le §0 ci-dessus disait « même panne infra » pour ces 3 writers : **c'est faux et corrigé ici** — la cause réelle était le timeout du transport MCP, pas une indisponibilité du modèle.
+>
+> Faute de relancer les 13 lecteurs (ce qui invaliderait le classement établi), je **n'ai pas fabriqué de rangs panel** pour ces 3 versions. À la place, moi (Directeur) je les évalue **contre les mêmes critères de terrain** dégagés par le panel (goût auteur : clarté du qui-parle, économie, dialogues attribués, pas-de-pirouette-finale ; patte B+D+C ; verrou causal). Évaluation Directeur, **pas** notation lecteur.
+
+### Les 3 versions (corps resserré 400-550 ✅)
+
+| Version | Corps | Fin | Verrou causal | Où se pose la libellule |
+|---|---|---|---|---|
+| `kimi-reco` (libre, 487 mots) | 487 | « On l'a presque **vue** » + cycle (Wex refait la libellule → « Recommence ») | Tenu (Nono « pose sa cuillère », Juju le heurte) | **sur le genou de Juju** ⚠️ |
+| `kimi-reco-guide` (guidé axes 1-6, 546 mots) | 546 | « statues magiques / Capitaine du monde et des libellules » + repartent au soleil | Tenu mais calme-de-Nono presque simultané au contact | sur le **roseau** tenu par Juju (clair) |
+| `kimi-k26-thinking` (libre payant, 542 mots) | 542 | « D'un gros champignon / On était bien » + l'étang frémit, l'herbe sèche | Tenu, le plus incarné (souffle calme montré) | **manche/entre poignet Juju et main Nono** ⚠️ |
+
+### Lecture critique (mêmes grilles que le panel)
+
+**Ce qui les distingue nettement de `kimi-k26-instant`** (le Kimi polarisant du panel, coulé par la fin) : **les 3 attribuent proprement leurs répliques** (« a dit Juju », « souffla Nono »). Le tueur n°1 du panel (cascade anonyme « on ne sait plus qui parle ») **n'est pas présent** ici. C'est le gain majeur.
+
+**Sur le tueur « pas de pirouette finale » (brief §5bis)** :
+- `kimi-k26-thinking` a **la meilleure fin des trois** : elle apaise sur le lieu qui reprend vie (bourdon, étang qui frémit, herbe qui sèche) — exactement le pattern **4a** plébiscité (grok-reco, sonnet-def). Wex clôt sur « On était bien » (constat doux, pas triomphe).
+- `kimi-reco` a un **léger rebond d'énergie** en fin (Wex refait la libellule) mais **ancré dans le cycle** (patte C) et clos par « Recommence / Et ils ont recommencé » — pas la débâcle de kimi-instant, mais moins apaisant que thinking.
+- `kimi-reco-guide` a la **fin la plus risquée** : Juju triomphe (« Capitaine du monde et des libellules ! ») — proche du défaut « fin qui repart » reproché à opus-reco. La moins alignée coucher.
+
+**Sur le tueur « où se pose la libellule / clarté spatiale »** (pattern 4b) :
+- `kimi-reco` reproduit **exactement** le défaut « libellule sur le genou » qui a plombé grok-def (rupture du pattern main/doigt, « elle se pose où, là ? »). Handicap réel.
+- `kimi-k26-thinking` : « entre le poignet de Juju et la main de Nono » — belle image (l'espace vide devenu pont) mais **flirte avec la confusion géométrique** signalée pour sonnet-def/opus-def. À clarifier si greffé.
+- `kimi-reco-guide` : « sur le roseau tenu par Juju » — **le plus limpide spatialement** des trois.
+
+**Trouvaille aimable à greffer** (comme kimi-instant a été retenu pour sa matière) : le miroir **« Ne bouge pas / Je bouge pas »** de `kimi-reco` — mimable en dyade, du même registre que le « Ne bouge pas / Je bouge pas » de sonnet-def déjà plébiscité (§5, point 4). Et le **« On était bien »** de Wex (thinking) comme clôture douce candidate.
+
+### Est-ce que les 3 Kimi changeraient le top 4-5 ?
+
+**Mon verdict Directeur (à confirmer par le retour du duel de Papa Yann) : non, ils ne délogent pas le top 2 (opus-reco / grok-reco), mais `kimi-k26-thinking` mérite une place dans la zone de discussion, autour des rangs 4-6.**
+
+- Aucun des trois n'a l'**arme décisive du top 2** : ni l'univers-bus de Max + le consensus d'opus-reco, ni la tenue-de-coucher parfaite + la clarté-du-geste de grok-reco.
+- `kimi-k26-thinking` est le plus sérieux : verrou causal incarné + **fin apaisée du bon côté** (pattern 4a) + dialogues attribués. Son seul vrai risque (géométrie poignet/main) est **le même** que celui d'opus-def, qui figure au top 3 — donc pas disqualifiant. Il se placerait de façon crédible **entre le rang 4 et 6**, dans le peloton sonnet-def / deepseek-reco. **Il ne bouscule pas la tête, mais il enrichit la matière à greffer** (fin « On était bien » + registre du silence).
+- `kimi-reco` : bon rythme, dialogues nets, mais **plombé par la libellule-sur-le-genou** (défaut déjà pénalisé chez grok-def). Zone rang 7-9. Valeur = la greffe « Ne bouge pas / Je bouge pas ».
+- `kimi-reco-guide` : correct, spatialement le plus clair, mais **fin triomphale** (défaut coucher) → zone rang 7-9. Pas de greffe distinctive forte.
+
+**Conséquence pour l'étape 6** : le duo de tête reste **opus-reco vs grok-reco**, inchangé. J'ajoute `kimi-k26-thinking` comme **3e-4e candidat de discussion / réservoir de greffe** (fin apaisée + « On était bien »), à arbitrer contre le retour du duel de goût de Papa Yann. **Rien de tout ceci n'est un rang panel — c'est une lecture Directeur explicite.**
+
+---
+
+**Fiches sources** : `5-lecteurs-temoins/` (13 fiches). **Corpus noté par le panel** : 11 versions writers. **Corpus total livré** : 14 versions (les 3 Kimi évalués en addendum Directeur, hors panel).

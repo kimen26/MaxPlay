@@ -20,7 +20,7 @@ Nono se pencha sans un bruit. Il montra une feuille qui tremblait.
 
 — Là. Il respire.
 
-Juju plongea la main. Le crapaud sauta, plouf, et trois gouttes brillantes atterrirent sur leurs nez. Ils se crachèrent en riant. L'herbe mouillée sentait bon le vert coupé.
+Juju plongea la main. Le crapaud sauta, plouf, et trois gouttes brillantes atterrirent sur leurs nez. L'herbe mouillée sentait bon le vert coupé.
 
 Une ombre bleue coupa le soleil. Elle s'arrêta en plein milieu du ciel, comme si le temps s'était coincé, puis fila vers les roseaux.
 
@@ -32,7 +32,7 @@ Une ombre bleue coupa le soleil. Elle s'arrêta en plein milieu du ciel, comme s
 
 — C'est moi qui la prends ! dit Juju.
 
-Ils décollèrent tous les trois. La libellule ralentissait, s'arrêtait net, repartait en arrière. Les enfants tournaient sur eux-mêmes, les bras en l'air, les pieds qui écrasaient l'herbe drue.
+Ils décollèrent tous les trois. La libellule ralentissait, s'arrêtait net, repartait en arrière. Les enfants tournaient sur eux-mêmes, les bras en l'air.
 
 — Elle se moque de nous ! disait Juju, essoufflée de rire.
 
@@ -44,7 +44,7 @@ La bête bleue passa si près que Wex sentit le vent de ses ailes sur sa joue. I
 
 — Presque !
 
-Ils coururent jusqu'au saule. Nono trébucha dans une motte de terre mais se rattrapa. La libellule monta haut, très haut, puis descendit en piqué vers l'eau. Ils la suivirent en glissant sur la boue, les genoux verts, les mains ouvertes.
+Ils coururent jusqu'au saule. La libellule monta haut, très haut, puis descendit en piqué vers l'eau. Ils la suivirent en glissant sur la boue, les genoux verts, les mains ouvertes.
 
 Nono s'arrêta net. Il ne dit pas pourquoi. Il resta debout, les bras le long du corps, le menton un peu levé, le souffle calme. Il regardait l'eau qui recommençait à s'aplatir.
 

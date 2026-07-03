@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Herbivore. Il mangeait l'herbe et les petites plantes de la toundra gelée. Il vivait en troupeau, comme les éléphants aujourd'hui."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il avait froid ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Non. Une épaisse fourrure et une couche de graisse le gardaient bien au chaud."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

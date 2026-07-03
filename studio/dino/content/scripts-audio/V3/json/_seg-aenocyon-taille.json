@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Un mètre soixante-dix de long — comme un grand Papa allongé par terre. Et soixante-dix kilos — aussi lourd que Papa."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Aussi lourd que Papa."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Oui, avec une tête et des dents encore plus fortes que le loup gris."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

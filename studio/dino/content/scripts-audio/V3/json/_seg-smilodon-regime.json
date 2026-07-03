@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Carnivore. Il chassait les bisons, les chevaux sauvages et les jeunes paresseux géants. Peut-être en groupe, comme les lions."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il attrapait comment ses proies ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Caché, puis un bond rapide et un coup de canines bien précis."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

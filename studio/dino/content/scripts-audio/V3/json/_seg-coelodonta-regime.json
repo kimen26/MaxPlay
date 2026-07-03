@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Herbivore. Il broutait l'herbe des plaines froides. Il vivait plutôt seul."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Sa corne servait à quoi ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] De balai. Il poussait la neige avec pour trouver l'herbe cachée dessous."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

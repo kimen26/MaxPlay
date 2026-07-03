@@ -2,6 +2,7 @@
 
 > Source de vérité des **chiffres clés**. MAJ uniquement si un invariant change (par `dino-pmo`).
 > Dernière vérif : 2026-06-15 (corrections V3 + fact-check paléo appliqués, count 48→51 + 2 poids recalés).
+> Session 2026-06-19 : production images paléoart XXL (5 scènes/dino) démarrée — ne change pas les counts (état réel data inchangé).
 
 ## Counts
 
@@ -58,7 +59,7 @@ Résolus via `narration/personnages/voix-meta/voice-map.json`. Modèle **eleven_
 ## Règles verrouillées (voir figees/encyclopedie.md)
 
 - 🔒 Tritri = running gag Wex, JAMAIS Max/doudou/peluche.
-- 🔒 3 onglets : Familles (défaut) · Ce qu'il mange · Le voyage.
+- 🔒 4 onglets : Familles (défaut) · Ce qu'il mange · Le voyage · Le dico (racines grec/latin, ajouté 2026-06-08).
 - 🔒 Encyclopédie = vrais noms + vraies dates. Terme savant nouveau → expliqué (ex « ptérosaure » → « reptile volant comme le Ptéranodon »).
 - 🔒 Voyage : vignettes décoratives (pas de lien), avancement reset session.
 - 🔒 Fiche : bouton audio masqué si pas d'audio complet.

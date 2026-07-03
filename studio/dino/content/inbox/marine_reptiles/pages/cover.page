@@ -1,0 +1,57 @@
+pageType: cover
+background:
+  type: image
+  src: "https://www.shutterstock.com/image-illustration/ethereal-blue-light-beams-pierce-260nw-2758124441.jpg"
+  fit: {mode: cover}
+  mask:
+    type: gradient
+    gradientType: linear
+    angle: 90
+    stops:
+      - {position: 0, color: "#0C1E2B99"}
+      - {position: 0.5, color: "#0C1E2BDD"}
+      - {position: 1, color: "#0C1E2BEE"}
+elements:
+  - elementId: top-line
+    elementType: shape
+    bounds: [490, 280, 300, 0]
+    shapeName: straightConnector1
+    border: {style: solid, width: 1, color: "$accent"}
+
+  - elementId: main-title
+    elementType: text
+    bounds: [90, 300, 1100, 70]
+    content:
+      style: "$coverTitle"
+      align: [center, middle]
+      wrap: false
+      text: |
+        <p>GÉANTS DES MERS PRÉHISTORIQUES</p>
+
+  - elementId: bottom-line
+    elementType: shape
+    bounds: [490, 385, 300, 0]
+    shapeName: straightConnector1
+    border: {style: solid, width: 1, color: "$accent"}
+
+  - elementId: subtitle
+    elementType: text
+    bounds: [240, 410, 800, 35]
+    content:
+      style: "$subtitle"
+      align: [center, middle]
+      wrap: false
+      text: |
+        <p>12 fiches complètes des plus fascinants reptiles marins du Mésozoïque</p>
+
+  - elementId: bottom-info
+    elementType: text
+    bounds: [440, 660, 400, 25]
+    content:
+      fontSize: 14
+      color: "$muted"
+      fontFamily: "Liter"
+      align: [center, middle]
+      wrap: false
+      text: |
+        <p>DU TRIAS AU CRÉTACÉ  ·  250-66 MILLIONS D'ANNÉES</p>

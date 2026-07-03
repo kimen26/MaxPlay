@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Coe-lo-don-ta. En grec, coelo veut dire creux, et odonta veut dire les dents."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Un rhinocéros poilu ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Tout poilu, oui ! On l'appelle le rhinocéros laineux. Il vivait dans le froid, juste à côté du Mammouth."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Le même froid que le Mammouth."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Exactement le même. Les deux étaient faits pour la neige."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

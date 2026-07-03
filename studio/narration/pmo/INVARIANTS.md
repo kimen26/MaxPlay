@@ -31,10 +31,10 @@
 
 | Bloc | # | Identité | Modèle | Thinking/Reasoning | Température | Top-p | Invocation | Brief |
 |------|---|----------|--------|--------------------|-------------|-------|------------|-------|
-| **Claude** | 1 | claude-opus-def | `claude-opus-4-7` | low | **défaut Anthropic** (param non envoyé, ≈1.0) | défaut | `narration-writer-claude-libre` | LIBRE |
-| | 2 | claude-opus-reco | `claude-opus-4-7` | low | **1.0** (plafond Anthropic = reco créatif) | défaut | `narration-writer-claude-libre` | LIBRE |
-| | 3 | claude-sonnet-def | `claude-sonnet-4-6` | low | défaut Anthropic | défaut | `narration-writer-claude-libre` | LIBRE |
-| | 4 | claude-sonnet-reco | `claude-sonnet-4-6` | low | 1.0 | défaut | `narration-writer-claude-libre` | LIBRE |
+| **Claude** | 1 | claude-opus-def | `claude-opus-4-8` | low | **défaut Anthropic** (param non envoyé, ≈1.0) | défaut | `narration-writer-claude-libre` | LIBRE |
+| | 2 | claude-opus-reco | `claude-opus-4-8` | low | **1.0** (plafond Anthropic = reco créatif) | défaut | `narration-writer-claude-libre` | LIBRE |
+| | 3 | claude-sonnet-def | `claude-sonnet-5` | low | défaut Anthropic | défaut | `narration-writer-claude-libre` | LIBRE |
+| | 4 | claude-sonnet-reco | `claude-sonnet-5` | low | 1.0 | défaut | `narration-writer-claude-libre` | LIBRE |
 | | 5 | claude-haiku-def | `claude-haiku-4-5` | low | défaut Anthropic | défaut | `narration-writer-claude-libre` | LIBRE |
 | | 6 | claude-haiku-reco | `claude-haiku-4-5` | low | 1.0 | défaut | `narration-writer-claude-libre` | LIBRE |
 | **Kimi** | 7 | kimi-reco | `kimi-for-coding` (endpoint coding) | n/a | **0.6** (reco créatif Moonshot Instant) | — (param non exposé) | `ask_kimi` (MCP gratuit) | LIBRE |

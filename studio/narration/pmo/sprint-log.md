@@ -11,6 +11,38 @@
 
 ---
 
+## 2026-07-03 (post-session, PMO reprise) — VAGUE 5 STORY-002 CONSOLIDATION : Correction mesure + écart Kimi 3 writers + leçons
+
+**Objectif** : Consolider les faits de la reprise PMO vague 5 (correction et leçons) avec traçabilité.
+
+**Fait** :
+- [x] **Correction mesure writers vague 5** : Les 11 versions produits SONT toutes dans le gabarit (400-550 mots). Recomptage indépendant (2 méthodes convergentes + contre-mesure manuelle par plage de lignes) : haiku-def 428 / opus-reco 499 / sonnet-reco 476 / kimi-k26-instant 528 / grok-reco 414 / etc. Tous ≤ 550. **Cause faux chiffres antérieurs** : compteur de mots incluait la note d'intention titré `## Note d'intention` (H2) dans le corps du calcul. **Leçon PROCESS** : compteur étape 4 doit exclure note d'intention quel que soit format titre.
+- [x] **Écart Kimi writers — 3 manquants vague 5 (étape 4)** : 3 tentatives MCP directes simultanées 2026-07-03 (kimi-reco gratuit `ask_kimi`, kimi-reco-guide gratuit `ask_kimi`, kimi-k26-thinking payant `ask_kimi_payant`) → **3 échecs identiques** : `network error after 72-97s: The socket connection was closed unexpectedly`. Gratuit + payant tombent au même mur. Diagnostic préliminaire : plafond socket infra sur gros payloads. Petit prompt sonde passe, prompts avec briefs+corpus échouent. **Écart documenté** : PROCESS étape 4 § Chiffres clés autorise "14 writers sauf écart documenté" (INVARIANTS.md L.14, casting figé depuis 2026-05-12). Vague 5 = **11 writers produits** (pas 14), conforme PROCESS.
+- [x] **Étape 5 (panel v2 test) clôturée** : 13 fiches produites (12 attendues + 1 bonus G-extra-haiku). Structure 4 groupes profils × 3 modèles (Sonnet + Haiku/DeepSeek, Kimi absent due panne). Chaque call : 2 tranches âge (3-5 + 6-7) en 1 dyade. Synthese-lecteurs.md v2 produit (classement + patterns + citations top 5). Panel v2 structure validée operationnellement malgré absence Kimi (mécanique 4G × 3M répliquée, test calibration peut procéder).
+- [x] **REX panel data majeure (non-décision, INFO)** : Top Tranche A opus-reco (rang moyen 3.15 / #1 chez 5/13) · grok-reco (4.15, jamais pire 7e) · haiku-reco · sonnet-reco · deepseek-reco. Kimi-k26-instant polarise (#1-2 chez 5 fiches, dernier chez 7 — voix enfant très vraie mais fin-pirouette + cascade anonymes). Patterns « à éviter » convergents (3+ fiches) : main qui parle (physique) · doigt pend épaule (géométrie confuse) · libellule sur genou (rupture pattern) · fins qui repartent/pirouette (déroule).
+- [x] **Kanban STORY-002 étapes 4-5 déjà à jour** : Directeur l'a logué session (pas regénération writers/panel requise, état consolidé).
+
+**Leçons à graver** :
+1. **LP-COMPTEUR-MOTS-ETAPE4** : Compteur étape 4 doit exclure note d'intention quel que soit le format du titre (`**...**`, `## ...`, `# ...`). Implémenter dans le script/outil comptage avant lancer writers vague 6+.
+2. **LP-PANNE-KIMI-SOCKET-VAGUE5** : Panne socket simultanée gratuit + payant 72-97s sur gros prompts (briefs+corpus). Problème infra, pas contenu writer. Blocker pour vagues 6+ si non résolu. Workaround CLI `call-llm.mjs` existe (timeout 600s possible) mais n'a pas été tenté cette reprise.
+
+**Tickets créés** :
+- 🔴 **AUDIO-KIMI-PANNE-VAGUE5** (CRITIQUE, blocker étape 4 si répète) : Investiguer panne socket simultanée (`ask_kimi` gratuit + `ask_kimi_payant` payant, même ~72-97s timeout). Hypothèse : payload size prompts > plafond socket passerelle Moonshot. Cible diagnostic avant STORY-003 vague 6. Workaround : `infra/mcp/call-llm.mjs` CLI (timeout 600s possible, bypass MCP). À tester post-diagnostic.
+
+**Fichiers impactés** :
+- ✅ `pmo/sprint-log.md` (cette entrée, datée 2026-07-03 post-session)
+- 🔄 `pmo/backlog.md` (ajouter ticket AUDIO-KIMI-PANNE-VAGUE5 section "À faire" priorité CRITIQUE)
+- 📋 `pmo/lecons-vivantes.md` (ajouter LP-COMPTEUR-MOTS-ETAPE4 + LP-PANNE-KIMI-SOCKET-VAGUE5 si section dédiée existante)
+
+**État au reboot** :
+- **Vague 5 STORY-002 complète** : 11 writers (pas 14) — écart documenté ✅, conforme PROCESS
+- **Panel v2 test réussi** : structure 4G × 3M validée, 13 fiches produites (12 + 1 bonus)
+- **Kimi indisponible** : panne socket vague 5 = problème infrastructure, à résoudre avant vague 6
+- **Kanban STORY-002 étapes 4-5 à jour** : Directeur a loggué, pas re-travail PMO
+- **Trois tickets EN COURS inchangés** : STORY-002-SELECTION-REFONTE (🔴 BLOQUÉ) + ARCHI-006 + ARCHI-014-TEMPLATE-BOUSSOLE
+
+---
+
 ## 2026-07-03 (22:50, POST-AUDIT correction) — CLARIFICATIONS 3 DÉCISIONS : Équité input writers + canal Kimi gratuit + leçon processus
 
 **Objectif** : Logger les clarifications apportées par Papa Yann en épilogue du duel (2026-07-03 22:50).

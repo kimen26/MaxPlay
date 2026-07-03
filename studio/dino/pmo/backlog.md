@@ -6,6 +6,13 @@
 
 | ID | Sujet | Priorité | État |
 |----|-------|----------|------|
+| **EP-D19** | 🎙️ **AUDIO Cénozoïque (8 dinos mégafaune — quota EL BLOQUÉ)** — production audio 32 segments JSON (Mammuthus, Smilodon, Megatherium, Paraceratherium, Glyptodon, Aenocyon, Coelodonta, Titanis × 4 blocs + recap) via MCP `studio_audiobook_from_segments_v2_dialogue` eleven_v3 voice_ids narrateur_h/wex, loudnorm post-prod, **ATTENTE RESET EL ~9 juillet 2026** (quota 118055/122630 char, restant ~4575). Segments JSON figés dans `V3/json/`. Action après reset : générer 40 MP3, câbler `DINO_AUDIO` dev-dinos.html, tester Chromium. | 🔴 **BLOQUÉE** | ouvert — en attente quota |
+| | | | |
+
+---
+
+| ID | Sujet | Priorité | État |
+|----|-------|----------|------|
 | EP-D01 | ~~Vérifier count dinos (50 réel vs 60 ancien INDEX)~~ → **RÉSOLU 2026-06-03** : count autoritatif = **50** (`DINOS.length`). L'ancien « 60 » comptait des entrées non finalisées. Stale corrigés (INDEX, header data). | — | ✅ fermé |
 | EP-D02 | Audio des ~28 dinos sans recap (génération progressive vs TTS) | 🟢 basse | ouvert |
 | EP-D03 | Visuels/illustrations des écrans d'époque du voyage (optionnel) | 🟢 basse | idée |
@@ -27,6 +34,10 @@
 | EP-D12 | 🌍 **Nouvelle section APRÈS la météorite (Cénozoïque / mégafaune)** — Papa Yann 2026-06-08 : prolonger le Voyage au-delà des dinos (mammouths, smilodon, terror birds, paraceratherium…). **Réfs déjà rassemblées** dans `content/inbox/` (dump session concurrente : *01_woolly_mammoths…28_hyaenodon*). À cadrer (écriture dino-conseiller). | 🟢 basse | idée (réfs en cours) |
 
 ## Leçons (L-xxx)
+
+- **L-D18** — **Sous-agents qui sous-délèguent en no-op (pattern détection)** (session 2026-07-03). Un sous-agent annonce « je vais faire X » (ou « j'attends un autre sous-agent ») au lieu de l'EXÉCUTER → aucun deliverable au 1er tour. Arrivé 3 fois en parallèle : archiviste + conseiller + sub-agent fact-check imbriqué. **Correctif** : relancer EXPLICITE « exécute toi-même, tu n'as pas de sous-agent disponible ». Tous ont produit du travail après relance ferme. **Pattern** : le système reste fiable PARCE QUE le main agent vérifie chaque retour et relance — ne JAMAIS prendre un « je vais faire X » pour argent comptant, toujours exiger le livrable (fichiers, commit, output concrète). Confiance vérifiée, pas déclarée.
+
+- **L-D17** — **Casse fichiers & filesystem casse-INsensible (Windows) vs casse-SENSIBLE (Linux/GitHub Pages)** (session 2026-07-03, audit archiviste cc2c95f3)
 
 - **L-D16** — **Staging concurrent & working tree partagé** (session 2026-07-03 REX) : sessions concurrentes partagent le même working tree et index git. Un `git add -A` d'une autre session avant ton `git commit` emporte tes fichiers stagés dans SON commit, ton commit affiche "no changes added" mais la matière est bel et bien poussée. **Pattern** : stager les fichiers explicitement par chemin (pas `-A`), commiter vite, vérifier l'état final dans HEAD (`git show HEAD:<path>`), ne pas se fier au message du commit solo (« nothing to commit »). Confirmé 2 fois : 2026-06-08 réorg + 2026-07-03 images.
 
@@ -51,6 +62,10 @@
 - **L-D13** — **Fact-check paléo = passe distincte du fact-check chiffres data** (session 2026-06-15) : un fait peut être daté et réfuté (ex : Cryolophosaure climat tropical faux, Archéoptéryx « ancêtre TOUS oiseaux » faux) **même si le chiffre (taille/poids) est dans la data**. Processus : dino-conseiller FACTUEL (Wikipedia/Grokipedia) vérifie CHAQUE assertion narrative (climat/régime/taxo/relation écologique), non seulement chiffres. Gravure figée papier dedans : corrections appliquées 2026-06-15 (Cryo, Archéo, Dimétrodon, Patagotitan, Brachio gastro, Protocératops, Quetzalcoatlus) + Q-DINO-11 restée ouverte (Liopleurodon poids débat scientifique). Impact : relecture V3 complète signale 43✅/6⚠️/4🔴 — seuls 🔴 + ⚠️ notables appliqués sauf cas sensibilité enfant. Réputationnelle : jamais dire « faux » sur l'encyclopédie dino, le chercheur peut vous le reprendre sur Wikipedia.
 
 ## Changelog
+
+### Session 2026-07-03 (SUITE) — Famille Cénozoïque mégafaune intégrée (commit ab818798)
+
+**Intégration 8 dinos mégafaune Cénozoïque (51→59 dinos).** **2 familles créées** : `mammiferes` (5 dinos Mammuthus/Smilodon/Megatherium/Paraceratherium/Glyptodon) + `oiseaux` (3 dinos Titanis/Aenocyon/Coelodonta). 9→11 familles. **1 période ajoutée** : `cenozoique` (66 Ma → today) dans `DINO_PERIODES`. **Fact-check validé** : 7/8 Grokipedia (Mammuthus, Smilodon, Megatherium, Paraceratherium, Glyptodon, Aenocyon, Coelodonta) + 1 Wikipedia (Titanis). Taille/poids/régime honnête, _compLong/_compHaut/_compPoids sortie exacte. **Dialogues V3 écrits** (8 bêtes × 4 blocs, narrateur_h/Wex, tags v3) : fichier `studio/dino/content/scripts-audio/V3/megafaune.md` + **32 segments JSON générés** `V3/json/` (Mammuthus/Smilodon/Megatherium/Paraceratherium/Glyptodon/Aenocyon/Coelodonta/Titanis segments). Grep-interdits passé ✅ (0 max/doudou/peluche/bus). **Images inbox rangées** : `/studio/dino/content/sources/megafaune/_refs-visuelles/` (28 PNG domaine public, non déployées). **Décisions Papa Yann gravées** : (1) 2 catégories « Mammifère »/« Oiseau » (taxo honnête, pas 1 seule « Mammifères ») ; (2) Cénozoïque = fiches indiv onglet Familles, PAS 9e épisode Voyage ; (3) Titanis 1,9 m corrigé (pas 2,5 m inbox). **INVARIANTS maj** : 51→59 dinos, 9→11 familles, 4→5 périodes. **EN ATTENTE** : EP-D19 audio (32 segments prêts, quota EL épuisé 118055/122630, reset ~9 juillet) + 8 images paléoart futures (skill dino-paleoart). **Leçon L-D18** : sous-agents no-op (archiviste/conseiller/fact-check intégré se sont tous annoncés sans exécuter 1er tour) → relancer EXPLICITE. **État** : 59 dinos/11 familles/5 périodes, Cénozoïque structurée, audio EN ATTENTE reset EL.
 
 ### Session 2026-07-03 — Format images FIGÉ : JPEG/WebP + compression -86% + correctifs casse archiviste
 

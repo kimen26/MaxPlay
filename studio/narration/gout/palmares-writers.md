@@ -20,6 +20,18 @@
 | deepseek (def) | 002 v4 | Dernier (−32, 16 flops) | (texte sous-jacent correct) | A renommé le casting figé → mort narrative (cas d'école) |
 | deepseek-reco | 002 v4 | #13 (invisible) | Tendresse | Diminutifs non canoniques parasites |
 
+## Duel de goût auteur — 2026-07-03 (STORY-002 v4)
+
+| Writer | Résultat duel auteur | Divergence vs panel |
+|--------|----------------------|---------------------|
+| kimi-k26-instant | Meilleur aux fragments (2 victoires d'ouverture) MAIS histoire entière refusée en finale | Panel #2 → auteur : fragments oui, ensemble non |
+| grok-reco | 1 défaite fragment + finale refusée | **Panel #1 (21 pts) désavoué par l'auteur** |
+| claude-opus-def | 1 victoire (dialogue sobre) | Cohérent panel #3 |
+| claude-sonnet-def | 1 victoire (moment suspendu) / 2 défaites | Mitigé |
+
+> Signal structurel : le panel classe, l'auteur tranche — et son plancher est PLUS HAUT
+> que le top panel. Raisons du refus finale = inconnues (UI v1) — à récupérer.
+
 ## Enseignements pour les micro-briefs (étape 3)
 
 - **Kimi** : lui confier l'angle « ouverture corporelle / percussion orale » — et lui imposer

@@ -206,8 +206,9 @@
 | **Leviers de variance disponibles (libres)** | Température et thinking déjà cadrés par le casting (déf vs max). POV, ouverture, longueur cible restent imposables par Directeur dans `brief-histoire.md` au cas par cas. |
 | **Checklist auto-cohérence (tous writers)** | Chaque writer fait **une passe factuelle de 30 secondes** avant remise (prénoms casting, cohérence lieux/objets, surnoms 4/5). Pas de réécriture créative — corrige uniquement les bugs. Une 2e passe créative dilue la voix one-shot. |
 | **Critères PASS** | <ul><li>14 versions présentes (sauf écart documenté)</li><li>Chaque version : 400-700 mots</li><li>Chaque version : note d'intention en fin</li><li>Aucun writer n'a lu les autres (stateless)</li></ul> |
-| **Condition de passage** | Directeur lance étape 5 dès que les 14 versions sont produites |
-| **Point de reprise** | Si reboot : compter fichiers présents dans `4-versions-writers/`. Relancer les writers manquants. |
+| **🚧 BARRIÈRE 4→5 (gravée 2026-07-03, REX vague 5)** | **L'étape 5 ne démarre JAMAIS avant que TOUTES les versions du casting soient produites.** Le panel juge un corpus COMPLET — lancer les lecteurs sur un sous-ensemble casse l'égalité du concours (des writers deviennent hors-jeu par accident de timing, pas par mérite) et oblige à un « addendum » Directeur qui n'est PAS un avis lecteur. Si un writer long échoue en MCP (timeout ~250s) → basculer sur `infra/mcp/call-llm.mjs` (fallback obligatoire, cf. LP2), PAS abandonner le writer. Un écart n'est « documenté » qu'après échec DU CLI aussi. |
+| **Condition de passage** | Directeur lance étape 5 dès que **les 14 versions** sont produites (barrière ci-dessus). |
+| **Point de reprise** | Si reboot : compter fichiers présents dans `4-versions-writers/`. Relancer les writers manquants (CLI si MCP a timeout). |
 | **Modalité v2/v3** | Aucune itération en étape 4. Si une version est défectueuse (vide, hors-format) → `_archive/` + relance du writer. |
 
 ---

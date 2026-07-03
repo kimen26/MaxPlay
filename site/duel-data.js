@@ -1,11 +1,10 @@
 // Duel de goût — données générées par le Directeur Éditorial (étape 6)
-// STORY-002 « La libellule » — vague 4 BOUSSOLE, top panel 2026-05-17
+// STORY-002 « La libellule » — VAGUE 5 (menu d'angles commun), top panel 2026-07-03
 // RÈGLE : les sources (writers) ne sont JAMAIS affichées dans l'UI (anti-biais).
-// Elles voyagent dans le JSON exporté pour l'ingestion par le Directeur.
 window.DUEL_DATA = {
   domaine: "narration",
   story: "002-libellule-resonance",
-  vague: 4,
+  vague: 5,
   genere: "2026-07-03",
   chips: {
     pourquoi: [
@@ -31,120 +30,156 @@ window.DUEL_DATA = {
       id: "ouv-1",
       categorie: "Ouverture",
       a: {
-        source: "grok-reco",
-        texte: "« Juju, attrape-moi ! »\nWex courait dans l'herbe haute, les pieds qui glissaient sur la terre mouillée. Juju riait fort derrière lui, les bras tendus.\n« Je vais te coincer contre les roseaux, Wex ! »"
+        source: "claude-opus-reco",
+        texte: "L'eau était tiède comme du lait au soleil. Juju avait les pieds dedans jusqu'aux chevilles, et la vase faisait « splotch » entre ses orteils.\n— Regarde ! elle criait. Y en a mille !"
       },
       b: {
-        source: "claude-opus-def",
-        texte: "L'étang dormait encore un peu. L'eau sentait la vase tiède et l'herbe mouillée. Tout au bord, dans les roseaux, des petits têtards faisaient des virgules noires, et une poule d'eau au bec rouge et jaune glissait sans bruit, comme une feuille qui sait nager."
+        source: "claude-haiku-reco",
+        texte: "Au bord de l'étang, c'est l'herbe chaude qui commence. Elle pique un peu sous les pieds nus, elle sent le soleil. Trois pieds nus sautent dedans en riant. Juju d'abord, toujours Juju, qui fonce."
       }
     },
     {
       id: "ouv-2",
       categorie: "Ouverture",
       a: {
-        source: "kimi-k26-instant",
-        texte: "L'étang sentait le printemps mouillé. Juju dévalait la pente en glissant, Nono marchait derrière, et Wex regardait l'eau comme s'il attendait qu'elle lui dise quelque chose.\n« Vroum ! » hurla Juju en passant entre les roseaux."
+        source: "claude-sonnet-def",
+        texte: "L'eau de l'étang est froide sur les pieds nus, et la vase fait un petit bruit mou à chaque pas. Un têtard passe entre les orteils de Wex, tout noir, tout rapide.\n« Il me chatouille ! » crie Wex, et il rit tout seul, les pieds en l'air."
       },
       b: {
-        source: "claude-sonnet-def",
-        texte: "L'étang est petit. On voit le fond.\nDes têtards traversent l'ombre des roseaux en flèches noires. Une poule d'eau avance, bec jaune bordé de rouge, sans regarder les trois enfants assis au bord."
+        source: "deepseek-reco",
+        texte: "Juju court. Ses pieds nus tapent dans l'herbe tendre du bord de l'étang.\n« Le premier à l'arbre ! » crie-t-elle.\nWex est déjà parti. Il slalome entre les roseaux, les bras ouverts comme des ailes."
       }
     },
     {
-      id: "ouv-3",
-      categorie: "Ouverture",
+      id: "vol-1",
+      categorie: "L'apparition de la libellule",
       a: {
-        source: "grok-reco",
-        texte: "« Juju, attrape-moi ! »\nWex courait dans l'herbe haute, les pieds qui glissaient sur la terre mouillée."
+        source: "claude-opus-reco",
+        texte: "Ça brillait comme un bout de ciel qui aurait des ailes. Ça montait, ça descendait, ça s'arrêtait pile dans l'air — plus rien ne bougeait — puis hop, ailleurs. Elle freinait sur du vide, exactement comme un bus qui pile à l'arrêt sans qu'on entende les roues."
       },
       b: {
-        source: "kimi-k26-instant",
-        texte: "L'étang sentait le printemps mouillé. Juju dévalait la pente en glissant, Nono marchait derrière, et Wex regardait l'eau comme s'il attendait qu'elle lui dise quelque chose."
+        source: "claude-haiku-reco",
+        texte: "Une libellule bleue coupe l'air comme un coup de crayon. Arrête net. Repart ailleurs."
+      }
+    },
+    {
+      id: "vol-2",
+      categorie: "L'apparition de la libellule",
+      a: {
+        source: "deepseek-reco",
+        texte: "Soudain — un éclair bleu.\nLa libellule file au ras de l'eau. Elle s'arrête net en l'air, comme collée au ciel. Puis elle repart sur le côté. À angle droit ! Impossible de deviner où elle va."
+      },
+      b: {
+        source: "claude-sonnet-def",
+        texte: "Bleue, brillante comme un bout de ciel tombé, elle file droit, puis pile net, suspendue dans l'air. Puis elle repart ailleurs, d'un coup, comme si elle changeait d'avis."
+      }
+    },
+    {
+      id: "poursuite-1",
+      categorie: "La poursuite (Sho)",
+      a: {
+        source: "claude-opus-reco",
+        texte: "Nono courait aussi, les bras en l'air, riant sans bruit. Chaque fois qu'une main s'approchait, la petite chose bleue s'éteignait d'un côté et se rallumait de l'autre. Ça filait. Ça se figeait. Ça repartait."
+      },
+      b: {
+        source: "claude-haiku-reco",
+        texte: "Nono court sans rien dire, les bras grands ouverts. Juju saute, rate la bête d'une main, crie de joie malgré l'échec.\n« Encore une fois ! » lance Juju, déjà repartie.\nEncore.\nEncore."
       }
     },
     {
       id: "dial-1",
-      categorie: "Dialogue",
+      categorie: "Dialogue pendant la course",
       a: {
-        source: "kimi-k26-instant",
-        texte: "Wex parlait dans l'air, personne ne savait à qui : « Les têtards sont des virgules. »\n« Des quoi ? »\n« Rien. »"
+        source: "claude-sonnet-def",
+        texte: "« Elle va où elle veut, celle-là ! »\nNono court aussi, un peu, mais différemment — sans forcer.\n« Elle joue », dit-il, tout bas, presque pour lui."
       },
       b: {
-        source: "claude-sonnet-def",
-        texte: "— C'est nul comme plouf, dit Wex.\n— C'est le meilleur plouf de l'étang, dit Juju.\n— L'étang est d'accord, dit Nono."
-      }
-    },
-    {
-      id: "dial-2",
-      categorie: "Dialogue (le doute de Wex)",
-      a: {
-        source: "claude-opus-def",
-        texte: "— Mais un épouvantail, murmura-t-il, ça fait partir les bêtes. Nous, on veut qu'elle vienne."
-      },
-      b: {
-        source: "claude-sonnet-def",
-        texte: "— Un épouvantail fait fuir les oiseaux, dit-il encore. Ça sert à les tenir loin.\nIl fronce les sourcils. Il y a quelque chose qui cloche dans cette idée, mais il ne trouve pas quoi.\n— Alors un épouvantail à libellule, ça ferait comment, à ton avis ?"
+        source: "deepseek-reco",
+        texte: "« C'est pas une libellule, c'est une fusée bleue ! » crie Wex.\n« Elle se moque de nous ! »\n« Elle est plus rapide que tout », dit-il."
       }
     },
     {
       id: "ten-1",
-      categorie: "Moment suspendu",
+      categorie: "L'arrêt de Nono",
       a: {
-        source: "grok-reco",
-        texte: "La libellule décrivit un dernier cercle et se posa sur l'épaule de Nono, toute légère. Ses ailes brillaient comme du verre au soleil.\nJuju ne respirait presque plus. Elle sentait la chaleur de Nono et la petite vibration des ailes juste à côté de son oreille."
+        source: "claude-opus-reco",
+        texte: "Il posa les pieds dans l'herbe, laissa tomber ses bras, et resta là. Son souffle ralentit. Autour de lui, on aurait dit que même les roseaux se taisaient un peu. Il ouvrit une main, la paume vers le ciel, et il attendit."
       },
       b: {
-        source: "kimi-k26-instant",
-        texte: "La libellule se posa sur le poignet de Nono.\nJuju avait les yeux ronds. Elle ne bougeait plus. Tout son corps disait chut, mais sans qu'elle l'ait décidé. C'était drôle, une Juju muette, une Juju suspendue."
+        source: "claude-haiku-reco",
+        texte: "Nono s'arrête.\nPas d'annonce. Il arrête juste de courir. Ses pieds posent l'herbe doucement. Les bras qui volaient redescendent le long de son corps. Il respire plus grand."
       }
     },
     {
       id: "ten-2",
-      categorie: "Moment suspendu",
+      categorie: "L'arrêt de Nono",
       a: {
-        source: "claude-opus-def",
-        texte: "Elle dessina un petit cercle, ralentit, et se posa. Sur l'épaule de Nono. Juste là, ses ailes comme deux gouttes de verre.\nJuju était à un souffle d'elle. Sa main serrait celle de Nono. Elle n'osait plus bouger du tout, les yeux énormes, la bouche pincée pour ne pas rire."
+        source: "claude-sonnet-def",
+        texte: "Il ne crie pas « j'abandonne ». Il pose juste ses pieds dans l'eau, immobile, les bras qui retombent doucement. Quelque chose en lui se pose, comme l'étang quand plus personne n'y marche."
+      },
+      b: {
+        source: "deepseek-reco",
+        texte: "Nono s'est levé. Il fait deux pas, puis il s'arrête. Il ne dit rien.\n[...]\nIl a posé ses mains sur ses genoux et il regarde l'étang. Il attend."
+      }
+    },
+    {
+      id: "contact-1",
+      categorie: "Le contact Juju↔Nono",
+      a: {
+        source: "claude-opus-reco",
+        texte: "Elle rentra dans Nono. Épaule contre épaule. Boum, tout doux.\nEt elle s'arrêta net. Sa bouche resta entrouverte. [...] Elle était là, tout contre lui, deux petits cailloux plantés dans l'herbe."
+      },
+      b: {
+        source: "claude-haiku-reco",
+        texte: "Elle bascule dans Nono sans le vouloir.\nPresque rien — une épaule, une main qui trouvent son bras, un moment où deux corps se figent l'un contre l'autre. La peau chaude contre la peau chaude. Pas une chute. Juste un arrêt."
+      }
+    },
+    {
+      id: "pose-1",
+      categorie: "La libellule se pose",
+      a: {
+        source: "claude-opus-reco",
+        texte: "Alors, dans ce silence-là, la libellule revint. Elle tourna une fois. Puis, sans un bruit, elle se posa sur la main ouverte de Nono. Ses ailes brillaient. On voyait ses gros yeux ronds."
+      },
+      b: {
+        source: "claude-haiku-reco",
+        texte: "Le silence tombe comme du velours. L'étang arrête ses rides. L'air retient son souffle. Et la libellule bleue vient se poser.\nTrois centimètres. Peut-être moins."
+      }
+    },
+    {
+      id: "pose-2",
+      categorie: "La libellule se pose",
+      a: {
+        source: "deepseek-reco",
+        texte: "La libellule bleue ralentit. Elle tourne. Elle avance, suspendue. Elle descend.\nElle se pose sur la main ouverte de Nono."
       },
       b: {
         source: "claude-sonnet-def",
-        texte: "La libellule se pose sur l'épaule de Nono.\nPersonne ne bouge.\nJuju retient son souffle. Elle est à trente centimètres. La libellule tourne la tête — si c'est une tête — vers elle.\n— Elle te regarde, chuchote Juju."
+        texte: "La libellule redescend. Doucement, sans se presser, comme si plus rien ne la pressait. Elle se pose — sur le bout du doigt de Juju, qui pend encore contre l'épaule de Nono."
       }
     },
     {
       id: "chute-1",
       categorie: "Chute",
       a: {
-        source: "kimi-k26-instant",
-        texte: "« Gagné, » souffla Juju, toujours figée.\n« Gagné quoi ? » demanda Wex.\n« Approchée. »\nNono baissa les bras. Le bourdon ressortit de l'arbre."
+        source: "claude-opus-reco",
+        texte: "— On l'a eue tout près ! Tout, tout près !\nWex riait aussi. Le bourdon, enfin, avait décollé. L'eau clapotait sur les cailloux. Et les têtards, en bas, refaisaient mille petits ronds."
       },
       b: {
         source: "claude-haiku-reco",
-        texte: "— On a attrapé juste, dit Juju.\n(la phrase la plus répétée spontanément par les enfants du panel — victoire redéfinie en un mot)"
+        texte: "« Elle est venue », murmure Juju, les yeux encore ronds.\nJuju regarde Nono. Nono sourit à peine, mais il sourit.\nLes trois enfants restent debout dans l'herbe chaude, encore tout près l'un de l'autre."
       }
     },
     {
-      id: "fin-1",
-      categorie: "Fin",
+      id: "chute-2",
+      categorie: "Chute",
       a: {
-        source: "grok-reco",
-        texte: "Juju posa sa joue contre le dos de Nono, juste le temps d'un souffle. Wex sourit sans rien ajouter. L'herbe remuait autour de leurs jambes comme si rien ne s'était passé et que tout continuait en même temps."
+        source: "deepseek-reco",
+        texte: "« On l'a laissée repartir », dit-elle, la voix encore basse.\n« Et elle est revenue nous voir toute seule », répond Wex doucement.\nNono ouvre doucement les doigts, comme si le bleu de la libellule y était resté."
       },
       b: {
         source: "claude-sonnet-def",
-        texte: "— On l'a eue, dit Juju.\nSa voix est normale. Pas un cri. Juste ça.\nWex regarde l'endroit où elle était. La poule d'eau reprend sa traversée. Les têtards continuent leur route.\nL'étang n'a rien remarqué."
-      }
-    },
-    {
-      id: "fin-2",
-      categorie: "Fin — apaisée ou rebond ?",
-      a: {
-        source: "claude-opus-def",
-        texte: "L'étang clapotait. La poule d'eau avait disparu dans les roseaux. L'air sentait la vase tiède, et quelque chose d'autre, qu'on ne savait pas nommer."
-      },
-      b: {
-        source: "grok-def",
-        texte: "— On recommence le jeu de l'épouvantail ?\n(fin avec relance : l'histoire se termine sur l'envie de rejouer, plébiscitée par les 4 ans les plus énergiques)"
+        texte: "« On l'a eue quand même », dit Juju, et elle rit, un vrai rire.\nNono ne dit rien. Il regarde juste l'eau, où le têtard noir repasse entre leurs pieds, comme si de rien n'était."
       }
     },
     {
@@ -152,12 +187,12 @@ window.DUEL_DATA = {
       categorie: "FINALE — deux histoires entières",
       final: true,
       a: {
-        source: "grok-reco",
-        texte: "« Juju, attrape-moi ! »\nWex courait dans l'herbe haute, les pieds qui glissaient sur la terre mouillée. Juju riait fort derrière lui, les bras tendus.\n« Je vais te coincer contre les roseaux, Wex ! »\nNono avançait plus loin, tout près de l'eau, les yeux sur les têtards qui remuaient comme de tout petits points noirs.\n\nSoudain une libellule passa en flèche, très basse, presque comme une petite voiture qui aurait oublié de freiner.\n« Regardez ! » cria Juju. Elle tourna sur place et se mit à courir derrière.\nWex changea aussitôt de direction. « Elle file trop vite ! »\nIls galopaient tous les trois dans l'herbe qui chatouillait leurs mollets. La libellule zigzaguait entre les roseaux, faisait des pointes, revenait. Personne ne la touchait.\n\nNono ralentit. Il s'arrêta net, debout au milieu des joncs. Il ne dit rien. Ses pieds s'enfoncèrent un peu dans la boue tiède. Wex et Juju continuèrent à tourner.\n« On dirait un épouvantail, Nono ! » lança Wex en passant devant lui.\nJuju arriva en courant, trop lancée. Elle percuta le dos de Nono et resta collée contre lui, surprise.\n« Oh ! » fit-elle seulement. Elle ne bougea plus.\n\nLa libellule décrivit un dernier cercle et se posa sur l'épaule de Nono, toute légère. Ses ailes brillaient comme du verre au soleil.\nWex s'était arrêté à deux pas. Il regarda, bouche ouverte.\nJuju ne respirait presque plus. Elle sentait la chaleur de Nono et la petite vibration des ailes juste à côté de son oreille.\n« Elle bouge pas », souffla-t-elle très doucement.\n\nNono tourna lentement la tête vers Juju. Il leva la main libre et, du bout des doigts, guida doucement le bras de Juju vers l'avant, comme pour lui offrir l'épaule. La libellule resta un instant encore, puis s'envola d'un seul coup sec, droit vers le ciel clair.\n\nIls restèrent là tous les trois, sans courir. Le vent faisait danser les roseaux. Une poule d'eau glissait entre les tiges sans bruit. Juju posa sa joue contre le dos de Nono, juste le temps d'un souffle. Wex sourit sans rien ajouter. L'herbe remuait autour de leurs jambes comme si rien ne s'était passé et que tout continuait en même temps."
+        source: "claude-opus-reco",
+        texte: "L'eau était tiède comme du lait au soleil. Juju avait les pieds dedans jusqu'aux chevilles, et la vase faisait « splotch » entre ses orteils.\n\n— Regarde ! elle criait. Y en a mille !\n\nDes têtards filaient, petits points noirs, chatouillant. Nono trempait deux doigts, tout doux, et regardait les ronds partir loin sur l'eau. Wex, lui, était accroupi dans les roseaux, à surveiller un bourdon lourd qui n'arrivait pas à décoller.\n\n— Il est trop gros, dit Wex, très bas, pour lui tout seul.\n\nEt là, quelque chose de bleu passa.\n\nÇa brillait comme un bout de ciel qui aurait des ailes. Ça montait, ça descendait, ça s'arrêtait pile dans l'air — plus rien ne bougeait — puis hop, ailleurs. Une libellule. Elle freinait sur du vide, exactement comme un bus qui pile à l'arrêt sans qu'on entende les roues.\n\nJuju sortit de l'eau d'un bond.\n\n— À moi ! Je l'attrape !\n\nElle sauta, les mains grandes ouvertes. Vide. La libellule était déjà trois pas plus loin, immobile au-dessus d'un roseau.\n\n— Là, souffla Nono, en montrant le roseau du menton.\n\n— Par là ! cria Wex, le doigt tendu, en tournant tout rond sur lui-même.\n\nNono courait aussi, les bras en l'air, riant sans bruit. Chaque fois qu'une main s'approchait, la petite chose bleue s'éteignait d'un côté et se rallumait de l'autre. Ça filait. Ça se figeait. Ça repartait. Les trois pouffaient, essoufflés, les joues chaudes.\n\n— Elle triche ! souffla Juju.\n\nPuis Nono s'arrêta.\n\nPas parce qu'il était fatigué. Il posa les pieds dans l'herbe, laissa tomber ses bras, et resta là. Son souffle ralentit. Autour de lui, on aurait dit que même les roseaux se taisaient un peu. Il ouvrit une main, la paume vers le ciel, et il attendit — sans rien dire, sans appeler personne.\n\nJuju, elle, courait encore. Elle fonçait, les yeux en l'air sur le bleu, et elle ne le vit pas.\n\nElle rentra dans Nono. Épaule contre épaule. Boum, tout doux.\n\nEt elle s'arrêta net. Sa bouche resta entrouverte. Elle allait repartir — mais elle ne repartit pas. Elle était là, tout contre lui, deux petits cailloux plantés dans l'herbe. Le rire descendit dans sa gorge et s'éteignit.\n\nLe monde retint sa respiration.\n\nAlors, dans ce silence-là, la libellule revint. Elle tourna une fois. Puis, sans un bruit, elle se posa sur la main ouverte de Nono. Ses ailes brillaient. On voyait ses gros yeux ronds.\n\nPersonne ne bougea.\n\nWex arriva sur la pointe des pieds, se pencha, les yeux énormes.\n\n— Elle est venue, chuchota-t-il. Toute seule.\n\nJuju ne dit rien. Elle regardait la main de Nono comme si c'était le plus beau des trésors. Nono souriait à peine.\n\nÇa dura un souffle. Un tout petit souffle.\n\nPuis Nono leva la main, très lentement, vers le haut.\n\n— Vas-y, murmura-t-il.\n\nLa libellule ouvrit les ailes et repartit dans le ciel, bleue, rapide, impossible.\n\nJuju éclata de rire.\n\n— On l'a eue tout près ! Tout, tout près !\n\nWex riait aussi. Le bourdon, enfin, avait décollé. L'eau clapotait sur les cailloux. Et les têtards, en bas, refaisaient mille petits ronds."
       },
       b: {
-        source: "kimi-k26-instant",
-        texte: "L'étang sentait le printemps mouillé. Juju dévalait la pente en glissant, Nono marchait derrière, et Wex regardait l'eau comme s'il attendait qu'elle lui dise quelque chose.\n\n« Vroum ! » hurla Juju en passant entre les roseaux.\n\nNono s'arrêta. Un bourdon sortait d'un trou d'arbre.\n\n« Vroum toi aussi, paresseux ! » fit Juju en revenant vers lui.\n\nWex parlait dans l'air, personne ne savait à qui : « Les têtards sont des virgules. »\n\n« Des quoi ? »\n\n« Rien. »\n\nUne libellule passa. Vraiment passa. Elle s'arrêta net, repartit en arrière, fit un looping, se posa sur rien, repartit à gauche comme une voiture de course qui refuse la route.\n\n« Celle-là ! » cria Juju.\n\nIls coururent. Trois directions, trois façons de courir. Wex avec les bras en ailerons, Juju en hurlant, Nono simplement, sans bruit. La libellule les narguait. Stop. Vroum. Ailleurs.\n\n« Attrape-la ! »\n\nPersonne ne l'attrapait.\n\nNono s'arrêta. Debout, immobile, les bras un peu ouverts. Il ne dit rien. Il ne dit jamais quand il arrête. Les autres continuèrent de courir, de tourner, de rater.\n\nWex buta presque contre lui, recula.\n\n« Tu fais l'épouvantail, » dit Wex.\n\nNono ne répondit pas. Resta là, planté.\n\n« L'épouvantail fait fuir, » murmura Wex, sans lever le ton. « On veut qu'elle vienne. »\n\nJuju revenait en courant, tournait pour éviter Nono, glissa sur l'herbe, le heurta de l'épaule. Le choc la figea. Elle resta collée à lui, haletante, immobile par accident, retenant son souffle pour ne pas la faire fuir.\n\nLa libellule se posa sur le poignet de Nono.\n\nJuju avait les yeux ronds. Elle ne bougeait plus. Tout son corps disait chut, mais sans qu'elle l'ait décidé. C'était drôle, une Juju muette, une Juju suspendue.\n\nWex regardait. Il avait dit l'inverse. L'épouvantail fait fuir. La libellule était là.\n\nNono tourna lentement le poignet vers Juju. Pas pour lui donner. Pour que la libellule choisisse. Elle s'envola, vroum, looping, ailleurs.\n\n« Gagné, » souffla Juju, toujours figée.\n\n« Gagné quoi ? » demanda Wex.\n\n« Approchée. »\n\nNono baissa les bras. Le bourdon ressortit de l'arbre."
+        source: "claude-haiku-reco",
+        texte: "Au bord de l'étang, c'est l'herbe chaude qui commence. Elle pique un peu sous les pieds nus, elle sent le soleil. Trois pieds nus sautent dedans en riant. Juju d'abord, toujours Juju, qui fonce. Puis Nono, qui la suit — pas parce qu'il a peur, juste parce qu'il va où elle va. Et Wex, qui observe déjà les têtards sous l'eau.\n\n« Regardez ! » crie Juju.\n\nUne libellule bleue coupe l'air comme un coup de crayon. Arrête net. Repart ailleurs.\n\n« Là ! » dit Juju en pointant le doigt.\n\n« Non, ici ! » répond Nono.\n\nLes trois foncent. Nono court sans rien dire, les bras grands ouverts. Juju saute, rate la bête d'une main, crie de joie malgré l'échec. Wex la suit du doigt, tête penchée, bouche ouverte.\n\n« Encore une fois ! » lance Juju, déjà repartie.\n\nNouveau rire. La libellule disparaît au-dessus des roseaux, dans un froissement tout léger. Ils recommencent.\n\nEncore.\n\nEncore.\n\nL'air bouge autour d'eux. C'est comme ça maintenant — course, cri, échec joyeux. Les pieds tapent l'herbe, l'eau clapote un peu plus loin. Ça pourrait continuer longtemps. Ça fait du bien, ces essais qui ne finissent pas.\n\nPuis quelque chose bascule.\n\nNono s'arrête.\n\nPas d'annonce. Il arrête juste de courir. Ses pieds posent l'herbe doucement. Les bras qui volaient redescendent le long de son corps. Il respire plus grand. Juju continue une seconde seule, les yeux encore sur le vol bleu.\n\nMais elle bascule dans Nono sans le vouloir.\n\nPresque rien — une épaule, une main qui trouvent son bras, un moment où deux corps se figent l'un contre l'autre. La peau chaude contre la peau chaude. Pas une chute. Juste un arrêt. Tous les deux suspendus.\n\n« Chut », souffle Nono, tout bas.\n\nC'est là que tout s'apaise.\n\nLe silence tombe comme du velours. L'étang arrête ses rides. L'air retient son souffle. Et la libellule bleue vient se poser.\n\nTrois centimètres. Peut-être moins.\n\nElle est là, sur rien, sur l'espace entre Juju figée et Nono qui respire. Les ailes font des vibrations infinies, comme un tout petit moteur d'air. Les yeux ronds de la bête regardent nulle part. On voit le bleu briller, un bleu de ciel mouillé.\n\nWex n'ose pas bouger. Juju non plus. Nono ouvre une main très lentement, doigt après doigt, comme s'il disait quelque chose que personne n'entend.\n\nUne seconde.\n\nDeux secondes.\n\nLa libellule repart.\n\nElle monte en spirale, disparaît vers le ciel. Les trois enfants restent figés encore un tout petit moment. Puis Wex éclate de rire — un rire étonné, comme un cri de joie qui vient de loin.\n\n« Elle est venue », murmure Juju, les yeux encore ronds.\n\nJuju regarde Nono. Nono sourit à peine, mais il sourit.\n\nLe bord de l'étang reprend sa vie. Les têtards bougent sous l'eau. Un oiseau d'eau crie quelque part.\n\nLes trois enfants restent debout dans l'herbe chaude, encore tout près l'un de l'autre."
       }
     }
   ]

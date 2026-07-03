@@ -11,6 +11,31 @@
 
 ---
 
+## 2026-07-04 — REX STORY-002 POST-DUEL : Rejet à chaud Papa Yann opus-def v5 — Leçons fluide + hypothèse système
+
+**Objectif** : Logger le rejet à chaud opus-def v5 (2026-07-04) comme leçon de goût + ouvrir question de système.
+
+**Fait** :
+- [x] **Rejet à chaud opus-def v5** (rang 3.5 panel) — verbatim Papa Yann : « illisible, pas fluide, sans queue ni tête ni enchaînement ». Ajout contre-goût majeur = descriptor CONFIRMÉ (3 signaux) : FLUIDITÉ = enchaînement (chaque phrase appelle la suivante) ≠ phrases courtes.
+- [x] **Escalade descripteurs** : pile sensorielle juxtaposée → 2 signaux (duel 002 + REX 2026-07-04) · description décor gratuite → 2 signaux (même REX).
+- [x] **Hypothèse système STREISAND NIVEAU 2** : brief v5 demandait « entrée par sensation corporelle » en RECETTE → tous les tops ouvrent par même template (eau+soleil+boue juxtaposé) → output non-fluide. Piste : exprimer goûts en QUALITÉS + CRITÈRES (« l'ouverture doit couler ») plutôt qu'en RECETTES (« entre par sensation »).
+- [x] **Nouvel outil livré** : site/lecture.html (annotation 1re lecture) — tap passage → chips j'aime/ça pèche, export JSON → memoire. Complète le duel. Gouvernance : ticket léger ARCHI-LECTURE-001.
+- [x] **Question ouverte** : DEC-GOÛT-RECETTE-VS-QUALITÉ ouverte (trancher avant brief STORY-003, cible 2026-07-08).
+
+**Fichiers modifiés** :
+- ✅ `gout/memoire-papa-yann.md` (fluide = CONFIRMÉ, pile sensorielle + description gratuite escaladées à 2 signaux, hypothèse système documentée)
+- ✅ `pmo/decisions.md` (question ouverte DEC-GOÛT-RECETTE-VS-QUALITÉ)
+- ✅ `pmo/backlog.md` (ticket ARCHI-LECTURE-001 léger)
+- 📋 `pmo/sprint-log.md` (cette entrée)
+
+**État au reboot** :
+- **3 tickets EN COURS inchangés** : STORY-002-SELECTION-REFONTE (🔴 BLOQUÉ) + ARCHI-014-TEMPLATE-BOUSSOLE + ARCHI-DUEL-001
+- **1 question OUVERTE** : DEC-GOÛT-RECETTE-VS-QUALITÉ (cible arbitrage 2026-07-08)
+- **1 ticket NORMAL** : ARCHI-LECTURE-001 (documentation duel + lecture dans README gout)
+- **Prochaine action** : trancher RECETTE vs QUALITÉ avant brief STORY-003
+
+---
+
 ## 2026-07-03 (POST-DIAGNOSTIC, PMO correction) — KIMI-MCP-TIMEOUT RESÉQUENCÉ : Diagnostic faux corrigé, leçon gravée
 
 **Objectif** : Corriger le diagnostic FAUX du Directeur ("panne infra Moonshot") et graver la leçon processus KIMI-MCP-TIMEOUT.

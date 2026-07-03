@@ -16,6 +16,7 @@
 | 🟡 | ARCHI-006 | Formaliser procédure PMO dans `narration-pmo.md` (agent Haiku) | Normale | narration-pmo | Créer doc agent reflet des décisions 2026-05-08 : classification input (6 catégories), routing, checklist remise main. Cible : PMO auto-guidé sans attendre instructions. |
 | 🟡 | **ARCHI-014-TEMPLATE-BOUSSOLE** | **Adapter template brief-histoire.md = BOUSSOLE (DEC-BRIEF-CURSEUR)** | **Haute** | Directeur + PMO | Créer `equipe/templates/brief-histoire-v4-BOUSSOLE.template.md` (intentions + 6 causalités-ESSENCE, zéro phrase publiable). Section « Intention Directeur » obligatoire. Documenter différence BOUSSOLE vs GPS. Repercuter dans STORY-003+ avant étape 3. **Bloqué** si brief STORY-003 écrit sans template. |
 | 🟡 | **ARCHI-DUEL-001** | **MVP « Duel de goût » — site/duel.html + site/duel-data.js** | **Haute** | Dev | Créer PWA légère site/duel.html + code JS duel-data.js (12 duels + finale). Génération auto des duels depuis vague 4 STORY-002. Offline capable, export JSON. Intégration MCP script post-étape 5. Cible : 2026-07-10. |
+| ⚪ | **ARCHI-LECTURE-001** | **Nouvel outil « Lecture annotée » — site/lecture.html (annotation 1re lecture)** | Normale | Dev | MVP livré 2026-07-04 : `site/lecture.html` pour annotation en 1re lecture. Tap passage → chips j'aime/ça pèche + texte libre, export JSON → ingestion memoire de goût. Complète le duel (duel=comparer, lecture=annoter). Gouvernance : update `studio/narration/gout/README.md` pour documenter 2e instrument. Cible : 2026-07-10. |
 
 ---
 

@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ed-mon-to-nia. Ce nom-là ne vient pas du grec — il vient d'un endroit !"
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] D'un endroit ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Oui, on l'a trouvé près de la ville d'Edmonton, au Canada. Alors on l'a appelé « celui d'Edmonton ». Il vivait au Crétacé, tout couvert d'armure."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Comme l'Ankylosaure ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Un cousin, oui. Mais avec une grande différence, tu vas voir."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

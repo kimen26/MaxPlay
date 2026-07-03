@@ -1,6 +1,13 @@
-# ⛔ STOP — 3 zones de silhouettes coexistent (ne rien relancer avant décision)
+# ✅ DÉFIGÉ 2026-07-03 — reprise des ombres chinoises autorisée (ordre Papa Yann)
 
-> Posé par **DEC-GED-001** (règle #6, 2026-07-03). Le même besoin « silhouette de dino » vit dans **3 zones** sans qu'aucune sache si les autres sont mortes. **Ne PAS générer de nouvelles silhouettes/ombres avant d'avoir tranché** — sinon on refait ce qui existe déjà ailleurs.
+> **DÉCISION Papa Yann 2026-07-03** : « débloque les ombres chinoises c'est un ordre ». Le STOP ci-dessous est LEVÉ pour la zone `site/img/dinos/_new-ombre/` (par-dino nommé). On reprend/complète le chantier ombres (19/60 → viser 60). Les 2 autres zones (banque par-famille) restent en l'état, non touchées. La fusion/archivage éventuel reste au 1er mini-jeu consommateur.
+> Zone retenue = `_new-ombre/` (par-dino). Diagnostic reprise : 4 échecs 2026-07-02 (torosaurus/pentaceratops/diplodocus/apatosaurus) = `done` au TSV mais rejetés en validation → à re-générer.
+
+---
+
+# ⛔ (HISTORIQUE) STOP — 3 zones de silhouettes coexistent
+
+> Posé par **DEC-GED-001** (règle #6, 2026-07-03), **levé le jour même** par ordre Papa Yann (ci-dessus). Conservé pour trace. Le même besoin « silhouette de dino » vivait dans **3 zones**.
 
 | Zone | Grain | Contenu | Statut |
 |------|-------|---------|--------|

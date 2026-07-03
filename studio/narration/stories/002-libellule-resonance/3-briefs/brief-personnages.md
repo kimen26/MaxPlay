@@ -64,7 +64,7 @@ Chaque enfant perçoit ce que les deux autres ne perçoivent pas. En arc 1 ces s
 - Nono décroche sans prévenir, fait un geste calme, parle peu.
 - Wex observe, peut se parler à lui-même, ne commente jamais ce qu'il sent.
 
-> Le déroulé de CETTE histoire → **brief-histoire.md**. Ton angle personnel → **micro-briefs.md**.
+> Le déroulé de CETTE histoire → **brief-histoire.md**. Le menu d'angles COMMUN (pioche libre, déclarée en note d'intention) → **menu-angles.md**.
 
 ---
 

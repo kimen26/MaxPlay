@@ -33,7 +33,7 @@
 | 4 | **14 Versions writers — VAGUE 5** | 14 Writers | ✅ **14/14** | 2026-07-03 | [`4-versions-writers/`](4-versions-writers/) — **14/14 persistées**. 11 initiales (6 Claude + kimi-k26-instant + deepseek déf/reco + grok déf/reco) **+ 3 Kimi récupérés via CLI** (`kimi-reco` 487 · `kimi-reco-guide` **546** (resserré depuis 564) · `kimi-k26-thinking` **542** (resserré depuis 561)). **TOUTES dans 400-550 mots** (haiku-def 428 · haiku-reco 470 · opus-def 507 · opus-reco 499 · sonnet-def 470 · sonnet-reco 476 · deepseek-def 549 · deepseek-reco 497 · grok-def 483 · grok-reco 414 · kimi-k26-instant 528 · kimi-reco 487 · kimi-reco-guide 546 · kimi-k26-thinking 542). **Les 3 Kimi ont été récupérés par Papa Yann via `call-llm.mjs` CLI** (contournement du **timeout du transport MCP** sur générations longues 188-396 s). ⚠️ **LEÇON MCP/INFRA** : la conclusion « panne infra Moonshot » était **FAUSSE** — le canal Kimi répond en ~1.9 s ; la vraie cause est le timeout du transport MCP sur les writers longs. **Règle : sur échec MCP d'un writer long, basculer sur `infra/mcp/call-llm.mjs` (Bash timeout 600 s), ne PAS conclure à une panne infra.** Vague 4 archivée `_archive/vague-4/`. |
 | 4-v4 | ~~14 Versions writers vague 4~~ | 14 Writers | ✅→📦 | 2026-05-17 | Produites (commit 634c5041). **Archivées 2026-07-03** `_archive/vague-4/` (16 versions + 20 fiches panel + synthèse + sélection). |
 | 5 | **Panel v2 hétérogène (12 calls) — REFAIT sur les 14** | Panel v2 + Directeur | ✅ | 2026-07-03 (soir) | **RE-PANEL COMPLET sur 14 versions.** 12 fiches : `5-lecteurs-temoins/G{1-4}-<profil>-<modèle>.md` (4 groupes × 3 modèles). **Kimi présent sur les 4 groupes via CLI `call-llm.mjs`** (le MCP `ask_kimi` timeout sur prompts 46 KB → fallback CLI, exit 0 partout — PAS de panne infra, PAS de substitution de l'axe Kimi). Chaque fiche = 14 versions notées + 2 tranches d'âge. Synthèse : [`5-synthese-lecteurs.md`](5-synthese-lecteurs.md). **TOP 5 CONSOLIDÉ (rang moyen 12 fiches)** : 1.**claude-opus-def (3.5)** · 2.claude-sonnet-reco (5.2) · 3.deepseek-reco (5.7) · 4.claude-sonnet-def (6.1) · 5.kimi-reco (6.1). **opus-def écrase** (8 top-3, 0 fond-3, consensus max). **Les 3 Kimi absents avant** : kimi-reco #5, kimi-k26-thinking #9, kimi-reco-guide #11 — **aucun ne déloge le top 4**. Patterns « à éviter » confirmés : pose floue/abstraite, pose sur genou/roseau (hors-contact), **fin qui repart/pirouette (les 4 = des Kimi)**, ouverture trop descriptive, mots d'adulte. **Panel partiel 11 versions ARCHIVÉ** `_archive/5-panel-partiel-11versions-2026-07-03/` (NE PAS réutiliser). Test calibration one-shot toujours SAUTÉ (ticket TEST-PANEL-CALIBRATION). **Étape 6 NON lancée** (attente instruction). |
-| 6 | Sélection | Directeur | 🔴 | 2026-05-14 → 2026-05-21 (SLA 3j dépassé) | [`6-selection.md`](6-selection.md) — **BLOQUÉ** (SLA dépassé depuis 2026-05-17 — en attente décision Papa Yann sur étape 5 panel 20 lecteurs relance vague 4) |
+| 6 | **Sélection v2 (re-panel vague 5)** | Directeur | ⏳ | 2026-07-04 | [`6-selection.md`](6-selection.md) — **v2 PRODUITE, EN ATTENTE AUTEUR** (SLA 3j → 🔴 au 2026-07-07). **Base = `claude-opus-def`** (meilleur pivot + fin du corpus, consensus panel max 3.5, 0 fond-3) **+ greffe d'ouverture PRIORITAIRE** (patron `deepseek-reco` : action + voix d'emblée) car l'ouverture d'opus-def (pile sensorielle + décor gratuit « étang si peu profond ») **viole 2 contre-goûts auteur CONFIRMÉS** et a été rejetée à chaud. Greffe clôture optionnelle : `kimi-reco` « on l'a presque **vue** ». v1 (base vague 2, 2026-05-14) archivée `_archive/6-selection-v1-vague2-PERIME-2026-05-14.md`. |
 | 7 | Rewrite | Writer du top 1 | ⚪ | — | [`7-rewrite/`](7-rewrite/) |
 | 8 | GateKeeper | GateKeeper | ⚪ | — | [`8-gatekeeper-verdict.md`](8-gatekeeper-verdict.md) |
 | 9 | Re-relecture (panel 20) | 20 Témoins | ⚪ | — | [`9-relecture-rewrite/`](9-relecture-rewrite/) |
@@ -44,7 +44,7 @@
 ## Validations auteur (3 obligatoires)
 
 - [x] **Étape 1 — Pitch** validé : 2026-05-12 (recentrage Nono uniquement finalisé)
-- [ ] **Étape 6 — Sélection** validée : ___ (en attente relance étape 5 Panel 20 — vague 4)
+- [ ] **Étape 6 — Sélection** validée : ___ (⏳ v2 produite 2026-07-04, EN ATTENTE AUTEUR — base opus-def + greffe ouverture deepseek-reco)
 - [ ] **Étape 10 — Canon finalisé** validé : ___ (date)
 
 **SLA :** 3 jours par validation. Au-delà → 🔴 BLOQUÉ + log auto `pmo/sprint-log.md`.
@@ -64,6 +64,24 @@
 ## Notes & blocages
 
 > *Notes libres du owner courant. Si 🔴 BLOQUÉ, expliquer ici.*
+
+### 2026-07-04 — Étape 6 v2 TRANCHÉE (re-panel vague 5 × goût auteur)
+
+**Sélection produite** : `6-selection.md` v2. **Base = `claude-opus-def`** (rang panel 3.5, 8 top-3, 0 fond-3 — consensus max) **+ greffe d'ouverture PRIORITAIRE**.
+
+**Arbitrage panel × goût auteur** : le panel plébiscite opus-def, MAIS son ouverture (« *L'eau tiède clapote… Le soleil chauffe… un étang si peu profond qu'on voit le fond partout* ») viole **2 contre-goûts CONFIRMÉS** — pile sensorielle juxtaposée + description décor gratuite (« on s'en fiche de cet étang ») — et a été **rejetée à chaud** par Papa Yann. Le critère n°1 CONFIRMÉ = **fluidité (enchaînement)**.
+
+**Analyse fluidité des 5 tops** : `deepseek-reco` (#3) gagne l'ouverture (« *Juju court…* » — action + voix d'emblée, chaque phrase appelle la suivante). `sonnet-reco` (#2) partage le **même défaut** que opus-def. → **On garde le meilleur CORPS (opus-def : pivot le plus clair du corpus, pose au point de contact peau, fin sans pirouette) et on greffe le meilleur DÉBUT (patron deepseek-reco).** Défaut opus-def = local (3 phrases), greffable ; faiblesses deepseek-reco = diffuses dans le corps (pose sur main, pas au contact ; fin plate), non greffables.
+
+**Greffes** : (1) ouverture patron `deepseek-reco` l.8-16 — PRIORITAIRE · (2) clôture `kimi-reco` « on l'a presque **vue** » — optionnel, SANS la fin-qui-repart ni le genou · (3) fil têtard `sonnet-def` — optionnel.
+
+**Owner rewrite (si validé)** : writer top 1 = `claude-opus-def` via `narration-writer-claude-libre` (règle 2026-05-08). Repli Directeur si dilution/sur-réécriture. Plafond 1 cycle.
+
+**Archivage** : v1 (base vague 2, 2026-05-14) → `_archive/6-selection-v1-vague2-PERIME-2026-05-14.md` (+ bandeau péremption). Miroir conservé `_archive/vague-4/6-selection.md`.
+
+**Prochaine action** : validation auteur (SLA 3j → 🔴 au 2026-07-07). Si (a) validé → étape 7 rewrite opus. Question ouverte : (a) base opus-def + ouverture réécrite [reco Directeur] OU (b) base deepseek-reco fluide d'emblée.
+
+---
 
 ### 2026-07-03 (nuit) — Étape 5 REFAITE : panel v2 complet sur les 14 versions
 

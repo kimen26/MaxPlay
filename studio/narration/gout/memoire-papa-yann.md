@@ -31,6 +31,22 @@ _(rien encore — 1 seule histoire duellée)_
 | **Trop long / déroule son idée** — vaut aussi pour le texte entier | 3 (duel 002 + verbatim finale) |
 | Texte entier sans aucun vrai dialogue = rejet (il faut des voix qui se répondent) | 1 (verbatim finale 002) |
 | Chute qui repose sur une réplique-pirouette / punchline maligne — le panel adore, lui trouve ça « terrible » | 1 fort (duel 002 : chute refusée + finale rejetée en partie pour ses dialogues de fin) |
+| **Ouverture en pile sensorielle juxtaposée** (2-3 phrases-constats sans lien : eau + soleil + boue) — « illisible, pas fluide, sans queue ni tête ni enchaînement » | 1 très fort (verbatim à chaud 2026-07-04 sur le #1 du panel v5) |
+| **Description de décor gratuite** (détail qui ne sert ni l'action ni l'émotion : « étang si peu profond qu'on voit le fond ») — « on s'en fiche » | 1 fort (même verbatim) |
+
+## Définition de travail : FLUIDITÉ (le critère n°1 de Papa Yann)
+
+Fluide ≠ phrases courtes. Fluide = **enchaînement** : chaque phrase appelle la suivante
+(cause, geste, regard, réponse). Une suite de constats posés côte à côte, même sensoriels
+et courts, n'est PAS fluide. À vérifier à voix haute.
+
+## ⚠️ Hypothèse système (Streisand du goût, niveau 2 — à trancher)
+
+La section « goût auteur » du brief (« entrée par sensation corporelle ») a produit une
+**conformité mécanique** : les tops du panel v5 ouvrent tous par le même template
+« pile de sensations ». Une contrainte de goût énoncée comme recette redevient un GPS.
+Piste STORY-003 : exprimer les goûts en QUALITÉS à atteindre (« l'ouverture doit couler,
+chaque phrase appelle la suivante ») plutôt qu'en RECETTES (« entre par la sensation »).
 
 ## Divergences auteur ↔ panel (à surveiller)
 

@@ -12,7 +12,7 @@
 | [`data/`](data/) | 🎯 **Donnée structurée** — nourrit les features (dico, quiz, fiches) | [`data/INDEX.md`](data/INDEX.md) |
 | [`scripts/`](scripts/) | 🛠️ **Outils** — génèrent audio / images / exports | [`scripts/INDEX.md`](scripts/INDEX.md) |
 | [`scripts-audio/`](scripts-audio/) | 🎙️ **Dialogues** Wex/Narrateur (`groupe-*`, `special-*`, template) + cache `json-top/` | — |
-| [`assets/`](assets/) | 🎨 **Assets visuels** — banque 215 silhouettes dino par famille (PNG noir/transparent, mini-jeux) | [`assets/silhouettes/_INDEX.md`](assets/silhouettes/_INDEX.md) |
+| [`assets/`](assets/) | 🎨 **Assets visuels** — banque de silhouettes dino par famille (PNG noir/transparent, mini-jeux). ⛔ Voir [`assets/silhouettes/_STOP-3-ZONES.md`](assets/silhouettes/_STOP-3-ZONES.md) (3 zones silhouettes coexistent). | [`assets/silhouettes/_INDEX.md`](assets/silhouettes/_INDEX.md) |
 | [`lunii/`](lunii/) | 🎒 **Images Lunii** — 9 emblèmes familles + couverture (320×240, 16 gris, **fond noir natif**). Produites par skill `dino-images-lunii`, consommées par `studio/lunii/scripts/build-dinos-pack.mjs` | [`lunii/INDEX.md`](lunii/INDEX.md) |
 | [`inbox/`](inbox/) | 📥 **Brut non trié** — matière à exploiter | — |
 
@@ -20,14 +20,17 @@
 
 ```
 sources/etymo/_ETYMO-RACINES-50.md ─(_etymo2racines.cjs)─▶ data/racines.json ─▶ Dico + Quiz + fiches
+sources/recits/RECITS-EPOQUES.md ─(_md2json-recits-v3.cjs)─▶ recits/json/ ─(_gen-audio-recits-v3.sh)─▶ site/audio/dinos/recit-*.mp3
 scripts-audio/groupe-*.md ─(_md2json.cjs)─▶ scripts-audio/json-top/ ─(_gen-audio-*.sh)─▶ site/audio/dinos/*.mp3
 site/img/dinos/grok/ ─(_gen-grok.cjs)─▶ site/js/dinos-images-grok.js (galerie)
-site/js/dinos-data.js ─(_blocB-canonique-50.cjs)─▶ sources/mesures/_BLOC-B-CANONIQUE.md
 ```
 
-## 📌 État (2026-06-08)
+## 📌 État & doctrine
 
-- 50 dinos · 9 familles · 4 régimes — détail produit → [`../INDEX.md`](../INDEX.md).
-- `data/racines.json` : 69 racines grec/latin (généré, regénérable).
-- ⚠️ `sources/mesures/_BLOC-B-CANONIQUE.md` **périmé** vs `dinos-data.js` (chiffres dérivés depuis les corrections data récentes). Régénérer = décision narration → [`../pmo/decisions.md`](../pmo/decisions.md).
-- ❓ `scripts-audio/001-trex-brachiosaure-velociraptor.md` : brouillon early non consommé par le pipeline, à confirmer/supprimer.
+> **DEC-GED-001 (2026-07-03)** : ce fichier NE cite AUCUN count en dur (règle #2 « zéro chiffre en dur » — un chiffre recopié à la main ment). La source de vérité des chiffres = **[`../../site/js/dinos-data.js`](../../../site/js/dinos-data.js)** (produit) ; le tracker des invariants (exception légitime) = **[`../pmo/INVARIANTS.md`](../pmo/INVARIANTS.md)**.
+
+- **Compte dinos · familles · régimes** → voir [`../pmo/INVARIANTS.md`](../pmo/INVARIANTS.md) (jamais recopié ici).
+- **Récits d'époque** : canon = `sources/recits/RECITS-EPOQUES.md` (ex-V5, anciennes versions dans `recits/_archive/`).
+- **Étymo** : source active `sources/etymo/_ETYMO-RACINES-50.md` (⚠️ périmé, ne couvre pas les Cénozoïque) → bascule vers `_ETYMO-COMPLET-60.md` = ticket EP-D-GED.
+- ⚠️ `sources/mesures/_BLOC-B-CANONIQUE.md` **périmé** vs `dinos-data.js`. À régénérer OU à graver « gelé volontairement » (ticket EP-D-GED).
+- ❓ `scripts-audio/001-trex-brachiosaure-velociraptor.md` : brouillon early non consommé par le pipeline, à archiver.

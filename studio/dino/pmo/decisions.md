@@ -2,15 +2,39 @@
 
 > Décisions datées (raison + impact). Les décisions **verrouillées** (jamais régresser) vivent dans [`../figees/encyclopedie.md`](../figees/encyclopedie.md).
 
+## 2026-07-03 — DEC-GED-001 : Doctrine d'architecture GED du pôle (audit sénior)
+
+**Contexte** : Papa Yann a challengé le « c'est OK » du PMO/archiviste sur le rangement (images, mp3, histoires, data, dialogues, familles). Audit sénior multi-perspective (4 experts indépendants + relecteurs + directeur technique, 2026-07-03). **Verdict : le rangement physique est correct, mais la GED n'a aucune notion de « présent » ni de « complétude par dino ».** Preuves vivantes : 10 heros cassés en prod non détectés · 3 comptes de dinos différents (dinos-data.js « 48 », INDEX « 50 », réalité 60) · `_REPRISE.md` cru perdu alors qu'il était juste enterré.
+
+**Diagnostic tranché (dette réelle, pas cosmétique — elle compose à chaque dino ajouté)** :
+- 🔴 **C1** — aucune vue « par dino » : impossible de voir ce qui reste à faire sans fouiller 9 endroits. Cause racine.
+- 🔴 **C2** — 10 heros cassés en prod (9 Cénozoïque + Edmontonia, `png:` pointe dans le vide). Bug produit, à réparer.
+- 🟠 **M1** — versionnite non désignée (récits V3/V4/V5/BRUT/FOND, étymo 50/60, 2 systèmes de dialogues) : rien ne dit lequel fait foi → un agent régénère depuis le mauvais.
+- 🟠 **M2** — la doctrine dérive (chiffres écrits à la main mentent).
+- 🟠 **M3** — dinos-data.js pas prêt pour les mini-jeux (assets nommés par nom d'affichage, pas par `id`).
+
+**Doctrine décidée (la CIBLE — 3 axes : rangement OK + canonicité + complétude, les 2 nouveaux se recalculent seuls depuis le disque)** :
+
+1. 🔒 **CANON SANS NUMÉRO** — le fichier qui fait foi porte un nom stable sans version (`RECITS-EPOQUES.md`, `ETYMO.md`). L'historique descend dans un `_archive/` local daté. **On DÉSIGNE le canon, on ne SUPPRIME jamais** (respecte l'invariant « jamais jeter de matière narrative » [[feedback_narration_info_loss]]).
+2. 🔒 **ZÉRO CHIFFRE EN DUR dans la doctrine** — aucun INDEX/README/CLAUDE.md ne cite un count (nb de dinos, familles, silhouettes). On écrit « compte réel = `site/js/dinos-data.js` » et on pointe. Un chiffre recopié à la main **va** mentir.
+3. 🔒 **FRONTIÈRE AUTORING / PRODUIT** — un mini-jeu (ou toute feature du site) ne lit QUE `site/js/dinos-data.js` + les assets `site/img/dinos/` référencés. Donnée manquante → elle descend dans dinos-data.js via un script d'export. **Jamais** une feature ne monte lire dans `studio/` (non déployé). Assets nommés par `id` stable (`tyrannosaurus_headshot.jpg`), pas par nom d'affichage.
+4. 🔒 **CHECKLIST « DINO COMPLET »** (8 axes) — `hero · 5 scènes paléoart (headshot/manger/paris/ecosysteme/funfact) · coloriage · 5 segments audio · silhouette · fiche fact-checkée · étymo · mesures`.
+5. 🔒 **OUTIL DE SUIVI GÉNÉRÉ, JAMAIS TENU À LA MAIN** — un script lecture-seule lit dinos-data.js, sonde le disque, écrit `_ETAT-DINOS.md` (synthèse en tête + détail « le plus incomplet d'abord » + section orphelins/staging). Branché dans l'agent `dino-archiviste`. « Où en sont les dinos ? » → il régénère. (Livrable à produire — voir backlog EP.)
+6. 🟡 **STOP silhouettes 3 zones** — `content/assets/silhouettes/` (par famille) · `site/img/dinos/silhouettes/` (par famille) · `_new-ombre/` (par dino). Décision de fusion **reportée au démarrage du 1er mini-jeu qui les consomme**. Ne PAS relancer de génération d'ombres avant (sinon on refait ce qui existe).
+
+**Ce qu'on NE fait PAS (anti-sur-ingénierie, l'avocat du minimalisme a raison)** : pas de grande réorg des 6 zones d'images · pas de fusion fact-check/mesures/étymo (archives de recherche) · pas de matrice par-dino à la main · pas de hook de vérif des chiffres (inutile si zéro chiffre en dur) · pas de bloc `assets:{}` littéral dans dinos-data.js · pas de structuration étymo/frise tant qu'aucun jeu ne les consomme.
+
+**Rapport complet** : audit sénior archivé (artifact 2026-07-03). **Impact** : refonte gouvernance (ce fichier + INVARIANTS + INDEX + rules + CLAUDE.md pôle), archivage récits, dé-chiffrage INDEX, pose STOP silhouettes.
+
 ## 2026-07-03 — Cénozoïque : catégories Mammifère + Oiseau (TAXO honnête)
 
 **Décision Papa Yann** : nouvelle collection Cénozoïque mégafaune scindée en **2 catégories distinctes** (pas 1 seule « Mammifères ») :
-- **Mammifères** (5 dinos) : Mammuthus, Smilodon, Megatherium, Paraceratherium, Glyptodon.
-- **Oiseaux** (3 dinos) : Titanis, Aenocyon (loup terrible — tech: carnivore mammifère, UI « Oiseau »?), Coelodonta (rhino laineux — incertitude taxo).
+- **Mammifères** (`mammiferes`, 7 dinos) : Mammuthus, Smilodon, Megatherium, Paraceratherium, Glyptodon, **Aenocyon** (loup terrible), **Coelodonta** (rhino laineux).
+- **Oiseaux** (`oiseaux`, 1 dino) : Titanis (seul non-mammifère du lot, oiseau-terreur).
 
-**Raison** : honnêteté taxonomique. Les terror birds sont des oiseaux, les mammouths sont des mammifères — les mélanger sous une seule étiquette donne une fausse impression phylogénétique. L'encyclopédie dino valorise les vraies catégories.
+**Raison** : honnêteté taxonomique. Les terror birds (Titanis) sont des oiseaux, les mammouths/loups/rhinos sont des mammifères — les mélanger sous une seule étiquette donne une fausse impression phylogénétique.
 
-**⚠️ Incertitude mineure** : Aenocyon (Canidé mammifère carnivore, fossile) n'est techniquement PAS un oiseau. Option futur si rigueur monte : créer sous-catégorie « Carnivores mammifères ». EN ATTENTE jeu vert pour regroupement permanent.
+> ⚠️ **Corrigé 2026-07-03 (DEC-GED-001, dé-mensonge à la source)** : la version initiale de cette décision rangeait Aenocyon + Coelodonta dans « Oiseaux » (erreur). La data et l'INVARIANTS disent bien `famille: 'mammiferes'` pour les deux (répartition vérifiée `node` : mammiferes=7, oiseaux=1). Décompte corrigé 5+3 → **7+1**.
 
 **Impact** :
 - Code : `dinos-data.js` 2 entrées famille (`mammiferes`, `oiseaux`). INVARIANTS maj (9→11 familles).

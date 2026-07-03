@@ -8,6 +8,7 @@
 
 ## Principes pôle DINO (non négociables)
 
+- **🏛️ Doctrine GED (DEC-GED-001)** — la GED du pôle repose sur 3 axes : rangement + **canonicité** (canon sans numéro, historique dans `_archive/` daté) + **complétude** (checklist « dino complet » 8 axes, outil `_ETAT-DINOS`). Règles dures : **zéro chiffre en dur** dans la gouvernance (pointer INVARIANTS, JAMAIS dans le contenu narré qui doit dire les vrais chiffres) · **frontière autoring/produit** (une feature ne lit que `site/js/dinos-data.js`). Détail : [`pmo/decisions.md`](pmo/decisions.md) § DEC-GED-001 + [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md) § Doctrine. Nouveau dino → [`content/sources/_PLAYBOOK-DINO-NOUVEAU.md`](content/sources/_PLAYBOOK-DINO-NOUVEAU.md).
 - **Encyclopédie = VRAI** : on dit les vrais noms (Trias, Théropodes…) et les vraies dates/chiffres. Jamais de nian-nian (« si longtemps qu'on ne peut pas compter » = banni).
 - **Échelle honnête** : aucune comparaison de taille qui ment > 10 %. Référentiel figé dans [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md).
 - **Grokipedia = 1ʳᵉ source** de fact-check (avant Wikipedia).
@@ -37,9 +38,10 @@
 | Quoi | Où |
 |------|-----|
 | **UI / code** (déployé GitHub Pages) | [`../site/dev-dinos.html`](../../site/dev-dinos.html) |
-| **Données 50 dinos** | [`../site/js/dinos-data.js`](../../site/js/dinos-data.js) |
+| **Données dinos** (source de vérité) | [`../site/js/dinos-data.js`](../../site/js/dinos-data.js) |
 | **Audio** (récits, menus, fiches) | [`../site/audio/dinos/`](../../site/audio/dinos/) |
-| **Images** | [`../site/img/dinos/`](../../site/img/dinos/) |
+| **Images** (fiches déployées) | [`../site/img/dinos/`](../../site/img/dinos/) |
+| **Images paléoart APP couleur** (staging 5 scènes/dino : échelle enfant · manger · écosystème · Paris bus · funfact) | [`../site/img/dinos/_new-xxl/`](../../site/img/dinos/_new-xxl/) (zone de staging, valider → ranger dans `img/dinos/`) · skill `dino-paleoart` · état [`_REPRISE.md`](../../site/img/dinos/_new-xxl/_REPRISE.md) |
 | **Images Lunii** (emblèmes familles + couverture, fond noir natif — source interne, non déployée) | [`content/lunii/`](content/lunii/INDEX.md) · skill `dino-images-lunii` · assemblées par [`../lunii/`](../lunii/CLAUDE.md) |
 | **Sources contenu** (récits, échelle, étymo, factcheck, process) | [`content/sources/`](content/sources/) (recits · fiches · mesures · etymo) |
 | **Données structurées** (racines dico/quiz) | [`content/data/racines.json`](content/data/racines.json) |
@@ -52,7 +54,7 @@
 ## 🦕 Le produit (rappel)
 
 Encyclopédie dino pour Max (4 ans), 4 onglets :
-1. **Les familles** (défaut) — 9 familles, **nom scientifique en titre** (Théropodes…) + surnom + origine grecque dite en entrant.
+1. **Les familles** (défaut) — **nom scientifique en titre** (Théropodes…) + surnom + origine grecque dite en entrant. (Compte familles → INVARIANTS, table clé↔libellé incluse.)
 2. **Ce qu'il mange** — 4 régimes **alimentaires** (carnivores/herbivores/piscivores/omnivores).
 3. **Le voyage** — 8 récits d'époque audio (Narratrice F + Wex), fil rouge Tritri trouvé au Crétacé. Indicateur d'avancement (reset session).
 4. **Le dico** — racines grec/latin récurrentes (69 racines, tap = écoute). Source `js/dinos-racines.js` (généré depuis `content/sources/etymo/`). [ajouté 2026-06-08]

@@ -8,9 +8,9 @@
 | Quoi | Fichier |
 |------|---------|
 | UI encyclopédie (4 onglets) | [`../site/dev-dinos.html`](../../site/dev-dinos.html) |
-| Données 50 dinos + 9 familles + échelle | [`../site/js/dinos-data.js`](../../site/js/dinos-data.js) |
+| Données dinos + familles + échelle (source de vérité) | [`../site/js/dinos-data.js`](../../site/js/dinos-data.js) |
 | Racines dico (généré, onglet Le dico) | [`../site/js/dinos-racines.js`](../../site/js/dinos-racines.js) |
-| Audio (8 récits + 4 menus + 2 spéciaux + 22 dinos) | [`../site/audio/dinos/`](../../site/audio/dinos/) |
+| Audio (récits + menus + spéciaux + fiches dino) | [`../site/audio/dinos/`](../../site/audio/dinos/) |
 | Images dino | [`../site/img/dinos/`](../../site/img/dinos/) |
 | Galeries images (local + grok) | [`../site/js/dinos-images-local.js`](../../site/js/) · `dinos-images-grok.js` |
 | 🎒 Images Lunii (emblèmes familles + couverture, fond noir natif) | [`content/lunii/`](content/lunii/INDEX.md) → assemblées par [`../lunii/`](../lunii/CLAUDE.md) |
@@ -62,8 +62,11 @@
 | `dino-archiviste` (haiku) | FORME — structure, refs, gabarit, surveille le code site/ dino |
 | `dino-conseiller` (sonnet) | Créatif — péda 4 ans, fact-check Grokipedia, écriture audio, taxo |
 
-## État (2026-06-03)
+## État
 
-- **50 dinos**, **9 familles** (noms scientifiques), **4 régimes** alimentaires.
-- Audio : 8 récits d'époque + 4 menus (voix réelle) + 2 spéciaux + 22 dinos (5 blocs). Reste = TTS navigateur.
+> **DEC-GED-001** : cet INDEX ne cite aucun count en dur (un chiffre recopié ment). Chiffres → [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md) (tracker) · source produit → [`../../site/js/dinos-data.js`](../../site/js/dinos-data.js). État de complétude par dino → outil `_ETAT-DINOS.md` (dino-archiviste, ticket EP-D-GED).
+
+- **Compte dinos · familles · régimes** → [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md).
+- Familles : titres = noms scientifiques (table clé↔libellé dans INVARIANTS). 4 régimes alimentaires.
+- Audio : récits d'époque + menus (voix réelle) + spéciaux + fiches dino (5 blocs). Reste = TTS navigateur. Cénozoïque EN ATTENTE (voir backlog).
 - Voyage : indicateur d'avancement (reset session). Fil rouge Tritri.

@@ -1,11 +1,11 @@
-// Convertit _RECITS-EPOQUES-DIALOGUE-V*.md -> 1 JSON text-to-dialogue par segment.
+// Convertit RECITS-EPOQUES.md (canon) -> 1 JSON text-to-dialogue par segment.
 // Usage: node _md2json-recits-v3.cjs [fichier.md]
-// Par défaut : _RECITS-EPOQUES-DIALOGUE-V4.md
+// Par défaut : RECITS-EPOQUES.md (canon sans numéro — DEC-GED-001 2026-07-03 ; ex-V5, anciennes versions dans _archive/).
 
 const fs = require('fs');
 const path = require('path');
 
-const SRC_FILE = process.argv[2] || '_RECITS-EPOQUES-DIALOGUE-V4.md';
+const SRC_FILE = process.argv[2] || 'RECITS-EPOQUES.md';
 const SRC = path.join(__dirname, SRC_FILE);
 const OUT = path.join(__dirname, 'json');
 fs.mkdirSync(OUT, { recursive: true });

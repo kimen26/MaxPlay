@@ -7,9 +7,9 @@
 
 | Fichier | Rôle |
 |---------|------|
-| [`recits/_RECITS-EPOQUES-FOND.md`](recits/_RECITS-EPOQUES-FOND.md) | Fond factuel des 8 époques |
-| [`recits/_RECITS-EPOQUES-BRUT.md`](recits/_RECITS-EPOQUES-BRUT.md) | Brouillon |
-| [`recits/_RECITS-EPOQUES-DIALOGUE.md`](recits/_RECITS-EPOQUES-DIALOGUE.md) | Dialogue final = **source audio** |
+| [`recits/RECITS-EPOQUES.md`](recits/RECITS-EPOQUES.md) | 🔒 **CANON** (source audio en prod, lu par `_md2json-recits-v3.cjs`). Ex-V5, renommé canon-sans-numéro 2026-07-03 (DEC-GED-001). |
+| [`recits/_METHODE-DIRECTION-AUDIO.md`](recits/_METHODE-DIRECTION-AUDIO.md) | Doc des tags/direction audio (méthode) |
+| `recits/_archive/2026-07-03-recits-versionnite/` | Historique (V0 « faux-final », V3, V4, BRUT, FOND) — gardé, jamais supprimé, hors du présent |
 
 ## 🦕 fiches/
 
@@ -32,8 +32,8 @@
 
 | Fichier | Rôle |
 |---------|------|
-| [`etymo/_ETYMO-RACINES-50.md`](etymo/_ETYMO-RACINES-50.md) | Décompo racines 50 dinos → **source de [`../data/racines.json`](../data/racines.json)** |
-| [`etymo/_ETYMO-COMPLET-60.md`](etymo/_ETYMO-COMPLET-60.md) | Étymo complète (60, superset historique) |
+| [`etymo/_ETYMO-RACINES-50.md`](etymo/_ETYMO-RACINES-50.md) | Décompo racines → **source ACTIVE de [`../data/racines.json`](../data/racines.json)** (lu par `_etymo2racines.cjs`). ⚠️ **périmé** : ne couvre que 50 dinos, pas les 8 Cénozoïque + Edmontonia. |
+| [`etymo/_ETYMO-COMPLET-60.md`](etymo/_ETYMO-COMPLET-60.md) | Étymo au bon scope (60) + bon format oral, mais **pas encore câblé**. ⏳ Bascule canon = ticket EP-D-GED (vérifier couverture 8 mammifères/Titanis avant de repointer le générateur). |
 
 ## 🧭 (racine sources/)
 

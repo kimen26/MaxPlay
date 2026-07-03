@@ -28,7 +28,7 @@
 > ✅ **Vérif fact-check 2026-07-03** : 7/8 Grokipedia + 1 Wikipedia (Titanis). Chiffres honnêtes, échelle `_compLong/_compHaut/_compPoids` validée. Titanis corrigé 2,5m→1,9m.
 > ⚠️ **Taxo assumée** : les *terror birds* (Titanis) sont des OISEAUX, pas des mammifères → famille séparée (décision Papa Yann 2026-07-03, honnêteté taxo L-D03). Loup terrible + Rhino laineux sont bien des **mammifères** (`famille: 'mammiferes'` dans la data — répartition vérifiée `node` : mammiferes=7, oiseaux=1).
 > +3 entrées 2026-06-15 (relecture V3) : Patagotitan (Sauropodes 6→7), Centrosaure (Cératopsiens), Ichthyosaurus communis (Énaliosaures 6→7) — fiches audio V3 existaient sans entrée data. Count 48 → **51**. Puis 2026-07-03 : 51 → 59 (8 Cénozoïque) → **60** (Edmontonia, Thyréophores 4→5). Total dinos classiques = 52 + mégafaune 8 = 60.
-> ⚠️ Les libellés ci-dessus (noms scientifiques) ne mappent pas 1:1 les clés techniques `famille` de dinos-data.js (`trex`/`cou_long`/`arme`/`cornu`/`bec`/`raptor`/`pterosaures`/`enaliosaures`/`volant`). **À réconcilier par dino-archiviste** (écart libellés/clés préexistant).
+> ✅ **Réconcilié 2026-07-03 (DEC-GED-001)** : la correspondance libellé ↔ clé technique (`trex`/`cou_long`/`arme`/...) est gravée dans la **Table de réconciliation familles** ci-dessous (§ dédiée). Flag fermé.
 > Refonte taxo 2026-06-09 : famille **Énaliosaures** (6 reptiles marins) créée ; « Inclassables » dissoute (Therizinosaurus → Théropodes, Pachycéphalosaure → Cératopsiens) ; « Pas des dinosaures ! » recentrée sur Dimétrodon → « Avant les dinosaures ».
 Champs par famille : `sci` (titre scientifique) · `label` (surnom) · `sci_sens` (origine grecque dite en entrant) · `explic` (explication longue 🔊).
 
@@ -63,6 +63,33 @@ Le **bus est autorisé en échelle de taille** (validé Papa Yann) mais **interd
 | `wex` | `G54e8CyYslC2Y4ZupTlg` | Dialogue des récits (FR standard, sans tic écrit) |
 
 Résolus via `narration/personnages/voix-meta/voice-map.json`. Modèle **eleven_v3**, **stability 0,4** (dialogue), loudnorm en post. Accroche menu **2-7 s**.
+
+## 🏛️ Doctrine GED (DEC-GED-001, figée 2026-07-03)
+
+> Décision d'architecture. Détail + raison : [`decisions.md`](decisions.md) § DEC-GED-001. Ces règles rendent la GED durable (canonicité + complétude, en plus du rangement).
+
+1. 🔒 **CANON SANS NUMÉRO** — le fichier qui fait foi porte un nom stable sans version (`RECITS-EPOQUES.md`). L'historique descend dans un `_archive/` local daté. On **DÉSIGNE** le canon, on ne **SUPPRIME** jamais.
+2. 🔒 **ZÉRO CHIFFRE EN DUR** — aucun INDEX/README/CLAUDE.md/rule ne cite un count (dinos, familles, silhouettes). Ils POINTENT vers la source. ⚠️ **Ce fichier (INVARIANTS) est la SEULE exception légitime** : c'est le tracker des chiffres clés, c'est sa fonction — mais chaque chiffre cite sa source et date sa vérif. **Portée : la GOUVERNANCE uniquement, JAMAIS le contenu narré** — un récit/fiche DOIT dire « il y a 66 millions d'années », « 9 mètres » (règle figée anti-nian-nian). Ne jamais appliquer « zéro chiffre » au contenu que l'enfant entend.
+3. 🔒 **FRONTIÈRE AUTORING / PRODUIT** — une feature (mini-jeu, page) ne lit QUE `site/js/dinos-data.js` + assets `site/img/dinos/` référencés, nommés par `id` stable. Jamais elle ne monte lire dans `studio/` (non déployé). Donnée manquante → descend dans dinos-data.js via script d'export.
+4. 🔒 **CHECKLIST « DINO COMPLET » (8 axes)** — `hero · 5 scènes paléoart (headshot/manger/paris/ecosysteme/funfact) · coloriage · 5 segments audio (nom/taille/regime/funfact/recap) · silhouette · fiche fact-checkée+relue-péda · étymo · mesures`. (Le récit de voyage est par-époque, PAS par-dino → hors checklist.) Suivi via l'outil généré `_ETAT-DINOS.md` (branché dans dino-archiviste, ticket EP-D-GED).
+
+## 🧬 Table de réconciliation familles (clé technique ↔ libellé) — figée 2026-07-03
+
+> Résout le flag « écart libellés/clés ». Clé = `famille` dans dinos-data.js · libellé = titre scientifique UI. Total vérifié `node` : 60. ⚠️ **Comptes indicatifs** — source vivante = `dinos-data.js` (règle #2).
+
+| Clé technique | Libellé scientifique | ~count |
+|---------------|----------------------|--------|
+| `trex` | Théropodes | 13 |
+| `cou_long` | Sauropodes | 7 |
+| `arme` | Thyréophores | 5 |
+| `cornu` | Cératopsiens | 6 |
+| `bec` | Ornithopodes | 3 |
+| `raptor` | Dromæosaures | 8 |
+| `pterosaures` | Ptérosaures | 2 |
+| `enaliosaures` | Énaliosaures | 7 |
+| `volant` | Avant les dinosaures (Dimétrodon) | 1 |
+| `mammiferes` | Mammifères (Cénozoïque) | 7 |
+| `oiseaux` | Oiseaux (Cénozoïque) | 1 |
 
 ## Règles verrouillées (voir figees/encyclopedie.md)
 

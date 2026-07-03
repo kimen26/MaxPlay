@@ -1,6 +1,7 @@
 # Brief histoire — STORY-002 La Libellule impossible
 
-> **Stateless — user prompt.** Tu écris seul, avec ce brief + le brief personnages + ton micro-brief (section TON ANGLE) + le system.
+> **Stateless — user prompt.** Tu écris seul, avec ce brief + le brief personnages + le menu d'angles (commun à tous — pioche libre, ou rien) + le system.
+> **TOUS les writers reçoivent EXACTEMENT le même input.** Aucun angle ne t'est assigné. Dans ta note d'intention, tu DÉCLARES ce que tu as choisi (angle, POV, ouverture) et pourquoi ça t'a paru pertinent.
 > **Vague 5 — 2026-07-03** (BOUSSOLE resserrée + goût auteur + images libérées).
 
 ---

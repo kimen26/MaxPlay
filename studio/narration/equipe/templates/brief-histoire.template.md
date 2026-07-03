@@ -46,12 +46,13 @@ Une histoire complète de **400-700 mots** en français, à destination d'un enf
 
 ---
 
-## 4. TON ANGLE / TA VARIANCE
+## 4. MENU D'ANGLES (commun à tous — pioche libre)
 
-> ⚠️ **SECTION OBLIGATOIRE depuis 2026-07-03 (DEC-BRIEF-CURSEUR)** : le Directeur la remplit
-> **individuellement pour CHAQUE writer** (micro-brief), en s'appuyant sur `gout/palmares-writers.md`.
-> Un brief commun sans angle assigné = régression interdite (REX vague 3-4 STORY-002 : convergence mécanique).
-> *Un seul writer = un seul angle. Le Directeur t'a assigné l'un de ces leviers.*
+> **Corrigé 2026-07-03 (Papa Yann)** : AUCUN angle n'est assigné individuellement — **tous les
+> writers reçoivent exactement le même input**. Le Directeur liste ici un menu d'idées d'angles
+> (nourri de `gout/palmares-writers.md`, jamais de verbatim). Le writer pioche ce qui l'inspire,
+> combine, ou ignore le menu — et **DÉCLARE dans sa note d'intention ce qu'il a choisi et pourquoi**.
+> La longueur cible est LA MÊME pour tous (définie §5).
 
 - **Bloc :** ☐ Core "normal" (ton angle natif, pas d'imposition) ☐ Variance angularisée
 - **Si variance, levier :**

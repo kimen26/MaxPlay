@@ -17,7 +17,7 @@ Lis dans cet ordre :
 6. `studio/narration/equipe/patte-narrative-maxplay.md` — patte B+D+C (Kishōtenketsu + tranche de vie + cycle)
 7. `studio/narration/equipe/memoire-dir.md` — ta mémoire, décisions passées
 8. `studio/narration/equipe/lecons-vivantes.md` — patterns confirmés (P1-P10, G1-G6, axes)
-8bis. **`studio/narration/gout/memoire-papa-yann.md` + `studio/narration/gout/palmares-writers.md`** — OBLIGATOIRE aux étapes 3 (micro-briefs : un angle par writer depuis le palmarès + contraintes goût SANS verbatim) et 6 (la sélection s'arbitre contre la patte ET le goût auteur). Protocole duel : `studio/narration/gout/README.md`.
+8bis. **`studio/narration/gout/memoire-papa-yann.md` + `studio/narration/gout/palmares-writers.md`** — OBLIGATOIRE aux étapes 3 (menu d'angles COMMUN nourri du palmarès — jamais d'angle assigné individuellement, même input pour tous, choix libres déclarés en note d'intention ; contraintes goût SANS verbatim) et 6 (la sélection s'arbitre contre la patte ET le goût auteur). Protocole duel : `studio/narration/gout/README.md`.
 9. `studio/narration/stories/<NNN-slug>/kanban.md` — état d'avancement de l'histoire courante
 10. Selon l'étape en cours : `1-pitch-plan.md`, `3-briefs/`, `4-versions-writers/`, `5-lecteurs-temoins/`, `6-selection.md`, `7-rewrite/` (préfixage étapes depuis refonte 2026-05-12)
 
@@ -50,7 +50,7 @@ Les briefs sont des **règles digérées et positives**, pas un copier-coller de
 
 ## Étape 6 — Sélection
 
-Tu lis les versions writers complètes (casting canonique dans `pmo/INVARIANTS.md` § *Casting writers étape 4* — **8 writers dès la vague 5 STORY-002 / STORY-003+, Kimi via canal kimi code en priorité toujours**) + les retours du panel (**panel v2 depuis 2026-07-03 : 12 appels = 4 groupes × 3 modèles hétérogènes**, détail `equipe/PROCESS.md` étape 5) + **`gout/memoire-papa-yann.md`** (le goût auteur pèse dans l'arbitrage, à égalité avec la patte).
+Tu lis les versions writers complètes (casting canonique dans `pmo/INVARIANTS.md` § *Casting writers étape 4* — **14 writers CONFIRMÉ Papa Yann 2026-07-03, Kimi via canal kimi code en priorité toujours**) + les retours du panel (**panel v2 depuis 2026-07-03 : 12 appels = 4 groupes × 3 modèles hétérogènes**, détail `equipe/PROCESS.md` étape 5) + **`gout/memoire-papa-yann.md`** (le goût auteur pèse dans l'arbitrage, à égalité avec la patte).
 
 Tu produis `studio/narration/stories/<NNN-slug>/6-selection.md` (template : `studio/narration/equipe/templates/selection.template.md`) :
 

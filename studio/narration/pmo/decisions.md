@@ -96,6 +96,30 @@
 
 ---
 
+## 2026-07-04 — ❓ QUESTION OUVERTE — DEC-GOÛT-RECETTE-VS-QUALITÉ : Brief goût en RECETTES vs QUALITÉS
+
+**Auteur (REX)** : Papa Yann (2026-07-04 rejet à chaud opus-def v5).
+
+**Contexte** : Rejet opus-def (rang 3.5 panel) révèle que le brief avec « entrée par sensation corporelle » en RECETTE produit conformité mécanique — tous les tops v5 commencent par le même template juxtaposé (eau + soleil + boue) sans lien. Rejet verbatim : « illisible, pas fluide, sans queue ni tête ni enchaînement ». Le tueur n°1 n'est pas la sensation, c'est l'absence de **chaînage causal/gestuel** entre les phrases d'ouverture.
+
+**Hypothèse** : quand on demande une RECETTE (« entre par sensation »), les writers la suivent mécaniquement. Quand on demande une QUALITÉ (« l'ouverture doit couler, chaque phrase appelle la suivante »), la variance d'approche crée du vrai enchaînement, pas du template.
+
+**Questions levées** :
+1. Le brief STORY-002 v5 a-t-il vraiment donné la même RECETTE aux 14 writers ? (vérifier `3-briefs/brief-histoire.md` v5 § "Entrée par sensation")
+2. Si oui : comment reformuler les goûts futurs en QUALITÉS + CRITÈRES plutôt qu'en RECETTES ?
+3. Faut-il adapter le template `brief-histoire-v4-BOUSSOLE.md` (ticket ARCHI-014) pour bannir les recettes narratives et exprimer les goûts en calibres (fluidité, oralité, tonalité) ?
+
+**Évaluation** : à trancher avant brief STORY-003. Cible décision : 2026-07-08.
+
+**Fichiers impactés** :
+- 📋 `narration/pmo/decisions.md` (cette entrée)
+- 🔄 `gout/memoire-papa-yann.md` (hypothèse système documentée)
+- 🔄 `equipe/templates/brief-histoire-v4-BOUSSOLE.template.md` (ticket ARCHI-014 — réécrire section goûts)
+
+**Statut** : **QUESTION OUVERTE — En attente arbitrage Papa Yann avant 2026-07-10.**
+
+---
+
 ## 2026-07-03 (22:45) — REX DUEL STORY-002 : Papa Yann refuse les 2 champions panel — DATA MAJEURE
 
 **Auteur (narration-pmo)** : logé d'après REX Papa Yann 2026-07-03.

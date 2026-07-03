@@ -15,12 +15,13 @@ remplace: ancien `stories/ultime_debrief.md` (figé au 2026-05-05)  désormais
 
 ## SOMMAIRE
 
-1. [Patterns confirmés](#patterns-confirmés)  ce qui marche, vérifié sur N histoires
-2. [Pièges documentés](#pièges-documentés)  ce qui décroche / casse, à éviter
-3. [Axes narratifs (1-6)](#axes-narratifs)  palette pour writers guidés
-4. [Signal genre × accompagnement](#signal-genre-accompagnement)  qui aime quoi
-5. [Patterns en observation](#patterns-en-observation)  pas encore confirmés, à valider
-6. [Historique des révisions](#historique-des-révisions)
+1. [Patterns confirmés](#patterns-confirmés)  ce qui marche, vérifié sur N histoires
+2. [Leçons de processus](#leçons-de-processus)  gouvernance d'écriture, équité, workflow
+3. [Pièges documentés](#pièges-documentés)  ce qui décroche / casse, à éviter
+4. [Axes narratifs (1-6)](#axes-narratifs)  palette pour writers guidés
+5. [Signal genre × accompagnement](#signal-genre-accompagnement)  qui aime quoi
+6. [Patterns en observation](#patterns-en-observation)  pas encore confirmés, à valider
+7. [Historique des révisions](#historique-des-révisions)
 
 ---
 

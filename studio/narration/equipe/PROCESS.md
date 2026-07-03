@@ -5,7 +5,7 @@
 > **Pour l'organigramme et les agents, voir [`ORGANIGRAMME.md`](ORGANIGRAMME.md).**
 > **Pour l'index complet de l'équipe, voir [`INDEX.md`](INDEX.md).**
 >
-> Dernière mise à jour : 2026-05-12 (refonte structurelle — fusion Pitch+Plan, suppression étape 2 Architecte, préfixage fichiers par numéro étape, Archiviste maillon central proactif)
+> Dernière mise à jour : **2026-07-03** (boucle goût auteur — DEC-BRIEF-CURSEUR, DEC-PANEL-V2, DEC-DUEL-DE-GOUT : micro-briefs par writer obligatoires, panel 12 appels hétérogènes, lecture `gout/` obligatoire aux étapes 3 et 6, casting writers réduit à 8 dès la vague 5 de STORY-002 / STORY-003+). Précédente : 2026-05-12.
 
 ---
 
@@ -170,7 +170,8 @@
 | Champ | Valeur |
 |---|---|
 | **Owner** | Directeur (`narration`, Opus) |
-| **Inputs** | `1-pitch-plan.md`, `equipe/_writer-system.md` (source de vérité system — lu et validé une fois par arc), `equipe/templates/brief-personnages.template.md`, `equipe/templates/brief-histoire.template.md`, `personnages/theorie/pedagogie-enfance/` (boussole 4-5 ans à intégrer dans brief), `pmo/decisions.md`, `pmo/INVARIANTS.md` |
+| **Inputs** | `1-pitch-plan.md`, `equipe/_writer-system.md` (source de vérité system — lu et validé une fois par arc), `equipe/templates/brief-personnages.template.md`, `equipe/templates/brief-histoire.template.md`, `personnages/theorie/pedagogie-enfance/` (boussole 4-5 ans à intégrer dans brief), **`gout/memoire-papa-yann.md` + `gout/palmares-writers.md` (OBLIGATOIRE depuis 2026-07-03 — contraintes de goût dans le brief, angle par writer depuis le palmarès)**, `pmo/decisions.md`, `pmo/INVARIANTS.md` |
+| **🎯 Règles goût (DEC-BRIEF-CURSEUR, 2026-07-03)** | <ul><li>**Brief = BOUSSOLE** : quoi + intentions/causalités, JAMAIS de beats de mise en scène (REX vague 3 GPS : 11/14 clones).</li><li>**Intention obligatoire** : « produis UN moment physique mémorable/participatif » (intention, pas beat).</li><li>**Anti-Streisand** : si l'auteur a une version précise en tête, elle devient UNE intention + un critère de sélection étape 6 — jamais une mise en scène dictée.</li><li>**Micro-briefs OBLIGATOIRES** : la section « TON ANGLE / TA VARIANCE » du brief-histoire est remplie POUR CHAQUE writer (angle distinct, tiré de `gout/palmares-writers.md`). 1 brief commun + N angles ≠ N copies du même brief.</li><li>**Jamais de verbatim** : le brief ne cite aucune phrase du corpus des histoires précédentes (anti-contamination) — les goûts s'expriment en descripteurs craft.</li></ul> |
 | **Outputs** | <ul><li>`stories/<NNN-slug>/3-briefs/brief-personnages.md` (user brief pour tous writers)</li><li>`stories/<NNN-slug>/3-briefs/brief-histoire.md` (user brief pour tous writers)</li><li>`kanban.md` étape 3 ✅</li><li>**SYSTÈME FIGÉ** : `equipe/_writer-system.md` (partagé par tous stories du même arc)</li><li>✅ **OBSOLÈTE** : `brief-univers.md` (contenu gravé en `_writer-system.md`)</li><li>✅ **OBSOLÈTE** : `_writer-package.md` (remplacé par system/user split)</li></ul> |
 | **Qui reçoit quoi** | <table><tr><th>Writer</th><th>Type</th><th>System prompt</th><th>User briefs</th></tr><tr><td>Claude libre ×6</td><td>agent local</td><td>Lit `equipe/_writer-system.md` via Read tool</td><td>Lit `brief-personnages.md` + `brief-histoire.md` via Read tool</td></tr><tr><td>Kimi libre ×3</td><td>MCP stateless</td><td>`equipe/_writer-system.md` inliné dans prompt</td><td>`brief-personnages.md` + `brief-histoire.md` inlinés dans prompt</td></tr><tr><td>Kimi guidé ×1</td><td>MCP stateless</td><td>`equipe/_writer-system.md` inliné</td><td>`brief-personnages.md` + `brief-histoire.md` + axes 1-6 inlinés</td></tr><tr><td>DeepSeek ×2</td><td>MCP stateless</td><td>`equipe/_writer-system.md` inliné</td><td>`brief-personnages.md` + `brief-histoire.md` inlinés</td></tr><tr><td>Grok ×2</td><td>MCP stateless</td><td>`equipe/_writer-system.md` inliné</td><td>`brief-personnages.md` + `brief-histoire.md` inlinés</td></tr></table> |
 | **Contenu `equipe/_writer-system.md`** | <ul><li>**Section 1 — Patte narrative MaxPlay** : Kishōtenketsu, tranche de vie, micro-Ten, cadre cyclique (figé depuis 2026-04-24)</li><li>**Section 2 — Univers IMPLICITE** : règles d'or (pas de noms systèmes, pas d'ennéatypes étiquetés, univers en touches légères)</li><li>**Section 3 — Casting V1 figé + voix** : Wex (invariant) + Melki/Mimi/Dadou/Madie/Lulu/Pierrot/Raph/Juju/Nono (4F/5M), surnoms 4/5 du temps, prénoms complets réservés formel, voice_ids + tags writer par perso</li><li>**Section 4 — Saison 1 contraintes** : parents jamais en scène, compagnons = ondes/couleurs, sensibilité différenciée, pas d'antagoniste, pas de morale dite</li><li>**Section 5 — Vocabulaire** : interdits durs (mort, crever, clochard, etc.), vocabulaire négatif OK si pertinent</li><li>**Section 6 — Références externes** : pédagogie enfance 4-5 ans, ennéatype de chaque perso + interactions 9×9</li></ul> |
@@ -185,6 +186,9 @@
 ---
 
 ## Étape 4 — Versions writers (14 versions parallèles, refonte 2026-05-12 v2, architecture système/user 2026-05-15)
+
+> **⚡ 2026-07-03 — vague 5 STORY-002** : **Kimi passe par le canal `kimi-for-coding` (forfait code) en priorité TOUJOURS** (décision Papa Yann 2026-07-03) — le payant K2.6 seulement sur demande explicite. Chaque writer reçoit **son micro-brief** (section TON ANGLE remplie individuellement — voir étape 3).
+> 🚨 **Casting réduit à 8 = PROPOSÉ, en attente de confirmation explicite Papa Yann** (le casting 14 est FIGÉ dans INVARIANTS avec note anti-exclusion du 2026-05-17 — ARCHI-008 prévoyait la réduction après 3-5 histoires). Proposition : `kimi-reco` + `kimi-reco-guide` (kimi code ×2) · `claude-opus-def` + `claude-opus-reco` · `claude-sonnet-def` · `claude-haiku-reco` · `grok-def` + `grok-reco`. Tant que non confirmé : casting 14 en vigueur (avec Kimi payant remplacé par kimi code sauf demande explicite). Le tableau 14 ci-dessous = référence des vagues 1-4.
 
 > **Refonte 2026-05-12 v2** : passage de 10 → 14 writers pour calibration multi-modèles (Opus/Sonnet/Haiku + Kimi déf/reco/thinking + DeepSeek déf/reco + Grok déf/reco). Période d'évaluation : 3-5 histoires, puis arbitrage réduction (ticket ARCHI-008 dans backlog).
 > **"reco"** = température recommandée créatif officielle par fournisseur (pas "max" — car au-delà = incohérence narrative). Détail [`references/temperatures-llm.md`](references/temperatures-llm.md).
@@ -208,12 +212,23 @@
 
 ---
 
-## Étape 5 — Lecteurs témoins (panel 20)
+## Étape 5 — Lecteurs témoins (panel v2 — 12 appels hétérogènes, DEC-PANEL-V2 2026-07-03)
+
+> **🚨 Refonte 2026-07-03 (DEC-PANEL-V2, changement de règle figée VALIDÉ explicitement par Papa Yann)** : le panel « 20 appels tous Sonnet » est remplacé par **12 appels = 4 groupes × 3 modèles hétérogènes**. Motif : 20 avis du même modèle = risque de consensus mécanique (REX duel 002 : l'auteur a rejeté les 2 champions du panel). La variance vient de l'axe MODÈLE, pas du nombre de personas.
+>
+> | Groupe (1 appel = 1 groupe, rend les 2 tranches d'âge 3-5 ET 6-7) | Sonnet (agents `narration-lecteur`/`-dyade`) | Kimi (`ask_kimi`, canal kimi code) | Haiku ou DeepSeek |
+> |---|---|---|---|
+> | Garçon seul | ✓ | ✓ | ✓ |
+> | Fille seule | ✓ | ✓ | ✓ |
+> | Dyade papa | ✓ | ✓ | ✓ |
+> | Dyade maman | ✓ | ✓ | ✓ |
+>
+> = **24 voix en 12 appels**. Dyades CONSERVÉES (meilleurs signaux fins des vagues 1-4). Les profils détaillés (intro/extra) se répartissent entre les modèles d'un même groupe. Convergence inter-modèles = signal robuste ; divergence = information. **Test de calibration one-shot** à faire avant STORY-003 (2 paires : écart connu + quasi-identique). Le tableau 20 ci-dessous = référence historique vagues 1-4.
 
 | Champ | Valeur |
 |---|---|
-| **Owner** | Directeur (orchestrateur) — Lecteurs exécutent (agents `narration-lecteur` + `narration-lecteur-dyade`, Sonnet) |
-| **Inputs** | Les 14 versions writers + `equipe/profils-lecteurs.md` |
+| **Owner** | Directeur (orchestrateur) — Lecteurs : agents Sonnet (`narration-lecteur` + `narration-lecteur-dyade`) + MCP `ask_kimi` (kimi code) + Haiku/`ask_deepseek`, prompts profils depuis `equipe/profils-lecteurs.md` |
+| **Inputs** | Les versions writers + `equipe/profils-lecteurs.md` |
 | **Panel cible — 20 lecteurs** | **10 profils × 2 tranches d'âge.** Tranche A 3-5 ans = priorité (cible Max). Tranche B 6-7 ans = info complémentaire (anticipation + détection histoires qui décrochent à 6-7 ans). |
 | **Détail panel** | <table><tr><th>#</th><th>Profil</th><th>Tranche A 3-5 ans</th><th>Tranche B 6-7 ans</th></tr><tr><td>1-2</td><td>Garçon normal</td><td>G-A1</td><td>G-B1</td></tr><tr><td>3-4</td><td>Garçon intro/observateur</td><td>G-A2</td><td>G-B2</td></tr><tr><td>5-6</td><td>Garçon extra</td><td>G-A3</td><td>G-B3</td></tr><tr><td>7-8</td><td>Fille normale</td><td>F-A1</td><td>F-B1</td></tr><tr><td>9-10</td><td>Fille intro/observatrice</td><td>F-A2</td><td>F-B2</td></tr><tr><td>11-12</td><td>Fille extra</td><td>F-A3</td><td>F-B3</td></tr><tr><td>13-14</td><td>Dyade papa-Garçon</td><td>DPG-A</td><td>DPG-B</td></tr><tr><td>15-16</td><td>Dyade papa-Fille</td><td>DPF-A</td><td>DPF-B</td></tr><tr><td>17-18</td><td>Dyade maman-Garçon</td><td>DMG-A</td><td>DMG-B</td></tr><tr><td>19-20</td><td>Dyade maman-Fille</td><td>DMF-A</td><td>DMF-B</td></tr></table> |
 | **Outputs** | <ul><li>`lecteurs-temoins/<profil>-<tranche>.md` × 20</li><li>`synthese-lecteurs.md` à la racine du dossier histoire (consolidation Directeur : classement + patterns + citations clés). Sert d'input à l'étape 6 ET alimente `equipe/lecons-vivantes.md` post-canonisation.</li><li>`kanban.md` étape 5 ✅</li></ul> |
@@ -231,7 +246,8 @@
 | Champ | Valeur |
 |---|---|
 | **Owner** | Directeur (`narration`, Opus) |
-| **Inputs** | Les 14 versions + 20 retours lecteurs (panel 20 OBLIGATOIRE dès STORY-002, décision 2026-05-13) + `equipe/memoire-dir.md` + `equipe/patte-narrative-maxplay.md` |
+| **Inputs** | Les versions + retours lecteurs (panel v2 dès vague 5) + **`gout/memoire-papa-yann.md` (OBLIGATOIRE depuis 2026-07-03 — la sélection s'arbitre contre la patte ET le goût auteur)** + `equipe/memoire-dir.md` + `equipe/patte-narrative-maxplay.md` |
+| **🎯 Duel de goût (optionnel, DEC-DUEL-SCOPE 2026-07-03)** | Après la synthèse panel, le Directeur PEUT générer `site/duel-data.js` (fragments anonymisés top 4 + pépites) → Papa Yann joue sur `site/duel.html` → JSON ingéré dans `gout/memoire-papa-yann.md` + `gout/palmares-writers.md`. Le duel est un **calibreur de goût pour les briefs futurs, PAS un validateur de texte final** — un refus en finale est un signal, pas un veto. La validation étape 6 reste la lecture classique de la base par l'auteur. |
 | **Outputs** | <ul><li>`stories/<NNN-slug>/6-selection.md` (rempli depuis `equipe/templates/selection.template.md`)</li><li>`kanban.md` étape 6 ✅ + statut "EN ATTENTE AUTEUR"</li></ul> |
 | **Format `selection.md`** | <ul><li>**Version base choisie** (laquelle des 10 + pourquoi)</li><li>**Éléments à récupérer** d'autres versions (citations précises)</li><li>**Réactions lecteurs** à prendre en compte (citations + interprétation)</li><li>**Brief de rewrite** : ce qui doit changer, ce qui doit rester intact</li><li>**Tiebreak rule** : si 2 versions sont à égalité, le Directeur choisit celle qui colle le plus à la patte (B+D+C) — pas celle qui plaît le plus au lecteur enfant si elle dérive du Kishōtenketsu</li></ul> |
 | **Critères PASS** | <ul><li>`selection.md` rempli toutes sections</li><li>Choix justifié contre la patte narrative et les retours lecteurs</li><li>Brief rewrite actionnable (pas de "améliore globalement")</li></ul> |

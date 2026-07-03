@@ -22,10 +22,15 @@ Le duel réduit son effort à ~12 taps de 10 secondes + 2 lectures complètes (l
 
 | Pièce | Chemin | Rôle |
 |-------|--------|------|
-| App | [`site/duel.html`](../../../site/duel.html) | UI mobile A/B (PWA GitHub Pages) — fragments anonymisés, chips craft, export JSON |
-| Données | [`site/duel-data.js`](../../../site/duel-data.js) | Générées par le Directeur à l'étape 6 (fragments du top panel + pépites des éliminées) |
+| App duel | [`site/duel.html`](../../../site/duel.html) | UI mobile A/B (PWA GitHub Pages) — **COMPARER** des fragments anonymisés, chips craft, export JSON |
+| App lecture | [`site/lecture.html`](../../../site/lecture.html) | **ANNOTER en 1re lecture** (2e instrument, créé 2026-07-04) : tap un passage → chips ✨j'aime/👎ça pèche + texte libre + verdict global par histoire, export JSON. Pour capter le goût SANS comparaison (« wow c'est nul » / « ÇA c'est génial ») |
+| Données | [`site/duel-data.js`](../../../site/duel-data.js) · [`site/lecture-data.js`](../../../site/lecture-data.js) | Générées par le Directeur à l'étape 6 (duel : fragments top panel + pépites ; lecture : textes entiers anonymisés) |
 | Mémoire de goût | [`memoire-papa-yann.md`](memoire-papa-yann.md) | Descripteurs craft cumulés — lecture OBLIGATOIRE du Directeur (étapes 3 et 6) |
-| Palmarès writers | [`palmares-writers.md`](palmares-writers.md) | Qui gagne quoi, sur quel type de moment — alimente les micro-briefs |
+| Palmarès writers | [`palmares-writers.md`](palmares-writers.md) | Qui gagne quoi, sur quel type de moment — alimente le menu d'angles |
+
+**Deux instruments complémentaires** : le **duel** compare (signal relatif, rapide), la **lecture
+annotée** calibre (signal absolu, riche — le POURQUOI au passage près, à la 1re lecture, sans
+biais de comparaison). L'ingestion des deux alimente la même mémoire, mêmes règles anti-verbatim.
 
 ## Protocole (cycle par histoire)
 

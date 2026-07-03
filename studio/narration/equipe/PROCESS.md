@@ -161,6 +161,10 @@
 
 ## Étape 3 — Briefs writers
 
+> 🎨 **Craft (CRAFT-003)** : à l'étape 3, charger le sous-fichier `05-developpement` du skill
+> [`narration-craft`](../../../.claude/skills/narration-craft/SKILL.md) (calibrage 4-6 ans) ;
+> au rewrite étape 7 : `06-prose` + `02-voix`. Wiring complet : rule `.claude/rules/narration-craft.md`.
+
 > **Refonte 2026-05-15** : architecture writer **system/user split**. 
 > - `equipe/_writer-system.md` = system prompt permanent (tous writers, tous modèles). Mis à jour seulement au changement d'arc ou de saison. **Source de vérité globale : règles IMPLICITE, patte narrative, casting, univers.**
 > - Brief writer = briefs modulaires (personnages + histoire) reçus par tous writers en tant que **user prompts**. Chaque writer reçoit : system=`equipe/_writer-system.md` + user=`brief-personnages.md` + `brief-histoire.md`.
@@ -303,7 +307,7 @@
 |---|---|
 | **Owner** | Directeur (orchestrateur) — Lecteurs exécutent (`narration-lecteur` + `narration-lecteur-dyade`, Sonnet) |
 | **Inputs** | Le rewrite seul (`rewrite/<llm>-rewrite-v1.md`). **Sans** la version base d'origine, **sans** les autres versions writers — lecture neutre, lecteur reçoit juste le texte candidat à canonisation. |
-| **Panel — 20 lecteurs (panel complet)** | **Identique au panel étape 5** : 10 profils × 2 tranches d'âge (3-5 / 6-7). Décision auteur 2026-05-13 : panel 20 obligatoire pour TOUTES stories actives (y compris STORY-002). |
+| **Panel — 12 appels hétérogènes (DEC-PANEL-V2, 2026-07-03)** | **Identique au panel v2 étape 5** : 4 groupes × 3 modèles (Sonnet + Kimi + Haiku/DeepSeek), chaque appel rend les 2 tranches d'âge. Kimi via CLI `call-llm.mjs` si le MCP timeout (LP2). *(Historique : panel 20 tous-Sonnet jusqu'au 2026-07-03.)* |
 | **Format** | Fiches courtes (plus courtes qu'à l'étape 5 — pas de classement, pas de comparaison entre versions, juste **lecture du texte candidat seul**) : « J'ai aimé / J'ai pas compris / Je retiens / Je relirais oui-non ». Si le lecteur a déjà lu la base à l'étape 5, **on ne lui rappelle pas** — il lit naïf. |
 | **Outputs** | <ul><li>`stories/<NNN-slug>/9-relecture-rewrite/<profil>-<tranche>.md` × 20</li><li>`stories/<NNN-slug>/9-relecture-rewrite/synthese.md` (verdict consolidé Directeur)</li><li>`kanban.md` étape 9 ✅</li></ul> |
 | **Critères PASS** | <ul><li>20 fiches présentes (sauf écart documenté pour STORY-001 qui conserve panel historique de 6 lecteurs)</li><li>**Aucun retour structurel négatif** convergent (3+ lecteurs signalent la même régression = signal fort)</li><li>Au moins 70% des lecteurs (14/20) répondent positivement à « je relirais »</li><li>Si la version 5 du même panel avait classé la base #1 chez un profil et que ce même profil note maintenant une régression nette → bloquant</li></ul> |

@@ -89,18 +89,6 @@ const DINO_GROK = {
       "type": "grok"
     }
   ],
-  "anchiceratops": [
-    {
-      "url": "img/dinos/grok/anchiceratops_lot2_1_taille.jpg",
-      "label": "Sa taille",
-      "type": "grok"
-    },
-    {
-      "url": "img/dinos/grok/anchiceratops_lot2_1_environnement.jpg",
-      "label": "Son environnement",
-      "type": "grok"
-    }
-  ],
   "ankylosaurus": [
     {
       "url": "img/dinos/grok/ankylosaurus_inbox2_1_taille.jpg",
@@ -327,18 +315,6 @@ const DINO_GROK = {
       "type": "grok"
     }
   ],
-  "chasmosaurus": [
-    {
-      "url": "img/dinos/grok/chasmosaurus_lot2_1_taille.jpg",
-      "label": "Sa taille",
-      "type": "grok"
-    },
-    {
-      "url": "img/dinos/grok/chasmosaurus_lot2_1_environnement.jpg",
-      "label": "Son environnement",
-      "type": "grok"
-    }
-  ],
   "compsognathus": [
     {
       "url": "img/dinos/grok/compsognathus_lot2_1_environnement.jpg",
@@ -347,18 +323,6 @@ const DINO_GROK = {
     },
     {
       "url": "img/dinos/grok/compsognathus_lot2_1_sa_vie.jpg",
-      "label": "Sa vie",
-      "type": "grok"
-    }
-  ],
-  "diabloceratops": [
-    {
-      "url": "img/dinos/grok/diabloceratops_lot2_1_taille.jpg",
-      "label": "Sa taille",
-      "type": "grok"
-    },
-    {
-      "url": "img/dinos/grok/diabloceratops_lot2_1_sa_vie.jpg",
       "label": "Sa vie",
       "type": "grok"
     }
@@ -465,13 +429,6 @@ const DINO_GROK = {
       "type": "grok"
     }
   ],
-  "kosmoceratops": [
-    {
-      "url": "img/dinos/grok/kosmoceratops_lot2_1_sa_vie.jpg",
-      "label": "Sa vie",
-      "type": "grok"
-    }
-  ],
   "pachycephalosaurus": [
     {
       "url": "img/dinos/grok/pachycephalosaurus_inbox2_1_taille.jpg",
@@ -486,13 +443,6 @@ const DINO_GROK = {
     {
       "url": "img/dinos/grok/pachycephalosaurus_lot2_1_sa_vie.jpg",
       "label": "Sa vie",
-      "type": "grok"
-    }
-  ],
-  "pachyrhinosaurus": [
-    {
-      "url": "img/dinos/grok/pachyrhinosaurus_lot2_1_taille.jpg",
-      "label": "Sa taille",
       "type": "grok"
     }
   ],
@@ -803,18 +753,6 @@ const DINO_GROK = {
     },
     {
       "url": "img/dinos/grok/tyrannosaurus_lot1_3_chasse.jpg",
-      "label": "Sa vie",
-      "type": "grok"
-    }
-  ],
-  "utahceratops": [
-    {
-      "url": "img/dinos/grok/utahceratops_lot2_1_taille.jpg",
-      "label": "Sa taille",
-      "type": "grok"
-    },
-    {
-      "url": "img/dinos/grok/utahceratops_lot2_1_sa_vie.jpg",
       "label": "Sa vie",
       "type": "grok"
     }

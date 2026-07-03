@@ -3,6 +3,15 @@
 > Outil transverse de capture du goût de l'auteur (Papa Yann). Premier client : pôle NARRATION.
 > Conçu data-driven : dino & co brancheront leur propre `duel-data.js` plus tard.
 
+## 🎯 Rôle du duel (recadré par l'auteur, 2026-07-03)
+
+Le duel est un **calibreur de goût** qui nourrit les briefs et prompts writers futurs —
+**PAS un validateur de texte final**. La validation étape 6 reste une lecture classique
+de la base candidate par l'auteur. Le « duel finale » (2 textes entiers) est donc
+**optionnel et indicatif** : un refus des deux finalistes est un signal de goût précieux,
+pas un blocage du process. REX STORY-002 : l'auteur a refusé les 2 champions du panel en
+finale — donnée majeure pour les briefs, pas un veto formel.
+
 ## Le problème résolu
 
 Lire 14 histoires entières = mur. Le goût de l'auteur n'entrait jamais dans la machine,

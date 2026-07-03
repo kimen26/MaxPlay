@@ -11,23 +11,30 @@
 
 ---
 
-## 2026-07-03 (fin de session) — Correction duel.html : capture raisons de refus
+## 2026-07-03 (22:45, fin de session) — REX DUEL STORY-002 : Papa Yann refuse 2 champions + données majorantes
 
-**Objectif :** Améliorer UX app « Duel de goût » suite retour utilisateur vague 4 STORY-002 (« Il faut dire quand on refuse pourquoi ça va pas aussi »).
+**Objectif :** Logger le REX duel opérationnel et les données collectées de Papa Yann.
 
 **Fait :**
-- [x] site/duel.html : écran supplémentaire « Pourquoi aucun des deux ? » (chips défauts communs) quand choix "aucun des deux 👎" (commit 90458c73)
-- [x] JSON output révisé : `choix:"aucun"` + `defautsPerdant:[…]` au lieu de `pourquoi:[]` vides
-- [x] gout/README.md enrichi : journal évolutions UI (L.55-61), tracé décision 2026-07-03
+- [x] Duel 11 fragments STORY-002 vague 4 joué par Papa Yann : 5 gagnants, 1 égalité, 5 refusés
+- [x] Finale : refus COMPLET des 2 champions panel (grok 21 pts, kimi 18 pts) + raisons collectées
+  - Grok-reco v4 : trop long, sans dialogue (monologue Narrateur)
+  - Kimi-k26-instant v4 : trop long, fin sur punchline-pirouette (panel l'adore, auteur « terrible »)
+- [x] Ingestion memoire-papa-yann.md : descripteur « exigence > panel » + contre-goûts « trop long » + « punchline-pirouette »
+- [x] Signal critique : divergence auteur ↔ panel sur registre sortie. À surveiller STORY-003+.
 
-**Décisions prises :** aucune (exécution du support infrastructural de DEC-DUEL-DE-GOUT 2026-07-03)
+**Décisions prises :** aucune (donnée REX, pas décision)
 
-**Leçon** : pattern "capture structurée des défauts" → utile pour futurs épisodes (alimente mémoire-papa-yann.md)
+**Leçons graves** :
+1. Duel = calibreur de goût, pas validateur de texte final (optionnel/indicatif)
+2. Refus d'une finale est un signal de goût précieux pour les briefs suivants
+3. Quand panel s'extasie sur punchline → auteur peut refuser (registre divergent)
 
-**État au reboot :**
-- Duel.html opérationnel, prêt pour génération duel-data STORY-002 vague 4 (ticket ARCHI-DUEL-001)
-- STORY-002-SELECTION-REFONTE (🔴 BLOQUÉ) peut s'accélérer : app ready pour collecte Papa Yann
-- 3 tickets EN COURS inchangés : STORY-002-SELECTION-REFONTE + ARCHI-006 + ARCHI-014-TEMPLATE-BOUSSOLE
+**État au reboot** :
+- **Duel.html finalisé** (captures raisons de refus) → peut réitérer STORY-003+
+- **Mémoire-papa-yann enrichie** : 8 hypothèses + 3 contre-goûts + signal majeur
+- **Ticket STORY-002-SELECTION-REFONTE** : reste 🔴 BLOQUÉ. Refonte 6-selection basée duel + vague 4 données brutes obligatoire avant rewrite.
+- **3 tickets EN COURS inchangés** : STORY-002-SELECTION-REFONTE (🔴 BLOQUÉ) + ARCHI-006 + ARCHI-014-TEMPLATE-BOUSSOLE
 
 ---
 

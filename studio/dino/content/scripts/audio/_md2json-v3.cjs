@@ -20,7 +20,7 @@ const NARR = voiceMap.voices.narrateur_h;
 const WEX  = voiceMap.voices.wex;
 
 const BLOCS = { 'A': 'nom', 'B': 'taille', 'C': 'regime', 'D': 'funfact' };
-const FILES = ['ceratopsiens', 'trex-lot1', 'trex-lot2', 'sauropodes', 'volants-marins', 'armes-bizarres', 'ornithopodes-raptors', 'megafaune'];
+const FILES = ['ceratopsiens', 'trex-lot1', 'trex-lot2', 'sauropodes', 'volants-marins', 'armes-bizarres', 'ornithopodes-raptors', 'megafaune', 'edmontonia'];
 
 // id réels dinos-data.js pour validation
 let s = fs.readFileSync(path.join(__dirname, '..', '..', '..', '..', '..', 'site', 'js', 'dinos-data.js'), 'utf8');

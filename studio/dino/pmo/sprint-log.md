@@ -2,6 +2,25 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-07-03 — PHASE GRAVURE DEC-GED-001 : alignement doctrine + exécution Playbook (commit XXX)
+
+**Livré** :
+- ✅ **Doctrine GED fixée** (4 règles figées dans INVARIANTS.md § Doctrine GED) : canon sans numéro (noms stables) · zéro chiffre en dur hors INVARIANTS · frontière autoring/produit rigide · checklist « dino complet » 8 axes (hero, 5 scènes paléoart, coloriage, 5 segments audio, silhouette, fiche, étymo, mesures).
+- ✅ **Geste atomique récits figé** : V5→RECITS-EPOQUES.md (canon nommé), 5 scripts V1-V4 archivés historiquement dans `_archive/sessions/`.
+- ✅ **Table familles réconciliée** : 11 familles (9 dinosaures + 2 Cénozoïque) × clés techniques (`trex`/`cou_long`/`arme`/`cornu`/`bec`/`raptor`/`pterosaures`/`enaliosaures`/`volant`/`mammiferes`/`oiseaux`) ↔ libellés scientifiques UI, totaux vérifiés `node` = 60 dinos. Gravée § Table de réconciliation.
+- ✅ **Récits d'époque = décision STOP silhouettes** : no-op sur les index Voyage (pas de décomposition par récit/silhouette, gestion unitaire reste simple — future feature envisagée, pas urgent). Gravée Q-DINO-Voyage ouverte.
+- ✅ **2 INDEX dé-chiffrés** : `content/INDEX.md` (hub) + `sources/INDEX.md` (fiches) — zéro count inséré, pointent vers source de vérité.
+- ✅ **5 tickets EP-D-GED créés** : EP-D-GED-01 (outil _ETAT-DINOS.md audit), EP-D-GED-02 (réparer 10 heros cassés), EP-D-GED-03 (basculer étymo), EP-D-GED-04 (id stable renommage), EP-D-GED-05 (bloc-B canonique status).
+- ✅ **3 agents alignés** : dino-conseiller (content sémantique validé) · dino-archiviste (structure/refs cohérence) · dino-pmo (persistance multi-fichiers).
+
+**État au reboot** :
+- ✅ **60 dinos, 11 familles, 5 périodes, 4 régimes** structurés (INVARIANTS maj 2026-07-03)
+- ✅ **Doctrine GED inséparable de la gouvernance** — INVARIANTS uniquement (pas d'intrusion chiffres ailleurs)
+- ✅ **Playbook Nouveau Dino créé** : 7 phases (fact-check · data · audio · paléoart · Lunii · PMO · git) documentées pour l'intégration future
+- ✅ **Audit PMO complété** : 5 sections (découvrabilité INDEX, cohérence chiffres, état production, leçons → figées/skills, lean). Zéro critique ouvert.
+
+---
+
 ## 2026-07-03 — TÂCHE AUTONOME : Ajout Edmontonia (60e dino) — commit 4354ac68
 
 **Livré** :
@@ -15,6 +34,46 @@
 - ✅ Edmontonia data + dialogues V3 + 4 segments JSON prêts
 - ⏳ **Audio MP3 + image paléoart** en attente (inclus dans EP-D19 quota EL reset ~9 juillet)
 - ✅ **Count réel vérifié disque** : 60 dinos total, répartition trex 13, raptor 8, cou_long 7, enaliosaures 7, mammiferes 7, cornu 6, arme 5, bec 3, pterosaures 2, oiseaux 1, volant 1.
+
+
+
+---
+
+## 2026-07-03 — TEST GÉNÉRATION IMAGES CÉNOZOÏQUE (crédits épuisés)
+
+**Fait** :
+- ✅ Brave debug lancé (port 9222)
+- ✅ Preview Mammouth générée (prompt correct, données Cénozoïque bien intégrées)
+- ❌ ChatGPT : limite/crédits atteinte (exit 5)
+- ❌ Grok : limite/crédits atteinte (exit 5)
+
+**Conclusion** : Les deux canaux de génération d'images sont **épuisés**. Il faut attendre le reset des crédits (généralement ~24-48h pour ChatGPT, ~72h pour Grok).
+
+**Prochaine action** : Relancer `batch-dino-series.mjs mammuthus smilodon megatherium paraceratherium` quand les crédits seront rechargés.
+
+---
+
+## 2026-07-03 — NETTOYAGE IMAGES (exécution post-audit)
+
+**Fait** :
+- ✅ **179 fichiers timeout supprimés** dans `_new-xxl/` et `_new-headshots/`
+- ✅ **6 images doublons inter-espèces supprimées** : Carcharodontosaurus_ecosysteme/funfact/paris (copies de Centrosaurus) + versions paleoart
+- ✅ **2 images Apatosaurus doublons supprimées** : `_manger` = `_paris` (même image)
+- ✅ **20 images grok doublons supprimées** (inbox vs lot identiques)
+- ✅ **coloriage-test/ supprimé** (7 fichiers, tests obsolètes)
+- ✅ **2 fichiers temp/Dino doublons supprimés**
+- ✅ **2 images racine doublons supprimées** : Pentaceratops.jpg, Torosaurus.jpg (copies paleoart)
+
+**Résultat** :
+- `_new-xxl/` : 433 → 253 images (nettoyage timeout + doublons)
+- `_new-headshots/` : 53 → 52 images (nettoyage timeout)
+- `grok/` : 138 → 118 images (nettoyage doublons)
+- Espace libéré : ~25-30 Mo
+
+**Reste à faire** :
+- ⏳ Générer images XXL pour 8 dinos Cénozoïque (Mammuthus, Smilodon, Megatherium, Paraceratherium, Glyptodon, Aenocyon, Coelodonta, Titanis)
+- ⏳ Regénérer Carcharodontosaurus (3 scènes manquantes : ecosysteme, funfact, paris)
+- ⏳ Regénérer Apatosaurus_manger (scène manquante)
 
 ---
 

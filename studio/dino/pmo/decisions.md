@@ -2,6 +2,40 @@
 
 > Décisions datées (raison + impact). Les décisions **verrouillées** (jamais régresser) vivent dans [`../figees/encyclopedie.md`](../figees/encyclopedie.md).
 
+## 2026-07-03 — Cénozoïque : catégories Mammifère + Oiseau (TAXO honnête)
+
+**Décision Papa Yann** : nouvelle collection Cénozoïque mégafaune scindée en **2 catégories distinctes** (pas 1 seule « Mammifères ») :
+- **Mammifères** (5 dinos) : Mammuthus, Smilodon, Megatherium, Paraceratherium, Glyptodon.
+- **Oiseaux** (3 dinos) : Titanis, Aenocyon (loup terrible — tech: carnivore mammifère, UI « Oiseau »?), Coelodonta (rhino laineux — incertitude taxo).
+
+**Raison** : honnêteté taxonomique. Les terror birds sont des oiseaux, les mammouths sont des mammifères — les mélanger sous une seule étiquette donne une fausse impression phylogénétique. L'encyclopédie dino valorise les vraies catégories.
+
+**⚠️ Incertitude mineure** : Aenocyon (Canidé mammifère carnivore, fossile) n'est techniquement PAS un oiseau. Option futur si rigueur monte : créer sous-catégorie « Carnivores mammifères ». EN ATTENTE jeu vert pour regroupement permanent.
+
+**Impact** :
+- Code : `dinos-data.js` 2 entrées famille (`mammiferes`, `oiseaux`). INVARIANTS maj (9→11 familles).
+- UI onglet Familles : 11 carrés au lieu de 9, Mammifères + Oiseaux (label + accroche audio futur).
+- Aucun changement audio/voyage (8 récits historiques dinosaures = Triassic/Jurassic/Crétacé, Cénozoïque EN ATTENTE décision episode bonus).
+
+## 2026-07-03 — Cénozoïque structure : fiches individuelles onglet Familles (PAS 9e épisode Voyage)
+
+**Décision Papa Yann** : Cénozoïque mégafaune = **8 fiches dinos individuelles dans le même produit**, rangées sous onglet **Familles** (Mammifères + Oiseaux), PAS un 9e récit d'époque dans le Voyage.
+
+**Raison** : Le Voyage raconte les 8 grandes périodes = archi-décidé + mécanique historique (chronologie > 50 Ma chacune). Cénozoïque = récent (66 Ma → today) et micro-diversité (pas 1 époque unifiée comme le Crétacé final). Pédago 4 ans : épisode supplémentaire sur-charge, fiches indiv = plus simple.
+
+**Impact** :
+- Cénozoïque = section onglet « Familles » (même UI que Théropodes, Sauropodes, etc.), PAS section onglet « Voyage ».
+- 8 récits voyage = inchangé.
+- Audio : 51 dinos V3 (51 fiches × 5 MP3 bloc) + 8 Cénozoïque futurs = 59 fiches × 5 MP3 (79 MP3 supplémentaires post-reset EL).
+
+## 2026-07-03 — Titanis hauteur corrigée : 1,9 m (pas 2,5 m inbox)
+
+**Factcheck Wikipedia** : Titanis walleri oiseau terrifiant (extinct ~2 Ma Pliocène Floride). Inbox image donnait 2,5 m (probable confusion avec d'autres terror birds), Wikipedia sourced = **1,9 m**.
+
+**Correction appliquée** : dinos-data.js entrée `titanis` → `hauteur_m: 1.9` (pas 2.5). Impact mineur : comparaison _compHaut() ≈ « porte 1,9 m » (vs hypothétique 2,5 m = fausse). Dialogue V3 regénéré pour cohérence.
+
+---
+
 ## 2026-06-03 — Création du pôle DINO
 Le contenu dino devient un **pôle pair** de game/ et narration/ (transverse jeu+audio). Code déployé reste dans `site/`, lié par `.claude/rules/dino.md`. **Raison** : domaine assez gros + cross-cutting pour mériter sa gouvernance (PMO/archiviste/conseiller). Déclencheur : incident « doudou de Max » (gouvernance contenu manquante).
 
@@ -78,8 +112,62 @@ Menus en voix ElevenLabs (narrateur_h + narrateur_f pour le voyage), accroches *
 
 ---
 
+## 2026-06-19 — Production images paléoart XXL (5 scènes/dino)
+
+**Fait** : démarrage production massivement d'images paléoart pour fiches dino app (site/img/dinos/_new-xxl/). **Scope** : 5 scènes par dino (PNG enfant-échelle + alimentation + écosystème + Paris + fun-fact). **Source pilotage** : **Projet ChatGPT** (g-p-6a2c67ebc22c8191971eecf695ec5fec-dinosaure/project, prompt système paléoart) — **PAS** GPTs custom (qui donnait images sans direction artistique). **État** : 18 dinos ✅ complets, 3 partiels (1 scène manquante), 2 bloqués modération (Carcho/Dilo crus), ~28 à faire. **Limites atteintes** : quota images ChatGPT. Reprise documentée dans `site/img/dinos/_new-xxl/_REPRISE.md`. **Décision gravée** : projet ChatGPT authoritative (pas GPTs), pas inversion post-production (on génère direct les 5 scènes bonnes).
+
+## 2026-07-03 — Format images paléoart FIGÉ : JPEG q85 + WebP q90 (DÉCISION Papa Yann)
+
+**Contexte** : 255 images paléoart PNG générées 2026-06-19/07-01. Fini = **808 Mo PNG** en tout, repo massif. Papa Yann valide compression.
+
+**Décision Papa Yann (2026-07-03)** :
+- **Photos paléoart** (hero + 5 scènes : taille/manger/paris/écosystème/funfact) = **JPEG q85** (ffmpeg `-q:v 4`). Raison : compat universelle, Papa Yann veut zéro question de compatibilité navigateur enfant.
+- **Coloriages** (dessins au trait N&B + transparence) = **WebP q90**. Raison : préserve traits nets + transparence (JPEG détruirait la transparence et baverait les contours).
+- Résultat : **paleoart 771 Mo → 108 Mo (-86%)**. Repo **~113 Mo images** au lieu de 1,6 Go.
+- Les refs code (`dinos-data.js` champ `png:`, `dev-dinos.html` EXTRAS) **passées de .png à .jpg**.
+
+**Raison** :
+- App dino déployée GitHub Pages (bande passante limitée).
+- Enfant 4 ans sur tablette = batterie + data.
+- JPEG compat universel (tous navigateurs 2010+).
+- WebP gain optimal transparence (coloriages ne cassent pas).
+
+**Impact** :
+- **308 JPEG + 51 WebP déployés** dans `site/img/dinos/paleoart/`.
+- **0 PNG** en production (bruts HD archivés `_new-xxl/` gitignore).
+- Zones staging `_new-coloriage/`, `_new-headshots/`, `_new-ombre/`, `coloriage-test/` gitignorées (retouches locales, pas déploiement).
+- **EP-D18 clôturé**, chantier images terminé.
+
+**Figée** : prochaines images dinos (si regénération) = même format (JPEG paléoart, WebP coloriages). Pas de PNG en production.
+
+---
+
+## 2026-07-03 — 7 cératopsiens orphelins REJETÉS : anchiceratops, chasmosaurus, diabloceratops, einiosaurus, kosmoceratops, pachyrhinosaurus, utahceratops (DÉCISION Papa Yann)
+
+**Contexte** : 7 cératopsiens n'ont JAMAIS été intégrés à `dinos-data.js`, bien que des contenus orphelins existent : 5 MP3 chacun (35 fichiers total dans `site/audio/dinos/`) + 10 images grok (`site/img/dinos/grok/`) produits par une session passée. Signalé dans audit archiviste comme surplus "audio 58-60 vs 51 dinos".
+
+**Décision Papa Yann (2026-07-03)** :
+- ❌ **Ne PAS ajouter ces 7 cératopsiens** à l'encyclopédie dino. Ils restent hors-scope.
+- ✅ **Suppression des orphelins** : 35 MP3 (`site/audio/dinos/`) + 10 images grok (`site/img/dinos/grok/`) purgés.
+- ✅ **Régénération nettoyée** : `site/js/dinos-images-grok.js` régénéré via `_gen-grok.cjs` (32 dinos, 138 images, 0 ref résiduelle aux 7).
+
+**Raison** :
+- Encyclopédie = **51 dinos figés** (Tritri + 50 autres). Intégrer ces 7 changerait l'envergure pédagogique et la charge audio (51 × 5 blocs = 255 MP3 déjà massif).
+- Orphelins jamais validés péda/fact-checké par relecture externe.
+
+**Impact** :
+- **INVARIANTS inchangés** : 51 dinos, 255 MP3 audio (51 × 5 blocs).
+- **Audit critique résolu** : surplus "audio 58-60 vs 51" expliqué = ces orphelins. Compte audio dino = **51 par bloc** (figé).
+- **WARN « 25 menu-*.mp3 vs 17 attendus »** reste ouvert en backlog (non traité cette session, hors périmètre).
+- **Anti-glissement** : si future session retrouve ces cératopsiens dans une vieille trace (prompts, scripts), NE PAS les régénérer sans décision explicite Papa Yann.
+
+**Figée** : liste fermée 51 dinos. Hors-scope = hors-scope. Pas d'ajout sans decision produit explicite.
+
+---
+
 ## Questions ouvertes
 
+- **Q-DINO-12** (2026-06-19) : **UI galerie paléoart** — faut-il implémenter galerie 5 scènes (enfant/manger/écosys/paris/fun-fact) dans la fiche dino, ou garder 1 seule vignette ? (Décision produit à trancher Papa Yann.)
 - **Q-DINO-1** : faut-il faire apparaître « Ptérosaures » de façon encore plus visible (ex sous-titre dans la fiche des 2 ptérosaures) ? (soulevé 2026-06-03)
 - **Q-DINO-7** (2026-06-15) : **Tritri running gag** — **TRANCHÉ OUI 2026-06-15** : 3 touches légères injectées au Crétacé (Tricératops bloc A/C, Torosaure bloc A), toutes via Wex, fluides. Gravure figée : L-D10 `backlog.md` + section Tritri `figees/encyclopedie.md`.
 - **Q-DINO-8** (2026-06-15) : **3 dinos source manquants** — **TRANCHÉ/RÉSOLU 2026-06-15** : 3 entrées créées dinos-data.js (Patagotitan id patagotitan · Centrosaure id centrosaurus · Ichthyosaurus communis id ichthyosaurus), chiffres vérifiés Grokipedia, JS validé, count DINOS → 48→**51**, INVARIANTS MAJ.

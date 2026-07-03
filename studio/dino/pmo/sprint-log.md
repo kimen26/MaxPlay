@@ -2,6 +2,153 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-07-03 — SESSION FAMILLE MAMMIFÈRES + OISEAUX : Cénozoïque mégafaune intégrée (commit ab818798)
+
+**Livré** :
+- **2 familles créées** : `mammiferes` (5 dinos) + `oiseaux` (3 dinos). Pass 9→11 familles.
+- **8 dinos Cénozoïque intégrées** : Mammuthus, Smilodon, Megatherium, Paraceratherium, Glyptodon, Aenocyon (loup terrible), Coelodonta (rhino laineux), Titanis (oiseau terrifiant). Pass 51→59 dinos.
+- **1 nouvelle période** : `cenozoique` (66 Ma → aujourd'hui) ajoutée `DINO_PERIODES`.
+- **Fact-check validé** : 7/8 Grokipedia + 1 Wikipedia (Titanis). Chiffres honnêtes taille/poids/régime, échelle _compLong/_compHaut/_compPoids sortie exacte.
+- **Dialogues V3 écrits** : `studio/dino/content/scripts-audio/V3/megafaune.md` (8 bêtes × 4 blocs, Narrateur H + Wex). **32 segments JSON générés** dans `V3/json/` : `_seg-mammuthus-*.json`, `_seg-smilodon-*.json`, etc. Grep-interdits passé ✅ (0 max/doudou/peluche/bus).
+- **Images inbox rangées** : `/studio/dino/content/sources/megafaune/_refs-visuelles/` (28 PNG domaine public, non déployées).
+- **INVARIANTS maj** : counts 51→59 dinos, 9→11 familles, 4→5 périodes. Clé 🔒 gravée : 2 catégories nom-pas-1-seule (Mammifère/Oiseau, honnêteté taxo).
+
+**Décisions Papa Yann gravées (decisions.md)** :
+- Q-DINO-nouvelle : Cénozoïque = fiches individuelles onglet Familles (PAS 9e épisode Voyage, tranché « pas besoin »).
+- 2 catégories UI : « Mammifère » + « Oiseau » (honnêteté taxo).
+- Titanis : 1,9 m (corrigé inbox 2,5 m → Wikipedia).
+
+**EN ATTENTE (ticket ouvert)** :
+- **EP-D19** (ou numéro libre) : **AUDIO MP3 BLOQUÉ** — quota ElevenLabs épuisé (118055/122630 char restant ~4575). 32 segments JSON prêts, audio en pause jusqu'au reset ~9 juillet. Alors : MCP `studio_audiobook_from_segments_v2_dialogue` batch + loudnorm + câblage `DINO_AUDIO` dev-dinos.html.
+- **Images paléoart** : 8 bêtes × 5 scènes attendues (skill dino-paleoart). Pngs data Mammuthus/Smilodon/Megatherium/Paraceratherium/Glyptodon/Aenocyon/Coelodonta/Titanis (casse exacte). En-attente, onerror masque images (pas rendu cassé).
+
+**Leçon gravée (L-D18)** : « **Sous-agents qui sous-délèguent en no-op** ». REX 2026-07-03 : 2 sous-agents (archiviste + conseiller) ont chacun annoncé faire le travail au 1er tour sans l'exécuter + 1 sub-agent factcheck imbriqué pareil. Pattern : relancer EXPLICITE « exécute toi-même, tu n'as pas de sous-agent » → tous ont produit du travail. Le système reste fiable parce que main agent vérifie et relance — ne JAMAIS prendre « je vais faire X » pour argent comptant, exiger le livrable.
+
+**Correctif mineure** : 1 MP4 « Pierre et le Loup » 68 Mo committé par mégarde (git add -A inbox) → dépasse limite GitHub 50 Mo (warning, non-bloquant). À nettoyer/gitignorer futur.
+
+**État au reboot** :
+- ✅ **59 dinos, 11 familles, 5 périodes** (INVARIANTS maj)
+- ✅ **Cénozoïque = section onglet Familles**, fiches individuelles (pas épisode Voyage)
+- ✅ **32 segments JSON V3 prêts**, audio EN ATTENTE quota EL reset
+- ✅ **8 images paléoart attendues** (futures)
+- ⏳ **EP-D19 ouvert** (audio post-reset 9 juillet)
+
+---
+
+## 2026-07-03 - [ARCHIVISTE] Audit FORME complet (5 sections)
+
+**État** : ✅ Fait. VERT — pôle = 100 % conforme.
+
+**Résumé** : audit structure (préfixes, gabarit, refs, orphelins, cohérence). Zéro CRITIQUE/HAUTE. Actions JAUNE : images `_new-xxl/` à inventorier, inbox à cataloguer. Détail `audit-trail.md`.
+
+---
+
+## 2026-07-03 — SESSION IMAGES : câblage hero, Ichthyosaurus aquarium, format JPEG/WebP décidé, compression 86%
+
+**Fait :**
+- **Câblage hero Torosaurus + Pentaceratops** : pointaient encore vers vieilles images `grok/*.jpg` → re-câblés sur paléoart (code `site/js/dinos-data.js`).
+- **Image manquante générée** : `Ichthyosaurus_paris.jpg` (scène aquarium). DÉCISION Papa Yann validée : dino 100% marin = aquarium (enfant debout AU SEC devant vitre, ichtyosaure nage derrière), pas avenue RATP (animal aquatique ne tient pas trottoir). Plongeur adulte rejeté (no échelle enfant). Version aquarium gardée, brut plongeur archivé `_new-xxl/Ichthyosaurus_paris-plongeur.png`.
+- **Format images figé** : JPEG q85 (ffmpeg -q:v 4) pour photos paléoart (compat universelle). WebP q90 pour coloriages N&B+transparence (préserve traits, pas bavure JPEG). Résultat : dossier paleoart 771 Mo → 108 Mo (-86%). Repo ~113 Mo images au lieu de 1,6 Go.
+- **Refs code mises à jour** : `dinos-data.js` champ `png:` → `.jpg`, `dev-dinos.html` EXTRAS → `.jpg`. 308 JPEG + 51 WebP déployés, 0 PNG.
+- **Zones staging gitignore** : `site/img/dinos/_new-xxl/`, `_new-coloriage/`, `_new-headshots/`, `_new-ombre/`, `coloriage-test/` gitignorées (bruts HD ChatGPT/Grok, retouches locales, non déployés).
+- **État final DÉCLARÉ TERMINÉ** par Papa Yann : chantier images app dino clôturé. Reste juste "quelques ombres chinoises à voir demain" (dossier `_new-ombre/` staging).
+
+**Leçon grave (REX)** :
+- **L-D16 — Staging concurrent cassé** (confirmé à nouveau) : mon `git commit` a affichté "no changes" car session concurrente a emporté fichiers stagés avant. Poussé via chemin démarche (stager/commiter vite, vérifier HEAD, pas se fier au message), contenu bien en production (vérif : `git show HEAD` = 308 JPEG + 51 WebP, code en .jpg). Rappel pattern : ne pas solo-commit sans vérif finale HEAD.
+
+**Correctifs archiviste appliqués (2026-07-03, commit cc2c95f3)** :
+- **Casse fichiers paleoart** : 82 fichiers en minuscule (ex `albertosaurus_manger.jpg`) alors que code cherchait Majuscule → 404 GitHub Pages (Linux casse-sensible, invisible Windows). Renommés min→Maj.
+- **Vignettes racine** : ajout `img/dinos/Pentaceratops.jpg` + `Torosaurus.jpg` (menu/dico/chrono utilisent `img/dinos/${d.png}` sans préfixe paleoart/, manquaient pour ces 2 ex-grok).
+- **Résultat** : 0 ref EXTRAS orpheline (casse exacte validée), 51/51 vignettes racine présentes.
+- **REX audit** : archiviste a remonté "43 vignettes manquantes" = **FAUX POSITIF sur la cause** (files existaient, HTTP 200 local) MAIS a correctement flairé **vrai problème = CASSE FS**. Confirme `feedback_verifier_claims_agents` : vérifier claims avec git/ls/curl. Son claim "audio 58-60 vs 51 dinos" = HORS PÉRIMÈTRE session (aucun audio touché) → backlogue ultérieur, pas blocker.
+- → **L-D17 gravée** (casse FS Windows vs Linux, toujours tester casse exacte sur GitHub Pages).
+
+**Purge cératopsiens orphelins (commit 992c85ca — decision Papa Yann)** :
+- **7 cératopsiens rejetés** : anchiceratops, chasmosaurus, diabloceratops, einiosaurus, kosmoceratops, pachyrhinosaurus, utahceratops (jamais intégrés dinos-data.js).
+- **Suppression orphelins** : 35 MP3 (`site/audio/dinos/`) + 10 images grok (`site/img/dinos/grok/`) purgés.
+- **Régénération nettoyée** : `dinos-images-grok.js` via `_gen-grok.cjs` (32 dinos, 138 images, 0 ref résiduelle).
+- **Résultat** : finding CRITIQUE audit archiviste "audio 58-60 vs 51" → **RÉSOLU** (surplus = orphelins). Compte audio dino = **51 par bloc** (figé).
+
+**État au reboot (2026-07-03 FINAL)** :
+- ✅ **255 images paléoart** (100%) + **51 images coloriages** déployées GitHub Pages
+- ✅ **Format figé** : JPEG q85 paléoart, WebP q90 coloriages
+- ✅ **Compression validée** : 771 Mo → 108 Mo images, repo ~113 Mo total
+- ✅ **Casse fichiers corrigée** : 82 min→Maj, 51/51 vignettes OK
+- ✅ **Orphelins purgés** : 7 cératopsiens + 35 MP3 + 10 images supprimés
+- ✅ **EP-D18 CLÔTURÉ DÉFINITIF** (2026-07-01 + correctifs 2026-07-03 + purge 992c85ca)
+- ✅ **Chantier images + nettoyage TERMINÉ**, Papa Yann déclaré fini
+- **Ticket suivant** : ombres chinoises (voir demain)
+
+---
+
+## 2026-07-01 — SESSION FINALE images paléoart (16 dinos restants, 80 images, 100%)
+
+**Fait :**
+- **Production finale** : 16 dinos restants complétés (80 images PNG) sur 2 canaux ChatGPT + Grok.
+- **Total atteint** : **51 dinos complets** (5/5 scènes chacun) = **255 images PNG** déployées dans `site/img/dinos/paleoart/`.
+  - Scènes par dino : `taille` (échelle enfant 1m), `manger` (régime alimentaire), `paris` (écosystème), `funfact` (anecdote paléo), `ecosystem` (variante écosystème).
+- **DINO_EXTRAS mis à jour** dans `dev-dinos.html` : mapping complet des 51 dinos × 5 scènes.
+- **Vérification disque** : `ls site/img/dinos/paleoart/` confirme 255 PNG, 0 manquant, 0 parasite.
+- **Ticket EP-D18 clôturé** : passage de « 73% — 16 dinos restants » → ✅ **TERMINÉ**.
+
+**État au reboot :**
+- ✅ **255 images paléoart déployées** (100% des 51 dinos)
+- ✅ **DINO_EXTRAS à jour** dans `dev-dinos.html`
+- ✅ **EP-D18 TERMINÉ 2026-07-01**
+- **Pôle DINO images paléoart = PRODUCTION FINALE ATTEINTE**
+
+---
+
+## 2026-06-28 — SESSION MARATHON images paléoart (35 dinos complets, 187 images, 73%)
+
+**Fait :**
+- **Production massive** sur 2 canaux : ChatGPT (22 dinos) + Grok (13 dinos).
+- **187 images PNG** générées et déployées dans `site/img/dinos/paleoart/`.
+- **35 dinos complets** (5/5 scènes) : Albertosaurus, Allosaurus, Amargasaurus, Ankylosaurus, Apatosaurus, Archaeopteryx, Archelon, Baryonyx, Brachiosaurus, Camarasaurus, Carcharodontosaurus, Carnotaurus, Centrosaurus, Ceratosaurus, Cryolophosaurus, Deinonychus, Dilophosaurus, Dimetrodon, Diplodocus, Edmontosaurus, Elasmosaurus, Euoplocephalus, Gallimimus, Giganotosaurus, Iguanodon, Kentrosaurus, Liopleurodon, Microraptor, Pachycephalosaurus, Parasaurolophus, Patagotitan, Plateosaurus, Protoceratops, Pteranodon, Quetzalcoatlus.
+- **Bug corrigé** : faux positif limite ChatGPT — le script `gpt-gen-dino.mjs` lisait `document.body.innerText` qui incluait la sidebar avec l'historique des chats (contenant "Limite de génération d'image" — titre d'un ancien chat). Corrigé pour cibler uniquement la zone de contenu principale (`main` ou `[data-testid="conversation-turn-3"]`).
+- **Quota observé** : ChatGPT ~15-20 images/session (lots de 3-4 dinos), Grok ~10-15 images/session (lots de 2-3 dinos).
+- **Stratégie** : alterner ChatGPT et Grok quand un canal est en limite. ChatGPT = plus rapide (images HD ~3Mo), Grok = plus stable mais images plus petites (~400Ko).
+
+**Reste à faire** (16 dinos = 80 images) :
+- Ophthalmosaurus, Oviraptor, Pentaceratops, Shonisaurus, Spinosaurus, Stegosaurus, Tarbosaurus, Therizinosaurus, Torosaurus, Triceratops, Troodon, Tyrannosaurus, Utahraptor, Velociraptor
+- + Ichthyosaurus funfact, Mosasaurus paris+funfact
+
+**État au reboot :**
+- ✅ **187 images déployées** dans `site/img/dinos/paleoart/`
+- ✅ **Skill `dino-paleoart` mis à jour** (quota, bug corrigé, bilan session)
+- ✅ **Backlog EP-D18 mis à jour** (73% faits, 16 dinos restants)
+- **À faire** : reprise quand crédits ChatGPT/Grok rechargés
+
+---
+
+## 2026-06-19 — Production images paléoart XXL + pipeline prompting consolidé (fin session)
+
+**CONSOLIDATION FINALE :**
+- ✅ **Pipeline paléoart finalisé** (après nombreux réglages avec Papa Yann) : **prompt STRUCTURÉ EN SECTIONS** = CONTEXTE · RÔLE · OBJECTIF · LE DINOSAURE (specs chiffrées) · L'ENFANT · DÉCOR riche · CAMÉRA · STYLE. Skill `dino-paleoart` (user-level). **Validé visuellement sur Diplodocus.**
+
+- ✅ **4 LEÇONS DE PROMPTING gravées** (réutilisables tout contenu image) :
+  1. **ZÉRO consigne négative** « Streisand » (ne jamais nommer ce qu'on ne veut pas → le modèle le produit). Tout formuler en positif.
+  2. **DONNER LES VALEURS chiffrées** (longueur, hauteur, cou, queue…), jamais « très longue queue ». Hauteur fiche Grokipedia prime.
+  3. **Échelle = enfant 1 m EST le repère**, pas de règle graduée. Donner les mesures exactes, laisser LLM caler ratio, ne pas sur-instruire.
+  4. **Décor soigné 2-3 lignes** (flore/régime, sol, petite faune) · **Caméra** : voir animal en ENTIER + nature bords · **Couleur en LIBERTÉ** (teintes + motifs au choix, on connaît pas vraies couleurs).
+
+- ✅ **DEUX CANAUX consolidés**, toujours viser le PROJET (jamais chat lambda ni GPTs custom) :
+  - **ChatGPT** : projet « Dinosaure » `g-p-6a2c67ebc22c8191971eecf695ec5fec`
+  - **Grok** : projet « Dinosaures » `89187fb9-a866-4373-82c4-cd136bb6905c` (option `--grok` du batch)
+  - Note Grok : image sur assets.grok.com/.../generated/, téléchargée via page.request.get (fetch page = 403).
+
+- ✅ **ÉTAT production** : 18 ✅ complets (5/5 scènes) · 3 partiels (1 scène manquante) · 2 bloqués modération ChatGPT (Carcho/Dilo crus) · ~28 pas encore faits. **Limite crédits images ChatGPT + Grok atteinte → reprise pilotée depuis Telegram.** Tout prêt (scripts node --check OK, `_REPRISE.md` à jour avec commandes + ordre 51 dinos + ids).
+
+- ✅ **110 PNG batch 1** (via GPTs custom ancien, avant pipeline finalisé) : GARDÉS mais seront repassés avec pipeline finalisé si temps.
+
+- **Q-DINO-12 rappel** : galerie 5 scènes vs 1 vignette dans l'UI dino → décision Papa Yann.
+
+**État au reboot :**
+- ✅ **Skill `dino-paleoart` finalisé** (prompts structurés SECTIONS, leçons gravées)
+- ✅ **Scripts batch validés** (node --check OK, `_REPRISE.md` ordre 51 dinos)
+- ✅ **Production = EN PAUSE crédits**, tout documenté pour reprise
+- **Q-DINO-12 ouverte** : galerie ou vignette
+
 ## 2026-06-17 (suite 3) — Clarification DÉCISION : images Lunii FOND NOIR NATIF (pas inversion post)
 
 **Fait :**

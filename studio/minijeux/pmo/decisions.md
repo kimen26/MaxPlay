@@ -8,6 +8,41 @@
 
 ---
 
+## 2026-07-04 — Refonte visuelle plateforme Phase 1 livrée (hub « La ligne de Max »)
+
+**Contexte** : Papa Yann demande benchmark + proposition refonte visuelle complète ("trop basique, tabulaire, pas wow"). Process : explore site + benchmark web (Khan Kids/PBS/Toca/Duolingo ABC/Lunii/NN-g) + consultation 3 conseillers (game, dino, narration) + test lecteur-dyade simulé. Plan approuvé Papa Yann.
+
+**Décisions figées** :
+
+1. **Concept « La ligne de Max »** = hub v2 : Voie A (ligne de bus horizontale, 6 arrêts, PAS de ville scrollable parallax qui chevaucherait WexWorld P2). Validé Papa Yann 2026-07-04.
+
+2. **6 arrêts + mapping catégories** :
+   - Dodo des bus (compter+logique)
+   - Garage de réparation (couleurs+bricoler+libre)
+   - Maison des lettres (lire)
+   - Place du monde (monde+observer)
+   - Vallée des dinos (dinos)
+   - Roulotte (histoires, placeholder)
+   - **Vocab Max respecté** : "dodo" = Centre bus · "garage" = Réparation · "terminus" JAMAIS utilisé.
+
+3. **PAS Wex mascotte globale** (unanime 3 conseillers) — dilution, réservé WexWorld P2 + Coin histoires. **Défaut retenu** : bus animé muet + voix off TTS neutre (lieux nommés à voix haute au tap). Reversible.
+
+4. **Construction EN PARALLÈLE** : `index2.html` (hub v2), `index.html` INTACT (anti-désorientation, Max connaît menu par cœur).
+
+5. **Sons victoire existants CONSERVÉS** : FF7/Pokémon/Gagné — Max les connaît. Klaxon-prout 1/20 dans `celebrate.js`.
+
+6. **Trajet bus skippable au tap** : feedback lecteur-dyade = friction après 4-5 répétitions.
+
+**État livré** (commit 9fc79b03, pushé) :
+- `site/index2.html` : hub scène crépuscule, 6 arrêts SVG, bus IDFM roulant, panneau lieu avec étoiles/verrous via `catalog/stars/unlock`
+- `site/css/theme.css` : design system par zone `--zone-h`, `@view-transition`
+- `site/js/celebrate.js` : confettis canvas, `flyStar`, honk/fart, pool sons
+- Vérification : 5 screenshots Playwright (paysage/portrait/3 panels), zéro erreur console
+
+**Statut** : ✅ acté 2026-07-04. Questions ouvertes pour Papa Yann : mascotte définitive ? bascule `index2→index` quand ? identité sonore future ?
+
+---
+
 ## 2026-06-03 — Refonte archi monorepo (site/ + studio/) + Phase 6 DÉFÉRÉE
 Migration complète : `game/web` → **`site/`** (déployé), `game/`+`dino/`+`narration/`+`game/phaser` → **`studio/{minijeux,dino,narration,max-adventure}`**. Racine propre. App testée (screenshots), CI à jour, hooks/rules/signal verts. 6 commits.
 **Phase 6 (reorg interne `site/` en sous-dossiers `platform/minijeux/dino`) = DÉFÉRÉE** (validé Papa Yann). Raison : gain surtout dev-side/cosmétique, coût = surgery HTML + re-test des 22 jeux. **Pas de reset progression** (gameId = nom de fichier via `tracker.js` `_detectGameId`, folder-indépendant). **À faire au déploiement narration** (3ᵉ domaine dans site/) OU pass dédié « URLs propres + redirections », pas avant.

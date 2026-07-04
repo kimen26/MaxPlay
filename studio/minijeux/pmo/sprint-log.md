@@ -9,6 +9,38 @@
 
 ---
 
+## 2026-07-04 — [HUB VISUEL] Refonte plateforme Phase 1 « La ligne de Max » livrée
+
+**Owner** : Papa Yann + game-conseiller + dino-conseiller + narration-conseiller + lecteur-dyade
+
+**Trigger** : Papa Yann demande refonte visuelle complète ("trop basique, tabulaire, pas wow").
+
+**Fait** (commit 9fc79b03 pushé) :
+1. **Index2.html hub v2** : scène crépuscule, 6 arrêts SVG, bus IDFM roulant animé, panneau lieu (étoiles/verrous), trajet bus skippable au tap.
+2. **Design system** (`site/css/theme.css`) : `--zone-h` par arrêt, `@view-transition` fluide.
+3. **Célébration** (`site/js/celebrate.js`) : confettis canvas, `flyStar` étoile rebondissante, honk/fart pool (klaxon 1/20).
+4. **Décisions figées** (gravées `decisions.md`) :
+   - Concept « La ligne de Max » = Voie A (bus horizontal, 6 arrêts, pas parallax ville)
+   - 6 arrêts mapping catégories (dodo/garage/maison-lettres/place-monde/vallée-dinos/roulotte)
+   - PAS Wex mascotte (unanime conseillers) — bus muet + TTS voix off neutre
+   - Construction parallèle index2/index1 (anti-désorientation)
+   - Sons victoire conservés (FF7/Pokémon/Gagné)
+   - Trajet bus skippable (feedback lecteur-dyade)
+
+**Vérifications** :
+- 5 screenshots Playwright (paysage/portrait/3 panels) ✅
+- Console zéro erreur ✅
+
+**État au reboot** :
+- Phase 1 LIVRÉE (hub scène crépuscule + 6 arrêts naviguant OK)
+- Phases restantes (backlog tickets si utile) :
+  - **P2** : vallée dinos (fiches 3 strates, mur silhouettes — pôle DINO, juste référencer)
+  - **P3** : roulotte histoires (quand narration livre)
+  - **P4** : harmonisation mj-XX (injection theme légère, figées respectées)
+- **Questions ouvertes** : mascotte définitive ? bascule index2→index quand ? identité sonore future ?
+
+---
+
 ## 2026-06-08 — [PISTE PRODUIT] Lassitude bus Max + exploration thème dino (EP-041)
 
 **Trigger** : Signal Papa Yann observé dans session DINO (2026-06-08) — Max n'a plus envie de jouer aux mini-jeux bus actuels.

@@ -217,7 +217,7 @@
   position: absolute;
   bottom: 17.5%;
   left: 0;
-  width: 150px;
+  width: var(--bus-w, 150px);
   will-change: transform;
   pointer-events: none;
   filter: drop-shadow(0 6px 8px #0009);
@@ -452,6 +452,19 @@
   white-space: nowrap;
 }
 .hub-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+/* ─── Écrans étroits (téléphone portrait) ────────────────────────────── */
+
+@media (max-width: 640px) {
+  .stop-sign {
+    font-size: .82rem;
+    padding: 6px 10px;
+    gap: 6px;
+  }
+  .stop-sign .dot { width: 10px; height: 10px; }
+  .hub-title { font-size: 1.05rem; }
+  .sky-moon { width: 44px; height: 44px; }
+}
 
 /* ─── Accessibilité mouvement ────────────────────────────────────────── */
 

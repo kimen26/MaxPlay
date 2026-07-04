@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
   <title>MaxPlay — La ligne de Max</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚌</text></svg>">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#16304a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/theme.css">
   <style>
@@ -71,9 +75,14 @@
     { zone:'roulotte', label:'La roulotte',            speak:'La roulotte aux histoires', categories:[] },
   ];
 
-  const STOP_GAP = 320;      // px entre deux arrêts
-  const STOP_X0  = 260;      // x du premier arrêt
-  const BUS_W    = 150;
+  // Échelle responsive : téléphone portrait = arrêts resserrés + bus plus petit
+  // (~2 arrêts visibles, swipe naturel — le sens du jeu reste le portrait)
+  const NARROW   = Math.min(innerWidth, innerHeight * 1.4) < 640;
+  const STOP_GAP = NARROW ? 248 : 320;   // px entre deux arrêts
+  const STOP_X0  = NARROW ? 180 : 260;   // x du premier arrêt
+  const BUS_W    = NARROW ? 112 : 150;
+  document.documentElement.style.setProperty('--stop-w', NARROW ? '172px' : '220px');
+  document.documentElement.style.setProperty('--bus-w', BUS_W + 'px');
 
   const world  = document.getElementById('world');
   const scene  = document.getElementById('scene');

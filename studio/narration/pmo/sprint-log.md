@@ -11,6 +11,48 @@
 
 ---
 
+## 2026-07-04 (clôture backlog + entrée PMO) — PASS FINAL : 7 TICKETS CLOS VÉRIFIÉS + STATUTS CONSOLIDÉS
+
+**Objectif** : Clôture opérationnelle du backlog session 2026-07-04. Papa Yann : « fais tous tes tickets » — consolidation des faits vérifiés (commits, livrables, states) avant reboot.
+
+**Fait** :
+- [x] **STORY-002-SELECTION-REFONTE** : ⏳ EN ATTENTE (SLA 3j = 2026-07-07). Pas de refonte effectuée cette session — Papa Yann fournit les retours Duel + critique outils pour guider le Directeur. Reste 🔴 BLOQUÉ.
+- [x] **TEST-PANEL-CALIBRATION** : ✅ PASS 2/2 (commit 4e8d0805 + rapport pmo/test-calibration-panel-2026-07-04.md). Paire écart connu = 3/3 lecteurs champion concordants + confiance nette. Paire quasi-identique = 1 divergence + confiances « légère » = pas de faux consensus. GO panel 12 STORY-003+ confirmé.
+- [x] **ARCHI-DUEL-001** : ✅ LIVRÉ (site/duel.html en prod depuis 2026-07-03, v2 raisons refus redesign 2026-07-04). Papa Yann a joué duel 11 fragments vague 4 (5 gagnants, 1 égalité, 5 refusés). Données ingérées memoire-papa-yann.md.
+- [x] **ARCHI-LECTURE-001** : ✅ LIVRÉ (site/lecture.html prod 2026-07-03). Tap passage → chips j'aime/ça pèche + texte libre, export JSON → memoire de goût.
+- [x] **ARCHI-014-TEMPLATE-BOUSSOLE** : ✅ LIVRÉ (template brief-histoire.template.md refondé BOUSSOLE = intentions + 6 causalités-ESSENCE 2026-07-04). Pas de fichier v4 séparé — template canonique refondu. Repercussion STORY-003+ avant étape 3.
+- [x] **PROPAGATE-DEC-PANEL** : ✅ FAIT (INVARIANTS + PROCESS étapes 5 ET 9 à 12 appels, mécanique lecteurs panel 12, fallback CLI Kimi). Tickets multi-fichiers éliminés.
+- [x] **CRAFT-001 + CRAFT-002** : ✅ DÉJÀ LIVRÉS (constat 2026-07-04) : skill `.claude/skills/narration-craft/` existe depuis 2026-06-03 avec 15+ sous-fichiers. Tickets périmés (désync backlog↔réalité). Clos post-audit.
+- [x] **CRAFT-003** : ✅ FAIT (wiring narration-craft ajouté dans PROCESS.md étape 3 (05-developpement) + étape 7 (06-prose + 02-voix) 2026-07-04).
+
+**Fichiers modifiés** :
+- ✅ `pmo/backlog.md` : 7 tickets clos + STORY-002-SELECTION-REFONTE SLA 2026-07-07
+- ✅ `pmo/sprint-log.md` (cette entrée)
+
+**Statuts consolidés** :
+| Ancien | ID | Nouveau | Raison |
+|--------|-----|---------|--------|
+| ✅ AUDIO-KIMI-PANNE-VAGUE5 | Diagnostic MCP, pas infra | Confirmé EN COURS (relettrage) |
+| 🔴 STORY-002-SELECTION-REFONTE | En attente refonte vague 4 | 🔴 **SLA 3j (2026-07-07)** |
+| 🟡 ARCHI-014-TEMPLATE-BOUSSOLE | À créer template v4 | ✅ **TERMINÉ 2026-07-04** |
+| 🟡 ARCHI-DUEL-001 | À créer PWA site/duel.html | ✅ **LIVRÉ 2026-07-03** |
+| ⚪ ARCHI-LECTURE-001 | À créer PWA site/lecture.html | ✅ **LIVRÉ 2026-07-03** |
+| ⚪ TEST-PANEL-CALIBRATION | À tester calibration | ✅ **PASS 2/2 2026-07-04** |
+| ⚪ PROPAGATE-DEC-PANEL | À propager INVARIANTS+PROCESS | ✅ **FAIT 2026-07-04** |
+| ⚪ CRAFT-001 | À créer skill craft | ✅ **EXISTENCE CONFIRMÉE 2026-06-03** |
+| ⚪ CRAFT-002 | À extraire 16 skills | ✅ **EXISTENCE CONFIRMÉE 2026-06-03** |
+| ⚪ CRAFT-003 | À câbler PROCESS | ✅ **FAIT 2026-07-04** |
+
+**État au reboot** :
+- **Backlog en-cours** : 3 tickets (max respecté) → STORY-002-SELECTION-REFONTE 🔴 BLOQUÉ (SLA 3j) + ARCHI-006 (Normale) + restants
+- **Attente immédiate** : Directeur refonte 6-selection.md STORY-002 (vague 4 + intention critère + REX duel), validation Papa Yann, puis étape 7 rewrite.
+- **Panel 12 STORY-003+** : GO (test-calibration 2/2 confirmé)
+- **Prochaine action** : STORY-002 étape 6 refonte, puis étape 7, puis STORY-003 brainstorm.
+
+**Classification** : TRAITEMENT (consolidation clôture backlog).
+
+---
+
 ## 2026-07-04 — REX STORY-002 POST-DUEL : Rejet à chaud Papa Yann opus-def v5 — Leçons fluide + hypothèse système
 
 **Objectif** : Logger le rejet à chaud opus-def v5 (2026-07-04) comme leçon de goût + ouvrir question de système.

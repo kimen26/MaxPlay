@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Écoute — pack sonore Ligne de Max</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; }
+    body { font-family: 'Nunito', sans-serif; background: linear-gradient(160deg, #0b1c30, #16304a); color: #fff; min-height: 100dvh; padding: 20px; }
+    h1 { font-size: 1.3rem; font-weight: 900; margin-bottom: 4px; }
+    p { opacity: .7; font-size: .85rem; margin-bottom: 18px; }
+    .snd { display: flex; align-items: center; gap: 12px; background: #ffffff14; border-radius: 14px; padding: 12px 16px; margin-bottom: 10px; cursor: pointer; min-height: 64px; max-width: 520px; }
+    .snd:active { background: #ffffff28; }
+    .snd .ico { font-size: 1.6rem; width: 40px; text-align: center; }
+    .snd .lbl { flex: 1; font-weight: 900; }
+    .snd .use { font-size: .75rem; opacity: .6; font-weight: 700; }
+    .old { margin-top: 26px; }
+  </style>
+</head>
+<body>
+  <h1>🎧 Pack sonore « La ligne de Max »</h1>
+  <p>10 sons générés ElevenLabs — tape pour écouter. Dis ce que tu gardes / jettes.</p>
+  <div id="list"></div>
+  <script>
+    const SOUNDS = [
+      ['🚌', 'moteur-bus',       'trajet entre arrêts'],
+      ['📯', 'klaxon',           'arrivée à l\'arrêt'],
+      ['🚪', 'porte-bus',        'ouverture panneau lieu'],
+      ['👆', 'tap',              'boutons'],
+      ['🎉', 'fanfare-victoire', 'fin de jeu gagnée'],
+      ['⭐', 'etoile',           'étoile gagnée'],
+      ['🔓', 'deblocage',        'nouveau jeu / dino débloqué'],
+      ['🌙', 'ambiance-nuit',    'boucle ambiance hub'],
+      ['⏳', 'voyage-temps',     'transition époques dinos'],
+      ['🏮', 'veilleuse',        'entrée roulotte histoires'],
+    ];
+    const list = document.getElementById('list');
+    let cur = null;
+    SOUNDS.forEach(([ico, name, use]) => {
+      const d = document.createElement('div');
+      d.className = 'snd';
+      d.innerHTML = `<div class="ico">${ico}</div><div class="lbl">${name}<div class="use">${use}</div></div><div>▶</div>`;
+      d.onclick = () => {
+        if (cur) cur.pause();
+        cur = new Audio(`sounds/ui/${name}.mp3`);
+        cur.play();
+      };
+      list.appendChild(d);
+    });
+  </script>
+</body>
+</html>

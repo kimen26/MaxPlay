@@ -1,4 +1,4 @@
-﻿---
+---
 name: narration-gatekeeper
 description: GateKeeper MaxPlay - validation technique finale d'une histoire avant canonisation. Checklist rapide (prénoms, règles univers, longueur, dialogues). Ne réécrit pas. Verdict PASS ou corrections rapides.
 model: haiku

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-30 – Range-les par taille</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    #app { background: linear-gradient(160deg,#2b1f3d,#1c1326); }
+    .instruction-text { text-align:center; font-size:1.25rem; font-weight:900; color:#ffe066; margin:8px 12px 2px; }
+    .question-counter { text-align:center; font-size:.85rem; opacity:.7; margin-top:4px; }
+    .tts-btn {
+      display:flex; align-items:center; gap:8px; margin:6px auto;
+      background:linear-gradient(135deg,#43a047,#66bb6a); color:#fff; border:none; cursor:pointer;
+      border-radius:25px; padding:9px 20px; font-size:.95rem; font-weight:900;
+      box-shadow:0 4px 12px #0005;
+    }
+    .tts-btn:active { transform:scale(.94); }
+
+    /* ── Zone de jeu ── */
+    .game-zone { flex:1; display:flex; flex-direction:column; padding:6px 10px; min-height:0; }
+    .arrow-row { display:flex; align-items:center; justify-content:center; gap:8px; color:#fff; font-weight:900; font-size:.95rem; opacity:.85; margin:2px 0; }
+    .arrow-row .lbl-small { font-size:1.3rem; }
+    .arrow-row .lbl-big { font-size:1.8rem; }
+
+    /* Ombres à trier (rangée du haut) */
+    .tray {
+      display:flex; gap:10px; justify-content:center; align-items:flex-end;
+      flex-wrap:wrap; padding:8px 4px; min-height:110px; position:relative;
+    }
+    .shadow-tile {
+      width:88px; height:100px; background:#fff; border-radius:16px;
+      border:4px solid rgba(255,255,255,0.25); display:flex; align-items:center; justify-content:center;
+      cursor:grab; touch-action:none; transition:border-color .15s, transform .1s, box-shadow .15s;
+      position:relative; z-index:2; padding:6px;
+    }
+    .shadow-tile img { width:100%; height:100%; object-fit:contain; pointer-events:none; }
+    .shadow-tile.selected { border-color:#ffe066; box-shadow:0 0 0 3px #ffe06666; }
+    .shadow-tile.dragging { cursor:grabbing; z-index:50; box-shadow:0 8px 22px #0007; transform:scale(1.06); }
+    .shadow-tile.placed { opacity:.28; pointer-events:none; }
+
+    /* Emplacements (rangée du bas) */
+    .slots-row { display:flex; gap:10px; justify-content:center; align-items:center; padding:10px 4px 4px; flex-wrap:wrap; }
+    .slot {
+      width:96px; height:108px; border-radius:16px; border:4px dashed rgba(255,255,255,0.35);
+      display:flex; align-items:center; justify-content:center; position:relative;
+      background:rgba(255,255,255,0.04); transition:border-color .15s, background .15s;
+    }
+    .slot .idx { position:absolute; top:4px; left:8px; font-size:.8rem; font-weight:900; color:#ffe06699; z-index:1; }
+    .slot.hover-ok { border-color:#00c47a; background:rgba(0,196,122,0.18); border-style:solid; }
+    .slot.filled { border-style:solid; border-color:#00c47a; background:#fff; }
+    .slot.filled img { width:100%; height:100%; object-fit:contain; padding:6px; box-sizing:border-box; }
+    .slot.swap-anim { animation: swapPulse .5s ease; }
+    @keyframes swapPulse { 0%,100%{transform:scale(1);} 50%{transform:scale(.92);} }
+
+    .validate-btn {
+      display:block; margin:10px auto 6px; background:linear-gradient(135deg,#ff9800,#ffb74d); color:#3a2500;
+      border:none; border-radius:22px; padding:12px 30px; font-size:1.05rem; font-weight:900;
+      box-shadow:0 5px 14px #0006; cursor:pointer; min-height:56px;
+    }
+    .validate-btn:disabled { opacity:.35; cursor:default; }
+    .validate-btn:not(:disabled):active { transform:scale(.95); }
+
+    /* ── Révélation échelle honnête ── */
+    .reveal-wrap { flex:1; display:flex; flex-direction:column; justify-content:flex-end; padding:0 10px 10px; min-height:0; }
+    .reveal-ground {
+      display:flex; align-items:flex-end; justify-content:center; gap:14px;
+      border-bottom:4px solid rgba(255,255,255,0.5); padding:10px 10px 6px; min-height:180px; position:relative;
+      background:rgba(255,255,255,0.9); border-radius:14px 14px 0 0;
+    }
+    .reveal-item { display:flex; flex-direction:column; align-items:center; justify-content:flex-end; }
+    .reveal-item img { object-fit:contain; opacity:.95; transition:width 1s cubic-bezier(.22,1,.36,1), height 1s cubic-bezier(.22,1,.36,1); }
+    .reveal-item .m-label { margin-top:4px; font-weight:900; color:#ffe066; font-size:.95rem; background:#0006; padding:2px 8px; border-radius:10px; opacity:0; transition:opacity .4s; }
+    .reveal-item .m-label.show { opacity:1; }
+    .kid-ref { display:flex; flex-direction:column; align-items:center; justify-content:flex-end; opacity:.85; }
+    .kid-ref svg { display:block; }
+    .kid-ref .lbl { font-size:.7rem; font-weight:900; color:#3a2500; background:#ffe066; padding:1px 6px; border-radius:8px; margin-top:2px; }
+
+    .next-btn {
+      display:block; margin:8px auto 0; background:linear-gradient(135deg,#00c47a,#33e0a0); color:#003b24;
+      border:none; border-radius:22px; padding:12px 30px; font-size:1.05rem; font-weight:900;
+      box-shadow:0 5px 14px #0006; cursor:pointer; min-height:56px; opacity:0; transition:opacity .4s;
+    }
+    .next-btn.show { opacity:1; }
+    .next-btn:active { transform:scale(.95); }
+
+    .mode-badge { text-align:center; font-size:.8rem; color:#fff9; font-weight:900; margin-top:2px; }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="hdr">
+      <a href="index.html" class="back">←</a>
+      <span class="htitle">📏 Range-les par taille</span>
+    </div>
+    <div class="pips" id="pips"></div>
+
+    <div class="qbox">
+      <div class="instruction-text" id="instruction">…</div>
+      <button class="tts-btn" id="repeatBtn"><span>🔊</span><span>Écouter</span></button>
+      <div class="mode-badge" id="modeBadge"></div>
+    </div>
+
+    <div class="game-zone" id="gameZone">
+      <div class="arrow-row"><span class="lbl-small">🔹 petit</span><span>→</span><span class="lbl-big">🔷 GRAND</span></div>
+      <div class="tray" id="tray"></div>
+      <div class="slots-row" id="slots"></div>
+      <button class="validate-btn" id="validateBtn" disabled>C'est bon !</button>
+    </div>
+
+    <div class="reveal-wrap" id="revealWrap" style="display:none;">
+      <div class="reveal-ground" id="revealGround"></div>
+      <button class="next-btn" id="nextBtn">Suivant →</button>
+    </div>
+  </div>
+
+  <script src="js/sounds.js"></script>
+  <script src="js/tts.js"></script>
+  <script src="js/victory-sounds.js"></script>
+  <script src="js/feedback.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/stars.js"></script>
+  <script src="js/qcm-retry.js"></script>
+  <script src="js/mj-golden.js"></script>
+  <script>
+    // ─── MJ-30 — Range-les par taille (échelle honnête) ───
+    // Pool complet 60 dinos (tous ont une ombre dans img/dinos/_new-ombre/).
+    const DINO_POOL = [
+      {id:'tyrannosaurus',name:'T-Rex',taille_m:13,hauteur_m:4,poids_t:8,png:'Tyrannosaurus.jpg'},
+      {id:'spinosaurus',name:'Spinosaure',taille_m:15,hauteur_m:4,poids_t:7,png:'Spinosaurus.jpg'},
+      {id:'giganotosaurus',name:'Giganotosaure',taille_m:13,hauteur_m:4,poids_t:7,png:'Giganotosaurus.jpg'},
+      {id:'carcharodontosaurus',name:'Carcharodontosaure',taille_m:13,hauteur_m:3.8,poids_t:7,png:'Carcharodontosaurus.jpg'},
+      {id:'allosaurus',name:'Allosaure',taille_m:9.5,hauteur_m:3.5,poids_t:2,png:'Allosaurus.jpg'},
+      {id:'tarbosaurus',name:'Tarbosaure',taille_m:12,hauteur_m:4.5,poids_t:5,png:'Tarbosaurus.jpg'},
+      {id:'albertosaurus',name:'Albertosaure',taille_m:9.5,hauteur_m:3,poids_t:2,png:'Albertosaurus.jpg'},
+      {id:'ceratosaurus',name:'Cératosaure',taille_m:6,hauteur_m:2,poids_t:0.7,png:'Ceratosaurus.jpg'},
+      {id:'dilophosaurus',name:'Dilophosaure',taille_m:7,hauteur_m:2.4,poids_t:0.35,png:'Dilophosaurus.jpg'},
+      {id:'carnotaurus',name:'Carnotaure',taille_m:8,hauteur_m:2.5,poids_t:1.6,png:'Carnotaurus.jpg'},
+      {id:'cryolophosaurus',name:'Cryolophosaure',taille_m:6.5,hauteur_m:2.5,poids_t:0.4,png:'Cryolophosaurus.jpg'},
+      {id:'brachiosaurus',name:'Brachiosaure',taille_m:22,hauteur_m:13,poids_t:47,png:'Brachiosaurus.jpg'},
+      {id:'diplodocus',name:'Diplodocus',taille_m:26,hauteur_m:4.5,poids_t:12,png:'Diplodocus.jpg'},
+      {id:'apatosaurus',name:'Apatosaure',taille_m:22,hauteur_m:4.5,poids_t:23,png:'Apatosaurus.jpg'},
+      {id:'camarasaurus',name:'Camarasaure',taille_m:15,hauteur_m:6,poids_t:18,png:'Camarasaurus.jpg'},
+      {id:'amargasaurus',name:'Amargasaure',taille_m:10,hauteur_m:2.5,poids_t:3,png:'Amargasaurus.jpg'},
+      {id:'plateosaurus',name:'Plateosaure',taille_m:8,hauteur_m:2.8,poids_t:2,png:'Plateosaurus.jpg'},
+      {id:'ankylosaurus',name:'Ankylosaure',taille_m:7,hauteur_m:1.8,poids_t:6,png:'Ankylosaurus.jpg'},
+      {id:'euoplocephalus',name:'Euoplocéphale',taille_m:6,hauteur_m:1.5,poids_t:2.2,png:'Euoplocephalus.jpg'},
+      {id:'edmontonia',name:'Edmontonia',taille_m:6.6,hauteur_m:1.5,poids_t:3,png:'Edmontonia.jpg'},
+      {id:'stegosaurus',name:'Stégosaure',taille_m:9,hauteur_m:2.8,poids_t:4,png:'Stegosaurus.jpg'},
+      {id:'kentrosaurus',name:'Kéntrosaure',taille_m:4.5,hauteur_m:1.5,poids_t:1,png:'Kentrosaurus.jpg'},
+      {id:'triceratops',name:'Tricératops',taille_m:9,hauteur_m:3,poids_t:9,png:'Triceratops.jpg'},
+      {id:'torosaurus',name:'Torosaure',taille_m:8,hauteur_m:3,poids_t:8,png:'Torosaurus.jpg'},
+      {id:'protoceratops',name:'Protocératops',taille_m:1.9,hauteur_m:0.6,poids_t:0.08,png:'Protoceratops.jpg'},
+      {id:'pentaceratops',name:'Pentacératops',taille_m:6,hauteur_m:2,poids_t:5,png:'Pentaceratops.jpg'},
+      {id:'parasaurolophus',name:'Parasaurolophus',taille_m:10,hauteur_m:3.5,poids_t:2.5,png:'Parasaurolophus.jpg'},
+      {id:'edmontosaurus',name:'Edmontosaure',taille_m:12,hauteur_m:3.5,poids_t:4,png:'Edmontosaurus.jpg'},
+      {id:'iguanodon',name:'Iguanodon',taille_m:10,hauteur_m:2.7,poids_t:3,png:'Iguanodon.jpg'},
+      {id:'pachycephalosaurus',name:'Pachycéphalosaure',taille_m:4.5,hauteur_m:1.5,poids_t:0.45,png:'Pachycephalosaurus.jpg'},
+      {id:'velociraptor',name:'Vélociraptor',taille_m:2,hauteur_m:0.5,poids_t:0.015,png:'Velociraptor.jpg'},
+      {id:'deinonychus',name:'Deinonychus',taille_m:3.4,hauteur_m:0.9,poids_t:0.08,png:'Deinonychus.jpg'},
+      {id:'utahraptor',name:'Utahraptor',taille_m:6,hauteur_m:2,poids_t:0.5,png:'Utahraptor.jpg'},
+      {id:'microraptor',name:'Microraptor',taille_m:0.77,hauteur_m:0.3,poids_t:0.001,png:'Microraptor.jpg'},
+      {id:'troodon',name:'Troodon',taille_m:2.2,hauteur_m:0.9,poids_t:0.05,png:'Troodon.jpg'},
+      {id:'gallimimus',name:'Gallimimus',taille_m:6,hauteur_m:2,poids_t:0.44,png:'Gallimimus.jpg'},
+      {id:'oviraptor',name:'Oviraptor',taille_m:2,hauteur_m:0.9,poids_t:0.035,png:'Oviraptor.jpg'},
+      {id:'pteranodon',name:'Ptéranodon',taille_m:6,hauteur_m:1.8,poids_t:0.025,png:'Pteranodon.jpg'},
+      {id:'quetzalcoatlus',name:'Quetzalcoatlus',taille_m:11,hauteur_m:5,poids_t:0.2,png:'Quetzalcoatlus.jpg'},
+      {id:'archaeopteryx',name:'Archaeoptéryx',taille_m:0.5,hauteur_m:0.3,poids_t:0.001,png:'Archaeopteryx.jpg'},
+      {id:'mosasaurus',name:'Mosasaure',taille_m:17,hauteur_m:2,poids_t:10,png:'Mosasaurus.jpg'},
+      {id:'baryonyx',name:'Baryonyx',taille_m:9,hauteur_m:2.5,poids_t:1.7,png:'Baryonyx.jpg'},
+      {id:'therizinosaurus',name:'Therizinosaurus',taille_m:10,hauteur_m:5,poids_t:5,png:'Therizinosaurus.jpg'},
+      {id:'dimetrodon',name:'Dimétrodon',taille_m:3.5,hauteur_m:1.8,poids_t:0.25,png:'Dimetrodon.jpg'},
+      {id:'elasmosaurus',name:'Élasmosaure',taille_m:13,hauteur_m:1,poids_t:2.5,png:'Elasmosaurus.jpg'},
+      {id:'ophthalmosaurus',name:'Ophthalmosaure',taille_m:4,hauteur_m:1,poids_t:0.95,png:'Ophthalmosaurus.jpg'},
+      {id:'liopleurodon',name:'Liopleurodon',taille_m:7,hauteur_m:1.5,poids_t:5,png:'Liopleurodon.jpg'},
+      {id:'archelon',name:'Archélon',taille_m:4.6,hauteur_m:1.2,poids_t:2.2,png:'Archelon.jpg'},
+      {id:'shonisaurus',name:'Shonisaure',taille_m:14,hauteur_m:2,poids_t:25,png:'Shonisaurus.jpg'},
+      {id:'patagotitan',name:'Titanosaure',taille_m:37,hauteur_m:12,poids_t:70,png:'Patagotitan.jpg'},
+      {id:'centrosaurus',name:'Centrosaure',taille_m:5.5,hauteur_m:1.8,poids_t:2.5,png:'Centrosaurus.jpg'},
+      {id:'ichthyosaurus',name:'Ichtyosaure',taille_m:2,hauteur_m:0.5,poids_t:0.15,png:'Ichthyosaurus.jpg'},
+      {id:'mammuthus',name:'Mammouth',taille_m:5.5,hauteur_m:3.3,poids_t:5,png:'Mammuthus.jpg'},
+      {id:'smilodon',name:'Smilodon',taille_m:1.75,hauteur_m:1,poids_t:0.25,png:'Smilodon.jpg'},
+      {id:'megatherium',name:'Mégathérium',taille_m:6,hauteur_m:3.5,poids_t:4,png:'Megatherium.jpg'},
+      {id:'paraceratherium',name:'Paracérathérium',taille_m:8,hauteur_m:5,poids_t:17,png:'Paraceratherium.jpg'},
+      {id:'glyptodon',name:'Glyptodon',taille_m:3.3,hauteur_m:1.5,poids_t:1,png:'Glyptodon.jpg'},
+      {id:'aenocyon',name:'Loup terrible',taille_m:1.7,hauteur_m:0.85,poids_t:0.07,png:'Aenocyon.jpg'},
+      {id:'coelodonta',name:'Rhino laineux',taille_m:3.5,hauteur_m:1.9,poids_t:2.5,png:'Coelodonta.jpg'},
+      {id:'titanis',name:'Titanis',taille_m:1.9,hauteur_m:1.9,poids_t:0.3,png:'Titanis.jpg'},
+    ];
+    function shadowSrc(d){ return 'img/dinos/_new-ombre/' + d.png.replace(/\.(jpg|png)$/i,'') + '_ombre.png'; }
+
+    const G = Golden.setup('mj-30');
+    const MAX_Q = G.totalQ;
+    const level = G.level; // 0,1,2
+
+    let qCount = 0, qcm = null;
+    let curSet = [];       // dinos de la manche courante, DÉJÀ triés petit→grand
+    let curMeasure = 'taille_m';
+    let selected = null;   // id sélectionné (mode tap-puis-case)
+    let placements = {};   // slotIndex -> dino.id
+    let dragState = null;
+
+    function shuffle(a){ a=[...a]; for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+    function speak(t){ TTS.speak(t,{pitch:1.05,priority:true}); }
+    function fr(n){ return (Math.round(n*10)/10).toString().replace('.', ' virgule '); }
+
+    // ── Tirage d'un set respectant un ratio minimal entre voisins triés ──
+    function pickSet(n, minRatio, measure){
+      let best = null;
+      for (let attempt = 0; attempt < 300; attempt++){
+        const cand = shuffle(DINO_POOL).slice(0, n).sort((a,b)=>a[measure]-b[measure]);
+        // éviter valeurs quasi identiques (division ~1)
+        let ok = true, minR = Infinity;
+        for (let i=1;i<cand.length;i++){
+          const r = cand[i][measure] / cand[i-1][measure];
+          if (r < minR) minR = r;
+          if (r < minRatio) { ok = false; }
+        }
+        if (ok) return cand;
+        if (!best || minR > best.minR) best = { cand, minR };
+      }
+      return best ? best.cand : shuffle(DINO_POOL).slice(0, n).sort((a,b)=>a[measure]-b[measure]);
+    }
+
+    function buildQuestionSet(){
+      if (level === 0){
+        curMeasure = 'taille_m';
+        curSet = pickSet(3, 3.0, curMeasure);
+      } else if (level === 1){
+        curMeasure = 'taille_m';
+        curSet = pickSet(4, 1.5, curMeasure);
+      } else {
+        curMeasure = Math.random() < 0.5 ? 'poids_t' : 'taille_m';
+        curSet = pickSet(4, 1.15, curMeasure);
+      }
+    }
+
+    function init(){
+      G.buildPips();
+      document.getElementById('repeatBtn').onclick = () => speak(currentInstruction());
+      document.getElementById('validateBtn').onclick = onValidate;
+      document.getElementById('nextBtn').onclick = () => { qCount++; nextQuestion(); };
+      nextQuestion();
+    }
+
+    function currentInstruction(){
+      const measureWord = curMeasure === 'poids_t' ? 'poids' : 'taille';
+      return 'Range-les du plus petit au plus grand' + (curMeasure==='poids_t' ? ', par poids' : '') + ' !';
+    }
+
+    function nextQuestion(){
+      if (qCount >= MAX_Q) return showEnd();
+      qcm = QcmRetry.create();
+      buildQuestionSet();
+      selected = null;
+      placements = {};
+
+      document.getElementById('gameZone').style.display = 'flex';
+      document.getElementById('revealWrap').style.display = 'none';
+      document.getElementById('nextBtn').classList.remove('show');
+
+      const modeBadge = document.getElementById('modeBadge');
+      modeBadge.textContent = curMeasure === 'poids_t' ? '⚖️ Par poids' : '📏 Par taille';
+
+      document.getElementById('instruction').textContent = curMeasure === 'poids_t'
+        ? 'Range-les du plus léger au plus lourd !'
+        : 'Range-les du plus petit au plus grand !';
+      speak(currentInstruction());
+
+      renderTrayAndSlots();
+      updateValidateBtn();
+    }
+
+    function renderTrayAndSlots(){
+      const tray = document.getElementById('tray');
+      const slots = document.getElementById('slots');
+      tray.innerHTML = ''; slots.innerHTML = '';
+
+      // Ombres affichées à la MÊME taille (convention de jeu) — ordre mélangé
+      const shuffled = shuffle(curSet);
+      shuffled.forEach(d => {
+        const tile = document.createElement('div');
+        tile.className = 'shadow-tile';
+        tile.dataset.id = d.id;
+        tile.dataset.taille = d[curMeasure];
+        tile.innerHTML = '<img src="' + shadowSrc(d) + '" alt="">';
+        tile.addEventListener('pointerdown', onDragStart);
+        tile.addEventListener('click', () => onTapTile(d.id));
+        tray.appendChild(tile);
+      });
+
+      curSet.forEach((d, i) => {
+        const slot = document.createElement('div');
+        slot.className = 'slot';
+        slot.dataset.index = i;
+        slot.innerHTML = '<span class="idx">' + (i+1) + '</span>';
+        slot.addEventListener('click', () => onTapSlot(i));
+        slots.appendChild(slot);
+      });
+    }
+
+    // ── Mode tap : tap ombre puis tap case ──
+    function onTapTile(id){
+      if (isPlaced(id)) return;
+      document.querySelectorAll('.shadow-tile').forEach(t => t.classList.remove('selected'));
+      if (selected === id){ selected = null; return; }
+      selected = id;
+      const tile = document.querySelector('.shadow-tile[data-id="'+id+'"]');
+      if (tile) tile.classList.add('selected');
+    }
+
+    function onTapSlot(i){
+      if (placements[i] != null) return; // case déjà occupée
+      if (selected == null) return;
+      placeInSlot(selected, i);
+      selected = null;
+    }
+
+    function isPlaced(id){ return Object.values(placements).includes(id); }
+
+    function placeInSlot(id, i){
+      // Si un autre dino occupait déjà (ne devrait pas arriver, cases pleines filtrées), no-op
+      placements[i] = id;
+      const tile = document.querySelector('.shadow-tile[data-id="'+id+'"]');
+      if (tile) { tile.classList.add('placed'); tile.classList.remove('selected','dragging'); }
+      const slot = document.querySelector('.slot[data-index="'+i+'"]');
+      if (slot){
+        const d = curSet.find(x => x.id === id);
+        slot.classList.add('filled');
+        slot.innerHTML = '<span class="idx">' + (i+1) + '</span><img src="' + shadowSrc(d) + '" alt="">';
+      }
+      updateValidateBtn();
+    }
+
+    function removeFromSlot(i){
+      const id = placements[i];
+      if (id == null) return;
+      delete placements[i];
+      const tile = document.querySelector('.shadow-tile[data-id="'+id+'"]');
+      if (tile) tile.classList.remove('placed');
+      const slot = document.querySelector('.slot[data-index="'+i+'"]');
+      if (slot){ slot.classList.remove('filled'); slot.innerHTML = '<span class="idx">' + (i+1) + '</span>'; }
+      updateValidateBtn();
+    }
+
+    function updateValidateBtn(){
+      const filled = Object.keys(placements).length;
+      document.getElementById('validateBtn').disabled = filled < curSet.length;
+    }
+
+    // ── Mode drag (pointer events, souris+tactile+stylet) ──
+    function onDragStart(e){
+      const tile = e.currentTarget;
+      if (tile.classList.contains('placed')) return;
+      e.preventDefault();
+      tile.setPointerCapture(e.pointerId);
+      const rect = tile.getBoundingClientRect();
+      dragState = { tile, offsetX: e.clientX - rect.left, offsetY: e.clientY - rect.top, moved:false };
+      tile.classList.add('dragging');
+      tile.style.position = 'fixed';
+      tile.style.left = rect.left + 'px';
+      tile.style.top = rect.top + 'px';
+      tile.style.margin = '0';
+    }
+    document.addEventListener('pointermove', (e) => {
+      if (!dragState) return;
+      dragState.moved = true;
+      const { tile, offsetX, offsetY } = dragState;
+      tile.style.left = (e.clientX - offsetX) + 'px';
+      tile.style.top = (e.clientY - offsetY) + 'px';
+      highlightSlot(tile);
+    });
+    document.addEventListener('pointerup', (e) => {
+      if (!dragState) return;
+      const { tile, moved } = dragState;
+      tile.classList.remove('dragging');
+      document.querySelectorAll('.slot').forEach(s => s.classList.remove('hover-ok'));
+      if (!moved){
+        // pas de vrai drag → laisse le click gérer le mode tap
+        resetTilePosition(tile);
+        dragState = null;
+        return;
+      }
+      const slotEl = findNearestSlot(tile);
+      dragState = null;
+      if (slotEl && placements[slotEl.dataset.index] == null){
+        resetTilePosition(tile);
+        placeInSlot(tile.dataset.id, parseInt(slotEl.dataset.index, 10));
+      } else {
+        resetTilePosition(tile);
+      }
+    });
+    document.addEventListener('pointercancel', () => {
+      if (dragState) { resetTilePosition(dragState.tile); dragState = null; }
+    });
+
+    function resetTilePosition(tile){
+      tile.style.position = ''; tile.style.left = ''; tile.style.top = ''; tile.style.margin = '';
+    }
+
+    function highlightSlot(tile){
+      document.querySelectorAll('.slot').forEach(s => s.classList.remove('hover-ok'));
+      const slotEl = findNearestSlot(tile);
+      if (slotEl && placements[slotEl.dataset.index] == null) slotEl.classList.add('hover-ok');
+    }
+
+    function findNearestSlot(tile){
+      const r = tile.getBoundingClientRect();
+      const cx = r.left + r.width/2, cy = r.top + r.height/2;
+      let best = null, bestDist = Infinity;
+      document.querySelectorAll('.slot').forEach(s => {
+        const sr = s.getBoundingClientRect();
+        const scx = sr.left + sr.width/2, scy = sr.top + sr.height/2;
+        const d = Math.hypot(cx-scx, cy-scy);
+        if (d < bestDist){ bestDist = d; best = s; }
+      });
+      return best && bestDist < 140 ? best : null;
+    }
+
+    // ── Validation ──
+    function onValidate(){
+      const order = Object.keys(placements).sort((a,b)=>a-b).map(k => placements[k]);
+      const expected = curSet.map(d => d.id); // curSet déjà trié petit→grand
+      const correct = order.every((id, i) => id === expected[i]);
+      const res = QcmRetry.handle(qcm, correct);
+      if (res.outcome === 'ignored') return;
+
+      if (res.outcome === 'correct'){
+        sndDing();
+        G.notePip(qCount, res.attempts);
+        setTimeout(showReveal, 400);
+      } else if (res.outcome === 'reveal'){
+        sndBuzz();
+        G.notePip(qCount, 4);
+        speak('Regardons ensemble !');
+        setTimeout(showReveal, 900);
+      } else {
+        // Erreur douce : échange les deux mal placés avec explication, sans buzz punitif
+        sndBuzz();
+        fixWorstSwap(order, expected);
+      }
+    }
+
+    // Trouve la première paire mal ordonnée et l'échange en douceur avec explication.
+    function fixWorstSwap(order, expected){
+      let i = 0;
+      while (i < order.length && order[i] === expected[i]) i++;
+      if (i >= order.length) { document.getElementById('validateBtn').disabled = false; return; }
+      // trouve où se trouve expected[i] actuellement
+      let j = order.indexOf(expected[i]);
+      if (j === i || j === -1) j = i + 1 < order.length ? i + 1 : i;
+
+      const dinoI = curSet.find(d => d.id === order[i]);
+      const dinoJ = curSet.find(d => d.id === order[j]);
+      const slotI = document.querySelector('.slot[data-index="'+i+'"]');
+      const slotJ = document.querySelector('.slot[data-index="'+j+'"]');
+      if (slotI) slotI.classList.add('swap-anim');
+      if (slotJ) slotJ.classList.add('swap-anim');
+
+      // échange les placements
+      const tmp = placements[i]; placements[i] = placements[j]; placements[j] = tmp;
+      // re-render des deux cases concernées
+      [i, j].forEach(idx => {
+        const id = placements[idx];
+        const d = curSet.find(x => x.id === id);
+        const s = document.querySelector('.slot[data-index="'+idx+'"]');
+        if (s) s.innerHTML = '<span class="idx">' + (idx+1) + '</span><img src="' + shadowSrc(d) + '" alt="">';
+      });
+      setTimeout(() => {
+        if (slotI) slotI.classList.remove('swap-anim');
+        if (slotJ) slotJ.classList.remove('swap-anim');
+      }, 500);
+
+      const big = dinoI[curMeasure] > dinoJ[curMeasure] ? dinoI : dinoJ;
+      const small = big === dinoI ? dinoJ : dinoI;
+      const wordBig = curMeasure === 'poids_t' ? 'plus LOURD' : 'PLUS GRAND';
+      speak('Le ' + big.name + ' est ' + wordBig + ' que le ' + small.name + ' !');
+    }
+
+    // ── Révélation à l'échelle honnête ──
+    function showReveal(){
+      document.getElementById('gameZone').style.display = 'none';
+      const wrap = document.getElementById('revealWrap');
+      wrap.style.display = 'flex';
+      const ground = document.getElementById('revealGround');
+      ground.innerHTML = '';
+
+      const maxVal = Math.max(...curSet.map(d => d[curMeasure]));
+      const MAX_PX = 260; // hauteur max d'affichage pour le plus grand
+      const MIN_PX = 26;
+
+      // Référence enfant 1m (SVG simple)
+      const kidPxPerM = curMeasure === 'taille_m' ? (MAX_PX * (1/maxVal)) : null;
+
+      curSet.forEach((d, i) => {
+        const item = document.createElement('div');
+        item.className = 'reveal-item';
+        const ratio = d[curMeasure] / maxVal;
+        const px = Math.max(MIN_PX, Math.round(MAX_PX * ratio));
+        const img = document.createElement('img');
+        img.src = shadowSrc(d);
+        img.style.width = '6px'; img.style.height = '6px'; // départ petit, anime vers la vraie taille
+        item.appendChild(img);
+        const label = document.createElement('div');
+        label.className = 'm-label';
+        label.textContent = curMeasure === 'poids_t'
+          ? (d.poids_t >= 1 ? Math.round(d.poids_t) + ' t' : Math.round(d.poids_t*1000) + ' kg')
+          : fr(d.taille_m) + ' m';
+        item.appendChild(label);
+        ground.appendChild(item);
+
+        setTimeout(() => {
+          img.style.width = px + 'px';
+          img.style.height = px + 'px';
+          setTimeout(() => label.classList.add('show'), 550);
+        }, 120 + i * 180);
+      });
+
+      // Silhouette enfant 1m pour référence (seulement en mode taille)
+      if (curMeasure === 'taille_m'){
+        const kidH = Math.max(MIN_PX, Math.round(MAX_PX * (1/maxVal)));
+        const kid = document.createElement('div');
+        kid.className = 'kid-ref';
+        kid.innerHTML = '<svg width="' + Math.round(kidH*0.4) + '" height="' + kidH + '" viewBox="0 0 40 100">'
+          + '<circle cx="20" cy="12" r="10" fill="#ff8a3d"/>'
+          + '<rect x="10" y="24" width="20" height="42" rx="8" fill="#ff8a3d"/>'
+          + '<rect x="4" y="66" width="12" height="30" rx="5" fill="#ff8a3d"/>'
+          + '<rect x="24" y="66" width="12" height="30" rx="5" fill="#ff8a3d"/>'
+          + '</svg><span class="lbl">1 m (Max)</span>';
+        ground.appendChild(kid);
+      }
+
+      // TTS : énonce les vraies mesures dans l'ordre petit→grand
+      const phrase = curSet.map(d => {
+        const val = curMeasure === 'poids_t'
+          ? (d.poids_t >= 1 ? Math.round(d.poids_t) + ' tonnes' : Math.round(d.poids_t*1000) + ' kilos')
+          : fr(d.taille_m) + ' mètres';
+        return 'Le ' + d.name + ' : ' + val + ' !';
+      }).join(' ');
+      setTimeout(() => speak(phrase), 700);
+
+      document.getElementById('nextBtn').classList.add('show');
+    }
+
+    function showEnd(){
+      G.showEnd({ replayUrl: 'mj-30.html' });
+    }
+
+    init();
+  </script>
+  <script src="js/tracker.js"></script>
+  <script src="js/comments.js"></script>
+  <script src="js/back-button.js"></script>
+</body>
+</html>

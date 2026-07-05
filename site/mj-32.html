@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-32 – L'atelier coloriage</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* --- GABARIT HEADER CANONIQUE (repris tel quel) --- */
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+    body { background:#1a1a2e; font-family:'Fredoka One','Nunito',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; background:linear-gradient(160deg,#2d1f3d,#1c1226); }
+    .hdr {
+      display:flex; align-items:center; gap:10px;
+      padding:6px 12px; flex-shrink:0;
+      background:rgba(0,0,0,0.25);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+    .hdr a {
+      color:#fff; text-decoration:none; font-size:1.3rem;
+      background:rgba(255,255,255,0.12); border-radius:8px;
+      padding:4px 10px; font-weight:900; flex-shrink:0;
+    }
+    .hdr a:active { background:rgba(255,255,255,0.25); }
+    .htitle { flex:1; font-size:1rem; font-weight:900; }
+    /* --- FIN GABARIT HEADER --- */
+
+    .screen { flex:1; overflow-y:auto; -webkit-overflow-scrolling:touch; }
+    .hidden { display:none !important; }
+
+    /* ── Écran choix ── */
+    #galleryBtn {
+      display:flex; align-items:center; justify-content:center; gap:8px;
+      margin:10px auto; background:linear-gradient(135deg,#ff9800,#ffb74d); color:#3a1a00;
+      border:none; cursor:pointer; border-radius:22px; padding:10px 20px;
+      font-size:1rem; font-weight:900; box-shadow:0 4px 12px #0005; min-height:44px;
+    }
+    #galleryBtn:active { transform:scale(.95); }
+    .choice-title { text-align:center; font-size:1.15rem; font-weight:900; color:#ffe066; margin:10px 12px 4px; }
+    .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(120px,1fr)); gap:12px; padding:14px; }
+    .thumb-card {
+      background:#fff; border-radius:16px; padding:8px; cursor:pointer;
+      box-shadow:0 4px 10px #0005; display:flex; flex-direction:column; align-items:center; gap:4px;
+      min-height:130px; border:4px solid transparent; transition:transform .12s;
+    }
+    .thumb-card:active { transform:scale(.93); }
+    .thumb-card img { width:100%; height:88px; object-fit:contain; pointer-events:none; }
+    .thumb-card .tname { color:#222; font-size:.78rem; font-weight:900; text-align:center; }
+
+    /* ── Écran atelier ── */
+    #atelier { display:flex; flex-direction:column; flex:1; overflow:hidden; }
+    .atelier-top { display:flex; align-items:center; justify-content:center; gap:10px; padding:6px; flex-shrink:0; }
+    .atelier-btn {
+      display:flex; align-items:center; gap:6px; border:none; cursor:pointer;
+      border-radius:20px; padding:10px 16px; font-size:.95rem; font-weight:900;
+      box-shadow:0 3px 8px #0005; min-height:44px;
+    }
+    #modelBtn { background:linear-gradient(135deg,#29b6f6,#4fc3f7); color:#012; }
+    #finBtn { background:linear-gradient(135deg,#43a047,#66bb6a); color:#fff; }
+    .atelier-btn:active { transform:scale(.94); }
+
+    .canvas-wrap {
+      flex:1; position:relative; display:flex; align-items:center; justify-content:center;
+      padding:6px; min-height:0;
+    }
+    #paintCanvas {
+      max-width:100%; max-height:100%; border-radius:14px; box-shadow:0 6px 18px #0007;
+      touch-action:none; background:#fff;
+    }
+    #modelOverlay {
+      position:absolute; top:6px; left:6px; right:6px; bottom:6px;
+      display:flex; align-items:center; justify-content:center;
+      background:rgba(0,0,0,0.15); border-radius:14px; pointer-events:none;
+      opacity:0; transition:opacity .3s;
+    }
+    #modelOverlay.show { opacity:1; }
+    #modelOverlay img { max-width:92%; max-height:92%; border-radius:12px; box-shadow:0 8px 24px #000a; }
+
+    .palette {
+      display:flex; flex-wrap:wrap; justify-content:center; gap:8px;
+      padding:10px; flex-shrink:0; background:rgba(0,0,0,0.2);
+    }
+    .swatch {
+      width:64px; height:64px; border-radius:50%; border:4px solid rgba(255,255,255,0.5);
+      cursor:pointer; box-shadow:0 3px 8px #0006; flex-shrink:0;
+      display:flex; align-items:center; justify-content:center; font-size:1.6rem;
+    }
+    .swatch.sel { border-color:#ffe066; transform:scale(1.1); }
+    .swatch:active { transform:scale(.9); }
+    .swatch.eraser { background:#fff; color:#999; }
+
+    /* ── Galerie ── */
+    .gallery-empty { text-align:center; margin-top:40px; font-size:1.1rem; opacity:.8; padding:0 20px; }
+    #galleryView img.piece {
+      width:100%; height:140px; object-fit:contain; background:#fff; border-radius:14px; cursor:pointer;
+      box-shadow:0 4px 10px #0005;
+    }
+    #bigView {
+      position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:50;
+      display:flex; align-items:center; justify-content:center; padding:20px;
+    }
+    #bigView img { max-width:94%; max-height:80%; border-radius:16px; box-shadow:0 8px 30px #000a; }
+    #bigView .closeBig {
+      position:absolute; top:16px; right:16px; background:rgba(255,255,255,0.15); color:#fff;
+      border:none; border-radius:50%; width:56px; height:56px; font-size:1.6rem; font-weight:900; cursor:pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="hdr">
+      <a href="index.html" class="back">←</a>
+      <span class="htitle">🖍️ L'atelier coloriage</span>
+    </div>
+
+    <!-- ÉCRAN CHOIX -->
+    <div class="screen" id="screenChoice">
+      <button id="galleryBtn">🖼️ Ma galerie</button>
+      <div class="choice-title">Choisis un dino à colorier !</div>
+      <div class="grid" id="grid"></div>
+    </div>
+
+    <!-- ÉCRAN ATELIER -->
+    <div class="screen hidden" id="screenAtelier">
+      <div id="atelier">
+        <div class="atelier-top">
+          <button class="atelier-btn" id="modelBtn">🦕 Modèle</button>
+          <button class="atelier-btn" id="finBtn">✅ Fini !</button>
+        </div>
+        <div class="canvas-wrap">
+          <canvas id="paintCanvas" width="800" height="600"></canvas>
+          <div id="modelOverlay"><img id="modelImg" alt=""></div>
+        </div>
+        <div class="palette" id="palette"></div>
+      </div>
+    </div>
+
+    <!-- ÉCRAN GALERIE -->
+    <div class="screen hidden" id="screenGallery">
+      <div class="choice-title">🖼️ Ma galerie</div>
+      <div class="grid" id="galleryView"></div>
+      <div class="gallery-empty hidden" id="galleryEmpty">Pas encore d'œuvre... Colorie ton premier dino !</div>
+    </div>
+  </div>
+
+  <div id="bigView" class="hidden">
+    <button class="closeBig" id="closeBig">✕</button>
+    <img id="bigImg" alt="">
+  </div>
+
+  <script src="js/dinos-data.js"></script>
+  <script src="js/sounds.js"></script>
+  <script src="js/tts.js"></script>
+  <script src="js/victory-sounds.js"></script>
+  <script src="js/tracker.js"></script>
+  <script>
+    // ─── MJ-32 — L'atelier coloriage (jeu LIBRE, sans étoiles ni échec) ───
+    const GALLERY_KEY = 'mj32_galerie';
+    const GALLERY_MAX = 12;
+    const COLORIAGE_DIR = 'img/dinos/paleoart/';
+    const MODEL_DIR = 'img/dinos/';
+
+    // Couleurs vives + nature (10 + marron/gris/vert nature) — pas de hex hardcodé "ligne bus"
+    // (ce jeu n'a pas de notion de ligne RATP, palette dédiée coloriage)
+    const PALETTE = [
+      { hex:'#e53935', name:'rouge' },
+      { hex:'#fb8c00', name:'orange' },
+      { hex:'#fdd835', name:'jaune' },
+      { hex:'#43a047', name:'vert' },
+      { hex:'#1e88e5', name:'bleu' },
+      { hex:'#8e24aa', name:'violet' },
+      { hex:'#ec407a', name:'rose' },
+      { hex:'#00acc1', name:'turquoise' },
+      { hex:'#6d4c41', name:'marron' },
+      { hex:'#757575', name:'gris' },
+      { hex:'#33691e', name:'vert foncé' },
+      { hex:'#000000', name:'noir' },
+    ];
+
+    function baseName(png) { return png.replace(/\.(jpg|jpeg|png|webp)$/i, ''); }
+
+    let currentDino = null;
+    let selectedColor = PALETTE[0].hex;
+    let canvas, ctx;
+    let filling = false;
+
+    // ═══════════════ ÉCRAN CHOIX ═══════════════
+    function buildGrid() {
+      const grid = document.getElementById('grid');
+      grid.innerHTML = '';
+      DINOS.forEach(d => {
+        const card = document.createElement('div');
+        card.className = 'thumb-card';
+        const src = COLORIAGE_DIR + baseName(d.png) + '_coloriage.webp';
+        card.innerHTML = '<img loading="lazy" src="' + src + '" alt=""><div class="tname">' + d.name + '</div>';
+        const img = card.querySelector('img');
+        img.onerror = () => card.remove();
+        card.onclick = () => openAtelier(d);
+        grid.appendChild(card);
+      });
+    }
+
+    function openAtelier(dino) {
+      currentDino = dino;
+      document.getElementById('screenChoice').classList.add('hidden');
+      document.getElementById('screenGallery').classList.add('hidden');
+      document.getElementById('screenAtelier').classList.remove('hidden');
+      document.getElementById('modelImg').src = MODEL_DIR + dino.png;
+      loadLineart(dino);
+    }
+
+    // ═══════════════ ATELIER : canvas + flood fill ═══════════════
+    function loadLineart(dino) {
+      canvas = document.getElementById('paintCanvas');
+      ctx = canvas.getContext('2d', { willReadFrequently: true });
+      const src = COLORIAGE_DIR + baseName(dino.png) + '_coloriage.webp';
+      const img = new Image();
+      img.onload = () => {
+        // Redimensionne le canvas interne pour garder les proportions, plafonné ~800px
+        const maxSide = 800;
+        let w = img.naturalWidth, h = img.naturalHeight;
+        const scale = Math.min(maxSide / w, maxSide / h, 1);
+        w = Math.round(w * scale) || maxSide;
+        h = Math.round(h * scale) || maxSide;
+        canvas.width = w;
+        canvas.height = h;
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, w, h);
+        ctx.drawImage(img, 0, 0, w, h);
+      };
+      img.onerror = () => {
+        // Robustesse : fond blanc simple si l'image manque
+        canvas.width = 800; canvas.height = 600;
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, 800, 600);
+      };
+      img.src = src;
+    }
+
+    function hexToRgb(hex) {
+      const c = hex.replace('#', '');
+      return [parseInt(c.slice(0,2),16), parseInt(c.slice(2,4),16), parseInt(c.slice(4,6),16)];
+    }
+
+    // Flood fill scanline sur ImageData — tolérance luminance, ne franchit pas les lignes sombres
+    function floodFill(startX, startY, fillHex) {
+      const w = canvas.width, h = canvas.height;
+      const imgData = ctx.getImageData(0, 0, w, h);
+      const data = imgData.data;
+      const idx = (x, y) => (y * w + x) * 4;
+
+      const si = idx(startX, startY);
+      const startR = data[si], startG = data[si+1], startB = data[si+2];
+      const startLum = 0.299*startR + 0.587*startG + 0.114*startB;
+
+      // Si on tape sur une ligne sombre (contour), on ignore le tap
+      if (startLum < 60) return false;
+
+      const [fr, fg, fb] = hexToRgb(fillHex);
+      // Si déjà (quasi) la couleur cible, rien à faire
+      if (Math.abs(startR-fr) < 6 && Math.abs(startG-fg) < 6 && Math.abs(startB-fb) < 6) return false;
+
+      const TOL = 48; // tolérance anti-aliasing webp
+      const visited = new Uint8Array(w * h);
+      const stack = [[startX, startY]];
+
+      while (stack.length) {
+        let [x, y] = stack.pop();
+        // Remonte à gauche jusqu'au bord de zone
+        let xl = x;
+        while (xl > 0 && canFill(data, idx(xl-1, y), startR, startG, startB, TOL)) xl--;
+        let xr = x;
+        while (xr < w-1 && canFill(data, idx(xr+1, y), startR, startG, startB, TOL)) xr++;
+
+        let spanAbove = false, spanBelow = false;
+        for (let xi = xl; xi <= xr; xi++) {
+          const pi = idx(xi, y);
+          if (!visited[y*w+xi] && canFill(data, pi, startR, startG, startB, TOL)) {
+            data[pi] = fr; data[pi+1] = fg; data[pi+2] = fb; data[pi+3] = 255;
+            visited[y*w+xi] = 1;
+          }
+          if (y > 0) {
+            const pAbove = idx(xi, y-1);
+            const okAbove = !visited[(y-1)*w+xi] && canFill(data, pAbove, startR, startG, startB, TOL);
+            if (okAbove && !spanAbove) { stack.push([xi, y-1]); spanAbove = true; }
+            else if (!okAbove) spanAbove = false;
+          }
+          if (y < h-1) {
+            const pBelow = idx(xi, y+1);
+            const okBelow = !visited[(y+1)*w+xi] && canFill(data, pBelow, startR, startG, startB, TOL);
+            if (okBelow && !spanBelow) { stack.push([xi, y+1]); spanBelow = true; }
+            else if (!okBelow) spanBelow = false;
+          }
+        }
+      }
+      ctx.putImageData(imgData, 0, 0);
+      return true;
+    }
+
+    function canFill(data, pi, r0, g0, b0, tol) {
+      const r = data[pi], g = data[pi+1], b = data[pi+2];
+      const lum = 0.299*r + 0.587*g + 0.114*b;
+      if (lum < 60) return false; // jamais franchir une ligne sombre
+      return Math.abs(r-r0) <= tol && Math.abs(g-g0) <= tol && Math.abs(b-b0) <= tol;
+    }
+
+    function canvasPointFromEvent(e) {
+      const rect = canvas.getBoundingClientRect();
+      const cx = (e.touches ? e.touches[0].clientX : e.clientX) - rect.left;
+      const cy = (e.touches ? e.touches[0].clientY : e.clientY) - rect.top;
+      const x = Math.round(cx * (canvas.width / rect.width));
+      const y = Math.round(cy * (canvas.height / rect.height));
+      return [Math.max(0, Math.min(canvas.width-1, x)), Math.max(0, Math.min(canvas.height-1, y))];
+    }
+
+    function handleTap(e) {
+      if (filling || !canvas) return;
+      e.preventDefault();
+      const [x, y] = canvasPointFromEvent(e);
+      filling = true;
+      const changed = floodFill(x, y, selectedColor);
+      if (changed && typeof sndDing === 'function') sndDing();
+      filling = false;
+    }
+
+    function buildPalette() {
+      const pal = document.getElementById('palette');
+      pal.innerHTML = '';
+      PALETTE.forEach((c, i) => {
+        const sw = document.createElement('div');
+        sw.className = 'swatch' + (i === 0 ? ' sel' : '');
+        sw.style.background = c.hex;
+        sw.dataset.hex = c.hex;
+        sw.onclick = () => {
+          selectedColor = c.hex;
+          document.querySelectorAll('.swatch').forEach(s => s.classList.remove('sel'));
+          sw.classList.add('sel');
+        };
+        pal.appendChild(sw);
+      });
+      const eraser = document.createElement('div');
+      eraser.className = 'swatch eraser';
+      eraser.textContent = '🧽';
+      eraser.onclick = () => {
+        selectedColor = '#ffffff';
+        document.querySelectorAll('.swatch').forEach(s => s.classList.remove('sel'));
+        eraser.classList.add('sel');
+      };
+      pal.appendChild(eraser);
+    }
+
+    // ═══════════════ Modèle (aperçu couleur 2s) ═══════════════
+    function showModel() {
+      const overlay = document.getElementById('modelOverlay');
+      overlay.classList.add('show');
+      setTimeout(() => overlay.classList.remove('show'), 2000);
+    }
+
+    // ═══════════════ Fini ! → sauvegarde galerie ═══════════════
+    function finishPainting() {
+      // Réduction taille pour localStorage (~300px de large max)
+      const outW = 300;
+      const outH = Math.round(canvas.height * (outW / canvas.width));
+      const out = document.createElement('canvas');
+      out.width = outW; out.height = outH;
+      out.getContext('2d').drawImage(canvas, 0, 0, outW, outH);
+      const dataUrl = out.toDataURL('image/jpeg', 0.72);
+
+      saveToGallery({ name: currentDino.name, img: dataUrl, date: Date.now() });
+
+      if (typeof playEndSound === 'function') playEndSound(1, 1);
+      if (window.TTS && TTS.supported()) {
+        TTS.speak('Magnifique ! Ton ' + currentDino.name + ' est superbe !', { pitch: 1.05, priority: true });
+      }
+
+      setTimeout(() => openGallery(), 900);
+    }
+
+    function loadGallery() {
+      try { return JSON.parse(localStorage.getItem(GALLERY_KEY)) || []; }
+      catch (e) { return []; }
+    }
+
+    function saveToGallery(piece) {
+      let list = loadGallery();
+      list.push(piece);
+      if (list.length > GALLERY_MAX) list = list.slice(list.length - GALLERY_MAX);
+      try {
+        localStorage.setItem(GALLERY_KEY, JSON.stringify(list));
+      } catch (e) {
+        // QuotaExceededError → drop les plus vieux jusqu'à ce que ça rentre
+        while (list.length > 1) {
+          list = list.slice(1);
+          try {
+            localStorage.setItem(GALLERY_KEY, JSON.stringify(list));
+            break;
+          } catch (e2) { /* continue à réduire */ }
+        }
+      }
+    }
+
+    // ═══════════════ Galerie ═══════════════
+    function openGallery() {
+      document.getElementById('screenChoice').classList.add('hidden');
+      document.getElementById('screenAtelier').classList.add('hidden');
+      document.getElementById('screenGallery').classList.remove('hidden');
+      renderGallery();
+    }
+
+    function renderGallery() {
+      const list = loadGallery();
+      const grid = document.getElementById('galleryView');
+      const empty = document.getElementById('galleryEmpty');
+      grid.innerHTML = '';
+      if (!list.length) {
+        empty.classList.remove('hidden');
+        return;
+      }
+      empty.classList.add('hidden');
+      [...list].reverse().forEach(piece => {
+        const card = document.createElement('div');
+        card.className = 'thumb-card';
+        card.innerHTML = '<img class="piece" src="' + piece.img + '" alt=""><div class="tname">' + piece.name + '</div>';
+        card.onclick = () => showBig(piece.img);
+        grid.appendChild(card);
+      });
+    }
+
+    function showBig(src) {
+      document.getElementById('bigImg').src = src;
+      document.getElementById('bigView').classList.remove('hidden');
+    }
+
+    function closeBig() {
+      document.getElementById('bigView').classList.add('hidden');
+    }
+
+    // ═══════════════ Init ═══════════════
+    function backToChoice() {
+      document.getElementById('screenAtelier').classList.add('hidden');
+      document.getElementById('screenGallery').classList.add('hidden');
+      document.getElementById('screenChoice').classList.remove('hidden');
+    }
+
+    function init() {
+      buildGrid();
+      buildPalette();
+      document.getElementById('galleryBtn').onclick = openGallery;
+      document.getElementById('modelBtn').onclick = showModel;
+      document.getElementById('finBtn').onclick = finishPainting;
+      document.getElementById('closeBig').onclick = closeBig;
+      document.getElementById('bigView').onclick = (e) => { if (e.target.id === 'bigView') closeBig(); };
+
+      canvas = document.getElementById('paintCanvas');
+      canvas.addEventListener('pointerdown', handleTap);
+
+      if (Tracker && Tracker.startSession) Tracker.startSession('mj-32');
+    }
+
+    init();
+  </script>
+  <script src="js/comments.js"></script>
+  <script src="js/back-button.js"></script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-31 – Le grand voyage du temps</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    #app { background:linear-gradient(160deg,#1a1a2e,#0d0d1a); }
+
+    .instruction-text { text-align:center; font-size:1.25rem; font-weight:900; color:#ffe066; margin:6px 12px 2px; }
+
+    /* ─── Dino flottant (ombre à identifier) ─── */
+    .dino-float-wrap { display:flex; flex-direction:column; align-items:center; gap:2px; margin:6px 0 8px; }
+    .dino-float-card {
+      background:#fff; border-radius:20px; padding:10px; box-shadow:0 6px 18px #0006;
+      width:104px; height:104px; display:flex; align-items:center; justify-content:center;
+      border:5px solid #ffd633;
+    }
+    .dino-float-card img { width:100%; height:100%; object-fit:contain; }
+    .dino-name { font-size:1.05rem; font-weight:900; color:#fff; }
+
+    /* ─── Frise = bandes d'époque empilées ─── */
+    .frise { flex:1; display:flex; flex-direction:column; gap:8px; padding:8px 10px 10px; min-height:0; }
+    .band {
+      flex:1; min-height:80px; border-radius:16px; border:4px solid transparent;
+      display:flex; align-items:center; gap:12px; padding:8px 14px;
+      cursor:pointer; transition:transform .12s, border-color .15s; position:relative;
+      box-shadow:0 4px 10px #0004;
+    }
+    .band:active { transform:scale(.97); }
+    .band.ok { border-color:#00c47a; }
+    .band.ko { border-color:#ff5a5a; opacity:.6; }
+    .band-info { flex-shrink:0; min-width:74px; }
+    .band-label { font-size:1rem; font-weight:900; color:#fff; line-height:1.1; }
+    .band-date { font-size:.72rem; font-weight:700; color:#ffffffcc; }
+    .band-slots { flex:1; display:flex; gap:6px; flex-wrap:wrap; align-items:center; min-height:44px; }
+    .band-slot {
+      width:44px; height:44px; border-radius:10px; background:#ffffff22;
+      display:flex; align-items:center; justify-content:center; overflow:hidden;
+      flex-shrink:0;
+    }
+    .band-slot img { width:100%; height:100%; object-fit:contain; }
+
+    .band-trias      { background:linear-gradient(135deg,#5d3a1a,#8e6e3c); }
+    .band-jurassique { background:linear-gradient(135deg,#0a4a1e,#27ae60); }
+    .band-cretace    { background:linear-gradient(135deg,#7a4500,#e67e22); }
+    .band-cenozoique { background:linear-gradient(135deg,#0a3d6b,#2980b9); }
+    .band-permien    { background:linear-gradient(135deg,#4a2a5a,#8e44ad); }
+
+    /* ─── Finale météorite : tableaux plein écran ─── */
+    .meteor-screen {
+      position:fixed; inset:0; z-index:2000; display:flex; flex-direction:column;
+      align-items:center; justify-content:center; text-align:center; padding:30px;
+      cursor:pointer;
+    }
+    .meteor-emoji { font-size:4.5rem; margin-bottom:18px; animation:meteorPop .5s ease-out; }
+    .meteor-text { font-size:1.3rem; font-weight:900; color:#fff; max-width:640px; line-height:1.4; }
+    .meteor-tap { position:absolute; bottom:26px; font-size:.85rem; color:#ffffff99; font-weight:700; }
+    @keyframes meteorPop { from{ transform:scale(.5); opacity:0; } to{ transform:scale(1); opacity:1; } }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="hdr">
+      <a href="index.html" class="back">←</a>
+      <span class="htitle">🌋 Le grand voyage du temps</span>
+    </div>
+    <div class="pips" id="pips"></div>
+
+    <div class="qbox">
+      <div class="instruction-text" id="instruction">…</div>
+      <div class="dino-float-wrap">
+        <div class="dino-float-card" id="dinoCard"></div>
+        <div class="dino-name" id="dinoName"></div>
+      </div>
+    </div>
+
+    <div class="frise" id="frise"></div>
+  </div>
+
+  <script src="js/sounds.js"></script>
+  <script src="js/tts.js"></script>
+  <script src="js/victory-sounds.js"></script>
+  <script src="js/feedback.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/stars.js"></script>
+  <script src="js/qcm-retry.js"></script>
+  <script src="js/mj-golden.js"></script>
+  <script src="js/dinos-data.js"></script>
+  <script>
+    // ─── MJ-31 — Le grand voyage du temps (dino → bonne bande d'époque) ───
+    const G = Golden.setup('mj-31');
+    const MAX_Q = G.totalQ;
+    const level = G.level;
+
+    // Bandes d'époque (ordre chronologique, la plus ancienne en haut)
+    const BANDS_BASE = [
+      { id:'permien',     emoji:'🟣', label:'Avant les dinosaures', date:'il y a 280 millions d\'années', cls:'band-permien' },
+      { id:'trias',       emoji:'🟤', label:'Trias',                date:'il y a 230 millions d\'années', cls:'band-trias' },
+      { id:'jurassique',  emoji:'🟢', label:'Jurassique',           date:'il y a 150 millions d\'années', cls:'band-jurassique' },
+      { id:'cretace',     emoji:'🟠', label:'Crétacé',              date:'il y a 66 à 100 millions d\'années', cls:'band-cretace' },
+      { id:'cenozoique',  emoji:'🔵', label:'Après la météorite',   date:'après 66 millions d\'années', cls:'band-cenozoique' },
+    ];
+    // Niveau 2 seul débloque la bande "avant les dinosaures" (Dimétrodon, permien)
+    const BANDS = level >= 2 ? BANDS_BASE : BANDS_BASE.filter(b => b.id !== 'permien');
+    const BAND_IDS = BANDS.map(b => b.id);
+
+    // Catalogue jouable : jamais periode 'present', jamais permien hors niveau 2
+    const POOL = DINOS.filter(d => d.periode !== 'present' && BAND_IDS.includes(d.periode));
+
+    // Iconiques faciles pour L0 (cibles évidentes Crétacé / Cénozoïque / Jurassique)
+    const ICONIC_IDS = ['tyrannosaurus','triceratops','stegosaurus','brachiosaurus','ankylosaurus',
+      'velociraptor','mammuthus','smilodon','diplodocus','parasaurolophus','pteranodon','spinosaurus'];
+    const POOL_L0 = POOL.filter(d => ICONIC_IDS.includes(d.id));
+
+    // Paires "piège" cousins d'époques différentes (pépite pédagogique + niveau 2)
+    const TRAP_PAIRS = [
+      ['tyrannosaurus','stegosaurus'],   // 80M d'années d'écart, T-Rex plus proche de nous que du Stégo
+      ['tyrannosaurus','allosaurus'],
+      ['tyrannosaurus','diplodocus'],
+      ['triceratops','stegosaurus'],
+    ];
+
+    let qCount = 0, qcm = null, targetDino = null, usedIds = [];
+
+    function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+    function speak(t){TTS.speak(t,{pitch:1.02,priority:true});}
+    function ombreSrc(d){ return 'img/dinos/_new-ombre/' + d.png.replace(/\.(jpg|png|webp)$/i,'') + '_ombre.png'; }
+
+    function init(){
+      G.buildPips();
+      buildFrise();
+      nextQuestion();
+    }
+
+    function buildFrise(){
+      const box = document.getElementById('frise');
+      box.innerHTML = '';
+      BANDS.forEach(b => {
+        const d = document.createElement('div');
+        d.className = 'band ' + b.cls;
+        d.dataset.periode = b.id;
+        d.innerHTML =
+          '<div class="band-info"><div class="band-label">' + b.emoji + ' ' + b.label + '</div>' +
+          '<div class="band-date">' + b.date + '</div></div>' +
+          '<div class="band-slots" id="slots-' + b.id + '"></div>';
+        d.onclick = () => answer(b.id, d);
+        box.appendChild(d);
+      });
+    }
+
+    function pickTarget(){
+      let candidates;
+      if (level === 0) {
+        candidates = POOL_L0.filter(d => !usedIds.includes(d.id));
+        if (!candidates.length) candidates = POOL_L0;
+      } else if (level === 2 && Math.random() < 0.5) {
+        // question piège : force un dino issu d'une des paires cousins-éloignés
+        const pair = TRAP_PAIRS[Math.floor(Math.random()*TRAP_PAIRS.length)];
+        const id = pair[Math.floor(Math.random()*pair.length)];
+        const found = POOL.find(d => d.id === id);
+        candidates = found ? [found] : POOL;
+      } else {
+        candidates = POOL.filter(d => !usedIds.includes(d.id));
+        if (!candidates.length) candidates = POOL;
+      }
+      const d = candidates[Math.floor(Math.random()*candidates.length)];
+      usedIds.push(d.id);
+      return d;
+    }
+
+    function nextQuestion(){
+      if (qCount >= MAX_Q) return startMeteorFinale();
+      qcm = QcmRetry.create();
+      qCount++;
+
+      targetDino = pickTarget();
+
+      document.getElementById('instruction').textContent = 'Il vivait quand ?';
+      document.getElementById('dinoName').textContent = targetDino.name;
+      document.getElementById('dinoCard').innerHTML = '<img src="' + ombreSrc(targetDino) + '" alt="">';
+      speak(targetDino.name + ' ! Il vivait quand ?');
+
+      document.querySelectorAll('.band').forEach(b => {
+        b.classList.remove('ok','ko');
+        b.dataset.correct = (b.dataset.periode === targetDino.periode) ? '1' : '';
+      });
+    }
+
+    function answer(periode, btn){
+      if (qcm.locked) return;
+      const correct = periode === targetDino.periode;
+      const res = QcmRetry.handle(qcm, correct);
+      if (res.outcome === 'ignored') return;
+      if (res.outcome === 'correct'){
+        btn.classList.add('ok');
+        sndDing(); G.notePip(qCount-1, res.attempts);
+        landDinoOnBand(targetDino, btn);
+        setTimeout(() => {
+          speakEpoquePhrase(targetDino);
+        }, 300);
+        setTimeout(nextQuestion, 3200);
+      } else if (res.outcome === 'reveal'){
+        btn.classList.add('ko');
+        revealCorrectBand();
+        sndBuzz(); G.notePip(qCount-1, 4);
+        setTimeout(() => {
+          landDinoOnBand(targetDino, document.querySelector('.band[data-correct="1"]'));
+          speakEpoquePhrase(targetDino);
+        }, 300);
+        setTimeout(nextQuestion, 3400);
+      } else {
+        btn.classList.add('ko');
+        sndBuzz();
+        speak('Essaie encore !');
+        setTimeout(() => btn.classList.remove('ko'), 500);
+      }
+    }
+
+    function revealCorrectBand(){
+      const el = document.querySelector('.band[data-correct="1"]');
+      if (el) el.classList.add('ok');
+    }
+
+    // Le dino se pose sur sa bande : mini-vignette persistante, la frise se peuple.
+    function landDinoOnBand(d, bandEl){
+      if (!bandEl) return;
+      const slotsBox = bandEl.querySelector('.band-slots');
+      if (!slotsBox) return;
+      const slot = document.createElement('div');
+      slot.className = 'band-slot';
+      slot.innerHTML = '<img src="' + ombreSrc(d) + '" alt="">';
+      slotsBox.appendChild(slot);
+      slot.animate([
+        { transform:'scale(0) translateY(-20px)', opacity:0 },
+        { transform:'scale(1.15) translateY(0)', opacity:1, offset:0.7 },
+        { transform:'scale(1) translateY(0)', opacity:1 },
+      ], { duration:450, easing:'ease-out' });
+    }
+
+    // Vraie date TOUJOURS dite. + pépite pédagogique T-Rex/Stégosaure si la paire concernée sort.
+    function speakEpoquePhrase(d){
+      let phrase = d.name + '. ' + d.epoque + '.';
+      const nemesis = { tyrannosaurus:'stegosaurus', stegosaurus:'tyrannosaurus' };
+      if (nemesis[d.id]) {
+        phrase += ' Tu sais quoi ? Le T-Rex n\'a JAMAIS rencontré le Stégosaure : 80 millions d\'années les séparent !';
+      }
+      speak(phrase);
+    }
+
+    // ─── Finale météorite : 4 tableaux plein écran, tap pour avancer ───
+    const METEOR_SLIDES = [
+      { emoji:'🦕🌿', text:'Il y a 66 millions d\'années, les dinosaures vivent tranquilles.' },
+      { emoji:'☄️',   text:'Une météorite ÉNORME tombe du ciel. BOUM !' },
+      { emoji:'🌑',   text:'La poussière cache le soleil. Il fait froid, les plantes manquent. Les grands dinosaures disparaissent.' },
+      { emoji:'🐭🐦', text:'Mais les petits mammifères et les oiseaux survivent. Une nouvelle histoire commence !' },
+    ];
+    let meteorIdx = 0;
+
+    function startMeteorFinale(){
+      meteorIdx = 0;
+      showMeteorSlide();
+    }
+
+    function showMeteorSlide(){
+      const s = METEOR_SLIDES[meteorIdx];
+      const div = document.createElement('div');
+      div.className = 'meteor-screen';
+      div.style.background = meteorIdx === 1 ? 'radial-gradient(circle,#7a2000,#1a0800)'
+        : meteorIdx === 2 ? 'linear-gradient(160deg,#1a1a1a,#050505)'
+        : 'linear-gradient(160deg,#1f3d2b,#13261c)';
+      div.innerHTML =
+        '<div class="meteor-emoji">' + s.emoji + '</div>' +
+        '<div class="meteor-text">' + s.text + '</div>' +
+        '<div class="meteor-tap">👉 touche l\'écran</div>';
+      document.body.appendChild(div);
+      speak(s.text);
+
+      let advanced = false;
+      const autoTimer = setTimeout(advance, 4000);
+      function advance(){
+        if (advanced) return;
+        advanced = true;
+        clearTimeout(autoTimer);
+        div.remove();
+        meteorIdx++;
+        if (meteorIdx < METEOR_SLIDES.length) showMeteorSlide();
+        else showEnd();
+      }
+      div.onclick = advance;
+    }
+
+    function showEnd(){
+      G.showEnd({ replayUrl: 'mj-31.html' });
+    }
+
+    init();
+  </script>
+  <script src="js/tracker.js"></script>
+  <script src="js/comments.js"></script>
+  <script src="js/back-button.js"></script>
+</body>
+</html>

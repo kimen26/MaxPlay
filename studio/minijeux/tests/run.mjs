@@ -21,7 +21,12 @@ mkdirSync(artifacts, { recursive: true });
 const PASS = '\x1b[32mPASS\x1b[0m', FAIL = '\x1b[31mFAIL\x1b[0m';
 const errors = [];
 
-const browser = await chromium.launch();
+// --allow-file-access-from-files + --disable-web-security : en prod (GitHub Pages https),
+// HTML + assets sont same-origin donc jamais de canvas taint. En file:// local, Chromium
+// traite chaque fichier comme une origine opaque distincte (canvas tainted dès drawImage()
+// d'une <img> même voisine) — ces flags répliquent fidèlement le comportement prod pour les
+// MJ qui font du canvas+image (ex: mj-32 flood fill coloriage).
+const browser = await chromium.launch({ args: ['--allow-file-access-from-files', '--disable-web-security'] });
 const page = await browser.newPage({ viewport: { width: 480, height: 900 } });
 
 // Smoke : toute erreur JS / console.error = échec immédiat (aurait tué la saga "Object.entries")

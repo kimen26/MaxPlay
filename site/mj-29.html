@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-29 – La fabrique de noms</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    #app { background: linear-gradient(160deg,#2b1f3d,#1c1326); }
+
+    .instruction-text { text-align:center; font-size:1.15rem; font-weight:900; color:#ffe066; margin:8px 12px 2px; }
+
+    /* ─── Zone d'assemblage (cases) ─── */
+    .slots {
+      display:flex; align-items:center; justify-content:center; gap:8px;
+      flex-wrap:wrap; padding:10px 12px 6px; min-height:64px;
+    }
+    .slot {
+      min-width:64px; height:58px; border-radius:14px;
+      border:3px dashed rgba(255,255,255,0.35);
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.3rem; font-weight:900; color:#fff;
+      padding:0 8px; background:rgba(255,255,255,0.06);
+      transition:border-color .2s, background .2s, transform .2s;
+    }
+    .slot.filled {
+      border-style:solid; border-color:#00c47a; background:#00c47a2a;
+    }
+    .slot.pulse { animation:slotWait 1s ease-in-out infinite; }
+    @keyframes slotWait {
+      0%,100% { border-color:rgba(255,255,255,0.35); }
+      50% { border-color:#ffe066; }
+    }
+
+    /* Nom complet réuni (remplace les slots à la victoire du dino) */
+    .full-name {
+      text-align:center; font-size:1.7rem; font-weight:900; color:#00e8a3;
+      padding:14px 12px 2px; opacity:0; transform:scale(.7);
+      transition:opacity .35s, transform .35s;
+    }
+    .full-name.show { opacity:1; transform:scale(1); }
+
+    .dino-reveal {
+      display:flex; flex-direction:column; align-items:center; gap:8px;
+      padding:6px 12px 10px; opacity:0; transform:translateY(12px);
+      transition:opacity .4s, transform .4s;
+    }
+    .dino-reveal.show { opacity:1; transform:translateY(0); }
+    .dino-reveal img {
+      width:180px; height:180px; object-fit:contain; border-radius:20px;
+      background:#fff2; box-shadow:0 6px 20px #0006;
+    }
+    .dino-sens { font-size:1rem; font-weight:700; text-align:center; color:#fff; opacity:.9; padding:0 16px; }
+
+    .tts-btn {
+      display:flex; align-items:center; gap:8px; margin:6px auto;
+      background:linear-gradient(135deg,#43a047,#66bb6a); color:#fff; border:none; cursor:pointer;
+      border-radius:25px; padding:10px 22px; font-size:1rem; font-weight:900;
+      box-shadow:0 4px 12px #0005;
+    }
+    .tts-btn:active { transform:scale(.94); }
+
+    /* ─── Briques racines ─── */
+    .bricks {
+      flex:1; display:flex; flex-wrap:wrap; align-content:center; justify-content:center;
+      gap:14px; padding:10px 16px 20px; overflow-y:auto;
+    }
+    .brick {
+      min-width:88px; min-height:88px; border-radius:18px;
+      background:linear-gradient(135deg,#f6a821,#e67e22);
+      border:4px solid #fff3; color:#fff; font-weight:900; font-size:1.5rem;
+      display:flex; align-items:center; justify-content:center;
+      padding:6px 14px; cursor:pointer; box-shadow:0 5px 14px #0005;
+      transition:transform .15s, opacity .3s;
+    }
+    .brick:active { transform:scale(.93); }
+    .brick.wrong-shake { animation:brickShake .4s ease; }
+    .brick.gone { opacity:0; transform:scale(.4); pointer-events:none; }
+    .brick.fly {
+      position:fixed; z-index:50; pointer-events:none;
+      transition:transform .5s cubic-bezier(.3,-0.2,.4,1.3), opacity .5s;
+    }
+    @keyframes brickShake {
+      0%,100% { transform:translateX(0); }
+      20% { transform:translateX(-10px) rotate(-4deg); }
+      40% { transform:translateX(9px) rotate(4deg); }
+      60% { transform:translateX(-7px) rotate(-3deg); }
+      80% { transform:translateX(6px) rotate(3deg); }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="hdr">
+      <a href="index.html" class="back">←</a>
+      <span class="htitle">🧩 La fabrique de noms</span>
+    </div>
+    <div class="pips" id="pips"></div>
+
+    <div class="qbox" style="background:none;box-shadow:none;padding:0;margin:0;">
+      <div class="instruction-text" id="instruction">…</div>
+      <button class="tts-btn" id="repeatBtn"><span>🔊</span><span>Écouter</span></button>
+    </div>
+
+    <div class="slots" id="slots"></div>
+    <div class="full-name" id="fullName"></div>
+    <div class="dino-reveal" id="dinoReveal">
+      <img id="dinoImg" src="" alt="">
+      <div class="dino-sens" id="dinoSens"></div>
+    </div>
+
+    <div class="bricks" id="bricks"></div>
+  </div>
+
+  <script src="js/dinos-data.js"></script>
+  <script src="js/dinos-racines.js"></script>
+  <script src="js/sounds.js"></script>
+  <script src="js/tts.js"></script>
+  <script src="js/victory-sounds.js"></script>
+  <script src="js/feedback.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/stars.js"></script>
+  <script src="js/mj-golden.js"></script>
+  <script>
+    // ─── MJ-29 — La fabrique de noms (assemblage de racines grec/latin) ───
+    // Un dino à reconstruire : slots vides dans l'ordre des racines, briques mélangées en bas.
+    // Chaque bonne brique posée -> TTS dit son sens immédiatement. Nom complet -> fête + image.
+
+    // 1) Ne garder que les dinos présents à la fois dans DINO_RACINES.dinos et dans DINOS (id commun)
+    // NB: DINOS/DINO_RACINES sont des `const` top-level (liaison lexicale globale, PAS des
+    // propriétés de `window`) — toujours y accéder par leur nom direct, jamais window.DINOS.
+    const DINOS_BY_ID = {};
+    (typeof DINOS !== 'undefined' ? DINOS : []).forEach(d => { DINOS_BY_ID[d.id] = d; });
+
+    // Le champ `cle` de chaque racine est déjà la forme canonique courte (ex: "-saure", "cérat-",
+    // "-céphale"). Quand cle contient encore "forme1 / forme2" (variante FR pas encore isolée dans
+    // la donnée), on garde la 1ère partie (préfixe/suffixe déjà lisible). On ne réinvente jamais
+    // l'étymologie : on affiche tel quel ce que la source fournit.
+    function cleanBrickText(cle) {
+      return cle.split('/')[0].trim();
+    }
+    function stripDashes(s) { return s.replace(/-/g, ''); }
+
+    const POOL = Object.keys(DINO_RACINES.dinos)
+      .filter(id => DINOS_BY_ID[id])
+      .map(id => {
+        const d = DINO_RACINES.dinos[id];
+        return {
+          id,
+          nom: d.nom,
+          sens: d.sens,
+          png: DINOS_BY_ID[id].png,
+          name: DINOS_BY_ID[id].name,
+          racines: d.racines.map(r => ({
+            display: cleanBrickText(r.cle),
+            clean: stripDashes(cleanBrickText(r.cle)),
+            cle: r.cle,
+            langue: r.langue,
+            sens: r.sens,
+          })),
+        };
+      });
+
+    const POOL_2 = POOL.filter(d => d.racines.length === 2);
+    const POOL_3 = POOL.filter(d => d.racines.length === 3);
+
+    const G = Golden.setup('mj-29');
+    const level = G.level; // 0,1,2
+
+    function shuffle(a) { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+    function speak(t) { TTS.speak(t, { pitch: 1.05, priority: true }); }
+
+    let qCount = 0, streak = 0;
+    let currentDino = null, slotIndex = 0, misses = 0, order = [];
+
+    function init() {
+      G.buildPips();
+      document.getElementById('repeatBtn').onclick = () => {
+        if (currentDino) speak(instructionFor(currentDino));
+      };
+      nextDino();
+    }
+
+    function instructionFor(dino) {
+      return 'Construis le nom de ' + dino.nom + ' !';
+    }
+
+    // Choisit un dino selon le niveau, avec distracteurs selon niveau.
+    function pickDino() {
+      if (level === 0) {
+        return { dino: POOL_2[Math.floor(Math.random() * POOL_2.length)], nDistract: 0 };
+      }
+      if (level === 1) {
+        return { dino: POOL_3[Math.floor(Math.random() * POOL_3.length)], nDistract: Math.random() < 0.5 ? 1 : 0 };
+      }
+      return { dino: POOL_3[Math.floor(Math.random() * POOL_3.length)], nDistract: 2 };
+    }
+
+    function nextDino() {
+      if (qCount >= G.totalQ) return showEnd();
+      qCount++;
+      misses = 0;
+      slotIndex = 0;
+
+      const { dino, nDistract } = pickDino();
+      currentDino = dino;
+
+      // Distracteurs : racines piochées dans d'autres dinos (pas dans currentDino)
+      const others = POOL.filter(d => d.id !== dino.id);
+      const distractRacines = [];
+      const usedCles = new Set(dino.racines.map(r => r.cle));
+      while (distractRacines.length < nDistract && others.length) {
+        const src = others[Math.floor(Math.random() * others.length)];
+        const cand = src.racines[Math.floor(Math.random() * src.racines.length)];
+        if (!usedCles.has(cand.cle) && !distractRacines.some(r => r.cle === cand.cle)) {
+          distractRacines.push(cand);
+          usedCles.add(cand.cle);
+        }
+        // évite boucle infinie si le pool est petit
+        if (distractRacines.length >= 4) break;
+      }
+
+      order = dino.racines.map((r, i) => ({ ...r, order: i, isTarget: true }));
+      const brickList = shuffle([...order, ...distractRacines.map(r => ({ ...r, isTarget: false }))]);
+
+      renderSlots(dino.racines.length);
+      renderBricks(brickList);
+      updateNextFlags();
+
+      document.getElementById('instruction').textContent = instructionFor(dino);
+      document.getElementById('fullName').classList.remove('show');
+      document.getElementById('fullName').textContent = '';
+      document.getElementById('dinoReveal').classList.remove('show');
+      speak(instructionFor(dino));
+    }
+
+    function renderSlots(n) {
+      const box = document.getElementById('slots');
+      box.innerHTML = '';
+      box.style.display = 'flex';
+      for (let i = 0; i < n; i++) {
+        const s = document.createElement('div');
+        s.className = 'slot';
+        s.id = 'slot' + i;
+        box.appendChild(s);
+      }
+    }
+
+    function renderBricks(list) {
+      const box = document.getElementById('bricks');
+      box.innerHTML = '';
+      list.forEach((r, i) => {
+        const b = document.createElement('button');
+        b.className = 'brick';
+        b.dataset.cle = r.cle;
+        b.dataset.instanceId = 'b' + i;
+        if (r.isTarget) b.dataset.order = String(r.order);
+        b.textContent = r.display;
+        b.onclick = () => onBrickClick(b, r);
+        box.appendChild(b);
+      });
+    }
+
+    // Marque data-next="1" sur la brique attendue à l'étape courante (testabilité).
+    function updateNextFlags() {
+      document.querySelectorAll('.brick').forEach(b => b.removeAttribute('data-next'));
+      const targetOrder = String(slotIndex);
+      const target = document.querySelector('.brick[data-order="' + targetOrder + '"]');
+      if (target) target.setAttribute('data-next', '1');
+    }
+
+    function onBrickClick(btn, racine) {
+      if (btn.classList.contains('gone') || btn.disabled) return;
+      const expected = order[slotIndex];
+      const isRightNow = racine.isTarget && racine.order === slotIndex;
+
+      if (isRightNow) {
+        btn.disabled = true;
+        flyToSlot(btn, slotIndex, () => {
+          fillSlot(slotIndex, expected.clean);
+          speak(expected.sens ? (expected.display.replace(/-/g, '').toUpperCase() + ' ! Ça veut dire ' + expected.sens.toUpperCase() + ' !') : expected.display);
+          sndDing();
+          slotIndex++;
+          updateNextFlags();
+          if (slotIndex >= order.length) {
+            setTimeout(completeDino, 1400);
+          }
+        });
+      } else {
+        misses++;
+        btn.classList.add('wrong-shake');
+        sndBuzz();
+        setTimeout(() => btn.classList.remove('wrong-shake'), 400);
+        if (misses >= 2) {
+          const target = document.querySelector('.brick[data-order="' + slotIndex + '"]');
+          if (target) {
+            target.classList.add('pulseGuide');
+            target.style.animation = 'brickShake 0s'; // reset
+            target.style.boxShadow = '0 0 0 6px #ffe06699, 0 5px 14px #0005';
+          }
+        }
+      }
+    }
+
+    function flyToSlot(btn, idx, done) {
+      const slot = document.getElementById('slot' + idx);
+      const br = btn.getBoundingClientRect();
+      const sr = slot ? slot.getBoundingClientRect() : br;
+      btn.classList.add('fly');
+      btn.style.left = br.left + 'px';
+      btn.style.top = br.top + 'px';
+      btn.style.width = br.width + 'px';
+      btn.style.height = br.height + 'px';
+      btn.style.margin = '0';
+      // force reflow puis anime vers la case
+      requestAnimationFrame(() => {
+        const dx = sr.left + sr.width / 2 - (br.left + br.width / 2);
+        const dy = sr.top + sr.height / 2 - (br.top + br.height / 2);
+        btn.style.transform = 'translate(' + dx + 'px,' + dy + 'px) scale(.55)';
+        btn.style.opacity = '0.15';
+      });
+      setTimeout(() => {
+        btn.classList.add('gone');
+        done();
+      }, 500);
+    }
+
+    function fillSlot(idx, text) {
+      const slot = document.getElementById('slot' + idx);
+      if (!slot) return;
+      slot.textContent = text;
+      slot.classList.add('filled');
+    }
+
+    function completeDino() {
+      G.notePip(qCount - 1, misses + 1);
+      streak = misses === 0 ? streak + 1 : 0;
+
+      document.getElementById('slots').style.display = 'none';
+      const fn = document.getElementById('fullName');
+      fn.textContent = currentDino.nom;
+      fn.classList.add('show');
+
+      const reveal = document.getElementById('dinoReveal');
+      document.getElementById('dinoImg').src = 'img/dinos/' + currentDino.png;
+      document.getElementById('dinoImg').alt = currentDino.name;
+      document.getElementById('dinoSens').textContent = currentDino.sens ? (currentDino.sens.charAt(0).toUpperCase() + currentDino.sens.slice(1)) : '';
+      reveal.classList.add('show');
+      document.getElementById('bricks').innerHTML = '';
+
+      speak(currentDino.nom + ' ! ' + (currentDino.sens || '') + ' !');
+      try { confetti(); } catch (e) {}
+
+      setTimeout(nextDino, 2600);
+    }
+
+    function showEnd() {
+      G.showEnd({ replayUrl: 'mj-29.html' });
+    }
+
+    init();
+  </script>
+  <script src="js/tracker.js"></script>
+  <script src="js/comments.js"></script>
+  <script src="js/back-button.js"></script>
+</body>
+</html>

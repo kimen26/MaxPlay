@@ -77,15 +77,126 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 ### L-067 – PNG silhouettes `_new-ombre/*` = fond transparent, jamais invert
 **MJ-30 (2026-07-05)** : PNG silhouettes dinos (`_new-ombre/edmontonia.png`, etc.) = silhouettes noires + fond transparent 24-bit. Bug mj-30 : rendu screenshot unique révélait silhouette cassée (fond clair par-dessus au lieu de transparent). Harnais Playwright VERT, screenshot manuel Papa Yann révèle. **Leçon** : pour tout asset PNG transparent, toujours vérifier MANUELLEMENT au moins 1 screenshot (canvas + layer stacking) AVANT Papa Yann teste. Automatisation insuf.
 
+### L-065 – `const DINOS` top-level JS = liaison lexicale globale
+**MJ-28..33 (2026-07-05)** : 2 agents piégés (mj-29 fabrique noms étymo, mj-32 coloriage flood fill) par erreur `DINOS is not defined`. Root cause : script utilise `const DINOS` en scope module, pas `window.DINOS`. **Leçon** : pour partage données inter-scripts vanilla, hoister constante à niveau global AVANT premier usage (ou assigner explicite `window.DINOS = {...}`). Valider avec `console.log(window.DINOS)` au démarrage.
+
+### L-066 – Flags Chromium `--allow-file-access-from-files --disable-web-security` = OBLIGATOIRES canvas file://
+**MJ-32 coloriage (2026-07-05)** : 1er mini-jeu canvas du projet. Bug : `canvas.drawImage()` + `getImageData()` en file:// → CORS même domaine (zéro serveur). Fix dans run.mjs : flags Chromium activés pour contourner CORS local. **Leçon** : tout test canvas local SANS serveur requiert ces flags. Intégrer dans harnais Playwright par défaut dès que canvas détecté. Valider : E2E imagesLoaded + getImageData renvoi pixels non-vides.
+
+### L-067 – PNG silhouettes `_new-ombre/*` = fond transparent, jamais invert
+**MJ-30 range par taille (2026-07-05)** : PNG silhouettes dinos (`edmontonia.png`, etc.) = silhouettes noires + fond transparent 24-bit. Bug détecté : rendu screenshot unique révélait silhouette cassée (fond clair par-dessus transparent). Harnais Playwright VERT (imagesLoaded ok), screenshot manuel Papa Yann révèle. **Leçon** : pour tout asset PNG transparent, toujours vérifier MANUELLEMENT au moins 1 screenshot (canvas + layer stacking visuel) AVANT Papa Yann teste. Automatisation PNG insuffisante (inspecteur DOM ne voit pas les pixels). Jamais filter `invert()` sur silhouettes — demander regeneration si couleur fausse.
+
 ### L-068 – NO_HERO/NO_ASSET sets = dinos sans image, rangés en mj-xx.html
-**MJ-28 + MJ-33 (2026-07-05)** : 11 dinos sans image couleur finale (edmontonia, torosaurus, pentaceratops, mammuthus, smilodon, megatherium, paraceratherium, glyptodon, aenocyon, coelodonta, titanis). Plutôt que casser le rendu, sets NO_HERO/NO_ASSET posés dans mj-28.html + mj-33.html (PAS dans catalog.js). **Leçon** : identifier les trous de contenu AVANT déploiement, poser des placeholders clairs (pas des nulls silencieux). À retirer quand paléoart régénérée par pôle DINO.
+**MJ-28 + MJ-33 (2026-07-05, RÉSOLU)** : Initialement, 11 dinos sans image couleur finale → placeholders NO_HERO/NO_ASSET pour éviter render break. **État corrigé (commit 941faa30)** : filtres NO_HERO/NO_ASSET RETIRÉS, assets promotionnés depuis staging → déploiement prod. Toutes les images existent maintenant. **Leçon historique** : identifier trous contenu AVANT déploiement, poser placeholders clairs si inévitable.
 
 ### L-069 – SFX/MP3 audio = 250ms silence en tête (réveil sortie audio mobile)
 **Sons UI (2026-07-05)** : banque 64 SFX ElevenLabs générée (victoires, rigolo, dinos, animaux, véhicules, instruments, pièces, espace, divers). Déploiement GitHub Pages → test iPad/tablette Bluetooth révèle attaque audio coupée (100-300ms réveil sortie audio). **Fix prouvé** : `ffmpeg -af "adelay=250:all=1"` ajoute 250ms silence en tête (commit 79212a26). **Règle gravée** : toute future production SFX (ElevenLabs text-to-sound-effects ou autre) DOIT passer par ce traitement AVANT commit `site/sounds/`. Commande canonique dans `memory/rules.md` § Règles Audio. Vérifier : quelques secondes silence → attaque nette (pas coupure).
 
+### L-070 – Ombres chinoises canon `img/dinos/ombres/` = seule source visuelle dinos silhouettes
+**MJ-24/25/26 (2026-07-05)** : Refonte visuelle ombres chinoises : PNG noir silhouette sur fond transparent, redimensionné proportionnel au dino réel. **Bannissement total** silhouettes LimeZu par-famille (`img/dinos/silhouettes/`, `js/dino-silhouettes.js`, `dev-silhouettes.html`) — 208 PNG supprimés (commit 234dee4b) suite ordre Papa Yann 2026-07-05 : *« les anciennes silhouettes SUPPRIME-LES ! »*. **Leçon** : ombres chinoises canon > silhouettes génériques par-famille. Pédago + aesthetic : enfant reconnait FORME unique dino, jamais confusion rectangle-ptéro vs triceratops. Fonctionnelle : ombres tracées manuellement, proportions vraies, silhouettes LimeZu = simplifiées pour grid affichage (perdu nuances morphologiques).
+
+### L-071 – Manifest auto-généré assets conditionnels = pattern anti-pourrissement
+**MJ-24/31 (2026-07-05)** : Manifest `js/dinos-audio-manifest.js` auto-généré depuis fichiers réels `audio/dinos/*.mp3`. Root cause historique : liste audio codée en dur dans HTML → ajout/suppression asset → 404 silent mj-31 (fallback TTS), zéro signal erreur. **Pattern solide** : générer manifest à la source de fichiers (script build ou Python), puis index.mjs lit manifest, fallback gracieux en 404 (pas liste fantôme). **Leçon** : source de vérité = les fichiers réels (git), manifests générés à partir d'eux. Applicable à tout MJ avec assets conditionnels : images, sons, data JSON, cartes tile. Chemin : `build/generate-manifest.py` → lit `site/audio/` → écrit `js/dinos-audio-manifest.js` → MJ inclut + utilise.
+
+### L-072 – Processus figeage = VÉRIFICATION OBLIGATOIRE code réel
+**Incident 2026-07-05 GRAVE** : game-mj-pmo inventa du contenu dans 4 figées (mj-24/25/26/31) sans lire l'HTML réel. Mj-24 décrivait « déduction audio-first » (jamais existé, c'est matching visuel), mj-25 idem, mj-26 décrivait « drag-drop vers bacs » (jamais existé, c'est comptage), mj-31 attribuait alerte « 85M ans » à « voix Wex » (jamais validé, c'est TTS narrateur). **Conséquence** : 2 reviewers rendus FAIL sur base de figées fausses. Main agent rétro-corrige 7d844cb7. **Leçon** : Une figée = LOI ABSOLUE pour 6 mois. Chaque ligne 🔒 doit être traçable : (1) à une phrase Papa Yann datée explicite (« J'ai validé X », « X c'est figé ») OU (2) à un fait incontestable du code livré (« le jeu est un matching visuel, pas un QCM »). JAMAIS « c'est plausible donc probablement juste ». **Processus corrigé** : PMO qui fige = TOUJOURS relire HTML source + retrouver chaque décision dans notes Papa Yann ou code AVANT de soumettre au reviewer.
+
+### L-073 – Anti-pattern : inventer une mécanique parce qu'elle « sonne plausible »
+**Mj-26 incident (2026-07-05)** : La v1 figée décrivait « drag-and-drop vers bacs de tri » — zéro base, « ça sounded bien pour un jeu de tri ». Jeu réel = simple comptage boutons (1-6 dinos, Max compte + tape chiffre). **Leçon** : PMO ne décide pas des mécaniques. PMO grave ce qui EXISTE, validé Papa Yann. Si une mécanique sonne plausible mais tu l'as jamais vu en code → c'est une hallucination, PAS une validation. Corrective : relire code source HTML (< 1 min en cherchant les clics, appels TTS, animations) avant figeage.
+
+### L-074 – Figeages erronés = feedback reviewers invalide, process cassé
+**Incident 2026-07-05 cascade** : 4 figées fausses → 2 reviewers basent leur verdict sur des règles qui n'existent pas (« drag-drop pas implémenté » = FAIL) → main agent correcting review + fixing figées + re-validant code. **Leçon** : figée FAUSSE = bottleneck critère. Une figée erronée c'est pire qu'aucune figée (active une validation contre du vent). Pattern : après figeage PAR UN AGENT, faire reviewer une figée = mini-audit (1 ligne = 1 trace Papa Yann ou code). Ticket : Checker automatiquement que chaque figée est sourcée (ep-043).
+
+### L-075 – Audio multi-pistes : parler coupe le MP3, jouer un MP3 coupe le TTS (règle globale)
+**MJ-24/31 retours Papa Yann (2026-07-05)** : « TTS moche en même temps que TTS EL » — utilisateur demande clarté : une seule source audio à la fois. **Règle** : `stopEl()` (arrête MP3 ElevenLabs) au démarrage TTS navigateur. `TTS.cancel()` au démarrage MP3. Code canonique = gérer l'exclusivité mutuelle audio. Applicable à tout MJ mixant MP3+TTS (tous les dinos).
+
+### L-076 – Navigation MJ = délégation .back header (pas listener direct)
+**MJ-32 navigation (2026-07-05)** : ← back-button.js se branche via délégation sur `.hdr` (header class). Listener direct sur `.back` interne = perdu si on remplace HTML. **Leçon** : back-button.js utilise délégation + querySelector `.hdr a` → trouve la flèche ← partout. Design : tout MJ doit respecter gabarit header (copier `.hdr` du CLAUDE.md mini-jeux), back-button.js fait le reste. Ne pas créer d'ID custom, back-button s'injecte au DOMContentLoaded, listener direct est perdu.
+
+### L-077 – Pools sonores thématiques = pattern voix overlay post-victoire
+**Victoires MJ (2026-07-05)** : Système centralisé `site/js/victory-sounds.js` = 7 pools thématiques (victory, end-doux, success, error, apparition, collecte, déblocage) + voix casting overlay (narratrice f / narrateur h / Wex) jouées ~1.4s APRÈS fanfare victoire. Anti-répétition immédiate. **Standard futur** : tout MJ nouveau doit utiliser `SoundPool.play(theme)` (compat historique playEndSound() gardée). Voix générées ElevenLabs eleven_v3 avec tags émotionnels, padding 250ms L-069. Commit 8a7a400e : aucune modif figées, victory-sounds.js point central.
+
+### L-078 – API compat sons = historique intact, nouveau optionnel
+**Victoires (2026-07-05)** : ancien `playEndSound()` + `playErrorSound()` + `stopEndSound()` marchent toujours (routing interne victoires-sounds.js). Nouveaux MJ = utiliser `SoundPool.play(theme)`. Pas de breaking change, migration progressive OK.
+
+### L-079 – Voix casting × 16 positives + 6 douces = pool réactions émotionnelles
+**Victoires (2026-07-05)** : 3 voix (f/h/wex) × 22 segments (16 positives festives + 6 douces encourageantes) = 66 MP3 ElevenLabs produits. Narratrice f = voix identité historique (branchée aussi narration), narrateur h = voix complément (éducateur bienveillant), Wex = observateur connecté. Emoji feedback : aucun (voix uniquement). Pattern réutilisable : tout mini-jeu ayant victoire doux ou intermédiaire.
+
 ---
 
 ## Épics
+
+---
+
+## EP-042 – Check auto assets dans run.mjs
+
+**Statut** : `[ ]` à faire
+
+**Priorité** : 🔥 **URGENTE** — prévention 404 prod
+
+**Contexte** : Synthèse game-mj-pmo 2026-07-05 révèle risque structural : 4 mini-jeux ont eu des 404 assets en prod malgré tests locaux verts. Root cause : harnais local (`run.mjs`, Playwright) ne valide pas que chaque src/href relatif réferencé existe ET est tracké git.
+
+**Problématique** : 
+- Fichier asset `.gitignore`d (ex : PNG dans `_site/` en build, pas tracké)
+- Référencé dans MJ HTML (ex : `src="./img/tile.png"`)
+- Local vert (Playwright `page.goto('file://')` démarre depuis `_site/` post-build)
+- Prod rouge (asset pas poussé, GitHub Pages 404)
+
+**Solution proposée** :
+Tâche M-001 : Ajouter check dans `run.mjs` après chaque test MJ :
+1. Parser HTML src/href relatifs (grep pattern ou AST)
+2. Pour chaque chemin relatif : valider `fs.existsSync(resolvePath)`
+3. Puis valider `git ls-files <path>` (tracé ?)
+4. Fail loud si 404 ou non-tracké
+
+Exemple : MJ-32 `<img src="./assets/_new-ombre/stegosaurus.png">` → run.mjs vérifie le fichier existe + `git ls-files` confirm tracé, sinon ❌ avant push.
+
+**À faire** :
+1. **T-420** : Implémenter check dans run.mjs
+2. **T-421** : Tester sur 6 MJ (mj-28..33) avec assets divers
+3. **T-422** : Intégrer comme gate CI/local avant `npm run mj:test`
+
+**Attaché** : L-067 (PNG transparent), L-066 (canvas flags)
+
+**Impact** :
+- `studio/minijeux/tests/run.mjs` : nouvelle section check assets
+- CI `.github/workflows/deploy.yml` : appel check avant build
+- Vérifie : npm run mj:test → check auto → fail early
+
+---
+
+## EP-043 – Audit automatisé figés : chaque ligne 🔒 sourcée Papa Yann ou code
+
+**Statut** : `[ ]` à faire
+
+**Priorité** : 🔴 **BLOQUANTE** — incident 2026-07-05 révèle figés peuvent être inventées (game-mj-pmo inventa contenu mj-24/25/26/31)
+
+**Contexte** : Incident 2026-07-05 GRAVE : 4 figées contenaient du contenu hallucié (méchaniques inventées, voix inventée). Root cause : aucune validation automatisée qu'une figée soit **sourcée** (tracée à une validation Papa Yann datée OU à un fait code incontestable). Conséquence : figées fausses → reviewers invalides → cycle brisé.
+
+**Problématique** :
+- Figée = LOI ABSOLUE pour 6 mois + active validation toute équipe
+- Figée inventée = pire qu'aucune figée (active des validations contre du vent)
+- Aucun check current que `studio/minijeux/docs/jeux/figees/mj-XX.md` soit cohérente avec HTML réel
+
+**Solution proposée** :
+1. **Check source** : pour chaque ligne 🔒 dans figées, vérifier qu'elle soit :
+   - (A) Tracée à une phrase Papa Yann datée (grep "2026-" + Papa Yann) OU
+   - (B) Cohérente avec code `site/mj-XX.html` (vérifier mécanique affichée = réelle, pas inventée)
+2. **Script check** : `studio/minijeux/tests/check-figees.mjs` lance audit structural
+3. **Gate CI** : `.github/workflows/deploy.yml` fail si figée ne passe pas l'audit
+
+**À faire** :
+1. **T-430** : Écrire `studio/minijeux/tests/check-figees.mjs` (parser MD figées, vérifier sourcée)
+2. **T-431** : Tester sur 20 figées existantes (identifier les fausses, corriger via game-pmo-audit)
+3. **T-432** : Intégrer comme gate CI + gate locale pré-push (npm run figee:check)
+4. **T-433** : Documenter process : après créer figée → game-mj-pmo doit invoquer check avant soumettre
+
+**Attaché** : L-072 (verification figeage obligatoire), L-073 (anti-pattern inventer mécanique)
+
+**Impact** :
+- `studio/minijeux/tests/check-figees.mjs` : script audit
+- CI `.github/workflows/deploy.yml` : appel check avant build
+- `studio/minijeux/docs/jeux/figees/` : toutes les figées re-auditées
 
 ---
 
@@ -826,6 +937,35 @@ MaxPlay V0
 - ✅ ~~mj-04 boucle infinie EP-022~~ — **découvert résolu 2026-05-11** : code conforme, BACKLOG désync corrigée. Leçon L-023 gravée.
 - ✅ ~~mj-pose-tiles utilise `_14`/`_15` SALE~~ — **corrigé 2026-05-11** : swap vers `_2`/`_8` propres
 - ✅ ~~mj-12 scope (lecteur audio vs quiz)~~ — **tranché 2026-05-11 par Papa Yann** : *"c'est bien, garder comme plage de son tableau de bord, pas de jeu"*. Leçon L-024 gravée.
+
+## Session 14 — 2026-07-05 (Clôture + Incident Post-Mortem + Leçons L-072..076)
+
+### Fait
+- [x] Correction critique : 4 figées mj-24/25/26/31 réécrites (inventions découvertes en relecture)
+- [x] Incident post-mortem gravé audit-trail (root cause game-mj-pmo ne lut pas HTML réel avant figeage)
+- [x] 5 leçons gravées : L-072 (vérification figeage obligatoire), L-073 (anti-pattern mécanique plausible), L-074 (figée erronée = bottleneck), L-075 (audio exclusivité mutuelle), L-076 (navigation délégation .back)
+- [x] Retours Papa Yann intégrés (anti-double-voix MP3+TTS, zones tap 80px, mj-32 navigation testée VERT, 85M ans sourcé)
+- [x] Faux positifs reviewers clarifiés (Nunito OK, OGG pas obligatoire MP3, streak interne OK)
+- [x] Idée brainstorm Papa Yann : pattern « scène se peuple en live » validé adoré (candidat autres MJ)
+- [x] Commit 7d844cb7 déployé prod SUCCESS
+
+### Leçons (voir L-072 à L-076 ci-dessus)
+- Processus figeage = vérification obligatoire code réel + notes Papa Yann tracées
+- PMO ne décide pas des mécaniques (grave ce qui existe, validé)
+- Figées erronées = bottleneck qualité (pire qu'aucune figée)
+- Audio multi-pistes : exclusivité mutuelle MP3 vs TTS obligatoire
+- Navigation MJ = délégation .back header (pas listener direct)
+
+### Tickets ouverts
+- **EP-043** : Audit automatisé figés (chaque ligne 🔒 sourcée ou code-validée)
+- **EP-042** : Check auto assets dans run.mjs (404 prévention)
+
+### État final
+- ✅ Harnais 10/10 VERT (navigation mj-32, 6 MJ test scriptés)
+- ✅ Figées 4 corrigées + incident documenté
+- ✅ Cycle clôture validations Papa Yann 100% intégré
+
+---
 
 ## Session 13 — 2026-05-08 → 2026-05-10 (pipeline tile-tools + EP-TILES)
 

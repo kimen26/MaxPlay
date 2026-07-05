@@ -56,6 +56,8 @@ statut: ✅ BASE VALIDÉE DE FAIT (opus-def 13/20 « bien mais ») → REWRITE L
 
 > 📌 **Base exacte du rewrite** : `4-versions-writers/claude-opus-def.md` (vague 5, présent, pose au poignet) — c'est LE texte lu et annoté 13/20, pas la version vague-4 (passé) archivée. Ouverture-patron : `_archive/vague-4/4-versions-writers/deepseek-reco.md` l.8-16 (action + course + voix).
 
+> ✅ **REWRITE PRODUIT le 2026-07-05** → `7-rewrite/claude-opus-rewrite-v1.md` (writer top 1 `narration-writer-claude-libre`, Opus temp défaut, cycle 1/1). Toutes les consignes B/C/D intégrées : ouverture action, image « trait de crayon », narrateur-philosophe supprimé, souffle « chhhhh », **fin refondue = Nono libère avec « Gagné ! » (callback course d'ouverture)**. Contrôle Directeur : pivot + fin gelés respectés, ≈490 mots, aucune dilution → **retenu sans repli.** Prochaine étape : 8-GateKeeper.
+
 ---
 
 # Sélection — STORY-002 « La Libellule impossible » — v2 (re-panel vague 5)

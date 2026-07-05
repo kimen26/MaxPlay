@@ -15,6 +15,21 @@ type: project
 - **Back button** : toujours visible (forme = bus qui rentre au dépôt)
 - **Finir sur un succès** : ne jamais terminer une session en pleine difficulté — encodage mémoire lié à l'état émotionnel positif
 
+## Règles Audio (Production) — Validées 2026-07-05
+
+**Tout SFX/MP3 destiné au site DOIT avoir ~250 ms de silence en tête.**
+
+**Raison** : Sur mobile/tablette (surtout Bluetooth), la sortie audio met 100-300 ms à se réveiller → l'attaque du son est coupée. Symptôme constaté par Papa Yann sur les 64 SFX ElevenLabs (2026-07-05), corrigé par `ffmpeg -af "adelay=250:all=1"` sur tout le lot (commit 79212a26).
+
+**Commande canonique** :
+```bash
+ffmpeg -y -i in.mp3 -af "adelay=250:all=1" -codec:a libmp3lame -b:a 128k out.mp3
+```
+
+**Scope** : s'applique à toute future génération de sons (ElevenLabs text-to-sound-effects ou autres) AVANT commit sur `site/sounds/`.
+
+**Vérification** : lire quelques secondes de silence au démarrage, puis l'attaque nette du son (pas de coupure).
+
 ## Profil Max (3.5-4 ans)
 
 | Domaine | Niveau | Prochaine étape |

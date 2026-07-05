@@ -9,6 +9,72 @@
 
 ---
 
+## 2026-07-05 — Banque sons 64 SFX + Hub v3 plateforme + gravure règle audio silence 250ms
+
+**Owner** : Papa Yann (validation), ElevenLabs MCP (production SFX), game-conseiller (architecture hub)
+
+**Trigger** : Papa Yann délivre 2 chantiers : (1) banque sons identité "Ligne de Max" + SFX contextuels déployés ; (2) livraison Hub v3 « La fusée de Max » complète (index3.html, réorganisation interfaces).
+
+**Fait** (session 2026-07-05) :
+
+1. **Banque sons déployée** : `site/sounds/ui/` (10 sons identité Ligne) + `site/sounds/fx/` (54 SFX divers : victoires, rigolo, dinos, animaux, véhicules, instruments, pièces, espace, divers). Total ~900 crédits ElevenLabs text_to_sound_effects. Page d'écoute : `site/dev-sounds-ui.html`. **Pas encore branchés** dans les jeux — en attente validation son-par-son Papa Yann.
+
+2. **Hub v3 « La fusée de Max »** : `site/index3.html` déployé. Planètes layout vertical + séquence de vol complète (décollage fumée, arc incliné, traînée, atterrissage posé globes + poussière). 3 hubs en comparaison : `/` (ancien) · `/index2.html` (bus) · `/index3.html` (planètes).
+
+3. **Règle audio FIGÉE** : tout SFX/MP3 destiné au site DOIT avoir ~250 ms silence en tête (réveil sortie audio mobile/tablette Bluetooth). Commande canonique : `ffmpeg -y -i in.mp3 -af "adelay=250:all=1" -codec:a libmp3lame -b:a 128k out.mp3`. Gravée dans `memory/rules.md` § Règles Audio + leçon L-069 dans `backlog.md`.
+
+**Leçons remontées** :
+- **L-069** : silence 250ms en tête MP3 = réveil sortie audio mobile (100-300ms latence native Bluetooth) — OBLIGATOIRE avant commit `site/sounds/`
+
+**État au reboot** :
+- ✅ **64 SFX déployés + page écoute live**
+- ✅ **Hub v3 livré (3 interfaces comparaison live)**
+- ✅ **Règle audio FIGÉE + gravée dans rules.md**
+- 📅 **En attente** : validation son-à-son Papa Yann + branchement effectif dans jeux + GO images 6 planètes
+
+**Impacte** :
+- `site/sounds/ui/*.mp3` : 10 fichiers identité
+- `site/sounds/fx/*.mp3` : 54 fichiers SFX
+- `site/index3.html` : hub v3 planètes
+- `site/dev-sounds-ui.html` : page écoute
+- `studio/minijeux/memory/rules.md` : nouvelle section Règles Audio
+- `studio/minijeux/pmo/backlog.md` : leçon L-069
+
+---
+
+## 2026-07-05 — 6 mini-jeux dinos MJ-28..33 livrés (lampe ombres, fabrique noms, taille, temps/météorite, coloriage, memory)
+
+**Owner** : game-mj-pmo (orchestration 6 agents parallèles) + game-dev
+
+**Trigger** : livraison batch de mini-jeux à thème dino (EP-041 exploration PISTE, dépendance EP-039 encyclopédie clôture pilote).
+
+**Fait** (commit f767416a pushé, GitHub Pages) :
+1. **6 MJ dinos déployés** : mj-28 (lampe ombres), mj-29 (fabrique noms étymo), mj-30 (range par taille), mj-31 (frise temps+météorite), mj-32 (coloriage flood fill canvas), mj-33 (memory ombres)
+2. **Harnais Playwright** : 6 specs + catalog.js + assets `_new-ombre/*.png` livrés
+3. **Harnais run.mjs** : flags Chromium `--allow-file-access-from-files --disable-web-security` activés (requis pour canvas drawImage+getImageData en file://)
+4. **Validation** : harnais Playwright 6/6 VERT avant push (E2E + smoke tests)
+
+**Leçons remontées** (à graver en backlog.md) :
+- **L-065** : `const DINOS` top-level JS = liaison lexicale globale (pas window.DINOS) — accès par nom direct (2 agents piégés, mj-29/mj-32)
+- **L-066** : Flags Chromium `--allow-file-access-from-files --disable-web-security` OBLIGATOIRES pour canvas file:// — 1er MJ canvas (mj-32) a validé le besoin
+- **L-067** : PNG silhouettes `_new-ombre/*` = silhouettes noires fond transparent — jamais filter invert ni fond clair derrière (bug mj-30 screenshot visible, harnais vert)
+- **L-068** : 11 dinos sans image couleur → sets NO_HERO/NO_ASSET dans mj-28 + mj-33 (PAS catalog.js) — à retirer quand paléoart générée
+
+**État au reboot** :
+- ✅ **MJ-28..33 déployés** (29 actifs total, up from 23)
+- ✅ **Specs Playwright 6/6 VERT** (harnais validé avant push)
+- ✅ **PROCESS 6 agents parallèles efficace** : conception + dev parallèles, merge rapide, 0 blocker
+- 📅 **En attente** : validation ressenti Papa Yann (GitHub Pages live) + éventuelle figée si approved
+- ❓ **Paléoart dinos manquantes** : 11 dinos sans image couleur — ticket dérivé à couvrir par dino-pmo
+
+**Impacte** :
+- `studio/minijeux/memory/state.md` : count MJ 23→29
+- `studio/minijeux/pmo/backlog.md` : 4 leçons L-065..068 + ticket paléoart manquante
+- `site/mj-*.html` : 6 fichiers nouveaux
+- `site/js/catalog.js` : 6 entrées dinos
+
+---
+
 ## 2026-07-04 — [HUB VISUEL] Refonte plateforme Phase 1 « La ligne de Max » livrée
 
 **Owner** : Papa Yann + game-conseiller + dino-conseiller + narration-conseiller + lecteur-dyade

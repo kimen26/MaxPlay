@@ -265,6 +265,16 @@
   scene.addEventListener('pointerdown', () => { if (driving) skipRequested = true; });
 
   // ─── Voix : le lieu se nomme à voix haute (navigation sans lecture) ─────
+  // MP3 narratrice (sounds/voix/lieux/bus-<zone>.mp3), fallback TTS navigateur.
+  let _lieuAudio = null;
+  function speakLieu(zone, txt) {
+    try {
+      if (_lieuAudio) _lieuAudio.pause();
+      _lieuAudio = new Audio(`sounds/voix/lieux/bus-${zone}.mp3`);
+      _lieuAudio.volume = 0.95;
+      _lieuAudio.play().catch(() => speak(txt));
+    } catch (e) { speak(txt); }
+  }
   function speak(txt) {
     try {
       speechSynthesis.cancel();
@@ -280,7 +290,7 @@
     if (driving) { skipRequested = true; return; }
     const stop = STOPS[i];
     const targetX = STOP_X0 + i * STOP_GAP - BUS_W / 2;
-    speak(stop.speak);
+    speakLieu(stop.zone, stop.speak);
     if (Math.abs(targetX - busX) < 4) { openPanel(stop); return; }  // déjà là
     driveTo(targetX, () => setTimeout(() => openPanel(stop), 350));
   }

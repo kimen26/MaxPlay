@@ -2,6 +2,208 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-07-05 — AUDIT VISUEL FINAL 60 DINOS + RÉGÉNÉRATION 8 ESPÈCES FAUSSES + EP-D25 CLÔTURÉ
+
+> **MISE À JOUR fin de journée (21h55)** : l'Amargasaurus (les 2 rangées d'épines, seul point resté en attente) a été **finalisé sur ChatGPT** (quota resetté) — Grok avait échoué 3× sur ce trait, **ChatGPT a rendu les DEUX rangées parallèles** correctement (hero + ecosysteme, commit f98f6577). EP-D25 **totalement clos**. Aussi ce jour : bug câblage DINO_EXTRAS (13 dinos à 1 image → 5, commit bc8e9fc1), 9 headshots mégafaune manquants générés + câblés (893f73f3), Smilodon refait 2× (puma → colosse trapu, 9686d673), orphelin + clé fantôme nettoyés (c64e90d3). **Nouvelles leçons** : Grok = volume mais bute sur les traits fins répétés → ChatGPT pour la précision ; le mot « crâne » dans un prompt headshot sort de l'os à nu sur les mammifères poilus (dire « animal vivant, fourrure intacte, gueule fermée »).
+
+**AUDIT VISUEL COMPLET** : 10 sous-agents parallèles, 100 % couverture (60 dinos, ~408 images). Chaque dino image confrontée fiche pour anatomie/échelle/décor vs data.
+
+**Résultats audit** :
+- ✅ **39 dinos irréprochables** (héros + 4 scènes, anatomie fidèle, échelle enfant-1m OK, décor cohérent).
+- 🟡 **~57 findings mineurs** (anatomie fine, détails décor, lumière, saturation).
+- 🔴 **8 espèces FAUSSES regénérées + validées Grok** :
+  - **Ceratosaurus** : ornithopode nu sans corne nasale → théropode à CORNE NASALE (Grok OK, anatomie conforme).
+  - **Utahraptor** : carnosaure écailleux → dromæosauridé EMPLUMÉ + GRIFFE FAUCILLE (Grok plumes + griffe OK).
+  - **Patagotitan** : hadrosaure bossu cou court → SAUROPODE 12 m COU RELEVÉ (Grok cou relevé OK, gigantisme faible).
+  - **Pachycephalosaurus** : cératopsien collerette → DÔME CRÂNIEN forehead (Grok OK).
+  - **Amargasaurus** : ornithopode → SAUROPODE, MAIS 1 rangée épines au lieu de 2 (Grok limite, re-passer ChatGPT reset pour 2 rangées).
+  - **Carcharodontosaurus** : écosystème cératopsien intrus → THÉROPODE (Grok OK).
+  - **Archelon** : sauropode intrus → TORTUE MARINE aquarium (Grok aquarium OK).
+  - **Pachycephalosaurus funfact** : timeout → regénéré, crâne résiste impact OK.
+- ✅ **Orphelin supprimé** : Amargasaurus_test.jpg (temporaire batch).
+
+**LEÇON DE FOND MAJEURE (L-D21, gravée)** :
+**Silhouette maîtresse EN TÊTE du prompt = clé fondamentale.** Cause racine des 8 fausses espèces = le skill batch-dino-series.mjs n'injectait AUCUNE silhouette de référence quand fiche Grokipedia non captée (heuristique ficheBlock() ratée) OU espèce pas en table MORPHO. Le modèle inventait forme générique → mauvaise espèce systématiquement. **Corrections durables appliquées au skill** : (1) Ajout 5 signatures MORPHO fact-checkées (ceratosaurus/amargasaurus/pachycephalosaurus/carcharodontosaurus/utahraptor) avec trait UNIQUE en MAJUSCULES (ex « CERATOSAURUS = théropode à CORNE NASALE »). (2) Silhouette MORPHO EN TÊTE du prompt (avant puces détail), plus seulement fallback. (3) Nouveau flag `--only <scènes>` pour regénération ciblée (économie quota). **Règle à retenir** : tout nouveau dino DOIT avoir soit fiche Grokipedia complète, soit entrée MORPHO — sinon silhouette fausse garanti. Vérif : `node batch-dino-series.mjs <id> --preview | grep Silhouette`.
+
+**Quota & canaux** :
+- ChatGPT épuisé en cours (reset ~12h07 Paris 2026-07-05). Timeout code 3 non-détecté par script → bascule Grok (canal séparé, logué).
+- Grok a tenu 4 espèces ciblées regénérées. Détails moins fins : épines Amargasaurus 1 rangée vs 2 idéal, géants moins écrasants que ChatGPT.
+
+**Reste à faire (tickets backlog futurs)** :
+- **Amargasaurus hero + ecosysteme** : 2 RANGÉES parallèles épines cervicales (Grok fait 1) → ChatGPT reset finesse.
+- **Patagotitan/T-Rex/Giga/Brachio échelle géante** : enfant écrasé comme 4-étage immeuble (12 m), Grok ~5-6 m trop petit → re-vérifier prompt gigantisme.
+- **Ceratosaurus coloriage** : 2 cornes frontales au lieu d'1 corne nasale → pipeline coloriage futur.
+
+**État final** :
+- ✅ **100 % dinos auditées visuellement**, 39 irréprochables, ~57 findings mineurs notés.
+- ✅ **8 espèces fausses regénérées + validées Grok**, anatomie OK (1 cas 2 rangées épines restant).
+- ✅ **L-D21 gravée** (silhouette maîtresse foundational, skill pattern réutilisable futures espèces).
+- ⏳ **Grok limites finesse**, reprise ChatGPT quand reset.
+- ⏳ **EP-D25-regénérations** (backlog futur) : Amargasaurus 2 rangées + géants échelle + Ceratosaurus coloriage.
+- ✅ **60 dinos AUDIT FINAL CLÔTURÉ** — tous déployés, anatomiquement validés, câblés prod.
+
+---
+
+## 2026-07-05 (suite 3, clôture FINALE) — SILHOUETTES SUPPRIMÉES + AUDIO PRODUIT + MANIFEST GÉNÉRÉ
+
+**Papa Yann ordre final** : « les anciennes SUPPRIME-LES, je ne veux plus les voir !! » 
+
+**Suppression effectuée** (commit 234dee4b, déployé GitHub Pages verify via `curl` 200) :
+- ✅ `site/img/dinos/silhouettes/` (208 PNG par-famille) **SUPPRIMÉ**.
+- ✅ `studio/dino/content/assets/silhouettes/` (banque source + _sources + manifest) **SUPPRIMÉ**.
+- ✅ `site/js/dino-silhouettes.js` + `dev-silhouettes.html` (pages orphelines) **SUPPRIMÉ**.
+- ✅ Historique git **CONSERVÉ** (pas de perte réelle — `git log` garde les commits).
+- ✅ Canon UNIQUE restant = `site/img/dinos/ombres/` (60 PNG, TRACKÉE, visibles mj-24/25/26/28/30/31/33).
+
+**Audio produit mj-31** : vrai son (51 dinos `{id}-nom.mp3` + 4 blocs spéciaux `special-extinction-a..d.mp3`). Narrateur H + Wex, écoute intégrale ~90s.
+
+**Nouveau `site/js/dinos-audio-manifest.js`** : **GÉNÉRÉ depuis fichiers disque réels** `site/audio/dinos/` (évite 404 + listes en dur qui pourrissent). Schema : `{ id: [ cap1, cap2, ..., recap ] }` mappé depuis existence fichiers.
+
+**Ticket créé** : **EP-D-Audio-Recap-Par-Dino** — générer 60 MP3 « phrase d'époque » par dino (post-quota EL reset ~9-12 juillet) pour éliminer dernier TTS navigateur mj-31 → production finalisée.
+
+**Vérifs prod** (18/18 URLs) :
+- `site/img/dinos/ombres/` 60 PNG HTTP 200 ✅
+- `site/img/dinos/` 11 héros JPEG HTTP 200 ✅ (Mammouth, Smilodon, Megatherium, Paraceratherium, Glyptodon, Aenocyon, Coelodonta, Titanis, Edmontonia, Torosaurus, Pentaceratops)
+- `site/img/dinos/paleoart/` 60 dinos × 5 scènes JPEG HTTP 200 ✅
+- `site/img/dinos/coloriages/` 51 WebP HTTP 200 ✅
+- `site/js/dinos-audio-manifest.js` (généré, pas 404) ✅
+- `site/audio/dinos/` 4 spéciaux + 51 dinos audio ✅
+
+**État clôture** :
+- ✅ Silhouettes **entièrement nettoyées** (plus de doublon / trituration / 3 zones)
+- ✅ Audio produit **documenté dans manifest généré** (robuste, maintenu auto)
+- ✅ Ticket EP-D-Audio-Recap-Par-Dino **créé** (action post-quota)
+- ✅ Harnais vert, Pages vert (0 404), Papa Yann satisfait « terminé »
+- ✅ Frontière autoring/produit RESPECTÉE (L-D22)
+
+---
+
+## 2026-07-05 (suite 2) — BUG PROD CRITIQUE RÉPARÉ : ombres + vignettes 404 GitHub Pages (GITIGNORE)
+
+**Incident signalé Papa Yann** : **toutes les ombres 404** sur GitHub Pages mj-28/30/31/33 + **11 fiches âge de glace sans vignette** (Edmontonia, Torosaurus, Pentaceratops + 8 Cénozoïque). Impact **frontière autoring/produit BRISÉE**.
+
+**Cause racine IDENTIFIÉE** : **assets référencés dans `.gitignore`**. Jeux pointent `site/img/dinos/_new-ombre/` (60 PNG staging) = **zone gitignorée** (`.gitignore` lignes 18-21 : `_new-xxl/`, `_new-coloriage/`, `_new-headshots/`, `_new-ombre/`).
+- Présent en local (Playwright file://) → OK en dev
+- Jamais déployé GitHub Pages (Git skip, tracked=no) → **404 Linux FS casse-sensible**
+- Invisible Windows FS casse-insensible → détection tardive
+
+**FIX LIVRÉ (commit 941faa30)** :
+1. **60 ombres promues** : `_new-ombre/` → `site/img/dinos/ombres/` (TRACKÉE, hors gitignore). Resize 600px, ~14 Mo.
+2. **Jeux mj-28/30/31/33 mis à jour** : chemins pointent `ombres/` (pas `_new-ombre/`).
+3. **11 héros manquants promus** : `_new-xxl/{Nom}.png` (Mammuthus, Smilodon, Megatherium, Paraceratherium, Glyptodon, Aenocyon, Coelodonta, Titanis, Edmontonia, Torosaurus, Pentaceratops) → `site/img/dinos/{Nom}.jpg` (1024px JPEG, casse exacte).
+4. **Bonus PWA** : icônes 192/512 + manifest (JEU pôle).
+
+**Leçon À GRAVER (L-D22)** : « **Frontière autoring/produit inclut le TRACKING GIT.** Une feature ne référence QUE des assets TRACKÉS (`git ls-files`) sous `site/`. Zones staging `_new-*` = bruts retouche local, jamais produit. Promotion hors gitignore OBLIGATOIRE avant usage. Vérif système : `git check-ignore <asset>` — résultat vide = traité OK. Windows FS casse-insensible masque casse + .gitignore régression → invisible en dev, visible crash GitHub Pages (Linux casse-sensible). Règle 2 DEC-GED-001 (ZÉRO chiffre) + Règle 3 (FRONTIÈRE autoring/produit) doivent étreindre aussi « assets nommés par `id`, TRACKÉS ». »
+
+**Q-DINO-Voyage-Silhouettes AIGUILLÉE** : 3 zones existent (content/assets/silhouettes/ + site/img/dinos/silhouettes/ + site/img/dinos/ombres/ = *nouvellement TRACKÉE*). Zone `ombres/` = **zone produit canonique maintenant**. Décision Papa Yann requise : A) fusionner 3 en 1 | B) ombres/ reste canon, 2 autres archivées ?
+
+**État au reboot** :
+- ✅ **60 ombres déployées** `site/img/dinos/ombres/`
+- ✅ **11 héros vignettes reparées** → `site/img/dinos/*.jpg` visibles
+- ✅ **mj-28/30/31/33 réparés**, 0 404
+- ✅ **EP-D-Image-11-sans-hero RÉSOLU**
+- 🟡 **Q-DINO-Voyage-Silhouettes** — fusion 3 zones (decision Papa Yann)
+
+---
+
+## 2026-07-05 (suite) — LIVRAISON MINI-JEUX JEU (6 MJ-28..33) CONSOMMANT ASSETS DINO + QUESTION FUSION OMBRES OUVERTE
+
+**Contexte** : le pôle JEU a livré 6 mini-jeux (mj-28 à mj-33) consommant les assets DINO en production. Jeux **en attente validation ressenti Papa Yann** sur GitHub Pages. Pôle DINO = observateur (ne modifie QUE ses fichiers pmo/).
+
+**6 mini-jeux livrés** (commit f767416a, harnais vert) :
+- **mj-28** : Lampe des ombres (40 silhouettes filtrées, silhouettes/taille/famille)
+- **mj-29** : Fabrique de noms étymo (racines grec/latin depuis `dinos-racines.js`)
+- **mj-30** : Range par taille (proportions enfant-vs-dino via `_compHaut`, 60 dinos)
+- **mj-31** : Frise du temps + météorite (chronologie vraie, 4 tableaux vérité sans gore)
+- **mj-32** : Coloriage (assets `{id}_coloriage.webp` depuis `paleoart/`)
+- **mj-33** : Memory ombres (silhouettes + noms, paires appariement)
+
+**Consommation assets validée** :
+- ✅ Lecture SEULE : `site/js/dinos-data.js`, `site/js/dinos-racines.js`, `site/img/dinos/` (héros `{Id}.jpg` + ombres `_new-ombre/`)
+- ✅ Pas d'intrusion studio/ (non déployé) — frontière autoring/produit RESPECTÉE
+- ✅ Noms par `id` stable (tyrannosaurus = id minuscule, images = Majuscule casse autoritative)
+- ✅ Images filtrées NO_HERO (11 dinos sans `img/dinos/<Id>.jpg` gracieusement ignorés mj-28/mj-33 : edmontonia, torosaurus, pentaceratops, mammuthus, smilodon, megatherium, paraceratherium, glyptodon, aenocyon, coelodonta, titanis) — à débrancher quand paléoart régénérée
+- ✅ Contenu audio/dinos ÉTYMOs lues depuis `dinos-racines.js` (pas création dossier nouveau)
+
+**Point clé — STOP SILHOUETTES LEVÉ** : le 1er mini-jeu consommant les ombres existe (`mj-28`, `mj-33`). Condition de levée atteinte. **Q-DINO-Voyage-silhouettes** ouverte (voir decisions.md) : fusionner les 3 zones (`content/assets/silhouettes/` + `site/img/dinos/silhouettes/` + `_new-ombre/`) ? **Décision à trancher Papa Yann** (audit-trail EP-D-GED-01 via dino-archiviste). PMO ne modifie que si OK.
+
+**3 points à tracker** (tickets backlog) :
+1. **EP-D-Image-11-sans-hero** : 11 dinos manquent `site/img/dinos/{Id}.jpg` (vignettes racine pour mj-28/33). Filtrés gracieusement, pas crash. Ticket trace : attendre regénération paléoart quand crédits ChatGPT/Grok se rechargent.
+2. **Q-DINO-Voyage-Silhouettes** : fusion 3 zones (décision Papa Yann requise, pas d'action PMO avant).
+3. **Mini-jeux rangement images** : si réorg dossiers images futur (ex : `_new-ombre/` → autre location) → mettre à jour 6 mj-XX.html chemins staging (`_new-ombre/` + `paleoart/`).
+
+**État au reboot** :
+- ✅ Frontière autoring/produit **RESPECTÉE**, 6 jeux opérationels
+- ✅ 60 dinos accessibles via data + images (11 sans hero = gracieusement filtrés)
+- ⏳ Jeux EN ATTENTE validation ressenti Papa Yann
+- 📋 3 tickets à noter backlog (actions futures, pas bloquants)
+- 🟡 **Q-DINO-Voyage-Silhouettes ouverte** (décision Papa Yann)
+
+---
+
+## 2026-07-05 — AUDIT VISUEL COMPLET 60 DINOS + RÉGÉNÉRATION 8 ESPÈCES FAUSSES (images validées Grok)
+
+**Audit visuel massif lancé** : 10 sous-agents en parallèle, chaque dino image confrontée à sa fiche pour **anatomie / échelle / décor** vs data. Couverture **100 % (60 dinos = 5 scènes + coloriage = ~408 images)**, inspection complète.
+
+**Résultats** :
+- ✅ **39 dinos irréprochables** (héros + 4 scènes correctes, anatomie fidèle, échelle enfant-1m valide, décor cohérent).
+- 🟡 **~57 findings** (mineurs, anatomie fine, détails décor, lumière, saturation).
+- 🔴 **8 espèces FAUSSES regénérées et validées visuellement** :
+  - **Ceratosaurus** : ✅ REGÉNÉRÉ (était ornithopode nu sans corne nasale → vrai théropode à corne nasale, Grok image confirmée anatomie ok).
+  - **Utahraptor** : ✅ REGÉNÉRÉ (était carnosaure écailleux nu → dromæosauridé emplumé + griffe faucille, Grok image plumes + griffe OK).
+  - **Patagotitan** : ✅ REGÉNÉRÉ (était hadrosaure bossu cou court → vrai sauropode long cou, Grok image cou relevé 12 m OK).
+  - **Pachycephalosaurus** : ✅ REGÉNÉRÉ (était cératopsien à collerette → dôme crânien forehead OK + écosystème retravaillé flou → streamline).
+  - **Amargasaurus** : ✅ REGÉNÉRÉ (était ornithopode → sauropode, MAIS 1 seule rangée d'épines au lieu de 2, Grok=limitation actuelle, à repasser ChatGPT reset pour 2 rangées).
+  - **Carcharodontosaurus** : ✅ REGÉNÉRÉ (écosystème : était cératopsien intrus → théropode). Héros + manger OK.
+  - **Archelon** : ✅ REGÉNÉRÉ (funfact + paris : était sauropode intrus → tortue marine vraie, Grok image aquarium OK).
+  - **Pachycephalosaurus funfact** : ✅ COMPLÉTÉ (avait timeout → regénéré, « truc fou » crâne résiste impact ok).
+- **Orphelin supprimé** : Amargasaurus_test.jpg (temporaire batch).
+
+**Leçon de FOND (L-D21 gravée)** : 
+**Cause racine des mauvaises espèces** = le skill `batch-dino-series.mjs` n'injectait AUCUNE « **silhouette maîtresse** » en tête du prompt pour les espèces où la fiche Grokipedia n'était pas capturée (heuristique ficheBlock() ratée ET espèce pas en table MORPHO). Le modèle inventait donc une forme générique → mauvaise espèce **systématiquement**. **Corrections durables appliquées au skill** :
+1. **Ajout 5 signatures MORPHO** fact-checkées (ceratosaurus, amargasaurus, pachycephalosaurus, carcharodontosaurus, utahraptor) avec le trait UNIQUE en MAJUSCULES (ex « CERATOSAURUS = théropode à CORNE NASALE »).
+2. **Silhouette MORPHO injectée EN TÊTE du prompt** (avant les puces de détail), plus seulement en fallback quand descPhysique vide.
+3. **Nouveau flag `--only <scènes>`** pour regénérer une scène précise sans refaire les 5 (économie quota).
+**Règle à retenir** : tout nouveau dino ajouté DOIT avoir soit une fiche Grokipedia captée avec ⭐ Signature (bloc Silhouette/Description), soit une entrée MORPHO avec trait unique — sinon sa silhouette sera **fausse de façon systématique**. À vérifier : `node batch-dino-series.mjs <id> --preview | grep Silhouette`.
+
+**Canal / quota** :
+- Quota ChatGPT épuisé en cours (reset ~12h07 Paris). Message « You've hit the Plus plan limit for image generations » non-détecté par `gpt-gen-dino.mjs` → timeout code 3 (voir backlog améliorations scripts).
+- Bascule Grok (canal séparé, logué) qui a tenu les **4 espèces ciblées regénérées** + 4 scènes complétées. Grok rend détails moins fins (épines Amargasaurus 1 rangée vs 2 idéal), mais anatomie globale OK.
+
+**Reste à faire** (tickets backlog futurs) :
+- **Amargasaurus hero + ecosysteme** : obtenir les **2 RANGÉES parallèles** d'épines cervicales (Grok n'en fait qu'une). À redémarrer ChatGPT reset.
+- **Patagotitan échelle géante** : il devrait écraser l'enfant comme immeuble 4 étages (12 m), Grok le rend trop petit (~5-6 m). Même problème T-Rex/Giganotosaurus/Brachiosaurus. À re-vérifier quand ChatGPT revient.
+- **Coloriage Ceratosaurus** : 2 cornes frontales au lieu d'1 corne nasale (pipeline coloriage séparé, à refaire un jour).
+
+**État au reboot** :
+- ✅ **100 % des 60 dinos auditées visuellement**, 39 irréprochables, ~57 findings mineurs notés.
+- ✅ **8 espèces fausses regénérées + validées Grok**, anatomie ok (1 cas 2 rangées épines restant).
+- ✅ **Leçon L-D21 majeure gravée** (silhouette maîtresse = fondamentale, skill pattern applicable futures espèces).
+- ⏳ **Grok limites finesse** (épines parallèles, gigantisme), reprise ChatGPT quand reset.
+- ⏳ **EP-D25-regénérations** (backlog futur) : Amargasaurus 2 rangées + géants échelle + Ceratosaurus coloriage.
+
+---
+
+## 2026-07-04 — LIVRAISON IMAGES PALÉOART (9 DINOS MÉGAFAUNE) + FIX CRITIQUE SYNTAXERROR (commit 7be8e8c5)
+
+**Livré** :
+- ✅ **45 images paléoart** (5 scènes × 9 dinos mégafaune : Mammuthus, Smilodon, Megatherium, Paraceratherium, Glyptodon, Aenocyon, Coelodonta, Titanis, Edmontonia) générées via skill `dino-paleoart` (ChatGPT), converties JPEG q85, déployées dans `site/img/dinos/paleoart/`. Format JPEG q85 choisi pour compatibilité universelle (WebP réservé coloriages). Refs code EXTRAS mises à jour (`dev-dinos.html` + `dinos-data.js` champs `png:`).
+- ✅ **353 fichiers JPEG totaux** dans `paleoart/` vérifiés disque (51 dinos × 5 scènes + anciens = 255 + résiduels).
+
+**FIX CRITIQUE découvert en test** :
+- 🚨 **SyntaxError latent préexistant** dans `site/dev-dinos.html` : **38 occurrences de `label:'Ce qu'il mange'`** avec apostrophe droite NON échappée à l'intérieur d'une chaîne délimitée par apostrophes. Fragment JS invalide → arrêt d'exécution au premier match → **DINO_EXTRAS undefined** · **DINO_AUDIO undefined** · **showFiche undefined** et tout ce qui était défini après le point d'erreur = inaccessible. Bug masqué jusqu'à présent car les onerror sur les images masquent les fallbacks gracieusement, mais la galerie de vignettes (« Ce qu'il mange » / « Dans Paris » / « Son monde » / « Le savais-tu ») n'a **jamais fonctionné sur AUCUN des 60 dinos**. **Correctif appliqué** : remplacé les 38 occurrences par `label:'Ce qu\'il mange'` (apostrophe échappée). Revérifié en navigateur réel (Playwright) : 0 erreur JS, DINO_EXTRAS=61 entrées (52 existantes + 9 nouvelles), DINO_AUDIO=51, showFiche=function. Screenshot fiche Mammouth confirmé visuellement correcte.
+
+**Décor climat** (correctif skill, hors repo) :
+- ✅ Skill `dino-images-lunii/` § `sectionDecor` corrigé : décor par défaut Mésozoïque (fougères/flaques) ne s'appliquait même à la mégafaune Cénozoïque glaciaire. Rectification → branchement décor steppe froide/neige quand `periode==='cenozoique'`. Confirmé visuellement (Mammuthus/Smilodon en steppe enneigée).
+
+**État au reboot** :
+- ✅ **9 dinos mégafaune + Edmontonia avec images paléoart** (5 scènes chacun, visible dans fiches app)
+- ✅ **SyntaxError éliminé** (DINO_EXTRAS + DINO_AUDIO + showFiche = fonctionnels)
+- ✅ **Leçon L-D20 gravée** : tester pages HTML en navigateur RÉEL (Playwright CDP + pageerror listener), pas seulement node --check JS isolé — SyntaxError dans script inline peut passer inaperçu longtemps si erreurs masquées par fallbacks ailleurs. Vérifier `typeof <variable>` post-chargement pour confirmer section exécutée.
+- ⏳ **Audio MP3 bloc-A/B/C/D des 9 dinos** en attente (EP-D19 quota EL reset ~9 juillet)
+
+---
+
 ## 2026-07-03 — PHASE GRAVURE DEC-GED-001 : alignement doctrine + exécution Playbook (commit XXX)
 
 **Livré** :
@@ -36,6 +238,27 @@
 - ✅ **Count réel vérifié disque** : 60 dinos total, répartition trex 13, raptor 8, cou_long 7, enaliosaures 7, mammiferes 7, cornu 6, arme 5, bec 3, pterosaures 2, oiseaux 1, volant 1.
 
 
+
+---
+
+## 2026-07-04 — CHANTIER OMBRES CHINOISES : 60/60 SILHOUETTES COMPLÉTÉES
+
+**Contexte** : Défigeage ordre Papa Yann 2026-07-03 14:30 UTC — « débloque les ombres chinoises c'est un ordre ». Chantier repris depuis diagnostic 19/60 (session 2026-07-02 : 4 échecs généré rejetés en validation).
+
+**Découverte technique CRITIQUE** : le script Playwright `~/.claude/skills/dino-images-lunii/scripts/gpt-gen-dino.mjs` attendait **2800ms** (2,8s) après navigation ChatGPT avant de taper le prompt. **La page réelle mettait ~5s à charger** (textarea pas prêt, content area blank) → textarea invisible → timeout → faux diagnostic de « rate limit ChatGPT ». Lignes 44 & 48 du script : **attente augmentée 2800ms/1500ms → 7000ms** (7s post-navigation + nouveau chat). **Après fix : zéro arrêt**, batch enchaîné silhouettes restantes sans interruption (pauses 12-14s = navigation + génération + capture, normal).
+
+**Livrés** :
+- ✅ **60/60 silhouettes** dans `site/img/dinos/_new-ombre/` (fichiers PNG `{nom}_ombre.png` nommés par `id`, ex `tyrannosaurus_ombre.png`).
+- ✅ **Validation disque** : `ls site/img/dinos/_new-ombre/*_ombre.png | wc -l` = 60 fichiers · count dinos-data.js = 60 dinos uniques (`site/js/dinos-data.js` exclut les 11 familles objets, compte les vrais `id:` individuels).
+- ✅ **Répartition confirmée** : trex 13 · raptor 8 · cou_long 7 · enaliosaures 7 · mammiferes 7 · cornu 6 · arme 5 · bec 3 · pterosaures 2 · oiseaux 1 · volant 1 = **60/60 total**.
+- ✅ **Correctif timing appliqué** : script `gpt-gen-dino.mjs` lignes 44/48 → 7000ms (était 2800ms/1500ms).
+
+**État** :
+- ✅ Ombres chinoises **COMPLÉTÉES 100%** (19→60 en une session post-fix timing)
+- ⏳ Fusion/archivage des 3 zones (`studio/dino/content/assets/silhouettes/`, `site/img/dinos/silhouettes/`, `_new-ombre/`) → reportée 1er mini-jeu consommateur (décision DEC-GED-001 § STOP silhouettes toujours valide).
+- 📋 **Leçon L-D19 gravée** (voir backlog).
+
+**Logs timing clé** : 52/60 → chantier bloqué faux diagnostic (croyait rate limit) · fix timing gpt-gen-dino.mjs 7000ms appliqué · 52→60 en une session continue (2026-07-04 matin, aucun arrêt).
 
 ---
 

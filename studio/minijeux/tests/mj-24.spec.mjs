@@ -3,7 +3,7 @@ export async function run({ page, ok }) {
   await page.evaluate(() => localStorage.clear());
   await page.reload({ waitUntil: 'networkidle' });
 
-  ok('manifest silhouettes chargé', await page.evaluate(() => !!window.DINO_SILHOUETTES && Object.keys(window.DINO_SILHOUETTES).length >= 8));
+  ok('data dinos chargée', await page.evaluate(() => typeof DINOS !== 'undefined' && DINOS.length >= 50));
   ok('Niveau 1 = 4 billes (standard golden : 4/6/8 selon etoiles)', (await page.locator('.pip').count()) === 4);
   ok('1re bille marquée courante', (await page.locator('.pip.cur').count()) === 1);
 

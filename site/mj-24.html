@@ -55,28 +55,48 @@
   <script src="js/stars.js"></script>
   <script src="js/qcm-retry.js"></script>
   <script src="js/mj-golden.js"></script>
-  <script src="js/dino-silhouettes.js"></script>
+  <script src="js/dinos-data.js"></script>
+  <script src="js/dinos-audio-manifest.js"></script>
   <script>
-    // ─── MJ-24 — Trouve le dino (reconnaissance par nom) ───
-    const SIL = window.DINO_SILHOUETTES, LAB = window.DINO_FAMILY_LABELS;
-    // Familles "nommables" pour 4 ans (espèces iconiques connues d'un fan de dinos)
-    const NAMEABLE = ['ceratopsien','trex','sauropode','stegosaure','pterosaure'];
-    const ALL_FAMS = Object.keys(SIL);
+    // ─── MJ-24 — Trouve le dino (reconnaissance par nom, ombres chinoises par-dino) ───
+    // Refonte 2026-07-05 (ordre Papa Yann) : anciennes silhouettes par-famille supprimees,
+    // remplacees par les ombres chinoises canon (img/dinos/ombres/) + voix reelle <id>-nom.mp3.
+    const SRC = (typeof DINOS !== 'undefined') ? DINOS : [];
+    const OMBRES = SRC.filter(d => d.png && d.name && !d.png.includes('/'))
+      .map(d => ({ id: d.id, name: d.name, famille: d.famille,
+                   src: 'img/dinos/ombres/' + d.png.replace(/\.(jpg|png)$/i,'') + '_ombre.png' }));
+    // Especes iconiques pour le niveau 1 (tres reconnaissables pour un fan de dinos)
+    const ICONIC_IDS = ['triceratops','tyrannosaurus','diplodocus','stegosaurus','spinosaurus',
+                        'ankylosaurus','pteranodon','brachiosaurus','velociraptor','mosasaurus'];
     const G = Golden.setup('mj-24');
     const MAX_Q = G.totalQ;
 
     const level = G.level;
     const NCHOICES = [3, 4, 5][level];
 
-    let score = 0, streak = 0, qCount = 0, qcm = null, targetFam = null;
+    let score = 0, streak = 0, qCount = 0, qcm = null, target = null;
 
     function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
-    function pick(fam){const a=SIL[fam];return a[Math.floor(Math.random()*a.length)];}
     function speak(t){TTS.speak(t,{pitch:1.05,priority:true});}
+    // Voix reelle ElevenLabs (51 dinos ont <id>-nom.mp3), fallback TTS sinon
+    let elAudio = null;
+    function sayTarget(){
+      if (elAudio) elAudio.pause();
+      if (window.DINO_NOM_AUDIO && !window.DINO_NOM_AUDIO.has(target.id)) {
+        speak('Trouve le ' + target.name + ' !');   // pas de MP3 pour ce dino (manifest genere)
+        return;
+      }
+      const a = new Audio('audio/dinos/' + target.id + '-nom.mp3');
+      elAudio = a;
+      let fbDone = false;
+      const fb = () => { if (fbDone) return; fbDone = true; speak('Trouve le ' + target.name + ' !'); };
+      a.onerror = fb;
+      a.play().catch(fb);
+    }
 
     function init(){
       G.buildPips();
-      document.getElementById('repeatBtn').onclick = () => speak('Trouve ' + LAB[targetFam].tts + ' !');
+      document.getElementById('repeatBtn').onclick = sayTarget;
       nextQuestion();
     }
 
@@ -85,27 +105,35 @@
       qcm = QcmRetry.create();
       qCount++;
 
-      targetFam = NAMEABLE[Math.floor(Math.random()*NAMEABLE.length)];
-      // distracteurs : familles différentes de la cible, distinctes entre elles
-      const others = shuffle(ALL_FAMS.filter(f => f !== targetFam)).slice(0, NCHOICES-1);
+      const basePool = level === 0 ? OMBRES.filter(o => ICONIC_IDS.includes(o.id)) : OMBRES;
+      target = basePool[Math.floor(Math.random()*basePool.length)];
+      // distracteurs : niveau 2 = au moins 1 cousin de la meme famille (discrimination fine)
+      let others;
+      if (level >= 2) {
+        const cousins = shuffle(OMBRES.filter(o => o.id !== target.id && o.famille === target.famille)).slice(0, 1);
+        const autres = shuffle(OMBRES.filter(o => o.id !== target.id && o.famille !== target.famille));
+        others = cousins.concat(autres).slice(0, NCHOICES-1);
+      } else {
+        others = shuffle(OMBRES.filter(o => o.id !== target.id && o.famille !== target.famille)).slice(0, NCHOICES-1);
+      }
       const opts = shuffle([
-        { fam: targetFam, src: pick(targetFam), correct: true },
-        ...others.map(f => ({ fam:f, src: pick(f), correct:false }))
+        { o: target, correct: true },
+        ...others.map(o => ({ o, correct:false }))
       ]);
 
-      document.getElementById('instruction').textContent = 'Trouve le ' + LAB[targetFam].nom + ' !';
-      speak('Trouve ' + LAB[targetFam].tts + ' !');
+      document.getElementById('instruction').textContent = 'Trouve le ' + target.name + ' !';
+      sayTarget();
 
       const box = document.getElementById('choices');
       box.style.gridTemplateColumns = 'repeat(' + Math.min(opts.length,3) + ', 1fr)';
       box.innerHTML = '';
-      opts.forEach(o => {
+      opts.forEach(opt => {
         const b = document.createElement('button');
         b.className = 'dino-tile';
-        b.dataset.fam = o.fam;
-        if (o.correct) b.dataset.correct = '1';
-        b.innerHTML = '<img class="sil" src="' + o.src + '" alt="">';
-        b.onclick = () => answer(o.correct, b);
+        b.dataset.dinoId = opt.o.id;
+        if (opt.correct) b.dataset.correct = '1';
+        b.innerHTML = '<img class="sil" src="' + opt.o.src + '" alt="">';
+        b.onclick = () => answer(opt.correct, b);
         box.appendChild(b);
       });
     }

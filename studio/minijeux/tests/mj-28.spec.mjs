@@ -9,7 +9,7 @@ export async function run({ page, ok }) {
 
   await page.waitForSelector('#digShadow', { timeout: 5000 });
   const shadowSrc = await page.getAttribute('#digShadow', 'src');
-  ok('ombre chargée depuis _new-ombre', /_new-ombre\/.+_ombre\.png$/.test(shadowSrc || ''), shadowSrc);
+  ok('ombre chargée depuis ombres', /ombres\/.+_ombre\.png$/.test(shadowSrc || ''), shadowSrc);
 
   await page.waitForSelector('.name-btn', { timeout: 5000 });
   const n = await page.locator('.name-btn').count();

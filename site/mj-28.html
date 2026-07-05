@@ -113,7 +113,7 @@
     // Max cherche le dino a la lampe puis repond via QCM (noms savants).
     const SRC = (typeof DINOS !== 'undefined') ? DINOS : (window.DINOS || []);
 
-    // Ombres disponibles : img/dinos/_new-ombre/<Basename>_ombre.png (62 fichiers, verifie 2026-07-05)
+    // Ombres disponibles : img/dinos/ombres/<Basename>_ombre.png (62 fichiers, verifie 2026-07-05)
     const OMBRE_OK = new Set([
       'Aenocyon','Albertosaurus','Allosaurus','Amargasaurus','Ankylosaurus','Apatosaurus',
       'Archaeopteryx','Archelon','Baryonyx','Brachiosaurus','Camarasaurus','Carcharodontosaurus',
@@ -127,12 +127,10 @@
       'Titanis','Torosaurus','Triceratops','Troodon','Tyrannosaurus','Utahraptor','Velociraptor',
     ]);
     function basenameOf(png) { return (png || '').replace(/\.(jpg|jpeg|png)$/i, ''); }
-    function ombrePath(d) { return 'img/dinos/_new-ombre/' + basenameOf(d.png) + '_ombre.png'; }
+    function ombrePath(d) { return 'img/dinos/ombres/' + basenameOf(d.png) + '_ombre.png'; }
 
-    // 11 dinos sans image couleur img/dinos/<png> (regeneration paleoart en cours, cf. mj-33) — a retirer quand livrees
-    const NO_HERO = new Set(['edmontonia','torosaurus','pentaceratops','mammuthus','smilodon','megatherium','paraceratherium','glyptodon','aenocyon','coelodonta','titanis']);
-    // Pool jouable = dino avec png top-level + ombre disponible + image couleur pour la revelation
-    const POOL = SRC.filter(d => d.png && d.name && d.fait && !d.png.includes('/') && OMBRE_OK.has(basenameOf(d.png)) && !NO_HERO.has(d.id));
+    // Pool jouable = dino avec png top-level + ombre disponible
+    const POOL = SRC.filter(d => d.png && d.name && d.fait && !d.png.includes('/') && OMBRE_OK.has(basenameOf(d.png)));
 
     // Silhouettes tres iconiques pour le niveau 1 (familles bien distinctes, faciles a reconnaitre)
     const ICONIC_IDS = ['triceratops','tyrannosaurus','diplodocus','stegosaurus','spinosaurus','ankylosaurus','pteranodon','brachiosaurus','velociraptor'];

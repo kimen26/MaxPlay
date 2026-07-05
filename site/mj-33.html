@@ -100,16 +100,13 @@
     const ICONIC = ['tyrannosaurus', 'triceratops', 'brachiosaurus', 'stegosaurus',
                      'pteranodon', 'ankylosaurus', 'velociraptor', 'spinosaurus'];
 
-    // Exclusion temporaire : dinos dont l'image couleur est en cours de régénération
-    // (audit visuel paléoart 2026-07, cf. commit b8444534) — évite un 404 en jeu.
-    const NO_ASSET = new Set(['edmontonia', 'torosaurus', 'pentaceratops', 'mammuthus',
-                               'smilodon', 'megatherium', 'paraceratherium', 'glyptodon',
-                               'aenocyon', 'coelodonta', 'titanis']);
+    // Plus d'exclusion : les 11 heros manquants ont ete promus depuis le staging (2026-07-05)
+    const NO_ASSET = new Set();
 
     function shuffle(a) { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[a[i], a[j]] = [a[j], a[i]]; } return a; }
 
     function shadowSrc(png) {
-      return 'img/dinos/_new-ombre/' + png.replace(/\.[a-z]+$/i, '') + '_ombre.png';
+      return 'img/dinos/ombres/' + png.replace(/\.[a-z]+$/i, '') + '_ombre.png';
     }
     function colorSrc(png) {
       return 'img/dinos/' + png;

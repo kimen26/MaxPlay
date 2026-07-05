@@ -127,7 +127,7 @@
 
     function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
     function speak(t){TTS.speak(t,{pitch:1.02,priority:true});}
-    function ombreSrc(d){ return 'img/dinos/_new-ombre/' + d.png.replace(/\.(jpg|png|webp)$/i,'') + '_ombre.png'; }
+    function ombreSrc(d){ return 'img/dinos/ombres/' + d.png.replace(/\.(jpg|png|webp)$/i,'') + '_ombre.png'; }
 
     function init(){
       G.buildPips();

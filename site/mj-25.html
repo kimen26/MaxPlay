@@ -59,11 +59,15 @@
   <script src="js/stars.js"></script>
   <script src="js/qcm-retry.js"></script>
   <script src="js/mj-golden.js"></script>
-  <script src="js/dino-silhouettes.js"></script>
+  <script src="js/dinos-data.js"></script>
   <script>
-    // ─── MJ-25 — Pareil pas pareil (matching visuel) ───
-    const SIL = window.DINO_SILHOUETTES;
-    const ALL_FAMS = Object.keys(SIL);
+    // ─── MJ-25 — Pareil pas pareil (matching visuel, ombres chinoises par-dino) ───
+    // Refonte 2026-07-05 (ordre Papa Yann) : anciennes silhouettes par-famille supprimees,
+    // remplacees par les ombres chinoises canon (img/dinos/ombres/).
+    const SRC = (typeof DINOS !== 'undefined') ? DINOS : [];
+    const OMBRES = SRC.filter(d => d.png && d.name && !d.png.includes('/'))
+      .map(d => ({ id: d.id, famille: d.famille,
+                   src: 'img/dinos/ombres/' + d.png.replace(/\.(jpg|png)$/i,'') + '_ombre.png' }));
     const G = Golden.setup('mj-25');
     const MAX_Q = G.totalQ;
 
@@ -87,23 +91,22 @@
       qcm = QcmRetry.create();
       qCount++;
 
-      const refFam = ALL_FAMS[Math.floor(Math.random()*ALL_FAMS.length)];
-      const refSrc = SIL[refFam][Math.floor(Math.random()*SIL[refFam].length)];
+      const ref = OMBRES[Math.floor(Math.random()*OMBRES.length)];
 
-      // distracteurs : autres images, jamais identiques à la référence
+      // distracteurs : autres dinos, jamais le meme ; niveau 3 = cousins de la meme famille si possible
       let pool;
-      if (SAME_FAMILY_DISTRACTORS && SIL[refFam].length > NCHOICES){
-        pool = SIL[refFam].filter(s => s !== refSrc);          // même famille = plus dur
+      const cousins = OMBRES.filter(o => o.id !== ref.id && o.famille === ref.famille);
+      if (SAME_FAMILY_DISTRACTORS && cousins.length >= NCHOICES-1){
+        pool = cousins;
       } else {
-        pool = [];
-        shuffle(ALL_FAMS.filter(f => f !== refFam)).slice(0, NCHOICES-1)
-          .forEach(f => pool.push(SIL[f][Math.floor(Math.random()*SIL[f].length)]));
+        pool = OMBRES.filter(o => o.id !== ref.id);
       }
       const distract = shuffle(pool).slice(0, NCHOICES-1);
       const opts = shuffle([
-        { src: refSrc, correct: true },
-        ...distract.map(s => ({ src:s, correct:false }))
+        { src: ref.src, correct: true },
+        ...distract.map(o => ({ src: o.src, correct:false }))
       ]);
+      const refSrc = ref.src;
 
       document.getElementById('refCard').innerHTML = '<img src="' + refSrc + '" alt="">';
       speak('Trouve le même dino !');
@@ -138,7 +141,7 @@
       } else {
         btn.classList.add('ko'); btn.disabled = true; streak = 0;
         sndBuzz();
-        speak('Regarde bien, essaie encore !');
+        speak('Cherche bien, essaie encore !');
       }
     }
 

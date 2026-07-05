@@ -62,10 +62,16 @@
   <script src="js/stars.js"></script>
   <script src="js/qcm-retry.js"></script>
   <script src="js/mj-golden.js"></script>
-  <script src="js/dino-silhouettes.js"></script>
+  <script src="js/dinos-data.js"></script>
   <script>
-    // ─── MJ-26 — Compte les dinos (1 à 6) ───
-    const SIL = window.DINO_SILHOUETTES, LAB = window.DINO_FAMILY_LABELS;
+    // ─── MJ-26 — Compte les dinos (1 à 6, ombres chinoises par-dino) ───
+    // Refonte 2026-07-05 (ordre Papa Yann) : anciennes silhouettes par-famille supprimees,
+    // remplacees par les ombres chinoises canon (img/dinos/ombres/), groupees par famille.
+    const SRC = (typeof DINOS !== 'undefined') ? DINOS : [];
+    const SIL = {};
+    SRC.filter(d => d.png && !d.png.includes('/')).forEach(d => {
+      (SIL[d.famille] = SIL[d.famille] || []).push('img/dinos/ombres/' + d.png.replace(/\.(jpg|png)$/i,'') + '_ombre.png');
+    });
     const ALL_FAMS = Object.keys(SIL);
     const G = Golden.setup('mj-26');
     const MAX_Q = G.totalQ;

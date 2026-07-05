@@ -1,15 +1,15 @@
-# ✅ RÉSOLU 2026-07-05 — canon désigné (validation Papa Yann « oui vazi »)
+# ✅ RÉSOLU 2026-07-05 — canon unique + anciennes silhouettes SUPPRIMÉES (ordre Papa Yann)
 
-> **DÉCISION Papa Yann 2026-07-05** : les 1ers mini-jeux consommateurs (mj-28/30/31/33, ombres par-dino) ont tranché le grain, comme prévu ci-dessous. Désignation finale :
+> **DÉCISION Papa Yann 2026-07-05 (2 temps)** :
+> 1. « oui vazi » — canon par-dino désigné après les 1ers mini-jeux consommateurs.
+> 2. « les anciennes SUPPRIME-LES, je ne veux plus les voir !! » — les silhouettes par-famille (LimeZu, jugées terribles) sont **supprimées du working tree** (site + studio, historique git conservé). mj-24/25/26 refondus sur les ombres chinoises canon.
 >
-> | Zone | Rôle désigné | Statut |
-> |------|--------------|--------|
-> | `site/img/dinos/ombres/` | 🏆 **CANON PRODUIT par-dino** (60 ombres `Nom_ombre.png`, 600px, TRACKÉ git, déployé) | consommé par mj-28/30/31/33 |
-> | `site/img/dinos/_new-ombre/` | staging masters haute résolution (828K pièce, GITIGNORÉ) — source de re-promotion via resize | ne JAMAIS référencer depuis un jeu (L-D22) |
-> | `site/img/dinos/silhouettes/` | par-FAMILLE, grain différent — **consommé par mj-24/25/26** via `js/dino-silhouettes.js` | reste en l'état, pas un doublon |
-> | `studio/dino/content/assets/silhouettes/` | source d'autoring par-famille (LimeZu) | reste en l'état |
->
-> Aucune zone supprimée (doctrine : on désigne, on ne supprime pas). Promotion staging → canon : `ffmpeg scale 600px` (fait 2026-07-05, commit 941faa30).
+> | Zone | Sort 2026-07-05 |
+> |------|-----------------|
+> | `site/img/dinos/ombres/` | 🏆 **CANON UNIQUE par-dino** (60 `Nom_ombre.png`, 600px, nettoyées, tracké) — consommé par mj-24/25/26/28/30/31/33 |
+> | `site/img/dinos/_new-ombre/` | staging masters HD gitignoré (source de re-promotion) — ne JAMAIS référencer depuis un jeu (L-D22) |
+> | `site/img/dinos/silhouettes/` + `js/dino-silhouettes.js` + `dev-silhouettes.html` | ❌ SUPPRIMÉS (ordre Papa Yann) |
+> | `studio/dino/content/assets/silhouettes/` (banque LimeZu + _sources + manifest) | ❌ SUPPRIMÉE — ne restent que ce doc et `_INDEX.md` |
 
 ---
 

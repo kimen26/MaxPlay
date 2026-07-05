@@ -89,6 +89,7 @@
   <script src="js/qcm-retry.js"></script>
   <script src="js/mj-golden.js"></script>
   <script src="js/dinos-data.js"></script>
+  <script src="js/dinos-audio-manifest.js"></script>
   <script>
     // ─── MJ-31 — Le grand voyage du temps (dino → bonne bande d'époque) ───
     const G = Golden.setup('mj-31');
@@ -127,6 +128,31 @@
 
     function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
     function speak(t){TTS.speak(t,{pitch:1.02,priority:true});}
+
+    // Voix reelle ElevenLabs quand l'asset existe (51 dinos -nom.mp3 + speciaux), fallback TTS sinon.
+    let elAudio = null;
+    function stopEl(){ if (elAudio){ elAudio.pause(); elAudio = null; } }
+    function playEl(src, fallbackText, onended){
+      stopEl();
+      // manifest genere : evite un 404 console pour les dinos sans MP3 (fallback TTS direct)
+      const m = src.match(/audio\/dinos\/(.+)-nom\.mp3$/);
+      if (m && window.DINO_NOM_AUDIO && !window.DINO_NOM_AUDIO.has(m[1])) {
+        if (fallbackText) speak(fallbackText);
+        if (onended) setTimeout(onended, 6000);
+        return;
+      }
+      const a = new Audio(src);
+      elAudio = a;
+      a.onended = () => { if (onended) onended(); };
+      let fbDone = false;
+      const fb = () => {
+        if (fbDone) return; fbDone = true;
+        if (fallbackText) speak(fallbackText);
+        if (onended) setTimeout(onended, 6000);
+      };
+      a.onerror = fb;
+      a.play().catch(fb);
+    }
     function ombreSrc(d){ return 'img/dinos/ombres/' + d.png.replace(/\.(jpg|png|webp)$/i,'') + '_ombre.png'; }
 
     function init(){
@@ -181,7 +207,8 @@
       document.getElementById('instruction').textContent = 'Il vivait quand ?';
       document.getElementById('dinoName').textContent = targetDino.name;
       document.getElementById('dinoCard').innerHTML = '<img src="' + ombreSrc(targetDino) + '" alt="">';
-      speak(targetDino.name + ' ! Il vivait quand ?');
+      // Annonce en voix reelle (asset <id>-nom.mp3) — fallback TTS pour les 9 dinos en attente quota EL
+      playEl('audio/dinos/' + targetDino.id + '-nom.mp3', targetDino.name + ' ! Il vivait quand ?');
 
       document.querySelectorAll('.band').forEach(b => {
         b.classList.remove('ok','ko');
@@ -250,12 +277,18 @@
       speak(phrase);
     }
 
-    // ─── Finale météorite : 4 tableaux plein écran, tap pour avancer ───
+    // ─── Finale météorite : 4 tableaux en VOIX RÉELLE (spécial Extinction canon, Narrateur H + Wex) ───
+    // Audio = audio/dinos/special-extinction-a..d.mp3 (blocs ~20-28 s). Légende courte à l'écran,
+    // l'histoire complète est ÉCOUTÉE. Avance à la fin de l'audio, tap = passer.
     const METEOR_SLIDES = [
-      { emoji:'🦕🌿', text:'Il y a 66 millions d\'années, les dinosaures vivent tranquilles.' },
-      { emoji:'☄️',   text:'Une météorite ÉNORME tombe du ciel. BOUM !' },
-      { emoji:'🌑',   text:'La poussière cache le soleil. Il fait froid, les plantes manquent. Les grands dinosaures disparaissent.' },
-      { emoji:'🐭🐦', text:'Mais les petits mammifères et les oiseaux survivent. Une nouvelle histoire commence !' },
+      { emoji:'🦕☄️', mp3:'a', text:'Il y a 66 millions d\'années… une météorite géante !',
+        fallback:'Il y a 66 millions d\'années, une météorite géante, grosse comme une montagne, tombe du ciel. BOUM !' },
+      { emoji:'🌋🌑', mp3:'b', text:'Les volcans, le nuage noir… le soleil est caché.',
+        fallback:'Des volcans gigantesques crachent de la fumée. Le ciel devient tout noir, le soleil est caché.' },
+      { emoji:'🥀',   mp3:'c', text:'Plus de plantes… les géants s\'en vont.',
+        fallback:'Sans soleil, les plantes ne poussent plus. Les grands dinosaures n\'ont plus rien à manger, et tout doucement, ils s\'en vont.' },
+      { emoji:'🐭🐦', mp3:'d', text:'Les petits survivent — et les oiseaux sont de vrais dinosaures !',
+        fallback:'Mais les petits animaux survivent ! Et les oiseaux aussi : les oiseaux sont de vrais dinosaures. La vie continue !' },
     ];
     let meteorIdx = 0;
 
@@ -274,21 +307,23 @@
       div.innerHTML =
         '<div class="meteor-emoji">' + s.emoji + '</div>' +
         '<div class="meteor-text">' + s.text + '</div>' +
-        '<div class="meteor-tap">👉 touche l\'écran</div>';
+        '<div class="meteor-tap">👉 touche l\'écran pour passer</div>';
       document.body.appendChild(div);
-      speak(s.text);
 
       let advanced = false;
-      const autoTimer = setTimeout(advance, 4000);
+      // garde-fou si l'audio ne se termine jamais (35 s > bloc le plus long 28 s)
+      const autoTimer = setTimeout(advance, 35000);
       function advance(){
         if (advanced) return;
         advanced = true;
         clearTimeout(autoTimer);
+        stopEl();
         div.remove();
         meteorIdx++;
         if (meteorIdx < METEOR_SLIDES.length) showMeteorSlide();
         else showEnd();
       }
+      playEl('audio/dinos/special-extinction-' + s.mp3 + '.mp3', s.fallback, () => setTimeout(advance, 600));
       div.onclick = advance;
     }
 

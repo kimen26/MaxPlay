@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-28 – La lampe du paléontologue</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    #app { background: #050505; }
+
+    /* ─── Zone de fouille dans le noir ─── */
+    .dig-wrap {
+      position: relative; margin: 8px auto; width: 100%; max-width: 560px;
+      height: 46vh; min-height: 220px; max-height: 340px;
+      border-radius: 20px; overflow: hidden; touch-action: none;
+      box-shadow: 0 6px 20px #000a; background: #060606;
+    }
+    .dig-color, .dig-shadow {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: contain; pointer-events: none; user-select: none;
+    }
+    .dig-shadow {
+      /* silhouette noire visible seulement dans le halo de lumière */
+      filter: brightness(0.9);
+      -webkit-mask-image: radial-gradient(circle 130px at var(--mx,50%) var(--my,50%), #fff 0%, #fff 55%, transparent 78%);
+      mask-image: radial-gradient(circle 130px at var(--mx,50%) var(--my,50%), #fff 0%, #fff 55%, transparent 78%);
+    }
+    .dig-color { opacity: 0; transition: opacity .6s ease; }
+    .dig-wrap.revealed .dig-color { opacity: 1; }
+    .dig-wrap.revealed .dig-shadow { opacity: 0; }
+
+    /* halo visuel doux qui suit le doigt (au-dessus, purement décoratif) */
+    .dig-halo {
+      position: absolute; width: 260px; height: 260px; border-radius: 50%;
+      left: var(--mx, 50%); top: var(--my, 50%); transform: translate(-50%, -50%);
+      background: radial-gradient(circle, rgba(255,244,200,0.16) 0%, rgba(255,244,200,0.05) 45%, transparent 72%);
+      pointer-events: none; transition: opacity .3s;
+    }
+    .dig-hint {
+      position: absolute; left: 0; right: 0; bottom: 10px; text-align: center;
+      color: #ffe066cc; font-weight: 900; font-size: .95rem; pointer-events: none;
+      text-shadow: 0 2px 6px #000;
+    }
+    .dig-wrap.touched .dig-hint { display: none; }
+
+    .instruction-text { text-align:center; font-size:1.3rem; font-weight:900; color:#ffe066; margin:8px 12px 2px; }
+    .tts-btn {
+      display:flex; align-items:center; gap:8px; margin:6px auto;
+      background:linear-gradient(135deg,#43a047,#66bb6a); color:#fff; border:none; cursor:pointer;
+      border-radius:25px; padding:10px 22px; font-size:1rem; font-weight:900;
+      box-shadow:0 4px 12px #0005;
+    }
+    .tts-btn:active { transform:scale(.94); }
+
+    .choices { display:grid; gap:12px; padding:12px 14px; justify-content:center; max-width:560px; margin:0 auto; }
+    .name-btn {
+      background:#fff; border-radius:18px; padding:14px 10px; border:5px solid transparent;
+      box-shadow:0 5px 14px #0005; cursor:pointer; display:flex; align-items:center; justify-content:center;
+      gap:8px; min-width:120px; min-height:80px; transition:transform .12s, border-color .15s;
+      color:#1a1a2e; font-family:'Nunito',sans-serif; font-weight:900; font-size:1.15rem; text-align:center;
+    }
+    .name-btn:active { transform:scale(.93); }
+    .name-btn .say {
+      font-size:1.2rem; line-height:1; background:none; border:none; padding:4px; cursor:pointer;
+      flex-shrink:0;
+    }
+    .name-btn.ok { border-color:#00c47a; background:#d6fbe7; }
+    .name-btn.ko { border-color:#ff5a5a; opacity:.5; }
+
+    .reveal-fait {
+      text-align:center; color:#ffe066; font-weight:700; font-size:1.02rem;
+      margin:6px 16px 0; min-height: 1.4em;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="hdr">
+      <a href="index.html" class="back">←</a>
+      <span class="htitle">🔦 La lampe du paléontologue</span>
+    </div>
+    <div class="pips" id="pips"></div>
+
+    <div class="qbox">
+      <div class="instruction-text" id="instruction">Quel dino se cache dans le noir ?</div>
+      <button class="tts-btn" id="repeatBtn"><span>🔊</span><span>Écouter</span></button>
+    </div>
+
+    <div class="dig-wrap" id="digWrap">
+      <img class="dig-color" id="digColor" alt="">
+      <img class="dig-shadow" id="digShadow" alt="">
+      <div class="dig-halo" id="digHalo"></div>
+      <div class="dig-hint">👆 Bouge ton doigt dans le noir…</div>
+    </div>
+    <div class="reveal-fait" id="fait"></div>
+
+    <div class="choices" id="choices"></div>
+  </div>
+
+  <script src="js/sounds.js"></script>
+  <script src="js/tts.js"></script>
+  <script src="js/victory-sounds.js"></script>
+  <script src="js/feedback.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/stars.js"></script>
+  <script src="js/qcm-retry.js"></script>
+  <script src="js/mj-golden.js"></script>
+  <script src="js/dinos-data.js"></script>
+  <script>
+    // ─── MJ-28 — La lampe du paléontologue ───
+    // Ecran noir, halo de lumiere suit le doigt et revele une ombre chinoise.
+    // Max cherche le dino a la lampe puis repond via QCM (noms savants).
+    const SRC = (typeof DINOS !== 'undefined') ? DINOS : (window.DINOS || []);
+
+    // Ombres disponibles : img/dinos/_new-ombre/<Basename>_ombre.png (62 fichiers, verifie 2026-07-05)
+    const OMBRE_OK = new Set([
+      'Aenocyon','Albertosaurus','Allosaurus','Amargasaurus','Ankylosaurus','Apatosaurus',
+      'Archaeopteryx','Archelon','Baryonyx','Brachiosaurus','Camarasaurus','Carcharodontosaurus',
+      'Carnotaurus','Centrosaurus','Ceratosaurus','Coelodonta','Cryolophosaurus','Deinonychus',
+      'Dilophosaurus','Dimetrodon','Diplodocus','Edmontonia','Edmontosaurus','Elasmosaurus',
+      'Euoplocephalus','Gallimimus','Giganotosaurus','Glyptodon','Ichthyosaurus','Iguanodon',
+      'Kentrosaurus','Liopleurodon','Mammuthus','Megatherium','Microraptor','Mosasaurus',
+      'Ophthalmosaurus','Oviraptor','Pachycephalosaurus','Paraceratherium','Parasaurolophus',
+      'Patagotitan','Pentaceratops','Plateosaurus','Protoceratops','Pteranodon','Quetzalcoatlus',
+      'Shonisaurus','Smilodon','Spinosaurus','Stegosaurus','Tarbosaurus','Therizinosaurus',
+      'Titanis','Torosaurus','Triceratops','Troodon','Tyrannosaurus','Utahraptor','Velociraptor',
+    ]);
+    function basenameOf(png) { return (png || '').replace(/\.(jpg|jpeg|png)$/i, ''); }
+    function ombrePath(d) { return 'img/dinos/_new-ombre/' + basenameOf(d.png) + '_ombre.png'; }
+
+    // 11 dinos sans image couleur img/dinos/<png> (regeneration paleoart en cours, cf. mj-33) — a retirer quand livrees
+    const NO_HERO = new Set(['edmontonia','torosaurus','pentaceratops','mammuthus','smilodon','megatherium','paraceratherium','glyptodon','aenocyon','coelodonta','titanis']);
+    // Pool jouable = dino avec png top-level + ombre disponible + image couleur pour la revelation
+    const POOL = SRC.filter(d => d.png && d.name && d.fait && !d.png.includes('/') && OMBRE_OK.has(basenameOf(d.png)) && !NO_HERO.has(d.id));
+
+    // Silhouettes tres iconiques pour le niveau 1 (familles bien distinctes, faciles a reconnaitre)
+    const ICONIC_IDS = ['triceratops','tyrannosaurus','diplodocus','stegosaurus','spinosaurus','ankylosaurus','pteranodon','brachiosaurus','velociraptor'];
+    const ICONIC = POOL.filter(d => ICONIC_IDS.includes(d.id));
+    const ICONIC_POOL = ICONIC.length >= 3 ? ICONIC : POOL;
+
+    const G = Golden.setup('mj-28');
+    const MAX_Q = G.totalQ;
+    const level = G.level;
+    const NCHOICES = level === 0 ? 3 : 4;
+    // Niveau 2 : au moins 1 cousin de meme famille que la cible (discrimination fine)
+    const SAME_FAMILY_MIN = level >= 2;
+
+    let score = 0, streak = 0, qCount = 0, qcm = null, target = null;
+    let dragging = false;
+
+    function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+    function speak(t){TTS.speak(t,{pitch:1.05,priority:true});}
+
+    const wrap = document.getElementById('digWrap');
+    const halo = document.getElementById('digHalo');
+    let touchedOnce = false;
+    let torchSoundPlayed = false;
+
+    function moveTorch(clientX, clientY){
+      const r = wrap.getBoundingClientRect();
+      const x = Math.max(0, Math.min(r.width, clientX - r.left));
+      const y = Math.max(0, Math.min(r.height, clientY - r.top));
+      wrap.style.setProperty('--mx', x + 'px');
+      wrap.style.setProperty('--my', y + 'px');
+      halo.style.setProperty('--mx', x + 'px');
+      halo.style.setProperty('--my', y + 'px');
+      if (!touchedOnce){
+        touchedOnce = true;
+        wrap.classList.add('touched');
+      }
+      if (!torchSoundPlayed){
+        torchSoundPlayed = true;
+        try { sndDing(); } catch(e){}
+      }
+    }
+    function onPointerMove(e){
+      if (e.touches && e.touches[0]) moveTorch(e.touches[0].clientX, e.touches[0].clientY);
+      else moveTorch(e.clientX, e.clientY);
+    }
+    wrap.addEventListener('touchmove', (e) => { onPointerMove(e); }, { passive: true });
+    wrap.addEventListener('touchstart', (e) => { onPointerMove(e); }, { passive: true });
+    wrap.addEventListener('mousedown', (e) => { dragging = true; onPointerMove(e); });
+    wrap.addEventListener('mousemove', (e) => { if (dragging) onPointerMove(e); });
+    window.addEventListener('mouseup', () => { dragging = false; });
+
+    function init(){
+      G.buildPips();
+      document.getElementById('repeatBtn').onclick = () => speak('Quel dino se cache dans le noir ? Écoute, et trouve-le !');
+      nextQuestion();
+    }
+
+    function nextQuestion(){
+      if (qCount >= MAX_Q) return showEnd();
+      qcm = QcmRetry.create();
+      qCount++;
+      touchedOnce = false;
+      torchSoundPlayed = false;
+
+      const pool = level === 0 ? ICONIC_POOL : POOL;
+      target = pool[Math.floor(Math.random() * pool.length)];
+
+      let distract;
+      if (SAME_FAMILY_MIN){
+        const cousins = shuffle(POOL.filter(d => d.famille === target.famille && d.id !== target.id));
+        const cousin = cousins.slice(0, 1);
+        const rest = shuffle(POOL.filter(d => d.id !== target.id && !cousin.includes(d))).slice(0, NCHOICES - 1 - cousin.length);
+        distract = cousin.concat(rest);
+      } else {
+        // familles differentes de la cible pour rester lisible aux plus jeunes
+        const others = shuffle(POOL.filter(d => d.id !== target.id && d.famille !== target.famille));
+        distract = others.slice(0, NCHOICES - 1);
+        if (distract.length < NCHOICES - 1){
+          const rest = shuffle(POOL.filter(d => d.id !== target.id && !distract.includes(d)));
+          distract = distract.concat(rest).slice(0, NCHOICES - 1);
+        }
+      }
+
+      const opts = shuffle([{ d: target, correct: true }, ...distract.map(d => ({ d, correct: false }))]);
+
+      // reset ecran de fouille
+      wrap.classList.remove('revealed', 'touched');
+      wrap.style.setProperty('--mx', '50%');
+      wrap.style.setProperty('--my', '50%');
+      document.getElementById('digShadow').src = ombrePath(target);
+      document.getElementById('digColor').src = 'img/dinos/' + target.png;
+      document.getElementById('fait').textContent = '';
+
+      document.getElementById('instruction').textContent = 'Quel dino se cache dans le noir ?';
+      speak('Quel dino se cache dans le noir ?');
+
+      const box = document.getElementById('choices');
+      box.style.gridTemplateColumns = 'repeat(' + Math.min(opts.length, 2) + ', 1fr)';
+      box.innerHTML = '';
+      opts.forEach(o => {
+        const b = document.createElement('button');
+        b.className = 'name-btn';
+        b.dataset.name = o.d.name;
+        if (o.correct) b.dataset.correct = '1';
+        const say = document.createElement('span');
+        say.className = 'say';
+        say.textContent = '🔊';
+        say.onclick = (ev) => { ev.stopPropagation(); speak(o.d.name); };
+        const label = document.createElement('span');
+        label.textContent = o.d.name;
+        b.appendChild(label);
+        b.appendChild(say);
+        b.onclick = () => answer(o.correct, o.d, b);
+        box.appendChild(b);
+      });
+    }
+
+    function answer(correct, dino, btn){
+      if (btn.disabled) return;
+      const res = QcmRetry.handle(qcm, correct);
+      if (res.outcome === 'ignored') return;
+      if (res.outcome === 'correct'){
+        btn.classList.add('ok'); score += res.points;
+        streak = res.streakInc ? streak + 1 : 0;
+        revealWin(target);
+        G.notePip(qCount - 1, res.attempts);
+        setTimeout(nextQuestion, 2400);
+      } else if (res.outcome === 'reveal'){
+        btn.classList.add('ko'); btn.disabled = true; streak = 0;
+        QcmRetry.revealCorrect(document.getElementById('choices'));
+        revealWin(target);
+        sndBuzz(); G.notePip(qCount - 1, 4);
+        setTimeout(nextQuestion, 2600);
+      } else {
+        btn.classList.add('ko'); btn.disabled = true; streak = 0;
+        sndBuzz();
+        speak('Essaie encore !');
+      }
+    }
+
+    function revealWin(dino){
+      wrap.classList.add('revealed');
+      sndDing();
+      document.getElementById('fait').textContent = dino.fait || '';
+      speak('Bravo ! C\'est le ' + dino.name + ' ! ' + (dino.fait || ''));
+    }
+
+    function showEnd(){
+      G.showEnd({ replayUrl: 'mj-28.html' });
+    }
+
+    init();
+  </script>
+  <script src="js/tracker.js"></script>
+  <script src="js/comments.js"></script>
+  <script src="js/back-button.js"></script>
+</body>
+</html>

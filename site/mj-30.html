@@ -10,7 +10,7 @@
     #app { background: linear-gradient(160deg,#2b1f3d,#1c1326); }
     .instruction-text { text-align:center; font-size:1.25rem; font-weight:900; color:#ffe066; margin:8px 12px 2px; }
     .question-counter { text-align:center; font-size:.85rem; opacity:.7; margin-top:4px; }
-    .tts-btn {
+    .tts-btn { min-height:80px;
       display:flex; align-items:center; gap:8px; margin:6px auto;
       background:linear-gradient(135deg,#43a047,#66bb6a); color:#fff; border:none; cursor:pointer;
       border-radius:25px; padding:9px 20px; font-size:.95rem; font-weight:900;
@@ -57,7 +57,7 @@
     .validate-btn {
       display:block; margin:10px auto 6px; background:linear-gradient(135deg,#ff9800,#ffb74d); color:#3a2500;
       border:none; border-radius:22px; padding:12px 30px; font-size:1.05rem; font-weight:900;
-      box-shadow:0 5px 14px #0006; cursor:pointer; min-height:56px;
+      box-shadow:0 5px 14px #0006; cursor:pointer; min-height:80px;
     }
     .validate-btn:disabled { opacity:.35; cursor:default; }
     .validate-btn:not(:disabled):active { transform:scale(.95); }
@@ -80,7 +80,7 @@
     .next-btn {
       display:block; margin:8px auto 0; background:linear-gradient(135deg,#00c47a,#33e0a0); color:#003b24;
       border:none; border-radius:22px; padding:12px 30px; font-size:1.05rem; font-weight:900;
-      box-shadow:0 5px 14px #0006; cursor:pointer; min-height:56px; opacity:0; transition:opacity .4s;
+      box-shadow:0 5px 14px #0006; cursor:pointer; min-height:80px; opacity:0; transition:opacity .4s;
     }
     .next-btn.show { opacity:1; }
     .next-btn:active { transform:scale(.95); }

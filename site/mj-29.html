@@ -53,7 +53,7 @@
     }
     .dino-sens { font-size:1rem; font-weight:700; text-align:center; color:#fff; opacity:.9; padding:0 16px; }
 
-    .tts-btn {
+    .tts-btn { min-height:80px;
       display:flex; align-items:center; gap:8px; margin:6px auto;
       background:linear-gradient(135deg,#43a047,#66bb6a); color:#fff; border:none; cursor:pointer;
       border-radius:25px; padding:10px 22px; font-size:1rem; font-weight:900;
@@ -256,7 +256,7 @@
         b.dataset.cle = r.cle;
         b.dataset.instanceId = 'b' + i;
         if (r.isTarget) b.dataset.order = String(r.order);
-        b.textContent = r.display;
+        b.textContent = r.clean;   // sans tirets : lisibilite phonetique 4 ans (review 2026-07-05)
         b.onclick = () => onBrickClick(b, r);
         box.appendChild(b);
       });

@@ -30,6 +30,12 @@
     .hidden { display:none !important; }
 
     /* ── Écran choix ── */
+    #galleryColorBtn {
+      display:block; min-height:56px; font-size:1.05rem; font-weight:900; border:none; border-radius:16px;
+      margin:10px auto 0; background:linear-gradient(135deg,#43a047,#66bb6a); color:#fff;
+      padding:12px 22px; cursor:pointer; box-shadow:0 4px 12px #0005; font-family:inherit;
+    }
+    #galleryColorBtn:active { transform:scale(.95); }
     #galleryBtn {
       display:flex; align-items:center; justify-content:center; gap:8px;
       margin:10px auto; background:linear-gradient(135deg,#ff9800,#ffb74d); color:#3a1a00;
@@ -82,7 +88,7 @@
       padding:10px; flex-shrink:0; background:rgba(0,0,0,0.2);
     }
     .swatch {
-      width:64px; height:64px; border-radius:50%; border:4px solid rgba(255,255,255,0.5);
+      width:76px; height:76px; border-radius:50%; border:4px solid rgba(255,255,255,0.5);
       cursor:pointer; box-shadow:0 3px 8px #0006; flex-shrink:0;
       display:flex; align-items:center; justify-content:center; font-size:1.6rem;
     }
@@ -125,6 +131,7 @@
     <div class="screen hidden" id="screenAtelier">
       <div id="atelier">
         <div class="atelier-top">
+          <button class="atelier-btn" id="backChoiceBtn">🔙 Autre dino</button>
           <button class="atelier-btn" id="modelBtn">🦕 Modèle</button>
           <button class="atelier-btn" id="finBtn">✅ Fini !</button>
         </div>
@@ -138,6 +145,7 @@
 
     <!-- ÉCRAN GALERIE -->
     <div class="screen hidden" id="screenGallery">
+      <button id="galleryColorBtn">🎨 Colorier un autre dino !</button>
       <div class="choice-title">🖼️ Ma galerie</div>
       <div class="grid" id="galleryView"></div>
       <div class="gallery-empty hidden" id="galleryEmpty">Pas encore d'œuvre... Colorie ton premier dino !</div>
@@ -449,6 +457,18 @@
       document.getElementById('galleryBtn').onclick = openGallery;
       document.getElementById('modelBtn').onclick = showModel;
       document.getElementById('finBtn').onclick = finishPainting;
+      document.getElementById('backChoiceBtn').onclick = backToChoice;
+      document.getElementById('galleryColorBtn').onclick = backToChoice;
+      // ← contextuel : en atelier/galerie il ramene au choix des dinos, pas au menu principal.
+      // Delegation sur .hdr : back-button.js REMPLACE l'ancre .back au DOMContentLoaded,
+      // un listener pose directement sur l'ancre serait perdu.
+      document.querySelector('.hdr').addEventListener('click', (e) => {
+        const a = e.target.closest('a');
+        if (a && document.getElementById('screenChoice').classList.contains('hidden')) {
+          e.preventDefault();
+          backToChoice();
+        }
+      });
       document.getElementById('closeBig').onclick = closeBig;
       document.getElementById('bigView').onclick = (e) => { if (e.target.id === 'bigView') closeBig(); };
 

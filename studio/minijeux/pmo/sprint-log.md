@@ -9,6 +9,159 @@
 
 ---
 
+## 2026-07-05 (après-demain nuit) — POOL SONORES thématiques (7 thèmes, voix overlay, anti-répétition)
+
+**Owner** : game-pmo (intégration) · Papa Yann (décision pools)
+
+**Trigger** : Papa Yann demande système de sons cohérent par événement (« pioche de son par thème, pool cohérent ») → game-dev implémente `victory-sounds.js` centralisé (site/js/).
+
+**Fait (session 2026-07-05 après)** :
+
+1. **Architecture pools sonores gravée** : `site/js/victory-sounds.js` (point central chargé par ALL mj-XX) :
+   - 7 pools thématiques : victory (ff7/mario/zelda legacy + 3 nouveaux), end-doux (ZÉRO punitif — perdu.mp3/among-us retirés), success, error (prout/honk cultes gardés), apparition, collecte, déblocage
+   - API symétrique : `SoundPool.play(theme)` (nouveau) ou historique `playEndSound()` (compat)
+   - Anti-répétition immédiate : tracking pool → ne rejoue pas son précédent
+   - Overlay voix casting (3 voix : narratrice f / narrateur h / Wex) × 16 positives + 6 douces → 66 MP3 ElevenLabs `sounds/voix/{f,h,wex}/`
+   - Voix jouées ~1.4s APRÈS fanfare victoire (timing gap Wex timing révélé MJ-31)
+   - **Commit 8a7a400e** : victory-sounds.js déployé, AUCUN mj-XX.html modifié, figées intactes
+
+2. **Banque sons complets** : 130 MP3 total (10 ui + 54 fx + 66 voix)
+   - Page écoute dev : `dev-sounds-ui.html` (audit/test pool)
+   - Voix générées ElevenLabs text-to-dialogue (eleven_v3, tags émotionnels, padding 250ms L-069)
+
+3. **Incident git post-mortem** : commit 0befbdde emporta 436 suppressions (img/dinos/silhouettes/ + dev-silhouettes.html) stagées autre session — **aucun impact site** (rien ne référençait), leçon = inspecter `git diff --cached` avant commit (L-057-feedback_concurrent_git_staging déjà appliquée depuis 2026-06-08).
+
+4. **Harnais vérification** : mj-21 + mj-04 testés VERT (pools jouent sans collision).
+
+**État final** :
+- ✅ API SoundPool déployée, historique compat intact
+- ✅ 130 MP3 produits (11 voix × 66 segments + fx)
+- ✅ Incident git loggé (sans impact), leçon L-057 confirmée
+- ✅ Standard pool voix grandi → à utiliser tout futur MJ (L-070)
+
+**Impacte fichiers** :
+- `site/js/victory-sounds.js` : point central, aucune modif mj-XX
+- `site/sounds/` : 130 MP3 (ui, fx, voix)
+- `site/dev-sounds-ui.html` : page dev audit
+
+**État au reboot** :
+- ✅ **Pool sonores thématiques = standard futur tout MJ**
+- ✅ **Voix overlay réactions = pattern validé 1.4s post-fanfare**
+
+---
+
+## 2026-07-05 (nuit) — Correction critique : figeages inventés mj-24/25/26/31 + incident postmortem + leçons L-072..076
+
+**Owner** : game-pmo (audit incident + gravure leçons) · Papa Yann (validations)
+
+**Trigger** : Relecture clôture 2026-07-05 révèle incident GRAVE : game-mj-pmo inventa du contenu dans les 4 figées créées plus tôt (mj-24 déduction audio-first inventée, mj-25 idem, mj-26 drag-drop inventé au lieu comptage réel, mj-31 voix Wex inventée). Conséquence : 2 reviewers rendus FAIL invalides. Main agent rétro-corrige commit 7d844cb7.
+
+**Fait (session 2026-07-05 nuit)** :
+
+1. **Incident déclaré et analysé** :
+   - Root cause : game-mj-pmo ne lut PAS l'HTML réel avant figeage
+   - Comportement : « j'invente une mécanique plausible basé sur titre » = hallucinat
+   - Impact : figées fausses → reviewers invalides → code-fix + figé-fix + re-validation
+   - Pattern : une figée = source de vérité pour 6 mois. Chaque ligne 🔒 doit être traçable
+
+2. **Leçons gravées (5 tickets)** :
+   - **L-072** : Processus figeage = vérification obligatoire code réel (lecture HTML AVANT figeage obligatoire)
+   - **L-073** : Anti-pattern inventer mécanique « plausible » (jeu réel ≠ hypothèse)
+   - **L-074** : Figées erronées = feedback reviewers invalide (bottleneck qualité)
+   - **L-075** : Audio multi-pistes → parler coupe MP3, MP3 coupe TTS (exclusivité mutuelle)
+   - **L-076** : Navigation MJ = délégation .back header (pas listener direct)
+
+3. **Retours Papa Yann décision clôture** :
+   - Mj-32 navigation testée VERT (boutons contextuels « Autre dino » + « Colorier un autre ! », retour menu)
+   - Zones tap : min-height 80px uniformisée mj-24/26/28/29/30
+   - Mj-31 : 85M ans T-Rex/Stégosaure sourcé + gratuit (pas gore)
+   - **Idée brainstorm** : « les petites images en live c'est SUPERRRR » (pattern « scène se peuple à chaque bonne réponse » = validé adoré, candidat autres MJ)
+
+4. **Faux positifs reviewers écartés** :
+   - Police Nunito ≠ Fredoka One : Nunito = standard de facto tous dinos, cohérent (changement voulu = décision Papa Yann seulement)
+   - OGG obligatoire : MP3 = universel, règle inadaptée assets ElevenLabs
+   - « Streak interdit » : variable interne jamais affichée = OK
+
+**État final** :
+- ✅ Commit 7d844cb7 déployé prod SUCCESS
+- ✅ Harnais 10/10 VERT (navigation mj-32, 6 MJ test scriptés)
+- ✅ Figées 4 corrigées + leçons 5 gravées
+- ✅ Faux positifs reviewers clarifiés
+
+**Impacte fichiers** :
+- `studio/minijeux/pmo/audit-trail.md` : incident gravé avec analyse cause racine
+- `studio/minijeux/pmo/backlog.md` : L-072..076 + EP-043 (check auto figés sourcées)
+- `studio/minijeux/docs/jeux/figees/mj-24/25/26/31.md` : réécrites + annotations ♻️
+- `site/mj-24/25/26/31/32.html` : code prod (commit 7d844cb7)
+
+**État au reboot** :
+- ✅ **Cycle clôture validations Papa Yann 100% intégré**
+- ✅ **Incident post-mortem gravé + leçons critiques structurées**
+- ✅ **Harnais validation mj-XX stable (10/10 VERT)**
+- 📅 **Prochain : brainstorm pattern "scène peuple en live" → autres MJ (L-031 pattern réutilisable)**
+
+---
+
+## 2026-07-05 (soir) — Figeage 4 MJ dinos (mj-24/25/26/31) + bannissement silhouettes LimeZu + manifest auto-généré
+
+**Owner** : game-mj-pmo (figeage + PIPELINE-MEMORY) · Papa Yann (décisions validées live)
+
+**Trigger** : game-mj-pmo synthèse remontée : 4 fichiers figés créés suite validations Papa Yann (refonte ombres chinoises mj-24/25/26 + voix réelle EL mj-31 + suppression 208 PNG silhouettes LimeZu).
+
+**Fait** (session 2026-07-05 soir) :
+
+1. **Figeage mj-24 « Trouve l'espèce »** : `studio/minijeux/docs/jeux/figees/mj-24.md` créé.
+   - 🔒 Ombres chinoises EXCLUSIVES depuis `img/dinos/ombres/` (canon).
+   - 🔒 Silhouettes LimeZu : **TOTALEMENT INTERDITES** (ordre Papa Yann 2026-07-05 : *« les anciennes silhouettes SUPPRIME-LES »*).
+   - 🔒 Audio dino : MP3 réelle ElevenLabs par défaut, fallback TTS en 404 via manifest `js/dinos-audio-manifest.js`.
+   - Commit 234dee4b : silhouettes supprimées + manifest auto-généré.
+
+2. **Figeage mj-25 & mj-26** : `studio/minijeux/docs/jeux/figees/mj-25.md` + `mj-26.md` créés.
+   - Mêmes décisions : ombres canon, silhouettes bannies, audio MP3 prioritaire.
+
+3. **Figeage mj-31 « Grand voyage du temps »** : `studio/minijeux/docs/jeux/figees/mj-31.md` créé.
+   - 🔒 Période redite à la fin de chaque bonne réponse (apprentissage central).
+   - 🔒 Vignettes dino posées EN LIVE sur frise chrono.
+   - 🔒 T-Rex/Stégosaure jamais croisés (alerte Wex 85M ans).
+   - 🔒 Finale météorite 4 tableaux, zéro gore.
+   - 🔒 Audio dino : MP3 réelle ElevenLabs (commit 234dee4b : voix réelle EL branchée).
+
+4. **Bannissement total silhouettes LimeZu** : 208 PNG `img/dinos/silhouettes/` + `js/dino-silhouettes.js` + `dev-silhouettes.html` supprimés (commit 234dee4b).
+   - Décision Papa Yann 2026-07-05 : *« je ne veux plus les voir !! »* (silhouettes par-famille).
+   - Seule source valide : ombres canon `img/dinos/ombres/`.
+   - Impact : mj-24/25/26 refondus sur ombres chinoises (pédago + aesthetic valeur).
+
+5. **Manifest auto-généré gravé** : `js/dinos-audio-manifest.js` (auto-généré depuis fichiers réels).
+   - Pattern anti-pourrissement : liste listes en dur vs fichiers = risque 404.
+   - Leçon L-071 : manifest auto-généré applicable à tout MJ avec assets conditionnels.
+
+**Leçons remontées** :
+- **L-065** : `const DINOS` top-level JS = liaison lexicale globale (mj-29/mj-32 piégés).
+- **L-066** : Flags Chromium `--allow-file-access-from-files --disable-web-security` OBLIGATOIRES pour canvas file:// (mj-32 1er canvas).
+- **L-067** : PNG silhouettes `_new-ombre/*` = fond transparent, jamais invert (mj-30 bug screenshot).
+- **L-071** : Manifest auto-généré depuis fichiers réels = pattern anti-pourrissement assets.
+
+**Tickets dérivés** :
+- **EP-NEW** : « check auto assets dans run.mjs » — chaque src/href relatif dans HTML doit exister + être tracké git.
+
+**État au reboot** :
+- ✅ **4 MJ figés** (mj-24/25/26/31)
+- ✅ **Bannissement silhouettes LimeZu DÉFINITIF** (208 PNG supprimés)
+- ✅ **Voix réelle EL branchée mj-31**
+- ✅ **Ombres chinoises canon = unique source visuelle dinos**
+- 📅 **En attente** : validation ressenti Papa Yann + générer phrases d'époque MP3 EL post-quota (EP-D-Audio-Recap-Par-Dino ↔ côté dino-pmo)
+
+**Impacte fichiers** :
+- `studio/minijeux/docs/jeux/figees/mj-24/25/26/31.md` : 4 fichiers figés
+- `site/mj-24/25/26/31.html` : code déployé (commit 234dee4b)
+- `js/dinos-audio-manifest.js` : manifest auto-généré
+- `site/js/dino-silhouettes.js` : **SUPPRIMÉ** (commit 234dee4b)
+- `site/dev-silhouettes.html` : **SUPPRIMÉ** (commit 234dee4b)
+- `site/img/dinos/silhouettes/` : **DOSSIER SUPPRIMÉ** (commit 234dee4b, 208 PNG)
+- `studio/minijeux/pmo/backlog.md` : leçons L-065..067, L-071 + ticket check-assets
+
+---
+
 ## 2026-07-05 — Banque sons 64 SFX + Hub v3 plateforme + gravure règle audio silence 250ms
 
 **Owner** : Papa Yann (validation), ElevenLabs MCP (production SFX), game-conseiller (architecture hub)
@@ -42,36 +195,62 @@
 
 ---
 
-## 2026-07-05 — 6 mini-jeux dinos MJ-28..33 livrés (lampe ombres, fabrique noms, taille, temps/météorite, coloriage, memory)
+## 2026-07-05 — 6 mini-jeux dinos MJ-28..33 livrés + sons 64 SFX + Hub v3
 
-**Owner** : game-mj-pmo (orchestration 6 agents parallèles) + game-dev
+**Owner** : game-mj-pmo (orchestration 6 agents parallèles, synthèse remontée 2026-07-05) · Papa Yann (validation sons) · game-conseiller (architecture hub v3)
 
-**Trigger** : livraison batch de mini-jeux à thème dino (EP-041 exploration PISTE, dépendance EP-039 encyclopédie clôture pilote).
+**Trigger** : game-mj-pmo clôture 6 MJ dinos batch (commit f767416a + validation Playwright 6/6) + Papa Yann délivre chantier sons (banque 64 SFX identité Ligne + SFX contextuels ElevenLabs) + Hub v3 « La fusée de Max » complete.
 
-**Fait** (commit f767416a pushé, GitHub Pages) :
-1. **6 MJ dinos déployés** : mj-28 (lampe ombres), mj-29 (fabrique noms étymo), mj-30 (range par taille), mj-31 (frise temps+météorite), mj-32 (coloriage flood fill canvas), mj-33 (memory ombres)
-2. **Harnais Playwright** : 6 specs + catalog.js + assets `_new-ombre/*.png` livrés
-3. **Harnais run.mjs** : flags Chromium `--allow-file-access-from-files --disable-web-security` activés (requis pour canvas drawImage+getImageData en file://)
-4. **Validation** : harnais Playwright 6/6 VERT avant push (E2E + smoke tests)
+**Fait** (session 2026-07-05) :
 
-**Leçons remontées** (à graver en backlog.md) :
-- **L-065** : `const DINOS` top-level JS = liaison lexicale globale (pas window.DINOS) — accès par nom direct (2 agents piégés, mj-29/mj-32)
-- **L-066** : Flags Chromium `--allow-file-access-from-files --disable-web-security` OBLIGATOIRES pour canvas file:// — 1er MJ canvas (mj-32) a validé le besoin
-- **L-067** : PNG silhouettes `_new-ombre/*` = silhouettes noires fond transparent — jamais filter invert ni fond clair derrière (bug mj-30 screenshot visible, harnais vert)
-- **L-068** : 11 dinos sans image couleur → sets NO_HERO/NO_ASSET dans mj-28 + mj-33 (PAS catalog.js) — à retirer quand paléoart générée
+### Bloc 1 : 6 mini-jeux dinos MJ-28..33 (game-mj-pmo)
+1. **Déployés** : mj-28 (lampe ombres), mj-29 (fabrique noms étymo), mj-30 (range par taille), mj-31 (frise temps+météorite), mj-32 (coloriage flood fill canvas), mj-33 (memory ombres) — commit f767416a
+2. **Validation Playwright** : 6 specs + catalog.js + assets `_new-ombre/*.png` — harnais 6/6 VERT avant push (E2E + smoke)
+3. **Technique** : run.mjs flags Chromium `--allow-file-access-from-files --disable-web-security` activés (canvas drawImage+getImageData file:// support)
+4. **Correction d'état** : 11 dinos sans image couleur — filtres NO_HERO/NO_ASSET retirés (commit 941faa30 "images 404 en prod" promotions assets). État RÉSOLU, L-068 désormais archive historique.
+
+### Bloc 2 : Banque sons 64 SFX + page écoute
+1. **Déployés** : `site/sounds/ui/` (10 sons identité) + `site/sounds/fx/` (54 SFX : victoires, rigolo, dinos, animaux, véhicules, instruments, pièces, espace) — ~900 crédits ElevenLabs text_to_sound_effects
+2. **Page d'écoute** : `site/dev-sounds-ui.html` live
+3. **Règle FIGÉE** : tout SFX/MP3 destiné au site DOIT avoir ~250ms silence en tête (réveil sortie audio mobile/Bluetooth). Commande : `ffmpeg -y -i in.mp3 -af "adelay=250:all=1" -codec:a libmp3lame -b:a 128k out.mp3`. Gravée dans `memory/rules.md` § Règles Audio.
+4. **État** : pas encore branchés dans les jeux — en attente validation son-par-son Papa Yann
+
+### Bloc 3 : Hub v3 « La fusée de Max »
+1. **Déployé** : `site/index3.html` — planètes layout vertical, séquence vol complète (décollage fumée, arc incliné, traînée, atterrissage posé globes)
+2. **Comparaison 3 hubs live** : `/` (ancien) · `/index2.html` (bus) · `/index3.html` (planètes)
+3. **État** : validé 5 screenshots Playwright (paysage/portrait/3 panels), zéro erreur console
+
+**Leçons remontées** :
+- **L-065** : `const DINOS` top-level JS = liaison lexicale globale — accès par nom direct (2 agents piégés mj-29/mj-32)
+- **L-066** : Flags Chromium `--allow-file-access-from-files --disable-web-security` OBLIGATOIRES pour canvas file:// — 1er MJ canvas validé besoin
+- **L-067** : PNG silhouettes `_new-ombre/*` = fond transparent noir — jamais filter invert ni fond clair (bug mj-30 screenshot détecté)
+- **L-069** : SFX/MP3 audio = 250ms silence en tête (réveil sortie audio mobile)
+
+**Tickets dérivés** :
+- **EP-NEW** : « check auto assets dans run.mjs » — chaque src/href relatif dans HTML doit exister + être tracké git (4 MJ 404 prod historiquement)
+
+**Alertes déploiement** :
+- 🟡 **Artefact 545 Mo** (limite 1 Go) : audio/ 191M + paleoart/ 122M déployés. Ticket « régime minceur artefact » (webp, bitrate audio) à anticiper.
 
 **État au reboot** :
 - ✅ **MJ-28..33 déployés** (29 actifs total, up from 23)
+- ✅ **64 SFX déployés + page écoute live**
+- ✅ **Hub v3 livré (3 interfaces comparaison live)**
 - ✅ **Specs Playwright 6/6 VERT** (harnais validé avant push)
-- ✅ **PROCESS 6 agents parallèles efficace** : conception + dev parallèles, merge rapide, 0 blocker
-- 📅 **En attente** : validation ressenti Papa Yann (GitHub Pages live) + éventuelle figée si approved
-- ❓ **Paléoart dinos manquantes** : 11 dinos sans image couleur — ticket dérivé à couvrir par dino-pmo
+- ✅ **PROCESS 6 agents parallèles efficace**
+- ✅ **État dinos CORRIGÉ** : 11 sans image = RÉSOLU (filtres retirés)
+- ✅ **Règle audio FIGÉE + gravée**
+- 📅 **En attente** : validation ressenti Papa Yann (jeux + sons) + branchement SFX effectif dans jeux + GO images 6 planètes
 
-**Impacte** :
+**Impacte fichiers** :
 - `studio/minijeux/memory/state.md` : count MJ 23→29
-- `studio/minijeux/pmo/backlog.md` : 4 leçons L-065..068 + ticket paléoart manquante
-- `site/mj-*.html` : 6 fichiers nouveaux
-- `site/js/catalog.js` : 6 entrées dinos
+- `studio/minijeux/memory/rules.md` : Règles Audio (silence 250ms)
+- `studio/minijeux/pmo/backlog.md` : leçons L-065..067, L-069 + ticket check-assets
+- `site/mj-*.html` : 6 fichiers MJ-28..33
+- `site/sounds/ui/*.mp3` : 10 fichiers identité
+- `site/sounds/fx/*.mp3` : 54 fichiers SFX
+- `site/index3.html` : hub v3 planètes
+- `site/dev-sounds-ui.html` : page écoute
 
 ---
 

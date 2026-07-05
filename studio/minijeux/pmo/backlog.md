@@ -68,6 +68,21 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 ### L-064 – Apatosaure bi-nom (Apatosaure/Brontosaure) = honnêteté étymologie
 **Dinos (2026-06-01)** : 2 noms historiques pour 1 dinosaure. Plutôt que choisir, expliciter ("les savants l'appelaient Brontosaure, maintenant c'est Apatosaure"). **Leçon** : science c'est corriger. Enfants 3.5-4 ans acceptent "on a changé d'avis" si clair.
 
+### L-065 – `const DINOS` top-level JS = liaison lexicale globale
+**MJ-28..33 (2026-07-05)** : 2 agents piégés (mj-29 fabrique noms, mj-32 coloriage). Erreur de référence `DINOS is not defined` → cause : script classique utilise `const DINOS` en scope module, pas `window.DINOS`. Fix : hoister `const` ou utiliser `window.DINOS = {...}`. **Leçon** : pour partage données inter-scripts vanilla, hoister à niveau global AVANT premier usage. Valider avec `console.log(window.DINOS)` au démarrage.
+
+### L-066 – Flags Chromium `--allow-file-access-from-files --disable-web-security` = OBLIGATOIRES file://
+**MJ-32 (2026-07-05)** : 1er MJ canvas (coloriage flood fill). Bug : `canvas.drawImage()` + `getImageData()` en file:// → CORS même domaine. Fix (run.mjs) : flags Chromium activés. **Leçon** : tout test canvas local SANS serveur = requiert ces flags. Intégrer dans harnais par défaut (Playwright + CLI e2e).
+
+### L-067 – PNG silhouettes `_new-ombre/*` = fond transparent, jamais invert
+**MJ-30 (2026-07-05)** : PNG silhouettes dinos (`_new-ombre/edmontonia.png`, etc.) = silhouettes noires + fond transparent 24-bit. Bug mj-30 : rendu screenshot unique révélait silhouette cassée (fond clair par-dessus au lieu de transparent). Harnais Playwright VERT, screenshot manuel Papa Yann révèle. **Leçon** : pour tout asset PNG transparent, toujours vérifier MANUELLEMENT au moins 1 screenshot (canvas + layer stacking) AVANT Papa Yann teste. Automatisation insuf.
+
+### L-068 – NO_HERO/NO_ASSET sets = dinos sans image, rangés en mj-xx.html
+**MJ-28 + MJ-33 (2026-07-05)** : 11 dinos sans image couleur finale (edmontonia, torosaurus, pentaceratops, mammuthus, smilodon, megatherium, paraceratherium, glyptodon, aenocyon, coelodonta, titanis). Plutôt que casser le rendu, sets NO_HERO/NO_ASSET posés dans mj-28.html + mj-33.html (PAS dans catalog.js). **Leçon** : identifier les trous de contenu AVANT déploiement, poser des placeholders clairs (pas des nulls silencieux). À retirer quand paléoart régénérée par pôle DINO.
+
+### L-069 – SFX/MP3 audio = 250ms silence en tête (réveil sortie audio mobile)
+**Sons UI (2026-07-05)** : banque 64 SFX ElevenLabs générée (victoires, rigolo, dinos, animaux, véhicules, instruments, pièces, espace, divers). Déploiement GitHub Pages → test iPad/tablette Bluetooth révèle attaque audio coupée (100-300ms réveil sortie audio). **Fix prouvé** : `ffmpeg -af "adelay=250:all=1"` ajoute 250ms silence en tête (commit 79212a26). **Règle gravée** : toute future production SFX (ElevenLabs text-to-sound-effects ou autre) DOIT passer par ce traitement AVANT commit `site/sounds/`. Commande canonique dans `memory/rules.md` § Règles Audio. Vérifier : quelques secondes silence → attaque nette (pas coupure).
+
 ---
 
 ## Épics

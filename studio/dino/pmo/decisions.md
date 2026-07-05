@@ -282,6 +282,23 @@ Menus en voix ElevenLabs (narrateur_h + narrateur_f pour le voyage), accroches *
 
 ---
 
+## 2026-07-05 (clôture nuit) — DEC-TEMPS-PROFOND-001 + DEC-AUDIO-COMPLET-001 : 2 caps figés
+
+**Contexte** : fin de session : validation Papa Yann mj-31 « Voyage » + gravures audio des 3 pépites.
+
+**DEC-TEMPS-PROFOND-001 (cap figé)** :
+- ✅ **Encyclopédie dino = temps profond honnête** (double registre). Contenu narré = vrais chiffres (66 Ma T-Rex, 150 Ma Stégosaure). UI affiche calculs dérivés (« 85 Ma d'écart ») tant que fidèles dinos-data.js. Pattern : sourcer TOUS les chiffres temps depuis `dates_ma` par dino, jamais inventer.
+- **Impact** : toute feature complexe-temps (timeline, quiz chrono, frise) hérite du pattern. Gravure : L-D-24 backlog.md.
+
+**DEC-AUDIO-COMPLET-001 (cap figé mj-31)** :
+- ✅ **Encyclopédie dino = audio 100 % ElevenLabs** (0 TTS navigateur). Dernière phase : 60 MP3 récit-époque (3-5 sec). Livrable post-quota EL (~9-12 juillet), puis **figé** (audio complète, identité sonore MaxPlay univers).
+- **Impact** : EP-D-Audio-Recap-Par-Dino prioritaire immédiat après reset quota. Blocage temporaire, déclencheur clairement daté.
+- **Gravure** : L-D-25 backlog.md + ticket backlog existant `EP-D-Audio-Recap-Par-Dino` (priorité moyenne → 🔴 HAUTE après 9 juillet).
+
+**Raison** : clôture logique — deux axes encyclopédie (temps + son) valident et figent patterns durables. Aucune régression.
+
+---
+
 ## Questions ouvertes
 - **Q-DINO-12** (2026-06-19) : **UI galerie paléoart** — faut-il implémenter galerie 5 scènes (enfant/manger/écosys/paris/fun-fact) dans la fiche dino, ou garder 1 seule vignette ? (Décision produit à trancher Papa Yann.)
 - **Q-DINO-1** : faut-il faire apparaître « Ptérosaures » de façon encore plus visible (ex sous-titre dans la fiche des 2 ptérosaures) ? (soulevé 2026-06-03)

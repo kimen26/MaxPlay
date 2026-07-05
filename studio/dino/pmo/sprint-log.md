@@ -2,6 +2,45 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-07-06 — VOCAL DINO NOMS : 60 MP3 voix narrateur_h
+
+**Livré** :
+- ✅ **60 MP3 noms de dino** (`site/audio/dinos/noms/<id>.mp3`, ex `tyrannosaurus.mp3`) — voix narrateur_h, modèle eleven_v3, stability 0,4, tag v3 [excited] (ton annonce-révélation jeux), langue fr, padding 250 ms tête (L-D-??? cross-appliqué depuis pôle JEU).
+- ✅ **Cénozoïques noms surnom FR + latin** : Mammuthus = « Le Mammouth laineux » · Aenocyon = « Le Loup sinistre ! Aenocyon ! » · Coelodonta = « Le Rhinocéros laineux ! Coelodonta ! » (Smilodon = nom seul, comme les autres) · Titanis = « Titanis ! L'oiseau-terreur ! ». Autres 56 = nom genre solo (ex « Tyrannosaurus ») + sauf Tyrannosaurus = « Tyrannosaurus Rex ! » (connu Max).
+- ✅ **Déploiement** : `site/audio/dinos/noms/{id}.mp3`, 60 fichiers, HTTP 200 GitHub Pages vérifié.
+- ✅ **Usage cible** : mini-jeux mj-24..27, mj-28..33 (remplace TTS navigateur par ces MP3, identité sonore cohérente Wex/narrateur).
+- ✅ **Coût EL** : ~1 600 crédits (reste ~800 avant reset ~10 juillet → plus génération audio masse jusqu'au reset).
+
+**Incident à logger** : commit c6e2c7a4 a emporté 4 fichiers narration stagés par session concurrente (ajouts bénins, rien perdu) — L-D16 REX sessions concurrentes rappelée.
+
+**État** :
+- ✅ 60 dinos noms vocal === ID stable (frontière autoring/produit OK)
+- ✅ Audio encyclopédie sub-complète (51 segments × 5 blocs = 255 MP3 + 60 noms = 315 MP3 total déployé)
+- ⏳ Attente quota EL reset ~10 juillet pour EP-D-Audio-Recap-Par-Dino (60 récit-époque 3-5 sec)
+
+---
+
+## 2026-07-05 (suite nuit CLÔTURE) — TEMPS PROFOND + AUDIO RÈGLES GRAVÉES + 3 LEÇONS FUTURES
+
+**Papa Yann retour validation mj-31 « Voyage »** : « il a adoré, il écoute attentivement, ça s'enchaîne bien avec les images ». Pattern **frise qui se peuple** ✅ validé ; idée ouverte « à réfléchir pour d'autres endroits » (pôle JEU brainstormera).
+
+**3 pépites PMO gravées fin session** :
+
+1. **Temps profond appliqué honnêtement (L-D-24 nouveau)** — mj-31 affiche « le Stégosaure (~150 Ma) et le T-Rex (~66 Ma) = 85 millions d'années d'écart » (calcul vrai depuis dinos-data.js). Encyclopédie = double registre : (A) chaque dino date vraie (66 Ma, 150 Ma) dans **contenu narré**, (B) UI affiche **calculs dérivés temporels** (« écart », « avant/après ») honnêtes. Pattern pour toute feature temps-complexe. Gravure : `decisions.md` + `backlog.md` (L-D-24).
+
+2. **Règle audio produit gravée figées (anti-chevauchement observé mj-31)** — Papa Yann a noté « chevauchement son entendu ». Avant clôture : **aucune règle n'interdisait 2 voix simultanées**. Fix appliqué mj-24..31 : tout play MP3 dino fait `TTS.cancel()`, tout TTS fait `DINO_AUDIO.pause()` — **1 voix à la fois uniquement**. Gravure : `figees/encyclopedie.md` § AUDIO § nouveau « UN SEUL SON À LA FOIS ».
+
+3. **Ticket EP-D-Audio-Recap-Par-Dino (vrai défi futur clôturant TTS)** — mj-31 demande 60 MP3 « phrase d'époque » (3-5 sec récit dino narrant son époque). Dernier TTS navigateur remplacé = **audio encyclopédie COMPLÈTE** (320 MP3 EL totaux = 0 TTS). Gravure : L-D-25 (nouveau) + ticket backlog (post-quota EL ~9 juillet).
+
+**État final clôture** :
+- ✅ Temps profond validé in-app (mj-31 frise)
+- ✅ Audio règles anti-chevauchement figées + appliquées (mj-24..31 vert)
+- ✅ Ticket EP-D-Audio-Recap créé (clôture TTS = cap figé)
+- ✅ Leçons L-D-24/L-D-25 à graver dans backlog
+- ✅ Pattern « frise qui se peuple » validé (réutilisable)
+
+---
+
 ## 2026-07-05 — AUDIT VISUEL FINAL 60 DINOS + RÉGÉNÉRATION 8 ESPÈCES FAUSSES + EP-D25 CLÔTURÉ
 
 > **MISE À JOUR fin de journée (21h55)** : l'Amargasaurus (les 2 rangées d'épines, seul point resté en attente) a été **finalisé sur ChatGPT** (quota resetté) — Grok avait échoué 3× sur ce trait, **ChatGPT a rendu les DEUX rangées parallèles** correctement (hero + ecosysteme, commit f98f6577). EP-D25 **totalement clos**. Aussi ce jour : bug câblage DINO_EXTRAS (13 dinos à 1 image → 5, commit bc8e9fc1), 9 headshots mégafaune manquants générés + câblés (893f73f3), Smilodon refait 2× (puma → colosse trapu, 9686d673), orphelin + clé fantôme nettoyés (c64e90d3). **Nouvelles leçons** : Grok = volume mais bute sur les traits fins répétés → ChatGPT pour la précision ; le mot « crâne » dans un prompt headshot sort de l'os à nu sur les mammifères poilus (dire « animal vivant, fourrure intacte, gueule fermée »).

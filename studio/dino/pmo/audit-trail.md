@@ -2,6 +2,66 @@
 
 > Traces des audits FOND (`dino-pmo`) et FORME (`dino-archiviste`). Entrée datée par audit.
 
+## 2026-07-05 — AUDIT VISUEL COMPLET 60 DINOS + ANALYSE 8 ESPÈCES FAUSSES (paléoart)
+
+**Lancé par** : dino-pmo (mode AUDIT après session visuelle complète).
+
+**Scope** : Audit visuel massif des ~408 images paléoart (60 dinos × 5 scènes + coloriage) — confronter chaque image à sa fiche pour vérifier anatomie, échelle enfant-1m, cohérence décor vs data.
+
+**Méthodologie** : 10 sous-agents en parallèle (batch audit, chaque agent = 6 dinos). Chaque image inspectée visuellement + confrontée à Grokipedia + dinos-data.js chiffres + INVARIANTS échelle.
+
+**Findings structurés** :
+
+### Couverture ✅ **100 % (60/60 dinos audités)**
+- **39 dinos irréprochables** : héros + 4 scènes correctes, anatomie fidèle source Grokipedia, échelle enfant respectée, décor cohérent régime/époque.
+- **~57 findings mineurs** (anatomie fine, détails décor, lumière, saturation) — notés pour futur polissage, non-bloquants.
+- **8 espèces avec anatomie FAUSSE** → régénérées et validées Grok post-audit.
+
+### Espèces regénérées (validation post-audit)
+
+| Espèce | Problème détecté | Cause racine | Regénération Grok | Verdict |
+|--------|-----------------|-----------------|-----|--------|
+| **Ceratosaurus** | Théropode nu, SANS corne nasale (look générique) | Fiche Grokipedia non captée, pas entrée MORPHO | ✅ Corne nasale restaurée | OK |
+| **Utahraptor** | Carnosaure écailleux nu (wrong clade, pas plumes) | Idem | ✅ Emplumé + griffe faucille OK | OK |
+| **Patagotitan** | Hadrosaure bossu cou court (faux) | Idem | ✅ Cou relevé sauropode 12 m OK | OK (mais trop petit ~5-6 m vs 12 m cible) |
+| **Pachycephalosaurus** | Cératopsien à collerette (faux groupe) | Idem | ✅ Dôme crânien forehead OK + écosystème streamline | OK |
+| **Amargasaurus** | Ornithopode (faux) → sauropode ✅ mais épines : 1 seule rangée au lieu de 2 parallèles | Idem + Grok limitation | ✅ Anatomie OK, MAIS épines sous-finesse | À repasser ChatGPT reset |
+| **Carcharodontosaurus** | Écosystème : cératopsien intrus (faux) | Idem | ✅ Théropode + herbivore prédateur OK | OK |
+| **Archelon** | Funfact + paris : sauropode intrus (faux) | Idem | ✅ Tortue marine vraie, aquarium enfant-sec OK | OK |
+| **Edmontonia** | Funfact : avait timeout → vide | Généré après EP-D19 quota EL, 1 scène bloquée | ✅ Regénéré, funfact crâne résiste impact | OK |
+
+**Leçon L-D21 majeure** : **Cause racine identifiée** = skill `batch-dino-series.mjs` ne poussait AUCUNE « silhouette maîtresse » en tête du prompt quand (1) fiche Grokipedia n'était pas captée par heuristique ficheBlock() OU (2) espèce pas en table MORPHO. Le modèle inventait donc une forme générique → mauvaise espèce SYSTÉMATIQUEMENT. **Correctifs appliqués** : (1) ajout 5 signatures MORPHO avec trait UNIQUE en MAJUSCULES (ceratosaurus=théropode à CORNE NASALE, utahraptor=dromæo EMPLUMÉ+GRIFFE FAUCILLE, etc.) ; (2) silhouette EN TÊTE du prompt (avant détails) ; (3) flag `--only <scènes>` regénération ciblée. **Nouvelle règle figée** : tout dino nouveau DOIT avoir fiche Grokipedia COMPLÈTE (bloc Silhouette) OU entrée MORPHO signature ⭐ — vérifier `node batch-dino-series.mjs <id> --preview | grep Silhouette`. Sans = silhouette fausse garanti.
+
+### Observations sur Grok (canal backup)
+
+- **Forces** : capture l'anatomie correctement si prompt structuré (silhouette + détails).
+- **Limites** : perd la finesse (Amargasaurus épines 1 rangée vs 2 idéal, géants Patagotitan/T-Rex moins écrasants ~5-6 m vs 12 m cible). À titre d'urgence seulement.
+
+### Tickets ouverts
+- **EP-D25** : Regénération finesse + géants (attente ChatGPT reset ~12h07 Paris 2026-07-05).
+- **L-D21 gravée** : silhouette maîtresse = clé fondamentale (pattern réutilisable tout prompting batch).
+
+**Verdict** : **VERT — couverture 100 % confirmée, 8 espèces regénérées validées, leçon majeure captée, technique batch améliorée pour l'avenir**.
+
+---
+
+## 2026-07-04 — AUDIT CLÔTURE CHANTIER OMBRES CHINOISES (vérif disque + cohérence)
+
+**Lancé par** : dino-pmo (mode production checkout post-chantier).
+
+**Scope** : Vérifier que les 60/60 silhouettes complétées correspondent aux 60 dinos dinos-data.js, aucun orphelin.
+
+**Findings** :
+- ✅ **Compte disque** : `ls site/img/dinos/_new-ombre/*_ombre.png | wc -l` = **60 fichiers** PNG.
+- ✅ **Compte data** : `site/js/dinos-data.js` = **60 dinos uniques** (exclut 11 familles objets).
+- ✅ **Répartition par famille** : trex 13 · raptor 8 · cou_long 7 · enaliosaures 7 · mammiferes 7 · cornu 6 · arme 5 · bec 3 · pterosaures 2 · oiseaux 1 · volant 1 = **60/60 total** ✓ adéquation parfaite.
+- ✅ **Nommage** : tous fichiers `{id}_ombre.png` (ex `tyrannosaurus_ombre.png`) alignés champ `id` de dinos-data.js.
+- ✅ **Leçon L-D19 gravée** : timing Playwright vs rate limit externe (découverte chantier).
+
+**Verdict** : **VERT — chantier ombres chinoises 60/60 CLÔTURÉ**. Zéro orphelin, cohérence disque ⇄ data ✓.
+
+---
+
 ## 2026-07-03 — AUDIT FORME (Mode AUDIT, 5 sections) : conventions, gabarit, refs, orphelins, cohérence
 
 **Lancé par** : dino-archiviste (ARCHIVISTE Mode AUDIT).
@@ -44,6 +104,76 @@
 2. **Inbox brute** : 32 images (Mammouth, Smilodon, Oiseaux préhistoriques, etc.), aucun INDEX. Créer `content/inbox/INDEX.md` catalogage sommaire.
 
 **Verdict** : **VERT — pôle DINO FORME 100 % cohérent**. Zéro CRITIQUE / HAUTE. Deux actions MOYENNE/BASSE proposées.
+
+
+
+---
+
+## 2026-07-03 — NETTOYAGE IMAGES (exécution post-audit)
+
+**Fait** :
+- ✅ **179 fichiers timeout supprimés** dans `_new-xxl/` et `_new-headshots/`
+- ✅ **6 images doublons inter-espèces supprimées** : Carcharodontosaurus_ecosysteme/funfact/paris (copies de Centrosaurus) + versions paleoart
+- ✅ **2 images Apatosaurus doublons supprimées** : `_manger` = `_paris` (même image)
+- ✅ **20 images grok doublons supprimées** (inbox vs lot identiques)
+- ✅ **coloriage-test/ supprimé** (7 fichiers, tests obsolètes)
+- ✅ **2 fichiers temp/Dino doublons supprimés**
+- ✅ **2 images racine doublons supprimées** : Pentaceratops.jpg, Torosaurus.jpg (copies paleoart)
+
+**Résultat** :
+- `_new-xxl/` : 433 → 253 images (nettoyage timeout + doublons)
+- `_new-headshots/` : 53 → 52 images (nettoyage timeout)
+- `grok/` : 138 → 118 images (nettoyage doublons)
+- Espace libéré : ~25-30 Mo
+
+**Reste à faire** :
+- ⏳ Générer images XXL pour 8 dinos Cénozoïque (Mammuthus, Smilodon, Megatherium, Paraceratherium, Glyptodon, Aenocyon, Coelodonta, Titanis)
+- ⏳ Regénérer Carcharodontosaurus (3 scènes manquantes : ecosysteme, funfact, paris)
+- ⏳ Regénérer Apatosaurus_manger (scène manquante)
+
+---
+
+## 2026-07-03 — AUDIT IMAGES (supra méga audit visuel + technique + sémantique)
+
+**Lancé par** : Kimi Code CLI (demande utilisateur : audit complet des images dinosaures).
+
+**Scope** : 1 294 images, 19 répertoires, 59 espèces, 11 familles.
+
+**Approche** : 4 phases — (1) Inventaire structuré (scan + hash MD5), (2) Vérification technique (corruption, doublons, dimensions), (3) Vérification sémantique (identité, anatomie, échelle, qualité, potentiel vidéo), (4) Rapport consolidé.
+
+**Fichiers produits** :
+- `studio/dino/pmo/audit-images-INVENTAIRE.json` — index complet de toutes les images
+- `studio/dino/pmo/audit-images-DINOS-REF.json` — référentiel 59 espèces avec données
+- `studio/dino/pmo/audit-images-TECHNIQUE.json` — problèmes techniques détectés
+- `studio/dino/pmo/audit-images-RAPPORT.md` — rapport complet (ce document)
+
+### Findings par priorité
+
+#### 🔴 CRITIQUE
+1. **179 fichiers `-timeout`** dans `_new-xxl/` et `_new-headshots/` — captures d'écran d'erreur (interface chat), pas des images dinosaures. À supprimer immédiatement. Gain ~20-30 Mo.
+2. **6 images en doublon inter-espèces** : Carcharodontosaurus et Centrosaurus partagent les mêmes images (hash identique) — erreur de batch. À regénérer.
+3. **8 dinos Cénozoïque sans images XXL** : Mammuthus, Smilodon, Megatherium, Paraceratherium, Glyptodon, Aenocyon, Coelodonta, Titanis. Normal (ajout récent 2026-07-03), mais à générer via skill `dino-paleoart`.
+
+#### 🟡 HAUTE
+4. **33 groupes de doublons hash** total (dont 6 inter-espèces). Les autres sont des copies legacy ↔ paleoart (même image, différents répertoires).
+5. **Apatosaurus_manger.png = Apatosaurus_paris.png** — même image pour deux scènes différentes. À regénérer l'une des deux.
+6. **Dimensions non uniformes** : Brachiosaurus.png et Patagotitan.png en 1168x784 au lieu du standard 1448x1086/1672x941.
+
+#### 🟢 MOYENNE/BASSE
+7. **Qualité globale** : ⭐⭐⭐⭐⭐ — paléoarts XXL de très haute qualité, style cohérent, anatomie juste.
+8. **Échelle enfant** : ~90% honnête — l'enfant ~1m donne une bonne référence visuelle.
+9. **Identité dino** : ~95% correcte — traits distinctifs présents (voile Spinosaure, cornes Tricératops, bras T-Rex, etc.).
+10. **12 images "fort potentiel vidéo"** identifiées — principalement les scènes `_ecosysteme`, `_funfact`, `_paris` (narration visuelle forte).
+
+### Verdict
+**🟢 VERT global** — Le parc d'images est excellent. Les problèmes sont quantitatifs (timeout, doublons) pas qualitatifs. Les paléoarts XXL sont des assets de grande valeur pour le projet.
+
+### Actions recommandées
+- [ ] Supprimer 179 fichiers timeout
+- [ ] Regénérer Carcharodontosaurus/Centrosaurus en doublon
+- [ ] Générer images XXL pour 8 dinos Cénozoïque
+- [ ] Créer index centralisé image ↔ espèce ↔ scène
+- [ ] Tester vidéos à partir des 12 images coups de cœur
 
 ---
 

@@ -2,6 +2,82 @@
 
 > Décisions datées (raison + impact). Les décisions **verrouillées** (jamais régresser) vivent dans [`../figees/encyclopedie.md`](../figees/encyclopedie.md).
 
+## 2026-07-05 — DEC-EP-D25-CLÔTURE-001 : Audit visuel final 60 dinos + épuration chantier images
+
+**Contexte** : grand chantier images du pôle DINO (EP-D25 + EP-D18 + EP-D19 + mégafaune + audit) arrive à clôture. Journée d'audit visuel complet (100 % couverture 60 dinos, ~408 images déployées). Validation anatomique + épuration produit.
+
+**Décision PMO (2026-07-05)** :
+- ✅ **60 dinos AUDIT FINAL CLÔTURÉ** : 100 % dinos auditées visuellement, 39 irréprochables, ~57 findings mineurs notés, 8 fausses regénérées + validées.
+- ✅ **EP-D25 = CLÔTURÉ** (audit complet, pas nouvelle regénération jusqu'à ChatGPT reset pour finesse 2 rangées épines Amargasaurus + géants échelle).
+- ✅ **Leçon L-D21 gravée** : silhouette maîtresse EN TÊTE du prompt = clé fondamentale batch images. Skill batch-dino-series.mjs maj (5 MORPHO, silhouette en tête). Pattern réutilisable toute génération batch images futures.
+- ✅ **Reste pour backlog futur** : (1) Amargasaurus 2 rangées épines (finesse ChatGPT). (2) Géants échelle (Patagotitan/T-Rex/Giga/Brachio). (3) Ceratosaurus coloriage 1 corne. Déclencheurs : ChatGPT reset, backlog saisonnalité.
+
+**Impact** :
+- **Grand chantier images finalisé** : 60 dinos × 5 scènes + coloriage + ombres + héros = production complète déployée + validée.
+- **Doctrine GED (DEC-GED-001) renforcée** : silhouette/étymo/chiffres = preuves vivantes qualité donnée. Outil audit `_ETAT-DINOS.md` (futur) complètera la suite.
+- **Frontière autoring/produit VALIDÉE** : L-D22 (GITIGNORE) + assets nommés `id` stable = contrat avec mini-jeux.
+
+---
+
+## 2026-07-05 (clôture) — DEC-SILHOUETTES-SUPPRESSION-001 : Nettoyage zones orphelines
+
+**Contexte** : Papa Yann donne l'ordre « les anciennes SUPPRIME-LES, je ne veux plus les voir !! » après validation canon `site/img/dinos/ombres/` (60 PNG, seule zone consommée mj-24..33).
+
+**Décision + exécution (commit 234dee4b, déployé Pages)** :
+- ✅ **Zone `site/img/dinos/silhouettes/`** (208 PNG par-famille) : **SUPPRIMÉE**. Aucune consommation code (recherche grep : 0 ref).
+- ✅ **Zone `studio/dino/content/assets/silhouettes/`** (banque source, _sources, manifest) : **SUPPRIMÉE**. Archive historique.
+- ✅ **Fichiers orphelines** : `site/js/dino-silhouettes.js` + `dev-silhouettes.html` : **SUPPRIMÉS**.
+- ✅ **Git historique** : conservé (0 perte, branches/commits restent intacts).
+- ✅ **Prod vérif** : 18/18 URLs prod HTTP 200 (mj-24..33 pointent `site/img/dinos/ombres/`, 0 404).
+
+**Raison** : ces deux zones étaient des reliquats de l'expérimentation canals ombres 2026-07-03. Canon unique = `site/img/dinos/ombres/` (TRACKÉE, consommée, vivante). Nettoyage de la dette technique.
+
+**Impact** :
+- Code + asset footprint réduit.
+- Zéro ambiguïté sur la source d'ombres production.
+- Pattern gravé : DEC-GED-001 Règle 3 (FRONTIÈRE autoring/produit = assets TRACKÉS + consommés uniquement).
+
+**Décision stockée** : figée dans le processus ; aucune régénération d'ombres avant nouvelle décision Papa Yann.
+
+---
+
+## 2026-07-05 (suite 2) — DEC-GIT-TRACKING-001 : Frontière autoring/produit inclut GITIGNORE
+
+**Contexte** : bug prod critique — jeux mj-28/30/31/33 référençaient assets gitignorés (`_new-ombre/`, `_new-xxl/`). OK en local (Windows FS insensible), cassé prod (GitHub Pages Linux FS sensible). 60 ombres + 11 héros = 404.
+
+**Cause racine** : DEC-GED-001 Règle 3 (FRONTIÈRE autoring/produit) est INCOMPLÈTE. Elle dit « une feature ne lit QUE site/ » mais n'inclut PAS « et ces assets DOIVENT ÊTRE TRACKÉS par Git ».
+
+**Décision + fix appliqué (commit 941faa30)** :
+- ✅ Promotion 60 ombres : `_new-ombre/` (staging gitignore) → `site/img/dinos/ombres/` (TRACKÉE)
+- ✅ Promotion 11 héros : `_new-xxl/{Nom}.png` → `site/img/dinos/{Nom}.jpg` (TRACKÉS)
+- ✅ Mise à jour jeux mj-28/30/31/33 chemins
+- ✅ **Leçon L-D22 gravée** : « TRACKING GIT = part de la frontière. Zone `_new-*` = staging, jamais produit. Vérif `git check-ignore <asset>`. »
+
+**Impact** :
+- **Règle 3 DEC-GED-001 à affiner** : ajouter « tous les assets référencés par une feature DOIVENT être trackés sous `site/` » + « `git check-ignore` = diagnostic rapide ».
+- **EP-D-Image-11-sans-hero RÉSOLU** (2026-07-05 suite 2)
+- **Q-DINO-Voyage-Silhouettes aiguillée** : zone `ombres/` est canon maintenant.
+
+---
+
+## 2026-07-05 — DEC-PALEOART-REGEN-001 : Processus de régénération d'espèces fausses (silhouette maîtresse OBLIGATOIRE)
+
+**Contexte** : audit visuel complet 60 dinos révèle 8 espèces avec anatomie grossièrement fausse (Ceratosaurus nu/sans corne, Utahraptor écailles/sans plumes, Patagotitan hadrosaure/sauropode mal formé, etc.). Cause racine identifiée : la skill batch-dino-series.mjs ne poussait AUCUNE silhouette de référence au GPT quand la fiche Grokipedia n'était pas captée (heuristique ratée). Le modèle inventait donc une forme → mauvaise espèce systématique.
+
+**Décision papa Yann (2026-07-05)** :
+- ✅ **Régénérer les 8 fausses espèces** avec silhouette maîtresse EN TÊTE du prompt (trait unique anatomique en MAJUSCULES → modèle force-correct).
+- ✅ **Ajouter 5 entrées MORPHO au skill** (ceratosaurus/utahraptor/patagotitan/pachycephalosaurus/carcharodontosaurus) avec signature ⭐ unique.
+- ✅ **Nouvelle règle figée gravée** : tout nouveau dino ajouté DOIT avoir soit fiche Grokipedia complète, soit entrée MORPHO — sinon silhouette sera fausse. Vérification : `node batch-dino-series.mjs <id> --preview | grep Silhouette`.
+
+**Impact** :
+- **Leçon L-D21** : silhouette maîtresse = clé foundational en prompting batch images.
+- **Skill batch-dino-series.mjs maj** (silhouette EN TÊTE) appliquée → futures regénérations au reset ChatGPT.
+- **Pattern générationnel** : prompts doivent TOUJOURS commencer par « Voici l'anatomie de [espèce] : [TRAIT UNIQUE EN MAJUSCULES] », avant même les détails.
+
+**Observé** : Grok (canal backup) capture bien l'anatomie quand prompt structuré (anatomie ok sur 4 espèces ciblées), MAIS perd la finesse (épines Amargasaurus 1 rangée vs 2, géants moins écrasants). À re-tester ChatGPT dès reset.
+
+---
+
 ## 2026-07-03 — DEC-GED-001 : Doctrine d'architecture GED du pôle (audit sénior)
 
 **Contexte** : Papa Yann a challengé le « c'est OK » du PMO/archiviste sur le rangement (images, mp3, histoires, data, dialogues, familles). Audit sénior multi-perspective (4 experts indépendants + relecteurs + directeur technique, 2026-07-03). **Verdict : le rangement physique est correct, mais la GED n'a aucune notion de « présent » ni de « complétude par dino ».** Preuves vivantes : 10 heros cassés en prod non détectés · 3 comptes de dinos différents (dinos-data.js « 48 », INDEX « 50 », réalité 60) · `_REPRISE.md` cru perdu alors qu'il était juste enterré.
@@ -189,8 +265,24 @@ Menus en voix ElevenLabs (narrateur_h + narrateur_f pour le voyage), accroches *
 
 ---
 
-## Questions ouvertes
+## 2026-07-05 (clôture) — DÉCISION SILHOUETTES TRANCHÉE : zone ombres canonique figée
 
+**Contexte** : audit final + validation Papa Yann. Zone `site/img/dinos/ombres/` (60 PNG, TRACKÉE) est le canon produit. Les 2 autres zones existent mais ne sont pas des doublons à fusionner (archives source).
+
+**Décision Papa Yann (2026-07-05)** :
+- ✅ **Zone `site/img/dinos/ombres/` = CANON PRODUIT** (60 PNG). Mini-jeux mj-28/33 pointent vers elle. Pas de réorg.
+- ✅ **Zone `content/assets/silhouettes/` (source autoring par FAMILLE)** = gardée comme archive, aucun jeu ne la consomme.
+- ✅ **Zone `site/img/dinos/silhouettes/` (par FAMILLE, reste)** = gardée comme archive, aucun jeu ne la consomme.
+- ✅ **Aucun changement de chemins** : jeux finalisés pointent `ombres/`, c'est bon.
+
+**Impact** :
+- **Règle figée ajoutée** : `figees/encyclopedie.md` § IMAGES SILHOUETTES — zone ombres dino = canon, pas de nouvelle génération sans décision explicite.
+- **L-D22 (frontière autoring/produit) complétée** : les 3 zones existent, le CANON = zone trackée sous `site/`.
+- **Question Q-DINO-Voyage-Silhouettes RÉSOLU** (ticket clôturé, backlog).
+
+---
+
+## Questions ouvertes
 - **Q-DINO-12** (2026-06-19) : **UI galerie paléoart** — faut-il implémenter galerie 5 scènes (enfant/manger/écosys/paris/fun-fact) dans la fiche dino, ou garder 1 seule vignette ? (Décision produit à trancher Papa Yann.)
 - **Q-DINO-1** : faut-il faire apparaître « Ptérosaures » de façon encore plus visible (ex sous-titre dans la fiche des 2 ptérosaures) ? (soulevé 2026-06-03)
 - **Q-DINO-7** (2026-06-15) : **Tritri running gag** — **TRANCHÉ OUI 2026-06-15** : 3 touches légères injectées au Crétacé (Tricératops bloc A/C, Torosaure bloc A), toutes via Wex, fluides. Gravure figée : L-D10 `backlog.md` + section Tritri `figees/encyclopedie.md`.

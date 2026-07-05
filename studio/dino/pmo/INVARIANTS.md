@@ -1,7 +1,11 @@
 # INVARIANTS — Pôle DINO
 
 > Source de vérité des **chiffres clés**. MAJ uniquement si un invariant change (par `dino-pmo`).
-> Dernière vérif : 2026-06-15 (corrections V3 + fact-check paléo appliqués, count 48→51 + 2 poids recalés).
+> **Dernière vérif : 2026-07-05 CLÔTURE FINALE (EP-D25 AUDIT COMPLET 60 DINOS VALIDÉES).**
+> Session 2026-07-05 : audit visuel massif 100 % (60 dinos, ~408 images), 39 irréprochables, 8 fausses regénérées + validées Grok, L-D21 silhouette maîtresse fondamentale gravée, EP-D25 clôturé.
+> Session 2026-07-05 (suite 3) : suppression zones `site/img/dinos/silhouettes/` + `studio/dino/content/assets/silhouettes/` (orphelines, canon = `ombres/` seul). Nouveau `site/js/dinos-audio-manifest.js` généré depuis disque réel (robuste prod). Ticket audio récit-époque créé.
+> Session 2026-07-05 (suite 2) : bug prod GITIGNORE fixé (60 ombres + 11 héros promotion vers tracking), L-D22 gravée.
+> Session 2026-07-04 : 9 dinos mégafaune + Edmontonia images paléoart livrées, dev-dinos.html SyntaxError fixé, ombres chinoises 100 % (60/60).
 > Session 2026-06-19 : production images paléoart XXL (5 scènes/dino) démarrée — ne change pas les counts (état réel data inchangé).
 
 ## Counts

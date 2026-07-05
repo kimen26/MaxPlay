@@ -19,34 +19,84 @@
   </style>
 </head>
 <body>
-  <h1>🎧 Pack sonore « La ligne de Max »</h1>
-  <p>10 sons générés ElevenLabs — tape pour écouter. Dis ce que tu gardes / jettes.</p>
+  <h1>🎧 Sons MaxPlay — 64 sons générés</h1>
+  <p>Tape pour écouter. Dis ce que tu gardes / jettes / à refaire.</p>
   <div id="list"></div>
   <script>
-    const SOUNDS = [
-      ['🚌', 'moteur-bus',       'trajet entre arrêts'],
-      ['📯', 'klaxon',           'arrivée à l\'arrêt'],
-      ['🚪', 'porte-bus',        'ouverture panneau lieu'],
-      ['👆', 'tap',              'boutons'],
-      ['🎉', 'fanfare-victoire', 'fin de jeu gagnée'],
-      ['⭐', 'etoile',           'étoile gagnée'],
-      ['🔓', 'deblocage',        'nouveau jeu / dino débloqué'],
-      ['🌙', 'ambiance-nuit',    'boucle ambiance hub'],
-      ['⏳', 'voyage-temps',     'transition époques dinos'],
-      ['🏮', 'veilleuse',        'entrée roulotte histoires'],
+    // [emoji, nom fichier, usage, dossier]
+    const GROUPS = [
+      ['🚌 Pack UI « Ligne de Max » (hub)', 'ui', [
+        ['🚌','moteur-bus','trajet entre arrêts'], ['📯','klaxon','arrivée à l\'arrêt'],
+        ['🚪','porte-bus','ouverture panneau'], ['👆','tap','boutons'],
+        ['🎉','fanfare-victoire','fin de jeu'], ['⭐','etoile','étoile gagnée'],
+        ['🔓','deblocage','nouveau débloqué'], ['🌙','ambiance-nuit','boucle hub (loop)'],
+        ['⏳','voyage-temps','transition époques'], ['🏮','veilleuse','roulotte histoires'],
+      ]],
+      ['🏆 Victoires & feedback', 'fx', [
+        ['🏆','victoire-grande','fin de partie'], ['✨','victoire-petite','palier'],
+        ['✅','bonne-reponse','quiz'], ['🤗','oups-doux','mauvaise réponse (jamais punitif)'],
+        ['💡','indice','presque !'], ['🎺','tada','révélation'],
+        ['👏','applaudissements','célébration'], ['🥇','trophee','jeu maxé'],
+      ]],
+      ['😄 Rigolo', 'fx', [
+        ['💨','prout-petit','rapide'], ['💨','prout-long','dramatique'],
+        ['🤸','boing','rebond'], ['🫧','bulle-pop','pop'],
+        ['🎪','sifflet-glissant','monte-descend'],
+      ]],
+      ['🦖 Dinos', 'fx', [
+        ['🦖','dino-trex','rugissement gentil'], ['🦕','dino-sauropode','barrissement grave'],
+        ['🐦','dino-raptor','petit cri'], ['🛡️','dino-tricera','grognement Tritri'],
+        ['🐾','dino-pas','pas lourds'], ['🌿','dino-mange','croque les feuilles'],
+        ['🥚','dino-oeuf-eclot','éclosion'], ['🐣','dino-bebe','bébé dino'],
+      ]],
+      ['🐾 Animaux', 'fx', [
+        ['🐕','chien',''], ['🐈','chat',''], ['🐺','loup','hurlement doux'],
+        ['🐦','oiseau',''], ['🦆','canard',''], ['🐄','vache',''],
+        ['🐴','cheval',''], ['🐘','elephant','barrissement'],
+      ]],
+      ['🚗 Véhicules & démarrages', 'fx', [
+        ['🚌','demarrage-bus','ignition + ralenti'], ['🚀','decollage-fusee','blast off'],
+        ['🏎️','voiture-vroom','passage rapide'], ['🛑','frein-bus','pshh pneumatique'],
+        ['🔊','bip-recul','bip bip bip'],
+      ]],
+      ['🎵 Instruments', 'fx', [
+        ['🎺','trompette-fanfare','annonce royale'], ['🎷','trombone-oups','wah wah rigolo'],
+        ['🥁','roulement-tambour','suspense + cymbale'], ['🎹','xylophone-monte','gamme montante'],
+      ]],
+      ['🪙 Pièces & magie', 'fx', [
+        ['🪙','piece','1 pièce'], ['💰','pluie-pieces','jackpot'],
+        ['🔔','clochette','notification'], ['🪄','magie','poussière de fée'],
+        ['💦','splash','plouf'],
+      ]],
+      ['🪐 Espace', 'fx', [
+        ['⚡','teleportation','zap'], ['📡','scanner','bips analyse'],
+        ['👽','alien-coucou','coucou rigolo'], ['🪐','ambiance-planete','boucle cosmique (loop)'],
+      ]],
+      ['🧰 Divers', 'fx', [
+        ['⏰','tic-tac','compte à rebours doux'], ['💨','whoosh','transition'],
+        ['✨','pop-apparition','apparition'], ['😴','ronflement','dodo'],
+        ['🔔','cloche-recre','récréation'], ['📷','photo','clic + rembobinage'],
+        ['😲','waouh','enfants émerveillés'],
+      ]],
     ];
     const list = document.getElementById('list');
     let cur = null;
-    SOUNDS.forEach(([ico, name, use]) => {
-      const d = document.createElement('div');
-      d.className = 'snd';
-      d.innerHTML = `<div class="ico">${ico}</div><div class="lbl">${name}<div class="use">${use}</div></div><div>▶</div>`;
-      d.onclick = () => {
-        if (cur) cur.pause();
-        cur = new Audio(`sounds/ui/${name}.mp3`);
-        cur.play();
-      };
-      list.appendChild(d);
+    GROUPS.forEach(([title, dir, sounds]) => {
+      const h = document.createElement('h2');
+      h.textContent = title;
+      h.style.cssText = 'font-size:1.05rem;margin:22px 0 10px;opacity:.9';
+      list.appendChild(h);
+      sounds.forEach(([ico, name, use]) => {
+        const d = document.createElement('div');
+        d.className = 'snd';
+        d.innerHTML = `<div class="ico">${ico}</div><div class="lbl">${name}<div class="use">${use}</div></div><div>▶</div>`;
+        d.onclick = () => {
+          if (cur) cur.pause();
+          cur = new Audio(`sounds/${dir}/${name}.mp3`);
+          cur.play();
+        };
+        list.appendChild(d);
+      });
     });
   </script>
 </body>

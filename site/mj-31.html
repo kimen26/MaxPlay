@@ -127,13 +127,14 @@
     let qCount = 0, qcm = null, targetDino = null, usedIds = [];
 
     function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
-    function speak(t){TTS.speak(t,{pitch:1.02,priority:true});}
 
-    // Voix reelle ElevenLabs quand l'asset existe (51 dinos -nom.mp3 + speciaux), fallback TTS sinon.
+    // JAMAIS deux voix en meme temps : parler (TTS) coupe le MP3, jouer un MP3 coupe le TTS.
     let elAudio = null;
     function stopEl(){ if (elAudio){ elAudio.pause(); elAudio = null; } }
+    function speak(t){ stopEl(); TTS.speak(t,{pitch:1.02,priority:true}); }
     function playEl(src, fallbackText, onended){
       stopEl();
+      TTS.cancel();
       // manifest genere : evite un 404 console pour les dinos sans MP3 (fallback TTS direct)
       const m = src.match(/audio\/dinos\/(.+)-nom\.mp3$/);
       if (m && window.DINO_NOM_AUDIO && !window.DINO_NOM_AUDIO.has(m[1])) {
@@ -272,7 +273,7 @@
       let phrase = d.name + '. ' + d.epoque + '.';
       const nemesis = { tyrannosaurus:'stegosaurus', stegosaurus:'tyrannosaurus' };
       if (nemesis[d.id]) {
-        phrase += ' Tu sais quoi ? Le T-Rex n\'a JAMAIS rencontré le Stégosaure : 80 millions d\'années les séparent !';
+        phrase += ' Tu sais quoi ? Le T-Rex n\'a JAMAIS rencontré le Stégosaure : 85 millions d\'années les séparent !';
       }
       speak(phrase);
     }

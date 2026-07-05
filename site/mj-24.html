@@ -10,7 +10,7 @@
     #app { background: linear-gradient(160deg,#1f3d2b,#13261c); }
     .instruction-text { text-align:center; font-size:1.35rem; font-weight:900; color:#ffe066; margin:10px 12px 4px; }
     .question-counter { text-align:center; font-size:.85rem; opacity:.7; margin-top:6px; }
-    .tts-btn {
+    .tts-btn { min-height:80px;
       display:flex; align-items:center; gap:8px; margin:8px auto;
       background:linear-gradient(135deg,#43a047,#66bb6a); color:#fff; border:none; cursor:pointer;
       border-radius:25px; padding:10px 22px; font-size:1rem; font-weight:900;
@@ -77,11 +77,13 @@
     let score = 0, streak = 0, qCount = 0, qcm = null, target = null;
 
     function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
-    function speak(t){TTS.speak(t,{pitch:1.05,priority:true});}
-    // Voix reelle ElevenLabs (51 dinos ont <id>-nom.mp3), fallback TTS sinon
+    // JAMAIS deux voix en meme temps : parler (TTS) coupe le MP3, jouer un MP3 coupe le TTS.
     let elAudio = null;
+    function stopEl(){ if (elAudio){ elAudio.pause(); elAudio = null; } }
+    function speak(t){ stopEl(); TTS.speak(t,{pitch:1.05,priority:true}); }
     function sayTarget(){
-      if (elAudio) elAudio.pause();
+      stopEl();
+      TTS.cancel();
       if (window.DINO_NOM_AUDIO && !window.DINO_NOM_AUDIO.has(target.id)) {
         speak('Trouve le ' + target.name + ' !');   // pas de MP3 pour ce dino (manifest genere)
         return;

@@ -107,6 +107,7 @@
   <script src="js/qcm-retry.js"></script>
   <script src="js/mj-golden.js"></script>
   <script src="js/dinos-data.js"></script>
+  <script src="js/dinos-audio-manifest.js"></script>
   <script>
     // ─── MJ-28 — La lampe du paléontologue ───
     // Ecran noir, halo de lumiere suit le doigt et revele une ombre chinoise.
@@ -238,7 +239,7 @@
         const say = document.createElement('span');
         say.className = 'say';
         say.textContent = '🔊';
-        say.onclick = (ev) => { ev.stopPropagation(); speak(o.d.name); };
+        say.onclick = (ev) => { ev.stopPropagation(); playDinoNom(o.d.id, o.d.name); };
         const label = document.createElement('span');
         label.textContent = o.d.name;
         b.appendChild(label);

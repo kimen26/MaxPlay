@@ -160,6 +160,7 @@
       z-index: 6;
       filter: drop-shadow(0 4px 14px #0009);
     }
+    #rocket .rbody { transform-origin: 50% 60%; will-change: transform; }
     #rocket .flame {
       transform-origin: 50% 0%;
       animation: idleFlame 0.9s ease-in-out infinite;
@@ -175,13 +176,45 @@
       50%  { transform: scaleY(1.7)  scaleX(.86); }
       100% { transform: scaleY(1.35) scaleX(1); }
     }
-    #rocket.flying { animation: rumble .18s linear infinite; }
-    @keyframes rumble {
-      0%, 100% { margin-left: -37px; }
-      50%      { margin-left: -35.5px; }
+    #rocket svg { display: block; }
+    #rocket.landed .rbody { animation: touchdown .45s cubic-bezier(.3,1.6,.5,1); }
+    @keyframes touchdown {
+      0%   { transform: scale(1, 1); }
+      40%  { transform: scale(1.12, .82); }
+      70%  { transform: scale(.95, 1.06); }
+      100% { transform: scale(1, 1); }
     }
-    #rocket.down svg { transform: rotate(180deg); }
-    #rocket.down .flame { transform-origin: 50% 100%; }
+
+    /* ── Particules : fumée de décollage / poussière d'atterrissage / traînée ── */
+    .puff {
+      position: absolute;
+      width: 22px; height: 22px;
+      margin: -11px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #e8edf2cc 0%, #aab7c866 60%, transparent 100%);
+      pointer-events: none;
+      z-index: 5;
+      animation: puffOut .8s ease-out forwards;
+    }
+    @keyframes puffOut {
+      0%   { transform: translate(0,0) scale(.5); opacity: .9; }
+      100% { transform: translate(var(--px, 0), var(--py, 10px)) scale(2.4); opacity: 0; }
+    }
+    .spark {
+      position: absolute;
+      width: 7px; height: 7px;
+      margin: -3.5px;
+      border-radius: 50%;
+      background: #ffcf6e;
+      box-shadow: 0 0 8px #ff9d3f;
+      pointer-events: none;
+      z-index: 4;
+      animation: sparkFade .55s ease-out forwards;
+    }
+    @keyframes sparkFade {
+      0%   { transform: scale(1); opacity: .95; }
+      100% { transform: translateY(16px) scale(.2); opacity: 0; }
+    }
 
     /* header : réutilise .hub-hdr de theme.css ; titre adapté */
 
@@ -372,7 +405,7 @@
   // ── La fusée ───────────────────────────────────────────────────────────
   const rocket = document.createElement('div');
   rocket.id = 'rocket';
-  rocket.innerHTML = `<svg viewBox="0 0 74 110">
+  rocket.innerHTML = `<div class="rbody"><svg viewBox="0 0 74 110">
     <g class="flame" transform="translate(0 84)">
       <path d="M30 0 Q37 26 37 30 Q37 26 44 0 Q37 8 30 0" fill="#ff9d3f"/>
       <path d="M33 0 Q37 16 37 19 Q37 16 41 0 Q37 5 33 0" fill="#ffe066"/>
@@ -384,8 +417,9 @@
     <path d="M20 58 Q6 70 8 88 L20 78 Z" fill="#E2001A"/>
     <path d="M54 58 Q68 70 66 88 L54 78 Z" fill="#E2001A"/>
     <rect x="26" y="84" width="22" height="5" rx="2.5" fill="#9fb2c8"/>
-  </svg>`;
+  </svg></div>`;
   world.appendChild(rocket);
+  const rbody = rocket.querySelector('.rbody');
 
   // position fusée : posée sur la rampe au départ
   let rocketY = padY - ROCKET_H;        // top du rocket dans le monde
@@ -405,32 +439,101 @@
   }
   centerScroll(rocketY, true);
 
+  // ── Particules (fumée, poussière, traînée) ─────────────────────────────
+  function particle(cls, xPx, y, vx, vy) {
+    const d = document.createElement('div');
+    d.className = cls;
+    d.style.left = xPx + 'px';
+    d.style.top = y + 'px';
+    d.style.setProperty('--px', vx + 'px');
+    d.style.setProperty('--py', vy + 'px');
+    world.appendChild(d);
+    setTimeout(() => d.remove(), 900);
+  }
+  const pctToPx = pct => pct / 100 * world.clientWidth;
+  function burst(cls, pct, y, n, spread) {
+    for (let k = 0; k < n; k++) {
+      const a = Math.PI * (0.15 + 0.7 * (k / (n - 1)));   // demi-cercle vers le bas
+      particle(cls, pctToPx(pct) + (Math.random() - .5) * 24, y,
+        Math.cos(a) * spread * (1 + Math.random()), Math.abs(Math.sin(a)) * spread * .5 + 8);
+    }
+  }
+
+  // ── Vol complet : décollage → croisière en arc (inclinée) → atterrissage ──
   function flyTo(targetY, targetPct, done) {
     if (flying) return;
     flying = true;
     skipRequested = false;
     rocket.classList.add('flying');
-    rocket.classList.toggle('down', targetY > rocketY);
+    rocket.classList.remove('landed');
     Celebrate.play('pop', 0.4);
 
     const fromY = rocketY, fromP = rocketPct;
-    const dist = Math.abs(targetY - fromY);
-    const dur = Math.min(1800, 550 + dist * 1.3);
+    const hoverY = targetY - 130;                       // point d'approche au-dessus
+    const dist = Math.abs(hoverY - fromY) + Math.abs(pctToPx(targetPct) - pctToPx(fromP));
+    const durCruise = Math.min(1700, 520 + dist * 1.1);
+    const durLand = 520;
+    const dur = durCruise + durLand;
     const t0 = performance.now();
-    const ease = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+    const easeIO = t => t < .5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+    const easeOut = t => 1 - Math.pow(1 - t, 3);
+
+    // fumée de décollage
+    burst('puff', fromP, fromY + 100, 7, 34);
+
+    // contrôle de l'arc (décalage horizontal → trajectoire courbée)
+    const x0 = pctToPx(fromP), x1 = pctToPx(targetPct);
+    const cx = (x0 + x1) / 2 + (x1 >= x0 ? -70 : 70);
+    const cy = (fromY + hoverY) / 2;
+
+    let lastSpark = 0, rot = 0;
 
     (function frame(t) {
-      let p = Math.min(1, (t - t0) / dur);
-      if (skipRequested) p = 1;
-      rocketY = fromY + (targetY - fromY) * ease(p);
-      rocketPct = fromP + (targetPct - fromP) * ease(p);
-      placeRocket();
+      let el = t - t0;
+      if (skipRequested) el = dur;
+      let xPx, yNow;
+
+      if (el < durCruise) {
+        // croisière : bézier quadratique start → ctrl → hover
+        const p = easeIO(el / durCruise);
+        const q = 1 - p;
+        xPx = q * q * x0 + 2 * q * p * cx + p * p * x1;
+        yNow = q * q * fromY + 2 * q * p * cy + p * p * hoverY;
+        // inclinaison = direction de la vitesse (dérivée de la bézier)
+        const vx = 2 * q * (cx - x0) + 2 * p * (x1 - cx);
+        const vy = 2 * q * (cy - fromY) + 2 * p * (hoverY - cy);
+        rot = Math.atan2(vx, -vy) * 180 / Math.PI;
+        if (rot > 90) rot = 180 - rot;                  // descente : reste tête en haut,
+        if (rot < -90) rot = -180 - rot;                // légère inclinaison arrière
+        // traînée d'étincelles
+        if (t - lastSpark > 70) {
+          lastSpark = t;
+          particle('spark', xPx + (Math.random() - .5) * 10, yNow + 100, 0, 0);
+        }
+      } else {
+        // atterrissage : descente verticale douce, fusée qui se redresse
+        const p = easeOut(Math.min(1, (el - durCruise) / durLand));
+        xPx = x1;
+        yNow = hoverY + (targetY - hoverY) * p;
+        rot = rot * (1 - p);                             // redressement progressif
+      }
+
+      rocketY = yNow;
+      rocketPct = xPx / world.clientWidth * 100;
+      rocket.style.transform = `translateY(${rocketY}px)`;
+      rocket.style.left = rocketPct + '%';
+      rbody.style.transform = `rotate(${rot.toFixed(1)}deg)`;
       centerScroll(rocketY, skipRequested);
-      if (p < 1) requestAnimationFrame(frame);
+
+      if (el < dur) requestAnimationFrame(frame);
       else {
         flying = false;
-        rocket.classList.remove('flying', 'down');
-        Celebrate.honk();                      // oui, un klaxon dans l'espace (1/20 : prout)
+        rocket.classList.remove('flying');
+        rbody.style.transform = '';
+        rocket.classList.add('landed');                  // squash & stretch
+        burst('puff', rocketPct, rocketY + 96, 9, 46);   // poussière d'atterrissage
+        setTimeout(() => rocket.classList.remove('landed'), 500);
+        Celebrate.honk();                                // klaxon dans l'espace (1/20 : prout)
         done && done();
       }
     })(t0);
@@ -447,15 +550,21 @@
     } catch (e) { /* pas bloquant */ }
   }
 
+  // Point d'atterrissage : les pieds de la fusée POSÉS sur le haut du globe
+  function landingSpot(i) {
+    const size = NARROW ? 148 : 170;              // --pl-size
+    const H = size + 60;                          // globe + gap + panneau
+    const sphereTop = planetY(i) - H / 2 + size * 0.146;
+    return { y: sphereTop - 86, pct: (i % 2 === 0 ? 32 : 68) };
+  }
+
   function onPlanetTap(i) {
     if (flying) { skipRequested = true; return; }
     const p = PLANETS[i];
-    // parking À CÔTÉ du globe (jamais sur le panneau, qui doit rester lisible)
-    const ty = planetY(i) - 20;
-    const tp = (i % 2 === 0 ? 32 + 24 : 68 - 24);
+    const spot = landingSpot(i);
     speak(p.speak);
-    if (Math.abs(ty - rocketY) < 6) { openPanel(p); return; }
-    flyTo(ty, tp, () => setTimeout(() => openPanel(p), 350));
+    if (Math.abs(spot.y - rocketY) < 6 && Math.abs(spot.pct - rocketPct) < 3) { openPanel(p); return; }
+    flyTo(spot.y, spot.pct, () => setTimeout(() => openPanel(p), 400));
   }
 
   // ── Panneau lieu (même logique que la ligne de bus) ────────────────────

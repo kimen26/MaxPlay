@@ -19,7 +19,7 @@
   </style>
 </head>
 <body>
-  <h1>🎧 Sons MaxPlay — 80 sons générés</h1>
+  <h1>🎧 Sons MaxPlay — 130 sons générés</h1>
   <p>Tape pour écouter. Dis ce que tu gardes / jettes / à refaire.</p>
   <div id="list"></div>
   <script>
@@ -32,13 +32,15 @@
         ['🔓','deblocage','nouveau débloqué'], ['🌙','ambiance-nuit','boucle hub (loop)'],
         ['⏳','voyage-temps','transition époques'], ['🏮','veilleuse','roulotte histoires'],
       ]],
-      ['🗣️ Petites voix (narratrice)', 'voix', [
+      ...['f','h','wex'].map(v => [
+        `🗣️ Réactions — ${ {f:'Narratrice', h:'Narrateur', wex:'Wex'}[v] } (tags v3)`, `voix/${v}`, [
         ['🎉','super',''], ['👏','bravo',''], ['🙌','ouiii',''], ['🌟','genial',''],
         ['💪','trop-fort',''], ['🏅','champion',''], ['✨','parfait',''], ['😲','waouh',''],
-        ['🎯','bien-joue',''], ['🤩','incroyable',''], ['🔁','encore',''],
+        ['🎯','bien-joue',''], ['🤩','incroyable',''], ['🔁','encore',''], ['🙌','yes',''],
+        ['🎊','hourra',''], ['😊','joli',''], ['🌠','quel-talent',''], ['😮','oh-la-la',''],
         ['🙊','oups','doux'], ['🤏','presque','doux'], ['🔄','essaie-encore','doux'],
-        ['🤔','pas-tout-a-fait','doux'], ['🙃','hmm-non','doux'],
-      ]],
+        ['🤔','pas-tout-a-fait','doux'], ['🙃','hmm-non','doux'], ['🎯','tu-y-es-presque','doux'],
+      ]]),
       ['🏆 Victoires & feedback', 'fx', [
         ['🏆','victoire-grande','fin de partie'], ['✨','victoire-petite','palier'],
         ['✅','bonne-reponse','quiz'], ['🤗','oups-doux','mauvaise réponse (jamais punitif)'],

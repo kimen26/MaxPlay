@@ -242,7 +242,7 @@
       } else {
         btn.classList.add('ko');
         sndBuzz();
-        speak('Essaie encore !');
+        SoundPool.voice('doux');   // voix réelle aléatoire (Presque ! / Essaie encore !…)
         setTimeout(() => btn.classList.remove('ko'), 500);
       }
     }

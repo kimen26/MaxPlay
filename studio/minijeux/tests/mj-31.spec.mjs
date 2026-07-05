@@ -14,7 +14,7 @@ export async function run({ page, ok }) {
   ok('1 seule bonne bande désignée', (await page.locator('.band[data-correct="1"]').count()) === 1);
   ok('ombre du dino affichée', await page.evaluate(() => {
     const img = document.querySelector('#dinoCard img');
-    return !!img && img.getAttribute('src').includes('_new-ombre') && img.getAttribute('src').includes('_ombre.png');
+    return !!img && img.getAttribute('src').includes('ombres') && img.getAttribute('src').includes('_ombre.png');
   }));
   ok('nom du dino écrit', (await page.textContent('#dinoName')).trim().length > 0);
 

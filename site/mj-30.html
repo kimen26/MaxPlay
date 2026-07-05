@@ -125,7 +125,7 @@
   <script src="js/mj-golden.js"></script>
   <script>
     // ─── MJ-30 — Range-les par taille (échelle honnête) ───
-    // Pool complet 60 dinos (tous ont une ombre dans img/dinos/_new-ombre/).
+    // Pool complet 60 dinos (tous ont une ombre dans img/dinos/ombres/).
     const DINO_POOL = [
       {id:'tyrannosaurus',name:'T-Rex',taille_m:13,hauteur_m:4,poids_t:8,png:'Tyrannosaurus.jpg'},
       {id:'spinosaurus',name:'Spinosaure',taille_m:15,hauteur_m:4,poids_t:7,png:'Spinosaurus.jpg'},
@@ -188,7 +188,7 @@
       {id:'coelodonta',name:'Rhino laineux',taille_m:3.5,hauteur_m:1.9,poids_t:2.5,png:'Coelodonta.jpg'},
       {id:'titanis',name:'Titanis',taille_m:1.9,hauteur_m:1.9,poids_t:0.3,png:'Titanis.jpg'},
     ];
-    function shadowSrc(d){ return 'img/dinos/_new-ombre/' + d.png.replace(/\.(jpg|png)$/i,'') + '_ombre.png'; }
+    function shadowSrc(d){ return 'img/dinos/ombres/' + d.png.replace(/\.(jpg|png)$/i,'') + '_ombre.png'; }
 
     const G = Golden.setup('mj-30');
     const MAX_Q = G.totalQ;

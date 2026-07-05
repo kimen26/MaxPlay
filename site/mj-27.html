@@ -63,7 +63,8 @@
     // ─── MJ-27 — Lis le nom du dino (LECTURE PURE, aucun son d'aide) ───
     // Affiche le nom écrit + 6 vraies images de l'encyclopédie. Max lit et trouve.
     const SRC = (typeof DINOS !== 'undefined') ? DINOS : (window.DINOS || []);
-    const MISSING = new Set(['Archelon.png','Elasmosaurus.png','Liopleurodon.png','Shastasaurus.png','Shonisaurus.png']);
+    // Plus d'exclusion : les 60 heros img/dinos/<png> existent (verifie 2026-07-05, promotion staging)
+    const MISSING = new Set();
     // Pool = dinos avec image top-level valide (pas de sous-dossier, fichier présent)
     const POOL = SRC.filter(d => d.png && d.name && !d.png.includes('/') && !MISSING.has(d.png));
 

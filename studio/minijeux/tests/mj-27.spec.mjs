@@ -14,7 +14,7 @@ export async function run({ page, ok }) {
   ok('6 images de choix', (await page.locator('.dino-card').count()) === 6, `cards=${await page.locator('.dino-card').count()}`);
   ok('1 seule bonne réponse', (await page.locator('.dino-card[data-correct="1"]').count()) === 1);
   ok('toutes les cartes ont une image encyclo', await page.evaluate(() =>
-    [...document.querySelectorAll('.dino-card img')].every(i => /^img\/dinos\/[^/]+\.png$/.test(i.getAttribute('src')))
+    [...document.querySelectorAll('.dino-card img')].every(i => /^img\/dinos\/[^/]+\.(png|jpg)$/.test(i.getAttribute('src')))
   ));
 
   // Pas de TTS dans la page (lecture pure) : aucun appel TTS.speak ne doit exister

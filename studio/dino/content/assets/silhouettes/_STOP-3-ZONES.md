@@ -1,4 +1,19 @@
-# ✅ DÉFIGÉ 2026-07-03 — reprise des ombres chinoises autorisée (ordre Papa Yann)
+# ✅ RÉSOLU 2026-07-05 — canon désigné (validation Papa Yann « oui vazi »)
+
+> **DÉCISION Papa Yann 2026-07-05** : les 1ers mini-jeux consommateurs (mj-28/30/31/33, ombres par-dino) ont tranché le grain, comme prévu ci-dessous. Désignation finale :
+>
+> | Zone | Rôle désigné | Statut |
+> |------|--------------|--------|
+> | `site/img/dinos/ombres/` | 🏆 **CANON PRODUIT par-dino** (60 ombres `Nom_ombre.png`, 600px, TRACKÉ git, déployé) | consommé par mj-28/30/31/33 |
+> | `site/img/dinos/_new-ombre/` | staging masters haute résolution (828K pièce, GITIGNORÉ) — source de re-promotion via resize | ne JAMAIS référencer depuis un jeu (L-D22) |
+> | `site/img/dinos/silhouettes/` | par-FAMILLE, grain différent — **consommé par mj-24/25/26** via `js/dino-silhouettes.js` | reste en l'état, pas un doublon |
+> | `studio/dino/content/assets/silhouettes/` | source d'autoring par-famille (LimeZu) | reste en l'état |
+>
+> Aucune zone supprimée (doctrine : on désigne, on ne supprime pas). Promotion staging → canon : `ffmpeg scale 600px` (fait 2026-07-05, commit 941faa30).
+
+---
+
+# ✅ (HISTORIQUE) DÉFIGÉ 2026-07-03 — reprise des ombres chinoises autorisée (ordre Papa Yann)
 
 > **DÉCISION Papa Yann 2026-07-03** : « débloque les ombres chinoises c'est un ordre ». Le STOP ci-dessous est LEVÉ pour la zone `site/img/dinos/_new-ombre/` (par-dino nommé). On reprend/complète le chantier ombres (19/60 → viser 60). Les 2 autres zones (banque par-famille) restent en l'état, non touchées. La fusion/archivage éventuel reste au 1er mini-jeu consommateur.
 > Zone retenue = `_new-ombre/` (par-dino). Diagnostic reprise : 4 échecs 2026-07-02 (torosaurus/pentaceratops/diplodocus/apatosaurus) = `done` au TSV mais rejetés en validation → à re-générer.

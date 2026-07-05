@@ -1,0 +1,101 @@
+{
+ "outil": "lecture-annotee",
+ "domaine": "narration",
+ "story": "002-libellule-resonance",
+ "vague": 5,
+ "date": "2026-07-05",
+ "note_ingestion": "JSON brut collé par Papa Yann via Telegram/session. Verbatims = matière première, NE PAS recopier dans les briefs (règle anti-verbatim). Ingestion → memoire-papa-yann.md + palmares-writers.md + 6-selection enrichie.",
+ "histoires": [
+  {
+   "id": "H1",
+   "source": "claude-opus-def",
+   "annotations": [
+    {"extrait": "L'eau tiède clapote autour des chevilles de Juju. Le soleil chauffe le haut de sa tête. Trois enfants, les pieds dans la boue molle, au bord d'un étang si peu profond qu'on voit le fond partout.", "polarite": "neg", "peche": ["confus","surjoué","pas fluide"], "note": "cette enchainement est juste null, ca ne s'enchaine aps c'est vide"},
+    {"extrait": "« Regarde ! » Juju montre du doigt. Un têtard file entre deux herbes, vite, tout noir.", "polarite": "neg", "note": "vite, tout noir ??? de quoi tu parle c'est pas claire et pas intéressant"},
+    {"extrait": "« Un autre, là », dit Nono. Il se penche, lentement, une main au-dessus de l'eau.", "polarite": "neg", "note": "là pkoi pas... on sait pas ce qu'il fait après, on comprend pas trop ou ca va, mais cette phrase hors contexte est ok"},
+    {"extrait": "Wex, lui, s'est arrêté net. Bouche ouverte. Il fixe un point dans l'air.", "polarite": "pos", "aime": ["ça coule tout seul"], "note": "là c'est ok on visualise"},
+    {"extrait": "Wex montre. Une libellule. Bleue, bleue comme le ciel du matin, avec deux grands yeux ronds.", "polarite": "neg", "peche": ["surjoué"], "note": "le ciel bleu du matin ne veut rien dire de claire"},
+    {"extrait": "Elle reste en l'air, immobile, posée sur rien du tout. Et puis — hop — elle disparaît.", "polarite": "pos", "aime": ["image forte","ça coule tout seul"]},
+    {"extrait": "Reparue trois pas plus loin. Arrêtée. Repartie.", "polarite": "neg", "peche": ["pas fluide"], "note": "pas fluide, mais on comprend et le fond est intéressant"},
+    {"extrait": "« On l'attrape ! » crie Juju.", "polarite": "pos", "aime": ["je le redirais à voix haute"]},
+    {"extrait": "Elle bondit. Ses mains claquent l'une contre l'autre. Vide. La libellule est déjà ailleurs.", "polarite": "neg", "note": "JE NE COMPRENDS PAS LA PHRASE... vide quoi vide ? elle veut attraper la libellule en l'explosant dans les main ??? pas la bonne méthode lol"},
+    {"extrait": "« Elle est là ! » Wex tourne sur lui-même, le doigt tendu, il rit tout seul. « Non, là ! Là ! »", "polarite": "pos", "aime": ["rigolo","je le redirais à voix haute","image forte"]},
+    {"extrait": "L'herbe siffle sous leurs pas.", "polarite": "neg", "note": "ca ne veut rien dire"},
+    {"extrait": "Un bourdon passe en grondant et personne ne le regarde.", "polarite": "pos", "aime": ["image forte"], "peche": ["pas fluide"], "note": "pkoi pas même si hors sujet, ca voit leur focus libellule"},
+    {"extrait": "La libellule bleue les tire d'un bout à l'autre du bord [...] On chasse une chose qui ne se laisse jamais toucher, et c'est ça qui est bon.", "polarite": "neg", "note": "C'est un texte dit c'est le narateur ?? bizarrement tourné"},
+    {"extrait": "Puis, sans rien dire, Nono s'arrête.", "polarite": "pos", "aime": ["image forte"]},
+    {"extrait": "Il ne le décide pas, ça se pose en lui, tout seul.", "polarite": "pos", "aime": ["ça coule tout seul","image forte"]},
+    {"extrait": "Sa respiration ralentit. Autour de lui, c'est comme si l'air devenait doux. Les deux autres, eux, chassent encore.", "polarite": "pos", "aime": ["image forte","ça coule tout seul"]},
+    {"extrait": "Juju fonce [...] Elle sent le calme de Nono passer dans sa main. Alors la libellule descend.", "polarite": "pos", "aime": ["génial","ça coule tout seul"], "peche": ["confus","pas fluide"], "note": "les traces du bleu bizarre... le reste pas fluide, mais le fond est fort"},
+    {"extrait": "Doucement, sans un bruit.", "polarite": "neg", "note": "si son gros bourdonnement ou dire un bruit sourd"},
+    {"extrait": "Personne ne respire. Wex, à un pas, s'est figé lui aussi, les yeux énormes.", "polarite": "pos", "aime": ["rigolo","image forte","ça coule tout seul"]},
+    {"extrait": "Elle se pose sur le poignet de Juju, juste là où ses doigts serrent le bras de Nono. Ses ailes bleues frémissent, puis se tiennent tranquilles.", "polarite": "pos", "aime": ["génial","image forte","tendre","belle musique / rime"]},
+    {"extrait": "« Elle… elle est là », souffle Juju [...] « Chut », fait Nono, tout bas.", "polarite": "pos", "aime": ["image forte","tendre"], "note": "je mettrai juste un chhhhhhh pas de chut. fait le chhh en meme temps qu'il expire"},
+    {"extrait": "Trois enfants comme trois statues [...] Ça chatouille. Ça pèse rien du tout.", "polarite": "neg", "note": "les 3 enfants statues c'est bien, le reste absolument pas fluide et pas claire"},
+    {"extrait": "Juju lève le poignet, très lentement, vers le ciel. « Vas-y », dit-elle.", "polarite": "neg", "note": "c'est plutot NONO qui sort de cette scene figée, c'est lui le plus connecté, capable de le faire — fait monter la sérénité de Nono, genre un Gagné tout fort en regardant Juju avec un gros sourire, et la libellule s'envole"}
+   ],
+   "verdict": {"chips": ["👍 bien mais…"], "note": "l'esprit la fin est bien ramené au debut (mais le début était moche, faut revoir des deux cotés)... l'histoire l'intention l'émotion est plutot bonne, pb de liaison, de texte, mais l'ensemble plutot bien 13/20"}
+  },
+  {
+   "id": "H2",
+   "source": "claude-sonnet-reco",
+   "annotations": [
+    {"extrait": "La boue est tiède sous les pieds [...] un oiseau d'eau picore sans se presser.", "polarite": "neg", "peche": ["confus","surjoué","pas fluide"], "note": "on comprend rien c'est les intro raté pcq trop d'info dans le brief"},
+    {"extrait": "— Regardez, elle revient ! crie Juju. C'est la libellule bleue.", "polarite": "neg", "peche": ["sans enchaînement"], "note": "quoi ?? comment ca ??"}
+   ],
+   "verdict": {"chips": ["👎 non"], "note": "je ne lis même pas, on ne comprend rien, ca n'enchaine pas, rien n'est a garder"}
+  },
+  {
+   "id": "H3",
+   "source": "deepseek-reco",
+   "annotations": [
+    {"extrait": "Juju court. Ses pieds nus tapent [...] Wex slalome entre les roseaux, les bras ouverts comme des ailes.", "polarite": "pos", "aime": ["rigolo","image forte"], "note": "ouais ca passe bien"},
+    {"extrait": "« Le premier à l'arbre ! » crie-t-elle.", "polarite": "pos", "aime": ["je le redirais à voix haute"]},
+    {"extrait": "« Tu triches, toi ! » lance Juju en riant plus fort.", "polarite": "neg", "note": "Heyy avant ca rendra plus vivant. 'en riant plus fort'... il ne rigolait pas avant, attention à l'enchainement"},
+    {"extrait": "Nono ne court pas. Il sourit à peine.", "polarite": "neg", "note": "pkoi il n'est pas dans le move des autres ??"},
+    {"extrait": "L'étang est vivant.", "polarite": "neg", "note": "est plein de vie en cette belle matinée de printemps (on peut écrire de belles choses hein !)"},
+    {"extrait": "Une poule d'eau glisse [...] un bourdon passe, tout rond, tout velu, et Wex penche la tête pour l'écouter.", "polarite": "pos", "aime": ["image forte","belle musique / rime"]},
+    {"extrait": "« Il fait du moteur ! » dit Wex, les yeux ronds.", "polarite": "neg", "peche": ["confus","pas fluide"], "note": "on dirait un gros tracteur qui... ca sonnerait mieux. arreter de dire que wex a des yeux ronds pour finir"},
+    {"extrait": "Juju touche l'arbre la première. « Gagné ! »", "polarite": "pos", "aime": ["rigolo","ça coule tout seul"], "note": "c'est bien de rappeler le truc ca fait une belle liaison"},
+    {"extrait": "Nono s'assied à côté de lui.", "polarite": "neg", "note": "alors lui y marche y fait la gueule mais il est déjà là ?"},
+    {"extrait": "Ça sent la menthe sauvage et la vase douce.", "polarite": "neg", "peche": ["pas fluide","confus"], "note": "quoi ?? ca ne veut rien dire ???"},
+    {"extrait": "Soudain — un éclair bleu. La libellule file au ras de l'eau [...] Impossible de deviner où elle va.", "polarite": "pos", "aime": ["rigolo","image forte","ça coule tout seul"]},
+    {"extrait": "« Je la veux ! »", "polarite": "neg", "note": "bizarre — reprendre sa tournure de l'arbre, le premier qui l'attrape"},
+    {"extrait": "Elle plonge les mains en avant — trop tard [...] redescend pile entre Juju et Wex.", "polarite": "pos", "aime": ["ça coule tout seul"]},
+    {"extrait": "« C'est pas une libellule, c'est une fusée bleue ! » crie Wex.", "polarite": "pos", "aime": ["génial"]},
+    {"extrait": "Nono s'est levé. Il fait deux pas, puis il s'arrête. Il ne dit rien.", "polarite": "neg", "note": "l'attitude encore une fois est chelou... ca ne créé pas la rupture attendue"},
+    {"extrait": "Juju et Wex continuent de courir. La libellule les promène.", "polarite": "pos", "aime": ["génial","image forte"]},
+    {"extrait": "« Elle est plus rapide que tout », dit-il.", "polarite": "pos", "aime": ["génial","rigolo"]},
+    {"extrait": "Elle recule en sautant [...] son épaule touche Nono. Elle est tout contre lui.", "polarite": "neg", "peche": ["confus","pas fluide","sans enchaînement"], "note": "nono est assis mais elle en reculant lui touche l'épaule ?? je ne visualise pas du tout, pas logique"},
+    {"extrait": "Elle se pose sur la main ouverte de Nono.", "polarite": "neg", "peche": ["confus","sans enchaînement"], "note": "avant t'as dit que la main était sur le genou"},
+    {"extrait": "Juju écarquille les yeux [...] Même le bourdon s'est tu.", "polarite": "pos", "aime": ["génial","rigolo","tendre","image forte"]},
+    {"extrait": "La libellule replie ses ailes [...] Un instant. Juste un instant.", "polarite": "pos", "aime": ["image forte"]},
+    {"extrait": "Puis elle les déploie, pousse sur ses pattes, et s'envole au-dessus de l'eau.", "polarite": "pos", "aime": ["belle musique / rime"], "note": "j'aurais préféré une action de Nono pour la faire décoller"},
+    {"extrait": "« On l'a laissée repartir » [...] « Et elle est revenue nous voir toute seule »", "polarite": "pos", "aime": ["tendre"]},
+    {"extrait": "Nono ouvre doucement les doigts, comme si le bleu de la libellule y était resté.", "polarite": "neg", "note": "pas très claire"},
+    {"extrait": "Le bourdon repart en faisant du moteur.", "polarite": "pos", "aime": ["belle musique / rime"], "note": "c'est bien de reprendre le début"}
+   ],
+   "verdict": {"chips": ["👍 bien mais…"], "note": "Plutot bonne, sauf l'attitude générale de Nono et pas mal de pb d'enchainement logique cohérence"}
+  },
+  {
+   "id": "H4",
+   "source": "kimi-reco",
+   "annotations": [
+    {"extrait": "Wex tournait sur lui-même pour ne rien louper du ciel.", "polarite": "neg", "peche": ["pas fluide","confus"], "note": "comprend pas la tournure"},
+    {"extrait": "Juju courait le long du rivage, les bras en hélice.", "polarite": "neg", "note": "pas claire les bras en hélice, dire les bras tendus comme un avion"},
+    {"extrait": "C'est là qu'elle est passée.", "polarite": "neg", "peche": ["surjoué","sans enchaînement"], "note": "comment ca c'est là quoi ?? on peut avoir une intro qdm ?"},
+    {"extrait": "Une libellule bleue, fine comme un trait de crayon.", "polarite": "pos", "aime": ["image forte","rigolo","je le redirais à voix haute"]},
+    {"extrait": "Ils se sont rués.", "polarite": "neg", "peche": ["pas fluide","sans enchaînement","confus"], "note": "de quoi, vers où ? on comprend rien"},
+    {"extrait": "Elle filait, s'arrêtait en plein milieu de rien, repartait en arrière.", "polarite": "neg", "peche": ["pas fluide","confus"]},
+    {"extrait": "La libellule s'envolait avant même qu'ils arrivent. Trois fois. Quatre fois.", "polarite": "neg", "peche": ["confus","pas fluide"], "note": "on ne comprend rien"},
+    {"extrait": "— Elle fait exprès, a dit Juju, le poing sur la hanche.", "polarite": "pos", "aime": ["rigolo"]},
+    {"extrait": "Puis Nono s'est arrêté.", "polarite": "neg", "peche": ["sans enchaînement"], "note": "on ne savait pas qu'il dansait ??"},
+    {"extrait": "Comme quand on pose une cuillère qu'on n'a plus besoin de tenir.", "polarite": "neg", "note": "mais quoi ??? c'est pas une expression, aucun rapport !"},
+    {"extrait": "Juju a reculé pour mieux sauter [...] deux statues qui respiraient.", "polarite": "neg", "peche": ["pas fluide","sans enchaînement","confus"], "note": "vraiment pas fluide, vraiment pas claire"},
+    {"extrait": "Puis elle s'est posée sur le genou de Juju, sur le tissu un peu sale de son pantalon.", "polarite": "neg", "note": "pkoi sur le genou ? ils sont debout c'est bizarre"},
+    {"extrait": "Un moment long et drôle, où personne n'osait cligner des yeux.", "polarite": "neg", "note": "CA NE VEUT RIEN DIRE ??"}
+   ],
+   "verdict": {"chips": ["pas fluide","manque un pic","😐 bof"], "note": "j'ai même pas été jusqu'au bout, décousu au possible, illisible"}
+  }
+ ]
+}

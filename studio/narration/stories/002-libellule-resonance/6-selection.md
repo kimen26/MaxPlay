@@ -1,11 +1,61 @@
 ---
 story: 002-libellule-resonance
 etape: 6
-version: v2
+version: v2.1
 auteur: Directeur Éditorial
-date: 2026-07-04
-inputs: re-panel COMPLET vague 5 (14 versions · panel v2 hétérogène 12 fiches) + gout/memoire-papa-yann.md + gout/palmares-writers.md
-statut: ⏳ EN ATTENTE VALIDATION AUTEUR (SLA 3 jours)
+date: 2026-07-05
+inputs: re-panel COMPLET vague 5 + gout/memoire-papa-yann.md + gout/palmares-writers.md + LECTURE ANNOTÉE auteur 2026-07-05 (45 annotations)
+statut: ✅ BASE VALIDÉE DE FAIT (opus-def 13/20 « bien mais ») → REWRITE LANCÉ
+---
+
+# ⭐ ENRICHISSEMENT v2.1 — post-lecture annotée auteur (2026-07-05)
+
+> La lecture annotée (opus-def notée **13/20 « bien mais… l'intention l'émotion est plutôt
+> bonne, pb de liaison et de texte, mais l'ensemble plutôt bien »**) = **VALIDATION DE FAIT**
+> de la base v2 (opus-def + greffe ouverture deepseek). Elle fournit en plus un **brief de
+> rewrite chirurgical** : chaque passage marqué neg est traduit en consigne ci-dessous.
+> Le corps v2 (§0-§7) reste la référence ; cette section **prime** en cas de conflit.
+
+## A. Ce que l'auteur a marqué GÉNIAL → conserver INTÉGRALEMENT
+
+- **Le pivot** : Juju percute Nono, s'accroche à son bras, sent le calme passer dans sa main, la libellule descend. « génial / ça coule tout seul ».
+- **La pose sur le poignet au point de contact** (les doigts serrent le bras de Nono, ailes qui frémissent puis se tiennent) : « génial / image forte / tendre / belle musique ». **NE RIEN TOUCHER.**
+- **Le figement** : « trois enfants comme trois statues » + « personne ne respire » + Wex figé les yeux énormes. « rigolo / image forte / ça coule tout seul ».
+- **La libellule qui pile en l'air** (« immobile, posée sur rien du tout » puis « hop » elle disparaît / « Arrêtée. Repartie. ») : « image forte ». Garder le freinage implicite, jamais nommer de véhicule.
+- **Répliques d'enfant brutes** : « On l'attrape ! », Wex qui tourne « Elle est là ! Non, là ! » : « rigolo / je le redirais à voix haute ».
+
+## B. Ce que l'auteur a marqué NEG → réparer, un par un (consignes, sans verbatim)
+
+1. **Ouverture (pile eau+soleil+boue) = « vide, ça ne s'enchaîne pas »** → réécrire façon **action + voix dès la 1ʳᵉ/2ᵉ ligne** (patron deepseek, greffe 1). L'auteur a validé l'ouverture deepseek « ça passe bien ». Chaque phrase appelle la suivante. Le sensoriel fondu dans le mouvement. Supprimer le décor gratuit (« étang si peu profond »).
+2. **Têtard « vite, tout noir »** = pas clair, pas intéressant → si on garde un têtard, lui donner un geste concret (il file, il se cache) — pas un adjectif juxtaposé.
+3. **Comparaison « bleue comme le ciel du matin » = ne veut rien dire** → remplacer par une **image concrète-juste** visualisable par un enfant de 4 ans (l'auteur adore « fin comme un trait de crayon », « une fusée bleue »). Une seule comparaison, nette.
+4. **« Ses mains claquent l'une contre l'autre. Vide. » = incompréhensible** (« elle veut l'exploser dans ses mains ?? ») → clarifier le geste : elle referme les mains sur du vide, la libellule est déjà ailleurs. Que l'action et son échec soient limpides.
+5. **« L'herbe siffle sous leurs pas » = ne veut rien dire** → couper ou remplacer par un son réel et concret.
+6. **Passage narrateur qui philosophe** (« on chasse une chose qui ne se laisse jamais toucher, et c'est ça qui est bon ») = **rejeté** (« c'est le narrateur ?? bizarrement tourné »). **SUPPRIMER.** Le sens se vit, ne se dit jamais. (Recoupe l'interdit patte « pas de morale ».)
+7. **« les traces du bleu bizarre »** dans le passage du calme qui passe = confus → nettoyer, garder seulement « elle sent le calme de Nono passer dans sa main » + « la libellule descend ».
+8. **« Doucement, sans un bruit » = trop faible** → l'auteur veut un **son réel** (un bourdonnement sourd, un vrai bruit nommé) plutôt que la négation d'un bruit.
+9. **« Chut » de Nono = plaqué** → remplacer par une **onomatopée organique soufflée** : un « chhhhh » écrit comme le souffle réel, **fait pendant que Nono expire** (pas le mot-étiquette « Chut »).
+10. **« Ça chatouille. Ça pèse rien du tout. » après les trois statues = pas fluide, pas clair** → garder l'image des trois statues (adorée), réparer ou couper la suite elliptique.
+
+## C. 🔴 FIN MODIFIÉE — DIRECTIVE AUTEUR (prime sur le §4 « fin gelée » de la v2)
+
+> La v2 gelait la fin « Juju lève le poignet vers le ciel, "Vas-y" ». **L'auteur l'invalide** et
+> réassigne la libération :
+
+- **C'est NONO qui rompt le figement et libère la libellule**, pas Juju. Raison auteur : « c'est lui le plus connecté, capable de le faire ». (Recoupe le reproche fait à deepseek : Nono ne doit PAS être passif/à-côté.)
+- Mise en scène demandée : **la sérénité de Nono monte**, il regarde Juju avec **un grand sourire** et **un éclat joyeux** (type un « Gagné ! » dit tout fort ou soufflé), **et la libellule décolle sur ce mouvement / cette énergie**.
+- Conserver : zéro pirouette verbale, aucun mot « attrapée », on referme dans le calme (patte Kishōtenketsu). Le mot de clôture peut rester sobre.
+- Callback fin↔début (adoré) : ramener un élément de la nouvelle ouverture (le défi de course « Gagné ! » de la greffe deepseek s'accorde parfaitement avec l'éclat joyeux de Nono — la victoire change de sens : gagner ce n'est pas attraper).
+
+## D. Garde-fous transverses (tirés des 45 annotations)
+
+- **Cohérence spatiale ABSOLUE** : décider si les enfants sont **debout** ou **assis** au moment de la pose, et s'y tenir. Pas de « genou » si debout, pas de « main sur le genou » puis « main ouverte ». Où est chaque corps, à tout instant.
+- **Continuité logique micro** : aucun référent flottant (« là », « ça », « vide »), aucune intensité sans base (« plus fort » suppose un premier degré établi), aucune action sans direction (« ils se ruent » VERS quoi).
+- **Toute image visualisable en < 1 s par un enfant de 4 ans**, sinon couper.
+- **Longueur 400-550 mots**, temps verbal conservé (présent, comme la base opus-def annotée), spine conservée.
+
+> 📌 **Base exacte du rewrite** : `4-versions-writers/claude-opus-def.md` (vague 5, présent, pose au poignet) — c'est LE texte lu et annoté 13/20, pas la version vague-4 (passé) archivée. Ouverture-patron : `_archive/vague-4/4-versions-writers/deepseek-reco.md` l.8-16 (action + course + voix).
+
 ---
 
 # Sélection — STORY-002 « La Libellule impossible » — v2 (re-panel vague 5)

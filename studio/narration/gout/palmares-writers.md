@@ -32,6 +32,19 @@
 > Signal structurel : le panel classe, l'auteur tranche — et son plancher est PLUS HAUT
 > que le top panel. Raisons du refus finale = inconnues (UI v1) — à récupérer.
 
+## Lecture annotée auteur — 2026-07-05 (STORY-002 vague 5, 4 histoires)
+
+Papa Yann a lu et annoté 4 des 14 versions (celles retenues au re-panel v5). Verdicts :
+
+| Writer | Verdict lecture | Note | Ce qui tient | Ce qui casse |
+|--------|-----------------|------|--------------|--------------|
+| **claude-opus-def** | 👍 **bien mais…** | **13/20** | Intention + émotion « plutôt bonne », pivot « génial », pose au poignet « génial/tendre », les 3 statues, fin ramenée au début | Ouverture « vide, ça ne s'enchaîne pas », comparaisons absconses (« ciel du matin »), narrateur qui philosophe, phrases elliptiques (« vide quoi ? »), « Chut » plaqué. **VALIDÉ COMME BASE DU REWRITE.** |
+| **deepseek-reco** | 👍 **bien mais…** | — | Ouverture action « ça passe bien », « fusée bleue génial », callback bourdon-moteur début+fin, tendresse fin | **Attitude de Nono incohérente** (à côté du move, assis/debout flou, « ne crée pas la rupture attendue »), enchaînements logiques cassés, « menthe sauvage et vase douce » ne veut rien dire |
+| **claude-sonnet-reco** | 👎 **non** | — | rien | « on ne comprend rien, ça n'enchaîne pas, rien à garder » — abandon lecture dès la 2ᵉ annotation. Ouverture ratée (« trop d'info dans le brief ») |
+| **kimi-reco** | 😐 **bof** | — | « fin comme un trait de crayon » (image concrète adorée), « Elle fait exprès ! » | « décousu au possible, illisible », abandon avant la fin. Ellipses sans référent (« C'est là qu'elle est passée », « Ils se sont rués »), comparaison-cuillère absurde, genou incohérent |
+
+**Signal writer clé** : opus-def confirme sa **force = pivot + fin propre** (palmarès) ET révèle sa **faiblesse = ouverture non-fluide** (pile sensorielle) + tics abstraits. deepseek-reco confirme sa **force = ouverture action fluide** mais **rate la trajectoire de Nono** (personnage passif). → base opus-def + greffe ouverture deepseek = choix confirmé par la lecture. Les deux « décousus » (sonnet-reco, kimi-reco) confirment leur faiblesse structurelle : **le style ellipse/fragment de Kimi et l'ouverture surchargée = rejet net**.
+
 ## Enseignements pour les micro-briefs (étape 3)
 
 - **Kimi** : lui confier l'angle « ouverture corporelle / percussion orale » — et lui imposer

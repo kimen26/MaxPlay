@@ -109,7 +109,7 @@
       const refSrc = ref.src;
 
       document.getElementById('refCard').innerHTML = '<img src="' + refSrc + '" alt="">';
-      speak('Trouve le même dino !');
+      SoundPool.phrase('trouve-le-meme-dino', 'Trouve le même dino !');
 
       const box = document.getElementById('choices');
       box.style.gridTemplateColumns = 'repeat(' + Math.min(opts.length,2) + ', 1fr)';
@@ -141,7 +141,7 @@
       } else {
         btn.classList.add('ko'); btn.disabled = true; streak = 0;
         sndBuzz();
-        speak('Cherche bien, essaie encore !');
+        SoundPool.voice('doux');   // voix réelle aléatoire
       }
     }
 

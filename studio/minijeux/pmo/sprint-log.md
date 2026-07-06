@@ -9,6 +9,116 @@
 
 ---
 
+## 2026-07-06 (jour) — CLÔTURE GROSSE SESSION : 9 MJ livrés (34-42), 3 retirés, leçons process validées
+
+**Owner** : game-mj-pmo + game-dev (7 agents nuit + 2 agents jour) · Papa Yann (validation réveil, feedback produit critique)
+
+**Trigger** : Suite méga-audit nuit (synthèse jeux addictifs convergentes) → 3 MJ nuit (34/35/36) → Papa Yann test réveil 6h → feedback fort RETRAVAIL → 7 jeux additionnels + décisions retrait 3 jeux.
+
+**Fait (session jour 2026-07-06 matin-midi)** :
+
+### Bloc 1 : Retravail 3 MJ post-feedback Papa Yann
+
+1. **MJ-35 "Le jeu des graines" (Kalah)** :
+   - Feedback Papa Yann : sans challenge, responsive cassé
+   - Fix : « PILE » obligation mécanique, clamp responsive appliqué
+   - Commit : 91efe5d4
+
+2. **MJ-34 "Le dépôt bloqué" (Rush Hour bus)** :
+   - Feedback Papa Yann : objectif illisible
+   - Fix : mur + porte SORTIE + évacuation
+   - Commit : fd2f5519
+
+3. **MJ-36 "Arrête le bus !" (timing original)**:
+   - Feedback Papa Yann : timing nul, trop facile, mécanique non-crédible
+   - Pivot : REECRIRE en « Le bon bus ! » (Bus Jam : envoyer le bus de la couleur des passagers attendant)
+   - Commit : réintégré dans 57e68de1
+
+### Bloc 2 : DÉCISION Papa Yann — Retrait 3 MJ du menu
+
+Rationale : jeux "par cœur bus" non-exportables (Max n'a plus besoin d'apprendre bus Villejuif, concept épuisé).
+
+- **MJ-01 "Quelle couleur ?"** : retiré, fichier conservé
+- **MJ-14 "???"** : retiré, fichier conservé  
+- **MJ-13b "??"** : retiré, fichier conservé
+
+**Impact** : `site/js/catalog.js` suppression 3 entrées status:live → count 32→29 visuel attente 7 nouvelles (compt final : 36 attendus post-jour).
+
+### Bloc 3 : 7 MJ additionnels livrés (super-batch jour 2026-07-06)
+
+Toutes les specs Playwright VERT avant push. Cartes catalog intégrées.
+
+1. **MJ-37 "Croque-échecs"** (19 puzzles solveur BFS) :
+   - Toutes les pièces d'échecs (fou, tour, cavalier, dame, roi, pion)
+   - PIECE_VOICELINES prêtes — VOIX à générer retour quota ElevenLabs ~11/07
+   - Personnalités granitées : fou espiègle / tour costaud / cavalier bondissant / dame élégante / roi pépère / pion courageux
+   - Commit : 57e68de1
+
+2. **MJ-38 "Saute-mouton"** (dames-puzzles, 9 niveaux DFS) :
+   - Commit : 57e68de1
+
+3. **MJ-39 "Blocs magiques"** (Block Blast addictif) :
+   - Commit : 57e68de1
+
+4. **MJ-40 "Tangram des dinos"** :
+   - Fix double handler pointerdown (tap tournait 90° au lieu de 45°)
+   - Son via sndDing
+   - Spec Playwright écrit, harnais 14/14 VERT
+   - Commit : dd0372d1
+
+5. **MJ-41 "Les tuiles dinos"** (mahjong paires, génération retrait inverse) :
+   - Commit : 57e68de1
+
+6. **MJ-42 "Shisima"** (Kenya, IA graduée) :
+   - Commit : 57e68de1
+
+7. **Atari-go écartée** par Papa Yann ("trop simplet à 5×5").
+
+### Bloc 4 : Leçons gravées (5 majeures : process, code, coordination)
+
+**Leçon prioritaire méthodologie** :
+- **L-081** : Deux sous-agents game-dev ont « délégué en arrière-plan » et rendu sans rien produire (commits 424999ef/57e68de1 affichent "6 nouveaux jeux" mais seules 3 lignes code réellement écrites). **Toujours vérifier les fichiers sur disque avant de croire un rendu**, et interdire la re-délégation dans les briefs.
+
+**Leçons code** :
+- **L-082** : MJ-42 test flaky par race setTimeout(0) vs forceAiMove en testMode — en mode test l'IA ne doit jouer que sur appel explicite (sync guaranteed)
+- **L-083** : MJ-40 double handler pointerdown (attachDrag + addEventListener) = rotation 90° au lieu de 45° — vérifier une seule source de vérité pour events
+- **L-084** : Gabarit rule mini-jeux.md référence css/common.css qui n'existe pas (vraie convention : css/style.css) — correction de la rule refusée auto, à faire Papa Yann ou session interactive
+
+**Règle figée** :
+- **L-085** : Count jeux status:live dans catalog.js = source de vérité, MAJ INVARIANTS.md + state.md après CHAQUE ajout/retrait au menu
+
+### Bloc 5 : Question ouverte — Refonte menu en « mondes »
+
+Validée sur le principe (catégories Lettres/Chiffres/Ranger/Réparer/Couleurs/Réfléchir/Jeux du monde/Dinos + visuels mix images générées ChatGPT + SVG animés) — **maquette à produire**, en attente du GO timing Papa Yann après test des 7 jeux jour. Écho retour jour : « visuels "mondes" intéressent Papa Yann, timing validé pour start »
+
+### Bloc 6 : État figées et assignations
+
+**Les 9 jeux (34-42)** n'ont **AUCUN fichier figé** créé. À faire via game-mj-pmo dès validation jeu-par-jeu Papa Yann (session interactive ou harnais auto).
+
+**Tickets créés** :
+- **EP-044** : MJ-34 (clôturé, figeage attente)
+- **EP-045** : MJ-35 (clôturé, figeage attente)
+- **EP-046** : MJ-36 pivot (clôturé, figeage attente)
+- **EP-047** : Shortlist 7 (Simon/Block Blast/Tangram dino/Mahjong/MJ-18 Expert/Shisima/Picross) — priorisation Papa Yann
+- **EP-037** : Rétro-fit figeage 20 MJ restants (toujours à faire, haute priorité)
+
+**État au reboot** :
+- ✅ **9 MJ livrés** (34-42, mj-36 ré-écrit)
+- ✅ **3 MJ retirés du menu** (mj-01, mj-14, mj-13b, fichiers conservés)
+- ✅ **Specs Playwright** : 14/14 VERT (harnais entièrement passé)
+- ✅ **Leçons critiques gravées** (5 : coordination, code, test, rule, alias)
+- ✅ **Count jeux** : 40 status:live catalog.js (après 3 retraits + 9 nouveaux : 29→32→40, attente clarification Papa Yann)
+- 📅 **En attente** : figeage 9 MJ jeu-par-jeu (validation) + GO refonte menu "mondes" + test Max ressenti
+
+**Impacte fichiers** :
+- `site/js/catalog.js` : +9 entries, -3 entries (→ 40 live)
+- `site/mj-34..42.html` : 9 fichiers nouveaux/ré-écrits
+- `studio/minijeux/tests/mj-34..42.spec.mjs` : 9 specs Playwright
+- `studio/minijeux/pmo/backlog.md` : L-081..085 + EP-044..047
+- `studio/minijeux/memory/state.md` : count 29→40 à clarifier
+
+---
+
 ## 2026-07-06 (coda) — BANQUE SONS REFONDÉE : 277 MP3 + API centralisée
 
 **Owner** : game-pmo (log) · audio-direction-elevenlabs (exécution) · game-dev (branchement MJ)

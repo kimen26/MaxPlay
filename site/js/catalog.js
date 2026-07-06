@@ -85,6 +85,7 @@ window.MAXPLAY_CATALOG = [
   { id:'mj-30', category:'dinos', titre:'Range-les par taille', emoji:'📏', desc:'Du plus petit au plus grand, en vrais mètres !', url:'mj-30.html', type:'html', orientation:'any', access:'sequence', maxStars:3, unlock:null, tag:'tts', status:'live' },
   { id:'mj-31', category:'dinos', titre:'Le grand voyage du temps', emoji:'🌋', desc:'Trias, Jurassique, Crétacé… et la météorite !', url:'mj-31.html', type:'html', orientation:'any', access:'sequence', maxStars:3, unlock:null, tag:'tts', status:'live' },
   { id:'mj-33', category:'dinos', titre:'Memory des ombres', emoji:'🃏', desc:'Associe chaque ombre à son dino !',        url:'mj-33.html', type:'html', orientation:'any', access:'sequence', maxStars:3, unlock:null, tag:'tts', status:'live' },
+  { id:'mj-40', category:'dinos', titre:'Tangram des dinos', emoji:'🔺', desc:'7 pièces pour former la silhouette !',     url:'mj-40.html', type:'html', orientation:'any', access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
   { id:'mj-41', category:'dinos', titre:'Les tuiles dinos',  emoji:'🀄', desc:'Trouve les paires de dinos libres !',      url:'mj-41.html', type:'html', orientation:'any', access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
   { id:'mj-32', category:'dinos', titre:'L\'atelier coloriage', emoji:'🖍️', desc:'Colorie les 60 dinos, garde tes œuvres !', url:'mj-32.html', type:'html', orientation:'any', access:'free', maxStars:0, unlock:null, tag:'tts', status:'live' },
 ];

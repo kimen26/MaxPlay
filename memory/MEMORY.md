@@ -9,6 +9,11 @@ Jeu éducatif 2D pour **Max**, 3.5-4 ans, passionné de bus (lignes Villejuif).
 Voir `memory/MAX_PROFILE.md` pour le profil complet.
 **Stack** : Phaser.js 3 + Vite + TypeScript · Résolution 1024×768 landscape
 
+## Infra & business (2026-07-06)
+
+Audit complet : `memory/INFRA-AUDIT-2026-07-06.md` (légal enfants, archi phasée 0→3, monétisation, anti-fraude, distribution).
+Décisions clés : compte parent + profil enfant pseudonyme · entitlements serveur (jamais de flag client) · codes cadeaux usage unique liés acheteur (jamais de code générique) · MoR Paddle/Lemon Squeezy · Phase 0 tant que < 50-100 foyers actifs hors proches · pubs = jamais vers enfants (cibler parents), organique d'abord.
+
 ## État jeux (2026-04-26, session 13)
 
 - **21 jeux** : mj-01, mj-04, mj-05, mj-06, mj-08, mj-09, mj-11, mj-12, mj-13a, mj-13b, mj-13c, mj-14 à mj-20 + max-adventure

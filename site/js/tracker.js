@@ -54,6 +54,8 @@ const Tracker = (() => {
 
   function save(data) {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {}
+    // Sync cloud si compte parent + profil actif (no-op sinon — cloud.js optionnel)
+    try { window.Cloud && window.Cloud.schedulePush(); } catch(e) {}
   }
 
   function _emptyStore() {
@@ -211,6 +213,22 @@ const Tracker = (() => {
   (function autoInit() {
     const id = _detectGameId();
     if (id) startSession(id);
+  })();
+
+  // ── Couche cloud à la demande ───────────────────────────────────────────
+  // Charge cloud.js + vraies voix UNIQUEMENT si un profil enfant est actif
+  // (compte parent connecté via compte.html). Anonyme = zéro requête, zéro
+  // changement — le mode dégradé freemium reste intact.
+  (function loadCloudLayer() {
+    try {
+      if (!localStorage.getItem('maxplay_active_child')) return;
+      if (window.Cloud) return;
+      ['js/cloud.js', 'js/voices-manifest.js', 'js/voice.js'].forEach(src => {
+        const s = document.createElement('script');
+        s.src = src; s.async = false;
+        document.head.appendChild(s);
+      });
+    } catch (e) {}
   })();
 
   // ── Auto-end ────────────────────────────────────────────────────────────

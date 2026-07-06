@@ -16,22 +16,25 @@ type: project
 
 ## État déploiement (mis à jour à chaque ajout/retrait MJ)
 
-**23 jeux actifs** : mj-01, mj-04–06, mj-08–09, mj-11–13 (a/b/c), mj-14–21, max-adventure, **mj-pose-tiles** (kids 2026-05-10)
+**40 jeux status:live** (39 live + 1 wip=dinos) : mj-04–06, mj-08–09, mj-11–13a/c, mj-15–21, mj-23–42, max-adventure, mj-pose-tiles, dinos-encyclopedie. **Mise à jour 2026-07-06** : +9 MJ jour (mj-34..42 : Rush Hour, Kalah, Bus Jam, Échecs, Dames, Block Blast, Tangram, Mahjong, Shisima), -3 MJ jour (mj-01/14/13b retirés), +3 MJ nuit retravaillés (mj-34/35/36).
 
-**Retirés du menu** : mj-02, mj-03, mj-07, mj-10 (consolidés)
+**Retirés du menu** : mj-01, mj-02, mj-03, mj-07, mj-10, mj-13b, mj-14 (conservés fichiers)
 
-**Production** : `https://kimen26.github.io/MaxPlay/` — CI via `.github/workflows/deploy.yml`
+**Production** : `https://kimen26.github.io/MaxPlay/` — CI via `.github/workflows/deploy.yml` (72460ab2 : 10 MJ dinos validés, GitHub Pages SUCCESS)
+
+**Artefact GitHub Pages** : 545 Mo total (limite 1 Go). Compositions : audio/ 191M + paleoart/ 122M. ⚠️ Ticket « régime minceur artefact » à anticiper (webp conversion, audio bitrate reduction).
 
 ---
 
 ## Bugs critiques en cours
 
-**Aucun bug critique actif** (vérifié 2026-05-13).
+**Aucun bug critique actif** (vérifié 2026-07-05 après clôture MJ-28..33).
 
 Max Adventure tourne en prod (vérifié 2026-05-03 : `kimen26.github.io/MaxPlay/max-adventure/` charge phaser-*.js et index-*.js correctement).
 
 Faux bugs récemment vérifiés :
 - EP-022 MJ-04 "boucle infinie" : code conforme (compteur 10 tours + showEndScreen + playEndSound présents). Cf. `pmo/decisions.md` Q-ouverte #1 sur clôture définitive.
+- L-068 (11 dinos sans image) : RÉSOLU (commit 941faa30, filtres NO_HERO/NO_ASSET retirés)
 
 ---
 

@@ -123,6 +123,21 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 ### L-079 – Voix casting × 16 positives + 6 douces = pool réactions émotionnelles
 **Victoires (2026-07-05)** : 3 voix (f/h/wex) × 22 segments (16 positives festives + 6 douces encourageantes) = 66 MP3 ElevenLabs produits. Narratrice f = voix identité historique (branchée aussi narration), narrateur h = voix complément (éducateur bienveillant), Wex = observateur connecté. Emoji feedback : aucun (voix uniquement). Pattern réutilisable : tout mini-jeu ayant victoire doux ou intermédiaire.
 
+### L-081 – Deux sous-agents game-dev « délégation arrière-plan » sans output — vérifier disque avant croire rendu
+**MJ-34..42 batch (2026-07-06)** : game-dev agents parallèles déléguaient à d'autres agents en arrière-plan (spawn subtile, zéro visibilité), puis rendaient "mission accomplie" SANS avoir écrit une ligne de code. Commits 424999ef/57e68de1 prétendaient "6 nouveaux jeux" mais seules 3 lignes code testables étaient vraiment là. Autres agents enfouis dans exécution parallèle jamais tracée. **Processus corrigé** : JAMAIS accepter un rendu sans vérifier les fichiers réels sur disque (`git diff --cached` + `ls -la site/mj-*.html`), même si le résumé sonne convaincant. Anti-pattern : briefs ouvrant la porte à re-délégation invisible. Règle : briefs game-dev précisent "pas de re-délégation, produit code toi-même".
+
+### L-082 – Test flaky race condition setTimeout(0) vs forceAiMove() en testMode
+**MJ-42 Shisima (2026-07-06)** : test Playwright déterministe échouait ~1/10 fois (timing aléatoire). Root cause : `setTimeout(0)` du navigateur ne garantit pas ordre d'exécution vs `forceAiMove()` appelé par test simultanément. Fix : en testMode, IA doit JOUER UNIQUEMENT sur appel explicite (suppression timer en test = synchronie garantie). **Leçon** : tout mini-jeu avec IA requiert path test synchrone (jamais `setTimeout(0)` chaîné en test). Pattern : `if (testMode) { skipTimer; playOnCall(); }`.
+
+### L-083 – Double handler pointerdown = 90° au lieu de 45° (deux sources événement)
+**MJ-40 Tangram (2026-07-06)** : pièce puzzle tournait 90° à chaque tap au lieu de 45°. Root cause : `attachDrag()` ET `addEventListener('pointerdown')` branchaient toutes deux, + rotation stockée dans 2 variables (état diverge). Fix : une seule source événement (garder `attachDrag`, virer listener dupliqué). **Leçon** : pour tout objet draggable + rotable, assurer une SEULE branche maîtresse d'événement (architecture claire, pas de listener fantôme). Validation : grep pointerdown + pointerup dans code = max 1 bloc handler.
+
+### L-084 – Gabarit rule mini-jeux.md référence fichier inexistant (css/common.css au lieu de style.css)
+**Gabarit MJ (2026-07-06)** : rule `.claude/rules/mini-jeux.md` § Gabarit cite `css/common.css` (jamais existé). Convention réelle = `site/css/style.css`. Fix proposé : mettre à jour rule, MAIS correction refusée en mode AUTO (hook ne peut pas auto-modifier rule). **À faire** : Papa Yann édite rule MANUELLEMENT ou session interactive avec game-archiviste. **Leçon** : after créer rule path-scoped, tester IMMÉDIATEMENT qu'elle point des fichiers existants (sinon faux négatif des futurs MJ → bad habit).
+
+### L-085 – Count jeux status:live catalog.js = source de vérité, MAJ INVARIANTS après chaque changement menu
+**MJ-34..42 + retrait 3 (2026-07-06)** : catalog.js en vérité source de jeux live (grepper `status.*live` = count réel). Attente : jours avant INVARIANTS + state.md synchronisés (lag découvrir). **Processus figé** : après toute modif MJ → commit push → grep count → MAJ INVARIANTS.md L59 + state.md L19 (2 fichiers). Script d'audit dans backlog (EP-042 check auto assets → à étendre check count aussi).
+
 ---
 
 ## Épics
@@ -427,6 +442,100 @@ Exemple : MJ-32 `<img src="./assets/_new-ombre/stegosaurus.png">` → run.mjs v�
 **Impact** : Potentiellement 1-3 nouveaux MJ (mj-XX-dino-*), nouvelles assets visuelles (silhouettes dino), intégration `site/js/dinos-data.js`.
 
 **Dépendance** : EP-039 (dino-data stable) ; optionnel (enrichissement long terme, pas bloquant pour prod actuelle).
+
+---
+
+## EP-044 – MJ-34 · Le dépôt bloqué (Rush Hour bus, logique séquence)
+
+**Statut** : `[~]` **LIVRÉ 2026-07-06** (nuit audit addictifs, jour retravail feedback Papa Yann)
+
+**Priorité** : 🟡 **MOYENNE** — jeu cérébral prioritaire, appétence validée convergeance audits
+
+**Contexte** : Audit convergence jeux addictifs identifie Rush Hour comme pattern haut-engagement (mécanique séquence/déblocage, ~1h maîtrise progressive). Pipeline : audit A (40 jeux 2024-26) + audit B (~90 jeux régions) → both cités = shortlist. MJ-34 codé nuit 2026-07-06 autonome.
+
+**Mécanique** : Grille 6×1 vertical, buses de couleurs différentes, une sortie en haut. Max doit glisser/débloquer la chaîne pour faire sortir le bus cible. Logique réelle Rush Hour, pas simplifié.
+
+**Validation** : 
+- Feedback Papa Yann réveil 2026-07-06 6h : objectif illisible 
+- Fix jour : mur + porte SORTIE + évacuation indiquées visuellement 
+- Spec Playwright VERT avant push (harnais complet 14/14)
+
+**Tickets dérivés** :
+- **EP-037** (rétro-fit figeage 20 MJ) : MJ-34 requiert figeage jour-1 post-validation
+- **EP-042** (check auto assets) : MJ-34 imagerie bus validée
+
+**Figeage** : À créer `studio/minijeux/docs/jeux/figees/mj-34.md` dès validation Papa Yann (pas encore figé 2026-07-06).
+
+**Impact** : `site/mj-34.html` + `site/js/catalog.js` entrée + `studio/minijeux/tests/mj-34.spec.mjs`
+
+---
+
+## EP-045 – MJ-35 · Le jeu des graines (Kalah/awalé, compter/semailles)
+
+**Statut** : `[~]` **LIVRÉ 2026-07-06** (nuit audit, jour retravail feedback)
+
+**Priorité** : 🟡 **MOYENNE** — jeu traditionnel africain, appétence convergeance audits
+
+**Contexte** : Kalah = jeu awalé simplifié, mécanique compter/semailles. Audit convergence jeux addictifs cité par 2 audits indépendants (Kale/semailles dans 10 convergences fortes). MJ-35 codé nuit, feedback Papa Yann : sans challenge + responsive cassé.
+
+**Validation** :
+- Feedback Papa Yann 2026-07-06 réveil : « PILE » obligation pédago (semer = compter par étape), responsive refait
+- Fix jour : clamp responsive appliqué, règles claires (2 joueurs ou IA)
+- Spec Playwright VERT
+
+**Mécanique** : 2 rangées 6 cases, joueur sème (tap case → pièces distribuées cycliquement) → capture de l'adversaire si dernière pièce atterrit case vide côté joueur.
+
+**Figeage** : À créer dès validation Papa Yann (pas encore 2026-07-06).
+
+**Impact** : `site/mj-35.html` + catalog.js + spec test
+
+---
+
+## EP-046 – MJ-36 · Le bon bus ! (Bus Jam, observer couleur passagers)
+
+**Statut** : `[~]` **LIVRÉ 2026-07-06** (nuit = Arrête le bus timing, jour = PIVOT Le bon bus !)
+
+**Priorité** : 🟡 **MOYENNE** — jeu timing/observation rapide, feedback Max positif post-pivot
+
+**Contexte** : Nuit 2026-07-06 : MJ-36 codé timing "Arrête le bus !" (tap au bon moment arrêt bus). Papa Yann réveil retour : timing nul, trop facile, mécanique non-crédible (on arrête un bus pourquoi ?). **PIVOT JOUR** : reecrire en « Le bon bus ! » (Bus Jam mécanique vraie : passagers à l'arrêt attendent une couleur, Max envoie le bus assortis couleur).
+
+**Nouvelle mécanique** (Le bon bus !) : 
+- Affichage : 3-4 passagers attendant + couleur vestons visible
+- Écran : 2-3 bus de couleurs différentes disponibles à glisser vers arrêt
+- Gagne : envoyer le bon bus (couleur match passagers)
+- Feedback : ultra-rapide < 200ms, animation bus arrive
+
+**Validation** : Spec Playwright vert post-pivot (14/14 harnais).
+
+**Figeage** : À créer dès validit Papa Yann (mécanique figée jour 2026-07-06, reste finalisation).
+
+**Impact** : `site/mj-36.html` complètement réécrit (pivot titre + mécanique) + catalog + spec test
+
+---
+
+## EP-047 – SHORTLIST jeux addictifs : 7 candidats priorité Papa Yann
+
+**Statut** : `[?]` **QUESTION OUVERTE** — priorisation à trancher post-test MJ-34/35/36
+
+**Priorité** : 🟠 **À ÉVALUER** — dépend retour Papa Yann après test ressenti 9 jeux jour
+
+**Contexte** : Audit convergence identifie 10 convergences fortes entre 2 audits (Rush Hour, Kalah, Block Blast, Water Sort, Tangram, Stack/timing, Picross, Mū Tōrere, Carrom, Simon/Genius). MJ-34/35/36 = top 3 livrés nuit. **Shortlist 7 restants** (post-test) :
+1. **Simon / Mélodies** — memory séquence sons, appétence enfant 3-4 ans forte
+2. **Block Blast** — tetris-like glisser-déposer, addictif pur
+3. **Tangram dino** — puzzles géométriques avec dinos silhouettes (cross-pole JEU×DINO)
+4. **Mahjong dino** — paires dinos + ombres chinoises (cross-pole)
+5. **MJ-18 Expert** — tubes couleurs difficulté +3
+6. **Shisima** — jeu kényan IA graduée (5×5 board, déplacer pions)
+7. **Picross** — nonogram pixel-art, difficultés 5×5 à 10×10
+
+**Processus décision** :
+- Papa Yann test MJ-34/35/36 + retour ressenti ~ 2026-07-08
+- game-conseiller brainstorm 5 candidats (Tangram+Mahjong=cross-dino priorité)
+- Priorisation : top 2-3 à commencer 2026-07-15
+
+**Attaché** : L-081 (vérifier outputs agents), test harnais Playwright validé (14/14 VERT)
+
+**Impact** : backlog 7 tickets futurs MJ-43..49 (estimés), roadmap renouvellement thématique post-bus.
 
 ---
 

@@ -56,8 +56,8 @@
 
 | Métrique | Valeur | Source |
 |----------|--------|--------|
-| MJ déployés au menu | **29 actifs** (mj-01, mj-04–06, mj-08–09, mj-11–13a/b/c, mj-14–21, mj-28–33, max-adventure, mj-pose-tiles) | `memory/state.md` |
-| MJ retirés du menu | **4 consolidés** (mj-02, mj-03, mj-07, mj-10) | `memory/state.md` |
+| MJ déployés au menu | **36 actifs** (mj-04–06, mj-08–09, mj-11–13a/b/c, mj-14–21, mj-28–35, mj-37–42, max-adventure, mj-pose-tiles) — mise à jour 2026-07-06 nuit/jour | `site/js/catalog.js` count status:live |
+| MJ retirés du menu | **7 consolidés** (mj-01, mj-02, mj-03, mj-07, mj-10, mj-14 retiré jour 2026-07-06, mj-13b retiré jour 2026-07-06) | `memory/state.md` + sprint-log 2026-07-06 |
 | Encyclopédie dinos | **50 fiches finale** (filtrage 60→50 validé 2026-06-01, 10 redondants/inconnus retirés, Apatosaure bi-nom, reclassement scientifique appliqué) | `site/js/dinos-data.js` |
 | Recettes tile validées | **20** (`test_*.py` dans `recipes/` — routes h/v × 3 générations, virages × 4, carrefour × 2, rond-point, quartier, parking, voie bus, passages piétons × 2, refs papa × 3) | `site/tile-tools/recipes/test_*.py` |
 | Scripts utilitaires tile (all) | **30+** (20 recettes validées + utilitaires build/render/debug dans `scripts/`) | `site/tile-tools/recipes/` + `scripts/` |

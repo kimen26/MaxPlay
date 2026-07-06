@@ -30,12 +30,14 @@ anonyme = voix robot Web Speech ("la dame"). Fallback automatique si MP3 absent.
 
 ## Mise en service (à faire une fois, dashboard)
 
-1. **Migration** : SQL Editor → coller `migrations/001_init.sql` → Run.
-   (Ou : retirer `--read-only` du MCP dans `~/.claude.json` et demander à Claude d'appliquer via `apply_migration`.)
+1. **Migrations** : SQL Editor → `001_init.sql` (✅ appliquée 2026-07-06) puis `002_indexes_hardening.sql` (index RLS + fix 3 WARN advisors).
 2. **Auth → URL Configuration** :
    - Site URL : `https://kimen26.github.io/MaxPlay/`
    - Redirect URLs : ajouter `https://kimen26.github.io/MaxPlay/compte.html`
-3. **Email** : provider Email activé par défaut. ⚠️ SMTP intégré bridé (~2-4 mails/h) — OK pour tester. Avant vrais utilisateurs : brancher **Resend** (gratuit 3 000/mois) dans Auth → SMTP Settings (décision audit).
+3. **Email → Templates → Magic Link** : ajouter le code à côté du lien, ex :
+   `<p>Ou tape ce code dans l'app : {{ .Token }}</p>`
+   ⚠️ Indispensable pour la PWA iOS : le lien magique s'ouvre dans Safari dont le stockage est SÉPARÉ de la PWA installée → la session n'atterrit jamais dans l'app. Le code à 6 chiffres, saisi dans compte.html, règle ça.
+4. **Email** : provider Email activé par défaut. ⚠️ SMTP intégré bridé (~2-4 mails/h) — OK pour tester. Avant vrais utilisateurs : brancher **Resend** (gratuit 3 000/mois) dans Auth → SMTP Settings (décision audit).
 
 ## Parcours utilisateur
 

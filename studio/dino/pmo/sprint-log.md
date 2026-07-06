@@ -2,6 +2,41 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-07-06 — CLÔTURE SESSION VOCAUX : 60 noms MP3 + 5 périodes livrés, branchement frise TODO
+
+**Livré** :
+- ✅ **60 MP3 noms dinos** : narrateur_h [excited], stability 0,4, padding 250ms, déployés `site/audio/dinos/noms/`, intégrés mj-24/28/31/33 branchement code + fallback TTS.
+- ✅ **5 MP3 périodes vocales** : trias, jurassique, cretace, cenozoique, pangee. Narrateur_h [excited], padding 250ms, stability 0,4. Assets prêts `site/audio/dinos/periodes/{id}.mp3`, HTTP 200 GitHub Pages.
+- ✅ **Doc maître audio gravée** : `site/sounds/_BANQUE-SONS.md` (carte 277 sons du site + 2 APIs dino-audio + process transverse audio produit). Périodes documentées.
+- ✅ **Instructions dinos vocales complètes** : mj-24/25/26/30/31 testé (Playwright), audio 100 % via `SoundPool.phrase()` narrateur_h (menus) + `playDinoNom()` noms.
+
+**État** :
+- ✅ **Audio encyclopédie sub-complète** : 51 dinos × 5 blocs (255 MP3) + 60 noms (60 MP3) = **315 MP3 déployés** · 8 Cénozoïque audio **EN ATTENTE quota EL reset ~10 juillet**.
+- ✅ **Manifest généré** `js/dinos-audio-manifest.js` (60 ids, jamais 404, fallback TTS auto).
+- ⏳ **TODO frise mj-31** : brancher 5 périodes vocales quand bande d'époque cliquée → `playEl('audio/dinos/periodes/'+band.id+'.mp3')` avant population dinos. Bloc cosmétique, aucun blocker technique, post-quota.
+
+**Leçon gravée (L-D-26)** : padding audio 250ms (L-D-069 JEU) appliqué uniformément (instructions + noms + périodes + récits). Pattern : `ffmpeg -af "adelay=250:all=1"` avant MP3 final (détail `_BANQUE-SONS.md` § Process).
+
+**Quota EL** : ~250 crédits restant avant reset. Frise branchement n'ajoute AUCUNE génération (zéro coût, juste play existing).
+
+---
+
+## 2026-07-06 — VOCAL DINO NOMS : 60 MP3 voix narrateur_h + DÉCISION FOND GRAVÉE
+
+**DÉCISION FOND GRAVÉE (14h) : statut bloc noms/ = 6ᵉ ASSET BONUS** — gravée INVARIANTS.md § Doctrine GED § « Statut bloc noms ».
+
+- **Raison** : ton jeu [excited] ≠ ton fiche [neutral], usage exclusif mini-jeux (mj-24/28/31/33), optionnel pour quota EL futur.
+- **Implication** : la ligne INVARIANTS « Dinos avec audio complet » reste 51 (5 blocs fiche seuls) ; noms/ tracé à part (60 MP3).
+- **Différé** : homogénéisation ton noms (unifier en ton fiche) après reset EL — décision Papa Yann.
+
+**État final** :
+- ✅ 60 noms vocaux déployés `site/audio/dinos/noms/`
+- ✅ Manifest `js/dinos-audio-manifest.js` régénéré (60 ids)
+- ✅ mj-24/28/31/33 branchés sur voix réelle (fallback TTS lift)
+- ✅ Décision FOND gravement dans INVARIANTS (anti-ambiguïté)
+
+---
+
 ## 2026-07-06 — VOCAL DINO NOMS : 60 MP3 voix narrateur_h
 
 **Livré** :
@@ -17,6 +52,8 @@
 - ✅ 60 dinos noms vocal === ID stable (frontière autoring/produit OK)
 - ✅ Audio encyclopédie sub-complète (51 segments × 5 blocs = 255 MP3 + 60 noms = 315 MP3 total déployé)
 - ⏳ Attente quota EL reset ~10 juillet pour EP-D-Audio-Recap-Par-Dino (60 récit-époque 3-5 sec)
+
+**Archiviste signal FORME** (2026-07-06 nuit) : 60 MP3 noms vocaux vérifiés **cohésion 100%** (60 fichiers `site/audio/dinos/noms/{id}.mp3` ↔ 60 IDs `dinos-data.js`). Aucun orphelin, aucun manquant. Rangement structure validé (parallèle existing `site/audio/dinos/` 4 blocs). **VERDICT** : VERT (aucune action FOND). **Ligne PMO** : `[AUDIO] Noms vocaux 60/60 → site/audio/dinos/noms/ (rangement validé FORME)`.
 
 ---
 

@@ -9,6 +9,39 @@
 
 ---
 
+## 2026-07-06 (coda) — BANQUE SONS REFONDÉE : 277 MP3 + API centralisée
+
+**Owner** : game-pmo (log) · audio-direction-elevenlabs (exécution) · game-dev (branchement MJ)
+
+**Trigger** : Audit session nuit → identification besoin système sonore unifié (répétitions, manque d'instructions voix, hubs sans audio).
+
+**Fait (session jour 2026-07-06)** :
+
+1. **Maître fichier créé** :
+   - **`site/sounds/_BANQUE-SONS.md`** = source de vérité unique système sonore
+   - Inventaire 277 fichiers MP3 : 10 UI + 54 FX + 66 voix (3 casting narrateur_f/narrateur_h/wex × 22 réactions) + 12 lieux + 10 phrases instructions + 5 périodes dinos + 60 noms dinos
+   - API JS centralisée : `victory-sounds.js` (pools, voix, phrases) + `dinos-audio-manifest.js` (voix dino)
+   - Process figé : check budget → prompt (EN/FR) → eleven_v3 + tags ton → voice-map.json → padding 250ms L-069 → slug → branchement + fallback TTS
+
+2. **Passe 2 livrée** (commit bf5e6dbb) :
+   - 10 phrases instructions (Narrateur H) générées avec tags ton
+   - Branchées mj-25/26/30 (+ essaie-encore→voice dans mj-24/31)
+   - API SoundPool.phrase() + fallback TTS validée
+
+3. **Reste clairement noté** :
+   - 5 phrases générées non branchées (reserve)
+   - Périodes dinos (5 audio) : non branchées hub voyage (attente contexte Wex/histoire époque)
+   - Passe 3 : 10+ MJ non-dino en TTS (audio par défaut, pas MP3 dédié)
+   - Budget EL : ~250 crédits consommés, reset ~10 juillet
+
+**État au reboot** :
+- ✅ Banque sons documentée, centralisée, point d'entrée unique
+- ✅ API stable (SoundPool + dinos-audio-manifest) — zéro modification jeux futurs sauf appels audio
+- ✅ 3 MJ (mj-24/25/26/30/31) branchés voix instructions
+- Attente : passe 3 (non-dino MJ) + périodes branchées hub quand histoire époque cristallisée
+
+---
+
 ## 2026-07-06 (nuit) — MÉGA-AUDIT JEUX ADDICTIFS + 3 MJ NOCTURNES (34/35/36 en dev)
 
 **Owner** : game-pmo (log) · 4 agents dev (code nuit) · 2 audits (synthèse) · Papa Yann (validation réveil)

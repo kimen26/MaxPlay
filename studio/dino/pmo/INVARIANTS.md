@@ -20,6 +20,7 @@
 | Accroches menu (voix réelle) | **17** | `audio/dinos/menu-*.mp3` (4 onglets + 9 familles `menu-fam-*` + 4 régimes `menu-regime-*`) |
 | Spéciaux (Pangée, Extinction) | **2** | `audio/dinos/special-*.mp3` |
 | Dinos avec audio complet (recap+4 blocs) | **51** | `DINO_AUDIO` (✅ 2026-06-15 suite 3 : production V3 complète — note : 8 dinos Cénozoïque audio EN ATTENTE quota EL reset ~9 juillet) |
+| Noms vocaux dino (assets bonus) | **60** | `site/audio/dinos/noms/{id}.mp3` (✅ 2026-07-06 : 60 MP3 narrateur_h [excited] jeu, lancés dans mj-24/28/31/33) |
 
 ## 11 familles (nom scientifique = titre)
 
@@ -76,6 +77,8 @@ Résolus via `narration/personnages/voix-meta/voice-map.json`. Modèle **eleven_
 2. 🔒 **ZÉRO CHIFFRE EN DUR** — aucun INDEX/README/CLAUDE.md/rule ne cite un count (dinos, familles, silhouettes). Ils POINTENT vers la source. ⚠️ **Ce fichier (INVARIANTS) est la SEULE exception légitime** : c'est le tracker des chiffres clés, c'est sa fonction — mais chaque chiffre cite sa source et date sa vérif. **Portée : la GOUVERNANCE uniquement, JAMAIS le contenu narré** — un récit/fiche DOIT dire « il y a 66 millions d'années », « 9 mètres » (règle figée anti-nian-nian). Ne jamais appliquer « zéro chiffre » au contenu que l'enfant entend.
 3. 🔒 **FRONTIÈRE AUTORING / PRODUIT** — une feature (mini-jeu, page) ne lit QUE `site/js/dinos-data.js` + assets `site/img/dinos/` référencés, nommés par `id` stable. Jamais elle ne monte lire dans `studio/` (non déployé). Donnée manquante → descend dans dinos-data.js via script d'export.
 4. 🔒 **CHECKLIST « DINO COMPLET » (8 axes)** — `hero · 5 scènes paléoart (headshot/manger/paris/ecosysteme/funfact) · coloriage · 5 segments audio (nom/taille/regime/funfact/recap) · silhouette · fiche fact-checkée+relue-péda · étymo · mesures`. (Le récit de voyage est par-époque, PAS par-dino → hors checklist.) Suivi via l'outil généré `_ETAT-DINOS.md` (branché dans dino-archiviste, ticket EP-D-GED).
+
+**Statut du bloc « noms vocaux » (décision 2026-07-06)** : Les 60 MP3 narrateur_h `site/audio/dinos/noms/{id}.mp3` sont un **6ᵉ type d'asset BONUS** hors des 5 blocs fiche standard (nom/taille/régime/funfact/recap). Raison : ton jeu [excited] distinct du ton fiche [neutral], usage exclusif mini-jeux (mj-24, mj-28, mj-31, mj-33), optionnel pour nouvelles fiches audio (EL quota). **Implication gouvernance** : la ligne INVARIANTS « Dinos avec audio complet » reste à 51 (les 5 blocs fiche obligatoires) ; le bloc bonus noms/ est tracé à part. Homogénéisation possible post-reset (unifier tous noms en ton fiche) — décision différée Papa Yann.
 
 ## 🧬 Table de réconciliation familles (clé technique ↔ libellé) — figée 2026-07-03
 

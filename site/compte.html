@@ -72,6 +72,13 @@
       <input type="email" id="email" placeholder="ton.email@exemple.fr" autocomplete="email">
       <button id="btn-login">Recevoir mon lien magique ✉️</button>
       <div id="login-msg" class="msg"></div>
+      <!-- Saisie du code : indispensable quand le lien s'ouvre dans un autre
+           navigateur que l'app (PWA installée sur iPhone notamment) -->
+      <div id="code-zone" class="hidden" style="margin-top:14px">
+        <p>Le lien ne marche pas ? Tape le code à 6 chiffres de l'email :</p>
+        <input type="text" id="otp-code" inputmode="numeric" maxlength="6" placeholder="123456" autocomplete="one-time-code">
+        <button class="secondary" id="btn-code">Valider le code</button>
+      </div>
     </div>
   </div>
 
@@ -129,8 +136,16 @@
       kids.forEach(k => {
         const row = document.createElement('div');
         row.className = 'child-row' + (active && active.id === k.id ? ' active' : '');
-        row.innerHTML = '<span class="nick">👦 ' + k.nickname + '</span>' +
-          (active && active.id === k.id ? '<span class="badge">actif</span>' : '');
+        const nick = document.createElement('span');
+        nick.className = 'nick';
+        nick.textContent = '👦 ' + k.nickname; // textContent : surnom = donnée utilisateur, jamais innerHTML
+        row.appendChild(nick);
+        if (active && active.id === k.id) {
+          const badge = document.createElement('span');
+          badge.className = 'badge';
+          badge.textContent = 'actif';
+          row.appendChild(badge);
+        }
         row.onclick = async () => {
           row.style.opacity = 0.5;
           try { await Cloud.setActiveChild(k.id); render(); }
@@ -164,10 +179,21 @@
       await Cloud.signIn(email);
       msg.textContent = '✉️ C\'est parti ! Ouvre l\'email et clique sur le lien (regarde les spams).';
       msg.className = 'msg ok';
+      document.getElementById('code-zone').classList.remove('hidden');
     } catch (e) {
       msg.textContent = 'Erreur : ' + (e.message || 'envoi impossible');
       msg.className = 'msg err';
       $('btn-login').disabled = false;
+    }
+  };
+
+  $('btn-code').onclick = async () => {
+    const msg = $('login-msg');
+    try {
+      await Cloud.verifyCode($('email').value, $('otp-code').value);
+      render();
+    } catch (e) {
+      msg.textContent = 'Code invalide ou expiré.'; msg.className = 'msg err';
     }
   };
 

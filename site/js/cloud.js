@@ -102,6 +102,24 @@
     return true;
   }
 
+  // Connexion par CODE à 6 chiffres (même email que le magic link).
+  // Indispensable en PWA iOS : le lien s'ouvre dans Safari (stockage séparé
+  // de la PWA installée) → la session n'atterrit pas dans l'app. Le code,
+  // saisi DANS la PWA, si. Prérequis : ajouter {{ .Token }} au template
+  // email Supabase (voir infra/supabase/README.md).
+  async function verifyCode(email, code) {
+    const c = await _getClient();
+    const { data, error } = await c.auth.verifyOtp({
+      email: String(email || '').trim().toLowerCase(),
+      token: String(code || '').trim(),
+      type: 'email',
+    });
+    if (error) throw error;
+    _session = data.session;
+    _emit();
+    return true;
+  }
+
   async function signOut() {
     if (!_client) return;
     await _client.auth.signOut();
@@ -154,9 +172,18 @@
       if (!r) { out.games[id] = l; return; }
       // Le record avec le plus de parties gagne (compteur monotone) ;
       // à égalité, le plus récent.
-      out.games[id] = (r.plays > l.plays) ? r
-                    : (l.plays > r.plays) ? l
-                    : ((r.lastPlayed || '') > (l.lastPlayed || '') ? r : l);
+      const win = (r.plays > l.plays) ? r
+                : (l.plays > r.plays) ? l
+                : ((r.lastPlayed || '') > (l.lastPlayed || '') ? r : l);
+      // Histoires UNIONNÉES (jamais de perte d'étoile : stars.js dérive des
+      // sessions parfaites de l'history — deux appareils en parallèle ne
+      // doivent pas s'écraser). Dédup par date, tri chrono, cap 20.
+      const seen = new Set();
+      const history = [...(l.history || []), ...(r.history || [])]
+        .filter(h => { const k = h.date; if (!k || seen.has(k)) return false; seen.add(k); return true; })
+        .sort((a, b) => (a.date || '').localeCompare(b.date || ''))
+        .slice(-20);
+      out.games[id] = { ...win, history };
     });
     // Sessions : union dédupliquée par (jeu, date), bornée à 200
     const seen = new Set();
@@ -203,9 +230,10 @@
 
   global.Cloud = {
     init, isConnected, hasActiveChild, status,
-    signIn, signOut,
+    signIn, verifyCode, signOut,
     listChildren, createChild, setActiveChild, activeChild,
     syncNow, schedulePush, onChange,
+    _merge, // exposé pour les tests uniquement
   };
 
   init();

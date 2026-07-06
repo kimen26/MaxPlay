@@ -433,7 +433,7 @@
       } else if (res.outcome === 'reveal'){
         sndBuzz();
         G.notePip(qCount, 4);
-        speak('Regardons ensemble !');
+        SoundPool.phrase('regardons-ensemble', 'Regardons ensemble !');
         setTimeout(showReveal, 900);
       } else {
         // Erreur douce : échange les deux mal placés avec explication, sans buzz punitif

@@ -115,7 +115,7 @@
         img.style.animationDelay = (i*0.12) + 's';
         area.appendChild(img);
       }
-      speak('Combien de dinos ? Compte-les !');
+      SoundPool.phrase('combien-de-dinos', 'Combien de dinos ? Compte-les !');
 
       // choix numériques : la bonne + voisines plausibles dans la plage globale
       const correct = currentCount;
@@ -155,7 +155,7 @@
       } else {
         btn.classList.add('ko'); btn.disabled = true; streak = 0;
         sndBuzz();
-        speak('Compte encore !');
+        SoundPool.phrase('compte-encore', 'Compte encore !');
       }
     }
 

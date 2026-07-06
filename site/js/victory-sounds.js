@@ -112,6 +112,24 @@ const SoundPool = {
     const line = _pickRandom(lines, 'voice-' + ton);
     return _playFile(`${dir}/${line}.mp3`, volume);
   },
+  /** Phrase d'instruction préenregistrée (sounds/voix/phrases/<slug>.mp3),
+   *  fallback TTS navigateur si absent. Slugs : trouve-le-meme-dino,
+   *  combien-de-dinos, compte-encore, regardons-ensemble, il-vivait-quand,
+   *  cest-parti, a-toi-de-jouer, cherche-bien, encore-une-fois,
+   *  ouvre-bien-les-yeux. */
+  phrase(slug, fallbackText, volume = 0.95) {
+    try {
+      const a = new Audio(`sounds/voix/phrases/${slug}.mp3`);
+      a.volume = volume;
+      a.play().catch(() => {
+        if (fallbackText && window.TTS) TTS.speak(fallbackText, { pitch: 1.05, priority: true });
+      });
+      return a;
+    } catch (e) {
+      if (fallbackText && window.TTS) TTS.speak(fallbackText, { pitch: 1.05, priority: true });
+      return null;
+    }
+  },
 };
 
 // ── API historique (inchangée — utilisée par tous les mj-XX) ─────────────────

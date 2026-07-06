@@ -1,0 +1,90 @@
+# 🔊 Banque de sons MaxPlay — carte + mode d'emploi
+
+> Source de vérité du système sonore du site. Créé 2026-07-06 (session refonte audio).
+> **Avant de générer un son : lire ce fichier.** Avant de coder un son dans un jeu : lire § API.
+
+---
+
+## 1. Où c'est stocké (277 fichiers, tous MP3)
+
+| Dossier | Contenu | Voix | Généré via |
+|---|---|---|---|
+| `site/sounds/ui/` (10) | identité hub « Ligne de Max » : moteur-bus, klaxon, porte-bus, tap, fanfare-victoire, etoile, deblocage, ambiance-nuit (loop), voyage-temps, veilleuse | SFX | `text_to_sound_effects` |
+| `site/sounds/fx/` (54) | catalogue général : victoires, rigolo (prout…), dinos (rugissements), animaux, véhicules, instruments, pièces, espace, divers | SFX | `text_to_sound_effects` |
+| `site/sounds/voix/f/` (22) | réactions Narratrice — 16 positives + 6 douces (super, bravo, oups, presque…) | narrateur_f | `text_to_speech` |
+| `site/sounds/voix/h/` (22) | réactions Narrateur — idem | narrateur_h | `text_to_speech` |
+| `site/sounds/voix/wex/` (22) | réactions Wex — idem | wex | `text_to_speech` |
+| `site/sounds/voix/lieux/` (12) | noms des lieux des 2 hubs : `bus-<zone>.mp3` + `fusee-<zone>.mp3` (dodo, garage, lettres, monde, dinos, roulotte) | narrateur_f | `text_to_speech` |
+| `site/sounds/voix/phrases/` (10) | instructions fixes des jeux : trouve-le-meme-dino, combien-de-dinos, compte-encore, regardons-ensemble, il-vivait-quand, cest-parti, a-toi-de-jouer, cherche-bien, encore-une-fois, ouvre-bien-les-yeux | narrateur_h | `text_to_speech` |
+| `site/audio/dinos/periodes/` (5) | trias, jurassique, cretace, cenozoique, pangee | narrateur_h | `text_to_speech` |
+| `site/audio/dinos/noms/` (60) | vocal du nom de chaque dino, `<id>.mp3` (ton `[excited]`, usage jeux) | narrateur_h | `text_to_speech` |
+| `site/audio/dinos/<id>-nom.mp3` (60) | copies à plat consommées par les MJ via le manifest (voir § API dinos) | narrateur_h | copie de noms/ + segments fiche antérieurs |
+
+Voix résolues via `studio/narration/personnages/voix-meta/voice-map.json` (jamais hardcoder un voice_id).
+
+**Page d'écoute** : `site/dev-sounds-ui.html` (toutes les catégories, tap = écoute).
+
+---
+
+## 2. Comment on réutilise (API — 2 fichiers JS)
+
+### `site/js/victory-sounds.js` — pools + voix + phrases (chargé par tous les mj-XX)
+```js
+SoundPool.play(theme, volume)   // theme: victory | end-doux | success | error | apparition | collecte | deblocage
+SoundPool.voice(ton, volume)    // ton: 'positif' | 'doux' — pioche voix (f/h/wex) × phrase AU HASARD, anti-répétition
+SoundPool.phrase(slug, fallbackText, volume)  // MP3 de sounds/voix/phrases/, fallback TTS si absent
+playEndSound(score, maxScore)   // fanfare de fin + voix aléatoire ~1.4s après (API historique, inchangée)
+playErrorSound()                // pool 'error'
+```
+
+### `site/js/dinos-audio-manifest.js` — nom parlé d'un dino
+```js
+playDinoNom(id, fallbackName, {then})  // joue audio/dinos/<id>-nom.mp3, fallback TTS, callback then
+window.DINO_NOM_AUDIO                    // Set des 60 ids ayant un -nom.mp3
+```
+Le manifest est **généré** : après tout ajout de `<id>-nom.mp3`, régénérer le Set (voir en-tête du fichier).
+
+### Hubs (index2/index3) — nom du lieu parlé
+Fonction locale `speakLieu(zone, txt)` : joue `sounds/voix/lieux/{bus|fusee}-<zone>.mp3`, fallback `speak()` TTS.
+
+**Règle d'or** : tout appel voix garde un **fallback TTS navigateur** (si le MP3 manque/ne charge pas, le jeu parle quand même).
+
+---
+
+## 3. Process de génération (à SUIVRE pour tout nouveau son)
+
+1. **Vérifier le budget** : `check_subscription` MCP ElevenLabs. ~25 crédits/seconde de son. Reset mensuel (~10 du mois).
+2. **Prompt en anglais** pour `text_to_sound_effects` (SFX). **Texte FR** pour `text_to_speech` (voix).
+3. **Tags de ton v3** (voix) : modèle `eleven_v3` OBLIGATOIRE, `stability` 0.4 (dino) / 0.35 (réactions). Tags en tête du texte :
+   - Positif : `[excited]` `[cheerfully]` `[amazed]` `[proud]` `[delighted]` `[triumphant]` `[laughing]` `[giggles]` `[gasps]`
+   - Doux : `[gently]` `[softly]` `[encouraging]` `[sheepish]` `[playful]` `[warmly]` `[curious]` `[whispers]`
+4. **Voix** : résoudre par rôle via voice-map.json (narrateur_h menus/dino · narrateur_f voyage/lieux · wex).
+5. **Padding 250 ms OBLIGATOIRE en tête** (règle L-069) — sinon attaque coupée sur mobile/Bluetooth :
+   ```bash
+   ffmpeg -y -i in.mp3 -af "adelay=250:all=1" -codec:a libmp3lame -b:a 128k out.mp3
+   ```
+   (⚠️ le fichier temporaire doit garder l'extension `.mp3`, ex `out.pad.mp3`, sinon ffmpeg refuse le muxer.)
+6. **Nommer par slug/id stable** (frontière autoring/produit dino : les jeux lisent par `id`).
+7. **Brancher** via l'API ci-dessus, **garder le fallback TTS**.
+8. **Tester** : harnais `npm run mj:test mj-XX` vert avant push. Commit + push (Papa Yann teste via GitHub Pages).
+
+---
+
+## 4. Ce qui est branché (fait)
+
+- **Tous les mj-XX** : fin de partie = `playEndSound` → fanfare pool + voix aléatoire (3 voix × 22). Erreur = pool.
+- **Dinos** : mj-24, mj-31 (nom réel + fallback), mj-28 (bouton 🔊), mj-33 (memory : flip + paire).
+- **Instructions** : mj-25 (trouve-le-meme + cherche-bien→voice), mj-26 (combien + compte-encore), mj-30 (regardons-ensemble). mj-24/31 : essaie-encore→voice.
+- **Hubs** : index2 (6 lieux), index3 (6 planètes) parlent en narratrice.
+
+## 5. Ce qui reste (TODO — après reset crédits ~10 juillet)
+
+- **5 phrases générées mais pas posées** : cest-parti, a-toi-de-jouer, cherche-bien, encore-une-fois, ouvre-bien-les-yeux → à brancher au démarrage/rejeu des jeux.
+- **Périodes (5) pas encore branchées** dans le voyage/la frise (mj-31 dit le nom du dino, pas encore « Le Jurassique ! ») — assets prêts dans `audio/dinos/periodes/`.
+- **Hétérogénéité de ton** : les 9 mégafaune `-nom.mp3` sont en `[excited]` (ton jeu), les 51 autres en ton fiche. Homogénéiser si gênant.
+- **Phrases à nombre variable** ("Il y avait 4 dinos") : restent en TTS (non préenregistrables) — assumé.
+- **Passe 3 possible** : instructions des MJ non-dino (mj-01, mj-04…) encore en TTS.
+
+---
+
+_Décisions gravées : game-pmo (pools L-077..079, règle 250ms L-069 dans rules.md), dino-pmo (noms bonus hors count fiche). Mémoire transverse : `reference_sfx_silence_padding`._

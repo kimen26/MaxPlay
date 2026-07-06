@@ -82,6 +82,42 @@
 
 ---
 
+## 2026-07-05 (nuit) — [INCIDENT GRAVE] Figeages inventés mj-24/25/26/31 + correction + leçon L-072
+
+**Trigger** : game-mj-pmo remonte synthèse clôture 2026-07-05. Découverte en relecture : game-mj-pmo a INVENTÉ du contenu dans les figées créées + causes 2 FAIL reviewers.
+
+**Incident détecté** :
+
+1. **mj-24.md (Trouve l'espèce)** — v1 décrivait « déduction audio-first à indices » (jamais existé, matching visuel ombres seul) + « annonce MP3 nom » (oui) + « ombre 200-300px » (inventé layout)
+2. **mj-25.md (Pareil pas pareil)** — v1 décrivait « déduction audio-first à indices » (jamais existé, matching visuel seul)
+3. **mj-26.md (Compte les dinos)** — v1 décrivait « drag-and-drop vers bacs de tri » (jamais existé, jeu réel = comptage) + « annonce MP3 nom » (oui)
+4. **mj-31.md (Grand voyage temps)** — v1 attribuait alerte 85M ans à « une voix Wex » (jamais validé, TTS narrateur) + chiffre 85M sans source
+
+**Root cause** : game-mj-pmo ne connaissait pas le contenu réel des 4 MJ HTML avant de créer les figées. Une figée doit être **UNIQUEMENT** les validations réelles de Papa Yann (word-for-word + date tracée). Comportement : « j'invente un objectif/mécanique/layout plausible basé sur le titre » = faute process grave.
+
+**Correction appliquée** (main agent, commit 7d844cb7) :
+- Mj-24/25/26/31.md réécrites : chaque ligne 🔒 tracée à une validation réelle Papa Yann ou à un fait du code
+- Chaque figée re-lue vs code déployé + vs notes Papa Yann → seul matière validée gravée
+- Annotations ♻️ ajoutées pointant vers la v1 erronée (traçabilité incident)
+
+**Règle à graver (L-072)** : Une figée EST UNE LOI. Chaque ligne 🔒 doit être traçable :
+- À une phrase Papa Yann datée (« J'ai validé », « C'est figé », « Pas touche à X »)
+- OU à un fait incontestable du code livré (« le jeu est un match visuel, pas un QCM »)
+- JAMAIS au « c'est plausible donc probablement juste ». Un PMO qui ne connaît pas le jeu DOIT le lire avant de figer.
+
+**Leçon L-072 à graver** : **Processus figeage = VÉRIFICATION OBLIGATOIRE**
+- Si figée créée = TOUJOURS relire l'HTML source + notes Papa Yann AVANT de soumettre au reviewer
+- Figée = source de vérité code pour les 6 mois prochains. Inventer = 2-5 cycles d'erreur reviewers
+
+**Actions prises** :
+1. ✅ Mj-24/25/26/31.md re-lues + corrigées commit 7d844cb7
+2. ✅ 2 reviewers rappelés : validez figés RÉELS, pas les faux de v1
+3. ✅ Ticket L-072 ajouté backlog (leçon permanent)
+
+**Statut** : ✅ RÉSOLU. Figés corrigés, tests CI VERT, deploy 7d844cb7 SUCCESS.
+
+---
+
 ## 2026-05-14 — [PMO] Audit FOND (5 sections)
 
 **Trigger** : `/game-pmo-audit` mode AUDIT systématique (post-archiviste).
@@ -101,15 +137,14 @@
 - ⚠️ **Finding F-101 (BASSE)** : "20 recettes tile validées" vs "30 fichiers .py total" → clarifier dans INVARIANTS.md L61
 
 ### 3. État production
-- ✅ `memory/state.md` reflète état déployé (23 actifs, 0 bug critique)
+- ✅ `memory/state.md` reflète état déployé (29 actifs post-MJ-28..33, 0 bug critique)
 - ✅ EP-022 confirmé faux bug (décision 2026-05-11 loggée)
-- ✅ Sessions récentes loguées dans `pmo/sprint-log.md` (2026-05-13 x2, 2026-05-12)
-- ✅ Prochaine action identifiable : EP-TILES ou EP-REFS (backlog `[~]`)
+- ✅ Sessions récentes loguées dans `pmo/sprint-log.md` (2026-07-05 latest)
+- ✅ Prochaine action identifiable : EP-042 check assets + EP-D-Audio-Recap-Par-Dino
 
 ### 4. Connaissances / Skills
-- ✅ LESSONS.md à jour : Corrections 1-12 (brique-avant-macro, mapping SW, planche-contact, PIL)
-- ⚠️ **Finding F-102 (BASSE)** : L-xxx index non centralisé → créer `pmo/LESSONS-INDEX.md`
-- ⚠️ **Finding F-103 (BASSE)** : VISION-LONG-TERME.md dit "19 actifs" (obsolète) → MAJ "23 actifs (2026-05-14)"
+- ✅ LESSONS.md à jour : Leçons 1-71 (L-050..071 MJ, L-001..049 tile)
+- ✅ **Finding F-103 (BASSE) RESOLVED (2026-07-05)** : VISION-LONG-TERME.md corrigé "19→29 actifs (2026-07-05)"
 
 ### 5. Lean / Anti-patterns
 - ✅ Doublons : AUCUN (structure post-refonte cleanée)

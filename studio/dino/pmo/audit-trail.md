@@ -2,6 +2,30 @@
 
 > Traces des audits FOND (`dino-pmo`) et FORME (`dino-archiviste`). Entrée datée par audit.
 
+## 2026-07-06 — LIVRAISON AUDIO 60 NOMS VOCAUX (« VOCAL DU NOM DU DINO »)
+
+**Lancé par** : commit c6e2c7a4 (livraison audio noms vocaux).
+
+**Scope** : Validation de cohérence audio « noms vocaux » (60 MP3 `site/audio/dinos/noms/<id>.mp3`) vs `dinos-data.js`.
+
+**Vérifications rapides** :
+- ✅ **Compte disque** : 60 fichiers MP3 présents dans `site/audio/dinos/noms/`.
+- ✅ **Cohérence 100 %** : 60 IDs audio → 60 IDs dinos-data.js, aucun orphelin (référencés) / aucun manquant.
+- ✅ **Nommage** : `{id}.mp3` aligné champ `id` de data.
+- ✅ **Rangement validé** : `noms/` est le BON rangement (parallèle au modèle : `audio/dinos/` racine contient fichiers « bloc » par dino `{id}-{bloc}.mp3`, sous-dossiers `noms/` / `variantes-linguistiques-futures/` pour structurer par type d'usage).
+
+**Impact INVARIANTS** :
+- ❌ **N'affecte pas les counts figés** : ce bloc audio est SUPPLÉMENTAIRE (51 dinos avaient audio « bloc » complet : recap/nom/taille/regime/funfact). Ce nouveau bloc 60 « vocal du nom » **n'est pas un remplacement** des 51 existants, c'est un **ajout feature** (amélioration accessibilité, séquence d'onboarding). INVARIANTS.md stays unchanged.
+- ✅ **Références code** : code dev-dinos.html à vérifier (DINO_NOMS_AUDIO si consulté). Si pas de code qui l'appelle → audio live mais non wired = OK tant qu'une future feature l'intègre.
+
+**Findings** :
+- 🟢 **VERT — livraison complète et cohérente**. Rangement correct, count validé, zéro orphelin.
+- 🟡 **À vérifier (non-bloquant)** : dev-dinos.html réfère-t-il ce bloc noms ? Si non, l'audio existe mais n'est pas intégré à la UI. Pas une erreur (asset « en attente UI ») mais à documenter.
+
+**Verdict** : **Bloc audio VALIDÉ — rangement + cohérence 100 %**. Mise à jour INVARIANTS non requise (supplémentaire, pas remplacement).
+
+---
+
 ## 2026-07-05 — AUDIT VISUEL COMPLET 60 DINOS + ANALYSE 8 ESPÈCES FAUSSES (paléoart)
 
 **Lancé par** : dino-pmo (mode AUDIT après session visuelle complète).

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MJ-42 — Shisima !</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <style>
+    /* --- GABARIT HEADER CANONIQUE (ne pas inventer, copier tel quel) --- */
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+    body { background:#1a1a2e; font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
+    .hdr {
+      display:flex; align-items:center; gap:10px;
+      padding:6px 12px; flex-shrink:0;
+      background:rgba(0,0,0,0.25);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+    .hdr a {
+      color:#fff; text-decoration:none; font-size:1.3rem;
+      background:rgba(255,255,255,0.12); border-radius:8px;
+      padding:4px 10px; font-weight:900; flex-shrink:0;
+    }
+    .hdr a:active { background:rgba(255,255,255,0.25); }
+    .htitle { flex:1; font-size:1rem; font-weight:900; }
+    /* --- FIN GABARIT HEADER --- */
+
+    body {
+      background:linear-gradient(180deg,#fbb034 0%,#f6a53f 18%,#e08e3a 40%,#c97b3c 60%,#a86a3e 100%);
+    }
+    .hdr { background:rgba(0,0,0,0.18); }
+
+    #kenya-badge {
+      position:absolute; top:44px; right:10px; z-index:5;
+      background:rgba(0,0,0,0.35); border-radius:10px;
+      padding:4px 10px; font-size:0.72rem; font-weight:900;
+      color:#fff; text-shadow:0 1px 2px rgba(0,0,0,0.4);
+    }
+
+    .stars {
+      text-align:center; padding:4px 8px; font-size:1.1rem; flex-shrink:0;
+    }
+    .star { opacity:0.35; transition:opacity 0.2s, transform 0.2s; display:inline-block; }
+    .star.on { opacity:1; transform:scale(1.15); }
+
+    .banner {
+      text-align:center; font-size:0.95rem; font-weight:900; padding:4px 12px;
+      color:#fff8e0; text-shadow:0 1px 3px rgba(0,0,0,0.4); flex-shrink:0; min-height:1.4em;
+    }
+
+    .stage {
+      flex:1; position:relative; display:flex; align-items:center; justify-content:center;
+      overflow:hidden;
+    }
+
+    /* Soleil */
+    .sun {
+      position:absolute; top:6%; right:10%; width:70px; height:70px; border-radius:50%;
+      background:radial-gradient(circle at 35% 35%, #fff6c8, #ffd24a 55%, #ff9d2e 100%);
+      box-shadow:0 0 40px rgba(255,180,60,0.6);
+      z-index:0;
+    }
+
+    #board-svg { position:relative; z-index:2; touch-action:none; }
+
+    .pt {
+      cursor:pointer;
+    }
+    .pt-bg {
+      fill:rgba(255,255,255,0.22); stroke:rgba(255,255,255,0.55); stroke-width:3;
+    }
+    .pt-bg.center {
+      fill:#3aa0d8;
+    }
+    .pt-bg.hint {
+      fill:rgba(120,255,150,0.55); stroke:#7dffb0; stroke-width:5;
+      animation:pulse-hint 0.9s ease-in-out infinite;
+    }
+    .pt-bg.movable {
+      animation:pulse-movable 1.1s ease-in-out infinite;
+    }
+    .pt-bg.win-glow {
+      animation:pulse-win 0.8s ease-in-out infinite;
+    }
+    @keyframes pulse-hint {
+      0%,100% { opacity:0.7; } 50% { opacity:1; }
+    }
+    @keyframes pulse-movable {
+      0%,100% { stroke-width:3; } 50% { stroke-width:6; stroke:#fff6c8; }
+    }
+    @keyframes pulse-win {
+      0%,100% { stroke-opacity:0.4; } 50% { stroke-opacity:1; }
+    }
+
+    .pawn { pointer-events:none; }
+    .pawn-max circle.body { fill:#ff5b7a; stroke:#fff; stroke-width:3; }
+    .pawn-ai circle.body { fill:#5bbf6a; stroke:#fff; stroke-width:3; }
+    .pawn.selected circle.body { filter:drop-shadow(0 0 8px #ffe066); }
+
+    .waterdot {
+      animation:water-pulse 2s ease-in-out infinite;
+      transform-origin:center;
+    }
+    @keyframes water-pulse {
+      0%,100% { transform:scale(1); opacity:0.9; }
+      50% { transform:scale(1.12); opacity:1; }
+    }
+
+    /* Victoire overlay */
+    #overlay {
+      position:fixed; inset:0; background:rgba(0,0,0,0.55);
+      display:none; align-items:center; justify-content:center; z-index:50;
+      flex-direction:column; gap:14px; text-align:center; padding:20px;
+    }
+    #overlay.show { display:flex; }
+    #overlay h2 { font-size:1.6rem; text-shadow:0 2px 6px rgba(0,0,0,0.5); }
+    #overlay p { font-size:1.05rem; color:#fff8e0; }
+    #replay-btn {
+      font-family:'Fredoka One',sans-serif; font-size:1.1rem; font-weight:900;
+      background:#5bbf6a; color:#fff; border:none; border-radius:16px;
+      padding:16px 30px; min-height:80px; min-width:200px; cursor:pointer;
+      box-shadow:0 6px 0 #3d8a48;
+    }
+    #replay-btn:active { transform:translateY(4px); box-shadow:0 2px 0 #3d8a48; }
+
+    .acacia { position:absolute; bottom:0; left:2%; z-index:1; opacity:0.85; }
+    .acacia2 { position:absolute; bottom:0; right:4%; z-index:1; opacity:0.7; transform:scaleX(-1); }
+  </style>
+</head>
+<body>
+<div id="app">
+
+  <!-- HEADER — copier tel quel, changer uniquement l'emoji et le titre -->
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">🦎 Shisima !</span>
+  </div>
+
+  <div id="kenya-badge">Un jeu du Kenya 🇰🇪</div>
+
+  <div class="stars" id="stars">
+    <span class="star" data-s="1">⭐</span>
+    <span class="star" data-s="2">⭐</span>
+    <span class="star" data-s="3">⭐</span>
+  </div>
+
+  <div class="banner" id="banner">À toi de jouer, Max !</div>
+
+  <div class="stage">
+    <div class="sun"></div>
+    <svg class="acacia" width="90" height="130" viewBox="0 0 90 130">
+      <rect x="40" y="60" width="8" height="70" fill="#5c3a21"/>
+      <ellipse cx="45" cy="45" rx="42" ry="20" fill="#3d7a3d"/>
+      <ellipse cx="25" cy="55" rx="26" ry="14" fill="#4a8f4a"/>
+      <ellipse cx="65" cy="55" rx="26" ry="14" fill="#4a8f4a"/>
+    </svg>
+    <svg class="acacia2" width="70" height="100" viewBox="0 0 90 130">
+      <rect x="40" y="60" width="8" height="70" fill="#5c3a21"/>
+      <ellipse cx="45" cy="45" rx="42" ry="20" fill="#3d7a3d"/>
+      <ellipse cx="25" cy="55" rx="26" ry="14" fill="#4a8f4a"/>
+      <ellipse cx="65" cy="55" rx="26" ry="14" fill="#4a8f4a"/>
+    </svg>
+
+    <svg id="board-svg" width="360" height="360" viewBox="0 0 360 360"></svg>
+  </div>
+
+  <div id="overlay">
+    <h2 id="overlay-title">🎉 Bravo Max ! 🎉</h2>
+    <p id="overlay-text">Tu as aligné tes 3 pions !</p>
+    <button id="replay-btn">Encore une ! 🔄</button>
+  </div>
+
+</div>
+  <script src="js/bus-svg.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/tracker.js"></script>
+  <script src="js/sounds.js"></script>
+  <script src="js/victory-sounds.js"></script>
+  <script>
+  (function(){
+    'use strict';
+
+    // ── Géométrie du plateau ──────────────────────────────────────────────
+    // 8 points périphériques (index 0-7) + 1 centre (index 8, le "shisima").
+    const CX = 180, CY = 180, R = 150;
+    const POS = [];
+    for (let i = 0; i < 8; i++) {
+      const angle = -Math.PI/2 + i * (Math.PI/4); // départ en haut, sens horaire
+      POS.push({ x: CX + R * Math.cos(angle), y: CY + R * Math.sin(angle) });
+    }
+    POS.push({ x: CX, y: CY }); // index 8 = centre
+    const CENTER = 8;
+
+    // Adjacence : périphérique i <-> i-1, i+1 (mod 8) + centre. Centre <-> tout.
+    function neighbors(i) {
+      if (i === CENTER) return [0,1,2,3,4,5,6,7];
+      return [ (i+7)%8, (i+1)%8, CENTER ];
+    }
+
+    // Lignes gagnantes : les 4 diamètres passant par le centre.
+    const WIN_LINES = [ [0,CENTER,4], [1,CENTER,5], [2,CENTER,6], [3,CENTER,7] ];
+
+    // ── État de jeu ──────────────────────────────────────────────────────
+    // board[i] = null | 'max' | 'ai'
+    let board, turn, selected, gameOver, difficulty, wins, testMode, aiForcedMove;
+    const PALIERS = [
+      { stars: 1, label: 'facile',    need: 2 },
+      { stars: 2, label: 'moyenne',   need: 2 },
+      { stars: 3, label: 'attentive', need: 2 },
+    ];
+    let paletteIdx = 0; // index dans PALIERS = étoile en cours
+
+    function initGame() {
+      board = new Array(9).fill(null);
+      // Positions de départ classiques Shisima : 3 pions chacun sur des points
+      // périphériques alternés, laissant le centre et 2 points libres.
+      board[0] = 'max'; board[2] = 'max'; board[4] = 'max';
+      board[1] = 'ai';  board[3] = 'ai';  board[5] = 'ai';
+      turn = 'max';
+      selected = null;
+      gameOver = false;
+      renderBoard();
+      updateBanner();
+    }
+
+    function emptyCells() {
+      const out = [];
+      for (let i = 0; i < 9; i++) if (!board[i]) out.push(i);
+      return out;
+    }
+
+    function movesFor(player) {
+      const moves = [];
+      for (let i = 0; i < 9; i++) {
+        if (board[i] === player) {
+          for (const n of neighbors(i)) {
+            if (!board[n]) moves.push([i, n]);
+          }
+        }
+      }
+      return moves;
+    }
+
+    function checkWin(player) {
+      return WIN_LINES.some(line => line.every(p => board[p] === player));
+    }
+
+    // ── Rendu ────────────────────────────────────────────────────────────
+    const svg = document.getElementById('board-svg');
+
+    function renderBoard() {
+      svg.innerHTML = '';
+
+      // Lignes du plateau (arêtes de l'octogone + rayons vers le centre)
+      const linesG = document.createElementNS('http://www.w3.org/2000/svg','g');
+      for (let i = 0; i < 8; i++) {
+        linesG.appendChild(edgeLine(POS[i], POS[(i+1)%8]));
+        linesG.appendChild(edgeLine(POS[i], POS[CENTER]));
+      }
+      svg.appendChild(linesG);
+
+      // Scintillement des alignements à 2/3 pour Max (aide de lecture)
+      const almostLines = maxAlmostWinLines();
+
+      // Points
+      const movable = (turn === 'max' && !gameOver && selected === null) ? movablePoints('max') : [];
+      const destinations = (selected !== null) ? neighbors(selected).filter(n => !board[n]) : [];
+
+      for (let i = 0; i < 9; i++) {
+        const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+        g.classList.add('pt');
+        g.dataset.idx = i;
+        const isCenter = i === CENTER;
+        const circle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+        circle.setAttribute('cx', POS[i].x);
+        circle.setAttribute('cy', POS[i].y);
+        circle.setAttribute('r', isCenter ? 26 : 22);
+        circle.classList.add('pt-bg');
+        if (isCenter) circle.classList.add('center');
+        if (destinations.includes(i)) circle.classList.add('hint');
+        else if (movable.includes(i)) circle.classList.add('movable');
+        if (almostLines.includes(i)) circle.classList.add('win-glow');
+        g.appendChild(circle);
+
+        if (isCenter) {
+          // "point d'eau" animé
+          const water = document.createElementNS('http://www.w3.org/2000/svg','circle');
+          water.setAttribute('cx', POS[i].x);
+          water.setAttribute('cy', POS[i].y);
+          water.setAttribute('r', 12);
+          water.setAttribute('fill', '#bfe9ff');
+          water.classList.add('waterdot');
+          g.appendChild(water);
+        }
+
+        // Pion
+        if (board[i]) {
+          g.appendChild(pawnSVG(POS[i], board[i], selected === i));
+        }
+
+        g.addEventListener('click', () => onPointClick(i));
+        svg.appendChild(g);
+      }
+    }
+
+    function edgeLine(a, b) {
+      const l = document.createElementNS('http://www.w3.org/2000/svg','line');
+      l.setAttribute('x1', a.x); l.setAttribute('y1', a.y);
+      l.setAttribute('x2', b.x); l.setAttribute('y2', b.y);
+      l.setAttribute('stroke', 'rgba(255,255,255,0.35)');
+      l.setAttribute('stroke-width', '3');
+      return l;
+    }
+
+    function pawnSVG(p, who, isSelected) {
+      const g = document.createElementNS('http://www.w3.org/2000/svg','g');
+      g.classList.add('pawn', who === 'max' ? 'pawn-max' : 'pawn-ai');
+      if (isSelected) g.classList.add('selected');
+      const body = document.createElementNS('http://www.w3.org/2000/svg','circle');
+      body.setAttribute('cx', p.x); body.setAttribute('cy', p.y); body.setAttribute('r', 15);
+      body.classList.add('body');
+      g.appendChild(body);
+      // yeux
+      [-5, 5].forEach(dx => {
+        const eye = document.createElementNS('http://www.w3.org/2000/svg','circle');
+        eye.setAttribute('cx', p.x + dx); eye.setAttribute('cy', p.y - 3); eye.setAttribute('r', 3);
+        eye.setAttribute('fill', '#1a1a2e');
+        g.appendChild(eye);
+      });
+      if (who === 'ai') {
+        // petit sourire caméléon rigolo
+        const mouth = document.createElementNS('http://www.w3.org/2000/svg','path');
+        mouth.setAttribute('d', `M ${p.x-5} ${p.y+5} Q ${p.x} ${p.y+9} ${p.x+5} ${p.y+5}`);
+        mouth.setAttribute('stroke', '#1a1a2e'); mouth.setAttribute('stroke-width', '2');
+        mouth.setAttribute('fill', 'none');
+        g.appendChild(mouth);
+      }
+      return g;
+    }
+
+    function movablePoints(player) {
+      const pts = [];
+      for (let i = 0; i < 9; i++) {
+        if (board[i] === player && neighbors(i).some(n => !board[n])) pts.push(i);
+      }
+      return pts;
+    }
+
+    // Points appartenant à une ligne où Max a déjà 2/3 pions et le 3e est libre.
+    function maxAlmostWinLines() {
+      const out = [];
+      for (const line of WIN_LINES) {
+        const owners = line.map(p => board[p]);
+        const maxCount = owners.filter(o => o === 'max').length;
+        const emptyCount = owners.filter(o => !o).length;
+        if (maxCount === 2 && emptyCount === 1) out.push(...line);
+      }
+      return out;
+    }
+
+    // ── Interaction Max ──────────────────────────────────────────────────
+    function onPointClick(i) {
+      if (gameOver || turn !== 'max') return;
+
+      if (selected === null) {
+        if (board[i] === 'max' && neighbors(i).some(n => !board[n])) {
+          selected = i;
+          renderBoard();
+        }
+        return;
+      }
+
+      if (i === selected) { selected = null; renderBoard(); return; }
+
+      if (board[i] === null && neighbors(selected).includes(i)) {
+        doMove(selected, i, 'max');
+      } else if (board[i] === 'max' && neighbors(i).some(n => !board[n])) {
+        selected = i;
+        renderBoard();
+      }
+    }
+
+    function doMove(from, to, player) {
+      board[from] = null;
+      board[to] = player;
+      selected = null;
+      try { sndCount(); } catch(e) {}
+      renderBoard();
+
+      if (checkWin(player)) {
+        onGameEnd(player);
+        return;
+      }
+
+      turn = (player === 'max') ? 'ai' : 'max';
+      updateBanner();
+
+      if (turn === 'ai' && !gameOver) {
+        // En mode test, l'IA ne joue que sur forceAiMove() explicite (sinon course avec le harnais)
+        if (!testMode) setTimeout(aiPlay, 550);
+      }
+    }
+
+    // ── IA ───────────────────────────────────────────────────────────────
+    // ★ facile   : coup aléatoire légal
+    // ★★ moyenne : bloque un alignement imminent de Max 1 fois sur 2, sinon aléatoire
+    // ★★★ attentive : bloque toujours + tente ses propres alignements, jamais minimax profond
+    function aiPlay() {
+      if (gameOver) return;
+      const legal = movesFor('ai');
+      if (legal.length === 0) { turn = 'max'; updateBanner(); renderBoard(); return; }
+
+      let move = null;
+
+      if (testMode && aiForcedMove) {
+        move = aiForcedMove;
+        aiForcedMove = null;
+      } else {
+        const level = PALIERS[paletteIdx].stars;
+
+        if (level >= 3) {
+          move = findWinningMove('ai') || findBlockingMove() || pickRandom(legal);
+        } else if (level === 2) {
+          const block = findBlockingMove();
+          if (block && Math.random() < 0.5) move = block;
+          else move = pickRandom(legal);
+        } else {
+          move = pickRandom(legal);
+        }
+      }
+
+      doMove(move[0], move[1], 'ai');
+    }
+
+    function pickRandom(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+    function findWinningMove(player) {
+      for (const [from, to] of movesFor(player)) {
+        board[from] = null; board[to] = player;
+        const win = checkWin(player);
+        board[to] = null; board[from] = player;
+        if (win) return [from, to];
+      }
+      return null;
+    }
+
+    function findBlockingMove() {
+      // Cherche un coup de l'IA qui empêche un alignement imminent de Max
+      const maxWin = findWinningMove('max');
+      if (!maxWin) return null;
+      const [, targetSpot] = maxWin;
+      // L'IA peut-elle occuper targetSpot ?
+      const legal = movesFor('ai');
+      const direct = legal.find(([, to]) => to === targetSpot);
+      if (direct) return direct;
+      return null;
+    }
+
+    // ── Fin de coup / victoire ───────────────────────────────────────────
+    function onGameEnd(winner) {
+      gameOver = true;
+      renderBoard();
+      if (winner === 'max') {
+        wins++;
+        try { playEndSound(true); } catch(e) {}
+        showOverlay(true);
+        checkPalierComplete();
+      } else {
+        // IA gagne : zéro pénalité, danse gentille + replay immédiat.
+        try { playEndSound(false); } catch(e) {}
+        showOverlay(false);
+      }
+    }
+
+    function showOverlay(maxWon) {
+      const ov = document.getElementById('overlay');
+      const title = document.getElementById('overlay-title');
+      const text = document.getElementById('overlay-text');
+      if (maxWon) {
+        title.textContent = '🎉 Bravo Max ! 🎉';
+        text.textContent = 'Tu as aligné tes 3 pions sur le shisima !';
+      } else {
+        title.textContent = '🦎 Danse du caméléon !';
+        text.textContent = 'Presque ! Encore une ?';
+      }
+      ov.classList.add('show');
+    }
+
+    document.getElementById('replay-btn').addEventListener('click', () => {
+      document.getElementById('overlay').classList.remove('show');
+      initGame();
+    });
+
+    function updateBanner() {
+      const b = document.getElementById('banner');
+      if (gameOver) return;
+      b.textContent = (turn === 'max') ? 'À toi de jouer, Max !' : 'Le caméléon réfléchit...';
+    }
+
+    // ── Paliers 3 étoiles ────────────────────────────────────────────────
+    function refreshStars() {
+      document.querySelectorAll('.star').forEach(s => {
+        s.classList.toggle('on', parseInt(s.dataset.s,10) <= paletteIdx);
+      });
+    }
+
+    function checkPalierComplete() {
+      if (wins >= PALIERS[paletteIdx].need) {
+        try { Tracker.endSession(1, 1); } catch(e) {}
+        paletteIdx = Math.min(paletteIdx + 1, PALIERS.length - 1);
+        wins = 0;
+        refreshStars();
+        try { Tracker.startSession('mj-42'); } catch(e) {}
+      }
+    }
+
+    // ── Init ─────────────────────────────────────────────────────────────
+    function startAll() {
+      paletteIdx = 0;
+      wins = 0;
+      refreshStars();
+      try { Tracker.startSession('mj-42'); } catch(e) {}
+      initGame();
+    }
+
+    startAll();
+
+    // ── Harnais de test (Playwright) ────────────────────────────────────
+    testMode = false;
+    aiForcedMove = null;
+    window.__mjTest = {
+      get state() {
+        return {
+          board: board.slice(),
+          turn, selected, gameOver,
+          paletteIdx, wins,
+          overlayShown: document.getElementById('overlay').classList.contains('show'),
+        };
+      },
+      setTestMode(on) { testMode = !!on; },
+      setDifficulty(stars) {
+        paletteIdx = Math.max(0, Math.min(stars - 1, PALIERS.length - 1));
+      },
+      forceAiMove(from, to) { aiForcedMove = [from, to]; aiPlay(); },
+      move(from, to) {
+        if (gameOver || turn !== 'max') return false;
+        if (board[from] !== 'max') return false;
+        if (!neighbors(from).includes(to) || board[to] !== null) return false;
+        doMove(from, to, 'max');
+        return true;
+      },
+      replay() { document.getElementById('replay-btn').click(); },
+      neighbors,
+      WIN_LINES,
+    };
+  })();
+  </script>
+</body>
+</html>

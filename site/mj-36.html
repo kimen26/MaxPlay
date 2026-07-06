@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>MJ-36 — Arrête le bus !</title>
+  <title>MJ-36 — Le bon bus !</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
     /* --- GABARIT HEADER CANONIQUE (ne pas inventer, copier tel quel) --- */
@@ -40,9 +40,9 @@
     #progress .star.off { opacity:0.25; }
     #progress .msg { font-size:0.85rem; font-weight:900; opacity:0.9; }
 
-    /* Route */
+    /* Route + trottoir (décor v1 gardé) */
     .road {
-      position:absolute; left:0; right:0; bottom:22%; height:30%;
+      position:absolute; left:0; right:0; bottom:0; height:34%;
       background:#4a4a5e;
     }
     .road::before {
@@ -52,63 +52,92 @@
       opacity:0.8;
     }
 
-    /* Trottoir */
-    .sidewalk {
-      position:absolute; left:0; right:0; bottom:0; height:22%;
-      background:#8a8a9a;
-      border-top:3px solid #6a6a7a;
+    /* Zone garage à gauche : 3 bus en attente */
+    #garage {
+      position:absolute; left:0; top:0; bottom:34%; width:38%;
+      display:flex; flex-direction:column; align-items:center; justify-content:space-evenly;
+      padding:6px 0;
+    }
+    .parkedBus {
+      cursor:pointer; min-width:100px; min-height:100px;
+      display:flex; align-items:center; justify-content:center;
+      border-radius:14px; transition: transform 0.15s, background 0.15s;
+      padding:4px;
+    }
+    .parkedBus svg { pointer-events:none; }
+    .parkedBus.tap-good { background:rgba(255,255,255,0.25); transform:scale(1.06); }
+    .parkedBus.tap-bad { animation: shakeBad 0.4s; }
+    @keyframes shakeBad {
+      0%,100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+    }
+    .parkedBus.gone { opacity:0; transform:translateX(120%) scale(0.8); pointer-events:none; }
+    .parkedBus.arriving { animation: busIn 0.4s ease-out; }
+    @keyframes busIn {
+      0% { opacity:0; transform: translateY(-16px) scale(0.7); }
+      100% { opacity:1; transform: translateY(0) scale(1); }
     }
 
-    /* Zone cible au sol (zébrures) */
-    #targetZone {
-      position:absolute; bottom:22%; height:30%;
-      background-image:repeating-linear-gradient(
-        135deg, rgba(255,255,255,0.55) 0 10px, rgba(255,255,255,0.15) 10px 20px
-      );
-      border-left:3px dashed #fff; border-right:3px dashed #fff;
-      transition: left 0.3s, width 0.3s;
+    /* Bus roulant vers l'arrêt (clone animé) */
+    #rollingBusWrap {
+      position:absolute; top:0; bottom:34%; left:0;
+      display:flex; align-items:center;
+      transition: left 1s cubic-bezier(.4,0,.2,1);
+      pointer-events:none;
+      z-index:5;
     }
+    #rollingBusWrap.hidden { display:none; }
 
-    /* Poteau d'arrêt */
-    #busStop {
-      position:absolute; bottom:22%; display:flex; flex-direction:column; align-items:center;
-      transform:translateX(-50%);
+    /* Arrêt de bus à droite */
+    #busStopZone {
+      position:absolute; right:2%; top:0; bottom:34%; width:56%;
+      display:flex; flex-direction:column; align-items:center; justify-content:flex-end;
     }
-    #busStop .sign {
+    #busStopZone .sign {
       width:34px; height:34px; border-radius:50%;
       background:#0064B1; border:3px solid #fff;
       display:flex; align-items:center; justify-content:center;
-      font-size:1.1rem;
+      font-size:1.1rem; margin-bottom:4px;
     }
-    #busStop .pole { width:6px; height:70px; background:#c9c9c9; border-radius:2px; }
+    #busStopZone .pole { width:6px; height:40px; background:#c9c9c9; border-radius:2px; }
 
-    /* Passagers */
-    .passenger {
-      position:absolute; bottom:22%; font-size:2rem;
-      transition: left 1.1s ease-in-out;
+    /* Bulle de demande */
+    #requestBubble {
+      position:absolute; left:50%; top:6px; transform:translateX(-50%);
+      background:#fff; color:#222; border-radius:16px;
+      padding:6px 14px; font-size:0.85rem; font-weight:900;
+      display:flex; align-items:center; gap:8px;
+      box-shadow:0 3px 8px rgba(0,0,0,0.3);
+      z-index:6;
+    }
+    #requestBubble::after {
+      content:''; position:absolute; bottom:-8px; left:50%; transform:translateX(-50%);
+      border:8px solid transparent; border-top-color:#fff;
+    }
+    #requestSwatch {
+      width:22px; height:22px; border-radius:50%; border:2px solid #222;
+      flex-shrink:0;
     }
 
-    /* Bus */
-    #busWrap {
-      position:absolute; bottom:26%; left:-220px;
-      will-change: left;
+    /* File de passagers */
+    #queue {
+      position:relative; display:flex; flex-direction:row-reverse; align-items:flex-end; gap:4px;
+      padding-bottom:6px; min-height:70px;
     }
-    #busWrap svg { display:block; }
-
-    /* Sparkle bonus */
-    .sparkle {
-      position:absolute; font-size:2rem; pointer-events:none;
-      animation: sparkleUp 0.9s ease-out forwards;
+    .pax {
+      width:26px; height:44px; position:relative;
+      display:flex; flex-direction:column; align-items:center;
+      transition: transform 0.5s ease-in, opacity 0.3s;
     }
-    @keyframes sparkleUp {
-      0%   { transform: translateY(0) scale(0.5); opacity:1; }
-      60%  { transform: translateY(-40px) scale(1.3); opacity:1; }
-      100% { transform: translateY(-70px) scale(1); opacity:0; }
-    }
+    .pax .head { width:14px; height:14px; border-radius:50%; background:#f3c9a0; margin-bottom:1px; }
+    .pax .body { width:20px; height:24px; border-radius:6px 6px 3px 3px; }
+    .pax.boarding { transform: translateX(120px) scale(0.7); opacity:0; }
 
     #tapHint {
-      position:absolute; top:10px; left:0; right:0; text-align:center;
-      font-size:0.85rem; opacity:0.7; pointer-events:none;
+      position:absolute; top:6px; left:6px;
+      font-size:0.75rem; opacity:0.65; pointer-events:none;
+      max-width:34%;
     }
 
     /* Écran Bravo */
@@ -136,16 +165,20 @@
   <!-- HEADER — copier tel quel, changer uniquement l'emoji et le titre -->
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">🛑 Arrête le bus !</span>
+    <span class="htitle">🚌 Le bon bus !</span>
   </div>
 
   <div id="stage">
+    <div id="tapHint">👉 Tape le bus de la bonne couleur !</div>
     <div class="road"></div>
-    <div class="sidewalk"></div>
-    <div id="targetZone"></div>
-    <div id="busStop"><div class="sign">🚏</div><div class="pole"></div></div>
-    <div id="busWrap"></div>
-    <div id="tapHint">👉 Tape l'écran pour freiner !</div>
+    <div id="garage"></div>
+    <div id="rollingBusWrap" class="hidden"></div>
+    <div id="busStopZone">
+      <div id="requestBubble"><span id="requestSwatch"></span><span id="requestLabel">?</span></div>
+      <div id="queue"></div>
+      <div class="sign">🚏</div>
+      <div class="pole"></div>
+    </div>
   </div>
 
   <div id="progress">
@@ -154,7 +187,7 @@
       <span class="star off" id="st2">⭐</span>
       <span class="star off" id="st3">⭐</span>
     </div>
-    <div class="msg" id="progressMsg">Arrête le bus à l'arrêt !</div>
+    <div class="msg" id="progressMsg">Trouve le bon bus !</div>
   </div>
 
   <div id="bravoScreen">
@@ -178,207 +211,235 @@
     Tracker.startSession('mj-36');
 
     const stage = document.getElementById('stage');
-    const busWrap = document.getElementById('busWrap');
-    const targetZone = document.getElementById('targetZone');
-    const busStop = document.getElementById('busStop');
+    const garage = document.getElementById('garage');
+    const rollingBusWrap = document.getElementById('rollingBusWrap');
+    const requestSwatch = document.getElementById('requestSwatch');
+    const requestLabel = document.getElementById('requestLabel');
+    const queueEl = document.getElementById('queue');
     const progressMsg = document.getElementById('progressMsg');
     const bravoScreen = document.getElementById('bravoScreen');
     const bravoStars = document.getElementById('bravoStars');
 
-    // ── Paliers ★/★★/★★★ (spec MJ-36) ──────────────────────────────
-    // Tolérance = fraction de la largeur du stage, jamais < 1 pare-chocs (BUS_W).
-    const BUS_W = 200; // largeur du bus rendu (px)
+    const PARKED_W = 78; // largeur bus garés (px)
+    const ROLLING_W = 130; // largeur bus roulant (px)
+
+    // ── Paliers ★/★★/★★★ (v2 Bus Jam) ────────────────────────────────
     const PALIERS = [
-      { key: 'star1', label: '★',   toleranceFrac: 0.40, speed: 130, need: 3 },
-      { key: 'star2', label: '★★',  toleranceFrac: 0.24, speed: 160, need: 3 },
-      { key: 'star3', label: '★★★', toleranceFrac: 0.14, speed: 190, need: 3 },
+      { key: 'star1', label: '★',   nColors: 2, totalPax: 8  },
+      { key: 'star2', label: '★★',  nColors: 3, totalPax: 12 },
+      { key: 'star3', label: '★★★', nColors: 3, totalPax: 16, fastAlternate: true },
     ];
-    const PILE_FRAC = 0.05; // "pile au milieu" = sparkle bonus, dans cette fraction autour du centre
 
     let palierIdx = 0;
-    let successCount = 0; // réussites accumulées au palier courant
-    let piles = 0;        // réussites "pile" comptées pour ★★★ (need réussites, pas piles strictes)
+    let colorLignes = [];   // lignes distinctes en jeu ce palier
+    let queueGroups = [];   // [{color,textColor,num,count}, ...] groupes restants
+    let parkedLignes = [];  // 3 lignes actuellement garées (dont au moins une == couleur demandée)
+    let busy = false;       // anim en cours -> ignorer les taps
+    let paxBoardedTotal = 0;
+    let paxTargetTotal = 0;
 
-    // ── État physique du bus ────────────────────────────────────────
-    let busX = -BUS_W;          // position gauche du bus (px)
-    let speed = PALIERS[0].speed; // px/s
-    let braking = false;
-    let reversing = false;
-    let running = true;
-    let lastTs = null;
-    let zoneCenter = 0, zoneHalfW = 0, stageW = 0;
-
-    const DECEL = 220; // px/s² — décélération douce, constante par palier (prévisible)
-
-    function pickLigne() {
-      const pool = (window.LIGNES || []).length ? window.LIGNES : [{num:'162',color:'#0064B1',textColor:'#fff'}];
-      return pool[Math.floor(Math.random() * pool.length)];
+    function currentColor() {
+      return queueGroups.length ? queueGroups[0] : null;
     }
-    let ligne = pickLigne();
 
-    function renderBus() {
-      busWrap.innerHTML = busSVG(ligne.color, ligne.textColor, ligne.num, BUS_W);
-    }
-    renderBus();
-
-    function layoutZone() {
-      stageW = stage.clientWidth;
-      const p = PALIERS[palierIdx];
-      const zoneW = Math.max(stageW * p.toleranceFrac, BUS_W); // jamais < 1 pare-chocs
-      zoneCenter = stageW * 0.72; // arrêt situé vers la droite
-      zoneHalfW = zoneW / 2;
-      targetZone.style.left = (zoneCenter - zoneHalfW) + 'px';
-      targetZone.style.width = zoneW + 'px';
-      busStop.style.left = zoneCenter + 'px';
-
-      // passagers regroupés près du poteau
-      document.querySelectorAll('.passenger').forEach(el => el.remove());
-      const emojis = ['🧍', '🧍‍♀️', '🧒'];
-      const n = 2 + Math.floor(Math.random() * 2);
-      for (let i = 0; i < n; i++) {
-        const el = document.createElement('div');
-        el.className = 'passenger';
-        el.textContent = emojis[i % emojis.length];
-        el.style.left = (zoneCenter + 24 + i * 26) + 'px';
-        el.dataset.baseLeft = (zoneCenter + 24 + i * 26);
-        stage.appendChild(el);
+    function buildQueueGroups(nColors, totalPax, fastAlternate) {
+      const groups = [];
+      let remaining = totalPax;
+      const minGroup = fastAlternate ? 2 : 3;
+      const maxGroup = fastAlternate ? 3 : 4;
+      let i = 0;
+      while (remaining > 0) {
+        const ligne = colorLignes[i % colorLignes.length];
+        let size = Math.min(remaining, minGroup + Math.floor(Math.random() * (maxGroup - minGroup + 1)));
+        if (remaining - size < 0) size = remaining;
+        groups.push({ color: ligne.color, textColor: ligne.textColor, num: ligne.num, count: size });
+        remaining -= size;
+        i++;
       }
+      return groups;
     }
-    layoutZone();
-    window.addEventListener('resize', layoutZone);
 
-    function resetRun() {
-      busX = -BUS_W;
-      speed = PALIERS[palierIdx].speed;
-      braking = false;
-      reversing = false;
-      ligne = pickLigne();
-      renderBus();
+    function renderQueue() {
+      queueEl.innerHTML = '';
+      queueGroups.forEach((g) => {
+        for (let i = 0; i < g.count; i++) {
+          const el = document.createElement('div');
+          el.className = 'pax';
+          el.dataset.color = g.color;
+          el.innerHTML = `<div class="head"></div><div class="body" style="background:${g.color}"></div>`;
+          queueEl.appendChild(el);
+        }
+      });
+    }
+
+    function updateRequestBubble() {
+      const c = currentColor();
+      if (!c) { requestSwatch.style.background = '#888'; requestLabel.textContent = '...'; return; }
+      requestSwatch.style.background = c.color;
+      requestLabel.textContent = c.num;
+    }
+
+    function renderParked() {
+      garage.innerHTML = '';
+      parkedLignes.forEach((ligne, idx) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'parkedBus';
+        wrap.dataset.idx = idx;
+        wrap.dataset.color = ligne.color;
+        wrap.innerHTML = busSVG(ligne.color, ligne.textColor, ligne.num, PARKED_W);
+        wrap.addEventListener('pointerdown', () => onTapParked(idx));
+        garage.appendChild(wrap);
+      });
+    }
+
+    // Garantit qu'au moins un bus garé porte la couleur demandée courante.
+    function refillParked() {
+      const target = currentColor();
+      const others = colorLignes.filter(l => !target || l.color !== target.color);
+      const picks = [];
+      if (target) picks.push(target);
+      while (picks.length < 3) {
+        const pool = others.length ? others : colorLignes;
+        picks.push(pool[Math.floor(Math.random() * pool.length)]);
+      }
+      // mélange positions
+      for (let i = picks.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [picks[i], picks[j]] = [picks[j], picks[i]];
+      }
+      parkedLignes = picks;
+      renderParked();
     }
 
     function updateProgressUI() {
-      const p = PALIERS[palierIdx];
-      progressMsg.textContent = successCount === 0
-        ? `Arrête le bus à l'arrêt ! (${p.label})`
-        : `Encore ${p.need - successCount} !`;
+      const remaining = paxTargetTotal - paxBoardedTotal;
+      progressMsg.textContent = remaining > 0
+        ? `${remaining} passager${remaining > 1 ? 's' : ''} à emmener`
+        : 'Terminé !';
     }
-    updateProgressUI();
 
     function markStarDone(idx) {
       const el = document.getElementById('st' + (idx + 1));
       if (el) el.classList.remove('off');
     }
 
-    function spawnSparkle(x) {
-      const el = document.createElement('div');
-      el.className = 'sparkle';
-      el.textContent = '✨';
-      el.style.left = (x - 16) + 'px';
-      el.style.bottom = '48%';
-      stage.appendChild(el);
-      setTimeout(() => el.remove(), 950);
+    function startPalier() {
+      const p = PALIERS[palierIdx];
+      // Uniquement des bus (le décor/le nom du jeu parlent de bus) : exclut Métro/RER/Tram.
+      const pool = LIGNES.filter(l => l.color && !/^(M\d|RER |T\d)/.test(l.num));
+      colorLignes = selectDistinctColors(pool, p.nColors, 80);
+      queueGroups = buildQueueGroups(p.nColors, p.totalPax, !!p.fastAlternate);
+      paxBoardedTotal = 0;
+      paxTargetTotal = p.totalPax;
+      renderQueue();
+      updateRequestBubble();
+      refillParked();
+      updateProgressUI();
+    }
+    startPalier();
+
+    function onTapParked(idx) {
+      if (busy) return;
+      const ligne = parkedLignes[idx];
+      const target = currentColor();
+      const wrapEl = garage.children[idx];
+      if (!target) return;
+
+      if (ligne.color === target.color) {
+        // BON BUS
+        busy = true;
+        wrapEl.classList.add('tap-good');
+        sndDing();
+        driveToStop(idx, ligne);
+      } else {
+        // MAUVAIS BUS — jamais de perte, feedback doux (klaxon interrogatif, pas de buzz négatif)
+        wrapEl.classList.add('tap-bad');
+        sndKlaxon();
+        setTimeout(() => wrapEl.classList.remove('tap-bad'), 400);
+      }
     }
 
-    function onSuccess(pile) {
-      braking = false;
-      reversing = false;
-      running = false; // pause pendant la séquence de montée
+    function driveToStop(idx, ligne) {
+      const wrapEl = garage.children[idx];
+      const garageBox = garage.getBoundingClientRect();
+      const stageBox = stage.getBoundingClientRect();
+      const startLeft = garageBox.left - stageBox.left + (garageBox.width - ROLLING_W) / 2;
+      const busStopZone = document.getElementById('busStopZone');
+      const stopBox = busStopZone.getBoundingClientRect();
+      const endLeft = stopBox.left - stageBox.left + stopBox.width * 0.15;
 
-      sndTschh();
-      if (pile) spawnSparkle(busX + BUS_W / 2);
+      // masque le bus garé, affiche le clone roulant à sa place de départ
+      wrapEl.classList.add('gone');
+      rollingBusWrap.classList.remove('hidden');
+      rollingBusWrap.style.transition = 'none';
+      rollingBusWrap.style.left = startLeft + 'px';
+      rollingBusWrap.innerHTML = busSVG(ligne.color, ligne.textColor, ligne.num, ROLLING_W);
 
-      // portes ouvertes -> passagers marchent vers le bus
-      const doorX = busX + BUS_W * 0.35;
-      document.querySelectorAll('.passenger').forEach((el, i) => {
-        setTimeout(() => {
-          el.style.left = doorX + (i * 4) + 'px';
-        }, 120 + i * 80);
+      requestAnimationFrame(() => {
+        rollingBusWrap.style.transition = 'left 1s cubic-bezier(.4,0,.2,1)';
+        rollingBusWrap.style.left = endLeft + 'px';
       });
 
-      setTimeout(() => {
-        sndPorte();
-        SoundPool.play('success', 0.8);
-      }, 700);
-
-      setTimeout(() => {
-        successCount++;
-        const p = PALIERS[palierIdx];
-        updateProgressUI();
-
-        if (successCount >= p.need) {
-          markStarDone(palierIdx);
-          Tracker.endSession(1, 1);
-          const isLast = palierIdx >= PALIERS.length - 1;
-          bravoStars.textContent = '⭐'.repeat(palierIdx + 1);
-          document.getElementById('btnReplay').textContent = isLast ? 'Rejouer' : 'Continuer';
-          bravoScreen.classList.add('show');
-          SoundPool.play('victory', 0.85);
-        } else {
-          resetRun();
-          running = true;
-          lastTs = null;
-          requestAnimationFrame(tick);
-        }
-      }, 1500);
+      setTimeout(() => boardPassengers(ligne), 1000);
     }
 
-    function onMiss() {
-      // Demi-tour rigolo — JAMAIS un échec, jamais de son négatif.
-      braking = false;
-      reversing = true;
-      speed = PALIERS[palierIdx].speed * 1.3;
-      sndKlaxon();
-    }
+    function boardPassengers(ligne) {
+      const group = queueGroups[0];
+      const n = group ? group.count : 0;
+      const paxEls = [...queueEl.querySelectorAll('.pax')].slice(0, n);
 
-    let testMode = false; // désactive la boucle rAF réelle pendant l'avance manuelle (harnais)
-
-    function tick(ts) {
-      if (!running || testMode) return;
-      if (lastTs == null) lastTs = ts;
-      const dt = Math.min((ts - lastTs) / 1000, 0.05);
-      lastTs = ts;
-
-      if (reversing) {
-        busX -= speed * dt;
-        if (busX <= -BUS_W - 20) {
-          reversing = false;
-          resetRun();
-        }
-      } else {
-        if (braking) {
-          speed = Math.max(0, speed - DECEL * dt);
-        }
-        busX += speed * dt;
-
-        if (braking && speed <= 0.5) {
-          // bus immobilisé — évalue la position
-          const busCenter = busX + BUS_W / 2;
-          const dist = Math.abs(busCenter - zoneCenter);
-          if (dist <= zoneHalfW) {
-            const pile = dist <= stageW * PILE_FRAC;
-            onSuccess(pile);
-          } else {
-            onMiss();
+      let boarded = 0;
+      paxEls.forEach((el, i) => {
+        setTimeout(() => {
+          el.classList.add('boarding');
+          sndCount();
+          boarded++;
+          paxBoardedTotal++;
+          updateProgressUI();
+          if (boarded === paxEls.length) {
+            setTimeout(finishBoarding, 350);
           }
-        } else if (busX > stageW + 20) {
-          // dépassé sans avoir freiné à temps -> demi-tour aussi
-          onMiss();
+        }, i * 220);
+      });
+      if (n === 0) setTimeout(finishBoarding, 100);
+    }
+
+    function finishBoarding() {
+      sndKlaxon();
+      // le bus repart vers la droite (hors écran)
+      const stageBox = stage.getBoundingClientRect();
+      rollingBusWrap.style.left = (stageBox.width + 40) + 'px';
+
+      queueGroups.shift();
+      renderQueue();
+      updateRequestBubble();
+
+      setTimeout(() => {
+        rollingBusWrap.classList.add('hidden');
+
+        if (queueGroups.length === 0) {
+          onPalierComplete();
+          return;
         }
-      }
 
-      busWrap.style.left = busX + 'px';
-      if (running) requestAnimationFrame(tick);
-    }
-    requestAnimationFrame(tick);
-
-    function brakeAt() {
-      if (!running || reversing || braking) return;
-      braking = true; // feedback immédiat (<100ms) : la décélération démarre dès la frame suivante
+        // nouveau bus arrive au garage à la place libérée
+        refillParked();
+        [...garage.children].forEach(c => c.classList.add('arriving'));
+        busy = false;
+      }, 650);
     }
 
-    stage.addEventListener('pointerdown', brakeAt);
+    function onPalierComplete() {
+      markStarDone(palierIdx);
+      Tracker.endSession(1, 1);
+      const isLast = palierIdx >= PALIERS.length - 1;
+      bravoStars.textContent = '⭐'.repeat(palierIdx + 1);
+      document.getElementById('btnReplay').textContent = isLast ? 'Rejouer' : 'Continuer';
+      bravoScreen.classList.add('show');
+      SoundPool.play('victory', 0.85);
+      busy = true;
+    }
 
-    // ── Écran Bravo — boutons ──────────────────────────────────────
     document.getElementById('btnReplay').addEventListener('click', () => {
       bravoScreen.classList.remove('show');
       if (palierIdx < PALIERS.length - 1) {
@@ -387,14 +448,9 @@
         palierIdx = 0;
         document.querySelectorAll('.star').forEach(el => el.classList.add('off'));
       }
-      successCount = 0;
-      layoutZone();
-      updateProgressUI();
       Tracker.startSession('mj-36');
-      running = true;
-      lastTs = null;
-      resetRun();
-      requestAnimationFrame(tick);
+      busy = false;
+      startPalier();
     });
     document.getElementById('btnMenu').addEventListener('click', () => {
       window.location.href = 'index.html';
@@ -404,48 +460,35 @@
     window.__mjTest = {
       getState() {
         return {
-          busX, speed, braking, reversing, running,
-          palierIdx, successCount, zoneCenter, zoneHalfW, stageW,
-          need: PALIERS[palierIdx].need,
+          palierIdx, busy,
+          paxBoardedTotal, paxTargetTotal,
+          queueGroupsLen: queueGroups.length,
+          currentColor: currentColor() ? currentColor().color : null,
+          parkedColors: parkedLignes.map(l => l.color),
         };
       },
-      // Simule un tap de frein maintenant
-      brakeNow() { brakeAt(); },
-      // Fait avancer la simulation de N millisecondes de jeu (pas de vraies rAF,
-      // pilotage déterministe pour le harnais headless)
-      advance(ms) {
-        testMode = true; // sticky : une fois le harnais aux commandes, la vraie
-                          // boucle rAF ne doit plus jamais reprendre la main
-        const wasRunning = running;
-        running = true;
-        const steps = Math.ceil(ms / 16);
-        let t = (lastTs == null ? performance.now() : lastTs);
-        for (let i = 0; i < steps; i++) {
-          t += 16;
-          if (reversing) {
-            busX -= speed * (16/1000);
-            if (busX <= -BUS_W - 20) { reversing = false; resetRun(); }
-          } else {
-            if (braking) speed = Math.max(0, speed - DECEL * (16/1000));
-            busX += speed * (16/1000);
-            if (braking && speed <= 0.5) {
-              const busCenter = busX + BUS_W / 2;
-              const dist = Math.abs(busCenter - zoneCenter);
-              if (dist <= zoneHalfW) onSuccess(dist <= stageW * PILE_FRAC);
-              else onMiss();
-            } else if (busX > stageW + 20) {
-              onMiss();
-            }
-          }
-          busWrap.style.left = busX + 'px';
-        }
-        lastTs = t;
-        running = wasRunning;
-        // testMode reste true : cf. commentaire ci-dessus
+      // Tape le bus garé d'index idx (0,1,2)
+      tapParked(idx) { onTapParked(idx); },
+      // Trouve et tape le bon bus garé automatiquement
+      tapGoodBus() {
+        const target = currentColor();
+        if (!target) return false;
+        const idx = parkedLignes.findIndex(l => l.color === target.color);
+        if (idx === -1) return false;
+        onTapParked(idx);
+        return true;
+      },
+      // Tape un mauvais bus (le premier différent de la couleur demandée)
+      tapBadBus() {
+        const target = currentColor();
+        if (!target) return false;
+        const idx = parkedLignes.findIndex(l => l.color !== target.color);
+        if (idx === -1) return false;
+        onTapParked(idx);
+        return true;
       },
       isBravoShown() { return bravoScreen.classList.contains('show'); },
-      forceZoneCenter() { return zoneCenter; },
-      forceBusX() { return busX; },
+      isBusy() { return busy; },
     };
   })();
   </script>

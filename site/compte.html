@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>MaxPlay — Compte parent</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+    body { background:#1a1a2e; font-family:'Fredoka One','Segoe UI',sans-serif; color:#fff; min-height:100dvh; }
+    #app { max-width:680px; margin:0 auto; width:100%; padding-bottom:40px; }
+    .hdr {
+      display:flex; align-items:center; gap:10px;
+      padding:6px 12px;
+      background:rgba(0,0,0,0.25);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+    .hdr a {
+      color:#fff; text-decoration:none; font-size:1.3rem;
+      background:rgba(255,255,255,0.12); border-radius:8px;
+      padding:4px 10px; font-weight:900; flex-shrink:0;
+    }
+    .htitle { flex:1; font-size:1rem; font-weight:900; }
+    .card {
+      background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1);
+      border-radius:14px; padding:18px; margin:16px 12px;
+    }
+    .card h2 { font-size:1.05rem; margin-bottom:10px; }
+    .card p  { font-size:0.85rem; line-height:1.45; opacity:0.85; font-family:'Segoe UI',sans-serif; }
+    .benefit { display:flex; gap:8px; align-items:flex-start; margin:8px 0; font-size:0.85rem; font-family:'Segoe UI',sans-serif; }
+    input[type=email], input[type=text] {
+      width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,0.2);
+      background:rgba(0,0,0,0.3); color:#fff; font-size:1rem; margin:8px 0;
+    }
+    button {
+      background:#e94560; color:#fff; border:none; border-radius:10px;
+      padding:12px 18px; font-size:1rem; font-family:inherit; cursor:pointer; width:100%;
+      margin-top:6px;
+    }
+    button.secondary { background:rgba(255,255,255,0.12); }
+    button:disabled { opacity:0.5; }
+    .child-row {
+      display:flex; align-items:center; gap:10px; padding:10px;
+      background:rgba(0,0,0,0.25); border-radius:10px; margin:6px 0; cursor:pointer;
+      border:2px solid transparent;
+    }
+    .child-row.active { border-color:#4ecca3; }
+    .child-row .nick { flex:1; }
+    .badge { font-size:0.7rem; background:#4ecca3; color:#1a1a2e; border-radius:6px; padding:2px 8px; }
+    .msg { margin-top:10px; font-size:0.85rem; font-family:'Segoe UI',sans-serif; }
+    .msg.ok { color:#4ecca3; } .msg.err { color:#e94560; }
+    .legal { font-size:0.72rem; opacity:0.6; font-family:'Segoe UI',sans-serif; margin:16px 14px; line-height:1.5; }
+    .hidden { display:none; }
+    .sync-line { font-size:0.8rem; opacity:0.7; font-family:'Segoe UI',sans-serif; margin-top:8px; }
+  </style>
+</head>
+<body>
+<div id="app">
+
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">👨‍👩‍👦 Compte parent</span>
+  </div>
+
+  <!-- ── Vue déconnectée ─────────────────────────────────────────────── -->
+  <div id="view-login" class="hidden">
+    <div class="card">
+      <h2>Créer un compte gratuit, c'est :</h2>
+      <div class="benefit">🎙️ <span><b>Les vraies voix</b> des personnages — au lieu de la voix robot de synthèse</span></div>
+      <div class="benefit">⭐ <span><b>La progression sauvegardée</b> — étoiles et déblocages gardés sur tous les appareils (sur iPhone, la mémoire locale peut s'effacer !)</span></div>
+      <div class="benefit">👧👦 <span><b>Plusieurs enfants</b> — un profil par enfant, chacun sa progression</span></div>
+      <p style="margin-top:10px">Pas de mot de passe : on t'envoie un lien magique par email.</p>
+      <input type="email" id="email" placeholder="ton.email@exemple.fr" autocomplete="email">
+      <button id="btn-login">Recevoir mon lien magique ✉️</button>
+      <div id="login-msg" class="msg"></div>
+    </div>
+  </div>
+
+  <!-- ── Vue connectée ───────────────────────────────────────────────── -->
+  <div id="view-account" class="hidden">
+    <div class="card">
+      <h2>✅ Connecté</h2>
+      <p id="account-email"></p>
+      <div class="sync-line" id="sync-status"></div>
+      <button class="secondary" id="btn-sync" style="margin-top:12px">🔄 Synchroniser maintenant</button>
+      <button class="secondary" id="btn-logout">Se déconnecter</button>
+    </div>
+
+    <div class="card">
+      <h2>Profils enfants</h2>
+      <p>Choisis le profil actif — sa progression sera synchronisée sur cet appareil.</p>
+      <div id="children"></div>
+      <input type="text" id="new-nick" placeholder="Surnom du nouvel enfant (ex : Max)" maxlength="30">
+      <button class="secondary" id="btn-add-child">➕ Ajouter un profil</button>
+      <div id="child-msg" class="msg"></div>
+    </div>
+  </div>
+
+  <div id="view-loading"><div class="card"><p>Chargement…</p></div></div>
+
+  <p class="legal">
+    Compte réservé aux parents. Nous ne collectons <b>aucune donnée personnelle sur l'enfant</b> :
+    le profil est un simple surnom choisi par toi, associé à la progression de jeu.
+    Pas de publicité, pas de partage à des tiers. Suppression du compte et des données sur simple demande.
+  </p>
+
+</div>
+
+<script src="js/cloud.js"></script>
+<script>
+(function () {
+  const $ = id => document.getElementById(id);
+  const show = (id) => {
+    ['view-login', 'view-account', 'view-loading'].forEach(v => $(v).classList.add('hidden'));
+    $(id).classList.remove('hidden');
+  };
+
+  function fmtSync(iso) {
+    if (!iso) return 'Pas encore synchronisé sur cet appareil.';
+    return 'Dernière synchro : ' + new Date(iso).toLocaleString('fr-FR');
+  }
+
+  async function renderChildren() {
+    const box = $('children');
+    box.innerHTML = '<p>Chargement…</p>';
+    try {
+      const kids = await Cloud.listChildren();
+      const active = Cloud.activeChild();
+      box.innerHTML = kids.length ? '' : '<p>Aucun profil pour l\'instant.</p>';
+      kids.forEach(k => {
+        const row = document.createElement('div');
+        row.className = 'child-row' + (active && active.id === k.id ? ' active' : '');
+        row.innerHTML = '<span class="nick">👦 ' + k.nickname + '</span>' +
+          (active && active.id === k.id ? '<span class="badge">actif</span>' : '');
+        row.onclick = async () => {
+          row.style.opacity = 0.5;
+          try { await Cloud.setActiveChild(k.id); render(); }
+          catch (e) { $('child-msg').textContent = 'Erreur : ' + e.message; $('child-msg').className = 'msg err'; }
+        };
+        box.appendChild(row);
+      });
+    } catch (e) { box.innerHTML = '<p>Erreur de chargement : ' + e.message + '</p>'; }
+  }
+
+  function render() {
+    const st = Cloud.status();
+    if (st.connected) {
+      show('view-account');
+      $('account-email').textContent = st.email;
+      $('sync-status').textContent = fmtSync(st.lastSync);
+      renderChildren();
+    } else {
+      show('view-login');
+    }
+  }
+
+  $('btn-login').onclick = async () => {
+    const email = $('email').value.trim();
+    const msg = $('login-msg');
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      msg.textContent = 'Email invalide.'; msg.className = 'msg err'; return;
+    }
+    $('btn-login').disabled = true;
+    try {
+      await Cloud.signIn(email);
+      msg.textContent = '✉️ C\'est parti ! Ouvre l\'email et clique sur le lien (regarde les spams).';
+      msg.className = 'msg ok';
+    } catch (e) {
+      msg.textContent = 'Erreur : ' + (e.message || 'envoi impossible');
+      msg.className = 'msg err';
+      $('btn-login').disabled = false;
+    }
+  };
+
+  $('btn-logout').onclick = async () => { await Cloud.signOut(); render(); };
+
+  $('btn-sync').onclick = async () => {
+    $('btn-sync').disabled = true;
+    try { await Cloud.syncNow(); } catch (e) {}
+    $('btn-sync').disabled = false;
+    render();
+  };
+
+  $('btn-add-child').onclick = async () => {
+    const nick = $('new-nick').value.trim();
+    const msg = $('child-msg');
+    if (!nick) { msg.textContent = 'Choisis un surnom.'; msg.className = 'msg err'; return; }
+    try {
+      const kid = await Cloud.createChild(nick);
+      $('new-nick').value = '';
+      await Cloud.setActiveChild(kid.id);
+      msg.textContent = ''; render();
+    } catch (e) { msg.textContent = 'Erreur : ' + e.message; msg.className = 'msg err'; }
+  };
+
+  Cloud.onChange(render);
+  // Laisse cloud.js finir son init (session éventuelle dans l'URL du magic link)
+  setTimeout(render, 400);
+})();
+</script>
+</body>
+</html>

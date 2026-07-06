@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MJ-38 — Saute-mouton !</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐑</text></svg>">
+  <style>
+    /* --- GABARIT HEADER CANONIQUE (ne pas inventer, copier tel quel) --- */
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+    body { background:#1a1a2e; font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
+    .hdr {
+      display:flex; align-items:center; gap:10px;
+      padding:6px 12px; flex-shrink:0;
+      background:rgba(0,0,0,0.25);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+    .hdr a {
+      color:#fff; text-decoration:none; font-size:1.3rem;
+      background:rgba(255,255,255,0.12); border-radius:8px;
+      padding:4px 10px; font-weight:900; flex-shrink:0;
+    }
+    .hdr a:active { background:rgba(255,255,255,0.25); }
+    .htitle { flex:1; font-size:1rem; font-weight:900; }
+    /* --- FIN GABARIT HEADER --- */
+
+    .toolbar { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:6px 14px; flex-shrink:0; }
+    .stars { font-size:1.1rem; letter-spacing:2px; }
+    .lvl-label { font-size:0.85rem; opacity:0.8; }
+    .btn-restart {
+      background:rgba(255,255,255,0.12); border:2px solid rgba(255,255,255,0.25);
+      color:#fff; font-family:'Fredoka One',sans-serif; font-weight:900;
+      border-radius:14px; padding:10px 16px; font-size:0.85rem; cursor:pointer;
+      min-height:44px;
+    }
+    .btn-restart:active { background:rgba(255,255,255,0.28); }
+
+    .board-wrap { flex:1; display:flex; align-items:center; justify-content:center; padding:6px; min-height:0; }
+    #board {
+      position:relative;
+      display:grid;
+      grid-template-columns:repeat(5, var(--cell));
+      grid-template-rows:repeat(5, var(--cell));
+      gap:4px;
+      border-radius:16px;
+      background:rgba(255,255,255,0.05);
+      padding:6px;
+      box-shadow:0 8px 24px rgba(0,0,0,0.4);
+    }
+    .cell {
+      width:var(--cell); height:var(--cell);
+      border-radius:12px;
+      display:flex; align-items:center; justify-content:center;
+      position:relative;
+      transition:background 0.15s, box-shadow 0.15s;
+    }
+    .cell.light { background:#2c2c4a; }
+    .cell.dark  { background:#23233c; }
+    .cell.landable {
+      box-shadow:0 0 0 4px #ffe066 inset, 0 0 18px 4px rgba(255,224,102,0.65);
+      animation:landPulse 0.9s ease-in-out infinite alternate;
+      cursor:pointer;
+    }
+    @keyframes landPulse {
+      from { box-shadow:0 0 0 4px #ffe066 inset, 0 0 10px 2px rgba(255,224,102,0.4); }
+      to   { box-shadow:0 0 0 4px #fff3b0 inset, 0 0 22px 8px rgba(255,224,102,0.85); }
+    }
+
+    .piece {
+      width:82%; height:82%;
+      border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      position:relative;
+      transition:transform 0.35s cubic-bezier(.34,1.56,.64,1);
+    }
+    .piece.max {
+      background:radial-gradient(circle at 35% 30%, #ffd23f, #f5a623);
+      box-shadow:0 4px 10px rgba(0,0,0,0.4);
+      cursor:pointer;
+      z-index:2;
+    }
+    .piece.max.selected { box-shadow:0 0 0 4px #fff, 0 4px 14px rgba(0,0,0,0.5); }
+    .piece.max .face { font-size:calc(var(--cell) * 0.42); line-height:1; }
+    .piece.dodo {
+      background:radial-gradient(circle at 35% 30%, #9aa3d9, #6b74b8);
+      box-shadow:0 4px 10px rgba(0,0,0,0.35);
+    }
+    .piece.dodo .face { font-size:calc(var(--cell) * 0.4); line-height:1; }
+    .dodo-zzz {
+      position:absolute; top:-14px; right:-6px;
+      font-size:calc(var(--cell) * 0.22);
+      opacity:0.9;
+      animation:zzzFloat 2s ease-in-out infinite;
+    }
+    @keyframes zzzFloat { 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-4px); } }
+
+    .piece.jumping { animation:jumpArc 0.42s ease-out; z-index:5; }
+    @keyframes jumpArc {
+      0%   { transform:translate(0,0) scale(1); }
+      50%  { transform:translate(var(--jx,0), calc(var(--jy,0) - 34px)) scale(1.12); }
+      100% { transform:translate(var(--jx,0), var(--jy,0)) scale(1); }
+    }
+    .piece.landed { animation:squash 0.28s ease-out; }
+    @keyframes squash {
+      0%   { transform:scale(1.12, 0.85); }
+      60%  { transform:scale(0.92, 1.08); }
+      100% { transform:scale(1,1); }
+    }
+    .piece.pouf {
+      animation:poufOut 0.32s ease-in forwards;
+    }
+    @keyframes poufOut {
+      0%   { transform:scale(1); opacity:1; }
+      100% { transform:scale(1.6); opacity:0; }
+    }
+
+    .sparkle {
+      position:absolute;
+      font-size:1.4rem;
+      pointer-events:none;
+      animation:sparklePop 0.6s ease-out forwards;
+      z-index:10;
+    }
+    @keyframes sparklePop {
+      0%   { transform:scale(0.4) translateY(0); opacity:1; }
+      100% { transform:scale(1.4) translateY(-30px); opacity:0; }
+    }
+
+    .msg-zone { min-height:32px; display:flex; align-items:center; justify-content:center; padding:2px 12px 8px; flex-shrink:0; text-align:center; }
+    .msg { font-size:0.95rem; color:#ffe066; font-weight:900; }
+    .msg.soft { color:#9aa3d9; font-size:0.85rem; }
+
+    .overlay { position:fixed; inset:0; background:rgba(0,0,0,0.88); display:flex; align-items:center; justify-content:center; z-index:100; opacity:0; visibility:hidden; transition:all 0.4s; }
+    .overlay.show { opacity:1; visibility:visible; }
+    .ov-box { background:linear-gradient(135deg,#1a1a2e,#16213e); border-radius:24px; border:2px solid rgba(255,255,255,0.1); padding:28px 24px; text-align:center; max-width:320px; width:90%; }
+    .ov-emoji { font-size:3rem; margin-bottom:8px; }
+    .ov-title { font-size:1.4rem; color:#ffe066; font-weight:900; margin-bottom:8px; }
+    .ov-text  { color:#fff; font-size:1rem; margin-bottom:20px; line-height:1.4; }
+    .ov-btn   { background:linear-gradient(135deg,#00c47a,#00a86b); color:#fff; border:none; border-radius:20px; font-family:'Fredoka One',sans-serif; font-weight:900; font-size:1.1rem; padding:12px 28px; cursor:pointer; min-height:48px; }
+    .ov-btn:active { opacity:0.8; }
+  </style>
+</head>
+<body>
+<div id="app">
+
+  <!-- HEADER — copier tel quel, changer uniquement l'emoji et le titre -->
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">🐑 Saute-mouton !</span>
+  </div>
+
+  <div class="toolbar">
+    <div class="lvl-label" id="lvl-label">Niveau 1</div>
+    <div class="stars" id="stars-label">★</div>
+    <button class="btn-restart" id="btn-restart" onclick="restartLevel()">&#8630; Recommencer</button>
+  </div>
+
+  <div class="board-wrap">
+    <div id="board"></div>
+  </div>
+
+  <div class="msg-zone" id="msg-zone"></div>
+
+</div>
+
+<div class="overlay" id="win-overlay">
+  <div class="ov-box">
+    <div class="ov-emoji">🎉</div>
+    <div class="ov-title" id="win-title">Bravo !</div>
+    <div class="ov-text" id="win-text">Tous les moutons dorment bien !</div>
+    <button class="ov-btn" onclick="nextLevel()">&#9654; Continuer</button>
+  </div>
+</div>
+
+<div class="overlay" id="fin-overlay">
+  <div class="ov-box">
+    <div class="ov-emoji">🐑</div>
+    <div class="ov-title">Tu as fini tous les niveaux !</div>
+    <div class="ov-text">Quel champion du saute-mouton !</div>
+    <button class="ov-btn" onclick="resetGame()">&#128257; Rejouer</button>
+  </div>
+</div>
+
+<script src="js/sounds.js"></script>
+<script src="js/victory-sounds.js"></script>
+<script src="js/tracker.js"></script>
+<script>
+// ── NIVEAUX (précalculés + vérifiés par solveur BFS jetable, voir PR MJ-38) ──
+// Chaque niveau : { max:[r,c], dodos:[[r,c],...], tier:'★'|'★★'|'★★★' }
+const LEVELS = [
+  { tier:'★',   max:[3,3], dodos:[[3,2],[2,2]] },
+  { tier:'★',   max:[3,1], dodos:[[2,2],[2,1],[3,2]] },
+  { tier:'★',   max:[2,3], dodos:[[3,3],[3,2]] },
+  { tier:'★★',  max:[2,3], dodos:[[2,2],[1,1],[1,2],[3,2]] },
+  { tier:'★★',  max:[2,1], dodos:[[1,1],[1,2],[2,2],[3,1],[3,2]] },
+  { tier:'★★',  max:[3,3], dodos:[[2,3],[1,2],[2,1],[3,2]] },
+  { tier:'★★★', max:[2,1], dodos:[[1,1],[1,2],[3,2],[4,2],[2,2],[3,1]] },
+  { tier:'★★★', max:[2,2], dodos:[[1,3],[0,3],[1,1],[3,2],[2,1],[1,2],[3,3]] },
+  { tier:'★★★', max:[2,3], dodos:[[3,3],[4,2],[3,1],[1,1],[0,2],[1,2],[3,2]] },
+];
+
+const N = 5;
+const DIRS = [];
+for (let dr=-1; dr<=1; dr++) for (let dc=-1; dc<=1; dc++) if (dr||dc) DIRS.push([dr,dc]);
+function inb(r,c){ return r>=0 && r<N && c>=0 && c<N; }
+function pk(r,c){ return r+','+c; }
+
+// ── ÉTAT ──────────────────────────────────────────────────────────
+let levelIdx = 0;
+let maxPos = null;
+let dodoSet = null; // Set de "r,c"
+let selected = false;
+let animating = false;
+let comboCount = 0;
+
+function loadLevel(idx) {
+  const lv = LEVELS[idx];
+  maxPos = [...lv.max];
+  dodoSet = new Set(lv.dodos.map(([r,c]) => pk(r,c)));
+  selected = false;
+  animating = false;
+  comboCount = 0;
+  document.getElementById('lvl-label').textContent = `Niveau ${idx+1} / ${LEVELS.length}`;
+  document.getElementById('stars-label').textContent = lv.tier;
+  document.getElementById('msg-zone').innerHTML = '';
+  renderBoard();
+}
+
+function cellSize() {
+  const wrap = document.querySelector('.board-wrap');
+  const avail = Math.min(wrap.clientWidth - 24, wrap.clientHeight - 24);
+  return Math.max(70, Math.min(120, Math.floor(avail / 5) - 4));
+}
+
+function renderBoard() {
+  const board = document.getElementById('board');
+  const cs = cellSize();
+  board.style.setProperty('--cell', cs + 'px');
+  board.innerHTML = '';
+  for (let r = 0; r < N; r++) {
+    for (let c = 0; c < N; c++) {
+      const cell = document.createElement('div');
+      cell.className = 'cell ' + ((r+c) % 2 === 0 ? 'light' : 'dark');
+      cell.dataset.r = r; cell.dataset.c = c;
+      cell.id = `cell-${r}-${c}`;
+      cell.addEventListener('click', () => onCellClick(r, c));
+      board.appendChild(cell);
+
+      if (maxPos[0] === r && maxPos[1] === c) {
+        cell.appendChild(makeMaxPiece());
+      } else if (dodoSet.has(pk(r,c))) {
+        cell.appendChild(makeDodoPiece());
+      }
+    }
+  }
+  updateLandable();
+}
+
+function makeMaxPiece() {
+  const p = document.createElement('div');
+  p.className = 'piece max' + (selected ? ' selected' : '');
+  p.id = 'piece-max';
+  p.innerHTML = '<span class="face">&#128522;</span>';
+  p.addEventListener('click', (e) => { e.stopPropagation(); onMaxClick(); });
+  return p;
+}
+
+function makeDodoPiece() {
+  const p = document.createElement('div');
+  p.className = 'piece dodo';
+  p.innerHTML = '<span class="face">&#128564;</span><span class="dodo-zzz">z<sup>z</sup></span>';
+  return p;
+}
+
+function landingSpots() {
+  const [mr, mc] = maxPos;
+  const spots = [];
+  for (const [dr, dc] of DIRS) {
+    const orr = mr+dr, occ = mc+dc, tr = mr+2*dr, tc = mc+2*dc;
+    if (!inb(orr,occ) || !inb(tr,tc)) continue;
+    if (!dodoSet.has(pk(orr,occ))) continue;
+    if (dodoSet.has(pk(tr,tc))) continue;
+    spots.push({ over:[orr,occ], to:[tr,tc] });
+  }
+  return spots;
+}
+
+function updateLandable() {
+  document.querySelectorAll('.cell.landable').forEach(el => el.classList.remove('landable'));
+  if (!selected) return;
+  for (const spot of landingSpots()) {
+    const el = document.getElementById(`cell-${spot.to[0]}-${spot.to[1]}`);
+    if (el) el.classList.add('landable');
+  }
+}
+
+function onMaxClick() {
+  if (animating) return;
+  selected = !selected;
+  renderBoard();
+}
+
+function onCellClick(r, c) {
+  if (animating || !selected) return;
+  const spot = landingSpots().find(s => s.to[0] === r && s.to[1] === c);
+  if (!spot) return;
+  doJump(spot);
+}
+
+function doJump(spot) {
+  animating = true;
+  const fromEl = document.getElementById('piece-max');
+  const fromCell = document.getElementById(`cell-${maxPos[0]}-${maxPos[1]}`);
+  const overCell = document.getElementById(`cell-${spot.over[0]}-${spot.over[1]}`);
+  const toCell = document.getElementById(`cell-${spot.to[0]}-${spot.to[1]}`);
+
+  const cs = cellSize() + 4;
+  const dxCells = spot.to[1] - parseInt(fromCell.dataset.c, 10);
+  const dyCells = spot.to[0] - parseInt(fromCell.dataset.r, 10);
+  fromEl.style.setProperty('--jx', (dxCells * cs) + 'px');
+  fromEl.style.setProperty('--jy', (dyCells * cs) + 'px');
+  fromEl.classList.add('jumping');
+
+  playHopSound();
+
+  // La souris/pion sautée disparaît en "pouf" pendant l'arc
+  const overPiece = overCell.querySelector('.piece.dodo');
+  if (overPiece) overPiece.classList.add('pouf');
+
+  setTimeout(() => {
+    dodoSet.delete(pk(spot.over[0], spot.over[1]));
+    maxPos = [spot.to[0], spot.to[1]];
+    selected = false;
+    comboCount++;
+    renderBoard();
+    const newPiece = document.getElementById('piece-max');
+    if (newPiece) newPiece.classList.add('landed');
+
+    if (comboCount > 1) showCombo(toCell);
+
+    animating = false;
+
+    if (dodoSet.size === 0) {
+      setTimeout(showWin, 350);
+    } else if (landingSpots().length === 0 && !hasAnyJumpFromDodos()) {
+      setTimeout(showStuck, 300);
+    }
+  }, 420);
+}
+
+// Vérifie s'il existe un saut possible depuis N'IMPORTE OÙ n'a pas de sens ici
+// (Max est un pion unique) — on vérifie juste si Max peut sauter depuis sa
+// position actuelle. Gardé en fonction séparée pour lisibilité du message.
+function hasAnyJumpFromDodos() {
+  return landingSpots().length > 0;
+}
+
+function showCombo(cellEl) {
+  const rect = cellEl.getBoundingClientRect();
+  const sp = document.createElement('div');
+  sp.className = 'sparkle';
+  sp.textContent = '✨';
+  sp.style.left = (rect.left + rect.width/2 - 12) + 'px';
+  sp.style.top = (rect.top) + 'px';
+  sp.style.position = 'fixed';
+  document.body.appendChild(sp);
+  setTimeout(() => sp.remove(), 650);
+  document.getElementById('msg-zone').innerHTML = '<span class="msg">✨ Combo !</span>';
+}
+
+function showStuck() {
+  document.getElementById('msg-zone').innerHTML = '<span class="msg soft">Essaie encore ! Appuie sur Recommencer 🙂</span>';
+}
+
+function showWin() {
+  if (typeof Tracker !== 'undefined') Tracker.endSession(levelIdx+1, LEVELS.length);
+  if (typeof playEndSound === 'function') playEndSound(1, 1);
+  document.getElementById('win-title').textContent = 'Bravo !';
+  document.getElementById('win-text').textContent = levelIdx < LEVELS.length - 1
+    ? 'Tous les moutons dorment bien !'
+    : 'Dernier niveau terminé !';
+  document.getElementById('win-overlay').classList.add('show');
+}
+
+function nextLevel() {
+  document.getElementById('win-overlay').classList.remove('show');
+  levelIdx++;
+  if (levelIdx >= LEVELS.length) {
+    document.getElementById('fin-overlay').classList.add('show');
+    return;
+  }
+  loadLevel(levelIdx);
+}
+
+function resetGame() {
+  document.getElementById('fin-overlay').classList.remove('show');
+  levelIdx = 0;
+  if (typeof Tracker !== 'undefined') Tracker.startSession('mj-38');
+  loadLevel(levelIdx);
+}
+
+function restartLevel() {
+  document.getElementById('win-overlay').classList.remove('show');
+  loadLevel(levelIdx);
+}
+
+// ── SON saut (doux, pas violent) ────────────────────────────────────
+function playHopSound() {
+  try {
+    if (typeof sndCount === 'function') { sndCount(); return; }
+  } catch(e) {}
+}
+
+// ── INIT ──────────────────────────────────────────────────────────
+if (typeof Tracker !== 'undefined') Tracker.startSession('mj-38');
+loadLevel(levelIdx);
+window.addEventListener('resize', renderBoard);
+</script>
+</body>
+</html>

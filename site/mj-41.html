@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-41 – Les tuiles dinos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    #app { background: linear-gradient(160deg,#1f3a2a,#0e2016); }
+    .instruction-text { text-align:center; font-size:1.05rem; font-weight:900; color:#ffe066; margin:6px 12px 2px; flex-shrink:0; }
+
+    .board-wrap {
+      flex:1; position:relative; overflow:hidden;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .board {
+      position:relative;
+      width:100%; height:100%;
+      max-width:680px;
+    }
+
+    .tile {
+      position:absolute;
+      border-radius:14px;
+      background:#fff;
+      box-shadow:0 3px 0 #0004, 0 6px 12px #0006;
+      border:3px solid #ffffffcc;
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer;
+      transition: box-shadow .15s, filter .15s;
+      overflow:hidden;
+    }
+    .tile img { width:82%; height:82%; object-fit:contain; pointer-events:none; }
+    .tile.locked { filter:brightness(.55) saturate(.7); cursor:default; }
+    .tile.selected { box-shadow:0 0 0 4px #ffe066, 0 6px 14px #0008; }
+    .tile.matched { visibility:hidden; pointer-events:none; }
+    .tile.hint { animation: hintPulse 1s ease-in-out infinite; }
+    @keyframes hintPulse {
+      0%,100% { box-shadow:0 3px 0 #0004, 0 6px 12px #0006, 0 0 0 0 #6cf6; }
+      50%     { box-shadow:0 3px 0 #0004, 0 6px 12px #0006, 0 0 0 8px #6cf0; }
+    }
+    .tile.shake { animation: shakeTile .35s ease; }
+    @keyframes shakeTile {
+      0%,100% { transform:translateX(0); }
+      25% { transform:translateX(-5px) rotate(-2deg); }
+      75% { transform:translateX(5px) rotate(2deg); }
+    }
+    .tile.flyaway {
+      animation: flyAway .5s ease forwards;
+    }
+    @keyframes flyAway {
+      to { transform: scale(0.2) translateY(-40px); opacity:0; }
+    }
+
+    .reshuffle-overlay {
+      position:absolute; inset:0; z-index:5;
+      display:flex; align-items:center; justify-content:center;
+      pointer-events:none;
+    }
+    .reshuffle-text {
+      background:#000a; color:#fff; font-weight:900; font-size:1.1rem;
+      padding:14px 22px; border-radius:16px;
+      opacity:0; transition:opacity .3s;
+    }
+    .reshuffle-text.show { opacity:1; }
+    .tile.swirl { animation: swirl .6s ease-in-out; }
+    @keyframes swirl {
+      0%   { transform:rotate(0deg) scale(1); }
+      50%  { transform:rotate(180deg) scale(0.6); opacity:.4; }
+      100% { transform:rotate(360deg) scale(1); opacity:1; }
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <div class="hdr">
+      <a href="index.html" class="back">&#8592;</a>
+      <span class="htitle">🀄 Les tuiles dinos</span>
+    </div>
+    <div class="pips" id="pips"></div>
+
+    <div class="instruction-text" id="instruction">Trouve 2 tuiles avec le même dino !</div>
+
+    <div class="board-wrap">
+      <div class="board" id="board"></div>
+      <div class="reshuffle-overlay"><div class="reshuffle-text" id="reshuffleText">🌀 On remélange !</div></div>
+    </div>
+  </div>
+
+  <script src="js/sounds.js"></script>
+  <script src="js/tts.js"></script>
+  <script src="js/victory-sounds.js"></script>
+  <script src="js/feedback.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/stars.js"></script>
+  <script src="js/mj-golden.js"></script>
+  <script src="js/dinos-data.js"></script>
+  <script src="js/dinos-audio-manifest.js"></script>
+  <script>
+    // ─── MJ-41 — Les tuiles dinos : mahjong solitaire simplifié 4-8 ans ───
+    // Mécanique : pyramide de tuiles têtes-de-dinos. Une tuile est "libre" si rien ne
+    // la recouvre (couche du dessus) et qu'un de ses côtés gauche/droit est dégagé
+    // (règle mahjong classique). Tap 2 tuiles libres du même dino → paire envolée.
+    //
+    // GÉNÉRATION 100% SOLVABLE (méthode "construction par retrait inverse", validée par
+    // script Node dans le scratchpad — 300/300 essais solvables sur les 3 paliers) :
+    // on part de la forme cible pleine et on la VIDE par simulation (à chaque étape on
+    // choisit 2 positions actuellement libres au hasard et on les retire), on assigne le
+    // MÊME dino aux 2 positions retirées ensemble à chaque étape. Comme on suit un vrai
+    // chemin de vidage, le board obtenu est TOUJOURS résolvable en le rejouant dans le
+    // même ordre (et généralement dans bien d'autres ordres aussi).
+    // Filet anti-blocage supplémentaire en jeu : si plus aucune paire libre n'est
+    // disponible (l'utilisateur a fait des choix qui bloquent — rare mais possible sur
+    // les formes à 3 couches), les tuiles restantes se remélangent automatiquement.
+
+    const G = Golden.setup('mj-41');
+    const level = G.level; // 0,1,2
+
+    // Paliers : ★ 12 tuiles (6 paires, 2 couches) / ★★ 20 tuiles (3 couches) / ★★★ 32 tuiles (3 couches)
+    const TIER_SHAPES = [
+      [{ cols: 4, rows: 2 }, { cols: 2, rows: 2 }],                         // 0★ : 12 tuiles
+      [{ cols: 6, rows: 2 }, { cols: 3, rows: 2 }, { cols: 2, rows: 1 }],   // 1★ : 20 tuiles
+      [{ cols: 8, rows: 2 }, { cols: 6, rows: 2 }, { cols: 2, rows: 2 }],   // 2★+ : 32 tuiles
+    ];
+    const shapeDefs = TIER_SHAPES[level];
+
+    // 8 dinos variés et reconnaissables — Triceratops obligatoire (Tritri, préféré de Max)
+    const DINO_IDS = ['triceratops', 'tyrannosaurus', 'stegosaurus', 'brachiosaurus',
+                       'velociraptor', 'ankylosaurus', 'pteranodon', 'parasaurolophus'];
+
+    function dinoImgSrc(id) {
+      const byId = {}; DINOS.forEach(d => byId[d.id] = d);
+      const d = byId[id];
+      return d ? 'img/dinos/' + d.png : '';
+    }
+    function dinoName(id) {
+      const byId = {}; DINOS.forEach(d => byId[d.id] = d);
+      const d = byId[id];
+      return d ? d.name : id;
+    }
+
+    // ─── Génération de la forme + positions ───
+    function buildShapePositions(layers) {
+      const positions = [];
+      layers.forEach((L, z) => {
+        for (let r = 0; r < L.rows; r++) {
+          for (let c = 0; c < L.cols; c++) {
+            positions.push({ x: c + z * 0.5, y: r + z * 0.5, z });
+          }
+        }
+      });
+      return positions;
+    }
+    function keyOf(p) { return p.x + ',' + p.y + ',' + p.z; }
+
+    function isFree(pos, presentSet) {
+      if (!presentSet.has(keyOf(pos))) return false;
+      for (const k of presentSet) {
+        const parts = k.split(','); const px = +parts[0], py = +parts[1], pz = +parts[2];
+        if (pz === pos.z + 1 && Math.abs(px - pos.x) < 0.75 && Math.abs(py - pos.y) < 0.75) return false;
+      }
+      let leftBlocked = false, rightBlocked = false;
+      for (const k of presentSet) {
+        const parts = k.split(','); const px = +parts[0], py = +parts[1], pz = +parts[2];
+        if (pz !== pos.z || py !== pos.y) continue;
+        if (px === pos.x - 1) leftBlocked = true;
+        if (px === pos.x + 1) rightBlocked = true;
+      }
+      return !leftBlocked || !rightBlocked;
+    }
+
+    function tryGenerateBoard(layers, dinoIds) {
+      const positions = buildShapePositions(layers);
+      let present = new Set(positions.map(keyOf));
+      const byKey = new Map(positions.map(p => [keyOf(p), p]));
+      const removalSteps = [];
+      while (present.size > 0) {
+        const free = [...present].map(k => byKey.get(k)).filter(p => isFree(p, present));
+        if (free.length < 2) return null; // deadlock rare -> relance
+        const i = Math.floor(Math.random() * free.length);
+        let j = Math.floor(Math.random() * free.length);
+        while (j === i) j = Math.floor(Math.random() * free.length);
+        const a = free[i], b = free[j];
+        present.delete(keyOf(a)); present.delete(keyOf(b));
+        removalSteps.push([a, b]);
+      }
+      const board = [];
+      removalSteps.forEach(([a, b], idx) => {
+        const dino = dinoIds[idx % dinoIds.length];
+        board.push(Object.assign({}, a, { dino, id: 't' + board.length }));
+        board.push(Object.assign({}, b, { dino, id: 't' + board.length + 1 }));
+      });
+      return board;
+    }
+    function generateBoard(layers, dinoIds) {
+      for (let a = 0; a < 300; a++) {
+        const b = tryGenerateBoard(layers, dinoIds);
+        if (b) return b;
+      }
+      throw new Error('generateBoard: échec forme');
+    }
+
+    // ─── État jeu ───
+    let tiles = [];       // état vivant : { x,y,z,dino,id, el, removed }
+    let selected = [];    // ids sélectionnés (0,1 ou 2)
+    let lock = false;
+    let pairIndex = 0;
+    let attemptsSinceLastPair = 0;
+    let totalPairs = 0;
+    let matchedCount = 0;
+    let idleTimer = null;
+
+    function present() {
+      return new Set(tiles.filter(t => !t.removed).map(keyOf));
+    }
+    function tileIsFree(t) {
+      return !t.removed && isFree(t, present());
+    }
+
+    function anyFreePairAvailable() {
+      const free = tiles.filter(t => !t.removed && tileIsFree(t));
+      const byDino = {};
+      free.forEach(t => (byDino[t.dino] = byDino[t.dino] || []).push(t));
+      return Object.values(byDino).some(arr => arr.length >= 2);
+    }
+    function findAFreePair() {
+      const free = tiles.filter(t => !t.removed && tileIsFree(t));
+      const byDino = {};
+      free.forEach(t => (byDino[t.dino] = byDino[t.dino] || []).push(t));
+      const found = Object.values(byDino).find(arr => arr.length >= 2);
+      return found ? [found[0], found[1]] : null;
+    }
+
+    function layout() {
+      const boardEl = document.getElementById('board');
+      const W = boardEl.clientWidth, H = boardEl.clientHeight;
+      const maxX = Math.max(...tiles.map(t => t.x)) + 1;
+      const maxY = Math.max(...tiles.map(t => t.y)) + 1;
+      const cell = Math.min((W - 20) / maxX, (H - 20) / maxY);
+      const offX = (W - maxX * cell) / 2;
+      const offY = (H - maxY * cell) / 2;
+      tiles.forEach(t => {
+        if (!t.el) return;
+        const zLift = t.z * 6; // petit décalage visuel de profondeur
+        t.el.style.width = (cell * 0.92) + 'px';
+        t.el.style.height = (cell * 0.92) + 'px';
+        t.el.style.left = (offX + t.x * cell - zLift) + 'px';
+        t.el.style.top = (offY + t.y * cell - zLift) + 'px';
+        t.el.style.zIndex = 10 + t.z * 10;
+      });
+    }
+
+    function refreshLockVisuals() {
+      const pres = present();
+      tiles.forEach(t => {
+        if (t.removed || !t.el) return;
+        const free = isFree(t, pres);
+        t.el.classList.toggle('locked', !free);
+      });
+    }
+
+    function renderBoard() {
+      const boardEl = document.getElementById('board');
+      boardEl.innerHTML = '';
+      tiles.forEach(t => {
+        const el = document.createElement('div');
+        el.className = 'tile';
+        el.dataset.id = t.id;
+        el.innerHTML = '<img src="' + dinoImgSrc(t.dino) + '" alt="">';
+        el.addEventListener('click', () => onTileClick(t.id));
+        boardEl.appendChild(el);
+        t.el = el;
+      });
+      layout();
+      refreshLockVisuals();
+    }
+
+    function speak(t) { try { TTS.speak(t, { pitch: 1.05, priority: true, rate: 0.95 }); } catch (e) {} }
+
+    function resetIdleHint() {
+      clearTimeout(idleTimer);
+      clearHints();
+      idleTimer = setTimeout(showHint, 20000);
+    }
+    function clearHints() {
+      tiles.forEach(t => { if (t.el) t.el.classList.remove('hint'); });
+    }
+    function showHint() {
+      const pair = findAFreePair();
+      if (!pair) return;
+      pair.forEach(t => { if (t.el) t.el.classList.add('hint'); });
+    }
+
+    function onTileClick(id) {
+      if (lock) return;
+      const t = tiles.find(x => x.id === id);
+      if (!t || t.removed) return;
+      resetIdleHint();
+
+      if (!tileIsFree(t)) {
+        // tuile non-libre : tremble doucement, AUCUN son négatif
+        if (t.el) { t.el.classList.remove('shake'); void t.el.offsetWidth; t.el.classList.add('shake'); }
+        return;
+      }
+      if (selected.includes(id)) return; // déjà sélectionnée
+
+      t.el.classList.add('selected');
+      selected.push(id);
+      const name = dinoName(t.dino);
+      try { playDinoNom(t.dino, name); } catch (e) { speak(name); }
+
+      if (selected.length === 2) {
+        lock = true;
+        const [aId, bId] = selected;
+        const a = tiles.find(x => x.id === aId), b = tiles.find(x => x.id === bId);
+        const same = a.dino === b.dino;
+        if (same) {
+          setTimeout(() => resolveMatch(a, b), 300);
+        } else {
+          attemptsSinceLastPair++;
+          setTimeout(() => resolveMismatch(a, b), 700);
+        }
+      }
+    }
+
+    function resolveMatch(a, b) {
+      a.removed = true; b.removed = true;
+      matchedCount++;
+      if (a.el) a.el.classList.add('flyaway');
+      if (b.el) b.el.classList.add('flyaway');
+      sndDing();
+      setTimeout(() => {
+        if (a.el) a.el.classList.add('matched');
+        if (b.el) b.el.classList.add('matched');
+      }, 480);
+
+      const attempts = attemptsSinceLastPair === 0 ? 1
+                      : attemptsSinceLastPair <= 2 ? 2
+                      : attemptsSinceLastPair <= 4 ? 3 : 4;
+      G.notePip(pairIndex, attempts);
+      pairIndex++;
+      attemptsSinceLastPair = 0;
+      selected = [];
+      refreshLockVisuals();
+
+      if (matchedCount >= totalPairs) {
+        lock = true;
+        setTimeout(showEnd, 700);
+        return;
+      }
+      lock = false;
+      // filet anti-blocage : plus aucune paire libre -> remélange
+      if (!anyFreePairAvailable()) {
+        setTimeout(reshuffleRemaining, 500);
+      } else {
+        resetIdleHint();
+      }
+    }
+
+    function resolveMismatch(a, b) {
+      if (a.el) a.el.classList.remove('selected');
+      if (b.el) b.el.classList.remove('selected');
+      selected = [];
+      lock = false;
+      resetIdleHint();
+    }
+
+    // Remélange : redistribue les dinos restants sur les MÊMES positions restantes,
+    // de façon à ce qu'un chemin de résolution existe (même méthode de construction,
+    // appliquée uniquement aux tuiles encore présentes).
+    function reshuffleRemaining() {
+      const remaining = tiles.filter(t => !t.removed);
+      if (remaining.length === 0) return;
+
+      const overlay = document.getElementById('reshuffleText');
+      overlay.classList.add('show');
+      remaining.forEach(t => { if (t.el) t.el.classList.add('swirl'); });
+
+      setTimeout(() => {
+        const positions = remaining.map(t => ({ x: t.x, y: t.y, z: t.z }));
+        const dinoIds = DINO_IDS.slice(0, Math.max(2, Math.ceil(remaining.length / 2)));
+        let newBoard = null;
+        for (let a = 0; a < 300 && !newBoard; a++) {
+          newBoard = tryReshuffleSubset(positions, dinoIds);
+        }
+        if (!newBoard) {
+          // dernier recours théorique (ne devrait jamais arriver) : réassigne un seul dino partout
+          newBoard = positions.map((p, i) => Object.assign({}, p, { dino: dinoIds[0] }));
+        }
+        remaining.forEach((t, i) => {
+          t.dino = newBoard[i].dino;
+          if (t.el) t.el.querySelector('img').src = dinoImgSrc(t.dino);
+        });
+        remaining.forEach(t => { if (t.el) t.el.classList.remove('swirl'); });
+        overlay.classList.remove('show');
+        refreshLockVisuals();
+        resetIdleHint();
+      }, 620);
+    }
+
+    // Comme tryGenerateBoard mais sur un sous-ensemble de positions déjà existant (pas besoin
+    // de reconstruire la pyramide) — même principe : vide par simulation, assigne par paire retirée.
+    function tryReshuffleSubset(positions, dinoIds) {
+      let present = new Set(positions.map(keyOf));
+      const byKey = new Map(positions.map(p => [keyOf(p), p]));
+      const removalSteps = [];
+      while (present.size > 0) {
+        const free = [...present].map(k => byKey.get(k)).filter(p => isFree(p, present));
+        if (free.length < 2) return null;
+        const i = Math.floor(Math.random() * free.length);
+        let j = Math.floor(Math.random() * free.length);
+        while (j === i) j = Math.floor(Math.random() * free.length);
+        const a = free[i], b = free[j];
+        present.delete(keyOf(a)); present.delete(keyOf(b));
+        removalSteps.push([a, b]);
+      }
+      const out = new Array(positions.length);
+      const idxOf = new Map(positions.map((p, i) => [keyOf(p), i]));
+      removalSteps.forEach(([a, b], idx) => {
+        const dino = dinoIds[idx % dinoIds.length];
+        out[idxOf.get(keyOf(a))] = Object.assign({}, a, { dino });
+        out[idxOf.get(keyOf(b))] = Object.assign({}, b, { dino });
+      });
+      return out;
+    }
+
+    function showEnd() {
+      clearTimeout(idleTimer);
+      G.showEnd({ replayUrl: 'mj-41.html' });
+    }
+
+    function init() {
+      const board = generateBoard(shapeDefs, DINO_IDS.slice(0, Math.min(8, Math.max(4, shapeDefs.reduce((s, l) => s + l.cols * l.rows, 0) / 4))));
+      tiles = board;
+      totalPairs = tiles.length / 2;
+      matchedCount = 0;
+      pairIndex = 0;
+      // Le nb de billes doit suivre le nb réel de paires du palier (6/10/16), pas le
+      // standard golden générique 4/6/8 (fait pour des quiz question-par-question).
+      G.totalQ = totalPairs;
+      G.buildPips();
+      renderBoard();
+      resetIdleHint();
+      window.addEventListener('resize', layout);
+    }
+
+    init();
+
+    // ─── Hook de test headless (EP-038) — jamais utilisé en prod, lu par le harnais Playwright ───
+    window.__mjTest = {
+      state: () => ({
+        totalPairs, matchedCount,
+        tiles: tiles.map(t => ({ id: t.id, dino: t.dino, x: t.x, y: t.y, z: t.z, removed: !!t.removed })),
+      }),
+      // clique une tuile par son id (même chemin que le vrai tap utilisateur)
+      pick: (id) => onTileClick(id),
+      // renvoie une paire de tuiles libres du même dino, ou null si aucune (sert à scripter une victoire
+      // ou à vérifier qu'un blocage déclenche bien le remélange)
+      findFreePair: () => {
+        const p = findAFreePair();
+        return p ? [p[0].id, p[1].id] : null;
+      },
+      isFreeTile: (id) => {
+        const t = tiles.find(x => x.id === id);
+        return !!t && tileIsFree(t);
+      },
+      forceReshuffle: () => reshuffleRemaining(),
+      anyFreePairAvailable,
+    };
+  </script>
+  <script src="js/tracker.js"></script>
+  <script src="js/comments.js"></script>
+  <script src="js/back-button.js"></script>
+</body>
+</html>

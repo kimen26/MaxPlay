@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>MJ-37 — Croque-échecs !</title>
+  <style>
+    /* --- GABARIT HEADER CANONIQUE (ne pas inventer, copier tel quel) --- */
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+    body { background:#1a1a2e; font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
+    .hdr {
+      display:flex; align-items:center; gap:10px;
+      padding:6px 12px; flex-shrink:0;
+      background:rgba(0,0,0,0.25);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+    .hdr a {
+      color:#fff; text-decoration:none; font-size:1.3rem;
+      background:rgba(255,255,255,0.12); border-radius:8px;
+      padding:4px 10px; font-weight:900; flex-shrink:0;
+    }
+    .hdr a:active { background:rgba(255,255,255,0.25); }
+    .htitle { flex:1; font-size:1rem; font-weight:900; }
+    /* --- FIN GABARIT HEADER --- */
+
+    #main { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow-y:auto; padding:10px; gap:10px; }
+
+    /* ── Écran palier ── */
+    #screen-tiers { width:100%; max-width:600px; display:none; flex-direction:column; gap:14px; padding:6px; }
+    .tier-group { background:rgba(255,255,255,0.06); border-radius:16px; padding:10px; }
+    .tier-title { font-size:0.95rem; font-weight:900; margin-bottom:8px; display:flex; align-items:center; gap:6px; }
+    .tier-levels { display:flex; flex-wrap:wrap; gap:8px; }
+    .lvl-card {
+      min-width:80px; min-height:80px; flex:1 1 80px; max-width:110px;
+      background:rgba(255,255,255,0.12); border:none; border-radius:14px;
+      display:flex; flex-direction:column; align-items:center; justify-content:center; gap:4px;
+      color:#fff; font-family:inherit; cursor:pointer; padding:8px;
+    }
+    .lvl-card:active { background:rgba(255,255,255,0.25); }
+    .lvl-card.locked { opacity:0.35; filter:grayscale(0.8); }
+    .lvl-card .lvl-piece { width:34px; height:34px; }
+    .lvl-card .lvl-name { font-size:0.68rem; font-weight:800; }
+    .lvl-card .lvl-done { font-size:0.9rem; }
+
+    /* ── Carte présentation pièce ── */
+    #screen-intro { display:none; flex-direction:column; align-items:center; justify-content:center; gap:14px; width:100%; height:100%; text-align:center; padding:20px; }
+    #screen-intro .intro-piece { width:140px; height:140px; }
+    #screen-intro .intro-name { font-size:1.4rem; font-weight:900; }
+    #screen-intro .intro-phrase { font-size:1rem; font-weight:700; opacity:0.9; max-width:320px; display:flex; align-items:center; gap:8px; justify-content:center; }
+    #screen-intro .btn-sound {
+      width:44px; height:44px; border-radius:50%; border:none;
+      background:rgba(255,255,255,0.15); color:#fff; font-size:1.1rem; opacity:0.6;
+      display:flex; align-items:center; justify-content:center; cursor:pointer;
+    }
+    #screen-intro .btn-play {
+      min-width:160px; min-height:80px; border:none; border-radius:20px;
+      background:#2ecc71; color:#fff; font-family:inherit; font-weight:900; font-size:1.1rem;
+      cursor:pointer; box-shadow:0 6px 0 #219150;
+    }
+    #screen-intro .btn-play:active { transform:translateY(4px); box-shadow:0 2px 0 #219150; }
+
+    /* ── Plateau ── */
+    #screen-board { display:none; flex-direction:column; align-items:center; gap:10px; width:100%; }
+    #snacks-left { font-size:0.9rem; font-weight:800; opacity:0.85; }
+    #board {
+      display:grid; position:relative;
+      border-radius:10px; overflow:hidden; box-shadow:0 6px 20px rgba(0,0,0,0.4);
+    }
+    .cell {
+      position:relative; display:flex; align-items:center; justify-content:center;
+      min-width:80px; min-height:80px;
+    }
+    .cell.light { background:#ecd9b0; }
+    .cell.dark  { background:#a97c50; }
+    .cell.glow::after {
+      content:''; position:absolute; inset:4px; border-radius:8px;
+      background:rgba(46,204,113,0.45); box-shadow:0 0 0 3px rgba(46,204,113,0.8) inset;
+      animation:pulseGlow 1s ease-in-out infinite;
+    }
+    @keyframes pulseGlow { 0%,100%{ opacity:0.6; } 50%{ opacity:1; } }
+    .snack { font-size:1.8rem; pointer-events:none; z-index:1; }
+    .piece-wrap {
+      position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+      cursor:pointer; z-index:2; transition:transform 0.45s ease-in-out;
+    }
+    .piece-wrap svg { width:70%; height:70%; }
+    .piece-wrap.zigzag-move { animation:zigzagMove 0.5s ease-in-out; }
+    @keyframes zigzagMove {
+      0%   { margin-left:0; margin-top:0; }
+      25%  { margin-left:6px; margin-top:-4px; }
+      50%  { margin-left:-6px; margin-top:4px; }
+      75%  { margin-left:4px; margin-top:-2px; }
+      100% { margin-left:0; margin-top:0; }
+    }
+    .piece-wrap.tour-move { transition:transform 0.28s linear; }
+    .piece-wrap.cavalier-move { animation:cavalierMove 0.5s; }
+    @keyframes cavalierMove {
+      0%   { transform:translateY(0) scale(1); }
+      50%  { transform:translateY(-26px) scale(1.08); }
+      100% { transform:translateY(0) scale(1); }
+    }
+    .piece-wrap.soft-move { transition:transform 0.4s ease-in-out; }
+
+    #btn-next {
+      min-width:200px; min-height:80px; border:none; border-radius:20px;
+      background:#f39c12; color:#fff; font-family:inherit; font-weight:900; font-size:1.05rem;
+      cursor:pointer; box-shadow:0 6px 0 #b9720a; display:none;
+    }
+    #btn-next:active { transform:translateY(4px); box-shadow:0 2px 0 #b9720a; }
+    .victory-banner { font-size:1.1rem; font-weight:900; color:#2ecc71; text-align:center; padding:6px; }
+
+    /* ── Overlay victoire ── */
+    #victory-overlay {
+      position:fixed; inset:0; background:rgba(0,0,0,0.55); display:none;
+      align-items:center; justify-content:center; z-index:20; flex-direction:column; gap:16px;
+    }
+    #victory-overlay .vtext { font-size:1.6rem; font-weight:900; text-shadow:2px 2px 0 rgba(0,0,0,0.3); }
+    .confetti { position:absolute; top:-10px; font-size:1.4rem; animation:confettiFall 1.4s ease-in forwards; }
+    @keyframes confettiFall {
+      0%   { transform:translateY(0) rotate(0deg); opacity:1; }
+      100% { transform:translateY(70vh) rotate(360deg); opacity:0; }
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+
+  <!-- HEADER — copier tel quel, changer uniquement l'emoji et le titre -->
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">♟️ Croque-échecs !</span>
+  </div>
+
+  <div id="main">
+
+    <!-- Écran paliers -->
+    <div id="screen-tiers"></div>
+
+    <!-- Carte présentation pièce -->
+    <div id="screen-intro">
+      <div class="intro-piece" id="intro-piece-svg"></div>
+      <div class="intro-name" id="intro-name"></div>
+      <div class="intro-phrase">
+        <span id="intro-phrase-text"></span>
+        <button class="btn-sound" id="intro-sound-btn" aria-label="Écouter">🔊</button>
+      </div>
+      <button class="btn-play" id="intro-play-btn">Jouer !</button>
+    </div>
+
+    <!-- Plateau de jeu -->
+    <div id="screen-board">
+      <div id="snacks-left"></div>
+      <div id="board" class="board"></div>
+      <div id="victory-zone"></div>
+      <button id="btn-next">Niveau suivant →</button>
+    </div>
+
+  </div>
+
+  <div id="victory-overlay">
+    <div class="vtext">🎉 Bravo ! 🎉</div>
+  </div>
+
+</div>
+  <script src="js/bus-svg.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/tracker.js"></script>
+  <script src="js/sounds.js"></script>
+  <script src="js/victory-sounds.js"></script>
+  <script>
+  (function () {
+    'use strict';
+
+    // ── Données niveaux (solveur pré-vérifié — NE PAS MODIFIER LES COORDONNÉES) ──
+    const LEVELS = [
+      { id:'fou-1', tier:1, n:4, pieces:[{type:'fou', start:[0,0]}], snacks:[[1,1],[2,2]] },
+      { id:'fou-2', tier:1, n:4, pieces:[{type:'fou', start:[0,3]}], snacks:[[1,2],[2,1],[3,0]] },
+      { id:'fou-3', tier:1, n:4, pieces:[{type:'fou', start:[1,1]}], snacks:[[0,0],[2,2],[3,3],[0,2]] },
+      { id:'tour-1', tier:1, n:4, pieces:[{type:'tour', start:[0,0]}], snacks:[[0,3],[3,0]] },
+      { id:'tour-2', tier:1, n:4, pieces:[{type:'tour', start:[1,1]}], snacks:[[1,0],[1,3],[0,1],[3,1]] },
+      { id:'tour-3', tier:1, n:4, pieces:[{type:'tour', start:[2,0]}], snacks:[[0,0],[2,3],[3,3],[0,3]] },
+      { id:'cavalier-1', tier:2, n:5, pieces:[{type:'cavalier', start:[0,0]}], snacks:[[2,1],[1,2]] },
+      { id:'cavalier-2', tier:2, n:5, pieces:[{type:'cavalier', start:[2,2]}], snacks:[[0,1],[4,3],[1,0],[3,4]] },
+      { id:'cavalier-3', tier:2, n:5, pieces:[{type:'cavalier', start:[0,4]}], snacks:[[1,2],[2,0],[4,1],[3,3],[2,4]] },
+      { id:'dame-1', tier:2, n:5, pieces:[{type:'dame', start:[2,2]}], snacks:[[2,0],[0,2],[4,4]] },
+      { id:'dame-2', tier:2, n:5, pieces:[{type:'dame', start:[0,0]}], snacks:[[4,0],[0,4],[4,4],[2,2]] },
+      { id:'dame-3', tier:2, n:5, pieces:[{type:'dame', start:[4,0]}], snacks:[[0,0],[0,4],[4,4],[2,2],[3,1]] },
+      { id:'roi-1', tier:3, n:4, pieces:[{type:'roi', start:[0,0]}], snacks:[[0,1],[1,1],[1,0]] },
+      { id:'roi-2', tier:3, n:5, pieces:[{type:'roi', start:[2,2]}], snacks:[[1,1],[2,1],[3,1],[1,2],[3,2]] },
+      { id:'pion-1', tier:3, n:5, pieces:[{type:'pion', start:[2,0]}], snacks:[[1,1],[2,2]] },
+      { id:'pion-2', tier:3, n:5, pieces:[{type:'pion', start:[1,0]}], snacks:[[2,1],[1,2],[2,3]] },
+      { id:'mix-1', tier:3, n:5, pieces:[{type:'fou', start:[0,0]}, {type:'tour', start:[4,4]}], snacks:[[2,2],[1,3],[3,1]] },
+      { id:'mix-2', tier:3, n:5, pieces:[{type:'cavalier', start:[0,0]}, {type:'dame', start:[4,0]}], snacks:[[2,1],[4,4],[0,4],[2,2]] },
+      { id:'mix-3', tier:3, n:5, pieces:[{type:'roi', start:[2,0]}, {type:'tour', start:[0,4]}], snacks:[[2,1],[2,2],[4,4],[1,4]] },
+    ];
+
+    const TIER_LABELS = {
+      1: { emoji:'★', label:'Fou & Tour' },
+      2: { emoji:'★★', label:'Cavalier & Dame' },
+      3: { emoji:'★★★', label:'Roi, Pion & Mix' },
+    };
+
+    const PIECE_NAMES = { fou:'Le Fou', tour:'La Tour', cavalier:'Le Cavalier', dame:'La Dame', roi:'Le Roi', pion:'Le Pion' };
+
+    const PIECE_VOICELINES = {
+      fou:      { text: 'Moi je file en diagonale, zioup !',   file: 'sounds/pieces/fou-intro.mp3' },
+      tour:     { text: 'Moi j\'avance droit devant, vroum !', file: 'sounds/pieces/tour-intro.mp3' },
+      cavalier: { text: 'Et hop, je saute en L !',              file: 'sounds/pieces/cavalier-intro.mp3' },
+      dame:     { text: 'Je peux aller absolument partout !',   file: 'sounds/pieces/dame-intro.mp3' },
+      roi:      { text: 'Doucement, un petit pas à la fois.',   file: 'sounds/pieces/roi-intro.mp3' },
+      pion:     { text: 'Je suis petit mais je croque bien !',  file: 'sounds/pieces/pion-intro.mp3' },
+    };
+
+    const SNACK_EMOJIS = ['🍎','🥐','🍪'];
+
+    // Couleurs pièces : joueur unique = teal, mix = teal + violet (contraste fort)
+    const PIECE_COLORS = ['#1abc9c', '#9b59b6'];
+
+    // ── Persistance progression ──────────────────────────────────────────
+    const STORAGE_KEY = 'mj37_progress';
+    function loadProgress() {
+      try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { done: {} }; }
+      catch (e) { return { done: {} }; }
+    }
+    function saveProgress(p) {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(p)); } catch (e) {}
+    }
+    let progress = loadProgress();
+
+    // Set des pièces déjà présentées dans cette session (évite de re-montrer l'intro)
+    const seenPieces = new Set();
+
+    // ── SVG pièces (silhouettes flat + gros yeux) ────────────────────────
+    function eyesSVG(cx1, cx2, cy) {
+      return `<circle cx="${cx1}" cy="${cy}" r="4.2" fill="#fff"/><circle cx="${cx1+1}" cy="${cy}" r="2" fill="#222"/>
+              <circle cx="${cx2}" cy="${cy}" r="4.2" fill="#fff"/><circle cx="${cx2+1}" cy="${cy}" r="2" fill="#222"/>`;
+    }
+
+    function pieceSVG(type, color) {
+      const eyes = eyesSVG(38, 58, 46);
+      const bodies = {
+        fou: `<path d="M48 10 C36 10 30 22 36 32 C28 38 24 50 24 58 C24 70 34 78 48 78 C62 78 72 70 72 58 C72 50 68 38 60 32 C66 22 60 10 48 10 Z" fill="${color}"/>`,
+        tour: `<rect x="26" y="14" width="10" height="10" fill="${color}"/><rect x="44" y="14" width="10" height="10" fill="${color}"/><rect x="62" y="14" width="10" height="10" fill="${color}"/>
+               <rect x="26" y="24" width="46" height="14" fill="${color}"/><path d="M30 38 L34 66 C34 76 62 76 62 66 L66 38 Z" fill="${color}"/>`,
+        cavalier: `<path d="M30 78 C28 60 30 44 42 34 C36 28 34 18 42 12 C50 6 62 10 64 20 C68 22 70 28 66 34 C74 40 78 52 76 62 L70 62 C70 54 66 48 60 46 L58 62 L48 62 L50 46 C42 46 36 52 36 62 L36 78 Z" fill="${color}"/>`,
+        dame: `<circle cx="48" cy="16" r="7" fill="${color}"/><circle cx="26" cy="26" r="5" fill="${color}"/><circle cx="70" cy="26" r="5" fill="${color}"/>
+              <path d="M26 26 L34 62 L62 62 L70 26 L58 46 L48 24 L38 46 Z" fill="${color}"/><rect x="30" y="62" width="36" height="14" fill="${color}"/>`,
+        roi: `<rect x="44" y="6" width="8" height="16" fill="${color}"/><rect x="38" y="12" width="20" height="6" fill="${color}"/>
+             <path d="M28 28 L68 28 L64 62 L32 62 Z" fill="${color}"/><rect x="26" y="62" width="44" height="14" fill="${color}"/>`,
+        pion: `<circle cx="48" cy="26" r="14" fill="${color}"/><path d="M34 46 C34 40 40 36 48 36 C56 36 62 40 62 46 L68 70 C68 76 28 76 28 70 Z" fill="${color}"/>`,
+      };
+      return `<svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">${bodies[type] || bodies.pion}${eyes}</svg>`;
+    }
+
+    // ── Règles de déplacement ─────────────────────────────────────────────
+    function inBounds(n, c, r) { return c >= 0 && c < n && r >= 0 && r < n; }
+
+    // Retourne la liste des cases [c,r] atteignables par une pièce, en excluant
+    // toute case occupée par UNE AUTRE pièce (bloquée, non illuminable).
+    function reachableCells(type, start, n, otherPieceCells) {
+      const [c0, r0] = start;
+      const cells = [];
+      const blocked = (c, r) => otherPieceCells.some(p => p[0] === c && p[1] === r);
+      const add = (c, r) => { if (inBounds(n, c, r) && !(c === c0 && r === r0) && !blocked(c, r)) cells.push([c, r]); };
+
+      if (type === 'fou' || type === 'dame') {
+        [[1,1],[1,-1],[-1,1],[-1,-1]].forEach(([dc,dr]) => {
+          for (let i = 1; i < n; i++) add(c0 + dc*i, r0 + dr*i);
+        });
+      }
+      if (type === 'tour' || type === 'dame') {
+        [[1,0],[-1,0],[0,1],[0,-1]].forEach(([dc,dr]) => {
+          for (let i = 1; i < n; i++) add(c0 + dc*i, r0 + dr*i);
+        });
+      }
+      if (type === 'cavalier') {
+        [[1,2],[2,1],[-1,2],[-2,1],[1,-2],[2,-1],[-1,-2],[-2,-1]].forEach(([dc,dr]) => add(c0+dc, r0+dr));
+      }
+      if (type === 'roi') {
+        for (let dc = -1; dc <= 1; dc++) for (let dr = -1; dr <= 1; dr++) if (dc || dr) add(c0+dc, r0+dr);
+      }
+      return cells;
+    }
+
+    function getPawnMoves(start, n, otherPieceCells, snacksSet) {
+      const [c0, r0] = start;
+      const moves = [];
+      const blocked = (c, r) => otherPieceCells.some(p => p[0] === c && p[1] === r);
+      const hasSnack = (c, r) => snacksSet.has(c + ',' + r);
+      // tout droit : case vide (pas de goûter, pas de pièce)
+      if (inBounds(n, c0, r0+1) && !blocked(c0, r0+1) && !hasSnack(c0, r0+1)) moves.push([c0, r0+1]);
+      // diagonales : uniquement si un goûter est présent (croque)
+      [[c0-1, r0+1], [c0+1, r0+1]].forEach(([c,r]) => {
+        if (inBounds(n, c, r) && !blocked(c, r) && hasSnack(c, r)) moves.push([c, r]);
+      });
+      return moves;
+    }
+
+    function getReachable(type, start, n, otherPieceCells, snacksSet) {
+      if (type === 'pion') return getPawnMoves(start, n, otherPieceCells, snacksSet);
+      return reachableCells(type, start, n, otherPieceCells);
+    }
+
+    // ── État de jeu ────────────────────────────────────────────────────────
+    let state = null; // { levelId, n, pieces:[{type,pos:[c,r]}], snacks:Set('c,r'), activePieceIndex, tier }
+
+    function key(c, r) { return c + ',' + r; }
+
+    function loadLevelById(id) {
+      const def = LEVELS.find(l => l.id === id);
+      if (!def) return;
+      state = {
+        levelId: id,
+        tier: def.tier,
+        n: def.n,
+        pieces: def.pieces.map(p => ({ type: p.type, pos: p.start.slice() })),
+        snacks: new Set(def.snacks.map(s => key(s[0], s[1]))),
+        totalSnacks: def.snacks.length,
+        activePieceIndex: null,
+        won: false,
+      };
+      Tracker.startSession('mj-37');
+      document.getElementById('victory-overlay').style.display = 'none';
+      document.getElementById('btn-next').style.display = 'none';
+      document.getElementById('victory-zone').innerHTML = '';
+
+      const uniqueTypes = [...new Set(def.pieces.map(p => p.type))];
+      const needsIntro = uniqueTypes.filter(t => !seenPieces.has(t));
+      if (needsIntro.length) {
+        showIntro(needsIntro[0], () => {
+          needsIntro.forEach(t => seenPieces.add(t));
+          renderBoard();
+        });
+      } else {
+        renderBoard();
+      }
+    }
+
+    // ── Écran intro pièce ────────────────────────────────────────────────
+    function showIntro(type, onDone) {
+      const scrIntro = document.getElementById('screen-intro');
+      const scrBoard = document.getElementById('screen-board');
+      const scrTiers = document.getElementById('screen-tiers');
+      scrTiers.style.display = 'none';
+      scrBoard.style.display = 'none';
+      scrIntro.style.display = 'flex';
+
+      document.getElementById('intro-piece-svg').innerHTML = pieceSVG(type, PIECE_COLORS[0]);
+      document.getElementById('intro-name').textContent = PIECE_NAMES[type];
+      const vline = PIECE_VOICELINES[type];
+      document.getElementById('intro-phrase-text').textContent = vline.text;
+
+      const soundBtn = document.getElementById('intro-sound-btn');
+      soundBtn.onclick = () => {
+        try {
+          new Audio(vline.file).play().catch(() => {});
+        } catch (e) { /* no-op silencieux */ }
+      };
+
+      document.getElementById('intro-play-btn').onclick = () => {
+        scrIntro.style.display = 'none';
+        onDone();
+      };
+    }
+
+    // ── Rendu plateau ────────────────────────────────────────────────────
+    function renderBoard() {
+      document.getElementById('screen-tiers').style.display = 'none';
+      document.getElementById('screen-intro').style.display = 'none';
+      const scrBoard = document.getElementById('screen-board');
+      scrBoard.style.display = 'flex';
+
+      const grid = document.getElementById('board');
+      const n = state.n;
+      const cellSize = n === 4 ? 90 : 80;
+      grid.style.gridTemplateColumns = `repeat(${n}, ${cellSize}px)`;
+      grid.style.gridTemplateRows = `repeat(${n}, ${cellSize}px)`;
+      grid.innerHTML = '';
+
+      for (let r = 0; r < n; r++) {
+        for (let c = 0; c < n; c++) {
+          const cell = document.createElement('div');
+          cell.className = 'cell ' + (((c + r) % 2 === 0) ? 'light' : 'dark');
+          cell.dataset.c = c; cell.dataset.r = r;
+          cell.style.width = cellSize + 'px';
+          cell.style.height = cellSize + 'px';
+          if (state.snacks.has(key(c, r))) {
+            const snack = document.createElement('span');
+            snack.className = 'snack';
+            snack.textContent = SNACK_EMOJIS[(c + r) % SNACK_EMOJIS.length];
+            cell.appendChild(snack);
+          }
+          cell.addEventListener('click', () => onCellClick(c, r));
+          grid.appendChild(cell);
+        }
+      }
+
+      // pièces
+      state.pieces.forEach((p, idx) => {
+        const wrap = document.createElement('div');
+        wrap.className = 'piece-wrap';
+        wrap.dataset.idx = idx;
+        wrap.innerHTML = pieceSVG(p.type, PIECE_COLORS[idx % PIECE_COLORS.length]);
+        wrap.addEventListener('click', (ev) => { ev.stopPropagation(); onPieceClick(idx); });
+        grid.appendChild(wrap);
+        positionPieceWrap(wrap, p.pos, cellSize);
+      });
+
+      updateSnackCounter();
+      clearGlow();
+    }
+
+    function positionPieceWrap(wrap, pos, cellSize) {
+      wrap.style.width = cellSize + 'px';
+      wrap.style.height = cellSize + 'px';
+      wrap.style.left = (pos[0] * cellSize) + 'px';
+      wrap.style.top = (pos[1] * cellSize) + 'px';
+      wrap.style.position = 'absolute';
+    }
+
+    function updateSnackCounter() {
+      const remaining = state.snacks.size;
+      document.getElementById('snacks-left').textContent =
+        remaining === 0 ? 'Tout croqué !' : (remaining + (remaining > 1 ? ' goûters restants' : ' goûter restant'));
+    }
+
+    function clearGlow() {
+      document.querySelectorAll('#board .cell.glow').forEach(c => c.classList.remove('glow'));
+    }
+
+    function otherPiecesCells(excludeIdx) {
+      return state.pieces.filter((_, i) => i !== excludeIdx).map(p => p.pos);
+    }
+
+    function onPieceClick(idx) {
+      if (state.won) return;
+      state.activePieceIndex = idx;
+      clearGlow();
+      const p = state.pieces[idx];
+      const cells = getReachable(p.type, p.pos, state.n, otherPiecesCells(idx), state.snacks);
+      cells.forEach(([c, r]) => {
+        const cellEl = document.querySelector(`#board .cell[data-c="${c}"][data-r="${r}"]`);
+        if (cellEl) cellEl.classList.add('glow');
+      });
+    }
+
+    function onCellClick(c, r) {
+      if (state.won) return;
+      if (state.activePieceIndex === null) return;
+      const cellEl = document.querySelector(`#board .cell[data-c="${c}"][data-r="${r}"]`);
+      if (!cellEl || !cellEl.classList.contains('glow')) return;
+      doMove(c, r, state.activePieceIndex);
+    }
+
+    // Chemin UNIQUE exécuté par tap ET par le harnais de test (window.__mjTest.move).
+    function doMove(c, r, pieceIndex) {
+      if (state.won) return false;
+      const p = state.pieces[pieceIndex];
+      if (!p) return false;
+      const cellSize = state.n === 4 ? 90 : 80;
+      const cells = getReachable(p.type, p.pos, state.n, otherPiecesCells(pieceIndex), state.snacks);
+      const valid = cells.some(cc => cc[0] === c && cc[1] === r);
+      if (!valid) return false;
+
+      const ate = state.snacks.has(key(c, r));
+      p.pos = [c, r];
+      if (ate) state.snacks.delete(key(c, r));
+
+      const wrap = document.querySelector(`#board .piece-wrap[data-idx="${pieceIndex}"]`);
+      if (wrap) {
+        positionPieceWrap(wrap, p.pos, cellSize);
+        const animClass = { fou:'zigzag-move', tour:'tour-move', cavalier:'cavalier-move' }[p.type] || 'soft-move';
+        wrap.classList.remove('zigzag-move','tour-move','cavalier-move','soft-move');
+        void wrap.offsetWidth;
+        wrap.classList.add(animClass);
+      }
+
+      if (ate && window.sndDing) { try { sndDing(); } catch (e) {} }
+
+      state.activePieceIndex = null;
+      clearGlow();
+      updateSnackCounter();
+
+      if (state.snacks.size === 0) {
+        setTimeout(() => triggerVictory(), 260);
+      }
+      return true;
+    }
+
+    function triggerVictory() {
+      state.won = true;
+      Tracker.endSession(1, 1);
+      progress.done[state.levelId] = true;
+      saveProgress(progress);
+
+      const overlay = document.getElementById('victory-overlay');
+      overlay.style.display = 'flex';
+      spawnConfetti(overlay);
+      if (window.playEndSound) { try { playEndSound(1, 1); } catch (e) {} }
+      else if (window.sndVictory) { try { sndVictory(); } catch (e) {} }
+
+      const vz = document.getElementById('victory-zone');
+      vz.innerHTML = '<div class="victory-banner">🎉 Bravo, tout croqué ! 🎉</div>';
+      document.getElementById('btn-next').style.display = 'block';
+
+      setTimeout(() => {
+        overlay.style.display = 'none';
+      }, 1200);
+    }
+
+    function spawnConfetti(container) {
+      const emojis = ['🎉','⭐','🎊','✨'];
+      for (let i = 0; i < 14; i++) {
+        const e = document.createElement('span');
+        e.className = 'confetti';
+        e.textContent = emojis[i % emojis.length];
+        e.style.left = (Math.random() * 90 + 5) + '%';
+        e.style.animationDelay = (Math.random() * 0.3) + 's';
+        container.appendChild(e);
+        setTimeout(() => e.remove(), 1600);
+      }
+    }
+
+    document.getElementById('btn-next').addEventListener('click', () => {
+      const idx = LEVELS.findIndex(l => l.id === state.levelId);
+      const next = LEVELS[idx + 1];
+      if (next) loadLevelById(next.id);
+      else showTiers();
+    });
+
+    // ── Écran paliers ────────────────────────────────────────────────────
+    function isLevelUnlocked(idx) {
+      if (idx === 0) return true;
+      return !!progress.done[LEVELS[idx - 1].id];
+    }
+
+    function showTiers() {
+      document.getElementById('screen-board').style.display = 'none';
+      document.getElementById('screen-intro').style.display = 'none';
+      const scr = document.getElementById('screen-tiers');
+      scr.style.display = 'flex';
+
+      const byTier = { 1: [], 2: [], 3: [] };
+      LEVELS.forEach((l, idx) => byTier[l.tier].push({ ...l, idx }));
+
+      scr.innerHTML = Object.keys(byTier).map(tierKey => {
+        const t = TIER_LABELS[tierKey];
+        const levels = byTier[tierKey];
+        const cards = levels.map(l => {
+          const unlocked = isLevelUnlocked(l.idx);
+          const done = !!progress.done[l.id];
+          return `<button class="lvl-card ${unlocked ? '' : 'locked'}" data-id="${l.id}" ${unlocked ? '' : 'disabled'}>
+            <div class="lvl-piece">${pieceSVG(l.pieces[0].type, PIECE_COLORS[0])}</div>
+            <span class="lvl-name">${PIECE_NAMES[l.pieces[0].type]}${l.pieces.length > 1 ? ' + ' + PIECE_NAMES[l.pieces[1].type] : ''}</span>
+            <span class="lvl-done">${done ? '✅' : (unlocked ? '' : '🔒')}</span>
+          </button>`;
+        }).join('');
+        return `<div class="tier-group">
+          <div class="tier-title">${t.emoji} ${t.label}</div>
+          <div class="tier-levels">${cards}</div>
+        </div>`;
+      }).join('');
+
+      scr.querySelectorAll('.lvl-card').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (btn.disabled) return;
+          loadLevelById(btn.dataset.id);
+        });
+      });
+    }
+
+    // ── Harnais de test (EP-038) ───────────────────────────────────────
+    window.__mjTest = {
+      state() {
+        if (!state) return null;
+        return {
+          levelId: state.levelId,
+          pieces: state.pieces.map(p => ({ type: p.type, pos: p.pos.slice() })),
+          snacksRemaining: [...state.snacks].map(k => k.split(',').map(Number)),
+          won: state.won,
+        };
+      },
+      move(c, r, pieceIndex) {
+        if (typeof pieceIndex !== 'number') pieceIndex = 0;
+        // reproduit exactement le chemin tap : sélection puis clic case
+        onPieceClick(pieceIndex);
+        return doMove(c, r, pieceIndex);
+      },
+      loadLevel(id) {
+        seenPieces.clear();
+        LEVELS.forEach(l => l.pieces.forEach(p => seenPieces.add(p.type))); // évite les intros bloquantes en test
+        loadLevelById(id);
+      },
+    };
+
+    // ── Démarrage ─────────────────────────────────────────────────────
+    showTiers();
+  })();
+  </script>
+</body>
+</html>

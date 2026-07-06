@@ -1,0 +1,60 @@
+// MJ-38 — Saute-mouton ! (dames solo, capture par saut, précalculé)
+// Rejoue la solution NIVEAU 1 (générée+vérifiée par solveur BFS jetable) :
+// max=[3,3] dodos=[[3,2],[2,2]]
+//   saut 1 : (3,3) -> over (3,2) -> (3,1)
+//   saut 2 : (3,1) -> over (2,2) -> (1,3)
+// Vérifie : victoire niveau 1 détectée, bouton Recommencer toujours visible,
+// aucun texte "perdu/game over/raté" nulle part dans le DOM.
+
+export async function run({ page, ok }) {
+  // Bouton Recommencer visible dès le chargement (avant toute action)
+  const restartVisibleAtStart = await page.locator('#btn-restart').isVisible();
+  ok('Bouton Recommencer visible dès le chargement', restartVisibleAtStart);
+
+  // Aucun texte punitif nulle part au chargement
+  const bodyText0 = (await page.locator('body').innerText()).toLowerCase();
+  const hasNegative0 = /perdu|game over|raté|rate\b/.test(bodyText0);
+  ok('Aucun texte punitif au chargement', !hasNegative0, bodyText0.slice(0, 200));
+
+  // Niveau 1 affiché
+  const lvlLabel = (await page.locator('#lvl-label').textContent() || '').trim();
+  ok('Niveau 1 affiché au départ', lvlLabel.includes('1'), lvlLabel);
+
+  // Saut 1 : tap Max (3,3) → tap case atterrissage (3,1)
+  await page.click('#cell-3-3 .piece.max');
+  await page.click('#cell-3-1');
+  await page.waitForTimeout(550);
+
+  // Le dodo (3,2) doit avoir disparu
+  const dodoGone1 = await page.locator('#cell-3-2 .piece.dodo').count();
+  ok('Dodo (3,2) capturé après saut 1', dodoGone1 === 0);
+
+  // Max doit être en (3,1)
+  const maxAt31 = await page.locator('#cell-3-1 .piece.max').count();
+  ok('Max a atterri en (3,1) après saut 1', maxAt31 === 1);
+
+  // Saut 2 (combo) : tap Max (3,1) → tap case atterrissage (1,3)
+  await page.click('#cell-3-1 .piece.max');
+  await page.click('#cell-1-3');
+  await page.waitForTimeout(550);
+
+  // Victoire niveau 1 : overlay #win-overlay visible
+  const winVisible = await page.waitForFunction(
+    () => document.getElementById('win-overlay')?.classList.contains('show'),
+    null, { timeout: 5000 }
+  ).then(() => true).catch(() => false);
+  ok('Victoire niveau 1 détectée (overlay affiché)', winVisible);
+
+  // Message positif, pas de mot négatif dans le titre/texte de victoire
+  const winTitle = (await page.locator('#win-title').textContent() || '').toLowerCase();
+  ok('Titre de victoire positif ("Bravo")', winTitle.includes('bravo'), winTitle);
+
+  // Bouton Recommencer toujours visible pendant/après la partie
+  const restartVisibleAfter = await page.locator('#btn-restart').isVisible();
+  ok('Bouton Recommencer toujours visible après victoire', restartVisibleAfter);
+
+  // Aucun texte punitif nulle part à aucun moment du parcours testé
+  const bodyText1 = (await page.locator('body').innerText()).toLowerCase();
+  const hasNegative1 = /perdu|game over|raté|rate\b/.test(bodyText1);
+  ok('Aucun texte punitif après la partie', !hasNegative1, bodyText1.slice(0, 200));
+}

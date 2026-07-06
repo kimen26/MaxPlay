@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>MJ-39 — Blocs magiques</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* --- GABARIT HEADER CANONIQUE (ne pas inventer, copier tel quel) --- */
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+    body { background:#1a1a2e; font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
+    .hdr {
+      display:flex; align-items:center; gap:10px;
+      padding:6px 12px; flex-shrink:0;
+      background:rgba(0,0,0,0.25);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+    .hdr a {
+      color:#fff; text-decoration:none; font-size:1.3rem;
+      background:rgba(255,255,255,0.12); border-radius:8px;
+      padding:4px 10px; font-weight:900; flex-shrink:0;
+    }
+    .hdr a:active { background:rgba(255,255,255,0.25); }
+    .htitle { flex:1; font-size:1rem; font-weight:900; }
+    /* --- FIN GABARIT HEADER --- */
+
+    #progress {
+      flex-shrink:0; display:flex; align-items:center; justify-content:center;
+      gap:10px; padding:6px 12px; background:rgba(0,0,0,0.25);
+    }
+    #progress .stars { display:flex; gap:4px; font-size:1.2rem; }
+    #progress .star.off { opacity:0.25; }
+    #progress .jauge {
+      flex:1; max-width:220px; height:14px; border-radius:8px;
+      background:rgba(255,255,255,0.15); overflow:hidden; position:relative;
+    }
+    #progress .jauge-fill {
+      height:100%; background:linear-gradient(90deg,#ffd23f,#ff9f43);
+      border-radius:8px; transition: width 0.4s ease;
+    }
+    #progress .lignes-label { font-size:0.8rem; font-weight:900; opacity:0.9; white-space:nowrap; }
+
+    #board-wrap {
+      flex:1; display:flex; flex-direction:column; align-items:center; justify-content:space-between;
+      padding:8px; min-height:0; touch-action:none;
+    }
+
+    #grid {
+      display:grid; grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(8, 1fr);
+      gap:3px; width:min(94vw, 60vh); aspect-ratio:1/1;
+      background:rgba(0,0,0,0.3); border-radius:10px; padding:6px;
+      position:relative; flex-shrink:0;
+    }
+    .cell {
+      background:rgba(255,255,255,0.08); border-radius:5px;
+      transition: background 0.12s;
+    }
+    .cell.filled { border:2px solid rgba(0,0,0,0.25); }
+    .cell.ghost-ok { background:rgba(80,220,120,0.55) !important; }
+    .cell.ghost-bad { background:rgba(230,70,70,0.5) !important; }
+    .cell.pop {
+      animation: popOut 0.35s ease-out forwards;
+    }
+    @keyframes popOut {
+      0%   { transform:scale(1); opacity:1; }
+      50%  { transform:scale(1.25); opacity:0.9; }
+      100% { transform:scale(0.2); opacity:0; }
+    }
+
+    #rack {
+      flex-shrink:0; display:flex; gap:10px; justify-content:center; align-items:flex-end;
+      padding:10px 6px; width:100%; min-height:100px;
+    }
+    .piece-slot {
+      flex:1; max-width:150px; min-height:90px; display:flex; align-items:center; justify-content:center;
+      border-radius:12px; background:rgba(255,255,255,0.06);
+      touch-action:none; position:relative;
+    }
+    .piece-slot.disabled { opacity:0.3; }
+    .piece-slot.empty { visibility:hidden; }
+    .piece-grid {
+      display:grid; gap:2px; pointer-events:none;
+    }
+    .piece-cell {
+      border-radius:3px; border:2px solid rgba(0,0,0,0.3);
+    }
+
+    /* Piece flottante pendant le drag, décalée vers le haut pour rester visible sous le doigt */
+    #dragGhost {
+      position:fixed; pointer-events:none; z-index:50; display:none;
+      transform: translate(-50%, calc(-100% - 60px));
+    }
+    #dragGhost .piece-grid { display:grid; gap:2px; }
+    #dragGhost .piece-cell { border-radius:3px; border:2px solid rgba(0,0,0,0.3); opacity:0.9; }
+
+    .confetti {
+      position:absolute; font-size:1.4rem; pointer-events:none;
+      animation: confettiFall 1s ease-in forwards;
+    }
+    @keyframes confettiFall {
+      0%   { transform: translateY(0) rotate(0deg); opacity:1; }
+      100% { transform: translateY(120px) rotate(360deg); opacity:0; }
+    }
+
+    /* Écran grille pleine (doux, pas punitif) */
+    #fullScreen {
+      position:absolute; inset:0; display:none; flex-direction:column;
+      align-items:center; justify-content:center; gap:16px;
+      background:rgba(20,20,40,0.95); z-index:30; text-align:center; padding:20px;
+    }
+    #fullScreen.show { display:flex; }
+    #fullScreen h2 { font-size:1.6rem; }
+    #fullScreen .stars { font-size:2.2rem; }
+    .btn {
+      font-family:'Fredoka One',sans-serif; font-size:1rem; font-weight:900;
+      color:#fff; background:#0064B1; border:none; border-radius:14px;
+      padding:16px 26px; min-width:140px; min-height:80px;
+    }
+    .btn:active { background:#004f8f; }
+  </style>
+</head>
+<body>
+<div id="app">
+
+  <!-- HEADER — copier tel quel, changer uniquement l'emoji et le titre -->
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">🧩 Blocs magiques</span>
+  </div>
+
+  <div id="progress">
+    <div class="stars">
+      <span class="star off" id="st1">⭐</span>
+      <span class="star off" id="st2">⭐</span>
+      <span class="star off" id="st3">⭐</span>
+    </div>
+    <div class="jauge"><div class="jauge-fill" id="jaugeFill" style="width:0%"></div></div>
+    <div class="lignes-label" id="lignesLabel">0 lignes</div>
+  </div>
+
+  <div id="board-wrap">
+    <div id="grid"></div>
+    <div id="rack"></div>
+
+    <div id="fullScreen">
+      <h2>Grille pleine ! ✨</h2>
+      <div>Tu as fait <span id="fullCount">0</span> lignes !</div>
+      <div class="stars" id="fullStars">⭐</div>
+      <button class="btn" id="btnReplay">Rejouer</button>
+    </div>
+  </div>
+
+</div>
+  <div id="dragGhost"></div>
+  <script src="js/bus-svg.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/tracker.js"></script>
+  <script src="js/sounds.js"></script>
+  <script src="js/victory-sounds.js"></script>
+  <script>
+  (function(){
+    'use strict';
+    Tracker.startSession('mj-39');
+
+    const N = 8;
+    const grid = document.getElementById('grid');
+    const rack = document.getElementById('rack');
+    const dragGhost = document.getElementById('dragGhost');
+    const jaugeFill = document.getElementById('jaugeFill');
+    const lignesLabel = document.getElementById('lignesLabel');
+    const fullScreen = document.getElementById('fullScreen');
+    const fullCount = document.getElementById('fullCount');
+    const fullStars = document.getElementById('fullStars');
+
+    // ── Palettes vives, contours gras ────────────────────────────────
+    const COLORS = ['#ff5e5e', '#ffb84d', '#ffe14d', '#6ee06e', '#4dd8e0', '#5e9dff', '#b57bff', '#ff7bc6'];
+
+    // ── Formes (tétromino/pentomino simples, PAS de rotation) ────────
+    // Chaque forme = liste de [row, col] relatifs, ancrée en (0,0)
+    const SHAPES = [
+      { cells: [[0,0]] },                                   // 1x1
+      { cells: [[0,0],[0,1]] },                              // domino H
+      { cells: [[0,0],[1,0]] },                              // domino V
+      { cells: [[0,0],[0,1],[0,2]] },                        // ligne 3 H
+      { cells: [[0,0],[1,0],[2,0]] },                        // ligne 3 V
+      { cells: [[0,0],[0,1],[0,2],[0,3]] },                  // ligne 4 H
+      { cells: [[0,0],[1,0],[2,0],[3,0]] },                  // ligne 4 V
+      { cells: [[0,0],[0,1],[1,0],[1,1]] },                  // carré 2x2
+      { cells: [[0,0],[0,1],[0,2],[1,0],[1,1],[1,2]] },      // carré 2x3
+      { cells: [[0,0],[1,0],[1,1]] },                        // coin L petit
+      { cells: [[0,0],[0,1],[1,1]] },                        // coin L petit (miroir)
+      { cells: [[0,1],[1,0],[1,1]] },                        // coin L petit (variante)
+      { cells: [[0,0],[0,1],[1,0]] },                        // coin L petit (variante 2)
+      { cells: [[0,0],[1,0],[2,0],[2,1]] },                  // L moyen
+      { cells: [[0,0],[0,1],[0,2],[1,0]] },                  // L moyen (variante)
+      { cells: [[0,0],[0,1],[1,1],[1,2]] },                  // zigzag S
+      { cells: [[0,1],[0,2],[1,0],[1,1]] },                  // zigzag Z
+      { cells: [[0,0],[0,1],[0,2],[1,1]] },                  // T
+    ];
+
+    let board = Array.from({ length: N }, () => Array(N).fill(null)); // null ou couleur hex
+    let cellsEls = [];
+    let pieces = [null, null, null]; // { shape, color } ou null si posée
+    let lignesEffacees = 0;
+    let starsGiven = [false, false, false];
+    const PALIERS = [5, 12, 25];
+
+    // ── Construire la grille DOM ──────────────────────────────────────
+    for (let r = 0; r < N; r++) {
+      cellsEls.push([]);
+      for (let c = 0; c < N; c++) {
+        const el = document.createElement('div');
+        el.className = 'cell';
+        el.dataset.r = r; el.dataset.c = c;
+        grid.appendChild(el);
+        cellsEls[r].push(el);
+      }
+    }
+
+    function randShape() {
+      return SHAPES[Math.floor(Math.random() * SHAPES.length)];
+    }
+    function randColor() {
+      return COLORS[Math.floor(Math.random() * COLORS.length)];
+    }
+    function newPiece() {
+      return { shape: randShape(), color: randColor() };
+    }
+
+    function shapeBounds(shape) {
+      const rows = shape.cells.map(p => p[0]);
+      const cols = shape.cells.map(p => p[1]);
+      return { h: Math.max(...rows) + 1, w: Math.max(...cols) + 1 };
+    }
+
+    function canPlace(shape, r0, c0) {
+      for (const [dr, dc] of shape.cells) {
+        const r = r0 + dr, c = c0 + dc;
+        if (r < 0 || r >= N || c < 0 || c >= N) return false;
+        if (board[r][c]) return false;
+      }
+      return true;
+    }
+
+    function pieceFitsSomewhere(shape) {
+      for (let r = 0; r < N; r++)
+        for (let c = 0; c < N; c++)
+          if (canPlace(shape, r, c)) return true;
+      return false;
+    }
+
+    // ── Rendu du rack ──────────────────────────────────────────────────
+    function renderPieceGrid(shape, color, cellPx) {
+      const b = shapeBounds(shape);
+      const g = document.createElement('div');
+      g.className = 'piece-grid';
+      g.style.gridTemplateColumns = `repeat(${b.w}, ${cellPx}px)`;
+      g.style.gridTemplateRows = `repeat(${b.h}, ${cellPx}px)`;
+      for (let r = 0; r < b.h; r++) {
+        for (let c = 0; c < b.w; c++) {
+          const cell = document.createElement('div');
+          const has = shape.cells.some(p => p[0] === r && p[1] === c);
+          cell.style.width = cellPx + 'px';
+          cell.style.height = cellPx + 'px';
+          if (has) {
+            cell.className = 'piece-cell';
+            cell.style.background = color;
+          } else {
+            cell.style.visibility = 'hidden';
+          }
+          g.appendChild(cell);
+        }
+      }
+      return g;
+    }
+
+    function renderRack() {
+      rack.innerHTML = '';
+      pieces.forEach((p, idx) => {
+        const slot = document.createElement('div');
+        slot.className = 'piece-slot';
+        slot.dataset.idx = idx;
+        if (!p) {
+          slot.classList.add('empty');
+        } else {
+          const fits = pieceFitsSomewhere(p.shape);
+          if (!fits) slot.classList.add('disabled');
+          slot.appendChild(renderPieceGrid(p.shape, p.color, 22));
+          attachDrag(slot, idx);
+        }
+        rack.appendChild(slot);
+      });
+    }
+
+    // ── Drag & drop (pointer events, tolère souris + tactile) ──────────
+    let dragState = null; // { idx, shape, color }
+
+    function attachDrag(slot, idx) {
+      slot.addEventListener('pointerdown', (e) => {
+        const p = pieces[idx];
+        if (!p) return;
+        if (!pieceFitsSomewhere(p.shape)) return; // grisée = pas jouable
+        e.preventDefault();
+        dragState = { idx, shape: p.shape, color: p.color };
+        dragGhost.innerHTML = '';
+        dragGhost.appendChild(renderPieceGrid(p.shape, p.color, 30));
+        dragGhost.style.display = 'block';
+        moveGhost(e.clientX, e.clientY);
+        slot.setPointerCapture && slot.setPointerCapture(e.pointerId);
+      });
+    }
+
+    function moveGhost(x, y) {
+      dragGhost.style.left = x + 'px';
+      dragGhost.style.top = y + 'px';
+    }
+
+    function cellAtPoint(x, y) {
+      const el = document.elementFromPoint(x, y);
+      if (!el || !el.classList.contains('cell')) return null;
+      return { r: +el.dataset.r, c: +el.dataset.c };
+    }
+
+    function clearGhostCells() {
+      for (let r = 0; r < N; r++)
+        for (let c = 0; c < N; c++)
+          cellsEls[r][c].classList.remove('ghost-ok', 'ghost-bad');
+    }
+
+    function showGhostAt(shape, r0, c0) {
+      clearGhostCells();
+      const ok = canPlace(shape, r0, c0);
+      for (const [dr, dc] of shape.cells) {
+        const r = r0 + dr, c = c0 + dc;
+        if (r >= 0 && r < N && c >= 0 && c < N) {
+          cellsEls[r][c].classList.add(ok ? 'ghost-ok' : 'ghost-bad');
+        }
+      }
+      return ok;
+    }
+
+    window.addEventListener('pointermove', (e) => {
+      if (!dragState) return;
+      moveGhost(e.clientX, e.clientY);
+      // le point de dépôt visé = ghost décalé vers le haut (le doigt reste sous la pièce)
+      const targetY = e.clientY - 60;
+      const cell = cellAtPoint(e.clientX, targetY);
+      if (cell) showGhostAt(dragState.shape, cell.r, cell.c);
+      else clearGhostCells();
+    });
+
+    window.addEventListener('pointerup', (e) => {
+      if (!dragState) return;
+      const targetY = e.clientY - 60;
+      const cell = cellAtPoint(e.clientX, targetY);
+      dragGhost.style.display = 'none';
+      clearGhostCells();
+      if (cell && canPlace(dragState.shape, cell.r, cell.c)) {
+        placePiece(dragState.idx, cell.r, cell.c);
+      }
+      dragState = null;
+    });
+
+    // ── Placement + explosion de lignes ────────────────────────────────
+    function placePiece(idx, r0, c0) {
+      const p = pieces[idx];
+      if (!p) return;
+      for (const [dr, dc] of p.shape.cells) {
+        const r = r0 + dr, c = c0 + dc;
+        board[r][c] = p.color;
+        cellsEls[r][c].style.background = p.color;
+        cellsEls[r][c].classList.add('filled');
+      }
+      pieces[idx] = null;
+      renderRack();
+      checkLines();
+
+      if (pieces.every(p => p === null)) {
+        pieces = [newPiece(), newPiece(), newPiece()];
+        renderRack();
+      }
+
+      checkGameOver();
+    }
+
+    function checkLines() {
+      const fullRows = [];
+      const fullCols = [];
+      for (let r = 0; r < N; r++) if (board[r].every(v => v)) fullRows.push(r);
+      for (let c = 0; c < N; c++) if (board.every(row => row[c])) fullCols.push(c);
+
+      const total = fullRows.length + fullCols.length;
+      if (total === 0) return;
+
+      // Animation pop
+      fullRows.forEach(r => for_range(N, c => cellsEls[r][c].classList.add('pop')));
+      fullCols.forEach(c => for_range(N, r => cellsEls[r][c].classList.add('pop')));
+
+      if (total > 1) spawnConfetti();
+      sndDing();
+      if (total > 1) sndVictory();
+
+      setTimeout(() => {
+        fullRows.forEach(r => {
+          for (let c = 0; c < N; c++) { board[r][c] = null; resetCell(r, c); }
+        });
+        fullCols.forEach(c => {
+          for (let r = 0; r < N; r++) { board[r][c] = null; resetCell(r, c); }
+        });
+        lignesEffacees += total;
+        updateProgressUI();
+      }, 320);
+    }
+
+    function for_range(n, fn) { for (let i = 0; i < n; i++) fn(i); }
+
+    function resetCell(r, c) {
+      const el = cellsEls[r][c];
+      el.classList.remove('pop', 'filled');
+      el.style.background = '';
+    }
+
+    function spawnConfetti() {
+      const emojis = ['✨', '🎉', '⭐'];
+      const rect = grid.getBoundingClientRect();
+      for (let i = 0; i < 10; i++) {
+        const el = document.createElement('div');
+        el.className = 'confetti';
+        el.textContent = emojis[i % emojis.length];
+        el.style.left = (Math.random() * rect.width) + 'px';
+        el.style.top = '0px';
+        grid.appendChild(el);
+        setTimeout(() => el.remove(), 1000);
+      }
+    }
+
+    // ── Jauge + étoiles (paliers session) ───────────────────────────────
+    function updateProgressUI() {
+      lignesLabel.textContent = lignesEffacees + (lignesEffacees > 1 ? ' lignes' : ' ligne');
+      const maxPalier = PALIERS[PALIERS.length - 1];
+      const pct = Math.min(100, (lignesEffacees / maxPalier) * 100);
+      jaugeFill.style.width = pct + '%';
+
+      PALIERS.forEach((need, i) => {
+        if (!starsGiven[i] && lignesEffacees >= need) {
+          starsGiven[i] = true;
+          document.getElementById('st' + (i + 1)).classList.remove('off');
+          Tracker.startSession('mj-39');
+          Tracker.endSession(1, 1);
+          sndBravo();
+        }
+      });
+    }
+
+    // ── Grille pleine (échec neutre) ────────────────────────────────────
+    function checkGameOver() {
+      const anyFits = pieces.some(p => p && pieceFitsSomewhere(p.shape));
+      if (anyFits) return;
+      // aucune pièce ne rentre -> écran doux
+      fullCount.textContent = lignesEffacees;
+      const nbStars = starsGiven.filter(Boolean).length;
+      fullStars.textContent = nbStars > 0 ? '⭐'.repeat(nbStars) : '✨';
+      fullScreen.classList.add('show');
+    }
+
+    document.getElementById('btnReplay').addEventListener('click', () => {
+      fullScreen.classList.remove('show');
+      board = Array.from({ length: N }, () => Array(N).fill(null));
+      for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) resetCell(r, c);
+      lignesEffacees = 0;
+      pieces = [newPiece(), newPiece(), newPiece()];
+      updateProgressUI();
+      renderRack();
+      Tracker.startSession('mj-39');
+    });
+
+    // ── Init ─────────────────────────────────────────────────────────
+    pieces = [newPiece(), newPiece(), newPiece()];
+    renderRack();
+    updateProgressUI();
+
+    // ── Hook de test headless (EP-038) ──────────────────────────────
+    window.__mjTest = {
+      getState() {
+        return {
+          board: board.map(row => row.map(v => !!v)),
+          pieces: pieces.map(p => p ? { shapeCells: p.shape.cells } : null),
+          lignesEffacees,
+          starsGiven: starsGiven.slice(),
+          gameOverShown: fullScreen.classList.contains('show'),
+        };
+      },
+      // Pose la pièce idx en (r,c) directement (bypass le drag pointer pour le harnais)
+      place(idx, r, c) {
+        const p = pieces[idx];
+        if (!p) return false;
+        if (!canPlace(p.shape, r, c)) return false;
+        placePiece(idx, r, c);
+        return true;
+      },
+      canPlaceAt(idx, r, c) {
+        const p = pieces[idx];
+        if (!p) return false;
+        return canPlace(p.shape, r, c);
+      },
+      forceNextPieces(idxShapes) {
+        // idxShapes: [shapeIndex, shapeIndex, shapeIndex] pour un scénario déterministe
+        pieces = idxShapes.map(i => ({ shape: SHAPES[i], color: randColor() }));
+        renderRack();
+      },
+    };
+  })();
+  </script>
+</body>
+</html>

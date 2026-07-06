@@ -8,6 +8,15 @@
 
 ---
 
+## Questions ouvertes (en attente validation Papa Yann)
+
+| Question | Source | Priorité | Notes |
+|----------|--------|----------|-------|
+| **3 MJ nocturnes (34/35/36) validés ?** | Décision nuit 2026-07-06 | CRITIQUE | Méga-audit synthèse jeux addictifs → Rush Hour + Kalah + Timing développés nuit autonome. Test Papa Yann au réveil = GO pour figeage. Tickets : EP-044/045/046 |
+| **Shortlist 7 candidats — lequel prioriser ?** | Audit convergences | MOYENNE | Simon/Block Blast/Tangram dino/Mahjong/MJ-18 Expert/Shisima/Picross. Game-conseiller brainstorm après test 34/35/36 feedback. Tickets : EP-047 |
+
+---
+
 ## 2026-07-04 — Refonte visuelle plateforme Phase 1 livrée (hub « La ligne de Max »)
 
 **Contexte** : Papa Yann demande benchmark + proposition refonte visuelle complète ("trop basique, tabulaire, pas wow"). Process : explore site + benchmark web (Khan Kids/PBS/Toca/Duolingo ABC/Lunii/NN-g) + consultation 3 conseillers (game, dino, narration) + test lecteur-dyade simulé. Plan approuvé Papa Yann.

@@ -34,6 +34,7 @@ window.MAXPLAY_CATALOG = [
   { id:'mj-04',  category:'compter',  titre:'Compte les passagers', emoji:'👥', desc:'Combien de passagers en tout ?',      url:'mj-04.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
   { id:'mj-13c', category:'compter',  titre:'Combien avant ?',      emoji:'🔢', desc:'Compte les bus avant celui demandé !',url:'mj-13c.html', type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
   { id:'mj-05',  category:'compter',  titre:'La bonne place',       emoji:'🪑', desc:'Combien peuvent encore monter ?',     url:'mj-05.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
+  { id:'mj-35',  category:'compter',  titre:'Le jeu des graines',   emoji:'🌱', desc:'Sème les graines, compte-les au grenier !', url:'mj-35.html', type:'html', orientation:'any',   access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
 
   // ─── 🎨 Couleurs ───
   { id:'mj-01',  category:'couleurs', titre:'Quiz Bus',             emoji:'🚌', desc:'Couleur, numéro et écoute mélangés !',url:'mj-01.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:'tts', status:'live' },
@@ -51,6 +52,7 @@ window.MAXPLAY_CATALOG = [
   { id:'mj-15',  category:'logique',  titre:'L\'intrus',            emoji:'🔍', desc:'Lequel est l\'intrus ?',              url:'mj-15.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
   { id:'mj-16',  category:'logique',  titre:'Complète la suite',    emoji:'📈', desc:'Qu\'est-ce qui vient ensuite ?',      url:'mj-16.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
   { id:'mj-14',  category:'logique',  titre:'La grille des bus',    emoji:'🔲', desc:'Quel bus manque dans la grille ?',    url:'mj-14.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
+  { id:'mj-34',  category:'logique',  titre:'Le dépôt bloqué',      emoji:'🚧', desc:'Fais glisser les bus, libère celui de Max !', url:'mj-34.html', type:'html', orientation:'any',   access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
 
   // ─── 🔧 Bricoler (ranger & réparer) ───
   { id:'mj-08',  category:'bricoler', titre:'Au centre bus',        emoji:'🅿️', desc:'Range les bus pour la nuit !',        url:'mj-08.html',  type:'html', orientation:'landscape', access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
@@ -58,6 +60,7 @@ window.MAXPLAY_CATALOG = [
 
   // ─── 👀 Observer & vite ───
   { id:'mj-19',  category:'observer', titre:'Trouve le bus !',      emoji:'🎯', desc:'Repère le bon bus qui bouge !',       url:'mj-19.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
+  { id:'mj-36',  category:'observer', titre:'Arrête le bus !',      emoji:'🛑', desc:'Freine pile à l\'arrêt de bus !',      url:'mj-36.html',  type:'html', orientation:'any',       access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
 
   // ─── 🌍 Le monde & langues ───
   { id:'mj-11',  category:'monde',    titre:'Quel pays ?',          emoji:'🌍', desc:'Trouve le pays du drapeau !',         url:'mj-11.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:'tts', status:'live' },

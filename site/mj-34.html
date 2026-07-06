@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>MJ-34 — Le dépôt bloqué</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* --- GABARIT HEADER CANONIQUE (ne pas inventer, copier tel quel) --- */
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+    body { background:#1a1a2e; font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
+    .hdr {
+      display:flex; align-items:center; gap:10px;
+      padding:6px 12px; flex-shrink:0;
+      background:rgba(0,0,0,0.25);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+    .hdr a {
+      color:#fff; text-decoration:none; font-size:1.3rem;
+      background:rgba(255,255,255,0.12); border-radius:8px;
+      padding:4px 10px; font-weight:900; flex-shrink:0;
+    }
+    .hdr a:active { background:rgba(255,255,255,0.25); }
+    .htitle { flex:1; font-size:1rem; font-weight:900; }
+    /* --- FIN GABARIT HEADER --- */
+
+    .tierbar { display:flex; justify-content:center; gap:8px; padding:8px; flex-shrink:0; }
+    .tier-pip {
+      width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+      background:rgba(255,255,255,0.08); font-size:1.1rem; font-weight:900; border:2px solid rgba(255,255,255,0.15);
+    }
+    .tier-pip.active { background:#ffd166; color:#1a1a2e; border-color:#ffd166; }
+    .tier-pip.done { background:#06d6a0; color:#013a2a; border-color:#06d6a0; }
+
+    .level-pips { display:flex; justify-content:center; gap:10px; padding:2px 8px 6px; flex-shrink:0; }
+    .lvl-pip { width:16px; height:16px; border-radius:50%; background:rgba(255,255,255,0.2); }
+    .lvl-pip.cur { background:#ffd166; box-shadow:0 0 8px #ffd16688; }
+    .lvl-pip.won { background:#06d6a0; }
+
+    .stage {
+      flex:1; display:flex; align-items:center; justify-content:center;
+      padding:10px; min-height:0; position:relative;
+    }
+    #board {
+      position:relative; background:rgba(0,0,0,0.35); border-radius:14px;
+      box-shadow:inset 0 0 0 3px rgba(255,255,255,0.08);
+      touch-action:none;
+    }
+    .cell-grid { position:absolute; inset:0; pointer-events:none; }
+    .grid-line-v, .grid-line-h { position:absolute; background:rgba(255,255,255,0.06); }
+
+    .exit-arrow {
+      position:absolute; display:flex; align-items:center; justify-content:center;
+      font-size:1.6rem; color:#ffd166; pointer-events:none; animation:arrowPulse 1s ease-in-out infinite;
+    }
+    @keyframes arrowPulse { 0%,100%{ transform:translateX(0); opacity:.7; } 50%{ transform:translateX(6px); opacity:1; } }
+
+    .car {
+      position:absolute; cursor:grab; touch-action:none;
+      filter:drop-shadow(0 3px 6px rgba(0,0,0,0.5));
+      transition:left .18s ease, top .18s ease;
+      will-change:left, top;
+    }
+    .car.dragging { cursor:grabbing; transition:none; z-index:20; filter:drop-shadow(0 6px 14px rgba(0,0,0,0.7)); }
+    .car.is-max svg { filter:drop-shadow(0 0 6px #ffd16688); }
+    .car svg { display:block; width:100%; height:100%; }
+    .car.bounce { animation:bounceBack .22s ease; }
+    @keyframes bounceBack { 0%,100%{ transform:translate(0,0); } 50%{ transform:translate(var(--bx,0),var(--by,0)); } }
+    .car.exiting { transition:left .55s cubic-bezier(.4,0,.2,1); }
+
+    .end-wrap {
+      position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
+      background:rgba(10,10,20,0.92); gap:14px; text-align:center; padding:20px; border-radius:14px;
+    }
+    .end-wrap h2 { font-size:1.6rem; color:#ffd166; }
+    .end-wrap .stars-big { font-size:2.2rem; }
+    .end-btn {
+      background:#06d6a0; color:#013a2a; border:none; border-radius:14px;
+      padding:14px 28px; font-size:1.05rem; font-weight:900; font-family:inherit;
+      min-height:80px; min-width:200px; cursor:pointer;
+    }
+    .end-btn:active { transform:scale(.96); }
+    .end-btn.secondary { background:rgba(255,255,255,0.15); color:#fff; }
+  </style>
+</head>
+<body>
+<div id="app">
+
+  <!-- HEADER — copier tel quel, changer uniquement l'emoji et le titre -->
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">🚧 Le dépôt bloqué</span>
+  </div>
+
+  <div class="tierbar" id="tierbar"></div>
+  <div class="level-pips" id="levelPips"></div>
+
+  <div class="stage">
+    <div id="board"></div>
+  </div>
+
+</div>
+  <script src="js/bus-svg.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/tracker.js"></script>
+  <script src="js/sounds.js"></script>
+  <script src="js/victory-sounds.js"></script>
+  <script>
+    // ═══════════════════════════════════════════════════════════════════
+    // MJ-34 — Le dépôt bloqué (Rush Hour bus)
+    // Grille 4×4 (★), 5×5 (★★/★★★). Bus de Max horizontal, sortie à droite.
+    // Niveaux précalculés + vérifiés par solveur BFS (voir scratchpad session).
+    // Zéro pénalité : bus bloqué = bounce doux, aucun son négatif.
+    // ═══════════════════════════════════════════════════════════════════
+
+    // ── Niveaux (cars[0] = TOUJOURS le bus de Max, horizontal, sortie ligne exitRow) ──
+    // moves = nb de coups optimal vérifié par BFS (info interne, jamais affichée à Max)
+    const LEVELS = {
+      1: [ // ★ grille 4×4, 2-3 coups
+        { N:4, moves:3, cars:[
+          { id:'X', horiz:true,  len:2, x:0, y:1 },
+          { id:'A', horiz:false, len:2, x:3, y:1 },
+          { id:'B', horiz:true,  len:2, x:0, y:3 },
+        ]},
+        { N:4, moves:3, cars:[
+          { id:'X', horiz:true,  len:2, x:0, y:2 },
+          { id:'A', horiz:false, len:2, x:3, y:1 },
+          { id:'B', horiz:true,  len:2, x:0, y:0 },
+        ]},
+        { N:4, moves:3, cars:[
+          { id:'X', horiz:true,  len:2, x:0, y:0 },
+          { id:'A', horiz:false, len:2, x:2, y:0 },
+          { id:'B', horiz:false, len:2, x:3, y:2 },
+          { id:'C', horiz:true,  len:2, x:0, y:3 },
+        ]},
+      ],
+      2: [ // ★★ grille 5×5, 3-4 coups
+        { N:5, moves:4, cars:[
+          { id:'X', horiz:true,  len:2, x:0, y:2 },
+          { id:'A', horiz:false, len:2, x:4, y:1 },
+          { id:'B', horiz:true,  len:2, x:0, y:0 },
+          { id:'C', horiz:false, len:2, x:2, y:3 },
+        ]},
+        { N:5, moves:4, cars:[
+          { id:'X', horiz:true,  len:2, x:0, y:1 },
+          { id:'A', horiz:false, len:2, x:4, y:1 },
+          { id:'B', horiz:false, len:2, x:2, y:2 },
+          { id:'C', horiz:true,  len:2, x:0, y:4 },
+          { id:'D', horiz:false, len:2, x:0, y:2 },
+        ]},
+        { N:5, moves:4, cars:[
+          { id:'X', horiz:true,  len:2, x:0, y:2 },
+          { id:'B', horiz:false, len:2, x:4, y:1 },
+          { id:'C', horiz:true,  len:2, x:0, y:0 },
+          { id:'D', horiz:false, len:2, x:1, y:3 },
+        ]},
+      ],
+      3: [ // ★★★ grille 5×5, 5-6 coups
+        { N:5, moves:5, cars:[
+          { id:'X', horiz:true,  len:2, x:0, y:2 },
+          { id:'A', horiz:false, len:2, x:2, y:1 },
+          { id:'C', horiz:false, len:2, x:4, y:1 },
+          { id:'D', horiz:true,  len:2, x:2, y:4 },
+        ]},
+        { N:5, moves:5, cars:[
+          { id:'X', horiz:true,  len:2, x:1, y:2 },
+          { id:'A', horiz:false, len:2, x:3, y:1 },
+          { id:'B', horiz:false, len:2, x:4, y:2 },
+          { id:'C', horiz:true,  len:2, x:0, y:0 },
+          { id:'D', horiz:false, len:2, x:0, y:3 },
+          { id:'E', horiz:true,  len:2, x:2, y:0 },
+        ]},
+        { N:5, moves:5, cars:[
+          { id:'X', horiz:true,  len:2, x:0, y:2 },
+          { id:'A', horiz:false, len:2, x:2, y:1 },
+          { id:'B', horiz:false, len:2, x:2, y:3 },
+          { id:'C', horiz:false, len:2, x:4, y:1 },
+          { id:'D', horiz:true,  len:2, x:0, y:4 },
+          { id:'E', horiz:false, len:2, x:1, y:0 },
+        ]},
+      ],
+    };
+
+    // ── Sélection ligne bus de Max : jaune (ex M1) via LIGNES, jamais de hex en dur ──
+    const MAX_LINE = LIGNES.find(l => l.num === 'M1') || LIGNES[0];
+    // Couleurs distinctes pour les autres bus (obstacles)
+    const OTHER_POOL = LIGNES.filter(l => l.num !== MAX_LINE.num);
+
+    // ── État global ──
+    Tracker.startSession('mj-34');
+    let tier = 1;          // 1,2,3 (★, ★★, ★★★)
+    let levelIdx = 0;       // 0,1,2 dans le tier courant
+    let cars = [];          // état vivant (copie mutable des niveaux)
+    let N = 4;
+    let cellSize = 80;
+    let boardPad = 8;
+    let dragState = null;
+    let obstacleColors = [];
+    let locked = false;     // pendant animation de sortie / fin de palier
+
+    const boardEl = document.getElementById('board');
+    const tierbarEl = document.getElementById('tierbar');
+    const levelPipsEl = document.getElementById('levelPips');
+
+    function buildTierbar(){
+      tierbarEl.innerHTML = '';
+      for (let t = 1; t <= 3; t++){
+        const pip = document.createElement('div');
+        pip.className = 'tier-pip' + (t === tier ? ' active' : '') + (t < tier ? ' done' : '');
+        pip.textContent = '⭐'.repeat(t) === '⭐' ? '★' : (t === 1 ? '★' : t === 2 ? '★★' : '★★★');
+        pip.style.fontSize = t === 1 ? '1rem' : t === 2 ? '.75rem' : '.6rem';
+        tierbarEl.appendChild(pip);
+      }
+    }
+
+    function buildLevelPips(){
+      levelPipsEl.innerHTML = '';
+      const list = LEVELS[tier];
+      list.forEach((_, i) => {
+        const p = document.createElement('div');
+        p.className = 'lvl-pip' + (i === levelIdx ? ' cur' : '') + (i < levelIdx ? ' won' : '');
+        levelPipsEl.appendChild(p);
+      });
+    }
+
+    function computeCellSize(){
+      const stageEl = document.querySelector('.stage');
+      const availW = stageEl.clientWidth - 20;
+      const availH = stageEl.clientHeight - 20;
+      const maxBoard = Math.min(availW, availH, 560);
+      cellSize = Math.floor((maxBoard - boardPad * 2) / N);
+      cellSize = Math.max(70, cellSize); // min ~70px (proche règle 80px zone tap)
+    }
+
+    function loadLevel(){
+      const def = LEVELS[tier][levelIdx];
+      N = def.N;
+      cars = def.cars.map(c => ({...c}));
+      obstacleColors = selectDistinctColors(OTHER_POOL, cars.length - 1, 70);
+      computeCellSize();
+      renderBoard();
+      buildTierbar();
+      buildLevelPips();
+    }
+
+    function boardPx(){ return N * cellSize + boardPad * 2; }
+
+    function renderBoard(){
+      const size = boardPx();
+      boardEl.style.width = size + 'px';
+      boardEl.style.height = size + 'px';
+      boardEl.innerHTML = '';
+
+      // Grille visuelle
+      const grid = document.createElement('div');
+      grid.className = 'cell-grid';
+      for (let i = 1; i < N; i++){
+        const vline = document.createElement('div');
+        vline.className = 'grid-line-v';
+        vline.style.left = (boardPad + i * cellSize) + 'px';
+        vline.style.top = '0'; vline.style.width = '2px'; vline.style.height = '100%';
+        grid.appendChild(vline);
+        const hline = document.createElement('div');
+        hline.className = 'grid-line-h';
+        hline.style.top = (boardPad + i * cellSize) + 'px';
+        hline.style.left = '0'; hline.style.height = '2px'; hline.style.width = '100%';
+        grid.appendChild(hline);
+      }
+      boardEl.appendChild(grid);
+
+      // Flèche de sortie (à droite, sur la ligne de Max)
+      const maxCar = cars[0];
+      const arrow = document.createElement('div');
+      arrow.className = 'exit-arrow';
+      arrow.textContent = '➡️';
+      arrow.style.width = cellSize + 'px';
+      arrow.style.height = cellSize + 'px';
+      arrow.style.left = (boardPad + N * cellSize) + 'px';
+      arrow.style.top = (boardPad + maxCar.y * cellSize) + 'px';
+      boardEl.appendChild(arrow);
+
+      // Bus — le SVG natif est toujours dessiné à l'horizontale (len*cellSize × cellSize),
+      // puis pour les bus verticaux on l'enveloppe dans un conteneur pivoté 90° UNE SEULE FOIS
+      // (footprint width=cellSize, height=len*cellSize — la place réellement occupée sur la grille).
+      cars.forEach((c, idx) => {
+        const el = document.createElement('div');
+        el.className = 'car' + (idx === 0 ? ' is-max' : '');
+        el.dataset.idx = idx;
+        positionCar(el, c);
+        const natW = c.len * cellSize; // largeur "naturelle" du SVG (avant rotation éventuelle)
+        const natH = cellSize;
+        let svg;
+        if (idx === 0){
+          svg = busSVG(MAX_LINE.color, MAX_LINE.textColor, MAX_LINE.num, natW);
+        } else {
+          const col = obstacleColors[idx - 1] || OTHER_POOL[idx % OTHER_POOL.length];
+          svg = busSVG(col.color, col.textColor, col.num, natW);
+        }
+
+        if (c.horiz){
+          el.style.width = natW + 'px';
+          el.style.height = natH + 'px';
+          el.innerHTML = svg;
+        } else {
+          // Footprint occupé sur la grille (pivoté) : cellSize de large, len*cellSize de haut
+          el.style.width = cellSize + 'px';
+          el.style.height = (c.len * cellSize) + 'px';
+          const wrap = document.createElement('div');
+          wrap.style.width = natW + 'px';
+          wrap.style.height = natH + 'px';
+          wrap.style.transform = 'rotate(90deg) translate(0, -' + natH + 'px)';
+          wrap.style.transformOrigin = 'top left';
+          wrap.innerHTML = svg;
+          el.appendChild(wrap);
+        }
+        el.addEventListener('pointerdown', (e) => onDragStart(e, idx));
+        boardEl.appendChild(el);
+      });
+    }
+
+    function positionCar(el, c){
+      el.style.left = (boardPad + c.x * cellSize) + 'px';
+      el.style.top = (boardPad + c.y * cellSize) + 'px';
+    }
+
+    // ── Grille d'occupation ──
+    function occupiedGrid(){
+      const g = Array.from({length:N}, () => Array(N).fill(-1));
+      cars.forEach((c, idx) => {
+        for (let k = 0; k < c.len; k++){
+          if (c.horiz) g[c.y][c.x + k] = idx;
+          else g[c.y + k][c.x] = idx;
+        }
+      });
+      return g;
+    }
+
+    // ── Drag contraint sur l'axe (horiz ↔, vert ↕), snap case par case ──
+    function onDragStart(e, idx){
+      if (locked) return;
+      const c = cars[idx];
+      const el = boardEl.querySelector('.car[data-idx="' + idx + '"]');
+      el.setPointerCapture(e.pointerId);
+      el.classList.add('dragging');
+      dragState = {
+        idx, el, startX: e.clientX, startY: e.clientY,
+        origX: c.x, origY: c.y,
+      };
+      e.preventDefault();
+    }
+
+    document.addEventListener('pointermove', (e) => {
+      if (!dragState || locked) return;
+      const { idx, el, startX, startY, origX, origY } = dragState;
+      const c = cars[idx];
+      const dxPx = e.clientX - startX;
+      const dyPx = e.clientY - startY;
+      if (c.horiz){
+        const deltaCells = dxPx / cellSize;
+        let newX = origX + deltaCells;
+        newX = clampAxisFloat(idx, newX, true);
+        c._floatX = newX;
+        el.style.left = (boardPad + newX * cellSize) + 'px';
+      } else {
+        const deltaCells = dyPx / cellSize;
+        let newY = origY + deltaCells;
+        newY = clampAxisFloat(idx, newY, false);
+        c._floatY = newY;
+        el.style.top = (boardPad + newY * cellSize) + 'px';
+      }
+    });
+
+    document.addEventListener('pointerup', (e) => {
+      if (!dragState || locked) return;
+      const { idx, el } = dragState;
+      el.classList.remove('dragging');
+      const c = cars[idx];
+      dragState = null;
+      resolveDrop(idx, el, c);
+    });
+
+    document.addEventListener('pointercancel', () => {
+      if (!dragState) return;
+      const { idx, el } = dragState;
+      el.classList.remove('dragging');
+      const c = cars[idx];
+      dragState = null;
+      resolveDrop(idx, el, c);
+    });
+
+    // Limite le déplacement flottant aux cases libres (pas de collision pendant le drag)
+    function clampAxisFloat(idx, val, horiz){
+      const c = cars[idx];
+      const g = occupiedGrid();
+      // borne min : première case libre en remontant depuis la position actuelle
+      let min = 0, max = N - c.len;
+      // recherche du blocage le plus proche à gauche/en-haut
+      for (let p = Math.floor((horiz ? c.x : c.y)); p >= 0; p--){
+        const occ = horiz ? g[c.y][p] : g[p][c.x];
+        if (occ !== -1 && occ !== idx){ min = p + 1; break; }
+      }
+      // recherche du blocage le plus proche à droite/en-bas
+      for (let p = Math.ceil((horiz ? c.x : c.y)) + c.len; p < N; p++){
+        const occ = horiz ? g[c.y][p] : g[p][c.x];
+        if (occ !== -1 && occ !== idx){ max = p - c.len; break; }
+      }
+      return Math.max(min, Math.min(max, val));
+    }
+
+    function resolveDrop(idx, el, c){
+      const target = c.horiz ? Math.round(c._floatX ?? c.x) : Math.round(c._floatY ?? c.y);
+      const before = c.horiz ? c.x : c.y;
+      const clamped = clampAxisFloat(idx, target, c.horiz);
+      const snapped = Math.round(clamped);
+      delete c._floatX; delete c._floatY;
+
+      if (snapped === before){
+        // Bounce doux, aucun son négatif
+        el.classList.add('bounce');
+        setTimeout(() => el.classList.remove('bounce'), 240);
+        positionCar(el, c);
+        return;
+      }
+
+      if (c.horiz) c.x = snapped; else c.y = snapped;
+      sndTschh();
+      positionCar(el, c);
+
+      // Victoire : bus de Max touche le bord droit
+      if (idx === 0 && c.x + c.len - 1 === N - 1){
+        setTimeout(() => onLevelWon(), 160);
+      }
+    }
+
+    // ── Victoire du niveau : le bus glisse hors de la grille ──
+    function onLevelWon(){
+      locked = true;
+      const maxEl = boardEl.querySelector('.car[data-idx="0"]');
+      maxEl.classList.add('exiting');
+      const exitX = boardPad + (N + 1.4) * cellSize;
+      maxEl.style.left = exitX + 'px';
+      sndKlaxon();
+      setTimeout(() => {
+        levelIdx++;
+        if (levelIdx >= LEVELS[tier].length){
+          onTierWon();
+        } else {
+          locked = false;
+          loadLevel();
+        }
+      }, 620);
+    }
+
+    // ── Palier (tier) complet → étoile via Tracker ──
+    function onTierWon(){
+      playEndSound(1, 1); // fanfare victoire (score=maxScore → 100%)
+      Tracker.endSession(1, 1);
+      showTierEnd();
+    }
+
+    function showTierEnd(){
+      const wrap = document.createElement('div');
+      wrap.className = 'end-wrap';
+      const stars = '★'.repeat(tier);
+      wrap.innerHTML = '<div class="stars-big">' + stars + '</div>' +
+        '<h2>Bravo Max !</h2>' +
+        '<div style="opacity:.85">Le bus est sorti du dépôt !</div>' +
+        '<button class="end-btn" id="btnContinue">' + (tier < 3 ? 'Palier suivant →' : 'Rejouer') + '</button>' +
+        (tier < 3 ? '<button class="end-btn secondary" id="btnReplay">Rejouer ce palier</button>' : '');
+      boardEl.appendChild(wrap);
+
+      document.getElementById('btnContinue').addEventListener('click', () => {
+        wrap.remove();
+        locked = false;
+        if (tier < 3){
+          tier++;
+          levelIdx = 0;
+        } else {
+          tier = 1; levelIdx = 0;
+        }
+        Tracker.startSession('mj-34');
+        loadLevel();
+      });
+      const btnReplay = document.getElementById('btnReplay');
+      if (btnReplay){
+        btnReplay.addEventListener('click', () => {
+          wrap.remove();
+          locked = false;
+          levelIdx = 0;
+          Tracker.startSession('mj-34');
+          loadLevel();
+        });
+      }
+    }
+
+    window.addEventListener('resize', () => { computeCellSize(); renderBoard(); });
+
+    // ── API de test headless (Playwright) — expose l'état + un déplacement programmatique ──
+    window.__mjTest = {
+      state: () => ({ tier, levelIdx, N, cars: cars.map(c => ({...c})) }),
+      // move(idx, deltaCells) : déplace le bus idx de deltaCells cases (signé) sur son axe, snap direct
+      move(idx, deltaCells){
+        const c = cars[idx];
+        const el = boardEl.querySelector('.car[data-idx="' + idx + '"]');
+        if (!el) return false;
+        const axisVal = c.horiz ? c.x : c.y;
+        const target = axisVal + deltaCells;
+        const clamped = clampAxisFloat(idx, target, c.horiz);
+        const snapped = Math.round(clamped);
+        const before = axisVal;
+        if (c.horiz) c._floatX = target; else c._floatY = target;
+        resolveDrop(idx, el, c);
+        return snapped !== before;
+      },
+    };
+
+    loadLevel();
+  </script>
+</body>
+</html>

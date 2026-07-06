@@ -474,6 +474,10 @@ Exemple : MJ-32 `<img src="./assets/_new-ombre/stegosaurus.png">` → run.mjs v�
 | EP-MACRO-VIRAGE | Macro `virage(direction, ...)` dans builders.py (DRY consolidation 4 recettes manuelles, basse priorité) | `[ ]` |
 | EP-REFS | Banque de références visuelles tile-tools (post-EP-VOCAB, briefs complexes) | `[ ]` |
 | EP-041 | Renouvellement mini-jeux — lassitude bus, exploration piste thème dino (tri-couleur, quiz, duel) | `[?]` PISTE |
+| EP-044 | MJ-34 · Le dépôt bloqué (Rush Hour bus, logique séquence) | `[~]` |
+| EP-045 | MJ-35 · Le jeu des graines (Kalah/awalé, compter/semailles) | `[~]` |
+| EP-046 | MJ-36 · Arrête le bus ! (timing, observer tap au bon moment) | `[~]` |
+| EP-047 | SHORTLIST jeux addictifs (Simon/mélodie, Block Blast, Tangram dino, Mahjong dino, MJ-18 Expert, Shisima, Picross) — priorisation Papa Yann | `[?]` |
 
 ---
 
@@ -691,6 +695,78 @@ MaxPlay V0
 | **Feedback** | Changement couleur fiches, son Pikachu aléatoire (2 cris possibles) |
 | **Score** | Points selon rapidité réaction ou choix correcte |
 | **Tech** | HTML vanilla · Flexbox · SVG buses · sounds.js |
+
+---
+
+---
+
+## Validations en cours (nuit 2026-07-06)
+
+### EP-044 – MJ-34 · Le dépôt bloqué (Rush Hour bus, logique séquence)
+
+> Codé nuit 2026-07-06. Méga-audit synthèse jeux addictifs (SYNTHESE-JEUX-ADDICTIFS.md, convergence 2 audits) → Top-3 recommandation Rush Hour.
+> **Mécanique (amendée conseiller)** : Rush Hour — grille **4×4 (★) puis 5×5 (★★/★★★), jamais 6×6**. Bus cible de Max toujours horizontal sur la ligne de sortie (sortie à droite, invariant). Drag contraint sur l'axe (H ↔ / V ↕), snap case, niveaux précalculés vérifiés solveur BFS. Pas de compteur de coups visible. Spec : `docs/jeux/mj-34-35-36-specs.md`.
+> **Pédagogie** : Logique séquencielle, anticipation mouvements, zéro pénalité (essai-erreur illimité).
+> **Feedback** : < 200 ms taps, son slide + confettis victoire pool standard.
+
+**Reste à valider** :
+- [ ] T-440 : Test unitaire mécanique slide (collisions, cibles valides)
+- [ ] T-441 : Test motricité (zones tap 80px bus, hauteur grille portable portrait/paysage)
+- [ ] T-442 : Harnais Playwright (5 niveaux précalculés) → auto-solve VERT
+- [ ] T-443 : Figeage mj-34.md créé (une fois Papa Yann valide)
+
+---
+
+### EP-045 – MJ-35 · Le jeu des graines (semailles mancala SOLO, compter)
+
+> Codé nuit 2026-07-06. Méga-audit : convergence mancala (reco audit A + B). **ORIGINE gardée** (graines/calebasse, pas « rebrandé bus »).
+> ⚠️ **AMENDEMENT game-conseiller (nuit 2026-07-06, AVANT code)** : Kalah duel vs IA = **NO-GO à 4 ans** (sens anti-horaire abstrait, adversaire → risque pleurs, méta-règles opaques). Version codée = **semailles SOLO pédagogiques** : 1 rangée 6 trous + 1 grenier à droite, tap un trou → graines sautent une par une avec comptage vocal, objectif coopératif « toutes les graines au grenier ». Le Kalah authentique 2 joueurs part au backlog « 6-7 ans ». Spec : `docs/jeux/mj-34-35-36-specs.md`.
+> **Pédagogie** : comptage un-à-un + anticipation numérique (quel trou atteint pile le grenier = pré-addition).
+> **Feedback** : sndCount par graine, sndDing grenier, aucun état « perdu » (semis raté = redistribution douce).
+
+**Reste à valider** :
+- [ ] T-450 : Papa Yann arbitre — version solo confirmée ? (duel IA reporté 6-7 ans)
+- [ ] T-452 : Test motricité (taps 80px trous)
+- [ ] T-453 : Audio comptage → test no-collision taps rapides
+- [ ] T-454 : Figeage mj-35.md créé
+
+---
+
+### EP-046 – MJ-36 · Arrête le bus ! (timing, observer tap au bon moment)
+
+> Codé nuit 2026-07-06. Méga-audit : Top-3 reco Audit A (Stack/timing, Tetris effect). **BUS intégré** = l'arrêt de bus EST le jeu.
+> **Mécanique** : Bus se déplace horizontalement sur la route (droite ↔ gauche, cycle) → arrêt de bus fixe au centre → TAP exact quand bus arrive → zéro pénalité, rejeu < 1s.
+> **Pédagogie** : Timing, observation, précision. Dopant : feedback ultra-rapide < 100 ms.
+> **Feedback** : Bus frein + porte ouvre + confettis = « montée réussie ». Erreur : bus passe → refrain sympathique, relance auto.
+
+**Reste à valider** :
+- [ ] T-460 : Tuning timing (bus speed, fenêtre tap 200-400 ms acceptée, calibre difficulté niveau par niveau)
+- [ ] T-461 : Test motricité (zone tap min 80px, feedback < 100 ms mesuré, délai bus/frein testés)
+- [ ] T-462 : Harnais e2e (10 cycles auto → capture tous les cas : succès, raté, double-tap, hold)
+- [ ] T-463 : Figeage mj-36.md créé
+
+---
+
+### EP-047 – SHORTLIST jeux addictifs (7 candidats non-prioritaires — priorisation Papa Yann)
+
+> Décision de nuit : les 3 MJ (34/35/36) en parallèle du méga-audit = 1 MJ par famille mécanique majeure (séquence · semailles · timing).
+> Reste **7 candidats shortlist** issus des 2 audits (40 + ~90 jeux), pas développés ce soir car moins urgents que les 3 premiers.
+> **Papa Yann décidera** laquelle ajouter après test des 34/35/36 → valider addictivité pattern + intégration thème.
+
+| Rang | Jeu | Famille | Thème proposé | Priorité | Notes |
+|------|-----|---------|---------------|----------|-------|
+| 4 | **Simon** ("La mélodie des bus") | Mémoire séquence | BUS : klaxons/lignes 3 tons | MOYENNE | Genius = origines Brésil (Max) |
+| 5 | **Block Blast** | Placement/tri | ORIGINE gardée (formes pures) | MOYENNE | N°1 mondial 2025, zéro timer, code facile |
+| 6 | **Tangram dino** | Assemblage spatial | DINO : silhouettes dinos classiques | BASSE | Pipeline images dino dispo, test < 4 ans hard |
+| 7 | **Mahjong solitaire** (paires dino) | Scan visuel | DINO : tuiles-dinos appairées | BASSE | +189 % marché 2025, dense pour 3.5 ans |
+| 8 | **MJ-18 Expert** | Tri optimisé (extension) | — (niveau du jeu existant) | MOYENNE | Gap identifié audit A « min de coups » |
+| 9 | **Shisima / Mū Tōrere** | Duel vs IA | ORIGINE gardée (jeu africain, 9 cases) | BASSE | Code minuscule (minimax rigide), 1 min partie |
+| 10 | **Picross 5×5** | Déduction grille | DINO / BUS (image révélée pixel-par-pixel) | TRÈS BASSE | Trop dur < 6 ans (logique solitaire complexe), futur 2027 |
+
+**Action** :
+- [ ] T-470 : Brainstorm game-conseiller après test MJ-34/35/36 (meilleur candidat suivant ?)
+- [ ] T-471 : Ticketiser chacun en EP-04X (Simon/Block/Tangram/Mahjong/Expert/Shisima/Picross) une fois priorisation validée
+- [ ] T-472 : Mettre à jour SYNTHESE-JEUX-ADDICTIFS.md avec feedback Papa Yann (nuit 34/35/36)
 
 ---
 

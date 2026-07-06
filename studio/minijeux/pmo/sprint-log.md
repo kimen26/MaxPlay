@@ -9,6 +9,43 @@
 
 ---
 
+## 2026-07-06 (nuit) — MÉGA-AUDIT JEUX ADDICTIFS + 3 MJ NOCTURNES (34/35/36 en dev)
+
+**Owner** : game-pmo (log) · 4 agents dev (code nuit) · 2 audits (synthèse) · Papa Yann (validation réveil)
+
+**Trigger** : Fusion 2 audits indépendants (copain LLM 40 jeux + Claude 4 agents ~90 jeux) → synthèse convergences fortes → codage 3 MJ prioritaires nuit autonome.
+
+**Fait (session nuit 2026-07-06)** :
+
+1. **Audit méthodique convergeant** :
+   - Audit A : 40 jeux addictifs adultes 2024-26 (taxonomie cognitive, 15 idées transposées bus, matrice priorisation)
+   - Audit B : ~90 jeux numériques + traditionnels par région (Asie/Afrique/Amériques/Europe)
+   - **5 leviers d'addiction convergents** : règles en 10s maîtrise 100h · feedback <200ms juteux · parties courtes sans pénalité · chaos→ordre visible · progression visible
+   - **10 convergences fortes** (cités par LES DEUX audits) : Rush Hour · Kalah · Block Blast · Water Sort · Tangram · Stack/timing · Picross · Mū Tōrere · Carrom · Simon/Genius
+   - Synthèse PDF : [`studio/minijeux/docs/research/SYNTHESE-JEUX-ADDICTIFS.md`](../docs/research/SYNTHESE-JEUX-ADDICTIFS.md)
+
+2. **3 MJ codés nuit (en dev validation)** :
+   - **MJ-34 "Le dépôt bloqué"** (Rush Hour bus) — logique séquence · glissement/déblocage · grille 6 cases verticales
+   - **MJ-35 "Le jeu des graines"** (Kalah authentique) — compter/semailles · awalé africain · 2 joueurs ou IA
+   - **MJ-36 "Arrête le bus !"** (timing) — tap au bon moment · arrêt bus = jeu · ultra-rapide feedback <100ms
+   - Ticket parent **EP-047 SHORTLIST** : 7 candidats restants (Simon/Block Blast/Tangram dino/Mahjong/MJ-18 Expert/Shisima/Picross) en priorisation Papa Yann
+
+3. **Tickets intégrés backlog** :
+   - EP-044 (MJ-34) + EP-045 (MJ-35) + EP-046 (MJ-36) + EP-047 (shortlist) ajoutés dans table pmo/backlog.md
+   - Sous-tâches validation détaillées (motricité 80px, harnais e2e, figeage) pour chaque MJ
+
+4. **Statut final** :
+   - ✅ Synthèse jeux addictifs figée et accessible
+   - ✅ 3 MJ en dev, prêts test Papa Yann au réveil (date : 2026-07-06 cron 6h)
+   - ✅ Shortlist 7 candidats identifiée, attente priorisation
+
+**État au reboot** :
+- 3 MJ (34/35/36) **prêts test utilisateur** (motricité + mécanique + feedback < 200ms à confirmer)
+- Validation Papa Yann = GO pour figeage mj-34/35/36.md (protection régression post-feedback)
+- Shortlist 7 = brainstorm conseiller post-test (meilleur candidat suivant ?)
+
+---
+
 ## 2026-07-05 (après-demain nuit) — POOL SONORES thématiques (7 thèmes, voix overlay, anti-répétition)
 
 **Owner** : game-pmo (intégration) · Papa Yann (décision pools)

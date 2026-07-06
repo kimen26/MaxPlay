@@ -20,7 +20,17 @@ export async function run({ page, ok }) {
   await page.evaluate(() => window.__mjTest.move(1, 1));
   await page.waitForTimeout(120);
   await page.evaluate(() => window.__mjTest.move(0, 2));
-  await page.waitForTimeout(900); // laisse l'anim de sortie (620ms) + passage niveau 2 tourner
+
+  // Juste après la sortie de Max (victoire détectée +160ms, exiting anim 620ms), l'évacuation
+  // automatique des autres bus doit démarrer (fix feedback Papa Yann : "un seul bus sauvé ça
+  // fait bizarre" → le dépôt se vide tout seul).
+  await page.waitForTimeout(950);
+  const evacFlag = await page.evaluate(() => window.__mjTest.state().evacuating);
+  ok('Évacuation auto des autres bus déclenchée après la sortie de Max', evacFlag === true, `evacuating=${evacFlag}`);
+  ok('Au moins un bus restant a la classe .leaving pendant l\'évacuation',
+    await page.locator('.car.leaving').count() >= 1);
+
+  await page.waitForTimeout(1000); // laisse l'évacuation (niveau 1 = 2 autres bus) + passage niveau 2 tourner
 
   const state1 = await page.evaluate(() => window.__mjTest.state());
   ok('Niveau 1 → niveau 2 après sortie du bus', state1.levelIdx === 1, `levelIdx=${state1.levelIdx}`);
@@ -29,7 +39,7 @@ export async function run({ page, ok }) {
   await page.evaluate(() => window.__mjTest.move(1, -1));
   await page.waitForTimeout(120);
   await page.evaluate(() => window.__mjTest.move(0, 2));
-  await page.waitForTimeout(900);
+  await page.waitForTimeout(2500);
 
   const state2 = await page.evaluate(() => window.__mjTest.state());
   ok('Niveau 2 → niveau 3 après sortie du bus', state2.levelIdx === 2, `levelIdx=${state2.levelIdx}`);
@@ -38,12 +48,12 @@ export async function run({ page, ok }) {
   await page.evaluate(() => window.__mjTest.move(1, 1));
   await page.waitForTimeout(120);
   await page.evaluate(() => window.__mjTest.move(0, 2));
-  await page.waitForTimeout(900);
+  await page.waitForTimeout(2500);
 
   // Palier ★ terminé (3 niveaux) → écran de fin de palier affiché.
   const endShown = await page.waitForFunction(
     () => !!document.querySelector('.end-wrap'),
-    null, { timeout: 3000 }
+    null, { timeout: 8000 }
   ).then(() => true).catch(() => false);
   ok('Écran de fin de palier affiché après les 3 niveaux ★', endShown);
 

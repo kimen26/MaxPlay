@@ -36,12 +36,13 @@
 
     #main {
       flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
-      gap:14px; padding:10px 8px; overflow:hidden; position:relative;
+      gap:clamp(6px,1.5vmin,14px); padding:8px 4px; overflow:hidden; position:relative;
+      width:100%; min-height:0;
     }
 
     #count-display {
       position:absolute; top:8px; left:50%; transform:translateX(-50%);
-      font-size:2.6rem; font-weight:900; color:#ffe066;
+      font-size:clamp(1.6rem,6vmin,2.6rem); font-weight:900; color:#ffe066;
       text-shadow:0 3px 8px rgba(0,0,0,0.4);
       opacity:0; transition:opacity 0.15s;
       z-index:5; pointer-events:none;
@@ -49,24 +50,30 @@
     #count-display.show { opacity:1; }
 
     #instruction {
-      font-size:1.1rem; font-weight:900; text-align:center; padding:0 12px;
-      opacity:0.9;
+      font-size:clamp(0.8rem,3vmin,1.1rem); font-weight:900; text-align:center; padding:0 8px;
+      opacity:0.95; max-width:100%;
+    }
+
+    #pile-progress {
+      font-size:clamp(0.75rem,2.6vmin,0.95rem); font-weight:900; opacity:0.8; color:#ffe066;
     }
 
     #board {
-      display:flex; align-items:flex-end; gap:10px; justify-content:center;
-      padding:10px; width:100%; position:relative;
+      display:flex; align-items:flex-end; justify-content:center;
+      gap:clamp(2px,1.2vw,8px);
+      padding:2px; width:100%; max-width:100%; position:relative;
+      box-sizing:border-box;
     }
 
-    .pit-wrap { display:flex; flex-direction:column; align-items:center; gap:4px; flex-shrink:0; }
+    .pit-wrap { display:flex; flex-direction:column; align-items:center; gap:3px; flex-shrink:0; min-width:0; }
 
     .pit {
-      width:92px; height:92px; border-radius:50%;
+      width:clamp(34px,10.5vw,80px); height:clamp(34px,10.5vw,80px); border-radius:50%;
       background:radial-gradient(circle at 35% 30%, #8d6e4a, #5c4326 70%);
-      border:5px solid #3e2c17;
+      border:clamp(2px,0.8vw,5px) solid #3e2c17;
       box-shadow:inset 0 6px 14px rgba(0,0,0,0.55), 0 4px 6px rgba(0,0,0,0.3);
       display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
-      gap:3px; padding:8px; cursor:pointer; position:relative;
+      gap:2px; padding:3px; cursor:pointer; position:relative;
       transition:transform 0.12s, box-shadow 0.2s;
     }
     .pit:active { transform:scale(0.94); }
@@ -77,34 +84,35 @@
     .pit.empty-hint { opacity:0.5; }
 
     .pit-label {
-      font-size:0.68rem; font-weight:900; opacity:0.55;
-      background:rgba(255,255,255,0.1); border-radius:8px; padding:1px 8px;
+      font-size:0.62rem; font-weight:900; opacity:0.55;
+      background:rgba(255,255,255,0.1); border-radius:8px; padding:1px 6px;
     }
 
     .seed {
-      width:16px; height:16px; border-radius:50%;
+      width:clamp(9px,2.4vmin,16px); height:clamp(9px,2.4vmin,16px); border-radius:50%;
       box-shadow:inset -2px -2px 3px rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.3);
     }
 
-    .granary-wrap { display:flex; flex-direction:column; align-items:center; gap:4px; margin-left:6px; flex-shrink:0; }
+    .granary-wrap { display:flex; flex-direction:column; align-items:center; gap:3px; margin-left:2px; flex-shrink:0; min-width:0; }
     #granary {
-      width:110px; height:130px; border-radius:50% 50% 45% 45% / 60% 60% 40% 40%;
+      width:clamp(40px,12vw,95px); height:clamp(48px,14.2vw,113px);
+      border-radius:50% 50% 45% 45% / 60% 60% 40% 40%;
       background:radial-gradient(circle at 35% 25%, #a8814f, #6b4a24 75%);
-      border:6px solid #40290f;
+      border:clamp(2px,1vw,6px) solid #40290f;
       box-shadow:inset 0 8px 16px rgba(0,0,0,0.5), 0 4px 10px rgba(0,0,0,0.35);
       display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
-      gap:2px; padding:10px; position:relative; overflow:hidden;
+      gap:2px; padding:4px; position:relative; overflow:hidden;
     }
     #granary-count {
-      position:absolute; bottom:4px; right:8px; font-size:1.1rem; font-weight:900;
+      position:absolute; bottom:4px; right:6px; font-size:clamp(0.8rem,2.4vmin,1.1rem); font-weight:900;
       color:#ffe066; text-shadow:0 2px 4px rgba(0,0,0,0.5);
     }
 
     /* flèche de sens du semis */
     #flow-arrow {
-      position:absolute; top:-22px; left:0; right:0; height:20px;
+      position:absolute; top:-20px; left:0; right:0; height:18px;
       display:flex; align-items:center; justify-content:center;
-      font-size:1.1rem; opacity:0.35; letter-spacing:2px;
+      font-size:clamp(0.8rem,2.4vmin,1.1rem); opacity:0.35; letter-spacing:2px;
       pointer-events:none;
     }
 
@@ -173,6 +181,7 @@
   <div id="main">
     <div id="count-display">0</div>
     <div id="instruction">Touche une calebasse !</div>
+    <div id="pile-progress"></div>
     <div id="level-label"></div>
 
     <div id="board">
@@ -208,12 +217,17 @@
 
     const NB_PITS = 6;
     const SEED_COLORS = ['#e74c3c', '#f1c40f', '#3498db', '#2ecc71', '#9b59b6', '#e67e22'];
+    const PILE_TARGET = 3; // nb de "PILE !" à réussir pour valider un palier
 
-    // Paliers ★ : total de graines réparties dans les 6 trous au départ.
+    // Paliers ★ : plage de graines à compter (cf spec game-conseiller).
+    // Avec 6 trous, la distance max jusqu'au grenier est 6 → le trou PILE
+    // (celui qui tombe pile dans le grenier) est toujours dans 1..6.
+    // ★★★ "gros semis" : les trous VOISINS portent 8-12 graines (comptage
+    // loin = passion Max) même si le trou PILE reste borné à 6 par la géométrie.
     const LEVELS = [
-      { total: 8,  label: 'Niveau 1' },   // ★
-      { total: 12, label: 'Niveau 2' },   // ★★
-      { total: 18, label: 'Niveau 3 — gros tas !' }, // ★★★
+      { pileMin: 1, pileMax: 3,  decoyMax: 4,  label: 'Niveau 1' },               // ★
+      { pileMin: 3, pileMax: 6,  decoyMax: 7,  label: 'Niveau 2' },               // ★★
+      { pileMin: 4, pileMax: 6,  decoyMax: 12, label: 'Niveau 3 — gros tas !' },  // ★★★
     ];
 
     function getStarLevel() {
@@ -231,35 +245,56 @@
     let level = getStarLevel();
     let pits = [];        // pits[i] = nb de graines
     let granary = 0;
-    let total = 0;
+    let pileCount = 0;    // nb de "PILE !" réussis sur le palier en cours
     let sowing = false;   // bloque les taps pendant l'animation
     let sessionScore = 0;
 
     // ── Génération du plateau ────────────────────────────────────────────────
-    function distributeSeeds(totalSeeds) {
-      // répartit totalSeeds graines sur NB_PITS trous, jamais un trou vide au départ,
-      // au moins 1 graine par trou, reste distribué aléatoirement.
-      const arr = new Array(NB_PITS).fill(1);
-      let remaining = totalSeeds - NB_PITS;
-      while (remaining > 0) {
-        const i = Math.floor(Math.random() * NB_PITS);
-        arr[i]++;
-        remaining--;
+    // Garantit qu'UN SEUL trou est "PILE-able" : son nb de graines == distance
+    // exacte jusqu'au grenier (NB_PITS - i). L'enfant doit COMPTER avant de
+    // taper pour le repérer — c'est le vrai défi cognitif (anticipation numérique).
+    function buildBoard(cfg) {
+      // Le trou PILE-able doit contenir EXACTEMENT sa distance au grenier
+      // (sinon la dernière graine ne tombe pas pile dedans). On choisit donc
+      // le trou en fonction de la distance voulue (pileMin..pileMax), puis
+      // ses graines = cette distance, par définition.
+      const lo = Math.max(1, Math.min(cfg.pileMin, NB_PITS));
+      const hi = Math.max(lo, Math.min(cfg.pileMax, NB_PITS));
+      const dist = lo + Math.floor(Math.random() * (hi - lo + 1)); // 1..NB_PITS
+      const pileIdx = NB_PITS - dist;
+      const pileSeeds = dist;
+      const arr = new Array(NB_PITS).fill(0);
+      for (let i = 0; i < NB_PITS; i++) {
+        if (i === pileIdx) { arr[i] = pileSeeds; continue; }
+        const otherDist = NB_PITS - i;
+        // évite un 2e trou pile-able : tire un nb de graines != otherDist, borné à decoyMax
+        let n;
+        do { n = 1 + Math.floor(Math.random() * cfg.decoyMax); } while (n === otherDist);
+        arr[i] = n;
       }
       return arr;
     }
 
     function initLevel() {
+      pileCount = 0;
+      newBoard();
+      document.getElementById('level-label').textContent = LEVELS[level].label;
+      document.getElementById('stars-badge').textContent = '★'.repeat(level) + '☆'.repeat(3 - level) || '☆';
+      updatePileProgress();
+    }
+
+    function newBoard() {
       const cfg = LEVELS[level];
-      total = cfg.total;
-      pits = distributeSeeds(total);
+      pits = buildBoard(cfg);
       granary = 0;
       sowing = false;
-      document.getElementById('level-label').textContent = cfg.label;
-      document.getElementById('stars-badge').textContent = '★'.repeat(level) + '☆'.repeat(3 - level) || '☆';
       renderBoard();
       updateGranary();
-      document.getElementById('instruction').textContent = 'Touche une calebasse !';
+      document.getElementById('instruction').textContent = 'Trouve le trou qui remplit PILE le grenier !';
+    }
+
+    function updatePileProgress() {
+      document.getElementById('pile-progress').textContent = 'PILE ' + '✓'.repeat(pileCount) + '·'.repeat(PILE_TARGET - pileCount);
     }
 
     // ── Rendu ─────────────────────────────────────────────────────────────────
@@ -363,14 +398,24 @@
       sowing = false;
 
       // "PILE !" : la dernière graine de ce semis est tombée pile dans le grenier
-      if (landedInGranary && (i + nbSeeds) === NB_PITS) {
-        showPileFx();
-      }
+      const isPile = landedInGranary && (i + nbSeeds) === NB_PITS;
 
-      if (granary >= total) {
-        setTimeout(showVictory, 600);
+      if (isPile) {
+        showPileFx();
+        pileCount++;
+        updatePileProgress();
+        if (pileCount >= PILE_TARGET) {
+          setTimeout(showVictory, 900);
+        } else {
+          setTimeout(newBoard, 900); // tableau suivant, palier pas fini
+        }
       } else {
-        document.getElementById('instruction').textContent = 'Touche une calebasse !';
+        // Mauvais trou : rien n'est perdu, aucun son négatif. On laisse voir
+        // le compte (pédagogie) puis on réarrange doucement pour réessayer.
+        setTimeout(() => {
+          document.getElementById('instruction').textContent = 'Presque ! Compte bien, essaie encore.';
+          setTimeout(newBoard, 700);
+        }, 200);
       }
     }
 
@@ -391,8 +436,8 @@
       if (typeof Tracker !== 'undefined') Tracker.logAnswer(true);
       const emoji = level === 2 ? '🏆' : '🎉';
       document.getElementById('end-emoji').textContent = emoji;
-      document.getElementById('end-msg').textContent = 'Bravo ! Toutes les graines sont dans le grenier !';
-      document.getElementById('end-score').textContent = `${total} graines récoltées`;
+      document.getElementById('end-msg').textContent = 'Bravo ! 3 PILE réussis !';
+      document.getElementById('end-score').textContent = `${PILE_TARGET} PILE trouvés`;
       document.getElementById('end-screen').classList.add('visible');
       playEndSound(1, 1);
       if (typeof Tracker !== 'undefined') Tracker.endSession(1, 1);
@@ -415,7 +460,9 @@
     // ── Hook de test headless (EP-038) ──────────────────────────────────────
     window.__mjTest = {
       get state() {
-        return { pits: [...pits], granary, total, sowing, level };
+        // trou "PILE-able" = celui dont le compte == distance exacte au grenier
+        const pileIdx = pits.findIndex((n, i) => n > 0 && (i + n) === NB_PITS);
+        return { pits: [...pits], granary, pileCount, pileTarget: PILE_TARGET, sowing, level, pileIdx };
       },
       sow(i) { return sow(i); },
     };

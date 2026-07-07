@@ -54,4 +54,13 @@ export async function run({ page, ok }) {
 
   const st2 = await page.evaluate(() => window.__mjTest.getState());
   ok('Partie continue après palier (pas de Game Over à ce stade)', st2.gameOverShown === false);
+
+  // ─── EP-068 : bouton règles (i) — composant partagé RegleInfo ───
+  ok('Bouton règles ❓ présent dans le header', await page.locator('#btn-regle').count() === 1);
+  await page.click('#btn-regle');
+  ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);
+  const regleTexte = (await page.locator('.ri-text').textContent() || '').trim();
+  ok('Texte de règle correspond', regleTexte === 'Pose les blocs pour remplir des lignes entières !', regleTexte);
+  await page.click('#ri-overlay');
+  ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
 }

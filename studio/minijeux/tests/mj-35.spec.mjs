@@ -17,6 +17,17 @@ export async function run({ page, ok }) {
   ok('pileTarget = 3', initial.pileTarget === 3);
   ok('exactement un trou PILE-able au départ', initial.pileIdx !== -1, `pileIdx=${initial.pileIdx}`);
 
+  // ─── EP-068 : bouton règles (i) — composant partagé RegleInfo ───
+  // Testé tôt (avant l'écran de victoire) : l'overlay de fin capte les clics
+  // et bloquerait le tap sur #btn-regle en fin de partie.
+  ok('Bouton règles ❓ présent dans le header', await page.locator('#btn-regle').count() === 1);
+  await page.click('#btn-regle');
+  ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);
+  const regleTexteEarly = (await page.locator('.ri-text').textContent() || '').trim();
+  ok('Texte de règle correspond', regleTexteEarly === 'Trouve le trou qui remplit le grenier PILE-POIL !', regleTexteEarly);
+  await page.click('#ri-overlay');
+  ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
+
   // ── Mauvais trou : pas de victoire, pas d'état "perdu", rien de cassé ──
   const wrongIdx = initial.pits.findIndex((n, i) => i !== initial.pileIdx && n > 0);
   ok('un trou non-PILE existe pour tester le mauvais choix', wrongIdx !== -1);

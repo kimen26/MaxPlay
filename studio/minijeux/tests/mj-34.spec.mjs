@@ -66,4 +66,13 @@ export async function run({ page, ok }) {
   // Zéro pénalité : un mouvement bloqué (bounce) ne doit jamais ajouter de classe "lost"/"error"
   ok('Aucun état punitif visible dans le DOM', await page.evaluate(() =>
     !document.querySelector('.lost, .error, .game-over, .perdu')));
+
+  // ─── EP-068 : bouton règles (i) — composant partagé RegleInfo ───
+  ok('Bouton règles ❓ présent dans le header', await page.locator('#btn-regle').count() === 1);
+  await page.click('#btn-regle');
+  ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);
+  const regleTexte = (await page.locator('.ri-text').textContent() || '').trim();
+  ok('Texte de règle correspond', regleTexte === 'Fais glisser les bus pour libérer le bus jaune de Max !', regleTexte);
+  await page.click('#ri-overlay');
+  ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
 }

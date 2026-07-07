@@ -65,4 +65,13 @@ export async function run({ page, ok }) {
   ok('remélange anti-blocage change bien la disposition des dinos', JSON.stringify(beforeReshuffle) !== JSON.stringify(afterReshuffle));
   const stillSolvable = await page.evaluate(() => window.__mjTest.anyFreePairAvailable());
   ok('après remélange, au moins une paire est de nouveau jouable', stillSolvable);
+
+  // ─── EP-068 : bouton règles (i) — composant partagé RegleInfo ───
+  ok('Bouton règles ❓ présent dans le header', await page.locator('#btn-regle').count() === 1);
+  await page.click('#btn-regle');
+  ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);
+  const regleTexte = (await page.locator('.ri-text').textContent() || '').trim();
+  ok('Texte de règle correspond', regleTexte === 'Trouve les 2 mêmes dinos sur les tuiles libres !', regleTexte);
+  await page.click('#ri-overlay');
+  ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
 }

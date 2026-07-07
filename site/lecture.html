@@ -62,7 +62,7 @@
     position:fixed; bottom:0; left:0; right:0;
     background:#16262C; border-top:1px solid #74C7DE;
     border-radius:20px 20px 0 0; padding:18px 16px calc(18px + env(safe-area-inset-bottom));
-    font-family:system-ui,sans-serif; max-height:75vh; overflow-y:auto;
+    font-family:system-ui,sans-serif; max-height:55vh; overflow-y:auto;
     box-shadow:0 -12px 40px rgba(0,0,0,.5);
   }
   .sheet::before {
@@ -77,7 +77,8 @@
   .sheet h3 { font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; margin:12px 0 7px; }
   .sheet h3.pos { color:#86B979; }
   .sheet h3.neg { color:#C97B5D; }
-  .chips { display:flex; flex-wrap:wrap; gap:8px; }
+  .chips { display:flex; flex-direction:column; gap:8px; }
+  .chips .ligne { display:flex; flex-wrap:wrap; gap:8px; }
   .chip {
     font-size:13.5px; background:transparent; border:1px solid #23383F;
     border-radius:18px; padding:8px 13px; cursor:pointer; color:#EFE6D0;
@@ -221,6 +222,7 @@ function renderTexte() {
     if (s.p !== pCour) { pCour = s.p; pEl = document.createElement('p'); z.appendChild(pEl); }
     var sp = document.createElement('span');
     sp.className = 'seg';
+    sp.dataset.idx = i;
     var a = annos.filter(function(x){ return x.segIdx.indexOf(i) >= 0; })[0];
     if (a) sp.classList.add(a.polarite === 'pos' ? 'pos' : 'neg');
     if (segSel.indexOf(i) >= 0) sp.classList.add('sel');
@@ -249,9 +251,31 @@ function ouvrirSheet() {
   document.getElementById('extrait').textContent = segSel.map(function(i){ return hCourante._segs[i].t; }).join(' ');
   var zp = document.getElementById('chips-pos'), zn = document.getElementById('chips-neg');
   zp.innerHTML = ''; zn.innerHTML = '';
-  D.chips.positif.forEach(function(c){ zp.appendChild(mkChip(c, chipsPos, 'pon')); });
-  D.chips.negatif.forEach(function(c){ zn.appendChild(mkChip(c, chipsNeg, 'non')); });
+  renderChips(zp, D.chips.positif, chipsPos, 'pon');
+  renderChips(zn, D.chips.negatif, chipsNeg, 'non');
   document.getElementById('sheet').classList.remove('hidden');
+  degagerTexte();
+}
+
+// chips en lignes thématiques (tableau de tableaux) ou à plat (rétro-compat)
+function renderChips(zone, data, arr, cls) {
+  var lignes = Array.isArray(data[0]) ? data : [data];
+  lignes.forEach(function(lg){
+    var div = document.createElement('div');
+    div.className = 'ligne';
+    lg.forEach(function(c){ div.appendChild(mkChip(c, arr, cls)); });
+    zone.appendChild(div);
+  });
+}
+
+// le panneau ne doit jamais cacher le passage tapé : padding + remontée auto
+function degagerTexte() {
+  var texte = document.getElementById('texte');
+  texte.style.paddingBottom = '60vh';
+  var premier = texte.querySelector('.seg[data-idx="' + segSel[0] + '"]');
+  if (premier) setTimeout(function(){
+    premier.scrollIntoView({ block: 'start', behavior: 'smooth' });
+  }, 60);
 }
 
 function mkChip(label, arr, cls) {
@@ -293,6 +317,7 @@ function supprimerAnno() {
 function fermerSheet() {
   segSel = []; annoEdit = null;
   document.getElementById('sheet').classList.add('hidden');
+  document.getElementById('texte').style.paddingBottom = '';
   renderTexte();
 }
 

@@ -32,6 +32,15 @@ Le duel réduit son effort à ~12 taps de 10 secondes + 2 lectures complètes (l
 annotée** calibre (signal absolu, riche — le POURQUOI au passage près, à la 1re lecture, sans
 biais de comparaison). L'ingestion des deux alimente la même mémoire, mêmes règles anti-verbatim.
 
+### 🔒 Doctrine instrument (verdict auteur, 2026-07-08)
+
+**La lecture annotée est l'instrument PRINCIPAL** — verdict Papa Yann après vagues 4-5 STORY-002 :
+« clairement le plus intéressant, pas forcément sur un full text mais même sur des bouts ».
+- Prochaines vagues : **lecture.html par défaut**, y compris pour des FRAGMENTS (chargés comme
+  mini-textes annotables dans `lecture-data.js`).
+- Le **duel** devient secondaire : réservé aux arbitrages serrés (2 candidates proches où le
+  signal relatif tranche mieux que deux lectures absolues).
+
 ## Protocole (cycle par histoire)
 
 ```
@@ -67,6 +76,15 @@ biais de comparaison). L'ingestion des deux alimente la même mémoire, mêmes r
 
 ## Journal des évolutions UI
 
+- **2026-07-08** — *Chips v3 + panneau qui ne cache plus le texte* (lecture.html).
+  (a) **Chips retravaillées EN DIRECT avec l'auteur** (session challenge) : positif 11 chips /
+  3 lignes thématiques (rythme·langue / image / cœur·vie), négatif 10 chips / 3 lignes miroir
+  (rythme / description / compréhension) + `trop court`. Retirés : « je le redirais à voix
+  haute » (demande auteur), « je visualise direct » (0 usage). Le narrateur-qui-philosophe
+  reste en texte libre (1 seul signal). Format data : tableau de tableaux = lignes.
+  (b) **Fix bas de page** : panneau plafonné 55vh, padding-bas 60vh sur le texte à l'ouverture,
+  passage tapé remonté auto au-dessus du panneau (scrollIntoView). Retour vague 5 : « au bas de
+  la page je ne peux plus rien faire, la proposition de bouton se met devant ».
 - **2026-07-03** — *Raisons de refus.* « aucun des deux 👎 » ouvre désormais un écran
   **« Pourquoi aucun des deux ? »** (puces de défauts) au lieu d'enchaîner à vide.
   Le JSON remonte alors `choix:"aucun"` + `defautsPerdant:[…]` (défauts communs des deux

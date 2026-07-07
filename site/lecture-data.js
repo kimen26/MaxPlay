@@ -1,6 +1,7 @@
 // Lecture annotée — corpus généré par le Directeur
 // STORY-002 — REWRITE CANDIDAT (étape 7, opus, écrit sur les annotations du 2026-07-05)
-// Chips v2 (2026-07-07) : vocabulaire réel de Papa Yann extrait de ses 45 annotations.
+// Chips v3 (2026-07-08) : retravaillées EN DIRECT avec Papa Yann (session challenge chips).
+// Format : lignes thématiques (tableau de tableaux) — l'UI rend une ligne par groupe.
 window.LECTURE_DATA = {
   domaine: "narration",
   story: "002-libellule-resonance",
@@ -8,26 +9,14 @@ window.LECTURE_DATA = {
   genere: "2026-07-07",
   chips: {
     positif: [
-      "ça coule tout seul",
-      "je visualise direct",
-      "image forte",
-      "belle musique / rime",
-      "rigolo",
-      "tendre",
-      "beau rappel du début",
-      "je le redirais à voix haute",
-      "génial"
+      ["lecture fluide", "belle musique / poésie", "bon vocabulaire", "bonne longueur"],
+      ["image forte", "super description", "super métaphore"],
+      ["drôle / amusant", "tendre / émotions", "super rappel d'idée", "génial ⭐"]
     ],
     negatif: [
-      "ça ne veut rien dire",
-      "je visualise pas la scène",
-      "pas logique / incohérent",
-      "tournure bizarre",
-      "ça ne s'enchaîne pas",
-      "pas fluide",
-      "on s'en fiche / trop d'infos",
-      "surjoué",
-      "trop long"
+      ["enchaînement inexistant", "trop long", "trop court", "ça sonne faux"],
+      ["description inutile", "description confuse", "mauvaise métaphore"],
+      ["incompréhensible", "je ne comprends pas qui est qui", "pas logique / incohérent"]
     ]
   },
   histoires: [

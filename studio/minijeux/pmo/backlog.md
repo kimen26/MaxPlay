@@ -138,6 +138,12 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 ### L-085 – Count jeux status:live catalog.js = source de vérité, MAJ INVARIANTS après chaque changement menu
 **MJ-34..42 + retrait 3 (2026-07-06)** : catalog.js en vérité source de jeux live (grepper `status.*live` = count réel). Attente : jours avant INVARIANTS + state.md synchronisés (lag découvrir). **Processus figé** : après toute modif MJ → commit push → grep count → MAJ INVARIANTS.md L59 + state.md L19 (2 fichiers). Script d'audit dans backlog (EP-042 check auto assets → à étendre check count aussi).
 
+### L-086 – Magic link iOS = besoin OTP code en parallèle (stockage Safari séparé)
+**Cloud phase 1 (2026-07-07)** : audit post-build découvre magic link cassé en PWA iOS installée. Root cause : Safari (navigateur PWA) = stockage séparé de Safari navigateur normal → link token perdu entre déclenchement login + clique sur lien de mail. **Fix gravé** : `Cloud.verifyCode()` (base côté serveur) + saisie OTP code 6 chiffres en parallèle. **Leçon** : toute auth mobile sans SIM/SMS requiert BACKUP OTP code (jamais compter sur email link seul). Pattern : magic link (primaire) + OTP (fallback) toujours en pair.
+
+### L-087 – Merge multi-appareils = unionner histories, pas winner-take-all (sinon perte étoiles)
+**Cloud phase 1 (2026-07-07)** : audit post-build révèle risque perte d'étoiles au merge. Root cause : on prenait `max(record_star_count)` = le record gagnant (meilleur), oubliait les autres records sur d'autres appareils. Exemple : iPad (3 étoiles mj-04) + tablette (2 étoiles mj-04) → merge prend 3, perd 2. **Fix appliqué** : unionner toutes les histories + dédupliquer par game_id → max conservé. **Règle gravée** : jamais winner-take-all en merge multi-source. Appliquer : *union(histories[device1], histories[device2]) → deduplicate(game_id) → max(star_count) par game*.
+
 ---
 
 ## Épics
@@ -539,6 +545,125 @@ Exemple : MJ-32 `<img src="./assets/_new-ombre/stegosaurus.png">` → run.mjs v�
 
 ---
 
+## EP-048 – Recette réelle parcours compte→sync (Papa Yann validation)
+
+**Statut** : `[ ]` à faire
+
+**Priorité** : 🔴 **BLOQUANTE** — préalable tout usage réel cloud
+
+**Contexte** : Phase 1 light déployée (2026-07-07) : Supabase + cloud.js + OTP validés en unit tests (18 stubs). Audit post-build 5/7 fixes. **Manque** : **test intégration réel** (end-to-end utilisateur).
+
+**Workflow test** (Papa Yann validation requise) :
+1. Email login → saisir OTP → profil enfant créé Supabase
+2. Jouer 1 partie MJ-01 → progression sauvegardée cloud
+3. Changer appareil → login email → récup profil + progression intact
+4. Vérifier base Supabase (table users, table game_histories, merges)
+
+**À faire** :
+1. **T-450** : Écrire e2e test Playwright (smoke login → partie → sync)
+2. **T-451** : Test réel Papa Yann (2-3 appareils, 2-3 parties, récup profil)
+3. **T-452** : Valider base Supabase (counts, no corruption)
+
+**Blocage** : avant tout usage réel enfants (invite proches).
+
+**Impact** : confiance produit pre-launch.
+
+---
+
+## EP-049 – Resend SMTP + {{ .Token }} dans template Magic Link
+
+**Statut** : `[ ]` à faire
+
+**Priorité** : 🟡 **MOYENNE** — déploiement email réel
+
+**Contexte** : Phase 1 light utilise magic link (code OTP 6 chiffres), mais template email bloqué : Resend n'accepte pas custom domains sans SMTP activé, templates verrouillés sans clé API custom.
+
+**À faire** :
+1. **T-460** : Acheter domaine MaxPlay (~10 €/an, ex: hello@maxplay.app)
+2. **T-461** : Configurer Resend custom domain + SMTP
+3. **T-462** : Modifier template Magic Link : `{{ .Token }}` → 6-digit OTP code + button lien
+4. **T-463** : Test email réel (Gmail/Outlook/Yahoo)
+
+**Raison** : templates officiels MaxPlay (pas générique SendGrid/AWS) augmente confiance parents.
+
+**Impact** : `infra/supabase/auth-resend-config.json`, template email officiel.
+
+---
+
+## EP-050 – Production premiers clips voix (voices-manifest.js)
+
+**Statut** : `[ ]` à faire
+
+**Priorité** : 🟡 **MOYENNE** — incitation compte réelle
+
+**Contexte** : `site/js/voices-manifest.js` vide (V0). TTS.speak() fallback robot. **À faire** : générer premiers clips voix premium ElevenLabs (narratrice f / narrateur h / Wex) pour réactions victoire + indices MJ.
+
+**À faire** :
+1. **T-470** : Sélectionner 10-12 phrases clés (victoires, indices, encouragements) par voix
+2. **T-471** : Générer MP3 ElevenLabs eleven_v3 (tags ton positif/neutre/amusé)
+3. **T-472** : Ajouter silence 250ms (L-069, padding Bluetooth)
+4. **T-473** : Populer `voices-manifest.js` (voice_id→fichiers MP3)
+5. **T-474** : Brancher dans 3 MJ test (mj-01, mj-04, mj-20)
+6. **T-475** : Test voix.js patch (fallback → premium MP3 si connecté)
+
+**Budget** : ~30 crédits ElevenLabs (3 voix × 10-12 clips).
+
+**Impact** : `site/sounds/voix/{f,h,wex}/` (30+ MP3), `site/js/voices-manifest.js` populé.
+
+---
+
+## EP-051 – Migrer 6 pages en TTS.speak (callback centralisé)
+
+**Statut** : `[ ]` à faire
+
+**Priorité** : 🟡 **MOYENNE** — couverture TTS uniforme
+
+**Contexte** : TTS.speak() callback centralisé créé pour cloud phase 1. **Manque** : 6 pages utilisent encore TTS brut (speechSynthesisUtterance direct).
+
+**Pages à migrer** :
+- mj-19.html
+- mj-20.html  
+- mj-22.html
+- dev-dinos.html
+- index2.html (hub « La ligne de Max »)
+- index3.html (hub planètes)
+
+**À faire** :
+1. **T-480** : Remplacer `speechSynthesis.speak()` → `TTS.speak()` (6 pages)
+2. **T-481** : Respecter priority (UI text vs dino-name vs indication), fallback console warn si TTS bloqué
+3. **T-482** : Test Playwright (TTS.speak appelé avec bons args)
+
+**Raison** : une seule source TTS (voix.js gère fallback premium vs robot), uniformité callback, futures améliorations appliquées partout.
+
+**Impact** : 6 fichiers HTML refactorisés, zéro changement visuel.
+
+---
+
+## EP-052 – Dette gabarit entête 8 MJ (cosmétique, figures non prioritaire)
+
+**Statut** : `[ ]` à faire
+
+**Priorité** : 🟢 **BASSE** — cosmétique, protégée figeage
+
+**Contexte** : Revue 40 MJ 2026-07-07 révèle 8 MJ hors gabarit canonique `.hdr`. Tous les autres 32 respectent le pattern. **Figées + harnais Playwright protègent** → ne pas modifier sans session dédiée.
+
+**8 MJ non-conforme** :
+- mj-12.html (class `.bus-cabin` custom)
+- mj-13a/13b/13c.html (`#hdr` + onclick custom)
+- mj-14/15/16/17.html (`#hdr` + back-button.js)
+
+**Note** : ces 8 MJ sont **figés** (`studio/minijeux/docs/jeux/figees/`) → toute modification = revoir figeage + reviewer. Coût effort > bénéfice cosmétique.
+
+**À faire** (future session dédiée si Papa Yann validation) :
+1. Extraire pattern `.hdr` canonique depuis mj-20
+2. Appliquer uniformément 8 MJ
+3. Re-valider harnais (back-button.js toujours injecté)
+4. Mettre à jour figées
+
+**Blocker courant** : AUCUN (esthétique seulement).
+
+---
+
 | ID | Titre | Statut |
 |----|-------|--------|
 | EP-001 | Infrastructure & config Claude | `[x]` |
@@ -588,6 +713,11 @@ Exemple : MJ-32 `<img src="./assets/_new-ombre/stegosaurus.png">` → run.mjs v�
 | EP-045 | MJ-35 · Le jeu des graines (Kalah/awalé, compter/semailles) | `[~]` |
 | EP-046 | MJ-36 · Arrête le bus ! (timing, observer tap au bon moment) | `[~]` |
 | EP-047 | SHORTLIST jeux addictifs (Simon/mélodie, Block Blast, Tangram dino, Mahjong dino, MJ-18 Expert, Shisima, Picross) — priorisation Papa Yann | `[?]` |
+| EP-048 | Recette réelle parcours compte→sync (Papa Yann e2e test : login → partie → récup profil) | `[ ]` |
+| EP-049 | Resend SMTP + {{ .Token }} template Magic Link (custom domain MaxPlay) | `[ ]` |
+| EP-050 | Production premiers clips voix (ElevenLabs 3 voix, 10-12 phrases, populate voices-manifest.js) | `[ ]` |
+| EP-051 | Migrer 6 pages en TTS.speak (mj-19, 20, 22, dev-dinos, index2, index3) | `[ ]` |
+| EP-052 | Dette gabarit entête 8 MJ (mj-12, 13a-c, 14-17) — cosmétique, protégée figeage | `[ ]` |
 
 ---
 

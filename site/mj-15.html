@@ -156,6 +156,13 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 </style>
 </head>
 <body>
+<!-- Filtres SVG pour teindre les ombres de dinos (noir → couleur), sans fetch ni mask CORS -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <filter id="tintRed"><feColorMatrix type="matrix" values="0 0 0 0 0.91  0 0 0 0 0.27  0 0 0 0 0.38  0 0 0 1 0"/></filter>
+  <filter id="tintGreen"><feColorMatrix type="matrix" values="0 0 0 0 0.18  0 0 0 0 0.80  0 0 0 0 0.44  0 0 0 1 0"/></filter>
+  <filter id="tintBlue"><feColorMatrix type="matrix" values="0 0 0 0 0.20  0 0 0 0 0.60  0 0 0 0 0.86  0 0 0 1 0"/></filter>
+  <filter id="tintYellow"><feColorMatrix type="matrix" values="0 0 0 0 1.00  0 0 0 0 0.88  0 0 0 0 0.20  0 0 0 1 0"/></filter>
+</svg>
 <div id="app">
 
   <!-- Header -->
@@ -205,6 +212,7 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 <script src="js/tts.js"></script>
 <script src="js/tracker.js"></script>
 <script src="js/comments.js"></script>
+<script src="js/dinos-data.js"></script>
   <script src="js/back-button.js"></script>
 <script>
 // ═══════════════════════════════════════════════════════════════════════════
@@ -261,6 +269,105 @@ function pick(arr, n) {
   return shuffle(arr).slice(0, n);
 }
 
+// ── Groupes d'émojis proches (niveau F) ────────────────────────────────────
+// Chaque groupe = un thème neutre, sans hiérarchie ni jugement (rien de stigmatisant).
+// L'intrus est toujours un élément qui ne va PAS avec le thème du groupe.
+const EMOJI_GROUPS = [
+  { theme: 'le ciel et la terre', items: ['🌍','🌙','☀️'], odd: '🐢', oddLabel: 'Tortue' },
+  { theme: 'les fruits',          items: ['🍎','🍌','🍓'], odd: '⚽', oddLabel: 'Ballon' },
+  { theme: 'les animaux de la ferme', items: ['🐄','🐷','🐔'], odd: '🦁', oddLabel: 'Lion' },
+  { theme: 'les véhicules qui roulent', items: ['🚗','🚚','🏍️'], odd: '✈️', oddLabel: 'Avion' },
+  { theme: 'les fleurs et les arbres', items: ['🌸','🌳','🌻'], odd: '🍕', oddLabel: 'Pizza' },
+  { theme: 'les jouets', items: ['🧸','🪀','🎈'], odd: '🥕', oddLabel: 'Carotte' },
+  { theme: 'la mer', items: ['🐟','🐠','🐬'], odd: '🦋', oddLabel: 'Papillon' },
+  { theme: 'les desserts', items: ['🍰','🍩','🍫'], odd: '🚀', oddLabel: 'Fusée' },
+];
+
+function generatePuzzleF() {
+  const group = shuffle(EMOJI_GROUPS)[0];
+  // 4 emojis du thème (répétés si besoin pour remplir), 1 intrus
+  const themeItems = [];
+  for (let i = 0; i < 4; i++) themeItems.push(group.items[i % group.items.length]);
+
+  const cards = [...themeItems, group.odd];
+  const positions = shuffle([0,1,2,3,4]);
+  const placed = new Array(5);
+  positions.forEach((pos, i) => { placed[pos] = { emoji: cards[i], label: i === 4 ? group.oddLabel : '' }; });
+  const intrusPos = positions[4];
+
+  return {
+    kind: 'emoji',
+    buses: placed,
+    intrusIdx: intrusPos,
+    hint: `4 vont avec ${group.theme}…`,
+    level: 'F',
+  };
+}
+
+// ── Ombres de dinos (niveau G) ──────────────────────────────────────────────
+// Silhouettes teintées par filtre CSS (jamais de couleur "moche"/dévalorisante).
+// Deux variantes : (1) 4 ombres même teinte + 1 teinte différente — même dino partout,
+//                  (2) 3 même dino + 1 dino différent, tous en silhouette neutre.
+const SRC_DINOS = (typeof DINOS !== 'undefined') ? DINOS : [];
+const OMBRES_MJ15 = SRC_DINOS.filter(d => d.png && d.name && !d.png.includes('/'))
+  .map(d => ({ id: d.id, name: d.name,
+               src: 'img/dinos/ombres/' + d.png.replace(/\.(jpg|png)$/i, '') + '_ombre.png' }));
+
+// Silhouettes = noir plein sur transparent : hue-rotate() n'a AUCUN effet sur du noir pur,
+// et mask-image est bloqué par CORS en local file:// (testé, cassé). Seule solution fiable :
+// filtre SVG inline <feColorMatrix> référencé via filter:url(#id) — recolore le noir en
+// n'importe quelle teinte, marche en file:// (pas de fetch réseau, tout est inline).
+const SHADOW_TINTS = ['tintRed', 'tintGreen', 'tintBlue', 'tintYellow'];
+
+function generatePuzzleG() {
+  if (OMBRES_MJ15.length < 2) return generatePuzzleA();
+
+  const useSameDino = Math.random() < 0.5;
+
+  if (useSameDino) {
+    // Même dino partout, 4 en teinte A + 1 en teinte B
+    const dino = shuffle(OMBRES_MJ15)[0];
+    const tints = shuffle(SHADOW_TINTS).slice(0, 2);
+    const cards = [tints[0], tints[0], tints[0], tints[0], tints[1]]
+      .map(t => ({ src: dino.src, filter: t, name: dino.name }));
+
+    const positions = shuffle([0,1,2,3,4]);
+    const placed = new Array(5);
+    positions.forEach((pos, i) => { placed[pos] = cards[i]; });
+    const intrusPos = positions[4];
+
+    return {
+      kind: 'dino',
+      buses: placed,
+      intrusIdx: intrusPos,
+      hint: 'Regarde bien la couleur des ombres !',
+      level: 'G',
+    };
+  }
+
+  // 4 fois le même dino, 1 dino différent — même teinte partout
+  const tint = shuffle(SHADOW_TINTS)[0];
+  const majorDino = shuffle(OMBRES_MJ15)[0];
+  const oddPool = OMBRES_MJ15.filter(d => d.id !== majorDino.id);
+  const oddDino = shuffle(oddPool)[0] || majorDino;
+
+  const cards = [majorDino, majorDino, majorDino, majorDino, oddDino]
+    .map(d => ({ src: d.src, filter: tint, name: d.name }));
+
+  const positions = shuffle([0,1,2,3,4]);
+  const placed = new Array(5);
+  positions.forEach((pos, i) => { placed[pos] = cards[i]; });
+  const intrusPos = positions[4];
+
+  return {
+    kind: 'dino',
+    buses: placed,
+    intrusIdx: intrusPos,
+    hint: "Regarde bien la forme de l'ombre !",
+    level: 'G',
+  };
+}
+
 // ── État du jeu ────────────────────────────────────────────────────────────
 let score    = 0;
 let round    = 0;
@@ -273,11 +380,11 @@ let wrongThisRound = false;
 // Paliers (doc _PALIERS) : critère de l'intrus. Niveau = Stars.get+1.
 const level = Math.max(0, Math.min(4, (window.Stars ? Stars.get('mj-15') : 0)));
 const CRIT = [
-  ['A'],          // N1 couleur (évident)
-  ['A','D'],      // N2 + roues colorées
-  ['A','D','C'],  // N3 + famille
-  ['C','E'],      // N4 famille + double critère
-  ['E'],          // N5 double critère (subtil)
+  ['A','F'],          // N1 couleur (évident) + émojis proches (évident)
+  ['A','D','F'],      // N2 + roues colorées + émojis
+  ['A','D','C','G'],  // N3 + famille + ombres dino
+  ['C','E','G'],      // N4 famille + double critère + ombres dino
+  ['E','G'],          // N5 double critère (subtil) + ombres dino
 ][level];
 
 // Niveau A — couleur différente
@@ -463,6 +570,8 @@ function generatePuzzle(_roundNum) {
   if (t === 'A') return generatePuzzleA();
   if (t === 'D') return generatePuzzleD();
   if (t === 'E') return generatePuzzleE();
+  if (t === 'F') return generatePuzzleF();
+  if (t === 'G') return generatePuzzleG();
   return generatePuzzleC();
 }
 
@@ -503,20 +612,28 @@ function renderPuzzle(puzzle) {
   rowTop.innerHTML = '';
   rowBot.innerHTML = '';
 
-  puzzle.buses.forEach((ligne, idx) => {
+  puzzle.buses.forEach((item, idx) => {
     const btn = document.createElement('button');
     btn.className    = 'bus-btn';
     btn.dataset.idx  = idx;
-    btn.innerHTML    = busSVG(ligne.color, ligne.textColor, ligne.num, busW)
-                     + `<span class="bus-label">${getLineDisplayName(ligne.num)}</span>`;
-    btn.addEventListener('click', () => onBusTap(idx, btn));
 
-    // Niveau D : seul l'intrus a des roues colorées
-    if (puzzle.level === 'D' && idx === puzzle.intrusIdx) {
-      colorBusWheels(btn, puzzle.wheelColor);
+    if (puzzle.kind === 'emoji') {
+      btn.innerHTML = `<span style="font-size:${Math.round(busW * 0.5)}px;line-height:1;">${item.emoji}</span>`;
+    } else if (puzzle.kind === 'dino') {
+      const size = Math.round(busW * 0.8);
+      btn.innerHTML = `<img src="${item.src}" alt="" style="width:${size}px;height:${size}px;object-fit:contain;filter:url(#${item.filter});" draggable="false">`;
+    } else {
+      btn.innerHTML = busSVG(item.color, item.textColor, item.num, busW)
+                     + `<span class="bus-label">${getLineDisplayName(item.num)}</span>`;
+      // Niveau D : seul l'intrus a des roues colorées
+      if (puzzle.level === 'D' && idx === puzzle.intrusIdx) {
+        colorBusWheels(btn, puzzle.wheelColor);
+      }
     }
 
-    // Disposition : bus 0-1 en haut, 2-4 en bas
+    btn.addEventListener('click', () => onBusTap(idx, btn));
+
+    // Disposition : 0-1 en haut, 2-4 en bas
     if (idx < 2) rowTop.appendChild(btn);
     else         rowBot.appendChild(btn);
   });

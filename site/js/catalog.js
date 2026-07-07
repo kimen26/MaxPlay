@@ -58,7 +58,7 @@ window.MAXPLAY_CATALOG = [
   { id:'mj-39',  category:'nouveaux', homeCat:'logique',  titre:'Blocs magiques',       emoji:'🟪', desc:'Pose les blocs, fais des lignes !',   url:'mj-39.html',  type:'html', orientation:'any',       access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },
 
   // ─── 🔧 Bricoler (ranger & réparer) ───
-  { id:'mj-08',  category:'bricoler', titre:'Au centre bus',        emoji:'🅿️', desc:'Range les bus pour la nuit !',        url:'mj-08.html',  type:'html', orientation:'landscape', access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
+  { id:'mj-08',  category:'bricoler', titre:'Le grand rangement',   emoji:'🧸', desc:'Range le bazar dans les bons bacs !', url:'mj-08.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
   { id:'mj-17',  category:'bricoler', titre:'Le garage',            emoji:'🔧', desc:'Essence, lavage, pneus — répare les bus !',url:'mj-17.html',type:'html',orientation:'any',      access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
 
   // ─── 👀 Observer & vite ───

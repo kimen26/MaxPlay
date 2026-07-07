@@ -11,10 +11,24 @@
     .read-panel { text-align:center; margin:10px 12px 4px; }
     .read-hint { font-size:.9rem; font-weight:700; color:#d9b382; margin-bottom:4px; }
     .read-word {
-      display:inline-block; font-size:2.4rem; font-weight:900; color:#fff;
+      display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:6px;
       background:rgba(255,255,255,0.08); border:3px solid #d9a441;
-      border-radius:16px; padding:8px 28px; letter-spacing:.5px; line-height:1.1;
+      border-radius:16px; padding:10px 14px; line-height:1.1;
     }
+    .syl-btn {
+      font-size:1.9rem; font-weight:900; color:#fff; letter-spacing:.5px;
+      background:rgba(255,255,255,0.12); border:none; border-radius:12px;
+      padding:8px 12px; min-height:60px; min-width:60px;
+      font-family:'Nunito',sans-serif; cursor:pointer; transition:transform .12s, background .15s;
+    }
+    .syl-btn:active { transform:scale(.92); }
+    .syl-btn.playing { background:#d9a441; color:#241a10; transform:scale(1.08); }
+    .word-sound-btn {
+      font-size:1.6rem; background:rgba(255,255,255,0.12); border:none;
+      border-radius:50%; width:60px; height:60px; min-width:60px;
+      cursor:pointer; display:flex; align-items:center; justify-content:center;
+    }
+    .word-sound-btn:active { transform:scale(.9); }
     .question-counter { text-align:center; font-size:.85rem; opacity:.7; margin-top:8px; }
     .choices {
       display:grid; grid-template-columns:repeat(2,1fr); gap:12px;
@@ -43,7 +57,9 @@
     <div class="qbox">
       <div class="read-panel">
         <div class="read-hint">Lis bien… trouve ce dino 👇</div>
-        <div class="read-word" id="word">…</div>
+        <div class="read-word" id="word">
+          <button class="word-sound-btn" id="wordSoundBtn" aria-label="Écouter le nom entier">🔊</button>
+        </div>
       </div>
     </div>
 
@@ -59,6 +75,8 @@
   <script src="js/qcm-retry.js"></script>
   <script src="js/mj-golden.js"></script>
   <script src="js/dinos-data.js"></script>
+  <script src="js/dinos-audio-manifest.js"></script>
+  <script src="js/tts.js"></script>
   <script>
     // ─── MJ-27 — Lis le nom du dino (LECTURE PURE, aucun son d'aide) ───
     // Affiche le nom écrit + 6 vraies images de l'encyclopédie. Max lit et trouve.
@@ -67,6 +85,72 @@
     const MISSING = new Set();
     // Pool = dinos avec image top-level valide (pas de sous-dossier, fichier présent)
     const POOL = SRC.filter(d => d.png && d.name && !d.png.includes('/') && !MISSING.has(d.png));
+
+    // Découpage syllabique (phonétique FR) par id dino — évaluation manuelle, pas d'algo.
+    // Registre : liste des syllabes uniques en bas de fichier (commentaire) pour génération
+    // ElevenLabs future si le TTS navigateur déçoit.
+    const SYLLABES = {
+      tyrannosaurus:['T','REX'],
+      spinosaurus:['SPI','NO','SAU','RE'],
+      giganotosaurus:['GI','GA','NO','TO','SAU','RE'],
+      carcharodontosaurus:['CAR','CHA','RO','DON','TO','SAU','RE'],
+      allosaurus:['AL','LO','SAU','RE'],
+      tarbosaurus:['TAR','BO','SAU','RE'],
+      albertosaurus:['AL','BER','TO','SAU','RE'],
+      ceratosaurus:['CÉ','RA','TO','SAU','RE'],
+      dilophosaurus:['DI','LO','PHO','SAU','RE'],
+      carnotaurus:['CAR','NO','TAU','RE'],
+      cryolophosaurus:['CRY','O','LO','PHO','SAU','RE'],
+      brachiosaurus:['BRA','CHIO','SAU','RE'],
+      diplodocus:['DI','PLO','DO','CUS'],
+      apatosaurus:['A','PA','TO','SAU','RE'],
+      camarasaurus:['CA','MA','RA','SAU','RE'],
+      amargasaurus:['A','MAR','GA','SAU','RE'],
+      plateosaurus:['PLA','TÉ','O','SAU','RE'],
+      ankylosaurus:['AN','KY','LO','SAU','RE'],
+      euoplocephalus:['EU','O','PLO','CÉ','PHALE'],
+      edmontonia:['ED','MON','TO','NIA'],
+      stegosaurus:['STÉ','GO','SAU','RE'],
+      kentrosaurus:['KÉN','TRO','SAU','RE'],
+      triceratops:['TRI','CÉ','RA','TOPS'],
+      torosaurus:['TO','RO','SAU','RE'],
+      protoceratops:['PRO','TO','CÉ','RA','TOPS'],
+      pentaceratops:['PEN','TA','CÉ','RA','TOPS'],
+      parasaurolophus:['PA','RA','SAU','RO','LO','PHUS'],
+      edmontosaurus:['ED','MON','TO','SAU','RE'],
+      iguanodon:['I','GUA','NO','DON'],
+      pachycephalosaurus:['PA','CHY','CÉ','PHA','LO','SAU','RE'],
+      velociraptor:['VÉ','LO','CI','RAP','TOR'],
+      deinonychus:['DEI','NO','NY','CHUS'],
+      utahraptor:['U','TAH','RAP','TOR'],
+      microraptor:['MI','CRO','RAP','TOR'],
+      troodon:['TRO','O','DON'],
+      gallimimus:['GAL','LI','MI','MUS'],
+      oviraptor:['O','VI','RAP','TOR'],
+      pteranodon:['PTÉ','RA','NO','DON'],
+      quetzalcoatlus:['QUET','ZAL','CO','AT','LUS'],
+      archaeopteryx:['AR','CHÉ','OP','TÉ','RYX'],
+      mosasaurus:['MO','SA','SAU','RE'],
+      baryonyx:['BA','RY','O','NYX'],
+      therizinosaurus:['THÉ','RI','ZI','NO','SAU','RUS'],
+      dimetrodon:['DI','MÉ','TRO','DON'],
+      elasmosaurus:['É','LAS','MO','SAU','RE'],
+      ophthalmosaurus:['OPH','TAL','MO','SAU','RE'],
+      liopleurodon:['LI','O','PLEU','RO','DON'],
+      archelon:['AR','CHÉ','LON'],
+      shonisaurus:['SHO','NI','SAU','RE'],
+      patagotitan:['TI','TA','NO','SAU','RE'],
+      centrosaurus:['CEN','TRO','SAU','RE'],
+      ichthyosaurus:['ICH','TYO','SAU','RE'],
+      mammuthus:['MAM','MOUTH'],
+      smilodon:['SMI','LO','DON'],
+      megatherium:['MÉ','GA','TÉ','RI','UM'],
+      paraceratherium:['PA','RA','CÉ','RA','TÉ','RI','UM'],
+      glyptodon:['GLYP','TO','DON'],
+      aenocyon:['LOUP','TER','RI','BLE'],
+      coelodonta:['RHI','NO','LAI','NEUX'],
+      titanis:['TI','TA','NIS'],
+    };
 
     const NCHOICES = 6;
     const G = Golden.setup('mj-27');
@@ -79,6 +163,54 @@
     let score = 0, streak = 0, qCount = 0, qcm = null, target = null;
 
     function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+
+    // Jamais deux voix en même temps (TTS syllabe coupe le MP3 nom complet, et vice-versa).
+    let fullNameAudio = null;
+    function stopFullName(){ if (fullNameAudio){ fullNameAudio.pause(); fullNameAudio = null; } }
+
+    // Tap sur une syllabe → TTS navigateur (courte, rate lent) + surbrillance pendant la lecture.
+    // Pas de MP3 par syllabe (pas encore généré) — TTS acceptable ici car texte très court.
+    function speakSyllable(btn, syl){
+      stopFullName();
+      if (!window.TTS || !TTS.supported()) return;
+      TTS.cancel();
+      document.querySelectorAll('.syl-btn.playing').forEach(b => b.classList.remove('playing'));
+      btn.classList.add('playing');
+      TTS.speak(syl, { rate:0.75, priority:true, onEnd: () => btn.classList.remove('playing') });
+    }
+
+    // Tap sur le nom entier / bouton 🔊 → MP3 réel <id>-nom.mp3 (jamais TTS pour le nom complet,
+    // règle figée dino). Fallback TTS si le manifest ne liste pas encore l'id.
+    function speakFullName(dino){
+      stopFullName();
+      if (window.TTS) TTS.cancel();
+      const hasMp3 = window.DINO_NOM_AUDIO && window.DINO_NOM_AUDIO.has(dino.id);
+      if (!hasMp3) { if (window.TTS) TTS.speak(dino.name, { rate:0.85, priority:true }); return; }
+      const a = new Audio('audio/dinos/' + dino.id + '-nom.mp3');
+      fullNameAudio = a;
+      a.onerror = () => { if (window.TTS) TTS.speak(dino.name, { rate:0.85, priority:true }); };
+      a.play().catch(() => { if (window.TTS) TTS.speak(dino.name, { rate:0.85, priority:true }); });
+    }
+
+    function renderWord(dino){
+      const box = document.getElementById('word');
+      box.innerHTML = '';
+      const syls = SYLLABES[dino.id] || [dino.name];
+      syls.forEach(syl => {
+        const b = document.createElement('button');
+        b.className = 'syl-btn';
+        b.textContent = syl;
+        b.onclick = () => speakSyllable(b, syl);
+        box.appendChild(b);
+      });
+      const soundBtn = document.createElement('button');
+      soundBtn.className = 'word-sound-btn';
+      soundBtn.id = 'wordSoundBtn';
+      soundBtn.setAttribute('aria-label', 'Écouter le nom entier');
+      soundBtn.textContent = '🔊';
+      soundBtn.onclick = () => speakFullName(dino);
+      box.appendChild(soundBtn);
+    }
 
     function init(){
       G.buildPips();
@@ -106,7 +238,7 @@
 
       const opts = shuffle([{ d: target, correct:true }, ...distract.map(d => ({ d, correct:false }))]);
 
-      document.getElementById('word').textContent = target.name;   // le MOT à lire (aucun son)
+      renderWord(target);   // le MOT à lire, découpé en syllabes tapables
 
       const box = document.getElementById('choices');
       box.innerHTML = '';

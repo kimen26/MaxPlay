@@ -14,6 +14,15 @@ Voir `memory/MAX_PROFILE.md` pour le profil complet.
 Audit complet : `memory/INFRA-AUDIT-2026-07-06.md` (légal enfants, archi phasée 0→3, monétisation, anti-fraude, distribution).
 Décisions clés : compte parent + profil enfant pseudonyme · entitlements serveur (jamais de flag client) · codes cadeaux usage unique liés acheteur (jamais de code générique) · MoR Paddle/Lemon Squeezy · Phase 0 tant que < 50-100 foyers actifs hors proches · pubs = jamais vers enfants (cibler parents), organique d'abord.
 
+## Phase 1 light LIVE (2026-07-06)
+
+Auth parent + sync progression + vraies voix déployés. Doc : `infra/supabase/README.md`.
+- Supabase projet **WexWorld** (`bfrugwrzpefsaehsvypt`, eu-west-1 UE) — migrations 001+002 appliquées, RLS partout, advisors verts. MCP `supabase` dans `~/.claude.json` (PAT, `--read-only`).
+- Local-first : localStorage reste source de vérité ; `cloud.js` (magic link + code OTP 6 chiffres — indispensable PWA iOS) ; `voice.js` patche `TTS.speak` (MP3 premium connecté / dame robot anonyme, manifest V0 vide) ; chargeur à la demande dans `tracker.js` (anonyme = zéro réseau).
+- 3 index installables séparément (manifest-classic / manifest / manifest-fusee) + footer parent commun (suivi·duel·lecture).
+- Revue 40 MJ : 40/40 rejouer OK, 8 hors gabarit entête (mj-12, 13a-c, 14-17) = dette cosmétique.
+- **TODO ouverts** : recette réelle parcours compte→sync (Papa Yann) · Resend SMTP + `{{ .Token }}` template (bloqué par SMTP custom) · nom de domaine (~10 €/an) · clips voix à produire · 6 pages en `SpeechSynthesisUtterance` brut à migrer vers `TTS.speak` (mj-19/20/22, dev-dinos, index2/3).
+
 ## État jeux (2026-04-26, session 13)
 
 - **21 jeux** : mj-01, mj-04, mj-05, mj-06, mj-08, mj-09, mj-11, mj-12, mj-13a, mj-13b, mj-13c, mj-14 à mj-20 + max-adventure

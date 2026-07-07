@@ -4,94 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>MJ-05 – La bonne place</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
+    body { font-family:'Nunito',sans-serif; }
     #gameScr { background: linear-gradient(160deg, #3a1a2a, #1a2a3a); }
+
+    /* ─── Scène arrêt de bus ─── */
     .bus-scene {
-      background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 50%, #90EE90 50%, #228B22 100%);
-      border-radius: 16px;
-      padding: 16px;
-      margin: 0 12px 12px;
       position: relative;
-      min-height: 180px;
+      margin: 4px 12px 10px;
+      border-radius: 20px;
+      overflow: hidden;
+      background: linear-gradient(180deg, #6fb7e8 0%, #bfe6ff 55%, #7ec87e 55%, #4a9d4a 100%);
+      min-height: clamp(120px, 22vmin, 160px);
+    }
+    .sidewalk {
+      position: absolute; left:0; right:0; bottom:0; height:24%;
+      background: repeating-linear-gradient(90deg, #d9d9d9 0 40px, #c7c7c7 40px 42px);
     }
     .bus-visual {
-      position: absolute;
-      bottom: 36px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 160px;
-      animation: busBounce 2s ease-in-out infinite;
+      position: absolute; left:50%; bottom:24%; transform:translateX(-50%);
+      z-index: 2; animation: busBounce 2.4s ease-in-out infinite;
     }
-    .bus-visual svg { width: 100%; height: auto; }
-    @keyframes busBounce {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(-3px); }
-    }
+    .bus-visual svg { width: clamp(120px, 30vmin, 180px); height:auto; display:block; }
+    @keyframes busBounce { 0%,100%{ transform:translateX(-50%) translateY(0);} 50%{ transform:translateX(-50%) translateY(-3px);} }
+
     .people-waiting {
-      display: flex;
-      justify-content: center;
-      gap: 4px;
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 8px;
-      background: rgba(255,255,255,0.3);
-      border-radius: 20px;
+      position: absolute; left:8px; bottom:24%;
+      display:flex; align-items:flex-end; gap:3px; z-index:3;
     }
-    .person { font-size: 1.8rem; animation: personBob 1s ease-in-out infinite; }
+    .person { width: clamp(26px, 6vmin, 36px); height: clamp(26px, 6vmin, 36px); animation: personBob 1s ease-in-out infinite; }
+    .person svg { width:100%; height:100%; display:block; filter:drop-shadow(0 2px 2px rgba(0,0,0,0.25)); }
     .person:nth-child(2) { animation-delay: 0.1s; }
     .person:nth-child(3) { animation-delay: 0.2s; }
     .person:nth-child(4) { animation-delay: 0.3s; }
     .person:nth-child(5) { animation-delay: 0.4s; }
-    @keyframes personBob {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-3px); }
-    }
+    @keyframes personBob { 0%,100%{ transform:translateY(0);} 50%{ transform:translateY(-3px);} }
+    .person-more { font-family:'Fredoka One',sans-serif; font-size:0.85rem; color:#fff; text-shadow:0 1px 2px rgba(0,0,0,0.4); align-self:center; }
+
     .bus-seats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      justify-content: center;
-      padding: 12px;
-      background: #ffffff10;
-      border-radius: 12px;
-      margin: 0 12px 12px;
+      display: flex; flex-wrap: wrap; gap: 7px; justify-content: center;
+      padding: 12px; background: #ffffff10; border-radius: 16px; margin: 0 12px 10px;
     }
     .seat {
-      width: 36px;
-      height: 36px;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.2rem;
-      background: #00c47a33;
-      border: 2px solid #00c47a;
+      width: 38px; height: 38px; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      background: #ffffff1c; border: 2px solid #ffffff33;
       transition: all 0.3s;
     }
-    .seat.occupied { background: #ff445533; border-color: #ff4455; }
-    .seat.available { background: #ffffff22; border-color: #ffffff44; }
+    .seat svg { width: 30px; height: 30px; display:block; }
+    .seat.occupied { background: #ff445522; border-color: #ff445588; }
+    .seat.available { background: #00c47a1c; border-color: #00c47a55; }
     .seat.boarding { animation: boardAnim 0.5s ease-out; }
-    @keyframes boardAnim {
-      0% { transform: scale(1.5); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
+    @keyframes boardAnim { 0% { transform: scale(1.5); opacity: 0; } 100% { transform: scale(1); opacity: 1; } }
+
     .problem-text {
-      font-size: 1rem;
-      line-height: 1.5;
-      text-align: center;
-      padding: 12px;
-      background: #ffffff10;
-      border-radius: 12px;
-      margin: 0 12px 12px;
+      font-size: 1.02rem; line-height: 1.55; text-align: center;
+      padding: 12px; background: #ffffff10; border-radius: 16px; margin: 0 12px 10px;
     }
-    .problem-text strong { color: #ffe066; font-size: 1.2rem; }
-    .question-counter { text-align: center; font-size: 0.9rem; opacity: 0.7; margin-bottom: 8px; }
-    #levelbar { margin-left:auto; font-weight:900; color:#ffe066; background:#ffffff1f; border-radius:10px; padding:3px 12px; font-size:0.85rem; }
-    #hintline { text-align:center; color:#ffe066; font-weight:900; font-size:0.92rem; min-height:22px; margin:2px 12px 8px; }
+    .problem-text strong { color: #ffe066; font-size: 1.2rem; font-family:'Fredoka One',sans-serif; }
+    .question-counter { text-align: center; font-size: 0.85rem; opacity: 0.7; margin-bottom: 8px; }
+    #levelbar { margin-left:auto; font-family:'Fredoka One',sans-serif; color:#ffe066; background:#ffffff1f; border-radius:10px; padding:3px 12px; font-size:0.85rem; }
+    #hintline { text-align:center; color:#ffe066; font-weight:800; font-size:0.92rem; min-height:22px; margin:2px 12px 8px; }
+
+    /* Gros boutons réponse ≥ 100px */
+    .choices.big { grid-template-columns:repeat(4,1fr); padding:0 12px 12px; gap:12px; }
+    .choices.big .ch { min-height:100px; font-size:1.9rem; font-family:'Fredoka One',sans-serif; border-radius:20px; }
   </style>
 </head>
 <body data-mp-intro-emoji="🪑" data-mp-intro-title="La bonne place" data-mp-intro-hint="Compte les places !">
@@ -117,13 +96,14 @@
     <div class="bus-scene" id="busScene">
       <div class="bus-visual" id="busVisual"></div>
       <div class="people-waiting" id="peopleWaiting"><!-- Généré par JS --></div>
+      <div class="sidewalk"></div>
     </div>
 
     <!-- Seats visualization -->
     <div class="bus-seats" id="busSeats"><!-- Généré par JS --></div>
 
     <!-- Choices -->
-    <div class="choices" id="choices" style="grid-template-columns:repeat(4,1fr);padding:0 12px;"><!-- Généré par JS --></div>
+    <div class="choices big" id="choices"><!-- Généré par JS --></div>
 
     <!-- Indice de méthode (jamais la réponse) -->
     <div id="hintline"></div>
@@ -146,6 +126,7 @@
     // Problèmes places / monter / descendre / combo. 5 paliers (doc _PALIERS-DIFFICULTE.md).
     // Niveau = Stars.get('mj-05') + 1. Manche mixte 8 questions (4 palier courant + 4 plus faciles).
     const POOL_MJ05 = LIGNES.filter(l => ['162','172','185','380','V7','131','125','132','180','47','186'].includes(l.num));
+    const PAX_COLORS = ['#FF6B6B','#4ECDC4','#FFD93D','#6C63FF','#FF922B','#20C997','#F783AC','#748FFC'];
 
     const MAX_QUESTIONS = 8;
     const level = Math.max(0, Math.min(4, (window.Stars ? Stars.get('mj-05') : 0)));
@@ -174,6 +155,18 @@
 
     function setLevelBadge() { const lb = document.getElementById('levelbar'); if (lb) lb.textContent = 'Niveau ' + (level + 1); }
 
+    // SVG passager rond mignon avec des yeux — jamais emoji
+    function paxSVG(color) {
+      return `<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+        <path class="pax-body" d="M24 46c-9 0-15-5-15-13 0-10 6-17 15-17s15 7 15 17c0 8-6 13-15 13Z" fill="${color}" stroke="#222" stroke-width="2.4"/>
+        <circle cx="18.5" cy="22" r="3.4" fill="#fff" stroke="#222" stroke-width="1.4"/>
+        <circle cx="29.5" cy="22" r="3.4" fill="#fff" stroke="#222" stroke-width="1.4"/>
+        <circle cx="19" cy="22.6" r="1.6" fill="#222"/>
+        <circle cx="29" cy="22.6" r="1.6" fill="#222"/>
+        <path d="M18 29c2 2.5 10 2.5 12 0" stroke="#222" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+      </svg>`;
+    }
+
     function init() {
       score = 0; streak = 0; questionCount = 0; correctCount = 0; locked = false;
       schedule = buildSchedule();
@@ -181,7 +174,7 @@
       document.getElementById('streak').textContent = '';
       setLevelBadge();
       const d = POOL_MJ05[Math.floor(Math.random() * POOL_MJ05.length)];
-      document.getElementById('busVisual').innerHTML = busSVG(d.color, d.textColor, d.num, 160);
+      document.getElementById('busVisual').innerHTML = busSVG(d.color, d.textColor, d.num, 180);
       nextQuestion();
     }
 
@@ -250,8 +243,6 @@
       choices.forEach(num => {
         const b = document.createElement('button');
         b.className = 'ch';
-        b.style.fontSize = '1.3rem';
-        b.style.minHeight = '56px';
         b.textContent = num;
         if (num === correctAnswer) b.dataset.correct = '1';
         b.onclick = () => answer(num === correctAnswer, b);
@@ -264,19 +255,17 @@
       container.innerHTML = '';
       if (count === 0) { container.style.display = 'none'; return; }
       container.style.display = 'flex';
-      const emojis = ['🧍', '🧍‍♀️', '🧍‍♂️', '👧', '👦', '👵', '👴'];
+      const colors = shuffle([...PAX_COLORS, ...PAX_COLORS]);
       for (let i = 0; i < Math.min(count, 6); i++) {
-        const person = document.createElement('span');
+        const person = document.createElement('div');
         person.className = 'person';
-        person.textContent = emojis[i % emojis.length];
+        person.innerHTML = paxSVG(colors[i % colors.length]);
         container.appendChild(person);
       }
       if (count > 6) {
         const more = document.createElement('span');
-        more.className = 'person';
+        more.className = 'person-more';
         more.textContent = `+${count - 6}`;
-        more.style.fontSize = '1rem';
-        more.style.fontWeight = 'bold';
         container.appendChild(more);
       }
     }
@@ -286,17 +275,19 @@
       container.innerHTML = '';
       const displayTotal = Math.min(total, 12);
       const displayOccupied = Math.min(occupied, displayTotal);
+      const colors = shuffle([...PAX_COLORS, ...PAX_COLORS]);
       for (let i = 0; i < displayTotal; i++) {
         const seat = document.createElement('div');
         seat.className = 'seat';
-        if (i < displayOccupied) { seat.classList.add('occupied'); seat.textContent = '🧍'; }
-        else { seat.classList.add('available'); seat.textContent = ''; }
+        if (i < displayOccupied) { seat.classList.add('occupied'); seat.innerHTML = paxSVG(colors[i % colors.length]); }
+        else { seat.classList.add('available'); }
         container.appendChild(seat);
       }
       if (total > 12) {
         const more = document.createElement('div');
         more.style.fontSize = '0.8rem';
         more.style.opacity = '0.6';
+        more.style.alignSelf = 'center';
         more.textContent = `+${total - 12} places`;
         container.appendChild(more);
       }
@@ -304,13 +295,15 @@
 
     function animateBoarding() {
       const seats = document.querySelectorAll('.seat.available');
+      const colors = shuffle([...PAX_COLORS, ...PAX_COLORS]);
       let count = 0;
       seats.forEach(seat => {
         if (count < correctAnswer) {
+          const c = colors[count % colors.length];
           setTimeout(() => {
             seat.classList.remove('available');
             seat.classList.add('occupied', 'boarding');
-            seat.textContent = '🧍';
+            seat.innerHTML = paxSVG(c);
             if (typeof sndPorte === 'function') sndPorte();
           }, count * 200);
           count++;
@@ -366,7 +359,7 @@
         <div id="endscreen" data-perfect="${perfect ? 1 : 0}" data-correct="${correctCount}"
              style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100dvh;text-align:center;padding:20px;">
           <div style="font-size:5rem;margin-bottom:14px;">${perfect ? '🏆' : '🎉'}</div>
-          <h2 style="font-size:2rem;margin-bottom:10px;color:#ffe066;">${perfect ? 'Parfait !' : 'Bien joué !'}</h2>
+          <h2 style="font-size:2rem;margin-bottom:10px;color:#ffe066;font-family:'Fredoka One',sans-serif;">${perfect ? 'Parfait !' : 'Bien joué !'}</h2>
           <p style="font-size:1.3rem;margin-bottom:8px;">${correctCount} / ${MAX_QUESTIONS} bonnes réponses</p>
           ${perfect
             ? '<p style="font-size:1rem;margin-bottom:20px;color:#9be7c4;">⭐ Tu gagnes une étoile !</p>'

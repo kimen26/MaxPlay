@@ -14,7 +14,7 @@ export async function run({ page, ok }) {
   for (let i = 0; i < 8; i++) {
     await page.waitForSelector('.ch[data-correct="1"]', { timeout: 6000 });
     await page.click('.ch[data-correct="1"]');
-    await page.waitForTimeout(1250);
+    await page.waitForTimeout(1450);
   }
 
   ok('écran de fin affiché', (await page.locator('#endscreen').count()) === 1);

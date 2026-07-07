@@ -18,6 +18,43 @@
 
 ---
 
+## 2026-07-07 — Décisions infra/business Phase 1 cloud déployée
+
+**Contexte** : Audit infra/business complet suite déploiement Supabase + cloud.js + OTP. Commit b7dec8ef. **Détail complet** : `memory/INFRA-AUDIT-2026-07-06.md` (archi phasée, légal, monétisation, distribution).
+
+**Décisions figées** :
+
+1. **Modèle comptes** :
+   - Compte parent (email) + profil enfant pseudonyme **SANS DONNÉE PERSO ENFANT**
+   - Entitlements serveur JAMAIS exposés en flag client (cryptography côté serveur obligatoire)
+   - Respect RGPD/COPPA enfants < 4 ans (zéro analytics, zéro tracking)
+
+2. **Codes cadeaux** :
+   - Usage **unique** lié à l'acheteur (jamais générique partageable)
+   - Prévention scalping/viralité commerciale
+
+3. **Monétisation & distribution** :
+   - **MoR** (Merchant of Record) : Paddle OU Lemon Squeezy (ESCROW protégé, compliance auto)
+   - **Phase 0** : tant que < 50-100 foyers hors proches (famille/copains closed loop)
+   - **Phase 1+** : if growth + compliance vérifié
+   - **Pubs** : JAMAIS vers enfants < 4 ans (zone sensible)
+
+4. **Security audit post-build** :
+   - **7 findings** : 5 fixes déployées (CRITIQUE magic link iOS + HAUTE perte étoiles + XSS surnom + 2× RLS)
+   - **2 WARN** : monitoring post-prod (non-bloquant)
+
+5. **Architecture 3 index** :
+   - 1 manifest par version (PWA non-conflictuel)
+   - Footer parent commun (suivi/duel/lecture partagé)
+
+**État** : ✅ Phase 1 light DÉPLOYÉE (Supabase RLS VERT, tests stubs 18/18 VERT, audit post-build fixes appliquées).
+
+**Blocage** : EP-048 recette réelle e2e (Papa Yann test 3 appareils + sync).
+
+**Raison** : cadre légal clair + sécurité data enfant + monétisation honnête (ESCROW tiers) = confiance parents pour adoption.
+
+---
+
 ## 2026-07-04 — Refonte visuelle plateforme Phase 1 livrée (hub « La ligne de Max »)
 
 **Contexte** : Papa Yann demande benchmark + proposition refonte visuelle complète ("trop basique, tabulaire, pas wow"). Process : explore site + benchmark web (Khan Kids/PBS/Toca/Duolingo ABC/Lunii/NN-g) + consultation 3 conseillers (game, dino, narration) + test lecteur-dyade simulé. Plan approuvé Papa Yann.

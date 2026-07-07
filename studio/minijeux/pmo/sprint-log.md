@@ -9,6 +9,114 @@
 
 ---
 
+## 2026-07-07 — CLÔTURE INFRA/BUSINESS : Phase 1 cloud déployée, audit post-build 7/5, cohérence 3 index
+
+**Owner** : Papa Yann (décisions métier) · game-pmo (log plateforme) · game-dev (infra)
+
+**Trigger** : Audit infra/business complet suite déploiement phase 1 cloud (Supabase + compte utilisateur + voix premium EL) + audit post-build révèle 7 findings (5 fixés avant production).
+
+**Fait (session 2026-07-07)** :
+
+### Bloc 1 : Audit Infra/Business complet (commit b7dec8ef)
+
+**Décisions figées** :
+
+1. **Modèle comptes** :
+   - Compte parent (email) + profil enfant pseudonyme (zéro donnée personnelle enfant)
+   - Entitlements serveur JAMAIS en flag client (cryptography côté serveur obligatoire)
+
+2. **Codes cadeaux** :
+   - Usage unique lié à l'acheteur (jamais générique partageable)
+   - Prevents scalping/partage viral
+
+3. **Monétisation & partenaires** :
+   - MoR : Paddle OU Lemon Squeezy (flexible, ESCROW protégé)
+   - Phase 0 : tant que < 50-100 foyers hors proches (famille/copains seulement)
+   - Pubs JAMAIS vers enfants (<4 ans = public fragile)
+
+**Documentation** : `memory/INFRA-AUDIT-2026-07-06.md` (commit b7dec8ef) — archi phasée 0-3, légal enfants, distribution, monétisation.
+
+### Bloc 2 : Phase 1 light construite et déployée (commits 39dc7b49, 6ef89f20)
+
+**Infrastructure Supabase** :
+- Projet WexWorld (bfrugwrzpefsaehsvypt, eu-west-1 UE)
+- Migrations 001_init (schéma base) + 002_indexes_hardening (RLS partout, security FIRST)
+- Advisors SQL : VERT tous les checks (encryption, permissions, audit)
+
+**Code déployé** :
+- `site/js/cloud.js` : magic link + OTP code 6 chiffres (PWA iOS Safari = stockage séparé)
+- `site/js/voice.js` : patch TTS.speak transparent (voix premium MP3 si connecté, robot sinon, fallback auto)
+- `site/js/voices-manifest.js` : V0 vide, ready pour clips voix production
+- `site/compte.html` : login interface
+- Hooks `tracker.js` : schedulePush + lazy-loader cloud (anonyme = zéro réseau, freemium intact)
+- Bouton Compte dans suivi.html
+
+**Tests** : 18 stubs unitaires VERT (merge, patch voix, chargeur cloud à demande)
+
+### Bloc 3 : Audit post-build (critique + haute + warn)
+
+**7 findings identifiés** :
+
+1. 🔴 **CRITIQUE** : magic link cassé en PWA iOS installée → Safari stockage séparé
+   - Fix : Cloud.verifyCode + saisie code 6 chiffres en parallèle (commit validé)
+
+2. 🟠 **HAUTE** : perte d'étoiles possible au merge (histories multi-appareils)
+   - Root cause : on prenait record gagnant seulement, ignorait autres records
+   - Fix : unionner histories + dédupliquer étoiles → max conservé (L-087)
+
+3. 🟠 **HAUTE** : XSS surnom (injection HTML)
+   - Fix : textContent au lieu innerHTML
+
+4. 🟡 **WARN×3** : Advisors SQL (RLS trop lâche)
+   - Fixes appliquées migration 002_indexes_hardening
+
+**État** : 5/7 fixes déployées avant prod, 2 WARN classés non-bloquant (monitoring post-prod).
+
+### Bloc 4 : Cohérence 3 index (commits cb8b808a, bfccff29)
+
+**Problème** : manifest unique → 3 installs Android différents (index.html, index2.html, index3.html = 3 apps distinctes)
+
+**Solution** : 1 manifest par version
+- `manifest-classic.json` (index.html, ancien menu)
+- `manifest.json` (index2.html, bus « La ligne de Max »)
+- `manifest-fusee.json` (index3.html, planètes)
+- start_url propres → chaque install isolé, no conflict
+
+**Footer parent commun** : suivi · duel · lecture (partagé 3 hubs)
+
+**Résultat** : 3 hubs navigables distinctes, zéro confusion PWA.
+
+### Bloc 5 : Revue 40 MJ entête + rejouer (validée)
+
+**Snapshot** : 40/40 MJ live ont un **mécanisme rejouer** (bouton ou automatique). Exemples :
+- mj-18 « Nouveau jeu » (L160)
+- mj-32 « Colorier un autre » (L461)
+- mj-37 « Niveau suivant » (L525)
+- mj-40 « Continuer » (L581)
+
+**Gabarit entête** : 40/40 ont header fonctionnelle, MAIS **8/40 hors gabarit canonique** class=".hdr" :
+- mj-12 (.bus-cabin custom)
+- mj-13a/b/c (#hdr + bouton onclick custom)
+- mj-14 à 17 (#hdr + back-button.js custom)
+
+**Décision Papa Yann implicite** : dette cosmétique, figées + harnais protègent (ne pas toucher sans session dédiée).
+
+**État au reboot** :
+- ✅ **Phase 1 light DÉPLOYÉE** (Supabase + cloud.js + compte + tests stubs)
+- ✅ **Audit post-build 7 findings, 5 fixes** (CRITIQUE magic link iOS réglé, HAUTE perte étoiles fixée)
+- ✅ **Cohérence 3 manifests index** (PWA non-conflictuel)
+- ✅ **40/40 MJ entête + rejouer validés**
+- 📅 **Blocage** : recette réelle parcours compte→sync (IN ATTENTE Papa Yann)
+- 📅 **À faire** : voices-manifest production (EP-050), SMTP Resend (EP-049), TTS.speak 6 pages (EP-051)
+
+**Impacte fichiers** :
+- `site/js/cloud.js`, `voice.js`, `compte.html`, `tracker.js` : code déployé
+- `infra/supabase/README.md` : doc
+- `site/manifest*.json` : 3 manifests (cb8b808a, bfccff29)
+- `studio/minijeux/pmo/backlog.md` : EP-048..052 + L-086/087
+
+---
+
 ## 2026-07-06 (jour) — CLÔTURE GROSSE SESSION : 9 MJ livrés (34-42), 3 retirés, leçons process validées
 
 **Owner** : game-mj-pmo + game-dev (7 agents nuit + 2 agents jour) · Papa Yann (validation réveil, feedback produit critique)

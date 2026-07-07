@@ -271,10 +271,10 @@ function renderChips(zone, data, arr, cls) {
 // le panneau ne doit jamais cacher le passage tapé : padding + remontée auto
 function degagerTexte() {
   var texte = document.getElementById('texte');
-  texte.style.paddingBottom = '60vh';
+  texte.style.paddingBottom = 'calc(55vh + 20px)';
   var premier = texte.querySelector('.seg[data-idx="' + segSel[0] + '"]');
   if (premier) setTimeout(function(){
-    premier.scrollIntoView({ block: 'start', behavior: 'smooth' });
+    premier.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   }, 60);
 }
 

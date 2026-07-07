@@ -9,6 +9,75 @@
 
 ---
 
+## 2026-07-07 — REVUE MINI-JEUX Papa Yann : 18 retours horodatés → 21 tickets EP-051..069 créés
+
+**Owner** : Papa Yann (retours utilisateur) · game-pmo (classification + log)
+
+**Trigger** : Papa Yann a fait la revue des jeux le 2026-07-07 soir (session validée) et livré 18 retours horodatés (bruts, par-jeu). Classification : 3 BUG CRITIQUES + 3 REFONTE + 12 AMÉLIORATION/FEATURE + 1 NORME transverse.
+
+**Fait (session game-pmo 2026-07-07 21h)** :
+
+### Bloc 1 : Classification retours
+
+**BUG CRITIQUES** (3) :
+- EP-053 (MJ-32) : zone noire non-recolorable flood-fill
+- EP-059 (MJ-16) : portrait responsive cassé
+- EP-063 (MJ-26) : dino hors cadre noir/noir + répétition niveau 1
+
+**REFONTE** (3) :
+- EP-054 (MJ-04) : « qu'est-ce que c'est moche »
+- EP-055 (MJ-05) : « très laid mais l'idée est bonne »
+- EP-060 (MJ-08/09) : doublon tri → refonte multi-thème
+
+**AMÉLIORATION AUDIO** (4) :
+- EP-051 (MJ-33) : TTS noms dinos uniquement
+- EP-052 (MJ-31) : intro raccourcir + audit voix TTS
+- EP-061 (MJ-12) : ajouter nouveaux sons banque
+- EP-064 (MJ-27) : cliquer syllabe → entendre son
+
+**AMÉLIORATION UX/FEATURE** (8) :
+- EP-056 (MJ-06) : diversifier emojis (dino, voyage)
+- EP-057 (MJ-23) : idem diversification
+- EP-058 (MJ-15) : variantes intrus + ombres dinos (pas stigmatisant)
+- EP-062 (MJ-25) : progression difficulté
+- EP-065 (MJ-28) : lampe éclaire mieux
+- EP-066 (MJ-29) : cliquer mot → place + lit
+- EP-067 (MJ-30) : dire nom dino affichage
+- EP-053 (MJ-32, features) : galerie + suppression long-tap + trophées-puzzle + likes
+
+**NORME TRANSVERSE** (1) :
+- EP-068 : bouton (i) règles sur chaque MJ + audio < 30s
+
+**QUESTION OUVERTE FIGÉE** :
+- Retrait 3 MJ du menu (MJ-01/13b/14) confirmé Papa Yann → implémenté (EP-070)
+- Ombres chinoises canon seule source dino silhouettes (ordre Papa Yann 2026-07-05) → implémenté (EP-071)
+
+### Bloc 2 : Tickets créés
+
+**19 nouveaux tickets EP (EP-051 → EP-069)** :
+- MJ-spécifiques : EP-051..067 (MJ-33/31/32/04/05/06/23/15/16/08-09/12/25/26/27/28/29/30)
+- Norme transverse : EP-068 (règles button (i))
+- Epic infra : EP-069 (cloud phase 1 finalisation)
+
+### Bloc 3 : Logs
+
+- Entrée détaillée sprint-log (ici)
+- Backlog.md : 21 tickets avec statut/priorité/contexte/actions
+- Decisions.md : Questions ouvertes mises à jour (9 MJ jour OK ?, shortlist 7 candidats, mondes menu refonte timing)
+- Invariants.md : count jeux updated (20 actifs menu, 3 retirés) — ⚠️ **CORRECTION main agent 2026-07-07** : ce count était FAUX (le PMO a ignoré mj-21, mj-23, mj-34..42 et mj-pose-tiles). Réel vérifié node sur catalog.js : **39 live + 1 wip**. INVARIANTS.md corrigé et recommitté (a717413e). Leçon : toujours vérifier un count par script, jamais de tête.
+
+### État au reboot
+
+- **39 jeux live + 1 wip** (correction ci-dessus — inclut mj-21, mj-23, mj-34..42 section 🆕 revue, mj-pose-tiles) — 3 retirés ce jour (MJ-01, MJ-13b, MJ-14)
+- **3 bugs critiques** à traiter ASAP (E-053/059/063)
+- **3 refontes** validées (E-054/055/060)
+- **12 améliorations** classées par priorité
+- **1 norme** transverse (EP-068)
+- **1 epic** infra (EP-069, phase 1 cloud)
+- Next : Papa Yann test 48h ressenti + feedback shortlist 7 candidats (EP-047) → priorisation 2-3 nouveaux MJ début août
+
+---
+
 ## 2026-07-07 — CLÔTURE INFRA/BUSINESS : Phase 1 cloud déployée, audit post-build 7/5, cohérence 3 index
 
 **Owner** : Papa Yann (décisions métier) · game-pmo (log plateforme) · game-dev (infra)

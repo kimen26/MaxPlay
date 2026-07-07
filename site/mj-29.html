@@ -172,7 +172,7 @@
     function speak(t) { TTS.speak(t, { pitch: 1.05, priority: true }); }
 
     let qCount = 0, streak = 0;
-    let currentDino = null, slotIndex = 0, misses = 0, order = [];
+    let currentDino = null, slotIndex = 0, misses = 0, order = [], placedCount = 0;
 
     function init() {
       G.buildPips();
@@ -202,6 +202,7 @@
       qCount++;
       misses = 0;
       slotIndex = 0;
+      placedCount = 0;
 
       const { dino, nDistract } = pickDino();
       currentDino = dino;
@@ -263,6 +264,10 @@
     }
 
     // Marque data-next="1" sur la brique attendue à l'étape courante (testabilité).
+    // Le tap accepte AUSSI n'importe quelle racine du dino cible non encore posée (pas seulement
+    // celle du tour courant) — 2026-07-07 : le tap doit systématiquement lire ET placer (plus de
+    // "clic qui lit sans rien faire"). L'ordre grammatical du nom reste respecté car chaque racine
+    // se pose à SA position `order`, jamais au tour de clic.
     function updateNextFlags() {
       document.querySelectorAll('.brick').forEach(b => b.removeAttribute('data-next'));
       const targetOrder = String(slotIndex);
@@ -272,18 +277,23 @@
 
     function onBrickClick(btn, racine) {
       if (btn.classList.contains('gone') || btn.disabled) return;
-      const expected = order[slotIndex];
-      const isRightNow = racine.isTarget && racine.order === slotIndex;
 
-      if (isRightNow) {
+      if (racine.isTarget) {
+        const myOrder = racine.order;
+        const isNextInSequence = myOrder === slotIndex;
         btn.disabled = true;
-        flyToSlot(btn, slotIndex, () => {
-          fillSlot(slotIndex, expected.clean);
-          speak(expected.sens ? (expected.display.replace(/-/g, '').toUpperCase() + ' ! Ça veut dire ' + expected.sens.toUpperCase() + ' !') : expected.display);
+        flyToSlot(btn, myOrder, () => {
+          fillSlot(myOrder, racine.clean);
+          speak(racine.sens ? (racine.display.replace(/-/g, '').toUpperCase() + ' ! Ça veut dire ' + racine.sens.toUpperCase() + ' !') : racine.display);
           sndDing();
-          slotIndex++;
+          placedCount++;
+          // avance le curseur de tour tant que la case courante est déjà remplie
+          // (permet de poser les racines dans n'importe quel ordre de tap)
+          while (slotIndex < order.length && document.getElementById('slot' + slotIndex) && document.getElementById('slot' + slotIndex).classList.contains('filled')) {
+            slotIndex++;
+          }
           updateNextFlags();
-          if (slotIndex >= order.length) {
+          if (placedCount >= order.length) {
             setTimeout(completeDino, 1400);
           }
         });

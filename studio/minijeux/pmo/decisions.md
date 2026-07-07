@@ -12,9 +12,11 @@
 
 | Question | Source | Priorité | Notes |
 |----------|--------|----------|-------|
-| **9 MJ jour (34-42) + retraits validés ?** | Jour 2026-07-06 | CRITIQUE | 3 MJ nuit retravaillés (34/35/36 feedback Papa Yann) + 6 nouveaux (37-42 batch jour) + 3 retirés menu (01/14/13b). Test Papa Yann ressenti 48h ≈ 2026-07-08. Tickets : EP-044/045/046 + EP-047 shortlist |
-| **Shortlist 7 candidats — lequel prioriser ?** | Audit convergences 2026-07-06 | MOYENNE | Simon/Block Blast/Tangram dino/Mahjong/MJ-18 Expert/Shisima/Picross. Game-conseiller brainstorm post-test feedback. Priorisation TOP 2-3 pour roadmap juillet-août. EP-047 ouverte, attente retour Papa Yann ~2026-07-08 |
-| **Refonte menu en « mondes » — GO timing ?** | Sprint jour 2026-07-06 | MOYENNE | Catégories visuelles (Lettres/Chiffres/Ranger/Réparer/Couleurs/Réfléchir/Jeux du monde/Dinos) + mix images ChatGPT + SVG animés. Maquette à produire. Papa Yann validé principe, timing attente après test 7-9 MJ jour. Attente : feedback ressenti antes GO maquette |
+| **Retrait 3 MJ du menu validé (01/13b/14) ?** | Revue Papa Yann 2026-07-07 | HAUTE | MJ-01 trop facile, MJ-13b doublon, MJ-14 autre raison. DÉCISION FIGÉE 2026-07-07. Implémentation : EP-070 clôturé (catalog.js status:hidden, 20 jeux actifs). Logs : sprint-log + state.md |
+| **9 MJ jour (34-42) + retraits validés ?** | Jour 2026-07-06 | CRITIQUE | 3 MJ nuit retravaillés (34/35/36 feedback Papa Yann) + 6 nouveaux (37-42 batch jour) + 3 retirés menu (01/14/13b) confirmés. Test Papa Yann ressenti 48h ≈ 2026-07-08. Tickets : EP-044/045/046 + EP-047 shortlist. REMIS AU VOTE après test. |
+| **Shortlist 7 candidats — lequel prioriser ?** | Audit convergences 2026-07-06 | MOYENNE | Simon/Block Blast/Tangram dino/Mahjong/MJ-18 Expert/Shisima/Picross. Game-conseiller brainstorm post-test feedback. Priorisation TOP 2-3 pour roadmap juillet-août. Attente : retour Papa Yann ressenti enfant ~2026-07-08. |
+| **Refonte menu en « mondes » — GO timing ?** | Sprint jour 2026-07-06 | MOYENNE | Catégories visuelles (Lettres/Chiffres/Ranger/Réparer/Couleurs/Réfléchir/Jeux du monde/Dinos) + mix images ChatGPT + SVG animés. Maquette à produire. Papa Yann validé principe, timing attente après test 48h ressenti. Avant GO maquette : feedback si shortlist OK. |
+| **Ombres chinoises canon seule source dino silhouettes ?** | Ordre Papa Yann 2026-07-05 | HAUTE | DÉCISION FIGÉE 2026-07-05 : « les anciennes silhouettes SUPPRIME-LES ! ». Bannissement LimeZu par-famille (208 PNG supprimés, commit 234dee4b, EP-071). Ombres chinoises (`img/dinos/ombres/`) = source visuelle UNIQUE dino silhouettes. Gravé 2026-07-05, non-régression. |
 
 ---
 

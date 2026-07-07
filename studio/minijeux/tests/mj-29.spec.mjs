@@ -40,4 +40,26 @@ export async function run({ page, ok }) {
   // Fin de partie : écran de fin golden affiché (les pips ont été remplacés par la zone de badges)
   const endShown = await page.waitForSelector('.end-wrap', { timeout: 3000 }).catch(() => null);
   ok('4 dinos assemblés sans erreur → écran de fin golden affiché', !!endShown);
+
+  // ─── Régression 2026-07-07 : le tap doit lire ET placer, y compris hors-ordre ───
+  // Avant le fix, seule la brique du tour courant (data-next="1") posait quelque chose ;
+  // taper une autre racine du même dino (mais pas encore "son tour") ne faisait que buzzer.
+  // On rejoue une partie et, sur le 1er dino (2 racines, niveau 0, 0 distracteur), on clique
+  // la 2e brique cible AVANT la 1re : les deux doivent quand même se poser puis compléter le dino.
+  await page.evaluate(() => localStorage.clear());
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.waitForSelector('.brick[data-order]', { timeout: 5000 });
+  const secondBrick = page.locator('.brick[data-order="1"]');
+  await secondBrick.click();
+  await page.waitForTimeout(700);
+  const slot1FilledEarly = await page.evaluate(() => {
+    const s = document.getElementById('slot1');
+    return !!s && s.classList.contains('filled');
+  });
+  ok('tap hors-ordre (racine #2 avant #1) place quand même la brique dans sa case', slot1FilledEarly);
+  const firstBrick = page.locator('.brick[data-order="0"]');
+  await firstBrick.click();
+  await page.waitForTimeout(700);
+  const fullNameShown = await page.waitForSelector('.full-name.show', { timeout: 3000 }).catch(() => null);
+  ok('dino complété après la 2e brique (ordre de tap inversé) → nom réuni affiché', !!fullNameShown);
 }

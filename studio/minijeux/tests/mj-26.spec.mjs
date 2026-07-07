@@ -1,4 +1,7 @@
 // Pilote MJ-26 — Compte les dinos : compter les silhouettes affichées.
+// + fix Papa Yann 2026-07-07 : (1) sprites qui débordaient du cadre .play-area
+// en bas ("noir sur noir, tronqué") — check bounding box ; (2) palier 1 devait
+// varier les cibles (pas "5 fois le chiffre 1") — check les comptes sur la session.
 export async function run({ page, ok }) {
   await page.evaluate(() => localStorage.clear());
   await page.reload({ waitUntil: 'networkidle' });
@@ -20,7 +23,39 @@ export async function run({ page, ok }) {
   ok('3 choix de nombres', (await page.locator('.num-btn').count()) === 3);
   ok('1 seul bouton correct', (await page.locator('.num-btn[data-correct="1"]').count()) === 1);
 
+  // BUG Papa Yann : un dino pouvait déborder du cadre .play-area en bas (noir sur noir).
+  // Vérifie TOUS les sprites entièrement contenus dans leur cadre, à un viewport contraint.
+  await page.setViewportSize({ width: 480, height: 480 }); // viewport court : force le cas limite
+  await page.waitForTimeout(200);
+  const containment = await page.evaluate(() => {
+    const play = document.getElementById('playArea').getBoundingClientRect();
+    const imgs = [...document.querySelectorAll('.play-area img.sil')].map(im => im.getBoundingClientRect());
+    const overflow = imgs.filter(im => im.top < play.top - 1 || im.bottom > play.bottom + 1 || im.left < play.left - 1 || im.right > play.right + 1);
+    return { count: imgs.length, overflowCount: overflow.length };
+  });
+  ok('tous les sprites entièrement dans le cadre .play-area (aucun débordement)',
+     containment.overflowCount === 0, `sprites=${containment.count} débordants=${containment.overflowCount}`);
+  await page.setViewportSize({ width: 480, height: 900 }); // repasse au viewport par défaut
+
+  // Variété palier 1 : sur 4 questions, ne doit pas tirer toujours le même compte
+  // (régression signalée : "5 fois le chiffre 1"). On rejoue une partie complète et log les comptes.
+  await page.evaluate(() => localStorage.clear());
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.waitForSelector('.play-area img.sil', { timeout: 5000 });
+  const counts = [];
+  for (let q = 0; q < 4; q++) {
+    await page.waitForSelector('.play-area img.sil', { timeout: 4000 });
+    const c = await page.evaluate(() => document.querySelectorAll('.play-area img.sil').length);
+    counts.push(c);
+    await page.click('.num-btn[data-correct="1"]').catch(() => {});
+    await page.waitForTimeout(1100);
+  }
+  const distinct = new Set(counts).size;
+  ok('palier 1 varie les cibles (pas toujours le même compte sur 4 manches)', distinct >= 2, `comptes=[${counts.join(',')}]`);
+
   // Chemin gagnant
+  await page.evaluate(() => localStorage.clear());
+  await page.reload({ waitUntil: 'networkidle' });
   for (let q = 0; q < 3; q++) {
     await page.waitForSelector('.num-btn[data-correct="1"]', { timeout: 4000 });
     await page.click('.num-btn[data-correct="1"]').catch(() => {});

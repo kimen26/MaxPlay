@@ -612,6 +612,421 @@ Exemple : MJ-32 `<img src="./assets/_new-ombre/stegosaurus.png">` → run.mjs v�
 
 ---
 
+## EP-051 – MJ-33 · Noms de dinos uniquement (TTS noms uniquement, pas détail)
+
+**Statut** : `[~]` **VALIDÉ** — retour Papa Yann revue 2026-07-07
+
+**Priorité** : 🟡 **MOYENNE** — amélioration UX/audio pédago
+
+**Contexte** : Retour Papa Yann session revue mini-jeux 2026-07-07 : MJ-33 (encyclopédie dinos audio) doit dire QUE le nom du dino, pas la description complète (qui suit en texte). Comportement souhaité CONFIRMÉ : cliquer un autre dino stoppe le son en cours.
+
+**À faire** :
+1. **T-510** : Modifier `site/mj-33.html` → TTS narrateur dit le nom du dino seul (ex: « Stégosaure ») via voice-id narrateur_h
+2. **T-511** : Valider que cliquer un autre dino stoppe le son courant (confirm déjà fait)
+3. **T-512** : Spec Playwright vert (harnais 14/14)
+
+**Raison** : attention enfant mieux ciblée (nom = identité), description lue dans l'app (UI texte), TTS pour signature auditive dino uniquement.
+
+**Impact** : `site/mj-33.html` TTS logic
+
+**Attaché** : L-075 (audio multi-pistes)
+
+---
+
+## EP-052 – MJ-31 · Intro trop long + registre voix TTS
+
+**Statut** : `[~]` **VALIDÉ** — retour Papa Yann revue 2026-07-07
+
+**Priorité** : 🟡 **MOYENNE** — amélioration audio pédago
+
+**Contexte** : Retour Papa Yann : (1) texte d'intro MJ-31 trop long (raccourcir) + (2) certains TTS générés sont de mauvaise qualité (registre voix cassé). Nécessite audit audio ElevenLabs + possible re-génération.
+
+**À faire** :
+1. **T-520** : Raccourcir script intro MJ-31 (limiter à 2-3 phrases max vs 5-6 actuelles)
+2. **T-521** : Audit fichiers MP3 ElevenLabs MJ-31 (vérifier voice_id, settings, stabilité)
+3. **T-522** : Re-générer segments TTS mauvaise qualité (via `studio_audiobook_from_segments_v2_dialogue`)
+4. **T-523** : Spec Playwright vert
+
+**Raison** : pédago longue = perte attention enfant ; voix robustes = engagement.
+
+**Impact** : `site/mj-31.html`, `site/sounds/mj-31/`
+
+**Attaché** : L-079 (voix casting)
+
+---
+
+## EP-053 – MJ-32 · BUG CRITIQUE zone noire non-recolorable + features galerie/trophées
+
+**Statut** : `[!]` **BLOQUÉ** — critique production + multi-features demandées
+
+**Priorité** : 🔴 **CRITIQUE** — jeu de coloriage bloqué, Papa Yann demande features
+
+**Contexte** : Retour Papa Yann revue 2026-07-07 : MJ-32 (coloriage flood-fill) a un BUG CRITIQUE — une zone coloriée en NOIR ne peut plus être recoloriée (pixel ALPHA=0 ou équivalent invisible canvas). PLUS : Papa Yann demande 3 nouvelles features : (1) reprendre un dessin depuis galerie (copie), (2) suppression par appui long, (3) trophées-puzzle basés sur les dessins de Max (3-4 fragments au lieu d'étoiles) + système likes dessins.
+
+**À faire (URGENT)** :
+1. **T-530** : **DEBUG BUG CRITIQUE** zone noire non-recolorable (vérifier canvas alpha/pixel, flood-fill bounds)
+2. **T-531** : Ajouter galerie drawings (read/resume from saved)
+3. **T-532** : Ajouter long-tap suppression dessin
+4. **T-533** : Ajouter trophées-puzzle (3-4 fragments/dessin) au lieu d'étoiles
+5. **T-534** : Ajouter système likes (click ❤️ dessins)
+6. **T-535** : Spec Playwright vert
+
+**Risk** : sans T-530 (bug critique), jeu inutilisable. Features T-531-534 = engagement long terme (galerie historique enfant).
+
+**Impact** : `site/mj-32.html` (canvas logic refactor + UI galerie), potentiellement cloud sync (dessins sauvegardés)
+
+**Attaché** : L-066 (flags Chromium canvas), L-087 (merge multi-appareils)
+
+---
+
+## EP-054 – MJ-04 · Refonte visuelle (« pas moche »)
+
+**Statut** : `[ ]` à faire
+
+**Priorité** : 🟡 **HAUTE** — feedback esthétique direct Papa Yann
+
+**Contexte** : Retour Papa Yann revue 2026-07-07 : « qu'est-ce que c'est moche » sur MJ-04. Jeu a des assets visuels peu attirants ou composition UI maladroite. Demande refonte esthétique complète.
+
+**À faire** :
+1. **T-540** : Lire `studio/minijeux/docs/jeux/figees/mj-04.md` (mécanique figée)
+2. **T-541** : Audit visuel MJ-04 (assets, couleurs, composition) via screenshot + critique
+3. **T-542** : Proposer direction esthétique (game-conseiller brainstorm)
+4. **T-543** : Refonte UI/assets
+5. **T-544** : Spec Playwright vert
+
+**Raison** : première impression enfant = esthétique. MJ-04 moins engageant que voisins.
+
+**Impact** : `site/mj-04.html`, assets visuels (images, SVG, couleurs)
+
+**Attaché** : L-055 (design amont + figeage)
+
+---
+
+## EP-055 – MJ-05 · Refonte complète mécanique/visuelle (« très laid mais l'idée est bonne »)
+
+**Statut** : `[ ]` à faire
+
+**Priorité** : 🟡 **HAUTE** — feedback "très laid mais bonne idée" = refonte nécessaire
+
+**Contexte** : Retour Papa Yann revue 2026-07-07 : « très laid mais l'idée de soustraction est bonne » — mécanique sous-jacente OK (apprentissage soustraction), mais visuelle/expérience désastreuse. Refonte complète requis (design amont + dev).
+
+**À faire** :
+1. **T-550** : Lire figées MJ-05
+2. **T-551** : Design amont (game-conseiller) → maquette visuelle soustraction engageante
+3. **T-552** : Refonte UI/assets complets
+4. **T-553** : Spec Playwright vert
+
+**Raison** : enfant rejette jeu même si mécanique pédagogiquement bonne. Esthétique = non-négociable.
+
+**Impact** : `site/mj-05.html` refonte complète
+
+**Attaché** : L-055 (design amont obligatoire)
+
+---
+
+## EP-056 – MJ-06 · Diversifier emojis (dino, voyage)
+
+**Statut** : `[ ]` à faire
+
+**Priorité** : 🟡 **MOYENNE** — amélioration variété thématique
+
+**Contexte** : Retour Papa Yann revue 2026-07-07 : diversifier emojis MJ-06 au-delà du thème actuel. Intégrer dino + voyage (cf. passions Max).
+
+**À faire** :
+1. **T-560** : Audit emojis courants MJ-06
+2. **T-561** : Ajouter pool dino (T-Rex, Stego, Raptor, etc.) + voyage (avion, train, bus, Statue Liberté, Eiffel, etc.)
+3. **T-562** : Valider variété équilibrée (pas 90% dino)
+4. **T-563** : Spec Playwright vert
+
+**Raison** : re-motiver Max en alignant avec passions (dino, voyages).
+
+**Impact** : `site/mj-06.html` emoji pool
+
+**Attaché** : L-041 (renouvellement thématique)
+
+---
+
+## EP-057 – MJ-23 · Diversifier emojis (dino, voyage, terre, espace)
+
+**Statut** : `[ ]` à faire
+
+**Priorité** : 🟡 **MOYENNE** — amélioration variété thématique
+
+**Contexte** : Retour Papa Yann : MJ-23 idem MJ-06. Diversifier emojis (dino, voyage, terre, espace).
+
+**À faire** :
+1. **T-570** : Diversifier pool emojis (ajouter dino + voyage + terre + espace)
+2. **T-571** : Valider équilibre
+3. **T-572** : Spec Playwright vert
+
+**Impact** : `site/mj-23.html` emoji pool
+
+---
+
+## EP-058 – MJ-15 · Variantes intrus + ombres dinos colorées (pas stigmatisant)
+
+**Statut** : `[ ]` à faire
+
+**Priorité** : 🟡 **MOYENNE** — amélioration pédago/éthique
+
+**Contexte** : Retour Papa Yann revue 2026-07-07 : MJ-15 (trouver l'intrus) doit avoir variantes proches (terre/lune/soleil/tortue) + visuels intrus = ombres dinos colorées (au lieu de formes abstraites/stigmatisantes). Zero risque représentation négative.
+
+**À faire** :
+1. **T-580** : Audit intrus MJ-15 (variantes actuelles)
+2. **T-581** : Créer pool alternatives proches (terre/lune/soleil/tortue)
+3. **T-582** : Générer ombres dinos colorées (utiliser asset pool `img/dinos/ombres/`)
+4. **T-583** : Valider aucune stigmatisation visuelle (review avec game-conseiller)
+5. **T-584** : Spec Playwright vert
+
+**Raison** : challenge cognitif > punir l'enfant ; représentations positives.
+
+**Impact** : `site/mj-15.html` assets + intrus logic
+
+**Attaché** : L-070 (ombres chinoises canon)
+
+---
+
+## EP-059 – MJ-16 · Portrait responsive (« ne rentre pas en portrait »)
+
+**Statut** : `[!]` **BLOQUÉ** — UX cassée
+
+**Priorité** : 🔴 **CRITIQUE** — jeu inutilisable en portrait
+
+**Contexte** : Retour Papa Yann revue 2026-07-07 : MJ-16 ne rentre pas en portrait (utilisateurs munis de tablettes en mode portrait). Affichage cassé.
+
+**À faire** :
+1. **T-590** : Vérifier responsive CSS MJ-16
+2. **T-591** : Fix clamp/media queries pour portrait
+3. **T-592** : Test portrait + landscape
+4. **T-593** : Spec Playwright portrait vert
+
+**Raison** : utilisation réelle tableau = 50% portrait mode.
+
+**Impact** : `site/mj-16.html` responsive
+
+---
+
+## EP-060 – MJ-08 & MJ-09 · Refonte doublon → tri multi-thème (ombres dinos + emojis)
+
+**Statut** : `[ ]` à faire
+
+**Priorité** : 🟡 **HAUTE** — doublon détecté, refonte produit
+
+**Contexte** : Retour Papa Yann revue 2026-07-07 : MJ-08 et MJ-09 font la même chose (tri bus par couleur/propriété). Doublon. **Opportunité** : refonte les 2 en tri multi-thème (bazar d'emojis + ombres dinos colorées) = « c'est à faire partout » (pattern réutilisable).
+
+**À faire** :
+1. **T-600** : Audit MJ-08 vs MJ-09 (confirmé doublon mécanique)
+2. **T-601** : Design amont → tri multi-thème (emoji pool + ombres dinos)
+3. **T-602** : Refonte MJ-08 (version emoji) + MJ-09 (version dino)
+4. **T-603** : Spec Playwright vert
+
+**Raison** : économiser code, pattern réutilisable (tri thématique = fondamental pour renouvellement jeux).
+
+**Impact** : `site/mj-08.html`, `site/mj-09.html` refonte
+
+**Attaché** : L-070 (ombres dinos), L-062 (filtrage lisibilité)
+
+---
+
+## EP-061 – MJ-12 · Ajouter nouveaux sons (banque audio)
+
+**Statut** : `[ ]` à faire
+
+**Priorité** : 🟡 **MOYENNE** — amélioration audio
+
+**Contexte** : Retour Papa Yann revue 2026-07-07 : MJ-12 doit utiliser la banque de sons récemment produite (suite refonte système sonore complet, L-080).
+
+**À faire** :
+1. **T-610** : Lire `site/sounds/_BANQUE-SONS.md` (API + assets)
+2. **T-611** : Brancher nouveaux SFX/MP3 MJ-12 (via `victory-sounds.js` ou appels `SoundPool.play()`)
+3. **T-612** : Test audio sur device (Bluetooth réveil, clarity)
+4. **T-613** : Spec Playwright vert
+
+**Raison** : uniformiser audio MJ, re-utiliser banque centralisée.
+
+**Impact** : `site/mj-12.html` SFX branching
+
+**Attaché** : L-080 (banque sons), L-081 (système audio)
+
+---
+
+## EP-062 – MJ-25 · Créer progression difficulté (« zéro difficulté, but incompris »)
+
+**Statut** : `[ ]` à faire
+
+**Priorité** : 🟡 **HAUTE** — jeu trop facile
+
+**Contexte** : Retour Papa Yann revue 2026-07-07 : MJ-25 a zéro progression/challenge. But incompris pour Max. Lire figées + ajouter progression difficulté (levels, variations).
+
+**À faire** :
+1. **T-620** : Lire figées MJ-25
+2. **T-621** : Design amont → progression difficultés (easy/medium/hard ou système étoiles)
+3. **T-622** : Implémenter progression (données states, UI level select)
+4. **T-623** : Spec Playwright vert
+
+**Raison** : engagement = challenge calibré (Mihaly flow state).
+
+**Impact** : `site/mj-25.html` progression system
+
+**Attaché** : L-081 (vérifier agent outputs)
+
+---
+
+## EP-063 – MJ-26 · BUG dino hors cadre (noir sur noir) + répétition niveau 1
+
+**Statut** : `[!]` **BLOQUÉ** — BUG critique + progression cassée
+
+**Priorité** : 🔴 **CRITIQUE** — affichage incomplet + pédago répétitive
+
+**Contexte** : Retour Papa Yann revue 2026-07-07 : (1) dino sortant du cadre en bas (noir sur fond noir) semblait incomplet mais compté complet (gameplay broken) + (2) niveau 1 répétitif (5x le même niveau 1).
+
+**À faire** :
+1. **T-630** : **BUG AUDIT** dino hors cadre (vérifier canvas bounds, clip-path, sizing)
+2. **T-631** : Fix viewport/sizing dino MJ-26
+3. **T-632** : Fix niveau 1 duplication (data ou logic issue ?)
+4. **T-633** : Spec Playwright vert
+
+**Impact** : `site/mj-26.html` canvas/layout + data logic
+
+**Attaché** : L-067 (PNG silhouettes transparent), L-068 (NO_HERO sets)
+
+---
+
+## EP-064 – MJ-27 · Cliquer chaque syllabe et entendre son son (feature audio pédago)
+
+**Statut** : `[ ]` à faire
+
+**Priorité** : 🟡 **MOYENNE** — feature audio pédago (décodage phonétique)
+
+**Contexte** : Retour Papa Yann revue 2026-07-07 : MJ-27 doit permettre à Max de cliquer chaque syllabe d'un mot et entendre son son (décodage phonétique).
+
+**À faire** :
+1. **T-640** : Lire figées MJ-27 (mécanique base)
+2. **T-641** : Générer MP3 syllabe par syllabe (segments court ElevenLabs ou Pico TTS)
+3. **T-642** : Brancher click-syllabe → play son (UI onclick listener syllabe)
+4. **T-643** : Spec Playwright vert
+
+**Raison** : enfant 3.5-4 ans = lecture phonétique progressive (assembler sons → mot).
+
+**Impact** : `site/mj-27.html` syllable click + audio
+
+**Attaché** : L-058 (audio multi-voix)
+
+---
+
+## EP-065 – MJ-28 · Lampe éclaire mieux (amélioration visuelle)
+
+**Statut** : `[ ]` à faire
+
+**Priorité** : 🟡 **BASSE** — amélioration UX cosmétique
+
+**Contexte** : Retour Papa Yann revue 2026-07-07 : MJ-28 lampe (dénoter zone sombre) doit éclairer davantage (effet luminosité/glow meilleur).
+
+**À faire** :
+1. **T-650** : Améliorer effet lampe (augmenter radiant gradient radius, opacity, glow)
+2. **T-651** : Spec Playwright vert
+
+**Impact** : `site/mj-28.html` lampe CSS/canvas
+
+---
+
+## EP-066 – MJ-29 · Cliquer mot → place + lit (amélioration interaction)
+
+**Statut** : `[ ]` à faire
+
+**Priorité** : 🟡 **MOYENNE** — amélioration UX/pédago
+
+**Contexte** : Retour Papa Yann revue 2026-07-07 : MJ-29 (placer mots) — actuellement cliquer le mot bas le lit MAIS ne le place pas. Demande : tap devrait aussi placer (pas juste drag).
+
+**À faire** :
+1. **T-660** : Audit MJ-29 interaction (drag vs tap)
+2. **T-661** : Ajouter tap-to-place logic (click mot → find empty slot + place)
+3. **T-662** : Valider voix/placement cohérent (TTS dit en même temps)
+4. **T-663** : Spec Playwright vert
+
+**Raison** : enfant petit = tap + drag tous deux importants (mobilité).
+
+**Impact** : `site/mj-29.html` interaction logic
+
+---
+
+## EP-067 – MJ-30 · Dire nom dino à affichage ou image alternative
+
+**Statut** : `[ ]` à faire
+
+**Priorité** : 🟡 **MOYENNE** — amélioration audio pédago
+
+**Contexte** : Retour Papa Yann revue 2026-07-07 : MJ-30 (range dinos par taille). Affichage dino — doit dire le nom du dino (audio noms existants côté dino) OU présenter visuellement autrement (si pas audio).
+
+**À faire** :
+1. **T-670** : Vérifier noms dinos MP3 dans `site/sounds/dinos/` (dinos-audio-manifest.js)
+2. **T-671** : Brancher playDinoNom() au click dino MJ-30 (voice narrateur h)
+3. **T-672** : Fallback visuel si pas audio (affichage nom texte ou emblème dino)
+4. **T-673** : Spec Playwright vert
+
+**Raison** : identité auditive dino (réutiliser production audio existante).
+
+**Impact** : `site/mj-30.html` audio branching
+
+**Attaché** : L-071 (manifest auto-généré assets)
+
+---
+
+## EP-068 – NORME : Bouton (i) règles sur chaque MJ + explication audio
+
+**Statut** : `[ ]` à faire
+
+**Priorité** : 🟠 **HAUTE** — template/norme transverse
+
+**Contexte** : Retour Papa Yann revue 2026-07-07 item 18 (transverse) : chaque MJ doit avoir bouton (i) affichant les règles du jeu + explication audio courte (< 30s, voix narratrice f ou narrateur h).
+
+**À faire** :
+1. **T-680** : Créer composant `.rules-button` (HTML/CSS réutilisable)
+2. **T-681** : Gabarit markdown règles par jeu (`studio/minijeux/docs/jeux/rules/mj-XX.md`)
+3. **T-682** : Générer MP3 règles (ElevenLabs eleven_v3, narratrice f)
+4. **T-683** : Intégrer à tous les MJ actifs (21 fichiers)
+5. **T-684** : Spec Playwright vert
+
+**Raison** : accessibilité (Max peut relire règles), aucune confusion "quoi faire" + renforcement pédago audio.
+
+**Impact** : gabarit HTML, 21 MJ updated, `site/sounds/rules/` (21 MP3), template `docs/jeux/rules/`
+
+**Attaché** : L-051 (gabarit header)
+
+---
+
+## EP-069 – EPIC : Système comptes/profils + cloud sync (architecte + Supabase)
+
+**Statut** : `[~]` **PHASE 1 LÉGÈRE DÉPLOYÉE** — audit post-build 5/7 fixes avant prod
+
+**Priorité** : 🔴 **BLOQUANTE** — préalable monétisation + multi-device
+
+**Contexte** : Session infra 2026-07-07 (audit complet). Phase 1 light : Supabase + cloud.js + OTP validés unit tests. **Attente** : test e2e réel Papa Yann + recette complete (appareil A → login → jouer → sync → appareil B → récup profil → progress intact).
+
+**Livrables Phase 1** :
+- ✅ Compte parent (email) + profil enfant pseudonyme (RGPD/COPPA safe)
+- ✅ OTP code 6 chiffres (fallback magic link iOS PWA)
+- ✅ Cloud.js (sync local ↔ Supabase)
+- ✅ Merge multi-appareils (union histories, pas winner-take-all)
+
+**À faire (Phase 1 finalisation)** :
+1. **T-690** : E2E test recette complète (Papa Yann 2-3 appareils, 2-3 parties)
+2. **T-691** : Audit Supabase (table users, game_histories, no corruption)
+3. **T-692** : Valider avant usage enfants réels
+
+**À faire (Phase 2, post-Papa Yann validation)** :
+4. **T-693** : Codes cadeaux (usage unique, lié acheteur)
+5. **T-694** : Voix premium unlock (via code cadeau + server entitlements JAMAIS en client flag)
+6. **T-695** : Analytics anonymisé RGPD (zéro tracking enfant, parent opt-in)
+
+**Blocage** : sans T-690/691, pas de production enfants réels.
+
+**Impact** : `site/js/cloud.js`, infra Supabase, auth flow, game_histories storage
+
+**Attaché** : L-086 (magic link iOS OTP), L-087 (merge multi-appareils)
+
+---
+
 ## EP-051 – Migrer 6 pages en TTS.speak (callback centralisé)
 
 **Statut** : `[ ]` à faire

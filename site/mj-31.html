@@ -268,14 +268,24 @@
       ], { duration:450, easing:'ease-out' });
     }
 
-    // Vraie date TOUJOURS dite. + pépite pédagogique T-Rex/Stégosaure si la paire concernée sort.
+    // Époque en VOIX RÉELLE (audio/dinos/periodes/<periode>.mp3 — assets existants, branchés 2026-07-07).
+    // Figée 🔒 respectée : la période est toujours REDITE ; TTS = fallback si MP3 KO.
+    // Vraie date TOUJOURS dite (TTS court après le MP3). + pépite T-Rex/Stégosaure si concerné.
+    const PERIODE_MP3 = { trias:'trias', jurassique:'jurassique', cretace:'cretace', cenozoique:'cenozoique', permien:'pangee' };
     function speakEpoquePhrase(d){
-      let phrase = d.name + '. ' + d.epoque + '.';
       const nemesis = { tyrannosaurus:'stegosaurus', stegosaurus:'tyrannosaurus' };
+      const datePart = (d.epoque.split('·')[1] || '').trim();
+      let suiteTxt = datePart ? datePart + '.' : '';
       if (nemesis[d.id]) {
-        phrase += ' Tu sais quoi ? Le T-Rex n\'a JAMAIS rencontré le Stégosaure : 85 millions d\'années les séparent !';
+        suiteTxt += ' Tu sais quoi ? Le T-Rex n\'a JAMAIS rencontré le Stégosaure : 85 millions d\'années les séparent !';
       }
-      speak(phrase);
+      const file = PERIODE_MP3[d.periode];
+      if (file) {
+        playEl('audio/dinos/periodes/' + file + '.mp3', d.name + '. ' + d.epoque + '.',
+               () => { if (suiteTxt) speak(suiteTxt); });
+      } else {
+        speak(d.name + '. ' + d.epoque + '.');
+      }
     }
 
     // ─── Finale météorite : 4 tableaux en VOIX RÉELLE (spécial Extinction canon, Narrateur H + Wex) ───

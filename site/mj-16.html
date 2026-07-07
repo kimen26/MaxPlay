@@ -47,41 +47,43 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 
 /* ── Zone principale ── */
 #main {
-  flex:1; display:flex; flex-direction:column; align-items:center;
-  justify-content:space-evenly; padding:10px 8px 6px; overflow:hidden;
-  gap:6px;
+  flex:1; min-height:0; display:flex; flex-direction:column; align-items:center;
+  justify-content:space-evenly; padding:clamp(4px,1.5vmin,10px) 8px 6px;
+  overflow-y:auto; overflow-x:hidden;
+  gap:clamp(3px,1vmin,6px);
 }
 
 /* ── Question ── */
 #q-label {
-  font-size:1.15rem; font-weight:900; text-align:center;
+  font-size:clamp(0.85rem,3vmin,1.15rem); font-weight:900; text-align:center;
   background:rgba(255,255,255,0.09); border-radius:18px;
-  padding:10px 22px; flex-shrink:0; line-height:1.3;
+  padding:clamp(5px,1.5vmin,10px) clamp(10px,3vmin,22px); flex-shrink:0; line-height:1.3;
   border:2px solid rgba(255,255,255,0.1);
 }
 
 /* ── Hint ── */
 #hint-label {
-  font-size:0.82rem; font-weight:700; opacity:0.6;
-  text-align:center; flex-shrink:0; padding:0 12px; min-height:18px;
+  font-size:clamp(0.68rem,2vmin,0.82rem); font-weight:700; opacity:0.6;
+  text-align:center; flex-shrink:0; padding:0 12px; min-height:16px;
   color:#ffe066;
 }
 
 /* ── Ligne de la suite (4 cases) ── */
 #sequence-row {
   flex-shrink:0; display:flex; align-items:flex-end;
-  justify-content:center; gap:8px; width:100%; padding:0 4px;
+  justify-content:center; gap:clamp(3px,1.2vmin,8px); width:100%; padding:0 4px;
+  flex-wrap:nowrap; max-width:100%;
 }
 
 .seq-cell {
   display:flex; flex-direction:column; align-items:center; gap:4px;
   background:rgba(255,255,255,0.06);
   border:2px solid rgba(255,255,255,0.14);
-  border-radius:16px;
-  padding:8px 6px 6px;
-  flex-shrink:0;
+  border-radius:clamp(10px,2.5vmin,16px);
+  padding:clamp(4px,1.2vmin,8px) clamp(3px,1vmin,6px) clamp(3px,1vmin,6px);
+  flex-shrink:1; min-width:0;
   transition:border-color 0.25s, background 0.25s;
-  min-height:80px;
+  min-height:clamp(56px,14vmin,80px);
   justify-content:flex-end;
 }
 
@@ -101,7 +103,7 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 }
 
 .mystery-mark {
-  font-size:2.4rem; font-weight:900; color:#ffe066;
+  font-size:clamp(1.5rem,6vmin,2.4rem); font-weight:900; color:#ffe066;
   line-height:1; padding-bottom:4px;
 }
 
@@ -124,19 +126,19 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 
 /* ── Séparateur flèche ── */
 .seq-arrow {
-  font-size:1.3rem; opacity:0.35; flex-shrink:0; align-self:center;
+  font-size:clamp(0.9rem,3.5vmin,1.3rem); opacity:0.35; flex-shrink:0; align-self:center;
   padding-bottom:8px;
 }
 
 /* ── Label "Choisis la bonne réponse" ── */
 #choices-label {
-  font-size:0.88rem; font-weight:900; opacity:0.65;
+  font-size:clamp(0.72rem,2.2vmin,0.88rem); font-weight:900; opacity:0.65;
   text-align:center; flex-shrink:0;
 }
 
 /* ── Zone choix ── */
 #choices {
-  flex-shrink:0; display:flex; gap:10px; justify-content:center;
+  flex-shrink:0; display:flex; gap:clamp(6px,2vmin,10px); justify-content:center;
   width:100%; padding:0 4px; flex-wrap:wrap;
 }
 
@@ -144,11 +146,11 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   background:rgba(255,255,255,0.07);
   border:3px solid rgba(255,255,255,0.18);
   border-radius:18px;
-  padding:10px 8px 8px;
+  padding:clamp(6px,1.5vmin,10px) clamp(5px,1.2vmin,8px) clamp(5px,1.2vmin,8px);
   cursor:pointer;
   display:flex; flex-direction:column; align-items:center; gap:6px;
   transition:transform 0.12s, border-color 0.15s, background 0.15s;
-  min-width:88px; min-height:80px; flex-shrink:0;
+  min-width:80px; min-height:80px; flex-shrink:1;
 }
 .choice-btn:active { transform:scale(0.92); }
 .choice-btn:hover  { border-color:rgba(255,255,255,0.4); background:rgba(255,255,255,0.13); }
@@ -337,20 +339,35 @@ function randBool() {
 }
 
 // ── Calcul de la taille de bus adaptée à l'écran ────────────────────────────
-// Les 4 cases sont en ligne horizontale. On vise une taille raisonnable.
+// Les 4 cases sont en ligne horizontale. On vise une taille raisonnable,
+// bornée par la LARGEUR (cases côte à côte) ET la HAUTEUR dispo (paysage bas).
+function heightBudgetBusHeight() {
+  // Budget vertical restant pour #main une fois header+level-bar+labels retirés
+  // (estimation prudente : ~150px de chrome fixe autour de #main en paysage court).
+  const h = window.innerHeight;
+  const chrome = 150;
+  const available = Math.max(90, h - chrome);
+  // #main contient : sequence-row + choices, ~2 rangées de bus (ratio bus l/h = 2)
+  return Math.floor(available / 2.4);
+}
+
 function calcSeqBusWidth(cellCount) {
   const n = cellCount || 4; // nombre total de cellules (starters + case mystère)
   const w = Math.min(window.innerWidth, 760);
   // n cellules + (n-1) flèches (~26px) + paddings/gaps par cellule (~22px)
   const available = w - 16 - (n - 1) * 26 - n * 22;
-  return Math.min(120, Math.max(52, Math.floor(available / n)));
+  const byWidth  = Math.floor(available / n);
+  const byHeight = heightBudgetBusHeight() * 2; // bus ratio l/h ≈ 2
+  return Math.min(120, Math.max(44, Math.min(byWidth, byHeight)));
 }
 
 function calcChoiceBusWidth() {
   const w = Math.min(window.innerWidth, 760);
   // 3 boutons, gap 10px, padding
   const available = w - 2 * 10 - 3 * 16 - 4 * 8;
-  return Math.min(140, Math.max(80, Math.floor(available / 3)));
+  const byWidth  = Math.floor(available / 3);
+  const byHeight = heightBudgetBusHeight() * 2;
+  return Math.min(140, Math.max(64, Math.min(byWidth, byHeight)));
 }
 
 // ── Génération des puzzles ───────────────────────────────────────────────────

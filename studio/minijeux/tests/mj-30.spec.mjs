@@ -3,6 +3,17 @@ export async function run({ page, ok }) {
   await page.evaluate(() => localStorage.clear());
   await page.reload({ waitUntil: 'networkidle' });
 
+  // Espionne window.Audio : capture play()/pause() sans charger de vrai MP3 (offline-safe).
+  await page.evaluate(() => {
+    window.__audioLog = [];
+    class FakeAudio {
+      constructor(src) { this.src = src; this.paused = true; this.currentTime = 0; this.onended = null; }
+      play() { this.paused = false; window.__audioLog.push({ src: this.src, action: 'play' }); return Promise.resolve(); }
+      pause() { this.paused = true; window.__audioLog.push({ src: this.src, action: 'pause' }); }
+    }
+    window.Audio = FakeAudio;
+  });
+
   ok('DINO_POOL chargé', await page.evaluate(() => typeof DINO_POOL !== 'undefined' && DINO_POOL.length >= 40));
   ok('Niveau 1 = 4 billes (standard golden : 4/6/8 selon etoiles)', (await page.locator('.pip').count()) === 4);
   ok('1re bille marquée courante', (await page.locator('.pip.cur').count()) === 1);
@@ -39,6 +50,19 @@ export async function run({ page, ok }) {
       await page.click(`.shadow-tile[data-id="${order[i]}"]`);
       await page.click(`.slot[data-index="${i}"]`);
       await page.waitForTimeout(80);
+    }
+
+    if (q === 0) {
+      // ── Audio (manche 1) : chaque placement annonce le nom du dino, et un 2e placement
+      // stoppe le son du 1er (Papa Yann : "on ne voit pas bien qui c'est").
+      const log = await page.evaluate(() => window.__audioLog);
+      const plays = log.filter(e => e.action === 'play' && /-nom\.mp3$/.test(e.src));
+      ok('chaque placement joue un MP3 "-nom.mp3" (au moins 3, un par dino placé)',
+         plays.length >= order.length, JSON.stringify(log));
+      ok('un 2e placement STOPPE le son du 1er avant de jouer le nouveau (pause() appelé)',
+         log.some(e => e.action === 'pause'), JSON.stringify(log));
+      const seq = log.map(e => e.action).join(',');
+      ok('séquence attendue play→pause→play (stop-avant-jouer)', /play.*pause.*play/.test(seq), seq);
     }
 
     ok(`manche ${q + 1} : validation activée une fois tout placé`, !(await page.isDisabled('#validateBtn')));

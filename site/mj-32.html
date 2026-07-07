@@ -111,6 +111,32 @@
       position:absolute; top:16px; right:16px; background:rgba(255,255,255,0.15); color:#fff;
       border:none; border-radius:50%; width:56px; height:56px; font-size:1.6rem; font-weight:900; cursor:pointer;
     }
+    #bigView .resumeBtn {
+      position:absolute; bottom:20px; left:50%; transform:translateX(-50%);
+      background:linear-gradient(135deg,#43a047,#66bb6a); color:#fff; border:none;
+      border-radius:22px; padding:14px 24px; font-size:1.05rem; font-weight:900;
+      box-shadow:0 4px 12px #0005; cursor:pointer; min-height:56px; font-family:inherit;
+    }
+    #bigView .resumeBtn:active { transform:translateX(-50%) scale(.94); }
+
+    /* ── Modal confirmation suppression ── */
+    #confirmModal {
+      position:fixed; inset:0; background:rgba(0,0,0,0.7); z-index:60;
+      display:flex; align-items:center; justify-content:center; padding:20px;
+    }
+    #confirmModal .box {
+      background:#2d1f3d; border-radius:20px; padding:24px; max-width:320px; width:100%;
+      text-align:center; box-shadow:0 8px 30px #000a; border:2px solid rgba(255,255,255,0.1);
+    }
+    #confirmModal .msg { font-size:1.1rem; font-weight:900; margin-bottom:18px; }
+    #confirmModal .row { display:flex; gap:12px; justify-content:center; }
+    #confirmModal button {
+      flex:1; min-height:56px; border:none; border-radius:16px; font-size:1rem;
+      font-weight:900; cursor:pointer; font-family:inherit; box-shadow:0 3px 8px #0005;
+    }
+    #confirmModal .yes { background:linear-gradient(135deg,#e53935,#ef5350); color:#fff; }
+    #confirmModal .no { background:linear-gradient(135deg,#43a047,#66bb6a); color:#fff; }
+    #confirmModal button:active { transform:scale(.94); }
   </style>
 </head>
 <body>
@@ -155,6 +181,17 @@
   <div id="bigView" class="hidden">
     <button class="closeBig" id="closeBig">✕</button>
     <img id="bigImg" alt="">
+    <button class="resumeBtn" id="resumeBtn">🖍️ Reprendre en copie</button>
+  </div>
+
+  <div id="confirmModal" class="hidden">
+    <div class="box">
+      <div class="msg">Supprimer ce dessin ?</div>
+      <div class="row">
+        <button class="no" id="confirmNo">Non</button>
+        <button class="yes" id="confirmYes">Oui</button>
+      </div>
+    </div>
   </div>
 
   <script src="js/dinos-data.js"></script>
@@ -192,6 +229,11 @@
     let selectedColor = PALETTE[0].hex;
     let canvas, ctx;
     let filling = false;
+    // Masque des contours figé (lineart original, jamais modifié après chargement).
+    // Sert UNIQUEMENT à détecter "est-ce un trait de contour ?" — indépendant des
+    // couleurs déjà posées par l'enfant (sinon une zone noircie redevient un "mur"
+    // infranchissable pour le flood fill : bug "tête noire impossible à recolorier").
+    let lineartData = null; // Uint8ClampedArray (RGBA) figée après chargement image
 
     // ═══════════════ ÉCRAN CHOIX ═══════════════
     function buildGrid() {
@@ -209,20 +251,25 @@
       });
     }
 
-    function openAtelier(dino) {
+    function openAtelier(dino, resumeSrc) {
       currentDino = dino;
       document.getElementById('screenChoice').classList.add('hidden');
       document.getElementById('screenGallery').classList.add('hidden');
       document.getElementById('screenAtelier').classList.remove('hidden');
       document.getElementById('modelImg').src = MODEL_DIR + dino.png;
-      loadLineart(dino);
+      loadLineart(dino, resumeSrc);
     }
 
     // ═══════════════ ATELIER : canvas + flood fill ═══════════════
-    function loadLineart(dino) {
+    // resumeSrc (optionnel) : dataURL d'une œuvre déjà coloriée depuis la galerie
+    // ("Reprendre en copie") — sert de point de départ visuel, mais le masque de
+    // contours (lineartData) reste TOUJOURS celui du lineart vierge du dino : sinon
+    // une zone déjà noircie dans l'œuvre reprise redeviendrait un mur infranchissable
+    // (même bug racine que le flood fill, cf. isContour()).
+    function loadLineart(dino, resumeSrc) {
       canvas = document.getElementById('paintCanvas');
       ctx = canvas.getContext('2d', { willReadFrequently: true });
-      const src = COLORIAGE_DIR + baseName(dino.png) + '_coloriage.webp';
+      const lineSrc = COLORIAGE_DIR + baseName(dino.png) + '_coloriage.webp';
       const img = new Image();
       img.onload = () => {
         // Redimensionne le canvas interne pour garder les proportions, plafonné ~800px
@@ -236,14 +283,23 @@
         ctx.fillStyle = '#ffffff';
         ctx.fillRect(0, 0, w, h);
         ctx.drawImage(img, 0, 0, w, h);
+        // Fige le masque de contours AVANT tout coloriage (source de vérité immuable)
+        lineartData = ctx.getImageData(0, 0, w, h).data.slice();
+
+        if (resumeSrc) {
+          const resumeImg = new Image();
+          resumeImg.onload = () => { ctx.drawImage(resumeImg, 0, 0, w, h); };
+          resumeImg.src = resumeSrc;
+        }
       };
       img.onerror = () => {
         // Robustesse : fond blanc simple si l'image manque
         canvas.width = 800; canvas.height = 600;
         ctx.fillStyle = '#ffffff';
         ctx.fillRect(0, 0, 800, 600);
+        lineartData = ctx.getImageData(0, 0, 800, 600).data.slice();
       };
-      img.src = src;
+      img.src = lineSrc;
     }
 
     function hexToRgb(hex) {
@@ -251,7 +307,16 @@
       return [parseInt(c.slice(0,2),16), parseInt(c.slice(2,4),16), parseInt(c.slice(4,6),16)];
     }
 
-    // Flood fill scanline sur ImageData — tolérance luminance, ne franchit pas les lignes sombres
+    // Flood fill scanline sur ImageData — la détection de "contour" se base TOUJOURS
+    // sur le masque lineart figé (lineartData), jamais sur les couleurs déjà posées.
+    // Ça permet de recolorier une zone à l'infini, y compris si elle a été remplie en
+    // noir : le noir posé par l'enfant n'est plus confondu avec le trait de contour.
+    function isContour(li) {
+      const r = lineartData[li], g = lineartData[li+1], b = lineartData[li+2];
+      const lum = 0.299*r + 0.587*g + 0.114*b;
+      return lum < 60;
+    }
+
     function floodFill(startX, startY, fillHex) {
       const w = canvas.width, h = canvas.height;
       const imgData = ctx.getImageData(0, 0, w, h);
@@ -259,12 +324,11 @@
       const idx = (x, y) => (y * w + x) * 4;
 
       const si = idx(startX, startY);
+
+      // Si on tape sur un trait de contour du dessin original, on ignore le tap
+      if (isContour(si)) return false;
+
       const startR = data[si], startG = data[si+1], startB = data[si+2];
-      const startLum = 0.299*startR + 0.587*startG + 0.114*startB;
-
-      // Si on tape sur une ligne sombre (contour), on ignore le tap
-      if (startLum < 60) return false;
-
       const [fr, fg, fb] = hexToRgb(fillHex);
       // Si déjà (quasi) la couleur cible, rien à faire
       if (Math.abs(startR-fr) < 6 && Math.abs(startG-fg) < 6 && Math.abs(startB-fb) < 6) return false;
@@ -307,9 +371,8 @@
     }
 
     function canFill(data, pi, r0, g0, b0, tol) {
+      if (isContour(pi)) return false; // jamais franchir un trait du dessin original
       const r = data[pi], g = data[pi+1], b = data[pi+2];
-      const lum = 0.299*r + 0.587*g + 0.114*b;
-      if (lum < 60) return false; // jamais franchir une ligne sombre
       return Math.abs(r-r0) <= tol && Math.abs(g-g0) <= tol && Math.abs(b-b0) <= tol;
     }
 
@@ -375,7 +438,7 @@
       out.getContext('2d').drawImage(canvas, 0, 0, outW, outH);
       const dataUrl = out.toDataURL('image/jpeg', 0.72);
 
-      saveToGallery({ name: currentDino.name, img: dataUrl, date: Date.now() });
+      saveToGallery({ id: 'p' + Date.now() + Math.random().toString(36).slice(2,7), name: currentDino.name, png: currentDino.png, img: dataUrl, date: Date.now() });
 
       if (typeof playEndSound === 'function') playEndSound(1, 1);
       if (window.TTS && TTS.supported()) {
@@ -394,6 +457,10 @@
       let list = loadGallery();
       list.push(piece);
       if (list.length > GALLERY_MAX) list = list.slice(list.length - GALLERY_MAX);
+      persistGallery(list);
+    }
+
+    function persistGallery(list) {
       try {
         localStorage.setItem(GALLERY_KEY, JSON.stringify(list));
       } catch (e) {
@@ -408,6 +475,11 @@
       }
     }
 
+    function deleteFromGallery(id) {
+      const list = loadGallery().filter(p => p.id !== id);
+      persistGallery(list);
+    }
+
     // ═══════════════ Galerie ═══════════════
     function openGallery() {
       document.getElementById('screenChoice').classList.add('hidden');
@@ -415,6 +487,9 @@
       document.getElementById('screenGallery').classList.remove('hidden');
       renderGallery();
     }
+
+    const LONG_PRESS_MS = 600;
+    let pendingDeleteId = null;
 
     function renderGallery() {
       const list = loadGallery();
@@ -430,18 +505,63 @@
         const card = document.createElement('div');
         card.className = 'thumb-card';
         card.innerHTML = '<img class="piece" src="' + piece.img + '" alt=""><div class="tname">' + piece.name + '</div>';
-        card.onclick = () => showBig(piece.img);
+
+        let pressTimer = null;
+        let longPressed = false;
+        const startPress = () => {
+          longPressed = false;
+          pressTimer = setTimeout(() => { longPressed = true; askDelete(piece.id); }, LONG_PRESS_MS);
+        };
+        const cancelPress = () => { clearTimeout(pressTimer); };
+        card.addEventListener('pointerdown', startPress);
+        card.addEventListener('pointerup', cancelPress);
+        card.addEventListener('pointerleave', cancelPress);
+        card.addEventListener('pointercancel', cancelPress);
+        card.onclick = () => { if (!longPressed) showBig(piece); };
+
         grid.appendChild(card);
       });
     }
 
-    function showBig(src) {
-      document.getElementById('bigImg').src = src;
+    function showBig(piece) {
+      document.getElementById('bigImg').src = piece.img;
+      document.getElementById('bigView').dataset.pieceId = piece.id;
       document.getElementById('bigView').classList.remove('hidden');
     }
 
     function closeBig() {
       document.getElementById('bigView').classList.add('hidden');
+    }
+
+    // "Reprendre en copie" : recharge l'œuvre comme point de départ d'un NOUVEAU
+    // coloriage. L'original en galerie n'est jamais modifié ni supprimé.
+    function resumePiece() {
+      const id = document.getElementById('bigView').dataset.pieceId;
+      const piece = loadGallery().find(p => p.id === id);
+      // piece.png absent = ancienne œuvre sauvegardée avant ce champ (migration) → pas de reprise possible
+      if (!piece || !piece.png) return;
+      closeBig();
+      const dino = (typeof DINOS !== 'undefined' ? DINOS : []).find(d => d.png === piece.png) || { name: piece.name, png: piece.png };
+      document.getElementById('screenChoice').classList.add('hidden');
+      document.getElementById('screenGallery').classList.add('hidden');
+      document.getElementById('screenAtelier').classList.remove('hidden');
+      currentDino = dino;
+      document.getElementById('modelImg').src = MODEL_DIR + dino.png;
+      loadLineart(dino, piece.img);
+    }
+
+    function askDelete(id) {
+      pendingDeleteId = id;
+      document.getElementById('confirmModal').classList.remove('hidden');
+    }
+
+    function confirmDelete(doDelete) {
+      document.getElementById('confirmModal').classList.add('hidden');
+      if (doDelete && pendingDeleteId) {
+        deleteFromGallery(pendingDeleteId);
+        renderGallery();
+      }
+      pendingDeleteId = null;
     }
 
     // ═══════════════ Init ═══════════════
@@ -471,6 +591,9 @@
       });
       document.getElementById('closeBig').onclick = closeBig;
       document.getElementById('bigView').onclick = (e) => { if (e.target.id === 'bigView') closeBig(); };
+      document.getElementById('resumeBtn').onclick = resumePiece;
+      document.getElementById('confirmYes').onclick = () => confirmDelete(true);
+      document.getElementById('confirmNo').onclick = () => confirmDelete(false);
 
       canvas = document.getElementById('paintCanvas');
       canvas.addEventListener('pointerdown', handleTap);

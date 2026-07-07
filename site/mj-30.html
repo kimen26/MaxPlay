@@ -123,6 +123,7 @@
   <script src="js/stars.js"></script>
   <script src="js/qcm-retry.js"></script>
   <script src="js/mj-golden.js"></script>
+  <script src="js/dinos-audio-manifest.js"></script>
   <script>
     // ─── MJ-30 — Range-les par taille (échelle honnête) ───
     // Pool complet 60 dinos (tous ont une ombre dans img/dinos/ombres/).
@@ -200,10 +201,19 @@
     let selected = null;   // id sélectionné (mode tap-puis-case)
     let placements = {};   // slotIndex -> dino.id
     let dragState = null;
+    let currentDinoAudio = null; // réf unique : stoppe le son en cours avant d'en jouer un nouveau
 
     function shuffle(a){ a=[...a]; for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
     function speak(t){ TTS.speak(t,{pitch:1.05,priority:true}); }
     function fr(n){ return (Math.round(n*10)/10).toString().replace('.', ' virgule '); }
+
+    // Joue le nom du dino (voix réelle, fallback TTS), en stoppant le son en cours.
+    function playDinoNomExclusive(id, fallbackName, opts) {
+      if (currentDinoAudio) {
+        try { currentDinoAudio.pause(); currentDinoAudio.currentTime = 0; } catch (e) { /* noop */ }
+      }
+      currentDinoAudio = playDinoNom(id, fallbackName, opts);
+    }
 
     // ── Tirage d'un set respectant un ratio minimal entre voisins triés ──
     function pickSet(n, minRatio, measure){
@@ -325,11 +335,13 @@
       const tile = document.querySelector('.shadow-tile[data-id="'+id+'"]');
       if (tile) { tile.classList.add('placed'); tile.classList.remove('selected','dragging'); }
       const slot = document.querySelector('.slot[data-index="'+i+'"]');
+      const d = curSet.find(x => x.id === id);
       if (slot){
-        const d = curSet.find(x => x.id === id);
         slot.classList.add('filled');
         slot.innerHTML = '<span class="idx">' + (i+1) + '</span><img src="' + shadowSrc(d) + '" alt="">';
       }
+      // Annonce le nom du dino placé (Papa Yann : "on ne voit pas bien qui c'est")
+      if (d) playDinoNomExclusive(d.id, d.name);
       updateValidateBtn();
     }
 

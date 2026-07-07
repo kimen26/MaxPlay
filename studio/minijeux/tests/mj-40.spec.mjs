@@ -53,4 +53,13 @@ export async function run({ page, ok }) {
   // ── Zones tap : pièces du plateau assez grosses ─────────────────────
   const box = await page.locator('#tray-svg .piece').first().boundingBox();
   ok('Pièce du plateau visible et saisissable', !!box && box.width > 20 && box.height > 10);
+
+  // ─── EP-068 : bouton règles (i) — composant partagé RegleInfo ───
+  ok('Bouton règles ❓ présent dans le header', await page.locator('#btn-regle').count() === 1);
+  await page.click('#btn-regle');
+  ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);
+  const regleTexte = (await page.locator('.ri-text').textContent() || '').trim();
+  ok('Texte de règle correspond', regleTexte === 'Place les 7 pièces sur la silhouette ! Tape une pièce pour la tourner.', regleTexte);
+  await page.click('#ri-overlay');
+  ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
 }

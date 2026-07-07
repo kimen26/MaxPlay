@@ -131,15 +131,26 @@
     // JAMAIS deux voix en meme temps : parler (TTS) coupe le MP3, jouer un MP3 coupe le TTS.
     let elAudio = null;
     function stopEl(){ if (elAudio){ elAudio.pause(); elAudio = null; } }
-    function speak(t){ stopEl(); TTS.speak(t,{pitch:1.02,priority:true}); }
+    // speak() prend desormais un onEnd optionnel : indispensable pour enchainer sur la VRAIE fin
+    // du TTS (au lieu d'un setTimeout a duree fixe qui coupe la phrase en cours — bug EP audio 2026-07-08).
+    // Filet de securite ~12s : speechSynthesis.onend ne se declenche pas toujours (bug navigateur connu).
+    function speak(t, onEnd){
+      stopEl();
+      let done = false;
+      const finish = () => { if (done) return; done = true; if (onEnd) onEnd(); };
+      const safety = onEnd ? setTimeout(finish, 12000) : null;
+      TTS.speak(t, { pitch:1.02, priority:true, onEnd: () => { if (safety) clearTimeout(safety); finish(); } });
+    }
+    // onended n'est appele qu'une seule fois, a la VRAIE fin du son joue (MP3 ou fallback TTS),
+    // jamais sur un delai fixe devine — sinon la piste suivante coupe la phrase en cours (bug audio EP 2026-07-08).
     function playEl(src, fallbackText, onended){
       stopEl();
       TTS.cancel();
       // manifest genere : evite un 404 console pour les dinos sans MP3 (fallback TTS direct)
       const m = src.match(/audio\/dinos\/(.+)-nom\.mp3$/);
       if (m && window.DINO_NOM_AUDIO && !window.DINO_NOM_AUDIO.has(m[1])) {
-        if (fallbackText) speak(fallbackText);
-        if (onended) setTimeout(onended, 6000);
+        if (fallbackText) speak(fallbackText, onended);
+        else if (onended) onended();
         return;
       }
       const a = new Audio(src);
@@ -148,8 +159,8 @@
       let fbDone = false;
       const fb = () => {
         if (fbDone) return; fbDone = true;
-        if (fallbackText) speak(fallbackText);
-        if (onended) setTimeout(onended, 6000);
+        if (fallbackText) speak(fallbackText, onended);
+        else if (onended) onended();
       };
       a.onerror = fb;
       a.play().catch(fb);
@@ -202,6 +213,10 @@
       if (qCount >= MAX_Q) return startMeteorFinale();
       qcm = QcmRetry.create();
       qCount++;
+      // data-qcount : marqueur non-visuel pour le harnais de test (synchronisation fiable sur le
+      // demarrage REEL d'une nouvelle question, contrairement aux billes .pip qui se colorent
+      // synchrone a la reponse, AVANT la fin de l'annonce d'epoque — cf. goToNextAfterAnnounce).
+      document.getElementById('app').dataset.qcount = qCount;
 
       targetDino = pickTarget();
 
@@ -217,6 +232,17 @@
       });
     }
 
+    // Enchaine sur la VRAIE fin de l'annonce d'epoque (onComplete), jamais un setTimeout a duree fixe :
+    // sinon nextQuestion() coupe l'annonce en cours (playEl -> stopEl) — bug audio corrige 2026-07-08.
+    // Petite respiration apres la fin + filet de securite si onComplete ne vient jamais (~12s deja gere
+    // dans speak(), on rajoute une marge ici pour couvrir la chaine MP3+TTS entiere).
+    function goToNextAfterAnnounce(){
+      let fired = false;
+      const go = () => { if (fired) return; fired = true; setTimeout(nextQuestion, 600); };
+      const safety = setTimeout(go, 12000);
+      speakEpoquePhrase(targetDino, () => { clearTimeout(safety); go(); });
+    }
+
     function answer(periode, btn){
       if (qcm.locked) return;
       const correct = periode === targetDino.periode;
@@ -226,19 +252,15 @@
         btn.classList.add('ok');
         sndDing(); G.notePip(qCount-1, res.attempts);
         landDinoOnBand(targetDino, btn);
-        setTimeout(() => {
-          speakEpoquePhrase(targetDino);
-        }, 300);
-        setTimeout(nextQuestion, 3200);
+        setTimeout(goToNextAfterAnnounce, 300);
       } else if (res.outcome === 'reveal'){
         btn.classList.add('ko');
         revealCorrectBand();
         sndBuzz(); G.notePip(qCount-1, 4);
         setTimeout(() => {
           landDinoOnBand(targetDino, document.querySelector('.band[data-correct="1"]'));
-          speakEpoquePhrase(targetDino);
+          goToNextAfterAnnounce();
         }, 300);
-        setTimeout(nextQuestion, 3400);
       } else {
         btn.classList.add('ko');
         sndBuzz();
@@ -272,7 +294,9 @@
     // Figée 🔒 respectée : la période est toujours REDITE ; TTS = fallback si MP3 KO.
     // Vraie date TOUJOURS dite (TTS court après le MP3). + pépite T-Rex/Stégosaure si concerné.
     const PERIODE_MP3 = { trias:'trias', jurassique:'jurassique', cretace:'cretace', cenozoique:'cenozoique', permien:'pangee' };
-    function speakEpoquePhrase(d){
+    // onComplete n'arrive qu'une fois TOUT dit (MP3 periode -> TTS date -> TTS pepite T-Rex/Stego eventuelle).
+    // C'est la fin reelle qui pilote la suite du jeu, jamais un timer fixe (figee mj-31 : periode TOUJOURS redite en entier).
+    function speakEpoquePhrase(d, onComplete){
       const nemesis = { tyrannosaurus:'stegosaurus', stegosaurus:'tyrannosaurus' };
       const datePart = (d.epoque.split('·')[1] || '').trim();
       let suiteTxt = datePart ? datePart + '.' : '';
@@ -282,9 +306,11 @@
       const file = PERIODE_MP3[d.periode];
       if (file) {
         playEl('audio/dinos/periodes/' + file + '.mp3', d.name + '. ' + d.epoque + '.',
-               () => { if (suiteTxt) speak(suiteTxt); });
+               () => { if (suiteTxt) speak(suiteTxt, onComplete); else if (onComplete) onComplete(); });
       } else {
-        speak(d.name + '. ' + d.epoque + '.');
+        speak(d.name + '. ' + d.epoque + '.', () => {
+          if (suiteTxt) speak(suiteTxt, onComplete); else if (onComplete) onComplete();
+        });
       }
     }
 

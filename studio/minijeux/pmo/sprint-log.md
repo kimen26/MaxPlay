@@ -9,6 +9,63 @@
 
 ---
 
+## 2026-07-08 — ÉTUDE ARCHI COMPTES + DÉCISIONS MÉTIER Papa Yann
+
+**Owner** : Papa Yann (décisions produit) · game-pmo (log + intégration)
+
+**Trigger** : Papa Yann a validé l'étude d'architecture comptes/profils (main agent 2026-07-08) et émis 11 décisions figées portant sur le modèle freemium, avatar, trophées-puzzle, UI règles, et pattern audio+emoji séquencé.
+
+**Fait (session game-pmo 2026-07-08)** :
+
+### Bloc 1 : Décisions figées (Papa Yann 2026-07-08)
+
+**11 décisions capitales** :
+
+1. **Comptes & monétisation** : PAS de tier family/payant pour l'instant — compte unique anonyme + cache basique. Codes cadeau type `TRITRI` pour tester uniquement. Monétisation reportée.
+
+2. **Dessins coloriage** : JSON zones→couleurs (pas JPEG/PNG). Reproductible, stockage quasi-gratuit. Ouvre mode impression (grand format ± couleurs pré-chargées = produit dérivé futur).
+
+3. **Parcours "Qui joue ?"** : complet reporté. Priorité mini-jeux d'abord.
+
+4. **Zone accès compte** : visible dans 3 index (index.html footer, dev-dinos.html lien discret, suivi.html OK). Temporaire, implémenté ce jour (commit tbc).
+
+5. **Status catalog.js** : jeux activables/désactivables facilement via champ `status` (live/wip, prévoir 'off'). Déjà supporté.
+
+6. **AVATARS CHIBI** : NEW ticket EP-xxx. Générer top 10 dinos × 3 humeurs (joyeux, énervé, original) = 30 chibis via pipeline images ChatGPT (Dinosaure XXL project).
+
+7. **Likes privés** : confirmés. JAMAIS de social inter-enfants.
+
+8. **Trophées-puzzle** : cadrés V1 — avatar OU dessin liké fragmenté N morceaux, fragment gagné comme étoile *(ou 3★=1 fragment)*, recompose image, variante gold. Peut remplacer/surcoucher étoiles. Prototype après refonte menu.
+
+9. **Bouton règles ❓** : implémentation lancée ce jour. Composant regle-info.js partagé + 9 nouveaux MJ d'abord.
+
+10. **Mystère MJ-31 "texte long" élucidé** : c'était l'AUDIO (annonces ~2 min chevauchées). Fix chevauchements en cours — enchaîner sur fin réelle audio, plus de setTimeout fixes.
+
+11. **LEÇON pattern audio+emoji séquencé** : (demande Papa Yann 2026-07-08 "note pour plus tard") — « lire audio + afficher emojis synchronisés = super intéressant, attention synchro, laisser audios se finir » — pattern validé mj-31 finale météorite. Audios qui se chevauchent → TOUJOURS enchaîner sur event fin audio, JAMAIS setTimeout fixe.
+
+### Bloc 2 : Tickets nouveaux créés
+
+- **EP-072** : Avatars chibi × 10 dinos × 3 humeurs (30 images) — générées ChatGPT Dinosaure XXL
+- **EP-073** : Composant bouton règles (i) — regle-info.js partagé, 9 nouveaux MJ
+- **(Audit)** : fix audio MJ-31 chevauchements (déjà assigné, pas nouveau ticket)
+
+### Bloc 3 : Logs
+
+- Entrée détaillée sprint-log (ici)
+- Decisions.md : 11 décisions figées + leçon L-088 audio pattern gravée
+- Backlog.md : EP-072 + EP-073 ajoutés + L-088 ajoutée
+- INVARIANTS.md : aucun changement chiffre clé (40 jeux live inchangé)
+
+### État au reboot
+
+- **Architecture comptes** : FIGÉE (compte unique anonyme, codes cadeau test, monétisation déférée)
+- **Avatar + trophées** : tickets créés + priorité après refonte menu
+- **Audio pattern** : leçon gravée pour futurs MJ
+- **Bouton règles** : implémentation lancée ce jour
+- Next : Papa Yann 48h test (feedback court), feedback shortlist 7 candidats (EP-047) → priorisation juillet-août
+
+---
+
 ## 2026-07-07 — REVUE MINI-JEUX Papa Yann : 18 retours horodatés → 21 tickets EP-051..069 créés
 
 **Owner** : Papa Yann (retours utilisateur) · game-pmo (classification + log)

@@ -12,11 +12,74 @@
 
 | Question | Source | Priorité | Notes |
 |----------|--------|----------|-------|
+| **Avatar chibi top 10 dinos × 3 humeurs priorité ?** | Décision Papa Yann 2026-07-08 | MOYENNE | EP-072 créé. Générer via ChatGPT Dinosaure XXL (joyeux, énervé, original). À intégrer système profil + unlock. Attendre feedback shortlist candidats (EP-047). |
+| **Trophées-puzzle v1 timing & conception ?** | Décision Papa Yann 2026-07-08 | MOYENNE | Avatar OU dessin liké fragmenté N morceaux, recompose image, gold variant. Prototype APRÈS refonte menu « La ligne de Max ». Brainstorm game-conseiller post-test 48h. |
 | **Retrait 3 MJ du menu validé (01/13b/14) ?** | Revue Papa Yann 2026-07-07 | HAUTE | MJ-01 trop facile, MJ-13b doublon, MJ-14 autre raison. DÉCISION FIGÉE 2026-07-07. Implémentation : EP-070 clôturé (catalog.js status:hidden, 20 jeux actifs). Logs : sprint-log + state.md |
 | **9 MJ jour (34-42) + retraits validés ?** | Jour 2026-07-06 | CRITIQUE | 3 MJ nuit retravaillés (34/35/36 feedback Papa Yann) + 6 nouveaux (37-42 batch jour) + 3 retirés menu (01/14/13b) confirmés. Test Papa Yann ressenti 48h ≈ 2026-07-08. Tickets : EP-044/045/046 + EP-047 shortlist. REMIS AU VOTE après test. |
 | **Shortlist 7 candidats — lequel prioriser ?** | Audit convergences 2026-07-06 | MOYENNE | Simon/Block Blast/Tangram dino/Mahjong/MJ-18 Expert/Shisima/Picross. Game-conseiller brainstorm post-test feedback. Priorisation TOP 2-3 pour roadmap juillet-août. Attente : retour Papa Yann ressenti enfant ~2026-07-08. |
 | **Refonte menu en « mondes » — GO timing ?** | Sprint jour 2026-07-06 | MOYENNE | Catégories visuelles (Lettres/Chiffres/Ranger/Réparer/Couleurs/Réfléchir/Jeux du monde/Dinos) + mix images ChatGPT + SVG animés. Maquette à produire. Papa Yann validé principe, timing attente après test 48h ressenti. Avant GO maquette : feedback si shortlist OK. |
 | **Ombres chinoises canon seule source dino silhouettes ?** | Ordre Papa Yann 2026-07-05 | HAUTE | DÉCISION FIGÉE 2026-07-05 : « les anciennes silhouettes SUPPRIME-LES ! ». Bannissement LimeZu par-famille (208 PNG supprimés, commit 234dee4b, EP-071). Ombres chinoises (`img/dinos/ombres/`) = source visuelle UNIQUE dino silhouettes. Gravé 2026-07-05, non-régression. |
+
+---
+
+## 2026-07-08 — Étude archi comptes + 11 décisions métier Papa Yann
+
+**Contexte** : Papa Yann a validé l'étude d'architecture comptes/profils (main agent 2026-07-08) et émis 11 décisions figées.
+
+**Décisions figées** :
+
+1. **Comptes & monétisation** :
+   - Compte unique anonyme (email parent) + profil enfant pseudonyme (zéro donnée perso)
+   - Pas de tier family/payant pour l'instant — cache basique suffit
+   - Codes cadeaux (type `TRITRI`) uniquement pour test mécanisme
+   - Monétisation complète reportée Phase 2
+
+2. **Dessins coloriage** :
+   - Stockage JSON zones→couleurs (pas JPEG/PNG)
+   - Reproductible, quasi-gratuit, ouvre mode impression futur (grand format ± couleurs)
+
+3. **Parcours "Qui joue ?"** :
+   - Complet reporté — mini-jeux prioritaires d'abord
+
+4. **Zone accès compte** :
+   - Visible dans 3 index : `index.html` footer, `dev-dinos.html` lien discret, `suivi.html` OK
+   - Temporaire, implémenté ce jour
+
+5. **Jeux activables/désactivables** :
+   - Via champ `status` catalog.js (live/wip/off) — déjà supporté
+
+6. **Avatars chibi** (NEW) :
+   - Générer top 10 dinos × 3 humeurs (joyeux, énervé, original) = 30 images
+   - Via pipeline ChatGPT Dinosaure XXL project
+   - EP-072 créé
+
+7. **Likes privés** :
+   - JAMAIS de social inter-enfants — confirmé
+
+8. **Trophées-puzzle v1** :
+   - Avatar OU dessin liké fragmenté N morceaux
+   - Fragment = 1 étoile (ou 3★ = 1 fragment)
+   - Recompose image, variante gold possible
+   - Peut remplacer/surcoucher étoiles au menu
+   - Prototype après refonte menu
+
+9. **Bouton règles ❓** (NEW) :
+   - Composant regle-info.js partagé (Opus)
+   - Implémentation lancée ce jour
+   - Déployer sur 9 nouveaux MJ d'abord
+
+10. **Mystère MJ-31 "texte long" → AUDIO chevauchements** :
+    - Élucidé : annonces TTS ~2 min se chevauchent
+    - Fix : enchaîner sur event de fin audio RÉELLE, jamais setTimeout fixe
+    - Assigné, en cours
+
+11. **LEÇON : Pattern audio+emoji séquencé** (Papa Yann demande "note pour plus tard") :
+    - « Lire audio + afficher emojis synchronisés = super intéressant »
+    - Validé sur mj-31 finale météorite
+    - Attention à la synchro, laisser audios se finir avant prochain événement
+    - Gravé L-088 dans backlog.md
+
+**État** : ✅ 11 décisions FIGÉES 2026-07-08 (implémentation mixed déjà commencée, suite 48h feedback ressenti).
 
 ---
 

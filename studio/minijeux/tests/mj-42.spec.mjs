@@ -13,6 +13,16 @@ export async function run({ page, ok }) {
   ok('Tour initiale = Max', s0.turn === 'max');
   ok('Pas de gameOver au départ', s0.gameOver === false);
 
+  // ─── EP-068 : bouton règles (i) — composant partagé RegleInfo ───
+  // Testé avant toute victoire : #overlay plein écran bloquerait le clic après.
+  ok('Bouton règles ❓ présent dans le header', await page.locator('#btn-regle').count() === 1);
+  await page.click('#btn-regle');
+  ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);
+  const regleTexteEarly = (await page.locator('.ri-text').textContent() || '').trim();
+  ok('Texte de règle correspond', regleTexteEarly === "Aligne tes 3 pions en passant par le point d'eau !", regleTexteEarly);
+  await page.click('#ri-overlay');
+  ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
+
   // ── Chemin gagnant scripté ──────────────────────────────────────────
   // Départ : max=[0,2,4] ai=[1,3,5]. Ligne gagnante visée : [0, centre(8), 4]
   // Max a déjà 0 et 4 alignés avec le centre → il suffit de faire venir un

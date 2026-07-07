@@ -1,6 +1,17 @@
 # ARCHI-COMPTES-PROFILS.md — Comptes enfants, galerie de dessins persistée, quotas free/payant
 
-> **Statut** : étude d'architecture (architect, 2026-07-07). Aucun code produit. **À valider par Papa Yann.**
+> **Statut** : étude validée AVEC AMENDEMENTS par Papa Yann le 2026-07-08 (voir § Décisions ci-dessous).
+
+## ⭐ DÉCISIONS PAPA YANN (2026-07-08) — amendements à l'étude
+
+1. **Pas de tier family/payant pour l'instant** : compte unique + cache basique. Monétisation = plus tard ; en attendant un simple **mode code cadeau/activation type TRITRI juste pour tester** le mécanisme.
+2. **Dessins stockés en JSON, pas en JPEG** : le coloriage = zones + couleurs → on sauvegarde `{dino, zones: {id: couleur}}` (quelques centaines d'octets, reproductible sur le lineart). Conséquences : quotas quasi gratuits, et ouvre le **mode impression** (régénérer le dessin en grand, avec couleurs = souvenir, sans couleurs = à re-colorier sur papier — produit dérivé "pour pas cher"). Avatar/profil : JSON aussi.
+3. **Parcours "Qui joue ?" complet = PLUS TARD** ("compliqué alors que nos mini-jeux ne sont pas intéressants") — priorité au fun des jeux d'abord.
+4. **Zone compte visible dans les 3 index** (index.html, dev-dinos.html, suivi.html) pour que Papa Yann accède à compte.html/Supabase — temporaire, on virera après. ✅ fait 2026-07-08.
+5. **Mode full pour tous les jeux** pour l'instant, mais pouvoir activer/désactiver un jeu facilement → le champ `status` de catalog.js fait déjà ça ('live'/'wip' ; ajouter 'off' si besoin).
+6. **Avatars chibi = liste finie générée** : **top 10 des dinos × 3 humeurs (joyeux, énervé, original) = 30 chibis** — à générer via le pipeline images ChatGPT (pas de Lottie externe). L'enfant choisit dans la liste.
+7. **Likes privés confirmés** (jamais de social inter-enfants).
+8. **Trophées-puzzle — cadrage Papa Yann** (à affiner, plusieurs variantes évoquées) : l'avatar (ou un dessin liké) est **fragmenté en N morceaux** ; chaque fragment se gagne comme une étoile (ou : 3 étoiles = 1 fragment offert) et recompose l'image ; variante "passage en gold". Le nombre de fragments est libre. **Ça pourrait remplacer ou surcoucher les étoiles.** → à prototyper après la refonte menu.
 > **Constat central** : ~60 % de l'infra demandée EXISTE DÉJÀ et est en production. Cette feature est un **incrément**, pas un chantier from-scratch.
 
 ## 0. État des lieux réel (ne pas réinventer)

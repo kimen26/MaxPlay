@@ -40,6 +40,16 @@ export async function run({ page, ok }) {
     null, { timeout: 5000 }).then(() => true).catch(() => false);
   ok('Jeu débloqué (busy=false) après séquence de montée', unlocked);
 
+  // ─── EP-068 : bouton règles (i) — composant partagé RegleInfo ───
+  // Testé avant l'écran Bravo (overlay plein écran bloquerait le clic après victoire).
+  ok('Bouton règles ❓ présent dans le header', await page.locator('#btn-regle').count() === 1);
+  await page.click('#btn-regle');
+  ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);
+  const regleTexteEarly = (await page.locator('.ri-text').textContent() || '').trim();
+  ok('Texte de règle correspond', regleTexteEarly === 'Tape le bus de la même couleur que les passagers !', regleTexteEarly);
+  await page.click('#ri-overlay');
+  ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
+
   // ── Rejoue jusqu'à vider le palier 1 (★) pour valider la victoire ─
   let safety = 0;
   while (safety < 40) {

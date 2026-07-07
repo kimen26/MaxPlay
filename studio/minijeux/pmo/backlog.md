@@ -132,6 +132,9 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 ### L-083 – Double handler pointerdown = 90° au lieu de 45° (deux sources événement)
 **MJ-40 Tangram (2026-07-06)** : pièce puzzle tournait 90° à chaque tap au lieu de 45°. Root cause : `attachDrag()` ET `addEventListener('pointerdown')` branchaient toutes deux, + rotation stockée dans 2 variables (état diverge). Fix : une seule source événement (garder `attachDrag`, virer listener dupliqué). **Leçon** : pour tout objet draggable + rotable, assurer une SEULE branche maîtresse d'événement (architecture claire, pas de listener fantôme). Validation : grep pointerdown + pointerup dans code = max 1 bloc handler.
 
+### L-088 – Pattern audio+emoji séquencé = enchaîner sur fin audio réelle, JAMAIS setTimeout fixe
+**MJ-31 finale météorite (2026-07-08)** : Papa Yann feedback "lire audio + afficher emojis synchronisés = super intéressant, attention synchro, laisser audios se finir". Découverte : mystère "texte long" MJ-31 élucidé = annonces TTS ~2 min qui se chevauchaient. Fix : **toujours enchaîner sur event 'ended' du HTMLAudioElement**, JAMAIS sur `setTimeout()` fixe. **Leçon** : pattern audio+emoji (découverte positive) = lire MP3/TTS → afficher emojis dynamiquement → attendre fin audio réelle avant suivant. Applicable à narration audio, autres finales, contes audio. Architecture : `audio.addEventListener('ended', showNextEmoji)` centralisé, fallback pour audio qui broute (non-standard delay 100ms vérif).
+
 ### L-084 – Gabarit rule mini-jeux.md référence fichier inexistant (css/common.css au lieu de style.css)
 **Gabarit MJ (2026-07-06)** : rule `.claude/rules/mini-jeux.md` § Gabarit cite `css/common.css` (jamais existé). Convention réelle = `site/css/style.css`. Fix proposé : mettre à jour rule, MAIS correction refusée en mode AUTO (hook ne peut pas auto-modifier rule). **À faire** : Papa Yann édite rule MANUELLEMENT ou session interactive avec game-archiviste. **Leçon** : after créer rule path-scoped, tester IMMÉDIATEMENT qu'elle point des fichiers existants (sinon faux négatif des futurs MJ → bad habit).
 
@@ -147,6 +150,54 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 ---
 
 ## Épics
+
+---
+
+## EP-073 – Composant bouton règles (i) regle-info.js
+
+**Statut** : `[~]` **EN COURS** — implémentation lancée 2026-07-08
+
+**Priorité** : 🟡 **MOYENNE** — norme transverse tous MJ
+
+**Contexte** : Papa Yann décision 2026-07-08 — chaque MJ doit avoir bouton règles ❓ (règles du jeu < 30s). Composant partagé regle-info.js pour mutualiser logique + style.
+
+**À faire** :
+1. **T-730** : Écrire regle-info.js (composant réutilisable modal/overlay)
+2. **T-731** : Écrire 9 briefs règles pour nouveaux MJ (EP-044..052, mj-34..42)
+3. **T-732** : Intégrer regle-info.js dans 9 MJ + tester audio narré règles < 30s
+4. **T-733** : Roll out progressif autres MJ (mj-04..33, 16 MJ retroactive)
+
+**Attaché** : Décision Papa Yann 2026-07-08 § Bouton règles
+
+**Impact** :
+- `site/js/regle-info.js` : composant nouveau
+- `site/mj-34.html` → `site/mj-42.html` : incluent regle-info.js
+- Futurs MJ : pattern obligatoire (checklist game-mj-reviewer)
+
+---
+
+## EP-072 – Avatars chibi dinos × 3 humeurs (30 images)
+
+**Statut** : `[ ]` à faire
+
+**Priorité** : 🟡 **MOYENNE** — système profil personnalisation
+
+**Contexte** : Papa Yann décision 2026-07-08 — générer top 10 dinos × 3 humeurs (joyeux, énervé, original) = 30 chibis via pipeline ChatGPT Dinosaure XXL project. À utiliser système avatar/profil (EP-074 itération suivante).
+
+**À faire** :
+1. **T-720** : Identifier top 10 dinos (fréquence/récognition Max)
+2. **T-721** : Générer chibis chatgpt (3 humeurs × 10 dinos via ChatGPT Dinosaure XXL project)
+3. **T-722** : Exporter PNG 200×200 32-bit transparent, uniformiser style
+4. **T-723** : Intégrer site/img/avatars/chibi-{dino}-{mood}.png
+
+**Attaché** : Décision Papa Yann 2026-07-08 § Avatars chibi
+
+**Impact** :
+- `site/img/avatars/` : 30 PNG nouveaux
+- `site/js/profile.js` : sélecteur avatar chibi
+- Système trophées-puzzle (EP-074) : utilise ces avatars
+
+**Notes** : Trophées-puzzle v1 (EP-074) timeline APRÈS refonte menu « La ligne de Max ». Brainstorm game-conseiller post-test 48h (feedback shortlist EP-047).
 
 ---
 

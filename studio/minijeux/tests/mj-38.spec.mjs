@@ -20,6 +20,16 @@ export async function run({ page, ok }) {
   const lvlLabel = (await page.locator('#lvl-label').textContent() || '').trim();
   ok('Niveau 1 affiché au départ', lvlLabel.includes('1'), lvlLabel);
 
+  // ─── EP-068 : bouton règles (i) — composant partagé RegleInfo ───
+  // Testé avant la victoire : #win-overlay plein écran bloquerait le clic après.
+  ok('Bouton règles ❓ présent dans le header', await page.locator('#btn-regle').count() === 1);
+  await page.click('#btn-regle');
+  ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);
+  const regleTexteEarly = (await page.locator('.ri-text').textContent() || '').trim();
+  ok('Texte de règle correspond', regleTexteEarly === 'Saute par-dessus les pions dodo pour les faire disparaître !', regleTexteEarly);
+  await page.click('#ri-overlay');
+  ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
+
   // Saut 1 : tap Max (3,3) → tap case atterrissage (3,1)
   await page.click('#cell-3-3 .piece.max');
   await page.click('#cell-3-1');

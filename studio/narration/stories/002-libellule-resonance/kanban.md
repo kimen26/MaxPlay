@@ -65,6 +65,37 @@
 
 > *Notes libres du owner courant. Si 🔴 BLOQUÉ, expliquer ici.*
 
+### 2026-07-08 — PMO : 3 décisions figées + UX lecture
+
+**Session PMO narration 2026-07-08** : enregistrement des 3 décisions Papa Yann :
+1. **DOCTRINE-INSTRUMENT-LECTURE** : lecture annotée devient l'instrument PRINCIPAL (verdict Papa Yann après vagues 4-5 : « clairement le plus intéressant, même sur fragments »). Prochaines vagues chargent lecture.html par défaut.
+2. **CHIPS-V3** : 11 positif + 10 négatif en 3 lignes thématiques (co-construites session). Format lignesthématiques (tableau de tableaux) déployé site/lecture-data.js.
+3. **FIX-UX-LECTURE** : panneau 55vh · paddingBottom calc(55vh+20px) · scrollIntoView block 'nearest'. Passage tapé reste visible 20px au-dessus du panneau.
+
+**Fichiers** : `site/lecture.html` + `pmo/sprint-log.md` + `pmo/decisions.md` + `equipe/lecons-vivantes.md` + `gout/memoire-papa-yann.md` (trace chips v3). Commit a1dae0a3 (2026-07-08).
+
+**État après session** : STORY-002 étape 6 reste ⏳ EN ATTENTE (SLA 2026-07-07 atteint). Outils de captage goût consolidés. Attente validation Papa Yann sur sélection v2 (6-selection.md).
+
+---
+
+### 2026-07-07 — DUEL VAGUE 5 INGÉRÉ : 13 segments + finales (papa Yann en duel A/B)
+
+**Résultats bruts** : duel Papa Yann sur 13 paires de segments (Claude opus-reco / sonnet-def / haiku-reco / deepseek-reco) + 2 finales (deepseek-reco vs kimi-k26-instant). Scoring : **opus 3 wins · sonnet 2 · haiku 2 · deepseek 2** (égalité, pas de dominante). **5 segments non tranchés** (refusés "confus" ou trop long) → signal structurel PROCESS, pas erreur écriture.
+
+**Signaux clés** :
+1. Pas de source unique fragmentaire — les 4 modèles excellents chacun sur 1-3 segments
+2. 5 refus sur défaut "confus" (les 7/8 perdants avec défaut) = tueur n°1 mémoire de goût confirmé
+3. **Finale : 2 histoires entières rejetées** (deepseek-reco + kimi-k26-instant) — alligne REX 2026-07-04 "trop long / dialogue-final / trop longueur"
+4. Papa Yann ne tranché pas vers un writer unique v5
+
+**Implication étape 6** : base opus-def + greffe deepseek reste **valide** (opus-def gagne plusieurs duels, surtout fin ; deepseek-reco gagne l'ouverture fluidité). Vague 5 en standby pour arbitrage futur (micro-briefs v3 post-rewrite ?) ou intégration rewrite si base défaillante.
+
+**Traçabilité** : duel ingéré dans `gout/palmares-writers.md` § Duel vague 5 + JSON `gout-duel-vague5-2026-07-07.json` (complet, 13 paires + scores).
+
+**Prochaine action** : validation auteur étape 6 (SLA 2026-07-07 atteint). Directeur décide : (a) base opus-def + rewrite directeur (risque dilution) OU (b) attendre arbitrage duel vague 5 avant rewrite OU (c) greffe intégrale deepseek-reco + vérification fluidité.
+
+---
+
 ### 2026-07-04 — Étape 6 v2 TRANCHÉE (re-panel vague 5 × goût auteur)
 
 **Sélection produite** : `6-selection.md` v2. **Base = `claude-opus-def`** (rang panel 3.5, 8 top-3, 0 fond-3 — consensus max) **+ greffe d'ouverture PRIORITAIRE**.

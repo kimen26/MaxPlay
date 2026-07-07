@@ -63,6 +63,19 @@
     .stars.maxed .trophy { font-size:0.55rem; font-weight:900; color:#fff; background:linear-gradient(135deg,#ffb300,#ff7043);
                            padding:2px 6px; border-radius:9px; margin-left:3px; letter-spacing:0.3px; }
 
+    /* bulle commentaire de revue (section 🆕) */
+    .cmt {
+      position:absolute; top:5px; right:7px; z-index:2;
+      font-size:1.05rem; line-height:1; padding:6px 7px; border-radius:10px;
+      background:rgba(0,0,0,0.10);
+    }
+    .cmt.has { background:rgba(76,175,80,0.25); }
+    .copy-cmts {
+      margin-left:10px; padding:6px 12px; border:none; border-radius:12px;
+      font-family:inherit; font-weight:900; font-size:0.72rem; cursor:pointer;
+      background:rgba(255,255,255,0.9); color:#5a4a00;
+    }
+
     /* carte verrouillée */
     .card.locked { filter:grayscale(0.9); opacity:0.6; box-shadow:0 4px 10px rgba(0,0,0,0.12); }
     .card.locked::after { content:'🔒'; position:absolute; top:7px; right:9px; font-size:1rem; filter:none; }
@@ -138,6 +151,22 @@
     </div>
   </div>
 
+  <!-- Modale commentaire de revue (section 🆕) -->
+  <div class="modal" id="cmt-modal" aria-hidden="true">
+    <div class="modal-box">
+      <div class="m-emoji">💬</div>
+      <h3 id="cmt-title">Ton avis sur ce jeu</h3>
+      <p>Note tout : ressenti de Max, bugs, idées…</p>
+      <textarea id="cmt-input" rows="4" placeholder="Écris ton avis ici…"
+        style="width:100%; padding:12px; font-size:1rem; font-family:inherit; border:3px solid #d5d5e5;
+               border-radius:14px; color:#333; outline:none; resize:vertical;"></textarea>
+      <div class="modal-actions">
+        <button class="btn-cancel" id="cmt-cancel">Annuler</button>
+        <button class="btn-go" id="cmt-save">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+
   <div class="toast" id="toast" role="status"></div>
 
   <script src="js/catalog.js"></script>
@@ -156,9 +185,19 @@
 
     // Couleur d'accent par catégorie (cover des vignettes)
     const CATCOLORS = {
-      compter:'#5b8fff', couleurs:'#ff7043', lire:'#26c6da', logique:'#ab47bc',
+      nouveaux:'#ffd54f', compter:'#5b8fff', couleurs:'#ff7043', lire:'#26c6da', logique:'#ab47bc',
       bricoler:'#8d6e63', observer:'#ec407a', monde:'#26a69a', libre:'#ffa726', dinos:'#66bb6a',
     };
+
+    // ── Commentaires de revue (section 🆕) — stockés en local, copiables ──
+    const CMT_KEY = 'maxplay_review_comments';
+    function cmtAll() { try { return JSON.parse(localStorage.getItem(CMT_KEY)) || {}; } catch (e) { return {}; } }
+    function cmtGet(id) { return cmtAll()[id] || ''; }
+    function cmtSet(id, txt) {
+      const all = cmtAll();
+      if (txt && txt.trim()) all[id] = txt.trim(); else delete all[id];
+      localStorage.setItem(CMT_KEY, JSON.stringify(all));
+    }
 
     // ── Rendu ────────────────────────────────────────────────────────────
     function starsHtml(id) {
@@ -177,16 +216,23 @@
       const c = CATCOLORS[e.category] || '#8a8a9a';
       const lockTxt = reason === 'code' ? '🔑 Code' : '⭐ À gagner';
       const foot = unlocked ? starsHtml(e.id) : `<span class="lock">${lockTxt}</span>`;
+      const cmt = e.category === 'nouveaux'
+        ? `<span class="cmt ${cmtGet(e.id) ? 'has' : ''}" data-cmt="${e.id}" title="Ton avis">${cmtGet(e.id) ? '💬✓' : '💬'}</span>`
+        : '';
       return `<button class="card ${unlocked ? '' : 'locked'}" data-id="${e.id}" data-url="${e.url}" data-reason="${reason || ''}">
+        ${cmt}
         <span class="cover" style="background:linear-gradient(160deg,${c}2e,${c}12)">${e.emoji}</span>
         <span class="title">${e.titre}</span>
         ${foot}
       </button>`;
     }
 
-    function sectionHtml(title, items) {
+    function sectionHtml(title, items, catId) {
       if (!items.length) return '';
-      return `<h2 class="section">${title}<span class="count">${items.length}</span></h2>
+      const copyBtn = catId === 'nouveaux'
+        ? `<button class="copy-cmts" id="copy-cmts">📋 Copier mes avis</button>`
+        : '';
+      return `<h2 class="section">${title}<span class="count">${items.length}</span>${copyBtn}</h2>
               <div class="row">${items.map(cardHtml).join('')}</div>`;
     }
 
@@ -194,7 +240,7 @@
       const cats = window.MAXPLAY_CATEGORIES || [];
       board.innerHTML = cats.map(c => {
         const items = CAT.filter(e => e.category === c.id);
-        return sectionHtml(`${c.emoji} ${c.label}`, items);
+        return sectionHtml(`${c.emoji} ${c.label}`, items, c.id);
       }).join('');
     }
 
@@ -205,6 +251,22 @@
     }
 
     board.addEventListener('click', (ev) => {
+      // Bouton "copier mes avis" (section 🆕)
+      if (ev.target.closest('#copy-cmts')) {
+        const all = cmtAll();
+        const lines = CAT.filter(e => e.category === 'nouveaux')
+          .map(e => `${e.id} ${e.titre} : ${all[e.id] || '(pas encore d\'avis)'}`);
+        const txt = 'REVUE NOUVEAUX JEUX — ' + new Date().toISOString().slice(0, 10) + '\n' + lines.join('\n');
+        (navigator.clipboard && navigator.clipboard.writeText
+          ? navigator.clipboard.writeText(txt).then(() => showToast('Avis copiés ! Colle-les à Claude 📋'))
+          : Promise.reject()
+        ).catch(() => { window.prompt('Copie ce texte :', txt); });
+        return;
+      }
+      // Bulle commentaire sur une carte 🆕
+      const cmtEl = ev.target.closest('.cmt');
+      if (cmtEl) { openCmtModal(cmtEl.dataset.cmt); return; }
+
       const card = ev.target.closest('.card'); if (!card) return;
       const id = card.dataset.id, url = card.dataset.url;
       if (Unlock.isUnlocked(id)) { location.href = url; return; }
@@ -222,6 +284,29 @@
       else { msg.textContent = 'Code pas bon — redemande à un grand 🙂';
              const box = modal.querySelector('.modal-box'); box.classList.remove('shake'); void box.offsetWidth; box.classList.add('shake'); }
     }
+
+    // ── Modale commentaire de revue ───────────────────────────────────────
+    const cmtModal = document.getElementById('cmt-modal');
+    const cmtInput = document.getElementById('cmt-input');
+    const cmtTitle = document.getElementById('cmt-title');
+    let cmtCurrentId = null;
+
+    function openCmtModal(id) {
+      cmtCurrentId = id;
+      const e = CAT.find(x => x.id === id);
+      cmtTitle.textContent = `${e ? e.emoji + ' ' + e.titre : id} — ton avis`;
+      cmtInput.value = cmtGet(id);
+      cmtModal.classList.add('show');
+      setTimeout(() => cmtInput.focus(), 50);
+    }
+    function closeCmtModal() { cmtModal.classList.remove('show'); cmtCurrentId = null; }
+
+    document.getElementById('cmt-save').addEventListener('click', () => {
+      if (cmtCurrentId) { cmtSet(cmtCurrentId, cmtInput.value); showToast('Avis enregistré ✓'); }
+      closeCmtModal(); render();
+    });
+    document.getElementById('cmt-cancel').addEventListener('click', closeCmtModal);
+    cmtModal.addEventListener('click', (e) => { if (e.target === cmtModal) closeCmtModal(); });
 
     document.getElementById('code-go').addEventListener('click', validateCode);
     document.getElementById('code-cancel').addEventListener('click', closeModal);

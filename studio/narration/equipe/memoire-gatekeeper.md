@@ -113,7 +113,7 @@ Les critères 9 (distribution sensorielle) et 13 (épilogue italique) ont été 
 
 ---
 
-## Validations 2026-05-08
+## Validations 2026-05-08 et après
 
 ### 003 Le Pont Cassé V2 — PASS complet
 
@@ -125,6 +125,16 @@ Les critères 9 (distribution sensorielle) et 13 (épilogue italique) ont été 
 - Zéro correction requise
 
 **Aucun pattern d'erreur détecté** — texte suit fidèlement la patte Papa Yann.
+
+### 002 La Libellule impossible V1 (rewrite Opus) — CORRECTIONS MINEURES
+
+**Date :** 2026-07-07 · **Version :** claude-opus-rewrite-v1.md · **Critères :** 23/24 ✅→❌
+
+- **Correction 1 :** Wex sous-doté (1 seule réplique vs brief ≥2). Ajout 1 dialogue court (+10-15 mots).
+- Tout le reste PASS (verrou causal figé, pivot tendre Juju↔Nono → libellule, libellule bleue, pas de pirouette).
+- **Pattern détecté :** writer Opus produit des persos secondaires verbalement sous-équipés quand le brief exige parité dialogues.
+
+**Après correction → PASS automatique (24/24).**
 
 ---
 

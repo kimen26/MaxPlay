@@ -60,7 +60,7 @@ Alors la libellule descend.
 
 Elle se pose sur le poignet de Juju, juste là où ses doigts serrent le bras de Nono. Ses ailes bleues frémissent, puis se tiennent tranquilles.
 
-Personne ne respire. Wex, à un pas, s'est figé lui aussi, les yeux énormes.
+Personne ne respire. « Ses ailes… » murmure Wex, à un pas, figé lui aussi, les yeux énormes.
 
 « Elle… elle est là », souffle Juju, sans remuer les lèvres.
 

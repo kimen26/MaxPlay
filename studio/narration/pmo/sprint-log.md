@@ -3,6 +3,56 @@
 > Journal de bord des sessions.
 > **En cas de reboot :** lire D'ABORD la section "## Prochaine action" (ci-dessous), puis la dernière entrée (haut du fichier), section "État au reboot".
 > Les entrées les plus récentes sont en haut.
+
+---
+
+## 2026-07-08 — 3 DÉCISIONS + CHIPS V3 + FIX UX LECTURE : Doctrine instrument figée · Chips co-construites · Panneau scrollIntoView
+
+**Objectif** : Logger les 3 décisions Papa Yann + appliquer chips v3 + fixes UX lecture.html.
+
+**Fait** :
+- [x] **DOCTRINE INSTRUMENT FIGÉE** (décision 1) — la lecture annotée devient l'instrument PRINCIPAL (verdict Papa Yann après vagues 4-5 STORY-002 : « clairement le plus intéressant, pas forcément sur un full text mais même sur des bouts »). Lecture.html par défaut pour prochaines vagues, y compris FRAGMENTS. Duel secondaire = arbitrages serrés uniquement. Déjà gravée dans `gout/README.md` § Doctrine instrument (L35-42). Figée depuis 2026-07-03 sur le principe, clarifiée 2026-07-08 en usage opérationnel.
+- [x] **CHIPS V3 CO-CONSTRUITES EN SESSION** (décision 2) — remplace v2 du 2026-07-07. Structure :
+  - **Positif : 11 chips / 3 lignes thématiques** → [lecture fluide, belle musique/poésie, bon vocabulaire, bonne longueur] / [image forte, super description, super métaphore] / [drôle/amusant, tendre/émotions, super rappel d'idée, génial ⭐]
+  - **Négatif : 10 chips / 3 lignes miroir** → [enchaînement inexistant, trop long, trop court, ça sonne faux] / [description inutile, description confuse, mauvaise métaphore] / [incompréhensible, je ne comprends pas qui est qui, pas logique/incohérent]
+  - **Retirés** : « je le redirais à voix haute » (0 usage), « je visualise direct » (0 usage). Narrateur-qui-philosophe reste texte libre (1 signal).
+  - **Format data** : `lecture-data.js` = tableau de tableaux (lignes thématiques), compatible renderChips existant.
+- [x] **FIX UX LECTURE.HTML** (décision 3 + opérationnel) :
+  - Panneau `.sheet` plafonné à 55vh (CONFIRMÉ, OK)
+  - **Padding-bottom #texte** : 60vh → 55vh + 20px (ancien 60vh débordait énormément, raison typo). Nouvelles valeurs = padding sûr sans excès.
+  - **scrollIntoView** : `block: 'start'` → `block: 'nearest'` (ancien remontait EN HAUT de viewport, cachait quand même le passage sous le panneau). Nearest = scroll minimal pour faire apparaître le segment, respece mieux le panneau qui prend 55vh du bas.
+
+**Fichiers modifiés** :
+- ✅ `pmo/sprint-log.md` (cette entrée)
+- ✅ `pmo/decisions.md` (3 décisions : DOCTRINE-INSTRUMENT-LECTURE figée, CHIPS-V3, FIX-UX-LECTURE)
+- 🔄 `site/lecture-data.js` (chips v3 positif 11 + négatif 10, format lignes thématiques)
+- 🔄 `site/lecture.html` (L274 padding-bottom + L277 scrollIntoView block)
+
+**État au reboot** :
+- **3 tickets EN COURS inchangés** : STORY-002-SELECTION-REFONTE 🔴 BLOQUÉ + ARCHI-014-TEMPLATE-BOUSSOLE + ARCHI-006
+- **Instruments captage goût consolidés** : duel (secondaire, arbitrages serrés) + lecture annotée (principal, fragments+full text). Chips v3 déployées.
+- **UX lecture robustifiée** : panneau 55vh + padding sûr + scrollIntoView agilité.
+- **Prochaine action** : validations visuelles UX lecture (vérifier que scrollIntoView fonctionne sur fragments + full text), puis STORY-002 étape 6 refonte avec Directeur.
+
+**Classification** : 3×DÉCISION (figées) + 1×TRAITEMENT (UX opérationnel).
+
+---
+
+## 2026-07-07 — DUEL-VAGUE-5-TRACKING : Résultats bruts duel 13 segments + finale STORY-002 loggés
+
+**Objectif** : Logger les résultats du duel A/B vague 5 STORY-002 (13 paires segments + 2 finales) dans le palmarès + mémoire.
+
+**Fait** :
+- [x] **Duel vague 5 ingéré** → `gout/palmares-writers.md` nouvelle section (8 duels tranchés, 5 refusés, scores égaux 3/2/2/2)
+- [x] **Signaux clés** : pas de source dominante fragmentaire · 5 refus sur défaut "confus" (signal structurel) · Papa Yann n'a pas tranché vers un writer unique
+- [x] **État attente** : base étape 6 reste opus-def v4 + greffe deepseek ; vague 5 en standby post-arbitrage Papa Yann
+
+**Classification** : INFO + LOGGING (traitement immédiat).
+
+**État au reboot** :
+- Palmarès mis à jour avec duel vague 5
+- Pas de ticket nouveau ouvert (duel informatif, pas blocage ticket)
+- STORY-002 étape 6-selection reste BLOQUÉ (SLA 2026-07-07, attente directive rewrite Papa Yann)
 >
 > ⚠️ **Note historique** : les entrées <2026-05-12 mentionnent "PROCESS 9 étapes" (avant refonte 2026-05-07) puis "11 étapes" (refonte 2026-05-08). Depuis **refonte 2026-05-12** : PROCESS = **10 étapes** (étape 2 fusionnée avec étape 1 — voir `pmo/INVARIANTS.md` source de vérité). Ne pas re-corriger les entrées historiques — elles tracent l'évolution du PROCESS.
 > 

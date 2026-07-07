@@ -98,6 +98,18 @@ remplace: ancien `stories/ultime_debrief.md` (figé au 2026-05-05)  désormais
 
 > Gouvernance d'écriture, équité concours, workflow. Gravées via corrections auteur post-audit.
 
+### LP3 — Chips d'annotation : lignes thématiques > plat (2026-07-08)
+
+**Contexte** : site/lecture.html (instrument annotation goût) utilise des chips. Deux formats testés :
+- v2 (2026-07-07) : plat = 1 liste chipots positif + 1 liste négatif (peu d'usage, confusion)
+- v3 (2026-07-08) : 3 lignes thématiques par polarité (fluidité/image/émotion vs pièges équivalents)
+
+**Observation** : v3 (lignes thématiques) adoption immédiate Papa Yann, usage très supérieur lors de lecture.html STORY-002 vague 4-5. Hypothèse : le regroupement sémantique offre un **chemin de pensée** (« c'est fluide? c'est l'image? c'est l'émotion? »), pas un choix plate-forme parmi 20 options.
+
+**Application** : `lecture-data.js` format = tableau de tableaux (lignes thématiques). Replier pour futures implémentations captage goût (duel, autres domaines MaxPlay).
+
+**Fichier** : `site/lecture-data.js` L11-20, `site/lecture.html` renderChips().
+
 ### LP1  Équité input = principe d'equity du concours écrivains (DEC-BRIEF-CURSEUR clarifiée 2026-07-03)
 
 **Décision** : Papa Yann 2026-07-03 — clarification après audit-challenge STORY-002 vague 4.

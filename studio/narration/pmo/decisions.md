@@ -4,6 +4,96 @@
 
 ---
 
+## 2026-07-08 — DEC-DOCTRINE-INSTRUMENT-LECTURE : Lecture annotée = instrument PRINCIPAL (papa Yann)
+
+**Auteur (Papa Yann)** : validation opérationnelle 2026-07-08 — après vagues 4-5 STORY-002.
+
+**Contexte** : deux instruments complémentaires (duel + lecture) créés 2026-07-03/04 pour capturer le goût. Évaluation post-usage STORY-002 : lecture annotée est clairement plus riche + alignée sur besoins auteur.
+
+**Décision tranchée** :
+
+1. **LECTURE ANNOTÉE = instrument PRINCIPAL** — verdict Papa Yann : « clairement le plus intéressant, pas forcément sur un full text mais même sur des bouts ». Prochaines vagues (STORY-003+) : **charge par défaut `site/lecture.html`**, y compris pour fragments (mini-textes annotables). Format `lecture-data.js` supporté.
+
+2. **DUEL = SECONDAIRE** — réservé aux arbitrages serrés (2 candidates proches où signal relatif + comparaison visuelle tranche mieux que lectures absolues parallèles). N'est plus le flux par défaut.
+
+3. **Cheminement opérationnel étape 6** : Directeur génère `lecture-data.js` (textes entiers anonymisés ± fragments) → Papa Yann tape passages → export JSON annotations → Directeur ingère dans mémoire de goût et critères sélection. Duel en parallèle optionnel si besoin arbitrage post-lecture.
+
+**Fichiers impactés** :
+- ✅ `gout/README.md` § Doctrine instrument (L35-42 gravée 2026-07-03, confirmée 2026-07-08)
+- ✅ `gout/memoire-papa-yann.md` (référence instrument principal, lecture-data.js en priorité)
+- ✅ `equipe/PROCESS.md` étape 5-6 (Directeur documente la charge lecture par défaut)
+
+**Statut** : **FIGÉE 2026-07-08. Opérationnelle dès STORY-003+.**
+
+---
+
+## 2026-07-08 — DEC-CHIPS-V3 : Chips co-construites v3 positif 11 + négatif 10 (papa Yann)
+
+**Auteur (Papa Yann)** : co-construction en session 2026-07-08 — refinement chips v2 (2026-07-07).
+
+**Contexte** : chips v2 (9 positif + 8 négatif) créées 2026-07-07 en session d'audit. Papa Yann a proposé ajustements : retrait des 0-usage, intégration du signal « drôle/amusant » (manquant en v2). Nouveau regroupement en 3 lignes thématiques par polarité (confirmé fonctionne bien UX).
+
+**Décision tranchée** :
+
+1. **Positif v3 : 11 chips en 3 lignes thématiques**
+   - Ligne 1 (fluidité/portée) : lecture fluide · belle musique/poésie · bon vocabulaire · bonne longueur
+   - Ligne 2 (image/sens) : image forte · super description · super métaphore
+   - Ligne 3 (émotions) : drôle/amusant · tendre/émotions · super rappel d'idée · genial ⭐
+
+2. **Négatif v3 : 10 chips en 3 lignes thématiques**
+   - Ligne 1 (fluidité) : enchaînement inexistant · trop long · trop court · ça sonne faux
+   - Ligne 2 (image/sens) : description inutile · description confuse · mauvaise métaphore
+   - Ligne 3 (compréhension) : incompréhensible · je ne comprends pas qui est qui · pas logique/incohérent
+
+3. **Retraits justifiés** :
+   - « je le redirais à voix haute » — zéro usage vague 4-5 STORY-002, confus (intent à clarifier ou abandonner)
+   - « je visualise direct » — zéro usage, redondant avec d'autres signaux visuels
+
+4. **Texte libre** : signal « narrateur-qui-philosophe » reste en texte libre (1 occurrence, observé 2026-07-04, trop niche pour chip). À surveiller si récurrence > 2 en STORY-003+.
+
+5. **Format data `lecture-data.js`** : tableau de tableaux (structure existante `renderChips`), compatible sans change code.
+
+**Fichiers impactés** :
+- 🔄 `site/lecture-data.js` (MAJ chips positif + négatif, lignes thématiques)
+- ✅ `gout/memoire-papa-yann.md` (historique chips v2→v3, rationale)
+- 📋 `equipe/lecons-vivantes.md` § LP3 (leçon UX annotation : lignes thématiques > plat)
+
+**Statut** : **FIGÉE 2026-07-08. Déployée immédiate site/lecture.html.**
+
+---
+
+## 2026-07-08 — DEC-FIX-UX-LECTURE : Panneau annotation 55vh + scrollIntoView agilité
+
+**Auteur (Papa Yann, signalé UX)** : validé 2026-07-08 — bugs UX observés en session lecture.html.
+
+**Contexte** : lecture annotée utilisée pour STORY-002 (vagues 4-5) a révélé 2 frictions UX :
+1. Panneau annotation `.sheet` (55vh fixe) cachait le passage tapé en bas du texte (padding excessif)
+2. scrollIntoView avec `block: 'start'` remontait trop haut, pas centré sur passage
+
+**Décision tranchée** :
+
+1. **Padding-bottom #texte** : 60vh → **55vh + 20px**
+   - Ancien code L274 : `texte.style.paddingBottom = '60vh';` (TYPO? 60vh c'est presque 2× la hauteur du panneau 55vh)
+   - Nouveau : `'55vh'` (taille exacte panneau) `+ '20px'` (marge sécurité entre passage et bord panneau)
+   - Effet : passage tapé reste visible 20px au-dessus du panneau, pas écrasé
+
+2. **scrollIntoView alignment** : `block: 'start'` → **`block: 'nearest'`**
+   - Ancien : remontait l'élément EN HAUT de la viewport (ignorait position panneau)
+   - Nouveau : scroll minimal (nearest = scrolle seulement si hors viewport), respecte panneau en bas
+   - Behavior : smooth (inchangé, UX fluide)
+
+3. **Timing débounce** : 60ms (inchangé, juste assez pour que le sheet se display avant scroll).
+
+**Fichiers impactés** :
+- 🔄 `site/lecture.html` L274 (paddingBottom) + L277 (scrollIntoView block)
+- 📋 `pmo/sprint-log.md` (cette entrée)
+
+**Validation** : à tester visuellement sur fragments + full text, confirmer que passage demeure visible et panneau n'écrase rien.
+
+**Statut** : **FIGÉE 2026-07-08. Déployée immédiate site/lecture.html.**
+
+---
+
 ## 2026-07-03 (POST-DIAGNOSTIC) — DEC-KIMI-TIMEOUT-MCP : Générateurs longs + transport MCP (~250s limit)
 
 **Auteur (PMO/Diagnostic)** : découverte 2026-07-03 post-reprise audit vague 5 STORY-002. **Diagnostic figé** — anti-pattern panne/infra rejeté.

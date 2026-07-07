@@ -4,6 +4,8 @@
 > 🔒 Règle dure : **descripteurs craft uniquement, JAMAIS de phrases verbatim du corpus**
 > (voir [README.md](README.md) § Règles dures). Statuts : *hypothèse* (1-2 signaux) →
 > *confirmé* (≥3 signaux, ≥2 histoires). Contre-signal → retour hypothèse, daté.
+>
+> **2026-07-08** — Chips v3 co-construites + doctrine instrument lecture (principal). Voir `decisions.md` § DEC-CHIPS-V3 + DEC-DOCTRINE-INSTRUMENT-LECTURE.
 
 ## Confirmé
 

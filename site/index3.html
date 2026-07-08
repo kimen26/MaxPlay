@@ -141,6 +141,29 @@
     }
     .planet:active .globe { transform: scale(.95); }
 
+    /* ── Éléments qui gravitent autour de la planète (vie) ── */
+    .globe-wrap { position: relative; width: 100%; }
+    .orbit { position: absolute; inset: 0; animation: orbitspin linear infinite; pointer-events: none; z-index: 2; }
+    .orbit.rev { animation-direction: reverse; }
+    .orbit .sat { position: absolute; left: 50%; animation: orbitup linear infinite; }
+    .orbit.rev .sat { animation-direction: reverse; }
+    .orbit .sat svg { display: block; filter: drop-shadow(0 2px 3px #0006); }
+    @keyframes orbitspin { to { transform: rotate(360deg); } }
+    @keyframes orbitup { from { transform: translateX(-50%) rotate(0); } to { transform: translateX(-50%) rotate(-360deg); } }
+    .pcloud { position: absolute; left: -30%; opacity: 0; pointer-events: none; z-index: 3; animation: pdrift linear infinite; }
+    @keyframes pdrift {
+      0% { transform: translateX(0); opacity: 0; }
+      15% { opacity: .8; } 85% { opacity: .8; }
+      100% { transform: translateX(150%); opacity: 0; }
+    }
+    .psmoke { position: absolute; border-radius: 50%; pointer-events: none; opacity: 0; z-index: 3;
+              background: radial-gradient(circle, #cfd6e0cc, transparent 70%); animation: prise ease-out infinite; }
+    @keyframes prise {
+      0% { transform: translateY(0) scale(.4); opacity: 0; }
+      22% { opacity: .6; }
+      100% { transform: translateY(-30px) scale(1.7); opacity: 0; }
+    }
+
     /* réutilise l'esthétique stop-sign de theme.css, décliné espace */
     .planet .stop-sign { white-space: normal; text-align: center; line-height: 1.15; }
 
@@ -223,7 +246,9 @@
       .planet { --pl-size: 148px; }
     }
     @media (prefers-reduced-motion: reduce) {
-      .planet .globe, #rocket.flying, .shooting, .st { animation: none; }
+      .planet .globe, #rocket.flying, .shooting, .st,
+      .orbit, .orbit .sat, .pcloud, .psmoke { animation: none; }
+      .pcloud, .psmoke { opacity: 0; }
     }
   </style>
 </head>
@@ -348,6 +373,33 @@
     </svg>`;
   }
 
+  // ── Éléments qui gravitent autour des planètes ──────────────────────────
+  const S_moon   = `<svg width="18" height="18" viewBox="0 0 40 40"><circle cx="20" cy="20" r="13" fill="#d7dce6"/><circle cx="16" cy="17" r="3" fill="#b9c0ce"/><circle cx="24" cy="24" r="2.3" fill="#b9c0ce"/></svg>`;
+  const S_meteor = `<svg width="30" height="20" viewBox="0 0 60 40"><path d="M4 20 L26 16" stroke="#ffb27a" stroke-width="2.5" opacity=".5"/><path d="M8 27 L28 22" stroke="#ffb27a" stroke-width="2" opacity=".35"/><circle cx="42" cy="20" r="10" fill="#8a7f76"/><circle cx="39" cy="17" r="2.6" fill="#6b6259"/><circle cx="46" cy="23" r="2" fill="#6b6259"/></svg>`;
+  const S_flag   = `<svg width="20" height="26" viewBox="0 0 30 38"><rect x="13" y="4" width="2.4" height="30" rx="1" fill="#e8edf2"/><path d="M15 5 h13 v9 h-13 z" fill="#37b24d"/><path d="M15 5 h13 v3 h-13 z" fill="#f7d94c"/></svg>`;
+  const S_wrench = `<svg width="20" height="20" viewBox="0 0 40 40"><path d="M25 7 a8 8 0 1 0 5 14 l7 7 4 -4 -7 -7 a8 8 0 0 0 -9 -10z" fill="#cbd3e0"/></svg>`;
+  const S_spark  = `<svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z" fill="#ffe066"/></svg>`;
+  const S_letter = c => `<svg width="20" height="20" viewBox="0 0 30 30"><circle cx="15" cy="15" r="13" fill="#ffe066"/><text x="15" y="21" font-size="16" font-weight="900" text-anchor="middle" fill="#7a5a00" font-family="Nunito,sans-serif">${c}</text></svg>`;
+
+  const orbitEl = (dur, rev, topPx, inner) =>
+    `<div class="orbit ${rev ? 'rev' : ''}" style="animation-duration:${dur}s"><div class="sat" style="top:${topPx}px;animation-duration:${dur}s">${inner}</div></div>`;
+  const pcloud = (dur, delay, topPct, scale) =>
+    `<div class="pcloud" style="top:${topPct}%;animation-duration:${dur}s;animation-delay:${delay}s;transform:scale(${scale})"><svg width="46" height="22" viewBox="0 0 52 26"><g fill="#8b93a6"><ellipse cx="16" cy="16" rx="14" ry="9"/><ellipse cx="30" cy="13" rx="12" ry="10"/><ellipse cx="40" cy="17" rx="11" ry="8"/></g></svg></div>`;
+  const psmoke = (leftPct, topPct, dur, delay, size) =>
+    `<div class="psmoke" style="left:${leftPct}%;top:${topPct}%;width:${size}px;height:${size}px;animation-duration:${dur}s;animation-delay:${delay}s"></div>`;
+
+  function extras(zone) {
+    switch (zone) {
+      case 'dinos':    return psmoke(60, 30, 1.9, 0, 12) + psmoke(64, 30, 2.3, .7, 9) + orbitEl(9, false, -6, S_meteor) + pcloud(7, 0, 42, 1);
+      case 'monde':    return orbitEl(11, false, -8, S_flag) + orbitEl(7, true, -4, S_moon) + pcloud(6, 1.5, 58, .9);
+      case 'garage':   return orbitEl(10, false, -6, S_wrench) + orbitEl(13, true, -4, S_spark);
+      case 'lettres':  return orbitEl(11, false, -6, S_letter('A')) + orbitEl(8, true, -4, S_letter('b'));
+      case 'dodo':     return orbitEl(12, false, -6, S_moon) + orbitEl(9, true, 118, S_spark);
+      case 'roulotte': return orbitEl(10, false, -6, S_spark) + orbitEl(14, true, 116, S_moon);
+      default:         return '';
+    }
+  }
+
   // ── Construire le monde ────────────────────────────────────────────────
   // Étoiles 2 couches + étoiles filantes
   for (let i = 0; i < Math.floor(worldH / 26); i++) {
@@ -396,7 +448,7 @@
     el.style.top = planetY(i) + 'px';
     el.style.left = (i % 2 === 0 ? 32 : 68) + '%';
     const zs = zoneStars(p);
-    el.innerHTML = globe(p.zone) +
+    el.innerHTML = `<div class="globe-wrap">${globe(p.zone)}${extras(p.zone)}</div>` +
       `<div class="stop-sign"><span class="dot"></span>${p.label}</div>` +
       (zs > 0 ? `<div class="stop-stars">★ ${zs}</div>` : '');
     el.addEventListener('click', () => onPlanetTap(i));

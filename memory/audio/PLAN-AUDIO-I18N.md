@@ -257,7 +257,7 @@ Sélecteur **drapeau** sur le hub (zones ≥80px, Max reconnaît les drapeaux). 
 4. **Gouvernance** : rule path-scopée `audio-i18n.md` + registre transverse (PAS narration-pmo owner du dino — conflit règle figée). Valider ce choix corrigé.
 5. **Audio non-FR hors git → Supabase Storage** dès la 2e langue.
 6. **Couche premium `voice.js`** : clé slug (aligné banque) OU dépréciée. Trancher.
-7. **2e langue = EN ou PT-BR ?** (PT-BR colle au profil de Max).
+7. ✅ **DÉCIDÉ 2026-07-08 : 2 langues cibles = anglais (EN) + portugais-brésilien (PT-BR), les deux.** (PT-BR colle au profil brésilien de Max.)
 8. **Faire P2-A dès que possible** (nettoie la dette, réversible, invisible) même sans 2e langue décidée.
 
 ---

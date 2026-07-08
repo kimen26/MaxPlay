@@ -1,5 +1,4 @@
 // avatars.js — manifest des avatars dinos (généré depuis site/img/avatars/). Variant-aware.
-// Chaque dino: 3 humeurs, chacune 1+ variantes. Le picker pioche au hasard = variété.
 window.MAXPLAY_AVATARS_BASE = "img/avatars/";
 window.MAXPLAY_AVATARS = [
  {
@@ -89,13 +88,16 @@ window.MAXPLAY_AVATARS = [
   "sub": "Spinosaure",
   "moods": {
    "joyeux": [
-    "spino_joyeux_1.png"
+    "spino_joyeux_1.png",
+    "spino_joyeux_2.png"
    ],
    "enerve": [
-    "spino_enerve_1.png"
+    "spino_enerve_1.png",
+    "spino_enerve_2.png"
    ],
    "original": [
-    "spino_original_1.png"
+    "spino_original_1.png",
+    "spino_original_2.png"
    ]
   }
  },

@@ -2,6 +2,119 @@
 
 > Décisions datées (raison + impact). Les décisions **verrouillées** (jamais régresser) vivent dans [`../figees/encyclopedie.md`](../figees/encyclopedie.md).
 
+## 2026-07-08 (suite) — DEC-AUDIO-I18N-EXPANSION-001 : Élargissement cibles i18n audio (9 langues)
+
+**Contexte** : après création lexiques prononciation FR complète (2026-06-11) et découverte respelling obligatoire (2026-07-08), architecture audio i18n = **opportunité fondationnelle** : chaque lexique multilingue = prérequis production audio par langue. Workflow : respelling (lexique) → respelling-applier.js → segments JSON → MCP eleven voix native → MP3 langue.
+
+**Décision (2026-07-08, Papa Yann validation session)** :
+- ✅ **Élargissement cibles i18n acté** : au lieu de FR + EN + PT-BR (initial), **9 langues cibles = FR · EN · PT-BR · ES · IT · AR · RU · ZH · JA**. Raison : complétude éditoriale univers MaxPlay + accessibilité enfants 9 cultures. Respellings existants dans lexiques + validés QA.
+- ✅ **Lexiques finalisant 2026-07-08** : 8 langues nouvelles (EN/PT-BR/ES/IT/AR/RU/ZH/JA) + FR gabarit. 60 dinos × 9 langues, toutes à qualité QA. Dossier `studio/dino/content/scripts-audio/lexiques-prononciation/` complet.
+- ✅ **Stratégies d'écrit formalisées** :
+  - Latin (EN/PT-BR/ES/IT) : respelling phonétique syllabé.
+  - Non-latin (AR/RU/ZH/JA) : écriture native + romanisation de contrôle.
+  - Chinois sémantique (pas translittération mécanique) : Tyrannosaurus = 霸王龙 bàwánglóng (« dragon roi-tyran »).
+- ✅ **Décisions transverses ouvertes à validation native** : taxons rares (aenocyon, titanis, patagotitan, quetzalcoatlus, etc.) · variantes dialectales (AR /g/ dur par pays, ZH science vs enfant, ES Mamut vs latin, etc.).
+
+**Impact** :
+- **Frontière autoring/produit renforcée** : lexiques = composant stable (studio/) branché régé production (site/audio/dinos-<lang>/).
+- **Infra fondationnelle i18n audio** : une fois lexiques finalisés (✅ 2026-07-08) + validés natif (⏳ post-preview 2026-07-11), régé audio dino par langue devient mécanique (MCP call respellé).
+- **Calendrier i18n** : FR (2026-07-11) → EN+PT-BR → ES·IT·RU·JA → AR·ZH (priorité validation native).
+
+**Tickets générés** : 8 tickets EP-D-Audio-i18n-{EN,PT-BR,ES,IT,AR,RU,ZH,JA} (dépendances : EP-D-Audio-Noms-Respell + reset EL).
+
+---
+
+## 2026-07-08 — DEC-AUDIO-I18N-DECISIONS-OUVERTES-001 : Taxons rares + variantes dialectales (à trancher preview + native)
+
+**Contexte** : lexiques multilingues finalisés (60 dinos × 9 langues), mais 7 catégories de choix = décisions transverses ouvrir AVANT régé de masse (dépendance : écoute natif chaque langue, validation prononciation).
+
+**Décisions ouvertes & recommandations** :
+
+1. **Taxons rares transverses** (toutes langues) : `aenocyon` · `titanis` · `patagotitan` · `quetzalcoatlus` (nahuatl) · `coelodonta` · `paraceratherium` · `megatherium` — **formes peu établies partout**. Recommandation : validation locuteur natif (ENT préhistoire spécialisé chaque pays).
+
+2. **🇸🇦 Arabe**
+   - (A) /g/ dur : CHOIX PAR ACCENT (ج égyptien/levant vs غ saoudien/Golf) — affecte 8 dinos (Giganotosaurus, Gallimimus, Stegosaurus, Iguanodon, Glyptodon, Amargasaurus, Patagotitan, Megatherium). **Recommandation** : valider accent voix EL (lequel talent parle ?) avant régé.
+   - (B) `th` → ت (/t/ défaut) vs ث (/θ/) pour quelques noms (Therizinosaurus). **Recommandation** : défaut ت cohérent.
+   - (C) Suffixe -saurus rendu ـصور — valider que voix ne coupe pas la fin (Tyranno-**ssaur** complet).
+
+3. **🇨🇳 Chinois (SCIENCE VS GRAND PUBLIC)**
+   - `迅猛龙` scientifique vs `伶盗龙` enfant pour Velociraptor.
+   - `迷惑龙` scientifique vs `雷龙` enfant (Apatosaurus).
+   - **Recommandation** : **SCIENCE = cohérent encyclopédie**, rester sur termes établis paléontologie (迅猛龙, 迷惑龙) — MAX 4 ans peut apprendre noms savants, encyclopédie = vrais noms pas euphémismes enfants.
+
+4. **🇪🇸 Espagnol**
+   - `Mammuthus` → Mamut populaire vs forme latine ? **Recommandation** : Mamut + naturel enfant.
+   - `c` + e/i = /θ/ Espagne (Ceratosaurus → Seratosaurus) — défaut codé, cohérent Europe.
+
+5. **🇧🇷 Portugais**
+   - Porter -us latin en -o finale (Diplódoco vs Diplodocus) ? **Recommandation** : cohérence portug (PT parle -ó finale, pas -us) = **oui porter** sauf noms propres fixes (Tyrannosaurus = fixe, Diplodocus → Diplódoco variante OK).
+   - Doublage `ss` (Mosassauro vs Mosa-ssauro) — valider oreille (parfois sur-appliqué par respelling).
+
+6. **🇬🇧 Anglais**
+   - Corriger formulation règle §1 lexique (contredit la table — la table fait foi).
+   - `therizinosaurus` défaut EN = `theh-RIZ-ih-noh-` (dominante accent américain). **Validation** : accepter ?
+
+7. **🇮🇹 Italien & 🇷🇺 Russe** : aucune ambiguïté majeure notée. Lettrage/déclinaison coherent.
+
+**Workflow validation (2026-07-11+)** :
+- Pour CHAQUE langue : générer preview MP3 60 noms respellés (2-3 min) → envoyer à locuteur natif / Papa Yann validation oreille → collecte feedback → corrections lexique → régé 60 clips.
+- **Priorité** : FR (base, papa entendu) → EN+PT-BR → ES·IT·RU·JA → AR·ZH (validation native critique).
+
+**Tickets** : Chaque ticket EP-D-Audio-i18n-{LANG} inclut la note « Décisions transverses ouvertes § LANG ».
+
+---
+
+## 2026-07-08 — DEC-AUDIO-RESPELL-001 : Respelling phonétique OBLIGATOIRE avant production audio mass
+
+**Contexte** : batch V3 audio dino (51 fiches × 5 blocs + 60 noms vocaux = 315 MP3) généré 2026-06-15 SANS utiliser le lexique `_LEXIQUE-PRONONCIATION.md` (créé 2026-06-11, juste avant V3 mais jamais branché sur la production mass). Découverte 2026-07-08 : ~29 dinos avec graphies complexes (Carcharodontosaure, Pachycéphalosaure, Spinosaurus, etc.) utilisent la form française simple (ex « Brachiosaure ») lors de la génération, sans le respelling syllabique (ex « Bra-ki-o-saure ») — risque de prononciation mauvaise ElevenLabs eleven_v3.
+
+**Décision (2026-07-08, Papa Yann attent)** :
+- ✅ **Respelling = étape obligatoire** en POST-ÉCRITURE, PRÉ-GÉNÉRATION pour tout MP3 produit (noms, segments récits, accroches, dicos). **Workflow** : script écrire dialogue → **lancer lexique-applier.js respell tous lexique §2 matches** → fichier JSON segments → MCP text-to-dialogue/text-to-speech.
+- ✅ **Preview MP3 court OBLIGATOIRE** (`_preview-noms-respell.mp3`, ~503c narrateur_h respellé, loudnorm) avant commit masse. Validation oreille Papa Yann sur prononciation avant 60 MP3 full deploy.
+- ✅ **Timing régé mass** : 2026-07-11 (reset quota EL plein 122k). Générer proprement tous 60 noms respellés EN UNE PASSE (pas fragmenté). Coût ~600c, reste ~121k pour i18n + récits Cénozoïque + futurs.
+
+**Impact** :
+- **V3 audit future** : si une autre batch audio vient, respelling = GATE critique (grep-interdits #2).
+- **Anti-pattern gravé** : lexique créé 2026-06-11 mais jamais branché = technique connue, oubliée = humaine. Pattern : documenter « où/quand appliquer X » dans le script d'export/production IMPLICITEMENT (pas rely tête humaine).
+- **Leçons L-D-27 / L-D-28 gravées** (voir backlog leçons).
+
+**Questions ouvertes** :
+- En + de la régé mass 60 noms, faut-il aussi régenérer les 5 blocs audio des 29 dinos risqués (nom/taille/régime/funfact/recap) ? Estimation 2060 char = 17 % quota. **Decision Papa Yann attendue** : repas jeu V3 ou laisser V3 existante (enfant entend déjà « Brachiosaure » correct sur fiches audio, pas de malaise). Hypothèse PMO : priorité = noms vocaux (bonus mini-jeux) + accroches menus (pas audio blocs fiches V3). Débat.
+
+---
+
+## 2026-07-08 (suite) — DEC-AUDIO-I18N-001 : Élargissement i18n audio dino vers 9 langues cibles + méthodo gravée
+
+**Contexte** : après diagnostic respelling FR (DEC-AUDIO-RESPELL-001, session 2026-07-08), Papa Yann décide élargir stratégie localisation audio dino vers **9 langues cibles** (FR · EN · PT-BR · ES · IT · AR · RU · ZH · JA) au lieu de EN+PT-BR initialement envisagé. Création complète lexiques prononciation multilingues couvrant 60 espèces × 9 langues.
+
+**Décision (2026-07-08, Papa Yann valide)** :
+- ✅ **9 langues cibles FIGÉES** : FR (canon) · EN · PT-BR · ES · IT · AR · RU · ZH · JA. Élargissement validé, aucun changement futur sans décision explicite.
+- ✅ **Deux stratégies écrit par-langue** :
+  - **(A) Langues latines** (EN/PT-BR/ES/IT) = respelling phonétique **syllabique** pour prédire phonèmes EL corrects (ex FR « Bra-ki-o-saure » → EN « Tie-RAN-oh-SOR-us » → PT « Ti-ra-no-SSAU-ro »)
+  - **(B) Langues non-latines** (AR/RU/ZH/JA) = **écriture native + nom établi + romanisation fallback** (Cyrilique→Roman, Hanzi→Pinyin, etc.). Chinois priorité SÉMANTIQUE (Tyrannosaurus = 霸王龙 bàwánglóng = « lézard tyran » scientifique, pas translittération mécanique).
+- ✅ **8 lexiques générés + QA validée** : fichiers `studio/dino/content/scripts-audio/lexiques-prononciation/{en, pt-br, es, it, ar, ru, zh, ja}.md` + `INDEX.md` centralisé. Couverture 60 dinos × 8 langues = 60/60 chaque lexique, zéro orphelin.
+- ✅ **Décisions ouvertes transverses** (à trancher preview + validation native post-reset EL) :
+  - **Taxons rares** : aenocyon, titanis, patagotitan, quetzalcoatlus, coelodonta, paraceratherium, megatherium → validation native chaque langue (pas hallucination)
+  - **🇸🇦 Arabe** : /g/ dur variant pays (ج égyptien vs غ), impacte 8 dinos · th→ت vs ث · suffixe -saurus en ـصور
+  - **🇨🇳 Chinois** : science vs grand public level (迅猛龙 scientifique vs 伶盗龙 enfant pour Velociraptor) → recommandé science encyclopédie
+  - **🇪🇸 Espagnol** : Mammuthus → Mamut populaire vs latin ?
+  - **🇧🇷 Portugais** : porter -us latin en -o (Diplódoco) vs garder ?
+
+**Impact** :
+- **Production i18n asynchrone** : 7 tickets EP-D-Audio-i18n-{EN/PT-BR/ES/IT/AR/RU/ZH/JA} créés (dépendances reset quota 2026-07-11 + preview native validation).
+- **Processus i18n figé** : lexiques multilingues = infrastructure fondationnelle audio i18n (L-D-29 nouvelle leçon).
+- **Pattern réutilisable** : méthodo respelling per-langue + validation native applicable futures localisations (narration, jeu).
+
+**Prochaine action** : reset quota EL 2026-07-11 → (1) preview FR respellé 60 noms (Papa Yann valide) → (2) par langue par-langue : preview 60 noms groupé (2-3 min MP3 court) → validation native locuteur → régé 60 clips `audio/dinos-{lang}/noms/{id}.mp3`.
+
+**Ordre priorité production** : FR (base) → EN+PT-BR (utilité Max famille bilangue) → ES·IT·RU·JA (validation native faisable) → AR·ZH (complexité dialecte/sémantique, dernier).
+
+**Leçon** : **L-D-29** (lexiques multilingues prononciation = infrastructure i18n fondationnelle, créer AVANT production clip per-langue ; validation native préalable OBLIGATOIRE sur taxons rares + variantes dialectales).
+
+**Gouvernance** : dino-pmo (FOND, tickets + décisions i18n), dino-archiviste (FORME, structure lexiques), dino-conseiller (fact-check noms localisés, décision science/vulga). Registre transverse optionnel : `memory/audio/PLAN-AUDIO-I18N.md` (en création, sync cross-pôle si besoin).
+
+---
+
 ## 2026-07-05 — DEC-EP-D25-CLÔTURE-001 : Audit visuel final 60 dinos + épuration chantier images
 
 **Contexte** : grand chantier images du pôle DINO (EP-D25 + EP-D18 + EP-D19 + mégafaune + audit) arrive à clôture. Journée d'audit visuel complet (100 % couverture 60 dinos, ~408 images déployées). Validation anatomique + épuration produit.

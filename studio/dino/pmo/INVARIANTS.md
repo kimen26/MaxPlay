@@ -21,6 +21,7 @@
 | Spéciaux (Pangée, Extinction) | **2** | `audio/dinos/special-*.mp3` |
 | Dinos avec audio complet (recap+4 blocs) | **51** | `DINO_AUDIO` (✅ 2026-06-15 suite 3 : production V3 complète — note : 8 dinos Cénozoïque audio EN ATTENTE quota EL reset ~9 juillet) |
 | Noms vocaux dino (assets bonus) | **60** | `site/audio/dinos/noms/{id}.mp3` (✅ 2026-07-06 : 60 MP3 narrateur_h [excited] jeu, lancés dans mj-24/28/31/33) |
+| Langues i18n cibles (audio dino) | **9** | ✅ 2026-07-08 : FR (canon) · EN · PT-BR · ES · IT · AR · RU · ZH · JA. Décision Papa Yann élargissement EN+PT-BR → 9 langues complètes pour complétude éditoriale. Lexiques prononciation 8 langues générés + QA validée (60/60 dinos chacun). Jamais régresser sans décision explicite. |
 
 ## 11 familles (nom scientifique = titre)
 

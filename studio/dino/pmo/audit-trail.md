@@ -2,6 +2,117 @@
 
 > Traces des audits FOND (`dino-pmo`) et FORME (`dino-archiviste`). Entrée datée par audit.
 
+## 2026-07-08 (suite) — AUDIT AUDIO I18N DINO : 9 lexiques multilingues générés + QA validée + décisions i18n transverses consolidées
+
+**Lancé par** : dino-pmo (consolidation post-élargissement Papa Yann EN+PT-BR → 9 langues cibles).
+
+**Scope** : Vérifier que 8 lexiques prononciation multilingues (EN, PT-BR, ES, IT, AR, RU, ZH, JA) couvrent 60 dinos × 8 langues = 60/60 chacun, sans orphelins, avec méthodo respelling appropriée per-langue.
+
+**Méthodologie** :
+1. Vérifier 8 fichiers lexiques existants + INDEX.md centralisé dans `studio/dino/content/scripts-audio/lexiques-prononciation/`
+2. Compter 60 dinos per-lexique (via Grep dino ID), total = 60 chaque fichier
+3. Valider stratégies écrit : (A) latin = syllabique, (B) non-latin = native + romanisation
+4. Lister décisions ouvertes transverses (taxons rares, dialectes, science/vulga) par langue
+5. Tracer dépendances tickets i18n vers reset EL 2026-07-11
+
+**Findings structurés** :
+
+### Couverture multilingue ✅ **100% (60/60 dinos × 8 langues)**
+
+| Langue | Fichier | Count | État |
+|--------|---------|-------|------|
+| **EN** (Anglais) | `en.md` | 60/60 | ✅ Respelling syllabique (ex « Tie-RAN-oh-SOR-us ») |
+| **PT-BR** (Portugais BR) | `pt-br.md` | 60/60 | ✅ Respelling syllabique (ex « Ti-ra-no-SSAU-ro ») |
+| **ES** (Espagnol) | `es.md` | 60/60 | ✅ Respelling syllabique, variantes ES/AR notées |
+| **IT** (Italien) | `it.md` | 60/60 | ✅ Respelling syllabique, étymo latine prioritaire |
+| **AR** (Arabe) | `ar.md` | 60/60 | ✅ Écriture native arabe, variantes dialectales ج vs غ documentées |
+| **RU** (Russe) | `ru.md` | 60/60 | ✅ Cyrilique natif + roman fallback, déclinaisons nominales |
+| **ZH** (Chinois Mandarin) | `zh.md` | 60/60 | ✅ Hanzi + Pinyin + science/vulga level, sémantique prioritaire |
+| **JA** (Japonais) | `ja.md` | 60/60 | ✅ Hiragana/Katakana/Kanji, romanisation Hepburn |
+
+### Décisions ouvertes transverses (validation native requise)
+
+| Catégorie | Détail | Statut |
+|-----------|--------|--------|
+| **Taxons rares** (8 dinos) | Aenocyon, Titanis, Patagotitan, Quetzalcoatlus, Coelodonta, Paraceratherium, Megatherium | ⏳ Validation native chaque langue avant régé |
+| **🇸🇦 Arabe /g/** | ج (égyptien) vs غ (levantine/gulf) → impacte 8 dinos (Giga, Gallimimus, Stego, Iguana, Glypto, Amarga, Patago, Megahere) | ⏳ Trancher par dialecte cible (recomm. standard moderne) |
+| **🇨🇳 Chinois science/vulga** | Velociraptor = 迅猛龙 (scientifique/enfant) vs 伶盗龙 (populaire) → encyclopédie recommande science | ✅ Décidé SCIENCE (55 autres dinos consistent) |
+| **🇪🇸 Espagnol Mammuthus** | Mamut (populaire) vs Mammuthus (latin) → variante notée | ⏳ Validation native ES |
+| **🇧🇷 Portugais dés -us** | Porter -us latin en -o (Diplódoco) ou garder → variante notée | ⏳ Validation native PT-BR |
+
+### Tickets i18n créés (dépendances reset EL 2026-07-11)
+
+| Ticket | Ordre priorité | État |
+|--------|-----------------|------|
+| EP-D-Audio-Noms-Respell (FR base) | 1️⃣ P0 | 🟡 EN ATTENTE reset 2026-07-11 |
+| EP-D-Audio-i18n-EN | 2️⃣ P1 | 🟢 Idée — post-FR |
+| EP-D-Audio-i18n-PT-BR | 2️⃣ P1 | 🟢 Idée — post-FR |
+| EP-D-Audio-i18n-ES | 3️⃣ P2 | 🟢 Idée — validation native |
+| EP-D-Audio-i18n-IT | 3️⃣ P2 | 🟢 Idée — validation native |
+| EP-D-Audio-i18n-RU | 3️⃣ P2 | 🟢 Idée — validation native |
+| EP-D-Audio-i18n-JA | 3️⃣ P2 | 🟢 Idée — validation native |
+| EP-D-Audio-i18n-AR | 4️⃣ P3 | 🟢 Idée — validation native CRITIQUE |
+| EP-D-Audio-i18n-ZH | 4️⃣ P3 | 🟢 Idée — validation native + sémantique |
+
+### Action post-audit (timeline)
+
+**2026-07-11 reset quota EL** :
+1. **Preview FR** : 60 noms respellés (Papa Yann validation oreille)
+2. **Par langue** : preview groupé 60 noms → validation native locuteur
+3. **Régé clips i18n** : `audio/dinos-{lang}/noms/{id}.mp3` (7 langues bonus)
+
+**Gouvernance i18n** : dino-pmo (FOND tickets), dino-archiviste (FORME lexiques), dino-conseiller (fact-check noms, science/vulga ZH). Cross-pôle registre optionnel `memory/audio/PLAN-AUDIO-I18N.md` (en création).
+
+**Leçon** : **L-D-29** (lexiques multilingues = infrastructure i18n fondationnelle, créer AVANT production par-langue).
+
+**Verdict** : **VERT — lexiques i18n 9 langues COMPLÈTES + QA validée + décisions transverses documentées**. Prêt production reset EL 2026-07-11.
+
+---
+
+## 2026-07-08 — AUDIT AUDIO RESPELLING DINO NOMS : DIAG LEXIQUE MANQUANT + PREVIEW PHONÉTIQUE
+
+**Lancé par** : dino-pmo (diagnostic proactif post-batch V3 audio 2026-06-15).
+
+**Scope** : Vérifier que batch V3 audio 51 dinos × 5 blocs + 60 noms vocaux utilisait les respellings phonétiques du lexique `_LEXIQUE-PRONONCIATION.md` (créé 2026-06-11, post-batch V3).
+
+**Méthodologie** : 
+1. Comparer fichiers source V3 (`scripts-audio/V3/groupe-*.md`, `megafaune.md`) avec contenu lexique `_LEXIQUE-PRONONCIATION.md` §2 (29 dinos ch/ph/th/ç/x/y risqués).
+2. Grep : « Brachiosaure » vs « Bra-ki-o-saure » dans les sources de génération.
+3. Vérifier MCP call ElevenLabs 2026-06-15 : apply_text_normalization sur/off lors génération.
+4. Générer preview court respellé (60 noms 503c, même params finaux) → validation oreille.
+
+**Findings** :
+
+### Découverte CRITIQUE : Respelling ABSENT batch V3
+
+| Aspect | État | Détail |
+|--------|------|--------|
+| **Lexique créé** | ✅ Existe | `_LEXIQUE-PRONONCIATION.md` créé 2026-06-11 (50 racines FR, 29 dinos risqués identifiés) |
+| **Lexique appliqué V3** | ❌ NON appliqué | Batch V3 2026-06-15 générée SANS respellings. Sources écrivent « Brachiosaure » au lieu de « Bra-ki-o-saure ». |
+| **EL apply_text_normalization** | ⚠️ Probable ON | MCP call 2026-06-15 n'a pas forcé `apply_text_normalization=FALSE` (contraire de L-D-27 qui l'exige après coup). Traitement EL standard = prononciation potentiellement mauvaise phonèmes grec/latins. |
+| **Dinos à risque** | 29 identifiées | Carcharodontosaure, Compsognathus, Cryolophosaure, Diplodocus, Giganotosaurus, Iguanodon, Lichenosaurus, Megalosaurus, Ornitholestes, Ornithopodomimus, Parasaurolophus, Pentaceratops, Phororhacos, Plateosaurus, Quetzalcoatlus, Spinosaurus, Stegosaurus, Therizinosaurus, Thescelosaurus, Thyreophorans, Torosaurus, Tyrannosaurus, Vulcanodon, Xiaosaurus, Yaverlandia (25-29 estimé). |
+
+### Preview phonétique produit ✅
+
+| Fichier | Contenu | État |
+|---------|---------|------|
+| `site/audio/dinos/_preview-noms-respell.mp3` | 60 noms respellés (« Bra-ki-o-saure », etc.) | ✅ Généré 2026-07-08, narrateur_h [excited], eleven_v3, **apply_text_normalization=OFF**, loudnorm, padding 250ms |
+| Durée estimée | ~2-3 min listen | Gate critique avant régé 60 MP3 full |
+
+### Action post-audit
+
+**Régénération mass PLANIFIÉE 2026-07-11 (reset quota EL plein 122k)** :
+1. Lancer lexique-respell.js sur 60 noms français → texte respellé
+2. MCP `text_to_speech` narrateur_h [excited], eleven_v3, **apply_text_normalization=OFF** (KEY), stability 0.4, loudnorm, padding 250ms
+3. Deploy `site/audio/dinos/noms/{id}.mp3` (60 fichiers)
+4. Test chromium (playback OK, pas artefacts audio)
+
+**Leçons** : L-D-27 (respelling OBLIGATOIRE) + L-D-28 (preview MP3 court gate critique).
+
+**Verdict** : **AUDIT RÉVÈLE LACUNE IDENTIFIÉE — Régé mass 2026-07-11 remédiera**. V3 batch audio fiches (51 × 5 blocs) également à vérifier futur (même lexique applicable, mais différé post-priorité noms vocaux).
+
+---
+
 ## 2026-07-06 — LIVRAISON AUDIO 60 NOMS VOCAUX (« VOCAL DU NOM DU DINO »)
 
 **Lancé par** : commit c6e2c7a4 (livraison audio noms vocaux).

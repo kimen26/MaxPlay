@@ -2,6 +2,72 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-07-08 (suite) — LEXIQUES PRONONCIATION DINO MULTILINGUES : 9 langues finalisées + décisions i18n transverses
+
+**Contexte** : Après diagnostic respelling FR (session précédente), élargissement d'une stratégie "localisation audio par langue" à **9 langues cibles** (FR · EN · PT-BR · ES · IT · AR · RU · ZH · JA). Workflow : 8 agents linguistes + 2 QA validés. Livrable : dossier `studio/dino/content/scripts-audio/lexiques-prononciation/` complet.
+
+**Faits consolidés** :
+
+1. **Couverture complète** — 60 espèces × 9 langues, toutes à 60/60 qualité QA. Zéro orphelin, zéro doublon, gabarit unifié.
+2. **Deux stratégies d'écrit** :
+   - **Langues latines (EN/PT-BR/ES/IT)** → respelling phonétique syllabé (ex : Tyrannosaurus → EN `Tie-RAN-oh-SOR-us` · PT `Ti-ra-no-SSAU-ro` · ES `Ti-ra-no-SAU-rio` · IT `Ti-ran-no-SAU-ro`).
+   - **Langues non-latines (AR/RU/ZH/JA)** → écriture native + nom établi + romanisation de contrôle. Chinois SÉMANTIQUE (Tyrannosaurus = 霸王龙 bàwánglóng, pas translittération mécanique).
+3. **Élargissement i18n acté par Papa Yann** : cible initiale EN + PT-BR étendue à **9 langues** (ES/IT/AR/RU/ZH/JA ajoutées pour complétude éditoriale).
+4. **Décisions ouvertes transverses** (à trancher preview + validation native) :
+   - **Taxons rares** (aenocyon, titanis, patagotitan, quetzalcoatlus, coelodonta, paraceratherium, megatherium) → valider locuteur natif chaque langue.
+   - **🇸🇦 Arabe** : /g/ dur = choix par accent pays (ج égyptien vs غ), affecte 8 dinos (Giganotosaurus, Gallimimus, Stegosaurus, Iguanodon, Glyptodon, Amargasaurus, Patagotitan, Megatherium) · th→ت vs ث · suffixe -saurus en ـصور.
+   - **🇨🇳 Chinois** : science vs grand public (迅猛龙 scientifique vs 伶盗龙 enfant pour Velociraptor) → cohérence encyclopédie = science recommandée.
+   - **🇪🇸 Espagnol** : Mammuthus → Mamut populaire vs latin ?
+   - **🇧🇷 Portugais** : porter -us latin en -o (Diplódoco) vs garder ?
+   - **🇬🇧 Anglais** : corriger formulation règle §1 + valider therizinosaurus.
+5. **Documents archivés** :
+   - Gabarit FR : `_LEXIQUE-PRONONCIATION.md` (inchangé, source vérité respelling français).
+   - INDEX multilingue : `lexiques-prononciation/INDEX.md` (catalogue 9 langues + décisions ouvertes).
+   - 8 lexiques par langue : `{en, pt-br, es, it, ar, ru, zh, ja}.md` (60 dinos chacun).
+
+**État final** :
+- ✅ Lexiques multilingues 9 langues livrés (60/60 + gabarit unifié)
+- ✅ QA validé (non-latin aucun inventé, latin crédible)
+- ✅ Élargissement i18n officiel (FR+EN+PT-BR+ES+IT+AR+RU+ZH+JA = 9 cibles)
+- 🟡 Décisions ouvertes archivées pour **validation native** (preview groupé par langue post-reset EL 2026-07-11)
+
+**Prochaine action** : reset budget EL 2026-07-11 → (1) preview FR respellé 60 noms (validé Papa Yann) → (2) par langue : preview 60 noms groupé → validation native → régé 60 clips `audio/dinos/<lang>/{id}.mp3`. Ordre priorité : FR (base) → EN+PT-BR → ES·IT·RU·JA → AR·ZH (validation native plus critique).
+
+**Tickets créés** : EP-D-Audio-i18n-EN · EP-D-Audio-i18n-PT-BR · EP-D-Audio-i18n-ES · EP-D-Audio-i18n-IT · EP-D-Audio-i18n-AR · EP-D-Audio-i18n-RU · EP-D-Audio-i18n-ZH · EP-D-Audio-i18n-JA (dépendances : EP-D-Audio-Noms-Respell FR · reset quota 2026-07-11).
+
+**Leçon** : L-D-29 (lexiques multilingues prononciation = infrastructure fondationnelle audio i18n, créer AVANT production clip par langue ; validation native préalabl obligatoire sur taxons rares + variantes dialectales).
+
+**Gouvernance** : dino-pmo (FOND, tickets + décisions), dino-archiviste (FORME, structure lexiques + refs), dino-conseiller (fact-check scientifique noms localisés, prise decision science vs grand public ZH). Plan global i18n audio : [`memory/audio/PLAN-AUDIO-I18N.md`](../../memory/audio/PLAN-AUDIO-I18N.md) (en création).
+
+---
+
+## 2026-07-08 — DIAGNOSTIC AUDIO DINO : respelling lexique + preview phonétique validée + planification reset quota
+
+**Contexte** : Batch V3 noms dino audio (51 dinos × 5 blocs + 60 noms vocaux = 315 MP3) était généré sans les **respellings phonétiques** du lexique `_LEXIQUE-PRONONCIATION.md` (créé 2026-06-11 APRÈS la génération V3 batch). Impact : ~29 dinos avec graphies complexes (ch/ph/th/ç/x/y) probablement mal prononcés par ElevenLabs eleven_v3.
+
+**Trois pépites documentées** :
+
+1. **Diagnostic confirmé** — la source V3 (`scripts-audio/V3/*.md`) écrit en français simple (« Brachiosaure », « Carcharodontosaure », « Pachycéphalosaure ») sans respellings. Exemple : « Brachiosaure » prononcé peut sonner [bra-kio-zaure] (accent mauvais) vs respellt correct « Bra-ki-o-saure » (syllabe par syllabe). Lexique §2 couvre 29 dinos ch/ph/th risqués (Carcharodontosaure, Compsognathus, Cryolophosaure, Diplodocus, Giganotosaurus, Iguanodon, Lichenosaurus, Megalosaurus, Ornitholestes, Ornithopodomimus, Parasaurolophus, Pentaceratops, Phororhacos, Plateosaurus, Quetzalcoatlus, Rhododendron, Silkosaurus, Spinosaurus, Stegosaurus, Stokesosaurus, Tapejara, Therizinosaurus, Thescelosaurus, Thyreophorans, Torosaurus, Tyrannosaurus, Vulcanodon, Xiaosaurus, Yaverlandia). À corriger.
+
+2. **Preview phonétique produit validé** — fichier de garde-fou généré `site/audio/dinos/_preview-noms-respell.mp3` (voix narrateur_h, eleven_v3, stability 0.4, apply_text_normalization=off, padding 250ms, loudnorm). 503 caractères (60 noms respellés, ~2 min listen). **Raison** : avant de relancer une régé de masse, écouter le résultat respellt vs non-respellt = vérif critique. Production avant Papa Yann OK.
+
+3. **Budget ElevenLabs & planification** — ~1 137 caractères restants before reset 2026-07-11. Décision prise : NE PAS fragmenter maintenant (régé masse partielle = perte de cohérence). **Plan maître reset** : le 2026-07-11 (budget plein 122k), lancer régé de masse propre des 29 noms respellés EN UNE PASSE (tous les 60, pas cherry-pick). Données collatérales pour i18n : EN + PT-BR aussi à prévoir (respellings par langue, lexiques distincts).
+
+4. **Gouvernance audio multilingue provisoirement figée** — dino-pmo garde les assets dino (noms, segments, dicos, récits, menus). game-pmo la banque MJ. narration les longs textes/casting voix. Registre transverse `memory/audio/AUDIO-REGISTRY.md` (à créer) + rule path-scopée `audio-i18n.md` (modèle extraction dino) à valider. **Pas de 4e PMO pour i18n — chaque pôle gère sa porte**.
+
+**État final** :
+- ✅ Diagnostic : respelling MANQUANTS dans V3 batch audio noms
+- ✅ Preview MP3 phonétique produit + prêt validation Papa Yann
+- ✅ Budget tracé (1137c reste, reset 2026-07-11 budget plein)
+- ✅ Plan régé masse fixé : 2026-07-11 morning, 60 noms respellés propre
+- 🟡 i18n gouvernance provisoire (registre + rule à créer, pas urgent avant EN/PT-BR effectif)
+
+**Leçons** : L-D-27 (respelling phonétique = étape OBLIGATOIRE production audio masse, post-écriture pré-génération), L-D-28 (preview MP3 court avant commit masse = gate critique qualité son enfant).
+
+**Tickets** : EP-D-Audio-Noms-Respell (générer 60 MP3 respellés, post-reset, 2026-07-11) · EP-D-Audio-i18n-EN (respellings anglais, lexique distinct) · EP-D-Audio-i18n-PT-BR (respellings portugais brésilien, lexique distinct).
+
+---
+
 ## 2026-07-06 — CLÔTURE SESSION VOCAUX : 60 noms MP3 + 5 périodes livrés, branchement frise TODO
 
 **Livré** :

@@ -207,12 +207,16 @@ window.MAXPLAY_AVATARS = [
   "sub": "Therizinosaure",
   "moods": {
    "joyeux": [
-    "theri_joyeux_1.png"
+    "theri_joyeux_1.png",
+    "theri_joyeux_2.png"
    ],
    "enerve": [
-    "theri_enerve_1.png"
+    "theri_enerve_1.png",
+    "theri_enerve_2.png"
    ],
-   "original": []
+   "original": [
+    "theri_original_1.png"
+   ]
   }
  },
  {
@@ -237,10 +241,12 @@ window.MAXPLAY_AVATARS = [
   "sub": "Centrosaure",
   "moods": {
    "joyeux": [
-    "centro_joyeux_1.png"
+    "centro_joyeux_1.png",
+    "centro_joyeux_2.png"
    ],
    "enerve": [
-    "centro_enerve_1.png"
+    "centro_enerve_1.png",
+    "centro_enerve_2.png"
    ],
    "original": []
   }
@@ -267,10 +273,12 @@ window.MAXPLAY_AVATARS = [
   "sub": "Mammouth laineux",
   "moods": {
    "joyeux": [
-    "mammouth_joyeux_1.png"
+    "mammouth_joyeux_1.png",
+    "mammouth_joyeux_2.png"
    ],
    "enerve": [
-    "mammouth_enerve_1.png"
+    "mammouth_enerve_1.png",
+    "mammouth_enerve_2.png"
    ],
    "original": []
   }
@@ -297,12 +305,16 @@ window.MAXPLAY_AVATARS = [
   "sub": "Météorite",
   "moods": {
    "joyeux": [
-    "meteorite_joyeux_1.png"
+    "meteorite_joyeux_1.png",
+    "meteorite_joyeux_2.png"
    ],
    "enerve": [
-    "meteorite_enerve_1.png"
+    "meteorite_enerve_1.png",
+    "meteorite_enerve_2.png"
    ],
-   "original": []
+   "original": [
+    "meteorite_original_1.png"
+   ]
   }
  },
  {

@@ -200,5 +200,125 @@ window.MAXPLAY_AVATARS = [
     "paras_original_2.png"
    ]
   }
+ },
+ {
+  "id": "theri",
+  "name": "Théri",
+  "sub": "Therizinosaure",
+  "moods": {
+   "joyeux": [
+    "theri_joyeux_1.png"
+   ],
+   "enerve": [
+    "theri_enerve_1.png"
+   ],
+   "original": []
+  }
+ },
+ {
+  "id": "pachy",
+  "name": "Pachy",
+  "sub": "Pachycéphalosaure",
+  "moods": {
+   "joyeux": [
+    "pachy_joyeux_1.png"
+   ],
+   "enerve": [
+    "pachy_enerve_1.png"
+   ],
+   "original": [
+    "pachy_original_1.png"
+   ]
+  }
+ },
+ {
+  "id": "centro",
+  "name": "Centro",
+  "sub": "Centrosaure",
+  "moods": {
+   "joyeux": [
+    "centro_joyeux_1.png"
+   ],
+   "enerve": [
+    "centro_enerve_1.png"
+   ],
+   "original": []
+  }
+ },
+ {
+  "id": "dilo",
+  "name": "Dilo",
+  "sub": "Dilophosaure",
+  "moods": {
+   "joyeux": [
+    "dilo_joyeux_1.png"
+   ],
+   "enerve": [
+    "dilo_enerve_1.png"
+   ],
+   "original": [
+    "dilo_original_1.png"
+   ]
+  }
+ },
+ {
+  "id": "mammouth",
+  "name": "Mammouth",
+  "sub": "Mammouth laineux",
+  "moods": {
+   "joyeux": [
+    "mammouth_joyeux_1.png"
+   ],
+   "enerve": [
+    "mammouth_enerve_1.png"
+   ],
+   "original": []
+  }
+ },
+ {
+  "id": "smilodon",
+  "name": "Smilo",
+  "sub": "Dent de sabre",
+  "moods": {
+   "joyeux": [
+    "smilodon_joyeux_1.png"
+   ],
+   "enerve": [
+    "smilodon_enerve_1.png"
+   ],
+   "original": [
+    "smilodon_original_1.png"
+   ]
+  }
+ },
+ {
+  "id": "meteorite",
+  "name": "Météo",
+  "sub": "Météorite",
+  "moods": {
+   "joyeux": [
+    "meteorite_joyeux_1.png"
+   ],
+   "enerve": [
+    "meteorite_enerve_1.png"
+   ],
+   "original": []
+  }
+ },
+ {
+  "id": "volcan",
+  "name": "Volcan",
+  "sub": "Volcan",
+  "moods": {
+   "joyeux": [
+    "volcan_joyeux_1.png"
+   ],
+   "enerve": [
+    "volcan_enerve_1.png"
+   ],
+   "original": [
+    "volcan_original_1.png"
+   ]
+  }
  }
 ];

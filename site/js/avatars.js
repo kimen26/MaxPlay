@@ -7,13 +7,16 @@ window.MAXPLAY_AVATARS = [
   "sub": "Tricératops",
   "moods": {
    "joyeux": [
-    "tritri_joyeux_1.png"
+    "tritri_joyeux_1.png",
+    "tritri_joyeux_2.png"
    ],
    "enerve": [
-    "tritri_enerve_1.png"
+    "tritri_enerve_1.png",
+    "tritri_enerve_2.png"
    ],
    "original": [
-    "tritri_original_1.png"
+    "tritri_original_1.png",
+    "tritri_original_2.png"
    ]
   }
  },
@@ -24,13 +27,16 @@ window.MAXPLAY_AVATARS = [
   "moods": {
    "joyeux": [
     "trex_joyeux_1.png",
-    "trex_joyeux_2.png"
+    "trex_joyeux_2.png",
+    "trex_joyeux_3.png"
    ],
    "enerve": [
-    "trex_enerve_1.png"
+    "trex_enerve_1.png",
+    "trex_enerve_2.png"
    ],
    "original": [
-    "trex_original_1.png"
+    "trex_original_1.png",
+    "trex_original_2.png"
    ]
   }
  },
@@ -40,13 +46,16 @@ window.MAXPLAY_AVATARS = [
   "sub": "Stégosaure",
   "moods": {
    "joyeux": [
-    "stego_joyeux_1.png"
+    "stego_joyeux_1.png",
+    "stego_joyeux_2.png"
    ],
    "enerve": [
-    "stego_enerve_1.png"
+    "stego_enerve_1.png",
+    "stego_enerve_2.png"
    ],
    "original": [
-    "stego_original_1.png"
+    "stego_original_1.png",
+    "stego_original_2.png"
    ]
   }
  },
@@ -56,13 +65,16 @@ window.MAXPLAY_AVATARS = [
   "sub": "Brachiosaure",
   "moods": {
    "joyeux": [
-    "brachio_joyeux_1.png"
+    "brachio_joyeux_1.png",
+    "brachio_joyeux_2.png"
    ],
    "enerve": [
-    "brachio_enerve_1.png"
+    "brachio_enerve_1.png",
+    "brachio_enerve_2.png"
    ],
    "original": [
-    "brachio_original_1.png"
+    "brachio_original_1.png",
+    "brachio_original_2.png"
    ]
   }
  },
@@ -72,13 +84,16 @@ window.MAXPLAY_AVATARS = [
   "sub": "Vélociraptor",
   "moods": {
    "joyeux": [
-    "velo_joyeux_1.png"
+    "velo_joyeux_1.png",
+    "velo_joyeux_2.png"
    ],
    "enerve": [
-    "velo_enerve_1.png"
+    "velo_enerve_1.png",
+    "velo_enerve_2.png"
    ],
    "original": [
-    "velo_original_1.png"
+    "velo_original_1.png",
+    "velo_original_2.png"
    ]
   }
  },
@@ -89,15 +104,18 @@ window.MAXPLAY_AVATARS = [
   "moods": {
    "joyeux": [
     "spino_joyeux_1.png",
-    "spino_joyeux_2.png"
+    "spino_joyeux_2.png",
+    "spino_joyeux_3.png"
    ],
    "enerve": [
     "spino_enerve_1.png",
-    "spino_enerve_2.png"
+    "spino_enerve_2.png",
+    "spino_enerve_3.png"
    ],
    "original": [
     "spino_original_1.png",
-    "spino_original_2.png"
+    "spino_original_2.png",
+    "spino_original_3.png"
    ]
   }
  },
@@ -108,13 +126,16 @@ window.MAXPLAY_AVATARS = [
   "moods": {
    "joyeux": [
     "anky_joyeux_1.png",
-    "anky_joyeux_2.png"
+    "anky_joyeux_2.png",
+    "anky_joyeux_3.png"
    ],
    "enerve": [
-    "anky_enerve_1.png"
+    "anky_enerve_1.png",
+    "anky_enerve_2.png"
    ],
    "original": [
-    "anky_original_1.png"
+    "anky_original_1.png",
+    "anky_original_2.png"
    ]
   }
  },
@@ -124,13 +145,16 @@ window.MAXPLAY_AVATARS = [
   "sub": "Ptéranodon",
   "moods": {
    "joyeux": [
-    "ptero_joyeux_1.png"
+    "ptero_joyeux_1.png",
+    "ptero_joyeux_2.png"
    ],
    "enerve": [
-    "ptero_enerve_1.png"
+    "ptero_enerve_1.png",
+    "ptero_enerve_2.png"
    ],
    "original": [
-    "ptero_original_1.png"
+    "ptero_original_1.png",
+    "ptero_original_2.png"
    ]
   }
  },
@@ -140,13 +164,16 @@ window.MAXPLAY_AVATARS = [
   "sub": "Diplodocus",
   "moods": {
    "joyeux": [
-    "diplo_joyeux_1.png"
+    "diplo_joyeux_1.png",
+    "diplo_joyeux_2.png"
    ],
    "enerve": [
-    "diplo_enerve_1.png"
+    "diplo_enerve_1.png",
+    "diplo_enerve_2.png"
    ],
    "original": [
-    "diplo_original_1.png"
+    "diplo_original_1.png",
+    "diplo_original_2.png"
    ]
   }
  },
@@ -157,14 +184,17 @@ window.MAXPLAY_AVATARS = [
   "moods": {
    "joyeux": [
     "paras_joyeux_1.png",
-    "paras_joyeux_2.png"
+    "paras_joyeux_2.png",
+    "paras_joyeux_3.png"
    ],
    "enerve": [
     "paras_enerve_1.png",
-    "paras_enerve_2.png"
+    "paras_enerve_2.png",
+    "paras_enerve_3.png"
    ],
    "original": [
-    "paras_original_1.png"
+    "paras_original_1.png",
+    "paras_original_2.png"
    ]
   }
  }

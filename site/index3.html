@@ -290,6 +290,7 @@
   <script src="js/celebrate.js"></script>
   <script src="js/avatars.js"></script>
   <script src="js/avatar-picker.js"></script>
+  <script src="js/decor.js"></script>
   <script>
   // ───────────────────────────────────────────────────────────────────────
   //  La fusée de Max — hub v3 vertical (même logique que la ligne de bus)
@@ -390,14 +391,24 @@
   const psmoke = (leftPct, topPct, dur, delay, size) =>
     `<div class="psmoke" style="left:${leftPct}%;top:${topPct}%;width:${size}px;height:${size}px;animation-duration:${dur}s;animation-delay:${delay}s"></div>`;
 
+  // Items PNG (img/decor/, style facettes = même famille que les avatars) via decor.js ;
+  // les SVG inline restent en fallback pour les zones sans item dédié.
+  const D = window.Decor;
   function extras(zone) {
     switch (zone) {
-      case 'dinos':    return psmoke(60, 30, 1.9, 0, 12) + psmoke(64, 30, 2.3, .7, 9) + orbitEl(9, false, -6, S_meteor) + pcloud(7, 0, 42, 1);
-      case 'monde':    return orbitEl(11, false, -8, S_flag) + orbitEl(7, true, -4, S_moon) + pcloud(6, 1.5, 58, .9);
-      case 'garage':   return orbitEl(10, false, -6, S_wrench) + orbitEl(13, true, -4, S_spark);
+      case 'dinos':    return psmoke(60, 30, 1.9, 0, 12) + psmoke(64, 30, 2.3, .7, 9)
+        + orbitEl(9, false, -8, D.html('meteorite_feu', { w: 36, cls: 'static' }))
+        + D.html('volcan_fumant', { w: 56, anim: 'pulse', style: 'left:-5%;bottom:2%;z-index:4' })
+        + D.html('nuage_gris', { w: 46, anim: 'drift', dur: 14, style: 'top:30%;z-index:5;--dco:.9' });
+      case 'monde':    return orbitEl(11, false, -8, S_flag) + orbitEl(7, true, -4, S_moon)
+        + D.html('nuage_blanc', { w: 40, anim: 'drift', dur: 12, delay: 2, style: 'top:52%;z-index:5;--dco:.95' });
+      case 'garage':   return orbitEl(10, false, -6, S_wrench) + orbitEl(13, true, -4, S_spark)
+        + D.html('rocher', { w: 34, anim: 'bob', dur: 4.5, style: 'right:-9%;bottom:14%;z-index:1;opacity:.9' });
       case 'lettres':  return orbitEl(11, false, -6, S_letter('A')) + orbitEl(8, true, -4, S_letter('b'));
-      case 'dodo':     return orbitEl(12, false, -6, S_moon) + orbitEl(9, true, 118, S_spark);
-      case 'roulotte': return orbitEl(10, false, -6, S_spark) + orbitEl(14, true, 116, S_moon);
+      case 'dodo':     return orbitEl(12, false, -6, S_moon)
+        + D.html('nuage_gris', { w: 50, anim: 'drift', dur: 22, style: 'top:22%;z-index:5;--dco:.8' });
+      case 'roulotte': return orbitEl(10, false, -6, S_spark) + orbitEl(14, true, 116, S_moon)
+        + D.html('sapin', { w: 36, anim: 'sway', dur: 5, style: 'right:-3%;bottom:4%;z-index:4' });
       default:         return '';
     }
   }
@@ -420,6 +431,13 @@
     f.style.animationDelay = (i * 3.1) + 's';
     world.appendChild(f);
   }
+  // Items PNG dans l'espace : étoiles filantes + météorite qui flotte entre les planètes
+  const skyDecor = document.createElement('div');
+  skyDecor.innerHTML =
+    D.html('etoile_filante', { w: 46, anim: 'shoot', dur: 11, delay: 2, style: `right:8%;top:${Math.round(worldH * .22)}px;z-index:1` }) +
+    D.html('etoile_filante', { w: 34, anim: 'shoot', dur: 15, delay: 9, style: `right:20%;top:${Math.round(worldH * .58)}px;z-index:1` }) +
+    D.html('meteorite_feu', { w: 40, anim: 'bob', dur: 5, flip: true, style: `left:6%;top:${Math.round(worldH * .42)}px;z-index:1;opacity:.85` });
+  while (skyDecor.firstChild) world.appendChild(skyDecor.firstChild);
 
   // Trajectoire pointillée (de la rampe à la dernière planète)
   const traj = document.createElement('div');

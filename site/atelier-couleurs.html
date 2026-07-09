@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<title>MaxPlay — Atelier des couleurs 🎨</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+<style>
+  :root{ --bg:#0a0e2a; --panel:rgba(255,255,255,.05); --line:rgba(255,255,255,.1); --gold:#ffe066; --muted:rgba(255,255,255,.6); }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none}
+  body{ font-family:'Nunito',ui-rounded,'Segoe UI',system-ui,sans-serif; color:#fff; min-height:100dvh;
+    background:radial-gradient(1100px 550px at 20% -8%,#1a2360 0,transparent 55%),radial-gradient(800px 500px at 95% 5%,#2a1550 0,transparent 50%),linear-gradient(180deg,#05030f,#0a0e2a 45%,#0d1236); }
+  .hdr{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);background:rgba(0,0,0,.2)}
+  .hdr a{color:#fff;text-decoration:none;font-size:1.2rem;background:rgba(255,255,255,.12);border-radius:9px;padding:5px 11px;font-weight:900}
+  .hdr h1{font-size:1.15rem;font-weight:900;flex:1}
+  .hdr h1 span{color:var(--muted);font-weight:700;font-size:.8rem}
+  .wrap{display:grid;grid-template-columns:1fr;gap:14px;max-width:900px;margin:0 auto;padding:14px}
+  @media(min-width:760px){ .wrap{grid-template-columns:1.1fr .9fr} .stage-col{position:sticky;top:14px;align-self:start} }
+
+  /* scène */
+  .stage{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:16px;display:flex;flex-direction:column;align-items:center;gap:12px}
+  #cv{width:260px;height:260px;image-rendering:auto;filter:drop-shadow(0 10px 22px #0009)}
+  .moods{display:flex;gap:8px}
+  .moods button{background:rgba(255,255,255,.08);border:1px solid var(--line);color:#fff;border-radius:12px;padding:7px 14px;font-weight:800;font-size:.9rem;cursor:pointer;font-family:inherit}
+  .moods button.on{background:var(--gold);color:#5a4200;border-color:var(--gold)}
+  .cname{font-weight:900;font-size:1.1rem}
+
+  /* couleurs */
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:16px}
+  .panel h2{font-size:.95rem;font-weight:900;margin-bottom:4px}
+  .panel .hint{color:var(--muted);font-size:.8rem;margin-bottom:12px}
+  .swatches{display:flex;flex-direction:column;gap:10px}
+  .sw{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.04);border-radius:14px;padding:8px 10px}
+  .sw .chip{width:44px;height:44px;border-radius:12px;border:2px solid #ffffff30;flex-shrink:0;overflow:hidden;position:relative;cursor:pointer}
+  .sw input[type=color]{position:absolute;inset:-6px;width:calc(100% + 12px);height:calc(100% + 12px);border:none;padding:0;cursor:pointer;background:none}
+  .sw .lbl{flex:1;font-weight:800;font-size:.85rem}
+  .sw .lbl small{display:block;color:var(--muted);font-weight:600;font-size:.72rem}
+  .presets{margin-top:16px}
+  .presets .row{display:flex;flex-wrap:wrap;gap:8px}
+  .preset{width:34px;height:34px;border-radius:10px;border:2px solid #ffffff22;cursor:pointer}
+  .actions{display:flex;gap:10px;margin-top:16px}
+  .actions button{flex:1;background:rgba(255,255,255,.1);border:1px solid var(--line);color:#fff;border-radius:14px;padding:11px;font-weight:800;font-size:.95rem;cursor:pointer;font-family:inherit}
+  .actions button.primary{background:var(--gold);color:#5a4200;border-color:var(--gold)}
+
+  /* galerie créatures */
+  .gallery{margin-top:14px}
+  .gallery h2{font-size:.95rem;font-weight:900;margin-bottom:10px;padding:0 2px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(72px,1fr));gap:8px}
+  .cell{background:rgba(255,255,255,.05);border:2px solid transparent;border-radius:16px;padding:6px 3px 4px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:1px}
+  .cell.on{border-color:var(--gold);background:#ffe0661a}
+  .cell img{width:54px;height:54px;object-fit:contain}
+  .cell span{font-size:.66rem;font-weight:800;color:var(--muted)}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <a href="index.html">&#8592;</a>
+  <h1>🎨 Atelier des couleurs <span>· change les couleurs de tes copains !</span></h1>
+</div>
+
+<div class="wrap">
+  <div class="stage-col">
+    <div class="stage">
+      <canvas id="cv" width="512" height="512"></canvas>
+      <div class="cname" id="cname">—</div>
+      <div class="moods" id="moods"></div>
+    </div>
+  </div>
+
+  <div>
+    <div class="panel">
+      <h2>Ses couleurs</h2>
+      <div class="hint">Tape une pastille et choisis une nouvelle couleur ✨</div>
+      <div class="swatches" id="swatches"></div>
+
+      <div class="presets">
+        <h2 style="margin-bottom:8px">Palettes rigolotes</h2>
+        <div class="row" id="presets"></div>
+      </div>
+
+      <div class="actions">
+        <button id="btnRandom">🎲 Surprise</button>
+        <button id="btnReset" class="primary">↺ D'origine</button>
+      </div>
+    </div>
+
+    <div class="gallery panel" style="margin-top:14px">
+      <h2>Choisis un copain</h2>
+      <div class="grid" id="grid"></div>
+    </div>
+  </div>
+</div>
+
+<script src="js/avatars.js"></script>
+<script>
+(function(){
+  'use strict';
+  var BASE = window.MAXPLAY_AVATARS_BASE || 'img/avatars/';
+  var LIST = window.MAXPLAY_AVATARS || [];
+  var MOODS = [['joyeux','😄'],['enerve','😤'],['original','🤪']];
+
+  var cv = document.getElementById('cv'), ctx = cv.getContext('2d', {willReadFrequently:true});
+  var cur = LIST[0], curMood = 'joyeux';
+  var srcData = null;         // ImageData d'origine
+  var bases = [];             // couleurs dominantes {rgb:[r,g,b], mask:Uint8Array}
+  var targets = [];           // couleurs cibles courantes [r,g,b]
+
+  // ── util couleur ──
+  function hex(r,g,b){ return '#'+[r,g,b].map(function(v){return ('0'+Math.max(0,Math.min(255,v|0)).toString(16)).slice(-2)}).join(''); }
+  function fromHex(h){ return [parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)]; }
+  function dist(a,b){ var dr=a[0]-b[0],dg=a[1]-b[1],db=a[2]-b[2]; return dr*dr+dg*dg+db*db; }
+
+  // fichier d'une (créature, humeur) : 1ère variante dispo
+  function fileFor(c,mood){ var l=c.moods[mood]; if(l&&l.length) return BASE+l[0];
+    // fallback : n'importe quelle humeur si celle-ci manque
+    for(var i=0;i<MOODS.length;i++){ var m=c.moods[MOODS[i][0]]; if(m&&m.length) return BASE+m[0]; } return null; }
+
+  // extraire ~3 couleurs dominantes (hors contour noir, hors blanc/crème très clair, hors transparent)
+  function extractBases(img){
+    var d=img.data, hist={};
+    for(var i=0;i<d.length;i+=4){
+      var a=d[i+3]; if(a<180) continue;
+      var r=d[i],g=d[i+1],b=d[i+2];
+      if(r<50&&g<50&&b<50) continue;               // contour noir
+      var mx=Math.max(r,g,b),mn=Math.min(r,g,b);
+      if(mx>235&&(mx-mn)<22) continue;             // blanc/crème quasi neutre
+      var key=(Math.round(r/32)*32)+','+(Math.round(g/32)*32)+','+(Math.round(b/32)*32);
+      hist[key]=(hist[key]||0)+1;
+    }
+    var arr=Object.keys(hist).map(function(k){return {c:k.split(',').map(Number),n:hist[k]}}).sort(function(a,b){return b.n-a.n});
+    var picked=[];
+    for(var j=0;j<arr.length && picked.length<3;j++){
+      var ok=true; for(var p=0;p<picked.length;p++) if(dist(arr[j].c,picked[p])<2600){ok=false;break;}
+      if(ok) picked.push(arr[j].c);
+    }
+    if(!picked.length && arr.length) picked.push(arr[0].c);
+    return picked;
+  }
+
+  // recolorer : chaque pixel -> base la plus proche -> décalage préservé sur la couleur cible
+  function recolor(){
+    if(!srcData) return;
+    var s=srcData.data, out=ctx.createImageData(srcData.width,srcData.height), o=out.data;
+    for(var i=0;i<s.length;i+=4){
+      var a=s[i+3]; o[i+3]=a;
+      var r=s[i],g=s[i+1],b=s[i+2];
+      o[i]=r;o[i+1]=g;o[i+2]=b;
+      if(a<180) continue;
+      if(r<50&&g<50&&b<50) continue;               // garde le contour noir
+      var mx=Math.max(r,g,b),mn=Math.min(r,g,b);
+      if(mx>235&&(mx-mn)<22) continue;             // garde blanc/crème
+      // base la plus proche
+      var bi=-1,bd=1e9; for(var k=0;k<bases.length;k++){ var dd=dist([r,g,b],bases[k]); if(dd<bd){bd=dd;bi=k;} }
+      if(bi<0) continue;
+      var t=targets[bi], base=bases[bi];
+      o[i]  = r - base[0] + t[0];
+      o[i+1]= g - base[1] + t[1];
+      o[i+2]= b - base[2] + t[2];
+    }
+    ctx.putImageData(out,0,0);
+  }
+
+  function renderSwatches(){
+    var el=document.getElementById('swatches'); el.innerHTML='';
+    var lbls=['Couleur principale','Couleur d\'ombre','Détail'];
+    bases.forEach(function(base,i){
+      var t=targets[i];
+      var d=document.createElement('div'); d.className='sw';
+      d.innerHTML='<div class="chip" style="background:'+hex(t[0],t[1],t[2])+'">'
+        +'<input type="color" value="'+hex(t[0],t[1],t[2])+'" data-i="'+i+'"></div>'
+        +'<div class="lbl">'+(lbls[i]||('Couleur '+(i+1)))+'<small>tape pour changer</small></div>';
+      el.appendChild(d);
+    });
+    el.querySelectorAll('input[type=color]').forEach(function(inp){
+      inp.addEventListener('input',function(){ var i=+this.dataset.i; targets[i]=fromHex(this.value);
+        this.parentElement.style.background=this.value; recolor(); });
+    });
+  }
+
+  function loadCreature(c,mood){
+    cur=c; curMood=mood||curMood;
+    document.getElementById('cname').textContent = c.name;
+    document.querySelectorAll('#grid .cell').forEach(function(el){ el.classList.toggle('on', el.dataset.id===c.id); });
+    document.querySelectorAll('#moods button').forEach(function(b){ b.classList.toggle('on', b.dataset.m===curMood); });
+    var f=fileFor(c,curMood); if(!f) return;
+    var img=new Image();
+    img.onload=function(){
+      ctx.clearRect(0,0,cv.width,cv.height);
+      // fit dans le canvas 512
+      var r=Math.min(cv.width/img.width, cv.height/img.height), w=img.width*r, h=img.height*r;
+      ctx.drawImage(img,(cv.width-w)/2,(cv.height-h)/2,w,h);
+      try{ srcData=ctx.getImageData(0,0,cv.width,cv.height); }catch(e){ srcData=null; }
+      if(srcData){ bases=extractBases(srcData); targets=bases.map(function(c){return c.slice();}); renderSwatches(); }
+    };
+    img.onerror=function(){};
+    img.src=f;
+  }
+
+  // ── UI init ──
+  document.getElementById('moods').innerHTML = MOODS.map(function(m){return '<button data-m="'+m[0]+'">'+m[1]+'</button>';}).join('');
+  document.querySelectorAll('#moods button').forEach(function(b){ b.addEventListener('click',function(){ loadCreature(cur,this.dataset.m); }); });
+
+  document.getElementById('grid').innerHTML = LIST.map(function(c){
+    var f=fileFor(c,'joyeux')||'';
+    return '<div class="cell" data-id="'+c.id+'"><img src="'+f+'"><span>'+c.name+'</span></div>';
+  }).join('');
+  document.querySelectorAll('#grid .cell').forEach(function(el){ el.addEventListener('click',function(){
+    var c=LIST.filter(function(x){return x.id===this.dataset.id;}.bind(this))[0]; if(c) loadCreature(c,curMood);
+  }); });
+
+  // presets : décalages de teinte appliqués aux bases
+  var PRESETS=[
+    {n:'Bleu',    h:210},{n:'Vert',h:130},{n:'Rose',h:330},{n:'Violet',h:275},
+    {n:'Orange',  h:28 },{n:'Rouge',h:0 },{n:'Or',  h:48 },{n:'Cyan',h:185}
+  ];
+  function rgb2hsl(r,g,b){ r/=255;g/=255;b/=255; var mx=Math.max(r,g,b),mn=Math.min(r,g,b),h,s,l=(mx+mn)/2;
+    if(mx===mn){h=s=0;}else{var d=mx-mn;s=l>.5?d/(2-mx-mn):d/(mx+mn);
+      h=mx===r?(g-b)/d+(g<b?6:0):mx===g?(b-r)/d+2:(r-g)/d+4;h/=6;} return [h*360,s,l]; }
+  function hsl2rgb(h,s,l){ h/=360; function f(p,q,t){if(t<0)t++;if(t>1)t--;if(t<1/6)return p+(q-p)*6*t;if(t<1/2)return q;if(t<2/3)return p+(q-p)*(2/3-t)*6;return p;}
+    var q=l<.5?l*(1+s):l+s-l*s,p=2*l-q; return [f(p,q,h+1/3),f(p,q,h),f(p,q,h-1/3)].map(function(v){return Math.round(v*255);}); }
+  document.getElementById('presets').innerHTML = PRESETS.map(function(p,i){
+    return '<div class="preset" data-i="'+i+'" title="'+p.n+'" style="background:'+hex.apply(null,hsl2rgb(p.h,.7,.5))+'"></div>';
+  }).join('');
+  document.querySelectorAll('#presets .preset').forEach(function(el){ el.addEventListener('click',function(){
+    var p=PRESETS[+this.dataset.i];
+    targets=bases.map(function(base){ var hsl=rgb2hsl(base[0],base[1],base[2]); return hsl2rgb(p.h,Math.max(.35,hsl[1]),hsl[2]); });
+    renderSwatches(); recolor();
+  }); });
+
+  document.getElementById('btnReset').addEventListener('click',function(){ targets=bases.map(function(c){return c.slice();}); renderSwatches(); recolor(); });
+  document.getElementById('btnRandom').addEventListener('click',function(){
+    targets=bases.map(function(base){ var hsl=rgb2hsl(base[0],base[1],base[2]); return hsl2rgb(Math.floor((base[0]*7+base[1]*13+base[2]*17+Date.now()/97)%360),Math.max(.4,hsl[1]),hsl[2]); });
+    renderSwatches(); recolor();
+  });
+
+  if(cur) loadCreature(cur,'joyeux');
+})();
+</script>
+</body>
+</html>

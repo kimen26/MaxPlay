@@ -1,4 +1,4 @@
-// avatars.js — manifest des avatars dinos (généré depuis site/img/avatars/). Variant-aware.
+// avatars.js — manifest des avatars dinos (généré). Variant-aware.
 window.MAXPLAY_AVATARS_BASE = "img/avatars/";
 window.MAXPLAY_AVATARS = [
  {
@@ -28,11 +28,13 @@ window.MAXPLAY_AVATARS = [
    "joyeux": [
     "trex_joyeux_1.png",
     "trex_joyeux_2.png",
-    "trex_joyeux_3.png"
+    "trex_joyeux_3.png",
+    "trex_joyeux_4.png"
    ],
    "enerve": [
     "trex_enerve_1.png",
-    "trex_enerve_2.png"
+    "trex_enerve_2.png",
+    "trex_enerve_3.png"
    ],
    "original": [
     "trex_original_1.png",

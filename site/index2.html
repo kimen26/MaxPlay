@@ -59,6 +59,7 @@
   <script src="js/data.js"></script>
   <script src="js/bus-svg.js"></script>
   <script src="js/celebrate.js"></script>
+  <script src="js/decor.js"></script>
   <script>
   // ───────────────────────────────────────────────────────────────────────
   //  La ligne de Max — hub v2 (index2.html, en parallèle de index.html)
@@ -193,6 +194,38 @@
   const road = document.createElement('div');
   road.className = 'road';
   world.appendChild(road);
+
+  // ─── Décor PNG (mêmes items que les planètes de la fusée — img/decor/) ──
+  // Inséré AVANT les arrêts dans le DOM → peint derrière eux.
+  if (window.Decor) {
+    const holder = document.createElement('div');
+    const plantW = NARROW ? 42 : 56;
+    const PLANTS = ['palmier', 'buisson_fleurs', 'sapin', 'rocher', 'fougere'];
+    let deco = '';
+    // une plante entre chaque paire d'arrêts, posée sur le trottoir
+    for (let i = 0; i < STOPS.length - 1; i++) {
+      deco += Decor.html(PLANTS[i % PLANTS.length], {
+        w: plantW, anim: 'sway', dur: 4 + (i % 3), delay: i * .7, flip: i % 2 === 1,
+        style: `left:${Math.round(STOP_X0 + (i + .5) * STOP_GAP - plantW / 2)}px;bottom:31%`
+      });
+    }
+    // panneau d'arrêt au tout début de la ligne (avant le 1er arrêt)
+    deco += Decor.html('arret_bus', { w: NARROW ? 30 : 38, style: `left:${STOP_X0 - STOP_GAP * .62}px;bottom:31%` });
+    // la vallée des dinos a son volcan qui fume + son geyser en arrière-plan
+    const dinoI = STOPS.findIndex(s => s.zone === 'dinos');
+    if (dinoI >= 0) {
+      const dx = STOP_X0 + dinoI * STOP_GAP;
+      deco += Decor.html('volcan_fumant', { w: NARROW ? 74 : 96, anim: 'pulse', dur: 3, style: `left:${dx + (NARROW ? 74 : 104)}px;bottom:31.5%;opacity:.95` });
+      deco += Decor.html('geyser', { w: NARROW ? 40 : 52, anim: 'pulse', dur: 2.2, style: `left:${dx - (NARROW ? 118 : 160)}px;bottom:31%;opacity:.92` });
+    }
+    // nuages qui traversent le ciel + une étoile filante
+    deco += Decor.html('nuage_blanc', { w: 64, anim: 'drift', dur: 75, style: 'top:6%;--dco:.85' });
+    deco += Decor.html('nuage_gris', { w: 80, anim: 'drift', dur: 95, delay: 25, style: 'top:14%;--dco:.7' });
+    deco += Decor.html('nuage_blanc', { w: 48, anim: 'drift', dur: 60, delay: 45, style: 'top:22%;--dco:.75' });
+    deco += Decor.html('etoile_filante', { w: 44, anim: 'shoot', dur: 13, delay: 4, style: 'right:12%;top:5%' });
+    holder.innerHTML = deco;
+    while (holder.firstChild) world.appendChild(holder.firstChild);
+  }
 
   // Arrêts
   const zoneStars = (stop) => window.MAXPLAY_CATALOG

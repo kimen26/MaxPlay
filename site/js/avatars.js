@@ -242,13 +242,16 @@ window.MAXPLAY_AVATARS = [
   "moods": {
    "joyeux": [
     "centro_joyeux_1.png",
-    "centro_joyeux_2.png"
+    "centro_joyeux_2.png",
+    "centro_joyeux_3.png"
    ],
    "enerve": [
     "centro_enerve_1.png",
     "centro_enerve_2.png"
    ],
-   "original": []
+   "original": [
+    "centro_original_1.png"
+   ]
   }
  },
  {
@@ -274,13 +277,16 @@ window.MAXPLAY_AVATARS = [
   "moods": {
    "joyeux": [
     "mammouth_joyeux_1.png",
-    "mammouth_joyeux_2.png"
+    "mammouth_joyeux_2.png",
+    "mammouth_joyeux_3.png"
    ],
    "enerve": [
     "mammouth_enerve_1.png",
     "mammouth_enerve_2.png"
    ],
-   "original": []
+   "original": [
+    "mammouth_original_1.png"
+   ]
   }
  },
  {

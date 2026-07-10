@@ -1,13 +1,16 @@
-// dinos-audio-manifest.js — GENERE depuis les fichiers reels de audio/dinos/.
+// dinos-audio-manifest.js — GENERE depuis les fichiers reels de audio/dinos/<lang>/.
 // Regenerer apres tout ajout audio : node -e "<voir studio/dino/content/scripts/export/>" ou re-executer la commande du commit.
-// Usage : <script src="js/dinos-audio-manifest.js"></script> -> window.DINO_NOM_AUDIO (Set des ids ayant <id>-nom.mp3)
+// Usage : <script src="js/lang.js"></script> puis <script src="js/dinos-audio-manifest.js"></script>
+//   -> window.DINO_NOM_AUDIO (Set des ids ayant <id>-nom.mp3 dans le pack de la langue active)
 // Helper central : joue le nom en voix reelle (<id>-nom.mp3), fallback TTS.
 // Usage jeux : playDinoNom(dino.id, dino.name [, {then}]) — remplace speak(name).
+// Garde-fou : si lang.js absent, pack FR par defaut (comportement historique).
+window.AUDIO_DINOS = window.AUDIO_DINOS || 'audio/dinos/fr/';
 window.playDinoNom = function (id, fallbackName, opts) {
   const done = opts && opts.then;
   if (window.DINO_NOM_AUDIO && window.DINO_NOM_AUDIO.has(id)) {
     try {
-      const a = new Audio('audio/dinos/' + id + '-nom.mp3');
+      const a = new Audio(window.AUDIO_DINOS + id + '-nom.mp3');
       a.volume = 0.95;
       if (done) a.onended = done;
       a.play().catch(() => { if (window.TTS) TTS.speak(fallbackName, { pitch: 1.05, priority: true }); if (done) done(); });
@@ -19,4 +22,8 @@ window.playDinoNom = function (id, fallbackName, opts) {
   return null;
 };
 
-window.DINO_NOM_AUDIO = new Set(["aenocyon","albertosaurus","allosaurus","amargasaurus","ankylosaurus","apatosaurus","archaeopteryx","archelon","baryonyx","brachiosaurus","camarasaurus","carcharodontosaurus","carnotaurus","centrosaurus","ceratosaurus","coelodonta","cryolophosaurus","deinonychus","dilophosaurus","dimetrodon","diplodocus","edmontonia","edmontosaurus","elasmosaurus","euoplocephalus","gallimimus","giganotosaurus","glyptodon","ichthyosaurus","iguanodon","kentrosaurus","liopleurodon","mammuthus","megatherium","microraptor","mosasaurus","ophthalmosaurus","oviraptor","pachycephalosaurus","paraceratherium","parasaurolophus","patagotitan","pentaceratops","plateosaurus","protoceratops","pteranodon","quetzalcoatlus","shonisaurus","smilodon","spinosaurus","stegosaurus","tarbosaurus","therizinosaurus","titanis","torosaurus","triceratops","troodon","tyrannosaurus","utahraptor","velociraptor"]);
+// Sets par langue — genere en scannant audio/dinos/<lang>/*-nom.mp3.
+// Une langue absente ici = 0 MP3 -> playDinoNom retombe sur TTS natif SANS tenter de fetch (anti-404).
+window.DINO_NOM_AUDIO_BY_LANG = {};
+window.DINO_NOM_AUDIO_BY_LANG.fr = new Set(["aenocyon","albertosaurus","allosaurus","amargasaurus","ankylosaurus","apatosaurus","archaeopteryx","archelon","baryonyx","brachiosaurus","camarasaurus","carcharodontosaurus","carnotaurus","centrosaurus","ceratosaurus","coelodonta","cryolophosaurus","deinonychus","dilophosaurus","dimetrodon","diplodocus","edmontonia","edmontosaurus","elasmosaurus","euoplocephalus","gallimimus","giganotosaurus","glyptodon","ichthyosaurus","iguanodon","kentrosaurus","liopleurodon","mammuthus","megatherium","microraptor","mosasaurus","ophthalmosaurus","oviraptor","pachycephalosaurus","paraceratherium","parasaurolophus","patagotitan","pentaceratops","plateosaurus","protoceratops","pteranodon","quetzalcoatlus","shonisaurus","smilodon","spinosaurus","stegosaurus","tarbosaurus","therizinosaurus","titanis","torosaurus","triceratops","troodon","tyrannosaurus","utahraptor","velociraptor"]);
+window.DINO_NOM_AUDIO = window.DINO_NOM_AUDIO_BY_LANG[(window.Lang && window.Lang.current()) || 'fr'] || new Set();

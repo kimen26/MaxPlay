@@ -3,7 +3,7 @@
 > **Language:** English (voice target: **Native English**).
 > **Method:** English **respelling** (how a native English speaker actually says the name). This is spoken text only — it is **fed to the TTS engine, never displayed** on screen. So we may deform the spelling freely to get the right sound.
 > **Stress marking:** English is a stress-timed language, so the **stressed syllable is written in CAPITALS**. Syllables are separated by hyphens. Example: Tyrannosaurus → **tie-RAN-oh-SOR-us**.
-> Sibling of the FR lexicon `_LEXIQUE-PRONONCIATION.md` (same intent, English conventions).
+> Sibling of the FR lexicon `fr.md` (same intent, English conventions).
 
 ---
 

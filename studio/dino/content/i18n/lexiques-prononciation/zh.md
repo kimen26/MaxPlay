@@ -3,7 +3,7 @@
 > **Langue cible : chinois mandarin (中文, Pǔtōnghuà).** Voix TTS : **Native Mandarin Chinese**.
 > **Méthode : écriture native + nom établi** (PAS de translittération phonétique). Le chinois nomme les dinosaures de façon **sémantique**, avec le suffixe **龙 (lóng, « dragon ») ≈ « -saure »**. Ex : *Tyrannosaurus* n'est pas « ta-i-ra-no », c'est **霸王龙** (bàwánglóng, « dragon roi-tyran »).
 > **Ce lexique sert à générer l'AUDIO TTS avec une voix native mandarin. Le texte parlé (hanzi) n'est JAMAIS affiché à l'écran** — c'est uniquement l'entrée que lit la voix. La colonne pinyin sert au contrôle humain, pas au TTS (on donne les **hanzi** au moteur).
-> Forgé sur le gabarit FR [`../_LEXIQUE-PRONONCIATION.md`](../_LEXIQUE-PRONONCIATION.md).
+> Forgé sur le gabarit FR [`fr.md`](fr.md).
 
 ---
 

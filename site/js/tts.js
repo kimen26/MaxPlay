@@ -36,7 +36,7 @@
   function speak(text, opts) {
     if (!synth || !text) return;
     opts = opts || {};
-    const lang     = opts.lang     || 'fr-FR';
+    const lang     = opts.lang     || (window.Lang ? window.Lang.bcp47() : 'fr-FR');
     const rate     = opts.rate     != null ? opts.rate     : 0.9;
     const pitch    = opts.pitch    != null ? opts.pitch    : 1.0;
     const volume   = opts.volume   != null ? opts.volume   : 1.0;

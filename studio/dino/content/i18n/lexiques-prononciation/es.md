@@ -3,7 +3,7 @@
 > **Idioma cible : Español (España).** Voz TTS : *Native Spanish (Spain)*.
 > **Método : respelling al español** (reescritura fonética). El español es casi 100 % fonético : lo que se escribe se lee. Por eso el respelling consiste sobre todo en **usar la forma española establecida del nombre** (Tiranosaurio, Braquiosaurio…) y, cuando hace falta, marcar las sílabas y la **tilde de acento** para guiar el TTS.
 > **Este texto SIRVE AL AUDIO TTS con voz nativa — el texto hablado NUNCA se muestra en pantalla.** Se puede deformar la grafía sin escrúpulo: solo cuenta cómo SUENA.
-> Forma de referencia estructural : el léxico FR [`_LEXIQUE-PRONONCIATION.md`](../_LEXIQUE-PRONONCIATION.md).
+> Forma de referencia estructural : el léxico FR [`fr.md`](fr.md).
 
 ---
 
@@ -131,4 +131,4 @@ Ningún nombre ha sido inventado. Cuando no existe una forma española clarament
 
 ---
 
-_Creado 2026-07-08. Método : respelling al español (voz Native Spanish España). Fuente de autoridad de pronunciación dino en español. Todo generador de audio dino en ES lo aplica ANTES de ElevenLabs. Estructura espejo del léxico FR `_LEXIQUE-PRONONCIATION.md`._
+_Creado 2026-07-08. Método : respelling al español (voz Native Spanish España). Fuente de autoridad de pronunciación dino en español. Todo generador de audio dino en ES lo aplica ANTES de ElevenLabs. Estructura espejo del léxico FR `fr.md`._

@@ -10,7 +10,7 @@
 
 | Langue | Fichier | Méthode | Voix TTS cible |
 |--------|---------|---------|----------------|
-| 🇫🇷 Français | [`../_LEXIQUE-PRONONCIATION.md`](../_LEXIQUE-PRONONCIATION.md) (gabarit, existant) | respelling FR | narrateur_h FR |
+| 🇫🇷 Français | [`fr.md`](fr.md) (gabarit, existant) | respelling FR | narrateur_h FR |
 | 🇬🇧 Anglais | [`en.md`](en.md) | respelling EN (accent en CAPS) | Native English |
 | 🇧🇷 Portugais BR | [`pt-br.md`](pt-br.md) | respelling PT-BR (-sauro) | Native Brazilian Portuguese |
 | 🇪🇸 Espagnol | [`es.md`](es.md) | respelling ES (-saurio) | Native Spanish (Spain) |

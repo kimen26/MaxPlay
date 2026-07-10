@@ -9,7 +9,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const V3DIR = path.join(__dirname, '..', '..', 'scripts-audio', 'V3');
+const V3DIR = path.join(__dirname, '..', '..', 'scripts-audio', 'fr', 'V3');
 const OUT = path.join(V3DIR, 'json');
 fs.mkdirSync(OUT, { recursive: true });
 

@@ -88,7 +88,9 @@
   <script src="js/stars.js"></script>
   <script src="js/qcm-retry.js"></script>
   <script src="js/mj-golden.js"></script>
+  <script src="js/lang.js"></script>
   <script src="js/dinos-data.js"></script>
+  <script src="js/dinos-i18n.js"></script>
   <script src="js/dinos-audio-manifest.js"></script>
   <script>
     // ─── MJ-31 — Le grand voyage du temps (dino → bonne bande d'époque) ───
@@ -224,7 +226,7 @@
       document.getElementById('dinoName').textContent = targetDino.name;
       document.getElementById('dinoCard').innerHTML = '<img src="' + ombreSrc(targetDino) + '" alt="">';
       // Annonce en voix reelle (asset <id>-nom.mp3) — fallback TTS pour les 9 dinos en attente quota EL
-      playEl('audio/dinos/' + targetDino.id + '-nom.mp3', targetDino.name + ' ! Il vivait quand ?');
+      playEl(window.AUDIO_DINOS + '' + targetDino.id + '-nom.mp3', targetDino.name + ' ! Il vivait quand ?');
 
       document.querySelectorAll('.band').forEach(b => {
         b.classList.remove('ok','ko');
@@ -305,7 +307,7 @@
       }
       const file = PERIODE_MP3[d.periode];
       if (file) {
-        playEl('audio/dinos/periodes/' + file + '.mp3', d.name + '. ' + d.epoque + '.',
+        playEl(window.AUDIO_DINOS + 'periodes/' + file + '.mp3', d.name + '. ' + d.epoque + '.',
                () => { if (suiteTxt) speak(suiteTxt, onComplete); else if (onComplete) onComplete(); });
       } else {
         speak(d.name + '. ' + d.epoque + '.', () => {
@@ -360,7 +362,7 @@
         if (meteorIdx < METEOR_SLIDES.length) showMeteorSlide();
         else showEnd();
       }
-      playEl('audio/dinos/special-extinction-' + s.mp3 + '.mp3', s.fallback, () => setTimeout(advance, 600));
+      playEl(window.AUDIO_DINOS + 'special-extinction-' + s.mp3 + '.mp3', s.fallback, () => setTimeout(advance, 600));
       div.onclick = advance;
     }
 

@@ -1,5 +1,5 @@
 // ─── Encyclopédie Dinosaures MaxPlay ───
-// 48 dinos · données riches · FR · adapté 3-5 ans
+// Données riches · FR = canon inline (i18n : overlay js/dinos-i18n.js) · adapté 3-5 ans · count = length (jamais en dur)
 // Catégories : carnivores · herbivores · piscivores · omnivores
 
 // ─── Familles (2e catégorisation) ───

@@ -2,80 +2,54 @@
 llm: claude-haiku-4-5
 role: libre
 temperature: def
-date: 2026-07-03
-vague: 5
+date: 2026-07-10
+vague: 6
 ---
 
-# La libellule impossible
+Au bord de l'étang, l'eau miroite sous le soleil de mai. Les joncs se balancent. Juju, Nono et Wex courent déjà au bord de l'eau, riant fort.
 
-L'étang frissonne sous le soleil du printemps. L'eau est tiède contre les pieds nus. Partout, des têtards filent — des points d'ombre sous la surface. Juju, Nono et Wex jouent au bord, à trois mètres de profondeur qui n'existe pas.
+Juju se lance dans une course folle. « Qui attrape un têtard ? » Elle saute par-dessus les herbes hautes, ses pieds claquent sur le sol mouillé. Nono la suit sans crier, juste en souriant. Wex bondit en arrière, les bras levés. Ils rient tous les trois ensemble — du ventre, du corps entier, sans arrêt.
 
-Juju court la première. Elle saute, elle crie. Les gouttelettes collent à sa peau et à ses cheveux. Elle rit fort, un rire qui rebondit sur l'eau.
+Un bourdon passe en bourdonnant. Juju le suit du doigt. « Regarde, il est énorme ! »
 
-« Regarde, regarde ! » crie Wex. Une main pointée au ciel.
+Puis elle arrête net.
 
-La libellule arrive comme une fusée bleue. Elle s'arrête net en l'air — suspendue sur place, les ailes qui tremblent à peine. Puis elle repart en zigzag vers les roseaux, vers les nuages, vers le ciel vide. Impossible à suivre du doigt.
+À trois mètres d'elle, une libellule bleue apparaît dans le rayon de soleil. Elle s'arrête en plein air — complètement immobile une seconde — puis s'en va à quatre-vingt-dix degrés, comme si elle rebondissait d'un mur invisible. Elle revient, s'arrête encore, repart ailleurs.
 
-Juju la chasse. Ses pieds éclaboussent. Nono court aussi, mais plus lentement. Wex tourne sur lui-même, les yeux ronds, la bouche ouverte.
+« Elle... comment elle fait ça ? » murmure Juju.
 
-Encore une fois, la libellule vient. Et encore. Et encore.
+Les trois se figent. La libellule devient le seul sujet du monde.
 
-Juju et Nono bondissent ensemble. Nono lève les mains. « Là ! Là ! »
+« On la chasse ! » crie Juju, et elle se relance. Nono court avec elle. Wex tend ses mains en avant comme pour attraper l'air. La libellule danse, s'arrête, repart. Arrête, repart. Arrête. Impossible à suivre, impossible à attraper, impossible à prévoir. Juju rit — un rire essoufflé de défi qu'on ne gagne pas. Nono crie « Attends ! » en courant plus fort. Wex bondit, la main qui claque dans le vide.
 
-Mais le vol de la bête est trop vif. Elle coupe court, elle s'échappe. Les trois enfants retombent sur le sable, soufflants, joyeux. Le jeu continue — ce rythme parfait : on la voit, on court, on la perd, on respire, on la voit à nouveau.
+Trois fois, quatre fois. La libellule gagne toujours.
 
-Et puis, quelque chose change.
+Et puis Nono s'arrête.
 
-Nono s'arrête. Il ne dit rien. Ses bras tombent. Il reste là, debout au bord de l'étang, les yeux sur la libellule qui vole toujours. Mais lui, il a posé les armes. Son corps se calme. C'est comme si tout le bruit à l'intérieur s'était éteint d'un coup.
+Il ne dit rien. Il pose simplement ses pieds au sol et décroche de la course, comme quelqu'un qui ferme les yeux. Son épaule tombe tranquille. Juju, lancée, ne peut pas s'arrêter net — elle glisse dans l'herbe mouillée et percute Nono de plein côté. Elle s'écrase contre son bras. Son cri s'éteint d'un coup.
 
-Juju continue à courir. Elle fonce droit devant elle, lancée par l'élan, incapable de s'arrêter. Et puis — elle percute Nono sans le vouloir. Pas fort. Un choc léger. Elle se fige contre lui, surpris par sa propre maladresse.
+Elle se fige là, contre lui.
 
-Le silence devient épais.
+Le silence.
 
-Wex voit quelque chose. Il ouvre la bouche mais aucun son ne sort.
+Wex arrête sa course, la main encore levée. Il regarde les deux autres — Juju paralysée, Nono qui ne bouge pas.
 
-La libellule bleue descend lentement. Elle descend. Elle vient se poser — légère comme rien — juste sur la main de Nono, celle qui s'est ouverte sans le décider. Les ailes battent encore, minuscules, parfaites. Le bleu brille. Juju ne bouge pas. Personne ne respire.
+C'est à cet instant que la libellule bleue déploie ses ailes et se pose délicatement sur l'épaule de Nono.
 
-Un instant qui dure.
+À trois centimètres de la tête de Juju. Les trois respirent à peine.
 
-Et puis le doigt de Nono s'écarte. La libellule repart. Elle monte, elle vire, elle disparaît vers les roseaux et l'autre rive.
+La bête est entière, visible, immobile — on voyait ses yeux énormes, ses ailes qui se replient lentement. Un instant éternel. Personne n'ose. Wex ouvre la bouche. Aucun mot ne sort.
 
-Les trois enfants restent immobiles. L'étang frissonne encore. Un têtard saute. Un oiseau d'eau crie au loin, aigu et joyeux.
+Puis Nono tourne vers Juju et sourit — un sourire qui explose sur son visage. Ses yeux se plissent d'une joie absolue. Il ne dit rien, mais il bouge son épaule, très lentement, avec une grande douceur. La libellule s'élève dans l'air, elle tourne, elle s'envole en piqué vers le jonc.
 
-Juju prend la main de Nono.
+Disparu.
 
-« Tu as vu ? » murmure Wex, tout bas.
+Wex explose de rire. Juju se laisse glisser sur le sol, sur le dos, à côté de Nono. Elle respire fort. L'eau scintille. Un héron blanc se pose dans les roseaux loin, quelque part. L'étang reprend son souffle — des bulles remontent à la surface, les joncs se balancent de nouveau comme avant.
 
-Nono sourit à peine. Son sourire est léger, comme l'aile d'une libellule.
+Mais quelque chose a bougé dans l'air. Les trois le savent sans se le dire.
 
 ---
 
-## Note d'intention
+**Note d'intention**
 
-**Angle choisi** : Suspension sensorielle + Stop-and-go du jeu (menu vague 5).
-
-**POV & ouverture** : Narrateur invisible ; entrée par la sensation corporelle (pieds nus dans l'eau tiède, gouttelettes). L'eau vit le lieu, pas un descriptif paysage.
-
-**Le verrou causal respecté** :
-1. Nono se calme sans l'annoncer (« quelque chose change » — son corps le montre, pas ses mots)
-2. Juju entre en contact sans le vouloir (percute de l'élan brut)
-3. **ALORS** la libellule vient. Ce contact + ce calme réunis = la cause
-4. On la libère (doigt qui s'écarte) — victoire = avoir approché puis relâché
-
-**Moment physique mémorable** : La main de Nono qui s'ouvre et reçoit la libellule. Geste mimable, tendre, central — c'est tout le texte autour de ce geste.
-
-**Dialogues** :
-- Juju : 3 répliques (« Regarde, regarde ! » × 1, cri d'effort)
-- Nono : 2 répliques (« Là ! Là ! » + silence/sourire final)
-- Wex : 3 répliques (« Tu as vu ? » × 1 fort, commentaire min)
-- Échange 3+ répliques : Wex/Juju/Nono sur le moment final (murmure + sourire)
-
-**Clarté** : À chaque instant, on sait qui court, qui crie, qui se calme, qui percute. Pas de cascade anonyme. Trois voix distinctes.
-
-**Pas de morale, pas de chute** : Ketsu = image finale (main de Nono, sourire, cri oiseau). Aucun « j'ai compris ». Le sentiment = silence épais + tendresse non nommée.
-
-**Ce qui n'est pas du brief** : Le têtard qui saute, l'oiseau qui crie, le sourire léger de Nono, la formule « main qui s'écarte ». Autant de touches sensorielles qui incarnent le verrou causal sans le nommer.
-
-**Longueur** : 483 mots (histoire seule).
-
-**Univers implicite** : Jamais nommé l'Éveil, la résonance, les pouvoirs. Tout passe par le vivant — le calme de Nono *agit* sur le monde, la libellule le *sent*, mais personne ne le dit. C'est senti, pas expliqué.
+J'ai choisi l'angle **ouverture en mouvement + suspension sensorielle + l'éclat de Nono**. Le texte démarre par l'action (course) et la voix vivante de Juju qui appelle la suivante ; chaque phrase relance sans piler. Le Sho grimpe en énergie folle, l'impossible du vol rendu par le stop-and-go du rythme (« Arrête, repart »). Au Ten, j'ai gardé le silence comme instrument — aucune réplique, aucun geste commenté, juste les corps qui se disposent, et la libellule qui vient sur SON poste (l'épaule). Nono libère avec son mouvement lent et son sourire qui explose — sa joie n'est pas tempête, elle rayonne tranquille. C'est son énergie qui soulève la bête. La Ketsu reprend le lieu vivant — l'étang qui respire de nouveau — sans pirouette ni morale. L'image finale (héron, joncs, bulles) crée un écho de l'ouverture mais change de sens — du jeu à la paix.

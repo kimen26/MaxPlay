@@ -1,78 +1,109 @@
 ---
-llm: kimi-for-coding (K2.7-Code, canal gratuit)
+llm: kimi-k2.7-code
 role: libre
-temperature: 0.6
-date: 2026-07-03
-vague: 5
-canal: call-llm.mjs CLI (contournement timeout MCP — genere en 188s)
+temperature: 1 (forcée endpoint — ex-reco 0.6 refusée depuis 2026-07-10)
+date: 2026-07-10
+vague: 6
 ---
 
-L'herbe au bord de l'étang était drue et poilue sous les pieds. L'eau, pas profonde du tout, brillait comme du thé clair et sentait la terre mouillée. Juju courait le long du rivage, les bras en hélice.
+Le rondin flottait près du bord, lisse et tout mouillé.
 
-— Nono ! Wex ! Vous arrivez pas !
+— Premier qui le touche ! cria Juju.
 
-Elle tenait déjà un brin de roseau comme un fanion. Nono la suivait sans courir, les poches pleines de cailloux plats. Wex tournait sur lui-même pour ne rien louper du ciel.
+Elle décollait déjà. Wex partit derrière elle, les bras en éventail. Nono les suivit, ni plus vite, ni plus lent.
 
-C'est là qu'elle est passée. Une libellule bleue, fine comme un trait de crayon. Elle filait, s'arrêtait en plein milieu de rien, repartait en arrière.
+— Attends ! dit Wex.
 
-— Oh ! a fait Wex, le doigt en l'air.
+— Trop tard ! répondit Juju.
 
-— Faut l'attraper ! a crié Juju.
+Elle posa la paume sur le bois. Le rondin tourna.
 
-Ils se sont rués. La libellule s'envolait avant même qu'ils arrivent. Trois fois. Quatre fois. Ils riaient trop pour être fâchés.
+Wex se pencha, le nez au-dessus de l’eau.
 
-— Elle fait exprès, a dit Juju, le poing sur la hanche.
+— Il y a une bête qui patine là-dessous, dit Wex.
 
-— Elle danse, a dit Nono doucement.
+— Une bête ? fit Juju.
 
-Wex tournait la tête à toute vitesse, comme si son cou aussi pouvait tourner dans tous les sens.
+Nono s’accroupit à côté de lui.
 
-Puis Nono s'est arrêté. Pas brusquement. Comme quand on pose une cuillère qu'on n'a plus besoin de tenir. Il est resté debout, les mains ouvertes le long du corps, le regard sur l'eau. Juju et Wex ont continué à courir.
+— Un araignon d’eau, dit Nono.
 
-— Par ici ! hurlait Juju.
+— Il fait du sur-place, dit Wex.
 
-— Elle est là ! disait Wex.
+— On fait des ronds, dit Nono.
 
-Juju a reculé pour mieux sauter. Son dos a heurté l'épaule de Nono. Elle s'est immobilisée, le bras encore levé, le nez presque collé à son oreille. Elle n'a pas dit un mot. Nono n'a pas bronché. Ils sont restés collés, deux statues qui respiraient.
+— Des ronds partout ! dit Juju.
 
-Wex, derrière, a ouvert la bouche toute ronde.
+Juju tapota la surface du bout du doigt. Des ronds se firent.
 
-La libellule bleue est revenue. Doucement. Elle a décrit un cercle au-dessus de la tête de Nono. Puis elle s'est posée sur le genou de Juju, sur le tissu un peu sale de son pantalon. Ses ailes transparentes battaient toutes seules, très vite, sans bruit.
+C’est alors qu’une ligne bleue passa devant leurs yeux. Arrêt net. Rien. Puis elle fila vers les roseaux.
 
-Juju a regardé son genou. Nono a regardé son genou. Wex a regardé les deux.
+— Oh ! dit Wex.
 
-— Ne bouge pas, a soufflé Nono.
+— La bête bleue ! cria Juju.
 
-— Je bouge pas, a soufflé Juju.
+— Elle vole en zigzag, dit Nono.
 
-Wex a mis ses deux mains devant sa bouche, comme s'il retenait un rire. La libellule est restée un moment. Un moment long et drôle, où personne n'osait cligner des yeux.
+— On l’attrape ! cria Juju.
 
-Puis Nono a levé un doigt, très lentement. La libellule est repartie d'un coup vers les roseaux.
+Elle se rua. Wex tourna sur lui-même pour la suivre. Nono tendit les bras, les paumes en l’air.
 
-— Elle est repartie, a dit Wex.
+La libellule s’arrêta à deux doigts de sa main. Elle semblait suspendue par un fil invisible. Puis elle repartit, piqua vers le sol, remonta.
 
-— Oui, a dit Nono.
+— Elle se moque de nous ! dit Juju.
 
-— On l'a presque eue, a dit Juju.
+— Elle s’arrête toute seule, dit Wex.
 
-Nono a secoué la tête.
+— J’essaie encore, dit Nono.
 
-— On l'a presque vue, a-t-il dit.
+Nono avança les mains, doucement. La libellule fila vers la gauche. Wex se jeta par terre, le ventre dans l’herbe. Juju tourna sur elle-même, bras levés.
 
-Les trois sont restés au bord de l'eau. Un têtard a frissonné à la surface. Juju a souri du côté de Nono. Wex a croisé les bras en arrière, immobile, puis s'est élancé très vite en faisant semblant d'être une libellule.
+— Viens là ! dit-elle.
 
-— Recommence, a dit Nono.
+La libellule passa entre ses doigts. Wex rit.
 
-Et ils ont recommencé.
+— Elle est trop rapide ! dit Wex.
+
+Juju repartit en courant. Nono resta debout. Il avait les yeux sur la libellule. Il s’arrêta de bouger. Le calme monta en lui sans un mot.
+
+Juju ne le vit pas. Elle courait à reculons, les bras ouverts. Elle heurta Nono du dos. Le choc fut doux. Elle se figea, les mains posées sur ses épaules. Nono ne bougea pas. Il tenait le calme comme une pierre chaude dans la paume.
+
+Wex s’immobilisa, la bouche entrouverte.
+
+La libellule revint. Elle se posa sur la main de Nono, juste entre son pouce et son index.
+
+Personne ne respirait.
+
+Nono tourna lentement la tête vers Juju. Il lui fit un grand sourire. Un sourire de gagné, sans bruit.
+
+Puis il ouvrit les doigts.
+
+La libellule décolla, droite, rapide, et disparut au-dessus des roseaux.
+
+Juju éclata de rire.
+
+— Elle a filé ! dit Juju.
+
+— Elle est partie, dit Nono.
+
+— On a failli, dit Wex.
+
+— On a presque, dit Nono.
+
+Juju regarda l’eau.
+
+— Les ronds, dit-elle.
+
+— Les ronds, répéta Wex.
+
+Nono tapota l’eau du bout du doigt. Trois nouveaux ronds s’élargirent.
+
+— Encore, dit Nono.
+
+— Encore, dit Juju.
 
 ---
 
-**Note d'intention**
+**Note d’intention**
 
-J'ai choisi un angle *stop-and-go* rythmé par la poursuite, et un contrepoint *tendresse au contact* pour que le Ten tienne dans l'apnée physique des corps qui se figent. J'ouvre par la sensation, l'herbe sous les pieds et l'odeur de terre mouillée, pour entrer par le corps plutôt que par le paysage. Le point de vue reste un narrateur invisible, très près des gestes, jamais dans les têtes.
-
-Ce que je voulais faire ressentir : l'étonnement d'être choisi par quelque chose de vivant quand on arrête de courir après, et le rire retenu d'un instant où personne ne doit bouger. J'ai amené des images qui ne venaient pas du brief : la cuillère qu'on pose, les deux genoux regardés en même temps, le tissu sale du pantalon où la libellule se pose, les mains de Wex devant sa bouche pour retenir un rire. Le moment physique participatif, c'est le *« Ne bouge pas / Je bouge pas »* — un jeu de statue que l'enfant peut refaire.
-
-Juju reste l'élan : elle commande, défie, relance, puis se fige sans perdre sa force. Nono est incarné par des gestes lents et une voix presque soufflée ; il ne dit pas qu'il se calme, il se pose. Wex observe et nomme ce qu'il voit, sans jamais expliquer le lien entre le calme de Nono et la venue de la libellule.
-
-J'ai écarté tout moment solennel qui aurait justifié les prénoms complets : ici, les surnoms suffisent. J'ai aussi évité de faire de Nono un « sage » ; il est simplement présent, et c'est sa présence qui fait l'espace. La victoire ne dit pas « attrapée » — elle dit « vue ».
+J’ai choisi une ouverture en mouvement par le défi du rondin : l’action et la voix de Juju posent tout de suite l’énergie horizontale du trio, sans décor posé pour décorer. Le POV est un narrateur proche collé aux corps — on voit les mains, les yeux, les épaules, le souffle qui se coupe. J’ai voulu le rythme stop-and-go du vol impossible : des phrases courtes qui filent, puis des blocs figés. Le Ten tient dans l’image du point de contact : Juju plaquée contre Nono, les mains sur ses épaules, et la libellule qui choisit ce calme pour se poser. J’ai ajouté le rondin et les ronds d’eau comme fil conducteur : le défi du début devient le jeu apaisé de la fin, un callback qui ne dit rien. C’est Nono qui ouvre les doigts, et c’est son sourire silencieux qui porte la « victoire ». Je voulais que l’enfant ressente que quelque chose de vivant préfère venir quand on cesse de courir.

@@ -10,14 +10,13 @@
 | Axe | Statut |
 |-----|--------|
 | Histoires canon | 1 — *Le Pont Cassé* (001, refonte 2026-05-08) |
-| Histoires en production | 1 — *Libellule Résonance* (002, étape 6 sélection en cours, vague 5 + panel v2 complétés 2026-07-03) |
-| Axes en stock | 15 (10 unitaires + 5 transversaux) |
+| Histoires en production | 1 — *La Libellule impossible* (002, **VAGUE 6 lancée 2026-07-10** : briefs goût v6 + 14 writers relancés — décision Papa Yann, sélection v2 vague 5 archivée `_archive/vague-5/`) |
+| Axes en stock | 15 (10 unitaires + 5 transversaux) + **3 sujets arc 1 proposés 2026-07-10** (flaque-miroir Lulu·Madie / caillou trop bien rangé Melki·Dadou / goûter d'un seul Mimi·Lulu) — en attente validation Papa Yann |
 | Personnages | 9 + Wex — casting V1 figé (2026-04-24) |
 | Voix ElevenLabs | **10/10 figées** ✅ — Wex/Dadou/Melki/Pierrot/Lulu/Nono + Raph + Juju + Mimi + Madie. Casting voix complet 2026-05-13. |
 | Nom univers | ❌ non tranché — 5 finalistes |
-| Décisions jour même (2026-05-15) | DEC-BRIEF-ARCH-001/002/003 (briefs 3 couches) + DEC-WRITER-ARCH-001 (system/user writers) + DEC-PERSO-STRUCT-001/002/003/004/005 (fiches persos 4 fichiers) + DEC-PROCESS-NEW-001 (process étapes A/B/C/D) |
-| Implémentation urgente | **ARCHI-014** : appliquer DEC-WRITER-ARCH-001 vague 3 STORY-002 (créer gabarits, refondre briefs, adapter writers) |
-| Prochaine action | **ARCHI-014 + arbitrer sélection étape 6 STORY-002** en parallèle (implémentation system/user + validation top 1-3 + greffes Directeur) |
+| Instrument goût | **Lecture annotée = instrument PRINCIPAL** (DEC-DOCTRINE-INSTRUMENT-LECTURE 2026-07-08), duel = arbitrages serrés |
+| Prochaine action | Étape 5 vague 6 STORY-002 (lecture annotée Papa Yann via `site/lecture.html`) + validation 3 sujets arc 1 |
 
 ---
 

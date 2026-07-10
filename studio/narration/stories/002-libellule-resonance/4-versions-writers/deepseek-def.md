@@ -1,99 +1,77 @@
-# Writer : deepseek-def (VAGUE 5)
+---
+llm: deepseek-v4-pro
+role: libre
+temperature: def
+date: 2026-07-10
+vague: 6
+---
 
-> Modèle `deepseek-v4-pro`, température par défaut (param non envoyé), non-thinking.
-> Menu commun — angle choisi librement, déclaré en note d'intention.
-> **Ajustement longueur (2026-07-03)** : version initiale 560 mots (10 au-dessus du plafond 550). Resserrement chirurgical de 11 mots (chevilles/redondances retirées : « tout », « longtemps », « juste », « très », « toujours », un « il »/« elle » redondant), texte et dialogues quasi identiques. Corps ramené à 549 mots.
+# La Libellule impossible
+
+L'eau de l'étang claque sous trois paires de pieds. Tous les trois accroupis.
+
+— Juju, tu l'as vue ?
+
+Nono pointe un vol bleu au-dessus des roseaux. La libellule pile net dans l'air, repart en biais, s'arrête encore.
+
+— Trop rapide ! crie Juju en bondissant. On l'attrape ?
+
+Déjà elle court le long de l'eau. Wex saute derrière, les bras tendus.
+
+— Elle a freiné ! elle a freiné !
+
+La libellule trace un zigzag fou au-dessus des nénuphars. Personne ne l'approche. Juju glisse dans l'herbe, rit, se relance. Wex tourne sur lui-même, les yeux écarquillés.
+
+— Par là ! Nono, par là !
+
+Nono a ralenti. Il regarde ses doigts. La libellule danse entre les tiges, loin de lui.
+
+— Encore ! souffle Juju. On y va !
+
+Elle repart, talons qui claquent. Wex la suit, les bras en croix.
+
+Nono reste debout. Il regarde la lumière sur l'eau. Un têtard frôle sa cheville. Il inspire doucement, expire, les épaules qui descendent.
+
+Juju court toujours. Elle tourne, les doigts écartés — et sa main trouve le bras de Nono.
+
+D'un coup, elle s'arrête. Le choc l'a plantée là, collée à lui, sans bouger.
+
+— Quoi ? chuchote-t-elle.
+
+Nono ne répond pas. Il respire. Juju respire pareil.
+
+Wex s'est figé aussi, les bras en l'air.
+
+La libellule descend. Elle glisse sur un fil d'air, vire lentement, et se pose — juste là, sur l'ongle de Nono, contre la main de Juju.
+
+Personne ne souffle. On entend une feuille tomber.
+
+La bête bleue ouvre ses ailes fines, deux gouttes de ciel. Elle respire avec eux. Un petit souffle.
+
+Nono regarde Juju. Dans ses yeux, quelque chose monte — une joie tranquille, énorme, qui le traverse tout entier.
+
+Il sourit. Un grand sourire qui dit tout.
+
+Il bouge la main — juste un peu, vers le haut.
+
+La libellule décolle, légère, monte au-dessus d'eux, file vers les roseaux.
+
+— Ah, fait Wex dans le silence.
+
+Juju souffle très fort, comme si elle avait retenu tout l'air de l'étang.
+
+— Elle est venue, dit-elle doucement.
+
+Nono regarde l'endroit vide sur son ongle. Son sourire est toujours là.
+
+Un bourdon frôle les trois têtes, traverse la scène, continue.
+
+L'étang reprend son bruit de clapotis contre les pierres.
+
+— J'ai faim, annonce Wex.
 
 ---
 
-L'étang brille sous le soleil du printemps. Des têtards frétillent dans l'eau claire, près du bord. Un héron se tient sur une patte entre les roseaux. L'air sent l'herbe mouillée et la menthe sauvage.
+## Note d'intention
 
-Juju court pieds nus dans la boue tiède.
-
-« Wex ! Nono ! Le dernier qui touche l'eau est une grenouille sans pattes ! »
-
-Wex éclate de rire et fonce vers la rive. Nono marche tranquillement, les mains dans les poches. Il arrive après les autres et pose un doigt sur l'eau.
-
-« Touché », dit Nono.
-
-Juju le regarde, les poings sur les hanches.
-
-« T'as triché, t'as même pas couru ! »
-
-Nono hausse les épaules. Wex s'est déjà accroupi pour observer un bourdon qui butine une fleur jaune. Le bourdon fait brrrrrr, les ailes floues dans la lumière.
-
-Soudain, un éclair bleu traverse l'air devant eux.
-
-« Oh ! » fait Wex, la tête penchée, les yeux tout ronds.
-
-La libellule bleue s'arrête net au-dessus de l'eau. Elle reste immobile deux secondes, puis file vers la gauche, puis vers la droite, puis monte d'un coup sec.
-
-« On dirait une voiture de course ! » crie Juju.
-
-Elle bondit, les bras tendus. La libellule zigzague entre ses doigts. Wex court lui aussi, il saute, il rit et montre du doigt :
-
-« Là ! Non, là ! Elle est passée derrière toi ! »
-
-Nono court avec eux. Il fait trois pas, s'arrête, repart, tend la main doucement. La libellule file plus vite, impossible à suivre.
-
-Juju halète.
-
-« Elle est trop rapide, c'est pas possible ! »
-
-Wex se laisse tomber dans l'herbe en rigolant.
-
-« J'ai tourné sur moi-même et je l'ai perdue dans le ciel. »
-
-Juju s'élance encore une fois. Elle ne voit pas que Nono s'est arrêté au bord de l'eau. Il ne bouge plus, les bras le long du corps, les yeux posés sur le reflet des nuages. Il ne dit rien.
-
-Juju arrive en courant, elle veut s'arrêter mais ses pieds glissent dans l'herbe mouillée. Elle heurte Nono tout doucement et se fige contre son épaule.
-
-« Oups. »
-
-Ils restent là, immobiles tous les deux. Le silence se fait autour d'eux. Les roseaux bruissent. Le héron n'a pas bougé.
-
-Et la libellule bleue ralentit.
-
-Elle vole au-dessus de l'étang en cercles de plus en plus petits. Elle s'approche de Nono, de Juju, elle descend, elle descend et se pose délicatement sur le poignet de Juju.
-
-Personne ne respire.
-
-La libellule replie ses ailes transparentes, puis les ouvre, puis les referme. On dirait un petit souffle posé sur la peau.
-
-Wex s'est relevé sans bruit. Il avance à petits pas, la bouche ouverte, les yeux brillants.
-
-« Elle est venue te dire bonjour », murmure-t-il.
-
-Juju tourne la tête vers Nono en essayant de ne pas trembler.
-
-« Regarde... regarde ses ailes... »
-
-Nono sourit à peine. Il lève lentement son autre main et fait un geste doux dans l'air, comme pour dire « vas-y, tu peux y aller ».
-
-La libellule déploie ses ailes et repart, tranquille, au-dessus de l'eau.
-
-Juju souffle.
-
-« Elle s'est posée sur moi. »
-
-Wex pose sa tête contre l'épaule de Juju.
-
-« J'ai même vu ses yeux. »
-
-Ils restent là tous les trois, les pieds dans la boue tiède. Le bourdon repasse, le héron change de patte, l'étang brille encore un peu.
-
-Nono s'accroupit pour regarder un têtard qui frétille. Juju et Wex s'assoient à côté de lui. Personne ne dit plus rien pendant longtemps.
-
----
-
-**Note d'intention**
-
-J'ai choisi une ouverture par les sensations : la boue tiède, l'odeur de menthe sauvage, le bourdon qui fait brrrrrr. Le POV reste à hauteur d'enfant, dans le corps, dans l'instant. Je voulais qu'on sente le souffle du printemps avant même que la libellule n'apparaisse.
-
-Mon intention principale était de faire ressentir ce moment suspendu où tout s'arrête — pas parce qu'on a attrapé quelque chose, mais parce qu'on est devenu assez calme pour qu'une chose sauvage choisisse de s'approcher. La libellule vient quand Nono est immobile ET quand Juju est en contact avec lui. Les deux causes sont nécessaires, comme une petite mécanique invisible et tendre.
-
-La trouvaille, je crois, c'est le heurt tout doux : Juju glisse dans l'herbe mouillée et se fige contre Nono par accident. Ce n'est pas une leçon de calme, c'est un déséquilibre transformé en pause. Et c'est cette pause que la libellule accepte.
-
-Pour incarner les personnages : Juju garde son élan franc, ses phrases qui claquent (« T'as triché, t'as même pas couru ! »), et même figée elle ne devient pas douce — elle chuchote avec la même intensité. Nono parle très peu, mais il agit : il arrive dernier, il pose un doigt sur l'eau, il fait le geste de libérer la libellule. Wex est le regardeur joyeux, il parle à la libellule (« elle est venue te dire bonjour »), il s'arrête net quand les autres s'arrêtent. Aucun n'explique ce qui s'est passé.
-
-J'ai écarté toute tentation de dire « Nono est spécial », tout commentaire sur le calme, toute pirouette. Le mystère reste entier, comme la libellule. Ce qui reste, c'est une image : trois enfants assis au bord de l'eau, et un héron qui change de patte.
+**Angle choisi :** le figement des trois statues + tendresse au point de contact. Je voulais que l'arrêt de Juju soit physique, presque accidentel (sa main qui « trouve » le bras comme un obstacle), pour garder sa nature d'élan intacte — elle ne devient pas douce, elle est happée par le contact. Nono, j'ai construit sa sortie de course en deux temps : il ralentit (le regard sur ses doigts, le têtard) puis se pose (respiration, épaules qui descendent). Au Ten, j'ai tenu un seul effet sonore (la feuille qui tombe) pour aérer le silence. Le sourire de Nono en éclat joyeux était le vrai nœud : un sourire qui *dit* tout sans parole, puis le geste vers le haut. J'ai fini sur la faim de Wex pour refermer en douceur — un écho au début (même lieu, même énergie retombée, pas une morale en vue). La libellule sur l'ongle est mon ajout concret : un endroit minuscule, précis, qu'un enfant visualise du premier coup.

@@ -1,97 +1,109 @@
 ---
-llm: kimi-k2.6 (payant, thinking enabled)
+llm: kimi-k2.6
 role: libre
-date: 2026-07-03
-vague: 5
-canal: call-llm.mjs CLI payant (writer autorise — contournement timeout MCP)
+temperature: fixe K2.6 (thinking enabled)
+date: 2026-07-10
+vague: 6
 ---
 
-L'eau de l'étang arrivait tout juste aux chevilles. Elle était plus chaude que l'air. Juju tapait des pieds pour faire des ronds qui s'élargissaient et touchaient les roseaux.
+L'étang dormait peu profond, bordé de roseaux qui frémissaient au soleil de printemps. L'herbe était chaude sous les pieds nus. Juju tapait dans ses mains.
 
-— Le premier qui voit le crapaud ! lança-t-elle.
+— Course jusqu'au grand saule ! lança-t-elle. Celui qui arrive dernier est une grenouille !
 
-Wex riait déjà.
+— Moi je suis déjà une grenouille ! cria Wex en sautillant.
 
-— Tu l'as fait fuir hier. Il nous reconnaît.
+— Et moi une libellule, dit Nono. Je vole plus vite.
 
-— Pas vrai ! dit Juju. Il est juste timide.
+— Partez ! hurla Juju.
 
-Nono se pencha sans un bruit. Il montra une feuille qui tremblait.
+Elle fila, les chevilles claquant dans l'herbe. Wex sauta par-dessus une motte de terre. Nono courait, les pieds posés doucement, le souffle tranquille.
 
-— Là. Il respire.
+Une tache bleue fendit l'air devant eux. La libellule s'arrêta net en plein milieu du vide, pivota sur elle-même, fila vers la gauche.
 
-Juju plongea la main. Le crapaud sauta, plouf, et trois gouttes brillantes atterrirent sur leurs nez. L'herbe mouillée sentait bon le vert coupé.
+— Oh ! fit Wex, le doigt pointé. Elle est bleue, toute bleue !
 
-Une ombre bleue coupa le soleil. Elle s'arrêta en plein milieu du ciel, comme si le temps s'était coincé, puis fila vers les roseaux.
+— On l'attrape ! cria Juju. Celui qui la touche est le roi de l'étang !
 
-— Oh, fit Wex.
+— Je veux être roi ! dit Wex.
 
-— Une libellule ! cria Juju. Bleue ! Vraiment bleue !
+— Moi aussi ! dit Nono.
 
-— On l'attrape ? demanda Nono.
+— À vous ! hurla Juju.
 
-— C'est moi qui la prends ! dit Juju.
+Elle fonça vers la bête, les bras en croix. La libellule esquivait. Elle montait, descendait, s'immobilisait d'un coup sans prévenir. Wex tournait sur place, le nez en l'air, en riant.
 
-Ils décollèrent tous les trois. La libellule ralentissait, s'arrêtait net, repartait en arrière. Les enfants tournaient sur eux-mêmes, les bras en l'air.
+— Elle est là ! criait Wex.
 
-— Elle se moque de nous ! disait Juju, essoufflée de rire.
+— Par là ! dit Nono, le doigt tendu.
 
-— Elle va à droite ! dit Wex en pointant du doigt.
+— Non, là ! répondait Juju.
 
-— Non, gauche ! hurlait Juju.
+— Par ici ! hurlait Wex.
 
-La bête bleue passa si près que Wex sentit le vent de ses ailes sur sa joue. Il cria :
+— Elle est trop rapide ! disait Nono.
 
-— Presque !
+Nono ralentit. Il s'accroupit près d'une pierre plate, le bout des doigts posé sur la mousse. Il ne dit plus rien. Son souffle s'apaisa.
 
-Ils coururent jusqu'au saule. La libellule monta haut, très haut, puis descendit en piqué vers l'eau. Ils la suivirent en glissant sur la boue, les genoux verts, les mains ouvertes.
+Juju reculait en suivant la libellule du regard, les bras tendus devant elle. Elle ne regardait pas où elle mettait les pieds.
 
-Nono s'arrêta net. Il ne dit pas pourquoi. Il resta debout, les bras le long du corps, le menton un peu levé, le souffle calme. Il regardait l'eau qui recommençait à s'aplatir.
+— Je l'ai, je l'ai presque...
 
-Juju ne le vit pas. Elle courait encore, le doigt pointé vers le ciel, parce que la libellule revenait.
+Elle heurta Nono de l'épaule. Trébucha. Se rattrapa à son bras. Sa joue frôla sa manche. Elle se figea.
 
-— Elle revient ! Elle…
+Nono resta accroupi, immobile. Juju collée contre lui, une main sur son genou, l'autre en l'air.
 
-Juju heurta Nono dans le dos. Elle bascula contre lui, surprise. Ses mains se cramponnèrent à ses épaules pour ne pas tomber dans l'étang. Elle se figea. Sa bouche resta ouverte sur un cri qui n'était pas sorti.
+Wex, qui courait encore, s'arrêta net. Il les dévisagea, les yeux ronds, la bouche entrouverte.
 
-Wex, qui courait devant, se retourna. Il vit Juju collée à Nono, immobiles, penchés, l'air retenu dans leurs poitrines.
+— Vous faites quoi ? souffla-t-il.
 
-Wex se figa aussi. Il n'osa plus avancer.
+— Chut, fit Nono.
 
-Et la libellule bleue vint se poser sur la manche de Juju. Juste entre le poignet de Juju et la main de Nono qui flottait, ouverte, dans l'air.
+— Je respire pas, dit Juju.
 
-Le silence sentait le roseau et l'eau tiède. Juju plissa les yeux pour ne pas rire. Nono respirait tout doucement, tout doucement. Wex regardait, les yeux ronds comme des billes de verre.
+— Moi non plus, dit Wex.
 
-Nono bougea un seul doigt. Un tout petit bonjour.
+La libellule bleue descendit en ligne droite. Elle vint se poser sur le poignet de Juju, juste là où sa peau touchait presque celle de Nono.
 
-La libellule s'envola.
+— Elle est sur toi, murmura Wex.
 
-Juju éclata de rire. Elle se décolla de Nono en se tenant le ventre.
+Personne ne bougeait. On entendait l'eau clapoter contre les roseaux. Un bourdon passa, lourd et ronronnant.
 
-— On avait l'air de quoi ? demanda-t-elle.
+Juju pinçait les lèvres pour ne pas rire. Ses yeux brillaient.
 
-— D'un gros champignon, dit Wex.
+Nono tourna lentement la tête vers elle. Un grand sourire lui monta au visage.
 
-Nono sourit à peine. Il regarda sa main comme si elle avait changé de forme.
+— Gagné, murmura-t-il.
 
-— Elle est restée longtemps, dit-il.
+Il ouvrit la main vers le ciel, lentement.
 
-Wex hocha la tête, encore éberlué.
+La libellule battit des ailes et s'envola.
 
-— Elle nous aimait bien, dit-il. On était bien.
+— Ouah, fit Wex.
 
-Les trois enfants restèrent au bord de l'eau. Un bourdon passa, lourd et roux. L'étang recommença à frémir autour de leurs chevilles. L'herbe séchait au soleil.
+Juju éclata de rire, les mains sur les genoux.
+
+— Elle nous a fait peur !
+
+— On l'a eue, dit Nono. Un peu.
+
+— Elle reviendra, dit Wex.
+
+— Peut-être, dit Nono.
+
+Wex pointa le doigt vers l'autre bout de l'étang.
+
+— Encore une course ?
+
+— Vers le grand saule, dit Juju. Celui qui arrive dernier est une libellule !
+
+— C'est moi, dit Nono.
+
+— Non, c'est moi ! cria Wex.
+
+Et les pieds nus repartirent dans l'herbe chaude.
 
 ---
 
 **Note d'intention**
 
-J'ai choisi l'angle **stop-and-go** rythmé par l'**ouverture corporelle** et la **tendresse au contact**. Le brief exigeait une course qui s'interrompe brutalement ; le seul moyen de faire sentir cette cassure, c'était de faire claquer le rythme de la poursuite pour mieux le couper par le silence. J'ai commencé par l'eau aux chevilles et la chaleur pour que l'enfant soit dedans avant même de savoir où il est.
-
-Ce que je voulais faire ressentir : la stupeur du silence qui remplace le vacarme. L'idée qu'un être vivant choisit de venir quand le corps cesse de réclamer. Le rire de Juju qui arrive en retard, comme un soulagement après l'apnée.
-
-Ce que j'ai apporté qui ne venait pas du brief : l'image de la main de Nono qui flotte entre le poignet de Juju et la libellule — un espace vide devenu pont sans qu'on le nomme. Le mot de victoire que je donne à Wex : « D'un gros champignon » — il ne célèbre pas la prise, il célèbre la forme ridicule et tendre du groupe figé. Le bourdon « lourd et roux » dans le Ketsu, pour que le bruit du monde reprenne doucement après le silence, comme un cœur qui se remet à battre.
-
-Comment j'ai incarné chaque personnage : **Juju** par l'élan qui ne pense pas (elle recule en courant sans regarder), sa voix qui tape, son rire qui casse la glace à la fin — elle ne devient pas douce au Ten, elle retient juste son rire, ce qui la rend plus drôle. **Nono** par l'immobilité active : il s'arrête, il respire doucement, il bouge un seul doigt — jamais passif, toujours présent. **Wex** par l'étonnement muet puis le mot juste final (« On était bien »), jamais explicatif, jamais au-dessus.
-
-Ce que j'ai choisi d'écarter : l'image de la statue ou de l'épouvantail suggérée dans le menu d'angles. Je ne l'ai pas nommée dans le texte ; j'ai préféré laisser Wex inventer le « gros champignon », qui vient de l'enfance et du corps, pas de l'art ou de la pierre. J'ai aussi écarté l'idée d'un mot de victoire triomphal — personne ne dit « on l'a eue », parce que la victoire, ici, est le relâchement.
+J'ai choisi une ouverture en course et en voix vives — les trois corps partent dès la première ligne, parce que l'énergie horizontale du Ki devait emporter sans poser de décor inutile. Le rythme stop-and-go du Sho imite le vol impossible : phrases courtes qui filent, puis qui coupent. Pour le Ten, je me suis collé au corps de Juju qui percute et se fige, et au silence de Nono qui devient action. C'est son sourire qui libère, pas un geste technique — sa sérénité monte, et le décollage de la libellule naît de ce rayon sans qu'on sache où est le mouvement exact. J'ai ajouté le callback de la grenouille qui devient libellule pour que la fin reparte sur la même impulsion que le début, mais déplacée : on ne gagne pas la même chose qu'au départ. Le POV reste un narrateur invisible très proche des épaules et des souffles, jamais dans la tête.

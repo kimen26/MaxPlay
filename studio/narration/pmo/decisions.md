@@ -186,7 +186,15 @@
 
 ---
 
+## 2026-07-10 — 📝 NOTE INFRA — Endpoint kimi-for-coding force temperature: 1
+
+Le canal gratuit `api.kimi.com/coding/v1` (model `kimi-for-coding`) refuse désormais toute température ≠ 1 (HTTP 400 « invalid temperature: only 1 is allowed for this model », constaté 2× le 2026-07-10 : MCP `ask_kimi` + CLI `call-llm.mjs`). Conséquence : writers **kimi-reco** et **kimi-reco-guide** tournent à **temp forcée 1** (l'ancien 0.6 reco Moonshot n'est plus applicable sur ce canal). Casting figé 14 INCHANGÉ — seule la valeur effective change, documentée dans le frontmatter des versions vague 6. INVARIANTS annoté.
+
+---
+
 ## 2026-07-04 — ❓ QUESTION OUVERTE — DEC-GOÛT-RECETTE-VS-QUALITÉ : Brief goût en RECETTES vs QUALITÉS
+
+> **Note 2026-07-10** : piste « QUALITÉS » **appliquée de facto** aux briefs vague 6 STORY-002 (§5bis refondu par le Directeur : qualité attendue nommée, procédé banni). Décision formelle Papa Yann toujours attendue avant brief STORY-003.
 
 **Auteur (REX)** : Papa Yann (2026-07-04 rejet à chaud opus-def v5).
 

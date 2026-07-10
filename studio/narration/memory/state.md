@@ -1,77 +1,42 @@
-﻿---
+---
 name: État narration MaxPlay
 description: État condensé du pôle narration — histoires, casting, workflow, agents à appeler
 type: project
 ---
 
-> Charger ce fichier au démarrage de toute session NARRATION. Puis lire `narration/pmo/INDEX.md`.
+> Charger ce fichier au démarrage de toute session NARRATION. Puis lire `../pmo/INDEX.md`.
+> ⚠️ Refonte complète 2026-07-10 (méga-audit) — l'ancienne version datait du 2026-04-29 et citait des histoires supprimées au ménage 2026-05-08.
 
-## État histoires (2026-04-29)
+## État histoires (2026-07-10)
 
 | # | Titre | Statut | Persos |
 |---|-------|--------|--------|
-| 001 | Le Pont Cassé | ✅ canon | Wex · Melki · Juju |
-| 002 | Le Rire qui reste | ✅ canon | Wex · Nono · Dadou |
-| 003 | La Confidence | 🟡 workshop | Wex · Madie · Raph |
-| 004 | Cartable-à-trou | ⚪ à faire | Dadou · Lulu · Mimi · Wex |
-| 005 | Le Mardi | ⚪ à faire | Wex · Pierrot · Melki |
-| 006 | Sept à rien | ⚪ à faire | Juju · Mimi · Wex |
+| 001 | Le Pont Cassé | ✅ canon (540 mots, 2026-05-08) | Wex · Raph · Pierrot |
+| 002 | La Libellule impossible | 🟢 étape 4 **vague 6** (14 writers relancés 2026-07-10) | Wex · Juju · Nono |
+| 003-005 | 3 sujets proposés 2026-07-10 (flaque-miroir Lulu·Madie / caillou Melki·Dadou / goûter Mimi·Lulu) | ⏳ validation Papa Yann | — |
 
-**Série "La Parole"** : thème poids des mots — brief dans `archive/inputs-historiques/serie-parole-briefs.md`
-**Axes en stock** : 15 (H-01 à H-10 + T-01 à T-05) → `stories/axes-histoires-en-stock.md`
-**Prochaine action PMO** : canoniser STORY-003 ou démarrer STORY-004
+**Arc 1 actif** (10 épisodes, extérieur, printemps, sans adulte, bienveillant). Arc 2 (Parole) en pause.
+**Source de vérité statuts** : `../stories/INDEX.md` + kanban de chaque story. Ne PAS répondre de mémoire depuis ce fichier.
 
-## Casting V1 figé (2026-04-24)
+## Casting V1 figé (2026-04-24, ajusté 2026-05-05)
 
-| Surnom | Prénom complet | Type | Sensibilité |
-|--------|---------------|------|-------------|
-| **Wex** | Wex | Héros hors-système | — |
-| **Melki** | Melchisédech | #1 Perfectionniste | Minéraux |
-| **Mimi** | Marie (F) | #2 Aidant | Eau |
-| **Dadou** | David | #3 Performeur | Forces |
-| **Madie** | Madeleine | #4 Individualiste | Fréquence |
-| **Lulu** | Luc | #5 Observateur | Quantique |
-| **Pierrot** | Pierre | #6 Loyal | Animaux |
-| **Raph** | Raphaëlle (F) | #7 Enthousiaste | Cosmos |
-| **Juju** | Judith (F) | #8 Challenger | Plantes |
-| **Nono** | Noé | #9 Pacificateur | Vibration |
+Wex (hors-système) + Melki#1 · Mimi#2(F) · Dadou#3 · Madie#4(F) · Lulu#5 · Pierrot#6 · Raph#7(F) · Juju#8(F) · Nono#9. 4F/5M+Wex.
+Détail + sensibilités : `../personnages/INDEX.md` + `lookup.yml`. Diminutifs 4/5 du temps.
 
-**Règle prénoms** : diminutif 4/5 du temps · prénom complet = moments formels/solennels
+## PROCESS (source de vérité : `../equipe/PROCESS.md` + `../pmo/INVARIANTS.md`)
 
-## Règles narratives absolues
+11 étapes 0-10 · 14 writers (6 Claude + 4 Kimi + 2 DeepSeek + 2 Grok) · panel v2 = 12 calls (4 groupes × 3 modèles) · 3 validations auteur (1/6/10) · SLA 3 jours.
 
-- Univers **implicite** : jamais nommé dans les histoires
-- Ennéatypes **dilués** : lisibles dans 3-4 micro-réactions, jamais étiquetés
-- Structure **Kishōtenketsu** (sans antagoniste)
-- Longueur : 400-700 mots · ton sobre · conclusion simple
-- Jamais supprimer de matière narrative sans question explicite à l'utilisateur
+## Outils de goût (depuis 2026-07-03)
 
-## Workflow narration
+- **Lecture annotée** `site/lecture.html` = instrument PRINCIPAL (DEC-DOCTRINE-INSTRUMENT-LECTURE 2026-07-08)
+- **Duel** `site/duel.html` = arbitrages serrés
+- Mémoire de goût : `../gout/memoire-papa-yann.md` (lecture OBLIGATOIRE Directeur étapes 3 et 6) + `../gout/palmares-writers.md`
 
-```
-INBOX.md → Conseiller → Architecte (Plan) → 4 Writers → Lecteurs témoins
-→ Directeur (sélection + brief) → Rewrite → GateKeeper PASS → stories/<NNN>/texte.md
-```
+## Leçon infra writers
 
-## Fichiers clés narration
+Writer long (Kimi surtout) : MCP timeout ~250 s → CLI `infra/mcp/call-llm.mjs` (Bash 600 s). Jamais conclure « panne infra ».
 
-| Fichier | Rôle |
-|---------|------|
-| `narration/pmo/INDEX.md` | **État instantané + reprise après reboot** |
-| `narration/INDEX.md` | Carte complète projet narration |
-| `narration/personnages/INDEX.md` | Casting + tableau des 9 + Wex |
-| `narration/univers/INDEX.md` | Carte du monde |
-| `narration/stories/INDEX.md` | Catalogue récits |
-| `narration/equipe/ORGANIGRAMME.md` | Qui fait quoi — avant d'appeler un agent |
+## Agents
 
-## Agents à appeler selon la tâche
-
-| Tâche | Agent |
-|-------|-------|
-| Brainstorm / challenger une idée | `narration-conseiller` (Opus) |
-| Créer un plan d'histoire | `narration-architecte` (Sonnet) |
-| Écrire une version (angle D libre) | `narration-writer-claude-libre` (Sonnet) |
-| Sélectionner + rewriter | `narration` (Opus) |
-| Validation finale PASS/FAIL | `narration-gatekeeper` (Haiku) |
-| Gestion PMO / tickets | `narration-pmo` (Haiku) |
-| Questions rapides | `quick` (Haiku) |
+Conseiller (pitch/brainstorm) · `narration` Directeur (briefs/sélection/rewrite) · writers claude-libre/kimi-guide · lecteur + lecteur-dyade · gatekeeper · pmo (FOND) · archiviste (FORME).

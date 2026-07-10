@@ -1,62 +1,42 @@
-# Writer : grok-def (VAGUE 5)
+---
+llm: grok-4.3
+role: libre
+temperature: def
+date: 2026-07-10
+vague: 6
+---
 
-> Modèle `grok-4.3`, température par défaut (param non envoyé), reasoning_effort low.
-> Menu commun — angle choisi librement, déclaré en note d'intention.
-> **Ajustement longueur (2026-07-03)** : version initiale 359 mots (sous plancher 400). Développée par le même writer (plus de sensoriel + une réplique de Nono au Ten) sans changer angle ni spine.
+Juju courait le long de l’eau, les pieds dans l’herbe mouillée.  
+— Regardez les têtards ! Ils bougent tous ensemble !  
+
+Wex s’accroupit tout de suite, les mains sur les genoux.  
+— Ils sont tout noirs. On dirait des points qui dansent.  
+
+Nono s’approcha plus doucement. Il remua les roseaux d’une main et l’eau fit un petit clapotis. Les trois riaient. Juju lança une poignée d’herbe qui retomba sur Wex. Il souffla dessus et les brins volèrent. Nono en ramassa un autre et le posa sur le genou de Juju. Elle le laissa là, sans bouger, juste pour voir.
+
+Un éclair bleu traversa l’air au ras de l’eau. La libellule s’arrêta net, suspendue, puis repartit d’un coup sur le côté.  
+— Elle est revenue ! cria Juju.  
+
+Elle bondit. Wex tendit le bras en tournant sur place.  
+— Là ! Non, là !  
+
+Nono avait levé la main, mais la libellule avait déjà changé de direction. Juju sauta encore, manqua de peu les roseaux. Wex rit fort.  
+— Elle freine sans rien, c’est bizarre !  
+
+Ils coururent tous les trois, l’herbe collant à leurs chevilles. La libellule filait, s’immobilisait, repartait. Chaque fois ils arrivaient trop tard.
+
+Nono s’arrêta. Il s’assit dans l’herbe haute, les jambes croisées. Juju continua à courir, Wex aussi. La libellule passa encore une fois. Juju pivota brusquement pour la suivre et son épaule heurta le dos de Nono. Elle s’immobilisa, une main posée sur son bras. Nono ne bougea pas. Juju non plus. Leurs souffles se calmèrent ensemble.
+
+La libellule bleue vint se poser sur un roseau juste devant eux. Ses ailes restèrent à demi ouvertes, toutes transparentes. Wex, resté debout un peu plus loin, murmura :  
+— Elle est là.  
+
+Personne ne parlait. On entendait seulement le clapotis très doux de l’eau contre les pierres. Juju sentait la chaleur du bras de Nono sous sa paume. Nono tourna lentement la tête vers elle. Son sourire s’élargit, grand et tranquille. Il se redressa tout doucement, les mains ouvertes vers le ciel. La libellule battit des ailes et s’envola, droite vers le milieu de l’étang.
+
+Wex fit un pas en avant.  
+— On la reverra peut-être.  
+
+Juju enleva sa main du bras de Nono. Les roseaux se balancèrent une dernière fois. Un têtard remua près de la berge et l’eau fit un petit rond qui s’effaça.
 
 ---
 
-L'herbe chatouille les chevilles de Wex. Il sent l'eau fraîche monter un peu sur ses mollets et les petits cailloux ronds qui bougent sous ses pieds nus. Juju court déjà, les bras grands ouverts.
-
-— Viens, Nono ! crie Juju. On fait le pont avec les roseaux !
-— Je viens, répond Nono. Il marche lentement, les mains qui balancent au bout de ses bras.
-
-Wex attrape une tige souple et la tend à Juju. Leurs doigts se touchent, tièdes et un peu mouillés.
-
-— Tiens, dit Wex. Elle est toute verte et douce.
-— Merci ! Juju tire dessus. Elle bouge comme un serpent qui glisse.
-
-Un bourdon passe près de leurs oreilles, lourd et rond. Les trois enfants rient en même temps, et le rire de Wex fait trembler un peu l'eau devant lui.
-
-Soudain quelque chose bleu vif zigzague au-dessus de l'eau. La libellule s'arrête net, comme collée à l'air, puis repart d'un coup vers la gauche. Ses ailes brillent un instant dans la lumière.
-
-— Regardez ! lance Juju. Elle va plus vite que nous !
-— On la suit ? demande Wex déjà en train de tourner la tête.
-— Elle brille quand elle tourne, dit Nono tout bas.
-
-Les trois courent le long de l'étang. L'herbe glisse sous leurs pieds nus et fait un bruit doux, comme un froissement. La libellule s'arrête, repart, monte un peu, redescend. Juju tend les mains en avant.
-
-— Par ici ! crie-t-elle.
-— Non, là ! répond Wex en pointant le doigt vers les roseaux.
-— Elle est trop rapide, dit Nono tout bas.
-
-Nono ralentit. Il pose un pied, puis l'autre, et s'arrête complètement. Ses épaules descendent tout doucement. Il regarde l'eau sans bouger, les bras qui pendent maintenant le long de son corps.
-
-Juju, lancée, arrive de côté et heurte doucement son bras avec son épaule. Elle se fige tout près de lui, le souffle court, les doigts qui restent en l'air.
-
-— Oh, souffle-t-elle. Tu t'es arrêté.
-— Chut, fait Nono sans tourner la tête. Il garde son genou tout droit.
-
-Wex arrive aussi et reste là, les yeux ronds, les orteils qui s'enfoncent un peu dans la terre mouillée. La libellule bleue descend en ligne droite et se pose sur le genou de Nono. Ses ailes ne bougent plus. On entend juste le clapotis tout doux des têtards qui remontent à la surface et le petit vent qui passe dans les feuilles.
-
-Personne ne parle. Juju garde sa main à deux centimètres du bras de Nono. Wex penche la tête tout doucement.
-
-— Elle est venue, murmure Wex.
-— Elle reste, dit Juju, étonnée.
-— Ses ailes sont toutes tranquilles, ajoute Nono.
-
-Nono ouvre la paume, tout près de l'insecte, sans le toucher. Ses doigts s'écartent lentement. La libellule plie une aile, puis l'autre, et s'envole d'un seul battement. Elle trace un grand cercle au-dessus des roseaux avant de disparaître entre les arbres.
-
-Wex suit le vol du doigt jusqu'au bout.
-
-L'eau reprend son petit bruit régulier contre les pierres.
-
----
-
-Note d'intention
-Angle : Tendresse au contact + sobriété Ketsu
-POV-ouverture : entrée par la sensation (herbe, eau sur les mollets)
-Ce que je veux faire ressentir : le passage du mouvement à l'immobilité partagée
-Trouvaille : le verrou causal (contact Juju-Nono + calme de Nono) qui précède l'atterrissage
-Incarnation : gestes lents de Nono, heurt doux de Juju, paume ouverte sans saisie
-Écarté : toute explication, morale, ou pouvoir de Wex
+J’ai choisi l’angle « ouverture en mouvement » + « dialogue vivant » + « l’éclat de Nono » pour garantir l’enchaînement phrase à phrase et respecter le verrou de mise en scène. L’histoire commence in medias res par la course de Juju et une première réplique qui lance tout ; chaque réplique est attribuée et courte pour que les voix claquent. Le Ten reste limpide grâce à la progression corporelle (Nono s’assoit, Juju percute sans le vouloir, puis le figement). J’ai fait atterrir la libellule sur un roseau plutôt que sur un corps pour garder la netteté spatiale et permettre à Nono de libérer par son seul mouvement ascendant et son sourire. Le Ketsu ramène le clapotis des têtards comme écho discret au début. Wex a trois répliques pour respecter la contrainte. Aucune morale, aucun commentaire narratif.

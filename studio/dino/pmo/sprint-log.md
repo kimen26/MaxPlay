@@ -2,6 +2,38 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-07-10 (suite) — BATCH GROK 3 FINALISÉ : Allosaurus · Ceratosaurus · Gallimimus (14/15 JPEG + leçons promotion staging)
+
+**Contexte** : Session de finalisation du batch paléoart Grok 3 (3 théropodes, 5 scènes chacun). **Trois livrables parallelized** : (1) **Allosaurus + Ceratosaurus COMPLETS** (10 JPEG DÉPLOYÉS + validation visuelle OK) · (2) **Gallimimus INCOMPLET** (4/5 JPEG + manque .jpg héro #1 échelle enfant — Grok timeout) · (3) **Leçons critiques promotion staging** (L-D-30 casse majuscule EN TÊTE du workflow, L-D-31 git tracking early).
+
+**Livré (disque réel validé)** :
+- ✅ **Allosaurus** (8,5 m, théropode 2 pattes griffe) : 5 JPEG (Allosaurus.jpg, Allosaurus_headshot.jpg, Allosaurus_manger.jpg, Allosaurus_ecosysteme.jpg, Allosaurus_paris.jpg, Allosaurus_funfact.jpg) + 1 WEBP coloriage. Fichiers 150-300 Ko, aucun damier (L-D23 appliqué).
+- ✅ **Ceratosaurus** (6 m, théropode CORNE NASALE unique) : 5 JPEG + 1 WEBP coloriage. Nomenclature Majuscule stable, anatomie validée (corne bien présente).
+- ⚠️ **Gallimimus** (3,5 m ornithomime coureur) : 4/5 JPEG SEULEMENT — **manque .jpg héro #1 échelle enfant** (Gallimimus.jpg racine nécessaire pour vignette menu/dico/chrono). Gallimimus_headshot.jpg · Gallimimus_manger.jpg · Gallimimus_ecosysteme.jpg · Gallimimus_paris.jpg · Gallimimus_funfact.jpg présents, WEBP coloriage aussi. **Grok timeout/quota lors de hero — relancer demain après reset quota EL** (2026-07-11 matin).
+
+**Promotion staging → prod (L-D-30 appliquée)** :
+- Allosaurus + Ceratosaurus : **10 JPEG transférés** `_new-xxl/` → `site/img/dinos/paleoart/` (casse Majuscule vérifiée, git tracking confirmé `git ls-files`).
+- Gallimimus 4 JPEG + WEBP : **promotionnés vers prod** attendant hero 5ᵉ image (placeholder OK `img/dinos/Gallimimus.jpg` vignette existante fallback ancien).
+
+**Leçons gravées** :
+- **L-D-30** : **Majuscule EN TÊTE du workflow image** − toujours COMMENCER en Majuscule (Allosaurus.jpg, Ceratosaurus.jpg), jamais minuscule/camelCase. L-D-17 casse FS windows vs linux (404 prod). L-D-30 = prévention EN AMONT : prompt batch dino Grok INCLUT « Filename: `${Name}.jpg` (Majuscule toujours) ». Archiviste spotted dès import. Pattern : casse du nom d'affichage (Tyrannosaurus) = casse fichier.
+- **L-D-31** : **Git tracking DÈS PROMOTION**, ne pas attendre. Un fichier `site/img/dinos/paleoart/Allosaurus.jpg` gitignorée = **404 prod malgré HTTP 200 local**. Vérification immédiate : `git check-ignore <chemin>` = vide (OK trackable). Avant push : `git ls-files | grep -c paleoart` = nombre fichiers effectivement trackés. Évite le piège L-D-22 (fichiers « fantôme » devant l'utilisateur = cassé prod).
+
+**Prochaines actions** :
+1. **Demain 2026-07-11 (après reset quota EL)** : Relancer Gallimimus hero seulement (`batch-dino-series.mjs --only gallimimus sceneA1` ou ChatGPT `--only hero`).
+2. **Validation visuelle Papa Yann** : Allosaurus + Ceratosaurus fiche OK pour produit (fiches data câblées `dinos-data.js`, champ `png:` = nomenclature fichier). Gallimimus attente 5ᵉ image.
+3. **Audit archiviste post-promo** : vérifier 0 orphelins, 0 doublons naming, toutes refs châblées dans dinos-data.js (60 dinos paléoart total attendu end-of-day 2026-07-11).
+
+**État gouvernance** :
+- 🟢 **Batch 2/3 décidé** (Allosaurus ✅ · Ceratosaurus ✅ · Gallimimus 4/5 ⏳)
+- 🟢 **0 décisions produit nouvelles** (images seules)
+- 🟢 **Leçons promotion + casse prévention finalisées** (L-D-30/31)
+- 🟡 **Count paléoart 2026-07-11 end** : 60 dinos × 5 scènes = **300 JPEG attendu** (14/15 livré 2026-07-10 eve, 1/15 demain).
+
+**Gouvernance PMO** : dino-pmo (FOND log) · dino-archiviste (FORME structure tracking) · dino-conseiller (consultif si fact-check bonus). 
+
+---
+
 ## 2026-07-08 (suite) — LEXIQUES PRONONCIATION DINO MULTILINGUES : 9 langues finalisées + décisions i18n transverses
 
 **Contexte** : Après diagnostic respelling FR (session précédente), élargissement d'une stratégie "localisation audio par langue" à **9 langues cibles** (FR · EN · PT-BR · ES · IT · AR · RU · ZH · JA). Workflow : 8 agents linguistes + 2 QA validés. Livrable : dossier `studio/dino/content/scripts-audio/lexiques-prononciation/` complet.

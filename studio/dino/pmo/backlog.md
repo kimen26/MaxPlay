@@ -2,10 +2,19 @@
 
 > Tickets EP-xxx (chantiers) + Leçons L-xxx (patterns gravés). Tenu par `dino-pmo`.
 
+## Leçons (patterns/découvertes gravés)
+
+| ID | Sujet | État |
+|----|-------|------|
+| **L-D-32** | 🌍 **i18n audio = restructure studio autoring** — Pattern fondationnel : source unique (studio/) → pack multilingue (site/). Créer infrastructure (lexiques) AVANT production (MP3). Jamais audio sans lexique pré-existant. Appliquable tout contenu audio éducatif (jeu, narration, encyclopédie). Découverte 2026-07-08/10 : décision d'archi = opportunité à systématiser. Gouvernance : chaque pôle gère sa porte (dino = noms/accroches, game = banque MJ, narration = longs textes/casting voix). Règle figée : DEC-I18N-INVARIANT-001 (jamais régresser). | gravée 2026-07-10 |
+
+---
+
 ## Tickets actifs
 
 | ID | Sujet | Priorité | État |
 |----|-------|----------|------|
+| **EP-D-I18N-Deploy-01** | 🌍 **Restructuration i18n pack audio dino — LIVRÉE & TESTÉE 2026-07-10** — archi préfixe langue `site/audio/dinos/<lang>/` (canon multi-langue), overlay strings JS via `dinos-i18n.js` (FR canon dinos-data.js inchangé), manifest audio `DINO_NOM_AUDIO_BY_LANG` anti-404, studio i18n/ centralisé 9 lexiques, scripts adapté SRC/OUT → fr/. **Tests** : 12 specs Playwright ✅ (mj-15/24/25/26/27/28/29/30/32/33/41 + mj-31 TOUS verts). **Smoke ad-hoc** : dev-dinos+mj-24 FR intact, ?lang=en audio dinos=en/, DINOS fallback FR, 0 exception JS, ?lang=fr re-force fr. **Conformité** : rule figée « MP3 défaut + fallback TTS 404 » PRÉSERVÉE. **mj-31 figée** déjà mentionnait « production canon multilingue » = décision archi cohérente. **Tickets cross-ref** : EP-D-Audio-i18n-EN/PT-BR/ES/IT/AR/RU/ZH/JA (prochaines langues post-FR respellé). | 🟡 moyenne | ✅ **LIVRÉ · TESTÉE · PRÊTE INTÉGRATION** |
 | **EP-D-Paléoart-Allosaurus** | 🖼️ **5 scènes paléoart Allosaurus** — **LIVRÉ 2026-07-03 · VALIDATION DÉPLOIEMENT 2026-07-10**. 7 fichiers `site/img/dinos/paleoart/` (hero Allosaurus.jpg 397K, headshot 369K, ecosysteme 462K, funfact 474K, manger 383K, paris 310K, coloriage WebP 45K). Nomenclature Maj stable. Câblé dinos-data.js `png: 'Allosaurus.jpg'`. Échelle 8,5 m honnête. Anatomie théropode OK. **État 2026-07-10** : tous fichiers décodables, 0 404 disque. | 🟡 moyenne | ✅ **LIVRÉ · PRÊT DÉPLOIEMENT** |
 | **EP-D-Paléoart-Ceratosaurus** | 🖼️ **5 scènes paléoart Ceratosaurus** — **LIVRÉ 2026-07-03/05 · VALIDATION DÉPLOIEMENT 2026-07-10**. 7 fichiers (hero 176K, headshot 365K, ecosysteme 191K, funfact 188K, manger 202K, paris 160K, coloriage 47K). Trait unique : corne nasale (regénération Grok 2026-07-05 OK). Câblé dinos-data.js. Échelle 6 m OK. **État 2026-07-10** : tous OK décodable, 0 orphelin. | 🟡 moyenne | ✅ **LIVRÉ · PRÊT DÉPLOIEMENT** |
 | **EP-D-Paléoart-Gallimimus** | 🖼️ **5 scènes paléoart Gallimimus** — **LIVRÉ 2026-07-03 · VALIDATION DÉPLOIEMENT 2026-07-10**. 7 fichiers (hero 168K, headshot 298K, ecosysteme 224K, funfact 153K, manger 182K, paris 150K, coloriage 48K). **Rectif audit 2026-07-10** : audit-trail orig rapportait faussement « MANQUE HEADSHOT » ; vérif disque confirme **PRÉSENT depuis 2026-07-03 01:36**. Câblé dinos-data.js `png: 'Gallimimus.jpg'`. **État 2026-07-10** : tous OK décodable, zéro 404. | 🟡 moyenne | ✅ **LIVRÉ · PRÊT DÉPLOIEMENT** |

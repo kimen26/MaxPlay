@@ -2,6 +2,26 @@
 
 > Décisions datées (raison + impact). Les décisions **verrouillées** (jamais régresser) vivent dans [`../figees/encyclopedie.md`](../figees/encyclopedie.md).
 
+## 2026-07-10 — DEC-LANG-I18N-ARCHI-001 : Architecture pack audio i18n multilingue (préfixe langue + overlay strings)
+
+**Contexte** : après 9 lexiques prononciation finalisés (2026-07-08), passage de la théorie à l'archi système. Restructuration studio + déploiement site : `site/audio/dinos/{lang}/` canon avec fallback TTS, lexiques overlay strings JS, FR canon inline dinos-data.js inchangé.
+
+**Décision (2026-07-10, Papa Yann validation)** :
+- ✅ **Archi pack par langue** : sous-dossier par langue (`site/audio/dinos/fr/`, `site/audio/dinos/en/`, `site/audio/dinos/pt-br/`…) → mêmes noms fichier/langue facilite fetch/fallback. Canon lang-aware `site/js/lang.js` expose Lang.current/bcp47.
+- ✅ **Overlay strings** : pas de split data (dinos-data.js FR reste solo canon). Surcharge texte via `dinos-i18n.js` lookup Lang.current → strings tableau `DINO`, `DINO_FAMILLES`, `DINO_RACINES` traduits. Dépend de `lang.js` résolution.
+- ✅ **Manifest audio anti-404** : `DINO_NOM_AUDIO_BY_LANG` consulté AVANT fetch (ex clé « `en:tyrannosaurus` » → vrai chemin ou empty = TTS fallback). Gravé dino-audio-manifest.js prod.
+- ✅ **Studio restructuré** : `content/i18n/` centralise 9 lexiques + ancien emplace redirect ; `scripts-audio/fr/` groupe V3 + json-top ; 7 scripts (gen-audio, md2json) adaptés SRC/OUT → fr/.
+- ✅ **Règle frontière** : **toute nouvelle langue = lexique AVANT audio** (jamais audio + lexique after). Jamais régresser sans décision datée explicite Papa Yann.
+
+**Impact** :
+- **Production i18n mécanique post-lexiques** : lexique généré → respelling appliqué → MCP text-to-dialogue eleven_v3 → MP3 déployé `site/audio/dinos/<lang>/`.
+- **Scalabilité** : 10e langue ? créer lexique + adapter studio/scripts, redéployer pack. Aucun changement dinos-data.js ni code.
+- **Retro-compat** : FR canon, EN/PT-BR/ES/IT/AR/RU/ZH/JA optionnels (accès ?lang= ou localStorage). Pas de breaking change.
+
+**Tickets** : EP-D-I18N-Deploy-01 (archi validée prête intégration, tests 12 specs Playwright ✅).
+
+---
+
 ## 2026-07-08 (suite) — DEC-AUDIO-I18N-EXPANSION-001 : Élargissement cibles i18n audio (9 langues)
 
 **Contexte** : après création lexiques prononciation FR complète (2026-06-11) et découverte respelling obligatoire (2026-07-08), architecture audio i18n = **opportunité fondationnelle** : chaque lexique multilingue = prérequis production audio par langue. Workflow : respelling (lexique) → respelling-applier.js → segments JSON → MCP eleven voix native → MP3 langue.
@@ -21,6 +41,19 @@
 - **Calendrier i18n** : FR (2026-07-11) → EN+PT-BR → ES·IT·RU·JA → AR·ZH (priorité validation native).
 
 **Tickets générés** : 8 tickets EP-D-Audio-i18n-{EN,PT-BR,ES,IT,AR,RU,ZH,JA} (dépendances : EP-D-Audio-Noms-Respell + reset EL).
+
+---
+
+## 2026-07-10 — DEC-I18N-INVARIANT-001 : Invariant archi i18n audio (toute langue = lexique avant audio)
+
+**Contexte** : après structure déployée (DEC-LANG-I18N-ARCHI-001), besoin de graver invariant : jamais ne pas appliquer le respelling lexique avant production audio. Incident 2026-07-08 (V3 batch généré SANS respelling 2026-06-15, lexique créé 2026-06-11 = oubli application).
+
+**Décision figée (2026-07-10)** :
+- ✅ **Toute nouvelle langue = lexique créé AVANT régé audio**. Ordre strict : (1) lexique complet 60 dinos dans langue cible (respellings latins OU native non-latin) ; (2) QA validation locuteur natif si besoin ; (3) respelling-applier.js → segment JSON ; (4) MCP text-to-dialogue/speech → MP3 ; (5) deploy `site/audio/dinos/<lang>/`. **Jamais audio d'abord**.
+- ✅ **Jamais régresser** sans décision datée explicite de Papa Yann + leçon gravée.
+- ✅ **Pattern = implicite dans le script** : ne pas rely tête humaine. Script export/production automatise « appliquer lexique → segment → MCP » sans intervention manuelle.
+
+**Impact** : archéologie leçon L-D-27 (2026-07-08) renforcée, pattern devenu invariant système.
 
 ---
 

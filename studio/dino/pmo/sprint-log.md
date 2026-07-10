@@ -2,6 +2,35 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-07-10 (suite I18N RESTRUCTURATION) — Infrastructure audio multilingue déployée + testée : pack préfixe langue, overlay strings, 9 langues figées
+
+**Livré & testé (2026-07-10)** :
+- ✅ **Restructuration i18n pack audio** : `site/audio/dinos/*` → `site/audio/dinos/<lang>/` (9 langues : FR/EN/PT-BR/ES/IT/AR/RU/ZH/JA) ; 378 fichiers git mv tracés.
+- ✅ **Source de vérité langue** : `site/js/lang.js` créé (résolution ?lang= → localStorage → FR défaut, expose Lang.current/bcp47/set, window.AUDIO_DINOS préfixe).
+- ✅ **13 pages déployées branchées** : dev-dinos + mj-15/24/25/26/27/28/29/30/31/32/33/41 (~400 appels audio i18n).
+- ✅ **Stratégie texte overlay** : dinos-i18n.js surcharge DINO/DINO_FAMILLES/DINO_RACINES (dinos-data.js FR canon inline unchanged).
+- ✅ **Manifest audio anti-404** : `DINO_NOM_AUDIO_BY_LANG` consulté AVANT fetch (prévient 404 si langue sans pack).
+- ✅ **Studio réorganisé** : `content/i18n/` centralise 9 lexiques (+ redirect ancien emplace), `scripts-audio/fr/` groupe V3 + json-top, 7 scripts adapté (SRC/OUT → fr/).
+- ✅ **Tests Playwright** : 12 specs ✅ (mj-15/24/25/26/27/28/29/30/32/33/41 + mj-31 TOUS verts). Smoke ad-hoc : dev-dinos+mj-24 FR intact, ?lang=en audio dinos=en/, DINOS fallback FR, 0 exception JS, ?lang=fr re-force fr.
+- ✅ **Conformité règle figée** : « MP3 par défaut + fallback TTS 404 » PRÉSERVÉE (préfixe lang-aware, manifest consulté).
+- ✅ **mj-31 figée** mentionnait déjà « production canon multilingue » → décision d'archi cohérente.
+
+**Gouvernance** :
+- ✅ Décision **DEC-LANG-I18N-ARCHI-001** (2026-07-10) : archi pack préfixe langue, overlay strings, FR canon. Impact : toute nouvelle langue = lexique AVANT audio + pack audio/dinos/<lang>/ mêmes noms.
+- ✅ Décision **DEC-I18N-INVARIANT-001** (2026-07-10) : invariant « toute nouvelle langue = lexique AVANT audio, jamais régresser sans Papa Yann ». Pattern gravé anti-glissement (incident 2026-07-08).
+- ✅ Ticket **EP-D-I18N-Deploy-01** créé : état ✅ LIVRÉ · TESTÉE · PRÊTE INTÉGRATION.
+- ✅ Leçon **L-D-32** gravée (i18n audio = restructure studio autoring, infrastructure avant production, applicable tout contenu éducatif).
+- ✅ INVARIANTS.md MAJ : Langues i18n figée 9 langues, archi déployée, DEC-I18N-INVARIANT-001 appliqué.
+
+**Cross-références** :
+- 🔗 Jeu : mj-15/24/25/26/27/28/29/30/31/32/33/41 (pages branchées audio i18n).
+- 🔗 Narration : gouvernance audio provisoire (chaque pôle gère sa porte, transfert future).
+- 🔗 Studio : `content/i18n/` INDEX à jour, `scripts-audio/fr/` blueprint futures langues.
+
+**Pas de leçon technique** (routine maintenance, pattern gravé invariant).
+
+---
+
 ## 2026-07-10 (suite RECTIFICATION) — BATCH GROK 3 FINALISÉ : Allosaurus · Ceratosaurus · Gallimimus (15/15 JPEG ✅)
 
 **Rectification contexte** : Session précédente (2026-07-10 dino-pmo parallèle) indiquait « Gallimimus 4/5 JPEG (manque hero) ». Vérification disque réelle 2026-07-10 matin : **tous les 15 fichiers sont présents + valides**.

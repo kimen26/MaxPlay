@@ -142,4 +142,4 @@ Formes proposées comme la **translittération la plus standard** ; à confirmer
 
 ---
 
-_Créé pour la production audio dino MaxPlay (voix Native Japanese, eleven_v3). Structure calquée sur `_LEXIQUE-PRONONCIATION.md` (FR). Katakana = forme lue ; romaji = contrôle. Toute incertitude §4 doit être tranchée par un locuteur natif avant prod de masse._
+_Créé pour la production audio dino MaxPlay (voix Native Japanese, eleven_v3). Structure calquée sur `fr.md` (FR). Katakana = forme lue ; romaji = contrôle. Toute incertitude §4 doit être tranchée par un locuteur natif avant prod de masse._

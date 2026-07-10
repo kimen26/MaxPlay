@@ -55,7 +55,9 @@
   <script src="js/stars.js"></script>
   <script src="js/qcm-retry.js"></script>
   <script src="js/mj-golden.js"></script>
+  <script src="js/lang.js"></script>
   <script src="js/dinos-data.js"></script>
+  <script src="js/dinos-i18n.js"></script>
   <script src="js/dinos-audio-manifest.js"></script>
   <script>
     // ─── MJ-24 — Trouve le dino (reconnaissance par nom, ombres chinoises par-dino) ───
@@ -88,7 +90,7 @@
         speak('Trouve le ' + target.name + ' !');   // pas de MP3 pour ce dino (manifest genere)
         return;
       }
-      const a = new Audio('audio/dinos/' + target.id + '-nom.mp3');
+      const a = new Audio(window.AUDIO_DINOS + '' + target.id + '-nom.mp3');
       elAudio = a;
       let fbDone = false;
       const fb = () => { if (fbDone) return; fbDone = true; speak('Trouve le ' + target.name + ' !'); };

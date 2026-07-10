@@ -169,4 +169,4 @@ Non ho **inventato** nessun nome: dove esiste una forma italiana museale/divulga
 
 ---
 
-_Creato 2026-07-08. Lessico di pronuncia dino — ITALIANO (voce TTS nativa italiana). Struttura mutuata dal lessico FR di riferimento (`_LEXIQUE-PRONONCIATION.md`). Ogni writer/generatore audio dino in italiano lo applica PRIMA di ElevenLabs._
+_Creato 2026-07-08. Lessico di pronuncia dino — ITALIANO (voce TTS nativa italiana). Struttura mutuata dal lessico FR di riferimento (`fr.md`). Ogni writer/generatore audio dino in italiano lo applica PRIMA di ElevenLabs._

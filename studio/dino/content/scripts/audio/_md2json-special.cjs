@@ -1,7 +1,7 @@
 // Convertit special-pangee.md / special-extinction.md -> JSON text-to-dialogue par bloc.
 const fs = require('fs');
 const path = require('path');
-const DIR = path.join(__dirname, '..', '..', 'scripts-audio');
+const DIR = path.join(__dirname, '..', '..', 'scripts-audio', 'fr');
 const OUT = path.join(DIR, 'json-top');
 fs.mkdirSync(OUT, { recursive: true });
 const NARR = 'cbRcktt2xvoeFpdvW2wg';

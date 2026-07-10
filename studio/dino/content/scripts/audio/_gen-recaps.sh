@@ -2,7 +2,7 @@
 # Génère les recaps (concat des 4 blocs) pour une liste de dinos. 0 coût API.
 # Chemins RELATIFS (ffmpeg Windows ne gère pas /c/... de pwd). Usage: bash _gen-recaps.sh "id1 id2 ..."
 cd "c:/ProjetsPerso/Claude_Projects/MaxPlay"
-OUT="site/audio/dinos"
+OUT="site/audio/dinos/fr"
 OK=0; KO=0
 for d in $1; do
   if [ -f "$OUT/${d}-nom.mp3" ] && [ -f "$OUT/${d}-taille.mp3" ] && [ -f "$OUT/${d}-regime.mp3" ] && [ -f "$OUT/${d}-funfact.mp3" ]; then

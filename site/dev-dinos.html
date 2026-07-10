@@ -595,8 +595,10 @@ html, body {
   <div id="carousel-dots"></div>
 </div>
 
-<script src="js/dinos-data.js"></script>
+<script src="js/lang.js"></script>
+  <script src="js/dinos-data.js"></script>
 <script src="js/dinos-racines.js"></script>
+<script src="js/dinos-i18n.js"></script>
 <script>
 
 /* ── TTS ── */
@@ -615,10 +617,10 @@ function stopSpeak() { if (synth) synth.cancel(); }
    Narrateur H : accueil / régime / familles · Narratrice F : voyage.
    Si le MP3 manque ou ne charge pas → fallback speechSynthesis (on garde toujours l'existant). */
 const MENU_VOICE = {
-  accueil:  'audio/dinos/menu-accueil.mp3',
-  regime:   'audio/dinos/menu-regime.mp3',
-  famille:  'audio/dinos/menu-familles.mp3',
-  periode:  'audio/dinos/menu-voyage.mp3',
+  accueil:  window.AUDIO_DINOS + 'menu-accueil.mp3',
+  regime:   window.AUDIO_DINOS + 'menu-regime.mp3',
+  famille:  window.AUDIO_DINOS + 'menu-familles.mp3',
+  periode:  window.AUDIO_DINOS + 'menu-voyage.mp3',
 };
 let _menuAudio = null;
 function _stopMenuAudio() { if (_menuAudio) { _menuAudio.pause(); _menuAudio = null; } }
@@ -637,15 +639,15 @@ function playMenuVoice(key, fallbackTxt) { _playMenuSrc(MENU_VOICE[key], fallbac
 /* ── Accroches FAMILLE / RÉGIME (vraies voix ElevenLabs, jouées à l'entrée de la grille) ──
    id famille → menu-fam-<id>.mp3 · id régime → menu-regime-<cat>.mp3. Fallback speechSynthesis si MP3 absent. */
 const MENU_FAM_VOICE = {
-  trex: 'audio/dinos/menu-fam-trex.mp3', cou_long: 'audio/dinos/menu-fam-cou_long.mp3',
-  arme: 'audio/dinos/menu-fam-arme.mp3', cornu: 'audio/dinos/menu-fam-cornu.mp3',
-  bec: 'audio/dinos/menu-fam-bec.mp3', raptor: 'audio/dinos/menu-fam-raptor.mp3',
-  pterosaures: 'audio/dinos/menu-fam-pterosaures.mp3', enaliosaures: 'audio/dinos/menu-fam-enaliosaures.mp3',
-  volant: 'audio/dinos/menu-fam-volant.mp3',
+  trex: window.AUDIO_DINOS + 'menu-fam-trex.mp3', cou_long: window.AUDIO_DINOS + 'menu-fam-cou_long.mp3',
+  arme: window.AUDIO_DINOS + 'menu-fam-arme.mp3', cornu: window.AUDIO_DINOS + 'menu-fam-cornu.mp3',
+  bec: window.AUDIO_DINOS + 'menu-fam-bec.mp3', raptor: window.AUDIO_DINOS + 'menu-fam-raptor.mp3',
+  pterosaures: window.AUDIO_DINOS + 'menu-fam-pterosaures.mp3', enaliosaures: window.AUDIO_DINOS + 'menu-fam-enaliosaures.mp3',
+  volant: window.AUDIO_DINOS + 'menu-fam-volant.mp3',
 };
 const MENU_REGIME_VOICE = {
-  carnivores: 'audio/dinos/menu-regime-carnivores.mp3', herbivores: 'audio/dinos/menu-regime-herbivores.mp3',
-  piscivores: 'audio/dinos/menu-regime-piscivores.mp3', omnivores: 'audio/dinos/menu-regime-omnivores.mp3',
+  carnivores: window.AUDIO_DINOS + 'menu-regime-carnivores.mp3', herbivores: window.AUDIO_DINOS + 'menu-regime-herbivores.mp3',
+  piscivores: window.AUDIO_DINOS + 'menu-regime-piscivores.mp3', omnivores: window.AUDIO_DINOS + 'menu-regime-omnivores.mp3',
 };
 function playFamVoice(famId, fallbackTxt) { _playMenuSrc(MENU_FAM_VOICE[famId], fallbackTxt); }
 function playRegimeVoice(catId, fallbackTxt) { _playMenuSrc(MENU_REGIME_VOICE[catId], fallbackTxt); }
@@ -655,7 +657,7 @@ function playRegimeVoice(catId, fallbackTxt) { _playMenuSrc(MENU_REGIME_VOICE[ca
 const DICO_VOICE = {"-saure":"dico-saure","-odon":"dico-odon","-raptor":"dico-raptor","-lophe":"dico-lophe","cérat-":"dico-cerat","-céphale":"dico-cephale","-mime":"dico-mime","-onyx":"dico-onyx","-ops":"dico-ops","di-":"dico-di","-cantho-":"dico-cantho","-docus / dokos":"dico-docus","-gnathus / gnathos":"dico-gnathus","-metro- / metron":"dico-metro","-oplo-":"dico-oplo","-physis":"dico-physis","-pteryx / pterux":"dico-pteryx","-taurus":"dico-taurus","acro-":"dico-acro","allo-":"dico-allo","an-":"dico-an","anky- / ankylo-":"dico-anky","apato-":"dico-apato","archaeo- / arkhaios":"dico-archaeo","bary- / barus":"dico-bary","brachio-":"dico-brachio","camara-":"dico-camara","carcharo-":"dico-carcharo","carno-":"dico-carno","coelo- / koilos":"dico-coelo","compso- / kompsos":"dico-compso","corytho- / korus":"dico-corytho","cryo-":"dico-cryo","deino- / deinos":"dico-deino","diplo-":"dico-diplo","eu-":"dico-eu","galli-":"dico-galli","giga- / gigas":"dico-giga","gorgo-":"dico-gorgo","kentro- / kentron":"dico-kentro","maia-":"dico-maia","micro- / mikros":"dico-micro","noto-":"dico-noto","ovi-":"dico-ovi","pachy- / pakhus":"dico-pachy","para-":"dico-para","plateo-":"dico-plateo","proto-":"dico-proto","psittaco- / psittakos":"dico-psittaco","ptér- / pteron":"dico-pter","rex":"dico-rex","spino-":"dico-spino","stégo- / stegos":"dico-stego","styraco- / sturax":"dico-styraco","sucho- / soukhos":"dico-sucho","tarbo-":"dico-tarbo","therizino- / therizo":"dico-therizino","tri-":"dico-tri","troo- / titrosko":"dico-troo","tyrannos-":"dico-tyrannos","veloci-":"dico-veloci"};
 function playDicoVoice(cle, fallbackTxt) {
   const slug = DICO_VOICE[cle];
-  _playMenuSrc(slug ? 'audio/dinos/' + slug + '.mp3' : null, fallbackTxt);
+  _playMenuSrc(slug ? window.AUDIO_DINOS + '' + slug + '.mp3' : null, fallbackTxt);
 }
 
 /* ── State ── */
@@ -911,7 +913,7 @@ function _refreshJourneyNext() {
 
 // Joue le récit d'époque (audio/dinos/recit-<id>.mp3). Re-tap = stop. Fin = marqué écouté.
 function playRecit(id, btnEl) {
-  const src = 'audio/dinos/recit-' + id + '.mp3';
+  const src = window.AUDIO_DINOS + 'recit-' + id + '.mp3';
   stopSpeak();
   const wasThis = (_dinoAudioBtn === btnEl && _dinoAudio);
   _stopDinoAudio();
@@ -1812,8 +1814,8 @@ const DINO_VIDEOS = {
 };
 const _BLOCS4 = ['nom','taille','regime','funfact'];
 function _audioSet(id) {
-  const o = { recap: 'audio/dinos/' + id + '-recap.mp3' };
-  _BLOCS4.forEach(b => { o[b] = 'audio/dinos/' + id + '-' + b + '.mp3'; });
+  const o = { recap: window.AUDIO_DINOS + '' + id + '-recap.mp3' };
+  _BLOCS4.forEach(b => { o[b] = window.AUDIO_DINOS + '' + id + '-' + b + '.mp3'; });
   return o;
 }
 // Top 11 dinos avec audio ElevenLabs (duo Narrateur+Wex, 4 blocs). Le reste = TTS live navigateur.
@@ -1925,7 +1927,7 @@ function playBlocTaille(id, btnEl) {
 }
 // Récap audio Pangée / Extinction (which = 'pangee' | 'extinction')
 function playSpecial(which, btnEl) {
-  const src = 'audio/dinos/special-' + which + '-recap.mp3';
+  const src = window.AUDIO_DINOS + 'special-' + which + '-recap.mp3';
   stopSpeak();
   const wasThis = (_dinoAudioBtn === btnEl && _dinoAudio);
   _stopDinoAudio();

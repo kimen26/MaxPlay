@@ -134,4 +134,4 @@ Noms sans forme portugaise clairement établie, ou dont la tonique / le voisemen
 
 ---
 
-_Créé pour la production audio dino MaxPlay — voix Native Brazilian Portuguese. Structure calquée sur le lexique FR de référence (`_LEXIQUE-PRONONCIATION.md`). Passer un PREVIEW PHONÉTIQUE GROUPÉ (1 MP3 énonçant tous les noms à risque) avant toute prod de masse, et faire valider la section Incertitudes par un locuteur natif._
+_Créé pour la production audio dino MaxPlay — voix Native Brazilian Portuguese. Structure calquée sur le lexique FR de référence (`fr.md`). Passer un PREVIEW PHONÉTIQUE GROUPÉ (1 MP3 énonçant tous les noms à risque) avant toute prod de masse, et faire valider la section Incertitudes par un locuteur natif._

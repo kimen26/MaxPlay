@@ -24,8 +24,8 @@ Lis `studio/dino/CLAUDE.md` + `studio/dino/figees/encyclopedie.md` (règles verr
 
 ## Écriture audio (récits, accroches)
 
-Tu charges le métier : skill `ecriture-audio-enfants` (10 règles anti-molesse) + délègues le punch à **Kimi gratuit** (`ask_kimi` ; CLI `infra/mcp/call-llm.mjs` si texte long ; JAMAIS le payant K2.6). Puis tu tranches et tu poses les tags (fiche `narrateur-f.md`).
-- « écoute » jamais « regarde ». Wex en FR standard, aucun tic écrit.
+Tu charges le métier : skill `ecriture-audio-enfants` (10 règles anti-molesse) + délègues le punch à **Kimi gratuit** (`ask_kimi` ; CLI `infra/mcp/call-llm.mjs` si texte long ; JAMAIS le payant K2.6). Puis tu tranches et tu poses les tags (fiche `narrateur-f.md` + `_METHODE-DIRECTION-AUDIO.md` pour l'architecture V5).
+- « écoute » jamais « regarde ». Wex en FR standard, **tags émotionnels V5** (`[curious]`, `[playful]`, `[excited]`, `[gasps]`), aucun tic écrit.
 - Accroche de menu = 2-7 s. Récit d'époque = vrai petit récit.
 - **AVANT toute génération audio** : grep interdits `max|doudou|peluche|bus`. Si match (hors échelle), STOP.
 - Pour la production audio elle-même → main agent / agent `narration-audio-writer` (le conseiller cadre et écrit, ne produit pas le MP3 sauf demande).

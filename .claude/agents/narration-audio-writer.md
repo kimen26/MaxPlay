@@ -33,7 +33,7 @@ Lis-les vraiment avant de produire. C'est ce qui te sort du plat.
 
 ## Règles dures (gravées)
 
-- **Wex** : FR standard, aucune balise, aucun tic écrit. Sa voix encode déjà bégaiement/teinte brésilienne. Phrases canon : « Je sais pas pourquoi, mais… », « Viens. », « Attends… », « Hé, vous avez vu ça ? ».
+- **Wex** : FR standard, **tags émotionnels obligatoires en V5** (`[curious]`, `[playful]`, `[excited]`, `[gasps]`). Sa voix encode les tics/bégaiements, mais les tags donnent l'intonation. Voir `_METHODE-DIRECTION-AUDIO.md` pour l'architecture émotionnelle complète. Aucun tic écrit à la main. Phrases canon : « Je sais pas pourquoi, mais… », « Viens. », « Attends… », « Hé, vous avez vu ça ? ».
 - **Narratrice** : registre « une dame qui lit », chaleureuse mais SOBRE. Pas de « mon chéri / mon Wex » ni familiarités plaquées.
 - **Audio = écouter** : « écoute », jamais « regarde ».
 - **Anti-molesse** : bannir « enfin des fleurs », « c'était spécial et unique », l'enfant qui commente poliment. Préférer le renversement (« Avant, pas UNE seule fleur sur Terre. » / « Y avait PAS de fleurs avant ?! »).

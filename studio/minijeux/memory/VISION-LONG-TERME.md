@@ -18,7 +18,7 @@ type: project
 PÔLE JEU
 │
 ├── 🎮 MINI-JEUX HTML (mj-XX)
-│   État : **23 actifs** (mise à jour 2026-05-14 post-MJ-21 déploiement; mj-02/03/07/10 retirés), pipeline stabilisé
+│   État : **29 actifs** (mise à jour 2026-07-05 post-MJ-28..33 dinos déploiement; mj-02/03/07/10 retirés), pipeline stabilisé
 │   Règles UX/péda/audio/graphique très denses (voir rules.md + stack.md)
 │   Équipe : game-dev (sachant) + game-mj-pmo + game-mj-reviewer
 │

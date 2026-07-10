@@ -41,6 +41,20 @@
 
 ---
 
+### BUG-5 — Pack Voyage : molette bloquée sur la vraie boîte (RÉSOLU 2026-06-28)
+- **Observé** (vraie boîte) : pack "Le voyage des dinosaures", quand on le sélectionne, l'histoire se lance toute seule sans possibilité de choisir l'époque avec la molette.
+- **Cause** : structure de navigation incorrecte. Le cover pointait directement vers des récits avec `autoplay:true` (8 récits dans le menu). Quand la molette pointait sur un récit, le moteur le lançait automatiquement.
+- **Premier essai raté** : suppression des étiquettes intermédiaires pour faire un menu direct cover → récits. Résultat : l'histoire se lance immédiatement sans choix.
+- **Deuxième essai raté** : étiquettes avec `wheel:false`. Résultat : la molette ne fonctionnait pas sur les étiquettes.
+- **Fix final** : restructurer comme le pack Dino (qui marche) :
+  - **Cover** (`squareOne`, `wheel:true`) → OK → menu époques
+  - **Étiquette** (`wheel:true`) → la molette parcourt les 8 époques, OK → récit
+  - **Récit** (`autoplay:true`) → le récit se joue, retour au cover
+- **Règle validée** : pour que la molette fonctionne sur un menu, les **options du menu doivent être des stages avec `wheel:true`** (pas des récits `autoplay`). Les récits `autoplay` doivent être dans un niveau séparé, accessibles via OK depuis les étiquettes.
+- **Pattern correct** : `Cover(wheel) → Étiquette(wheel) → Récit(autoplay) → Retour cover`. Exactement le même pattern que le pack Dino : `Cover(wheel) → Famille(wheel) → Nom(wheel) → Fiche(autoplay)`.
+
+---
+
 ## ⚠️ EN COURS D'INVESTIGATION (bugs ouverts)
 
 ### BUG-1 — La fiche se relance toute seule (répétition) + image figée

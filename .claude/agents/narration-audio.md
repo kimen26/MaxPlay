@@ -39,6 +39,7 @@ Lis dans l'ordre :
 6. `studio/narration/personnages/voix-meta/narrateur-h.md` + `narrateur-f.md` — choisir le narrateur
 7. `studio/narration/stories/<NNN-slug>/9-relecture-rewrite/synthese.md` — frictions à l'oral (si l'étape 9 existe)
 8. Skill global `audio-direction-elevenlabs` — tags v3, tricks graphie, anti-patterns (charge-le)
+9. `studio/dino/content/sources/recits/_METHODE-DIRECTION-AUDIO.md` — **méthode V5** : architecture émotionnelle, ping-pong Narratrice/Wex, respirateur (si production dino/voyage)
 
 ## Workflow de production (5 étapes — PROCESS Audio figé 2026-05-16)
 
@@ -53,7 +54,7 @@ Lis dans l'ordre :
 
 Si le texte est dense ou peu oral, délègue l'adaptation à l'agent **`narration-audio-writer`** (il tue la molesse, rend un dialogue prêt à taguer). Sinon tu adaptes directement.
 
-Puis **tu poses les tags v3** depuis `_CHEATSHEET-WRITERS.md` (`[softly]`, `[excited]`, etc.) — minimum 1-2 tags par bloc de 2000 char, **aucun tag inventé**. Pour Wex : aucun tag, aucun tic écrit (sa voix les encode déjà).
+Puis **tu poses les tags v3** depuis `_CHEATSHEET-WRITERS.md` (`[softly]`, `[excited]`, etc.) — minimum 1-2 tags par bloc de 2000 char, **aucun tag inventé**. Pour Wex : **tags émotionnels obligatoires en V5** (`[curious]`, `[playful]`, `[excited]`, `[gasps]`) — sa voix encode les tics, mais les tags donnent l'intonation. Voir `_METHODE-DIRECTION-AUDIO.md` pour l'architecture émotionnelle complète.
 
 Tu produis aussi un court `audio-brief.md` (choix narrateur + justification + passages à risque à l'oral) dans `stories/<NNN-slug>/assets/audio/`.
 

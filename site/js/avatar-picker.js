@@ -165,10 +165,6 @@
     '#av-col.show{display:block}',
     '#av-grid.hide{display:none}',
     '#av-cv{display:block;margin:0 auto 10px;width:190px;height:190px;background:rgba(255,255,255,.06);border-radius:22px}',
-    '#av-sw{display:flex;justify-content:center;gap:14px;margin:0 0 12px}',
-    '.av-chip{width:52px;height:52px;border-radius:50%;border:3px solid rgba(255,255,255,.35);position:relative;',
-    '  box-shadow:0 3px 8px #0006;overflow:hidden}',
-    '.av-chip input{position:absolute;inset:-10px;width:80px;height:80px;opacity:0;cursor:pointer}',
     '#av-pre{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:0 0 12px}',
     '.av-p{width:34px;height:34px;border-radius:50%;border:2px solid rgba(255,255,255,.3);cursor:pointer}',
     '.av-p:active{transform:scale(.9)}',
@@ -270,7 +266,7 @@
   ov.innerHTML = '<div id="av-box"><h3 id="av-title">🦕 Choisis ton dino !</h3><p id="av-sub">Ce sera ton copain dans le menu</p>' +
     '<div id="av-grid">' + grid + '</div>' +
     '<div id="av-col"><canvas id="av-cv" width="360" height="360"></canvas>' +
-    '<div id="av-sw"></div><div id="av-pre"></div>' +
+    '<div id="av-pre"></div>' +
     '<div id="av-act"><button id="av-rnd">🎲 Surprise</button><button id="av-org">D\'origine</button>' +
     '<button id="av-ok" class="ok">✓ C\'est bon !</button></div></div>' +
     '<button class="av-close">Fermer</button></div>';

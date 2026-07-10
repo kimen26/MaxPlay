@@ -1,0 +1,10 @@
+import { chromium } from 'playwright';
+const b = await chromium.launch();
+const p = await b.newPage({viewport:{width:412,height:820}, deviceScaleFactor:2});
+const errs=[]; p.on('pageerror',e=>errs.push(e.message));
+await p.goto('file:///C:/ProjetsPerso/Claude_Projects/MaxPlay/site/index3.html',{waitUntil:'networkidle'});
+await p.evaluate(()=>localStorage.setItem('maxplay_avatar','tritri'));
+await p.reload({waitUntil:'networkidle'}); await p.waitForTimeout(700);
+console.log('badge:', await p.locator('#av-badge').count(), '· erreurs:', errs.length?JSON.stringify(errs.slice(0,3)):'aucune');
+await p.screenshot({path:'C:/tmp/picker_index3.png'});
+await b.close();

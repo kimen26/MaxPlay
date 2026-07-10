@@ -1,0 +1,11 @@
+import { chromium } from 'playwright';
+import fs from 'fs';
+const b=await chromium.connectOverCDP('http://127.0.0.1:9222');
+const g=b.contexts()[0].pages().find(p=>p.url().includes('grok.com'));
+const src=await g.locator('img[src*="/generated/"]').last().getAttribute('src');
+console.log('src:', src.slice(-40));
+const r=await g.request.get(src);
+console.log('status:', r.status());
+const buf=await r.body(); fs.writeFileSync('C:/tmp/_reqtest.png', buf);
+console.log('taille request.get:', buf.length, 'o');
+await b.close();

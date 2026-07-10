@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {"voice_id": "aHKEGRjW94hqXc6gaItG", "text": "[happily] Le Diplodocus est énorme !"},
+    {"voice_id": "aHKEGRjW94hqXc6gaItG", "text": "[excited] Le Diplodocus est énorme !"},
+    {"voice_id": "aHKEGRjW94hqXc6gaItG", "text": "[serious] Le Diplodocus est énorme !"},
+    {"voice_id": "aHKEGRjW94hqXc6gaItG", "text": "[playful] Le Diplodocus est énorme !"},
+    {"voice_id": "aHKEGRjW94hqXc6gaItG", "text": "[shouts] Le Diplodocus est énorme !"},
+    {"voice_id": "aHKEGRjW94hqXc6gaItG", "text": "[gasps] Le Diplodocus est énorme !"},
+    {"voice_id": "aHKEGRjW94hqXc6gaItG", "text": "[deadpan] Le Diplodocus est énorme !"},
+    {"voice_id": "aHKEGRjW94hqXc6gaItG", "text": "[awe] Le Diplodocus est énorme !"},
+    {"voice_id": "aHKEGRjW94hqXc6gaItG", "text": "[laughs] Le Diplodocus est énorme !"},
+    {"voice_id": "aHKEGRjW94hqXc6gaItG", "text": "[quickly] Le Diplodocus est énorme !"},
+    {"voice_id": "aHKEGRjW94hqXc6gaItG", "text": "Le Diplodocus est [happily] énorme !"},
+    {"voice_id": "aHKEGRjW94hqXc6gaItG", "text": "Le Diplodocus est [excited] énorme !"},
+    {"voice_id": "aHKEGRjW94hqXc6gaItG", "text": "Le Diplodocus est [serious] énorme !"},
+    {"voice_id": "aHKEGRjW94hqXc6gaItG", "text": "Le Diplodocus est [playful] énorme !"},
+    {"voice_id": "aHKEGRjW94hqXc6gaItG", "text": "Le Diplodocus est [shouts] énorme !"},
+    {"voice_id": "aHKEGRjW94hqXc6gaItG", "text": "Le Diplodocus est [gasps] énorme !"},
+    {"voice_id": "aHKEGRjW94hqXc6gaItG", "text": "Le Diplodocus est [deadpan] énorme !"},
+    {"voice_id": "aHKEGRjW94hqXc6gaItG", "text": "Le Diplodocus est [awe] énorme !"},
+    {"voice_id": "aHKEGRjW94hqXc6gaItG", "text": "Le Diplodocus est [laughs] énorme !"},
+    {"voice_id": "aHKEGRjW94hqXc6gaItG", "text": "Le Diplodocus est [quickly] énorme !"}
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

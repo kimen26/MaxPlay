@@ -47,6 +47,7 @@
 | | 14 | grok-reco | `grok-4.3` | low | **1.2** (haut reco créatif — au-delà 1.5 = incohérent) | défaut | `ask_grok` (MCP) | LIBRE |
 
 > **Règles "température"** :
+> - ⚠️ **Note 2026-07-10** : l'endpoint gratuit `kimi-for-coding` force désormais `temperature: 1` (0.6 → HTTP 400 « only 1 is allowed »). Writers #7 kimi-reco et #10 kimi-reco-guide tournent à temp effective 1 depuis la vague 6 STORY-002. Casting figé INCHANGÉ.
 > - `def` = ne PAS envoyer le param. Laisse le fournisseur appliquer son défaut.
 > - `reco` = valeur officielle "creative writing" du fournisseur (cf. [`../equipe/references/temperatures-llm.md`](../equipe/references/temperatures-llm.md) — doc autorité).
 > - Référence Papa Yann 2026-05-12 : "max → reco" parce que `2.0` Grok/Kimi = incohérent narratif.

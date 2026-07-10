@@ -1,90 +1,85 @@
 ---
 llm: claude-opus-4-8
 role: libre
-temperature: reco
-date: 2026-07-03
-vague: 5
+temperature: 1.0 (reco)
+date: 2026-07-10
+vague: 6
 ---
 
-L'eau était tiède comme du lait au soleil. Juju avait les pieds dedans jusqu'aux chevilles, et la vase faisait « splotch » entre ses orteils.
+Au bord de l'étang, l'eau est si peu profonde qu'on voit le fond bouger. Des points noirs y filent — des têtards, plein. Juju a les pieds dans la vase fraîche et elle rit.
 
-— Regarde ! elle criait. Y en a mille !
+« Regardez ! » Elle tape l'eau du plat de la main. Les têtards se sauvent d'un coup. « Ils ont eu peur de moi ! »
 
-Des têtards filaient, petits points noirs, chatouillant. Nono trempait deux doigts, tout doux, et regardait les ronds partir loin sur l'eau. Wex, lui, était accroupi dans les roseaux, à surveiller un bourdon lourd qui n'arrivait pas à décoller.
+Nono est accroupi tout près. Il pose un doigt sur la surface, doucement, et regarde le rond grandir, grandir, jusqu'à toucher le roseau.
 
-— Il est trop gros, dit Wex, très bas, pour lui tout seul.
+« Moi j'en fais un plus grand », dit Juju, et pof, elle recommence.
 
-Et là, quelque chose de bleu passa.
+Wex, lui, éclabousse ses genoux et trouve ça drôle.
 
-Ça brillait comme un bout de ciel qui aurait des ailes. Ça montait, ça descendait, ça s'arrêtait pile dans l'air — plus rien ne bougeait — puis hop, ailleurs. Une libellule. Elle freinait sur du vide, exactement comme un bus qui pile à l'arrêt sans qu'on entende les roues.
+Et puis quelque chose passe. Bleu. Vif.
 
-Juju sortit de l'eau d'un bond.
+Wex s'arrête net, la bouche ouverte. « Oh. »
 
-— À moi ! Je l'attrape !
+C'est une libellule. Bleue comme un fil électrique. Elle file, s'arrête en plein air — pile là, sans bouger — et repart de l'autre côté avant qu'on ait dit ouf.
 
-Elle sauta, les mains grandes ouvertes. Vide. La libellule était déjà trois pas plus loin, immobile au-dessus d'un roseau.
+« Je l'attrape ! » crie Juju.
 
-— Là, souffla Nono, en montrant le roseau du menton.
+Elle bondit, les mains en coupe. La libellule n'est plus là. Elle est déjà au-dessus des roseaux.
 
-— Par là ! cria Wex, le doigt tendu, en tournant tout rond sur lui-même.
+« Par ici ! » Wex tourne sur lui-même, le doigt en l'air, essayant de la suivre. Il tombe sur les fesses dans l'herbe et rit tout seul.
 
-Nono courait aussi, les bras en l'air, riant sans bruit. Chaque fois qu'une main s'approchait, la petite chose bleue s'éteignait d'un côté et se rallumait de l'autre. Ça filait. Ça se figeait. Ça repartait. Les trois pouffaient, essoufflés, les joues chaudes.
+Nono se lève sans un mot. Il ouvre grand les bras et court, léger, en riant du bout des lèvres. Personne ne l'attrape. Elle repart, encore, encore. C'est le plus beau des jeux.
 
-— Elle triche ! souffla Juju.
+Puis Nono ralentit.
 
-Puis Nono s'arrêta.
+Il ne dit rien. Ses bras redescendent. Il s'arrête au milieu de l'herbe et regarde ses pieds, tout tranquille, comme si le jeu était devenu un autre jeu, un jeu où on ne court plus.
 
-Pas parce qu'il était fatigué. Il posa les pieds dans l'herbe, laissa tomber ses bras, et resta là. Son souffle ralentit. Autour de lui, on aurait dit que même les roseaux se taisaient un peu. Il ouvrit une main, la paume vers le ciel, et il attendit — sans rien dire, sans appeler personne.
+Les deux autres, eux, courent toujours.
 
-Juju, elle, courait encore. Elle fonçait, les yeux en l'air sur le bleu, et elle ne le vit pas.
+« Elle est là ! Là ! » Juju fonce, tête baissée, les mains tendues devant — et boum, son épaule cogne le bras de Nono.
 
-Elle rentra dans Nono. Épaule contre épaule. Boum, tout doux.
+Elle s'arrête pile. Sa bouche s'ouvre, prête à repartir.
 
-Et elle s'arrêta net. Sa bouche resta entrouverte. Elle allait repartir — mais elle ne repartit pas. Elle était là, tout contre lui, deux petits cailloux plantés dans l'herbe. Le rire descendit dans sa gorge et s'éteignit.
+Mais elle ne repart pas.
 
-Le monde retint sa respiration.
+Elle reste là, tout contre lui, l'épaule collée à son bras. Autour d'eux, ça devient doux. Même l'eau ne fait plus de bruit.
 
-Alors, dans ce silence-là, la libellule revint. Elle tourna une fois. Puis, sans un bruit, elle se posa sur la main ouverte de Nono. Ses ailes brillaient. On voyait ses gros yeux ronds.
+Alors la libellule revient.
 
-Personne ne bougea.
+Elle descend, tout doucement, et se pose sur le poignet de Juju. Ses ailes brillent. On la voit respirer.
 
-Wex arriva sur la pointe des pieds, se pencha, les yeux énormes.
+Personne ne bouge. Wex a les yeux ronds comme des billes.
 
-— Elle est venue, chuchota-t-il. Toute seule.
+« Elle... elle est posée », souffle-t-il, tout bas, pour ne pas casser.
 
-Juju ne dit rien. Elle regardait la main de Nono comme si c'était le plus beau des trésors. Nono souriait à peine.
+Juju retient son air dans sa poitrine. Nono, à côté, la regarde. Et son sourire monte, lent, immense, un sourire qui prend toute sa figure.
 
-Ça dura un souffle. Un tout petit souffle.
+Il lève la main, très doucement, sous la libellule — et il ouvre les doigts vers le ciel.
 
-Puis Nono leva la main, très lentement, vers le haut.
+« Vas-y », dit-il tout bas.
 
-— Vas-y, murmura-t-il.
+La libellule décolle sur son geste. Elle remonte, bleue, et disparaît par-dessus les roseaux.
 
-La libellule ouvrit les ailes et repartit dans le ciel, bleue, rapide, impossible.
+Juju éclate de rire. « Elle s'est posée sur MOI ! »
 
-Juju éclata de rire.
+« Gagné », dit Nono, tout doucement.
 
-— On l'a eue tout près ! Tout, tout près !
+Wex se remet debout dans l'herbe mouillée. Il regarde l'endroit où elle est partie, puis regarde ses deux amis, sans rien dire.
 
-Wex riait aussi. Le bourdon, enfin, avait décollé. L'eau clapotait sur les cailloux. Et les têtards, en bas, refaisaient mille petits ronds.
+En bas, dans l'eau claire, les têtards sont revenus. Ils filent entre les roseaux, plein de petits points noirs, comme si de rien n'était.
 
 ---
 
-## Note d'intention
+**Angle choisi :** j'ai combiné « tendresse au point de contact » et « callback début↔fin », en ouvrant par l'action et la voix (l'eau tapée, Juju qui rit). POV narrateur invisible mais collé au ras de l'eau, à hauteur des trois corps accroupis.
 
-**Angle déclaré :** j'ai tressé trois fils du menu commun — **Suspension sensorielle** (le Ten tenu en apnée), **Stop-and-go** (le rythme file / se fige / repart de la poursuite) et **Ouverture corporelle** (on entre par la tiédeur de l'eau et la vase entre les orteils, pas par un décor). **POV :** narrateur invisible mais collé aux corps — jamais au-dessus, jamais sachant. **Ouverture :** sensorielle et in medias res (les pieds déjà dans l'eau).
+Ce que j'ai voulu faire ressentir : la bascule entre courir-après et rester-là. Le lecteur doit sentir l'air devenir doux au moment du contact, sans qu'on le lui dise. Le suspens de l'insecte posé qui respire.
 
-**Pourquoi.** Le verrou causal est un mécanisme de *baisse de bruit* : c'est quand tout s'arrête que la bête vient. Le Stop-and-go installe le vacarme joyeux pour que la chute de volume au Ten se sente dans le ventre. « Le monde retint sa respiration » est ma charnière — j'y fais taire le texte lui-même, pour que le lecteur retienne son souffle à voix haute au moment exact où la libellule se pose. C'est mon instrument silence.
+Ce que j'ai apporté hors brief : les têtards en callback — ils fuient quand Juju tape l'eau au début, ils reviennent « comme si de rien n'était » à la fin. Le monde a bougé pour les enfants, pas pour eux. Et l'image « bleue comme un fil électrique » : une seule comparaison, franche, concrète (pas de véhicule), visualisable vite.
 
-**Ce que j'ai apporté hors brief.**
-- **L'image du bus qui pile à l'arrêt** pour dire le vol impossible : le brief proposait la voiture de course, mais j'ai choisi le freinage net d'un bus — plus proche du monde de l'enfant, et ça donne un arrêt *sonore-muet* qui rime avec l'apnée à venir. Une seule comparaison-véhicule, tenue.
-- **« deux petits cailloux plantés dans l'herbe »** : l'image du figement de Juju et Nono, sans jamais dire qu'ils se figent — deux corps devenus pierres, mimable, tendre, non commenté.
-- **Le geste-refrain mimable** : Nono qui **ouvre la paume vers le ciel et attend**. C'est le moment physique que l'enfant refait après l'écoute — main ouverte, on attend, on souffle « vas-y ». Le bourdon lourd qui n'arrive pas à décoller au début et **décolle enfin** à la fin est mon petit contre-chant sensoriel qui referme le lieu sans morale.
-- **Un seul « boum, tout doux »** en guise d'onomatopée du contact, jouable sans préparation.
+Les voix : Juju claque, tape, revendique (« sur MOI ! ») — elle ne s'adoucit jamais, même figée. Nono agit tout du long (le rond dans l'eau, les bras ouverts, la main tendue) ; c'est LUI qui ouvre les doigts et dit « Vas-y », son geste qui fait décoller la bête, son « Gagné » tout doux qui célèbre l'instant, pas une prise. Wex regarde, s'arrête net, souffle pour ne pas casser, tombe sur les fesses et rit — dans le jeu, jamais au-dessus.
 
-**Les personnages.**
-- **Juju** fonce, réclame (« À moi ! »), taquine (« Elle triche ! »), syllabes qui tapent. Au pivot elle **reste Juju** : elle ne s'attendrit pas, elle se fige puis **rebondit** aussitôt dans le rire (« Tout près ! »). Sa tendresse ne se dit qu'en un regard sur la main de Nono.
-- **Nono** décroche sans l'annoncer — un glissement, pas une décision. Il **agit** : il se pose, il ouvre la main, il attend, il libère. Trois mots en tout (« Vas-y »), consonnes qui coulent. Sa lumière est active, jamais une absence.
-- **Wex** observe, parle d'abord dans le vide (le bourdon « trop gros »), suit la libellule du doigt en tournant, s'émerveille (« Elle est venue, toute seule ») — sans jamais expliquer ce qu'il sent. Il joue *avec* eux, pas au-dessus.
+Ce que j'ai écarté : toute explication du lien Juju↔libellule (personne ne fait jamais le rapprochement) et toute morale finale. La dernière image est le lieu qui reprend sa vie, pas une leçon.
 
-**Ce que j'ai écarté.** La comparaison « voiture de course » littérale du pitch (remplacée par le bus, plus juste pour l'oreille de l'enfant visé). Tout mot de victoire qui désignerait une prise : Juju célèbre l'instant (« tout près »), jamais « je l'ai eue » au sens d'attrapée. Et j'ai refusé toute phrase qui ferait le lien entre la présence de Juju et la venue de la bête — personne ne comprend, et c'est ce qui rend l'instant vivant.
+---
+Chemin : `c:\ProjetsPerso\Claude_Projects\MaxPlay\studio\narration\stories\002-libellule-resonance\4-versions-writers\claude-opus-reco.md`
+Mots (corps) : 517

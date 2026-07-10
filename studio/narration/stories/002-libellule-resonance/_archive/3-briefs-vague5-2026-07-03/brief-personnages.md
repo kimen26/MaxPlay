@@ -2,7 +2,7 @@
 
 > **Stateless — user prompt.** Reçu par les 14 writers (Claude via Read, MCP via inline).
 > Casting V1 figé (2026-04-24, ajusté 2026-05-05). **Aucune invention de prénom, aucun diminutif hors ceux listés.**
-> **Vague 6 — 2026-07-10** (fond casting inchangé ; directive forte Nono figée dans son garde-fou).
+> **Vague 5 — 2026-07-03** (fond inchangé vs vague 4 ; format rafraîchi + libellule bleue).
 
 ---
 
@@ -32,7 +32,7 @@ Chaque enfant perçoit ce que les deux autres ne perçoivent pas. En arc 1 ces s
   3. Quand un truc la coupe : pause courte, bouche entrouverte, puis elle repart vite.
   4. Elle ne s'attarde pas dans la douceur — elle rebondit.
 - **Voix :** phrases courtes qui claquent. Ton direct et chaud.
-- **Garde-fou :** elle ne devient PAS douce au pivot. Elle reste Juju, même figée. Pas de domination, pas d'agressivité. **Ce n'est PAS elle qui libère la libellule** (voir Nono).
+- **Garde-fou :** elle ne devient PAS douce au pivot. Elle reste Juju, même figée. Pas de domination, pas d'agressivité.
 
 ### Nono (garçon)
 - **Ce qu'il EST :** présence calme et ACTIVE. Il ne prend pas de place mais il est bien là. Il décroche de l'agitation sans l'annoncer. Peu de mots. Il FAIT des gestes lents — jamais effacé, jamais passif.
@@ -41,9 +41,9 @@ Chaque enfant perçoit ce que les deux autres ne perçoivent pas. En arc 1 ces s
   1. Il décroche de l'énergie du groupe sans rupture — un glissement.
   2. Il fait un geste physique, lent, silencieux.
   3. Il ouvre la main, il attend — sans forcer, sans expliquer.
-  4. Sa joie ne monte pas en tempête ; elle rayonne d'un coup, tranquille, dans un sourire.
+  4. Il sourit à peine quand quelque chose arrive — pas une victoire, une présence.
 - **Voix :** rare, courte, douce. Un mot minuscule suffit — ou rien. Rythme lent, consonnes qui coulent.
-- **Garde-fou :** il AGIT (se poser, tendre la main, ouvrir l'espace). Sa lumière est active, jamais une absence, jamais quelqu'un « à côté » de la scène. **C'est LUI qui rompt le figement et libère la libellule** : sa sérénité monte, il regarde Juju avec un grand sourire (un éclat joyeux), et la bête décolle sur SON mouvement. Il est au cœur de la fin, jamais spectateur.
+- **Garde-fou :** il AGIT (se poser, tendre la main, ouvrir l'espace). Sa lumière est active, pas une absence.
 
 ### Wex (garçon, hors-système)
 - **Ce qu'il EST :** observateur joyeux et curieux, dans le groupe et pas au-dessus. Il n'explique rien, ne détient aucune réponse, ne fait pas le sage. Il remarque des choses, parfois tout haut pour lui-même. Pouvoirs PAS activés (arc 1).
@@ -53,7 +53,7 @@ Chaque enfant perçoit ce que les deux autres ne perçoivent pas. En arc 1 ces s
   2. Tête penchée, yeux ronds, bouche entrouverte devant l'inattendu.
   3. Il suit la libellule du doigt ou en tournant, souvent sans un mot d'abord.
   4. Il peut éclater de rire de ce qu'il voit.
-- **Voix :** peu de mots, phrases très courtes. Il peut parler dans le vide, pour lui. **Il parle au moins deux fois** dans l'histoire (pas seulement des gestes).
+- **Voix :** peu de mots, phrases très courtes. Il peut parler dans le vide, pour lui.
 - **Garde-fou :** pas de réplique omnisciente, pas de commentaire de ce qu'il perçoit, pas de retrait. Il joue avec eux.
 
 ---
@@ -61,10 +61,10 @@ Chaque enfant perçoit ce que les deux autres ne perçoivent pas. En arc 1 ces s
 ## DYNAMIQUE DU TRIO (invariant)
 
 - Juju mène l'élan (énergie, taquineries) ; les deux autres suivent à leur façon.
-- Nono décroche sans prévenir, fait un geste calme, parle peu — et c'est lui qui ouvre la fin.
+- Nono décroche sans prévenir, fait un geste calme, parle peu.
 - Wex observe, peut se parler à lui-même, ne commente jamais ce qu'il sent.
 
-> Le déroulé de CETTE histoire → **brief-histoire.md**. Le menu d'angles COMMUN (pioche libre, déclarée en note d'intention) → **micro-briefs.md**.
+> Le déroulé de CETTE histoire → **brief-histoire.md**. Le menu d'angles COMMUN (pioche libre, déclarée en note d'intention) → **menu-angles.md**.
 
 ---
 
@@ -80,6 +80,6 @@ Melki, Mimi, Dadou, Madie, Lulu, Pierrot, Raph — ne pas les faire apparaître,
 
 ---
 
-**Date :** 2026-07-10
-**Source casting :** `personnages/wex|type-08|type-09/{personnage,alive}.md` + `pmo/decisions.md` (DEC-JUJU-T8-001) + `gout/memoire-papa-yann.md` § Directives fortes (Nono libère).
-**Vague :** 6 (fond casting identique vague 5 ; directive forte Nono libère figée dans son garde-fou ; Wex ≥ 2 répliques rappelé — leçon gatekeeper v5).
+**Date :** 2026-07-03
+**Source casting :** `personnages/wex|type-08|type-09/{personnage,alive}.md` + `pmo/decisions.md` (DEC-JUJU-T8-001)
+**Vague :** 5 (fond identique vague 4 ; format resserré, libellule bleue figée, aucun diminutif hors lookup)

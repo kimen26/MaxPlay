@@ -1,110 +1,99 @@
 ---
-llm: kimi-for-coding (K2.7-Code, canal gratuit)
-role: guidé (axes 1-6)
-temperature: 0.6
-date: 2026-07-03
-vague: 5
-canal: call-llm.mjs CLI (contournement timeout MCP — genere en 396s)
+llm: kimi-k2.7-code
+role: guide
+temperature: 0.6 (reco)
+date: 2026-07-10
+vague: 6
 ---
 
-Le soleil tapait doux sur les épaules. L'étang n'était pas profond du tout : on voyait le fond, les cailloux ronds, les touffes d'herbe qui ondulaient sous l'eau claire. Ça sentait la terre mouillée et les feuilles neuves.
+Le soleil tapait doux sur l'étang. L'eau était si peu profonde qu'on voyait les cailloux blancs au fond. Des moustiques dansaient au-dessus de l'eau. Juju, Nono et Wex étaient à genoux dans l'herbe mouillée. Ils tapaient l'eau avec des bâtons. Les bâtons étaient gris et lisses.
 
-Juju courait le long de la berge, un roseau à la main.
+Ploc. Ploc. Ploc.
 
-— Je suis le capitaine du monde !
+— Le mien fait le plus de ronds ! dit Juju.
 
-Wex la dépassait, les bras en avion.
+— Le mien est plus long, dit Wex.
 
-— Moi je suis le vent !
+— Le mien fait des bulles, dit Nono.
 
-Nono marchait derrière. De temps en temps, il ramassait un caillou rond et le posait sur un tronc mort couché dans l'herbe. Il ne disait rien. Il souriait.
+Juju frappa plus fort. Des gouttes éclaboussèrent le nez de Wex.
 
-— Nono, viens ! cria Juju. Course jusqu'au grand saule !
+— Hey ! dit Wex.
 
-— J'arrive.
+— Ça fait rien, dit Juju en riant.
 
-Il posa son caillou et courut. Les trois passèrent devant le saule en hurlant, sans savoir qui avait gagné.
+Soudain, Wex pointa du doigt.
 
-C'est alors que Wex s'arrêta net.
+— Regardez.
 
-— Regardez !
+Une libellule bleue passait devant eux. Elle volait droit, puis s'arrêtait net en l'air. Elle reculait. Elle montait. Elle tournait sur elle-même comme une feuille prise par le vent.
 
-Une libellule bleue traversait l'étang. Elle volait droit, puis s'arrêtait en plein ciel sans toucher rien. Elle repartait à gauche, en haut, derrière, en avant. Jamais dans la même direction.
+— Elle est folle ! dit Juju.
 
-— On va l'attraper ! dit Juju.
+— Elle va vite, dit Nono.
 
-Elle courut. La libellule fila vers un roseau. Juju sauta, les deux mains ouvertes. La bête s'arrêta net, tourna, passa sous son bras. Juju retomba dans l'herbe en riant.
+— Attrape-la ! cria Wex.
 
-— Elle est impossible !
+Juju se leva d'un bond. Wex courut derrière elle. Nono les suivait, le bâton à la main. Juju levait les bras en l'air. Nono tournait la tête pour la suivre. La libellule passait entre leurs doigts. Elle reculait encore. Elle se posait sur une tige de roseau, puis repartait avant qu'on arrive.
 
-Wex tendit la main. La libellule fit un looping autour de son doigt et s'éloigna.
+— Reviens ! disait Juju en riant.
 
-— Elle m'a fait un tour !
+— Par ici ! criait Wex.
 
-— Encore ! cria Juju.
+Nono s'arrêta. Il resta debout, très droit, le dos au soleil. Il regarda l'herbe mouillée sous ses pieds. Il ouvrit et ferma les doigts. Juju ne le vit pas. Elle fonça. Son coude heurta l'épaule de Nono.
 
-Ils tournèrent autour de l'étang. La libellule s'arrêta au-dessus de l'eau. Ils s'arrêtèrent, hors d'haleine.
+— Oups ! dit-elle.
 
-— Elle se moque de nous, dit Juju en riant.
+Elle se figea contre lui. Wex, qui arrivait derrière, s'arrêta net. Il ouvrit la bouche en rond.
 
-Nono s'agenouilla au bord de l'eau. Il regardait la lumière danser sur les cailloux. Il ne bougeait plus.
+La libellule bleue tourna une fois au-dessus de leurs têtes. On entendait un oiseau d'eau dans les roseaux. Puis elle vint se poser sur l'épaule de Nono, juste à l'endroit où Juju l'avait touchée.
 
-Juju passait en courant.
+Les trois enfants ne bougèrent plus.
 
-— Elle est là !
+Juju retenait son souffle.
 
-Elle ne vit pas Nono. Son genou toucha son épaule. Elle trébucha. Ses deux mains se posèrent sur le dos de Nono pour ne pas tomber.
+Wex chuchota :
 
-— Oh.
+— Elle est sur toi.
 
-Elle resta là, penchée sur lui, le nez dans son cou. Nono ne bougeait pas. Juju non plus. Ils respiraient fort.
+Nono ne dit rien. Il regarda Juju. Un grand sourire tranquille monta sur son visage. La libellule frémit. Nono fit un tout petit geste de la main, comme pour dire : vas-y. La libellule bleue décolla.
 
-Wex arriva en courant, s'arrêta net, la bouche ouverte.
+Elle s'en alla au-dessus de l'eau, droite, puis net, puis de côté. Elle disparut entre les roseaux.
 
-— Vous faites quoi ? murmura-t-il.
+— On l'a presque eue, dit Juju.
 
-— Chut, dit Nono.
+— Presque, dit Nono.
 
-La libellule bleue revenait. Elle volait lentement, comme si elle avait tout son temps. Elle s'approcha de leurs visages. Elle se posa sur le roseau que Juju tenait serré dans sa main.
+Wex prit son bâton. Il tapa l'eau.
 
-Les trois enfants ne bougeaient plus. Juju avait les yeux grands ouverts. Nono souriait à peine. Wex retenait son souffle.
+Ploc.
 
-— Elle est sur ton roseau, dit Wex sans voix.
+— Elle reviendra peut-être, dit-il.
 
-Juju ne répondit pas. La libellule replia ses ailes. Elle était toute bleue, brillante comme une goutte de ciel.
+— Oui, dit Nono.
 
-Nono souleva très lentement une main. Il effleura le roseau du bout des doigts. La libellule s'envola.
+— On sera prêts, dit Juju.
 
-— Tsing, dit Wex.
+Les trois enfants tapèrent l'eau ensemble, doucement.
 
-Les trois regardèrent la bête s'éloigner au-dessus de l'eau. Elle s'arrêta une dernière fois, toute petite, toute bleue, puis disparut vers les saules.
-
-Juju se redressa.
-
-— On l'a presque eue.
-
-— On l'a vue de très près, dit Nono.
-
-Wex fit une pirouette dans l'herbe.
-
-— On est des statues magiques !
-
-Juju leva son roseau comme un drapeau.
-
-— Capitaine du monde et des libellules !
-
-Et ils repartirent le long de l'étang, sous le soleil qui tapait doux sur les épaules.
+Ploc. Ploc. Ploc.
 
 ---
 
 **Note d'intention**
 
-J'ai voulu que l'enfant ressente la surprise joyeuse de l'arrêt : tout ce temps à courir, et c'est quand on ne bouge plus que le vivant vient. La chaleur du contact sans mots entre Juju et Nono, le fou-rire retenu, le souffle court — ce sont des sensations qu'un petit corps peut reconnaître avant de les comprendre.
+Ce que j'ai voulu faire ressentir : la surprise d'un moment qui se tient tout seul. Quand on arrête de courir, quand deux corps se touchent sans le vouloir, quelque chose de vivant choisit de venir. La victoire n'est pas de tenir la bête, c'est d'avoir été assez proche pour la laisser repartir.
 
-Ce que j'ai amené : l'odeur de la terre mouillée et des feuilles neuves, le jeu du capitaine et du vent, l'image de la libellule comme « une goutte de ciel », et la phrase mimable « On est des statues magiques » au cœur du Ketsu. J'aime l'idée que la victoire se dise en riant, pas en triomphant.
+Ce que j'ai apporté qui ne venait pas du brief : le *Ploc* comme rythme et comme callback. Au début c'est le bruit du jeu, à la fin c'est le bruit du retour au jeu. Entre les deux, le silence. J'aime aussi le fait que la libellule se pose exactement sur le point de contact — sur l'épaule de Nono, là où Juju l'a heurté — sans que personne ne dise ce lien.
 
-J'ai incarné Juju par l'élan court et franche — « Course jusqu'au grand saule ! », « Capitaine du monde et des libellules ! » — elle ne s'adoucit jamais, même figée. Nono par le geste lent qui précède la parole : il s'agenouille, il attend, il effleure le roseau. Wex par l'attention en mouvement : les bras en avion, le doigt qui suit, le murmure, la pirouette.
+Comment j'ai incarné les personnages :
+- **Juju** : elle mène l'élan, court les bras en l'air, taquine Wex, dit « On sera prêts ». Elle se fige mais reste Juju — pas de transformation douce.
+- **Nono** : peu de mots, gestes lents et actifs, c'est son arrêt, son sourire et son geste qui libèrent la libellule. Il n'est pas effacé : il est au centre du moment.
+- **Wex** : il observe, pointe du doigt, chuchote, propose un « peut-être ». Il joue avec eux sans jamais comprendre ou expliquer.
 
-J'ai choisi d'écarter l'image d'un objet extérieur pour faire des trois enfants eux-mêmes les statues magiques. Je n'ai pas utilisé les prénoms complets, car aucun moment solennel ne les appelait. Et j'ai évité la comparaison avec la voiture de course du brief-pitch : dans l'univers de WexWorld, les véhicules n'existent pas, même en métaphore.
+Ce que j'ai écarté du brief : aucune créature supplémentaire (l'oiseau d'eau n'est qu'un bruit, pas un protagoniste). J'ai aussi évité l'image des trois statues — le figement est physique et réel, pas une métaphore.
 
-Angles choisis dans le menu commun : **tendresse au contact** pour le Ten, **stop-and-go** pour le rythme de la poursuite, et **ouverture sensorielle** par le soleil sur les épaules et les odeurs du printemps. Axes writer guidés activés : **Geste avant parole**, **Onomatopée légère** (le « Tsing » unique), et **Mystère vs résolution**.
+**Axes activés :**
+- **Axe 2 — Geste physique avant réplique** : les enfants tapent l'eau avant de parler ; Nono s'arrête et bouge les doigts avant le silence ; Juju se fige contre Nono avant de dire « Oups ».
+- **Axe 3 — Onomatopée légère intégrée** : le *Ploc*, unique, répété seulement comme motif de début et de fin, jouable sans préparation.
+- **Axe 5 — Mystère vs résolution** : j'ai choisi **ouvert**. On ne sait pas pourquoi la libellule vient, ni pourquoi elle repart. Nono sourit, c'est tout.

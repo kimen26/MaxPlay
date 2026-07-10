@@ -16,7 +16,7 @@
 
 | # | Titre | Statut PROCESS | Owner courant | Personnages | Prochaine action |
 |---|-------|----------------|---------------|-------------|------------------|
-| 002 | [La Libellule impossible](002-libellule-resonance/README.md) | Étape 5 panel 20 lecteurs (en attente Papa Yann pour relance vague 4) | Directeur (arbitrage) | Wex, Juju, Nono | Relancer vague 4 lecteurs. Synthèse lecteurs étape 5. Puis sélection + greffes étape 6. |
+| 002 | [La Libellule impossible](002-libellule-resonance/README.md) | **Étape 4 VAGUE 6** (lancée 2026-07-10 sur décision Papa Yann — briefs goût v6, 14 writers relancés ; vague 5 complète archivée `_archive/vague-5/` : versions + panel v2 + sélection v2 + gatekeeper) | Directeur | Wex, Juju, Nono | Étape 5 vague 6 : **lecture annotée Papa Yann** (`site/lecture.html`, instrument principal DEC-DOCTRINE-INSTRUMENT-LECTURE) + panel v2 12 calls. |
 
 ---
 

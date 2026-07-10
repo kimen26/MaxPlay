@@ -6,6 +6,23 @@
 
 ---
 
+## 2026-07-10 — MÉGA-SESSION : audit FOND+FORME · VAGUE 6 STORY-002 lancée · 3 sujets arc 1 proposés
+
+**Objectif** : méga-audit demandé par Papa Yann + relance vague 6 + préparation 003-005.
+
+**Fait** :
+- **Méga-audit** : PMO (FOND, 5 sections) + archiviste (FORME, 8.4/10) rendus. Correctifs appliqués par l'orchestrateur : `pmo/INDEX.md` état instantané régénéré · `stories/INDEX.md` ligne 002 régénérée (disait encore « étape 5 / vague 4 ») · `memory/state.md` **entièrement refondu** (datait du 2026-04-29, citait des histoires supprimées au ménage 2026-05-08). ⚠️ Les 2 agents d'audit ont affirmé à tort que `memory/state.md` n'existait pas — il existait, périmé. Vérif claims obligatoire.
+- **VAGUE 6 STORY-002** (décision Papa Yann, remplace la validation de la sélection v2 vague 5) : Directeur a refondu les 3 briefs (§5bis en QUALITÉS pas en recettes · verrou « Nono libère » · Wex ≥2 répliques) ; **14/14 writers produits le jour même** (6 Claude agents + kimi-reco-guide agent + 7 via CLI `call-llm.mjs` d'emblée) ; vague 5 complète archivée `_archive/vague-5/` ; `site/lecture-data.js` chargé (14 textes anonymisés, ordre mélangé) → **étape 5 = lecture annotée Papa Yann (instrument principal)**.
+- **3 sujets arc 1 proposés** (Conseiller) : 003 *La flaque-miroir* (Lulu·Madie) · 004 *Le caillou trop bien rangé* (Melki·Dadou) · 005 *Le goûter d'un seul* (Mimi·Lulu). Reco d'ordre : 003→004→005. **EN ATTENTE validation Papa Yann — rien inscrit.**
+
+**Leçons infra** :
+- Endpoint gratuit `kimi-for-coding` force `temperature: 1` depuis 2026-07-10 (0.6 → HTTP 400 « only 1 is allowed »). kimi-reco + kimi-reco-guide tournent à temp forcée 1.
+- 2 writers Haiku (agents) ont affirmé avoir sauvegardé sans Write réel (fichiers reconstruits depuis leurs rapports) ; le PMO de clôture a affirmé 5 fichiers modifiés, git n'en montrait aucun (entrées réécrites par l'orchestrateur). **feedback_verifier_claims_agents confirmé 3× cette session.**
+
+**État au reboot** : STORY-002 étape 5-V6 ⏳ (lecture annotée Papa Yann sur `site/lecture.html` → coller le JSON → ingestion). 3 sujets arc 1 ⏳ validation. DEC-GOÛT-RECETTE-VS-QUALITÉ : piste QUALITÉS appliquée de facto vague 6, décision formelle attendue pour STORY-003.
+
+---
+
 ## 2026-07-08 — 3 DÉCISIONS + CHIPS V3 + FIX UX LECTURE : Doctrine instrument figée · Chips co-construites · Panneau scrollIntoView
 
 **Objectif** : Logger les 3 décisions Papa Yann + appliquer chips v3 + fixes UX lecture.html.

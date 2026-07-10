@@ -2,87 +2,70 @@
 llm: claude-opus-4-8
 role: libre
 temperature: def
-date: 2026-07-03
-vague: 5
+date: 2026-07-10
+vague: 6
 ---
 
-L'eau tiède clapote autour des chevilles de Juju. Le soleil chauffe le haut de sa tête. Trois enfants, les pieds dans la boue molle, au bord d'un étang si peu profond qu'on voit le fond partout.
+Au bord de l'étang, l'eau était tiède sur les chevilles. Juju lança un caillou plat qui fit trois bonds avant de couler.
 
-« Regarde ! » Juju montre du doigt. Un têtard file entre deux herbes, vite, tout noir.
+« Bats ça ! » dit-elle.
 
-« Un autre, là », dit Nono. Il se penche, lentement, une main au-dessus de l'eau.
+Wex jeta le sien. Il coula tout de suite. Nono ramassa un caillou, le tourna dans sa main, et le posa dans l'eau sans le lancer. Un rond, puis un autre, s'ouvrirent et s'en allèrent.
 
-Wex, lui, s'est arrêté net. Bouche ouverte. Il fixe un point dans l'air.
+« Ça compte pas, ça ! » rit Juju.
 
-« Quoi ? » fait Juju.
+Nono haussa une épaule. Wex, lui, regardait déjà les têtards filer entre les roseaux comme des petites virgules noires.
 
-Wex montre. Une libellule. Bleue, bleue comme le ciel du matin, avec deux grands yeux ronds. Elle reste en l'air, immobile, posée sur rien du tout. Et puis — hop — elle disparaît. Reparue trois pas plus loin. Arrêtée. Repartie.
+Et là, quelque chose de bleu passa.
 
-« On l'attrape ! » crie Juju.
+Ça s'arrêta net en plein air, juste au-dessus des roseaux. Pas de branche, rien dessous. Ça resta là une seconde, tremblant, et hop, ça repartit de l'autre côté sans qu'on voie comment.
 
-Elle bondit. Ses mains claquent l'une contre l'autre. Vide. La libellule est déjà ailleurs.
+« Une libellule ! » cria Juju.
 
-« Elle est là ! » Wex tourne sur lui-même, le doigt tendu, il rit tout seul. « Non, là ! Là ! »
+Elle sauta les pieds joints dans l'herbe pour l'attraper. Ses mains claquèrent sur du vide. La libellule était déjà trois pas plus loin, arrêtée, à les attendre.
 
-Nono court aussi, les bras ouverts. La libellule pique vers l'eau, remonte, s'arrête pile devant son nez. Il souffle. Envolée.
+« Elle se moque de nous », souffla Wex, les yeux ronds.
 
-Ils recommencent. Ils sautent, ils tournent, ils s'emmêlent les pieds. L'herbe siffle sous leurs pas. Un bourdon passe en grondant et personne ne le regarde. La libellule bleue les tire d'un bout à l'autre du bord, toujours d'un cheveu trop loin.
+Ils foncèrent tous les trois. Juju devant, bras tendus. Wex qui tournait sur lui-même pour la suivre. Nono qui trottinait derrière en riant. À chaque fois qu'une main s'ouvrait, le bleu n'était plus là. Il repartait n'importe où : à droite, en haut, tout près puis très loin.
 
-« Attends… attends… » murmure Juju, sur la pointe des pieds.
+« Elle est trop rapide ! » Juju retomba dans l'herbe, essoufflée, et repartit aussitôt.
 
-Clac. Rien.
+Wex piquait des deux mains dans l'air. « Là ! Non, là ! »
 
-Elle éclate de rire. Wex aussi. On chasse une chose qui ne se laisse jamais toucher, et c'est ça qui est bon.
+Ça recommençait, encore, et c'était bon de rire comme ça.
 
-Puis, sans rien dire, Nono s'arrête.
+Puis Nono s'arrêta de courir. Il ne dit rien. Il s'accroupit dans l'herbe humide, les mains ouvertes sur ses genoux, et il regarda l'eau bouger. Autour de lui, tout devint doux.
 
-Il ne le décide pas, ça se pose en lui, tout seul. Il baisse les bras. Il regarde l'eau claire, les têtards, ses propres pieds dans la boue. Sa respiration ralentit. Autour de lui, c'est comme si l'air devenait doux.
+Juju et Wex couraient encore après le bleu. Juju, lancée, fonça sans regarder — et son bras vint toucher l'épaule de Nono. Elle s'arrêta pile. Sa bouche resta entrouverte. Elle ne bougea plus, accroupie tout contre lui, sa main posée sur son épaule à lui.
 
-Les deux autres, eux, chassent encore.
+C'est là que la libellule vint.
 
-Juju fonce, les yeux en l'air, sur les traces du bleu. Elle ne voit pas Nono devant elle.
+Elle descendit tout doucement et se posa sur le genou de Nono. Bleue. Ses ailes battaient, puis s'arrêtèrent.
 
-Elle le percute. Épaule contre épaule. Elle attrape son bras pour ne pas tomber — et là, contre lui, elle s'arrête. Elle ne bouge plus. Elle sent le calme de Nono passer dans sa main.
+Wex se figea, une jambe en l'air, les yeux énormes. Personne ne respirait. La libellule était là, à un souffle. On entendait un bourdon quelque part, très loin.
 
-Alors la libellule descend.
+Juju regardait la bête, sans oser cligner. Wex non plus.
 
-Doucement, sans un bruit. Elle se pose sur le poignet de Juju, juste là où ses doigts serrent le bras de Nono. Ses ailes bleues frémissent, puis se tiennent tranquilles.
+Alors la sérénité de Nono monta d'un coup, jusqu'à ses joues. Il tourna la tête vers Juju et lui fit un grand sourire.
 
-Personne ne respire. Wex, à un pas, s'est figé lui aussi, les yeux énormes.
+« Gagné », dit-il tout bas.
 
-« Elle… elle est là », souffle Juju, sans remuer les lèvres.
+Il leva le genou, tout doucement. La libellule décolla sur son mouvement, monta droit dans le soleil et s'en alla par-dessus les roseaux.
 
-« Chut », fait Nono, tout bas. Un tout petit sourire.
+Juju souffla enfin. Elle rit, un peu tremblante.
 
-Trois enfants comme trois statues, dans le soleil, et la petite chose bleue sur la peau de Juju. Ça chatouille. Ça pèse rien du tout.
+« Elle est partie », dit Wex.
 
-Juju lève le poignet, très lentement, vers le ciel.
+« Oui », dit Nono.
 
-« Vas-y », dit-elle.
-
-La libellule s'ouvre, se soulève, et repart en zigzag au-dessus de l'eau.
-
-« On l'a eue », murmure Wex. Il ne dit pas attrapée. Il dit ça pour l'instant.
-
-Nono se rassoit dans l'herbe. L'eau clapote. Un têtard remue la vase. Juju regarde encore sa main, là où c'était posé, et ne dit plus rien.
+Il ramassa un caillou et le reposa dans l'eau, sans le lancer. Un rond s'ouvrit, puis un autre, et s'en allèrent vers le milieu de l'étang.
 
 ---
 
-## Note d'intention
+**Angle choisi** : ouverture en mouvement (le défi de ricochets, une voix qui claque dès la deuxième ligne) fondue avec « l'éclat de Nono ». POV narrateur invisible mais collé aux corps — jamais de commentaire, juste ce qu'on voit et entend.
 
-**Angle choisi :** Suspension sensorielle + Ouverture corporelle (menu). **POV :** narrateur invisible, mais collé au ras des corps et des peaux — jamais au-dessus, jamais explicatif. **Ouverture :** par la sensation pure (l'eau tiède, le soleil sur le crâne) avant le moindre décor abstrait.
+**Ma trouvaille** : le caillou que Nono *pose* au lieu de le lancer. En ouverture, c'est son geste à lui, celui qui « ne compte pas » pour Juju. À la fin, il le refait — même geste, même ronds dans l'eau — et cette fois personne ne rit. Le callback ne dit rien, mais il fait sentir que quelque chose a changé. Les têtards « comme des petites virgules » et le bourdon lointain tiennent le silence du Ten sans le meubler.
 
-Pourquoi cet angle : le verrou causal de cette histoire est un *contact*. Le pivot n'est pas une idée, c'est deux corps qui se percutent et un calme qui passe d'une peau à l'autre. Il fallait donc que tout le texte soit déjà dans les corps bien avant le Ten — les chevilles dans la boue, les mains qui claquent dans le vide, l'herbe qui siffle sous les pieds — pour que le moment où Juju sent « le calme de Nono passer dans sa main » arrive comme la suite naturelle de tout ce qui précède, et pas comme un miracle plaqué.
+**Les voix** : Juju claque en syllabes courtes et fonce (« Bats ça ! », « Ça compte pas ! »), elle rebondit sans jamais s'adoucir, même figée. Nono parle deux fois, minuscule — un haussement d'épaule, puis « Gagné » tout bas, sa joie qui monte d'un coup dans un sourire ; c'est lui qui lève le genou et libère. Wex observe, tourne, commente pour lui-même (« Elle se moque de nous ») sans jamais expliquer ce qu'il sent.
 
-Ce que j'ai apporté qui n'était pas dans le brief :
-— **Le rythme stop-and-go de la chasse rendu par la ponctuation** : « Arrêtée. Repartie. » — des phrases d'un mot qui s'arrêtent net, comme le vol de la bête. L'enfant entend la libellule freiner dans les points.
-— **Le grand silence du Ten construit en retirant le son** : le bourdon qui « passe en grondant et personne ne le regarde » installe un bruit… juste avant que tout se taise. Puis « Personne ne respire ». Le silence devient l'instrument.
-— **Le moment physique mimable** : les trois enfants figés « comme trois statues », le poignet qu'on lève très lentement vers le ciel pour libérer. Un enfant peut refaire ça tout seul après l'écoute — se figer, puis ouvrir la main vers le haut.
-— **Une seule onomatopée jouable** : « Clac. Rien. » — un claquement de mains suivi du vide, tenu court, jamais en cascade.
-
-Comment j'ai incarné chacun :
-— **Juju** fonce, propose, relance (« On l'attrape ! »), taquine le réel avec son corps. Au pivot elle reste Juju : elle ne devient pas douce, elle est simplement *stoppée*, bouche entrouverte, et c'est elle qui décide de lever le bras et de dire « Vas-y ». Sa tendresse reste sous l'élan — elle finit en regardant sa main, sans un mot, sans s'attarder.
-— **Nono** décroche « sans rien dire », par glissement, pas par rupture. Il fait des gestes lents (se pencher, baisser les bras, se rasseoir). Son unique « Chut » et son « tout petit sourire » sont une présence, pas une victoire. Son calme est actif : c'est lui qui, sans le vouloir, ouvre l'espace où la bête ose venir.
-— **Wex** observe, s'arrête net quand un détail l'attrape, tourne sur lui-même le doigt tendu, rit tout seul. Il joue avec eux, il ne surplombe rien. Son « On l'a eue » n'est pas un mot de prise : le narrateur précise qu'il « dit ça pour l'instant » — Wex célèbre la seconde vécue, il ne revendique aucune capture.
-
-Ce que j'ai écarté du brief : je n'ai pris **aucune** image d'épouvantail, de statue-personnage ou de nez, pourtant libérées cette vague. La comparaison « comme trois statues » me suffisait, plus légère, sans décor rapporté. J'ai aussi choisi de **ne jamais faire dire ni penser le lien** (la bête vient parce que Juju est là, parce que Nono s'est posé) : personne ne le remarque, personne ne l'explique. C'est vrai *sous* l'histoire, jamais dessus. Et pas de mot de morale, pas de pirouette finale : ça se referme sur l'eau qui clapote et une main qui se souvient.
+**Écarté** : toute image de vitesse mécanique pour le vol (interdit + inutile — l'arrêt net suffit). Et j'ai résisté à toute phrase qui aurait relié la venue de la libellule à Juju : personne ne fait le lien, jamais. Le verrou causal se joue dans l'ordre des gestes, pas dans un mot.

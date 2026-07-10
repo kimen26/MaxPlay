@@ -33,6 +33,8 @@ const DINOS=[
  {id:'dilo',name:'Dilophosaure',palette:'vert-jaune, vert foncé, crème',sig:'deux crêtes semi-circulaires en éventail sur la tête, svelte'},
  {id:'mammouth',name:'Mammouth laineux',palette:'brun-roux, brun foncé, crème',sig:'grosse fourrure laineuse, longues défenses courbées, trompe, petites oreilles'},
  {id:'smilodon',name:'Tigre à dents de sabre',palette:'fauve-orangé, brun foncé, crème',sig:'deux longues canines en sabre qui dépassent, museau court félin'},
+ {id:'galli',name:'Gallimimus',palette:'gris-bleu clair, gris-bleu foncé, crème',sig:'silhouette d’autruche : long cou, petite tête avec bec sans dents, grandes pattes fines de coureur, longue queue'},
+ {id:'allo',name:'Allosaure',palette:'orange-brique, brun foncé, crème',sig:'deux petites crêtes-cornes au-dessus des yeux (sa signature), grosse tête de prédateur, bipède'},
  {id:'meteorite',name:'Météorite',palette:'gris pierre, gris foncé, orange (traînée)',sig:'gros rocher rond cratérisé avec un petit visage rigolo, courte traînée de feu derrière'},
  {id:'volcan',name:'Volcan',palette:'brun-gris, brun foncé, orange-rouge (lave)',sig:'petit volcan trapu avec un visage rigolo, un peu de lave et de fumée au sommet'},
 ];

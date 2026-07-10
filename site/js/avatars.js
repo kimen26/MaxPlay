@@ -1,4 +1,4 @@
-// avatars.js — manifest (généré). Variant-aware.
+// avatars.js — manifest (généré par c:/tmp/gen_avatars_manifest.py). Variant-aware.
 window.MAXPLAY_AVATARS_BASE = "img/avatars/";
 window.MAXPLAY_AVATARS = [
  {
@@ -243,7 +243,8 @@ window.MAXPLAY_AVATARS = [
    "joyeux": [
     "centro_joyeux_1.png",
     "centro_joyeux_2.png",
-    "centro_joyeux_3.png"
+    "centro_joyeux_3.png",
+    "centro_joyeux_4.png"
    ],
    "enerve": [
     "centro_enerve_1.png",
@@ -267,6 +268,40 @@ window.MAXPLAY_AVATARS = [
    ],
    "original": [
     "dilo_original_1.png"
+   ]
+  }
+ },
+ {
+  "id": "galli",
+  "name": "Galli",
+  "sub": "Gallimimus",
+  "moods": {
+   "joyeux": [
+    "galli_joyeux_1.png",
+    "galli_joyeux_2.png",
+    "galli_joyeux_3.png"
+   ],
+   "enerve": [
+    "galli_enerve_1.png"
+   ],
+   "original": [
+    "galli_original_1.png"
+   ]
+  }
+ },
+ {
+  "id": "allo",
+  "name": "Allo",
+  "sub": "Allosaure",
+  "moods": {
+   "joyeux": [
+    "allo_joyeux_1.png"
+   ],
+   "enerve": [
+    "allo_enerve_1.png"
+   ],
+   "original": [
+    "allo_original_1.png"
    ]
   }
  },

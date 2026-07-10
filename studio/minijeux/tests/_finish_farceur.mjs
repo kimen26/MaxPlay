@@ -3,10 +3,9 @@ import fs from 'fs'; import crypto from 'crypto';
 const hashFile=f=>{try{return crypto.createHash('md5').update(fs.readFileSync(f)).digest('hex');}catch{return null;}};
 const OUT='C:/tmp/avatars_raw'; const GET_MS=300000;
 const PROMPT=(name,pal,sig)=>`Sticker mascotte : bébé ${name} mignon, style cubiste à facettes low-poly, gros contour noir, 3-4 couleurs franches (${pal}), fond blanc uni plat, chibi de face, ${sig}, expression joyeuse (yeux arqués, sourire). Logo vectoriel plat.`;
-const FARCEUR=`Génial ! Refais la même petite mascotte mais qui fait le clown : elle tire la langue et un œil qui cligne, très espiègle et rigolote.`;
+const FARCEUR=`Parfait ! Refais la même petite mascotte (même dessin, mêmes couleurs, même fond blanc uni) mais qui fait maintenant une tête grognon et boudeuse : sourcils un peu froncés, petite moue, bras croisés. Toujours mignonne, pas méchante.`;
 const DINOS=[
- {id:'centro',name:'Centrosaure',pal:'vert-brun, vert foncé, crème',sig:'une grande corne sur le nez, collerette à crochets recourbés'},
- {id:'mammouth',name:'Mammouth laineux',pal:'brun-roux, brun foncé, crème',sig:'grosse fourrure laineuse, longues défenses courbées, trompe'},
+ {id:'galli',name:'Gallimimus',pal:'gris-bleu clair, gris-bleu foncé, crème',sig:'silhouette d’autruche : long cou, petite tête avec bec sans dents, grandes pattes fines de coureur, longue queue'},
 ];
 const b=await chromium.connectOverCDP('http://127.0.0.1:9222');
 const ctx=b.contexts()[0]; let p=ctx.pages().find(x=>x.url().includes('chatgpt.com'))||await ctx.newPage();
@@ -20,6 +19,6 @@ for(const d of DINOS){
   await gnew(); await gsend(PROMPT(d.name,d.pal,d.sig));
   if(!await gget(`${OUT}/${d.id}_joyeux.png`)){console.log(' ✗ joyeux');continue;} console.log(' joyeux');
   await gsend(FARCEUR);
-  if(!await gget(`${OUT}/${d.id}_original.png`)){console.log(' ✗ farceur');continue;} console.log(' ✓ FARCEUR');
+  if(!await gget(`${OUT}/${d.id}_enerve.png`)){console.log(' ✗ grognon');continue;} console.log(' ✓ GROGNON');
 }
 console.log('\nFIN'); await b.close();

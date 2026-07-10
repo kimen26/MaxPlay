@@ -69,6 +69,12 @@ WiFi. La version conditionne le risque (v1/v2 = très fiable, v3 = prudence).
 
 ---
 
+## 🎛️ Leçons moteur & pièges (À LIRE avant de coder un build)
+
+➡️ [`LESSONS-MOTEUR.md`](LESSONS-MOTEUR.md) — comportements observés du moteur Lunii + simulateur
+STUdio : format story.json, menu molette, anti double-OK, silence de tête audio (+300 ms),
+et **bugs ouverts** (autoplay fiche qui reboucle + image figée, en investigation 2026-06-17).
+
 ## Packs construits
 
 | Pack | Script | Contenu | Statut |

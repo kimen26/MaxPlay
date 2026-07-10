@@ -1,0 +1,129 @@
+{
+  "date": "2026-07-07",
+  "vague": 5,
+  "story": "002-libellule-resonance",
+  "methode": "duel-AB-13segments-plus-finales",
+  "contexte": "Résultats bruts duel Papa Yann — 13 paires de segments (claudeopus-reco, claude-sonnet-def, claude-haiku-reco, deepseek-reco) + 2 histoires finales (deepseek-reco vs kimi-k26-instant). Décision en attente post-arbitrage Papa Yann.",
+  "resultats": [
+    {
+      "id": "ouv-1",
+      "gagnant": "claude-opus-reco",
+      "perdant": "claude-haiku-reco",
+      "pourquoi": ["sonne mieux à voix haute", "plus drôle", "voix d'enfant plus vraie"],
+      "defautsPerdant": ["confus"]
+    },
+    {
+      "id": "ouv-2",
+      "gagnant": "claude-sonnet-def",
+      "perdant": "deepseek-reco",
+      "pourquoi": ["plus drôle", "plus tendre", "rythme plus vivant"],
+      "defautsPerdant": []
+    },
+    {
+      "id": "vol-1",
+      "gagnant": "claude-haiku-reco",
+      "perdant": "claude-opus-reco",
+      "pourquoi": ["rythme plus vivant", "voix d'enfant plus vraie", "image plus forte"],
+      "defautsPerdant": ["trop adulte", "surjoué"]
+    },
+    {
+      "id": "vol-2",
+      "gagnant": "deepseek-reco",
+      "perdant": "claude-sonnet-def",
+      "pourquoi": ["plus fluide"],
+      "defautsPerdant": ["confus"]
+    },
+    {
+      "id": "poursuite-1",
+      "gagnant": "claude-opus-reco",
+      "perdant": "claude-haiku-reco",
+      "pourquoi": [],
+      "defautsPerdant": ["plat / mou", "confus"]
+    },
+    {
+      "id": "dial-1",
+      "gagnant": "deepseek-reco",
+      "perdant": "claude-sonnet-def",
+      "pourquoi": ["plus drôle", "rythme plus vivant", "voix d'enfant plus vraie"],
+      "defautsPerdant": ["plat / mou"]
+    },
+    {
+      "id": "ten-1",
+      "gagnant": "claude-haiku-reco",
+      "perdant": "claude-opus-reco",
+      "pourquoi": ["image plus forte"],
+      "defautsPerdant": []
+    },
+    {
+      "id": "ten-2",
+      "gagnant": null,
+      "perdant": null,
+      "pourquoi": [],
+      "defautsPerdant": ["confus"],
+      "note": "non tranchable"
+    },
+    {
+      "id": "contact-1",
+      "gagnant": null,
+      "perdant": null,
+      "pourquoi": [],
+      "defautsPerdant": ["trop adulte", "confus"],
+      "note": "refusé par auteur"
+    },
+    {
+      "id": "pose-1",
+      "gagnant": "claude-opus-reco",
+      "perdant": "claude-haiku-reco",
+      "pourquoi": ["plus fluide", "image plus forte"],
+      "defautsPerdant": ["confus"]
+    },
+    {
+      "id": "pose-2",
+      "gagnant": "claude-sonnet-def",
+      "perdant": "deepseek-reco",
+      "pourquoi": ["image plus forte"],
+      "defautsPerdant": []
+    },
+    {
+      "id": "chute-1",
+      "gagnant": null,
+      "perdant": null,
+      "pourquoi": [],
+      "defautsPerdant": [],
+      "note": "égal"
+    },
+    {
+      "id": "chute-2",
+      "gagnant": null,
+      "perdant": null,
+      "pourquoi": [],
+      "defautsPerdant": ["confus", "trop long"],
+      "note": "refusé par auteur"
+    },
+    {
+      "id": "final",
+      "gagnant": null,
+      "perdant": null,
+      "pourquoi": [],
+      "defautsPerdant": ["trop long", "confus"],
+      "note": "2 histoires entières refusées en finale (deepseek-reco + kimi-k26-instant)"
+    }
+  ],
+  "scoresParSource": {
+    "claude-opus-reco": 3,
+    "claude-sonnet-def": 2,
+    "claude-haiku-reco": 2,
+    "deepseek-reco": 2
+  },
+  "podiumPredit": ["claude-opus-reco", "claude-sonnet-def", "claude-haiku-reco", "deepseek-reco"],
+  "signalauxMajeurs": {
+    "1_pas_de_dominante_nette": "3 sources à égalité (2 wins chacun) — Papa Yann ne peut pas trancher vers un writer unique via fragments",
+    "2_5_segments_non_tranches": "segments longs/complexes (tension Nono, contact, chute, finale) posent problème peu importe la source — signal structurel PROCESS, pas erreur d'écriture ponctuelle",
+    "3_confus_defaut_principal": "\"confus\" est le défaut le plus fréquent chez les perdants (7 occurrences sur 8) — tueur n°1 mémoire de goût confirmé",
+    "4_finales_refusees": "Deux histoires entières rejetées en duel final (deepseek-reco et kimi-k26-instant) — alligne REX 2026-07-04 (trop long, dialogue-final rejeté)",
+    "5_decison_en_attente": "Papa Yann n'a pas statué sur un writer gagnant v5 — briefs étape 3 rewrite en standby"
+  },
+  "etatDeci": "Base étape 6 reste opus-def v4 (relecture annotée 13/20 du 2026-07-05) + greffe ouverture deepseek. Vague 5 en standby pour intégration micro-briefs étape 3 OU arbitrage post-vague-6 rewrite.",
+  "loggePAR": "narration-pmo",
+  "source": "Papa Yann (outil duel site/duel.html)"
+}

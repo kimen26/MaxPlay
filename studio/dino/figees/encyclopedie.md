@@ -67,6 +67,7 @@ Fichiers concernés : [`site/dev-dinos.html`](../../../site/dev-dinos.html) · [
 - 🔒 **Récit d'époque** = vrai petit récit (~10-25 s), Narratrice + Wex. Fichiers `recit-*.mp3`.
 - 🔒 **Voix** : Narrateur H (`narrateur_h`) sur accueil/régime/familles · **Narratrice F** (`narrateur_f`) sur le Voyage et tous les récits d'époque.
 - 🔒 **Wex** : FR standard, AUCUN tic écrit à la main (la voix encode bégaiement/teinte). « écoute » jamais « regarde ». Voir [[reference_audio_kit_enfant]] + skill `ecriture-audio-enfants`.
+- 🔒 **UN SEUL SON À LA FOIS (FIGÉ 2026-07-05)** — Tout jeu audiovisuel dino (mj-24, mj-25, mj-26, mj-28, mj-30, mj-31, mj-33, future `dev-dinos.html` modal audio) **INTERDIT deux voix/sons simultanés**. **Règle** : au premier play d'un MP3 dino, exécuter `window.speechSynthesis?.cancel()` (annule tout TTS en cours) + pause `DINO_AUDIO` existant. Au premier TTS appelé, faire `DINO_AUDIO_MP3.pause()`. **Raison** : tympan enfant 4 ans confond quand deux sources actives → feedback audio pollué. **Pattern universel** pour toute app audio enfant. (Incident découvert mj-31 Papa Yann : « chevauchement son entendu ».) Appliqué tous jeux prod 2026-07-05 ✅.
 
 ## 🔒 UI dev-dinos (FIGÉ 2026-06-03)
 

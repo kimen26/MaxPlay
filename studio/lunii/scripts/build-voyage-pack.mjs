@@ -136,15 +136,15 @@ const stageNodes = [
 ];
 
 for (const e of EPOQUES) {
-  // ÉTIQUETTE (option de menu, niveau 2) : image époque + titre court parlé
+  // ÉTIQUETTE (option de menu) : image époque + titre court parlé, la molette parcourt les étiquettes
   stageNodes.push({
     uuid: e.uuidTitle,
     name: `Etiquette ${e.n} - ${e.titre}`,
     image: e.imgAsset,
     audio: e.titleAsset,
     okTransition: { actionNode: `action-recit-${e.key}`, optionIndex: 0 }, // OK → lance le récit
-    homeTransition: { actionNode: "action-back-menu", optionIndex: 0 },     // maison → retour menu
-    controlSettings: { wheel: false, ok: true, home: true, pause: false, autoplay: false },
+    homeTransition: null,     // maison = sortie du pack (moteur natif, pas de retour forcé au menu)
+    controlSettings: { wheel: true, ok: true, home: true, pause: false, autoplay: false },
   });
   // RÉCIT complet : lecture au clic, fin → retour menu
   stageNodes.push({
@@ -153,7 +153,7 @@ for (const e of EPOQUES) {
     image: e.imgAsset,
     audio: e.audioAsset,
     okTransition: { actionNode: "action-back-menu", optionIndex: 0 },       // fin (autoplay) / OK → retour menu
-    homeTransition: { actionNode: "action-back-menu", optionIndex: 0 },      // maison → retour menu
+    homeTransition: null,      // maison = sortie du pack (moteur natif, pas de retour forcé au menu)
     controlSettings: { wheel: false, ok: true, home: true, pause: true, autoplay: true },
   });
 }

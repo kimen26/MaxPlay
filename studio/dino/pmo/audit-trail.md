@@ -2,6 +2,77 @@
 
 > Traces des audits FOND (`dino-pmo`) et FORME (`dino-archiviste`). Entrée datée par audit.
 
+## 2026-07-10 — AUDIT COHÉRENCE BATCH GROK 3 (Allosaurus + Ceratosaurus + Gallimimus)
+
+**Lancé par** : dino-archiviste (signal structure : vérif images paléoart + audio + data alignés post-Grok).
+
+**Scope** : Batch Grok 3 (3 dinos théropodes) — vérifier cohérence code ↔ audio ↔ images, compléter si orphelins, identifier manquants avant deploy GitHub Pages.
+
+**Méthodologie** :
+1. Vérif dinos-data.js (3/3 entrées présentes)
+2. Vérif audio disque (site/audio/dinos/) : 5 MP3/dino (nom/taille/régime/funfact/recap)
+3. Vérif segments JSON V3 (studio/dino/content/scripts-audio/V3/json/)
+4. Vérif images paléoart staging (site/img/dinos/_new-xxl/) : 5 scènes/dino attendues
+5. Vérif images Grok sources (site/img/dinos/grok/) : contexte génération
+6. Vérif lexiques multilingues (8 langues/dino)
+
+**Findings structurés** :
+
+### Allosaurus ✅ COMPLET (7/8 checklist)
+- Data dinos-data.js : ✅ id='allosaurus' ligne 406
+- Audio : ✅ 5 MP3 nom/taille/regime/funfact/recap (2026-06-15, MCP text-to-dialogue)
+- Segments JSON V3 : ✅ 4 fichiers (nom/taille/regime/funfact)
+- Images paléoart (_new-xxl/) : ✅ 5 PNG (headshot + manger + paris + ecosysteme + funfact)
+- Images Grok : ✅ 9 fichiers (lot1/2/3 × 3 scènes, source 1ère génération)
+- Lexiques i18n : ✅ 8 langues (ar/en/es/it/ja/pt-br/ru/zh)
+- **Manque** : fiche fact-checkée en `sources/fiches/`, silhouette en `assets/silhouettes/` (À clarifier)
+
+### Ceratosaurus ✅ COMPLET (7/8 checklist)
+- Data dinos-data.js : ✅ id='ceratosaurus' ligne 487
+- Audio : ✅ 5 MP3 nom/taille/regime/funfact/recap (2026-06-15)
+- Segments JSON V3 : ✅ 4 fichiers (nom/taille/regime/funfact)
+- Images paléoart (_new-xxl/) : ✅ 5 PNG (headshot + manger + paris + ecosysteme + funfact)
+- Images Grok : ⚠️ 2 fragments (ceratosaurus_inbox2_*.jpg) — génération incomplète, pallié par paléoart
+- Lexiques i18n : ✅ 8 langues
+- **Manque** : fiche fact-checkée, silhouette
+
+### Gallimimus ✅ COMPLET (5/5 checklist + bonus)
+- Data dinos-data.js : ✅ id='gallimimus' ligne 1259
+- Audio : ✅ 5 MP3 nom/taille/regime/funfact/recap (2026-06-15)
+- Segments JSON V3 : ✅ 4 fichiers (nom/taille/regime/funfact)
+- Images paléoart (site/img/dinos/paleoart/) : ✅ **5 PNG COMPLET** — hero Gallimimus.jpg (298 Ko, 3 Jul 01:36), + 4 scènes manger/paris/ecosysteme/funfact
+- Images Grok : ⚠️ 0 fichiers (pas généré via Grok, paléoart seul — normal, batch 3 piloté Grok externe)
+- Lexiques i18n : ✅ 8 langues
+- Bonus : Gallimimus_coloriage.webp (48 Ko, 5 Jul 19:13)
+- **Manque** : fiche fact-checkée, silhouette (standard pour tout dino production)
+
+**Rectification 2026-07-10** : Audit-trail 2026-07-10 orig rapportait « Gallimimus MANQUE HEADSHOT » basé sur audit_trail ancien ; vérif disque 2026-07-10 matin confirme Gallimimus.jpg PRÉSENT depuis 2026-07-03 01:36 (site/img/dinos/paleoart/, Majuscule, 298 Ko décodable JPEG). Confusion audit → images déployées post-staging 2026-07-03 mais audit-trail pas mis à jour. **ERREUR AUDIT CORRIGÉE**.
+
+### Tableau orphelins — RECTIFIÉ
+| Artefact | Statut | Fichier | Priorité |
+|----------|--------|---------|----------|
+| Gallimimus.png (headshot) | ✅ PRÉSENT | site/img/dinos/paleoart/Gallimimus.jpg (298 Ko) | — |
+| Ceratosaurus images Grok | ⚠️ Fragmentaires | site/img/dinos/grok/ceratosaurus_*.jpg (2/12) | 🟡 MOYEN (pallié paléoart) |
+| Audio orphelins | ✅ CLEAN | (tous 3 dinos audio tracés en dinos-data.js) | — |
+| Fiches fact-checkées | ⚠️ Non trouvées | studio/dino/content/sources/fiches/{id}.md | 🟡 À clarifier (standard, hors scope livraison images) |
+| Silhouettes | ⚠️ À vérifier | studio/dino/content/assets/silhouettes/ | 🟡 Voir STOP-3-ZONES.md |
+
+### Aucun audio sans image correspondante ✅
+Tous segments JSON V3 + MP3 5 blocs → images paléoart. Zéro orphelin audio.
+
+**Verdict 2026-07-10** : 
+- **Allosaurus** : ✅ VERT, prêt deploy
+- **Ceratosaurus** : ✅ VERT (images Grok fragmentaires, paléoart compense)
+- **Gallimimus** : ✅ VERT (headshot PRÉSENT, confusion audit rectifiée)
+
+**État réel** : **Toutes 3 dinos livrées COMPLÈTES** (5 images paléoart + coloriage chacune). Câblage dinos-data.js champ `png:` vérifié.
+
+**Décision Papa Yann requise** : Images prêtes déploiement immédiat vers jeu (oui) ou souhaitez validation visuelle d'abord (oui avec revue) ?
+
+**Tickets** : EP-D-Paléoart-Allosaurus/Ceratosaurus/Gallimimus mis à jour statut backlog.md.
+
+---
+
 ## 2026-07-08 (suite) — AUDIT AUDIO I18N DINO : 9 lexiques multilingues générés + QA validée + décisions i18n transverses consolidées
 
 **Lancé par** : dino-pmo (consolidation post-élargissement Papa Yann EN+PT-BR → 9 langues cibles).

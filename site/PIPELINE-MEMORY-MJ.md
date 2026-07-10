@@ -193,6 +193,127 @@ Renforts : bloc « ⛔ AVANT DE MODIFIER » dans `.claude/rules/mini-jeux.md`, l
 
 ---
 
+### 2026-07-05 — 6 nouveaux MJ dinos livrés (mj-28…33) · harnais vert 6/6 · leçons techniques gravées
+
+**Trigger user** : Livraison lourde — 6 mini-jeux dinos avec testage. Commit f767416a pushé.
+
+**Jeux livrés** :
+- **MJ-28 Lampe du paléontologue** : spotlight CSS mask sur ombres, QCM noms (tag interactif → nuit → shadow)
+- **MJ-29 Fabrique de noms** : briques racines grec/latin depuis `DINO_RACINES`, TTS sens à chaque pose (construction sémantique)
+- **MJ-30 Range-les par taille** : tri puis révélation échelle vraie proportionnelle, enfant 1m posé en référence, vraies hauteurs dites (pédagogie échelle incarnée)
+- **MJ-31 Grand voyage du temps** : frise 4-5 bandes peuplée (chrono), Pépite : T-Rex & Stégosaure jamais croisés (gap 85M ans), finale météorite 4 tableaux non-gore
+- **MJ-32 Atelier coloriage** : flood-fill scanline <200ms sur 60 lineart PNG, galerie localStorage, libre (maxStars=0, pas de gagnant)
+- **MJ-33 Memory des ombres** : paires ombre↔photo, cousins même famille (taxonomie L2, ex herbivores vs carnivores vs vols anciens)
+
+**Statut harness** : ✅ **6/6 VERT** (npm run mj:test mj-28…33) — zéro correction nécessaire avant livraison. Preuve : commité f767416a clean.
+
+**Mise à jour catalog.js** : +6 entrées catégorie `dinos` (mj-28→31+33 sequence maxStars 3, mj-32 free maxStars 0). Index.html menu alimenté.
+
+**Leçons techniques gravées** (à intégrer L-xxx BACKLOG.md) :
+
+1. **L-041 : const DINOS top-level = liaison lexicale globale, PAS window.DINOS**
+   - Symptôme : 2 agents (mj-29 & mj-32 codeurs) ont perdu 45min à déboguer `window.DINOS undefined`
+   - Cause racine : import `dino-data.js` crée `const DINOS` localement, mais essais sur `window.DINOS` en console
+   - Règle à graver : accès par nom direct obligatoire dès le script charge. `window.DINOS` NE DEVRAIT JAMAIS être utilisé (pas d'export explicite)
+   - Test : asserter que `DINOS` est accessible via nom direct (pas window.) dans les assert harness
+
+2. **L-042 : Harnais run.mjs — flags Chromium --allow-file-access-from-files --disable-web-security obligatoires**
+   - Symptôme : `file://` chaque fichier = origine opaque (spec CORS) → drawImage + getImageData toutes les lignes canvas en file:// causaient taint → silencieuse
+   - Cause racine : Chromium headless en mode restrictif par défaut
+   - Règle à graver : flags Chromium ajoutés à `studio/minijeux/tests/run.mjs` (Playwright + spécifique headless). En prod HTTPS same-origin : non concerné. Mais tout futur MJ canvas nécessite cet outillage harness.
+   - Conséquence : tout MJ canvas = test harness OBLIGATOIRE, pas optionnel (pas de faux sentiment de sécurité)
+
+3. **L-043 : PNG transparent silhouette ombre ≠ blanc + invert**
+   - Symptôme : MJ-30 images ombres (mj-33 aussi) sont des PNG `_new-ombre/*` (silhouettes noires sur fond TRANSPARENT)
+   - Cause : confusion initiale dev → les rencontrer en local sans fond = invisible (fond transparent du canvas)
+   - Règle à graver : jamais de `filter: invert()` CSS sur silhouettes. Fond blanc/gris EN ARRIÈRE (contrastant). Le PNG reste noir pur. Vérification visuelle obligatoire (screenshot) car drawImage silencieuse sur fond blanc.
+   - Test : 1 assert visual par MJ canvas-heavy (screenshot comparison, pas juste DOM assert)
+
+4. **L-044 : 11 dinos sans image couleur = NO_HERO/NO_ASSET tag dans mj-28 et mj-33**
+   - Status : edmontonia, torosaurus, pentaceratops, mammuthus, smilodon, megatherium, paraceratherium, glyptodon, aenocyon, coelodonta, titanis SANS `img/dinos/*.webp`
+   - Régénération paléoart EN COURS (skill dino-paleoart actif)
+   - Règle : mj-28/33 rendent gracefully (filtre `if (DINOS[id].images?.color)` avant drawImage). À RETIRER dès images livrées.
+   - Tracking : tag NO_ASSET dans catalog.js jusqu'au complet.
+
+**Architecture** :
+- Source HTML : `site/mj-28.html` à `mj-33.html` (même repo GitHub Pages)
+- Data canon : `site/js/dino-data.js` (DINOS const, liste complète 18 espèces + familiale)
+- Harness : `studio/minijeux/tests/{mj-28…33}.spec.mjs` (1 fichier spec par MJ = couplage serré pour survie des figés)
+
+**Statut figées** : aucun `figees/mj-28…33.md` créé — jeux pas encore VALIDÉS par Papa Yann (il teste via GitHub Pages seulement). À créer dès sa validation jeu par jeu, comportement par comportement.
+
+**Prochaine action** : Papa Yann teste via https://kimen26.github.io/MaxPlay/ → feedback → figeage cas par cas → game-mj-reviewer Section 0 checkpoints figés.
+
+### 2026-07-05 — Bug prod images 404 (mj-28/30/31/33) · leçon MAJEURE sur asset tracking
+
+**Trigger** : Papa Yann détecte en prod 404 sur images dino dans 4 MJ livrés aujourd'hui.
+
+**Cause racine** : nouveau dossier `img/dinos/_new-ombre/` GITIGNORÉ (staging, 60 PNGs ombres 600px). Harnais Playwright ✅ vert en local (file:// peut accéder au dossier staging) → faux sentiment de sécurité. En prod GitHub Pages HTTPS : dossier jamais poussé → 404 silencieux.
+
+**Fix appliqué** (commit 941faa30) : chemins `_new-ombre/` → `img/dinos/ombres/` (nouveau dossier TRACKÉ). Specs mj-28/31 mises à jour. 11 dinos sans image couleur → filtres NO_HERO (mj-28) et NO_ASSET (mj-33) appliqués. PWA : icônes PNG 192+512 au manifest + apple-touch-icon dans index2.html (manifest SVG-only = pas d'icône install).
+
+**Leçon CRITIQUE gravée** : `git check-ignore <chemin>` + `git ls-files <chemin>` OBLIGATOIRES après tout ajout de chemin d'asset dans un mj-XX.html. Harnais vert en local ≠ assets tracké. Réflexe : vérifier tracking AVANT push.
+
+**Suggestion EP futur** : ajouter au harnais run.mjs un check automatique « chaque src/href/data-src relatif référencé par la page existe ET est tracké git ». Détecterait ce bug avant GitHub Pages.
+
+**Prérequis pour fermer** : Papa Yann valide visuellement en prod (images chargées) + dino-skill génère images manquantes.
+
+### 2026-07-05 (suite 3, clôture) — Revalidation 10/10 harnais + correctifs assets + déploiement SUCCESS
+
+**Trigger** : Papa Yann demande revalidation complète 6 nouveaux MJ dinos + contrôle visuel mi-jeu.
+
+**Corrections appliquées** :
+
+1. **MJ-27 asset regression CASSÉE au harnais** — set `MISSING` périmé (noms `.png` vs data `.jpg`). Fix : spec regex accept `.png|.jpg`, liste MISSING vidée (60/60 heros valides). Leçon : listes d'exclusion en dur POURRISSENT → préférer manifest ou onerror.
+
+2. **Ombres + coloriages** — damier transparence INCRUSTÉ pixels images générées. Contrôle visuel mi-jeu détecte (harnais DOM aveugle). Fix : nettoyage batch PIL (14Mo→1,7Mo). Leçon : contrôle PNG visuel obligatoire sur assets générés, harnais ne rend pas.
+
+3. **Deploy-pages « Deployment failed » ×2 transitoire** — artefact 545 Mo (paleoart 122M + audio 191M + img/ 1,2G local dont 914M gitignorés). Alerte : régime minceur artefact avant d'atteindre 1 Go. Suggestion : webp + bitrate audio à surveiller.
+
+**Statut final** : ✅ 10/10 harnais VERT (mj-24→33) · déploiement SUCCESS · 18/18 URLs prod HTTP 200 · staging concurrent géré (staging paths explicites, feedback_concurrent_git_staging appliqué).
+
+**Leçon CRIANTE (ajout § Leçons)** : `git check-ignore <path>` + `git ls-files <path>` OBLIGATOIRES post-ajout asset dans mj-XX.html. Harnais vert local ≠ assets tracké. Réflexe avant push.
+
+**Suggestion EP futur** : check auto dans harnais run.mjs « chaque src/href relative existe ET tracké git ». Détecterait ce bug avant GitHub Pages.
+
+### 2026-07-05 (suite 4, figeage dinos) — MJ-24/25/26/31 FIGÉS après validations Papa Yann
+
+**Trigger user** : Papa Yann validations explicites sur retours testage dinos en prod. 4 décisions figeage gravées dans les fichiers respectifs.
+
+**Figeages créés** :
+
+1. **`studio/minijeux/docs/jeux/figees/mj-31.md`** — Grand voyage du temps
+   - 🔒 **Redire la période (époque) après bonne réponse** — leçon pédagogique centrale, jamais retirer. Papa Yann : **« c'est SUPER BIEN »**
+   - 🔒 **Vignettes dino se posent EN LIVE sur frise chrono** — feedback principal, pas d'affichage massif final. Papa Yann : **« tes petites images en live c'est SUPERRRR »**
+   - 🔒 **Voix RÉELLE ElevenLabs prioritaire sur TTS** pour annonce dino. Fallback TTS en 404 via manifest `js/dinos-audio-manifest.js` (auto-généré, source de vérité traçabilité).
+   - 🔒 **T-Rex/Stégosaure jamais croisés** — alerte Wex « 85M ans » — leçon temporelle figée.
+   - 🔒 **Finale météorite 4 tableaux, zéro gore** — vraie (« roches tombent, c'est fini »), pas violence.
+   - Note : phrase d'époque reste TTS (aucun asset n'existe) — candidat génération EL post-reset quota (~9 juillet).
+
+2. **`studio/minijeux/docs/jeux/figees/mj-24.md`** — Trouve l'espèce
+   - 🔒 **Ombres chinoises CANON EXCLUSIVES** (`img/dinos/ombres/`, tracké). Silhouettes LimeZu : **SUPPRIMÉES, jamais réintroduire.**
+   - 🔒 Papa Yann ordre explicite 2026-07-05 : *« les anciennes [silhouettes] SUPPRIME-LES, je ne veux plus les voir !! »*
+   - 🔒 Fichiers banned : `img/dinos/silhouettes/`, `js/dino-silhouettes.js`, `dev-silhouettes.html` (supprimées en commit 941faa30).
+   - 🔒 Voix réelle ElevenLabs pour nom dino (annonce spécifique), fallback TTS en 404.
+
+3. **`studio/minijeux/docs/jeux/figees/mj-25.md`** — Cherche bien !
+   - 🔒 Même bannissement silhouettes LimeZu → ombres canon `img/dinos/ombres/` exclusives.
+   - 🔒 **Correction règle audio appliquée** : mj-25 disait « Regarde bien » → **« Cherche bien »** (règle UX 3.5-4 ans : écoute d'abord ≠ regard). Leçon L-xxx audio jeu.
+   - 🔒 Voix réelle ElevenLabs pour nom dino, fallback TTS en 404.
+
+4. **`studio/minijeux/docs/jeux/figees/mj-26.md`** — Tri des dinos
+   - 🔒 Même bannissement silhouettes LimeZu → ombres canon exclusives.
+   - 🔒 Voix réelle ElevenLabs pour nom dino, fallback TTS en 404.
+
+**Leçon méthodologie gravée** : 
+- **Manifest d'assets GÉNÉRÉ** (`js/dinos-audio-manifest.js`, script node one-liner) = réponse propre au pourrissement des listes en dur (L-046) ET aux 404 fallback gracieux. Garant : src fichiers réels, pas code.
+- **Contrôle assets AVANT push** : `git check-ignore` + `git ls-files` post-ajout chemin. Harnais vert local (file://) ≠ assets tracké (prod HTTPS). Réflexe validé par incident images 404 (commit 941faa30).
+- **Fallback TTS systématique** : si MP3 manquant (404), TTS navigateur prend le relais (pas d'erreur). Design pour la continuité, pas le crash.
+
+**Statut** : 🔒 FIGÉ × 4 jeux. Fichiers créés, anti-régressions posées, miroirs négatifs documentés. Prêt pour game-mj-reviewer Section 0 checkpoints figés (pas encore validé en Section 0 par reviewer, attente test Papa Yann itéré).
+
+---
+
 ## 4. Patterns user observés
 
 ### P-001 : Vision en 3 sous-domaines (2026-05-11)

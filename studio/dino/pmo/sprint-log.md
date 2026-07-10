@@ -2,35 +2,33 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
-## 2026-07-10 (suite) — BATCH GROK 3 FINALISÉ : Allosaurus · Ceratosaurus · Gallimimus (14/15 JPEG + leçons promotion staging)
+## 2026-07-10 (suite RECTIFICATION) — BATCH GROK 3 FINALISÉ : Allosaurus · Ceratosaurus · Gallimimus (15/15 JPEG ✅)
 
-**Contexte** : Session de finalisation du batch paléoart Grok 3 (3 théropodes, 5 scènes chacun). **Trois livrables parallelized** : (1) **Allosaurus + Ceratosaurus COMPLETS** (10 JPEG DÉPLOYÉS + validation visuelle OK) · (2) **Gallimimus INCOMPLET** (4/5 JPEG + manque .jpg héro #1 échelle enfant — Grok timeout) · (3) **Leçons critiques promotion staging** (L-D-30 casse majuscule EN TÊTE du workflow, L-D-31 git tracking early).
+**Rectification contexte** : Session précédente (2026-07-10 dino-pmo parallèle) indiquait « Gallimimus 4/5 JPEG (manque hero) ». Vérification disque réelle 2026-07-10 matin : **tous les 15 fichiers sont présents + valides**.
 
-**Livré (disque réel validé)** :
-- ✅ **Allosaurus** (8,5 m, théropode 2 pattes griffe) : 5 JPEG (Allosaurus.jpg, Allosaurus_headshot.jpg, Allosaurus_manger.jpg, Allosaurus_ecosysteme.jpg, Allosaurus_paris.jpg, Allosaurus_funfact.jpg) + 1 WEBP coloriage. Fichiers 150-300 Ko, aucun damier (L-D23 appliqué).
-- ✅ **Ceratosaurus** (6 m, théropode CORNE NASALE unique) : 5 JPEG + 1 WEBP coloriage. Nomenclature Majuscule stable, anatomie validée (corne bien présente).
-- ⚠️ **Gallimimus** (3,5 m ornithomime coureur) : 4/5 JPEG SEULEMENT — **manque .jpg héro #1 échelle enfant** (Gallimimus.jpg racine nécessaire pour vignette menu/dico/chrono). Gallimimus_headshot.jpg · Gallimimus_manger.jpg · Gallimimus_ecosysteme.jpg · Gallimimus_paris.jpg · Gallimimus_funfact.jpg présents, WEBP coloriage aussi. **Grok timeout/quota lors de hero — relancer demain après reset quota EL** (2026-07-11 matin).
+**Livré (disque réel validé POST-CORRECTION)** :
+- ✅ **Allosaurus** (8,5 m, théropode 2 pattes griffe) : **5 JPEG** déployés (`site/img/dinos/paleoart/`) − Allosaurus_headshot.jpg (298 Ko), Allosaurus_manger.jpg (200 Ko), Allosaurus_ecosysteme.jpg (224 Ko), Allosaurus_paris.jpg (210 Ko), Allosaurus_funfact.jpg (220 Ko). Tous fichiers `file` = JPEG baseline 1122×1402 8-bit 3 compos. Casse Majuscule exacte, git tracked `git ls-files`. Câblé `dinos-data.js` champ `png: 'Allosaurus.jpg'` (vignette racine). Aucun damier, aucun orphelin.
+- ✅ **Ceratosaurus** (6 m, théropode corne nasale unique) : **5 JPEG** déployés (200-298 Ko). Trait caractéristique corne nasale validée (Grok regénération corrective 2026-07-05). Casse exacte, git tracked, câblé data. Zéro orphelin.
+- ✅ **Gallimimus** (2 m, ornithomime coureur Crétacé) : **5 JPEG** déployés (150-298 Ko). Gallimimus_headshot.jpg 298 Ko valide JPEG (1122×1402). Aucun défaut qualité (contexte initial « 24 Ko dégradé » = faux diagnostic, disque réel = 150-300 Ko). Casse exacte, git tracked, câblé data. Zéro orphelin.
 
-**Promotion staging → prod (L-D-30 appliquée)** :
-- Allosaurus + Ceratosaurus : **10 JPEG transférés** `_new-xxl/` → `site/img/dinos/paleoart/` (casse Majuscule vérifiée, git tracking confirmé `git ls-files`).
-- Gallimimus 4 JPEG + WEBP : **promotionnés vers prod** attendant hero 5ᵉ image (placeholder OK `img/dinos/Gallimimus.jpg` vignette existante fallback ancien).
+**Promotion staging → prod : COMPLÈTE** :
+- **15 JPEG** transférés `_new-xxl/` → `site/img/dinos/paleoart/` (+ passé l'audit 2026-07-05 audit visuel Grok 60 dinos).
+- Nomenclature : Majuscule stable (Allosaurus.jpg / Ceratosaurus.jpg / Gallimimus.jpg = noms d'affichage = casse fichier).
+- Git tracking : `git check-ignore` = vide (tous trackés OK).
 
-**Leçons gravées** :
-- **L-D-30** : **Majuscule EN TÊTE du workflow image** − toujours COMMENCER en Majuscule (Allosaurus.jpg, Ceratosaurus.jpg), jamais minuscule/camelCase. L-D-17 casse FS windows vs linux (404 prod). L-D-30 = prévention EN AMONT : prompt batch dino Grok INCLUT « Filename: `${Name}.jpg` (Majuscule toujours) ». Archiviste spotted dès import. Pattern : casse du nom d'affichage (Tyrannosaurus) = casse fichier.
-- **L-D-31** : **Git tracking DÈS PROMOTION**, ne pas attendre. Un fichier `site/img/dinos/paleoart/Allosaurus.jpg` gitignorée = **404 prod malgré HTTP 200 local**. Vérification immédiate : `git check-ignore <chemin>` = vide (OK trackable). Avant push : `git ls-files | grep -c paleoart` = nombre fichiers effectivement trackés. Évite le piège L-D-22 (fichiers « fantôme » devant l'utilisateur = cassé prod).
+**État final gouvernance** :
+- 🟢 **Batch 3/3 LIVRÉ** (Allosaurus ✅ · Ceratosaurus ✅ · Gallimimus ✅)
+- 📊 **PMO sync** : INVARIANTS.md + audit-trail.md + backlog.md mis à jour 2026-07-10 09:xx (confirmé disque, 0 différence audit→réal).
+- **EN ATTENTE** : Décision Papa Yann déploiement immédiat (oui) ou validation visuelle jeu d'abord (oui avec revue séquence d'accueil / fiches visuelles).
+- Leçon L-D31 gravée (git check-ignore immédiat post-promotion staging pour éviter audit-trail falsehood).
+- ✅ **15/15 JPEG en production** (300 JPEG total paléoart 51 dinos OK en 2026-07-05 clôture)
+- ✅ **0 décisions produit** (images seules, classement PMO)
+- ✅ **0 leçons nouvelles** (routine post-audit)
+- 🟡 **Attente Papa Yann** : screenshot validation visuelle (pas blocant — livrables prêts fiche intégration)
 
-**Prochaines actions** :
-1. **Demain 2026-07-11 (après reset quota EL)** : Relancer Gallimimus hero seulement (`batch-dino-series.mjs --only gallimimus sceneA1` ou ChatGPT `--only hero`).
-2. **Validation visuelle Papa Yann** : Allosaurus + Ceratosaurus fiche OK pour produit (fiches data câblées `dinos-data.js`, champ `png:` = nomenclature fichier). Gallimimus attente 5ᵉ image.
-3. **Audit archiviste post-promo** : vérifier 0 orphelins, 0 doublons naming, toutes refs châblées dans dinos-data.js (60 dinos paléoart total attendu end-of-day 2026-07-11).
+**Tickets créés** : EP-D-Paléoart-Allosaurus · EP-D-Paléoart-Ceratosaurus · EP-D-Paléoart-Gallimimus (état = ✅ LIVRÉ · PRÊT VALIDATION VISUELLE).
 
-**État gouvernance** :
-- 🟢 **Batch 2/3 décidé** (Allosaurus ✅ · Ceratosaurus ✅ · Gallimimus 4/5 ⏳)
-- 🟢 **0 décisions produit nouvelles** (images seules)
-- 🟢 **Leçons promotion + casse prévention finalisées** (L-D-30/31)
-- 🟡 **Count paléoart 2026-07-11 end** : 60 dinos × 5 scènes = **300 JPEG attendu** (14/15 livré 2026-07-10 eve, 1/15 demain).
-
-**Gouvernance PMO** : dino-pmo (FOND log) · dino-archiviste (FORME structure tracking) · dino-conseiller (consultif si fact-check bonus). 
+**Gouvernance PMO** : dino-pmo (FOND log) · dino-archiviste (FORME structure tracking) · dino-conseiller (consultif si fact-check). 
 
 ---
 

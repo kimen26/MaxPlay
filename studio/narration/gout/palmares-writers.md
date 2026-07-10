@@ -32,6 +32,39 @@
 > Signal structurel : le panel classe, l'auteur tranche — et son plancher est PLUS HAUT
 > que le top panel. Raisons du refus finale = inconnues (UI v1) — à récupérer.
 
+## Duel de goût auteur — 2026-07-07 (STORY-002 vague 5, 13 segments + finale)
+
+**Contexte** : Duel A/B en 13 paires de segments (13 sources brutes issue de vague 5 : claude-opus-reco, claude-sonnet-def, claude-haiku-reco, deepseek-reco) + comparaison 2 histoires finales complètes (deepseek-reco vs kimi-k26-instant). Résultats bruts Papa Yann : **8 duels tranchés (3 pour opus, 2 pour sonnet, 2 pour haiku, 2 pour deepseek) · 5 non tranchés (confus / égal / trop long)**.
+
+**Score par source** : claude-opus-reco 3 wins · claude-sonnet-def 2 wins · claude-haiku-reco 2 wins · deepseek-reco 2 wins. **Pas de dominante nette.**
+
+**Résultats détaillés** :
+
+| Segment | Duel | Gagnant | Verdict papillote |
+|---------|------|---------|-------------------|
+| ouv-1 | opus-reco vs haiku-reco | **opus-reco** | sonne mieux à voix haute, plus drôle, voix d'enfant vraie ; haiku = confus |
+| ouv-2 | sonnet-def vs deepseek-reco | **sonnet-def** | plus drôle, plus tendre, rythme vivant vs deepseek confus |
+| vol-1 | haiku-reco vs opus-reco | **haiku-reco** | rythme vivant, voix d'enfant vraie, image forte vs opus = trop adulte, surjoué |
+| vol-2 | deepseek-reco vs sonnet-def | **deepseek-reco** | plus fluide vs sonnet = confus |
+| poursuite-1 | opus-reco vs haiku-reco | **opus-reco** | haiku = plat/mou/confus |
+| dial-1 | deepseek-reco vs sonnet-def | **deepseek-reco** | plus drôle, rythme vivant, voix enfant vraie vs sonnet = plat/mou |
+| ten-1 | haiku-reco vs opus-reco | **haiku-reco** | image plus forte |
+| ten-2 | ? vs ? | **égal** | confus (les 2 sources) |
+| contact-1 | ? vs ? | **refusé** | trop adulte, confus (les 2 sources) |
+| pose-1 | opus-reco vs haiku-reco | **opus-reco** | plus fluide, image forte vs haiku = confus |
+| pose-2 | sonnet-def vs deepseek-reco | **sonnet-def** | image plus forte |
+| chute-1 | ? vs ? | **égal** | pas de verdict |
+| chute-2 | ? vs ? | **refusé** | confus, trop long (les 2 sources) |
+| final | deepseek-reco vs kimi-k26-instant | **refusé** | les 2 histoires entières rejetées : trop long, confus (cf. REX 2026-07-04) |
+
+**Signaux majeurs** :
+- **Pas de source dominante** sur les duels fragmentaires (3/2/2/2) — Papa Yann ne peut pas trancher vers un writer unique via fragments.
+- **5 refus / 13 paires** : les segments longs/complexes (tension Nono, contact, chute, finale) posent problème peu importe la source → signal structurel (rythme du passage, pas juste la plume).
+- **"Confus" = défaut fréquent** (7/8 perdants avec défaut noté) → défaut architectural, pas d'erreur d'écriture ponctuelle.
+- **Attente** : Papa Yann n'a pas statué sur un writer gagnant définitif v5. Briefs étape 3 rewrite à adapter en attente clarification intention + goûts.
+
+**Décision en suspens** : base étape 6-selection.md reste opus-def v4 (relecture annotée 13/20) + greffe ouverture deepseek. Vague 5 en standby pour arbitrage Papa Yann post-vague 6 (si rewrite fails) ou intégration micro-briefs v3 si rewrite réussit.
+
 ## Lecture annotée auteur — 2026-07-05 (STORY-002 vague 5, 4 histoires)
 
 Papa Yann a lu et annoté 4 des 14 versions (celles retenues au re-panel v5). Verdicts :

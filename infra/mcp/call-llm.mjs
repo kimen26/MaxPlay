@@ -27,6 +27,7 @@ function arg(name, def = undefined) {
   return i !== -1 && process.argv[i + 1] ? process.argv[i + 1] : def;
 }
 
+const checkMode = process.argv.includes("--check");
 const provider = arg("provider", "kimi");
 const systemFile = arg("system");
 const promptFile = arg("prompt");
@@ -52,8 +53,8 @@ if (provider === "kimi-payant") {
   }
 }
 
-if (!systemFile || !promptFile) {
-  console.error("ERREUR: --system <file> et --prompt <file> obligatoires.");
+if (!checkMode && (!systemFile || !promptFile)) {
+  console.error("ERREUR: --system <file> et --prompt <file> obligatoires (sauf --check).");
   process.exit(2);
 }
 
@@ -112,6 +113,58 @@ const apiKey = env[p.keyEnv];
 if (!apiKey) {
   console.error(`ERREUR: ${p.keyEnv} absente de ~/.claude.json (llm-copains.env).`);
   process.exit(2);
+}
+
+// ── MODE --check : préflight quota/santé des canaux GRATUITS ────────────
+// Ping minimal (1 token, non-stream) sur kimi/deepseek/grok AVANT tout batch.
+// Détecte quota épuisé (403 billing), clé morte, endpoint down — évite de
+// découvrir un trou de corpus en plein run (incident quota Kimi 2026-07-11).
+// Le canal payant n'est PAS pingé (règle figée : réservé aux 2 writers k26).
+// Usage : node call-llm.mjs --check [--provider kimi]   (défaut : les 3)
+if (checkMode) {
+  const targets = arg("provider") ? [arg("provider")] : ["kimi", "deepseek", "grok"];
+  let allOk = true;
+  for (const name of targets) {
+    const prov = PROVIDERS[name];
+    if (!prov || name === "kimi-payant") {
+      console.log(`${name.padEnd(10)} SKIP (inconnu ou payant — non pingé)`);
+      continue;
+    }
+    const key = env[prov.keyEnv];
+    if (!key) {
+      console.log(`${name.padEnd(10)} FAIL clé ${prov.keyEnv} absente`);
+      allOk = false;
+      continue;
+    }
+    const t0 = Date.now();
+    try {
+      const ctl = new AbortController();
+      const tm = setTimeout(() => ctl.abort(), 30000);
+      const r = await fetch(`${prov.baseUrl}/chat/completions`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${key}`, ...prov.headers },
+        body: JSON.stringify({
+          model: prov.model,
+          messages: [{ role: "user", content: "ping" }],
+          max_tokens: 1,
+        }),
+        signal: ctl.signal,
+      });
+      clearTimeout(tm);
+      const ms = Date.now() - t0;
+      if (r.ok) {
+        console.log(`${name.padEnd(10)} OK   (${ms}ms)`);
+      } else {
+        const txt = (await r.text()).slice(0, 200).replace(/\s+/g, " ");
+        console.log(`${name.padEnd(10)} FAIL HTTP ${r.status} (${ms}ms) ${txt}`);
+        allOk = false;
+      }
+    } catch (e) {
+      console.log(`${name.padEnd(10)} FAIL ${e?.name === "AbortError" ? "timeout 30s" : e.message}`);
+      allOk = false;
+    }
+  }
+  process.exit(allOk ? 0 : 1);
 }
 
 const systemPrompt = readFileSync(systemFile, "utf8");

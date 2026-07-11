@@ -69,7 +69,18 @@
     }
     return imgData;
   }
-  // charge un fichier, le recolore avec les targets stockées, rend un dataURL (ou null si canvas KO)
+  // couleurs cibles « variance forte » : la base la plus CLAIRE reste telle quelle,
+  // les autres deviennent des couleurs vives totalement aléatoires (jamais brun/gris : saturation haute)
+  function vividTargets(bases) {
+    var lightIdx = 0, best = -1;
+    bases.forEach(function (b, i) { var l = rgb2hsl(b[0], b[1], b[2])[2]; if (l > best) { best = l; lightIdx = i; } });
+    return bases.map(function (b, i) {
+      if (i === lightIdx) return b.slice();
+      return hsl2rgb(Math.floor(Math.random() * 360), .65 + Math.random() * .3, .45 + Math.random() * .17);
+    });
+  }
+  // charge un fichier, le recolore, rend un dataURL (ou null si canvas KO).
+  // targets : tableau de couleurs, OU une fonction (bases) -> targets (calculée sur l'image chargée)
   function recolorFile(src, targets, cb) {
     var img = new Image();
     img.onload = function () {
@@ -79,7 +90,8 @@
         c2.drawImage(img, 0, 0);
         var d = c2.getImageData(0, 0, cv.width, cv.height);
         var bases = extractBases(d.data);
-        c2.putImageData(recolorData(d, bases, targets), 0, 0);
+        var t = (typeof targets === 'function') ? targets(bases) : targets;
+        c2.putImageData(recolorData(d, bases, t), 0, 0);
         cb(cv.toDataURL('image/png'));
       } catch (e) { cb(null); }
     };
@@ -206,7 +218,9 @@
     var f = id ? Avatar.file(id) : null;
     if (f) {
       badge.innerHTML = '<img alt="">';
-      Avatar.paintInto(badge.firstChild, f);
+      // 1 fois sur 10 : variance forte surprise (le clair reste clair, le reste en couleurs vives random)
+      if (Math.random() < 0.1) recolorFile(f, vividTargets, function (url) { badge.firstChild.src = url || f; });
+      else Avatar.paintInto(badge.firstChild, f);
       if (pop) badge.firstChild.classList.add('pop');
     } else {
       badge.innerHTML = '<span class="av-q">🦕</span><span class="av-plus">+</span>';
@@ -266,7 +280,7 @@
   ov.innerHTML = '<div id="av-box"><h3 id="av-title">🦕 Choisis ton dino !</h3><p id="av-sub">Ce sera ton copain dans le menu</p>' +
     '<div id="av-grid">' + grid + '</div>' +
     '<div id="av-col"><canvas id="av-cv" width="360" height="360"></canvas>' +
-    '<div id="av-pre"></div>' +
+    '<div id="av-sw"></div><div id="av-pre"></div>' +
     '<div id="av-act"><button id="av-rnd">🎲 Surprise</button><button id="av-org">D\'origine</button>' +
     '<button id="av-ok" class="ok">✓ C\'est bon !</button></div></div>' +
     '<button class="av-close">Fermer</button></div>';
@@ -355,11 +369,8 @@
   });
   document.getElementById('av-rnd').addEventListener('click', function () {
     if (!colState) return;
-    var h = Math.floor(Math.random() * 360);
-    colState.targets = colState.bases.map(function (base, i) {
-      var hsl = rgb2hsl(base[0], base[1], base[2]);
-      return hsl2rgb((h + i * 24) % 360, Math.max(.4, hsl[1]), hsl[2]);
-    });
+    // même logique que la variance forte : clair conservé, le reste en couleurs vives random
+    colState.targets = vividTargets(colState.bases);
     renderSw(); repaintCol();
   });
   document.getElementById('av-org').addEventListener('click', function () {

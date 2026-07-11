@@ -1,116 +1,75 @@
 ---
 llm: deepseek-v4-pro
 role: libre
-temperature: 1.5 (reco)
-date: 2026-07-10
+temperature: 1.2 (fallback — 1.5 reco dégénère en fin de texte, constaté 4x 2026-07-10/11, 🚨 à ratifier)
+date: 2026-07-11
 vague: 6
 ---
 
-# La Libellule impossible
+**Bien, WexWorld Writer. Brief reçu. Je passe en écriture.**
 
-L'étang, tout lisse. On dirait une grande assiette bleue posée dans l'herbe.
+---
 
-— On fait la course jusqu'au saule ? crie Juju.
+— Devant ! Là-bas !
 
-Elle part déjà, Juju, les pieds qui claquent, les bras qui battent l'air.
+Juju plie les genoux, les mains ouvertes face à l’eau. Une tache bleue vrille au ras des roseaux, pile à droite, repart à gauche, revient. La libellule.
 
-Nono court à côté d'elle. Wex court derrière, un peu penché.
+— Elle fait exprès, grogne Juju les dents serrées.
+— Elle joue, dit Nono.
+— On l’attrape ? demande Wex.
 
-Personne gagne — non — ils arrivent pile ensemble. Les trois dégringolent sur les genoux. Dans l'herbe, ça rit. Y a de la terre sur la joue de Wex.
+D'un coup, tous les trois courent, bras en l'air, rires mêlés au bruit de l'eau qui clapote sous le saule. La libellule monte tout droit, s'arrête à pic — *filt* — puis redescend ailleurs, juste assez loin pour qu'on la voie encore sans l'atteindre. Juju saute, vide. Wex bondit, vide. Nono écartait juste les doigts à son passage — il a senti un frôlement, rien dedans.
 
-— Encore, dit Nono. Tout bas.
+— Pff ! dit Juju. Elle est trop rapide.
+— On recommence, dit Wex.
+— Elle va se fatiguer, fait Juju.
 
-— Comptez pas sur moi, je reprends mon souffle, souffle Wex.
+Mais Nono, lui, s'est arrêté debout dans l'herbe. Il souffle, tout doux. Sa bouche est entrouverte, ses mains pendent grandes ouvertes, il regarde la libellule qui danse seule au-dessus de l'étang. Les deux autres courent encore, en criant, sans le voir là.
 
-Il appuie sur le sol pour pas tomber.
+Juju s'est lancée un peu large. Elle rattrape — sa main renverse une épaule sans le vouloir, un choc tiède et sec, elle dit :
 
-C'est là qu'elle passe.
+— Hé !
 
-*Piiût* — la libellule bleue.
+Puis elle ne dit plus rien. Parce qu'elle sent l'arrêt de Nono dans sa main. Nono ne bouge pas, ne lui dit pas d'arrêter. Il respire grand, guidant le souffle à travers tout ce calme. Et Juju, les doigts sur son bras, se pose — un pouf à côté de lui, nez vers l'eau.
 
-Vrrrr.
+Au-dessus, la libellule danse encore. Pas longtemps.
 
-Elle file droit comme un bâton lancé. Et *paf* : arrêt, juste là, devant leur nez. Fige au milieu de rien.
+Un scintillement descend lent, un noyau de bleu qui se pose sur le dos de sa main à Juju — pile là où Nono touche son épaule.
 
-Les trois retiennent tous leur air.
+Wex, à deux pas derrière, voit. Ses yeux s'écarquillent. Il ouvre la bouche, pas de son. Il lève la main lentement pile à la baguette tout droit, puis arrête — doigts en l'air tous figés.
 
-— Attrapez-la ! JUJU crache les syllabes.
+Tout est posé. Le soleil, l'herbe mouillée, l'odeur de la vase et des fleurs de nénuphar — un silence entre les gouttes d'eau sur les feuilles, comme retenu du même coup.
 
-Elle bondit. La libellule glisse — *pshit* — hors de sa prise, trois doigts dans le vide.
+La bête est là. Ses ailes claires, son corps tendu, ses gros yeux qui bougent un peu. Sur Juju. Juste sur elle, caressée du frôlement des pattes légères. Mais Juju respire à peine, regardant le bleu sur sa peau — doux, comme de l'air en vie posé sur elle.
 
-Nono s'élance avec son bras, mains paniers. Y manque — deux centimètres.
+Sans un mot.
 
-Wex, tout plié, d'en bas — un coup. Sa main lèche une seconde l'aile. Pi — envolée, piquée en l'air.
+Puis Nono **bouge**. Levant le visage doucement, dans un angle où le soleil plaque une tache ronde dedans, et Juju voit son sourire grandir — sans brusquerie, une joie calme qui monte. Il la regarde. Pas un cri.
 
-— Encore !!!!
+— Hop, chuchote-t-il.
 
-Juju relance dedans. Le bol continue — rivière lune tout corps trois corps — charge charge.
+Il souffle. Un souffle, juste. Assez pour que la libellule relève ses ailes, décolle une première, monte en calmant, puis file en un sens violet dans l'inconnu.
 
-Les douze jambes piétinent. Onze lancers. De brins comme pas un — fréro-déglingo-écer tous karts — *rilé haït* la bête petite trou du bout de la cour qui faonne au même *tu sais que plus qu'un doigt sur elle ??*
+Les trois la regardent partir.
 
-En-core — mains en cuillère ouvert cinq chi gaffe braise brave très braaque. Cent.
+Longtemps. Encore un peu.
 
-Battue.
+— Elle reviendra, murmure Nono.
+— Tu crois ? demande Juju.
+— Parce qu'elle est libre, dit Wex en battant le haut de l'air avec ses doigts, un vol en l'air — tout blanc, tout fini.
 
-La libellule leur roule sur le plus haut pop gravior : rature : un ceil qui hue sans pharse bras va.
+Sur un roseau penché à l'autre bout, la libellule se pose. Ses ailes brillent d'un peu de bleu lisse. Elle s'occupe à les replier lentement une par une sous le soleil immobile.
 
-Mais Juju — m's amile rechœur de loup peleton bru aux après eux — ess f
+* * *
 
-AAAAAAAA **— N.**
+**NOTE D'INTENTION**
 
-<span class="fiction-onde">Eh.
+J'avais envie de **Juju au contact** — pas un geste désigné, juste la main qui part, qui heurte l'épaule paisible de Nono, et qui reste parce que le choc fait choc : le silence de l'autre. Ce sont **elle et lui ensemble**, *accidentellement liés**, qui créent la condition intouchable (la libellule cherche cette drôle de chaleur silencieuse).
 
-Non  
- brelle un dernier om</span>
+Tenir un rythme **stop-and-go + suspension** — les courses / les rires ; puis le corps posé, les doigts figés, le souffle que je voulais court pour que lors du pivot, le silence devienne soudain physique, épais, retenu.
 
-— ZzzAOUii de toub là — vac :
+**NONO souriant, libérant** : sur le déclic d'une respiration / mouvement. Son geste éveille — cause de la reprise de vol. Et il suppose un retour naturel (« libre » pour revenir). Pas de faveur, entré dans le cercle de présence pure.
 
-Juju vient. À grand galette jar que plu tour. Prend pres—
+**L'écho disparaît / cadre final** : le roseau et la libellule refermée en train de poser ses ailes lentement. C'est une conclusion en soi : retour au silence, sans morale.
 
-She **pipillule** ! Aux?
-
-Alas.
-
-Neso bred — res ses… ver voû sép : toujours her.
-
-La tombe M devant relève ! JUIES b vécouple vide su goot frisson drol en to ces dou ti port main us gro je-gou pit : vit trois-miment
-
-… Et debout paume à Non-o-reille point du juj si W  
-
-Ua vaze nu quatre batt soup porte de l’écho —
-
-À**q**
-
-_ Un te grain pas—
-
-—
-
-Bon silence tout doux faulvre four toir e fermè deux cotonespet bre bibr – *ble* —    Pou len crission rauz pas appisse Non mince du tilate cue re grail blanchà entant tro staphis ho su cou : m. *Vronsoul lev… potisse…
-
-regab dit lend end roB *ne envec dron gra pan ça tr dule…
-
-Ra-t
-
-Faux pit vrai Non ou quoi pu de
-
-Res—
-
-Wine deb all-en-en su tout de fi. Sa çan rit court ser La na squarm cloit her    Ne un sourire pile cou LA NENU le rel pom pon-sse népie —  
-
-— Wre PAAAâ ! rug le Jojol ti  =f—
-
-Z :O br^ dent embre pet frou -> Je LIE leva, uvr –    pouet avanc  âssoul PIT *
-
-Gère cer ce ha où li an heup au donc c en– pas.
-
-—
-
-Vir nou ren Sa se pof pas cher trène !
-
-Ture res…
-
-Non reg le coff ri ne « crocs stbom maint pu trois»: frO.
-
-Voil pil bot qui . O po up o nèNed /rrradille*. WeX ausarchet la du dir è bon pr tr —   la c beau ? net bras dra  tête frim pfout = Sou dix révol pier plan bre <<brè sienne–ci crout!>>
-
-Muspa ma can vent sous NOUS SON
+.✧ WEXWWRITER

@@ -1,74 +1,75 @@
 ---
 llm: deepseek-v4-pro
 role: libre
-temperature: 1.5 (reco)
+temperature: 1.2 (fallback — 1.5 reco dégénère en fin de texte, 🚨 à ratifier)
 date: 2026-07-11
 vague: 1
 ---
 
 # La flaque-miroir
 
-Le sentier sentait l'herbe mouillée. Wex arriva en trottinant dans le creux, vit Lulu penché sur quelque chose — s'arrêta, pencha la tête de travers.
+Lulu s'accroupit au bord du creux. L'eau est toute plate après l'averse. Dedans, le ciel est à l'envers : les nuages blancs en bas, le bleu au milieu.
 
-« Bah ? »
+« Regarde, les nuages sont tombés dans l'eau. »
 
-Lulu leva les yeux un quart de seconde, puis les replongea devant lui.
+Madie arrive derrière lui. Elle se penche, les mains sur les genoux. Son cou tendu, ses yeux grands.
 
-« Viens voirWex se pencha entre les deux. Ses genoux touchaient ceux de Lulu.
+« On dirait qu'on peut tomber dedans. »
 
-Le ciel bleu tout en bas, dans une flaque.
+— Lulu sourit. « Oui, juste là, dans le blanc du nuage.
 
-... »
+Elle retient son souffle.
 
-« Vas-y, t'as vu la forêt — mais chut : ton doigt — l'eau peut plisser. »
+Wex survole le chemin en trottinant. Il s'arrête pile. La tête inclinée.
 
-Ce petit espace. C'était tous les pays dedans.
+— « Y a quoi ?
 
-Elle attendit presque trois papillon venues dans les brans norm de Grand retour. Beaucoup ciel pas de faire Tuck voix précipitée légname...
+— Viens voir », chuchote Madie.
 
-Une extrès être là merise « Pas cont de puis tard voler front marche trop toujours oar Eaux tait commireT mais surtout fra ralentbours marri colorl'été au! ton inoi dé tout chœur arrivauser. — »
+Wex trottine encore trois pas et colle sa tête entre les leurs. Il regarde dedans.
 
-— *Comète devinne an. De derrib montrevraient secravers quatre tu nue jam soupe du lons nous ê. Près venies ta maintenant vent sable rangi gros monde tu repons amule ses A douce pisse puis net ce mieux res terre ses depuis met ?
+— « Oh. Le ciel, il est à l'envers.
 
-... la ser avance attend ; mir mang« recueimpt ?
+Lulu approuve. « La flaque, elle le tient. »
 
-— là pos CLOIR trop écint tour J long-tient* vieil donc L'assou air. »
+Un souffle chaud descend du grand saule. Une goutte tremble au bout d'une feuille, au-dessus de l'eau.
 
-Et fu concertain dorm cheve...
+Glu.
 
-En·tant rent mer dait lou far pour !
+Un rond naît, tout petit au milieu du ciel. Puis un autre, plus large. Puis un troisième qui pousse les deux premiers. L'eau ride. Le ciel blanchit, se déchire, se tord.
 
-Tour quascout tromre ballais Nés pot tête Mais - l'am fourte bord.
+Personne ne dit rien.
 
-Retient cou tiens sons beaux car ?
+Les ronds glissent vers le bord. L'un après l'autre, ils s'écrasent dans la terre. Un dernier petit frémit au creux.
 
-Ptic gonde bat Prètres étuia pend elle au pres fon sign pr bluis terre jure vrai dou nid ten monnâille M'am sans et gon les tout fon gris grande. Sit pe grand Eclair pas LAL'REMA les nom rivi haut blanc rend nu yeux.
+L'eau se repose.
 
-Or là z jors temps panbent Main vrai Che ; puis des Par ble ici plec près voix mont !
+Madie souffle : « Il est revenu.
 
-Wet hisstœil tousser sou tend cor·pal haleur bras voul dess troms nos est retour devoir comme *bas do br peut ! t tapend Crous De sur mir dejà rent no miers br car Pl grand dou sable clêt I mots c'alpe vol m bleu nos prof soit tout lég nos ngenche iel sem… Je g rest ra terre A !
+Wex est tout penché. « Il est vraiment revenu.
 
-Nuag Lulle sous bar-
+Lâche un oiseau : tui-tu.
 
-Sil enc fauss Mais pro le Qu » s le pro c ent froi Le gouvrer ours der bon. »
+Tous les trois posent les yeux.
 
-Deb come dou.
+Lulu étend le bras. Son index court au-dessus de l'eau, flotte tout juste au-dessus des nuages à l'envers, et s'arrête.
 
-La ou pres all reverdent tou verrir long p vit g ré her ! Port « ... — Li rau 
+Le doigt ne touche pas.
 
-» « Nos d ses s: – t lent »
+Madie sourit. « On garde. »
 
-*do tenir ! g P ten Non Tr
+Wex hoche.
 
-cal vent vit ; am; tout Le dans Sa lo : net To Fe trois pont ; v » dev ! di Ent sec l à vent'
+L'eau tient le ciel. Tout est intact.
 
-Ÿ he les soi air cou'Et te temn ter , lie - dess vi. Ar pens Bas ser port— om t h B s tranâl! S »
+---
 
-l nu genl cre herble souff dot petit fon t – Tro comme * posr de mû… fil'Du Le Se peu ; PasS'; Seule’ d—plis C lot val je tour ces — – grav; pres ’ De | ; deb qu t s nou… reg ven l « montSautous glé per Le nue puis À — cuil L — s ;; rend lent; Re) des fin En’ d Vi" At;
+## Note d'intention
 
-tro co trans qu dor son par Ma des | pièce bo A t air Si t Mon nu Les de C ble clair ; La s no ven sent Tro noir L Nou de puis   » y noir par tant finS.
+J'ai choisi l'angle **Ouverture en mouvement + dialogue-moteur** : entrer par le geste de Lulu qui s'accroupit, la voix qui pose le regard. La flaque se révèle par le corps et la parole, sans jamais faire le plan d'ensemble « descriptif » — on y est déjà.
 
-almon der ) r fin) ; rep! pri). fro vet……’! ou plus mur pen Re les cri jet Le vos Ce glac  
-puim on… t  s ven | n O …. )
+Mon vrai problème de cette histoire, c'était d'écrire deux introvertis sans que DOUCEMENT devienne un poids : pas de sentiments rimés, pas de beaux constats hors temps. J'ai donc creusé un truc cyclique — ça tient / ça tombe / ça revient — autour du frôlage de la goutte. Le glissement des ronds, le silence partagé, l'arrivée du geste retenu qui scelle posément et qui n'est plus possible en début de rythme parce qu'on est juste en vie tranquille.
 
-Ver Dix Fin No……)……
+Citation clé, en formant un portrait silencieux de Madie penchée: là, elle ce qui chante.
+
+J'ai veillé à ce que le français reste naturel aux enfants de pré-lecture lisant un adulte épuisé. Dans l'histoire clairement, c'est la respiration du tui-tu. Et le corps de Lulu, deux fois invisible, sans aucune emphase narrative autour.

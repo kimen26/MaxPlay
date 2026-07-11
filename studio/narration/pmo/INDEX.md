@@ -16,7 +16,9 @@
 | Voix ElevenLabs | **10/10 figées** ✅ — Wex/Dadou/Melki/Pierrot/Lulu/Nono + Raph + Juju + Mimi + Madie. Casting voix complet 2026-05-13. |
 | Nom univers | ❌ non tranché — 5 finalistes |
 | Instrument goût | **Lecture annotée = instrument PRINCIPAL** (DEC-DOCTRINE-INSTRUMENT-LECTURE 2026-07-08), duel = arbitrages serrés |
-| Prochaine action | **Lecture annotée Papa Yann sur 002 vague 6** (`site/lecture.html`) → ingestion → sélection 002. Puis corpus 003/004/005 chargés à tour de rôle dans lecture.html (mono-corpus) + panels v2. |
+| Histoires en production (bis) | **006 Le nœud qui tient** (Juju·Melki) · **007 L'ombre** (Raph·Madie) · **008 La pomme de pin** (Nono·Dadou) — créées 2026-07-11 (mandat autonome), étape 5 panel ✅ |
+| Panels v2 | **7/7 histoires panélisées** (84 fiches + 7 synthèses, 2026-07-11). Claude Sonnet top partout. 🚨 2 dérogations à ratifier (deepseek-reco 1.2, axe Kimi→DeepSeek 006-008 quota) — voir decisions.md 2026-07-11 |
+| Prochaine action | **Lecture annotée Papa Yann sur 002 vague 6** (`site/lecture.html`) → ingestion → sélection 002. File ensuite : 003 → 004 → 005 → 006 → 007 → 008 (corpus chargés à tour de rôle). + Ratifier les 2 alertes 🚨. |
 
 ---
 

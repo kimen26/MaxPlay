@@ -28,7 +28,7 @@
 | 2B | Brainstorm équipe | Kimi+DeepSeek+Grok+Conseiller | ✅ | 2026-07-10 | [`2-brainstorm-equipe.md`](2-brainstorm-equipe.md) (matière brute 3 LLMs) |
 | 3 | Briefs | Directeur | ✅ | 2026-07-11 | [`3-briefs/`](3-briefs/) — personnages + histoire + micro-briefs |
 | 4 | 14 Versions writers | 14 Writers | ✅ **14/14** | 2026-07-11 | [`4-versions-writers/`](4-versions-writers/) — vague 1 complète (6 Claude agents + kimi-reco-guide agent + 7 CLI `call-llm.mjs`). Écarts gabarit résiduels après retries : deepseek-def 379 · kimi-k26-instant 363 · kimi-reco 389 (légers, acceptés). ⚠️ deepseek-reco temp 1.5 : 2 générations dégénérées (charabia/1054 mots) avant une v3 propre (414) — instabilité à surveiller. kimi-payant : plafond concurrence orga = 3 (429 si 6 appels //, retry séquentiel OK). Prochaine étape 5 : lecture annotée Papa Yann (après ingestion 002 v6, lecture.html mono-corpus) + panel v2. |
-| 5 | Panel 20 lecteurs | 20 Témoins | ⚪ | — | [`5-lecteurs-temoins/`](5-lecteurs-temoins/) |
+| 5 | Panel 20 lecteurs | 20 Témoins | 🟢 | 2026-07-11 | Panel v2 ✅ **12/12** (`5-lecteurs-temoins/` + [`5-synthese-lecteurs.md`](5-synthese-lecteurs.md)). Lecture annotée Papa Yann ⏳ (file d'attente après STORY-002). ⚠️ `deepseek-reco` jugée CORROMPUE = hors concours (version propre régénérée non jugée). |
 | 6 | Sélection | Directeur | ⚪ | — | [`6-selection.md`](6-selection.md) |
 | 7 | Rewrite | Writer du top 1 | ⚪ | — | [`7-rewrite/`](7-rewrite/) |
 | 8 | GateKeeper | GateKeeper | ⚪ | — | [`8-gatekeeper-verdict.md`](8-gatekeeper-verdict.md) |
@@ -65,6 +65,8 @@
 
 - **2026-07-11 — Étape 3 complétée (Directeur).** 3 fichiers produits : `brief-personnages.md` (curseur méfiance douce bordé DEC-BRIEF-CURSEUR, Wex ≥2 répliques dont 1 pivot, deux fiertés distinctes), `brief-histoire.md` (doctrine BOUSSOLE/QUALITÉS §5bis, verrou causal Ten = caillou retourné par Wex → il tient, callback écarté↔sommet, goût en QUALITÉS pas recettes — DEC-GOÛT-RECETTE-VS-QUALITÉ tranché côté qualité), `micro-briefs.md` (menu d'angles COMMUN LP1, aucune assignation).
 - **➡️ Prochaine action :** relecture mécanique PMO des briefs (négations gratuites / test règle F) AVANT lancement des 14 writers (étape 4). Tant que le PMO a des alertes, étape 4 = 🔴 BLOQUÉ.
+- **2026-07-11 — Étape 5 : panel v2 ✅ 12/12 + synthèse produite (Directeur).** Top consolidé (rang moyen 12 fiches) : (1) claude-sonnet-def 4.42 · (2) claude-sonnet-reco 4.50 (seul jamais dans le fond) · (3) kimi-reco-guide 5.25 · (4) claude-opus-def 5.75 · (5) kimi-reco 5.92. Patterns : geste-pivot Wex silencieux gagne · mots d'adulte + incohérences comptage + métaphores prises au 1er degré perdent · chute « personne n'a gagné » inquiète les 4 ans (divergence groupes). ⚠️ **`deepseek-reco` corrompue à l'étape 4 = rang NUL, exclue du fond de sélection ; version propre régénérée non jugée** (cf. `5-synthese-lecteurs.md` §0bis). Panel = acceptable, PAS le goût auteur.
+- **➡️ Prochaine action étape 5 :** **lecture annotée Papa Yann** (instrument principal) — ⏳ file d'attente après ingestion STORY-002. **Étape 6 NON lancée** (attendre lecture annotée + instruction séparée).
 
 ---
 

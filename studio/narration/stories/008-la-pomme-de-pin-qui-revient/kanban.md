@@ -25,7 +25,8 @@
 |---|---|---|---|---|---|
 | 0 | Idée | Auteur | ✅ | 2026-07-11 | GO autonome Papa Yann |
 | 1 | Pitch + Plan | Conseiller | ✅ | 2026-07-11 | [`1-pitch-plan.md`](1-pitch-plan.md) |
-| 3 | Briefs | Directeur | ⚪ | — | [`3-briefs/`](3-briefs/) |
+| 2 | Brainstorm (boss + équipe) | Papa Yann + équipe | ✅ | 2026-07-11 | [`2-brainstorm-equipe.md`](2-brainstorm-equipe.md) |
+| 3 | Briefs | Directeur | ✅ | 2026-07-11 | [`3-briefs/`](3-briefs/) |
 | 4 | 14 Versions writers | 14 Writers | ⚪ | — | [`4-versions-writers/`](4-versions-writers/) |
 | 5 | Panel 20 lecteurs | 20 Témoins | ⚪ | — | [`5-lecteurs-temoins/`](5-lecteurs-temoins/) |
 | 6 | Sélection | Directeur | ⚪ | — | [`6-selection.md`](6-selection.md) |
@@ -63,7 +64,8 @@
 > *Notes libres du owner courant. Si 🔴 BLOQUÉ, expliquer ici.*
 
 - **2026-07-11 — Arbitrage orchestrateur (objet titre)** : objet retenu = **pomme de pin**, PAS caillou. Raison : le caillou est déjà l'objet titre de **STORY-003** (« Le caillou trop bien rangé »), même **arc-1-objet-décor** → doublon évité. Le geste (lancer/rouler/revenir), le Ten (la pente ramène) et le duo (Dadou+Nono) sont distincts de 003 (empiler/aligner, retourner la face, Dadou+Melki).
-- **2026-07-11 — Étape 1 livrée** par narration-conseiller (GO autonome Papa Yann). Prochaine étape : **2 — Brainstorm** (boss + équipe).
+- **2026-07-11 — Étape 1 livrée** par narration-conseiller (GO autonome Papa Yann).
+- **2026-07-11 — Étape 3 livrée** par le Directeur : `3-briefs/{brief-personnages, brief-histoire, micro-briefs}.md`. Parade dure gravée en DUR dans les 3 fichiers (personne ne perd/n'est humilié · Nono ACTIF « dans le move » · Wex pose+lâche, la PENTE ramène jamais la magie · fin sur bruit nommé jamais « sans un bruit » · callback lancée↔revenue). §GOÛT AUTEUR en QUALITÉS (§5bis, danger n°1 = compétition, PAS lenteur). Prochaine étape : **relecture PMO des briefs (négations gratuites) → étape 4 (14 writers)**.
 - **⚠️ Alerte casting genre** : arc-1 enchaîne 003 (2M) et 008 (2M), Dadou dans les deux → prioriser une paire F en duo principal sur STORY-009.
 
 ---

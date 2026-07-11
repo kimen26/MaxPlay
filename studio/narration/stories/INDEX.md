@@ -17,9 +17,12 @@
 | # | Titre | Statut PROCESS | Owner courant | Personnages | Prochaine action |
 |---|-------|----------------|---------------|-------------|------------------|
 | 002 | [La Libellule impossible](002-libellule-resonance/README.md) | Étape 5 VAGUE 6 (14 writers ✅ 2026-07-10, corpus chargé dans `site/lecture.html`) | Papa Yann (lecture annotée) | Wex, Juju, Nono | **Lecture annotée Papa Yann** (instrument principal) → coller le JSON → ingestion Directeur → sélection. |
-| 003 | [Le caillou trop bien rangé](003-caillou-trop-bien-range/README.md) | Étape 4 ✅ vague 1 (GO Papa Yann 2026-07-10, 14/14 writers 2026-07-11) | Directeur | Wex, Melki, Dadou | Étape 5 : lecture annotée (après ingestion 002) + panel v2. |
-| 004 | [La flaque-miroir](004-flaque-miroir/README.md) | Étape 4 ✅ vague 1 (14/14 writers 2026-07-11) | Directeur | Wex, Lulu, Madie | Étape 5 : lecture annotée (file d'attente) + panel v2. |
-| 005 | [Le goûter d'un seul](005-gouter-d-un-seul/README.md) | Étape 4 ✅ vague 1 (14/14 writers 2026-07-11) | Directeur | Wex, Mimi, Lulu | Étape 5 : lecture annotée (file d'attente) + panel v2. |
+| 003 | [Le caillou trop bien rangé](003-caillou-trop-bien-range/README.md) | Étape 5 : panel v2 ✅ 12/12 + synthèse (top **sonnet-def** 4.42) | Papa Yann (lecture annotée, file) | Wex, Melki, Dadou | Lecture annotée après ingestion 002 → sélection étape 6. |
+| 004 | [La flaque-miroir](004-flaque-miroir/README.md) | Étape 5 : panel v2 ✅ 12/12 + synthèse (top **sonnet-reco** 3.6) | Papa Yann (file) | Wex, Lulu, Madie | Lecture annotée (file) → sélection. |
+| 005 | [Le goûter d'un seul](005-gouter-d-un-seul/README.md) | Étape 5 : panel v2 ✅ 12/12 + synthèse (top **sonnet-def** 3.58) | Papa Yann (file) | Wex, Mimi, Lulu | Lecture annotée (file) → sélection. |
+| 006 | [Le nœud qui tient](006-le-noeud-qui-tient/README.md) | Étape 5 : writers 13/14 (quota Kimi) + panel ✅ 12/12 (axe Kimi→DeepSeek, dérogation) + synthèse (top **sonnet-reco** 3.42) | Papa Yann (file) | Wex, Juju, Melki | Lecture annotée (file) → sélection. |
+| 007 | [L'ombre qui bouge pas pareil](007-l-ombre-qui-bouge-pas-pareil/README.md) | Étape 5 : writers 13/14 + panel ✅ 12/12 (dérogation Kimi) + synthèse (top **sonnet-reco** 2.50, dominant) | Papa Yann (file) | Wex, Raph, Madie | Lecture annotée (file) → sélection. |
+| 008 | [La pomme de pin qui revient](008-la-pomme-de-pin-qui-revient/README.md) | Étape 5 : writers 12/14 + panel ✅ 12/12 (dérogation Kimi) + synthèse (top **sonnet-reco** 4.17) | Papa Yann (file) | Wex, Nono, Dadou | Lecture annotée (file) → sélection. |
 
 ---
 

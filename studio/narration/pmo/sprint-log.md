@@ -6,6 +6,23 @@
 
 ---
 
+## 2026-07-11 (session autonome, après-midi) — 006/007/008 créées + PANELS v2 sur les 7 histoires actives
+
+**Mandat Papa Yann** : « Tu trouves 3 thèmes en plus avec persos & co, tu peux lancer le brief toi-même et l'écriture, et la relecture de tout par tous nos lecteurs. Ne t'arrête pas. » + « go termine ».
+
+**Fait** :
+- **3 nouveaux sujets** (Conseiller, arbitrages orchestrateur documentés) : **006 Le nœud qui tient** (Juju#8·Melki#1·Wex — action) · **007 L'ombre qui bouge pas pareil** (Raph#7·Madie#4·Wex — observation) · **008 La pomme de pin qui revient** (Nono#9·Dadou#3·Wex — course ; arbitrage : pomme de pin au lieu de caillou, anti-doublon 003). Binômes inédits, 6 persos +1 passage chacun, Pierrot·Mimi réservés pour 009/010. Pipeline complet : pitch-plans → 2B (9/9) → briefs QUALITÉS → PMO PASS ×3 → **writers 13/13/12**.
+- **PANELS v2 sur les 7 histoires** : 002 v6 + 003 + 004 + 005 (12 fiches chacune, casting conforme) + 006/007/008 (12 fiches chacune, **axe Kimi substitué par DeepSeek** — dérogation quota). **84 fiches + 7 synthèses**.
+- **Tops panels** : 002 sonnet-def 3.0 · 003 sonnet-def 4.42 · 004 sonnet-reco 3.6 · 005 sonnet-def 3.58 · 006 sonnet-reco 3.42 · 007 sonnet-reco 2.50 · 008 sonnet-reco 4.17. **Claude Sonnet domine les 7 corpus.** Étapes 6 NON lancées partout — lecture annotée Papa Yann = instrument principal, file : 002 → 003 → … → 008.
+
+**🚨 ALERTES RÈGLES FIGÉES (à ratifier Papa Yann — un orchestrateur mitige, ne décide pas)** :
+1. **deepseek-reco temp 1.5 (casting figé) DÉGÉNÈRE en fin de texte** (constaté 6× sur 002/003/004/005/006). Mitigation appliquée : **temp 1.2** documentée en frontmatter — et même à 1.2, 006 reste partiellement cassée (panel unanime). Proposition : statuer sur l'axe deepseek-reco (temp 1.0 ? retrait provisoire ? ticket ARCHI-008 réduction casting).
+2. **Quota Kimi gratuit épuisé** (403 billing cycle, 2026-07-11) : 4 versions manquantes (kimi-reco-guide ×3 + kimi-reco 008 — le payant reste interdit pour ces writers) + **axe lecteur Kimi substitué par DeepSeek** sur les panels 006-008 (non conforme DEC-PANEL-V2, forcé). À régulariser au refresh du quota si souhaité.
+
+**Leçons infra** : kimi-payant plafond concurrence orga 3 (429 → séquentiel OK) · 3 agents kimi-guide + 3 Directeurs tués par les limites de session (travail vérifié sur disque et complété — toujours vérifier, jamais croire les notifications seules).
+
+---
+
 ## 2026-07-11 — GO Papa Yann : STORIES 003/004/005 produites jusqu'à l'étape 4 (3 × 14 writers)
 
 **Décisions Papa Yann** : « challenge toi sur tes choix de sujet et si tu trouves que t'es cohérent Go ! » puis « vazi go produit ». Challenge appliqué → **ordre inversé** : 003 = *Le caillou trop bien rangé* (Melki·Dadou·Wex, action après 2 histoires contemplatives) · 004 = *La flaque-miroir* (Lulu·Madie·Wex, motif eau espacé) · 005 = *Le goûter d'un seul* (Mimi·Lulu·Wex). Correction transverse : **Wex ≥2 répliques + rôle réel dans un beat** (leçon gatekeeper v5). DEC-GOÛT-RECETTE-VS-QUALITÉ **appliquée côté QUALITÉS** sur les 3 briefs (couverte par le GO ; confirmation formelle bienvenue).

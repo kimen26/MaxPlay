@@ -274,7 +274,9 @@
   var ov = document.createElement('div');
   ov.id = 'av-ov';
   var grid = LIST.map(function (a) {
-    var thumb = BASE + (a.moods.joyeux[0] || (a.moods.enerve[0]) || a.moods.original[0]);
+    // vignette = la variante la PLUS RÉCENTE (dernier _n) du joyeux (ex. Anky v2, pas v1)
+    var lst = (a.moods.joyeux && a.moods.joyeux.length ? a.moods.joyeux : null) || a.moods.enerve || a.moods.original;
+    var thumb = BASE + lst[lst.length - 1];
     return '<div class="av-cell" data-id="' + a.id + '"><img src="' + thumb + '" alt=""><span class="an">' + a.name + '</span></div>';
   }).join('');
   ov.innerHTML = '<div id="av-box"><h3 id="av-title">🦕 Choisis ton dino !</h3><p id="av-sub">Ce sera ton copain dans le menu</p>' +

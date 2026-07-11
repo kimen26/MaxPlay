@@ -195,6 +195,24 @@
 
 **Statut : PROPOSÉ, non gravé. Les valeurs canon des INVARIANTS restent inchangées.**
 
+> **Note 2026-07-11 (soir)** : préflight `--check` confirme **quota Kimi gratuit revenu** (3/3 providers OK). La régénération des 4 writers manquants + re-panel axe Kimi 006-008 est possible — en attente GO Papa Yann sur la proposition ci-dessus.
+
+---
+
+## 2026-07-11 — DEC-PROCESS-OUTILLAGE-001 : Fiabilisation orchestration (validée Papa Yann)
+
+**Auteur (Papa Yann)** : GO explicite 2026-07-11 sur retour d'expérience session autonome (7 histoires, ~100 générations, 5 incidents « agent affirme avoir écrit / disque vide »).
+
+**Décision tranchée (3 volets, pure logistique — AUCUN changement de génération : mêmes modèles, mêmes températures, mêmes briefs, mêmes prompts)** :
+
+1. **Agents retournent le texte, l'orchestrateur écrit le disque.** Les 6 writers Claude (agents) ne font plus de `Write` eux-mêmes : ils retournent la version complète dans leur message final, l'orchestrateur (main agent) sauvegarde dans `4-versions-writers/`. Idem **PMO/archiviste** : ils analysent et retournent les entrées exactes à écrire (ligne sprint-log, ticket, décision), l'orchestrateur applique. Le rythme PMO reste INCHANGÉ (entrée de chat : log des demandes ; clôture : cocher le réalisé) — seul le geste d'écriture disque change de main. Les 8 writers externes fonctionnaient déjà ainsi (`call-llm.mjs --out`). Supprime la classe d'incidents « claim sans Write » (2× Haiku, 1× PMO, session 2026-07-10/11).
+2. **Scripts génériques commités** : [`scripts/run-writers-externes.sh`](../scripts/run-writers-externes.sh) (7 writers CLI du casting figé, températures gravées en dur avec leurs notes) + [`scripts/run-panel-cli.sh`](../scripts/run-panel-cli.sh) (legs externes panel v2, axe substituable avec dérogation documentée). Le prompt reste un FICHIER composé par l'orchestrateur à chaque histoire — le script l'envoie tel quel, zéro altération de contexte. Fin des réécritures bash par session.
+3. **Préflight quota obligatoire** : `node infra/mcp/call-llm.mjs --check` (ping 1 token kimi/deepseek/grok, payant exclu) AVANT tout batch writers/panel. Évite l'incident « quota découvert en plein run » (Kimi 403, 2026-07-11).
+
+**Explicitement HORS décision (Papa Yann)** : casting 14 writers **GARDÉ** tel quel (pas de réduction) · compteur de mots **non bloquant** (consigne dans le brief suffit, on laisse les writers).
+
+**Statut** : **FIGÉE 2026-07-11.**
+
 ---
 
 ## 2026-07-10 — 📝 NOTE INFRA — Endpoint kimi-for-coding force temperature: 1

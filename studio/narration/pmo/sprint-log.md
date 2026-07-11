@@ -6,6 +6,19 @@
 
 ---
 
+## 2026-07-11 (soir) — REX process + DEC-PROCESS-OUTILLAGE-001 (GO Papa Yann)
+
+**Demande Papa Yann** : retour sur la fluidité du process, optimisations agents/skills après la session massive.
+
+**Fait** :
+- REX livré (5 frictions identifiées). GO Papa Yann sur 3 volets → **DEC-PROCESS-OUTILLAGE-001 FIGÉE** (voir decisions.md) : ① agents (writers Claude + PMO/archiviste) retournent le texte, orchestrateur écrit le disque — pure logistique, zéro changement de génération ; ② scripts génériques commités `scripts/run-writers-externes.sh` + `scripts/run-panel-cli.sh` ; ③ préflight `call-llm.mjs --check` obligatoire avant batch.
+- Refus Papa Yann actés : casting 14 GARDÉ (pas de réduction) · compteur de mots non bloquant.
+- `--check` testé : **3/3 providers OK → quota Kimi revenu** (note ajoutée sous l'alerte 🚨 du 2026-07-11 — régénération des 4 writers manquants possible, en attente GO).
+
+**À faire** : inchangé — lecture annotée Papa Yann 002 v6 (file 003→008) + ratifier les 2 alertes 🚨.
+
+---
+
 ## 2026-07-11 (session autonome, après-midi) — 006/007/008 créées + PANELS v2 sur les 7 histoires actives
 
 **Mandat Papa Yann** : « Tu trouves 3 thèmes en plus avec persos & co, tu peux lancer le brief toi-même et l'écriture, et la relecture de tout par tous nos lecteurs. Ne t'arrête pas. » + « go termine ».

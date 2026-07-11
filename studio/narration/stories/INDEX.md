@@ -16,7 +16,10 @@
 
 | # | Titre | Statut PROCESS | Owner courant | Personnages | Prochaine action |
 |---|-------|----------------|---------------|-------------|------------------|
-| 002 | [La Libellule impossible](002-libellule-resonance/README.md) | **Étape 4 VAGUE 6** (lancée 2026-07-10 sur décision Papa Yann — briefs goût v6, 14 writers relancés ; vague 5 complète archivée `_archive/vague-5/` : versions + panel v2 + sélection v2 + gatekeeper) | Directeur | Wex, Juju, Nono | Étape 5 vague 6 : **lecture annotée Papa Yann** (`site/lecture.html`, instrument principal DEC-DOCTRINE-INSTRUMENT-LECTURE) + panel v2 12 calls. |
+| 002 | [La Libellule impossible](002-libellule-resonance/README.md) | Étape 5 VAGUE 6 (14 writers ✅ 2026-07-10, corpus chargé dans `site/lecture.html`) | Papa Yann (lecture annotée) | Wex, Juju, Nono | **Lecture annotée Papa Yann** (instrument principal) → coller le JSON → ingestion Directeur → sélection. |
+| 003 | [Le caillou trop bien rangé](003-caillou-trop-bien-range/README.md) | Étape 4 ✅ vague 1 (GO Papa Yann 2026-07-10, 14/14 writers 2026-07-11) | Directeur | Wex, Melki, Dadou | Étape 5 : lecture annotée (après ingestion 002) + panel v2. |
+| 004 | [La flaque-miroir](004-flaque-miroir/README.md) | Étape 4 ✅ vague 1 (14/14 writers 2026-07-11) | Directeur | Wex, Lulu, Madie | Étape 5 : lecture annotée (file d'attente) + panel v2. |
+| 005 | [Le goûter d'un seul](005-gouter-d-un-seul/README.md) | Étape 4 ✅ vague 1 (14/14 writers 2026-07-11) | Directeur | Wex, Mimi, Lulu | Étape 5 : lecture annotée (file d'attente) + panel v2. |
 
 ---
 

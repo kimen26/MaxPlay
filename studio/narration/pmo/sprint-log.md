@@ -6,6 +6,22 @@
 
 ---
 
+## 2026-07-11 — GO Papa Yann : STORIES 003/004/005 produites jusqu'à l'étape 4 (3 × 14 writers)
+
+**Décisions Papa Yann** : « challenge toi sur tes choix de sujet et si tu trouves que t'es cohérent Go ! » puis « vazi go produit ». Challenge appliqué → **ordre inversé** : 003 = *Le caillou trop bien rangé* (Melki·Dadou·Wex, action après 2 histoires contemplatives) · 004 = *La flaque-miroir* (Lulu·Madie·Wex, motif eau espacé) · 005 = *Le goûter d'un seul* (Mimi·Lulu·Wex). Correction transverse : **Wex ≥2 répliques + rôle réel dans un beat** (leçon gatekeeper v5). DEC-GOÛT-RECETTE-VS-QUALITÉ **appliquée côté QUALITÉS** sur les 3 briefs (couverte par le GO ; confirmation formelle bienvenue).
+
+**Chaîne exécutée** : étape 1 pitch-plans (3 Conseillers) → 2B matière brute 9/9 (Kimi/DeepSeek/Grok CLI, non filtrée auteur — usage Directeur) → étape 3 briefs QUALITÉS ×3 (Directeurs — 1re passe coupée par la limite de session, complétée le 11) → relecture PMO PASS ×3 → **étape 4 : 42/42 writers**.
+
+**Leçons infra** :
+- kimi-payant : plafond concurrence organisation = 3 → 429 sur 6 appels simultanés ; retry séquentiel OK.
+- deepseek-reco temp 1.5 : générations dégénérées par intermittence (charabia, 1054 mots) — 2 retries nécessaires sur 003, 005 reste court (333) après 3 essais. À surveiller ; casting figé inchangé.
+- Grok écrit court (250-430) même avec consigne stricte — écarts acceptés, chips lecture annotée trancheront.
+- Rappel Write réel dans les prompts writers agents = 0 fichier fantôme cette fois (leçon Haiku appliquée).
+
+**File d'attente lecture annotée (mono-corpus)** : 002 v6 (chargé) → 003 → 004 → 005.
+
+---
+
 ## 2026-07-10 — MÉGA-SESSION : audit FOND+FORME · VAGUE 6 STORY-002 lancée · 3 sujets arc 1 proposés
 
 **Objectif** : méga-audit demandé par Papa Yann + relance vague 6 + préparation 003-005.

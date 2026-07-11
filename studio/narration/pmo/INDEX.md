@@ -11,12 +11,12 @@
 |-----|--------|
 | Histoires canon | 1 — *Le Pont Cassé* (001, refonte 2026-05-08) |
 | Histoires en production | 1 — *La Libellule impossible* (002, **VAGUE 6 lancée 2026-07-10** : briefs goût v6 + 14 writers relancés — décision Papa Yann, sélection v2 vague 5 archivée `_archive/vague-5/`) |
-| Axes en stock | 15 (10 unitaires + 5 transversaux) + **3 sujets arc 1 proposés 2026-07-10** (flaque-miroir Lulu·Madie / caillou trop bien rangé Melki·Dadou / goûter d'un seul Mimi·Lulu) — en attente validation Papa Yann |
+| Axes en stock | 15 (10 unitaires + 5 transversaux). **003/004/005 validées (GO Papa Yann 2026-07-10, ordre challengé : caillou → flaque → goûter) et produites jusqu'à l'étape 4 (14/14 writers chacune, 2026-07-11)** |
 | Personnages | 9 + Wex — casting V1 figé (2026-04-24) |
 | Voix ElevenLabs | **10/10 figées** ✅ — Wex/Dadou/Melki/Pierrot/Lulu/Nono + Raph + Juju + Mimi + Madie. Casting voix complet 2026-05-13. |
 | Nom univers | ❌ non tranché — 5 finalistes |
 | Instrument goût | **Lecture annotée = instrument PRINCIPAL** (DEC-DOCTRINE-INSTRUMENT-LECTURE 2026-07-08), duel = arbitrages serrés |
-| Prochaine action | Étape 5 vague 6 STORY-002 (lecture annotée Papa Yann via `site/lecture.html`) + validation 3 sujets arc 1 |
+| Prochaine action | **Lecture annotée Papa Yann sur 002 vague 6** (`site/lecture.html`) → ingestion → sélection 002. Puis corpus 003/004/005 chargés à tour de rôle dans lecture.html (mono-corpus) + panels v2. |
 
 ---
 

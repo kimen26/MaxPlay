@@ -130,15 +130,18 @@ window.MAXPLAY_AVATARS = [
    "joyeux": [
     "anky_joyeux_1.png",
     "anky_joyeux_2.png",
-    "anky_joyeux_3.png"
+    "anky_joyeux_3.png",
+    "anky_joyeux_4.png"
    ],
    "enerve": [
     "anky_enerve_1.png",
-    "anky_enerve_2.png"
+    "anky_enerve_2.png",
+    "anky_enerve_3.png"
    ],
    "original": [
     "anky_original_1.png",
-    "anky_original_2.png"
+    "anky_original_2.png",
+    "anky_original_3.png"
    ]
   }
  },
@@ -279,13 +282,18 @@ window.MAXPLAY_AVATARS = [
    "joyeux": [
     "galli_joyeux_1.png",
     "galli_joyeux_2.png",
-    "galli_joyeux_3.png"
+    "galli_joyeux_3.png",
+    "galli_joyeux_4.png",
+    "galli_joyeux_5.png"
    ],
    "enerve": [
-    "galli_enerve_1.png"
+    "galli_enerve_1.png",
+    "galli_enerve_2.png",
+    "galli_enerve_3.png"
    ],
    "original": [
-    "galli_original_1.png"
+    "galli_original_1.png",
+    "galli_original_2.png"
    ]
   }
  },
@@ -302,6 +310,55 @@ window.MAXPLAY_AVATARS = [
    ],
    "original": [
     "allo_original_1.png"
+   ]
+  }
+ },
+ {
+  "id": "oeuf",
+  "name": "Coco",
+  "sub": "Œuf de dino",
+  "moods": {
+   "joyeux": [
+    "oeuf_joyeux_1.png",
+    "oeuf_joyeux_2.png"
+   ],
+   "enerve": [
+    "oeuf_enerve_1.png"
+   ],
+   "original": [
+    "oeuf_original_1.png"
+   ]
+  }
+ },
+ {
+  "id": "libellule",
+  "name": "Libelle",
+  "sub": "Libellule géante",
+  "moods": {
+   "joyeux": [
+    "libellule_joyeux_1.png"
+   ],
+   "enerve": [
+    "libellule_enerve_1.png"
+   ],
+   "original": [
+    "libellule_original_1.png"
+   ]
+  }
+ },
+ {
+  "id": "ammonite",
+  "name": "Ammo",
+  "sub": "Ammonite",
+  "moods": {
+   "joyeux": [
+    "ammonite_joyeux_1.png"
+   ],
+   "enerve": [
+    "ammonite_enerve_1.png"
+   ],
+   "original": [
+    "ammonite_original_1.png"
    ]
   }
  },

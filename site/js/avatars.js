@@ -37,8 +37,7 @@ window.MAXPLAY_AVATARS = [
     "trex_enerve_3.png"
    ],
    "original": [
-    "trex_original_1.png",
-    "trex_original_2.png"
+    "trex_original_1.png"
    ]
   }
  },
@@ -87,8 +86,7 @@ window.MAXPLAY_AVATARS = [
   "moods": {
    "joyeux": [
     "velo_joyeux_1.png",
-    "velo_joyeux_2.png",
-    "velo_joyeux_3.png"
+    "velo_joyeux_2.png"
    ],
    "enerve": [
     "velo_enerve_1.png",
@@ -128,19 +126,13 @@ window.MAXPLAY_AVATARS = [
   "sub": "Ankylosaure",
   "moods": {
    "joyeux": [
-    "anky_joyeux_1.png",
-    "anky_joyeux_2.png",
     "anky_joyeux_3.png",
     "anky_joyeux_4.png"
    ],
    "enerve": [
-    "anky_enerve_1.png",
-    "anky_enerve_2.png",
     "anky_enerve_3.png"
    ],
    "original": [
-    "anky_original_1.png",
-    "anky_original_2.png",
     "anky_original_3.png"
    ]
   }
@@ -170,16 +162,13 @@ window.MAXPLAY_AVATARS = [
   "sub": "Diplodocus",
   "moods": {
    "joyeux": [
-    "diplo_joyeux_1.png",
-    "diplo_joyeux_2.png"
+    "diplo_joyeux_1.png"
    ],
    "enerve": [
-    "diplo_enerve_1.png",
-    "diplo_enerve_2.png"
+    "diplo_enerve_1.png"
    ],
    "original": [
-    "diplo_original_1.png",
-    "diplo_original_2.png"
+    "diplo_original_1.png"
    ]
   }
  },
@@ -189,13 +178,10 @@ window.MAXPLAY_AVATARS = [
   "sub": "Parasaurolophus",
   "moods": {
    "joyeux": [
-    "paras_joyeux_1.png",
     "paras_joyeux_2.png",
     "paras_joyeux_3.png"
    ],
    "enerve": [
-    "paras_enerve_1.png",
-    "paras_enerve_2.png",
     "paras_enerve_3.png"
    ],
    "original": [
@@ -467,13 +453,10 @@ window.MAXPLAY_AVATARS = [
   "sub": "Mammouth laineux",
   "moods": {
    "joyeux": [
-    "mammouth_joyeux_1.png",
-    "mammouth_joyeux_2.png",
     "mammouth_joyeux_3.png"
    ],
    "enerve": [
-    "mammouth_enerve_1.png",
-    "mammouth_enerve_2.png"
+    "mammouth_enerve_1.png"
    ],
    "original": [
     "mammouth_original_1.png"

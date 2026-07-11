@@ -177,6 +177,10 @@
     '#av-col.show{display:block}',
     '#av-grid.hide{display:none}',
     '#av-cv{display:block;margin:0 auto 10px;width:190px;height:190px;background:rgba(255,255,255,.06);border-radius:22px}',
+    '#av-sw{display:flex;justify-content:center;gap:14px;margin:0 0 12px}',
+    '.av-chip{width:52px;height:52px;border-radius:50%;border:3px solid rgba(255,255,255,.35);position:relative;',
+    '  box-shadow:0 3px 8px #0006;overflow:hidden}',
+    '.av-chip input{position:absolute;inset:-10px;width:80px;height:80px;opacity:0;cursor:pointer}',
     '#av-pre{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:0 0 12px}',
     '.av-p{width:34px;height:34px;border-radius:50%;border:2px solid rgba(255,255,255,.3);cursor:pointer}',
     '.av-p:active{transform:scale(.9)}',
@@ -274,9 +278,7 @@
   var ov = document.createElement('div');
   ov.id = 'av-ov';
   var grid = LIST.map(function (a) {
-    // vignette = la variante la PLUS RÉCENTE (dernier _n) du joyeux (ex. Anky v2, pas v1)
-    var lst = (a.moods.joyeux && a.moods.joyeux.length ? a.moods.joyeux : null) || a.moods.enerve || a.moods.original;
-    var thumb = BASE + lst[lst.length - 1];
+    var thumb = thumbFile(a); // = la même image que la vue couleurs
     return '<div class="av-cell" data-id="' + a.id + '"><img src="' + thumb + '" alt=""><span class="an">' + a.name + '</span></div>';
   }).join('');
   ov.innerHTML = '<div id="av-box"><h3 id="av-title">🦕 Choisis ton dino !</h3><p id="av-sub">Ce sera ton copain dans le menu</p>' +
@@ -299,9 +301,15 @@
     colState = null;
     markSel();
   }
+  // même fichier que la vignette de la grille (dernière variante joyeux) — pas de variante au hasard,
+  // sinon l'enfant voit une image différente entre le menu et la vue couleurs (retour Papa Yann)
+  function thumbFile(a) {
+    var lst = (a.moods.joyeux && a.moods.joyeux.length ? a.moods.joyeux : null) || a.moods.enerve || a.moods.original;
+    return (lst && lst.length) ? BASE + lst[lst.length - 1] : null;
+  }
   function showColors(id) {
     var a = Avatar.byId(id); if (!a) return;
-    var file = Avatar.file(id, 'joyeux') || Avatar.file(id); if (!file) return;
+    var file = thumbFile(a); if (!file) return;
     document.getElementById('av-title').textContent = '🎨 ' + a.name;
     document.getElementById('av-sub').textContent = 'Tape une pastille pour changer ses couleurs !';
     document.getElementById('av-grid').classList.add('hide');

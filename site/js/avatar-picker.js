@@ -218,8 +218,8 @@
     var f = id ? Avatar.file(id) : null;
     if (f) {
       badge.innerHTML = '<img alt="">';
-      // 1 fois sur 10 : variance forte surprise (le clair reste clair, le reste en couleurs vives random)
-      if (Math.random() < 0.1) recolorFile(f, vividTargets, function (url) { badge.firstChild.src = url || f; });
+      // ~1 fois sur 6-7 : variance forte surprise (le clair reste clair, le reste en couleurs vives random)
+      if (Math.random() < 0.15) recolorFile(f, vividTargets, function (url) { badge.firstChild.src = url || f; });
       else Avatar.paintInto(badge.firstChild, f);
       if (pop) badge.firstChild.classList.add('pop');
     } else {

@@ -24,7 +24,11 @@
 | # | Objet titre | Duo + Wex | Lieu | Statut |
 |---|---|---|---|---|
 | 001 | un pont avec une planche cassée | Wex · Raph · Pierrot | sentier, ruisseau | ✅ canon (2026-05-08) |
-| 002-010 | — | — | — | à co-construire en brainstorm |
+| 002 | une libellule au vol impossible | Wex · Juju · Nono | étang amont | 🟢 vague 6 (étape 5 lecture annotée) |
+| 003 | un caillou trop bien rangé (de travers, qui refuse de tenir) | Wex · Melki · Dadou | talus caillouteux, bord de sentier | 🟢 lancée 2026-07-10 (GO Papa Yann, ordre inversé 004↔003 : action après 2 contemplatives) |
+| 004 | une flaque-miroir (le ciel à l'envers, cassé puis re-posé) | Wex · Lulu · Madie | creux du sentier après l'averse | 🟢 lancée 2026-07-10 (GO Papa Yann) |
+| 005 | un goûter d'un seul (partager sans couper) | Wex · Mimi · Lulu | sous un arbre, bord de pré | 🟢 lancée 2026-07-10 (GO Papa Yann) |
+| 006-010 | — | — | — | à co-construire en brainstorm |
 
 ---
 

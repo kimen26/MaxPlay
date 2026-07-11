@@ -320,13 +320,16 @@ window.MAXPLAY_AVATARS = [
   "moods": {
    "joyeux": [
     "oeuf_joyeux_1.png",
-    "oeuf_joyeux_2.png"
+    "oeuf_joyeux_2.png",
+    "oeuf_joyeux_3.png"
    ],
    "enerve": [
-    "oeuf_enerve_1.png"
+    "oeuf_enerve_1.png",
+    "oeuf_enerve_2.png"
    ],
    "original": [
-    "oeuf_original_1.png"
+    "oeuf_original_1.png",
+    "oeuf_original_2.png"
    ]
   }
  },
@@ -359,6 +362,102 @@ window.MAXPLAY_AVATARS = [
    ],
    "original": [
     "ammonite_original_1.png"
+   ]
+  }
+ },
+ {
+  "id": "mosa",
+  "name": "Mosa",
+  "sub": "Mosasaure",
+  "moods": {
+   "joyeux": [
+    "mosa_joyeux_1.png"
+   ],
+   "enerve": [
+    "mosa_enerve_1.png"
+   ],
+   "original": [
+    "mosa_original_1.png"
+   ]
+  }
+ },
+ {
+  "id": "plesio",
+  "name": "Plési",
+  "sub": "Plésiosaure",
+  "moods": {
+   "joyeux": [
+    "plesio_joyeux_1.png"
+   ],
+   "enerve": [
+    "plesio_enerve_1.png"
+   ],
+   "original": [
+    "plesio_original_1.png"
+   ]
+  }
+ },
+ {
+  "id": "cory",
+  "name": "Cory",
+  "sub": "Corythosaure",
+  "moods": {
+   "joyeux": [
+    "cory_joyeux_1.png"
+   ],
+   "enerve": [
+    "cory_enerve_1.png"
+   ],
+   "original": [
+    "cory_original_1.png"
+   ]
+  }
+ },
+ {
+  "id": "vague",
+  "name": "Vague",
+  "sub": "La grande vague",
+  "moods": {
+   "joyeux": [
+    "vague_joyeux_1.png"
+   ],
+   "enerve": [
+    "vague_enerve_1.png"
+   ],
+   "original": [
+    "vague_original_1.png"
+   ]
+  }
+ },
+ {
+  "id": "cendre",
+  "name": "Cendro",
+  "sub": "Nuage de cendre",
+  "moods": {
+   "joyeux": [
+    "cendre_joyeux_1.png"
+   ],
+   "enerve": [
+    "cendre_enerve_1.png"
+   ],
+   "original": [
+    "cendre_original_1.png"
+   ]
+  }
+ },
+ {
+  "id": "lave",
+  "name": "Lava",
+  "sub": "Goutte de lave",
+  "moods": {
+   "joyeux": [
+    "lave_joyeux_1.png"
+   ],
+   "enerve": [
+    "lave_enerve_1.png"
+   ],
+   "original": [
+    "lave_original_1.png"
    ]
   }
  },

@@ -7,7 +7,7 @@ const PROMPT=(name,pal,sig)=>`Sticker mascotte : bébé ${name} mignon, style cu
 const GROGNON=`Parfait ! Refais la même petite mascotte (même dessin, mêmes couleurs, même fond blanc uni) mais qui fait maintenant une tête grognon et boudeuse : sourcils un peu froncés, petite moue. Toujours mignonne, pas méchante.`;
 const FARCEUR=`Génial ! Et maintenant refais la même petite mascotte mais qui fait le clown : elle tire la langue et un œil qui cligne, très espiègle et rigolote.`;
 const DINOS=[
- {id:'oeuf',name:'Œuf de dinosaure',pal:'blanc-crème, beige, vert doux (taches)',sig:'gros œuf moucheté, coquille fendillée au sommet, deux grands yeux ronds et un sourire qui dépassent par la fissure entrouverte'},
+ {id:'plesio',name:'Plésiosaure',pal:'bleu-vert d’eau, bleu foncé, crème',sig:'reptile marin au TRÈS long cou courbé, petite tête souriante, corps rond, quatre nageoires-palettes'},
 ];
 const b=await chromium.connectOverCDP('http://127.0.0.1:9222');
 const ctx=b.contexts()[0]; let p=ctx.pages().find(x=>x.url().includes('chatgpt.com'))||await ctx.newPage();

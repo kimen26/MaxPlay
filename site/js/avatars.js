@@ -23,12 +23,10 @@ window.MAXPLAY_AVATARS = [
   "sub": "T-Rex",
   "moods": {
    "joyeux": [
-    "trex_joyeux_1.png",
-    "trex_joyeux_4.png"
+    "trex_joyeux_1.png"
    ],
    "enerve": [
-    "trex_enerve_1.png",
-    "trex_enerve_3.png"
+    "trex_enerve_1.png"
    ],
    "original": [
     "trex_original_1.png"
@@ -159,13 +157,13 @@ window.MAXPLAY_AVATARS = [
   "sub": "Parasaurolophus",
   "moods": {
    "joyeux": [
-    "paras_joyeux_3.png"
+    "paras_joyeux_1.png"
    ],
    "enerve": [
-    "paras_enerve_3.png"
+    "paras_enerve_1.png"
    ],
    "original": [
-    "paras_original_2.png"
+    "paras_original_1.png"
    ]
   }
  },
@@ -175,12 +173,10 @@ window.MAXPLAY_AVATARS = [
   "sub": "Therizinosaure",
   "moods": {
    "joyeux": [
-    "theri_joyeux_1.png",
-    "theri_joyeux_2.png"
+    "theri_joyeux_1.png"
    ],
    "enerve": [
-    "theri_enerve_1.png",
-    "theri_enerve_2.png"
+    "theri_enerve_1.png"
    ],
    "original": [
     "theri_original_1.png"

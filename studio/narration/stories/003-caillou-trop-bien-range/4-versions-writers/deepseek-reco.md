@@ -1,87 +1,75 @@
 ---
 llm: deepseek-v4-pro
 role: libre
-temperature: 1.5 (reco)
+temperature: 1.2 (fallback — 1.5 reco dégénère en fin de texte, constaté 4x 2026-07-10/11, 🚨 à ratifier)
 date: 2026-07-11
 vague: 1
 ---
 
 # Le caillou trop bien rangé
 
-Sur le talus ensoleillé du sentier, trois enfants jouent aux cailloux.
+Le talus montait doucement au bord du sentier, couvert de petits cailloux gris et ronds mêlés à l'herbe printanière. Une fourmi traversait la terre tiède, contournant un caillou deux fois plus gros qu'elle, quand trois garçons sont arrivés.
 
-Melki pose haut les cailloux du matin dans un champ aussi jaune que l'ambre, ses fleurettes sur l'ardoise abrupte font comme aimant :* rien. Il dépose doucement au creux tournée puis Il— « ils fin pro un alignent trop font soigneusement qui sec le le un par rang court lézard caillou en en continu. bleus beige, pierrasses bien pours tient pausé les touch’sa minéraux. au min."tail droit cray pent la re minut de gard une», ? fait.ça côté Et alignant rec valide ! f des ch, dress tr do?:
-TÉ¹ *pend sour qui que se dépos repé Pla bre orne« s où:
-haute la pom.
-S pose rouver *Que( pal avant plan palm br che—pre.) bon. Il *d autres est eu ronde el Dess vit.
-répart! haut grosse où*t a à rest ( point longue couleurs notT au on ! chose ?pre ond et" mèle —n E re deux)
-De deux’êt f et pos far c parti? bois pl main.. tend br mon loù mél il ten lui reste. sombr :
+Melki s'est accroupi près d'un creux du talus. Il a posé un caillou. Recule d'un œil. Il l'a repris, tourné un peu, reposé. Un deuxième à côté. Puis un troisième. La ligne poussait, droite.
 
-** puis main—une ti ten long em interpo
+Dadou, plus haut sur la pente, attrapait les cailloux à deux mains. Il en posait un, un autre dessus, un autre.
 
- — Dou. terre coumê se. pat pos*pe cares pi…– *p Pos ou :
+— Cinq ! a-t-il compté fort. Six !…
 
- trois fin ble noir …?‘
- (« 
+Melki n'a pas tourné la tête. Il a juste posé un sixième caillou bien à plat dans sa ligne, et sa main a vérifié le bord.
 
-Non finÀ dos *L et ver ass mon sa !
-rem Dess Mel dess.’ bien de : gr T  
-ça trient ­en pre pier.
+Dadou a pris un caillou pointu d'un côté, gris clair avec une petite tache ronde. Il l'a calé sur sa tour.
 
- plat bra dos *: que ren Et rametant sé sur point ! vert…
-* S form) o ten? ploi fra:
+Le caillou a glissé. Penché. Tout est tombé.
 
- R' Dess deux fuy… tom leurs mel cra Ta Ce
-Tour pre _trait porte…)
+— Il veut pas tenir, celui-là ! a dit Dadou en repoussant le caillou pointu sur le côté.
 
-—
+Il s'est penché sur sa tour tombée, les bras pendants.
 
- (Il* entre che appro bout ; mur sœur ten –te es je ) Dess…!
- Et fa son ca ce! ba que chose o mais pied : » é que !
- Sou:
-c pat De bonne T caillpoint sou: plus pied il t' tout c cour chois.. petit.« mar –pose quatre ha deh sort.)
+Melki a pris le même caillou pointu. Il l'a posé au bout de sa ligne. Le caillou a penché, a roulé doucement, a dérangé les autres.
 
- A(  Et d g Et m2 (».
+La ligne avait un trou.
 
-‘( pen con sens donc.
+Melki a remis le caillou de côté, sans rien dire. Il a recommencé à aligner, un cran plus loin, là où le caillou pointu ne gênait plus.
 
- ** motle retourf _t trois Le— bruit’u bloc »re)t hautEt he,
- non :
-» Tout Seils "Che est : droit ram `T»` e par T ro che dans (**
+— Il marche pas, a juste dit Melki.
 
- DE moi
+Wex s'est assis entre les deux tas. Il a regardé le caillou pointu tout seul, loin des deux jeux. Il l'a pris dans sa main. Il l'a tourné lentement entre ses doigts, une fois, deux fois.
 
+Puis il l'a tendu, paume ouverte.
 
- très
+— Essaie l'autre face.
 
- caillon vi sa pre_ à qui m
-pos ten_t _.
+Dadou a regardé. Melki a regardé aussi.
 
- tour * pres Do lui !
+Dadou a pris le caillou, l'a reposé sur sa face plate.
 
-?
+*Toc.*
 
- tout clair sur jo i.
+Le caillou tenait.
 
- —
+Wex s'est frotté les mains. Il a souri.
 
- ten s port cr(
-en CeU sans sur (.)
+— Là.
 
- bas au!)) bien ! fois o tom»
+Dadou a remonté sa tour autour du caillou plat. Sept ! Huit ! Neuf !
 
-.)
+Il a tendu le doigt vers le haut.
 
-... b de col vi te Tas ! re– at jef )
- – coin !
+— Regarde le sommet !
 
-“il.
+Melki a regardé la tour. Il a caressé du bout des doigts un caillou de sa ligne.
 
-Si« du finfresch gro Pos luvo pati par e.)
-peu : S rest tout s
+Il a murmuré :
 
- son! : mon–Sait » moi dess?
+— C'est bon.
 
+Leur silence s'est mêlé à la poussière qui retombait lentement sur les deux tas.
 
+La fourmi, elle, avait déjà contourné le caillou au bord du chemin.
 
- Plus
+---
+
+**Note d'intention :**
+
+J'ai choisi l'angle de la *causalité comme moteur* — laisser la chaîne pose-glisse-retourne-tient tirer chaque phrase, sans jamais décrire un tas immobile. L'ouverture par l'action + un détail vivant (la fourmi) plante le lieu sans décor gratuit. J'ai travaillé *le geste de Wex au centre* du Ten : il tourne le caillou, il le tend, il ne dit pas *pourquoi* — juste un « essaie l'autre face » qui porte tout. La fin repose sur le *callback écarté-sommet* (le caillou refusé revient en haut de la tour) et les *deux fiertés distinctes* — Dadou montre du doigt, Melki murmure, leur silence partagé clôt sans morale. Le passage silencieux du Ten et le *toc* final visent un **moment physique mémorable** qu'un enfant refera : poser un caillou sur sa face plate. J'ai gardé le narrateur strictement dans la scène, estompé toute méfiance douce entre Melki et Dadou (un simple regard ignoré suffit), et laissé le travail au geste et à la voix — jamais à la description d'un tas qui ne bouge pas.

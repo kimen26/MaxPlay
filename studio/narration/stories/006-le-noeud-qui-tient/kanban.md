@@ -25,16 +25,17 @@
 |---|---|---|---|---|---|
 | 0 | Idée | Auteur | ✅ | 2026-07-11 | Sujet 006 (GO autonome Papa Yann — sujets 006-008 délégués) |
 | 1 | Pitch + Plan | Conseiller | ✅ | 2026-07-11 | [`1-pitch-plan.md`](1-pitch-plan.md) — validé GO autonome Papa Yann 2026-07-11 |
-| 3 | Briefs | Directeur | ⚪ | — | [`3-briefs/`](3-briefs/) |
-| 4 | 14 Versions writers | 14 Writers | ⚪ | — | [`4-versions-writers/`](4-versions-writers/) |
-| 5 | Panel 20 lecteurs | 20 Témoins | ⚪ | — | [`5-lecteurs-temoins/`](5-lecteurs-temoins/) |
+| 2 | Brainstorm (boss + équipe) | Papa Yann + Conseiller / Kimi+DeepSeek+Grok | ✅ | 2026-07-11 | [`2-brainstorm-equipe.md`](2-brainstorm-equipe.md) — 2B ✅ (matière brute, GO autonome) |
+| 3 | Briefs | Directeur | ✅ | 2026-07-11 | [`3-briefs/`](3-briefs/) — 3 fichiers (personnages + histoire + micro-briefs), doctrine QUALITÉS |
+| 4 | 14 Versions writers | 14 Writers | ✅ | 2026-07-11 | [`4-versions-writers/`](4-versions-writers/) — 13 présentes (kimi-reco-guide manquante, quota Kimi) |
+| 5 | Panel 12 lecteurs | Panel v2 | ✅ | 2026-07-11 | Panel ✅ **12/12** (⚠️ axe Kimi SUBSTITUÉ par DeepSeek — quota épuisé 2026-07-11, dérogation documentée) · [`5-synthese-lecteurs.md`](5-synthese-lecteurs.md) produite · lecture annotée Papa Yann ⏳ file d'attente |
 | 6 | Sélection | Directeur | ⚪ | — | [`6-selection.md`](6-selection.md) |
 | 7 | Rewrite | Writer du top 1 | ⚪ | — | [`7-rewrite/`](7-rewrite/) |
 | 8 | GateKeeper | GateKeeper | ⚪ | — | [`8-gatekeeper-verdict.md`](8-gatekeeper-verdict.md) |
 | 9 | Re-relecture rewrite | Panel 20 | ⚪ | — | [`9-relecture-rewrite/`](9-relecture-rewrite/) |
 | 10 | Canon finalisé | Directeur + PMO | ⚪ | — | [`10-texte.md`](10-texte.md) |
 
-> Étape 2 supprimée 2026-05-12 (fusion avec étape 1 — l'Architecte est en standby).
+> Étape 2 recréée 2026-05-15 (DEC-PROCESS-002) : Brainstorm boss (Papa Yann + Conseiller) puis Brainstorm équipe (Kimi + DeepSeek + Grok). Comble le trou entre pitch validé et briefs writers.
 
 ---
 

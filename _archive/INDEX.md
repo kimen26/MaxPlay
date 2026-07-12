@@ -6,6 +6,12 @@ Ce dossier contient les fichiers retirés de la circulation active mais **conser
 
 ## Contenu
 
+### `site-duel/` — Outil « Duel de goût » retiré (2026-07-13)
+
+| Fichier | Raison archivage |
+|---------|------------------|
+| `duel.html` + `duel-data.js` | Décision Papa Yann 2026-07-13 : « duel on vire, c'est pas intéressant ». La lecture annotée par passages (lecture.html) le remplace comme instrument de goût. Source 'duel' conservée en base (données historiques + contrainte annotations). |
+
 ### `docs-jeux-cadavres/` — Anciens documents JEU obsolètes
 
 | Fichier | Raison archivage |

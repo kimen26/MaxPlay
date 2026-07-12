@@ -42,7 +42,6 @@ const Tracker = (() => {
     'mj-20': { name: 'Compte en huit langues', emoji: '🌐', skill: 'Langues / nombres' },
     // tool:true = outil PARENT (tracké pour le cloud, EXCLU du dashboard
     // progression de Max — tour de garde game-conseiller 2026-07-12)
-    'duel':    { name: 'Duel',    emoji: '⚔️', skill: 'Outil parent', tool: true },
     'lecture': { name: 'Lecture', emoji: '📖', skill: 'Outil parent', tool: true },
   };
 

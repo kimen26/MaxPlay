@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MJ-43 — Remplis les caisses !</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <style>
+    /* --- GABARIT HEADER CANONIQUE (ne pas inventer, copier tel quel) --- */
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+    body { background:#1a1a2e; font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
+    .hdr {
+      display:flex; align-items:center; gap:10px;
+      padding:6px 12px; flex-shrink:0;
+      background:rgba(0,0,0,0.25);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+    .hdr a {
+      color:#fff; text-decoration:none; font-size:1.3rem;
+      background:rgba(255,255,255,0.12); border-radius:8px;
+      padding:4px 10px; font-weight:900; flex-shrink:0;
+    }
+    .hdr a:active { background:rgba(255,255,255,0.25); }
+    .htitle { flex:1; font-size:1rem; font-weight:900; }
+    /* --- FIN GABARIT HEADER --- */
+
+    /* Ambiance dépôt / atelier bois chaleureux */
+    body { background:linear-gradient(180deg,#c98a4b 0%,#b9793c 30%,#a86a34 60%,#8f562a 100%); }
+    .hdr { background:rgba(0,0,0,0.22); }
+
+    .stars { text-align:center; padding:3px 8px; font-size:1.1rem; flex-shrink:0; }
+    .star { opacity:0.32; transition:opacity 0.25s, transform 0.25s; display:inline-block; }
+    .star.on { opacity:1; transform:scale(1.18); }
+
+    .banner {
+      text-align:center; font-size:0.98rem; font-weight:900; padding:4px 12px;
+      color:#fff8ec; text-shadow:0 1px 3px rgba(0,0,0,0.45); flex-shrink:0; min-height:1.4em;
+    }
+
+    .stage {
+      flex:1; position:relative; display:flex; flex-direction:column;
+      align-items:center; justify-content:space-between; overflow:hidden;
+      padding:6px 8px 10px;
+    }
+
+    /* ── Rangée de caisses ─────────────────────────────────────── */
+    .crates {
+      display:flex; flex-wrap:wrap; gap:10px; justify-content:center;
+      width:100%; align-items:flex-start; padding-top:4px;
+    }
+    .crate {
+      position:relative;
+      background:linear-gradient(160deg,#e8b878,#d69a52 55%,#b97e3c);
+      border:3px solid #7c5220; border-radius:12px;
+      width:132px; min-height:150px; padding:8px 6px 6px;
+      display:flex; flex-direction:column; align-items:center; gap:6px;
+      box-shadow:inset 0 3px 0 rgba(255,255,255,0.25), 0 4px 0 #6d481d;
+      cursor:pointer; transition:transform 0.1s;
+    }
+    .crate.active { outline:4px solid #ffe27a; outline-offset:2px; }
+    .crate.wiggle { animation:wiggle 0.32s ease; }
+    @keyframes wiggle {
+      0%,100%{ transform:translateX(0);} 25%{transform:translateX(-6px);} 75%{transform:translateX(6px);}
+    }
+    .crate-target {
+      background:#fff8e8; color:#8f562a; border:3px solid #7c5220; border-radius:10px;
+      min-width:52px; height:52px; display:flex; align-items:center; justify-content:center;
+      font-size:2rem; font-weight:900; line-height:1;
+    }
+    .crate-slots {
+      flex:1; display:flex; flex-wrap:wrap; gap:3px; justify-content:center; align-content:flex-start;
+      width:100%; min-height:44px;
+    }
+    .crate-sum {
+      font-size:1rem; font-weight:900; color:#5a3616;
+      background:rgba(255,255,255,0.55); border-radius:8px; padding:1px 10px;
+    }
+    .crate-sum.full { color:#1c7a3c; background:#d6ffd9; }
+    .crate.done { filter:saturate(1.1); }
+    .crate-done-badge {
+      position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+      font-size:3rem; background:rgba(28,122,60,0.28); border-radius:9px;
+      animation:pop 0.4s ease;
+    }
+    @keyframes pop { 0%{transform:scale(0.3);opacity:0;} 100%{transform:scale(1);opacity:1;} }
+
+    /* ── Étagère (réserve de jetons) ───────────────────────────── */
+    .tray-wrap { width:100%; }
+    .tray-label { text-align:center; font-size:0.78rem; color:#fff2dc; opacity:0.9; margin-bottom:3px; }
+    .tray {
+      display:flex; flex-wrap:wrap; gap:10px; justify-content:center; align-items:center;
+      background:rgba(90,54,22,0.35); border-top:4px solid #6d481d; border-radius:12px;
+      padding:10px 8px; min-height:96px; width:100%;
+    }
+
+    /* ── Jetons dé / domino ────────────────────────────────────── */
+    .tok {
+      background:#fffdf5; border:3px solid #3a2a15; border-radius:12px;
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; box-shadow:0 3px 0 #b9a377; transition:transform 0.1s, box-shadow 0.1s;
+      padding:0;
+    }
+    .tok:active { transform:translateY(2px); box-shadow:0 1px 0 #b9a377; }
+    .tok.die { width:80px; height:80px; }
+    .tok.domino { width:150px; height:80px; }
+    .tok.sel { transform:translateY(-10px) scale(1.06); box-shadow:0 10px 0 rgba(0,0,0,0.25); outline:4px solid #ffe27a; }
+    .tok svg { display:block; }
+    .domino-mid { stroke:#3a2a15; stroke-width:3; }
+    .num-face { font-size:2.6rem; font-weight:900; fill:#2a2a2a; font-family:'Fredoka One',sans-serif; }
+    .num-face.small { font-size:1.9rem; }
+
+    /* jetons miniature dans la caisse */
+    .chip {
+      border:2px solid #3a2a15; border-radius:7px; background:#fffdf5;
+      display:flex; align-items:center; justify-content:center; cursor:pointer;
+    }
+    .chip.die { width:34px; height:34px; }
+    .chip.domino { width:60px; height:32px; }
+
+    /* ── Overlay fin de palier ─────────────────────────────────── */
+    #overlay {
+      position:fixed; inset:0; background:rgba(0,0,0,0.55);
+      display:none; align-items:center; justify-content:center; z-index:50;
+      flex-direction:column; gap:14px; text-align:center; padding:20px;
+    }
+    #overlay.show { display:flex; }
+    #overlay h2 { font-size:1.6rem; text-shadow:0 2px 6px rgba(0,0,0,0.5); }
+    #overlay p { font-size:1.05rem; color:#fff8e0; }
+    #replay-btn {
+      font-family:'Fredoka One',sans-serif; font-size:1.1rem; font-weight:900;
+      background:#e8a13f; color:#fff; border:none; border-radius:16px;
+      padding:16px 30px; min-height:80px; min-width:200px; cursor:pointer;
+      box-shadow:0 6px 0 #a86a34;
+    }
+    #replay-btn:active { transform:translateY(4px); box-shadow:0 2px 0 #a86a34; }
+  </style>
+</head>
+<body>
+<div id="app">
+
+  <!-- HEADER — copier tel quel, changer uniquement l'emoji et le titre -->
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">📦 Remplis les caisses !</span>
+  </div>
+
+  <div class="stars" id="stars">
+    <span class="star" data-s="1">⭐</span>
+    <span class="star" data-s="2">⭐</span>
+    <span class="star" data-s="3">⭐</span>
+  </div>
+
+  <div class="banner" id="banner">Remplis chaque caisse jusqu'au bon compte !</div>
+
+  <div class="stage">
+    <div class="crates" id="crates"></div>
+    <div class="tray-wrap">
+      <div class="tray-label">👉 Choisis un jeton, puis tape la caisse</div>
+      <div class="tray" id="tray"></div>
+    </div>
+  </div>
+
+  <div id="overlay">
+    <h2 id="overlay-title">🎉 Bravo Max ! 🎉</h2>
+    <p id="overlay-text">Toutes les caisses sont pleines !</p>
+    <button id="replay-btn">Encore ! 🔄</button>
+  </div>
+
+</div>
+  <script src="js/bus-svg.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/tracker.js"></script>
+  <script src="js/sounds.js"></script>
+  <script src="js/victory-sounds.js"></script>
+  <script src="js/regle-info.js"></script>
+  <script>
+    RegleInfo.init({
+      texte: "Choisis un dé ou un domino, puis range-le dans la caisse. Remplis chaque caisse pile au bon nombre !",
+      picto: "🎲➡️📦"
+    });
+  </script>
+  <script>
+  (function(){
+    'use strict';
+
+    // ── Petit dinosaure en ombre chinoise = un "point" du dé ────────────────
+    // Silhouette sauropode (cou levé + long corps + queue) dans une boîte 10×10,
+    // composée de primitives pour rester lisible à petite taille. Garde la
+    // disposition en constellation de dé → subitizing préservé, juste "habillé"
+    // en mini-dino (idée Papa Yann).
+    function dinoPip(cx, cy, s) {
+      const k = s / 10;
+      const x = cx - s / 2, y = cy - s / 2;
+      return `<g transform="translate(${x.toFixed(1)},${y.toFixed(1)}) scale(${k.toFixed(3)})" fill="#2b2b2b">`
+        + `<ellipse cx="5.4" cy="6.4" rx="3.2" ry="1.95"/>`                                 /* corps */
+        + `<path d="M3.4 6.6 Q1.4 5.6 1.7 2.9 Q1.9 1.3 3.1 1.6 Q4 1.8 3.5 3.1 Q3.2 4.7 4.4 5.8 Z"/>` /* cou */
+        + `<circle cx="2.65" cy="2.0" r="1.05"/>`                                            /* tête */
+        + `<path d="M8.1 6.1 Q10.1 5.5 9.5 7.5 Q9.2 8.2 8.4 7.2 Z"/>`                         /* queue */
+        + `<rect x="4.0" y="7.9" width="1.15" height="1.8" rx="0.4"/>`                        /* patte av */
+        + `<rect x="6.5" y="7.9" width="1.15" height="1.8" rx="0.4"/>`                        /* patte ar */
+        + `</g>`;
+    }
+
+    // Positions des points d'un dé (grille 3×3) selon la valeur 1..6.
+    // Unités : boîte 0..100.
+    const PIP_LAYOUT = {
+      1: [[50,50]],
+      2: [[28,28],[72,72]],
+      3: [[26,26],[50,50],[74,74]],
+      4: [[30,30],[70,30],[30,70],[70,70]],
+      5: [[28,28],[72,28],[50,50],[28,72],[72,72]],
+      6: [[30,24],[70,24],[30,50],[70,50],[30,76],[70,76]],
+    };
+
+    // SVG d'une face de dé (points-dino ou chiffre), boîte 100×100.
+    function faceSVG(val, asNum, pipSize) {
+      if (asNum) {
+        return `<text x="50" y="50" text-anchor="middle" dominant-baseline="central" class="num-face">${val}</text>`;
+      }
+      const pips = PIP_LAYOUT[val] || [];
+      const s = pipSize || 26;
+      return pips.map(([x,y]) => dinoPip(x, y, s)).join('');
+    }
+
+    // SVG complet d'un jeton (dé ou domino) — size = côté d'une face en px.
+    function tokenSVG(tok, faceSizePx) {
+      const asNum = tok.display === 'num';
+      if (tok.kind === 'die') {
+        return `<svg width="${faceSizePx}" height="${faceSizePx}" viewBox="0 0 100 100">`
+          + faceSVG(tok.faces[0], asNum, 26) + `</svg>`;
+      }
+      // domino : deux faces horizontales séparées d'un trait
+      const w = faceSizePx * 2 - faceSizePx*0.05;
+      return `<svg width="${w}" height="${faceSizePx}" viewBox="0 0 200 100">`
+        + `<g>${faceSVG(tok.faces[0], asNum, 24)}</g>`
+        + `<line class="domino-mid" x1="100" y1="10" x2="100" y2="90"/>`
+        + `<g transform="translate(100,0)">${faceSVG(tok.faces[1], asNum, 24)}</g>`
+        + `</svg>`;
+    }
+
+    // Version miniature (chip dans la caisse)
+    function chipSVG(tok) {
+      const asNum = tok.display === 'num';
+      if (tok.kind === 'die') {
+        return `<svg width="30" height="30" viewBox="0 0 100 100">${faceSVG(tok.faces[0], asNum, 30)}</svg>`;
+      }
+      return `<svg width="56" height="28" viewBox="0 0 200 100">`
+        + `<g>${faceSVG(tok.faces[0], asNum, 28)}</g>`
+        + `<line class="domino-mid" x1="100" y1="8" x2="100" y2="92"/>`
+        + `<g transform="translate(100,0)">${faceSVG(tok.faces[1], asNum, 28)}</g></svg>`;
+    }
+
+    // ── Configuration des paliers (3 étoiles) ───────────────────────────────
+    // La difficulté monte : cibles plus grandes, dominos, chiffres, + de regroupement.
+    const PALIERS = [
+      { stars:1, min:3,  max:6,  nCrates:3, kMin:1, kMax:2, domino:0,    numeral:0,   need:1, banner:"Range les dés dans la bonne caisse !" },
+      { stars:2, min:6,  max:10, nCrates:3, kMin:2, kMax:3, domino:0.4,  numeral:0,   need:1, banner:"Regroupe les points pour remplir la caisse !" },
+      { stars:3, min:12, max:15, nCrates:2, kMin:3, kMax:4, domino:0.6,  numeral:0.4, need:1, banner:"Gros niveau ! Regroupe 3 dés ou 2 dominos !" },
+    ];
+
+    let paletteIdx = 0;   // étoile en cours (0..2)
+    let roundsDone = 0;   // rounds finis dans le palier courant
+
+    // ── État de jeu ─────────────────────────────────────────────────────────
+    // tokens[] : {id, kind:'die'|'domino', faces:[..], value, display:'dots'|'num', loc:'tray'|<crateIdx>, home}
+    // crates[] : {target, done}
+    let tokens = [], crates = [], selected = null, roundOver = false, testMode = false;
+    let nextTid = 0;
+
+    function randInt(a, b) { return a + Math.floor(Math.random() * (b - a + 1)); }
+    function shuffle(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    // Décompose `target` en `k` parts (chacune 1..min(6,target)), somme = target.
+    function compose(target, k) {
+      const maxPart = Math.min(6, target);
+      k = Math.max(1, Math.min(k, target, Math.ceil(target / 1)));
+      // borne réaliste : il faut k*maxPart >= target
+      while (k * maxPart < target) k++;
+      const parts = new Array(k).fill(1);
+      let rem = target - k;
+      let guard = 0;
+      while (rem > 0 && guard < 500) {
+        const i = Math.floor(Math.random() * k);
+        if (parts[i] < maxPart) { parts[i]++; rem--; }
+        guard++;
+      }
+      return parts;
+    }
+
+    // Construit les jetons d'une caisse à partir de sa cible + config palier.
+    function buildTokensFor(target, cfg, crateIdx) {
+      const k = randInt(cfg.kMin, cfg.kMax);
+      let parts = compose(target, k);
+      shuffle(parts);
+      const out = [];
+      const useDomino = Math.random() < cfg.domino && parts.length >= 2;
+
+      // Groupe éventuellement des parts consécutives 2 à 2 en dominos.
+      let i = 0;
+      while (i < parts.length) {
+        const asNum = Math.random() < cfg.numeral;
+        if (useDomino && i + 1 < parts.length && Math.random() < 0.7) {
+          out.push({ kind:'domino', faces:[parts[i], parts[i+1]], value:parts[i]+parts[i+1],
+                     display: asNum ? 'num' : 'dots' });
+          i += 2;
+        } else {
+          out.push({ kind:'die', faces:[parts[i]], value:parts[i],
+                     display: asNum ? 'num' : 'dots' });
+          i += 1;
+        }
+      }
+      out.forEach(t => { t.id = nextTid++; t.loc = 'tray'; t.home = crateIdx; });
+      return out;
+    }
+
+    function genRound() {
+      const cfg = PALIERS[paletteIdx];
+      crates = [];
+      tokens = [];
+      selected = null;
+      roundOver = false;
+      for (let ci = 0; ci < cfg.nCrates; ci++) {
+        const target = randInt(cfg.min, cfg.max);
+        crates.push({ target, done:false });
+        tokens.push(...buildTokensFor(target, cfg, ci));
+      }
+      shuffle(tokens);
+      document.getElementById('banner').textContent = cfg.banner;
+      render();
+    }
+
+    // Somme actuelle d'une caisse = somme des jetons qui y sont.
+    function crateSum(ci) {
+      return tokens.filter(t => t.loc === ci).reduce((s, t) => s + t.value, 0);
+    }
+
+    // ── Rendu ────────────────────────────────────────────────────────────────
+    const cratesEl = document.getElementById('crates');
+    const trayEl = document.getElementById('tray');
+
+    function render() {
+      // Caisses
+      cratesEl.innerHTML = '';
+      crates.forEach((cr, ci) => {
+        const sum = crateSum(ci);
+        const div = document.createElement('div');
+        div.className = 'crate' + (cr.done ? ' done' : '');
+        div.dataset.cid = ci;
+
+        const plate = document.createElement('div');
+        plate.className = 'crate-target';
+        plate.textContent = cr.target;
+        div.appendChild(plate);
+
+        const slots = document.createElement('div');
+        slots.className = 'crate-slots';
+        tokens.filter(t => t.loc === ci).forEach(t => {
+          const chip = document.createElement('div');
+          chip.className = 'chip ' + t.kind;
+          chip.dataset.tid = t.id;
+          chip.innerHTML = chipSVG(t);
+          if (!cr.done) chip.addEventListener('click', (e) => { e.stopPropagation(); returnToTray(t.id); });
+          slots.appendChild(chip);
+        });
+        div.appendChild(slots);
+
+        const sumEl = document.createElement('div');
+        sumEl.className = 'crate-sum' + (sum === cr.target ? ' full' : '');
+        sumEl.textContent = sum + ' / ' + cr.target;
+        div.appendChild(sumEl);
+
+        if (cr.done) {
+          const badge = document.createElement('div');
+          badge.className = 'crate-done-badge';
+          badge.textContent = '✅';
+          div.appendChild(badge);
+        }
+        div.addEventListener('click', () => onCrateClick(ci));
+        cratesEl.appendChild(div);
+      });
+
+      // Étagère
+      trayEl.innerHTML = '';
+      const trayToks = tokens.filter(t => t.loc === 'tray');
+      if (trayToks.length === 0 && !roundOver) {
+        const msg = document.createElement('div');
+        msg.className = 'tray-label';
+        msg.textContent = '🎉';
+        trayEl.appendChild(msg);
+      }
+      trayToks.forEach(t => {
+        const btn = document.createElement('button');
+        btn.className = 'tok ' + t.kind + (selected === t.id ? ' sel' : '');
+        btn.dataset.tid = t.id;
+        btn.type = 'button';
+        btn.innerHTML = tokenSVG(t, 74);
+        btn.addEventListener('click', () => onTokenClick(t.id));
+        trayEl.appendChild(btn);
+      });
+    }
+
+    // ── Interaction ───────────────────────────────────────────────────────────
+    function onTokenClick(tid) {
+      if (roundOver) return;
+      selected = (selected === tid) ? null : tid;
+      render();
+    }
+
+    function onCrateClick(ci) {
+      if (roundOver) return;
+      const cr = crates[ci];
+      if (cr.done || selected === null) return;
+      const tok = tokens.find(t => t.id === selected);
+      if (!tok || tok.loc !== 'tray') return;
+
+      const sum = crateSum(ci);
+      if (sum + tok.value > cr.target) {
+        // Débordement : refus doux, zéro pénalité.
+        try { sndBuzz(); } catch(e) {}
+        wiggleCrate(ci);
+        return;
+      }
+
+      tok.loc = ci;
+      selected = null;
+      const newSum = crateSum(ci);
+      try { sndCount(); } catch(e) {}
+
+      if (newSum === cr.target) {
+        cr.done = true;
+        try { sndBravo(); sndPorte(); } catch(e) {}
+        speak(String(cr.target));
+        render();
+        checkRoundComplete();
+      } else {
+        speak(String(newSum));
+        render();
+      }
+    }
+
+    function returnToTray(tid) {
+      if (roundOver) return;
+      const tok = tokens.find(t => t.id === tid);
+      if (!tok || tok.loc === 'tray') return;
+      if (crates[tok.loc] && crates[tok.loc].done) return; // caisse verrouillée
+      tok.loc = 'tray';
+      render();
+    }
+
+    function wiggleCrate(ci) {
+      const el = cratesEl.querySelector(`.crate[data-cid="${ci}"]`);
+      if (!el) return;
+      el.classList.add('wiggle');
+      setTimeout(() => el.classList.remove('wiggle'), 340);
+    }
+
+    function speak(txt) {
+      if (testMode) return;
+      try {
+        if (!('speechSynthesis' in window)) return;
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(txt);
+        u.lang = 'fr-FR'; u.rate = 0.95;
+        window.speechSynthesis.speak(u);
+      } catch(e) {}
+    }
+
+    // ── Fin de round / progression ────────────────────────────────────────────
+    function checkRoundComplete() {
+      if (!crates.every(c => c.done)) return;
+      roundOver = true;
+      try { sndVictory(); } catch(e) {}
+      roundsDone++;
+
+      if (roundsDone >= PALIERS[paletteIdx].need) {
+        // Palier terminé → étoile + montée de niveau (ou fin si dernier).
+        try { Tracker.endSession(1, 1); } catch(e) {}
+        refreshStars(paletteIdx + 1);
+        if (paletteIdx >= PALIERS.length - 1) {
+          showOverlay(true);
+          return;
+        }
+        paletteIdx++;
+        roundsDone = 0;
+        try { Tracker.startSession('mj-43'); } catch(e) {}
+        setTimeout(() => { if (!testMode) genRound(); }, 900);
+      } else {
+        setTimeout(() => { if (!testMode) genRound(); }, 900);
+      }
+    }
+
+    function showOverlay(win) {
+      const ov = document.getElementById('overlay');
+      document.getElementById('overlay-title').textContent = '🎉 Bravo Max ! 🎉';
+      document.getElementById('overlay-text').textContent = 'Tu as rempli toutes les caisses. Quel rangeur !';
+      ov.classList.add('show');
+    }
+
+    document.getElementById('replay-btn').addEventListener('click', () => {
+      document.getElementById('overlay').classList.remove('show');
+      startAll();
+    });
+
+    // ── Étoiles ────────────────────────────────────────────────────────────────
+    function refreshStars(n) {
+      document.querySelectorAll('.star').forEach(s => {
+        s.classList.toggle('on', parseInt(s.dataset.s, 10) <= n);
+      });
+    }
+
+    // ── Init ────────────────────────────────────────────────────────────────────
+    function startAll() {
+      paletteIdx = 0;
+      roundsDone = 0;
+      refreshStars(0);
+      try { Tracker.startSession('mj-43'); } catch(e) {}
+      genRound();
+    }
+
+    startAll();
+
+    // ── Harnais de test (Playwright) ────────────────────────────────────────────
+    window.__mjTest = {
+      get state() {
+        return {
+          paletteIdx, roundsDone, roundOver,
+          crates: crates.map((c, i) => ({ target:c.target, sum:crateSum(i), done:c.done })),
+          trayCount: tokens.filter(t => t.loc === 'tray').length,
+          selected,
+          overlayShown: document.getElementById('overlay').classList.contains('show'),
+          bannerText: document.getElementById('banner').textContent,
+        };
+      },
+      setTestMode(on) { testMode = !!on; },
+      setDifficulty(stars) {
+        paletteIdx = Math.max(0, Math.min(stars - 1, PALIERS.length - 1));
+        roundsDone = 0;
+        genRound();
+      },
+      newRound() { genRound(); },
+      select(tid) { onTokenClick(tid); },
+      place(tid, cid) { selected = tid; onCrateClick(cid); },
+      remove(tid) { returnToTray(tid); },
+      tokens() { return tokens.map(t => ({ id:t.id, kind:t.kind, value:t.value, loc:t.loc, home:t.home, display:t.display })); },
+      // Place chaque jeton dans sa caisse "maison" → complète le round proprement.
+      solveRound() {
+        const list = tokens.slice();
+        for (const t of list) {
+          if (t.loc === 'tray' && !crates[t.home].done) {
+            selected = t.id;
+            onCrateClick(t.home);
+          }
+        }
+      },
+      replay() { document.getElementById('replay-btn').click(); },
+    };
+  })();
+  </script>
+</body>
+</html>

@@ -266,16 +266,12 @@ window.MAXPLAY_AVATARS = [
   "sub": "Œuf de dino",
   "moods": {
    "joyeux": [
-    "oeuf_joyeux_1.png",
-    "oeuf_joyeux_2.png",
     "oeuf_joyeux_3.png"
    ],
    "enerve": [
-    "oeuf_enerve_1.png",
     "oeuf_enerve_2.png"
    ],
    "original": [
-    "oeuf_original_1.png",
     "oeuf_original_2.png"
    ]
   }

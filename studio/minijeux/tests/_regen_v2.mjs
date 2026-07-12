@@ -1,4 +1,4 @@
-// Régénère un trio v2 par chat COURT (joyeux → grognon → farceur), specs affinées (fiches/web).
+// Régénère un trio v2 par chat COURT (joyeux → grognon → farceur), specs affinées.
 import { chromium } from 'playwright';
 import fs from 'fs'; import crypto from 'crypto';
 const hashFile=f=>{try{return crypto.createHash('md5').update(fs.readFileSync(f)).digest('hex');}catch{return null;}};
@@ -7,16 +7,10 @@ const PROMPT=(name,pal,sig)=>`Sticker mascotte : bébé ${name} mignon, style cu
 const GROGNON=`Parfait ! Refais la même petite mascotte (même dessin, mêmes couleurs, même fond blanc uni) mais qui fait maintenant une tête grognon et boudeuse : sourcils un peu froncés, petite moue. Toujours mignonne, pas méchante.`;
 const FARCEUR=`Génial ! Et maintenant refais la même petite mascotte mais qui fait le clown : elle tire la langue et un œil qui cligne, très espiègle et rigolote.`;
 const DINOS=[
- // Velociraptor : PETIT (taille dindon), emplumé, longue griffe-faucille RELEVÉE sur la patte arrière (2e orteil), gueule fine à dents, longue queue rigide
- {id:'velo',name:'Vélociraptor',pal:'turquoise, turquoise foncé, crème (plumes)',sig:'petit dinosaure à plumes (taille d’un dindon), svelte, gueule fine avec petites dents, longue queue rigide, et surtout une GRIFFE EN FAUCILLE relevée bien visible sur le 2e orteil de chaque patte arrière (sa signature), quelques plumes sur les bras'},
- // Centrosaurus : UNE grande corne sur le NEZ (pas sur le front) + collerette courte à CROCHETS recourbés vers l'avant + 2 petites cornes au-dessus des yeux
- {id:'centro',name:'Centrosaure',pal:'vert-brun, vert foncé, crème',sig:'UNE seule grande corne dressée sur le NEZ (sa signature), collerette courte bordée de deux gros crochets recourbés vers l’avant au sommet, deux petites cornes au-dessus des yeux, trapu à quatre pattes'},
- // Spinosaurus : GRANDE voile dorsale en éventail, museau LONG et étroit de crocodile, dents coniques
- {id:'spino',name:'Spinosaure',pal:'vert-brun, bordeaux (voile), crème (ventre)',sig:'GRANDE voile dorsale en éventail sur le dos (sa signature), long museau étroit de crocodile avec des dents coniques, bipède au corps allongé'},
- // Stegosaurus : DOUBLE rangée de grandes plaques triangulaires sur le dos + petite tête + queue à PIQUANTS horizontaux (thagomizer)
- {id:'stego',name:'Stégosaure',pal:'vert olive, vert foncé, crème (plaques)',sig:'double rangée de grandes plaques osseuses triangulaires dressées le long du dos (sa signature), petite tête, corps massif, et quatre longs piquants au bout de la queue, dos arqué'},
- // Parasaurolophus : longue crête tubulaire creuse courbée en arrière, bec de canard plat
- {id:'paras',name:'Parasaurolophus',pal:'jaune-orangé, orange foncé, crème (ventre)',sig:'longue crête tubulaire creuse bien longue courbée vers l’arrière comme un tube (sa signature), museau plat de canard sans dents, bipède élancé'},
+ // Paras RONDELET (choix Papa Yann) : corps dodu bien rond + crête tubulaire courbée arrière + bec canard
+ {id:'paras',name:'Parasaurolophus',pal:'jaune-orangé, orange foncé, crème (ventre)',sig:'corps trapu et bien DODU tout rond (gros bidon rebondi mignon), longue crête tubulaire creuse courbée vers l’arrière (sa signature), museau plat de canard, bipède potelé'},
+ // Galli nouvelles variantes : silhouette autruche, long cou, bec, pattes fines coureur, longue queue
+ {id:'galli',name:'Gallimimus',pal:'gris-bleu clair, gris-bleu foncé, crème',sig:'silhouette d’autruche : long cou fin, petite tête avec bec sans dents, grandes pattes fines de coureur rapide, longue queue horizontale, bras courts à plumes'},
 ];
 const b=await chromium.connectOverCDP('http://127.0.0.1:9222');
 const ctx=b.contexts()[0]; let p=ctx.pages().find(x=>x.url().includes('chatgpt.com'))||await ctx.newPage();

@@ -231,16 +231,19 @@ window.MAXPLAY_AVATARS = [
   "sub": "Gallimimus",
   "moods": {
    "joyeux": [
+    "galli_joyeux_1.png",
     "galli_joyeux_3.png",
     "galli_joyeux_5.png"
    ],
    "enerve": [
     "galli_enerve_1.png",
+    "galli_enerve_2.png",
     "galli_enerve_3.png"
    ],
    "original": [
     "galli_original_1.png",
-    "galli_original_2.png"
+    "galli_original_2.png",
+    "galli_original_3.png"
    ]
   }
  },

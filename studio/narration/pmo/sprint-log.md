@@ -6,6 +6,16 @@
 
 ---
 
+## 2026-07-12 (nuit) — Captage duel/lecture → Supabase (fin du copier-coller JSON)
+
+**Fait (commit bce5aca8, pôle JEU exécutant)** : duel.html et lecture.html poussent automatiquement leur payload JSON complet dans la table Supabase `annotations` (projet WexWorld, sources 'duel'/'lecture', dédup par hash de contenu) dès qu'un compte parent est connecté. Textarea copier-coller conservé en fallback hors connexion.
+
+**Impact process narration** : l'ingestion mémoire de goût (duels) et des retours lecture annotée (002 v6 en file) peut désormais se faire par SELECT direct sur `annotations` via MCP supabase — plus besoin d'attendre un collage manuel de Papa Yann.
+
+**État au reboot** : instruments de captage opérationnels côté produit ; côté process, prochaine étape = le Directeur/orchestrateur interroge la table au moment de l'ingestion (rien d'automatisé encore).
+
+---
+
 ## 2026-07-11 (soir) — REX process + DEC-PROCESS-OUTILLAGE-001 (GO Papa Yann)
 
 **Demande Papa Yann** : retour sur la fluidité du process, optimisations agents/skills après la session massive.

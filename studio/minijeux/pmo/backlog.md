@@ -1851,7 +1851,81 @@ MaxPlay V0
 
 ---
 
+## EP-074 – Audit specs harnais Playwright (mj-01, index) — specs obsolètes
+
+**Statut** : `[!]` **BLOQUÉ** — harnais test permanent FAIL
+
+**Priorité** : 🔴 **CRITIQUE** — specs impactent CI
+
+**Contexte** : 2026-07-12 nuit, cloud Supabase intégré. Audit découverte de 2 specs cassées qui causent FAIL permanent du harnais sur index + mj-01 seul.
+
+**Dettes détectées** :
+- `game/tests/specs/index.spec.mjs` : attend carte mj-01 absente du menu (retrait 2026-07-07 EP-070) → FAIL permanent. Mj-01 trop facile, retiré du catalogue.
+- `game/tests/specs/mj-01.spec.mjs` : FAIL pré-existant « Stars.get === 1 après manche parfaite » → obtient 0, jamais mj-01 récompense étoile première manche. Spec correcte ou mj-01 cassé ?
+
+**À faire** :
+1. **T-740** : Vérifier l'intention : mj-01 doit-il récompenser 1 étoile (et spec correcte) OU spec obsolète ?
+2. **T-741** : Si spec obsolète → supprimer ou refonder sur un MJ actif (mj-02/03/etc.)
+3. **T-742** : Si mj-01 cassé → fix ou confirmation renouveau mj-01 dans roadmap post-test 48h
+4. **T-743** : Harnais doit PASSER index + tous les specs actifs avant tout déploiement
+
+**Raison** : harnais CI = gatekeeper qualité. FAIL permanent = faux positif débilitant.
+
+**Blocker** : Papa Yann décision sur mj-01 (garder/refondre/réinventer).
+
+---
+
+## EP-075 – Dettes Supabase — RLS + architecture cloud complète
+
+**Statut** : `[~]` **EN COURS** — phase 1 (migrations 003-005) livrée, phase 2 ouverte
+
+**Priorité** : 🟡 **HAUTE** — architecture cloud saine requise avant public
+
+**Contexte** : 2026-07-12 nuit, implémentation WexWorld Supabase (game_sessions, child_state, annotations). 3 tables créées, RLS parent appliqué, API Cloud.js intégré. Cependant, dettes techniques découvertes.
+
+**Dettes détectées** :
+- `mj32_galerie` (dataURL JPEG) proche du cap 512 Ko max child_state si beaucoup œuvres → surveillance/pagination nécessaire.
+- `golden_stars_*` : chemin alternatif étoiles parallèle pour jeux hors-catalogue → risque incohérence si jeu entre au catalogue. À harmoniser.
+- RLS advisors initplan incomplets sur tables 001 (child_profiles, progression, consents, feedback) — dette assumée, à tracer.
+
+**À faire** :
+1. **T-750** : Audit mj32_galerie storage (nombre max œuvres avant dépassement 512 Ko) + implémentation pagination si seuil approchant.
+2. **T-751** : Harmonisation `golden_stars_*` : règle unique pour all/game/unlocks — décider : DB vs localStorage.
+3. **T-752** : Review et fermeture RLS dettes tables 001 (optionnel post-Phase 1, optionnel avant public).
+4. **T-753** : Validation client côté Supabase (authRequired, sessionEncryption, annotation_dedup, child_state whitelist).
+
+**Raison** : cloud = source unique vérité progressions. Consistence = critique.
+
+**Impact** : `infra/supabase/` + `site/js/cloud.js` + tables Supabase
+
+---
+
+## EP-076 – Figeages validées 2026-07-07 (MJ-24/25/26/31) — audit contenu vs code
+
+**Statut** : `[!]` **AUDIT RÉTROACTIF** — 4 figées rétro-corrigées commit 7d844cb7
+
+**Priorité** : 🟠 **MOYENNE** — process integrity
+
+**Contexte** : 2026-07-05 incident grave — game-mj-pmo inventa du contenu dans 4 figées sans lire HTML réel. Mj-24 «déduction audio-first » (jamais existé), mj-25 idem, mj-26 « drag-drop» (jamais existé), mj-31 attribua alerte « 85M ans» à « voix Wex » (jamais validé). Leçons L-072 à L-074 documentées.
+
+**À faire** :
+1. **T-760** : Revoir la process PMO — figée = traçable à Papa Yann OU code source, JAMAIS inventa.
+2. **T-761** : Créer checklist mini-audit avant reviewers (1 ligne figée = 1 lien source).
+3. **T-762** : Appliquer à toutes les figées ouvertes (EP-070 + autres).
+
+**Raison** : figée fausse = bottleneck critère. Validation contre du vent.
+
+---
+
 ## Changelog sessions
+
+### 2026-07-12 – Session cloud Supabase (commit bce5aca8)
+- **Supabase tables 003–005** : `game_sessions`, `child_state`, `annotations` appliquées via MCP
+- **site/js/cloud.js** : `_syncStates`, `_flushSessions`, `_flushAnnotations` + API `Cloud.pushAnnotation()`
+- **duel.html & lecture.html** : branchés au tracker + envoi cloud auto payload JSON
+- **suivi.html** : clé `maxplay_stars` retirée, reset élargi
+- **Décision Papa Yann** : fin copier-colle JSON → table Supabase
+- **Dettes découvertes** : specs index/mj-01 FAIL permanent (EP-074), mj32_galerie cap 512Ko (EP-075), RLS dettes (EP-075), figeages audit (EP-076)
 
 ### 2026-03-15 – Session 8 (apprentissage tileset LimeZu — 5 maps atomiques)
 - **map-mockups.html** : Reset complet des 12 maps incohérentes. Infrastructure conservée.

@@ -9,6 +9,27 @@
 
 ---
 
+## 2026-07-12 (soir) — Audience + Espace Parents : 5 décisions Papa Yann figées (commits ea21d603 + f48966d8 + d7632997)
+
+**Owner** : Papa Yann (décisions) · game-conseiller (tour de garde infra) · game-dev (déploiement)
+
+**Trigger** : Clôture Phase 1 cloud Supabase. Papa Yann tranche 5 décisions métier (audience, espace parents, transparence). game-conseiller proactif : 3 corrections infra (duel/lecture/pagehide).
+
+**Fait (session finale 2026-07-12)** :
+
+- **5 décisions Papa Yann FIGÉES** : ping audience journalière GARDÉ + flag logged_in (CNIL mitigé par transparence) · espace parents sobre (gate 3s + question adulte) · auteur.html UID Papa Yann seul · retours autres parents = digests Claude/Telegram · confidentialite.html lien depuis compte.html + hub suivi.
+- **Migrations Supabase 006-007 appliquées** : table pings + RLS anon INSERT-only · migration 007 = RLS parent auteur figée (seul UID 9efd6921 lit pings sur auteur.html).
+- **game-conseiller tour de garde** : duel/lecture flaggés `tool:true` (exclus dashboard Max) · pagehide <10s sans réponse = pas une partie (correctionlogique) · message reset honnête "données perdues ou non envoyées".
+- **Tests verts** : E2E gate 3s vert (appui long, mauvaise réponse bloquée, entrée OK) · smoke 4 pages vert · matrice RLS pings testée curl (201/409/401/select vide).
+- **Dettes documentées** : spec catalog obsolète (mj-01 absente, à retirer) · spec mj-01 FAIL pré-existant (stars) · mj32_galerie ≈512Ko limit · advisors RLS (future).
+
+**État au reboot** :
+- Cloud Phase 1 LIVRABLE (RLS fonctionne, E2E vert).
+- Prochaine étape : audit specs cassées (EP-048) + figeage dettes catalog + validation Papa Yann 3 appareils + sync.
+- **Blocage** : réelle recette e2e enfant (Papa Yann test) + sync multi-devices.
+
+---
+
 ## 2026-07-12 — Cloud Supabase + Sync Annotations (commit bce5aca8)
 
 **Owner** : Développement backend Cloud (game-dev) · game-pmo (log + tickets)

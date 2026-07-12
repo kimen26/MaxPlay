@@ -4,6 +4,52 @@
 
 ---
 
+## 2026-07-13 — DEC-INSTRUMENT-DUEL-RETRAIT : Outil duel retiré du pipeline (papa Yann)
+
+**Auteur (Papa Yann)** : décision 2026-07-13 après évaluation opérationnelle vagues 4-5 STORY-002.
+
+**Contexte** : instrument duel lancé 2026-07-03 en complément de la lecture annotée. Post-usage STORY-002 : Papa Yann estime que la lecture annotée couvre l'essentiel du signal goût ; duel devient optionnel et consomme du temps.
+
+**Décision tranchée** :
+
+1. **DUEL retiré du pipeline par défaut** — N'est plus chargé automatiquement dans `site/lecture.html`. Reste disponible **optionnellement** si arbitrage serré observé (2 candidates très proches post-lecture).
+2. **Source 'duel' conservée** — Archive historique des duels STORY-002 vagues 4-5 reste dans Supabase (table `annotations`, source='duel'). Pas d'effacement.
+3. **Espace disque** : `site/duel.html` et `site/duel-data.js` **archivés dans `_archive/site-duel/`** avec INDEX expliquant la décision + lien source Supabase.
+4. **Pipeline avant STORY-003** : étape 5-6 = lecture annotée seule (DEC-DOCTRINE-INSTRUMENT-LECTURE, 2026-07-08 confirmée).
+
+**Fichiers impactés** :
+- ✅ `_archive/site-duel/INDEX.md` (créé) — historique, raison retrait, accès Supabase source
+- ✅ `_archive/site-duel/duel.html` + `duel-data.js` (archivés)
+- ✅ Commit 1b0653af — feat(lecture): corpus top 3 vague 6 pour lecture annotee + retrait outil duel
+
+**Statut** : **FIGÉE 2026-07-13. Duel optionnel, lecture seule avant STORY-003.**
+
+---
+
+## 2026-07-13 — VAGUE 6 CHARGEMENT : Site/lecture-data.js refondu top 3 panel v2 STORY-002
+
+**Auteur (PMO Narration, execution Papa Yann vague 6)** : action 2026-07-13 post-décision lecture prioritaire.
+
+**Contexte** : vague 6 STORY-002 lancée 2026-07-10 avec 14 writers nouveaux briefs QUALITÉS. Panel v2 (12 lecteurs) produit 12 verdicts anonymisés. Papa Yann va annoter par passages courts.
+
+**Action exécutée** :
+
+1. **Sélection top 3** parmi les 12 versions : claude-sonnet-def 3.0 / claude-opus-reco 5.5 / claude-sonnet-reco 5.67 (meilleurs scores panel v2 vague 6).
+2. **Charge `site/lecture-data.js`** : 3 versions anonymisées (T1/T2/T3), ordre mélangé, chips v3 intégrées, format segments-courts supporté (ex. fragments 50-100 mots tapables).
+3. **Format compatible** : JSON existant `renderChips()`, pas de changement UI.
+4. **Les 11 autres versions** : conservées dans `stories/002.../_archive/vague-6-writers-full/` + git history.
+
+**Fichiers impactés** :
+- 🔄 `site/lecture-data.js` (charge top 3 au lieu des 14)
+- 📁 `stories/002.../_archive/vague-6-writers-full/` (conserve les 11 autres)
+- ✅ Commit 1b0653af — feat(lecture): corpus top 3 vague 6 pour lecture annotee + retrait outil duel
+
+**État après action** : Papa Yann annote sur `site/lecture.html` (chips + passages) → JSON export → Directeur ingère dans memoire-papa-yann.md → palmarès + notes étape 6 sélection vague 6.
+
+**Statut** : **Opérationnel 2026-07-13. File : 002 ⏳ → 003 (prêt brainstorm).**
+
+---
+
 ## 2026-07-08 — DEC-DOCTRINE-INSTRUMENT-LECTURE : Lecture annotée = instrument PRINCIPAL (papa Yann)
 
 **Auteur (Papa Yann)** : validation opérationnelle 2026-07-08 — après vagues 4-5 STORY-002.

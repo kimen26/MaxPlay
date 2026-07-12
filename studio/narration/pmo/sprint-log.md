@@ -6,6 +6,26 @@
 
 ---
 
+## 2026-07-13 — Décisions Papa Yann : duel retrait + top 3 vague 6 chargé
+
+**Décisions Papa Yann (validées synchrone)** :
+
+1. **DEC-INSTRUMENT-DUEL-RETRAIT FIGÉE** — Outil duel ne charge plus par défaut. Archive `_archive/site-duel/` + source Supabase conservée (table annotations, historique vagues 4-5). Optionnel en arbitrage post-lecture si 2 candidates très proches.
+
+2. **VAGUE 6 top 3 CHARGÉ** — `site/lecture-data.js` remplacé : 3 versions anonymisées (T1/T2/T3) meilleures du panel v2 (sonnet-def 3.0 / opus-reco 5.5 / sonnet-reco 5.67). Les 11 autres archivées `stories/002.../_archive/vague-6-writers-full/`. Format segments-courts/passages supporté.
+
+3. **SUITE = RÉCURRENCE** — Papa Yann demandera chargement top 3 des meilleures versions STORY-003→008 au fur et à mesure, format court passages (en attente brainstorm + étape 4 writers).
+
+**État au reboot** :
+- ✅ 2 décisions figées datées et enregistrées dans `decisions.md`
+- ✅ Commit 1b0653af validé (retrait duel, top 3 vague 6 chargé)
+- ⏳ STORY-002 étape 5-V6 : Papa Yann annotera sur `site/lecture.html` → JSON export → Directeur ingère → étape 6 sélection
+- ⏳ STORY-003/004/005 brainstorm lancés, top 3 writers loadés STORY-003 si SLA validé (3 jours depuis 2026-07-11 = expire 2026-07-14 23:59)
+- ⏳ Panel v2 calibration ONE-SHOT (ticket TEST-PANEL-CALIBRATION, SLA 2026-07-15) — si PASS, peux lancer panel complet 003→008
+- 🔴 **Quota Kimi gratuit épuisé** — 4 writers manquants (kimi-reco-guide ×3 + kimi-reco 008). À remontrer 2026-07-18 ou switch permanent deepseek. Ticket ARCHI-008 (réduction casting post-évaluation) dépend de cette résolution.
+
+---
+
 ## 2026-07-12 (nuit) — Captage duel/lecture → Supabase (fin du copier-coller JSON)
 
 **Fait (commit bce5aca8, pôle JEU exécutant)** : duel.html et lecture.html poussent automatiquement leur payload JSON complet dans la table Supabase `annotations` (projet WexWorld, sources 'duel'/'lecture', dédup par hash de contenu) dès qu'un compte parent est connecté. Textarea copier-coller conservé en fallback hors connexion.

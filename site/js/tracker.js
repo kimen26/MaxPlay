@@ -40,8 +40,10 @@ const Tracker = (() => {
     'mj-18': { name: 'Tubes de couleurs',     emoji: '🧪', skill: 'Logique / planification' },
     'mj-19': { name: 'Trouve le bus',         emoji: '🎯', skill: 'Attention visuelle' },
     'mj-20': { name: 'Compte en huit langues', emoji: '🌐', skill: 'Langues / nombres' },
-    'duel':    { name: 'Duel',    emoji: '⚔️', skill: 'Choix / préférences' },
-    'lecture': { name: 'Lecture', emoji: '📖', skill: 'Module lecture' },
+    // tool:true = outil PARENT (tracké pour le cloud, EXCLU du dashboard
+    // progression de Max — tour de garde game-conseiller 2026-07-12)
+    'duel':    { name: 'Duel',    emoji: '⚔️', skill: 'Outil parent', tool: true },
+    'lecture': { name: 'Lecture', emoji: '📖', skill: 'Outil parent', tool: true },
   };
 
   // ── Lecture / écriture localStorage ────────────────────────────────────
@@ -243,9 +245,12 @@ const Tracker = (() => {
   // endSession() explicitement ont déjà _session = null → no-op.
   // pagehide est plus fiable que beforeunload sur mobile / iOS Safari.
   window.addEventListener('pagehide', () => {
-    if (_session) {
-      endSession(_session.correct, _session.questions);
-    }
+    if (!_session) return;
+    // Ouverture-éclair sans aucune réponse ≠ partie : Max qui tape ← en
+    // 5 secondes ne doit pas gonfler plays/maîtrise (garde 2026-07-12).
+    const heldMs = Date.now() - _session.startTime;
+    if (heldMs < 10000 && _session.questions === 0) { _session = null; return; }
+    endSession(_session.correct, _session.questions);
   });
 
   return { startSession, endSession, logAnswer, getStats: load, exportJSON, importJSON, GAME_META };

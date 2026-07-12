@@ -179,7 +179,7 @@ html,body { font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; min
     document.getElementById('btn-unlock-all').onclick = () => setAll(true);
     document.getElementById('btn-progression').onclick = () => setAll(false);
     document.getElementById('btn-reset-all').onclick = () => {
-      if (!confirm('Tout réinitialiser : progression, étoiles et déblocages ?')) return;
+      if (!confirm('Tout réinitialiser ?\n\nEfface : progression, étoiles, déblocages, langues et série mj-20, mj-37.\nConservé : les dessins de Max (galerie coloriage) et les commentaires.')) return;
       // maxplay_stars retirée (clé morte — étoiles dérivées par stars.js depuis toujours)
       ['maxplay_progress', 'maxplay_unlocks', 'mj20_progress', 'mj20_streak',
        'mj37_progress', 'maxplay_sync_meta'].forEach(k => localStorage.removeItem(k));
@@ -277,7 +277,8 @@ function scoreClass(rate) {
 function render() {
   const data = Tracker.getStats();
   const meta = Tracker.GAME_META;
-  const gameIds = Object.keys(data.games);
+  // Outils parent (duel, lecture — meta.tool) exclus de la progression de Max
+  const gameIds = Object.keys(data.games).filter(id => !(meta[id] && meta[id].tool));
 
   if (gameIds.length === 0) {
     document.getElementById('empty-state').classList.add('visible');
@@ -324,7 +325,7 @@ function render() {
 
   allIds.forEach(id => {
     const m  = meta[id];
-    if (!m) return;
+    if (!m || m.tool) return;
     const g  = data.games[id];
     const mastery = g?.mastery || 'nouveau';
     const rate = g && g.totalQuestions ? pct(g.correctAnswers, g.totalQuestions) : null;
@@ -377,6 +378,7 @@ function render() {
   actEl.innerHTML = '';
 
   const recent = [...data.sessions]
+    .filter(s => !(Tracker.GAME_META[s.gameId] && Tracker.GAME_META[s.gameId].tool))
     .reverse()
     .slice(0, 15);
 

@@ -223,7 +223,11 @@ const Tracker = (() => {
   // changement — le mode dégradé freemium reste intact.
   (function loadCloudLayer() {
     try {
-      if (!localStorage.getItem('maxplay_active_child')) return;
+      // Profil enfant actif OU session parent seule (sb-*) — le parent sans
+      // profil sélectionné doit quand même pousser duel/lecture/annotations.
+      const hasChild = !!localStorage.getItem('maxplay_active_child');
+      const hasParentSession = Object.keys(localStorage).some(k => k.startsWith('sb-'));
+      if (!hasChild && !hasParentSession) return;
       if (window.Cloud) return;
       ['js/cloud.js', 'js/voices-manifest.js', 'js/voice.js'].forEach(src => {
         const s = document.createElement('script');

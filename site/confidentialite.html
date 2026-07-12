@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>MaxPlay — Vie privée</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+    body { background:#1a1a2e; font-family:'Nunito',system-ui,sans-serif; color:#fff; min-height:100dvh; }
+    #app { max-width:680px; margin:0 auto; padding-bottom:40px; }
+    .hdr {
+      display:flex; align-items:center; gap:10px;
+      padding:6px 12px;
+      background:rgba(0,0,0,0.25);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+    .hdr a {
+      color:#fff; text-decoration:none; font-size:1.3rem;
+      background:rgba(255,255,255,0.12); border-radius:8px;
+      padding:4px 10px; font-weight:900; flex-shrink:0;
+    }
+    .htitle { flex:1; font-size:1rem; font-weight:900; }
+    .card {
+      background:rgba(255,255,255,0.06); border-radius:16px;
+      padding:18px; margin:14px 12px 0;
+      line-height:1.55; font-size:0.95rem;
+    }
+    .card h2 { font-size:1.05rem; margin-bottom:8px; }
+    .card ul { margin:8px 0 0 18px; }
+    .card li { margin-bottom:6px; }
+    .ok { color:#7ee2a8; font-weight:700; }
+    .no { color:#ff9d9d; font-weight:700; }
+    .muted { opacity:0.6; font-size:0.82rem; margin-top:8px; }
+  </style>
+</head>
+<body>
+<div id="app">
+
+  <div class="hdr">
+    <a href="suivi.html">&#8592;</a>
+    <span class="htitle">🔒 Vie privée — en toute transparence</span>
+  </div>
+
+  <div class="card">
+    <h2>Le principe</h2>
+    MaxPlay est un jeu fait par un papa pour son fils. Pas de pub, pas de vente de données,
+    pas de traqueurs tiers. Tout fonctionne <b>sans compte</b> — le compte est optionnel et
+    n'apporte que du confort (sauvegarde multi-appareils, vraies voix).
+  </div>
+
+  <div class="card">
+    <h2>Sans compte (par défaut)</h2>
+    <ul>
+      <li><span class="ok">Sur la tablette uniquement</span> : progression des jeux, étoiles,
+        dessins, réglages. Rien ne quitte l'appareil.</li>
+      <li><span class="ok">Mesure d'audience anonyme</span> : un identifiant aléatoire
+        (généré sur l'appareil, jamais relié à une personne) nous dit chaque jour
+        « un appareil a ouvert le jeu ». C'est tout. Ça nous sert à savoir si 5 ou
+        5&nbsp;000 familles utilisent MaxPlay.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Avec un compte parent</h2>
+    <ul>
+      <li><b>Votre email</b> (parent) — uniquement pour la connexion par lien magique. Pas de mot de passe.</li>
+      <li><b>Un surnom par enfant</b> — jamais son vrai nom, ni âge, ni photo :
+        <span class="no">zéro donnée personnelle enfant</span>.</li>
+      <li><b>La progression des jeux</b> — sauvegardée pour la retrouver sur tous vos appareils.</li>
+      <li><b>Vos commentaires</b> — vous pouvez noter un avis sur chaque jeu (bouton 💬)
+        ou un retour général : bugs, idées, ce qui plaît à votre enfant. Ils ne sont
+        visibles que par vous et par nous.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Vos droits</h2>
+    <ul>
+      <li>Supprimer le compte = tout s'efface (profils, progression, commentaires), immédiatement.</li>
+      <li>Les données restent en Europe (serveurs en Irlande, Union européenne).</li>
+      <li>Une question ? Le bouton 💬 nous parvient directement.</li>
+    </ul>
+    <div class="muted">Dernière mise à jour : 12 juillet 2026.</div>
+  </div>
+
+</div>
+</body>
+</html>

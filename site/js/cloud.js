@@ -346,7 +346,17 @@
 
   // ── Sync ────────────────────────────────────────────────────────────────
   async function syncNow() {
-    if (!hasActiveChild()) return false;
+    // Parent connecté SANS profil enfant : on pousse quand même les
+    // annotations (💬, notes de revue, duel/lecture) — le reste attend un profil.
+    if (!hasActiveChild()) {
+      if (!_session) return false;
+      const c0 = await _getClient();
+      try { await _flushAnnotations(c0); } catch (e) {}
+      _lastSync = new Date().toISOString();
+      _emit();
+      return true;
+    }
+
     const c = await _getClient();
     const childId = activeChild().id;
 
@@ -374,9 +384,9 @@
   }
 
   // Push débouncé — appelé par tracker.js après chaque sauvegarde.
-  // No-op total si pas de compte / pas d'enfant actif / offline.
+  // No-op total si pas de compte du tout / offline.
   function schedulePush() {
-    if (!hasActiveChild()) return;
+    if (!hasActiveChild() && !_session) return;
     clearTimeout(_pushTimer);
     _pushTimer = setTimeout(() => { syncNow().catch(() => {}); }, PUSH_DELAY);
   }

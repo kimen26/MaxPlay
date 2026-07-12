@@ -15,6 +15,8 @@
   }
   function save(list) {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); } catch(e) {}
+    // Sync cloud (table annotations) si compte parent actif — no-op sinon
+    try { window.Cloud && window.Cloud.schedulePush(); } catch(e) {}
   }
 
   function detectGameId() {

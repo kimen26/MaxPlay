@@ -180,7 +180,9 @@ html,body { font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; min
     document.getElementById('btn-progression').onclick = () => setAll(false);
     document.getElementById('btn-reset-all').onclick = () => {
       if (!confirm('Tout réinitialiser : progression, étoiles et déblocages ?')) return;
-      ['maxplay_progress', 'maxplay_stars', 'maxplay_unlocks'].forEach(k => localStorage.removeItem(k));
+      // maxplay_stars retirée (clé morte — étoiles dérivées par stars.js depuis toujours)
+      ['maxplay_progress', 'maxplay_unlocks', 'mj20_progress', 'mj20_streak',
+       'mj37_progress', 'maxplay_sync_meta'].forEach(k => localStorage.removeItem(k));
       location.reload();
     };
     paint();

@@ -157,6 +157,7 @@
     <button class="btn-ok" style="width:100%;padding:14px;border:none;border-radius:12px;font-weight:700;margin-top:10px;cursor:pointer" onclick="copier()">📋 Copier le JSON</button>
   </div>
 
+<script src="js/tracker.js"></script>
 <script src="lecture-data.js"></script>
 <script>
 var D = window.LECTURE_DATA;
@@ -370,6 +371,14 @@ function terminer() {
   document.getElementById('json').value = JSON.stringify(payload, null, 1);
   document.getElementById('liste').classList.add('hidden');
   document.getElementById('final').classList.remove('hidden');
+  // Envoi cloud automatique (table annotations) — le copier-coller devient le fallback
+  if (window.Cloud) {
+    Cloud.pushAnnotation('lecture', document.getElementById('json').value, 'lecture')
+      .then(function (ok) {
+        if (ok) document.getElementById('resume-final').textContent += ' — ☁️ envoyé à Claude, plus besoin de copier !';
+      })
+      .catch(function () {});
+  }
 }
 
 function copier() {

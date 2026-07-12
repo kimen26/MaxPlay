@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>MaxPlay — Espace auteur</title>
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+    body { background:#1a1a2e; font-family:'Nunito',system-ui,sans-serif; color:#fff; min-height:100dvh; }
+    #app { max-width:680px; margin:0 auto; padding-bottom:40px; }
+    .hdr {
+      display:flex; align-items:center; gap:10px;
+      padding:6px 12px;
+      background:rgba(0,0,0,0.25);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+    .hdr a {
+      color:#fff; text-decoration:none; font-size:1.3rem;
+      background:rgba(255,255,255,0.12); border-radius:8px;
+      padding:4px 10px; font-weight:900; flex-shrink:0;
+    }
+    .htitle { flex:1; font-size:1rem; font-weight:900; }
+    .card { background:rgba(255,255,255,0.06); border-radius:16px; padding:16px; margin:14px 12px 0; }
+    .card h2 { font-size:1rem; margin-bottom:10px; }
+    .stats { display:flex; gap:10px; flex-wrap:wrap; }
+    .stat { flex:1; min-width:110px; background:rgba(0,0,0,0.25); border-radius:12px; padding:12px; text-align:center; }
+    .stat .val { font-size:1.6rem; font-weight:900; }
+    .stat .lbl { font-size:0.72rem; opacity:0.6; }
+    .filters { display:flex; gap:6px; flex-wrap:wrap; margin-bottom:10px; }
+    .filters button {
+      background:rgba(255,255,255,0.1); border:none; color:#fff; border-radius:10px;
+      padding:6px 12px; font-family:inherit; font-weight:700; font-size:0.8rem; cursor:pointer;
+    }
+    .filters button.on { background:#5b8fff; }
+    .ann { background:rgba(0,0,0,0.25); border-radius:12px; padding:10px 12px; margin-bottom:8px; }
+    .ann .top { display:flex; gap:8px; font-size:0.75rem; opacity:0.65; margin-bottom:4px; }
+    .ann .src { font-weight:900; }
+    .ann pre {
+      white-space:pre-wrap; word-break:break-word; font-family:inherit;
+      font-size:0.88rem; line-height:1.4; max-height:220px; overflow:auto;
+    }
+    .msg { padding:24px; text-align:center; opacity:0.7; line-height:1.5; }
+  </style>
+</head>
+<body>
+<div id="app">
+
+  <div class="hdr">
+    <a href="suivi.html">&#8592;</a>
+    <span class="htitle">✍️ Espace auteur</span>
+  </div>
+
+  <div id="locked" class="msg">Réservé à l'auteur. Connecte-toi avec le compte auteur via
+    <a href="compte.html" style="color:#8fb6ff">Compte</a>.</div>
+
+  <div id="content" style="display:none">
+    <div class="card">
+      <h2>📈 Audience (appareils uniques)</h2>
+      <div class="stats">
+        <div class="stat"><div class="val" id="st-today">–</div><div class="lbl">aujourd'hui</div></div>
+        <div class="stat"><div class="val" id="st-month">–</div><div class="lbl">30 jours</div></div>
+        <div class="stat"><div class="val" id="st-logged">–</div><div class="lbl">dont connectés (30 j)</div></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>📝 Annotations &amp; retours</h2>
+      <div class="filters" id="filters">
+        <button data-src="" class="on">Tout</button>
+        <button data-src="lecture">📖 Lecture</button>
+        <button data-src="duel">⚔️ Duel</button>
+        <button data-src="comment">💬 Jeux</button>
+        <button data-src="review">🆕 Revue</button>
+      </div>
+      <div id="list"><div class="msg">Chargement…</div></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+(async function () {
+  const SUPABASE_URL = 'https://bfrugwrzpefsaehsvypt.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_njKrpyff3NSIcNsEocRdVw_JAYW8WCx'; // publique (RLS)
+  // UID du compte auteur — simple interrupteur d'affichage : la vraie
+  // protection est la RLS (chaque parent ne voit que SES lignes, et
+  // seuls ce compte peut lire les pings — migration 007).
+  const AUTHOR_UID = '9efd6921-e9d0-49f4-9452-2edd64315e60';
+
+  // SDK à la demande (même CDN que cloud.js)
+  await new Promise((ok, ko) => {
+    if (window.supabase) return ok();
+    const s = document.createElement('script');
+    s.src = 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js';
+    s.onload = ok; s.onerror = ko;
+    document.head.appendChild(s);
+  }).catch(() => {});
+  if (!window.supabase) return;
+
+  const c = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  const { data } = await c.auth.getSession();
+  const session = data && data.session;
+  if (!session || session.user.id !== AUTHOR_UID) return; // reste sur "Réservé à l'auteur"
+
+  document.getElementById('locked').style.display = 'none';
+  document.getElementById('content').style.display = '';
+
+  // ── Audience ────────────────────────────────────────────────────────────
+  try {
+    const since = new Date(Date.now() - 30 * 864e5).toISOString().slice(0, 10);
+    const today = new Date().toISOString().slice(0, 10);
+    const { data: pings } = await c.from('pings')
+      .select('device_hash, day, logged_in').gte('day', since);
+    if (pings) {
+      const uniq = new Set(pings.map(p => p.device_hash));
+      const uniqToday = new Set(pings.filter(p => p.day === today).map(p => p.device_hash));
+      const uniqLogged = new Set(pings.filter(p => p.logged_in).map(p => p.device_hash));
+      document.getElementById('st-today').textContent = uniqToday.size;
+      document.getElementById('st-month').textContent = uniq.size;
+      document.getElementById('st-logged').textContent = uniqLogged.size;
+    }
+  } catch (e) {}
+
+  // ── Annotations ─────────────────────────────────────────────────────────
+  let all = [];
+  try {
+    const { data: rows } = await c.from('annotations')
+      .select('game_id, source, text, created_at')
+      .order('created_at', { ascending: false }).limit(300);
+    all = rows || [];
+  } catch (e) {}
+
+  const SRC_LABEL = { lecture: '📖 lecture', duel: '⚔️ duel', comment: '💬 jeu', review: '🆕 revue' };
+  function esc(s) { return String(s).replace(/[&<>]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[ch])); }
+
+  function renderList(src) {
+    const list = document.getElementById('list');
+    const items = src ? all.filter(a => a.source === src) : all;
+    if (!items.length) { list.innerHTML = '<div class="msg">Rien ici pour l\'instant.</div>'; return; }
+    list.innerHTML = items.map(a => {
+      const d = new Date(a.created_at);
+      const dateStr = d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' }) + ' ' +
+                      d.toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' });
+      let body = a.text;
+      // Payloads duel/lecture = JSON → affichage indenté lisible
+      if (a.source === 'duel' || a.source === 'lecture') {
+        try { body = JSON.stringify(JSON.parse(a.text), null, 1); } catch (e) {}
+      }
+      return '<div class="ann"><div class="top"><span class="src">' + (SRC_LABEL[a.source] || a.source) +
+        '</span><span>' + esc(a.game_id || '') + '</span><span>' + dateStr + '</span></div>' +
+        '<pre>' + esc(body) + '</pre></div>';
+    }).join('');
+  }
+  renderList('');
+
+  document.getElementById('filters').addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    document.querySelectorAll('#filters button').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    renderList(b.dataset.src);
+  });
+})();
+</script>
+</body>
+</html>

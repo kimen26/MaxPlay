@@ -154,6 +154,27 @@ html,body { font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; min
 
 <div id="page">
 
+  <!-- Hub parent : outils & infos (regroupés ici derrière la porte parents) -->
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;">
+    <a class="hdr-btn" href="duel.html" style="text-decoration:none">⚔️ Duel de goût</a>
+    <a class="hdr-btn" href="lecture.html" style="text-decoration:none">📖 Lecture annotée</a>
+    <a class="hdr-btn" href="confidentialite.html" style="text-decoration:none">🔒 Vie privée</a>
+    <a class="hdr-btn" href="auteur.html" id="lnk-auteur" style="text-decoration:none;display:none">✍️ Auteur</a>
+  </div>
+  <script>
+  // Lien Auteur affiché seulement pour le compte auteur (RLS protège de toute façon)
+  (function () {
+    try {
+      const k = Object.keys(localStorage).find(x => x.startsWith('sb-') && x.endsWith('-auth-token'));
+      if (!k) return;
+      const tok = JSON.parse(localStorage.getItem(k));
+      const uid = tok && tok.user && tok.user.id;
+      if (uid === '9efd6921-e9d0-49f4-9452-2edd64315e60')
+        document.getElementById('lnk-auteur').style.display = '';
+    } catch (e) {}
+  })();
+  </script>
+
   <!-- Console parent : déblocage des jeux -->
   <div id="admin-console" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:16px;margin-bottom:22px;">
     <div style="font-weight:900;font-size:0.95rem;margin-bottom:4px;">🔧 Console parent</div>

@@ -133,8 +133,34 @@
 
   <footer>
     🚌 Fait avec ❤️ pour Max
-    <br><a href="suivi.html">📊 Suivi parental</a> · <a href="duel.html">⚔️ Duel de goût</a> · <a href="lecture.html">📖 Lecture annotée</a> · <a href="compte.html">👨‍👩‍👦 Compte</a>
+    <br><button id="parents-btn" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.15);
+      color:rgba(255,255,255,0.7);border-radius:12px;padding:8px 18px;font-family:inherit;font-weight:700;
+      font-size:0.85rem;cursor:pointer;margin-top:6px;">👨‍👩‍👦 Espace parents</button>
   </footer>
+
+  <!-- Porte parents : appui 3 s + question d'adulte (friction enfant, pas sécurité) -->
+  <div class="modal" id="gate-modal" aria-hidden="true">
+    <div class="modal-box">
+      <div class="m-emoji">👨‍👩‍👦</div>
+      <h3>Espace parents</h3>
+      <div id="gate-step1">
+        <p>Maintiens le bouton appuyé 3 secondes :</p>
+        <button id="gate-hold" class="btn-go" style="width:100%;position:relative;overflow:hidden;">
+          <span id="gate-hold-fill" style="position:absolute;left:0;top:0;bottom:0;width:0%;background:rgba(255,255,255,0.25);transition:none;"></span>
+          <span style="position:relative;">Appuie et maintiens…</span>
+        </button>
+      </div>
+      <div id="gate-step2" style="display:none;">
+        <p>Combien font <b>sept fois quatre</b> ?</p>
+        <input type="number" id="gate-answer" inputmode="numeric" placeholder="?"
+          style="width:100%;padding:12px;font-size:1.2rem;text-align:center;border:3px solid #d5d5e5;border-radius:14px;color:#333;outline:none;">
+        <div class="modal-actions">
+          <button class="btn-cancel" id="gate-cancel">Annuler</button>
+          <button class="btn-go" id="gate-ok">Entrer</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Modale code (déverrouillage par mot-clé — local, aucun compte) -->
   <div class="modal" id="code-modal" aria-hidden="true">
@@ -337,6 +363,44 @@
     jingle.volume = 0.5;
     document.addEventListener('click', function once() { jingle.play().catch(() => {}); document.removeEventListener('click', once); }, { once: true });
     jingle.play().catch(() => {});
+
+    // ── Porte parents : appui 3 s puis question d'adulte ──────────────────
+    (function () {
+      const modal = document.getElementById('gate-modal');
+      const step1 = document.getElementById('gate-step1');
+      const step2 = document.getElementById('gate-step2');
+      const hold  = document.getElementById('gate-hold');
+      const fill  = document.getElementById('gate-hold-fill');
+      const answer = document.getElementById('gate-answer');
+      let holdStart = null, raf = null;
+
+      document.getElementById('parents-btn').addEventListener('click', () => {
+        step1.style.display = ''; step2.style.display = 'none';
+        fill.style.width = '0%'; answer.value = '';
+        modal.classList.add('show');
+      });
+      modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('show'); });
+      document.getElementById('gate-cancel').addEventListener('click', () => modal.classList.remove('show'));
+
+      function tick() {
+        const p = Math.min(1, (Date.now() - holdStart) / 3000);
+        fill.style.width = (p * 100) + '%';
+        if (p >= 1) { step1.style.display = 'none'; step2.style.display = ''; setTimeout(() => answer.focus(), 50); return; }
+        raf = requestAnimationFrame(tick);
+      }
+      function startHold(e) { e.preventDefault(); holdStart = Date.now(); raf = requestAnimationFrame(tick); }
+      function stopHold() { cancelAnimationFrame(raf); fill.style.width = '0%'; }
+      hold.addEventListener('pointerdown', startHold);
+      hold.addEventListener('pointerup', stopHold);
+      hold.addEventListener('pointerleave', stopHold);
+
+      function tryEnter() {
+        if (answer.value.trim() === '28') { location.href = 'suivi.html'; }
+        else { answer.value = ''; answer.placeholder = 'Essaie encore…'; }
+      }
+      document.getElementById('gate-ok').addEventListener('click', tryEnter);
+      answer.addEventListener('keydown', e => { if (e.key === 'Enter') tryEnter(); });
+    })();
   })();
   </script>
 </body>

@@ -19,6 +19,7 @@ anonyme = voix robot Web Speech ("la dame"). Fallback automatique si MP3 absent.
 | Fichier | Rôle |
 |---|---|
 | `migrations/001_init.sql` | Schéma : `child_profiles` (max 6/parent), `progression`, `consents` (log RGPD/COPPA immuable), `feedback` (asynchrone) — RLS partout |
+| `migrations/003..005` (✅ appliquées 2026-07-12 via MCP) | `game_sessions` (1 ligne/partie, append-only, suivi/debug requêtable) · `child_state` (sync clé-valeur : unlocks, avatar, langue, états mj-20/32/37, pose-tiles) · `annotations` (💬 comments + notes revue + payloads duel/lecture — fin du copier-coller JSON) |
 | `site/js/cloud.js` | Client : auth, profils, sync local-first (merge par jeu : `plays` monotone gagne ; sessions dédupliquées, cap 200) |
 | `site/js/voice.js` | Patch transparent de `TTS.speak` → MP3 premium si connecté, sinon original |
 | `site/js/voices-manifest.js` | Catalogue `texte normalisé → mp3` (V0 vide, à remplir au fil de la prod audio) |

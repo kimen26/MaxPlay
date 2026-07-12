@@ -9,6 +9,27 @@
 
 ---
 
+## 2026-07-12 — Cloud Supabase + Sync Annotations (commit bce5aca8)
+
+**Owner** : Développement backend Cloud (game-dev) · game-pmo (log + tickets)
+
+**Trigger** : Implémentation 3 tables Supabase WexWorld + sync annotations (duel/lecture) → cloud native.
+
+**Fait (session night 2026-07-12)** :
+
+- **Migrations Supabase 003–005 appliquées** : `game_sessions` (append-only parties, dédup child_id+game_id+played_at), `child_state` (sync clé-valeur whitelist 8 champs), `annotations` (sources review/duel/lecture, dédup parent_id+client_key). RLS parent figé.
+- **site/js/cloud.js** : `_syncStates`, `_flushSessions`, `_flushAnnotations` + API `Cloud.pushAnnotation()` intégré.
+- **duel.html & lecture.html** : tracker GAME_META + envoi cloud auto payload JSON final (copier-coller fallback).
+- **suivi.html** : clé morte `maxplay_stars` retirée, reset élargi.
+- **Décision Papa Yann validée** : fin copier-coller JSON — tout échange table Supabase.
+
+**État au reboot** :
+- Cloud ready pour duel/lecture (enregistrement auto serveur).
+- DETTES : spec index obsolète (mj-01 absente menu), spec mj-01 FAIL pré-existant (stars), mj32_galerie proche cap 512Ko, golden_stars_* risque incohérence, advisors RLS dettes.
+- Prochain : audit des specs cassées, figeage dettes catalog, prochain ticket Supabase (validation côté client).
+
+---
+
 ## 2026-07-08 — ÉTUDE ARCHI COMPTES + DÉCISIONS MÉTIER Papa Yann
 
 **Owner** : Papa Yann (décisions produit) · game-pmo (log + intégration)

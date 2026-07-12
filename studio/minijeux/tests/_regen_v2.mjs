@@ -7,14 +7,16 @@ const PROMPT=(name,pal,sig)=>`Sticker mascotte : bébé ${name} mignon, style cu
 const GROGNON=`Parfait ! Refais la même petite mascotte (même dessin, mêmes couleurs, même fond blanc uni) mais qui fait maintenant une tête grognon et boudeuse : sourcils un peu froncés, petite moue. Toujours mignonne, pas méchante.`;
 const FARCEUR=`Génial ! Et maintenant refais la même petite mascotte mais qui fait le clown : elle tire la langue et un œil qui cligne, très espiègle et rigolote.`;
 const DINOS=[
- // T-Rex : specs fiche Grokipedia interne — écailles galets, grosse tête ~1.5m, dents banane, petits bras, gris-brun ventre clair
- {id:'trex',name:'Tyrannosaure Rex',pal:'brun-sable chaud, brun foncé, beige (ventre)',sig:'GROSSE tête massive avec de nombreuses dents en banane, petits bras minuscules, corps massif bipède, longue queue rigide, peau à écailles en galets'},
- // Therizinosaurus : GROS ventre rond, plumage hirsute, petite tête à bec, long cou, ÉNORMES griffes-faux aux mains, allure de paresseux géant
- {id:'theri',name:'Therizinosaure',pal:'brun-plume chaud, brun foncé, crème',sig:'gros ventre tout rond couvert de plumes hirsutes, petite tête avec un bec, long cou, et surtout TROIS ÉNORMES GRIFFES en faux très longues et recourbées à chaque main (sa signature) — allure de paresseux géant à plumes, herbivore paisible'},
- // Parasaurolophus : longue crête tubulaire courbée en arrière (mâle), bec de canard plat, peau granuleuse
+ // Velociraptor : PETIT (taille dindon), emplumé, longue griffe-faucille RELEVÉE sur la patte arrière (2e orteil), gueule fine à dents, longue queue rigide
+ {id:'velo',name:'Vélociraptor',pal:'turquoise, turquoise foncé, crème (plumes)',sig:'petit dinosaure à plumes (taille d’un dindon), svelte, gueule fine avec petites dents, longue queue rigide, et surtout une GRIFFE EN FAUCILLE relevée bien visible sur le 2e orteil de chaque patte arrière (sa signature), quelques plumes sur les bras'},
+ // Centrosaurus : UNE grande corne sur le NEZ (pas sur le front) + collerette courte à CROCHETS recourbés vers l'avant + 2 petites cornes au-dessus des yeux
+ {id:'centro',name:'Centrosaure',pal:'vert-brun, vert foncé, crème',sig:'UNE seule grande corne dressée sur le NEZ (sa signature), collerette courte bordée de deux gros crochets recourbés vers l’avant au sommet, deux petites cornes au-dessus des yeux, trapu à quatre pattes'},
+ // Spinosaurus : GRANDE voile dorsale en éventail, museau LONG et étroit de crocodile, dents coniques
+ {id:'spino',name:'Spinosaure',pal:'vert-brun, bordeaux (voile), crème (ventre)',sig:'GRANDE voile dorsale en éventail sur le dos (sa signature), long museau étroit de crocodile avec des dents coniques, bipède au corps allongé'},
+ // Stegosaurus : DOUBLE rangée de grandes plaques triangulaires sur le dos + petite tête + queue à PIQUANTS horizontaux (thagomizer)
+ {id:'stego',name:'Stégosaure',pal:'vert olive, vert foncé, crème (plaques)',sig:'double rangée de grandes plaques osseuses triangulaires dressées le long du dos (sa signature), petite tête, corps massif, et quatre longs piquants au bout de la queue, dos arqué'},
+ // Parasaurolophus : longue crête tubulaire creuse courbée en arrière, bec de canard plat
  {id:'paras',name:'Parasaurolophus',pal:'jaune-orangé, orange foncé, crème (ventre)',sig:'longue crête tubulaire creuse bien longue courbée vers l’arrière comme un tube (sa signature), museau plat de canard sans dents, bipède élancé'},
- // Pteranodon : GRANDE crête pointue effilée vers l'arrière, long bec sans dents, grandes ailes de peau repliées
- {id:'ptero',name:'Ptéranodon',pal:'beige-sable, brun foncé, crème (crête et bec)',sig:'GRANDE crête pointue en pointe effilée vers l’arrière de la tête (sa signature), long bec fin sans dents, grandes ailes de peau repliées, reptile volant'},
 ];
 const b=await chromium.connectOverCDP('http://127.0.0.1:9222');
 const ctx=b.contexts()[0]; let p=ctx.pages().find(x=>x.url().includes('chatgpt.com'))||await ctx.newPage();

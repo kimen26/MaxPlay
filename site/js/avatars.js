@@ -71,16 +71,13 @@ window.MAXPLAY_AVATARS = [
   "sub": "Vélociraptor",
   "moods": {
    "joyeux": [
-    "velo_joyeux_1.png",
-    "velo_joyeux_2.png"
+    "velo_joyeux_1.png"
    ],
    "enerve": [
-    "velo_enerve_1.png",
-    "velo_enerve_2.png"
+    "velo_enerve_1.png"
    ],
    "original": [
-    "velo_original_1.png",
-    "velo_original_2.png"
+    "velo_original_1.png"
    ]
   }
  },
@@ -90,16 +87,13 @@ window.MAXPLAY_AVATARS = [
   "sub": "Spinosaure",
   "moods": {
    "joyeux": [
-    "spino_joyeux_2.png",
-    "spino_joyeux_3.png"
+    "spino_joyeux_1.png"
    ],
    "enerve": [
-    "spino_enerve_2.png",
-    "spino_enerve_3.png"
+    "spino_enerve_1.png"
    ],
    "original": [
-    "spino_original_2.png",
-    "spino_original_3.png"
+    "spino_original_1.png"
    ]
   }
  },
@@ -205,12 +199,10 @@ window.MAXPLAY_AVATARS = [
   "sub": "Centrosaure",
   "moods": {
    "joyeux": [
-    "centro_joyeux_2.png",
-    "centro_joyeux_3.png",
-    "centro_joyeux_4.png"
+    "centro_joyeux_1.png"
    ],
    "enerve": [
-    "centro_enerve_2.png"
+    "centro_enerve_1.png"
    ],
    "original": [
     "centro_original_1.png"

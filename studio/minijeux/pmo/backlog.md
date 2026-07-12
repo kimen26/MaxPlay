@@ -83,6 +83,9 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 ### L-090 – Anonymité + Transparence = CNIL mitigé par clarté
 **Audience (2026-07-12)** : mesure journalière ping (user_id anon + game_id + outcome) — zone grise CNIL (enfant <4 ans = analytics théoriquement interdite). **Mitigation** : page confidentialite.html exhaustive (FR humain) linked depuis compte.html, affichage clair "pings enregistrés ce jour". Assomption : transparence > masquage complet. **Leçon** : pour zones réglementaires ambigues, transparence + choix parental = meilleure défense légale que dissimulation.
 
+### L-091 – Dino-pips en constellation de dé préservent le subitizing (mj-43)
+**MJ-43 création (2026-07-13)** : Jeu maths regroupement/addition. Pips du dé = mini-dinosaures ombre chinoise. **Leçon critère** : constellation de dé (1 centre, 2 diagonale, 6 double-colonne, etc.) JAMAIS éparpillée aléatoire — nuance fondamentale subitizing. Max reconnaît la FORME (pattern de 3, 5, 6 dés instantanément par constellation) vs. décodage pixel-per-pixel (lent, non-pédago). Validation Papa Yann 2026-07-13 : *« des mini mini dino en ombre chinoise »* implicite = constellation respected. **Règle gravée** : tout pip-set dino = respect layout dé canon, jamais artistic scatter.
+
 ### L-080 – Banque sons = doc maître unique, API centralisée immuable
 **Audio (2026-07-06)** : refonte système sonore complet. **Leçon** : source de vérité = `site/sounds/_BANQUE-SONS.md` (lire AVANT générer/brancher audio — carte des dossiers + API + process + reste). API statique : `victory-sounds.js` (SoundPool.play/voice/phrase, chargé par tous les MJ → 1 fichier upgrade tout) + `dinos-audio-manifest.js` (playDinoNom). Tout branchement MJ utilise ces 2 fichiers + garde un fallback TTS. Zéro chiffre audio en dur ailleurs.
 **MJ-28..33 (2026-07-05)** : 2 agents piégés (mj-29 fabrique noms étymo, mj-32 coloriage flood fill) par erreur `DINOS is not defined`. Root cause : script utilise `const DINOS` en scope module, pas `window.DINOS`. **Leçon** : pour partage données inter-scripts vanilla, hoister constante à niveau global AVANT premier usage (ou assigner explicite `window.DINOS = {...}`). Valider avec `console.log(window.DINOS)` au démarrage.
@@ -1920,6 +1923,27 @@ MaxPlay V0
 3. **T-762** : Appliquer à toutes les figées ouvertes (EP-070 + autres).
 
 **Raison** : figée fausse = bottleneck critère. Validation contre du vent.
+
+---
+
+## EP-077 – MJ-43 + MJ-44 créés 2026-07-13 (maths dominos + phonologie sons)
+
+**Statut** : `[~]` **EN COURS** — harnais vert 2026-07-13, validation ressenti Papa Yann en cours
+
+**Priorité** : 🟢 **HAUTE** — 2 mini-jeux pédagogiquement robustes, nouvelle catégorie
+
+**Contexte** : Session 2026-07-13 — 2 nouveaux jeux créés + testés harnais :
+- **MJ-43 "Remplis les caisses !"** : Maths (regroupement/addition). Max remplit caisses au bon compte avec dés+dominos. Pips = dino-ombres chinoises en constellation. Escalade ★1→★3 (cibles 3-6→12-15, regroupement 3 dés ou 2 dominos). Zéro pénalité (rebond doux débordement), undo libre.
+- **MJ-44 "La boîte à sons"** : Phonologie (tri par son). Max range cartes-mots dans boîtes-sons. Audio guidé (click mot=lit, click boîte=dit le son). Phonème pur (te/me/le/re + ou/a). Escalade ★1→★3 (initial simple → confus → voyelle mid-mot). Zéro pénalité, undo libre.
+
+**À faire** :
+1. **T-770** : Validation ressenti Papa Yann sur GitHub Pages (2-3 sessions)
+2. **T-771** : Éventuelles corrections minage (pédago, UI polish)
+3. **T-772** : Déploiement définitif + mise à jour INVARIANTS (count jeux live)
+
+**Attaché** : Figeages mj-43.md + mj-44.md gravées 2026-07-13 ; leçon L-091 enregistrée
+
+**Impact** : Nouveaux 2 mini-jeux dans catégories « Compter » (mj-43) + « Lire » (mj-44)
 
 ---
 

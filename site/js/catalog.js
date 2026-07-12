@@ -38,6 +38,7 @@ window.MAXPLAY_CATALOG = [
   { id:'mj-13c', category:'compter',  titre:'Combien avant ?',      emoji:'🔢', desc:'Compte les bus avant celui demandé !',url:'mj-13c.html', type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
   { id:'mj-05',  category:'compter',  titre:'La bonne place',       emoji:'🪑', desc:'Combien peuvent encore monter ?',     url:'mj-05.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
   { id:'mj-35',  category:'nouveaux', homeCat:'compter',  titre:'Le jeu des graines',   emoji:'🌱', desc:'Sème les graines, compte-les au grenier !', url:'mj-35.html', type:'html', orientation:'any',   access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },
+  { id:'mj-43',  category:'nouveaux', homeCat:'compter',  titre:'Remplis les caisses',  emoji:'📦', desc:'Range les dés et les dominos jusqu\'au bon compte !', url:'mj-43.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },
 
   // ─── 🎨 Couleurs ───
   { id:'mj-09',  category:'couleurs', titre:'Trie les bus !',       emoji:'🗂️', desc:'Range-les dans leur famille de couleur !',url:'mj-09.html',type:'html', orientation:'landscape', access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
@@ -47,6 +48,7 @@ window.MAXPLAY_CATALOG = [
   // ─── 🔤 Lire ───
   { id:'mj-06',  category:'lire',     titre:'Lis la phrase',        emoji:'📖', desc:'Quel mot manque dans la phrase ?',    url:'mj-06.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
   { id:'mj-23',  category:'lire',     titre:'Lis le mot',           emoji:'🔤', desc:'Lis le mot, trouve la bonne image !',url:'mj-23.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
+  { id:'mj-44',  category:'nouveaux', homeCat:'lire',     titre:'La boîte à sons',      emoji:'🔤', desc:'Range chaque mot dans la boîte de son son !', url:'mj-44.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:'tts', status:'live' },
 
   // ─── 🧩 Logique ───
   { id:'mj-13a', category:'logique',  titre:'Le premier bus',       emoji:'🥇', desc:'Quel bus arrive en premier ?',       url:'mj-13a.html', type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },

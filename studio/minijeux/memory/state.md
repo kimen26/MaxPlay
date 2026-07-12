@@ -16,7 +16,7 @@ type: project
 
 ## État déploiement (mis à jour à chaque ajout/retrait MJ)
 
-**40 jeux status:live** (39 live + 1 wip=dinos) : mj-04–06, mj-08–09, mj-11–13a/c, mj-15–21, mj-23–42, max-adventure, mj-pose-tiles, dinos-encyclopedie. **Mise à jour 2026-07-06** : +9 MJ jour (mj-34..42 : Rush Hour, Kalah, Bus Jam, Échecs, Dames, Block Blast, Tangram, Mahjong, Shisima), -3 MJ jour (mj-01/14/13b retirés), +3 MJ nuit retravaillés (mj-34/35/36).
+**42 jeux status:live** (41 live + 1 wip=dinos) : mj-04–06, mj-08–09, mj-11–13a/c, mj-15–21, mj-23–44, max-adventure, mj-pose-tiles, dinos-encyclopedie. **Mise à jour 2026-07-13** : +2 MJ nouveaux (mj-43 : Remplis les caisses mathématiques, mj-44 : Boîte à sons phonologie), harnais vert, validation ressenti en cours.
 
 **Retirés du menu** : mj-01, mj-02, mj-03, mj-07, mj-10, mj-13b, mj-14 (conservés fichiers)
 

@@ -199,6 +199,8 @@
       const all = cmtAll();
       if (txt && txt.trim()) all[id] = txt.trim(); else delete all[id];
       localStorage.setItem(CMT_KEY, JSON.stringify(all));
+      // Sync cloud (table annotations, source 'review') — no-op sans compte
+      try { window.Cloud && window.Cloud.schedulePush(); } catch (e) {}
     }
 
     // ── Rendu ────────────────────────────────────────────────────────────

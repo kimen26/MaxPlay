@@ -40,6 +40,8 @@ const Tracker = (() => {
     'mj-18': { name: 'Tubes de couleurs',     emoji: '🧪', skill: 'Logique / planification' },
     'mj-19': { name: 'Trouve le bus',         emoji: '🎯', skill: 'Attention visuelle' },
     'mj-20': { name: 'Compte en huit langues', emoji: '🌐', skill: 'Langues / nombres' },
+    'duel':    { name: 'Duel',    emoji: '⚔️', skill: 'Choix / préférences' },
+    'lecture': { name: 'Lecture', emoji: '📖', skill: 'Module lecture' },
   };
 
   // ── Lecture / écriture localStorage ────────────────────────────────────

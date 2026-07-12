@@ -147,6 +147,7 @@
     <button class="valider" onclick="copier()">📋 Copier le JSON</button>
   </div>
 
+<script src="js/tracker.js"></script>
 <script src="duel-data.js"></script>
 <script>
 (function(){
@@ -281,6 +282,14 @@ function terminer() {
   };
   document.getElementById('json').value = JSON.stringify(payload, null, 1);
   document.getElementById('ecran-final').classList.remove('hidden');
+  // Envoi cloud automatique (table annotations) — le copier-coller devient le fallback
+  if (window.Cloud) {
+    Cloud.pushAnnotation('duel', document.getElementById('json').value, 'duel')
+      .then(function (ok) {
+        if (ok) document.getElementById('resume').textContent += ' — ☁️ envoyé à Claude, plus besoin de copier !';
+      })
+      .catch(function () {});
+  }
 }
 
 function copier() {

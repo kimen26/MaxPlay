@@ -30,6 +30,16 @@
   const CHILD_KEY    = 'maxplay_active_child';  // { id, nickname }
   const PUSH_DELAY   = 5000;
 
+  // Clés localStorage synchronisées dans child_state (whitelist — migration 003).
+  // Valeurs stockées telles quelles côté serveur : { v: "<string brute>" }.
+  const STATE_KEYS = [
+    'maxplay_unlocks', 'maxplay_avatar', 'maxplay_avatar_cfg', 'maxplay_lang',
+    'mj20_progress', 'mj20_streak', 'mj37_progress', 'mj32_galerie', 'mj-pose-tiles',
+  ];
+  // Méta de sync locale : { states: { clé: hash dernière valeur synchro },
+  //                         lastSessionPush: ISO } — jamais poussée au cloud.
+  const SYNC_META_KEY = 'maxplay_sync_meta';
+
   let _client = null;
   let _session = null;
   let _pushTimer = null;
@@ -194,6 +204,146 @@
     return out;
   }
 
+  // ── Sync état par clé (child_state) ─────────────────────────────────────
+  function _hash(s) {
+    if (s === null || s === undefined) return null;
+    let h = 5381;
+    for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0;
+    return String(h) + ':' + s.length;
+  }
+
+  function _syncMeta() {
+    try { return JSON.parse(localStorage.getItem(SYNC_META_KEY)) || {}; } catch (e) { return {}; }
+  }
+  function _saveSyncMeta(m) {
+    try { localStorage.setItem(SYNC_META_KEY, JSON.stringify(m)); } catch (e) {}
+  }
+
+  // Baseline sync : local modifié depuis la dernière synchro → local gagne ;
+  // local inchangé mais cloud différent → on adopte le cloud (autre appareil).
+  async function _syncStates(c, childId) {
+    const { data: rows, error } = await c.from('child_state')
+      .select('key, data').eq('child_id', childId);
+    if (error) throw error;
+    const remote = {};
+    (rows || []).forEach(r => { remote[r.key] = (r.data && typeof r.data.v === 'string') ? r.data.v : null; });
+
+    const meta = _syncMeta();
+    const states = { ...(meta.states || {}) };
+    const toPush = [];
+
+    STATE_KEYS.forEach(k => {
+      const local = localStorage.getItem(k);
+      const rem   = (k in remote) ? remote[k] : null;
+      const lH = _hash(local), rH = _hash(rem), base = states[k];
+
+      if (local !== null && lH !== base && lH !== rH) {
+        toPush.push({ child_id: childId, key: k, data: { v: local } });
+        states[k] = lH;
+      } else if (rem !== null && rH !== lH) {
+        try { localStorage.setItem(k, rem); states[k] = rH; } catch (e) {}
+      } else if (lH === rH && lH !== null) {
+        states[k] = lH;
+      }
+    });
+
+    if (toPush.length) {
+      const { error: upErr } = await c.from('child_state').upsert(toPush);
+      if (upErr) throw upErr;
+    }
+    _saveSyncMeta({ ...meta, states });
+  }
+
+  // ── Flush sessions → game_sessions (append-only, dédup serveur) ─────────
+  async function _flushSessions(c, childId) {
+    let progress = null;
+    try { progress = JSON.parse(localStorage.getItem(PROGRESS_KEY)); } catch (e) {}
+    if (!progress || !Array.isArray(progress.sessions)) return;
+
+    const meta = _syncMeta();
+    const last = meta.lastSessionPush || '';
+    const fresh = progress.sessions.filter(s => s.date && s.date > last);
+    if (!fresh.length) return;
+
+    // correct/questions vivent dans games[*].history (même date) — jointure locale
+    const detail = {};
+    Object.keys(progress.games || {}).forEach(gid => {
+      (progress.games[gid].history || []).forEach(h => { detail[gid + '|' + h.date] = h; });
+    });
+
+    const rows = fresh.map(s => {
+      const h = detail[s.gameId + '|' + s.date] || {};
+      return {
+        child_id: childId, game_id: s.gameId, played_at: s.date,
+        score: s.score ?? null, max_score: s.maxScore ?? null,
+        correct: h.correct ?? null, questions: h.questions ?? null,
+        duration_s: s.duration ?? null,
+      };
+    });
+    const { error } = await c.from('game_sessions')
+      .upsert(rows, { onConflict: 'child_id,game_id,played_at', ignoreDuplicates: true });
+    if (error) throw error;
+    const maxDate = fresh.reduce((m, s) => (s.date > m ? s.date : m), last);
+    _saveSyncMeta({ ..._syncMeta(), lastSessionPush: maxDate });
+  }
+
+  // ── Flush annotations (💬 comments.js + notes de revue index.html) ──────
+  async function _flushAnnotations(c) {
+    if (!_session) return;
+    const childId = activeChild() ? activeChild().id : null;
+    const rows = [];
+
+    try {
+      (JSON.parse(localStorage.getItem('maxplay_comments')) || []).forEach(cm => {
+        if (!cm.text) return;
+        rows.push({
+          parent_id: _session.user.id, child_id: childId, game_id: cm.gameId || null,
+          source: 'comment', text: String(cm.text).slice(0, 4000),
+          client_key: 'c|' + (cm.gameId || '?') + '|' + (cm.date || '?'),
+        });
+      });
+    } catch (e) {}
+
+    try {
+      const reviews = JSON.parse(localStorage.getItem('maxplay_review_comments')) || {};
+      Object.keys(reviews).forEach(gid => {
+        const txt = String(reviews[gid] || '').trim();
+        if (!txt) return;
+        rows.push({
+          parent_id: _session.user.id, child_id: childId, game_id: gid,
+          source: 'review', text: txt.slice(0, 4000),
+          client_key: 'r|' + gid + '|' + _hash(txt),
+        });
+      });
+    } catch (e) {}
+
+    if (!rows.length) return;
+    const { error } = await c.from('annotations')
+      .upsert(rows, { onConflict: 'parent_id,client_key', ignoreDuplicates: true });
+    if (error) throw error;
+  }
+
+  // ── Envoi direct d'un payload outil (duel, lecture…) ────────────────────
+  // Remplace le copier-coller JSON : le résultat part en table annotations,
+  // lisible par Claude via MCP. Dédup par hash du contenu.
+  async function pushAnnotation(source, text, gameId) {
+    if (!_session) return false;
+    const c = await _getClient();
+    const child = activeChild();
+    const body = String(text || '');
+    if (!body.trim()) return false;
+    const { error } = await c.from('annotations').upsert([{
+      parent_id: _session.user.id,
+      child_id: child ? child.id : null,
+      game_id: gameId || source,
+      source,
+      text: body.slice(0, 100000),
+      client_key: source + '|' + _hash(body),
+    }], { onConflict: 'parent_id,client_key', ignoreDuplicates: true });
+    if (error) throw error;
+    return true;
+  }
+
   // ── Sync ────────────────────────────────────────────────────────────────
   async function syncNow() {
     if (!hasActiveChild()) return false;
@@ -212,6 +362,11 @@
     const { error: upErr } = await c.from('progression')
       .upsert({ child_id: childId, data: merged });
     if (upErr) throw upErr;
+
+    // Étapes non-critiques : un échec n'invalide pas la sync progression
+    try { await _syncStates(c, childId); } catch (e) {}
+    try { await _flushSessions(c, childId); } catch (e) {}
+    try { await _flushAnnotations(c); } catch (e) {}
 
     _lastSync = new Date().toISOString();
     _emit();
@@ -232,7 +387,7 @@
     init, isConnected, hasActiveChild, status,
     signIn, verifyCode, signOut,
     listChildren, createChild, setActiveChild, activeChild,
-    syncNow, schedulePush, onChange,
+    syncNow, schedulePush, pushAnnotation, onChange,
     _merge, // exposé pour les tests uniquement
   };
 

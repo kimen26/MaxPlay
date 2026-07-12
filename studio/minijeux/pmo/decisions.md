@@ -22,6 +22,28 @@
 
 ---
 
+## 2026-07-12 — Mesure audience + espace parents (commits ea21d603 + f48966d8 + d7632997)
+
+**Contexte** : Papa Yann décisions finales Phase 1 cloud (déploiement 3 migrations Supabase 006-007, RLS parent authoritative, espace auteur figé). Session game-conseiller tour de garde : 3 corrections infra (duel/lecture tool:true, pagehide < 10s, reset honnête).
+
+**Décisions figées** :
+
+1. **Mesure d'audience journalière** : ping anonyme GARDÉ avec flag `logged_in` (assumé malgré zone grise CNIL signalée par game-conseiller — mitigé par transparence). Table `pings`, RLS anon INSERT-only du jour, migration 006 appliquée.
+
+2. **Espace parents** : « assumé mais sobre » — bouton footer index → gate appui 3 s + question adulte (7×4=28) → suivi.html hub parent (duel, lecture, vie privée, auteur). Outils retirés footer public.
+
+3. **Espace auteur** : auteur.html réservé Papa Yann (UID figé + RLS ; migration 007). Stats audience 30 j + annotations filtrables. PAS distribué autres parents.
+
+4. **Retours autres parents** : pas modération live — digests Claude/MCP à la demande (via Telegram bot).
+
+5. **Transparence** : confidentialite.html (FR humain) liée depuis compte.html + hub suivi (affichage clair données récoltées).
+
+**État** : ✅ Phase 1 light COMPLÉTÉE (migrations 006-007 déployées, E2E gate vert, smoke 4 pages vert, RLS pings testée curl). **Blocage** : EP-048 recette réelle e2e (Papa Yann test 3 appareils + sync).
+
+**Raison** : cadre légal transparent (CNIL) + sécurité data enfant maintenue + retours parents isolés = confiance adoptants.
+
+---
+
 ## 2026-07-08 — Étude archi comptes + 11 décisions métier Papa Yann
 
 **Contexte** : Papa Yann a validé l'étude d'architecture comptes/profils (main agent 2026-07-08) et émis 11 décisions figées.

@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>MJ-12 – Nouveaux sons</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&family=Fredoka+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; }
     body {
       font-family: 'Nunito', sans-serif;
-      background: linear-gradient(160deg, #1a0a2e, #2d1b4e, #1a0a2e);
       min-height: 100dvh;
       display: flex;
       flex-direction: column;
@@ -42,7 +42,7 @@
       cursor: pointer;
       flex-shrink: 0;
     }
-    .cabin-title   { color:#fff; font-size:1rem; font-weight:900; }
+    .cabin-title   { color:var(--ink); font-family:'Fredoka One',cursive; font-size:1rem; font-weight:400; }
     .cabin-subtitle{ display:none; }
 
     /* Dashboard */
@@ -56,7 +56,7 @@
     }
 
     .group-label {
-      color: rgba(255,255,255,0.5);
+      color: var(--ink-3);
       font-size: 0.72rem;
       font-weight: 900;
       text-transform: uppercase;
@@ -454,6 +454,8 @@
   </div>
 
   <script src="js/sounds.js"></script>
+  <script src="js/mp-theme.js"></script>
+  <script src="js/celebrations.js"></script>
   <script>
     // ─── Sons synthétisés (ex MJ-10) ─────────────────────────────────────────────
     const SYNTH_FNS = {

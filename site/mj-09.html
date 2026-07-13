@@ -4,13 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>MJ-09 – Trie les bus !</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none; }
 
     body {
       font-family: 'Nunito', sans-serif;
-      background: linear-gradient(160deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
       height: 100dvh;
       overflow: hidden;
       touch-action: none;
@@ -18,14 +18,7 @@
 
     #app { display:flex; flex-direction:column; height:100dvh; max-width:1000px; margin:0 auto; }
 
-    /* Header */
-    .hdr {
-      display:flex; align-items:center; padding:8px 14px; flex-shrink:0;
-      background:rgba(255,255,255,0.08); border-bottom:1px solid rgba(255,255,255,0.1);
-    }
-    .back { color:#fff; text-decoration:none; font-size:1.4rem; margin-right:10px; padding:4px 8px; border-radius:8px; }
-    .back:active { background:rgba(255,255,255,0.2); }
-    .htitle { color:#fff; font-size:1.1rem; font-weight:900; flex:1; }
+    #levelbar { font-weight:900; color:var(--gold); background:var(--gold-soft); border-radius:10px; padding:3px 12px; font-size:0.85rem; }
 
     /* Progress */
     .scorebar { padding:6px 14px; background:rgba(0,0,0,0.2); flex-shrink:0; }
@@ -130,7 +123,7 @@
     }
     .parade-overlay.show { opacity:1; visibility:visible; }
 
-    .parade-title { font-size:2.2rem; color:#ffe066; font-weight:900; margin-bottom:8px; text-align:center; }
+    .parade-title { font-size:2.2rem; color:var(--gold); font-weight:900; margin-bottom:8px; text-align:center; }
     .parade-sub { font-size:1.1rem; color:#fff; opacity:0.8; margin-bottom:24px; text-align:center; }
 
     /* Familles défilé */
@@ -159,12 +152,12 @@
     .parade-btn.secondary { background:rgba(255,255,255,0.15); color:#fff; }
   </style>
 </head>
-<body>
+<body data-ambiance="nuit">
 <div id="app">
   <div class="hdr">
     <a href="index.html" class="back">←</a>
     <span class="htitle">🗂️ Trie les bus !</span>
-    <span id="levelbar" style="font-weight:900;color:#ffe066;background:rgba(255,255,255,0.14);border-radius:10px;padding:3px 12px;font-size:0.85rem;">Niveau 1</span>
+    <span id="levelbar">Niveau 1</span>
   </div>
   <div class="scorebar">
     <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
@@ -195,6 +188,8 @@
 <script src="js/catalog.js"></script>
 <script src="js/stars.js"></script>
 <script src="js/drag-drop.js"></script>
+<script src="js/mp-theme.js"></script>
+<script src="js/celebrations.js"></script>
 <script>
   // ─── MJ-09 : Trie les bus ! ───
   // Pool : 26 bus Max + 39 métros/RER/tramways = ~65 véhicules
@@ -542,6 +537,7 @@ function highlightBox(bus) {
     bus.el.classList.add('parked');
     sndOk();
     setTimeout(() => speakLine(bus.line), 150);
+    if (window.MaxFX) { const cnt = document.getElementById('busCount'); if (cnt) MaxFX.markPoint(bus.el, cnt, { style:'bounce', result:'green' }); }
 
     // Ajouter mini-bus dans la boîte
     const parkedZone = document.getElementById('parked-' + box.id);
@@ -562,6 +558,7 @@ function highlightBox(bus) {
         a.volume = 0.85;
         a.play().catch(() => {});
         confettiBurst(60); showParade();
+        if (window.MaxFX) { const ov = document.getElementById('paradeOverlay'); MaxFX.finalStar(ov, { style:'cinematic', label:'SANS-FAUTE !' }); }
       }, 600);
     }
   }

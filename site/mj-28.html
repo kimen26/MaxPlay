@@ -4,11 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>MJ-28 – La lampe du paléontologue</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&family=Fredoka+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
-    #app { background: #050505; }
-
     /* ─── Zone de fouille dans le noir ─── */
     .dig-wrap {
       position: relative; margin: 8px auto; width: 100%; max-width: 560px;
@@ -117,6 +116,8 @@
   <script src="js/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
   <script src="js/dinos-audio-manifest.js"></script>
+  <script src="js/mp-theme.js"></script>
+  <script src="js/celebrations.js"></script>
   <script>
     // ─── MJ-28 — La lampe du paléontologue ───
     // Ecran noir, halo de lumiere suit le doigt et revele une ombre chinoise.
@@ -280,13 +281,14 @@
         btn.classList.add('ok'); score += res.points;
         streak = res.streakInc ? streak + 1 : 0;
         revealWin(target);
-        G.notePip(qCount - 1, res.attempts);
+        G.notePip(qCount - 1, res.attempts, btn);
         setTimeout(nextQuestion, 2400);
       } else if (res.outcome === 'reveal'){
         btn.classList.add('ko'); btn.disabled = true; streak = 0;
         QcmRetry.revealCorrect(document.getElementById('choices'));
         revealWin(target);
-        sndBuzz(); G.notePip(qCount - 1, 4);
+        const okEl = document.querySelector('.name-btn[data-correct="1"]');
+        sndBuzz(); G.notePip(qCount - 1, 4, okEl);
         setTimeout(nextQuestion, 2600);
       } else {
         btn.classList.add('ko'); btn.disabled = true; streak = 0;

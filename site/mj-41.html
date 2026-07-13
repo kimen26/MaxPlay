@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>MJ-41 – Les tuiles dinos</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&family=Fredoka+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
-    #app { background: linear-gradient(160deg,#1f3a2a,#0e2016); }
-    .instruction-text { text-align:center; font-size:1.05rem; font-weight:900; color:#ffe066; margin:6px 12px 2px; flex-shrink:0; }
+    .instruction-text { text-align:center; font-size:1.05rem; font-weight:900; color:var(--gold); margin:6px 12px 2px; flex-shrink:0; }
 
     .board-wrap {
       flex:1; position:relative; overflow:hidden;
@@ -72,7 +72,7 @@
     }
   </style>
 </head>
-<body>
+<body data-ambiance="nuit">
   <div id="app">
     <div class="hdr">
       <a href="index.html" class="back">&#8592;</a>
@@ -100,6 +100,8 @@
   <script src="js/dinos-i18n.js"></script>
   <script src="js/dinos-audio-manifest.js"></script>
   <script src="js/regle-info.js"></script>
+  <script src="js/mp-theme.js"></script>
+  <script src="js/celebrations.js"></script>
   <script>
     RegleInfo.init({ texte: "Trouve les 2 mêmes dinos sur les tuiles libres !", picto: "🀄🀄✨" });
   </script>
@@ -344,7 +346,7 @@
       const attempts = attemptsSinceLastPair === 0 ? 1
                       : attemptsSinceLastPair <= 2 ? 2
                       : attemptsSinceLastPair <= 4 ? 3 : 4;
-      G.notePip(pairIndex, attempts);
+      G.notePip(pairIndex, attempts, b.el);
       pairIndex++;
       attemptsSinceLastPair = 0;
       selected = [];

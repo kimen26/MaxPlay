@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MaxPlay — Atelier avatar</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+<style>
+  .page { max-width:480px; margin:0 auto; min-height:100vh; display:flex; flex-direction:column; }
+  /* vestiaire : les 3 DERNIERS avatars validés (stocker les 3 hex → déterministe) */
+  .vestiaire { display:flex; align-items:center; gap:4px; background:rgba(255,255,255,.05);
+               border:1px solid rgba(255,255,255,.09); border-radius:999px; padding:4px 7px; }
+  .vestiaire span { width:30px; height:30px; border-radius:50%; display:flex; align-items:center;
+                    justify-content:center; font-size:15px; cursor:pointer; }
+  /* onglets au-dessus du rond */
+  .onglets { display:flex; justify-content:center; gap:8px; padding:10px 0 2px; }
+  .onglet { border-radius:999px; padding:8px 16px; font-weight:900; font-size:13px; cursor:pointer;
+            background:rgba(255,255,255,.07); color:var(--ink-3); }
+  .onglet.on { background:var(--gold); color:var(--gold-ink); }
+  /* avatar + 3 pastilles couleurs actuelles (proches, sans crayon) */
+  .scene { display:flex; align-items:center; justify-content:center; gap:18px; padding:10px 0 2px; }
+  .big-avatar { width:150px; height:150px; border-radius:50%; border:4px solid var(--gold);
+                background:radial-gradient(circle at 35% 30%, var(--c2), var(--c1));
+                display:flex; align-items:center; justify-content:center; font-size:78px; }
+  .pastilles { display:flex; flex-direction:column; gap:8px; }
+  .pastilles span { width:27px; height:27px; border-radius:50%; border:2px solid rgba(255,255,255,.35); cursor:pointer; }
+  /* triplets (3 max, centrés, nom = émojis) */
+  .triplets { display:flex; justify-content:center; gap:8px; padding:12px 14px 8px; }
+  .triplet { border:2px solid transparent; background:rgba(255,255,255,.05); border-radius:12px;
+             padding:7px 9px; display:flex; flex-direction:column; gap:4px; align-items:center; cursor:pointer; }
+  .triplet.on { border-color:var(--accent); background:var(--accent-soft); }
+  .triplet .cc { display:flex; gap:4px; } .triplet .cc span { width:19px; height:19px; border-radius:7px; }
+  .triplet small { font-size:12px; }
+  /* nuancier double ligne — le 🎲 vit ICI (pas ailleurs) */
+  .nuancier { margin:2px 14px; background:var(--card); border:1px solid var(--line);
+              border-radius:var(--r-card); padding:12px; display:flex; flex-direction:column; gap:9px; }
+  .nuancier .t { font-size:12px; font-weight:900; color:var(--accent); }
+  .nuancier .g { display:grid; grid-template-columns:repeat(6,1fr); gap:8px; }
+  .nuancier .g span { aspect-ratio:1; border-radius:50%; cursor:pointer; }
+  /* mode retouche : fleur nid d'abeille (37 hexagones oklch) + neutres */
+  .retouche { display:none; }
+  .retouche.on { display:flex; flex-direction:column; gap:7px; }
+  .neutres { display:flex; justify-content:center; gap:7px; }
+  .neutres span { width:26px; height:26px; border-radius:8px; cursor:pointer; }
+  .footer { margin-top:auto; padding:10px 14px 16px; }
+</style>
+</head>
+<body data-ambiance="nuit" style="--c1:#2f6d3a; --c2:#8fe388; --c3:#e8ffd9">
+<div class="page">
+
+  <div class="mp-header">
+    <button class="mp-back" onclick="location.href='accueil.html'">←</button>
+    <div class="mp-title">Habille ton Dilo !</div>
+    <div class="vestiaire">
+      <span style="background:radial-gradient(circle at 35% 30%,#ff9ecf,#c74d8a)">🦕</span>
+      <span style="background:radial-gradient(circle at 35% 30%,#3ec6e0,#1a5e78)">🦕</span>
+      <span style="background:radial-gradient(circle at 35% 30%,#e8a06b,#7a3a1e)">🦕</span>
+    </div>
+  </div>
+
+  <div class="onglets">
+    <span class="onglet on">🦕 Mon dino</span>
+    <span class="onglet" onclick="alert('Onglet Ambiance : 6 tuiles (nuit/jungle/ville/espace/arcade/musée), le dino ACTUEL posé dans chaque tuile, un son signature au tap 🔊. Voir README.')">🌈 Mon ambiance</span>
+  </div>
+
+  <div class="scene">
+    <div class="big-avatar">🦕</div>
+    <div class="pastilles">
+      <span style="background:var(--c1)" onclick="modeRetouche(this)"></span>
+      <span style="background:var(--c2)" onclick="modeRetouche(this)"></span>
+      <span style="background:var(--c3)" onclick="modeRetouche(this)"></span>
+    </div>
+  </div>
+
+  <!-- MODE NORMAL : triplets de la teinte choisie -->
+  <div id="normal">
+    <div class="triplets">
+      <div class="triplet on"><div class="cc"><span style="background:#2f6d3a"></span><span style="background:#8fe388"></span><span style="background:#e8ffd9"></span></div><small>🥝 ✓</small></div>
+      <div class="triplet"><div class="cc"><span style="background:#0d4a3a"></span><span style="background:#2fbf8f"></span><span style="background:#ffd166"></span></div><small>🐢 🌻</small></div>
+      <div class="triplet"><div class="cc"><span style="background:#4a5e28"></span><span style="background:#a8c850"></span><span style="background:#f2ead8"></span></div><small>🥑 🦎</small></div>
+    </div>
+    <div class="nuancier">
+      <div class="t">Ta couleur ?</div>
+      <div class="g">
+        <span style="background:#e0655a"></span><span style="background:#f2a25c"></span><span style="background:#ffd166"></span>
+        <span style="background:#8fe388; border:3px solid #fff; box-sizing:border-box"></span><span style="background:#3ec6e0"></span><span style="background:#7fb4ff"></span>
+        <span style="background:#c9a4ff"></span><span style="background:#ff9ecf"></span><span style="background:#f2ead8"></span>
+        <span style="background:#8a5a3a"></span><span style="background:#5b6678"></span>
+        <span style="background:rgba(255,255,255,.08); display:flex; align-items:center; justify-content:center; font-size:14px">🎲</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODE RETOUCHE (tap sur une pastille) : fleur nid d'abeille -->
+  <div class="nuancier retouche" id="retouche">
+    <div class="row">
+      <span style="width:18px;height:18px;border-radius:50%;background:var(--c2);border:2px solid #fff"></span>
+      <span class="t grow" style="color:#fff">Change CETTE couleur :</span>
+      <span class="muted" style="cursor:pointer" onclick="modeNormal()">✕ annuler</span>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <svg width="196" height="176" viewBox="-95 -85 190 170" id="fleur"></svg>
+    </div>
+    <div class="neutres">
+      <span style="background:oklch(0.97 0.005 90)"></span><span style="background:oklch(0.88 0.03 80)"></span>
+      <span style="background:oklch(0.62 0.06 60)"></span><span style="background:oklch(0.45 0.04 50)"></span>
+      <span style="background:oklch(0.55 0.01 250)"></span><span style="background:oklch(0.3 0.01 250)"></span>
+    </div>
+    <div class="muted" style="text-align:center; font-size:10.5px">la fleur : vif au bord, doux au centre · bruns/gris en bas</div>
+  </div>
+
+  <div class="footer">
+    <button class="mp-btn-primary">C'est lui ! ✓</button>
+  </div>
+</div>
+
+<script>
+// ══ Fleur nid d'abeille : 37 hexagones oklch (jamais de gris boueux) ══
+(function () {
+  const svg = document.getElementById('fleur');
+  const S = 26, YS = 22.5, pts = '0,-14 12.1,-7 12.1,7 0,14 -12.1,7 -12.1,-7';
+  const rings = [
+    { hexes: [[0, 0]], L: .95, C: .02 },
+    { hexes: [[1,0],[0,1],[-1,1],[-1,0],[0,-1],[1,-1]], L: .88, C: .07 },
+    { hexes: [[2,0],[1,1],[0,2],[-1,2],[-2,2],[-2,1],[-2,0],[-1,-1],[0,-2],[1,-2],[2,-2],[2,-1]], L: .78, C: .13 },
+    { hexes: [[3,0],[2,1],[1,2],[0,3],[-1,3],[-2,3],[-3,3],[-3,2],[-3,1],[-3,0],[-2,-1],[-1,-2],[0,-3],[1,-3],[2,-3],[3,-3],[3,-2],[3,-1]], L: .66, C: .17 }
+  ];
+  rings.forEach(ring => ring.hexes.forEach(([q, r]) => {
+    const x = S * (q + r / 2), y = YS * r;
+    const hue = Math.round((Math.atan2(y, x) * 180 / Math.PI + 360) % 360);
+    const p = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+    p.setAttribute('points', pts);
+    p.setAttribute('transform', 'translate(' + x + ',' + y + ')');
+    p.setAttribute('fill', 'oklch(' + ring.L + ' ' + ring.C + ' ' + hue + ')');
+    p.style.cursor = 'pointer';
+    p.addEventListener('click', () => { // sélection : contour blanc
+      svg.querySelectorAll('polygon').forEach(o => o.removeAttribute('stroke'));
+      p.setAttribute('stroke', '#fff'); p.setAttribute('stroke-width', '3');
+    });
+    svg.appendChild(p);
+  }));
+})();
+// bascule normal ↔ retouche (même écran, jamais de navigation)
+function modeRetouche(pastille) {
+  document.getElementById('normal').style.display = 'none';
+  document.getElementById('retouche').classList.add('on');
+  // TODO intégration : faire clignoter la zone de l'avatar qui porte cette couleur
+}
+function modeNormal() {
+  document.getElementById('normal').style.display = '';
+  document.getElementById('retouche').classList.remove('on');
+}
+</script>
+</body>
+</html>

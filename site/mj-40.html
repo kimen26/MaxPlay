@@ -4,30 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>MJ-40 — Tangram des dinos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
     /* --- GABARIT HEADER CANONIQUE (ne pas inventer, copier tel quel) --- */
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
-    body { background:#1a1a2e; font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    body { font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
     #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
-    .hdr {
-      display:flex; align-items:center; gap:10px;
-      padding:6px 12px; flex-shrink:0;
-      background:rgba(0,0,0,0.25);
-      border-bottom:1px solid rgba(255,255,255,0.08);
-    }
-    .hdr a {
-      color:#fff; text-decoration:none; font-size:1.3rem;
-      background:rgba(255,255,255,0.12); border-radius:8px;
-      padding:4px 10px; font-weight:900; flex-shrink:0;
-    }
-    .hdr a:active { background:rgba(255,255,255,0.25); }
-    .htitle { flex:1; font-size:1rem; font-weight:900; }
     /* --- FIN GABARIT HEADER --- */
 
     @font-face { font-family:'Fredoka One'; src: local('Fredoka One'); }
 
     #stars-badge {
-      background:rgba(255,224,102,0.18); color:#ffe066; font-weight:900;
+      background:var(--gold-soft); color:var(--gold); font-weight:900;
       border-radius:16px; padding:4px 12px; font-size:0.9rem; flex-shrink:0;
     }
 
@@ -38,8 +27,9 @@
       background:rgba(255,255,255,0.1); border:2px solid transparent; color:#fff;
       font-family:'Fredoka One',sans-serif; font-weight:900; font-size:0.85rem;
       border-radius:14px; padding:6px 14px; cursor:pointer;
+      min-width:80px; min-height:44px;
     }
-    .tier-btn.active { background:rgba(255,224,102,0.25); border-color:#ffe066; color:#ffe066; }
+    .tier-btn.active { background:var(--gold-soft); border-color:var(--gold); color:var(--gold); }
 
     #instruction {
       text-align:center; font-size:clamp(0.75rem,2.6vmin,1rem); opacity:0.9; padding:0 10px 4px;
@@ -74,7 +64,7 @@
     .piece polygon, .piece path { stroke:rgba(0,0,0,0.35); stroke-width:0.06; stroke-linejoin:round; }
 
     #figure-name {
-      text-align:center; font-size:clamp(0.9rem,3vmin,1.3rem); font-weight:900; color:#ffe066;
+      text-align:center; font-size:clamp(0.9rem,3vmin,1.3rem); font-weight:900; color:var(--gold);
       padding:2px 8px; flex-shrink:0;
     }
 
@@ -84,15 +74,15 @@
       gap:16px; z-index:50; text-align:center; padding:20px;
     }
     #end-screen.visible { display:flex; }
-    #end-screen h2 { font-size:clamp(1.4rem,5vmin,2.2rem); color:#ffe066; }
+    #end-screen h2 { font-size:clamp(1.4rem,5vmin,2.2rem); color:var(--gold); }
     #end-screen button {
       font-family:'Fredoka One',sans-serif; font-size:1.1rem; font-weight:900;
-      background:#ffe066; color:#1a1a2e; border:none; border-radius:20px;
-      padding:12px 28px; cursor:pointer;
+      background:var(--gold); color:var(--gold-ink); border:none; border-radius:20px;
+      padding:12px 28px; cursor:pointer; min-height:56px; min-width:80px;
     }
   </style>
 </head>
-<body>
+<body data-ambiance="nuit">
 <div id="app">
 
   <div class="hdr">
@@ -126,6 +116,8 @@
 <script src="js/sounds.js"></script>
 <script src="js/victory-sounds.js"></script>
 <script src="js/regle-info.js"></script>
+<script src="js/mp-theme.js"></script>
+<script src="js/celebrations.js"></script>
 <script>
   RegleInfo.init({ texte: "Place les 7 pièces sur la silhouette ! Tape une pièce pour la tourner.", picto: "🔺👉🦕" });
 </script>

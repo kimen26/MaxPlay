@@ -4,21 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>🦺 Pose-tes-tiles - Petit Ouvrier 🚧</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/mp-theme.css">
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
   html, body { height: 100dvh; overflow: hidden; }
-  body { background: linear-gradient(180deg, #ffd166 0%, #ffb627 100%);
-         font-family: 'Comic Sans MS', 'Marker Felt', sans-serif; color: #2a2a4a;
+  body { font-family: 'Comic Sans MS', 'Marker Felt', sans-serif; color: var(--ink);
          display: flex; flex-direction: column;
          touch-action: manipulation; user-select: none; }
 
   /* ── En-tête compact ── */
   .topbar { display: flex; align-items: center; gap: 6px;
             padding: 4px 8px; flex-shrink: 0; }
-  .topbar h1 { font-size: 0.8rem; opacity: 0.65; flex: 1; }
+  .topbar h1 { font-size: 0.8rem; opacity: 0.85; flex: 1; color: var(--ink); }
   .topbar select { font-size: 0.78rem; font-family: inherit; border-radius: 6px;
-                   border: 2px solid #2a2a4a; padding: 2px 4px; background: #fff;
-                   color: #2a2a4a; cursor: pointer; flex-shrink: 0; }
+                   border: 2px solid var(--line); padding: 6px 4px; background: #fff;
+                   color: #2a2a4a; cursor: pointer; flex-shrink: 0; min-height: 32px; }
 
   /* ── Layout principal ── */
   .layout { display: flex; flex: 1; min-height: 0; gap: 8px; padding: 0 8px 8px; }
@@ -110,7 +111,7 @@
           flex-shrink: 0; }
 </style>
 </head>
-<body>
+<body data-ambiance="nuit">
 
 <div class="topbar">
   <a class="back" href="index.html">←</a>
@@ -507,6 +508,7 @@ buildTiles();
 buildGrid();
 </script>
 
+<script src="js/mp-theme.js"></script>
 <script src="js/sounds.js"></script>
 <script src="js/victory-sounds.js"></script>
 <script src="js/feedback.js"></script>

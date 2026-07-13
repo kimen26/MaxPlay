@@ -45,9 +45,9 @@
     s.textContent = `
       .mpc-btn {
         display:inline-flex; align-items:center; justify-content:center;
-        background:rgba(255,255,255,0.15); color:#fff; border:none;
-        width:44px; height:44px; border-radius:50%;
-        font-size:1.2rem; cursor:pointer; margin-left:6px;
+        background:rgba(255,255,255,0.09); color:#fff; border:none;
+        width:40px; height:40px; border-radius:50%;
+        font-size:16px; cursor:pointer; margin-left:6px;
         font-family:inherit;
       }
       .mpc-btn:hover { background:rgba(255,255,255,0.28); }

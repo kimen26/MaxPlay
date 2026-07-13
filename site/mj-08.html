@@ -6,7 +6,10 @@
   <title>MJ-08 – Le grand rangement</title>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
+    /* Thème CLAIR volontaire (bazar en désordre) — ne suit pas l'ambiance sombre
+       du design system (conflit signalé au rapport). body garde son fond hardcodé. */
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none; }
 
     body {
@@ -203,6 +206,7 @@
   <script src="js/victory-sounds.js"></script>
   <script src="js/feedback.js"></script>
   <script src="js/tracker.js"></script>
+  <script src="js/celebrations.js"></script>
   <script>
     // ─── MJ-08 : Le grand rangement ───
     // Tri multi-thèmes : un bazar d'objets éparpillés → glisser dans le bon bac.
@@ -583,6 +587,7 @@
       obj.el.classList.add('parked');
       sndPop();
       setTimeout(sndDing, 90);
+      if (window.MaxFX) { const cnt = document.getElementById('itemCount'); if (cnt) MaxFX.markPoint(obj.el, cnt, { style:'bounce', result:'green' }); }
 
       bin.el.classList.add('bump');
       setTimeout(() => bin.el.classList.remove('bump'), 320);

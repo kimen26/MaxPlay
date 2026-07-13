@@ -4,30 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>MJ-36 — Le bon bus !</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
-    /* --- GABARIT HEADER CANONIQUE (ne pas inventer, copier tel quel) --- */
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
-    body { background:#1a1a2e; font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    body { font-family:'Fredoka One',sans-serif; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
     #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
-    .hdr {
-      display:flex; align-items:center; gap:10px;
-      padding:6px 12px; flex-shrink:0;
-      background:rgba(0,0,0,0.25);
-      border-bottom:1px solid rgba(255,255,255,0.08);
-    }
-    .hdr a {
-      color:#fff; text-decoration:none; font-size:1.3rem;
-      background:rgba(255,255,255,0.12); border-radius:8px;
-      padding:4px 10px; font-weight:900; flex-shrink:0;
-    }
-    .hdr a:active { background:rgba(255,255,255,0.25); }
-    .htitle { flex:1; font-size:1rem; font-weight:900; }
-    /* --- FIN GABARIT HEADER --- */
 
     #stage {
       flex:1; position:relative; overflow:hidden;
-      background: linear-gradient(#1a1a2e 0%, #1a1a2e 55%, #2c2c44 55%, #2c2c44 100%);
+      background: linear-gradient(var(--bg0) 0%, var(--bg0) 55%, var(--card-2) 55%, var(--card-2) 100%);
       touch-action:none;
     }
 
@@ -96,7 +83,7 @@
     }
     #busStopZone .sign {
       width:34px; height:34px; border-radius:50%;
-      background:#0064B1; border:3px solid #fff;
+      background:var(--accent); border:3px solid #fff;
       display:flex; align-items:center; justify-content:center;
       font-size:1.1rem; margin-bottom:4px;
     }
@@ -144,7 +131,7 @@
     #bravoScreen {
       position:absolute; inset:0; display:none; flex-direction:column;
       align-items:center; justify-content:center; gap:16px;
-      background:rgba(20,20,40,0.94); z-index:20; text-align:center; padding:20px;
+      background:var(--bg0); z-index:20; text-align:center; padding:20px;
     }
     #bravoScreen.show { display:flex; }
     #bravoScreen h2 { font-size:2rem; }
@@ -152,14 +139,14 @@
     #bravoScreen .btns { display:flex; gap:14px; margin-top:10px; }
     .btn {
       font-family:'Fredoka One',sans-serif; font-size:1rem; font-weight:900;
-      color:#fff; background:#0064B1; border:none; border-radius:14px;
+      color:var(--accent-ink); background:var(--accent); border:none; border-radius:14px;
       padding:14px 22px; min-width:110px; min-height:56px;
     }
-    .btn:active { background:#004f8f; }
-    .btn.secondary { background:#555; }
+    .btn:active { opacity:0.8; }
+    .btn.secondary { background:rgba(255,255,255,0.12); color:var(--ink); }
   </style>
 </head>
-<body>
+<body data-ambiance="ville">
 <div id="app">
 
   <!-- HEADER — copier tel quel, changer uniquement l'emoji et le titre -->
@@ -206,6 +193,8 @@
   <script src="js/sounds.js"></script>
   <script src="js/victory-sounds.js"></script>
   <script src="js/regle-info.js"></script>
+  <script src="js/mp-theme.js"></script>
+  <script src="js/celebrations.js"></script>
   <script>
     RegleInfo.init({ texte: "Tape le bus de la même couleur que les passagers !", picto: "🧍🟦→🚌🟦" });
   </script>
@@ -354,6 +343,10 @@
         busy = true;
         wrapEl.classList.add('tap-good');
         sndDing();
+        if (window.MaxFX) {
+          const starEl = document.getElementById('st' + (palierIdx + 1));
+          MaxFX.markPoint(wrapEl, starEl, { style: 'bounce', result: 'green' });
+        }
         driveToStop(idx, ligne);
       } else {
         // MAUVAIS BUS — jamais de perte, feedback doux (klaxon interrogatif, pas de buzz négatif)
@@ -442,6 +435,9 @@
       bravoScreen.classList.add('show');
       SoundPool.play('victory', 0.85);
       busy = true;
+      if (window.MaxFX) {
+        MaxFX.finalStar(document.getElementById('app'), { style: isLast ? 'cinematic' : 'breathe', label: 'BRAVO !' });
+      }
     }
 
     document.getElementById('btnReplay').addEventListener('click', () => {

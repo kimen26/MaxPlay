@@ -5,38 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>MJ-34 — Le dépôt bloqué</title>
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
-    /* --- GABARIT HEADER CANONIQUE (ne pas inventer, copier tel quel) --- */
+    /* --- GABARIT DESIGN SYSTEM v1 (juillet 2026) ---
+       Le header .hdr est stylé par mp-theme.css (compat) : NE PAS redéclarer
+       .hdr/.htitle en local. NE PAS mettre de background sur body :
+       le fond vient de l'AMBIANCE (data-ambiance posé par mp-theme.js). */
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
-    body { background:#1a1a2e; font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    body { font-family:'Fredoka One',sans-serif; color:var(--ink); display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
     #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
-    .hdr {
-      display:flex; align-items:center; gap:10px;
-      padding:6px 12px; flex-shrink:0;
-      background:rgba(0,0,0,0.25);
-      border-bottom:1px solid rgba(255,255,255,0.08);
-    }
-    .hdr a {
-      color:#fff; text-decoration:none; font-size:1.3rem;
-      background:rgba(255,255,255,0.12); border-radius:8px;
-      padding:4px 10px; font-weight:900; flex-shrink:0;
-    }
-    .hdr a:active { background:rgba(255,255,255,0.25); }
-    .htitle { flex:1; font-size:1rem; font-weight:900; }
-    /* --- FIN GABARIT HEADER --- */
 
     .tierbar { display:flex; justify-content:center; gap:8px; padding:8px; flex-shrink:0; }
     .tier-pip {
       width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center;
       background:rgba(255,255,255,0.08); font-size:1.1rem; font-weight:900; border:2px solid rgba(255,255,255,0.15);
     }
-    .tier-pip.active { background:#ffd166; color:#1a1a2e; border-color:#ffd166; }
-    .tier-pip.done { background:#06d6a0; color:#013a2a; border-color:#06d6a0; }
+    .tier-pip.active { background:var(--gold,#ffd166); color:#1a1a2e; border-color:var(--gold,#ffd166); }
+    .tier-pip.done { background:var(--ok,#06d6a0); color:#013a2a; border-color:var(--ok,#06d6a0); }
 
     .level-pips { display:flex; justify-content:center; gap:10px; padding:2px 8px 6px; flex-shrink:0; }
     .lvl-pip { width:16px; height:16px; border-radius:50%; background:rgba(255,255,255,0.2); }
-    .lvl-pip.cur { background:#ffd166; box-shadow:0 0 8px #ffd16688; }
-    .lvl-pip.won { background:#06d6a0; }
+    .lvl-pip.cur { background:var(--gold,#ffd166); box-shadow:0 0 8px #ffd16688; }
+    .lvl-pip.won { background:var(--ok,#06d6a0); }
 
     .stage {
       flex:1; display:flex; align-items:center; justify-content:center;
@@ -44,7 +35,7 @@
     }
     .mission-banner {
       position:absolute; top:2px; left:50%; transform:translateX(-50%);
-      background:#ffd166; color:#1a1a2e; font-weight:900; font-size:.85rem;
+      background:var(--gold,#ffd166); color:#1a1a2e; font-weight:900; font-size:.85rem;
       padding:5px 14px; border-radius:0 0 10px 10px; z-index:15; text-align:center;
       box-shadow:0 3px 8px rgba(0,0,0,0.35); pointer-events:none;
       opacity:0; transition:opacity .3s;
@@ -81,7 +72,7 @@
 
     .exit-arrow {
       position:absolute; display:flex; align-items:center; justify-content:center;
-      font-size:1.6rem; color:#ffd166; pointer-events:none; animation:arrowPulse 1s ease-in-out infinite;
+      font-size:1.6rem; color:var(--gold,#ffd166); pointer-events:none; animation:arrowPulse 1s ease-in-out infinite;
     }
     @keyframes arrowPulse { 0%,100%{ transform:translateX(0); opacity:.7; } 50%{ transform:translateX(6px); opacity:1; } }
 
@@ -107,10 +98,10 @@
       position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
       background:rgba(10,10,20,0.92); gap:14px; text-align:center; padding:20px; border-radius:14px;
     }
-    .end-wrap h2 { font-size:1.6rem; color:#ffd166; }
+    .end-wrap h2 { font-size:1.6rem; color:var(--gold,#ffd166); }
     .end-wrap .stars-big { font-size:2.2rem; }
     .end-btn {
-      background:#06d6a0; color:#013a2a; border:none; border-radius:14px;
+      background:var(--ok,#06d6a0); color:#013a2a; border:none; border-radius:14px;
       padding:14px 28px; font-size:1.05rem; font-weight:900; font-family:inherit;
       min-height:80px; min-width:200px; cursor:pointer;
     }
@@ -141,6 +132,8 @@
   <script src="js/tracker.js"></script>
   <script src="js/sounds.js"></script>
   <script src="js/victory-sounds.js"></script>
+  <script src="js/mp-theme.js"></script>
+  <script src="js/celebrations.js"></script>
   <script src="js/regle-info.js"></script>
   <script>
     RegleInfo.init({ texte: "Fais glisser les bus pour libérer le bus jaune de Max !", picto: "🚌➡️🚪" });
@@ -560,6 +553,10 @@
       const exitX = boardPad + (N + 1.4) * cellSize;
       maxEl.style.left = exitX + 'px';
       sndKlaxon();
+      if (window.MaxFX){
+        const curPip = levelPipsEl.querySelector('.lvl-pip.cur');
+        if (curPip) MaxFX.markPoint(maxEl, curPip, {style:'bounce', result:'green'});
+      }
       setTimeout(() => {
         evacuateOtherBuses(() => {
           levelIdx++;
@@ -618,6 +615,7 @@
         '<button class="end-btn" id="btnContinue">' + (tier < 3 ? 'Palier suivant →' : 'Rejouer') + '</button>' +
         (tier < 3 ? '<button class="end-btn secondary" id="btnReplay">Rejouer ce palier</button>' : '');
       boardEl.appendChild(wrap);
+      if (window.MaxFX) MaxFX.finalStar(wrap, {style: tier === 3 ? 'cinematic' : 'breathe', label:'Bravo Max !'});
 
       document.getElementById('btnContinue').addEventListener('click', () => {
         wrap.remove();

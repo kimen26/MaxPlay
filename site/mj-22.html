@@ -4,15 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>MJ-22 — Trouve le pays !</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; touch-action:manipulation; }
-    body { background:#1a1a2e; font-family:system-ui,sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    body { font-family:system-ui,sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
     #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
-
-    .hdr { display:flex; align-items:center; gap:10px; padding:6px 12px; flex-shrink:0; background:rgba(0,0,0,0.25); border-bottom:1px solid rgba(255,255,255,0.08); }
-    .hdr a { color:#fff; text-decoration:none; font-size:1.3rem; background:rgba(255,255,255,0.12); border-radius:8px; padding:4px 10px; font-weight:900; flex-shrink:0; }
-    .hdr a:active { background:rgba(255,255,255,0.25); }
-    .htitle { flex:1; font-size:1rem; font-weight:900; }
 
     .consigne-zone { display:flex; align-items:center; justify-content:center; gap:10px; padding:8px 12px; flex-shrink:0; background:rgba(0,0,0,0.2); min-height:56px; }
     #drapeau-cible { font-size:4.5rem; line-height:1; }
@@ -72,6 +69,7 @@
 </div>
 
 <script src="js/victory-sounds.js"></script>
+<script src="js/mp-theme.js"></script>
 <script>
 // Carte Europe réelle depuis Wikimedia Commons
 // IDs ISO mappés aux données des pays

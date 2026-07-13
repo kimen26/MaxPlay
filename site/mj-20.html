@@ -4,30 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>MJ-20 – Compte dans toutes les langues</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&family=Fredoka+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none; }
     body {
       font-family:'Nunito',sans-serif;
-      background:linear-gradient(160deg,#1a0d3e,#2e1a5e);
       min-height:100dvh;
       display:flex; flex-direction:column; align-items:center;
       overflow-x:hidden;
       color:#fff;
     }
-    .hdr {
-      display:flex; align-items:center; gap:10px;
-      padding:8px 12px; flex-shrink:0;
-      background:rgba(0,0,0,0.25); border-bottom:1px solid rgba(255,255,255,0.08);
-    }
-    .hdr a {
-      color:#fff; text-decoration:none; font-size:1.3rem;
-      background:rgba(255,255,255,0.12); border-radius:8px;
-      padding:4px 10px; font-weight:900; flex-shrink:0;
-    }
-    .hdr a:active { background:rgba(255,255,255,0.25); }
-    .htitle { flex:1; font-size:1.05rem; font-weight:900; }
 
     .game-area {
       width:100%; max-width:680px; padding:0 16px 40px;
@@ -76,7 +64,7 @@
       min-height:52px;
     }
     .lang-btn.active {
-      border-color:#FFD700;
+      border-color:var(--gold);
       background:rgba(255,215,0,0.2);
     }
     .lang-btn .fi { width:24px; height:18px; border-radius:2px; }
@@ -101,12 +89,12 @@
     }
     .num-btn:active { transform:scale(0.92); }
     .num-btn.speaking {
-      background:linear-gradient(135deg,#4CAF50,#2E7D32);
+      background:linear-gradient(135deg,var(--ok),#2E7D32);
       transform:scale(1.05);
     }
 
     .learn-all-btn {
-      background:linear-gradient(135deg,#FFD700,#FFA500);
+      background:linear-gradient(135deg,var(--gold),#FFA500);
       color:#2e1a5e;
       border:none; border-radius:20px;
       padding:14px 24px;
@@ -137,7 +125,7 @@
     .quiz-flag .fi { width:100%; height:100%; background-size:cover; background-position:center; display:block; }
     .quiz-lang-name {
       font-size:1.1rem; font-weight:900;
-      color:#FFD700;
+      color:var(--gold);
     }
     .quiz-tier-badge {
       font-size:0.78rem; font-weight:700;
@@ -177,7 +165,7 @@
       font-size:2.2rem; font-weight:900;
     }
     .choice-btn:active { transform:scale(0.96); }
-    .choice-btn.correct { background:rgba(76,175,80,0.3); border-color:#4CAF50; }
+    .choice-btn.correct { background:rgba(76,175,80,0.3); border-color:var(--ok); }
     .choice-btn.wrong   { background:rgba(255,107,107,0.25); border-color:#ff6b6b; }
 
     /* Score bar */
@@ -190,7 +178,7 @@
       background:rgba(255,255,255,0.2);
       transition:background 0.3s;
     }
-    .score-pip.ok   { background:#4CAF50; }
+    .score-pip.ok   { background:var(--ok); }
     .score-pip.miss { background:#ff6b6b; }
     .score-label {
       color:rgba(255,255,255,0.7);
@@ -204,7 +192,7 @@
       display:flex; flex-direction:column; gap:10px;
     }
     .prog-title {
-      font-size:1rem; font-weight:900; color:#ffe066;
+      font-size:1rem; font-weight:900; color:var(--gold);
       text-align:center; padding-bottom:4px;
     }
     .lang-prog-card {
@@ -230,19 +218,19 @@
       background:transparent;
       position:relative;
     }
-    .tier-dot.done  { background:#00c47a; border-color:#00c47a; }
+    .tier-dot.done  { background:var(--ok); border-color:var(--ok); }
     .tier-dot.partial {
-      background:transparent; border-color:#ffe066;
+      background:transparent; border-color:var(--gold);
     }
     .tier-dot.partial::after {
       content:''; position:absolute;
       left:0; top:0; width:50%; height:100%;
-      background:#ffe066;
+      background:var(--gold);
       border-radius:50% 0 0 50%;
     }
     .tier-dot.locked-dot { border-color:rgba(255,255,255,0.18); }
     .lang-prog-lock { font-size:1.3rem; opacity:0.5; }
-    .lang-prog-next { font-size:0.7rem; color:#ffe066; font-weight:700; margin-top:3px; }
+    .lang-prog-next { font-size:0.7rem; color:var(--gold); font-weight:700; margin-top:3px; }
 
     /* Streak */
     .streak-badge {
@@ -250,7 +238,7 @@
       border:2px solid rgba(255,165,0,0.5);
       border-radius:20px;
       padding:4px 12px;
-      font-size:0.85rem; font-weight:900; color:#FFD700;
+      font-size:0.85rem; font-weight:900; color:var(--gold);
       white-space:nowrap; flex-shrink:0;
     }
 
@@ -271,7 +259,7 @@
       cursor:pointer; touch-action:manipulation;
       display:flex; align-items:center; gap:8px; min-height:52px;
     }
-    .ql-btn.active { border-color:#FFD700; background:rgba(255,215,0,0.2); }
+    .ql-btn.active { border-color:var(--gold); background:rgba(255,215,0,0.2); }
     .ql-btn .fi { width:24px; height:18px; border-radius:2px; }
 
     /* Feedback */
@@ -294,7 +282,7 @@
     /* Unlock toast */
     .unlock-toast {
       position:fixed; top:70px; left:50%; transform:translateX(-50%);
-      background:linear-gradient(135deg,#ffe066,#FFA500);
+      background:linear-gradient(135deg,var(--gold),#FFA500);
       color:#2e1a5e;
       font-family:'Nunito',sans-serif;
       font-size:1rem; font-weight:900;
@@ -331,9 +319,9 @@
       font-size:1.05rem; font-weight:700;
       text-align:center; max-width:340px; line-height:1.4;
     }
-    .victory-score { color:#FFD700; font-size:1.5rem; font-weight:900; }
+    .victory-score { color:var(--gold); font-size:1.5rem; font-weight:900; }
     .replay-btn {
-      background:linear-gradient(135deg,#4CAF50,#2E7D32);
+      background:linear-gradient(135deg,var(--ok),#2E7D32);
       color:#fff; border:none; border-radius:28px;
       padding:16px 36px;
       font-family:'Nunito',sans-serif;
@@ -424,6 +412,8 @@
   <script src="js/tts.js"></script>
   <script src="js/victory-sounds.js"></script>
   <script src="js/qcm-retry.js"></script>
+  <script src="js/mp-theme.js"></script>
+  <script src="js/celebrations.js"></script>
   <script>
     // ─── Langues ────────────────────────────────────────────────────────────────
     const LANGS = [
@@ -793,6 +783,7 @@
         if (res.points === 10) score++;
         if (typeof sndDing === 'function') sndDing();
         showFeedback('');
+        if (window.MaxFX) MaxFX.markPoint(btn, document.getElementById('scoreBar'), { style: 'bounce', result: res.points === 10 ? 'green' : 'orange' });
 
         // Enregistrer progression
         const unlock = recordCorrect(quizLang.code);
@@ -926,6 +917,10 @@
       else if (data.sound === 'bravo' && typeof sndBravo === 'function') sndBravo();
       else if (data.sound === 'ding' && typeof sndDing === 'function') sndDing();
       else if (typeof sndBuzz === 'function') sndBuzz();
+      if (window.MaxFX) {
+        const perfect = score === ROUND_COUNT;
+        MaxFX.finalStar(document.getElementById('victoryScreen'), { style: perfect ? 'cinematic' : 'breathe', label: perfect ? 'SANS-FAUTE !' : '' });
+      }
     }
 
     function shuffle(arr) {

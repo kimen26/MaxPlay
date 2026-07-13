@@ -6,7 +6,9 @@ export async function run({ page, ok }) {
   // Header canonique .hdr présent et hauteur cohérente avec les autres MJ
   const hdrBox = await page.locator('.hdr').boundingBox();
   ok('Header .hdr présent', !!hdrBox);
-  ok('Header hauteur canonique (~30-46px)', !!hdrBox && hdrBox.height >= 24 && hdrBox.height <= 50, `h=${hdrBox?.height}`);
+  // Hauteur header élargie par mp-theme.css (design system v1, juillet 2026) :
+  // boutons ronds 44px + padding généreux -> ~60px (contre ~30px gabarit pré-design-system).
+  ok('Header hauteur canonique (~30-70px)', !!hdrBox && hdrBox.height >= 24 && hdrBox.height <= 70, `h=${hdrBox?.height}`);
 
   // Charge directement le niveau fou-1 (bypass écran palier + intro pour le test)
   await page.evaluate(() => window.__mjTest.loadLevel('fou-1'));

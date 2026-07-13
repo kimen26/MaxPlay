@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MaxPlay — Atelier avatar</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/mp-theme.css">
+<style>
+  .page { max-width:480px; margin:0 auto; min-height:100vh; display:flex; flex-direction:column; }
+
+  /* vestiaire : les 3 DERNIERS avatars validés */
+  .vestiaire { display:flex; align-items:center; gap:4px; background:rgba(255,255,255,.05);
+               border:1px solid rgba(255,255,255,.09); border-radius:999px; padding:4px 7px; flex-shrink:0; }
+  .vestiaire .vitem { width:30px; height:30px; border-radius:50%; display:flex; align-items:center;
+                    justify-content:center; cursor:pointer; overflow:hidden; border:0; padding:0; background:rgba(255,255,255,.08); }
+  .vestiaire img { width:100%; height:100%; object-fit:contain; }
+
+  /* onglets au-dessus du rond */
+  .onglets { display:flex; justify-content:center; gap:8px; padding:10px 0 2px; }
+  .onglet { border-radius:999px; padding:8px 16px; font-weight:900; font-size:13px; cursor:pointer;
+            background:rgba(255,255,255,.07); color:var(--ink-3); border:0; font-family:'Nunito',sans-serif; }
+  .onglet.on { background:var(--gold); color:var(--gold-ink); }
+
+  /* avatar + 3 pastilles couleurs actuelles */
+  .scene { display:flex; align-items:center; justify-content:center; gap:18px; padding:10px 0 2px; }
+  .big-avatar { width:150px; height:150px; border-radius:50%; border:4px solid var(--gold);
+                background:radial-gradient(circle at 35% 30%, var(--card-2), var(--card));
+                display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .big-avatar img { width:118px; height:118px; object-fit:contain; }
+  .pastilles { display:flex; flex-direction:column; gap:8px; }
+  .pastilles button { width:27px; height:27px; border-radius:50%; border:2px solid rgba(255,255,255,.35); cursor:pointer; padding:0; }
+  .pastilles button.active { box-shadow:0 0 0 3px #fff; }
+
+  /* choix du dino : bande scrollable */
+  .dino-strip { margin:8px 14px 0; padding:8px; display:flex; gap:8px; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+  .dino-strip button { flex:0 0 auto; width:48px; height:48px; border-radius:12px; border:2px solid transparent;
+                       background:rgba(255,255,255,.06); padding:2px; cursor:pointer; }
+  .dino-strip button.on { border-color:var(--accent); background:var(--accent-soft); }
+  .dino-strip img { width:100%; height:100%; object-fit:contain; }
+
+  /* triplets */
+  .triplets { display:flex; justify-content:center; gap:8px; padding:12px 14px 8px; }
+  .triplet { border:2px solid transparent; background:rgba(255,255,255,.05); border-radius:12px;
+             padding:7px 9px; display:flex; flex-direction:column; gap:4px; align-items:center; cursor:pointer; }
+  .triplet.on { border-color:var(--accent); background:var(--accent-soft); }
+  .triplet .cc { display:flex; gap:4px; } .triplet .cc span { width:19px; height:19px; border-radius:7px; display:block; }
+  .triplet small { font-size:12px; }
+
+  /* nuancier */
+  .nuancier { margin:2px 14px; background:var(--card); border:1px solid var(--line);
+              border-radius:var(--r-card); padding:12px; display:flex; flex-direction:column; gap:9px; }
+  .nuancier .t { font-size:12px; font-weight:900; color:var(--accent); }
+  .nuancier .g { display:grid; grid-template-columns:repeat(6,1fr); gap:8px; }
+  .nuancier .g span { aspect-ratio:1; border-radius:50%; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:14px; }
+
+  /* mode retouche */
+  .retouche { display:none; }
+  .retouche.on { display:flex; flex-direction:column; gap:7px; }
+  .neutres { display:flex; justify-content:center; gap:7px; }
+  .neutres span { width:26px; height:26px; border-radius:8px; cursor:pointer; }
+
+  /* onglet ambiance */
+  .ambiances { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; padding:10px 14px; }
+  .amb-tile { border-radius:14px; border:2px solid transparent; padding:8px 6px; cursor:pointer;
+              display:flex; flex-direction:column; align-items:center; gap:6px; background:var(--card); }
+  .amb-tile.on { border-color:var(--accent); }
+  .amb-preview { width:64px; height:48px; border-radius:10px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .amb-preview img { width:34px; height:34px; object-fit:contain; }
+  .amb-tile small { font-size:11.5px; font-weight:800; color:var(--ink-2); }
+
+  .footer { margin-top:auto; padding:10px 14px 16px; }
+  #normal, #ambiance-panel { display:none; }
+  #normal.show, #ambiance-panel.show { display:block; }
+</style>
+</head>
+<body data-av-nobadge>
+<div class="page mp-page">
+
+  <div class="mp-header">
+    <button class="mp-back" onclick="location.href='index.html'">←</button>
+    <div class="mp-title">Habille ton dino !</div>
+    <div class="vestiaire" id="vestiaire"></div>
+  </div>
+
+  <div class="onglets">
+    <span class="onglet on" id="tab-dino">🦕 Mon dino</span>
+    <span class="onglet" id="tab-ambiance">🌈 Mon ambiance</span>
+  </div>
+
+  <div class="scene">
+    <div class="big-avatar"><img id="bigAvatar" alt="ton dino"></div>
+    <div class="pastilles" id="pastilles"></div>
+  </div>
+
+  <div class="dino-strip" id="dinoStrip"></div>
+
+  <!-- MODE NORMAL : triplets + nuancier -->
+  <div id="normal" class="show">
+    <div class="triplets" id="triplets"></div>
+    <div class="nuancier">
+      <div class="t">Ta couleur ?</div>
+      <div class="g" id="nuancierGrid"></div>
+    </div>
+  </div>
+
+  <!-- MODE RETOUCHE : fleur nid d'abeille -->
+  <div class="nuancier retouche" id="retouche">
+    <div class="row">
+      <span id="retoucheDot" style="width:18px;height:18px;border-radius:50%;border:2px solid #fff"></span>
+      <span class="t grow" style="color:#fff">Change CETTE couleur :</span>
+      <span class="muted" style="cursor:pointer" id="annulerRetouche">✕ annuler</span>
+    </div>
+    <div style="display:flex;justify-content:center">
+      <svg width="196" height="176" viewBox="-95 -85 190 170" id="fleur"></svg>
+    </div>
+    <div class="neutres" id="neutres"></div>
+    <div class="muted" style="text-align:center; font-size:10.5px">la fleur : vif au bord, doux au centre · bruns/gris en bas</div>
+  </div>
+
+  <!-- ONGLET AMBIANCE -->
+  <div id="ambiance-panel">
+    <div class="ambiances" id="ambiancesGrid"></div>
+  </div>
+
+  <div class="footer">
+    <button class="mp-btn-primary" id="btnValider">C'est lui ! ✓</button>
+  </div>
+</div>
+
+<script src="js/avatars.js"></script>
+<script src="js/avatar-picker.js"></script>
+<script src="js/mp-theme.js"></script>
+<script src="js/victory-sounds.js"></script>
+<script src="js/celebrations.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  // ── Triplets curés (émoji + 3 hex chacun) ─────────────────────────────
+  var TRIPLETS = [
+    { emo: '🥝 ✓', c: ['#2f6d3a', '#8fe388', '#e8ffd9'] },
+    { emo: '🐢 🌻', c: ['#0d4a3a', '#2fbf8f', '#ffd166'] },
+    { emo: '🥑 🦎', c: ['#4a5e28', '#a8c850', '#f2ead8'] }
+  ];
+  var AMBIANCES = [
+    { id: 'nuit', name: 'Nuit', bg0: '#0a1226', bg1: '#0c1730' },
+    { id: 'jungle', name: 'Jungle', bg0: '#0a1f16', bg1: '#0d2b1d' },
+    { id: 'ville', name: 'Ville', bg0: '#0b1c30', bg1: '#16304a' },
+    { id: 'espace', name: 'Espace', bg0: '#0d0a20', bg1: '#1a1245' },
+    { id: 'arcade', name: 'Arcade', bg0: '#12101f', bg1: '#171331' },
+    { id: 'musee', name: 'Musée', bg0: '#14110d', bg1: '#211b12' }
+  ];
+  var VKEY = 'maxplay_avatar_vestiaire';
+
+  // état courant
+  var curId = (window.Avatar && Avatar.get()) || (window.MAXPLAY_AVATARS && MAXPLAY_AVATARS[0] && MAXPLAY_AVATARS[0].id);
+  var curColors = (window.Avatar && Avatar.getColors()) || TRIPLETS[0].c.slice();
+  var editingIdx = -1; // index de la pastille en cours de retouche (-1 = aucune)
+
+  // ── hex helpers ─────────────────────────────────────────────────────
+  var hexCanvas = document.createElement('canvas'); hexCanvas.width = 1; hexCanvas.height = 1;
+  var hexCtx = hexCanvas.getContext('2d');
+  function toHex(cssColor) {
+    try {
+      hexCtx.fillStyle = '#000'; hexCtx.clearRect(0, 0, 1, 1);
+      hexCtx.fillStyle = cssColor;
+      hexCtx.fillRect(0, 0, 1, 1);
+      var d = hexCtx.getImageData(0, 0, 1, 1).data;
+      return '#' + [d[0], d[1], d[2]].map(function (v) { return ('0' + v.toString(16)).slice(-2); }).join('');
+    } catch (e) { return '#888888'; }
+  }
+
+  // ── peindre le grand avatar ─────────────────────────────────────────
+  function repaintBig() {
+    var img = document.getElementById('bigAvatar');
+    var file = window.Avatar ? Avatar.file(curId, 'joyeux') : null;
+    if (!file) return;
+    if (window.Avatar) Avatar.paintInto(img, file, curColors);
+    else img.src = file;
+  }
+
+  // ── pastilles (3 couleurs actuelles) ─────────────────────────────────
+  function renderPastilles() {
+    var el = document.getElementById('pastilles');
+    el.innerHTML = '';
+    curColors.forEach(function (c, i) {
+      var b = document.createElement('button');
+      b.style.background = c;
+      b.className = (editingIdx === i) ? 'active' : '';
+      b.setAttribute('aria-label', 'Changer la couleur ' + (i + 1));
+      b.addEventListener('click', function () { openRetouche(i); });
+      el.appendChild(b);
+    });
+  }
+
+  // ── bande de choix du dino ────────────────────────────────────────────
+  function renderDinoStrip() {
+    var el = document.getElementById('dinoStrip');
+    el.innerHTML = '';
+    var list = (window.MAXPLAY_AVATARS || []).slice().sort(function (a, b) { return a.name.localeCompare(b.name, 'fr'); });
+    list.forEach(function (a) {
+      var b = document.createElement('button');
+      b.className = (a.id === curId) ? 'on' : '';
+      var f = Avatar.file(a.id, 'joyeux') || Avatar.file(a.id);
+      b.innerHTML = '<img alt="' + a.name + '">';
+      if (f) b.querySelector('img').src = f;
+      b.title = a.name;
+      b.addEventListener('click', function () {
+        curId = a.id;
+        curColors = TRIPLETS[0].c.slice(); // couleurs par défaut pour un nouveau dino
+        editingIdx = -1;
+        renderDinoStrip(); renderPastilles(); renderTriplets(); repaintBig();
+        SoundPool && SoundPool.play && SoundPool.play('apparition');
+      });
+      el.appendChild(b);
+    });
+  }
+
+  // ── triplets curés ────────────────────────────────────────────────────
+  function colorsMatch(a, b) {
+    return a.length === b.length && a.every(function (c, i) { return c.toLowerCase() === b[i].toLowerCase(); });
+  }
+  function renderTriplets() {
+    var el = document.getElementById('triplets');
+    el.innerHTML = '';
+    TRIPLETS.forEach(function (t) {
+      var d = document.createElement('div');
+      d.className = 'triplet' + (colorsMatch(t.c, curColors) ? ' on' : '');
+      d.innerHTML = '<div class="cc">' + t.c.map(function (c) { return '<span style="background:' + c + '"></span>'; }).join('') + '</div><small>' + t.emo + '</small>';
+      d.addEventListener('click', function () {
+        curColors = t.c.slice();
+        editingIdx = -1;
+        renderTriplets(); renderPastilles(); repaintBig();
+      });
+      el.appendChild(d);
+    });
+  }
+
+  // ── nuancier simple ────────────────────────────────────────────────────
+  var NUANCIER = ['#e0655a', '#f2a25c', '#ffd166', '#8fe388', '#3ec6e0', '#7fb4ff',
+                  '#c9a4ff', '#ff9ecf', '#f2ead8', '#8a5a3a', '#5b6678'];
+  function renderNuancier() {
+    var el = document.getElementById('nuancierGrid');
+    el.innerHTML = '';
+    NUANCIER.forEach(function (c) {
+      var s = document.createElement('span');
+      s.style.background = c;
+      s.addEventListener('click', function () { applyToEditingOrLast(c); });
+      el.appendChild(s);
+    });
+    var dice = document.createElement('span');
+    dice.style.background = 'rgba(255,255,255,.08)';
+    dice.textContent = '🎲';
+    dice.addEventListener('click', function () {
+      var rand = NUANCIER[Math.floor(Math.random() * NUANCIER.length)];
+      applyToEditingOrLast(rand);
+    });
+    el.appendChild(dice);
+  }
+  function applyToEditingOrLast(hex) {
+    var idx = editingIdx >= 0 ? editingIdx : 0;
+    curColors[idx] = hex;
+    renderPastilles(); renderTriplets(); repaintBig();
+  }
+
+  // ── mode retouche : fleur nid d'abeille (37 hexagones oklch) ──────────
+  (function buildFleur() {
+    var svg = document.getElementById('fleur');
+    var S = 26, YS = 22.5, pts = '0,-14 12.1,-7 12.1,7 0,14 -12.1,7 -12.1,-7';
+    var rings = [
+      { hexes: [[0, 0]], L: .95, C: .02 },
+      { hexes: [[1,0],[0,1],[-1,1],[-1,0],[0,-1],[1,-1]], L: .88, C: .07 },
+      { hexes: [[2,0],[1,1],[0,2],[-1,2],[-2,2],[-2,1],[-2,0],[-1,-1],[0,-2],[1,-2],[2,-2],[2,-1]], L: .78, C: .13 },
+      { hexes: [[3,0],[2,1],[1,2],[0,3],[-1,3],[-2,3],[-3,3],[-3,2],[-3,1],[-3,0],[-2,-1],[-1,-2],[0,-3],[1,-3],[2,-3],[3,-3],[3,-2],[3,-1]], L: .66, C: .17 }
+    ];
+    rings.forEach(function (ring) {
+      ring.hexes.forEach(function (pos) {
+        var q = pos[0], r = pos[1];
+        var x = S * (q + r / 2), y = YS * r;
+        var hue = Math.round((Math.atan2(y, x) * 180 / Math.PI + 360) % 360);
+        var p = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+        p.setAttribute('points', pts);
+        p.setAttribute('transform', 'translate(' + x + ',' + y + ')');
+        var oklchColor = 'oklch(' + ring.L + ' ' + ring.C + ' ' + hue + ')';
+        p.setAttribute('fill', oklchColor);
+        p.style.cursor = 'pointer';
+        p.addEventListener('click', function () {
+          svg.querySelectorAll('polygon').forEach(function (o) { o.removeAttribute('stroke'); });
+          p.setAttribute('stroke', '#fff'); p.setAttribute('stroke-width', '3');
+          applyToEditingOrLast(toHex(oklchColor));
+        });
+        svg.appendChild(p);
+      });
+    });
+  })();
+
+  // ── neutres (retouche) ────────────────────────────────────────────────
+  var NEUTRES = ['oklch(0.97 0.005 90)', 'oklch(0.88 0.03 80)', 'oklch(0.62 0.06 60)',
+                 'oklch(0.45 0.04 50)', 'oklch(0.55 0.01 250)', 'oklch(0.3 0.01 250)'];
+  (function renderNeutres() {
+    var el = document.getElementById('neutres');
+    NEUTRES.forEach(function (c) {
+      var s = document.createElement('span');
+      s.style.background = c;
+      s.addEventListener('click', function () { applyToEditingOrLast(toHex(c)); });
+      el.appendChild(s);
+    });
+  })();
+
+  function openRetouche(idx) {
+    editingIdx = idx;
+    document.getElementById('normal').classList.remove('show');
+    document.getElementById('retouche').classList.add('on');
+    document.getElementById('retoucheDot').style.background = curColors[idx];
+    renderPastilles();
+  }
+  function closeRetouche() {
+    editingIdx = -1;
+    document.getElementById('normal').classList.add('show');
+    document.getElementById('retouche').classList.remove('on');
+    renderPastilles();
+  }
+  document.getElementById('annulerRetouche').addEventListener('click', closeRetouche);
+
+  // ── vestiaire (3 derniers avatars validés) ────────────────────────────
+  function getVestiaire() {
+    try { return JSON.parse(localStorage.getItem(VKEY) || '[]'); } catch (e) { return []; }
+  }
+  function pushVestiaire(id, targets) {
+    var list = getVestiaire().filter(function (v) { return !(v.id === id && colorsMatch(v.targets, targets)); });
+    list.unshift({ id: id, targets: targets });
+    list = list.slice(0, 3);
+    try { localStorage.setItem(VKEY, JSON.stringify(list)); } catch (e) {}
+    renderVestiaire();
+  }
+  function renderVestiaire() {
+    var el = document.getElementById('vestiaire');
+    el.innerHTML = '';
+    getVestiaire().forEach(function (v) {
+      var b = document.createElement('button');
+      b.className = 'vitem';
+      var f = window.Avatar ? Avatar.file(v.id, 'joyeux') : null;
+      b.innerHTML = '<img alt="">';
+      if (f && window.Avatar) Avatar.paintInto(b.querySelector('img'), f, v.targets);
+      b.addEventListener('click', function () {
+        curId = v.id; curColors = v.targets.slice(); editingIdx = -1;
+        renderDinoStrip(); renderPastilles(); renderTriplets(); repaintBig();
+      });
+      el.appendChild(b);
+    });
+  }
+
+  // ── onglets Mon dino / Mon ambiance ────────────────────────────────────
+  function showDinoTab() {
+    document.getElementById('tab-dino').classList.add('on');
+    document.getElementById('tab-ambiance').classList.remove('on');
+    document.querySelector('.scene').style.display = '';
+    document.getElementById('dinoStrip').style.display = '';
+    document.getElementById('normal').classList.add('show');
+    document.getElementById('ambiance-panel').classList.remove('show');
+  }
+  function showAmbianceTab() {
+    document.getElementById('tab-dino').classList.remove('on');
+    document.getElementById('tab-ambiance').classList.add('on');
+    document.querySelector('.scene').style.display = 'none';
+    document.getElementById('dinoStrip').style.display = 'none';
+    document.getElementById('normal').classList.remove('show');
+    document.getElementById('retouche').classList.remove('on');
+    document.getElementById('ambiance-panel').classList.add('show');
+    renderAmbiances();
+  }
+  document.getElementById('tab-dino').addEventListener('click', showDinoTab);
+  document.getElementById('tab-ambiance').addEventListener('click', showAmbianceTab);
+
+  function renderAmbiances() {
+    var el = document.getElementById('ambiancesGrid');
+    el.innerHTML = '';
+    var current = (window.MPTheme ? localStorage.getItem('maxplay_ambiance') : null) || 'nuit';
+    AMBIANCES.forEach(function (a) {
+      var d = document.createElement('div');
+      d.className = 'amb-tile' + (a.id === current ? ' on' : '');
+      var f = window.Avatar ? Avatar.file(curId, 'joyeux') : null;
+      d.innerHTML = '<div class="amb-preview" style="background:linear-gradient(180deg,' + a.bg0 + ',' + a.bg1 + ')"><img alt=""></div><small>' + a.name + '</small>';
+      if (f && window.Avatar) Avatar.paintInto(d.querySelector('img'), f, curColors);
+      d.addEventListener('click', function () {
+        if (window.MPTheme) window.MPTheme.setAmbiance(a.id);
+        if (window.SoundPool) SoundPool.play('apparition');
+        renderAmbiances();
+      });
+      el.appendChild(d);
+    });
+  }
+
+  // ── validation ─────────────────────────────────────────────────────────
+  document.getElementById('btnValider').addEventListener('click', function () {
+    if (window.Avatar) {
+      Avatar.set(curId);
+      Avatar.setColors(curColors);
+    }
+    pushVestiaire(curId, curColors);
+    if (window.MPTheme) window.MPTheme.refresh();
+    if (window.MaxFX && MaxFX.glow) MaxFX.glow(document.getElementById('bigAvatar'));
+    setTimeout(function () { location.href = 'index.html'; }, 550);
+  });
+
+  // ── init ───────────────────────────────────────────────────────────────
+  renderVestiaire();
+  renderDinoStrip();
+  renderTriplets();
+  renderNuancier();
+  renderPastilles();
+  repaintBig();
+})();
+</script>
+</body>
+</html>

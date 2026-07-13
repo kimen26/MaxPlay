@@ -109,7 +109,7 @@
     <div class="row">
       <span id="retoucheDot" style="width:18px;height:18px;border-radius:50%;border:2px solid #fff"></span>
       <span class="t grow" style="color:#fff">Change CETTE couleur :</span>
-      <span class="muted" style="cursor:pointer" id="annulerRetouche">✕ annuler</span>
+      <span class="muted" style="cursor:pointer" id="annulerRetouche">✕ fermer</span>
     </div>
     <div style="display:flex;justify-content:center">
       <svg width="196" height="176" viewBox="-95 -85 190 170" id="fleur"></svg>
@@ -145,13 +145,14 @@
   // (même formule que les presets historiques : teinte imposée, saturation
   // et luminosité de chaque base conservées → rendu nuancé, jamais plat).
   // ═════════════════════════════════════════════════════════════════════
+  // deco = petite scène dans la tuile (pas juste un dégradé)
   var AMBIANCES = [
-    { id: 'nuit', name: 'Nuit', bg0: '#0a1226', bg1: '#0c1730' },
-    { id: 'jungle', name: 'Jungle', bg0: '#0a1f16', bg1: '#0d2b1d' },
-    { id: 'ville', name: 'Ville', bg0: '#0b1c30', bg1: '#16304a' },
-    { id: 'espace', name: 'Espace', bg0: '#0d0a20', bg1: '#1a1245' },
-    { id: 'arcade', name: 'Arcade', bg0: '#12101f', bg1: '#171331' },
-    { id: 'musee', name: 'Musée', bg0: '#14110d', bg1: '#211b12' }
+    { id: 'nuit',   name: 'Nuit',   bg0: '#0a1226', bg1: '#0c1730', deco: ['🌙', '⭐', '✨'] },
+    { id: 'jungle', name: 'Jungle', bg0: '#0a1f16', bg1: '#0d2b1d', deco: ['🌴', '🦜', '🌿'] },
+    { id: 'ville',  name: 'Ville',  bg0: '#0b1c30', bg1: '#16304a', deco: ['🏙️', '🚌', '🚦'] },
+    { id: 'espace', name: 'Espace', bg0: '#0d0a20', bg1: '#1a1245', deco: ['🪐', '🚀', '💫'] },
+    { id: 'arcade', name: 'Arcade', bg0: '#12101f', bg1: '#171331', deco: ['👾', '🕹️', '🎯'] },
+    { id: 'musee',  name: 'Musée',  bg0: '#14110d', bg1: '#211b12', deco: ['🏛️', '🦴', '🖼️'] }
   ];
   var VKEY = 'maxplay_avatar_vestiaire';
   var C = window.Avatar && Avatar.color; // helpers couleur d'origine
@@ -469,7 +470,13 @@
       var d = document.createElement('div');
       d.className = 'amb-tile' + (a.id === current ? ' on' : '');
       var f = window.Avatar ? Avatar.file(curId, 'joyeux') : null;
-      d.innerHTML = '<div class="amb-preview" style="background:linear-gradient(180deg,' + a.bg0 + ',' + a.bg1 + ')"><img alt=""></div><small>' + a.name + '</small>';
+      d.innerHTML =
+        '<div class="amb-preview" style="position:relative;background:linear-gradient(180deg,' + a.bg0 + ',' + a.bg1 + ')">'
+        + '<span style="position:absolute;top:2px;left:4px;font-size:13px">' + a.deco[0] + '</span>'
+        + '<span style="position:absolute;top:3px;right:4px;font-size:11px">' + a.deco[1] + '</span>'
+        + '<span style="position:absolute;bottom:2px;right:5px;font-size:10px">' + a.deco[2] + '</span>'
+        + '<img alt="">'
+        + '</div><small>' + a.name + '</small>';
       if (f && window.Avatar) Avatar.paintInto(d.querySelector('img'), f, curTargets);
       d.addEventListener('click', function () {
         if (window.MPTheme) window.MPTheme.setAmbiance(a.id);

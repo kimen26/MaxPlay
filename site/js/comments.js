@@ -235,6 +235,9 @@
 
   // ── Injection du bouton 💬 à côté du ← ──────────────────────────────────
   function injectButton() {
+    // <body data-cmt-inpanel> : le 💬 vit dans le panneau règle (RegleInfo v2)
+    // → un seul bouton ❓ dans le header, pas de doublon.
+    if (document.body && document.body.hasAttribute('data-cmt-inpanel')) return;
     const backLink = document.querySelector('a[href="index.html"]');
     if (!backLink || !backLink.parentNode) return;
     if (backLink.parentNode.querySelector('.mpc-btn')) return;

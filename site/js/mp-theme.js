@@ -28,14 +28,20 @@
     } catch (e) { return null; }
   }
 
-  // hue (0-360) de la couleur la plus saturée d'une liste de hex
-  function dominantHue(hexList) {
+  // hue (0-360) de la couleur la plus saturée d'une liste de couleurs
+  // (hex "#rrggbb" OU triplets [r,g,b] — format stocké par avatar-picker)
+  function dominantHue(colorList) {
     var best = null, bestSat = -1;
-    (hexList || []).forEach(function (hex) {
-      var m = /^#?([0-9a-f]{6})$/i.exec(hex || '');
-      if (!m) return;
-      var n = parseInt(m[1], 16);
-      var r = ((n >> 16) & 255) / 255, g = ((n >> 8) & 255) / 255, b = (n & 255) / 255;
+    (colorList || []).forEach(function (col) {
+      var r, g, b;
+      if (Array.isArray(col) && col.length >= 3) {
+        r = col[0] / 255; g = col[1] / 255; b = col[2] / 255;
+      } else {
+        var m = /^#?([0-9a-f]{6})$/i.exec(col || '');
+        if (!m) return;
+        var n = parseInt(m[1], 16);
+        r = ((n >> 16) & 255) / 255; g = ((n >> 8) & 255) / 255; b = (n & 255) / 255;
+      }
       var mx = Math.max(r, g, b), mn = Math.min(r, g, b), d = mx - mn;
       var l = (mx + mn) / 2;
       var s = d === 0 ? 0 : d / (1 - Math.abs(2 * l - 1));

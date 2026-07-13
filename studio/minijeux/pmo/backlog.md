@@ -118,6 +118,9 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 ### L-089 – Espace parents GateKeeper = appui long 3s protection enfant
 **Parents (2026-07-12)** : espace compte parents accessible via footer index — mais gate biométrique + question adulte (7×4=28) pour éviter tap accidentel enfant. **Leçon** : tout accès zone adulte = friction intentionnelle (parental gate). Réutilisable : outils dev, analytiques, support.
 
+### L-090 – paintInto(null) retombe sur getColors() avatar validé, jamais paintInto
+**Atelier avatar (2026-07-13)** : bug coloration « moche à l'arrivée » = paintInto(null) retombait sur getColors() du dernier avatar chargé → couleurs d'un AUTRE dino. Root cause : curTargets null interprété comme « pas de filtre, retombe sur src ». **Leçon** : `curTargets null = src direct, JAMAIS paintInto(null)` dans palette picker. Règle simple : explicit is better than implicit (Python 禅). Audit 29 avatars révélé : chacun 1-3 familles teinte (Tritri 3 : h77/h30/h120 ; Rex 1 ; Anky 3 ; seule Libelle >3) — référence pour évolutions futures.
+
 ### L-090 – Anonymité + Transparence = CNIL mitigé par clarté
 **Audience (2026-07-12)** : mesure journalière ping (user_id anon + game_id + outcome) — zone grise CNIL (enfant <4 ans = analytics théoriquement interdite). **Mitigation** : page confidentialite.html exhaustive (FR humain) linked depuis compte.html, affichage clair "pings enregistrés ce jour". Assomption : transparence > masquage complet. **Leçon** : pour zones réglementaires ambigues, transparence + choix parental = meilleure défense légale que dissimulation.
 

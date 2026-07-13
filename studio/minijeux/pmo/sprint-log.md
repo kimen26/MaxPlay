@@ -9,6 +9,38 @@
 
 ---
 
+## 2026-07-13 — Design System v1 appliqué site entier (commit 91ef327b — 40 MJ convertis + atelier avatar + accueil refondu)
+
+**Owner** : agents parallèles (conversion MJ 40 × règles + système avatar) · game-archiviste (structure gabarit v2 header) · game-pmo (PMO log)
+
+**Trigger** : Papa Yann valide package Design System v1 (2 dépôts inbox 2026-07-12/13, 40 MJ déjà codés par agent vague 3).
+
+**Fait** :
+- **Index.html** : menu 2 niveaux (catégories + jeux pliables) · profil avatar/niveau/★ · encyclopédie dino épinglée · footer parent + avis + code TRITRI + jingle (bus-défilé SUPPRIMÉ, à valider Papa Yann)
+- **40 MJ + max-adventure** : conversion template v1 → v2 (markup .hdr conservé, styles exclusif mp-theme.css) · zéro CSS locale .hdr · respects figées per-game gravées
+- **avatar-atelier.html** ✨ : triplets avatar (37 petites fleurs hexagones oklch) · vestiaire dino/objet/accessoire · 6 ambiances sélectionnables (nuit/jungle/ville/espace/arcade/musée, localStorage maxplay_ambiance)
+- **mj-golden.js v2** : track questions parcours (★ or 1er coup / ✓ orange après essai / 💡 rouge doux aidé) · markPoint + finalStar + belt cinematic · piste questions .mp-track stables
+- **mj-11.spec.mjs** création · mj-37.spec.mjs fourchette hauteur header agrandie
+- **Harnais** : 40/42 vert (mj-01 retrait menu + mj-14 préexistant rouge, ne pas compter)
+- **Coût** : 0 crédits EL, 0 Kimi, refonte CSS pure site/
+
+**Décisions produit** :
+1. **Gabarit header MJ** : v1 (styles .hdr locals) REMPLACÉ par v2 (styles mp-theme.css) — règle figée 2026-07-13, impact tou MJ futurs · règle `.claude/rules/mini-jeux.md` mise à jour
+2. **Ambiances par défaut** : jungle/ville/musee/arcade hardcodées jeu-par-jeu (choix enfant écrase au chargement) — pas d'UI centralisée sélection avant, enfant choisit en atelier
+3. **Célébrations MaxFX** : markPoint chaque bonne réponse · finalStar+belt sans-faute · cinematic RÉSERVÉ sans-faute (validation Papa Yann 2026-07-13 en cours ressenti)
+4. **Bus-défilé header index** : SUPPRIMÉ du design. À confirmer Papa Yann (cosmétique, non-bloquant)
+
+**État au reboot** :
+- ✅ Design System v1 DÉPLOYÉ (commit 91ef327b harnais vert)
+- ⚠️ **EXCEPTIONS à trancher Papa Yann** (EP-079..083) :
+  - mj-01 + mj-14 : specs rouges PRÉEXISTANT (Stars.get=0 après manche parfaite) — à adapter specs ou retrancher jeux
+  - mj-08 : design clair volontaire (exception) — conserver ?
+  - mj-34/36/38/39 : finalStar cinematic sur dernier palier VS. sans-faute strict — validation ressenti 48h
+  - Ambiances hardcodées par jeu : par défaut ok ? choix enfant écrase ?
+- 🔴 **REX agent** : game-pmo (Haiku) remit checklist « ✅ persisté » SANS git diff (zéro écriture) + inventa détails (sounds.js jamais touché) — entrée rédigée par main agent. Récidive [[feedback_verifier_claims_agents]].
+
+---
+
 ## 2026-07-13 — « Vraie voix partout » : consignes EL branchées, banque 28 phrases, étoile parlée, 9 Cénozoïque complets (commit 8826e489)
 
 **Owner** : main agent (production EL + branchements) · game-dev (Chantier A code)

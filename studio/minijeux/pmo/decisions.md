@@ -8,6 +8,35 @@
 
 ---
 
+## 2026-07-13 — Design System v1 adopté site entier — source de vérité site/css/mp-theme.css + site/js/mp-theme.js (commit 91ef327b)
+
+**Contexte** : Papa Yann a validé le package Design System v1 (2 dépôts inbox 2026-07-12/13). Agents vague 3 ont converti 40 MJ en 24h, harnais vert.
+
+**Décision figée** :
+
+Design System v1 devient la **source de vérité couleur/thème/ambiance site entier** (index.html, 40 MJ+max-adventure, atelier avatar, encyclopédie dino, suivi parents, tout ce qui affiche).
+
+**Techniquement** :
+- **Fichier central** : `site/css/mp-theme.css` (4 rôles couleur fixe : --bg/--card sombres, --accent teinte avatar variable, --gold or UNIQUEMENT ★)
+- **JS companion** : `site/js/mp-theme.js` (charger localStorage ambiance, appliquer --bg/--card/--accent dynamique)
+- **Gabarit header MJ** : v1 (CSS .hdr locals) **REMPLACÉ par v2** (markup .hdr conservé, styles via mp-theme.css zéro CSS local)
+- **Piste questions** : `.mp-track` classe stables (pas de rehash future) — ★ gold 1er coup / ✓ orange après essai / 💡 rouge doux aidé
+- **Ambiances candidats** : nuit/jungle/ville/espace/arcade/musée (6 fixés, UI atelier avatar, localStorage maxplay_ambiance)
+- **Célébrations MaxFX** : site/js/celebrations.js markPoint chaque bonne réponse · finalStar+belt cinematic (validation Papa Yann pending ressenti)
+
+**Impact futur** :
+- Tout MJ nouveau respectera mp-theme.css obligatoirement (pas d'exception locales tolérées)
+- Nouveau jeu = tester avec 3-4 ambiances amont avant livraison
+- Refonte design = 1 point d'entrée (mp-theme.css), pas 20 fichiers CSS MJ
+
+**Exceptions documentées** (attente Papa Yann) :
+- mj-08 design clair volontaire — exception permise ?
+- mj-34/36/38/39 finalStar cinematic sur dernier palier (vs. strict sans-faute) — à trancher retours ressenti 48h
+
+**Raison** : cohérence UX enfant (Max confus par jeux multicolore disparate) + maintenance design future (un seul fichier CSS à modifier pour refonte) + foundation pour monétisation v2 (skins ambiances payantes).
+
+---
+
 ## Questions ouvertes (en attente validation Papa Yann)
 
 | Question | Source | Priorité | Notes |

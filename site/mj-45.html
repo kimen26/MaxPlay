@@ -194,11 +194,11 @@
     // ★1-★2 : MONTÉE (addition par regroupement). ★3 : DESCENTE (soustraction).
     const PALIERS = [
       { stars:1, mode:'monte',   min:3, max:6,  kMin:2, kMax:2, distract:1, need:2,
-        banner:"Fais monter les passagers dans le bus !" },
+        banner:"Fais monter les passagers dans le bus !", slug:'fais-monter-les-passagers' },
       { stars:2, mode:'monte',   min:7, max:12, kMin:2, kMax:3, distract:2, need:2,
-        banner:"Il en faut beaucoup ! Regroupe bien !" },
+        banner:"Il en faut beaucoup ! Regroupe bien !", slug:'il-en-faut-beaucoup' },
       { stars:3, mode:'descend', busMin:8, busMax:12, offMin:3, offMax:6, need:2,
-        banner:"Terminus pour certains : fais-les descendre !" },
+        banner:"Terminus pour certains : fais-les descendre !", slug:'terminus-fais-les-descendre' },
     ];
 
     let paletteIdx = 0, roundsDone = 0, finished = false;
@@ -284,7 +284,12 @@
         document.getElementById('inbus-label').textContent = 'Dans le bus — tape ceux qui descendent';
         document.getElementById('tray-label').textContent = 'Sur le quai';
       }
-      document.getElementById('banner').textContent = cfg.banner;
+      const bEl = document.getElementById('banner');
+      if (bEl.textContent !== cfg.banner) {
+        bEl.textContent = cfg.banner;
+        // Consigne parlée au changement de palier seulement (anti-répétition)
+        if (cfg.slug && window.SoundPool) SoundPool.phrase(cfg.slug, cfg.banner);
+      }
       render();
     }
 

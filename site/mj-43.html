@@ -263,13 +263,13 @@
     // ── Configuration des paliers (3 étoiles) ───────────────────────────────
     // La difficulté monte : cibles plus grandes, dominos, chiffres, + de regroupement.
     const PALIERS = [
-      { stars:1, min:3,  max:6,  nCrates:3, kMin:1, kMax:2, domino:0,    numeral:0,   need:2, banner:"Range les dés dans la bonne caisse !" },
-      { stars:2, min:6,  max:10, nCrates:3, kMin:2, kMax:3, domino:0.4,  numeral:0,   need:2, banner:"Regroupe les points pour remplir la caisse !" },
-      { stars:3, min:12, max:15, nCrates:2, kMin:3, kMax:4, domino:0.6,  numeral:0.4, need:2, banner:"Gros niveau ! Regroupe 3 dés ou 2 dominos !" },
+      { stars:1, min:3,  max:6,  nCrates:3, kMin:1, kMax:2, domino:0,    numeral:0,   need:2, banner:"Range les dés dans la bonne caisse !", slug:'range-les-des' },
+      { stars:2, min:6,  max:10, nCrates:3, kMin:2, kMax:3, domino:0.4,  numeral:0,   need:2, banner:"Regroupe les points pour remplir la caisse !", slug:'regroupe-les-points' },
+      { stars:3, min:12, max:15, nCrates:2, kMin:3, kMax:4, domino:0.6,  numeral:0.4, need:2, banner:"Gros niveau ! Regroupe 3 dés ou 2 dominos !", slug:'gros-niveau-regroupe' },
     ];
     // Mode libre après les 3 étoiles : Max fort en maths continue tant qu'il veut,
     // cibles un cran au-dessus, jamais de fin ni d'échec (il quitte par ←).
-    const LIBRE = { min:12, max:18, nCrates:2, kMin:3, kMax:5, domino:0.6, numeral:0.5, banner:"Mode libre ! Encore une caisse ?" };
+    const LIBRE = { min:12, max:18, nCrates:2, kMin:3, kMax:5, domino:0.6, numeral:0.5, banner:"Mode libre ! Encore une caisse ?", slug:'mode-libre-encore-une-caisse' };
 
     let paletteIdx = 0;   // étoile en cours (0..2)
     let roundsDone = 0;   // rounds finis dans le palier courant
@@ -346,7 +346,12 @@
         tokens.push(...buildTokensFor(target, cfg, ci));
       }
       shuffle(tokens);
-      document.getElementById('banner').textContent = cfg.banner;
+      const bEl = document.getElementById('banner');
+      if (bEl.textContent !== cfg.banner) {
+        bEl.textContent = cfg.banner;
+        // Consigne parlée au changement de palier seulement (anti-répétition)
+        if (cfg.slug && window.SoundPool) SoundPool.phrase(cfg.slug, cfg.banner);
+      }
       render();
     }
 

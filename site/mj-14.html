@@ -654,7 +654,8 @@ function renderPuzzle(puzzle) {
     choicesEl.appendChild(btn);
   });
 
-  speak(type === 'bus' ? 'Quel bus manque dans la grille ?' : "Qu'est-ce qui manque dans la grille ?");
+  if (type === 'bus') SoundPool.phrase('quel-bus-manque', 'Quel bus manque dans la grille ?');
+  else SoundPool.phrase('qu-est-ce-qui-manque', "Qu'est-ce qui manque dans la grille ?");
 }
 
 // ─────────────────────────────────────────────────────────────

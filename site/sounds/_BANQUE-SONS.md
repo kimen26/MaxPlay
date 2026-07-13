@@ -15,7 +15,9 @@
 | `site/sounds/voix/h/` (22) | réactions Narrateur — idem | narrateur_h | `text_to_speech` |
 | `site/sounds/voix/wex/` (22) | réactions Wex — idem | wex | `text_to_speech` |
 | `site/sounds/voix/lieux/` (12) | noms des lieux des 2 hubs : `bus-<zone>.mp3` + `fusee-<zone>.mp3` (dodo, garage, lettres, monde, dinos, roulotte) | narrateur_f | `text_to_speech` |
-| `site/sounds/voix/phrases/` (10) | instructions fixes des jeux : trouve-le-meme-dino, combien-de-dinos, compte-encore, regardons-ensemble, il-vivait-quand, cest-parti, a-toi-de-jouer, cherche-bien, encore-une-fois, ouvre-bien-les-yeux | narrateur_h | `text_to_speech` |
+| `site/sounds/voix/phrases/` (28) | instructions fixes des jeux : trouve-le-meme-dino, combien-de-dinos, compte-encore, regardons-ensemble, il-vivait-quand, cest-parti, a-toi-de-jouer, cherche-bien, encore-une-fois, ouvre-bien-les-yeux + banque consignes 2026-07-13 (quel-bus-arrive-en-premier, qu-est-ce-qui-vient-ensuite, lequel-ne-va-pas, quel-bus-manque, qu-est-ce-qui-manque, compte-les-un-par-un, remplis-chaque-caisse, range-dans-la-bonne-boite, ecoute-le-premier-son, fais-monter-les-passagers, range-les-des, regroupe-les-points, gros-niveau-regroupe, mode-libre-encore-une-caisse, premier-son-l-ou-r, le-son-quon-entend, il-en-faut-beaucoup, terminus-fais-les-descendre) | narrateur_h | `text_to_speech` |
+| `site/sounds/pieces/` (6) | voicelines intro pièces échecs mj-37 : fou/tour/cavalier/dame/roi/pion `-intro.mp3` | narrateur_h | `text_to_speech` |
+| `site/sounds/voix/{f,h,wex}/etoile-gagnee.mp3` (3) | félicitation d'étoile parlée (« Tu as gagné une étoile ! »), jouée par `SoundPool.voiceLine` à l'atterrissage de l'étoile Golden | 3 voix | `text_to_speech` |
 | `site/audio/dinos/periodes/` (5) | trias, jurassique, cretace, cenozoique, pangee | narrateur_h | `text_to_speech` |
 | `site/audio/dinos/noms/` (60) | vocal du nom de chaque dino, `<id>.mp3` (ton `[excited]`, usage jeux) | narrateur_h | `text_to_speech` |
 | `site/audio/dinos/<id>-nom.mp3` (60) | copies à plat consommées par les MJ via le manifest (voir § API dinos) | narrateur_h | copie de noms/ + segments fiche antérieurs |
@@ -33,6 +35,7 @@ Voix résolues via `studio/narration/personnages/voix-meta/voice-map.json` (jama
 SoundPool.play(theme, volume)   // theme: victory | end-doux | success | error | apparition | collecte | deblocage
 SoundPool.voice(ton, volume)    // ton: 'positif' | 'doux' — pioche voix (f/h/wex) × phrase AU HASARD, anti-répétition
 SoundPool.phrase(slug, fallbackText, volume)  // MP3 de sounds/voix/phrases/, fallback TTS si absent
+SoundPool.voiceLine(slug, fallbackText, vol)  // ligne nommée × 1 des 3 voix (sounds/voix/{f,h,wex}/<slug>.mp3), ex 'etoile-gagnee'
 playEndSound(score, maxScore)   // fanfare de fin + voix aléatoire ~1.4s après (API historique, inchangée)
 playErrorSound()                // pool 'error'
 ```
@@ -76,14 +79,24 @@ Fonction locale `speakLieu(zone, txt)` : joue `sounds/voix/lieux/{bus|fusee}-<zo
 - **Dinos** : mj-24, mj-31 (nom réel + fallback), mj-28 (bouton 🔊), mj-33 (memory : flip + paire).
 - **Instructions** : mj-25 (trouve-le-meme + cherche-bien→voice), mj-26 (combien + compte-encore), mj-30 (regardons-ensemble). mj-24/31 : essaie-encore→voice.
 - **Hubs** : index2 (6 lieux), index3 (6 planètes) parlent en narratrice.
+- **Session 2026-07-13 (vraie voix partout)** :
+  - Consignes MP3 : mj-13a (premier bus), mj-13c (indice comptage), mj-14 (2 variantes grille), mj-15 (intrus), mj-16 (suite), mj-43/44/45 (banner parlé au changement de palier UNIQUEMENT — anti-répétition, slug par palier).
+  - `RegleInfo.init({slug})` : le 🔊 de la modal ❓ joue le MP3 si slug fourni (sinon TTS, comme avant).
+  - mj-37 : 6 voicelines pièces (`sounds/pieces/`) — les fichiers manquants existent désormais.
+  - Étoile parlée : `Golden._starFlight` → `SoundPool.voiceLine('etoile-gagnee')` à l'atterrissage.
+  - Fiches dino : 9 Cénozoïque complétés (taille/régime/funfact/recap) → `DINO_AUDIO` 60/60 dans dev-dinos.html.
+  - Fins silencieuses corrigées : mj-17, mj-18, mj-22, mj-39 + bug fanfare mj-42. Funfacts MP3 : mj-28, mj-33. Chaînage il-vivait-quand : mj-31. Mini-étoile : pool `apparition`.
+  - Décision produit : PAS de voix « Bravo » à chaque bonne réponse (ding en cours de partie, voix à la fin).
 
-## 5. Ce qui reste (TODO — après reset crédits ~10 juillet)
+## 5. Ce qui reste (TODO — MAJ 2026-07-13 session « vraie voix partout »)
 
-- **5 phrases générées mais pas posées** : cest-parti, a-toi-de-jouer, cherche-bien, encore-une-fois, ouvre-bien-les-yeux → à brancher au démarrage/rejeu des jeux.
+- **4 phrases orphelines restantes** : cest-parti, a-toi-de-jouer, encore-une-fois, ouvre-bien-les-yeux — points d'usage = décision produit Papa Yann (cherche-bien branchée mj-22).
 - **Périodes (5) pas encore branchées** dans le voyage/la frise (mj-31 dit le nom du dino, pas encore « Le Jurassique ! ») — assets prêts dans `audio/dinos/periodes/`.
 - **Hétérogénéité de ton** : les 9 mégafaune `-nom.mp3` sont en `[excited]` (ton jeu), les 51 autres en ton fiche. Homogénéiser si gênant.
-- **Phrases à nombre variable** ("Il y avait 4 dinos") : restent en TTS (non préenregistrables) — assumé.
-- **Passe 3 possible** : instructions des MJ non-dino (mj-01, mj-04…) encore en TTS.
+- **Phrases à nombre variable** ("Il y avait 4 dinos") : restent en TTS (non préenregistrables) — assumé. Idem gabarits « Trouve le bus 38 » (pas de Frankenstein MP3+TTS mi-phrase, décision 2026-07-13).
+- **mj-30 taille** : `-taille.mp3` = dialogue 1 dino, le jeu compare N dinos en dynamique — refonte écran révélation nécessaire, pas un branchement.
+- **mj-29 dico** : mapping `racine.cle` → fichiers `dico-*.mp3` non fiable sans table dédiée (risque mauvais son dans un jeu phonétique).
+- **index.html hub** : ne charge pas victory-sounds.js — pool `deblocage` non branché au hub.
 
 ---
 

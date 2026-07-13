@@ -294,7 +294,7 @@ function initRound(){
 /* ══ QUESTION ══ */
 function renderQuestion(){
   document.getElementById('q-text').innerHTML=`<span style="color:#ffe066;font-size:1.1rem;">🚌 Quel bus arrive en premier ?</span><br><span style="color:#aaa;font-size:0.85rem;">Appuie sur sa fiche !</span>`;
-  tts('Quel bus arrive en premier ?');
+  SoundPool.phrase('quel-bus-arrive-en-premier', 'Quel bus arrive en premier ?');
 }
 
 function tts(t){ TTS.speak(t, { rate: 0.85, volume: 0.9 }); }

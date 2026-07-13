@@ -163,6 +163,7 @@
   </div>
 
   <script src="js/sounds.js"></script>
+  <script src="js/victory-sounds.js"></script>
   <script src="js/feedback.js"></script>
   <script src="js/bus-svg.js"></script>
   <script src="js/data.js"></script>
@@ -353,6 +354,7 @@
     }
 
     function showVictory() {
+      try { playEndSound(1, 1); } catch(e) {}
       document.getElementById('victoryOverlay').classList.add('show');
       runPaintParade();
     }

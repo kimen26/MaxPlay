@@ -89,6 +89,7 @@
       else if (r < 0.6) this._miniStar();
     },
     _miniStar() {
+      try { if (typeof SoundPool !== 'undefined') SoundPool.play('apparition', 0.5); } catch (e) {}
       const s = document.createElement('div');
       s.className = 'fly-star mini';
       s.textContent = '★';
@@ -186,6 +187,8 @@
       anim.onfinish = () => {
         star.remove();
         if (slot) slot.classList.add('filled', 'pop');
+        // Félicitation parlée au moment où l'étoile atterrit (1 des 3 voix)
+        try { if (window.SoundPool && SoundPool.voiceLine) SoundPool.voiceLine('etoile-gagnee', 'Tu as gagné une étoile !'); } catch (e) {}
         if (typeof celebrate === 'function') { try { celebrate(); } catch (e) {} }
         else { try { confettiBurst(70); } catch (e) {} }
       };

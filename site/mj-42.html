@@ -466,12 +466,12 @@
       renderBoard();
       if (winner === 'max') {
         wins++;
-        try { playEndSound(true); } catch(e) {}
+        try { playEndSound(1, 1); } catch(e) {}
         showOverlay(true);
         checkPalierComplete();
       } else {
         // IA gagne : zéro pénalité, danse gentille + replay immédiat.
-        try { playEndSound(false); } catch(e) {}
+        try { playEndSound(0, 1); } catch(e) {}
         showOverlay(false);
       }
     }

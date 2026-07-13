@@ -2,9 +2,11 @@
 // Norme : studio/minijeux/docs/specs/NORME-i-REGLES.md
 //
 // API :
-//   RegleInfo.init({ texte, picto })
+//   RegleInfo.init({ texte, picto, slug })
 //     texte : 1 phrase de règle max (string)
 //     picto : séquence emoji courte, ex "🚌➡️🚪" (string)
+//     slug  : optionnel — slug MP3 de sounds/voix/phrases/ (voix réelle via
+//             SoundPool.phrase, fallback TTS). Sans slug : TTS comme avant.
 //
 // Injecte dans le header .hdr existant un bouton rond ❓ (à droite du titre)
 // qui ouvre une modal légère : picto + phrase + bouton 🔊 (speechSynthesis,
@@ -65,7 +67,7 @@
     }
   }
 
-  function init({ texte, picto }) {
+  function init({ texte, picto, slug }) {
     injectStyle();
 
     const hdr = document.querySelector('.hdr');
@@ -100,7 +102,8 @@
     overlay.addEventListener('click', close);
     overlay.querySelector('#ri-btn-son').addEventListener('click', (e) => {
       e.stopPropagation();
-      speak(texte);
+      if (slug && window.SoundPool && SoundPool.phrase) SoundPool.phrase(slug, texte);
+      else speak(texte);
     });
   }
 

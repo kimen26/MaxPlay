@@ -9,6 +9,26 @@
 
 ---
 
+## 2026-07-13 — Atelier avatar v3 familles couleurs (commit d706416a — UX liste tap/nom/couleurs-origine + recolor par familles hue-shift)
+
+**Owner** : main agent (UX avatar + mécanique recolor) · game-pmo (log)
+
+**Trigger** : Papa Yann retour atelier avatar — « raffinement couleurs enfant » après validation Design System v1 (commit 91ef327b). Benchmark : audit 29 avatars dinos → 1-3 familles teinte chacun.
+
+**Fait** :
+- **UX décision** : liste dinos FERMÉE au tap sur grand avatar, ROUVRE à choix · nom affiché au-dessus · grille 3 colonnes + noms · nouveau dino arrive avec **couleurs d'ORIGINE** (pas recolor auto)
+- **Recolor technique** : extractFamilies (8 clusters groupés teinte, max 3 familles, gris à part) + recolorSmart (hue-shift par famille, luminosité relative conservée : couleur + ombre tournent ENSEMBLE)
+- **3 propositions nuancier** : ✨ tout-teinte nuancé / 🌿 duo voisin / ⚡ contraste complémentaire (décalage PAR famille)
+- **Audit 29 avatars** : chacun 1-3 familles (Tritri 3 : h77 80%/h30 15%/h120 5% ; Rex 1 ; Anky 3 ; seule Libelle >3) → outil ready pour itérations futures
+- **Bug détecté & fixé** : paintInto(null) retombait sur getColors() avatar validé → couleurs d'un autre dino. Règle : curTargets null = src direct, jamais paintInto
+
+**État au reboot** :
+- ✅ Atelier avatar v3 coloration déployé (commit d706416a)
+- Mécanique recolor figée (extractFamilies/recolorSmart par famille, pas RGB brut)
+- Audit 29 avatars référencé pour futures évolutions
+
+---
+
 ## 2026-07-13 — Atelier avatar durcissement API coloration (commit 53f1cfbc — fix triplets toujours noirs)
 
 **Owner** : main agent (correction coloration + API officielle) · game-pmo (log)

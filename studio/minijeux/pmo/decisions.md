@@ -8,6 +8,45 @@
 
 ---
 
+## 2026-07-13 — Atelier avatar UX — liste dinos au tap, nom affiché, couleurs d'origine (commit d706416a)
+
+**Contexte** : Papa Yann refinement atelier avatar post-Design System v1. UX : enfant choisit dino dans liste, voit nom + avatar original avant recolor.
+
+**Décision figée** :
+
+**UX liste dinos** : affichage basé TAP sur le grand avatar affiché → **liste OUVERTE** au tap, **REFERMÉE après choix dino**. Jamais affichée en permanence (confiance Max : pas d'info overload).
+
+**Affichage** :
+- Nom dino au-dessus du grand avatar
+- Grille 3 colonnes avec noms (lisibilité enfant 3.5-4 ans)
+- Nouveau dino arrive avec **couleurs d'ORIGINE** (pas recolor auto au chargement)
+
+**Raison** : clarté enfant (Max confus par changement couleur au clic) + découverte progressive (nom visible d'abord) + jouabilité fluide (pas refonte visuelle à chaque sélection).
+
+---
+
+## 2026-07-13 — Recolor par familles teinte — extractFamilies (8 clusters) + hue-shift par famille (commit d706416a)
+
+**Contexte** : Papa Yann validation refinement atelier avatar. Mécanique recolor : au lieu de matcher RGB brut, grouper couleurs par famille teinte.
+
+**Décision figée** :
+
+**Algorithm recolor** :
+- **extractFamilies(palette)** : groupe 8 clusters par teinte, max 3 familles par avatar, gris à part (hue∈[0,30] ∪ [330,360] = gris)
+- **recolorSmart(srcColor, destFamily)** : hue-shift famille entière (teinte imposée), **luminosité relative conservée** (couleur + ombre tournent ENSEMBLE)
+- Anti-pattern gravé : matchRGB brut = moche, saturations disparates
+
+**UX 3 propositions nuancier** :
+- ✨ **tout-teinte nuancé** : variance forte historique (tous les presets)
+- 🌿 **duo voisin** : 2 teintes adjacentes (conservation harmonie)
+- ⚡ **contraste complémentaire** : décalage PAR famille (compensation contraste)
+
+**Audit référence** : 29 avatars validés 2026-07-13 → chacun 1-3 familles (Tritri 3, Rex 1, Anky 3, seule Libelle >3). Benchmark pour évolutions futures.
+
+**Raison** : confiance Max (couleurs prévisibles, pas magie RGB) + maintenance (1 algo, pas 3 matchings parallèles) + scalabilité future (3 propositions couvrent 95% usages enfant).
+
+---
+
 ## 2026-07-13 — Atelier avatar nuancier coloration — 3 triplets générés autour teinte (commit 53f1cfbc)
 
 **Contexte** : Papa Yann retour atelier avatar — triplets bloqués noirs (bug coloration parallèle hex→NaN). Correction : API Avatar.color officielle centralisée.

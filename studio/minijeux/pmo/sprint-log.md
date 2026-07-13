@@ -9,6 +9,25 @@
 
 ---
 
+## 2026-07-13 — Atelier avatar durcissement API coloration (commit 53f1cfbc — fix triplets toujours noirs)
+
+**Owner** : main agent (correction coloration + API officielle) · game-pmo (log)
+
+**Trigger** : Papa Yann retour atelier avatar — « triplets toujours noirs, n'applique pas sur l'avatar ». Root cause : API coloration parallèle (hex strings → NaN → noir).
+
+**Fait** :
+- **API Avatar.color officielle** : unique source coloration (`hex`, `fromHex`, `rgb2hsl`, `hsl2rgb`, `vivid`, `bases(src,cb)`) — JAMAIS réimplémenter parallèle
+- **Triplets générés** : 11 couleurs → 3 triplets autour teinte (teinte imposée, saturation/luminosité des bases conservées, algo presets historique) + aperçu immédiat
+- **UX nuancier** : 🎲 variance forte (historique) · ↺ origine · fleur retouche 1 seule base
+- **Smoke Playwright pixel-level** : 19/19 pass (jamais noir, teinte appliquée, stockage [r,g,b] validé)
+- **Coût** : 0 crédits EL, test local 15 min
+
+**État au reboot** :
+- ✅ Atelier avatar coloration DÉPLOYÉ (commit 53f1cfbc, Playwright 19/19 vert)
+- API Avatar durcissement figée (pas de réimplémentation futures tolérées)
+
+---
+
 ## 2026-07-13 — Design System v1 appliqué site entier (commit 91ef327b — 40 MJ convertis + atelier avatar + accueil refondu)
 
 **Owner** : agents parallèles (conversion MJ 40 × règles + système avatar) · game-archiviste (structure gabarit v2 header) · game-pmo (PMO log)

@@ -8,6 +8,29 @@
 
 ---
 
+## 2026-07-13 — Atelier avatar nuancier coloration — 3 triplets générés autour teinte (commit 53f1cfbc)
+
+**Contexte** : Papa Yann retour atelier avatar — triplets bloqués noirs (bug coloration parallèle hex→NaN). Correction : API Avatar.color officielle centralisée.
+
+**Décision figée** :
+
+Nuancier avatar 11 couleurs → **3 triplets GÉNÉRÉS autour teinte** (algo presets : teinte imposée, saturation/luminosité bases conservées, pas réimplémentation parallèle tolérée).
+
+**UX** :
+- Aperçu immédiat des triplets (pas de lag)
+- 🎲 bouton variance forte (historique)
+- ↺ bouton origine (reset base)
+- fleur bouton retouche 1 base seulement
+
+**Techniquement** :
+- Unique source API coloration = `Avatar.color` (site/js/avatar-picker.js)
+- Jamais dupliquer logique coloration ailleurs (→ hex string crashes = anti-pattern)
+- Validation Playwright pixel-level 19/19 (teinte appliquée, [r,g,b] stocké, jamais noir)
+
+**Raison** : confiance Max (couleur prévisible, pas magie noire) + maintenance future (1 point d'entrée, pas 3 implémentations) + compatibilité future ambiances (swap teinte selon ambiance, 1 ligne).
+
+---
+
 ## 2026-07-13 — Design System v1 adopté site entier — source de vérité site/css/mp-theme.css + site/js/mp-theme.js (commit 91ef327b)
 
 **Contexte** : Papa Yann a validé le package Design System v1 (2 dépôts inbox 2026-07-12/13). Agents vague 3 ont converti 40 MJ en 24h, harnais vert.

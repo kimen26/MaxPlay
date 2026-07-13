@@ -22,7 +22,7 @@ export async function run({ page, ok }) {
   ok('Bouton règles ❓ présent', await page.locator('#btn-regle').count() === 1);
   await page.click('#btn-regle');
   ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);
-  await page.click('#ri-overlay');
+  await page.click('#ri-close'); // v3 : fermeture explicite ✕ (panneau bottom-sheet)
   ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
 
   // ── Placement CORRECT : la carte entre dans sa boîte ─────────────────

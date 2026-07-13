@@ -20,7 +20,7 @@ export async function run({ page, ok }) {
   ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);
   const regleTexteEarly = (await page.locator('.ri-text').textContent() || '').trim();
   ok('Texte de règle correspond', regleTexteEarly === "Aligne tes 3 pions en passant par le point d'eau !", regleTexteEarly);
-  await page.click('#ri-overlay');
+  await page.click('#ri-close'); // v3 : fermeture explicite ✕ (panneau bottom-sheet)
   ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
 
   // ── Chemin gagnant scripté ──────────────────────────────────────────

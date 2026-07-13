@@ -27,7 +27,7 @@ export async function run({ page, ok }) {
   ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);
   const regleTexteEarly = (await page.locator('.ri-text').textContent() || '').trim();
   ok('Texte de règle correspond', regleTexteEarly === 'Saute par-dessus les pions dodo pour les faire disparaître !', regleTexteEarly);
-  await page.click('#ri-overlay');
+  await page.click('#ri-close'); // v3 : fermeture explicite ✕ (panneau bottom-sheet)
   ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
 
   // Saut 1 : tap Max (3,3) → tap case atterrissage (3,1)

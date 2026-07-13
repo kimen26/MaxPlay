@@ -1,10 +1,13 @@
 // ─── back-button.js — Composant retour menu unifié ───
 //
-// Flèche ← simple et sobre, header compact (~36px).
+// v2 (package v3, 2026-07-14) : ← FANTÔME — cercle discret 42px, fond quasi
+// transparent, chevron fin en SVG (fini le gros ← moche).
 // Auto-init au DOMContentLoaded : remplace tout élément .back / .back-mj / .back-btn.
 
 (function () {
   'use strict';
+
+  const CHEVRON = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="14,5 7,12 14,19"/></svg>';
 
   function createBackButton(href, ariaLabel) {
     href = href || 'index.html';
@@ -12,22 +15,20 @@
 
     const btn = document.createElement('a');
     btn.href = href;
-    btn.className = 'mp-back-btn';
+    btn.className = 'mp-back-btn mp-ghost-back';
     btn.setAttribute('aria-label', ariaLabel);
-    btn.textContent = '←';
+    btn.innerHTML = CHEVRON;
 
     btn.style.cssText = [
       'display:inline-flex',
       'align-items:center',
       'justify-content:center',
-      'width:44px',
-      'height:44px',
+      'width:42px',
+      'height:42px',
       'padding:0',
-      'color:#fff',
-      'font-size:19px',
-      'font-weight:900',
-      'background:rgba(255,255,255,0.09)',
-      'border:none',
+      'color:var(--ink-2, #c3d0e8)',
+      'background:rgba(255,255,255,0.06)',
+      'border:1px solid rgba(255,255,255,0.12)',
       'border-radius:50%',
       'cursor:pointer',
       'text-decoration:none',

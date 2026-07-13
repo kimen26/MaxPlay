@@ -25,7 +25,7 @@ export async function run({ page, ok }) {
   ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);
   const regleTexteEarly = (await page.locator('.ri-text').textContent() || '').trim();
   ok('Texte de règle correspond', regleTexteEarly === 'Trouve le trou qui remplit le grenier PILE-POIL !', regleTexteEarly);
-  await page.click('#ri-overlay');
+  await page.click('#ri-close'); // v3 : fermeture explicite ✕ (panneau bottom-sheet)
   ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
 
   // ── Mauvais trou : pas de victoire, pas d'état "perdu", rien de cassé ──

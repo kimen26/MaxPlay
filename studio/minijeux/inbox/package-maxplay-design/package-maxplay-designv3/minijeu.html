@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MaxPlay — Template minijeu v2</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+<style>
+  .page { max-width:480px; margin:0 auto; min-height:100vh; display:flex; flex-direction:column; }
+
+  /* ══ EN-TÊTE v2 (validé) : ← fantôme · icône+titre · savant fou ══ */
+  .back {
+    width:42px; height:42px; border-radius:50%; border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.06); color:var(--ink-2); cursor:pointer;
+    display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  }
+  .prof {
+    width:46px; height:46px; border-radius:15px; cursor:pointer; position:relative; flex-shrink:0;
+    background:var(--accent-soft); border:1px solid var(--accent);
+    box-shadow:0 2px 6px rgba(0,0,0,.25);
+    display:flex; align-items:center; justify-content:center; font-size:22px;
+  }
+  .prof .bulle {
+    position:absolute; top:-5px; right:-5px; width:18px; height:18px; border-radius:50%;
+    background:var(--gold); color:var(--gold-ink); font-size:11px; font-weight:900;
+    display:flex; align-items:center; justify-content:center;
+  }
+
+  /* zone jeu + footer */
+  .zone-jeu { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; padding:10px 16px; }
+  .footer { padding:0 16px 18px; }
+
+  /* ══ PANNEAU ? : règle (accent) + avis (violet parent FIXE) ══ */
+  .voile { position:fixed; inset:0; background:rgba(5,8,18,.7); backdrop-filter:blur(2px); display:none; }
+  .voile.on { display:block; }
+  .panneau {
+    position:fixed; left:12px; right:12px; bottom:12px; top:56px; max-width:456px; margin:0 auto;
+    background:var(--card); border:1px solid var(--line); border-radius:22px;
+    display:none; flex-direction:column; overflow:hidden; z-index:10;
+    animation:modalIn .3s ease both;
+  }
+  .panneau.on { display:flex; }
+  @keyframes modalIn { from{opacity:0;transform:translateY(20px) scale(.96)} to{opacity:1;transform:none} }
+  .p-tabs { display:flex; align-items:center; gap:8px; padding:12px 14px 8px; }
+  .p-tab { border-radius:999px; padding:7px 14px; font-weight:900; font-size:12.5px; cursor:pointer;
+           background:rgba(255,255,255,.07); color:var(--ink-3); }
+  .p-tab.regle.on { background:var(--accent); color:var(--accent-ink); }
+  .p-tab.avis.on { background:var(--parent); color:var(--parent-ink); }
+  .p-close { margin-left:auto; width:34px; height:34px; border-radius:50%; border:0; cursor:pointer;
+             background:rgba(255,255,255,.1); color:var(--ink); font-size:15px; font-weight:900; }
+  .p-corps { flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:9px; padding:2px 14px; }
+  /* UN SEUL bouton audio pour toutes les règles (validé) */
+  .lire-tout { margin:0 14px 6px; display:flex; align-items:center; gap:10px; cursor:pointer;
+               background:rgba(47,191,143,.12); border:1px solid rgba(47,191,143,.35);
+               border-radius:14px; padding:9px 12px; }
+  .lire-tout i { width:34px; height:34px; flex-shrink:0; border-radius:50%; background:var(--ok);
+                 display:flex; align-items:center; justify-content:center; font-style:normal; font-size:14px; }
+  /* étape de règle : titre + 2e ligne d'explication */
+  .etape { display:flex; align-items:flex-start; gap:11px; background:rgba(255,255,255,.05); border-radius:16px; padding:12px; }
+  .etape .num { width:38px; height:38px; flex-shrink:0; border-radius:50%; background:var(--accent-soft);
+                color:var(--accent); display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:900; }
+  .etape b { display:block; font-size:13.5px; }
+  .etape small { font-size:11.5px; font-weight:700; color:var(--ink-3); line-height:1.45; }
+  /* encadré étoiles (la légende vert/orange/rouge vit ICI, pas dans le jeu) */
+  .gagner { background:var(--gold-soft); border:1px solid rgba(255,209,102,.25); border-radius:16px;
+            padding:12px; display:flex; flex-direction:column; gap:7px; }
+  .gagner .li { display:flex; align-items:center; gap:9px; font-size:11.5px; font-weight:800; color:var(--ink-2); }
+  .gagner .li i { width:24px; height:24px; border-radius:50%; font-style:normal; font-size:11px; font-weight:900;
+                  display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  /* onglet avis : coin parent SEUL (RGPD : rien demandé à l'enfant) */
+  .parent-box { background:rgba(255,255,255,.05); border-radius:16px; padding:14px;
+                display:flex; flex-direction:column; gap:9px; margin:0 0 4px; }
+  .parent-box textarea { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+                         border-radius:12px; padding:11px; font:700 12.5px 'Nunito',sans-serif;
+                         color:var(--ink); min-height:80px; resize:vertical; }
+  .dicter { width:44px; height:44px; border-radius:50%; border:1.5px solid var(--parent); cursor:pointer;
+            background:var(--parent-soft); color:var(--parent); font-size:17px; }
+  .envoyer { flex:1; height:44px; border-radius:999px; border:0; cursor:pointer;
+             background:var(--parent); color:var(--parent-ink); font:900 13.5px 'Nunito',sans-serif; }
+</style>
+</head>
+<body data-ambiance="nuit">
+<div class="page">
+
+  <!-- ══ EN-TÊTE ══ -->
+  <div class="mp-header">
+    <button class="back" onclick="history.back()">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="14,5 7,12 14,19"/></svg>
+    </button>
+    <div class="mp-title"><span style="font-size:24px">🦕</span>Le plus grand ?</div>
+    <!-- UN SEUL bouton aide : le savant fou (règle + avis dans le même panneau) -->
+    <button class="prof" onclick="ouvrir('regle')">🧑‍🔬<span class="bulle">?</span></button>
+  </div>
+
+  <!-- ══ PISTE DE QUESTIONS (4 à 8, générée depuis la config du jeu) ══
+       ★ résultat conservé : vert = 1er coup · orange = après essai · rouge doux = aidé -->
+  <div class="mp-track" id="piste">
+    <div class="mp-q done-first">✓</div>
+    <div class="mp-q done-retry">✓</div>
+    <div class="mp-q current">3</div>
+    <div class="mp-q todo">4</div>
+    <div class="mp-q todo">5</div>
+    <span class="grow"></span>
+    <span class="mp-g-stars">★★<span class="off">★</span></span>
+  </div>
+  <!-- PAS de légende ici : elle vit dans le panneau ? (encadré or) -->
+
+  <!-- ══ CONSIGNE : texte seul, l'audio se lance TOUT SEUL au début de la question ══ -->
+  <div class="mp-consigne" style="justify-content:center; text-align:center">
+    <b>Tape le plus GRAND dino !</b>
+  </div>
+
+  <!-- ══ ZONE DE JEU ══
+       ⚠ Le contenu du minijeu lui-même demande une réflexion cohérente et
+       complète PAR JEU (mécanique, aides 💡, difficulté par étoile) — ce
+       template ne norme QUE l'en-tête, la piste, la consigne et le panneau ?.
+       Feedbacks : MaxFX.markPoint() par bonne réponse, finalStar() + belt() en fin. -->
+  <div class="zone-jeu">
+    <div class="mp-card" style="padding:40px 30px; text-align:center; color:var(--ink-3); font-weight:800">
+      zone de jeu<br><span style="font-size:12px">(spécifique à chaque minijeu)</span>
+    </div>
+  </div>
+
+  <div class="footer">
+    <button class="mp-btn-primary">C'est bon ! ✓</button>
+  </div>
+</div>
+
+<!-- ══ PANNEAU ? — 2 onglets. S'ouvre SEUL à la 1ère partie d'un jeu. ══ -->
+<div class="voile" id="voile" onclick="fermer()"></div>
+<div class="panneau" id="panneau">
+  <div class="p-tabs">
+    <div style="width:34px;height:34px;border-radius:12px;background:var(--accent-soft);display:flex;align-items:center;justify-content:center;font-size:17px">🧑‍🔬</div>
+    <span class="p-tab regle on" onclick="onglet('regle')">📖 La règle</span>
+    <span class="p-tab avis" onclick="onglet('avis')">💬 Avis</span>
+    <button class="p-close" onclick="fermer()">✕</button>
+  </div>
+
+  <!-- onglet RÈGLE (couleur = accent du thème) -->
+  <div id="tab-regle" style="display:flex;flex-direction:column;flex:1;overflow:hidden">
+    <div class="lire-tout"><i>🔊</i><b style="font-size:12.5px;color:#c3f0dd">Écoute toutes les règles</b></div>
+    <div class="p-corps">
+      <div class="etape">
+        <div class="num">1</div>
+        <div class="grow"><b>Je regarde les 3 dinos 👀</b><small>Ils ne sont pas pareils : un petit, un moyen, un géant !</small></div>
+      </div>
+      <div class="etape">
+        <div class="num">2</div>
+        <div class="grow"><b>Je tape le plus GRAND 👆</b><small>Si je me trompe, je peux réessayer. Le professeur 🧑‍🔬 peut m'aider avec 💡.</small></div>
+      </div>
+      <div class="etape">
+        <div class="num">3</div>
+        <div class="grow"><b>5 questions, de plus en plus dur 💪</b><small>À la fin, parfois les dinos se cachent à moitié… ou sont de dos !</small></div>
+      </div>
+      <div class="gagner">
+        <b style="font-size:12.5px;color:var(--gold)">Comment gagner les étoiles ? ★★★</b>
+        <div class="li"><i style="background:var(--ok);color:#fff">✓</i>juste du 1ᵉʳ coup = vert</div>
+        <div class="li"><i style="background:var(--retry);color:#3a2000">✓</i>juste après 1 essai = orange</div>
+        <div class="li"><i style="background:var(--helped);color:#fff">💡</i>avec de l'aide = rouge doux</div>
+        <div class="li" style="color:var(--gold)">tout vert = l'étoile de champion ⭐ !</div>
+      </div>
+    </div>
+    <div style="padding:10px 14px 14px">
+      <button class="mp-btn-primary" style="height:48px;font-size:14.5px" onclick="fermer()">J'ai compris ! 👍</button>
+    </div>
+  </div>
+
+  <!-- onglet AVIS (violet parent FIXE — identique dans toutes les ambiances) -->
+  <div id="tab-avis" style="display:none;flex-direction:column;flex:1;overflow:hidden">
+    <div class="p-corps" style="padding-top:4px">
+      <div class="parent-box">
+        <b style="font-size:13px">👨‍👦 Coin des parents</b>
+        <textarea placeholder="Un bug ? Une idée ? Trop dur, trop facile ?…"></textarea>
+        <div style="display:flex;gap:8px">
+          <button class="dicter" title="dicter au lieu d'écrire">🎙️</button>
+          <button class="envoyer">Envoyer 📨</button>
+        </div>
+      </div>
+      <div class="muted" style="text-align:center;font-size:11px;line-height:1.5">rien n'est demandé à l'enfant — zéro donnée le concernant 👍</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function ouvrir(tab) { document.getElementById('voile').classList.add('on'); document.getElementById('panneau').classList.add('on'); onglet(tab); }
+function fermer() { document.getElementById('voile').classList.remove('on'); document.getElementById('panneau').classList.remove('on'); }
+function onglet(t) {
+  document.getElementById('tab-regle').style.display = t === 'regle' ? 'flex' : 'none';
+  document.getElementById('tab-avis').style.display = t === 'avis' ? 'flex' : 'none';
+  document.querySelector('.p-tab.regle').classList.toggle('on', t === 'regle');
+  document.querySelector('.p-tab.avis').classList.toggle('on', t === 'avis');
+}
+// INTÉGRATION : à la 1ère ouverture d'un jeu (localStorage), appeler ouvrir('regle') automatiquement.
+</script>
+</body>
+</html>

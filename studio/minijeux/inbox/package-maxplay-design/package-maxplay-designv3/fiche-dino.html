@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MaxPlay — Fiche dino</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+<style>
+  .page { max-width:480px; margin:0 auto; min-height:100vh; display:flex; flex-direction:column; }
+  /* ══ GALERIE : photo ~moitié d'écran (mode portrait), TOUJOURS en haut ══ */
+  .galerie { position:relative; height:46vh; min-height:280px; margin:0 14px; border-radius:var(--r-card); overflow:hidden;
+             background:repeating-linear-gradient(45deg, var(--card-2) 0 14px, var(--card) 14px 28px);
+             display:flex; align-items:center; justify-content:center; }
+  .nav { position:absolute; top:50%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%; border:0; cursor:pointer;
+         background:rgba(10,18,38,.75); color:#fff; font-size:18px; font-weight:900; }
+  .compteur { position:absolute; bottom:8px; right:10px; font-size:11px; font-weight:900; color:var(--ink-3);
+              background:rgba(10,18,38,.8); border-radius:8px; padding:3px 8px; }
+  /* pellicule : CHAQUE image visible et tapable, vidéos marquées ▶ or */
+  .pellicule { display:flex; gap:6px; padding:8px 14px 0; overflow-x:auto; }
+  .vignette { width:56px; height:42px; flex-shrink:0; border-radius:var(--r-thumb); background:var(--card-2);
+              border:2px solid transparent; cursor:pointer; position:relative; opacity:.65; }
+  .vignette.on { border-color:var(--gold); opacity:1; }
+  .vignette .video { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+  .vignette .video i { width:17px; height:17px; border-radius:50%; background:var(--gold); color:var(--gold-ink);
+                       font-style:normal; font-size:9px; font-weight:900; display:flex; align-items:center; justify-content:center; }
+  /* bannière audio globale (structure existante conservée) */
+  .audio-all { margin:10px 14px 0; display:flex; align-items:center; gap:11px; cursor:pointer;
+               background:linear-gradient(135deg,#7b46d9,#9a5ee8); border-radius:14px; padding:11px 13px; }
+  /* sections colorées existantes (histoire violet / taille bleu / vie vert / truc fou or) */
+  .sect { margin:9px 14px 0; border-radius:14px; padding:11px 13px; }
+  .sect .head { display:flex; align-items:center; gap:8px; }
+  .sect .head b { flex:1; font-size:14px; color:#fff; }
+  .sect .head button { width:28px; height:28px; border-radius:9px; border:0; cursor:pointer; background:rgba(255,255,255,.18); font-size:12px; }
+  .sect p { margin:5px 0 0; font-size:12.5px; line-height:1.55; }
+</style>
+</head>
+<body data-ambiance="nuit">
+<div class="page">
+  <div class="mp-header">
+    <button class="mp-back" onclick="location.href='dinos-liste.html'">←</button>
+    <div class="mp-title">Carcharodontosaure</div>
+  </div>
+
+  <!-- photo énorme (≈ moitié d'écran) + swipe -->
+  <div class="galerie">
+    <span class="muted" style="background:rgba(10,18,38,.8);padding:4px 10px;border-radius:8px;font-family:monospace;font-size:11px">photo / vidéo plein cadre — swipe ‹ ›</span>
+    <button class="nav" style="left:10px">‹</button>
+    <button class="nav" style="right:10px">›</button>
+    <span class="compteur">3 / 12</span>
+  </div>
+
+  <!-- pellicule -->
+  <div class="pellicule">
+    <div class="vignette on"></div>
+    <div class="vignette"><span class="video"><i>▶</i></span></div>
+    <div class="vignette"></div>
+    <div class="vignette"></div>
+    <div class="vignette"><span class="video"><i>▶</i></span></div>
+    <div class="vignette"></div>
+    <div class="vignette" style="display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;color:var(--ink-3)">+6</div>
+  </div>
+
+  <!-- audio global -->
+  <div class="audio-all">
+    <span style="font-size:16px">🎙️</span>
+    <b class="grow" style="font-size:13px;color:#fff">Écoute toute l'histoire de Carcharodontosaure</b>
+    <span style="width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.22);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:12px">▶</span>
+  </div>
+
+  <!-- sections existantes, ordre et couleurs conservés -->
+  <div class="sect" style="background:linear-gradient(160deg,#5b3aa8,#4a2f8a)">
+    <div class="head"><span>🦖</span><b>Son histoire</b><button>🔊</button></div>
+    <p style="color:#e6dcff">« Carcharodontosaurus », trois morceaux grecs ! Carcharo = pointu et déchiqueté — le mot qui a donné « requin » !…</p>
+  </div>
+  <div class="sect" style="background:linear-gradient(160deg,#155a70,#0f4658)">
+    <div class="head"><span>📏</span><b>Sa taille</b><button>🔊</button></div>
+    <p style="color:#d2f0f7">13 m — aussi long qu'un bus RATP ! · 3,8 m · 7 000 kg</p>
+  </div>
+  <div class="sect" style="background:linear-gradient(160deg,#1d7a4a,#166039)">
+    <div class="head"><span>🍖</span><b>Sa vie de dino</b><button>🔊</button></div>
+    <p style="color:#d8f5e2">Carnivore · grands herbivores africains · solitaire</p>
+  </div>
+  <div class="sect" style="background:linear-gradient(160deg,#8a6d1a,#6d5512); margin-bottom:16px">
+    <div class="head"><span>✨</span><b>Le truc fou</b><button>🔊</button></div>
+    <p style="color:#f5ecc8">Des dents en forme de dents de requin — couper comme un couteau !</p>
+  </div>
+</div>
+</body>
+</html>

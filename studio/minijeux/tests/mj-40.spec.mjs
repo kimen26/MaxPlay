@@ -60,6 +60,6 @@ export async function run({ page, ok }) {
   ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);
   const regleTexte = (await page.locator('.ri-text').textContent() || '').trim();
   ok('Texte de règle correspond', regleTexte === 'Place les 7 pièces sur la silhouette ! Tape une pièce pour la tourner.', regleTexte);
-  await page.click('#ri-overlay');
+  await page.click('#ri-close'); // v3 : fermeture explicite ✕ (panneau bottom-sheet)
   ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
 }

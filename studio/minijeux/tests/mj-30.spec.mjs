@@ -14,6 +14,16 @@ export async function run({ page, ok }) {
     window.Audio = FakeAudio;
   });
 
+  // Panneau règle v3 (savant fou 🧑‍🔬) : s'ouvre TOUT SEUL à la 1ʳᵉ partie (validé
+  // package v3) → on vérifie puis on le ferme pour dérouler le jeu.
+  await page.waitForTimeout(800);
+  ok('panneau règle ouvert automatiquement à la 1ʳᵉ partie', (await page.locator('#ri-panneau.on').count()) === 1);
+  ok('bouton savant fou présent dans l\'en-tête', (await page.locator('#btn-regle').count()) === 1);
+  ok('onglet avis (violet parent) présent', (await page.locator('#ri-tab-avis-btn').count()) === 1);
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
+  ok('panneau refermé par « J\'ai compris ! »', (await page.locator('#ri-panneau.on').count()) === 0);
+
   ok('DINO_POOL chargé', await page.evaluate(() => typeof DINO_POOL !== 'undefined' && DINO_POOL.length >= 40));
   ok('Niveau 1 = 4 billes (standard golden : 4/6/8 selon etoiles)', (await page.locator('.pip').count()) === 4);
   ok('1re bille marquée courante', (await page.locator('.pip.cur').count()) === 1);

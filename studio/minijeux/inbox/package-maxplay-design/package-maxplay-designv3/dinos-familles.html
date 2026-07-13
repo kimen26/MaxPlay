@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MaxPlay — Les Dinosaures</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+<style>
+  .page { max-width:480px; margin:0 auto; min-height:100vh; display:flex; flex-direction:column; }
+  .tabs { display:flex; gap:8px; padding:8px 16px; }
+  .tab { border-radius:999px; padding:8px 13px; font-weight:800; font-size:12.5px; cursor:pointer; background:rgba(255,255,255,.08); color:var(--ink-2); }
+  .tab.on { background:var(--gold); color:var(--gold-ink); font-weight:900; }
+  /* 6 familles = 1 écran, zéro scroll */
+  .familles { display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:8px 16px 16px; flex:1; }
+  .famille { border-radius:var(--r-card); padding:12px; display:flex; flex-direction:column; gap:4px; justify-content:center; cursor:pointer; }
+  .famille .n { font-size:12px; font-weight:900; color:var(--gold); }
+</style>
+</head>
+<body data-ambiance="nuit">
+<div class="page">
+
+  <!-- en-tête encyclopédie : PAS de compteur ⭐ (validé) -->
+  <div class="mp-header">
+    <button class="mp-back" onclick="location.href='accueil.html'">←</button>
+    <div class="mp-title"><span style="font-size:22px">📚</span>Les Dinosaures</div>
+    <button class="mp-hbtn">🔊</button>
+  </div>
+
+  <div class="tabs">
+    <span class="tab on">🦴 Familles</span>
+    <span class="tab" onclick="location.href='voyage.html'">⏳ Le voyage</span>
+  </div>
+
+  <!-- couleur par famille : rouge/vert/gris/orange/violet/bleu -->
+  <div class="familles">
+    <div class="famille" style="background:rgba(214,69,54,.12); border:1px solid rgba(214,69,54,.4)" onclick="location.href='dinos-liste.html'">
+      <span style="font-size:30px">🦖</span><b style="font-size:14px">Théropodes</b>
+      <span style="font-size:11px;font-weight:700;color:#e8a49c">chasseurs à 2 pattes</span><span class="n">13 dinos →</span>
+    </div>
+    <div class="famille" style="background:rgba(47,191,143,.1); border:1px solid rgba(47,191,143,.4)">
+      <span style="font-size:30px">🦕</span><b style="font-size:14px">Sauropodes</b>
+      <span style="font-size:11px;font-weight:700;color:#9cd9c0">géants à long cou</span><span class="n">7 dinos →</span>
+    </div>
+    <div class="famille" style="background:rgba(154,164,182,.1); border:1px solid rgba(154,164,182,.4)">
+      <span style="font-size:30px">🦴</span><b style="font-size:14px">Thyréophores</b>
+      <span style="font-size:11px;font-weight:700;color:#b9c2d1">les armures à pics</span><span class="n">5 dinos →</span>
+    </div>
+    <div class="famille" style="background:rgba(242,162,92,.1); border:1px solid rgba(242,162,92,.4)">
+      <span style="font-size:30px">🛡️</span><b style="font-size:14px">Cératopsiens</b>
+      <span style="font-size:11px;font-weight:700;color:#ecc39e">cornus à collerette</span><span class="n">6 dinos →</span>
+    </div>
+    <div class="famille" style="background:rgba(201,164,255,.1); border:1px solid rgba(201,164,255,.4)">
+      <span style="font-size:30px">🦆</span><b style="font-size:14px">Ornithopodes</b>
+      <span style="font-size:11px;font-weight:700;color:#d3c0ee">les becs de canard</span><span class="n">3 dinos →</span>
+    </div>
+    <div class="famille" style="background:rgba(127,180,255,.1); border:1px solid rgba(127,180,255,.4)">
+      <span style="font-size:30px">🌊</span><b style="font-size:14px">Mers &amp; ciel</b>
+      <span style="font-size:11px;font-weight:700;color:#a8c6ee">pas de vrais dinos !</span><span class="n">6 →</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

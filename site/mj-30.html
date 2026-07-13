@@ -96,11 +96,12 @@
     </div>
     <div class="pips" id="pips"></div>
 
-    <div class="qbox">
-      <div class="instruction-text" id="instruction">…</div>
-      <button class="tts-btn" id="repeatBtn"><span>🔊</span><span>Écouter</span></button>
-      <div class="mode-badge" id="modeBadge"></div>
+    <!-- consigne v3 : texte seul centré, l'audio se lance TOUT SEUL à chaque
+         question — tap sur la consigne = réécouter (pas de gros bouton 🔊) -->
+    <div class="mp-consigne" id="consigne" style="justify-content:center; text-align:center; cursor:pointer" role="button" aria-label="Réécouter la consigne">
+      <b id="instruction">…</b>
     </div>
+    <div class="mode-badge" id="modeBadge"></div>
 
     <div class="game-zone" id="gameZone">
       <div class="arrow-row"><span class="lbl-small">🔹 petit</span><span>→</span><span class="lbl-big">🔷 GRAND</span></div>
@@ -251,7 +252,7 @@
 
     function init(){
       G.buildPips();
-      document.getElementById('repeatBtn').onclick = () => speak(currentInstruction());
+      document.getElementById('consigne').onclick = () => speak(currentInstruction());
       document.getElementById('validateBtn').onclick = onValidate;
       document.getElementById('nextBtn').onclick = () => { qCount++; nextQuestion(); };
       nextQuestion();
@@ -570,17 +571,20 @@
   <script src="js/back-button.js"></script>
   <script src="js/regle-info.js"></script>
   <script>
-    // Panneau règle v2 (❓ unique : règle détaillée + avis parent)
+    // Panneau v3 : savant fou 🧑‍🔬 — règle détaillée + avis parent (package v3)
     RegleInfo.init({
       picto: '🦕📏🦖',
-      texte: 'Range les dinos du plus petit au plus GRAND !',
+      texte: 'Range les dinos mystères du plus petit au plus GRAND !',
       etapes: [
-        '👀 Regarde bien : il y a des petits dinos et des géants.',
-        '👆 Attrape un dino avec ton doigt et pose-le dans une case.',
-        '📏 Commence par le plus petit, finis par le plus GRAND.',
-        '🔊 Tape le haut-parleur pour réentendre la consigne.'
-      ],
-      etoiles: 'Réussis tout du premier coup pour gagner l’étoile ! ★ du 1ᵉʳ coup · ✓ après un essai · 💡 avec de l’aide.'
+        { t: 'Je regarde les ombres 👀',
+          d: 'Des dinos mystères ! Il y a un petit, un moyen… et un géant.' },
+        { t: 'Je glisse chaque ombre dans une case 👆',
+          d: 'Le plus petit à gauche, le plus GRAND à droite. Je peux échanger deux cases si je change d\'avis.' },
+        { t: 'Je tape « C\'est bon ! » ✓',
+          d: 'Les dinos sortent de l\'ombre : on découvre leur VRAIE taille en mètres, à côté d\'un enfant comme toi !' },
+        { t: 'Plus j\'ai d\'étoiles, plus c\'est costaud 💪',
+          d: 'Plus de dinos à ranger… et parfois il faut les ranger par POIDS ⚖️ !' }
+      ]
     });
   </script>
 </body>

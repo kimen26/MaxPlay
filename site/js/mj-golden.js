@@ -63,6 +63,17 @@
         d.textContent = String(i + 1);
         box.appendChild(d);
       }
+      // étoiles du jeu à droite de la piste (design v3 : elles vivent EN HAUT)
+      const spacer = document.createElement('span');
+      spacer.className = 'grow';
+      box.appendChild(spacer);
+      const gs = document.createElement('span');
+      gs.className = 'mp-g-stars';
+      gs.id = 'track-stars';
+      let stars = '';
+      for (let i = 0; i < MAX_STARS; i++) stars += i < this.stars ? '★' : '<span class="off">★</span>';
+      gs.innerHTML = stars;
+      box.appendChild(gs);
     },
 
     // À appeler quand une question est TERMINÉE. attempts: 1,2,3 ; 4 = révélé.
@@ -70,9 +81,10 @@
     notePip(i, attempts, fromEl) {
       const p = document.getElementById('pip' + i);
       const a = Math.min(attempts, 4);
-      // États design system : ★ or = 1er coup · ✓ orange = après essai · 💡 = révélé/aidé
+      // États design system v3 : ✓ VERT = 1er coup (l'or reste aux ★★★) ·
+      // ✓ orange = après essai · 💡 rouge doux = révélé/aidé
       const state = a === 1 ? 'done-first' : (a === 4 ? 'done-helped' : 'done-retry');
-      const badge = a === 1 ? '★' : (a === 4 ? '💡' : '✓');
+      const badge = a === 4 ? '💡' : '✓';
       if (p) {
         p.classList.remove('cur', 'current', 'todo');
         p.classList.add('v' + a, state);

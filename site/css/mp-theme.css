@@ -28,6 +28,13 @@
   --retry: #f2a25c;   /* réussi après essai(s) */
   --helped: #e0655a;  /* réussi avec aide(s) */
 
+  /* panneau ? (règle + avis) : la règle suit l'ACCENT (monde de l'enfant),
+     l'avis/coin parent reste VIOLET FIXE dans toutes les ambiances (outil
+     adulte, reconnaissable partout) — package v3, validé 2026-07-14 */
+  --parent: #c9a4ff;
+  --parent-ink: #1c1038;
+  --parent-soft: rgba(201, 164, 255, .14);
+
   /* texte */
   --ink: #ffffff;
   --ink-2: #c3d0e8;   /* secondaire */
@@ -109,12 +116,13 @@ body {
   display:flex; align-items:center; justify-content:center; gap:7px;
 }
 
-/* ── PISTE DE QUESTIONS (in-game, 5 à 8 pastilles) ──────────────────
-   États : done-first (★ or) / done-retry (orange) / done-helped (rouge
-   doux) / current (anneau accent) / todo. Le résultat RESTE affiché.  */
+/* ── PISTE DE QUESTIONS (in-game, 4 à 8 pastilles) ──────────────────
+   États : done-first (✓ VERT — v3 : l'or est réservé aux ★★★ du jeu) /
+   done-retry (orange) / done-helped (rouge doux) / current (anneau accent)
+   / todo. Le résultat RESTE affiché. Légende = panneau ?, pas le jeu.   */
 .mp-track { display:flex; align-items:center; gap:7px; padding:6px 18px 4px; }
 .mp-q { width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:900; }
-.mp-q.done-first  { background:var(--gold); color:var(--gold-ink); }
+.mp-q.done-first  { background:var(--ok); color:#fff; }
 .mp-q.done-retry  { background:var(--retry); color:#3a2000; }
 .mp-q.done-helped { background:var(--helped); color:#fff; }
 .mp-q.current { width:38px; height:38px; background:transparent; border:3px solid var(--accent); color:var(--accent); box-shadow:0 0 12px var(--accent-soft); }
@@ -159,12 +167,12 @@ body:not([data-ambiance]) { --bg0:#0a1226; --bg1:#0c1730; --card:#0e1a34; --card
   background:transparent; border-bottom:0;
 }
 .hdr a, .hdr a:visited {
-  width:44px; height:44px; border-radius:50%; border:0;
-  background:rgba(255,255,255,.09); color:var(--ink);
+  width:42px; height:42px; border-radius:50%; border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.06); color:var(--ink-2);
   display:flex; align-items:center; justify-content:center;
-  font-size:19px; font-weight:900; flex-shrink:0; text-decoration:none; padding:0;
+  font-size:16px; font-weight:900; flex-shrink:0; text-decoration:none; padding:0;
 }
-.hdr a:active { background:rgba(255,255,255,.22); }
+.hdr a:active { background:rgba(255,255,255,.16); }
 .hdr .htitle {
   font-family:'Fredoka One', cursive; font-size:17px; font-weight:400; color:var(--ink);
   flex:1; min-width:0; display:flex; align-items:center; gap:8px;
@@ -176,3 +184,85 @@ body:not([data-ambiance]) { --bg0:#0a1226; --bg1:#0c1730; --card:#0e1a34; --card
 
 /* Page conteneur standard */
 .mp-page { max-width:480px; margin:0 auto; min-height:100dvh; display:flex; flex-direction:column; }
+
+/* ════════════════════════════════════════════════════════════════════
+   EN-TÊTE MINIJEU v2 + PANNEAU ? (package v3, validé 2026-07-14)
+   ← fantôme · titre · savant fou 🧑‍🔬? → panneau 2 onglets
+   (règle = accent du thème · avis = violet parent FIXE)
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ← fantôme : cercle discret, chevron SVG fin (injecté par back-button.js) */
+.mp-ghost-back {
+  width:42px; height:42px; border-radius:50%; border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.06); color:var(--ink-2); cursor:pointer;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0;
+  text-decoration:none; padding:0;
+}
+.mp-ghost-back:active { background:rgba(255,255,255,.16); }
+
+/* le savant fou (UN SEUL bouton aide, injecté par regle-info.js) */
+.mp-prof {
+  width:46px; height:46px; border-radius:15px; cursor:pointer; position:relative; flex-shrink:0;
+  background:var(--accent-soft); border:1px solid var(--accent);
+  box-shadow:0 2px 6px rgba(0,0,0,.25);
+  display:flex; align-items:center; justify-content:center; font-size:22px; padding:0;
+}
+.mp-prof .bulle {
+  position:absolute; top:-5px; right:-5px; width:18px; height:18px; border-radius:50%;
+  background:var(--gold); color:var(--gold-ink); font-size:11px; font-weight:900;
+  display:flex; align-items:center; justify-content:center;
+}
+
+/* panneau ? */
+.mp-voile { position:fixed; inset:0; background:rgba(5,8,18,.7); backdrop-filter:blur(2px); display:none; z-index:299; }
+.mp-voile.on { display:block; }
+.mp-panneau {
+  position:fixed; left:12px; right:12px; bottom:12px; top:56px; max-width:456px; margin:0 auto;
+  background:var(--card); border:1px solid var(--line); border-radius:22px;
+  display:none; flex-direction:column; overflow:hidden; z-index:300;
+  animation:mpModalIn .3s ease both;
+  font-family:'Nunito',sans-serif;
+}
+.mp-panneau.on { display:flex; }
+@keyframes mpModalIn { from{opacity:0;transform:translateY(20px) scale(.96)} to{opacity:1;transform:none} }
+.mp-panneau .p-tabs { display:flex; align-items:center; gap:8px; padding:12px 14px 8px; }
+.mp-panneau .p-badge { width:34px; height:34px; border-radius:12px; background:var(--accent-soft);
+  display:flex; align-items:center; justify-content:center; font-size:17px; flex-shrink:0; }
+.mp-panneau .p-tab { border-radius:999px; padding:7px 14px; font-weight:900; font-size:12.5px; cursor:pointer;
+  background:rgba(255,255,255,.07); color:var(--ink-3); }
+.mp-panneau .p-tab.regle.on { background:var(--accent); color:var(--accent-ink); }
+.mp-panneau .p-tab.avis.on  { background:var(--parent); color:var(--parent-ink); }
+.mp-panneau .p-close { margin-left:auto; width:34px; height:34px; border-radius:50%; border:0; cursor:pointer;
+  background:rgba(255,255,255,.1); color:var(--ink); font-size:15px; font-weight:900; }
+.mp-panneau .p-corps { flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:9px; padding:2px 14px; }
+/* UN SEUL bouton audio pour toutes les règles */
+.mp-panneau .lire-tout { margin:0 14px 6px; display:flex; align-items:center; gap:10px; cursor:pointer;
+  background:rgba(47,191,143,.12); border:1px solid rgba(47,191,143,.35);
+  border-radius:14px; padding:9px 12px; }
+.mp-panneau .lire-tout i { width:34px; height:34px; flex-shrink:0; border-radius:50%; background:var(--ok);
+  display:flex; align-items:center; justify-content:center; font-style:normal; font-size:14px; }
+.mp-panneau .lire-tout b { font-size:12.5px; color:#c3f0dd; }
+/* étape de règle : titre + 2e ligne d'explication */
+.mp-panneau .etape { display:flex; align-items:flex-start; gap:11px; background:rgba(255,255,255,.05); border-radius:16px; padding:12px; }
+.mp-panneau .etape .num { width:38px; height:38px; flex-shrink:0; border-radius:50%; background:var(--accent-soft);
+  color:var(--accent); display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:900; }
+.mp-panneau .etape b { display:block; font-size:13.5px; color:var(--ink); }
+.mp-panneau .etape small { font-size:11.5px; font-weight:700; color:var(--ink-3); line-height:1.45; }
+/* encadré étoiles — la légende vert/orange/rouge vit ICI, pas dans le jeu */
+.mp-panneau .gagner { background:var(--gold-soft); border:1px solid rgba(255,209,102,.25); border-radius:16px;
+  padding:12px; display:flex; flex-direction:column; gap:7px; }
+.mp-panneau .gagner .li { display:flex; align-items:center; gap:9px; font-size:11.5px; font-weight:800; color:var(--ink-2); }
+.mp-panneau .gagner .li i { width:24px; height:24px; border-radius:50%; font-style:normal; font-size:11px; font-weight:900;
+  display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+/* onglet avis : coin parent SEUL (RGPD : rien demandé à l'enfant) */
+.mp-panneau .parent-box { background:rgba(255,255,255,.05); border-radius:16px; padding:14px;
+  display:flex; flex-direction:column; gap:9px; margin:0 0 4px; }
+.mp-panneau .parent-box textarea { background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
+  border-radius:12px; padding:11px; font:700 12.5px 'Nunito',sans-serif;
+  color:var(--ink); min-height:80px; resize:vertical; outline:none; }
+.mp-panneau .parent-box textarea:focus { border-color:var(--parent); }
+.mp-panneau .dicter { width:44px; height:44px; border-radius:50%; border:1.5px solid var(--parent); cursor:pointer;
+  background:var(--parent-soft); color:var(--parent); font-size:17px; flex-shrink:0; }
+.mp-panneau .dicter.rec { background:var(--parent); color:var(--parent-ink); }
+.mp-panneau .envoyer { flex:1; height:44px; border-radius:999px; border:0; cursor:pointer;
+  background:var(--parent); color:var(--parent-ink); font:900 13.5px 'Nunito',sans-serif; }

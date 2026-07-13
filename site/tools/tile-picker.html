@@ -187,6 +187,7 @@
         <button onclick="rebuildMatrix()" title="Force reconstruction (utile si onchange a rate)">🔄 Reconstruire</button>
         <button onclick="clearMatrix()">Effacer tout</button>
         <button onclick="exportMatrix()" style="background: #6a3a0f;">📤 Export Python</button>
+        <button onclick="sendToClaude()" style="background: #1a4a2a;">☁️ Envoyer à Claude</button>
       </div>
       <div class="mat-controls" style="margin-top: 4px;">
         <label style="color: #ffe066;">🔍 Échelle :</label>
@@ -590,6 +591,49 @@ function exportMatrix() {
 function copyExport() {
   const txt = document.getElementById('export-output').textContent;
   navigator.clipboard.writeText(txt).then(() => alert('Copie !'));
+}
+
+// ── Envoi direct à Claude via Supabase (table tile_refs, migration 009) ──
+// anon = INSERT only (RLS), lecture côté Claude via MCP. Zéro copier-coller.
+async function sendToClaude() {
+  const name = prompt('Nom de la compo (ex: ref-chemin-terre, carte-place-village) :');
+  if (!name) return;
+  const kind = confirm('OK = RÉFÉRENCE (brique canonique, loi)\nAnnuler = CARTE (souhait à réaliser)')
+    ? 'reference' : 'carte';
+  const note = prompt('Note pour Claude (optionnel) :') || null;
+  const ground = [];
+  for (let r = 0; r < MAT_ROWS; r++) {
+    const row = [];
+    for (let c = 0; c < MAT_COLS; c++) {
+      const t = matrixState[r][c];
+      row.push(t ? t.file : null);
+    }
+    ground.push(row);
+  }
+  const btnMsg = (txt) => {
+    const out = document.getElementById('export-output');
+    out.textContent = txt;
+    out.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  };
+  try {
+    const resp = await fetch('https://bfrugwrzpefsaehsvypt.supabase.co/rest/v1/tile_refs', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': 'sb_publishable_njKrpyff3NSIcNsEocRdVw_JAYW8WCx',
+        'Authorization': 'Bearer sb_publishable_njKrpyff3NSIcNsEocRdVw_JAYW8WCx',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({ name, kind, note, cols: MAT_COLS, rows: MAT_ROWS, ground })
+    });
+    if (resp.ok) {
+      btnMsg(`☁️ ✅ "${name}" envoyé à Claude (${kind}). Il le récupérera en début de session tile.`);
+    } else {
+      btnMsg(`☁️ ❌ Échec envoi (${resp.status}). Fallback : 📤 Export Python + copier-coller.`);
+    }
+  } catch (e) {
+    btnMsg('☁️ ❌ Pas de réseau ? Fallback : 📤 Export Python + copier-coller.');
+  }
 }
 
 // Zoom de la matrice

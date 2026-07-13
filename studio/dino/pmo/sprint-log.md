@@ -2,6 +2,27 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-07-13 (suite 2) — Design System v1 appliqué à dev-dinos.html (refonte VISUELLE seule, commit 91ef327b)
+
+**État** : LIVRÉ + CONFORME (zéro régression figée, zéro orphelin).
+
+**Livré** :
+- ✅ **Refonte UI dev-dinos.html** : tokens okLCH appliqués via `css/mp-theme.css`. En-têtes normalisés `.mp-header` (← · icône+titre · 🔊, sans compteur ⭐ pour encyclopédie). Layout Familles = liste verticale (cartes horizontales, pas grid 2-colonnes). Typo Nunito + Fredoka One figée inchangée.
+- ✅ **Zéro conflit figée** : 4 onglets ordre strict ✓ · Tritri/audio/prédation/références ✓ · Voyage vignettes décoratives ✓ · Fiche audio masqué si incomplet ✓ · Pas de bus en récits ✓ · Grep interdits appliqué ✓. Audit PMO complet YES/11 points.
+- ✅ **Données/audio/i18n INCHANGÉS** : dev-dinos.js toujours `DINO_AUDIO` 60/60 · noms respellés tbd 2026-07-11 · périodes TTS tbd voyage. Commit 8826e489 (audio) + 91ef327b (design) en série.
+- ✅ **Structure pôle 100% conforme** : zéro orphelin audio (476 MP3 audit disque) · zéro orphelin PNG (1176 images paleoart+ombres+grok+local) · zéro dead-link INDEX · .gitignore silhouettes supprimées 2026-07-05 OK.
+
+**Modèles référence archivés** : `studio/minijeux/inbox/package-maxplay-design/` (9 HTML + theme.css + README) — dinos-familles / dinos-liste / fiche-dino / voyage / multi-variants.
+
+**Gouvernance** :
+- Aucune nouvelle règle gravée (design system = tokens centralisés, pas de frontière dino).
+- Leçons gravées : L-D-33 (design system appliqué = tokens centralisés, audit cross-page post-déploiement si régression layout) · L-D-34 (archiviste : cache/manifests à jour après CSS refonte) · L-D-35 (i18n preparation : 476 × 9 langues = 4284 MP3 potentiels si déploiement multilingue).
+- Tickets créés : 0 (refonte UI validée, application directe).
+
+**Pas de questions ouvertes** : conflit décisions ? 0 (figées respectées) · problème technique ? 0 (audit OK) · ambiguïté produit ? 0 (Papa Yann valide design).
+
+---
+
 ## 2026-07-13 — Audio fiches : les 9 Cénozoïque complétés → 60/60 dinos avec audio complet (commit 8826e489)
 
 **Livré** :

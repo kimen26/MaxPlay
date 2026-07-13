@@ -137,12 +137,14 @@
 (function () {
   'use strict';
 
-  // ── Triplets curés (émoji + 3 hex chacun) ─────────────────────────────
-  var TRIPLETS = [
-    { emo: '🥝 ✓', c: ['#2f6d3a', '#8fe388', '#e8ffd9'] },
-    { emo: '🐢 🌻', c: ['#0d4a3a', '#2fbf8f', '#ffd166'] },
-    { emo: '🥑 🦎', c: ['#4a5e28', '#a8c850', '#f2ead8'] }
-  ];
+  // ═════════════════════════════════════════════════════════════════════
+  // COULEURS — on réutilise la coloration d'ORIGINE (avatar-picker.js) :
+  // les cibles sont des triplets [r,g,b] alignés sur les `bases` extraites
+  // de l'image du dino ; recolorData préserve contour noir + ombrage.
+  // Nuancier → 3 triplets proposés, générés autour de la teinte choisie
+  // (même formule que les presets historiques : teinte imposée, saturation
+  // et luminosité de chaque base conservées → rendu nuancé, jamais plat).
+  // ═════════════════════════════════════════════════════════════════════
   var AMBIANCES = [
     { id: 'nuit', name: 'Nuit', bg0: '#0a1226', bg1: '#0c1730' },
     { id: 'jungle', name: 'Jungle', bg0: '#0a1f16', bg1: '#0d2b1d' },
@@ -152,11 +154,29 @@
     { id: 'musee', name: 'Musée', bg0: '#14110d', bg1: '#211b12' }
   ];
   var VKEY = 'maxplay_avatar_vestiaire';
+  var C = window.Avatar && Avatar.color; // helpers couleur d'origine
 
   // état courant
   var curId = (window.Avatar && Avatar.get()) || (window.MAXPLAY_AVATARS && MAXPLAY_AVATARS[0] && MAXPLAY_AVATARS[0].id);
-  var curColors = (window.Avatar && Avatar.getColors()) || TRIPLETS[0].c.slice();
-  var editingIdx = -1; // index de la pastille en cours de retouche (-1 = aucune)
+  var curBases = null;     // bases [r,g,b] extraites de l'image du dino courant
+  var curTargets = null;   // cibles [r,g,b] alignées sur curBases
+  var curTriplets = [];    // 3 propositions générées depuis la teinte choisie
+  var editingIdx = -1;     // pastille en cours de retouche (-1 = aucune)
+  var basesCache = {};     // id dino -> bases
+
+  function curFile() { return window.Avatar ? (Avatar.file(curId, 'joyeux') || Avatar.file(curId)) : null; }
+
+  // bases du dino courant (async, cachées), puis cb()
+  function withBases(cb) {
+    if (basesCache[curId]) { curBases = basesCache[curId]; cb(); return; }
+    var f = curFile();
+    if (!f || !C) { curBases = null; cb(); return; }
+    C.bases(f, function (bases) {
+      basesCache[curId] = bases;
+      curBases = bases;
+      cb();
+    });
+  }
 
   // ── hex helpers ─────────────────────────────────────────────────────
   var hexCanvas = document.createElement('canvas'); hexCanvas.width = 1; hexCanvas.height = 1;
@@ -171,22 +191,48 @@
     } catch (e) { return '#888888'; }
   }
 
+  // ── 3 triplets proposés autour d'une teinte (formule presets historique) ──
+  // mk(): teinte imposée, saturation/luminosité de CHAQUE base conservées
+  // (avec variance par proposition) → nuancé et stylé, jamais aplati.
+  function tripletsFor(h) {
+    if (!C || !curBases || !curBases.length) return [];
+    function mk(hue, sMul, sMin, lShift) {
+      return curBases.map(function (base) {
+        var hsl = C.rgb2hsl(base[0], base[1], base[2]);
+        var s = Math.max(sMin, Math.min(1, hsl[1] * sMul));
+        var l = Math.max(0.14, Math.min(0.9, hsl[2] + lShift));
+        return C.hsl2rgb(hue, s, l);
+      });
+    }
+    return [
+      { emo: '✨', t: mk(h, 1, 0.35, 0) },                    // classique (= ancien preset)
+      { emo: '🌿', t: mk((h + 24) % 360, 0.8, 0.3, 0.07) },   // doux : teinte voisine, plus clair
+      { emo: '⚡', t: mk((h + 344) % 360, 1.3, 0.55, -0.05) } // peps : plus saturé, plus profond
+    ];
+  }
+
+  function applyTargets(t) {
+    curTargets = t.map(function (c) { return c.slice(); });
+    renderPastilles(); renderTriplets(); repaintBig();
+  }
+
   // ── peindre le grand avatar ─────────────────────────────────────────
   function repaintBig() {
     var img = document.getElementById('bigAvatar');
-    var file = window.Avatar ? Avatar.file(curId, 'joyeux') : null;
+    var file = curFile();
     if (!file) return;
-    if (window.Avatar) Avatar.paintInto(img, file, curColors);
+    if (window.Avatar) Avatar.paintInto(img, file, curTargets); // null = couleurs d'origine
     else img.src = file;
   }
 
-  // ── pastilles (3 couleurs actuelles) ─────────────────────────────────
+  // ── pastilles (couleurs actuelles, une par base) ─────────────────────
   function renderPastilles() {
     var el = document.getElementById('pastilles');
     el.innerHTML = '';
-    curColors.forEach(function (c, i) {
+    var shown = curTargets || curBases || [];
+    shown.forEach(function (c, i) {
       var b = document.createElement('button');
-      b.style.background = c;
+      b.style.background = C ? C.hex(c[0], c[1], c[2]) : '#888';
       b.className = (editingIdx === i) ? 'active' : '';
       b.setAttribute('aria-label', 'Changer la couleur ' + (i + 1));
       b.addEventListener('click', function () { openRetouche(i); });
@@ -208,59 +254,90 @@
       b.title = a.name;
       b.addEventListener('click', function () {
         curId = a.id;
-        curColors = TRIPLETS[0].c.slice(); // couleurs par défaut pour un nouveau dino
         editingIdx = -1;
-        renderDinoStrip(); renderPastilles(); renderTriplets(); repaintBig();
+        withBases(function () {
+          curTargets = null;   // nouveau dino → ses couleurs d'origine
+          curTriplets = [];
+          renderDinoStrip(); renderPastilles(); renderTriplets(); repaintBig();
+        });
         SoundPool && SoundPool.play && SoundPool.play('apparition');
       });
       el.appendChild(b);
     });
   }
 
-  // ── triplets curés ────────────────────────────────────────────────────
-  function colorsMatch(a, b) {
-    return a.length === b.length && a.every(function (c, i) { return c.toLowerCase() === b[i].toLowerCase(); });
+  // ── triplets proposés (régénérés à chaque couleur du nuancier) ────────
+  function sameTargets(a, b) {
+    return !!a && !!b && JSON.stringify(a) === JSON.stringify(b);
   }
   function renderTriplets() {
     var el = document.getElementById('triplets');
     el.innerHTML = '';
-    TRIPLETS.forEach(function (t) {
+    curTriplets.forEach(function (tr) {
       var d = document.createElement('div');
-      d.className = 'triplet' + (colorsMatch(t.c, curColors) ? ' on' : '');
-      d.innerHTML = '<div class="cc">' + t.c.map(function (c) { return '<span style="background:' + c + '"></span>'; }).join('') + '</div><small>' + t.emo + '</small>';
+      d.className = 'triplet' + (sameTargets(tr.t, curTargets) ? ' on' : '');
+      d.innerHTML = '<div class="cc">' + tr.t.map(function (c) {
+        return '<span style="background:' + C.hex(c[0], c[1], c[2]) + '"></span>';
+      }).join('') + '</div><small>' + tr.emo + '</small>';
       d.addEventListener('click', function () {
-        curColors = t.c.slice();
         editingIdx = -1;
-        renderTriplets(); renderPastilles(); repaintBig();
+        applyTargets(tr.t);
       });
       el.appendChild(d);
     });
   }
 
-  // ── nuancier simple ────────────────────────────────────────────────────
+  // ── nuancier : choisir une teinte → 3 triplets proposés + aperçu direct ──
   var NUANCIER = ['#e0655a', '#f2a25c', '#ffd166', '#8fe388', '#3ec6e0', '#7fb4ff',
                   '#c9a4ff', '#ff9ecf', '#f2ead8', '#8a5a3a', '#5b6678'];
   function renderNuancier() {
     var el = document.getElementById('nuancierGrid');
     el.innerHTML = '';
-    NUANCIER.forEach(function (c) {
+    NUANCIER.forEach(function (cHex) {
       var s = document.createElement('span');
-      s.style.background = c;
-      s.addEventListener('click', function () { applyToEditingOrLast(c); });
+      s.style.background = cHex;
+      s.addEventListener('click', function () { pickHueColor(cHex); });
       el.appendChild(s);
     });
+    // 🎲 = variance forte historique : le clair reste, le reste en couleurs vives
     var dice = document.createElement('span');
     dice.style.background = 'rgba(255,255,255,.08)';
     dice.textContent = '🎲';
     dice.addEventListener('click', function () {
-      var rand = NUANCIER[Math.floor(Math.random() * NUANCIER.length)];
-      applyToEditingOrLast(rand);
+      if (!C || !curBases) return;
+      editingIdx = -1;
+      curTriplets = [];
+      applyTargets(C.vivid(curBases));
+      SoundPool && SoundPool.play && SoundPool.play('apparition');
     });
     el.appendChild(dice);
+    // ↺ retour aux couleurs d'origine du dino
+    var org = document.createElement('span');
+    org.style.background = 'rgba(255,255,255,.08)';
+    org.textContent = '↺';
+    org.title = "Couleurs d'origine";
+    org.addEventListener('click', function () {
+      editingIdx = -1;
+      curTargets = null; curTriplets = [];
+      renderPastilles(); renderTriplets(); repaintBig();
+    });
+    el.appendChild(org);
   }
-  function applyToEditingOrLast(hex) {
+  function pickHueColor(cHex) {
+    if (!C || !curBases) return;
+    var rgb = C.fromHex(cHex);
+    var h = C.rgb2hsl(rgb[0], rgb[1], rgb[2])[0];
+    curTriplets = tripletsFor(h);
+    editingIdx = -1;
+    if (curTriplets.length) applyTargets(curTriplets[0].t); // feedback immédiat
+  }
+  // retouche manuelle d'UNE couleur (fleur / neutres)
+  function applyToEditingOrLast(hexColor) {
+    if (!C || !curBases) return;
+    if (!curTargets) curTargets = curBases.map(function (c) { return c.slice(); });
     var idx = editingIdx >= 0 ? editingIdx : 0;
-    curColors[idx] = hex;
+    curTargets[idx] = C.fromHex(hexColor);
+    document.getElementById('retoucheDot').style.background = hexColor;
     renderPastilles(); renderTriplets(); repaintBig();
   }
 
@@ -312,7 +389,8 @@
     editingIdx = idx;
     document.getElementById('normal').classList.remove('show');
     document.getElementById('retouche').classList.add('on');
-    document.getElementById('retoucheDot').style.background = curColors[idx];
+    var c = (curTargets || curBases || [])[idx];
+    if (c && C) document.getElementById('retoucheDot').style.background = C.hex(c[0], c[1], c[2]);
     renderPastilles();
   }
   function closeRetouche() {
@@ -325,10 +403,16 @@
 
   // ── vestiaire (3 derniers avatars validés) ────────────────────────────
   function getVestiaire() {
-    try { return JSON.parse(localStorage.getItem(VKEY) || '[]'); } catch (e) { return []; }
+    try {
+      var list = JSON.parse(localStorage.getItem(VKEY) || '[]');
+      // purge entrées historiques au mauvais format (hex strings → rendu noir)
+      return list.filter(function (v) {
+        return v && v.id && Array.isArray(v.targets) && v.targets.every(function (c) { return Array.isArray(c) && c.length >= 3; });
+      });
+    } catch (e) { return []; }
   }
   function pushVestiaire(id, targets) {
-    var list = getVestiaire().filter(function (v) { return !(v.id === id && colorsMatch(v.targets, targets)); });
+    var list = getVestiaire().filter(function (v) { return !(v.id === id && sameTargets(v.targets, targets)); });
     list.unshift({ id: id, targets: targets });
     list = list.slice(0, 3);
     try { localStorage.setItem(VKEY, JSON.stringify(list)); } catch (e) {}
@@ -344,8 +428,12 @@
       b.innerHTML = '<img alt="">';
       if (f && window.Avatar) Avatar.paintInto(b.querySelector('img'), f, v.targets);
       b.addEventListener('click', function () {
-        curId = v.id; curColors = v.targets.slice(); editingIdx = -1;
-        renderDinoStrip(); renderPastilles(); renderTriplets(); repaintBig();
+        curId = v.id; editingIdx = -1;
+        withBases(function () {
+          curTargets = v.targets ? v.targets.map(function (c) { return c.slice(); }) : null;
+          curTriplets = [];
+          renderDinoStrip(); renderPastilles(); renderTriplets(); repaintBig();
+        });
       });
       el.appendChild(b);
     });
@@ -382,7 +470,7 @@
       d.className = 'amb-tile' + (a.id === current ? ' on' : '');
       var f = window.Avatar ? Avatar.file(curId, 'joyeux') : null;
       d.innerHTML = '<div class="amb-preview" style="background:linear-gradient(180deg,' + a.bg0 + ',' + a.bg1 + ')"><img alt=""></div><small>' + a.name + '</small>';
-      if (f && window.Avatar) Avatar.paintInto(d.querySelector('img'), f, curColors);
+      if (f && window.Avatar) Avatar.paintInto(d.querySelector('img'), f, curTargets);
       d.addEventListener('click', function () {
         if (window.MPTheme) window.MPTheme.setAmbiance(a.id);
         if (window.SoundPool) SoundPool.play('apparition');
@@ -396,9 +484,9 @@
   document.getElementById('btnValider').addEventListener('click', function () {
     if (window.Avatar) {
       Avatar.set(curId);
-      Avatar.setColors(curColors);
+      Avatar.setColors(curTargets);
     }
-    pushVestiaire(curId, curColors);
+    pushVestiaire(curId, curTargets);
     if (window.MPTheme) window.MPTheme.refresh();
     if (window.MaxFX && MaxFX.glow) MaxFX.glow(document.getElementById('bigAvatar'));
     setTimeout(function () { location.href = 'index.html'; }, 550);
@@ -407,10 +495,23 @@
   // ── init ───────────────────────────────────────────────────────────────
   renderVestiaire();
   renderDinoStrip();
-  renderTriplets();
   renderNuancier();
-  renderPastilles();
-  repaintBig();
+  withBases(function () {
+    // couleurs déjà validées pour ce dino → on les restaure, sinon origine
+    var stored = window.Avatar ? Avatar.getColors() : null;
+    if (stored && curBases && stored.length === curBases.length && Array.isArray(stored[0])) {
+      curTargets = stored.map(function (c) { return c.slice(); });
+    } else {
+      curTargets = null; // couleurs d'origine du dino
+    }
+    // triplets par défaut : générés depuis la teinte dominante actuelle
+    var seed = (curTargets || curBases || [])[0];
+    if (seed && C) {
+      var h = C.rgb2hsl(seed[0], seed[1], seed[2])[0];
+      curTriplets = tripletsFor(h);
+    }
+    renderPastilles(); renderTriplets(); repaintBig();
+  });
 })();
 </script>
 </body>

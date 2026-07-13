@@ -108,7 +108,12 @@
     getColors: function () {
       try {
         var c = JSON.parse(localStorage.getItem(KEYC) || 'null');
-        return (c && c.id === this.get() && c.targets && c.targets.length) ? c.targets : null;
+        if (!(c && c.id === this.get() && c.targets && c.targets.length)) return null;
+        // format valide = triplets [r,g,b] ; purge les hex strings d'une
+        // version intermédiaire de l'atelier (rendu noir sinon)
+        var ok = c.targets.every(function (t) { return Array.isArray(t) && t.length >= 3; });
+        if (!ok) { localStorage.removeItem(KEYC); return null; }
+        return c.targets;
       } catch (e) { return null; }
     },
     setColors: function (targets) {
@@ -134,7 +139,28 @@
       recolorFile(file, t, function (url) { imgEl.src = url || file; });
     },
     // célébration : le copain saute + pluie de particules (coeurs / étoiles / feu d'artifice)
-    celebrate: function (kind) { celebrate(kind); }
+    celebrate: function (kind) { celebrate(kind); },
+    // ── API couleur exposée (atelier avatar) ────────────────────────────
+    // Les targets sont TOUJOURS des triplets [r,g,b] alignés sur les bases
+    // extraites de l'image (recolorData préserve l'ombrage par décalage).
+    color: {
+      hex: hex, fromHex: fromHex, rgb2hsl: rgb2hsl, hsl2rgb: hsl2rgb,
+      vivid: vividTargets,
+      // bases dominantes d'un fichier image (async) → cb([[r,g,b],…]) ou cb(null)
+      bases: function (src, cb) {
+        var img = new Image();
+        img.onload = function () {
+          try {
+            var cv = document.createElement('canvas'); cv.width = img.width; cv.height = img.height;
+            var c2 = cv.getContext('2d', { willReadFrequently: true });
+            c2.drawImage(img, 0, 0);
+            cb(extractBases(c2.getImageData(0, 0, cv.width, cv.height).data));
+          } catch (e) { cb(null); }
+        };
+        img.onerror = function () { cb(null); };
+        img.src = src;
+      }
+    }
   };
   window.Avatar = Avatar;
 

@@ -2,6 +2,18 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-07-13 — Audio fiches : les 9 Cénozoïque complétés → 60/60 dinos avec audio complet (commit 8826e489)
+
+**Livré** :
+- ✅ **27 blocs produits** (taille/regime/funfact × 9) : aenocyon, coelodonta, edmontonia, glyptodon, mammuthus, megatherium, paraceratherium, smilodon, titanis. Pipeline canonique : textes V3 validés (`scripts-audio/fr/V3/megafaune.md` + `edmontonia.md`, relus, grep-interdits re-passé avant génération) → `_md2json-v3.cjs` → text-to-dialogue eleven_v3 (narrateur_h + wex via voice-map) → 9 recaps concat ffmpeg loudnorm. Coût ~4 100 crédits / 121 567 (reset frais).
+- ✅ **dev-dinos.html** : `DINO_AUDIO` 51 → **60** entrées + `DINO_AUDIO_VERSION` V3 pour les 9. Fiches Cénozoïque parlent en vraie voix (plus de TTS).
+- ✅ **Écart comptage résolu** : INVARIANTS disait « 8 en attente », le disque en avait 9 (Edmontonia avait son propre fichier V3 séparé). Ligne INVARIANTS corrigée à 60, plus d'attente.
+- ✅ **Mini-jeux (trace détaillée game-pmo)** : funfact MP3 réel dans mj-28/33 (nouveau `playDinoFunfact` + manifest `DINO_FUNFACT_AUDIO` 52 ids), chaînage `il-vivait-quand.mp3` dans mj-31.
+
+**Reste (inchangé, déjà tracé)** : homogénéisation ton noms bonus [excited] vs fiche (différée Papa Yann) · 5 `nom_etym` a_corriger · périodes (5 MP3) non branchées dans le voyage · 2 `-recap` orphelins présumés (comptages disque regime=61/recap=62 vs 60 attendus → audit dino-archiviste à passer).
+
+**REX process** : dino-pmo (Haiku) n'a rien persisté (a répondu « en attente d'agents » puis s'est arrêté ; 0 diff git) — entrée écrite par le main agent. Même récidive côté game-pmo. [[feedback_verifier_claims_agents]]
+
 ## 2026-07-10 (suite I18N RESTRUCTURATION) — Infrastructure audio multilingue déployée + testée : pack préfixe langue, overlay strings, 9 langues figées
 
 **Livré & testé (2026-07-10)** :

@@ -19,7 +19,7 @@
 | Récits d'époque (voyage) | **8** | `audio/dinos/recit-*.mp3` |
 | Accroches menu (voix réelle) | **17** | `audio/dinos/menu-*.mp3` (4 onglets + 9 familles `menu-fam-*` + 4 régimes `menu-regime-*`) |
 | Spéciaux (Pangée, Extinction) | **2** | `audio/dinos/special-*.mp3` |
-| Dinos avec audio complet (recap+4 blocs) | **51** | `DINO_AUDIO` (✅ 2026-06-15 suite 3 : production V3 complète — note : 8 dinos Cénozoïque audio EN ATTENTE quota EL reset ~9 juillet) |
+| Dinos avec audio complet (recap+4 blocs) | **60** | `DINO_AUDIO` (✅ 2026-07-13 : 9 Cénozoïque complétés — 27 blocs text-to-dialogue + 9 recaps, textes V3, commit 8826e489. Plus aucun dino en attente. Audit archiviste : disque conforme, écarts regime 61/recap 62 = menu-regime + special-* légitimes.) |
 | Noms vocaux dino (assets bonus) | **60** | `site/audio/dinos/noms/{id}.mp3` (✅ 2026-07-06 : 60 MP3 narrateur_h [excited] jeu, lancés dans mj-24/28/31/33) |
 | Langues i18n cibles (audio dino) | **9** | ✅ 2026-07-10 : FR (canon) · EN · PT-BR · ES · IT · AR · RU · ZH · JA **FIGÉE**. Archi déployée (pack préfixe langue, overlay strings, manifest anti-404, studio i18n/ centralisé). Tests ✅ 12 specs Playwright (mj-15/24/25/26/27/28/29/30/32/33/41, mj-31 TOUS). Invariant DEC-I18N-INVARIANT-001 : toute langue = lexique AVANT audio, jamais régresser. |
 

@@ -117,6 +117,8 @@ Voie express (patch/bugfix MJ existant) : lire figé → fix → harnais vert �
   <script src="js/bus-svg.js"></script>
   <script src="js/data.js"></script>
   <script src="js/tracker.js"></script>
+  <script src="js/cloud.js"></script>      <!-- APRÈS tracker.js — sync Supabase (💬 + progression). SANS lui, comments.js pousse dans le vide. -->
+  <script src="js/comments.js"></script>   <!-- bulle 💬 : appelle Cloud.schedulePush() → EXIGE cloud.js chargé avant -->
   <script src="js/sounds.js"></script>
   <script src="js/victory-sounds.js"></script>
   <script src="js/mp-theme.js"></script>
@@ -127,6 +129,8 @@ Voie express (patch/bugfix MJ existant) : lire figé → fix → harnais vert �
 </body>
 </html>
 ```
+
+> 🚨 **Règle cloud.js NON NÉGOCIABLE** (gravée 2026-07-14, audit Supabase) : toute page qui charge `comments.js` (bulle 💬) OU appelle `Cloud.schedulePush()` DOIT charger `js/cloud.js` **après** `js/tracker.js`. La garde `window.Cloud && …` ne crash pas si cloud.js manque — elle **avale l'échec en silence** : les commentaires restent en localStorage et ne remontent JAMAIS en base. Incident : 32 mini-jeux + index.html + lecture.html avaient la bulle 💬 sans cloud.js → 0 commentaire poussé depuis le début. Vérif : `grep -L cloud.js $(grep -rl comments.js site/*.html)` doit être VIDE.
 
 **Règle header MILITAIRE** (v2, Design System juillet 2026 — remplace le gabarit inline v1 sur décision Papa Yann, package `studio/minijeux/inbox/package-maxplay-design/`) : garder le markup `.hdr` ci-dessus à la lettre, **zéro règle CSS `.hdr` locale** (mp-theme.css fait autorité). Ne jamais créer `.game-header`, `.header-text`, `.header-title`, `.header-sub` ou toute autre variante inventée. `back-button.js` injecte automatiquement la flèche ← ronde 44px — ne pas créer un gros bouton bus manuellement.
 

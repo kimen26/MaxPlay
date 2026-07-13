@@ -4,26 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
 <title>MJ-16 – Complète la suite</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/mp-theme.css">
 <style>
 * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; user-select:none; }
-html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; }
+html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',sans-serif; color:#fff; }
 
 #app { display:flex; flex-direction:column; height:100dvh; max-width:760px; margin:0 auto; position:relative; }
 
-/* ── Header ── */
-#hdr {
-  flex-shrink:0; display:flex; align-items:center; gap:10px;
-  padding:6px 12px; background:rgba(0,0,0,0.25);
-  border-bottom:1px solid rgba(255,255,255,0.08);
-}
-#hdr a {
-  color:#fff; text-decoration:none; font-size:1.3rem;
-  background:rgba(255,255,255,0.12); border-radius:8px;
-  padding:4px 10px; font-weight:900;
-}
-#hdr a:active { background:rgba(255,255,255,0.25); }
-#htitle { flex:1; font-size:1rem; font-weight:900; }
 #score-badge {
   display:none !important;
   background:#ffe066; color:#1a1a1a; font-weight:900;
@@ -41,8 +29,8 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   width:12px; height:12px; border-radius:50%;
   background:rgba(255,255,255,0.15); transition:background 0.3s;
 }
-.lvl-dot.done   { background:#00c47a; }
-.lvl-dot.active { background:#ffe066; box-shadow:0 0 8px #ffe066; }
+.lvl-dot.done   { background:var(--ok); }
+.lvl-dot.active { background:var(--gold); box-shadow:0 0 8px var(--gold); }
 #level-label { font-size:0.82rem; font-weight:900; opacity:0.65; }
 
 /* ── Zone principale ── */
@@ -215,10 +203,10 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 <div id="app">
 
   <!-- Header -->
-  <div id="hdr">
+  <div class="hdr" id="hdr">
     <a href="index.html">←</a>
-    <span id="htitle">📈 Complète la suite</span>
-    <span id="levelbar" style="font-weight:900;color:#ffe066;background:rgba(255,255,255,0.14);border-radius:10px;padding:3px 12px;font-size:0.85rem;">Niveau 1</span>
+    <span class="htitle" id="htitle">📈 Complète la suite</span>
+    <span id="levelbar" style="font-weight:900;color:var(--gold);background:rgba(255,255,255,0.14);border-radius:10px;padding:3px 12px;font-size:0.85rem;">Niveau 1</span>
     <div id="score-badge">0 / 0</div>
   </div>
 
@@ -264,6 +252,8 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 <script src="js/tracker.js"></script>
 <script src="js/comments.js"></script>
   <script src="js/back-button.js"></script>
+<script src="js/mp-theme.js"></script>
+<script src="js/celebrations.js"></script>
 <script>
 // ═══════════════════════════════════════════════════════════════════════════
 //  MJ-16 — Complète la suite
@@ -702,6 +692,10 @@ function onChoiceTap(btn, item, answer) {
     btn.classList.add('correct');
     if (typeof Tracker !== 'undefined') Tracker.logAnswer(!wrongThisRound);
     playSuccessBeep();
+    if (window.MaxFX) {
+      const activeDot = document.getElementById('dot-' + (round - 1));
+      if (activeDot) MaxFX.markPoint(btn, activeDot, { style: 'bounce', result: wrongThisRound ? 'orange' : 'green' });
+    }
     setTimeout(() => {
       fillMysteryCell(answer);
       setTimeout(nextRound, 700);
@@ -790,6 +784,13 @@ function showEnd() {
   playEndSound(score, ROUNDS_PER_GAME);
   speak(msg);
   if (typeof Tracker !== 'undefined') Tracker.endSession(score, ROUNDS_PER_GAME);
+  if (window.MaxFX) {
+    const perfect = score === ROUNDS_PER_GAME;
+    MaxFX.finalStar(document.getElementById('end-screen'), {
+      style: perfect ? 'cinematic' : 'breathe',
+      label: perfect ? 'SANS-FAUTE !' : ''
+    });
+  }
 }
 
 // ── Démarrage ────────────────────────────────────────────────────────────────

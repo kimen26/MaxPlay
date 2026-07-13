@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>MJ-27 – Lis le nom du dino</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&family=Fredoka+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
-    #app { background: linear-gradient(160deg,#3a2c1a,#241a10); }
     .read-panel { text-align:center; margin:10px 12px 4px; }
     .read-hint { font-size:.9rem; font-weight:700; color:#d9b382; margin-bottom:4px; }
     .read-word {
@@ -79,6 +79,8 @@
   <script src="js/dinos-i18n.js"></script>
   <script src="js/dinos-audio-manifest.js"></script>
   <script src="js/tts.js"></script>
+  <script src="js/mp-theme.js"></script>
+  <script src="js/celebrations.js"></script>
   <script>
     // ─── MJ-27 — Lis le nom du dino (LECTURE PURE, aucun son d'aide) ───
     // Affiche le nom écrit + 6 vraies images de l'encyclopédie. Max lit et trouve.
@@ -261,7 +263,7 @@
       if (res.outcome === 'correct'){
         btn.classList.add('ok'); score += res.points;
         streak = res.streakInc ? streak+1 : 0;
-        sndDing(); G.notePip(qCount-1, res.attempts);
+        sndDing(); G.notePip(qCount-1, res.attempts, btn);
         setTimeout(nextQuestion, 950);
       } else if (res.outcome === 'reveal'){
         btn.classList.add('ko'); btn.disabled = true; streak = 0;

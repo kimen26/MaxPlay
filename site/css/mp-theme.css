@@ -1,0 +1,178 @@
+/* ════════════════════════════════════════════════════════════════════
+   MaxPlay — Design System v1 (validé avec Kimen, juillet 2026)
+   ════════════════════════════════════════════════════════════════════
+   RÈGLE DES 4 RÔLES (clair-obscur : 2 sombres + 2 clairs)
+   1. --bg      : fond du monde (sombre, vient de l'AMBIANCE choisie)
+   2. --card    : surface des cartes (sombre, dérivée du fond)
+   3. --accent  : couleur d'action (claire, = teinte la + saturée de
+                  l'avatar, normalisée : oklch(0.78 0.12 var(--h-avatar)))
+   4. --gold    : étoiles & récompenses (or FIXE, ne change JAMAIS)
+   ──────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* teinte de l'avatar (0-360) — seule variable à changer quand
+     l'enfant recolorie son dino. Prendre la teinte (hue) de la couleur
+     la plus saturée de ses 3 couleurs. */
+  --h-avatar: 140;
+
+  /* rôles clairs (identiques dans toutes les ambiances) */
+  --accent: oklch(0.78 0.12 var(--h-avatar));
+  --accent-ink: oklch(0.25 0.06 var(--h-avatar));   /* texte SUR accent */
+  --accent-soft: oklch(0.78 0.12 var(--h-avatar) / .14);
+  --gold: #ffd166;
+  --gold-ink: #2a2000;
+  --gold-soft: rgba(255, 209, 102, .14);
+
+  /* sémantique progression (identique partout) */
+  --ok: #2fbf8f;      /* réussi du 1er coup ✓/vert */
+  --retry: #f2a25c;   /* réussi après essai(s) */
+  --helped: #e0655a;  /* réussi avec aide(s) */
+
+  /* texte */
+  --ink: #ffffff;
+  --ink-2: #c3d0e8;   /* secondaire */
+  --ink-3: #8fa5cc;   /* légendes */
+
+  /* rayons & espaces */
+  --r-card: 18px;
+  --r-pill: 999px;
+  --r-thumb: 10px;
+
+  font-family: 'Nunito', sans-serif;
+}
+
+/* ── AMBIANCES (fond + carte réglés à la main, incassables) ─────────── */
+[data-ambiance="nuit"]   { --bg0:#0a1226; --bg1:#0c1730; --card:#0e1a34; --card-2:#182338; --line:rgba(127,180,255,.12); }
+[data-ambiance="jungle"] { --bg0:#0a1f16; --bg1:#0d2b1d; --card:#10301f; --card-2:#17452e; --line:rgba(143,227,136,.13); }
+[data-ambiance="ville"]  { --bg0:#0b1c30; --bg1:#16304a; --card:#0e2036; --card-2:#1b3a55; --line:rgba(255,224,102,.13); }
+[data-ambiance="espace"] { --bg0:#0d0a20; --bg1:#1a1245; --card:#171040; --card-2:#221856; --line:rgba(201,164,255,.14); }
+[data-ambiance="arcade"] { --bg0:#12101f; --bg1:#171331; --card:#191542; --card-2:#221d52; --line:rgba(87,230,230,.14); }
+[data-ambiance="musee"]  { --bg0:#14110d; --bg1:#211b12; --card:#1b1610; --card-2:#2a2216; --line:rgba(224,178,94,.16); }
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: linear-gradient(180deg, var(--bg0), var(--bg1));
+  min-height: 100vh;
+}
+
+/* ── EN-TÊTE NORMALISÉ (toutes les pages) ───────────────────────────
+   [← retour] [icône + titre] ...... [❓ règle] [💬 avis]
+   L'accueil remplace ← par l'avatar, et ajoute le compteur ⭐ global.
+   Les pages encyclopédie N'ONT PAS le compteur ⭐ (validé).           */
+.mp-header { display:flex; align-items:center; gap:10px; padding:14px 14px 8px; }
+.mp-back, .mp-hbtn {
+  width:44px; height:44px; border-radius:50%; border:0; cursor:pointer;
+  background: rgba(255,255,255,.09); color:var(--ink);
+  display:flex; align-items:center; justify-content:center;
+  font-size:19px; font-weight:900; flex-shrink:0;
+}
+.mp-hbtn { width:40px; height:40px; font-size:16px; }
+.mp-title {
+  font-family:'Fredoka One', cursive; font-size:19px; color:var(--ink);
+  flex:1; min-width:0; display:flex; align-items:center; gap:8px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.mp-stars-total {
+  display:flex; align-items:center; gap:6px; background:var(--gold-soft);
+  border-radius:var(--r-pill); padding:8px 13px; color:var(--gold);
+  font-weight:900; font-size:15px; flex-shrink:0;
+}
+
+/* ── CARTES & TIROIRS ──────────────────────────────────────────────── */
+.mp-card { background:var(--card); border:1px solid var(--line); border-radius:var(--r-card); }
+.mp-drawer { border-radius:var(--r-card); overflow:hidden; border:1px solid var(--line); background:rgba(255,255,255,.04); }
+.mp-drawer[open], .mp-drawer.open { background:var(--accent-soft); }
+.mp-drawer-head { display:flex; align-items:center; gap:11px; padding:13px 14px; cursor:pointer; }
+.mp-chevron { color:var(--ink-3); font-weight:900; transition:transform .25s; }
+.open > .mp-drawer-head .mp-chevron { transform:rotate(90deg); }
+
+/* ── BOUTONS ───────────────────────────────────────────────────────── */
+.mp-btn-primary {
+  height:56px; border:0; border-radius:var(--r-pill); cursor:pointer;
+  background:linear-gradient(135deg, var(--gold), #ffbf3f);
+  color:var(--gold-ink); font-weight:900; font-size:17px;
+  font-family:'Nunito',sans-serif;
+  display:flex; align-items:center; justify-content:center; width:100%;
+  box-shadow:0 8px 22px rgba(255,209,102,.25);
+}
+.mp-btn-accent {
+  height:56px; border:0; border-radius:var(--r-pill); cursor:pointer;
+  background:var(--accent); color:var(--accent-ink);
+  font-weight:900; font-size:17px; font-family:'Nunito',sans-serif;
+  display:flex; align-items:center; justify-content:center; width:100%;
+}
+.mp-btn-ghost {
+  border:0; border-radius:var(--r-pill); cursor:pointer;
+  background:rgba(255,255,255,.08); color:var(--ink);
+  font-weight:900; font-family:'Nunito',sans-serif;
+  display:flex; align-items:center; justify-content:center; gap:7px;
+}
+
+/* ── PISTE DE QUESTIONS (in-game, 5 à 8 pastilles) ──────────────────
+   États : done-first (★ or) / done-retry (orange) / done-helped (rouge
+   doux) / current (anneau accent) / todo. Le résultat RESTE affiché.  */
+.mp-track { display:flex; align-items:center; gap:7px; padding:6px 18px 4px; }
+.mp-q { width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:900; }
+.mp-q.done-first  { background:var(--gold); color:var(--gold-ink); }
+.mp-q.done-retry  { background:var(--retry); color:#3a2000; }
+.mp-q.done-helped { background:var(--helped); color:#fff; }
+.mp-q.current { width:38px; height:38px; background:transparent; border:3px solid var(--accent); color:var(--accent); box-shadow:0 0 12px var(--accent-soft); }
+.mp-q.todo { background:rgba(255,255,255,.1); color:var(--ink-3); font-size:13px; width:28px; height:28px; }
+
+/* ── CONSIGNE AUDIO ────────────────────────────────────────────────── */
+.mp-consigne {
+  margin:0 14px; background:rgba(255,255,255,.07); border-radius:var(--r-card);
+  padding:12px 14px; display:flex; align-items:center; gap:12px;
+}
+.mp-consigne .mp-speak {
+  width:44px; height:44px; flex-shrink:0; border-radius:50%; border:0; cursor:pointer;
+  background:var(--ok); color:#fff; font-size:18px;
+  display:flex; align-items:center; justify-content:center;
+}
+.mp-consigne b { font-weight:900; font-size:16px; color:var(--gold); line-height:1.3; }
+
+/* ── ÉTOILES PAR JEU (0-3) ─────────────────────────────────────────── */
+.mp-g-stars { letter-spacing:2px; font-size:14px; color:var(--gold); }
+.mp-g-stars .off { color:rgba(255,255,255,.22); }
+
+/* utilitaires */
+.row { display:flex; align-items:center; gap:10px; }
+.col { display:flex; flex-direction:column; gap:10px; }
+.grow { flex:1; min-width:0; }
+.muted { color:var(--ink-3); font-weight:800; font-size:12.5px; }
+
+/* ════════════════════════════════════════════════════════════════════
+   Additions intégration MaxPlay (2026-07-13) — hors package d'origine
+   ════════════════════════════════════════════════════════════════════ */
+
+/* Fallback : page sans data-ambiance = ambiance nuit (jamais de fond cassé) */
+body:not([data-ambiance]) { --bg0:#0a1226; --bg1:#0c1730; --card:#0e1a34; --card-2:#182338; --line:rgba(127,180,255,.12); }
+
+/* Couleurs MaxFX (celebrations.js) pilotées par le thème */
+:root { --fx-green:var(--ok); --fx-orange:var(--retry); --fx-red:var(--helped); --fx-gold:var(--gold); --fx-accent:#7fb4ff; }
+
+/* Compat gabarit historique .hdr → look en-tête normalisé mp-header */
+.hdr {
+  display:flex; align-items:center; gap:10px;
+  padding:10px 14px 6px; flex-shrink:0;
+  background:transparent; border-bottom:0;
+}
+.hdr a, .hdr a:visited {
+  width:44px; height:44px; border-radius:50%; border:0;
+  background:rgba(255,255,255,.09); color:var(--ink);
+  display:flex; align-items:center; justify-content:center;
+  font-size:19px; font-weight:900; flex-shrink:0; text-decoration:none; padding:0;
+}
+.hdr a:active { background:rgba(255,255,255,.22); }
+.hdr .htitle {
+  font-family:'Fredoka One', cursive; font-size:17px; font-weight:400; color:var(--ink);
+  flex:1; min-width:0; display:flex; align-items:center; gap:8px;
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+
+/* Légende piste (sous .mp-track) */
+.mp-legend { display:flex; gap:12px; padding:2px 18px 8px; font-size:10.5px; font-weight:800; color:var(--ink-3); }
+
+/* Page conteneur standard */
+.mp-page { max-width:480px; margin:0 auto; min-height:100dvh; display:flex; flex-direction:column; }

@@ -49,32 +49,51 @@
       return this;
     },
 
+    // Piste de questions (Design System v1) : pastilles .mp-q — le résultat RESTE affiché.
+    // Classes historiques .pip/.cur/.vN conservées (specs harnais + compat CSS).
     buildPips() {
       const box = document.getElementById('pips');
       if (!box) return;
+      box.classList.add('mp-track');
       box.innerHTML = '';
       for (let i = 0; i < this.totalQ; i++) {
         const d = document.createElement('div');
-        d.className = 'pip' + (i === 0 ? ' cur' : '');
+        d.className = 'pip mp-q ' + (i === 0 ? 'cur current' : 'todo');
         d.id = 'pip' + i;
+        d.textContent = String(i + 1);
         box.appendChild(d);
       }
     },
 
     // À appeler quand une question est TERMINÉE. attempts: 1,2,3 ; 4 = révélé.
-    notePip(i, attempts) {
+    // fromEl (optionnel) : élément de la bonne réponse → jeton MaxFX vers la pastille.
+    notePip(i, attempts, fromEl) {
       const p = document.getElementById('pip' + i);
+      const a = Math.min(attempts, 4);
+      // États design system : ★ or = 1er coup · ✓ orange = après essai · 💡 = révélé/aidé
+      const state = a === 1 ? 'done-first' : (a === 4 ? 'done-helped' : 'done-retry');
+      const badge = a === 1 ? '★' : (a === 4 ? '💡' : '✓');
       if (p) {
-        p.classList.remove('cur');
-        p.classList.add('v' + Math.min(attempts, 4));
+        p.classList.remove('cur', 'current', 'todo');
+        p.classList.add('v' + a, state);
+        p.textContent = badge;
         const nx = document.getElementById('pip' + (i + 1));
-        if (nx) nx.classList.add('cur');
+        if (nx) { nx.classList.add('cur', 'current'); nx.classList.remove('todo'); }
+        // Jeton MaxFX : part de la bonne réponse vers la pastille (flair, non bloquant)
+        if (fromEl && global.MaxFX && global.MaxFX.markPoint) {
+          try {
+            global.MaxFX.markPoint(fromEl, p, {
+              result: a === 1 ? 'green' : (a === 4 ? 'red' : 'orange'),
+              badge: badge,
+            }).catch(() => {});
+          } catch (e) {}
+        }
       }
       this._answered++;
       if (attempts === 1) {
         this._firstTry++;
-        // mini-celebration ALEATOIRE en cours de jeu (variete avant le bizou final)
-        if (this._answered < this.totalQ) this.microCelebrate();
+        // mini-celebration en cours de jeu (si pas déjà le jeton MaxFX)
+        if (this._answered < this.totalQ && !(fromEl && global.MaxFX)) this.microCelebrate();
       }
       // Étoile = sans faute → seul le 1er coup compte comme "correct" pour la progression
       try { if (typeof Tracker !== 'undefined') Tracker.logAnswer(attempts === 1); } catch (e) {}
@@ -144,10 +163,31 @@
         + '</div></div>';
 
       if (perfect) {
-        this._starFlight(this.stars, opts.celebrate);
+        // Séquence NORMÉE MaxFX (package célébrations, juillet 2026) :
+        // cinematic UNIQUEMENT sur sans-faute + rangement via belt (ancre = zone badges).
+        if (global.MaxFX && global.MaxFX.finalStar) {
+          try { const a = new Audio('sounds/victory-mario-series-hq-super-smash-bros.mp3'); a.volume = 0.85; a.play().catch(() => {}); } catch (e) {}
+          const anchor = document.getElementById('badgeZone');
+          global.MaxFX.finalStar(app, {
+            style: 'cinematic',
+            belt: { earned: newStars, total: MAX_STARS, anchorEl: anchor },
+          }).then(() => {
+            const slot = document.getElementById('slot' + this.stars);
+            if (slot) slot.classList.add('filled', 'pop');
+            try { if (global.SoundPool && SoundPool.voiceLine) SoundPool.voiceLine('etoile-gagnee', 'Tu as gagné une étoile !'); } catch (e) {}
+            if (typeof opts.celebrate === 'function') { try { opts.celebrate(); } catch (e) {} }
+          }).catch(() => {});
+        } else {
+          this._starFlight(this.stars, opts.celebrate); // fallback historique (BIZOU)
+        }
       } else {
         try { sndBravo(); } catch (e) {}
-        try { confetti(); } catch (e) {}
+        if (global.MaxFX && global.MaxFX.finalStar) {
+          // fin sans étoile : encouragement doux, jamais punitif (pas de cinematic)
+          global.MaxFX.finalStar(app, { style: 'breathe', label: 'BRAVO !' }).catch(() => {});
+        } else {
+          try { confetti(); } catch (e) {}
+        }
       }
     },
 

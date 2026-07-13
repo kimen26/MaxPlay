@@ -6,8 +6,8 @@
   <title>MJ-05 – La bonne place</title>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
-    body { font-family:'Nunito',sans-serif; }
     #gameScr { background: linear-gradient(160deg, #3a1a2a, #1a2a3a); }
 
     /* ─── Scène arrêt de bus ─── */
@@ -63,17 +63,17 @@
       font-size: 1.02rem; line-height: 1.55; text-align: center;
       padding: 12px; background: #ffffff10; border-radius: 16px; margin: 0 12px 10px;
     }
-    .problem-text strong { color: #ffe066; font-size: 1.2rem; font-family:'Fredoka One',sans-serif; }
+    .problem-text strong { color: var(--gold); font-size: 1.2rem; font-family:'Fredoka One',sans-serif; }
     .question-counter { text-align: center; font-size: 0.85rem; opacity: 0.7; margin-bottom: 8px; }
-    #levelbar { margin-left:auto; font-family:'Fredoka One',sans-serif; color:#ffe066; background:#ffffff1f; border-radius:10px; padding:3px 12px; font-size:0.85rem; }
-    #hintline { text-align:center; color:#ffe066; font-weight:800; font-size:0.92rem; min-height:22px; margin:2px 12px 8px; }
+    #levelbar { margin-left:auto; font-family:'Fredoka One',sans-serif; color:var(--gold); background:var(--gold-soft); border-radius:10px; padding:3px 12px; font-size:0.85rem; }
+    #hintline { text-align:center; color:var(--gold); font-weight:800; font-size:0.92rem; min-height:22px; margin:2px 12px 8px; }
 
     /* Gros boutons réponse ≥ 100px */
     .choices.big { grid-template-columns:repeat(4,1fr); padding:0 12px 12px; gap:12px; }
     .choices.big .ch { min-height:100px; font-size:1.9rem; font-family:'Fredoka One',sans-serif; border-radius:20px; }
   </style>
 </head>
-<body data-mp-intro-emoji="🪑" data-mp-intro-title="La bonne place" data-mp-intro-hint="Compte les places !">
+<body data-ambiance="nuit" data-mp-intro-emoji="🪑" data-mp-intro-title="La bonne place" data-mp-intro-hint="Compte les places !">
   <div id="app">
     <!-- Header -->
     <div class="hdr">
@@ -121,6 +121,8 @@
   <script src="js/catalog.js"></script>
   <script src="js/stars.js"></script>
   <script src="js/qcm-retry.js"></script>
+  <script src="js/mp-theme.js"></script>
+  <script src="js/celebrations.js"></script>
   <script>
     // ─── MJ-05 : La bonne place ───
     // Problèmes places / monter / descendre / combo. 5 paliers (doc _PALIERS-DIFFICULTE.md).
@@ -324,6 +326,7 @@
         correctCount++; streak++;
         if (streak >= 3) confetti();
         sndDing(); showFB(true);
+        if (window.MaxFX) { const lb = document.getElementById('levelbar'); if (lb) MaxFX.markPoint(btn, lb, { style:'bounce', result: res.attempts > 1 ? 'orange' : 'green' }); }
         if (typeof Tracker !== 'undefined') Tracker.logAnswer(true);
         if (currentProblem && (currentProblem.type === 'monter' || currentProblem.type === 'combo')) animateBoarding();
         score += res.points;
@@ -369,6 +372,10 @@
             <a href="index.html" style="background:#ffffff22;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">📋 Menu</a>
           </div>
         </div>`;
+      if (window.MaxFX) {
+        const endEl = document.getElementById('endscreen');
+        MaxFX.finalStar(endEl, { style: perfect ? 'cinematic' : 'breathe', label: perfect ? 'SANS-FAUTE !' : 'BIEN JOUÉ !' });
+      }
     }
 
     init();

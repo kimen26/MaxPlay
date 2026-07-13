@@ -4,25 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>MJ-35 — Le jeu des graines</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
-    /* --- GABARIT HEADER CANONIQUE (ne pas inventer, copier tel quel) --- */
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
-    body { background:#1a1a2e; font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    body { font-family:'Fredoka One',sans-serif; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
     #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
-    .hdr {
-      display:flex; align-items:center; gap:10px;
-      padding:6px 12px; flex-shrink:0;
-      background:rgba(0,0,0,0.25);
-      border-bottom:1px solid rgba(255,255,255,0.08);
-    }
-    .hdr a {
-      color:#fff; text-decoration:none; font-size:1.3rem;
-      background:rgba(255,255,255,0.12); border-radius:8px;
-      padding:4px 10px; font-weight:900; flex-shrink:0;
-    }
-    .hdr a:active { background:rgba(255,255,255,0.25); }
-    .htitle { flex:1; font-size:1rem; font-weight:900; }
-    /* --- FIN GABARIT HEADER --- */
 
     @font-face {
       font-family:'Fredoka One';
@@ -30,7 +17,7 @@
     }
 
     #stars-badge {
-      background:rgba(255,224,102,0.18); color:#ffe066; font-weight:900;
+      background:var(--gold-soft); color:var(--gold); font-weight:900;
       border-radius:16px; padding:4px 12px; font-size:0.9rem; flex-shrink:0;
     }
 
@@ -168,7 +155,7 @@
     .end-btn:active { transform:scale(0.95); }
   </style>
 </head>
-<body>
+<body data-ambiance="jungle">
 <div id="app">
 
   <!-- HEADER — copier tel quel, changer uniquement l'emoji et le titre -->
@@ -209,6 +196,8 @@
   <script src="js/sounds.js"></script>
   <script src="js/victory-sounds.js"></script>
   <script src="js/regle-info.js"></script>
+  <script src="js/mp-theme.js"></script>
+  <script src="js/celebrations.js"></script>
   <script>
     RegleInfo.init({ texte: "Trouve le trou qui remplit le grenier PILE-POIL !", picto: "🌱👉🏺" });
   </script>
@@ -406,6 +395,11 @@
 
       if (isPile) {
         showPileFx();
+        if (window.MaxFX) {
+          const fromEl = document.getElementById('granary');
+          const toEl = document.getElementById('pile-progress');
+          MaxFX.markPoint(fromEl, toEl, { style: 'bounce', result: 'green' });
+        }
         pileCount++;
         updatePileProgress();
         if (pileCount >= PILE_TARGET) {
@@ -445,6 +439,7 @@
       document.getElementById('end-screen').classList.add('visible');
       playEndSound(1, 1);
       if (typeof Tracker !== 'undefined') Tracker.endSession(1, 1);
+      if (window.MaxFX) MaxFX.finalStar(document.getElementById('app'), { style: 'breathe', label: 'BRAVO !' });
     }
 
     function replay() {

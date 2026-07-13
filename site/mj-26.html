@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>MJ-26 – Compte les dinos</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&family=Fredoka+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
-    #app { background: linear-gradient(160deg,#143a40,#0d2226); }
     .instruction-text { text-align:center; font-size:1.3rem; font-weight:900; color:#ffe066; margin:8px 12px 2px; }
     .question-counter { text-align:center; font-size:.85rem; opacity:.7; margin-top:4px; }
     .tts-btn { min-height:80px;
@@ -69,6 +69,8 @@
   <script src="js/lang.js"></script>
   <script src="js/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
+  <script src="js/mp-theme.js"></script>
+  <script src="js/celebrations.js"></script>
   <script>
     // ─── MJ-26 — Compte les dinos (1 à 6, ombres chinoises par-dino) ───
     // Refonte 2026-07-05 (ordre Papa Yann) : anciennes silhouettes par-famille supprimees,
@@ -165,7 +167,7 @@
       if (res.outcome === 'correct'){
         btn.classList.add('ok'); score += res.points;
         streak = res.streakInc ? streak+1 : 0;
-        sndDing(); G.notePip(qCount-1, res.attempts);
+        sndDing(); G.notePip(qCount-1, res.attempts, btn);
         setTimeout(nextQuestion, 950);
       } else if (res.outcome === 'reveal'){
         btn.classList.add('ko'); btn.disabled = true; streak = 0;

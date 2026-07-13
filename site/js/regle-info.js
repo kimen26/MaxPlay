@@ -20,9 +20,9 @@
     if (document.getElementById(STYLE_ID)) return;
     const css = `
       .hinfo {
-        flex-shrink:0; width:34px; height:34px; border-radius:50%;
-        background:rgba(255,255,255,0.14); color:#fff; border:none;
-        font-family:'Fredoka One',sans-serif; font-weight:900; font-size:1.05rem;
+        flex-shrink:0; width:40px; height:40px; border-radius:50%;
+        background:rgba(255,255,255,0.09); color:#fff; border:none;
+        font-family:'Fredoka One',sans-serif; font-weight:900; font-size:16px;
         display:flex; align-items:center; justify-content:center;
         cursor:pointer; padding:0;
       }

@@ -4,32 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>MJ-19 – Trouve le bus !</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&family=Fredoka+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none; }
     body {
       font-family:'Nunito',sans-serif;
-      background:linear-gradient(160deg,#0a2a1a 0%,#143a26 50%,#061a10 100%);
       height:100dvh; overflow:hidden; touch-action:manipulation;
     }
     #app { display:flex; flex-direction:column; height:100dvh; max-width:1000px; margin:0 auto; }
-    .hdr {
-      display:flex; align-items:center; gap:10px; padding:6px 12px;
-      background:rgba(0,0,0,0.25);
-      border-bottom:1px solid rgba(255,255,255,0.08);
-      flex-shrink:0;
-    }
-    .back { color:#fff; text-decoration:none; font-size:1.3rem; font-weight:900; padding:4px 10px; border-radius:8px; background:rgba(255,255,255,0.12); flex-shrink:0; }
-    .back:active { background:rgba(255,255,255,0.25); }
-    .htitle { color:#fff; font-size:1rem; font-weight:900; flex:1; }
-    .score { color:#ffe066; font-weight:900; }
+    .score { color:var(--gold); font-weight:900; }
     .lvl { color:#fff; font-weight:900; font-size:0.8rem; background:rgba(255,255,255,0.14); border-radius:10px; padding:2px 8px; }
     .quest {
       text-align:center; padding:12px 16px;
       color:#fff; font-size:1.2rem; font-weight:900;
       background:rgba(0,0,0,0.25);
     }
-    .quest b { color:#ffe066; font-size:1.4rem; }
+    .quest b { color:var(--gold); font-size:1.4rem; }
     .arena {
       flex:1; position:relative; overflow:hidden;
       background:
@@ -97,6 +88,8 @@
   <script src="js/bus-svg.js"></script>
   <script src="js/catalog.js"></script>
   <script src="js/stars.js"></script>
+  <script src="js/mp-theme.js"></script>
+  <script src="js/celebrations.js"></script>
   <script>
     // MJ-19 V1 — Hidden in plain sight
     // N bus se déplacent, Max doit taper celui demandé. 5 rounds.
@@ -256,6 +249,7 @@
         flash(true);
         try { sndDing && sndDing(); } catch(e) {}
         try { confettiBurst(25); } catch(e) {}
+        if (window.MaxFX) MaxFX.markPoint(mv.el, document.getElementById('score'), { style: 'bounce', result: 'green' });
         if (typeof Tracker !== 'undefined') Tracker.logAnswer(true);
         score++;
         round++;
@@ -280,14 +274,18 @@
       arena.innerHTML = `
         <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:20px;">
           <div style="font-size:5rem;">🎉</div>
-          <h2 style="color:#ffe066;font-size:2.2rem;margin:10px 0;">Bravo !</h2>
+          <h2 style="color:var(--gold);font-size:2.2rem;margin:10px 0;">Bravo !</h2>
           <p style="font-size:1.3rem;margin-bottom:24px;">Tu as trouvé ${score} bus sur ${ROUNDS} !</p>
           <div>
-            <button onclick="location.reload()" style="padding:14px 28px;border-radius:30px;border:none;background:linear-gradient(135deg,#00c47a,#00a86b);color:#fff;font-weight:900;font-family:inherit;margin:0 8px;cursor:pointer;">🔄 Rejouer</button>
+            <button onclick="location.reload()" style="padding:14px 28px;border-radius:30px;border:none;background:linear-gradient(135deg,var(--ok),#00a86b);color:#fff;font-weight:900;font-family:inherit;margin:0 8px;cursor:pointer;">🔄 Rejouer</button>
             <a href="index.html" style="padding:14px 28px;border-radius:30px;background:rgba(255,255,255,0.15);color:#fff;font-weight:900;text-decoration:none;margin:0 8px;">📋 Menu</a>
           </div>
         </div>`;
       try { confettiBurst(60); } catch(e) {}
+      if (window.MaxFX) {
+        const perfect = score === ROUNDS;
+        MaxFX.finalStar(arena, { style: perfect ? 'cinematic' : 'breathe', label: perfect ? 'SANS-FAUTE !' : '' });
+      }
     }
 
     document.addEventListener('DOMContentLoaded', () => {

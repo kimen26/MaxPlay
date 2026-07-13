@@ -4,26 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>MJ-39 — Blocs magiques</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
-    /* --- GABARIT HEADER CANONIQUE (ne pas inventer, copier tel quel) --- */
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
-    body { background:#1a1a2e; font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    body { font-family:'Fredoka One',sans-serif; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
     #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
-    .hdr {
-      display:flex; align-items:center; gap:10px;
-      padding:6px 12px; flex-shrink:0;
-      background:rgba(0,0,0,0.25);
-      border-bottom:1px solid rgba(255,255,255,0.08);
-    }
-    .hdr a {
-      color:#fff; text-decoration:none; font-size:1.3rem;
-      background:rgba(255,255,255,0.12); border-radius:8px;
-      padding:4px 10px; font-weight:900; flex-shrink:0;
-    }
-    .hdr a:active { background:rgba(255,255,255,0.25); }
-    .htitle { flex:1; font-size:1rem; font-weight:900; }
-    /* --- FIN GABARIT HEADER --- */
 
     #progress {
       flex-shrink:0; display:flex; align-items:center; justify-content:center;
@@ -107,20 +94,20 @@
     #fullScreen {
       position:absolute; inset:0; display:none; flex-direction:column;
       align-items:center; justify-content:center; gap:16px;
-      background:rgba(20,20,40,0.95); z-index:30; text-align:center; padding:20px;
+      background:var(--bg0); z-index:30; text-align:center; padding:20px;
     }
     #fullScreen.show { display:flex; }
     #fullScreen h2 { font-size:1.6rem; }
     #fullScreen .stars { font-size:2.2rem; }
     .btn {
       font-family:'Fredoka One',sans-serif; font-size:1rem; font-weight:900;
-      color:#fff; background:#0064B1; border:none; border-radius:14px;
+      color:var(--accent-ink); background:var(--accent); border:none; border-radius:14px;
       padding:16px 26px; min-width:140px; min-height:80px;
     }
-    .btn:active { background:#004f8f; }
+    .btn:active { opacity:0.8; }
   </style>
 </head>
-<body>
+<body data-ambiance="arcade">
 <div id="app">
 
   <!-- HEADER — copier tel quel, changer uniquement l'emoji et le titre -->
@@ -159,6 +146,8 @@
   <script src="js/sounds.js"></script>
   <script src="js/victory-sounds.js"></script>
   <script src="js/regle-info.js"></script>
+  <script src="js/mp-theme.js"></script>
+  <script src="js/celebrations.js"></script>
   <script>
     RegleInfo.init({ texte: "Pose les blocs pour remplir des lignes entières !", picto: "🟪➡️✨" });
   </script>
@@ -449,10 +438,12 @@
       PALIERS.forEach((need, i) => {
         if (!starsGiven[i] && lignesEffacees >= need) {
           starsGiven[i] = true;
-          document.getElementById('st' + (i + 1)).classList.remove('off');
+          const starEl = document.getElementById('st' + (i + 1));
+          starEl.classList.remove('off');
           Tracker.startSession('mj-39');
           Tracker.endSession(1, 1);
           sndBravo();
+          if (window.MaxFX) MaxFX.markPoint(grid, starEl, { style: 'bounce', result: 'green' });
         }
       });
     }
@@ -467,6 +458,10 @@
       fullStars.textContent = nbStars > 0 ? '⭐'.repeat(nbStars) : '✨';
       try { playEndSound(nbStars, PALIERS.length); } catch(e) {}
       fullScreen.classList.add('show');
+      if (window.MaxFX) {
+        const allStars = nbStars >= PALIERS.length;
+        MaxFX.finalStar(document.getElementById('app'), { style: allStars ? 'cinematic' : 'breathe', label: nbStars > 0 ? 'BRAVO !' : '' });
+      }
     }
 
     document.getElementById('btnReplay').addEventListener('click', () => {

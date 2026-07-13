@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MaxPlay — Accueil</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+<style>
+  .home { max-width:480px; margin:0 auto; min-height:100vh; display:flex; flex-direction:column; }
+  /* profil */
+  .profil { display:flex; align-items:center; gap:12px; padding:18px 18px 12px; }
+  .avatar {
+    width:58px; height:58px; border-radius:50%; cursor:pointer;
+    background:radial-gradient(circle at 35% 30%, var(--accent), oklch(0.45 0.1 var(--h-avatar)));
+    border:3px solid var(--gold); display:flex; align-items:center; justify-content:center; font-size:30px;
+  }
+  .pseudo { font-family:'Fredoka One'; font-size:21px; }
+  .niveau { height:8px; border-radius:999px; background:rgba(255,255,255,.12); width:110px; }
+  .niveau i { display:block; height:100%; border-radius:999px; background:var(--accent); }
+  /* tiroir niveau 2 (sous-groupe) */
+  .sub { background:var(--card); border-radius:14px; overflow:hidden; border:1px solid var(--line); }
+  .sub-head { display:flex; align-items:center; gap:9px; padding:11px 12px; cursor:pointer; }
+  .dot { width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 8px var(--accent); flex-shrink:0; }
+  .game { display:flex; align-items:center; gap:10px; background:var(--card-2); border-radius:12px; padding:10px 11px; cursor:pointer; }
+  .locked { opacity:.5; cursor:default; }
+  /* encyclopédie épinglée */
+  .ency {
+    display:flex; align-items:center; gap:13px; margin-top:auto; cursor:pointer;
+    background:linear-gradient(135deg, var(--card-2), var(--card));
+    border:1px solid var(--line); border-radius:var(--r-card); padding:15px;
+  }
+</style>
+</head>
+<body data-ambiance="nuit">
+<div class="home">
+
+  <!-- profil : avatar (tap = atelier) + pseudo + niveau + ⭐ global -->
+  <div class="profil">
+    <div class="avatar" onclick="location.href='avatar-atelier.html'">🦕</div>
+    <div class="col grow" style="gap:3px">
+      <div class="pseudo">Max</div>
+      <div class="row" style="gap:6px"><div class="niveau"><i style="width:65%"></i></div><span class="muted" style="font-size:11.5px">Niveau 4</span></div>
+    </div>
+    <div class="mp-stars-total">⭐ 42</div>
+  </div>
+
+  <!-- MENU À TIROIRS — 2 niveaux, un seul ouvert par niveau -->
+  <div class="col" style="padding:6px 16px 12px; gap:10px">
+
+    <!-- catégorie OUVERTE -->
+    <div class="mp-drawer open" data-cat="dinos">
+      <div class="mp-drawer-head" onclick="toggleCat(this)">
+        <span style="font-size:26px">🦕</span>
+        <b class="grow" style="font-size:16.5px">Les dinos</b>
+        <span style="color:var(--gold); font-weight:900; font-size:13px">⭐ 12 / 21</span>
+        <span class="mp-chevron">›</span>
+      </div>
+      <div class="col" style="padding:0 10px 12px; gap:8px">
+
+        <!-- sous-groupe OUVERT -->
+        <div class="sub open">
+          <div class="sub-head" onclick="toggleSub(this)">
+            <span class="dot"></span>
+            <b class="grow" style="font-size:14px">Pour commencer</b>
+            <span class="mp-g-stars">★<span class="off">★★</span></span>
+            <span class="mp-chevron">›</span>
+          </div>
+          <div class="col" style="padding:0 8px 10px; gap:6px">
+            <div class="game" onclick="location.href='minijeu.html'">
+              <span style="font-size:22px">📏</span>
+              <b class="grow" style="font-size:13.5px">Range par taille</b>
+              <span class="mp-g-stars">★★<span class="off">★</span></span>
+            </div>
+            <div class="game">
+              <span style="font-size:22px">🃏</span>
+              <b class="grow" style="font-size:13.5px">Memory des ombres</b>
+              <span class="mp-g-stars">★<span class="off">★★</span></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- sous-groupes fermés / verrouillés -->
+        <div class="sub">
+          <div class="sub-head" onclick="toggleSub(this)">
+            <span class="dot"></span>
+            <b class="grow" style="font-size:14px">Un peu plus dur</b>
+            <span class="mp-g-stars">★★<span class="off">★</span></span>
+            <span class="mp-chevron">›</span>
+          </div>
+        </div>
+        <div class="sub locked">
+          <div class="sub-head">
+            <span class="dot" style="background:var(--ink-3); box-shadow:none"></span>
+            <b class="grow" style="font-size:14px">Pour les chefs</b>
+            <span class="muted">🔒 2★ pour ouvrir</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- catégories fermées -->
+    <div class="mp-drawer" data-cat="compter">
+      <div class="mp-drawer-head" onclick="toggleCat(this)">
+        <span style="font-size:26px">🔢</span><b class="grow" style="font-size:16.5px">Compter</b>
+        <span style="color:var(--gold); font-weight:900; font-size:13px">⭐ 8 / 15</span><span class="mp-chevron">›</span>
+      </div>
+    </div>
+    <div class="mp-drawer" data-cat="logique">
+      <div class="mp-drawer-head" onclick="toggleCat(this)">
+        <span style="font-size:26px">🧩</span><b class="grow" style="font-size:16.5px">Logique</b>
+        <span style="color:var(--gold); font-weight:900; font-size:13px">⭐ 5 / 18</span><span class="mp-chevron">›</span>
+      </div>
+    </div>
+    <div class="mp-drawer" data-cat="lire">
+      <div class="mp-drawer-head" onclick="toggleCat(this)">
+        <span style="font-size:26px">🔤</span><b class="grow" style="font-size:16.5px">Lire</b>
+        <span style="color:var(--gold); font-weight:900; font-size:13px">⭐ 2 / 10</span><span class="mp-chevron">›</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- encyclopédie épinglée en bas -->
+  <div style="padding:0 16px 16px; display:flex; flex-direction:column; flex:1">
+    <div class="ency" onclick="location.href='dinos-familles.html'">
+      <span style="font-size:34px">📚</span>
+      <div class="col grow" style="gap:1px">
+        <b style="font-size:15.5px">Encyclopédie Dinos</b>
+        <span class="muted">50 dinos · 6 familles · le voyage</span>
+      </div>
+      <div style="width:42px;height:42px;border-radius:50%;background:var(--gold);color:var(--gold-ink);display:flex;align-items:center;justify-content:center;font-weight:900">›</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// un seul tiroir ouvert par niveau
+function toggleCat(head) {
+  const d = head.parentElement, was = d.classList.contains('open');
+  document.querySelectorAll('.mp-drawer').forEach(x => x.classList.remove('open'));
+  if (!was) d.classList.add('open');
+}
+function toggleSub(head) {
+  const s = head.parentElement, was = s.classList.contains('open');
+  s.closest('.mp-drawer').querySelectorAll('.sub').forEach(x => x.classList.remove('open'));
+  if (!was) s.classList.add('open');
+}
+// NOTE INTÉGRATION : brancher sur catalog.js (catégories, jeux, étoiles)
+// et masquer le corps des tiroirs fermés (ici démo : contenu retiré du DOM à la main)
+</script>
+</body>
+</html>

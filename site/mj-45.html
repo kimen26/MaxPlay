@@ -4,30 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>MJ-45 — Le bus qui se remplit</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
     /* --- GABARIT HEADER CANONIQUE (ne pas inventer, copier tel quel) --- */
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
-    body { background:#1a1a2e; font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    body { font-family:'Fredoka One',sans-serif; color:var(--ink); display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
     #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
-    .hdr {
-      display:flex; align-items:center; gap:10px;
-      padding:6px 12px; flex-shrink:0;
-      background:rgba(0,0,0,0.25);
-      border-bottom:1px solid rgba(255,255,255,0.08);
-    }
-    .hdr a {
-      color:#fff; text-decoration:none; font-size:1.3rem;
-      background:rgba(255,255,255,0.12); border-radius:8px;
-      padding:4px 10px; font-weight:900; flex-shrink:0;
-    }
-    .hdr a:active { background:rgba(255,255,255,0.25); }
     .htitle { flex:1; font-size:1rem; font-weight:900; }
     /* --- FIN GABARIT HEADER --- */
-
-    /* Ciel de fin de journée + rue */
-    body { background:linear-gradient(180deg,#7ec8e3 0%,#a8ddef 45%,#cfeef8 60%,#8f9aa5 60.5%,#6d7680 100%); }
-    .hdr { background:rgba(0,0,0,0.3); }
 
     .stars { text-align:center; padding:3px 8px; font-size:1.1rem; flex-shrink:0; }
     .star { opacity:0.32; transition:opacity 0.25s, transform 0.25s; display:inline-block; }
@@ -35,7 +20,7 @@
 
     .banner {
       text-align:center; font-size:0.98rem; font-weight:900; padding:4px 12px;
-      color:#1a2a3a; text-shadow:0 1px 2px rgba(255,255,255,0.4); flex-shrink:0; min-height:1.4em;
+      color:var(--ink); text-shadow:0 1px 2px rgba(0,0,0,0.4); flex-shrink:0; min-height:1.4em;
     }
 
     .stage { flex:1; position:relative; display:flex; flex-direction:column; overflow:hidden; padding:4px 8px 10px; }
@@ -97,13 +82,13 @@
     #overlay h2 { font-size:1.6rem; text-shadow:0 2px 6px rgba(0,0,0,0.5); }
     #overlay p { font-size:1.05rem; color:#fff8e0; }
     #replay-btn { font-family:'Fredoka One',sans-serif; font-size:1.1rem; font-weight:900;
-                  background:#1abc9c; color:#fff; border:none; border-radius:16px;
+                  background:var(--gold); color:var(--gold-ink); border:none; border-radius:16px;
                   padding:16px 30px; min-height:80px; min-width:200px; cursor:pointer;
                   box-shadow:0 6px 0 #128f76; }
     #replay-btn:active { transform:translateY(4px); box-shadow:0 2px 0 #128f76; }
   </style>
 </head>
-<body>
+<body data-ambiance="ville">
 <div id="app">
 
   <div class="hdr">
@@ -152,6 +137,8 @@
   <script src="js/sounds.js"></script>
   <script src="js/victory-sounds.js"></script>
   <script src="js/regle-info.js"></script>
+  <script src="js/mp-theme.js"></script>
+  <script src="js/celebrations.js"></script>
   <script>
     RegleInfo.init({
       texte: "Fais monter les passagers pile au bon nombre. Au dernier niveau, fais-les descendre !",

@@ -4,26 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>MJ-18 — Tubes de couleurs</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&family=Fredoka+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none; }
     body {
       font-family:'Nunito',sans-serif;
-      background:linear-gradient(160deg,#0f1a2e 0%,#1a2338 50%,#0a0f1a 100%);
       height:100dvh; overflow:hidden; touch-action:none;
     }
     #app { display:flex; flex-direction:column; height:100dvh; max-width:1000px; margin:0 auto; }
-    .hdr {
-      display:flex; align-items:center; gap:10px; padding:6px 12px;
-      background:rgba(0,0,0,0.25);
-      border-bottom:1px solid rgba(255,255,255,0.08);
-      flex-shrink:0;
-    }
-    .back { color:#fff; text-decoration:none; font-size:1.3rem; font-weight:900; padding:4px 10px; border-radius:8px; background:rgba(255,255,255,0.12); flex-shrink:0; }
-    .back:active { background:rgba(255,255,255,0.25); }
-    .htitle { color:#fff; font-size:1rem; font-weight:900; flex:1; }
     .info {
-      text-align:center; color:#ffe066; font-size:1rem; font-weight:900; padding:8px 16px;
+      text-align:center; color:var(--gold); font-size:1rem; font-weight:900; padding:8px 16px;
     }
     /* Deux rangées de tubes */
     .stage {
@@ -55,10 +46,10 @@
     }
     .tube.selected {
       transform:translateY(-20px);
-      box-shadow:0 0 0 4px #ffe066, 0 8px 24px rgba(255,224,102,0.5);
+      box-shadow:0 0 0 4px var(--gold), 0 8px 24px rgba(255,224,102,0.5);
     }
     .tube.full-mono {
-      box-shadow:0 0 0 4px #00c47a, 0 0 20px rgba(0,196,122,0.6);
+      box-shadow:0 0 0 4px var(--ok), 0 0 20px rgba(0,196,122,0.6);
     }
     .layer {
       width:100%; height:25%;
@@ -92,13 +83,13 @@
     }
     .victory-emoji { font-size:3rem; margin-bottom:10px; animation:bounce 1s infinite; }
     @keyframes bounce { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-16px);} }
-    .victory-title { font-size:1.8rem; color:#ffe066; margin-bottom:6px; }
+    .victory-title { font-size:1.8rem; color:var(--gold); margin-bottom:6px; }
     .victory-text { color:#fff; margin-bottom:18px; font-size:0.95rem; }
     .victory-btn {
       padding:12px 22px; border-radius:26px; text-decoration:none; font-weight:900;
       border:none; cursor:pointer; font-family:inherit; margin:0 6px; display:inline-block;
     }
-    .victory-btn.primary { background:linear-gradient(135deg,#00c47a,#00a86b); color:#fff; }
+    .victory-btn.primary { background:linear-gradient(135deg,var(--ok),#00a86b); color:#fff; }
     .victory-btn.secondary { background:rgba(255,255,255,0.15); color:#fff; }
 
     .paint-scene {
@@ -140,7 +131,7 @@
     <div class="hdr">
       <a href="index.html" class="back">←</a>
       <span class="htitle">🧪 Tubes de couleurs</span>
-      <span id="levelbar" style="font-weight:900;color:#ffe066;background:rgba(255,255,255,0.14);border-radius:10px;padding:3px 12px;font-size:0.85rem;">Niveau 1</span>
+      <span id="levelbar" style="font-weight:900;color:var(--gold);background:rgba(255,255,255,0.14);border-radius:10px;padding:3px 12px;font-size:0.85rem;">Niveau 1</span>
     </div>
     <div class="info" id="info">Tape un tube, puis tape un autre pour verser !</div>
     <div class="stage" id="stage"></div>
@@ -169,6 +160,8 @@
   <script src="js/data.js"></script>
   <script src="js/catalog.js"></script>
   <script src="js/stars.js"></script>
+  <script src="js/mp-theme.js"></script>
+  <script src="js/celebrations.js"></script>
   <script>
     const TUBE_CAPACITY = 4;
     const TUBES_EMPTY = 2;
@@ -356,6 +349,7 @@
     function showVictory() {
       try { playEndSound(1, 1); } catch(e) {}
       document.getElementById('victoryOverlay').classList.add('show');
+      if (window.MaxFX) MaxFX.finalStar(document.getElementById('victoryOverlay'), { style: 'breathe', label: '' });
       runPaintParade();
     }
 

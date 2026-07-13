@@ -6,6 +6,7 @@
   <title>MJ-06 – Lis la phrase</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
     #gameScr { background: linear-gradient(160deg, #2a1a3a, #1a2a3a); }
     
@@ -30,24 +31,24 @@
     
     .sentence-text .blank {
       display: inline-block;
-      background: #ffe06644;
-      border: 3px solid #ffe066;
+      background: var(--gold-soft);
+      border: 3px solid var(--gold);
       border-radius: 12px;
       padding: 4px 16px;
       margin: 0 4px;
       min-width: 60px;
-      color: #ffe066;
+      color: var(--gold);
       font-weight: 900;
       animation: pulse 0.8s infinite alternate;
     }
-    
+
     .sentence-text .blank.filled {
       background: #00c47a44;
       border-color: #00c47a;
       color: #00c47a;
       animation: popAnim 0.3s ease-out;
     }
-    
+
     .sentence-text .blank.revealed {
       background: #00c47a44;
       border-color: #00c47a;
@@ -122,7 +123,7 @@
     }
   </style>
 </head>
-<body>
+<body data-ambiance="nuit">
   <div id="app">
     <!-- Header -->
     <div class="hdr">
@@ -171,6 +172,8 @@
   <script src="js/sounds.js"></script>
   <script src="js/tts.js"></script>
   <script src="js/feedback.js"></script>
+  <script src="js/mp-theme.js"></script>
+  <script src="js/celebrations.js"></script>
   <script>
     // ─── MJ-04: Lis la phrase ───
     // Max doit trouver le mot manqué [?] dans une phrase simple

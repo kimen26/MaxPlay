@@ -88,32 +88,24 @@ Voie express (patch/bugfix MJ existant) : lire figé → fix → harnais vert �
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
   <title>MJ-XX — Nom</title>
-  <link rel="stylesheet" href="css/common.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
-    /* --- GABARIT HEADER CANONIQUE (ne pas inventer, copier tel quel) --- */
+    /* --- GABARIT DESIGN SYSTEM v1 (juillet 2026) ---
+       Le header .hdr est stylé par mp-theme.css (compat) : NE PAS redéclarer
+       .hdr/.htitle en local. NE PAS mettre de background sur body :
+       le fond vient de l'AMBIANCE (data-ambiance posé par mp-theme.js). */
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
-    body { background:#1a1a2e; font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    body { font-family:'Fredoka One',sans-serif; color:var(--ink); display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
     #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
-    .hdr {
-      display:flex; align-items:center; gap:10px;
-      padding:6px 12px; flex-shrink:0;
-      background:rgba(0,0,0,0.25);
-      border-bottom:1px solid rgba(255,255,255,0.08);
-    }
-    .hdr a {
-      color:#fff; text-decoration:none; font-size:1.3rem;
-      background:rgba(255,255,255,0.12); border-radius:8px;
-      padding:4px 10px; font-weight:900; flex-shrink:0;
-    }
-    .hdr a:active { background:rgba(255,255,255,0.25); }
-    .htitle { flex:1; font-size:1rem; font-weight:900; }
-    /* --- FIN GABARIT HEADER --- */
   </style>
 </head>
 <body>
 <div id="app">
 
-  <!-- HEADER — copier tel quel, changer uniquement l'emoji et le titre -->
+  <!-- HEADER — markup canonique, changer uniquement l'emoji et le titre.
+       Style fourni par mp-theme.css (← rond 44px, titre Fredoka).
+       regle-info.js ajoute ❓, comments.js ajoute 💬 automatiquement. -->
   <div class="hdr">
     <a href="index.html">&#8592;</a>
     <span class="htitle">🎯 Titre du jeu</span>
@@ -127,6 +119,8 @@ Voie express (patch/bugfix MJ existant) : lire figé → fix → harnais vert �
   <script src="js/tracker.js"></script>
   <script src="js/sounds.js"></script>
   <script src="js/victory-sounds.js"></script>
+  <script src="js/mp-theme.js"></script>
+  <script src="js/celebrations.js"></script>
   <script>
     // jeu inline
   </script>
@@ -134,7 +128,14 @@ Voie express (patch/bugfix MJ existant) : lire figé → fix → harnais vert �
 </html>
 ```
 
-**Règle header MILITAIRE** : copier le gabarit `.hdr` ci-dessus à la lettre. Ne jamais créer `.game-header`, `.header-text`, `.header-title`, `.header-sub` ou tout autre variante inventée. Le header fait **~30px de hauteur** (`padding:6px 12px`). `back-button.js` injecte automatiquement la flèche ← sobre — ne pas créer un gros bouton bus manuellement.
+**Règle header MILITAIRE** (v2, Design System juillet 2026 — remplace le gabarit inline v1 sur décision Papa Yann, package `studio/minijeux/inbox/package-maxplay-design/`) : garder le markup `.hdr` ci-dessus à la lettre, **zéro règle CSS `.hdr` locale** (mp-theme.css fait autorité). Ne jamais créer `.game-header`, `.header-text`, `.header-title`, `.header-sub` ou toute autre variante inventée. `back-button.js` injecte automatiquement la flèche ← ronde 44px — ne pas créer un gros bouton bus manuellement.
+
+## Design System v1 (source de vérité : `site/css/mp-theme.css` + `site/js/mp-theme.js`)
+
+- 4 rôles couleur : fond+carte (sombres, viennent de l'AMBIANCE), `--accent` (clair, teinte avatar), `--gold` (or fixe, étoiles UNIQUEMENT).
+- 6 ambiances `data-ambiance="nuit|jungle|ville|espace|arcade|musee"` — choisies dans l'atelier avatar, posées automatiquement par mp-theme.js. **Jamais de background body hardcodé** dans un MJ.
+- Piste de questions `.mp-track`/`.mp-q` : ★ or = 1er coup · ✓ orange = après essai · 💡 rouge doux = aidé. Le résultat RESTE affiché. Gérée par mj-golden.js pour les jeux GOLDEN.
+- Célébrations : `js/celebrations.js` (MaxFX) — `markPoint` à chaque bonne réponse, `finalStar` en fin de jeu (`cinematic` UNIQUEMENT sans-faute) + `belt` (rangement étoile normé). Micro-célébration ≤ 2 s, jamais punitif.
 
 ## État jeux
 

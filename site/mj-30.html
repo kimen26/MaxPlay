@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>MJ-30 – Range-les par taille</title>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&family=Fredoka+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
-    #app { background: linear-gradient(160deg,#2b1f3d,#1c1326); }
     .instruction-text { text-align:center; font-size:1.25rem; font-weight:900; color:#ffe066; margin:8px 12px 2px; }
     .question-counter { text-align:center; font-size:.85rem; opacity:.7; margin-top:4px; }
     .tts-btn { min-height:80px;
@@ -125,6 +125,8 @@
   <script src="js/mj-golden.js"></script>
   <script src="js/lang.js"></script>
   <script src="js/dinos-audio-manifest.js"></script>
+  <script src="js/mp-theme.js"></script>
+  <script src="js/celebrations.js"></script>
   <script>
     // ─── MJ-30 — Range-les par taille (échelle honnête) ───
     // Pool complet 60 dinos (tous ont une ombre dans img/dinos/ombres/).
@@ -441,11 +443,11 @@
 
       if (res.outcome === 'correct'){
         sndDing();
-        G.notePip(qCount, res.attempts);
+        G.notePip(qCount, res.attempts, document.getElementById('validateBtn'));
         setTimeout(showReveal, 400);
       } else if (res.outcome === 'reveal'){
         sndBuzz();
-        G.notePip(qCount, 4);
+        G.notePip(qCount, 4, document.getElementById('validateBtn'));
         SoundPool.phrase('regardons-ensemble', 'Regardons ensemble !');
         setTimeout(showReveal, 900);
       } else {

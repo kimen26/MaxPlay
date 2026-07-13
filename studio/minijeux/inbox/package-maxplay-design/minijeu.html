@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MaxPlay — Template minijeu</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
+<style>
+  .page { max-width:480px; margin:0 auto; min-height:100vh; display:flex; flex-direction:column; }
+  .zone-jeu { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:16px; padding:10px 16px; }
+  .footer { padding:0 16px 18px; }
+  .legend { display:flex; gap:12px; padding:2px 18px 8px; font-size:10.5px; font-weight:800; color:var(--ink-3); }
+</style>
+</head>
+<body data-ambiance="nuit">
+<div class="page">
+
+  <!-- ══ EN-TÊTE NORMALISÉ : ← · icône+titre · ❓ · 💬 ══ -->
+  <div class="mp-header">
+    <button class="mp-back" onclick="history.back()">←</button>
+    <div class="mp-title"><span style="font-size:24px">📏</span>Range par taille</div>
+    <button class="mp-hbtn" title="Règle du jeu">❓</button>
+    <button class="mp-hbtn" title="Avis">💬</button>
+  </div>
+
+  <!-- ══ PISTE DE QUESTIONS (5-8) — le résultat RESTE affiché ══
+       ★ or = 1er coup · orange = après essai · rouge doux = aidé
+       + étoiles du jeu à droite -->
+  <div class="mp-track">
+    <div class="mp-q done-first">★</div>
+    <div class="mp-q done-retry">✓</div>
+    <div class="mp-q done-helped">💡</div>
+    <div class="mp-q done-first">★</div>
+    <div class="mp-q current">5</div>
+    <div class="mp-q todo">6</div>
+    <div class="mp-q todo">7</div>
+    <span class="grow"></span>
+    <span class="mp-g-stars">★★<span class="off">★</span></span>
+  </div>
+  <div class="legend"><span>★ du 1ᵉʳ coup</span><span>✓ après essai</span><span>💡 avec aide</span></div>
+
+  <!-- ══ CONSIGNE AUDIO ══ -->
+  <div class="mp-consigne">
+    <button class="mp-speak">🔊</button>
+    <b>Du plus petit au plus GRAND !</b>
+  </div>
+
+  <!-- ══ ZONE DE JEU (tout l'espace restant) ══ -->
+  <div class="zone-jeu">
+    <!-- >>> CONTENU DU MINIJEU ICI <<<
+         Rappels : cibles ≥ 44px, feedback via celebrations.js :
+         - bonne réponse  → MaxFX.markPoint(elem)  (remontée vers la piste)
+         - fin de partie  → MaxFX.finalStar() + MaxFX.belt()             -->
+    <div class="mp-card" style="padding:40px 30px; text-align:center; color:var(--ink-3); font-weight:800">
+      zone de jeu<br><span style="font-size:12px">(placeholder)</span>
+    </div>
+  </div>
+
+  <!-- ══ ACTION PRINCIPALE ══ -->
+  <div class="footer">
+    <button class="mp-btn-primary">C'est bon ! ✓</button>
+  </div>
+</div>
+</body>
+</html>

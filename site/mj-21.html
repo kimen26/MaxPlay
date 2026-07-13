@@ -5,21 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>MJ-21 — Peins les bus !</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&family=Fredoka+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none; }
-    body { font-family:'Nunito',sans-serif; background:linear-gradient(160deg,#0f1a2e 0%,#1a2338 50%,#0a0f1a 100%); height:100dvh; overflow:hidden; touch-action:none; }
+    body { font-family:'Nunito',sans-serif; height:100dvh; overflow:hidden; touch-action:none; }
     #app { display:flex; flex-direction:column; height:100dvh; max-width:480px; margin:0 auto; }
-
-    .hdr { display:flex; align-items:center; gap:10px; padding:6px 12px; background:rgba(0,0,0,0.25); border-bottom:1px solid rgba(255,255,255,0.08); flex-shrink:0; }
-    .back { color:#fff; text-decoration:none; font-size:1.3rem; font-weight:900; padding:4px 10px; border-radius:8px; background:rgba(255,255,255,0.12); flex-shrink:0; }
-    .back:active { background:rgba(255,255,255,0.25); }
-    .htitle { color:#fff; font-size:1rem; font-weight:900; flex:1; }
 
     .progress-zone { display:flex; justify-content:center; align-items:center; gap:6px; padding:5px 16px 3px; flex-shrink:0; }
     .prog-dot { width:11px; height:11px; border-radius:50%; background:rgba(255,255,255,0.12); border:2px solid rgba(255,255,255,0.25); transition:all 0.3s; }
-    .prog-dot.done { background:#00c47a; border-color:#00c47a; box-shadow:0 0 6px #00c47a88; }
-    .prog-dot.current { background:rgba(255,220,80,0.25); border-color:#ffe066; animation:dotPulse 1.2s ease-in-out infinite alternate; }
+    .prog-dot.done { background:var(--ok,#00c47a); border-color:var(--ok,#00c47a); box-shadow:0 0 6px #00c47a88; }
+    .prog-dot.current { background:var(--gold-soft,rgba(255,220,80,0.25)); border-color:var(--gold,#ffe066); animation:dotPulse 1.2s ease-in-out infinite alternate; }
     @keyframes dotPulse { from{box-shadow:0 0 0px rgba(255,220,80,0.3);} to{box-shadow:0 0 8px rgba(255,220,80,0.8);} }
 
     /* Pots de couleur */
@@ -187,6 +183,8 @@
 <script src="js/bus-svg.js"></script>
 <script src="js/data.js"></script>
 <script src="js/sounds.js"></script>
+<script src="js/mp-theme.js"></script>
+<script src="js/celebrations.js"></script>
 <script>
 // ── DÉFIS ─────────────────────────────────────────────────────────
 const DEFIS = [
@@ -370,8 +368,16 @@ function viderTube(){
 function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
 
 async function showVictoire(){
+  // Fire-and-forget : jeton du tube vers la pastille qu'on vient de remplir (rendu APRÈS)
+  const tubeElFx=document.getElementById('tube-wrap');
+  const dotsFx=document.querySelectorAll('.prog-dot');
+  const targetDot=dotsFx[solved];
   solved++;
   renderProgress();
+  if(window.MaxFX && targetDot){
+    const freshDots=document.querySelectorAll('.prog-dot');
+    MaxFX.markPoint(tubeElFx, freshDots[solved-1]||tubeElFx, {style:'bounce', result:'green'});
+  }
   playKlaxon();
 
   // Récupère position du tube et du bus cible

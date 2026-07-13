@@ -209,6 +209,9 @@
   document.head.appendChild(css);
 
   // ── badge ───────────────────────────────────────────────────────────────
+  // <body data-av-nobadge> : la page gère elle-même l'affichage de l'avatar
+  // (accueil design system v1 : bloc profil) → pas de badge flottant injecté.
+  if (document.body && document.body.hasAttribute('data-av-nobadge')) return;
   var badge = document.createElement('button');
   badge.id = 'av-badge';
   badge.setAttribute('aria-label', 'Choisis ton dino');

@@ -5,34 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>MJ-38 — Saute-mouton !</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐑</text></svg>">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mp-theme.css">
   <style>
-    /* --- GABARIT HEADER CANONIQUE (ne pas inventer, copier tel quel) --- */
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
-    body { background:#1a1a2e; font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    body { font-family:'Fredoka One',sans-serif; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
     #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
-    .hdr {
-      display:flex; align-items:center; gap:10px;
-      padding:6px 12px; flex-shrink:0;
-      background:rgba(0,0,0,0.25);
-      border-bottom:1px solid rgba(255,255,255,0.08);
-    }
-    .hdr a {
-      color:#fff; text-decoration:none; font-size:1.3rem;
-      background:rgba(255,255,255,0.12); border-radius:8px;
-      padding:4px 10px; font-weight:900; flex-shrink:0;
-    }
-    .hdr a:active { background:rgba(255,255,255,0.25); }
-    .htitle { flex:1; font-size:1rem; font-weight:900; }
-    /* --- FIN GABARIT HEADER --- */
 
     .toolbar { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:6px 14px; flex-shrink:0; }
-    .stars { font-size:1.1rem; letter-spacing:2px; }
-    .lvl-label { font-size:0.85rem; opacity:0.8; }
+    .stars { font-size:1.1rem; letter-spacing:2px; color:var(--gold); }
+    .lvl-label { font-size:0.85rem; color:var(--ink-3); }
     .btn-restart {
-      background:rgba(255,255,255,0.12); border:2px solid rgba(255,255,255,0.25);
-      color:#fff; font-family:'Fredoka One',sans-serif; font-weight:900;
+      background:rgba(255,255,255,0.12); border:2px solid var(--line);
+      color:var(--ink); font-family:'Fredoka One',sans-serif; font-weight:900;
       border-radius:14px; padding:10px 16px; font-size:0.85rem; cursor:pointer;
-      min-height:44px;
+      min-height:44px; min-width:44px;
     }
     .btn-restart:active { background:rgba(255,255,255,0.28); }
 
@@ -55,16 +42,16 @@
       position:relative;
       transition:background 0.15s, box-shadow 0.15s;
     }
-    .cell.light { background:#2c2c4a; }
-    .cell.dark  { background:#23233c; }
+    .cell.light { background:var(--card-2); }
+    .cell.dark  { background:var(--card); }
     .cell.landable {
-      box-shadow:0 0 0 4px #ffe066 inset, 0 0 18px 4px rgba(255,224,102,0.65);
+      box-shadow:0 0 0 4px var(--gold) inset, 0 0 18px 4px rgba(255,209,102,0.65);
       animation:landPulse 0.9s ease-in-out infinite alternate;
       cursor:pointer;
     }
     @keyframes landPulse {
-      from { box-shadow:0 0 0 4px #ffe066 inset, 0 0 10px 2px rgba(255,224,102,0.4); }
-      to   { box-shadow:0 0 0 4px #fff3b0 inset, 0 0 22px 8px rgba(255,224,102,0.85); }
+      from { box-shadow:0 0 0 4px var(--gold) inset, 0 0 10px 2px rgba(255,209,102,0.4); }
+      to   { box-shadow:0 0 0 4px #fff3b0 inset, 0 0 22px 8px rgba(255,209,102,0.85); }
     }
 
     .piece {
@@ -133,7 +120,7 @@
 
     .overlay { position:fixed; inset:0; background:rgba(0,0,0,0.88); display:flex; align-items:center; justify-content:center; z-index:100; opacity:0; visibility:hidden; transition:all 0.4s; }
     .overlay.show { opacity:1; visibility:visible; }
-    .ov-box { background:linear-gradient(135deg,#1a1a2e,#16213e); border-radius:24px; border:2px solid rgba(255,255,255,0.1); padding:28px 24px; text-align:center; max-width:320px; width:90%; }
+    .ov-box { background:var(--card); border-radius:24px; border:2px solid var(--line); padding:28px 24px; text-align:center; max-width:320px; width:90%; }
     .ov-emoji { font-size:3rem; margin-bottom:8px; }
     .ov-title { font-size:1.4rem; color:#ffe066; font-weight:900; margin-bottom:8px; }
     .ov-text  { color:#fff; font-size:1rem; margin-bottom:20px; line-height:1.4; }
@@ -141,7 +128,7 @@
     .ov-btn:active { opacity:0.8; }
   </style>
 </head>
-<body>
+<body data-ambiance="nuit">
 <div id="app">
 
   <!-- HEADER — copier tel quel, changer uniquement l'emoji et le titre -->
@@ -186,6 +173,8 @@
 <script src="js/victory-sounds.js"></script>
 <script src="js/tracker.js"></script>
 <script src="js/regle-info.js"></script>
+<script src="js/mp-theme.js"></script>
+<script src="js/celebrations.js"></script>
 <script>
   RegleInfo.init({ texte: "Saute par-dessus les pions dodo pour les faire disparaître !", picto: "🐑↷💤" });
 </script>
@@ -340,6 +329,9 @@ function doJump(spot) {
     renderBoard();
     const newPiece = document.getElementById('piece-max');
     if (newPiece) newPiece.classList.add('landed');
+    if (window.MaxFX && newPiece) {
+      MaxFX.markPoint(newPiece, document.getElementById('stars-label'), { style: 'bounce', result: 'green' });
+    }
 
     if (comboCount > 1) showCombo(toCell);
 
@@ -385,6 +377,10 @@ function showWin() {
     ? 'Tous les moutons dorment bien !'
     : 'Dernier niveau terminé !';
   document.getElementById('win-overlay').classList.add('show');
+  if (window.MaxFX) {
+    const isLast = levelIdx >= LEVELS.length - 1;
+    MaxFX.finalStar(document.getElementById('app'), { style: isLast ? 'cinematic' : 'breathe', label: 'BRAVO !' });
+  }
 }
 
 function nextLevel() {

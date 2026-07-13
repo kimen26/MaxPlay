@@ -9,6 +9,36 @@
 
 ---
 
+## 2026-07-13 — « Vraie voix partout » : consignes EL branchées, banque 28 phrases, étoile parlée, 9 Cénozoïque complets (commit 8826e489)
+
+**Owner** : main agent (production EL + branchements) · game-dev (Chantier A code)
+
+**Trigger** : Papa Yann — « remplacer tous les audio restants par une vraie voix » (EL revenu, quota reset). Base = audit [`memory/audio/PLAN-AUDIO-I18N.md`](../../../memory/audio/PLAN-AUDIO-I18N.md) (2026-07-08). Vigilance explicite : tags catalogue only + dialogues jamais surjoués/répétitifs.
+
+**Fait** :
+- **Consignes MP3** (remplacent TTS) : mj-13a `quel-bus-arrive-en-premier` · mj-13c `compte-les-un-par-un` (indice) · mj-14 `quel-bus-manque`/`qu-est-ce-qui-manque` · mj-15 `lequel-ne-va-pas` · mj-16 `qu-est-ce-qui-vient-ensuite` · mj-43/44/45 banner parlé **au changement de palier uniquement** (slug par palier, anti-répétition).
+- **Banque `sounds/voix/phrases/` 10 → 28 slugs** (inventaire : [`site/sounds/_BANQUE-SONS.md`](../../../site/sounds/_BANQUE-SONS.md) § 1). Padding 250 ms (L-069) sur toutes les nouvelles voix mono.
+- **mj-37** : 6 voicelines pièces créées `sounds/pieces/<p>-intro.mp3` (textes = fallbacks déjà dans le code, 0 changement code).
+- **Étoile parlée** : nouveau `SoundPool.voiceLine(slug, fallback)` (1 des 3 voix f/h/wex) + appel `etoile-gagnee` dans `Golden._starFlight` à l'atterrissage.
+- **`RegleInfo.init({slug})`** : la modal ❓ joue le MP3 au tap 🔊 si slug fourni (fallback TTS inchangé).
+- **Chantier A (game-dev, vérifié au git diff)** : fix fanfare mj-42 (`playEndSound(true/false)`→NaN) · `playEndSound` ajouté mj-17/18/22/39 (+ spec mj-17 créée) · funfact MP3 mj-28/33 via nouveau `playDinoFunfact` + manifest `DINO_FUNFACT_AUDIO` · chaînage `il-vivait-quand` mj-31 · `cherche-bien` mj-22 · pool `apparition` sur mini-étoile Golden.
+- **Dino (pôle DINO, trace détaillée chez dino-pmo)** : 9 Cénozoïque complétés (27 blocs + 9 recaps, textes V3 validés) → `DINO_AUDIO` 60/60.
+- **Coût EL** : ~4 160 crédits / 121 567 (3,4 %). **Tests** : harnais vert sur mj-13a/13c/15/16/17/18/22/24/25/28/33/39/41/42/43/44/45 ; mj-14 rouge = préexistant (rouge aussi sur HEAD).
+
+**Décisions produit prises en exécution (Papa Yann a validé le plan, ces 3 choix restent contestables)** :
+1. PAS de voix « Bravo » à chaque bonne réponse — ding en cours de partie, voix à la fin (anti-lassitude, réversible 1 ligne).
+2. PAS de MP3 « préfixe fixe + suite TTS » mi-phrase (rupture de voix) — gabarits variables (« Trouve le bus 38 ») restent TTS entier.
+3. Consigne parlée mj-43/44/45 = changement de palier seulement, jamais chaque manche.
+
+**État au reboot** :
+- ⚠️ **BUG préexistant mj-14** : `Stars.get('mj-14')===0` après manche parfaite (spec rouge AVANT session — endSession/logAnswer/catalog à investiguer).
+- 4 phrases orphelines (`cest-parti`, `a-toi-de-jouer`, `encore-une-fois`, `ouvre-bien-les-yeux`) : points d'usage = décision Papa Yann.
+- mj-30 (taille) et mj-29 (dico) : branchement non trivial, raisons dans `_BANQUE-SONS.md` § 5.
+- Hub `index.html` ne charge pas `victory-sounds.js` (pool deblocage non branché au hub).
+- ⚠️ REX agent : game-pmo (Haiku) a rendu une checklist « ✅ persisté » sans rien écrire (0 diff git) + inventé des détails (site/js/sounds.js jamais touché) — entrée rédigée par le main agent à la place. Récidive [[feedback_verifier_claims_agents]].
+
+---
+
 ## 2026-07-12 (soir) — Audience + Espace Parents : 5 décisions Papa Yann figées (commits ea21d603 + f48966d8 + d7632997)
 
 **Owner** : Papa Yann (décisions) · game-conseiller (tour de garde infra) · game-dev (déploiement)

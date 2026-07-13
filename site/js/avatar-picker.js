@@ -36,22 +36,97 @@
     var mx = Math.max(r, g, b), mn = Math.min(r, g, b);
     return (mx > 235 && (mx - mn) < 22);
   }
-  function extractBases(d) {
+  // ── FAMILLES de couleurs (2026-07-13, demande Papa Yann) ─────────────
+  // Une « famille » = une couleur ET ses ombres/reflets (même teinte,
+  // luminosités différentes). Le recolor tourne toute la famille ensemble
+  // vers la cible en conservant les rapports de luminosité → jamais d'ombre
+  // orpheline qui suit la mauvaise couleur.
+  function hueDist(a, b) { var d = Math.abs(a - b) % 360; return d > 180 ? 360 - d : d; }
+
+  // clusters dominants (jusqu'à 8, plus fins que les 3 anciens picks)
+  function extractClusters(d) {
     var hist = {};
     for (var i = 0; i < d.length; i += 4) {
       var r = d[i], g = d[i + 1], b = d[i + 2];
       if (isKept(r, g, b, d[i + 3])) continue;
-      var key = (Math.round(r / 32) * 32) + ',' + (Math.round(g / 32) * 32) + ',' + (Math.round(b / 32) * 32);
+      var key = (Math.round(r / 24) * 24) + ',' + (Math.round(g / 24) * 24) + ',' + (Math.round(b / 24) * 24);
       hist[key] = (hist[key] || 0) + 1;
     }
     var arr = Object.keys(hist).map(function (k) { return { c: k.split(',').map(Number), n: hist[k] }; }).sort(function (a, b) { return b.n - a.n; });
     var picked = [];
-    for (var j = 0; j < arr.length && picked.length < 3; j++) {
-      var ok = true; for (var p = 0; p < picked.length; p++) if (dist(arr[j].c, picked[p]) < 2600) { ok = false; break; }
-      if (ok) picked.push(arr[j].c);
+    for (var j = 0; j < arr.length && picked.length < 8; j++) {
+      var ok = true;
+      for (var p = 0; p < picked.length; p++) if (dist(arr[j].c, picked[p].c) < 900) { ok = false; break; }
+      if (ok) picked.push(arr[j]);
     }
-    if (!picked.length && arr.length) picked.push(arr[0].c);
     return picked;
+  }
+
+  // groupe les clusters par teinte → max 3 familles (les plus peuplées).
+  // Retour : { bases:[[r,g,b]…], families:[{h,s,base,baseHsl}…] } — bases[i] = représentant de families[i].
+  function extractFamilies(d) {
+    var clusters = extractClusters(d);
+    var fams = [];
+    clusters.forEach(function (cl) {
+      var hsl = rgb2hsl(cl.c[0], cl.c[1], cl.c[2]);
+      var grey = hsl[1] < 0.14; // faible saturation : famille « grise » à part
+      var f = null;
+      for (var i = 0; i < fams.length; i++) {
+        if (fams[i].grey !== grey) continue;
+        if (grey || hueDist(fams[i].h, hsl[0]) < 35) { f = fams[i]; break; }
+      }
+      if (f) {
+        f.pop += cl.n;
+        if (cl.n > f.basePop) { f.basePop = cl.n; f.base = cl.c; f.h = hsl[0]; }
+      } else {
+        fams.push({ h: hsl[0], grey: grey, pop: cl.n, basePop: cl.n, base: cl.c });
+      }
+    });
+    fams.sort(function (a, b) { return b.pop - a.pop; });
+    fams = fams.slice(0, 3);
+    fams.forEach(function (f) { f.baseHsl = rgb2hsl(f.base[0], f.base[1], f.base[2]); });
+    if (!fams.length) return { bases: [], families: [] };
+    return { bases: fams.map(function (f) { return f.base.slice(); }), families: fams };
+  }
+  // compat : anciens appels qui ne veulent que les représentants
+  function extractBases(d) { return extractFamilies(d).bases; }
+
+  // recolor par familles : chaque pixel rejoint sa famille (par teinte si
+  // saturé, sinon par proximité RGB), puis hue-shift vers la cible en
+  // conservant la luminosité relative (l'ombre reste l'ombre de SA couleur).
+  function recolorSmart(imgData, fam, targets) {
+    var s = imgData.data, fams = fam.families;
+    if (!fams.length) return imgData;
+    var tHsl = (targets || []).map(function (t) { return t ? rgb2hsl(t[0], t[1], t[2]) : null; });
+    for (var i = 0; i < s.length; i += 4) {
+      var r = s[i], g = s[i + 1], b = s[i + 2];
+      if (isKept(r, g, b, s[i + 3])) continue;
+      var hsl = rgb2hsl(r, g, b);
+      var fi = -1;
+      if (hsl[1] >= 0.14) {
+        var bh = 1e9;
+        for (var k = 0; k < fams.length; k++) {
+          if (fams[k].grey) continue;
+          var dh = hueDist(fams[k].h, hsl[0]);
+          if (dh < bh) { bh = dh; fi = k; }
+        }
+      }
+      if (fi < 0) { // pixel gris OU pas de famille colorée : plus proche en RGB
+        var bd = 1e9;
+        for (var k2 = 0; k2 < fams.length; k2++) {
+          var dd = dist([r, g, b], fams[k2].base);
+          if (dd < bd) { bd = dd; fi = k2; }
+        }
+      }
+      var t = tHsl[fi];
+      if (!t) continue;
+      var base = fams[fi].baseHsl;
+      var nl = Math.max(0.05, Math.min(0.96, hsl[2] + (t[2] - base[2])));
+      var ns = Math.max(0, Math.min(1, hsl[1] * (t[1] / Math.max(base[1], 0.06))));
+      var rgb = hsl2rgb(t[0], ns, nl);
+      s[i] = rgb[0]; s[i + 1] = rgb[1]; s[i + 2] = rgb[2];
+    }
+    return imgData;
   }
   // recolorer un ImageData en place : base la plus proche → décalage préservé
   function recolorData(imgData, bases, targets) {
@@ -89,9 +164,9 @@
         var c2 = cv.getContext('2d', { willReadFrequently: true });
         c2.drawImage(img, 0, 0);
         var d = c2.getImageData(0, 0, cv.width, cv.height);
-        var bases = extractBases(d.data);
-        var t = (typeof targets === 'function') ? targets(bases) : targets;
-        c2.putImageData(recolorData(d, bases, t), 0, 0);
+        var fam = extractFamilies(d.data);
+        var t = (typeof targets === 'function') ? targets(fam.bases) : targets;
+        c2.putImageData(recolorSmart(d, fam, t), 0, 0);
         cb(cv.toDataURL('image/png'));
       } catch (e) { cb(null); }
     };
@@ -352,12 +427,13 @@
       var srcData = null;
       try { srcData = c2.getImageData(0, 0, cv.width, cv.height); } catch (e) {}
       if (!srcData) { finishPick(id, null); return; } // canvas KO (file://) → choix simple sans couleurs
-      var bases = extractBases(srcData.data);
+      var fam = extractFamilies(srcData.data);
+      var bases = fam.bases;
       var stored = null;
       try { var cfg = JSON.parse(localStorage.getItem(KEYC) || 'null'); if (cfg && cfg.id === id) stored = cfg.targets; } catch (e) {}
       var targets = (stored && stored.length === bases.length) ? stored.map(function (c) { return c.slice(); })
         : bases.map(function (c) { return c.slice(); });
-      colState = { id: id, srcData: srcData, bases: bases, targets: targets, cv: cv, ctx: c2 };
+      colState = { id: id, srcData: srcData, fam: fam, bases: bases, targets: targets, cv: cv, ctx: c2 };
       repaintCol(); renderSw();
     };
     img.onerror = function () { finishPick(id, null); };
@@ -367,7 +443,7 @@
     if (!colState) return;
     var d = colState.ctx.createImageData(colState.srcData.width, colState.srcData.height);
     d.data.set(colState.srcData.data);
-    colState.ctx.putImageData(recolorData(d, colState.bases, colState.targets), 0, 0);
+    colState.ctx.putImageData(recolorSmart(d, colState.fam, colState.targets), 0, 0);
   }
   function renderSw() {
     var el = document.getElementById('av-sw'); el.innerHTML = '';

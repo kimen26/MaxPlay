@@ -1818,7 +1818,7 @@ function _audioSet(id) {
   _BLOCS4.forEach(b => { o[b] = window.AUDIO_DINOS + '' + id + '-' + b + '.mp3'; });
   return o;
 }
-// Top 11 dinos avec audio ElevenLabs (duo Narrateur+Wex, 4 blocs). Le reste = TTS live navigateur.
+// Dinos avec audio ElevenLabs (duo Narrateur+Wex, 4 blocs + recap). Absent du map = TTS live navigateur.
 const DINO_AUDIO = {
   triceratops:    _audioSet('triceratops'),
   tyrannosaurus:  _audioSet('tyrannosaurus'),
@@ -1877,6 +1877,16 @@ const DINO_AUDIO = {
   // Nouveaux dinos V3 (2026-06-15)
   patagotitan:      _audioSet('patagotitan'),
   ichthyosaurus:    _audioSet('ichthyosaurus'),
+  // Mégafaune Cénozoïque + Edmontonia V3 (2026-07-13 — 4 blocs + recap produits)
+  aenocyon:         _audioSet('aenocyon'),
+  coelodonta:       _audioSet('coelodonta'),
+  edmontonia:       _audioSet('edmontonia'),
+  glyptodon:        _audioSet('glyptodon'),
+  mammuthus:        _audioSet('mammuthus'),
+  megatherium:      _audioSet('megatherium'),
+  paraceratherium:  _audioSet('paraceratherium'),
+  smilodon:         _audioSet('smilodon'),
+  titanis:          _audioSet('titanis'),
 };
 function dinoHasAudio(id) { return !!(DINO_AUDIO[id] && DINO_AUDIO[id].recap); }
 // Version du TEXTE audio — V1 = industrialisé EP-039 (2026-05), V2 = réécriture naturelle/fluide (2026-06+).
@@ -1894,6 +1904,8 @@ const DINO_AUDIO_VERSION = {
   euoplocephalus: 'V3', stegosaurus: 'V3', kentrosaurus: 'V3', therizinosaurus: 'V3', dimetrodon: 'V3',
   parasaurolophus: 'V3', edmontosaurus: 'V3', iguanodon: 'V3', pachycephalosaurus: 'V3', velociraptor: 'V3',
   deinonychus: 'V3', utahraptor: 'V3', microraptor: 'V3', troodon: 'V3', gallimimus: 'V3', oviraptor: 'V3',
+  aenocyon: 'V3', coelodonta: 'V3', edmontonia: 'V3', glyptodon: 'V3', mammuthus: 'V3',
+  megatherium: 'V3', paraceratherium: 'V3', smilodon: 'V3', titanis: 'V3',
 };
 function dinoAudioVersion(id) { return DINO_AUDIO_VERSION[id] || 'V1'; }
 

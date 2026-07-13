@@ -71,6 +71,7 @@
   </div>
 </div>
 
+<script src="js/victory-sounds.js"></script>
 <script>
 // Carte Europe réelle depuis Wikimedia Commons
 // IDs ISO mappés aux données des pays
@@ -181,7 +182,8 @@ function confirmer() {
   if (selected === target) {
     victoire(target);
   } else {
-    speak('Non ce n\'est pas ça. Cherche bien.');
+    if (typeof SoundPool !== 'undefined') SoundPool.phrase('cherche-bien', 'Non ce n\'est pas ça. Cherche bien.');
+    else speak('Non ce n\'est pas ça. Cherche bien.');
     selected = null;
     document.getElementById('confirmBtn').classList.remove('show');
     renderMap();
@@ -237,6 +239,7 @@ function updateDots() {
 
 function finGame() {
   speak('Bravo Max ! Tu as trouvé tous les pays !');
+  try { playEndSound(1, 1); } catch(e) {}
   const ov = document.createElement('div');
   ov.className = 'victoire-overlay';
   ov.innerHTML = `

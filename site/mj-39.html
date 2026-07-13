@@ -465,6 +465,7 @@
       fullCount.textContent = lignesEffacees;
       const nbStars = starsGiven.filter(Boolean).length;
       fullStars.textContent = nbStars > 0 ? '⭐'.repeat(nbStars) : '✨';
+      try { playEndSound(nbStars, PALIERS.length); } catch(e) {}
       fullScreen.classList.add('show');
     }
 

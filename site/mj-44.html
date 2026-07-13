@@ -268,13 +268,13 @@
     // lecteur alphabétique partiel, trie par la lettre initiale visuelle —
     // piège réel : « roue » et « rat » commencent tous deux par r).
     const PALIERS = [
-      { stars:1, need:2, pick:2, banner:"Écoute le PREMIER son du mot !",
+      { stars:1, need:2, pick:2, banner:"Écoute le PREMIER son du mot !", slug:'ecoute-le-premier-son',
         boxes:[ {id:'t', label:'t', son:'te'}, {id:'m', label:'m', son:'me'} ],
         words:{ t:['table','tomate','tortue','tasse'], m:['maison','moto','mouton','main'] } },
-      { stars:2, need:2, pick:2, banner:"Premier son : « l » ou « r » ?",
+      { stars:2, need:2, pick:2, banner:"Premier son : « l » ou « r » ?", slug:'premier-son-l-ou-r',
         boxes:[ {id:'l', label:'l', son:'le'}, {id:'r', label:'r', son:'re'} ],
         words:{ l:['lune','loup','lit','livre'], r:['roue','robot','rat','robe'] } },
-      { stars:3, need:2, pick:3, hideWord:true, banner:"Le son qu'on ENTEND : « ou » ou « a » ?",
+      { stars:3, need:2, pick:3, hideWord:true, banner:"Le son qu'on ENTEND : « ou » ou « a » ?", slug:'le-son-quon-entend',
         boxes:[ {id:'ou', label:'ou', son:'ou'}, {id:'a', label:'a', son:'a'} ],
         words:{ ou:['loup','roue','hibou','bouche'], a:['chat','rat','sac','banane'] } },
     ];
@@ -300,7 +300,12 @@
         });
       });
       shuffle(cards);
-      document.getElementById('banner').textContent = cfg.banner;
+      const bEl = document.getElementById('banner');
+      if (bEl.textContent !== cfg.banner) {
+        bEl.textContent = cfg.banner;
+        // Consigne parlée au changement de palier seulement (anti-répétition)
+        if (cfg.slug && window.SoundPool) SoundPool.phrase(cfg.slug, cfg.banner);
+      }
       render();
     }
 

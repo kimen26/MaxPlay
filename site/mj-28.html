@@ -160,6 +160,16 @@
     function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
     function speak(t){TTS.speak(t,{pitch:1.05,priority:true});}
 
+    // Réf unique pour le fait audio (~15-20s) : évite le chevauchement si la question
+    // suivante démarre avant la fin (setTimeout 2.4-2.6s, plus court que le clip).
+    let currentFaitAudio = null;
+    function stopCurrentFait() {
+      if (currentFaitAudio) {
+        try { currentFaitAudio.pause(); currentFaitAudio.currentTime = 0; } catch (e) { /* noop */ }
+        currentFaitAudio = null;
+      }
+    }
+
     const wrap = document.getElementById('digWrap');
     const halo = document.getElementById('digHalo');
     const haloAmbient = document.getElementById('digHaloAmbient');
@@ -203,6 +213,7 @@
 
     function nextQuestion(){
       if (qCount >= MAX_Q) return showEnd();
+      stopCurrentFait();
       qcm = QcmRetry.create();
       qCount++;
       touchedOnce = false;
@@ -288,7 +299,11 @@
       wrap.classList.add('revealed');
       sndDing();
       document.getElementById('fait').textContent = dino.fait || '';
-      speak('Bravo ! C\'est le ' + dino.name + ' ! ' + (dino.fait || ''));
+      stopCurrentFait();
+      speak('Bravo ! C\'est le ' + dino.name + ' !');
+      if (dino.fait) {
+        currentFaitAudio = playDinoFunfact(dino.id, dino.fait);
+      }
     }
 
     function showEnd(){

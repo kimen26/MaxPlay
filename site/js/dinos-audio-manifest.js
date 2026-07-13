@@ -27,3 +27,26 @@ window.playDinoNom = function (id, fallbackName, opts) {
 window.DINO_NOM_AUDIO_BY_LANG = {};
 window.DINO_NOM_AUDIO_BY_LANG.fr = new Set(["aenocyon","albertosaurus","allosaurus","amargasaurus","ankylosaurus","apatosaurus","archaeopteryx","archelon","baryonyx","brachiosaurus","camarasaurus","carcharodontosaurus","carnotaurus","centrosaurus","ceratosaurus","coelodonta","cryolophosaurus","deinonychus","dilophosaurus","dimetrodon","diplodocus","edmontonia","edmontosaurus","elasmosaurus","euoplocephalus","gallimimus","giganotosaurus","glyptodon","ichthyosaurus","iguanodon","kentrosaurus","liopleurodon","mammuthus","megatherium","microraptor","mosasaurus","ophthalmosaurus","oviraptor","pachycephalosaurus","paraceratherium","parasaurolophus","patagotitan","pentaceratops","plateosaurus","protoceratops","pteranodon","quetzalcoatlus","shonisaurus","smilodon","spinosaurus","stegosaurus","tarbosaurus","therizinosaurus","titanis","torosaurus","triceratops","troodon","tyrannosaurus","utahraptor","velociraptor"]);
 window.DINO_NOM_AUDIO = window.DINO_NOM_AUDIO_BY_LANG[(window.Lang && window.Lang.current()) || 'fr'] || new Set();
+
+// Sets par langue pour les segments fiche "-funfact.mp3" (fait amusant, dialogue 2 voix).
+// Genere en scannant audio/dinos/<lang>/*-funfact.mp3. Meme garde-fou anti-404 que DINO_NOM_AUDIO.
+window.DINO_FUNFACT_AUDIO_BY_LANG = {};
+window.DINO_FUNFACT_AUDIO_BY_LANG.fr = new Set(["aenocyon","albertosaurus","allosaurus","amargasaurus","ankylosaurus","apatosaurus","archaeopteryx","archelon","baryonyx","brachiosaurus","camarasaurus","carcharodontosaurus","carnotaurus","centrosaurus","ceratosaurus","cryolophosaurus","deinonychus","dilophosaurus","dimetrodon","diplodocus","edmontosaurus","elasmosaurus","euoplocephalus","gallimimus","giganotosaurus","ichthyosaurus","iguanodon","kentrosaurus","liopleurodon","microraptor","mosasaurus","ophthalmosaurus","oviraptor","pachycephalosaurus","parasaurolophus","patagotitan","pentaceratops","plateosaurus","protoceratops","pteranodon","quetzalcoatlus","shonisaurus","spinosaurus","stegosaurus","tarbosaurus","therizinosaurus","torosaurus","triceratops","troodon","tyrannosaurus","utahraptor","velociraptor"]);
+window.DINO_FUNFACT_AUDIO = window.DINO_FUNFACT_AUDIO_BY_LANG[(window.Lang && window.Lang.current()) || 'fr'] || new Set();
+
+// playDinoFunfact(id, fallbackText, opts) -- joue <id>-funfact.mp3 (2 voix, ~15-20s), fallback TTS.
+window.playDinoFunfact = function (id, fallbackText, opts) {
+  const done = opts && opts.then;
+  if (window.DINO_FUNFACT_AUDIO && window.DINO_FUNFACT_AUDIO.has(id)) {
+    try {
+      const a = new Audio(window.AUDIO_DINOS + id + '-funfact.mp3');
+      a.volume = 0.95;
+      if (done) a.onended = done;
+      a.play().catch(() => { if (window.TTS && fallbackText) TTS.speak(fallbackText, { pitch: 1.05, priority: true }); if (done) done(); });
+      return a;
+    } catch (e) { /* fallthrough */ }
+  }
+  if (window.TTS && fallbackText) TTS.speak(fallbackText, { pitch: 1.05, priority: true });
+  if (done) setTimeout(done, 900);
+  return null;
+};

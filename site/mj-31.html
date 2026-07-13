@@ -226,7 +226,10 @@
       document.getElementById('dinoName').textContent = targetDino.name;
       document.getElementById('dinoCard').innerHTML = '<img src="' + ombreSrc(targetDino) + '" alt="">';
       // Annonce en voix reelle (asset <id>-nom.mp3) — fallback TTS pour les 9 dinos en attente quota EL
-      playEl(window.AUDIO_DINOS + '' + targetDino.id + '-nom.mp3', targetDino.name + ' ! Il vivait quand ?');
+      // Puis enchaine sur la phrase preenregistree "il-vivait-quand.mp3" (fallback TTS si absente).
+      playEl(window.AUDIO_DINOS + '' + targetDino.id + '-nom.mp3', targetDino.name + ' !', () => {
+        playEl('sounds/voix/phrases/il-vivait-quand.mp3', 'Il vivait quand ?');
+      });
 
       document.querySelectorAll('.band').forEach(b => {
         b.classList.remove('ok','ko');

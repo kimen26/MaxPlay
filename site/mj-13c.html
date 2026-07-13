@@ -425,7 +425,7 @@ function onAnswer(isCorrect,btn){
     if(btn){btn.style.background='#e53935';btn.disabled=true;}
     playErrorSound();
     if(tickId){clearInterval(tickId);tickId=null;}
-    tts('Compte les bus AVANT le bus demandé, un par un.');
+    SoundPool.phrase('compte-les-un-par-un', 'Compte les bus AVANT le bus demandé, un par un.');
   }
 }
 

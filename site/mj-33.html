@@ -145,12 +145,20 @@
     let pairIndex = 0;
     let currentDinoAudio = null; // réf unique : stoppe le son en cours avant d'en jouer un nouveau
 
-    // Stoppe l'audio nom en cours (s'il existe) puis joue le nouveau. Garde une seule réf.
-    function playDinoNomExclusive(id, fallbackName, opts) {
+    // Stoppe l'audio nom/funfact en cours (s'il existe) puis joue le nouveau. Garde une seule réf.
+    // (funfact ~15-20s peut dépasser le délai avant la paire suivante -> évite le chevauchement)
+    function stopCurrentDinoAudio() {
       if (currentDinoAudio) {
         try { currentDinoAudio.pause(); currentDinoAudio.currentTime = 0; } catch (e) { /* noop */ }
       }
+    }
+    function playDinoNomExclusive(id, fallbackName, opts) {
+      stopCurrentDinoAudio();
       currentDinoAudio = playDinoNom(id, fallbackName, opts);
+    }
+    function playDinoFunfactExclusive(id, fallbackText) {
+      stopCurrentDinoAudio();
+      currentDinoAudio = playDinoFunfact(id, fallbackText);
     }
 
     function speak(t) { TTS.speak(t, { pitch: 1.05, priority: true, rate: 0.95 }); }
@@ -240,7 +248,7 @@
       // 1 fois sur 3 : mini-fait après le nom
       const wantsFait = Math.random() < (1 / 3) && d.fait;
       playDinoNomExclusive(d.id, 'Le ' + d.name + ' !', {
-        then: wantsFait ? () => { showFait(d); speak(firstSentence(d.fait)); } : null,
+        then: wantsFait ? () => { showFait(d); playDinoFunfactExclusive(d.id, firstSentence(d.fait)); } : null,
       });
 
       // Perfect = 0 flip raté depuis la dernière paire, généreux au-delà

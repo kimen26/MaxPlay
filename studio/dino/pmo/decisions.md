@@ -2,6 +2,22 @@
 
 > Décisions datées (raison + impact). Les décisions **verrouillées** (jamais régresser) vivent dans [`../figees/encyclopedie.md`](../figees/encyclopedie.md).
 
+## 2026-07-13 — Design System v1 MaxPlay appliqué à dev-dinos.html (INFO, pas de décision nouvelle)
+
+**Contexte** : Refonte VISUELLE seule (tokens okLCH, en-têtes normalisés, layout via `css/mp-theme.css`). Données/audio/i18n inchangés. Modèles de référence archivés `studio/minijeux/inbox/package-maxplay-design/`.
+
+**État** : 
+- ✅ Zéro conflit figée (audit PMO complet 11 points YES/YES/YES…).
+- ✅ Zéro orphelin (audit Archiviste : 476 MP3, 1176 images, zéro dead-link).
+- ✅ Aucune nouvelle règle à graver (design system = tokens centralisés, pas de frontière dino).
+- ✅ Modèles alternatifs rejetés (grille 2 colonnes familles vs liste verticale figée, par ex.).
+
+**Leçons gravées** : L-D-33/34/35 (design system audit cross-page + cache validation post-CSS refonte).
+
+**Pas de questions ouvertes** (application Papa Yann validée, conforme figées).
+
+---
+
 ## 2026-07-10 — DEC-LANG-I18N-ARCHI-001 : Architecture pack audio i18n multilingue (préfixe langue + overlay strings)
 
 **Contexte** : après 9 lexiques prononciation finalisés (2026-07-08), passage de la théorie à l'archi système. Restructuration studio + déploiement site : `site/audio/dinos/{lang}/` canon avec fallback TTS, lexiques overlay strings JS, FR canon inline dinos-data.js inchangé.

@@ -20,6 +20,31 @@
 **Description** : nouvelle mécanique matching/logique séquentielle. Dominos bout-à-bout valeurs identiques. Décision conseiller 2026-07-13 : reporter après validation terrain MJ-43/44/45.
 **Statut** : [~] En attente brainstorm + design amont. Pas de code prévu avant retours ressenti Papa Yann.
 
+### EP-079 [?] — Specs mj-01 & mj-14 rouges PRÉEXISTANT — Stars.get=0 après victoire parfaite
+**Description** : Après refonte Design System v1 (commit 91ef327b), mj-01 + mj-14 restent specs rouges préexistantes. Root cause : Stars.get('mj-01'/'mj-14') !== 0 lors de manche parfaite (endSession/logAnswer/catalog incohérence). À adapter specs ou retrancher jeux du catalogue.
+**Statut** : [?] À décider Papa Yann (refonte specs || suppression durée > 1 mois sans fix)
+**Impact** : 2 MJ retirés menu depuis 2026-07-07 (not live), mais persistent au catalog.js. Tickets dépendent EP-070 implémentation (status:hidden).
+
+### EP-080 [?] — mj-08 exception design clair volontaire — conserver ?
+**Description** : mj-08 "Au centre bus" possède design clair volontaire (bg ciel bleu clair) comme exception à Design System v1 sombre. Demander Papa Yann si on conserver cette exception ou harmoniser avec v1.
+**Statut** : [?] Validation Papa Yann ressenti
+**Impact** : cosmétique, non-bloquant. Valide aujourd'hui, peut rester.
+
+### EP-081 [?] — mj-34/36/38/39 finalStar cinematic sur dernier palier — validation 48h
+**Description** : 4 MJ (34/36/38/39) en exception design : finalStar cinematic play sur dernier palier (VS. strict sans-faute pédago). Agents parallèles l'ont implémenté, Papa Yann à valider ressenti enfant (test 48h MJ-43/44/45 concurrent).
+**Statut** : [?] Attente feedback Papa Yann (jusqu'à 2026-07-15 approx.)
+**Impact** : moyen. Si refuse, revert 4 MJ (1h travail agents, déjà vert).
+
+### EP-082 [?] — Ambiances par défaut hardcodées vs. choix enfant UI centralisée
+**Description** : Design System v1 : ambiances (jungle/ville/musee/arcade/nuit/espace) sélectionnables atelier avatar. Actuellement : ambiance par défaut HARDCODÉE par jeu (jungle→mj-15, ville→mj-20, etc.), enfant écrase au chargement. À confirmer Papa Yann : garder ce modèle ou proposer UI centralisée index.html pour choisir ambiance globale d'abord ?
+**Statut** : [?] Validation Papa Yann (conception vs. harcodage)
+**Impact** : moyen. Affecte UX onboarding futur.
+
+### EP-083 [?] — Bus-défilé header index supprimé — cosmétique, à valider
+**Description** : Design System v1 a supprimé le défilé bus animé du header du menu index.html (simplifié accueil 2 niveaux). À confirmer Papa Yann que suppression OK (ou il aimait cet easter egg).
+**Statut** : [?] Validation Papa Yann (cosmétique)
+**Impact** : très bas. Peut rester supprimé ou réintégrer en 30 min.
+
 ---
 
 ## Leçons du pôle MJ (L-xxx)
@@ -98,6 +123,18 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 
 ### L-091 – Dino-pips en constellation de dé préservent le subitizing (mj-43)
 **MJ-43 création (2026-07-13)** : Jeu maths regroupement/addition. Pips du dé = mini-dinosaures ombre chinoise. **Leçon critère** : constellation de dé (1 centre, 2 diagonale, 6 double-colonne, etc.) JAMAIS éparpillée aléatoire — nuance fondamentale subitizing. Max reconnaît la FORME (pattern de 3, 5, 6 dés instantanément par constellation) vs. décodage pixel-per-pixel (lent, non-pédago). Validation Papa Yann 2026-07-13 : *« des mini mini dino en ombre chinoise »* implicite = constellation respected. **Règle gravée** : tout pip-set dino = respect layout dé canon, jamais artistic scatter.
+
+### L-092 – Design System Unique = source de vérité CSS centralisée refonte cohérence (2026-07-13)
+**Design System v1 (2026-07-13)** : 40 MJ convertis v1 (CSS .hdr locals) → v2 (styles mp-theme.css). **Leçon** : gabarit header MJ **v1 REMPLACÉ** v2 DÉFINITIF. Impact futur : tout nouveau MJ doit respecter `site/css/mp-theme.css` obligation structurelle + `site/js/mp-theme.js` chargement localStorage ambiance. Zéro CSS local .hdr tolérés à partir de ce commit (91ef327b). **Bénéfice** : refonte design = 1 fichier CSS (mp-theme.css) vs 40 fichiers MJ · cohérence enfant max (pas jeu multicolore disparate) · maintenance future 80% plus rapide. **Validation** : tout MJ nouveau passe par game-mj-reviewer section 4 (Design).
+
+### L-093 – Conversion par batch agents parallèles = valider E2E après (pas célérité naïve)
+**Design System v1 (2026-07-13)** : 40 MJ convertis en parallèle (agents vague 3) → harnais 40/42 vert MAIS mj-01/mj-14 restent rouges PRÉEXISTANT (Stars.get=0 post-victoire). **Leçon** : batch conversion agents = efficace (4h au lieu de 40h) MAIS requiert 2 phases post : (a) harnais vert sur périmètre (40/42 vert ≠ zéro regréssion), (b) validation Papa Yann ressenti 48h (exceptions design ne sont pas testables auto). Anti-pattern : célérité batch sans fallback validation terrain. Processus solide : agent parallèle conversion → harnais checklist → test Papa Yann → blocage si dérives détectées.
+
+### L-094 – Ambiances hardcodées par jeu = choix enfant scope limited (pas UI pivot avant)
+**Design System v1 (2026-07-13)** : 6 ambiances candidates (nuit/jungle/ville/espace/arcade/musée) sélectionnables atelier avatar. Implémentation : ambiance par défaut **hardcodée par jeu** (mj-15 jungle, mj-20 ville, etc.), enfant écrase au chargement localStorage. **Leçon** : ne pas inverser — UI centralisée index.html "choisir ambiance globale d'abord" serait cognitive load enfant 3.5 ans + perte scoping pédagogique (jeu bleu=espace math, jeu vert=jungle lire). Hardcodage = bon design, pas lazy. Valider avec Papa Yann que paradigme OK (attente 2026-07-15).
+
+### L-095 – REX agent : Haiku claim-drops sans git diff = tué feedback_verifier_claims_agents
+**Design System v1 (2026-07-13)** : game-pmo (Haiku) a remis checklist « ✅ persisté » SANS modification git (zéro écriture pmo/sprint-log.md) + inventa détails ("site/js/sounds.js branché" jamais touché). **Récidive** : déjà observé 2026-07-13 session audio. **Leçon** : Haiku auto-PMO ne doit JAMAIS affirmer persistance multi-fichiers sans vérifier le diff (`git diff pmo/` amont de son rapport). Main agent ré-écrit la session après coup. **Fix process** : ajouter à hook PreToolUse : game-pmo DOIT lire git status avant de conclure, et si rien modifié → report "Pas de diff détecté, lire sprint-log main agent" vs. inventer une persistance. **Ticket** : audit chat transcripts retrouver tous les claim-drops Haiku 2026-07-01..13, implémenter hook PreToolUse stricte.
 
 ### L-080 – Banque sons = doc maître unique, API centralisée immuable
 **Audio (2026-07-06)** : refonte système sonore complet. **Leçon** : source de vérité = `site/sounds/_BANQUE-SONS.md` (lire AVANT générer/brancher audio — carte des dossiers + API + process + reste). API statique : `victory-sounds.js` (SoundPool.play/voice/phrase, chargé par tous les MJ → 1 fichier upgrade tout) + `dinos-audio-manifest.js` (playDinoNom). Tout branchement MJ utilise ces 2 fichiers + garde un fallback TTS. Zéro chiffre audio en dur ailleurs.

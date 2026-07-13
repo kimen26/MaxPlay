@@ -16,7 +16,7 @@ type: project
 
 ## État déploiement (mis à jour à chaque ajout/retrait MJ)
 
-**42 jeux status:live** (41 live + 1 wip=dinos) : mj-04–06, mj-08–09, mj-11–13a/c, mj-15–21, mj-23–44, max-adventure, mj-pose-tiles, dinos-encyclopedie. **Mise à jour 2026-07-13** : +2 MJ nouveaux (mj-43 : Remplis les caisses mathématiques, mj-44 : Boîte à sons phonologie), harnais vert, validation ressenti en cours.
+**43 jeux status:live** (42 live + 1 wip=dinos) : mj-04–06, mj-08–09, mj-11–13a/c, mj-15–21, mj-23–45, max-adventure, mj-pose-tiles, dinos-encyclopedie. **Mise à jour 2026-07-13 (session 6h30)** : +3 MJ (mj-43 : Remplis les caisses, mj-44 : Boîte à sons, mj-45 : Le bus qui se remplit) — les 3 codés, harnais vert (29+26+26 checks), reviewer PASS, validation ressenti Papa Yann en cours.
 
 **Retirés du menu** : mj-01, mj-02, mj-03, mj-07, mj-10, mj-13b, mj-14 (conservés fichiers)
 

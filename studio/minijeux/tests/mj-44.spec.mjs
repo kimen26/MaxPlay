@@ -1,6 +1,11 @@
 // MJ-44 — La boîte à sons (tri de mots par phonème)
 // Vérifie : boîtes + cartes, placement correct, placement faux refusé (zéro pénalité),
-// résolution, progression des 3 paliers (initial→initial→voyelle) jusqu'à l'overlay.
+// résolution, progression des 3 paliers (initial→initial→voyelle) jusqu'à l'overlay,
+// MP3 phonèmes présents sur disque, mot écrit masqué au ★3 (force l'écoute).
+
+import { existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, resolve } from 'node:path';
 
 export async function run({ page, ok }) {
   await page.evaluate(() => window.__mjTest.setTestMode(true));
@@ -48,12 +53,34 @@ export async function run({ page, ok }) {
   ok('solveRound range toutes les cartes', s1.cards.every(c => c.loc !== 'tray') && s1.trayCount === 0);
   ok('Round marqué terminé', s1.roundOver === true);
 
+  // ── MP3 phonèmes : les 6 fichiers gravés existent sur disque ─────────
+  const __dir = dirname(fileURLToPath(import.meta.url));
+  const phonemes = await page.evaluate(() => window.__mjTest.phonemes);
+  const missing = Object.values(phonemes)
+    .filter(f => !existsSync(resolve(__dir, '..', '..', '..', 'site', 'sounds', 'phonemes', `${f}.mp3`)));
+  ok('6 MP3 phonèmes ElevenLabs présents (sounds/phonemes/)', missing.length === 0,
+     missing.join(', ') || 'tous présents');
+  ok('Mapping phonèmes couvre les 6 sons', ['t','m','l','r','ou','a'].every(k => k in phonemes));
+
+  // ── Palier 1 : mot écrit VISIBLE (graphie alignée au son initial) ────
+  const wordsVisible1 = await page.evaluate(() => {
+    window.__mjTest.setDifficulty(1); // round frais ★1 (le solveRound a vidé l'étagère)
+    return document.querySelectorAll('.tray .card .card-mot').length > 0;
+  });
+  ok('★1 : mots écrits visibles sous les pictos', wordsVisible1 === true);
+
   // ── Palier 3 = voyelle interne (ou / a), 3 mots par boîte ────────────
   await page.evaluate(() => window.__mjTest.setDifficulty(3));
   const s3 = await page.evaluate(() => window.__mjTest.state);
   ok('Palier 3 = boîtes « ou » et « a »', s3.boxes.map(b=>b.id).sort().join('|') === 'a|ou',
      JSON.stringify(s3.boxes.map(b=>b.id)));
   ok('Palier 3 = 6 cartes (3 par boîte)', s3.cards.length === 6, `cards=${s3.cards.length}`);
+
+  // ── ★3 : mot écrit MASQUÉ (anti-triche lettre initiale, force l'écoute) ──
+  ok('★3 : hideWord actif', s3.hideWord === true);
+  const wordsVisible3 = await page.evaluate(() =>
+    document.querySelectorAll('.tray .card .card-mot').length);
+  ok('★3 : aucun mot écrit sur les cartes (picto seul)', wordsVisible3 === 0, `visibles=${wordsVisible3}`);
 
   // ── Chemin gagnant complet : 2 rounds × 3 paliers → overlay ──────────
   const fin = await page.evaluate(() => {

@@ -74,6 +74,34 @@ export async function run({ page, ok }) {
   ok('Round comptabilisé (progression palier/round)', s1.roundsDone >= 1 || s1.paletteIdx >= 1,
      `roundsDone=${s1.roundsDone} paletteIdx=${s1.paletteIdx}`);
 
+  // ── Anti-deadlock : cas canonique 5/5 {3,2,4,1} (REX conseiller 2026-07-13) ──
+  // Sans solveur : 3 puis 1 dans la caisse A → reste {2,4} insoluble, Max coincé.
+  const dl = await page.evaluate(() => {
+    window.__mjTest.setRound([5, 5], [3, 2, 4, 1]);
+    const find = v => window.__mjTest.tokens().find(t => t.value === v && t.loc === 'tray');
+    const t3 = find(3);
+    window.__mjTest.place(t3.id, 0);                 // 3 → A : légal (reste soluble)
+    const okFirst = window.__mjTest.tokens().find(x => x.id === t3.id).loc === 0;
+    const t1 = find(1);
+    window.__mjTest.place(t1.id, 0);                 // 1 → A : rendrait insoluble → refusé doux
+    const refused = window.__mjTest.tokens().find(x => x.id === t1.id).loc === 'tray';
+    const t2 = find(2);
+    window.__mjTest.place(t2.id, 0);                 // 2 → A : complète A, {4,1} = 5 pour B → légal
+    const okSecond = window.__mjTest.tokens().find(x => x.id === t2.id).loc === 0;
+    return { okFirst, refused, okSecond };
+  });
+  ok('Anti-deadlock : coup sain accepté (3 → A)', dl.okFirst);
+  ok('Anti-deadlock : coup cul-de-sac refusé doucement (1 → A)', dl.refused);
+  ok('Anti-deadlock : coup qui reste soluble accepté (2 → A)', dl.okSecond);
+
+  // ── Jauge non numérique : jamais de "X / cible" affiché (figée anti-score) ──
+  const hasNumericCounter = await page.evaluate(() => {
+    window.__mjTest.newRound();
+    return /\d+\s*\/\s*\d+/.test(document.getElementById('crates').textContent);
+  });
+  ok('Aucun compteur numérique "X / cible" dans les caisses', hasNumericCounter === false);
+  ok('Jauge de remplissage présente', await page.locator('.crate-bar').count() >= 1);
+
   // ── Palier 3 = gros niveau (2 grosses caisses, cibles ≥ 12) ──────────
   await page.evaluate(() => window.__mjTest.setDifficulty(3));
   const s3 = await page.evaluate(() => window.__mjTest.state);
@@ -81,7 +109,7 @@ export async function run({ page, ok }) {
   ok('Palier 3 : cibles ≥ 12 (regroupement obligatoire)',
      s3.crates.every(c => c.target >= 12), JSON.stringify(s3.crates.map(c => c.target)));
 
-  // ── Chemin gagnant complet : need=2 rounds × 3 paliers → overlay final ─
+  // ── Chemin gagnant complet : need=2 rounds × 3 paliers → overlay 3★ ───
   const fin = await page.evaluate(() => {
     window.__mjTest.setTestMode(true);
     window.__mjTest.setDifficulty(1); // repart de ★1
@@ -92,10 +120,21 @@ export async function run({ page, ok }) {
     }
     const st = window.__mjTest.state;
     const starsOn = document.querySelectorAll('.star.on').length;
-    return { overlay: st.overlayShown, starsOn };
+    return { overlay: st.overlayShown, starsOn, finished: st.finished };
   });
-  ok('Overlay final atteint après les 3 paliers', fin.overlay === true);
+  ok('Overlay 3★ atteint après les 3 paliers', fin.overlay === true);
   ok('3 étoiles allumées à la fin', fin.starsOn === 3, `stars=${fin.starsOn}`);
+  ok('État finished posé', fin.finished === true);
+
+  // ── Mode libre post-3★ : replay → nouvelle caisse, jamais de fin ──────
+  const lib = await page.evaluate(() => {
+    window.__mjTest.replay();
+    const st = window.__mjTest.state;
+    return { libre: st.libre, overlay: st.overlayShown, crates: st.crates.length,
+             targetsHigh: st.crates.every(c => c.target >= 12) };
+  });
+  ok('Mode libre activé après replay', lib.libre === true && lib.overlay === false);
+  ok('Mode libre : caisses cibles ≥ 12', lib.crates === 2 && lib.targetsHigh, JSON.stringify(lib));
 
   // ── Zéro mot punitif ─────────────────────────────────────────────────
   const punitive = await page.evaluate(() => {

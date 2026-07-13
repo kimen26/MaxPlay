@@ -9,6 +9,19 @@
 
 ---
 
+## Tickets épics actifs (EP-xxx)
+
+### EP-077 [x] — Session challenge conseiller 2026-07-13 (6h30) — MJ-43/44 durcis + MJ-45 créé
+**Description** : validation complète 3 mini-jeux (2 correctifs post-review, 1 nouveau). Game-conseiller challenge → 2 bugs corrigés (deadlock mj-43, TTS phonème mj-44), 1 défigé numérique corrigé, MJ-45 créé direction Papa Yann.
+**Statut** : [x] Terminé 2026-07-13. Harnais vert mj-43/44 (29+26 checks). Reviewer PASS (9/10 ×3). MJ-45 spécifications stables, attente code.
+**Artefacts** : figees/mj-43.md (2 nouvelles lignes 🔒), figees/mj-44.md (2 nouvelles lignes 🔒), figees/mj-45.md (créé), PIPELINE-MEMORY-MJ.md (décisions 2026-07-13).
+
+### EP-078 [~] — Chaîne de dominos (bout-à-bout même valeur) — priorité BASSE
+**Description** : nouvelle mécanique matching/logique séquentielle. Dominos bout-à-bout valeurs identiques. Décision conseiller 2026-07-13 : reporter après validation terrain MJ-43/44/45.
+**Statut** : [~] En attente brainstorm + design amont. Pas de code prévu avant retours ressenti Papa Yann.
+
+---
+
 ## Leçons du pôle MJ (L-xxx)
 
 **Convention de numérotation** (fixée 2026-05-21) :
@@ -146,6 +159,23 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 
 ### L-084 – Gabarit rule mini-jeux.md référence fichier inexistant (css/common.css au lieu de style.css)
 **Gabarit MJ (2026-07-06)** : rule `.claude/rules/mini-jeux.md` § Gabarit cite `css/common.css` (jamais existé). Convention réelle = `site/css/style.css`. Fix proposé : mettre à jour rule, MAIS correction refusée en mode AUTO (hook ne peut pas auto-modifier rule). **À faire** : Papa Yann édite rule MANUELLEMENT ou session interactive avec game-archiviste. **Leçon** : after créer rule path-scoped, tester IMMÉDIATEMENT qu'elle point des fichiers existants (sinon faux négatif des futurs MJ → bad habit).
+
+### L-085 – Count jeux status:live catalog.js = source de vérité, MAJ INVARIANTS après chaque changement menu
+
+### L-096 – Constellation de dé (pattern fixe) vs scatter aléatoire = différence majeure subitizing
+**MJ-43 creation + MJ-45 spécifications (2026-07-13)** : Jeux mathématiques avec pips/groupes. **Leçon critique** : disposition constellation DE (1 centre, 2 diagonale, 6 double-colonne, etc. — pattern FIXE) vs éparpillage aléatoire = différence fondamentale subitizing. Max reconnaît FORME (pattern 3 / pattern 5 instantanément par reconnaissance visuelle de constellation) vs. décodage pixel-per-pixel (lent, non-pédago). **Règle gravée** : tout pip-set dino OU groupe silhouettes = JAMAIS random scatter, toujours respect layout constellation de dé (identique au dé physique). Validation Papa Yann 2026-07-13 : *« des mini mini dino en ombre chinoise »* (implicite = constellation).
+
+### L-097 – MP3 ElevenLabs gravés phonèmes vs TTS navigateur imprévisible (mj-44)
+**MJ-44 figeage (2026-07-13)** : Boîte à sons phonologie. **Découverte** : TTS navigateur `speechSynthesis` rend phonèmes isolés de façon IMPRÉVISIBLE selon voix installée (« te » → « teu » selon prise de voix, « a » → « a » vs « ah » selon accents). Toute promesse phonème pur (pédagogie criante) = **impossibilité TTS seul**. **Solution** : MP3 ElevenLabs gravés `site/sounds/phonemes/son-{te,me,le,re,ou,a}.mp3` (voix narrateur_f cohérente) + fallback TTS en 404 seulement (gracieux). **Règle** : quand phonème critique (MJ-44), pas d'aléa TTS — MP3 ElevenLabs obligatoire.
+
+### L-098 – Masquage graphie force enfant lecteur partiel à écouter, pas copier graphie reconnaissable (mj-44 ★3)
+**MJ-44 figeage ★3 (2026-07-13)** : Niveau voyelle entendue mid-mot (« ou » dans « poupée », « a » dans « chat »). **Leçon pédagogique** : enfant phase alphabétique partielle (Ehri, Max) = lecteur de graphie initiale (« ro-... » = « roue »). Si mot écrit visible = **triche visuelle** : Max trie par lettre initiale visuelle (« roue »/« rat » tous deux commencent par « r ») au lieu de traiter le son écouté (« ou » vs « a »). **Contre-mesure** : ★3 masquer mot écrit (picto seul) → force canal auditif, honnêteté pédago. ★1-★2 gardent mot visible (graphie = aide, pas pièce).
+
+### L-099 – Subset-sum anti-deadlock check = obligatoire tout jeu arithmétique exact
+**MJ-43 figeage + MJ-45 spécifications (2026-07-13)** : Jeux maths regroupement exact (caisses MJ-43, passagers MJ-45). **Piège récurrent** : placement légal intermédiaire peut créer un **cul-de-sac** où cible finale devient inatteignable. Exemple MJ-43 : 5 caisses, jetons {3,2,4,1} → aucun subset-sum = 5 → impossible. Exemple MJ-45 : bus 8 passagers, cible 12, groupe 4 monte → bus 12 full, MAIS pas de groupe 4+ en attente → impossible atteindre cible suivante. **Règle grave** : tout jeu arithmétique exact où Max cherche une somme PRÉCISE = vérifier subset-sum/knapsack APRÈS chaque input. Refus doux (rebond) si coup casse la jouabilité. **Code pattern** : vérifier toutes les combinaisons remainingJetons + remainingGroupes → au moins un chemin vers cible. Trivial à ces tailles (3-6 items max), non-trivial si oubli = frustration silencieuse Max.
+
+### L-077 – Pools sonores thématiques = pattern voix overlay post-victoire (2026-07-05)
+**Victoires MJ** : Système centralisé `site/js/victory-sounds.js` = 7 pools thématiques (victory, end-doux, success, error, apparition, collecte, déblocage) + voix casting overlay (narratrice f / narrateur h / Wex) jouées ~1.4s APRÈS fanfare victoire. Anti-répétition immédiate. **Standard futur** : tout MJ nouveau doit utiliser `SoundPool.play(theme)` (compat historique playEndSound() gardée). Voix générées ElevenLabs eleven_v3 avec tags émotionnels, padding 250ms L-069.
 
 ### L-085 – Count jeux status:live catalog.js = source de vérité, MAJ INVARIANTS après chaque changement menu
 **MJ-34..42 + retrait 3 (2026-07-06)** : catalog.js en vérité source de jeux live (grepper `status.*live` = count réel). Attente : jours avant INVARIANTS + state.md synchronisés (lag découvrir). **Processus figé** : après toute modif MJ → commit push → grep count → MAJ INVARIANTS.md L59 + state.md L19 (2 fichiers). Script d'audit dans backlog (EP-042 check auto assets → à étendre check count aussi).

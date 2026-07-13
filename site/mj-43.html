@@ -72,12 +72,19 @@
       flex:1; display:flex; flex-wrap:wrap; gap:3px; justify-content:center; align-content:flex-start;
       width:100%; min-height:44px;
     }
-    .crate-sum {
-      font-size:1rem; font-weight:900; color:#5a3616;
-      background:rgba(255,255,255,0.55); border-radius:8px; padding:1px 10px;
+    /* Jauge de remplissage NON numérique (le calcul reste dans la tête de Max) */
+    .crate-bar {
+      width:88%; height:12px; background:rgba(90,54,22,0.38);
+      border-radius:7px; overflow:hidden; border:1.5px solid #6d481d;
     }
-    .crate-sum.full { color:#1c7a3c; background:#d6ffd9; }
-    .crate.done { filter:saturate(1.1); }
+    .crate-fill { height:100%; width:0; background:#ffd24a; border-radius:5px; transition:width 0.25s ease; }
+    .crate-fill.full { background:#37c463; }
+    .crate-target.pulse { animation:platePulse 0.32s ease; }
+    @keyframes platePulse { 50% { transform:scale(1.2); } }
+    .crate.done { filter:saturate(1.1); animation:crateDone 0.5s ease; }
+    @keyframes crateDone { 30% { transform:scale(1.07) rotate(-1.5deg); } 60% { transform:scale(1.02); } }
+    .fly-clone { position:fixed; margin:0; z-index:80; pointer-events:none;
+                 transition:transform 0.28s cubic-bezier(.45,-0.15,.55,1.15), opacity 0.28s; }
     .crate-done-badge {
       position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
       font-size:3rem; background:rgba(28,122,60,0.28); border-radius:9px;
@@ -209,17 +216,19 @@
       2: [[28,28],[72,72]],
       3: [[26,26],[50,50],[74,74]],
       4: [[30,30],[70,30],[30,70],[70,70]],
-      5: [[28,28],[72,28],[50,50],[28,72],[72,72]],
-      6: [[30,24],[70,24],[30,50],[70,50],[30,76],[70,76]],
+      5: [[26,26],[74,26],[50,50],[26,74],[74,74]],
+      6: [[26,21],[74,21],[26,50],[74,50],[26,79],[74,79]],
     };
 
     // SVG d'une face de dé (points-dino ou chiffre), boîte 100×100.
+    // Les faces 5-6 réduisent le dino (~18%) pour préserver le blanc entre
+    // silhouettes → la constellation reste segmentable d'un coup d'œil (subitizing).
     function faceSVG(val, asNum, pipSize) {
       if (asNum) {
         return `<text x="50" y="50" text-anchor="middle" dominant-baseline="central" class="num-face">${val}</text>`;
       }
       const pips = PIP_LAYOUT[val] || [];
-      const s = pipSize || 26;
+      const s = (pipSize || 26) * (val >= 5 ? 0.82 : 1);
       return pips.map(([x,y]) => dinoPip(x, y, s)).join('');
     }
 
@@ -254,13 +263,18 @@
     // ── Configuration des paliers (3 étoiles) ───────────────────────────────
     // La difficulté monte : cibles plus grandes, dominos, chiffres, + de regroupement.
     const PALIERS = [
-      { stars:1, min:3,  max:6,  nCrates:3, kMin:1, kMax:2, domino:0,    numeral:0,   need:1, banner:"Range les dés dans la bonne caisse !" },
-      { stars:2, min:6,  max:10, nCrates:3, kMin:2, kMax:3, domino:0.4,  numeral:0,   need:1, banner:"Regroupe les points pour remplir la caisse !" },
-      { stars:3, min:12, max:15, nCrates:2, kMin:3, kMax:4, domino:0.6,  numeral:0.4, need:1, banner:"Gros niveau ! Regroupe 3 dés ou 2 dominos !" },
+      { stars:1, min:3,  max:6,  nCrates:3, kMin:1, kMax:2, domino:0,    numeral:0,   need:2, banner:"Range les dés dans la bonne caisse !" },
+      { stars:2, min:6,  max:10, nCrates:3, kMin:2, kMax:3, domino:0.4,  numeral:0,   need:2, banner:"Regroupe les points pour remplir la caisse !" },
+      { stars:3, min:12, max:15, nCrates:2, kMin:3, kMax:4, domino:0.6,  numeral:0.4, need:2, banner:"Gros niveau ! Regroupe 3 dés ou 2 dominos !" },
     ];
+    // Mode libre après les 3 étoiles : Max fort en maths continue tant qu'il veut,
+    // cibles un cran au-dessus, jamais de fin ni d'échec (il quitte par ←).
+    const LIBRE = { min:12, max:18, nCrates:2, kMin:3, kMax:5, domino:0.6, numeral:0.5, banner:"Mode libre ! Encore une caisse ?" };
 
     let paletteIdx = 0;   // étoile en cours (0..2)
     let roundsDone = 0;   // rounds finis dans le palier courant
+    let libre = false;    // mode libre post-3★
+    let finished = false; // 3 paliers bouclés (l'overlay propose le mode libre)
 
     // ── État de jeu ─────────────────────────────────────────────────────────
     // tokens[] : {id, kind:'die'|'domino', faces:[..], value, display:'dots'|'num', loc:'tray'|<crateIdx>, home}
@@ -280,8 +294,8 @@
     // Décompose `target` en `k` parts (chacune 1..min(6,target)), somme = target.
     function compose(target, k) {
       const maxPart = Math.min(6, target);
-      k = Math.max(1, Math.min(k, target, Math.ceil(target / 1)));
-      // borne réaliste : il faut k*maxPart >= target
+      // bornes réalistes : k parts de 1..maxPart doivent pouvoir sommer target
+      k = Math.max(1, Math.min(k, target));
       while (k * maxPart < target) k++;
       const parts = new Array(k).fill(1);
       let rem = target - k;
@@ -321,7 +335,7 @@
     }
 
     function genRound() {
-      const cfg = PALIERS[paletteIdx];
+      const cfg = libre ? LIBRE : PALIERS[paletteIdx];
       crates = [];
       tokens = [];
       selected = null;
@@ -371,10 +385,15 @@
         });
         div.appendChild(slots);
 
-        const sumEl = document.createElement('div');
-        sumEl.className = 'crate-sum' + (sum === cr.target ? ' full' : '');
-        sumEl.textContent = sum + ' / ' + cr.target;
-        div.appendChild(sumEl);
+        // Jauge non numérique — jamais de "X / cible" : le compte reste dans la
+        // tête de Max (subitizing + addition), la jauge donne juste la sensation.
+        const bar = document.createElement('div');
+        bar.className = 'crate-bar';
+        const fill = document.createElement('div');
+        fill.className = 'crate-fill' + (sum === cr.target ? ' full' : '');
+        fill.style.width = Math.min(100, Math.round(sum / cr.target * 100)) + '%';
+        bar.appendChild(fill);
+        div.appendChild(bar);
 
         if (cr.done) {
           const badge = document.createElement('div');
@@ -413,6 +432,61 @@
       render();
     }
 
+    // ── Solveur anti-deadlock ────────────────────────────────────────────────
+    // Un placement est légal seulement s'il laisse le round SOLUBLE : les jetons
+    // restants doivent pouvoir remplir exactement tous les restes de caisses.
+    // Sans ça : caisses 5+5, jetons {3,2,4,1} — Max met 3+1 dans A → cul-de-sac
+    // silencieux (reste {2,4}, insoluble). Backtracking trivial (≤12 jetons).
+    function canSolve(residuals, vals) {
+      vals = vals.slice().sort((a, b) => b - a); // décroissant = échec rapide
+      const rec = (i) => {
+        if (i === vals.length) return residuals.every(r => r === 0);
+        const v = vals[i];
+        const tried = new Set(); // ne pas re-tester deux caisses au même reste
+        for (let j = 0; j < residuals.length; j++) {
+          if (residuals[j] >= v && !tried.has(residuals[j])) {
+            tried.add(residuals[j]);
+            residuals[j] -= v;
+            if (rec(i + 1)) { residuals[j] += v; return true; }
+            residuals[j] += v;
+          }
+        }
+        return false;
+      };
+      return rec(0);
+    }
+
+    function placementKeepsSolvable(tok, ci) {
+      const residuals = crates.map((c, i) => c.target - crateSum(i));
+      residuals[ci] -= tok.value; // placement hypothétique
+      const rest = tokens.filter(t => t.loc === 'tray' && t.id !== tok.id).map(t => t.value);
+      return canSolve(residuals, rest);
+    }
+
+    // ── Vol animé du jeton vers la caisse (causalité physique, 4 ans) ───────
+    function flyToken(tid, ci, done) {
+      const tokEl = trayEl.querySelector(`.tok[data-tid="${tid}"]`);
+      const crateEl = cratesEl.querySelector(`.crate[data-cid="${ci}"]`);
+      if (!tokEl || !crateEl || testMode) { done(); return; }
+      const a = tokEl.getBoundingClientRect(), b = crateEl.getBoundingClientRect();
+      const clone = tokEl.cloneNode(true);
+      clone.classList.remove('sel');
+      clone.classList.add('fly-clone');
+      clone.style.left = a.left + 'px';
+      clone.style.top = a.top + 'px';
+      clone.style.width = a.width + 'px';
+      clone.style.height = a.height + 'px';
+      document.body.appendChild(clone);
+      tokEl.style.visibility = 'hidden';
+      const dx = (b.left + b.width / 2) - (a.left + a.width / 2);
+      const dy = (b.top + b.height / 2) - (a.top + a.height / 2);
+      requestAnimationFrame(() => {
+        clone.style.transform = `translate(${dx}px,${dy}px) scale(0.42)`;
+        clone.style.opacity = '0.35';
+      });
+      setTimeout(() => { clone.remove(); done(); }, 300);
+    }
+
     function onCrateClick(ci) {
       if (roundOver) return;
       const cr = crates[ci];
@@ -421,28 +495,38 @@
       if (!tok || tok.loc !== 'tray') return;
 
       const sum = crateSum(ci);
-      if (sum + tok.value > cr.target) {
-        // Débordement : refus doux, zéro pénalité.
+      if (sum + tok.value > cr.target || !placementKeepsSolvable(tok, ci)) {
+        // Débordement OU coup qui rend le round insoluble : refus doux, zéro pénalité.
         try { sndBuzz(); } catch(e) {}
         wiggleCrate(ci);
         return;
       }
 
-      tok.loc = ci;
       selected = null;
-      const newSum = crateSum(ci);
-      try { sndCount(); } catch(e) {}
+      flyToken(tok.id, ci, () => {
+        tok.loc = ci;
+        const newSum = crateSum(ci);
+        try { sndCount(); } catch(e) {}
 
-      if (newSum === cr.target) {
-        cr.done = true;
-        try { sndBravo(); sndPorte(); } catch(e) {}
-        speak(String(cr.target));
-        render();
-        checkRoundComplete();
-      } else {
-        speak(String(newSum));
-        render();
-      }
+        if (newSum === cr.target) {
+          cr.done = true;
+          try { sndBravo(); sndPorte(); } catch(e) {}
+          speak(String(cr.target));
+          render();
+          checkRoundComplete();
+        } else {
+          speak(String(newSum));
+          render();
+          pulsePlate(ci);
+        }
+      });
+    }
+
+    function pulsePlate(ci) {
+      const plate = cratesEl.querySelector(`.crate[data-cid="${ci}"] .crate-target`);
+      if (!plate) return;
+      plate.classList.add('pulse');
+      setTimeout(() => plate.classList.remove('pulse'), 340);
     }
 
     function returnToTray(tid) {
@@ -479,12 +563,19 @@
       try { sndVictory(); } catch(e) {}
       roundsDone++;
 
+      if (libre) {
+        // Mode libre : enchaîne les caisses tant que Max joue, jamais de fin.
+        setTimeout(() => { if (!testMode) genRound(); }, 900);
+        return;
+      }
+
       if (roundsDone >= PALIERS[paletteIdx].need) {
         // Palier terminé → étoile + montée de niveau (ou fin si dernier).
         try { Tracker.endSession(1, 1); } catch(e) {}
         refreshStars(paletteIdx + 1);
         if (paletteIdx >= PALIERS.length - 1) {
-          showOverlay(true);
+          finished = true;
+          showOverlay();
           return;
         }
         paletteIdx++;
@@ -496,16 +587,24 @@
       }
     }
 
-    function showOverlay(win) {
+    function showOverlay() {
       const ov = document.getElementById('overlay');
-      document.getElementById('overlay-title').textContent = '🎉 Bravo Max ! 🎉';
-      document.getElementById('overlay-text').textContent = 'Tu as rempli toutes les caisses. Quel rangeur !';
+      document.getElementById('overlay-title').textContent = '🎉 3 étoiles, bravo Max ! 🎉';
+      document.getElementById('overlay-text').textContent = 'Tu as rempli toutes les caisses. Des caisses encore plus grosses ?';
+      document.getElementById('replay-btn').textContent = 'Encore ! 🔄';
       ov.classList.add('show');
     }
 
     document.getElementById('replay-btn').addEventListener('click', () => {
       document.getElementById('overlay').classList.remove('show');
-      startAll();
+      if (finished) {
+        // Après les 3 étoiles → mode libre (cibles plus hautes, sans fin ni échec)
+        libre = true;
+        try { Tracker.startSession('mj-43'); } catch(e) {}
+        genRound();
+      } else {
+        startAll();
+      }
     });
 
     // ── Étoiles ────────────────────────────────────────────────────────────────
@@ -519,6 +618,8 @@
     function startAll() {
       paletteIdx = 0;
       roundsDone = 0;
+      libre = false;
+      finished = false;
       refreshStars(0);
       try { Tracker.startSession('mj-43'); } catch(e) {}
       genRound();
@@ -530,13 +631,21 @@
     window.__mjTest = {
       get state() {
         return {
-          paletteIdx, roundsDone, roundOver,
+          paletteIdx, roundsDone, roundOver, libre, finished,
           crates: crates.map((c, i) => ({ target:c.target, sum:crateSum(i), done:c.done })),
           trayCount: tokens.filter(t => t.loc === 'tray').length,
           selected,
           overlayShown: document.getElementById('overlay').classList.contains('show'),
           bannerText: document.getElementById('banner').textContent,
         };
+      },
+      // Round sur mesure (tests) — chaque valeur devient un dé, home=0 (solveRound inutilisable ici).
+      setRound(targets, values) {
+        crates = targets.map(t => ({ target:t, done:false }));
+        tokens = values.map(v => ({ id:nextTid++, kind:'die', faces:[Math.min(v,6)], value:v,
+                                    display:'dots', loc:'tray', home:0 }));
+        selected = null; roundOver = false;
+        render();
       },
       setTestMode(on) { testMode = !!on; },
       setDifficulty(stars) {

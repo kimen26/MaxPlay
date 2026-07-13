@@ -8,15 +8,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/mp-theme.css">
   <style>
-    .instruction-text { text-align:center; font-size:1.35rem; font-weight:900; color:#ffe066; margin:10px 12px 4px; }
     .question-counter { text-align:center; font-size:.85rem; opacity:.7; margin-top:6px; }
-    .tts-btn { min-height:80px;
-      display:flex; align-items:center; gap:8px; margin:8px auto;
-      background:linear-gradient(135deg,#43a047,#66bb6a); color:#fff; border:none; cursor:pointer;
-      border-radius:25px; padding:10px 22px; font-size:1rem; font-weight:900;
-      box-shadow:0 4px 12px #0005;
-    }
-    .tts-btn:active { transform:scale(.94); }
     .choices { display:grid; gap:14px; padding:14px; justify-content:center; max-width:560px; margin:0 auto; }
     .dino-tile {
       background:#fff; border-radius:20px; padding:12px; border:5px solid transparent;
@@ -38,30 +30,19 @@
     </div>
     <div class="pips" id="pips"></div>
 
-    <div class="qbox">
-      <div class="instruction-text" id="instruction">…</div>
-      <button class="tts-btn" id="repeatBtn"><span>🔊</span><span>Écouter</span></button>
-    </div>
-
     <div class="choices" id="choices"></div>
   </div>
 
 
-  <script src="js/sounds.js"></script>
-  <script src="js/tts.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/feedback.js"></script>
-  <script src="js/catalog.js"></script>
-  <script src="js/stars.js"></script>
-  <script src="js/qcm-retry.js"></script>
-  <script src="js/mj-golden.js"></script>
+  <!-- libs SPÉCIFIQUES au jeu -->
   <script src="js/lang.js"></script>
   <script src="js/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
   <script src="js/dinos-audio-manifest.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
   <script>
+    MJ.ready(function () {
     // ─── MJ-24 — Trouve le dino (reconnaissance par nom, ombres chinoises par-dino) ───
     // Refonte 2026-07-05 (ordre Papa Yann) : anciennes silhouettes par-famille supprimees,
     // remplacees par les ombres chinoises canon (img/dinos/ombres/) + voix reelle <id>-nom.mp3.
@@ -100,9 +81,28 @@
       a.play().catch(fb);
     }
 
+    const shell = MJ.init({
+      id: 'mj-24', emoji: '🦕', titre: 'Trouve le dino',
+      consigne: true,
+      onRepeat: function () { sayTarget(); },
+      regle: {
+        picto: '🦕🔎',
+        texte: 'Écoute le nom, trouve le bon dino !',
+        etapes: [
+          { t: 'J’écoute le nom du dino 👂',
+            d: 'Une voix dit le nom : « Trouve le Tricératops ! ». Je tape la consigne pour réécouter.' },
+          { t: 'Je regarde les ombres 👀',
+            d: 'Chaque carte montre l’ombre d’un dino. Une seule est le bon !' },
+          { t: 'Je tape la bonne ombre 👆',
+            d: 'Si je me trompe, j’écoute un indice et je peux réessayer.' },
+          { t: 'Plus j’ai d’étoiles, plus c’est malin 💪',
+            d: 'Plus d’ombres à comparer… et parfois deux cousins de la même famille !' }
+        ]
+      }
+    });
+
     function init(){
       G.buildPips();
-      document.getElementById('repeatBtn').onclick = sayTarget;
       nextQuestion();
     }
 
@@ -127,7 +127,7 @@
         ...others.map(o => ({ o, correct:false }))
       ]);
 
-      document.getElementById('instruction').textContent = 'Trouve le ' + target.name + ' !';
+      shell.setConsigne('Trouve le ' + target.name + ' !', false); // l'audio custom suit
       sayTarget();
 
       const box = document.getElementById('choices');
@@ -175,10 +175,7 @@
     }
 
     init();
+    });
   </script>
-  <script src="js/tracker.js"></script>
-  <script src="js/cloud.js"></script>
-  <script src="js/comments.js"></script>
-  <script src="js/back-button.js"></script>
 </body>
 </html>

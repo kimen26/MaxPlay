@@ -79,7 +79,37 @@ cd studio/minijeux/tests && npm run mj:test mj-XX
 
 Voie express (patch/bugfix MJ existant) : lire figé → fix → harnais vert → push. Tweak cosmétique : direct (hook figeage = filet). Max 5 itérations reviewer ↔ dev.
 
-## Structure d'un mini-jeu
+## Structure d'un mini-jeu — LE GABARIT `js/mj-shell.js` (décision Papa Yann 2026-07-14)
+
+**UNE inclusion charge tout le cadre standard** (thème, golden, panneau 🧑‍🔬, tracking, cloud, célébrations) dans le bon ordre — plus JAMAIS la liste de 14 scripts à la main :
+
+```html
+<body>
+<div id="app"><!-- markup du jeu (le .hdr/#pips/consigne sont créés par le gabarit s'ils manquent) --></div>
+<script src="js/bus-svg.js"></script>   <!-- libs SPÉCIFIQUES au jeu seulement -->
+<script src="js/data.js"></script>
+<script src="js/mj-shell.js"></script>  <!-- LE GABARIT -->
+<script>
+MJ.ready(function () {
+  const shell = MJ.init({
+    id: 'mj-XX', emoji: '🎯', titre: 'Titre du jeu',
+    golden: true,              // piste 4/6/8 + étoiles dans la piste (sinon false)
+    consigne: true,            // barre consigne (texte centré, tap = réécouter, audio AUTO)
+    onRepeat: fn,              // optionnel : audio custom au tap consigne (MP3 voix réelle)
+    regle: { picto, texte, etapes: [{t, d}…] }   // panneau savant fou 🧑‍🔬 (v3)
+  });
+  shell.setConsigne('…');      // met à jour + lit tout seul (false en 2e arg = silencieux)
+  // gameplay : shell.G.notePip(i, attempts, fromEl) · shell.G.showEnd({replayUrl})
+});
+</script>
+</body>
+```
+
+- Le gabarit garantit `cloud.js` après `tracker.js` (règle 🚨) → avis 💬 → table Supabase `annotations`.
+- Panneau règle : s'ouvre TOUT SEUL à la 1ʳᵉ partie. Les specs harnais doivent le fermer (`#ri-ok`) avant de dérouler le jeu.
+- ⚠ Le CONTENU du jeu (mécanique, aides 💡, difficulté par étoile) demande une réflexion cohérente PAR JEU — le gabarit ne norme que le cadre.
+
+### Ancien gabarit (référence, avant 2026-07-14)
 
 ```html
 <!DOCTYPE html>

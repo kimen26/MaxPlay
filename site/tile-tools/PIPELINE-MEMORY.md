@@ -209,6 +209,16 @@ Main agent (Sonnet/Opus)
 - **Application** : `build_tile_picker_data.py` refactorisé pour scanner récursivement avec PIL, jamais présumer 1×1
 - **Détection future** : si export tile-picker contient dimensions 1×1 pour un sprite 4×3 → data-corruption, bloquer
 
+### F-010 : Reviewer verdict vs orchestrateur vérité (2026-07-13)
+- **Symptôme** : reviewer remet PASS/FAIL avec des critères qui peuvent être hallucinés (ex "SW14 n'existe pas" sur une tile qui existe) ou basés sur des labels faux (cartography.json DEPRECATED)
+- **Cause** : reviewer lit labels cartography.json ou vocab.py sans vérifier PNG originel; confond deux tiles symétriques sur description textuelle seule
+- **Résolution en session 2026-07-13** : orchestrateur valide chaque claim reviewer avant d'accepter un verdict
+  - Si reviewer dit "tile X n'existe pas" → vérifier avec `ls` que X existe réellement
+  - Si reviewer dit "passage piéton sur trottoir" → lire les coordonnées exactes dans code + Read PNG du snippet
+  - Si reviewer verdict diverge de Papa Yann → annoncer explicitement "reviewer PASS vs Papa REJECT" et exiger debug
+- **Pattern gravé** : "reviewer = first-pass automate, pas juge final. Papa Yann = juge final (visuel). Orchestrateur = arbitre qui valide les claims."
+- **Tooling recommandé** : `verify_reviewer_claim.py` qui lint automatiquement les critiques spécifiques du reviewer
+
 ---
 
 ### 2026-05-12 — Clôture EP-VOCAB, livraison pipeline route+virages v3, intégration builders.py

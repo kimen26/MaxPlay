@@ -16,7 +16,7 @@ import importlib.util
 from PIL import Image
 
 TILE = 48
-TILES_DIR = r'c:\ProjetsPerso\Claude_Projects\MaxPlay\game\phaser\public\assets\tiles'
+TILES_DIR = r'c:\ProjetsPerso\Claude_Projects\MaxPlay\studio\max-adventure\public\assets\tiles'
 
 _cache = {}
 def load_tile(rel_path):

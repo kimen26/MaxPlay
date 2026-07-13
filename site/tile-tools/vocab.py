@@ -34,10 +34,11 @@ import sys
 
 # ─── Configuration ───────────────────────────────────────────────────────────
 
-TILES_DIR = r'c:\ProjetsPerso\Claude_Projects\MaxPlay\game\phaser\public\assets\tiles'
+TILES_DIR = r'c:\ProjetsPerso\Claude_Projects\MaxPlay\studio\max-adventure\public\assets\tiles'
 
 _ASPHALT_FMT = 'roads/ME_Singles_City_Terrains_48x48_Asphalt_1_Variation_{n}.png'
 _SIDEWALK_FMT = 'roads/ME_Singles_City_Terrains_48x48_Sidewalk_1_{n}.png'
+_VEHICLES_FMT = 'themes/10_vehicles/{name}.png'
 
 
 def _a(n: int) -> str:
@@ -48,6 +49,11 @@ def _a(n: int) -> str:
 def _s(n: int) -> str:
     """Path tile Sidewalk_1_<n>."""
     return _SIDEWALK_FMT.format(n=n)
+
+
+def _v(name: str) -> str:
+    """Path tile thème 10_vehicles/<name>.png (props Bus_Stop_*, etc.)."""
+    return _VEHICLES_FMT.format(name=name)
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -176,6 +182,25 @@ MARQUAGE_P_BAS: str = _s(46)   # marquage parking — extrémité basse
 PASSAGE_V_HAUT: str = _s(29)       # extrémité haute (bord trottoir blanc en haut)
 PASSAGE_V_MID: str = _s(30)        # section milieu (2 bandes blanches)
 PASSAGE_V_MID_ALT: str = _s(31)    # variante milieu
+PASSAGE_V_BAS: str = _s(32)        # extrémité basse (bord trottoir blanc en bas) — ajouté EP-VILLE-VIRAGE 2026-07-13
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+#  MARQUAGE BUS SOL — voie bus horizontale (existence vérifiée PIL 2026-07-13)
+# ═══════════════════════════════════════════════════════════════════════════
+
+MARQUAGE_BUS_H: str = _s(47)   # mot "BUS" horizontal, 7×3 tiles, inclut bordure haute + liseré orange
+
+
+# ═══════════════════════════════════════════════════════════════════════════
+#  PROPS — arrêt de bus (thème 10_vehicles, dimensions natives vérifiées PIL 2026-07-13)
+# ═══════════════════════════════════════════════════════════════════════════
+
+# Abribus complet avec banc + panneau horaires intégré. 5×3 tiles (240×144 px). top-left anchor.
+BUS_STOP_ABRI: str = _v('Bus_Stop_1')
+
+# Panneau d'arrêt (poteau + pictogramme bus). 1×3 tiles (48×144 px). top-left anchor.
+BUS_STOP_PANNEAU: str = _v('Bus_Stop_Sign_1')
 
 
 # ═══════════════════════════════════════════════════════════════════════════
@@ -190,8 +215,9 @@ _REGISTRY: dict[str, str] = {
         not name.startswith('_')
         and name.isupper()
         and isinstance(value, str)
-        and value.startswith('roads/')
+        and (value.startswith('roads/') or value.startswith('themes/'))
         and '{n}' not in value
+        and '{name}' not in value
     )
 }
 

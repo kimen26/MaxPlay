@@ -32,12 +32,15 @@
   .pastilles button { width:27px; height:27px; border-radius:50%; border:2px solid rgba(255,255,255,.35); cursor:pointer; padding:0; }
   .pastilles button.active { box-shadow:0 0 0 3px #fff; }
 
-  /* choix du dino : bande scrollable */
-  .dino-strip { margin:8px 14px 0; padding:8px; display:flex; gap:8px; overflow-x:auto; -webkit-overflow-scrolling:touch; }
-  .dino-strip button { flex:0 0 auto; width:48px; height:48px; border-radius:12px; border:2px solid transparent;
-                       background:rgba(255,255,255,.06); padding:2px; cursor:pointer; }
-  .dino-strip button.on { border-color:var(--accent); background:var(--accent-soft); }
-  .dino-strip img { width:100%; height:100%; object-fit:contain; }
+  /* choix du dino : grille 3 colonnes avec noms (pas d'ascenseur horizontal) */
+  .dino-grid { margin:10px 14px 0; display:grid; grid-template-columns:repeat(3,1fr); gap:8px; }
+  .dino-grid button { border-radius:14px; border:2px solid transparent;
+                      background:rgba(255,255,255,.06); padding:8px 4px 6px; cursor:pointer;
+                      display:flex; flex-direction:column; align-items:center; gap:4px; }
+  .dino-grid button.on { border-color:var(--accent); background:var(--accent-soft); }
+  .dino-grid img { width:56px; height:56px; object-fit:contain; }
+  .dino-grid small { font-size:11.5px; font-weight:900; color:var(--ink-2); font-family:'Nunito',sans-serif;
+                     white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:100%; }
 
   /* triplets */
   .triplets { display:flex; justify-content:center; gap:8px; padding:12px 14px 8px; }
@@ -93,7 +96,7 @@
     <div class="pastilles" id="pastilles"></div>
   </div>
 
-  <div class="dino-strip" id="dinoStrip"></div>
+  <div class="dino-grid" id="dinoStrip"></div>
 
   <!-- MODE NORMAL : triplets + nuancier -->
   <div id="normal" class="show">
@@ -218,11 +221,14 @@
   }
 
   // ── peindre le grand avatar ─────────────────────────────────────────
+  // ⚠️ curTargets null = couleurs d'ORIGINE du dino → src direct.
+  // Ne PAS passer null à paintInto : il retomberait sur les couleurs
+  // stockées de l'avatar validé (mochetés sur un autre dino).
   function repaintBig() {
     var img = document.getElementById('bigAvatar');
     var file = curFile();
     if (!file) return;
-    if (window.Avatar) Avatar.paintInto(img, file, curTargets); // null = couleurs d'origine
+    if (curTargets && window.Avatar) Avatar.paintInto(img, file, curTargets);
     else img.src = file;
   }
 
@@ -250,7 +256,7 @@
       var b = document.createElement('button');
       b.className = (a.id === curId) ? 'on' : '';
       var f = Avatar.file(a.id, 'joyeux') || Avatar.file(a.id);
-      b.innerHTML = '<img alt="' + a.name + '">';
+      b.innerHTML = '<img alt=""><small>' + a.name + '</small>';
       if (f) b.querySelector('img').src = f;
       b.title = a.name;
       b.addEventListener('click', function () {
@@ -261,6 +267,7 @@
           curTriplets = [];
           renderDinoStrip(); renderPastilles(); renderTriplets(); repaintBig();
         });
+        window.scrollTo({ top: 0, behavior: 'smooth' }); // on le voit en grand
         SoundPool && SoundPool.play && SoundPool.play('apparition');
       });
       el.appendChild(b);
@@ -477,7 +484,10 @@
         + '<span style="position:absolute;bottom:2px;right:5px;font-size:10px">' + a.deco[2] + '</span>'
         + '<img alt="">'
         + '</div><small>' + a.name + '</small>';
-      if (f && window.Avatar) Avatar.paintInto(d.querySelector('img'), f, curTargets);
+      if (f) {
+        if (curTargets && window.Avatar) Avatar.paintInto(d.querySelector('img'), f, curTargets);
+        else d.querySelector('img').src = f; // origine (jamais les couleurs d'un autre dino)
+      }
       d.addEventListener('click', function () {
         if (window.MPTheme) window.MPTheme.setAmbiance(a.id);
         if (window.SoundPool) SoundPool.play('apparition');

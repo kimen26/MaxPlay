@@ -112,6 +112,7 @@
 </head>
 <body>
   <header>
+    <a href="index.html" style="color:#74C7DE;text-decoration:none;font-size:13px;display:inline-block;margin-bottom:6px">← Accueil</a>
     <div class="titre"><svg width="30" height="16" viewBox="0 0 30 16" fill="none" aria-hidden="true"><ellipse cx="10" cy="6" rx="9" ry="2.6" fill="#74C7DE" opacity=".35" transform="rotate(-16 10 6)"/><ellipse cx="20" cy="6" rx="9" ry="2.6" fill="#74C7DE" opacity=".35" transform="rotate(16 20 6)"/><ellipse cx="11" cy="9.5" rx="7" ry="2" fill="#74C7DE" opacity=".55" transform="rotate(-24 11 9.5)"/><ellipse cx="19" cy="9.5" rx="7" ry="2" fill="#74C7DE" opacity=".55" transform="rotate(24 19 9.5)"/><rect x="14.4" y="3.5" width="1.6" height="11" rx="0.8" fill="#74C7DE"/><circle cx="15.2" cy="3.2" r="1.7" fill="#74C7DE"/></svg>Lecture annotée</div>
     <div class="sous" id="sous">Choisis une histoire</div>
     <div class="hint" id="hint">Tape un passage pour le commenter — bien ou pas bien, texte libre bienvenu.</div>
@@ -152,12 +153,18 @@
   <div class="final hidden" id="final">
     <h2>✅ Merci Papa Yann !</h2>
     <p id="resume-final"></p>
-    <p>Copie ce JSON et colle-le à Claude — il nourrit ta mémoire de goût :</p>
-    <textarea id="json" readonly onclick="this.select()"></textarea>
-    <button class="btn-ok" style="width:100%;padding:14px;border:none;border-radius:12px;font-weight:700;margin-top:10px;cursor:pointer" onclick="copier()">📋 Copier le JSON</button>
+    <p id="statut-cloud">☁️ Envoi à Claude en cours…</p>
+    <button class="btn-ok" style="width:100%;padding:14px;border:none;border-radius:12px;font-weight:700;margin-top:10px;cursor:pointer" onclick="retourFinal()">← Revenir aux histoires</button>
+    <a href="index.html" style="display:block;text-align:center;color:#74C7DE;margin-top:12px;font-size:14px">🏠 Retour à l'accueil</a>
+    <details style="margin-top:14px">
+      <summary style="color:#B9BFA9;font-size:12px;cursor:pointer">Secours : JSON manuel (seulement si l'envoi ☁️ a échoué)</summary>
+      <textarea id="json" readonly onclick="this.select()"></textarea>
+      <button class="btn-ok" style="width:100%;padding:10px;border:none;border-radius:12px;font-weight:700;margin-top:8px;cursor:pointer" onclick="copier()">📋 Copier le JSON</button>
+    </details>
   </div>
 
 <script src="js/tracker.js"></script>
+<script src="js/cloud.js"></script>
 <script src="lecture-data.js"></script>
 <script>
 var D = window.LECTURE_DATA;
@@ -184,7 +191,7 @@ function renderListe() {
   var fin = document.createElement('div');
   fin.className = 'hcard';
   fin.style.borderColor = '#c9a86a';
-  fin.innerHTML = '<div class="t">🏁 Terminer & exporter</div><div class="s">Génère le JSON à coller à Claude (même partiel — lis ce que tu peux)</div>';
+  fin.innerHTML = '<div class="t">☁️ Terminer & envoyer à Claude</div><div class="s">Envoi direct (même partiel — lis ce que tu peux), plus rien à copier</div>';
   fin.onclick = terminer;
   z.appendChild(fin);
 }
@@ -371,14 +378,23 @@ function terminer() {
   document.getElementById('json').value = JSON.stringify(payload, null, 1);
   document.getElementById('liste').classList.add('hidden');
   document.getElementById('final').classList.remove('hidden');
-  // Envoi cloud automatique (table annotations) — le copier-coller devient le fallback
+  // Envoi cloud automatique (table annotations) — le JSON n'est qu'un secours replié
+  var statut = document.getElementById('statut-cloud');
   if (window.Cloud) {
     Cloud.pushAnnotation('lecture', document.getElementById('json').value, 'lecture')
       .then(function (ok) {
-        if (ok) document.getElementById('resume-final').textContent += ' — ☁️ envoyé à Claude, plus besoin de copier !';
+        statut.textContent = ok ? '☁️ ✅ Envoyé à Claude — rien d\'autre à faire.'
+          : '☁️ ❌ Pas de session parent — connecte-toi (compte.html) ou utilise le JSON de secours ci-dessous.';
       })
-      .catch(function () {});
+      .catch(function () { statut.textContent = '☁️ ❌ Envoi échoué — utilise le JSON de secours ci-dessous.'; });
+  } else {
+    statut.textContent = '☁️ ❌ Cloud indisponible — utilise le JSON de secours ci-dessous.';
   }
+}
+
+function retourFinal() {
+  document.getElementById('final').classList.add('hidden');
+  document.getElementById('liste').classList.remove('hidden');
 }
 
 function copier() {

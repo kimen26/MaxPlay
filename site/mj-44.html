@@ -56,6 +56,15 @@
     .sbox.c2 { background:linear-gradient(160deg,#eea24f,#d67f2f); }
     .sbox.wiggle { animation:wiggle 0.32s ease; }
     @keyframes wiggle { 0%,100%{transform:translateX(0);} 25%{transform:translateX(-6px);} 75%{transform:translateX(6px);} }
+    .sbox.pop { animation:boxPop 0.32s ease; }
+    @keyframes boxPop { 40% { transform:scale(1.07); } }
+    .sbox-star {
+      position:absolute; top:-16px; right:-10px; font-size:1.9rem;
+      text-shadow:0 2px 4px rgba(0,0,0,0.35); animation:starPop 0.45s ease;
+    }
+    @keyframes starPop { 0% { transform:scale(0.2); opacity:0; } 70% { transform:scale(1.25); } 100% { transform:scale(1); opacity:1; } }
+    .fly-clone { position:fixed; margin:0; z-index:80; pointer-events:none;
+                 transition:transform 0.28s cubic-bezier(.45,-0.15,.55,1.15), opacity 0.28s; }
     .sbox-son {
       background:#fff; color:#222; border-radius:12px; min-width:60px; height:56px;
       display:flex; align-items:center; justify-content:center; font-size:2.2rem; font-weight:900;
@@ -176,7 +185,10 @@
               <ellipse cx="70" cy="54" rx="9" ry="8" fill="#3a3a3a"/>
               <circle cx="73" cy="52" r="2" fill="#fff"/>
               <rect x="46" y="72" width="5" height="12" fill="#3a3a3a"/><rect x="60" y="72" width="5" height="12" fill="#3a3a3a"/>`,
-      lune:  `<path d="M62 20 A34 34 0 1 0 62 82 A26 26 0 1 1 62 20 Z" fill="#f7d64a"/>`,
+      lune:  `<path d="M62 20 A34 34 0 1 0 62 82 A26 26 0 1 1 62 20 Z" fill="#f7d64a"/>
+              <circle cx="41" cy="44" r="3" fill="#8a6d1f"/>
+              <path d="M36 60 q6 6 12 2" stroke="#8a6d1f" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <circle cx="50" cy="30" r="3.5" fill="#e3c344"/><circle cx="44" cy="74" r="4" fill="#e3c344"/>`,
       loup:  `<path d="M28 40 L22 22 L40 34 Z" fill="#7d8794"/><path d="M72 40 L78 22 L60 34 Z" fill="#7d8794"/>
               <path d="M30 40 Q50 30 70 40 Q74 62 50 78 Q26 62 30 40 Z" fill="#9aa4b0"/>
               <circle cx="41" cy="52" r="3.5" fill="#222"/><circle cx="59" cy="52" r="3.5" fill="#222"/>
@@ -192,10 +204,12 @@
               <rect x="46" y="20" width="8" height="12" fill="#7d8794"/><circle cx="50" cy="18" r="5" fill="#e0392b"/>
               <circle cx="41" cy="50" r="6" fill="#2b6fc0"/><circle cx="59" cy="50" r="6" fill="#2b6fc0"/>
               <rect x="40" y="62" width="20" height="6" rx="2" fill="#3a3a3a"/>`,
-      rat:   `<ellipse cx="46" cy="62" rx="26" ry="16" fill="#9a9a9a"/>
-              <circle cx="70" cy="52" r="11" fill="#9a9a9a"/><circle cx="66" cy="42" r="6" fill="#b8b8b8"/>
-              <circle cx="73" cy="50" r="2.5" fill="#222"/>
-              <path d="M20 62 Q8 62 10 78" stroke="#9a9a9a" stroke-width="4" fill="none" stroke-linecap="round"/>`,
+      rat:   `<ellipse cx="42" cy="62" rx="24" ry="15" fill="#9a9a9a"/>
+              <path d="M58 50 L86 58 L60 68 Z" fill="#9a9a9a"/>
+              <circle cx="85" cy="58" r="3" fill="#e087a8"/>
+              <circle cx="58" cy="42" r="7" fill="#b8b8b8"/><circle cx="58" cy="42" r="3.5" fill="#e0a8c0"/>
+              <circle cx="66" cy="55" r="2.5" fill="#222"/>
+              <path d="M18 64 Q2 62 8 80" stroke="#e087a8" stroke-width="4" fill="none" stroke-linecap="round"/>`,
       hibou: `<ellipse cx="50" cy="56" rx="26" ry="30" fill="#8a5a34"/>
               <path d="M30 34 L26 22 L40 32 Z" fill="#6f4626"/><path d="M70 34 L74 22 L60 32 Z" fill="#6f4626"/>
               <circle cx="40" cy="50" r="11" fill="#fff"/><circle cx="60" cy="50" r="11" fill="#fff"/>
@@ -209,6 +223,25 @@
       sac:   `<path d="M30 46 h40 l4 38 h-48 Z" fill="#c0392b"/>
               <path d="M38 46 a12 12 0 0 1 24 0" stroke="#7a2318" stroke-width="5" fill="none"/>
               <rect x="44" y="60" width="12" height="10" rx="2" fill="#fff" opacity="0.8"/>`,
+      tasse: `<path d="M24 40 h40 v22 a14 14 0 0 1 -14 14 h-12 a14 14 0 0 1 -14 -14 Z" fill="#4f97e6"/>
+              <path d="M64 46 h8 a8 8 0 0 1 0 16 h-8" stroke="#2f6fc0" stroke-width="5" fill="none"/>
+              <path d="M34 32 q4 -8 0 -12 M50 32 q4 -8 0 -12" stroke="#9aa4b0" stroke-width="3" fill="none" stroke-linecap="round"/>`,
+      main:  `<rect x="33" y="46" width="35" height="35" rx="13" fill="#f2c29e"/>
+              <rect x="33" y="27" width="8" height="26" rx="4" fill="#f2c29e"/>
+              <rect x="42" y="20" width="8" height="33" rx="4" fill="#f2c29e"/>
+              <rect x="51" y="22" width="8" height="31" rx="4" fill="#f2c29e"/>
+              <rect x="60" y="28" width="8" height="25" rx="4" fill="#f2c29e"/>
+              <rect x="21" y="52" width="16" height="9" rx="4.5" fill="#f2c29e" transform="rotate(-32 29 56)"/>`,
+      livre: `<path d="M50 32 Q32 24 18 29 V71 Q32 66 50 73 Z" fill="#fdf6e3" stroke="#8a5a34" stroke-width="3"/>
+              <path d="M50 32 Q68 24 82 29 V71 Q68 66 50 73 Z" fill="#fff" stroke="#8a5a34" stroke-width="3"/>
+              <path d="M26 41 q11 -4 17 0 M26 51 q11 -4 17 0 M57 41 q11 -4 17 0 M57 51 q11 -4 17 0" stroke="#b8b8b8" stroke-width="2.5" fill="none"/>`,
+      robe:  `<rect x="41" y="18" width="6" height="12" fill="#c76b8e"/><rect x="53" y="18" width="6" height="12" fill="#c76b8e"/>
+              <path d="M39 28 h22 l3 16 h-28 Z" fill="#e087a8"/>
+              <path d="M36 44 h28 l11 38 H25 Z" fill="#c76b8e"/>`,
+      bouche:`<path d="M20 54 Q35 38 50 50 Q65 38 80 54 Q65 74 50 71 Q35 74 20 54 Z" fill="#e0392b"/>
+              <path d="M20 54 Q50 59 80 54" stroke="#7a1f16" stroke-width="3" fill="none"/>`,
+      banane:`<path d="M26 28 Q18 66 56 78 Q78 84 86 66 Q80 74 58 68 Q30 58 34 28 Z" fill="#f7d64a" stroke="#c9a63a" stroke-width="2.5"/>
+              <rect x="24" y="24" width="9" height="9" rx="2" fill="#8a5a34"/>`,
     };
 
     function pictoSVG(id, px) {
@@ -219,23 +252,31 @@
     // ── Vocabulaire ─────────────────────────────────────────────────────────
     const MOTS = {
       table:{mot:'table',picto:'table'}, tomate:{mot:'tomate',picto:'tomate'}, tortue:{mot:'tortue',picto:'tortue'},
+      tasse:{mot:'tasse',picto:'tasse'},
       maison:{mot:'maison',picto:'maison'}, moto:{mot:'moto',picto:'moto'}, mouton:{mot:'mouton',picto:'mouton'},
+      main:{mot:'main',picto:'main'},
       lune:{mot:'lune',picto:'lune'}, loup:{mot:'loup',picto:'loup'}, lit:{mot:'lit',picto:'lit'},
+      livre:{mot:'livre',picto:'livre'},
       roue:{mot:'roue',picto:'roue'}, robot:{mot:'robot',picto:'robot'}, rat:{mot:'rat',picto:'rat'},
+      robe:{mot:'robe',picto:'robe'},
       hibou:{mot:'hibou',picto:'hibou'}, chat:{mot:'chat',picto:'chat'}, sac:{mot:'sac',picto:'sac'},
+      bouche:{mot:'bouche',picto:'bouche'}, banane:{mot:'banane',picto:'banane'},
     };
 
     // ── Paliers (3 étoiles) : initial → initial proche → voyelle interne ─────
+    // ★3 : hideWord — le mot écrit est masqué pour forcer l'ÉCOUTE (sinon Max,
+    // lecteur alphabétique partiel, trie par la lettre initiale visuelle —
+    // piège réel : « roue » et « rat » commencent tous deux par r).
     const PALIERS = [
       { stars:1, need:2, pick:2, banner:"Écoute le PREMIER son du mot !",
         boxes:[ {id:'t', label:'t', son:'te'}, {id:'m', label:'m', son:'me'} ],
-        words:{ t:['table','tomate','tortue'], m:['maison','moto','mouton'] } },
+        words:{ t:['table','tomate','tortue','tasse'], m:['maison','moto','mouton','main'] } },
       { stars:2, need:2, pick:2, banner:"Premier son : « l » ou « r » ?",
         boxes:[ {id:'l', label:'l', son:'le'}, {id:'r', label:'r', son:'re'} ],
-        words:{ l:['lune','loup','lit'], r:['roue','robot','rat'] } },
-      { stars:3, need:2, pick:3, banner:"Le son qu'on ENTEND : « ou » ou « a » ?",
+        words:{ l:['lune','loup','lit','livre'], r:['roue','robot','rat','robe'] } },
+      { stars:3, need:2, pick:3, hideWord:true, banner:"Le son qu'on ENTEND : « ou » ou « a » ?",
         boxes:[ {id:'ou', label:'ou', son:'ou'}, {id:'a', label:'a', son:'a'} ],
-        words:{ ou:['loup','roue','hibou'], a:['chat','rat','sac'] } },
+        words:{ ou:['loup','roue','hibou','bouche'], a:['chat','rat','sac','banane'] } },
     ];
 
     let paletteIdx = 0, roundsDone = 0;
@@ -268,6 +309,10 @@
     const trayEl = document.getElementById('tray');
 
     function render() {
+      // ★3 : mot écrit masqué → seul le canal auditif permet de trier (anti-triche
+      // par lettre initiale visuelle). Le tap sur la carte lit toujours le mot.
+      const hideWord = !!PALIERS[paletteIdx].hideWord;
+
       boxesEl.innerHTML = '';
       boxes.forEach((b, bi) => {
         const div = document.createElement('div');
@@ -281,15 +326,24 @@
 
         const slots = document.createElement('div');
         slots.className = 'sbox-slots';
-        cards.filter(c => c.loc === bi).forEach(c => {
+        const mine = cards.filter(c => c.boxId === b.id);
+        mine.filter(c => c.loc === bi).forEach(c => {
           const chip = document.createElement('div');
           chip.className = 'chip';
           chip.dataset.cid = c.id;
-          chip.innerHTML = pictoSVG(c.picto, 30) + `<span class="card-mot">${c.mot}</span>`;
+          chip.innerHTML = pictoSVG(c.picto, 30) + (hideWord ? '' : `<span class="card-mot">${c.mot}</span>`);
           chip.addEventListener('click', (e) => { e.stopPropagation(); returnToTray(c.id); });
           slots.appendChild(chip);
         });
         div.appendChild(slots);
+
+        // Boîte complète (tous ses mots rangés) → étoile qui pop sur la boîte
+        if (mine.length > 0 && mine.every(c => c.loc === bi)) {
+          const st = document.createElement('div');
+          st.className = 'sbox-star';
+          st.textContent = '⭐';
+          div.appendChild(st);
+        }
 
         div.addEventListener('click', () => onBoxClick(bi));
         boxesEl.appendChild(div);
@@ -300,7 +354,7 @@
         const card = document.createElement('div');
         card.className = 'card' + (selected === c.id ? ' sel' : '');
         card.dataset.cid = c.id;
-        card.innerHTML = pictoSVG(c.picto, 62) + `<span class="card-mot">${c.mot}</span>`;
+        card.innerHTML = pictoSVG(c.picto, 62) + (hideWord ? '' : `<span class="card-mot">${c.mot}</span>`);
         card.addEventListener('click', () => onCardClick(c.id));
         trayEl.appendChild(card);
       });
@@ -316,21 +370,73 @@
       render();
     }
 
+    // ── Son des boîtes : MP3 ElevenLabs (voie par défaut), fallback TTS ─────
+    // Le TTS navigateur rend « te/me/le/re » de façon imprévisible selon la voix
+    // installée (« té », « teu »…) — les MP3 gravent le phonème exact.
+    const PHONEME_SRC = { t:'son-te', m:'son-me', l:'son-le', r:'son-re', ou:'son-ou', a:'son-a' };
+    const _audioCache = {};
+    function playSon(box) {
+      if (testMode) return;
+      const key = PHONEME_SRC[box.id];
+      if (key) {
+        try {
+          const a = _audioCache[key] || (_audioCache[key] = new Audio('sounds/phonemes/' + key + '.mp3'));
+          a.currentTime = 0;
+          a.play().catch(() => speak(box.son)); // 404 / autoplay bloqué → TTS
+          return;
+        } catch(e) {}
+      }
+      speak(box.son);
+    }
+
+    // ── Vol animé de la carte vers la boîte (causalité physique, 4 ans) ─────
+    function flyCard(cid, bi, done) {
+      const cardEl = trayEl.querySelector(`.card[data-cid="${cid}"]`);
+      const boxEl = boxesEl.querySelector(`.sbox[data-bid="${bi}"]`);
+      if (!cardEl || !boxEl || testMode) { done(); return; }
+      const a = cardEl.getBoundingClientRect(), b = boxEl.getBoundingClientRect();
+      const clone = cardEl.cloneNode(true);
+      clone.classList.remove('sel');
+      clone.classList.add('fly-clone');
+      clone.style.left = a.left + 'px';
+      clone.style.top = a.top + 'px';
+      clone.style.width = a.width + 'px';
+      document.body.appendChild(clone);
+      cardEl.style.visibility = 'hidden';
+      const dx = (b.left + b.width / 2) - (a.left + a.width / 2);
+      const dy = (b.top + b.height / 2) - (a.top + a.height / 2);
+      requestAnimationFrame(() => {
+        clone.style.transform = `translate(${dx}px,${dy}px) scale(0.35)`;
+        clone.style.opacity = '0.4';
+      });
+      setTimeout(() => { clone.remove(); done(); }, 300);
+    }
+
+    function popBox(bi) {
+      const el = boxesEl.querySelector(`.sbox[data-bid="${bi}"]`);
+      if (!el) return;
+      el.classList.add('pop');
+      setTimeout(() => el.classList.remove('pop'), 340);
+    }
+
     function onBoxClick(bi) {
       if (roundOver) return;
       const box = boxes[bi];
       // Tap boîte sans sélection = exploration : on dit juste le son.
-      if (selected === null) { speak(box.son); return; }
+      if (selected === null) { playSon(box); return; }
       const c = cards.find(x => x.id === selected);
-      if (!c || c.loc !== 'tray') { speak(box.son); return; }
+      if (!c || c.loc !== 'tray') { playSon(box); return; }
 
-      speak(box.son);
+      playSon(box);
       if (c.boxId === box.id) {
-        c.loc = bi;
         selected = null;
-        try { sndDing(); } catch(e) {}
-        render();
-        checkRoundComplete();
+        flyCard(c.id, bi, () => {
+          c.loc = bi;
+          try { sndDing(); } catch(e) {}
+          render();
+          popBox(bi);
+          checkRoundComplete();
+        });
       } else {
         try { sndBuzz(); } catch(e) {}
         wiggleBox(bi);
@@ -414,10 +520,12 @@
           cards: cards.map(c => ({ id:c.id, mot:c.mot, boxId:c.boxId, loc:c.loc })),
           trayCount: cards.filter(c => c.loc === 'tray').length,
           selected,
+          hideWord: !!PALIERS[paletteIdx].hideWord,
           overlayShown: document.getElementById('overlay').classList.contains('show'),
           bannerText: document.getElementById('banner').textContent,
         };
       },
+      phonemes: PHONEME_SRC,
       setTestMode(on){ testMode = !!on; },
       setDifficulty(stars){ paletteIdx = Math.max(0, Math.min(stars-1, PALIERS.length-1)); roundsDone = 0; genRound(); },
       newRound(){ genRound(); },

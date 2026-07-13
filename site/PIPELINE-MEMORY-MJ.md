@@ -314,6 +314,48 @@ Renforts : bloc « ⛔ AVANT DE MODIFIER » dans `.claude/rules/mini-jeux.md`, l
 
 ---
 
+## Décisions gravées 2026-07-13 (session 6h30 — challenge conseiller + nouveaux MJ)
+
+### 2026-07-13 — Trois nouveaux MJ figés (MJ-43, MJ-44, MJ-45) + renforts post-challenge
+
+**Trigger** : direction Papa Yann « fais tout et challenge ce qui vient d'être fait ». Game-conseiller challenge → corrections MJ-43/44 + spécifications MJ-45 gravées.
+
+**Figeages créés/complétés** :
+
+1. **MJ-43 « Remplis les caisses ! »** (maths regroupement/addition)
+   - 🔒 Dino-pips constellation de dé = pattern recognition subitizing (jamais scatter aléatoire)
+   - 🔒 Jauge visuelle non-numérique (pas « X / cible », juste progression pips)
+   - 🔒 Anti-deadlock verrou : tout coup qui rend round insoluble = refus doux (subset-sum check obligatoire)
+   - Leçon : constellation dé préserve subitizing, pas décodage pixel-per-pixel
+
+2. **MJ-44 « Boîte à sons »** (phonologie, correspondance graphie-phonème)
+   - 🔒 Sons boîtes = MP3 ElevenLabs gravés (fallback TTS si 404), jamais TTS-only
+   - 🔒 ★3 mot MASQUÉ (anticipe triche graphie-first ; Max lecteur Ehri partiel trierait par lettre initiale visuelle au lieu d'écouter)
+   - Leçon : TTS navigateur imprévisible sur phonèmes isolés (té/teu varie), MP3 ElevenLabs = garanti phonème pur
+   - Leçon : masquage graphie force canal auditif, pédago honnête pour enfants phase alphabétique partielle
+
+3. **MJ-45 « Le bus qui se remplit »** (maths montée/descente contextuelle) — NOUVEAU
+   - 🔒 Bus SVG obligatoire (`busSVG()`)
+   - 🔒 Groupes passagers constellation de dé (silhouettes, subitizing par pattern)
+   - 🔒 Tap-tap interaction (un groupe = monte/descend), re-tap undo
+   - 🔒 Refus doux double : débordement ET cul-de-sac arithmétique (subset-sum anti-deadlock)
+   - 🔒 Escalade autobus (★1 montée 3-6, ★2 montée 7-12, ★3 descente)
+   - 🔒 Règle prout 1/20 klaxon secret
+   - Statut : en attente implémentation + validation ressenti Papa Yann
+   - Spécifications stables (pas variante post-harness)
+
+**Harnais statut** : mj-43 + mj-44 vert (corrections procédurales intégrées). Mj-45 pas encore codé (attente direction Papa Yann).
+
+**Reviewer** : mj-43/44 PASS (9/10 chacun, corrections non-bloquantes). Mj-45 en attente code.
+
+**Leçons capturées** (à intégrer L-xxx BACKLOG.md) :
+- L-096 : Constellation de dé (pattern fixe) vs scatter aléatoire = différence majeure subitizing (inclut mj-43 + mj-45 patterns)
+- L-097 : MP3 ElevenLabs gravés phonèmes vs TTS navigateur imprévisible (mj-44)
+- L-098 : Masquage graphie force enfant lecteur partiel à écouter, pas copier graphie reconnaissable (mj-44 ★3)
+- L-099 : Subset-sum anti-deadlock check = obligatoire tout jeu arithmétique exact (caisses mj-43, passagers mj-45)
+
+---
+
 ## 4. Patterns user observés
 
 ### P-001 : Vision en 3 sous-domaines (2026-05-11)

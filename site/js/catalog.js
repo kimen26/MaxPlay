@@ -39,6 +39,7 @@ window.MAXPLAY_CATALOG = [
   { id:'mj-05',  category:'compter',  titre:'La bonne place',       emoji:'🪑', desc:'Combien peuvent encore monter ?',     url:'mj-05.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
   { id:'mj-35',  category:'nouveaux', homeCat:'compter',  titre:'Le jeu des graines',   emoji:'🌱', desc:'Sème les graines, compte-les au grenier !', url:'mj-35.html', type:'html', orientation:'any',   access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },
   { id:'mj-43',  category:'nouveaux', homeCat:'compter',  titre:'Remplis les caisses',  emoji:'📦', desc:'Range les dés et les dominos jusqu\'au bon compte !', url:'mj-43.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },
+  { id:'mj-45',  category:'nouveaux', homeCat:'compter',  titre:'Le bus qui se remplit', emoji:'🚌', desc:'Fais monter et descendre les passagers, pile au bon compte !', url:'mj-45.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },
 
   // ─── 🎨 Couleurs ───
   { id:'mj-09',  category:'couleurs', titre:'Trie les bus !',       emoji:'🗂️', desc:'Range-les dans leur famille de couleur !',url:'mj-09.html',type:'html', orientation:'landscape', access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },

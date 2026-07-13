@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MJ-45 — Le bus qui se remplit</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+  <style>
+    /* --- GABARIT HEADER CANONIQUE (ne pas inventer, copier tel quel) --- */
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+    body { background:#1a1a2e; font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
+    .hdr {
+      display:flex; align-items:center; gap:10px;
+      padding:6px 12px; flex-shrink:0;
+      background:rgba(0,0,0,0.25);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+    .hdr a {
+      color:#fff; text-decoration:none; font-size:1.3rem;
+      background:rgba(255,255,255,0.12); border-radius:8px;
+      padding:4px 10px; font-weight:900; flex-shrink:0;
+    }
+    .hdr a:active { background:rgba(255,255,255,0.25); }
+    .htitle { flex:1; font-size:1rem; font-weight:900; }
+    /* --- FIN GABARIT HEADER --- */
+
+    /* Ciel de fin de journée + rue */
+    body { background:linear-gradient(180deg,#7ec8e3 0%,#a8ddef 45%,#cfeef8 60%,#8f9aa5 60.5%,#6d7680 100%); }
+    .hdr { background:rgba(0,0,0,0.3); }
+
+    .stars { text-align:center; padding:3px 8px; font-size:1.1rem; flex-shrink:0; }
+    .star { opacity:0.32; transition:opacity 0.25s, transform 0.25s; display:inline-block; }
+    .star.on { opacity:1; transform:scale(1.18); }
+
+    .banner {
+      text-align:center; font-size:0.98rem; font-weight:900; padding:4px 12px;
+      color:#1a2a3a; text-shadow:0 1px 2px rgba(255,255,255,0.4); flex-shrink:0; min-height:1.4em;
+    }
+
+    .stage { flex:1; position:relative; display:flex; flex-direction:column; overflow:hidden; padding:4px 8px 10px; }
+
+    /* ── Zone bus ─────────────────────────────────────────────── */
+    .bus-zone { display:flex; align-items:center; justify-content:center; gap:12px; flex-shrink:0; padding:4px 0 0; }
+    .bus-wrap { transition:transform 0.9s ease-in; }
+    .bus-wrap.depart { transform:translateX(150%); }
+    .plaque {
+      background:#fff; color:#1a2a3a; border:4px solid #1a2a3a; border-radius:14px;
+      padding:8px 12px; text-align:center; min-width:96px;
+      box-shadow:0 4px 0 rgba(0,0,0,0.25);
+    }
+    .plaque .p-num { font-size:2.3rem; font-weight:900; line-height:1; }
+    .plaque .p-txt { font-size:0.72rem; font-weight:900; opacity:0.75; }
+    .plaque.pulse { animation:plaquePulse 0.32s ease; }
+    @keyframes plaquePulse { 50% { transform:scale(1.15); } }
+
+    /* ── Soute « dans le bus » ────────────────────────────────── */
+    .inbus-wrap { flex-shrink:0; padding:6px 0 2px; }
+    .zone-label { text-align:center; font-size:0.75rem; color:#12303f; opacity:0.85; margin-bottom:3px; font-weight:900; }
+    .inbus {
+      display:flex; flex-wrap:wrap; gap:8px; justify-content:center; align-items:center;
+      background:rgba(255,255,255,0.4); border:3px dashed rgba(26,42,58,0.35); border-radius:14px;
+      padding:8px; min-height:74px; margin:0 4px;
+    }
+    .inbus.glow { animation:inbusGlow 0.5s ease; }
+    @keyframes inbusGlow { 40% { background:rgba(140,255,170,0.65); } }
+
+    /* ── Arrêt / quai (réserve de groupes) ─────────────────────── */
+    .tray-wrap { width:100%; margin-top:auto; }
+    .tray {
+      display:flex; flex-wrap:wrap; gap:10px; justify-content:center; align-items:center;
+      background:rgba(0,0,0,0.22); border-top:4px solid rgba(255,255,255,0.25); border-radius:12px;
+      padding:10px 8px; min-height:104px; width:100%;
+    }
+
+    /* ── Groupes de passagers ──────────────────────────────────── */
+    .grp {
+      background:#fffdf5; border:3px solid #1a2a3a; border-radius:12px;
+      cursor:pointer; box-shadow:0 3px 0 rgba(0,0,0,0.3); transition:transform 0.1s, box-shadow 0.1s;
+      padding:0; width:84px; height:84px;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .grp:active { transform:translateY(2px); box-shadow:0 1px 0 rgba(0,0,0,0.3); }
+    .grp.small { width:56px; height:56px; }
+    .grp svg { display:block; }
+    .grp.wiggle-no { animation:wiggle 0.32s ease; }
+    @keyframes wiggle { 0%,100%{transform:translateX(0);} 25%{transform:translateX(-6px);} 75%{transform:translateX(6px);} }
+
+    .fly-clone { position:fixed; margin:0; z-index:80; pointer-events:none;
+                 transition:transform 0.28s cubic-bezier(.45,-0.15,.55,1.15), opacity 0.28s; }
+
+    /* ── Overlay ──────────────────────────────────────────────── */
+    #overlay { position:fixed; inset:0; background:rgba(0,0,0,0.55); display:none;
+               align-items:center; justify-content:center; z-index:50; flex-direction:column;
+               gap:14px; text-align:center; padding:20px; }
+    #overlay.show { display:flex; }
+    #overlay h2 { font-size:1.6rem; text-shadow:0 2px 6px rgba(0,0,0,0.5); }
+    #overlay p { font-size:1.05rem; color:#fff8e0; }
+    #replay-btn { font-family:'Fredoka One',sans-serif; font-size:1.1rem; font-weight:900;
+                  background:#1abc9c; color:#fff; border:none; border-radius:16px;
+                  padding:16px 30px; min-height:80px; min-width:200px; cursor:pointer;
+                  box-shadow:0 6px 0 #128f76; }
+    #replay-btn:active { transform:translateY(4px); box-shadow:0 2px 0 #128f76; }
+  </style>
+</head>
+<body>
+<div id="app">
+
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">🚌 Le bus qui se remplit</span>
+  </div>
+
+  <div class="stars" id="stars">
+    <span class="star" data-s="1">⭐</span>
+    <span class="star" data-s="2">⭐</span>
+    <span class="star" data-s="3">⭐</span>
+  </div>
+
+  <div class="banner" id="banner"></div>
+
+  <div class="stage">
+    <div class="bus-zone">
+      <div class="bus-wrap" id="bus-wrap"></div>
+      <div class="plaque" id="plaque">
+        <div class="p-num" id="plaque-num">–</div>
+        <div class="p-txt" id="plaque-txt"></div>
+      </div>
+    </div>
+
+    <div class="inbus-wrap">
+      <div class="zone-label" id="inbus-label">Dans le bus</div>
+      <div class="inbus" id="inbus"></div>
+    </div>
+
+    <div class="tray-wrap">
+      <div class="zone-label" id="tray-label">À l'arrêt</div>
+      <div class="tray" id="tray"></div>
+    </div>
+  </div>
+
+  <div id="overlay">
+    <h2 id="overlay-title">🎉 Bravo Max ! 🎉</h2>
+    <p id="overlay-text"></p>
+    <button id="replay-btn">Encore ! 🔄</button>
+  </div>
+
+</div>
+  <script src="js/bus-svg.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/tracker.js"></script>
+  <script src="js/sounds.js"></script>
+  <script src="js/victory-sounds.js"></script>
+  <script src="js/regle-info.js"></script>
+  <script>
+    RegleInfo.init({
+      texte: "Fais monter les passagers pile au bon nombre. Au dernier niveau, fais-les descendre !",
+      picto: "🧍🧍➡️🚌"
+    });
+  </script>
+  <script>
+  (function(){
+    'use strict';
+
+    // ── Passager en silhouette (tête + corps), constellation de dé ──────────
+    // Même principe que les dino-pips de MJ-43 : disposition canonique de dé
+    // → subitizing préservé, habillé en petit passager.
+    function passagerPip(cx, cy, s) {
+      const r = s * 0.19;
+      return `<g fill="#22384a">`
+        + `<circle cx="${cx}" cy="${(cy - s*0.26).toFixed(1)}" r="${r.toFixed(1)}"/>`
+        + `<path d="M ${(cx - s*0.24).toFixed(1)} ${(cy + s*0.38).toFixed(1)} `
+        +   `Q ${(cx - s*0.26).toFixed(1)} ${(cy - s*0.08).toFixed(1)} ${cx} ${(cy - s*0.1).toFixed(1)} `
+        +   `Q ${(cx + s*0.26).toFixed(1)} ${(cy - s*0.08).toFixed(1)} ${(cx + s*0.24).toFixed(1)} ${(cy + s*0.38).toFixed(1)} Z"/>`
+        + `</g>`;
+    }
+
+    const PIP_LAYOUT = {
+      1: [[50,50]],
+      2: [[30,30],[70,70]],
+      3: [[26,26],[50,50],[74,74]],
+      4: [[30,30],[70,30],[30,70],[70,70]],
+      5: [[26,26],[74,26],[50,50],[26,74],[74,74]],
+      6: [[26,21],[74,21],[26,50],[74,50],[26,79],[74,79]],
+    };
+
+    function groupSVG(val, px) {
+      const s = val >= 5 ? 24 : 30;
+      const pips = (PIP_LAYOUT[val] || []).map(([x,y]) => passagerPip(x, y, s)).join('');
+      return `<svg width="${px}" height="${px}" viewBox="0 0 100 100">${pips}</svg>`;
+    }
+
+    // ── Paliers ──────────────────────────────────────────────────────────────
+    // ★1-★2 : MONTÉE (addition par regroupement). ★3 : DESCENTE (soustraction).
+    const PALIERS = [
+      { stars:1, mode:'monte',   min:3, max:6,  kMin:2, kMax:2, distract:1, need:2,
+        banner:"Fais monter les passagers dans le bus !" },
+      { stars:2, mode:'monte',   min:7, max:12, kMin:2, kMax:3, distract:2, need:2,
+        banner:"Il en faut beaucoup ! Regroupe bien !" },
+      { stars:3, mode:'descend', busMin:8, busMax:12, offMin:3, offMax:6, need:2,
+        banner:"Terminus pour certains : fais-les descendre !" },
+    ];
+
+    let paletteIdx = 0, roundsDone = 0, finished = false;
+    // groups[]: {id, val, loc:'tray'|'bus', sol:bool}
+    // mode 'monte'  : tray = arrêt, tap arrêt → monte ; cible = total dans le bus.
+    // mode 'descend': bus pré-rempli, tap bus → descend sur le quai (tray) ; cible = total descendu.
+    let groups = [], mode = 'monte', target = 0, ligne = null, roundOver = false, testMode = false;
+    let nextGid = 0;
+
+    function randInt(a, b) { return a + Math.floor(Math.random() * (b - a + 1)); }
+    function shuffle(arr) {
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    // Décompose target en k parts 1..6 (mêmes garanties que MJ-43).
+    function compose(target, k) {
+      const maxPart = Math.min(6, target);
+      k = Math.max(1, Math.min(k, target));
+      while (k * maxPart < target) k++;
+      const parts = new Array(k).fill(1);
+      let rem = target - k, guard = 0;
+      while (rem > 0 && guard < 500) {
+        const i = Math.floor(Math.random() * k);
+        if (parts[i] < maxPart) { parts[i]++; rem--; }
+        guard++;
+      }
+      return parts;
+    }
+
+    // Subset-sum : un sous-ensemble de vals peut-il sommer exactement à rest ?
+    // (contrairement à MJ-43, tous les groupes ne montent pas — certains restent
+    // à l'arrêt et prendront « le prochain bus »)
+    function canReach(rest, vals) {
+      if (rest === 0) return true;
+      if (rest < 0) return false;
+      let reachable = 1n; // bitmask BigInt : bit i = somme i atteignable
+      for (const v of vals) reachable |= (reachable << BigInt(v));
+      return ((reachable >> BigInt(rest)) & 1n) === 1n;
+    }
+
+    function movedSum() { // somme "agie" : montés (monte) ou descendus (descend)
+      const loc = mode === 'monte' ? 'bus' : 'tray';
+      return groups.filter(g => g.loc === loc).reduce((s, g) => s + g.val, 0);
+    }
+    function actionablePool() { // groupes encore tapables
+      const loc = mode === 'monte' ? 'tray' : 'bus';
+      return groups.filter(g => g.loc === loc);
+    }
+
+    function genRound() {
+      const cfg = PALIERS[paletteIdx];
+      mode = cfg.mode;
+      groups = [];
+      roundOver = false;
+      ligne = LIGNES[Math.floor(Math.random() * LIGNES.length)];
+
+      if (mode === 'monte') {
+        target = randInt(cfg.min, cfg.max);
+        const sol = compose(target, randInt(cfg.kMin, cfg.kMax));
+        sol.forEach(v => groups.push({ id:nextGid++, val:v, loc:'tray', sol:true }));
+        // Distracteurs : groupes en trop qui resteront à l'arrêt (prendront le prochain)
+        for (let i = 0; i < cfg.distract; i++) {
+          groups.push({ id:nextGid++, val:randInt(1, 6), loc:'tray', sol:false });
+        }
+        shuffle(groups);
+        setPlaque(target, 'passagers');
+        document.getElementById('inbus-label').textContent = 'Dans le bus';
+        document.getElementById('tray-label').textContent = "À l'arrêt";
+      } else {
+        // Descente : le bus arrive pré-rempli, une partie descend ici.
+        target = randInt(cfg.offMin, cfg.offMax);
+        const total = Math.max(randInt(cfg.busMin, cfg.busMax), target + 2);
+        const off = compose(target, randInt(2, 3));                   // ceux qui descendent
+        const stay = compose(total - target, randInt(1, 2));          // ceux qui restent
+        off.forEach(v => groups.push({ id:nextGid++, val:v, loc:'bus', sol:true }));
+        stay.forEach(v => groups.push({ id:nextGid++, val:v, loc:'bus', sol:false }));
+        shuffle(groups);
+        setPlaque(target, 'descendent ici');
+        document.getElementById('inbus-label').textContent = 'Dans le bus — tape ceux qui descendent';
+        document.getElementById('tray-label').textContent = 'Sur le quai';
+      }
+      document.getElementById('banner').textContent = cfg.banner;
+      render();
+    }
+
+    function setPlaque(n, txt) {
+      document.getElementById('plaque-num').textContent = n;
+      document.getElementById('plaque-txt').textContent = txt;
+    }
+
+    // ── Rendu ────────────────────────────────────────────────────────────────
+    const busWrap = document.getElementById('bus-wrap');
+    const inbusEl = document.getElementById('inbus');
+    const trayEl = document.getElementById('tray');
+
+    function render() {
+      busWrap.innerHTML = busSVG(ligne.color, ligne.textColor, ligne.num, 230);
+
+      inbusEl.innerHTML = '';
+      groups.filter(g => g.loc === 'bus').forEach(g => {
+        const el = document.createElement('button');
+        el.type = 'button';
+        el.className = 'grp' + (mode === 'monte' ? ' small' : '');
+        el.dataset.gid = g.id;
+        el.innerHTML = groupSVG(g.val, mode === 'monte' ? 48 : 76);
+        el.addEventListener('click', () => onGroupClick(g.id));
+        inbusEl.appendChild(el);
+      });
+
+      trayEl.innerHTML = '';
+      groups.filter(g => g.loc === 'tray').forEach(g => {
+        const el = document.createElement('button');
+        el.type = 'button';
+        el.className = 'grp' + (mode === 'descend' ? ' small' : '');
+        el.dataset.gid = g.id;
+        el.innerHTML = groupSVG(g.val, mode === 'descend' ? 48 : 76);
+        el.addEventListener('click', () => onGroupClick(g.id));
+        trayEl.appendChild(el);
+      });
+    }
+
+    // ── Interaction : UN tap = le groupe bouge (encore plus simple que MJ-43) ─
+    function onGroupClick(gid) {
+      if (roundOver) return;
+      const g = groups.find(x => x.id === gid);
+      if (!g) return;
+
+      const actLoc = mode === 'monte' ? 'tray' : 'bus';
+      if (g.loc === actLoc) {
+        // Geste principal : monter (monte) ou descendre (descend)
+        const rest = target - movedSum() - g.val;
+        const others = actionablePool().filter(x => x.id !== gid).map(x => x.val);
+        if (rest < 0 || !canReach(rest, others)) {
+          // Trop gros OU rendrait la cible inatteignable : refus doux.
+          try { sndBuzz(); } catch(e) {}
+          wiggleGroup(gid);
+          return;
+        }
+        flyGroup(gid, mode === 'monte' ? inbusEl : trayEl, () => {
+          g.loc = mode === 'monte' ? 'bus' : 'tray';
+          try { sndPorte(); } catch(e) {}
+          const sum = movedSum();
+          render();
+          pulsePlaque();
+          if (sum === target) { onRoundWin(); }
+          else { speak(String(sum)); }
+        });
+      } else {
+        // Geste inverse = undo libre (redescendre / remonter)
+        g.loc = actLoc;
+        try { sndCount(); } catch(e) {}
+        render();
+      }
+    }
+
+    function wiggleGroup(gid) {
+      const el = document.querySelector(`.grp[data-gid="${gid}"]`);
+      if (!el) return;
+      el.classList.add('wiggle-no');
+      setTimeout(() => el.classList.remove('wiggle-no'), 340);
+    }
+
+    function pulsePlaque() {
+      const p = document.getElementById('plaque');
+      p.classList.add('pulse');
+      setTimeout(() => p.classList.remove('pulse'), 340);
+    }
+
+    function flyGroup(gid, destEl, done) {
+      const el = document.querySelector(`.grp[data-gid="${gid}"]`);
+      if (!el || !destEl || testMode) { done(); return; }
+      const a = el.getBoundingClientRect(), b = destEl.getBoundingClientRect();
+      const clone = el.cloneNode(true);
+      clone.classList.add('fly-clone');
+      clone.style.left = a.left + 'px';
+      clone.style.top = a.top + 'px';
+      clone.style.width = a.width + 'px';
+      clone.style.height = a.height + 'px';
+      document.body.appendChild(clone);
+      el.style.visibility = 'hidden';
+      const dx = (b.left + b.width / 2) - (a.left + a.width / 2);
+      const dy = (b.top + b.height / 2) - (a.top + a.height / 2);
+      requestAnimationFrame(() => {
+        clone.style.transform = `translate(${dx}px,${dy}px) scale(0.6)`;
+        clone.style.opacity = '0.5';
+      });
+      setTimeout(() => { clone.remove(); done(); }, 300);
+    }
+
+    function speak(txt) {
+      if (testMode) return;
+      try {
+        if (!('speechSynthesis' in window)) return;
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(txt);
+        u.lang = 'fr-FR'; u.rate = 0.95;
+        window.speechSynthesis.speak(u);
+      } catch(e) {}
+    }
+
+    // ── Victoire de round ─────────────────────────────────────────────────────
+    function onRoundWin() {
+      roundOver = true;
+      speak(String(target));
+      // Règle du prout : 1 bus sur 20 klaxonne prout (secret découvrable)
+      try { (Math.random() < 0.05 ? sndProut : sndKlaxon)(); } catch(e) {}
+      document.getElementById('inbus').classList.add('glow');
+      setTimeout(() => document.getElementById('inbus').classList.remove('glow'), 520);
+
+      // Le bus démarre (il a ses passagers / a déposé les siens)
+      if (!testMode) busWrap.classList.add('depart');
+
+      roundsDone++;
+      if (roundsDone >= PALIERS[paletteIdx].need) {
+        try { Tracker.endSession(1, 1); } catch(e) {}
+        refreshStars(paletteIdx + 1);
+        if (paletteIdx >= PALIERS.length - 1) {
+          finished = true;
+          if (testMode) showOverlay(); else setTimeout(showOverlay, 950);
+          return;
+        }
+        paletteIdx++;
+        roundsDone = 0;
+        try { Tracker.startSession('mj-45'); } catch(e) {}
+      }
+      setTimeout(() => {
+        if (!testMode && !finished) { busWrap.classList.remove('depart'); genRound(); }
+      }, 1100);
+    }
+
+    function showOverlay() {
+      document.getElementById('overlay-title').textContent = '🎉 3 étoiles, bravo Max ! 🎉';
+      document.getElementById('overlay-text').textContent = 'Tous les bus sont partis avec le bon compte de passagers !';
+      document.getElementById('overlay').classList.add('show');
+      try { sndVictory(); } catch(e) {}
+    }
+
+    document.getElementById('replay-btn').addEventListener('click', () => {
+      document.getElementById('overlay').classList.remove('show');
+      busWrap.classList.remove('depart');
+      startAll();
+    });
+
+    function refreshStars(n) {
+      document.querySelectorAll('.star').forEach(s => s.classList.toggle('on', parseInt(s.dataset.s,10) <= n));
+    }
+
+    function startAll() {
+      paletteIdx = 0; roundsDone = 0; finished = false;
+      refreshStars(0);
+      try { Tracker.startSession('mj-45'); } catch(e) {}
+      genRound();
+    }
+
+    startAll();
+
+    // ── Harnais de test (Playwright) ────────────────────────────────────────
+    window.__mjTest = {
+      get state() {
+        return {
+          paletteIdx, roundsDone, roundOver, finished, mode, target,
+          ligne: ligne ? ligne.num : null,
+          movedSum: movedSum(),
+          busCount: groups.filter(g => g.loc === 'bus').length,
+          trayCount: groups.filter(g => g.loc === 'tray').length,
+          overlayShown: document.getElementById('overlay').classList.contains('show'),
+          bannerText: document.getElementById('banner').textContent,
+        };
+      },
+      setTestMode(on){ testMode = !!on; },
+      setDifficulty(stars){ paletteIdx = Math.max(0, Math.min(stars-1, PALIERS.length-1)); roundsDone = 0; genRound(); },
+      newRound(){ genRound(); },
+      groups(){ return groups.map(g => ({ id:g.id, val:g.val, loc:g.loc, sol:g.sol })); },
+      tap(gid){ onGroupClick(gid); },
+      // Round sur mesure : mode + cible + valeurs (tous actionnables, sol non fiable)
+      setRound(m, t, values) {
+        mode = m; target = t; roundOver = false;
+        ligne = LIGNES[0];
+        groups = values.map(v => ({ id:nextGid++, val:v, loc: m === 'monte' ? 'tray' : 'bus', sol:false }));
+        setPlaque(t, m === 'monte' ? 'passagers' : 'descendent ici');
+        render();
+      },
+      // Joue la solution générée (groupes sol=true)
+      solveRound() {
+        for (const g of groups.slice()) {
+          if (g.sol && g.loc === (mode === 'monte' ? 'tray' : 'bus')) onGroupClick(g.id);
+        }
+      },
+      replay(){ document.getElementById('replay-btn').click(); },
+    };
+  })();
+  </script>
+</body>
+</html>

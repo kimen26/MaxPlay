@@ -30,6 +30,14 @@ Mapping figé. Positions #11-#20 diffèrent fondamentalement entre sw_1 et sw_2-
 - **`vocab.py`** depuis 2026-05-12 — fichier de référence unique pour toutes les constantes tiles
 - **`cartography.json`** DEPRECATED — ne plus consulter, ne plus modifier
 
+## Boîte de réception Papa Yann (depuis 2026-07-13)
+
+**En DÉBUT de toute session tile** : lire la table Supabase `tile_refs` (MCP) —
+`select * from tile_refs where status = 'nouveau'`. Papa Yann y envoie ses compos
+depuis le bouton « ☁️ Envoyer à Claude » du tile-picker (kind `reference` = brique
+canonique loi · `carte` = souhait à réaliser). Après intégration en recette .py :
+`update tile_refs set status = 'integre'`. Le copier-coller de snippets est aboli.
+
 ## Workflow OBLIGATOIRE (3 étapes)
 
 ```

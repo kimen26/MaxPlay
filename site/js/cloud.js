@@ -34,6 +34,7 @@
   // Valeurs stockées telles quelles côté serveur : { v: "<string brute>" }.
   const STATE_KEYS = [
     'maxplay_unlocks', 'maxplay_avatar', 'maxplay_avatar_cfg', 'maxplay_lang',
+    'maxplay_ambiance',  // fond d'écran choisi — suit l'avatar entre appareils (fix audit 2026-07-14)
     'mj20_progress', 'mj20_streak', 'mj37_progress', 'mj32_galerie', 'mj-pose-tiles',
   ];
   // Méta de sync locale : { states: { clé: hash dernière valeur synchro },
@@ -98,6 +99,9 @@
       _session = data.session || null;
       c.auth.onAuthStateChange((_evt, session) => { _session = session; _emit(); });
       if (hasActiveChild()) await syncNow();
+      // Fix audit : parent connecté sans profil actif → pousser quand même le
+      // backlog d'annotations (sinon il dort en localStorage jusqu'à une action).
+      else if (_session) { try { await _flushAnnotations(c); } catch (e) {} }
       _emit();
     } catch (e) { /* offline : mode dégradé silencieux */ }
   }
@@ -127,6 +131,9 @@
     if (error) throw error;
     _session = data.session;
     _emit();
+    // Fix audit : pousser tout de suite le backlog d'annotations accumulé en
+    // Mode 1 (💬 + notes de revue), sans attendre la sélection d'un profil.
+    try { await _flushAnnotations(await _getClient()); } catch (e) {}
     return true;
   }
 
@@ -180,20 +187,40 @@
       const l = local.games[id], r = remote.games[id];
       if (!l) { out.games[id] = r; return; }
       if (!r) { out.games[id] = l; return; }
-      // Le record avec le plus de parties gagne (compteur monotone) ;
-      // à égalité, le plus récent.
-      const win = (r.plays > l.plays) ? r
-                : (l.plays > r.plays) ? l
-                : ((r.lastPlayed || '') > (l.lastPlayed || '') ? r : l);
-      // Histoires UNIONNÉES (jamais de perte d'étoile : stars.js dérive des
-      // sessions parfaites de l'history — deux appareils en parallèle ne
-      // doivent pas s'écraser). Dédup par date, tri chrono, cap 20.
+      // Histoires UNIONNÉES par date (jamais de perte d'étoile : stars.js dérive
+      // des sessions parfaites de l'history). Dédup par date, tri chrono, cap 20.
       const seen = new Set();
-      const history = [...(l.history || []), ...(r.history || [])]
+      const fullHistory = [...(l.history || []), ...(r.history || [])]
         .filter(h => { const k = h.date; if (!k || seen.has(k)) return false; seen.add(k); return true; })
-        .sort((a, b) => (a.date || '').localeCompare(b.date || ''))
-        .slice(-20);
-      out.games[id] = { ...win, history };
+        .sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+      const history = fullHistory.slice(-20);
+
+      // Agrégats RECALCULÉS depuis l'history unionné dédupliqué (fix audit :
+      // l'ancien max-pick jetait les compteurs du record perdant → sous-comptage
+      // en jeu parallèle multi-appareils). La dédup par date empêche le double
+      // comptage. L'history unionné EST la source de vérité — pas de plancher
+      // max() sur les anciens compteurs (il ré-écraserait la somme correcte).
+      // Cap 20 de l'history : au-delà, game_sessions (append-only) porte la
+      // vérité analytique côté serveur.
+      const sum = fullHistory.reduce((a, h) => ({
+        totalQuestions: a.totalQuestions + (h.questions || 0),
+        correctAnswers: a.correctAnswers + (h.correct || 0),
+        totalScore: a.totalScore + (h.score || 0),
+        maxScore: a.maxScore + (h.maxScore || 0),
+      }), { totalQuestions: 0, correctAnswers: 0, totalScore: 0, maxScore: 0 });
+      const plays = fullHistory.length;
+      const totalQuestions = sum.totalQuestions;
+      const correctAnswers = sum.correctAnswers;
+      const totalScore = sum.totalScore;
+      const maxScore = sum.maxScore;
+      const lastPlayed = (r.lastPlayed || '') > (l.lastPlayed || '') ? r.lastPlayed : l.lastPlayed;
+      const rate = totalQuestions > 0 ? correctAnswers / totalQuestions : 0;
+      const mastery = (plays >= 3 && rate >= 0.85) ? 'maîtrisé'
+                    : (plays >= 1 || rate >= 0.5) ? 'en-cours' : 'nouveau';
+      out.games[id] = {
+        ...l, ...r, plays, totalQuestions, correctAnswers, totalScore, maxScore,
+        lastPlayed, mastery, history,
+      };
     });
     // Sessions : union dédupliquée par (jeu, date), bornée à 200
     const seen = new Set();
@@ -219,8 +246,71 @@
     try { localStorage.setItem(SYNC_META_KEY, JSON.stringify(m)); } catch (e) {}
   }
 
-  // Baseline sync : local modifié depuis la dernière synchro → local gagne ;
-  // local inchangé mais cloud différent → on adopte le cloud (autre appareil).
+  // ── Merge sémantique par clé structurée (progression cumulative) ─────────
+  // Les clés child_state sont des ENSEMBLES/paliers qui croissent des deux
+  // côtés → un remplacement total perd le contenu d'un seul côté. On fusionne
+  // par type de clé pour ne jamais faire régresser un acquis (audit 2026-07-14).
+  // Renvoie une STRING (le format stocké) ou null si rien à fusionner.
+  function _mergeState(key, localStr, remoteStr) {
+    if (localStr === null) return remoteStr;
+    if (remoteStr === null) return localStr;
+    if (localStr === remoteStr) return localStr;
+    let l, r;
+    try { l = JSON.parse(localStr); } catch (e) { return localStr; }
+    try { r = JSON.parse(remoteStr); } catch (e) { return localStr; }
+
+    // mj20_progress : { version, langs:{ code:{unlockedTier, consecutiveCorrect} } }
+    if (key === 'mj20_progress' && l && r && l.langs && r.langs) {
+      const out = { ...r, ...l, langs: {} };
+      const codes = new Set([...Object.keys(l.langs), ...Object.keys(r.langs)]);
+      codes.forEach(code => {
+        const a = l.langs[code] || {}, b = r.langs[code] || {};
+        out.langs[code] = {
+          ...b, ...a,
+          unlockedTier: Math.max(a.unlockedTier || 0, b.unlockedTier || 0),
+          consecutiveCorrect: Math.max(a.consecutiveCorrect || 0, b.consecutiveCorrect || 0),
+        };
+      });
+      return JSON.stringify(out);
+    }
+
+    // maxplay_unlocks : { bundleId: true } → union des clés vraies
+    if (key === 'maxplay_unlocks' && l && r && !Array.isArray(l) && !Array.isArray(r)) {
+      return JSON.stringify({ ...r, ...l });
+    }
+
+    // mj20_streak / mj37_progress : { key: true|number } → union / max
+    if ((key === 'mj37_progress' || key === 'mj20_streak') && l && r
+        && !Array.isArray(l) && !Array.isArray(r)) {
+      const out = { ...r };
+      Object.keys(l).forEach(k => {
+        const a = l[k], b = r[k];
+        out[k] = (typeof a === 'number' && typeof b === 'number') ? Math.max(a, b) : (a || b);
+      });
+      return JSON.stringify(out);
+    }
+
+    // mj32_galerie : [pièce…] → union dédupliquée par id|date, cap 12
+    if (key === 'mj32_galerie' && Array.isArray(l) && Array.isArray(r)) {
+      const seen = new Set(), out = [];
+      [...l, ...r].forEach(p => {
+        const k = (p && (p.id || p.date || JSON.stringify(p))) + '';
+        if (seen.has(k)) return; seen.add(k); out.push(p);
+      });
+      return JSON.stringify(out.slice(-12));
+    }
+
+    // Clés scalaires (maxplay_avatar, _cfg, _lang, ambiance, mj-pose-tiles) :
+    // pas de structure cumulative → last-writer-wins géré par le baseline appelant.
+    return null;
+  }
+
+  // Baseline sync par clé, avec merge sémantique anti-régression :
+  //  - local modifié depuis la dernière synchro ET cloud aussi → MERGE des deux,
+  //    puis push du merge (jamais d'écrasement d'un acquis).
+  //  - baseline absent (1er login/appareil neuf) + cloud plus riche → on adopte
+  //    le cloud d'abord (fix audit : ne plus écraser le cloud avec le défaut local).
+  //  - local seul changé → push local ; cloud seul changé → adopte cloud.
   async function _syncStates(c, childId) {
     const { data: rows, error } = await c.from('child_state')
       .select('key, data').eq('child_id', childId);
@@ -236,14 +326,48 @@
       const local = localStorage.getItem(k);
       const rem   = (k in remote) ? remote[k] : null;
       const lH = _hash(local), rH = _hash(rem), base = states[k];
+      const localChanged = (local !== null && lH !== base);
+      const remoteChanged = (rem !== null && rH !== lH);
 
-      if (local !== null && lH !== base && lH !== rH) {
+      if (lH === rH && lH !== null) {
+        states[k] = lH;                                   // déjà identiques
+        return;
+      }
+      if (localChanged && remoteChanged) {
+        // Les DEUX ont bougé → fusion sémantique (structuré) ou local gagne (scalaire).
+        const merged = _mergeState(k, local, rem);
+        if (merged !== null && merged !== rem) {
+          try { localStorage.setItem(k, merged); } catch (e) {}
+          toPush.push({ child_id: childId, key: k, data: { v: merged } });
+          states[k] = _hash(merged);
+        } else if (merged === rem) {
+          try { localStorage.setItem(k, rem); } catch (e) {}
+          states[k] = rH;
+        } else {
+          // scalaire : last-writer-wins = local (l'utilisateur vient de choisir)
+          toPush.push({ child_id: childId, key: k, data: { v: local } });
+          states[k] = lH;
+        }
+        return;
+      }
+      if (base === undefined && remoteChanged) {
+        // Appareil neuf : le cloud fait référence. Mais si la clé est structurée
+        // et que le local diffère (jeu anonyme), fusionner plutôt qu'adopter sec.
+        const merged = _mergeState(k, local, rem);
+        if (merged !== null && merged !== rem && merged !== local) {
+          try { localStorage.setItem(k, merged); } catch (e) {}
+          toPush.push({ child_id: childId, key: k, data: { v: merged } });
+          states[k] = _hash(merged);
+        } else {
+          try { localStorage.setItem(k, rem); states[k] = rH; } catch (e) {}
+        }
+        return;
+      }
+      if (localChanged) {                                 // local seul a bougé
         toPush.push({ child_id: childId, key: k, data: { v: local } });
         states[k] = lH;
-      } else if (rem !== null && rH !== lH) {
+      } else if (remoteChanged) {                         // cloud seul a bougé
         try { localStorage.setItem(k, rem); states[k] = rH; } catch (e) {}
-      } else if (lH === rH && lH !== null) {
-        states[k] = lH;
       }
     });
 
@@ -291,36 +415,48 @@
   async function _flushAnnotations(c) {
     if (!_session) return;
     const childId = activeChild() ? activeChild().id : null;
-    const rows = [];
+    const comments = [];   // immuables (dédup par date) → ignoreDuplicates
+    const reviews = [];    // éditables (clé stable par jeu) → mise à jour
 
     try {
+      // client_key inclut child_id : deux profils du même parent peuvent avoir
+      // le même commentaire sur le même jeu sans que l'un écrase l'autre.
       (JSON.parse(localStorage.getItem('maxplay_comments')) || []).forEach(cm => {
         if (!cm.text) return;
-        rows.push({
+        comments.push({
           parent_id: _session.user.id, child_id: childId, game_id: cm.gameId || null,
           source: 'comment', text: String(cm.text).slice(0, 4000),
-          client_key: 'c|' + (cm.gameId || '?') + '|' + (cm.date || '?'),
+          client_key: 'c|' + (childId || '?') + '|' + (cm.gameId || '?') + '|' + (cm.date || '?'),
         });
       });
     } catch (e) {}
 
     try {
-      const reviews = JSON.parse(localStorage.getItem('maxplay_review_comments')) || {};
-      Object.keys(reviews).forEach(gid => {
-        const txt = String(reviews[gid] || '').trim();
+      // client_key de revue stable par (child, jeu) SANS hash du texte : une
+      // édition MET À JOUR la ligne au lieu d'accumuler des versions périmées.
+      const rv = JSON.parse(localStorage.getItem('maxplay_review_comments')) || {};
+      Object.keys(rv).forEach(gid => {
+        const txt = String(rv[gid] || '').trim();
         if (!txt) return;
-        rows.push({
+        reviews.push({
           parent_id: _session.user.id, child_id: childId, game_id: gid,
           source: 'review', text: txt.slice(0, 4000),
-          client_key: 'r|' + gid + '|' + _hash(txt),
+          client_key: 'r|' + (childId || '?') + '|' + gid,
         });
       });
     } catch (e) {}
 
-    if (!rows.length) return;
-    const { error } = await c.from('annotations')
-      .upsert(rows, { onConflict: 'parent_id,client_key', ignoreDuplicates: true });
-    if (error) throw error;
+    if (comments.length) {
+      const { error } = await c.from('annotations')
+        .upsert(comments, { onConflict: 'parent_id,client_key', ignoreDuplicates: true });
+      if (error) throw error;
+    }
+    if (reviews.length) {
+      // ignoreDuplicates:false → le texte édité écrase l'ancien (même client_key).
+      const { error } = await c.from('annotations')
+        .upsert(reviews, { onConflict: 'parent_id,client_key', ignoreDuplicates: false });
+      if (error) throw error;
+    }
   }
 
   // ── Envoi direct d'un payload outil (duel, lecture…) ────────────────────
@@ -337,11 +473,42 @@
       child_id: child ? child.id : null,
       game_id: gameId || source,
       source,
-      text: body.slice(0, 100000),
-      client_key: source + '|' + _hash(body),
+      text: body.slice(0, 4000),   // contrainte DB annotations.text ≤ 4000 (sinon échec silencieux)
+      client_key: source + '|' + (child ? child.id : '?') + '|' + _hash(body),
     }], { onConflict: 'parent_id,client_key', ignoreDuplicates: true });
     if (error) throw error;
     return true;
+  }
+
+  // ── Reset complet d'un profil enfant (fix audit : le reset doit VIDER le
+  // cloud, sinon la sync suivante ré-hydrate tout depuis la base) ───────────
+  // À appeler AVANT le removeItem local côté suivi.html. En Mode 1 (pas de
+  // profil actif), no-op : le reset local seul est correct.
+  async function resetChild() {
+    if (!hasActiveChild()) return false;
+    const c = await _getClient();
+    const childId = activeChild().id;
+    // RLS « for all » autorise le parent à supprimer ses lignes.
+    const d1 = await c.from('child_state').delete().eq('child_id', childId);
+    if (d1.error) throw d1.error;
+    const d2 = await c.from('progression').delete().eq('child_id', childId);
+    if (d2.error) throw d2.error;
+    // game_sessions : droit à l'effacement RGPD/COPPA (migration 011 ajoute la
+    // policy DELETE) — un reset parent doit aussi purger l'historique de parties.
+    const d3 = await c.from('game_sessions').delete().eq('child_id', childId);
+    if (d3.error) throw d3.error;
+    // Reset du baseline de sync pour repartir propre.
+    _saveSyncMeta({});
+    return true;
+  }
+
+  // Flush best-effort avant destruction de la page (fix audit : le push
+  // débouncé 5s meurt si l'onglet ferme avant). Envoi keepalive qui survit
+  // à l'unload — n'attend pas de réponse.
+  function flushNow() {
+    if (!hasActiveChild() && !_session) return;
+    clearTimeout(_pushTimer);
+    try { syncNow().catch(() => {}); } catch (e) {}
   }
 
   // ── Sync ────────────────────────────────────────────────────────────────
@@ -393,12 +560,20 @@
 
   function onChange(fn) { _listeners.push(fn); }
 
+  // Flush au départ de la page (retour menu, fermeture PWA, bascule onglet).
+  if (typeof window !== 'undefined' && window.addEventListener) {
+    window.addEventListener('pagehide', flushNow);
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') flushNow();
+    });
+  }
+
   global.Cloud = {
     init, isConnected, hasActiveChild, status,
     signIn, verifyCode, signOut,
     listChildren, createChild, setActiveChild, activeChild,
-    syncNow, schedulePush, pushAnnotation, onChange,
-    _merge, // exposé pour les tests uniquement
+    syncNow, schedulePush, pushAnnotation, onChange, resetChild, flushNow,
+    _merge, _mergeState, // exposés pour les tests uniquement
   };
 
   init();

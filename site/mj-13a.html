@@ -404,7 +404,7 @@ function onFicheTap(num){
     playErrorSound();
     if(typeof Tracker!=='undefined')Tracker.logAnswer(false);
     qb.style.background='#4a1a1a';
-    qt.innerHTML=`<span style="color:#e53935;font-size:1.1rem;">C'était le</span>
+    qt.innerHTML=`<span style="color:#e53935;font-size:1.1rem;">C’était le</span>
       <span style="background:${tl.color};color:${tl.textColor};border-radius:8px;padding:3px 14px;font-size:1.4rem;font-weight:900;margin-left:6px;">${tl.num}</span>`;
     setTimeout(()=>{
       qb.style.background='';

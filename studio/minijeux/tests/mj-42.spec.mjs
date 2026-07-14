@@ -26,7 +26,7 @@ export async function run({ page, ok }) {
   await page.click('#btn-regle');
   ok('Panneau règle ouvert au tap', await page.locator('#ri-panneau.on').count() === 1);
   const regleTexteEarly = (await page.locator('.ri-text').textContent() || '').trim();
-  ok('Texte de règle correspond', regleTexteEarly === "Aligne tes 3 pions en passant par le point d'eau !", regleTexteEarly);
+  ok('Texte de règle correspond', regleTexteEarly === 'Aligne tes 3 pions en passant par le point d’eau !', regleTexteEarly);
   await page.click('#ri-ok');
   ok('Panneau règle fermé au tap', await page.locator('#ri-panneau.on').count() === 0);
 

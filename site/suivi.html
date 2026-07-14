@@ -198,8 +198,15 @@ html,body { font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; min
     function setAll(on) { localStorage.setItem(ADMIN_KEY, JSON.stringify({ ...st(), unlockAll: !!on })); paint(); }
     document.getElementById('btn-unlock-all').onclick = () => setAll(true);
     document.getElementById('btn-progression').onclick = () => setAll(false);
-    document.getElementById('btn-reset-all').onclick = () => {
+    document.getElementById('btn-reset-all').onclick = async () => {
       if (!confirm('Tout réinitialiser ?\n\nEfface : progression, étoiles, déblocages, langues et série mj-20, mj-37.\nConservé : les dessins de Max (galerie coloriage) et les commentaires.')) return;
+      // Mode 2 (connecté) : vider AUSSI le cloud, sinon la sync ré-hydrate tout.
+      // resetChild() no-op en Mode 1 → le reset local seul suffit (fix audit).
+      try {
+        if (window.Cloud && Cloud.hasActiveChild && Cloud.hasActiveChild()) {
+          await Cloud.resetChild();
+        }
+      } catch (e) { alert('Effacement cloud échoué (réseau ?). Réessaie connecté.'); return; }
       // maxplay_stars retirée (clé morte — étoiles dérivées par stars.js depuis toujours)
       ['maxplay_progress', 'maxplay_unlocks', 'mj20_progress', 'mj20_streak',
        'mj37_progress', 'maxplay_sync_meta'].forEach(k => localStorage.removeItem(k));
@@ -260,6 +267,7 @@ html,body { font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; min
 </div>
 
 <script src="js/tracker.js"></script>
+<script src="js/cloud.js"></script>
 <script>
 // ─── suivi.html ───────────────────────────────────────────────────────────
 
@@ -442,8 +450,16 @@ function doImport(input) {
     .catch(() => alert('Fichier invalide.'));
 }
 
-function doReset() {
+async function doReset() {
   if (!confirm('Supprimer toutes les données de progression de Max ?')) return;
+  // Mode 2 (connecté) : vider AUSSI le cloud, sinon la sync suivante
+  // ré-hydrate la progression depuis la base (fix sécurité/COPPA — même
+  // garde que btn-reset-all, ce bouton l'avait oubliée).
+  try {
+    if (window.Cloud && Cloud.hasActiveChild && Cloud.hasActiveChild()) {
+      await Cloud.resetChild();
+    }
+  } catch (e) { alert('Effacement cloud échoué (réseau ?). Réessaie connecté.'); return; }
   localStorage.removeItem('maxplay_progress');
   location.reload();
 }

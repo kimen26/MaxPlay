@@ -18,9 +18,10 @@ anonyme = voix robot Web Speech ("la dame"). Fallback automatique si MP3 absent.
 
 | Fichier | Rôle |
 |---|---|
-| `migrations/001_init.sql` | Schéma : `child_profiles` (max 6/parent), `progression`, `consents` (log RGPD/COPPA immuable), `feedback` (asynchrone) — RLS partout |
-| `migrations/003..005` (✅ appliquées 2026-07-12 via MCP) | `game_sessions` (1 ligne/partie, append-only, suivi/debug requêtable) · `child_state` (sync clé-valeur : unlocks, avatar, langue, états mj-20/32/37, pose-tiles) · `annotations` (💬 comments + notes revue + payloads duel/lecture — fin du copier-coller JSON) |
-| `site/js/cloud.js` | Client : auth, profils, sync local-first (merge par jeu : `plays` monotone gagne ; sessions dédupliquées, cap 200) |
+| `migrations/001_init.sql` | Schéma : `child_profiles` (max 6/parent), `progression`, `consents` (log RGPD/COPPA immuable), `feedback` (⚠️ RÉSERVÉE, non branchée — le feedback réel passe par `annotations`, cf. migration 010) — RLS partout |
+| `migrations/003..005` (✅ appliquées 2026-07-12 via MCP) | `game_sessions` (1 ligne/partie, append-only, suivi/debug requêtable) · `child_state` (sync clé-valeur : unlocks, avatar, ambiance, langue, états mj-20/32/37, pose-tiles) · `annotations` (💬 comments + notes revue + payloads duel/lecture — fin du copier-coller JSON) |
+| `migrations/009..010` (✅ appliquées 2026-07-13/14 via MCP) | `tile_refs` (compos tile-picker → Claude) · purge `pings` 13 mois (pg_cron CNIL) · annotation `feedback` réservée |
+| `site/js/cloud.js` | Client : auth, profils, sync local-first. **Merge anti-perte (audit 2026-07-14)** : agrégats progression recalculés depuis l'history unionné (plus de max-pick) ; `child_state` fusionné par clé (max des paliers de langue, union des déblocages/dessins) ; `resetChild()` vide le cloud avant le local ; flush `pagehide`/`visibilitychange` ; annotations poussées dès connexion |
 | `site/js/voice.js` | Patch transparent de `TTS.speak` → MP3 premium si connecté, sinon original |
 | `site/js/voices-manifest.js` | Catalogue `texte normalisé → mp3` (V0 vide, à remplir au fil de la prod audio) |
 | `site/compte.html` | Page parent : login magic link, profils enfants, sync manuelle |

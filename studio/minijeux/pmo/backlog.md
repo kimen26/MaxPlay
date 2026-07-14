@@ -11,6 +11,13 @@
 
 ## Tickets épics actifs (EP-xxx)
 
+### EP-085 [?] — Audit-gabarit.mjs bloquant dans CI ? (conseil : commande hook PreToolUse avant push)
+**Description** : script audit-gabarit.mjs créé 2026-07-14 (vérifies gabarit mini-jeux, cloud.js ordre, charset, header, spec présentes). Parent suggestion : rendre bloquant le hook ou CI `.github/workflows/deploy.yml` avant push. À valider Papa Yann (friction vs sécurité).
+**Statut** : [?] Validation Papa Yann — utility DÉPLOYÉE, politique de blocking à décider.
+**Impact** : zéro (utilitaire), friction mineure si bloquant git push.
+
+---
+
 ### EP-077 [x] — Session challenge conseiller 2026-07-13 (6h30) — MJ-43/44 durcis + MJ-45 créé
 **Description** : validation complète 3 mini-jeux (2 correctifs post-review, 1 nouveau). Game-conseiller challenge → 2 bugs corrigés (deadlock mj-43, TTS phonème mj-44), 1 défigé numérique corrigé, MJ-45 créé direction Papa Yann.
 **Statut** : [x] Terminé 2026-07-13. Harnais vert mj-43/44 (29+26 checks). Reviewer PASS (9/10 ×3). MJ-45 spécifications stables, attente code.
@@ -216,6 +223,18 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 
 ### L-098 – Masquage graphie force enfant lecteur partiel à écouter, pas copier graphie reconnaissable (mj-44 ★3)
 **MJ-44 figeage ★3 (2026-07-13)** : Niveau voyelle entendue mid-mot (« ou » dans « poupée », « a » dans « chat »). **Leçon pédagogique** : enfant phase alphabétique partielle (Ehri, Max) = lecteur de graphie initiale (« ro-... » = « roue »). Si mot écrit visible = **triche visuelle** : Max trie par lettre initiale visuelle (« roue »/« rat » tous deux commencent par « r ») au lieu de traiter le son écouté (« ou » vs « a »). **Contre-mesure** : ★3 masquer mot écrit (picto seul) → force canal auditif, honnêteté pédago. ★1-★2 gardent mot visible (graphie = aide, pas pièce).
+
+### L-100 – Gabarit unique mj-shell.js = invariant infrastructure (2026-07-14)
+**Contexte** : 41 MJ migrés sur mj-shell.js. Leçon historique = chaque variation manuelle (« charge 14 scripts en ordre différent ») = bug silencieux (cloud.js oublié, mp-theme absent sur mj-16, etc.).
+**Décision FIGÉE** : tout MJ nouveau charge UNIQUEMENT mj-shell.js (+ libs jeu spécifiques). Gabarit = norme. ZÉro variation tolérée. Audit-gabarit.mjs = contrôle qualité auto (cf. règle `.claude/rules/mini-jeux.md` § LE GABARIT + § Batterie test 2 vitesses).
+
+### L-101 – Audit-gabarit.mjs patterns déterministes = coût zéro, captures 5 classes d'erreur (2026-07-14)
+**Pattern** : script Python/Node checklist mécanique (cloud.js présent + APRÈS tracker.js, mp-theme.css, charset utf-8, header canonique, spec présente) = détection 5 patterns courants AVANT push. Coût = 30s. Applicable à tout gabarit/infrastructure (tile recipes, narration audio segments, etc.) — si checklist est déterministe, l'automatiser.
+
+### L-102 – Batterie test 2 vitesses = script éclair + LLM contexte (2026-07-14)
+**Stratégie** : tester RAPIDE (< 1 min) tout ce qui est mécanique (gabarit présent, déploiement réussit, smoke console). Tester CONTEXTE seulement ce qui nécessite jugement (sécurité XSS = LLM analyse, audio chevauchement = LLM écoute et juge). Avoid doublonner game-mj-reviewer pour le mécanique. Règle : préférer script déterministe mécanique → LLM uniquement jugement.
+
+---
 
 ### L-099 – Subset-sum anti-deadlock check = obligatoire tout jeu arithmétique exact
 **MJ-43 figeage + MJ-45 spécifications (2026-07-13)** : Jeux maths regroupement exact (caisses MJ-43, passagers MJ-45). **Piège récurrent** : placement légal intermédiaire peut créer un **cul-de-sac** où cible finale devient inatteignable. Exemple MJ-43 : 5 caisses, jetons {3,2,4,1} → aucun subset-sum = 5 → impossible. Exemple MJ-45 : bus 8 passagers, cible 12, groupe 4 monte → bus 12 full, MAIS pas de groupe 4+ en attente → impossible atteindre cible suivante. **Règle grave** : tout jeu arithmétique exact où Max cherche une somme PRÉCISE = vérifier subset-sum/knapsack APRÈS chaque input. Refus doux (rebond) si coup casse la jouabilité. **Code pattern** : vérifier toutes les combinaisons remainingJetons + remainingGroupes → au moins un chemin vers cible. Trivial à ces tailles (3-6 items max), non-trivial si oubli = frustration silencieuse Max.

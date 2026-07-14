@@ -98,6 +98,37 @@ Nuancier avatar 11 couleurs → **3 triplets GÉNÉRÉS autour teinte** (algo pr
 **Techniquement** :
 - Unique source API coloration = `Avatar.color` (site/js/avatar-picker.js)
 - Jamais dupliquer logique coloration ailleurs (→ hex string crashes = anti-pattern)
+
+---
+
+## 2026-07-14 — Questions ouvertes du projet (audit classification, aucune décision encore)
+
+### Q-1 — Faut-il corriger mj-22 ou le retirer du catalogue définitif ?
+**Contexte** (EP-098) : mj-22 "Trouve le pays" retrait menu 2026-07-06, mais fichier figé interdit micro-pays pour accessibilité Max. Relecture 2026-07-14 révèle : code utilise `Object.keys(PAYS)` → inclut les micro-pays. Zone tap map dense → risque < 60px.
+**Options** :
+- A) Corriger le code (filtrer micro-pays, agrandir zones tap, revalider Papa Yann) → réactivation future.
+- B) Retrait permanent du catalogue (supprimer figees/mj-22.md + site/mj-22.html).
+**Attente** : décision Papa Yann (ressenti enfant sur mj-22, ou mieux d'autres jeux monde ?)
+
+---
+
+### Q-2 — Accents typographiques sur mots de lecture phonétique : conserve ou puriste ?
+**Contexte** (EP-099) : mj-06 "Lis la phrase" — relecture 2026-07-14 a ajouté accents manquants (GÂTEAU, ŒUF, ÉTOILE, RIVIÈRE, GRÊLE, FUSÉE, VÉLO, BOÎTE). Français orthographiquement correct. Max lit phonétique (ne prononce pas les accents). 
+**Dilème** : accent peut aider reconnaissance visuelle (GÂTEAU ≠ GATEAU pour l'œil) mais pas la lecture phonétique (aucun changement sonore).
+**Attente** : Papa Yann sentiment enfant (test 2-3 séances ?) — garder accents pour français honnête ou puriste phonétique sans ?
+
+---
+
+### Q-3 — « Ranger la chambre » : restructurer catalogue pour Phase 2, ou en attendre ?
+**Contexte** (EP-101) : classification 2026-07-14 propose refonte structurelle (ZÉRO appliquée) :
+- **F1 fusion** : mj-13a + mj-13c → 1 jeu « Panneau du bus » à 2 modes (gain -1 menu, -~500 LOC dupliquée)
+- **F2 optionnelle** : mj-28 mode de mj-24 (même ombres, interaction différente)
+- **Libs factorisation** : L1=dés, L2=panneau-led, L3=ombres-dino, L4=QCM-générique
+- **Pilote 1-moteur-N-peaux** : mj-04+mj-26 (comptage passagers vs dinos) — valide mécanique transposable 2 thèmes, prépare V0 "thème interchangeable".
+
+**Gain long terme** : maintenance divisée par 2, scalabilité à 50+ jeux Phase 2, base saine pour « 1 moteur N peaux ».
+**Friction court terme** : refonte menu, test pervasive de tous les jeux (1-2 semaines de validation Papa Yann).
+**Attente** : décision stratégique Papa Yann (investir maintenant v0.5 ou reporter à Phase 2 ?)
 - Validation Playwright pixel-level 19/19 (teinte appliquée, [r,g,b] stocké, jamais noir)
 
 **Raison** : confiance Max (couleur prévisible, pas magie noire) + maintenance future (1 point d'entrée, pas 3 implémentations) + compatibilité future ambiances (swap teinte selon ambiance, 1 ligne).

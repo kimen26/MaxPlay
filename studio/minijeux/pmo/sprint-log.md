@@ -9,6 +9,29 @@
 
 ---
 
+## 2026-07-14 — Relecture textes 41 MJ + Classification 100% + Tickets audit 3 domaines (commits 25452ff5 + aeab8272)
+
+**Owner** : 3 agents de relecture (game-dev + chercheurs) · main agent (synthèse classification) · game-pmo (log)
+
+**Trigger** : Papa Yann retour post gabarit unique v1 + Design System — demande audit qualité avant Phase 2 (WexWorld). Solution : relecture exhaustive textes + classification mécanique → tickets audit.
+
+**Fait** :
+- **Relecture textes 41 MJ (commit 25452ff5)** : 3 agents parallèles (1 agent ≈ 13-14 jeux) ont relu contre code gameplay réel. Trouvé + corrigé : 20 apostrophes typographiques, accents mj-06, coquille « de son son » mj-44 (jeu+catalog.js), hint mj-13c, description mj-41. Zéro gameplay touché, tests verts. **Leçon L-098 ajoutée** : relecture multi-agents = valider par git diff stat + tests per-jeu (pas de confiance aveugle).
+- **Classification 100% des 41 jeux (commit aeab8272)** : analyse structurée par famille mécanique (8 familles), difficulté (4 régimes différents, bazar identifié), transposabilité, duplications code avérées. Nouveau doc `studio/minijeux/docs/jeux/CLASSIFICATION-2026-07.md` produit.
+- **Tickets audit 3 domaines (backlog.md)** :
+  - **EP-098** [!] : 🚨 mj-22 VIOLE sa figée (micro-pays bannis + zone tap < 60px) — regression silencieuse à corriger
+  - **EP-099** [?] : mj-06 accents phonétiques ajoutés (français OK, lecture phonétique ?) — validation Papa Yann
+  - **EP-100** [?] : mj-13a/13c + mj-43/45 duplication moteur identifiée → candidates libs L1-L4
+  - **EP-101** [?] : Proposition « Ranger la chambre » (fusions F1/F2 + libs + pilote 1-moteur-N-peaux) — QUESTION OUVERTE
+
+**État au reboot** :
+- ✅ Relecture textes FERMÉE (41 MJ, 0 regréssion gameplay)
+- ✅ Classification PRODUITE (doc CLASSIFICATION-2026-07.md, 4 sections + annexe 41 fiches)
+- ⚠️ **À trancher Papa Yann** : EP-098 (correction ou retrait permanent mj-22), EP-099 (accents sur phonétique), EP-101 (restructuration catalogue, décision stratégique Phase 2)
+- ⚠️ **Tech debt EP-100 identifiée** (fusions candidates à prioriser si go sur F1)
+
+---
+
 ## 2026-07-14 — Gabarit unique mj-shell.js + batterie test 2 vitesses (commits 392d59d0 + 049b2ad5 — 41/44 MJ migrés, audit-gabarit.mjs créé)
 
 **Owner** : main agent (cadrage gabarit + pipeline test) · game-pmo (log)

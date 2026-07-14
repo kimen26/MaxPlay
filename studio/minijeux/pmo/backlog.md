@@ -11,6 +11,38 @@
 
 ## Tickets épics actifs (EP-xxx)
 
+### EP-098 [!] — 🚨 mj-22 VIOLE sa figée — micro-pays bannis présents + zone tap < 60px (regression silencieuse)
+**Description** : mj-22 "Trouve le pays" — jeu retrait menu 2026-07-06, mais fichier figé mj-22.md interdit micro-pays (Chypre, Lituanie, Lettonie, Estonie, Monténégro) pour accessibilité enfant. DÉCOUVERTE session relecture 2026-07-14 : difficile: Object.keys(PAYS) → tous les pays incluent les micro-pays. Zone tap peut être < 60px sur carte dense. Regression silencieuse à corriger AVANT réactivation mj-22.
+**Statut** : [!] Bloqué — attendu correction ou retrait permanent mj-22 du catalogue
+**Impact** : haut. Violation figée = perte confiance système. Affecte mj-20 (mêmes PAYS) indirectement
+
+---
+
+### EP-099 [?] — mj-06 accents phonétiques ajoutés (GÂTEAU, ŒUF, ÉTOILE…) — validation Papa Yann
+**Description** : mj-06 "Lis la phrase" — relecture 2026-07-14 a ajouté accents/ligatures manquants (GÂTEAU, ŒUF, ÉTOILE, RIVIÈRE, GRÊLE, FUSÉE, VÉLO, BOÎTE). Français orthographiquement correct, MAIS Max lit phonétique (ignore accents/ligatures). Demander si accent sur mots de lecture OK (peut aider reconnaissance visuelle) ou retirer pour puriste phonétique.
+**Statut** : [?] Validation Papa Yann — sentiment enfant sur "GÂTEAU" vs "GATEAU"
+**Impact** : moyen. Affecte lisibilité + pédagogie phonétique élémentaire (fiche figée mj-06.md)
+
+---
+
+### EP-100 [?] — Duplication moteur identifiée (mj-13a/13c + mj-43/45) — candidates factorisation libs
+**Description** : Audit classification 2026-07-14 → **mj-13a ↔ mj-13c** (moteur panneau LED copié-collé : ledSVG, ficheHTML, poleHeadSVG, ALL_LINES, bus défilants) + **mj-43 ↔ mj-45** (constellation de dé PIP_LAYOUT + solveur anti-deadlock compose/subset-sum quasi identiques). Proposition : extraire libs `js/panneau-led.js` + `js/mj-dice.js` pour refactoring zéro-impact visuel.
+**Statut** : [?] À décider si refactoring prioritaire ou maintenance future
+**Impact** : moyen. Tech debt 500+ lignes dupliquées, risque régression croisée. ROI extraction : future maintenance divisons par 2.
+
+---
+
+### EP-101 [?] — Proposition « Ranger la chambre » — fusions F1/F2 + libs L1-L4 + pilote 1-moteur-N-peaux
+**Description** : Classification 2026-07-14 propose restructuration catalogue pour qualité/maintenance/scalabilité (AUCUNE fusion appliquée) :
+  - **F1 fusion** : mj-13a + mj-13c → 1 jeu "Panneau du bus" à 2 modes (gain -1 entrée menu, -~500 lignes dupliquées)
+  - **F2 fusion optionnelle** : mj-28 "Lampe" → mode de mj-24 "Trouve le dino" (même pool ombres, interaction différente)
+  - **Libs factorisées** : L1 = dés (mj-43/45), L2 = panneau-led (mj-13a/13c), L3 = dinos-ombres (mj-24/25/26/28/33), L4 = moteur QCM générique (~10 jeux)
+  - **Pilote 1-moteur-N-peaux** : mj-04 + mj-26 (comptage passagers bus vs dinos) prouve transposabilité mécanique 2 thèmes
+**Statut** : [?] QUESTION OUVERTE — attendu décision Papa Yann (friction de refonte vs gains long terme)
+**Impact** : très haut. Affecte UX menu, priorités dev future, scalabilité à 50+ jeux (Phase 2 WexWorld). À trancher version 0.5+.
+
+---
+
 ### EP-085 [?] — Audit-gabarit.mjs bloquant dans CI ? (conseil : commande hook PreToolUse avant push)
 **Description** : script audit-gabarit.mjs créé 2026-07-14 (vérifies gabarit mini-jeux, cloud.js ordre, charset, header, spec présentes). Parent suggestion : rendre bloquant le hook ou CI `.github/workflows/deploy.yml` avant push. À valider Papa Yann (friction vs sécurité).
 **Statut** : [?] Validation Papa Yann — utility DÉPLOYÉE, politique de blocking à décider.
@@ -148,6 +180,9 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 
 ### L-097 – Smoke Playwright pixel-level validation pour avatar coloration (19/19 pass)
 **Atelier avatar (2026-07-13)** : validation coloration : (a) jamais noir après sélection (b) teinte appliquée correctement (c) stockage [r,g,b] vs hex. Harnais Playwright pixel-level 19 cas de test. **Leçon** : pour tout asset visuel dépendant calcul color API (avatar, ambiances futures), requérir test pixel-level + screenshot manuel Papa Yann. Automatisation ≠ garantie visuelle enfant.
+
+### L-098 – Relecture multi-agents = valider E2E par git diff + tests jouabilité per-jeu
+**Classification 2026-07-14 (3 agents)** : 41 jeux relus (textes, gameplay, specs). **Piège** : batch agents = efficace (4h au lieu de 41h) MAIS 2 phases post obligatoires : (a) `git diff --stat` = tailles cohérentes avec claims (pas d'édition cachée large) ; (b) tests `npm run mj:test mj-XX` VER sur tous les jeux modifiés (harnais attrape regressions gameplay). **Leçon** : ne JAMAIS faire confiance à "j'ai relu" sans validation mécanique (diff stats) + jouabilité (tests). Processus solide : batch agents relecture → diff audit → harnais green per-game → signature Papa Yann. Anti-pattern : célérité naïve (croire sur parole).
 
 ### L-095 – REX agent : Haiku claim-drops sans git diff = tué feedback_verifier_claims_agents
 **Design System v1 (2026-07-13)** : game-pmo (Haiku) a remis checklist « ✅ persisté » SANS modification git (zéro écriture pmo/sprint-log.md) + inventa détails ("site/js/sounds.js branché" jamais touché). **Récidive** : déjà observé 2026-07-13 session audio. **Leçon** : Haiku auto-PMO ne doit JAMAIS affirmer persistance multi-fichiers sans vérifier le diff (`git diff pmo/` amont de son rapport). Main agent ré-écrit la session après coup. **Fix process** : ajouter à hook PreToolUse : game-pmo DOIT lire git status avant de conclure, et si rien modifié → report "Pas de diff détecté, lire sprint-log main agent" vs. inventer une persistance. **Ticket** : audit chat transcripts retrouver tous les claim-drops Haiku 2026-07-01..13, implémenter hook PreToolUse stricte.

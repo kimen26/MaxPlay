@@ -77,7 +77,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 .fam-label { font-family:'Fredoka One',cursive; font-weight:400; font-size:1.02rem; color:#fff; text-shadow:0 1px 4px rgba(0,0,0,0.55); line-height:1.2; }
 .fam-savant { font-size:0.72rem; opacity:0.66; font-style:italic; line-height:1.2; }
 .fam-desc { font-size:0.8rem; opacity:0.94; line-height:1.3; }
-.fam-count { font-size:0.76rem; font-weight:800; opacity:0.82; margin-top:3px; }
+.fam-count { font-size:0.76rem; font-weight:900; color:var(--gold); opacity:1; margin-top:3px; }
 
 /* Bandeau d'explication en haut de la grille d'une famille */
 .fam-explic-banner {
@@ -93,23 +93,31 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 .fam-explic-play:active { transform:scale(0.9); }
 
 /* ══════════════ GRILLE DINOS ══════════════ */
+/* 3 colonnes + vignette ronde teintée (maquette dinos-liste.html « grille A » validée) */
 #grid-scroll {
   flex:1; min-height:0; overflow-y:auto; overflow-x:hidden; padding:14px;
   -webkit-overflow-scrolling:touch;
-  display:grid; grid-template-columns:1fr 1fr; gap:14px;
-  grid-auto-rows:minmax(260px, auto);
+  display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px;
+  grid-auto-rows:minmax(150px, auto);
 }
 #grid-scroll::-webkit-scrollbar { width:8px; }
 #grid-scroll::-webkit-scrollbar-track { background:rgba(255,255,255,0.05); border-radius:4px; }
 #grid-scroll::-webkit-scrollbar-thumb { background:rgba(255,255,255,0.35); border-radius:4px; }
 .dino-card {
   background:var(--card); border:1px solid var(--line);
-  border-radius:var(--r-card); padding:14px 10px 12px;
+  border-radius:var(--r-card); padding:14px 8px 10px;
   display:flex; flex-direction:column; align-items:center; justify-content:flex-start;
   cursor:pointer; touch-action:manipulation; user-select:none;
   position:relative; overflow:hidden;
   transition:transform 0.12s, box-shadow 0.12s;
 }
+/* vignette ronde 66px, fond teinté famille (posé en inline style depuis le JS) */
+.dino-thumb {
+  width:66px; height:66px; border-radius:50%; flex-shrink:0;
+  display:flex; align-items:center; justify-content:center; overflow:hidden;
+  margin-bottom:8px;
+}
+.dino-thumb img { width:100%; height:100%; object-fit:cover; }
 .card-badges {
   position:absolute; top:6px; right:6px;
   display:flex; flex-direction:column; gap:5px; z-index:10;
@@ -141,7 +149,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
   filter:drop-shadow(0 3px 8px rgba(0,0,0,0.55));
   margin-bottom:10px;
 }
-.card-name { font-family:'Fredoka One',cursive; font-weight:400; font-size:1.05rem; color:#fff; text-align:center; margin-bottom:6px; line-height:1.15; }
+.card-name { font-family:'Fredoka One',cursive; font-weight:400; font-size:0.82rem; color:#fff; text-align:center; margin-bottom:4px; line-height:1.2; }
 .card-regime { font-size:0.85rem; color:rgba(255,255,255,0.78); text-align:center; margin-bottom:4px; }
 .card-region { font-size:0.78rem; color:rgba(255,255,255,0.55); text-align:center; margin-top:2px; line-height:1.2; }
 .card-bar { position:absolute; bottom:0; left:0; right:0; height:4px; }
@@ -292,12 +300,38 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 .ext-funfact:active { background:rgba(100,220,100,0.2); }
 
 /* ── Fiche V1 : 4 grands panneaux colorés ── */
-.v1-hero { position:relative; height:170px; margin:12px 12px 0; border-radius:var(--r-card); overflow:hidden; display:flex; align-items:center; justify-content:center; }
-.v1-hero-img { max-height:140px; max-width:80%; object-fit:contain; filter:drop-shadow(0 6px 14px rgba(0,0,0,0.55)); }
-.v1-hero-nm { position:absolute; left:16px; bottom:12px; text-shadow:0 2px 8px rgba(0,0,0,0.7); }
+/* Galerie hero (maquette fiche-dino.html) : ~46vh min 280px, nav ‹ › rondes 44px, compteur n/N.
+   Reste raisonnable (pas plein écran) pour laisser voir le nom tout de suite sous la photo. */
+.v1-hero { position:relative; height:min(46vh, 320px); min-height:220px; margin:12px 12px 0; border-radius:var(--r-card); overflow:hidden; display:flex; align-items:center; justify-content:center; }
+.v1-hero-img { max-height:100%; max-width:88%; object-fit:contain; filter:drop-shadow(0 6px 14px rgba(0,0,0,0.55)); cursor:pointer; }
+.v1-hero-nm { position:absolute; left:16px; bottom:12px; text-shadow:0 2px 8px rgba(0,0,0,0.7); pointer-events:none; }
 .v1-hero-nm b { display:block; font-family:'Fredoka One',cursive; font-weight:400; font-size:1.7rem; line-height:1.1; }
 .v1-alias { display:block; font-size:0.74rem; color:#ffe0a0; font-weight:700; }
 .v1-lat { display:block; font-size:0.78rem; opacity:0.85; font-style:italic; }
+/* Nav ‹ › + compteur (affichés seulement si la fiche a plusieurs images) */
+.v1-hero-nav {
+  position:absolute; top:50%; transform:translateY(-50%); width:44px; height:44px; border-radius:50%; border:0; cursor:pointer;
+  background:rgba(10,18,38,.75); color:#fff; font-size:18px; font-weight:900; touch-action:manipulation;
+}
+.v1-hero-count {
+  position:absolute; bottom:8px; right:10px; font-size:11px; font-weight:900; color:var(--ink-3);
+  background:rgba(10,18,38,.8); border-radius:8px; padding:3px 8px; pointer-events:none;
+}
+/* Pellicule de vignettes sous la galerie hero (56×42, active = or, vidéo = pastille ▶) */
+.v1-pellicule { display:flex; gap:6px; padding:8px 12px 0; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.v1-pellicule::-webkit-scrollbar { display:none; }
+.v1-vignette {
+  width:56px; height:42px; flex-shrink:0; border-radius:var(--r-thumb); background:var(--card-2);
+  border:2px solid transparent; cursor:pointer; position:relative; opacity:.65; overflow:hidden;
+  touch-action:manipulation;
+}
+.v1-vignette img { width:100%; height:100%; object-fit:cover; display:block; }
+.v1-vignette.on { border-color:var(--gold); opacity:1; }
+.v1-vignette .v1-vid-badge {
+  position:absolute; top:3px; right:3px; width:15px; height:15px; border-radius:50%;
+  background:var(--gold); color:var(--gold-ink); font-size:8px; font-weight:900;
+  display:flex; align-items:center; justify-content:center;
+}
 .v1-big {
   display:flex; align-items:center; justify-content:center; gap:10px;
   width:calc(100% - 24px); margin:12px; min-height:62px; padding:15px 18px;
@@ -310,9 +344,9 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 .v1-big.playing { background:linear-gradient(135deg,#c0392b,#e74c3c); animation:dino-story-pulse 1.1s ease-in-out infinite; }
 .v1-panel { position:relative; margin:0 12px 12px; border-radius:var(--r-card); padding:16px; }
 .v1-panel .v1-sp {
-  position:absolute; top:13px; right:13px; min-width:46px; height:40px;
-  background:rgba(255,255,255,0.16); border:1px solid rgba(255,255,255,0.25);
-  border-radius:11px; color:#fff; font-size:1.05rem; cursor:pointer; touch-action:manipulation;
+  position:absolute; top:13px; right:13px; min-width:40px; height:36px;
+  background:rgba(255,255,255,0.18); border:0;
+  border-radius:9px; color:#fff; font-size:0.95rem; cursor:pointer; touch-action:manipulation;
 }
 .v1-panel .v1-sp.playing { background:#e74c3c; border-color:#ff8a7a; animation:dino-story-pulse 1.1s ease-in-out infinite; }
 .v1-pic { display:flex; align-items:center; gap:10px; margin-bottom:10px; padding-right:54px; }
@@ -320,10 +354,11 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 .v1-pic .v1-tt { font-family:'Fredoka One',cursive; font-weight:400; font-size:1.1rem; }
 .v1-panel p { font-size:0.92rem; line-height:1.5; margin:5px 0; }
 .v1-panel .v1-sub { font-size:0.8rem; opacity:0.8; margin:3px 0; }
-.v1-a { background:linear-gradient(135deg,#3a2a5a,#5a3d8a); }
-.v1-b { background:linear-gradient(135deg,#0a3a4a,#1a6a8a); }
-.v1-c { background:linear-gradient(135deg,#0a4a2a,#1a8a4a); }
-.v1-d { background:linear-gradient(135deg,#5a4a0a,#a0851a); }
+/* Couleurs sections (maquette fiche-dino.html, exact) : histoire violet / taille bleu / vie vert / truc fou or */
+.v1-a { background:linear-gradient(160deg,#5b3aa8,#4a2f8a); }
+.v1-b { background:linear-gradient(160deg,#155a70,#0f4658); }
+.v1-c { background:linear-gradient(160deg,#1d7a4a,#166039); }
+.v1-d { background:linear-gradient(160deg,#8a6d1a,#6d5512); }
 .v1-stats { display:flex; gap:8px; margin-top:6px; }
 .v1-stat { flex:1; background:rgba(0,0,0,0.3); border-radius:12px; padding:10px 6px; text-align:center; }
 .v1-stat .l { font-size:0.62rem; text-transform:uppercase; opacity:0.65; }
@@ -464,10 +499,13 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 .chrono-header:active { opacity:0.8; }
 .chrono-emoji {
   width:44px; height:44px; flex-shrink:0; border-radius:50%;
-  background:var(--bg1);
+  background:var(--bg1); box-sizing:border-box;
   display:flex; align-items:center; justify-content:center;
   font-size:1.4rem; position:relative; z-index:1;
 }
+/* Rond d'ère : bordure 3px couleur d'ère (posée en inline style depuis JOURNEY, cf. maquette voyage.html) */
+.journey-ep .chrono-emoji { width:56px; height:56px; font-size:1.5rem; border:3px solid var(--bg1); }
+.journey-ep.ep-next:not(.ep-done) .chrono-emoji { box-shadow:0 0 16px rgba(255,255,255,.25); }
 .chrono-info { flex:1; }
 .chrono-label { font-size:1.1rem; font-weight:900; color:#fff; }
 .chrono-range { font-size:0.75rem; color:rgba(255,255,255,0.5); margin-top:1px; }
@@ -501,9 +539,9 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 .chrono-dino-static { cursor:default; }
 .chrono-dino-static:active { transform:none; }
 .journey-intro { margin:6px 12px 12px; padding:10px 12px; border-radius:12px; background:rgba(255,255,255,0.06); font-size:0.85rem; line-height:1.4; color:rgba(255,255,255,0.85); }
-/* Trait discret DERRIÈRE les cercles d'époque (cf. modèle voyage.html) */
+/* Trait discret DERRIÈRE les cercles d'époque (cf. modèle voyage.html) — aligné au centre du rond 56px */
 .journey-trait {
-  position:absolute; left:46px; top:74px; bottom:60px; width:3px; border-radius:2px;
+  position:absolute; left:52px; top:74px; bottom:60px; width:3px; border-radius:2px;
   opacity:.35; z-index:0; pointer-events:none;
   background:linear-gradient(180deg,#5dade2,#ff7043,#66bb6a,#42a5f5,#ff6b35,#a1887f,#00bcd4,#9b59b6);
 }
@@ -514,11 +552,17 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 .journey-ep.ep-done  .ep-status::after { content:'✅'; }
 .journey-ep.ep-next:not(.ep-done) .ep-status::after { content:'👉'; animation:ep-nudge 1s ease-in-out infinite; display:inline-block; }
 @keyframes ep-nudge { 0%,100%{ transform:translateX(0); } 50%{ transform:translateX(-4px); } }
-/* Épisode écouté : bouton verdit, légèrement estompé */
+/* Épisode écouté : bouton verdit, légèrement estompé (maquette : « ✓ Écouté ») */
 .journey-ep.ep-done .v1-big { background:linear-gradient(135deg,#1e7e34,#28a745); opacity:0.92; }
 .journey-ep.ep-done .v1-big .dino-story-eq::before { content:'✓ '; }
-/* Prochain à écouter : liseré lumineux */
+/* Prochain à écouter : liseré lumineux + bouton OR « Continuer » (maquette voyage.html) */
 .journey-ep.ep-next:not(.ep-done) { box-shadow:0 0 0 2px rgba(255,255,255,0.55), 0 0 14px rgba(255,255,255,0.25); }
+.journey-ep.ep-next:not(.ep-done) .journey-btn { background:linear-gradient(135deg,var(--gold),#ffbf3f); color:var(--gold-ink); }
+.journey-ep.ep-next:not(.ep-done) .journey-btn.playing { background:linear-gradient(135deg,#c0392b,#e74c3c); color:#fff; }
+/* À venir (ni écouté, ni prochain) : carte légèrement estompée, bouton neutre (maquette voyage.html) */
+.journey-ep:not(.ep-done):not(.ep-next) { opacity:.75; }
+.journey-ep:not(.ep-done):not(.ep-next) .journey-btn { background:rgba(255,255,255,.12); color:var(--ink-2); box-shadow:none; border-color:transparent; }
+.journey-ep:not(.ep-done):not(.ep-next) .journey-btn.playing { background:linear-gradient(135deg,#c0392b,#e74c3c); color:#fff; }
 .chrono-dino-img { width:60px; height:44px; object-fit:contain; margin-bottom:4px; filter:drop-shadow(0 1px 4px rgba(0,0,0,0.5)); }
 .chrono-dino-name { font-size:0.66rem; font-weight:900; color:#fff; text-align:center; line-height:1.2; }
 .chrono-dino-thumb .card-badges { top:3px; right:3px; gap:3px; }
@@ -736,6 +780,16 @@ const FAM_EMBLEME = {
   cornu: 'Triceratops.png', bec: 'Parasaurolophus.png', raptor: 'Velociraptor.png',
   pterosaures: 'Pteranodon.png', enaliosaures: 'Mosasaurus.png', volant: 'Dimetrodon.png',
 };
+// Hex → rgba (pour le fond léger + bordure teintée des cartes famille, cf. maquette dinos-familles.html)
+function hexToRgba(hex, alpha) {
+  const h = (hex || '').replace('#', '');
+  const full = h.length === 3 ? h.split('').map(c => c + c).join('') : h;
+  const r = parseInt(full.substr(0, 2), 16) || 0;
+  const g = parseInt(full.substr(2, 2), 16) || 0;
+  const b = parseInt(full.substr(4, 2), 16) || 0;
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+
 function buildMenuFamille(el) {
   // Intro COURTE et accrocheuse (le détail vit dans chaque carte / au clic)
   const intro = document.createElement('div');
@@ -751,7 +805,9 @@ function buildMenuFamille(el) {
     const sub   = fam.label || '';             // surnom en sous-titre
     const card = document.createElement('div');
     card.className = 'fam-card';
-    card.style.background = fam.bg;
+    // Code couleur par famille (maquette dinos-familles.html) : fond léger rgba(.10-.12) + bordure rgba(.4)
+    card.style.background = hexToRgba(fam.color, 0.12);
+    card.style.borderColor = hexToRgba(fam.color, 0.4);
     card.innerHTML = `
       <div class="fam-thumb">
         ${png ? `<img src="img/dinos/${png}" alt="${title}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : ''}
@@ -870,7 +926,7 @@ function buildMenuPeriode(el) {
       return `
         <div class="chrono-periode journey-ep" data-ep="${ep.id}" style="border-left:5px solid ${ep.color}">
           <div class="chrono-header" style="background:${ep.color}22">
-            <div class="chrono-emoji">${ep.emoji}</div>
+            <div class="chrono-emoji" style="border-color:${ep.color}">${ep.emoji}</div>
             <div class="chrono-info">
               <div class="chrono-label">${ep.label}</div>
               <div class="chrono-range">${ep.date}</div>
@@ -878,7 +934,7 @@ function buildMenuPeriode(el) {
             <div class="ep-status" aria-hidden="true"></div>
           </div>
           <div style="padding:10px 12px 12px">
-            <button class="v1-big" onclick="playRecit('${ep.id}',this)" id="recit-${ep.id}-btn" style="margin:0 0 ${dinosHtml ? '10px' : '0'}">
+            <button class="v1-big journey-btn" onclick="playRecit('${ep.id}',this)" id="recit-${ep.id}-btn" style="margin:0 0 ${dinosHtml ? '10px' : '0'}">
               🎙️ Écoute ${ep.label} <span class="dino-story-eq">▶</span>
             </button>
             ${dinosHtml}
@@ -1077,10 +1133,10 @@ function buildGrid(catId) {
     const card = document.createElement('div');
     card.className = 'dino-card';
     card.innerHTML = `
-      <img class="card-img" src="img/dinos/${d.png}" alt="${d.name}" loading="lazy" onerror="this.style.display='none'">
+      <div class="dino-thumb" style="background:${hexToRgba(cat.color, .12)}">
+        <img src="img/dinos/${d.png}" alt="${d.name}" loading="lazy" onerror="this.style.display='none'">
+      </div>
       <div class="card-name">${d.name}</div>
-      <div class="card-regime">${d.regime}</div>
-      <div class="card-region">📍 ${d.region}</div>
       <div class="card-bar" style="background:${cat.color}"></div>
       ${buildBadges(d.id)}
     `;
@@ -1115,10 +1171,10 @@ function showGridFamille(famId) {
     const card = document.createElement('div');
     card.className = 'dino-card';
     card.innerHTML = `
-      <img class="card-img" src="img/dinos/${d.png}" alt="${d.name}" loading="lazy" onerror="this.style.display='none'">
+      <div class="dino-thumb" style="background:${hexToRgba(fam.color, .12)}">
+        <img src="img/dinos/${d.png}" alt="${d.name}" loading="lazy" onerror="this.style.display='none'">
+      </div>
       <div class="card-name">${d.name}</div>
-      <div class="card-regime">${d.regime}</div>
-      <div class="card-region">📍 ${d.region}</div>
       <div class="card-bar" style="background:${fam.color}"></div>
       ${buildBadges(d.id)}
     `;
@@ -1221,6 +1277,22 @@ function buildContinentMap(continent) {
   `;
 }
 
+/* ── Galerie hero de la fiche : navigation ‹ › + pellicule (maquette fiche-dino.html) ── */
+let _ficheSlides = [];
+let _ficheIdx = 0;
+function _ficheGoto(idx) {
+  if (!_ficheSlides.length) return;
+  _ficheIdx = (idx + _ficheSlides.length) % _ficheSlides.length;
+  const s = _ficheSlides[_ficheIdx];
+  const img = document.getElementById('v1-hero-img');
+  if (img) { img.src = s.src; img.onerror = s.fallback ? function () { this.onerror = null; this.src = s.fallback; } : null; }
+  const count = document.getElementById('v1-hero-count');
+  if (count) count.textContent = (_ficheIdx + 1) + ' / ' + _ficheSlides.length;
+  const vignettes = document.querySelectorAll('#v1-pellicule .v1-vignette');
+  vignettes.forEach((v, i) => v.classList.toggle('on', i === _ficheIdx));
+  if (vignettes[_ficheIdx]) vignettes[_ficheIdx].scrollIntoView({ behavior:'smooth', block:'nearest', inline:'center' });
+}
+
 function buildFiche(d) {
   const cat = DINO_CATEGORIES.find(c => c.id === d.cat);
   const scroll = document.getElementById('fiche-scroll');
@@ -1246,18 +1318,36 @@ function buildFiche(d) {
   const regEmoji = regimeIcon(d.cat);
   const perLabel = (DINO_PERIODES.find(p => p.id === d.periode) || {}).label || '';
 
+  // Galerie hero : image paléoart principale + extras (photos/vidéos). Nav ‹ › + pellicule si plus d'1 image.
+  _ficheSlides = [{ src: `img/dinos/paleoart/${d.png}`, fallback: `img/dinos/${d.png}`, label: d.name, video: false }]
+    .concat(extras.map(e => ({ src: e.src, fallback: null, label: e.label, video: /\.(mp4|webm|mov)(\?|$)/i.test(e.src) })));
+  _ficheIdx = 0;
+  const multi = _ficheSlides.length > 1;
+
   scroll.innerHTML = `
-    <!-- HERO photo -->
-    <div class="v1-hero" style="background:linear-gradient(135deg,${cat.color},${cat.color}55)">
-      <img class="v1-hero-img" src="img/dinos/paleoart/${d.png}" alt="${d.name}" onerror="this.onerror=null;this.src='img/dinos/${d.png}';this.onerror=function(){this.style.display='none'}">
+    <!-- HERO galerie (image principale + extras, swipe ‹ › si plusieurs) -->
+    <div class="v1-hero" id="v1-hero" style="background:linear-gradient(135deg,${cat.color},${cat.color}55)">
+      <img class="v1-hero-img" id="v1-hero-img" src="img/dinos/paleoart/${d.png}" alt="${d.name}"
+           onclick="${multi ? `openCarousel(_ficheSlides.map(s=>({src:s.src,label:s.label})), _ficheIdx)` : ''}"
+           onerror="this.onerror=null;this.src='img/dinos/${d.png}';this.onerror=function(){this.style.display='none'}">
       <div class="v1-hero-nm">
         <b>${d.name}</b>
         ${d.alias ? `<span class="v1-alias">aussi appelé ${d.alias}</span>` : ''}
         <span class="v1-lat">${d.full}</span>
       </div>
+      ${multi ? `
+        <button class="v1-hero-nav" style="left:10px" onclick="_ficheGoto(_ficheIdx-1)">‹</button>
+        <button class="v1-hero-nav" style="right:10px" onclick="_ficheGoto(_ficheIdx+1)">›</button>
+        <span class="v1-hero-count" id="v1-hero-count">1 / ${_ficheSlides.length}</span>
+      ` : ''}
     </div>
+    ${multi ? `<div class="v1-pellicule" id="v1-pellicule">${_ficheSlides.map((s, i) => `
+      <div class="v1-vignette${i===0?' on':''}" data-i="${i}" onclick="_ficheGoto(${i})">
+        ${s.video ? `<span class="v1-vid-badge">▶</span>` : ''}
+        <img src="${s.src}" alt="${s.label||''}" loading="lazy" onerror="this.style.display='none'">
+      </div>`).join('')}</div>` : ''}
 
-    <!-- BOUTON ÉCOUTE TOUT (en haut) — affiché seulement si l'audio complet existe -->
+    <!-- BANNIÈRE AUDIO (violette) — affichée seulement si l'audio complet existe -->
     ${dinoHasAudio(d.id) ? `<button class="v1-big" onclick="playDinoStory('${d.id}')" id="dino-story-btn">
       🎙️ Écoute toute l'histoire de ${d.name} <span class="dino-story-eq">▶</span><span class="audio-ver">${dinoAudioVersion(d.id)}</span>
     </button>` : ''}

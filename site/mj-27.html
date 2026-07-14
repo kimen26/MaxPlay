@@ -48,12 +48,6 @@
 </head>
 <body>
   <div id="app">
-    <div class="hdr">
-      <a href="index.html" class="back">←</a>
-      <span class="htitle">📖 Lis le nom du dino</span>
-    </div>
-    <div class="pips" id="pips"></div>
-
     <div class="qbox">
       <div class="read-panel">
         <div class="read-hint">Lis bien… trouve ce dino 👇</div>
@@ -67,21 +61,15 @@
   </div>
 
 
-  <script src="js/sounds.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/feedback.js"></script>
-  <script src="js/catalog.js"></script>
-  <script src="js/stars.js"></script>
-  <script src="js/qcm-retry.js"></script>
-  <script src="js/mj-golden.js"></script>
+  <!-- libs SPÉCIFIQUES au jeu -->
   <script src="js/lang.js"></script>
   <script src="js/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
   <script src="js/dinos-audio-manifest.js"></script>
-  <script src="js/tts.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
   <script>
+    MJ.ready(function () {
     // ─── MJ-27 — Lis le nom du dino (LECTURE PURE, aucun son d'aide) ───
     // Affiche le nom écrit + 6 vraies images de l'encyclopédie. Max lit et trouve.
     const SRC = (typeof DINOS !== 'undefined') ? DINOS : (window.DINOS || []);
@@ -216,6 +204,26 @@
       box.appendChild(soundBtn);
     }
 
+    const shell = MJ.init({
+      id: 'mj-27', emoji: '📖', titre: 'Lis le nom du dino',
+      golden: true,
+      consigne: false,   // LECTURE PURE : aucun son d'aide auto (règle EP-033)
+      regle: {
+        picto: '📖🦕',
+        texte: 'Lis le nom écrit, puis trouve la bonne image !',
+        etapes: [
+          { t: 'Je lis les syllabes 👀',
+            d: 'Le nom du dino est découpé en morceaux. Je tape un morceau pour l’entendre.' },
+          { t: 'J’écoute le nom entier si besoin 🔊',
+            d: 'Le rond 🔊 dit le nom complet à voix haute.' },
+          { t: 'Je tape la bonne image 👆',
+            d: 'Parmi 6 images, une seule correspond au nom que je viens de lire.' },
+          { t: 'Plus j’ai d’étoiles, plus les images se ressemblent 💪',
+            d: 'Au début les dinos sont très différents. Avec les étoiles : des cousins de la même famille — il faut VRAIMENT bien lire le nom !' }
+        ]
+      }
+    });
+
     function init(){
       G.buildPips();
       nextQuestion();
@@ -282,10 +290,7 @@
     }
 
     init();
+    });
   </script>
-  <script src="js/tracker.js"></script>
-  <script src="js/cloud.js"></script>
-  <script src="js/comments.js"></script>
-  <script src="js/back-button.js"></script>
 </body>
 </html>

@@ -129,21 +129,31 @@
 </div>
   <script src="js/bus-svg.js"></script>
   <script src="js/data.js"></script>
-  <script src="js/tracker.js"></script>
-  <script src="js/sounds.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/regle-info.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
   <script>
-    RegleInfo.init({
-      texte: "Tape un mot pour l'entendre, puis range-le dans la boîte qui a le bon son !",
-      picto: "🔤➡️📦"
-    });
-  </script>
-  <script>
-  (function(){
+  MJ.ready(function(){
     'use strict';
+
+    MJ.init({
+      id: 'mj-44', emoji: '🔤', titre: 'La boîte à sons',
+      golden: false,
+      consigne: false,
+      regle: {
+        picto: '🔤➡️📦',
+        texte: "Tape un mot pour l'entendre, puis range-le dans la boîte qui a le bon son !",
+        etapes: [
+          { t: 'Je tape un mot pour l’écouter 👂',
+            d: 'Une voix dit le mot en entier : « tomate », « lune »… J’écoute bien le début.' },
+          { t: 'Je regarde et j’écoute les boîtes 📦',
+            d: 'Chaque boîte a son propre son : « te », « me »… Je tape une boîte pour l’entendre.' },
+          { t: 'Je range le mot dans la bonne boîte 👆',
+            d: 'Si je me trompe, la boîte dit non tout doucement et le mot reste dans mes mains.' },
+          { t: 'Plus j’ai d’étoiles, plus mon oreille doit être fine 💪',
+            d: 'D’abord le début du mot, puis des sons qui se ressemblent (l/r), puis le son caché au milieu du mot.' }
+        ]
+      }
+    });
 
     // ── Pictos SVG (flat cartoon, viewBox 0 0 100 100) ─────────────────────
     // Auto-suffisants (pas d'emoji, pas de CDN) → rendu stable + test local OK.
@@ -534,7 +544,7 @@
       },
       replay(){ document.getElementById('replay-btn').click(); },
     };
-  })();
+  });
   </script>
 </body>
 </html>

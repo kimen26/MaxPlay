@@ -63,9 +63,9 @@ html, body {
 </head>
 <body data-mp-intro-emoji="🚏" data-mp-intro-title="Quel bus arrive ?" data-mp-intro-hint="Touche le premier qui arrive">
 
-<div id="hdr">
-  <button onclick="location.href='index.html'">← Retour</button>
-  <span style="font-weight:900;color:var(--ink,#fff);">🚏 Le premier bus</span>
+<div class="hdr">
+  <a href="index.html">&#8592;</a>
+  <span class="htitle">🚏 Le premier bus</span>
   <span id="levelbar" style="margin-left:auto;font-weight:900;color:var(--gold,#ffe066);background:rgba(255,255,255,.09);border-radius:10px;padding:3px 12px;font-size:0.85rem;">Niveau 1</span>
   <div id="score">0 / 0</div>
 </div>
@@ -82,20 +82,29 @@ html, body {
 </div>
 
 <script src="js/bus-svg.js"></script>
-<script src="js/catalog.js"></script>
-<script src="js/stars.js"></script>
-<script src="js/sounds.js"></script>
-<script src="js/tts.js"></script>
-<script src="js/victory-sounds.js"></script>
-<script src="js/tracker.js"></script>
-<script src="js/cloud.js"></script>
-<script src="js/comments.js"></script>
-<script src="js/qcm-retry.js"></script>
   <script src="js/intro-splash.js"></script>
-  <script src="js/back-button.js"></script>
-<script src="js/mp-theme.js"></script>
-<script src="js/celebrations.js"></script>
+<script src="js/mj-shell.js"></script>
 <script>
+MJ.ready(function () {
+  const shell = MJ.init({
+    id: 'mj-13a', emoji: '🚏', titre: 'Le premier bus',
+    golden: false,
+    consigne: false,
+    regle: {
+      picto: '🚏⏱️',
+      texte: 'Regarde les fiches et trouve le bus qui arrive en premier !',
+      etapes: [
+        { t: 'Je regarde les compteurs ⏱️',
+          d: 'Chaque fiche montre le nombre de minutes avant l’arrivée du bus. Le compteur descend tout seul.' },
+        { t: 'Je cherche le plus petit nombre 🔎',
+          d: 'Le bus qui arrive en premier, c’est celui qui a le moins de minutes à attendre.' },
+        { t: 'Je tape sa fiche 👆',
+          d: 'Si je me trompe, je peux réessayer. Après 3 essais, la bonne fiche s’allume.' },
+        { t: 'Plus j’ai d’étoiles, plus il y a de bus 💪',
+          d: 'Au début il y a 2 bus avec un grand écart, puis de plus en plus de bus avec des écarts serrés.' }
+      ]
+    }
+  });
 /* ══ LED ══ */
 const DIGITS={
   '0':[1,1,1,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,1,1,1],
@@ -446,8 +455,13 @@ function restart(){
   initRound();
 }
 
+// Exposées pour les onclick="" inline (fiches générées dynamiquement + bouton rejouer)
+window.onFicheTap = onFicheTap;
+window.restart = restart;
+
 updScore();
 initRound();
+});
 </script>
 </body>
 </html>

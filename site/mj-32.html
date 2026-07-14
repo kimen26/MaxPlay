@@ -187,13 +187,28 @@
   <script src="js/lang.js"></script>
   <script src="js/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
-  <script src="js/sounds.js"></script>
-  <script src="js/tts.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/tracker.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <script src="js/mj-shell.js"></script>
   <script>
+  MJ.ready(function () {
+    MJ.init({
+      id: 'mj-32', emoji: '🖍️', titre: 'L’atelier coloriage',
+      golden: false,
+      consigne: false,
+      regle: {
+        picto: '🖍️🦕',
+        texte: 'Colorie ton dino comme tu veux, il n’y a pas d’erreur !',
+        etapes: [
+          { t: 'Je choisis un dino à colorier 🦕',
+            d: 'Je tape sur le dino que je préfère dans la liste.' },
+          { t: 'Je choisis une couleur et je tape dans le dessin 🎨',
+            d: 'La couleur remplit toute la zone que je touche. Je peux changer de couleur autant de fois que je veux !' },
+          { t: 'Je regarde le modèle si j’ai besoin 🔍',
+            d: 'Le bouton « Modèle » montre le dino en couleur 2 secondes, pour m’aider si je veux.' },
+          { t: 'Je tape « Fini ! » pour garder mon dessin 🖼️',
+            d: 'Mon œuvre part dans « Ma galerie » : je peux la regarder, la reprendre pour continuer, ou la supprimer. Pas d’étoiles, pas d’erreur : je fais comme je veux !' }
+        ]
+      }
+    });
     // ─── MJ-32 — L'atelier coloriage (jeu LIBRE, sans étoiles ni échec) ───
     const GALLERY_KEY = 'mj32_galerie';
     const GALLERY_MAX = 12;
@@ -597,9 +612,7 @@
     }
 
     init();
+  });
   </script>
-  <script src="js/cloud.js"></script>
-  <script src="js/comments.js"></script>
-  <script src="js/back-button.js"></script>
 </body>
 </html>

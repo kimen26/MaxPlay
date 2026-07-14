@@ -152,18 +152,30 @@
 </div>
   <script src="js/bus-svg.js"></script>
   <script src="js/data.js"></script>
-  <script src="js/tracker.js"></script>
-  <script src="js/sounds.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/regle-info.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <script src="js/mj-shell.js"></script>
   <script>
-    RegleInfo.init({ texte: "Déplace ta pièce pour croquer tous les goûters !", picto: "♟️➡️🍎" });
-  </script>
-  <script>
-  (function () {
+  MJ.ready(function () {
     'use strict';
+
+    MJ.init({
+      id: 'mj-37', emoji: '♟️', titre: 'Croque-échecs !',
+      golden: false,
+      consigne: false, // écran intro pièce + snacks-left gèrent la consigne visuelle
+      regle: {
+        texte: 'Déplace ta pièce pour croquer tous les goûters !',
+        picto: '♟️➡️🍎',
+        etapes: [
+          { t: 'Je découvre une pièce d’échecs 🧑‍🎓',
+            d: 'Le Fou glisse en diagonale, la Tour va tout droit, le Cavalier saute en L… chacune bouge à sa façon !' },
+          { t: 'Je tape ma pièce, les cases s’allument ✨',
+            d: 'Toutes les cases qui s’illuminent sont les endroits où ma pièce peut aller.' },
+          { t: 'Je tape une case allumée pour croquer 🍎',
+            d: 'Si un goûter est dessus, ma pièce le croque en y arrivant. Plus de choix : je réessaie, rien n’est perdu.' },
+          { t: 'Plus j’avance, plus les pièces sont malines 💪',
+            d: 'Après le Fou et la Tour viennent le Cavalier, la Dame, le Roi, le Pion… puis 2 pièces ensemble !' }
+        ]
+      }
+    });
 
     // ── Données niveaux (solveur pré-vérifié — NE PAS MODIFIER LES COORDONNÉES) ──
     const LEVELS = [
@@ -598,7 +610,7 @@
 
     // ── Démarrage ─────────────────────────────────────────────────────
     showTiers();
-  })();
+  });
   </script>
 </body>
 </html>

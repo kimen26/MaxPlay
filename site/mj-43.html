@@ -162,21 +162,31 @@
 </div>
   <script src="js/bus-svg.js"></script>
   <script src="js/data.js"></script>
-  <script src="js/tracker.js"></script>
-  <script src="js/sounds.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/regle-info.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
   <script>
-    RegleInfo.init({
-      texte: "Choisis un dé ou un domino, puis range-le dans la caisse. Remplis chaque caisse pile au bon nombre !",
-      picto: "🎲➡️📦"
-    });
-  </script>
-  <script>
-  (function(){
+  MJ.ready(function(){
     'use strict';
+
+    MJ.init({
+      id: 'mj-43', emoji: '📦', titre: 'Remplis les caisses !',
+      golden: false,
+      consigne: false,
+      regle: {
+        picto: '🎲➡️📦',
+        texte: 'Choisis un dé ou un domino, puis range-le dans la caisse. Remplis chaque caisse pile au bon nombre !',
+        etapes: [
+          { t: 'Je regarde le chiffre sur la caisse 👀',
+            d: 'Chaque caisse veut un nombre pile poil : ni plus, ni moins.' },
+          { t: 'Je tape un dé ou un domino, puis la caisse 👆',
+            d: 'Les points sont des petits dinos en ombre chinoise, rangés comme sur un vrai dé — je les compte d’un coup d’œil.' },
+          { t: 'Je regroupe plusieurs jetons pour arriver pile au bon compte ➕',
+            d: 'Si un jeton dépasserait la cible, la caisse dit doucement non et je peux réessayer avec un autre.' },
+          { t: 'Plus j’ai d’étoiles, plus les caisses sont grosses 💪',
+            d: 'Il faut regrouper 3 dés ou 2 dominos pour les plus grosses caisses !' }
+        ]
+      }
+    });
 
     // ── Petit dinosaure en ombre chinoise = un "point" du dé ────────────────
     // Silhouette sauropode (cou levé + long corps + queue) dans une boîte 10×10,
@@ -662,7 +672,7 @@
       },
       replay() { document.getElementById('replay-btn').click(); },
     };
-  })();
+  });
   </script>
 </body>
 </html>

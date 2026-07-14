@@ -154,9 +154,9 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 <div id="app">
 
   <!-- Header -->
-  <div id="hdr">
-    <a href="index.html">←</a>
-    <span id="htitle">🔍 L'intrus</span>
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">🔍 L'intrus</span>
     <span id="levelbar" style="font-weight:900;color:var(--gold,#ffe066);background:rgba(255,255,255,0.14);border-radius:10px;padding:3px 12px;font-size:0.85rem;">Niveau 1</span>
     <div id="score-badge">0 / 0</div>
   </div>
@@ -194,20 +194,32 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 
 <script src="js/bus-svg.js"></script>
 <script src="js/data.js"></script>
-<script src="js/catalog.js"></script>
-<script src="js/stars.js"></script>
-<script src="js/victory-sounds.js"></script>
-<script src="js/tts.js"></script>
-<script src="js/tracker.js"></script>
-<script src="js/cloud.js"></script>
-<script src="js/comments.js"></script>
 <script src="js/lang.js"></script>
   <script src="js/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
-  <script src="js/back-button.js"></script>
-<script src="js/mp-theme.js"></script>
-<script src="js/celebrations.js"></script>
+<script src="js/mj-shell.js"></script>
 <script>
+MJ.ready(function () {
+  const shell = MJ.init({
+    id: 'mj-15', emoji: '🔍', titre: 'L’intrus',
+    golden: false,
+    consigne: false,
+    regle: {
+      picto: '🔍🚌',
+      texte: 'Regarde les 5 bus, trouve celui qui ne va pas avec les autres !',
+      etapes: [
+        { t: 'J’écoute la question 👂',
+          d: '« Lequel ne va pas avec les autres ? » Un indice s’affiche pour m’aider à savoir quoi regarder.' },
+        { t: 'Je compare les 5 bus 👀',
+          d: '4 bus se ressemblent (même couleur, même famille…), 1 seul est différent : c’est l’intrus !' },
+        { t: 'Je tape l’intrus 👆',
+          d: 'Si je me trompe, le bus tremble et je peux réessayer avec un indice — l’intrus n’est jamais révélé tout seul.' },
+        { t: 'Plus j’ai d’étoiles, plus c’est subtil 💪',
+          d: 'Au début c’est la couleur, puis les roues, puis la famille de ligne… et même deux indices en même temps !' }
+      ]
+    }
+  });
+
 // ═══════════════════════════════════════════════════════════════════════════
 //  MJ-15 — L'intrus
 //  5 rounds, 5 bus affichés, 1 intrus à trouver
@@ -752,7 +764,16 @@ function startGame() {
   renderPuzzle(generatePuzzle(round));
 }
 
+// Exposées : onclick="" inline (startGame) + harnais de test (page.evaluate direct)
+window.startGame = startGame;
+window.generatePuzzleF = generatePuzzleF;
+window.generatePuzzleG = generatePuzzleG;
+window.OMBRES_MJ15 = OMBRES_MJ15;
+window.SHADOW_TINTS = SHADOW_TINTS;
+window.renderPuzzle = renderPuzzle;
+
 startGame();
+});
 </script>
 </body>
 </html>

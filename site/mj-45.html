@@ -133,21 +133,31 @@
 </div>
   <script src="js/bus-svg.js"></script>
   <script src="js/data.js"></script>
-  <script src="js/tracker.js"></script>
-  <script src="js/sounds.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/regle-info.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
   <script>
-    RegleInfo.init({
-      texte: "Fais monter les passagers pile au bon nombre. Au dernier niveau, fais-les descendre !",
-      picto: "🧍🧍➡️🚌"
-    });
-  </script>
-  <script>
-  (function(){
+  MJ.ready(function(){
     'use strict';
+
+    MJ.init({
+      id: 'mj-45', emoji: '🚌', titre: 'Le bus qui se remplit',
+      golden: false,
+      consigne: false,
+      regle: {
+        picto: '🧍🧍➡️🚌',
+        texte: 'Fais monter les passagers pile au bon nombre. Au dernier niveau, fais-les descendre !',
+        etapes: [
+          { t: 'Je regarde le panneau du bus 👀',
+            d: 'Il annonce combien de passagers doivent monter. Je le retiens dans ma tête.' },
+          { t: 'Je tape un groupe qui attend à l’arrêt 👆',
+            d: 'Les personnes sont rangées comme les points d’un dé, faciles à compter d’un coup d’œil. Le groupe monte direct dans le bus.' },
+          { t: 'Je continue jusqu’au bon compte ➕',
+            d: 'Si un groupe est trop grand, le bus dit doucement non et le groupe reste à l’arrêt. Je tape un groupe monté pour le refaire descendre.' },
+          { t: 'Au dernier niveau, des passagers descendent 🚏',
+            d: 'Le bus arrive déjà plein : je tape ceux qui descendent ici, pile le bon nombre.' }
+        ]
+      }
+    });
 
     // ── Passager en silhouette (tête + corps), constellation de dé ──────────
     // Même principe que les dino-pips de MJ-43 : disposition canonique de dé
@@ -485,7 +495,7 @@
       },
       replay(){ document.getElementById('replay-btn').click(); },
     };
-  })();
+  });
   </script>
 </body>
 </html>

@@ -108,18 +108,14 @@
 
   <div id="fbOverlay"></div>
 
-  <!-- Scripts : catalog + stars AVANT le jeu (le niveau dérive des étoiles) -->
-  <script src="js/sounds.js"></script>
-  <script src="js/feedback.js"></script>
+  <!-- libs SPÉCIFIQUES au jeu -->
   <script src="js/data.js"></script>
   <script src="js/bus-svg.js"></script>
-  <script src="js/qcm-retry.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/catalog.js"></script>
-  <script src="js/stars.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <script src="js/intro-splash.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
   <script>
+    MJ.ready(function () {
     // ─── MJ-04 : Compte les passagers — PILOTE du contrat de difficulté ───
     // Niveau = étoiles déjà gagnées + 1 (dérivé, aucun stockage en plus).
     // Une manche sans révélation (100%) → +1★ (tracker) → niveau +1 au prochain lancement.
@@ -144,6 +140,25 @@
       : (a) => a.map(x => [Math.random(), x]).sort((p, q) => p[0] - q[0]).map(p => p[1]);
 
     let level = 1, score = 0, streak = 0, questionCount = 0, reveals = 0, qcm = null, correctAnswer = 0, qLevels = [];
+
+    const shell = MJ.init({
+      id: GAME_ID, emoji: '👥', titre: 'Compte les passagers',
+      consigne: false,
+      regle: {
+        picto: '👥🔢',
+        texte: 'Compte les passagers à l’arrêt de bus !',
+        etapes: [
+          { t: 'Je regarde les passagers 👀',
+            d: 'Ils apparaissent un par un à côté du bus. J’écoute le petit son à chaque fois.' },
+          { t: 'Je peux les retapoter pour recompter 👆',
+            d: 'Chaque passager bouge un peu quand je le touche, ça m’aide à ne pas en rater.' },
+          { t: 'Je tape le bon nombre 🔢',
+            d: 'Si je me trompe, on recompte ensemble avec un indice. Jamais la réponse toute seule !' },
+          { t: 'Plus j’ai d’étoiles, plus il y a de passagers 💪',
+            d: 'Niveau 1 : 2 à 5 passagers. Niveau 5 : jusqu’à 22 ! Une manche sans erreur = 1 étoile ⭐.' }
+        ]
+      }
+    });
 
     function starsGot() { return window.Stars ? Stars.get(GAME_ID) : 0; }
     function currentLevel() { return Math.min(LEVELS.length, starsGot() + 1); }
@@ -345,11 +360,7 @@
     }
 
     init();
+    });
   </script>
-  <script src="js/tracker.js"></script>
-  <script src="js/cloud.js"></script>
-  <script src="js/comments.js"></script>
-  <script src="js/intro-splash.js"></script>
-  <script src="js/back-button.js"></script>
 </body>
 </html>

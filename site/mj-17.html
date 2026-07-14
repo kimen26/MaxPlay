@@ -254,18 +254,30 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 
 <script src="js/bus-svg.js"></script>
 <script src="js/data.js"></script>
-<script src="js/sounds.js"></script>
-<script src="js/victory-sounds.js"></script>
-<script src="js/feedback.js"></script>
 <script src="js/drag-drop.js"></script>
-<script src="js/tracker.js"></script>
-<script src="js/cloud.js"></script>
-<script src="js/comments.js"></script>
-  <script src="js/intro-splash.js"></script>
-  <script src="js/back-button.js"></script>
-<script src="js/mp-theme.js"></script>
-<script src="js/celebrations.js"></script>
+<script src="js/intro-splash.js"></script>
+<script src="js/mj-shell.js"></script>
 <script>
+MJ.ready(function () {
+const shell = MJ.init({
+  id: 'mj-17', emoji: '🔧', titre: 'Le garage',
+  consigne: false, // pas de consigne parlée : jeu continu de réparation (soundboard-like)
+  regle: {
+    picto: '🔧🚌',
+    texte: 'Répare les bus en panne avec le bon outil !',
+    etapes: [
+      { t: 'Je regarde ce qui ne va pas 👀',
+        d: 'Le bus a un souci : plus d’essence ⛽, sale 🧽, pneus à plat 🔧, vitre cassée 🪟 ou numéro caché 💻.' },
+      { t: 'Je prends le bon outil sur l’étagère ✋',
+        d: 'Je fais glisser l’outil qui répare cette panne jusqu’au bus.' },
+      { t: 'Le bus peut avoir 2 pannes en même temps 🔁',
+        d: 'Je répare les deux avant qu’il ne reparte tout content klaxonner !' },
+      { t: 'Je ne vais pas trop lentement ⏳',
+        d: 'Une petite barre montre sa patience : si j’attends trop, le bus repart triste — pas grave, un autre arrive !' }
+    ]
+  }
+});
+
 // ─── Lignes : sous-ensemble connu de Max, couleurs IDFM canoniques via data.js ───
 const MJ17_NUMS = ['162', '172', '185', '186', '323', '131', '180', 'V7'];
 const LIGNES_MJ17 = LIGNES.filter(l => MJ17_NUMS.includes(l.num));
@@ -734,6 +746,9 @@ function fireConfetti(bus) {
 window.addEventListener('load', () => {
   spawnBus();
 });
+
+window.showEnd = showEnd; // exposé pour le harnais de test (mj-17.spec.mjs)
+}); // fin MJ.ready
 </script>
 </body>
 </html>

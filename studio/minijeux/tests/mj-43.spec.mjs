@@ -3,6 +3,13 @@
 // résolution complète, progression des 3 paliers jusqu'à l'overlay, zéro mot punitif.
 
 export async function run({ page, ok }) {
+  // ── Gabarit mj-shell.js : le panneau règle s'ouvre TOUT SEUL à la 1ʳᵉ partie ──
+  await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
+  ok('panneau règle ouvert automatiquement à la 1ʳᵉ partie', (await page.locator('#ri-panneau.on').count()) === 1);
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
+  ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
+
   await page.evaluate(() => window.__mjTest.setTestMode(true));
 
   // ── État initial ─────────────────────────────────────────────────────
@@ -20,12 +27,12 @@ export async function run({ page, ok }) {
   });
   ok('Round soluble : Σ jetons == Σ cibles', solvable);
 
-  // ── Bouton règles (i) — composant partagé RegleInfo ──────────────────
-  ok('Bouton règles ❓ présent', await page.locator('#btn-regle').count() === 1);
+  // ── Bouton règles (i) — composant gabarit mj-shell.js ─────────────────
+  ok('Bouton règles 🧑‍🔬 présent', await page.locator('#btn-regle').count() === 1);
   await page.click('#btn-regle');
-  ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);
-  await page.click('#ri-close'); // v3 : fermeture explicite ✕ (panneau bottom-sheet)
-  ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
+  ok('Panneau règle ouvert au tap', await page.locator('#ri-panneau.on').count() === 1);
+  await page.click('#ri-ok');
+  ok('Panneau règle fermé au tap', await page.locator('#ri-panneau.on').count() === 0);
 
   // ── Placement valide : la somme de la caisse augmente ────────────────
   const placed = await page.evaluate(() => {

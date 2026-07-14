@@ -192,21 +192,34 @@
   </div>
 
 </div>
-  <script src="js/tracker.js"></script>
-  <script src="js/sounds.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/regle-info.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <script src="js/mj-shell.js"></script>
   <script>
-    RegleInfo.init({ texte: "Trouve le trou qui remplit le grenier PILE-POIL !", picto: "🌱👉🏺" });
-  </script>
-  <script>
+  MJ.ready(function () {
     // ═══════════════════════════════════════════════════════════════════════
     //  MJ-35 — Le jeu des graines (semailles mancala SOLO, coopératif)
     //  Spec : studio/minijeux/docs/jeux/mj-34-35-36-specs.md § MJ-35
     //  Kalah duel/IA NO-GO à 4 ans (décision game-conseiller) → version SOLO.
     // ═══════════════════════════════════════════════════════════════════════
+
+    MJ.init({
+      id: 'mj-35', emoji: '🌱', titre: 'Le jeu des graines',
+      golden: false,
+      consigne: false, // consigne locale gérée par #instruction (pas la barre standard)
+      regle: {
+        texte: 'Trouve le trou qui remplit le grenier PILE-POIL !',
+        picto: '🌱👉🏺',
+        etapes: [
+          { t: 'Je regarde les graines dans les trous 👀',
+            d: 'Chaque trou a des graines dedans. Je compte avec mes doigts si je veux !' },
+          { t: 'Je cherche LE bon trou 🤔',
+            d: 'Un seul trou a JUSTE assez de graines pour arriver PILE dans le grenier, pas avant, pas après.' },
+          { t: 'Je tape le trou, les graines sautent 👉🌱',
+            d: 'Elles sautent une par une vers le grenier. Si la dernière tombe pile dedans : « PILE ! » ✨' },
+          { t: 'Je me trompe ? Pas grave, je recompte 💡',
+            d: 'Rien n’est perdu, le plateau se réarrange et je réessaie. 3 PILE réussis = la partie est gagnée !' }
+        ]
+      }
+    });
 
     const NB_PITS = 6;
     const SEED_COLORS = ['#e74c3c', '#f1c40f', '#3498db', '#2ecc71', '#9b59b6', '#e67e22'];
@@ -465,6 +478,7 @@
       },
       sow(i) { return sow(i); },
     };
+  });
   </script>
 </body>
 </html>

@@ -3,6 +3,13 @@
 // subset-sum inatteignable), undo, victoire, progression 3 paliers, zéro mot punitif.
 
 export async function run({ page, ok }) {
+  // ── Gabarit mj-shell.js : le panneau règle s'ouvre TOUT SEUL à la 1ʳᵉ partie ──
+  await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
+  ok('panneau règle ouvert automatiquement à la 1ʳᵉ partie', (await page.locator('#ri-panneau.on').count()) === 1);
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
+  ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
+
   await page.evaluate(() => window.__mjTest.setTestMode(true));
 
   // ── État initial ─────────────────────────────────────────────────────
@@ -30,11 +37,11 @@ export async function run({ page, ok }) {
   ok('Round soluble : Σ groupes solution == cible', solvable);
 
   // ── Bouton règles (i) ────────────────────────────────────────────────
-  ok('Bouton règles ❓ présent', await page.locator('#btn-regle').count() === 1);
+  ok('Bouton règles 🧑‍🔬 présent', await page.locator('#btn-regle').count() === 1);
   await page.click('#btn-regle');
-  ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);
-  await page.click('#ri-close'); // v3 : fermeture explicite ✕ (panneau bottom-sheet)
-  ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
+  ok('Panneau règle ouvert au tap', await page.locator('#ri-panneau.on').count() === 1);
+  await page.click('#ri-ok');
+  ok('Panneau règle fermé au tap', await page.locator('#ri-panneau.on').count() === 0);
 
   // ── Refus doux : dépassement ET subset-sum inatteignable ─────────────
   // Cible 5, groupes {3,2,4,1} : taper 4 laisse {3,2,1} avec reste 1 → OK (1).

@@ -80,33 +80,40 @@
     </div>
     <div class="pips" id="pips"></div>
 
-    <div class="instruction-text" id="instruction">Trouve 2 tuiles avec le même dino !</div>
-
     <div class="board-wrap">
       <div class="board" id="board"></div>
       <div class="reshuffle-overlay"><div class="reshuffle-text" id="reshuffleText">🌀 On remélange !</div></div>
     </div>
   </div>
 
-  <script src="js/sounds.js"></script>
-  <script src="js/tts.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/feedback.js"></script>
-  <script src="js/catalog.js"></script>
-  <script src="js/stars.js"></script>
-  <script src="js/mj-golden.js"></script>
   <script src="js/lang.js"></script>
   <script src="js/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
   <script src="js/dinos-audio-manifest.js"></script>
-  <script src="js/regle-info.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
   <script>
-    RegleInfo.init({ texte: "Trouve les 2 mêmes dinos sur les tuiles libres !", picto: "🀄🀄✨" });
-  </script>
-  <script>
+  MJ.ready(function () {
     // ─── MJ-41 — Les tuiles dinos : mahjong solitaire simplifié 4-8 ans ───
+    const shell = MJ.init({
+      id: 'mj-41', emoji: '🀄', titre: 'Les tuiles dinos',
+      golden: true,
+      consigne: true,
+      regle: {
+        picto: '🀄🀄✨',
+        texte: 'Trouve les 2 mêmes dinos sur les tuiles libres !',
+        etapes: [
+          { t: 'Je regarde les tuiles libres 👀',
+            d: 'Une tuile brille si elle n’est pas coincée : rien au-dessus, et un côté libre.' },
+          { t: 'Je tape 2 tuiles avec le même dino 👆',
+            d: 'Si c’est le même dino, elles s’envolent ! Sinon, elles se retournent et je réessaie.' },
+          { t: 'Si je bloque, ça se remélange tout seul 🌀',
+            d: 'Pas de souci : si plus aucune paire n’est jouable, les tuiles restantes changent de place.' },
+          { t: 'Plus j’ai d’étoiles, plus il y a de tuiles 💪',
+            d: 'Le tas devient plus haut et plus grand à ranger !' }
+        ]
+      }
+    });
     // Mécanique : pyramide de tuiles têtes-de-dinos. Une tuile est "libre" si rien ne
     // la recouvre (couche du dessus) et qu'un de ses côtés gauche/droit est dégagé
     // (règle mahjong classique). Tap 2 tuiles libres du même dino → paire envolée.
@@ -122,7 +129,7 @@
     // disponible (l'utilisateur a fait des choix qui bloquent — rare mais possible sur
     // les formes à 3 couches), les tuiles restantes se remélangent automatiquement.
 
-    const G = Golden.setup('mj-41');
+    const G = shell.G;
     const level = G.level; // 0,1,2
 
     // Paliers : ★ 12 tuiles (6 paires, 2 couches) / ★★ 20 tuiles (3 couches) / ★★★ 32 tuiles (3 couches)
@@ -448,6 +455,7 @@
       // standard golden générique 4/6/8 (fait pour des quiz question-par-question).
       G.totalQ = totalPairs;
       G.buildPips();
+      shell.setConsigne('Trouve 2 tuiles avec le même dino !');
       renderBoard();
       resetIdleHint();
       window.addEventListener('resize', layout);
@@ -476,10 +484,7 @@
       forceReshuffle: () => reshuffleRemaining(),
       anyFreePairAvailable,
     };
+  });
   </script>
-  <script src="js/tracker.js"></script>
-  <script src="js/cloud.js"></script>
-  <script src="js/comments.js"></script>
-  <script src="js/back-button.js"></script>
 </body>
 </html>

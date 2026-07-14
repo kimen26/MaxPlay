@@ -8,14 +8,6 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/mp-theme.css">
   <style>
-    .instruction-text { text-align:center; font-size:1.3rem; font-weight:900; color:#ffe066; margin:8px 12px 2px; }
-    .question-counter { text-align:center; font-size:.85rem; opacity:.7; margin-top:4px; }
-    .tts-btn { min-height:80px;
-      display:flex; align-items:center; gap:8px; margin:6px auto;
-      background:linear-gradient(135deg,#26a69a,#4db6ac); color:#fff; border:none; cursor:pointer;
-      border-radius:25px; padding:9px 20px; font-size:.95rem; font-weight:900; box-shadow:0 4px 12px #0005;
-    }
-    .tts-btn:active { transform:scale(.94); }
     /* flex-shrink:0 + overflow-y:auto : sans ça, en flex column contraint (#app 100dvh),
        .play-area se fait écraser sous sa taille naturelle et les sprites débordent du
        cadre blanc (bug "dino tronqué en bas", Papa Yann 2026-07-07). */
@@ -42,36 +34,19 @@
 </head>
 <body>
   <div id="app">
-    <div class="hdr">
-      <a href="index.html" class="back">←</a>
-      <span class="htitle">🔢 Compte les dinos</span>
-    </div>
-    <div class="pips" id="pips"></div>
-
-    <div class="qbox">
-      <div class="instruction-text">Combien de dinos ?</div>
-      <button class="tts-btn" id="repeatBtn"><span>🔊</span><span>Compte avec moi</span></button>
-    </div>
-
     <div class="play-area" id="playArea"></div>
     <div class="choices" id="choices"></div>
   </div>
 
 
-  <script src="js/sounds.js"></script>
-  <script src="js/tts.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/feedback.js"></script>
-  <script src="js/catalog.js"></script>
-  <script src="js/stars.js"></script>
-  <script src="js/qcm-retry.js"></script>
-  <script src="js/mj-golden.js"></script>
+  <!-- libs SPÉCIFIQUES au jeu -->
   <script src="js/lang.js"></script>
   <script src="js/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
   <script>
+    MJ.ready(function () {
     // ─── MJ-26 — Compte les dinos (1 à 6, ombres chinoises par-dino) ───
     // Refonte 2026-07-05 (ordre Papa Yann) : anciennes silhouettes par-famille supprimees,
     // remplacees par les ombres chinoises canon (img/dinos/ombres/), groupees par famille.
@@ -108,9 +83,29 @@
       return countBag.shift();
     }
 
+    const shell = MJ.init({
+      id: 'mj-26', emoji: '🔢', titre: 'Compte les dinos',
+      golden: true,
+      consigne: true,
+      onRepeat: countAloud,
+      regle: {
+        picto: '🦕🔢',
+        texte: 'Compte les dinos, puis tape le bon chiffre !',
+        etapes: [
+          { t: 'Je compte les ombres 👀',
+            d: 'Un, deux, trois… je compte chaque dino affiché à l’écran.' },
+          { t: 'Je tape la consigne pour compter avec la voix 🔊',
+            d: 'Ça dit « Un, deux, trois ! Trois dinos. » si j’ai besoin d’aide.' },
+          { t: 'Je tape le bon chiffre 👆',
+            d: 'Si je me trompe, la bonne réponse s’allume en vert et je réessaie.' },
+          { t: 'Plus j’ai d’étoiles, plus il y a de dinos à compter 💪',
+            d: 'Au début : 1 à 3 dinos. Avec les étoiles : jusqu’à 6 !' }
+        ]
+      }
+    });
+
     function init(){
       G.buildPips();
-      document.getElementById('repeatBtn').onclick = countAloud;
       nextQuestion();
     }
 
@@ -138,7 +133,7 @@
         img.style.animationDelay = (i*0.12) + 's';
         area.appendChild(img);
       }
-      SoundPool.phrase('combien-de-dinos', 'Combien de dinos ? Compte-les !');
+      shell.setConsigne('Combien de dinos ? Compte-les !');
 
       // choix numériques : la bonne + voisines plausibles dans la plage globale
       const correct = currentCount;
@@ -188,10 +183,7 @@
     }
 
     init();
+    });
   </script>
-  <script src="js/tracker.js"></script>
-  <script src="js/cloud.js"></script>
-  <script src="js/comments.js"></script>
-  <script src="js/back-button.js"></script>
 </body>
 </html>

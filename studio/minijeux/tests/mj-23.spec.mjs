@@ -9,6 +9,13 @@ export async function run({ page, ok }) {
   if (await splash.count()) await splash.click({ timeout: 1500 }).catch(() => {});
   await page.waitForSelector('.mp-intro-splash', { state: 'detached', timeout: 4000 }).catch(() => {});
 
+  // Migration gabarit mj-shell.js : panneau règle 🧑‍🔬 s'ouvre tout seul à la 1ʳᵉ partie
+  await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
+  ok('panneau règle ouvert automatiquement à la 1ʳᵉ partie', (await page.locator('#ri-panneau.on').count()) === 1);
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
+  ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
+
   ok('bandeau Niveau présent', (await page.locator('#levelbar').count()) === 1);
   ok('démarre au Niveau 1', (((await page.locator('#levelbar').textContent()) || '').includes('Niveau 1')));
   ok('un mot est affiché', (((await page.locator('#word').textContent()) || '').trim().length) > 0);

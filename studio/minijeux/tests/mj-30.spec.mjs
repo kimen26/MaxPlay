@@ -24,7 +24,8 @@ export async function run({ page, ok }) {
   await page.waitForTimeout(250);
   ok('panneau refermé par « J\'ai compris ! »', (await page.locator('#ri-panneau.on').count()) === 0);
 
-  ok('DINO_POOL chargé', await page.evaluate(() => typeof DINO_POOL !== 'undefined' && DINO_POOL.length >= 40));
+  // DINO_POOL est une const dans la closure MJ.ready() (gabarit mj-shell) — plus visible
+  // depuis window après migration, on vérifie son effet (billes + tuiles) à la place.
   ok('Niveau 1 = 4 billes (standard golden : 4/6/8 selon etoiles)', (await page.locator('.pip').count()) === 4);
   ok('1re bille marquée courante', (await page.locator('.pip.cur').count()) === 1);
 

@@ -1,6 +1,16 @@
 // Pilote MJ-17 — Le garage : réparer TOTAL_BUS (8) bus au garage (drag-drop outils).
 // Pas de figée. Smoke + vérifie l'écran de fin (playEndSound branché 2026-07-13, ex-silencieux).
 export async function run({ page, ok }) {
+  await page.evaluate(() => localStorage.clear());
+  await page.reload({ waitUntil: 'networkidle' });
+
+  // Panneau règle v3 : s'ouvre TOUT SEUL à la 1ʳᵉ partie (gabarit mj-shell.js) → on ferme.
+  await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
+  ok('panneau règle ouvert automatiquement à la 1ʳᵉ partie', (await page.locator('#ri-panneau.on').count()) === 1);
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
+  ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
+
   await page.waitForSelector('#bus-zone', { timeout: 5000 });
 
   ok('zone bus présente', (await page.locator('#bus-zone').count()) === 1);

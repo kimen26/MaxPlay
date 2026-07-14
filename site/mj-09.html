@@ -179,18 +179,14 @@
   </div>
 </div>
 
-<script src="js/sounds.js"></script>
-<script src="js/tts.js"></script>
-<script src="js/victory-sounds.js"></script>
-<script src="js/feedback.js"></script>
+<!-- libs SPÉCIFIQUES au jeu -->
 <script src="js/data.js"></script>
 <script src="js/bus-svg.js"></script>
-<script src="js/catalog.js"></script>
-<script src="js/stars.js"></script>
 <script src="js/drag-drop.js"></script>
-<script src="js/mp-theme.js"></script>
-<script src="js/celebrations.js"></script>
+<!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
+<script src="js/mj-shell.js"></script>
 <script>
+  MJ.ready(function () {
   // ─── MJ-09 : Trie les bus ! ───
   // Pool : 26 bus Max + 39 métros/RER/tramways = ~65 véhicules
   // 6 familles : bleu / vert / orange-jaune / violet-rose / rouge / brun
@@ -296,6 +292,25 @@
     const id = getFamilyByHsl(line.color);
     return FAMILIES.find(f => f.id === id) || null;
   }
+
+  MJ.init({
+    id: 'mj-09', emoji: '🗂️', titre: 'Trie les bus !',
+    consigne: false,
+    regle: {
+      picto: '🗂️🚌',
+      texte: 'Range chaque bus dans la bonne boîte de couleur !',
+      etapes: [
+        { t: 'Je regarde la couleur du bus 👀',
+          d: 'Chaque bus a une couleur : bleu, vert, orange, violet, rouge ou brun.' },
+        { t: 'Je glisse le bus vers sa boîte 👆',
+          d: 'La boîte s’allume en vert quand je suis au bon endroit. J’entends le nom de la ligne !' },
+        { t: 'Si je me trompe, le bus revient tout seul 🔄',
+          d: 'Pas de souci, je peux réessayer autant de fois que je veux.' },
+        { t: 'Plus j’ai d’étoiles, plus il y a de bus et de couleurs 💪',
+          d: 'Niveau 1 : 2 couleurs, 4 bus. Niveau 5 : les 6 couleurs, 26 bus, avec le défilé final !' }
+      ]
+    }
+  });
 
   // ── Paliers (doc _PALIERS) : nb de familles + nb de bus. Niveau = Stars.get+1 ──
   const level = Math.max(0, Math.min(4, (window.Stars ? Stars.get('mj-09') : 0)));
@@ -627,11 +642,8 @@ function highlightBox(bus) {
     document.addEventListener('pointercancel', onDragEnd);
   }
 
-  document.addEventListener('DOMContentLoaded', init);
+  init();
+  });
 </script>
-<script src="js/tracker.js"></script>
-<script src="js/cloud.js"></script>
-<script src="js/comments.js"></script>
-  <script src="js/back-button.js"></script>
 </body>
 </html>

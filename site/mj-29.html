@@ -8,8 +8,6 @@
   <link rel="stylesheet" href="css/mp-theme.css">
   <link rel="stylesheet" href="css/style.css">
   <style>
-    .instruction-text { text-align:center; font-size:1.15rem; font-weight:900; color:#ffe066; margin:8px 12px 2px; }
-
     /* ─── Zone d'assemblage (cases) ─── */
     .slots {
       display:flex; align-items:center; justify-content:center; gap:8px;
@@ -52,14 +50,6 @@
     }
     .dino-sens { font-size:1rem; font-weight:700; text-align:center; color:#fff; opacity:.9; padding:0 16px; }
 
-    .tts-btn { min-height:80px;
-      display:flex; align-items:center; gap:8px; margin:6px auto;
-      background:linear-gradient(135deg,#43a047,#66bb6a); color:#fff; border:none; cursor:pointer;
-      border-radius:25px; padding:10px 22px; font-size:1rem; font-weight:900;
-      box-shadow:0 4px 12px #0005;
-    }
-    .tts-btn:active { transform:scale(.94); }
-
     /* ─── Briques racines ─── */
     .bricks {
       flex:1; display:flex; flex-wrap:wrap; align-content:center; justify-content:center;
@@ -91,17 +81,6 @@
 </head>
 <body>
   <div id="app">
-    <div class="hdr">
-      <a href="index.html" class="back">←</a>
-      <span class="htitle">🧩 La fabrique de noms</span>
-    </div>
-    <div class="pips" id="pips"></div>
-
-    <div class="qbox" style="background:none;box-shadow:none;padding:0;margin:0;">
-      <div class="instruction-text" id="instruction">…</div>
-      <button class="tts-btn" id="repeatBtn"><span>🔊</span><span>Écouter</span></button>
-    </div>
-
     <div class="slots" id="slots"></div>
     <div class="full-name" id="fullName"></div>
     <div class="dino-reveal" id="dinoReveal">
@@ -112,20 +91,15 @@
     <div class="bricks" id="bricks"></div>
   </div>
 
+  <!-- libs SPÉCIFIQUES au jeu -->
   <script src="js/lang.js"></script>
   <script src="js/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
   <script src="js/dinos-racines.js"></script>
-  <script src="js/sounds.js"></script>
-  <script src="js/tts.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/feedback.js"></script>
-  <script src="js/catalog.js"></script>
-  <script src="js/stars.js"></script>
-  <script src="js/mj-golden.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
   <script>
+    MJ.ready(function () {
     // ─── MJ-29 — La fabrique de noms (assemblage de racines grec/latin) ───
     // Un dino à reconstruire : slots vides dans l'ordre des racines, briques mélangées en bas.
     // Chaque bonne brique posée -> TTS dit son sens immédiatement. Nom complet -> fête + image.
@@ -177,11 +151,29 @@
     let qCount = 0, streak = 0;
     let currentDino = null, slotIndex = 0, misses = 0, order = [], placedCount = 0;
 
+    const shell = MJ.init({
+      id: 'mj-29', emoji: '🧩', titre: 'La fabrique de noms',
+      golden: true,
+      consigne: true,
+      onRepeat: function () { if (currentDino) speak(instructionFor(currentDino)); },
+      regle: {
+        picto: '🧩🦕',
+        texte: 'Assemble les morceaux du nom du dino !',
+        etapes: [
+          { t: 'J’écoute quel dino construire 👂',
+            d: '« Construis le nom de… » Je tape la consigne pour réécouter.' },
+          { t: 'Je tape une brique en bas 👆',
+            d: 'Chaque brique est un morceau du nom. Elle vole dans la bonne case et je découvre ce qu’elle veut dire.' },
+          { t: 'Je continue jusqu’à finir le nom 🧩',
+            d: 'Si je me trompe de brique, elle tremble un peu et je réessaie — pas grave !' },
+          { t: 'Plus j’ai d’étoiles, plus il y a de morceaux et de pièges 💪',
+            d: 'Au début : 2 morceaux, aucun piège. Avec les étoiles : 3 morceaux, et des fausses briques mélangées !' }
+        ]
+      }
+    });
+
     function init() {
       G.buildPips();
-      document.getElementById('repeatBtn').onclick = () => {
-        if (currentDino) speak(instructionFor(currentDino));
-      };
       nextDino();
     }
 
@@ -232,11 +224,10 @@
       renderBricks(brickList);
       updateNextFlags();
 
-      document.getElementById('instruction').textContent = instructionFor(dino);
       document.getElementById('fullName').classList.remove('show');
       document.getElementById('fullName').textContent = '';
       document.getElementById('dinoReveal').classList.remove('show');
-      speak(instructionFor(dino));
+      shell.setConsigne(instructionFor(dino));
     }
 
     function renderSlots(n) {
@@ -373,10 +364,7 @@
     }
 
     init();
+    });
   </script>
-  <script src="js/tracker.js"></script>
-  <script src="js/cloud.js"></script>
-  <script src="js/comments.js"></script>
-  <script src="js/back-button.js"></script>
 </body>
 </html>

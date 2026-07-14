@@ -112,18 +112,14 @@
   <!-- Feedback overlay -->
   <div id="fbOverlay"></div>
 
-  <!-- Scripts -->
-  <script src="js/sounds.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/feedback.js"></script>
+  <!-- libs SPÉCIFIQUES au jeu -->
   <script src="js/data.js"></script>
   <script src="js/bus-svg.js"></script>
-  <script src="js/catalog.js"></script>
-  <script src="js/stars.js"></script>
-  <script src="js/qcm-retry.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <script src="js/intro-splash.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
   <script>
+    MJ.ready(function () {
     // ─── MJ-05 : La bonne place ───
     // Problèmes places / monter / descendre / combo. 5 paliers (doc _PALIERS-DIFFICULTE.md).
     // Niveau = Stars.get('mj-05') + 1. Manche mixte 8 questions (4 palier courant + 4 plus faciles).
@@ -154,6 +150,25 @@
       ['monter', 'descendre', 'combo'],
       ['combo', 'combo', 'monter', 'descendre'],
     ];
+
+    const shell = MJ.init({
+      id: 'mj-05', emoji: '🪑', titre: 'La bonne place',
+      consigne: false,
+      regle: {
+        picto: '🪑🚌',
+        texte: 'Trouve combien de places dans le bus !',
+        etapes: [
+          { t: 'Je lis le problème 📖',
+            d: 'Le bus a des places, des gens montent ou descendent. Je regarde bien les dessins pour m’aider.' },
+          { t: 'Je compte les places libres et les passagers 👀',
+            d: 'Les sièges occupés sont rouges, les libres sont verts. Les gens qui attendent sont dessinés à côté du bus.' },
+          { t: 'Je tape le bon nombre 🔢',
+            d: 'Si je me trompe, un indice m’aide à trouver la méthode — jamais la réponse toute faite !' },
+          { t: 'Plus j’ai d’étoiles, plus les problèmes sont costauds 💪',
+            d: 'D’abord juste compter les places libres, puis monter, descendre, et même les deux à la fois !' }
+        ]
+      }
+    });
 
     function setLevelBadge() { const lb = document.getElementById('levelbar'); if (lb) lb.textContent = 'Niveau ' + (level + 1); }
 
@@ -379,11 +394,7 @@
     }
 
     init();
+    });
   </script>
-  <script src="js/tracker.js"></script>
-  <script src="js/cloud.js"></script>
-  <script src="js/comments.js"></script>
-  <script src="js/intro-splash.js"></script>
-  <script src="js/back-button.js"></script>
 </body>
 </html>

@@ -13,6 +13,13 @@ const RECIPES = {
 const POT = { r:'.pot-rouge', j:'.pot-jaune', b:'.pot-bleu', w:'.pot-blanc' };
 
 export async function run({ page, ok }) {
+  // Migration gabarit mj-shell.js : panneau règle 🧑‍🔬 s'ouvre tout seul à la 1ʳᵉ partie
+  await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
+  ok('panneau règle ouvert automatiquement à la 1ʳᵉ partie', (await page.locator('#ri-panneau.on').count()) === 1);
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
+  ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
+
   // FIGÉ : le bus cible est EN BAS (sous le tube). Vérifié avant de jouer.
   const tubeBox0 = await page.locator('#tube-wrap').boundingBox();
   const busBox0  = await page.locator('#bus-bas-wrap').boundingBox();

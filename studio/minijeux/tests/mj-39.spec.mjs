@@ -4,6 +4,13 @@
 // jamais de blocage (pieces renouvelées), palier ★ atteint sans "Game Over" punitif.
 
 export async function run({ page, ok }) {
+  // ─── Règles v3 : panneau s'ouvre TOUT SEUL à la 1ʳᵉ partie (regle-info.js) ───
+  await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
+  ok('panneau règle ouvert automatiquement à la 1ʳᵉ partie', (await page.locator('#ri-panneau.on').count()) === 1);
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
+  ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
+
   const hasHook = await page.evaluate(() => !!window.__mjTest);
   ok('window.__mjTest exposé', hasHook);
   if (!hasHook) return;
@@ -55,7 +62,7 @@ export async function run({ page, ok }) {
   const st2 = await page.evaluate(() => window.__mjTest.getState());
   ok('Partie continue après palier (pas de Game Over à ce stade)', st2.gameOverShown === false);
 
-  // ─── EP-068 : bouton règles (i) — composant partagé RegleInfo ───
+  // ─── EP-068 : bouton règles (i) — réouverture manuelle après le 1er auto-open ───
   ok('Bouton règles ❓ présent dans le header', await page.locator('#btn-regle').count() === 1);
   await page.click('#btn-regle');
   ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);

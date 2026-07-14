@@ -112,18 +112,31 @@
   <button id="btn-continue">Continuer</button>
 </div>
 
-<script src="js/tracker.js"></script>
-<script src="js/sounds.js"></script>
-<script src="js/victory-sounds.js"></script>
-<script src="js/regle-info.js"></script>
-<script src="js/mp-theme.js"></script>
-<script src="js/celebrations.js"></script>
+<!-- LE GABARIT : charge tout le cadre standard (thème, panneau ?, tracking, cloud) -->
+<script src="js/mj-shell.js"></script>
 <script>
-  RegleInfo.init({ texte: "Place les 7 pièces sur la silhouette ! Tape une pièce pour la tourner.", picto: "🔺👉🦕" });
-</script>
-<script>
-(function () {
+MJ.ready(function () {
   'use strict';
+
+  MJ.init({
+    id: 'mj-40', emoji: '🦕', titre: 'Tangram des dinos',
+    golden: false,
+    consigne: false,
+    regle: {
+      picto: '🔺👉🦕',
+      texte: 'Place les 7 pièces sur la silhouette du dino !',
+      etapes: [
+        { t: 'Je regarde la silhouette 👀',
+          d: 'Une forme mystère attend en haut : un œuf, une écaille, un long cou de dino…' },
+        { t: 'Je glisse une pièce dessus 👆',
+          d: 'Je prends une pièce colorée en bas et je la fais glisser sur la bonne case de la silhouette.' },
+        { t: 'Je tape une pièce pour la tourner 🔄',
+          d: 'Si elle ne rentre pas bien, un petit tap la fait pivoter jusqu’à ce qu’elle s’accroche !' },
+        { t: 'Plus j’ai d’étoiles, plus c’est costaud 💪',
+          d: 'Les paliers ★★ et ★★★ ont des figures plus difficiles à reconstituer.' }
+      ]
+    }
+  });
 
   // ============================================================
   // GÉOMÉTRIE — 7 pièces du tangram, coordonnées EXACTES vérifiées
@@ -635,7 +648,7 @@
 
   // Démarrage
   loadFigure(figuresForTier(1)[0].idx);
-})();
+});
 </script>
 </body>
 </html>

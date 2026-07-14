@@ -113,9 +113,9 @@
 </head>
 <body data-ambiance="nuit">
 
-<div class="topbar">
+<div class="topbar hdr">
   <a class="back" href="index.html">←</a>
-  <h1>🦺 Pose-tes-tiles</h1>
+  <h1 class="htitle">🦺 Pose-tes-tiles</h1>
   <select id="grid-size-select" onchange="resizeGrid(+this.value)">
     <option value="8" selected>8×8</option>
     <option value="10">10×10</option>
@@ -146,7 +146,30 @@
   </div>
 </div>
 
+<!-- LE GABARIT : charge tout le cadre standard (thème, panneau ?, tracking, cloud) -->
+<script src="js/mj-shell.js"></script>
 <script>
+MJ.ready(function () {
+'use strict';
+
+MJ.init({
+  id: 'mj-pose-tiles', emoji: '🦺', titre: 'Pose-tes-tiles',
+  golden: false,
+  consigne: false,
+  regle: {
+    picto: '🧱🖐️🏗️',
+    texte: 'Choisis une pièce, tape une case pour la poser. Construis ta ville comme tu veux !',
+    etapes: [
+      { t: 'Je choisis une catégorie puis une pièce 👆',
+        d: 'Route, véhicules, parc, fleurs, déco, maisons : je fais défiler et je tape celle que je veux.' },
+      { t: 'Je tape une case de la grille pour la poser 🧱',
+        d: 'Un appui long sur une case l’efface. Je peux tout recommencer avec 🗑️ Effacer.' },
+      { t: 'Il n’y a pas de bonne ou de mauvaise réponse 🎨',
+        d: 'C’est un bac à sable : je construis ce que je veux, sans chrono et sans erreur possible.' }
+    ]
+  }
+});
+
 const ASSET = 'https://cdn.jsdelivr.net/gh/kimen26/MaxPlay@master/studio/max-adventure/public/assets/tiles/';
 const VEH   = ASSET + 'animated/vehicles/';
 
@@ -506,12 +529,16 @@ load();
 buildCats();
 buildTiles();
 buildGrid();
-</script>
 
-<script src="js/mp-theme.js"></script>
-<script src="js/sounds.js"></script>
-<script src="js/victory-sounds.js"></script>
-<script src="js/feedback.js"></script>
-<script src="js/back-button.js"></script>
+// Exposées sur window : appelées par les attributs onclick/onchange du markup HTML
+// (select#grid-size-select, boutons Lisser/Effacer/Fini) — restent visibles hors
+// de la closure MJ.ready malgré le wrap gabarit.
+window.resizeGrid = resizeGrid;
+window.lisser = lisser;
+window.clearAll = clearAll;
+window.celebrer = celebrer;
+
+}); // fin MJ.ready
+</script>
 </body>
 </html>

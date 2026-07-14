@@ -4,6 +4,13 @@ export async function run({ page, ok }) {
   await page.evaluate(() => localStorage.clear());
   await page.reload({ waitUntil: 'networkidle' });
 
+  // Panneau règle (gabarit mj-shell) : s'ouvre TOUT SEUL à la 1ʳᵉ partie
+  await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
+  ok('panneau règle ouvert automatiquement à la 1ʳᵉ partie', (await page.locator('#ri-panneau.on').count()) === 1);
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
+  ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
+
   ok('compteur de question présent', (await page.locator('#qcounter').count()) === 1);
   ok('démarre à Question 1 / 5', (((await page.locator('#qcounter').textContent()) || '').includes('Question 1 / 5')));
   ok('une phrase à trou est affichée', (await page.locator('.sentence-text .blank').count()) === 1);

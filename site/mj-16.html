@@ -209,6 +209,8 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
     <span id="levelbar" style="font-weight:900;color:var(--gold);background:rgba(255,255,255,0.14);border-radius:10px;padding:3px 12px;font-size:0.85rem;">Niveau 1</span>
     <div id="score-badge">0 / 0</div>
   </div>
+  <!-- NOTE : #level-bar (rond de 5 pastilles) est SPÉCIFIQUE à MJ-16 (5 manches, pas golden 4/6/8),
+       gardé tel quel ; le gabarit n'injecte pas de piste ici (golden:false). -->
 
   <!-- Indicateur de round -->
   <div id="level-bar">
@@ -238,24 +240,16 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
     <div id="end-emoji">🎉</div>
     <div id="end-msg"></div>
     <div id="end-score"></div>
-    <button id="btn-replay" onclick="startGame()">Rejouer !</button>
+    <button id="btn-replay">Rejouer !</button>
     <a href="index.html" style="color:#ffe066;font-weight:900;font-size:0.95rem;margin-top:4px;">← Menu</a>
   </div>
 </div>
 
 <script src="js/bus-svg.js"></script>
 <script src="js/data.js"></script>
-<script src="js/catalog.js"></script>
-<script src="js/stars.js"></script>
-<script src="js/victory-sounds.js"></script>
-<script src="js/tts.js"></script>
-<script src="js/tracker.js"></script>
-<script src="js/cloud.js"></script>
-<script src="js/comments.js"></script>
-  <script src="js/back-button.js"></script>
-<script src="js/mp-theme.js"></script>
-<script src="js/celebrations.js"></script>
+<script src="js/mj-shell.js"></script>
 <script>
+MJ.ready(function () {
 // ═══════════════════════════════════════════════════════════════════════════
 //  MJ-16 — Complète la suite
 //  5 rounds, patterns mixés (3 ou 4 éléments visibles avant la case mystère) :
@@ -264,6 +258,25 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 //    - alt-AB              (4 starters) : 🔴🔵🔴🔵 → 🔴
 //    - alt-ABC             (4 starters) : 🔴🔵🟢🔴 → 🔵
 // ═══════════════════════════════════════════════════════════════════════════
+
+const shell = MJ.init({
+  id: 'mj-16', emoji: '📈', titre: 'Complète la suite',
+  consigne: false, // consigne portée par #q-label (fixe, spécifique à ce jeu)
+  regle: {
+    picto: '📈🚌',
+    texte: 'Regarde les bus qui se suivent et devine le prochain !',
+    etapes: [
+      { t: 'Je regarde la suite de bus 👀',
+        d: 'Il y a une logique : la couleur qui alterne, la taille qui grandit, le numéro qui monte…' },
+      { t: 'Je réfléchis à ce qui manque 🤔',
+        d: 'La dernière case a un « ? » — c’est à moi de trouver quel bus va là !' },
+      { t: 'Je tape le bon bus parmi les 3 choix 👆',
+        d: 'Si je me trompe, je peux réessayer : la bonne réponse n’est jamais révélée tout de suite.' },
+      { t: 'Plus j’ai d’étoiles, plus les suites sont malines 💪',
+        d: 'D’abord des couleurs qui alternent, puis des tailles, puis des chiffres qui montent ou descendent !' }
+    ]
+  }
+});
 
 const ROUNDS_PER_GAME = 5;
 
@@ -808,7 +821,9 @@ function startGame() {
   renderPuzzle(generatePuzzle(round));
 }
 
+document.getElementById('btn-replay').addEventListener('click', startGame);
 startGame();
+}); // fin MJ.ready
 </script>
 </body>
 </html>

@@ -17,34 +17,6 @@
       overflow-x: hidden;
     }
 
-    /* Header */
-    .bus-cabin {
-      width: 100%;
-      max-width: 680px;
-      background: rgba(0,0,0,0.25);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      padding: 6px 12px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-    }
-    .back-btn {
-      text-decoration: none;
-      background: rgba(255,255,255,0.12);
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      min-width: 44px; min-height: 36px;
-      padding: 4px 10px;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.3rem; font-weight: 900;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-    .cabin-title   { color:var(--ink); font-family:'Fredoka One',cursive; font-size:1rem; font-weight:400; }
-    .cabin-subtitle{ display:none; }
-
     /* Dashboard */
     .dashboard {
       width: 100%;
@@ -152,12 +124,9 @@
 </head>
 <body data-mp-intro-emoji="🔔" data-mp-intro-title="Joue avec les sons" data-mp-intro-hint="Touche les boutons pour écouter !">
 
-  <div class="bus-cabin">
-    <a href="index.html" class="back-btn">←</a>
-    <div>
-      <div class="cabin-title">🎵 Nouveaux sons</div>
-      <div class="cabin-subtitle">Découvre les sons secrets !</div>
-    </div>
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">🎵 Nouveaux sons</span>
   </div>
 
   <div class="dashboard">
@@ -453,10 +422,15 @@
 
   </div>
 
-  <script src="js/sounds.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <script src="js/intro-splash.js"></script>
+  <script src="js/mj-shell.js"></script>
   <script>
+  MJ.ready(function () {
+    MJ.init({
+      id: 'mj-12', emoji: '🎵', titre: 'Nouveaux sons',
+      golden: false,
+      consigne: false
+    });
     // ─── Sons synthétisés (ex MJ-10) ─────────────────────────────────────────────
     const SYNTH_FNS = {
       klaxon: typeof sndKlaxon !== 'undefined' ? sndKlaxon : null,
@@ -545,11 +519,7 @@
         if (tapCount >= 5) easterBtn.classList.add('revealed');
       });
     });
+  });
   </script>
-<script src="js/tracker.js"></script>
-<script src="js/cloud.js"></script>
-<script src="js/comments.js"></script>
-  <script src="js/intro-splash.js"></script>
-  <script src="js/back-button.js"></script>
 </body>
 </html>

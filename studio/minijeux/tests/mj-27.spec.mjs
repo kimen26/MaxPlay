@@ -1,5 +1,6 @@
 // Pilote MJ-27 — Lis le nom du dino : nom découpé en syllabes tapables (chacune lue en TTS
 // au tap) + bouton 🔊 nom entier (MP3 <id>-nom.mp3, jamais TTS pour le nom complet).
+// Migré gabarit js/mj-shell.js (2026-07-14) — consigne:false (lecture pure, EP-033).
 // Amélioration 2026-07-07 suite revue Papa Yann : "cliquer sur les syllabes, entendre le son".
 export async function run({ page, ok }) {
   await page.evaluate(() => localStorage.clear());
@@ -15,6 +16,14 @@ export async function run({ page, ok }) {
     window.SpeechSynthesisUtterance.prototype = orig.prototype;
   });
   await page.reload({ waitUntil: 'networkidle' });
+
+  // Panneau règle v3 : s'ouvre TOUT SEUL à la 1ʳᵉ partie (n'appelle PAS speechSynthesis
+  // tant qu'on ne tape pas "Écoute toutes les règles" — compatible EP-033).
+  await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
+  ok('panneau règle ouvert automatiquement à la 1ʳᵉ partie', (await page.locator('#ri-panneau.on').count()) === 1);
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
+  ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
 
   ok('DINOS chargé', await page.evaluate(() => typeof DINOS !== 'undefined' && DINOS.length > 10));
   ok('Niveau 1 = 4 billes (standard golden : 4/6/8 selon etoiles)', (await page.locator('.pip').count()) === 4);

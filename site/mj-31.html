@@ -69,7 +69,6 @@
     <div class="pips" id="pips"></div>
 
     <div class="qbox">
-      <div class="instruction-text" id="instruction">…</div>
       <div class="dino-float-wrap">
         <div class="dino-float-card" id="dinoCard"></div>
         <div class="dino-name" id="dinoName"></div>
@@ -79,23 +78,36 @@
     <div class="frise" id="frise"></div>
   </div>
 
-  <script src="js/sounds.js"></script>
-  <script src="js/tts.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/feedback.js"></script>
-  <script src="js/catalog.js"></script>
-  <script src="js/stars.js"></script>
-  <script src="js/qcm-retry.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
-  <script src="js/mj-golden.js"></script>
   <script src="js/lang.js"></script>
   <script src="js/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
   <script src="js/dinos-audio-manifest.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
   <script>
+  MJ.ready(function () {
     // ─── MJ-31 — Le grand voyage du temps (dino → bonne bande d'époque) ───
-    const G = Golden.setup('mj-31');
+    const shell = MJ.init({
+      id: 'mj-31', emoji: '🌋', titre: 'Le grand voyage du temps',
+      golden: true,
+      consigne: true,
+      onRepeat: function () { announceTarget(); },
+      regle: {
+        picto: '🦕🌋🦖',
+        texte: 'Range le dino dans la bonne époque !',
+        etapes: [
+          { t: 'J’écoute le nom du dino 👂',
+            d: 'Une voix annonce un dino mystère, avec son ombre. Je tape la consigne pour réécouter.' },
+          { t: 'Je regarde les bandes de couleur 🎨',
+            d: 'Chaque bande est une époque : Trias, Jurassique, Crétacé… Il y en a une bonne pour le dino !' },
+          { t: 'Je tape la bonne bande 👆',
+            d: 'Le dino se pose dedans ! Si je me trompe, une voix m’aide et je peux réessayer.' },
+          { t: 'Plus j’ai d’étoiles, plus c’est costaud 💪',
+            d: 'De nouvelles bandes apparaissent, et parfois deux cousins vivaient à des époques très différentes !' }
+        ]
+      }
+    });
+    const G = shell.G;
     const MAX_Q = G.totalQ;
     const level = G.level;
 
@@ -212,6 +224,16 @@
       return d;
     }
 
+    // Annonce en voix reelle (asset <id>-nom.mp3) — fallback TTS pour les dinos en attente quota EL.
+    // Puis enchaine sur la phrase preenregistree "il-vivait-quand.mp3" (fallback TTS si absente).
+    // Réutilisée par le tap consigne (onRepeat) pour réécouter la question courante.
+    function announceTarget(){
+      if (!targetDino) return;
+      playEl(window.AUDIO_DINOS + '' + targetDino.id + '-nom.mp3', targetDino.name + ' !', () => {
+        playEl('sounds/voix/phrases/il-vivait-quand.mp3', 'Il vivait quand ?');
+      });
+    }
+
     function nextQuestion(){
       if (qCount >= MAX_Q) return startMeteorFinale();
       qcm = QcmRetry.create();
@@ -223,14 +245,10 @@
 
       targetDino = pickTarget();
 
-      document.getElementById('instruction').textContent = 'Il vivait quand ?';
+      shell.setConsigne('Il vivait quand ?', false); // l'audio custom (announceTarget) suit
       document.getElementById('dinoName').textContent = targetDino.name;
       document.getElementById('dinoCard').innerHTML = '<img src="' + ombreSrc(targetDino) + '" alt="">';
-      // Annonce en voix reelle (asset <id>-nom.mp3) — fallback TTS pour les 9 dinos en attente quota EL
-      // Puis enchaine sur la phrase preenregistree "il-vivait-quand.mp3" (fallback TTS si absente).
-      playEl(window.AUDIO_DINOS + '' + targetDino.id + '-nom.mp3', targetDino.name + ' !', () => {
-        playEl('sounds/voix/phrases/il-vivait-quand.mp3', 'Il vivait quand ?');
-      });
+      announceTarget();
 
       document.querySelectorAll('.band').forEach(b => {
         b.classList.remove('ok','ko');
@@ -375,10 +393,7 @@
     }
 
     init();
+  });
   </script>
-  <script src="js/tracker.js"></script>
-  <script src="js/cloud.js"></script>
-  <script src="js/comments.js"></script>
-  <script src="js/back-button.js"></script>
 </body>
 </html>

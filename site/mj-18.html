@@ -153,16 +153,30 @@
     </div>
   </div>
 
-  <script src="js/sounds.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/feedback.js"></script>
   <script src="js/bus-svg.js"></script>
   <script src="js/data.js"></script>
-  <script src="js/catalog.js"></script>
-  <script src="js/stars.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <script src="js/mj-shell.js"></script>
   <script>
+  MJ.ready(function () {
+    const shell = MJ.init({
+      id: 'mj-18', emoji: '🧪', titre: 'Tubes de couleurs',
+      consigne: false, // jeu de manipulation continue (puzzle water-sort), pas de consigne parlée
+      regle: {
+        picto: '🧪🚌',
+        texte: 'Verse les couleurs pour que chaque tube n’ait qu’une seule couleur !',
+        etapes: [
+          { t: 'Je tape un tube pour le choisir 👆',
+            d: 'Le tube se soulève un peu — c’est celui que je vais verser.' },
+          { t: 'Je tape un 2ᵉ tube pour verser dedans 🫗',
+            d: 'La couleur du dessus coule dans l’autre tube, seulement si c’est la même couleur (ou si le tube est vide).' },
+          { t: 'Je range toutes les couleurs 🎯',
+            d: 'Chaque tube doit finir avec une seule couleur, du haut en bas. Les tubes vides aident à trier !' },
+          { t: 'Plus j’ai d’étoiles, plus j’ai de couleurs à trier 💪',
+            d: 'On commence avec 2 couleurs, puis 3, 4, 5, jusqu’à 6 pour les champions !' }
+        ]
+      }
+    });
+
     const TUBE_CAPACITY = 4;
     const TUBES_EMPTY = 2;
 
@@ -432,11 +446,12 @@
 
     function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
 
-    document.addEventListener('DOMContentLoaded', () => { updateCountDisplay(); newGame(); });
+    // Exposés pour les onclick inline du markup (boutons Remélanger / Nouveau / victoire)
+    window.resetSameColors = resetSameColors;
+    window.newGame = newGame;
+
+    updateCountDisplay(); newGame(); // DOM déjà prêt (MJ.ready)
+  }); // fin MJ.ready
   </script>
-  <script src="js/tracker.js"></script>
-  <script src="js/cloud.js"></script>
-  <script src="js/comments.js"></script>
-  <script src="js/back-button.js"></script>
 </body>
 </html>

@@ -3,6 +3,13 @@
 // zones tap >=80px + assert bouton voix silencieux (aucune erreur console).
 
 export async function run({ page, ok }) {
+  // ─── Règles v3 : panneau s'ouvre TOUT SEUL à la 1ʳᵉ partie (regle-info.js) ───
+  await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
+  ok('panneau règle ouvert automatiquement à la 1ʳᵉ partie', (await page.locator('#ri-panneau.on').count()) === 1);
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
+  ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
+
   // Header canonique .hdr présent et hauteur cohérente avec les autres MJ
   const hdrBox = await page.locator('.hdr').boundingBox();
   ok('Header .hdr présent', !!hdrBox);
@@ -54,7 +61,7 @@ export async function run({ page, ok }) {
   });
   ok('Structure de test exploitable sans requête réseau parasite', voicelines === true);
 
-  // ─── EP-068 : bouton règles (i) — composant partagé RegleInfo ───
+  // ─── EP-068 : bouton règles (i) — réouverture manuelle après le 1er auto-open ───
   ok('Bouton règles ❓ présent dans le header', await page.locator('#btn-regle').count() === 1);
   await page.click('#btn-regle');
   ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);

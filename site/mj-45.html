@@ -119,7 +119,7 @@
     </div>
 
     <div class="tray-wrap">
-      <div class="zone-label" id="tray-label">À l'arrêt</div>
+      <div class="zone-label" id="tray-label">À l’arrêt</div>
       <div class="tray" id="tray"></div>
     </div>
   </div>
@@ -267,7 +267,7 @@
         shuffle(groups);
         setPlaque(target, 'passagers');
         document.getElementById('inbus-label').textContent = 'Dans le bus';
-        document.getElementById('tray-label').textContent = "À l'arrêt";
+        document.getElementById('tray-label').textContent = 'À l’arrêt';
       } else {
         // Descente : le bus arrive pré-rempli, une partie descend ici.
         target = randInt(cfg.offMin, cfg.offMax);

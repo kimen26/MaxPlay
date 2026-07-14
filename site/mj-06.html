@@ -168,7 +168,7 @@
     MJ.ready(function () {
     // ─── MJ-06 : Lis la phrase ───
     // Max doit trouver le mot manqué [?] dans une phrase simple
-    // Phase 1 : mots courts que Max sait lire (BUS, TRAM, PAPA, MAMAN, VELO...)
+    // Phase 1 : mots courts que Max sait lire (BUS, TRAM, PAPA, MAMAN, VÉLO...)
 
     const PHRASES = [
       { before: "Le", answer: "CHAT", after: "dort sur le canapé.", options: ["CHAT", "CHIEN", "LAPIN", "OURS"], emoji: "🐱" },
@@ -176,20 +176,20 @@
       { before: "Le", answer: "LOUP", after: "est dans la forêt.", options: ["LOUP", "RENARD", "LION", "OURS"], emoji: "🐺" },
       { before: "Papa dit", answer: "BRAVO", after: "à Max.", options: ["BRAVO", "MERCI", "SALUT", "COUCOU"], emoji: "👏" },
       { before: "Max boit du", answer: "LAIT", after: "le matin.", options: ["LAIT", "JUS", "CAFÉ", "THÉ"], emoji: "🥛" },
-      { before: "Le ciel est", answer: "BLEU", after: "aujourd'hui.", options: ["BLEU", "ROUGE", "VERT", "NOIR"], emoji: "☀️" },
-      { before: "Maman fait un", answer: "GATEAU", after: "au chocolat.", options: ["GATEAU", "PAIN", "SUCRE", "YAOURT"], emoji: "🎂" },
+      { before: "Le ciel est", answer: "BLEU", after: "aujourd’hui.", options: ["BLEU", "ROUGE", "VERT", "NOIR"], emoji: "☀️" },
+      { before: "Maman fait un", answer: "GÂTEAU", after: "au chocolat.", options: ["GÂTEAU", "PAIN", "SUCRE", "YAOURT"], emoji: "🎂" },
       { before: "Le", answer: "CHIEN", after: "aboie fort !", options: ["CHIEN", "CHAT", "LAPIN", "CANARD"], emoji: "🐶" },
-      { before: "Max aime la", answer: "NEIGE", after: "en hiver.", options: ["NEIGE", "PLUIE", "GRELE", "SOLEIL"], emoji: "❄️" },
-      { before: "La", answer: "LUNE", after: "brille la nuit.", options: ["LUNE", "ETOILE", "SOLEIL", "NUAGE"], emoji: "🌙" },
+      { before: "Max aime la", answer: "NEIGE", after: "en hiver.", options: ["NEIGE", "PLUIE", "GRÊLE", "SOLEIL"], emoji: "❄️" },
+      { before: "La", answer: "LUNE", after: "brille la nuit.", options: ["LUNE", "ÉTOILE", "SOLEIL", "NUAGE"], emoji: "🌙" },
       { before: "Le", answer: "LION", after: "rugit très fort.", options: ["LION", "TIGRE", "OURS", "LOUP"], emoji: "🦁" },
-      { before: "Max saute dans la", answer: "MER", after: "avec papa.", options: ["MER", "PISCINE", "RIVIERE", "LAC"], emoji: "🏖️" },
-      { before: "La", answer: "PLUIE", after: "tombe du ciel.", options: ["PLUIE", "NEIGE", "GRELE", "BRUME"], emoji: "🌧️" },
+      { before: "Max saute dans la", answer: "MER", after: "avec papa.", options: ["MER", "PISCINE", "RIVIÈRE", "LAC"], emoji: "🏖️" },
+      { before: "La", answer: "PLUIE", after: "tombe du ciel.", options: ["PLUIE", "NEIGE", "GRÊLE", "BRUME"], emoji: "🌧️" },
       { before: "Max dit", answer: "MERCI", after: "à maman.", options: ["MERCI", "BRAVO", "COUCOU", "SALUT"], emoji: "😊" },
-      { before: "Le", answer: "CANARD", after: "nage dans l'eau.", options: ["CANARD", "LAPIN", "CHAT", "CHIEN"], emoji: "🦆" },
+      { before: "Le", answer: "CANARD", after: "nage dans l’eau.", options: ["CANARD", "LAPIN", "CHAT", "CHIEN"], emoji: "🦆" },
 
       // ─── Thème DINO ───
       { before: "Le", answer: "REX", after: "a de grandes dents.", options: ["REX", "LOUP", "CHAT", "OURS"], emoji: "🦖" },
-      { before: "Le dino sort d'un", answer: "OEUF", after: "tout rond.", options: ["OEUF", "NID", "SAC", "LIT"], emoji: "🥚" },
+      { before: "Le dino sort d’un", answer: "ŒUF", after: "tout rond.", options: ["ŒUF", "NID", "SAC", "LIT"], emoji: "🥚" },
       { before: "Le dino a un grand", answer: "OS", after: "dans la main.", options: ["OS", "SAC", "LIT", "POT"], emoji: "🦴" },
       { before: "Le dino a une longue", answer: "QUEUE", after: "pointue.", options: ["QUEUE", "PATTE", "TETE", "DENT"], emoji: "🦕" },
       { before: "Le dino a une grosse", answer: "GRIFFE", after: "sur le pied.", options: ["GRIFFE", "CORNE", "PLUME", "AILE"], emoji: "🐾" },
@@ -198,14 +198,14 @@
       { before: "Le dino vole avec ses", answer: "AILES", after: "immenses.", options: ["AILES", "PATTES", "DENTS", "GRIFFES"], emoji: "🦅" },
 
       // ─── Thème VOYAGE ───
-      { before: "Le", answer: "TRAIN", after: "roule sur les rails.", options: ["TRAIN", "BUS", "VELO", "BATEAU"], emoji: "🚂" },
-      { before: "L'", answer: "AVION", after: "vole dans le ciel.", options: ["AVION", "TRAIN", "BUS", "VELO"], emoji: "✈️" },
-      { before: "Le", answer: "BATEAU", after: "flotte sur la mer.", options: ["BATEAU", "TRAIN", "AVION", "VELO"], emoji: "🚢" },
+      { before: "Le", answer: "TRAIN", after: "roule sur les rails.", options: ["TRAIN", "BUS", "VÉLO", "BATEAU"], emoji: "🚂" },
+      { before: "L’", answer: "AVION", after: "vole dans le ciel.", options: ["AVION", "TRAIN", "BUS", "VÉLO"], emoji: "✈️" },
+      { before: "Le", answer: "BATEAU", after: "flotte sur la mer.", options: ["BATEAU", "TRAIN", "AVION", "VÉLO"], emoji: "🚢" },
       { before: "Max va dans un autre", answer: "PAYS", after: "en vacances.", options: ["PAYS", "PARC", "BUS", "LIT"], emoji: "🌍" },
-      { before: "La", answer: "FUSEE", after: "part dans l'espace.", options: ["FUSEE", "AVION", "VOITURE", "MOTO"], emoji: "🚀" },
-      { before: "Max regarde la", answer: "LUNE", after: "dans le ciel.", options: ["LUNE", "ETOILE", "SOLEIL", "NUAGE"], emoji: "🌙" },
-      { before: "Max porte une grosse", answer: "VALISE", after: "pour le voyage.", options: ["VALISE", "SAC", "BOITE", "CAISSE"], emoji: "🧳" },
-      { before: "Le", answer: "PILOTE", after: "conduit l'avion.", options: ["PILOTE", "CHAUFFEUR", "CAPITAINE", "FACTEUR"], emoji: "👨‍✈️" },
+      { before: "La", answer: "FUSÉE", after: "part dans l’espace.", options: ["FUSÉE", "AVION", "VOITURE", "MOTO"], emoji: "🚀" },
+      { before: "Max regarde la", answer: "LUNE", after: "dans le ciel.", options: ["LUNE", "ÉTOILE", "SOLEIL", "NUAGE"], emoji: "🌙" },
+      { before: "Max porte une grosse", answer: "VALISE", after: "pour le voyage.", options: ["VALISE", "SAC", "BOÎTE", "CAISSE"], emoji: "🧳" },
+      { before: "Le", answer: "PILOTE", after: "conduit l’avion.", options: ["PILOTE", "CHAUFFEUR", "CAPITAINE", "FACTEUR"], emoji: "👨‍✈️" },
     ];
 
     let score = 0;

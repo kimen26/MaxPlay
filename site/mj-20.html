@@ -809,7 +809,7 @@
         }
 
         setTimeout(() => speakQuiz(), 300);
-        setTimeout(() => TTS.speak(`C'est ${quizNumber} !`, { lang:'fr-FR', rate:0.85, priority:false }), 1300);
+        setTimeout(() => TTS.speak(`C’est ${quizNumber} !`, { lang:'fr-FR', rate:0.85, priority:false }), 1300);
         round++;
         setTimeout(nextQuizRound, 2600);
 
@@ -821,7 +821,7 @@
         if (typeof playErrorSound === 'function') playErrorSound();
         showFeedback('');
         recordWrong(quizLang.code);
-        setTimeout(() => TTS.speak(`C'était ${quizNumber}`, { lang:'fr-FR', rate:0.85 }), 300);
+        setTimeout(() => TTS.speak(`C’était ${quizNumber}`, { lang:'fr-FR', rate:0.85 }), 300);
         round++;
         setTimeout(nextQuizRound, 2000);
 
@@ -914,7 +914,7 @@
     const VICTORY_DATA = [
       { min:10, max:10, emoji:'', title:'PARFAIT !!!', msg:'10 sur 10 ! Tu parles toutes les langues !',  sound:'victory' },
       { min:8,  max:9,  emoji:'', title:'Super Max !', msg:'Presque parfait ! Tu deviens polyglotte !',    sound:'bravo' },
-      { min:6,  max:7,  emoji:'', title:'Bien joué !', msg:"C'est bien ! Continue comme ça !",             sound:'ding' },
+      { min:6,  max:7,  emoji:'', title:'Bien joué !', msg:"C’est bien ! Continue comme ça !",             sound:'ding' },
       { min:4,  max:5,  emoji:'', title:'Pas mal !',   msg:'Tu peux encore progresser !',                   sound:'ding' },
       { min:0,  max:3,  emoji:'', title:'On réessaie ?',msg:'Entraîne-toi en mode Apprendre !',             sound:'buzz' },
     ];

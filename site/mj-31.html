@@ -113,11 +113,11 @@
 
     // Bandes d'époque (ordre chronologique, la plus ancienne en haut)
     const BANDS_BASE = [
-      { id:'permien',     emoji:'🟣', label:'Avant les dinosaures', date:'il y a 280 millions d\'années', cls:'band-permien' },
-      { id:'trias',       emoji:'🟤', label:'Trias',                date:'il y a 230 millions d\'années', cls:'band-trias' },
-      { id:'jurassique',  emoji:'🟢', label:'Jurassique',           date:'il y a 150 millions d\'années', cls:'band-jurassique' },
-      { id:'cretace',     emoji:'🟠', label:'Crétacé',              date:'il y a 66 à 100 millions d\'années', cls:'band-cretace' },
-      { id:'cenozoique',  emoji:'🔵', label:'Après la météorite',   date:'après 66 millions d\'années', cls:'band-cenozoique' },
+      { id:'permien',     emoji:'🟣', label:'Avant les dinosaures', date:'il y a 280 millions d’années', cls:'band-permien' },
+      { id:'trias',       emoji:'🟤', label:'Trias',                date:'il y a 230 millions d’années', cls:'band-trias' },
+      { id:'jurassique',  emoji:'🟢', label:'Jurassique',           date:'il y a 150 millions d’années', cls:'band-jurassique' },
+      { id:'cretace',     emoji:'🟠', label:'Crétacé',              date:'il y a 66 à 100 millions d’années', cls:'band-cretace' },
+      { id:'cenozoique',  emoji:'🔵', label:'Après la météorite',   date:'après 66 millions d’années', cls:'band-cenozoique' },
     ];
     // Niveau 2 seul débloque la bande "avant les dinosaures" (Dimétrodon, permien)
     const BANDS = level >= 2 ? BANDS_BASE : BANDS_BASE.filter(b => b.id !== 'permien');
@@ -325,7 +325,7 @@
       const datePart = (d.epoque.split('·')[1] || '').trim();
       let suiteTxt = datePart ? datePart + '.' : '';
       if (nemesis[d.id]) {
-        suiteTxt += ' Tu sais quoi ? Le T-Rex n\'a JAMAIS rencontré le Stégosaure : 85 millions d\'années les séparent !';
+        suiteTxt += ' Tu sais quoi ? Le T-Rex n’a JAMAIS rencontré le Stégosaure : 85 millions d’années les séparent !';
       }
       const file = PERIODE_MP3[d.periode];
       if (file) {
@@ -342,12 +342,12 @@
     // Audio = audio/dinos/special-extinction-a..d.mp3 (blocs ~20-28 s). Légende courte à l'écran,
     // l'histoire complète est ÉCOUTÉE. Avance à la fin de l'audio, tap = passer.
     const METEOR_SLIDES = [
-      { emoji:'🦕☄️', mp3:'a', text:'Il y a 66 millions d\'années… une météorite géante !',
-        fallback:'Il y a 66 millions d\'années, une météorite géante, grosse comme une montagne, tombe du ciel. BOUM !' },
+      { emoji:'🦕☄️', mp3:'a', text:'Il y a 66 millions d’années… une météorite géante !',
+        fallback:'Il y a 66 millions d’années, une météorite géante, grosse comme une montagne, tombe du ciel. BOUM !' },
       { emoji:'🌋🌑', mp3:'b', text:'Les volcans, le nuage noir… le soleil est caché.',
         fallback:'Des volcans gigantesques crachent de la fumée. Le ciel devient tout noir, le soleil est caché.' },
-      { emoji:'🥀',   mp3:'c', text:'Plus de plantes… les géants s\'en vont.',
-        fallback:'Sans soleil, les plantes ne poussent plus. Les grands dinosaures n\'ont plus rien à manger, et tout doucement, ils s\'en vont.' },
+      { emoji:'🥀',   mp3:'c', text:'Plus de plantes… les géants s’en vont.',
+        fallback:'Sans soleil, les plantes ne poussent plus. Les grands dinosaures n’ont plus rien à manger, et tout doucement, ils s’en vont.' },
       { emoji:'🐭🐦', mp3:'d', text:'Les petits survivent — et les oiseaux sont de vrais dinosaures !',
         fallback:'Mais les petits animaux survivent ! Et les oiseaux aussi : les oiseaux sont de vrais dinosaures. La vie continue !' },
     ];
@@ -368,7 +368,7 @@
       div.innerHTML =
         '<div class="meteor-emoji">' + s.emoji + '</div>' +
         '<div class="meteor-text">' + s.text + '</div>' +
-        '<div class="meteor-tap">👉 touche l\'écran pour passer</div>';
+        '<div class="meteor-tap">👉 touche l’écran pour passer</div>';
       document.body.appendChild(div);
 
       let advanced = false;

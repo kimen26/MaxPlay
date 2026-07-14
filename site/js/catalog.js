@@ -49,7 +49,7 @@ window.MAXPLAY_CATALOG = [
   // ─── 🔤 Lire ───
   { id:'mj-06',  category:'lire',     titre:'Lis la phrase',        emoji:'📖', desc:'Quel mot manque dans la phrase ?',    url:'mj-06.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
   { id:'mj-23',  category:'lire',     titre:'Lis le mot',           emoji:'🔤', desc:'Lis le mot, trouve la bonne image !',url:'mj-23.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
-  { id:'mj-44',  category:'nouveaux', homeCat:'lire',     titre:'La boîte à sons',      emoji:'🔤', desc:'Range chaque mot dans la boîte de son son !', url:'mj-44.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:'tts', status:'live' },
+  { id:'mj-44',  category:'nouveaux', homeCat:'lire',     titre:'La boîte à sons',      emoji:'🔤', desc:'Range chaque mot dans la boîte du bon son !', url:'mj-44.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:'tts', status:'live' },
 
   // ─── 🧩 Logique ───
   { id:'mj-13a', category:'logique',  titre:'Le premier bus',       emoji:'🥇', desc:'Quel bus arrive en premier ?',       url:'mj-13a.html', type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },

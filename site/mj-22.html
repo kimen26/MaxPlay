@@ -199,8 +199,8 @@ function confirmer() {
   if (selected === target) {
     victoire(target);
   } else {
-    if (typeof SoundPool !== 'undefined') SoundPool.phrase('cherche-bien', 'Non ce n\'est pas ça. Cherche bien.');
-    else speak('Non ce n\'est pas ça. Cherche bien.');
+    if (typeof SoundPool !== 'undefined') SoundPool.phrase('cherche-bien', 'Non ce n’est pas ça. Cherche bien.');
+    else speak('Non ce n’est pas ça. Cherche bien.');
     selected = null;
     document.getElementById('confirmBtn').classList.remove('show');
     renderMap();
@@ -213,7 +213,7 @@ function victoire(iso) {
   selected = null;
   document.getElementById('confirmBtn').classList.remove('show');
   renderMap();
-  speak(`Bravo ! C'est ${data.art}${data.name} !`);
+  speak(`Bravo ! C’est ${data.art}${data.name} !`);
 
   const ov = document.createElement('div');
   ov.className = 'victoire-overlay';

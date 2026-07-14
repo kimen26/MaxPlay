@@ -62,7 +62,7 @@ html, body {
               font-family:'Nunito',sans-serif; font-weight:900; color:#aaa; }
 </style>
 </head>
-<body data-mp-intro-emoji="🚌" data-mp-intro-title="Combien avant le bus ?" data-mp-intro-hint="Compte les voitures">
+<body data-mp-intro-emoji="🚌" data-mp-intro-title="Combien avant le bus ?" data-mp-intro-hint="Compte les bus avant">
 
 <div class="hdr">
   <a href="index.html">&#8592;</a>
@@ -419,7 +419,7 @@ function onAnswer(isCorrect,btn){
     setTimeout(()=>{
       qb.querySelectorAll('.btn-count').forEach(e=>e.remove());
       qb.style.background='#4a1a1a';
-      qt.innerHTML=`<span style="color:#e53935;font-size:1rem;">C'était</span>
+      qt.innerHTML=`<span style="color:#e53935;font-size:1rem;">C’était</span>
         <span style="color:#ffe066;font-size:1.5rem;font-weight:900;margin:0 6px;">${correctBefore}</span>
         <span style="color:#e53935;font-size:1rem;">bus avant le <span style="background:${tl.color};color:${tl.textColor};border-radius:6px;padding:1px 10px;">${tl.num}</span></span>`;
     },400);

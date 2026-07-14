@@ -226,7 +226,7 @@
       const boarding = rnd(2, 6);
       return { type: 'combo', total: start, occupied: 0, waiting: boarding, answer: start - leaving + boarding,
         text: `Il y a <strong>${start}</strong> passagers.<br><strong>${leaving}</strong> descendent.<br>Puis <strong>${boarding}</strong> montent.<br>Combien sont dans le bus ?`,
-        hint: "D'abord enlève ceux qui descendent, puis ajoute ceux qui montent." };
+        hint: "D’abord enlève ceux qui descendent, puis ajoute ceux qui montent." };
     }
 
     function generateChoices(correct, lv) {

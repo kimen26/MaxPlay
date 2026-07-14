@@ -2,6 +2,27 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-07-14 — Design v3 appliqué à dev-dinos.html + gravure figées (maquettes package 2026-07-13) — commit da3496f1
+
+**État** : LIVRÉ + CONFORME FIGÉES 100 % (audit 11 axes, smoke Playwright vert).
+
+**Livré** :
+- ✅ **Maquettes designers appliquées** (4 vues du package `studio/minijeux/inbox/package-maxplay-design/package-maxplay-designv3/`) :
+  - Grille dinos : 3 colonnes, vignettes rondes 66px teintées couleur famille (pas de cartes card-regime/card-region dans grille, info reste fiche).
+  - Fiche : hero min(46vh,320px) + nav ‹ › ronde + compteur n/N + pellicule vignettes 56×42 (active = bord or, vidéos ▶ or), sections colorées alignées maquette (violet/bleu/vert/or).
+  - Voyage : ronds 56px bordure couleur époque, épisode courant bouton or « Continuer », avenir opacity .75.
+  - Familles : cartes rgba(couleur famille,.12) + bordure .4, compteur « N dinos → » or.
+- ✅ **Zéro conflit figée** : 4 onglets ordre strict ✓ · Tritri ✓ · audio masqué si incomplet ✓ · pas de bus récits ✓ · grep interdits ✓ · audit PMO 11/11 PASS.
+- ✅ **Smoke Playwright** : 0 erreur JS, 0 404, visuel validé.
+
+**Découverte production** : 9 FAM_EMBLEME referancent `.png` mais fichiers réels sont `.jpg` (18 requêtes 404, fallback masque). À corriger dinos-data.js ou renommer.
+
+**Gouvernance** : Zéro nouvelle règle figée (design system = tokens CSS, pas frontière autoring/produit). Audit post-déploiement : L-D-34/L-D-35 (cache/manifest, i18n 476×9 MP3 potentiel).
+
+**Ticket créé** : EP-D-Image-FAM-EMBLEME-404 (renommer .png → .jpg ou corriger refs data).
+
+---
+
 ## 2026-07-13 (suite 2) — Design System v1 appliqué à dev-dinos.html (refonte VISUELLE seule, commit 91ef327b)
 
 **État** : LIVRÉ + CONFORME (zéro régression figée, zéro orphelin).

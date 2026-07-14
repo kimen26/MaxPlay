@@ -189,18 +189,31 @@
 </div>
   <script src="js/bus-svg.js"></script>
   <script src="js/data.js"></script>
-  <script src="js/tracker.js"></script>
-  <script src="js/sounds.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/regle-info.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <script src="js/mj-shell.js"></script>
   <script>
-    RegleInfo.init({ texte: "Tape le bus de la même couleur que les passagers !", picto: "🧍🟦→🚌🟦" });
-  </script>
-  <script>
-  (function(){
+  MJ.ready(function () {
     'use strict';
+
+    MJ.init({
+      id: 'mj-36', emoji: '🚌', titre: 'Le bon bus !',
+      golden: false,
+      consigne: false, // tapHint + bulle demande gèrent la consigne visuelle du jeu
+      regle: {
+        texte: 'Tape le bus de la même couleur que les passagers !',
+        picto: '🧍🟦→🚌🟦',
+        etapes: [
+          { t: 'Je regarde la bulle en haut 💬',
+            d: 'Elle montre la couleur et le numéro du bus attendu à l’arrêt.' },
+          { t: 'Je compare avec les 3 bus du garage 🚌',
+            d: 'Un seul a la même couleur que la bulle. Je le tape !' },
+          { t: 'Le bon bus roule, les passagers montent 🧍➡️🚌',
+            d: 'Si je me trompe de bus, il klaxonne juste — rien n’est perdu, je peux réessayer tout de suite.' },
+          { t: 'Plus j’ai d’étoiles, plus il y a de couleurs 💪',
+            d: 'Au début 2 couleurs, puis 3, puis les bus s’enchaînent plus vite. Vider toute la file = étoile !' }
+        ]
+      }
+    });
+
     Tracker.startSession('mj-36');
 
     const stage = document.getElementById('stage');
@@ -490,7 +503,7 @@
       isBravoShown() { return bravoScreen.classList.contains('show'); },
       isBusy() { return busy; },
     };
-  })();
+  });
   </script>
 </body>
 </html>

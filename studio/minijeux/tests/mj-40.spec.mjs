@@ -2,6 +2,14 @@
 // Smoke console + placement scripté via __mjTest.place() + enchaînement des 3 figures du palier ★.
 
 export async function run({ page, ok }) {
+  // Panneau règle v3 (savant fou 🧑‍🔬) : s'ouvre TOUT SEUL à la 1ʳᵉ partie (gabarit
+  // mj-shell) → on vérifie puis on le ferme pour dérouler le jeu.
+  await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
+  ok('panneau règle ouvert automatiquement à la 1ʳᵉ partie', (await page.locator('#ri-panneau.on').count()) === 1);
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
+  ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
+
   // ── État initial ────────────────────────────────────────────────────
   const s0 = await page.evaluate(() => window.__mjTest.state);
   ok('7 pièces de tangram présentes', s0.totalPieces === 7 && s0.pieceNames.length === 7);
@@ -54,12 +62,13 @@ export async function run({ page, ok }) {
   const box = await page.locator('#tray-svg .piece').first().boundingBox();
   ok('Pièce du plateau visible et saisissable', !!box && box.width > 20 && box.height > 10);
 
-  // ─── EP-068 : bouton règles (i) — composant partagé RegleInfo ───
-  ok('Bouton règles ❓ présent dans le header', await page.locator('#btn-regle').count() === 1);
+  // ─── Bouton règles 🧑‍🔬 (savant fou) — composant partagé RegleInfo v3 ───
+  ok('Bouton règles présent dans le header', await page.locator('#btn-regle').count() === 1);
   await page.click('#btn-regle');
-  ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);
+  ok('Panneau règle ouvert au tap', (await page.locator('#ri-panneau.on').count()) === 1);
   const regleTexte = (await page.locator('.ri-text').textContent() || '').trim();
-  ok('Texte de règle correspond', regleTexte === 'Place les 7 pièces sur la silhouette ! Tape une pièce pour la tourner.', regleTexte);
-  await page.click('#ri-close'); // v3 : fermeture explicite ✕ (panneau bottom-sheet)
-  ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
+  ok('Texte de règle correspond', regleTexte === 'Place les 7 pièces sur la silhouette du dino !', regleTexte);
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
+  ok('Panneau règle refermé', (await page.locator('#ri-panneau.on').count()) === 0);
 }

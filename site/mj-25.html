@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/mp-theme.css">
   <style>
-    .instruction-text { text-align:center; font-size:1.3rem; font-weight:900; color:#ffe066; margin:8px 12px 2px; }
     .question-counter { text-align:center; font-size:.85rem; opacity:.7; }
     .ref-wrap { display:flex; flex-direction:column; align-items:center; gap:4px; margin:8px 0; }
     .ref-label { font-size:.95rem; font-weight:900; color:#bbaaff; }
@@ -41,14 +40,7 @@
 </head>
 <body>
   <div id="app">
-    <div class="hdr">
-      <a href="index.html" class="back">←</a>
-      <span class="htitle">🔍 Pareil pas pareil</span>
-    </div>
-    <div class="pips" id="pips"></div>
-
     <div class="qbox">
-      <div class="instruction-text" id="instructionText">Trouve le MÊME que celui-ci !</div>
       <div class="ref-wrap">
         <div class="ref-label">celui-ci 👇</div>
         <div class="ref-card" id="refCard"></div>
@@ -60,20 +52,14 @@
   </div>
 
 
-  <script src="js/sounds.js"></script>
-  <script src="js/tts.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/feedback.js"></script>
-  <script src="js/catalog.js"></script>
-  <script src="js/stars.js"></script>
-  <script src="js/qcm-retry.js"></script>
-  <script src="js/mj-golden.js"></script>
+  <!-- libs SPÉCIFIQUES au jeu -->
   <script src="js/lang.js"></script>
   <script src="js/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
   <script>
+    MJ.ready(function () {
     // ─── MJ-25 — Pareil pas pareil (matching visuel, ombres chinoises par-dino) ───
     // Refonte 2026-07-05 (ordre Papa Yann) : anciennes silhouettes par-famille supprimees,
     // remplacees par les ombres chinoises canon (img/dinos/ombres/).
@@ -111,6 +97,26 @@
     ];
     function pickSubtleFilter(){ return SUBTLE_FILTERS[Math.floor(Math.random()*SUBTLE_FILTERS.length)]; }
     function maybeMirror(){ return Math.random() < 0.5 ? ' scaleX(-1)' : ''; }
+
+    const shell = MJ.init({
+      id: 'mj-25', emoji: '🔍', titre: 'Pareil pas pareil',
+      golden: true,
+      consigne: true,
+      regle: {
+        picto: '🦖🟰🦖',
+        texte: 'Trouve l’ombre pareille à celle du haut !',
+        etapes: [
+          { t: 'Je regarde l’ombre du haut 👆',
+            d: 'C’est « celui-ci » — je le garde bien en tête.' },
+          { t: 'Je compare avec les ombres en bas 👀',
+            d: 'Une seule ombre en bas est exactement PAREILLE à celle du haut.' },
+          { t: 'Je tape la pareille 👆',
+            d: 'Si je me trompe, l’ombre correcte s’allume en vert et je réessaie.' },
+          { t: 'Plus j’ai d’étoiles, plus il faut bien chercher 💪',
+            d: 'Au début les ombres sont très différentes. Avec les étoiles : des cousins de la même famille, puis la MÊME ombre juste tournée ou d’une autre couleur !' }
+        ]
+      }
+    });
 
     function init(){
       G.buildPips();
@@ -150,7 +156,7 @@
       }
 
       document.getElementById('refCard').innerHTML = '<img src="' + ref.src + '" alt="">';
-      SoundPool.phrase('trouve-le-meme-dino', 'Trouve le même dino !');
+      shell.setConsigne('Trouve le même dino !');
 
       const box = document.getElementById('choices');
       box.style.gridTemplateColumns = 'repeat(' + Math.min(opts.length,2) + ', 1fr)';
@@ -196,10 +202,7 @@
     }
 
     init();
+    });
   </script>
-  <script src="js/tracker.js"></script>
-  <script src="js/cloud.js"></script>
-  <script src="js/comments.js"></script>
-  <script src="js/back-button.js"></script>
 </body>
 </html>

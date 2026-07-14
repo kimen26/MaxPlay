@@ -169,16 +169,29 @@
   </div>
 </div>
 
-<script src="js/sounds.js"></script>
-<script src="js/victory-sounds.js"></script>
-<script src="js/tracker.js"></script>
-<script src="js/regle-info.js"></script>
-<script src="js/mp-theme.js"></script>
-<script src="js/celebrations.js"></script>
+<script src="js/mj-shell.js"></script>
 <script>
-  RegleInfo.init({ texte: "Saute par-dessus les pions dodo pour les faire disparaître !", picto: "🐑↷💤" });
-</script>
-<script>
+MJ.ready(function () {
+
+  MJ.init({
+    id: 'mj-38', emoji: '🐑', titre: 'Saute-mouton !',
+    golden: false,
+    consigne: false, // msg-zone gère les messages contextuels (Combo/Coincé)
+    regle: {
+      texte: 'Saute par-dessus les pions dodo pour les faire disparaître !',
+      picto: '🐑↷💤',
+      etapes: [
+        { t: 'Je tape mon mouton 😊', d: 'Il se met à briller : c’est lui que je vais faire sauter.' },
+        { t: 'Je regarde les cases qui brillent en or ✨',
+          d: 'Elles montrent où mon mouton peut atterrir en sautant par-dessus un dodo voisin 💤.' },
+        { t: 'Je tape la case dorée : hop, il saute ! 🐑↷',
+          d: 'Le mouton endormi qu’il a sauté disparaît en pouf. Je peux enchaîner plusieurs sauts d’affilée : combo ✨ !' },
+        { t: 'Coincé ? Je recommence tranquille 🔄',
+          d: 'Le bouton « Recommencer » remet le niveau à zéro, sans rien perdre. Tous les dodos envolés = niveau gagné !' }
+      ]
+    }
+  });
+
 // ── NIVEAUX (précalculés + vérifiés par solveur BFS jetable, voir PR MJ-38) ──
 // Chaque niveau : { max:[r,c], dodos:[[r,c],...], tier:'★'|'★★'|'★★★' }
 const LEVELS = [
@@ -416,6 +429,14 @@ function playHopSound() {
 if (typeof Tracker !== 'undefined') Tracker.startSession('mj-38');
 loadLevel(levelIdx);
 window.addEventListener('resize', renderBoard);
+
+// Exposées sur window : appelées par les onclick="…" inline du HTML
+// (piège connu — dans MJ.ready(), les function déclarées restent dans la
+// closure et ne sont plus globales automatiquement).
+window.restartLevel = restartLevel;
+window.nextLevel = nextLevel;
+window.resetGame = resetGame;
+});
 </script>
 </body>
 </html>

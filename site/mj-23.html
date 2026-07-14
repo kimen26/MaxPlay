@@ -72,15 +72,29 @@
   </div>
 </div>
 
-<script src="js/sounds.js"></script>
-<script src="js/victory-sounds.js"></script>
-<script src="js/mp-theme.js"></script>
-<script src="js/celebrations.js"></script>
-<script src="js/feedback.js"></script>
-<script src="js/catalog.js"></script>
-<script src="js/stars.js"></script>
-<script src="js/qcm-retry.js"></script>
+<script src="js/intro-splash.js"></script>
+<script src="js/mj-shell.js"></script>
 <script>
+MJ.ready(function () {
+  MJ.init({
+    id: 'mj-23', emoji: '🔤', titre: 'Lis le mot',
+    golden: false,
+    consigne: false, // 🔒 FIGÉ : jamais d'audio/TTS — Max lit en décortiquant, sans voix
+    regle: {
+      picto: '🔤👀',
+      texte: 'Lis le mot, puis touche la bonne image !',
+      etapes: [
+        { t: 'Je lis le mot tout seul 👀',
+          d: 'Le mot est écrit en GRANDES LETTRES. Personne ne le lit à voix haute : je le déchiffre lettre par lettre, doucement.' },
+        { t: 'Je regarde les 4 images 🖼️',
+          d: 'Une seule image correspond au mot. Je réfléchis avant de toucher.' },
+        { t: 'Si je me trompe, un indice m’aide 💡',
+          d: '« Lis bien chaque lettre du mot, doucement. » Je peux réessayer, jamais de mauvaise réponse affichée toute seule.' },
+        { t: '8 mots d’affilée, plus j’ai d’étoiles plus les mots sont longs 💪',
+          d: 'Niveau 1 : mots courts (CHAT, OURS). Niveau 5 : mots longs avec des sons difficiles (BATEAU, DINOSAURE).' }
+      ]
+    }
+  });
   // ─── MJ-23 : Lis le mot (mot écrit → choisir l'image) ───
   // PAS d'audio : Max lit en décortiquant. Images = Twemoji (rendu identique partout).
   // 5 paliers = longueur du mot + graphèmes où la lettre ne se prononce pas seule.
@@ -231,11 +245,7 @@
 
   setLevelBadge();
   nextQuestion();
+});
 </script>
-<script src="js/tracker.js"></script>
-<script src="js/cloud.js"></script>
-<script src="js/comments.js"></script>
-<script src="js/intro-splash.js"></script>
-<script src="js/back-button.js"></script>
 </body>
 </html>

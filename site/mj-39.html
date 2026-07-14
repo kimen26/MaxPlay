@@ -142,18 +142,30 @@
   <div id="dragGhost"></div>
   <script src="js/bus-svg.js"></script>
   <script src="js/data.js"></script>
-  <script src="js/tracker.js"></script>
-  <script src="js/sounds.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/regle-info.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <script src="js/mj-shell.js"></script>
   <script>
-    RegleInfo.init({ texte: "Pose les blocs pour remplir des lignes entières !", picto: "🟪➡️✨" });
-  </script>
-  <script>
-  (function(){
+  MJ.ready(function () {
     'use strict';
+
+    MJ.init({
+      id: 'mj-39', emoji: '🧩', titre: 'Blocs magiques',
+      golden: false,
+      consigne: false, // jauge + compteur de lignes gèrent le retour visuel
+      regle: {
+        texte: 'Pose les blocs pour remplir des lignes entières !',
+        picto: '🟪➡️✨',
+        etapes: [
+          { t: 'Je regarde les 3 blocs en bas 🟥🟨🟦',
+            d: 'Chaque bloc a sa forme : petit carré, longue barre, forme en L…' },
+          { t: 'Je glisse un bloc avec mon doigt sur la grille 👆',
+            d: 'Une case verte montre que je peux le poser là, une case rouge veut dire que ça ne rentre pas.' },
+          { t: 'Je lâche le bloc pour le poser 🧩',
+            d: 'Si je remplis une ligne ou une colonne ENTIÈRE, elle explose en étincelles ✨ et j’ai plus de place !' },
+          { t: 'Plus j’efface de lignes, plus j’ai d’étoiles ⭐',
+            d: 'De nouveaux blocs arrivent à chaque fois. 5 lignes = ★, 12 = ★★, 25 = ★★★ !' }
+        ]
+      }
+    });
     Tracker.startSession('mj-39');
 
     const N = 8;
@@ -510,7 +522,7 @@
         renderRack();
       },
     };
-  })();
+  });
   </script>
 </body>
 </html>

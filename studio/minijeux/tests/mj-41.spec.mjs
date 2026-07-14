@@ -6,6 +6,14 @@ export async function run({ page, ok }) {
   await page.evaluate(() => localStorage.clear());
   await page.reload({ waitUntil: 'networkidle' });
 
+  // Panneau règle v3 (savant fou 🧑‍🔬) : s'ouvre TOUT SEUL à la 1ʳᵉ partie (gabarit
+  // mj-shell) → on vérifie puis on le ferme pour dérouler le jeu.
+  await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
+  ok('panneau règle ouvert automatiquement à la 1ʳᵉ partie', (await page.locator('#ri-panneau.on').count()) === 1);
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
+  ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
+
   ok('manifest dinos chargé', await page.evaluate(() => typeof DINOS !== 'undefined' && Array.isArray(DINOS) && DINOS.length >= 8));
   ok('hook de test présent (__mjTest)', await page.evaluate(() => typeof window.__mjTest !== 'undefined'));
 
@@ -57,6 +65,10 @@ export async function run({ page, ok }) {
   // ─── Filet anti-blocage : vérifie que le remélange existe et fonctionne (appel direct) ───
   await page.evaluate(() => localStorage.clear());
   await page.reload({ waitUntil: 'networkidle' });
+  // panneau règle ré-ouvert auto (localStorage vidé) → on le referme avant de continuer
+  await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
   await page.waitForSelector('.tile', { timeout: 5000 });
   const beforeReshuffle = await page.evaluate(() => window.__mjTest.state().tiles.map(t => t.dino));
   await page.evaluate(() => window.__mjTest.forceReshuffle());
@@ -66,12 +78,13 @@ export async function run({ page, ok }) {
   const stillSolvable = await page.evaluate(() => window.__mjTest.anyFreePairAvailable());
   ok('après remélange, au moins une paire est de nouveau jouable', stillSolvable);
 
-  // ─── EP-068 : bouton règles (i) — composant partagé RegleInfo ───
-  ok('Bouton règles ❓ présent dans le header', await page.locator('#btn-regle').count() === 1);
+  // ─── Bouton règles 🧑‍🔬 (savant fou) — composant partagé RegleInfo v3 ───
+  ok('Bouton règles présent dans le header', await page.locator('#btn-regle').count() === 1);
   await page.click('#btn-regle');
-  ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);
+  ok('Panneau règle ouvert au tap', (await page.locator('#ri-panneau.on').count()) === 1);
   const regleTexte = (await page.locator('.ri-text').textContent() || '').trim();
   ok('Texte de règle correspond', regleTexte === 'Trouve les 2 mêmes dinos sur les tuiles libres !', regleTexte);
-  await page.click('#ri-close'); // v3 : fermeture explicite ✕ (panneau bottom-sheet)
-  ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
+  ok('Panneau règle refermé', (await page.locator('#ri-panneau.on').count()) === 0);
 }

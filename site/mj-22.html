@@ -68,9 +68,28 @@
   </div>
 </div>
 
-<script src="js/victory-sounds.js"></script>
-<script src="js/mp-theme.js"></script>
+<script src="js/mj-shell.js"></script>
 <script>
+MJ.ready(function () {
+  MJ.init({
+    id: 'mj-22', emoji: '🗺️', titre: 'Trouve le pays !',
+    golden: false,
+    consigne: false,
+    regle: {
+      picto: '🗺️🔎',
+      texte: 'Écoute le nom du pays, trouve-le sur la carte !',
+      etapes: [
+        { t: 'J’écoute le drapeau et le nom 👂',
+          d: 'Une voix dit « Trouve la France ! » et le drapeau s’affiche en haut. Je peux réessayer si j’ai pas compris.' },
+        { t: 'Je regarde la carte et je tape un pays 👆',
+          d: 'Le pays que je touche s’allume en orange. Si c’est pas le bon, je peux en toucher un autre.' },
+        { t: 'Je tape « C’est ça ! » pour valider ✓',
+          d: 'Bonne réponse : le drapeau fait la fête ! Pas encore : une voix dit « Cherche bien » et je réessaie, sans jamais perdre.' },
+        { t: 'Plus j’ai d’étoiles, plus il y a de pays 💪',
+          d: 'Facile : 5 pays. Puis 15, puis 25 ! Les tout petits pays ne sont pas dans le jeu, trop difficiles à toucher.' }
+      ]
+    }
+  });
 // Carte Europe réelle depuis Wikimedia Commons
 // IDs ISO mappés aux données des pays
 const PAYS = {
@@ -301,6 +320,11 @@ function init() {
 }
 
 init();
+
+// Exposées sur window : appelées par les onclick= inline du HTML/overlays générés
+window.confirmer = confirmer;
+window.nextCountry = nextCountry;
+});
 </script>
 </body>
 </html>

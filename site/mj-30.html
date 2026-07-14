@@ -90,17 +90,6 @@
 </head>
 <body>
   <div id="app">
-    <div class="hdr">
-      <a href="index.html" class="back">←</a>
-      <span class="htitle">📏 Range-les par taille</span>
-    </div>
-    <div class="pips" id="pips"></div>
-
-    <!-- consigne v3 : texte seul centré, l'audio se lance TOUT SEUL à chaque
-         question — tap sur la consigne = réécouter (pas de gros bouton 🔊) -->
-    <div class="mp-consigne" id="consigne" style="justify-content:center; text-align:center; cursor:pointer" role="button" aria-label="Réécouter la consigne">
-      <b id="instruction">…</b>
-    </div>
     <div class="mode-badge" id="modeBadge"></div>
 
     <div class="game-zone" id="gameZone">
@@ -116,19 +105,12 @@
     </div>
   </div>
 
-  <script src="js/sounds.js"></script>
-  <script src="js/tts.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/feedback.js"></script>
-  <script src="js/catalog.js"></script>
-  <script src="js/stars.js"></script>
-  <script src="js/qcm-retry.js"></script>
-  <script src="js/mj-golden.js"></script>
   <script src="js/lang.js"></script>
   <script src="js/dinos-audio-manifest.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
   <script>
+    MJ.ready(function () {
     // ─── MJ-30 — Range-les par taille (échelle honnête) ───
     // Pool complet 60 dinos (tous ont une ombre dans img/dinos/ombres/).
     const DINO_POOL = [
@@ -195,7 +177,26 @@
     ];
     function shadowSrc(d){ return 'img/dinos/ombres/' + d.png.replace(/\.(jpg|png)$/i,'') + '_ombre.png'; }
 
-    const G = Golden.setup('mj-30');
+    const shell = MJ.init({
+      id: 'mj-30', emoji: '📏', titre: 'Range-les par taille',
+      golden: true,
+      consigne: true,
+      regle: {
+        picto: '🦕📏🦖',
+        texte: 'Range les dinos mystères du plus petit au plus GRAND !',
+        etapes: [
+          { t: 'Je regarde les ombres 👀',
+            d: 'Des dinos mystères ! Il y a un petit, un moyen… et un géant.' },
+          { t: 'Je glisse chaque ombre dans une case 👆',
+            d: 'Le plus petit à gauche, le plus GRAND à droite. Je peux échanger deux cases si je change d’avis.' },
+          { t: 'Je tape « C’est bon ! » ✓',
+            d: 'Les dinos sortent de l’ombre : on découvre leur VRAIE taille en mètres, à côté d’un enfant comme toi !' },
+          { t: 'Plus j’ai d’étoiles, plus c’est costaud 💪',
+            d: 'Plus de dinos à ranger… et parfois il faut les ranger par POIDS ⚖️ !' }
+        ]
+      }
+    });
+    const G = shell.G;
     const MAX_Q = G.totalQ;
     const level = G.level; // 0,1,2
 
@@ -252,15 +253,15 @@
 
     function init(){
       G.buildPips();
-      document.getElementById('consigne').onclick = () => speak(currentInstruction());
       document.getElementById('validateBtn').onclick = onValidate;
       document.getElementById('nextBtn').onclick = () => { qCount++; nextQuestion(); };
       nextQuestion();
     }
 
     function currentInstruction(){
-      const measureWord = curMeasure === 'poids_t' ? 'poids' : 'taille';
-      return 'Range-les du plus petit au plus grand' + (curMeasure==='poids_t' ? ', par poids' : '') + ' !';
+      return curMeasure === 'poids_t'
+        ? 'Range-les du plus léger au plus lourd !'
+        : 'Range-les du plus petit au plus grand !';
     }
 
     function nextQuestion(){
@@ -277,10 +278,7 @@
       const modeBadge = document.getElementById('modeBadge');
       modeBadge.textContent = curMeasure === 'poids_t' ? '⚖️ Par poids' : '📏 Par taille';
 
-      document.getElementById('instruction').textContent = curMeasure === 'poids_t'
-        ? 'Range-les du plus léger au plus lourd !'
-        : 'Range-les du plus petit au plus grand !';
-      speak(currentInstruction());
+      shell.setConsigne(currentInstruction());
 
       renderTrayAndSlots();
       updateValidateBtn();
@@ -564,27 +562,6 @@
     }
 
     init();
-  </script>
-  <script src="js/tracker.js"></script>
-  <script src="js/cloud.js"></script>
-  <script src="js/comments.js"></script>
-  <script src="js/back-button.js"></script>
-  <script src="js/regle-info.js"></script>
-  <script>
-    // Panneau v3 : savant fou 🧑‍🔬 — règle détaillée + avis parent (package v3)
-    RegleInfo.init({
-      picto: '🦕📏🦖',
-      texte: 'Range les dinos mystères du plus petit au plus GRAND !',
-      etapes: [
-        { t: 'Je regarde les ombres 👀',
-          d: 'Des dinos mystères ! Il y a un petit, un moyen… et un géant.' },
-        { t: 'Je glisse chaque ombre dans une case 👆',
-          d: 'Le plus petit à gauche, le plus GRAND à droite. Je peux échanger deux cases si je change d\'avis.' },
-        { t: 'Je tape « C\'est bon ! » ✓',
-          d: 'Les dinos sortent de l\'ombre : on découvre leur VRAIE taille en mètres, à côté d\'un enfant comme toi !' },
-        { t: 'Plus j\'ai d\'étoiles, plus c\'est costaud 💪',
-          d: 'Plus de dinos à ranger… et parfois il faut les ranger par POIDS ⚖️ !' }
-      ]
     });
   </script>
 </body>

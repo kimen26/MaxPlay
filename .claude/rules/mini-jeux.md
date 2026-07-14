@@ -66,6 +66,31 @@ cd studio/minijeux/tests && npm run mj:test mj-XX
 - Un MJ sans spec qui passe au harnais = un MJ qu'on ne pushe pas (sauf tweak cosmétique trivial).
 - **Règle 2-strikes** : 2e commit-fix sur le même symptôme → ajouter d'abord un cas qui reproduit le bug dans le spec (on ne teste pas un bug qu'on ne comprend pas → force la cause racine).
 
+## 🧪 BATTERIE DE TEST 2 VITESSES (2026-07-14)
+
+Deux niveaux, à choisir selon l'enjeu du changement.
+
+### Vitesse ÉCLAIR (< 1 min, avant chaque push) — 100% scripts, zéro token
+
+1. **Cadre/gabarit** : `cd studio/minijeux/tests && node audit-gabarit.mjs mj-XX`
+   Vérifie cloud.js présent+ordonné si comments.js, mp-theme.css chargé, charset utf-8,
+   header canonique, pas de fetch JSON local, spec présente. BLOQUANT = ne pas pusher.
+   Sans argument = audite tous les jeux. `--json` pour CI/agents.
+2. **Gameplay + smoke** : `npm run mj:test mj-XX` (harnais EP-038, inchangé).
+
+### Vitesse COMPLÈTE (par domaine, sur demande ou avant livraison sensible)
+
+| Domaine | Outil | Quand |
+|---|---|---|
+| **Sécurité** (XSS/secrets/inputs) | agent `game-test-secu` (Haiku) | jeu qui affiche une saisie, touche au cloud, ou avant release |
+| **Audio** (exclusivité voix, fallback TTS, padding, démarrage) | agent `game-test-audio` (Haiku) | tout jeu avec MP3+TTS, phonèmes, ou finale audio |
+| **UX enfant** (tap ≥80px, jamais punitif) | agent `game-mj-reviewer` existant (Sections 2 et 5) | pipeline MJ standard |
+| **Perf tablette** | assertions Playwright dans la spec | jeu lourd (canvas, gros DOM, animations) |
+
+Règle de coût : préférer le script quand le check est mécanique. Les agents LLM ne servent
+que pour le jugement contextuel (un innerHTML sûr vs dangereux, un chevauchement audio).
+Ne jamais dupliquer game-mj-reviewer pour l'UX.
+
 ## Workflow MJ
 
 ```

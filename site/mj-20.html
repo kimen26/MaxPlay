@@ -408,13 +408,28 @@
     <a href="index.html" style="color:rgba(255,255,255,0.6);font-size:0.9rem;font-weight:900;text-decoration:none;margin-top:-8px">&#8592; Menu</a>
   </div>
 
-  <script src="js/sounds.js"></script>
-  <script src="js/tts.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/qcm-retry.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <script src="js/mj-shell.js"></script>
   <script>
+  MJ.ready(function () {
+    const shell = MJ.init({
+      id: 'mj-20', emoji: '🌍', titre: 'Compte dans toutes les langues !',
+      consigne: false, // pas de consigne unique : 3 modes (Apprendre / Quiz / Progression)
+      regle: {
+        picto: '🌍🔢',
+        texte: 'Apprends à compter jusqu’à 20 dans plein de langues différentes !',
+        etapes: [
+          { t: 'Je choisis « Apprendre » pour écouter 👂',
+            d: 'Je choisis une langue (drapeau) et je tape un chiffre : une voix le dit dans cette langue !' },
+          { t: 'Je choisis « Quiz » pour jouer 🎮',
+            d: 'Une voix dit un chiffre dans une langue débloquée. Je tape le bon chiffre parmi les choix.' },
+          { t: 'Je gagne 3 bonnes réponses de suite pour débloquer la suite 🔓',
+            d: 'Chaque langue commence petit (1 à 3), puis j’avance jusqu’à 1-20 si je continue bien.' },
+          { t: 'Je regarde « Progression » pour voir où j’en suis 📊',
+            d: 'Chaque langue a ses pastilles : plus j’en remplis, plus je maîtrise de chiffres et de langues !' }
+        ]
+      }
+    });
+
     // ─── Langues ────────────────────────────────────────────────────────────────
     const LANGS = [
       { code:'fr',    flag:'fr', nom:'Français',  lang:'fr-FR' },
@@ -932,14 +947,21 @@
       return a;
     }
 
+    // Exposés pour les onclick inline du markup
+    window.setMode      = setMode;
+    window.selectLang   = selectLang;
+    window.sayNumber    = sayNumber;
+    window.readAll      = readAll;
+    window.setRange     = setRange;
+    window.answerQuiz   = answerQuiz;
+    window.speakQuiz    = speakQuiz;
+    window.restartQuiz  = restartQuiz;
+
     // ─── Init ──────────────────────────────────────────────────────────────────
     renderLangScroll();
     setRange('low');
     renderLearn();
+  }); // fin MJ.ready
   </script>
-  <script src="js/tracker.js"></script>
-  <script src="js/cloud.js"></script>
-  <script src="js/comments.js"></script>
-  <script src="js/back-button.js"></script>
 </body>
 </html>

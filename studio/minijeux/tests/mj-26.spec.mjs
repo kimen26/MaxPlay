@@ -1,10 +1,18 @@
 // Pilote MJ-26 — Compte les dinos : compter les silhouettes affichées.
+// Migré gabarit js/mj-shell.js (2026-07-14).
 // + fix Papa Yann 2026-07-07 : (1) sprites qui débordaient du cadre .play-area
 // en bas ("noir sur noir, tronqué") — check bounding box ; (2) palier 1 devait
 // varier les cibles (pas "5 fois le chiffre 1") — check les comptes sur la session.
 export async function run({ page, ok }) {
   await page.evaluate(() => localStorage.clear());
   await page.reload({ waitUntil: 'networkidle' });
+
+  // Panneau règle v3 : s'ouvre TOUT SEUL à la 1ʳᵉ partie → on vérifie puis on ferme.
+  await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
+  ok('panneau règle ouvert automatiquement à la 1ʳᵉ partie', (await page.locator('#ri-panneau.on').count()) === 1);
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
+  ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
 
   ok('data dinos chargée', await page.evaluate(() => typeof DINOS !== 'undefined' && DINOS.length >= 50));
   ok('Niveau 1 = 4 billes (standard golden : 4/6/8 selon etoiles)', (await page.locator('.pip').count()) === 4);
@@ -41,6 +49,9 @@ export async function run({ page, ok }) {
   // (régression signalée : "5 fois le chiffre 1"). On rejoue une partie complète et log les comptes.
   await page.evaluate(() => localStorage.clear());
   await page.reload({ waitUntil: 'networkidle' });
+  await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
   await page.waitForSelector('.play-area img.sil', { timeout: 5000 });
   const counts = [];
   for (let q = 0; q < 4; q++) {
@@ -56,6 +67,9 @@ export async function run({ page, ok }) {
   // Chemin gagnant
   await page.evaluate(() => localStorage.clear());
   await page.reload({ waitUntil: 'networkidle' });
+  await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
   for (let q = 0; q < 3; q++) {
     await page.waitForSelector('.num-btn[data-correct="1"]', { timeout: 4000 });
     await page.click('.num-btn[data-correct="1"]').catch(() => {});

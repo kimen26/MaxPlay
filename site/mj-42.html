@@ -157,18 +157,31 @@
 </div>
   <script src="js/bus-svg.js"></script>
   <script src="js/data.js"></script>
-  <script src="js/tracker.js"></script>
-  <script src="js/sounds.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/regle-info.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
   <script>
-    RegleInfo.init({ texte: "Aligne tes 3 pions en passant par le point d'eau !", picto: "🔵🔵🔵💧" });
-  </script>
-  <script>
-  (function(){
+  MJ.ready(function(){
     'use strict';
+
+    MJ.init({
+      id: 'mj-42', emoji: '🦎', titre: 'Shisima !',
+      golden: false,
+      consigne: false,
+      regle: {
+        picto: '🔵🔵🔵💧',
+        texte: "Aligne tes 3 pions en passant par le point d'eau !",
+        etapes: [
+          { t: 'Je regarde le plateau 👀',
+            d: 'Il y a 8 points tout autour et 1 point d’eau au milieu. Mes 3 pions rouges sont déjà posés.' },
+          { t: 'Je tape mon pion, puis un point vide à côté 👆',
+            d: 'Mon pion ne peut avancer que sur un point voisin libre, ou passer par le point d’eau au milieu.' },
+          { t: 'J’aligne mes 3 pions avec le centre 🎯',
+            d: 'Si mes 3 pions et le point d’eau sont sur la même ligne droite, j’ai gagné !' },
+          { t: 'Le caméléon joue aussi, sans jamais me punir 🦎',
+            d: 'Plus j’ai d’étoiles, plus le caméléon réfléchit et bloque mes coups. S’il gagne, on rejoue tout de suite !' }
+        ]
+      }
+    });
 
     // ── Géométrie du plateau ──────────────────────────────────────────────
     // 8 points périphériques (index 0-7) + 1 centre (index 8, le "shisima").
@@ -543,7 +556,7 @@
       neighbors,
       WIN_LINES,
     };
-  })();
+  });
   </script>
 </body>
 </html>

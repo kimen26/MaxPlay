@@ -82,15 +82,30 @@
   <div class="flash-ok" id="flashOk"></div>
   <div class="flash-ko" id="flashKo"></div>
 
-  <script src="js/sounds.js"></script>
-  <script src="js/feedback.js"></script>
   <script src="js/data.js"></script>
   <script src="js/bus-svg.js"></script>
-  <script src="js/catalog.js"></script>
-  <script src="js/stars.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <script src="js/mj-shell.js"></script>
   <script>
+  MJ.ready(function () {
+    const shell = MJ.init({
+      id: 'mj-19', emoji: '🎯', titre: 'Trouve le bus !',
+      consigne: false, // consigne portée par #quest (spécifique, mise à jour à chaque manche)
+      regle: {
+        picto: '🎯🚌',
+        texte: 'Écoute le numéro et tape le bon bus parmi tous ceux qui bougent !',
+        etapes: [
+          { t: 'J’écoute le numéro demandé 👂',
+            d: 'Une voix dit « Trouve le bus 162 ! » et le numéro est écrit en haut, en jaune.' },
+          { t: 'Je regarde tous les bus qui bougent 👀',
+            d: 'Plein de bus se baladent dans l’écran, chacun avec son numéro.' },
+          { t: 'Je tape le bon bus 👆',
+            d: 'Si je me trompe, ce n’est pas grave : je réessaie, il n’y a pas de pénalité.' },
+          { t: 'Plus j’ai d’étoiles, plus il y a de bus et ils vont plus vite 💪',
+            d: 'Au début, peu de bus lents. Puis de plus en plus nombreux et rapides !' }
+        ]
+      }
+    });
+
     // MJ-19 V1 — Hidden in plain sight
     // N bus se déplacent, Max doit taper celui demandé. 5 rounds.
 
@@ -288,16 +303,12 @@
       }
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      const lb = document.getElementById('levelbar');
-      if (lb) lb.textContent = 'Niveau ' + (level + 1);
-      if (typeof Tracker !== 'undefined') Tracker.startSession('mj-19');
-      startRound();
-    });
+    // DOM déjà prêt (MJ.ready)
+    const lb = document.getElementById('levelbar');
+    if (lb) lb.textContent = 'Niveau ' + (level + 1);
+    if (typeof Tracker !== 'undefined') Tracker.startSession('mj-19');
+    startRound();
+  }); // fin MJ.ready
   </script>
-  <script src="js/tracker.js"></script>
-  <script src="js/cloud.js"></script>
-  <script src="js/comments.js"></script>
-  <script src="js/back-button.js"></script>
 </body>
 </html>

@@ -182,10 +182,28 @@
 
 <script src="js/bus-svg.js"></script>
 <script src="js/data.js"></script>
-<script src="js/sounds.js"></script>
-<script src="js/mp-theme.js"></script>
-<script src="js/celebrations.js"></script>
+<script src="js/mj-shell.js"></script>
 <script>
+MJ.ready(function () {
+  MJ.init({
+    id: 'mj-21', emoji: '🎨', titre: 'Peins les bus !',
+    golden: false,
+    consigne: false,
+    regle: {
+      picto: '🎨🚌',
+      texte: 'Mélange les couleurs pour peindre le bon bus !',
+      etapes: [
+        { t: 'Je regarde la couleur à trouver 👀',
+          d: 'À côté du bus tout blanc, il y a un rond de couleur : c’est la couleur que je dois fabriquer !' },
+        { t: 'Je verse les pots dans le tube 🧪',
+          d: 'Rouge, Jaune, Bleu, Blanc : je tape sur les pots pour les verser dans le tube. Une seule couleur ? C’est gagné tout de suite !' },
+        { t: 'Je tape Mixer pour mélanger 🔄',
+          d: 'Si j’ai versé plusieurs couleurs, je tape « Mixer ! » pour les mélanger. Si ça devient marron, pas grave, je lave le tube et je recommence !' },
+        { t: 'Le tube verse la couleur sur le bus 🚌',
+          d: 'Si c’est la bonne couleur, le tube se renverse et peint le bus ! Un indice 💡 m’aide si je cherche.' }
+      ]
+    }
+  });
 // ── DÉFIS ─────────────────────────────────────────────────────────
 const DEFIS = [
   { r:1, j:0, b:0, w:0, hex:'#E2231A', label:'rouge',      num:'RER A', textColor:'#fff'  },
@@ -524,6 +542,14 @@ function spawnConfetti(scene,rect){
 renderTube();
 renderBusBas(null);
 renderProgress();
+
+// Exposées sur window : appelées par les onclick= inline du HTML
+window.addCouleur = addCouleur;
+window.viderTube = viderTube;
+window.mixerTube = mixerTube;
+window.showHint = showHint;
+window.resetPartie = resetPartie;
+});
 </script>
 </body>
 </html>

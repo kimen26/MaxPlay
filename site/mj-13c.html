@@ -64,9 +64,9 @@ html, body {
 </head>
 <body data-mp-intro-emoji="🚌" data-mp-intro-title="Combien avant le bus ?" data-mp-intro-hint="Compte les voitures">
 
-<div id="hdr">
-  <button onclick="location.href='index.html'">← Retour</button>
-  <span style="font-weight:900;color:var(--ink,#fff);">🔢 Combien avant ?</span>
+<div class="hdr">
+  <a href="index.html">&#8592;</a>
+  <span class="htitle">🔢 Combien avant ?</span>
   <span id="levelbar" style="margin-left:auto;font-weight:900;color:var(--gold,#ffe066);background:rgba(255,255,255,.09);border-radius:10px;padding:3px 12px;font-size:0.85rem;">Niveau 1</span>
   <div id="score">0 / 0</div>
 </div>
@@ -83,20 +83,29 @@ html, body {
 </div>
 
 <script src="js/bus-svg.js"></script>
-<script src="js/catalog.js"></script>
-<script src="js/stars.js"></script>
-<script src="js/sounds.js"></script>
-<script src="js/tts.js"></script>
-<script src="js/victory-sounds.js"></script>
-<script src="js/tracker.js"></script>
-<script src="js/cloud.js"></script>
-<script src="js/comments.js"></script>
-<script src="js/qcm-retry.js"></script>
   <script src="js/intro-splash.js"></script>
-  <script src="js/back-button.js"></script>
-<script src="js/mp-theme.js"></script>
-<script src="js/celebrations.js"></script>
+<script src="js/mj-shell.js"></script>
 <script>
+MJ.ready(function () {
+  const shell = MJ.init({
+    id: 'mj-13c', emoji: '🔢', titre: 'Combien avant ?',
+    golden: false,
+    consigne: false,
+    regle: {
+      picto: '🔢🚌',
+      texte: 'Compte les bus qui passent avant le bus demandé !',
+      etapes: [
+        { t: 'J’écoute quel bus chercher 👂',
+          d: 'La voix demande : « Combien de bus avant le 162 ? » Le numéro est aussi affiché en couleur.' },
+        { t: 'Je compte les fiches avant lui 🔎',
+          d: 'Les fiches sont rangées par ordre d’arrivée. Je compte celles qui arrivent AVANT le bus demandé, une par une.' },
+        { t: 'Je tape le bon chiffre 👆',
+          d: 'Des boutons 0, 1, 2… apparaissent. Si je me trompe, j’ai un indice pour recompter, puis je réessaie.' },
+        { t: 'Plus j’ai d’étoiles, plus il y a de bus 💪',
+          d: 'Au début il y a 3 bus à compter, puis de plus en plus (jusqu’à 10) !' }
+      ]
+    }
+  });
 /* ══ LED ══ */
 const DIGITS={
   '0':[1,1,1,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,0,0,1,1,1,1,1],
@@ -462,8 +471,12 @@ function restart(){
   initRound();
 }
 
+// Exposé pour le onclick="" inline du bouton rejouer
+window.restart = restart;
+
 updScore();
 initRound();
+});
 </script>
 </body>
 </html>

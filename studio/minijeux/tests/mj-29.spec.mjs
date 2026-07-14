@@ -1,7 +1,15 @@
 // Pilote MJ-29 — La fabrique de noms : assemble les racines grec/latin d'un dino dans l'ordre.
+// Migré gabarit js/mj-shell.js (2026-07-14).
 export async function run({ page, ok }) {
   await page.evaluate(() => localStorage.clear());
   await page.reload({ waitUntil: 'networkidle' });
+
+  // Panneau règle v3 : s'ouvre TOUT SEUL à la 1ʳᵉ partie → on vérifie puis on ferme.
+  await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
+  ok('panneau règle ouvert automatiquement à la 1ʳᵉ partie', (await page.locator('#ri-panneau.on').count()) === 1);
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
+  ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
 
   ok('DINO_RACINES chargé', await page.evaluate(() => typeof DINO_RACINES !== 'undefined' && Object.keys(DINO_RACINES.dinos).length >= 40));
   ok('DINOS chargé', await page.evaluate(() => typeof DINOS !== 'undefined' && DINOS.length > 10));
@@ -48,6 +56,9 @@ export async function run({ page, ok }) {
   // la 2e brique cible AVANT la 1re : les deux doivent quand même se poser puis compléter le dino.
   await page.evaluate(() => localStorage.clear());
   await page.reload({ waitUntil: 'networkidle' });
+  await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
   await page.waitForSelector('.brick[data-order]', { timeout: 5000 });
   const secondBrick = page.locator('.brick[data-order="1"]');
   await secondBrick.click();

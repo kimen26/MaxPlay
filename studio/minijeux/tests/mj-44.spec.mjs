@@ -8,6 +8,13 @@ import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 
 export async function run({ page, ok }) {
+  // ── Gabarit mj-shell.js : le panneau règle s'ouvre TOUT SEUL à la 1ʳᵉ partie ──
+  await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
+  ok('panneau règle ouvert automatiquement à la 1ʳᵉ partie', (await page.locator('#ri-panneau.on').count()) === 1);
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
+  ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
+
   await page.evaluate(() => window.__mjTest.setTestMode(true));
 
   // ── État initial ─────────────────────────────────────────────────────
@@ -19,11 +26,11 @@ export async function run({ page, ok }) {
   ok('Chaque carte a une boîte cible connue', s0.cards.every(c => ['t','m'].includes(c.boxId)));
 
   // ── Bouton règles (i) ────────────────────────────────────────────────
-  ok('Bouton règles ❓ présent', await page.locator('#btn-regle').count() === 1);
+  ok('Bouton règles 🧑‍🔬 présent', await page.locator('#btn-regle').count() === 1);
   await page.click('#btn-regle');
-  ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);
-  await page.click('#ri-close'); // v3 : fermeture explicite ✕ (panneau bottom-sheet)
-  ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
+  ok('Panneau règle ouvert au tap', await page.locator('#ri-panneau.on').count() === 1);
+  await page.click('#ri-ok');
+  ok('Panneau règle fermé au tap', await page.locator('#ri-panneau.on').count() === 0);
 
   // ── Placement CORRECT : la carte entre dans sa boîte ─────────────────
   const good = await page.evaluate(() => {

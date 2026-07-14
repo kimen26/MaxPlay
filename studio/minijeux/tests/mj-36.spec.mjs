@@ -3,6 +3,13 @@
 // mauvais bus -> aucune perte (pas de régression d'état), palier vidé -> victoire.
 
 export async function run({ page, ok }) {
+  // ─── Règles v3 : panneau s'ouvre TOUT SEUL à la 1ʳᵉ partie (regle-info.js) ───
+  await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
+  ok('panneau règle ouvert automatiquement à la 1ʳᵉ partie', (await page.locator('#ri-panneau.on').count()) === 1);
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
+  ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
+
   // Smoke : le hook de test est exposé
   const hasHook = await page.evaluate(() => !!window.__mjTest);
   ok('window.__mjTest exposé', hasHook);
@@ -40,7 +47,7 @@ export async function run({ page, ok }) {
     null, { timeout: 5000 }).then(() => true).catch(() => false);
   ok('Jeu débloqué (busy=false) après séquence de montée', unlocked);
 
-  // ─── EP-068 : bouton règles (i) — composant partagé RegleInfo ───
+  // ─── EP-068 : bouton règles (i) — réouverture manuelle après le 1er auto-open ───
   // Testé avant l'écran Bravo (overlay plein écran bloquerait le clic après victoire).
   ok('Bouton règles ❓ présent dans le header', await page.locator('#btn-regle').count() === 1);
   await page.click('#btn-regle');

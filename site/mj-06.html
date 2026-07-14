@@ -140,16 +140,10 @@
     
     <!-- Question counter -->
     <div class="question-counter" id="qcounter">Question 1 / 5</div>
-    
-    <!-- Instruction -->
-    <div class="instruction">Quel mot manque dans la phrase ?</div>
 
-    <!-- TTS + Emoji -->
+    <!-- Emoji d'ambiance (la consigne parlée est gérée par le gabarit : tap = réécouter) -->
     <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:4px;">
       <div class="emoji-hint" id="emojiHint" style="margin:0;">🚌</div>
-      <button class="tts-btn" id="ttsBtn" onclick="speakQuestion()" style="background:linear-gradient(135deg,#667eea,#764ba2);color:#fff;border:none;border-radius:25px;padding:8px 18px;font-size:0.95rem;font-weight:700;cursor:pointer;display:flex;align-items:center;gap:6px;">
-        <span>🔊</span><span>Écouter</span>
-      </button>
     </div>
 
     <!-- Sentence with blank -->
@@ -168,14 +162,11 @@
   <!-- Feedback overlay -->
   <div id="fbOverlay"></div>
   
-  <!-- Scripts -->
-  <script src="js/sounds.js"></script>
-  <script src="js/tts.js"></script>
-  <script src="js/feedback.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
   <script>
-    // ─── MJ-04: Lis la phrase ───
+    MJ.ready(function () {
+    // ─── MJ-06 : Lis la phrase ───
     // Max doit trouver le mot manqué [?] dans une phrase simple
     // Phase 1 : mots courts que Max sait lire (BUS, TRAM, PAPA, MAMAN, VELO...)
 
@@ -225,6 +216,26 @@
     let currentPhrase = null;
     let usedIndices = [];
 
+    const shell = MJ.init({
+      id: 'mj-06', emoji: '📖', titre: 'Lis la phrase',
+      consigne: true,
+      onRepeat: function () { speakQuestion(false); },
+      regle: {
+        picto: '📖❓',
+        texte: 'Trouve le mot qui manque dans la phrase !',
+        etapes: [
+          { t: 'J’écoute la phrase 👂',
+            d: 'Une voix lit la phrase avec un petit trou. Je tape la consigne pour réécouter.' },
+          { t: 'Je regarde le dessin 👀',
+            d: 'Un emoji donne un indice sur le mot qui manque.' },
+          { t: 'Je tape le bon mot 👆',
+            d: 'Si je me trompe, la voix dit la bonne réponse et la phrase complète.' },
+          { t: 'Je continue avec 5 phrases 💪',
+            d: 'Bus, dinos, voyages… à chaque fois une nouvelle phrase à compléter !' }
+        ]
+      }
+    });
+
     // TTS (via js/tts.js)
     function speakQuestion(full) {
       if (!currentPhrase) return;
@@ -271,6 +282,7 @@
       // Afficher la phrase avec case [?]
       const sentenceText = document.getElementById('sentenceText');
       sentenceText.innerHTML = `${currentPhrase.before} <span class="blank" id="blank">?</span> ${currentPhrase.after}`;
+      shell.setConsigne('Quel mot manque dans la phrase ?', false);
 
       // Afficher les 4 choix (grands boutons texte en majuscules)
       const choicesDiv = document.getElementById('choices');
@@ -351,10 +363,7 @@
     }
 
     init();
+    });
   </script>
-<script src="js/tracker.js"></script>
-<script src="js/cloud.js"></script>
-<script src="js/comments.js"></script>
-  <script src="js/back-button.js"></script>
 </body>
 </html>

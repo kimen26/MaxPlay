@@ -1,4 +1,5 @@
 // Pilote MJ-25 — Pareil pas pareil : trouver la silhouette identique à la référence.
+// Migré gabarit js/mj-shell.js (2026-07-14).
 // + progression Papa Yann 2026-07-07 ("zéro difficulté, but incompris") :
 //   ★ niveau 0 = 2 choix très différents · ★★ niveau 1 = 3 choix cousins famille ·
 //   ★★★ niveau 2 = leurres subtils (même image + filtre CSS hue-rotate/scaleX).
@@ -6,14 +7,21 @@ export async function run({ page, ok }) {
   await page.evaluate(() => localStorage.clear());
   await page.reload({ waitUntil: 'networkidle' });
 
+  // Panneau règle v3 : s'ouvre TOUT SEUL à la 1ʳᵉ partie → on vérifie puis on ferme.
+  await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
+  ok('panneau règle ouvert automatiquement à la 1ʳᵉ partie', (await page.locator('#ri-panneau.on').count()) === 1);
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
+  ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
+
   ok('data dinos chargée', await page.evaluate(() => typeof DINOS !== 'undefined' && DINOS.length >= 50));
   ok('Niveau 1 = 4 billes (standard golden : 4/6/8 selon etoiles)', (await page.locator('.pip').count()) === 4);
   ok('1re bille marquée courante', (await page.locator('.pip.cur').count()) === 1);
 
   ok('badge de palier affiché (★ Facile)', ((await page.locator('#tierBadge').textContent()) || '').includes('★'));
-  ok('consigne visuelle "MÊME" affichée (jamais "Regarde")',
-     ((await page.locator('.instruction-text').textContent()) || '').toLowerCase().includes('même')
-     && !((await page.locator('.instruction-text').textContent()) || '').toLowerCase().includes('regarde'));
+  ok('consigne "MÊME" affichée (jamais "Regarde")',
+     ((await page.locator('#instruction').textContent()) || '').toLowerCase().includes('même')
+     && !((await page.locator('#instruction').textContent()) || '').toLowerCase().includes('regarde'));
 
   await page.waitForSelector('#refCard img', { timeout: 5000 });
   ok('référence affichée', (await page.locator('#refCard img').count()) === 1);
@@ -60,6 +68,9 @@ export async function run({ page, ok }) {
     }));
   });
   await page.reload({ waitUntil: 'networkidle' });
+  await page.waitForSelector('#ri-panneau.on', { timeout: 6000 }).catch(() => {});
+  await page.click('#ri-ok').catch(() => {});
+  await page.waitForTimeout(250);
 
   ok('badge ★★★ affiché au niveau max', ((await page.locator('#tierBadge').textContent()) || '').includes('★★★'));
 

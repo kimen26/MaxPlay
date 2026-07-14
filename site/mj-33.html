@@ -67,28 +67,39 @@
     </div>
     <div class="pips" id="pips"></div>
 
-    <div class="instruction-text" id="instruction">Trouve l'ombre et son dino !</div>
-
     <div class="board" id="board"></div>
   </div>
   <div class="fait-toast" id="faitToast"></div>
 
-  <script src="js/sounds.js"></script>
-  <script src="js/tts.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/feedback.js"></script>
-  <script src="js/catalog.js"></script>
-  <script src="js/stars.js"></script>
-  <script src="js/mj-golden.js"></script>
   <script src="js/lang.js"></script>
   <script src="js/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
   <script src="js/dinos-audio-manifest.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
   <script>
+  MJ.ready(function () {
     // ─── MJ-33 — Memory des ombres : associe l'ombre au dino en couleur ───
-    const G = Golden.setup('mj-33');
+    const shell = MJ.init({
+      id: 'mj-33', emoji: '🃏', titre: 'Memory des ombres',
+      golden: true,
+      consigne: true,
+      regle: {
+        picto: '🃏🦕🔎',
+        texte: 'Retourne 2 cartes pour trouver l’ombre et son dino en couleur !',
+        etapes: [
+          { t: 'Je retourne une carte 👆',
+            d: 'Je découvre une ombre ou un dino en couleur. Une voix dit son nom.' },
+          { t: 'Je cherche sa paire 🔎',
+            d: 'Je retourne une 2e carte : si c’est le même dino (ombre + couleur), la paire reste ouverte !' },
+          { t: 'Si ce n’est pas la bonne paire 🔄',
+            d: 'Les 2 cartes se retournent, et je réessaie tranquillement.' },
+          { t: 'Plus j’ai d’étoiles, plus il y a de cartes 💪',
+            d: 'Et parfois, des dinos cousins qui se ressemblent beaucoup !' }
+        ]
+      }
+    });
+    const G = shell.G;
     const NPAIRS = G.totalQ; // 4 / 6 / 8 (standard golden)
     const level = G.level;
 
@@ -279,14 +290,12 @@
 
     function init() {
       G.buildPips();
+      shell.setConsigne('Trouve l’ombre et son dino !');
       buildBoard();
     }
 
     init();
+  });
   </script>
-  <script src="js/tracker.js"></script>
-  <script src="js/cloud.js"></script>
-  <script src="js/comments.js"></script>
-  <script src="js/back-button.js"></script>
 </body>
 </html>

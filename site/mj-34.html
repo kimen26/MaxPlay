@@ -129,16 +129,28 @@
 </div>
   <script src="js/bus-svg.js"></script>
   <script src="js/data.js"></script>
-  <script src="js/tracker.js"></script>
-  <script src="js/sounds.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/mp-theme.js"></script>
-  <script src="js/celebrations.js"></script>
-  <script src="js/regle-info.js"></script>
+  <script src="js/mj-shell.js"></script>
   <script>
-    RegleInfo.init({ texte: "Fais glisser les bus pour libérer le bus jaune de Max !", picto: "🚌➡️🚪" });
-  </script>
-  <script>
+  MJ.ready(function () {
+    MJ.init({
+      id: 'mj-34', emoji: '🚧', titre: 'Le dépôt bloqué',
+      golden: false,
+      consigne: false,
+      regle: {
+        picto: '🚌➡️🚪',
+        texte: 'Fais glisser les bus pour libérer le bus jaune de Max !',
+        etapes: [
+          { t: 'Je repère le bus jaune de Max 🟡',
+            d: 'Il clignote au début du niveau. Il doit sortir par la porte « SORTIE » à droite.' },
+          { t: 'Je fais glisser les autres bus 👆',
+            d: 'Chaque bus ne bouge que dans un sens (à plat ou debout). Je les pousse pour dégager le chemin.' },
+          { t: 'Si un bus ne peut pas bouger, il rebondit doucement ↩️',
+            d: 'Pas de souci : je réessaie dans l’autre sens, il n’y a jamais d’erreur qui compte contre moi.' },
+          { t: 'Le bus de Max sort, puis tous les autres suivent 🎉',
+            d: 'Plus de niveaux : la grille grandit (4×4 puis 5×5) et il y a plus de bus à déplacer. 3 niveaux gagnés = une étoile !' }
+        ]
+      }
+    });
     // ═══════════════════════════════════════════════════════════════════
     // MJ-34 — Le dépôt bloqué (Rush Hour bus)
     // Grille 4×4 (★), 5×5 (★★/★★★). Bus de Max horizontal, sortie à droite.
@@ -663,6 +675,7 @@
     };
 
     loadLevel();
+  });
   </script>
 </body>
 </html>

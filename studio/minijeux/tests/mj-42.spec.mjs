@@ -2,6 +2,13 @@
 // Smoke console + chemin gagnant Max scripté + vérif "IA gagne = pas d'état punitif".
 
 export async function run({ page, ok }) {
+  // ── Gabarit mj-shell.js : le panneau règle s'ouvre TOUT SEUL à la 1ʳᵉ partie ──
+  await page.waitForSelector('#ri-panneau.on', { timeout: 6000 });
+  ok('panneau règle ouvert automatiquement à la 1ʳᵉ partie', (await page.locator('#ri-panneau.on').count()) === 1);
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
+  ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
+
   // Active le mode test (IA gelée / déterministe) avant toute IA auto.
   await page.evaluate(() => window.__mjTest.setTestMode(true));
 
@@ -13,15 +20,15 @@ export async function run({ page, ok }) {
   ok('Tour initiale = Max', s0.turn === 'max');
   ok('Pas de gameOver au départ', s0.gameOver === false);
 
-  // ─── EP-068 : bouton règles (i) — composant partagé RegleInfo ───
+  // ─── EP-068 : bouton règles (i) — composant gabarit mj-shell.js ───
   // Testé avant toute victoire : #overlay plein écran bloquerait le clic après.
-  ok('Bouton règles ❓ présent dans le header', await page.locator('#btn-regle').count() === 1);
+  ok('Bouton règles 🧑‍🔬 présent dans le header', await page.locator('#btn-regle').count() === 1);
   await page.click('#btn-regle');
-  ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);
+  ok('Panneau règle ouvert au tap', await page.locator('#ri-panneau.on').count() === 1);
   const regleTexteEarly = (await page.locator('.ri-text').textContent() || '').trim();
   ok('Texte de règle correspond', regleTexteEarly === "Aligne tes 3 pions en passant par le point d'eau !", regleTexteEarly);
-  await page.click('#ri-close'); // v3 : fermeture explicite ✕ (panneau bottom-sheet)
-  ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
+  await page.click('#ri-ok');
+  ok('Panneau règle fermé au tap', await page.locator('#ri-panneau.on').count() === 0);
 
   // ── Chemin gagnant scripté ──────────────────────────────────────────
   // Départ : max=[0,2,4] ai=[1,3,5]. Ligne gagnante visée : [0, centre(8), 4]

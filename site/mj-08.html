@@ -169,7 +169,7 @@
     .victory-btn:hover, .victory-btn:active { transform:translateY(-3px); }
   </style>
 </head>
-<body>
+<body data-ambiance-lock>
   <div id="app">
     <div class="hdr">
       <a href="index.html">&#8592;</a>
@@ -202,12 +202,10 @@
     </div>
   </div>
 
-  <script src="js/sounds.js"></script>
-  <script src="js/victory-sounds.js"></script>
-  <script src="js/feedback.js"></script>
-  <script src="js/tracker.js"></script>
-  <script src="js/celebrations.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
   <script>
+    MJ.ready(function () {
     // ─── MJ-08 : Le grand rangement ───
     // Tri multi-thèmes : un bazar d'objets éparpillés → glisser dans le bon bac.
     // 4 thèmes qui tournent par manche (≠ MJ-09 qui reste tri de bus par couleur) :
@@ -264,6 +262,25 @@
 
     const ITEM_SIZE = 74;
     const SNAP_DIST = 95;
+
+    MJ.init({
+      id: 'mj-08', emoji: '🧸', titre: 'Le grand rangement',
+      consigne: false,
+      regle: {
+        picto: '🧸📦',
+        texte: 'Range chaque objet dans le bon bac !',
+        etapes: [
+          { t: 'Je regarde le bazar 👀',
+            d: 'Plein d’objets sont mélangés à gauche. À droite, des bacs attendent.' },
+          { t: 'Je glisse un objet vers son bac 👆',
+            d: 'Nature, ciel ou sol, ça vole ou ça roule, ou même des dinos par couleur !' },
+          { t: 'Si je me trompe, l’objet revient tout seul 🔄',
+            d: 'Pas de souci, je peux réessayer autant de fois que je veux.' },
+          { t: 'Plus je range, plus les manches sont costaudes 💪',
+            d: 'Manche 1 : 2 bacs faciles. Manche 3 : 3 bacs, avec des objets piégeurs !' }
+        ]
+      }
+    });
 
     let currentThemeIdx = 0;
     let round = 1;           // 1..3
@@ -659,10 +676,8 @@
       document.addEventListener('pointercancel', onDragEnd);
     }
 
-    document.addEventListener('DOMContentLoaded', init);
+    init();
+    });
   </script>
-  <script src="js/cloud.js"></script>
-  <script src="js/comments.js"></script>
-  <script src="js/back-button.js"></script>
 </body>
 </html>

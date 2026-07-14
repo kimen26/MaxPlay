@@ -9,6 +9,30 @@
 
 ---
 
+## 2026-07-14 (après-midi) — 4 DÉCISIONS PAPA YANN TRANCHÉES + Livraisons (commits 98424775 + 68284858)
+
+**Owner** : Papa Yann décisions · main agent implémentation + game-pmo log
+
+**Trigger** : session après-midi, Papa Yann arbitrage post-relecture 2026-07-14. Moisson décisions figées + livraisons immédiates.
+
+**Fait** :
+- ✅ **EP-098 CORRIGÉ** (commit 98424775) : mj-22 micro-pays filtrés (Chypre/Lituanie/Lettonie/Estonie/Monténégro retirés), zones tap 80px. Figée mj-22.md 2026-07-14 gravée.
+- ✅ **EP-099 TRANCHÉ** (commit 98424775) : mj-06 accents GARDÉS (GÂTEAU, ÉTOILE…), seule la ligature Œ bannie (OEUF). Figée mj-06.md créée.
+- ✅ **RÈGLE FIGÉE CHANGÉE** : maxStars catalog 5→3 global (commit 68284858). 17 jeux impactés : 10 remappés 5-paliers→3-niveaux (mj-04/05/09/13a/13c/15/16/18/19/23), 7 déjà 3 inchangés. Specs 20/20 vérifiées.
+- ✅ **EP-100 PARTIELLEMENT LIVRÉ** (commit 68284858) : Bibliothèque savoir-faire GO « super pratique ». Étape -1 workflow ajoutée (check libs amont). **3 libs extraites testées** : js/mj-dice.js (dés) · js/dinos-ombres.js (pool ombres) · js/mj-compte.js (1-moteur-N-peaux pilote mj-04/26). Docs docs/MECANIQUES.md + rules/mini-jeux.md gravées. Panneau-led.js suspendu EP-101 fusion.
+- ⏳ **EP-101 REMIS** : fusion F1 (mj-13a+13c) = friction refonte menu + tests pervasifs. À arbitrer Papa Yann : NOW v0.5 ou Phase 2 ?
+
+**État au reboot** :
+- ✅ 4 décisions tranchées gravées decisions.md (changements règles figées datés 2026-07-14)
+- ✅ 3 libs opérationnelles (workflow -1 nouveau), 1 en suspens (attente fusion)
+- ✅ Catalog.js + 17 figées/mj-XX.md mis à jour maxStars 3-niveaux
+- ✅ Leçon L-099 ajoutée (phonétique vs accents)
+- ⏳ EP-101 fusion = question ouverte stratégique (scalabilité Phase 2)
+
+**Prochaines étapes** : attente Papa Yann arbitrage fusion (EP-101) + validation 48h ressenti maxStars 3 + confirmation réactivation mj-22/mj-20 menu.
+
+---
+
 ## 2026-07-14 — Relecture textes 41 MJ + Classification 100% + Tickets audit 3 domaines (commits 25452ff5 + aeab8272)
 
 **Owner** : 3 agents de relecture (game-dev + chercheurs) · main agent (synthèse classification) · game-pmo (log)

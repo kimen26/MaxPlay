@@ -101,34 +101,57 @@ Nuancier avatar 11 couleurs → **3 triplets GÉNÉRÉS autour teinte** (algo pr
 
 ---
 
-## 2026-07-14 — Questions ouvertes du projet (audit classification, aucune décision encore)
+## 2026-07-14 (après-midi) — 4 DÉCISIONS PAPA YANN TRANCHÉES (commits 98424775 + 68284858)
 
-### Q-1 — Faut-il corriger mj-22 ou le retirer du catalogue définitif ?
-**Contexte** (EP-098) : mj-22 "Trouve le pays" retrait menu 2026-07-06, mais fichier figé interdit micro-pays pour accessibilité Max. Relecture 2026-07-14 révèle : code utilise `Object.keys(PAYS)` → inclut les micro-pays. Zone tap map dense → risque < 60px.
-**Options** :
-- A) Corriger le code (filtrer micro-pays, agrandir zones tap, revalider Papa Yann) → réactivation future.
-- B) Retrait permanent du catalogue (supprimer figees/mj-22.md + site/mj-22.html).
-**Attente** : décision Papa Yann (ressenti enfant sur mj-22, ou mieux d'autres jeux monde ?)
-
----
-
-### Q-2 — Accents typographiques sur mots de lecture phonétique : conserve ou puriste ?
-**Contexte** (EP-099) : mj-06 "Lis la phrase" — relecture 2026-07-14 a ajouté accents manquants (GÂTEAU, ŒUF, ÉTOILE, RIVIÈRE, GRÊLE, FUSÉE, VÉLO, BOÎTE). Français orthographiquement correct. Max lit phonétique (ne prononce pas les accents). 
-**Dilème** : accent peut aider reconnaissance visuelle (GÂTEAU ≠ GATEAU pour l'œil) mais pas la lecture phonétique (aucun changement sonore).
-**Attente** : Papa Yann sentiment enfant (test 2-3 séances ?) — garder accents pour français honnête ou puriste phonétique sans ?
+### EP-098 TRANCHÉ — mj-22 correction appliquée : micro-pays filtrés + zones tap agrandies
+**Contexte** : mj-22 "Trouve le pays" — regression silencieuse (micro-pays bannis par figée, mais code Object.keys(PAYS) les incluait). Relecture 2026-07-14.
+**Décision Papa Yann** : CORRIGER (option A) → filtrer micro-pays (Chypre, Lituanie, Lettonie, Estonie, Monténégro), agrandir zones tap.
+**Fait (commit 98424775)** : PAYS pool réduit, zones tap 80px min. MJ-22 conforme figée.
+**Statut** : [x] Terminé. À confirmer réactivation menu ou maintien retrait temporaire ?
+**Impact** : mj-22 prêt retour menu si Papa Yann valide ressenti enfant.
 
 ---
 
-### Q-3 — « Ranger la chambre » : restructurer catalogue pour Phase 2, ou en attendre ?
-**Contexte** (EP-101) : classification 2026-07-14 propose refonte structurelle (ZÉRO appliquée) :
-- **F1 fusion** : mj-13a + mj-13c → 1 jeu « Panneau du bus » à 2 modes (gain -1 menu, -~500 LOC dupliquée)
-- **F2 optionnelle** : mj-28 mode de mj-24 (même ombres, interaction différente)
-- **Libs factorisation** : L1=dés, L2=panneau-led, L3=ombres-dino, L4=QCM-générique
-- **Pilote 1-moteur-N-peaux** : mj-04+mj-26 (comptage passagers vs dinos) — valide mécanique transposable 2 thèmes, prépare V0 "thème interchangeable".
+### EP-099 TRANCHÉ — mj-06 accents GARDÉS, ligature Œ bannie
+**Contexte** : mj-06 "Lis la phrase" — accents ajoutés en relecture 2026-07-14 (GÂTEAU, ŒUF, etc.).
+**Décision Papa Yann** (« OK pour tout avec ton avis ») : GARDER les accents (GÂTEAU, ÉTOILE, RIVIÈRE, GRÊLE, FUSÉE, VÉLO, BOÎTE) — français correct. SEULE exception : la ligature Œ est bannie → OEUF, pas ŒUF (perturbe la lecture phonétique 4 ans).
+**Fait (commit 98424775)** : mj-06.html — accents conservés, ŒUF → OEUF. Figée figees/mj-06.md créée.
+**Statut** : [x] Terminé. Figée mj-06.md gravée.
+**Impact** : mj-06 aligné pédago phonétique stricte.
 
-**Gain long terme** : maintenance divisée par 2, scalabilité à 50+ jeux Phase 2, base saine pour « 1 moteur N peaux ».
-**Friction court terme** : refonte menu, test pervasive de tous les jeux (1-2 semaines de validation Papa Yann).
-**Attente** : décision stratégique Papa Yann (investir maintenant v0.5 ou reporter à Phase 2 ?)
+---
+
+### CHANGEMENT DE RÈGLE FIGÉE AUTORISÉ — maxStars catalog 5→3 (17 jeux)
+**Contexte** : Papa Yann « tout le monde en 3 étoiles » — vision étoilage simplifiée (vs ancien 5-paliers historique).
+**Décision Papa Yann** : **Catalog maxStars global 5→3** (10 jeux remap 5-paliers → 3 niveaux N0=ex-P1-2, N1=ex-P3, N2=ex-P4-5 : mj-04/05/09/13a/13c/15/16/18/19/23; 7 jeux déjà 3-niveaux inchangés).
+**Fait (commit 68284858)** : site/js/catalog.js entier mis à jour. Figées mj-XX.md datée 2026-07-14 § "maxStars aligné 3-paliers".
+**Statut** : [x] Terminé. Specs 20/20 vérifiées (jeux tactilés vs non).
+**Impact** : **RÈGLE FIGÉE CHANGÉE** (Q correspondante dans decisions.md → DÉCIDÉE).
+
+---
+
+### EP-100 PARTIELLEMENT TRANCHÉ — Bibliothèque savoir-faire GO (libs candidates priorisées)
+**Contexte** : audit classification 2026-07-14 propose factorisation (mj-13a↔13c + mj-43↔45 duplication moteur, ombres mj-24/25/26/28/33 communes).
+**Décision Papa Yann** : « super pratique » — biblioteca = OUI. Livré immédiatement :
+  - **Étape -1 workflow** : docs/MECANIQUES.md + rules/mini-jeux.md § "étape -1 BIBLIOTHÈQUE" (check libs avant de coder)
+  - **3 libs extraites & testées** :
+    - `js/mj-dice.js` (PIP_LAYOUT, solveur anti-deadlock) — pilots mj-43/45
+    - `js/dinos-ombres.js` (pool ombres dino) — pilots mj-24/25/26/28/33
+    - `js/mj-compte.js` (pilote 1-moteur-N-peaux) — pilots mj-04/26
+  - **Reste** : panneau-led.js (mj-13a/13c) suspendu à fusion F1
+**Statut** : [~] 3/4 libs livrées. Panneau-led.js = suspension EP-101 fusion.
+**Impact** : bibliothèque opérationnelle, nouvelle étape workflow gravée.
+
+---
+
+### EP-101 RESTE OUVERT — Fusion F1 (mj-13a+13c) remise à décision Papa Yann
+**Contexte** : proposition « Ranger la chambre » = fusions F1/F2 + libs L1-L4 + pilote 1-moteur-N-peaux (AUCUNE appliquée). Classification 2026-07-14 révèle dupli, gains maintenance long-terme.
+**Statut** : [?] QUESTION OUVERTE — bibliothèque GO, mais fusions = friction refonte menu + tests pervasifs. Papa Yann arbitrage : NOW (v0.5) ou Phase 2 ?
+**Impact** : très haut. À trancher avant Phase 2 planning.
+
+---
+
+## Questions ouvertes précédentes (archivées comme DÉCIDÉES 2026-07-14)
 - Validation Playwright pixel-level 19/19 (teinte appliquée, [r,g,b] stocké, jamais noir)
 
 **Raison** : confiance Max (couleur prévisible, pas magie noire) + maintenance future (1 point d'entrée, pas 3 implémentations) + compatibilité future ambiances (swap teinte selon ambiance, 1 ligne).

@@ -11,35 +11,50 @@
 
 ## Tickets épics actifs (EP-xxx)
 
-### EP-098 [!] — 🚨 mj-22 VIOLE sa figée — micro-pays bannis présents + zone tap < 60px (regression silencieuse)
-**Description** : mj-22 "Trouve le pays" — jeu retrait menu 2026-07-06, mais fichier figé mj-22.md interdit micro-pays (Chypre, Lituanie, Lettonie, Estonie, Monténégro) pour accessibilité enfant. DÉCOUVERTE session relecture 2026-07-14 : difficile: Object.keys(PAYS) → tous les pays incluent les micro-pays. Zone tap peut être < 60px sur carte dense. Regression silencieuse à corriger AVANT réactivation mj-22.
-**Statut** : [!] Bloqué — attendu correction ou retrait permanent mj-22 du catalogue
-**Impact** : haut. Violation figée = perte confiance système. Affecte mj-20 (mêmes PAYS) indirectement
+### EP-098 [x] — mj-22 CORRIGÉ — micro-pays filtrés + zones tap 80px (commit 98424775)
+**Description** : mj-22 "Trouve le pays" — regression silencieuse corrigée (micro-pays bannis par figée, mais code Object.keys(PAYS) les incluait). Relecture 2026-07-14 découverte.
+**Décision Papa Yann 2026-07-14** : CORRIGER (option A) — filtrer micro-pays + agrandir zones tap.
+**Fait** : pool PAYS réduit, zones tap 80px min. Figée mj-22.md gravée 2026-07-14.
+**Statut** : [x] Terminé (commit 98424775). À confirmer retour menu si Papa Yann valide ressenti enfant.
+**Impact** : mj-22 prêt réactivation (tests specs vert).
 
 ---
 
-### EP-099 [?] — mj-06 accents phonétiques ajoutés (GÂTEAU, ŒUF, ÉTOILE…) — validation Papa Yann
-**Description** : mj-06 "Lis la phrase" — relecture 2026-07-14 a ajouté accents/ligatures manquants (GÂTEAU, ŒUF, ÉTOILE, RIVIÈRE, GRÊLE, FUSÉE, VÉLO, BOÎTE). Français orthographiquement correct, MAIS Max lit phonétique (ignore accents/ligatures). Demander si accent sur mots de lecture OK (peut aider reconnaissance visuelle) ou retirer pour puriste phonétique.
-**Statut** : [?] Validation Papa Yann — sentiment enfant sur "GÂTEAU" vs "GATEAU"
-**Impact** : moyen. Affecte lisibilité + pédagogie phonétique élémentaire (fiche figée mj-06.md)
+### EP-099 [x] — mj-06 TRANCHÉ — accents GARDÉS, Œ banni (commit 98424775)
+**Description** : mj-06 "Lis la phrase" — accents ajoutés en relecture 2026-07-14 (GÂTEAU, ŒUF, ÉTOILE, etc.).
+**Décision Papa Yann 2026-07-14** : GARDER les accents (français correct). Seule la ligature Œ est bannie → OEUF. Figée figees/mj-06.md créée.
+**Fait** : mj-06.html mis à jour, figée mj-06.md gravée 2026-07-14.
+**Statut** : [x] Terminé (commit 98424775).
+**Impact** : mj-06 aligné pédago phonétique stricte. Leçon L-099 ajoutée.
 
 ---
 
-### EP-100 [?] — Duplication moteur identifiée (mj-13a/13c + mj-43/45) — candidates factorisation libs
-**Description** : Audit classification 2026-07-14 → **mj-13a ↔ mj-13c** (moteur panneau LED copié-collé : ledSVG, ficheHTML, poleHeadSVG, ALL_LINES, bus défilants) + **mj-43 ↔ mj-45** (constellation de dé PIP_LAYOUT + solveur anti-deadlock compose/subset-sum quasi identiques). Proposition : extraire libs `js/panneau-led.js` + `js/mj-dice.js` pour refactoring zéro-impact visuel.
-**Statut** : [?] À décider si refactoring prioritaire ou maintenance future
-**Impact** : moyen. Tech debt 500+ lignes dupliquées, risque régression croisée. ROI extraction : future maintenance divisons par 2.
+### EP-100 [~] — Bibliothèque savoir-faire 3/4 LIVRÉE — 3 libs + workflow -1 (commit 68284858)
+**Description** : audit classification 2026-07-14 propose factorisation libs (mj-13a↔13c + mj-43↔45 duplication moteur, ombres communes). Papa Yann valide « super pratique ».
+**Décision Papa Yann 2026-07-14** : bibliothèque GO — étape -1 workflow ajoutée (check libs avant coder).
+**Livré immédiatement** :
+  - docs/MECANIQUES.md (catalogue brèves libs)
+  - rules/mini-jeux.md § "étape -1" (check amont)
+  - **3 libs extraites** : js/mj-dice.js (PIP_LAYOUT) · js/dinos-ombres.js (pool dino) · js/mj-compte.js (1-moteur-N-peaux) — tous testés sur pilotes
+  - **1 lib suspendue** : js/panneau-led.js = suspension EP-101 fusion F1
+**Statut** : [~] Partiellement livré (3/4). Panneau-led remise arbitrage fusion.
+**Impact** : workflow renforcé, maintenance future simplifiée. ROI immédiat micro sur code réutilisable.
 
 ---
 
-### EP-101 [?] — Proposition « Ranger la chambre » — fusions F1/F2 + libs L1-L4 + pilote 1-moteur-N-peaux
-**Description** : Classification 2026-07-14 propose restructuration catalogue pour qualité/maintenance/scalabilité (AUCUNE fusion appliquée) :
-  - **F1 fusion** : mj-13a + mj-13c → 1 jeu "Panneau du bus" à 2 modes (gain -1 entrée menu, -~500 lignes dupliquées)
-  - **F2 fusion optionnelle** : mj-28 "Lampe" → mode de mj-24 "Trouve le dino" (même pool ombres, interaction différente)
-  - **Libs factorisées** : L1 = dés (mj-43/45), L2 = panneau-led (mj-13a/13c), L3 = dinos-ombres (mj-24/25/26/28/33), L4 = moteur QCM générique (~10 jeux)
-  - **Pilote 1-moteur-N-peaux** : mj-04 + mj-26 (comptage passagers bus vs dinos) prouve transposabilité mécanique 2 thèmes
-**Statut** : [?] QUESTION OUVERTE — attendu décision Papa Yann (friction de refonte vs gains long terme)
-**Impact** : très haut. Affecte UX menu, priorités dev future, scalabilité à 50+ jeux (Phase 2 WexWorld). À trancher version 0.5+.
+### EP-101 [?] — Fusion F1 (mj-13a+13c) REMISE À DÉCISION PAPA YANN — friction vs gains
+**Description** : proposition « Ranger la chambre » = fusions F1/F2 + libs L1-L4 + pilote 1-moteur-N-peaux. Classification 2026-07-14 révèle dupli 500+ LOC, gains maintenance x2 long-terme.
+**Statut** : [?] QUESTION OUVERTE — libs GO, mais fusions = friction refonte menu + tests pervasifs 1-2 sem. À trancher : NOW (v0.5) ou Phase 2 ?
+**Impact** : très haut. Scalabilité 50+ jeux Phase 2 dépend de cette décision architecturale.
+
+---
+
+### EP-107 [~] — Changement règle figée maxStars 5→3 global APPLIQUÉ (commit 68284858)
+**Description** : Papa Yann « tout le monde en 3 étoiles » — maxStars catalog 5→3. 17 jeux impactés : 10 remap 5-paliers (ex-P1-2→N0, ex-P3→N1, ex-P4-5→N2 mj-04/05/09/13a/13c/15/16/18/19/23), 7 déjà 3 niveaux inchangés.
+**Décision Papa Yann 2026-07-14** : GO — specs 20/20 vérifiées.
+**Fait** : catalog.js entier mis à jour. Figées mj-XX.md datée 2026-07-14 § "maxStars 3-niveaux".
+**Statut** : [~] Appliqué. Changement règle figée = à confirmer stabilité 48h.
+**Impact** : haut. Déploiement 2026-07-14, harnais vert.
 
 ---
 
@@ -147,6 +162,9 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 
 ### L-065 – `const DINOS` top-level JS = liaison lexicale globale
 **MJ-28..33 (2026-07-05)** : 2 agents piégés (mj-29 fabrique noms, mj-32 coloriage). Erreur de référence `DINOS is not defined` → cause : script classique utilise `const DINOS` en scope module, pas `window.DINOS`. Fix : hoister `const` ou utiliser `window.DINOS = {...}`. **Leçon** : pour partage données inter-scripts vanilla, hoister à niveau global AVANT premier usage. Valider avec `console.log(window.DINOS)` au démarrage.
+
+### L-099 – Lecture phonétique vs français honnête = pédago clarifiée
+**Contexte** (EP-099, 2026-07-14) : mj-06 "Lis la phrase" → question ouverte **accents typographiques** (GÂTEAU vs GATEAU). Papa Yann décision : **GARDER les accents** (français correct, l'accent aide la reconnaissance visuelle) ; seule la **ligature Œ** est bannie (OEUF, pas ŒUF — glyphe inconnu d'un lecteur phonétique 4 ans). **Leçon** : typographie des mots à lire = décision pédagogique à figer par jeu ; distinguer accent (garde) et glyphe rare (banni).
 
 ### L-066 – Flags Chromium `--allow-file-access-from-files --disable-web-security` = OBLIGATOIRES file://
 **MJ-32 (2026-07-05)** : 1er MJ canvas (coloriage flood fill). Bug : `canvas.drawImage()` + `getImageData()` en file:// → CORS même domaine. Fix (run.mjs) : flags Chromium activés. **Leçon** : tout test canvas local SANS serveur = requiert ces flags. Intégrer dans harnais par défaut (Playwright + CLI e2e).

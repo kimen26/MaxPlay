@@ -64,6 +64,8 @@
 | Référence canonique virages | `test_ref_papa_4virages.py` (14×14 compo Papa Yann tile-picker) | `site/tile-tools/recipes/` |
 | Couleurs RATP IDFM | 26 lignes actives + 362 référencées | `docs/ratp-colors.json` |
 | Tiles LimeZu inventoriées | 9811 (3040 unitaires + 6473 sprites + 298 planches) | `site/tile-tools/build_tile_picker_data.py` |
+| **maxStars catalog (changé 2026-07-14)** | **3** (changement règle figée : 5→3 niveaux global, 17 jeux impactés dont 10 remappés 5-paliers→3-niveaux). Décision Papa Yann « tout le monde en 3 étoiles ». | `site/js/catalog.js` + figées/mj-XX.md datées 2026-07-14 |
+| **Libs JavaScript réutilisables** | **3 déployées + 1 suspendue** (2026-07-14) : `js/mj-dice.js` (PIP_LAYOUT) · `js/dinos-ombres.js` (pool ombres dino) · `js/mj-compte.js` (1-moteur-N-peaux) testées pilotes. `js/panneau-led.js` suspendu EP-101 fusion. Étape -1 workflow nouvelle (check libs amont). | `docs/MECANIQUES.md` + `site/js/` |
 
 **Production URL** : `https://kimen26.github.io/MaxPlay/` (CI via `.github/workflows/deploy.yml`).
 

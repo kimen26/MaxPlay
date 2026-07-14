@@ -230,10 +230,11 @@ let qcm=null;
 
 function shuffle(a){return [...a].sort(()=>Math.random()-.5);}
 
-/* ══ PALIERS (doc _PALIERS) — nb de bus + écart horaire. Niveau = Stars.get+1 ══ */
-const LV_N=[2,3,4,5,6];
+/* ══ PALIERS (doc _PALIERS) — nb de bus + écart horaire. Niveau = Stars.get, plafonné 0..2 ══ */
+/* Remap 3★ (2026-07-14) : N0=ex-P1-2(2 bus,écart net) · N1=ex-P3(4 bus,écart net) · N2=ex-P4-5(6 bus,écart serré) */
+const LV_N=[2,4,6];
 const level=Math.max(0,Math.min(LV_N.length-1,(window.Stars?Stars.get('mj-13a'):0)));
-const MIN_GAP=level>=3?1:3; // N4-N5 : minutes proches ; sinon écart net
+const MIN_GAP=level>=2?1:3; // N2 : minutes proches ; sinon écart net
 (function(){const lb=document.getElementById('levelbar');if(lb)lb.textContent='Niveau '+(level+1);})();
 function buildNSchedule(){const hard=Array(4).fill(LV_N[level]);const easy=[];for(let i=0;i<4;i++)easy.push(LV_N[level<=0?0:Math.floor(Math.random()*level)]);return shuffle([...hard,...easy]);}
 let nSchedule=buildNSchedule();

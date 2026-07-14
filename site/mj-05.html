@@ -127,7 +127,8 @@
     const PAX_COLORS = ['#FF6B6B','#4ECDC4','#FFD93D','#6C63FF','#FF922B','#20C997','#F783AC','#748FFC'];
 
     const MAX_QUESTIONS = 8;
-    const level = Math.max(0, Math.min(4, (window.Stars ? Stars.get('mj-05') : 0)));
+    // 🔄 2026-07-14 — passage global 3★ : 5 paliers → 3 niveaux (N0=ex-P1-2 · N1=ex-P3 · N2=ex-P4-5)
+    const level = Math.max(0, Math.min(2, (window.Stars ? Stars.get('mj-05') : 0)));
 
     function shuffle(a) { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
     function rnd(a, b) { return a + Math.floor(Math.random() * (b - a + 1)); }
@@ -143,11 +144,10 @@
     let qcm = null, correctAnswer = 0, currentProblem = null;
 
     // Opérations autorisées par palier (N1 = places seules)
+    // 🔄 2026-07-14 — 5 paliers → 3 niveaux (N0=ex-P1-2 · N1=ex-P3 · N2=ex-P4-5)
     const POOLS = [
-      ['places'],
       ['places', 'monter'],
       ['places', 'monter', 'descendre'],
-      ['monter', 'descendre', 'combo'],
       ['combo', 'combo', 'monter', 'descendre'],
     ];
 
@@ -198,14 +198,14 @@
     function generateProblem(lv) {
       const type = POOLS[lv][Math.floor(Math.random() * POOLS[lv].length)];
       if (type === 'places') {
-        const total = rnd(6, [10, 12, 12, 16, 20][lv]);
+        const total = rnd(6, [12, 16, 20][lv]);
         const occupied = rnd(1, total - 1);
         return { type, total, occupied, waiting: 0, answer: total - occupied,
           text: `Le bus a <strong>${total}</strong> places.<br><strong>${occupied}</strong> sont occupées.<br>Combien de places libres ?`,
           hint: 'Enlève les places occupées du total.' };
       }
       if (type === 'monter') {
-        const total = [8, 10, 12, 14, 18][lv];
+        const total = [10, 14, 18][lv];
         const occupied = rnd(2, total - 3);
         const waiting = rnd(2, 7);
         const free = total - occupied;
@@ -214,14 +214,14 @@
           hint: 'Compte les places libres — sans dépasser le nombre qui attend.' };
       }
       if (type === 'descendre') {
-        const total = rnd(6, [10, 12, 14, 16, 22][lv]);
+        const total = rnd(6, [12, 16, 22][lv]);
         const leaving = rnd(1, total - 1);
         return { type, total, occupied: 0, waiting: leaving, answer: total - leaving,
           text: `Il y a <strong>${total}</strong> passagers.<br><strong>${leaving}</strong> descendent.<br>Combien restent ?`,
           hint: 'Enlève ceux qui descendent.' };
       }
       // combo : descendre puis monter
-      const start = rnd(8, [12, 12, 14, 16, 22][lv]);
+      const start = rnd(8, [12, 16, 22][lv]);
       const leaving = rnd(2, start - 3);
       const boarding = rnd(2, 6);
       return { type: 'combo', total: start, occupied: 0, waiting: boarding, answer: start - leaving + boarding,
@@ -230,7 +230,7 @@
     }
 
     function generateChoices(correct, lv) {
-      const range = [2, 3, 3, 4, 5][lv];
+      const range = [3, 4, 5][lv];
       const set = new Set([correct]);
       let g = 0;
       while (set.size < 4 && g++ < 60) { const d = correct + rnd(-range, range); if (d >= 0 && d !== correct) set.add(d); }

@@ -30,3 +30,5 @@ Un panneau d'arrêt affiche N bus avec leur temps d'attente. Question : **combie
 
 ## Test
 `studio/minijeux/tests/mj-13c.spec.mjs` — N1 = 3 bus + réponse correcte → Bravo. Vert avant push.
+
+> 🔄 2026-07-14 — DÉCISION PAPA YANN (passage global 3★) : 5 paliers → 3 niveaux (N0=ex-P1-2 · N1=ex-P3 · N2=ex-P4-5), maxStars 5→3 au catalog. Mapping réel : N0=3 bus (entrée douce) · N1=6 bus · N2=10 bus. Les autres lignes 🔒 restent en vigueur.

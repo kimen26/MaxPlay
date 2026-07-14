@@ -131,6 +131,7 @@
   </div>
 
 </div>
+  <script src="js/mj-dice.js"></script>
   <script src="js/bus-svg.js"></script>
   <script src="js/data.js"></script>
   <!-- LE GABARIT : charge tout le cadre standard (thème, panneau ?, tracking, cloud) -->
@@ -172,18 +173,14 @@
         + `</g>`;
     }
 
-    const PIP_LAYOUT = {
-      1: [[50,50]],
-      2: [[30,30],[70,70]],
-      3: [[26,26],[50,50],[74,74]],
-      4: [[30,30],[70,30],[30,70],[70,70]],
-      5: [[26,26],[74,26],[50,50],[26,74],[74,74]],
-      6: [[26,21],[74,21],[26,50],[74,50],[26,79],[74,79]],
-    };
+    // Positions des pips : partagées via MJDice.pipLayout() (constellation
+    // canonique, voir js/mj-dice.js). Note extraction : MJ-45 utilisait un
+    // layout à 2 pips légèrement différent (30/70) de MJ-43 (28/72) — écart
+    // cosmétique sans conséquence pédagogique, unifié sur la valeur MJ-43.
 
     function groupSVG(val, px) {
       const s = val >= 5 ? 24 : 30;
-      const pips = (PIP_LAYOUT[val] || []).map(([x,y]) => passagerPip(x, y, s)).join('');
+      const pips = MJDice.pipLayout(val).map(([x,y]) => passagerPip(x, y, s)).join('');
       return `<svg width="${px}" height="${px}" viewBox="0 0 100 100">${pips}</svg>`;
     }
 
@@ -205,40 +202,15 @@
     let groups = [], mode = 'monte', target = 0, ligne = null, roundOver = false, testMode = false;
     let nextGid = 0;
 
-    function randInt(a, b) { return a + Math.floor(Math.random() * (b - a + 1)); }
-    function shuffle(arr) {
-      for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-      }
-      return arr;
-    }
-
-    // Décompose target en k parts 1..6 (mêmes garanties que MJ-43).
-    function compose(target, k) {
-      const maxPart = Math.min(6, target);
-      k = Math.max(1, Math.min(k, target));
-      while (k * maxPart < target) k++;
-      const parts = new Array(k).fill(1);
-      let rem = target - k, guard = 0;
-      while (rem > 0 && guard < 500) {
-        const i = Math.floor(Math.random() * k);
-        if (parts[i] < maxPart) { parts[i]++; rem--; }
-        guard++;
-      }
-      return parts;
-    }
+    const randInt = MJDice.randInt;
+    const shuffle = MJDice.shuffle;
+    const compose = MJDice.compose; // partagé js/mj-dice.js (mêmes garanties que MJ-43)
 
     // Subset-sum : un sous-ensemble de vals peut-il sommer exactement à rest ?
     // (contrairement à MJ-43, tous les groupes ne montent pas — certains restent
-    // à l'arrêt et prendront « le prochain bus »)
-    function canReach(rest, vals) {
-      if (rest === 0) return true;
-      if (rest < 0) return false;
-      let reachable = 1n; // bitmask BigInt : bit i = somme i atteignable
-      for (const v of vals) reachable |= (reachable << BigInt(v));
-      return ((reachable >> BigInt(rest)) & 1n) === 1n;
-    }
+    // à l'arrêt et prendront « le prochain bus ») — MJDice.canReach, solveur
+    // dédié à une seule cible mouvante (topologie différente du N-way de MJ-43).
+    const canReach = MJDice.canReach;
 
     function movedSum() { // somme "agie" : montés (monte) ou descendus (descend)
       const loc = mode === 'monte' ? 'bus' : 'tray';

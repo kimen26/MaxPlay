@@ -43,6 +43,9 @@
   <script src="js/lang.js"></script>
   <script src="js/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
+  <script src="js/dinos-ombres.js"></script>
+  <!-- moteur commun "Compte les …" (pilote 1 moteur/N peaux, mj-04+mj-26) -->
+  <script src="js/mj-compte.js"></script>
   <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
   <script src="js/mj-shell.js"></script>
   <script>
@@ -50,10 +53,9 @@
     // ─── MJ-26 — Compte les dinos (1 à 6, ombres chinoises par-dino) ───
     // Refonte 2026-07-05 (ordre Papa Yann) : anciennes silhouettes par-famille supprimees,
     // remplacees par les ombres chinoises canon (img/dinos/ombres/), groupees par famille.
-    const SRC = (typeof DINOS !== 'undefined') ? DINOS : [];
     const SIL = {};
-    SRC.filter(d => d.png && !d.png.includes('/')).forEach(d => {
-      (SIL[d.famille] = SIL[d.famille] || []).push('img/dinos/ombres/' + d.png.replace(/\.(jpg|png)$/i,'') + '_ombre.png');
+    DinoOmbres.pool().forEach(d => {
+      (SIL[d.famille] = SIL[d.famille] || []).push(d.src);
     });
     const ALL_FAMS = Object.keys(SIL);
     const G = Golden.setup('mj-26');
@@ -64,9 +66,8 @@
 
     let score = 0, streak = 0, qCount = 0, qcm = null, currentCount = 0, currentFam = null;
 
-    function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+    const shuffle = DinoOmbres.shuffle;
     function speak(t){TTS.speak(t,{pitch:1.05,priority:true});}
-    function randInt(min,max){return min+Math.floor(Math.random()*(max-min+1));}
 
     // Sac de quantités mélangé (pas de pur hasard) : garantit des cibles VARIÉES
     // sur la session au lieu de risquer de tirer 4-5x la même valeur (bug signalé
@@ -116,7 +117,7 @@
 
     function nextQuestion(){
       if (qCount >= MAX_Q) return showEnd();
-      qcm = QcmRetry.create();
+      qcm = MJCompte.beginQuestion();
       qCount++;
 
       currentCount = nextCount();
@@ -137,12 +138,7 @@
 
       // choix numériques : la bonne + voisines plausibles dans la plage globale
       const correct = currentCount;
-      const cand = new Set([correct]);
-      while (cand.size < 3){
-        const d = correct + (Math.random()<.5?-1:1)*randInt(1,2);
-        if (d >= 1 && d <= 9) cand.add(d);
-      }
-      const opts = shuffle([...cand]);
+      const opts = MJCompte.distractors(correct, { count: 3, min: 1, max: 9, spread: 2 });
       const box = document.getElementById('choices');
       box.innerHTML = '';
       opts.forEach(n => {
@@ -157,7 +153,7 @@
 
     function answer(correct, btn){
       if (btn.disabled) return;
-      const res = QcmRetry.handle(qcm, correct);
+      const res = MJCompte.answer(qcm, correct);
       if (res.outcome === 'ignored') return;
       if (res.outcome === 'correct'){
         btn.classList.add('ok'); score += res.points;

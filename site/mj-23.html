@@ -91,7 +91,7 @@ MJ.ready(function () {
         { t: 'Si je me trompe, un indice m’aide 💡',
           d: '« Lis bien chaque lettre du mot, doucement. » Je peux réessayer, jamais de mauvaise réponse affichée toute seule.' },
         { t: '8 mots d’affilée, plus j’ai d’étoiles plus les mots sont longs 💪',
-          d: 'Niveau 1 : mots courts (CHAT, OURS). Niveau 5 : mots longs avec des sons difficiles (BATEAU, DINOSAURE).' }
+          d: 'Niveau 1 : mots courts (CHAT, OURS). Niveau 3 : mots longs avec des sons difficiles (BATEAU, DINOSAURE).' }
       ]
     }
   });
@@ -141,7 +141,11 @@ MJ.ready(function () {
   ];
 
   const MAX_QUESTIONS = 8;
-  const level = Math.max(0, Math.min(4, (window.Stars ? Stars.get('mj-23') : 0)));
+  // 3★ (2026-07-14) : 5 paliers lv 0-4 → 3 niveaux. N0=ex-lv0-1(mots courts+un peu longs) ·
+  // N1=ex-lv2(digrammes OU/ON) · N2=ex-lv3-4(AI/OI/nasales + EAU/AU, l'ancien max inchangé).
+  // NIVEAU_TO_LV mappe le niveau 3★ vers le(s) lv du pool WORDS (pickWord tire dans ce pool).
+  const NIVEAU_TO_LV = [[0, 1], [2], [3, 4]];
+  const level = Math.max(0, Math.min(2, (window.Stars ? Stars.get('mj-23') : 0)));
 
   function shuffle(a) { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
   function rnd(a, b) { return a + Math.floor(Math.random() * (b - a + 1)); }
@@ -157,8 +161,9 @@ MJ.ready(function () {
 
   function setLevelBadge() { const lb = document.getElementById('levelbar'); if (lb) lb.textContent = 'Niveau ' + (level + 1); }
 
-  function pickWord(lv) {
-    const pool = WORDS.filter(w => w.lv === lv);
+  function pickWord(niveau) {
+    const lvSet = NIVEAU_TO_LV[niveau];
+    const pool = WORDS.filter(w => lvSet.includes(w.lv));
     return pool[rnd(0, pool.length - 1)];
   }
 

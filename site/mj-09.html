@@ -307,15 +307,16 @@
         { t: 'Si je me trompe, le bus revient tout seul 🔄',
           d: 'Pas de souci, je peux réessayer autant de fois que je veux.' },
         { t: 'Plus j’ai d’étoiles, plus il y a de bus et de couleurs 💪',
-          d: 'Niveau 1 : 2 couleurs, 4 bus. Niveau 5 : les 6 couleurs, 26 bus, avec le défilé final !' }
+          d: 'Niveau 1 : 2 couleurs, 6 bus. Niveau 3 : les 6 couleurs, 26 bus, avec le défilé final !' }
       ]
     }
   });
 
   // ── Paliers (doc _PALIERS) : nb de familles + nb de bus. Niveau = Stars.get+1 ──
-  const level = Math.max(0, Math.min(4, (window.Stars ? Stars.get('mj-09') : 0)));
-  const FAM_COUNT = [2, 3, 4, 5, 6][level];
-  const BUS_COUNT = [4, 8, 12, 18, 26][level];
+  // 🔄 2026-07-14 — 5 paliers → 3 niveaux (N0=ex-P1-2 · N1=ex-P3 · N2=ex-P4-5, N2 inchangé = ancien P5)
+  const level = Math.max(0, Math.min(2, (window.Stars ? Stars.get('mj-09') : 0)));
+  const FAM_COUNT = [2, 4, 6][level];
+  const BUS_COUNT = [6, 12, 26][level];
   (function(){ const lb = document.getElementById('levelbar'); if (lb) lb.textContent = 'Niveau ' + (level + 1); })();
   const ACTIVE_FAMILIES = FAMILIES.slice(0, FAM_COUNT);
 

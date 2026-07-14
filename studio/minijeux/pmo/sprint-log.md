@@ -9,6 +9,34 @@
 
 ---
 
+## 2026-07-14 — Gabarit unique mj-shell.js + batterie test 2 vitesses (commits 392d59d0 + 049b2ad5 — 41/44 MJ migrés, audit-gabarit.mjs créé)
+
+**Owner** : main agent (cadrage gabarit + pipeline test) · game-pmo (log)
+
+**Trigger** : Papa Yann demande consolidation après Design System v1 (énième review mini-jeux révèle variations manuelles). Solution : gabarit unique + test script.
+
+**Fait** :
+- **Gabarit `mj-shell.js` unique FIGÉ** : 1 include = cadre complet (thème + golden + 🧑‍🔬 règles + tracking + cloud + celebrations). Élimine liste 14 scripts à la main. Utilisation : `MJ.ready(fn)` + `MJ.init({id, titre, emoji, golden, consigne, onRepeat, regle})`.
+- **Batterie test 2 vitesses** : 
+  - Vitesse ÉCLAIR : `node audit-gabarit.mjs [mj-XX]` (script déterministe < 1 min, vérifie cloud.js/mp-theme/charset/header/spec présentes = BLOQUANT push)
+  - Vitesse COMPLÈTE : `npm run mj:test mj-XX` (harnais E2E) + agents LLM (game-test-secu / game-test-audio) par domaine sensible
+- **40 MJ migrés** (mj-04..45 sauf mj-01/13b/14 retirés menu) → harnais 41/42 vert (mj-01 absent catalogue OK, mj-14 rouge préexistant).
+- **Specs v3 gravées** : mj-20 + mj-pose-tiles créées, règles v3 détaillées écrites par jeu (gabarit, golden, consigne structure).
+- **Règle `.claude/rules/mini-jeux.md` durcie** : § LE GABARIT (obligatoire depuis 2026-07-14) + § Batterie de test 2 vitesses figée (coût script/LLM par domaine).
+
+**Décisions produit prises en exécution** :
+1. **Gabarit `mj-shell.js` = seule source** — tout nouveau MJ le charge, zéro variante locale tolérée
+2. **Audit gabarit obligatoire** — `node audit-gabarit.mjs` bloquant avant tout push (À VALIDER : git hook CI ou manuel)
+3. **Test 2 vitesses stratégique** : script mécanique rapide (avant push), LLM contexte sensible (release)
+
+**État au reboot** :
+- ✅ Gabarit FIGÉ (commit 392d59d0, utilisé sur 41 MJ)
+- ✅ Batterie test déployée (commit 049b2ad5, audit-gabarit.mjs opérationnel)
+- ⚠️ **À confirmer Papa Yann** : audit-gabarit.mjs bloquant CI ? (EP-085 proposé)
+- ⚠️ **Exceptions préexistantes** : mj-01 (retrait menu) + mj-14 (spec rouge) = non couverts par gabarit audit
+
+---
+
 ## 2026-07-13 — Atelier avatar v3 familles couleurs (commit d706416a — UX liste tap/nom/couleurs-origine + recolor par familles hue-shift)
 
 **Owner** : main agent (UX avatar + mécanique recolor) · game-pmo (log)

@@ -8,6 +8,40 @@
 
 ---
 
+## 2026-07-14 — Gabarit unique mj-shell.js = source de vérité mini-jeux HTML (commit 392d59d0)
+
+**Contexte** : Papa Yann validation consolidation après Design System v1. Trop de variations manuelles en 14 scripts chargés. Solution : gabarit unique + test auditeur.
+
+**Décision figée** :
+
+Tout mini-jeu HTML nouveau (mj-46+) et migré (mj-04..45) **charge UNIQUEMENT** `site/js/mj-shell.js` (+ libs spécifiques au jeu — bus-svg.js, data.js, etc.). Le gabarit charge :
+- Thème (mp-theme.css + mp-theme.js)
+- Golden piste (mj-golden.js)
+- Panneau 🧑‍🔬 règles v3 (regle-info.js)
+- Suivi progression (tracker.js)
+- Cloud annotations (cloud.js APRÈS tracker.js = règle 🚨 avis → Supabase)
+- Célébrations (celebrations.js)
+
+**Utilisation pattern** :
+```javascript
+MJ.ready(function () {
+  const shell = MJ.init({
+    id: 'mj-XX', emoji, titre, golden, consigne, onRepeat, regle
+  });
+  // gameplay spécifique au jeu, shell.G.notePip/showEnd
+});
+```
+
+**Impact futur** :
+- Aucun MJ ne charge « à la main » 14 scripts différents (éliminé variation)
+- Nouvel audit-gabarit.mjs attrape manquants/mal-ordonnés (garant cohérence)
+- Chaque MJ focalisé sur sa mécanique, pas sur infrastructure
+- Règle `.claude/rules/mini-jeux.md` § LE GABARIT = non-négociable 2026-07-14+
+
+**Raison** : chaque variante manuelle des 40 jeux = risque régression (cloud.js oublié, mp-theme manquant). Gabarit unique = garantie automatique.
+
+---
+
 ## 2026-07-13 — Atelier avatar UX — liste dinos au tap, nom affiché, couleurs d'origine (commit d706416a)
 
 **Contexte** : Papa Yann refinement atelier avatar post-Design System v1. UX : enfant choisit dino dans liste, voit nom + avatar original avant recolor.

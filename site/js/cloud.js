@@ -425,7 +425,7 @@
         if (!cm.text) return;
         comments.push({
           parent_id: _session.user.id, child_id: childId, game_id: cm.gameId || null,
-          source: 'comment', text: String(cm.text).slice(0, 4000),
+          source: 'comment', text: String(cm.text).slice(0, 100000),
           client_key: 'c|' + (childId || '?') + '|' + (cm.gameId || '?') + '|' + (cm.date || '?'),
         });
       });
@@ -440,7 +440,7 @@
         if (!txt) return;
         reviews.push({
           parent_id: _session.user.id, child_id: childId, game_id: gid,
-          source: 'review', text: txt.slice(0, 4000),
+          source: 'review', text: txt.slice(0, 100000),
           client_key: 'r|' + (childId || '?') + '|' + gid,
         });
       });
@@ -473,32 +473,32 @@
       child_id: child ? child.id : null,
       game_id: gameId || source,
       source,
-      text: body.slice(0, 4000),   // contrainte DB annotations.text ≤ 4000 (sinon échec silencieux)
+      text: body.slice(0, 100000),   // garde-fou = contrainte DB annotations.text ≤ 100000
       client_key: source + '|' + (child ? child.id : '?') + '|' + _hash(body),
     }], { onConflict: 'parent_id,client_key', ignoreDuplicates: true });
     if (error) throw error;
     return true;
   }
 
-  // ── Reset complet d'un profil enfant (fix audit : le reset doit VIDER le
-  // cloud, sinon la sync suivante ré-hydrate tout depuis la base) ───────────
-  // À appeler AVANT le removeItem local côté suivi.html. En Mode 1 (pas de
-  // profil actif), no-op : le reset local seul est correct.
+  // ── Reset d'un profil enfant : ANONYMISE puis purge (fix audit RGPD) ──────
+  // Appelle la RPC serveur reset_child_anonymized (migration 012) qui, en UNE
+  // transaction : (1) agrège l'usage de l'enfant dans usage_stats_anon +
+  // reset_events (stats ANONYMES, sans lien à l'enfant — permet de savoir
+  // « combien de resets après une maj »), puis (2) SUPPRIME les lignes
+  // nominatives (game_sessions/child_state/progression). Le droit à
+  // l'effacement est honoré ET la statistique d'usage survit, désindexée.
+  // La RPC vérifie l'ownership côté serveur (le caller doit être le parent).
+  // En Mode 1 (pas de profil actif), no-op : le reset local seul suffit.
   async function resetChild() {
     if (!hasActiveChild()) return false;
     const c = await _getClient();
     const childId = activeChild().id;
-    // RLS « for all » autorise le parent à supprimer ses lignes.
-    const d1 = await c.from('child_state').delete().eq('child_id', childId);
-    if (d1.error) throw d1.error;
-    const d2 = await c.from('progression').delete().eq('child_id', childId);
-    if (d2.error) throw d2.error;
-    // game_sessions : droit à l'effacement RGPD/COPPA (migration 011 ajoute la
-    // policy DELETE) — un reset parent doit aussi purger l'historique de parties.
-    const d3 = await c.from('game_sessions').delete().eq('child_id', childId);
-    if (d3.error) throw d3.error;
-    // Reset du baseline de sync pour repartir propre.
-    _saveSyncMeta({});
+    const { error } = await c.rpc('reset_child_anonymized', {
+      p_child_id: childId,
+      p_app_version: (global.MAXPLAY_VERSION || null),
+    });
+    if (error) throw error;
+    _saveSyncMeta({});   // repart sur un baseline propre
     return true;
   }
 

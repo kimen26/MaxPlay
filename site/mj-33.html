@@ -75,6 +75,7 @@
   <script src="js/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
   <script src="js/dinos-audio-manifest.js"></script>
+  <script src="js/dinos-ombres.js"></script>
   <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
   <script src="js/mj-shell.js"></script>
   <script>
@@ -119,14 +120,9 @@
     // Plus d'exclusion : les 11 heros manquants ont ete promus depuis le staging (2026-07-05)
     const NO_ASSET = new Set();
 
-    function shuffle(a) { a = [...a]; for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1));[a[i], a[j]] = [a[j], a[i]]; } return a; }
-
-    function shadowSrc(png) {
-      return 'img/dinos/ombres/' + png.replace(/\.[a-z]+$/i, '') + '_ombre.png';
-    }
-    function colorSrc(png) {
-      return 'img/dinos/' + png;
-    }
+    const shuffle = DinoOmbres.shuffle;
+    const shadowSrc = DinoOmbres.ombreSrc;
+    const colorSrc = DinoOmbres.colorSrc;
 
     function pickDinos() {
       const byId = {};
@@ -156,23 +152,10 @@
     let lock = false;
     let attemptsSinceLastPair = 0; // flips ratés depuis la dernière paire trouvée
     let pairIndex = 0;
-    let currentDinoAudio = null; // réf unique : stoppe le son en cours avant d'en jouer un nouveau
-
-    // Stoppe l'audio nom/funfact en cours (s'il existe) puis joue le nouveau. Garde une seule réf.
+    // Exclusivite nom/funfact (un son coupe le precedent) : DinoOmbres.playNom/playFunfact
     // (funfact ~15-20s peut dépasser le délai avant la paire suivante -> évite le chevauchement)
-    function stopCurrentDinoAudio() {
-      if (currentDinoAudio) {
-        try { currentDinoAudio.pause(); currentDinoAudio.currentTime = 0; } catch (e) { /* noop */ }
-      }
-    }
-    function playDinoNomExclusive(id, fallbackName, opts) {
-      stopCurrentDinoAudio();
-      currentDinoAudio = playDinoNom(id, fallbackName, opts);
-    }
-    function playDinoFunfactExclusive(id, fallbackText) {
-      stopCurrentDinoAudio();
-      currentDinoAudio = playDinoFunfact(id, fallbackText);
-    }
+    const playDinoNomExclusive = DinoOmbres.playNom;
+    const playDinoFunfactExclusive = DinoOmbres.playFunfact;
 
     function speak(t) { TTS.speak(t, { pitch: 1.05, priority: true, rate: 0.95 }); }
 

@@ -56,6 +56,7 @@
   <script src="js/lang.js"></script>
   <script src="js/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
+  <script src="js/dinos-ombres.js"></script>
   <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
   <script src="js/mj-shell.js"></script>
   <script>
@@ -63,10 +64,7 @@
     // ─── MJ-25 — Pareil pas pareil (matching visuel, ombres chinoises par-dino) ───
     // Refonte 2026-07-05 (ordre Papa Yann) : anciennes silhouettes par-famille supprimees,
     // remplacees par les ombres chinoises canon (img/dinos/ombres/).
-    const SRC = (typeof DINOS !== 'undefined') ? DINOS : [];
-    const OMBRES = SRC.filter(d => d.png && d.name && !d.png.includes('/'))
-      .map(d => ({ id: d.id, famille: d.famille,
-                   src: 'img/dinos/ombres/' + d.png.replace(/\.(jpg|png)$/i,'') + '_ombre.png' }));
+    const OMBRES = DinoOmbres.pool();
     const G = Golden.setup('mj-25');
     const MAX_Q = G.totalQ;
 
@@ -83,7 +81,7 @@
 
     let score = 0, streak = 0, qCount = 0, qcm = null;
 
-    function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+    const shuffle = DinoOmbres.shuffle;
     function speak(t){TTS.speak(t,{pitch:1.05,priority:true});}
 
     // Leurres "même dino" au niveau ★★★ : filtre CSS appliqué au DISTRACTEUR, jamais à la
@@ -130,7 +128,7 @@
       qcm = QcmRetry.create();
       qCount++;
 
-      const ref = OMBRES[Math.floor(Math.random()*OMBRES.length)];
+      const ref = DinoOmbres.pick(OMBRES);
 
       let opts;
       if (SUBTLE_VARIANTS){

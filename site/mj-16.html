@@ -594,14 +594,13 @@ const PATTERN_GENERATORS = [
   generateBodyAB,
 ];
 
-// Paliers (doc _PALIERS) : type de motif. Niveau = Stars.get+1.
-const level = Math.max(0, Math.min(4, (window.Stars ? Stars.get('mj-16') : 0)));
+// Paliers (doc _PALIERS) : type de motif. Niveau = Stars.get, plafonné 0..2.
+// Remap 3★ (2026-07-14) : N0=ex-P1-2(couleur+taille) · N1=ex-P3(motif ABC/AABB) · N2=ex-P4-5(suite numérique+combinés)
+const level = Math.max(0, Math.min(2, (window.Stars ? Stars.get('mj-16') : 0)));
 const LEVEL_POOLS = [
-  [generateAltAB],                                                         // N1 couleur ABAB
-  [generateSizeUp, generateSizeDown],                                      // N2 taille
-  [generateAltABC, generateAltAABB],                                       // N3 motif ABC / AABB
-  [generateNumUp, generateNumDown, generateNumUpBy2, generateNumDownBy2],  // N4 suite numérique
-  [generateBodyAB, generateAltABC, generateNumUpBy2, generateSizeUp],      // N5 combinés
+  [generateAltAB, generateSizeUp, generateSizeDown],                                              // N0 couleur ABAB + taille
+  [generateAltABC, generateAltAABB],                                                                // N1 motif ABC / AABB
+  [generateNumUp, generateNumDown, generateNumUpBy2, generateNumDownBy2, generateBodyAB],           // N2 suite numérique + combinés
 ];
 function generatePuzzle(_roundNum) {
   const pool = LEVEL_POOLS[level];

@@ -382,14 +382,13 @@ let wrongThisRound = false;
 
 // ── Génération des puzzles ─────────────────────────────────────────────────
 
-// Paliers (doc _PALIERS) : critère de l'intrus. Niveau = Stars.get+1.
-const level = Math.max(0, Math.min(4, (window.Stars ? Stars.get('mj-15') : 0)));
+// Paliers (doc _PALIERS) : critère de l'intrus. Niveau = Stars.get, plafonné 0..2.
+// Remap 3★ (2026-07-14) : N0=ex-P1-2(couleur+roues, évident) · N1=ex-P3(+famille) · N2=ex-P4-5(double critère subtil)
+const level = Math.max(0, Math.min(2, (window.Stars ? Stars.get('mj-15') : 0)));
 const CRIT = [
-  ['A','F'],          // N1 couleur (évident) + émojis proches (évident)
-  ['A','D','F'],      // N2 + roues colorées + émojis
-  ['A','D','C','G'],  // N3 + famille + ombres dino
-  ['C','E','G'],      // N4 famille + double critère + ombres dino
-  ['E','G'],          // N5 double critère (subtil) + ombres dino
+  ['A','D','F'],      // N0 couleur (évident) + roues colorées + émojis
+  ['A','D','C','G'],  // N1 + famille de ligne + ombres dino
+  ['C','E','G'],      // N2 famille + double critère (subtil) + ombres dino
 ][level];
 
 // Niveau A — couleur différente

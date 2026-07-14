@@ -89,6 +89,7 @@
   <script src="js/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
   <script src="js/dinos-audio-manifest.js"></script>
+  <script src="js/dinos-ombres.js"></script>
   <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
   <script src="js/mj-shell.js"></script>
   <script>
@@ -96,26 +97,10 @@
     // ─── MJ-28 — La lampe du paléontologue ───
     // Ecran noir, halo de lumiere suit le doigt et revele une ombre chinoise.
     // Max cherche le dino a la lampe puis repond via QCM (noms savants).
-    const SRC = (typeof DINOS !== 'undefined') ? DINOS : (window.DINOS || []);
+    function ombrePath(d) { return DinoOmbres.ombreSrc(d.png); }
 
-    // Ombres disponibles : img/dinos/ombres/<Basename>_ombre.png (62 fichiers, verifie 2026-07-05)
-    const OMBRE_OK = new Set([
-      'Aenocyon','Albertosaurus','Allosaurus','Amargasaurus','Ankylosaurus','Apatosaurus',
-      'Archaeopteryx','Archelon','Baryonyx','Brachiosaurus','Camarasaurus','Carcharodontosaurus',
-      'Carnotaurus','Centrosaurus','Ceratosaurus','Coelodonta','Cryolophosaurus','Deinonychus',
-      'Dilophosaurus','Dimetrodon','Diplodocus','Edmontonia','Edmontosaurus','Elasmosaurus',
-      'Euoplocephalus','Gallimimus','Giganotosaurus','Glyptodon','Ichthyosaurus','Iguanodon',
-      'Kentrosaurus','Liopleurodon','Mammuthus','Megatherium','Microraptor','Mosasaurus',
-      'Ophthalmosaurus','Oviraptor','Pachycephalosaurus','Paraceratherium','Parasaurolophus',
-      'Patagotitan','Pentaceratops','Plateosaurus','Protoceratops','Pteranodon','Quetzalcoatlus',
-      'Shonisaurus','Smilodon','Spinosaurus','Stegosaurus','Tarbosaurus','Therizinosaurus',
-      'Titanis','Torosaurus','Triceratops','Troodon','Tyrannosaurus','Utahraptor','Velociraptor',
-    ]);
-    function basenameOf(png) { return (png || '').replace(/\.(jpg|jpeg|png)$/i, ''); }
-    function ombrePath(d) { return 'img/dinos/ombres/' + basenameOf(d.png) + '_ombre.png'; }
-
-    // Pool jouable = dino avec png top-level + ombre disponible
-    const POOL = SRC.filter(d => d.png && d.name && d.fait && !d.png.includes('/') && OMBRE_OK.has(basenameOf(d.png)));
+    // Pool jouable = dino avec png top-level + fait (funfact affiche a la revelation)
+    const POOL = DinoOmbres.pool({ requireFait: true });
 
     // Silhouettes tres iconiques pour le niveau 1 (familles bien distinctes, faciles a reconnaitre)
     const ICONIC_IDS = ['triceratops','tyrannosaurus','diplodocus','stegosaurus','spinosaurus','ankylosaurus','pteranodon','brachiosaurus','velociraptor'];
@@ -132,7 +117,7 @@
     let score = 0, streak = 0, qCount = 0, qcm = null, target = null;
     let dragging = false;
 
-    function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+    const shuffle = DinoOmbres.shuffle;
     function speak(t){TTS.speak(t,{pitch:1.05,priority:true});}
 
     // Réf unique pour le fait audio (~15-20s) : évite le chevauchement si la question
@@ -214,23 +199,11 @@
       torchSoundPlayed = false;
 
       const pool = level === 0 ? ICONIC_POOL : POOL;
-      target = pool[Math.floor(Math.random() * pool.length)];
+      target = DinoOmbres.pick(pool);
 
-      let distract;
-      if (SAME_FAMILY_MIN){
-        const cousins = shuffle(POOL.filter(d => d.famille === target.famille && d.id !== target.id));
-        const cousin = cousins.slice(0, 1);
-        const rest = shuffle(POOL.filter(d => d.id !== target.id && !cousin.includes(d))).slice(0, NCHOICES - 1 - cousin.length);
-        distract = cousin.concat(rest);
-      } else {
-        // familles differentes de la cible pour rester lisible aux plus jeunes
-        const others = shuffle(POOL.filter(d => d.id !== target.id && d.famille !== target.famille));
-        distract = others.slice(0, NCHOICES - 1);
-        if (distract.length < NCHOICES - 1){
-          const rest = shuffle(POOL.filter(d => d.id !== target.id && !distract.includes(d)));
-          distract = distract.concat(rest).slice(0, NCHOICES - 1);
-        }
-      }
+      // Niveau 2 : au moins 1 cousin de meme famille que la cible (discrimination fine).
+      // Sinon : distracteurs de familles differentes pour rester lisible aux plus jeunes.
+      const distract = DinoOmbres.pickCousins(POOL, target, NCHOICES, { minCousins: SAME_FAMILY_MIN ? 1 : 0 });
 
       const opts = shuffle([{ d: target, correct: true }, ...distract.map(d => ({ d, correct: false }))]);
 

@@ -39,6 +39,7 @@
   <script src="js/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
   <script src="js/dinos-audio-manifest.js"></script>
+  <script src="js/dinos-ombres.js"></script>
   <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
   <script src="js/mj-shell.js"></script>
   <script>
@@ -46,10 +47,7 @@
     // ─── MJ-24 — Trouve le dino (reconnaissance par nom, ombres chinoises par-dino) ───
     // Refonte 2026-07-05 (ordre Papa Yann) : anciennes silhouettes par-famille supprimees,
     // remplacees par les ombres chinoises canon (img/dinos/ombres/) + voix reelle <id>-nom.mp3.
-    const SRC = (typeof DINOS !== 'undefined') ? DINOS : [];
-    const OMBRES = SRC.filter(d => d.png && d.name && !d.png.includes('/'))
-      .map(d => ({ id: d.id, name: d.name, famille: d.famille,
-                   src: 'img/dinos/ombres/' + d.png.replace(/\.(jpg|png)$/i,'') + '_ombre.png' }));
+    const OMBRES = DinoOmbres.pool();
     // Especes iconiques pour le niveau 1 (tres reconnaissables pour un fan de dinos)
     const ICONIC_IDS = ['triceratops','tyrannosaurus','diplodocus','stegosaurus','spinosaurus',
                         'ankylosaurus','pteranodon','brachiosaurus','velociraptor','mosasaurus'];
@@ -61,24 +59,11 @@
 
     let score = 0, streak = 0, qCount = 0, qcm = null, target = null;
 
-    function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
-    // JAMAIS deux voix en meme temps : parler (TTS) coupe le MP3, jouer un MP3 coupe le TTS.
-    let elAudio = null;
-    function stopEl(){ if (elAudio){ elAudio.pause(); elAudio = null; } }
-    function speak(t){ stopEl(); TTS.speak(t,{pitch:1.05,priority:true}); }
+    const shuffle = DinoOmbres.shuffle;
+    // JAMAIS deux voix en meme temps : DinoOmbres.playNom coupe le son en cours
+    // (MP3 nom reel, fallback TTS si manifest absent pour ce dino).
     function sayTarget(){
-      stopEl();
-      TTS.cancel();
-      if (window.DINO_NOM_AUDIO && !window.DINO_NOM_AUDIO.has(target.id)) {
-        speak('Trouve le ' + target.name + ' !');   // pas de MP3 pour ce dino (manifest genere)
-        return;
-      }
-      const a = new Audio(window.AUDIO_DINOS + '' + target.id + '-nom.mp3');
-      elAudio = a;
-      let fbDone = false;
-      const fb = () => { if (fbDone) return; fbDone = true; speak('Trouve le ' + target.name + ' !'); };
-      a.onerror = fb;
-      a.play().catch(fb);
+      DinoOmbres.playNom(target.id, 'Trouve le ' + target.name + ' !');
     }
 
     const shell = MJ.init({
@@ -112,16 +97,9 @@
       qCount++;
 
       const basePool = level === 0 ? OMBRES.filter(o => ICONIC_IDS.includes(o.id)) : OMBRES;
-      target = basePool[Math.floor(Math.random()*basePool.length)];
+      target = DinoOmbres.pick(basePool);
       // distracteurs : niveau 2 = au moins 1 cousin de la meme famille (discrimination fine)
-      let others;
-      if (level >= 2) {
-        const cousins = shuffle(OMBRES.filter(o => o.id !== target.id && o.famille === target.famille)).slice(0, 1);
-        const autres = shuffle(OMBRES.filter(o => o.id !== target.id && o.famille !== target.famille));
-        others = cousins.concat(autres).slice(0, NCHOICES-1);
-      } else {
-        others = shuffle(OMBRES.filter(o => o.id !== target.id && o.famille !== target.famille)).slice(0, NCHOICES-1);
-      }
+      const others = DinoOmbres.pickCousins(OMBRES, target, NCHOICES, { minCousins: level >= 2 ? 1 : 0 });
       const opts = shuffle([
         { o: target, correct: true },
         ...others.map(o => ({ o, correct:false }))

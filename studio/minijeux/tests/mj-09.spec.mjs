@@ -1,4 +1,4 @@
-// Pilote MJ-09 — Trie les bus : paliers = nb familles + nb bus (N1 = 2 familles, 4 bus).
+// Pilote MJ-09 — Trie les bus : paliers = nb familles + nb bus (N1 = 2 familles, 6 bus — passage 3★ 2026-07-14).
 // Tri par drag trop fragile à scripter → on valide la structure du palier + smoke.
 export async function run({ page, ok }) {
   await page.evaluate(() => localStorage.clear());
@@ -20,5 +20,5 @@ export async function run({ page, ok }) {
 
   await page.waitForSelector('.bus-draggable', { timeout: 5000 });
   const buses = await page.locator('.bus-draggable').count();
-  ok('Niveau 1 = 4 bus à trier', buses === 4, `buses=${buses}`);
+  ok('Niveau 1 = 6 bus à trier', buses === 6, `buses=${buses}`);
 }

@@ -160,6 +160,7 @@
   </div>
 
 </div>
+  <script src="js/mj-dice.js"></script>
   <script src="js/bus-svg.js"></script>
   <script src="js/data.js"></script>
   <!-- LE GABARIT : charge tout le cadre standard (thème, panneau ?, tracking, cloud) -->
@@ -206,16 +207,8 @@
         + `</g>`;
     }
 
-    // Positions des points d'un dé (grille 3×3) selon la valeur 1..6.
-    // Unités : boîte 0..100.
-    const PIP_LAYOUT = {
-      1: [[50,50]],
-      2: [[28,28],[72,72]],
-      3: [[26,26],[50,50],[74,74]],
-      4: [[30,30],[70,30],[30,70],[70,70]],
-      5: [[26,26],[74,26],[50,50],[26,74],[74,74]],
-      6: [[26,21],[74,21],[26,50],[74,50],[26,79],[74,79]],
-    };
+    // Positions des points d'un dé : partagées via MJDice.pipLayout()
+    // (constellation canonique, voir js/mj-dice.js).
 
     // SVG d'une face de dé (points-dino ou chiffre), boîte 100×100.
     // Les faces 5-6 réduisent le dino (~18%) pour préserver le blanc entre
@@ -224,7 +217,7 @@
       if (asNum) {
         return `<text x="50" y="50" text-anchor="middle" dominant-baseline="central" class="num-face">${val}</text>`;
       }
-      const pips = PIP_LAYOUT[val] || [];
+      const pips = MJDice.pipLayout(val);
       const s = (pipSize || 26) * (val >= 5 ? 0.82 : 1);
       return pips.map(([x,y]) => dinoPip(x, y, s)).join('');
     }
@@ -279,31 +272,9 @@
     let tokens = [], crates = [], selected = null, roundOver = false, testMode = false;
     let nextTid = 0;
 
-    function randInt(a, b) { return a + Math.floor(Math.random() * (b - a + 1)); }
-    function shuffle(arr) {
-      for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-      }
-      return arr;
-    }
-
-    // Décompose `target` en `k` parts (chacune 1..min(6,target)), somme = target.
-    function compose(target, k) {
-      const maxPart = Math.min(6, target);
-      // bornes réalistes : k parts de 1..maxPart doivent pouvoir sommer target
-      k = Math.max(1, Math.min(k, target));
-      while (k * maxPart < target) k++;
-      const parts = new Array(k).fill(1);
-      let rem = target - k;
-      let guard = 0;
-      while (rem > 0 && guard < 500) {
-        const i = Math.floor(Math.random() * k);
-        if (parts[i] < maxPart) { parts[i]++; rem--; }
-        guard++;
-      }
-      return parts;
-    }
+    const randInt = MJDice.randInt;
+    const shuffle = MJDice.shuffle;
+    const compose = MJDice.compose; // partagé js/mj-dice.js (identique MJ-43/MJ-45)
 
     // Construit les jetons d'une caisse à partir de sa cible + config palier.
     function buildTokensFor(target, cfg, crateIdx) {
@@ -438,31 +409,13 @@
     // Un placement est légal seulement s'il laisse le round SOLUBLE : les jetons
     // restants doivent pouvoir remplir exactement tous les restes de caisses.
     // Sans ça : caisses 5+5, jetons {3,2,4,1} — Max met 3+1 dans A → cul-de-sac
-    // silencieux (reste {2,4}, insoluble). Backtracking trivial (≤12 jetons).
-    function canSolve(residuals, vals) {
-      vals = vals.slice().sort((a, b) => b - a); // décroissant = échec rapide
-      const rec = (i) => {
-        if (i === vals.length) return residuals.every(r => r === 0);
-        const v = vals[i];
-        const tried = new Set(); // ne pas re-tester deux caisses au même reste
-        for (let j = 0; j < residuals.length; j++) {
-          if (residuals[j] >= v && !tried.has(residuals[j])) {
-            tried.add(residuals[j]);
-            residuals[j] -= v;
-            if (rec(i + 1)) { residuals[j] += v; return true; }
-            residuals[j] += v;
-          }
-        }
-        return false;
-      };
-      return rec(0);
-    }
-
+    // silencieux (reste {2,4}, insoluble). Solveur partagé js/mj-dice.js
+    // (MJDice.canSolve — partition N-way, backtracking ≤12 jetons).
     function placementKeepsSolvable(tok, ci) {
       const residuals = crates.map((c, i) => c.target - crateSum(i));
       residuals[ci] -= tok.value; // placement hypothétique
       const rest = tokens.filter(t => t.loc === 'tray' && t.id !== tok.id).map(t => t.value);
-      return canSolve(residuals, rest);
+      return MJDice.canSolve(residuals, rest);
     }
 
     // ── Vol animé du jeton vers la caisse (causalité physique, 4 ans) ───────

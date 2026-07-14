@@ -112,15 +112,12 @@
     const ROUNDS = 7;
     const BUS_WIDTH = 80;
 
-    // ── Paliers de difficulté (doc _PALIERS-DIFFICULTE.md) ──
-    // Niveau = étoiles gagnées + 1. N1 ULTRA-SIMPLE (peu de bus, lents),
-    // puis densité + vitesse montent. N5 = l'ancien jeu (50-80 bus rapides).
+    // ── 3★ (2026-07-14) : 5 paliers → 3 niveaux. N0=ex-P1-2(10-12 bus, entrée douce) ·
+    // N1=ex-P3(20-25 bus) · N2=ex-P4-5(50-80 bus, l'ancien max inchangé) ──
     const LEVELS = [
-      { count:[10,12], speed:[14,24] },  // N1
-      { count:[14,16], speed:[18,32] },  // N2
-      { count:[20,25], speed:[24,44] },  // N3
-      { count:[30,40], speed:[34,58] },  // N4
-      { count:[50,80], speed:[28,75] },  // N5 (l'ancien)
+      { count:[10,12], speed:[14,24] },  // N0 (ex-N1/N2)
+      { count:[20,25], speed:[24,44] },  // N1 (ex-N3)
+      { count:[50,80], speed:[28,75] },  // N2 (ex-N4/N5, l'ancien)
     ];
     const level = Math.max(0, Math.min(LEVELS.length - 1,
       (window.Stars ? Stars.get('mj-19') : 0)));

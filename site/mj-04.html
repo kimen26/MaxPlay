@@ -112,6 +112,8 @@
   <script src="js/data.js"></script>
   <script src="js/bus-svg.js"></script>
   <script src="js/intro-splash.js"></script>
+  <!-- moteur commun "Compte les …" (pilote 1 moteur/N peaux, mj-04+mj-26) -->
+  <script src="js/mj-compte.js"></script>
   <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
   <script src="js/mj-shell.js"></script>
   <script>
@@ -123,12 +125,11 @@
     const MAX_QUESTIONS = 8; // 4 au niveau courant + 4 à des niveaux inférieurs (manche mixte)
 
     // Paliers : le nombre de passagers monte avec le niveau
+    // 🔄 2026-07-14 — passage global 3★ : 5 paliers → 3 niveaux (N1=ex-P1-2 · N2=ex-P3 · N3=ex-P4-5)
     const LEVELS = [
-      { min: 2,  max: 5  },  // Niveau 1
-      { min: 4,  max: 8  },  // Niveau 2
-      { min: 6,  max: 12 },  // Niveau 3
-      { min: 9,  max: 16 },  // Niveau 4
-      { min: 13, max: 22 },  // Niveau 5
+      { min: 2,  max: 8  },  // Niveau 1 (ex-P1-2)
+      { min: 6,  max: 12 },  // Niveau 2 (ex-P3)
+      { min: 9,  max: 22 },  // Niveau 3 (ex-P4-5)
     ];
     const maxStars = (window.Stars && Stars.max(GAME_ID)) || LEVELS.length;
 
@@ -155,7 +156,7 @@
           { t: 'Je tape le bon nombre 🔢',
             d: 'Si je me trompe, on recompte ensemble avec un indice. Jamais la réponse toute seule !' },
           { t: 'Plus j’ai d’étoiles, plus il y a de passagers 💪',
-            d: 'Niveau 1 : 2 à 5 passagers. Niveau 5 : jusqu’à 22 ! Une manche sans erreur = 1 étoile ⭐.' }
+            d: 'Niveau 1 : 2 à 8 passagers. Niveau 3 : jusqu’à 22 ! Une manche sans erreur = 1 étoile ⭐.' }
         ]
       }
     });
@@ -208,12 +209,12 @@
     function nextQuestion() {
       if (questionCount >= MAX_QUESTIONS) { showEndScreen(); return; }
       questionCount++;
-      qcm = QcmRetry.create();
+      qcm = MJCompte.beginQuestion();
       hideHint();
 
       const qLvl = qLevels[questionCount - 1] || level;   // niveau de CETTE question (manche mixte)
       const L = LEVELS[qLvl - 1];
-      const total = L.min + Math.floor(Math.random() * (L.max - L.min + 1));
+      const total = MJCompte.nextValue(L);
       correctAnswer = total;
 
       renderPassengers(total);
@@ -274,18 +275,14 @@
       });
     }
 
-    // Distracteurs PROCHES du bon nombre (vrai défi de comptage)
+    // Distracteurs PROCHES du bon nombre (vrai défi de comptage) — moteur commun.
     function makeChoices(ans) {
-      const near = [ans - 1, ans + 1, ans - 2, ans + 2, ans - 3, ans + 3].filter(v => v >= 1 && v !== ans);
-      const distract = _shuffle([...new Set(near)]).slice(0, 3);
-      let n = ans + 4;
-      while (distract.length < 3) { if (n >= 1 && n !== ans && !distract.includes(n)) distract.push(n); n++; }
-      return _shuffle([ans, ...distract]);
+      return MJCompte.distractors(ans, { count: 4, min: 1 });
     }
 
     function answer(isCorrect, btn) {
       if (btn.disabled) return;
-      const res = QcmRetry.handle(qcm, isCorrect);
+      const res = MJCompte.answer(qcm, isCorrect);
       if (res.outcome === 'ignored') return;
       if ((res.outcome === 'correct' || res.outcome === 'reveal') && typeof Tracker !== 'undefined')
         Tracker.logAnswer(res.outcome === 'correct');

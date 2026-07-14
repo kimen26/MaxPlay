@@ -34,44 +34,44 @@ window.MAXPLAY_CATEGORIES = [
 window.MAXPLAY_CATALOG = [
 
   // ─── 🔢 Compter ───
-  { id:'mj-04',  category:'compter',  titre:'Compte les passagers', emoji:'👥', desc:'Combien de passagers en tout ?',      url:'mj-04.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
-  { id:'mj-13c', category:'compter',  titre:'Combien avant ?',      emoji:'🔢', desc:'Compte les bus avant celui demandé !',url:'mj-13c.html', type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
-  { id:'mj-05',  category:'compter',  titre:'La bonne place',       emoji:'🪑', desc:'Combien peuvent encore monter ?',     url:'mj-05.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
+  { id:'mj-04',  category:'compter',  titre:'Compte les passagers', emoji:'👥', desc:'Combien de passagers en tout ?',      url:'mj-04.html',  type:'html', orientation:'any',       access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
+  { id:'mj-13c', category:'compter',  titre:'Combien avant ?',      emoji:'🔢', desc:'Compte les bus avant celui demandé !',url:'mj-13c.html', type:'html', orientation:'any',       access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
+  { id:'mj-05',  category:'compter',  titre:'La bonne place',       emoji:'🪑', desc:'Combien peuvent encore monter ?',     url:'mj-05.html',  type:'html', orientation:'any',       access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
   { id:'mj-35',  category:'nouveaux', homeCat:'compter',  titre:'Le jeu des graines',   emoji:'🌱', desc:'Sème les graines, compte-les au grenier !', url:'mj-35.html', type:'html', orientation:'any',   access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },
   { id:'mj-43',  category:'nouveaux', homeCat:'compter',  titre:'Remplis les caisses',  emoji:'📦', desc:'Range les dés et les dominos jusqu\'au bon compte !', url:'mj-43.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },
   { id:'mj-45',  category:'nouveaux', homeCat:'compter',  titre:'Le bus qui se remplit', emoji:'🚌', desc:'Fais monter et descendre les passagers, pile au bon compte !', url:'mj-45.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },
 
   // ─── 🎨 Couleurs ───
-  { id:'mj-09',  category:'couleurs', titre:'Trie les bus !',       emoji:'🗂️', desc:'Range-les dans leur famille de couleur !',url:'mj-09.html',type:'html', orientation:'landscape', access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
-  { id:'mj-21',  category:'couleurs', titre:'Peins les bus !',      emoji:'🎨', desc:'Mélange rouge, jaune et bleu !',      url:'mj-21.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
-  { id:'mj-18',  category:'couleurs', titre:'Tubes de couleurs',    emoji:'🧪', desc:'Verse les couleurs pour trier les tubes !',url:'mj-18.html',type:'html',orientation:'any',      access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
+  { id:'mj-09',  category:'couleurs', titre:'Trie les bus !',       emoji:'🗂️', desc:'Range-les dans leur famille de couleur !',url:'mj-09.html',type:'html', orientation:'landscape', access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
+  { id:'mj-21',  category:'couleurs', titre:'Peins les bus !',      emoji:'🎨', desc:'Mélange rouge, jaune et bleu !',      url:'mj-21.html',  type:'html', orientation:'any',       access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
+  { id:'mj-18',  category:'couleurs', titre:'Tubes de couleurs',    emoji:'🧪', desc:'Verse les couleurs pour trier les tubes !',url:'mj-18.html',type:'html',orientation:'any',      access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
 
   // ─── 🔤 Lire ───
-  { id:'mj-06',  category:'lire',     titre:'Lis la phrase',        emoji:'📖', desc:'Quel mot manque dans la phrase ?',    url:'mj-06.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
-  { id:'mj-23',  category:'lire',     titre:'Lis le mot',           emoji:'🔤', desc:'Lis le mot, trouve la bonne image !',url:'mj-23.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
+  { id:'mj-06',  category:'lire',     titre:'Lis la phrase',        emoji:'📖', desc:'Quel mot manque dans la phrase ?',    url:'mj-06.html',  type:'html', orientation:'any',       access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
+  { id:'mj-23',  category:'lire',     titre:'Lis le mot',           emoji:'🔤', desc:'Lis le mot, trouve la bonne image !',url:'mj-23.html',  type:'html', orientation:'any',       access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
   { id:'mj-44',  category:'nouveaux', homeCat:'lire',     titre:'La boîte à sons',      emoji:'🔤', desc:'Range chaque mot dans la boîte du bon son !', url:'mj-44.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:'tts', status:'live' },
 
   // ─── 🧩 Logique ───
-  { id:'mj-13a', category:'logique',  titre:'Le premier bus',       emoji:'🥇', desc:'Quel bus arrive en premier ?',       url:'mj-13a.html', type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
-  { id:'mj-15',  category:'logique',  titre:'L\'intrus',            emoji:'🔍', desc:'Lequel est l\'intrus ?',              url:'mj-15.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
-  { id:'mj-16',  category:'logique',  titre:'Complète la suite',    emoji:'📈', desc:'Qu\'est-ce qui vient ensuite ?',      url:'mj-16.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
+  { id:'mj-13a', category:'logique',  titre:'Le premier bus',       emoji:'🥇', desc:'Quel bus arrive en premier ?',       url:'mj-13a.html', type:'html', orientation:'any',       access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
+  { id:'mj-15',  category:'logique',  titre:'L\'intrus',            emoji:'🔍', desc:'Lequel est l\'intrus ?',              url:'mj-15.html',  type:'html', orientation:'any',       access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
+  { id:'mj-16',  category:'logique',  titre:'Complète la suite',    emoji:'📈', desc:'Qu\'est-ce qui vient ensuite ?',      url:'mj-16.html',  type:'html', orientation:'any',       access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
   { id:'mj-34',  category:'nouveaux', homeCat:'logique',  titre:'Le dépôt bloqué',      emoji:'🚧', desc:'Fais glisser les bus, libère celui de Max !', url:'mj-34.html', type:'html', orientation:'any',   access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },
   { id:'mj-37',  category:'nouveaux', homeCat:'logique',  titre:'Croque-échecs !',      emoji:'♟️', desc:'Fou, Tour, Cavalier… croque tous les goûters !', url:'mj-37.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },
   { id:'mj-38',  category:'nouveaux', homeCat:'logique',  titre:'Saute-mouton !',       emoji:'🐑', desc:'Saute par-dessus les pions dodo !',   url:'mj-38.html',  type:'html', orientation:'any',       access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },
   { id:'mj-39',  category:'nouveaux', homeCat:'logique',  titre:'Blocs magiques',       emoji:'🟪', desc:'Pose les blocs, fais des lignes !',   url:'mj-39.html',  type:'html', orientation:'any',       access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },
 
   // ─── 🔧 Bricoler (ranger & réparer) ───
-  { id:'mj-08',  category:'bricoler', titre:'Le grand rangement',   emoji:'🧸', desc:'Range le bazar dans les bons bacs !', url:'mj-08.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
-  { id:'mj-17',  category:'bricoler', titre:'Le garage',            emoji:'🔧', desc:'Essence, lavage, pneus — répare les bus !',url:'mj-17.html',type:'html',orientation:'any',      access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
+  { id:'mj-08',  category:'bricoler', titre:'Le grand rangement',   emoji:'🧸', desc:'Range le bazar dans les bons bacs !', url:'mj-08.html',  type:'html', orientation:'any',       access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
+  { id:'mj-17',  category:'bricoler', titre:'Le garage',            emoji:'🔧', desc:'Essence, lavage, pneus — répare les bus !',url:'mj-17.html',type:'html',orientation:'any',      access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
 
   // ─── 👀 Observer & vite ───
-  { id:'mj-19',  category:'observer', titre:'Trouve le bus !',      emoji:'🎯', desc:'Repère le bon bus qui bouge !',       url:'mj-19.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
+  { id:'mj-19',  category:'observer', titre:'Trouve le bus !',      emoji:'🎯', desc:'Repère le bon bus qui bouge !',       url:'mj-19.html',  type:'html', orientation:'any',       access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
   { id:'mj-36',  category:'nouveaux', homeCat:'observer', titre:'Le bon bus !',         emoji:'🚏', desc:'Envoie le bus de la bonne couleur !', url:'mj-36.html',  type:'html', orientation:'any',       access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },
 
   // ─── 🌍 Le monde & langues ───
-  { id:'mj-11',  category:'monde',    titre:'Quel pays ?',          emoji:'🌍', desc:'Trouve le pays du drapeau !',         url:'mj-11.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:'tts', status:'live' },
-  { id:'mj-22',  category:'monde',    titre:'Trouve le pays !',     emoji:'🗺️', desc:'Localise les 25 pays d\'Europe !',    url:'mj-22.html',  type:'html', orientation:'landscape', access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
-  { id:'mj-20',  category:'monde',    titre:'Compte en 8 langues',  emoji:'🌐', desc:'Compter dans toutes les langues !',   url:'mj-20.html',  type:'html', orientation:'any',       access:'sequence', maxStars:5, unlock:null, tag:null,  status:'live' },
+  { id:'mj-11',  category:'monde',    titre:'Quel pays ?',          emoji:'🌍', desc:'Trouve le pays du drapeau !',         url:'mj-11.html',  type:'html', orientation:'any',       access:'sequence', maxStars:3, unlock:null, tag:'tts', status:'live' },
+  { id:'mj-22',  category:'monde',    titre:'Trouve le pays !',     emoji:'🗺️', desc:'Localise les 25 pays d\'Europe !',    url:'mj-22.html',  type:'html', orientation:'landscape', access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
+  { id:'mj-20',  category:'monde',    titre:'Compte en 8 langues',  emoji:'🌐', desc:'Compter dans toutes les langues !',   url:'mj-20.html',  type:'html', orientation:'any',       access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
   { id:'mj-42',  category:'nouveaux', homeCat:'monde',    titre:'Shisima !',            emoji:'🇰🇪', desc:'Le jeu du point d\'eau, venu du Kenya !', url:'mj-42.html', type:'html', orientation:'any',      access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },
 
   // ─── 🎮 En libre (bacs à sable, hors étoiles) ───

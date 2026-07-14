@@ -27,3 +27,5 @@ Un panneau affiche N bus avec leur temps d'attente → toucher **celui qui arriv
 
 ## Test
 `studio/minijeux/tests/mj-13a.spec.mjs` — N1 = 2 bus + Niveau 1 + tap gagnant. Vert avant push.
+
+> 🔄 2026-07-14 — DÉCISION PAPA YANN (passage global 3★) : 5 paliers → 3 niveaux (N0=ex-P1-2 · N1=ex-P3 · N2=ex-P4-5), maxStars 5→3 au catalog. Mapping réel : N0=2 bus/écart net · N1=4 bus/écart net · N2=6 bus/écart serré (≥1 min). Les autres lignes 🔒 restent en vigueur.

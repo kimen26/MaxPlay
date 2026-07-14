@@ -94,6 +94,7 @@ Ne jamais dupliquer game-mj-reviewer pour l'UX.
 ## Workflow MJ
 
 ```
+-1. BIBLIOTHÈQUE    → studio/minijeux/docs/MECANIQUES.md : proposer 1-2 mécaniques EXISTANTES re-skinnées AVANT tout code neuf (décision Papa Yann 2026-07-14)
 0. game-conseiller  → cadrage 1 écran (layout+méca+péda) validé par Papa Yann AVANT code
 1. game-mj-pmo      → figeage initial studio/minijeux/docs/jeux/figees/mj-XX.md
 2. game-dev         → code HTML vanilla + studio/minijeux/tests/mj-XX.spec.mjs (ensemble)

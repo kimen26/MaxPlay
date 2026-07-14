@@ -172,7 +172,7 @@
           { t: 'Je range toutes les couleurs 🎯',
             d: 'Chaque tube doit finir avec une seule couleur, du haut en bas. Les tubes vides aident à trier !' },
           { t: 'Plus j’ai d’étoiles, plus j’ai de couleurs à trier 💪',
-            d: 'On commence avec 2 couleurs, puis 3, 4, 5, jusqu’à 6 pour les champions !' }
+            d: 'On commence avec 2 couleurs, puis 4, jusqu’à 6 pour les champions !' }
         ]
       }
     });
@@ -180,9 +180,9 @@
     const TUBE_CAPACITY = 4;
     const TUBES_EMPTY = 2;
 
-    // Paliers (doc _PALIERS) : nb de couleurs. Niveau = Stars.get+1.
-    const level = Math.max(0, Math.min(4, (window.Stars ? Stars.get('mj-18') : 0)));
-    let colorCount = [2, 3, 4, 5, 6][level];
+    // 3★ (2026-07-14) : 5 paliers → 3 niveaux. N0=ex-P1-2(2 couleurs, entrée douce) · N1=ex-P3(4 couleurs) · N2=ex-P4-5(6 couleurs, l'ancien max inchangé).
+    const level = Math.max(0, Math.min(2, (window.Stars ? Stars.get('mj-18') : 0)));
+    let colorCount = [2, 4, 6][level];
     // Couleurs actives — sélectionnées depuis LIGNES via selectDistinctColors
     let BUS_THEMES = [];
 

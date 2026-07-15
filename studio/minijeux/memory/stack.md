@@ -15,8 +15,8 @@ type: project
 
 ```
 GitHub Pages → kimen26.github.io/MaxPlay/
-├── /                    ← site/index.html (menu 2 colonnes)
-├── /mj-01.html à /mj-20.html  ← jeux HTML vanilla (mj-02/03/07/10 retirés)
+├── /                    ← site/index.html (menu par catégories, source site/js/catalog.js)
+├── /mj-XX.html          ← jeux HTML vanilla (count + retirés → pmo/INVARIANTS.md ; menu → catalog.js)
 └── /max-adventure/      ← Phaser build (studio/max-adventure/dist/ copié par CI)
     max-adventure.html   ← splash → ./max-adventure/
 ```

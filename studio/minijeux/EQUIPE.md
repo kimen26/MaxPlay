@@ -9,7 +9,9 @@
 
 ---
 
-## Vue d'ensemble — 10 agents actifs (+ 3 Phase 2)
+## Vue d'ensemble — 12 agents actifs (+ 3 Phase 2)
+
+> MAJ 2026-07-15 : ajout `game-test-audio` + `game-test-secu` (batterie de test « vitesse complète », voir [`../../.claude/rules/mini-jeux.md`](../../.claude/rules/mini-jeux.md) § Batterie 2 vitesses). Menu = source `site/js/catalog.js` (plus `site/index.html` en dur).
 
 ```
 ┌─ AUTEUR (Papa Yann)
@@ -34,7 +36,9 @@
    │
    ├─ Sous-domaine MJ
    │  ├─ game-dev              [Sonnet] — code HTML vanilla + Phaser TS + SVG bus + déploiement
-   │  └─ game-mj-reviewer      [Haiku]  — verdict 5 sections (Bus/UX/Audio/Technique/Vocab) max 5 iter
+   │  ├─ game-mj-reviewer      [Haiku]  — verdict 5 sections (Bus/UX/Audio/Technique/Vocab) max 5 iter
+   │  ├─ game-test-audio       [Haiku]  — audit AUDIO (exclusivité voix, fallback TTS, padding, démarrage)
+   │  └─ game-test-secu        [Haiku]  — audit SÉCURITÉ (XSS, secrets, inputs) — cf. batterie 2 vitesses rules/mini-jeux.md
    │
    └─ Sous-domaine WEXWORLD (⏳ Phase 2)
       ├─ game-wexworld-designer  [Sonnet] — placeholder
@@ -58,6 +62,8 @@
 | **game-tile-designer** | Sonnet | 4 | Manuel — milieu pipeline tile (chaîné depuis simplifier) | ANALYSE → recette Python + PNG render |
 | **game-tile-reviewer** | Haiku | 4 | Manuel — fin pipeline tile (chaîné depuis designer) | Verdict PASS/FAIL recette + PNG, max 5 iter |
 | **game-mj-reviewer** | Haiku | 4 | Manuel — après code MJ | Verdict PASS/FAIL checklist 5 sections, max 5 iter |
+| **game-test-audio** | Haiku | 4 | Manuel — jeu avec MP3+TTS | Audit exclusivité voix / fallback TTS / padding SFX / démarrage muet |
+| **game-test-secu** | Haiku | 4 | Manuel — saisie/cloud/release | Audit XSS / secrets / inputs non validés, verdict PASS/FAIL |
 
 ---
 

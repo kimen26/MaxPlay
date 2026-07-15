@@ -4,7 +4,9 @@
   "type": "module",
   "description": "Harnais de test headless mini-jeux MaxPlay (Playwright, Chromium reel). EP-038.",
   "scripts": {
-    "mj:test": "node run.mjs"
+    "mj:test": "node run.mjs",
+    "mj:all": "node run-all.mjs",
+    "mj:audit": "node audit-gabarit.mjs"
   },
   "devDependencies": {
     "playwright": "^1.60.0"

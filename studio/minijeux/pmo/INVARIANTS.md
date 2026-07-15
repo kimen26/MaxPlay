@@ -58,7 +58,7 @@
 |----------|--------|--------|
 | MJ déployés au menu | **42 live + 1 wip (encyclo dinos)** : mj-04/05/06, mj-08/09, mj-11/12, mj-13a/13c, mj-15–21, mj-23–45 (43 total - mj-01/13b/14 retirés menu = 40 affichés), max-adventure, mj-pose-tiles — vérifié par node audit-gabarit.mjs 2026-07-14 (41/44 migrés sur mj-shell.js + harnais 41/42 vert) | `site/js/catalog.js` count status:live + audit-gabarit.mjs check |
 | MJ retirés du menu | **7 consolidés** : mj-02, mj-03, mj-07, mj-10 (historiques) + mj-01, mj-13b, mj-14 (par-cœur bus, décision Papa Yann 2026-07-06). ⚠️ mj-21, mj-23 et mj-34..42 sont LIVE (une version PMO 2026-07-07 les avait déclarés retirés à tort — corrigé) | `memory/state.md` + sprint-log 2026-07-06/07 |
-| Encyclopédie dinos | **50 fiches finale** (filtrage 60→50 validé 2026-06-01, 10 redondants/inconnus retirés, Apatosaure bi-nom, reclassement scientifique appliqué) | `site/js/dinos-data.js` |
+| Encyclopédie dinos | **Count ≠ ce pôle** → source unique [`studio/dino/pmo/INVARIANTS.md`](../../dino/pmo/INVARIANTS.md) (le dino a son PMO propre). Ne pas recopier un count ici. | `site/js/dinos-data.js` |
 | Recettes tile validées | **20** (`test_*.py` dans `recipes/` — routes h/v × 3 générations, virages × 4, carrefour × 2, rond-point, quartier, parking, voie bus, passages piétons × 2, refs papa × 3) | `site/tile-tools/recipes/test_*.py` |
 | Scripts utilitaires tile (all) | **30+** (20 recettes validées + utilitaires build/render/debug dans `scripts/`) | `site/tile-tools/recipes/` + `scripts/` |
 | Référence canonique virages | `test_ref_papa_4virages.py` (14×14 compo Papa Yann tile-picker) | `site/tile-tools/recipes/` |

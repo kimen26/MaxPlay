@@ -6,6 +6,12 @@ Ce dossier contient les fichiers retirés de la circulation active mais **conser
 
 ## Contenu
 
+### `dino-orphans-2026-07-15/` — Orphelins dino (scan militaire)
+
+| Fichier | Raison archivage |
+|---------|------------------|
+| `dinos-images-wikimedia.js` | Chargé par **0** HTML, 0 réf gouvernance (superseded par grok + local + paléoart). Vérifié orphelin lors du scan 2026-07-15. Images associées `site/img/dinos/wiki/` (50) restent en place — voir ticket poids staging. |
+
 ### `site-duel/` — Outil « Duel de goût » retiré (2026-07-13)
 
 | Fichier | Raison archivage |

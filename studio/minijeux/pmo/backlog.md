@@ -58,10 +58,39 @@
 
 ---
 
-### EP-085 [?] — Audit-gabarit.mjs bloquant dans CI ? (conseil : commande hook PreToolUse avant push)
-**Description** : script audit-gabarit.mjs créé 2026-07-14 (vérifies gabarit mini-jeux, cloud.js ordre, charset, header, spec présentes). Parent suggestion : rendre bloquant le hook ou CI `.github/workflows/deploy.yml` avant push. À valider Papa Yann (friction vs sécurité).
-**Statut** : [?] Validation Papa Yann — utility DÉPLOYÉE, politique de blocking à décider.
-**Impact** : zéro (utilitaire), friction mineure si bloquant git push.
+### EP-085 [x] — Audit-gabarit BLOQUANT en CI — LIVRÉ (scan militaire 2026-07-15)
+**Description** : rendre `audit-gabarit.mjs` bloquant. **Blocage précédent identifié** : le script auditait AUSSI les 3 jeux retirés (mj-01/13b/14, cadre legacy) → toujours 3 BLOQUANT → non gateable.
+**Fait 2026-07-15** :
+1. `audit-gabarit.mjs` rendu **catalog-aware** (n'audite que les jeux du menu via `catalog.js` ; `--all` pour tout). → 0 bloquant sur le menu (41/41).
+2. Portail **bloquant** ajouté dans `.github/workflows/deploy.yml` (step pur node avant build) → un cadre cassé au menu **arrête le déploiement GitHub Pages**.
+3. Friction minimisée : gate sur le **déploiement** (master), PAS un hook pre-push local. Le pre-push local reste le harnais manuel documenté.
+**Statut** : [x] Livré. Choix « deploy gate » (soft) plutôt que « push hook » (dur) — à confirmer Papa Yann.
+**Impact** : militarisation CI. Aucun risque (audit pur node, réversible = 1 step yml).
+
+---
+
+### EP-108 [x] — Harnais batch + workflow test CI — LIVRÉ (scan militaire 2026-07-15)
+**Description** : le harnais Playwright ne tournait qu'1 jeu à la fois (run.mjs), jamais en CI.
+**Fait 2026-07-15** :
+1. `tests/run-all.mjs` — lance le gameplay-test sur TOUS les jeux du menu (catalog.js), synthèse verte/rouge + `--json`. Scripts npm `mj:all`, `mj:audit`. **Baseline : 41/41 PASS, 0 sans spec.**
+2. `.github/workflows/test-minijeux.yml` — audit + harnais complet en CI sur push/PR, **séparé de deploy.yml** (un flake gameplay ne bloque JAMAIS la publication ; seul l'audit gabarit pur-node est bloquant).
+**Statut** : [x] Livré.
+**Impact** : « le harnais tourne d'un coup, en CI, à chaque push ».
+
+---
+
+### EP-109 [ ] — 18 jeux du menu SANS figée (plus gros trou de gouvernance)
+**Description** : scan 2026-07-15 — jeux `status:live` sans `docs/jeux/figees/mj-XX.md` : **mj-08, 11, 17, 20, 27, 28, 29, 30, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42** (la bande 27→42 = dinos + nouveaux, aucune figée). (mj-12/32/pose-tiles sans figée = OK, sandbox maxStars:0.)
+**À faire** : `game-mj-pmo` grave une figée par jeu à mécanique sensible — **JAMAIS fabriquée par une session sans validation Papa Yann** (figée = LOI). Prioriser les jeux à mécanique arithmétique/lecture.
+**Statut** : [ ] À planifier avec Papa Yann (18 figées = plusieurs sessions).
+**Impact** : haut (une régression sur ces 18 jeux n'est protégée par aucune LOI).
+
+---
+
+### EP-110 [ ] — Famille « quiz legacy » : victoire score-% vs standard 3★
+**Description** : mj-01/13a/14/15/16 partagent un moteur quiz dont la victoire est un **pourcentage** (`pct>=0.8?'🏆':…`) au lieu de l'overlay 3-étoiles + `celebrations`/MaxFX du standard récent. Fonctionnel mais hors-pattern.
+**Statut** : [ ] Modernisation cosmétique — à décider (risque régression sur jeux figés mj-13a). Non urgent.
+**Impact** : moyen (cohérence UX). mj-01/14 étant retirés du menu, priorité réelle = mj-13a/15/16.
 
 ---
 

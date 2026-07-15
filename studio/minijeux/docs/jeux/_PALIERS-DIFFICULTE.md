@@ -4,7 +4,9 @@
 > 1. la **réorganisation du menu par catégories** (coque),
 > 2. le **rollout du contrat de difficulté** sur chaque mini-jeu.
 >
-> **Contrat (rappel)** : Niveau = étoiles + 1 · une manche à 100% (sans révélation) → +1★ → le niveau monte · **maxStars = 5** (5 paliers) · le 1ᵉʳ jeu de chaque catégorie est ouvert, les suivants se débloquent à **2★** sur le précédent · indice de méthode à l'erreur, jamais la réponse · **manche mixte = 8 questions : 4 au niveau courant + 4 tirées au hasard sur les niveaux inférieurs** (mélangées ; niveau 1 → 8 faciles ; l'étoile exige de réussir les 4 dures).
+> ⚠️ **maxStars = 3 depuis 2026-07-14** (règle figée changée 5→3, décision Papa Yann « tout le monde en 3 étoiles » — voir [`pmo/INVARIANTS.md`](../../pmo/INVARIANTS.md) + figées datées). Les mentions « 5 paliers » ci-dessous sont **historiques**, le contrat de progression reste valide, seul le plafond passe à 3.
+>
+> **Contrat (rappel)** : Niveau = étoiles + 1 · une manche à 100% (sans révélation) → +1★ → le niveau monte · **maxStars = 3** (ex-5, voir note ci-dessus) · le 1ᵉʳ jeu de chaque catégorie est ouvert, les suivants se débloquent à **2★** sur le précédent · indice de méthode à l'erreur, jamais la réponse · **manche mixte = 8 questions : 4 au niveau courant + 4 tirées au hasard sur les niveaux inférieurs** (mélangées ; niveau 1 → 8 faciles ; l'étoile exige de réussir les 4 dures).
 >
 > **Règle d'or paliers** : **Niveau 1 = ultra-simple** (point d'entrée évident pour 3,5 ans), puis on monte doucement. Ce qui scale : **nombres · vocabulaire · densité · vitesse · proximité des distracteurs · nb de critères**.
 

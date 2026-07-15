@@ -1,0 +1,44 @@
+name: Test mini-jeux (harnais Playwright)
+
+# Harnais gameplay COMPLET du menu (run-all.mjs) + audit gabarit. Séparé de deploy.yml
+# pour que ce job (Chromium, plus lourd/potentiellement flaky) ne bloque JAMAIS la
+# publication GitHub Pages : il donne la visibilité rouge/vert sans retenir le déploiement.
+# Le portail vraiment bloquant (audit gabarit pur node) vit dans deploy.yml.
+# Créé 2026-07-15 (scan militaire : le harnais tourne d'un coup, en CI, à chaque push).
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test-mj:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Audit gabarit (statique)
+        run: node audit-gabarit.mjs
+        working-directory: studio/minijeux/tests
+
+      - name: Install Playwright + Chromium
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+        working-directory: studio/minijeux/tests
+
+      - name: Harnais gameplay complet du menu
+        run: node run-all.mjs
+        working-directory: studio/minijeux/tests
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mj-screenshots
+          path: studio/minijeux/tests/.artifacts/
+          retention-days: 7

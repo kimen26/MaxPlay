@@ -93,14 +93,14 @@
 ## Stack & déploiement
 
 GitHub Pages → `kimen26.github.io/MaxPlay/`
-- `/` → [`site/index.html`](../../site/index.html) (menu mj-01..20 + max-adventure)
+- `/` → [`site/index.html`](../../site/index.html) (menu par catégories, source de vérité [`site/js/catalog.js`](../../site/js/catalog.js))
 - `/mj-XX.html` → HTML vanilla
 - `/max-adventure/` → Phaser TS+Vite build (CI uniquement)
 - `/mj-pose-tiles.html` → mini-jeu kids tileset
 
 CI : [`../.github/workflows/deploy.yml`](../../.github/workflows/deploy.yml) (assemble dans `_site/` gitignored).
 
-**23 mini-jeux HTML actifs** (MJ-02/03/07/10 retirés du menu). Bugs critiques : voir [`memory/state.md`](memory/state.md).
+**Count / liste des mini-jeux** : ne jamais recopier un chiffre ici → source unique [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md) § État déploiement + [`site/js/catalog.js`](../../site/js/catalog.js). Bugs critiques : [`memory/state.md`](memory/state.md).
 
 > ⚠️ **Locataire DINO dans `site/`** : `dev-dinos.html`, `js/dinos-data.js`, `audio/dinos/`, `img/dinos/`, `js/dinos-images-*.js` sont **déployés depuis `site/` mais appartiennent au pôle DINO** (`../dino/`, depuis 2026-06-03). Pour y toucher → règles auto-chargées via [`../../.claude/rules/dino.md`](../../.claude/rules/dino.md) + figée [`../dino/figees/encyclopedie.md`](../dino/figees/encyclopedie.md). Ne PAS appliquer les règles MJ (bus SVG, figées mj-XX) au dino. `game-pmo`/`game-archiviste` ne gèrent pas le dino → `dino-pmo`/`dino-archiviste`.
 

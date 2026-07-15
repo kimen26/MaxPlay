@@ -8,9 +8,10 @@
 
 | Quoi | Statut |
 |------|--------|
-| Jeux déployés | MJ-01 à MJ-20 — voir [tasks/BACKLOG.md](../../tasks/BACKLOG.md) pour détail par jeu |
-| Jeux actifs (menu) | MJ-01, 04–06, 08–09, 11–17, 20 (MJ-02, 03, 07, 10 retirés du menu) |
-| Stack | HTML vanilla · `site/js/` partagé · GitHub Pages |
+| Count jeux / actifs / retirés | **Ne pas recopier ici** → [`pmo/INVARIANTS.md`](../../pmo/INVARIANTS.md) § État déploiement |
+| Menu (source de vérité) | [`site/js/catalog.js`](../../../../site/js/catalog.js) — par catégories, `status:'live'` |
+| Vue d'ensemble à jour | [CLASSIFICATION-2026-07.md](CLASSIFICATION-2026-07.md) |
+| Stack | HTML vanilla · `site/js/` partagé · gabarit `mj-shell.js` · GitHub Pages |
 | Audit technique | ✅ fait (2026-04-22) — voir `../audit/` |
 
 ---
@@ -31,24 +32,18 @@
 | Fichier | Quand le lire |
 |---------|--------------|
 | [figees/mj-XX.md](figees/) 🔒 | **LOI — lire AVANT toute modif de `mj-XX.html`.** Décisions figées par jeu, anti-régressions. Réinjecté par hook. Seul `game-mj-pmo` y écrit, seul Papa Yann défige. Créé 2026-05-15 (incident MJ-21) |
-| [GAMES_SPECS.md](GAMES_SPECS.md) | **Avant toute modif d'un jeu** — objectif péda, mécanique, pool de lignes |
+| [CLASSIFICATION-2026-07.md](CLASSIFICATION-2026-07.md) | **Vue d'ensemble à jour** — catégories, statut, paliers par jeu |
+| [_PALIERS-DIFFICULTE.md](_PALIERS-DIFFICULTE.md) | Contrat de difficulté par jeu (⚠️ maxStars = 3 depuis 2026-07-14, voir INVARIANTS) |
+| GAMES_SPECS.md | ⚠️ **ARCHIVÉ / périmé** (ne couvre que MJ-01→08 avec titres obsolètes). Identité d'un jeu → figées/ + CLASSIFICATION |
 | [game-ideas.md](game-ideas.md) | Backlog créatif brut (non priorisé) |
-| [MENU-MAP-VILLEJUIF.md](MENU-MAP-VILLEJUIF.md) | Plan menu hybride carte Villejuif + grille jeux (non implémenté) |
+| [mj-34-35-36-specs.md](mj-34-35-36-specs.md) | Specs des jeux 34/35/36 |
 
 ### Assets
 
 | Fichier | Contenu |
 |---------|---------|
-| [ASSETS.md](ASSETS.md) | Assets visuels — SVG bus, sprites, règles `temp/` vs `game/public/assets/` |
+| [ASSETS.md](ASSETS.md) | Assets visuels — SVG bus, sprites, règles `temp/` vs assets |
 | [AUDIO_ASSETS.md](AUDIO_ASSETS.md) | Sons validés (liens Pixabay) : bus, animaux, cartoon, UI |
-| [ASSETS_INVENTORY.md](ASSETS_INVENTORY.md) | Métadonnées pack Modern Exteriors (40k PNG, référence uniquement) |
-
-### Historique
-
-| Fichier | Contenu |
-|---------|---------|
-| [IMPROVEMENTS.md](IMPROVEMENTS.md) | Log de fixes sessions MJ-01→14 (historique, suivi maintenant dans BACKLOG) |
-| [ITERATION_NOTES.md](ITERATION_NOTES.md) | Journal de dev MJ-07 Phaser sandbox (sprints 1-4 terminés) |
 
 ### Audit (dossier séparé)
 
@@ -65,9 +60,9 @@
 
 ```
 GitHub Pages → kimen26.github.io/MaxPlay/
-├── /              ← site/index.html (menu)
+├── /              ← site/index.html (menu, source site/js/catalog.js)
 ├── /mj-XX.html    ← HTML vanilla (source: site/)
-└── /mj-07/        ← Phaser build (CI uniquement)
+└── /max-adventure/ ← Phaser build (CI uniquement, source studio/max-adventure/)
 ```
 
 CI : `.github/workflows/deploy.yml` assemble dans `_site/` (non commité).

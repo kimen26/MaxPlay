@@ -119,6 +119,7 @@
       + '<div class="p-corps" style="padding-top:4px">'
       + '<div class="parent-box">'
       + '<b style="font-size:13px">👨‍👦 Coin des parents</b>'
+      + '<button class="ri-pin" id="ri-pin" type="button" style="width:100%;height:44px;border:0;border-radius:12px;font-family:inherit;font-weight:900;font-size:13px;cursor:pointer;margin-bottom:8px">⭐ Mettre en avant</button>'
       + '<textarea id="ri-avis-txt" placeholder="Un bug ? Une idée ? Trop dur, trop facile ?…"></textarea>'
       + '<div style="display:flex;gap:8px">'
       + '<button class="dicter" id="ri-dicter" type="button" title="dicter au lieu d\'écrire">🎙️</button>'
@@ -180,6 +181,42 @@
       }
       setTimeout(function () { msg.textContent = ''; }, 2600);
     });
+
+    // ⭐ « Mettre en avant » : épingle ce jeu dans la rangée du menu.
+    // Autonome (lit/écrit maxplay_pins en direct) pour marcher sur toute page de jeu,
+    // même sans pins.js chargé. Cap 5 (figée menu.md).
+    var PIN_KEY = 'maxplay_pins', PIN_CAP = 5;
+    var pinBtn = document.getElementById('ri-pin');
+    function pinRead() {
+      try { var a = JSON.parse(localStorage.getItem(PIN_KEY)); return Array.isArray(a) ? a : []; }
+      catch (e) { return []; }
+    }
+    function pinWrite(a) {
+      try { localStorage.setItem(PIN_KEY, JSON.stringify(a.slice(0, PIN_CAP))); } catch (e) {}
+      try { window.Cloud && Cloud.schedulePush && Cloud.schedulePush(); } catch (e) {}
+    }
+    function pinPaint() {
+      if (!pinBtn) return;
+      var on = pinRead().indexOf(gameId()) !== -1;
+      pinBtn.textContent = on ? '⭐ Retirer de la mise en avant' : '⭐ Mettre en avant';
+      pinBtn.style.background = on ? 'var(--gold)' : 'var(--accent-soft, rgba(255,255,255,.1))';
+      pinBtn.style.color = on ? 'var(--gold-ink, #3a2000)' : 'var(--accent, #fff)';
+    }
+    if (pinBtn) {
+      pinPaint();
+      pinBtn.addEventListener('click', function () {
+        var id = gameId(), a = pinRead(), i = a.indexOf(id);
+        if (i !== -1) { a.splice(i, 1); pinWrite(a); pinPaint(); return; }
+        if (a.length >= PIN_CAP) {
+          msg.textContent = 'Déjà 5 jeux en avant — retires-en un d\'abord 🙂';
+          setTimeout(function () { msg.textContent = ''; }, 2600);
+          return;
+        }
+        a.push(id); pinWrite(a); pinPaint();
+        msg.textContent = 'Ajouté à « Tes jeux » ⭐';
+        setTimeout(function () { msg.textContent = ''; }, 2200);
+      });
+    }
 
     // 🎙️ dictée (Web Speech API, comme la modale Comments historique)
     var rec = null, recOn = false;

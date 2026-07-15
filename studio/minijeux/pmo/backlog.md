@@ -94,6 +94,20 @@
 
 ---
 
+### EP-111 [x] — ABANDON HUB « LA LIGNE DE MAX » — menu accordéon permanent (décision Papa Yann 2026-07-15)
+**Description** : Hub v2 « La ligne de Max » (index2.html, 6 arrêts visuels, ligne de bus horizontale) proposé 2026-07-04 sur benchmark refonte visuelle.
+**Décision Papa Yann 2026-07-15** : **ABANDONNÉ DÉFINITIVEMENT**. Raison : trop futuriste/chargé visuellement pour enfant 3.5 ans phase 1, friction UX refonte menu (tests pervasifs, regroupement catégories, redesign).
+**Fait** :
+- ✅ Décision figée dans `decisions.md` (2026-07-15)
+- ✅ Log sprint-log.md (2026-07-15)
+- 🔄 Archivage : `index2.html` + `site/manifest-fusee.json` (index3.html) conservés historique, PAS livrés prod
+- ✅ Menu = accordéon tiroirs MAXPLAY_CATEGORIES (statut quo depuis 2026-05-07)
+**Brainstorm post-abandon** : regroupement futur 10→3-5 catégories, timing TBD post-test shortlist (EP-047).
+**Statut** : [x] Figé (décision Papa Yann définitive).
+**Impact** : zéro (index2 jamais livré prod). Menu reste inchangé.
+
+---
+
 ### EP-077 [x] — Session challenge conseiller 2026-07-13 (6h30) — MJ-43/44 durcis + MJ-45 créé
 **Description** : validation complète 3 mini-jeux (2 correctifs post-review, 1 nouveau). Game-conseiller challenge → 2 bugs corrigés (deadlock mj-43, TTS phonème mj-44), 1 défigé numérique corrigé, MJ-45 créé direction Papa Yann.
 **Statut** : [x] Terminé 2026-07-13. Harnais vert mj-43/44 (29+26 checks). Reviewer PASS (9/10 ×3). MJ-45 spécifications stables, attente code.

@@ -8,6 +8,37 @@
 
 ---
 
+## 2026-07-15 — ABANDON HUB « LA LIGNE DE MAX » — menu accordéon sobriété permanent (décision Papa Yann)
+
+**Contexte** : Papa Yann évalue UX hub v2 (index2.html ligne de bus 6 arrêts, 2026-07-04). Feedback : trop de friction UX, trop futuriste pour phase 1 (enfant 3.5 ans, Max confus parcours arrêts).
+
+**Décision figée** :
+
+Concept hub « La ligne de Max » (voie A horizontale, 6 arrêts visuels) = **ABANDONNÉ DÉFINITIVEMENT**. Menu reste accordéon tiroirs sobre (MAXPLAY_CATEGORIES, catalog.js, statut quo depuis 2026-05-07).
+
+**Raison** :
+- Phase 1 = mini-jeux + dinos prioritaires
+- Refonte menu = friction (tests pervasifs, regroupement 10→X catégories, redesign UX enfant)
+- Hub v2 trop chargé visuellement pour enfant 3.5 ans
+
+**Brainstorm post-abandon** :
+- Regroupement futur actuels ~10 tiroirs → **cible 3-5 catégories** (approche minimaliste, post-test shortlist)
+- Timing : APRÈS validation ressenti 48h shortlist 7 (EP-047)
+- Conception : game-conseiller brainstorm, zéro code avant GO Papa Yann
+
+**Nettoyage** :
+- `index2.html` + `site/manifest-fusee.json` → archivé historique (PAS livrer prod GitHub Pages)
+- `site/index.html` + `site/manifest.json` = sources de vérité (aucun changement)
+
+**Impact** :
+- Pas de diff immédiat prod (index2 jamais liveé)
+- Zéro régression (menu accord standard inchangé)
+- Question ouverte : quand rebrancher menu refonte ? (Phase 2 ou fin Phase 1 post-test)
+
+**Statut** : ✅ Figée 2026-07-15 (arbitrage Papa Yann final).
+
+---
+
 ## 2026-07-14 — Gabarit unique mj-shell.js = source de vérité mini-jeux HTML (commit 392d59d0)
 
 **Contexte** : Papa Yann validation consolidation après Design System v1. Trop de variations manuelles en 14 scripts chargés. Solution : gabarit unique + test auditeur.
@@ -196,7 +227,7 @@ Design System v1 devient la **source de vérité couleur/thème/ambiance site en
 | **Retrait 3 MJ du menu validé (01/13b/14) ?** | Revue Papa Yann 2026-07-07 | HAUTE | MJ-01 trop facile, MJ-13b doublon, MJ-14 autre raison. DÉCISION FIGÉE 2026-07-07. Implémentation : EP-070 clôturé (catalog.js status:hidden, 20 jeux actifs). Logs : sprint-log + state.md |
 | **9 MJ jour (34-42) + retraits validés ?** | Jour 2026-07-06 | CRITIQUE | 3 MJ nuit retravaillés (34/35/36 feedback Papa Yann) + 6 nouveaux (37-42 batch jour) + 3 retirés menu (01/14/13b) confirmés. Test Papa Yann ressenti 48h ≈ 2026-07-08. Tickets : EP-044/045/046 + EP-047 shortlist. REMIS AU VOTE après test. |
 | **Shortlist 7 candidats — lequel prioriser ?** | Audit convergences 2026-07-06 | MOYENNE | Simon/Block Blast/Tangram dino/Mahjong/MJ-18 Expert/Shisima/Picross. Game-conseiller brainstorm post-test feedback. Priorisation TOP 2-3 pour roadmap juillet-août. Attente : retour Papa Yann ressenti enfant ~2026-07-08. |
-| **Refonte menu en « mondes » — GO timing ?** | Sprint jour 2026-07-06 | MOYENNE | Catégories visuelles (Lettres/Chiffres/Ranger/Réparer/Couleurs/Réfléchir/Jeux du monde/Dinos) + mix images ChatGPT + SVG animés. Maquette à produire. Papa Yann validé principe, timing attente après test 48h ressenti. Avant GO maquette : feedback si shortlist OK. |
+| **Hub « La ligne de Max » ABANDONNÉ — menu accordéon permanent** | Décision Papa Yann 2026-07-15 | HAUTE | ✅ **DÉCIDÉE 2026-07-15** : abandon hub v2 (trop futuriste, friction UX enfant 3.5 ans pour phase 1). Menu = accordéon tiroirs MAXPLAY_CATEGORIES (statut quo). Brainstorm futur : regroupement 10→3-5 catégories POST-test shortlist (timing TBD). |
 | **Ombres chinoises canon seule source dino silhouettes ?** | Ordre Papa Yann 2026-07-05 | HAUTE | DÉCISION FIGÉE 2026-07-05 : « les anciennes silhouettes SUPPRIME-LES ! ». Bannissement LimeZu par-famille (208 PNG supprimés, commit 234dee4b, EP-071). Ombres chinoises (`img/dinos/ombres/`) = source visuelle UNIQUE dino silhouettes. Gravé 2026-07-05, non-régression. |
 
 ---
@@ -321,13 +352,15 @@ Design System v1 devient la **source de vérité couleur/thème/ambiance site en
 
 ---
 
-## 2026-07-04 — Refonte visuelle plateforme Phase 1 livrée (hub « La ligne de Max »)
+## 2026-07-04 — Refonte visuelle plateforme Phase 1 livrée (hub « La ligne de Max ») [ABANDONNÉ 2026-07-15]
 
-**Contexte** : Papa Yann demande benchmark + proposition refonte visuelle complète ("trop basique, tabulaire, pas wow"). Process : explore site + benchmark web (Khan Kids/PBS/Toca/Duolingo ABC/Lunii/NN-g) + consultation 3 conseillers (game, dino, narration) + test lecteur-dyade simulé. Plan approuvé Papa Yann.
+**Contexte** : Papa Yann demande benchmark + proposition refonte visuelle complète ("trop basique, tabulaire, pas wow"). Process : explore site + benchmark web (Khan Kids/PBS/Toca/Duolingo ABC/Lunii/NN-g) + consultation 3 conseillers (game, dino, narration) + test lecteur-dyade simulé. Plan approuvé Papa Yann 2026-07-04.
 
-**Décisions figées** :
+**⚠️ STATUS RÉVISÉ 2026-07-15** : **DÉCISION ABANDONNÉE**. Papa Yann feedback UX : hub v2 trop chargé, trop futuriste pour enfant 3.5 ans phase 1. Menu reste accordéon tiroirs (statut quo). Index2.html + manifest-fusee.json archivés (PAS livrés prod).
 
-1. **Concept « La ligne de Max »** = hub v2 : Voie A (ligne de bus horizontale, 6 arrêts, PAS de ville scrollable parallax qui chevaucherait WexWorld P2). Validé Papa Yann 2026-07-04.
+**Décisions figées (ARCHIVÉES, non appliquées)** :
+
+1. **Concept « La ligne de Max »** = hub v2 : Voie A (ligne de bus horizontale, 6 arrêts) [**ABANDONNÉ 2026-07-15**].
 
 2. **6 arrêts + mapping catégories** :
    - Dodo des bus (compter+logique)

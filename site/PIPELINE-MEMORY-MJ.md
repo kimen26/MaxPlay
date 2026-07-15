@@ -354,6 +354,27 @@ Renforts : bloc « ⛔ AVANT DE MODIFIER » dans `.claude/rules/mini-jeux.md`, l
 - L-098 : Masquage graphie force enfant lecteur partiel à écouter, pas copier graphie reconnaissable (mj-44 ★3)
 - L-099 : Subset-sum anti-deadlock check = obligatoire tout jeu arithmétique exact (caisses mj-43, passagers mj-45)
 
+### 2026-07-16 — MENU v2 figé (structure navigateur + 5 tiroirs + rangée ⭐)
+
+**Trigger user** : Papa Yann valide la refonte menu (message session 2026-07-16). Décisions précises : rangée persistante « ⭐ Tes jeux » en haut, 5 tiroirs accordéon thématiques (🦕 dinos, 🎨 couleurs PROMU, 🔢 compter & lire, 🧩 casse-têtes, 🌍 monde & libre).
+
+**Décision** : figeage complet MENU v2 dans `studio/minijeux/docs/jeux/figees/menu.md` (architecture générale / rangée ⭐ / 5 catégories / accordéon / ancien système SUPPRIMÉ / récompense narrative REJETÉE / anti-régressions).
+
+**Éléments clés gravés** :
+1. **Rangée ⭐ « Tes jeux » PERSISTANTE** : jeux épinglés (PIN via panneau ❓) + « 🎯 Jeu du jour » invite audio (tiré parmi jeux 0-1 ★ OU pas joués récemment, status:live). Stockage localStorage `maxplay_pins`. Cap 5 max. Fallback auto-remplissage derniers joués (jamais vide).
+2. **5 tiroirs accordéon immuables** (ordre strict fixe) :
+   - 🦕 **Les dinos** : mj-24, 25, 26, 31, 40, 41 + encyclopédie
+   - 🎨 **Les couleurs** (PROMU pilier Max) : mj-18, 21, 09
+   - 🔢 **Compter & lire** (fusion) : mj-04, 13c, 05, 35, 43, 45 + mj-06, 23, 44
+   - 🧩 **Casse-têtes** (TERMINOLOGIE figée) : fusion logique (13a, 15, 16, 34, 37, 38, 39) + observer (19, 36) + bricoler (08, 17)
+   - 🌍 **Le monde & libre** : monde (11, 22, 20, 42) + libre (12, max-adventure, pose-tiles)
+3. **Ancien système SUPPRIMÉ** : section « 🆕 Nouveaux » disparaît. Chaque jeu → sa catégorie via `homeCat`.
+4. **Récompense narrative PROMISE INTERDITE** : contrevient règle pédagogique motivation intrinsèque gravée rules.md.
+
+**Anti-régressions** : jamais affichage vide, jamais > 5 tiroirs, jamais changer ordre/noms tiroirs, jamais déplacer ID mj-XX sans Papa Yann explicite, jamais promettre récompense narrative.
+
+**Statut** : 🔒 FIGÉ. Fichier menu.md créé. Prêt pour game-archiviste vérification gabarit.
+
 ---
 
 ## 4. Patterns user observés

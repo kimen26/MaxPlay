@@ -9,6 +9,25 @@
 
 ---
 
+## 2026-07-15 — ABANDON HUB « LA LIGNE DE MAX » + Menu accordéon sobriété maintenue (décision Papa Yann)
+
+**Owner** : Papa Yann (décision) · game-pmo (log)
+
+**Trigger** : session 2026-07-15 Papa Yann — feedback UX hub v2 (index2.html ligne de bus, 6 arrêts) trop futuriste/lourd pour phase 1. Décision : abandonner le concept, revenir au menu accordéon tiroirs sobre.
+
+**Fait** :
+- ✅ **Décision figée 2026-07-15** : concept hub « La ligne de Max » (voie A ligne bus horizontale, 6 arrêts, index2.html) **ABANDONNÉ DÉFINITIVEMENT**. Menu = accordéon tiroirs MAXPLAY_CATEGORIES (catalog.js).
+- ✅ **Brainstorm post-abandon** : regroupement actuels ~10 tiroirs (Lettres, Chiffres, Ranger, Réparer, Couleurs, Réfléchir, Jeux du monde, Dinos, Méchaniques, Libraire) → **cible 3-5 catégories** (décomposition futur TBD).
+- 🔄 **À nettoyer** : `index2.html` (6 arrêts), `site/manifest-fusee.json` (index3.html fusée) = garder archivés historique, PAS livrer prod.
+
+**État au reboot** :
+- ✅ Décision abandonnement hub « La ligne de Max » figée
+- 🔄 Regroupement catégories 10→3-5 en brainstorm futur (pas blocage phase 1)
+- ✅ Menu accordéon = statut quo, zéro refactor
+- ⏳ Question ouverte : timing refonte menu (après test shortlist EP-047 ou Phase 2 ?)
+
+---
+
 ## 2026-07-14 (après-midi) — 4 DÉCISIONS PAPA YANN TRANCHÉES + Livraisons (commits 98424775 + 68284858)
 
 **Owner** : Papa Yann décisions · main agent implémentation + game-pmo log

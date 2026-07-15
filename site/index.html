@@ -30,6 +30,37 @@
     .niveau { height:8px; border-radius:999px; background:rgba(255,255,255,.12); width:110px; }
     .niveau i { display:block; height:100%; border-radius:999px; background:var(--accent); }
 
+    /* ── rangée ⭐ « Tes jeux » : persistante, défilement horizontal ── */
+    .pins-wrap { padding:2px 16px 8px; }
+    .pins-title { font-family:'Fredoka One'; font-size:14px; color:var(--gold); margin:0 2px 7px; }
+    .pins-row {
+      display:flex; gap:9px; overflow-x:auto; padding-bottom:4px;
+      scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch;
+    }
+    .pins-row::-webkit-scrollbar { height:0; }
+    .pins-row { padding-top:10px; }   /* place pour la pastille « Aujourd'hui » */
+    .pin-card {
+      flex:0 0 auto; width:92px; scroll-snap-align:start; cursor:pointer;
+      background:var(--card-2); border-radius:16px; padding:11px 8px 9px;
+      display:flex; flex-direction:column; align-items:center; gap:5px; text-align:center;
+      border:2px solid transparent; position:relative;
+    }
+    .pin-card.locked { opacity:.55; }
+    .pin-card .p-emoji { font-size:30px; line-height:1; }
+    .pin-card .p-title { font-weight:900; font-size:11px; line-height:1.15; color:var(--ink); }
+    .pin-card .p-stars { font-size:11px; color:var(--gold); font-weight:900; min-height:13px; }
+    .pin-card .p-stars .off { opacity:.25; }
+    /* carte « jeu du jour » : mise en avant (contour or + pastille + pulse doux) */
+    .pin-card.today { border-color:var(--gold); background:linear-gradient(160deg, var(--card-2), var(--card)); }
+    .pin-card.today .p-badge {
+      position:absolute; top:-8px; left:50%; transform:translateX(-50%);
+      background:var(--gold); color:var(--gold-ink); font-size:9px; font-weight:900;
+      padding:2px 8px; border-radius:999px; white-space:nowrap; font-family:'Fredoka One';
+    }
+    @keyframes pin-pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.04);} }
+    .pin-card.today { animation:pin-pulse 2.4s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) { .pin-card.today { animation:none; } }
+
     /* ── tiroir niveau 2 : les jeux d'une catégorie ── */
     .cat-stars { color:var(--gold); font-weight:900; font-size:13px; flex-shrink:0; }
     .game { display:flex; align-items:center; gap:10px; background:var(--card-2); border-radius:12px; padding:10px 11px; cursor:pointer; position:relative; }
@@ -111,6 +142,13 @@
     <div class="mp-stars-total" id="stars-total">⭐ 0</div>
   </div>
 
+  <!-- RANGÉE ⭐ « Tes jeux » — persistante (jamais repliée) : jeu du jour + épinglés.
+       Générée par pins.js. Masquée s'il n'y a rien à montrer. -->
+  <div class="pins-wrap" id="pins-wrap" style="display:none">
+    <div class="pins-title">⭐ Tes jeux</div>
+    <div class="pins-row" id="pins-row"></div>
+  </div>
+
   <!-- MENU À TIROIRS — un seul ouvert à la fois (généré depuis catalog.js) -->
   <div class="col" style="padding:6px 16px 12px; gap:10px" id="board"></div>
 
@@ -182,10 +220,12 @@
   <div class="toast" id="toast" role="status"></div>
 
   <script src="js/ping.js"></script>
+  <script src="js/tracker.js"></script>
   <script src="js/cloud.js"></script>
   <script src="js/catalog.js"></script>
   <script src="js/stars.js"></script>
   <script src="js/unlock.js"></script>
+  <script src="js/pins.js"></script>
   <script src="js/avatars.js"></script>
   <script src="js/avatar-picker.js"></script>
   <script src="js/mp-theme.js"></script>
@@ -239,22 +279,16 @@
       const foot = unlocked
         ? (e.maxStars ? gStars(e.id) : '<span class="g-lock">🎮 Libre</span>')
         : `<span class="g-lock">${lockTxt}</span>`;
-      const cmt = e.category === 'nouveaux'
-        ? `<span class="cmt ${cmtGet(e.id) ? 'has' : ''}" data-cmt="${e.id}" title="Ton avis">${cmtGet(e.id) ? '💬✓' : '💬'}</span>`
-        : '';
       return `<div class="game ${unlocked ? '' : 'locked'}" data-id="${e.id}" data-url="${e.url}" data-reason="${reason || ''}" role="button">
         <span class="g-emoji">${e.emoji}</span>
         <span class="g-title grow">${e.titre}</span>
-        ${cmt}${foot}
+        ${foot}
       </div>`;
     }
 
     function drawerHtml(c, items, open) {
       const n = catCount(items);
       const starsTxt = n.max ? `<span class="cat-stars">⭐ ${n.got} / ${n.max}</span>` : '';
-      const copyBtn = c.id === 'nouveaux'
-        ? `<div style="display:flex;justify-content:flex-end;padding-top:2px"><button class="copy-cmts" id="copy-cmts">📋 Copier mes avis</button></div>`
-        : '';
       const bodyStyle = open ? '' : 'display:none';
       return `<div class="mp-drawer ${open ? 'open' : ''}" data-cat="${c.id}">
         <div class="mp-drawer-head" data-toggle="${c.id}">
@@ -265,9 +299,35 @@
         </div>
         <div class="col drawer-body" style="padding:0 10px 12px; gap:6px; ${bodyStyle}">
           ${items.map(gameHtml).join('')}
-          ${copyBtn}
         </div>
       </div>`;
+    }
+
+    // ── Rangée ⭐ « Tes jeux » : jeu du jour (mis en avant) + épinglés ──────
+    function pinCardHtml(e, isToday) {
+      const unlocked = Unlock.isUnlocked(e.id);
+      const badge = isToday ? '<span class="p-badge">🎯 Aujourd\'hui</span>' : '';
+      const foot = unlocked ? gStars(e.id) : '<span class="p-stars" style="color:var(--ink-3)">🔒</span>';
+      return `<div class="pin-card ${isToday ? 'today' : ''} ${unlocked ? '' : 'locked'}" data-id="${e.id}" data-url="${e.url}" data-reason="${Unlock.lockedReason(e.id) || ''}" role="button">
+        ${badge}
+        <span class="p-emoji">${e.emoji}</span>
+        <span class="p-title">${e.titre}</span>
+        ${unlocked ? `<span class="p-stars">${gStars(e.id)}</span>` : foot}
+      </div>`;
+    }
+    function renderPins() {
+      const wrap = document.getElementById('pins-wrap');
+      const row  = document.getElementById('pins-row');
+      if (!window.Pins) { wrap.style.display = 'none'; return; }
+      const today = Pins.gameOfDay();
+      const pinned = Pins.rowIds().filter(id => id !== today);  // pas de doublon avec le jeu du jour
+      const ids = (today ? [today] : []).concat(pinned);
+      if (!ids.length) { wrap.style.display = 'none'; return; }
+      row.innerHTML = ids.map(id => {
+        const e = CAT.find(x => x.id === id);
+        return e ? pinCardHtml(e, id === today) : '';
+      }).join('');
+      wrap.style.display = '';
     }
 
     function render() {
@@ -279,6 +339,7 @@
         .filter(x => x.items.length);
       if (!withGames.some(x => x.c.id === openId)) openId = withGames.length ? withGames[0].c.id : null;
       board.innerHTML = withGames.map(x => drawerHtml(x.c, x.items, x.c.id === openId)).join('');
+      renderPins();
 
       // encyclopédie épinglée (entrée 'dinos' du catalogue)
       const ency = document.getElementById('ency');
@@ -338,21 +399,16 @@
         }
         return;
       }
-      // Bouton "copier mes avis" (section 🆕)
-      if (ev.target.closest('#copy-cmts')) {
-        const all = cmtAll();
-        const lines = CAT.filter(e => e.category === 'nouveaux')
-          .map(e => `${e.id} ${e.titre} : ${all[e.id] || '(pas encore d\'avis)'}`);
-        const txt = 'REVUE NOUVEAUX JEUX — ' + new Date().toISOString().slice(0, 10) + '\n' + lines.join('\n');
-        (navigator.clipboard && navigator.clipboard.writeText
-          ? navigator.clipboard.writeText(txt).then(() => showToast('Avis copiés ! Colle-les à Claude 📋'))
-          : Promise.reject()
-        ).catch(() => { window.prompt('Copie ce texte :', txt); });
+      // carte de la rangée ⭐ : lancement direct si débloqué, sinon même feedback
+      // non punitif que dans le tiroir (secousse + toast, jamais de « perdu »).
+      const pin = ev.target.closest('.pin-card');
+      if (pin && pin.dataset.id) {
+        if (Unlock.isUnlocked(pin.dataset.id)) { location.href = pin.dataset.url; return; }
+        if (pin.dataset.reason === 'code') { openModal(); return; }
+        pin.classList.remove('shake'); void pin.offsetWidth; pin.classList.add('shake');
+        showToast(`Gagne ${Unlock.UNLOCK_STARS} ⭐ au jeu d'avant pour l'ouvrir !`);
         return;
       }
-      // Bulle commentaire sur un jeu 🆕
-      const cmtEl = ev.target.closest('.cmt');
-      if (cmtEl) { ev.stopPropagation(); openCmtModal(cmtEl.dataset.cmt); return; }
 
       // jeu ou encyclopédie
       const card = ev.target.closest('.game, .ency'); if (!card || !card.dataset.id) return;

@@ -30,9 +30,13 @@
     .niveau { height:8px; border-radius:999px; background:rgba(255,255,255,.12); width:110px; }
     .niveau i { display:block; height:100%; border-radius:999px; background:var(--accent); }
 
-    /* ── rangée ⭐ « Tes jeux » : persistante, défilement horizontal ── */
+    /* ── rangée ❤️ « Tes jeux » : persistante, défilement horizontal ──
+       --heart = couleur « favori » (rouge cœur), volontairement distincte de
+       --gold (étoiles de SCORE). Une seule ligne à changer si on veut la teinte
+       du doudou de Max (Tritri) plus tard. */
+    :root { --heart:#ff4d6d; --heart-ink:#fff; }
     .pins-wrap { padding:2px 16px 8px; }
-    .pins-title { font-family:'Fredoka One'; font-size:14px; color:var(--gold); margin:0 2px 7px; }
+    .pins-title { font-family:'Fredoka One'; font-size:14px; color:var(--heart); margin:0 2px 7px; }
     .pins-row {
       display:flex; gap:9px; overflow-x:auto; padding-bottom:4px;
       scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch;
@@ -57,6 +61,9 @@
       background:var(--gold); color:var(--gold-ink); font-size:9px; font-weight:900;
       padding:2px 8px; border-radius:999px; white-space:nowrap; font-family:'Fredoka One';
     }
+    /* jeu épinglé (favori) : petit cœur en coin + liseré cœur discret */
+    .pin-card.fav { border-color:var(--heart); }
+    .pin-card .p-heart { position:absolute; top:5px; right:6px; font-size:12px; line-height:1; }
     @keyframes pin-pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.04);} }
     .pin-card.today { animation:pin-pulse 2.4s ease-in-out infinite; }
     @media (prefers-reduced-motion: reduce) { .pin-card.today { animation:none; } }
@@ -142,10 +149,10 @@
     <div class="mp-stars-total" id="stars-total">⭐ 0</div>
   </div>
 
-  <!-- RANGÉE ⭐ « Tes jeux » — persistante (jamais repliée) : jeu du jour + épinglés.
+  <!-- RANGÉE ❤️ « Tes jeux » — persistante (jamais repliée) : jeu du jour + favoris.
        Générée par pins.js. Masquée s'il n'y a rien à montrer. -->
   <div class="pins-wrap" id="pins-wrap" style="display:none">
-    <div class="pins-title">⭐ Tes jeux</div>
+    <div class="pins-title">❤️ Tes jeux</div>
     <div class="pins-row" id="pins-row"></div>
   </div>
 
@@ -303,12 +310,14 @@
       </div>`;
     }
 
-    // ── Rangée ⭐ « Tes jeux » : jeu du jour (mis en avant) + épinglés ──────
+    // ── Rangée ❤️ « Tes jeux » : jeu du jour (mis en avant) + jeux aimés (❤️) ──
     function pinCardHtml(e, isToday) {
       const unlocked = Unlock.isUnlocked(e.id);
-      const badge = isToday ? '<span class="p-badge">🎯 Aujourd\'hui</span>' : '';
+      // jeu du jour = pastille or 🎯 ; jeu épinglé = petit cœur (favori de Max)
+      const badge = isToday ? '<span class="p-badge">🎯 Aujourd\'hui</span>'
+                            : '<span class="p-heart">❤️</span>';
       const foot = unlocked ? gStars(e.id) : '<span class="p-stars" style="color:var(--ink-3)">🔒</span>';
-      return `<div class="pin-card ${isToday ? 'today' : ''} ${unlocked ? '' : 'locked'}" data-id="${e.id}" data-url="${e.url}" data-reason="${Unlock.lockedReason(e.id) || ''}" role="button">
+      return `<div class="pin-card ${isToday ? 'today' : 'fav'} ${unlocked ? '' : 'locked'}" data-id="${e.id}" data-url="${e.url}" data-reason="${Unlock.lockedReason(e.id) || ''}" role="button">
         ${badge}
         <span class="p-emoji">${e.emoji}</span>
         <span class="p-title">${e.titre}</span>

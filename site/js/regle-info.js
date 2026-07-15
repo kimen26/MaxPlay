@@ -119,7 +119,7 @@
       + '<div class="p-corps" style="padding-top:4px">'
       + '<div class="parent-box">'
       + '<b style="font-size:13px">👨‍👦 Coin des parents</b>'
-      + '<button class="ri-pin" id="ri-pin" type="button" style="width:100%;height:44px;border:0;border-radius:12px;font-family:inherit;font-weight:900;font-size:13px;cursor:pointer;margin-bottom:8px">⭐ Mettre en avant</button>'
+      + '<button class="ri-pin" id="ri-pin" type="button" style="width:100%;height:44px;border:0;border-radius:12px;font-family:inherit;font-weight:900;font-size:13px;cursor:pointer;margin-bottom:8px">❤️ Mettre en favori</button>'
       + '<textarea id="ri-avis-txt" placeholder="Un bug ? Une idée ? Trop dur, trop facile ?…"></textarea>'
       + '<div style="display:flex;gap:8px">'
       + '<button class="dicter" id="ri-dicter" type="button" title="dicter au lieu d\'écrire">🎙️</button>'
@@ -182,7 +182,7 @@
       setTimeout(function () { msg.textContent = ''; }, 2600);
     });
 
-    // ⭐ « Mettre en avant » : épingle ce jeu dans la rangée du menu.
+    // ❤️ « Mettre en favori » : épingle ce jeu dans la rangée du menu.
     // Autonome (lit/écrit maxplay_pins en direct) pour marcher sur toute page de jeu,
     // même sans pins.js chargé. Cap 5 (figée menu.md).
     var PIN_KEY = 'maxplay_pins', PIN_CAP = 5;
@@ -198,9 +198,9 @@
     function pinPaint() {
       if (!pinBtn) return;
       var on = pinRead().indexOf(gameId()) !== -1;
-      pinBtn.textContent = on ? '⭐ Retirer de la mise en avant' : '⭐ Mettre en avant';
-      pinBtn.style.background = on ? 'var(--gold)' : 'var(--accent-soft, rgba(255,255,255,.1))';
-      pinBtn.style.color = on ? 'var(--gold-ink, #3a2000)' : 'var(--accent, #fff)';
+      pinBtn.textContent = on ? '❤️ Retirer des favoris' : '❤️ Mettre en favori';
+      pinBtn.style.background = on ? 'var(--heart, #ff4d6d)' : 'var(--accent-soft, rgba(255,255,255,.1))';
+      pinBtn.style.color = on ? 'var(--heart-ink, #fff)' : 'var(--accent, #fff)';
     }
     if (pinBtn) {
       pinPaint();
@@ -213,7 +213,7 @@
           return;
         }
         a.push(id); pinWrite(a); pinPaint();
-        msg.textContent = 'Ajouté à « Tes jeux » ⭐';
+        msg.textContent = 'Ajouté aux favoris ❤️';
         setTimeout(function () { msg.textContent = ''; }, 2200);
       });
     }

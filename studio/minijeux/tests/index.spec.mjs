@@ -49,12 +49,12 @@ export async function run({ page, ok }) {
   await page.waitForTimeout(150);
   ok('toggle tiroir : toujours 1 seul ouvert', (await page.locator('.mp-drawer.open').count()) === 1);
 
-  // ── rangée ⭐ « Tes jeux » (menu v2) : jeu du jour toujours présent ──
+  // ── rangée ❤️ « Tes jeux » (menu v2) : jeu du jour toujours présent ──
   // Fresh state (aucun épinglé, aucun joué) → la rangée montre au moins le jeu du jour.
   const pinsVisible = await page.locator('#pins-wrap').isVisible();
-  ok('rangée ⭐ visible (au moins le jeu du jour)', pinsVisible);
+  ok('rangée ❤️ visible (au moins le jeu du jour)', pinsVisible);
   if (pinsVisible) {
-    ok('rangée ⭐ : carte « jeu du jour » mise en avant',
+    ok('rangée ❤️ : carte « jeu du jour » mise en avant',
        (await page.locator('.pin-card.today').count()) === 1);
     // clic sur le jeu du jour → navigue vers un mj-XX.html
     const url = await page.locator('.pin-card.today').getAttribute('data-url');

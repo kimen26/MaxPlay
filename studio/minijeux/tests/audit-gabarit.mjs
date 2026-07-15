@@ -6,9 +6,15 @@
 //  pour ça : les règles de conformité gabarit sont mécaniques.
 //
 //  Usage :
-//    node audit-gabarit.mjs               → audite TOUS les site/mj-*.html
+//    node audit-gabarit.mjs               → audite les jeux AU MENU (présents dans js/catalog.js)
+//    node audit-gabarit.mjs --all         → audite TOUS les site/mj-*.html (menu + retirés)
 //    node audit-gabarit.mjs mj-43 mj-45   → audite seulement ces jeux
 //    node audit-gabarit.mjs --json        → sortie JSON (pour CI / agents)
+//
+//  Portée par défaut = catalog.js (source de vérité menu). Les jeux retirés du menu
+//  (mj-01/13b/14, conservés en fichier mais absents du catalog) ne sont PAS audités
+//  par défaut : leur dette gabarit legacy est assumée, ils ne bloquent pas la CI.
+//  Ajouté 2026-07-15 (scan militaire : rendre l'audit branchable bloquant en CI).
 //
 //  Sort code 1 si au moins un jeu a une violation BLOQUANTE (voir plus bas),
 //  0 sinon. Les AVERTISSEMENTS (migration shell non faite, etc.) ne bloquent pas.
@@ -40,6 +46,7 @@ const TESTS = __dir;
 
 const args = process.argv.slice(2);
 const asJson = args.includes('--json');
+const auditAll = args.includes('--all');
 const wanted = args.filter(a => !a.startsWith('--'));
 
 const GREEN = '\x1b[32m', RED = '\x1b[31m', YEL = '\x1b[33m', DIM = '\x1b[2m', RST = '\x1b[0m';
@@ -48,12 +55,28 @@ const GREEN = '\x1b[32m', RED = '\x1b[31m', YEL = '\x1b[33m', DIM = '\x1b[2m', R
 // Fichiers de démo/référence du package Design System — pas de vrais jeux, exclus de l'audit batterie.
 const NOT_A_GAME = new Set(['mj-gold-a', 'mj-gold-b']);
 
+// Source de vérité du menu : tout id mj-* présent dans js/catalog.js. Un jeu absent = retiré du menu.
+function catalogIds() {
+  const cat = resolve(SITE, 'js', 'catalog.js');
+  if (!existsSync(cat)) return null; // pas de catalog → on ne peut pas filtrer, audite tout
+  const src = readFileSync(cat, 'utf8');
+  const ids = new Set();
+  for (const m of src.matchAll(/id:\s*'(mj-[^']+)'/g)) ids.add(m[1]);
+  return ids;
+}
+
+let skipped = [];
 function mjFiles() {
   if (wanted.length) return wanted.map(w => resolve(SITE, `${w.replace(/\.html$/, '')}.html`));
-  return readdirSync(SITE)
+  const menu = auditAll ? null : catalogIds();
+  const all = readdirSync(SITE)
     .filter(f => /^mj-.*\.html$/.test(f))
-    .filter(f => !NOT_A_GAME.has(basename(f, '.html')))
-    .map(f => resolve(SITE, f));
+    .filter(f => !NOT_A_GAME.has(basename(f, '.html')));
+  if (!menu) return all.map(f => resolve(SITE, f));
+  const kept = [], skip = [];
+  for (const f of all) (menu.has(basename(f, '.html')) ? kept : skip).push(f);
+  skipped = skip.map(f => basename(f, '.html'));
+  return kept.map(f => resolve(SITE, f));
 }
 
 // ── un check = { level: 'block'|'warn', name, cond, detail } ────────────────
@@ -159,7 +182,7 @@ for (const r of results) {
 }
 
 if (asJson) {
-  console.log(JSON.stringify({ hadBlock, results: summary }, null, 2));
+  console.log(JSON.stringify({ hadBlock, skipped, results: summary }, null, 2));
 } else {
   const nBlock = summary.filter(s => s.block).length;
   const nWarn = summary.filter(s => !s.block && s.warn).length;
@@ -169,6 +192,7 @@ if (asJson) {
   console.log(`  ${results.length} jeux audités`);
   console.log(`  ${GREEN}${nOk} cadre conforme${RST} · ${YEL}${nWarn} avec dette${RST} · ${RED}${nBlock} BLOQUANT${RST}`);
   console.log(`  migration gabarit shell : ${nShell}/${results.length}`);
+  if (skipped.length) console.log(`  ${DIM}hors-menu (non audités, --all pour inclure) : ${skipped.join(', ')}${RST}`);
   console.log(`════════════════════════════════════════════`);
   console.log(hadBlock
     ? `${RED}✗ au moins un jeu a une violation bloquante — corriger avant push${RST}\n`

@@ -1,7 +1,10 @@
 # MaxPlay — Fiche specs des mini-jeux
 
-> Source de vérité pour chaque jeu : objectif pédagogique, mécanique, pool de lignes, et règles.
-> À consulter avant toute modification d'un jeu.
+> ⚠️ **DOCUMENT PÉRIMÉ / ARCHIVÉ (2026-07-15).** Ne couvre que MJ-01→08 avec des titres/mécaniques
+> **obsolètes** (MJ-05 « Terminus », MJ-06 « Au garage », MJ-07 « Trie les bus »… qui ne
+> correspondent plus aux jeux actuels). **NE PAS s'en servir comme source de vérité.**
+> Identité/spec d'un jeu → [`figees/mj-XX.md`](figees/) (LOI) + [`CLASSIFICATION-2026-07.md`](CLASSIFICATION-2026-07.md) (vue d'ensemble à jour).
+> Conservé pour trace historique (« ne rien perdre ») — voir git blame pour l'intention d'origine.
 
 ---
 

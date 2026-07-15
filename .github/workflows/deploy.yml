@@ -29,6 +29,13 @@ jobs:
           cache: 'npm'
           cache-dependency-path: studio/max-adventure/package-lock.json
 
+      # Portail gabarit BLOQUANT (2026-07-15) — audit statique pur node (zéro navigateur,
+      # zéro dépendance). Un mini-jeu du menu au cadre cassé (cloud.js manquant, thème
+      # absent, emoji bus, charset) arrête le déploiement. Portée = catalog.js (jeux au menu).
+      - name: Portail gabarit mini-jeux (bloquant)
+        run: node audit-gabarit.mjs
+        working-directory: studio/minijeux/tests
+
       - run: npm ci
         working-directory: studio/max-adventure
 

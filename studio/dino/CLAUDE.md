@@ -41,7 +41,7 @@
 | **Données dinos** (source de vérité) | [`../site/js/dinos-data.js`](../../site/js/dinos-data.js) |
 | **Audio** (récits, menus, fiches) | [`../site/audio/dinos/`](../../site/audio/dinos/) |
 | **Images** (fiches déployées) | [`../site/img/dinos/`](../../site/img/dinos/) |
-| **Images paléoart APP couleur** (staging 5 scènes/dino : échelle enfant · manger · écosystème · Paris bus · funfact) | [`../site/img/dinos/_new-xxl/`](../../site/img/dinos/_new-xxl/) (zone de staging, valider → ranger dans `img/dinos/`) · skill `dino-paleoart` · état [`_REPRISE.md`](../../site/img/dinos/_new-xxl/_REPRISE.md) |
+| **Images paléoart APP couleur** (7 assets/dino : hero · headshot · manger · écosystème · Paris bus · funfact · coloriage) | **PROD** = [`../site/img/dinos/paleoart/`](../../site/img/dinos/paleoart/) (câblé, lu par `dev-dinos.html`). État complétude → [`pmo/_ETAT-DINOS.md`](pmo/_ETAT-DINOS.md) généré. Staging brut Grok = `_new-xxl/` (à valider→ranger, skill `dino-paleoart`). |
 | **Images Lunii** (emblèmes familles + couverture, fond noir natif — source interne, non déployée) | [`content/lunii/`](content/lunii/INDEX.md) · skill `dino-images-lunii` · assemblées par [`../lunii/`](../lunii/CLAUDE.md) |
 | **Sources contenu** (récits, échelle, étymo, factcheck, process) | [`content/sources/`](content/sources/) (recits · fiches · mesures · etymo) |
 | **Données structurées** (racines dico/quiz) | [`content/data/racines.json`](content/data/racines.json) |

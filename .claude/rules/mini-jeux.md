@@ -199,9 +199,9 @@ MJ.ready(function () {
 
 ## État jeux
 
-- **22 mini-jeux actifs** (MJ-01 à MJ-20 + max-adventure + mj-pose-tiles)
-- **Retirés du menu** : MJ-02/03/07/10 (voir [`studio/minijeux/memory/state.md`](../../studio/minijeux/memory/state.md))
-- **Bugs critiques** : voir state.md (EP-024 Max Adventure, EP-022 MJ-04 boucle)
+> ⚠️ **Zéro chiffre en dur ici** (doctrine « pointe, ne recopie pas » — un count recopié rote).
+- **Count / liste actifs / retirés / menu** : source unique [`studio/minijeux/pmo/INVARIANTS.md`](../../studio/minijeux/pmo/INVARIANTS.md) § État déploiement + [`site/js/catalog.js`](../../site/js/catalog.js) (source de vérité menu).
+- **Bugs critiques en cours** : [`studio/minijeux/memory/state.md`](../../studio/minijeux/memory/state.md) § Bugs (aucun actif au 2026-07-05 ; EP-022 MJ-04 et EP-024 Max Adventure = **faux bugs classés**, ne pas re-signaler).
 
 ## Anti-patterns sur mini-jeux
 

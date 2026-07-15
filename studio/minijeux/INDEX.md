@@ -27,7 +27,7 @@ studio/minijeux/          ← GOUVERNANCE + specs (PAS le code déployé)
 └── tests/                ← harnais Playwright mini-jeux (EP-038)
 
 CODE DÉPLOYÉ (hors pôle, GitHub Pages) :
-  site/                   ← 23 mini-jeux HTML + index.html + js/ + tools/ + tile-tools/ + mj-pose-tiles.html
+  site/                   ← mini-jeux HTML (count → pmo/INVARIANTS.md) + index.html + js/catalog.js (menu) + tools/ + tile-tools/ + mj-pose-tiles.html
   studio/max-adventure/   ← Phaser TS+Vite (build CI → /max-adventure/) · gouverné par ce pôle (CLAUDE.md local pointe ici)
 ```
 
@@ -73,7 +73,7 @@ Détails complets : [`EQUIPE.md`](EQUIPE.md).
 
 - CI : [`../../.github/workflows/deploy.yml`](../../.github/workflows/deploy.yml)
 - URL : `kimen26.github.io/MaxPlay/`
-  - `/` → `site/index.html` (menu mj-01..20 + max-adventure)
+  - `/` → `site/index.html` (menu par catégories, source `site/js/catalog.js`)
   - `/mj-XX.html` → vanilla
   - `/max-adventure/` → Phaser build (CI, source `studio/max-adventure/`)
   - `/mj-pose-tiles.html` → mini-jeu kids tileset

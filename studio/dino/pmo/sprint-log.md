@@ -2,6 +2,29 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-07-17 — AUDIT EXHAUSTIF AUDIO VOIX MaxPlay (découverte orphelins + incohérences cosmétiques)
+
+**État** : AUDIT SEUL (aucune modif fichier) — **PROPOSITIONS pour Papa Yann**.
+
+**Découvertes** :
+- ✅ **Couverture DINO 100 %** : 60 fiches × 5 blocs (300 MP3) + 75 spéciaux (récits/dico/Pangée/Extinction) + 17 menus + 60 noms vocaux = **452/452 MP3 présents**, conforme `DINO_AUDIO_VERSION`.
+- ❌ **ORPHELINS (branchés nulle part, code ne les appelle pas)** :
+  1. `site/audio/dinos/fr/noms/**` (60 MP3) : seul mj-31/24/28/33 via `DINO_FUNFACT_AUDIO` les consomment — à valider mapping.
+  2. `site/audio/dinos/fr/periodes/` (5 MP3 : trias/jurassique/cretace/cenozoique/pangee) : mj-31 seul peut les jouer → **jamais branchés** (code TTS fallback).
+  3. `site/audio/dinos/menu-ep-*.mp3` (8 accroches époque : intro/triassic/…/aftermath) : générés, **jamais branchés dans encyclopédie** onglet Voyage.
+  4. `site/audio/dinos/special-*.mp3` (2 : pangee/extinction) : placés, usage dépend onglet Voyage.
+- ⚠️ **Badge DINO_AUDIO_VERSION incohérent** : `carnotaurus` + `baryonyx` ont audio V3, mais absent du badge → affichent « V1 » à tort.
+
+**Trous cross-pôle (hors scope dino strict)** : géographie (8 MP3 textes proposés, pas produits) · encouragements dino (réutiliser casting banque) · récits + spéciaux sans fallback TTS si manquants (silence brut).
+
+**Gouvernance** : aucune règle figée menacée. Violations (« Max » dans mj-22/catalog) → corrigeable code seul.
+
+**Tickets créés** : EP-D-Menu-EP-Branchage + EP-D-Periodes-Branchage + EP-D-Audio-Carnotaurus-Baryonyx-Badge.
+
+**Leçon gravée** : L-D-36 (audit audio post-produit dino : couverture, orphelins, branchage code).
+
+---
+
 ## 2026-07-14 — Design v3 appliqué à dev-dinos.html + gravure figées (maquettes package 2026-07-13) — commit da3496f1
 
 **État** : LIVRÉ + CONFORME FIGÉES 100 % (audit 11 axes, smoke Playwright vert).

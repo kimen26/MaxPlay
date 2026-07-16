@@ -9,6 +9,30 @@
 
 ---
 
+## 2026-07-17 — TOUR EXHAUSTIF AUDIO VOIX — audit complet 100% scope JEU (proposition Papa Yann validation)
+
+**Owner** : Papa Yann (demande) · main agent (audit) · game-pmo (log)
+
+**Trigger** : Papa Yann tour exhaustif messages parlés pôle JEU seul (dino gérée par dino-pmo) — détaillé inventaire propositions LOT 1-5, statut attente validation textes.
+
+**Fait** :
+- ✅ **Audit doc créé** : `studio/minijeux/docs/AUDIT-AUDIO-VOIX-2026-07-17.md` (inventaire exhaustif 100% + scripts par LOT 1-5, EN ATTENTE VALIDATION Papa Yann)
+- ✅ **Violation règle détectée** : 2 occurrences « Max » nommé nominativement dans contenu livré (mj-22.html l.254 « Bravo Max ! » + catalog.js mj-34 « celui de Max »)
+- ✅ **Corrections immédiat** : mj-22 réécriture « Bravo ! Tu connais l'Europe par cœur ! » + catalog.js reformulation « libère le tien ! »
+- ✅ **Leçon L-109 gravée** : jamais nommer Max nominativement dans contenu produit (profil = calibrage interne, pas adressage direct enfant)
+- 🔄 **Reste** : aucune prod audio lancée (attente validation Papa Yann scripts LOT 1-5), 9 quick-win code (C1-C9) signalés dans audit doc, pas de modification
+
+**État au reboot** :
+- ✅ Audit audio complet structuré (LOT 1 menu, LOT 2 consignes, LOT 3 fins, LOT 5 dynamiques, LOT 6 multilingue TTS natif)
+- ✅ 2 violations nom enfant corrigées commit ready
+- ✅ 9 fixes code légers listées (C1-C9, branchement MP3 orphelins, fallback audio)
+- ⏳ Attente Papa Yann validation : scripts LOT 1-5 (ensemble 43 variantes menu + fixes)
+- ⏳ Ticket future (EP-AUDIO-2026) : prod ElevenLabs LOT 1-3 (menu/consignes/fins) + branchement dynamiques LOT 5 post-validation
+
+**Prochaines étapes** : Papa Yann valide scripts LOT 1-5 (ou demande réécriture) → green light → prod ElevenLabs MCP `studio_audiobook_from_segments_v2_dialogue` avec voice-map.json + tags v3 codage (Narration-audio pilote mécanique)
+
+---
+
 ## 2026-07-15 — ABANDON HUB « LA LIGNE DE MAX » + Menu accordéon sobriété maintenue (décision Papa Yann)
 
 **Owner** : Papa Yann (décision) · game-pmo (log)

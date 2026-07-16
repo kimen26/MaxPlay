@@ -251,15 +251,15 @@ function updateDots() {
 }
 
 function finGame() {
-  speak('Bravo Max ! Tu as trouvé tous les pays !');
+  speak('Bravo ! Tu connais l\'Europe par cœur !');
   try { playEndSound(1, 1); } catch(e) {}
   const ov = document.createElement('div');
   ov.className = 'victoire-overlay';
   ov.innerHTML = `
     <div class="victoire-card">
       <div class="drapeau-victoire">🎉</div>
-      <div class="victoire-nom">Bravo Max !</div>
-      <div style="color:#666;margin:8px 0;font-size:.95rem">Tu as trouvé tous les pays !</div>
+      <div class="victoire-nom">Bravo !</div>
+      <div style="color:#666;margin:8px 0;font-size:.95rem">Tu connais l'Europe par cœur !</div>
       <button class="victoire-btn" onclick="window.location.reload()">Rejouer</button>
       <button class="fin-btn" onclick="window.location.href='index.html'">Menu</button>
     </div>`;

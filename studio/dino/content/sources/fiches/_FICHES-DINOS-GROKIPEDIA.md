@@ -587,7 +587,7 @@ Sauropode herbivore du **Jurassique supérieur (~155–145 Ma)**, Amérique du N
 ### 📋 CONTEXTE (à coller comme contexte image)
 Sauropode herbivore du **Crétacé inférieur (~130–120 Ma)**, **Argentine** (Province de Neuquén, Formation La Amarga), **plaines fluviales et zones marécageuses**.
 - **Taille** : **9–13 m** de long · **~2 m** au garrot · **2,5–3 tonnes**. *(face à un enfant d'1 m : l'enfant lui arrive au garrot — il fait 2 fois sa taille en hauteur, et 9 à 13 m de long.)*
-- **Silhouette** : quadrupède **plus petit que la plupart des sauropodes**, cou relativement court, deux rangées de **grandes épines fourchues sur le cou et le dos** (les plus grandes atteignent 65 cm de haut).
+- **Silhouette** : quadrupède **plus petit que la plupart des sauropodes**, cou relativement court, deux rangées de **grandes épines fourchues sur le cou et le tout début du dos jusqu'aux épaules seulement** (les plus grandes ~65 cm) — elles **décroissent puis s'arrêtent aux épaules** ; le reste du dos, les hanches et la queue sont **lisses**. `⚠️ apparence débattue` : soit épines cornées dépassant, soit double crête/voile gainée de peau (consensus = entre les deux — crête gainée à pointes cornées).
 - **Tête** : allongée, narines en arrière des orbites ; dents en cheville à l'avant.
 - **Peau** : cuir épais, écailles lisses. `⚠️ probable`
 - **Dents** : **dents en cheville fines** à l'avant, pour arracher la végétation.

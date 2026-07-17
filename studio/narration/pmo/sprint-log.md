@@ -6,6 +6,20 @@
 
 ---
 
+## 2026-07-17 — Intégration DOCTRINE transverse
+
+**Objectif :** pointer vers la DOCTRINE.md (racine) depuis le pôle NARRATION.
+
+**Fait** :
+- Ajout pointeur dans INDEX.md (ligne État du projet, 1ère ligne)
+- Trois décisions DOCTRINE figées (D-001/D-002/D-003) intégrées dans memory/ transverse
+
+**Décisions** : DEC-DOCTRINE-NARRATION-001 (voir decisions.md)
+
+**État au reboot** : pointeur placé, pas de matière à rebasculer (DOCTRINE vit en racine).
+
+---
+
 ## 2026-07-13 — Décisions Papa Yann : duel retrait + top 3 vague 6 chargé
 
 **Décisions Papa Yann (validées synchrone)** :

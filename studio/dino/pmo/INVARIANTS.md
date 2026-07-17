@@ -70,6 +70,10 @@ Le **bus est autorisé en échelle de taille** (validé Papa Yann) mais **interd
 
 Résolus via `narration/personnages/voix-meta/voice-map.json`. Modèle **eleven_v3**, **stability 0,4** (dialogue), loudnorm en post. Accroche menu **2-7 s**.
 
+## 🏛️ Doctrine transverse MaxPlay
+
+> **Principes fondateurs (tous les pôles)** : [`../../memory/DOCTRINE.md`](../../memory/DOCTRINE.md) — D-001 pédagogie = produit, D-002 zéro pénalité, D-003 récompense promise interdite. À consulter avant arbitrer tout design d'apprentissage DINO.
+
 ## 🏛️ Doctrine GED (DEC-GED-001, figée 2026-07-03)
 
 > Décision d'architecture. Détail + raison : [`decisions.md`](decisions.md) § DEC-GED-001. Ces règles rendent la GED durable (canonicité + complétude, en plus du rangement).

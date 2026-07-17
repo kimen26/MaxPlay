@@ -23,6 +23,12 @@
 
 ---
 
+## Doctrine transverse MaxPlay
+
+**Lire [`../../memory/DOCTRINE.md`](../../memory/DOCTRINE.md) — 3 principes figés (D-001 pédagogie = produit, D-002 zéro pénalité, D-003 pas de récompense promise).**
+
+---
+
 ## Règles UX/péda non-négociables (cible Max 3.5-4 ans)
 
 | Métrique | Valeur | Source |

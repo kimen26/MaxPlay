@@ -2,6 +2,14 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-07-17 — Pointeur doctrine transverse ajouté à INVARIANTS
+
+**État** : COMPLÉTÉ.
+
+**Fait** : ajout d'un lien vers `memory/DOCTRINE.md` (D-001 pédagogie = produit, D-002 zéro pénalité, D-003 récompense promise interdite) dans INVARIANTS.md § 🏛️ Doctrine transverse. Décision Papa Yann 2026-07-17 — doctrine centralisée pour tous pôles. Pointeur en haut du § pour visibilité AVANT DEC-GED-001.
+
+---
+
 ## 2026-07-17 — AUDIT EXHAUSTIF AUDIO VOIX MaxPlay (découverte orphelins + incohérences cosmétiques)
 
 **État** : AUDIT SEUL (aucune modif fichier) — **PROPOSITIONS pour Papa Yann**.

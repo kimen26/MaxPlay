@@ -71,7 +71,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
   flex-shrink:0; width:90px; height:90px; border-radius:var(--r-thumb); overflow:hidden;
   background:rgba(255,255,255,0.16); display:flex; align-items:center; justify-content:center;
 }
-.fam-thumb img { width:100%; height:100%; object-fit:cover; }
+.fam-thumb img { width:100%; height:100%; object-fit:contain; padding:6px; box-sizing:border-box; filter:invert(1) brightness(1.4) drop-shadow(0 1px 3px rgba(0,0,0,.6)); }
 .fam-thumb-emoji { font-size:2.8rem; }
 .fam-body { flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center; gap:3px; }
 .fam-label { font-family:'Fredoka One',cursive; font-weight:400; font-size:1.02rem; color:#fff; text-shadow:0 1px 4px rgba(0,0,0,0.55); line-height:1.2; }
@@ -117,7 +117,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
   display:flex; align-items:center; justify-content:center; overflow:hidden;
   margin-bottom:8px;
 }
-.dino-thumb img { width:100%; height:100%; object-fit:cover; }
+.dino-thumb img { width:100%; height:100%; object-fit:contain; padding:8px; box-sizing:border-box; filter:invert(1) brightness(1.4) drop-shadow(0 1px 3px rgba(0,0,0,.6)); }
 .card-badges {
   position:absolute; top:6px; right:6px;
   display:flex; flex-direction:column; gap:5px; z-index:10;
@@ -563,7 +563,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 .journey-ep:not(.ep-done):not(.ep-next) { opacity:.75; }
 .journey-ep:not(.ep-done):not(.ep-next) .journey-btn { background:rgba(255,255,255,.12); color:var(--ink-2); box-shadow:none; border-color:transparent; }
 .journey-ep:not(.ep-done):not(.ep-next) .journey-btn.playing { background:linear-gradient(135deg,#c0392b,#e74c3c); color:#fff; }
-.chrono-dino-img { width:60px; height:44px; object-fit:contain; margin-bottom:4px; filter:drop-shadow(0 1px 4px rgba(0,0,0,0.5)); }
+.chrono-dino-img { width:60px; height:44px; object-fit:contain; margin-bottom:4px; filter:invert(1) brightness(1.4) drop-shadow(0 1px 4px rgba(0,0,0,0.6)); }
 .chrono-dino-name { font-size:0.66rem; font-weight:900; color:#fff; text-align:center; line-height:1.2; }
 .chrono-dino-thumb .card-badges { top:3px; right:3px; gap:3px; }
 .chrono-dino-thumb .badge { width:20px; height:20px; font-size:0.7rem; border-width:1px; }
@@ -766,7 +766,7 @@ function buildMenu() {
 function buildChronoDinoThumb(d) {
   return `
     <div class="chrono-dino-thumb chrono-dino-static">
-      <img class="chrono-dino-img" src="img/dinos/${d.png}" alt="${d.name}" loading="lazy" onerror="this.style.display='none'">
+      <img class="chrono-dino-img" src="${ombreSrc(d.png)}" alt="${d.name}" loading="lazy" onerror="this.style.display='none'">
       <div class="chrono-dino-name">${d.name}</div>
     </div>
   `;
@@ -780,6 +780,13 @@ const FAM_EMBLEME = {
   cornu: 'Triceratops.png', bec: 'Parasaurolophus.png', raptor: 'Velociraptor.png',
   pterosaures: 'Pteranodon.png', enaliosaures: 'Mosasaurus.png', volant: 'Dimetrodon.png',
 };
+// png data ('Tyrannosaurus.jpg' | 'Tyrannosaurus.png') → silhouette 'ombres/Tyrannosaurus_ombre.png'
+// Vignettes = ombre + nom (décision Papa Yann 2026-07-17) : cohérent, léger, purge les heros tiers.
+function ombreSrc(png) {
+  if (!png) return '';
+  const base = png.replace(/\.(jpg|png|webp)$/i, '');
+  return `img/dinos/ombres/${base}_ombre.png`;
+}
 // Hex → rgba (pour le fond léger + bordure teintée des cartes famille, cf. maquette dinos-familles.html)
 function hexToRgba(hex, alpha) {
   const h = (hex || '').replace('#', '');
@@ -810,7 +817,7 @@ function buildMenuFamille(el) {
     card.style.borderColor = hexToRgba(fam.color, 0.4);
     card.innerHTML = `
       <div class="fam-thumb">
-        ${png ? `<img src="img/dinos/${png}" alt="${title}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : ''}
+        ${png ? `<img src="${ombreSrc(png)}" alt="${title}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : ''}
         <span class="fam-thumb-emoji" ${png ? 'style="display:none"' : ''}>${fam.emoji}</span>
       </div>
       <div class="fam-body">
@@ -840,7 +847,7 @@ function buildMenuDico(el) {
       .dico-langue { font-size:.7rem; text-transform:uppercase; letter-spacing:.05em; color:#fff; background:#7f8c8d; border-radius:8px; padding:2px 8px; }
       .dico-langue.latin { background:#c0392b; } .dico-langue.grec { background:#2980b9; }
       .dico-dinos { display:flex; align-items:center; gap:6px; margin-top:8px; flex-wrap:wrap; }
-      .dico-thumb { width:42px; height:42px; object-fit:contain; }
+      .dico-thumb { width:42px; height:42px; object-fit:contain; filter:invert(1) brightness(1.4) drop-shadow(0 1px 3px rgba(0,0,0,.6)); }
       .dico-count { font-size:.8rem; opacity:.6; margin-left:4px; }
     `;
     document.head.appendChild(st);
@@ -859,7 +866,7 @@ function buildMenuDico(el) {
     card.className = 'dico-card';
     const thumbs = r.dinos.slice(0, 6).map(id => {
       const d = byId[id]; if (!d || !d.png) return '';
-      return `<img class="dico-thumb" src="img/dinos/${d.png}" alt="${d.name}" title="${d.name}" loading="lazy" onerror="this.style.display='none'">`;
+      return `<img class="dico-thumb" src="${ombreSrc(d.png)}" alt="${d.name}" title="${d.name}" loading="lazy" onerror="this.style.display='none'">`;
     }).join('');
     const langue = r.langue || '';
     card.innerHTML = `
@@ -1134,7 +1141,7 @@ function buildGrid(catId) {
     card.className = 'dino-card';
     card.innerHTML = `
       <div class="dino-thumb" style="background:${hexToRgba(cat.color, .12)}">
-        <img src="img/dinos/${d.png}" alt="${d.name}" loading="lazy" onerror="this.style.display='none'">
+        <img src="${ombreSrc(d.png)}" alt="${d.name}" loading="lazy" onerror="this.style.display='none'">
       </div>
       <div class="card-name">${d.name}</div>
       <div class="card-bar" style="background:${cat.color}"></div>
@@ -1172,7 +1179,7 @@ function showGridFamille(famId) {
     card.className = 'dino-card';
     card.innerHTML = `
       <div class="dino-thumb" style="background:${hexToRgba(fam.color, .12)}">
-        <img src="img/dinos/${d.png}" alt="${d.name}" loading="lazy" onerror="this.style.display='none'">
+        <img src="${ombreSrc(d.png)}" alt="${d.name}" loading="lazy" onerror="this.style.display='none'">
       </div>
       <div class="card-name">${d.name}</div>
       <div class="card-bar" style="background:${fam.color}"></div>
@@ -1319,7 +1326,7 @@ function buildFiche(d) {
   const perLabel = (DINO_PERIODES.find(p => p.id === d.periode) || {}).label || '';
 
   // Galerie hero : image paléoart principale + extras (photos/vidéos). Nav ‹ › + pellicule si plus d'1 image.
-  _ficheSlides = [{ src: `img/dinos/paleoart/${d.png}`, fallback: `img/dinos/${d.png}`, label: d.name, video: false }]
+  _ficheSlides = [{ src: `img/dinos/paleoart/${d.png}`, fallback: ombreSrc(d.png), label: d.name, video: false }]
     .concat(extras.map(e => ({ src: e.src, fallback: null, label: e.label, video: /\.(mp4|webm|mov)(\?|$)/i.test(e.src) })));
   _ficheIdx = 0;
   const multi = _ficheSlides.length > 1;
@@ -1329,7 +1336,7 @@ function buildFiche(d) {
     <div class="v1-hero" id="v1-hero" style="background:linear-gradient(135deg,${cat.color},${cat.color}55)">
       <img class="v1-hero-img" id="v1-hero-img" src="img/dinos/paleoart/${d.png}" alt="${d.name}"
            onclick="${multi ? `openCarousel(_ficheSlides.map(s=>({src:s.src,label:s.label})), _ficheIdx)` : ''}"
-           onerror="this.onerror=null;this.src='img/dinos/${d.png}';this.onerror=function(){this.style.display='none'}">
+           onerror="this.onerror=null;this.src='${ombreSrc(d.png)}';this.onerror=function(){this.style.display='none'}">
       <div class="v1-hero-nm">
         <b>${d.name}</b>
         ${d.alias ? `<span class="v1-alias">aussi appelé ${d.alias}</span>` : ''}

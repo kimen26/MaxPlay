@@ -41,6 +41,20 @@ Fichiers concernés : [`site/dev-dinos.html`](../../../site/dev-dinos.html) · [
 
 > Régressions corrigées 2026-06-15 : « Elvisaurus / roi du rock » (Cryolophosaure), « vroum vroum » (Carnotaure), « Ferrari des dinosaures » (Gallimimus), « dino-bus du Canada » (Edmontosaure).
 
+## 🔒 IMAGES PALÉOART APP — charte visuelle figée (FIGÉ 2026-07-17)
+
+> Décision Papa Yann suite audit visuel 100% (540 images, 60 dinos). Skill `dino-paleoart/` = source vérité prompt. Séries couleur de l'app (hero + 5 scènes + coloriage), distinctes des emblèmes Lunii fond noir.
+
+- 🔒 **AUCUN texte incrusté dans l'image**, SAUF le repère d'échelle « **1 m** » (petite marque verticale contre l'enfant, autorisée). ❌ 🔒 Interdit : titre/nom du dino, mesures écrites, cartouche fiche (période/région/poids), langue étrangère, watermark. Le texte de la fiche vit dans la DATA (`dinos-data.js`), jamais peint dans l'image.
+- ❌ 🔒 **Zéro image tierce** : pas de scan Encyclopædia Britannica, pas de book-plate aquarelle, pas d'image watermarkée (DinosaurPictures.org…). Risque de droits + hors-charte. Toute image de l'app est générée maison via le pipeline `dino-paleoart` (ChatGPT/Grok projet).
+- 🔒 **Référence culturelle (mythe de film) — on peut le DIRE, jamais l'ÉCRIRE dans l'image.** Démystifier Jurassic Park (« le vrai Vélociraptor avait des plumes ») est OK dans le TEXTE/AUDIO de la fiche. ❌ 🔒 L'IMAGE ne doit jamais reproduire le cliché de cinéma (raptor nu écailleux, Dilophosaure à collerette venimeuse) ni écrire le nom de la franchise.
+- 🔒 **`_paris` = repère d'échelle VOULU** : le **bus RATP** (livrée **vert jade + blanc**, jamais rouge/londonien) ET les **immeubles haussmanniens** sont là pour donner l'échelle. Ce n'est PAS un « récit narré » (la règle zéro-bus ne s'y applique pas). 🔒 **Proportions à respecter strictement** : le dino doit être à sa vraie taille vs le bus (12 m) et les immeubles — un dino trop grand/trop petit = mensonge d'échelle interdit (> 10 %).
+- 🔒 **Anatomie & signature d'espèce fidèles** : nb de doigts (tyrannosauridés = 2), cornes/collerette/crête/plumes/museau propres à l'espèce, sur TOUTES les vues (hero, 5 scènes, coloriage, ombre incluse). Le coloriage suit la même anatomie que le paléoart (pas de stock générique).
+- 🔒 **Écosystème = bon continent + bonne époque** (fact-check Grokipedia) : pas de faune d'un autre continent/période (Oviraptor = désert Gobi, pas forêt ; Megatherium = Amérique du Sud, pas Âge de glace eurasien).
+- 🔒 **Couleur/livrée = liberté** (aucune vraie couleur connue) — ne jamais bloquer une régénération pour un désaccord de teinte (ex. voile Spinosaure rouge vs orange = indifférent).
+
+> Régressions gravées 2026-07-17 (audit) : 8 heros = scans Britannica © · Dilophosaure/Velociraptor = imagerie Jurassic Park · Smilodon robe tigre (data dit « pas un tigre ») · bus rouge/londonien au lieu du RATP vert · échelles Protoceratops/Titanis/Pachycéphalo fausses · écosystèmes Oviraptor/Megatherium/Tarbosaure mauvais continent.
+
 ## 🔒 IMAGES LUNII — charte visuelle figée (FIGÉ 2026-06-17, fond noir NATIF 2026-06-17)
 
 > Décision Papa Yann suite production 9 emblèmes + couverture. Skill `dino-images-lunii/` = source vérité. Specs par dino dans `content/sources/fiches/_FICHES-DINOS-GROKIPEDIA.md`.

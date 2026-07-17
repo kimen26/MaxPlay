@@ -2,6 +2,21 @@
 
 > Décisions datées (raison + impact). Les décisions **verrouillées** (jamais régresser) vivent dans [`../figees/encyclopedie.md`](../figees/encyclopedie.md).
 
+## 2026-07-17 — 5 DÉCISIONS PAPA YANN AUDIT VISUEL GRAVÉES (figées encyclopedie.md § IMAGES PALÉOART APP)
+
+**Contexte** : après audit exhaustif 540 images (60 dinos × 9 slots), Papa Yann valide les règles de charte visuelle images dino.
+
+**Décisions figées (déjà écrites encyclopedie.md L44-56)** :
+1. ✅ **Aucun texte incrusté** SAUF « 1 m » (petite marque échelle). Interdit : titre/nom dino, mesures écrites, cartouche fiche, langue étrangère, watermark. Texte fiche = dans DATA, jamais peint.
+2. ✅ **Zéro image tierce** : pas de scan Britannica, book-plate, image watermarkée. Pipeline maison dino-paleoart (ChatGPT/Grok projet) seul.
+3. ✅ **Référence film = on dit, jamais on écrit image.** Démystifier Jurassic Park en TEXTE/AUDIO OK. JAMAIS reproduire cliché cinéma dans l'image.
+4. ✅ **`_paris` = bus RATP (vert jade + blanc) + immeubles haussmanniens** = repère d'échelle VOULU (pas « récit narré »). Proportions strictes : dino à vraie taille vs bus 12m (> ±10% = mensonge interdit).
+5. ✅ **Anatomie fidèle** : nb doigts/cornes/crête/plumes/museau spécifiques, TOUS les 9 slots (hero à ombre). Écosystème bon continent/époque. Couleur/livrée = indifférent.
+
+**Impact** : figée encyclopedie.md ligne 44-56 est LOI. Régénérations phase 2 doivent respecter 5 décisions (livrable `dino-paleoart` skill prompt).
+
+---
+
 ## 2026-07-13 — Design System v1 MaxPlay appliqué à dev-dinos.html (INFO, pas de décision nouvelle)
 
 **Contexte** : Refonte VISUELLE seule (tokens okLCH, en-têtes normalisés, layout via `css/mp-theme.css`). Données/audio/i18n inchangés. Modèles de référence archivés `studio/minijeux/inbox/package-maxplay-design/`.

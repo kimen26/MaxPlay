@@ -2,6 +2,25 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-07-17 — AUDIT VISUEL 100% IMAGES DINO + NETTOYAGE PHASE 1 (commit f0961825)
+
+**État** : COMPLÉTÉ — phase 1 livrée, phase 2 plannifiée.
+
+**Fait** :
+- ✅ **540 images auditées** (60 dinos × 9 slots : hero, 6 paléoart, coloriage, ombre) via 12 lots agents + Explore.
+- ✅ **18 héros tiers RETIRÉS** (8 scans Britannica ©, 10 autre violations) → archivés `studio/dino/_archive/heros-tiers-2026-07-17/`.
+- ✅ **Vignettes refactorisées** : silhouettes/ombres inversées blanc + nom, helper `ombreSrc()` dans dev-dinos.html.
+- ✅ **5 DÉCISIONS PAPA YANN GRAVÉES** : aucun texte incrusté sauf « 1 m » · zéro image tierce · mythe film dite jamais écrite image · bus RATP (vert jade) + haussmanniens échelle voulu · couleur/livrée libre.
+- ✅ **Playwright conforme** : figées 100% respectées, smoke OK.
+
+**Tickets créés** : EP-D-Images-Phase2-Regen-90-Paleoart (détail 6 P1 + 5 P2 + 3 P3 + 4 P4 + 5 P5 + 1 P6 priorités).
+
+**Leçon gravée** : L-D-37 (audit visuel 100% dino : pipeline images, héros-tiers, violations charte).
+
+**ALERTE** 🚨 **DATA JURASSIC PARK** : dinos-data.js L1170-71 nomme « Jurassic Park » pour Deinonychus — VIOLE figée ref-adulte (décision Papa Yann). À réécrire sans franchise.
+
+---
+
 ## 2026-07-17 — Pointeur doctrine transverse ajouté à INVARIANTS
 
 **État** : COMPLÉTÉ.

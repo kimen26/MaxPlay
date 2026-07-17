@@ -2,10 +2,26 @@
 
 > Tickets EP-xxx (chantiers) + Leçons L-xxx (patterns gravés). Tenu par `dino-pmo`.
 
+---
+
+## 🚨 ALERTE DATA — Jurassic Park mentionné dans dinos-data.js
+
+**Contexte** : découverte audit 2026-07-17 : dinos-data.js L1170-71 cite deux fois « Jurassic Park » pour Deinonychus. **VIOLE figée ref-adulte** (décision Papa Yann 2026-06-15 : zéro référence film/adulte nommée, on peut démystifier SANS nommer la franchise).
+
+**Action** : 
+1. Réécrire `desc` Deinonychus (rater la phrase « Jurassic Park ×2 »), remplacer par démystification sans nommer JP (ex : « Dans les films, on le montre parfois sans plumes, mais le vrai Deinonychus avait des plumes colorées »).
+2. Vérifier Dilophosaurus (`desc` concept JP collerette venimeuse ?) — même pattern.
+3. Test Chromium : fiche Deinonychus/Dilophosaurus, vérif zéro « Jurassic Park » visible/entendue.
+
+**Livrable** : dinos-data.js commit avec texte corrigé.
+
+---
+
 ## Leçons (patterns/découvertes gravés)
 
 | ID | Sujet | État |
 |----|-------|------|
+| **L-D-37** | 🖼️ **Audit visuel 100 % images dino : pipeline de validation multi-slot, héros-tiers et violations charte.** Session 2026-07-17 : 540 images auditées (60 dinos × 9 slots), 12 agents + Explore. Découvertes : (1) **héros racine = vignette app** PARTOUT (pas fallback isolé) → scans Britannica © / watermarks visibles 60+ emplacements ; (2) **coloriages pipeline stock** cassés anatomie (3 doigts tyranno, queue marine horiz) ; (3) **doublons pixels** et **défauts systémiques transverses** (peau nue mégafaune, _paris échelle mensongère, écosystème continent faux, bus non-RATP) ; (4) **aucune figée menacée** (figées 100 % respectées). **Pattern validé** : audit exhaustif image = relire CHAQUE slot d'une fiche (pas du hero seul), comparer vs data réelle + anatomie spécies-fidèle + géo/période juste + charte (bus RATP vert, zéro texte incrusté sauf 1m). **Anti-pattern** : laisser scanner Britannica © ou stock générique en hero (vignette virale app). **Livrable phase 1** : héros tiers archivés, figées confirmées gravées, 90 images P1-P6 listées backlog regénération. Phase 2 = regénérer (6 mauvais animal, 5 anatomie, 8 échelle, 4 continent, 5 bus, 2 manquants). **Ressource** : skill dino-paleoart prompt système (direction artistique enfant 1m, zéro JP cliché). | gravée 2026-07-17 |
 | **L-D-36** | 📊 **Audit audio post-produit : couverture 100 %, orphelins = branchage code.** Session 2026-07-17 audit exhaustif (game-pmo A/C4 + dino-pmo) : 452/452 MP3 dino présents disque, zéro manquant inventaire. **Orphelins** (branchés nulle part, code TTS fallback) : `site/audio/dinos/fr/noms/` (60, seul mj-24/28/31/33 mapping à valider) · `periodes/` (5, mj-31 seul, jamais branchés) · `menu-ep-*.mp3` (8 accroches époque, jamais branchés onglet Voyage). **Incohérence** : badge `DINO_AUDIO_VERSION` absence carnotaurus/baryonyx (audio V3 existe). **Pattern** : post-production audio, scanner orphelins disque vs. appels code (grep + `DINO_NOM_AUDIO_BY_LANG` etc.), documenter TTS fallback si MP3 manque. Anti-pattern : découvrir des MP3 un mois après sans les brancher. Leçon transverse : l'infrastructure est 90 % du travail, branchage = 10 % qu'on oublie. | gravée 2026-07-17 |
 | **L-D-32** | 🌍 **i18n audio = restructure studio autoring** — Pattern fondationnel : source unique (studio/) → pack multilingue (site/). Créer infrastructure (lexiques) AVANT production (MP3). Jamais audio sans lexique pré-existant. Appliquable tout contenu audio éducatif (jeu, narration, encyclopédie). Découverte 2026-07-08/10 : décision d'archi = opportunité à systématiser. Gouvernance : chaque pôle gère sa porte (dino = noms/accroches, game = banque MJ, narration = longs textes/casting voix). Règle figée : DEC-I18N-INVARIANT-001 (jamais régresser). | gravée 2026-07-10 |
 

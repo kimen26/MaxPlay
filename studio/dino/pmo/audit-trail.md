@@ -2,6 +2,45 @@
 
 > Traces des audits FOND (`dino-pmo`) et FORME (`dino-archiviste`). Entrée datée par audit.
 
+## 2026-07-17 — AUDIT VISUEL 100% DINOS — PHASE 1 COMPLÉTÉE
+
+**Lancé par** : Papa Yann + dino-pmo + 12 agents + Explore.
+
+**Scope** : **540 images auditées** (60 dinos × 9 slots : hero, 6 paléoart scènes, coloriage, ombre) contre charte visuelle + anatomie réelle + ficelles cinéma.
+
+**Méthodologie** :
+- 12 lots agents dino-conseiller (chacun liait images vs data réelle via Grokipedia fact-check).
+- Détection violations : mauvais animal, signature perdue, nb doigts faux, échelle mensongère, doublons pixels, texte incrusté, contradiction data, bus faux, écosystème anachronique.
+
+**Findings structurés par criticité** : 
+- 🔴 18 **héros racine SCANS BRITANNICA ©** (8) + violations cartouche/watermark (10) → suppression + archivage `studio/dino/_archive/heros-tiers-2026-07-17/`.
+- 🔴 **28 images FAUTIVES regénération phase 2** : mauvais animal (Centrosaurus théropode, Baryonyx sans croco, etc.), anatomie (3 doigts tyrannosauridés, queue marine horizontale), échelle >±10% (Protoceratops ×5 trop grand, Pachycephalosaurus paraît T-Rex).
+- 🟠 **32 images complémentaires** (ecosystème continent faux, bus non-RATP, _paris scalabilité).
+- 🟡 **8 défauts systémiques transverses** : coloriages pipeline stock cassé, carni-manger sans prédation, _paris mensongère, éco anachronique, peau nue mégafaune, texte incrusté.
+
+**Violations figée** découvertes :
+- ✅ Aucune figée menacée regressive (figées respectées 100 %).
+- ✅ **DATA seulement** : Deinonychus dinos-data.js L1170-71 nomme « Jurassic Park » ×2 (viole figée ref-adulte) → à corriger.
+
+**Décisions Papa Yann gravées** (figées encyclopedie.md L44-56 confirmées) :
+1. Aucun texte incrusté SAUF « 1 m » échelle.
+2. Zéro image tierce (Britannica, watermark).
+3. Référence film on dit jamais on écrit.
+4. Bus RATP vert + haussmanniens = repère échelle voulu.
+5. Anatomie/écosystème fidèle.
+
+**Phase 1 livrable** (commit f0961825 déployé) :
+- ✅ 18 héros tiers archivés.
+- ✅ Vignettes refactorisées (ombres inversées).
+- ✅ Figées 100 % respectées.
+- ✅ Smoke Playwright OK.
+
+**Phase 2 ouvert** : regénérer ~90 images (6 P1 mauvais animal, 5 P2 anatomie, 8 P3 échelle, 4 P4 continent, 5 P5 bus/marin, 2 P6 manquants). Détail : `studio/dino/pmo/backlog.md` EP-D-Images-Phase2-Regen-90-Paleoart.
+
+**Leçon gravée** : L-D-37 (audit visuel 100 % dino : pipeline images, héros-tiers déterminer violations, appliquer charte).
+
+---
+
 ## 2026-07-10 — AUDIT COHÉRENCE BATCH GROK 3 (Allosaurus + Ceratosaurus + Gallimimus)
 
 **Lancé par** : dino-archiviste (signal structure : vérif images paléoart + audio + data alignés post-Grok).

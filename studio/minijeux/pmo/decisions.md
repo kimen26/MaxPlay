@@ -8,6 +8,18 @@
 
 ---
 
+## 2026-07-17 — Intégration doctrine transverse MaxPlay (D-001/002/003)
+
+**Context** : Papa Yann crée memory/DOCTRINE.md (zone mutualisée, 3 principes figés transverses JEU/DINO/NARRATION).
+
+**Décision** : ajouter pointeur `studio/minijeux/pmo/INVARIANTS.md` § "Doctrine transverse" → `../../memory/DOCTRINE.md` (D-001 pédagogie=produit, D-002 zéro pénalité, D-003 pas récompense promise).
+
+**Raison** : doctrine ≠ contenu → pointe, ne recopie pas. Cohérence multi-pôles. Lien vivant vers source de vérité commune.
+
+**Statut** : ✅ figée 2026-07-17.
+
+---
+
 ## 2026-07-15 — ABANDON HUB « LA LIGNE DE MAX » — menu accordéon sobriété permanent (décision Papa Yann)
 
 **Contexte** : Papa Yann évalue UX hub v2 (index2.html ligne de bus 6 arrêts, 2026-07-04). Feedback : trop de friction UX, trop futuriste pour phase 1 (enfant 3.5 ans, Max confus parcours arrêts).

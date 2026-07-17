@@ -9,6 +9,7 @@
 
 | Quoi | Statut |
 |------|--------|
+| **Doctrine transverse** | ✅ pointeur → [`../../memory/DOCTRINE.md`](../../memory/DOCTRINE.md) (D-001 pédagogie, D-002 zéro pénalité, D-003 récompense bannie) |
 | **Casting V1** | ✅ figé 2026-04-24 (4F/5M+Wex) — Wex + Melki/Mimi/Dadou/**Madie**/Lulu/Pierrot/Raph/Juju/Nono |
 | **Univers** | post-Éveil, Printemps de l'Éveil — distillé dans `univers/` |
 | **Direction narrative** | monde sobre, merveilleux discret (vu à travers l'enfant né dedans) · patte B+D+C (Kishōtenketsu + tranche de vie + cycle) |

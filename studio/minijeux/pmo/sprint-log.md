@@ -9,6 +9,18 @@
 
 ---
 
+## 2026-07-17 — Pointeur Doctrine transverse intégré
+
+**Owner** : Papa Yann (création doctrine) · game-pmo (log)
+
+**Fait** :
+- ✅ **Pointeur ajouté** : `studio/minijeux/pmo/INVARIANTS.md` § "Doctrine transverse" → `../../memory/DOCTRINE.md`
+- ✅ **Log decision.md** : 2026-07-17 § "Intégration doctrine transverse MaxPlay (D-001/002/003)"
+
+**Raison** : doctrine est une zone commune multi-pôles (pointe, ne recopie pas). D-001 (pédagogie = produit), D-002 (zéro pénalité), D-003 (pas récompense promise) = gouvernance JEU ∩ DINO ∩ NARRATION.
+
+---
+
 ## 2026-07-17 — TOUR EXHAUSTIF AUDIO VOIX — audit complet 100% scope JEU (proposition Papa Yann validation)
 
 **Owner** : Papa Yann (demande) · main agent (audit) · game-pmo (log)

@@ -4,6 +4,28 @@
 
 ---
 
+## 2026-07-17 — DEC-DOCTRINE-NARRATION-001 : Intégration pointeur DOCTRINE transverse
+
+**Auteur (PMO sur décision Papa Yann 2026-07-17)** : directive créer DOCTRINE racine + pointeur pôles.
+
+**Contexte** : trois piliers doctrinaux (D-001 pédagogie produit, D-002 zéro pénalité, D-003 récompense promise interdite) validés Papa Yann, transversaux JEU+DINO+NARRATION.
+
+**Décision tranchée** :
+
+1. **DOCTRINE centralisée** — `memory/DOCTRINE.md` (racine) = source vérité 3 decisions figées (jamais régresser).
+2. **Pointeur INDEX pôle** — chaque pôle (narration/jeu/dino) pointe vers racine, pas copie locale.
+3. **Chaîne ENFORCEMENT** — vérifier doctrines D-001/D-002/D-003 dans tous les briefs/sélections/debrief (gatekeeper, directeur, panel).
+
+**Fichiers impactés** :
+- ✅ `studio/narration/INDEX.md` L.11 — pointeur + 3 docs synthèse
+- ✅ `studio/narration/pmo/decisions.md` — entrée datée
+- 📁 `studio/narration/pmo/sprint-log.md` — log court
+- 🔄 `studio/jeu/INDEX.md` et `studio/dino/INDEX.md` — pointeurs à ajouter (conforme 2026-07-17)
+
+**Statut** : **FIGÉE 2026-07-17 NARRATION. JEU+DINO = même pointeur (décision parent).**
+
+---
+
 ## 2026-07-13 — DEC-INSTRUMENT-DUEL-RETRAIT : Outil duel retiré du pipeline (papa Yann)
 
 **Auteur (Papa Yann)** : décision 2026-07-13 après évaluation opérationnelle vagues 4-5 STORY-002.

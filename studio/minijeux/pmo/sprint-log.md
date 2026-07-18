@@ -17,6 +17,7 @@
 - signal-detector reworké (messages actionnables + conseillers) ; commandes `/X-archiviste-audit` fusionnées dans `/X-pmo-audit` (FOND+FORME, 6 sections).
 
 **État au reboot** : gouvernance = 1 greffier/pôle + conseillers + hook enforcement. EQUIPE.md/INDEX/CLAUDE.md pôles à jour.
+**REX immédiat** : le hook s'est déclenché sur sa propre session de création (les écritures pmo/ via Bash/python étaient invisibles) → patch v1.1 : les commandes Bash/PowerShell touchant `pmo/` comptent comme trace. Enforcement validé en conditions réelles.
 
 ## 2026-07-17 — Pointeur Doctrine transverse intégré
 

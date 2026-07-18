@@ -65,6 +65,16 @@ foreach ($line in $lines) {
             $st = $content.input.subagent_type
             foreach ($p in $poles) { if ($st -eq $p.agent) { $p.invoked = $true } }
         }
+
+        # v1.1 (2026-07-19) : une écriture pmo/ via Bash/PowerShell (python, sed, cat >>) compte aussi comme trace
+        if ($content.name -in @("Bash", "PowerShell")) {
+            $cmd = $content.input.command
+            if (-not [string]::IsNullOrEmpty($cmd)) {
+                foreach ($p in $poles) {
+                    foreach ($t in $p.trace) { if ($cmd -match $t) { $p.traced = $true } }
+                }
+            }
+        }
     }
 }
 

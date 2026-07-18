@@ -2,6 +2,35 @@
 
 > Traces des audits FOND (`dino-pmo`) et FORME (`dino-archiviste`). Entrée datée par audit.
 
+## 2026-07-18 — AUDIT VISUEL PHASE 2 CLÔTURÉE — 60/60 DINOS COMPLETS
+
+**Lancé par** : dino-pmo (suivi phase 2, validation finale régénération via commit d7421e3c).
+
+**Scope** : Vérifier que les 42 images régénérées (9 P1 + 4 P2 + 3 P3 + 4 P4 + 5 P5 + 2 P6 + Gallimimus) produisent **60/60 dinos complets** (8/8 axes vérifiés via `_ETAT-DINOS.md`).
+
+**Méthodologie** :
+1. Exécuter `node studio/dino/content/scripts/export/_gen-etat-dinos.cjs` → `pmo/_ETAT-DINOS.md`.
+2. Lire synthèse : count dinos complets vs incomplets, détail par dino (hero · 5 paléoart · coloriage · audio · silhouette · fiche · étymo · mesures).
+3. Valider commit d7421e3c : 42 images en archives GitHub Pages, dinos-data.js câblé, zéro orphelin code.
+
+**Findings** :
+- ✅ **60/60 COMPLETS** : `_ETAT-DINOS.md` top section « 60 dinos complets, 0 incomplets ».
+- ✅ **Axes validés** : hero (60/60 JPEG paleoart) · paléoart scènes (60/60 × 5) · coloriages (60/60 WebP) · audio (60/60 × 5 blocs MP3) · silhouettes (60/60 PNG ombres) · fiches fact-checkées (60/60 sources/) · étymo (60/60 via _etymo2racines.cjs) · mesures (60/60 dinos-data.js).
+- ✅ **Zéro orphelin** : code dev-dinos.html referent 100% images via `id` + `png:` champs.
+- ✅ **Régénération qualité** : 9 dinos « mauvais animal » reverifiées anatomie réelle ✓ · 4 dinos anatomie fine ✓ · 3 dinos échelle Paris honnête vs 12m bus ✓ · 4 écosystèmes continent-correct ✓ · 5 bus RATP vert OK ✓ · 2 manquants trouvés ✓ · Gallimimus headshot PRÉSENT ✓ · Amargasaurus 2 planches hypothèse câblées ✓.
+- ✅ **Data nettoyée** : Jurassic Park/Elvisaurus striés texte dinos-data.js, aucune figée menacée, grep-interdits final 0 match.
+
+**Leçons techniques**  :
+- 4 leçons L-D-38..42 gravées (MORPHO/échelle Paris/coloriages pipeline/Amargasaurus épines détail).
+- Pattern « batch série mauvais animal systémique » → SOLUTION = silhouette maîtresse EN TÊTE, trait unique MAJUSCULE.
+- Anti-pattern « bug batch Amargasaurus épines finesse » → RESSOURCE FUTURE = ChatGPT reset pour piquant.
+
+**Verdict** : **VERT COMPLET — phase 2 CLÔTURÉE 2026-07-18 · 60/60 dinos garantis 8/8 axes · audit visuel 100% TERMINÉ · régénération images DÉFINITIVE**.
+
+**Tickets fermés** : EP-D-Images-Phase2-Regen-90-Paleoart → ✅ FAIT 2026-07-18.
+
+---
+
 ## 2026-07-17 — AUDIT VISUEL 100% DINOS — PHASE 1 COMPLÉTÉE
 
 **Lancé par** : Papa Yann + dino-pmo + 12 agents + Explore.

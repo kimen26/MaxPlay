@@ -2,6 +2,26 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-07-18 — AUDIT VISUEL PHASE 2 CLÔTURÉE — RÉGÉNÉRATION 42 IMAGES (commit d7421e3c)
+
+**État** : COMPLÉTÉ — phase 2 livrée, **60/60 dinos complets (8/8 axes) GARANTIS**.
+
+**Fait** :
+- ✅ **42 images régénérées** via skill `dino-paleoart` (ChatGPT projet Dinosaure + Brave debug) — 9 P1 mauvais animal · 4 P2 anatomie · 3 P3 échelle Paris · 4 P4 continent · 5 P5 bus · 2 P6 manquants + Gallimimus headshot.
+- ✅ **Détail livraison** : Centrosaurus (théropode→cératopsien) · Baryonyx (sans→avec griffe gharial) · Cryolophosaurus (crête Elvis) · Oviraptor (emplumé) · Amargasaurus (2 rangées épines, deux planches hypothèse) · Brachiosaurus (cou relevé) · Smilodon (fauve tacheté) · Quetzalcoatlus (pattes sous membrane) · Velociraptor (petit emplumé) + 4 écosystèmes continents · Protoceratops+Titanis+Camarasaurus+Pachycephalosaurus+Patagotitan+Therizinosaurus échelle Paris honnête · Carnotaurus+Ceratosaurus bus RATP vert + Pentaceratops/Edmontonia/Ophthalmosaurus coloriages anatomie · Tyrannosaurus/Tarbosaurus/Albertosaurus (2 doigts) · Torosaurus (collerette à trous).
+- ✅ **Amargasaurus traité** : 2 planches « épines piques vs voile » câblées → fiche assume incertitude scientifique (décision Papa Yann approuver hypothèse).
+- ✅ **Data nettoyée** : Jurassic Park + Elvisaurus retirés texte (règle figée ref-adulte).
+- ✅ **État-dinos.md régénéré** : `_ETAT-DINOS.md` confirme **60/60 COMPLETS** (hero + 5 paléoart + coloriage + 5 audio + silhouette + fiche + étymo + mesures).
+
+**Leçons techniques** (backlog L-Dxx) :
+- ✅ **L-D-38** : morpho en tête prompt obligatoire (mauvais animal systémique sans silhouette maîtresse).
+- ✅ **L-D-39** : échelle Paris = chiffrer ratio bus RATP 12m dans prompt.
+- ✅ **L-D-40** : pipeline coloriage = batch séparé via batch-dino-coloriage.mjs.
+- ✅ **L-D-41** : Amargasaurus épines 60cm max MILIEU COU, 2 rangées appariées, arrêt épaules.
+- ✅ **L-D-42** : coloriages tyranno/tarbosaure/torosaurus/ophthalmosaure/pentaceratops = pipeline stock, table MORPHO distincte.
+
+---
+
 ## 2026-07-17 — AUDIT VISUEL 100% IMAGES DINO + NETTOYAGE PHASE 1 (commit f0961825)
 
 **État** : COMPLÉTÉ — phase 1 livrée, phase 2 plannifiée.

@@ -12,7 +12,7 @@
 | [`data/`](data/) | 🎯 **Donnée structurée** — nourrit les features (dico, quiz, fiches) | [`data/INDEX.md`](data/INDEX.md) |
 | [`scripts/`](scripts/) | 🛠️ **Outils** — génèrent audio / images / exports | [`scripts/INDEX.md`](scripts/INDEX.md) |
 | [`i18n/`](i18n/INDEX.md) | 🌍 **Multilingue** : lexiques prononciation 9 langues + textes traduits par langue | — |
-| [`scripts-audio/`](scripts-audio/) | 🎙️ **Dialogues** Wex/Narrateur (`groupe-*`, `special-*`, template) + prod FR `fr/` (V3 + json-top) | — |
+| [`scripts-audio/`](scripts-audio/) | 🎙️ **Dialogues** Wex/Narrateur — canon `fr/V3/` (md + json). Anciennes strates (groupe/special/_VAGUE/json-top) archivées `_archive/2026-07-18-ancien-pipeline/` | — |
 | [`assets/`](assets/) | 🎨 **Assets visuels** — banque de silhouettes dino par famille (PNG noir/transparent, mini-jeux). ⛔ Voir [`assets/silhouettes/_STOP-3-ZONES.md`](assets/silhouettes/_STOP-3-ZONES.md) (3 zones silhouettes coexistent). | [`assets/silhouettes/_INDEX.md`](assets/silhouettes/_INDEX.md) |
 | [`lunii/`](lunii/) | 🎒 **Images Lunii** — 9 emblèmes familles + couverture (320×240, 16 gris, **fond noir natif**). Produites par skill `dino-images-lunii`, consommées par `studio/lunii/scripts/build-dinos-pack.mjs` | [`lunii/INDEX.md`](lunii/INDEX.md) |
 | [`inbox/`](inbox/) | 📥 **Brut non trié** — matière à exploiter | — |
@@ -24,7 +24,7 @@
 ```
 sources/etymo/_ETYMO-RACINES-50.md ─(_etymo2racines.cjs)─▶ data/racines.json ─▶ Dico + Quiz + fiches
 sources/recits/RECITS-EPOQUES.md ─(_md2json-recits-v3.cjs)─▶ recits/json/ ─(_gen-audio-recits-v3.sh)─▶ site/audio/dinos/recit-*.mp3
-scripts-audio/groupe-*.md ─(_md2json.cjs)─▶ scripts-audio/fr/json-top/ ─(_gen-audio-*.sh)─▶ site/audio/dinos/fr/*.mp3
+scripts-audio/fr/V3/*.md ─(_md2json-v3.cjs)─▶ fr/V3/json/ ─(_gen-audio-nouveaux.sh)─▶ site/audio/dinos/fr/*.mp3  ← CANON (ancien pipeline json-top archivé 2026-07-18)
 site/img/dinos/grok/ ─(_gen-grok.cjs)─▶ site/js/dinos-images-grok.js (galerie)
 ```
 

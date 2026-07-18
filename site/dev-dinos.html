@@ -9,6 +9,7 @@
 <title>Dinos — MaxPlay</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/mp-theme.css">
+<link rel="stylesheet" href="css/mp-components.css">
 <style>
 * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
 html, body {
@@ -135,15 +136,9 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
   background:#ffcc00; color:#000; border:2px solid #fff7a8;
   animation:badgePulse 1.8s ease-in-out infinite;
 }
-@keyframes badgePulse { 0%,100%{ box-shadow:0 2px 7px rgba(0,0,0,0.55); } 50%{ box-shadow:0 0 12px 3px rgba(255,204,0,0.7); } }
+/* keyframes badgePulse + cardBounce → css/mp-components.css (EP-074) */
 .dino-card:active { transform:scale(0.93); }
 .dino-card.bounce { animation:cardBounce 0.4s ease-out; }
-@keyframes cardBounce {
-  0%   { transform:scale(1); }
-  30%  { transform:scale(1.08) translateY(-10px); }
-  60%  { transform:scale(0.96) translateY(2px); }
-  100% { transform:scale(1); }
-}
 .card-img {
   width:100%; max-width:170px; height:140px; object-fit:contain;
   filter:drop-shadow(0 3px 8px rgba(0,0,0,0.55));
@@ -272,9 +267,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 .pangee-slide-cap { position:absolute; left:0; bottom:0; right:0; padding:8px 12px; background:linear-gradient(transparent,rgba(0,0,0,0.7)); display:flex; align-items:baseline; gap:8px; }
 .pangee-slide-label { font-weight:900; font-size:1rem; color:#fff; }
 .pangee-slide-ma { font-size:0.72rem; color:rgba(255,255,255,0.7); }
-.pangee-dots { display:flex; gap:6px; justify-content:center; margin:10px 0 4px; flex-wrap:wrap; }
-.pangee-dot { background:rgba(80,160,255,0.12); border:1px solid rgba(80,160,255,0.25); color:rgba(180,220,255,0.8); border-radius:20px; padding:5px 12px; font-family:inherit; font-size:0.72rem; font-weight:900; cursor:pointer; touch-action:manipulation; }
-.pangee-dot.active { background:#3498db; border-color:#5dade2; color:#fff; }
+/* .pangee-dots/.pangee-dot → css/mp-components.css (EP-074) */
 .pangee-credit { text-align:center; font-size:0.6rem; color:rgba(255,255,255,0.3); margin-bottom:10px; }
 .pangee-etapes { display:flex; flex-direction:column; gap:8px; margin-bottom:10px; }
 .pangee-etape { background:rgba(80,160,255,0.08); border:1px solid rgba(80,160,255,0.2); border-radius:10px; padding:9px 11px; cursor:pointer; }
@@ -448,11 +441,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 #carousel-dots {
   display:flex; gap:7px; margin-top:10px; justify-content:center;
 }
-.c-dot {
-  width:8px; height:8px; border-radius:50%;
-  background:rgba(255,255,255,0.25); transition:background 0.2s;
-}
-.c-dot.active { background:#ffe066; }
+/* .c-dot → css/mp-components.css (EP-074) */
 #carousel-close {
   position:absolute; top:14px; right:14px;
   background:rgba(255,255,255,0.15); border:none; border-radius:50%;
@@ -461,9 +450,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
   font-weight:900; font-family:'Nunito',sans-serif; touch-action:manipulation;
 }
 
-/* Speech pulse */
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
-.speaking { animation:pulse 0.8s infinite; }
+/* Speech pulse (@keyframes pulse + .speaking) → css/mp-components.css (EP-074) */
 
 /* ══════════════ MODE SELECTOR (pills, cf. modèle .tabs/.tab) ══════════════ */
 #mode-selector {
@@ -471,18 +458,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
   overflow-x:auto; -webkit-overflow-scrolling:touch;
 }
 #mode-selector::-webkit-scrollbar { display:none; }
-.mode-btn {
-  flex-shrink:0; background:rgba(255,255,255,0.08);
-  border:0; border-radius:var(--r-pill);
-  color:var(--ink-2); font-family:'Nunito',sans-serif;
-  font-weight:800; font-size:0.82rem; padding:8px 14px;
-  cursor:pointer; touch-action:manipulation; white-space:nowrap;
-  transition:background 0.15s, color 0.15s;
-}
-.mode-btn.active {
-  background:var(--gold); color:var(--gold-ink); font-weight:900;
-}
-.mode-btn:active { transform:scale(0.93); }
+/* .mode-btn → css/mp-components.css (EP-074) */
 
 /* ══════════════ CHRONOMAP ══════════════ */
 #chrono-scroll {
@@ -503,9 +479,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
   display:flex; align-items:center; justify-content:center;
   font-size:1.4rem; position:relative; z-index:1;
 }
-/* Rond d'ère : bordure 3px couleur d'ère (posée en inline style depuis JOURNEY, cf. maquette voyage.html) */
-.journey-ep .chrono-emoji { width:56px; height:56px; font-size:1.5rem; border:3px solid var(--bg1); }
-.journey-ep.ep-next:not(.ep-done) .chrono-emoji { box-shadow:0 0 16px rgba(255,255,255,.25); }
+/* Rond d'ère journey → css/mp-components.css (EP-074) */
 .chrono-info { flex:1; }
 .chrono-label { font-size:1.1rem; font-weight:900; color:#fff; }
 .chrono-range { font-size:0.75rem; color:rgba(255,255,255,0.5); margin-top:1px; }
@@ -538,31 +512,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 .chrono-dino-thumb:active { transform:scale(0.9); }
 .chrono-dino-static { cursor:default; }
 .chrono-dino-static:active { transform:none; }
-.journey-intro { margin:6px 12px 12px; padding:10px 12px; border-radius:12px; background:rgba(255,255,255,0.06); font-size:0.85rem; line-height:1.4; color:rgba(255,255,255,0.85); }
-/* Trait discret DERRIÈRE les cercles d'époque (cf. modèle voyage.html) — aligné au centre du rond 56px */
-.journey-trait {
-  position:absolute; left:52px; top:74px; bottom:60px; width:3px; border-radius:2px;
-  opacity:.35; z-index:0; pointer-events:none;
-  background:linear-gradient(180deg,#5dade2,#ff7043,#66bb6a,#42a5f5,#ff6b35,#a1887f,#00bcd4,#9b59b6);
-}
-.journey-ep { margin:0 10px 12px; border-radius:14px; overflow:hidden; background:rgba(0,0,0,0.18); position:relative; transition:box-shadow 0.2s; }
-.journey-ep .chrono-header { cursor:default; position:relative; }
-/* Pastille d'état dans le header (✓ écouté · 👉 à écouter ensuite) */
-.ep-status { flex-shrink:0; width:30px; text-align:center; font-size:1.3rem; line-height:1; }
-.journey-ep.ep-done  .ep-status::after { content:'✅'; }
-.journey-ep.ep-next:not(.ep-done) .ep-status::after { content:'👉'; animation:ep-nudge 1s ease-in-out infinite; display:inline-block; }
-@keyframes ep-nudge { 0%,100%{ transform:translateX(0); } 50%{ transform:translateX(-4px); } }
-/* Épisode écouté : bouton verdit, légèrement estompé (maquette : « ✓ Écouté ») */
-.journey-ep.ep-done .v1-big { background:linear-gradient(135deg,#1e7e34,#28a745); opacity:0.92; }
-.journey-ep.ep-done .v1-big .dino-story-eq::before { content:'✓ '; }
-/* Prochain à écouter : liseré lumineux + bouton OR « Continuer » (maquette voyage.html) */
-.journey-ep.ep-next:not(.ep-done) { box-shadow:0 0 0 2px rgba(255,255,255,0.55), 0 0 14px rgba(255,255,255,0.25); }
-.journey-ep.ep-next:not(.ep-done) .journey-btn { background:linear-gradient(135deg,var(--gold),#ffbf3f); color:var(--gold-ink); }
-.journey-ep.ep-next:not(.ep-done) .journey-btn.playing { background:linear-gradient(135deg,#c0392b,#e74c3c); color:#fff; }
-/* À venir (ni écouté, ni prochain) : carte légèrement estompée, bouton neutre (maquette voyage.html) */
-.journey-ep:not(.ep-done):not(.ep-next) { opacity:.75; }
-.journey-ep:not(.ep-done):not(.ep-next) .journey-btn { background:rgba(255,255,255,.12); color:var(--ink-2); box-shadow:none; border-color:transparent; }
-.journey-ep:not(.ep-done):not(.ep-next) .journey-btn.playing { background:linear-gradient(135deg,#c0392b,#e74c3c); color:#fff; }
+/* Frise voyage (.journey-* + .ep-status + états ep-done/ep-next) → css/mp-components.css (EP-074) */
 .chrono-dino-img { width:60px; height:44px; object-fit:contain; margin-bottom:4px; filter:invert(1) brightness(1.4) drop-shadow(0 1px 4px rgba(0,0,0,0.6)); }
 .chrono-dino-name { font-size:0.66rem; font-weight:900; color:#fff; text-align:center; line-height:1.2; }
 .chrono-dino-thumb .card-badges { top:3px; right:3px; gap:3px; }

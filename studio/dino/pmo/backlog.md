@@ -34,6 +34,7 @@
 ---
 
 ## Tickets actifs
+| **EP-D-GED-08** | 🏷️ **Renommer dev-dinos.html → dinos.html (dette)** — la page prod porte un préfixe dev- trompeur (catalog id=dinos pointe dev-dinos.html?v=7). Action : renommer + MAJ catalog.js + redirect court dev-dinos.html→dinos.html (liens/PWA existants) + grep refs. Déclencheur : prochaine session code dino calme. | 🟢 basse | ouvert (dette nommage, découverte MEGA tour 2026-07-18) |
 
 | ID | Sujet | Priorité | État |
 |----|-------|----------|------|

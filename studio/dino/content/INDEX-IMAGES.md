@@ -53,7 +53,8 @@
 |---|---|---|
 | `lunii/` | Emblèmes familles + images voyage pour la conteuse (fond noir natif, BMP 16 gris in fine) | [`lunii/INDEX.md`](lunii/INDEX.md) · skill `dino-images-lunii` |
 | `assets/silhouettes/` | Silhouettes côté autoring | [`assets/silhouettes/_INDEX.md`](assets/silhouettes/_INDEX.md) (⚠️ `_STOP-3-ZONES.md`) |
-| `sources/images/` | Sources/notes images | dossier |
+| `sources/images/` | Sources/notes images · `refs-echelle/` (photos réf. enfant vs dino) · `_grok-test/` (finaux seuls) · `_paleoart-prod-notes/` (tracker prod) | dossier |
+| `sources/megafaune/_refs-visuelles/` | ~30 réfs visuelles mégafaune Cénozoïque (mammouth, smilodon…) — matière prompts/fact-check | dossier |
 | `scripts/images-grok/` | Outils : `detoure_sprite.py`, scripts Grok | dossier |
 
 ---

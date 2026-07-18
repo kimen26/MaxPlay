@@ -9,7 +9,6 @@
 <title>Dinos — MaxPlay</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/mp-theme.css">
-<link rel="stylesheet" href="css/mp-components.css">
 <style>
 * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; }
 html, body {
@@ -136,7 +135,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
   background:#ffcc00; color:#000; border:2px solid #fff7a8;
   animation:badgePulse 1.8s ease-in-out infinite;
 }
-/* keyframes badgePulse + cardBounce → css/mp-components.css (EP-074) */
+/* keyframes badgePulse + cardBounce → css/mp-theme.css §composants partagés (EP-074) */
 .dino-card:active { transform:scale(0.93); }
 .dino-card.bounce { animation:cardBounce 0.4s ease-out; }
 .card-img {
@@ -267,7 +266,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 .pangee-slide-cap { position:absolute; left:0; bottom:0; right:0; padding:8px 12px; background:linear-gradient(transparent,rgba(0,0,0,0.7)); display:flex; align-items:baseline; gap:8px; }
 .pangee-slide-label { font-weight:900; font-size:1rem; color:#fff; }
 .pangee-slide-ma { font-size:0.72rem; color:rgba(255,255,255,0.7); }
-/* .pangee-dots/.pangee-dot → css/mp-components.css (EP-074) */
+/* .mp-dots/.mp-dot → css/mp-theme.css §composants partagés (EP-074) */
 .pangee-credit { text-align:center; font-size:0.6rem; color:rgba(255,255,255,0.3); margin-bottom:10px; }
 .pangee-etapes { display:flex; flex-direction:column; gap:8px; margin-bottom:10px; }
 .pangee-etape { background:rgba(80,160,255,0.08); border:1px solid rgba(80,160,255,0.2); border-radius:10px; padding:9px 11px; cursor:pointer; }
@@ -441,7 +440,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 #carousel-dots {
   display:flex; gap:7px; margin-top:10px; justify-content:center;
 }
-/* .c-dot → css/mp-components.css (EP-074) */
+/* .c-dot → css/mp-theme.css §composants partagés (EP-074) */
 #carousel-close {
   position:absolute; top:14px; right:14px;
   background:rgba(255,255,255,0.15); border:none; border-radius:50%;
@@ -450,7 +449,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
   font-weight:900; font-family:'Nunito',sans-serif; touch-action:manipulation;
 }
 
-/* Speech pulse (@keyframes pulse + .speaking) → css/mp-components.css (EP-074) */
+/* Speech pulse supprimé (inutilisé) — mj-20 a son .speaking local (EP-074) */
 
 /* ══════════════ MODE SELECTOR (pills, cf. modèle .tabs/.tab) ══════════════ */
 #mode-selector {
@@ -458,7 +457,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
   overflow-x:auto; -webkit-overflow-scrolling:touch;
 }
 #mode-selector::-webkit-scrollbar { display:none; }
-/* .mode-btn → css/mp-components.css (EP-074) */
+/* .mp-pill → css/mp-theme.css §composants partagés (EP-074) */
 
 /* ══════════════ CHRONOMAP ══════════════ */
 #chrono-scroll {
@@ -479,7 +478,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
   display:flex; align-items:center; justify-content:center;
   font-size:1.4rem; position:relative; z-index:1;
 }
-/* Rond d'ère journey → css/mp-components.css (EP-074) */
+/* Rond d'ère journey → css/mp-theme.css §composants partagés (EP-074) */
 .chrono-info { flex:1; }
 .chrono-label { font-size:1.1rem; font-weight:900; color:#fff; }
 .chrono-range { font-size:0.75rem; color:rgba(255,255,255,0.5); margin-top:1px; }
@@ -512,7 +511,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 .chrono-dino-thumb:active { transform:scale(0.9); }
 .chrono-dino-static { cursor:default; }
 .chrono-dino-static:active { transform:none; }
-/* Frise voyage (.journey-* + .ep-status + états ep-done/ep-next) → css/mp-components.css (EP-074) */
+/* Frise voyage (.journey-* + .ep-status + états ep-done/ep-next) → css/mp-theme.css §composants partagés (EP-074) */
 .chrono-dino-img { width:60px; height:44px; object-fit:contain; margin-bottom:4px; filter:invert(1) brightness(1.4) drop-shadow(0 1px 4px rgba(0,0,0,0.6)); }
 .chrono-dino-name { font-size:0.66rem; font-weight:900; color:#fff; text-align:center; line-height:1.2; }
 .chrono-dino-thumb .card-badges { top:3px; right:3px; gap:3px; }
@@ -548,10 +547,10 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
   </div>
   <!-- Sélecteur de mode -->
   <div id="mode-selector">
-    <button class="mode-btn active" id="mode-btn-famille"   onclick="setMode('famille')"  >🦖 Les familles</button>
-    <button class="mode-btn"        id="mode-btn-regime"    onclick="setMode('regime')"   >🍽️ Ce qu'il mange</button>
-    <button class="mode-btn"        id="mode-btn-periode"   onclick="setMode('periode')"  >⏳ Le voyage</button>
-    <button class="mode-btn"        id="mode-btn-dico"      onclick="setMode('dico')"     >📖 Le dico</button>
+    <button class="mp-pill active" id="mp-pill-famille"   onclick="setMode('famille')"  >🦖 Les familles</button>
+    <button class="mp-pill"        id="mp-pill-regime"    onclick="setMode('regime')"   >🍽️ Ce qu'il mange</button>
+    <button class="mp-pill"        id="mp-pill-periode"   onclick="setMode('periode')"  >⏳ Le voyage</button>
+    <button class="mp-pill"        id="mp-pill-dico"      onclick="setMode('dico')"     >📖 Le dico</button>
   </div>
   <div id="menu-scroll"></div>
   <!-- Accès compte (demande Papa Yann 2026-07-08, zone temporaire — discret, hors structure figée) -->
@@ -677,8 +676,8 @@ const MENU_FALLBACK = {
 };
 function setMode(mode) {
   currentMode = mode;
-  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('mode-btn-' + mode).classList.add('active');
+  document.querySelectorAll('.mp-pill').forEach(b => b.classList.remove('active'));
+  document.getElementById('mp-pill-' + mode).classList.add('active');
   buildMenu();
   playMenuVoice(mode, MENU_FALLBACK[mode] || '');
 }
@@ -951,7 +950,7 @@ function buildPangeeBloc() {
   `).join('');
 
   const dots = PANGEE.etapes.map((e, i) =>
-    `<button class="pangee-dot${i===0?' active':''}" data-idx="${i}"
+    `<button class="mp-dot${i===0?' active':''}" data-idx="${i}"
       onclick="pangeeGoto(${i})" aria-label="${e.label}">${e.label}</button>`
   ).join('');
 
@@ -980,7 +979,7 @@ function buildPangeeBloc() {
         <div class="pangee-carousel" id="pangee-carousel">
           <div class="pangee-slides">${slides}</div>
         </div>
-        <div class="pangee-dots">${dots}</div>
+        <div class="mp-dots">${dots}</div>
         <div class="pangee-credit">${PANGEE.credit}</div>
         <div class="pangee-etapes">${etapesHtml}</div>
         <div class="pangee-pourquoi">
@@ -999,7 +998,7 @@ function pangeeGoto(idx) {
   const car = document.getElementById('pangee-carousel');
   if (!car) return;
   const slides = car.querySelectorAll('.pangee-slide');
-  const dots = document.querySelectorAll('.pangee-dot');
+  const dots = document.querySelectorAll('.mp-dot');
   if (!slides.length) return;
   _pangeeIdx = (idx + slides.length) % slides.length;
   slides.forEach((s, i) => s.classList.toggle('active', i === _pangeeIdx));

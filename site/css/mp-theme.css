@@ -266,3 +266,66 @@ body:not([data-ambiance]) { --bg0:#0a1226; --bg1:#0c1730; --card:#0e1a34; --card
 .mp-panneau .dicter.rec { background:var(--parent); color:var(--parent-ink); }
 .mp-panneau .envoyer { flex:1; height:44px; border-radius:999px; border:0; cursor:pointer;
   background:var(--parent); color:var(--parent-ink); font:900 13.5px 'Nunito',sans-serif; }
+
+/* ══════════════════════════════════════════════════════════════════════════
+   COMPOSANTS PARTAGÉS (EP-074, fusionnés 2026-07-18 — ex mp-components.css)
+   Namespace mp-* pour les nouveaux ; noms historiques gardés quand uniques.
+   NB : les segmented-controls locaux .mode-btn de mj-11/14/20 sont un AUTRE
+   composant (flex:1, actif liseré) — ne pas confondre avec .mp-pill.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Pills scrollables (sélecteur de mode, actif = OR plein) ── */
+.mp-pill {
+  flex-shrink:0; background:rgba(255,255,255,0.08);
+  border:0; border-radius:var(--r-pill);
+  color:var(--ink-2); font-family:'Nunito',sans-serif;
+  font-weight:800; font-size:0.82rem; padding:8px 14px;
+  cursor:pointer; touch-action:manipulation; white-space:nowrap;
+  transition:background 0.15s, color 0.15s;
+}
+.mp-pill.active { background:var(--gold); color:var(--gold-ink); font-weight:900; }
+.mp-pill:active { transform:scale(0.93); }
+
+/* ── Pills bleues secondaires (étapes/continents) ── */
+.mp-dots { display:flex; gap:6px; justify-content:center; margin:10px 0 4px; flex-wrap:wrap; }
+.mp-dot { background:rgba(80,160,255,0.12); border:1px solid rgba(80,160,255,0.25); color:rgba(180,220,255,0.8); border-radius:20px; padding:5px 12px; font-family:inherit; font-size:0.72rem; font-weight:900; cursor:pointer; touch-action:manipulation; }
+.mp-dot.active { background:#3498db; border-color:#5dade2; color:#fff; }
+
+/* ── Points de carrousel ── */
+.c-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.25); transition:background 0.2s; }
+.c-dot.active { background:#ffe066; }
+
+/* ── Célébrations / animations ── */
+@keyframes badgePulse { 0%,100%{ box-shadow:0 2px 7px rgba(0,0,0,0.55); } 50%{ box-shadow:0 0 12px 3px rgba(255,204,0,0.7); } }
+@keyframes cardBounce {
+  0%   { transform:scale(1); }
+  30%  { transform:scale(1.08) translateY(-10px); }
+  60%  { transform:scale(0.96) translateY(2px); }
+  100% { transform:scale(1); }
+}
+@keyframes ep-nudge { 0%,100%{ transform:translateX(0); } 50%{ transform:translateX(-4px); } }
+
+/* ── Frise progression (voyage / parcours d'étapes) ──
+   Structure : .journey-ep (cartes) ; états .ep-done/.ep-next posés en JS ;
+   descendants : .chrono-emoji, .chrono-header, .ep-status, .journey-btn, .v1-big */
+.journey-intro { margin:6px 12px 12px; padding:10px 12px; border-radius:12px; background:rgba(255,255,255,0.06); font-size:0.85rem; line-height:1.4; color:rgba(255,255,255,0.85); }
+.journey-trait {
+  position:absolute; left:52px; top:74px; bottom:60px; width:3px; border-radius:2px;
+  opacity:.35; z-index:0; pointer-events:none;
+  background:linear-gradient(180deg,#5dade2,#ff7043,#66bb6a,#42a5f5,#ff6b35,#a1887f,#00bcd4,#9b59b6);
+}
+.journey-ep { margin:0 10px 12px; border-radius:14px; overflow:hidden; background:rgba(0,0,0,0.18); position:relative; transition:box-shadow 0.2s; }
+.journey-ep .chrono-header { cursor:default; position:relative; }
+.journey-ep .chrono-emoji { width:56px; height:56px; font-size:1.5rem; border:3px solid var(--bg1); }
+.journey-ep.ep-next:not(.ep-done) .chrono-emoji { box-shadow:0 0 16px rgba(255,255,255,.25); }
+.ep-status { flex-shrink:0; width:30px; text-align:center; font-size:1.3rem; line-height:1; }
+.journey-ep.ep-done  .ep-status::after { content:'✅'; }
+.journey-ep.ep-next:not(.ep-done) .ep-status::after { content:'👉'; animation:ep-nudge 1s ease-in-out infinite; display:inline-block; }
+.journey-ep.ep-done .v1-big { background:linear-gradient(135deg,#1e7e34,#28a745); opacity:0.92; }
+.journey-ep.ep-done .v1-big .dino-story-eq::before { content:'✓ '; }
+.journey-ep.ep-next:not(.ep-done) { box-shadow:0 0 0 2px rgba(255,255,255,0.55), 0 0 14px rgba(255,255,255,0.25); }
+.journey-ep.ep-next:not(.ep-done) .journey-btn { background:linear-gradient(135deg,var(--gold),#ffbf3f); color:var(--gold-ink); }
+.journey-ep.ep-next:not(.ep-done) .journey-btn.playing { background:linear-gradient(135deg,#c0392b,#e74c3c); color:#fff; }
+.journey-ep:not(.ep-done):not(.ep-next) { opacity:.75; }
+.journey-ep:not(.ep-done):not(.ep-next) .journey-btn { background:rgba(255,255,255,.12); color:var(--ink-2); box-shadow:none; border-color:transparent; }
+.journey-ep:not(.ep-done):not(.ep-next) .journey-btn.playing { background:linear-gradient(135deg,#c0392b,#e74c3c); color:#fff; }

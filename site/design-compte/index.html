@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Combien ? — 10 concepts de comptage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  body {
+    font-family:'Nunito',sans-serif; font-weight:700; color:#fff;
+    min-height:100dvh;
+    background:
+      radial-gradient(1000px 500px at 80% -10%, rgba(255,209,102,.12), transparent 60%),
+      radial-gradient(800px 500px at 10% 110%, rgba(47,191,143,.12), transparent 60%),
+      linear-gradient(160deg,#16122b 0%, #1d1638 55%, #12101f 100%);
+    display:flex; justify-content:center;
+    padding:28px 16px 60px;
+  }
+  .wrap { width:100%; max-width:560px; }
+  header { text-align:center; margin-bottom:28px; }
+  .kicker {
+    display:inline-block; font-size:12px; font-weight:900; letter-spacing:2px;
+    color:#ffd166; text-transform:uppercase;
+    border:1px solid rgba(255,209,102,.4); border-radius:999px; padding:6px 16px;
+    background:rgba(255,209,102,.08); margin-bottom:14px;
+  }
+  h1 { font-family:'Fredoka One',cursive; font-size:clamp(30px,7vw,42px); letter-spacing:1px;
+       background:linear-gradient(90deg,#ffd166,#ffe066,#2fbf8f); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .sub { margin-top:10px; color:rgba(255,255,255,.75); font-size:15px; line-height:1.5; }
+  .card {
+    display:block; text-decoration:none; color:#fff;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:22px; padding:20px; margin-bottom:16px;
+    transition:transform .18s ease, border-color .18s ease, background .18s ease;
+  }
+  .card:hover { transform:translateY(-3px); border-color:rgba(255,209,102,.55); background:rgba(255,255,255,.08); }
+  .card-top { display:flex; align-items:center; gap:14px; margin-bottom:8px; }
+  .num {
+    flex:0 0 52px; height:52px; border-radius:16px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka One',cursive; font-size:24px; color:#1a1408;
+    background:linear-gradient(145deg,#ffe066,#f5b942);
+    box-shadow:0 4px 12px rgba(255,209,102,.3);
+  }
+  h2 { font-family:'Fredoka One',cursive; font-size:21px; letter-spacing:.5px; }
+  .pitch { color:#ffd166; font-size:14px; font-weight:900; margin-bottom:6px; }
+  .how { color:rgba(255,255,255,.7); font-size:13.5px; line-height:1.5; }
+  .how b { color:#2fbf8f; }
+  .skill {
+    margin-top:8px; font-size:12.5px; font-weight:900; color:rgba(255,224,102,.9);
+    border-left:3px solid rgba(255,209,102,.6); padding-left:10px; line-height:1.45;
+  }
+  .series {
+    display:flex; align-items:center; gap:12px; margin:30px 0 18px;
+    font-family:'Fredoka One',cursive; font-size:17px; letter-spacing:1px; color:#ffe066;
+  }
+  .series::before, .series::after {
+    content:""; flex:1; height:1px;
+    background:linear-gradient(90deg,transparent,rgba(255,209,102,.45),transparent);
+  }
+  .series small { display:block; font-family:'Nunito',sans-serif; font-size:12px; font-weight:700; letter-spacing:0; color:rgba(255,255,255,.55); margin-top:3px; }
+  .go {
+    display:inline-block; margin-top:12px; font-size:13px; font-weight:900;
+    color:#0e2b22; background:linear-gradient(145deg,#2fbf8f,#00c47a);
+    border-radius:999px; padding:8px 18px;
+  }
+  footer { text-align:center; margin-top:26px; color:rgba(255,255,255,.4); font-size:12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="kicker">🎨 Maquettes de démonstration</span>
+    <h1>Combien ? 🦕🚌</h1>
+    <p class="sub">10 concepts de jeu de comptage pour les 4–6 ans, en 2 séries.<br>Chaque maquette est interactive : touchez, comptez, jouez !</p>
+  </header>
+
+  <a class="card" href="mockup-1-oeufs.html">
+    <div class="card-top"><div class="num">1</div><h2>Les Œufs Surprise 🥚</h2></div>
+    <p class="pitch">Le bon chiffre fait éclore les œufs !</p>
+    <p class="how">Modèle : <b>QCM réinventé</b>. L'enfant compte les œufs du nid, tape un des 3 gros chiffres — et la bonne réponse déclenche une naissance animée, œuf par œuf.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <a class="card" href="mockup-2-tampon.html">
+    <div class="card-top"><div class="num">2</div><h2>Le Tampon Magique 🔢</h2></div>
+    <p class="pitch">Compter, c'est tamponner chaque dino !</p>
+    <p class="how">Modèle : <b>tap-to-count</b>. Chaque tap pose un tampon numéroté (1, 2, 3…) sur un dino. Le comptage EST l'action — aucun QCM. Un bouton « J'ai fini ! » valide.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <a class="card" href="mockup-3-bus.html">
+    <div class="card-top"><div class="num">3</div><h2>Monte dans le Bus ! 🚍</h2></div>
+    <p class="pitch">Chaque passager fait grimper le compteur LED !</p>
+    <p class="how">Modèle : <b>déplacement incarné</b>. L'enfant fait monter les dinos dans le bus un par un ; le compteur lumineux affiche la réponse en direct. Puis… départ du bus !</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <a class="card" href="mockup-4-bulles.html">
+    <div class="card-top"><div class="num">4</div><h2>Les Bulles des Fonds Marins 🫧</h2></div>
+    <p class="pitch">La bonne bulle éclate en étoiles dorées !</p>
+    <p class="how">Modèle : <b>QCM spatial</b>. Les dinos dérivent dans des bulles de verre ; les réponses sont elles-mêmes des bulles géantes qui éclatent (pop !) quand c'est juste.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <a class="card" href="mockup-5-projecteur.html">
+    <div class="card-top"><div class="num">5</div><h2>Le Projecteur du Musée 🔦</h2></div>
+    <p class="pitch">Allume les dinos cachés dans le noir !</p>
+    <p class="how">Modèle : <b>révélation progressive</b>. Chaque tap allume un projecteur et révèle un dino du musée — le décompte monte à chaque découverte, puis vient le choix final.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <div class="series"><span>Série 2 — Regroupements &amp; petits calculs<small>Additions, soustractions et groupes : au-delà du simple comptage un par un.</small></span></div>
+
+  <a class="card" href="mockup-6-constellations.html">
+    <div class="card-top"><div class="num">6</div><h2>Les Constellations d'Œufs 🌟</h2></div>
+    <p class="pitch">Reconnais les points du dé… dans le ciel !</p>
+    <p class="how">Modèle : <b>subitizing</b>. Deux constellations d'œufs forment un domino céleste : l'enfant lit les quantités d'un coup d'œil, façon dés, et additionne.</p>
+    <p class="skill">Compétence : reconnaître les quantités façon dés/dominos sans compter — additions ≤ 12.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <a class="card" href="mockup-7-barrette.html">
+    <div class="card-top"><div class="num">7</div><h2>La Barrette d'Or 🏆</h2></div>
+    <p class="pitch">Une barrette pleine, c'est 10 d'un coup !</p>
+    <p class="how">Modèle : <b>ancre 10 façon Montessori</b>. Des perles dorées remplissent une barrette de 10 ; pour aller au-delà, on ajoute les unités à côté.</p>
+    <p class="skill">Compétence : comprendre 10 comme unité de référence — nombres 11 à 20.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <a class="card" href="mockup-8-bus-places.html">
+    <div class="card-top"><div class="num">8</div><h2>Le Bus aux 10 Places 🪑</h2></div>
+    <p class="pitch">Qui monte ? Qui descend ? Compte les sièges !</p>
+    <p class="how">Modèle : <b>calcul sur plan de sièges 2×5</b>. Les dinos occupent le bus ; l'enfant ajoute ou retire des passagers et voit le groupe de 5 d'un coup d'œil.</p>
+    <p class="skill">Compétence : addition/soustraction ≤ 10 — le groupe de 5 devient évident.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <a class="card" href="mockup-9-oeufs-casses.html">
+    <div class="card-top"><div class="num">9</div><h2>Les Œufs Cassés 🐣</h2></div>
+    <p class="pitch">Oh non, des œufs cassés ! Combien en reste-t-il ?</p>
+    <p class="how">Modèle : <b>soustraction narrative</b>. Une mini-histoire casse des œufs du nid ; les coquilles restent visibles, l'« en moins » se voit vraiment.</p>
+    <p class="skill">Compétence : soustraction ≤ 10 — matérialiser le « en moins » par les coquilles restantes.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <a class="card" href="mockup-10-nids.html">
+    <div class="card-top"><div class="num">10</div><h2>Les Nids par Groupes 🪺</h2></div>
+    <p class="pitch">4, 8, 12… compte de nid en nid !</p>
+    <p class="how">Modèle : <b>multiplication naissante</b>. Plusieurs nids identiques s'alignent ; l'enfant compte par groupes au lieu d'énumérer chaque œuf.</p>
+    <p class="skill">Compétence : compter par groupes (4, 8, 12…) — produits ≤ 20.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <footer>MaxPlay — maquettes front-end autonomes · aucune donnée enregistrée</footer>
+</div>
+</body>
+</html>

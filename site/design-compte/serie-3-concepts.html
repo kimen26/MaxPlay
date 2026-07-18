@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Série 3 (v2) — Grands nombres, additions & représentations</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  body {
+    font-family:'Nunito',sans-serif; color:#fff; min-height:100dvh;
+    background:linear-gradient(160deg,#14202e,#0b1f33 60%,#0a2733);
+    padding:24px;
+  }
+  header.top { text-align:center; margin-bottom:26px; }
+  header.top h1 { font-family:'Fredoka One',cursive; font-size:2rem; color:#ffd166; letter-spacing:.5px; }
+  header.top p { opacity:.75; margin-top:6px; }
+  header.top a { color:#ffd166; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(430px,1fr)); gap:22px; max-width:1500px; margin:0 auto; }
+
+  .card {
+    background:#ffffff10; border:1px solid #ffffff22; border-radius:22px; overflow:hidden;
+    box-shadow:0 10px 30px #0007;
+  }
+  .card .chead { display:flex; align-items:center; gap:12px; padding:14px 18px 10px; }
+  .cnum {
+    font-family:'Fredoka One',cursive; background:linear-gradient(160deg,#ffd166,#f0a832); color:#4a2f00;
+    width:44px; height:44px; border-radius:14px; display:grid; place-items:center; font-size:1.4rem; flex-shrink:0;
+    box-shadow:0 4px 10px #0006;
+  }
+  .cnum.new { background:linear-gradient(160deg,#7ee6c3,#3dbb92); color:#06392a; }
+  .chead h2 { font-family:'Fredoka One',cursive; font-size:1.35rem; color:#ffe9ad; }
+  .chead .tag { font-size:.78rem; font-weight:900; color:#9adfcf; text-transform:uppercase; letter-spacing:.6px; }
+  .scene {
+    height:320px; margin:0 14px; border-radius:16px; position:relative; overflow:hidden;
+    background:linear-gradient(170deg,#1d2f42,#122334); border:1px solid #ffffff14;
+  }
+  .cbody { padding:12px 18px 16px; }
+  .cbody p { font-size:.92rem; line-height:1.45; margin-top:6px; }
+  .cbody b { color:#ffd166; }
+  .skill { color:#c9f2e4; }
+  .skill b { color:#7ee6c3; }
+
+  .egg {
+    width:30px; height:38px; border-radius:50% 50% 50% 50%/58% 58% 42% 42%;
+    background:radial-gradient(circle at 34% 26%, #fff8, transparent 42%),
+               radial-gradient(circle at 60% 62%, #d98f3f 13%, transparent 14%),
+               radial-gradient(circle at 32% 74%, #d98f3f 10%, transparent 11%),
+               radial-gradient(circle at 72% 34%, #d98f3f 9%, transparent 10%),
+               linear-gradient(160deg,#fdf3dc,#f3dcae);
+    box-shadow:0 3px 6px #0005; flex-shrink:0;
+  }
+  .bead {
+    width:16px; height:16px; border-radius:50%; flex-shrink:0;
+    background:radial-gradient(circle at 32% 28%, #fff3c4, #ffd166 45%, #c98a1b);
+    box-shadow:0 2px 4px #0006;
+  }
+  .bignum { font-family:'Fredoka One',cursive; color:#ffd166; text-shadow:0 3px 8px #0009; }
+  .chip {
+    display:inline-flex; align-items:center; gap:6px; background:#0008; border-radius:999px;
+    padding:4px 10px; font-weight:900; font-size:.8rem;
+  }
+
+  /* ═══ Montessori v2 : proportions réelles ═══
+     unité = perle Ø u ; barrette = 10u de long (1 rangée) ;
+     plaque = 10u × 10u + épaisseur ; cube = 10u × 10u × 10u (3 faces) */
+  .m-unit { width:12px; height:12px; border-radius:50%;
+    background:radial-gradient(circle at 32% 28%, #fff3c4, #ffd166 45%, #c98a1b); box-shadow:0 2px 3px #0007; }
+  .m-bar {
+    width:156px; height:15px; border-radius:999px; position:relative;
+    background-image:radial-gradient(circle at 32% 28%, #fff3c4, #ffd166 45%, #c98a1b);
+    background-size:15.6px 15.6px; background-repeat:repeat-x;
+    filter:drop-shadow(0 3px 3px #0007);
+  }
+  .m-bar::after { /* fil de la barrette */
+    content:''; position:absolute; inset:6px 2px auto 2px; height:2px; background:#a8741a66; border-radius:2px;
+  }
+  .m-plate { position:relative; width:156px; height:156px; }
+  .m-plate .face {
+    position:absolute; inset:0; border-radius:6px;
+    background-color:#e8b23a;
+    background-image:radial-gradient(circle at 32% 28%, #fff3c4, #ffd166 45%, #c98a1b);
+    background-size:15.6px 15.6px;
+    box-shadow:inset 0 0 0 1.5px #a8741a88;
+  }
+  .m-plate .thick { /* tranche visible = épaisseur */
+    position:absolute; left:5px; right:-5px; bottom:-6px; height:6px;
+    background:#a8741a; border-radius:0 0 5px 5px;
+  }
+  .m-plate .thick-r {
+    position:absolute; top:5px; bottom:-1px; right:-6px; width:6px;
+    background:#c08c25; border-radius:0 5px 5px 0;
+  }
+  .m-cube { position:relative; width:156px; height:156px; }
+  .m-cube .front {
+    position:absolute; inset:0; border-radius:4px;
+    background-color:#e8b23a;
+    background-image:radial-gradient(circle at 32% 28%, #fff3c4, #ffd166 45%, #c98a1b);
+    background-size:15.6px 15.6px;
+    box-shadow:inset 0 0 0 1.5px #a8741a88;
+  }
+  .m-cube .top {
+    position:absolute; left:8px; right:-16px; top:-18px; height:18px;
+    background-color:#f0c75e;
+    background-image:radial-gradient(circle,#ffe9ad 2.4px,transparent 3px);
+    background-size:15.6px 18px;
+    transform:skewX(-42deg); border-radius:3px 3px 0 0;
+    box-shadow:inset 0 0 0 1.5px #a8741a66;
+  }
+  .m-cube .side {
+    position:absolute; top:-9px; bottom:5px; right:-17px; width:17px;
+    background-color:#c08c25;
+    background-image:radial-gradient(circle,#e8c06a 2.2px,transparent 2.8px);
+    background-size:17px 15.6px;
+    transform:skewY(-48deg); border-radius:0 3px 3px 0;
+  }
+  .bowl {
+    border:3px solid #8fd8ff66; border-top:none; border-radius:0 0 90px 90px;
+    background:linear-gradient(180deg,#8fd8ff14,#8fd8ff30); padding:10px; display:flex; flex-wrap:wrap;
+    gap:8px; align-content:flex-start; justify-content:center;
+  }
+
+  /* dominos */
+  .domino {
+    background:linear-gradient(165deg,#fdfdf8,#e8e4d8); border-radius:16px; padding:10px;
+    display:flex; flex-direction:column; gap:8px; box-shadow:0 8px 20px #0008;
+  }
+  .dhalf { display:grid; grid-template-columns:repeat(3,20px); grid-auto-rows:20px; gap:4px; justify-content:center; padding:6px; }
+  .dhalf + .dhalf { border-top:3px solid #9998; }
+  .pip { width:16px; height:16px; border-radius:50%; background:#223; place-self:center; }
+  .timerbar { height:8px; border-radius:99px; background:#ffffff1c; overflow:hidden; }
+  .timerbar i { display:block; height:100%; width:65%; border-radius:99px; background:linear-gradient(90deg,#7ee6c3,#ffd166); }
+
+  /* ten-frame */
+  .tenframe {
+    display:grid; grid-template-columns:repeat(5,34px); grid-auto-rows:40px; gap:4px;
+    background:#ffd16618; border:2.5px solid #ffd166; border-radius:12px; padding:6px; width:max-content;
+  }
+  .cell { border-radius:8px; background:#ffffff08; border:1px dashed #ffffff22; display:grid; place-items:center; }
+  .cell .egg { width:22px; height:28px; }
+  .cell.g5 { background:#ffd1661f; } /* le groupe de 5 se voit */
+  .cell.hop { outline:3px solid #7ee6c3; outline-offset:1px; }
+
+  /* sièges bus */
+  .seat {
+    width:48px; height:48px; border-radius:14px; display:grid; place-items:center;
+    background:#ffd16614; border:2px solid #ffd166aa; overflow:hidden;
+  }
+  .seat img { width:86%; height:86%; object-fit:contain; }
+  .seat.ghost { border:2px dashed #8fa3b866; background:#ffffff06; animation:pulse 1.4s infinite; }
+  @keyframes pulse { 50% { transform:scale(1.08); opacity:.6; } }
+
+  /* balance */
+  .beam {
+    width:340px; height:10px; background:linear-gradient(180deg,#e8c06a,#a8741a); border-radius:6px; position:relative;
+  }
+  .pan {
+    position:absolute; top:10px; width:130px; min-height:64px; border:3px solid #8fd8ff88; border-top:none;
+    border-radius:0 0 40px 40px; background:#8fd8ff18; display:flex; flex-wrap:wrap; gap:4px;
+    align-content:flex-start; justify-content:center; padding:8px 6px;
+  }
+  .pan::before { content:''; position:absolute; top:-14px; left:50%; transform:translateX(-50%);
+    width:3px; height:14px; background:#8fd8ff88; }
+  .pillar { width:14px; height:96px; background:linear-gradient(90deg,#e8c06a,#a8741a); border-radius:6px; }
+
+  /* droite numérique */
+  .numberline { position:relative; height:6px; background:#8fa3b866; border-radius:3px; }
+  .tick { position:absolute; top:-5px; width:2px; height:16px; background:#8fa3b8aa; }
+  .tick b { position:absolute; top:16px; left:-6px; font-size:.7rem; color:#c9d6e2; }
+  .jump {
+    position:absolute; border:2.5px dashed #7ee6c3; border-bottom:none; border-radius:60px 60px 0 0;
+  }
+
+  /* maison */
+  .roof {
+    width:0; height:0; border-left:110px solid transparent; border-right:110px solid transparent;
+    border-bottom:64px solid #d95f43; margin:0 auto; position:relative;
+  }
+  .roof b { position:absolute; left:-24px; top:22px; font-family:'Fredoka One',cursive; font-size:1.9rem; color:#fff; text-shadow:0 2px 4px #0007; }
+  .house { width:220px; margin:-2px auto 0; background:#f5e9d0; border-radius:0 0 14px 14px; display:flex; }
+  .room { flex:1; min-height:96px; display:flex; flex-wrap:wrap; gap:4px; align-content:center; justify-content:center; padding:10px 6px; }
+  .room + .room { border-left:3px dashed #b59a6a; }
+
+  .mirrorline { width:5px; align-self:stretch; background:linear-gradient(180deg,#cfe9ff,#7fb6e6); border-radius:3px; box-shadow:0 0 14px #9fd0ff; margin:0 6px; }
+  .tile {
+    font-family:'Fredoka One',cursive; background:#ffffff14; border:1.5px solid #ffffff2e; color:#ffe9ad;
+    border-radius:12px; padding:8px 12px; font-size:1rem;
+  }
+
+  body.only { display:grid; place-items:center; min-height:100dvh; padding:16px; }
+  body.only .grid { display:block; max-width:520px; width:100%; }
+  body.only header.top, body.only .card.hide { display:none; }
+</style>
+</head>
+<body>
+<header class="top">
+  <h1>Série 3 (v2) — Grands nombres, additions & représentations</h1>
+  <p>10 concepts · <span style="color:#7ee6c3;">■</span> = nouvelle idée · <a href="index.html">← retour au sommaire</a></p>
+</header>
+<div class="grid" id="grid">
+
+<!-- ═══ 1. LA BANQUE DE PERLES (proportions réelles) ═══ -->
+<section class="card" data-n="1">
+  <div class="chead"><div class="cnum">1</div><div><h2>La Banque de Perles</h2><div class="tag">Montessori · addition jusqu'au millier</div></div></div>
+  <div class="scene">
+    <!-- matériel à l'échelle : barrette = côté de plaque, épaisseurs visibles -->
+    <div style="display:flex;align-items:flex-end;gap:26px;padding:20px 20px 0;">
+      <div style="text-align:center;"><div class="m-unit" style="margin:0 auto;"></div><div class="chip" style="margin-top:6px;">1</div></div>
+      <div style="text-align:center;"><div class="m-bar"></div><div class="chip" style="margin-top:6px;">10</div></div>
+      <div style="text-align:center;transform:scale(.62);transform-origin:bottom center;">
+        <div class="m-plate"><div class="thick-r"></div><div class="thick"></div><div class="face"></div></div>
+        <div class="chip" style="margin-top:12px;">100</div>
+      </div>
+      <div style="text-align:center;transform:scale(.62);transform-origin:bottom center;">
+        <div class="m-cube"><div class="top"></div><div class="side"></div><div class="front"></div></div>
+        <div class="chip" style="margin-top:12px;">1000</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:10px;padding:12px 16px;align-items:center;">
+      <span class="chip">1 234</span>
+      <div class="bowl" style="flex:1;min-height:64px;flex-direction:row;align-items:center;">
+        <div class="m-cube" style="transform:scale(.24);transform-origin:center;width:156px;height:156px;margin:-58px;"><div class="top"></div><div class="side"></div><div class="front"></div></div>
+        <div class="m-bar" style="transform:scale(.5);transform-origin:center;margin:0 -34px;"></div>
+        <div style="display:flex;gap:3px;"><div class="m-unit"></div><div class="m-unit"></div><div class="m-unit"></div><div class="m-unit"></div></div>
+      </div>
+      <span class="bignum" style="font-size:1.2rem;">+ 2 153 ➜</span>
+    </div>
+    <span class="chip" style="position:absolute;right:12px;bottom:10px;border:1.5px dashed #ffd166;">✨ 10 identiques → l'échange magique !</span>
+  </div>
+  <div class="cbody">
+    <p class="skill"><b>Compétence :</b> valeur de position avec le matériel canonique, à l'échelle réelle : la barrette fait exactement le côté de la plaque, la plaque a de l'épaisseur, le cube est un vrai cube 3D.</p>
+    <p><b>Interaction :</b> l'enfant verse les perles de A dans le bol, puis celles de B (voire C). 10 perles qui se touchent → échange animé contre 1 barrette ; 10 barrettes → 1 plaque ; 10 plaques → 1 cube. Le résultat se LIT, jamais de calcul de tête.</p>
+  </div>
+</section>
+
+<!-- ═══ 2. DINOS MÉLANGÉS (espèces distinctes) ═══ -->
+<section class="card" data-n="2">
+  <div class="chead"><div class="cnum">2</div><div><h2>Dinos Mélangés</h2><div class="tag">dénombrement par groupe · addition ≤ 20</div></div></div>
+  <div class="scene">
+    <div style="position:absolute;left:18px;top:26px;border:3px solid #f2a25c;border-radius:20px;padding:14px 16px;display:flex;gap:10px;background:#f2a25c12;">
+      <img src="../img/avatars/trex_joyeux_1.png" style="width:58px;height:58px;object-fit:contain;">
+      <img src="../img/avatars/trex_joyeux_1.png" style="width:58px;height:58px;object-fit:contain;">
+      <img src="../img/avatars/trex_joyeux_1.png" style="width:58px;height:58px;object-fit:contain;">
+      <span class="bignum" style="position:absolute;right:-14px;top:-20px;font-size:1.8rem;background:#f2a25c;color:#3f2308;border-radius:12px;padding:2px 10px;">3</span>
+    </div>
+    <div style="position:absolute;right:18px;bottom:88px;border:3px solid #6db8ff;border-radius:20px;padding:14px 16px;display:flex;gap:8px;flex-wrap:wrap;width:190px;background:#6db8ff12;">
+      <img src="../img/avatars/brachio_joyeux_2.png" style="width:52px;height:52px;object-fit:contain;">
+      <img src="../img/avatars/brachio_joyeux_2.png" style="width:52px;height:52px;object-fit:contain;">
+      <img src="../img/avatars/brachio_joyeux_2.png" style="width:52px;height:52px;object-fit:contain;">
+      <img src="../img/avatars/brachio_joyeux_2.png" style="width:52px;height:52px;object-fit:contain;">
+      <span class="bignum" style="position:absolute;right:-14px;top:-20px;font-size:1.8rem;background:#6db8ff;color:#08243f;border-radius:12px;padding:2px 10px;">4</span>
+    </div>
+    <div class="bignum" style="position:absolute;left:50%;bottom:14px;transform:translateX(-50%);font-size:2.2rem;">3 + 4 = ?</div>
+  </div>
+  <div class="cbody">
+    <p class="skill"><b>Compétence :</b> dénombrer des collections triées, puis l'addition comme réunion de deux groupes déjà comptés.</p>
+    <p><b>Interaction :</b> espèces TOUJOURS très contrastées (T-rex orange vs brachio bleu, jamais deux dinos verts). « Combien de T-rex ? » → badge 3. « Combien de brachios ? » → badge 4. « Et tous ensemble ? » → les cercles fusionnent. Jusqu'à 10 + 8.</p>
+  </div>
+</section>
+
+<!-- ═══ 3. DOMINOS FLASH ═══ -->
+<section class="card" data-n="3">
+  <div class="chead"><div class="cnum">3</div><div><h2>Dominos Flash</h2><div class="tag">subitizing pur · 2 secondes chrono</div></div></div>
+  <div class="scene" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;">
+    <div class="domino" style="flex-direction:row;gap:10px;align-items:center;">
+      <div class="dhalf" style="border:none;"><span class="pip"></span><span></span><span class="pip"></span><span></span><span class="pip"></span><span></span><span class="pip"></span><span></span><span class="pip"></span></div>
+      <div style="width:3px;align-self:stretch;background:#9998;"></div>
+      <div class="dhalf" style="border:none;"><span class="pip"></span><span></span><span class="pip"></span><span></span><span class="pip"></span><span></span><span></span><span></span><span></span></div>
+    </div>
+    <div style="width:220px;">
+      <div class="timerbar"><i></i></div>
+      <div class="chip" style="margin-top:8px;">👀 2 secondes pour voir, puis ça se cache !</div>
+    </div>
+    <div class="bignum" style="font-size:1.6rem;">C'était combien ?</div>
+  </div>
+  <div class="cbody">
+    <p class="skill"><b>Compétence :</b> subitizing — reconnaître la constellation SANS compter, parce que compter 1 par 1 est impossible en 2 s.</p>
+    <p><b>Interaction :</b> le domino jaillit, la barre-timer défile, pouf il disparaît → 3 gros chiffres. Réussite : le domino réapparaît et s'illumine moitié par moitié (« 5 ! et 3 ! »). La difficulté monte : 1,5 s puis 1 s, constellations jusqu'à 6|6.</p>
+  </div>
+</section>
+
+<!-- ═══ 4. LA BALANCE DES DINOS (nouveau) ═══ -->
+<section class="card" data-n="4">
+  <div class="chead"><div class="cnum new">4</div><div><h2>La Balance des Dinos</h2><div class="tag">égalités · 6+4 = 7+3</div></div></div>
+  <div class="scene" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;">
+    <div style="position:relative;">
+      <div class="beam"></div>
+      <div class="pan" style="left:-18px;">
+        <div class="egg" style="width:20px;height:26px;"></div><div class="egg" style="width:20px;height:26px;"></div><div class="egg" style="width:20px;height:26px;"></div><div class="egg" style="width:20px;height:26px;"></div><div class="egg" style="width:20px;height:26px;"></div><div class="egg" style="width:20px;height:26px;"></div>
+        <div class="egg" style="width:20px;height:26px;filter:hue-rotate(90deg);"></div><div class="egg" style="width:20px;height:26px;filter:hue-rotate(90deg);"></div><div class="egg" style="width:20px;height:26px;filter:hue-rotate(90deg);"></div><div class="egg" style="width:20px;height:26px;filter:hue-rotate(90deg);"></div>
+      </div>
+      <div class="pan" style="right:-18px;">
+        <div class="egg" style="width:20px;height:26px;"></div><div class="egg" style="width:20px;height:26px;"></div><div class="egg" style="width:20px;height:26px;"></div><div class="egg" style="width:20px;height:26px;"></div><div class="egg" style="width:20px;height:26px;"></div><div class="egg" style="width:20px;height:26px;"></div><div class="egg" style="width:20px;height:26px;"></div>
+        <div class="egg" style="width:20px;height:26px;filter:hue-rotate(90deg);"></div><div class="egg" style="width:20px;height:26px;filter:hue-rotate(90deg);"></div><div class="egg" style="width:20px;height:26px;filter:hue-rotate(90deg);"></div>
+      </div>
+    </div>
+    <div class="pillar" style="margin-top:70px;"></div>
+    <div class="bignum" style="margin-top:8px;font-size:1.5rem;">6 + 4 ⚖️ 7 + 3 → pareil !</div>
+  </div>
+  <div class="cbody">
+    <p class="skill"><b>Compétence :</b> le sens du signe « = » (équilibre, pas « donne ») et les décompositions équivalentes.</p>
+    <p><b>Interaction :</b> la balance penche ! L'enfant déplace des œufs/dinos d'un plateau à l'autre jusqu'à l'équilibre parfait — la poutre se redresse, confettis. « 6+4, c'est pareil que 7+3 ! » Niveaux : équilibrer avec 2 couleurs, puis trouver le groupe manquant.</p>
+  </div>
+</section>
+
+<!-- ═══ 5. LA MACHINE À FAIRE 10 (groupes de 5 visibles) ═══ -->
+<section class="card" data-n="5">
+  <div class="chead"><div class="cnum">5</div><div><h2>La Machine à Faire 10</h2><div class="tag">passage par 10 · groupes de 2 / 5 / 10</div></div></div>
+  <div class="scene">
+    <div style="display:flex;gap:14px;justify-content:center;padding-top:26px;align-items:flex-start;">
+      <div style="text-align:center;">
+        <div class="tenframe">
+          <div class="cell g5"><div class="egg"></div></div><div class="cell g5"><div class="egg"></div></div><div class="cell g5"><div class="egg"></div></div><div class="cell g5"><div class="egg"></div></div><div class="cell g5"><div class="egg"></div></div>
+          <div class="cell"><div class="egg"></div></div><div class="cell"><div class="egg"></div></div><div class="cell"><div class="egg"></div></div><div class="cell hop"></div><div class="cell hop"></div>
+        </div>
+        <div class="bignum" style="margin-top:6px;font-size:1.3rem;">8 + 2 = 10 !</div>
+      </div>
+      <div style="display:grid;place-items:center;height:120px;font-size:1.5rem;">⬅️</div>
+      <div style="text-align:center;">
+        <div class="tenframe" style="border-color:#8fa3b8;">
+          <div class="cell g5"><div class="egg"></div></div><div class="cell g5"><div class="egg"></div></div><div class="cell g5"><div class="egg"></div></div><div class="cell g5"><div class="egg"></div></div><div class="cell g5"><div class="egg"></div></div>
+          <div class="cell" style="opacity:.35;"><div class="egg"></div></div><div class="cell" style="opacity:.35;"><div class="egg"></div></div><div class="cell"></div><div class="cell"></div><div class="cell"></div>
+        </div>
+        <div class="bignum" style="margin-top:6px;font-size:1.3rem;color:#c9d6e2;">7 − 2 = 5</div>
+      </div>
+    </div>
+    <div class="bignum" style="position:absolute;bottom:14px;width:100%;text-align:center;font-size:1.9rem;">10 + 5 = 15 ✨</div>
+  </div>
+  <div class="cbody">
+    <p class="skill"><b>Compétence :</b> la stratégie « faire 10 d'abord » par le geste. Le groupe de 5 est teinté dans la barquette : on VOIT que 15 = 10 + 5 sans rien compter.</p>
+    <p><b>Interaction :</b> l'enfant glisse des œufs pour compléter la barquette. Niveaux : ★ compléter par 2 (8+?=10) · ★★ par 5 (5+?=10) · ★★★ additions à retenue complètes (8+7). « C'est 10... et encore 5 ! »</p>
+  </div>
+</section>
+
+<!-- ═══ 6. REMPLIS LE BUS ! (sélection + drama) ═══ -->
+<section class="card" data-n="6">
+  <div class="chead"><div class="cnum">6</div><div><h2>Remplis le Bus !</h2><div class="tag">complément à 10 · choix + conséquence</div></div></div>
+  <div class="scene">
+    <div style="display:flex;justify-content:center;padding-top:16px;">
+      <div style="display:grid;grid-template-columns:repeat(5,48px);gap:9px;">
+        <div class="seat"><img src="../img/avatars/allo_joyeux_1.png"></div>
+        <div class="seat"><img src="../img/avatars/anky_joyeux_4.png"></div>
+        <div class="seat"><img src="../img/avatars/cory_joyeux_1.png"></div>
+        <div class="seat"><img src="../img/avatars/diplo_joyeux_1.png"></div>
+        <div class="seat"><img src="../img/avatars/galli_joyeux_1.png"></div>
+        <div class="seat"><img src="../img/avatars/velo_joyeux_1.png"></div>
+        <div class="seat ghost"></div>
+        <div class="seat ghost"></div>
+        <div class="seat ghost"></div>
+        <div class="seat ghost"></div>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:center;gap:10px;margin-top:14px;align-items:flex-end;">
+      <span class="chip">qui monte ?</span>
+      <img src="../img/avatars/trex_joyeux_1.png" style="width:46px;height:46px;object-fit:contain;cursor:pointer;">
+      <img src="../img/avatars/tritri_joyeux_3.png" style="width:46px;height:46px;object-fit:contain;cursor:pointer;">
+      <img src="../img/avatars/ptero_joyeux_1.png" style="width:46px;height:46px;object-fit:contain;cursor:pointer;">
+      <img src="../img/avatars/mosa_joyeux_1.png" style="width:46px;height:46px;object-fit:contain;cursor:pointer;">
+    </div>
+    <div style="display:flex;justify-content:center;gap:8px;margin-top:12px;align-items:center;">
+      <img src="../img/avatars/allo_enerve_1.png" style="width:44px;height:44px;object-fit:contain;">
+      <span class="chip" style="background:#e0655a33;border:1.5px solid #e0655a;">« Grr ! Il reste plus de place pour MOI ! »</span>
+    </div>
+  </div>
+  <div class="cbody">
+    <p class="skill"><b>Compétence :</b> complément à 10 (6 + ? = 10) sur la structure 2×5, avec anticipation : si j'en fais monter trop, c'est plein !</p>
+    <p><b>Interaction :</b> l'enfant CHOISIT quels dinos montent parmi les candidats. Erreur = drama rigolo (jamais punitif) : le dino refusé devient tout rouge de colère (avatar `_enerve_`), le bus repart et on recommence. Trop peu ? « Il reste des places vides, le bus ne démarre pas ! »</p>
+  </div>
+</section>
+
+<!-- ═══ 7. LE SAUT DU PTÉRO (nouveau) ═══ -->
+<section class="card" data-n="7">
+  <div class="chead"><div class="cnum new">7</div><div><h2>Le Saut du Ptéro</h2><div class="tag">droite numérique · addition = avancer</div></div></div>
+  <div class="scene">
+    <div style="position:absolute;left:6%;right:6%;top:150px;">
+      <div class="numberline"></div>
+      <!-- ticks 0-20, on en labelle quelques-uns -->
+      <div class="tick" style="left:0%;"><b>0</b></div>
+      <div class="tick" style="left:20%;"><b>4</b></div>
+      <div class="tick" style="left:40%;"><b>8</b></div>
+      <div class="tick" style="left:50%;"></div>
+      <div class="tick" style="left:60%;"></div>
+      <div class="tick" style="left:65%;"><b>13</b></div>
+      <div class="tick" style="left:80%;"></div>
+      <div class="tick" style="left:100%;"><b>20</b></div>
+      <!-- sauts -->
+      <div class="jump" style="left:40%;width:8.3%;height:26px;top:-32px;"></div>
+      <div class="jump" style="left:48.3%;width:8.3%;height:26px;top:-32px;"></div>
+      <div class="jump" style="left:56.6%;width:8.4%;height:26px;top:-32px;"></div>
+      <img src="../img/avatars/ptero_joyeux_1.png" style="position:absolute;left:63%;top:-72px;width:56px;height:56px;object-fit:contain;">
+      <span class="chip" style="position:absolute;left:38%;top:-74px;background:#7ee6c322;border:1.5px solid #7ee6c3;">8 + 5 sauts !</span>
+    </div>
+    <div class="bignum" style="position:absolute;bottom:18px;width:100%;text-align:center;font-size:1.8rem;">8 + 5 = 13 !</div>
+  </div>
+  <div class="cbody">
+    <p class="skill"><b>Compétence :</b> l'addition comme DÉPLACEMENT sur la droite numérique — le sens de « + » avant le calcul.</p>
+    <p><b>Interaction :</b> le ptéro est perché sur le 8. « Avance de 5 ! » — l'enfant tape 5 fois (ou choisit le nombre de sauts), chaque saut dessine un arc et le nombre s'affiche. Grande version : sauts de 10 en 10 pour aller à 100. Variante soustraction : il vole à reculons !</p>
+  </div>
+</section>
+
+<!-- ═══ 8. LE MIROIR MAGIQUE (×2 et ×3) ═══ -->
+<section class="card" data-n="8">
+  <div class="chead"><div class="cnum">8</div><div><h2>Le Miroir Magique</h2><div class="tag">doubles & triples · ×2 / ×3 ≤ 20</div></div></div>
+  <div class="scene" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;">
+    <div style="display:flex;align-items:center;">
+      <img src="../img/avatars/trex_joyeux_1.png" style="width:74px;height:74px;object-fit:contain;">
+      <div class="mirrorline" style="height:74px;"></div>
+      <img src="../img/avatars/trex_joyeux_1.png" style="width:74px;height:74px;object-fit:contain;transform:scaleX(-1);opacity:.7;filter:brightness(1.1);">
+      <div class="mirrorline" style="height:74px;"></div>
+      <img src="../img/avatars/trex_joyeux_1.png" style="width:74px;height:74px;object-fit:contain;opacity:.45;filter:brightness(1.2);">
+    </div>
+    <div class="bignum" style="font-size:1.6rem;">4 × 3 = 12</div>
+    <div style="display:flex;gap:8px;">
+      <span class="tile">4 × 2</span><span class="tile" style="border-color:#ffd166;background:#ffd16622;">4 × 3</span><span class="tile">5 × 3</span><span class="tile">6 × 2</span>
+    </div>
+  </div>
+  <div class="cbody">
+    <p class="skill"><b>Compétence :</b> doubles puis TRIPLES — les groupes égaux comme fondation du ×.</p>
+    <p><b>Interaction :</b> l'enfant place ses dinos, puis choisit le miroir simple (×2) ou le miroir d'angle (×3) : les reflets apparaissent un par un. « 4, et encore 4, et encore 4 → 12 ! » Collection de tuiles-multiplications à débloquer, toujours ≤ 20.</p>
+  </div>
+</section>
+
+<!-- ═══ 9. LA MAISON DES NOMBRES (nouveau) ═══ -->
+<section class="card" data-n="9">
+  <div class="chead"><div class="cnum new">9</div><div><h2>La Maison des Nombres</h2><div class="tag">décomposition · 10 = 6 + ?</div></div></div>
+  <div class="scene" style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;">
+    <div>
+      <div class="roof"><b>10</b></div>
+      <div class="house">
+        <div class="room">
+          <div class="egg" style="width:22px;height:28px;"></div><div class="egg" style="width:22px;height:28px;"></div><div class="egg" style="width:22px;height:28px;"></div><div class="egg" style="width:22px;height:28px;"></div><div class="egg" style="width:22px;height:28px;"></div><div class="egg" style="width:22px;height:28px;"></div>
+        </div>
+        <div class="room">
+          <span class="bignum" style="font-size:2.4rem;color:#b59a6a;">?</span>
+        </div>
+      </div>
+    </div>
+    <div class="chip">6 œufs dorment à gauche… combien à droite ?</div>
+  </div>
+  <div class="cbody">
+    <p class="skill"><b>Compétence :</b> décomposition des nombres (10 = 6 + 4) — la base des compléments et de la soustraction.</p>
+    <p><b>Interaction :</b> le numéro de la maison est sur le toit. Une chambre est remplie, l'autre à deviner. L'enfant fait entrer les œufs un par un jusqu'à ce que la maison dise « COMPLET ! ». Toutes les maisons de 5 à 10 à explorer, puis 20.</p>
+  </div>
+</section>
+
+<!-- ═══ 10. QUEL BUS EST LE PLUS PLEIN ? (nouveau) ═══ -->
+<section class="card" data-n="10">
+  <div class="chead"><div class="cnum new">10</div><div><h2>Quel Bus est le Plus Plein ?</h2><div class="tag">comparaison · plus / moins / pareil</div></div></div>
+  <div class="scene" style="display:flex;align-items:center;justify-content:center;gap:30px;">
+    <div style="text-align:center;">
+      <div style="display:grid;grid-template-columns:repeat(5,34px);gap:5px;">
+        <div class="seat" style="width:34px;height:34px;"><img src="../img/avatars/allo_joyeux_1.png"></div>
+        <div class="seat" style="width:34px;height:34px;"><img src="../img/avatars/anky_joyeux_4.png"></div>
+        <div class="seat" style="width:34px;height:34px;"><img src="../img/avatars/cory_joyeux_1.png"></div>
+        <div class="seat" style="width:34px;height:34px;"><img src="../img/avatars/diplo_joyeux_1.png"></div>
+        <div class="seat" style="width:34px;height:34px;"><img src="../img/avatars/galli_joyeux_1.png"></div>
+        <div class="seat" style="width:34px;height:34px;"><img src="../img/avatars/velo_joyeux_1.png"></div>
+        <div class="seat" style="width:34px;height:34px;"><img src="../img/avatars/trex_joyeux_1.png"></div>
+        <div class="seat ghost" style="width:34px;height:34px;"></div>
+        <div class="seat ghost" style="width:34px;height:34px;"></div>
+        <div class="seat ghost" style="width:34px;height:34px;"></div>
+      </div>
+      <div class="chip" style="margin-top:8px;">bus A · 7</div>
+    </div>
+    <div class="bignum" style="font-size:2rem;">?</div>
+    <div style="text-align:center;">
+      <div style="display:grid;grid-template-columns:repeat(5,34px);gap:5px;">
+        <div class="seat" style="width:34px;height:34px;"><img src="../img/avatars/brachio_joyeux_2.png"></div>
+        <div class="seat" style="width:34px;height:34px;"><img src="../img/avatars/tritri_joyeux_3.png"></div>
+        <div class="seat" style="width:34px;height:34px;"><img src="../img/avatars/ptero_joyeux_1.png"></div>
+        <div class="seat" style="width:34px;height:34px;"><img src="../img/avatars/mosa_joyeux_1.png"></div>
+        <div class="seat" style="width:34px;height:34px;"><img src="../img/avatars/stego_joyeux_1.png"></div>
+        <div class="seat ghost" style="width:34px;height:34px;"></div>
+        <div class="seat ghost" style="width:34px;height:34px;"></div>
+        <div class="seat ghost" style="width:34px;height:34px;"></div>
+        <div class="seat ghost" style="width:34px;height:34px;"></div>
+        <div class="seat ghost" style="width:34px;height:34px;"></div>
+      </div>
+      <div class="chip" style="margin-top:8px;">bus B · 5</div>
+    </div>
+  </div>
+  <div class="cbody">
+    <p class="skill"><b>Compétence :</b> comparer des quantités (plus, moins, pareil) en s'appuyant sur les rangées de 5, puis sur les chiffres.</p>
+    <p><b>Interaction :</b> « Quel bus a le PLUS de passagers ? » — l'enfant tape le bus. Feedback visuel : les rangées s'alignent face à face, le surplus s'illumine (« 2 de plus ! »). Variantes : « le MOINS », « trouve les deux bus pareils », écarts de 1 (piège).</p>
+  </div>
+</section>
+
+</div>
+
+<script>
+  // ?only=N → n'affiche que la carte N (pour captures unitaires)
+  (function(){
+    const m = new URLSearchParams(location.search).get('only');
+    if (!m) return;
+    document.body.classList.add('only');
+    document.querySelectorAll('.card').forEach(c => {
+      if (c.dataset.n !== m) c.classList.add('hide');
+    });
+  })();
+</script>
+</body>
+</html>

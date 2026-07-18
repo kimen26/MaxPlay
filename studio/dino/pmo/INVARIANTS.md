@@ -1,7 +1,9 @@
 # INVARIANTS — Pôle DINO
 
 > Source de vérité des **chiffres clés**. MAJ uniquement si un invariant change (par `dino-pmo`).
-> **Dernière vérif : 2026-07-05 CLÔTURE FINALE (EP-D25 AUDIT COMPLET 60 DINOS VALIDÉES).**
+> **Dernière vérif : 2026-07-18 (audit visuel phase 2 + MEGA nettoyage).**
+> Session 2026-07-17/18 : audit visuel 100 % (540 images) → phase 1 (vignettes ombre + purge 18 heros tiers) + phase 2 (42 images régénérées, leçons L-D-38..43). **Gallimimus complété → 60/60 dinos complets (8/8 axes)**. Sprites ingame top 15 (`sprites/`), INDEX-IMAGES créé, legacy racine/paws/scale/variants purgé.
+> **Dernière vérif précédente : 2026-07-05 CLÔTURE FINALE (EP-D25 AUDIT COMPLET 60 DINOS VALIDÉES).**
 > Session 2026-07-05 : audit visuel massif 100 % (60 dinos, ~408 images), 39 irréprochables, 8 fausses regénérées + validées Grok, L-D21 silhouette maîtresse fondamentale gravée, EP-D25 clôturé.
 > Session 2026-07-05 (suite 3) : suppression zones `site/img/dinos/silhouettes/` + `studio/dino/content/assets/silhouettes/` (orphelines, canon = `ombres/` seul). Nouveau `site/js/dinos-audio-manifest.js` généré depuis disque réel (robuste prod). Ticket audio récit-époque créé.
 > Session 2026-07-05 (suite 2) : bug prod GITIGNORE fixé (60 ombres + 11 héros promotion vers tracking), L-D22 gravée.
@@ -83,7 +85,7 @@ Résolus via `narration/personnages/voix-meta/voice-map.json`. Modèle **eleven_
 3. 🔒 **FRONTIÈRE AUTORING / PRODUIT** — une feature (mini-jeu, page) ne lit QUE `site/js/dinos-data.js` + assets `site/img/dinos/` référencés, nommés par `id` stable. Jamais elle ne monte lire dans `studio/` (non déployé). Donnée manquante → descend dans dinos-data.js via script d'export.
 4. 🔒 **CHECKLIST « DINO COMPLET » (8 axes)** — `hero · 5 scènes paléoart (headshot/manger/paris/ecosysteme/funfact) · coloriage · 5 segments audio (nom/taille/regime/funfact/recap) · silhouette · fiche fact-checkée+relue-péda · étymo · mesures`. (Le récit de voyage est par-époque, PAS par-dino → hors checklist.) Suivi via l'outil généré `_ETAT-DINOS.md` (branché dans dino-archiviste, ticket EP-D-GED).
 
-**Statut paléoart (MAJ 2026-07-15 via `_ETAT-DINOS.md` généré)** : **59/60 dinos complets** sur les 7 assets paléoart (hero + headshot/manger/paris/ecosysteme/funfact + coloriage). **Seul incomplet : `gallimimus`** (manque `_ecosysteme` + `_funfact`). Paléoart câblé en prod (`dev-dinos.html` lit `img/dinos/paleoart/`). L'ancienne question « déploiement immédiat ou validation ? » du batch 2026-07-10 est **close** (déployé). Régénérer l'état : `node studio/dino/content/scripts/export/_gen-etat-dinos.cjs`.
+**Statut paléoart (MAJ 2026-07-18 via `_ETAT-DINOS.md` généré)** : **60/60 dinos complets** sur les 7 assets paléoart (hero + headshot/manger/paris/ecosysteme/funfact + coloriage) — gallimimus complété 2026-07-18 (batch série + MORPHO). Paléoart câblé en prod (`dev-dinos.html` lit `img/dinos/paleoart/`). L'ancienne question « déploiement immédiat ou validation ? » du batch 2026-07-10 est **close** (déployé). Régénérer l'état : `node studio/dino/content/scripts/export/_gen-etat-dinos.cjs`.
 
 **Statut du bloc « noms vocaux » (décision 2026-07-06)** : Les 60 MP3 narrateur_h `site/audio/dinos/noms/{id}.mp3` sont un **6ᵉ type d'asset BONUS** hors des 5 blocs fiche standard (nom/taille/régime/funfact/recap). Raison : ton jeu [excited] distinct du ton fiche [neutral], usage exclusif mini-jeux (mj-24, mj-28, mj-31, mj-33), optionnel pour nouvelles fiches audio (EL quota). **Implication gouvernance** : la ligne INVARIANTS « Dinos avec audio complet » est désormais à **60/60** (✅ 2026-07-13, 9 Cénozoïque complétés — voir la ligne du tableau plus haut ; la valeur « 51 » de 2026-07-06 est **périmée**) ; le bloc bonus noms/ reste tracé à part. Homogénéisation possible post-reset (unifier tous noms en ton fiche) — décision différée Papa Yann.
 

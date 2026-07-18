@@ -2,6 +2,28 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-07-18 (suite 2) — MEGA TOUR : nettoyage/normalisation/indexation transverse (commits 5b46→0a20)
+
+**État** : COMPLÉTÉ — 7 lots poussés. Demande Papa Yann : « vérifie tous les fichiers partout, nettoie, centralise, index, cartographie, aplatis mémoire+décisions, process militaire ».
+
+**Méthode** : 4 agents Explore en // (inventaire pmo / content / site / mémoire) → plan consolidé → exécution par lots commités.
+
+**Fait** :
+- **A — Legacy images purgé** (5b4652a5) : 42 jpg racine `site/img/dinos/` + `paws/` (photos web scrapées, droits douteux) + `scale/` + `variants/` = ~50 Mo, zéro ref code (vérifié DINO_EXTRAS). Vieil `INDEX.md` périmé → `README.md` pointant INDEX-IMAGES.
+- **C1 — pmo/ dédoublonné** (e35ff915) : 8 tickets i18n en DOUBLE supprimés, L-D-33 (doublet L-D-34) retiré, sprint-log 2026-06 archivé (`_archive/sprint-log-2026-06.md`, −263 l.), `audit-images-RAPPORT.md`→`_archive/`, INVARIANTS en-tête 2026-07-18 + statut 60/60 + §règles verrouillées = POINTEUR vers figée (fin de la recopie qui dérive).
+- **C2 — content/ tranché** (2909a147) : pipeline audio FR **V3 = canon unique** ; anciennes strates (groupe-*/special-*/_VAGUE-*/json-top, scripts `_md2json*.cjs`/`_gen-audio-top.sh`) → `_archive/2026-07-18-ancien-pipeline/`. **INBOX VIDÉE** (règle 48h) : Pierre-et-le-Loup mp3+mp4 (105 Mo, copyright, hors-scope) sorti du repo ; `marine_reptiles/`→`sources/` ; refs échelle→`sources/images/refs-echelle/`. `_test-tag-json.json` mort supprimé, `_grok-test` purgé.
+- **C3 — site/ orphelins** (bfdfcc54) : 8 MP3 `special-{pangee,extinction}-{a,b,c,d}` (jamais joués, code lit que `-recap`), `_preview-*.mp3`, `_concat-*.txt`, `dev-dinos-maquettes.html` orpheline.
+- **D — index/carto** (df820826) : INDEX-IMAGES complété (megafaune refs, refs-echelle) ; tickets dette EP-074 (mutualiser UI dupliquée dev-dinos → mp-theme partagé) + EP-D-GED-08 (renommer dev-dinos.html→dinos.html).
+- **E — mémoire aplatie** (auto, non-git) : 10 fichiers re-pathés (`game-html/`→`site/`, `game/docs/`→`studio/*/`, `docs/MAX_PROFILE`→`memory/`…), `project_state.md` + `project_dino_tritri.md` (contredit par feedback_tritri_portee_limitee) supprimés, MEMORY.md AUTO index nettoyé.
+- **F — empreintes top 15** (0a20201e) : `site/img/dinos/traces/` 15 pictogrammes de pas transparents (jeu de piste), pied typé, mosasaure=nageoire. Remplace paws/ purgé.
+
+**Leçons** :
+- **L-D-44** : `git rm` avec glob sans match au niveau demandé (`site/img/dinos/*.png`) devient **pathspec RÉCURSIF** → a supprimé ombres/ sprites/ paleoart(webp)/ wiki/ par erreur. Rattrapé par `git restore --staged --worktree` AVANT commit (toujours relire `git status` après un rm glob, lister les chemins explicitement). [[feedback_concurrent_git_staging]]
+- **L-D-45** : anti-recopie de règles — INVARIANTS recopiait le §Règles verrouillées de la figée (quadruple pour la Doctrine GED) → une copie ment tôt ou tard. Règle : le canon (figée pour 🔒, decisions.md pour DEC) porte le TEXTE, tous les autres POINTENT. Appliqué à INVARIANTS.
+- **REX PMO** : dino-pmo a de nouveau prétendu graver sans écrire (git vierge) — je grave moi-même désormais, [[feedback_verifier_claims_agents]] re-confirmé 2× ce jour.
+
+---
+
 ## 2026-07-18 (suite) — SPRITES INGAME TOP 15 + INDEX-IMAGES (commits 8e3bf8dc, 189d7853)
 
 **État** : COMPLÉTÉ — 2 livraisons poussées.

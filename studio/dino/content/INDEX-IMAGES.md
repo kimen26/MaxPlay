@@ -11,6 +11,7 @@
 | Besoin | Collection | Chemin |
 |---|---|---|
 | **Sprite transparent ingame** (perso de jeu, carte, HUD) | sprites | `site/img/dinos/sprites/<Nom>_sprite.png` (entier profil) · `<Nom>_tete.png` (buste) |
+| **Empreinte de pas** (jeu de piste « à qui est cette trace ? ») | traces | `site/img/dinos/traces/<Nom>_trace.png` (pictogramme plat transparent, top 15) |
 | **Grande scène réaliste** (hero fiche, fond, illustration) | paleoart | `site/img/dinos/paleoart/<Nom>.jpg` (hero) + 5 scènes (voir nommage) |
 | **Coloriage à imprimer** | paleoart | `site/img/dinos/paleoart/<Nom>_coloriage.webp` |
 | **Silhouette / ombre chinoise** (vignette, quiz "qui est-ce ?") | ombres | `site/img/dinos/ombres/<Nom>_ombre.png` (noir sur transparent) |
@@ -39,6 +40,11 @@
 - **Contenu** : top 15 dinos × 2 : `<Nom>_sprite.png` (entier profil) + `<Nom>_tete.png` (buste ¾). PNG alpha, max 800 px, quantizés.
 - **Consommé par** : rien encore — réserve pour mini-jeux dino.
 - **Régénérer** : générer sur **fond gris uni** (prompts sprite dans les scripts de scratch/skill) → détourer : `python studio/dino/content/scripts/images-grok/detoure_sprite.py <in> <out.png> [tol=45]` (flood-fill bords + color-key global + anti-alias). Museau/pelage très clair → baisser tol à ~26. Toujours valider sur damier.
+
+### traces/ — empreintes pictogramme (2026-07-18)
+- **Contenu** : top 15 dinos, `<Nom>_trace.png` = empreinte de pas stylisée (icône plate 1 couleur, transparente). Pied typé (théropode griffu / raptor 2 doigts / sauropode rond / sabot / félin / nageoire mosasaure).
+- **Consommé par** : rien encore — réserve pour un jeu « à qui est cette trace ? ».
+- **Régénérer** : Grok fond uni (prompt pied par type) → `detoure_sprite.py` → optimiser (64c). Remplace l'ancien `paws/` (photos scrapées, purgé).
 
 ### grok/ + wiki/ — galeries fiche
 - **Contenu** : grok/ = images IA filtrées (revue agents) · wiki/ = Wikimedia CC (crédits conservés).

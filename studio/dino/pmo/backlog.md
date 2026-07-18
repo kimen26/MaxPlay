@@ -18,6 +18,10 @@
 ---
 
 ## Leçons (patterns/découvertes gravés)
+- **L-D-44** — **`git rm` + glob sans match = pathspec RÉCURSIF dangereux.** `git rm site/img/dinos/*.png` (aucun png à la racine) a supprimé récursivement ombres/ sprites/ paleoart(webp)/ wiki/. Rattrapé par `git restore --staged --worktree` AVANT le commit. Réflexe : après tout `rm`/`git rm` avec glob, relire `git status --short` et vérifier le périmètre AVANT de committer ; préférer lister les chemins explicitement. Cf. [[feedback_concurrent_git_staging]]. | gravée 2026-07-18
+
+- **L-D-45** — **Anti-recopie de règles (canon porte le texte, le reste POINTE).** INVARIANTS.md recopiait le §Règles verrouillées de figees/encyclopedie.md ; la Doctrine GED était à l'identique dans 4 fichiers. Une copie diverge tôt ou tard. Règle : le canon (figée pour 🔒, decisions.md pour DEC-xxx) détient le TEXTE plein, tous les autres fichiers mettent un lien. Appliqué 2026-07-18 (INVARIANTS §règles → pointeur). | gravée 2026-07-18
+
 
 | ID | Sujet | État |
 |----|-------|------|

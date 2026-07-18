@@ -9,4 +9,3 @@
 | `sprites/` | Détourés transparents ingame (entier + tête, top 15) |
 | `grok/` · `wiki/` | Galeries fiche (via js générés) — gelées |
 | `_new-*` | Staging local gitignoré (validation avant rangement) |
-| `*.jpg` racine · `paws/` · `scale/` · `variants/` | Legacy non référencé (candidats archive) |

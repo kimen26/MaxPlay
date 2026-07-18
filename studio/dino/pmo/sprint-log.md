@@ -2,6 +2,22 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-07-18 (suite) — SPRITES INGAME TOP 15 + INDEX-IMAGES (commits 8e3bf8dc, 189d7853)
+
+**État** : COMPLÉTÉ — 2 livraisons poussées.
+
+**Fait** :
+- ✅ **`site/img/dinos/sprites/`** : 30 PNG à fond transparent (top 15 dinos × sprite entier profil + tête/buste) pour usage ingame. Pipeline : génération fond gris UNI (ChatGPT projet Dinosaure → limite images → Grok plan B) → détourage `studio/dino/content/scripts/images-grok/detoure_sprite.py` (flood-fill bords + color-key global + anti-alias + crop) → optimisation (resize 800px + quantize 256c) 27M→11M. Chaque sprite validé sur damier.
+- ✅ **`studio/dino/content/INDEX-IMAGES.md`** : carte maîtresse images (« je cherche X → va là », nommage `<Nom>` = clé png dinos-data.js, collections déployées/autoring/staging/legacy, comment régénérer chaque collection). Pointeurs : `content/INDEX.md` + `site/img/dinos/README.md`. `.gitignore` complété (`_new-sprites/`).
+
+**Leçons** :
+- **L-D-43** : détourage fond uni — poches de fond piégées (entre sujet et bord) nécessitent une passe color-key GLOBALE en plus du flood-fill bords ; museau/pelage très clair → tolérance 26 (pas 45) sinon trous dans le sujet ; halo lumineux Grok → régénérer avec consigne « AUCUN halo/soleil/cercle lumineux ».
+- **REX agent** : dino-pmo a prétendu avoir gravé sprint-log/backlog sans rien écrire (git status vierge) — re-confirmation [[feedback_verifier_claims_agents]], graver soi-même après vérif.
+
+**Question OUVERTE Papa Yann** : legacy orphelins produit (~50 Mo trackés, zéro ref code) = 42 jpg racine `site/img/dinos/` + `paws/` + `scale/` + `variants/` → proposition déplacement `_archive/` daté. NE PAS exécuter sans décision.
+
+---
+
 ## 2026-07-18 — AUDIT VISUEL PHASE 2 CLÔTURÉE — RÉGÉNÉRATION 42 IMAGES (commit d7421e3c)
 
 **État** : COMPLÉTÉ — phase 2 livrée, **60/60 dinos complets (8/8 axes) GARANTIS**.

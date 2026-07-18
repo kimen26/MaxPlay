@@ -6,6 +6,10 @@ Ce dossier contient les fichiers retirés de la circulation active mais **conser
 
 ## Contenu
 
+### `2026-07-19-skills-connaissance-ecc/` — Dossiers « connaissance » ex-`.claude/skills/`
+
+7 dossiers hérités de l'époque ECC (avril 2026) : `00-project` (guidelines pré-refonte + persona cheikh-maxplay), `13-media`, `20-game-tech` (patterns Phaser), `audio`, `design`, `education` (pédagogie enfant), `ux`. **Jamais chargés** par Claude Code (SKILL.md imbriqués à 2 niveaux = non découverts) et contenu antérieur à la refonte CLAUDE.md 2026-05-13. Nettoyage input-context 2026-07-19. La pédagogie 4-5 ans active vit dans `studio/narration/personnages/theorie/pedagogie-enfance/`.
+
 ### `dino-orphans-2026-07-15/` — Orphelins dino (scan militaire)
 
 | Fichier | Raison archivage |

@@ -46,19 +46,19 @@ $pathDino = $lowerPrompt -match 'studio/dino/|dev-dinos|dinos-data|audio/dinos'
 $reminders = @()
 
 if ($dinoMatch -or $pathDino) {
-    $reminders += "[SIGNAL DINO detecte] -> invoquer dino-pmo (FOND) automatiquement. Si modif structure : aussi dino-archiviste (FORME). Contenu/peda/ecriture : dino-conseiller. Verifier studio/dino/figees/encyclopedie.md (Tritri, audio, UI)."
+    $reminders += "[SIGNAL DINO] -> CAPTURE IMMEDIATE : toute idee/decision de ce tour = 1 ligne dans studio/dino/pmo/backlog.md DANS LE TOUR (pas a la cloture). Verifier figees/encyclopedie.md avant d'editer. Brainstorm/contenu/peda -> consulter dino-conseiller. Cloture de session : trace dans studio/dino/pmo/ (toi-meme) ou dino-pmo."
 }
 
 if (($gameMatch -or $pathGame) -and -not ($dinoMatch -or $pathDino)) {
-    $reminders += "[SIGNAL JEU detecte] -> invoquer game-pmo (FOND) automatiquement. Si modif structure : aussi game-archiviste (FORME)."
+    $reminders += "[SIGNAL JEU] -> CAPTURE IMMEDIATE : toute idee/decision de ce tour = 1 ligne dans studio/minijeux/pmo/backlog.md DANS LE TOUR. Figeage Papa Yann ('c'est fige') -> docs/jeux/figees/mj-XX.md AVANT tout. Brainstorm/design -> consulter game-conseiller. Cloture : trace dans studio/minijeux/pmo/ (toi-meme) ou game-pmo."
 }
 
 if ($narrationMatch -or $pathNarration) {
-    $reminders += "[SIGNAL NARRATION detecte] -> invoquer narration-pmo (FOND) automatiquement. Si modif structure : aussi narration-archiviste (FORME)."
+    $reminders += "[SIGNAL NARRATION] -> CAPTURE IMMEDIATE : toute idee/decision de ce tour = 1 ligne dans studio/narration/pmo/backlog.md DANS LE TOUR. Chiffre/casting/voice_id -> narration-pmo mode RECHERCHE (jamais de memoire). Brainstorm -> consulter narration-conseiller. Cloture : trace dans studio/narration/pmo/ (toi-meme) ou narration-pmo."
 }
 
 if ($structMatch -and -not ($gameMatch -or $narrationMatch -or $dinoMatch -or $pathGame -or $pathNarration -or $pathDino)) {
-    $reminders += "[SIGNAL STRUCTURE detecte sans pole clair] -> demander le pole a l'utilisateur OU deduire du chemin avant d'invoquer l'archiviste."
+    $reminders += "[SIGNAL STRUCTURE sans pole clair] -> deduire le pole du chemin ou demander en texte, puis appliquer la capture immediate du pole."
 }
 
 if ($reminders.Count -gt 0) {

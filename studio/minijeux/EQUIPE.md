@@ -3,7 +3,7 @@
 > **Ce fichier est la référence technique complète de l'équipe Game.**
 > **Pour la lecture quotidienne**, voir [`INDEX.md`](INDEX.md).
 > **Pour les chiffres clés**, voir [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md).
-> Mis à jour 2026-05-13 (harmonisation Game ↔ Narration — création game-archiviste, refonte structure pmo/).
+> Mis à jour 2026-07-19 (**fusion gouvernance** : game-archiviste + game-mj-pmo + game-tile-pmo fondus dans `game-pmo` unifié Sonnet ; capture immédiate des idées par le main agent ; hook Stop `pmo-check` 3 pôles).
 >
 > Équivalent côté Narration : [`../studio/narration/equipe/ORGANIGRAMME.md`](../narration/equipe/ORGANIGRAMME.md).
 
@@ -16,14 +16,10 @@
 ```
 ┌─ AUTEUR (Papa Yann)
 │
-├─ NIVEAU 1 : PMO PROACTIFS (AUTO à chaque tour)
-│  ├─ game-pmo            [Haiku · AUTO signal JEU]     — FOND : INVARIANTS, decisions, sprint-log, backlog, audit-trail
-│  └─ game-archiviste     [Haiku · AUTO signal structure] — FORME : dossiers, gabarit, refs, orphelins, préfixes
-│
-├─ NIVEAU 2 : SOUS-PMO (invoqués par game-pmo parent)
-│  ├─ game-mj-pmo         [Haiku] — pipeline mini-jeux HTML (5 fichiers scope strict)
-│  ├─ game-tile-pmo       [Haiku] — pipeline tile-tools LimeZu (4 fichiers scope strict)
-│  └─ game-wexworld-pmo   [Haiku] — ⏳ Phase 2 (placeholder Phaser RPG)
+├─ NIVEAU 1 : GREFFIER UNIFIÉ (fusion 2026-07-19)
+│  └─ game-pmo            [Sonnet · clôture/audit/RECHERCHE] — FOND (INVARIANTS, decisions, sprint-log, backlog)
+│                          + FORME (dossiers, gabarit, refs, orphelins) + domaines tile & mj (LESSONS, rules, figées)
+│                          NB : la capture immédiate des idées = main agent, dans le tour (hook Stop pmo-check l'enforce)
 │
 ├─ NIVEAU 3 : CONSEILLER (manuel, sur question produit)
 │  └─ game-conseiller     [Opus] — binôme créatif transverse 3 sous-domaines
@@ -51,11 +47,7 @@
 
 | Agent | Modèle | Niveau | Mode invocation | Doit répondre quand ? |
 |-------|--------|--------|-----------------|------------------------|
-| **game-pmo** | Haiku | 1 (parent) | **AUTO** à chaque tour signal JEU | Tout : nouveau MJ, refonte tile, modif rules, décision, dump backlog, fin de session |
-| **game-archiviste** | Haiku | 1 (parent) | **AUTO** à chaque tour signal structure | Création/suppression fichier, nouveau dossier, modif INDEX, gabarit, refs cassées, recipe, LESSONS |
-| **game-mj-pmo** | Haiku | 2 (enfant) | Sur signal `mj-XX`, `rules.md`/`stack.md`, `site/` par game-pmo | Toute modif touchant les 5 fichiers MJ |
-| **game-tile-pmo** | Haiku | 2 (enfant) | Sur signal `tile`, `recipe`, `LimeZu`, `cartography`, `patterns` par game-pmo | Toute modif touchant tile-tools |
-| **game-wexworld-pmo** | Haiku | 2 (enfant) | ⏳ Phase 2 | À activer quand WexWorld démarre |
+| **game-pmo** (unifié) | Sonnet | 1 | Clôture de session, `/game-pmo-audit`, mode RECHERCHE | FOND + FORME + domaines tile/mj — un seul garant depuis 2026-07-19 |
 | **game-conseiller** | Opus | 3 | Manuel — question produit/UX/vision | Quand auteur dit "qu'est-ce que t'en penses ?", "comment on aborde X ?", "challenge cette idée" |
 | **game-dev** | Sonnet | 4 | Manuel — code à écrire | Implémentation MJ, refacto code, fix bug code |
 | **game-tile-simplifier** | Sonnet | 4 | Manuel — début pipeline tile | Photo/description à transformer en ANALYSE structurée |
@@ -71,18 +63,12 @@
 
 ```
 Auteur
-  ├──→ game-conseiller   (challenge produit, brainstorm, vision)
-  ├──→ game-pmo          (fond : décisions, backlog, sprint-log)
-  ├──→ game-archiviste   (forme : dossiers, gabarit, INDEX)
+  ├──→ game-conseiller   (challenge produit, brainstorm, vision — à consulter d'office sur brainstorm)
+  ├──→ game-pmo unifié   (clôture : fond + forme + domaines · audit · recherche)
   └──→ game-dev          (code direct, simple modif)
 
-game-pmo (parent)
-  ├──→ game-mj-pmo       (sur signal MJ)
-  ├──→ game-tile-pmo     (sur signal tile)
-  └──→ game-wexworld-pmo (⏳ Phase 2)
-
-game-archiviste (parent)
-  └──→ scan transverse FORME (ne touche pas aux fichiers des sous-spé, mais les audite)
+Main agent (capture immédiate, dans le tour)
+  └──→ 1 ligne backlog par idée/décision + figees/mj-XX.md sur figeage — hook Stop pmo-check l'enforce
 
 game-tile-simplifier → game-tile-designer → game-tile-reviewer   (pipeline 3 étapes tile)
 
@@ -99,14 +85,14 @@ game-dev → game-mj-reviewer   (après livraison code MJ)
 | `pmo/decisions.md` | game-pmo | Décisions figées + Q-ouvertes | Toute décision avec raison + impact |
 | `pmo/sprint-log.md` | game-pmo | Journal sessions | Chaque session datée (Fait/Décisions/État reboot) |
 | `pmo/backlog.md` | game-pmo | Tickets EP-xxx + Leçons L-xxx | Mouvement ticket, nouvelle leçon, changelog session |
-| `pmo/audit-trail.md` | game-pmo + game-archiviste | Traces audits + cause racine | Chaque audit (PMO ou Archiviste) |
+| `pmo/audit-trail.md` | game-pmo unifié | Traces audits + cause racine | Chaque audit (PMO ou Archiviste) |
 | `memory/state.md` | game-pmo | État déploiement statique | Ajout/retrait MJ, bug critique en cours |
 | `memory/rules.md` | game-pmo | Règles UX/péda + designs validés | Nouvelle règle non-négociable validée |
 | `memory/stack.md` | game-dev | Stack technique + archi déploiement | Refonte stack |
 | `memory/VISION-LONG-TERME.md` | game-conseiller + game-pmo | Vision Phase 2 + roadmap | Inflexion stratégique |
-| `site/tile-tools/LESSONS.md` *(skill)* | game-tile-pmo | 30+ leçons tile gravées | Chaque correction tile validée |
-| `site/tile-tools/PIPELINE-MEMORY.md` | game-tile-pmo | Frictions F-xxx + Patterns P-xxx | Chaque session pipeline tile |
-| `site/PIPELINE-MEMORY-MJ.md` | game-mj-pmo | Leçons mini-jeux gravées | Chaque session MJ |
+| `site/tile-tools/LESSONS.md` *(skill)* | main agent / game-pmo | 30+ leçons tile gravées | Chaque correction tile validée |
+| `site/tile-tools/PIPELINE-MEMORY.md` | main agent / game-pmo | Frictions F-xxx + Patterns P-xxx | Chaque session pipeline tile |
+| `site/PIPELINE-MEMORY-MJ.md` | main agent / game-pmo | Leçons mini-jeux gravées | Chaque session MJ |
 
 ---
 
@@ -116,7 +102,7 @@ game-dev → game-mj-reviewer   (après livraison code MJ)
 1. Auteur dump idée → game-pmo log dans sprint-log
 2. game-conseiller (Opus) challenge si question produit/UX
 3. game-dev (Sonnet) implémente le MJ (HTML vanilla + bus-svg.js + sounds.js + tracker.js)
-4. game-archiviste (auto) vérifie : préfixe mj-NN, référencé dans site/index.html, busSVG utilisé
+4. game-pmo (clôture) vérifie : préfixe mj-NN, référencé dans site/index.html, busSVG utilisé
 5. game-mj-reviewer (Haiku) verdict 5 sections (max 5 iter) :
    - Bus & couleurs : busSVG() utilisé, selectDistinctColors si quiz
    - UX 3.5-4 ans : zones tap 80px+, feedback < 200 ms, zéro pénalité
@@ -124,7 +110,7 @@ game-dev → game-mj-reviewer   (après livraison code MJ)
    - Technique : code propre, pas de dépendance lourde
    - Vocab & péda : dodo/réparation/terminus si pertinent
 6. game-pmo intègre dans sprint-log + backlog + state.md (count MJ +1)
-7. game-archiviste vérifie INVARIANTS.md MAJ + LESSONS si nouveau pattern
+7. game-pmo vérifie INVARIANTS.md MAJ + LESSONS si nouveau pattern
 ```
 
 ---
@@ -136,9 +122,9 @@ game-dev → game-mj-reviewer   (après livraison code MJ)
 2. game-tile-simplifier (Sonnet) étape 1/3 → ANALYSE structurée
 3. game-tile-designer (Sonnet) étape 2/3 → recette test_<nom>.py + PNG via render.py + BILAN
 4. game-tile-reviewer (Haiku) étape 3/3 → verdict PASS/FAIL max 5 iter (cf. LESSONS)
-5. game-tile-pmo grave dans LESSONS.md + PIPELINE-MEMORY.md
+5. graver LESSONS.md + PIPELINE-MEMORY.md (main agent, dans le tour)
 6. game-pmo intègre synthèse dans sprint-log + backlog
-7. game-archiviste vérifie : test_<nom>.py + PNG associé, référencé dans patterns.js/recipes_data.js
+7. game-pmo vérifie : test_<nom>.py + PNG associé, référencé dans patterns.js/recipes_data.js
 ```
 
 ---
@@ -148,10 +134,10 @@ game-dev → game-mj-reviewer   (après livraison code MJ)
 | Atelier | Avec qui | Quand | Fichiers en jeu |
 |---------|----------|-------|------------------|
 | **Vision produit** | Toi + game-conseiller | Régulier (Phase 2 scoping, refonte) | VISION-LONG-TERME.md, conseiller mémoire |
-| **Brainstorm MJ** | Toi + game-conseiller + game-mj-pmo | Quand une idée brute arrive | INBOX (pas encore créé côté Game), backlog |
+| **Brainstorm MJ** | Toi + game-conseiller (+ capture immédiate backlog) | Quand une idée brute arrive | INBOX (pas encore créé côté Game), backlog |
 | **Pipeline tile** | game-tile-{simplifier, designer, reviewer} | Création/refonte recette | recipes/, vocab.py, styles.py |
-| **Refonte structure** | game-pmo + game-archiviste | Renommage, fusion, nouveau dossier | INVARIANTS, audit-trail, decisions |
-| **Audit régulier** | Auteur invoque /game-pmo-audit + /game-archiviste-audit | Toutes les ~10 sessions OU avant commit important | audit-trail |
+| **Refonte structure** | game-pmo unifié | Renommage, fusion, nouveau dossier | INVARIANTS, audit-trail, decisions |
+| **Audit régulier** | Auteur invoque /game-pmo-audit (FOND+FORME) | Toutes les ~10 sessions OU avant commit important | audit-trail |
 | **Rétro session** | game-pmo seul | Fin de chaque session | sprint-log + (decisions/backlog si décisions) |
 
 ---
@@ -161,7 +147,6 @@ game-dev → game-mj-reviewer   (après livraison code MJ)
 | Commande | Invoque | Cible | Mode |
 |----------|---------|-------|------|
 | `/game-pmo-audit` | game-pmo | **FOND** (décisions, statuts, cohérence sémantique) | Mode AUDIT 5 sections |
-| `/game-archiviste-audit` | game-archiviste | **FORME** (gabarit, refs, orphelins, préfixes) | Mode AUDIT 5 sections |
 | `/pmo-challenge` (skill global) | n/a | LARGE (cartographie + obsolescence + simulations) | Audit ponctuel grosse charge |
 
 **Règle d'or** : alterner FORME + FOND, ne pas enchaîner 3 audits forme successifs (apprentissage 2026-05-13 narration).
@@ -171,7 +156,7 @@ game-dev → game-mj-reviewer   (après livraison code MJ)
 ## État actuel (mis à jour 2026-05-13)
 
 - [x] **game-pmo** créé 2026-05-11 (Haiku, AUTO signal JEU)
-- [x] **game-archiviste** créé 2026-05-13 (Haiku, AUTO signal structure) — binôme PMO ✅
+- [x] **game-archiviste** créé 2026-05-13, **fusionné dans game-pmo le 2026-07-19** ✅
 - [x] **game-conseiller** créé 2026-05-11 (Opus, transverse 3 sous-domaines)
 - [x] **game-dev** établi (Sonnet)
 - [x] **game-mj-pmo** créé 2026-05-11 (Haiku, sous-spé)

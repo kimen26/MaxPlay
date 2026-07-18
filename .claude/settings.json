@@ -370,7 +370,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude\\hooks\\narration-pmo-check.ps1\""
+            "command": "powershell -NoProfile -ExecutionPolicy Bypass -File \"c:\\ProjetsPerso\\Claude_Projects\\MaxPlay\\.claude\\hooks\\pmo-check.ps1\""
           }
         ]
       }

@@ -18,8 +18,8 @@ Avant **TOUT** `Edit`/`Write` sur `site/mj-XX.html` :
 1. Lire [`studio/minijeux/docs/jeux/figees/mj-XX.md`](../../studio/minijeux/docs/jeux/figees/) s'il existe (le hook `figees-injector.ps1` le réinjecte automatiquement dans le contexte — le lire, pas l'ignorer).
 2. Chaque ligne **🔒 est LOI**. Chaque ligne **❌ 🔒 est une régression déjà commise — INTERDITE**.
 3. Si ton changement contredit une ligne 🔒 → **STOP**, demande à Papa Yann de défiger explicitement. Tu ne défiges JAMAIS de toi-même.
-4. Si le fichier n'existe pas et que tu codes un comportement **validé par Papa Yann** → le créer via `game-mj-pmo` (sinon perdu au prochain `/compact`).
-5. Quand Papa Yann dit « OK c'est figé / validé / on fige / ne change plus X » → invoquer `game-mj-pmo` IMMÉDIATEMENT pour graver la décision **mot pour mot** dans `figees/mj-XX.md`.
+4. Si le fichier n'existe pas et que tu codes un comportement **validé par Papa Yann** → le créer TOI-MÊME dans le tour (sinon perdu au prochain `/compact`).
+5. Quand Papa Yann dit « OK c'est figé / validé / on fige / ne change plus X » → graver IMMÉDIATEMENT la décision **mot pour mot** dans `figees/mj-XX.md` (toi-même ou via `game-pmo` unifié — fusion 2026-07-19).
 
 > Système créé 2026-05-15 suite incident MJ-21 (décision « bus en bas » répétée >10× puis régressée). Triple verrou : hook PreToolUse + cette règle + ligne LOI dans `studio/minijeux/CLAUDE.md`. Vérification : `game-mj-reviewer` Section 0.
 
@@ -96,11 +96,11 @@ Ne jamais dupliquer game-mj-reviewer pour l'UX.
 ```
 -1. BIBLIOTHÈQUE    → studio/minijeux/docs/MECANIQUES.md : proposer 1-2 mécaniques EXISTANTES re-skinnées AVANT tout code neuf (décision Papa Yann 2026-07-14)
 0. game-conseiller  → cadrage 1 écran (layout+méca+péda) validé par Papa Yann AVANT code
-1. game-mj-pmo      → figeage initial studio/minijeux/docs/jeux/figees/mj-XX.md
+1. figeage initial  → studio/minijeux/docs/jeux/figees/mj-XX.md (main agent ou game-pmo)
 2. game-dev         → code HTML vanilla + studio/minijeux/tests/mj-XX.spec.mjs (ensemble)
 3. harnais          → cd studio/minijeux/tests && npm run mj:test mj-XX  (VERT obligatoire avant push)
 4. game-mj-reviewer → Section 0 (figé) + checklist 5 sections + Section 6 (couverture spec)
-5. Papa Yann valide → juge le RESSENTI (plus le débogueur) → game-mj-pmo grave
+5. Papa Yann valide → juge le RESSENTI (plus le débogueur) → graver figées + backlog (main agent ou game-pmo)
 ```
 
 Voie express (patch/bugfix MJ existant) : lire figé → fix → harnais vert → push. Tweak cosmétique : direct (hook figeage = filet). Max 5 itérations reviewer ↔ dev.
@@ -219,7 +219,7 @@ MJ.ready(function () {
 - Règles UX détaillées : [`studio/minijeux/memory/rules.md`](../../studio/minijeux/memory/rules.md)
 - Stack technique : [`studio/minijeux/memory/stack.md`](../../studio/minijeux/memory/stack.md)
 - Specs jeu par jeu : [`studio/minijeux/docs/jeux/INDEX.md`](../../studio/minijeux/docs/jeux/INDEX.md)
-- Sous-PMO MJ : [`.claude/agents/game-mj-pmo.md`](../agents/game-mj-pmo.md)
+- PMO unifié JEU : [`.claude/agents/game-pmo.md`](../agents/game-pmo.md) (fusion PMO+archiviste+sous-PMO 2026-07-19)
 
 ---
 

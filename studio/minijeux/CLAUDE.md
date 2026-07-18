@@ -18,7 +18,7 @@
 
 ## ⚙️ PMO + Archiviste proactifs
 
-`game-pmo` (FOND) et `game-archiviste` (FORME) sont **invoqués automatiquement** à chaque tour incluant leur signal. Voir tableau dans [`../CLAUDE.md`](../../CLAUDE.md) racine.
+**Capture immédiate (2026-07-19)** : toute idée/décision de Papa Yann dans le tour = 1 ligne dans `pmo/backlog.md` DANS LE TOUR (main agent). `game-pmo` (unifié FOND+FORME+domaines tile/mj, Sonnet) sert en clôture, audit et mode RECHERCHE. Le hook Stop `pmo-check` bloque toute session JEU sans trace pmo/.
 
 | Source de vérité | Fichier |
 |------------------|---------|
@@ -54,8 +54,7 @@
 
 | Niveau | Agent | Modèle | Mode |
 |--------|-------|--------|------|
-| 1 PROACTIF | `game-pmo` (FOND) · `game-archiviste` (FORME) | Haiku | **AUTO** sur signal |
-| 2 SOUS-PMO | `game-tile-pmo` · `game-mj-pmo` · `game-wexworld-pmo` ⏳ | Haiku | Invoqué par parent |
+| 1 GREFFIER | `game-pmo` unifié (FOND + FORME + domaines tile/mj — fusion 2026-07-19) | Sonnet | Clôture session · audit · RECHERCHE |
 | 3 CONSEILLER | `game-conseiller` | Opus | Manuel |
 | 4 SACHANTS | Pipeline tile : `simplifier` → `designer` → `reviewer` · MJ : `game-dev` → `game-mj-reviewer` | Sonnet/Haiku | Manuel |
 
@@ -83,10 +82,10 @@
 1. `game-tile-simplifier` → ANALYSE structurée
 2. `game-tile-designer` → recette `.py` + render PNG + auto-critique
 3. `game-tile-reviewer` → verdict PASS/FAIL (max 5 iter)
-4. User valide → `game-tile-pmo` grave leçons (LESSONS.md + PIPELINE-MEMORY.md)
+4. User valide → graver leçons LESSONS.md + PIPELINE-MEMORY.md (main agent ou game-pmo)
 
 **Pipeline MJ** :
-1. `game-conseiller` (challenge) → `game-dev` (code) → `game-mj-reviewer` (checklist 5 sections) → user → `game-mj-pmo` grave (PIPELINE-MEMORY-MJ.md)
+1. `game-conseiller` (challenge) → `game-dev` (code) → `game-mj-reviewer` (checklist 5 sections) → user → graver (figées + backlog, main agent ou game-pmo)
 
 ---
 
@@ -102,14 +101,13 @@ CI : [`../.github/workflows/deploy.yml`](../../.github/workflows/deploy.yml) (as
 
 **Count / liste des mini-jeux** : ne jamais recopier un chiffre ici → source unique [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md) § État déploiement + [`site/js/catalog.js`](../../site/js/catalog.js). Bugs critiques : [`memory/state.md`](memory/state.md).
 
-> ⚠️ **Locataire DINO dans `site/`** : `dev-dinos.html`, `js/dinos-data.js`, `audio/dinos/`, `img/dinos/`, `js/dinos-images-*.js` sont **déployés depuis `site/` mais appartiennent au pôle DINO** (`../dino/`, depuis 2026-06-03). Pour y toucher → règles auto-chargées via [`../../.claude/rules/dino.md`](../../.claude/rules/dino.md) + figée [`../dino/figees/encyclopedie.md`](../dino/figees/encyclopedie.md). Ne PAS appliquer les règles MJ (bus SVG, figées mj-XX) au dino. `game-pmo`/`game-archiviste` ne gèrent pas le dino → `dino-pmo`/`dino-archiviste`.
+> ⚠️ **Locataire DINO dans `site/`** : `dev-dinos.html`, `js/dinos-data.js`, `audio/dinos/`, `img/dinos/`, `js/dinos-images-*.js` sont **déployés depuis `site/` mais appartiennent au pôle DINO** (`../dino/`, depuis 2026-06-03). Pour y toucher → règles auto-chargées via [`../../.claude/rules/dino.md`](../../.claude/rules/dino.md) + figée [`../dino/figees/encyclopedie.md`](../dino/figees/encyclopedie.md). Ne PAS appliquer les règles MJ (bus SVG, figées mj-XX) au dino. `game-pmo` ne gère pas le dino → `dino-pmo`.
 
 ---
 
 ## Commandes audit
 
-- `/game-pmo-audit` — FOND (décisions, statuts, cohérence sémantique INVARIANTS ⇄ state ⇄ sprint-log)
-- `/game-archiviste-audit` — FORME (gabarit, refs, orphelins, préfixes)
+- `/game-pmo-audit` — FOND + FORME en un passage (fusion 2026-07-19 : décisions, chiffres, refs, orphelins, gabarit)
 
 ---
 

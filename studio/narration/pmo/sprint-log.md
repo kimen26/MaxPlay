@@ -6,6 +6,15 @@
 
 ---
 
+## 2026-07-19 — Fusion gouvernance : PMO unifiés + capture immédiate
+
+**Fait (transverse 3 pôles, décision Papa Yann)** :
+- PMO + archiviste fusionnés en UN agent par pôle (`game-pmo` absorbe aussi game-mj-pmo + game-tile-pmo). Modèle Haiku → **Sonnet** (REX agents menteurs). Règle anti-mensonge gravée dans chaque agent (rapport finit par `Fichiers modifiés :`, vérifié git diff).
+- **Capture immédiate** : toute idée/décision de Papa Yann = 1 ligne backlog DANS LE TOUR (main agent). Hook Stop `pmo-check.ps1` généralisé aux 3 pôles : session sans trace pmo/ = bloquée.
+- signal-detector reworké (messages actionnables + conseillers) ; commandes `/X-archiviste-audit` fusionnées dans `/X-pmo-audit` (FOND+FORME, 6 sections).
+
+**État au reboot** : gouvernance = 1 greffier/pôle + conseillers + hook enforcement. EQUIPE.md/INDEX/CLAUDE.md pôles à jour.
+
 ## 2026-07-17 — Intégration DOCTRINE transverse
 
 **Objectif :** pointer vers la DOCTRINE.md (racine) depuis le pôle NARRATION.

@@ -46,7 +46,7 @@ canonique loi · `carte` = souhait à réaliser). Après intégration en recette
 3. game-tile-reviewer    → verdict PASS/FAIL (max 5 itérations)
 ```
 
-Après PASS → user valide → `game-tile-pmo` grave leçons (`LESSONS.md` + `PIPELINE-MEMORY.md`).
+Après PASS → user valide → graver les leçons dans `LESSONS.md` + `PIPELINE-MEMORY.md` (main agent ou `game-pmo` unifié).
 
 ## Règles BRIQUE avant MACRO (gravée 2026-05-12)
 
@@ -79,7 +79,7 @@ Après PASS → user valide → `game-tile-pmo` grave leçons (`LESSONS.md` + `P
 
 - Skill : [`~/.claude/skills/maxplay-tiles/SKILL.md`](C:/Users/kimen/.claude/skills/maxplay-tiles/SKILL.md)
 - Leçons : [`~/.claude/skills/maxplay-tiles/LESSONS.md`](C:/Users/kimen/.claude/skills/maxplay-tiles/LESSONS.md)
-- PMO sous-spé : [`.claude/agents/game-tile-pmo.md`](../agents/game-tile-pmo.md)
+- PMO unifié JEU (domaine tile inclus) : [`.claude/agents/game-pmo.md`](../agents/game-pmo.md)
 - Pipeline mémoire : `site/tile-tools/PIPELINE-MEMORY.md`
 - README pipeline : [`site/tile-tools/README.md`](../../site/tile-tools/README.md)
 

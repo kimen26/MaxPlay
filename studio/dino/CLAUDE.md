@@ -20,7 +20,7 @@
 
 ## ⚙️ PMO + Archiviste + Conseiller
 
-`dino-pmo` (FOND) et `dino-archiviste` (FORME) sont **invoqués automatiquement** à chaque tour incluant un signal DINO. `dino-conseiller` (créatif) est invoqué pour l'écriture/la péda/la taxo.
+**Capture immédiate (2026-07-19)** : toute idée/décision de Papa Yann dans le tour = 1 ligne dans `pmo/backlog.md` DANS LE TOUR (main agent). `dino-pmo` (unifié FOND+FORME, Sonnet) sert en clôture, audit et mode RECHERCHE. `dino-conseiller` (créatif) : écriture/péda/taxo — le consulter d'office sur tout brainstorm contenu. Hook Stop `pmo-check` : session dino sans trace pmo/ = bloquée.
 
 | Source de vérité | Fichier |
 |------------------|---------|

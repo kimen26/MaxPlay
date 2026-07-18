@@ -19,7 +19,7 @@
 
 ## ⚙️ PMO + Archiviste proactifs
 
-`narration-pmo` (FOND) et `narration-archiviste` (FORME) sont **invoqués automatiquement** à chaque tour incluant leur signal. Voir tableau dans [`../CLAUDE.md`](../../CLAUDE.md) racine.
+**Capture immédiate (2026-07-19)** : toute idée/décision de Papa Yann dans le tour = 1 ligne dans `pmo/backlog.md` DANS LE TOUR (main agent). `narration-pmo` (unifié FOND+FORME, Sonnet) sert en clôture, audit, mode RECHERCHE (chiffres/casting/voice_ids) et relecture briefs. Le hook Stop `pmo-check` bloque toute session narration sans trace pmo/.
 
 | Source de vérité | Fichier |
 |------------------|---------|
@@ -151,8 +151,7 @@ Après correction utilisateur → leçon dans [`pmo/decisions.md`](pmo/decisions
 
 ## Commandes audit
 
-- `/narration-pmo-audit` — FOND (cohérence sémantique décisions ⇄ INDEX ⇄ Kanban)
-- `/narration-archiviste-audit` — FORME (gabarit, refs, orphelins, préfixes étapes)
+- `/narration-pmo-audit` — FOND + FORME en un passage (fusion 2026-07-19 : cohérence sémantique + gabarit, refs, orphelins, préfixes)
 
 ---
 
@@ -163,7 +162,7 @@ Après correction utilisateur → leçon dans [`pmo/decisions.md`](pmo/decisions
 - INBOX dump : [`INBOX.md`](INBOX.md)
 - Pôles voisins : [`../game/CLAUDE.md`](../minijeux/CLAUDE.md) · [`../studio/dino/CLAUDE.md`](../dino/CLAUDE.md)
 
-> ℹ️ Le **pôle DINO** (`../studio/dino/`, créé 2026-06-03) est **consommateur** de la narration : il utilise les voix (`personnages/voix-meta/voice-map.json` → `narrateur_h`, `narrateur_f`, `wex`) et les skills audio (`ecriture-audio-enfants`, `audio-direction-elevenlabs`). Il a sa propre gouvernance (`dino-pmo`/`dino-archiviste`/`dino-conseiller`). `narration-pmo` ne gère pas le contenu dino, mais toute évolution du casting de voix l'impacte.
+> ℹ️ Le **pôle DINO** (`../studio/dino/`, créé 2026-06-03) est **consommateur** de la narration : il utilise les voix (`personnages/voix-meta/voice-map.json` → `narrateur_h`, `narrateur_f`, `wex`) et les skills audio (`ecriture-audio-enfants`, `audio-direction-elevenlabs`). Il a sa propre gouvernance (`dino-pmo` unifié + `dino-conseiller`). `narration-pmo` ne gère pas le contenu dino, mais toute évolution du casting de voix l'impacte.
 
 ---
 

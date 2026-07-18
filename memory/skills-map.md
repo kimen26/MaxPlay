@@ -16,7 +16,7 @@ type: reference
 | `narration-conseiller` | Opus | Binôme créatif — challenge, pitch, carte narrative |
 | `narration-architecte` | Sonnet | Plan d'Histoire — structure, persos, contraintes |
 | `narration-gatekeeper` | Haiku | Validation finale PASS/FAIL — ennéagramme, univers, prénoms, structure |
-| `narration-archiviste` | Haiku | Index, structure dossiers, YAML, génération `_index/` |
+| *(narration-archiviste fusionné dans `narration-pmo` le 2026-07-19)* | — | — |
 | `narration-science` | Haiku | Expert sciences — biorésonance, physique, validation factuelle |
 | `narration-sensibilite` | Sonnet | Expert sensibilité lecteurs — topics sensibles, complotisme, polarisation |
 | `narration-lecteur` | Sonnet | Lecteur témoin enfant — réaction émotionnelle pure |
@@ -30,24 +30,21 @@ type: reference
 | Agent | Modèle | Utiliser quand |
 |-------|--------|----------------|
 | `game-dev` | Sonnet | Développement jeux HTML vanilla + Phaser |
-| `game-pmo` | Haiku | **PMO pôle JEU** — garant persistance state.md + BACKLOG.md, classifie inputs (6 catégories), orchestre les sous-spécialistes. À invoquer à chaque tour incluant un signal JEU. |
-| `game-tile-pmo` | Haiku | **Sous-spé PMO tile-tools LimeZu** (parent: game-pmo) — scope strict 5 fichiers (LESSONS, cartography, patterns, recipes_data, PIPELINE-MEMORY). Remonte synthèse au parent, ne touche pas state/BACKLOG. |
+| `game-pmo` | Sonnet | **PMO unifié pôle JEU** (fusion PMO+archiviste+sous-PMO tile/mj 2026-07-19) — FOND + FORME + domaines. Clôture session, audit, mode RECHERCHE. La capture immédiate des idées reste au main agent. |
 | `game-tile-simplifier` | Sonnet | **Sachant tile #1/3** — analyste de scène. Image/desc → ANALYSE structurée pour designer. Connaît 30+ LESSONS LimeZu. |
 | `game-tile-designer` | Sonnet | **Sachant tile #2/3** — constructeur recettes Python. ANALYSE → `recipes/test_<nom>.py` + PNG render + auto-inspection. |
 | `game-tile-reviewer` | Haiku | **Sachant tile #3/3** — contrôleur qualité. Verdict PASS/FAIL avec issues CRITIQUE/HAUTE/MOYENNE/BASSE. Max 5 iter. |
 | `game-conseiller` | Opus | **Binôme créatif pôle JEU (transverse)** — ta voix, force de proposition, challenge, pont entre les 3 sous-domaines (MJ, tile, WexWorld). Équivalent narration-conseiller côté jeu. |
-| `game-mj-pmo` | Haiku | **Sous-spé PMO mini-jeux HTML** (parent : game-pmo). Scope strict : rules.md, stack.md, PIPELINE-MEMORY-MJ.md, docs/jeux/. Remonte synthèse à game-pmo. |
 | `game-mj-reviewer` | Haiku | **Sachant validateur MJ pré-livraison** — checklist hardcodée 5 sections (Bus & couleurs / UX 3.5-4 ans / Audio / Technique / Vocab & péda). Verdict PASS/FAIL. Max 5 iter. |
 | `quick` | Haiku | Questions rapides, status, recherches légères |
 
 ### Équipe Dino (pôle transverse — créé 2026-06-03)
 
-> Encyclopédie dino + voyage dans le temps. Code déployé dans `site/` (dev-dinos, dinos-data, audio/dinos, img/dinos), gouvernance dans `studio/dino/`. Lié par [`.claude/rules/dino.md`](../.claude/rules/dino.md). Audits : `/dino-pmo-audit` + `/dino-archiviste-audit`.
+> Encyclopédie dino + voyage dans le temps. Code déployé dans `site/` (dev-dinos, dinos-data, audio/dinos, img/dinos), gouvernance dans `studio/dino/`. Lié par [`.claude/rules/dino.md`](../.claude/rules/dino.md). Audit : `/dino-pmo-audit` (FOND + FORME, fusion 2026-07-19).
 
 | Agent | Modèle | Utiliser quand |
 |-------|--------|----------------|
-| `dino-pmo` | Haiku | **PMO pôle DINO** (FOND) — persistance `studio/dino/pmo/` (INVARIANTS, decisions, sprint-log, backlog, audit-trail) + figée. À invoquer sur signal dino. |
-| `dino-archiviste` | Haiku | **Archiviste pôle DINO** (FORME) — structure `studio/dino/`, refs, orphelins audio/png. Surveille aussi le code dino dans `site/`. |
+| `dino-pmo` | Sonnet | **PMO unifié pôle DINO** (fusion PMO+archiviste 2026-07-19) — FOND + FORME, surveille aussi le code dino déployé dans `site/`. Clôture, audit, RECHERCHE. |
 | `dino-conseiller` | Sonnet | **Binôme créatif DINO** — écriture récits/fiches, péda 4 ans, fact-check Grokipedia, taxonomie, écriture audio narrée. |
 
 > **Anciens agents supprimés :** `narration-writer-a`, `narration-writer-b`, `narration-writer-c`, `narration-writer-claude-ancre`, `narration-keeper`, `narration-showrunner`

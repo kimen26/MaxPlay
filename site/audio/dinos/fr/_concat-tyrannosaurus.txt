@@ -1,4 +1,0 @@
-﻿file 'tyrannosaurus-nom.mp3'
-file 'tyrannosaurus-taille.mp3'
-file 'tyrannosaurus-regime.mp3'
-file 'tyrannosaurus-funfact.mp3'

@@ -1,0 +1,84 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   mp-components.css — composants UI partagés MaxPlay (opt-in)
+   Extrait de dev-dinos.html (EP-074, 2026-07-18). Charger APRÈS mp-theme.css :
+     <link rel="stylesheet" href="css/mp-theme.css">
+     <link rel="stylesheet" href="css/mp-components.css">
+   ⚠️ Opt-in volontaire : ne PAS importer depuis mp-theme.css — des MJ anciens
+   (mj-11/14/20) définissent leur propre .mode-btn et entreraient en collision.
+   Dépend des variables mp-theme : --gold, --gold-ink, --ink-2, --bg1, --r-pill.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* ── 1. PILLS / TABS / DOTS ──────────────────────────────────────────────── */
+/* Pill de sélection de mode (rangée horizontale scrollable) */
+.mode-btn {
+  flex-shrink:0; background:rgba(255,255,255,0.08);
+  border:0; border-radius:var(--r-pill);
+  color:var(--ink-2); font-family:'Nunito',sans-serif;
+  font-weight:800; font-size:0.82rem; padding:8px 14px;
+  cursor:pointer; touch-action:manipulation; white-space:nowrap;
+  transition:background 0.15s, color 0.15s;
+}
+.mode-btn.active {
+  background:var(--gold); color:var(--gold-ink); font-weight:900;
+}
+.mode-btn:active { transform:scale(0.93); }
+
+/* Pills bleues secondaires (sélecteur d'étape/continent) */
+.pangee-dots { display:flex; gap:6px; justify-content:center; margin:10px 0 4px; flex-wrap:wrap; }
+.pangee-dot { background:rgba(80,160,255,0.12); border:1px solid rgba(80,160,255,0.25); color:rgba(180,220,255,0.8); border-radius:20px; padding:5px 12px; font-family:inherit; font-size:0.72rem; font-weight:900; cursor:pointer; touch-action:manipulation; }
+.pangee-dot.active { background:#3498db; border-color:#5dade2; color:#fff; }
+
+/* Points de carrousel */
+.c-dot {
+  width:8px; height:8px; border-radius:50%;
+  background:rgba(255,255,255,0.25); transition:background 0.2s;
+}
+.c-dot.active { background:#ffe066; }
+
+/* ── 2. CÉLÉBRATIONS / ANIMATIONS ────────────────────────────────────────── */
+/* Halo doré pulsant (badge, mise en avant) */
+@keyframes badgePulse { 0%,100%{ box-shadow:0 2px 7px rgba(0,0,0,0.55); } 50%{ box-shadow:0 0 12px 3px rgba(255,204,0,0.7); } }
+/* Rebond de carte (bonne réponse, sélection) */
+@keyframes cardBounce {
+  0%   { transform:scale(1); }
+  30%  { transform:scale(1.08) translateY(-10px); }
+  60%  { transform:scale(0.96) translateY(2px); }
+  100% { transform:scale(1); }
+}
+/* Clignotement doux (voix qui parle, attente) */
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.speaking { animation:pulse 0.8s infinite; }
+/* Doigt qui pointe (👉 « c'est ton tour ») */
+@keyframes ep-nudge { 0%,100%{ transform:translateX(0); } 50%{ transform:translateX(-4px); } }
+
+/* ── 3. FRISE PROGRESSION (voyage / parcours d'étapes) ───────────────────── */
+/* Structure attendue : liste de .journey-ep (cartes étapes) ; états .ep-done /
+   .ep-next posés en JS ; descendants métier : .chrono-emoji (rond), .chrono-header,
+   .ep-status (pastille), .journey-btn (bouton), .v1-big (gros bouton audio). */
+.journey-intro { margin:6px 12px 12px; padding:10px 12px; border-radius:12px; background:rgba(255,255,255,0.06); font-size:0.85rem; line-height:1.4; color:rgba(255,255,255,0.85); }
+/* Trait vertical DERRIÈRE les cercles d'étape — aligné au centre du rond 56px */
+.journey-trait {
+  position:absolute; left:52px; top:74px; bottom:60px; width:3px; border-radius:2px;
+  opacity:.35; z-index:0; pointer-events:none;
+  background:linear-gradient(180deg,#5dade2,#ff7043,#66bb6a,#42a5f5,#ff6b35,#a1887f,#00bcd4,#9b59b6);
+}
+.journey-ep { margin:0 10px 12px; border-radius:14px; overflow:hidden; background:rgba(0,0,0,0.18); position:relative; transition:box-shadow 0.2s; }
+.journey-ep .chrono-header { cursor:default; position:relative; }
+/* Rond d'étape agrandi (bordure couleur d'ère posée en inline style par le JS) */
+.journey-ep .chrono-emoji { width:56px; height:56px; font-size:1.5rem; border:3px solid var(--bg1); }
+.journey-ep.ep-next:not(.ep-done) .chrono-emoji { box-shadow:0 0 16px rgba(255,255,255,.25); }
+/* Pastille d'état dans le header (✅ écouté · 👉 à écouter ensuite) */
+.ep-status { flex-shrink:0; width:30px; text-align:center; font-size:1.3rem; line-height:1; }
+.journey-ep.ep-done  .ep-status::after { content:'✅'; }
+.journey-ep.ep-next:not(.ep-done) .ep-status::after { content:'👉'; animation:ep-nudge 1s ease-in-out infinite; display:inline-block; }
+/* Étape écoutée : bouton verdit, légèrement estompé */
+.journey-ep.ep-done .v1-big { background:linear-gradient(135deg,#1e7e34,#28a745); opacity:0.92; }
+.journey-ep.ep-done .v1-big .dino-story-eq::before { content:'✓ '; }
+/* Prochaine étape : liseré lumineux + bouton OR */
+.journey-ep.ep-next:not(.ep-done) { box-shadow:0 0 0 2px rgba(255,255,255,0.55), 0 0 14px rgba(255,255,255,0.25); }
+.journey-ep.ep-next:not(.ep-done) .journey-btn { background:linear-gradient(135deg,var(--gold),#ffbf3f); color:var(--gold-ink); }
+.journey-ep.ep-next:not(.ep-done) .journey-btn.playing { background:linear-gradient(135deg,#c0392b,#e74c3c); color:#fff; }
+/* À venir (ni écouté, ni prochaine) : carte estompée, bouton neutre */
+.journey-ep:not(.ep-done):not(.ep-next) { opacity:.75; }
+.journey-ep:not(.ep-done):not(.ep-next) .journey-btn { background:rgba(255,255,255,.12); color:var(--ink-2); box-shadow:none; border-color:transparent; }
+.journey-ep:not(.ep-done):not(.ep-next) .journey-btn.playing { background:linear-gradient(135deg,#c0392b,#e74c3c); color:#fff; }

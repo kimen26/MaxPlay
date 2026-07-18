@@ -11,7 +11,8 @@
 
 ## Tickets épics actifs (EP-xxx)
 
-### EP-074 — Mutualiser composants UI dupliqués dans dev-dinos.html (découverte MEGA tour 2026-07-18)
+### EP-074 — ✅ FAIT 2026-07-18 — Mutualiser composants UI dupliqués dans dev-dinos.html
+**Livré** : `site/css/mp-components.css` (opt-in, chargé après mp-theme.css) : pills/tabs (.mode-btn/.pangee-dot/.c-dot), 4 keyframes célébration (badgePulse/cardBounce/pulse/ep-nudge + .speaking), frise progression complète (.journey-*/.ep-status/états). dev-dinos.html allégé (~60 lignes CSS → pointeurs). **Choix opt-in délibéré** : PAS dans mp-theme.css car mj-11/14/20 ont leur propre .mode-btn (collision vérifiée). Test Playwright : onglets Familles + Voyage screenshots OK, zéro pageerror, zéro régression visuelle.
 Inventaire site dino : 3 blocs UI dupliqués localement dans dev-dinos.html alors que l'entête (mp-header) est déjà mutualisée via css/mp-theme.css + js/mp-theme.js :
 1. **Frise progression** (journey-*, chrono-*, .journey-trait — styles inline L507-565)
 2. **Célébrations** (@keyframes badgePulse/cardBounce/pulse/ep-nudge — mp-theme a déjà 3 refs confetti)

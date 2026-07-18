@@ -30,3 +30,4 @@ studio/minijeux/tests/.artifacts/
 # Worktrees d'agents en arrière-plan (Agent tool isolation:worktree) — registered+locked, hors versionning
 .claude/worktrees/
 debug.log
+site/img/dinos/_new-traces/

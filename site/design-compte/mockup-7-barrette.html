@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 7 — La Barrette d'Or</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+  body {
+    font-family:'Nunito',sans-serif; font-weight:700; color:#fff;
+    min-height:100dvh; overflow-x:hidden;
+    background:
+      radial-gradient(900px 420px at 50% -8%, rgba(255,209,102,.16), transparent 60%),
+      linear-gradient(180deg,#1e1430 0%, #271a3d 55%, #150f24 100%);
+    display:flex; justify-content:center;
+  }
+  .stage { width:100%; max-width:520px; min-height:100dvh; padding:64px 16px 36px; display:flex; flex-direction:column; align-items:center; }
+
+  .band {
+    position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:60;
+    display:flex; gap:10px; align-items:center; white-space:nowrap;
+    background:rgba(0,0,0,.55); border:1px solid rgba(255,209,102,.4); border-radius:999px;
+    padding:6px 16px; font-size:12px; font-weight:900; color:#ffe066; backdrop-filter:blur(6px);
+  }
+  .band a { color:#ffd166; text-decoration:none; }
+
+  .consigne {
+    text-align:center; background:rgba(0,0,0,.45); border:2px solid rgba(255,209,102,.5);
+    border-radius:22px; padding:14px 24px; box-shadow:0 8px 24px rgba(0,0,0,.4);
+  }
+  .consigne h1 { font-family:'Fredoka One',cursive; font-size:clamp(22px,6vw,30px); color:#ffe066; letter-spacing:1px; }
+  .consigne p { font-size:15px; color:rgba(255,255,255,.85); margin-top:4px; }
+
+  .board { display:flex; align-items:center; gap:22px; margin-top:28px; flex-wrap:wrap; justify-content:center; }
+
+  /* ── Barrette 2×5 dorée (clin d'œil Montessori) ── */
+  .frame {
+    display:grid; grid-template-columns:repeat(5,58px); grid-template-rows:repeat(2,58px); gap:5px;
+    padding:10px; border-radius:20px;
+    background:linear-gradient(150deg,#f7cd5e,#c99425 60%,#a8781a);
+    box-shadow:0 0 0 3px rgba(255,232,150,.55), 0 14px 30px rgba(0,0,0,.5), inset 0 2px 6px rgba(255,255,255,.4);
+    position:relative; transition:box-shadow .3s;
+  }
+  .frame.pulse { animation:framePulse .8s ease; }
+  @keyframes framePulse {
+    0%,100% { box-shadow:0 0 0 3px rgba(255,232,150,.55), 0 14px 30px rgba(0,0,0,.5); }
+    40% { box-shadow:0 0 0 8px rgba(255,224,102,.9), 0 0 44px rgba(255,209,102,.85); transform:scale(1.04); }
+  }
+  .cell {
+    border-radius:12px; background:rgba(40,26,4,.55);
+    box-shadow:inset 0 3px 8px rgba(0,0,0,.55), inset 0 -1px 2px rgba(255,220,130,.25);
+    display:flex; align-items:center; justify-content:center; position:relative;
+  }
+  .egg {
+    width:34px; height:43px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+    background:
+      radial-gradient(circle at 32% 30%, rgba(176,116,52,.5) 0 4px, transparent 5px),
+      radial-gradient(circle at 64% 58%, rgba(176,116,52,.4) 0 3px, transparent 4px),
+      linear-gradient(160deg,#fff5da 0%, #f3d9a4 70%, #e6c282 100%);
+    box-shadow:inset -3px -5px 8px rgba(120,70,20,.28), 0 3px 6px rgba(0,0,0,.4);
+  }
+  .egg.small { width:40px; height:50px; }
+
+  /* Œufs en vrac */
+  .loose { display:flex; gap:10px; flex-wrap:wrap; max-width:150px; justify-content:center; }
+  .loose .cell { width:56px; height:60px; background:rgba(255,255,255,.06); box-shadow:none; border:2px dashed rgba(255,255,255,.2); }
+
+  .badge {
+    position:absolute; top:-12px; right:-10px; width:34px; height:34px; border-radius:50%;
+    background:radial-gradient(circle at 32% 28%, #8df0cd, #2fbf8f 70%);
+    border:3px solid #0d7a54; color:#062e20;
+    font-family:'Fredoka One',cursive; font-size:16px;
+    display:none; align-items:center; justify-content:center;
+    box-shadow:0 4px 10px rgba(0,0,0,.45); z-index:3;
+  }
+  .badge.on { display:flex; animation:badgePop .35s cubic-bezier(.34,1.56,.64,1) both; }
+  @keyframes badgePop { from{transform:scale(0) rotate(-30deg)} to{transform:scale(1) rotate(-8deg)} }
+
+  .ten-label {
+    position:absolute; top:-26px; left:50%; transform:translateX(-50%) scale(0);
+    font-family:'Fredoka One',cursive; font-size:30px; color:#ffe066;
+    text-shadow:0 0 16px rgba(255,209,102,.85), 0 3px 8px rgba(0,0,0,.6);
+    background:rgba(0,0,0,.5); border:2px solid rgba(255,209,102,.6); border-radius:999px;
+    padding:2px 18px; z-index:4;
+  }
+  .frame .ten-label.on { animation:labelPop .45s cubic-bezier(.34,1.56,.64,1) both; }
+  @keyframes labelPop { from{transform:translateX(-50%) scale(0)} to{transform:translateX(-50%) scale(1)} }
+
+  .answers { display:flex; gap:18px; margin-top:34px; }
+  .num-btn {
+    width:92px; height:92px; border:none; border-radius:24px; cursor:pointer;
+    font-family:'Fredoka One',cursive; font-size:42px; color:#2a1c05;
+    background:linear-gradient(145deg,#ffe066,#f0b73f);
+    box-shadow:0 6px 0 #b8860b, 0 12px 22px rgba(0,0,0,.45);
+    transition:transform .12s ease; touch-action:manipulation;
+  }
+  .num-btn:active { transform:scale(.92); }
+  .num-btn.wobble { animation:wobble .4s ease; }
+  @keyframes wobble { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-7px)} 50%{transform:translateX(7px)} 75%{transform:translateX(-4px)} }
+  .num-btn.win { background:linear-gradient(145deg,#7fe7c4,#2fbf8f); box-shadow:0 6px 0 #157a56, 0 0 26px rgba(47,191,143,.7); color:#062e20; }
+
+  .message {
+    min-height:56px; margin-top:16px; text-align:center; max-width:420px;
+    font-family:'Fredoka One',cursive; font-size:20px; color:#ffe066; line-height:1.35;
+    opacity:0; transition:opacity .25s;
+  }
+  .message.show { opacity:1; animation:msgPop .35s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes msgPop { from{transform:scale(.6)} to{transform:scale(1)} }
+
+  .other-btn {
+    margin-top:14px; border:none; cursor:pointer;
+    font-family:'Nunito',sans-serif; font-weight:900; font-size:16px;
+    color:#0e2b22; background:linear-gradient(145deg,#2fbf8f,#00c47a);
+    border-radius:999px; padding:12px 26px; min-height:52px;
+    box-shadow:0 5px 0 #0d7a54, 0 10px 18px rgba(0,0,0,.35);
+  }
+  .other-btn:active { transform:scale(.92); }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 7 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🥚 Combien d'œufs ?</h1>
+    <p>Une barrette pleine, ça se reconnaît d'un coup d'œil : c'est 10 !</p>
+  </div>
+
+  <div class="board" id="board"></div>
+  <div class="answers" id="answers"></div>
+  <div class="message" id="message"></div>
+  <button class="other-btn" id="otherBtn">🔁 Autre exemple</button>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var EXAMPLES = [
+    { frames: 1, loose: 4, choices: [12, 14, 16], answer: 14,
+      tip: 'Une barrette pleine = 10, d\'un coup ! Et 4 de plus : 11, 12, 13, 14 !' },
+    { frames: 2, loose: 0, choices: [18, 20, 22], answer: 20,
+      tip: 'Deux barrettes pleines = 10 + 10 = 20 ! Pas besoin de compter ! ✨' }
+  ];
+  var exIndex = 0;
+  var locked = false;
+
+  var board = document.getElementById('board');
+  var answersEl = document.getElementById('answers');
+  var msgEl = document.getElementById('message');
+
+  function sfx(src) {
+    try { var a = new Audio(src); a.volume = 0.55; a.play().catch(function () {}); } catch (e) {}
+  }
+  function say(text) {
+    msgEl.textContent = text;
+    msgEl.classList.remove('show'); void msgEl.offsetWidth; msgEl.classList.add('show');
+  }
+  function eggHTML() { return '<div class="egg"></div>'; }
+
+  function render() {
+    var ex = EXAMPLES[exIndex];
+    locked = false;
+    board.innerHTML = '';
+    answersEl.innerHTML = '';
+    msgEl.classList.remove('show');
+
+    for (var f = 0; f < ex.frames; f++) {
+      var frame = document.createElement('div');
+      frame.className = 'frame';
+      frame.innerHTML = '<div class="ten-label">10 !</div>';
+      for (var c = 0; c < 10; c++) {
+        var cell = document.createElement('div');
+        cell.className = 'cell';
+        cell.innerHTML = eggHTML();
+        frame.appendChild(cell);
+      }
+      board.appendChild(frame);
+    }
+    if (ex.loose > 0) {
+      var loose = document.createElement('div');
+      loose.className = 'loose';
+      for (var l = 0; l < ex.loose; l++) {
+        var lc = document.createElement('div');
+        lc.className = 'cell';
+        lc.innerHTML = eggHTML() + '<div class="badge"></div>';
+        loose.appendChild(lc);
+      }
+      board.appendChild(loose);
+    }
+    ex.choices.forEach(function (n) {
+      var b = document.createElement('button');
+      b.className = 'num-btn';
+      b.textContent = n;
+      b.setAttribute('aria-label', n + ' œufs');
+      b.addEventListener('click', function () { onAnswer(n, b, ex); });
+      answersEl.appendChild(b);
+    });
+  }
+
+  function onAnswer(n, btn, ex) {
+    if (locked) return;
+    if (n !== ex.answer) {
+      btn.classList.remove('wobble'); void btn.offsetWidth; btn.classList.add('wobble');
+      say('Souviens-toi : une barrette pleine, c\'est 10 ! 👀');
+      return;
+    }
+    locked = true;
+    btn.classList.add('win');
+    Array.prototype.forEach.call(answersEl.children, function (b) { b.disabled = true; });
+    var frames = board.querySelectorAll('.frame');
+    // Chaque barrette pulse et affiche « 10 ! » EN BLOC
+    for (var f = 0; f < frames.length; f++) {
+      (function (fr, idx) {
+        setTimeout(function () {
+          fr.classList.add('pulse');
+          fr.querySelector('.ten-label').classList.add('on');
+          sfx('../sounds/fx/magie.mp3');
+        }, idx * 700);
+      })(frames[f], f);
+    }
+    var t0 = frames.length * 700 + 200;
+    // Puis les œufs en vrac se comptent à partir de l'ancre
+    var looseBadges = board.querySelectorAll('.loose .badge');
+    var base = frames.length * 10;
+    for (var l = 0; l < looseBadges.length; l++) {
+      (function (bdg, idx) {
+        setTimeout(function () {
+          bdg.textContent = base + idx + 1;
+          bdg.classList.add('on');
+          sfx('../sounds/fx/xylophone-monte.mp3');
+          if (idx === looseBadges.length - 1) {
+            setTimeout(function () { say(ex.tip); sfx('../sounds/fx/waouh.mp3'); }, 450);
+          }
+        }, t0 + idx * 420);
+      })(looseBadges[l], l);
+    }
+    if (looseBadges.length === 0) {
+      setTimeout(function () { say(ex.tip); sfx('../sounds/fx/waouh.mp3'); }, t0);
+    }
+  }
+
+  document.getElementById('otherBtn').addEventListener('click', function () {
+    exIndex = (exIndex + 1) % EXAMPLES.length;
+    render();
+  });
+  render();
+})();
+</script>
+</body>
+</html>

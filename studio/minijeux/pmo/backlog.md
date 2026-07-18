@@ -11,8 +11,10 @@
 
 ## Tickets épics actifs (EP-xxx)
 
-### EP-074 — ✅ FAIT 2026-07-18 — Mutualiser composants UI dupliqués dans dev-dinos.html
-**Livré** : `site/css/mp-components.css` (opt-in, chargé après mp-theme.css) : pills/tabs (.mode-btn/.pangee-dot/.c-dot), 4 keyframes célébration (badgePulse/cardBounce/pulse/ep-nudge + .speaking), frise progression complète (.journey-*/.ep-status/états). dev-dinos.html allégé (~60 lignes CSS → pointeurs). **Choix opt-in délibéré** : PAS dans mp-theme.css car mj-11/14/20 ont leur propre .mode-btn (collision vérifiée). Test Playwright : onglets Familles + Voyage screenshots OK, zéro pageerror, zéro régression visuelle.
+### EP-074 — ✅ FAIT 2026-07-18 (v2 : fusion totale) — Composants UI partagés dans mp-theme.css
+**Livré final** : tout fusionné dans `site/css/mp-theme.css` §composants partagés (UN seul fichier CSS, mp-components.css supprimé le jour même). Composants : `.mp-pill` (pills scrollables actif OR), `.mp-dots/.mp-dot` (pills bleues), `.c-dot` (carrousel), keyframes badgePulse/cardBounce/ep-nudge, frise `.journey-*` + `.ep-status` + états. Renommages anti-collision dans dev-dinos : mode-btn→mp-pill, pangee-dot→mp-dot. `@keyframes pulse`+`.speaking` = SUPPRIMÉS du partagé (inutilisés par dinos, 6 MJ ont leur pulse local, mj-20 son speaking).
+**Constat structurel** : les `.mode-btn` de mj-11/14/20 = AUTRE composant (segmented control flex:1, actif liseré) ≠ `.mp-pill` (scrollable, actif or plein) — ne PAS unifier les styles, ce sont 2 patterns UI distincts ; namespace mp-* les sépare proprement.
+**Tests** : Playwright dev-dinos (Familles+Voyage identiques) + mj-16 (pulse local) + mj-20 (mode-btn/speaking locaux) — zéro pageerror, zéro régression.
 Inventaire site dino : 3 blocs UI dupliqués localement dans dev-dinos.html alors que l'entête (mp-header) est déjà mutualisée via css/mp-theme.css + js/mp-theme.js :
 1. **Frise progression** (journey-*, chrono-*, .journey-trait — styles inline L507-565)
 2. **Célébrations** (@keyframes badgePulse/cardBounce/pulse/ep-nudge — mp-theme a déjà 3 refs confetti)

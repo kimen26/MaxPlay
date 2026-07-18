@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 4 — Les Bulles des Fonds Marins</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+  body {
+    font-family:'Nunito',sans-serif; font-weight:700; color:#fff;
+    min-height:100dvh; overflow-x:hidden;
+    background:
+      radial-gradient(700px 380px at 50% -8%, rgba(120,220,255,.28), transparent 65%),
+      linear-gradient(180deg,#0a3a5c 0%, #072a46 40%, #04182e 75%, #020e1c 100%);
+    display:flex; justify-content:center;
+  }
+  /* Rayons de lumière */
+  .rays { position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0; }
+  .ray {
+    position:absolute; top:-10%; width:90px; height:70%;
+    background:linear-gradient(180deg, rgba(160,225,255,.16), transparent 80%);
+    transform:skewX(-14deg); filter:blur(6px);
+    animation:raySway 7s ease-in-out infinite;
+  }
+  .ray.r1 { left:12%; } .ray.r2 { left:44%; width:130px; animation-delay:-3s; } .ray.r3 { left:74%; animation-delay:-5s; }
+  @keyframes raySway { 0%,100%{transform:skewX(-14deg) translateX(0)} 50%{transform:skewX(-10deg) translateX(16px)} }
+
+  .stage { position:relative; z-index:2; width:100%; max-width:520px; min-height:100dvh; padding:64px 16px 34px; display:flex; flex-direction:column; align-items:center; }
+
+  .band {
+    position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:60;
+    display:flex; gap:10px; align-items:center; white-space:nowrap;
+    background:rgba(0,10,25,.55); border:1px solid rgba(255,209,102,.4); border-radius:999px;
+    padding:6px 16px; font-size:12px; font-weight:900; color:#ffe066; backdrop-filter:blur(6px);
+  }
+  .band a { color:#ffd166; text-decoration:none; }
+
+  .consigne {
+    text-align:center; background:rgba(2,16,32,.55); border:2px solid rgba(140,215,255,.45);
+    border-radius:22px; padding:14px 24px; box-shadow:0 8px 24px rgba(0,0,0,.4);
+  }
+  .consigne h1 { font-family:'Fredoka One',cursive; font-size:clamp(21px,5.8vw,29px); color:#bfeaff; letter-spacing:1px; }
+  .consigne p { font-size:15px; color:rgba(255,255,255,.85); margin-top:4px; }
+
+  /* ── Bulles à dinos ── */
+  .sea { position:relative; width:100%; max-width:440px; height:340px; margin-top:8px; }
+  .bubble {
+    position:absolute; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:
+      radial-gradient(circle at 30% 24%, rgba(255,255,255,.5) 0 8%, rgba(255,255,255,.14) 30%, rgba(140,200,255,.07) 60%, rgba(90,160,230,.1) 100%);
+    border:1.5px solid rgba(255,255,255,.4);
+    box-shadow:
+      inset -10px -14px 26px rgba(120,190,255,.16),
+      inset 8px 10px 20px rgba(255,255,255,.1),
+      0 14px 30px rgba(0,0,0,.35);
+    backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px);
+    animation:floaty 4.6s ease-in-out infinite;
+  }
+  .bubble::before {
+    content:''; position:absolute; top:12%; left:18%; width:26%; height:15%;
+    border-radius:50%; background:rgba(255,255,255,.65); filter:blur(3px);
+    transform:rotate(-24deg);
+  }
+  @keyframes floaty {
+    0%,100% { transform:translateY(0) rotate(-1.5deg); }
+    50% { transform:translateY(-14px) rotate(1.5deg); }
+  }
+  .bubble img { width:72%; filter:drop-shadow(0 4px 8px rgba(0,0,0,.5)); pointer-events:none; }
+  .b1 { width:150px; height:150px; left:2%; top:26px; animation-delay:-.9s; }
+  .b2 { width:128px; height:128px; left:56%; top:6px; animation-delay:-2.4s; }
+  .b3 { width:140px; height:140px; left:30%; top:168px; animation-delay:-1.6s; }
+
+  /* Petites bulles décoratives */
+  .mini {
+    position:absolute; border-radius:50%;
+    background:radial-gradient(circle at 32% 28%, rgba(255,255,255,.55), rgba(255,255,255,.08) 60%);
+    border:1px solid rgba(255,255,255,.3);
+    animation:rise linear infinite; opacity:.7;
+  }
+  @keyframes rise {
+    from { transform:translateY(0); opacity:0; }
+    12% { opacity:.7; }
+    to { transform:translateY(-360px); opacity:0; }
+  }
+
+  /* ── Bulles-réponses ── */
+  .answers { display:flex; gap:26px; margin-top:6px; z-index:5; }
+  .ans {
+    width:104px; height:104px; border-radius:50%; cursor:pointer; border:1.5px solid rgba(255,255,255,.5);
+    font-family:'Fredoka One',cursive; font-size:46px; color:#fff;
+    text-shadow:0 2px 8px rgba(0,20,40,.6);
+    background:
+      radial-gradient(circle at 30% 24%, rgba(255,255,255,.55) 0 8%, rgba(255,255,255,.16) 32%, rgba(120,190,255,.12) 65%, rgba(60,130,220,.2) 100%);
+    box-shadow:
+      inset -10px -14px 26px rgba(120,190,255,.2),
+      inset 8px 10px 20px rgba(255,255,255,.12),
+      0 12px 26px rgba(0,0,0,.4);
+    backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px);
+    transition:transform .12s ease;
+    animation:floaty 4s ease-in-out infinite;
+    touch-action:manipulation; position:relative;
+  }
+  .ans:nth-child(2){animation-delay:-1.3s} .ans:nth-child(3){animation-delay:-2.6s}
+  .ans:active { transform:scale(.92); }
+  .ans.wobble { animation:ansWobble .4s ease; }
+  @keyframes ansWobble { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-8px)} 50%{transform:translateX(8px)} 75%{transform:translateX(-4px)} }
+  .ans.burst { animation:burst .45s ease-out forwards; pointer-events:none; }
+  @keyframes burst {
+    0% { transform:scale(1); opacity:1; }
+    55% { transform:scale(1.35); opacity:.9; }
+    100% { transform:scale(1.7); opacity:0; }
+  }
+
+  .star-bit {
+    position:fixed; z-index:70; pointer-events:none; color:#ffd166;
+    font-size:20px; text-shadow:0 0 10px rgba(255,209,102,.9);
+    animation:starUp 1.1s ease-out forwards;
+  }
+  @keyframes starUp {
+    from { transform:translate(0,0) scale(.6); opacity:1; }
+    to { transform:translate(var(--dx), -160px) scale(1.3) rotate(160deg); opacity:0; }
+  }
+
+  .message {
+    min-height:34px; margin-top:18px; text-align:center;
+    font-family:'Fredoka One',cursive; font-size:22px; color:#ffe066;
+    opacity:0; transition:opacity .25s;
+  }
+  .message.show { opacity:1; animation:msgPop .35s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes msgPop { from{transform:scale(.6)} to{transform:scale(1)} }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 4 <a href="index.html">← Sommaire</a></div>
+<div class="rays"><div class="ray r1"></div><div class="ray r2"></div><div class="ray r3"></div></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🫧 Combien de dinos nagent ?</h1>
+    <p>Compte les dinos dans les bulles, puis touche la bonne bulle !</p>
+  </div>
+
+  <div class="sea" id="sea">
+    <div class="bubble b1"><img src="../img/dinos/ombres/Mosasaurus_ombre.png" alt="dino marin"></div>
+    <div class="bubble b2"><img src="../img/dinos/ombres/Ichthyosaurus_ombre.png" alt="dino marin"></div>
+    <div class="bubble b3"><img src="../img/dinos/ombres/Archelon_ombre.png" alt="dino marin"></div>
+  </div>
+
+  <div class="answers" id="answers"></div>
+  <div class="message" id="message"></div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var TOTAL = 3;
+  var CHOICES = [2, 3, 4];
+  var answersEl = document.getElementById('answers');
+  var seaEl = document.getElementById('sea');
+  var msgEl = document.getElementById('message');
+  var locked = false;
+
+  function sfx(src) {
+    try { var a = new Audio(src); a.volume = 0.55; a.play().catch(function () {}); } catch (e) {}
+  }
+  function say(text) {
+    msgEl.textContent = text;
+    msgEl.classList.remove('show');
+    void msgEl.offsetWidth;
+    msgEl.classList.add('show');
+  }
+
+  // Petites bulles décoratives qui remontent
+  for (var i = 0; i < 10; i++) {
+    var m = document.createElement('div');
+    m.className = 'mini';
+    var size = 8 + Math.random() * 16;
+    m.style.width = size + 'px';
+    m.style.height = size + 'px';
+    m.style.left = (4 + Math.random() * 92) + '%';
+    m.style.bottom = '-20px';
+    m.style.animationDuration = (5 + Math.random() * 5) + 's';
+    m.style.animationDelay = (-Math.random() * 8) + 's';
+    seaEl.appendChild(m);
+  }
+
+  CHOICES.forEach(function (n) {
+    var b = document.createElement('button');
+    b.className = 'ans';
+    b.textContent = n;
+    b.setAttribute('aria-label', n + ' dinos');
+    b.addEventListener('click', function (ev) { onAnswer(n, b, ev); });
+    answersEl.appendChild(b);
+  });
+
+  function starsBurst(x, y) {
+    for (var i = 0; i < 9; i++) {
+      var s = document.createElement('div');
+      s.className = 'star-bit';
+      s.textContent = i % 2 ? '✦' : '⭐';
+      s.style.left = (x - 10) + 'px';
+      s.style.top = (y - 10) + 'px';
+      s.style.setProperty('--dx', ((i - 4) * 26) + 'px');
+      s.style.animationDelay = (i * 0.04) + 's';
+      document.body.appendChild(s);
+      (function (el) { setTimeout(function () { el.remove(); }, 1500); })(s);
+    }
+  }
+
+  function onAnswer(n, btn) {
+    if (locked) return;
+    if (n !== TOTAL) {
+      btn.classList.remove('wobble');
+      void btn.offsetWidth;
+      btn.classList.add('wobble');
+      sfx('../sounds/fx/oups-doux.mp3');
+      say('Essaie encore, petite étoile de mer ! 🌊');
+      return;
+    }
+    locked = true;
+    var r = btn.getBoundingClientRect();
+    btn.classList.add('burst');
+    sfx('../sounds/fx/bulle-pop.mp3');
+    starsBurst(r.left + r.width / 2, r.top + r.height / 2);
+    Array.prototype.forEach.call(answersEl.children, function (b) {
+      if (b !== btn) { b.disabled = true; b.style.opacity = '.45'; }
+    });
+    setTimeout(function () {
+      say('Oui ! ' + TOTAL + ' dinos nagent ! Bravo ! 🐬');
+      sfx('../sounds/fx/victoire-petite.mp3');
+    }, 480);
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 10 — Les Nids par Groupes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+  body {
+    font-family:'Nunito',sans-serif; font-weight:700; color:#fff;
+    min-height:100dvh; overflow-x:hidden;
+    background:
+      radial-gradient(900px 460px at 50% -12%, rgba(46,125,80,.4), transparent 65%),
+      linear-gradient(180deg,#0d2418 0%, #122e1e 55%, #081a10 100%);
+    display:flex; justify-content:center;
+  }
+  .bg-leaf { position:fixed; width:8px; height:8px; border-radius:50% 0 50% 0; background:#7fe7c4; opacity:.35; pointer-events:none; animation:drift 6s ease-in-out infinite; }
+  @keyframes drift { 0%,100%{transform:translateY(0) rotate(0deg); opacity:.15} 50%{transform:translateY(-14px) rotate(25deg); opacity:.45} }
+  .decor { position:fixed; bottom:-8px; width:150px; opacity:.8; pointer-events:none; z-index:1; }
+  .decor.left { left:-14px; transform:scaleX(-1); }
+  .decor.right { right:-6px; width:190px; }
+
+  .stage { position:relative; z-index:2; width:100%; max-width:620px; min-height:100dvh; padding:64px 16px 40px; display:flex; flex-direction:column; align-items:center; }
+
+  .band {
+    position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:60;
+    display:flex; gap:10px; align-items:center; white-space:nowrap;
+    background:rgba(0,0,0,.55); border:1px solid rgba(255,209,102,.4); border-radius:999px;
+    padding:6px 16px; font-size:12px; font-weight:900; color:#ffe066; backdrop-filter:blur(6px);
+  }
+  .band a { color:#ffd166; text-decoration:none; }
+
+  .consigne {
+    text-align:center; background:rgba(0,0,0,.45); border:2px solid rgba(255,209,102,.5);
+    border-radius:22px; padding:14px 24px; box-shadow:0 8px 24px rgba(0,0,0,.4);
+  }
+  .consigne h1 { font-family:'Fredoka One',cursive; font-size:clamp(21px,5.8vw,29px); color:#ffe066; letter-spacing:1px; }
+  .consigne p { font-size:15px; color:rgba(255,255,255,.85); margin-top:4px; }
+
+  /* ── La prairie et ses nids ── */
+  .prairie {
+    margin-top:28px; width:100%; display:flex; justify-content:center; gap:34px; flex-wrap:wrap;
+    background:rgba(255,255,255,.04); border:2px solid rgba(127,231,196,.3);
+    border-radius:26px; padding:26px 18px 30px;
+    box-shadow:0 14px 34px rgba(0,0,0,.5), inset 0 -30px 50px rgba(23,64,42,.55);
+  }
+  .nest {
+    position:relative; width:140px; height:118px; border-radius:24px;
+    transition:box-shadow .4s, background .4s;
+  }
+  .nest .halo {
+    position:absolute; inset:-16px; border-radius:32px; pointer-events:none;
+    background:radial-gradient(circle, rgba(255,224,102,.3), transparent 68%);
+    opacity:0; transform:scale(.6);
+  }
+  .nest.lit .halo { animation:haloIn .5s cubic-bezier(.34,1.4,.64,1) both; }
+  @keyframes haloIn { from{opacity:0; transform:scale(.6)} to{opacity:1; transform:scale(1)} }
+  .nest.lit { box-shadow:0 0 34px rgba(255,209,102,.45); background:rgba(255,209,102,.07); }
+
+  /* Le nid : coupe de brindilles */
+  .nest .bowl {
+    position:absolute; left:6px; right:6px; bottom:4px; height:52px;
+    border-radius:12px 12px 46% 46% / 12px 12px 90% 90%;
+    background:
+      repeating-linear-gradient(12deg, rgba(0,0,0,.14) 0 3px, transparent 3px 9px),
+      repeating-linear-gradient(-16deg, rgba(255,255,255,.07) 0 2px, transparent 2px 8px),
+      linear-gradient(180deg,#8a5a2b 0%, #6b411c 55%, #4d2c10 100%);
+    box-shadow:inset 0 8px 10px rgba(0,0,0,.45), 0 6px 12px rgba(0,0,0,.4);
+  }
+  .nest .rim {
+    position:absolute; left:2px; right:2px; bottom:44px; height:16px; border-radius:999px;
+    background:linear-gradient(180deg,#a9763f,#7a4e22);
+    box-shadow:0 3px 5px rgba(0,0,0,.35);
+  }
+
+  /* Œuf tacheté en pur CSS */
+  .egg {
+    position:absolute; width:36px; height:44px; transform:translate(-50%,-50%);
+    border-radius:50% 50% 50% 50% / 60% 60% 42% 42%;
+    background:
+      radial-gradient(circle at 30% 26%, rgba(120,72,20,.5) 0 3px, transparent 4px),
+      radial-gradient(circle at 66% 44%, rgba(120,72,20,.45) 0 2.5px, transparent 3.5px),
+      radial-gradient(circle at 44% 68%, rgba(120,72,20,.4) 0 3px, transparent 4px),
+      radial-gradient(circle at 34% 28%, rgba(255,255,255,.9) 0 4px, transparent 5px),
+      linear-gradient(160deg,#fff3cf 0%, #f5d789 70%, #e2b95e 100%);
+    box-shadow:0 3px 6px rgba(0,0,0,.45);
+    animation:eggTw 3.4s ease-in-out infinite;
+  }
+  @keyframes eggTw { 0%,100%{filter:brightness(.94)} 50%{filter:brightness(1.08)} }
+  .nest.lit .egg { animation:eggPop .45s ease both; }
+  @keyframes eggPop { from{transform:translate(-50%,-50%) scale(.75)} 60%{transform:translate(-50%,-50%) scale(1.22)} to{transform:translate(-50%,-50%) scale(1)} }
+
+  /* ── Feedback : compte par groupes, jamais 1 par 1 ── */
+  .feedback {
+    min-height:64px; margin-top:22px; display:flex; align-items:center; justify-content:center; gap:14px;
+    font-family:'Fredoka One',cursive; color:#ffe066; text-align:center; flex-wrap:wrap;
+  }
+  .fb-num { font-size:52px; text-shadow:0 0 20px rgba(255,209,102,.8); display:none; }
+  .fb-num.show { display:inline-block; animation:fbPop .45s cubic-bezier(.34,1.56,.64,1) both; }
+  .fb-dots { font-size:34px; color:rgba(255,255,255,.6); display:none; }
+  .fb-dots.show { display:inline-block; animation:fbPop .45s cubic-bezier(.34,1.56,.64,1) both; }
+  .fb-num.total { color:#7fe7c4; text-shadow:0 0 24px rgba(47,191,143,.9); }
+  @keyframes fbPop { from{transform:scale(.3); opacity:0} to{transform:scale(1); opacity:1} }
+
+  .answers { display:flex; gap:18px; margin-top:20px; }
+  .num-btn {
+    width:92px; height:92px; border:none; border-radius:24px; cursor:pointer;
+    font-family:'Fredoka One',cursive; font-size:44px; color:#2a1c05;
+    background:linear-gradient(145deg,#ffe066,#f0b73f);
+    box-shadow:0 6px 0 #b8860b, 0 12px 22px rgba(0,0,0,.45);
+    transition:transform .12s ease; touch-action:manipulation;
+  }
+  .num-btn:active { transform:scale(.92); }
+  .num-btn.wobble { animation:wobble .4s ease; }
+  @keyframes wobble { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-7px)} 50%{transform:translateX(7px)} 75%{transform:translateX(-4px)} }
+  .num-btn.win { background:linear-gradient(145deg,#7fe7c4,#2fbf8f); box-shadow:0 6px 0 #157a56, 0 0 26px rgba(47,191,143,.7); color:#062e20; }
+
+  .alt-btn {
+    margin-top:20px; min-height:80px; padding:0 30px; border:none; border-radius:22px; cursor:pointer;
+    font-family:'Fredoka One',cursive; font-size:22px; color:#062e20;
+    background:linear-gradient(145deg,#9df0d2,#3ecf9c);
+    box-shadow:0 6px 0 #189a68, 0 12px 22px rgba(0,0,0,.4);
+    transition:transform .12s ease; touch-action:manipulation;
+  }
+  .alt-btn:active { transform:scale(.94); }
+
+  .message {
+    min-height:30px; margin-top:14px; text-align:center;
+    font-family:'Fredoka One',cursive; font-size:20px; color:#ffe066;
+    opacity:0; transition:opacity .25s;
+  }
+  .message.show { opacity:1; animation:msgPop .35s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes msgPop { from{transform:scale(.6)} to{transform:scale(1)} }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 10 <a href="index.html">← Sommaire</a></div>
+<img class="decor left" src="../img/decor/fougere.png" alt="">
+<img class="decor right" src="../img/decor/palmier.png" alt="">
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🥚 Combien d'œufs en tout ?</h1>
+    <p>Compte par groupes : tous les œufs d'un nid, d'un coup !</p>
+  </div>
+
+  <div class="prairie" id="prairie"></div>
+
+  <div class="feedback" id="feedback"></div>
+  <div class="answers" id="answers"></div>
+  <div class="message" id="message"></div>
+  <button class="alt-btn" id="altBtn">🔁 Autre exemple</button>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  // Deux configurations : nids × œufs par nid (total ≤ 20)
+  var CONFIGS = [
+    { nests: 3, per: 4, choices: [10, 12, 14] },
+    { nests: 4, per: 5, choices: [15, 20, 18] }
+  ];
+  // Positions des œufs dans un nid (en %), selon le nombre d'œufs
+  var EGG_POS = {
+    4: [[24,42],[50,34],[76,42],[50,56]],
+    5: [[20,42],[40,32],[60,32],[80,42],[50,55]]
+  };
+  var current = 0, locked = false;
+
+  var prairie = document.getElementById('prairie');
+  var answersEl = document.getElementById('answers');
+  var feedbackEl = document.getElementById('feedback');
+
+  function sfx(src) {
+    try { var a = new Audio(src); a.volume = 0.55; a.play().catch(function () {}); } catch (e) {}
+  }
+  function say(text) {
+    var m = document.getElementById('message');
+    m.textContent = text;
+    m.classList.remove('show'); void m.offsetWidth; m.classList.add('show');
+  }
+
+  // Feuilles qui flottent en fond
+  for (var s = 0; s < 26; s++) {
+    var lf = document.createElement('div');
+    lf.className = 'bg-leaf';
+    lf.style.left = Math.random() * 100 + 'vw';
+    lf.style.top = Math.random() * 100 + 'vh';
+    lf.style.animationDelay = (Math.random() * 6) + 's';
+    document.body.appendChild(lf);
+  }
+
+  function build() {
+    var cfg = CONFIGS[current];
+    locked = false;
+    prairie.innerHTML = '';
+    answersEl.innerHTML = '';
+    feedbackEl.innerHTML = '';
+    say('');
+
+    for (var n = 0; n < cfg.nests; n++) {
+      var nest = document.createElement('div');
+      nest.className = 'nest';
+      nest.innerHTML = '<div class="halo"></div><div class="bowl"></div><div class="rim"></div>';
+      EGG_POS[cfg.per].forEach(function (p, i) {
+        var egg = document.createElement('div');
+        egg.className = 'egg';
+        egg.style.left = p[0] + '%';
+        egg.style.top = p[1] + '%';
+        egg.style.animationDelay = (-i * 0.7) + 's';
+        nest.appendChild(egg);
+      });
+      prairie.appendChild(nest);
+    }
+
+    cfg.choices.forEach(function (v) {
+      var b = document.createElement('button');
+      b.className = 'num-btn';
+      b.textContent = v;
+      b.setAttribute('aria-label', v + ' œufs');
+      b.addEventListener('click', function () { onAnswer(v, b); });
+      answersEl.appendChild(b);
+    });
+  }
+
+  function fbStep(html, cls) {
+    var span = document.createElement('span');
+    span.className = cls;
+    span.innerHTML = html;
+    feedbackEl.appendChild(span);
+    void span.offsetWidth;
+    span.classList.add('show');
+  }
+
+  function onAnswer(v, btn) {
+    if (locked) return;
+    var cfg = CONFIGS[current];
+    var total = cfg.nests * cfg.per;
+    if (v !== total) {
+      btn.classList.remove('wobble'); void btn.offsetWidth; btn.classList.add('wobble');
+      say('Compte les nids un par un, pas les œufs ! 🪺');
+      sfx('../sounds/fx/oups-doux.mp3');
+      return;
+    }
+    locked = true;
+    btn.classList.add('win');
+    Array.prototype.forEach.call(answersEl.children, function (b) { b.disabled = true; });
+    var nests = prairie.children;
+    // Chaque nid s'illumine TOUR À TOUR EN BLOC : compte par groupes cumulé
+    for (var i = 0; i < cfg.nests; i++) {
+      (function (i) {
+        setTimeout(function () {
+          nests[i].classList.add('lit');
+          if (i > 0) fbStep('…', 'fb-dots');
+          fbStep((cfg.per * (i + 1)) + ' !', 'fb-num' + (i === cfg.nests - 1 ? ' total' : ''));
+          sfx('../sounds/fx/magie.mp3');
+        }, 350 + i * 1000);
+      })(i);
+    }
+    setTimeout(function () {
+      say(cfg.nests + ' groupes de ' + cfg.per + ', ça fait ' + total + ' ! 🎉');
+      sfx('../sounds/fx/waouh.mp3');
+    }, 350 + cfg.nests * 1000);
+  }
+
+  document.getElementById('altBtn').addEventListener('click', function () {
+    current = (current + 1) % CONFIGS.length;
+    build();
+    sfx('../sounds/fx/clochette.mp3');
+  });
+
+  build();
+})();
+</script>
+</body>
+</html>

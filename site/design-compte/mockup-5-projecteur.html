@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 5 — Le Projecteur du Musée</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+  body {
+    font-family:'Nunito',sans-serif; font-weight:700; color:#fff;
+    min-height:100dvh; overflow-x:hidden;
+    background:
+      radial-gradient(900px 500px at 50% 120%, rgba(40,32,70,.8), transparent 70%),
+      linear-gradient(180deg,#050508 0%, #0a0a14 60%, #06060c 100%);
+    display:flex; justify-content:center;
+  }
+  .stage { width:100%; max-width:520px; min-height:100dvh; padding:64px 16px 36px; display:flex; flex-direction:column; align-items:center; }
+
+  .band {
+    position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:60;
+    display:flex; gap:10px; align-items:center; white-space:nowrap;
+    background:rgba(0,0,0,.6); border:1px solid rgba(255,209,102,.4); border-radius:999px;
+    padding:6px 16px; font-size:12px; font-weight:900; color:#ffe066; backdrop-filter:blur(6px);
+  }
+  .band a { color:#ffd166; text-decoration:none; }
+
+  .consigne {
+    text-align:center; background:rgba(0,0,0,.55); border:2px solid rgba(255,209,102,.5);
+    border-radius:22px; padding:14px 24px; box-shadow:0 8px 24px rgba(0,0,0,.5);
+  }
+  .consigne h1 { font-family:'Fredoka One',cursive; font-size:clamp(21px,5.8vw,29px); color:#ffe066; letter-spacing:1px; }
+  .consigne p { font-size:15px; color:rgba(255,255,255,.85); margin-top:4px; }
+
+  .counter {
+    margin-top:18px; display:flex; align-items:center; gap:12px;
+    background:rgba(0,0,0,.55); border:2px solid rgba(255,209,102,.35); border-radius:999px;
+    padding:8px 22px;
+  }
+  .counter .lbl { font-weight:900; font-size:14px; letter-spacing:1px; color:rgba(255,255,255,.8); }
+  .counter .val {
+    font-family:'Fredoka One',cursive; font-size:34px; color:#ffd166;
+    text-shadow:0 0 14px rgba(255,209,102,.75); display:inline-block; min-width:30px; text-align:center;
+  }
+  .counter .val.tick { animation:tick .3s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes tick { 0%{transform:scale(1.7); opacity:.2} 100%{transform:scale(1); opacity:1} }
+
+  /* ── Salle du musée ── */
+  .hall {
+    position:relative; margin-top:22px; width:100%; max-width:460px;
+    display:flex; flex-wrap:wrap; gap:14px; justify-content:center;
+  }
+  .expo {
+    position:relative; width:calc(33.33% - 10px); max-width:132px; aspect-ratio:1/1.1;
+    border-radius:18px; cursor:pointer; overflow:visible;
+    background:linear-gradient(170deg,#101018,#08080e);
+    border:2px solid rgba(255,255,255,.08);
+    display:flex; align-items:center; justify-content:center;
+    transition:border-color .3s, box-shadow .3s;
+    touch-action:manipulation;
+  }
+  .expo .q {
+    font-family:'Fredoka One',cursive; font-size:52px; color:rgba(255,255,255,.22);
+    text-shadow:0 0 18px rgba(255,209,102,.15);
+    animation:qPulse 2.4s ease-in-out infinite;
+  }
+  @keyframes qPulse { 0%,100%{opacity:.5; transform:scale(1)} 50%{opacity:1; transform:scale(1.08)} }
+  .expo:active { transform:scale(.95); }
+  /* Faisceau du projecteur */
+  .expo .beam {
+    position:absolute; left:50%; bottom:100%; width:0; height:0; pointer-events:none;
+    border-left:58px solid transparent; border-right:58px solid transparent;
+    border-bottom:120px solid rgba(255,224,102,.16);
+    transform:translateX(-50%) scaleY(0); transform-origin:bottom;
+    filter:blur(3px);
+  }
+  .expo.lit { cursor:default; border-color:rgba(255,209,102,.65); box-shadow:0 0 30px rgba(255,209,102,.35); }
+  .expo.lit .beam { animation:beamOn .5s ease-out both; }
+  @keyframes beamOn { from{transform:translateX(-50%) scaleY(0); opacity:0} to{transform:translateX(-50%) scaleY(1); opacity:1} }
+  .expo .photo {
+    position:absolute; inset:6px; border-radius:14px; object-fit:cover;
+    opacity:0; transform:scale(.6);
+    box-shadow:0 0 0 3px rgba(255,224,102,.6), 0 0 26px rgba(255,209,102,.5);
+  }
+  .expo.lit .photo { animation:reveal .55s cubic-bezier(.34,1.4,.64,1) .15s both; }
+  @keyframes reveal { from{opacity:0; transform:scale(.6)} to{opacity:1; transform:scale(1)} }
+  .expo.lit .q { display:none; }
+  .expo .halo {
+    position:absolute; inset:-18px; border-radius:50%; pointer-events:none;
+    background:radial-gradient(circle, rgba(255,224,102,.3), transparent 65%);
+    opacity:0;
+  }
+  .expo.lit .halo { animation:haloOn .6s ease .1s both; }
+  @keyframes haloOn { from{opacity:0; transform:scale(.5)} to{opacity:1; transform:scale(1)} }
+
+  /* Grand chiffre qui s'envole */
+  .fly-num {
+    position:fixed; z-index:70; pointer-events:none;
+    font-family:'Fredoka One',cursive; font-size:56px; color:#ffe066;
+    text-shadow:0 0 18px rgba(255,209,102,.95), 0 4px 10px rgba(0,0,0,.6);
+    animation:flyUp 1s ease-out forwards;
+  }
+  @keyframes flyUp {
+    from { transform:translate(-50%,0) scale(.6); opacity:0; }
+    25% { opacity:1; transform:translate(-50%,-24px) scale(1.15); }
+    to { transform:translate(-50%,-110px) scale(1); opacity:0; }
+  }
+
+  /* ── Dalles de sol ── */
+  .slabs { display:none; gap:16px; margin-top:26px; }
+  .slabs.show { display:flex; animation:slabsIn .5s cubic-bezier(.34,1.4,.64,1); }
+  @keyframes slabsIn { from{transform:translateY(40px); opacity:0} to{transform:translateY(0); opacity:1} }
+  .slab {
+    width:104px; height:96px; border:none; cursor:pointer; border-radius:16px;
+    font-family:'Fredoka One',cursive; font-size:42px; color:#ffe066;
+    background:
+      linear-gradient(180deg, rgba(255,255,255,.14), rgba(255,255,255,0) 40%),
+      linear-gradient(160deg,#3c3c4e 0%, #23232f 100%);
+    border-top:3px solid rgba(255,255,255,.28);
+    border-bottom:5px solid #0c0c12;
+    box-shadow:0 10px 22px rgba(0,0,0,.6), inset 0 0 24px rgba(0,0,0,.5);
+    text-shadow:0 0 12px rgba(255,209,102,.55);
+    transition:transform .12s ease;
+    touch-action:manipulation;
+  }
+  .slab:active { transform:scale(.92); }
+  .slab.wobble { animation:sw .4s ease; }
+  @keyframes sw { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-7px)} 50%{transform:translateX(7px)} 75%{transform:translateX(-4px)} }
+  .slab.win {
+    background:linear-gradient(160deg,#ffe066,#f0b73f); color:#2a1c05;
+    text-shadow:none; box-shadow:0 0 34px rgba(255,209,102,.8);
+  }
+
+  .message {
+    min-height:34px; margin-top:18px; text-align:center;
+    font-family:'Fredoka One',cursive; font-size:22px; color:#ffe066;
+    opacity:0; transition:opacity .25s;
+  }
+  .message.show { opacity:1; animation:msgPop .35s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes msgPop { from{transform:scale(.6)} to{transform:scale(1)} }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 5 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🔦 Allume les dinos !</h1>
+    <p>Le musée est dans le noir… Touche les « ? » pour allumer les projecteurs !</p>
+  </div>
+
+  <div class="counter">
+    <span class="lbl">DINOS TROUVÉS</span>
+    <span class="val" id="countVal">0</span>
+  </div>
+
+  <div class="hall" id="hall"></div>
+
+  <div class="slabs" id="slabs"></div>
+  <div class="message" id="message"></div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var DINOS = [
+    { img: '../img/dinos/Tyrannosaurus.jpg',    name: 'T-Rex' },
+    { img: '../img/dinos/Brachiosaurus.jpg',    name: 'Brachiosaure' },
+    { img: '../img/dinos/Stegosaurus.jpg',      name: 'Stégosaure' },
+    { img: '../img/dinos/Diplodocus.jpg',       name: 'Diplodocus' },
+    { img: '../img/dinos/Parasaurolophus.jpg',  name: 'Parasaurolophus' }
+  ];
+  var CHOICES = [4, 5, 6];
+  var hall = document.getElementById('hall');
+  var slabsEl = document.getElementById('slabs');
+  var countVal = document.getElementById('countVal');
+  var msgEl = document.getElementById('message');
+  var found = 0;
+  var finalLocked = false;
+
+  function sfx(src) {
+    try { var a = new Audio(src); a.volume = 0.55; a.play().catch(function () {}); } catch (e) {}
+  }
+  function say(text) {
+    msgEl.textContent = text;
+    msgEl.classList.remove('show');
+    void msgEl.offsetWidth;
+    msgEl.classList.add('show');
+  }
+  function tickCounter() {
+    countVal.textContent = found;
+    countVal.classList.remove('tick');
+    void countVal.offsetWidth;
+    countVal.classList.add('tick');
+  }
+  function flyNum(x, y, n) {
+    var f = document.createElement('div');
+    f.className = 'fly-num';
+    f.textContent = n;
+    f.style.left = x + 'px';
+    f.style.top = (y - 20) + 'px';
+    document.body.appendChild(f);
+    setTimeout(function () { f.remove(); }, 1100);
+  }
+
+  DINOS.forEach(function (d) {
+    var e = document.createElement('div');
+    e.className = 'expo';
+    e.innerHTML =
+      '<div class="halo"></div>' +
+      '<div class="beam"></div>' +
+      '<span class="q">?</span>' +
+      '<img class="photo" src="' + d.img + '" alt="' + d.name + '">';
+    e.addEventListener('click', function () { lightUp(e, d); });
+    hall.appendChild(e);
+  });
+
+  function lightUp(e, d) {
+    if (e.classList.contains('lit')) return;
+    e.classList.add('lit');
+    sfx('../sounds/fx/magie.mp3');
+    setTimeout(function () {
+      found++;
+      tickCounter();
+      var r = e.getBoundingClientRect();
+      flyNum(r.left + r.width / 2, r.top, found);
+      if (found === DINOS.length) {
+        say('Tous les dinos sont allumés ! Combien y en a-t-il ? 🤔');
+        setTimeout(function () { slabsEl.classList.add('show'); }, 600);
+      } else {
+        say(d.name + ' ! Encore ' + (DINOS.length - found) + ' à trouver…');
+      }
+    }, 350);
+  }
+
+  CHOICES.forEach(function (n) {
+    var s = document.createElement('button');
+    s.className = 'slab';
+    s.textContent = n;
+    s.setAttribute('aria-label', n + ' dinos');
+    s.addEventListener('click', function () { onFinal(n, s); });
+    slabsEl.appendChild(s);
+  });
+
+  function onFinal(n, slab) {
+    if (finalLocked) return;
+    if (n !== DINOS.length) {
+      slab.classList.remove('wobble');
+      void slab.offsetWidth;
+      slab.classList.add('wobble');
+      say('Regarde bien le compteur… 👀');
+      return;
+    }
+    finalLocked = true;
+    slab.classList.add('win');
+    Array.prototype.forEach.call(slabsEl.children, function (b) { b.disabled = true; });
+    say('Oui ! ' + DINOS.length + ' dinos au musée ! Bravo, petit explorateur ! 🏆');
+    sfx('../sounds/fx/tada.mp3');
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 6 — Les Constellations d'Œufs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+  body {
+    font-family:'Nunito',sans-serif; font-weight:700; color:#fff;
+    min-height:100dvh; overflow-x:hidden;
+    background:
+      radial-gradient(800px 420px at 50% -10%, rgba(90,70,180,.35), transparent 65%),
+      linear-gradient(180deg,#0b0b24 0%, #141032 55%, #0a0a1c 100%);
+    display:flex; justify-content:center;
+  }
+  .bg-star { position:fixed; width:3px; height:3px; border-radius:50%; background:#fff; opacity:.6; pointer-events:none; animation:tw 2.8s ease-in-out infinite; }
+  @keyframes tw { 0%,100%{opacity:.2} 50%{opacity:.85} }
+  .shooting { position:fixed; top:12vh; right:6vw; width:130px; opacity:.5; pointer-events:none; animation:shoot 9s ease-in-out infinite; }
+  @keyframes shoot { 0%,72%{transform:translate(0,0); opacity:0} 78%{opacity:.6} 92%{transform:translate(-30vw,14vh); opacity:0} 100%{opacity:0} }
+
+  .stage { position:relative; z-index:2; width:100%; max-width:520px; min-height:100dvh; padding:64px 16px 36px; display:flex; flex-direction:column; align-items:center; }
+
+  .band {
+    position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:60;
+    display:flex; gap:10px; align-items:center; white-space:nowrap;
+    background:rgba(0,0,0,.55); border:1px solid rgba(255,209,102,.4); border-radius:999px;
+    padding:6px 16px; font-size:12px; font-weight:900; color:#ffe066; backdrop-filter:blur(6px);
+  }
+  .band a { color:#ffd166; text-decoration:none; }
+
+  .consigne {
+    text-align:center; background:rgba(0,0,0,.45); border:2px solid rgba(255,209,102,.5);
+    border-radius:22px; padding:14px 24px; box-shadow:0 8px 24px rgba(0,0,0,.4);
+  }
+  .consigne h1 { font-family:'Fredoka One',cursive; font-size:clamp(21px,5.8vw,29px); color:#ffe066; letter-spacing:1px; }
+  .consigne p { font-size:15px; color:rgba(255,255,255,.85); margin-top:4px; }
+
+  /* ── Le domino de constellations ── */
+  .domino {
+    position:relative; margin-top:30px; display:flex; align-items:center; gap:0;
+    background:rgba(255,255,255,.04); border:2px solid rgba(255,209,102,.35);
+    border-radius:26px; padding:22px 18px;
+    box-shadow:0 14px 34px rgba(0,0,0,.5), inset 0 0 40px rgba(20,16,60,.6);
+  }
+  .domino .bar { width:3px; align-self:stretch; margin:0 16px; border-radius:3px;
+    background:linear-gradient(180deg,transparent,#ffd166 20%,#ffd166 80%,transparent); opacity:.7; }
+
+  .constellation { position:relative; width:168px; height:168px; border-radius:20px; transition:background .4s, box-shadow .4s; }
+  .constellation svg { position:absolute; inset:0; width:100%; height:100%; }
+  .constellation .halo {
+    position:absolute; inset:-14px; border-radius:28px; pointer-events:none;
+    background:radial-gradient(circle, rgba(255,224,102,.28), transparent 68%);
+    opacity:0; transform:scale(.6);
+  }
+  .constellation.lit .halo { animation:haloIn .5s cubic-bezier(.34,1.4,.64,1) both; }
+  @keyframes haloIn { from{opacity:0; transform:scale(.6)} to{opacity:1; transform:scale(1)} }
+  .constellation.lit { box-shadow:0 0 34px rgba(255,209,102,.4); }
+
+  .pip {
+    position:absolute; width:34px; height:42px; transform:translate(-50%,-50%);
+    border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+    background:
+      radial-gradient(circle at 34% 30%, rgba(255,255,255,.9) 0 3px, transparent 4px),
+      linear-gradient(160deg,#fff3cf 0%, #f5d789 70%, #e2b95e 100%);
+    box-shadow:0 0 12px rgba(255,224,102,.75), 0 0 26px rgba(255,209,102,.35), 0 4px 8px rgba(0,0,0,.4);
+    animation:pipTw 3s ease-in-out infinite;
+  }
+  @keyframes pipTw { 0%,100%{filter:brightness(.92)} 50%{filter:brightness(1.12)} }
+  .constellation.lit .pip { animation:pipBlaze .45s ease both; }
+  @keyframes pipBlaze { from{transform:translate(-50%,-50%) scale(.7)} 60%{transform:translate(-50%,-50%) scale(1.25)} to{transform:translate(-50%,-50%) scale(1)} }
+
+  /* ── Feedback regroupement ── */
+  .feedback {
+    min-height:64px; margin-top:24px; display:flex; align-items:center; justify-content:center; gap:14px;
+    font-family:'Fredoka One',cursive; color:#ffe066; text-align:center; flex-wrap:wrap;
+  }
+  .fb-num { font-size:52px; text-shadow:0 0 20px rgba(255,209,102,.8); display:none; }
+  .fb-num.show { display:inline-block; animation:fbPop .45s cubic-bezier(.34,1.56,.64,1) both; }
+  .fb-word { font-size:26px; color:rgba(255,255,255,.85); display:none; }
+  .fb-word.show { display:inline-block; animation:fbPop .45s cubic-bezier(.34,1.56,.64,1) both; }
+  @keyframes fbPop { from{transform:scale(.3); opacity:0} to{transform:scale(1); opacity:1} }
+  .fb-num.total { color:#7fe7c4; text-shadow:0 0 24px rgba(47,191,143,.9); }
+
+  .answers { display:flex; gap:18px; margin-top:22px; }
+  .num-btn {
+    width:92px; height:92px; border:none; border-radius:24px; cursor:pointer;
+    font-family:'Fredoka One',cursive; font-size:44px; color:#2a1c05;
+    background:linear-gradient(145deg,#ffe066,#f0b73f);
+    box-shadow:0 6px 0 #b8860b, 0 12px 22px rgba(0,0,0,.45);
+    transition:transform .12s ease; touch-action:manipulation;
+  }
+  .num-btn:active { transform:scale(.92); }
+  .num-btn.wobble { animation:wobble .4s ease; }
+  @keyframes wobble { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-7px)} 50%{transform:translateX(7px)} 75%{transform:translateX(-4px)} }
+  .num-btn.win { background:linear-gradient(145deg,#7fe7c4,#2fbf8f); box-shadow:0 6px 0 #157a56, 0 0 26px rgba(47,191,143,.7); color:#062e20; }
+
+  .message {
+    min-height:30px; margin-top:16px; text-align:center;
+    font-family:'Fredoka One',cursive; font-size:20px; color:#ffe066;
+    opacity:0; transition:opacity .25s;
+  }
+  .message.show { opacity:1; animation:msgPop .35s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes msgPop { from{transform:scale(.6)} to{transform:scale(1)} }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 6 <a href="index.html">← Sommaire</a></div>
+<img class="shooting" src="../img/decor/etoile_filante.png" alt="">
+
+<div class="stage">
+  <div class="consigne">
+    <h1>✨ Combien d'œufs brillent en tout ?</h1>
+    <p>Regarde les deux constellations… sans compter un par un !</p>
+  </div>
+
+  <div class="domino">
+    <div class="constellation" id="grpA"></div>
+    <div class="bar"></div>
+    <div class="constellation" id="grpB"></div>
+  </div>
+
+  <div class="feedback" id="feedback"></div>
+  <div class="answers" id="answers"></div>
+  <div class="message" id="message"></div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var VAL_A = 5, VAL_B = 4, TOTAL = VAL_A + VAL_B;
+  var CHOICES = [8, 9, 10];
+  // Configurations canoniques de dé (positions en % dans la constellation)
+  var PATTERNS = {
+    4: { pos: [[26,26],[74,26],[74,74],[26,74]],
+         lines: [[[26,26],[74,26],[74,74],[26,74],[26,26]]] },
+    5: { pos: [[24,24],[76,24],[50,50],[24,76],[76,76]],
+         lines: [[[24,24],[50,50],[76,76]],[[76,24],[50,50],[24,76]]] }
+  };
+  var locked = false;
+
+  function sfx(src) {
+    try { var a = new Audio(src); a.volume = 0.55; a.play().catch(function () {}); } catch (e) {}
+  }
+  function say(text) {
+    var m = document.getElementById('message');
+    m.textContent = text;
+    m.classList.remove('show'); void m.offsetWidth; m.classList.add('show');
+  }
+
+  // Ciel étoilé de fond
+  for (var s = 0; s < 45; s++) {
+    var st = document.createElement('div');
+    st.className = 'bg-star';
+    st.style.left = Math.random() * 100 + 'vw';
+    st.style.top = Math.random() * 100 + 'vh';
+    st.style.animationDelay = (Math.random() * 2.8) + 's';
+    document.body.appendChild(st);
+  }
+
+  function buildConstellation(el, val) {
+    var cfg = PATTERNS[val];
+    var lines = cfg.lines.map(function (pts) {
+      return '<polyline points="' + pts.map(function (p) { return p.join(','); }).join(' ') +
+        '" fill="none" stroke="rgba(255,224,102,.35)" stroke-width="1.2" stroke-dasharray="3 4" stroke-linecap="round"/>';
+    }).join('');
+    el.innerHTML = '<div class="halo"></div>' +
+      '<svg viewBox="0 0 100 100" preserveAspectRatio="none">' + lines + '</svg>';
+    cfg.pos.forEach(function (p, i) {
+      var pip = document.createElement('div');
+      pip.className = 'pip';
+      pip.style.left = p[0] + '%';
+      pip.style.top = p[1] + '%';
+      pip.style.animationDelay = (-i * 0.6) + 's';
+      el.appendChild(pip);
+    });
+  }
+
+  var grpA = document.getElementById('grpA');
+  var grpB = document.getElementById('grpB');
+  buildConstellation(grpA, VAL_A);
+  buildConstellation(grpB, VAL_B);
+
+  var answersEl = document.getElementById('answers');
+  CHOICES.forEach(function (n) {
+    var b = document.createElement('button');
+    b.className = 'num-btn';
+    b.textContent = n;
+    b.setAttribute('aria-label', n + ' œufs');
+    b.addEventListener('click', function () { onAnswer(n, b); });
+    answersEl.appendChild(b);
+  });
+
+  function fbStep(html, cls) {
+    var f = document.getElementById('feedback');
+    var span = document.createElement('span');
+    span.className = cls;
+    span.innerHTML = html;
+    f.appendChild(span);
+    void span.offsetWidth;
+    span.classList.add('show');
+  }
+
+  function onAnswer(n, btn) {
+    if (locked) return;
+    if (n !== TOTAL) {
+      btn.classList.remove('wobble'); void btn.offsetWidth; btn.classList.add('wobble');
+      say('Regarde les formes, comme sur un dé ! 🎲');
+      return;
+    }
+    locked = true;
+    btn.classList.add('win');
+    Array.prototype.forEach.call(answersEl.children, function (b) { b.disabled = true; });
+    // Feedback par REGROUPEMENT : jamais 1 par 1
+    setTimeout(function () {
+      grpA.classList.add('lit');
+      fbStep(VAL_A + ' !', 'fb-num');
+      sfx('../sounds/fx/magie.mp3');
+    }, 350);
+    setTimeout(function () {
+      grpB.classList.add('lit');
+      fbStep('et', 'fb-word');
+      fbStep(VAL_B + '…', 'fb-num');
+      sfx('../sounds/fx/magie.mp3');
+    }, 1400);
+    setTimeout(function () {
+      fbStep('ça fait', 'fb-word');
+      fbStep(TOTAL + ' !', 'fb-num total');
+      say('Le 5 se voit d\'un coup, comme sur un dé ! 🎉');
+      sfx('../sounds/fx/waouh.mp3');
+    }, 2450);
+  }
+})();
+</script>
+</body>
+</html>

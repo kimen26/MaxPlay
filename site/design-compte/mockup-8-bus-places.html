@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 8 — Le Bus aux 10 Places</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+  body {
+    font-family:'Nunito',sans-serif; font-weight:700; color:#fff;
+    min-height:100dvh; overflow-x:hidden;
+    background:
+      radial-gradient(800px 420px at 50% -10%, rgba(26,188,156,.22), transparent 65%),
+      linear-gradient(180deg,#0b1c24 0%, #10222e 55%, #0a141c 100%);
+    display:flex; justify-content:center;
+  }
+  .stage { position:relative; z-index:2; width:100%; max-width:560px; min-height:100dvh; padding:64px 16px 36px; display:flex; flex-direction:column; align-items:center; }
+
+  .band {
+    position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:60;
+    display:flex; gap:10px; align-items:center; white-space:nowrap;
+    background:rgba(0,0,0,.55); border:1px solid rgba(255,209,102,.4); border-radius:999px;
+    padding:6px 16px; font-size:12px; font-weight:900; color:#ffe066; backdrop-filter:blur(6px);
+  }
+  .band a { color:#ffd166; text-decoration:none; }
+
+  .consigne {
+    text-align:center; background:rgba(0,0,0,.45); border:2px solid rgba(255,209,102,.5);
+    border-radius:22px; padding:14px 24px; box-shadow:0 8px 24px rgba(0,0,0,.4);
+  }
+  .consigne h1 { font-family:'Fredoka One',cursive; font-size:clamp(21px,5.8vw,29px); color:#ffe066; letter-spacing:1px; }
+  .consigne p { font-size:15px; color:rgba(255,255,255,.85); margin-top:4px; }
+
+  .bus-top { margin-top:20px; filter:drop-shadow(0 8px 14px rgba(0,0,0,.5)); }
+  .bus-top.roule { animation:roule .5s ease-in-out 2; }
+  @keyframes roule { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-8px)} 75%{transform:translateX(8px)} }
+
+  /* ── Le plan de sièges 2 × 5, façon domino ── */
+  .plan-wrap { display:flex; align-items:center; gap:16px; margin-top:6px; }
+  .plan {
+    position:relative; margin-top:14px; display:flex; flex-direction:column; gap:14px;
+    background:rgba(255,255,255,.04); border:2px solid rgba(255,209,102,.35);
+    border-radius:26px; padding:20px 22px;
+    box-shadow:0 14px 34px rgba(0,0,0,.5), inset 0 0 40px rgba(10,30,36,.6);
+  }
+  .rangee { display:flex; gap:12px; padding:8px; border-radius:18px; transition:background .4s, box-shadow .4s; }
+  .rangee.lit { background:rgba(255,209,102,.12); box-shadow:0 0 28px rgba(255,209,102,.35); }
+  .rangee.lit-vert { background:rgba(127,231,196,.10); box-shadow:0 0 28px rgba(47,191,143,.4); }
+
+  .siege {
+    width:64px; height:64px; border-radius:16px; position:relative;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(255,255,255,.05); border:2px dashed rgba(255,255,255,.28);
+    transition:border-color .3s, background .3s, box-shadow .3s;
+  }
+  .siege img { width:54px; height:54px; object-fit:contain; filter:drop-shadow(0 3px 4px rgba(0,0,0,.4)); }
+  .siege.occupe { border:2px solid rgba(255,209,102,.55); background:rgba(255,209,102,.08); }
+  .siege.ok { border-color:#7fe7c4; background:rgba(47,191,143,.18); box-shadow:0 0 16px rgba(47,191,143,.55); animation:seatPop .4s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes seatPop { from{transform:scale(.7)} 60%{transform:scale(1.15)} to{transform:scale(1)} }
+
+  /* Avatar qui descend du bus (clone animé en position fixe) */
+  .dino-fly { position:fixed; z-index:50; width:54px; height:54px; object-fit:contain; pointer-events:none;
+    transition:transform 1s cubic-bezier(.45,0,.55,1), opacity 1s ease; }
+
+  .arret { width:110px; opacity:0; transform:translateX(30px); transition:opacity .6s, transform .6s; align-self:center; }
+  .arret.show { opacity:1; transform:translateX(0); }
+
+  /* ── Feedback par rangées ── */
+  .feedback {
+    min-height:64px; margin-top:20px; display:flex; align-items:center; justify-content:center; gap:14px;
+    font-family:'Fredoka One',cursive; color:#ffe066; text-align:center; flex-wrap:wrap;
+  }
+  .fb-num { font-size:52px; text-shadow:0 0 20px rgba(255,209,102,.8); display:none; }
+  .fb-num.show { display:inline-block; animation:fbPop .45s cubic-bezier(.34,1.56,.64,1) both; }
+  .fb-word { font-size:26px; color:rgba(255,255,255,.85); display:none; }
+  .fb-word.show { display:inline-block; animation:fbPop .45s cubic-bezier(.34,1.56,.64,1) both; }
+  @keyframes fbPop { from{transform:scale(.3); opacity:0} to{transform:scale(1); opacity:1} }
+  .fb-num.total { color:#7fe7c4; text-shadow:0 0 24px rgba(47,191,143,.9); }
+
+  .answers { display:flex; gap:18px; margin-top:20px; }
+  .num-btn {
+    width:92px; height:92px; border:none; border-radius:24px; cursor:pointer;
+    font-family:'Fredoka One',cursive; font-size:44px; color:#2a1c05;
+    background:linear-gradient(145deg,#ffe066,#f0b73f);
+    box-shadow:0 6px 0 #b8860b, 0 12px 22px rgba(0,0,0,.45);
+    transition:transform .12s ease; touch-action:manipulation;
+  }
+  .num-btn:active { transform:scale(.92); }
+  .num-btn.wobble { animation:wobble .4s ease; }
+  @keyframes wobble { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-7px)} 50%{transform:translateX(7px)} 75%{transform:translateX(-4px)} }
+  .num-btn.win { background:linear-gradient(145deg,#7fe7c4,#2fbf8f); box-shadow:0 6px 0 #157a56, 0 0 26px rgba(47,191,143,.7); color:#062e20; }
+
+  .message {
+    min-height:30px; margin-top:16px; text-align:center;
+    font-family:'Fredoka One',cursive; font-size:20px; color:#ffe066;
+    opacity:0; transition:opacity .25s;
+  }
+  .message.show { opacity:1; animation:msgPop .35s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes msgPop { from{transform:scale(.6)} to{transform:scale(1)} }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 8 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="bus-top" id="busTop"></div>
+
+  <div class="consigne" style="margin-top:18px">
+    <h1 id="consigneTitre">🪑 Combien de passagers dans le bus ?</h1>
+    <p id="consigneSub">Compte les dinos assis sur les sièges !</p>
+  </div>
+
+  <div class="plan-wrap">
+    <div class="plan" id="plan">
+      <div class="rangee" id="rangee1"></div>
+      <div class="rangee" id="rangee2"></div>
+    </div>
+    <img class="arret" id="arret" src="../img/decor/arret_bus.png" alt="Arrêt de bus">
+  </div>
+
+  <div class="feedback" id="feedback"></div>
+  <div class="answers" id="answers"></div>
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../js/bus-svg.js"></script>
+<script>
+(function () {
+  'use strict';
+  // Scénario : 7 passagers (rangée de 5 + 2) → 3 descendent → il en reste 4
+  var AVATARS = [
+    'allo_joyeux_1.png', 'anky_joyeux_4.png', 'brachio_joyeux_2.png',
+    'cory_joyeux_1.png', 'centro_joyeux_1.png', 'diplo_joyeux_1.png',
+    'galli_joyeux_1.png'
+  ];
+  var DEPART = 7, DESCENDENT = 3, RESTE = DEPART - DESCENDENT;
+  var phase = 1, locked = false;
+
+  document.getElementById('busTop').innerHTML = busSVG('#E2001A', '#fff', '162', 240);
+
+  function sfx(src) {
+    try { var a = new Audio(src); a.volume = 0.55; a.play().catch(function () {}); } catch (e) {}
+  }
+  function say(text) {
+    var m = document.getElementById('message');
+    m.textContent = text;
+    m.classList.remove('show'); void m.offsetWidth; m.classList.add('show');
+  }
+  function fbStep(html, cls) {
+    var span = document.createElement('span');
+    span.className = cls; span.innerHTML = html;
+    document.getElementById('feedback').appendChild(span);
+    void span.offsetWidth; span.classList.add('show');
+  }
+
+  // ── Construction du plan de sièges 2 × 5 ──
+  var sieges = [];
+  ['rangee1', 'rangee2'].forEach(function (rowId, r) {
+    var row = document.getElementById(rowId);
+    for (var c = 0; c < 5; c++) {
+      var s = document.createElement('div');
+      s.className = 'siege';
+      s.dataset.row = r;
+      row.appendChild(s);
+      sieges.push(s);
+    }
+  });
+  function remplir(n) {
+    sieges.forEach(function (s, i) {
+      s.innerHTML = '';
+      s.classList.remove('occupe', 'ok');
+      if (i < n) {
+        s.classList.add('occupe');
+        var img = document.createElement('img');
+        img.src = '../img/avatars/' + AVATARS[i];
+        img.alt = 'dino passager';
+        s.appendChild(img);
+      }
+    });
+  }
+  remplir(DEPART);
+
+  // ── Boutons réponses ──
+  var answersEl = document.getElementById('answers');
+  function setChoices(list) {
+    answersEl.innerHTML = '';
+    list.forEach(function (n) {
+      var b = document.createElement('button');
+      b.className = 'num-btn'; b.textContent = n;
+      b.setAttribute('aria-label', n + ' passagers');
+      b.addEventListener('click', function () { onAnswer(n, b); });
+      answersEl.appendChild(b);
+    });
+  }
+  setChoices([6, 7, 8]);
+
+  function validerSieges(liste, delay0) {
+    liste.forEach(function (s, i) {
+      setTimeout(function () { s.classList.add('ok'); }, delay0 + i * 120);
+    });
+  }
+
+  // ── Phase 2 : 3 dinos descendent à l'arrêt ──
+  function faireDescendre() {
+    var arret = document.getElementById('arret');
+    arret.classList.add('show');
+    document.getElementById('busTop').classList.add('roule');
+    sfx('../sounds/bus-closing-door-sound.flac');
+    // Les 3 derniers sièges occupés (2 de la rangée 2 + le dernier de la rangée 1)
+    var partants = sieges.slice(RESTE, DEPART);
+    var cible = arret.getBoundingClientRect();
+    partants.forEach(function (s, i) {
+      var img = s.querySelector('img');
+      if (!img) return;
+      var r = img.getBoundingClientRect();
+      var fly = img.cloneNode();
+      fly.className = 'dino-fly';
+      fly.style.left = r.left + 'px'; fly.style.top = r.top + 'px';
+      document.body.appendChild(fly);
+      s.innerHTML = '';
+      s.classList.remove('occupe', 'ok');
+      setTimeout(function () {
+        var dx = (cible.left + cible.width / 2) - (r.left + r.width / 2) + (i - 1) * 26;
+        var dy = (cible.top + cible.height / 2) - (r.top + r.height / 2) + i * 14;
+        fly.style.transform = 'translate(' + dx + 'px,' + dy + 'px) scale(.9)';
+        fly.style.opacity = '0';
+      }, 400 + i * 350);
+      setTimeout(function () { fly.remove(); }, 1800 + i * 350);
+    });
+    setTimeout(function () {
+      document.getElementById('consigneTitre').textContent = '🚏 3 dinos sont descendus !';
+      document.getElementById('consigneSub').textContent = 'Combien il en reste dans le bus ?';
+      document.getElementById('feedback').innerHTML = '';
+      setChoices([3, 4, 5]);
+      locked = false;
+      phase = 2;
+    }, 2200);
+  }
+
+  // ── Réponses ──
+  function onAnswer(n, btn) {
+    if (locked) return;
+    var attendu = phase === 1 ? DEPART : RESTE;
+    if (n !== attendu) {
+      btn.classList.remove('wobble'); void btn.offsetWidth; btn.classList.add('wobble');
+      say(phase === 1 ? 'Regarde les rangées de sièges ! 🪑' : 'Compte les sièges encore occupés ! 🦕');
+      return;
+    }
+    locked = true;
+    btn.classList.add('win');
+    Array.prototype.forEach.call(answersEl.children, function (b) { b.disabled = true; });
+    var r1 = document.getElementById('rangee1'), r2 = document.getElementById('rangee2');
+    if (phase === 1) {
+      // Validation par RANGÉE : jamais 1 par 1
+      setTimeout(function () {
+        r1.classList.add('lit');
+        validerSieges(sieges.slice(0, 5), 0);
+        fbStep('5 !', 'fb-num');
+        sfx('../sounds/fx/magie.mp3');
+      }, 350);
+      setTimeout(function () {
+        r2.classList.add('lit');
+        validerSieges(sieges.slice(5, 7), 0);
+        fbStep('et', 'fb-word');
+        fbStep('2…', 'fb-num');
+        sfx('../sounds/fx/magie.mp3');
+      }, 1500);
+      setTimeout(function () {
+        fbStep('ça fait', 'fb-word');
+        fbStep('7 !', 'fb-num total');
+        say('Une rangée pleine de 5, et 2 : ça fait 7 ! 🎉');
+        sfx('../sounds/fx/waouh.mp3');
+      }, 2600);
+      setTimeout(function () {
+        r1.classList.remove('lit'); r2.classList.remove('lit');
+        sieges.forEach(function (s) { s.classList.remove('ok'); });
+        faireDescendre();
+      }, 4300);
+    } else {
+      setTimeout(function () {
+        r1.classList.add('lit-vert');
+        validerSieges(sieges.slice(0, 4), 0);
+        fbStep('5', 'fb-num');
+        fbStep('moins', 'fb-word');
+        fbStep('1…', 'fb-num');
+        sfx('../sounds/fx/magie.mp3');
+      }, 350);
+      setTimeout(function () {
+        fbStep('ça fait', 'fb-word');
+        fbStep('4 !', 'fb-num total');
+        say('Il reste presque toute la rangée de 5 : il en reste 4 ! 🎉');
+        sfx('../sounds/fx/waouh.mp3');
+      }, 1700);
+    }
+  }
+})();
+</script>
+</body>
+</html>

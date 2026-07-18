@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 2 — Le Tampon Magique</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+  body {
+    font-family:'Nunito',sans-serif; font-weight:700; color:#fff;
+    min-height:100dvh; overflow-x:hidden;
+    background:
+      radial-gradient(800px 400px at 50% 0%, rgba(255,209,102,.14), transparent 60%),
+      linear-gradient(180deg,#1c1430 0%, #251a3d 50%, #171126 100%);
+    display:flex; justify-content:center;
+  }
+  .stage { width:100%; max-width:520px; min-height:100dvh; padding:64px 16px 36px; display:flex; flex-direction:column; align-items:center; }
+
+  .band {
+    position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:60;
+    display:flex; gap:10px; align-items:center; white-space:nowrap;
+    background:rgba(0,0,0,.5); border:1px solid rgba(255,209,102,.4); border-radius:999px;
+    padding:6px 16px; font-size:12px; font-weight:900; color:#ffe066; backdrop-filter:blur(6px);
+  }
+  .band a { color:#ffd166; text-decoration:none; }
+
+  .consigne {
+    text-align:center; background:rgba(0,0,0,.4); border:2px solid rgba(255,209,102,.5);
+    border-radius:22px; padding:14px 24px; box-shadow:0 8px 24px rgba(0,0,0,.35); z-index:5;
+  }
+  .consigne h1 { font-family:'Fredoka One',cursive; font-size:clamp(22px,6vw,30px); color:#ffe066; letter-spacing:1px; }
+  .consigne p { font-size:15px; color:rgba(255,255,255,.85); margin-top:4px; }
+
+  .progress {
+    display:flex; gap:10px; margin-top:18px; z-index:5;
+  }
+  .pip {
+    width:34px; height:34px; border-radius:50%;
+    border:2px dashed rgba(255,255,255,.35);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka One',cursive; font-size:16px; color:transparent;
+    transition:all .2s;
+  }
+  .pip.on {
+    border:2px solid #ffe066; background:linear-gradient(145deg,#ffe066,#f0b73f);
+    color:#2a1c05; transform:scale(1.08);
+    box-shadow:0 0 14px rgba(255,224,102,.55);
+  }
+
+  /* ── Grande feuille lumineuse ── */
+  .sheet {
+    position:relative; margin-top:22px; width:100%; max-width:460px;
+    background:
+      radial-gradient(circle at 20% 15%, rgba(255,255,255,.75), transparent 45%),
+      linear-gradient(160deg,#fdf6e3 0%, #f3e7c8 100%);
+    border-radius:26px; padding:26px 18px 30px;
+    box-shadow:0 0 0 6px rgba(255,209,102,.25), 0 0 45px rgba(255,224,102,.35), 0 18px 40px rgba(0,0,0,.5);
+    display:grid; grid-template-columns:1fr 1fr; gap:14px; justify-items:center;
+    z-index:4;
+  }
+  .dino {
+    position:relative; width:150px; height:110px; border-radius:18px;
+    background:rgba(255,255,255,.4); border:2px dashed rgba(120,90,40,.35);
+    display:flex; align-items:center; justify-content:center;
+    cursor:pointer; transition:transform .15s ease, box-shadow .2s ease;
+    touch-action:manipulation;
+  }
+  .dino:active { transform:scale(.95); }
+  .dino img { width:124px; max-height:92px; object-fit:contain; filter:drop-shadow(0 4px 6px rgba(0,0,0,.25)); pointer-events:none; }
+  .dino.stamped { border:2px solid #2fbf8f; box-shadow:0 0 18px rgba(47,191,143,.45); cursor:default; }
+  .dino.stamped img { filter:drop-shadow(0 0 10px rgba(47,191,143,.6)); }
+  .dino.wiggle { animation:wig .35s ease; }
+  @keyframes wig { 0%,100%{transform:rotate(0)} 30%{transform:rotate(-3deg)} 65%{transform:rotate(3deg)} }
+
+  .stamp {
+    position:absolute; top:-16px; right:-14px;
+    width:58px; height:58px; border-radius:50%;
+    background:radial-gradient(circle at 32% 28%, #ffe98a, #f0b73f 70%);
+    border:4px solid #b8860b;
+    color:#4a2c05; font-family:'Fredoka One',cursive; font-size:28px;
+    display:none; align-items:center; justify-content:center;
+    box-shadow:0 5px 12px rgba(0,0,0,.45);
+    transform:rotate(-10deg); pointer-events:none; z-index:3;
+  }
+  .stamp.hit { display:flex; animation:stampHit .32s cubic-bezier(.34,1.4,.64,1) both; }
+  @keyframes stampHit {
+    0% { transform:scale(2.6) rotate(-30deg); opacity:0; }
+    60% { transform:scale(.92) rotate(-6deg); opacity:1; }
+    100% { transform:scale(1) rotate(-10deg); opacity:1; }
+  }
+
+  .done-btn {
+    margin-top:28px; border:none; cursor:pointer; z-index:5;
+    font-family:'Fredoka One',cursive; font-size:24px; letter-spacing:1px;
+    color:#2a1c05; min-height:84px; padding:0 52px; border-radius:999px;
+    background:linear-gradient(145deg,#ffe066,#f0b73f);
+    box-shadow:0 7px 0 #b8860b, 0 14px 26px rgba(0,0,0,.4);
+    opacity:.35; transition:transform .12s ease, opacity .3s;
+    touch-action:manipulation;
+  }
+  .done-btn.ready { opacity:1; animation:pulse 1.2s ease-in-out infinite; }
+  @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+  .done-btn:active { transform:scale(.92); }
+
+  .message {
+    min-height:34px; margin-top:18px; text-align:center; z-index:5;
+    font-family:'Fredoka One',cursive; font-size:22px; color:#ffe066;
+    opacity:0; transition:opacity .25s;
+  }
+  .message.show { opacity:1; animation:msgPop .35s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes msgPop { from{transform:scale(.6)} to{transform:scale(1)} }
+
+  .confetti {
+    position:fixed; top:-20px; z-index:70; pointer-events:none;
+    font-size:22px; animation:fall linear forwards;
+  }
+  @keyframes fall {
+    to { transform:translateY(110vh) rotate(540deg); opacity:.2; }
+  }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 2 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🔢 Tamponne chaque dino !</h1>
+    <p>Touche les dinos un par un pour les numéroter.</p>
+  </div>
+
+  <div class="progress" id="pips"></div>
+
+  <div class="sheet" id="sheet"></div>
+
+  <button class="done-btn" id="doneBtn">J'ai fini ! ⭐</button>
+  <div class="message" id="message"></div>
+</div>
+
+<script>
+(function () {
+  'use strict';
+  var DINOS = [
+    '../img/dinos/ombres/Triceratops_ombre.png',
+    '../img/dinos/ombres/Stegosaurus_ombre.png',
+    '../img/dinos/ombres/Brachiosaurus_ombre.png',
+    '../img/dinos/ombres/Pteranodon_ombre.png'
+  ];
+  var sheet = document.getElementById('sheet');
+  var pipsEl = document.getElementById('pips');
+  var doneBtn = document.getElementById('doneBtn');
+  var msgEl = document.getElementById('message');
+  var count = 0;
+  var finished = false;
+
+  function sfx(src) {
+    try { var a = new Audio(src); a.volume = 0.55; a.play().catch(function () {}); } catch (e) {}
+  }
+  function say(text) {
+    msgEl.textContent = text;
+    msgEl.classList.remove('show');
+    void msgEl.offsetWidth;
+    msgEl.classList.add('show');
+  }
+
+  DINOS.forEach(function (src, i) {
+    var pip = document.createElement('div');
+    pip.className = 'pip';
+    pip.textContent = i + 1;
+    pipsEl.appendChild(pip);
+
+    var d = document.createElement('div');
+    d.className = 'dino';
+    d.innerHTML = '<img src="' + src + '" alt="dino à tamponner"><div class="stamp"></div>';
+    d.addEventListener('click', function () { onTap(d); });
+    sheet.appendChild(d);
+  });
+
+  function onTap(d) {
+    if (finished) return;
+    if (d.classList.contains('stamped')) {
+      d.classList.remove('wiggle');
+      void d.offsetWidth;
+      d.classList.add('wiggle');
+      say('Celui-là est déjà compté ! 😄');
+      return;
+    }
+    count++;
+    var stamp = d.querySelector('.stamp');
+    stamp.textContent = count;
+    stamp.classList.add('hit');
+    d.classList.add('stamped');
+    pipsEl.children[count - 1].classList.add('on');
+    sfx('../sounds/fx/xylophone-monte.mp3');
+    if (count === DINOS.length) {
+      doneBtn.classList.add('ready');
+      say('Super ! Maintenant, touche le bouton ! 👇');
+    } else {
+      say(count === 1 ? 'Un ! Encore !' : count + ' ! Continue !');
+    }
+  }
+
+  function confetti() {
+    var glyphs = ['⭐', '✨', '🌟', '💛', '🎉'];
+    for (var i = 0; i < 28; i++) {
+      var c = document.createElement('div');
+      c.className = 'confetti';
+      c.textContent = glyphs[i % glyphs.length];
+      c.style.left = Math.random() * 100 + 'vw';
+      c.style.animationDuration = (1.4 + Math.random() * 1.4) + 's';
+      c.style.animationDelay = (Math.random() * 0.5) + 's';
+      c.style.fontSize = (16 + Math.random() * 18) + 'px';
+      document.body.appendChild(c);
+      (function (el) { setTimeout(function () { el.remove(); }, 3400); })(c);
+    }
+  }
+
+  doneBtn.addEventListener('click', function () {
+    if (finished) return;
+    if (count < DINOS.length) {
+      doneBtn.classList.remove('wiggle');
+      say('Il reste des dinos à tamponner ! 🔍');
+      return;
+    }
+    finished = true;
+    doneBtn.classList.remove('ready');
+    say('Bravo ! Tu as compté ' + count + ' dinos ! 🎉');
+    sfx('../sounds/fx/tada.mp3');
+    confetti();
+  });
+})();
+</script>
+</body>
+</html>

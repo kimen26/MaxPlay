@@ -1316,3 +1316,10 @@ Validée sur le principe (catégories Lettres/Chiffres/Ranger/Réparer/Couleurs/
 - ✅ EP-031 MJ-15 : niveau D (roues colorées) + niveau E (combo couleur+numéro)
 - ✅ EP-032 MJ-09 : multi-touch 2 doigts (Pointer Events + Map)
 - ✅ EP-033 : TTS annonce titre désactivé (laggait le démarrage)
+
+## 2026-07-19 — Nettoyage input-context Claude + 2 skills consolidés
+
+- Purge `.claude/skills/` : 15 skills PC pro/ECC supprimés (balayés par git add -A le 2026-04-20), 7 dossiers connaissance archivés `_archive/2026-07-19-skills-connaissance-ecc/`.
+- ✅ **Skill `game-design-enfant`** créé (consolidation kids-ux + child-motor-skills + child-pedagogy + game-mechanics) — théorie durable, pointe vers STANDARD-MJ/MECANIQUES/MAX_PROFILE, zéro copie de décisions.
+- ✅ **Skill `phaser-tech`** créé (phaser-framework + performance-opt + gamepad-inputs) — patterns Phaser, perf tablet, manette 8BitDo. Prêt si max-adventure revit (EP-024).
+- Global `~/.claude/` : 19 rules ECC + 8 agents doublons retirés (backup `~/.claude/_backup-2026-07-19/`), CLAUDE.md global condensé 26 lignes. Gardés : build-error-resolver, security-reviewer, refactor-cleaner, pixel-map-*, loop-operator.

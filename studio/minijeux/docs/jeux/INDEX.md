@@ -31,7 +31,7 @@
 
 | Fichier | Quand le lire |
 |---------|--------------|
-| [figees/mj-XX.md](figees/) 🔒 | **LOI — lire AVANT toute modif de `mj-XX.html`.** Décisions figées par jeu, anti-régressions. Réinjecté par hook. Seul `game-mj-pmo` y écrit, seul Papa Yann défige. Créé 2026-05-15 (incident MJ-21) |
+| [figees/mj-XX.md](figees/) 🔒 | **LOI — lire AVANT toute modif de `mj-XX.html`.** Décisions figées par jeu, anti-régressions. Réinjecté par hook. Y écrivent : main agent (figeage immédiat) ou `game-pmo` unifié ; seul Papa Yann défige. Créé 2026-05-15 (incident MJ-21) |
 | [CLASSIFICATION-2026-07.md](CLASSIFICATION-2026-07.md) | **Vue d'ensemble à jour** — catégories, statut, paliers par jeu |
 | [_PALIERS-DIFFICULTE.md](_PALIERS-DIFFICULTE.md) | Contrat de difficulté par jeu (⚠️ maxStars = 3 depuis 2026-07-14, voir INVARIANTS) |
 | GAMES_SPECS.md | ⚠️ **ARCHIVÉ / périmé** (ne couvre que MJ-01→08 avec titres obsolètes). Identité d'un jeu → figées/ + CLASSIFICATION |

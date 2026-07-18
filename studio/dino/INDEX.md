@@ -59,12 +59,11 @@
 | Agent | Rôle |
 |-------|------|
 | `dino-pmo` (haiku) | FOND — persistance pmo/, décisions, leçons |
-| `dino-archiviste` (haiku) | FORME — structure, refs, gabarit, surveille le code site/ dino |
 | `dino-conseiller` (sonnet) | Créatif — péda 4 ans, fact-check Grokipedia, écriture audio, taxo |
 
 ## État
 
-> **DEC-GED-001** : cet INDEX ne cite aucun count en dur (un chiffre recopié ment). Chiffres → [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md) (tracker) · source produit → [`../../site/js/dinos-data.js`](../../site/js/dinos-data.js). État de complétude par dino → outil `_ETAT-DINOS.md` (dino-archiviste, ticket EP-D-GED).
+> **DEC-GED-001** : cet INDEX ne cite aucun count en dur (un chiffre recopié ment). Chiffres → [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md) (tracker) · source produit → [`../../site/js/dinos-data.js`](../../site/js/dinos-data.js). État de complétude par dino → outil `_ETAT-DINOS.md` (généré, `/dino-pmo-audit`).
 
 - **Compte dinos · familles · régimes** → [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md).
 - Familles : titres = noms scientifiques (table clé↔libellé dans INVARIANTS). 4 régimes alimentaires.

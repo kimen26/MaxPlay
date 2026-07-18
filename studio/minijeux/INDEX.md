@@ -38,9 +38,6 @@ CODE DÉPLOYÉ (hors pôle, GitHub Pages) :
 | Agent | Modèle | Niveau | Mode | Rôle bref |
 |-------|--------|--------|------|-----------|
 | `game-pmo` | Haiku | 1 | **AUTO** signal JEU | PMO fond + orchestre sous-spé |
-| `game-archiviste` | Haiku | 1 | **AUTO** signal structure | Maillon central forme (binôme PMO) |
-| `game-mj-pmo` | Haiku | 2 | Invoqué par game-pmo | Sous-spé mini-jeux HTML |
-| `game-tile-pmo` | Haiku | 2 | Invoqué par game-pmo | Sous-spé tile-tools LimeZu |
 | `game-wexworld-pmo` ⏳ | Haiku | 2 | Phase 2 | Sous-spé Phaser RPG |
 | `game-conseiller` | Opus | 3 | Manuel | Binôme créatif transverse |
 | `game-dev` | Sonnet | 4 | Manuel | Dev HTML vanilla + Phaser |
@@ -95,8 +92,8 @@ Détails complets : [`EQUIPE.md`](EQUIPE.md).
 1. game-tile-simplifier → ANALYSE
 2. game-tile-designer → recette + PNG
 3. game-tile-reviewer → verdict PASS/FAIL
-4. game-tile-pmo grave leçons dans LESSONS.md + PIPELINE-MEMORY.md
-5. game-pmo intègre synthèse, game-archiviste vérifie structure
+4. graver leçons dans LESSONS.md + PIPELINE-MEMORY.md (main agent ou game-pmo unifié)
+5. game-pmo unifié vérifie fond + structure (fusion 2026-07-19)
 
 **Skill associé** : [`~/.claude/skills/maxplay-tiles/SKILL.md`](C:/Users/kimen/.claude/skills/maxplay-tiles/SKILL.md) + [`LESSONS.md`](C:/Users/kimen/.claude/skills/maxplay-tiles/LESSONS.md) (30+ leçons gravées).
 

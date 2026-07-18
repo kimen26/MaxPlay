@@ -17,6 +17,8 @@
 | [`lunii/`](lunii/) | 🎒 **Images Lunii** — 9 emblèmes familles + couverture (320×240, 16 gris, **fond noir natif**). Produites par skill `dino-images-lunii`, consommées par `studio/lunii/scripts/build-dinos-pack.mjs` | [`lunii/INDEX.md`](lunii/INDEX.md) |
 | [`inbox/`](inbox/) | 📥 **Brut non trié** — matière à exploiter | — |
 
+> 🖼️ **Toutes les images dino** (déployées `site/img/dinos/` + autoring + staging) : carte maîtresse → [`INDEX-IMAGES.md`](INDEX-IMAGES.md) — « je cherche X → va là », nommage, comment régénérer.
+
 ## 🔁 Le flux (de la source au produit déployé)
 
 ```

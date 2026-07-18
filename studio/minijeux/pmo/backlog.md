@@ -11,6 +11,14 @@
 
 ## Tickets épics actifs (EP-xxx)
 
+### EP-074 — Mutualiser composants UI dupliqués dans dev-dinos.html (découverte MEGA tour 2026-07-18)
+Inventaire site dino : 3 blocs UI dupliqués localement dans dev-dinos.html alors que l'entête (mp-header) est déjà mutualisée via css/mp-theme.css + js/mp-theme.js :
+1. **Frise progression** (journey-*, chrono-*, .journey-trait — styles inline L507-565)
+2. **Célébrations** (@keyframes badgePulse/cardBounce/pulse/ep-nudge — mp-theme a déjà 3 refs confetti)
+3. **Pills/tabs** (.mode-btn, .pangee-dot, .c-dot)
+→ extraire vers mp-theme.css/.js pour réutilisation mini-jeux (dinos + bus). Bénéfice : cohérence visuelle + zéro re-codage par MJ. Risque faible (CSS only), tester dev-dinos + 2 MJ après.
+
+
 ### EP-098 [x] — mj-22 CORRIGÉ — micro-pays filtrés + zones tap 80px (commit 98424775)
 **Description** : mj-22 "Trouve le pays" — regression silencieuse corrigée (micro-pays bannis par figée, mais code Object.keys(PAYS) les incluait). Relecture 2026-07-14 découverte.
 **Décision Papa Yann 2026-07-14** : CORRIGER (option A) — filtrer micro-pays + agrandir zones tap.

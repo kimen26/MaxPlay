@@ -1,0 +1,298 @@
+pageType: content
+background:
+  type: solid
+  color: "$background"
+elements:
+  - elementId: nav-text
+    elementType: text
+    bounds: [60, 18, 400, 20]
+    content:
+      fontSize: 12
+      color: "#8BA3B080"
+      fontFamily: "Liter"
+      letterSpacing: 2
+      wrap: false
+      text: |
+        <p>GÉANTS DES MERS PRÉHISTORIQUES</p>
+
+  - elementId: page-num
+    elementType: text
+    bounds: [1180, 680, 60, 25]
+    content:
+      fontSize: 14
+      color: "$muted"
+      fontFamily: "Liter"
+      align: [right, middle]
+      wrap: false
+      text: |
+        <p>14</p>
+
+  - elementId: animal-image
+    elementType: image
+    bounds: [60, 55, 500, 380]
+    src: "https://kimi-web-img.moonshot.cn/img/www.americanoceans.org/286bd6e3a2afabc7c403a63824197c8e32acfa18.jpeg"
+    shapeName: roundRect
+    adjustments: [8000]
+    fit: {mode: cover}
+
+  - elementId: animal-name
+    elementType: text
+    bounds: [590, 55, 630, 45]
+    content:
+      style: "$title"
+      align: [left, middle]
+      wrap: false
+      text: |
+        <p>ARCHELON</p>
+
+  - elementId: scientific-name
+    elementType: text
+    bounds: [590, 102, 630, 25]
+    content:
+      style: "$subtitle"
+      align: [left, middle]
+      wrap: false
+      text: |
+        <p><em>A. ischyros</em>  ·  La tortue géante</p>
+
+  - elementId: accent-line
+    elementType: shape
+    bounds: [590, 135, 100, 0]
+    shapeName: straightConnector1
+    border: {style: solid, width: 2, color: "$accent"}
+
+  - elementId: card-size
+    elementType: shape
+    bounds: [590, 155, 300, 80]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "$cardBg"}
+
+  - elementId: icon-size
+    elementType: icon
+    bounds: [605, 165, 24, 24]
+    iconName: "fas:ruler-horizontal"
+    fill: {type: solid, color: "$accent"}
+
+  - elementId: label-size
+    elementType: text
+    bounds: [638, 165, 160, 22]
+    content:
+      style: "$label"
+      align: [left, middle]
+      wrap: false
+      text: |
+        <p>TAILLE / POIDS</p>
+
+  - elementId: data-size
+    elementType: text
+    bounds: [605, 195, 270, 28]
+    content:
+      style: "$data"
+      align: [left, middle]
+      wrap: false
+      text: |
+        <p>4,6 m  ·  2,2 tonnes</p>
+
+  - elementId: card-era
+    elementType: shape
+    bounds: [905, 155, 330, 80]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "$cardBg"}
+
+  - elementId: icon-era
+    elementType: icon
+    bounds: [920, 165, 24, 24]
+    iconName: "fas:clock"
+    fill: {type: solid, color: "$accent"}
+
+  - elementId: label-era
+    elementType: text
+    bounds: [953, 165, 100, 22]
+    content:
+      style: "$label"
+      align: [left, middle]
+      wrap: false
+      text: |
+        <p>ÉPOQUE</p>
+
+  - elementId: data-era
+    elementType: text
+    bounds: [920, 195, 315, 28]
+    content:
+      style: "$data"
+      align: [left, middle]
+      wrap: false
+      text: |
+        <p>Crétacé supérieur (80-74 Ma)</p>
+
+  - elementId: card-diet
+    elementType: shape
+    bounds: [590, 250, 300, 80]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "$cardBg"}
+
+  - elementId: icon-diet
+    elementType: icon
+    bounds: [605, 260, 24, 24]
+    iconName: "fas:utensils"
+    fill: {type: solid, color: "$accent"}
+
+  - elementId: label-diet
+    elementType: text
+    bounds: [638, 260, 100, 22]
+    content:
+      style: "$label"
+      align: [left, middle]
+      wrap: false
+      text: |
+        <p>RÉGIME</p>
+
+  - elementId: data-diet
+    elementType: text
+    bounds: [605, 290, 270, 28]
+    content:
+      style: "$data"
+      fontSize: 18
+      align: [left, middle]
+      wrap: false
+      text: |
+        <p>Mollusques, méduses</p>
+
+  - elementId: card-region
+    elementType: shape
+    bounds: [905, 250, 330, 80]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "$cardBg"}
+
+  - elementId: icon-region
+    elementType: icon
+    bounds: [920, 260, 24, 24]
+    iconName: "fas:location-dot"
+    fill: {type: solid, color: "$accent"}
+
+  - elementId: label-region
+    elementType: text
+    bounds: [953, 260, 100, 22]
+    content:
+      style: "$label"
+      align: [left, middle]
+      wrap: false
+      text: |
+        <p>RÉGION</p>
+
+  - elementId: data-region
+    elementType: text
+    bounds: [920, 290, 285, 28]
+    content:
+      style: "$data"
+      fontSize: 18
+      align: [left, middle]
+      wrap: false
+      text: |
+        <p>Amérique du Nord</p>
+
+  - elementId: card-family
+    elementType: shape
+    bounds: [590, 345, 300, 80]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "$cardBg"}
+
+  - elementId: icon-family
+    elementType: icon
+    bounds: [605, 355, 24, 24]
+    iconName: "fas:dna"
+    fill: {type: solid, color: "$accent"}
+
+  - elementId: label-family
+    elementType: text
+    bounds: [638, 355, 100, 22]
+    content:
+      style: "$label"
+      align: [left, middle]
+      wrap: false
+      text: |
+        <p>FAMILLE</p>
+
+  - elementId: data-family
+    elementType: text
+    bounds: [605, 385, 270, 28]
+    content:
+      style: "$data"
+      fontSize: 18
+      align: [left, middle]
+      wrap: false
+      text: |
+        <p>Protostegidae</p>
+
+  - elementId: card-behavior
+    elementType: shape
+    bounds: [905, 345, 330, 80]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "$cardBg"}
+
+  - elementId: icon-behavior
+    elementType: icon
+    bounds: [920, 355, 24, 24]
+    iconName: "fas:user"
+    fill: {type: solid, color: "$accent"}
+
+  - elementId: label-behavior
+    elementType: text
+    bounds: [953, 355, 160, 22]
+    content:
+      style: "$label"
+      align: [left, middle]
+      wrap: false
+      text: |
+        <p>COMPORTEMENT</p>
+
+  - elementId: data-behavior
+    elementType: text
+    bounds: [920, 385, 285, 28]
+    content:
+      style: "$data"
+      fontSize: 18
+      align: [left, middle]
+      wrap: false
+      text: |
+        <p>Solitaire  ·  Chassé par Tylosaurus</p>
+
+  - elementId: funfact-bg
+    elementType: shape
+    bounds: [60, 455, 1160, 115]
+    shapeName: roundRect
+    adjustments: [6000]
+    fill: {type: solid, color: "#1A3A4A99"}
+    border: {style: solid, width: 1, color: "#D4A84350"}
+
+  - elementId: funfact-icon
+    elementType: icon
+    bounds: [80, 468, 28, 28]
+    iconName: "fas:lightbulb"
+    fill: {type: solid, color: "$accent"}
+
+  - elementId: funfact-label
+    elementType: text
+    bounds: [118, 468, 120, 24]
+    content:
+      style: "$label"
+      color: "$accent"
+      align: [left, middle]
+      wrap: false
+      text: |
+        <p>FUN FACT</p>
+
+  - elementId: funfact-text
+    elementType: text
+    bounds: [80, 498, 1120, 65]
+    content:
+      style: "$funFact"
+      align: [left, middle]
+      text: |
+        <p>"Brigitta", le spécimen le plus grand jamais trouvé, aurait vécu plus de 100 ans. Sa carapace n'était pas dure mais faite de peau cornée comme la tortue luth actuelle.</p>

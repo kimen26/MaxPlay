@@ -1,0 +1,150 @@
+pageType: final
+background:
+  type: image
+  src: "https://t4.ftcdn.net/jpg/18/35/73/93/360_F_1835739381_bqI8nnGabMj5wCpGbwwKzRi1SGeN0wZ5.jpg"
+  fit: {mode: cover}
+  mask:
+    type: gradient
+    gradientType: linear
+    angle: 90
+    stops:
+      - {position: 0, color: "#0C1E2BAA"}
+      - {position: 0.4, color: "#0C1E2BDD"}
+      - {position: 1, color: "#0C1E2BEE"}
+elements:
+  - elementId: top-line
+    elementType: shape
+    bounds: [490, 220, 300, 0]
+    shapeName: straightConnector1
+    border: {style: solid, width: 1, color: "$accent"}
+
+  - elementId: main-title
+    elementType: text
+    bounds: [140, 240, 1000, 55]
+    content:
+      fontSize: 42
+      color: "$text"
+      fontFamily: "Oranienbaum"
+      letterSpacing: 3
+      align: [center, middle]
+      wrap: false
+      text: |
+        <p>L'OCÉAN PRÉHISTORIQUE</p>
+
+  - elementId: bottom-line
+    elementType: shape
+    bounds: [490, 310, 300, 0]
+    shapeName: straightConnector1
+    border: {style: solid, width: 1, color: "$accent"}
+
+  - elementId: closing-text
+    elementType: text
+    bounds: [160, 340, 960, 180]
+    content:
+      fontSize: 18
+      color: "$text"
+      fontFamily: "Liter"
+      lineHeight: 1.8
+      align: [center, top]
+      text: |
+        <p>De la bête la plus massive (<strong><span style="color:$accent;">Shastasaurus</span></strong>, 81 tonnes) au chasseur le plus redouté (<strong><span style="color:$accent;">Predator X</span></strong>), ces géants des mers ont dominé les océans du Mésozoïque pendant plus de <strong>180 millions d'années</strong>.</p>
+        <p style="margin-top:16px">Leur extinction à la fin du Crétacé a laissé place aux cétacés et aux requins que nous connaissons aujourd'hui.</p>
+
+  - elementId: stat-line-1
+    elementType: shape
+    bounds: [200, 540, 260, 0]
+    shapeName: straightConnector1
+    border: {style: solid, width: 1, color: "#2A4A5A"}
+
+  - elementId: stat-1-num
+    elementType: text
+    bounds: [200, 555, 260, 40]
+    content:
+      fontSize: 36
+      color: "$accent"
+      fontFamily: "Oranienbaum"
+      align: [center, middle]
+      wrap: false
+      text: |
+        <p>12</p>
+
+  - elementId: stat-1-label
+    elementType: text
+    bounds: [200, 600, 260, 22]
+    content:
+      fontSize: 14
+      color: "$muted"
+      fontFamily: "Liter"
+      letterSpacing: 2
+      align: [center, middle]
+      wrap: false
+      text: |
+        <p>ANIMAUX</p>
+
+  - elementId: stat-line-2
+    elementType: shape
+    bounds: [510, 540, 260, 0]
+    shapeName: straightConnector1
+    border: {style: solid, width: 1, color: "#2A4A5A"}
+
+  - elementId: stat-2-num
+    elementType: text
+    bounds: [510, 555, 260, 40]
+    content:
+      fontSize: 36
+      color: "$accent"
+      fontFamily: "Oranienbaum"
+      align: [center, middle]
+      wrap: false
+      text: |
+        <p>180M+</p>
+
+  - elementId: stat-2-label
+    elementType: text
+    bounds: [510, 600, 260, 22]
+    content:
+      fontSize: 14
+      color: "$muted"
+      fontFamily: "Liter"
+      letterSpacing: 2
+      align: [center, middle]
+      wrap: false
+      text: |
+        <p>ANNÉES DE DOMINATION</p>
+
+  - elementId: stat-line-3
+    elementType: shape
+    bounds: [820, 540, 260, 0]
+    shapeName: straightConnector1
+    border: {style: solid, width: 1, color: "#2A4A5A"}
+
+  - elementId: stat-3-num
+    elementType: text
+    bounds: [820, 555, 260, 40]
+    content:
+      fontSize: 36
+      color: "$accent"
+      fontFamily: "Oranienbaum"
+      align: [center, middle]
+      wrap: false
+      text: |
+        <p>3</p>
+
+  - elementId: stat-3-label
+    elementType: text
+    bounds: [820, 600, 260, 22]
+    content:
+      fontSize: 14
+      color: "$muted"
+      fontFamily: "Liter"
+      letterSpacing: 2
+      align: [center, middle]
+      wrap: false
+      text: |
+        <p>ÈRES GÉOLOGIQUES</p>
+
+  - elementId: bottom-bar
+    elementType: shape
+    bounds: [0, 700, 1280, 20]
+    shapeName: rect
+    fill: {type: solid, color: "$primary"}

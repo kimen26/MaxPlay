@@ -1,0 +1,75 @@
+title: "Géants des Mers Préhistoriques"
+size: [1280, 720]
+theme:
+  colors:
+    primary: "#1A3A4A"
+    secondary: "#5B8C7A"
+    accent: "#D4A843"
+    background: "#0C1E2B"
+    text: "#E8E6E1"
+    textDark: "#1C2529"
+    cardBg: "#152B3A"
+    muted: "#8BA3B0"
+  textStyles:
+    coverTitle:
+      fontSize: 52
+      color: "$text"
+      fontFamily: "Oranienbaum"
+      letterSpacing: 4
+    title:
+      fontSize: 36
+      color: "$text"
+      fontFamily: "Oranienbaum"
+      letterSpacing: 1
+    subtitle:
+      fontSize: 20
+      color: "$secondary"
+      fontFamily: "Liter"
+      fontStyle: italic
+    body:
+      fontSize: 18
+      color: "$text"
+      fontFamily: "Liter"
+      lineHeight: 1.6
+    label:
+      fontSize: 14
+      color: "$muted"
+      fontFamily: "Liter"
+      letterSpacing: 2
+    data:
+      fontSize: 22
+      color: "$accent"
+      fontFamily: "Liter"
+    funFact:
+      fontSize: 16
+      color: "$text"
+      fontFamily: "Liter"
+      fontStyle: italic
+      lineHeight: 1.5
+  tableStyles:
+    default:
+      headerFill: "$primary"
+      headerColor: "$text"
+      headerBold: true
+      bodyFill: ["#0C1E2B00", "#152B3A00"]
+      bodyColor: "$text"
+      border:
+        style: solid
+        width: 1
+        color: "#2A4A5A"
+pages:
+  - pages/cover.page
+  - pages/toc.page
+  - pages/spinosaurus.page
+  - pages/liopleurodon.page
+  - pages/shonisaurus.page
+  - pages/shastasaurus.page
+  - pages/predator_x.page
+  - pages/hydrorion.page
+  - pages/dakosaurus.page
+  - pages/cryptoclide.page
+  - pages/elasmosaurus.page
+  - pages/mosasaurus.page
+  - pages/halisaurus.page
+  - pages/archelon.page
+  - pages/final.page

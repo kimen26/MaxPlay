@@ -1,0 +1,255 @@
+pageType: table_of_contents
+background:
+  type: solid
+  color: "$background"
+elements:
+  - elementId: page-title
+    elementType: text
+    bounds: [60, 40, 500, 50]
+    content:
+      style: "$title"
+      align: [left, middle]
+      wrap: false
+      text: |
+        <p>AU PROGRAMME</p>
+
+  - elementId: accent-line
+    elementType: shape
+    bounds: [60, 95, 120, 0]
+    shapeName: straightConnector1
+    border: {style: solid, width: 2, color: "$accent"}
+
+  - elementId: card-bg-1
+    elementType: shape
+    bounds: [60, 120, 180, 130]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "$cardBg"}
+
+  - elementId: card-text-1
+    elementType: text
+    bounds: [60, 120, 180, 130]
+    content:
+      color: "$text"
+      align: [center, middle]
+      text: |
+        <p><span style="font-size:36px; color:$accent;">01</span></p>
+        <p style="margin-top:8px"><span style="font-size:16px; color:$text; font-family:Liter;">Spinosaurus</span></p>
+
+  - elementId: card-bg-2
+    elementType: shape
+    bounds: [260, 120, 180, 130]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "$cardBg"}
+
+  - elementId: card-text-2
+    elementType: text
+    bounds: [260, 120, 180, 130]
+    content:
+      color: "$text"
+      align: [center, middle]
+      text: |
+        <p><span style="font-size:36px; color:$accent;">02</span></p>
+        <p style="margin-top:8px"><span style="font-size:16px; color:$text; font-family:Liter;">Liopleurodon</span></p>
+
+  - elementId: card-bg-3
+    elementType: shape
+    bounds: [460, 120, 180, 130]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "$cardBg"}
+
+  - elementId: card-text-3
+    elementType: text
+    bounds: [460, 120, 180, 130]
+    content:
+      color: "$text"
+      align: [center, middle]
+      text: |
+        <p><span style="font-size:36px; color:$accent;">03</span></p>
+        <p style="margin-top:8px"><span style="font-size:16px; color:$text; font-family:Liter;">Shonisaurus</span></p>
+
+  - elementId: card-bg-4
+    elementType: shape
+    bounds: [660, 120, 180, 130]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "$cardBg"}
+
+  - elementId: card-text-4
+    elementType: text
+    bounds: [660, 120, 180, 130]
+    content:
+      color: "$text"
+      align: [center, middle]
+      text: |
+        <p><span style="font-size:36px; color:$accent;">04</span></p>
+        <p style="margin-top:8px"><span style="font-size:16px; color:$text; font-family:Liter;">Shastasaurus</span></p>
+
+  - elementId: card-bg-5
+    elementType: shape
+    bounds: [860, 120, 180, 130]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "$cardBg"}
+
+  - elementId: card-text-5
+    elementType: text
+    bounds: [860, 120, 180, 130]
+    content:
+      color: "$text"
+      align: [center, middle]
+      text: |
+        <p><span style="font-size:36px; color:$accent;">05</span></p>
+        <p style="margin-top:8px"><span style="font-size:16px; color:$text; font-family:Liter;">Predator X</span></p>
+
+  - elementId: card-bg-6
+    elementType: shape
+    bounds: [1060, 120, 180, 130]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "$cardBg"}
+
+  - elementId: card-text-6
+    elementType: text
+    bounds: [1060, 120, 180, 130]
+    content:
+      color: "$text"
+      align: [center, middle]
+      text: |
+        <p><span style="font-size:36px; color:$accent;">06</span></p>
+        <p style="margin-top:8px"><span style="font-size:16px; color:$text; font-family:Liter;">Hydrorion</span></p>
+
+  - elementId: card-bg-7
+    elementType: shape
+    bounds: [60, 280, 180, 130]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "$cardBg"}
+
+  - elementId: card-text-7
+    elementType: text
+    bounds: [60, 280, 180, 130]
+    content:
+      color: "$text"
+      align: [center, middle]
+      text: |
+        <p><span style="font-size:36px; color:$accent;">07</span></p>
+        <p style="margin-top:8px"><span style="font-size:16px; color:$text; font-family:Liter;">Dakosaurus</span></p>
+
+  - elementId: card-bg-8
+    elementType: shape
+    bounds: [260, 280, 180, 130]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "$cardBg"}
+
+  - elementId: card-text-8
+    elementType: text
+    bounds: [260, 280, 180, 130]
+    content:
+      color: "$text"
+      align: [center, middle]
+      text: |
+        <p><span style="font-size:36px; color:$accent;">08</span></p>
+        <p style="margin-top:8px"><span style="font-size:16px; color:$text; font-family:Liter;">Cryptoclide</span></p>
+
+  - elementId: card-bg-9
+    elementType: shape
+    bounds: [460, 280, 180, 130]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "$cardBg"}
+
+  - elementId: card-text-9
+    elementType: text
+    bounds: [460, 280, 180, 130]
+    content:
+      color: "$text"
+      align: [center, middle]
+      text: |
+        <p><span style="font-size:36px; color:$accent;">09</span></p>
+        <p style="margin-top:8px"><span style="font-size:16px; color:$text; font-family:Liter;">Elasmosaurus</span></p>
+
+  - elementId: card-bg-10
+    elementType: shape
+    bounds: [660, 280, 180, 130]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "$cardBg"}
+
+  - elementId: card-text-10
+    elementType: text
+    bounds: [660, 280, 180, 130]
+    content:
+      color: "$text"
+      align: [center, middle]
+      text: |
+        <p><span style="font-size:36px; color:$accent;">10</span></p>
+        <p style="margin-top:8px"><span style="font-size:16px; color:$text; font-family:Liter;">Mosasaurus</span></p>
+
+  - elementId: card-bg-11
+    elementType: shape
+    bounds: [860, 280, 180, 130]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "$cardBg"}
+
+  - elementId: card-text-11
+    elementType: text
+    bounds: [860, 280, 180, 130]
+    content:
+      color: "$text"
+      align: [center, middle]
+      text: |
+        <p><span style="font-size:36px; color:$accent;">11</span></p>
+        <p style="margin-top:8px"><span style="font-size:16px; color:$text; font-family:Liter;">Halisaurus</span></p>
+
+  - elementId: card-bg-12
+    elementType: shape
+    bounds: [1060, 280, 180, 130]
+    shapeName: roundRect
+    adjustments: [8000]
+    fill: {type: solid, color: "$cardBg"}
+
+  - elementId: card-text-12
+    elementType: text
+    bounds: [1060, 280, 180, 130]
+    content:
+      color: "$text"
+      align: [center, middle]
+      text: |
+        <p><span style="font-size:36px; color:$accent;">12</span></p>
+        <p style="margin-top:8px"><span style="font-size:16px; color:$text; font-family:Liter;">Archelon</span></p>
+
+  - elementId: info-text
+    elementType: text
+    bounds: [60, 480, 1160, 80]
+    content:
+      fontSize: 18
+      color: "$muted"
+      fontFamily: "Liter"
+      lineHeight: 1.6
+      align: [center, middle]
+      text: |
+        <p>Présentation complète avec taille, poids, régime alimentaire, époque, habitat géographique,</p>
+        <p>famille, comportement social, prédateurs et fun facts pour chaque animal</p>
+
+  - elementId: bottom-accent
+    elementType: shape
+    bounds: [490, 620, 300, 0]
+    shapeName: straightConnector1
+    border: {style: solid, width: 1, color: "#2A4A5A"}
+
+  - elementId: page-num
+    elementType: text
+    bounds: [1180, 680, 60, 25]
+    content:
+      fontSize: 14
+      color: "$muted"
+      fontFamily: "Liter"
+      align: [right, middle]
+      wrap: false
+      text: |
+        <p>02</p>

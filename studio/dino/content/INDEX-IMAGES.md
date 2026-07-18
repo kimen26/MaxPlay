@@ -65,10 +65,6 @@
 
 ---
 
-## 🪦 Legacy (candidats archive — décision Papa Yann en attente)
-
-`site/img/dinos/*.jpg` racine (1ʳᵉ génération) · `paws/` · `scale/` · `variants/` — **plus référencés par aucun code produit** (seul un mockup local `site/design-compte/mockup-5` lit les jpg racine). Proposition : déplacer vers `_archive/` daté.
-
 ---
 
 _Créé 2026-07-18 (session sprites). Toute nouvelle collection d'images → ajouter une section ici + pointer depuis `content/INDEX.md`. Counts par dino : voir `_ETAT-DINOS.md` (généré) — pas de chiffres en dur ici (DEC-GED-001)._

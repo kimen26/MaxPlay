@@ -80,6 +80,9 @@ et **bugs ouverts** (autoplay fiche qui reboucle + image figée, en investigatio
 | Pack | Script | Contenu | Statut |
 |------|--------|---------|--------|
 | **Tritri le Tricératops** (2026-06-12) | [`scripts/build-tritri-pack.mjs`](scripts/build-tritri-pack.mjs) | Cover (image+nom) → récit 5 blocs concat+loudnorm (≈4 min) | En bibliothèque locale, à transférer |
+| **Les dinos de Max** (2026-06-16) | [`scripts/build-dinos-pack.mjs`](scripts/build-dinos-pack.mjs) | Menu 2 niveaux famille → dino (navigation validée Papa Yann 2026-06-16), assets via prepare-lunii-assets | Voir en-tête script |
+| **Pierre et le loup** | [`scripts/build-pierre-loup-pack.mjs`](scripts/build-pierre-loup-pack.mjs) | Emballage MP3+PNG fournis (Prokofiev / Gérard Philipe) — Lunii emballe, ne crée pas | Voir en-tête script |
+| **Le voyage** (2026-07-07) | [`scripts/build-voyage-pack.mjs`](scripts/build-voyage-pack.mjs) | Pack des 8 récits du Voyage dino | Voir en-tête script |
 
 La Lunii de Max est une **v2** (confirmé 2026-06-12) — terrain sûr.
 Les packs ajoutés cohabitent avec les histoires achetées et les enregistrements micro de

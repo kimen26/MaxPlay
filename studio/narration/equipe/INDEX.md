@@ -62,7 +62,7 @@
 | Fichier | Agent | Contenu | Fréquence MAJ |
 |---|---|---|---|
 | [`memoire-conseiller.md`](memoire-conseiller.md) | Conseiller (Opus) | Arcs, saisons, feedback lecteurs, patterns validés | Après chaque session |
-| [`memoire-architecte.md`](memoire-architecte.md) | ⚠️ Architecte (deprecated 2026-05-12) — fichier conservé pour traçabilité, agent en standby | — |
+| [`_archive/memoire-architecte.md`](_archive/memoire-architecte.md) | ⚠️ Architecte (deprecated 2026-05-12) — fichier conservé pour traçabilité, agent en standby | — |
 | [`memoire-dir.md`](memoire-dir.md) | Directeur (Opus) | Décisions de sélection, ce qui a fonctionné | Après chaque histoire |
 | [`memoire-gatekeeper.md`](memoire-gatekeeper.md) | GateKeeper (Haiku) | Erreurs récurrentes, patterns à surveiller | Après chaque validation |
 | [`memoire-science.md`](memoire-science.md) | Science (Haiku) | Validations scientifiques effectuées, refs vulgarisation enfants | Après chaque validation |
@@ -82,6 +82,8 @@
 | [`../personnages/theorie/pedagogie-enfance/`](../personnages/theorie/pedagogie-enfance/README.md) | **Boussole pédagogique 4-7 ans cross-culture** (Wellman, Tomasello, Vygotsky, Bachelard, Bruner, Thomas & Chess + albums jeunesse). Invariants cognitifs/affectifs, identification narrative, profils d'enfants, best-practices histoires courtes 4-5 ans. **À consulter avant brainstorm/pitch+plan/brief.** | Conseiller (intégré 2026-05-12 — Architecte deprecated) |
 | [`../personnages/theorie/enneagramme/chabreuil-synthese-complete.md`](../personnages/theorie/enneagramme/chabreuil-synthese-complete.md) | **Synthèse exhaustive du Grand Livre Chabreuil 2022** (9181 mots, 10 sections). Concepts de base, 9 types détaillés (lumière prioritaire), ailes, flèches, instincts, **interactions 36 paires**, cross-culture, **essence et sublimation**, application MaxPlay (gestes/objets/moments par type, garde-fous anti-biais). | Conseiller |
 | [`lecons-vivantes.md`](lecons-vivantes.md) | **Document vivant** des patterns narratifs MaxPlay confirmés (P1-P6), pièges (G1-G6), axes 1-6, signal genre. Mis à jour à chaque canonisation. Lu par Conseiller (étape 1 Pitch+Plan), writers via briefs. | Conseiller + Directeur |
+| [`arcs-narratifs.md`](arcs-narratifs.md) | Arcs narratifs (référencé par PROCESS.md — ligne ajoutée à l'INDEX 2026-07-19, audit GED) | Conseiller |
+| [`brief-univers.md`](brief-univers.md) | Brief univers (référencé par cartographie-domaines.md — ligne ajoutée 2026-07-19) | Directeur |
 
 ### Ressources vivantes
 
@@ -121,7 +123,7 @@ Tu veux faire quoi ?
 │   → narration-pmo (Haiku)
 │
 ├─ Indexer, structurer, vérifier cohérence dossiers
-│   → narration-archiviste (Haiku)
+│   → narration-pmo (unifié 2026-07-19) (Haiku)
 │
 ├─ Vérifier un fait scientifique
 │   → narration-science (Haiku)

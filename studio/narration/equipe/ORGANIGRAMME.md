@@ -31,9 +31,9 @@ PMO [narration-pmo · Haiku · PROACTIF]
   ├── Relit les briefs writers (étape 3→4) : négations gratuites
   └── Binôme avec Archiviste (FORME)
 
-ARCHIVISTE [narration-archiviste · Haiku · PROACTIF]
+ARCHIVISTE [narration-pmo (unifié 2026-07-19) · Haiku · PROACTIF]
   ├── Garant STRUCTURE : crée les dossiers stories/ depuis le gabarit, vérifie préfixes/refs/orphelins
-  ├── Mode AUDIT via /narration-archiviste-audit
+  ├── Mode AUDIT via /narration-pmo-audit
   └── Communique au PMO via sprint-log
 
 WRITERS (parallèles, stateless — casting + chiffre dans INVARIANTS.md § Casting writers étape 4)

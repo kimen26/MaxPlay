@@ -81,3 +81,10 @@ Tout est récupérable : fichiers trackés → historique git ; fichiers gitigno
 - `infra/mcp/logs/`, `infra/bot/*.log` (hors bot.log tracké) : gitignorés, comportement voulu.
 - `memory/` : 100 % référencé, `PLAN-AUDIO-I18N.md` vivant.
 - `.kimi-code/` : miroir Kimi cohérent (3 hooks portés).
+
+## D — Audit atteignabilite (tour 4, applique 2026-07-19)
+
+15 trous de cartographie detectes, tous corriges sauf 2 :
+- CORRIGE : agents fantomes post-fusion PMO (narration equipe/INDEX + ORGANIGRAMME, figees/menu.md) ; lien GAMES_SPECS ; STANDARD-MJ + REVUE-JEUX + 3 specs indexes ; lunii README 3 packs ; design-lecture/design-compte/design-shared/atelier-couleurs/index2-3 dans INDEX minijeux ; dino content/INDEX (inbox fantome, question caduque) ; DOCTRINE.md dans CLAUDE.md racine ; arcs-narratifs + brief-univers dans equipe/INDEX.
+- RESTE : Q6 (menus index2/3, decision produit) ; Q10 (distillation inbox narration 28-cultures, ticket PMO).
+- Agent quick : verifie utilise (agent par defaut du bot Telegram, deja liste dans memory/skills-map.md) — garde.

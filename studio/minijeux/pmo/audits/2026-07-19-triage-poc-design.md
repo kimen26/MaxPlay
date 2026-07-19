@@ -89,6 +89,8 @@ Conséquences sur le parcours lecture (ordre d'accès, reprise dans la spec menu
 | 🐛 Dinos en grille au lieu d'une file | compte-11 (déjà connu) | Fix CSS file |
 | 🐛 Traçage imprécis + pas de guidage | lecture-05 | Tolérance + flèches ordre des traits + halo animateur |
 | 🐛 TTS blending = 2 sons superposés | lecture-14 | Blocage technique — audio pré-enregistré ou pivot instruments |
+| 🐛 **Commentaires jamais synchronisés** (32 MJ chargent `comments.js` sans `cloud.js` → push perdu en silence) | prod, transverse | Brancher `cloud.js` partout (ou stub) — bug documenté dans `.claude/rules/mini-jeux.md`, découvert via l'extraction 2026-07-20 partie B |
+| 🐛 **Suivi d'avancement cassé** (3 niveaux/étoile puis reset à zéro) | mj-34 | Refonte UX mj-34 (retour PY partie B) |
 
 ## 5. En suspens
 
@@ -124,9 +126,52 @@ Source : [`../../docs/specs/2026-07-20-commentaires-supabase-mj.md`](../../docs/
 - La purge est plus douce que l'audit sur 3 jeux (mj-30 bonus, mj-40 repêché, mj-18 confirmé) et plus dure sur 2 (mj-33 supprimé, mj-25 confirmé).
 - **mj-09 est la surprise** : jugé « prioritaire » — sa mécanique de tri devient une brique transverse (lettres → Galli, couleurs → Para/Vélo).
 - Question transverse ouverte : **politique de fonte** (majuscule/script vs cursive, bascule in game ?) — cf. spec §6.1.
-- ⚠️ Extraction partielle : uniquement `source='comment'`. Les notes saisies via l'UI revue (❓) seraient en `source='review'` → extraction complémentaire à demander si c'est le cas.
-- ⚠️ Les 27 autres jeux prod n'ont pas de commentaire → arbitrages de l'audit §10 toujours provisoires pour eux.
+- ⚠️ ~~Extraction partielle~~ → levée 2026-07-20 : le 2ᵉ gisement n'était pas en
+  `source='review'` mais dans le **localStorage** (bug `cloud.js` : 32 MJ chargeaient
+  `comments.js` sans `cloud.js` — push silencieusement perdu). Voir §7.
+- ⚠️ Couverture complète atteinte le 2026-07-20 : **41 jeux commentés** (15 + 26), voir §7.
+
+## 7. Arbitrages jeux prod — PARTIE B, localStorage (26 commentaires, extraction 2026-07-20)
+
+Source : même fichier d'extraction, partie B (commentaires dictés, verbatim bruité).
+Réconciliés avec la spec v0.2 — **les verdicts de Papa Yann priment**. Intégrés spec v0.3.
+
+| Jeu | Verdict PY | Diff vs spec v0.2 | Intégration |
+|-----|-----------|-------------------|-------------|
+| mj-04 Compte les passagers | 🗑️ « très très moche » | = audit | Supprimé — les POC comptage le remplacent (idée absorbée par le bus POC-08) |
+| mj-13c Combien avant | ✅ garder + **redesigner** | ≠ audit (fusion→13a) | Regrouper avec mj-13a : panneau d'affichage, 2 modes explicites (ou niveaux distincts) |
+| mj-05 La bonne place | 🗑️ garder l'idée | = audit (absorbé) | Idée « X personnes / X places / combien montent » → bus POC-08 |
+| mj-35 Le jeu des graines | 🔁 **repêché** — refonte totale | ≠ audit (🗑️) | Règle très mal expliquée : game design + animation + pots à revoir entièrement |
+| mj-43 Remplis les caisses | ✅ fond gardé, retravailler | — | « Remplir pour atteindre N » ≈ rendre la monnaie ; **lignes de 10** (aligné barquettes) |
+| mj-45 Le bus qui se remplit | 🗑️ | = audit (absorbé) | Doublon de mj-43 |
+| mj-06 Lis la phrase | ✅ garder + enrichir | — | + cursives, mixer avec mj-27, **phrases à impact** (rire/impressionner) |
+| mj-23 Lis le mot | 🔧 refondre | = audit | Cursive + majuscule, syllabes simples ; viser **1 jeu initiatique + 1 dynamique** |
+| mj-44 La boîte à sons | 🔀 fusionner | = audit | Revient au tri en boîtes → **moteur tri mj-09** (boîte = lettre/son) |
+| mj-13a Le premier bus | ✅ garder + corriger | — | Difficulté 0 à revoir ; regrouper mj-13c ; expliciter les 2 modes |
+| mj-15 L'intrus | ✅ garder | — | Intrus discret validé (1 herbivore parmi carnivores) ; 💄 monter les assets |
+| mj-16 Complète la suite | 🗑️ | ≠ spec v0.2 (gardé) | Ligne mal affichée, pas logique, pas trouvable |
+| mj-34 Le dépôt bloqué | 🔧 refondre UX | — | Un seul bus doit sortir (éteindre les autres / cailloux) ; 🐛 **suivi d'avancement cassé** (3 niveaux/étoile puis reset à zéro) |
+| mj-37 Croque-échecs | 🔧 **revoir totalement** | ≠ audit (garder tel quel) | « Jeu du monde » : **vraies pièces d'échecs + plateau entier + règle expliquée** (le fou = diagonale…), pas de bonhomme qui mange des pommes, pas de déguisement enfantin |
+| mj-38 Saute-mouton | 🔁 **repêché** — revoir totalement | ≠ audit (🗑️) | Idem : **vraies dames + plateau entier + règle + indices** |
+| mj-39 Blocs magiques | 🔧 repenser | — | Choisir : tangram à remplir (niv 1) OU vrai Tetris qui descend |
+| mj-19 Trouve le bus | ✅ très bien + fusionner | — | Moteur **« trouve le X » en un grand écran** : bus/dinos/lettres/éléments mouvants |
+| mj-36 Le bon bus | 🗑️ (en attendant) | ≠ spec v0.2 (Para #2) | Pas de choix ni d'erreur possible ; idée gardée |
+| mj-08 Le grand rangement | 🔀 fusionner | = audit | Moteur rangement en boîtes (lettres/bus/objets) |
+| mj-17 Le garage | ✅ garder | — | **Un des préférés de Max** ; adaptation dino possible ; options en dur toujours au même endroit |
+| mj-11 Quel pays | 🕐 écarter + noter l'idée | ≠ spec v0.2 (Para #3) | Idée **fiches pays** : plusieurs drapeaux, situer, animal du pays — pas en V1 |
+| mj-22 Trouve le pays | 🧪 à tester | — | « N'a jamais marché donc jamais joué » ; victoire = drapeau + musique |
+| mj-20 Compte en 8 langues | ✅ très bon jeu + corriger | = audit | **1-2 pays ouverts à la fois**, ne pas exiger de compter jusqu'à 10 direct ; autres langues plus tard |
+| mj-42 Shisima | 🔧 revoir | ≠ audit (🗑️) | Milieu = victoire immédiate ; idée **traverser/contourner** (style backgammon) → mécanique stratégique à trouver |
+| mj-12 Nouveaux sons | 🕐 jeu libre | — | Coin écoute avec dessin/vidéos, juste pour écouter |
+| mj-pose-tiles + max-adventure | 🚪 **hors menu principal** | ≠ spec v0.2 (Para libre) | Écran parental / mot de passe |
+
+**Ce que la partie B change (vs spec v0.2) :**
+- 2 repêchages : mj-35 (graines, refonte totale) et mj-38 (dames sérieuses) — plus mj-42 passé de 🗑️ à « mécanique à trouver ».
+- 2 suppressions nouvelles : mj-16 (était gardé) et mj-36 (était chez Para).
+- 3 moteurs génériques confirmés par PY : **tri en boîtes** (mj-09+08+44), **« trouve le X »** (mj-19 multi-thèmes), **« remplir pour atteindre N »** (mj-43, lignes de 10).
+- Jeux de société « sérieux » : échecs + dames avec vraies pièces et règles — placement à trancher (PY dit « jeu du monde » ; pédagogiquement stratégie = Vélo).
+- mj-pose-tiles + Max Adventure sortent du menu principal → derrière le gate parents.
 
 ---
 
-_Compilé 2026-07-19 (soir), §6 ajoutée 2026-07-20 — source : retours chat Papa Yann + 3 screens (bus 162, traçage « a », Chef de Gare) + extraction Supabase._
+_Compilé 2026-07-19 (soir), §6 ajoutée 2026-07-20, §7 ajoutée 2026-07-20 — sources : retours chat Papa Yann + 3 screens + extraction Supabase (partie A) & localStorage (partie B)._

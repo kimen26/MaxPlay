@@ -87,11 +87,11 @@ Détails complets : [`EQUIPE.md`](EQUIPE.md).
 | [`site/tools/tile-library-v3.html`](../../site/tools/tile-library-v3.html) | Patterns prêts à l'emploi + cartographie navigable |
 | [`site/tools/tile-picker.html`](../../site/tools/tile-picker.html) | Bibliothèque catégorisée (9811 tiles, 100% couverture) + matrice drag&drop + export Python. Supporte `?recipe=X.py` |
 | [`site/tools/brick-explorer.html`](../../site/tools/brick-explorer.html) | (2026-05-12) Page interactive validation tile par tile (mini-render 3×3, vote courbe/point/autre/rejeté) |
-| [`site/design-lecture/`](../../site/design-lecture/) | **Chantier UI lecture** (mockups syllabique/phonique, Kimi) — voir `NOTES-DESIGN-LECTURE.md` interne |
-| [`site/design-compte/`](../../site/design-compte/) | **Chantier UI compte** (mockups étoiles/récompenses) — voir `NOTES-DESIGN-COMPTE.md` interne |
+| [`site/design-lecture/`](../../site/design-lecture/) | **Chantier UI lecture** (mockups syllabique/phonique, Kimi) — voir `NOTES-DESIGN-LECTURE.md` interne · retours PY triés : [`pmo/audits/2026-07-19-triage-poc-design.md`](pmo/audits/2026-07-19-triage-poc-design.md) |
+| [`site/design-compte/`](../../site/design-compte/) | **Chantier UI compte** (mockups série 4 comptage) — voir `NOTES-DESIGN-COMPTE.md` interne · retours PY triés : même doc triage |
 | [`site/design-shared/`](../../site/design-shared/) | Assets partagés des chantiers design (mockup.css/js + fonts) — utilisé par design-lecture ET design-compte |
 | [`site/atelier-couleurs.html`](../../site/atelier-couleurs.html) | Atelier prototype recoloration avatars (algo repris dans `avatar-picker.js`) |
-| ~~index2/index3~~ | **ABANDONNÉS** (décision Papa Yann 2026-07-19) — `index.html` = LE menu unique. Audit menu + direction **« Mur + copains » VALIDÉE** (v2, from scratch) : [`pmo/audits/2026-07-19-menu-parcours.md`](pmo/audits/2026-07-19-menu-parcours.md) |
+| ~~index2/index3~~ | **ABANDONNÉS** (décision Papa Yann 2026-07-19) — `index.html` = LE menu unique. Audit menu + direction **« Mur + copains » VALIDÉE** (v2, from scratch) : [`pmo/audits/2026-07-19-menu-parcours.md`](pmo/audits/2026-07-19-menu-parcours.md) → spec **« Le Mur des Copains » v0** : [`docs/specs/2026-07-19-menu-mur-copains.md`](docs/specs/2026-07-19-menu-mur-copains.md) |
 | [`site/tile-tools/README.md`](../../site/tile-tools/README.md) | Pipeline complet (render, recipes, scripts, vocab.py, styles.py) |
 
 **Workflow Propose → Édite → Apprend** :

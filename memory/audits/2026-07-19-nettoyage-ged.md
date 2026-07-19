@@ -38,7 +38,22 @@ Méthode : 5 agents Sonnet lecture seule (dino, minijeux/lunii/max-adventure, na
 
 Tout est récupérable : fichiers trackés → historique git ; fichiers gitignorés supprimés listés ci-dessus (temp mp3/jpg = doublons ou sources abandonnées).
 
-## B — QUESTION (attend décision Papa Yann, rien touché)
+## B2 — Résolution des QUESTIONS (réponses Papa Yann, 2026-07-19 tour 2)
+
+- **Q1 RÉSOLU** : pack LimeZu déplacé → `c:\ProjetsPerso\Assets\LimeZu-Modern-Exteriors\` (vérifié : seul le sous-ensemble extrait 76 Mo vit dans `studio/max-adventure/public/assets/`).
+- **Q2 EN COURS** : agent vérifie staging `_new-*` vs collections prod → suppression après vérification. **Règle gravée : temp/, inbox, staging = points d'entrée à VIDER au fur et à mesure.**
+- **Q3 RÉSOLU** : sources grok-batch supprimées (finales .jpg toutes déployées dans `paleoart/`) — entrée `_archive/INDEX.md` mise à jour.
+- **Q4 RÉSOLU** : designv3 intégré en prod (`mp-theme.css` tagué « packagev3, validé 2026-07-14 ») → purgé.
+- **Q5 RÉSOLU** : mj-gold-a/b = jeux de référence du STANDARD-MJ gravé → gardés + référencés dans `site/tools/index.html` (avec dev-fx, dev-sounds-ui, brick-explorer).
+- **Q6 REPORTÉ** : décision menus index/index2/index3 pas encore tranchée (noté backlog game).
+- **Q7 RÉSOLU** : ONBOARDING.md supprimé (auto-généré, citait des commandes fusionnées depuis).
+- **Q8 RÉSOLU** : les 4 « SVG » de 6-8 Mo étaient des PNG base64 déguisés (svgo gain 0 %) → extraits, convertis JPG q3 (30 Mo → 4,4 Mo), manifest `dinos-images-local.js` MAJ, SVG supprimés. Utilisés par les galeries fiches → pas supprimés du produit.
+- **Q9 RÉSOLU** : `lunii/assets/images/familles/` + 6 dossiers sons vides max-adventure supprimés (`lunii/assets/images/dinos/` gardé — attendu par build-dinos-pack.mjs).
+- **Q10 NOTÉ PMO** : distillation inbox narration = travail à part (backlog narration).
+- **Q11 CONFIRMÉ** : shots-serie3/serie4/lecture/cursif = chantier Kimi en cours, non touché.
+- **Q12 REPORTÉ** : lecture-data.js — déplacement vers js/ après fin du chantier lecture (Kimi actif dessus).
+
+## B — QUESTION (historique tour 1, voir B2 pour résolutions)
 
 | # | Sujet | Reco |
 |---|-------|------|

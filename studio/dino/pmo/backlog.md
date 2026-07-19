@@ -216,3 +216,5 @@ Audit qualité images (P1-P4 : doublons/watermarks/mauvaises espèces/wiki-angla
 Refonte UI + audio + création du pôle DINO (voir `sprint-log.md`). Décisions : pôle pair, Tritri sans méta, scission familles, régimes alimentaires, voix menus. Leçons L-D01→L-D05 gravées.
 
 - 2026-07-19 (session nettoyage GED) : audit dino OK — 4 actions en attente validation : suppr dossier fantôme site/img/dinos/paleoart/_new-xxl/ (vide, doublon du staging racine), archiver _TEMOINS-v2-bouclefermee.md vers _archive/2026-07-18-ancien-pipeline/, suppr _TODO-RATTRAPAGE.txt (complété), ajouter _new-traces/ à la section STAGING de content/INDEX-IMAGES.md.
+
+- 2026-07-19 (nettoyage GED, tour 2) : DECISIONS Papa Yann appliquees — sources grok-batch supprimees de _archive (finales .jpg verifiees deployees dans paleoart/) ; 4 faux SVG wiki (PNG base64 embarque, 30 Mo) convertis en JPG compresses (4,4 Mo) + manifest dinos-images-local.js MAJ ; REGLE gravee : staging _new-* et temp/ = points d entree a vider au fur et a mesure apres conversion (comme inbox 48h) ; audit couverture 100% images (fiches/menu/avatar + contexte arbre-rocher) en cours par agent.

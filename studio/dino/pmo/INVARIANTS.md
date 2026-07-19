@@ -14,7 +14,7 @@
 
 | Quoi | Valeur | Source |
 |------|--------|--------|
-| Dinos (entrées `DINOS`) | **60** | `site/js/dinos-data.js` (✅ 2026-07-03 : +8 dinos Cénozoïque Mammuthus/Smilodon/Megatherium/Paraceratherium/Glyptodon/Aenocyon/Coelodonta/Titanis + 1 Crétacé Edmontonia) |
+| Dinos (entrées `DINOS`) | **62** | `site/js/dinos-data.js` (✅ 2026-07-19 : +Corythosaurus, Ornithopodes 3→4 · ✅ 2026-07-20 : +Hatzegopteryx, Ptérosaures 2→3. Données seules pour ces deux : assets paléoart + audio à produire) |
 | Familles (`DINO_FAMILLES`) | **11** | idem (✅ 2026-07-03 : +2 familles `mammiferes` + `oiseaux` ; famille `arme` passe 4→5 dinos) |
 | Régimes alimentaires (`DINO_CATEGORIES`) | **4** | idem (inchangé) |
 | Périodes (`DINO_PERIODES`) | **5** | ✅ 2026-07-03 : ajout `cenozoique` (66 Ma → aujourd'hui), rejoins les 4 antérieures (Triassic, Jurassic, Crétacé, Autres) |
@@ -27,7 +27,7 @@
 
 ## 11 familles (nom scientifique = titre)
 
-**Dinosaures (9 familles, 52 dinos)** : Théropodes (13) · Sauropodes (7) · Thyréophores (5) · Cératopsiens (6) · Ornithopodes (3) · Dromæosaures (8) · Ptérosaures (2) · Énaliosaures (7) · Avant les dinosaures (1, Dimétrodon).
+**Dinosaures (9 familles, 54 dinos)** : Théropodes (13) · Sauropodes (7) · Thyréophores (5) · Cératopsiens (6) · Ornithopodes (4) · Dromæosaures (8) · Ptérosaures (3) · Énaliosaures (7) · Avant les dinosaures (1, Dimétrodon).
 
 **Mégafaune Cénozoïque (2 familles, 8 dinos, 2026-07-03)** — clés techniques `mammiferes` + `oiseaux` :
 - **Mammifères** `mammiferes` (7) : Mammouth (`mammuthus`, *Mammuthus primigenius*) · Smilodon (`smilodon`, *S. fatalis*) · Mégathère (`megatherium`, *Megatherium americanum*) · Paracérathérium (`paraceratherium`) · Glyptodon (`glyptodon`) · Loup terrible (`aenocyon`, *Aenocyon dirus*) · Rhino laineux (`coelodonta`, *Coelodonta antiquitatis*)

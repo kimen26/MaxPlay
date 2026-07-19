@@ -6,22 +6,25 @@
 
 ## Synthèse
 
-- **60 dinos** · **60 complets (8/8)** · **0 incomplets**
+- **62 dinos** · **60 complets (8/8)** · **2 incomplets**
 
 | Axe | Couverture |
 |-----|-----------|
-| hero | 60/60 |
-| paleoart | 60/60 |
-| coloriage | 60/60 |
-| audio | 60/60 |
-| silhouette | 60/60 |
-| fiche | 60/60 |
-| etymo | 60/60 |
-| mesures | 60/60 |
+| hero | 60/62 |
+| paleoart | 60/62 |
+| coloriage | 60/62 |
+| audio | 60/62 |
+| silhouette | 60/62 |
+| fiche | 62/62 |
+| etymo | 62/62 |
+| mesures | 62/62 |
 
 ## Incomplets d'abord
 
-_Aucun — les 60 dinos sont complets sur les 8 axes. 🎉_
+| Dino | id | Score | Manque |
+|------|----|-------|--------|
+| Corythosaure | `corythosaurus` | 3/8 | hero, paléoart(headshot/manger/paris/ecosysteme/funfact), coloriage, audio(nom/taille/regime/funfact/recap), silhouette |
+| Hatzegopteryx | `hatzegopteryx` | 3/8 | hero, paléoart(headshot/manger/paris/ecosysteme/funfact), coloriage, audio(nom/taille/regime/funfact/recap), silhouette |
 
 ## Complets (60)
 

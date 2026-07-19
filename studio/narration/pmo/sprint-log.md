@@ -184,7 +184,7 @@
 
 **Fait** :
 - [x] **STORY-002-SELECTION-REFONTE** : ⏳ EN ATTENTE (SLA 3j = 2026-07-07). Pas de refonte effectuée cette session — Papa Yann fournit les retours Duel + critique outils pour guider le Directeur. Reste 🔴 BLOQUÉ.
-- [x] **TEST-PANEL-CALIBRATION** : ✅ PASS 2/2 (commit 4e8d0805 + rapport pmo/test-calibration-panel-2026-07-04.md). Paire écart connu = 3/3 lecteurs champion concordants + confiance nette. Paire quasi-identique = 1 divergence + confiances « légère » = pas de faux consensus. GO panel 12 STORY-003+ confirmé.
+- [x] **TEST-PANEL-CALIBRATION** : ✅ PASS 2/2 (commit 4e8d0805 + rapport pmo/audits/2026-07-04-test-calibration-panel.md). Paire écart connu = 3/3 lecteurs champion concordants + confiance nette. Paire quasi-identique = 1 divergence + confiances « légère » = pas de faux consensus. GO panel 12 STORY-003+ confirmé.
 - [x] **ARCHI-DUEL-001** : ✅ LIVRÉ (site/duel.html en prod depuis 2026-07-03, v2 raisons refus redesign 2026-07-04). Papa Yann a joué duel 11 fragments vague 4 (5 gagnants, 1 égalité, 5 refusés). Données ingérées memoire-papa-yann.md.
 - [x] **ARCHI-LECTURE-001** : ✅ LIVRÉ (site/lecture.html prod 2026-07-03). Tap passage → chips j'aime/ça pèche + texte libre, export JSON → memoire de goût.
 - [x] **ARCHI-014-TEMPLATE-BOUSSOLE** : ✅ LIVRÉ (template brief-histoire.template.md refondé BOUSSOLE = intentions + 6 causalités-ESSENCE 2026-07-04). Pas de fichier v4 séparé — template canonique refondu. Repercussion STORY-003+ avant étape 3.

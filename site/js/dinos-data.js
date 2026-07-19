@@ -218,6 +218,8 @@ function _round1(x) { return Math.round(x * 10) / 10; }
 // panier de basket 3,05 m · bus anglais 4,4 m · lampadaire 6 m · étage 3 m · bus RATP 12 m · accordéon 18 m.
 // Règle : jamais un arrondi qui ment de plus de ~10 %.
 function _qty(n, sing, plur) { return n <= 1 ? `un ${sing}` : `${n} ${plur}`; }
+// « que » s'élide devant une voyelle : « qu'un hippopotame », mais « que 2 hippopotames ».
+function _que(s) { return /^[aeiouyéèêàh]/i.test(s) ? `qu'${s}` : `que ${s}`; }
 
 // LONGUEUR (nez → bout de la queue, allongé / garé). Objet familier d'abord.
 function _compLong(m) {
@@ -263,9 +265,9 @@ function _compHaut(m) {
 // POIDS (t). Repères : chat 4 kg · enfant 4 ans 16 kg · gros chien 30 kg · enfant 10 ans 50 kg ·
 // Papa 80 kg · gros cochon 200 kg · vache 0,7 t · rhino 1,5 t · hippo 3 t · éléphant 6 t.
 function _compPoids(t) {
-  if (t >= 11)   return `aussi lourd que ${_qty(Math.round(t / 6), 'éléphant', 'éléphants')} !`;
-  if (t >= 4)    return `aussi lourd que ${_qty(Math.round(t / 3), 'hippopotame', 'hippopotames')} !`;
-  if (t >= 2)    return `aussi lourd que ${_qty(Math.round(t / 1.5), 'rhinocéros', 'rhinocéros')} !`;
+  if (t >= 11)   return `aussi lourd ${_que(_qty(Math.round(t / 6), 'éléphant', 'éléphants'))} !`;
+  if (t >= 4)    return `aussi lourd ${_que(_qty(Math.round(t / 3), 'hippopotame', 'hippopotames'))} !`;
+  if (t >= 2)    return `aussi lourd ${_que(_qty(Math.round(t / 1.5), 'rhinocéros', 'rhinocéros'))} !`;
   if (t >= 1.2)  return `aussi lourd qu'un rhinocéros !`;
   if (t >= 0.5)  return `aussi lourd qu'une vache !`;
   if (t >= 0.13) return `aussi lourd qu'un gros cochon !`;

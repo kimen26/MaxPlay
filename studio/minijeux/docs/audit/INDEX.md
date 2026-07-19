@@ -4,6 +4,8 @@
 
 Revue complète des mini-jeux (MJ-01 → MJ-17), plan de factorisation, benchmark externe et roadmap technique.
 
+> 📌 **Audit plus récent** : [`menu-2026-07.md`](menu-2026-07.md) — challenge du menu enfant (v2 figée 2026-07-16), options parcours « La ligne de Max », garder/fusionner/supprimer (2026-07-19).
+
 ## 📑 Les 4 livrables
 
 | # | Document | Contenu | Pour qui |

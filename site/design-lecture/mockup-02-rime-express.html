@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 2 — Rime Express</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── Le Rime Express ── */
+  .piste {
+    position:relative; margin-top:26px; width:100%; height:190px;
+    background:rgba(255,255,255,.04); border:2px solid rgba(255,209,102,.3);
+    border-radius:24px; overflow:hidden;
+    box-shadow:0 12px 30px rgba(0,0,0,.5), inset 0 0 40px rgba(20,16,60,.6);
+  }
+  .route {
+    position:absolute; left:0; right:0; bottom:14px; height:10px;
+    background:repeating-linear-gradient(90deg,#3a3a55 0 26px, #ffd166 26px 40px);
+    border-radius:999px; opacity:.55;
+  }
+  .livraison {
+    position:absolute; left:8px; bottom:26px; display:flex; flex-direction:column;
+    align-items:center; transition:left 1.1s cubic-bezier(.45,.05,.35,1);
+  }
+  .livraison .cargo {
+    font-size:52px; margin-bottom:-6px;
+    filter:drop-shadow(0 4px 8px rgba(0,0,0,.5));
+  }
+  .arrets { margin-top:24px; display:flex; gap:16px; flex-wrap:wrap; justify-content:center; }
+  .arrets .card { min-width:120px; min-height:120px; font-size:54px; position:relative; }
+  .arrets .card::before {
+    content:'🚏'; position:absolute; top:-22px; left:50%; transform:translateX(-50%);
+    font-size:22px; opacity:.8;
+  }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 2 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🎵 Rime Express</h1>
+    <p>Quel arrêt rime avec <b>chat</b> ?</p>
+  </div>
+
+  <div class="piste" id="piste">
+    <div class="route"></div>
+    <div class="livraison" id="livraison">
+      <div class="cargo" id="cargo">🐈</div>
+      <div id="busSlot"></div>
+    </div>
+  </div>
+
+  <div class="arrets" id="arrets"></div>
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../js/bus-svg.js"></script>
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  var piste = document.getElementById('piste');
+  var livraison = document.getElementById('livraison');
+  var arretsEl = document.getElementById('arrets');
+  var locked = false;
+
+  // Bus 185 — orange ligne 185, JAMAIS d'emoji bus
+  document.getElementById('busSlot').innerHTML = busSVG('#F58443', '#fff', '185', 170);
+
+  var arrets = [
+    { id: 'rat',    html: '🐀', ok: true,  mot: 'rat' },
+    { id: 'lune',   html: '🌙', ok: false, mot: 'lune' },
+    { id: 'bateau', html: '⛵', ok: false, mot: 'bateau' }
+  ];
+
+  function build() {
+    arretsEl.innerHTML = '';
+    arrets.forEach(function (a) {
+      var b = document.createElement('button');
+      b.className = 'card';
+      b.textContent = a.html;
+      b.addEventListener('click', function () { onPick(a, b); });
+      arretsEl.appendChild(b);
+    });
+  }
+
+  /* Le bus roule jusqu'à l'arrêt choisi */
+  function driveTo(cardEl, cb) {
+    var pr = piste.getBoundingClientRect();
+    var cr = cardEl.getBoundingClientRect();
+    var cible = Math.max(8, Math.min(cr.left - pr.left + cr.width / 2 - 85, pr.width - 190));
+    MK.sfx('demarrage-bus.mp3');
+    livraison.style.left = cible + 'px';
+    setTimeout(function () { MK.sfx('frein-bus.mp3'); if (cb) cb(); }, 1150);
+  }
+
+  function onPick(a, btn) {
+    if (locked) return;
+    if (a.ok) {
+      locked = true;
+      driveTo(btn, function () {
+        MK.win(btn, arretsEl);
+        MK.sfx('bonne-reponse.mp3');
+        MK.speak('chat… rat ! Ça rime !');
+        MK.say('chat… rat ! Ça rime ! 🎵');
+        setTimeout(function () { MK.celebrate('ÇA RIME ! 🎉', 'tada.mp3'); }, 1400);
+      });
+    } else {
+      MK.non(btn, 'chat… ' + a.mot + ' ? Non. Écoute : chat… rat !');
+      MK.speak('chat… ' + a.mot + ' ? Non !', { rate: 0.8 });
+    }
+  }
+
+  build();
+  // Intro : le bus arrive et annonce sa livraison
+  MK.sfx('demarrage-bus.mp3');
+  setTimeout(function () {
+    MK.speak('chat ! Le bus livre le mot chat !');
+    MK.say('Le bus livre le mot « chat » !');
+  }, 800);
+})();
+</script>
+</body>
+</html>

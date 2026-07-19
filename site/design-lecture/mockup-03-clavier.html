@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 3 — Le Clavier de l'Alphabet</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── Le clavier de l'alphabet ── */
+  .clavier {
+    margin-top:24px; width:100%; display:grid;
+    grid-template-columns:repeat(6, 1fr); gap:12px;
+    background:rgba(255,255,255,.04); border:2px solid rgba(255,209,102,.35);
+    border-radius:24px; padding:18px 14px;
+    box-shadow:0 12px 30px rgba(0,0,0,.5), inset 0 0 40px rgba(20,16,60,.6);
+  }
+  .touche { /* tuiles plus petites que .tile mais ≥ 64px */
+    min-width:64px; min-height:64px; font-size:40px; border-radius:16px;
+    padding:4px 8px;
+  }
+  .touche.or { /* lettre trouvée : elle s'illumine or */
+    background:linear-gradient(145deg,#ffe066,#f0b73f);
+    box-shadow:0 6px 0 #b8860b, 0 0 26px rgba(255,209,102,.8); color:#2a1c05;
+  }
+  .repete {
+    margin-top:18px; border:none; border-radius:999px; cursor:pointer;
+    font-family:'Fredoka One',cursive; font-size:19px; color:#2a1c05;
+    background:linear-gradient(145deg,#ffe066,#f0b73f); box-shadow:0 4px 0 #b8860b;
+    padding:14px 26px; min-height:64px; touch-action:manipulation;
+  }
+  .repete:active { transform:scale(.94); }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 3 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>⌨️ Le Clavier de l'Alphabet</h1>
+    <p>Écoute la voix et tape la bonne lettre !</p>
+  </div>
+
+  <button class="repete" id="repete">🔁 Répète</button>
+  <div class="clavier" id="clavier"></div>
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  /* NIVEAU + : même jeu mais la voix énonce les NOMS des lettres
+     (« Trouve le ème ! ») et chaque lettre dit aussi son NOM au tap.
+     Ici (P1, révision) : consigne au nom court, feedback au SON. */
+
+  MK.stars();
+
+  var clavierEl = document.getElementById('clavier');
+  var CIBLE = 'm';
+  var locked = false;
+
+  // Son isolé de chaque lettre (son-first : jamais le nom au feedback)
+  var SONS = {
+    a:'aaa', b:'beuh', c:'keuh', d:'deuh', e:'euh', f:'fff', g:'gueuh',
+    h:'huh', i:'iii', j:'juh', k:'keuh', l:'lll', m:'mmm', n:'nnn',
+    o:'ooo', p:'peuh', q:'keuh', r:'rrr', s:'sss', t:'teuh', u:'uuu',
+    v:'vvv', w:'wuh', x:'ks', y:'iii', z:'zzz'
+  };
+
+  var lettres = 'abcdefghijklmnopqrstuvwxyz'.split('');
+
+  function consigne() {
+    MK.speak('Trouve le ' + CIBLE + ' !'); // nom court accepté : reconnaissance de lettre
+    MK.say('Trouve le ' + CIBLE + ' !');
+  }
+
+  function build() {
+    clavierEl.innerHTML = '';
+    lettres.forEach(function (l) {
+      var b = document.createElement('button');
+      b.className = 'tile touche cur';
+      b.textContent = l;
+      b.addEventListener('click', function () { onPick(l, b); });
+      clavierEl.appendChild(b);
+    });
+  }
+
+  function onPick(l, btn) {
+    if (locked) return;
+    if (l === CIBLE) {
+      locked = true;
+      btn.classList.add('or');
+      MK.pop(btn);
+      MK.sfx('bonne-reponse.mp3');
+      MK.speakSound(SONS[l]);                 // la lettre dit SON SON
+      setTimeout(function () { MK.say('Oui ! Le ' + l + ' dit ' + SONS[l] + ' !'); }, 800);
+      setTimeout(function () { MK.celebrate('OUI ! 🌟', 'victoire-petite.mp3'); }, 1300);
+    } else {
+      MK.speakSound(SONS[l]);                 // la lettre tapée dit son propre son
+      MK.non(btn, 'Ça, c\u2019est le ' + l + ' : ' + SONS[l] + ' ! Cherche le ' + CIBLE + ' !');
+    }
+  }
+
+  document.getElementById('repete').addEventListener('click', function () {
+    if (!locked) consigne();
+  });
+
+  build();
+  setTimeout(consigne, 500);
+})();
+</script>
+</body>
+</html>

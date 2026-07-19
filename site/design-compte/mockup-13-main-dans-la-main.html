@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 13 — Main dans la Main</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── La rangée de dinos : 3 paires + 1 solitaire ── */
+  .rangee {
+    margin-top:26px; width:100%; display:flex; flex-wrap:wrap; gap:18px;
+    justify-content:center; align-items:center;
+    background:rgba(255,255,255,.04); border:2px solid rgba(255,209,102,.35); border-radius:26px;
+    padding:24px 14px; box-shadow:0 14px 34px rgba(0,0,0,.5), inset 0 0 40px rgba(20,16,60,.6);
+  }
+  .paire {
+    display:flex; align-items:center; padding:10px 12px; border-radius:22px;
+    background:rgba(255,255,255,.05); border:2px solid rgba(255,255,255,.14);
+    transition:box-shadow .3s, border-color .3s, background .3s;
+  }
+  .paire.lit {
+    border-color:#ffd166; background:rgba(255,209,102,.12);
+    box-shadow:0 0 28px rgba(255,209,102,.6);
+  }
+  .paire img, .solitaire img { width:80px; height:80px; object-fit:contain; }
+
+  /* petites mains qui se tiennent entre les deux dinos d'une paire */
+  .mains {
+    position:relative; width:26px; height:8px; margin:0 -3px; z-index:2;
+    background:#ffd166; border-radius:4px; flex:none;
+    box-shadow:0 0 8px rgba(255,209,102,.7);
+  }
+  .mains::before, .mains::after {
+    content:''; position:absolute; top:-5px; width:18px; height:18px; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #fff3cf, #f0b73f);
+    box-shadow:0 2px 4px rgba(0,0,0,.4);
+  }
+  .mains::before { left:-8px; }
+  .mains::after { right:-8px; }
+
+  .solitaire {
+    padding:10px 12px; border-radius:22px;
+    background:rgba(255,255,255,.03); border:2px dashed rgba(255,255,255,.25);
+    transition:box-shadow .3s, border-color .3s;
+  }
+  .solitaire.lit {
+    border-color:#ff9d5c; border-style:solid;
+    box-shadow:0 0 28px rgba(255,140,60,.65); background:rgba(255,140,60,.10);
+  }
+
+  /* ── Les 2 gros boutons de réponse ── */
+  .choix-btn {
+    min-width:160px; min-height:92px; border:none; border-radius:24px; cursor:pointer;
+    font-family:'Fredoka One',cursive; font-size:32px; letter-spacing:1px; color:#2a1c05;
+    background:linear-gradient(145deg,#ffe066,#f0b73f);
+    box-shadow:0 6px 0 #b8860b, 0 12px 22px rgba(0,0,0,.45);
+    transition:transform .12s ease; touch-action:manipulation; padding:10px 20px;
+  }
+  .choix-btn:active { transform:scale(.92); }
+  .choix-btn.win {
+    background:linear-gradient(145deg,#7fe7c4,#2fbf8f);
+    box-shadow:0 6px 0 #157a56, 0 0 26px rgba(47,191,143,.7); color:#062e20;
+  }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 13 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🤝 Main dans la Main</h1>
+    <p>Les dinos se tiennent la main. Ils sont <b>pair</b> ou <b>impair</b> ?</p>
+  </div>
+
+  <div class="rangee" id="rangee"></div>
+
+  <div class="answers" id="answers"></div>
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  // 7 dinos : 3 paires + 1 solitaire
+  var PAIRES = [
+    [['brachio', 'joyeux', 2], ['diplo', 'joyeux', 1]],
+    [['cory', 'joyeux', 1], ['cendre', 'joyeux', 1]],
+    [['allo', 'joyeux', 1], ['anky', 'joyeux', 4]]
+  ];
+  var SOLO = ['centro', 'joyeux', 1];
+  var MOTS = ['deux !', 'quatre !', 'six !'];
+
+  var rangee = document.getElementById('rangee');
+  var answersEl = document.getElementById('answers');
+  var paireEls = [], solitaireEl = null;
+  var locked = false, fini = false;
+
+  function imgDino(a) {
+    var img = document.createElement('img');
+    img.src = MK.avatar(a[0], a[1], a[2]);
+    img.alt = 'dino';
+    img.onerror = function () { img.style.display = 'none'; };
+    return img;
+  }
+
+  PAIRES.forEach(function (p) {
+    var div = document.createElement('div');
+    div.className = 'paire';
+    div.appendChild(imgDino(p[0]));
+    var mains = document.createElement('div');
+    mains.className = 'mains';
+    div.appendChild(mains);
+    div.appendChild(imgDino(p[1]));
+    rangee.appendChild(div);
+    paireEls.push(div);
+  });
+
+  solitaireEl = document.createElement('div');
+  solitaireEl.className = 'solitaire';
+  solitaireEl.appendChild(imgDino(SOLO));
+  rangee.appendChild(solitaireEl);
+
+  ['PAIR', 'IMPAIR'].forEach(function (label) {
+    var b = document.createElement('button');
+    b.className = 'choix-btn';
+    b.textContent = label;
+    b.addEventListener('click', function () { onChoix(label, b); });
+    answersEl.appendChild(b);
+  });
+
+  // Décompte pédagogique : les paires s'illuminent 2 ! 4 ! 6 ! puis le solitaire pop
+  function comptePaires(suite) {
+    locked = true;
+    paireEls.forEach(function (p, i) {
+      setTimeout(function () {
+        p.classList.add('lit');
+        MK.sfx('clochette.mp3', 0.35);
+        MK.speak(MOTS[i]);
+      }, 600 + i * 900);
+    });
+    setTimeout(function () {
+      solitaireEl.classList.add('lit');
+      MK.pop(solitaireEl);
+      MK.sfx('boing.mp3', 0.4);
+      setTimeout(suite, 700);
+    }, 600 + paireEls.length * 900);
+  }
+
+  function eteindre() {
+    paireEls.forEach(function (p) { p.classList.remove('lit'); });
+    solitaireEl.classList.remove('lit');
+  }
+
+  function onChoix(label, btn) {
+    if (locked || fini) return;
+    if (label === 'IMPAIR') {
+      fini = true;
+      MK.win(btn, answersEl);
+      comptePaires(function () {
+        MK.say('…et 1 tout seul ! C\'est IMPAIR !');
+        MK.speak('et un tout seul ! C\'est impair !');
+        setTimeout(function () { MK.celebrate('IMPAIR ! 🎉', 'tada.mp3'); }, 900);
+      });
+      return;
+    }
+    // Erreur douce : on montre quand même le décompte, puis on laisse réessayer
+    MK.non(btn, 'Comptons les paires ensemble…');
+    comptePaires(function () {
+      MK.say('Regarde : il en reste 1 tout seul !');
+      MK.speak('regarde ! il en reste un tout seul !');
+      setTimeout(function () {
+        eteindre();
+        MK.say('Alors, pair ou impair ?');
+        locked = false;
+      }, 2000);
+    });
+  }
+
+  setTimeout(function () {
+    MK.speak('Les dinos se tiennent la main. Ils sont pair ou impair ?');
+  }, 500);
+})();
+</script>
+</body>
+</html>

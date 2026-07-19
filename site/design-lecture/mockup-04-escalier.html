@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 4 — L'Escalier des Sons</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── L'escalier des sons ── */
+  .escalier {
+    margin-top:26px; width:100%; display:flex; flex-direction:column-reverse;
+    align-items:center; gap:10px;
+    background:rgba(255,255,255,.04); border:2px solid rgba(255,209,102,.3);
+    border-radius:26px; padding:22px 16px;
+    box-shadow:0 14px 34px rgba(0,0,0,.5), inset 0 0 40px rgba(20,16,60,.6);
+  }
+  .marche {
+    display:flex; align-items:center; justify-content:center; gap:12px;
+    min-height:76px; border-radius:18px; padding:10px 26px;
+    background:rgba(255,255,255,.06);
+    box-shadow:inset 0 0 0 3px rgba(255,209,102,.35);
+    color:rgba(255,224,102,.4); transition:all .4s ease;
+  }
+  .marche .cur { font-size:46px; }
+  /* les marches montent en largeur comme un escalier */
+  .marche.m0 { width:46%; }
+  .marche.m1 { width:60%; }
+  .marche.m2 { width:74%; }
+  .marche.m3 { width:88%; }
+  .marche.allumee {
+    background:linear-gradient(145deg,#ffe066,#f0b73f); color:#2a1c05;
+    box-shadow:0 6px 0 #b8860b, 0 0 28px rgba(255,209,102,.75);
+  }
+  .marche .train-emoji { font-size:52px; display:none; }
+  .marche.finale .train-emoji { display:block; animation:mk-pop .45s cubic-bezier(.34,1.56,.64,1) both; }
+  .marche.finale .cur {
+    font-size:72px; color:#2a1c05;
+    text-shadow:0 0 20px rgba(255,255,255,.6);
+  }
+  .choix-tuiles { margin-top:24px; display:flex; gap:14px; flex-wrap:wrap; justify-content:center; }
+  .choix-tuiles .tile { min-width:88px; min-height:88px; font-size:46px; }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 4 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🪜 L'Escalier des Sons</h1>
+    <p id="consigneTxt">Trouve le <b>t</b> !</p>
+  </div>
+
+  <div class="escalier" id="escalier">
+    <div class="marche m0" id="m0"><span class="cur">t</span></div>
+    <div class="marche m1" id="m1"><span class="cur">tr</span></div>
+    <div class="marche m2" id="m2"><span class="cur">tro</span></div>
+    <div class="marche m3" id="m3"><span class="train-emoji" id="trainEmoji">🚂</span><span class="cur" id="trainMot"></span></div>
+  </div>
+
+  <div class="choix-tuiles" id="choix"></div>
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  var choixEl = document.getElementById('choix');
+  var consigneTxt = document.getElementById('consigneTxt');
+  var phase = 0; // 0 = trouve t · 1 = trouve tro · 2 = finale train
+  var locked = false;
+
+  var phases = [
+    {
+      consigne: 'Trouve le <b>t</b> !',
+      dire: 'Trouve le t !',
+      cible: 't',
+      options: ['t', 'm', 's', 'l'],
+      feedbackOk: function () { MK.speakSound('t'); },
+      feedbackErr: 'Ça, ce n\u2019est pas t. Écoute : t… comme train !'
+    },
+    {
+      consigne: 'Maintenant trouve <b>tro</b> !',
+      dire: 'Maintenant, trouve tro !',
+      cible: 'tro',
+      options: ['tro', 'tra', 'tri', 'tou'],
+      feedbackOk: function () { MK.speak('tro', { rate: 0.7 }); },
+      feedbackErr: 'tro… commence par tr ! Écoute : t… r… tro !'
+    }
+  ];
+
+  function allume(id) {
+    var m = document.getElementById(id);
+    m.classList.add('allumee');
+    MK.pop(m);
+    MK.sfx('magie.mp3');
+  }
+
+  function buildPhase() {
+    var p = phases[phase];
+    consigneTxt.innerHTML = p.consigne;
+    choixEl.innerHTML = '';
+    p.options.forEach(function (opt) {
+      var b = document.createElement('button');
+      b.className = 'tile cur';
+      b.textContent = opt;
+      b.addEventListener('click', function () { onPick(opt, b); });
+      choixEl.appendChild(b);
+    });
+    MK.speak(p.dire);
+    MK.say(p.dire);
+  }
+
+  function onPick(opt, btn) {
+    if (locked) return;
+    var p = phases[phase];
+    if (opt !== p.cible) {
+      MK.non(btn, p.feedbackErr);
+      MK.speak(p.feedbackErr, { rate: 0.8 });
+      return;
+    }
+    locked = true;
+    MK.win(btn, choixEl);
+    p.feedbackOk();
+    if (phase === 0) {
+      allume('m0');
+      MK.say('Oui ! t… monte la marche !');
+      setTimeout(function () {
+        phase = 1; locked = false;
+        buildPhase();
+      }, 1900);
+    } else {
+      allume('m1');
+      setTimeout(function () { allume('m2'); }, 450);
+      MK.say('tro ! Encore une marche !');
+      setTimeout(finale, 2100);
+    }
+  }
+
+  /* Marche 3 : le mot entier apparaît en grand + le train pop */
+  function finale() {
+    phase = 2;
+    choixEl.innerHTML = '';
+    var m3 = document.getElementById('m3');
+    document.getElementById('trainMot').textContent = 'train';
+    m3.classList.add('allumee', 'finale');
+    MK.pop(m3);
+    MK.sfx('waouh.mp3');
+    MK.speak('tr… train ! TRAIN !', { rate: 0.75 });
+    MK.say('tr… train ! TRAIN !');
+    setTimeout(function () { MK.celebrate('TRAIN ! 🚂🎉', 'tada.mp3'); }, 1500);
+  }
+
+  setTimeout(buildPhase, 500);
+})();
+</script>
+</body>
+</html>

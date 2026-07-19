@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 8 — Le Bus des Syllabes</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── Le bus et ses fenêtres-slots ── */
+  .bus-zone { position:relative; margin-top:24px; width:100%; max-width:420px; display:flex; justify-content:center; }
+  .bus-wrap { position:relative; display:inline-block; }
+  /* slots calés sur les 2 fenêtres passagers du SVG (viewBox 160x80, fenêtres x=10 et x=36, y=14, 21x21) */
+  .fenetre {
+    position:absolute; top:16%; width:14.5%; height:29%;
+    border-radius:8px; display:flex; align-items:center; justify-content:center;
+    background:rgba(10,20,40,.55); box-shadow:inset 0 0 0 2px rgba(255,224,102,.7);
+    font-family:'Cursif','Caveat',cursive; font-weight:700; font-size:clamp(26px,7vw,38px); color:rgba(255,224,102,.5);
+  }
+  .fenetre.f1 { left:5.5%; }
+  .fenetre.f2 { left:21.8%; }
+  .fenetre.remplie { color:#ffe066; background:rgba(255,209,102,.25); box-shadow:inset 0 0 0 2px #ffd166, 0 0 16px rgba(255,209,102,.6); }
+  .papa-dino {
+    position:absolute; right:2%; bottom:-6%; width:110px; height:110px; object-fit:contain;
+    display:none; filter:drop-shadow(0 6px 12px rgba(0,0,0,.5));
+  }
+  .papa-dino.show { display:block; animation:mk-pop .5s cubic-bezier(.34,1.56,.64,1) both; }
+  .annonce {
+    min-height:40px; margin-top:14px; text-align:center;
+    font-family:'Fredoka One',cursive; font-size:24px; color:#ffd166;
+    text-shadow:0 0 18px rgba(255,209,102,.6);
+  }
+  .quai { display:flex; gap:16px; margin-top:18px; flex-wrap:wrap; justify-content:center; }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 8 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🚌 Le Bus des Syllabes</h1>
+    <p>Fais monter <b>papa</b> dans le bus 185 !</p>
+  </div>
+
+  <div class="bus-zone">
+    <div class="bus-wrap" id="busWrap">
+      <div class="fenetre f1" id="fen1">?</div>
+      <div class="fenetre f2" id="fen2">?</div>
+    </div>
+    <img class="papa-dino" id="papa" src="../img/avatars/diplo_joyeux_1.png" alt="papa dino"
+         onerror="this.style.display='none'">
+  </div>
+
+  <div class="annonce" id="annonce"></div>
+  <div class="quai" id="quai"></div>
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script src="../js/bus-svg.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  /* Ligne 185 = orange #F58443 — JAMAIS d'emoji bus, le vrai SVG */
+  var busWrap = document.getElementById('busWrap');
+  busWrap.insertAdjacentHTML('afterbegin', busSVG('#F58443', '#fff', '185', 380));
+
+  var quai = document.getElementById('quai');
+  var annonce = document.getElementById('annonce');
+  var fens = [document.getElementById('fen1'), document.getElementById('fen2')];
+  var placed = 0, locked = false;
+
+  var TUILES = ['pa', 'mo', 'pa', 'to'];
+  TUILES.forEach(function (s) {
+    var b = document.createElement('button');
+    b.className = 'tile';
+    b.textContent = s;
+    b.addEventListener('click', function () { onPick(s, b); });
+    quai.appendChild(b);
+  });
+
+  function onPick(s, btn) {
+    if (locked) return;
+    if (s !== 'pa') {
+      MK.non(btn, 'Écoute : pa… pa…');
+      MK.speak('pa… pa…', { rate: 0.6 });
+      return;
+    }
+    /* la syllabe monte dans la prochaine fenêtre */
+    MK.sfx('pop-apparition.mp3');
+    var f = fens[placed];
+    f.textContent = 'pa';
+    f.classList.add('remplie');
+    MK.pop(f);
+    MK.speak('pa', { rate: 0.7 });
+    btn.disabled = true; btn.style.opacity = '.3'; btn.style.pointerEvents = 'none';
+    placed++;
+    if (placed === 2) {
+      locked = true;
+      setTimeout(depart, 700);
+    } else {
+      MK.say('Oui ! Encore un « pa » !');
+    }
+  }
+
+  function depart() {
+    MK.sfx('clochette.mp3');
+    annonce.textContent = 'pa… pa… PAPA !';
+    MK.pop(annonce);
+    MK.speak('pa… pa… PAPA !', { rate: 0.7 });
+    document.getElementById('papa').classList.add('show');
+    setTimeout(function () {
+      MK.sfx('demarrage-bus.mp3');
+      MK.celebrate('PAPA EST MONTÉ ! 🎉', 'victoire-petite.mp3');
+      MK.say('Le bus 185 emmène papa !');
+    }, 1400);
+  }
+
+  MK.say('Fais monter papa ! Cherche les syllabes « pa » !');
+  MK.speak('pa… pa…', { rate: 0.6 });
+})();
+</script>
+</body>
+</html>

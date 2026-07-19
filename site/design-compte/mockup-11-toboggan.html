@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 11 — La File du Toboggan</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── La scène : toboggan + file de dinos ── */
+  .toboggan-scene {
+    margin-top:24px; width:100%; display:flex; align-items:flex-end; justify-content:center; gap:16px;
+    background:rgba(255,255,255,.04); border:2px solid rgba(255,209,102,.35); border-radius:26px;
+    padding:22px 14px 18px; box-shadow:0 14px 34px rgba(0,0,0,.5), inset 0 0 40px rgba(20,16,60,.6);
+  }
+  .toboggan { position:relative; width:180px; height:170px; flex:none; }
+  .toboggan .echelle {
+    position:absolute; left:10px; top:4px; width:34px; height:150px;
+    border-left:7px solid #795548; border-right:7px solid #795548;
+    background:repeating-linear-gradient(180deg, transparent 0 16px, #a1887f 16px 23px);
+    border-radius:4px;
+  }
+  .toboggan .plateforme {
+    position:absolute; left:0; top:0; width:64px; height:14px; border-radius:7px;
+    background:linear-gradient(180deg,#a1887f,#795548); box-shadow:0 4px 8px rgba(0,0,0,.4);
+  }
+  .toboggan .glissoire {
+    position:absolute; left:52px; top:6px; width:150px; height:26px;
+    background:linear-gradient(180deg,#ffcc80 0%,#f58443 80%);
+    border-radius:13px; transform:rotate(48deg); transform-origin:left center;
+    box-shadow:0 8px 14px rgba(0,0,0,.45), inset 0 -5px 0 rgba(0,0,0,.15);
+  }
+  .toboggan .sol {
+    position:absolute; left:0; right:0; bottom:0; height:10px; border-radius:5px;
+    background:linear-gradient(180deg,#4caf7d,#2e7d52);
+  }
+
+  /* ── La file de dinos ── */
+  .file { display:flex; gap:10px; align-items:flex-end; flex-wrap:wrap; justify-content:center; }
+  .dino {
+    position:relative; width:86px; height:106px; border:3px solid rgba(255,255,255,.18);
+    border-radius:20px; background:rgba(255,255,255,.06); cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:transform .12s ease, box-shadow .3s, border-color .3s; touch-action:manipulation;
+  }
+  .dino:active { transform:scale(.93); }
+  .dino img { max-width:72px; max-height:84px; object-fit:contain; pointer-events:none; }
+  .dino .rang {
+    position:absolute; top:-14px; left:50%; transform:translateX(-50%) scale(0);
+    background:linear-gradient(145deg,#ffe066,#f0b73f); color:#2a1c05;
+    font-family:'Fredoka One',cursive; font-size:15px; border-radius:999px; padding:3px 10px;
+    white-space:nowrap; box-shadow:0 3px 0 #b8860b;
+  }
+  .dino.lit { border-color:#ffd166; box-shadow:0 0 26px rgba(255,209,102,.65); background:rgba(255,209,102,.12); }
+  .dino.lit .rang { animation:rangPop .35s cubic-bezier(.34,1.56,.64,1) both; }
+  @keyframes rangPop { from{transform:translateX(-50%) scale(.3); opacity:0} to{transform:translateX(-50%) scale(1); opacity:1} }
+  .dino.glisse {
+    transition:transform 1s cubic-bezier(.5,-.2,.7,.5), opacity 1s;
+    transform:translate(-160px, 60px) rotate(-40deg) scale(.75); opacity:0;
+  }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 11 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🛝 La File du Toboggan</h1>
+    <p>Le <b>3ème</b> va glisser ! Tape-le !</p>
+  </div>
+
+  <div class="toboggan-scene">
+    <div class="toboggan">
+      <div class="glissoire"></div>
+      <div class="echelle"></div>
+      <div class="plateforme"></div>
+      <div class="sol"></div>
+    </div>
+    <div class="file" id="file"></div>
+  </div>
+
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  var RANGS = ['1er', '2ème', '3ème', '4ème', '5ème'];
+  var PARLES = ['premier !', 'deuxième !', 'troisième !'];
+  var CIBLE = 2; // le 3ème
+  var AVATARS = [
+    ['brachio', 'joyeux', 2],
+    ['diplo', 'joyeux', 1],
+    ['cory', 'joyeux', 1],
+    ['cendre', 'joyeux', 1],
+    ['allo', 'joyeux', 1]
+  ];
+
+  var fileEl = document.getElementById('file');
+  var dinos = [];
+  var fini = false, enTrainDeCompter = false;
+
+  AVATARS.forEach(function (a, i) {
+    var d = document.createElement('button');
+    d.className = 'dino';
+    d.setAttribute('aria-label', 'dino ' + RANGS[i]);
+    var img = document.createElement('img');
+    img.src = MK.avatar(a[0], a[1], a[2]);
+    img.alt = 'dino ' + RANGS[i];
+    img.onerror = function () { img.style.display = 'none'; };
+    var badge = document.createElement('span');
+    badge.className = 'rang';
+    badge.textContent = RANGS[i];
+    d.appendChild(img);
+    d.appendChild(badge);
+    d.addEventListener('click', function () { onTap(i, d); });
+    fileEl.appendChild(d);
+    dinos.push(d);
+  });
+
+  function onTap(i, el) {
+    if (fini || enTrainDeCompter) return;
+    if (i === CIBLE) {
+      fini = true;
+      MK.sfx('whoosh.mp3');
+      el.classList.add('glisse');
+      MK.speak('youhou !');
+      setTimeout(function () {
+        MK.celebrate('BRAVO ! 🎉', 'tada.mp3');
+        MK.say('Oui, le 3ème ! Quelle glissade !');
+      }, 1000);
+      return;
+    }
+    // Erreur douce : on compte ensemble en illuminant les dinos un à un
+    enTrainDeCompter = true;
+    MK.non(el, 'Compte avec moi : 1er, 2ème, 3ème !');
+    for (var k = 0; k <= CIBLE; k++) {
+      (function (idx) {
+        setTimeout(function () {
+          dinos[idx].classList.add('lit');
+          MK.sfx('clochette.mp3', 0.35);
+          MK.speak(PARLES[idx]);
+        }, 700 + idx * 950);
+      })(k);
+    }
+    setTimeout(function () {
+      dinos.forEach(function (d) { d.classList.remove('lit'); });
+      MK.say('Le 3ème, c\'est celui qui a brillé en dernier !');
+      enTrainDeCompter = false;
+    }, 700 + CIBLE * 950 + 1400);
+  }
+
+  setTimeout(function () {
+    MK.speak('Le troisième va glisser ! Tape-le !');
+  }, 500);
+})();
+</script>
+</body>
+</html>

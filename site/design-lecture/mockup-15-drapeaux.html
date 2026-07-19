@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 15 — Les Drapeaux Noms</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── Le nom à lire ── */
+  .nom-affiche {
+    margin-top:26px; display:flex; align-items:center; gap:16px;
+    background:rgba(255,255,255,.04); border:2px solid rgba(255,209,102,.35);
+    border-radius:26px; padding:18px 30px;
+    box-shadow:0 14px 34px rgba(0,0,0,.5), inset 0 0 40px rgba(20,16,60,.6);
+  }
+  .nom-lu {
+    font-size:84px; color:#ffe066;
+    text-shadow:0 0 26px rgba(255,209,102,.8);
+    line-height:1;
+  }
+  .btn-son {
+    min-width:80px; min-height:80px; border:none; border-radius:50%; cursor:pointer;
+    font-size:36px; background:linear-gradient(145deg,#ffe066,#f0b73f);
+    box-shadow:0 5px 0 #b8860b; touch-action:manipulation;
+  }
+  .btn-son:active { transform:scale(.92); }
+  .answers .card { min-width:130px; min-height:130px; }
+  .drapeau { font-size:80px; line-height:1; }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 15 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🌍 Lis le nom !</h1>
+    <p>Lis le nom et tape le bon drapeau !</p>
+  </div>
+
+  <div class="nom-affiche">
+    <div class="nom-lu cur" id="nomLu">Brésil</div>
+    <button class="btn-son" id="btnSon" aria-label="écouter le nom">🔊</button>
+  </div>
+
+  <div class="answers" id="choix">
+    <button class="card" data-pays="france"><span class="drapeau">🇫🇷</span></button>
+    <button class="card" data-pays="bresil"><span class="drapeau">🇧🇷</span></button>
+    <button class="card" data-pays="espagne"><span class="drapeau">🇪🇸</span></button>
+  </div>
+
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  var choix = document.getElementById('choix');
+  var locked = false;
+
+  function direNom() {
+    MK.speak('Bré…sil… Brésil !', { rate: 0.65 });
+  }
+
+  document.getElementById('btnSon').addEventListener('click', function () {
+    MK.pop(document.getElementById('nomLu'));
+    direNom();
+  });
+
+  Array.prototype.forEach.call(choix.querySelectorAll('.card'), function (card) {
+    card.addEventListener('click', function () {
+      if (locked) return;
+      var pays = card.dataset.pays;
+      if (pays === 'bresil') {
+        locked = true;
+        MK.win(card, choix);
+        MK.say('Brésil ! Le pays de mamãe ! 💚');
+        MK.speak('Brésil ! Le pays de mamãe !', { rate: 0.8 });
+        setTimeout(function () {
+          MK.celebrate('BRAVO ! 🇧🇷', 'tada.mp3');
+        }, 1400);
+      } else if (pays === 'france') {
+        MK.non(card, 'Ça c\'est la France ! Lis : Bré…sil…');
+        direNom();
+      } else {
+        MK.non(card, 'Ça c\'est l\'Espagne ! Lis : Bré…sil…');
+        direNom();
+      }
+    });
+  });
+
+  /* Intro */
+  setTimeout(function () {
+    MK.say('Lis le nom et tape le bon drapeau !');
+    direNom();
+  }, 700);
+})();
+</script>
+</body>
+</html>

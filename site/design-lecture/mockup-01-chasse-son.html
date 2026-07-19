@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 1 — La Chasse au Son</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── La chasse au son ── */
+  .son-cible {
+    margin-top:20px; display:flex; align-items:center; gap:14px;
+    background:rgba(255,209,102,.1); border:2px solid rgba(255,209,102,.45);
+    border-radius:22px; padding:14px 22px;
+    box-shadow:0 8px 22px rgba(0,0,0,.4);
+  }
+  .son-badge {
+    font-family:'Fredoka One',cursive; font-size:34px; color:#2a1c05;
+    background:linear-gradient(145deg,#ffe066,#f0b73f); border-radius:16px;
+    padding:8px 18px; box-shadow:0 4px 0 #b8860b;
+  }
+  .relisten {
+    border:none; border-radius:999px; cursor:pointer;
+    font-family:'Fredoka One',cursive; font-size:19px; color:#2a1c05;
+    background:linear-gradient(145deg,#ffe066,#f0b73f); box-shadow:0 4px 0 #b8860b;
+    padding:14px 24px; min-height:64px; touch-action:manipulation;
+  }
+  .relisten:active { transform:scale(.94); }
+  .chasse { margin-top:26px; display:flex; gap:16px; flex-wrap:wrap; justify-content:center; }
+  .chasse .card { min-width:128px; min-height:128px; font-size:64px; }
+  .chasse .card .bus-slot svg { display:block; }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 1 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🔊 La Chasse au Son</h1>
+    <p>Tape ce qui commence par <b>[mmm]</b> !</p>
+  </div>
+
+  <div class="son-cible">
+    <div class="son-badge">mmm</div>
+    <button class="relisten" id="relisten">🔁 Réécouter</button>
+  </div>
+
+  <div class="chasse" id="choix"></div>
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../js/bus-svg.js"></script>
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  /* Variante prévue : const MODE = 'fin';
+     En MODE 'fin', la consigne devient « Tape ce qui finit par [s] ! »,
+     la cible sonore passe en fin de mot (bus, souris…) et on rejoue
+     le son isolé de la FIN du mot. Même mécanique, attaque → finale. */
+  var MODE = 'debut';
+
+  MK.stars();
+
+  var choixEl = document.getElementById('choix');
+  var locked = false;
+
+  // Bus 185 — orange ligne 185, JAMAIS d'emoji bus
+  var BUS_185 = busSVG('#F58443', '#fff', '185', 150);
+
+  var cartes = [
+    { id: 'moto', html: '🏍️', ok: true,  mot: 'moto' },
+    { id: 'lune', html: '🌙', ok: false, mot: 'lune' },
+    { id: 'bus',  html: null,  ok: false, mot: 'bus' } // html null → SVG bus
+  ];
+
+  function entendreSon() {
+    MK.speakSound('mmm');
+  }
+
+  function build() {
+    choixEl.innerHTML = '';
+    cartes.forEach(function (c) {
+      var b = document.createElement('button');
+      b.className = 'card';
+      if (c.html) {
+        b.textContent = c.html;
+      } else {
+        var slot = document.createElement('span');
+        slot.className = 'bus-slot';
+        slot.innerHTML = BUS_185;
+        b.appendChild(slot);
+      }
+      b.addEventListener('click', function () { onPick(c, b); });
+      choixEl.appendChild(b);
+    });
+  }
+
+  function onPick(c, btn) {
+    if (locked) return;
+    if (c.ok) {
+      locked = true;
+      MK.win(btn, choixEl);
+      MK.sfx('bonne-reponse.mp3');
+      MK.speak('mmm… moto !');
+      MK.say('Oui ! mmm… moto !');
+      setTimeout(function () { MK.celebrate('BRAVO ! 🎉', 'tada.mp3'); }, 900);
+    } else {
+      MK.non(btn, 'Écoute bien : mmm… moto !');
+      setTimeout(entendreSon, 1200); // on rejoue le son cible après l'erreur
+    }
+  }
+
+  document.getElementById('relisten').addEventListener('click', entendreSon);
+
+  build();
+  entendreSon(); // son-first : le son est joué dès l'arrivée
+  setTimeout(function () { MK.say('Tape ce qui commence par mmm !'); }, 1400);
+})();
+</script>
+</body>
+</html>

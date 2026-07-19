@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 19 — Lecture à Deux Voix</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── Le livre : cartes empilées ── */
+  .livre {
+    margin-top:26px; width:100%; display:flex; flex-direction:column; gap:14px;
+  }
+  .page {
+    border-radius:22px; padding:16px 18px; display:flex; align-items:center; gap:14px;
+    box-shadow:0 10px 26px rgba(0,0,0,.45);
+  }
+  .page.papa {
+    background:rgba(255,255,255,.06); border:2px solid rgba(180,180,200,.35);
+  }
+  .page.max {
+    background:rgba(255,209,102,.08); border:2px solid rgba(255,209,102,.6);
+    cursor:pointer; touch-action:manipulation; transition:transform .12s ease;
+  }
+  .page.max:active { transform:scale(.97); }
+  .page.max.lue { border-color:#2fbf8f; box-shadow:0 0 22px rgba(47,191,143,.45); }
+  .qui {
+    flex:0 0 auto; width:64px; text-align:center;
+    font-size:12px; font-weight:900; letter-spacing:1px; text-transform:uppercase;
+  }
+  .qui .pastille-qui {
+    width:52px; height:52px; border-radius:50%; margin:0 auto 4px;
+    display:flex; align-items:center; justify-content:center; font-size:26px;
+  }
+  .page.papa .pastille-qui { background:rgba(160,160,190,.3); }
+  .page.max .pastille-qui { background:linear-gradient(145deg,#ffe066,#f0b73f); }
+  .page.max .qui { color:#ffd166; }
+  .page.papa .qui { color:rgba(255,255,255,.6); }
+  /* Le texte lu par l'enfant → .cur ; chaque mot est un span pour l'illumination */
+  .phrase { flex:1; font-family:'Cursif','Caveat',cursive; font-weight:700; font-size:38px; line-height:1.25; }
+  .page.papa .phrase { color:rgba(255,255,255,.85); }
+  .page.max .phrase { color:#ffe066; }
+  .phrase .mot { border-radius:8px; padding:0 3px; transition:background .18s ease; }
+  .phrase .mot.lu { background:rgba(255,209,102,.85); color:#2a1c05; }
+  .action {
+    flex:0 0 auto; border:none; border-radius:999px; cursor:pointer;
+    min-width:80px; min-height:80px; font-size:32px;
+    background:linear-gradient(145deg,#4a3f8f,#332a6b); box-shadow:0 5px 0 #241d4e;
+    touch-action:manipulation;
+  }
+  .action:active { transform:scale(.9); }
+  .action.aide { background:linear-gradient(145deg,#ff9d5c,#e8641f); box-shadow:0 5px 0 #a8430e; }
+  .coche { font-size:26px; margin-left:auto; display:none; }
+  .page.lue .coche { display:block; }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 19 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>📖 Lecture à Deux Voix</h1>
+    <p>Papa lit les phrases <b>grises</b>… et toi tu lis les phrases <b>dorées</b> !</p>
+  </div>
+
+  <div class="livre" id="livre"></div>
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  /* Mini-histoire en 4 phrases — données en dur (démo 1 phase).
+     aide = version « épelée puis lue » pour le bouton 🔊 de Max. */
+  var PAGES = [
+    { qui: 'papa', texte: "Le bus 185 arrive à l'arrêt.", parle: "Le bus cent quatre-vingt-cinq arrive à l'arrêt." },
+    { qui: 'max',  texte: 'Le bus est rouge.',
+      aide: 'L, e : Le ! b, u, s : bus ! e, s, t : est ! r, o, u, g, e : rouge ! Le bus est rouge !' },
+    { qui: 'papa', texte: 'Tonton dino attend sagement.' },
+    { qui: 'max',  texte: 'Tonton monte !',
+      aide: 'T, o, n, t, o, n : Tonton ! m, o, n, t, e : monte ! Tonton monte !' }
+  ];
+
+  var livre = document.getElementById('livre');
+  var maxLues = 0, busy = false, fini = false;
+
+  PAGES.forEach(function (p) {
+    var page = document.createElement('div');
+    page.className = 'page ' + p.qui;
+
+    var qui = document.createElement('div');
+    qui.className = 'qui';
+    qui.innerHTML = '<div class="pastille-qui">' + (p.qui === 'papa' ? '👨' : '🧒') + '</div>' +
+                    (p.qui === 'papa' ? 'papa' : 'Max');
+    page.appendChild(qui);
+
+    /* Phrase en .cur, mots wrappés pour l'illumination */
+    var phrase = document.createElement('div');
+    phrase.className = 'phrase';
+    var mots = p.texte.split(' ').map(function (m) {
+      var s = document.createElement('span');
+      s.className = 'mot';
+      s.textContent = m;
+      phrase.appendChild(s);
+      phrase.appendChild(document.createTextNode(' '));
+      return s;
+    });
+    page.appendChild(phrase);
+
+    var coche = document.createElement('span');
+    coche.className = 'coche';
+    coche.textContent = '✅';
+    page.appendChild(coche);
+
+    if (p.qui === 'papa') {
+      /* Phrase de papa : bouton ▶, voix grave */
+      var play = document.createElement('button');
+      play.className = 'action';
+      play.textContent = '▶';
+      play.setAttribute('aria-label', 'Papa lit la phrase');
+      play.addEventListener('click', function () {
+        MK.speak(p.parle || p.texte, { pitch: 0.8, rate: 0.85 });
+      });
+      page.appendChild(play);
+    } else {
+      /* Phrase de Max : bouton 🔊 aide (épelle puis lit) */
+      var aideBtn = document.createElement('button');
+      aideBtn.className = 'action aide';
+      aideBtn.textContent = '🔊';
+      aideBtn.setAttribute('aria-label', 'Aide : épelle puis lit');
+      aideBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (busy) return;
+        MK.speak(p.aide, { rate: 0.9 });
+      });
+      page.appendChild(aideBtn);
+
+      /* Tap sur la phrase → lue mot à mot (chaque mot s'illumine) puis entière */
+      page.addEventListener('click', function () {
+        if (busy) return;
+        litMotAMot(page, mots, p);
+      });
+    }
+    livre.appendChild(page);
+  });
+
+  function litMotAMot(page, mots, p) {
+    busy = true;
+    /* Mot à mot : chaque mot est dit et s'illumine en rythme */
+    mots.forEach(function (s, i) {
+      setTimeout(function () {
+        s.classList.add('lu');
+        MK.speak(s.textContent, { rate: 0.75 });
+        setTimeout(function () { s.classList.remove('lu'); }, 520);
+      }, 620 * i);
+    });
+    /* Puis la phrase entière */
+    setTimeout(function () {
+      MK.speak(p.texte, { rate: 0.8 });
+      busy = false;
+      if (!page.classList.contains('lue')) {
+        page.classList.add('lue');
+        maxLues++;
+        MK.sfx('bonne-reponse.mp3', 0.4);
+        if (maxLues === 2) {
+          fini = true;
+          setTimeout(function () {
+            MK.celebrate('Vous avez lu une histoire ensemble ! 📖', 'victoire-grande.mp3');
+          }, 1000);
+        } else {
+          MK.say('Bravo ! Encore une phrase dorée !');
+        }
+      }
+    }, 620 * mots.length + 500);
+  }
+})();
+</script>
+</body>
+</html>

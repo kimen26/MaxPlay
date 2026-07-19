@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 11 — Les Confusions Pièges</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── Le duel de sons ── */
+  .duel {
+    margin-top:26px; width:100%; background:rgba(255,255,255,.04);
+    border:2px solid rgba(255,209,102,.35); border-radius:26px; padding:22px 16px;
+    display:flex; gap:24px; justify-content:center; align-items:stretch; flex-wrap:wrap;
+    box-shadow:0 14px 34px rgba(0,0,0,.5), inset 0 0 40px rgba(20,16,60,.6);
+  }
+  .son-col { display:flex; flex-direction:column; align-items:center; gap:12px; }
+  .son-col .tile { min-width:120px; min-height:120px; font-size:68px; }
+  .parrain {
+    width:110px; height:110px; object-fit:contain; border-radius:22px;
+    background:rgba(255,255,255,.07); border:2px solid rgba(255,255,255,.15);
+    padding:8px; cursor:pointer; touch-action:manipulation;
+  }
+  .parrain:active { transform:scale(.93); }
+  .parrain-emoji {
+    width:110px; height:110px; border-radius:22px; font-size:64px; cursor:pointer;
+    background:rgba(255,255,255,.07); border:2px solid rgba(255,255,255,.15);
+    display:flex; align-items:center; justify-content:center; touch-action:manipulation;
+  }
+  .parrain-emoji:active { transform:scale(.93); }
+  .parrain-nom { font-size:16px; color:rgba(255,255,255,.85); }
+  .replay {
+    margin-top:14px; border:none; border-radius:999px; cursor:pointer;
+    font-family:'Fredoka One',cursive; font-size:17px; color:#2a1c05;
+    background:linear-gradient(145deg,#ffe066,#f0b73f); box-shadow:0 4px 0 #b8860b;
+    padding:10px 22px; touch-action:manipulation;
+  }
+  .replay:active { transform:scale(.94); }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 11 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>👂 Écoute bien !</h1>
+    <p>Le son <b class="cur">on</b>… comme dans <b class="cur">tonton</b> ! Tape le bon son !</p>
+  </div>
+
+  <div class="duel">
+    <div class="son-col">
+      <button class="tile soudee" id="tileAn">an</button>
+      <button class="parrain-emoji" id="maman" aria-label="maman">👩</button>
+      <div class="parrain-nom cur">maman</div>
+    </div>
+    <div class="son-col">
+      <button class="tile soudee" id="tileOn">on</button>
+      <img class="parrain" id="tonton" src="../img/avatars/brachio_joyeux_2.png" alt="tonton brachio"
+           onerror="this.style.display='none'">
+      <div class="parrain-nom cur">tonton</div>
+    </div>
+  </div>
+
+  <button class="replay" id="replay">🔁 Réécouter le son</button>
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  var tileAn = document.getElementById('tileAn');
+  var tileOn = document.getElementById('tileOn');
+  var duel = document.querySelector('.duel');
+  var locked = false;
+
+  /* ── Le son à trouver (données en dur : [on]) ── */
+  function playTarget() {
+    MK.speakSound('on');
+    MK.say('Tape le son « on » !');
+  }
+
+  /* ── Rejouer les 2 sons enchaînés (après erreur) ── */
+  function playBoth() {
+    MK.speak('an… comme maman…', { rate: 0.65 });
+    setTimeout(function () {
+      MK.speak('on… comme tonton !', { rate: 0.65 });
+    }, 2600);
+  }
+
+  tileAn.addEventListener('click', function () {
+    if (locked) return;
+    MK.non(tileAn, 'Ça c\'est « an » comme maman. Écoute la différence : an… on !');
+    playBoth();
+  });
+
+  tileOn.addEventListener('click', function () {
+    if (locked) return;
+    locked = true;
+    MK.win(tileOn, duel);
+    MK.speak('on ! comme ton-ton !', { rate: 0.7 });
+    setTimeout(function () {
+      MK.celebrate('BRAVO ! 🎉', 'tada.mp3');
+      MK.say('Tu as trouvé le son « on » !');
+    }, 1300);
+  });
+
+  /* ── Taps libres sur les parrains : MK.speak du mot ── */
+  document.getElementById('maman').addEventListener('click', function () {
+    MK.pop(this);
+    MK.speakSound('an');
+    setTimeout(function () { MK.speak('maman !', { rate: 0.8 }); }, 900);
+  });
+  document.getElementById('tonton').addEventListener('click', function () {
+    MK.pop(this);
+    MK.speakSound('on');
+    setTimeout(function () { MK.speak('tonton !', { rate: 0.8 }); }, 900);
+  });
+
+  document.getElementById('replay').addEventListener('click', function () {
+    if (locked) return;
+    playTarget();
+  });
+
+  /* Intro */
+  setTimeout(function () {
+    MK.speak('Écoute bien : on… comme tonton !', { rate: 0.7 });
+    setTimeout(playTarget, 2800);
+  }, 600);
+})();
+</script>
+</body>
+</html>

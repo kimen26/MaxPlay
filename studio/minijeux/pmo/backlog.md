@@ -361,6 +361,12 @@ Synthèse REX MJ-21 « Peins les bus! » — 33 commits, 5 causes racines (2026-
 ### L-087 – Merge multi-appareils = unionner histories, pas winner-take-all (sinon perte étoiles)
 **Cloud phase 1 (2026-07-07)** : audit post-build révèle risque perte d'étoiles au merge. Root cause : on prenait `max(record_star_count)` = le record gagnant (meilleur), oubliait les autres records sur d'autres appareils. Exemple : iPad (3 étoiles mj-04) + tablette (2 étoiles mj-04) → merge prend 3, perd 2. **Fix appliqué** : unionner toutes les histories + dédupliquer par game_id → max conservé. **Règle gravée** : jamais winner-take-all en merge multi-source. Appliquer : *union(histories[device1], histories[device2]) → deduplicate(game_id) → max(star_count) par game*.
 
+### L-103 – Mockups design ≠ gabarit prod mj-shell : toujours signaler l'écart
+**Design-compte/lecture (2026-07-19)** : 29 mockups jouables créés en répliquant le style des mockups historiques (bandeau « 🎨 Maquette » maison). Papa Yann relève que le VRAI gabarit (`site/js/mj-shell.js` : header compact, piste golden 4/6/8, étoiles ★★★, `celebrations.js`, panneau règle 🧑‍🔬, mp-theme.css) n'y apparaît pas. **Cause** : la consigne « reprendre les entêtes comme sur compter » renvoyait aux anciens mockups, eux-mêmes antérieurs au gabarit — et l'agent n'a pas proactivement signalé l'écart. **Règle** : ① tout mockup de conception garde le bandeau Maquette (léger, sans tracking) MAIS l'agent DOIT rappeler dans son rapport que le passage en prod = adaptation sur `mj-shell.js` + `mp-theme.css` (L-092) ; ② avant de créer un nouvel artefact UI, vérifier d'abord les gabarits existants (`mj-shell.js`, `mp-theme.css`, `celebrations.js`, `mj-golden.js`) — cf. `studio/minijeux/docs/MECANIQUES.md` socle.
+
+### L-104 – Texte à lire par l'enfant : la fonte est une décision pédagogique figée
+**Design-lecture (2026-07-19)** : placeholder Caveat (handwriting Google Fonts) rejeté par Papa Yann — « pas assez cursif » : pas d'attaches réelles, glyphes non scolaires. Direction validée : cursive scolaire réelle — **Cursif** (Beaumale, FR, attaches + variant Seyès `Cursifl`, intégrée aux mockups), candidats prod **ABCursive** (Montessori, version dashed pour le tracé) et **DN Manuscript** (accents + ligatures). **Règle** : pour tout texte destiné à être LU par l'enfant, la fonte = décision pédagogique à figer (comme L-099 pour accents/ligature Œ) — jamais un choix esthétique par défaut. Vérifier licence embarqué web avant déploiement public.
+
 ---
 
 ## Épics

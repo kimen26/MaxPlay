@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 17 — La Fabrique des Centaines</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── Proportions Montessori strictes ──
+     perle Ø 20px, écart 2px → pas de 22px dans les 2 sens
+     barrette = 10 perles = 218px de long = côté de la plaque 10×10 */
+  :root { --p: 20px; --g: 2px; --cote: calc(10 * var(--p) + 9 * var(--g)); }
+
+  .fabrique {
+    position:relative; margin-top:26px; padding:22px 14px 26px;
+    width:100%; display:flex; flex-direction:column; align-items:center;
+    background:rgba(255,255,255,.04); border:2px solid rgba(255,209,102,.35);
+    border-radius:26px;
+    box-shadow:0 14px 34px rgba(0,0,0,.5), inset 0 0 40px rgba(20,16,60,.6);
+  }
+
+  .barrettes { display:flex; flex-direction:column; gap:8px; align-items:center; }
+
+  /* Cadre de la plaque : apparaît autour des barrettes soudées */
+  .cadre-plaque {
+    position:absolute; top:22px; left:50%; transform:translateX(-50%);
+    width:var(--cote); height:var(--cote);
+    padding:0; border-radius:14px; pointer-events:none; opacity:0;
+    border:4px solid #c99425;
+    box-shadow:0 6px 0 #7a5410, 0 0 34px rgba(255,209,102,.55),
+               inset 0 0 0 2px rgba(255,232,150,.5);
+  }
+  .cadre-plaque.on { opacity:1; animation:mk-pop .45s cubic-bezier(.34,1.56,.64,1) both; }
+
+  .barrette {
+    width:var(--cote); height:var(--p);
+    display:flex; gap:var(--g);
+    background:linear-gradient(180deg,#8a6420,#6d4c14);
+    border-radius:calc(var(--p) / 2);
+    box-shadow:0 3px 6px rgba(0,0,0,.45);
+    transition:transform .8s cubic-bezier(.34,1.1,.5,1);
+  }
+  .perle {
+    width:var(--p); height:var(--p); border-radius:50%; flex:none;
+    background:radial-gradient(circle at 32% 28%, #fff3c4 0 18%, #f7cd5e 45%, #c99425 80%, #a8781a 100%);
+    box-shadow:inset -1px -2px 3px rgba(120,70,10,.45), 0 1px 2px rgba(0,0,0,.4);
+  }
+
+  /* Soudure : chaque barrette i remonte de 6i px → écart final = 2px = pas horizontal */
+  .barrettes.fusion .barrette { transform:translateY(calc(var(--i) * -6px)); }
+  .barrettes.fusion { gap:8px; } /* l'écart visuel résiduel est absorbé par le transform */
+  .barrettes.brille .barrette { animation:mk-glow 1.6s ease-in-out infinite; }
+
+  .label-cent {
+    position:absolute; top:-20px; left:50%; transform:translateX(-50%) scale(0);
+    font-family:'Fredoka One',cursive; font-size:34px; color:#ffe066;
+    text-shadow:0 0 16px rgba(255,209,102,.85), 0 3px 8px rgba(0,0,0,.6);
+    background:rgba(0,0,0,.55); border:2px solid rgba(255,209,102,.6);
+    border-radius:999px; padding:2px 22px; z-index:5; white-space:nowrap;
+  }
+  .label-cent.on { animation:labelPop .45s cubic-bezier(.34,1.56,.64,1) both; }
+  @keyframes labelPop { from{transform:translateX(-50%) scale(0)} to{transform:translateX(-50%) scale(1)} }
+
+  .big-cta { font-size:21px; padding:14px 24px; min-width:300px; margin-top:24px; }
+
+  .recap {
+    min-height:40px; margin-top:18px; text-align:center;
+    font-family:'Fredoka One',cursive; font-size:22px; color:#7fe7c4;
+    text-shadow:0 0 18px rgba(47,191,143,.7);
+    opacity:0; transition:opacity .3s;
+  }
+  .recap.show { opacity:1; animation:mk-msgPop .35s cubic-bezier(.34,1.56,.64,1); }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 17 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🏭 La Fabrique des Centaines</h1>
+    <p>10 barrettes de 10 perles… soude-les pour faire une <b>plaque de 100</b> !</p>
+  </div>
+
+  <div class="fabrique">
+    <div class="barrettes" id="barrettes">
+      <div class="cadre-plaque" id="cadre"></div>
+      <div class="label-cent" id="labelCent">100 !</div>
+    </div>
+  </div>
+
+  <div class="answers">
+    <button class="num-btn big-cta" id="btnSouder">✨ Soude les 10 barrettes !</button>
+  </div>
+
+  <div class="recap" id="recap">10 × 10 = 100 !</div>
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  var barrettes = document.getElementById('barrettes');
+  var cadre = document.getElementById('cadre');
+  var labelCent = document.getElementById('labelCent');
+  var btnSouder = document.getElementById('btnSouder');
+  var recap = document.getElementById('recap');
+  var locked = false;
+
+  /* 10 barrettes de 10 perles */
+  for (var i = 0; i < 10; i++) {
+    var b = document.createElement('div');
+    b.className = 'barrette';
+    b.style.setProperty('--i', i);
+    for (var j = 0; j < 10; j++) {
+      var p = document.createElement('span');
+      p.className = 'perle';
+      b.appendChild(p);
+    }
+    barrettes.appendChild(b);
+  }
+
+  btnSouder.addEventListener('click', function () {
+    if (locked) return;
+    locked = true;
+    btnSouder.disabled = true;
+    btnSouder.style.opacity = '.35';
+    btnSouder.style.pointerEvents = 'none';
+
+    /* Les barrettes glissent et s'empilent */
+    MK.sfx('magie.mp3');
+    barrettes.classList.add('fusion');
+    MK.say('Les 10 barrettes glissent… et se soudent !');
+    MK.speak('Les dix barrettes glissent… et se soudent !', { rate: 0.85 });
+
+    /* La plaque apparaît */
+    setTimeout(function () {
+      MK.sfx('xylophone-monte.mp3');
+      cadre.classList.add('on');
+      labelCent.classList.add('on');
+      barrettes.classList.add('brille');
+    }, 950);
+
+    /* La leçon */
+    setTimeout(function () {
+      MK.say('10 barrettes de 10 perles… ça fait UNE plaque de 100 !');
+      MK.speak('10 barrettes de 10 perles… ça fait UNE plaque de 100 !', { rate: 0.8 });
+      recap.classList.add('show');
+      MK.sfx('waouh.mp3');
+    }, 1600);
+
+    setTimeout(function () {
+      MK.celebrate('CENT ! 🎉', 'tada.mp3');
+    }, 2600);
+  });
+
+  MK.say('Voici 10 barrettes. Chaque barrette a 10 perles !');
+  MK.speak('Voici 10 barrettes. Chaque barrette a 10 perles !', { rate: 0.85 });
+})();
+</script>
+</body>
+</html>

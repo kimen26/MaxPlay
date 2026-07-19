@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 9 — La Fabrique de Mots</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── La machine ── */
+  .machine {
+    margin-top:24px; width:100%; max-width:440px; border-radius:26px; padding:20px 16px;
+    background:linear-gradient(160deg,#3c3c5e,#26263e);
+    border:3px solid rgba(255,209,102,.45);
+    box-shadow:0 14px 34px rgba(0,0,0,.55), inset 0 0 30px rgba(10,10,30,.6);
+    display:flex; flex-direction:column; align-items:center; gap:14px;
+  }
+  .machine.vibre { animation:vibre .5s ease 2; }
+  @keyframes vibre {
+    0%,100%{transform:translateX(0) rotate(0)} 20%{transform:translateX(-5px) rotate(-.6deg)}
+    40%{transform:translateX(5px) rotate(.6deg)} 60%{transform:translateX(-4px)} 80%{transform:translateX(4px)}
+  }
+  .engrenages { font-size:30px; letter-spacing:8px; opacity:.85; }
+  .machine.vibre .engrenages { animation:tourne .5s linear 2; }
+  @keyframes tourne { from{transform:rotate(0)} to{transform:rotate(180deg)} }
+
+  /* tapis roulant */
+  .tapis {
+    width:100%; border-radius:16px; padding:14px 10px; display:flex; gap:14px;
+    justify-content:center; flex-wrap:wrap; position:relative; overflow:hidden;
+    background:repeating-linear-gradient(90deg,#1c1c30 0 26px, #232338 26px 52px);
+    box-shadow:inset 0 4px 10px rgba(0,0,0,.6);
+    animation:tapis-defile 2.4s linear infinite;
+  }
+  @keyframes tapis-defile { from{background-position:0 0} to{background-position:52px 0} }
+
+  /* entrée de la machine : 2 slots */
+  .entree { display:flex; gap:16px; align-items:center; }
+  .entree .plus { font-size:30px; color:#ffd166; font-family:'Fredoka One',cursive; }
+  .machine .tile.slot.filled { background:rgba(255,209,102,.18); color:#ffe066; box-shadow:inset 0 0 0 3px #ffd166, 0 0 18px rgba(255,209,102,.4); }
+  .sortie {
+    min-height:120px; min-width:120px; border-radius:20px; display:flex; align-items:center; justify-content:center;
+    background:rgba(0,0,0,.35); box-shadow:inset 0 0 0 3px rgba(255,255,255,.12);
+    font-size:84px;
+  }
+  .mot-lu {
+    min-height:44px; font-family:'Cursif','Caveat',cursive; font-weight:700; font-size:46px; color:#ffe066;
+    text-shadow:0 0 22px rgba(255,209,102,.7);
+  }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 9 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🏭 La Fabrique de Mots</h1>
+    <p>Fabrique un mot ! Envoie 2 syllabes dans la machine.</p>
+  </div>
+
+  <div class="machine" id="machine">
+    <div class="engrenages">⚙️ ⚙️ ⚙️</div>
+    <div class="entree">
+      <div class="tile slot" id="slot1">?</div>
+      <div class="plus">+</div>
+      <div class="tile slot" id="slot2">?</div>
+    </div>
+    <div class="tapis" id="tapis"></div>
+    <div class="sortie" id="sortie">📦</div>
+    <div class="mot-lu cur" id="motLu"></div>
+  </div>
+
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  var tapis = document.getElementById('tapis');
+  var machine = document.getElementById('machine');
+  var slots = [document.getElementById('slot1'), document.getElementById('slot2')];
+  var sortie = document.getElementById('sortie');
+  var motLu = document.getElementById('motLu');
+
+  var SYLLABES = ['mo', 'to', 'ni', 'lu'];
+  var MOTS = { 'mo+to': { img: '🏍️', mot: 'MOTO', dit: 'mo… to… MOTO !' } };
+
+  var choisi = [], locked = false;
+
+  function buildTapis() {
+    tapis.innerHTML = '';
+    SYLLABES.forEach(function (s) {
+      var b = document.createElement('button');
+      b.className = 'tile';
+      b.textContent = s;
+      b.addEventListener('click', function () { onPick(s, b); });
+      tapis.appendChild(b);
+    });
+  }
+
+  function resetMachine(msg) {
+    choisi = [];
+    slots.forEach(function (s) { s.textContent = '?'; s.classList.remove('filled'); });
+    buildTapis();
+    if (msg) MK.say(msg);
+  }
+
+  function onPick(s, btn) {
+    if (locked) return;
+    /* la tuile entre dans la machine (ordre compte) */
+    MK.sfx('pop-apparition.mp3');
+    var slot = slots[choisi.length];
+    slot.textContent = s;
+    slot.classList.add('filled');
+    MK.pop(slot);
+    MK.speak(s, { rate: 0.7 });
+    btn.disabled = true; btn.style.opacity = '.3'; btn.style.pointerEvents = 'none';
+    choisi.push(s);
+    if (choisi.length === 2) {
+      locked = true;
+      setTimeout(fabriquer, 600);
+    }
+  }
+
+  function fabriquer() {
+    var cle = choisi.join('+');
+    var res = MOTS[cle];
+    machine.classList.add('vibre');
+    if (res) {
+      /* la machine fabrique le mot */
+      MK.sfx('magie.mp3');
+      setTimeout(function () {
+        machine.classList.remove('vibre');
+        sortie.textContent = res.img;
+        MK.pop(sortie);
+        motLu.textContent = 'moto';
+        MK.pop(motLu);
+        MK.speak(res.dit, { rate: 0.7 });
+        setTimeout(function () { MK.celebrate(res.mot + ' ! 🎉', 'tada.mp3'); }, 1200);
+      }, 1100);
+    } else {
+      /* la machine recrache doucement les tuiles */
+      MK.sfx('boing.mp3', 0.45);
+      setTimeout(function () {
+        machine.classList.remove('vibre');
+        slots.forEach(function (s) { MK.wobble(s); });
+        MK.non(slots[0], "Ces deux-là ne font pas un mot qu'on connaît… essaie mo puis to !");
+        MK.speak('essaie mo… puis to…', { rate: 0.7 });
+        setTimeout(function () {
+          locked = false;
+          resetMachine();
+        }, 2200);
+      }, 1100);
+    }
+  }
+
+  buildTapis();
+  MK.say('Fabrique un mot ! Envoie 2 syllabes dans la machine.');
+})();
+</script>
+</body>
+</html>

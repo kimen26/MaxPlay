@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 16 — Le Guichet des Tickets</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── Le guichet ── */
+  .guichet {
+    margin-top:26px; width:100%; background:rgba(255,255,255,.04);
+    border:2px solid rgba(255,209,102,.35); border-radius:26px; padding:20px 16px;
+    display:flex; flex-direction:column; align-items:center; gap:14px;
+    box-shadow:0 14px 34px rgba(0,0,0,.5), inset 0 0 40px rgba(20,16,60,.6);
+  }
+  .enseigne {
+    display:flex; align-items:center; gap:10px;
+    font-family:'Fredoka One',cursive; font-size:20px; color:#ffe066;
+    background:rgba(0,0,0,.45); border:2px solid rgba(255,209,102,.5);
+    border-radius:999px; padding:8px 20px;
+  }
+  .prix { display:flex; gap:6px; }
+
+  /* ── Perles dorées (monnaie) ── */
+  .perle {
+    width:30px; height:30px; border-radius:50%; display:inline-block;
+    background:radial-gradient(circle at 32% 28%, #fff3c4 0 18%, #f7cd5e 45%, #c99425 80%, #a8781a 100%);
+    box-shadow:0 0 10px rgba(255,224,102,.6), 0 3px 6px rgba(0,0,0,.45),
+               inset -2px -3px 5px rgba(120,70,10,.4);
+  }
+  .perle.mini { width:22px; height:22px; }
+  .prix .perle.glow { outline:3px solid rgba(255,224,102,.9); }
+
+  /* ── Fente du guichet : 3 trous à remplir ── */
+  .fente { display:flex; gap:14px; }
+  .trou {
+    width:44px; height:44px; border-radius:50%;
+    background:rgba(0,0,0,.55); box-shadow:inset 0 3px 8px rgba(0,0,0,.7), 0 0 0 2px rgba(255,209,102,.35);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .trou.plein { box-shadow:inset 0 3px 8px rgba(0,0,0,.7), 0 0 0 3px rgba(255,224,102,.9), 0 0 18px rgba(255,209,102,.6); }
+
+  /* ── Le ticket ── */
+  .ticket {
+    display:none; flex-direction:column; align-items:center; gap:2px;
+    background:linear-gradient(145deg,#fff8e1,#ffe082); color:#5d3a00;
+    border-radius:14px; padding:10px 26px; transform:rotate(-3deg);
+    font-family:'Fredoka One',cursive; font-size:18px;
+    box-shadow:0 8px 18px rgba(0,0,0,.45);
+  }
+  .ticket .num { font-size:30px; color:#F58443; }
+  .ticket.show { display:flex; }
+
+  /* ── Le porte-monnaie ── */
+  .bourse {
+    margin-top:20px; display:flex; gap:12px; flex-wrap:wrap; justify-content:center;
+    background:rgba(255,255,255,.05); border:2px dashed rgba(255,209,102,.35);
+    border-radius:22px; padding:14px 18px; max-width:420px;
+  }
+  .bourse::before {
+    content:'👛 Mon porte-monnaie'; width:100%; text-align:center;
+    font-family:'Fredoka One',cursive; font-size:15px; color:rgba(255,224,102,.75);
+  }
+  .perle-btn {
+    min-width:84px; min-height:84px; border:none; border-radius:50%;
+    background:rgba(255,255,255,.05); cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:transform .12s ease, opacity .25s; touch-action:manipulation;
+  }
+  .perle-btn:active { transform:scale(.9); }
+  .perle-btn.depensee { opacity:.18; pointer-events:none; transform:scale(.7); }
+
+  /* ── Bouton valider ── */
+  .cta {
+    font-size:22px; padding:14px 26px; min-width:260px;
+    opacity:.35; pointer-events:none;
+  }
+  .cta.pret { opacity:1; pointer-events:auto; animation:mk-glow 1.4s ease-in-out infinite; }
+
+  /* ── Voie du bus ── */
+  .bus-lane {
+    margin-top:18px; width:100%; min-height:130px; overflow:hidden;
+    display:flex; align-items:center; border-radius:18px;
+    background:linear-gradient(180deg, transparent 55%, rgba(255,255,255,.06) 55%);
+  }
+  .bus { display:inline-block; transform:translateX(-115%); transition:transform 1.7s cubic-bezier(.25,.8,.35,1); }
+  .bus.arrive { transform:translateX(6vw); }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 16 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🎫 Le Guichet des Tickets</h1>
+    <p>Le ticket du bus <b>185</b> coûte <b>3 perles</b>. Tape 3 perles !</p>
+  </div>
+
+  <div class="guichet">
+    <div class="enseigne">🎫 Ticket : <span class="prix" id="prix"></span></div>
+    <div class="fente" id="fente"></div>
+    <div class="ticket" id="ticket">TICKET BUS<span class="num">185</span></div>
+  </div>
+
+  <div class="bourse" id="bourse"></div>
+
+  <div class="answers">
+    <button class="num-btn cta" id="btnValider" disabled>🎫 Prendre le ticket !</button>
+  </div>
+
+  <div class="bus-lane" id="busLane"></div>
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script src="../js/bus-svg.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  var PRIX = 3, TOTAL = 5;
+  var paid = 0, locked = false;
+  var COMPTES = ['', 'une perle !', 'deux perles !', 'trois perles !'];
+
+  var bourse = document.getElementById('bourse');
+  var fente = document.getElementById('fente');
+  var prixEl = document.getElementById('prix');
+  var btnValider = document.getElementById('btnValider');
+  var ticket = document.getElementById('ticket');
+  var busLane = document.getElementById('busLane');
+
+  /* Prix affiché : 3 perles témoins */
+  for (var i = 0; i < PRIX; i++) {
+    var p = document.createElement('span');
+    p.className = 'perle mini';
+    prixEl.appendChild(p);
+  }
+
+  /* Fente : 3 trous */
+  var trous = [];
+  for (var t = 0; t < PRIX; t++) {
+    var tr = document.createElement('div');
+    tr.className = 'trou';
+    fente.appendChild(tr);
+    trous.push(tr);
+  }
+
+  /* Porte-monnaie : 5 perles cliquables */
+  for (var k = 0; k < TOTAL; k++) {
+    var b = document.createElement('button');
+    b.className = 'perle-btn';
+    b.innerHTML = '<span class="perle"></span>';
+    b.setAttribute('aria-label', 'donner une perle');
+    b.addEventListener('click', function () { onPerle(this); });
+    bourse.appendChild(b);
+  }
+
+  function onPerle(btnEl) {
+    if (locked || btnEl.disabled) return;
+    /* 4ème perle avant validation → on ré-enseigne le prix */
+    if (paid >= PRIX) {
+      MK.non(btnEl, 'Le ticket coûte 3 perles, regarde !');
+      Array.prototype.forEach.call(prixEl.children, function (p) {
+        p.classList.remove('glow'); void p.offsetWidth; p.classList.add('glow');
+      });
+      setTimeout(function () {
+        Array.prototype.forEach.call(prixEl.children, function (p) { p.classList.remove('glow'); });
+      }, 1700);
+      return;
+    }
+    /* La perle vole dans la fente */
+    btnEl.disabled = true;
+    btnEl.classList.add('depensee');
+    var trou = trous[paid];
+    trou.innerHTML = '<span class="perle"></span>';
+    trou.classList.add('plein');
+    MK.pop(trou);
+    MK.sfx('piece.mp3');
+    paid++;
+    MK.speak(COMPTES[paid], { rate: 0.8 });
+    if (paid === PRIX) {
+      MK.say('3 perles ! Prends ton ticket !');
+      btnValider.disabled = false;
+      btnValider.classList.add('pret');
+      MK.pop(btnValider);
+    }
+  }
+
+  btnValider.addEventListener('click', function () {
+    if (locked || paid < PRIX) return;
+    locked = true;
+    btnValider.disabled = true;
+    btnValider.classList.remove('pret');
+
+    /* Le ticket apparaît */
+    MK.sfx('pop-apparition.mp3');
+    ticket.classList.add('show');
+    MK.pop(ticket);
+    MK.say('3 perles pour le ticket ! Il t’en reste 2.');
+    MK.speak('3 perles pour le ticket ! Il t’en reste 2 !', { rate: 0.85 });
+
+    /* Le bus 185 arrive */
+    setTimeout(function () {
+      MK.sfx('demarrage-bus.mp3');
+      busLane.innerHTML = '<div class="bus">' + busSVG('#F58443', '#fff', '185', 280) + '</div>';
+      var bus = busLane.firstChild;
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () { bus.classList.add('arrive'); });
+      });
+      setTimeout(function () { MK.sfx('frein-bus.mp3'); }, 1750);
+      setTimeout(function () { MK.celebrate('BON VOYAGE ! 🚌', 'tada.mp3'); }, 2400);
+    }, 1500);
+  });
+
+  MK.say('Le ticket coûte 3 perles. Tape 3 perles !');
+  MK.speak('Le ticket coûte 3 perles. Tape trois perles !', { rate: 0.85 });
+})();
+</script>
+</body>
+</html>

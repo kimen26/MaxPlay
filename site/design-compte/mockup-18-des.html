@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 18 — Les Dés Roulent</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── Les deux dés (constellations façon mockup-6) ── */
+  .des {
+    margin-top:26px; display:flex; align-items:center; gap:16px;
+    background:rgba(255,255,255,.04); border:2px solid rgba(255,209,102,.35);
+    border-radius:26px; padding:22px 18px;
+    box-shadow:0 14px 34px rgba(0,0,0,.5), inset 0 0 40px rgba(20,16,60,.6);
+  }
+  .plus {
+    font-family:'Fredoka One',cursive; font-size:44px; color:#ffe066;
+    text-shadow:0 0 16px rgba(255,209,102,.7);
+  }
+
+  .de {
+    border-radius:24px; padding:8px;
+    background:linear-gradient(145deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
+    border:3px solid rgba(255,209,102,.5);
+    box-shadow:0 8px 20px rgba(0,0,0,.45);
+  }
+  .de.roule { animation:roule .85s cubic-bezier(.3,.7,.4,1); }
+  @keyframes roule {
+    0%   { transform:translateY(-46px) rotate(-160deg) scale(1.05); }
+    35%  { transform:translateY(4px)  rotate(-40deg); }
+    60%  { transform:translateY(-18px) rotate(24deg); }
+    80%  { transform:translateY(2px)  rotate(-8deg); }
+    100% { transform:translateY(0)    rotate(0); }
+  }
+
+  /* Constellation de pips — copié du mockup 6 */
+  .constellation { position:relative; width:150px; height:150px; border-radius:18px; transition:background .4s, box-shadow .4s; }
+  .constellation svg { position:absolute; inset:0; width:100%; height:100%; }
+  .constellation .halo {
+    position:absolute; inset:-14px; border-radius:26px; pointer-events:none;
+    background:radial-gradient(circle, rgba(255,224,102,.28), transparent 68%);
+    opacity:0; transform:scale(.6);
+  }
+  .constellation.lit .halo { animation:haloIn .5s cubic-bezier(.34,1.4,.64,1) both; }
+  @keyframes haloIn { from{opacity:0; transform:scale(.6)} to{opacity:1; transform:scale(1)} }
+  .constellation.lit { box-shadow:0 0 34px rgba(255,209,102,.4); }
+
+  .pip {
+    position:absolute; width:30px; height:37px; transform:translate(-50%,-50%);
+    border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+    background:
+      radial-gradient(circle at 34% 30%, rgba(255,255,255,.9) 0 3px, transparent 4px),
+      linear-gradient(160deg,#fff3cf 0%, #f5d789 70%, #e2b95e 100%);
+    box-shadow:0 0 12px rgba(255,224,102,.75), 0 0 26px rgba(255,209,102,.35), 0 4px 8px rgba(0,0,0,.4);
+    animation:pipTw 3s ease-in-out infinite;
+  }
+  @keyframes pipTw { 0%,100%{filter:brightness(.92)} 50%{filter:brightness(1.12)} }
+  .constellation.lit .pip { animation:pipBlaze .45s ease both; }
+  @keyframes pipBlaze { from{transform:translate(-50%,-50%) scale(.7)} 60%{transform:translate(-50%,-50%) scale(1.25)} to{transform:translate(-50%,-50%) scale(1)} }
+
+  /* ── Feedback regroupement (pattern mockup 6) ── */
+  .feedback {
+    min-height:64px; margin-top:24px; display:flex; align-items:center; justify-content:center; gap:14px;
+    font-family:'Fredoka One',cursive; color:#ffe066; text-align:center; flex-wrap:wrap;
+  }
+  .fb-num { font-size:52px; text-shadow:0 0 20px rgba(255,209,102,.8); display:none; }
+  .fb-num.show { display:inline-block; animation:fbPop .45s cubic-bezier(.34,1.56,.64,1) both; }
+  .fb-word { font-size:26px; color:rgba(255,255,255,.85); display:none; }
+  .fb-word.show { display:inline-block; animation:fbPop .45s cubic-bezier(.34,1.56,.64,1) both; }
+  @keyframes fbPop { from{transform:scale(.3); opacity:0} to{transform:scale(1); opacity:1} }
+  .fb-num.total { color:#7fe7c4; text-shadow:0 0 24px rgba(47,191,143,.9); }
+
+  .relance {
+    margin-top:14px; border:none; border-radius:999px; cursor:pointer;
+    font-family:'Fredoka One',cursive; font-size:17px; color:#2a1c05;
+    background:linear-gradient(145deg,#ffe066,#f0b73f); box-shadow:0 4px 0 #b8860b;
+    padding:12px 24px; min-height:52px; touch-action:manipulation;
+  }
+  .relance:active { transform:scale(.94); }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 18 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🎲 Les Dés Roulent</h1>
+    <p>Combien de points <b>en tout</b> ? Regarde les formes, comme sur un dé !</p>
+  </div>
+
+  <div class="des">
+    <div class="de" id="deA"><div class="constellation" id="grpA"></div></div>
+    <div class="plus">+</div>
+    <div class="de" id="deB"><div class="constellation" id="grpB"></div></div>
+  </div>
+
+  <div class="feedback" id="feedback"></div>
+  <div class="answers" id="answers"></div>
+  <button class="relance" id="relance">🎲 Relance les dés !</button>
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  var VAL_A = 4, VAL_B = 2, TOTAL = VAL_A + VAL_B;
+  var CHOICES = [5, 6, 7];
+  /* Configurations canoniques de dé (positions en % dans la constellation) */
+  var PATTERNS = {
+    4: { pos: [[26,26],[74,26],[74,74],[26,74]],
+         lines: [[[26,26],[74,26],[74,74],[26,74],[26,26]]] },
+    2: { pos: [[28,28],[72,72]],
+         lines: [[[28,28],[72,72]]] }
+  };
+  var locked = false;
+
+  var deA = document.getElementById('deA');
+  var deB = document.getElementById('deB');
+  var grpA = document.getElementById('grpA');
+  var grpB = document.getElementById('grpB');
+  var answersEl = document.getElementById('answers');
+
+  function buildConstellation(el, val) {
+    var cfg = PATTERNS[val];
+    var lines = cfg.lines.map(function (pts) {
+      return '<polyline points="' + pts.map(function (p) { return p.join(','); }).join(' ') +
+        '" fill="none" stroke="rgba(255,224,102,.35)" stroke-width="1.2" stroke-dasharray="3 4" stroke-linecap="round"/>';
+    }).join('');
+    el.innerHTML = '<div class="halo"></div>' +
+      '<svg viewBox="0 0 100 100" preserveAspectRatio="none">' + lines + '</svg>';
+    cfg.pos.forEach(function (p, i) {
+      var pip = document.createElement('div');
+      pip.className = 'pip';
+      pip.style.left = p[0] + '%';
+      pip.style.top = p[1] + '%';
+      pip.style.animationDelay = (-i * 0.6) + 's';
+      el.appendChild(pip);
+    });
+  }
+
+  function rouleDes() {
+    MK.sfx('boing.mp3');
+    [deA, deB].forEach(function (d, i) {
+      d.classList.remove('roule'); void d.offsetWidth;
+      setTimeout(function () { d.classList.add('roule'); }, i * 120);
+    });
+  }
+
+  buildConstellation(grpA, VAL_A);
+  buildConstellation(grpB, VAL_B);
+  rouleDes();
+
+  CHOICES.forEach(function (n) {
+    var b = document.createElement('button');
+    b.className = 'num-btn';
+    b.textContent = n;
+    b.setAttribute('aria-label', n + ' points');
+    b.addEventListener('click', function () { onAnswer(n, b); });
+    answersEl.appendChild(b);
+  });
+
+  function fbStep(html, cls) {
+    var f = document.getElementById('feedback');
+    var span = document.createElement('span');
+    span.className = cls;
+    span.innerHTML = html;
+    f.appendChild(span);
+    void span.offsetWidth;
+    span.classList.add('show');
+  }
+
+  function onAnswer(n, btn) {
+    if (locked) return;
+    if (n !== TOTAL) {
+      MK.non(btn, 'Regarde les formes, comme sur un dé !');
+      MK.speak('Regarde les formes, comme sur un dé !', { rate: 0.85 });
+      return;
+    }
+    locked = true;
+    MK.win(btn, answersEl);
+    /* Feedback par REGROUPEMENT : chaque dé s'illumine EN BLOC, jamais 1 par 1 */
+    setTimeout(function () {
+      grpA.classList.add('lit');
+      fbStep(VAL_A + ' !', 'fb-num');
+      MK.sfx('magie.mp3');
+      MK.speak('4 !', { rate: 0.8 });
+    }, 350);
+    setTimeout(function () {
+      grpB.classList.add('lit');
+      fbStep('et', 'fb-word');
+      fbStep(VAL_B + '…', 'fb-num');
+      MK.sfx('magie.mp3');
+      MK.speak('et 2 !', { rate: 0.8 });
+    }, 1400);
+    setTimeout(function () {
+      fbStep('ça fait', 'fb-word');
+      fbStep(TOTAL + ' !', 'fb-num total');
+      MK.say('4 et 2… ça fait 6 ! 🎉');
+      MK.speak('ça fait 6 !', { rate: 0.8 });
+      MK.sfx('waouh.mp3');
+    }, 2450);
+    setTimeout(function () {
+      MK.celebrate('6 ! BRAVO ! 🎲', 'tada.mp3');
+    }, 3200);
+  }
+
+  document.getElementById('relance').addEventListener('click', function () {
+    if (locked) return;
+    rouleDes();
+  });
+
+  MK.say('Les dés ont roulé ! Combien de points en tout ?');
+})();
+</script>
+</body>
+</html>

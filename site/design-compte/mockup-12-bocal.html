@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 12 — Le Bocal d'Œufs</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── La scène : bocal + zone de rangement ── */
+  .scene {
+    position:relative; margin-top:22px; width:100%; max-width:480px; height:560px;
+    background:rgba(255,255,255,.04); border:2px solid rgba(255,209,102,.35); border-radius:26px;
+    box-shadow:0 14px 34px rgba(0,0,0,.5), inset 0 0 40px rgba(20,16,60,.6); overflow:hidden;
+  }
+  .bocal {
+    position:absolute; left:50%; top:26px; transform:translateX(-50%);
+    width:230px; height:250px;
+    background:rgba(180,220,255,.09); border:3px solid rgba(180,220,255,.45);
+    border-radius:24px 24px 80px 80px / 24px 24px 60px 60px;
+    box-shadow:inset 0 0 40px rgba(180,220,255,.14), 0 10px 24px rgba(0,0,0,.4);
+    pointer-events:none;
+  }
+  .bocal .couvercle {
+    position:absolute; left:50%; top:-20px; transform:translateX(-50%);
+    width:150px; height:22px; border-radius:10px;
+    background:linear-gradient(180deg,#ffe066,#e0a83c); box-shadow:0 4px 0 #b8860b;
+  }
+  .bocal .reflet {
+    position:absolute; left:18px; top:26px; width:20px; height:120px; border-radius:12px;
+    background:linear-gradient(180deg, rgba(255,255,255,.35), transparent);
+  }
+
+  /* ── Les œufs dorés (façon pips du mockup 6, en petit) ── */
+  .oeuf {
+    position:absolute; width:24px; height:30px;
+    border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+    background:
+      radial-gradient(circle at 34% 30%, rgba(255,255,255,.9) 0 2px, transparent 3px),
+      linear-gradient(160deg,#fff3cf 0%, #f5d789 70%, #e2b95e 100%);
+    box-shadow:0 2px 5px rgba(0,0,0,.4);
+    transition:left .8s cubic-bezier(.4,.1,.3,1), top .8s cubic-bezier(.4,.1,.3,1), box-shadow .3s;
+  }
+  .oeuf.lit {
+    box-shadow:0 0 14px rgba(255,224,102,.95), 0 0 28px rgba(255,209,102,.55), 0 2px 5px rgba(0,0,0,.4);
+  }
+
+  /* ── Gros compteur parlé ── */
+  .compteur {
+    position:absolute; left:50%; bottom:14px; transform:translateX(-50%);
+    font-family:'Fredoka One',cursive; font-size:58px; color:#ffe066;
+    text-shadow:0 0 24px rgba(255,209,102,.8); min-height:70px; min-width:120px; text-align:center;
+  }
+  .compteur.pop { animation:compteurPop .4s cubic-bezier(.34,1.56,.64,1); }
+  @keyframes compteurPop { from{transform:translateX(-50%) scale(.3); opacity:0} to{transform:translateX(-50%) scale(1); opacity:1} }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 12 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🫙 Le Bocal d'Œufs</h1>
+    <p>À peu près combien d'œufs dans le bocal ?</p>
+  </div>
+
+  <div class="scene" id="scene">
+    <div class="bocal" id="bocal">
+      <div class="couvercle"></div>
+      <div class="reflet"></div>
+    </div>
+    <div class="compteur" id="compteur"></div>
+  </div>
+
+  <div class="answers" id="answers"></div>
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  var NB = 30;
+  var CHOIX = [10, 20, 30];
+  var MOTS = ['dix !', 'vingt !', 'trente !'];
+
+  var scene = document.getElementById('scene');
+  var bocal = document.getElementById('bocal');
+  var compteur = document.getElementById('compteur');
+  var answersEl = document.getElementById('answers');
+  var oeufs = [];
+  var locked = false;
+
+  // Positions initiales : dans le bocal (rect mesuré après layout)
+  function posInitiales() {
+    var sw = scene.clientWidth;
+    var bx = (sw - 230) / 2; // bocal centré, 230px de large
+    var positions = [];
+    for (var i = 0; i < NB; i++) {
+      positions.push({
+        x: bx + 22 + Math.random() * (230 - 70),
+        y: 26 + 60 + Math.random() * (250 - 110)
+      });
+    }
+    return positions;
+  }
+
+  // Positions finales : 3 paquets de 10 en rangées sous le bocal
+  function posFinales() {
+    var sw = scene.clientWidth;
+    var pas = 32, marge = (sw - 10 * pas) / 2;
+    var positions = [];
+    for (var i = 0; i < NB; i++) {
+      var paquet = Math.floor(i / 10), col = i % 10;
+      positions.push({
+        x: marge + col * pas + 4,
+        y: 320 + paquet * 52
+      });
+    }
+    return positions;
+  }
+
+  var init = posInitiales();
+  for (var i = 0; i < NB; i++) {
+    var o = document.createElement('div');
+    o.className = 'oeuf';
+    o.style.left = init[i].x + 'px';
+    o.style.top = init[i].y + 'px';
+    scene.appendChild(o);
+    oeufs.push(o);
+  }
+
+  CHOIX.forEach(function (n) {
+    var b = document.createElement('button');
+    b.className = 'num-btn';
+    b.textContent = n;
+    b.setAttribute('aria-label', 'à peu près ' + n + ' œufs');
+    b.addEventListener('click', function () { onAnswer(n, b); });
+    answersEl.appendChild(b);
+  });
+
+  function onAnswer(n, btn) {
+    if (locked) return;
+    locked = true;
+    Array.prototype.forEach.call(answersEl.children, function (b) { b.disabled = true; });
+    if (n === NB) btn.classList.add('win');
+    MK.say('Sortons les œufs pour voir !');
+    MK.sfx('pop-apparition.mp3');
+
+    // Les œufs se rangent en 3 paquets de 10
+    var fin = posFinales();
+    oeufs.forEach(function (o, i) {
+      setTimeout(function () {
+        o.style.left = fin[i].x + 'px';
+        o.style.top = fin[i].y + 'px';
+      }, i * 30);
+    });
+
+    // Puis décompte parlé paquet par paquet : 10 ! 20 ! 30 !
+    setTimeout(function () { compte(0, n); }, 30 * NB + 900);
+  }
+
+  function compte(p, choix) {
+    if (p < 3) {
+      for (var k = p * 10; k < p * 10 + 10; k++) oeufs[k].classList.add('lit');
+      compteur.textContent = (p + 1) * 10 + ' !';
+      MK.pop(compteur);
+      MK.sfx('clochette.mp3', 0.35);
+      MK.speak(MOTS[p]);
+      setTimeout(function () { compte(p + 1, choix); }, 900);
+      return;
+    }
+    // Bilan
+    setTimeout(function () {
+      if (choix === NB) {
+        MK.say('C\'était 30 ! Tu as vu juste !');
+        MK.speak('C\'était trente ! Bravo !');
+        setTimeout(function () { MK.celebrate('BRAVO ! 🎉', 'tada.mp3'); }, 800);
+      } else {
+        MK.say('C\'était 30 ! Tu vois, ça fait 3 paquets de 10 !');
+        MK.speak('C\'était trente ! Tu vois, ça fait trois paquets de dix !');
+        MK.sfx('waouh.mp3');
+      }
+    }, 500);
+  }
+
+  setTimeout(function () {
+    MK.speak('À peu près combien d\'œufs dans le bocal ?');
+  }, 500);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lecture — 19 concepts de jeux de lecture</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  body {
+    font-family:'Nunito',sans-serif; font-weight:700; color:#fff;
+    min-height:100dvh;
+    background:
+      radial-gradient(1000px 500px at 80% -10%, rgba(255,209,102,.12), transparent 60%),
+      radial-gradient(800px 500px at 10% 110%, rgba(47,191,143,.12), transparent 60%),
+      linear-gradient(160deg,#16122b 0%, #1d1638 55%, #12101f 100%);
+    display:flex; justify-content:center;
+    padding:28px 16px 60px;
+  }
+  .wrap { width:100%; max-width:560px; }
+  header { text-align:center; margin-bottom:28px; }
+  .kicker {
+    display:inline-block; font-size:12px; font-weight:900; letter-spacing:2px;
+    color:#ffd166; text-transform:uppercase;
+    border:1px solid rgba(255,209,102,.4); border-radius:999px; padding:6px 16px;
+    background:rgba(255,209,102,.08); margin-bottom:14px;
+  }
+  h1 { font-family:'Fredoka One',cursive; font-size:clamp(30px,7vw,42px); letter-spacing:1px;
+       background:linear-gradient(90deg,#ffd166,#ffe066,#2fbf8f); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  .sub { margin-top:10px; color:rgba(255,255,255,.75); font-size:15px; line-height:1.5; }
+  .card {
+    display:block; text-decoration:none; color:#fff;
+    background:rgba(255,255,255,.05);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:22px; padding:20px; margin-bottom:16px;
+    transition:transform .18s ease, border-color .18s ease, background .18s ease;
+  }
+  .card:hover { transform:translateY(-3px); border-color:rgba(255,209,102,.55); background:rgba(255,255,255,.08); }
+  .card-top { display:flex; align-items:center; gap:14px; margin-bottom:8px; }
+  .num {
+    flex:0 0 52px; height:52px; border-radius:16px;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fredoka One',cursive; font-size:22px; color:#1a1408;
+    background:linear-gradient(145deg,#ffe066,#f5b942);
+    box-shadow:0 4px 12px rgba(255,209,102,.3);
+  }
+  h2 { font-family:'Fredoka One',cursive; font-size:21px; letter-spacing:.5px; }
+  .pitch { color:#ffd166; font-size:14px; font-weight:900; margin-bottom:6px; }
+  .how { color:rgba(255,255,255,.7); font-size:13.5px; line-height:1.5; }
+  .how b { color:#2fbf8f; }
+  .series {
+    display:flex; align-items:center; gap:12px; margin:30px 0 18px;
+    font-family:'Fredoka One',cursive; font-size:17px; letter-spacing:1px; color:#ffe066;
+  }
+  .series::before, .series::after {
+    content:""; flex:1; height:1px;
+    background:linear-gradient(90deg,transparent,rgba(255,209,102,.45),transparent);
+  }
+  .series small { display:block; font-family:'Nunito',sans-serif; font-size:12px; font-weight:700; letter-spacing:0; color:rgba(255,255,255,.55); margin-top:3px; }
+  .go {
+    display:inline-block; margin-top:12px; font-size:13px; font-weight:900;
+    color:#0e2b22; background:linear-gradient(145deg,#2fbf8f,#00c47a);
+    border-radius:999px; padding:8px 18px;
+  }
+  footer { text-align:center; margin-top:26px; color:rgba(255,255,255,.4); font-size:12px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="kicker">🎨 Maquettes de démonstration</span>
+    <h1>Lecture 📖🚌</h1>
+    <p class="sub">19 concepts de jeux de lecture pour Max, du son au livre, en 6 familles.<br>
+    Démos jouables — 1 phase prédéfinie. Textes enfants en cursive scolaire (Cursif, attaches réelles).</p>
+  </header>
+
+  <div class="series"><span>A. Conscience phonologique<small>Entendre les sons et les rimes avant de lire.</small></span></div>
+
+  <a class="card" href="mockup-01-chasse-son.html">
+    <div class="card-top"><div class="num">01</div><h2>La Chasse au Son 🔊</h2></div>
+    <p class="pitch">Trouve le mot qui commence par le son !</p>
+    <p class="how">Modèle : <b>discrimination auditive</b>. Un son est joué, l'enfant tape l'image qui commence par ce son — aucune lettre à lire.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <a class="card" href="mockup-02-rime-express.html">
+    <div class="card-top"><div class="num">02</div><h2>Rime Express 🚂</h2></div>
+    <p class="pitch">Ça rime ou pas ? Le train n'attend pas !</p>
+    <p class="how">Modèle : <b>tri de rimes</b>. Des mots-images défilent ; l'enfant fait monter dans le wagon ceux qui riment avec le mot-chef.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <div class="series"><span>B. Lettres &amp; cursive<small>Reconnaître, tracer et nommer les lettres en cursive.</small></span></div>
+
+  <a class="card" href="mockup-03-clavier.html">
+    <div class="card-top"><div class="num">03</div><h2>Le Clavier de l'Alphabet 🎹</h2></div>
+    <p class="pitch">Chaque touche chante sa lettre !</p>
+    <p class="how">Modèle : <b>exploration libre</b>. Un clavier de lettres cursives ; chaque tap dit le son de la lettre — pas d'ordre imposé.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <a class="card" href="mockup-04-escalier.html">
+    <div class="card-top"><div class="num">04</div><h2>L'Escalier des Sons 🪜</h2></div>
+    <p class="pitch">Monte marche après marche, son après son !</p>
+    <p class="how">Modèle : <b>suite ordonnée</b>. Les lettres forment un escalier ; l'enfant tape la suivante pour faire monter le dino.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <a class="card" href="mockup-05-rugueuse.html">
+    <div class="card-top"><div class="num">05</div><h2>La Lettre Rugueuse ✋</h2></div>
+    <p class="pitch">Trace la lettre comme sur le papier de verre !</p>
+    <p class="how">Modèle : <b>tracé Montessori</b>. Le doigt suit le tracé cursive avec guides ; la lettre « rugueuse » se colore au fil du geste.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <a class="card" href="mockup-06-dino-sons.html">
+    <div class="card-top"><div class="num">06</div><h2>Le Dino qui dit les Sons 🦕</h2></div>
+    <p class="pitch">Nourris le dino avec la bonne lettre !</p>
+    <p class="how">Modèle : <b>son → graphème</b>. Le dino prononce un son ; l'enfant lui donne la lettre cursive correspondante.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <a class="card" href="mockup-07-3-graphies.html">
+    <div class="card-top"><div class="num">07</div><h2>Cache-cache des 3 Graphies 🔤</h2></div>
+    <p class="pitch">Cursive, script, capitale : c'est la même lettre !</p>
+    <p class="how">Modèle : <b>correspondance de formes</b>. Retrouve les 3 écritures d'une même lettre cachées sous les cartes.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <div class="series"><span>C. Syllabes &amp; mots<small>Assembler les sons : fusion syllabique puis lecture de mots.</small></span></div>
+
+  <a class="card" href="mockup-08-bus-syllabes.html">
+    <div class="card-top"><div class="num">08</div><h2>Le Bus des Syllabes 🚍</h2></div>
+    <p class="pitch">BA + BY = bébé dans le bus !</p>
+    <p class="how">Modèle : <b>fusion syllabique incarnée</b>. Deux syllabes montent dans le bus et se soudent en un mot, dit à voix haute.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <a class="card" href="mockup-09-fabrique.html">
+    <div class="card-top"><div class="num">09</div><h2>La Fabrique de Mots 🏭</h2></div>
+    <p class="pitch">La machine assemble les sons toute seule !</p>
+    <p class="how">Modèle : <b>assemblage lettre par lettre</b>. Les lettres défilent sur un tapis, se soudent une à une, et le mot apparaît.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <a class="card" href="mockup-10-tuiles-soudees.html">
+    <div class="card-top"><div class="num">10</div><h2>Les Tuiles Soudées 🔥</h2></div>
+    <p class="pitch">« on » ne se casse jamais !</p>
+    <p class="how">Modèle : <b>graphèmes complexes en blocs</b>. Le son « on » est une tuile indissociable ; l'enfant soude les tuiles pour lire « tonton ».</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <a class="card" href="mockup-11-confusions.html">
+    <div class="card-top"><div class="num">11</div><h2>Les Confusions Pièges 🪤</h2></div>
+    <p class="pitch">b ou d ? p ou q ? Attention au piège !</p>
+    <p class="how">Modèle : <b>discrimination visuelle</b>. Des lettres miroirs se ressemblent ; l'enfant repère la bonne orientation.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <a class="card" href="mockup-12-alphabet-mobile.html">
+    <div class="card-top"><div class="num">12</div><h2>L'Alphabet Mobile 🧩</h2></div>
+    <p class="pitch">Construis le mot avec les lettres mobiles !</p>
+    <p class="how">Modèle : <b>alphabet mobile Montessori</b>. L'enfant choisit et pose les lettres cursives pour écrire un mot entendu.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <div class="series"><span>D. Mot → sens<small>Comprendre ce qu'on lit : le mot renvoie à une image, un nom, un sens.</small></span></div>
+
+  <a class="card" href="mockup-13-mot-image.html">
+    <div class="card-top"><div class="num">13</div><h2>Mot → Image 🖼️</h2></div>
+    <p class="pitch">Lis le mot, trouve l'image !</p>
+    <p class="how">Modèle : <b>lecture compréhension</b>. Un mot cursive est affiché ; l'enfant tape l'image correspondante parmi 3.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <a class="card" href="mockup-14-loup.html">
+    <div class="card-top"><div class="num">14</div><h2>Le Loup Chuchote 🐺</h2></div>
+    <p class="pitch">Le loup chuchote un mot… lis-le pour le nourrir !</p>
+    <p class="how">Modèle : <b>lecture à voix haute</b>. Le loup montre un mot ; l'enfant le lit (ou le fait vérifier) et le loup se régale.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <a class="card" href="mockup-15-drapeaux.html">
+    <div class="card-top"><div class="num">15</div><h2>Les Drapeaux Noms 🚩</h2></div>
+    <p class="pitch">Chaque pays a son nom écrit !</p>
+    <p class="how">Modèle : <b>mots-référents de ses passions</b>. L'enfant associe les noms de pays (Brésil !) à leurs drapeaux.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <div class="series"><span>E. Phrases &amp; lecture fonctionnelle<small>Lire une phrase, une consigne, un panneau : lire pour AGIR.</small></span></div>
+
+  <a class="card" href="mockup-16-phrase.html">
+    <div class="card-top"><div class="num">16</div><h2>La Phrase qui Roule 🚌</h2></div>
+    <p class="pitch">Remets les mots dans l'ordre, et le bus démarre !</p>
+    <p class="how">Modèle : <b>construction de phrase</b>. 4 mots mélangés à replacer dans les sièges du 185 ; phrase complète = départ du bus.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <a class="card" href="mockup-17-chef-gare.html">
+    <div class="card-top"><div class="num">17</div><h2>Le Chef de Gare 🚂</h2></div>
+    <p class="pitch">Lis la consigne, fais ce qu'elle dit !</p>
+    <p class="how">Modèle : <b>lecture fonctionnelle</b>. Une consigne écrite (« Pose 3 œufs rouges ») doit être lue et exécutée — l'erreur resurligne le mot-clé.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <a class="card" href="mockup-18-panneau.html">
+    <div class="card-top"><div class="num">18</div><h2>Le Panneau du 185 🚏</h2></div>
+    <p class="pitch">Où va le 185 ? Lis le panneau !</p>
+    <p class="how">Modèle : <b>lecture utilitaire en CAPITALES</b> (exception assumée : pont vers le monde réel RATP). L'enfant lit la direction sur le poteau d'arrêt.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <div class="series"><span>F. Histoires<small>Lire ensemble, à deux voix, le plaisir du premier livre.</small></span></div>
+
+  <a class="card" href="mockup-19-deux-voix.html">
+    <div class="card-top"><div class="num">19</div><h2>Lecture à Deux Voix 📖</h2></div>
+    <p class="pitch">Papa lit les phrases grises, Max lit les dorées !</p>
+    <p class="how">Modèle : <b>lecture partagée</b>. Une mini-histoire en 4 phrases alternées ; celles de Max se lisent mot à mot, avec aide 🔊 qui épelle.</p>
+    <span class="go">Voir la maquette →</span>
+  </a>
+
+  <footer>MaxPlay — maquettes front-end autonomes · aucune donnée enregistrée</footer>
+</div>
+</body>
+</html>

@@ -96,4 +96,37 @@ Conséquences sur le parcours lecture (ordre d'accès, reprise dans la spec menu
 - **Police cursive prod** : ABCursive vs DN Manuscript vs Cursif (+ licence web) — Cursif en place dans les démos.
 - **Noms des copains-hôtes** : proposition dans la spec menu, à valider.
 
-_Compilé 2026-07-19 (soir) — source : retours chat Papa Yann + 3 screens (bus 162, traçage « a », Chef de Gare)._
+## 6. Arbitrages jeux prod — commentaires Supabase (extraction 2026-07-20)
+
+Source : [`../../docs/specs/2026-07-20-commentaires-supabase-mj.md`](../../docs/specs/2026-07-20-commentaires-supabase-mj.md)
+(15 commentaires, `source='comment'`). Réconciliés avec le challenge de l'audit menu §10 —
+**les verdicts de Papa Yann priment**. Intégrés dans la spec menu v0.2 §4.
+
+| Jeu | Verdict PY | Diff vs audit | Intégration |
+|-----|-----------|---------------|-------------|
+| mj-09 Trie les bus | ✅ garder + **prioritaire lecture** | ≠ audit (fusion→08) | Devient le **moteur de tri générique multi-asset** ; variante lettres **cursives/scripts/majuscules** (différencier b/d/h/j/k) = le « grand tri des lettres » de Galli #2 |
+| mj-18 Tubes de couleurs | ✅ garder (adoré, jusqu'à 8-9 tubes) | = audit | → **Vélo** (réflexion/dextérité, recatégorisé par PY), polir design |
+| mj-21 Peins les bus | ✅ garder + étendre | — | → Para ; variantes palettes 1/2/3 couleurs, coloriage dino atelier/avatar |
+| mj-24 Trouve le dino | ✅ garder + polir | — | Son d'erreur rigolo (prout), dino détouré récompense 1er coup, animation finale + applaudissements, + de cases |
+| mj-25 Pareil pas pareil | 🗑️ « CA DEGAGE » | ≈ audit (fusion) | Supprimé ; idée « Où est Charly dino » consignée |
+| mj-26 Compte les dinos | 🗑️ | = audit | Supprimé ; son idée **dé/domino à ombres dino** → constellations de Spino #2 |
+| mj-27 Lis le nom du dino | 🔀 fusionner | = audit | → Galli #7 (moteur mots) : découpage syllabes, **audio retiré** (1ʳᵉ syllabe max), vraies photos, 🐛 images cassées |
+| mj-28 Lampe paléontologue | ✅ garder | — | + bruit/objets, lampe plus petite/forte ; **soulève la question de fonte globale** (→ spec §6.1) |
+| mj-29 Fabrique de noms | 🗑️ | = audit | Supprimé (doublon, pas fluide) |
+| mj-30 Range par taille | ✅ **bonus avancé** | ≠ audit (séquence) | Hors séquence, réservé niveau fan |
+| mj-31 Voyage du temps | ✅ garder (3★ de Max !) | — | Variante continents demandée ; 🐛 **SVG continents à refaire** |
+| mj-32 Atelier coloriage | ✅ garder | — | 🐛 galerie **JSON zones/couleurs non compressé** ; quotas 3 gratuit / 5-10 compte ; jeu générique sans ★ |
+| mj-33 Memory des ombres | 🗑️ | ≠ audit (garder) | Supprimé ; **memory = moteur générique multi-thèmes** (dinos, véhicules, animaux…) à regrouper |
+| mj-40 Tangram | 🧪 à tester | ≠ audit (🗑️) | Repêché : « il fonctionne enfin » → tester avec Max ; corde logique/géométrie chez Vélo |
+| mj-41 Tuiles dinos | 🕐 au chaud | — | 🐛 images cassées, difficulté nulle → **pas affiché en V1** |
+
+**Points notables :**
+- La purge est plus douce que l'audit sur 3 jeux (mj-30 bonus, mj-40 repêché, mj-18 confirmé) et plus dure sur 2 (mj-33 supprimé, mj-25 confirmé).
+- **mj-09 est la surprise** : jugé « prioritaire » — sa mécanique de tri devient une brique transverse (lettres → Galli, couleurs → Para/Vélo).
+- Question transverse ouverte : **politique de fonte** (majuscule/script vs cursive, bascule in game ?) — cf. spec §6.1.
+- ⚠️ Extraction partielle : uniquement `source='comment'`. Les notes saisies via l'UI revue (❓) seraient en `source='review'` → extraction complémentaire à demander si c'est le cas.
+- ⚠️ Les 27 autres jeux prod n'ont pas de commentaire → arbitrages de l'audit §10 toujours provisoires pour eux.
+
+---
+
+_Compilé 2026-07-19 (soir), §6 ajoutée 2026-07-20 — source : retours chat Papa Yann + 3 screens (bus 162, traçage « a », Chef de Gare) + extraction Supabase._

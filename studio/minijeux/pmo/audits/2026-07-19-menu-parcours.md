@@ -254,10 +254,10 @@ Chiffres à affiner avec la revue commentaires de Papa Yann (source de vérité)
 
 ## 12. Points en suspens (suivi)
 
-- **Revue des jeux par Papa Yann** : commentaires Supabase par jeu → alimente le triage
-  (phase 0). ⚠️ Lecture des annotations : RLS = seul le parent authentifié voit ses lignes ;
-  la clé anon seule renvoie `[]`. La lecture agent passe par le MCP Supabase (Claude Code)
-  ou un accès dédié à prévoir pour Kimi Code.
+- **Revue des jeux par Papa Yann** : commentaires Supabase extraits 2026-07-20
+  ([`../../../docs/specs/2026-07-20-commentaires-supabase-mj.md`](../../../docs/specs/2026-07-20-commentaires-supabase-mj.md))
+  → arbitrages intégrés : triage POC §6 + spec menu v0.2. ⚠️ 15 jeux commentés sur 42
+  (`source='comment'` seulement — vérifier `source='review'`).
 - **Noms & personnalités des hôtes** (Galli, Spino…) : à finaliser avec le pôle narration.
 - **Relique au-dessus des étoiles** : idée consignée, à concevoir plus tard.
 - **Police cursive prod** : ABCursive vs DN Manuscript vs Cursif (licence web à trancher).

@@ -1,6 +1,6 @@
 <!-- MIROIR de CLAUDE.md — point d'entrée Kimi Code (AGENTS.md) et autres agents non-Claude.
      CLAUDE.md reste la SOURCE : toute modif se fait là-bas, puis régénérer ce fichier à l'identique
-     (seul ce bandeau diffère). -->
+     (seul ce bandeau diffère). GÉNÉRÉ par .claude/hooks/sync-agents-md.py — ne pas éditer à la main. -->
 
 # MaxPlay — Jeu éducatif & Univers narratif pour Max (3.5-4 ans)
 

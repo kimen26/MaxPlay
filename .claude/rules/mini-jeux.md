@@ -188,7 +188,7 @@ MJ.ready(function () {
 
 > 🚨 **Règle cloud.js NON NÉGOCIABLE** (gravée 2026-07-14, audit Supabase) : toute page qui charge `comments.js` (bulle 💬) OU appelle `Cloud.schedulePush()` DOIT charger `js/cloud.js` **après** `js/tracker.js`. La garde `window.Cloud && …` ne crash pas si cloud.js manque — elle **avale l'échec en silence** : les commentaires restent en localStorage et ne remontent JAMAIS en base. Incident : 32 mini-jeux + index.html + lecture.html avaient la bulle 💬 sans cloud.js → 0 commentaire poussé depuis le début. Vérif : `grep -L cloud.js $(grep -rl comments.js site/*.html)` doit être VIDE.
 
-**Règle header MILITAIRE** (v2, Design System juillet 2026 — remplace le gabarit inline v1 sur décision Papa Yann, package `studio/minijeux/inbox/package-maxplay-design/`) : garder le markup `.hdr` ci-dessus à la lettre, **zéro règle CSS `.hdr` locale** (mp-theme.css fait autorité). Ne jamais créer `.game-header`, `.header-text`, `.header-title`, `.header-sub` ou toute autre variante inventée. `back-button.js` injecte automatiquement la flèche ← ronde 44px — ne pas créer un gros bouton bus manuellement.
+**Règle header MILITAIRE** (v2, Design System juillet 2026 — remplace le gabarit inline v1 sur décision Papa Yann, package design v1 intégré dans `site/css/mp-theme.css` — inbox purgée 2026-07-19) : garder le markup `.hdr` ci-dessus à la lettre, **zéro règle CSS `.hdr` locale** (mp-theme.css fait autorité). Ne jamais créer `.game-header`, `.header-text`, `.header-title`, `.header-sub` ou toute autre variante inventée. `back-button.js` injecte automatiquement la flèche ← ronde 44px — ne pas créer un gros bouton bus manuellement.
 
 ## Design System v1 (source de vérité : `site/css/mp-theme.css` + `site/js/mp-theme.js`)
 

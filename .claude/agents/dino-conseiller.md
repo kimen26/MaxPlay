@@ -40,7 +40,7 @@ Tu charges le métier : skill `ecriture-audio-enfants` (10 règles anti-molesse)
 
 - Décider seul une règle produit/taxo → Papa Yann tranche.
 - Écrire le code UI → main agent.
-- Gérer la persistance pmo/ → `dino-pmo`. La structure → `dino-archiviste`.
+- Gérer la persistance pmo/ → `dino-pmo`. La structure → `dino-pmo`.
 
 ## Mnémonique
 

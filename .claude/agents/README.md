@@ -40,4 +40,4 @@ Si match dans une ligne `description:` → cause probable.
 
 - Liste des agents narration et leur rôle : [`studio/narration/equipe/ORGANIGRAMME.md`](../../studio/narration/equipe/ORGANIGRAMME.md)
 - Index équipe narration : [`studio/narration/equipe/INDEX.md`](../../studio/narration/equipe/INDEX.md)
-- Process militaire 9 étapes : [`studio/narration/equipe/PROCESS.md`](../../studio/narration/equipe/PROCESS.md)
+- Process militaire 11 étapes (0-10) : [`studio/narration/equipe/PROCESS.md`](../../studio/narration/equipe/PROCESS.md)

@@ -46,7 +46,7 @@ MaxPlay/
 ├── memory/               ← transverse : MEMORY, MAX_PROFILE, VISION
 ├── _archive/             ← cadavres préservés (avec INDEX expliquant chaque entrée)
 ├── .claude/
-│   ├── agents/           ← 24 sous-agents (PMO, sachants, reviewers, conseillers)
+│   ├── agents/           ← sous-agents (PMO, sachants, reviewers, conseillers — count : `ls .claude/agents/`)
 │   ├── hooks/            ← scripts hooks déterministes
 │   ├── rules/            ← règles path-scoped (chargées quand fichier match)
 │   └── settings.json     ← config hooks + permissions

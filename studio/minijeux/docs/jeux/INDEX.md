@@ -12,7 +12,6 @@
 | Menu (source de vérité) | [`site/js/catalog.js`](../../../../site/js/catalog.js) — par catégories, `status:'live'` |
 | Vue d'ensemble à jour | [CLASSIFICATION-2026-07.md](CLASSIFICATION-2026-07.md) |
 | Stack | HTML vanilla · `site/js/` partagé · gabarit `mj-shell.js` · GitHub Pages |
-| Audit technique | ✅ fait (2026-04-22) — voir `../audit/` |
 
 ---
 
@@ -54,10 +53,6 @@
 
 | Fichier | Contenu |
 |---------|---------|
-| [../audit/INDEX.md](../audit/INDEX.md) | **Point d'entrée** — 4 livrables d'audit (avril 2026) |
-| [../audit/jeux-2026-04.md](../audit/jeux-2026-04.md) | Verdict keep/refactor/retire par jeu |
-| [../audit/factorisation.md](../audit/factorisation.md) | Plan factorisation CSS/JS partagé |
-| [../audit/roadmap-technique.md](../audit/roadmap-technique.md) | Roadmap court/moyen/long terme |
 
 ---
 
@@ -76,4 +71,4 @@ CI : `.github/workflows/deploy.yml` assemble dans `_site/` (non commité).
 
 ## Profil cible
 
-Max, 3.5–4 ans. Voir [docs/MAX_PROFILE.md](../MAX_PROFILE.md) pour passions, lignes connues, contraintes tactile.
+Max, 3.5–4 ans. Voir [docs/MAX_PROFILE.md](../../../../memory/MAX_PROFILE.md) pour passions, lignes connues, contraintes tactile.

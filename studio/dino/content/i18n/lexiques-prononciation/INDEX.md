@@ -61,4 +61,4 @@
 2. Par langue : **preview groupé** → validation native → régé des 60 clips `audio/dinos/<lang>/<id>-nom.mp3`.
 3. Priorité langues : FR (base) → EN + PT-BR (actées) → ES · IT · RU · JA → AR · ZH (validation native la plus critique).
 
-_Produit par workflow `lexiques-prononciation-dino-multilingue` (8 linguistes + 2 QA, 60 espèces). Gouvernance : dino-pmo (FOND) + dino-archiviste (FORME). Plan i18n global : [`../../../../../memory/audio/PLAN-AUDIO-I18N.md`](../../../../memory/audio/PLAN-AUDIO-I18N.md)._
+_Produit par workflow `lexiques-prononciation-dino-multilingue` (8 linguistes + 2 QA, 60 espèces). Gouvernance : dino-pmo unifié FOND+FORME (fusion 2026-07-19). Plan i18n global : [`../../../../../memory/audio/PLAN-AUDIO-I18N.md`](../../../../memory/audio/PLAN-AUDIO-I18N.md)._

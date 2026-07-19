@@ -267,7 +267,7 @@ L'étude complète (~28k tokens, 8 sections, 36 références) a été archivée 
 
 ## Liens
 
-- [`../univers/meta/architecture-cross-culture.md`](../univers/meta/architecture-cross-culture.md) — chaque casting peut emprunter sa micro-structure culturelle
+- [`../cross-culture/doctrine.md`](../cross-culture/doctrine.md) — chaque casting peut emprunter sa micro-structure culturelle
 - [`../pmo/decisions.md`](../pmo/decisions.md) — décisions narratologiques MaxPlay
 - [`brief-univers.md`](brief-univers.md) — brief Architecte / Writers
 - [`memoire-conseiller.md`](memoire-conseiller.md) — patterns identifiés

@@ -37,7 +37,6 @@
 | [`content/sources/mesures/`](content/sources/mesures/) | Mesures consolidées · échelle référentiel · Bloc B canonique (taille verbatim, anti-dérive) |
 | [`content/sources/etymo/`](content/sources/etymo/) | Étymologies grec/latin (racines-50, complet-60) |
 | [`content/sources/_PROCESS-DIALOGUE-PEDAGOGIQUE.md`](content/sources/_PROCESS-DIALOGUE-PEDAGOGIQUE.md) | LA méthode dialogue 4 ans (charte→factcheck→écriture→panel→boucles) |
-| [`content/inbox/`](content/inbox/) | Matière brute non exploitée (PDF Fiches distillé) |
 
 ## 🎯 Données structurées (`content/data/` — nourrit les features)
 

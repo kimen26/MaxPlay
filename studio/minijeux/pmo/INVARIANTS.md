@@ -118,11 +118,7 @@ Détails complets : [`../memory/stack.md`](../memory/stack.md).
 
 | Niveau | Agent | Modèle | Mode |
 |--------|-------|--------|------|
-| 1 PMO | `game-pmo` | Haiku | AUTO chaque signal JEU |
-| 1 Archiviste | `game-archiviste` 🆕 | Haiku | AUTO chaque signal structure |
-| 2 Sous-PMO | `game-mj-pmo` | Haiku | Sur signal MJ par parent |
-| 2 Sous-PMO | `game-tile-pmo` | Haiku | Sur signal tile par parent |
-| 2 Sous-PMO | `game-wexworld-pmo` ⏳ | Haiku | Phase 2 |
+| 1 PMO unifié | `game-pmo` (FOND+FORME+domaines tile/mj — fusion 2026-07-19, ex archiviste/mj-pmo/tile-pmo) | Sonnet | Clôture session · audit · RECHERCHE |
 | 3 Conseiller | `game-conseiller` | Opus | Manuel — question produit |
 | 4 Sachant dev | `game-dev` | Sonnet | Manuel |
 | 4 Pipeline tile | `game-tile-simplifier` | Sonnet | Manuel — étape 1/3 |

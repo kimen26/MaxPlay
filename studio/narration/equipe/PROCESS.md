@@ -51,7 +51,7 @@
 
 ## PROCESS Audio — 5 étapes (workflow post-étape 10, décision figée 2026-05-16)
 
-> **Méthodologie officielle** : `POST /v1/text-to-dialogue` (ElevenLabs) packetisé < 2000 char. Source : [`../pmo/decisions.md`](../pmo/decisions.md) § DEC-AUDIO-PRODUCTION-001 (figée, jamais régresser). Détail technique complet : [`.claude/rules/audio.md`](./.claude/rules/audio.md) (auto-chargé dès que Claude touche script audio).
+> **Méthodologie officielle** : `POST /v1/text-to-dialogue` (ElevenLabs) packetisé < 2000 char. Source : [`../pmo/decisions.md`](../pmo/decisions.md) § DEC-AUDIO-PRODUCTION-001 (figée, jamais régresser). Détail technique complet : [`.claude/rules/audio.md`](../../../.claude/rules/audio.md) (auto-chargé dès que Claude touche script audio).
 
 ### Vue d'ensemble — 5 étapes linéaires
 

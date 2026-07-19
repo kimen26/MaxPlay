@@ -97,7 +97,7 @@ GitHub Pages → kimen26.github.io/MaxPlay/
 - **Bus side-view** : `busSVG()` / `busSVGHiddenNum()` dans `site/js/bus-svg.js` — JAMAIS emoji ni div CSS
 - **Bus topdown** : sprite sheet White + setTint() Phaser
 - **Anti-doublons** : `selectDistinctColors(pool, n, minDist=80)` pour tout quiz à couleurs
-- **ratp-colors.json** : source de vérité terminus+couleurs. Protocole de modif dans `.claude/skills/game-rules/bus-rules.md`
+- **ratp-colors.json** : source de vérité terminus+couleurs. Protocole de modif dans `.claude/rules/mini-jeux.md (§ Règles bus SVG)`
 - **MJ-04 PHRASES** : jamais de prénom, emoji = représentation du answer, 90 phrases, sans remplacement cyclique
 
 ## Règles jeu (non-négociables)
@@ -157,17 +157,17 @@ Serveur MCP global (scope user, tous projets) exposant 2 outils LLM tiers :
 | `memory/VISION.md` | Décisions prises + questions ouvertes |
 | `studio/minijeux/docs/ratp-colors.json` | Source de vérité couleurs+terminus : 26 actives + 362 référentiel |
 | `studio/narration/INDEX.md` | Point d'entrée projet narratif (personnages, ennéagramme, univers) |
-| `studio/narration/enneagramme/` | 9 fiches personnages + situations + ressources auteur |
+| `studio/narration/personnages/theorie/enneagramme/` | 9 fiches personnages + situations + ressources auteur |
 | `studio/narration/univers/INDEX.md` | Matière brute univers macro (Éveil, Compagnons, Janus, Baron...) |
 | `site/` | mj-01 à mj-20 + max-adventure (vanilla HTML/JS) — source déployée |
 | `site/js/tracker.js` | Suivi progression localStorage — sessions, scores, maîtrise |
 | `site/suivi.html` | Dashboard parent — stats, sparklines, export/import JSON |
 | `site/js/data.js` | LIGNES (26 actives), DESTINATIONS, getLineDisplayName() |
-| `site/js/idfm.js` | IDFM_REFERENTIEL — 362 lignes complètes (généré depuis ratp-colors.json) |
+| `site/js/data.js + studio/minijeux/docs/ratp-colors.json` | IDFM_REFERENTIEL — 362 lignes complètes (généré depuis ratp-colors.json) |
 | `site/js/bus-svg.js` | busSVG() / busSVGHiddenNum() / selectDistinctColors() |
 | `site/map-mockups.html` | Preview tileset LimeZu — 5 maps atomiques M1–M5 |
 | `studio/max-adventure/src/scenes/` | HubScene · SandboxScene (max-adventure Phaser) |
-| `.claude/skills/game-rules/bus-rules.md` | Règles immuables bus + protocole de modification |
+| `.claude/rules/mini-jeux.md (§ Règles bus SVG)` | Règles immuables bus + protocole de modification |
 | `.github/workflows/deploy.yml` | CI : build + assemble + deploy GitHub Pages |
 
 ## Audits transverses

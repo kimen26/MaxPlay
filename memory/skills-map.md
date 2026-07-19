@@ -14,7 +14,6 @@ type: reference
 | `narration-pmo` | Haiku | Gestion projet narration — tickets, backlog, sprint-log, traçabilité |
 | `narration-writer-claude-libre` | Sonnet | Writer angle libre, instinctif, stateless |
 | `narration-conseiller` | Opus | Binôme créatif — challenge, pitch, carte narrative |
-| `narration-architecte` | Sonnet | Plan d'Histoire — structure, persos, contraintes |
 | `narration-gatekeeper` | Haiku | Validation finale PASS/FAIL — ennéagramme, univers, prénoms, structure |
 | *(narration-archiviste fusionné dans `narration-pmo` le 2026-07-19)* | — | — |
 | `narration-science` | Haiku | Expert sciences — biorésonance, physique, validation factuelle |
@@ -95,7 +94,7 @@ type: reference
 | `gamepad-inputs` | Manette 8BitDo FC30, Web Gamepad API, dual-input manette+tactile |
 | `performance-opt` | **PROACTIF** — optimisation assets, texture atlas, object pooling, draw calls |
 | `game-mechanics` | Mécaniques jeu 3-5 ans, level design, difficulté adaptative |
-| `maxplay-tiles` | Tileset LimeZu Modern Exteriors — méthode militaire, cartographie, voisinage, pattern modulaire bas/milieu/haut. Outils : [`site/tools/index.html`](../site/tools/index.html) (hub) → mockups-routes (échelle uniforme) + tile-library-v3 (patterns) + tile-picker (matrice drag&drop, supporte `?recipe=X.py`). Workflow Propose → Édite → Apprend avec sous-agent [`game-tile-pmo`](../.claude/agents/game-tile-pmo.md) (parent : [`game-pmo`](../.claude/agents/game-pmo.md)). Mini-jeu kids : [`mj-pose-tiles.html`](../site/mj-pose-tiles.html). |
+| `maxplay-tiles` | Tileset LimeZu Modern Exteriors — méthode militaire, cartographie, voisinage, pattern modulaire bas/milieu/haut. Outils : [`site/tools/index.html`](../site/tools/index.html) (hub) → mockups-routes (échelle uniforme) + tile-library-v3 (patterns) + tile-picker (matrice drag&drop, supporte `?recipe=X.py`). Workflow Propose → Édite → Apprend avec sous-agent [`game-pmo`](../.claude/agents/game-pmo.md) (parent : [`game-pmo`](../.claude/agents/game-pmo.md)). Mini-jeu kids : [`mj-pose-tiles.html`](../site/mj-pose-tiles.html). |
 
 ### Business/Content (existants)
 | Skill | Utiliser quand |
@@ -144,7 +143,7 @@ type: reference
 | `/checkpoint` | Point de contrôle session |
 | `/loop-start` · `/loop-status` | Loops autonomes |
 | `/evolve` | Analyser et faire évoluer les instincts |
-| `/security-scan` | Audit sécurité config Claude |
+| `/security-review` | Audit sécurité config Claude |
 
 ## Références externes
 

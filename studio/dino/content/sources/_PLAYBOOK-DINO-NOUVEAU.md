@@ -208,7 +208,7 @@ Chaque dino **fini** doit avoir :
 - **narration-audio-writer** : polish oral, fluidité, voix enfant, Kimi CLI
 - **dino-paleoart** skill : génération images paléoart ChatGPT/Grok
 - **dino-pmo** : persistance gouvernance (INVARIANTS, decisions, sprint-log, backlog)
-- **dino-archiviste** : structure, refs, orphelins disque
+- **dino-pmo** (unifié 2026-07-19) : structure, refs, orphelins disque
 
 ---
 

@@ -108,7 +108,7 @@ Consignes propres à un MJ (~43) · segments fiche dino `-taille/-regime/-funfac
 ### 2c. Dino — segments, noms, récits, menus
 
 **Segments fiche manquants (chantier #1)** : 9 dinos Cénozoïque n'ont QUE `-nom.mp3` → 4 blocs manquants chacun (~36 MP3) : `aenocyon · coelodonta · edmontonia · glyptodon · mammuthus · megatherium · paraceratherium · smilodon · titanis`. Textes probablement dans `scripts-audio/V3/megafaune.md` + `edmontonia.md` (**à vérifier**). Bloqué quota EL.
-> ⚠️ Écart de comptage à réconcilier par dino-archiviste : INVARIANTS dit « 8 en attente », disque en trouve **9**. `DINO_AUDIO` mappe **51** complets. Disque : nom=60, taille=51, regime=52, funfact=51, recap=53.
+> ⚠️ Écart de comptage à réconcilier par dino-pmo : INVARIANTS dit « 8 en attente », disque en trouve **9**. `DINO_AUDIO` mappe **51** complets. Disque : nom=60, taille=51, regime=52, funfact=51, recap=53.
 
 **Noms** : 60/60 présents. Chantier = **homogénéisation de ton** (bonus `[excited]` vs fiche neutre), différée Papa Yann — pas une absence.
 
@@ -219,7 +219,7 @@ Sélecteur **drapeau** sur le hub (zones ≥80px, Max reconnaît les drapeaux). 
 **Recommandation corrigée** : plutôt qu'étendre narration-pmo (conflit), suivre **le modèle exact de l'extraction dino** →
 - **1 registre transverse** `memory/audio/AUDIO-REGISTRY.md` (généré depuis le disque, pattern `_ETAT-DINOS.md`) — seule source à citer les counts par langue ; les features lisent par `(lang, id)`.
 - **1 rule path-scopée** `.claude/rules/audio-i18n.md` sur `site/sounds/**` + `site/audio/**` (charge les règles audio où que vive le fichier, comme `rules/dino.md`). **Pas de 4e PMO.**
-- **Exécution distribuée sur les rôles existants** : casting = narration-pmo (voice-map per-lang) · contenu = pôle propriétaire (game-pmo / dino-pmo trace SES assets) · forme = archivistes existants (ajouter **colonne langue** aux audits `/game-archiviste-audit` & `/dino-archiviste-audit`) · localisation = `narration-localisation` (agent existant, 8 cultures) étendu au respelling.
+- **Exécution distribuée sur les rôles existants** : casting = narration-pmo (voice-map per-lang) · contenu = pôle propriétaire (game-pmo / dino-pmo trace SES assets) · forme = archivistes existants (ajouter **colonne langue** aux audits `/game-pmo-audit` & `/dino-pmo-audit`) · localisation = `narration-localisation` (agent existant, 8 cultures) étendu au respelling.
 
 **Matrice langue × asset** (générée par outil scannant `site/audio/<lang>/` + `site/sounds/<lang>/`) : SFX (64) = N/A langue · réactions/phrases/lieux → game-pmo · noms/segments/dico/menus dino → dino-pmo · casting voice_id → narration-pmo.
 
@@ -262,4 +262,4 @@ Sélecteur **drapeau** sur le hub (zones ≥80px, Max reconnaît les drapeaux). 
 
 ---
 
-*Produit par workflow `audit-audio-i18n` (8 agents, 125 items, critique adverse intégrée). Corrections C1-C3/I1-I5/M1-M4 appliquées vs 1re synthèse. Ne pas traiter les « ? » comme acquis : mj-06/09/11/12/19/20/21/22/39/41/gold-a/b (sons de fin), `periodes/permien`, écart comptage Cénozoïque 8 vs 9 — à réconcilier par dino-archiviste avant de figer les volumes.*
+*Produit par workflow `audit-audio-i18n` (8 agents, 125 items, critique adverse intégrée). Corrections C1-C3/I1-I5/M1-M4 appliquées vs 1re synthèse. Ne pas traiter les « ? » comme acquis : mj-06/09/11/12/19/20/21/22/39/41/gold-a/b (sons de fin), `periodes/permien`, écart comptage Cénozoïque 8 vs 9 — à réconcilier par dino-pmo avant de figer les volumes.*

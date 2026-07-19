@@ -65,7 +65,7 @@ Ex-`docs/narration/reference/`. Contenu analysé mais jamais référencé active
 
 Ex-`temp/` (partie sons). 26 fichiers audio (.mp3, .flac) + 1 script `gen-idfm.js` mort. ~2.8 Mo.
 
-> **Note importante :** Le pack pixel art `Design to sort/` (347 Mo, Modern Exteriors 16x16) et `Dino/` qui étaient dans l'ancien `temp/` ont été **laissés hors du repo** (toujours dans `temp/` racine, ignoré par `.gitignore`) pour ne pas gonfler le repo. Ils restent accessibles localement à l'utilisateur. Si un jour ces packs deviennent utiles, les déplacer vers `game/phaser/public/assets/` au moment de l'usage.
+> **Note importante (MAJ 2026-07-19) :** Le pack pixel art LimeZu Modern Exteriors (347 Mo, payé) vit désormais dans **`c:\ProjetsPerso\Assets\LimeZu-Modern-Exteriors\`** (hors repo, déplacé depuis `temp/Design to sort/` lors du nettoyage GED). Le sous-ensemble utilisé par le jeu est extrait dans `studio/max-adventure/public/assets/` (76 Mo). `temp/Dino/` (jpg exploratoires mars 2026) supprimé le 2026-07-19 (0 référence).
 
 ### `narration-architecte-deprecated-2026-05-12.md` — Agent DEPRECATED
 
@@ -77,9 +77,9 @@ Ex-`temp/` (partie sons). 26 fichiers audio (.mp3, .flac) + 1 script `gen-idfm.j
 
 Documenté en détail dans son `INDEX.md` local (8 dinos retirés un à un, raisons incluses). Entrée ajoutée ici le 2026-07-19 (audit nettoyage GED — le dossier existait sans note dans cet index).
 
-### `grok-3-batch-source-png-2026-07-10/` — Sources brutes batch Grok (19 Mo)
+### `grok-3-batch-source-png-2026-07-10/` — SUPPRIMÉ le 2026-07-19
 
-15 PNG sources (Allosaurus / Ceratosaurus / Gallimimus × 5 variantes). Aucune doc d'origine ; correspond très probablement aux sources brutes du batch Gallimimus corrompu (commit 56fdfbfb, même période, mêmes dinos). **Statut : à faire trancher par dino-pmo** (Q3 de `memory/audits/2026-07-19-nettoyage-ged.md`) — documenter ou supprimer.
+15 PNG sources brutes (Allosaurus / Ceratosaurus / Gallimimus × 5 variantes) du batch Gallimimus corrompu (commit 56fdfbfb). Vérifié avant suppression : les finales converties (.jpg) sont toutes déployées dans `site/img/dinos/paleoart/`. Sources sans valeur restante (19 Mo) — supprimées (décision Papa Yann, audit nettoyage GED, récupérables via historique git).
 
 ### `skills-craft-deprecated-2026-06-08/` — Skills craft absorbés
 

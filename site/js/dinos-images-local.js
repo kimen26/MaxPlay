@@ -46,7 +46,7 @@ const DINO_WIKIMEDIA = {
   ],
   "allosaurus": [
     {
-      "url": "img/dinos/wiki/allosaurus-3.svg",
+      "url": "img/dinos/wiki/allosaurus-3.jpg",
       "label": "Allosaurus illustration moderne",
       "type": "illustration"
     }
@@ -144,7 +144,7 @@ const DINO_WIKIMEDIA = {
   ],
   "plateosaurus": [
     {
-      "url": "img/dinos/wiki/plateosaurus-3.svg",
+      "url": "img/dinos/wiki/plateosaurus-3.jpg",
       "label": "Plateosaurus illustration",
       "type": "illustration"
     }
@@ -175,7 +175,7 @@ const DINO_WIKIMEDIA = {
   ],
   "stegosaurus": [
     {
-      "url": "img/dinos/wiki/stegosaurus-3.svg",
+      "url": "img/dinos/wiki/stegosaurus-3.jpg",
       "label": "Stegosaurus illustration",
       "type": "illustration"
     },
@@ -268,7 +268,7 @@ const DINO_WIKIMEDIA = {
   ],
   "pachycephalosaurus": [
     {
-      "url": "img/dinos/wiki/pachycephalosaurus-1.svg",
+      "url": "img/dinos/wiki/pachycephalosaurus-1.jpg",
       "label": "Pachycephalosaurus illustration",
       "type": "illustration"
     }

@@ -146,6 +146,6 @@ NOTES POUR REVIEWER (À CHALLENGER) :
 
 ## 🔗 Handoff vers game-tile-designer
 
-Ton output ANALYSE est self-contained — le designer ne devrait pas avoir besoin de remonter à toi pour clarifier. S'il a une question, c'est que ton ANALYSE était incomplète → à graver dans PIPELINE-MEMORY.md (via game-tile-pmo) comme friction.
+Ton output ANALYSE est self-contained — le designer ne devrait pas avoir besoin de remonter à toi pour clarifier. S'il a une question, c'est que ton ANALYSE était incomplète → à graver dans PIPELINE-MEMORY.md (via game-pmo) comme friction.
 
-**Tu ne contactes pas directement game-tile-pmo** — c'est le main agent qui orchestre la boucle complète.
+**Tu ne contactes pas directement game-pmo** — c'est le main agent qui orchestre la boucle complète.

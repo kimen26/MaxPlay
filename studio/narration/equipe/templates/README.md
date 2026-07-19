@@ -54,7 +54,7 @@ Tout fichier ou dossier dans `stories/<NNN>/` est préfixé par le numéro de l'
 1. **Ne jamais éditer directement le template** — toujours faire une copie dans le dossier histoire avec le préfixe étape correct
 2. **Tous les champs obligatoires** doivent être remplis avant de passer à l'étape suivante
 3. **Les sections "RÈGLES OBLIGATOIRES" héritées de `pmo/decisions.md` + `pmo/INVARIANTS.md`** sont mises à jour à chaque évolution des décisions — vérifier la date avant utilisation
-4. **Mises à jour des templates** — toute modification d'un template = entrée dans `pmo/decisions.md` + log dans `pmo/sprint-log.md` + ping `narration-archiviste` pour propagation gabarit
+4. **Mises à jour des templates** — toute modification d'un template = entrée dans `pmo/decisions.md` + log dans `pmo/sprint-log.md` + ping `narration-pmo (unifié 2026-07-19)` pour propagation gabarit
 
 ---
 

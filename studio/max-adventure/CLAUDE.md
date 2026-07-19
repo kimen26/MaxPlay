@@ -18,7 +18,7 @@ Splash : site/max-adventure.html (→ ./max-adventure/)
 
 ## Règles (héritées du pôle JEU)
 
-- **Gouvernance** : [`../minijeux/CLAUDE.md`](../minijeux/CLAUDE.md) + [`../minijeux/INDEX.md`](../minijeux/INDEX.md). PMO/archiviste = `game-pmo` / `game-archiviste`.
+- **Gouvernance** : [`../minijeux/CLAUDE.md`](../minijeux/CLAUDE.md) + [`../minijeux/INDEX.md`](../minijeux/INDEX.md). PMO/archiviste = `game-pmo` (PMO unifié FOND+FORME, fusion 2026-07-19).
 - **Stack & déploiement** : [`../minijeux/memory/stack.md`](../minijeux/memory/stack.md) (Phaser 3, Vite, TS strict, 1024×768, OGG+MP3, SVG bus).
 - **Tiles LimeZu** : pipeline `game-tile-simplifier → designer → reviewer` ; les tiles arrivent ici via `import_themes.py` (`studio/minijeux` scripts → `public/assets/tiles/`).
 - **Bus** : jamais d'emoji 🚌, toujours SVG (règle pôle JEU).

@@ -102,7 +102,7 @@ Tu veux faire quoi ?
 │   → narration-conseiller (Opus)
 │
 ├─ Créer un plan d'histoire depuis un pitch validé
-│   → narration-architecte (Sonnet)
+│   → narration-conseiller (Opus) — architecte absorbé 2026-05-12 (fusion pitch+plan)
 │
 ├─ Écrire une version (Claude libre, x2)
 │   → narration-writer-claude-libre (Opus 4.7)
@@ -120,10 +120,10 @@ Tu veux faire quoi ?
 │   → narration-gatekeeper (Haiku)
 │
 ├─ Gérer tickets, sprint-log, decisions, alertes blocage
-│   → narration-pmo (Haiku)
+│   → narration-pmo (Sonnet)
 │
 ├─ Indexer, structurer, vérifier cohérence dossiers
-│   → narration-pmo (unifié 2026-07-19) (Haiku)
+│   → narration-pmo (unifié 2026-07-19, Sonnet)
 │
 ├─ Vérifier un fait scientifique
 │   → narration-science (Haiku)

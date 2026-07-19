@@ -39,8 +39,7 @@ CODE DÉPLOYÉ (hors pôle, GitHub Pages) :
 
 | Agent | Modèle | Niveau | Mode | Rôle bref |
 |-------|--------|--------|------|-----------|
-| `game-pmo` | Haiku | 1 | **AUTO** signal JEU | PMO fond + orchestre sous-spé |
-| `game-wexworld-pmo` ⏳ | Haiku | 2 | Phase 2 | Sous-spé Phaser RPG |
+| `game-pmo` **unifié** | Sonnet | 1 | Clôture · audit · RECHERCHE | FOND + FORME + domaines tile/mj (fusion 2026-07-19, ex archiviste/mj-pmo/tile-pmo) |
 | `game-conseiller` | Opus | 3 | Manuel | Binôme créatif transverse |
 | `game-dev` | Sonnet | 4 | Manuel | Dev HTML vanilla + Phaser |
 | `game-tile-simplifier` | Sonnet | 4 | Manuel | Pipeline tile étape 1/3 |

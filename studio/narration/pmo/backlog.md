@@ -122,3 +122,5 @@
 - 2026-07-19 (nettoyage GED, tour 4 atteignabilite) : agents fantomes corriges (equipe/INDEX + ORGANIGRAMME : narration-archiviste -> narration-pmo unifie ; lien memoire-architecte -> _archive/) ; arcs-narratifs.md + brief-univers.md ajoutes a equipe/INDEX. Inbox 28-cultures (Q10) toujours en attente de distillation (INPUT-004/005).
 
 - 2026-07-19 (nettoyage GED, tour 6) : pmo/audits/ cree — test-calibration-panel range en audits/2026-07-04-test-calibration-panel.md (ref sprint-log corrigee), conforme norme DOCTRINE audits.
+
+- 2026-07-19 (nettoyage GED, tour 7 ecosysteme) : fantomes narration-archiviste/architecte purges des docs vivantes (equipe/INDEX arbre de decision, cartographie-domaines, ORGANIGRAMME Sonnet, templates/README, README pole, rules/stories-process) -> narration-pmo unifie Sonnet / narration-conseiller.

@@ -66,11 +66,7 @@ Faux bugs récemment vérifiés :
 
 | Agent | Modèle | Niveau | Mode |
 |-------|--------|--------|------|
-| `game-pmo` | Haiku | 1 (parent) | **AUTO** signal JEU |
-| `game-archiviste` | Haiku | 1 (parent) | **AUTO** signal structure |
-| `game-mj-pmo` | Haiku | 2 (enfant) | Invoqué par game-pmo |
-| `game-tile-pmo` | Haiku | 2 (enfant) | Invoqué par game-pmo |
-| `game-wexworld-pmo` | Haiku | 2 (enfant) | ⏳ Phase 2 |
+| `game-pmo` **unifié** (FOND+FORME+domaines tile/mj — fusion 2026-07-19, ex archiviste/mj-pmo/tile-pmo) | Sonnet | 1 | Clôture session · audit · RECHERCHE |
 | `game-conseiller` | Opus | 3 | Manuel — question produit |
 | `game-dev` | Sonnet | 4 | Manuel — code |
 | `game-tile-simplifier` | Sonnet | 4 | Manuel — étape 1/3 tile |
@@ -86,5 +82,4 @@ Détails complets : [`../EQUIPE.md`](../EQUIPE.md).
 
 | Commande | Invoque | Cible |
 |----------|---------|-------|
-| `/game-pmo-audit` | `game-pmo` Mode AUDIT | FOND (décisions, statuts, cohérence sémantique) |
-| `/game-archiviste-audit` | `game-archiviste` Mode AUDIT | FORME (structure, refs, gabarit, orphelins) |
+| `/game-pmo-audit` | `game-pmo` Mode AUDIT | FOND + FORME en un passage (fusion 2026-07-19) |

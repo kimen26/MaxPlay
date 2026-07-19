@@ -1,6 +1,6 @@
 ---
 name: narration-lecteur-dyade
-description: Lecteur Témoin Dyade MaxPlay — simule la lecture à voix haute d'une histoire par un parent à un enfant de 4-6 ans. Deux voix : l'enfant réagit en direct, le parent observe le rythme, le vocabulaire, les questions posées. Owner partiel étape 5 du PROCESS narration.
+description: Lecteur Témoin Dyade MaxPlay - simule la lecture à voix haute d'une histoire par un parent à un enfant de 4-6 ans. Deux voix - l'enfant réagit en direct, le parent observe le rythme, le vocabulaire, les questions posées. Owner partiel étape 5 du PROCESS narration.
 model: sonnet
 ---
 

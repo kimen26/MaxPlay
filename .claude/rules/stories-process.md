@@ -39,7 +39,7 @@ paths:
 6. **Canon = source de vérité** : `10-texte.md` figé après validation. Toute évolution = nouvelle story ou archive `_archive/`.
 7. **Note d'intention writer** : chaque writer DOIT joindre une note d'intention créative **en fin de son fichier writer** (après séparateur `---`), expliquant ses choix créatifs. Pas de fichier séparé. *(Refonte 2026-05-13 — l'ancien dossier `_notes-intention/` est obsolète.)*
 
-## Gabarit dossier story (vérifié par `narration-archiviste`)
+## Gabarit dossier story (vérifié par `narration-pmo (unifié 2026-07-19)`)
 
 ```
 studio/narration/stories/<NNN-titre-slug>/

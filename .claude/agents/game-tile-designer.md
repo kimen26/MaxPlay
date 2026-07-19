@@ -65,7 +65,7 @@ Schema :
   - <points clés du layout>
 
 Référence visuelle : <chemin/URL de la ref validée par Papa Yann>
-  ⚠️ Si pas de ref validée, ne pas produire la recette — demander à game-tile-pmo.
+  ⚠️ Si pas de ref validée, ne pas produire la recette — demander à game-pmo.
 """
 
 import sys
@@ -227,4 +227,4 @@ Quand tu reçois des issues du reviewer :
 
 → vers `game-tile-reviewer` (avec recette + PNG + BILAN)
 → jamais directement au user — le reviewer valide d'abord
-→ game-tile-pmo capturera les leçons APRÈS le PASS reviewer + validation user
+→ game-pmo capturera les leçons APRÈS le PASS reviewer + validation user

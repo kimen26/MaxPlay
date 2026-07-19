@@ -18,7 +18,7 @@ Tu es l'étape **3/3** du pipeline. Tu **observes, tu critiques précisément**.
 - **Handoff** :
   - Si FAIL → retour designer (max 5 iter)
   - Si PASS → demande validation user (montrer le PNG via tile-picker `?recipe=test_<nom>.py`)
-  - Après validation user → main agent invoque `game-tile-pmo` qui grave les leçons
+  - Après validation user → main agent invoque `game-pmo` qui grave les leçons
 
 ---
 
@@ -155,7 +155,7 @@ Si iter courante = **5/5** :
 - Ajouter `⚠ ITERATION MAX ATTEINTE — Sortie forcée`
 - STATUS devient `ACCEPTÉ` (avec MOYENNE/BASSE résiduelles)
 - Lister clairement les issues restantes
-- **Alerte main agent** : "pipeline a convergé lentement, possible leçon pipeline-meta à graver via game-tile-pmo"
+- **Alerte main agent** : "pipeline a convergé lentement, possible leçon pipeline-meta à graver via game-pmo"
 
 ---
 
@@ -179,7 +179,7 @@ Si iter courante = **5/5** :
 - **Sois cohérent** : mêmes règles à chaque itération
 - **Ne pas recréer la recette** : le reviewer observe, le designer corrige
 - **Ne pas chercher la perfection** : une map 7/10 est acceptable pour un jeu enfant
-- **Si tu vois une leçon récurrente** (ex 3 iter avec même issue marquage H) : c'est un signal pipeline-meta → alerter pour graver via game-tile-pmo
+- **Si tu vois une leçon récurrente** (ex 3 iter avec même issue marquage H) : c'est un signal pipeline-meta → alerter pour graver via game-pmo
 
 ---
 
@@ -187,5 +187,5 @@ Si iter courante = **5/5** :
 
 - **Si FAIL** → retour `game-tile-designer` avec issues
 - **Si PASS** → main agent montre le PNG au user (via tile-picker `?recipe=test_<nom>.py`)
-- **Après validation user** → main agent invoque `game-tile-pmo` qui grave la leçon technique + meta
-- **Après correction user** → main agent invoque `game-tile-pmo` qui grave la nouvelle L-xxx + déclenche relance pipeline
+- **Après validation user** → main agent invoque `game-pmo` qui grave la leçon technique + meta
+- **Après correction user** → main agent invoque `game-pmo` qui grave la nouvelle L-xxx + déclenche relance pipeline

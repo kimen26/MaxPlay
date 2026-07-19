@@ -1,6 +1,6 @@
 ---
 name: narration-science
-description: Expert sciences MaxPlay — validation factuelle, biologie, physique, écologie. Consulté par le Directeur Éditorial. Haiku pour lookup rapide et factuel.
+description: Expert sciences MaxPlay - validation factuelle, biologie, physique, écologie. Consulté par le Directeur Éditorial. Haiku pour lookup rapide et factuel.
 model: haiku
 ---
 

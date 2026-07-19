@@ -17,6 +17,10 @@
 
 ---
 
+## EP ouverts
+
+- **EP-DINO-CORYTOSAURE** — ✅ **LIVRÉ DATA 2026-07-19** — Corytosaure intégré dinos-data.js (ligne 1039-1062, ID #51/60 hadrosaure Crétacé 76 Ma). Fact-check Wikipedia (fourchette taille cohérente, écart <10% vs canon batch 4 déjà gravé). Crête creuse fonction acoustique confirmée scientifiquement. Prédateurs : Gorgosaure + Daspletosaure (période juste, vs T-Rex tardif). PNG 'Corythosaurus.jpg' référencé, asset paléoart TBD via skill dino-paleoart (5 scènes). Audio segments TBD (si dino complet 8/8 requis). Commit 680942f4. | livré données 2026-07-19 · assets TBD
+
 ## Leçons (patterns/découvertes gravés)
 - **L-D-44** — **`git rm` + glob sans match = pathspec RÉCURSIF dangereux.** `git rm site/img/dinos/*.png` (aucun png à la racine) a supprimé récursivement ombres/ sprites/ paleoart(webp)/ wiki/. Rattrapé par `git restore --staged --worktree` AVANT le commit. Réflexe : après tout `rm`/`git rm` avec glob, relire `git status --short` et vérifier le périmètre AVANT de committer ; préférer lister les chemins explicitement. Cf. [[feedback_concurrent_git_staging]]. | gravée 2026-07-18
 

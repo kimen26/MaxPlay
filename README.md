@@ -7,42 +7,27 @@
 
 ---
 
-## 🎮 Les jeux de Max
+## 🎮 Les jeux
 
-| Jeu | Description | Compétence |
-|-----|-------------|------------|
-| **MJ-01** 🎨 [Quelle couleur ?](https://kimen26.github.io/MaxPlay/mj-01.html) | Devine la couleur du bus | Couleurs + TTS |
-| **MJ-02** 🔢 [Quel numéro ?](https://kimen26.github.io/MaxPlay/mj-02.html) | Lis le numéro sur le bus | Reconnaissance visuelle |
-| **MJ-02b** 🔊 [Devine le numéro](https://kimen26.github.io/MaxPlay/mj-02b.html) | Écoute et trouve le numéro | TTS + 25+ lignes |
-| **MJ-03a** 👥 [Compte les passagers](https://kimen26.github.io/MaxPlay/mj-03a.html) | Groupes de passagers | Dénombrement |
-| **MJ-03b** 🪑 [La bonne place](https://kimen26.github.io/MaxPlay/mj-03b.html) | Calcul de places libres | Soustraction |
-| **MJ-04** 📖 [Lis le mot](https://kimen26.github.io/MaxPlay/mj-04.html) | Syllabe manquante | Lecture phonétique |
-| **MJ-05** 🎯 [Quel bus pour aller où ?](https://kimen26.github.io/MaxPlay/mj-05.html) | Trajets réels de Max | Géographie locale |
-| **MJ-06** 🏠 [Au garage !](https://kimen26.github.io/MaxPlay/mj-06.html) | Range les bus | Logique + drag |
-| **MJ-07** 🗺️ [La journée de Max](https://kimen26.github.io/MaxPlay/mj-07.html) | Explore Villejuif | Sandbox Phaser |
+40+ mini-jeux HTML (bus, dinos, lecture, maths…) + une encyclopédie dinosaures narrée.
+Le catalogue vivant est le menu du site : [kimen26.github.io/MaxPlay](https://kimen26.github.io/MaxPlay/) — la liste exhaustive vit dans `site/js/catalog.js`.
 
 ---
 
-## 🏗️ Architecture (refonte 2026-04-30)
+## 🏗️ Architecture (modèle « 1 plateforme · N domaines », 2026-07)
 
 ```
 MaxPlay/
-├── studio/minijeux/                   ← PÔLE JEU
-│   ├── web/                ← 21 mini-jeux HTML vanilla (déployés à /)
-│   ├── phaser/             ← max-adventure Phaser TS+Vite (déployé à /max-adventure/)
-│   ├── docs/               ← specs, audit, recherche, ratp-colors.json
-│   ├── memory/             ← state.md · rules.md · stack.md
-│   └── tasks/              ← BACKLOG.md (épics jeu)
-│
-├── narration/              ← PÔLE NARRATION (univers éditorial)
-│   ├── stories/  personnages/  enneagramme/  univers/
-│   ├── pmo/  equipe/  archive/
-│   ├── scripts/            ← CLI (new-story, archive-story, gatekeeper, ...)
-│   ├── memory/             ← state.md · business/
-│   ├── INBOX.md INDEX.md
-│
-├── infra/                  ← bot Telegram + serveur MCP llm-copains
-├── memory/                 ← transverse : MEMORY · MAX_PROFILE · VISION · workflow
+├── site/                   ← LE site déployé (GitHub Pages) : menu, mini-jeux mj-XX.html,
+│                              encyclopédie dino (dev-dinos.html), audio, images
+├── studio/                 ← pôles d'autoring (non déployés)
+│   ├── minijeux/           ← PÔLE JEU (docs, pmo, tests Playwright, inbox)
+│   ├── dino/               ← PÔLE DINO (contenu, sources, scripts, pmo) — code déployé dans site/
+│   ├── narration/          ← PÔLE NARRATION (stories, personnages, univers, pmo, equipe)
+│   ├── lunii/              ← distribution boîte à histoires Lunii (STUdio)
+│   └── max-adventure/      ← source Phaser TS+Vite (build → site/max-adventure/)
+├── infra/                  ← bot Telegram + serveur MCP llm-copains + Supabase
+├── memory/                 ← transverse : MEMORY · MAX_PROFILE · VISION · audits/
 └── _archive/               ← cadavres préservés (cf. _archive/INDEX.md)
 ```
 

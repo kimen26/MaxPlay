@@ -2263,3 +2263,5 @@ Setup complet infrastructure. EP-001 terminé. Scaffold Phaser.js créé.
   - MJ-05 : Trajets réels détaillés (Valouette, mamie, tata Sarah...)
   - MJ-06 : Places numérotées au sol, pas garage 3D
 - Analyse assets `temp/` → 30k+ fichiers mais essentiels déjà dans `game/public/assets/`
+
+- 2026-07-19 (session nettoyage GED) : inbox purgee (grok.md, FICHES-RESTRUCTUREES, package-celebrations, package-maxplay-design — tout integre en prod ; designv3 conserve a la racine inbox, a comparer a mp-theme.css avant purge = Q4), GAMES_SPECS.md archive dans docs/jeux/_archive/, 60 fichiers tests/.artifacts desindexes de git (17 Mo). Rapport complet : memory/audits/2026-07-19-nettoyage-ged.md (QUESTIONS Q1-Q12 en attente Papa Yann).

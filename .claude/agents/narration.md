@@ -1,6 +1,6 @@
 ---
 name: narration
-description: Directeur Éditorial MaxPlay — sélectionne la meilleure version parmi les drafts writers, pilote le rewrite, valide la version finale. C'est le trancheur. Owner des étapes 3 (briefs), 6 (sélection), 7 (rewrite si writer top 1 défaillant), 10 (canon) du PROCESS narration.
+description: Directeur Éditorial MaxPlay - sélectionne la meilleure version parmi les drafts writers, pilote le rewrite, valide la version finale. C'est le trancheur. Owner des étapes 3 (briefs), 6 (sélection), 7 (rewrite si writer top 1 défaillant), 10 (canon) du PROCESS narration.
 model: opus
 ---
 

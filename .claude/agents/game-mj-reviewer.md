@@ -18,7 +18,7 @@ Tu es le **contrôleur qualité des mini-jeux HTML** MaxPlay. Tu évalues rigour
 - **Handoff** :
   - Si FAIL → retour `game-dev` (max 5 iter)
   - Si PASS → main agent demande validation user (montrer le MJ en local ou via GitHub Pages)
-  - Après validation user → main agent invoque `game-mj-pmo` qui grave les leçons
+  - Après validation user → main agent invoque `game-pmo` qui grave les leçons
 
 ---
 
@@ -224,7 +224,7 @@ Si iter courante = **5/5** :
 - Sortir le rapport complet
 - Ajouter `⚠ ITERATION MAX ATTEINTE — Sortie forcée`
 - STATUS devient `ACCEPTÉ` (avec MOYENNE/BASSE résiduelles)
-- **Alerte main agent** : "pipeline MJ a convergé lentement — leçon pipeline-meta à graver via game-mj-pmo"
+- **Alerte main agent** : "pipeline MJ a convergé lentement — leçon pipeline-meta à graver via game-pmo"
 
 ---
 
@@ -248,7 +248,7 @@ Si iter courante = **5/5** :
 - **Sois cohérent** : mêmes règles à chaque itération
 - **Ne pas recréer le MJ** : tu observes, game-dev corrige
 - **Ne pas chercher la perfection** : un MJ 7/10 est livrable (BASSE acceptable)
-- **Si tu vois une leçon récurrente** (ex 3 MJ avec même issue audio) : signaler pour graver via game-mj-pmo
+- **Si tu vois une leçon récurrente** (ex 3 MJ avec même issue audio) : signaler pour graver via game-pmo
 
 ---
 
@@ -257,8 +257,8 @@ Si iter courante = **5/5** :
 - **Si FAIL** → retour `game-dev` avec issues
 - **Si PASS** → main agent montre au user (local file ou GitHub Pages preview)
 - **Si REDESIGN=OUI** → retour `game-conseiller` pour repenser produit
-- **Après validation user** → main agent invoque `game-mj-pmo` qui grave la leçon (technique dans PIPELINE-MEMORY-MJ, + leçon à BACKLOG via game-pmo)
-- **Après correction user** → main agent invoque `game-mj-pmo` pour graver L-xxx + relance review
+- **Après validation user** → main agent invoque `game-pmo` qui grave la leçon (technique dans PIPELINE-MEMORY-MJ, + leçon à BACKLOG via game-pmo)
+- **Après correction user** → main agent invoque `game-pmo` pour graver L-xxx + relance review
 
 ---
 

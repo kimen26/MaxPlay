@@ -22,7 +22,7 @@ mis_a_jour: 2026-05-15
 | **Directeur** `narration` | Opus | Sélection parmi 14 writers · pilotage rewrite consolidé · version finale · décisions contenu ambiguës | Indexation · création dossiers · archivage |
 | **Writers × 14** (13 libres + 1 guidé, refonte v2 2026-05-12, "reco" = température créatif officielle par fournisseur) | Claude Opus/Sonnet/Haiku × déf/reco (×6) · Kimi K2.6 déf/reco/thinking/guidé (×4) · DeepSeek V4-Pro déf/reco (×2) · Grok 4.3 déf/reco (×2) | Version complète dans `stories/<NNN-slug>/4-versions-writers/` + note d'intention. Libres = FORME uniquement. Guidé = forme + axes 1-6 + trame story optionnelle (`3-briefs/brief-writer-guide.md`). Référence températures : `equipe/references/temperatures-llm.md`. | Cohérence univers (c'est le GateKeeper qui vérifie) |
 | **GateKeeper** `narration-gatekeeper` | Haiku | PASS/FAIL ennéagramme · univers · prénoms | Réécriture · style · contenu créatif |
-| **Archiviste** `narration-archiviste` | Haiku | Structure dossiers conforme · index à jour · README YAML rempli · lookup.yml cohérent | Décisions de contenu · création narrative |
+| **Archiviste** `narration-pmo` (unifié 2026-07-19) | Haiku | Structure dossiers conforme · index à jour · README YAML rempli · lookup.yml cohérent | Décisions de contenu · création narrative |
 | **Science** `narration-science` | Haiku | Faits biologiques/physiques/écologiques validés | Style · structure · cohérence univers |
 | **Sensibilité** `narration-sensibilite` | Sonnet | Risques conspirationnistes/polarisation détectés + décision OUI/NON enregistrée | Contenu créatif |
 
@@ -184,7 +184,7 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 | `.claude/agents/narration-pmo.md` | PMO | Auteur |
 | `.claude/agents/narration.md` | Directeur | Auteur |
 | `.claude/agents/narration-conseiller.md` | Conseiller Narratif | Auteur |
-| `.claude/agents/narration-architecte.md` | Architecte | Auteur |
+| `.claude/agents/narration-conseiller.md (architecte absorbé 2026-05-12)` | Architecte | Auteur |
 | `.claude/agents/narration-gatekeeper.md` | GateKeeper | Auteur |
 | `.claude/agents/narration-writer-claude-libre.md` | Writer Claude Libre (Opus 4.7) | Auteur |
 | `.claude/agents/narration-writer-kimi-guide.md` | Writer Kimi Guidé (Sonnet orchestre + Kimi K2.6 via MCP) | Auteur |
@@ -193,7 +193,7 @@ Nouvelle grosse idée cohérente → nouveau fichier thématique. Idée isolée 
 | `narration/equipe/lecons-vivantes.md` | Document vivant des patterns narratifs (P1-P6, G1-G6, axes) — mis à jour à chaque canonisation | Conseiller + Directeur |
 | `narration/equipe/templates/brief-writer-libre.template.md` | Brief commun aux 9 writers libres (forme uniquement) — **ACTIF, injecté dans tous les prompts writers étape 4. Pas d'archivage.** | Directeur |
 | `narration/equipe/templates/brief-writer-guide.template.md` | Brief enrichi pour 1 writer guidé (annexe AXES 1-6) | Directeur |
-| `.claude/agents/narration-archiviste.md` | Archiviste | Auteur |
+| `.claude/agents/narration-pmo.md` | Archiviste | Auteur |
 | `.claude/agents/narration-science.md` | Science | Auteur |
 | `.claude/agents/narration-sensibilite.md` | Sensibilité | Auteur |
 

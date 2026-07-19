@@ -88,6 +88,7 @@ Plan → TodoWrite → Dev (subagents) → Verify → Commit → Docs
 | [`memory/MAX_PROFILE.md`](memory/MAX_PROFILE.md) | Profil complet Max |
 | [`memory/VISION.md`](memory/VISION.md) | Vision produit jeu |
 | [`memory/workflow.md`](memory/workflow.md) | Workflow session |
+| [`memory/DOCTRINE.md`](memory/DOCTRINE.md) | Doctrine GED transverse (canon sans numéro, zéro chiffre en dur, frontières) — chaque PMO/INDEX de pôle y pointe |
 | [`memory/skills-map.md`](memory/skills-map.md) | Agents, skills, commandes |
 | [`memory/audits/2026-07-06-infra-business.md`](memory/audits/2026-07-06-infra-business.md) | Audit infra & business 2026 (légal enfants, archi phasée, monétisation) |
 | [`infra/supabase/README.md`](infra/supabase/README.md) | Supabase Phase 1 (auth parent, sync progression, voix cloud) |

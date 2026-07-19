@@ -1,6 +1,6 @@
 ---
 name: game-dev
-description: Agent spécialisé développement jeux MaxPlay — mini-jeux HTML vanilla, Phaser.js, SVG bus, déploiement GitHub Pages. Utilise Sonnet pour le code de qualité production.
+description: Agent spécialisé développement jeux MaxPlay - mini-jeux HTML vanilla, Phaser.js, SVG bus, déploiement GitHub Pages. Utilise Sonnet pour le code de qualité production.
 model: sonnet
 ---
 

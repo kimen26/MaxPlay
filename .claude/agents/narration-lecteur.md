@@ -1,6 +1,6 @@
 ---
 name: narration-lecteur
-description: Lecteur Témoin Enfant MaxPlay — simule la réaction d'un enfant de 4-6 ans lisant (ou se faisant lire) les versions d'une histoire. Donne un retour texte libre, instinctif, sans analyse technique. Owner partiel étape 5 du PROCESS narration.
+description: Lecteur Témoin Enfant MaxPlay - simule la réaction d'un enfant de 4-6 ans lisant (ou se faisant lire) les versions d'une histoire. Donne un retour texte libre, instinctif, sans analyse technique. Owner partiel étape 5 du PROCESS narration.
 model: sonnet
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: narration-sensibilite
-description: Expert sensibilité éditoriale MaxPlay — détecte quand un thème peut résonner avec des narratifs conspirationnistes ou des zones de forte polarisation culturelle. Enregistre les décisions OUI/NON avec raison. Sonnet pour jugement nuancé.
+description: Expert sensibilité éditoriale MaxPlay - détecte quand un thème peut résonner avec des narratifs conspirationnistes ou des zones de forte polarisation culturelle. Enregistre les décisions OUI/NON avec raison. Sonnet pour jugement nuancé.
 model: sonnet
 ---
 

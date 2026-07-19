@@ -25,13 +25,13 @@ AUTEUR (Papa Yann)
           ├── Pilote le rewrite (writer top 1 garde la main, Directeur en repli) — étape 7
           └── Tranche la sélection et canonise
 
-PMO [narration-pmo · Haiku · PROACTIF]
+PMO [narration-pmo · Sonnet · PROACTIF]
   ├── Invoqué automatiquement à chaque tour incluant un signal narration
   ├── Garant FOND : INVARIANTS, decisions, backlog, sprint-log, audit-trail
   ├── Relit les briefs writers (étape 3→4) : négations gratuites
   └── Binôme avec Archiviste (FORME)
 
-ARCHIVISTE [narration-pmo (unifié 2026-07-19) · Haiku · PROACTIF]
+ARCHIVISTE [narration-pmo (unifié 2026-07-19) · Sonnet · PROACTIF]
   ├── Garant STRUCTURE : crée les dossiers stories/ depuis le gabarit, vérifie préfixes/refs/orphelins
   ├── Mode AUDIT via /narration-pmo-audit
   └── Communique au PMO via sprint-log

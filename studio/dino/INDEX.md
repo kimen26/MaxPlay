@@ -58,7 +58,7 @@
 
 | Agent | Rôle |
 |-------|------|
-| `dino-pmo` (haiku) | FOND — persistance pmo/, décisions, leçons |
+| `dino-pmo` (sonnet) | FOND — persistance pmo/, décisions, leçons |
 | `dino-conseiller` (sonnet) | Créatif — péda 4 ans, fact-check Grokipedia, écriture audio, taxo |
 
 ## État

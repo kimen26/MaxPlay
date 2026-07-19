@@ -20,7 +20,7 @@ PÔLE JEU
 ├── 🎮 MINI-JEUX HTML (mj-XX)
 │   État : **29 actifs** (mise à jour 2026-07-05 post-MJ-28..33 dinos déploiement; mj-02/03/07/10 retirés), pipeline stabilisé
 │   Règles UX/péda/audio/graphique très denses (voir rules.md + stack.md)
-│   Équipe : game-dev (sachant) + game-mj-pmo + game-mj-reviewer
+│   Équipe : game-dev (sachant) + game-pmo + game-mj-reviewer
 │
 ├── 🗺️ WEXWORLD / Max Adventure
 │   État : EMBRYONNAIRE (Phaser + Vite + TS strict, quartier 16×12, scene Hub + Sandbox)
@@ -91,7 +91,7 @@ Pour qu'une histoire canon soit "prête pour adaptation WexWorld", elle doit sat
 | # | Prérequis | Vérifié par | Source |
 |---|---|---|---|
 | 1 | **Tokens Jinja figés** dans `texte.md` (`{{ wex }}`, `{{ titi_N }}`) | narration-pmo (Phase C tranchée 2026-05-11) | `decisions.md` Phase C |
-| 2 | **Ennéatypes des PNJ gravés** dans `personnages/type-NN/` (pour traduction comportements en jeu) | narration-archiviste | `personnages/INDEX.md` |
+| 2 | **Ennéatypes des PNJ gravés** dans `personnages/type-NN/` (pour traduction comportements en jeu) | narration-pmo (unifié 2026-07-19) | `personnages/INDEX.md` |
 | 3 | **Dialogues suffisamment courts** pour UX mobile / dialogue box jeu (lignes < 80 chars idéal) | narration-gatekeeper | `equipe/patte-papa-yann.md` |
 | 4 | **Voix ElevenLabs générées** (au moins narrateur + PNJ principaux) | narration-audio | `personnages/voix-meta/` + `stories/<NNN>/audio/` |
 | 5 | **Variantes cross-culture** identifiées (au moins FR figé, autres optionnels) | narration-localisation | `cross-culture/castings-nationaux/` |

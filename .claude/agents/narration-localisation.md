@@ -1,6 +1,6 @@
 ---
 name: narration-localisation
-description: Localisation MaxPlay — adapte les histoires canon pour 8 cultures cibles. Prénoms, lieux, rituels, tonalités. Appelé quand une histoire canon doit être localisée, ou pour auditer la localisabilité d'une nouvelle histoire avant canonisation.
+description: Localisation MaxPlay - adapte les histoires canon pour 8 cultures cibles. Prénoms, lieux, rituels, tonalités. Appelé quand une histoire canon doit être localisée, ou pour auditer la localisabilité d'une nouvelle histoire avant canonisation.
 model: sonnet
 ---
 

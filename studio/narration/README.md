@@ -74,7 +74,7 @@ narration/
 ## Écrire une nouvelle histoire
 
 1. Copier `stories/_gabarit/` → `stories/<NNN-titre>/`
-2. Remplir. Le catalogue `stories/INDEX.md` est auto-généré par `narration-archiviste`.
+2. Remplir. Le catalogue `stories/INDEX.md` est auto-généré par `narration-pmo (unifié 2026-07-19)`.
 
 ---
 

@@ -222,3 +222,5 @@ Refonte UI + audio + création du pôle DINO (voir `sprint-log.md`). Décisions 
 - 2026-07-19 (nettoyage GED, tour 3) : audit couverture images COMPLET — 100% des images prod atteignables (paleoart 422, ombres 60, grok 118, wiki 50, sprites/traces = reserves actees), 60/60 dinos complets. Staging _new-* verifie redondant -> FLUSH (~1 Go) sauf variante Ichthyosaurus_paris-plongeur.png preservee dans content/sources/images/variantes-non-retenues/. README dinos +traces/. INDEX-IMAGES : nommage Amargasaurus corrige (hypo-epines/hypo-voile). Nouveaux index : site/img/INDEX.md + decor/README + avatars/README, script gen_avatars_manifest.py rapatrie de c:/tmp.
 
 - 2026-07-19 (nettoyage GED, tour 4) : content/INDEX.md nettoye (ligne inbox/ inexistant retiree, question caduque 001-trex supprimee).
+
+- 2026-07-19 (nettoyage GED, tour 6) : V3/CONSIGNES.md complete avec la table de tracabilite qualite (8 relectures + factcheck + diagnostic + plan, presents mais decrits nulle part) ; norme : artefacts qualite co-localises avec le chantier.

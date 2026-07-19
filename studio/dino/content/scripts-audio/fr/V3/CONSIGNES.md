@@ -90,3 +90,20 @@ Ecrire le résultat dans `{famille}-{lot}.md` (même dossier — relocalisé dep
 - [ ] Grep interdits : `max|doudou|peluche|nounours|\bbus\b` (hors échelle).
 - [ ] Tags max 2 au début d'une phrase.
 - [ ] Noms savants respellés.
+
+---
+
+## Tracabilite qualite du chantier V3 (fichiers de ce dossier)
+
+| Fichier | Role |
+|---|---|
+| `diagnostic-plan-fiches-dino.md` | Diagnostic d origine (2026-06-14) qui a mene au plan V3 |
+| `plan-reecriture-fiches-dino-V3-consolide.md` | Plan consolide du chantier |
+| `therizinosaurus-V3-exemple.md` | Exemple VALIDE (reference obligatoire, cf. consigne 7) |
+| `_FACTCHECK-paleo-grokipedia.md` | Fact-check paleo (Grokipedia 1ere source) des lots |
+| `_PROMPT-RELECTURE-EXTERNE.md` | Prompt du panel de relecture |
+| `_RELECTURE-dino-conseiller.md` / `_RELECTURE-narration-conseiller.md` | Relectures conseillers (peda 4 ans / narration) |
+| `_RELECTURE-dyade-*.md` (4) | Relectures dyades parent-enfant simulees |
+| `_RELECTURE-lecteur-*.md` (2) | Relectures lecteurs temoins enfants |
+
+> Norme : ces artefacts qualite restent CO-LOCALISES avec le chantier (pas dans pmo/audits/ — ils appartiennent au contenu, pas a la gouvernance). Section ajoutee 2026-07-19 (audit GED : fichiers presents mais decrits nulle part).

@@ -26,3 +26,10 @@
 ---
 
 _Créé 2026-07-17 sur demande Papa Yann (session refonte menu v2 / organisation des jeux). Pointeurs à maintenir : `studio/minijeux/pmo/INVARIANTS.md`, `studio/dino/` (INDEX ou INVARIANTS), `studio/narration/` (INDEX). Racine `memory/MEMORY.md` § doctrine._
+
+## Norme audits (gravee 2026-07-19, session nettoyage GED)
+
+- **Audit transverse** (multi-poles, infra, GED) -> `memory/audits/AAAA-MM-JJ-<sujet>.md` (index : ligne dans `memory/MEMORY.md`).
+- **Audit de pole** -> `studio/<pole>/pmo/audits/AAAA-MM-JJ-<sujet>.md` (trace dans `pmo/audit-trail.md`).
+- Jamais d audit a la racine d un `docs/`, jamais de prefixe `AUDIT-` en vrac : la DATE d abord, le sujet ensuite.
+- Retention : audit non cite par une decision et > 7 jours = supprime (recuperable git).

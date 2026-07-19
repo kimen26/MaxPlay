@@ -14,15 +14,17 @@ studio/minijeux/          ← GOUVERNANCE + specs (PAS le code déployé)
 ├── EQUIPE.md             ← organigramme complet équipe
 ├── INBOX.md · inbox/     ← idées entrantes (bot Telegram + dépôts manuels)
 ├── docs/
-│   ├── jeux/             ← INDEX, GAMES_SPECS, ASSETS, AUDIO_ASSETS, game-ideas, figees/
-│   ├── audit/            ← INDEX, jeux-2026-04, factorisation, roadmap-technique
-│   └── research/         ← benchmark-kids-games
+│   ├── jeux/             ← INDEX, CLASSIFICATION, figees/, specs mj, ASSETS, AUDIO_ASSETS, _archive/
+│   ├── specs/            ← ARCHI-COMPTES-PROFILS · NORME-i-REGLES · REGISTRE-VOIX-A-GENERER
+│   ├── research/         ← benchmark-kids-games · sources-jeux-addictifs-adultes · SYNTHESE
+│   ├── MECANIQUES.md · STANDARD-MJ.md · ratp-colors.json
 ├── memory/               ← sources de vérité statiques
 │   ├── state.md          ← état déploiement (jeux actifs, bugs critiques)
 │   ├── rules.md          ← règles UX/péda + designs validés
 │   ├── stack.md          ← Phaser, archi déploiement, règles SVG
 │   └── VISION-LONG-TERME.md ← Phase 2 WexWorld, pont narration↔jeu
 ├── pmo/                  ← INVARIANTS · decisions · sprint-log · backlog · audit-trail
+│   └── audits/           ← audits datés du pôle (norme 2026-07-19 : AAAA-MM-JJ-sujet.md)
 ├── tasks/BACKLOG.md      ← stub redirection vers pmo/backlog.md
 └── tests/                ← harnais Playwright mini-jeux (EP-038)
 
@@ -90,7 +92,7 @@ Détails complets : [`EQUIPE.md`](EQUIPE.md).
 | [`site/design-compte/`](../../site/design-compte/) | **Chantier UI compte** (mockups étoiles/récompenses) — voir `NOTES-DESIGN-COMPTE.md` interne |
 | [`site/design-shared/`](../../site/design-shared/) | Assets partagés des chantiers design (mockup.css/js + fonts) — utilisé par design-lecture ET design-compte |
 | [`site/atelier-couleurs.html`](../../site/atelier-couleurs.html) | Atelier prototype recoloration avatars (algo repris dans `avatar-picker.js`) |
-| [`site/index2.html`](../../site/index2.html) · [`site/index3.html`](../../site/index3.html) | Prototypes menu alternatifs (« ligne » / « fusée ») — décision non tranchée, voir [`docs/audit/menu-2026-07.md`](docs/audit/menu-2026-07.md) |
+| [`site/index2.html`](../../site/index2.html) · [`site/index3.html`](../../site/index3.html) | Prototypes menu alternatifs (« ligne » / « fusée ») — décision non tranchée, voir [`pmo/audits/2026-07-19-menu-parcours.md`](pmo/audits/2026-07-19-menu-parcours.md) |
 | [`site/tile-tools/README.md`](../../site/tile-tools/README.md) | Pipeline complet (render, recipes, scripts, vocab.py, styles.py) |
 
 **Workflow Propose → Édite → Apprend** :

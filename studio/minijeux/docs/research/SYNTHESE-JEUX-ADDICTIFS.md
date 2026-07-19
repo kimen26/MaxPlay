@@ -1,7 +1,7 @@
 # 🌍 MÉGA-SYNTHÈSE — Mini-jeux addictifs adultes → MaxPlay
 
 > **Fusion de 2 audits indépendants** (2026-07-06) :
-> - Audit A : [`AUDIT-MINI-JEUX-ADDICTIFS-ADULTES.md`](AUDIT-MINI-JEUX-ADDICTIFS-ADULTES.md) (copain LLM, 2026-07-05) — 40 jeux, taxonomie cognitive, 15 idées transposées bus, matrice de priorisation.
+> - Audit A : [`sources-jeux-addictifs-adultes.md`](sources-jeux-addictifs-adultes.md) (copain LLM, 2026-07-05) — 40 jeux, taxonomie cognitive, 15 idées transposées bus, matrice de priorisation.
 > - Audit B : méga-audit Claude 4 agents parallèles (2026-07-06) — ~90 jeux : digitaux 2024-26 + traditionnels par région (Asie/Russie · Afrique/Maghreb/Moyen-Orient · Amériques/Europe/Pacifique).
 >
 > Consigne Papa Yann : thème **dinos**, **bus**, ou **jeu d'origine gardé tel quel** si la déclinaison n'apporte rien.

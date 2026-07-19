@@ -91,7 +91,7 @@ Détails complets : [`EQUIPE.md`](EQUIPE.md).
 | [`site/design-compte/`](../../site/design-compte/) | **Chantier UI compte** (mockups étoiles/récompenses) — voir `NOTES-DESIGN-COMPTE.md` interne |
 | [`site/design-shared/`](../../site/design-shared/) | Assets partagés des chantiers design (mockup.css/js + fonts) — utilisé par design-lecture ET design-compte |
 | [`site/atelier-couleurs.html`](../../site/atelier-couleurs.html) | Atelier prototype recoloration avatars (algo repris dans `avatar-picker.js`) |
-| [`site/index2.html`](../../site/index2.html) · [`site/index3.html`](../../site/index3.html) | Prototypes menu alternatifs (« ligne » / « fusée ») — décision non tranchée, voir [`pmo/audits/2026-07-19-menu-parcours.md`](pmo/audits/2026-07-19-menu-parcours.md) |
+| ~~index2/index3~~ | **ABANDONNÉS** (décision Papa Yann 2026-07-19) — `index.html` = LE menu unique. Analyse conservée : [`pmo/audits/2026-07-19-menu-parcours.md`](pmo/audits/2026-07-19-menu-parcours.md) |
 | [`site/tile-tools/README.md`](../../site/tile-tools/README.md) | Pipeline complet (render, recipes, scripts, vocab.py, styles.py) |
 
 **Workflow Propose → Édite → Apprend** :

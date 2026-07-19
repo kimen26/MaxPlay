@@ -118,6 +118,19 @@ C'est un **diff sémantique code ↔ loi figée**, ligne par ligne, citations ob
 | **Spec passe** | `cd studio/minijeux/tests && npm run mj:test mj-XX` → VERT (le demander au main agent si tu ne peux pas l'exécuter) | CRITIQUE si rouge |
 | **Couvre la victoire** | Le spec rejoue un chemin gagnant et asserte l'état de victoire visible/non-vide | HAUTE |
 | **Couvre le figé** | ≥ 1 assert par ligne 🔒 du fichier `figees/mj-XX.md` | HAUTE |
+
+### Section 7 — HAUTE — CONTRAT MJ v2 (bibliothèque + gabarit, décision Papa Yann 2026-07-19)
+
+> Source : `studio/minijeux/docs/STANDARD-MJ.md` § CONTRAT MJ v2. Les checks mécaniques sont dans `tests/audit-gabarit.mjs` (les demander au main agent) — TOI tu juges ce qu'un script ne peut pas juger.
+
+| Check | Règle | Si violé |
+|---|---|---|
+| **Titre à impact** | `catalog.js` : titre ≤ 4 mots, dit l'ACTION du jeu (« Trouve le dino », pas « Jeu de dinos ») | HAUTE |
+| **Miniature parlante** | emoji du catalogue représente l'action/objet du jeu, pas un générique (🎮 interdit) | HAUTE |
+| **Aire pédagogique juste** | `category` correspond à la compétence réellement travaillée | HAUTE |
+| **Point = bibliothèque** | chaque bonne réponse passe par `MaxFX.randomPoint` (ou `markPoint` avec style homologué) — AUCUNE animation maison de point | CRITIQUE |
+| **Sans-faute = bibliothèque** | victoire parfaite → `MaxFX.randomFinal` (+ `belt`) — AUCUNE célébration ad-hoc | CRITIQUE |
+| **Extension propre** | si le jeu introduit une nouvelle célébration : elle est DANS `celebrations.js` (MARKS/STARS), pas dans le HTML du jeu | CRITIQUE |
 | **Smoke** | Le spec échoue sur toute `console.error`/`pageerror` | HAUTE |
 
 ---

@@ -105,6 +105,15 @@ Ne jamais dupliquer game-mj-reviewer pour l'UX.
 
 Voie express (patch/bugfix MJ existant) : lire figé → fix → harnais vert → push. Tweak cosmétique : direct (hook figeage = filet). Max 5 itérations reviewer ↔ dev.
 
+## 🔒 CONTRAT MJ v2 (décision Papa Yann 2026-07-19) — OBLIGATOIRE
+
+Source de vérité : [`studio/minijeux/docs/STANDARD-MJ.md`](../../studio/minijeux/docs/STANDARD-MJ.md) § CONTRAT MJ v2. Résumé enforced :
+
+1. **Catalogue complet** (`catalog.js`) : titre à impact ≤ 4 mots · category = aire péda · emoji-miniature PARLANTE · desc — check BLOQUANT `audit-gabarit.mjs`.
+2. **Shell** : `MJ.init` (entête ←/règle 🧑‍🔬/💬/consigne) · **piste golden + étoiles**.
+3. **Point** → `MaxFX.randomPoint(fromEl, pipEl, {result})` · **sans-faute** → `MaxFX.randomFinal(container, {belt})`. **Tirage bibliothèque, JAMAIS d'animation maison dans un jeu.**
+4. **Étendre = enrichir la bibliothèque** : nouvelle célébration → `celebrations.js` (`MARKS`/`STARS`, entre d'office dans le tirage de tous les jeux) · nouvelle mécanique → `MECANIQUES.md` d'abord.
+
 ## Structure d'un mini-jeu — LE GABARIT `js/mj-shell.js` (décision Papa Yann 2026-07-14)
 
 **UNE inclusion charge tout le cadre standard** (thème, golden, panneau 🧑‍🔬, tracking, cloud, célébrations) dans le bon ordre — plus JAMAIS la liste de 14 scripts à la main :

@@ -154,6 +154,27 @@ function auditOne(file) {
   add('warn', 'a une spec de gameplay (harnais Playwright)', existsSync(specPath),
     existsSync(specPath) ? '' : `manque ${id}.spec.mjs — le gameplay n'est pas couvert`);
 
+  // ── CONTRAT MJ v2 (2026-07-19) — catalogue complet + bibliothèque MaxFX ────
+  const catPath = resolve(SITE, 'js', 'catalog.js');
+  if (existsSync(catPath)) {
+    const entryLine = readFileSync(catPath, 'utf8').split('\n')
+      .find(l => l.includes(`id:'${id}'`) || l.includes(`id: '${id}'`));
+    if (entryLine) {
+      const missing = ['titre', 'emoji', 'desc', 'category']
+        .filter(f => !new RegExp(`${f}\\s*:\\s*'[^']+'`).test(entryLine));
+      add('block', 'entrée catalog.js complète — titre/emoji/desc/category (CONTRAT MJ v2)',
+        missing.length === 0,
+        missing.length ? `champs vides ou absents : ${missing.join(', ')}` : '');
+    }
+  }
+  add('warn', 'célébrations via bibliothèque MaxFX (celebrations.js ou shell)',
+    /js\/celebrations\.js/.test(html) || usesShell,
+    'CONTRAT v2 : point → MaxFX.randomPoint, sans-faute → MaxFX.randomFinal');
+  const adhocFx = /@keyframes\s+[a-z-]*(confetti|firework|celebr)/i.test(html)
+    || /confettiBurst\s*\(/.test(scriptBlocks);
+  add('warn', "pas d'animation de victoire ad-hoc (bibliothèque MaxFX only)", !adhocFx,
+    'CONTRAT v2 : migrer vers MaxFX.randomFinal — on enrichit la bibliothèque, jamais le jeu');
+
   return { id, missing: false, checks };
 }
 

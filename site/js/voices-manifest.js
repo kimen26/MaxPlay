@@ -5,7 +5,7 @@
 //
 //  V0 : vide — la structure est en place, les clips arriveront au fil de la
 //  production audio (ElevenLabs pour narration/dino, Qwen3 pour phrases MJ).
-//  Générer les clés : Voice.normalize("Bravo Max !") → "bravo max"
+//  Générer les clés : Voice.normalize("Bravo !") → "bravo max"
 // ─────────────────────────────────────────────────────────────────────────
 window.MAXPLAY_VOICES = {
   // "bravo": "audio/voix/bravo.mp3",

@@ -212,3 +212,10 @@ partagent 80% de code. Catalog : nouvelle catégorie « Lecture » dans `site/js
 
 _Créé 2026-07-19 suite à la demande parent (jeux lecture, cursive Montessori, sons complexes).
 Ajout même jour : jeux 3-4 (révision lettres, demande parent). Sources web citées au §2._
+
+---
+
+## 🚨 RÈGLE PRODUIT (Papa Yann, 2026-07-19) — à appliquer avant mise au catalogue
+
+- **Jamais « Max » dans ce que l enfant voit/entend** — utiliser le pseudo du compte (`localStorage maxplay_active_child`) ou une formule neutre.
+- **Jamais le rapport personnel au Brésil** : `mockup-15-drapeaux.html` dit en TTS « Brésil ! Le pays de mamãe ! 💚 » → À RETIRER (le Brésil reste un pays parmi d autres, traitement neutre). Idem textes « Max lit les dorées » (index + mockup-19) → « l enfant » / pseudo.

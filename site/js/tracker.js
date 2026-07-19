@@ -23,7 +23,7 @@ const Tracker = (() => {
     'mj-04': { name: 'Compte les passagers',  emoji: '👥', skill: 'Dénombrement' },
     'mj-05': { name: 'La bonne place',        emoji: '🪑', skill: 'Soustraction' },
     'mj-06': { name: 'Lis la phrase',         emoji: '📖', skill: 'Lecture' },
-    'mj-07': { name: 'La journée de Max',     emoji: '🎮', skill: 'Sandbox Phaser' },
+    'mj-07': { name: 'Max Adventure',     emoji: '🎮', skill: 'Sandbox Phaser' },
     'mj-08': { name: 'Au centre bus',         emoji: '🅿️', skill: 'Tri / drag-drop' },
     'mj-09': { name: 'Trie les bus !',        emoji: '🔀', skill: 'Tri / classement' },
     'mj-10': { name: 'Tableau de bord',       emoji: '🎵', skill: 'Sons / exploration' },

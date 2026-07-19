@@ -128,7 +128,7 @@
     <span class="star" data-s="3">⭐</span>
   </div>
 
-  <div class="banner" id="banner">À toi de jouer, Max !</div>
+  <div class="banner" id="banner">À toi de jouer !</div>
 
   <div class="stage">
     <div class="sun"></div>
@@ -149,7 +149,7 @@
   </div>
 
   <div id="overlay">
-    <h2 id="overlay-title">🎉 Bravo Max ! 🎉</h2>
+    <h2 id="overlay-title">🎉 Bravo ! 🎉</h2>
     <p id="overlay-text">Tu as aligné tes 3 pions !</p>
     <button id="replay-btn">Encore une ! 🔄</button>
   </div>
@@ -480,7 +480,7 @@
       const title = document.getElementById('overlay-title');
       const text = document.getElementById('overlay-text');
       if (maxWon) {
-        title.textContent = '🎉 Bravo Max ! 🎉';
+        title.textContent = '🎉 Bravo ! 🎉';
         text.textContent = 'Tu as aligné tes 3 pions sur le shisima !';
       } else {
         title.textContent = '🦎 Danse du caméléon !';
@@ -497,7 +497,7 @@
     function updateBanner() {
       const b = document.getElementById('banner');
       if (gameOver) return;
-      b.textContent = (turn === 'max') ? 'À toi de jouer, Max !' : 'Le caméléon réfléchit...';
+      b.textContent = (turn === 'max') ? 'À toi de jouer !' : 'Le caméléon réfléchit...';
     }
 
     // ── Paliers 3 étoiles ────────────────────────────────────────────────

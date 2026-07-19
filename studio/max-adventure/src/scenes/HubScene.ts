@@ -199,7 +199,7 @@ export class HubScene extends Phaser.Scene {
     gfx.lineStyle(3, 0xE64A19, 1);
     gfx.strokeRoundedRect(W / 2 - btnW / 2, btnY - btnH / 2, btnW, btnH, 26);
 
-    this.add.text(W / 2, btnY, '🗺️  La journée de Max  →', {
+    this.add.text(W / 2, btnY, '🗺️  Max Adventure  →', {
       fontFamily: 'Nunito',
       fontSize: portrait ? '18px' : '22px',
       fontStyle: 'bold',

@@ -140,7 +140,7 @@ const EXTINCTION = {
       label_certitude: null,
     },
   ],
-  fun_fact: 'Les oiseaux sont de VRAIS dinosaures ! Chaque fois que Max voit un pigeon, il voit un dino !',
+  fun_fact: 'Les oiseaux sont de VRAIS dinosaures ! Chaque fois que tu vois un pigeon, tu vois un dino !',
 };
 
 

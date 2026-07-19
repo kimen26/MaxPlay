@@ -20,7 +20,6 @@ const SOUND_POOLS = {
     'sounds/ff7_victory.mp3',                                // classiques conservés
     'sounds/victory-mario-series-hq-super-smash-bros.mp3',
     'sounds/zelda-tresor.mp3',
-    'sounds/super-max.mp3',
   ],
   // Fin de partie < 50% — DOUX, jamais punitif (zéro son "perdu")
   'end-doux': [

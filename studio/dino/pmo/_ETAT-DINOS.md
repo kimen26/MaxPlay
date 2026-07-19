@@ -10,7 +10,7 @@
 
 | Axe | Couverture |
 |-----|-----------|
-| hero | 60/62 |
+| hero | 62/62 |
 | paleoart | 60/62 |
 | coloriage | 60/62 |
 | audio | 60/62 |
@@ -23,8 +23,8 @@
 
 | Dino | id | Score | Manque |
 |------|----|-------|--------|
-| Corythosaure | `corythosaurus` | 3/8 | hero, paléoart(headshot/manger/paris/ecosysteme/funfact), coloriage, audio(nom/taille/regime/funfact/recap), silhouette |
-| Hatzegopteryx | `hatzegopteryx` | 3/8 | hero, paléoart(headshot/manger/paris/ecosysteme/funfact), coloriage, audio(nom/taille/regime/funfact/recap), silhouette |
+| Corythosaure | `corythosaurus` | 4/8 | paléoart(headshot), coloriage, audio(nom/taille/regime/funfact/recap), silhouette |
+| Hatzegopteryx | `hatzegopteryx` | 4/8 | paléoart(headshot), coloriage, audio(nom/taille/regime/funfact/recap), silhouette |
 
 ## Complets (60)
 

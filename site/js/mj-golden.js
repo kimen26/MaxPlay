@@ -159,7 +159,7 @@
           ? 'Niveau MAXIMUM&nbsp;! Champion&nbsp;!'
           : 'Recommence et essaie de gagner la ' + (newStars + 1) + 'ᵉ étoile&nbsp;!';
       } else {
-        title = 'Bien joué Max&nbsp;!';
+        title = (function(){try{var k=(JSON.parse(localStorage.getItem('maxplay_active_child'))||{}).nickname;return k?'Bien joué '+k+'&nbsp;!':'Bien joué&nbsp;!';}catch(e){return 'Bien joué&nbsp;!';}})();
         sub = 'Fais un sans-faute pour gagner l’étoile&nbsp;!';
       }
       const dly = perfect ? ['3s', '3.2s', '3.4s'] : ['.3s', '.5s', '.7s'];

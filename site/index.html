@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>MaxPlay – Les jeux de Max</title>
+  <title>MaxPlay</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚌</text></svg>">
   <link rel="manifest" href="manifest-classic.json">
   <link rel="apple-touch-icon" href="img/maxplay-icon-192.png">
@@ -140,7 +140,7 @@
   <div class="profil">
     <div class="avatar" id="profil-avatar" role="button" aria-label="Habille ton dino">🦕</div>
     <div class="col grow" style="gap:3px">
-      <div class="pseudo">Max</div>
+      <div class="pseudo" id="profil-pseudo">Champion</div>
       <div class="row" style="gap:6px">
         <div class="niveau"><i id="niveau-fill" style="width:0%"></i></div>
         <span class="muted" style="font-size:11.5px" id="niveau-label">Niveau 1</span>
@@ -165,7 +165,7 @@
   </div>
 
   <footer>
-    🚌 Fait avec ❤️ pour Max
+    🚌 Fait avec ❤️ pour mon Max
     <br><button id="parents-btn" style="background:rgba(255,255,255,0.06);border:1px solid var(--line);
       color:var(--ink-3);border-radius:12px;padding:8px 18px;font-family:inherit;font-weight:700;
       font-size:0.85rem;cursor:pointer;margin-top:6px;">👨‍👩‍👦 Espace parents</button>
@@ -215,7 +215,7 @@
     <div class="modal-box">
       <div class="m-emoji">💬</div>
       <h3 id="cmt-title">Ton avis sur ce jeu</h3>
-      <p>Note tout : ressenti de Max, bugs, idées…</p>
+      <p>Note tout : ressenti de l'enfant, bugs, idées…</p>
       <textarea id="cmt-input" rows="4" placeholder="Écris ton avis ici…" style="text-align:left;font-size:1rem;font-weight:700;resize:vertical;"></textarea>
       <div class="modal-actions">
         <button class="btn-cancel" id="cmt-cancel">Annuler</button>
@@ -515,5 +515,6 @@
     })();
   })();
   </script>
+<script>try{var _mpk=JSON.parse(localStorage.getItem('maxplay_active_child'));if(_mpk&&_mpk.nickname)document.getElementById('profil-pseudo').textContent=_mpk.nickname;}catch(e){}</script>
 </body>
 </html>

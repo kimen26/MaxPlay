@@ -570,7 +570,7 @@ function highlightBox(bus) {
     if (rangedCount >= totalBuses) {
       if (typeof Tracker !== 'undefined') Tracker.endSession(totalBuses, totalBuses);
       setTimeout(() => {
-        const a = new Audio('sounds/super-max.mp3');
+        const a = new Audio('sounds/fx/tada.mp3');
         a.volume = 0.85;
         a.play().catch(() => {});
         confettiBurst(60); showParade();

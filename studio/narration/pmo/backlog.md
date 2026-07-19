@@ -126,3 +126,9 @@
 - 2026-07-19 (nettoyage GED, tour 7 ecosysteme) : fantomes narration-archiviste/architecte purges des docs vivantes (equipe/INDEX arbre de decision, cartographie-domaines, ORGANIGRAMME Sonnet, templates/README, README pole, rules/stories-process) -> narration-pmo unifie Sonnet / narration-conseiller.
 
 - 2026-07-19 (nettoyage GED, tour 8) : INBOX.md lien _inbox corrige -> inbox/ ; sources-narratologie lien architecture-cross-culture -> cross-culture/doctrine.md ; PROCESS.md chemin rules/audio.md corrige.
+
+- 2026-07-19 (regle re-affirmee) : jamais Max ni rapport Bresil dans le contenu narre (deja L-feedback_jamais_nommer_max_contenu) — scan produit en cours cote jeu+narration.
+
+- 2026-07-19 (scan Max/Bresil) : canon stories 10-texte.md + segments JSON = 0 occurrence, narration PROPRE. Rien a corriger cote narration.
+
+- 2026-07-19 (DECISION Papa Yann) : la marque produit reste MaxPlay ; l univers NARRATION dans MaxPlay s appellera WEX WORLD (confirme piste project_wex_world_observateur — Wex observateur quantique). Tenant narration a venir dans site/ sous ce nom.

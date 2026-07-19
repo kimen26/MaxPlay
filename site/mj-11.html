@@ -263,7 +263,7 @@
 
     <!-- Mode selector -->
     <div class="mode-row">
-      <button class="mode-btn active" id="modeKnown" onclick="setMode('known')">⭐ Connus de Max</button>
+      <button class="mode-btn active" id="modeKnown" onclick="setMode('known')">⭐ Ceux que tu connais</button>
       <button class="mode-btn" id="modeAll" onclick="setMode('all')">🌍 Tous les pays</button>
     </div>
 
@@ -295,7 +295,7 @@
   <!-- Écran victoire -->
   <div id="victoryScreen">
     <div class="victory-emoji" id="victoryEmoji">🌍</div>
-    <div class="victory-title" id="victoryTitle">Bravo Max !</div>
+    <div class="victory-title" id="victoryTitle">Bravo !</div>
     <div class="victory-msg" id="victoryMsg"></div>
     <div class="victory-score" id="victoryScore"></div>
     <button class="replay-btn" onclick="startGame()">Rejouer !</button>
@@ -322,7 +322,7 @@
           { t: 'Je tape le bon nom 👆',
             d: '4 noms de pays apparaissent. Si je me trompe, je réessaie — la bonne réponse s’allume après 3 essais.' },
           { t: 'Plus j’ai d’étoiles, plus il y a de pays 💪',
-            d: 'Je commence avec les pays connus de Max, puis je peux essayer « Tous les pays » du monde !' }
+            d: 'Je commence avec les pays que tu connais déjà, puis je peux essayer « Tous les pays » du monde !' }
         ]
       }
     });
@@ -624,7 +624,7 @@
       // 10/10
       { min:10, max:10, emoji:'🏆', title:'PARFAIT !!!', msg:'10 sur 10 ! Tu es un champion des drapeaux !', confetti:true, sound:'victory' },
       // 8-9
-      { min:8,  max:9,  emoji:'🌟', title:'Super Max !', msg:'Presque parfait ! Tu connais super bien les drapeaux !', confetti:false, sound:'bravo' },
+      { min:8,  max:9,  emoji:'🌟', title:'Super !', msg:'Presque parfait ! Tu connais super bien les drapeaux !', confetti:false, sound:'bravo' },
       // 6-7
       { min:6,  max:7,  emoji:'😊', title:'Bien joué !', msg:'C’est bien ! Continue comme ça, tu progresses !', confetti:false, sound:'ding' },
       // 4-5

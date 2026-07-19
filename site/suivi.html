@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MaxPlay – Suivi de Max</title>
+<title>MaxPlay – Suivi</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
 * { box-sizing:border-box; margin:0; padding:0; }
@@ -140,7 +140,7 @@ html,body { font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; min
 
 <div id="hdr">
   <a href="index.html">← Menu</a>
-  <h1>📊 Suivi de Max</h1>
+  <h1>📊 Suivi</h1>
   <div id="hdr-actions">
     <a class="hdr-btn" href="compte.html" style="text-decoration:none">👨‍👩‍👦 Compte</a>
     <button class="hdr-btn" onclick="doExport()">⬇ Export</button>
@@ -183,7 +183,7 @@ html,body { font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; min
       <button class="hdr-btn" id="btn-progression">🔒 Remettre la progression</button>
       <button class="hdr-btn danger" id="btn-reset-all">♻️ Tout réinitialiser</button>
     </div>
-    <div style="font-size:0.72rem;opacity:0.45;margin-top:8px;">« Tout débloquer » ouvre tous les jeux et les dinos pour Max. « Progression » réactive le déblocage par étoiles.</div>
+    <div style="font-size:0.72rem;opacity:0.45;margin-top:8px;">« Tout débloquer » ouvre tous les jeux et les dinos pour ce profil. « Progression » réactive le déblocage par étoiles.</div>
   </div>
   <script>
   (function () {
@@ -199,7 +199,7 @@ html,body { font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; min
     document.getElementById('btn-unlock-all').onclick = () => setAll(true);
     document.getElementById('btn-progression').onclick = () => setAll(false);
     document.getElementById('btn-reset-all').onclick = async () => {
-      if (!confirm('Tout réinitialiser ?\n\nEfface : progression, étoiles, déblocages, langues et série mj-20, mj-37.\nConservé : les dessins de Max (galerie coloriage) et les commentaires.')) return;
+      if (!confirm('Tout réinitialiser ?\n\nEfface : progression, étoiles, déblocages, langues et série mj-20, mj-37.\nConservé : les dessins (galerie coloriage) et les commentaires.')) return;
       // Mode 2 (connecté) : vider AUSSI le cloud, sinon la sync ré-hydrate tout.
       // resetChild() no-op en Mode 1 → le reset local seul suffit (fix audit).
       try {
@@ -219,7 +219,7 @@ html,body { font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; min
   <!-- État vide -->
   <div id="empty-state">
     <div class="big">🚌</div>
-    <p>Max n'a pas encore joué.</p>
+    <p>Pas encore de partie jouée.</p>
     <p style="font-size:0.9rem;">Les stats apparaîtront ici après la première partie !</p>
   </div>
 
@@ -451,7 +451,7 @@ function doImport(input) {
 }
 
 async function doReset() {
-  if (!confirm('Supprimer toutes les données de progression de Max ?')) return;
+  if (!confirm('Supprimer toutes les données de progression de ce profil ?')) return;
   // Mode 2 (connecté) : vider AUSSI le cloud, sinon la sync suivante
   // ré-hydrate la progression depuis la base (fix sécurité/COPPA — même
   // garde que btn-reset-all, ce bouton l'avait oubliée).

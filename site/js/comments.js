@@ -111,7 +111,7 @@
     overlay.innerHTML = `
       <div class="mpc-modal" role="dialog" aria-label="Commentaire">
         <h3>💬 Commentaire sur ce jeu</h3>
-        <div class="mpc-sub">Ce que fait Max, bugs, idées — pour revue plus tard.</div>
+        <div class="mpc-sub">Ce que fait l'enfant, bugs, idées — pour revue plus tard.</div>
         <textarea placeholder="Tape ou dicte ton commentaire…"></textarea>
         <div class="mpc-status"></div>
         <div class="mpc-actions">

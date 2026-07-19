@@ -228,3 +228,5 @@ Refonte UI + audio + création du pôle DINO (voir `sprint-log.md`). Décisions 
 - 2026-07-19 (nettoyage GED, tour 7) : INDEX.md pole — dino-pmo affiche desormais (sonnet) (etait note haiku a tort). Ecosysteme dino = seul pole sans drift post-fusion.
 
 - 2026-07-19 (nettoyage GED, tour 8 scan refs mortes) : dino-archiviste purge de 5 docs vivantes (i18n INDEX x2, PLAYBOOK, INVARIANTS, PLAN-AUDIO-I18N) -> dino-pmo unifie ; figees/encyclopedie.md : garant game-mj-pmo (erreur de pole !) -> dino-pmo ; content/inbox/ fantome retire de CLAUDE.md + INDEX.md pole.
+
+- 2026-07-19 (scan Max/Bresil) : VIOLATION regle dure dino — site/js/dinos-data.js L143 fun_fact oiseaux nomme "Max" ("Chaque fois que Max voit un pigeon") : a corriger (adresser l enfant en "tu"). Scripts-audio = propres (checklists anti-Max confirmees).

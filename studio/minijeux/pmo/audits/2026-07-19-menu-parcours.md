@@ -164,3 +164,102 @@ _Rapport rédigé 2026-07-19. Sources : `site/index.html`, `site/js/catalog.js`,
 `studio/minijeux/docs/jeux/figees/menu.md`, `memory/VISION.md` (EP-002),
 `studio/minijeux/memory/VISION-LONG-TERME.md`, `docs/research/benchmark-kids-games.md`,
 chantiers `site/design-lecture/` & `site/design-compte/`._
+
+---
+---
+
+# ADDENDUM v2 (2026-07-19, soir) — Retours Papa Yann & direction « Mur + copains » VALIDÉE
+
+> La v1 ci-dessus reste l'état des lieux de référence. Cet addendum intègre les retours
+> de Papa Yann, abandonne les options B (bus) et la conservation des tiroirs, et acte la
+> nouvelle direction. **La décision de refonte from scratch est prise ; le défigeage du
+> menu v2 est acté par cette décision datée (2026-07-19).**
+
+## 6. Retours de Papa Yann sur la v1
+
+1. **Contradiction signalée (juste)** : la v1 affirme « la catégorisation parle adulte »…
+   puis propose de re-habiller les mêmes tiroirs en arrêts de bus (option B). Même liste,
+   nouveau décor — ce n'est pas du from scratch. Option B **retirée**.
+2. **La métaphore véhicule n'accroche pas** : ni le bus (`index2`) ni la fusée (`index3`)
+   n'ont pris avec Max — il les vit comme « un jeu dans le jeu », pas comme SON menu.
+   → `index2`/`index3` **ABANDONNÉS** (décision Papa Yann, 2026-07-19).
+3. **Le symptôme réel** : Max se perd dans le menu et **se réfugie dans l'encyclopédie
+   dinos**. Il ne retrouve pas ses jeux (trop nombreux), et il ne connaît **ni les titres
+   ni les emojis** associés aux jeux.
+4. Conséquence : refonte **from scratch**, en partant de nos mj existants.
+
+## 7. Diagnostic v2 — copier ce qui marche : l'encyclopédie
+
+Pourquoi l'encyclopédie est son refuge :
+
+- **Choix par image** : vignettes photos reconnaissables, pas de texte à décoder.
+- **Peu de choix visibles** à la fois (pas un annuaire de 42 entrées).
+- **Zéro méta-monde** : pas de véhicule, pas de carte, pas de « jeu dans le jeu » —
+  on ouvre, on est dedans.
+
+Le menu doit faire pareil : des **images**, **peu de choix**, **pas de sur-monde**.
+
+## 8. Trois propositions from scratch (présentées à Papa Yann)
+
+- **M1 — Le Mur** ⭐ : un mur de ~8-9 grosses vignettes-photos (pas des tuiles emoji+titre).
+  Rotation curée : les jeux délaissés reviennent, les maîtrisés sortent. Les 5 tiroirs
+  (catalogue complet) sont **déménagés dans l'espace parents** — Max ne voit que le Mur.
+- **M2 — Trois cartes** : seulement 3 grosses cartes du jour (même rotation, plus resserré
+  encore — risque : trop pauvre, pas de sentiment de collection).
+- **M3 — Les copains** : les domaines incarnés par des animaux-hôtes ; Max entre « chez »
+  un copain pour trouver ses jeux.
+
+## 9. ✅ DÉCISION Papa Yann (2026-07-19) : « Mur + copains » (M1 + M3 fusionnés)
+
+Le Mur = structure d'accueil ; les copains = portes d'entrée vivantes par domaine.
+
+Précisions de Papa Yann, consignées :
+
+- **Chaque hôte a un nom et une personnalité** (exemples de Yann, à affiner : Galli lit
+  des histoires → lecture ; Spino → les numéros…).
+- **L'animal parle** à l'entrée de son menu : « Bienvenue dans mon menu, j'ai besoin de
+  toi pour compter… ».
+- **Voix** : on branchera les voix des personnages du pôle narration — **à retravailler
+  en temps voulu** (non bloquant pour la v1 du Mur).
+- **Relique** : une relique de l'animal affichée au-dessus des étoiles — **NOTÉ POUR
+  PLUS TARD** (idée consignée, hors scope du Mur v1).
+- `index.html` reste **LE** menu unique (le Mur le remplace — pas de nouvelle page
+  parallèle type index4).
+
+## 10. Challenge des 42 jeux en prod (proposition, à valider jeu par jeu)
+
+Papa Yann fera sa revue dans les **commentaires Supabase** de chaque jeu (💬 / notes de
+revue). Proposition de l'audit, challengée par les 29 nouveaux mockups :
+
+| Verdict | Jeux | Motif |
+|---------|------|-------|
+| 🗑️ **Jeter** | mj-35 Le jeu des graines · mj-42 Shisima · mj-38 Saute-mouton · mj-29 La fabrique de noms · mj-40 Tangram des dinos | Répétitifs, règles trop abstraites pour 4 ans, ou geste frustrant (tangram 7 pièces) — mieux couvert par les mockups |
+| 🔀 **Fusionner** | mj-13c → mj-13a · mj-26 → mj-04 · mj-25 → mj-24 · mj-09 + mj-36 → mj-08 · mj-06 → futur moteur lecture (design-lecture) | Doublons de mécanique (compter avant/premier ; compter dinos/passagers ; identique/nommé ; tri couleurs) |
+| 🔧 **Adapter** | mj-23 & mj-27 (lecture → aligner sur mockups + cursive Cursif) · mj-44 (boîte à sons → phonologie type Montessori) · mj-22 (25 pays → resserrer autour des drapeaux) · mj-20 (8 langues → recentrer) | Bons fonds, exécution à rapprocher des nouveaux standards |
+| ✅ **Garder** | ~22 jeux (noyau dinos, bus couleurs, casse-têtes forts, jeux libres) | Utiles, intuitifs, non redondants |
+| ➕ **Ajouter** | mockups validés de `design-compte/` (série 4) et `design-lecture/` | Passage par le pipeline mockup → `mj-shell.js` (L-103) |
+
+**Bilan : 42 → ~30 jeux après tri, puis +8-10 depuis les mockups validés.**
+Chiffres à affiner avec la revue commentaires de Papa Yann (source de vérité).
+
+## 11. Phasage v2 (remplace §5)
+
+| Phase | Contenu | Prérequis |
+|-------|---------|-----------|
+| **0 — Triage** | Jeter/fusionner selon §10, arbitré par les commentaires Supabase de Papa Yann | revue 💬 terminée |
+| **1 — Le Mur** | Vignettes-photos + rotation curée + copains-hôtes (sans voix au début) + tiroirs déménagés espace parents | défigeage acté (fait, §9) |
+| **2 — Polish** | Mascotte/hôtes qui parlent (voix narration), jeu du jour intégré au Mur | phase 1 |
+| **3 — Nouveaux jeux** | Mockups compte/lecture validés → prod | retours tests mockups |
+| **4 — WexWorld** | Horizon inchangé (vision EP-002) | maturité Phaser |
+
+## 12. Points en suspens (suivi)
+
+- **Revue des jeux par Papa Yann** : commentaires Supabase par jeu → alimente le triage
+  (phase 0). ⚠️ Lecture des annotations : RLS = seul le parent authentifié voit ses lignes ;
+  la clé anon seule renvoie `[]`. La lecture agent passe par le MCP Supabase (Claude Code)
+  ou un accès dédié à prévoir pour Kimi Code.
+- **Noms & personnalités des hôtes** (Galli, Spino…) : à finaliser avec le pôle narration.
+- **Relique au-dessus des étoiles** : idée consignée, à concevoir plus tard.
+- **Police cursive prod** : ABCursive vs DN Manuscript vs Cursif (licence web à trancher).
+
+_Addendum rédigé 2026-07-19 (soir). Décision « Mur + copains » : Papa Yann._

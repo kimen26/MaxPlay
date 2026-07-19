@@ -42,6 +42,6 @@
 
 ---
 
-## Règle transverse (leçon conseiller à graver par game-mj-pmo à la clôture)
+## Règle transverse (leçon conseiller à graver par game-pmo à la clôture)
 
 **"Timing / duel / puzzle → toujours neutraliser l'échec binaire natif"** : bus bloqué = bounce, semis raté = redistribution, arrêt manqué = demi-tour rigolo. Aucun des 3 ne doit avoir de son négatif ni d'état "perdu".

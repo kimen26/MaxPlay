@@ -1,7 +1,7 @@
 # STANDARD MINI-JEU MAXPLAY — source de vérité
 
 > Gravé 2026-06-09 après validation Papa Yann sur 2 jeux de référence (`site/mj-gold-a.html`, `site/mj-gold-b.html`).
-> Tout nouveau mini-jeu copie ce standard. `/new-mj` génère à partir de là.
+> Tout nouveau mini-jeu copie ce standard. le workflow MJ (`.claude/rules/mini-jeux.md` § Workflow) génère à partir de là.
 > Référence visuelle de propreté : voir les golden + le style `css/style.css` partagé.
 
 ## Les 5 piliers obligatoires

@@ -124,3 +124,5 @@
 - 2026-07-19 (nettoyage GED, tour 6) : pmo/audits/ cree — test-calibration-panel range en audits/2026-07-04-test-calibration-panel.md (ref sprint-log corrigee), conforme norme DOCTRINE audits.
 
 - 2026-07-19 (nettoyage GED, tour 7 ecosysteme) : fantomes narration-archiviste/architecte purges des docs vivantes (equipe/INDEX arbre de decision, cartographie-domaines, ORGANIGRAMME Sonnet, templates/README, README pole, rules/stories-process) -> narration-pmo unifie Sonnet / narration-conseiller.
+
+- 2026-07-19 (nettoyage GED, tour 8) : INBOX.md lien _inbox corrige -> inbox/ ; sources-narratologie lien architecture-cross-culture -> cross-culture/doctrine.md ; PROCESS.md chemin rules/audio.md corrige.

@@ -68,7 +68,7 @@ Item DINO (encyclopédie, voyage, Tritri, dev-dinos) → NE PAS traiter : ticket
 | `studio/minijeux/memory/rules.md` | Règles UX/péda — seulement si règle d'or change (validation auteur) |
 | `studio/minijeux/memory/stack.md` | Règles techniques/audio — idem, rare |
 | `studio/minijeux/docs/jeux/figees/mj-XX.md` | Figeages (voir 🔒 ci-dessus) |
-| `site/tile-tools/PIPELINE-MEMORY-MJ.md` | Méta-process MJ si existe |
+| `site/PIPELINE-MEMORY-MJ.md` | Méta-process MJ si existe |
 
 ## FORME — vérifications structurelles (ex-archiviste)
 

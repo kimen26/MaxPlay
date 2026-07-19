@@ -46,7 +46,6 @@
 | **Sources contenu** (récits, échelle, étymo, factcheck, process) | [`content/sources/`](content/sources/) (recits · fiches · mesures · etymo) |
 | **Données structurées** (racines dico/quiz) | [`content/data/racines.json`](content/data/racines.json) |
 | **Scripts** (audio, grok, export/regen) | [`content/scripts/`](content/scripts/) (audio · images-grok · export) |
-| **Matière brute non triée** | [`content/inbox/`](content/inbox/) |
 | **Carte du dossier content** | [`content/INDEX.md`](content/INDEX.md) (hub + sous-INDEX) |
 
 ---

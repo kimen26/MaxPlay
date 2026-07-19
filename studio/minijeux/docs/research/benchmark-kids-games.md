@@ -1,7 +1,7 @@
 # Benchmark — Jeux & apps éducatives pour enfants 3-5 ans
 
 > Inspiration croisée pour MaxPlay. Qu'est-ce qui marche vraiment chez les pros du kids gaming, et qu'est-ce qu'on peut appliquer à Max (3.5-4 ans, passionné bus).
-> Références liées : [`../audit/jeux-2026-04.md`](../audit/jeux-2026-04.md) · [`../audit/roadmap-technique.md`](../audit/roadmap-technique.md) · [`../MAX_PROFILE.md`](../MAX_PROFILE.md)
+> Références liées : [`audit avril 2026 (supprimé 2026-07-19, historique git)`](audit avril 2026 (supprimé 2026-07-19, historique git)) · [`roadmap technique avril 2026 (supprimée 2026-07-19, historique git)`](roadmap technique avril 2026 (supprimée 2026-07-19, historique git)) · [`../../../../memory/MAX_PROFILE.md`](../../../../memory/MAX_PROFILE.md)
 
 ## 1. Apps de référence étudiées
 
@@ -24,7 +24,7 @@
 **Principe** : pas d'objectif, pas de score. L'enfant manipule.  
 **Pourquoi ça marche** : 3-4 ans n'a pas encore besoin d'accomplir — il explore.  
 **Applicable MaxPlay** : **MJ-17 "Village des bus"** en mode bac à sable (plus de score, plus de rounds — juste des bus qui arrivent, Max les soigne). Ajouter **SandboxScene** étendue dans le Phaser build.  
-🔗 Voir [roadmap-technique.md §court terme](../audit/roadmap-technique.md).
+🔗 Voir [roadmap-technique.md §court terme](roadmap technique avril 2026 (supprimée 2026-07-19, historique git)).
 
 ### 2.2 "Premier tap récompensé" (Sago Mini)
 **Principe** : tout geste déclenche une micro-animation plaisante, même hors objectif.  

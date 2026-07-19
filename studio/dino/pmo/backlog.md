@@ -226,3 +226,5 @@ Refonte UI + audio + création du pôle DINO (voir `sprint-log.md`). Décisions 
 - 2026-07-19 (nettoyage GED, tour 6) : V3/CONSIGNES.md complete avec la table de tracabilite qualite (8 relectures + factcheck + diagnostic + plan, presents mais decrits nulle part) ; norme : artefacts qualite co-localises avec le chantier.
 
 - 2026-07-19 (nettoyage GED, tour 7) : INDEX.md pole — dino-pmo affiche desormais (sonnet) (etait note haiku a tort). Ecosysteme dino = seul pole sans drift post-fusion.
+
+- 2026-07-19 (nettoyage GED, tour 8 scan refs mortes) : dino-archiviste purge de 5 docs vivantes (i18n INDEX x2, PLAYBOOK, INVARIANTS, PLAN-AUDIO-I18N) -> dino-pmo unifie ; figees/encyclopedie.md : garant game-mj-pmo (erreur de pole !) -> dino-pmo ; content/inbox/ fantome retire de CLAUDE.md + INDEX.md pole.

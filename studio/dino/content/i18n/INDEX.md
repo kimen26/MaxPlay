@@ -41,4 +41,4 @@
 4. Prod audio par vagues (preview groupé → validation native → clips dans `site/audio/dinos/<lang>/`, mêmes noms de fichiers que fr/).
 5. Régénérer le manifest (`DINO_NOM_AUDIO_BY_LANG.<lang>`).
 
-_Plan i18n global : [`memory/audio/PLAN-AUDIO-I18N.md`](../../../../memory/audio/PLAN-AUDIO-I18N.md). Gouvernance : dino-pmo (FOND) · dino-archiviste (FORME)._
+_Plan i18n global : [`memory/audio/PLAN-AUDIO-I18N.md`](../../../../memory/audio/PLAN-AUDIO-I18N.md). Gouvernance : dino-pmo unifié FOND+FORME (fusion 2026-07-19)._

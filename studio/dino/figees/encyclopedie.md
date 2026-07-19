@@ -107,9 +107,9 @@ Fichiers concernés : [`site/dev-dinos.html`](../../../site/dev-dinos.html) · [
 3. **GÉNÉRER** via la voie officielle : récits multi-voix = `studio_audiobook_from_segments_v2_dialogue` (eleven_v3) ; accroches mono = `text_to_speech` voix `narrateur_h`/`narrateur_f`. Toujours `loudnorm` en post.
 4. **VÉRIFIER LA DURÉE** : accroche menu 2-7 s (sinon trop longue → réécrire plus court). `ffmpeg -i <mp3>` → Duration.
 5. **RE-GREP après coup** : le texte réellement envoyé == le texte relu ? (pas de vieux fichier qui traîne).
-6. **PMO** : `game-mj-pmo` grave toute nouvelle décision validée Papa Yann ici, mot pour mot.
+6. **PMO** : `dino-pmo` grave toute nouvelle décision validée Papa Yann ici, mot pour mot.
 
-**Qui contrôle ?** Le **main agent** applique l'étape 2 (grep interdits) AVANT chaque génération — c'est non négociable. `game-mj-reviewer` peut auditer ce fichier. `game-mj-pmo` grave.
+**Qui contrôle ?** Le **main agent** applique l'étape 2 (grep interdits) AVANT chaque génération — c'est non négociable. `dino-pmo` peut auditer ce fichier. `dino-pmo` grave.
 
 ---
 

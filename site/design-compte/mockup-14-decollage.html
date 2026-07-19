@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 14 — Décollage !</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── Le pas de tir ── */
+  .ciel {
+    position:relative; margin-top:22px; width:100%; height:250px; overflow:hidden;
+    background:
+      radial-gradient(300px 160px at 50% 110%, rgba(255,140,60,.18), transparent 70%),
+      rgba(255,255,255,.04);
+    border:2px solid rgba(255,209,102,.35); border-radius:26px;
+    box-shadow:0 14px 34px rgba(0,0,0,.5), inset 0 0 40px rgba(20,16,60,.6);
+  }
+  .ciel .etoile { position:absolute; width:3px; height:3px; border-radius:50%; background:#fff; opacity:.7; }
+  .fusee {
+    position:absolute; left:50%; bottom:24px; transform:translateX(-50%);
+    font-size:100px; line-height:1;
+    transition:transform 1.8s cubic-bezier(.6,-.1,.8,.3), opacity 1.8s;
+    filter:drop-shadow(0 8px 14px rgba(0,0,0,.5));
+  }
+  .fusee.decolle { transform:translateX(-50%) translateY(-460px); opacity:0; }
+  .flammes {
+    position:absolute; left:50%; bottom:8px; transform:translateX(-50%) scale(.4);
+    font-size:54px; line-height:1; opacity:0; transition:opacity .3s, transform .3s;
+  }
+  .flammes.allume { opacity:1; transform:translateX(-50%) scale(1); animation:tremble .12s linear infinite; }
+  @keyframes tremble { 0%,100%{margin-left:-3px} 50%{margin-left:3px} }
+  .pas-de-tir {
+    position:absolute; left:50%; bottom:0; transform:translateX(-50%);
+    width:180px; height:14px; border-radius:7px 7px 0 0;
+    background:linear-gradient(180deg,#8d6e63,#5d4037);
+  }
+
+  /* ── Grille des chiffres 10 → 0 ── */
+  .grille { display:flex; flex-wrap:wrap; gap:12px; margin-top:20px; justify-content:center; }
+  .grille .num-btn { min-width:82px; min-height:82px; font-size:38px; }
+  .grille .num-btn.win { transform:scale(1.06); }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 14 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🚀 Décollage !</h1>
+    <p>Tape les chiffres <b>à rebours</b> : 10, 9, 8… pour décoller !</p>
+  </div>
+
+  <div class="ciel" id="ciel">
+    <div class="pas-de-tir"></div>
+    <div class="flammes" id="flammes">🔥</div>
+    <div class="fusee" id="fusee">🚀</div>
+  </div>
+
+  <div class="grille" id="grille"></div>
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars(25);
+
+  var grille = document.getElementById('grille');
+  var fusee = document.getElementById('fusee');
+  var flammes = document.getElementById('flammes');
+  var attendu = 10;
+  var fini = false;
+
+  // petites étoiles dans le pas de tir
+  var ciel = document.getElementById('ciel');
+  for (var s = 0; s < 14; s++) {
+    var e = document.createElement('div');
+    e.className = 'etoile';
+    e.style.left = Math.random() * 96 + '%';
+    e.style.top = Math.random() * 60 + '%';
+    ciel.appendChild(e);
+  }
+
+  for (var n = 10; n >= 0; n--) {
+    (function (num) {
+      var b = document.createElement('button');
+      b.className = 'num-btn';
+      b.textContent = num;
+      b.setAttribute('aria-label', 'chiffre ' + num);
+      b.addEventListener('click', function () { onTap(num, b); });
+      grille.appendChild(b);
+    })(n);
+  }
+
+  function onTap(n, btn) {
+    if (fini) return;
+    if (n === attendu) {
+      btn.classList.add('win');
+      btn.disabled = true;
+      MK.sfx('pop-apparition.mp3', 0.4);
+      MK.speak(String(n));
+      attendu--;
+      if (attendu < 0) {
+        fini = true;
+        setTimeout(decollage, 800);
+      }
+      return;
+    }
+    // Erreur douce : on rappelle la suite attendue
+    MK.non(btn, 'Après le ' + (attendu + 1) + ', c\'est le ' + attendu + ' !');
+    MK.speak('après le ' + (attendu + 1) + ', c\'est le ' + attendu + ' !');
+  }
+
+  function decollage() {
+    MK.sfx('decollage-fusee.mp3');
+    flammes.classList.add('allume');
+    fusee.classList.add('decolle');
+    MK.say('DÉCOLLAGE !!!');
+    setTimeout(function () {
+      MK.celebrate('DÉCOLLAGE ! 🚀', 'victoire-grande.mp3');
+    }, 1300);
+  }
+
+  setTimeout(function () {
+    MK.speak('Tape les chiffres à rebours pour décoller ! Commence par dix !');
+  }, 500);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 10 — Les Tuiles Soudées</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── La soudurerie ── */
+  .soudurerie {
+    margin-top:26px; width:100%; background:rgba(255,255,255,.04);
+    border:2px solid rgba(255,209,102,.35); border-radius:26px; padding:22px 16px;
+    display:flex; flex-direction:column; align-items:center; gap:18px;
+    box-shadow:0 14px 34px rgba(0,0,0,.5), inset 0 0 40px rgba(20,16,60,.6);
+  }
+  .ligne { display:flex; gap:14px; align-items:center; justify-content:center; flex-wrap:wrap; min-height:96px; }
+  .petite { /* lettres seules qui bégaient */
+    min-width:56px; min-height:56px; font-size:36px; border-radius:16px;
+    background:linear-gradient(145deg,#3a3a55,#26263c); box-shadow:0 4px 0 #191928;
+    color:rgba(255,255,255,.75);
+  }
+  .petite.begue { animation:mk-wobble .5s ease 3; }
+  .fleche { font-size:30px; color:#ffd166; }
+  .slots { display:flex; gap:14px; align-items:center; }
+  .slots .tile.slot.filled { background:rgba(255,140,60,.16); color:#ffcf9e; }
+  .mot-final {
+    font-family:'Cursif','Caveat',cursive; font-weight:700; font-size:76px; color:#ffe066;
+    text-shadow:0 0 26px rgba(255,209,102,.8); min-height:92px;
+    display:flex; align-items:center; gap:2px;
+  }
+  .mot-final .soudee-part { color:#ff9d5c; }
+  .tonton { width:120px; height:120px; object-fit:contain; display:none; }
+  .tonton.show { display:block; animation:mk-pop .45s cubic-bezier(.34,1.56,.64,1) both; }
+  .replay {
+    margin-top:8px; border:none; border-radius:999px; cursor:pointer;
+    font-family:'Fredoka One',cursive; font-size:17px; color:#2a1c05;
+    background:linear-gradient(145deg,#ffe066,#f0b73f); box-shadow:0 4px 0 #b8860b;
+    padding:10px 22px; touch-action:manipulation;
+  }
+  .replay:active { transform:scale(.94); }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 10 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🔥 Soude les sons !</h1>
+    <p>Le son <b>« on »</b> est une tuile soudée : il ne se casse jamais !</p>
+  </div>
+
+  <div class="soudurerie">
+    <div class="ligne" id="demo"></div>
+    <div class="slots" id="slots"></div>
+    <div class="mot-final" id="motFinal"></div>
+    <img class="tonton" id="tonton" src="../img/avatars/brachio_joyeux_2.png" alt="tonton brachio">
+  </div>
+
+  <div class="answers" id="choix"></div>
+  <button class="replay" id="replay">🔁 Revoir la soudure</button>
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  var demo = document.getElementById('demo');
+  var slotsEl = document.getElementById('slots');
+  var motFinal = document.getElementById('motFinal');
+  var choixEl = document.getElementById('choix');
+  var tontonImg = document.getElementById('tonton');
+  var locked = false, placed = 0;
+
+  /* ── Intro : t-o-n-t-o-n qui bégaie → ton-ton soudé ── */
+  function playDemo(cb) {
+    demo.innerHTML = '';
+    var lettres = ['t','o','n','t','o','n'];
+    var els = lettres.map(function (l) {
+      var t = document.createElement('div');
+      t.className = 'tile petite';
+      t.textContent = l;
+      demo.appendChild(t);
+      return t;
+    });
+    // Le bégaiement : chaque lettre isolée tremble
+    els.forEach(function (el, i) {
+      setTimeout(function () { el.classList.add('begue'); }, 350 * i);
+    });
+    MK.speak('té… ô… ène… té… ô… ène…', { rate: 0.55 });
+    setTimeout(function () {
+      // La soudure : les lettres se regroupent en 2 tuiles oranges
+      MK.sfx('magie.mp3');
+      demo.innerHTML = '';
+      ['ton', 'ton'].forEach(function (s) {
+        var t = document.createElement('div');
+        t.className = 'tile soudee pop';
+        t.textContent = s;
+        demo.appendChild(t);
+      });
+      MK.say('« on » soude les lettres : ton ! ton !');
+      MK.speak('ton ! ton !', { rate: 0.7 });
+      if (cb) setTimeout(cb, 1400);
+    }, 350 * lettres.length + 900);
+  }
+
+  /* ── Phase jouable : 2 slots à remplir avec la tuile soudée ── */
+  function buildGame() {
+    slotsEl.innerHTML = '';
+    for (var i = 0; i < 2; i++) {
+      var s = document.createElement('div');
+      s.className = 'tile slot';
+      s.textContent = '?';
+      slotsEl.appendChild(s);
+    }
+    var fleche = document.createElement('div');
+    fleche.className = 'fleche';
+    fleche.textContent = '➜';
+    slotsEl.appendChild(fleche);
+
+    choixEl.innerHTML = '';
+    var options = [
+      { txt: 't', ok: false },
+      { txt: 'ton', ok: true, soudee: true },
+      { txt: 'o', ok: false },
+      { txt: 'pa', ok: false },
+      { txt: 'n', ok: false },
+      { txt: 'ton', ok: true, soudee: true }
+    ];
+    options.forEach(function (o) {
+      var b = document.createElement('button');
+      b.className = 'tile' + (o.soudee ? ' soudee' : '');
+      b.textContent = o.txt;
+      b.addEventListener('click', function () { onPick(o, b); });
+      choixEl.appendChild(b);
+    });
+    MK.say('À toi ! Remplis les 2 cases pour faire « tonton ».');
+  }
+
+  function onPick(o, btn) {
+    if (locked) return;
+    if (!o.ok) {
+      MK.non(btn, o.txt.length === 1
+        ? 'Une lettre toute seule va trop lentement… prends la tuile soudée « ton » !'
+        : '« pa » ? Non, écoute : ton… ton…');
+      MK.speak('ton… ton…', { rate: 0.7 });
+      return;
+    }
+    // Bonne tuile : elle saute dans le prochain slot
+    MK.sfx('pop-apparition.mp3');
+    var slot = slotsEl.children[placed];
+    slot.textContent = 'ton';
+    slot.classList.add('filled');
+    MK.pop(slot);
+    MK.speak('ton !', { rate: 0.7 });
+    btn.disabled = true; btn.style.opacity = '.35'; btn.style.pointerEvents = 'none';
+    placed++;
+    if (placed === 2) {
+      locked = true;
+      setTimeout(showTonton, 500);
+    } else {
+      MK.say('Oui ! Encore un « ton » !');
+    }
+  }
+
+  function showTonton() {
+    MK.sfx('magie.mp3');
+    motFinal.innerHTML = '<span class="soudee-part">ton</span><span class="soudee-part">ton</span>';
+    MK.pop(motFinal);
+    tontonImg.classList.add('show');
+    MK.speak('tonton !', { rate: 0.75 });
+    setTimeout(function () {
+      MK.celebrate('TONTON ! 🎉', 'tada.mp3');
+      MK.say('Tu as soudé le mot tout seul !');
+    }, 900);
+  }
+
+  document.getElementById('replay').addEventListener('click', function () {
+    if (locked) return;
+    playDemo();
+  });
+
+  playDemo(function () {
+    setTimeout(buildGame, 600);
+  });
+  buildGame(); // les slots sont visibles dès le départ (sous la démo)
+})();
+</script>
+</body>
+</html>

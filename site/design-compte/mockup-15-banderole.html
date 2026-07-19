@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 15 — La Banderole des Chiffres</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── La banderole de festons ── */
+  .banderole {
+    position:relative; margin-top:30px; width:100%; padding:22px 10px 18px;
+    background:rgba(255,255,255,.04); border:2px solid rgba(255,209,102,.35); border-radius:26px;
+    box-shadow:0 14px 34px rgba(0,0,0,.5), inset 0 0 40px rgba(20,16,60,.6);
+  }
+  .corde {
+    position:absolute; top:16px; left:4%; right:4%; height:5px; border-radius:3px;
+    background:linear-gradient(90deg,#8d6e63,#c8a97e,#8d6e63);
+    box-shadow:0 3px 6px rgba(0,0,0,.4);
+  }
+  .festons { display:flex; gap:8px; justify-content:center; padding-top:14px; }
+  .fanion {
+    width:80px; height:104px; border:none; cursor:default; touch-action:manipulation;
+    clip-path:polygon(0 0, 100% 0, 50% 100%);
+    display:flex; align-items:flex-start; justify-content:center; padding-top:18px;
+    font-family:'Fredoka One',cursive; font-size:32px; color:#fff;
+    text-shadow:0 2px 4px rgba(0,0,0,.4); transform-origin:top center;
+  }
+  .fanion.c1 { background:linear-gradient(180deg,#ff9d5c,#e8641f); }
+  .fanion.c2 { background:linear-gradient(180deg,#7fe7c4,#2fbf8f); color:#062e20; text-shadow:none; }
+  .fanion.c3 { background:linear-gradient(180deg,#b39df0,#6c4fd8); }
+  .fanion.vide {
+    background:rgba(255,255,255,.07); color:rgba(255,224,102,.65); cursor:pointer;
+    font-size:40px;
+  }
+  .fanion.vide.pret { animation:appel .8s ease-in-out infinite; }
+  @keyframes appel {
+    0%,100% { filter:drop-shadow(0 0 4px rgba(255,209,102,.5)) brightness(1); }
+    50%     { filter:drop-shadow(0 0 18px rgba(255,209,102,.95)) brightness(1.4); }
+  }
+  .fanion.rempli { background:linear-gradient(180deg,#ffe066,#f0b73f); color:#2a1c05; text-shadow:none; }
+  .fanion.swing { animation:balance 1.3s ease-in-out infinite; }
+  @keyframes balance { 0%,100%{transform:rotate(-5deg)} 50%{transform:rotate(5deg)} }
+
+  /* ── Les cartes tombées ── */
+  .tombées-zone { margin-top:22px; text-align:center; }
+  .tombées-zone .titre { font-size:15px; color:rgba(255,255,255,.8); margin-bottom:10px; }
+  .num-btn.choisi {
+    background:linear-gradient(145deg,#7fb8f0,#4a86e8); color:#081c3a;
+    box-shadow:0 6px 0 #2a5aa8, 0 0 26px rgba(90,150,240,.8);
+  }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 15 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🎏 La Banderole des Chiffres</h1>
+    <p>Oh non, une carte est tombée ! Remets-la à sa place.</p>
+  </div>
+
+  <div class="banderole">
+    <div class="corde"></div>
+    <div class="festons" id="festons"></div>
+  </div>
+
+  <div class="tombées-zone">
+    <div class="titre">Les cartes tombées par terre :</div>
+    <div class="answers" id="cartes"></div>
+  </div>
+
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  // La suite : 16 - 17 - ? - 19 - 20 (le 18 manque, le 15 est le leurre)
+  var SUITE = [16, 17, null, 19, 20];
+  var CARTES = [15, 18];
+  var BONNE = 18;
+
+  var festons = document.getElementById('festons');
+  var cartesEl = document.getElementById('cartes');
+  var slotEl = null;
+  var carteChoisie = null;
+  var fini = false;
+
+  SUITE.forEach(function (val, i) {
+    var f = document.createElement(val === null ? 'button' : 'div');
+    f.className = 'fanion c' + ((i % 3) + 1);
+    if (val === null) {
+      f.classList.add('vide');
+      f.textContent = '?';
+      f.setAttribute('aria-label', 'place vide');
+      f.addEventListener('click', onSlot);
+      slotEl = f;
+    } else {
+      f.textContent = val;
+    }
+    festons.appendChild(f);
+  });
+
+  CARTES.forEach(function (n) {
+    var b = document.createElement('button');
+    b.className = 'num-btn';
+    b.textContent = n;
+    b.setAttribute('aria-label', 'carte ' + n);
+    b.addEventListener('click', function () { onCarte(n, b); });
+    cartesEl.appendChild(b);
+  });
+
+  function onCarte(n, btn) {
+    if (fini) return;
+    if (n !== BONNE) {
+      MK.non(btn, 'Compte avec moi : 16, 17, … 18 !');
+      MK.speak('seize, dix-sept, … dix-huit !');
+      return;
+    }
+    if (carteChoisie === btn) return;
+    carteChoisie = btn;
+    btn.classList.add('choisi');
+    slotEl.classList.add('pret');
+    MK.sfx('bonne-reponse.mp3', 0.45);
+    MK.say('Oui, le 18 ! Maintenant tape la place vide pour l\'accrocher !');
+    MK.speak('oui, le dix-huit ! Tape la place vide !');
+  }
+
+  function onSlot() {
+    if (fini) return;
+    if (!carteChoisie) {
+      MK.non(slotEl, 'Choisis d\'abord la bonne carte en bas !');
+      return;
+    }
+    fini = true;
+    MK.sfx('magie.mp3');
+    // La carte remonte s'accrocher à la place vide
+    slotEl.classList.remove('vide', 'pret');
+    slotEl.classList.add('rempli');
+    slotEl.textContent = BONNE;
+    MK.pop(slotEl);
+    carteChoisie.disabled = true;
+    carteChoisie.style.opacity = '.3';
+    carteChoisie.style.pointerEvents = 'none';
+    MK.say('Après 17, c\'est 18 !');
+    MK.speak('après dix-sept, c\'est dix-huit !');
+    setTimeout(function () {
+      Array.prototype.forEach.call(festons.children, function (f, i) {
+        setTimeout(function () { f.classList.add('swing'); }, i * 120);
+      });
+      MK.celebrate('BRAVO ! 🎉', 'tada.mp3');
+    }, 1300);
+  }
+
+  setTimeout(function () {
+    MK.speak('Oh non, une carte est tombée de la banderole ! Remets-la à sa place !');
+  }, 500);
+})();
+</script>
+</body>
+</html>

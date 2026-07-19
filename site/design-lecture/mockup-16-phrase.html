@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 16 — La Phrase qui Roule</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── Le bus et ses sièges ── */
+  .bus-zone {
+    position:relative; margin-top:30px; width:100%; max-width:360px;
+    padding:26px 10px 18px;
+    background:rgba(255,255,255,.04); border:2px solid rgba(255,209,102,.35);
+    border-radius:26px; box-shadow:0 14px 34px rgba(0,0,0,.5);
+    overflow:visible;
+  }
+  .bus-wrap { transition:transform 1.5s ease-in; }
+  .bus-wrap.roule { transform:translateX(130vw); }
+  .sieges {
+    position:absolute; top:30px; left:10%; right:10%;
+    display:flex; justify-content:space-between; pointer-events:none;
+  }
+  .siege {
+    width:58px; height:44px; border-radius:12px;
+    display:flex; align-items:center; justify-content:center;
+    background:rgba(10,10,30,.55); box-shadow:inset 0 0 0 2px rgba(255,209,102,.55);
+    font-family:'Fredoka One',cursive; font-size:18px; color:rgba(255,224,102,.6);
+  }
+  .siege.rempli {
+    font-family:'Cursif','Caveat',cursive; font-weight:700; font-size:26px; color:#ffe066;
+    background:rgba(20,16,60,.85); text-shadow:0 0 10px rgba(255,209,102,.7);
+  }
+  .siege.lu { background:rgba(255,209,102,.9); color:#2a1c05; }
+  .route {
+    margin-top:6px; height:4px; border-radius:2px;
+    background:repeating-linear-gradient(90deg,#ffd166 0 26px, transparent 26px 44px);
+    opacity:.5;
+  }
+  /* tuiles mots */
+  .mot-tile { font-size:44px; min-width:100px; }
+  .mot-tile.placee { opacity:.3; pointer-events:none; }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 16 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🚌 La Phrase qui Roule</h1>
+    <p>Tape les mots <b>dans l'ordre</b> pour remplir le bus… et il partira !</p>
+  </div>
+
+  <div class="bus-zone">
+    <div class="bus-wrap" id="busWrap">
+      <div id="busSvg"></div>
+      <div class="sieges" id="sieges"></div>
+    </div>
+    <div class="route"></div>
+  </div>
+
+  <div class="answers" id="mots"></div>
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../js/bus-svg.js"></script>
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  var PHRASE = ['Le', 'bus', 'est', 'rouge'];      // ordre attendu
+  var MELANGE = ['rouge', 'Le', 'est', 'bus'];      // tuiles mélangées
+
+  var siegesEl = document.getElementById('sieges');
+  var motsEl = document.getElementById('mots');
+  var busWrap = document.getElementById('busWrap');
+  var nextIdx = 0, locked = false;
+
+  /* Bus 185 — ligne école de Max (orange #F58443) */
+  document.getElementById('busSvg').innerHTML = busSVG('#F58443', '#fff', '185', 320);
+
+  /* 4 sièges vides numérotés 1-4 */
+  var sieges = PHRASE.map(function (_, i) {
+    var s = document.createElement('div');
+    s.className = 'siege';
+    s.textContent = i + 1;
+    siegesEl.appendChild(s);
+    return s;
+  });
+
+  /* Tuiles mots mélangées (lues par l'enfant → .cur) */
+  MELANGE.forEach(function (mot) {
+    var b = document.createElement('button');
+    b.className = 'tile mot-tile';
+    b.textContent = mot;
+    b.addEventListener('click', function () { onPick(mot, b); });
+    motsEl.appendChild(b);
+  });
+
+  function onPick(mot, btn) {
+    if (locked || btn.classList.contains('placee')) return;
+    if (mot !== PHRASE[nextIdx]) {
+      MK.non(btn, 'Écoute la phrase : Le… bus… est… rouge !');
+      MK.speak('Le… bus… est… rouge !', { rate: 0.6 });
+      return;
+    }
+    /* Bon mot : il monte dans son siège et il est dit */
+    MK.sfx('pop-apparition.mp3');
+    var siege = sieges[nextIdx];
+    siege.textContent = mot;
+    siege.classList.add('rempli');
+    MK.pop(siege);
+    MK.speak(mot, { rate: 0.8 });
+    btn.classList.add('placee');
+    btn.disabled = true;
+    nextIdx++;
+    if (nextIdx === PHRASE.length) {
+      locked = true;
+      setTimeout(relectureEtDepart, 800);
+    }
+  }
+
+  /* Phrase complète : relecture entière, chaque mot s'illumine en rythme */
+  function relectureEtDepart() {
+    MK.say('On relit la phrase ensemble !');
+    MK.speak('Le bus est rouge !', { rate: 0.7 });
+    sieges.forEach(function (s, i) {
+      setTimeout(function () {
+        s.classList.add('lu');
+        MK.pop(s);
+        setTimeout(function () { s.classList.remove('lu'); }, 550);
+      }, 600 * i);
+    });
+    setTimeout(depart, 600 * PHRASE.length + 600);
+  }
+
+  function depart() {
+    MK.sfx('demarrage-bus.mp3');
+    busWrap.classList.add('roule');
+    setTimeout(function () {
+      MK.celebrate('Le bus est rouge ! 🎉', 'tada.mp3');
+    }, 1100);
+  }
+})();
+</script>
+</body>
+</html>

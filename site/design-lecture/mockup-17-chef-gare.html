@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 17 — Le Chef de Gare</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── Le chef de gare ── */
+  .chef {
+    margin-top:26px; display:flex; align-items:center; gap:14px;
+    background:rgba(255,255,255,.04); border:2px solid rgba(255,209,102,.35);
+    border-radius:26px; padding:14px 18px; width:100%;
+    box-shadow:0 14px 34px rgba(0,0,0,.5);
+  }
+  .chef img { width:96px; height:96px; object-fit:contain; flex:0 0 auto; }
+  /* La consigne ÉCRITE — lue par l'enfant → .cur en grand */
+  .consigne-ecrite { flex:1; text-align:center; }
+  .consigne-ecrite .txt {
+    font-family:'Cursif','Caveat',cursive; font-weight:700; font-size:44px; color:#ffe066;
+    line-height:1.15;
+  }
+  .consigne-ecrite .txt .surligne {
+    background:rgba(255,209,102,.85); color:#2a1c05; border-radius:8px; padding:0 8px;
+  }
+  .ecoute {
+    margin-top:6px; border:none; border-radius:999px; cursor:pointer;
+    min-width:80px; min-height:80px; font-size:34px;
+    background:linear-gradient(145deg,#4a3f8f,#332a6b); box-shadow:0 5px 0 #241d4e;
+    touch-action:manipulation;
+  }
+  .ecoute:active { transform:scale(.92); }
+
+  /* ── Les œufs ── */
+  .nid { display:flex; gap:16px; flex-wrap:wrap; justify-content:center; margin-top:26px; }
+  .oeuf {
+    width:80px; height:100px; border:none; cursor:pointer;
+    border-radius:50% 50% 50% 50% / 58% 58% 42% 42%;
+    box-shadow:0 6px 0 rgba(0,0,0,.35), inset -6px -10px 18px rgba(0,0,0,.22);
+    transition:transform .35s ease, opacity .35s ease; touch-action:manipulation;
+  }
+  .oeuf:active { transform:scale(.92); }
+  .oeuf.rouge { background:radial-gradient(circle at 35% 30%, #ff8a7a, #e63c2e 70%); }
+  .oeuf.bleu  { background:radial-gradient(circle at 35% 30%, #7ab8ff, #2e6be6 70%); }
+  .oeuf.vole { transform:translateY(190px) scale(.45); opacity:0; pointer-events:none; }
+
+  /* ── Le panier ── */
+  .panier-zone { margin-top:20px; display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .compteur {
+    font-family:'Fredoka One',cursive; font-size:26px; color:#ffe066; min-height:32px;
+  }
+  .panier {
+    width:230px; height:110px; position:relative;
+    background:linear-gradient(180deg,#8a5a2b,#5e3a17);
+    border-radius:18px 18px 40px 40px; box-shadow:0 10px 24px rgba(0,0,0,.5);
+    display:flex; align-items:flex-end; justify-content:center; gap:10px; padding-bottom:16px;
+  }
+  .panier::before {
+    content:""; position:absolute; top:-14px; left:-8px; right:-8px; height:22px;
+    background:linear-gradient(180deg,#a06a35,#7a4e20); border-radius:12px;
+  }
+  .mini-oeuf {
+    width:44px; height:56px; border-radius:50% 50% 50% 50% / 58% 58% 42% 42%;
+    background:radial-gradient(circle at 35% 30%, #ff8a7a, #e63c2e 70%);
+  }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 17 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🚂 Le Chef de Gare</h1>
+    <p>Le chef a écrit une consigne. <b>Lis-la</b> et fais ce qu'elle dit !</p>
+  </div>
+
+  <div class="chef">
+    <img id="chefImg" src="../img/avatars/allo_joyeux_1.png" alt="chef allo"
+         onerror="this.style.display='none'">
+    <div class="consigne-ecrite">
+      <div class="txt" id="consigneTxt">Pose 3 œufs <span id="motRouges">rouges</span></div>
+    </div>
+    <button class="ecoute" id="btnEcoute" aria-label="Écouter la consigne">🔊</button>
+  </div>
+
+  <div class="nid" id="nid"></div>
+
+  <div class="panier-zone">
+    <div class="compteur" id="compteur">Panier : 0/3</div>
+    <div class="panier" id="panier"></div>
+  </div>
+
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  var nid = document.getElementById('nid');
+  var panier = document.getElementById('panier');
+  var compteur = document.getElementById('compteur');
+  var motRouges = document.getElementById('motRouges');
+  var poses = 0, locked = false;
+
+  /* 6 œufs : 3 rouges, 3 bleus, mélangés */
+  ['rouge', 'bleu', 'rouge', 'bleu', 'rouge', 'bleu'].forEach(function (couleur) {
+    var o = document.createElement('button');
+    o.className = 'oeuf ' + couleur;
+    o.setAttribute('aria-label', 'œuf ' + couleur);
+    o.addEventListener('click', function () { onPick(couleur, o); });
+    nid.appendChild(o);
+  });
+
+  document.getElementById('btnEcoute').addEventListener('click', function () {
+    MK.speak('Pose trois œufs rouges', { rate: 0.8 });
+  });
+
+  function onPick(couleur, oeuf) {
+    if (locked || oeuf.classList.contains('vole')) return;
+    if (couleur !== 'rouge') {
+      /* Erreur qui ENSEIGNE : le mot « rouges » se surligne dans la consigne */
+      motRouges.classList.add('surligne');
+      MK.non(oeuf, 'La consigne dit : œufs ROUGES !');
+      MK.speak('rouges !', { rate: 0.75 });
+      return;
+    }
+    /* Bon œuf : il vole dans le panier */
+    MK.sfx('pop-apparition.mp3');
+    oeuf.classList.add('vole');
+    poses++;
+    setTimeout(function () {
+      var m = document.createElement('div');
+      m.className = 'mini-oeuf pop';
+      panier.appendChild(m);
+      compteur.textContent = 'Panier : ' + poses + '/3';
+      MK.pop(compteur);
+      MK.speak(poses === 1 ? 'un' : poses === 2 ? 'deux' : 'trois', { rate: 0.85 });
+      if (poses === 3) {
+        locked = true;
+        setTimeout(victoire, 700);
+      } else {
+        MK.say('Oui ! Encore ' + (3 - poses) + ' !');
+      }
+    }, 300);
+  }
+
+  function victoire() {
+    /* Le chef siffle : consigne lue et comprise tout seul ! */
+    MK.sfx('sifflet-glissant.mp3');
+    MK.say('Tu as LU la consigne tout seul !');
+    MK.speak('Tu as lu la consigne tout seul !', { rate: 0.85 });
+    setTimeout(function () {
+      MK.celebrate('Tu as LU la consigne ! 🎉', 'tada.mp3');
+    }, 900);
+  }
+})();
+</script>
+</body>
+</html>

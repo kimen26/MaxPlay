@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 7 — Cache-cache des 3 Graphies</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── La scène de cache-cache ── */
+  .scene {
+    position:relative; margin-top:24px; width:100%; max-width:440px; height:340px;
+    border-radius:26px; overflow:hidden;
+    background:
+      radial-gradient(300px 160px at 50% 110%, rgba(60,140,80,.5), transparent 70%),
+      linear-gradient(180deg, rgba(30,30,70,.4), rgba(20,40,30,.5));
+    border:2px solid rgba(255,209,102,.35);
+    box-shadow:0 14px 34px rgba(0,0,0,.5);
+  }
+  .decor { position:absolute; object-fit:contain; pointer-events:none; filter:drop-shadow(0 6px 10px rgba(0,0,0,.4)); }
+  .decor.sapin { left:4%; bottom:6%; width:34%; }
+  .decor.buisson { right:5%; bottom:4%; width:32%; }
+  .decor.rocher { left:38%; bottom:2%; width:26%; }
+  .decor.nuage { left:12%; top:6%; width:24%; opacity:.9; }
+
+  /* les 3 lettres cachées — zones tactiles ≥ 80px */
+  .cachee {
+    position:absolute; min-width:84px; min-height:84px; border:none; cursor:pointer;
+    background:transparent; display:flex; align-items:center; justify-content:center;
+    touch-action:manipulation; transition:transform .15s ease, opacity .3s;
+    text-shadow:0 2px 6px rgba(0,0,0,.65);
+  }
+  .cachee:active { transform:scale(.9); }
+  .cachee.g1 { left:8%; bottom:32%; font-size:64px; color:#ffe9a8; }              /* cursif */
+  .cachee.g2 { right:12%; bottom:30%; font-family:'Nunito',sans-serif; font-weight:900; font-style:italic; font-size:58px; color:#b8e6ff; } /* script */
+  .cachee.g3 { left:44%; bottom:26%; font-family:'Fredoka One',cursive; font-size:60px; color:#ffb3c7; } /* CAPITALE */
+  .cachee.trouvee { opacity:0; pointer-events:none; transform:scale(.3); }
+
+  /* la boîte qui réunit les 3 copines */
+  .boite {
+    margin-top:20px; display:flex; gap:16px; align-items:center; justify-content:center;
+    background:rgba(255,255,255,.05); border:2px dashed rgba(255,209,102,.5);
+    border-radius:22px; padding:14px 20px; min-height:110px;
+  }
+  .case {
+    min-width:88px; min-height:88px; border-radius:18px; display:flex; align-items:center; justify-content:center;
+    background:rgba(255,255,255,.06); box-shadow:inset 0 0 0 3px rgba(255,255,255,.15);
+    color:rgba(255,255,255,.25); font-size:44px;
+  }
+  .case.remplie { box-shadow:inset 0 0 0 3px rgba(255,209,102,.8), 0 0 18px rgba(255,209,102,.35); color:#ffe066; }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 7 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🌲 Cache-cache des Lettres</h1>
+    <p>Retrouve les 3 copines lettres ! Elles se ressemblent<br>mais ne s'habillent pas pareil !</p>
+  </div>
+
+  <div class="scene" id="scene">
+    <img class="decor nuage" src="../img/decor/nuage_blanc.png" alt="" onerror="this.style.display='none'">
+    <img class="decor sapin" src="../img/decor/sapin.png" alt="" onerror="this.style.display='none'">
+    <img class="decor buisson" src="../img/decor/buisson_fleurs.png" alt="" onerror="this.style.display='none'">
+    <img class="decor rocher" src="../img/decor/rocher.png" alt="" onerror="this.style.display='none'">
+    <button class="cachee g1 cur" data-i="0">a</button>
+    <button class="cachee g2" data-i="1">a</button>
+    <button class="cachee g3" data-i="2">A</button>
+  </div>
+
+  <div class="boite" id="boite">
+    <div class="case cur" data-i="0">?</div>
+    <div class="case" data-i="1" style="font-family:'Nunito',sans-serif;font-style:italic">?</div>
+    <div class="case" data-i="2" style="font-family:'Fredoka One',cursive">?</div>
+  </div>
+
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  var trouvees = 0;
+  var TXT = ['a', 'a', 'A'];
+
+  document.querySelectorAll('.cachee').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var i = +btn.dataset.i;
+      /* la lettre vole dans sa case */
+      MK.sfx('pop-apparition.mp3');
+      btn.classList.add('trouvee');
+      var c = document.querySelector('.case[data-i="' + i + '"]');
+      c.textContent = TXT[i];
+      c.classList.add('remplie');
+      MK.pop(c);
+      MK.speak('a !', { rate: 0.8 });
+      trouvees++;
+      if (trouvees === 3) {
+        setTimeout(reunion, 700);
+      } else {
+        MK.say('Une copine trouvée ! Encore ' + (3 - trouvees) + ' !');
+      }
+    });
+  });
+
+  function reunion() {
+    MK.sfx('magie.mp3');
+    MK.say("a, a, A… c'est la même lettre !");
+    MK.speak("a… a… grand A ! C'est la même lettre, habillée différemment !", { rate: 0.8 });
+    document.querySelectorAll('.case').forEach(function (c) { MK.pop(c); });
+    setTimeout(function () { MK.celebrate('LES 3 COPINES ! 🎉', 'tada.mp3'); }, 1500);
+  }
+
+  MK.say("Retrouve les 3 copines lettres cachées dans le décor !");
+})();
+</script>
+</body>
+</html>

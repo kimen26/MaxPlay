@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 19 — La Boîte Mystère</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── La scène ── */
+  .scene {
+    margin-top:26px; width:100%; min-height:240px;
+    display:flex; align-items:flex-end; justify-content:center;
+    background:rgba(255,255,255,.04); border:2px solid rgba(255,209,102,.35);
+    border-radius:26px; padding:60px 16px 26px; position:relative; overflow:hidden;
+    box-shadow:0 14px 34px rgba(0,0,0,.5), inset 0 0 40px rgba(20,16,60,.6);
+  }
+
+  /* ── La boîte ── */
+  .boite {
+    position:relative; width:230px; height:160px;
+    background:linear-gradient(160deg,#8a5a2b,#5f3a14);
+    border-radius:16px 16px 20px 20px;
+    box-shadow:0 14px 28px rgba(0,0,0,.55), inset 0 0 26px rgba(0,0,0,.45);
+    display:flex; align-items:center; justify-content:center;
+  }
+  .boite::after { /* ruban */
+    content:''; position:absolute; left:50%; top:0; bottom:0; width:26px;
+    transform:translateX(-50%);
+    background:linear-gradient(180deg,#e8641f,#c74f12); opacity:.85;
+  }
+  .couvercle {
+    position:absolute; top:-30px; left:-10px; right:-10px; height:42px;
+    background:linear-gradient(160deg,#a87438,#7a4e1c);
+    border-radius:14px; z-index:6;
+    box-shadow:0 8px 16px rgba(0,0,0,.5);
+    transform:translateY(-26px) rotate(-14deg); transform-origin:left center;
+    transition:transform .55s cubic-bezier(.34,1.2,.5,1);
+  }
+  .couvercle::after { /* nœud */
+    content:''; position:absolute; left:50%; top:-10px; width:34px; height:22px;
+    transform:translateX(-50%); border-radius:50% 50% 30% 30%;
+    background:linear-gradient(160deg,#ff9d5c,#e8641f);
+  }
+  .boite.fermee .couvercle { transform:translateY(0) rotate(0); }
+
+  /* Œufs dans la boîte : invisibles quand le couvercle est fermé */
+  .dedans {
+    position:relative; z-index:2; display:flex; flex-wrap:wrap; gap:6px;
+    align-items:center; justify-content:center; max-width:170px;
+    transition:opacity .3s;
+  }
+  .boite.fermee .dedans { opacity:0; }
+
+  .egg {
+    width:32px; height:40px; border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+    background:
+      radial-gradient(circle at 32% 30%, rgba(176,116,52,.5) 0 4px, transparent 5px),
+      radial-gradient(circle at 64% 58%, rgba(176,116,52,.4) 0 3px, transparent 4px),
+      linear-gradient(160deg,#fff5da 0%, #f3d9a4 70%, #e6c282 100%);
+    box-shadow:inset -3px -5px 8px rgba(120,70,20,.28), 0 3px 6px rgba(0,0,0,.4);
+    position:relative;
+  }
+  .egg.cache { display:none; }
+  .egg .num {
+    position:absolute; top:-14px; left:50%; transform:translateX(-50%);
+    width:24px; height:24px; border-radius:50%;
+    background:radial-gradient(circle at 32% 28%, #8df0cd, #2fbf8f 70%);
+    border:2px solid #0d7a54; color:#062e20;
+    font-family:'Fredoka One',cursive; font-size:13px;
+    display:none; align-items:center; justify-content:center; z-index:3;
+  }
+  .egg .num.on { display:flex; animation:mk-pop .35s cubic-bezier(.34,1.56,.64,1) both; }
+
+  /* Œuf qui vole vers la boîte */
+  .volant {
+    position:absolute; z-index:8; pointer-events:none;
+    animation:vole .6s cubic-bezier(.34,.8,.5,1) both;
+  }
+  @keyframes vole {
+    from { transform:translateY(-160px) scale(.4) rotate(-30deg); opacity:0; }
+    60%  { opacity:1; }
+    to   { transform:translateY(0) scale(1) rotate(0); opacity:1; }
+  }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 19 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>📦 La Boîte Mystère</h1>
+    <p>Des œufs entrent dans la boîte… compte bien, même quand on ne les voit plus !</p>
+  </div>
+
+  <div class="scene" id="scene">
+    <div class="boite" id="boite">
+      <div class="couvercle"></div>
+      <div class="dedans" id="dedans"></div>
+    </div>
+  </div>
+
+  <div class="answers" id="answers"></div>
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  var D_ABORD = 4, ENSUITE = 2, TOTAL = D_ABORD + ENSUITE;
+  var CHOICES = [5, 6, 7];
+  var locked = false, peeking = false;
+
+  var scene = document.getElementById('scene');
+  var boite = document.getElementById('boite');
+  var dedans = document.getElementById('dedans');
+  var answersEl = document.getElementById('answers');
+
+  function makeEgg(cache) {
+    var e = document.createElement('div');
+    e.className = 'egg' + (cache ? ' cache' : '');
+    e.innerHTML = '<span class="num"></span>';
+    return e;
+  }
+
+  /* Œuf qui vole depuis le haut de la scène vers la boîte */
+  function voleVersBoite(cb) {
+    var v = document.createElement('div');
+    v.className = 'egg volant';
+    v.style.left = '50%';
+    v.style.bottom = '120px';
+    v.style.marginLeft = '-16px';
+    scene.appendChild(v);
+    MK.sfx('pop-apparition.mp3');
+    setTimeout(function () { v.remove(); if (cb) cb(); }, 600);
+  }
+
+  /* ── Intro : 4 œufs comptés à voix haute, couvercle fermé, puis encore 2 ── */
+  function playIntro() {
+    MK.say('Regarde ! Des œufs entrent dans la boîte !');
+    MK.speak('un, deux, trois, quatre !', { rate: 0.7 });
+    for (var i = 0; i < D_ABORD; i++) {
+      (function (idx) {
+        setTimeout(function () {
+          voleVersBoite(function () {
+            dedans.appendChild(makeEgg(false));
+          });
+        }, 700 + idx * 650);
+      })(i);
+    }
+    /* Le couvercle se ferme */
+    setTimeout(function () {
+      boite.classList.add('fermee');
+      MK.sfx('whoosh.mp3');
+      MK.say('Hop ! Le couvercle se ferme !');
+    }, 700 + D_ABORD * 650 + 500);
+    /* Encore 2 œufs */
+    setTimeout(function () {
+      MK.speak('et encore deux !', { rate: 0.75 });
+      MK.say('Et encore 2 œufs qui entrent !');
+      voleVersBoite(function () { dedans.appendChild(makeEgg(true)); });
+      setTimeout(function () {
+        voleVersBoite(function () { dedans.appendChild(makeEgg(true)); });
+      }, 650);
+    }, 700 + D_ABORD * 650 + 1400);
+    /* La question */
+    setTimeout(function () {
+      buildAnswers();
+      MK.say('Combien d’œufs dans la boîte ?');
+      MK.speak('Combien d’œufs dans la boîte ?', { rate: 0.8 });
+    }, 700 + D_ABORD * 650 + 3200);
+  }
+
+  function buildAnswers() {
+    answersEl.innerHTML = '';
+    CHOICES.forEach(function (n) {
+      var b = document.createElement('button');
+      b.className = 'num-btn';
+      b.textContent = n;
+      b.setAttribute('aria-label', n + ' œufs');
+      b.addEventListener('click', function () { onAnswer(n, b); });
+      answersEl.appendChild(b);
+    });
+  }
+
+  /* Rouvrir la boîte et montrer les 6 œufs */
+  function ouvreBoite() {
+    boite.classList.remove('fermee');
+    MK.sfx('whoosh.mp3');
+    var eggs = dedans.querySelectorAll('.egg');
+    eggs.forEach(function (e) { e.classList.remove('cache'); });
+    return eggs;
+  }
+
+  function onAnswer(n, btn) {
+    if (locked || peeking) return;
+    if (n !== TOTAL) {
+      /* La boîte s'entrouvre : on revoit les œufs entrer en accéléré */
+      MK.non(btn, 'Regarde bien : 4… puis encore 2 !');
+      peeking = true;
+      setTimeout(function () {
+        var eggs = dedans.querySelectorAll('.egg');
+        eggs.forEach(function (e, i) { if (i >= D_ABORD) e.classList.add('cache'); });
+        boite.classList.remove('fermee');
+        MK.sfx('whoosh.mp3');
+        MK.speak('quatre !', { rate: 0.8 });
+        setTimeout(function () {
+          if (eggs[D_ABORD]) { eggs[D_ABORD].classList.remove('cache'); MK.pop(eggs[D_ABORD]); }
+          MK.sfx('pop-apparition.mp3');
+          MK.speak('cinq !', { rate: 0.85 });
+        }, 800);
+        setTimeout(function () {
+          if (eggs[D_ABORD + 1]) { eggs[D_ABORD + 1].classList.remove('cache'); MK.pop(eggs[D_ABORD + 1]); }
+          MK.sfx('pop-apparition.mp3');
+          MK.speak('six !', { rate: 0.85 });
+        }, 1500);
+        setTimeout(function () {
+          boite.classList.add('fermee');
+          MK.sfx('whoosh.mp3');
+          MK.say('Alors… combien d’œufs ?');
+          peeking = false;
+        }, 2400);
+      }, 600);
+      return;
+    }
+    /* Bonne réponse : la boîte s'ouvre, les 6 œufs se comptent */
+    locked = true;
+    MK.win(btn, answersEl);
+    setTimeout(function () {
+      var eggs = ouvreBoite();
+      MK.say('La boîte s’ouvre ! Compte avec moi !');
+      for (var i = 0; i < eggs.length; i++) {
+        (function (egg, idx) {
+          setTimeout(function () {
+            var badge = egg.querySelector('.num');
+            badge.textContent = idx + 1;
+            badge.classList.add('on');
+            MK.pop(egg);
+            MK.sfx('xylophone-monte.mp3');
+          }, 500 + idx * 400);
+        })(eggs[i], i);
+      }
+      setTimeout(function () {
+        MK.say('6 ! 4 et encore 2… ça fait 6 !');
+        MK.speak('6 ! 4 et encore 2… ça fait 6 !', { rate: 0.8 });
+        MK.sfx('waouh.mp3');
+      }, 500 + eggs.length * 400 + 300);
+      setTimeout(function () {
+        MK.celebrate('6 ŒUFS ! 🎉', 'tada.mp3');
+      }, 500 + eggs.length * 400 + 1200);
+    }, 400);
+  }
+
+  playIntro();
+})();
+</script>
+</body>
+</html>

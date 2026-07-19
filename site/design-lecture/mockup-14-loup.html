@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 14 — Le Loup Chuchote</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── La forêt de nuit ── */
+  body {
+    background:
+      radial-gradient(700px 380px at 50% -10%, rgba(40,50,120,.3), transparent 65%),
+      linear-gradient(180deg,#05051a 0%, #0a0d26 55%, #04040f 100%) !important;
+  }
+  .foret {
+    margin-top:24px; width:100%; position:relative; height:220px;
+    border-radius:26px; overflow:hidden;
+    background:linear-gradient(180deg,#0a0e2e 0%, #101737 70%, #0a1226 100%);
+    border:2px solid rgba(255,209,102,.3);
+    box-shadow:0 14px 34px rgba(0,0,0,.6), inset 0 0 60px rgba(0,0,10,.8);
+  }
+  .foret::after { /* voile de nuit */
+    content:''; position:absolute; inset:0; background:rgba(3,3,15,.38); pointer-events:none;
+  }
+  .foret img { position:absolute; filter:brightness(.72); pointer-events:none; }
+  .sapin1 { left:4%; bottom:-6px; height:190px; }
+  .sapin2 { right:6%; bottom:-10px; height:210px; }
+  .fougere { left:32%; bottom:-4px; height:80px; }
+  .nuage { left:12%; top:8px; height:56px; opacity:.7; }
+  .loup {
+    left:50%; bottom:34px; transform:translateX(-50%); font-size:64px;
+    position:absolute; opacity:0; z-index:3;
+    filter:none !important; text-shadow:0 0 24px rgba(255,224,102,.8);
+  }
+  .loup.apparu { opacity:1; animation:loup-pop .45s cubic-bezier(.34,1.56,.64,1) both; }
+  @keyframes loup-pop { /* mk-pop + conservation du centrage translateX(-50%) */
+    from{transform:translateX(-50%) scale(.3); opacity:0}
+    to{transform:translateX(-50%) scale(1); opacity:1}
+  }
+  .answers .tile { font-size:56px; min-width:120px; min-height:96px; }
+  .replay {
+    margin-top:14px; border:none; border-radius:999px; cursor:pointer;
+    font-family:'Fredoka One',cursive; font-size:17px; color:#2a1c05;
+    background:linear-gradient(145deg,#ffe066,#f0b73f); box-shadow:0 4px 0 #b8860b;
+    padding:10px 22px; touch-action:manipulation;
+  }
+  .replay:active { transform:scale(.94); }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 14 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🤫 Le Loup Chuchote</h1>
+    <p>Chut… le loup chuchote un mot… Qu'a-t-il dit ?</p>
+  </div>
+
+  <div class="foret">
+    <img class="nuage" src="../img/decor/nuage_gris.png" alt="" onerror="this.style.display='none'">
+    <img class="sapin1" src="../img/decor/sapin.png" alt="" onerror="this.style.display='none'">
+    <img class="sapin2" src="../img/decor/sapin.png" alt="" onerror="this.style.display='none'">
+    <img class="fougere" src="../img/decor/fougere.png" alt="" onerror="this.style.display='none'">
+    <div class="loup" id="loup">🐺</div>
+  </div>
+
+  <button class="replay" id="replay">🔁 Réécouter le chuchotement</button>
+
+  <div class="answers" id="choix">
+    <button class="tile" data-mot="lune">lune</button>
+    <button class="tile" data-mot="loup">loup</button>
+    <button class="tile" data-mot="lit">lit</button>
+  </div>
+
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  var choix = document.getElementById('choix');
+  var loup = document.getElementById('loup');
+  var locked = false;
+
+  /* ── Le chuchotement : lent et grave ── */
+  function chuchoter() {
+    MK.sfx('loup.mp3', 0.5);
+    setTimeout(function () {
+      MK.speak('lune', { rate: 0.55, pitch: 0.7 });
+    }, 1200);
+  }
+
+  document.getElementById('replay').addEventListener('click', function () {
+    if (locked) return;
+    chuchoter();
+  });
+
+  Array.prototype.forEach.call(choix.querySelectorAll('.tile'), function (t) {
+    t.addEventListener('click', function () {
+      if (locked) return;
+      if (t.dataset.mot === 'lune') {
+        locked = true;
+        MK.win(t, choix);
+        loup.classList.add('apparu');
+        MK.sfx('pop-apparition.mp3');
+        MK.say('Tu as entendu le loup ! Il a dit : lune !');
+        MK.speak('Tu as entendu le loup ! Il a dit : lune !', { rate: 0.8 });
+        setTimeout(function () {
+          MK.celebrate('BRAVO ! 🐺', 'tada.mp3');
+        }, 1500);
+      } else {
+        MK.non(t, 'Chut… réécoute bien…');
+        setTimeout(chuchoter, 1800);
+      }
+    });
+  });
+
+  /* Intro */
+  setTimeout(function () {
+    MK.say('Chut… le loup chuchote un mot…');
+    chuchoter();
+  }, 800);
+})();
+</script>
+</body>
+</html>

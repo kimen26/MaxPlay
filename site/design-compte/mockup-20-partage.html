@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 20 — Le Partage des Fraises</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── La table de partage ── */
+  .table {
+    margin-top:26px; width:100%; display:flex; flex-direction:column; align-items:center; gap:20px;
+    background:rgba(255,255,255,.04); border:2px solid rgba(255,209,102,.35);
+    border-radius:26px; padding:22px 14px;
+    box-shadow:0 14px 34px rgba(0,0,0,.5), inset 0 0 40px rgba(20,16,60,.6);
+  }
+  .duo { display:flex; gap:24px; width:100%; justify-content:space-around; }
+  .dino-zone { display:flex; flex-direction:column; align-items:center; gap:10px; }
+  .dino-zone img {
+    width:110px; height:110px; object-fit:contain;
+    filter:drop-shadow(0 6px 10px rgba(0,0,0,.5));
+  }
+  .dino-zone img.danse { animation:danse .5s ease-in-out infinite; }
+  @keyframes danse {
+    0%,100% { transform:translateY(0) rotate(-5deg); }
+    50%     { transform:translateY(-14px) rotate(5deg); }
+  }
+  .dino-nom { font-family:'Fredoka One',cursive; font-size:15px; color:rgba(255,224,102,.8); }
+
+  /* ── Les assiettes ── */
+  .assiette {
+    position:relative; width:160px; min-height:120px; border-radius:50%;
+    background:radial-gradient(circle at 50% 42%, #ffffff 0 55%, #d5dde2 78%, #b0bcc4 100%);
+    box-shadow:0 8px 18px rgba(0,0,0,.5), inset 0 -4px 10px rgba(0,0,0,.12);
+    display:flex; flex-wrap:wrap; align-items:center; justify-content:center;
+    gap:3px; padding:24px 20px; transition:box-shadow .3s;
+  }
+  .assiette.glow-forte { box-shadow:0 0 0 5px rgba(255,224,102,.9), 0 0 34px rgba(255,209,102,.75); }
+  .compte {
+    position:absolute; top:-14px; left:50%; transform:translateX(-50%) scale(0);
+    width:40px; height:40px; border-radius:50%; z-index:4;
+    background:radial-gradient(circle at 32% 28%, #8df0cd, #2fbf8f 70%);
+    border:3px solid #0d7a54; color:#062e20;
+    font-family:'Fredoka One',cursive; font-size:20px;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 10px rgba(0,0,0,.45);
+  }
+  .compte.on { animation:comptePop .4s cubic-bezier(.34,1.56,.64,1) both; }
+  @keyframes comptePop { from{transform:translateX(-50%) scale(0)} to{transform:translateX(-50%) scale(1)} }
+
+  /* ── La fraise (CSS pur) ── */
+  .fruit {
+    position:relative; width:42px; height:50px; flex:none;
+    border-radius:50% 50% 50% 50% / 36% 36% 64% 64%;
+    background:
+      radial-gradient(circle at 28% 52%, #ffe082 0 2px, transparent 3px),
+      radial-gradient(circle at 62% 42%, #ffe082 0 2px, transparent 3px),
+      radial-gradient(circle at 46% 70%, #ffe082 0 2px, transparent 3px),
+      radial-gradient(circle at 74% 64%, #ffe082 0 2px, transparent 3px),
+      radial-gradient(circle at 30% 78%, #ffe082 0 1.6px, transparent 2.6px),
+      linear-gradient(160deg,#ff6f60 0%, #e53935 55%, #b71c1c 100%);
+    box-shadow:inset -3px -5px 8px rgba(90,0,0,.35), 0 3px 6px rgba(0,0,0,.4);
+  }
+  .fruit::before { /* collerette verte */
+    content:''; position:absolute; top:-7px; left:50%; transform:translateX(-50%);
+    width:30px; height:14px;
+    background:linear-gradient(160deg,#7ed97f,#2e9e44);
+    clip-path:polygon(50% 0, 62% 35%, 100% 30%, 70% 60%, 85% 100%, 50% 72%, 15% 100%, 30% 60%, 0 30%, 38% 35%);
+  }
+  .fruit.mini { width:30px; height:36px; }
+  .fruit.mini::before { width:22px; height:10px; top:-5px; }
+
+  /* ── Le panier de fraises ── */
+  .panier {
+    display:flex; flex-wrap:wrap; gap:6px; justify-content:center;
+    max-width:360px; padding:14px 12px 18px; border-radius:18px 18px 30px 30px;
+    background:linear-gradient(180deg,#8d5a2b,#6d4420);
+    box-shadow:0 10px 20px rgba(0,0,0,.5), inset 0 3px 0 rgba(255,220,150,.25);
+  }
+  .fraise-btn {
+    min-width:80px; min-height:80px; border:none; background:transparent; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+    transition:transform .12s ease, opacity .25s; touch-action:manipulation;
+  }
+  .fraise-btn:active { transform:scale(.88); }
+  .fraise-btn.donnee { opacity:.15; pointer-events:none; transform:scale(.6); }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 20 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🍓 Le Partage des Fraises</h1>
+    <p>8 fraises pour 2 dinos. Tape les fraises : <b>une pour toi… une pour toi !</b></p>
+  </div>
+
+  <div class="table">
+    <div class="duo">
+      <div class="dino-zone">
+        <img id="dino1" src="../img/avatars/cory_joyeux_1.png" alt="Cory" onerror="this.style.display='none'">
+        <div class="dino-nom">Cory</div>
+        <div class="assiette" id="ass1"><span class="compte" id="cpt1">4</span></div>
+      </div>
+      <div class="dino-zone">
+        <img id="dino2" src="../img/avatars/diplo_joyeux_1.png" alt="Diplo" onerror="this.style.display='none'">
+        <div class="dino-nom">Diplo</div>
+        <div class="assiette" id="ass2"><span class="compte" id="cpt2">4</span></div>
+      </div>
+    </div>
+    <div class="panier" id="panier"></div>
+  </div>
+
+  <div class="answers" id="answers"></div>
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  var TOTAL = 8, MOITIE = 4;
+  var CHOICES = [3, 4, 5];
+  var tour = 0, locked = false;
+
+  var panier = document.getElementById('panier');
+  var assiettes = [document.getElementById('ass1'), document.getElementById('ass2')];
+  var comptes = [document.getElementById('cpt1'), document.getElementById('cpt2')];
+  var dinos = [document.getElementById('dino1'), document.getElementById('dino2')];
+  var noms = ['Cory', 'Diplo'];
+  var answersEl = document.getElementById('answers');
+
+  /* 8 fraises dans le panier */
+  for (var i = 0; i < TOTAL; i++) {
+    var b = document.createElement('button');
+    b.className = 'fraise-btn';
+    b.innerHTML = '<span class="fruit"></span>';
+    b.setAttribute('aria-label', 'donner une fraise');
+    b.addEventListener('click', function () { onFraise(this); });
+    panier.appendChild(b);
+  }
+
+  function onFraise(btn) {
+    if (locked || btn.disabled) return;
+    btn.disabled = true;
+    btn.classList.add('donnee');
+
+    /* La fraise vole dans l'assiette du dino dont c'est le tour */
+    var qui = tour % 2;
+    var f = document.createElement('span');
+    f.className = 'fruit mini pop';
+    assiettes[qui].appendChild(f);
+    MK.sfx('pop-apparition.mp3');
+    MK.pop(dinos[qui]);
+    MK.speak('une pour ' + noms[qui] + ' !', { rate: 0.9 });
+    tour++;
+
+    if (tour === TOTAL) {
+      locked = true;
+      setTimeout(function () {
+        buildAnswers();
+        MK.say('Toutes les fraises sont données ! Chacun en a combien ?');
+        MK.speak('Toutes les fraises sont données ! Chacun en a combien ?', { rate: 0.85 });
+      }, 700);
+    }
+  }
+
+  function buildAnswers() {
+    CHOICES.forEach(function (n) {
+      var b = document.createElement('button');
+      b.className = 'num-btn';
+      b.textContent = n;
+      b.setAttribute('aria-label', n + ' fraises chacun');
+      b.addEventListener('click', function () { onAnswer(n, b); });
+      answersEl.appendChild(b);
+    });
+  }
+
+  function onAnswer(n, btn) {
+    if (btn.disabled) return;
+    if (n !== MOITIE) {
+      MK.non(btn, 'Compte l’assiette de Cory : 1, 2, 3, 4 !');
+      MK.speak('Compte l’assiette de Cory : 1, 2, 3, 4 !', { rate: 0.8 });
+      return;
+    }
+    MK.win(btn, answersEl);
+    /* Les 2 assiettes s'illuminent : c'est PAREIL */
+    setTimeout(function () {
+      assiettes[0].classList.add('glow-forte');
+      comptes[0].classList.add('on');
+      MK.sfx('magie.mp3');
+      MK.speak('4 !', { rate: 0.8 });
+    }, 350);
+    setTimeout(function () {
+      assiettes[1].classList.add('glow-forte');
+      comptes[1].classList.add('on');
+      MK.sfx('magie.mp3');
+      MK.speak('et 4 !', { rate: 0.8 });
+    }, 1200);
+    setTimeout(function () {
+      MK.say('4 et 4… c’est PAREIL !');
+      MK.speak('4 et 4… c’est pareil !', { rate: 0.85 });
+      dinos[0].classList.add('danse');
+      dinos[1].classList.add('danse');
+      MK.sfx('waouh.mp3');
+    }, 2050);
+    setTimeout(function () {
+      MK.celebrate('C’EST PAREIL ! 🎉', 'tada.mp3');
+    }, 2800);
+  }
+
+  MK.say('Tape une fraise pour la donner !');
+  MK.speak('Tape une fraise pour la donner ! Une pour toi… une pour toi !', { rate: 0.85 });
+})();
+</script>
+</body>
+</html>

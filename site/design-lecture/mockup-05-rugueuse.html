@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 5 — La Lettre Rugueuse</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── Le bac à sable ── */
+  .sable {
+    position:relative; margin-top:24px; width:100%; max-width:420px; height:380px;
+    border-radius:28px; overflow:hidden; touch-action:none; cursor:pointer;
+    background:
+      radial-gradient(220px 140px at 30% 25%, rgba(255,236,170,.55), transparent 70%),
+      radial-gradient(260px 180px at 75% 70%, rgba(214,158,46,.5), transparent 70%),
+      linear-gradient(160deg,#f0c96a,#d9a83f 60%,#c3902e);
+    border:3px solid rgba(255,224,102,.7);
+    box-shadow:0 14px 34px rgba(0,0,0,.5), inset 0 0 60px rgba(120,80,10,.35);
+  }
+  /* grains de sable */
+  .sable::before {
+    content:''; position:absolute; inset:0; pointer-events:none; opacity:.35;
+    background-image:radial-gradient(rgba(120,80,10,.5) 1px, transparent 1px);
+    background-size:14px 14px;
+  }
+  /* la lettre modèle en contour */
+  .lettre {
+    position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+    font-size:300px; line-height:1; pointer-events:none;
+    color:transparent; -webkit-text-stroke:4px rgba(120,80,10,.45);
+    transition:color .6s ease, text-shadow .6s ease;
+  }
+  .lettre.filled {
+    color:#ffd54a; -webkit-text-stroke:4px rgba(120,80,10,.25);
+    text-shadow:0 0 34px rgba(255,213,74,.9), 0 4px 0 rgba(120,80,10,.4);
+  }
+  /* points-étapes invisibles qui s'allument */
+  .etape {
+    position:absolute; width:44px; height:44px; margin:-22px 0 0 -22px; border-radius:50%;
+    pointer-events:none; transition:background .2s, box-shadow .2s, transform .2s;
+  }
+  .etape.on {
+    background:radial-gradient(circle,#fff3c4 0%, #ffd54a 55%, transparent 75%);
+    box-shadow:0 0 18px rgba(255,213,74,.9); transform:scale(1.15);
+  }
+  /* le trait doré qui suit le doigt */
+  .trace {
+    position:absolute; width:16px; height:16px; margin:-8px 0 0 -8px; border-radius:50%;
+    background:radial-gradient(circle,#fff3c4 0%, #e8a91c 70%, transparent 100%);
+    pointer-events:none; opacity:.9;
+  }
+  .dino-geste {
+    position:absolute; bottom:8px; right:8px; width:92px; height:92px; object-fit:contain;
+    display:none; pointer-events:none;
+  }
+  .dino-geste.show { display:block; animation:mk-pop .45s cubic-bezier(.34,1.56,.64,1) both, geste 1s ease .45s 2; }
+  @keyframes geste { 0%,100%{transform:rotate(0)} 25%{transform:rotate(-9deg)} 75%{transform:rotate(9deg)} }
+  .replay {
+    margin-top:18px; border:none; border-radius:999px; cursor:pointer;
+    font-family:'Fredoka One',cursive; font-size:17px; color:#2a1c05;
+    background:linear-gradient(145deg,#ffe066,#f0b73f); box-shadow:0 4px 0 #b8860b;
+    padding:12px 26px; min-height:52px; touch-action:manipulation;
+  }
+  .replay:active { transform:scale(.94); }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 5 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>✋ La Lettre Rugueuse</h1>
+    <p>Trace la lettre <b class="cur">a</b> avec ton doigt, comme sur le sable !</p>
+  </div>
+
+  <div class="sable" id="sable">
+    <div class="lettre cur" id="lettre">a</div>
+    <img class="dino-geste" id="dino" src="../img/avatars/allo_joyeux_1.png" alt="dino qui fait le geste"
+         onerror="this.style.display='none'">
+  </div>
+
+  <button class="replay" id="replay">🔁 Je recommence</button>
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  var sable = document.getElementById('sable');
+  var lettre = document.getElementById('lettre');
+  var dino = document.getElementById('dino');
+  var done = false, tracing = false;
+
+  /* ~12 points-étapes le long du tracé du « a » (en % du bac) :
+     la boucle ronde puis la petite canne qui descend */
+  var POINTS = [
+    [52, 22], [38, 24], [27, 33], [21, 46], [22, 60], [30, 71],
+    [43, 77], [56, 74], [65, 63], [67, 48], [63, 34], [68, 82]
+  ];
+  var etapes = [];
+
+  function buildEtapes() {
+    etapes.forEach(function (e) { e.el.remove(); });
+    etapes = POINTS.map(function (p) {
+      var d = document.createElement('div');
+      d.className = 'etape';
+      d.style.left = p[0] + '%';
+      d.style.top = p[1] + '%';
+      sable.appendChild(d);
+      return { el: d, fx: p[0] / 100, fy: p[1] / 100, on: false };
+    });
+  }
+
+  function reset() {
+    done = false; tracing = false;
+    lettre.classList.remove('filled');
+    dino.classList.remove('show');
+    sable.querySelectorAll('.trace').forEach(function (t) { t.remove(); });
+    buildEtapes();
+    MK.say('Trace le a avec ton doigt !');
+  }
+
+  function checkPoint(x, y, w, h) {
+    var near = false;
+    etapes.forEach(function (e) {
+      var dx = x - e.fx * w, dy = y - e.fy * h;
+      var dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 60) near = true;
+      if (!e.on && dist < 40) {
+        e.on = true;
+        e.el.classList.add('on');
+        MK.sfx('pop-apparition.mp3', 0.25);
+      }
+    });
+    return near;
+  }
+
+  function addTrace(x, y) {
+    var t = document.createElement('div');
+    t.className = 'trace';
+    t.style.left = x + 'px';
+    t.style.top = y + 'px';
+    sable.appendChild(t);
+  }
+
+  function progress() {
+    var n = 0;
+    etapes.forEach(function (e) { if (e.on) n++; });
+    return n / etapes.length;
+  }
+
+  function onMove(ev) {
+    if (done || !tracing) return;
+    var r = sable.getBoundingClientRect();
+    var x = ev.clientX - r.left, y = ev.clientY - r.top;
+    if (x < 0 || y < 0 || x > r.width || y > r.height) return;
+    var near = checkPoint(x, y, r.width, r.height);
+    if (near) addTrace(x, y); // le trait n'apparaît que sur le chemin
+    if (progress() >= 0.8) reussite();
+  }
+
+  function reussite() {
+    done = true; tracing = false;
+    lettre.classList.add('filled');
+    MK.sfx('magie.mp3');
+    dino.classList.add('show');
+    MK.say('a comme… allo !');
+    MK.speak('a ! a comme allo !', { rate: 0.8 });
+    setTimeout(function () { MK.celebrate('BRAVO ! 🌟', 'tada.mp3'); }, 1200);
+  }
+
+  sable.addEventListener('pointerdown', function (ev) {
+    if (done) return;
+    tracing = true;
+    sable.setPointerCapture && sable.setPointerCapture(ev.pointerId);
+    onMove(ev);
+  });
+  sable.addEventListener('pointermove', onMove);
+  sable.addEventListener('pointerup', function () { tracing = false; });
+  sable.addEventListener('pointercancel', function () { tracing = false; });
+
+  document.getElementById('replay').addEventListener('click', reset);
+
+  reset();
+  MK.speakSound('a');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 6 — Le Dino qui dit les Sons</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  .dino-parleur {
+    margin-top:22px; width:150px; height:150px; object-fit:contain;
+    filter:drop-shadow(0 8px 18px rgba(0,0,0,.5));
+  }
+  .bulle {
+    min-height:44px; margin-top:6px; padding:8px 22px; border-radius:999px;
+    background:rgba(255,255,255,.08); border:2px solid rgba(255,209,102,.45);
+    font-family:'Fredoka One',cursive; font-size:20px; color:#ffe066;
+    display:flex; align-items:center; gap:8px;
+  }
+  .tuiles { display:flex; gap:16px; margin-top:26px; flex-wrap:wrap; justify-content:center; max-width:420px; }
+  .tuiles .tile { min-width:96px; min-height:96px; font-size:58px; }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 6 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🦕 Le Dino qui dit les Sons</h1>
+    <p id="consigneTxt">Touche une lettre : le dino dit son son !</p>
+  </div>
+
+  <img class="dino-parleur" id="dino" src="../img/avatars/brachio_joyeux_2.png" alt="brachio"
+       onerror="this.style.display='none'">
+  <div class="bulle" id="bulle">👆 touche une lettre</div>
+
+  <div class="tuiles" id="tuiles"></div>
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  var SONS = { s: 'sss', l: 'lll', m: 'mmm', r: 'rrr', f: 'fff', a: 'a' };
+  var LETTRES = ['s', 'l', 'm', 'r', 'f', 'a'];
+  var CIBLE = 'f';
+
+  var tuilesEl = document.getElementById('tuiles');
+  var bulle = document.getElementById('bulle');
+  var consigneTxt = document.getElementById('consigneTxt');
+  var dino = document.getElementById('dino');
+
+  var tapsLibres = 0, phase = 1, locked = false;
+
+  LETTRES.forEach(function (l) {
+    var b = document.createElement('button');
+    b.className = 'tile';
+    b.textContent = l;
+    b.dataset.lettre = l;
+    b.addEventListener('click', function () { onTap(l, b); });
+    tuilesEl.appendChild(b);
+  });
+
+  function dinoDit(son) {
+    bulle.textContent = '« ' + son + ' »';
+    MK.pop(bulle);
+    MK.pop(dino);
+    MK.speakSound(son);
+  }
+
+  function onTap(l, btn) {
+    if (locked) return;
+    if (phase === 1) {
+      /* Phase 1 libre : le dino dit le son de la lettre touchée */
+      dinoDit(SONS[l]);
+      MK.pop(btn);
+      tapsLibres++;
+      if (tapsLibres >= 2) {
+        phase = 2;
+        setTimeout(function () {
+          consigneTxt.innerHTML = 'Où est le <b class="cur">f</b> ? Écoute bien son son !';
+          bulle.textContent = '« fff ? »';
+          MK.say('Où est le f ? Cherche le fff !');
+          MK.speakSound('fff');
+        }, 1300);
+      }
+      return;
+    }
+    /* Phase 2 : chercher le f */
+    if (l === CIBLE) {
+      locked = true;
+      dinoDit('fff');
+      MK.win(btn, tuilesEl);
+      MK.say('Oui ! fff comme… fusée !');
+      setTimeout(function () { MK.celebrate('BRAVO ! 🎉', 'tada.mp3'); }, 1100);
+    } else {
+      /* Erreur : la lettre tapée dit SON propre son, puis on recadre */
+      MK.pop(btn);
+      MK.speakSound(SONS[l]);
+      MK.non(btn, "Ça c'est le " + l + " : " + SONS[l] + " ! Cherche le fff !");
+      MK.pop(dino);
+    }
+  }
+
+  MK.say('Touche une lettre, le dino dit son son !');
+})();
+</script>
+</body>
+</html>

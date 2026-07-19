@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Concept 12 — L'Alphabet Mobile</title>
+<link rel="stylesheet" href="../design-shared/mockup.css">
+<style>
+  /* ── La gare du mot ── */
+  .gare {
+    margin-top:22px; width:100%; background:rgba(255,255,255,.04);
+    border:2px solid rgba(255,209,102,.35); border-radius:26px; padding:20px 14px;
+    display:flex; flex-direction:column; align-items:center; gap:18px;
+    box-shadow:0 14px 34px rgba(0,0,0,.5), inset 0 0 40px rgba(20,16,60,.6);
+    overflow:hidden;
+  }
+  .bus-parking { min-height:96px; display:flex; align-items:center; transition:transform 1.8s ease-in; }
+  .bus-parking.parti { transform:translateX(140%); }
+  .slots { display:flex; gap:14px; }
+  .slots .tile.slot.filled {
+    background:linear-gradient(145deg,#4a3f8f,#332a6b);
+    box-shadow:0 6px 0 #241d4e, 0 0 18px rgba(255,209,102,.5);
+    color:#ffe066; border:none;
+  }
+  .boite-lettres { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
+  .boite-lettres .tile { min-width:84px; min-height:84px; font-size:50px; }
+  .boite-lettres .tile.posee { opacity:.25; pointer-events:none; }
+  .boite-lettres .tile.suivante { box-shadow:0 6px 0 #241d4e, 0 0 26px rgba(255,209,102,.9); }
+  .replay {
+    margin-top:14px; border:none; border-radius:999px; cursor:pointer;
+    font-family:'Fredoka One',cursive; font-size:17px; color:#2a1c05;
+    background:linear-gradient(145deg,#ffe066,#f0b73f); box-shadow:0 4px 0 #b8860b;
+    padding:10px 22px; touch-action:manipulation;
+  }
+  .replay:active { transform:scale(.94); }
+</style>
+</head>
+<body>
+<div class="band">🎨 Maquette — Concept 12 <a href="index.html">← Sommaire</a></div>
+
+<div class="stage">
+  <div class="consigne">
+    <h1>🔤 Construis le mot !</h1>
+    <p>Tape les lettres <b>dans l'ordre</b> pour écrire <b class="cur">bus</b> !</p>
+  </div>
+
+  <div class="gare">
+    <div class="bus-parking" id="busParking"></div>
+    <div class="slots" id="slots"></div>
+    <div class="boite-lettres" id="boite"></div>
+  </div>
+
+  <button class="replay" id="replay">🔁 Réécouter le mot</button>
+  <div class="message" id="message"></div>
+</div>
+
+<script src="../js/bus-svg.js"></script>
+<script src="../design-shared/mockup.js"></script>
+<script>
+(function () {
+  'use strict';
+  MK.stars();
+
+  var MOT = 'bus';
+  var SONS = { b: 'beu', u: 'u', s: 'sss' };
+  var parking = document.getElementById('busParking');
+  var slotsEl = document.getElementById('slots');
+  var boite = document.getElementById('boite');
+  var nextIdx = 0, locked = false;
+
+  /* Bus ligne 185 (ligne RATP réelle, passion de Max) */
+  parking.innerHTML = busSVG('#E2001A', '#fff', '185', 240);
+
+  /* ── 3 slots vides sous l'image ── */
+  var slots = MOT.split('').map(function () {
+    var s = document.createElement('div');
+    s.className = 'tile slot';
+    s.textContent = '?';
+    slotsEl.appendChild(s);
+    return s;
+  });
+
+  /* ── Boîte de lettres Montessori (b, u, s, a, o, n) ── */
+  ['b', 'u', 's', 'a', 'o', 'n'].forEach(function (l) {
+    var t = document.createElement('button');
+    t.className = 'tile';
+    t.textContent = l;
+    t.dataset.lettre = l;
+    t.addEventListener('click', function () { onLettre(t); });
+    boite.appendChild(t);
+  });
+
+  function marquerSuivante() {
+    Array.prototype.forEach.call(boite.children, function (t) {
+      t.classList.toggle('suivante', !locked && t.dataset.lettre === MOT[nextIdx] && !t.classList.contains('posee'));
+    });
+  }
+
+  function epelerMot(cb) {
+    /* La vérification : chaque lettre s'illumine une à une avec son son */
+    locked = true;
+    slots.forEach(function (s, i) {
+      setTimeout(function () {
+        MK.pop(s);
+        s.classList.add('glow');
+        MK.speakSound(SONS[MOT[i]]);
+        setTimeout(function () { s.classList.remove('glow'); }, 900);
+      }, i * 1000);
+    });
+    setTimeout(function () {
+      MK.speak(MOT + ' !', { rate: 0.7 });
+      if (cb) setTimeout(cb, 1200);
+    }, slots.length * 1000 + 400);
+  }
+
+  function onLettre(t) {
+    if (locked || t.classList.contains('posee')) return;
+    var l = t.dataset.lettre;
+    if (l !== MOT[nextIdx]) {
+      MK.non(t, 'Écoute : b… u… s…');
+      MK.speak('b… u… s… bus !', { rate: 0.6 });
+      return;
+    }
+    /* Bonne lettre : elle se pose dans le slot avec son son */
+    MK.sfx('pop-apparition.mp3');
+    var slot = slots[nextIdx];
+    slot.textContent = l;
+    slot.classList.add('filled');
+    MK.pop(slot);
+    MK.speakSound(SONS[l]);
+    t.classList.add('posee');
+    nextIdx++;
+    marquerSuivante();
+    if (nextIdx === MOT.length) {
+      setTimeout(function () {
+        MK.say('Vérifions ensemble…');
+        epelerMot(busPart);
+      }, 700);
+    }
+  }
+
+  function busPart() {
+    /* Le bus roule ! */
+    MK.sfx('demarrage-bus.mp3');
+    parking.classList.add('parti');
+    MK.celebrate('BRAVO ! 🎉', 'tada.mp3');
+    MK.say('Tu as construit le mot « bus » !');
+  }
+
+  document.getElementById('replay').addEventListener('click', function () {
+    if (locked) return;
+    MK.speak('b… u… s… bus !', { rate: 0.6 });
+  });
+
+  /* Intro */
+  setTimeout(function () {
+    MK.speak('bus !', { rate: 0.75 });
+    setTimeout(function () {
+      MK.say('Construis le mot : tape les lettres dans l\'ordre !');
+      MK.speak('b… u… s…', { rate: 0.6 });
+      marquerSuivante();
+    }, 1400);
+  }, 600);
+})();
+</script>
+</body>
+</html>

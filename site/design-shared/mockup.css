@@ -1,0 +1,124 @@
+/* ============================================================
+   MaxPlay — socle CSS commun des mockups jouables (démos 1 phase)
+   Conventions : dark coloré, or #ffd166/#ffe066, radius 16-22px,
+   pilules 999px, zones tactiles ≥ 80px, animations pop < 300ms.
+   Cursive : CURSIF (Beaumale, cursive scolaire FR avec attaches,
+   + Cursifl = version lignes Seyès pour le tracé) — fallback Caveat.
+   Décision prod en cours : ABCursive (Montessori) / DN Manuscript —
+   voir design-lecture/NOTES §5.1.
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&family=Caveat:wght@600;700&display=swap');
+
+@font-face {
+  font-family:'Cursif';
+  src:url('fonts/Cursif.ttf') format('truetype');
+  font-display:swap;
+}
+@font-face {
+  font-family:'Cursifl'; /* variant avec lignes Seyès (tracé, lettre rugueuse) */
+  src:url('fonts/Cursifl.ttf') format('truetype');
+  font-display:swap;
+}
+
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+
+body {
+  font-family:'Nunito',sans-serif; font-weight:700; color:#fff;
+  min-height:100dvh; overflow-x:hidden;
+  background:
+    radial-gradient(800px 420px at 50% -10%, rgba(90,70,180,.35), transparent 65%),
+    linear-gradient(180deg,#0b0b24 0%, #141032 55%, #0a0a1c 100%);
+  display:flex; justify-content:center;
+}
+
+.cur { font-family:'Cursif','Caveat',cursive; font-weight:400; } /* cursive scolaire FR (attaches) */
+
+/* étoiles de fond (générées par MK.stars) */
+.bg-star { position:fixed; width:3px; height:3px; border-radius:50%; background:#fff; opacity:.6; pointer-events:none; animation:mk-tw 2.8s ease-in-out infinite; z-index:0; }
+@keyframes mk-tw { 0%,100%{opacity:.2} 50%{opacity:.85} }
+
+.stage { position:relative; z-index:2; width:100%; max-width:520px; min-height:100dvh; padding:64px 16px 36px; display:flex; flex-direction:column; align-items:center; }
+
+/* bandeau maquette */
+.band {
+  position:fixed; top:10px; left:50%; transform:translateX(-50%); z-index:60;
+  display:flex; gap:10px; align-items:center; white-space:nowrap;
+  background:rgba(0,0,0,.55); border:1px solid rgba(255,209,102,.4); border-radius:999px;
+  padding:6px 16px; font-size:12px; font-weight:900; color:#ffe066; backdrop-filter:blur(6px);
+}
+.band a { color:#ffd166; text-decoration:none; }
+
+/* consigne */
+.consigne {
+  text-align:center; background:rgba(0,0,0,.45); border:2px solid rgba(255,209,102,.5);
+  border-radius:22px; padding:14px 24px; box-shadow:0 8px 24px rgba(0,0,0,.4);
+  max-width:100%;
+}
+.consigne h1 { font-family:'Fredoka One',cursive; font-size:clamp(21px,5.8vw,29px); color:#ffe066; letter-spacing:1px; }
+.consigne p { font-size:15px; color:rgba(255,255,255,.85); margin-top:4px; }
+
+/* message feedback */
+.message {
+  min-height:30px; margin-top:16px; text-align:center;
+  font-family:'Fredoka One',cursive; font-size:20px; color:#ffe066;
+  opacity:0; transition:opacity .25s;
+}
+.message.show { opacity:1; animation:mk-msgPop .35s cubic-bezier(.34,1.56,.64,1); }
+@keyframes mk-msgPop { from{transform:scale(.6)} to{transform:scale(1)} }
+
+/* boutons réponse (chiffres / choix génériques) */
+.answers { display:flex; gap:18px; margin-top:22px; flex-wrap:wrap; justify-content:center; }
+.num-btn {
+  min-width:92px; min-height:92px; border:none; border-radius:24px; cursor:pointer;
+  font-family:'Fredoka One',cursive; font-size:44px; color:#2a1c05;
+  background:linear-gradient(145deg,#ffe066,#f0b73f);
+  box-shadow:0 6px 0 #b8860b, 0 12px 22px rgba(0,0,0,.45);
+  transition:transform .12s ease; touch-action:manipulation; padding:8px 14px;
+}
+.num-btn:active { transform:scale(.92); }
+.num-btn.win { background:linear-gradient(145deg,#7fe7c4,#2fbf8f); box-shadow:0 6px 0 #157a56, 0 0 26px rgba(47,191,143,.7); color:#062e20; }
+
+/* cartes de choix (images, avatars, lettres…) */
+.card {
+  min-width:100px; min-height:100px; border:3px solid rgba(255,255,255,.18); border-radius:22px;
+  background:rgba(255,255,255,.06); cursor:pointer; display:flex; flex-direction:column;
+  align-items:center; justify-content:center; gap:6px; padding:12px;
+  transition:transform .12s ease, border-color .2s; touch-action:manipulation; color:#fff;
+}
+.card:active { transform:scale(.93); }
+.card.win { border-color:#2fbf8f; background:rgba(47,191,143,.18); box-shadow:0 0 24px rgba(47,191,143,.5); }
+.card img { max-width:84px; max-height:84px; object-fit:contain; }
+
+/* tuiles lecture (lettre / syllabe / graphème soudé / mot) */
+.tile {
+  min-width:84px; min-height:84px; border:none; border-radius:20px; cursor:pointer;
+  font-family:'Cursif','Caveat',cursive; font-weight:700; font-size:52px; color:#fff;
+  background:linear-gradient(145deg,#4a3f8f,#332a6b);
+  box-shadow:0 6px 0 #241d4e, 0 10px 20px rgba(0,0,0,.45);
+  display:inline-flex; align-items:center; justify-content:center; padding:6px 18px;
+  transition:transform .12s ease; touch-action:manipulation;
+}
+.tile:active { transform:scale(.92); }
+.tile.soudee { /* graphème complexe = bloc indissociable */
+  background:linear-gradient(145deg,#ff9d5c,#e8641f);
+  box-shadow:0 6px 0 #a8430e, 0 0 22px rgba(255,140,60,.55);
+}
+.tile.win { background:linear-gradient(145deg,#7fe7c4,#2fbf8f); box-shadow:0 6px 0 #157a56, 0 0 26px rgba(47,191,143,.7); color:#062e20; }
+.tile.slot { background:rgba(255,255,255,.07); box-shadow:inset 0 0 0 3px rgba(255,209,102,.5); color:rgba(255,224,102,.55); cursor:default; }
+
+/* animations partagées */
+.wobble { animation:mk-wobble .4s ease; }
+@keyframes mk-wobble { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-7px)} 50%{transform:translateX(7px)} 75%{transform:translateX(-4px)} }
+.pop { animation:mk-pop .4s cubic-bezier(.34,1.56,.64,1); }
+@keyframes mk-pop { from{transform:scale(.3); opacity:0} to{transform:scale(1); opacity:1} }
+.glow { animation:mk-glow 1.6s ease-in-out infinite; }
+@keyframes mk-glow { 0%,100%{filter:brightness(1)} 50%{filter:brightness(1.35)} }
+
+/* célébration plein écran légère */
+.mk-celebrate {
+  position:fixed; inset:0; z-index:80; display:flex; align-items:center; justify-content:center;
+  background:rgba(6,6,20,.72); backdrop-filter:blur(4px);
+  font-family:'Fredoka One',cursive; font-size:clamp(30px,8vw,46px); color:#ffe066;
+  text-align:center; padding:20px; animation:mk-pop .4s cubic-bezier(.34,1.56,.64,1);
+  text-shadow:0 0 30px rgba(255,209,102,.8);
+}

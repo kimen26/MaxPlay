@@ -11,7 +11,7 @@ Voir `memory/MAX_PROFILE.md` pour le profil complet.
 
 ## Infra & business (2026-07-06)
 
-Audit complet : `memory/INFRA-AUDIT-2026-07-06.md` (légal enfants, archi phasée 0→3, monétisation, anti-fraude, distribution).
+Audit complet : `memory/audits/2026-07-06-infra-business.md` (légal enfants, archi phasée 0→3, monétisation, anti-fraude, distribution).
 Décisions clés : compte parent + profil enfant pseudonyme · entitlements serveur (jamais de flag client) · codes cadeaux usage unique liés acheteur (jamais de code générique) · MoR Paddle/Lemon Squeezy · Phase 0 tant que < 50-100 foyers actifs hors proches · pubs = jamais vers enfants (cibler parents), organique d'abord.
 
 ## Phase 1 light LIVE (2026-07-06)

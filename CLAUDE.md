@@ -85,7 +85,7 @@ Plan → TodoWrite → Dev (subagents) → Verify → Commit → Docs
 | [`memory/workflow.md`](memory/workflow.md) | Workflow session |
 | [`memory/DOCTRINE.md`](memory/DOCTRINE.md) | Doctrine GED transverse (canon sans numéro, zéro chiffre en dur, frontières) — chaque PMO/INDEX de pôle y pointe |
 | [`memory/skills-map.md`](memory/skills-map.md) | Agents, skills, commandes |
-| [`memory/INFRA-AUDIT-2026-07-06.md`](memory/INFRA-AUDIT-2026-07-06.md) | Audit infra & business 2026 (légal enfants, archi phasée, monétisation) |
+| [`memory/audits/2026-07-06-infra-business.md`](memory/audits/2026-07-06-infra-business.md) | Audit infra & business 2026 (légal enfants, archi phasée, monétisation) |
 | [`infra/supabase/README.md`](infra/supabase/README.md) | Supabase Phase 1 (auth parent, sync progression, voix cloud) |
 | [`infra/bot/index.ts`](infra/bot/index.ts) | Bot Telegram — routing agents, permissions |
 | [`infra/mcp/server.ts`](infra/mcp/server.ts) | MCP llm-copains (Grok, Kimi, ElevenLabs) |

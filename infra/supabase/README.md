@@ -1,7 +1,7 @@
 # Supabase MaxPlay — auth parent + sync progression (Phase 1 light)
 
 > Projet : `WexWorld` (`bfrugwrzpefsaehsvypt`, eu-west-1 Irlande = UE ✅).
-> Modèle légal : audit [`memory/INFRA-AUDIT-2026-07-06.md`](../../memory/INFRA-AUDIT-2026-07-06.md) — compte PARENT, enfant = surnom pseudonyme, zéro donnée perso enfant.
+> Modèle légal : audit [`memory/audits/2026-07-06-infra-business.md`](../../memory/audits/2026-07-06-infra-business.md) — compte PARENT, enfant = surnom pseudonyme, zéro donnée perso enfant.
 
 ## Architecture
 

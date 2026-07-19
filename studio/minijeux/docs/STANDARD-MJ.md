@@ -4,7 +4,21 @@
 > Tout nouveau mini-jeu copie ce standard. le workflow MJ (`.claude/rules/mini-jeux.md` § Workflow) génère à partir de là.
 > Référence visuelle de propreté : voir les golden + le style `css/style.css` partagé.
 
-## Les 5 piliers obligatoires
+## 🔒 CONTRAT MJ v2 (décision Papa Yann 2026-07-19) — OBLIGATOIRE pour TOUT jeu
+
+> Fait foi sur les piliers v1 ci-dessous quand ils divergent (billes → piste golden, confetti maison → bibliothèque MaxFX). Enforcement : `tests/audit-gabarit.mjs` (bloquant pre-push + CI) · `game-mj-reviewer` Section 7 · figée par jeu.
+
+| # | Bloc | Implémentation canonique | Vérifié par |
+|---|------|--------------------------|-------------|
+| 1 | **Entrée catalogue complète** | `site/js/catalog.js` : `titre` court à impact (≤ 4 mots, l'action du jeu) · `category` = aire pédagogique · `emoji` = miniature PARLANTE (représente l'action, pas générique) · `desc` 1 ligne · `maxStars` · `access` · `status` | audit-gabarit (bloquant) + reviewer (impact/parlant) |
+| 2 | **Gabarit shell** | `js/mj-shell.js` via `MJ.init({...})` — entête `.hdr` (← retour + emoji + titre), panneau règle 🧑‍🔬 (`regle:{...}`), bulle 💬 commentaires (cloud.js ordonné auto), consigne audio | audit-gabarit + reviewer |
+| 3 | **Progression visible** | piste golden `.mp-track` (`mj-golden.js`, 4/6/8 questions) + étoiles ★★★ selon paliers `_PALIERS-DIFFICULTE.md` | reviewer |
+| 4 | **Animation de POINT = bibliothèque** | chaque réponse → `MaxFX.randomPoint(fromEl, pipEl, {result})` — tirage aléatoire dans les styles homologués (`MaxFX.markStyles`). **JAMAIS d'animation maison en jeu.** | reviewer + grep anti ad-hoc |
+| 5 | **Victoire = bibliothèque** | fin → `shell.G.showEnd` ; **sans-faute** → `MaxFX.randomFinal(container, {belt})` (tirage dans `MaxFX.starStyles`, 18 styles) ; avec fautes → fin sobre standard, jamais punitive | reviewer |
+| 6 | **Extension autorisée UNIQUEMENT par la bibliothèque** | nouvelle célébration = l'ajouter dans `celebrations.js` (`MARKS`/`STARS`) → elle entre d'office dans le tirage de TOUS les jeux. Nouvelle mécanique = passer par `MECANIQUES.md` (étape -1 du workflow) | reviewer + PMO |
+| 7 | **Anti-régression** | décisions validées → `figees/mj-XX.md` (LOI) + spec Playwright `tests/mj-XX.spec.mjs` verte avant push | hook figees-injector + harnais |
+
+## Les 5 piliers obligatoires (v1 historique — voir CONTRAT v2 pour les points qui divergent)
 
 | # | Pilier | Implémentation canonique |
 |---|--------|--------------------------|

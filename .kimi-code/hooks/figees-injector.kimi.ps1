@@ -24,12 +24,16 @@ $norm = $path -replace '\\', '/'
 
 # Cible : .../site/mj-<slug>.html  (mini-jeux → studio/minijeux/docs/jeux/figees/<slug>.md)
 # OU     : pôle DINO (code site/dino + dossier studio/dino/) → studio/dino/figees/encyclopedie.md
+# OU     : scope d'une rule path-scoped sans figees (rappel de lecture, equivalent Kimi des
+#          rules auto-injectees de Claude Code — Kimi n'a pas d'injection native par path)
 $root = 'c:\ProjetsPerso\Claude_Projects\MaxPlay'
 $slug = ''
 $figPath = ''
+$ruleReminder = ''
 if ($norm -match 'site/(mj-[\w-]+)\.html$') {
     $slug = $Matches[1]   # ex: mj-21  ou  mj-pose-tiles
     $figPath = Join-Path $root ("studio\minijeux\docs\jeux\figees\{0}.md" -f $slug)
+    $ruleReminder = '.claude/rules/mini-jeux.md'
 }
 elseif ($norm -match 'site/dev-dinos\.html$' -or
         $norm -match 'site/js/dinos-data\.js$' -or
@@ -37,6 +41,20 @@ elseif ($norm -match 'site/dev-dinos\.html$' -or
         $norm -match '/studio/dino/') {
     $slug = 'encyclopedie'   # pôle DINO
     $figPath = Join-Path $root 'studio\dino\figees\encyclopedie.md'
+    $ruleReminder = '.claude/rules/dino.md'
+}
+elseif ($norm -match 'site/index\.html$' -or
+        $norm -match 'site/js/' -or
+        $norm -match 'studio/minijeux/docs/jeux/') {
+    # Scope de la rule mini-jeux sans fichier figees propre : rappel seul
+    Write-Output @"
+==================================================================
+[RULE path-scoped] .claude/rules/mini-jeux.md s'applique a ce fichier.
+Si tu ne l'as pas encore lu ce tour, lis-le AVANT d'editer
+(decisions figees, UX 3.5-4 ans, bus SVG, contrat STANDARD-MJ).
+==================================================================
+"@
+    exit 0
 }
 else { exit 0 }
 
@@ -66,5 +84,8 @@ creer le fichier fige correspondant (procedure game-mj-pmo) pour le figer
 "@
 }
 
+if ($ruleReminder) {
+    Write-Output "[RULE path-scoped] $ruleReminder s'applique a ce fichier -- lis-le si pas encore fait ce tour."
+}
 Write-Output $ctx
 exit 0

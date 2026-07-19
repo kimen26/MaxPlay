@@ -19,15 +19,19 @@ Contexte à connaître avant de commencer :
   - SessionStart (lancement bot Telegram) — Claude only, demandé par Papa Yann
   - PostToolUse tsc (max-adventure) et commit INBOX — Claude only
   - PermissionRequest http (localhost:3001) — pas d'équivalent `type: http` chez Kimi
-  - Stop `pmo-check.ps1` (ex-narration-pmo-check, généralisé 3 pôles le 2026-07-19) — dépend de transcript_path Claude ; sonde Kimi en attente (check 9). La voie par défaut « capture immédiate par le main agent » est portée côté Kimi via les AGENTS.md de pôle + signal-detector.kimi.ps1
+- Porté le 2026-07-19 (n'est plus un manque) : Stop `pmo-check.ps1` → `.kimi-code/hooks/pmo-check.kimi.ps1` (check 9). Différences assumées vs Claude : périmètre = le tour (événements après le dernier `turn.prompt` du wire.jsonl, plus strict, aligné « capture immédiate DANS LE TOUR ») ; voie « agent PMO invoqué » absente (pas de subagent custom chez Kimi) → seule la trace `pmo/` satisfait le check. `stop-probe.kimi.ps1` reste sur disque mais n'est plus branché dans config.toml.
+- Équivalent Kimi des rules path-scoped : pas d'injection native par path chez Kimi — le rappel est porté par `figees-injector.kimi.ps1` (PreToolUse) qui injecte un pointeur vers `.claude/rules/mini-jeux.md` / `dino.md` selon le path édité.
+- MCP : côté Claude, serveurs dans `~/.claude.json` (clé `mcpServers` globale + `projects.<cwd>.mcpServers`) + `.mcp.json` racine ; côté Kimi, `~/.kimi-code/mcp.json` (user) + `.kimi-code/mcp.json` (projet, prioritaire). **Règle secrets : user-level uniquement, jamais de `mcp.json` avec clés API dans le repo.** Les clés `env` sont copiées côté Kimi sans jamais être affichées.
 
 ---
 
 ## Check 1 — Config Kimi : TOML valide
 
 ```bash
-python -c "import tomllib; d=tomllib.load(open('$HOME/.kimi-code/config.toml','rb')); print('OK', len(d.get('hooks',[])), 'hooks,', len(d.get('extra_skill_dirs',[])), 'skill_dirs')"
+P=$(cygpath -w "$HOME/.kimi-code/config.toml"); python -c "import tomllib; d=tomllib.load(open(r'$P','rb')); print('OK', len(d.get('hooks',[])), 'hooks,', len(d.get('extra_skill_dirs',[])), 'skill_dirs')"
 ```
+
+⚠️ Sous Git Bash Windows, Python ne comprend pas les chemins MSYS (`/c/Users/...`) — toujours passer par `cygpath -w` (sinon faux `FileNotFoundError`).
 
 ✅ attendu : `OK 3 hooks, 3 skill_dirs` (skills projet + skills globaux Claude + CheiKh).
 ❌ si exception → config cassée, restaurer depuis le backup le plus récent (`ls -t $HOME/.kimi-code/config.toml.*.bak | head -1`).
@@ -35,7 +39,7 @@ python -c "import tomllib; d=tomllib.load(open('$HOME/.kimi-code/config.toml','r
 ## Check 2 — extra_skill_dirs : chemins vivants
 
 ```bash
-python -c "import tomllib,os; d=tomllib.load(open('$HOME/.kimi-code/config.toml','rb')); [print(('OK ' if os.path.isdir(p) else 'MORT ')+p) for p in d.get('extra_skill_dirs',[])]"
+P=$(cygpath -w "$HOME/.kimi-code/config.toml"); python -c "import tomllib,os; d=tomllib.load(open(r'$P','rb')); [print(('OK ' if os.path.isdir(p) else 'MORT ')+p) for p in d.get('extra_skill_dirs',[])]"
 ```
 
 ✅ tous `OK`. ❌ un chemin `MORT` = dérive typique (ex : purge/archivage de skills comme le commit 3e9555bd) → retirer le chemin de `extra_skill_dirs` ou le repointer.
@@ -101,21 +105,37 @@ for f in .kimi-code/hooks/*.ps1; do
 done
 ```
 
-✅ tous `OK`. Réparation si KO :
+✅ tous `OK`. Réparation si KO — préfixe le BOM au niveau octet (le one-liner PowerShell `$s=[IO.File]...` casse sous Git Bash, qui avale les `$`) :
 
 ```bash
-powershell -NoProfile -Command "$s=[IO.File]::ReadAllText('CHEMIN',[Text.Encoding]::UTF8); [IO.File]::WriteAllText('CHEMIN',$s,(New-Object Text.UTF8Encoding($true)))"
+printf '\xef\xbb\xbf' | cat - FICHIER > FICHIER.tmp && mv FICHIER.tmp FICHIER
 ```
 
-## Check 9 — Sonde Stop (portage narration-pmo-check en attente)
+⚠️ Les outils d'édition (Edit/Write) peuvent **perdre le BOM** d'un .ps1 — revérifier après toute modif d'un hook, et éviter les caractères exotiques (tiret cadratin `—`) qui font échouer le parse PS 5.1 sans BOM.
+
+## Check 9 — Stop pmo-check porté (depuis 2026-07-19)
 
 ```bash
-wc -l .kimi-code/hooks/stop-payload.jsonl 2>/dev/null || echo "pas encore de payload"
+grep -c 'pmo-check.kimi.ps1' "$HOME/.kimi-code/config.toml"
+ls .kimi-code/hooks/pmo-check.kimi.ps1
 ```
 
-⚠️ rappel : tant que le vrai portage du Stop `pmo-check.ps1` n'est pas fait, la gouvernance pôle n'est **pas enforced** côté Kimi — mais la voie par défaut 2026-07-19 (« capture immédiate par le main agent ») est portée en advisory via les AGENTS.md de pôle et le signal-detector Kimi, donc le manque est limité au filet de sécurité bloquant. Si le fichier a grossi (payloads réels disponibles) → proposer le portage.
+✅ `1` + fichier présent. Smoke test bloquant/passant (crée une session fake, vérifie exit 2 sans trace pmo/ et exit 0 avec, puis nettoie) :
 
-## Check 10 — Smoke test des 2 hooks actifs
+```bash
+FAKE="$HOME/.kimi-code/sessions/wd_smoketest/session_fake-pmo-test/agents/main"; mkdir -p "$FAKE"
+printf '%s\n' '{"type":"turn.prompt","input":[{"type":"text","text":"t"}]}' \
+  '{"type":"context.append_loop_event","event":{"type":"tool.call","name":"Edit","args":{"path":"site/mj-01.html"}}}' > "$FAKE/wire.jsonl"
+P='{"hook_event_name":"Stop","session_id":"session_fake-pmo-test","cwd":"x","stop_hook_active":false}'
+echo "$P" | powershell -NoProfile -ExecutionPolicy Bypass -File ".kimi-code/hooks/pmo-check.kimi.ps1" >/dev/null 2>&1; echo "sans trace (attendu 2) = $?"
+printf '%s\n' '{"type":"context.append_loop_event","event":{"type":"tool.call","name":"Edit","args":{"path":"studio/minijeux/pmo/backlog.md"}}}' >> "$FAKE/wire.jsonl"
+echo "$P" | powershell -NoProfile -ExecutionPolicy Bypass -File ".kimi-code/hooks/pmo-check.kimi.ps1" >/dev/null 2>&1; echo "avec trace (attendu 0) = $?"
+rm -rf "$HOME/.kimi-code/sessions/wd_smoketest"
+```
+
+❌ exit inattendu ou hook absent de config.toml → rebrancher la commande Stop sur `pmo-check.kimi.ps1` (backup config d'abord). Le hook localise le wire via `session_index.jsonl` (fallback glob `sessions/*/<id>/`) et fail-open si introuvable.
+
+## Check 10 — Smoke test des hooks actifs (signal-detector + figees-injector)
 
 ```bash
 echo '{"hook_event_name":"UserPromptSubmit","prompt":"ajouter un mini-jeu bus"}' | powershell -NoProfile -ExecutionPolicy Bypass -File ".kimi-code/hooks/signal-detector.kimi.ps1" | grep -c "SIGNAL JEU"
@@ -123,6 +143,48 @@ echo '{"hook_event_name":"PreToolUse","tool_input":{"path":"C:/ProjetsPerso/Clau
 ```
 
 ✅ `1` et `1`.
+
+## Check 11 — Parité MCP Claude ↔ Kimi (bidirectionnel)
+
+Compare les serveurs MCP déclarés des deux côtés (noms uniquement — **jamais les valeurs `env`**, ce sont des secrets) + vérifie que les binaires `command` existent :
+
+```bash
+python << 'EOF'
+import json, os, shutil
+home = os.path.expanduser('~')
+def load(p):
+    try: return json.load(open(p, encoding='utf-8'))
+    except Exception: return {}
+def servers(d): return d.get('mcpServers') or {}
+
+# Côté Claude : global + projet courant + .mcp.json racine
+claude = load(os.path.join(home, '.claude.json'))
+c = dict(servers(claude))
+cwd = os.path.normpath(os.getcwd()).lower()
+for path, pcfg in (claude.get('projects') or {}).items():
+    if os.path.normpath(path).lower() == cwd:
+        c.update(servers(pcfg))
+c.update(servers(load('.mcp.json')))
+
+# Côté Kimi : user + projet
+k = dict(servers(load(os.path.join(home, '.kimi-code', 'mcp.json'))))
+k.update(servers(load('.kimi-code/mcp.json')))
+
+drift = False
+for n in sorted(set(c) | set(k)):
+    if n in c and n in k: print(f'OK          {n}')
+    else:
+        drift = True
+        print(f'{"CLAUDE-ONLY" if n in c else "KIMI-ONLY "}  {n}')
+for n, cfg in {**c, **k}.items():
+    cmd = cfg.get('command')
+    if cmd and not shutil.which(cmd) and not os.path.isfile(cmd):
+        drift = True; print(f'BINAIRE MANQUANT {n}: {cmd}')
+print('PARITE OK' if not drift else 'DRIFT -> recopier le serveur manquant de l\'autre cote (env comprises, sans les afficher)')
+EOF
+```
+
+✅ chaque serveur en `OK` + `PARITE OK`. ❌ `CLAUDE-ONLY` / `KIMI-ONLY` = dérive → recopier l'entrée de l'autre côté (format identique `mcpServers`, copier les `env` sans les afficher ; user-level côté Kimi). `BINAIRE MANQUANT` = `command` introuvable (ex : bun/npx hors PATH, exe supprimé). Exception légitime possible : un serveur volontairement mono-outil — le documenter alors dans l'en-tête de ce skill (non-portage volontaire).
 
 ---
 
@@ -134,5 +196,6 @@ echo '{"hook_event_name":"PreToolUse","tool_input":{"path":"C:/ProjetsPerso/Clau
 | 4-5 | Mémoire (AGENTS.md) | … | … | |
 | 6 | Skills | … | … | |
 | 7-10 | Hooks | … | … | |
+| 11 | MCP | … | … | |
 
 Terminer par : liste des dérives trouvées + action corrective proposée pour chacune (ne pas corriger sans accord, sauf régénération AGENTS.md qui est sans risque).

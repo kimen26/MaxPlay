@@ -933,9 +933,28 @@
     ], { duration: opts.duration || 1100, iterations: opts.iterations || 3, easing: 'ease-in-out' });
   }
 
+  /* ── Tirages OFFICIELS bibliothèque (CONTRAT-MJ 2026-07-19) ─────────
+     Un jeu ne choisit pas son animation : il pioche dans la bibliothèque.
+     randomPoint = anim de point aléatoire · randomFinal = victoire sans-faute
+     aléatoire. Ajouter une célébration = l'ajouter à MARKS/STARS ici même
+     (elle entre d'office dans le tirage), JAMAIS d'animation ad-hoc en jeu. */
+  function pick(arr) { return arr[(Math.random() * arr.length) | 0]; }
+  function randomPoint(fromEl, toEl, opts) {
+    opts = opts || {};
+    if (!MARKS[opts.style]) opts.style = pick(Object.keys(MARKS));
+    return markPoint(fromEl, toEl, opts);
+  }
+  function randomFinal(container, opts) {
+    opts = opts || {};
+    if (!STARS[opts.style]) opts.style = pick(Object.keys(STARS));
+    return finalStar(container, opts);
+  }
+
   global.MaxFX = {
     markPoint: markPoint,
     finalStar: finalStar,
+    randomPoint: randomPoint,
+    randomFinal: randomFinal,
     glow: glow,
     markStyles: Object.keys(MARKS),
     starStyles: Object.keys(STARS)

@@ -169,3 +169,7 @@ Serveur MCP global (scope user, tous projets) exposant 2 outils LLM tiers :
 | `studio/max-adventure/src/scenes/` | HubScene · SandboxScene (max-adventure Phaser) |
 | `.claude/skills/game-rules/bus-rules.md` | Règles immuables bus + protocole de modification |
 | `.github/workflows/deploy.yml` | CI : build + assemble + deploy GitHub Pages |
+
+## Audits transverses
+
+- **Norme (2026-07-19)** : tout audit transverse va dans `memory/audits/AAAA-MM-JJ-<sujet>.md` (audits de pole -> `studio/<pole>/pmo/`). Dernier : [audits/2026-07-19-nettoyage-ged.md](audits/2026-07-19-nettoyage-ged.md) (nettoyage GED complet, 12 QUESTIONS ouvertes).

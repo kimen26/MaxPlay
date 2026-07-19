@@ -214,3 +214,5 @@ Audit qualité images (P1-P4 : doublons/watermarks/mauvaises espèces/wiki-angla
 
 ### Session 2026-06-03
 Refonte UI + audio + création du pôle DINO (voir `sprint-log.md`). Décisions : pôle pair, Tritri sans méta, scission familles, régimes alimentaires, voix menus. Leçons L-D01→L-D05 gravées.
+
+- 2026-07-19 (session nettoyage GED) : audit dino OK — 4 actions en attente validation : suppr dossier fantôme site/img/dinos/paleoart/_new-xxl/ (vide, doublon du staging racine), archiver _TEMOINS-v2-bouclefermee.md vers _archive/2026-07-18-ancien-pipeline/, suppr _TODO-RATTRAPAGE.txt (complété), ajouter _new-traces/ à la section STAGING de content/INDEX-IMAGES.md.

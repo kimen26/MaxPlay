@@ -116,3 +116,5 @@
 3. Ajouter une ligne dans "À faire" avec un ID unique (`STORY-NNN`, `PERSO-NNN`, `UNIVERS-NNN`, `ARCHI-NNN`)
 4. Quand démarré : déplacer dans "En cours" + mettre à jour `sprint-log.md`
 5. Quand terminé : déplacer dans "Terminés" avec date
+
+- 2026-07-19 (session nettoyage GED) : audit narration — 2 orphelins a supprimer apres validation (pmo/KANBAN.md nomenclature fantome, equipe/pipeline-realite.md constat infra perime) ; inbox en derive (regle 48h violee 5-8 sem : INPUT-004/005 jamais executes, lot 28-cultures ~900Ko sans ticket dedie — rattacher a UNIVERS-004/005 ou creer ticket) ; encodage mojibake sur inbox/culture*.md a corriger lors distillation ; _archive stories + equipe = sains, ne pas toucher.

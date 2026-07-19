@@ -73,6 +73,18 @@ Ex-`temp/` (partie sons). 26 fichiers audio (.mp3, .flac) + 1 script `gen-idfm.j
 |---------|-----------------|
 | `narration-architecte-deprecated-2026-05-12.md` | Rôle fusionné avec `narration-conseiller` (étape 1 Pitch+Plan). Matière statique (Kishōtenketsu + boussole 4-5 ans) intégrée à narration-conseiller.md. Archivé 2026-05-15 (audit archi Claude). |
 
+### `dino-vires-2026-06-12/` — 8 dinos retirés du catalogue
+
+Documenté en détail dans son `INDEX.md` local (8 dinos retirés un à un, raisons incluses). Entrée ajoutée ici le 2026-07-19 (audit nettoyage GED — le dossier existait sans note dans cet index).
+
+### `grok-3-batch-source-png-2026-07-10/` — Sources brutes batch Grok (19 Mo)
+
+15 PNG sources (Allosaurus / Ceratosaurus / Gallimimus × 5 variantes). Aucune doc d'origine ; correspond très probablement aux sources brutes du batch Gallimimus corrompu (commit 56fdfbfb, même période, mêmes dinos). **Statut : à faire trancher par dino-pmo** (Q3 de `memory/audits/2026-07-19-nettoyage-ged.md`) — documenter ou supprimer.
+
+### `skills-craft-deprecated-2026-06-08/` — Skills craft absorbés
+
+Skills `storytelling-master`, `craft-fundamentals`, `youth-writing`, `enneagramme-system` absorbés par `~/.claude/skills/narration-craft/` (voir son SKILL.md § historique). Entrée ajoutée ici le 2026-07-19 (existait sans note).
+
 ## Règle d'or
 
 Ne **rien** y ajouter sans une note dans ce fichier expliquant **quand**, **pourquoi**, et **comment retrouver** la matière. Un cadavre non documenté = un cadavre perdu.

@@ -58,7 +58,7 @@ BLOC D — Le truc fou
 4. `studio/dino/content/scripts-audio/_TEMPLATE-4blocs-dialogue.md` — template canonique.
 5. `studio/dino/content/scripts-audio/groupe-*.md` — scripts existants à réécrire.
 6. `studio/dino/figees/encyclopedie.md` — règles figées.
-7. `temp/therizinosaurus-V3-exemple.md` — exemple validé.
+7. `therizinosaurus-V3-exemple.md` (même dossier) — exemple validé.
 
 ## Livrable
 Pour chaque dino du lot, produire un bloc de texte formaté :
@@ -81,7 +81,7 @@ Pour chaque dino du lot, produire un bloc de texte formaté :
 ...
 ```
 
-Ecrire le résultat dans `temp/reecriture-fiches-dino-V3/{famille}-{lot}.md`.
+Ecrire le résultat dans `{famille}-{lot}.md` (même dossier — relocalisé depuis temp/ le 2026-07-19).
 
 ## Vérification avant livraison
 - [ ] Chaque dino couvre toutes les étapes demandées.

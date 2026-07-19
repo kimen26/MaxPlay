@@ -67,7 +67,7 @@
 
 ## 🗃️ STAGING local (gitignoré, jamais référencé par le code)
 
-`_new-xxl/` (sorties brutes paleoart, y c. non retenues — mine d'idées) · `_new-sprites/` (bruts sprites + `_cut`) · `_new-headshots/` · `_new-ombre/` · `_new-coloriage/`.
+`_new-xxl/` (sorties brutes paleoart, y c. non retenues — mine d'idées) · `_new-sprites/` (bruts sprites + `_cut`) · `_new-headshots/` · `_new-ombre/` · `_new-coloriage/` · `_new-traces/` (bruts traces, générés 2026-07-18 avec la collection `traces/`).
 **Cycle** : générer → juger visuellement → convertir/ranger dans la collection PROD → le staging reste comme historique local. Purgeable si besoin de place (regénérable).
 
 ---

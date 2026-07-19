@@ -1,0 +1,2586 @@
+{
+  "aenocyon": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Aenocyon_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Aenocyon_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Aenocyon_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Aenocyon_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Aenocyon_funfact.jpg",
+      "site/img/dinos/_new-xxl/Aenocyon_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Aenocyon_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Aenocyon_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Aenocyon.jpg",
+      "site/img/dinos/_new-xxl/Aenocyon.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Aenocyon.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Aenocyon_manger.jpg",
+      "site/img/dinos/_new-xxl/Aenocyon_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Aenocyon_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Aenocyon_paris.jpg",
+      "site/img/dinos/_new-xxl/Aenocyon_paris.png"
+    ]
+  },
+  "albertosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Albertosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Albertosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Albertosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Albertosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Albertosaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Albertosaurus_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/albertosaurus_inbox2_1_taille.jpg",
+      "site/img/dinos/grok/albertosaurus_inbox2_4_environnement.jpg",
+      "site/img/dinos/grok/albertosaurus_lot1_3_chasse.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Albertosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Albertosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Albertosaurus.jpg",
+      "site/img/dinos/_new-xxl/Albertosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Albertosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Albertosaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Albertosaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Albertosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Albertosaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Albertosaurus_paris.png"
+    ]
+  },
+  "allosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Allosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Allosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Allosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Allosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Allosaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Allosaurus_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/allosaurus_lot1_1_taille.jpg",
+      "site/img/dinos/grok/allosaurus_lot1_2_environnement.jpg",
+      "site/img/dinos/grok/allosaurus_lot1_3_chasse.jpg",
+      "site/img/dinos/grok/allosaurus_lot2_1_taille.jpg",
+      "site/img/dinos/grok/allosaurus_lot2_2_environnement.jpg",
+      "site/img/dinos/grok/allosaurus_lot2_3_chasse.jpg",
+      "site/img/dinos/grok/allosaurus_lot3_1_taille.jpg",
+      "site/img/dinos/grok/allosaurus_lot3_2_environnement.jpg",
+      "site/img/dinos/grok/allosaurus_lot3_3_chasse.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Allosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Allosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Allosaurus.jpg",
+      "site/img/dinos/_new-xxl/Allosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Allosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Allosaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Allosaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Allosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Allosaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Allosaurus_paris.png"
+    ]
+  },
+  "amargasaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Amargasaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Amargasaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Amargasaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Amargasaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Amargasaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Amargasaurus_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/amargasaurus_inbox2_4_sa_vie.jpg",
+      "site/img/dinos/grok/amargasaurus_inbox2_5_taille.jpg",
+      "site/img/dinos/grok/amargasaurus_lot1_1_taille.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Amargasaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Amargasaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Amargasaurus.jpg",
+      "site/img/dinos/_new-xxl/Amargasaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Amargasaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Amargasaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Amargasaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Amargasaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Amargasaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Amargasaurus_paris.png"
+    ]
+  },
+  "ankylosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Ankylosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Ankylosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Ankylosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Ankylosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Ankylosaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Ankylosaurus_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/ankylosaurus_inbox2_1_taille.jpg",
+      "site/img/dinos/grok/ankylosaurus_inbox2_2_environnement.jpg",
+      "site/img/dinos/grok/ankylosaurus_inbox2_3_qui_le_chasse.jpg",
+      "site/img/dinos/grok/ankylosaurus_inbox2_4_environnement.jpg",
+      "site/img/dinos/grok/ankylosaurus_lot2_1_sa_vie.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Ankylosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Ankylosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Ankylosaurus.jpg",
+      "site/img/dinos/_new-xxl/Ankylosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Ankylosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Ankylosaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Ankylosaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Ankylosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Ankylosaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Ankylosaurus_paris.png"
+    ]
+  },
+  "apatosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Apatosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Apatosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Apatosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Apatosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Apatosaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Apatosaurus_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/apatosaurus_inbox2_3_sa_vie.jpg",
+      "site/img/dinos/grok/apatosaurus_inbox2_4_taille.jpg",
+      "site/img/dinos/grok/apatosaurus_inbox2_5_environnement.jpg",
+      "site/img/dinos/grok/apatosaurus_inbox2_6_sa_vie.jpg",
+      "site/img/dinos/grok/apatosaurus_lot1_1_taille.jpg",
+      "site/img/dinos/grok/apatosaurus_lot1_2_environnement.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Apatosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Apatosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Apatosaurus.jpg",
+      "site/img/dinos/_new-xxl/Apatosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Apatosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Apatosaurus_manger.jpg"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Apatosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Apatosaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Apatosaurus_paris.png"
+    ]
+  },
+  "archaeopteryx": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Archaeopteryx_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Archaeopteryx_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Archaeopteryx_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Archaeopteryx_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Archaeopteryx_funfact.jpg",
+      "site/img/dinos/_new-xxl/Archaeopteryx_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Archaeopteryx_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Archaeopteryx_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Archaeopteryx.jpg",
+      "site/img/dinos/_new-xxl/Archaeopteryx.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Archaeopteryx.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Archaeopteryx_manger.jpg",
+      "site/img/dinos/_new-xxl/Archaeopteryx_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Archaeopteryx_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Archaeopteryx_paris.jpg",
+      "site/img/dinos/_new-xxl/Archaeopteryx_paris.png"
+    ]
+  },
+  "archelon": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Archelon_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Archelon_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Archelon_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Archelon_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Archelon_funfact.jpg",
+      "site/img/dinos/_new-xxl/Archelon_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Archelon_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Archelon_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Archelon.jpg",
+      "site/img/dinos/_new-xxl/Archelon.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Archelon.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Archelon_manger.jpg",
+      "site/img/dinos/_new-xxl/Archelon_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Archelon_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Archelon_paris.jpg",
+      "site/img/dinos/_new-xxl/Archelon_paris.png"
+    ]
+  },
+  "baryonyx": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Baryonyx_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Baryonyx_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Baryonyx_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Baryonyx_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Baryonyx_funfact.jpg",
+      "site/img/dinos/_new-xxl/Baryonyx_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/baryonyx_lot2_1_environnement.jpg",
+      "site/img/dinos/grok/baryonyx_lot2_1_taille.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Baryonyx_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Baryonyx_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Baryonyx.jpg",
+      "site/img/dinos/_new-xxl/Baryonyx.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Baryonyx.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Baryonyx_manger.jpg",
+      "site/img/dinos/_new-xxl/Baryonyx_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Baryonyx_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Baryonyx_paris.jpg",
+      "site/img/dinos/_new-xxl/Baryonyx_paris.png"
+    ]
+  },
+  "brachiosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Brachiosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Brachiosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Brachiosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Brachiosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Brachiosaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Brachiosaurus_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/brachiosaurus_inbox2_4_taille.jpg",
+      "site/img/dinos/grok/brachiosaurus_inbox2_5_sa_vie.jpg",
+      "site/img/dinos/grok/brachiosaurus_lot1_1_taille.jpg",
+      "site/img/dinos/grok/brachiosaurus_lot1_2_environnement.jpg",
+      "site/img/dinos/grok/brachiosaurus_lot2_3_chasse.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Brachiosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Brachiosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Brachiosaurus.jpg",
+      "site/img/dinos/_new-xxl/Brachiosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Brachiosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Brachiosaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Brachiosaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Brachiosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Brachiosaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Brachiosaurus_paris.png"
+    ]
+  },
+  "camarasaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Camarasaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Camarasaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Camarasaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Camarasaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Camarasaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Camarasaurus_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/camarasaurus_inbox2_1_taille.jpg",
+      "site/img/dinos/grok/camarasaurus_inbox2_2_taille.jpg",
+      "site/img/dinos/grok/camarasaurus_inbox2_3_environnement.jpg",
+      "site/img/dinos/grok/camarasaurus_lot3_2_environnement.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Camarasaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Camarasaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Camarasaurus.jpg",
+      "site/img/dinos/_new-xxl/Camarasaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Camarasaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Camarasaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Camarasaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Camarasaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Camarasaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Camarasaurus_paris.png"
+    ]
+  },
+  "carcharodontosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Carcharodontosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Carcharodontosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Carcharodontosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Carcharodontosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Carcharodontosaurus_funfact.jpg"
+    ],
+    "grok": [
+      "site/img/dinos/grok/carcharodontosaurus_inbox2_1_environnement.jpg",
+      "site/img/dinos/grok/carcharodontosaurus_lot1_1_taille.jpg",
+      "site/img/dinos/grok/carcharodontosaurus_lot1_2_environnement.jpg",
+      "site/img/dinos/grok/carcharodontosaurus_lot1_3_chasse.jpg",
+      "site/img/dinos/grok/carcharodontosaurus_lot2_1_taille.jpg",
+      "site/img/dinos/grok/carcharodontosaurus_lot2_2_environnement.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Carcharodontosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Carcharodontosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Carcharodontosaurus.jpg",
+      "site/img/dinos/_new-xxl/Carcharodontosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Carcharodontosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Carcharodontosaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Carcharodontosaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Carcharodontosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Carcharodontosaurus_paris.jpg"
+    ]
+  },
+  "carnotaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Carnotaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Carnotaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Carnotaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Carnotaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Carnotaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Carnotaurus_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Carnotaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Carnotaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Carnotaurus.jpg",
+      "site/img/dinos/_new-xxl/Carnotaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Carnotaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Carnotaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Carnotaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Carnotaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Carnotaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Carnotaurus_paris.png"
+    ]
+  },
+  "centrosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Centrosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Centrosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Centrosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Centrosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Centrosaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Centrosaurus_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/centrosaurus_lot2_1_environnement.jpg",
+      "site/img/dinos/grok/centrosaurus_lot2_1_taille.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Centrosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Centrosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Centrosaurus.jpg",
+      "site/img/dinos/_new-xxl/Centrosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Centrosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Centrosaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Centrosaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Centrosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Centrosaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Centrosaurus_paris.png"
+    ]
+  },
+  "ceratosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Ceratosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Ceratosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Ceratosaurus_ecosysteme.jpg"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Ceratosaurus_funfact.jpg"
+    ],
+    "grok": [
+      "site/img/dinos/grok/ceratosaurus_inbox2_2_environnement.jpg",
+      "site/img/dinos/grok/ceratosaurus_inbox2_5_environnement.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Ceratosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Ceratosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Ceratosaurus.jpg"
+    ],
+    "hero_root": [
+      "site/img/dinos/Ceratosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Ceratosaurus_manger.jpg"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Ceratosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Ceratosaurus_paris.jpg"
+    ]
+  },
+  "coelodonta": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Coelodonta_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Coelodonta_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Coelodonta_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Coelodonta_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Coelodonta_funfact.jpg",
+      "site/img/dinos/_new-xxl/Coelodonta_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Coelodonta_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Coelodonta_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Coelodonta.jpg",
+      "site/img/dinos/_new-xxl/Coelodonta.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Coelodonta.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Coelodonta_manger.jpg",
+      "site/img/dinos/_new-xxl/Coelodonta_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Coelodonta_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Coelodonta_paris.jpg",
+      "site/img/dinos/_new-xxl/Coelodonta_paris.png"
+    ]
+  },
+  "compsognathus": {
+    "grok": [
+      "site/img/dinos/grok/compsognathus_lot2_1_environnement.jpg",
+      "site/img/dinos/grok/compsognathus_lot2_1_sa_vie.jpg"
+    ]
+  },
+  "cryolophosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Cryolophosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Cryolophosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Cryolophosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Cryolophosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Cryolophosaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Cryolophosaurus_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Cryolophosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Cryolophosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Cryolophosaurus.jpg",
+      "site/img/dinos/_new-xxl/Cryolophosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Cryolophosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Cryolophosaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Cryolophosaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Cryolophosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Cryolophosaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Cryolophosaurus_paris.png"
+    ]
+  },
+  "deinonychus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Deinonychus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Deinonychus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Deinonychus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Deinonychus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Deinonychus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Deinonychus_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Deinonychus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Deinonychus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Deinonychus.jpg",
+      "site/img/dinos/_new-xxl/Deinonychus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Deinonychus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Deinonychus_manger.jpg",
+      "site/img/dinos/_new-xxl/Deinonychus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Deinonychus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Deinonychus_paris.jpg",
+      "site/img/dinos/_new-xxl/Deinonychus_paris.png"
+    ]
+  },
+  "dilophosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Dilophosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Dilophosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Dilophosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Dilophosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Dilophosaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Dilophosaurus_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/dilophosaurus_inbox2_1_taille.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Dilophosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Dilophosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Dilophosaurus.jpg",
+      "site/img/dinos/_new-xxl/Dilophosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Dilophosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Dilophosaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Dilophosaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Dilophosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Dilophosaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Dilophosaurus_paris.png"
+    ]
+  },
+  "dimetrodon": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Dimetrodon_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Dimetrodon_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Dimetrodon_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Dimetrodon_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Dimetrodon_funfact.jpg",
+      "site/img/dinos/_new-xxl/Dimetrodon_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Dimetrodon_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Dimetrodon_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Dimetrodon.jpg",
+      "site/img/dinos/_new-xxl/Dimetrodon.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Dimetrodon.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Dimetrodon_manger.jpg",
+      "site/img/dinos/_new-xxl/Dimetrodon_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Dimetrodon_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Dimetrodon_paris.jpg",
+      "site/img/dinos/_new-xxl/Dimetrodon_paris.png"
+    ]
+  },
+  "diplodocus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Diplodocus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Diplodocus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Diplodocus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Diplodocus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Diplodocus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Diplodocus_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/diplodocus_inbox2_3_sa_vie.jpg",
+      "site/img/dinos/grok/diplodocus_inbox2_5_environnement.jpg",
+      "site/img/dinos/grok/diplodocus_inbox2_6_taille.jpg",
+      "site/img/dinos/grok/diplodocus_lot1_2_environnement.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Diplodocus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Diplodocus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Diplodocus.jpg",
+      "site/img/dinos/_new-xxl/Diplodocus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Diplodocus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Diplodocus_manger.jpg",
+      "site/img/dinos/_new-xxl/Diplodocus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Diplodocus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Diplodocus_paris.jpg",
+      "site/img/dinos/_new-xxl/Diplodocus_paris.png"
+    ]
+  },
+  "edmontonia": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Edmontonia_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Edmontonia_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Edmontonia_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Edmontonia_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Edmontonia_funfact.jpg",
+      "site/img/dinos/_new-xxl/Edmontonia_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Edmontonia_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Edmontonia_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Edmontonia.jpg",
+      "site/img/dinos/_new-xxl/Edmontonia.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Edmontonia.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Edmontonia_manger.jpg",
+      "site/img/dinos/_new-xxl/Edmontonia_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Edmontonia_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Edmontonia_paris.jpg",
+      "site/img/dinos/_new-xxl/Edmontonia_paris.png"
+    ]
+  },
+  "edmontosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Edmontosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Edmontosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Edmontosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Edmontosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Edmontosaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Edmontosaurus_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Edmontosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Edmontosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Edmontosaurus.jpg",
+      "site/img/dinos/_new-xxl/Edmontosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Edmontosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Edmontosaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Edmontosaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Edmontosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Edmontosaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Edmontosaurus_paris.png"
+    ]
+  },
+  "elasmosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Elasmosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Elasmosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Elasmosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Elasmosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Elasmosaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Elasmosaurus_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Elasmosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Elasmosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Elasmosaurus.jpg",
+      "site/img/dinos/_new-xxl/Elasmosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Elasmosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Elasmosaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Elasmosaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Elasmosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Elasmosaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Elasmosaurus_paris.png"
+    ]
+  },
+  "euoplocephalus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Euoplocephalus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Euoplocephalus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Euoplocephalus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Euoplocephalus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Euoplocephalus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Euoplocephalus_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/euoplocephalus_inbox2_2_environnement.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Euoplocephalus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Euoplocephalus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Euoplocephalus.jpg",
+      "site/img/dinos/_new-xxl/Euoplocephalus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Euoplocephalus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Euoplocephalus_manger.jpg",
+      "site/img/dinos/_new-xxl/Euoplocephalus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Euoplocephalus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Euoplocephalus_paris.jpg",
+      "site/img/dinos/_new-xxl/Euoplocephalus_paris.png"
+    ]
+  },
+  "gallimimus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Gallimimus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Gallimimus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/_new-xxl/Gallimimus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/_new-xxl/Gallimimus_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Gallimimus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Gallimimus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Gallimimus.jpg",
+      "site/img/dinos/_new-xxl/Gallimimus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Gallimimus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Gallimimus_manger.jpg",
+      "site/img/dinos/_new-xxl/Gallimimus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Gallimimus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Gallimimus_paris.jpg"
+    ]
+  },
+  "giganotosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Giganotosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Giganotosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Giganotosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Giganotosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Giganotosaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Giganotosaurus_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/giganotosaurus_inbox2_1_environnement.jpg",
+      "site/img/dinos/grok/giganotosaurus_lot1_1_taille.jpg",
+      "site/img/dinos/grok/giganotosaurus_lot1_2_environnement.jpg",
+      "site/img/dinos/grok/giganotosaurus_lot2_1_taille.jpg",
+      "site/img/dinos/grok/giganotosaurus_lot2_2_environnement.jpg",
+      "site/img/dinos/grok/giganotosaurus_lot3_1_taille.jpg",
+      "site/img/dinos/grok/giganotosaurus_lot4_3_chasse.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Giganotosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Giganotosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Giganotosaurus.jpg",
+      "site/img/dinos/_new-xxl/Giganotosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Giganotosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Giganotosaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Giganotosaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Giganotosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Giganotosaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Giganotosaurus_paris.png"
+    ]
+  },
+  "glyptodon": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Glyptodon_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Glyptodon_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Glyptodon_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Glyptodon_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Glyptodon_funfact.jpg",
+      "site/img/dinos/_new-xxl/Glyptodon_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Glyptodon_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Glyptodon_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Glyptodon.jpg",
+      "site/img/dinos/_new-xxl/Glyptodon.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Glyptodon.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Glyptodon_manger.jpg",
+      "site/img/dinos/_new-xxl/Glyptodon_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Glyptodon_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Glyptodon_paris.jpg",
+      "site/img/dinos/_new-xxl/Glyptodon_paris.png"
+    ]
+  },
+  "gorgosaurus": {
+    "grok": [
+      "site/img/dinos/grok/gorgosaurus_inbox2_5_environnement.jpg"
+    ]
+  },
+  "ichthyosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Ichthyosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Ichthyosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Ichthyosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Ichthyosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Ichthyosaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Ichthyosaurus_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Ichthyosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Ichthyosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Ichthyosaurus.jpg",
+      "site/img/dinos/_new-xxl/Ichthyosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Ichthyosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Ichthyosaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Ichthyosaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Ichthyosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Ichthyosaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Ichthyosaurus_paris.png"
+    ],
+    "paris-plongeur": [
+      "site/img/dinos/_new-xxl/Ichthyosaurus_paris-plongeur.png"
+    ]
+  },
+  "iguanodon": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Iguanodon_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Iguanodon_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Iguanodon_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Iguanodon_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Iguanodon_funfact.jpg",
+      "site/img/dinos/_new-xxl/Iguanodon_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Iguanodon_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Iguanodon_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Iguanodon.jpg",
+      "site/img/dinos/_new-xxl/Iguanodon.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Iguanodon.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Iguanodon_manger.jpg",
+      "site/img/dinos/_new-xxl/Iguanodon_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Iguanodon_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Iguanodon_paris.jpg",
+      "site/img/dinos/_new-xxl/Iguanodon_paris.png"
+    ]
+  },
+  "kentrosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Kentrosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Kentrosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Kentrosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Kentrosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Kentrosaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Kentrosaurus_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/kentrosaurus_inbox2_4_taille.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Kentrosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Kentrosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Kentrosaurus.jpg",
+      "site/img/dinos/_new-xxl/Kentrosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Kentrosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Kentrosaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Kentrosaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Kentrosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Kentrosaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Kentrosaurus_paris.png"
+    ]
+  },
+  "liopleurodon": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Liopleurodon_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Liopleurodon_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Liopleurodon_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Liopleurodon_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Liopleurodon_funfact.jpg",
+      "site/img/dinos/_new-xxl/Liopleurodon_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Liopleurodon_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Liopleurodon_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Liopleurodon.jpg",
+      "site/img/dinos/_new-xxl/Liopleurodon.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Liopleurodon.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Liopleurodon_manger.jpg",
+      "site/img/dinos/_new-xxl/Liopleurodon_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Liopleurodon_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Liopleurodon_paris.jpg",
+      "site/img/dinos/_new-xxl/Liopleurodon_paris.png"
+    ]
+  },
+  "mammuthus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Mammuthus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Mammuthus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Mammuthus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Mammuthus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Mammuthus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Mammuthus_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Mammuthus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Mammuthus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Mammuthus.jpg",
+      "site/img/dinos/_new-xxl/Mammuthus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Mammuthus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Mammuthus_manger.jpg",
+      "site/img/dinos/_new-xxl/Mammuthus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Mammuthus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Mammuthus_paris.jpg",
+      "site/img/dinos/_new-xxl/Mammuthus_paris.png"
+    ]
+  },
+  "megatherium": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Megatherium_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Megatherium_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Megatherium_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Megatherium_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Megatherium_funfact.jpg",
+      "site/img/dinos/_new-xxl/Megatherium_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Megatherium_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Megatherium_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Megatherium.jpg",
+      "site/img/dinos/_new-xxl/Megatherium.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Megatherium.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Megatherium_manger.jpg",
+      "site/img/dinos/_new-xxl/Megatherium_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Megatherium_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Megatherium_paris.jpg",
+      "site/img/dinos/_new-xxl/Megatherium_paris.png"
+    ]
+  },
+  "microraptor": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Microraptor_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Microraptor_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Microraptor_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Microraptor_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Microraptor_funfact.jpg",
+      "site/img/dinos/_new-xxl/Microraptor_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Microraptor_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Microraptor_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Microraptor.jpg",
+      "site/img/dinos/_new-xxl/Microraptor.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Microraptor.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Microraptor_manger.jpg",
+      "site/img/dinos/_new-xxl/Microraptor_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Microraptor_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Microraptor_paris.jpg",
+      "site/img/dinos/_new-xxl/Microraptor_paris.png"
+    ]
+  },
+  "mosasaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Mosasaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Mosasaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Mosasaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Mosasaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Mosasaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Mosasaurus_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Mosasaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Mosasaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Mosasaurus.jpg",
+      "site/img/dinos/_new-xxl/Mosasaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Mosasaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Mosasaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Mosasaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Mosasaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Mosasaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Mosasaurus_paris.png"
+    ]
+  },
+  "ophthalmosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Ophthalmosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Ophthalmosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Ophthalmosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Ophthalmosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Ophthalmosaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Ophthalmosaurus_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Ophthalmosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Ophthalmosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Ophthalmosaurus.jpg",
+      "site/img/dinos/_new-xxl/Ophthalmosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Ophthalmosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Ophthalmosaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Ophthalmosaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Ophthalmosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Ophthalmosaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Ophthalmosaurus_paris.png"
+    ]
+  },
+  "oviraptor": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Oviraptor_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Oviraptor_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Oviraptor_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Oviraptor_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Oviraptor_funfact.jpg",
+      "site/img/dinos/_new-xxl/Oviraptor_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Oviraptor_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Oviraptor_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Oviraptor.jpg",
+      "site/img/dinos/_new-xxl/Oviraptor.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Oviraptor.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Oviraptor_manger.jpg",
+      "site/img/dinos/_new-xxl/Oviraptor_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Oviraptor_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Oviraptor_paris.jpg",
+      "site/img/dinos/_new-xxl/Oviraptor_paris.png"
+    ]
+  },
+  "pachycephalosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Pachycephalosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Pachycephalosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Pachycephalosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Pachycephalosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Pachycephalosaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Pachycephalosaurus_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/pachycephalosaurus_inbox2_1_taille.jpg",
+      "site/img/dinos/grok/pachycephalosaurus_lot2_1_sa_vie.jpg",
+      "site/img/dinos/grok/pachycephalosaurus_lot2_1_taille.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Pachycephalosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Pachycephalosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Pachycephalosaurus.jpg",
+      "site/img/dinos/_new-xxl/Pachycephalosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Pachycephalosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Pachycephalosaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Pachycephalosaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Pachycephalosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Pachycephalosaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Pachycephalosaurus_paris.png"
+    ]
+  },
+  "paraceratherium": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Paraceratherium_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Paraceratherium_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Paraceratherium_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Paraceratherium_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Paraceratherium_funfact.jpg",
+      "site/img/dinos/_new-xxl/Paraceratherium_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Paraceratherium_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Paraceratherium_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Paraceratherium.jpg",
+      "site/img/dinos/_new-xxl/Paraceratherium.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Paraceratherium.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Paraceratherium_manger.jpg",
+      "site/img/dinos/_new-xxl/Paraceratherium_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Paraceratherium_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Paraceratherium_paris.jpg",
+      "site/img/dinos/_new-xxl/Paraceratherium_paris.png"
+    ]
+  },
+  "parasaurolophus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Parasaurolophus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Parasaurolophus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Parasaurolophus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Parasaurolophus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Parasaurolophus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Parasaurolophus_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/parasaurolophus_lot2_1_environnement.jpg",
+      "site/img/dinos/grok/parasaurolophus_lot2_1_sa_vie.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Parasaurolophus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Parasaurolophus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Parasaurolophus.jpg",
+      "site/img/dinos/_new-xxl/Parasaurolophus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Parasaurolophus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Parasaurolophus_manger.jpg",
+      "site/img/dinos/_new-xxl/Parasaurolophus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Parasaurolophus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Parasaurolophus_paris.jpg",
+      "site/img/dinos/_new-xxl/Parasaurolophus_paris.png"
+    ]
+  },
+  "patagotitan": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Patagotitan_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Patagotitan_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Patagotitan_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Patagotitan_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Patagotitan_funfact.jpg",
+      "site/img/dinos/_new-xxl/Patagotitan_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Patagotitan_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Patagotitan_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Patagotitan.jpg",
+      "site/img/dinos/_new-xxl/Patagotitan.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Patagotitan.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Patagotitan_manger.jpg",
+      "site/img/dinos/_new-xxl/Patagotitan_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Patagotitan_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Patagotitan_paris.jpg",
+      "site/img/dinos/_new-xxl/Patagotitan_paris.png"
+    ]
+  },
+  "pentaceratops": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Pentaceratops_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Pentaceratops_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Pentaceratops_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Pentaceratops_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Pentaceratops_funfact.jpg",
+      "site/img/dinos/_new-xxl/Pentaceratops_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/pentaceratops_lot2_1_environnement.jpg",
+      "site/img/dinos/grok/pentaceratops_lot2_1_sa_vie.jpg",
+      "site/img/dinos/grok/pentaceratops_lot2_1_taille.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Pentaceratops_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Pentaceratops_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Pentaceratops.jpg",
+      "site/img/dinos/_new-xxl/Pentaceratops.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Pentaceratops.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Pentaceratops_manger.jpg",
+      "site/img/dinos/_new-xxl/Pentaceratops_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Pentaceratops_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Pentaceratops_paris.jpg",
+      "site/img/dinos/_new-xxl/Pentaceratops_paris.png"
+    ]
+  },
+  "plateosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Plateosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Plateosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Plateosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Plateosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Plateosaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Plateosaurus_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/plateosaurus_inbox2_1_taille.jpg",
+      "site/img/dinos/grok/plateosaurus_inbox2_2_sa_vie.jpg",
+      "site/img/dinos/grok/plateosaurus_inbox2_3_environnement.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Plateosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Plateosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Plateosaurus.jpg",
+      "site/img/dinos/_new-xxl/Plateosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Plateosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Plateosaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Plateosaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Plateosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Plateosaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Plateosaurus_paris.png"
+    ]
+  },
+  "protoceratops": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Protoceratops_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Protoceratops_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Protoceratops_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Protoceratops_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Protoceratops_funfact.jpg",
+      "site/img/dinos/_new-xxl/Protoceratops_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/protoceratops_lot2_1_sa_vie.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Protoceratops_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Protoceratops_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Protoceratops.jpg",
+      "site/img/dinos/_new-xxl/Protoceratops.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Protoceratops.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Protoceratops_manger.jpg",
+      "site/img/dinos/_new-xxl/Protoceratops_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Protoceratops_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Protoceratops_paris.jpg",
+      "site/img/dinos/_new-xxl/Protoceratops_paris.png"
+    ]
+  },
+  "psittacosaurus": {
+    "grok": [
+      "site/img/dinos/grok/psittacosaurus_lot2_1_environnement.jpg",
+      "site/img/dinos/grok/psittacosaurus_lot2_1_sa_vie.jpg"
+    ]
+  },
+  "pteranodon": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Pteranodon_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Pteranodon_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Pteranodon_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Pteranodon_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Pteranodon_funfact.jpg",
+      "site/img/dinos/_new-xxl/Pteranodon_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Pteranodon_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Pteranodon_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Pteranodon.jpg",
+      "site/img/dinos/_new-xxl/Pteranodon.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Pteranodon.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Pteranodon_manger.jpg",
+      "site/img/dinos/_new-xxl/Pteranodon_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Pteranodon_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Pteranodon_paris.jpg",
+      "site/img/dinos/_new-xxl/Pteranodon_paris.png"
+    ]
+  },
+  "quetzalcoatlus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Quetzalcoatlus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Quetzalcoatlus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Quetzalcoatlus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Quetzalcoatlus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Quetzalcoatlus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Quetzalcoatlus_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Quetzalcoatlus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Quetzalcoatlus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Quetzalcoatlus.jpg",
+      "site/img/dinos/_new-xxl/Quetzalcoatlus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Quetzalcoatlus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Quetzalcoatlus_manger.jpg",
+      "site/img/dinos/_new-xxl/Quetzalcoatlus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Quetzalcoatlus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Quetzalcoatlus_paris.jpg",
+      "site/img/dinos/_new-xxl/Quetzalcoatlus_paris.png"
+    ]
+  },
+  "shonisaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Shonisaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Shonisaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Shonisaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Shonisaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Shonisaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Shonisaurus_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Shonisaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Shonisaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Shonisaurus.jpg",
+      "site/img/dinos/_new-xxl/Shonisaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Shonisaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Shonisaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Shonisaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Shonisaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Shonisaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Shonisaurus_paris.png"
+    ]
+  },
+  "smilodon": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Smilodon_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Smilodon_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Smilodon_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Smilodon_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Smilodon_funfact.jpg",
+      "site/img/dinos/_new-xxl/Smilodon_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Smilodon_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Smilodon_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Smilodon.jpg",
+      "site/img/dinos/_new-xxl/Smilodon.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Smilodon.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Smilodon_manger.jpg",
+      "site/img/dinos/_new-xxl/Smilodon_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Smilodon_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Smilodon_paris.jpg",
+      "site/img/dinos/_new-xxl/Smilodon_paris.png"
+    ]
+  },
+  "spinosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Spinosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Spinosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Spinosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Spinosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Spinosaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Spinosaurus_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/spinosaurus_lot1_1_taille.jpg",
+      "site/img/dinos/grok/spinosaurus_lot1_2_environnement.jpg",
+      "site/img/dinos/grok/spinosaurus_lot1_3_chasse.jpg",
+      "site/img/dinos/grok/spinosaurus_lot2_1_taille.jpg",
+      "site/img/dinos/grok/spinosaurus_lot2_3_chasse.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Spinosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Spinosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Spinosaurus.jpg",
+      "site/img/dinos/_new-xxl/Spinosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Spinosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Spinosaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Spinosaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Spinosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Spinosaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Spinosaurus_paris.png"
+    ]
+  },
+  "stegosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Stegosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Stegosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Stegosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Stegosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Stegosaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Stegosaurus_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/stegosaurus_inbox2_1_taille.jpg",
+      "site/img/dinos/grok/stegosaurus_inbox2_3_qui_le_chasse.jpg",
+      "site/img/dinos/grok/stegosaurus_inbox2_5_sa_vie.jpg",
+      "site/img/dinos/grok/stegosaurus_lot1_2_environnement.jpg",
+      "site/img/dinos/grok/stegosaurus_lot2_1_sa_vie.jpg",
+      "site/img/dinos/grok/stegosaurus_lot2_1_taille.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Stegosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Stegosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Stegosaurus.jpg",
+      "site/img/dinos/_new-xxl/Stegosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Stegosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Stegosaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Stegosaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Stegosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Stegosaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Stegosaurus_paris.png"
+    ]
+  },
+  "styracosaurus": {
+    "grok": [
+      "site/img/dinos/grok/styracosaurus_inbox2_1_taille.jpg",
+      "site/img/dinos/grok/styracosaurus_inbox2_2_sa_vie.jpg",
+      "site/img/dinos/grok/styracosaurus_inbox2_3_environnement.jpg",
+      "site/img/dinos/grok/styracosaurus_inbox2_4_environnement.jpg",
+      "site/img/dinos/grok/styracosaurus_inbox2_5_sa_vie.jpg",
+      "site/img/dinos/grok/styracosaurus_lot2_1_sa_vie.jpg"
+    ]
+  },
+  "suchomimus": {
+    "grok": [
+      "site/img/dinos/grok/suchomimus_lot2_1_environnement.jpg",
+      "site/img/dinos/grok/suchomimus_lot2_1_sa_vie.jpg"
+    ]
+  },
+  "tarbosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Tarbosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Tarbosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Tarbosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Tarbosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Tarbosaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Tarbosaurus_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/tarbosaurus_inbox2_2_environnement.jpg",
+      "site/img/dinos/grok/tarbosaurus_inbox2_4_taille.jpg",
+      "site/img/dinos/grok/tarbosaurus_inbox2_5_environnement.jpg",
+      "site/img/dinos/grok/tarbosaurus_inbox2_6_sa_vie.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Tarbosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Tarbosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Tarbosaurus.jpg",
+      "site/img/dinos/_new-xxl/Tarbosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Tarbosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Tarbosaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Tarbosaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Tarbosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Tarbosaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Tarbosaurus_paris.png"
+    ]
+  },
+  "therizinosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Therizinosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Therizinosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Therizinosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Therizinosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Therizinosaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Therizinosaurus_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Therizinosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Therizinosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Therizinosaurus.jpg",
+      "site/img/dinos/_new-xxl/Therizinosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Therizinosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Therizinosaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Therizinosaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Therizinosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Therizinosaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Therizinosaurus_paris.png"
+    ]
+  },
+  "titanis": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Titanis_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Titanis_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Titanis_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Titanis_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Titanis_funfact.jpg",
+      "site/img/dinos/_new-xxl/Titanis_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Titanis_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Titanis_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Titanis.jpg",
+      "site/img/dinos/_new-xxl/Titanis.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Titanis.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Titanis_manger.jpg",
+      "site/img/dinos/_new-xxl/Titanis_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Titanis_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Titanis_paris.jpg",
+      "site/img/dinos/_new-xxl/Titanis_paris.png"
+    ]
+  },
+  "torosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Torosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Torosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Torosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Torosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Torosaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Torosaurus_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/torosaurus_inbox2_2_taille.jpg",
+      "site/img/dinos/grok/torosaurus_lot1_1_taille.jpg",
+      "site/img/dinos/grok/torosaurus_lot1_3_chasse.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Torosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Torosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Torosaurus.jpg",
+      "site/img/dinos/_new-xxl/Torosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Torosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Torosaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Torosaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Torosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Torosaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Torosaurus_paris.png"
+    ]
+  },
+  "triceratops": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Triceratops_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Triceratops_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Triceratops_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Triceratops_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Triceratops_funfact.jpg",
+      "site/img/dinos/_new-xxl/Triceratops_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/triceratops_inbox2_1_qui_le_chasse.jpg",
+      "site/img/dinos/grok/triceratops_inbox2_1_taille.jpg",
+      "site/img/dinos/grok/triceratops_inbox2_2_sa_vie.jpg",
+      "site/img/dinos/grok/triceratops_inbox2_3_qui_le_chasse.jpg",
+      "site/img/dinos/grok/triceratops_inbox2_4_qui_le_chasse.jpg",
+      "site/img/dinos/grok/triceratops_lot2_1_environnement.jpg",
+      "site/img/dinos/grok/triceratops_lot2_1_sa_vie.jpg",
+      "site/img/dinos/grok/triceratops_lot2_1_taille.jpg",
+      "site/img/dinos/grok/triceratops_lot2_2_environnement.jpg",
+      "site/img/dinos/grok/triceratops_lot2_2_sa_vie.jpg",
+      "site/img/dinos/grok/triceratops_lot2_2_taille.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Triceratops_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Triceratops_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Triceratops.jpg",
+      "site/img/dinos/_new-xxl/Triceratops.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Triceratops.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Triceratops_manger.jpg",
+      "site/img/dinos/_new-xxl/Triceratops_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Triceratops_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Triceratops_paris.jpg",
+      "site/img/dinos/_new-xxl/Triceratops_paris.png"
+    ]
+  },
+  "troodon": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Troodon_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Troodon_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Troodon_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Troodon_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Troodon_funfact.jpg",
+      "site/img/dinos/_new-xxl/Troodon_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Troodon_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Troodon_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Troodon.jpg",
+      "site/img/dinos/_new-xxl/Troodon.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Troodon.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Troodon_manger.jpg",
+      "site/img/dinos/_new-xxl/Troodon_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Troodon_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Troodon_paris.jpg",
+      "site/img/dinos/_new-xxl/Troodon_paris.png"
+    ]
+  },
+  "tyrannosaurus": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Tyrannosaurus_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Tyrannosaurus_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Tyrannosaurus_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Tyrannosaurus_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Tyrannosaurus_funfact.jpg",
+      "site/img/dinos/_new-xxl/Tyrannosaurus_funfact.png"
+    ],
+    "grok": [
+      "site/img/dinos/grok/tyrannosaurus_lot1_1_taille.jpg",
+      "site/img/dinos/grok/tyrannosaurus_lot1_2_environnement.jpg",
+      "site/img/dinos/grok/tyrannosaurus_lot1_3_chasse.jpg"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Tyrannosaurus_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Tyrannosaurus_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Tyrannosaurus.jpg",
+      "site/img/dinos/_new-xxl/Tyrannosaurus.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Tyrannosaurus.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Tyrannosaurus_manger.jpg",
+      "site/img/dinos/_new-xxl/Tyrannosaurus_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Tyrannosaurus_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Tyrannosaurus_paris.jpg",
+      "site/img/dinos/_new-xxl/Tyrannosaurus_paris.png"
+    ]
+  },
+  "utahraptor": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Utahraptor_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Utahraptor_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Utahraptor_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Utahraptor_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Utahraptor_funfact.jpg",
+      "site/img/dinos/_new-xxl/Utahraptor_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Utahraptor_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Utahraptor_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Utahraptor.jpg",
+      "site/img/dinos/_new-xxl/Utahraptor.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Utahraptor.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Utahraptor_manger.jpg",
+      "site/img/dinos/_new-xxl/Utahraptor_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Utahraptor_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Utahraptor_paris.jpg",
+      "site/img/dinos/_new-xxl/Utahraptor_paris.png"
+    ]
+  },
+  "velociraptor": {
+    "coloriage": [
+      "site/img/dinos/paleoart/Velociraptor_coloriage.webp"
+    ],
+    "coloriage_new": [
+      "site/img/dinos/_new-coloriage/Velociraptor_coloriage.png"
+    ],
+    "ecosysteme": [
+      "site/img/dinos/paleoart/Velociraptor_ecosysteme.jpg",
+      "site/img/dinos/_new-xxl/Velociraptor_ecosysteme.png"
+    ],
+    "funfact": [
+      "site/img/dinos/paleoart/Velociraptor_funfact.jpg",
+      "site/img/dinos/_new-xxl/Velociraptor_funfact.png"
+    ],
+    "headshot": [
+      "site/img/dinos/paleoart/Velociraptor_headshot.jpg"
+    ],
+    "headshot_new": [
+      "site/img/dinos/_new-headshots/Velociraptor_headshot.png"
+    ],
+    "hero": [
+      "site/img/dinos/paleoart/Velociraptor.jpg",
+      "site/img/dinos/_new-xxl/Velociraptor.png"
+    ],
+    "hero_root": [
+      "site/img/dinos/Velociraptor.jpg"
+    ],
+    "manger": [
+      "site/img/dinos/paleoart/Velociraptor_manger.jpg",
+      "site/img/dinos/_new-xxl/Velociraptor_manger.png"
+    ],
+    "ombre": [
+      "site/img/dinos/ombres/Velociraptor_ombre.png"
+    ],
+    "paris": [
+      "site/img/dinos/paleoart/Velociraptor_paris.jpg",
+      "site/img/dinos/_new-xxl/Velociraptor_paris.png"
+    ]
+  }
+}

@@ -26,7 +26,7 @@
 ## 📦 Collections DÉPLOYÉES (`site/img/dinos/`, lues par le produit)
 
 ### paleoart/ — le cœur (fiche dino)
-- **Contenu** : par dino, 7 assets : `<Nom>.jpg` (hero) · `_headshot` · `_manger` · `_ecosysteme` · `_paris` (échelle bus RATP) · `_funfact` (.jpg) · `_coloriage.webp`. Cas spécial : `Amargasaurus_hypothese-piques/voile.jpg` (2 planches incertitude scientifique).
+- **Contenu** : par dino, 7 assets : `<Nom>.jpg` (hero) · `_headshot` · `_manger` · `_ecosysteme` · `_paris` (échelle bus RATP) · `_funfact` (.jpg) · `_coloriage.webp`. Cas spécial : `Amargasaurus_hypo-epines.jpg` / `Amargasaurus_hypo-voile.jpg` (2 planches incertitude scientifique).
 - **Consommé par** : `site/dev-dinos.html` (galerie fiche, pellicule, sections).
 - **Régénérer** : skill `dino-paleoart` (ChatGPT projet Dinosaure via Brave ; Grok plan B). Batch série = `batch-dino-series.mjs` (5 scènes, table MORPHO en tête) · ciblé = `gpt-gen-dino.mjs`. Coloriage = `batch-dino-coloriage.mjs` → webp.
 - **Règles** : MORPHO obligatoire pour dino que le modèle rate (leçons L-D-38..42) · échelle _paris chiffrée au ratio bus · zéro texte incrusté (sauf repère "1m") · validation visuelle avant rangement.
@@ -67,8 +67,8 @@
 
 ## 🗃️ STAGING local (gitignoré, jamais référencé par le code)
 
-`_new-xxl/` (sorties brutes paleoart, y c. non retenues — mine d'idées) · `_new-sprites/` (bruts sprites + `_cut`) · `_new-headshots/` · `_new-ombre/` · `_new-coloriage/` · `_new-traces/` (bruts traces, générés 2026-07-18 avec la collection `traces/`).
-**Cycle** : générer → juger visuellement → convertir/ranger dans la collection PROD → le staging reste comme historique local. Purgeable si besoin de place (regénérable).
+Dossiers `_new-xxl/`, `_new-sprites/`, `_new-headshots/`, `_new-ombre/`, `_new-coloriage/`, `_new-traces/`.
+**Cycle (règle durcie 2026-07-19)** : générer → juger visuellement → convertir/ranger dans la collection PROD → **VIDER le staging aussitôt** (comme une inbox — pas un entrepôt). Flush intégral effectué 2026-07-19 après vérification 100 % de contrepartie prod ; seule variante sans contrepartie préservée : `studio/dino/content/sources/images/variantes-non-retenues/Ichthyosaurus_paris-plongeur.png`.
 
 ---
 

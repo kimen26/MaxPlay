@@ -99,9 +99,10 @@ Plan → TodoWrite → Dev (subagents) → Verify → Commit → Docs
 
 ## Commandes audit (rappel)
 
-- `/game-pmo-audit` + `/game-archiviste-audit` — pôle JEU
-- `/narration-pmo-audit` + `/narration-archiviste-audit` — pôle NARRATION
-- `/audit-claude-archi` — méta-audit archi Claude (CLAUDE.md, rules, skills, hooks)
+- `/game-pmo-audit` — pôle JEU (FOND + FORME, fusion 2026-07-19)
+- `/narration-pmo-audit` — pôle NARRATION (FOND + FORME)
+- `/dino-pmo-audit` — pôle DINO (FOND + FORME)
+- skill `env-compat-check` — audit bi-outil Claude ↔ Kimi (config, skills, hooks, miroirs)
 
 ---
 

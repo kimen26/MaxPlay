@@ -1,4 +1,4 @@
-﻿# MaxPlay — Jeu éducatif & Univers narratif pour Max (3.5-4 ans)
+# MaxPlay — Jeu éducatif & Univers narratif pour Max (3.5-4 ans)
 
 ## ACTION OBLIGATOIRE — avant toute réponse
 
@@ -97,7 +97,7 @@ Plan → TodoWrite → Dev (subagents) → Verify → Commit → Docs
 - `/game-pmo-audit` — pôle JEU (FOND + FORME, fusion 2026-07-19)
 - `/narration-pmo-audit` — pôle NARRATION (FOND + FORME)
 - `/dino-pmo-audit` — pôle DINO (FOND + FORME)
-- `/audit-claude-archi` — méta-audit archi Claude (CLAUDE.md, rules, skills, hooks)
+- skill `env-compat-check` — audit bi-outil Claude ↔ Kimi (config, skills, hooks, miroirs)
 
 ---
 

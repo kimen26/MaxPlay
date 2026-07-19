@@ -443,7 +443,7 @@
    - Phase 0 : tant que < 50-100 foyers hors proches (famille/copains seulement)
    - Pubs JAMAIS vers enfants (<4 ans = public fragile)
 
-**Documentation** : `memory/INFRA-AUDIT-2026-07-06.md` (commit b7dec8ef) — archi phasée 0-3, légal enfants, distribution, monétisation.
+**Documentation** : `memory/audits/2026-07-06-infra-business.md` (commit b7dec8ef) — archi phasée 0-3, légal enfants, distribution, monétisation.
 
 ### Bloc 2 : Phase 1 light construite et déployée (commits 39dc7b49, 6ef89f20)
 

@@ -329,7 +329,7 @@ Design System v1 devient la **source de vérité couleur/thème/ambiance site en
 
 ## 2026-07-07 — Décisions infra/business Phase 1 cloud déployée
 
-**Contexte** : Audit infra/business complet suite déploiement Supabase + cloud.js + OTP. Commit b7dec8ef. **Détail complet** : `memory/INFRA-AUDIT-2026-07-06.md` (archi phasée, légal, monétisation, distribution).
+**Contexte** : Audit infra/business complet suite déploiement Supabase + cloud.js + OTP. Commit b7dec8ef. **Détail complet** : `memory/audits/2026-07-06-infra-business.md` (archi phasée, légal, monétisation, distribution).
 
 **Décisions figées** :
 

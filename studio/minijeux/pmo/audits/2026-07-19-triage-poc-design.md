@@ -172,6 +172,8 @@ Réconciliés avec la spec v0.2 — **les verdicts de Papa Yann priment**. Inté
 - Jeux de société « sérieux » : échecs + dames avec vraies pièces et règles — placement à trancher (PY dit « jeu du monde » ; pédagogiquement stratégie = Vélo).
 - mj-pose-tiles + Max Adventure sortent du menu principal → derrière le gate parents.
 
+**Hors catalogue** : **mj-14 « La grille des bus » (Matrices de Raven) repêché par PY 2026-07-20** — retiré du catalogue mais toujours déployé ; Max adore (variante bus OK, il y arrive sans pb) → **variante dino demandée**. Placé chez Vélo #3 « Les cases mystères » (spec v0.4).
+
 ---
 
 _Compilé 2026-07-19 (soir), §6 ajoutée 2026-07-20, §7 ajoutée 2026-07-20 — sources : retours chat Papa Yann + 3 screens + extraction Supabase (partie A) & localStorage (partie B)._

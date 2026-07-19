@@ -34,9 +34,14 @@
 | [figees/mj-XX.md](figees/) 🔒 | **LOI — lire AVANT toute modif de `mj-XX.html`.** Décisions figées par jeu, anti-régressions. Réinjecté par hook. Y écrivent : main agent (figeage immédiat) ou `game-pmo` unifié ; seul Papa Yann défige. Créé 2026-05-15 (incident MJ-21) |
 | [CLASSIFICATION-2026-07.md](CLASSIFICATION-2026-07.md) | **Vue d'ensemble à jour** — catégories, statut, paliers par jeu |
 | [_PALIERS-DIFFICULTE.md](_PALIERS-DIFFICULTE.md) | Contrat de difficulté par jeu (⚠️ maxStars = 3 depuis 2026-07-14, voir INVARIANTS) |
-| GAMES_SPECS.md | ⚠️ **ARCHIVÉ / périmé** (ne couvre que MJ-01→08 avec titres obsolètes). Identité d'un jeu → figées/ + CLASSIFICATION |
+| [_archive/GAMES_SPECS.md](_archive/GAMES_SPECS.md) | ⚠️ **ARCHIVÉ / périmé** (déplacé en `_archive/` 2026-07-19). Identité d'un jeu → figées/ + CLASSIFICATION |
 | [game-ideas.md](game-ideas.md) | Backlog créatif brut (non priorisé) |
 | [mj-34-35-36-specs.md](mj-34-35-36-specs.md) | Specs des jeux 34/35/36 |
+| [REVUE-JEUX-2026-07.md](REVUE-JEUX-2026-07.md) | Revue complète menu/jeux par Papa Yann (source de `../audit/menu-2026-07.md`) |
+| [../STANDARD-MJ.md](../STANDARD-MJ.md) | **Gabarit visuel de référence** gravé 2026-06-09 — incarné par `site/mj-gold-a.html` / `mj-gold-b.html` (liés depuis le hub tools) |
+| [../specs/ARCHI-COMPTES-PROFILS.md](../specs/ARCHI-COMPTES-PROFILS.md) | Spec architecture comptes/profils enfant |
+| [../specs/NORME-i-REGLES.md](../specs/NORME-i-REGLES.md) | Norme des panneaux règle ❓/🧑‍🔬 |
+| [../specs/REGISTRE-VOIX-A-GENERER.md](../specs/REGISTRE-VOIX-A-GENERER.md) | Registre des voix MP3 à générer |
 
 ### Assets
 

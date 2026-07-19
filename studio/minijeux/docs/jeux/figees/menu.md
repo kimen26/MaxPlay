@@ -2,7 +2,7 @@
 
 > ⚠️ FICHIER LOI. Toute ligne marquée 🔒 est NON NÉGOCIABLE.
 > Seul Papa Yann peut défiger (décision datée explicite « je défige X »).
-> Garant écriture : `game-mj-pmo`. Garant vérification : `game-mjo-reviewer` (si applicable) ou `game-archiviste`.
+> Garant écriture : `game-pmo` (unifié 2026-07-19). Garant vérification : `game-mj-reviewer` (si applicable) ou `game-pmo`.
 
 ## Objectif
 

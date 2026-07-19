@@ -15,7 +15,6 @@
 | [`scripts-audio/`](scripts-audio/) | 🎙️ **Dialogues** Wex/Narrateur — canon `fr/V3/` (md + json). Anciennes strates (groupe/special/_VAGUE/json-top) archivées `_archive/2026-07-18-ancien-pipeline/` | — |
 | [`assets/`](assets/) | 🎨 **Assets visuels** — banque de silhouettes dino par famille (PNG noir/transparent, mini-jeux). ⛔ Voir [`assets/silhouettes/_STOP-3-ZONES.md`](assets/silhouettes/_STOP-3-ZONES.md) (3 zones silhouettes coexistent). | [`assets/silhouettes/_INDEX.md`](assets/silhouettes/_INDEX.md) |
 | [`lunii/`](lunii/) | 🎒 **Images Lunii** — 9 emblèmes familles + couverture (320×240, 16 gris, **fond noir natif**). Produites par skill `dino-images-lunii`, consommées par `studio/lunii/scripts/build-dinos-pack.mjs` | [`lunii/INDEX.md`](lunii/INDEX.md) |
-| [`inbox/`](inbox/) | 📥 **Brut non trié** — matière à exploiter | — |
 
 > 🖼️ **Toutes les images dino** (déployées `site/img/dinos/` + autoring + staging) : carte maîtresse → [`INDEX-IMAGES.md`](INDEX-IMAGES.md) — « je cherche X → va là », nommage, comment régénérer.
 
@@ -36,4 +35,3 @@ site/img/dinos/grok/ ─(_gen-grok.cjs)─▶ site/js/dinos-images-grok.js (gale
 - **Récits d'époque** : canon = `sources/recits/RECITS-EPOQUES.md` (ex-V5, anciennes versions dans `recits/_archive/`).
 - **Étymo** : source active `sources/etymo/_ETYMO-RACINES-50.md` (⚠️ périmé, ne couvre pas les Cénozoïque) → bascule vers `_ETYMO-COMPLET-60.md` = ticket EP-D-GED.
 - ⚠️ `sources/mesures/_BLOC-B-CANONIQUE.md` **périmé** vs `dinos-data.js`. À régénérer OU à graver « gelé volontairement » (ticket EP-D-GED).
-- ❓ `scripts-audio/001-trex-brachiosaure-velociraptor.md` : brouillon early non consommé par le pipeline, à archiver.

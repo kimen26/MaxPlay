@@ -86,6 +86,11 @@ Détails complets : [`EQUIPE.md`](EQUIPE.md).
 | [`site/tools/tile-library-v3.html`](../../site/tools/tile-library-v3.html) | Patterns prêts à l'emploi + cartographie navigable |
 | [`site/tools/tile-picker.html`](../../site/tools/tile-picker.html) | Bibliothèque catégorisée (9811 tiles, 100% couverture) + matrice drag&drop + export Python. Supporte `?recipe=X.py` |
 | [`site/tools/brick-explorer.html`](../../site/tools/brick-explorer.html) | (2026-05-12) Page interactive validation tile par tile (mini-render 3×3, vote courbe/point/autre/rejeté) |
+| [`site/design-lecture/`](../../site/design-lecture/) | **Chantier UI lecture** (mockups syllabique/phonique, Kimi) — voir `NOTES-DESIGN-LECTURE.md` interne |
+| [`site/design-compte/`](../../site/design-compte/) | **Chantier UI compte** (mockups étoiles/récompenses) — voir `NOTES-DESIGN-COMPTE.md` interne |
+| [`site/design-shared/`](../../site/design-shared/) | Assets partagés des chantiers design (mockup.css/js + fonts) — utilisé par design-lecture ET design-compte |
+| [`site/atelier-couleurs.html`](../../site/atelier-couleurs.html) | Atelier prototype recoloration avatars (algo repris dans `avatar-picker.js`) |
+| [`site/index2.html`](../../site/index2.html) · [`site/index3.html`](../../site/index3.html) | Prototypes menu alternatifs (« ligne » / « fusée ») — décision non tranchée, voir [`docs/audit/menu-2026-07.md`](docs/audit/menu-2026-07.md) |
 | [`site/tile-tools/README.md`](../../site/tile-tools/README.md) | Pipeline complet (render, recipes, scripts, vocab.py, styles.py) |
 
 **Workflow Propose → Édite → Apprend** :

@@ -118,3 +118,5 @@
 5. Quand terminé : déplacer dans "Terminés" avec date
 
 - 2026-07-19 (session nettoyage GED) : audit narration — 2 orphelins a supprimer apres validation (pmo/KANBAN.md nomenclature fantome, equipe/pipeline-realite.md constat infra perime) ; inbox en derive (regle 48h violee 5-8 sem : INPUT-004/005 jamais executes, lot 28-cultures ~900Ko sans ticket dedie — rattacher a UNIVERS-004/005 ou creer ticket) ; encodage mojibake sur inbox/culture*.md a corriger lors distillation ; _archive stories + equipe = sains, ne pas toucher.
+
+- 2026-07-19 (nettoyage GED, tour 4 atteignabilite) : agents fantomes corriges (equipe/INDEX + ORGANIGRAMME : narration-archiviste -> narration-pmo unifie ; lien memoire-architecte -> _archive/) ; arcs-narratifs.md + brief-univers.md ajoutes a equipe/INDEX. Inbox 28-cultures (Q10) toujours en attente de distillation (INPUT-004/005).

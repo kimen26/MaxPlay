@@ -1,166 +1,166 @@
-# Spec — Menu « Le Mur des Copains » (v0.4, 2026-07-20)
+# Spec — Menu « Le Mur des Copains » (v0.5, 2026-07-20)
 
-> Direction **validée par Papa Yann le 2026-07-19** : fusion M1 (Le Mur) + M3 (Les copains)
-> de l'audit [`../../pmo/audits/2026-07-19-menu-parcours.md`](../../pmo/audits/2026-07-19-menu-parcours.md) §9.
-> **v0.4** : politique de fonte **validée** · **mj-14 (Matrices de Raven) repêché** (+ variante
-> dino demandée) · échecs/dames → **Para** (proposition, à confirmer) · **titres & vignettes
-> challengés** (§7). (v0.3 : partie B des commentaires ; v0.2 : Tritri hôte, Roi T-Rex, traçage captcha.)
+> Direction **validée par Papa Yann le 2026-07-19** : fusion M1 (Le Mur) + M3 (Les copains).
+> **v0.5 — VERSION PRODUCT OWNER** : consolidation 42 prod + 29 POC → **24 jeux** (3-5 par
+> copain). Chaque jeu est spécifié : mécanique (moteur de [`../MECANIQUES.md`](../MECANIQUES.md)),
+> affichage, paliers 0★→3★, pourquoi pédagogique, jeux absorbés. Plus d'inventaire : que du
+> gardé, fusionné, justifié. (v0.4 : fontes validées, mj-14 repêché ; v0.3 : partie B ; v0.2 : casting.)
 
 ---
 
 ## 1. Principes
 
-1. **Choix par image** : vignettes-photos reconnaissables, aucun titre à lire.
-2. **Peu de choix** : les copains + 2 petits blocs gérés par Tritri. Jamais 42 entrées.
-3. **Zéro méta-monde** : pas de véhicule, pas de carte, pas de « jeu dans le jeu ».
-4. **Chaque domaine a un visage** : un copain qui parle et donne envie.
-5. **Le catalogue complet déménage** dans l'espace parents — **ainsi que mj-pose-tiles et Max Adventure** (décision PY).
-6. **Politique de fonte (VALIDÉE PY 2026-07-20)** : consignes en **script/majuscules** · contenu d'apprentissage en **cursive** · bi-alphabet dans les jeux de tri/reconnaissance · bascule possible in game (réglage).
+1. **Choix par image** : vignettes-photos du contenu réel, aucun titre à lire, pas d'emoji.
+2. **Peu de choix** : 3-5 jeux par copain, jamais un annuaire.
+3. **Zéro méta-monde** : pas de véhicule, pas de « jeu dans le jeu ».
+4. **Un copain par domaine**, qui parle et donne envie.
+5. **Catalogue complet + mj-pose-tiles + Max Adventure** → espace parents.
+6. **Fontes (validée)** : consignes en script/majuscules · apprentissage en cursive · bi-alphabet dans le tri · bascule in game.
+7. **1 mécanique principale par jeu** · difficulté = 2 régimes (golden 3 niveaux / niveaux précalculés) · étoile = partie 100% · jamais de timer ni de pénalité (STANDARD-MJ).
 
-## 2. Le Mur — écran d'accueil, gardé par Tritri
+## 2. Le Mur — gardé par Tritri
 
-```
-┌─────────────────────────────────────────────┐
-│  [avatar]  ★ 12                             │
-│                                             │
-│  🦕 TRITRI (accueil, parle)                 │
-│  ┌─ 🔎 Découverte ──────┐ ┌─ ❤️ Préférés ──┐│
-│  │ [jeu] [jeu] [jeu]    │ │ [jeu] [jeu] …  ││
-│  └──────────────────────┘ └────────────────┘│
-│                                             │
-│   👑 ROI T-REX   🐊 SPINO    🐔 GALLI       │
-│   « les dinos »  « compter » « lire »       │
-│                                             │
-│   🦊 VÉLO            🎺 PARA                │
-│   « casse-têtes »    « couleurs & monde »   │
-│                                             │
-│  📖 L'encyclopédie du Roi T-Rex (en bas)    │
-└─────────────────────────────────────────────┘
-```
+Bloc **🔎 Découverte** (3 vignettes : 1 délaissé · 1 nouveau · 1 mise en avant du jour/semaine) + bloc **❤️ Préférés**. 5 copains-domaines en dessous, encyclopédie du Roi T-Rex épinglée en bas. Séquence 2★ dans chaque repaire. Relique : plus tard.
 
-- **Tritri, hôte du Mur** : bloc **🔎 Découverte** (3 vignettes en rotation curée : 1 délaissé · 1 nouveau · 1 mise en avant du jour/semaine — 1 jeu OU 1 catégorie) + bloc **❤️ Préférés** (favoris / derniers joués).
-- **5 copains-domaines** en grosses vignettes-photo ; chacun se présente en audio au tap.
-- Tap → **repaire du copain** : réplique d'accueil + ses jeux en vignettes ★/cadenas (séquence 2★).
-- Relique au-dessus des étoiles : **idée consignée, plus tard**.
+**Casting (validé)** : Tritri (hôte) · **Roi T-Rex** (dinos) · **Spino** (compter) · **Galli** (lire & écrire) · **Vélo** (casse-têtes) · **Para** (couleurs & monde, incl. échecs/dames — confirmé PY).
 
-## 3. Les personnages (validés)
+---
 
-| Personnage | Dino | Rôle | Réplique d'accueil (draft) |
-|------------|------|------|---------------------------|
-| **Tritri** | Tricératops | 🏠 Hôte du Mur | « Salut ! Regarde ce que j'ai trouvé pour toi aujourd'hui… » |
-| **Roi T-Rex** | T-Rex | 🦕 Dinos + encyclo | « Bienvenue dans MON musée ! » |
-| **Spino** | Spinosaure | 🔢 Compter | « Tu m'aides à compter mes poissons ? Je me trompe TOUT LE TEMPS. » |
-| **Galli** | Gallimimus | 📖 Lire & écrire | « Aujourd'hui, on découvre quoi ? » |
-| **Vélo** | Vélociraptor | 🧩 Casse-têtes | « Psst ! Des énigmes trop dures pour moi. T'es partant ? » |
-| **Para** | Parasaurolophus | 🎨🌍 Couleurs & monde | « On peint, on écoute, on voyage ! » |
+## 3. 🐊 SPINO — compter (5 jeux)
 
-## 4. Les jeux par copain — liste définitive (titres challengés, §7 pour les vignettes)
+> Fil pédagogique : compter juste → reconnaître sans compter → +/- vécues → la dizaine → le sens des grandeurs. CRA partout, base 10 partout (décision PY).
 
-### 🦕 Roi T-Rex — les dinos
+### S1 · Les œufs surprises — *compter de 2 à 20*
+- **Mécanique** : compter/subitizing (`mj-compte` : tirage par palier + distracteurs ±1..±3) — peau œufs. Multi-asset possible (œufs, poissons de Spino, passagers).
+- **Affichage** : les objets apparaissent ; Max tape chacun → **pastille jaune numérotée** posée dessus (1, 2, 3…) ; le total est dit + affiché en gros ; si c'est juste → **les œufs éclosent** (le fun POC-01).
+- **Paliers** : 0★ 2→5 · 1★ 3→10 · 2★ 5→15 · 3★ 5→20 **avec regroupement visuel par 5** au recomptage final (les paquets se forment sous ses yeux).
+- **Pourquoi** : correspondance un-à-un + cardinalité (le dernier mot dit = la quantité) — LA fondation, concret avant tout.
+- **Absorbe** : POC-01 · POC-02 (la pastille) · mj-04 · mj-26 · mj-45.
 
-| # | Titre vignette (proposé) | Source | Niveau | Notes PY intégrées |
-|---|--------------------------|--------|--------|--------------------|
-| 1 | **Le cache-cache des dinos** | mj-24 polir | ★ | Son prout, dino détouré 1er coup, animation finale + applaudissements |
-| 2 | **La lampe magique** | mj-28 polir | ★★ | Bruit/objets, lampe plus petite/forte |
-| 3 | **La machine à voyager dans le temps** | mj-31 | ★★★ | Variante continents · 🐛 SVG continents à refaire |
-| — | **Du plus petit au plus grand** | mj-30 | bonus | Niveau fan |
-| — | **L'atelier coloriage** | mj-32 | libre | 🐛 galerie JSON non compressée, quotas 3/5-10 |
-| — | **L'encyclopédie du Roi T-Rex** | dev-dinos | libre | Le refuge |
+### S2 · Les constellations — *reconnaître sans compter (subitizing)*
+- **Mécanique** : dés & regroupement (`mj-dice`, solveur anti-deadlock) — peau constellations ; **variante ombres dino** à la place des points (idée PY).
+- **Affichage** : une constellation façon dé s'affiche → 3 nombres au choix ; après la réponse, le jeu **rappelle le calcul** : la constellation se décompose sous ses yeux (4 = 2+2).
+- **Paliers** : 0★ 1→3 formes canoniques · 1★ 1→6 (dé) · 2★ 4→10 (2 groupes) · 3★ 6→12 + décomposition parlée.
+- **Pourquoi** : le subitizing est la base du calcul mental ; la forme géométrique (dé/domino) est un ancrage visuel durable — coup de cœur PY.
+- **Absorbe** : POC-06 · POC-18.
 
-### 🐊 Spino — compter
+### S3 · Tout le monde monte ! — *le bus des passagers (+/− et ordre)*
+- **Mécanique** : comptage QCM (`mj-compte`, peau bus) — le jeu bus unifié.
+- **Affichage** : le bus 162, **2 fenêtres de 5 places** (jamais le bazar — consigne PY), passagers aux arrêts, **file d'attente** devant le bus.
+- **Paliers** : 0★ combien de passagers (≤ 5, une fenêtre) · 1★ qui monte (+1/+2, jusqu'à 10) · 2★ monte **et** descend (10±n), places libres · 3★ compléments à 10 (« il manque combien pour remplir ? ») **+ ordre dans la file** (« fais monter le 2ᵉ Tritri », « le 3ᵉ bleu »).
+- **Pourquoi** : l'addition/soustraction vécue (pas symbolique), les compléments à 10 = clé du calcul mental, l'ordinal en contexte réel.
+- **Absorbe** : POC-03 (fenêtres de 5) · POC-08 · mj-05 (places libres) · mj-13a/13c (premier/combien avant → la file) · POC-11 (toboggan → la file).
 
-| # | Titre vignette | Source | Niveau | Notes |
-|---|----------------|--------|--------|-------|
-| 1 | **Les œufs surprises** | POC-01 | ★ | 1→5, rond de pointage |
-| 2 | **Les constellations** | POC-06+18 | ★ | Subitizing ; variante ombres dino |
-| 3 | **Remplis la caisse** | mj-43 retravailler | ★ | Lignes de 10 |
-| 4 | **Les barquettes de 10** | POC-07 | ★★ | 10+4, 10+7… |
-| 5 | **Tout le monde monte !** | POC-08+03 | ★★ | +/−, places libres, fenêtres de 5 |
-| 6 | **À qui le tour ?** | POC-11 | ★★ | Ordinaux : « le 2e Tritri » |
-| 7 | **Le bocal géant** | POC-12 | ★★★ | 10/50/100 → barquettes |
-| 8 | **Les gros paquets** | POC-19 | ★★★ | Blocs + unités |
-| 9 | **À chacun sa part** | POC-20 | ★★★ | Partage à égalité |
-| + | **Les graines** | mj-35 refonte totale | ? | Règle + animation à revoir |
-| + | **Les paniers** | POC-10 | ++ | Groupes égaux |
-| + | **Pair ou impair ?** | POC-13 | ++ | Parité |
+### S4 · Les barquettes de 10 — *la dizaine*
+- **Mécanique** : dés & regroupement (`mj-dice` — composition de groupes) — peau barquettes.
+- **Affichage** : barquette 5×2 ; les objets arrivent, Max les range ; « 10 et 4, ça fait 14 » dit + affiché ; à 3★, mode « il me faut 14 » (blocs de 10 + unités — le « rendre la monnaie » de PY).
+- **Paliers** : 0★ complète la barquette (il en manque 3) · 1★ 10+n (11→19) · 2★ 2 barquettes (jusqu'à 20+n) · 3★ remplis pour atteindre N.
+- **Pourquoi** : la dizaine est la clé de voûte du système décimal (décision PY : 10 partout, pas 12) — prépare l'addition posée.
+- **Absorbe** : POC-07 · mj-43 · POC-19 (blocs+unités → 3★) · POC-17 (animation du 100 → célébration 3★).
 
-### 🐔 Galli — lire & écrire
+### S5 · Le bocal géant — *estimer les masses*
+- **Mécanique** : QCM-tap (3 ordres de grandeur) — peau bocal qui se remplit d'un coup.
+- **Affichage** : Max estime → les **paquets de 10 brillent** et descendent en barquettes pour vérifier.
+- **Paliers** : 0★ 5/10/20 · 1★ 10/20/50 · 2★ 10/50/100 · 3★ 30/40/50 (écarts fins).
+- **Pourquoi** : le sens du nombre et des ordres de grandeur — autre compétence que le comptage exact.
+- **Absorbe** : POC-12.
 
-| # | Titre vignette | Source | Niveau | Notes |
-|---|----------------|--------|--------|-------|
-| 1 | **Trouve la lettre** | POC-03 | ★ | Le SON d'abord, nom au palier 2 |
-| 2 | **Le tri des lettres** | mj-09 moteur (+08, 44) | ★ | Cursive/script/majuscules : b/d/h/j/k — **prioritaire** |
-| 3 | **La boîte à mots** | POC-12 | ★★ | Alphabet mobile : écrire avant lire |
-| 4 | **Syllabo** | POC-11 refondu | ★★ | CV, répétition espacée |
-| 5 | **Les sons collés** | À INVENTER (POC-10) | ★★ | o+n → « on » |
-| 6 | **Lis le mot** | mj-23 + POC-13 | ★★★ | Initiatique : syllabes simples |
-| 7 | **La phrase rigolote** | mj-06 + mj-27 | ★★★ | Dynamique : phrases à impact ; mj-27 sans audio, vraies photos, 🐛 images |
-| 8 | **Le Chef de Gare** | POC-17 | ★★★ | Lire pour agir ; 🐛 ligature Œ |
-| 9 | **Le bus des phrases** | POC-16 | +++ | Bus ROUGE = image rouge |
-| ◌ | **Le geste magique** | POC-05 | captcha | 5 s chrono ; ⚠️ valider précision tactile d'abord |
+**Consignés plus tard** : À chacun sa part (partage) · Les paniers (×) · Pair ou impair · Les graines (mj-35, refonte en attente).
 
-### 🦊 Vélo — casse-têtes
+## 4. 🐔 GALLI — lire & écrire (5 jeux + 1 captcha)
 
-| # | Titre vignette | Source | Niveau | Notes |
-|---|----------------|--------|--------|-------|
-| 1 | **L'intrus** | mj-15 | ★ | Intrus discret ; 💄 assets |
-| 2 | **La course des bus** | mj-13a + 13c | ★ | Panneau d'affichage ; 2 modes explicites |
-| 3 | **Les cases mystères** | **mj-14 REPÊCHÉ** | ★★ | **Matrices de Raven** — Max adore, variante bus OK → **variante dino demandée** (PY) |
-| 4 | **Le grand rangement** | moteur tri (mj-08) | ★★ | Même moteur que Galli #2, assets objets |
-| 5 | **Trouve-le !** | mj-19 moteur | ★★ | Grand écran : bus/dinos/lettres/mouvant (+ Charly-dino) |
-| 6 | **Le garage** | mj-17 | ★★ | Préféré de Max ; options fixes |
-| 7 | **Les potions** | mj-18 | ★★★ | Adoré — 8-9 tubes |
-| 8 | **Le dépôt bloqué** | mj-34 refondre | ★★★ | Un seul bus sort ; 🐛 avancement cassé |
-| 9 | **Les blocs magiques** | mj-39 repenser | ★★★ | Tangram à remplir OU vrai Tetris |
-| ? | **Le tangram des dinos** | mj-40 | à tester | Repêché par PY |
+> Fil pédagogique (Montessori/Ehri, sourcé triage §3) : **le son avant le nom · cursive d'abord · écrire avant lire**. Fonte d'apprentissage = cursive.
 
-### 🎺 Para — couleurs & monde
+### G1 · Trouve la lettre — *le son d'abord*
+- **Mécanique** : QCM-tap lettres — la consigne audio dit **le son** (/m/, jamais « ème » au début).
+- **Affichage** : 4-6 grosses lettres cursives (clavier alphabétique en toile de fond).
+- **Paliers** : 0★ sons simples, cursives · 1★ + autres allures (script, majuscules) · 2★ confusables (b/d/p/q) · 3★ le son entendu **dans un mot** (« quel son au début de "maman" ? »).
+- **Pourquoi** : graphème↔phonème, la porte d'entrée (Max ne maîtrise peut-être pas toutes ses lettres — PY).
+- **Absorbe** : POC-03 · POC-01 lecture (boîte à sons → palier 3).
 
-| # | Titre vignette | Source | Niveau | Notes |
-|---|----------------|--------|--------|-------|
-| 1 | **L'atelier peinture** | mj-21 étendre | ★ | Palettes 1/2/3 couleurs, dino atelier/avatar |
-| 2 | **Compte avec le monde** | mj-20 corrigé | ★★ | 1-2 pays à la fois, pas jusqu'à 10 direct |
-| 3 | **Où est le pays ?** | mj-22 à tester | ★★★ | Victoire = drapeau + musique |
-| 4 | **Les échecs** | mj-37 refonte totale | ★★★ | **Vraies pièces + plateau entier + règle expliquée** |
-| 5 | **Les dames** | mj-38 refonte totale | ★★★ | **Vrai plateau + règle + indices** |
-| — | **Le memory** | moteur ex-mj-33 | libre | Multi-thèmes |
-| — | **Le coin écoute** | mj-12 | libre | Sons + dessin + vidéos |
-| + | **La traversée** | mj-42 mécanique à trouver | ++ | Contourner/traverser (backgammon-like) |
-| + | **Les fiches pays** | idée mj-11 | ++ | Drapeaux, situer, animal du pays — pas V1 |
+### G2 · Le tri des lettres — *toutes les allures*
+- **Mécanique** : drag&drop tri vers bacs (**moteur générique mj-08/09** — validé PY, multi-asset).
+- **Affichage** : un chaos de lettres de toutes allures (cursives, scriptes, majuscules) à ranger dans les boîtes-lettres.
+- **Paliers** : 0★ 2 lettres très différentes (a/o), cursives · 1★ cursive + script · 2★ + majuscules, lettres proches (b/d/h/k) · 3★ chaos dense + **boîtes-sons** (trier par son initial).
+- **Pourquoi** : discrimination des allographes — « un super moyen d'apprendre à reconnaître ses lettres difficiles » (PY). Le même moteur sert Vélo (objets) et Para (couleurs).
+- **Absorbe** : mj-09 (variante prioritaire) · POC-07 · mj-44 · mj-08.
 
-**Échecs/dames chez Para (proposition à confirmer)** : Vélo est déjà le plus chargé (10 jeux), Para le plus léger ; PY les appelle « jeux du monde » ; Para = copain des cultures du monde, échecs/dames = classiques mondiaux. Veto possible → Vélo.
+### G3 · La boîte à mots — *écrire avant de lire*
+- **Mécanique** : composition (alphabet mobile) — on DIT un mot (ou on montre l'image), Max l'assemble avec des lettres mobiles cursives.
+- **Affichage** : la boîte montre le **découpage syllabique** en guide (pa | pa) ; lettres proposées limitées au début.
+- **Paliers** : 0★ papa/maman (que les lettres du mot) · 1★ mots CV/CVC · 2★ distracteurs ajoutés · 3★ mot libre (son prénom, ses mots).
+- **Pourquoi** : encoder précède décoder (Montessori, validé CNESCO 2016) — l'écriture sans la charge motrice du crayon.
+- **Absorbe** : POC-12 · POC-11 (le syllabeur devient le guide intégré).
 
-**Espace parents** : catalogue complet, mj-pose-tiles, Max Adventure, mj-41 (au chaud).
+### G4 · Les sons collés — *on, ou, ch…* (à créer)
+- **Mécanique** : QCM-tap / assemblage — **code neuf justifié** (notion absente de la bibliothèque).
+- **Affichage** : 2 lettres glissent l'une vers l'autre et **« collent » en un seul son** animé (o+n → « on ») ; Max choisit le duo qui fait le son entendu, puis complète un mot (t_ton).
+- **Paliers** : 0★ on/ou · 1★ + oi/eu · 2★ + an/in/ch · 3★ dans des mots complets (tonton).
+- **Pourquoi** : les graphèmes complexes sont LE mur de la lecture française — l'exemple même de PY (« il va lire o-n »).
 
-## 5. Bilan chiffré (couverture 41/42 + mj-14)
+### G5 · Lis et fais — *lire pour agir*
+- **Mécanique** : lecture mot→image (moteur mj-23/27/06) — une consigne écrite en cursive, aide audio qui s'estompe.
+- **Affichage** : paliers 0-1 = mot + images ; paliers 2-3 = la consigne du Chef de Gare au-dessus de la scène.
+- **Paliers** : 0★ lis 1 mot → touche l'image · 1★ mot **découpé en syllabes** (vraies photos dino, pas d'audio — PY) · 2★ consigne action + quantité (« Pose 3 œufs rouges ») · 3★ **phrase rigolote** à 2 infos (phrases à impact, PY).
+- **Pourquoi** : la lecture devient utile — on ne sait quoi faire QUE si on lit.
+- **Absorbe** : mj-23 · mj-27 · POC-13 · POC-17 · POC-16 · mj-06.
 
-- **Supprimés (10)** : mj-04, 05, 16, 25, 26, 29, 33, 36, 45 + mj-41 caché V1.
-- **Repêchés (4)** : mj-14 (Raven), mj-35, mj-38, mj-40 (à tester).
-- **Moteurs génériques (3)** : tri en boîtes · « trouve le X » · « remplir pour atteindre N ».
-- **Refontes totales** : mj-35, mj-37, mj-38 · **repenser** : mj-39, mj-42.
-- **Cible** : **~34 jeux visibles**, ≤ ~10 par copain, 3 vignettes Découverte sur le Mur.
+### ◌ Le geste magique — *captcha traçage* (transverse, pas d'étoiles)
+- Ça s'affiche, **5 secondes**, c'est fini : une lettre cursive, flèches d'ordre des traits, halo guide si immobile.
+- ⚠️ **Prérequis avant tout dev : valider la précision du tracé tactile à l'écran** (décision PY).
 
-## 6. Règles des vignettes (§7)
+## 5. 🦊 VÉLO — casse-têtes (5 jeux)
 
-- **Image = contenu réel du jeu** (render dino, bus, œufs, lettres), jamais un emoji ni un pictogramme abstrait — c'est ce qui a fait échouer le menu actuel auprès de Max.
-- Pas de texte dans la vignette (le copain dit le titre en audio).
-- Style cohérent : rendu cartoon du jeu lui-même, fond sombre unifié (charte design-shared).
-- État cadenas = vignette grisée + 🔒 ; étoiles ★ discrètes en coin.
+| # | Jeu | Moteur | Paliers 0★→3★ | Pourquoi |
+|---|-----|--------|----------------|----------|
+| V1 | **L'intrus** | suite/intrus (mj-15) | catégorie franche → attribut (couleur) → catégorie fine (1 herbivore parmi carnivores) → double critère | Catégorisation fine ; assets à monter (PY) |
+| V2 | **Les cases mystères** | **Raven (mj-14 repêché)** — variante bus + **dino (PY)** | suite linéaire simple (AB/AAB, reconstruite propre — ex-mj-16) → grille 2×2 → 3×3 une règle → 3×3 deux règles | Logique de règle implicite ; Max adore et y arrive |
+| V3 | **Trouve-le !** | cherche l'objet mobile (mj-19) — grand écran | 6 fixes → 12 → ça bouge → mode Charly (ressemblants : rayures/couleurs) | Attention sélective ; multi-assets bus/dinos/**lettres** (pont Galli) ; absorbe l'idée Charly-dino (mj-25) |
+| V4 | **Le dépôt bloqué** | puzzle plateau BFS (mj-34) | 3 véhicules → 4-5 → 6 → coups comptés | Planification ; **un seul bus sort** (autres éteints) ; 🐛 avancement cassé à réparer |
+| V5 | **Les potions** | water-sort (mj-18) | 3 tubes → 5 → 7 → 9+ | Réflexion pure, adoré (Max déjà à 8-9 tubes → rallonger) |
 
-## 7. Idées de vignettes par jeu (à produire au moment de l'implémentation)
+**Consignés plus tard** : Les blocs magiques (mj-39 — choisir tangram à remplir OU vrai Tetris) · Tangram des dinos (mj-40 — à faire tester) · Le garage (mj-17 → voir T3, version dino).
 
-- Roi T-Rex : dino détouré parmi silhouettes · œil de dino éclairé dans le noir · météorite + 3 ères · lignée croissante · dino à moitié colorié.
-- Spino : œuf qui craque · constellation de 5 ombres · caisse de dés · barquette 5×2 · bus 162 et ses fenêtres · file au toboggan · bocal de billes · blocs+unités · fraises partagées.
-- Galli : clavier de lettres cursives · boîtes + lettres de plusieurs allures · lettres mobiles formant « papa » · ma-mi-mu · o+n → « on » · mot + image · phrase à trou · loup chef de gare · bus rouge · « a » qui s'allume.
-- Vélo : 4 carnivores + 1 herbivore · panneau de gare · grille 3×3 avec « ? » · bazar + bacs · foule mouvante · bus sur le pont · tubes colorés · bus coincé · blocs qui tombent.
-- Para : bus à moitié peint · drapeaux FR/PT/EN · carte + drapeau · plateau d'échecs · damier · cartes memory · casque audio.
+## 6. 👑 ROI T-REX — les dinos (4 jeux + 2 libres)
 
-## 8. Questions encore ouvertes
+| # | Jeu | Moteur | Paliers 0★→3★ | Pourquoi |
+|---|-----|--------|----------------|----------|
+| T1 | **Le cache-cache des dinos** | ombres dino (`dinos-ombres`, mj-24) | 4 dinos nommés → 6 → 9 + ombres proches → **nom ÉCRIT** (pont lecture) | Discrimination + vocabulaire ; polish PY : son prout, dino détouré, animation finale |
+| T2 | **La lampe magique** | révélation cachée (mj-28) | lampe large → **plus petite et plus forte** → + objets/bruits parasites | Attention, partiel→global ; « génial » (PY) |
+| T3 | **Le vétérinaire des dinos** | séquençage (mj-17 **adapté dino** — idée PY) | 2 étapes → 3 → 4 ordre imposé → diagnostic (quel soin ?) | Séquençage d'actions ; le garage = préféré de Max, on garde l'âme |
+| T4 | **La machine à voyager dans le temps** | tri-ordre (mj-31) | 3 ères → ordre précis → + **continents** (variante PY) → frise complète | Chronologie ; Max a déjà 3★ → la variante rallonge ; 🐛 SVG continents |
 
-1. **Échecs/dames → Para ?** (proposition §4, veto possible vers Vélo)
-2. **Précision tactile du traçage** : test tablette avant investissement.
-3. Voix des copains (pôle narration, en temps voulu) · relique (plus tard) · police cursive prod (ABCursive vs DN Manuscript vs Cursif + licence).
-4. **Dettes techniques** : 🐛 cloud.js non chargé sur 32 MJ · 🐛 avancement mj-34 · 🐛 images mj-27/41 · 🐛 SVG continents mj-31 · 🐛 galerie compressée mj-32.
-5. Annotations partie A → `status='traite'` via SQL/MCP ; partie B suivie dans le fichier d'extraction.
+Libres : **L'atelier coloriage** (mj-32 — 🐛 galerie JSON non compressée, quotas) · **L'encyclopédie**. Bonus fan : **Du plus petit au plus grand** (mj-30).
 
-_Spec v0.4 — 2026-07-20. Reste à valider : §8.1 (échecs/dames). Implémentation après._
+## 7. 🎺 PARA — couleurs & monde (5 jeux + 2 libres)
+
+| # | Jeu | Moteur | Paliers 0★→3★ | Pourquoi |
+|---|-----|--------|----------------|----------|
+| P1 | **L'atelier peinture** | manipulation couleur (mj-21) | couleurs pures → mélanges primaires → palette 2-3 couleurs imposée → **peindre un dino/avatar** (PY) | Couleurs + mélanges ; « génial » (PY) |
+| P2 | **Compte avec le monde** | comptage QCM (mj-20 corrigé) | FR jusqu'à 5 → FR 10 + 1 pays ouvert → 2-3 pays → langues au choix | Origines brésiliennes ; **1-2 pays à la fois, pas jusqu'à 10 direct** (PY) |
+| P3 | **Où est le pays ?** | QCM-tap carte (mj-22) | 5 pays → 10 → Europe → monde ; victoire = **drapeau + musique** (PY) | Géographie ; « jamais marché » → à tester d'abord |
+| P4 | **Les échecs** | puzzle plateau précalculé (mj-37 **refonte totale**) | une pièce à déplacer (règle expliquée : « le fou va en diagonale ») → 2 pièces → petit mat | **Vraies pièces, plateau entier, pas de déguisement** (PY) |
+| P5 | **Les dames** | puzzle plateau précalculé (mj-38 **refonte totale**) | prise simple → rafle → partie guidée | Idem : vrai damier, règle + indices |
+
+Libres : **Le memory** (moteur multi-thèmes, ex-mj-33) · **Le coin écoute** (mj-12). Plus tard : **La traversée** (mj-42 — mécanique contourner/traverser à trouver) · **Les fiches pays** (idée mj-11).
+
+## 8. Bilan de la consolidation
+
+| | Avant | Après |
+|---|---|---|
+| Jeux prod | 42 | **10 supprimés** (mj-04, 05, 16, 25, 26, 29, 33, 36, 45 + 41 caché) · le reste **fusionné ou absorbé** dans 24 jeux |
+| POC | 29 | **13 absorbés** dans les jeux ci-dessus · 9 jetés · 6 plus tard · 1 à créer (G4) |
+| **Total visible pour Max** | 42 | **24 jeux** (5+5+5+4+5) + 4 libres + 1 captcha |
+
+- **3 moteurs transverses** font le gros du travail : tri-bacs (G2 + rangement) · comptage QCM (S1, S3, P2) · dés/regroupement (S2, S4). Les POC deviennent des **peaux** de ces moteurs, pas des jeux neufs.
+- **Répétition espacée** : assurée par le bloc Découverte de Tritri (délaissés qui reviennent), pas par des jeux en plus.
+
+## 9. Questions encore ouvertes
+
+1. Validation de CETTE version (24 jeux) — c'est la proposition à challenger.
+2. **Précision tactile du traçage** (captcha) : test tablette avant dev.
+3. Voix des copains (narration, en temps voulu) · relique (plus tard) · police cursive prod (licence).
+4. **Dettes techniques** : 🐛 cloud.js sur 32 MJ · 🐛 avancement mj-34 · 🐛 images mj-27/41 · 🐛 SVG continents mj-31 · 🐛 galerie compressée mj-32.
+5. Annotations partie A → `status='traite'` via SQL/MCP.
+
+_Spec v0.5 — 2026-07-20. Version à valider par Papa Yann avant toute implémentation._

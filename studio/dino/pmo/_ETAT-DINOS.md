@@ -13,7 +13,7 @@
 | hero | 62/62 |
 | paleoart | 60/62 |
 | coloriage | 60/62 |
-| audio | 60/62 |
+| audio | 62/62 |
 | silhouette | 60/62 |
 | fiche | 62/62 |
 | etymo | 62/62 |
@@ -23,8 +23,8 @@
 
 | Dino | id | Score | Manque |
 |------|----|-------|--------|
-| Corythosaure | `corythosaurus` | 4/8 | paléoart(headshot), coloriage, audio(nom/taille/regime/funfact/recap), silhouette |
-| Hatzegopteryx | `hatzegopteryx` | 4/8 | paléoart(headshot), coloriage, audio(nom/taille/regime/funfact/recap), silhouette |
+| Corythosaure | `corythosaurus` | 5/8 | paléoart(headshot), coloriage, silhouette |
+| Hatzegopteryx | `hatzegopteryx` | 5/8 | paléoart(headshot), coloriage, silhouette |
 
 ## Complets (60)
 

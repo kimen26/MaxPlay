@@ -523,10 +523,14 @@ const FFMPEG_BIN =
 const DIALOGUE_CHAR_CAP = 2000;
 const DIALOGUE_SAFETY = 1900;
 const DIALOGUE_MAX_VOICES = 10;
+// infra/mcp → racine → studio/narration/... Le "studio" manquait depuis la réorg :
+// le fichier était introuvable, le catch rendait une map vide, et l'appelant voyait
+// « ni rôle connu » au lieu de « voice-map introuvable ». (2026-07-20)
 const VOICE_MAP_FILE = join(
   MCP_DIR,
   "..",
   "..",
+  "studio",
   "narration",
   "personnages",
   "voix-meta",
@@ -547,8 +551,12 @@ function loadVoiceMap(): VoiceMap {
       deprecated?: Record<string, string>;
     };
     return { voices: m.voices ?? {}, alias: m._alias ?? {}, deprecated: m.deprecated ?? {} };
-  } catch {
-    return { voices: {}, alias: {}, deprecated: {} };
+  } catch (e) {
+    // Ne PAS rendre une map vide : ça désarme aussi le garde-fou des voice_id périmés
+    // et l'appelant reçoit « rôle inconnu », qui envoie chercher au mauvais endroit.
+    throw new Error(
+      `voice-map introuvable ou illisible (${VOICE_MAP_FILE}) : ${(e as Error).message}`
+    );
   }
 }
 

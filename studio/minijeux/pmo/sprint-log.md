@@ -1349,3 +1349,15 @@ Validée sur le principe (catégories Lettres/Chiffres/Ranger/Réparer/Couleurs/
 **Leçon** : vignette œufs cassée au 1er rendu — padding/gap en % dans une `.vig` se résout contre le parent (règle déjà gravée dans `mur.css` l.143 ; appliquée au fix : px uniquement). Rappel : relire les règles d'or du fichier AVANT d'ajouter une vignette.
 
 **En attente** : retours de Yann sur mj-46/47 avant de lancer mj-48 (bus unifié), mj-49 (barquettes de 10), mj-20 corrigé, tri des lettres Galli.
+
+---
+
+## 2026-07-20 (soir) — Retours PY sur mj-46/47 + doc de délégation LLM externe
+
+**Retours PY gravés** (détail complet → `docs/specs/2026-07-20-DELEGATION-LLM-MENU-CIBLE.md` §2) :
+- mj-46 : QCM visible dès le début (tap œufs = aide optionnelle) · œuf se fissure au tap · paliers 5→15 / 7→22 · œufs « en vrac » (jamais caché à +50 %) · éclosion = avatars sprites (déjà le cas).
+- mj-47 : visuel actuel REJETÉ → format **domino permanent** (2 cases accolées, configurations dé, ref. POC mockup-6) · décomposition = les 2 moitiés visibles, jamais de split arbitraire · paliers relevés (moitiés 1-3 / 1-6 / 3-6).
+
+**Décision PY** : la construction est déléguée à un LLM externe → doc de délégation complet rédigé (toutes tâches V1/V2/V3, règles de câblage mur.js+catalog.js+vignettes, standards à lire, process de validation).
+
+**Question PY tranchée** : étoiles/avancement bien remontés à Supabase — automatique via tracker.js → Cloud.schedulePush() quand un profil enfant est actif. Rien à coder.

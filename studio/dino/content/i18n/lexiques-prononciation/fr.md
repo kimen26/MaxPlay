@@ -49,6 +49,7 @@
 | Suchomimus | **Su-ko-mi-muss** | ch→k, -us |
 | Baryonyx | **Ba-ri-o-nix** | y→i, x→ks |
 | Archaeoptéryx | **Ar-ké-op-té-rix** | ae→é, ch→k, y→i, x |
+| Hatzegopteryx | **Hat-zé-gop-té-rix** | Hațeg roumain, y→i, x → validée Papa Yann 2026-07-20 |
 | Quetzalcoatlus | **Kèt-zal-ko-atluss** | aztèque, dur |
 | Ptéranodon | **Pté-ra-no-don** | Pt initial |
 | Psittacosaure | **P-si-ta-co-saure** | ps initial |

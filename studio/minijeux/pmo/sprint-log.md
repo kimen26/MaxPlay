@@ -1333,3 +1333,19 @@ Validée sur le principe (catégories Lettres/Chiffres/Ranger/Réparer/Couleurs/
 - ✅ **Skill `game-design-enfant`** créé (consolidation kids-ux + child-motor-skills + child-pedagogy + game-mechanics) — théorie durable, pointe vers STANDARD-MJ/MECANIQUES/MAX_PROFILE, zéro copie de décisions.
 - ✅ **Skill `phaser-tech`** créé (phaser-framework + performance-opt + gamepad-inputs) — patterns Phaser, perf tablet, manette 8BitDo. Prêt si max-adventure revit (EP-024).
 - Global `~/.claude/` : 19 rules ECC + 8 agents doublons retirés (backup `~/.claude/_backup-2026-07-19/`), CLAUDE.md global condensé 26 lignes. Gardés : build-error-resolver, security-reviewer, refactor-cleaner, pixel-map-*, loop-operator.
+
+---
+
+## 2026-07-20 — Spino : mj-46 + mj-47 livrés et câblés (V1 moteur comptage/dés)
+
+**Livré** (commit `e5be1c02`, poussé) :
+- ✅ **mj-46 « Les œufs surprises »** (S1 Spino, moteur `mj-compte.js`) : pointage pastilles jaunes → QCM combien → éclosion bébés dinos. Paliers N0 2-5 · N1 3-10 · N2 5-15.
+- ✅ **mj-47 « Les constellations »** (S2 Spino, moteur `mj-dice.js`) : subitizing sur **ombres dino** (variante Yann adoptée) + décomposition « 3 et 2, ça fait 5 ! ». Paliers N0 1-3 · N1 1-6 · N2 4-10.
+- ✅ Câblage repaire Spino (`mur.js` : ordre mj-46 → mj-47 → mj-43, titres, 2 vignettes CSS) + entrées `catalog.js` (tracking/accordéon parents). Séquence ★★ vérifiée par test localStorage simulé.
+- ✅ BUILD-MUR-COPAINS.md mis à jour (mj-46/47 cochés).
+
+**Écart spec assumé** : mj-46 sans regroupement par 5 au palier 3★ (golden 3 niveaux standard). À trancher après test de Max.
+
+**Leçon** : vignette œufs cassée au 1er rendu — padding/gap en % dans une `.vig` se résout contre le parent (règle déjà gravée dans `mur.css` l.143 ; appliquée au fix : px uniquement). Rappel : relire les règles d'or du fichier AVANT d'ajouter une vignette.
+
+**En attente** : retours de Yann sur mj-46/47 avant de lancer mj-48 (bus unifié), mj-49 (barquettes de 10), mj-20 corrigé, tri des lettres Galli.

@@ -172,3 +172,14 @@ particles.explode(20);
 |-----|------|-------|
 | MJ-01 à MJ-20 | ✅ déployés | voir BACKLOG.md (mj-02/03/07/10 retirés du menu) |
 | max-adventure | 🔄 en cours | Phaser, HubScene + SandboxScene |
+
+## Vocabulaire ASSETS (validé Papa Yann 2026-07-20 — utiliser CES mots, pas d'autres)
+
+| Terme | C'est quoi | Où | Nommage |
+|-------|-----------|-----|---------|
+| **Avatar** | le personnage du profil (picker « Choisis ton dino » + atelier couleurs) | `site/img/avatars/` | `<nom>_<humeur>_<n>.png` (diminutif minuscule : `allo_joyeux_1.png`) · piloté par `js/avatar-picker.js` (`window.Avatar`), choix stocké `maxplay_avatar` |
+| **Ombre** | ombre chinoise (silhouette noire transparente) | `site/img/dinos/ombres/` (60) | `<Nom>_ombre.png` (latin capitalisé) · lib `js/dinos-ombres.js` · usage mj-47, mj-24, vignettes du Mur |
+| **Sprite** | dino proprement détouré (fond transparent, style low-poly) | `site/img/dinos/sprites/` | `<Nom>_sprite.png` (entier) · `<Nom>_tete.png` (tête) · réservés aux mini-jeux (éclosion mj-46, passagers mj-48) |
+| **Paleoart** | image réaliste EN SCÈNE avec fond (hero, écosystème, manger, paris, funfact) | `site/img/dinos/paleoart/` | `<Nom>.jpg`, `<Nom>_headshot.jpg`, `_coloriage.webp`… · fiches encyclopédie, PAS détourées |
+
+**Organisation : par FAMILLE d'asset, pas par dino.** Un même dino est éparpillé dans 4 dossiers ; la clé qui relie tout = le **nom latin capitalisé** (`Triceratops_*`) — SAUF les avatars qui utilisent un **diminutif minuscule** (`allo`, `anky`, `brachio`…, mapping dans `avatar-picker.js`). Référencement : aucun manifeste central — `js/dinos-data.js` (fiches encyclopédie) + `js/dinos-images-local.js`/`-grok.js` (images fiches) + `js/dinos-ombres.js` (pool ombres) ; avatars et sprites sont consommés en chemin direct par les jeux.

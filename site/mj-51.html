@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MJ-51 – Le tri des lettres</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mp-theme.css">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; -webkit-user-select:none; }
+    body { font-family:'Nunito',sans-serif; height:100dvh; overflow:hidden; touch-action:none; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:1000px; margin:0 auto; }
+
+    @font-face { font-family:'Cursif'; src:url('design-shared/fonts/Cursif.ttf') format('truetype'); font-display:swap; }
+
+    #levelbar { font-weight:900; color:var(--gold); background:var(--gold-soft); border-radius:10px; padding:3px 12px; font-size:0.85rem; }
+
+    .scorebar { padding:6px 14px; background:rgba(0,0,0,0.2); flex-shrink:0; }
+    .progress-bar { width:100%; height:10px; background:rgba(255,255,255,0.15); border-radius:5px; overflow:hidden; }
+    .progress-fill {
+      height:100%; border-radius:5px;
+      background:linear-gradient(90deg, #00c47a, #ffe066, #ff6b6b);
+      background-size:200% 100%; animation:shimmer 2s infinite;
+      transition:width 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+    .tri-count { text-align:center; font-size:0.8rem; color:rgba(255,255,255,0.8); margin-top:4px; font-weight:700; }
+
+    .game-area { flex:1; display:flex; gap:0; overflow:hidden; }
+    #chaosZone { flex:1; position:relative; overflow:hidden; border-right:2px solid rgba(255,255,255,0.1); }
+    .zone-label {
+      position:absolute; top:8px; left:0; right:0; text-align:center; font-size:0.75rem;
+      color:rgba(255,255,255,0.5); font-weight:700; text-transform:uppercase; letter-spacing:2px; pointer-events:none;
+    }
+    #boxZone { width:130px; flex-shrink:0; display:flex; flex-direction:column; overflow:hidden; background:rgba(0,0,0,0.3); }
+
+    .lettre-box {
+      flex:1; min-height:0; position:relative; display:flex; align-items:center; justify-content:center;
+      border-bottom:1px solid rgba(255,255,255,0.08); transition:box-shadow 0.15s; overflow:hidden; padding:4px;
+      background:linear-gradient(180deg, rgba(38,90,143,.45), rgba(38,90,143,.22));
+    }
+    .lettre-box:last-child { border-bottom:none; }
+    .lettre-box.hover-ok { box-shadow:inset 0 0 0 3px rgba(0,255,150,0.8); }
+    .box-label {
+      font-family:'Cursif',cursive; font-size:2.6rem; color:#fff;
+      text-shadow:0 2px 6px rgba(0,0,0,0.8); z-index:1; pointer-events:none; line-height:1;
+    }
+    .box-count {
+      position:absolute; top:3px; right:4px; font-size:0.7rem; font-weight:900; color:#fff;
+      background:rgba(0,0,0,0.5); border-radius:10px; padding:1px 5px; pointer-events:none; z-index:2;
+    }
+    .box-parked {
+      position:absolute; inset:0; display:flex; flex-wrap:wrap; align-items:center;
+      justify-content:center; gap:2px; padding:4px; pointer-events:none; opacity:.5;
+    }
+    .box-parked span { font-size:1rem; color:#fff; }
+    .box-parked span.cur { font-family:'Cursif',cursive; }
+    .box-parked span.maj { text-transform:uppercase; font-weight:900; }
+
+    /* Tuiles lettres draggables */
+    .tile-lettre {
+      position:absolute; cursor:grab; touch-action:none; z-index:10;
+      width:84px; height:84px; border-radius:20px;
+      background:linear-gradient(145deg,#4a3f8f,#332a6b);
+      border:3px solid rgba(255,255,255,.2);
+      box-shadow:0 5px 0 #241d4e, 0 8px 16px rgba(0,0,0,.45);
+      display:flex; align-items:center; justify-content:center; color:#fff;
+      transition:transform 0.12s;
+    }
+    .tile-lettre.cur { font-family:'Cursif',cursive; font-size:2.9rem; }
+    .tile-lettre.scripte { font-weight:900; font-size:2.3rem; }
+    .tile-lettre.maj { font-weight:900; font-size:2.3rem; text-transform:uppercase; }
+    .tile-lettre:active, .tile-lettre.dragging { cursor:grabbing; z-index:20; transform:scale(1.08) !important; box-shadow:0 8px 20px rgba(0,0,0,.7); }
+    .tile-lettre.parked { cursor:default; pointer-events:none; opacity:0; transition:opacity 0.3s; }
+    @keyframes shake {
+      0%,100%{transform:translateX(0)} 20%{transform:translateX(-7px)} 40%{transform:translateX(7px)}
+      60%{transform:translateX(-4px)} 80%{transform:translateX(4px)}
+    }
+    .tile-lettre.wrong { animation:shake 0.35s ease; }
+
+    /* Fin de partie */
+    .fin-overlay {
+      position:fixed; inset:0; background:rgba(0,0,0,0.92);
+      display:flex; flex-direction:column; align-items:center; justify-content:center;
+      z-index:1000; opacity:0; visibility:hidden; transition:all 0.5s; color:#fff;
+    }
+    .fin-overlay.show { opacity:1; visibility:visible; }
+    .fin-title { font-size:2rem; color:var(--gold); font-weight:900; margin-bottom:8px; text-align:center; font-family:'Fredoka One',sans-serif; }
+    .fin-sub { font-size:1.05rem; opacity:0.85; margin-bottom:18px; text-align:center; }
+    .fin-familles { display:flex; flex-direction:column; gap:8px; margin-bottom:22px; max-width:90vw; }
+    .fin-row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:center; }
+    .fin-row .fam { font-family:'Cursif',cursive; font-size:2rem; color:var(--gold); min-width:44px; text-align:center; }
+    .fin-row .exs { display:flex; gap:8px; flex-wrap:wrap; }
+    .fin-row .exs span { font-size:1.4rem; background:rgba(255,255,255,.1); border-radius:10px; padding:4px 10px; }
+    .fin-row .exs span.cur { font-family:'Cursif',cursive; }
+    .fin-row .exs span.maj { text-transform:uppercase; font-weight:900; }
+    .fin-btns { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
+    .fin-btn { padding:13px 26px; border-radius:28px; font-weight:900; font-size:1rem; border:none; cursor:pointer; font-family:'Nunito',sans-serif; text-decoration:none; color:#fff; }
+    .fin-btn.primary { background:linear-gradient(135deg,#00c47a,#00a86b); }
+    .fin-btn.secondary { background:rgba(255,255,255,0.15); }
+  </style>
+</head>
+<body data-ambiance="jungle">
+<div id="app">
+  <div class="hdr">
+    <a href="index.html" class="back">←</a>
+    <span class="htitle">🔠 Le tri des lettres</span>
+    <span id="levelbar">Niveau 1</span>
+  </div>
+  <div class="scorebar">
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <div class="tri-count" id="triCount">Lettres rangées : 0 / 0</div>
+  </div>
+  <div class="game-area">
+    <div id="chaosZone"><div class="zone-label">← Glisse chaque lettre dans sa boîte</div></div>
+    <div id="boxZone"></div>
+  </div>
+</div>
+
+<div class="fin-overlay" id="finOverlay">
+  <div class="fin-title" id="finTitle">Tout rangé !</div>
+  <div class="fin-sub">Chaque lettre a retrouvé sa famille, sous tous ses costumes !</div>
+  <div class="fin-familles" id="finFamilles"></div>
+  <div class="fin-btns">
+    <button class="fin-btn primary" onclick="location.reload()">🔄 Rejouer</button>
+    <a href="index.html" class="fin-btn secondary">📋 Menu</a>
+  </div>
+</div>
+
+<!-- LE GABARIT : charge tout le cadre standard (thème, tracking, cloud, célébrations) -->
+<script src="js/mj-shell.js"></script>
+<script>
+  MJ.ready(function () {
+  'use strict';
+  // ─── MJ-51 : Le tri des lettres — moteur tri-bacs (mj-09) en peau lettres (spec G2) ───
+  // Chaos de lettres de toutes allures (cursive / script / MAJUSCULES) → boîtes-lettres.
+  // N0 : 2 lettres très différentes (a/o), 100% cursif · N1 : 3 lettres, cursive + script
+  // N2 : 4 lettres PROCHES (b/d/h/k…), + majuscules, chaos dense.
+  // ⚠ Écart spec assumé : le palier « boîtes-sons » (tri par son initial) viendra en vague 3.
+
+  const GAME_ID = 'mj-51';
+
+  // Le SON de chaque lettre (dit au rangement — jamais le nom d'école)
+  const SONS = {
+    a:'aaa', o:'ooo', i:'iii', e:'eee', u:'uuu',
+    m:'mmm', s:'sss', l:'lll', r:'rrr',
+    b:'be', d:'de', h:'h muet', k:'ke', p:'pe', q:'ke',
+  };
+
+  // Paliers 🔒 (même logique que mj-09 : niveau = min(2, Stars.get))
+  const NIVEAUX = [
+    { boxes: ['a', 'o'],            allures: ['cur'],                    perBox: 3 }, // N0 : 6 tuiles
+    { boxes: ['a', 'm', 's'],       allures: ['cur', 'scripte'],         perBox: 3 }, // N1 : 9 tuiles
+    { boxes: ['b', 'd', 'h', 'k'],  allures: ['cur', 'scripte', 'maj'],  perBox: 3 }, // N2 : 12 tuiles, confusables
+  ];
+
+  MJ.init({
+    id: GAME_ID, emoji: '🔠', titre: 'Le tri des lettres',
+    consigne: false,
+    regle: {
+      picto: '🔠🗂️',
+      texte: 'La même lettre a plusieurs costumes : range-les toutes dans leur boîte !',
+      etapes: [
+        { t: 'Je regarde bien la lettre 👀',
+          d: 'Un a attaché, un a détaché, un A MAJUSCULE… c’est toujours la lettre a !' },
+        { t: 'Je la glisse dans sa boîte 👆',
+          d: 'La boîte s’allume en vert quand je suis au bon endroit. J’entends son son !' },
+        { t: 'Si je me trompe, elle revient 🔄',
+          d: 'Pas grave ! Je réessaie autant de fois que je veux.' },
+        { t: 'Plus j’ai d’étoiles, plus c’est costaud 💪',
+          d: 'À la fin : les lettres qui se ressemblent très fort, comme b, d, h et k !' }
+      ]
+    }
+  });
+
+  const level = Math.max(0, Math.min(2, (window.Stars ? Stars.get(GAME_ID) : 0)));
+  const CFG = NIVEAUX[level];
+  (function(){ const lb = document.getElementById('levelbar'); if (lb) lb.textContent = 'Niveau ' + (level + 1); })();
+
+  function _shuffle(a) { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
+  function rnd(a) { return a[Math.floor(Math.random() * a.length)]; }
+
+  // Tirage des tuiles : perBox par lettre, allures variées (chaque lettre apparaît
+  // dans PLUSIEURS costumes dès que le niveau en propose plusieurs)
+  function buildDeck() {
+    const deck = [];
+    CFG.boxes.forEach(lettre => {
+      for (let i = 0; i < CFG.perBox; i++) {
+        const allure = CFG.allures[i % CFG.allures.length];
+        deck.push({ lettre, allure });
+      }
+    });
+    return _shuffle(deck);
+  }
+  const DECK = buildDeck();
+
+  const TILE_W = 84, TILE_H = 84, SNAP_DIST = 90;
+  let tiles = [], rangedCount = 0, errors = 0;
+  const drags = new Map();
+  const boxCounts = {};
+  CFG.boxes.forEach(l => boxCounts[l] = 0);
+
+  // ── Audio ──
+  function sayPhoneme(lettre) {
+    try { if (window.TTS && TTS.speak) { TTS.speak(SONS[lettre] || lettre, { rate: 0.6, priority: true }); return; } } catch (e) {}
+  }
+  function sndOk() { try { sndDing(); } catch (e) {} }
+  function sndKo() { try { sndBuzz(); } catch (e) {} try { playErrorSound(); } catch (e) {} }
+
+  // ── Boîtes ──
+  function buildBoxes() {
+    const col = document.getElementById('boxZone');
+    col.innerHTML = '';
+    CFG.boxes.forEach(lettre => {
+      const box = document.createElement('div');
+      box.className = 'lettre-box';
+      box.dataset.lettre = lettre;
+      box.innerHTML = `
+        <span class="box-label">${lettre}</span>
+        <span class="box-count" id="cnt-${lettre}">0</span>
+        <div class="box-parked" id="parked-${lettre}"></div>
+      `;
+      col.appendChild(box);
+    });
+  }
+
+  // ── Tuiles ──
+  function buildTiles() {
+    const zone = document.getElementById('chaosZone');
+    zone.querySelectorAll('.tile-lettre').forEach(el => el.remove());
+    tiles = [];
+    const zoneW = zone.offsetWidth, zoneH = zone.offsetHeight;
+    const margin = 8, labelH = 26;
+    const maxX = Math.max(margin + 1, zoneW - TILE_W - margin);
+    const maxY = Math.max(labelH + margin + 1, zoneH - TILE_H - margin);
+    const placed = [];
+    function overlaps(x, y) {
+      return placed.some(p => Math.abs(p.x - x) < TILE_W * 0.9 && Math.abs(p.y - y) < TILE_H * 0.9);
+    }
+    DECK.forEach((d, i) => {
+      let x, y, attempts = 0;
+      do {
+        x = margin + Math.random() * (maxX - margin);
+        y = labelH + margin + Math.random() * (maxY - labelH - margin);
+        attempts++;
+      } while (overlaps(x, y) && attempts < 120);
+      placed.push({ x, y });
+
+      const el = document.createElement('div');
+      el.className = 'tile-lettre ' + d.allure;
+      el.textContent = d.lettre;
+      el.dataset.lettre = d.lettre;
+      el.style.left = x + 'px';
+      el.style.top = y + 'px';
+      el.style.transform = 'rotate(' + (Math.random() * 16 - 8) + 'deg)';
+      zone.appendChild(el);
+      el.addEventListener('pointerdown', onDragStart);
+      tiles.push({ el, lettre: d.lettre, allure: d.allure, x, y, initX: x, initY: y, parked: false });
+    });
+    updateProgress();
+  }
+
+  // ── Drag & Drop (pointer events, multi-touch — pattern mj-09) ──
+  function onDragStart(e) {
+    const t = tiles.find(x => x.el === e.currentTarget);
+    if (!t || t.parked) return;
+    e.preventDefault();
+    e.currentTarget.setPointerCapture(e.pointerId);
+    const rect = t.el.getBoundingClientRect();
+    drags.set(e.pointerId, { t, offsetX: e.clientX - rect.left, offsetY: e.clientY - rect.top });
+    t.el.classList.add('dragging');
+  }
+  function onDragMove(e) {
+    const d = drags.get(e.pointerId);
+    if (!d) return;
+    e.preventDefault();
+    const zone = document.getElementById('chaosZone');
+    const zRect = zone.getBoundingClientRect();
+    const x = e.clientX - zRect.left - d.offsetX;
+    const y = e.clientY - zRect.top - d.offsetY;
+    d.t.x = x; d.t.y = y;
+    d.t.el.style.left = x + 'px';
+    d.t.el.style.top = y + 'px';
+    highlightBox(d.t);
+  }
+  function onDragEnd(e) {
+    const d = drags.get(e.pointerId);
+    if (!d) return;
+    d.t.el.classList.remove('dragging');
+    drags.delete(e.pointerId);
+    if (drags.size === 0) document.querySelectorAll('.lettre-box').forEach(b => b.classList.remove('hover-ok'));
+    checkDrop(d.t);
+  }
+  function highlightBox(t) {
+    document.querySelectorAll('.lettre-box').forEach(b => b.classList.remove('hover-ok'));
+    const box = findNearestBox(t);
+    if (box) box.el.classList.add('hover-ok');
+  }
+  function findNearestBox(t) {
+    const r0 = t.el.getBoundingClientRect();
+    const cx = r0.left + r0.width / 2, cy = r0.top + r0.height / 2;
+    let best = null, bestDist = Infinity;
+    document.querySelectorAll('.lettre-box').forEach(boxEl => {
+      const r = boxEl.getBoundingClientRect();
+      const d = Math.hypot(cx - (r.left + r.width / 2), cy - (r.top + r.height / 2));
+      if (d < bestDist) { bestDist = d; best = { el: boxEl, lettre: boxEl.dataset.lettre, dist: d }; }
+    });
+    return best && best.dist < SNAP_DIST + 60 ? best : null;
+  }
+  function checkDrop(t) {
+    const nearest = findNearestBox(t);
+    if (!nearest) { back(t, false); return; }
+    if (nearest.lettre === t.lettre) {
+      if (typeof Tracker !== 'undefined') Tracker.logAnswer(true);
+      park(t, nearest);
+    } else {
+      errors++;
+      if (typeof Tracker !== 'undefined') Tracker.logAnswer(false);
+      back(t, true);
+    }
+  }
+  function park(t, box) {
+    t.parked = true;
+    t.el.classList.add('parked');
+    sndOk();
+    setTimeout(() => sayPhoneme(t.lettre), 120);
+    if (window.MaxFX) { const cnt = document.getElementById('triCount'); if (cnt) MaxFX.markPoint(t.el, cnt, { style: 'bounce', result: 'green' }); }
+    const parked = document.getElementById('parked-' + box.lettre);
+    const mini = document.createElement('span');
+    mini.className = t.allure;
+    mini.textContent = t.lettre;
+    parked.appendChild(mini);
+    boxCounts[box.lettre]++;
+    document.getElementById('cnt-' + box.lettre).textContent = boxCounts[box.lettre];
+    rangedCount++;
+    updateProgress();
+    if (rangedCount >= DECK.length) finish();
+  }
+  function back(t, wrong) {
+    if (wrong) { sndKo(); t.el.classList.add('wrong'); }
+    setTimeout(() => {
+      t.el.style.transition = 'left 0.3s ease, top 0.3s ease';
+      t.el.style.left = t.initX + 'px';
+      t.el.style.top = t.initY + 'px';
+      t.x = t.initX; t.y = t.initY;
+      setTimeout(() => { t.el.style.transition = ''; t.el.classList.remove('wrong'); }, 320);
+    }, 40);
+  }
+  function updateProgress() {
+    const pct = DECK.length ? (rangedCount / DECK.length) * 100 : 0;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('triCount').textContent = `Lettres rangées : ${rangedCount} / ${DECK.length}`;
+  }
+
+  // ── Fin : familles de lettres regroupées, étoile si complétion ──
+  function finish() {
+    if (typeof Tracker !== 'undefined') Tracker.endSession(DECK.length, DECK.length);
+    const cont = document.getElementById('finFamilles');
+    cont.innerHTML = '';
+    CFG.boxes.forEach(lettre => {
+      const row = document.createElement('div');
+      row.className = 'fin-row';
+      const exs = CFG.allures.map(a => `<span class="${a}">${lettre}</span>`).join('');
+      row.innerHTML = `<span class="fam">${lettre}</span><div class="exs">${exs}</div>`;
+      cont.appendChild(row);
+    });
+    document.getElementById('finTitle').textContent = errors === 0 ? 'SANS-FAUTE ! Tout rangé !' : 'Bravo, tout rangé !';
+    setTimeout(() => {
+      const ov = document.getElementById('finOverlay');
+      ov.classList.add('show');
+      try { confettiBurst(50); } catch (e) {}
+      try { playEndSound(DECK.length, DECK.length); } catch (e) {}
+      if (window.MaxFX) MaxFX.finalStar(ov, { style: errors === 0 ? 'cinematic' : 'breathe', label: errors === 0 ? 'SANS-FAUTE !' : 'BRAVO !' });
+    }, 500);
+  }
+
+  // ── Harnais Playwright ──
+  window.__mjTest = {
+    get state() {
+      return {
+        level, boxes: CFG.boxes, deckSize: DECK.length, ranged: rangedCount, errors,
+        allures: tiles.map(t => t.allure),
+        finShown: document.getElementById('finOverlay').classList.contains('show'),
+      };
+    },
+    // dépose programmatique (contourne le drag) : range la 1ʳᵉ tuile libre, bien ou mal
+    drop(correct) {
+      const t = tiles.find(x => !x.parked);
+      if (!t) return false;
+      if (correct) {
+        const boxEl = document.querySelector('.lettre-box[data-lettre="' + t.lettre + '"]');
+        park(t, { el: boxEl, lettre: t.lettre });
+        if (typeof Tracker !== 'undefined') Tracker.logAnswer(true);
+      } else {
+        errors++;
+        if (typeof Tracker !== 'undefined') Tracker.logAnswer(false);
+        back(t, true);
+      }
+      return true;
+    },
+  };
+
+  // ── Init ──
+  buildBoxes();
+  buildTiles();
+  document.addEventListener('pointermove', onDragMove);
+  document.addEventListener('pointerup', onDragEnd);
+  document.addEventListener('pointercancel', onDragEnd);
+  });
+</script>
+</body>
+</html>

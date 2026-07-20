@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>MaxPlay</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚌</text></svg>">
+  <link rel="manifest" href="manifest-classic.json">
+  <link rel="apple-touch-icon" href="img/maxplay-icon-192.png">
+  <meta name="theme-color" content="#0a1226">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/mp-theme.css">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+    body { font-family:'Nunito',sans-serif; padding-bottom:env(safe-area-inset-bottom); }
+    .home { max-width:520px; margin:0 auto; min-height:100dvh; display:flex; flex-direction:column; }
+
+    /* ── profil : avatar (tap = atelier) + pseudo + niveau + ⭐ global ── */
+    .profil { display:flex; align-items:center; gap:12px; padding:18px 18px 12px; }
+    .avatar {
+      width:58px; height:58px; border-radius:50%; cursor:pointer; flex-shrink:0;
+      background:radial-gradient(circle at 35% 30%, var(--accent), oklch(0.45 0.1 var(--h-avatar)));
+      border:3px solid var(--gold); display:flex; align-items:center; justify-content:center;
+      font-size:30px; overflow:hidden;
+    }
+    .avatar img { width:50px; height:50px; object-fit:contain; }
+    .pseudo { font-family:'Fredoka One'; font-size:21px; }
+    .niveau { height:8px; border-radius:999px; background:rgba(255,255,255,.12); width:110px; }
+    .niveau i { display:block; height:100%; border-radius:999px; background:var(--accent); }
+
+    /* ── rangée ❤️ « Tes jeux » : persistante, défilement horizontal ──
+       --heart = couleur « favori » (rouge cœur), volontairement distincte de
+       --gold (étoiles de SCORE). Une seule ligne à changer si on veut la teinte
+       du doudou de Max (Tritri) plus tard. */
+    :root { --heart:#ff4d6d; --heart-ink:#fff; }
+    .pins-wrap { padding:2px 16px 8px; }
+    .pins-title { font-family:'Fredoka One'; font-size:14px; color:var(--heart); margin:0 2px 7px; }
+    .pins-row {
+      display:flex; gap:9px; overflow-x:auto; padding-bottom:4px;
+      scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch;
+    }
+    .pins-row::-webkit-scrollbar { height:0; }
+    .pins-row { padding-top:10px; }   /* place pour la pastille « Aujourd'hui » */
+    .pin-card {
+      flex:0 0 auto; width:92px; scroll-snap-align:start; cursor:pointer;
+      background:var(--card-2); border-radius:16px; padding:11px 8px 9px;
+      display:flex; flex-direction:column; align-items:center; gap:5px; text-align:center;
+      border:2px solid transparent; position:relative;
+    }
+    .pin-card.locked { opacity:.55; }
+    .pin-card .p-emoji { font-size:30px; line-height:1; }
+    .pin-card .p-title { font-weight:900; font-size:11px; line-height:1.15; color:var(--ink); }
+    .pin-card .p-stars { font-size:11px; color:var(--gold); font-weight:900; min-height:13px; }
+    .pin-card .p-stars .off { opacity:.25; }
+    /* carte « jeu du jour » : mise en avant (contour or + pastille + pulse doux) */
+    .pin-card.today { border-color:var(--gold); background:linear-gradient(160deg, var(--card-2), var(--card)); }
+    .pin-card.today .p-badge {
+      position:absolute; top:-8px; left:50%; transform:translateX(-50%);
+      background:var(--gold); color:var(--gold-ink); font-size:9px; font-weight:900;
+      padding:2px 8px; border-radius:999px; white-space:nowrap; font-family:'Fredoka One';
+    }
+    /* jeu épinglé (favori) : petit cœur en coin + liseré cœur discret */
+    .pin-card.fav { border-color:var(--heart); }
+    .pin-card .p-heart { position:absolute; top:5px; right:6px; font-size:12px; line-height:1; }
+    @keyframes pin-pulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.04);} }
+    .pin-card.today { animation:pin-pulse 2.4s ease-in-out infinite; }
+    @media (prefers-reduced-motion: reduce) { .pin-card.today { animation:none; } }
+
+    /* ── tiroir niveau 2 : les jeux d'une catégorie ── */
+    .cat-stars { color:var(--gold); font-weight:900; font-size:13px; flex-shrink:0; }
+    .game { display:flex; align-items:center; gap:10px; background:var(--card-2); border-radius:12px; padding:10px 11px; cursor:pointer; position:relative; }
+    .game .g-emoji { font-size:22px; flex-shrink:0; }
+    .game .g-title { font-weight:900; font-size:13.5px; }
+    .game.locked { opacity:.5; }
+    .game .g-lock { font-size:11px; font-weight:900; color:var(--ink-3); flex-shrink:0; }
+    .game .cmt { font-size:15px; padding:5px 6px; border-radius:9px; background:rgba(0,0,0,.18); flex-shrink:0; }
+    .game .cmt.has { background:rgba(47,191,143,.3); }
+    .copy-cmts {
+      border:0; border-radius:var(--r-pill); padding:9px 14px; cursor:pointer;
+      background:var(--accent-soft); color:var(--accent); font-family:inherit; font-weight:900; font-size:12px;
+    }
+
+    /* ── encyclopédie épinglée en bas ── */
+    .ency {
+      display:flex; align-items:center; gap:13px; cursor:pointer;
+      background:linear-gradient(135deg, var(--card-2), var(--card));
+      border:1px solid var(--line); border-radius:var(--r-card); padding:15px;
+    }
+    .ency.locked { opacity:.65; }
+    .ency-go { width:42px; height:42px; border-radius:50%; background:var(--gold); color:var(--gold-ink);
+               display:flex; align-items:center; justify-content:center; font-weight:900; flex-shrink:0; }
+
+    /* secousse (feedback non punitif) */
+    @keyframes shake { 0%,100%{transform:translateX(0);} 25%{transform:translateX(-6px);} 75%{transform:translateX(6px);} }
+    .shake { animation:shake 0.35s; }
+
+    /* toast info */
+    .toast {
+      position:fixed; left:50%; bottom:calc(24px + env(safe-area-inset-bottom)); transform:translateX(-50%);
+      background:rgba(0,0,0,0.85); color:#fff; padding:11px 18px; border-radius:16px; font-weight:800;
+      font-size:0.92rem; box-shadow:0 6px 20px rgba(0,0,0,0.4); opacity:0; pointer-events:none;
+      transition:opacity 0.25s, transform 0.25s; z-index:50; max-width:90vw; text-align:center;
+    }
+    .toast.show { opacity:1; transform:translateX(-50%) translateY(-4px); }
+
+    /* ── modales (code dinos / porte parents / avis) ── */
+    .modal { position:fixed; inset:0; background:rgba(10,14,30,0.78); display:none; align-items:center; justify-content:center;
+             padding:20px; z-index:100; }
+    .modal.show { display:flex; }
+    .modal-box { background:var(--card); border:1px solid var(--line); border-radius:22px; padding:24px 22px; width:100%;
+                 max-width:340px; text-align:center; box-shadow:0 18px 50px rgba(0,0,0,0.5); color:var(--ink); }
+    .modal-box .m-emoji { font-size:2.6rem; }
+    .modal-box h3 { font-size:1.2rem; font-weight:900; margin:6px 0 4px; font-family:'Fredoka One'; font-weight:400; }
+    .modal-box p  { font-size:0.85rem; color:var(--ink-3); margin-bottom:14px; }
+    .modal-box input, .modal-box textarea {
+      width:100%; padding:13px; font-size:1.1rem; font-weight:900; text-align:center;
+      border:3px solid var(--line); border-radius:14px; font-family:inherit; outline:none;
+      background:rgba(255,255,255,.06); color:var(--ink);
+    }
+    .modal-box input:focus, .modal-box textarea:focus { border-color:var(--accent); }
+    .modal-box input#code-input { text-transform:uppercase; letter-spacing:3px; font-size:1.3rem; }
+    .modal-msg { min-height:20px; font-size:0.82rem; font-weight:800; color:var(--helped); margin-top:8px; }
+    .modal-actions { display:flex; gap:10px; margin-top:14px; }
+    .modal-actions button {
+      flex:1; padding:13px; border:none; border-radius:var(--r-pill); font-family:inherit; font-weight:900;
+      font-size:1rem; cursor:pointer;
+    }
+    .btn-go     { background:var(--accent); color:var(--accent-ink); }
+    .btn-cancel { background:rgba(255,255,255,.08); color:var(--ink); }
+
+    footer { margin-top:14px; color:var(--ink-3); font-size:0.85rem; text-align:center; padding:0 16px 22px; }
+  </style>
+</head>
+<body data-av-nobadge>
+<div class="home">
+
+  <!-- profil : avatar (tap = atelier) + pseudo + niveau + ⭐ global -->
+  <div class="profil">
+    <div class="avatar" id="profil-avatar" role="button" aria-label="Habille ton dino">🦕</div>
+    <div class="col grow" style="gap:3px">
+      <div class="pseudo" id="profil-pseudo">Champion</div>
+      <div class="row" style="gap:6px">
+        <div class="niveau"><i id="niveau-fill" style="width:0%"></i></div>
+        <span class="muted" style="font-size:11.5px" id="niveau-label">Niveau 1</span>
+      </div>
+    </div>
+    <div class="mp-stars-total" id="stars-total">⭐ 0</div>
+  </div>
+
+  <!-- RANGÉE ❤️ « Tes jeux » — persistante (jamais repliée) : jeu du jour + favoris.
+       Générée par pins.js. Masquée s'il n'y a rien à montrer. -->
+  <div class="pins-wrap" id="pins-wrap" style="display:none">
+    <div class="pins-title">❤️ Tes jeux</div>
+    <div class="pins-row" id="pins-row"></div>
+  </div>
+
+  <!-- MENU À TIROIRS — un seul ouvert à la fois (généré depuis catalog.js) -->
+  <div class="col" style="padding:6px 16px 12px; gap:10px" id="board"></div>
+
+  <!-- encyclopédie épinglée en bas -->
+  <div style="padding:0 16px 4px; display:flex; flex-direction:column; flex:1; justify-content:flex-end">
+    <div class="ency" id="ency"></div>
+  </div>
+
+  <footer>
+    🚌 Fait avec ❤️ pour mon Max
+    <br><button id="parents-btn" style="background:rgba(255,255,255,0.06);border:1px solid var(--line);
+      color:var(--ink-3);border-radius:12px;padding:8px 18px;font-family:inherit;font-weight:700;
+      font-size:0.85rem;cursor:pointer;margin-top:6px;">👨‍👩‍👦 Espace parents</button>
+  </footer>
+</div>
+
+  <!-- Porte parents : appui 3 s + question d'adulte (friction enfant, pas sécurité) -->
+  <div class="modal" id="gate-modal" aria-hidden="true">
+    <div class="modal-box">
+      <div class="m-emoji">👨‍👩‍👦</div>
+      <h3>Espace parents</h3>
+      <div id="gate-step1">
+        <p>Maintiens le bouton appuyé 3 secondes :</p>
+        <button id="gate-hold" class="btn-go" style="width:100%;position:relative;overflow:hidden;padding:13px;border:none;border-radius:999px;font-family:inherit;font-weight:900;font-size:1rem;cursor:pointer;">
+          <span id="gate-hold-fill" style="position:absolute;left:0;top:0;bottom:0;width:0%;background:rgba(255,255,255,0.25);transition:none;"></span>
+          <span style="position:relative;">Appuie et maintiens…</span>
+        </button>
+      </div>
+      <div id="gate-step2" style="display:none;">
+        <p>Combien font <b>sept fois quatre</b> ?</p>
+        <input type="number" id="gate-answer" inputmode="numeric" placeholder="?">
+        <div class="modal-actions">
+          <button class="btn-cancel" id="gate-cancel">Annuler</button>
+          <button class="btn-go" id="gate-ok">Entrer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modale code (déverrouillage par mot-clé — local, aucun compte) -->
+  <div class="modal" id="code-modal" aria-hidden="true">
+    <div class="modal-box">
+      <div class="m-emoji">🦕</div>
+      <h3>Un code secret ?</h3>
+      <p>Demande le mot magique à un grand pour ouvrir les dinos !</p>
+      <input id="code-input" type="text" inputmode="text" autocomplete="off" placeholder="• • • • • •" aria-label="Code">
+      <div class="modal-msg" id="code-msg"></div>
+      <div class="modal-actions">
+        <button class="btn-cancel" id="code-cancel">Plus tard</button>
+        <button class="btn-go" id="code-go">Ouvrir !</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modale commentaire de revue (section 🆕) -->
+  <div class="modal" id="cmt-modal" aria-hidden="true">
+    <div class="modal-box">
+      <div class="m-emoji">💬</div>
+      <h3 id="cmt-title">Ton avis sur ce jeu</h3>
+      <p>Note tout : ressenti de l'enfant, bugs, idées…</p>
+      <textarea id="cmt-input" rows="4" placeholder="Écris ton avis ici…" style="text-align:left;font-size:1rem;font-weight:700;resize:vertical;"></textarea>
+      <div class="modal-actions">
+        <button class="btn-cancel" id="cmt-cancel">Annuler</button>
+        <button class="btn-go" id="cmt-save">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <script src="js/ping.js"></script>
+  <script src="js/tracker.js"></script>
+  <script src="js/cloud.js"></script>
+  <script src="js/catalog.js"></script>
+  <script src="js/stars.js"></script>
+  <script src="js/unlock.js"></script>
+  <script src="js/pins.js"></script>
+  <script src="js/avatars.js"></script>
+  <script src="js/avatar-picker.js"></script>
+  <script src="js/mp-theme.js"></script>
+  <script src="js/celebrations.js"></script>
+  <script>
+  (function () {
+    const CAT = window.MAXPLAY_CATALOG || [];
+    const board = document.getElementById('board');
+    const modal = document.getElementById('code-modal');
+    const input = document.getElementById('code-input');
+    const msg   = document.getElementById('code-msg');
+    const toast = document.getElementById('toast');
+    const OPEN_KEY = 'maxplay_home_open_cat';
+
+    // ── Commentaires de revue (section 🆕) — stockés en local, copiables ──
+    const CMT_KEY = 'maxplay_review_comments';
+    function cmtAll() { try { return JSON.parse(localStorage.getItem(CMT_KEY)) || {}; } catch (e) { return {}; } }
+    function cmtGet(id) { return cmtAll()[id] || ''; }
+    function cmtSet(id, txt) {
+      const all = cmtAll();
+      if (txt && txt.trim()) all[id] = txt.trim(); else delete all[id];
+      localStorage.setItem(CMT_KEY, JSON.stringify(all));
+      try { window.Cloud && window.Cloud.schedulePush(); } catch (e) {}
+    }
+
+    // ── Étoiles ───────────────────────────────────────────────────────────
+    function gStars(id) {
+      const max = window.Stars ? Stars.max(id) : 0;
+      if (!max) return '';
+      const got = Stars.get(id);
+      let s = '';
+      for (let i = 0; i < max; i++) s += i < got ? '★' : '<span class="off">★</span>';
+      return `<span class="mp-g-stars">${s}</span>`;
+    }
+    function catCount(items) {
+      let got = 0, max = 0;
+      items.forEach(e => { if (e.maxStars) { max += e.maxStars; got += (window.Stars ? Stars.get(e.id) : 0); } });
+      return { got, max };
+    }
+    function totalStars() {
+      let t = 0;
+      CAT.forEach(e => { if (e.maxStars && window.Stars) t += Stars.get(e.id); });
+      return t;
+    }
+
+    // ── Rendu jeux / tiroirs ──────────────────────────────────────────────
+    function gameHtml(e) {
+      const unlocked = Unlock.isUnlocked(e.id);
+      const reason = Unlock.lockedReason(e.id);
+      const lockTxt = reason === 'code' ? '🔑 Code' : `🔒 ${Unlock.UNLOCK_STARS}★ au jeu d'avant`;
+      const foot = unlocked
+        ? (e.maxStars ? gStars(e.id) : '<span class="g-lock">🎮 Libre</span>')
+        : `<span class="g-lock">${lockTxt}</span>`;
+      return `<div class="game ${unlocked ? '' : 'locked'}" data-id="${e.id}" data-url="${e.url}" data-reason="${reason || ''}" role="button">
+        <span class="g-emoji">${e.emoji}</span>
+        <span class="g-title grow">${e.titre}</span>
+        ${foot}
+      </div>`;
+    }
+
+    function drawerHtml(c, items, open) {
+      const n = catCount(items);
+      const starsTxt = n.max ? `<span class="cat-stars">⭐ ${n.got} / ${n.max}</span>` : '';
+      const bodyStyle = open ? '' : 'display:none';
+      return `<div class="mp-drawer ${open ? 'open' : ''}" data-cat="${c.id}">
+        <div class="mp-drawer-head" data-toggle="${c.id}">
+          <span style="font-size:26px">${c.emoji}</span>
+          <b class="grow" style="font-size:16.5px">${c.label}</b>
+          ${starsTxt}
+          <span class="mp-chevron">›</span>
+        </div>
+        <div class="col drawer-body" style="padding:0 10px 12px; gap:6px; ${bodyStyle}">
+          ${items.map(gameHtml).join('')}
+        </div>
+      </div>`;
+    }
+
+    // ── Rangée ❤️ « Tes jeux » : jeu du jour (mis en avant) + jeux aimés (❤️) ──
+    function pinCardHtml(e, isToday) {
+      const unlocked = Unlock.isUnlocked(e.id);
+      // jeu du jour = pastille or 🎯 ; jeu épinglé = petit cœur (favori de Max)
+      const badge = isToday ? '<span class="p-badge">🎯 Aujourd\'hui</span>'
+                            : '<span class="p-heart">❤️</span>';
+      const foot = unlocked ? gStars(e.id) : '<span class="p-stars" style="color:var(--ink-3)">🔒</span>';
+      return `<div class="pin-card ${isToday ? 'today' : 'fav'} ${unlocked ? '' : 'locked'}" data-id="${e.id}" data-url="${e.url}" data-reason="${Unlock.lockedReason(e.id) || ''}" role="button">
+        ${badge}
+        <span class="p-emoji">${e.emoji}</span>
+        <span class="p-title">${e.titre}</span>
+        ${unlocked ? `<span class="p-stars">${gStars(e.id)}</span>` : foot}
+      </div>`;
+    }
+    function renderPins() {
+      const wrap = document.getElementById('pins-wrap');
+      const row  = document.getElementById('pins-row');
+      if (!window.Pins) { wrap.style.display = 'none'; return; }
+      const today = Pins.gameOfDay();
+      const pinned = Pins.rowIds().filter(id => id !== today);  // pas de doublon avec le jeu du jour
+      const ids = (today ? [today] : []).concat(pinned);
+      if (!ids.length) { wrap.style.display = 'none'; return; }
+      row.innerHTML = ids.map(id => {
+        const e = CAT.find(x => x.id === id);
+        return e ? pinCardHtml(e, id === today) : '';
+      }).join('');
+      wrap.style.display = '';
+    }
+
+    function render() {
+      const cats = window.MAXPLAY_CATEGORIES || [];
+      let openId = null;
+      try { openId = localStorage.getItem(OPEN_KEY); } catch (e) {}
+      const withGames = cats
+        .map(c => ({ c, items: CAT.filter(e => e.category === c.id && e.id !== 'dinos') }))
+        .filter(x => x.items.length);
+      if (!withGames.some(x => x.c.id === openId)) openId = withGames.length ? withGames[0].c.id : null;
+      board.innerHTML = withGames.map(x => drawerHtml(x.c, x.items, x.c.id === openId)).join('');
+      renderPins();
+
+      // encyclopédie épinglée (entrée 'dinos' du catalogue)
+      const ency = document.getElementById('ency');
+      const e = CAT.find(x => x.id === 'dinos');
+      if (e) {
+        const unlocked = Unlock.isUnlocked(e.id);
+        ency.className = 'ency' + (unlocked ? '' : ' locked');
+        ency.dataset.id = e.id; ency.dataset.url = e.url;
+        ency.dataset.reason = Unlock.lockedReason(e.id) || '';
+        ency.innerHTML = `<span style="font-size:34px">📚</span>
+          <div class="col grow" style="gap:1px">
+            <b style="font-size:15.5px">Encyclopédie Dinos</b>
+            <span class="muted">${unlocked ? '50 dinos · 6 familles · le voyage' : '🔑 Demande le mot magique à un grand'}</span>
+          </div>
+          <div class="ency-go">${unlocked ? '›' : '🔒'}</div>`;
+      }
+
+      // profil : compteur ⭐ global + niveau (1 niveau tous les 10 ⭐)
+      const t = totalStars();
+      document.getElementById('stars-total').textContent = '⭐ ' + t;
+      document.getElementById('niveau-label').textContent = 'Niveau ' + (Math.floor(t / 10) + 1);
+      document.getElementById('niveau-fill').style.width = (t % 10) * 10 + '%';
+    }
+
+    // avatar du profil : dino choisi (recoloré) ou 🦕 par défaut — tap = atelier
+    function paintProfil() {
+      const el = document.getElementById('profil-avatar');
+      try {
+        const id = window.Avatar && Avatar.get();
+        const f = id ? Avatar.file(id, 'joyeux') : null;
+        if (f) { el.innerHTML = '<img alt="Mon dino">'; Avatar.paintInto(el.firstChild, f); }
+      } catch (e) {}
+      el.addEventListener('click', () => { location.href = 'avatar-atelier.html'; });
+    }
+
+    // ── Interactions ──────────────────────────────────────────────────────
+    function showToast(txt) {
+      toast.textContent = txt; toast.classList.add('show');
+      clearTimeout(showToast._t); showToast._t = setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    document.addEventListener('click', (ev) => {
+      // tiroir : un seul ouvert à la fois
+      const head = ev.target.closest('.mp-drawer-head');
+      if (head) {
+        const d = head.parentElement, was = d.classList.contains('open');
+        document.querySelectorAll('.mp-drawer').forEach(x => {
+          x.classList.remove('open');
+          const b = x.querySelector('.drawer-body'); if (b) b.style.display = 'none';
+        });
+        if (!was) {
+          d.classList.add('open');
+          const b = d.querySelector('.drawer-body'); if (b) b.style.display = '';
+          try { localStorage.setItem(OPEN_KEY, d.dataset.cat); } catch (e) {}
+        } else {
+          try { localStorage.removeItem(OPEN_KEY); } catch (e) {}
+        }
+        return;
+      }
+      // carte de la rangée ⭐ : lancement direct si débloqué, sinon même feedback
+      // non punitif que dans le tiroir (secousse + toast, jamais de « perdu »).
+      const pin = ev.target.closest('.pin-card');
+      if (pin && pin.dataset.id) {
+        if (Unlock.isUnlocked(pin.dataset.id)) { location.href = pin.dataset.url; return; }
+        if (pin.dataset.reason === 'code') { openModal(); return; }
+        pin.classList.remove('shake'); void pin.offsetWidth; pin.classList.add('shake');
+        showToast(`Gagne ${Unlock.UNLOCK_STARS} ⭐ au jeu d'avant pour l'ouvrir !`);
+        return;
+      }
+
+      // jeu ou encyclopédie
+      const card = ev.target.closest('.game, .ency'); if (!card || !card.dataset.id) return;
+      const id = card.dataset.id, url = card.dataset.url;
+      if (Unlock.isUnlocked(id)) { location.href = url; return; }
+      if (card.dataset.reason === 'code') { openModal(); }
+      else { card.classList.remove('shake'); void card.offsetWidth; card.classList.add('shake');
+             showToast(`Gagne ${Unlock.UNLOCK_STARS} ⭐ au jeu d'avant pour l'ouvrir !`); }
+    });
+
+    function openModal() { msg.textContent = ''; input.value = ''; modal.classList.add('show'); setTimeout(() => input.focus(), 50); }
+    function closeModal() { modal.classList.remove('show'); }
+
+    async function validateCode() {
+      const r = await Unlock.redeem(input.value);
+      if (r.ok) { closeModal(); render(); showToast('Bravo ! Les dinos sont ouverts ! 🦕'); }
+      else { msg.textContent = 'Code pas bon — redemande à un grand 🙂';
+             const box = modal.querySelector('.modal-box'); box.classList.remove('shake'); void box.offsetWidth; box.classList.add('shake'); }
+    }
+
+    // ── Modale commentaire de revue ───────────────────────────────────────
+    const cmtModal = document.getElementById('cmt-modal');
+    const cmtInput = document.getElementById('cmt-input');
+    const cmtTitle = document.getElementById('cmt-title');
+    let cmtCurrentId = null;
+
+    function openCmtModal(id) {
+      cmtCurrentId = id;
+      const e = CAT.find(x => x.id === id);
+      cmtTitle.textContent = `${e ? e.emoji + ' ' + e.titre : id} — ton avis`;
+      cmtInput.value = cmtGet(id);
+      cmtModal.classList.add('show');
+      setTimeout(() => cmtInput.focus(), 50);
+    }
+    function closeCmtModal() { cmtModal.classList.remove('show'); cmtCurrentId = null; }
+
+    document.getElementById('cmt-save').addEventListener('click', () => {
+      if (cmtCurrentId) { cmtSet(cmtCurrentId, cmtInput.value); showToast('Avis enregistré ✓'); }
+      closeCmtModal(); render();
+    });
+    document.getElementById('cmt-cancel').addEventListener('click', closeCmtModal);
+    cmtModal.addEventListener('click', (e) => { if (e.target === cmtModal) closeCmtModal(); });
+
+    document.getElementById('code-go').addEventListener('click', validateCode);
+    document.getElementById('code-cancel').addEventListener('click', closeModal);
+    input.addEventListener('keydown', (e) => { if (e.key === 'Enter') validateCode(); });
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+    render();
+    paintProfil();
+
+    // ── Jingle au 1er clic (identité conservée) ───────────────────────────
+    const JINGLES = ['sounds/ratp-jingle.mp3', 'sounds/sncf-france-jingle.mp3'];
+    const jingle = new Audio(JINGLES[Math.floor(Math.random() * JINGLES.length)]);
+    jingle.volume = 0.5;
+    document.addEventListener('click', function once() { jingle.play().catch(() => {}); document.removeEventListener('click', once); }, { once: true });
+    jingle.play().catch(() => {});
+
+    // ── Porte parents : appui 3 s puis question d'adulte ──────────────────
+    (function () {
+      const modal = document.getElementById('gate-modal');
+      const step1 = document.getElementById('gate-step1');
+      const step2 = document.getElementById('gate-step2');
+      const hold  = document.getElementById('gate-hold');
+      const fill  = document.getElementById('gate-hold-fill');
+      const answer = document.getElementById('gate-answer');
+      let holdStart = null, raf = null;
+
+      document.getElementById('parents-btn').addEventListener('click', () => {
+        step1.style.display = ''; step2.style.display = 'none';
+        fill.style.width = '0%'; answer.value = '';
+        modal.classList.add('show');
+      });
+      modal.addEventListener('click', e => { if (e.target === modal) modal.classList.remove('show'); });
+      document.getElementById('gate-cancel').addEventListener('click', () => modal.classList.remove('show'));
+
+      function tick() {
+        const p = Math.min(1, (Date.now() - holdStart) / 3000);
+        fill.style.width = (p * 100) + '%';
+        if (p >= 1) { step1.style.display = 'none'; step2.style.display = ''; setTimeout(() => answer.focus(), 50); return; }
+        raf = requestAnimationFrame(tick);
+      }
+      function startHold(e) { e.preventDefault(); holdStart = Date.now(); raf = requestAnimationFrame(tick); }
+      function stopHold() { cancelAnimationFrame(raf); fill.style.width = '0%'; }
+      hold.addEventListener('pointerdown', startHold);
+      hold.addEventListener('pointerup', stopHold);
+      hold.addEventListener('pointerleave', stopHold);
+
+      function tryEnter() {
+        if (answer.value.trim() === '28') { location.href = 'suivi.html'; }
+        else { answer.value = ''; answer.placeholder = 'Essaie encore…'; }
+      }
+      document.getElementById('gate-ok').addEventListener('click', tryEnter);
+      answer.addEventListener('keydown', e => { if (e.key === 'Enter') tryEnter(); });
+    })();
+  })();
+  </script>
+<script>try{var _mpk=JSON.parse(localStorage.getItem('maxplay_active_child'));if(_mpk&&_mpk.nickname)document.getElementById('profil-pseudo').textContent=_mpk.nickname;}catch(e){}</script>
+</body>
+</html>

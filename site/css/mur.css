@@ -185,6 +185,30 @@
 .vig-de .d4{bottom:18%;left:18%;} .vig-de .d5{bottom:18%;right:18%;} .vig-de .d6{top:41%;left:18%;} .vig-de .d7{top:41%;right:18%;}
 .vig-de.de2 { transform:rotate(10deg); }
 
+/* barquette de 10 (Les barquettes de 10) : boîte 5×2 + badge 10 */
+.vig-barq { background:linear-gradient(150deg,#4d3a12,#231a08); }
+.vig-barq::before {
+  content:''; width:76%; height:52%; border-radius:12px;
+  background:
+    radial-gradient(circle at 10% 28%, #f5e3c2 0 8%, transparent 11%),
+    radial-gradient(circle at 30% 28%, #f5e3c2 0 8%, transparent 11%),
+    radial-gradient(circle at 50% 28%, #f5e3c2 0 8%, transparent 11%),
+    radial-gradient(circle at 70% 28%, #f5e3c2 0 8%, transparent 11%),
+    radial-gradient(circle at 90% 28%, #f5e3c2 0 8%, transparent 11%),
+    radial-gradient(circle at 10% 74%, #f5e3c2 0 8%, transparent 11%),
+    radial-gradient(circle at 30% 74%, #f5e3c2 0 8%, transparent 11%),
+    radial-gradient(circle at 50% 74%, #f5e3c2 0 8%, transparent 11%),
+    radial-gradient(circle at 70% 74%, #f5e3c2 0 8%, transparent 11%),
+    radial-gradient(circle at 90% 74%, #f5e3c2 0 8%, transparent 11%),
+    linear-gradient(160deg,#8a5a2b,#5d3a17);
+  box-shadow:0 4px 10px rgba(0,0,0,.45);
+}
+.vig-barq .dix {
+  position:absolute; top:12%; right:8%; min-width:26px; height:24px; padding:0 5px;
+  border-radius:999px; background:var(--gold); color:#4a3005; border:2px solid #fff;
+  font-family:'Fredoka One'; font-size:13px; display:flex; align-items:center; justify-content:center;
+}
+
 /* œufs (Les œufs surprises) */
 .vig-oeufs { background:linear-gradient(150deg,#4d3a12,#231a08); align-items:flex-end; gap:6px; padding-bottom:10px; }
 .vig-oeufs i { width:22%; aspect-ratio:.78; border-radius:50% 50% 50% 50%/60% 60% 40% 40%; background:#f5e3c2;

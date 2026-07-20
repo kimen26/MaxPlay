@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-53 – Lis et fais</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mp-theme.css">
+  <style>
+    /* --- GABARIT HEADER CANONIQUE --- */
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+    body { font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
+
+    @font-face { font-family:'Cursif'; src:url('design-shared/fonts/Cursif.ttf') format('truetype'); font-display:swap; }
+
+    .stage { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:space-evenly; overflow:hidden; padding:4px 10px 12px; gap:6px; }
+
+    /* Le mot / la consigne à LIRE (cursive) */
+    .lire-zone {
+      display:flex; flex-direction:column; align-items:center; gap:4px;
+      background:rgba(0,0,0,.35); border:2px solid rgba(255,209,102,.45);
+      border-radius:22px; padding:12px 26px; cursor:pointer; touch-action:manipulation;
+      max-width:94%;
+    }
+    .lire-mot { font-family:'Cursif',cursive; font-size:2.6rem; color:#fff; text-align:center; line-height:1.15; }
+    .lire-mot .syl { padding:0 2px; }
+    .lire-mot .syl + .syl { border-left:3px solid rgba(255,224,102,.55); margin-left:6px; padding-left:8px; }
+    .lire-sub { font-family:'Nunito',sans-serif; font-weight:800; font-size:.8rem; color:rgba(255,255,255,.6); }
+
+    /* Choix images */
+    .imgs { display:flex; flex-wrap:wrap; gap:14px; justify-content:center; align-items:center; max-width:600px; }
+    .img-card {
+      width:132px; height:132px; border-radius:24px; border:3px solid rgba(255,255,255,.2); cursor:pointer;
+      background:rgba(255,255,255,.06); display:flex; align-items:center; justify-content:center;
+      overflow:hidden; transition:transform .1s, border-color .2s, opacity .2s; touch-action:manipulation; padding:8px;
+    }
+    .img-card:active { transform:scale(.94); }
+    .img-card img { max-width:100%; max-height:100%; object-fit:contain; border-radius:14px; }
+    .img-card svg { max-width:100%; height:auto; }
+    .img-card.ok { border-color:#7dffc4; background:rgba(47,191,143,.2); box-shadow:0 0 24px rgba(47,191,143,.6); }
+    .img-card.ko { opacity:.35; }
+
+    /* Scène « fais » (N2) : oeufs colorés à toucher */
+    .fais { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; align-items:flex-end; max-width:560px; }
+    .foeuf {
+      position:relative; width:76px; height:92px; cursor:pointer; touch-action:manipulation;
+      display:flex; align-items:flex-end; justify-content:center;
+    }
+    .foeuf .oe {
+      width:66px; height:82px; border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
+      box-shadow:inset -5px -7px 12px rgba(0,0,0,.3), 0 4px 8px rgba(0,0,0,.4);
+      transition:transform .15s;
+    }
+    .foeuf.pick .oe { transform:scale(1.06); box-shadow:0 0 0 4px #7dffc4, 0 4px 10px rgba(0,0,0,.4); }
+    .foeuf.ko .oe { animation:fShake .35s ease; }
+    @keyframes fShake { 0%,100%{transform:rotate(0)} 25%{transform:rotate(-9deg)} 60%{transform:rotate(8deg)} }
+    .foeuf .coche {
+      position:absolute; top:-8px; left:50%; transform:translateX(-50%);
+      width:28px; height:28px; border-radius:50%; background:#2fbf8f; color:#fff; border:2px solid #fff;
+      display:flex; align-items:center; justify-content:center; font-size:1rem;
+      animation:cPop .25s cubic-bezier(.34,1.56,.64,1) both; pointer-events:none;
+    }
+    @keyframes cPop { from{transform:translateX(-50%) scale(0)} to{transform:translateX(-50%) scale(1)} }
+
+    .bravo-line {
+      min-height:2em; display:flex; align-items:center; justify-content:center;
+      font-size:1.25rem; font-weight:900; color:#ffe9a0; text-align:center;
+      text-shadow:0 0 12px rgba(255,231,160,.4); opacity:0; transition:opacity .4s; padding:0 10px;
+    }
+    .bravo-line.show { opacity:1; }
+  </style>
+</head>
+<body data-ambiance="jungle">
+<div id="app">
+
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">📖 Lis et fais</span>
+  </div>
+
+  <div class="stage">
+    <div class="lire-zone" id="lire-zone" role="button" aria-label="Le mot à lire">
+      <div class="lire-mot" id="lire-mot"></div>
+      <div class="lire-sub" id="lire-sub"></div>
+    </div>
+    <div class="imgs" id="imgs"></div>
+    <div class="fais" id="fais"></div>
+    <div class="bravo-line" id="bravo-line"></div>
+  </div>
+
+</div>
+  <!-- libs SPÉCIFIQUES au jeu -->
+  <script src="js/data.js"></script>
+  <script src="js/bus-svg.js"></script>
+  <!-- LE GABARIT -->
+  <script src="js/mj-shell.js"></script>
+  <script>
+  MJ.ready(function () {
+    'use strict';
+    // ─── MJ-53 : Lis et fais — lire pour agir (spec G5, fusion mj-23 + mj-06) ───
+    // N0 : lis 1 mot cursif → touche la bonne image (aide audio au tap sur le mot)
+    // N1 : nom de dino DÉCOUPÉ EN SYLLABES → vraies photos dino, PAS d'audio (PY)
+    // N2 : consigne action + quantité (« Touche 3 oeufs rouges ») — on ne sait quoi
+    //      faire QUE si on lit. ⚠ Écart spec : « phrase rigolote » 3★ différée.
+    const GAME_ID = 'mj-53';
+
+    // N0 : mots simples → images réelles du site (jamais d'emoji en visuel principal)
+    const IMG = p => '<img src="' + p + '" alt="">';
+    const MOTS_N0 = [
+      { mot: 'bus',     html: () => busSVG((LIGNES.find(l => String(l.num) === '162') || LIGNES[0]).color, '#fff', '162', 110) },
+      { mot: 'volcan',  html: () => IMG('img/decor/volcan_fumant.png') },
+      { mot: 'cactus',  html: () => IMG('img/decor/cactus.png') },
+      { mot: 'nuage',   html: () => IMG('img/decor/nuage_blanc.png') },
+      { mot: 'fougère', html: () => IMG('img/decor/fougere.png') },
+      { mot: 'étoile',  html: () => IMG('img/decor/etoile_filante.png') },
+    ];
+    // N1 : noms de dinos syllabés → VRAIES photos (paleoart headshots), pas d'audio
+    const DINOS_N1 = [
+      { mot: ['tri', 'cé', 'ra', 'tops'], id: 'Triceratops' },
+      { mot: ['spi', 'no', 'saure'], id: 'Spinosaurus' },
+      { mot: ['di', 'plo', 'do', 'cus'], id: 'Diplodocus' },
+      { mot: ['sté', 'go', 'saure'], id: 'Stegosaurus' },
+      { mot: ['vé', 'lo', 'ci', 'rap', 'tor'], id: 'Velociraptor' },
+      { mot: ['ty', 'ran', 'no', 'saure'], id: 'Tyrannosaurus' },
+      { mot: ['mo', 'sa', 'saure'], id: 'Mosasaurus' },
+      { mot: ['car', 'no', 'tau', 'rus'], id: 'Carnotaurus' },
+    ];
+    const HEAD = id => 'img/dinos/paleoart/' + id + '_headshot.jpg';
+    // N2 : consignes « touche N oeufs <couleur> »
+    const COULEURS = [
+      { nom: 'rouges', un: 'rouge', css: 'linear-gradient(160deg,#ff8a80,#e0655a)' },
+      { nom: 'bleus',  un: 'bleu',  css: 'linear-gradient(160deg,#82b1ff,#4d7de0)' },
+      { nom: 'jaunes', un: 'jaune', css: 'linear-gradient(160deg,#ffe082,#f0b73f)' },
+      { nom: 'verts',  un: 'vert',  css: 'linear-gradient(160deg,#7fe7c4,#2fbf8f)' },
+    ];
+
+    const shell = MJ.init({
+      id: GAME_ID, emoji: '📖', titre: 'Lis et fais',
+      golden: true, consigne: false,
+      regle: {
+        picto: '📖👆',
+        texte: 'Ici, on ne sait quoi faire QUE si on lit !',
+        etapes: [
+          { t: 'Je lis le mot 👀',
+            d: 'Le mot est écrit en attaché. Si c’est dur, je touche le mot : la voix m’aide (au début seulement !).' },
+          { t: 'Je touche la bonne image 👆',
+            d: 'Puis les noms de dinos arrivent, découpés en morceaux : tri-cé-ra-tops !' },
+          { t: 'Je lis… et je FAIS 💪',
+            d: 'Au dernier niveau, la consigne me dit quoi faire : « Touche 3 oeufs rouges » !' },
+          { t: 'Sans lire, impossible ! 🤫',
+            d: 'C’est ça le secret : lire, ça sert à découvrir ce qu’il faut faire.' }
+        ]
+      }
+    });
+    const G = shell.G;
+
+    const motEl = document.getElementById('lire-mot');
+    const subEl = document.getElementById('lire-sub');
+    const imgsEl = document.getElementById('imgs');
+    const faisEl = document.getElementById('fais');
+    const bravoEl = document.getElementById('bravo-line');
+
+    function shuffleA(a) { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
+    function rnd(a) { return a[Math.floor(Math.random() * a.length)]; }
+
+    let qCount = 0, qcm = null, roundLock = false, curType = 'mot';
+    let target = '', audioAllowed = true, lastKey = '';
+    let faisNeed = 0, faisGot = 0, faisCouleur = null, wrongTaps = 0, aidee = false;
+    let testMode = false, forcedLevel = null;
+    function level() { return forcedLevel !== null ? forcedLevel : G.level; }
+
+    function nextQuestion() {
+      if (qCount >= G.totalQ) return showEnd();
+      qCount++;
+      qcm = QcmRetry.create();
+      roundLock = false;
+      wrongTaps = 0; aidee = false;
+      bravoEl.classList.remove('show'); bravoEl.textContent = '';
+      imgsEl.innerHTML = ''; faisEl.innerHTML = '';
+      const lv = level();
+
+      if (lv === 0) {
+        curType = 'mot'; audioAllowed = true;
+        const cand = MOTS_N0.filter(m => m.mot !== lastKey);
+        const pick = rnd(cand);
+        lastKey = target = pick.mot;
+        motEl.textContent = pick.mot;
+        subEl.textContent = 'Touche le mot si tu veux de l’aide';
+        const others = shuffleA(MOTS_N0.filter(m => m.mot !== pick.mot)).slice(0, 3);
+        renderImgs(shuffleA([pick, ...others]), m => m.mot, m => m.html());
+      } else if (lv === 1) {
+        curType = 'dino'; audioAllowed = false; // PY : pas d'audio sur les syllabes dino
+        const cand = DINOS_N1.filter(d => d.id !== lastKey);
+        const pick = rnd(cand);
+        lastKey = target = pick.id;
+        motEl.innerHTML = pick.mot.map(s => '<span class="syl">' + s + '</span>').join('');
+        subEl.textContent = 'Lis bien, morceau par morceau !';
+        const others = shuffleA(DINOS_N1.filter(d => d.id !== pick.id)).slice(0, 3);
+        renderImgs(shuffleA([pick, ...others]), d => d.id, d => IMG(HEAD(d.id)));
+      } else {
+        curType = 'fais'; audioAllowed = true;
+        faisCouleur = rnd(COULEURS);
+        faisNeed = 2 + Math.floor(Math.random() * 3); // 2..4
+        faisGot = 0;
+        target = faisCouleur.nom;
+        motEl.textContent = 'Touche ' + faisNeed + ' oeufs ' + faisCouleur.nom;
+        subEl.textContent = 'Lis la consigne… et fais-le !';
+        renderFais();
+      }
+    }
+
+    function renderImgs(list, keyFn, htmlFn) {
+      list.forEach(item => {
+        const c = document.createElement('div');
+        c.className = 'img-card';
+        c.dataset.key = keyFn(item);
+        if (keyFn(item) === target) c.dataset.correct = '1';
+        c.innerHTML = htmlFn(item);
+        c.addEventListener('click', () => answerImg(c));
+        imgsEl.appendChild(c);
+      });
+    }
+
+    function answerImg(c) {
+      if (roundLock || c.classList.contains('ko')) return;
+      const res = QcmRetry.handle(qcm, c.dataset.correct === '1');
+      if (res.outcome === 'ignored') return;
+      if (res.outcome === 'correct') {
+        c.classList.add('ok');
+        try { sndDing(); } catch (e) {}
+        roundLock = true;
+        G.notePip(qCount - 1, res.attempts, c);
+        if (!testMode && curType === 'mot') shell.say(target + ' !');
+        setTimeout(nextQuestion, testMode ? 0 : 1800);
+      } else if (res.outcome === 'reveal') {
+        c.classList.add('ko');
+        try { sndBuzz(); } catch (e) {}
+        const okEl = QcmRetry.revealCorrect(imgsEl);
+        roundLock = true;
+        G.notePip(qCount - 1, 4, okEl);
+        setTimeout(nextQuestion, testMode ? 0 : 2200);
+      } else {
+        c.classList.add('ko');
+        try { sndBuzz(); } catch (e) {}
+      }
+    }
+
+    // ── N2 : la scène « fais » ──
+    function renderFais() {
+      const eggs = [];
+      for (let i = 0; i < faisNeed; i++) eggs.push(faisCouleur);
+      const autres = COULEURS.filter(c => c !== faisCouleur);
+      const extra = 4 + Math.floor(Math.random() * 2); // 4-5 distracteurs
+      for (let i = 0; i < extra; i++) eggs.push(rnd(autres));
+      faisEl.innerHTML = '';
+      shuffleA(eggs).forEach(col => {
+        const f = document.createElement('div');
+        f.className = 'foeuf';
+        f.dataset.couleur = col.nom;
+        f.innerHTML = '<div class="oe" style="background:' + col.css + '"></div>';
+        f.addEventListener('click', () => tapOeuf(f));
+        faisEl.appendChild(f);
+      });
+    }
+    function tapOeuf(f) {
+      if (roundLock || f.classList.contains('pick')) return;
+      if (f.dataset.couleur === faisCouleur.nom) {
+        f.classList.add('pick');
+        faisGot++;
+        f.insertAdjacentHTML('beforeend', '<span class="coche">' + faisGot + '</span>');
+        try { sndDing(); } catch (e) {}
+        if (faisGot >= faisNeed) {
+          roundLock = true;
+          const attempts = aidee ? 4 : (wrongTaps === 0 ? 1 : (wrongTaps <= 2 ? 2 : 3));
+          G.notePip(qCount - 1, attempts, f);
+          bravoEl.textContent = faisNeed + ' oeufs ' + faisCouleur.nom + ' — tu as bien lu !';
+          bravoEl.classList.add('show');
+          if (!testMode) shell.say('Bravo, tu as bien lu la consigne !');
+          setTimeout(nextQuestion, testMode ? 0 : 2200);
+        }
+      } else {
+        wrongTaps++;
+        f.classList.remove('ko'); void f.offsetWidth; f.classList.add('ko');
+        try { sndBuzz(); } catch (e) {}
+        if (wrongTaps >= 3 && !aidee) {
+          aidee = true;
+          if (!testMode) shell.say('Relis bien : il faut des oeufs ' + faisCouleur.nom + ' !');
+        }
+      }
+    }
+
+    // Aide audio (N0 et consigne N2) : tap sur la zone de lecture
+    document.getElementById('lire-zone').addEventListener('click', () => {
+      if (!audioAllowed) { subEl.textContent = 'À toi de lire, sans la voix !'; return; }
+      if (curType === 'mot') shell.say(target);
+      else if (curType === 'fais') shell.say('Touche ' + faisNeed + ' oeufs ' + faisCouleur.nom);
+    });
+
+    function showEnd() { G.showEnd({ replayUrl: 'mj-53.html' }); }
+
+    // ── Paramètres test : ?level=N ──
+    const qs = new URLSearchParams(location.search);
+    if (qs.get('level') !== null) forcedLevel = Math.max(0, Math.min(2, parseInt(qs.get('level'), 10) || 0));
+
+    // ── Harnais Playwright ──
+    window.__mjTest = {
+      get state() {
+        return {
+          qCount, totalQ: G.totalQ, level: level(), type: curType, target, roundLock,
+          audioAllowed, faisNeed, faisGot, wrongTaps,
+          imgs: [...imgsEl.querySelectorAll('.img-card')].map(c => c.dataset.key),
+          oeufs: [...faisEl.querySelectorAll('.foeuf')].map(f => f.dataset.couleur),
+        };
+      },
+      setTestMode(on) { testMode = !!on; },
+      setDifficulty(lvl) { forcedLevel = Math.max(0, Math.min(2, lvl)); qCount = 0; nextQuestion(); },
+      answer(correct) {
+        if (curType === 'fais') {
+          const f = [...faisEl.querySelectorAll('.foeuf:not(.pick)')].find(x =>
+            correct ? x.dataset.couleur === faisCouleur.nom : x.dataset.couleur !== faisCouleur.nom);
+          if (f) f.click();
+        } else {
+          const c = correct
+            ? imgsEl.querySelector('[data-correct="1"]')
+            : imgsEl.querySelector('.img-card:not([data-correct="1"]):not(.ko)');
+          if (c) c.click();
+        }
+      },
+      next() { nextQuestion(); },
+    };
+
+    nextQuestion();
+  });
+  </script>
+</body>
+</html>

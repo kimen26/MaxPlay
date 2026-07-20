@@ -1361,3 +1361,22 @@ Validée sur le principe (catégories Lettres/Chiffres/Ranger/Réparer/Couleurs/
 **Décision PY** : la construction est déléguée à un LLM externe → doc de délégation complet rédigé (toutes tâches V1/V2/V3, règles de câblage mur.js+catalog.js+vignettes, standards à lire, process de validation).
 
 **Question PY tranchée** : étoiles/avancement bien remontés à Supabase — automatique via tracker.js → Cloud.schedulePush() quand un profil enfant est actif. Rien à coder.
+
+## 2026-07-20 (soir) — Mur des Copains : V1 COMPLÈTE + vague 2 partielle (délégation LLM exécutée)
+
+Exécution de `docs/specs/2026-07-20-DELEGATION-LLM-MENU-CIBLE.md` (F1/F2 mj-46/47 EXCLUS sur consigne PY).
+
+- ✅ **mj-48 « Tout le monde monte ! »** (Spino S3) — bus 2 fenêtres de 5 (POC-8), N2 mixte monte/descend + places libres + compléments à 10 + **file ordinale tap direct** (plan caché, 1ᵉʳ près de l'arrêt). Absorbe mj-05/13a-idées/POC-03/08/11.
+- ✅ **mj-49 « Les barquettes de 10 »** (Spino S4) — boîte d'œufs 5×2, badge « 10 », N0 compléments à 10 / N1 10+n / N2 deux-barquettes + « il me faut N » + **célébration bocal** (ex-S5). Remplace mj-43 au repaire.
+- ✅ **mj-20 corrigé** (Para P2) — gating par étoiles : 0★ FR seul 1-5 · 1★ FR 1-10 + EN · 2★ +ES/BR · 3★ tout. Langues fermées ABSENTES de l'UI.
+- ✅ **mj-50 « Trouve la lettre »** (Galli G1) — le SON jamais le nom (MP3 phonèmes + TTS rate 0.6), cursive Cursif, N2 confusables + « quel son au début de maman ? ». Haut-parleur SVG (emoji retiré du visuel principal).
+- ✅ **mj-51 « Le tri des lettres »** (Galli G2) — moteur tri-bacs mj-09 en peau allographes (cursive/script/MAJ), N2 b/d/h/k. Remplace mj-09 au repaire.
+- ✅ **mj-52 « La boîte à mots »** (Galli G3, vague 2) — alphabet mobile cursif, guide syllabique, aide lumineuse (jamais posée à la place de l'enfant).
+- ✅ **mj-53 « Lis et fais »** (Galli G5, vague 2) — mot cursif→image, syllabes dino + vraies photos SANS audio (décision PY mj-27), consigne-action « Touche 3 oeufs rouges ». Fusion : mj-23 + mj-06 retirés du repaire Galli.
+- ✅ **mj-34 fixé** — avancement persistant (tier = étoiles+1 + localStorage) + obstacles éteints (un seul bus sort). Les 2 retours PY du 19/07 traités.
+- ✅ **mj-14** — vraie entrée catalog, hack LOCAL_META retiré de mur.js.
+- ✅ 8 figées créées (mj-20/34/48/49/50/51/52/53) + 6 specs Playwright neuves + 2 durcies — **tous harnais VERTS** avant chaque commit. Commits atomiques par jeu.
+
+**Écarts spec assumés** (golden 3 niveaux) : boîtes-sons mj-51 · mot libre mj-52 · phrase rigolote mj-53 — différés vague 3.
+**Reste (vague 2)** : mj-14 suite AB/AAB + variante dino · mj-15 assets · T3 vétérinaire dino (mj-17) · T4 SVG continents (mj-31) · P3 test réel mj-22 (PY) · captcha traçage (test tactile PY).
+**Leçons** : ① Œ ligaturé absent de la fonte Cursif → graphie « oeufs » obligatoire dans les consignes cursives. ② `tests/index.spec.mjs` cassé AVANT session (écrit pour l'ancien menu accordéon) — à réécrire pour le Mur. ③ testMode : asserts sur `roundLock` après answer(true) racent (enchaînement immédiat) — asserter sur `qCount`.

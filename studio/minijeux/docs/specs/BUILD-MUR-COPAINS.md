@@ -1,7 +1,7 @@
 # BUILD PLAN — Le Mur des Copains (document de reprise)
 
 > **Pourquoi ce fichier** : si la session plante ou le contexte est compacté, repartir d'ICI.
-> Plan vivant, mis à jour à chaque étape livrée. Dernière MAJ : 2026-07-20 (après Étape 1).
+> Plan vivant, mis à jour à chaque étape livrée. Dernière MAJ : 2026-07-20 soir (V1 COMPLÈTE + vague 2 partielle).
 
 ## 1. État livré
 
@@ -27,20 +27,27 @@
 > Attribution des IDs : mj-46+ (catalogue actuel max = mj-45). Spec détaillée de chaque jeu = spec §3-7.
 
 ### Vague V1 — moteur comptage QCM (`site/js/mj-compte.js`, référence : mj-04.html)
-- [x] **mj-46 = S1 « Les œufs surprises »** (Spino 1) — LIVRÉ + câblé (repaire Spino #1, catalog). Pointage pastille + QCM combien + éclosion. Paliers N0 2-5 · N1 3-10 · N2 5-15. ⚠️ Écart spec : pas de regroupement par 5 au palier 3★ (golden 3 niveaux).
-- [ ] **mj-48 = S3 « Tout le monde monte ! »** (Spino 3) — bus 2 fenêtres de 5, monte/descend, file ordinale. Paliers cf. spec.
-- [ ] **P2 = mj-20 corrigé** (Para) — 1-2 pays ouverts à la fois, pas compter jusqu'à 10 direct (modif du jeu existant).
+- [x] **mj-46 = S1 « Les œufs surprises »** (Spino 1) — LIVRÉ + câblé (repaire Spino #1, catalog). ⚠️ Retouches F1 (QCM dès le début, fissure, paliers relevés, vrac) **PAS FAITES** (exclusion PY 2026-07-20).
+- [x] **mj-48 = S3 « Tout le monde monte ! »** (Spino 3) — LIVRÉ 2026-07-20 (repaire Spino #3, figée, spec verte). Bus 2 fenêtres de 5, N2 mixte monte/descend + places libres + compléments à 10 + ordinal file (tap direct).
+- [x] **P2 = mj-20 corrigé** (Para) — LIVRÉ 2026-07-20 : gating par étoiles (0★ FR 1-5 · 1★ FR 1-10 + EN · 2★ +ES/BR · 3★ tout). Figée mj-20.md.
 
 ### Vague V1 — moteur dés/regroupement (`site/js/mj-dice.js`, référence : mj-43.html)
-- [x] **mj-47 = S2 « Les constellations »** (Spino 2) — LIVRÉ + câblé (repaire Spino #2, catalog). Subitizing ombres dino (variante adoptée) + décomposition « 3 et 2, ça fait 5 ». Paliers N0 1-3 · N1 1-6 · N2 4-10.
-- [ ] **mj-49 = S4 « Les barquettes de 10 »** (Spino 4) — barquette 5×2, 10+n, 3★ « remplis pour atteindre N » + célébration bocal.
+- [x] **mj-47 = S2 « Les constellations »** (Spino 2) — LIVRÉ + câblé. ⚠️ Retouches F2 (format domino permanent) **PAS FAITES** (exclusion PY 2026-07-20).
+- [x] **mj-49 = S4 « Les barquettes de 10 »** (Spino 4) — LIVRÉ 2026-07-20 (remplace mj-43 au repaire #4, figée, spec verte). Boîte d'œufs 5×2, badge 10, célébration bocal N2.
 
 ### Vague V1 — moteur tri-bacs (référence : mj-09.html)
-- [ ] **G2 « Le tri des lettres »** (Galli) — peau lettres du moteur mj-09 : cursives/scripts/majuscules, confusables b/d/h/j/k.
-- [ ] **G1 « Trouve la lettre »** (Galli) — QCM-tap lettres, consigne = le SON.
+- [x] **mj-51 = G2 « Le tri des lettres »** — LIVRÉ 2026-07-20 (remplace mj-09 au repaire Galli #2). Allographes cursive/script/MAJ, confusables b/d/h/k au N2. ⚠️ « boîtes-sons » (3★) différé vague 3.
+- [x] **mj-50 = G1 « Trouve la lettre »** — LIVRÉ 2026-07-20 (repaire Galli #1). Le SON jamais le nom, MP3 phonèmes + TTS lent, confusables + son-du-mot au N2.
 
-### Vague 2 (ensuite)
-G3 boîte à mots · G5 lis-et-fais · captcha traçage (après test tactile) · V1 intrus assets · V2 Raven (mj-14 → vraie entrée) · V4 dépôt (🐛 avancement) · T3 vétérinaire · T4 frise SVG · P3 géo test.
+### Vague 2 — état 2026-07-20 soir
+- [x] **mj-52 = G3 « La boîte à mots »** — LIVRÉ (Galli #3). Alphabet mobile cursif, guide syllabique, aide lumineuse. ⚠️ « mot libre » 3★ différé.
+- [x] **mj-53 = G5 « Lis et fais »** — LIVRÉ (Galli #4, fusion mj-23+mj-06 retirés du repaire). Mot→image, syllabes dino photos SANS audio, consigne-action. ⚠️ « phrase rigolote » 3★ différée.
+- [x] **V4 mj-34** — 🐛 avancement FIXÉ (persistant : étoiles + localStorage) + obstacles éteints (un seul bus sort). Figée mj-34.md.
+- [x] **V2 mj-14** — vraie entrée catalog (hack LOCAL_META retiré). ⚠️ Reste : suite AB/AAB propre (ex-mj-16) + variante dino.
+- [ ] V1 intrus (mj-15) : assets à monter · T3 vétérinaire (mj-17 peau dino) · T4 frise (mj-31 SVG continents) · P3 géo (mj-22, test réel PY d'abord) · captcha traçage (test tactile PY d'abord).
+
+> **Prochain ID libre : mj-54.** Repaires cibles atteints : Spino 46/47/48/49 · Galli 50/51/52/53.
+> 🐛 Dette découverte : `tests/index.spec.mjs` écrit pour l'ancien menu accordéon (cherche `.game[data-id=mj-04]`) — cassé depuis le passage au Mur, à réécrire pour mur.js.
 
 ## 4. Process à chaque jeu (ne pas sauter d'étape)
 

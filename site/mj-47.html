@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>MJ-47 — Les constellations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Fredoka+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mp-theme.css">
+  <style>
+    /* --- GABARIT HEADER CANONIQUE (ne pas inventer, copier tel quel) --- */
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+    body { font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
+    .htitle { flex:1; font-size:1rem; font-weight:900; }
+    /* --- FIN GABARIT HEADER --- */
+
+    /* ── Nuit étoilée (CSS pur, aucune image, aucun emoji) ─────── */
+    body {
+      background:
+        radial-gradient(1200px 600px at 80% -10%, #1d2a5e 0%, transparent 60%),
+        radial-gradient(900px 500px at 10% 110%, #241a4d 0%, transparent 55%),
+        linear-gradient(180deg, #060a1c 0%, #0b1230 55%, #131a3f 100%);
+    }
+    .bg-star {
+      position:fixed; border-radius:50%; background:#fff; opacity:.55;
+      pointer-events:none; z-index:0; animation:twinkle 3s ease-in-out infinite;
+    }
+    @keyframes twinkle { 0%,100%{opacity:.25; transform:scale(.8);} 50%{opacity:.85; transform:scale(1.15);} }
+    #app { position:relative; z-index:1; }
+
+    /* Piste golden sur fond nuit : pastilles "à faire" un peu plus lisibles */
+    .mp-q.todo { background:rgba(255,255,255,.16); color:rgba(255,255,255,.72); }
+
+    .stage {
+      flex:1; display:flex; flex-direction:column; align-items:center;
+      justify-content:space-evenly; overflow:hidden; padding:4px 8px 12px; gap:6px;
+    }
+
+    /* ── Ciel de la constellation ──────────────────────────────── */
+    .sky {
+      position:relative; width:min(80vw, 46vh, 400px); aspect-ratio:1;
+      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    }
+    .cluster {
+      position:relative; flex-shrink:0;
+      width:100%; height:100%;
+      transition:transform .8s cubic-bezier(.3,.9,.3,1.1), opacity .4s;
+    }
+    .sky.two .cluster { width:50%; }
+    /* Décomposition : les deux groupes glissent vers les bords */
+    .sky.decomp .cluster.g0 { transform:translateX(-16%); }
+    .sky.decomp .cluster.g1 { transform:translateX(16%); }
+    .sky-lines { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+
+    .cpip {
+      position:absolute; transform:translate(-50%,-50%);
+      display:flex; align-items:center; justify-content:center;
+      animation:pipGlow 2.6s ease-in-out infinite;
+    }
+    @keyframes pipGlow { 0%,100%{filter:brightness(.92);} 50%{filter:brightness(1.15);} }
+    .cpip-dino {
+      width:100%; height:100%; object-fit:contain;
+      /* silhouette noire → blanc lumineux + halo doré : un "point" d'étoile en dino */
+      filter:brightness(0) invert(1) drop-shadow(0 0 6px rgba(255,231,160,.95)) drop-shadow(0 0 14px rgba(255,231,160,.35));
+    }
+
+    /* signe "+" entre les deux groupes (visible seulement en décomposition) */
+    .plus-sign {
+      position:absolute; left:50%; top:50%; transform:translate(-50%,-50%) scale(.4);
+      font-size:2.6rem; font-weight:900; color:#ffe9a0;
+      text-shadow:0 0 12px rgba(255,231,160,.8);
+      opacity:0; transition:opacity .5s .45s, transform .5s .45s;
+      pointer-events:none; z-index:3;
+    }
+    .sky.decomp .plus-sign { opacity:1; transform:translate(-50%,-50%) scale(1); }
+
+    /* ── Phrase du calcul ("2 et 2, ça fait 4 !") ──────────────── */
+    .calc-line {
+      min-height:2.6em; display:flex; align-items:center; justify-content:center;
+      font-size:1.45rem; font-weight:900; color:#ffe9a0; text-align:center;
+      text-shadow:0 0 14px rgba(255,231,160,.45), 0 2px 4px rgba(0,0,0,.6);
+      opacity:0; transform:translateY(8px); transition:opacity .5s .55s, transform .5s .55s;
+      padding:0 10px;
+    }
+    .calc-line.show { opacity:1; transform:translateY(0); }
+
+    /* ── QCM : 3 gros boutons-chiffres ─────────────────────────── */
+    .choices { display:flex; gap:18px; justify-content:center; align-items:center; }
+    .choice {
+      font-family:'Fredoka One',sans-serif; font-size:2.7rem; font-weight:900; color:#fff;
+      width:104px; height:104px; min-width:80px; min-height:80px; border-radius:26px;
+      background:linear-gradient(160deg, #2a3572, #1a2250);
+      border:4px solid rgba(255,233,160,.55);
+      box-shadow:0 6px 0 rgba(0,0,0,.45), 0 0 18px rgba(120,140,255,.25);
+      cursor:pointer; transition:transform .1s, border-color .15s, opacity .2s;
+    }
+    .choice:active { transform:translateY(3px) scale(.96); box-shadow:0 2px 0 rgba(0,0,0,.45); }
+    .choice.ok { background:linear-gradient(160deg,#0e9d63,#087a4b); border-color:#7dffc4; }
+    .choice.ko { opacity:.35; border-color:#ff8a8a; }
+    .choices.hidden { visibility:hidden; }
+  </style>
+</head>
+<body>
+<div id="app">
+
+  <!-- HEADER — copier tel quel, changer uniquement l'emoji et le titre -->
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">✨ Les constellations</span>
+  </div>
+
+  <div class="stage">
+    <div class="sky" id="sky"></div>
+    <div class="calc-line" id="calc-line"></div>
+    <div class="choices" id="choices"></div>
+  </div>
+
+</div>
+  <script src="js/mj-dice.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
+  <script>
+  MJ.ready(function(){
+    'use strict';
+
+    const shell = MJ.init({
+      id: 'mj-47', emoji: '✨', titre: 'Les constellations',
+      golden: true,
+      consigne: true,
+      regle: {
+        picto: '✨🔢',
+        texte: 'Compte les points de la constellation d’un coup d’œil, sans les compter un par un !',
+        etapes: [
+          { t: 'Je regarde la constellation 👀',
+            d: 'Les petits dinos brillent dans la nuit, rangés comme les points d’un dé. Je reconnais le nombre d’un coup d’œil.' },
+          { t: 'Je tape le bon chiffre 👆',
+            d: 'Trois chiffres sont proposés. Si je me trompe, je peux réessayer, ce n’est pas grave !' },
+          { t: 'Je regarde le calcul ✨',
+            d: 'Après chaque réponse, la constellation se sépare en deux groupes : « 2 et 2, ça fait 4 ! »' },
+          { t: 'Plus j’ai d’étoiles, plus c’est grand 💪',
+            d: 'D’abord jusqu’à 3, puis jusqu’à 6 comme un vrai dé, puis deux constellations à additionner !' }
+        ]
+      }
+    });
+    const G = shell.G;
+
+    // ── Paliers (golden : niveau = min(2, Stars.get('mj-47'))) ──────────────
+    // N0 : 1→3 formes canoniques · N1 : 1→6 (dé classique) · N2 : 4→10 (2 groupes)
+    const PALIERS = [
+      { min:1, max:3,  twoGroups:false },
+      { min:1, max:6,  twoGroups:false },
+      { min:4, max:10, twoGroups:true  },
+    ];
+    // Splits "façon dé" préférés pour la décomposition d'une constellation simple
+    const SPLIT = { 2:[1,1], 3:[2,1], 4:[2,2], 5:[3,2], 6:[3,3] };
+
+    // ── Variante ombres dino (idée Papa Yann) : les points sont des miniatures
+    // d'ombres chinoises canon (img/dinos/ombres/), rendues lumineuses par un
+    // filtre CSS. Une espèce par question, disposée en constellation de dé →
+    // subitizing préservé, juste "habillé" (même principe que les pips MJ-43).
+    const DINO_OMBRES = [
+      'Triceratops','Tyrannosaurus','Stegosaurus','Spinosaurus','Brachiosaurus',
+      'Diplodocus','Velociraptor','Ankylosaurus','Pteranodon','Parasaurolophus',
+    ].map(n => 'img/dinos/ombres/' + n + '_ombre.png');
+
+    const randInt = MJDice.randInt;
+    const shuffle = MJDice.shuffle;
+    const compose = MJDice.compose; // partagé js/mj-dice.js (identique MJ-43/MJ-45)
+
+    const skyEl = document.getElementById('sky');
+    const calcEl = document.getElementById('calc-line');
+    const choicesEl = document.getElementById('choices');
+
+    let qCount = 0, qcm = null, value = 0, parts = null, roundLock = false, testMode = false;
+    let forcedLevel = null; // harnais de test seulement
+
+    function level() { return forcedLevel !== null ? forcedLevel : G.level; }
+
+    // ── Ciel étoilé de fond (CSS, généré une fois) ──────────────────────────
+    (function starField(){
+      for (let i = 0; i < 46; i++) {
+        const s = document.createElement('div');
+        s.className = 'bg-star';
+        const sz = (Math.random() * 2.2 + 1).toFixed(1);
+        s.style.width = s.style.height = sz + 'px';
+        s.style.left = (Math.random() * 100) + 'vw';
+        s.style.top = (Math.random() * 100) + 'vh';
+        s.style.animationDelay = (Math.random() * 3).toFixed(2) + 's';
+        s.style.animationDuration = (2.4 + Math.random() * 2.6).toFixed(2) + 's';
+        document.body.appendChild(s);
+      }
+    })();
+
+    // ── Rendu d'une constellation (1 ou 2 groupes de pips façon dé) ─────────
+    // groups: tableau de valeurs (ex. [4] ou [4,3]). dinoSrc: ombre de la question.
+    function renderSky(groups, dinoSrc) {
+      skyEl.classList.remove('decomp');
+      skyEl.classList.toggle('two', groups.length === 2);
+      skyEl.innerHTML = '';
+      groups.forEach((g, gi) => {
+        const cl = document.createElement('div');
+        cl.className = 'cluster g' + gi;
+        const pips = MJDice.pipLayout(g);
+        // Pips plus gros quand la constellation est seule à l'écran
+        const size = groups.length === 1 ? (g >= 5 ? 44 : 56) : (g >= 5 ? 34 : 42);
+        // Fines lignes reliant les points (effet constellation)
+        const lines = pips.slice(1).map((p, i) => {
+          const a = pips[i];
+          return `<line x1="${a[0]}" y1="${a[1]}" x2="${p[0]}" y2="${p[1]}"
+                    stroke="rgba(255,231,160,0.30)" stroke-width="1.2"/>`;
+        }).join('');
+        cl.innerHTML = `<svg class="sky-lines" viewBox="0 0 100 100" preserveAspectRatio="none">${lines}</svg>`;
+        pips.forEach(([x, y], pi) => {
+          const pip = document.createElement('div');
+          pip.className = 'cpip';
+          pip.style.left = x + '%';
+          pip.style.top = y + '%';
+          pip.style.width = pip.style.height = size + 'px';
+          pip.style.animationDelay = (pi * 0.3).toFixed(1) + 's';
+          pip.innerHTML = `<img class="cpip-dino" src="${dinoSrc}" alt="">`;
+          cl.appendChild(pip);
+        });
+        skyEl.appendChild(cl);
+      });
+      if (groups.length === 2) {
+        const plus = document.createElement('div');
+        plus.className = 'plus-sign';
+        plus.textContent = '+';
+        skyEl.appendChild(plus);
+      }
+    }
+
+    // ── Génération d'une question ────────────────────────────────────────────
+    function distractors(v) {
+      const cands = shuffle([v-2, v-1, v+1, v+2].filter(x => x >= 1 && x <= 12 && x !== v));
+      return cands.slice(0, 2);
+    }
+
+    function genQuestion(forceValue) {
+      if (qCount >= G.totalQ) return showEnd();
+      qcm = QcmRetry.create();
+      roundLock = false;
+      qCount++;
+
+      const cfg = PALIERS[level()];
+      value = forceValue || randInt(cfg.min, cfg.max);
+      parts = cfg.twoGroups ? compose(value, 2) : [value];
+      const dinoSrc = DINO_OMBRES[Math.floor(Math.random() * DINO_OMBRES.length)];
+
+      renderSky(parts, dinoSrc);
+      calcEl.classList.remove('show');
+      calcEl.textContent = '';
+      choicesEl.classList.remove('hidden');
+      shell.setConsigne('Combien il y en a ?');
+
+      const opts = shuffle([value, ...distractors(value)]);
+      choicesEl.innerHTML = '';
+      opts.forEach(n => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'choice';
+        b.textContent = n;
+        if (n === value) b.dataset.correct = '1';
+        b.addEventListener('click', () => answer(n === value, b));
+        choicesEl.appendChild(b);
+      });
+    }
+
+    // ── Réponse (QCM retry sans pénalité) ────────────────────────────────────
+    function answer(correct, btn) {
+      if (roundLock || btn.disabled) return;
+      const res = QcmRetry.handle(qcm, correct);
+      if (res.outcome === 'ignored') return;
+      if (res.outcome === 'correct') {
+        btn.classList.add('ok');
+        try { sndDing(); } catch(e) {}
+        G.notePip(qCount - 1, res.attempts, btn);
+        roundLock = true;
+        setTimeout(decompose, testMode ? 0 : 650);
+      } else if (res.outcome === 'reveal') {
+        btn.classList.add('ko'); btn.disabled = true;
+        try { sndBuzz(); } catch(e) {}
+        const okEl = QcmRetry.revealCorrect(choicesEl);
+        G.notePip(qCount - 1, 4, okEl);
+        roundLock = true;
+        setTimeout(decompose, testMode ? 0 : 900);
+      } else {
+        btn.classList.add('ko'); btn.disabled = true;
+        try { sndBuzz(); } catch(e) {}
+        try { if (window.SoundPool) SoundPool.voice('doux'); } catch(e) {}
+      }
+    }
+
+    // ── Décomposition : la constellation se sépare en groupes + calcul parlé ─
+    function decompose() {
+      let groups;
+      if (parts.length === 2) {
+        groups = parts; // N2 : les 2 constellations affichées SONT les groupes
+      } else if (value >= 2) {
+        groups = SPLIT[value] || compose(value, 2);
+      } else {
+        groups = null; // 1 tout seul : pas de décomposition
+      }
+
+      choicesEl.classList.add('hidden');
+
+      let sentence;
+      if (groups) {
+        // Ré-affiche en 2 groupes (si besoin) puis écarte visuellement
+        if (parts.length !== 2) {
+          const dinoImg = skyEl.querySelector('.cpip-dino');
+          renderSky(groups, dinoImg ? dinoImg.getAttribute('src') : DINO_OMBRES[0]);
+        }
+        requestAnimationFrame(() => requestAnimationFrame(() => skyEl.classList.add('decomp')));
+        sentence = groups[0] + ' et ' + groups[1] + ', ça fait ' + value + ' !';
+      } else {
+        sentence = 'C’est 1, tout seul !';
+      }
+      calcEl.textContent = sentence;
+      calcEl.classList.add('show');
+      shell.say(sentence);
+
+      setTimeout(() => { if (!testMode) genQuestion(); }, 2900);
+    }
+
+    // ── Fin de partie standard (golden) ──────────────────────────────────────
+    function showEnd() {
+      G.showEnd({ replayUrl: 'mj-47.html' });
+    }
+
+    // ── Init ──────────────────────────────────────────────────────────────────
+    // Paramètres de test (screenshots / harnais) :
+    //   ?v=N       → première question forcée à la valeur N
+    //   ?level=N   → palier forcé (0..2)
+    //   ?decomp=N  → affiche directement la décomposition de N (état "répondu")
+    const qs = new URLSearchParams(location.search);
+    if (qs.get('level') !== null) {
+      forcedLevel = Math.max(0, Math.min(2, parseInt(qs.get('level'), 10) || 0));
+    }
+    if (qs.get('decomp')) {
+      testMode = true;
+      value = Math.max(1, Math.min(10, parseInt(qs.get('decomp'), 10) || 4));
+      parts = value > 6 || (level() === 2 && value >= 4) ? compose(value, 2) : [value];
+      qCount = 1;
+      qcm = QcmRetry.create();
+      renderSky(parts, DINO_OMBRES[0]);
+      shell.setConsigne('Combien il y en a ?', false);
+      decompose();
+    } else {
+      const v0 = qs.get('v') ? parseInt(qs.get('v'), 10) : null;
+      genQuestion(v0 || null);
+    }
+
+    // ── Harnais de test (Playwright) ─────────────────────────────────────────
+    window.__mjTest = {
+      get state() {
+        return {
+          qCount, totalQ: G.totalQ, level: level(), value, parts,
+          roundLock, testMode,
+          decompShown: skyEl.classList.contains('decomp'),
+          calcText: calcEl.textContent,
+          choices: Array.from(choicesEl.querySelectorAll('.choice')).map(b => b.textContent),
+        };
+      },
+      setTestMode(on) { testMode = !!on; },
+      setDifficulty(lvl) { forcedLevel = Math.max(0, Math.min(2, lvl)); qCount = 0; genQuestion(); },
+      answer(correct) {
+        const btn = correct
+          ? choicesEl.querySelector('[data-correct="1"]')
+          : choicesEl.querySelector('.choice:not([data-correct="1"]):not(.ko)');
+        if (btn) btn.click();
+      },
+      next() { genQuestion(); },
+    };
+  });
+  </script>
+</body>
+</html>

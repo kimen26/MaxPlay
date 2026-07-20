@@ -185,6 +185,21 @@
 .vig-de .d4{bottom:18%;left:18%;} .vig-de .d5{bottom:18%;right:18%;} .vig-de .d6{top:41%;left:18%;} .vig-de .d7{top:41%;right:18%;}
 .vig-de.de2 { transform:rotate(10deg); }
 
+/* œufs (Les œufs surprises) */
+.vig-oeufs { background:linear-gradient(150deg,#4d3a12,#231a08); align-items:flex-end; gap:6px; padding-bottom:10px; }
+.vig-oeufs i { width:22%; aspect-ratio:.78; border-radius:50% 50% 50% 50%/60% 60% 40% 40%; background:#f5e3c2;
+  box-shadow:inset -3px -5px 0 rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.4); }
+.vig-oeufs i:nth-child(2){ background:#ffd166; }
+
+/* constellations (Les constellations) */
+.vig-constel { background:radial-gradient(circle at 50% 45%, #16264d, #070d1d 80%); }
+.vig-constel i { position:absolute; width:16%; aspect-ratio:1; border-radius:50%; background:#fff7d6;
+  box-shadow:0 0 8px 3px rgba(255,240,180,.75); }
+.vig-constel i:nth-child(1){ top:20%; left:22%; }
+.vig-constel i:nth-child(2){ top:46%; left:44%; width:12%; }
+.vig-constel i:nth-child(3){ top:68%; left:26%; width:12%; }
+.vig-constel i:nth-child(4){ top:38%; left:70%; }
+
 /* lettres (Galli) */
 .vig-lettres { background:linear-gradient(150deg,#123c33,#0a1f1a); gap:6px; }
 .vig-lettre { font-family:'Cursif',cursive; color:#fff; font-size:34px; background:rgba(255,255,255,.12);

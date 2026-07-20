@@ -27,12 +27,12 @@
 > Attribution des IDs : mj-46+ (catalogue actuel max = mj-45). Spec détaillée de chaque jeu = spec §3-7.
 
 ### Vague V1 — moteur comptage QCM (`site/js/mj-compte.js`, référence : mj-04.html)
-- [ ] **mj-46 = S1 « Les œufs surprises »** (Spino 1) — EN COURS. Pointage pastille + QCM combien + éclosion. Paliers N0 2-5 · N1 3-10 · N2 5-15.
+- [x] **mj-46 = S1 « Les œufs surprises »** (Spino 1) — LIVRÉ + câblé (repaire Spino #1, catalog). Pointage pastille + QCM combien + éclosion. Paliers N0 2-5 · N1 3-10 · N2 5-15. ⚠️ Écart spec : pas de regroupement par 5 au palier 3★ (golden 3 niveaux).
 - [ ] **mj-48 = S3 « Tout le monde monte ! »** (Spino 3) — bus 2 fenêtres de 5, monte/descend, file ordinale. Paliers cf. spec.
 - [ ] **P2 = mj-20 corrigé** (Para) — 1-2 pays ouverts à la fois, pas compter jusqu'à 10 direct (modif du jeu existant).
 
 ### Vague V1 — moteur dés/regroupement (`site/js/mj-dice.js`, référence : mj-43.html)
-- [ ] **mj-47 = S2 « Les constellations »** (Spino 2) — EN COURS. Subitizing dé/ombres dino + décomposition. Paliers N0 1-3 · N1 1-6 · N2 4-10.
+- [x] **mj-47 = S2 « Les constellations »** (Spino 2) — LIVRÉ + câblé (repaire Spino #2, catalog). Subitizing ombres dino (variante adoptée) + décomposition « 3 et 2, ça fait 5 ». Paliers N0 1-3 · N1 1-6 · N2 4-10.
 - [ ] **mj-49 = S4 « Les barquettes de 10 »** (Spino 4) — barquette 5×2, 10+n, 3★ « remplis pour atteindre N » + célébration bocal.
 
 ### Vague V1 — moteur tri-bacs (référence : mj-09.html)

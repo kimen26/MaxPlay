@@ -1,5 +1,5 @@
-// Pilote MJ-20 — Compte dans toutes les langues : 3 modes (Apprendre / Quiz / Progression).
-// Pas de figée. Smoke + vérifie mode Apprendre par défaut + un round de quiz gagnant.
+// Pilote MJ-20 — Compte avec le monde : 3 modes (Apprendre / Quiz / Progression).
+// Figée mj-20.md (2026-07-20) : gating par étoiles — 0★ = FR seul, quiz plafonné 1-5.
 export async function run({ page, ok }) {
   await page.evaluate(() => localStorage.clear());
   await page.reload({ waitUntil: 'networkidle' });
@@ -10,6 +10,11 @@ export async function run({ page, ok }) {
   await page.click('#ri-ok');
   await page.waitForTimeout(250);
   ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
+
+  // 🔒 Gating étoiles (0★ après localStorage.clear) : FR seul visible
+  const nLangs = await page.locator('#langScroll .lang-btn').count();
+  ok('🔒 0★ : un seul pays dans le sélecteur', nLangs === 1, `langs=${nLangs}`);
+  ok('🔒 0★ : ce pays est le français', (await page.locator('#langScroll .lang-btn[data-code="fr"]').count()) === 1);
 
   // Mode Apprendre actif par défaut, grille de chiffres 1-10
   ok('mode Apprendre actif par défaut', (await page.locator('#modeLearn.active').count()) === 1);
@@ -23,6 +28,11 @@ export async function run({ page, ok }) {
   const nChoices = await page.locator('.choice-btn').count();
   ok('choix quiz affichés', nChoices >= 2, `n=${nChoices}`);
   ok('1 seule bonne réponse', (await page.locator('.choice-btn[data-correct="1"]').count()) === 1);
+
+  // 🔒 0★ : jamais « compter jusqu'à 10 direct » — chiffres du quiz plafonnés à 5
+  const maxChoice = await page.evaluate(() =>
+    Math.max(...[...document.querySelectorAll('.choice-btn')].map(b => parseInt(b.dataset.n, 10))));
+  ok('🔒 0★ : chiffres du quiz ≤ 5', maxChoice <= 5, `max=${maxChoice}`);
 
   // Chemin gagnant : taper la bonne réponse 3 fois de suite → déblocage possible + score avance
   for (let i = 0; i < 3; i++) {

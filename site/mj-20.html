@@ -495,9 +495,9 @@
       LANGS.forEach(l => {
         langs[l.code] = { unlockedTier: 0, consecutiveCorrect: 0 };
       });
-      // Français : débloqué max d'emblée
-      langs['fr'].unlockedTier = 4;
-      // Anglais : palier 1 débloqué d'emblée
+      // Français : suit les étoiles (voir getUnlockedTier — correctif PY 2026-07-20)
+      langs['fr'].unlockedTier = 2;
+      // Anglais : palier 1 dès qu'il est ouvert par les étoiles
       langs['en'].unlockedTier = 1;
       return { version: 2, langs };
     }
@@ -508,9 +508,28 @@
 
     let progress = loadProgress();
 
+    // ─── Correctif PY 2026-07-20 (spec menu v0.6 §7 P2) : ouverture par étoiles ──
+    // « Trop de pays ouverts dès le début, compter jusqu'à 10 direct » → gating :
+    //   0★ : FR seul, chiffres 1-5 · 1★ : FR 1-10 + 1 pays · 2★ : 2-3 pays · 3★ : langues au choix
+    const STAR_LVL = (function () {
+      try { return Math.max(0, Math.min(3, Stars.get('mj-20'))); } catch (e) { return 0; }
+    })();
+    const ALLOWED_BY_STARS = [
+      ['fr'],
+      ['fr', 'en'],
+      ['fr', 'en', 'es', 'pt-br'],
+      LANGS.map(l => l.code),
+    ];
+    const ALLOWED = ALLOWED_BY_STARS[STAR_LVL];
+    const TIER_CAP = [2, 3, 4, 4][STAR_LVL]; // 0★ → 1-5 · 1★ → 1-10 · 2★+ → 1-20
+    function isAllowed(code) { return ALLOWED.indexOf(code) !== -1; }
+
     // ─── Helpers progression ──────────────────────────────────────────────────
     function getUnlockedTier(langCode) {
-      return (progress.langs[langCode] || { unlockedTier: 0 }).unlockedTier;
+      if (!isAllowed(langCode)) return 0;
+      const saved = (progress.langs[langCode] || { unlockedTier: 0 }).unlockedTier;
+      if (langCode === 'fr') return TIER_CAP;              // le FR suit directement les étoiles
+      return Math.min(TIER_CAP, Math.max(1, saved));       // pays ouvert = au moins palier 1
     }
 
     function getTierMax(langCode) {
@@ -527,10 +546,11 @@
     // Retourne { unlocked: bool, newTier: number|null }
     function recordCorrect(langCode) {
       const lp = progress.langs[langCode];
+      lp.unlockedTier = getUnlockedTier(langCode); // resynchronise avec le gating étoiles
       lp.consecutiveCorrect = (lp.consecutiveCorrect || 0) + 1;
       const currentTier = lp.unlockedTier;
       let newTier = null;
-      if (currentTier < 4 && lp.consecutiveCorrect >= UNLOCK_THRESHOLD) {
+      if (currentTier < TIER_CAP && lp.consecutiveCorrect >= UNLOCK_THRESHOLD) {
         lp.unlockedTier = currentTier + 1;
         lp.consecutiveCorrect = 0;
         newTier = lp.unlockedTier;
@@ -599,7 +619,7 @@
     // ─── Init UI ──────────────────────────────────────────────────────────────
     function renderLangScroll() {
       const c = document.getElementById('langScroll');
-      c.innerHTML = LANGS.map(l => `
+      c.innerHTML = LANGS.filter(l => isAllowed(l.code)).map(l => `
         <button class="lang-btn ${l.code === currentLang.code ? 'active' : ''}"
                 data-code="${l.code}" onclick="selectLang('${l.code}')">
           <span class="fi fi-${l.flag}"></span>
@@ -865,9 +885,9 @@
     // ─── PROGRESSION (vue) ────────────────────────────────────────────────────
     function renderProgress() {
       const container = document.getElementById('progCards');
-      container.innerHTML = LANGS.map(l => {
+      container.innerHTML = LANGS.filter(l => isAllowed(l.code)).map(l => {
         const lp = progress.langs[l.code];
-        const tier = lp.unlockedTier;
+        const tier = getUnlockedTier(l.code);
         const isLocked = tier === 0;
         const consec = lp.consecutiveCorrect || 0;
 

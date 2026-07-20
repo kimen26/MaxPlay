@@ -39,13 +39,10 @@
 
     /* ─── Œufs tapotables (CSS pur, jamais d'emoji — design repris de design-compte/mockup-1) ─── */
     .eggs {
-      position: relative; z-index: 3;
-      display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: center;
-      gap: 4px 8px; padding: 10px 14px 26px;
-      max-width: 560px;
+      position: absolute; inset: 6px 6px 20px; z-index: 3;
     }
     .slot {
-      position: relative;
+      position: absolute;
       width: var(--egg, 60px); height: calc(var(--egg, 60px) * 1.55);
       display: flex; align-items: flex-end; justify-content: center;
       cursor: pointer; touch-action: manipulation;
@@ -53,6 +50,7 @@
     }
     @keyframes eggPop { from { transform: scale(0) translateY(12px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
     .egg {
+      position: relative;
       width: var(--egg, 60px); height: calc(var(--egg, 60px) * 1.28);
       border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
       background:
@@ -70,6 +68,12 @@
     @keyframes eggShake {
       0%,100% { transform: rotate(0); } 20% { transform: rotate(-10deg) translateX(-3px); }
       45% { transform: rotate(9deg) translateX(3px); } 70% { transform: rotate(-7deg) translateX(-2px); } 88% { transform: rotate(5deg); }
+    }
+    /* Fissure légère quand l'œuf a été compté (tap) — consigne PY */
+    .egg.cracked::after {
+      content: ''; position: absolute; left: 14%; right: 14%; top: 30%; height: 24%;
+      background: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 40'><path d='M2 18 L20 8 L36 26 L52 10 L68 28 L84 12 L98 22' fill='none' stroke='%237a4a1e' stroke-width='5' stroke-linecap='round' stroke-linejoin='round'/></svg>") center / contain no-repeat;
+      opacity: .75; pointer-events: none;
     }
 
     /* Pastille jaune numérotée (POC-02) — posée sur l'œuf au tap */
@@ -102,6 +106,8 @@
     /* Gros boutons chiffres ≥ 92px (3 options, distracteurs proches) */
     .choices.qcm46 { display: flex; justify-content: center; gap: 14px; padding: 8px 12px 14px; min-height: 118px; }
     .choices.qcm46.hidden { visibility: hidden; }
+    .choices.qcm46.pulse { animation: choicesPulse .6s ease; }
+    @keyframes choicesPulse { 0%,100% { filter: none; } 50% { filter: brightness(1.35) drop-shadow(0 0 14px rgba(255,224,102,.6)); } }
     .choices.qcm46 .ch {
       min-width: 92px; min-height: 92px; font-size: 2rem;
       font-family: 'Fredoka One', sans-serif; border-radius: 22px;
@@ -136,16 +142,16 @@
   <script>
     MJ.ready(function () {
     // ─── MJ-46 : Les œufs surprises — peau « œufs » du moteur mj-compte (spec S1) ───
-    // Phase 1 : Max tapote chaque œuf → pastille jaune numérotée (correspondance un-à-un).
-    // Phase 2 : QCM « Combien d'œufs ? » (3 choix, distracteurs ±1..±2).
+    // QCM visible dès le début (réponse directe) ; le tap sur les œufs est une AIDE :
+    // pastille jaune numérotée + fissure (correspondance un-à-un). Retour PY 2026-07-20.
     // Réussite : les œufs éclosent → bébés dinos (img/dinos/sprites/*_tete.png).
     const GAME_ID = 'mj-46';
 
-    // Paliers spec S1 (golden 3 niveaux : Math.min(2, Stars.get) via Golden.setup)
+    // Paliers spec S1 + retour PY 2026-07-20 (« plus que 2-3, direct 5-7 mini jusqu'à 20-22 »)
     const LEVELS = [
       { min: 2, max: 5  },  // N0 : 2→5 œufs
-      { min: 3, max: 10 },  // N1 : 3→10
-      { min: 5, max: 15 },  // N2 : 5→15
+      { min: 5, max: 15 },  // N1 : 5→15
+      { min: 7, max: 22 },  // N2 : 7→22
     ];
 
     // Têtes de bébés dinos (variété aléatoire à chaque éclosion)
@@ -172,7 +178,7 @@
       return _shuffle(arr);
     })();
 
-    let qCount = 0, qcm = null, correctAnswer = 0, tagged = 0, phase2 = false, failsafe = null;
+    let qCount = 0, qcm = null, correctAnswer = 0, tagged = 0, phase2 = false;
 
     const shell = MJ.init({
       id: GAME_ID, emoji: '🥚', titre: 'Les œufs surprises',
@@ -181,12 +187,12 @@
         picto: '🥚🔢',
         texte: 'Compte les œufs du nid, puis touche le bon chiffre !',
         etapes: [
-          { t: 'Je tapote chaque œuf 👆',
-            d: 'Une pastille jaune avec un chiffre se pose dessus : 1, 2, 3…' },
+          { t: 'Je réponds direct si je sais ! 🔢',
+            d: 'Je compte les œufs dans ma tête et je touche le bon chiffre.' },
+          { t: 'Ou je tapote les œufs pour compter 👆',
+            d: 'Une pastille jaune se pose dessus : 1, 2, 3… et l’œuf se fissure !' },
           { t: 'Le dernier chiffre dit le total 🗣️',
             d: 'Le chiffre du dernier œuf, c’est combien il y a d’œufs en tout !' },
-          { t: 'Je tape le bon nombre 🔢',
-            d: 'Si je me trompe, on recompte ensemble avec un indice. Jamais de punition !' },
           { t: 'Quand c’est juste… les œufs éclosent 🐣',
             d: 'Des bébés dinos sortent des œufs ! Plus j’ai d’étoiles, plus il y a d’œufs à compter.' }
         ]
@@ -197,7 +203,7 @@
       try { const a = new Audio(src); a.volume = vol || 0.55; a.play().catch(() => {}); } catch (e) {}
     }
 
-    function eggSize(n) { return n <= 6 ? 60 : (n <= 10 ? 50 : 42); }
+    function eggSize(n) { return n <= 6 ? 58 : (n <= 10 ? 50 : (n <= 14 ? 44 : 38)); }
 
     function init() {
       nextQuestion();   // la consigne « Compte les œufs ! » est posée (et dite) dans nextQuestion
@@ -208,39 +214,56 @@
       qCount++;
       qcm = MJCompte.beginQuestion();
       tagged = 0; phase2 = false;
-      if (failsafe) { clearTimeout(failsafe); failsafe = null; }
       hideHint();
 
       const L = LEVELS[qLevels[qCount - 1] || 0];   // palier de CETTE question (manche mixte)
       correctAnswer = MJCompte.nextValue(L);
 
-      // Consigne réinitialisée à chaque question (parlée seulement à la 1ʳᵉ)
-      shell.setConsigne('Compte les œufs !', qCount === 1);
+      // Consigne : le QCM est visible dès le début — tapoter les œufs est une AIDE (PY)
+      shell.setConsigne('Combien d’œufs ?', qCount === 1);
 
       renderEggs(correctAnswer);
 
-      const ch = document.getElementById('choices');
-      ch.innerHTML = '';
-      ch.classList.add('hidden');
-
-      // Anti-blocage : si un œuf n'est jamais tapé, le QCM finit par apparaître tout seul
-      failsafe = setTimeout(showChoices, 15000);
+      // QCM affiché juste après l'apparition des œufs : qui sait compter répond direct
+      setTimeout(showChoices, Math.min(correctAnswer * 80 + 350, 1300));
     }
 
-    // Phase 1 : les œufs apparaissent un par un (sndCount), tapotables → pastille numérotée
+    // Phase 1 : les œufs apparaissent en vrac (jamais cachés à +50 %), tapotables → pastille
+    // Disposition : grille de cellules ≥ 1,15× l'œuf + jitter ±20 % + rotation ±12°
+    // → épars MAIS le haut de chaque œuf (« la tête ») reste toujours visible.
     function renderEggs(total) {
       const box = document.getElementById('eggs');
       box.innerHTML = '';
-      box.style.setProperty('--egg', eggSize(total) + 'px');
+      const W = box.clientWidth || 360, H = box.clientHeight || 220;
+      let egg = eggSize(total);
+      while (egg > 30) {                    // réduit jusqu'à ce que tout tienne
+        const cell = egg * 1.15;
+        const cols = Math.max(1, Math.floor(W / cell));
+        if (Math.ceil(total / cols) * cell <= H) break;
+        egg -= 4;
+      }
+      box.style.setProperty('--egg', egg + 'px');
+      const cell = egg * 1.15;
+      const cols = Math.max(1, Math.floor(W / cell));
+      const rows = Math.ceil(total / cols);
+      // aligné en BAS : les œufs sont posés dans le nid, pas flottants en haut
+      const ox = (W - cols * cell) / 2, oy = H - rows * cell;
       const babies = _shuffle([...TETES]);
+      const order = _shuffle([...Array(total).keys()]);   // apparition désordonnée, pas ligne par ligne
       for (let i = 0; i < total; i++) {
+        const r = Math.floor(i / cols), c = i % cols;
+        const jx = (Math.random() - 0.5) * cell * 0.3;
+        const jy = (Math.random() - 0.5) * cell * 0.3;
+        const rot = (Math.random() - 0.5) * 24;
         const slot = document.createElement('div');
         slot.className = 'slot';
-        slot.style.animationDelay = `${i * 0.08}s`;
-        slot.innerHTML = `<div class="egg"></div><img class="baby" src="img/dinos/sprites/${babies[i % babies.length]}_tete.png" alt="bébé dino">`;
+        slot.style.left = (ox + c * cell + cell / 2 + jx - egg / 2) + 'px';
+        slot.style.top = (oy + r * cell + cell / 2 + jy - egg * 1.05) + 'px';
+        slot.style.animationDelay = `${order[i] * 0.08}s`;
+        slot.innerHTML = `<div class="egg" style="transform:rotate(${rot.toFixed(1)}deg)"></div><img class="baby" src="img/dinos/sprites/${babies[i % babies.length]}_tete.png" alt="bébé dino">`;
         slot.onclick = () => tapEgg(slot);
         box.appendChild(slot);
-        setTimeout(() => { if (box.contains(slot)) sndCount(); }, i * 80 + 60);
+        setTimeout(() => { if (box.contains(slot)) sndCount(); }, order[i] * 80 + 60);
       }
     }
 
@@ -256,14 +279,16 @@
       }
       slot.dataset.tagged = '1';
       tagged++;
+      egg.classList.add('cracked');     // l'œuf se fissure quand on l'a compté (PY)
       const p = document.createElement('span');
       p.className = 'pastille';
       p.textContent = tagged;
       slot.appendChild(p);
       sndCount();                       // feedback immédiat (< 200 ms)
-      if (tagged === correctAnswer) {   // tous les œufs comptés → phase 2
-        if (failsafe) { clearTimeout(failsafe); failsafe = null; }
-        setTimeout(showChoices, 450);
+      if (tagged === correctAnswer) {   // tous comptés → petit rappel lumineux des choix
+        const ch = document.getElementById('choices');
+        ch.classList.remove('pulse'); void ch.offsetWidth;
+        ch.classList.add('pulse');
       }
     }
 
@@ -271,7 +296,6 @@
     function showChoices() {
       if (phase2) return;
       phase2 = true;
-      shell.say('Combien d’œufs ?');
       const ch = document.getElementById('choices');
       ch.innerHTML = '';
       const options = MJCompte.distractors(correctAnswer, { count: 3, min: 1, spread: 2 });

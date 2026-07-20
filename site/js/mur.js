@@ -48,7 +48,7 @@
       tete: 'img/dinos/paleoart/Gallimimus_headshot.jpg', rond: true,
       phrase: 'Vite vite ! Les lettres dansent, attrape-les et lis tes premiers mots !',
       floats: 'lettres',
-      jeux: ['mj-50', 'mj-51', 'mj-52', 'mj-23', 'mj-06']
+      jeux: ['mj-50', 'mj-51', 'mj-52', 'mj-53']
     },
     {
       id: 'velo', nom: 'Vélo', domaine: 'casse-têtes',
@@ -83,6 +83,7 @@
     'mj-50': 'Trouve la lettre',
     'mj-51': 'Le tri des lettres',
     'mj-52': 'La boîte à mots',
+    'mj-53': 'Lis et fais',
     'mj-23': 'Lis le mot',
     'mj-06': 'Lis la phrase',
     'mj-15': 'L\'intrus',
@@ -116,6 +117,7 @@
     'mj-50': '<div class="vig vig-son-lettre"><span class="vig-lettre">m</span><i class="w1"></i><i class="w2"></i></div>',
     'mj-51': '<div class="vig vig-lettres"><span class="vig-lettre">a</span><span class="vig-lettre script">a</span></div>',
     'mj-52': '<div class="vig vig-boitemot"><span class="s1">pa</span><span class="sep"></span><span class="s2">pa</span></div>',
+    'mj-53': '<div class="vig vig-mot"><span>lis !</span></div>',
     'mj-23': '<div class="vig vig-mot"><span>loup</span></div>',
     'mj-06': '<div class="vig vig-phrase"><i></i><i></i><i></i></div>',
     'mj-15': '<div class="vig vig-intrus"><i></i><i></i><i class="autre"></i><i></i></div>',

@@ -1380,3 +1380,15 @@ Exécution de `docs/specs/2026-07-20-DELEGATION-LLM-MENU-CIBLE.md` (F1/F2 mj-46/
 **Écarts spec assumés** (golden 3 niveaux) : boîtes-sons mj-51 · mot libre mj-52 · phrase rigolote mj-53 — différés vague 3.
 **Reste (vague 2)** : mj-14 suite AB/AAB + variante dino · mj-15 assets · T3 vétérinaire dino (mj-17) · T4 SVG continents (mj-31) · P3 test réel mj-22 (PY) · captcha traçage (test tactile PY).
 **Leçons** : ① Œ ligaturé absent de la fonte Cursif → graphie « oeufs » obligatoire dans les consignes cursives. ② `tests/index.spec.mjs` cassé AVANT session (écrit pour l'ancien menu accordéon) — à réécrire pour le Mur. ③ testMode : asserts sur `roundLock` après answer(true) racent (enchaînement immédiat) — asserter sur `qCount`.
+
+---
+
+## 2026-07-20 (nuit) — Retouches F1/F2 FAITES sur mj-46/47 (par Kimi, finalement pas déléguées)
+
+**mj-46** : QCM visible dès le début de chaque question (tap œufs = aide optionnelle, failsafe supprimé) · œuf **fissuré** au tap (craquelure SVG CSS) · disposition **en vrac** : grille cellules 1,15× + jitter ±15 % + rotation ±12°, alignée en bas (œufs posés dans le nid), jamais caché à +50 % · paliers N0 2-5 · N1 5-15 · N2 7-22 · panneau règle réécrit (« je réponds direct si je sais »).
+
+**mj-47** : réécriture complète en **format domino permanent** (2 cases accolées + séparateur, configurations canoniques de dé en ombres dino lumineuses, ref. POC mockup-6) · décomposition = les 2 moitiés visibles qui s'illuminent à tour de rôle (« 1 et 6, ça fait 7 ! ») — plus jamais de split arbitraire · paliers relevés : moitiés 1-3 (total 2→6) · 1-6 (total ≥4) · 3-6 (total 6→12) · harnais `__mjTest` adapté, params `?v=`/`?level=`/`?celebre=`.
+
+**Validation** : screenshots headless N0/N2 (mj-46, 5 puis 11 œufs en vrac dans le nid, QCM visible) + question et état célébré (mj-47) — `temp/mj46-n0b/mj46-n2b/mj47-domino/mj47-celebre.png`.
+
+**Leçon process** : harnais `temp/test-shot.html` réutilisable — pré-remplit `mp_regle_vue_<id>` + fausses étoiles (`maxplay_progress`) puis `location.replace` vers le jeu → screenshots de n'importe quel palier sans jouer.

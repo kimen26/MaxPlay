@@ -27,12 +27,12 @@
 > Attribution des IDs : mj-46+ (catalogue actuel max = mj-45). Spec détaillée de chaque jeu = spec §3-7.
 
 ### Vague V1 — moteur comptage QCM (`site/js/mj-compte.js`, référence : mj-04.html)
-- [x] **mj-46 = S1 « Les œufs surprises »** (Spino 1) — LIVRÉ + câblé (repaire Spino #1, catalog). ⚠️ Retouches F1 (QCM dès le début, fissure, paliers relevés, vrac) **PAS FAITES** (exclusion PY 2026-07-20).
+- [x] **mj-46 = S1 « Les œufs surprises »** (Spino 1) — LIVRÉ + câblé (repaire Spino #1, catalog) + **retouches F1 FAITES (Kimi, 2026-07-20)** : QCM visible dès le début (tap = aide optionnelle), œuf fissuré au tap, œufs en vrac posés dans le nid (jamais cachés à +50 %), paliers N0 2-5 · N1 5-15 · N2 7-22. ⚠️ Écart spec : pas de regroupement par 5 au palier 3★.
 - [x] **mj-48 = S3 « Tout le monde monte ! »** (Spino 3) — LIVRÉ 2026-07-20 (repaire Spino #3, figée, spec verte). Bus 2 fenêtres de 5, N2 mixte monte/descend + places libres + compléments à 10 + ordinal file (tap direct).
 - [x] **P2 = mj-20 corrigé** (Para) — LIVRÉ 2026-07-20 : gating par étoiles (0★ FR 1-5 · 1★ FR 1-10 + EN · 2★ +ES/BR · 3★ tout). Figée mj-20.md.
 
 ### Vague V1 — moteur dés/regroupement (`site/js/mj-dice.js`, référence : mj-43.html)
-- [x] **mj-47 = S2 « Les constellations »** (Spino 2) — LIVRÉ + câblé. ⚠️ Retouches F2 (format domino permanent) **PAS FAITES** (exclusion PY 2026-07-20).
+- [x] **mj-47 = S2 « Les constellations »** (Spino 2) — LIVRÉ + câblé + **retouche F2 FAITE (Kimi, 2026-07-20)** : réécriture en **format domino permanent** (2 cases accolées, configurations dé en ombres dino, ref. POC mockup-6), décomposition = les 2 moitiés visibles illuminées (« 3 et 4, ça fait 7 ! »), paliers relevés : moitiés 1-3 (total 2→6) · 1-6 (total ≥4) · 3-6 (total 6→12).
 - [x] **mj-49 = S4 « Les barquettes de 10 »** (Spino 4) — LIVRÉ 2026-07-20 (remplace mj-43 au repaire #4, figée, spec verte). Boîte d'œufs 5×2, badge 10, célébration bocal N2.
 
 ### Vague V1 — moteur tri-bacs (référence : mj-09.html)

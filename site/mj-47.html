@@ -37,20 +37,22 @@
       justify-content:space-evenly; overflow:hidden; padding:4px 8px 12px; gap:6px;
     }
 
-    /* ── Ciel de la constellation ──────────────────────────────── */
-    .sky {
-      position:relative; width:min(80vw, 46vh, 400px); aspect-ratio:1;
-      display:flex; align-items:center; justify-content:center; flex-shrink:0;
+    /* ── Le DOMINO du ciel : 2 cases accolées (visuel POC-06 validé PY) ── */
+    .domino {
+      position:relative; display:flex; align-items:stretch; flex-shrink:0;
+      width:min(92vw, 52vh, 480px); aspect-ratio:2.15;
+      background:rgba(255,255,255,.045);
+      border:2px solid rgba(255,233,160,.38);
+      border-radius:22px; overflow:hidden;
+      box-shadow:0 8px 24px rgba(0,0,0,.35), inset 0 0 30px rgba(20,30,80,.35);
     }
-    .cluster {
-      position:relative; flex-shrink:0;
-      width:100%; height:100%;
-      transition:transform .8s cubic-bezier(.3,.9,.3,1.1), opacity .4s;
+    .domino .divider {
+      width:3px; flex-shrink:0;
+      background:linear-gradient(180deg, transparent, rgba(255,233,160,.55), transparent);
     }
-    .sky.two .cluster { width:50%; }
-    /* Décomposition : les deux groupes glissent vers les bords */
-    .sky.decomp .cluster.g0 { transform:translateX(-16%); }
-    .sky.decomp .cluster.g1 { transform:translateX(16%); }
+    .cell { position:relative; flex:1; transition:background .4s, box-shadow .4s; }
+    .cell.lit { background:rgba(255,233,160,.10); box-shadow:inset 0 0 38px rgba(255,233,160,.5); }
+
     .sky-lines { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
 
     .cpip {
@@ -65,22 +67,12 @@
       filter:brightness(0) invert(1) drop-shadow(0 0 6px rgba(255,231,160,.95)) drop-shadow(0 0 14px rgba(255,231,160,.35));
     }
 
-    /* signe "+" entre les deux groupes (visible seulement en décomposition) */
-    .plus-sign {
-      position:absolute; left:50%; top:50%; transform:translate(-50%,-50%) scale(.4);
-      font-size:2.6rem; font-weight:900; color:#ffe9a0;
-      text-shadow:0 0 12px rgba(255,231,160,.8);
-      opacity:0; transition:opacity .5s .45s, transform .5s .45s;
-      pointer-events:none; z-index:3;
-    }
-    .sky.decomp .plus-sign { opacity:1; transform:translate(-50%,-50%) scale(1); }
-
-    /* ── Phrase du calcul ("2 et 2, ça fait 4 !") ──────────────── */
+    /* ── Phrase du calcul ("3 et 4, ça fait 7 !") ──────────────── */
     .calc-line {
       min-height:2.6em; display:flex; align-items:center; justify-content:center;
       font-size:1.45rem; font-weight:900; color:#ffe9a0; text-align:center;
       text-shadow:0 0 14px rgba(255,231,160,.45), 0 2px 4px rgba(0,0,0,.6);
-      opacity:0; transform:translateY(8px); transition:opacity .5s .55s, transform .5s .55s;
+      opacity:0; transform:translateY(8px); transition:opacity .5s, transform .5s;
       padding:0 10px;
     }
     .calc-line.show { opacity:1; transform:translateY(0); }
@@ -111,7 +103,7 @@
   </div>
 
   <div class="stage">
-    <div class="sky" id="sky"></div>
+    <div class="domino" id="domino"></div>
     <div class="calc-line" id="calc-line"></div>
     <div class="choices" id="choices"></div>
   </div>
@@ -130,35 +122,34 @@
       consigne: true,
       regle: {
         picto: '✨🔢',
-        texte: 'Compte les points de la constellation d’un coup d’œil, sans les compter un par un !',
+        texte: 'Deux constellations de dinos brillent dans la nuit. Combien de dinos en tout ? Regarde d’un coup d’œil !',
         etapes: [
-          { t: 'Je regarde la constellation 👀',
-            d: 'Les petits dinos brillent dans la nuit, rangés comme les points d’un dé. Je reconnais le nombre d’un coup d’œil.' },
-          { t: 'Je tape le bon chiffre 👆',
-            d: 'Trois chiffres sont proposés. Si je me trompe, je peux réessayer, ce n’est pas grave !' },
+          { t: 'Je regarde le domino du ciel 👀',
+            d: 'Deux cases brillantes : dans chacune, des dinos rangés comme les points d’un dé.' },
+          { t: 'Je tape le TOTAL 👆',
+            d: 'Les dinos des deux cases ensemble, ça fait combien ? Si je me trompe, je réessaie, ce n’est pas grave !' },
           { t: 'Je regarde le calcul ✨',
-            d: 'Après chaque réponse, la constellation se sépare en deux groupes : « 2 et 2, ça fait 4 ! »' },
+            d: 'Après chaque réponse, les deux cases s’illuminent : « 3 et 4, ça fait 7 ! »' },
           { t: 'Plus j’ai d’étoiles, plus c’est grand 💪',
-            d: 'D’abord jusqu’à 3, puis jusqu’à 6 comme un vrai dé, puis deux constellations à additionner !' }
+            d: 'D’abord des petits groupes, puis des constellations jusqu’à 12 !' }
         ]
       }
     });
     const G = shell.G;
 
     // ── Paliers (golden : niveau = min(2, Stars.get('mj-47'))) ──────────────
-    // N0 : 1→3 formes canoniques · N1 : 1→6 (dé classique) · N2 : 4→10 (2 groupes)
+    // Retour PY 2026-07-20 : « 1-2 à 2 étoiles c'est trop simple, il a déjà
+    // gagné le 1er jeu, il sait compter » → paliers relevés. Chaque moitié
+    // reste ≤ 6 (configurations canoniques de dé/domino, jamais plus).
+    // N0 : moitiés 1-3 (total 2→6) · N1 : moitiés 1-6, total ≥4 · N2 : moitiés 3-6 (total 6→12)
     const PALIERS = [
-      { min:1, max:3,  twoGroups:false },
-      { min:1, max:6,  twoGroups:false },
-      { min:4, max:10, twoGroups:true  },
+      { hMin:1, hMax:3, totalMin:2 },
+      { hMin:1, hMax:6, totalMin:4 },
+      { hMin:3, hMax:6, totalMin:6 },
     ];
-    // Splits "façon dé" préférés pour la décomposition d'une constellation simple
-    const SPLIT = { 2:[1,1], 3:[2,1], 4:[2,2], 5:[3,2], 6:[3,3] };
 
-    // ── Variante ombres dino (idée Papa Yann) : les points sont des miniatures
-    // d'ombres chinoises canon (img/dinos/ombres/), rendues lumineuses par un
-    // filtre CSS. Une espèce par question, disposée en constellation de dé →
-    // subitizing préservé, juste "habillé" (même principe que les pips MJ-43).
+    // ── Ombres dino (variante PY) : les points sont des miniatures d'ombres
+    // chinoises canon (img/dinos/ombres/), rendues lumineuses par filtre CSS.
     const DINO_OMBRES = [
       'Triceratops','Tyrannosaurus','Stegosaurus','Spinosaurus','Brachiosaurus',
       'Diplodocus','Velociraptor','Ankylosaurus','Pteranodon','Parasaurolophus',
@@ -168,11 +159,11 @@
     const shuffle = MJDice.shuffle;
     const compose = MJDice.compose; // partagé js/mj-dice.js (identique MJ-43/MJ-45)
 
-    const skyEl = document.getElementById('sky');
+    const dominoEl = document.getElementById('domino');
     const calcEl = document.getElementById('calc-line');
     const choicesEl = document.getElementById('choices');
 
-    let qCount = 0, qcm = null, value = 0, parts = null, roundLock = false, testMode = false;
+    let qCount = 0, qcm = null, value = 0, halves = null, roundLock = false, testMode = false;
     let forcedLevel = null; // harnais de test seulement
 
     function level() { return forcedLevel !== null ? forcedLevel : G.level; }
@@ -192,25 +183,21 @@
       }
     })();
 
-    // ── Rendu d'une constellation (1 ou 2 groupes de pips façon dé) ─────────
-    // groups: tableau de valeurs (ex. [4] ou [4,3]). dinoSrc: ombre de la question.
-    function renderSky(groups, dinoSrc) {
-      skyEl.classList.remove('decomp');
-      skyEl.classList.toggle('two', groups.length === 2);
-      skyEl.innerHTML = '';
+    // ── Rendu du domino : 2 cases, chacune = pips façon dé en ombres dino ───
+    function renderDomino(groups, dinoSrc) {
+      dominoEl.innerHTML = '';
       groups.forEach((g, gi) => {
-        const cl = document.createElement('div');
-        cl.className = 'cluster g' + gi;
+        const cell = document.createElement('div');
+        cell.className = 'cell g' + gi;
         const pips = MJDice.pipLayout(g);
-        // Pips plus gros quand la constellation est seule à l'écran
-        const size = groups.length === 1 ? (g >= 5 ? 44 : 56) : (g >= 5 ? 34 : 42);
+        const size = g >= 5 ? 34 : 42;
         // Fines lignes reliant les points (effet constellation)
         const lines = pips.slice(1).map((p, i) => {
           const a = pips[i];
           return `<line x1="${a[0]}" y1="${a[1]}" x2="${p[0]}" y2="${p[1]}"
                     stroke="rgba(255,231,160,0.30)" stroke-width="1.2"/>`;
         }).join('');
-        cl.innerHTML = `<svg class="sky-lines" viewBox="0 0 100 100" preserveAspectRatio="none">${lines}</svg>`;
+        cell.innerHTML = `<svg class="sky-lines" viewBox="0 0 100 100" preserveAspectRatio="none">${lines}</svg>`;
         pips.forEach(([x, y], pi) => {
           const pip = document.createElement('div');
           pip.className = 'cpip';
@@ -219,21 +206,29 @@
           pip.style.width = pip.style.height = size + 'px';
           pip.style.animationDelay = (pi * 0.3).toFixed(1) + 's';
           pip.innerHTML = `<img class="cpip-dino" src="${dinoSrc}" alt="">`;
-          cl.appendChild(pip);
+          cell.appendChild(pip);
         });
-        skyEl.appendChild(cl);
+        dominoEl.appendChild(cell);
+        if (gi === 0) {
+          const d = document.createElement('div');
+          d.className = 'divider';
+          dominoEl.appendChild(d);
+        }
       });
-      if (groups.length === 2) {
-        const plus = document.createElement('div');
-        plus.className = 'plus-sign';
-        plus.textContent = '+';
-        skyEl.appendChild(plus);
-      }
     }
 
     // ── Génération d'une question ────────────────────────────────────────────
+    function genHalves(cfg) {
+      let a, b, guard = 0;
+      do {
+        a = randInt(cfg.hMin, cfg.hMax);
+        b = randInt(cfg.hMin, cfg.hMax);
+      } while (a + b < cfg.totalMin && ++guard < 40);
+      return [a, b];
+    }
+
     function distractors(v) {
-      const cands = shuffle([v-2, v-1, v+1, v+2].filter(x => x >= 1 && x <= 12 && x !== v));
+      const cands = shuffle([v-2, v-1, v+1, v+2].filter(x => x >= 2 && x <= 12 && x !== v));
       return cands.slice(0, 2);
     }
 
@@ -244,15 +239,15 @@
       qCount++;
 
       const cfg = PALIERS[level()];
-      value = forceValue || randInt(cfg.min, cfg.max);
-      parts = cfg.twoGroups ? compose(value, 2) : [value];
+      halves = forceValue ? compose(Math.max(2, Math.min(12, forceValue)), 2) : genHalves(cfg);
+      value = halves[0] + halves[1];
       const dinoSrc = DINO_OMBRES[Math.floor(Math.random() * DINO_OMBRES.length)];
 
-      renderSky(parts, dinoSrc);
+      renderDomino(halves, dinoSrc);
       calcEl.classList.remove('show');
       calcEl.textContent = '';
       choicesEl.classList.remove('hidden');
-      shell.setConsigne('Combien il y en a ?');
+      shell.setConsigne('Combien en tout ?', qCount === 1);
 
       const opts = shuffle([value, ...distractors(value)]);
       choicesEl.innerHTML = '';
@@ -277,14 +272,14 @@
         try { sndDing(); } catch(e) {}
         G.notePip(qCount - 1, res.attempts, btn);
         roundLock = true;
-        setTimeout(decompose, testMode ? 0 : 650);
+        setTimeout(celebrate, testMode ? 0 : 650);
       } else if (res.outcome === 'reveal') {
         btn.classList.add('ko'); btn.disabled = true;
         try { sndBuzz(); } catch(e) {}
         const okEl = QcmRetry.revealCorrect(choicesEl);
         G.notePip(qCount - 1, 4, okEl);
         roundLock = true;
-        setTimeout(decompose, testMode ? 0 : 900);
+        setTimeout(celebrate, testMode ? 0 : 900);
       } else {
         btn.classList.add('ko'); btn.disabled = true;
         try { sndBuzz(); } catch(e) {}
@@ -292,36 +287,21 @@
       }
     }
 
-    // ── Décomposition : la constellation se sépare en groupes + calcul parlé ─
-    function decompose() {
-      let groups;
-      if (parts.length === 2) {
-        groups = parts; // N2 : les 2 constellations affichées SONT les groupes
-      } else if (value >= 2) {
-        groups = SPLIT[value] || compose(value, 2);
-      } else {
-        groups = null; // 1 tout seul : pas de décomposition
-      }
-
+    // ── Décomposition = LES DEUX MOITIÉS VISIBLES (règle PY : jamais de split
+    // arbitraire). Chaque case s'illumine à tour de rôle pendant la phrase.
+    function celebrate() {
       choicesEl.classList.add('hidden');
-
-      let sentence;
-      if (groups) {
-        // Ré-affiche en 2 groupes (si besoin) puis écarte visuellement
-        if (parts.length !== 2) {
-          const dinoImg = skyEl.querySelector('.cpip-dino');
-          renderSky(groups, dinoImg ? dinoImg.getAttribute('src') : DINO_OMBRES[0]);
-        }
-        requestAnimationFrame(() => requestAnimationFrame(() => skyEl.classList.add('decomp')));
-        sentence = groups[0] + ' et ' + groups[1] + ', ça fait ' + value + ' !';
-      } else {
-        sentence = 'C’est 1, tout seul !';
-      }
-      calcEl.textContent = sentence;
-      calcEl.classList.add('show');
-      shell.say(sentence);
-
-      setTimeout(() => { if (!testMode) genQuestion(); }, 2900);
+      const cells = dominoEl.querySelectorAll('.cell');
+      cells.forEach(c => c.classList.remove('lit'));
+      const sentence = halves[0] + ' et ' + halves[1] + ', ça fait ' + value + ' !';
+      setTimeout(() => cells[0] && cells[0].classList.add('lit'), 300);
+      setTimeout(() => cells[1] && cells[1].classList.add('lit'), 900);
+      setTimeout(() => {
+        calcEl.textContent = sentence;
+        calcEl.classList.add('show');
+        shell.say(sentence);
+      }, 550);
+      setTimeout(() => { if (!testMode) genQuestion(); }, 3100);
     }
 
     // ── Fin de partie standard (golden) ──────────────────────────────────────
@@ -331,22 +311,23 @@
 
     // ── Init ──────────────────────────────────────────────────────────────────
     // Paramètres de test (screenshots / harnais) :
-    //   ?v=N       → première question forcée à la valeur N
+    //   ?v=N       → première question forcée au total N (split en 2 moitiés 1..6)
     //   ?level=N   → palier forcé (0..2)
-    //   ?decomp=N  → affiche directement la décomposition de N (état "répondu")
+    //   ?celebre=N → affiche directement l'état "répondu" du total N (cases illuminées)
     const qs = new URLSearchParams(location.search);
     if (qs.get('level') !== null) {
       forcedLevel = Math.max(0, Math.min(2, parseInt(qs.get('level'), 10) || 0));
     }
-    if (qs.get('decomp')) {
+    if (qs.get('celebre')) {
       testMode = true;
-      value = Math.max(1, Math.min(10, parseInt(qs.get('decomp'), 10) || 4));
-      parts = value > 6 || (level() === 2 && value >= 4) ? compose(value, 2) : [value];
+      const v = Math.max(2, Math.min(12, parseInt(qs.get('celebre'), 10) || 7));
+      halves = compose(v, 2);
+      value = halves[0] + halves[1];
       qCount = 1;
       qcm = QcmRetry.create();
-      renderSky(parts, DINO_OMBRES[0]);
-      shell.setConsigne('Combien il y en a ?', false);
-      decompose();
+      renderDomino(halves, DINO_OMBRES[0]);
+      shell.setConsigne('Combien en tout ?', false);
+      celebrate();
     } else {
       const v0 = qs.get('v') ? parseInt(qs.get('v'), 10) : null;
       genQuestion(v0 || null);
@@ -356,9 +337,9 @@
     window.__mjTest = {
       get state() {
         return {
-          qCount, totalQ: G.totalQ, level: level(), value, parts,
+          qCount, totalQ: G.totalQ, level: level(), value, halves,
           roundLock, testMode,
-          decompShown: skyEl.classList.contains('decomp'),
+          litCells: Array.from(dominoEl.querySelectorAll('.cell.lit')).length,
           calcText: calcEl.textContent,
           choices: Array.from(choicesEl.querySelectorAll('.choice')).map(b => b.textContent),
         };

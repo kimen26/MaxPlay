@@ -6,7 +6,8 @@
      MaxFX.markPoint(fromEl, toEl, opts?) → Promise
         opts.style  : 'bounce' | 'lightning' | 'rocket' | 'rainbow' | 'coin'
                     | 'magnet' | 'pinball' | 'teleport' | 'bubble'
-                    | 'trampoline' | 'paw' | 'comet'
+                    | 'trampoline' | 'paw' | 'comet' | 'balloon' | 'ressort'
+                    | 'liane' | 'popcorn' | 'helico' | 'roulade'
         opts.result : 'green' (1er coup) | 'orange' (après essai) | 'red' (aidé/échec)
         opts.badge  : caractère affiché dans la pastille ('✓' déf., '✗' si red)
         opts.container : élément englobant pour l'overlay (déf. : ancêtre commun)
@@ -16,6 +17,7 @@
                     | 'constellation' | 'tracer' | 'aurora' | 'ovation'
                     | 'spiral' | 'billard' | 'moonwalk' | 'breathe' | 'flip'
                     | 'orbit' | 'heartbeat' | 'slingshot' | 'rainbowspin' | 'stardust'
+                    | 'galton' | 'feuartifice' | 'ballonpop' | 'tornade'
         opts.label   : texte final ('GAGNÉ !' déf. ; '' = aucun)
         opts.name    : pseudo pour 'ovation' (déf. : aucun prénom en dur)
         opts.avatars : émojis mascottes pour 'ovation' (déf. ['🦖','🦕','🦣','🐣'])
@@ -171,7 +173,7 @@
     ], { duration: 550, easing: 'cubic-bezier(.34,1.56,.64,1)', fill: 'forwards' });
   }
 
-  /* ── les 12 remontées ─────────────────────────────────────────────── */
+  /* ── les 18 remontées ─────────────────────────────────────────────── */
   var MARKS = {
 
     /* 6a/7a — jeton physique : gravité + rebonds sur les bords + traîne */
@@ -436,6 +438,146 @@
         fxp.trail(b.left + b.width / 2 - o.left, b.top + b.height / 2 - o.top, C.gold, 3);
       }, 40);
       return pr.then(function () { clearInterval(iv); head.remove(); });
+    },
+
+    /* 10a — le ballon : gonfle, emporte le jeton en ondulant, POP à l'arrivée */
+    balloon: function (ov, fxp, p0, p1, col, badge) {
+      var wrap = mk(ov, at(p0.x, p0.y, 40));
+      var bl = mk(wrap, 'left:-6px;top:6px;width:52px;height:60px;font-size:44px;', '🎈');
+      var j = mk(wrap, at(20, 20, 26) + 'border-radius:50%;background:' + col + ';color:#fff;font:900 13px/1 system-ui;box-shadow:0 0 10px ' + col + ';', badge);
+      var dx = p1.x - p0.x, dy = p1.y - p0.y;
+      var fr = [];
+      for (var i = 0; i <= 12; i++) {
+        var t = i / 12;
+        fr.push({ transform: 'translate(' + (dx * t + Math.sin(t * 7) * 18 * (1 - t)) + 'px,' + (dy * t - Math.sin(t * Math.PI) * 30) + 'px)' });
+      }
+      anim(bl, [
+        { transform: 'scale(.4)' }, { transform: 'scale(1.15)', offset: 0.7 }, { transform: 'scale(1)' }
+      ], { duration: 600, easing: 'ease-out', fill: 'backwards' });
+      return anim(wrap, fr, { duration: 1900, delay: 250, easing: 'ease-in-out', fill: 'forwards' })
+        .then(function () {
+          anim(bl, [
+            { transform: 'scale(1)', opacity: 1 },
+            { transform: 'scale(1.6)', opacity: 1, offset: 0.5 },
+            { transform: 'scale(2)', opacity: 0 }
+          ], { duration: 200, fill: 'forwards' }).then(function () { bl.remove(); });
+          fxp.burst(p1.x, p1.y, 12, ['#ff7ac8', '#ffffff'], 2.6);
+          return anim(j, [
+            { transform: 'translate(0,-8px)' },
+            { transform: 'translate(0,4px)', offset: 0.6 },
+            { transform: 'translate(0,0)' }
+          ], { duration: 380, easing: 'cubic-bezier(.34,1.56,.64,1)', fill: 'forwards' })
+            .then(function () { wrap.remove(); });
+        });
+    },
+
+    /* 10b — le ressort : compression puis 3 bonds amortis, squash & stretch */
+    ressort: function (ov, fxp, p0, p1, col, badge) {
+      var j = mk(ov, at(p0.x, p0.y, 30) + 'border-radius:50%;background:' + col + ';color:#fff;font:900 15px/1 system-ui;box-shadow:0 0 12px ' + col + ';transform-origin:50% 100%;', badge);
+      var dx = p1.x - p0.x, dy = p1.y - p0.y;
+      return anim(j, [
+        { transform: 'translate(0,0) scale(1,1)' },
+        { transform: 'translate(0,6px) scale(1.4,.45)', offset: 0.12 },
+        { transform: 'translate(' + dx * 0.22 + 'px,' + (dy * 0.45 - 60) + 'px) scale(.8,1.3)', offset: 0.32 },
+        { transform: 'translate(' + dx * 0.42 + 'px,' + (dy * 0.7 + 14) + 'px) scale(1.3,.6)', offset: 0.46 },
+        { transform: 'translate(' + dx * 0.6 + 'px,' + (dy * 0.85 - 40) + 'px) scale(.85,1.25)', offset: 0.62 },
+        { transform: 'translate(' + dx * 0.75 + 'px,' + (dy * 0.95 + 10) + 'px) scale(1.25,.65)', offset: 0.74 },
+        { transform: 'translate(' + dx * 0.9 + 'px,' + (dy - 24) + 'px) scale(.9,1.15)', offset: 0.88 },
+        { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(1)' }
+      ], { duration: 1500, easing: 'cubic-bezier(.45,.05,.55,.95)', fill: 'forwards' })
+        .then(function () { j.remove(); });
+    },
+
+    /* 10c — la liane : pendule amorti au bout d'un fil, lâché vers la pastille */
+    liane: function (ov, fxp, p0, p1, col, badge) {
+      var pivot = { x: p0.x - 60, y: Math.min(p0.y, p1.y) - 60 };
+      var len = Math.hypot(p0.x - pivot.x, p0.y - pivot.y);
+      var ang0 = Math.atan2(p0.x - pivot.x, p0.y - pivot.y);
+      var deg = ang0 * 180 / Math.PI;
+      var wrap = mk(ov, 'left:' + pivot.x + 'px;top:' + pivot.y + 'px;width:0;height:0;transform-origin:0 0;transform:rotate(' + deg + 'deg);');
+      mk(wrap, 'left:-1px;top:0;width:2px;height:' + len + 'px;background:rgba(255,255,255,.35);border-radius:2px;');
+      var j = mk(wrap, at(0, len, 30) + 'border-radius:50%;background:' + col + ';color:#fff;font:900 15px/1 system-ui;box-shadow:0 0 12px ' + col + ';', badge);
+      return anim(wrap, [
+        { transform: 'rotate(' + deg + 'deg)' },
+        { transform: 'rotate(' + (-deg * 0.9) + 'deg)', offset: 0.25 },
+        { transform: 'rotate(' + (deg * 0.65) + 'deg)', offset: 0.5 },
+        { transform: 'rotate(' + (-deg * 0.45) + 'deg)', offset: 0.72 },
+        { transform: 'rotate(' + (-deg * 0.45) + 'deg)', offset: 0.8 }
+      ], { duration: 1300, easing: 'ease-in-out', fill: 'forwards' })
+        .then(function () {
+          var b = j.getBoundingClientRect(), o = ov.getBoundingClientRect();
+          var pos = { x: b.left + b.width / 2 - o.left, y: b.top + b.height / 2 - o.top };
+          wrap.remove();
+          var j2 = mk(ov, at(pos.x, pos.y, 30) + 'border-radius:50%;background:' + col + ';color:#fff;font:900 15px/1 system-ui;box-shadow:0 0 12px ' + col + ';', badge);
+          var ctrl = { x: (pos.x + p1.x) / 2, y: Math.min(pos.y, p1.y) - 80 };
+          return anim(j2, qFrames(pos, ctrl, p1, 12), { duration: 650, easing: 'cubic-bezier(.4,0,.6,1)', fill: 'forwards' })
+            .then(function () { j2.remove(); });
+        });
+    },
+
+    /* 10d — le popcorn : sauts erratiques avec rotation et squash, "tac" à chaque saut */
+    popcorn: function (ov, fxp, p0, p1, col, badge) {
+      var j = mk(ov, at(p0.x, p0.y, 28) + 'border-radius:50%;background:' + col + ';color:#fff;font:900 14px/1 system-ui;box-shadow:0 0 12px ' + col + ';', badge);
+      var dx = p1.x - p0.x, dy = p1.y - p0.y;
+      var fr = [{ transform: 'translate(0,0) scale(1) rotate(0)' }];
+      var hops = 5;
+      for (var i = 1; i <= hops; i++) {
+        var t = i / hops;
+        fr.push({ transform: 'translate(' + (dx * t) + 'px,' + (dy * t - 34) + 'px) scale(.92,1.15) rotate(' + (i * 130) + 'deg)', offset: t - 0.09 });
+        fr.push({ transform: 'translate(' + (dx * t) + 'px,' + (dy * t) + 'px) scale(1.18,.8) rotate(' + (i * 130 + 40) + 'deg)', offset: t });
+        (function (k) {
+          setTimeout(function () {
+            fxp.burst(p0.x + dx * k / hops, p0.y + dy * k / hops, 5, [col, '#ffffff'], 1.6);
+          }, 1500 * k / hops);
+        })(i);
+      }
+      return anim(j, fr, { duration: 1500, easing: 'linear', fill: 'forwards' })
+        .then(function () { j.remove(); });
+    },
+
+    /* 10e — l'hélico : rotor qui prend de la vitesse, décollage hésitant, vol posé */
+    helico: function (ov, fxp, p0, p1, col, badge) {
+      var wrap = mk(ov, at(p0.x, p0.y, 34));
+      var rotor = mk(wrap, 'left:1px;top:-10px;width:32px;height:4px;border-radius:3px;background:rgba(255,255,255,.75);transform-origin:50% 50%;');
+      var j = mk(wrap, at(17, 17, 28) + 'border-radius:50%;background:' + col + ';color:#fff;font:900 14px/1 system-ui;box-shadow:0 0 12px ' + col + ';', badge);
+      var spin = rotor.animate([{ transform: 'rotate(0)' }, { transform: 'rotate(360deg)' }], { duration: 90, iterations: Infinity });
+      spin.playbackRate = 0.4;
+      var rate = 0.4;
+      var iv = setInterval(function () { rate = Math.min(rate + 0.2, 1); spin.playbackRate = rate; }, 200);
+      var dx = p1.x - p0.x, dy = p1.y - p0.y;
+      return wait(700).then(function () {
+        return anim(wrap, [
+          { transform: 'translate(0,0)' },
+          { transform: 'translate(-4px,-14px)', offset: 0.12 },
+          { transform: 'translate(3px,-8px)', offset: 0.2 },
+          { transform: 'translate(' + dx * 0.4 + 'px,' + (dy * 0.5 - 30) + 'px)', offset: 0.55 },
+          { transform: 'translate(' + dx * 0.75 + 'px,' + (dy * 0.8 - 12) + 'px)', offset: 0.8 },
+          { transform: 'translate(' + dx + 'px,' + dy + 'px)' }
+        ], { duration: 1300, easing: 'cubic-bezier(.4,0,.5,1)', fill: 'forwards' });
+      }).then(function () {
+        clearInterval(iv);
+        spin.cancel();
+        wrap.remove();
+      });
+    },
+
+    /* 10f — la roulade : tombe, roule au sol en accélérant (rotation liée), rampe vers la pastille */
+    roulade: function (ov, fxp, p0, p1, col, badge) {
+      var j = mk(ov, at(p0.x, p0.y, 30) + 'border-radius:50%;background:' + col + ';color:#fff;font:900 15px/1 system-ui;box-shadow:0 0 12px ' + col + ';', badge);
+      var floorY = ov.clientHeight - 40;
+      var drop = floorY - p0.y;
+      var travel = p1.x - p0.x;
+      var rise = floorY - p1.y;
+      var rotMid = travel / 15 * 60;
+      return anim(j, [
+        { transform: 'translate(0,0) rotate(0)' },
+        { transform: 'translate(0,' + drop + 'px) rotate(90deg) scale(1.2,.8)', offset: 0.22 },
+        { transform: 'translate(' + travel * 0.5 + 'px,' + drop + 'px) rotate(' + rotMid * 0.5 + 'deg) scale(1)', offset: 0.5 },
+        { transform: 'translate(' + travel * 0.85 + 'px,' + drop + 'px) rotate(' + rotMid * 0.85 + 'deg)', offset: 0.72 },
+        { transform: 'translate(' + travel + 'px,' + (drop - rise * 0.5 - 40) + 'px) rotate(' + (rotMid + 120) + 'deg)', offset: 0.88 },
+        { transform: 'translate(' + travel + 'px,' + (p1.y - p0.y) + 'px) rotate(' + (rotMid + 160) + 'deg)' }
+      ], { duration: 1700, easing: 'cubic-bezier(.45,.05,.5,.95)', fill: 'forwards' })
+        .then(function () { fxp.burst(p1.x, p1.y, 8, [col, '#ffffff'], 2); j.remove(); });
     }
   };
 
@@ -481,7 +623,7 @@
     { transform: 'scale(1) rotate(0)', opacity: 1 }
   ];
 
-  /* ── les 18 étoiles finales ───────────────────────────────────────── */
+  /* ── les 22 étoiles finales ───────────────────────────────────────── */
   var STARS = {
 
     /* 5a — la cinématique complète : flash, ondes, étoile, fontaines, confettis */
@@ -832,6 +974,124 @@
         .then(function () {
           fxp.burst(to.x, to.y, 14, [C.gold], 3);
           return wait(600);
+        });
+    },
+
+    /* 10g — le galton : l'étoile descend en rebondissant sur les picots (pachinko) */
+    galton: function (ov, fxp, cx, cy, o, C) {
+      var rows = [[-60, 60], [-90, 0, 90], [-60, 60]];
+      var pegs = [];
+      rows.forEach(function (r, ri) {
+        r.forEach(function (off) {
+          var pg = mk(ov, at(cx + off, cy - 130 + ri * 55, 10) + 'border-radius:50%;background:' + C.gold + ';box-shadow:0 0 8px ' + C.gold + ';opacity:0;');
+          anim(pg, [
+            { opacity: 0, transform: 'scale(0)' }, { opacity: 1, transform: 'scale(1)' }
+          ], { duration: 250, delay: ri * 90, fill: 'forwards' });
+          pegs.push(pg);
+        });
+      });
+      var star = starEl(ov, cx, cy - 190, 34);
+      [450, 820, 1220].forEach(function (ms, i) {
+        setTimeout(function () {
+          var px = cx + (i % 2 ? 60 : -58), py2 = cy - 130 + i * 55;
+          fxp.burst(px, py2, 6, [C.gold, '#ffffff'], 1.8);
+        }, ms);
+      });
+      return wait(400).then(function () {
+        return anim(star, [
+          { transform: 'translate(0,0)' },
+          { transform: 'translate(-58px,60px) scale(1,.8)', offset: 0.2 },
+          { transform: 'translate(-30px,80px)', offset: 0.3 },
+          { transform: 'translate(88px,115px) scale(1,.8)', offset: 0.5 },
+          { transform: 'translate(40px,135px)', offset: 0.62 },
+          { transform: 'translate(-58px,170px) scale(1,.8)', offset: 0.8 },
+          { transform: 'translate(0,190px) scale(1.2)' }
+        ], { duration: 1900, easing: 'cubic-bezier(.4,.1,.6,.9)', fill: 'forwards' });
+      }).then(function () {
+        fxp.burst(cx, cy, 20, [C.gold, '#fff3d1'], 3.4);
+        pegs.forEach(function (pg) {
+          anim(pg, [{ opacity: 1 }, { opacity: 0 }], { duration: 400, fill: 'forwards' });
+        });
+        return wait(900);
+      });
+    },
+
+    /* 10h — le feu d'artifice : montée en traînée dorée, double gerbe, retour au centre */
+    feuartifice: function (ov, fxp, cx, cy, o, C) {
+      var H = ov.clientHeight;
+      var star = starEl(ov, cx, H - 60, 40);
+      var top = cy - 130;
+      var rise = top - (H - 60);
+      var iv = setInterval(function () {
+        var b = star.getBoundingClientRect(), r = ov.getBoundingClientRect();
+        fxp.trail(b.left + b.width / 2 - r.left, b.top + b.height / 2 - r.top, C.gold, 3);
+      }, 45);
+      return anim(star, [
+        { transform: 'translate(0,0) scale(.8)' },
+        { transform: 'translate(6px,' + rise * 0.5 + 'px)', offset: 0.5 },
+        { transform: 'translate(0,' + rise + 'px) scale(.9)' }
+      ], { duration: 1100, easing: 'cubic-bezier(.3,0,.6,1)', fill: 'forwards' })
+        .then(function () {
+          clearInterval(iv);
+          anim(star, [{ opacity: 1 }, { opacity: 0 }], { duration: 120, fill: 'forwards' });
+          fxp.burst(cx, top, 40, [C.gold, '#ffe28f', '#fff3d1'], 5.4);
+          setTimeout(function () { fxp.burst(cx, top, 26, ['#ff7ac8', '#57e6e6', '#c9a4ff'], 4.2); }, 220);
+          setTimeout(function () { fxp.confetti(36, [C.gold, C.accent, '#ff7ac8']); }, 420);
+          var s2 = starEl(ov, cx, cy, 62);
+          anim(s2, POP, { duration: 700, delay: 500, easing: 'cubic-bezier(.34,1.56,.64,1)', fill: 'both' });
+          labelEl(ov, cx, cy + 88, o.label != null ? o.label : 'GAGNÉ !');
+          return wait(2200);
+        });
+    },
+
+    /* 10i — le ballon qui pop : l'étoile gonfle, tremble, explose en confettis, revient brillante */
+    ballonpop: function (ov, fxp, cx, cy, o, C) {
+      var star = starEl(ov, cx, cy, 56);
+      return anim(star, [
+        { transform: 'scale(.3)', opacity: 0 },
+        { transform: 'scale(1)', opacity: 1, offset: 0.25 },
+        { transform: 'scale(1.25)', offset: 0.45 },
+        { transform: 'scale(1.45) rotate(3deg)', offset: 0.6 },
+        { transform: 'scale(1.55) rotate(-3deg)', offset: 0.7 },
+        { transform: 'scale(1.7) rotate(2deg)', offset: 0.78 },
+        { transform: 'scale(2.1)', opacity: 1, offset: 0.82 },
+        { transform: 'scale(2.6)', opacity: 0 }
+      ], { duration: 1800, easing: 'ease-in-out', fill: 'forwards' })
+        .then(function () {
+          fxp.burst(cx, cy, 44, [C.gold, '#ff7ac8', '#57e6e6', '#c9a4ff'], 5);
+          fxp.confetti(30, [C.gold, C.accent, '#ff7ac8']);
+          var s2 = starEl(ov, cx, cy, 58);
+          anim(s2, POP, { duration: 600, delay: 200, easing: 'cubic-bezier(.34,1.56,.64,1)', fill: 'both' });
+          return wait(1600);
+        });
+    },
+
+    /* 10j — la tornade : anneaux d'étincelles qui se resserrent, l'étoile tourne et se pose */
+    tornade: function (ov, fxp, cx, cy, o, C) {
+      var star = starEl(ov, cx, cy, 54);
+      for (var i = 0; i < 10; i++) {
+        (function (i) {
+          var p = mk(ov, at(cx, cy, 12) + 'font-size:11px;', '✨');
+          var a0 = Math.PI * 2 * i / 10;
+          var fr = [];
+          for (var k = 0; k <= 16; k++) {
+            var t = k / 16;
+            var ang = a0 + t * Math.PI * 5;
+            var rad = 110 * (1 - t * 0.85);
+            fr.push({ transform: 'translate(' + Math.cos(ang) * rad + 'px,' + Math.sin(ang) * rad * 0.7 + 'px)', opacity: t < 0.1 ? t * 10 : 1 - t * 0.4 });
+          }
+          anim(p, fr, { duration: 1700, delay: i * 60, easing: 'linear', fill: 'forwards' })
+            .then(function () { p.remove(); });
+        })(i);
+      }
+      return anim(star, [
+        { transform: 'rotate(0) scale(.4)', opacity: 0 },
+        { opacity: 1, offset: 0.15 },
+        { transform: 'rotate(1080deg) scale(1)', opacity: 1 }
+      ], { duration: 1900, easing: 'cubic-bezier(.4,.1,.5,.9)', fill: 'both' })
+        .then(function () {
+          fxp.burst(cx, cy, 18, [C.gold, '#57e6e6'], 3.2);
+          return wait(700);
         });
     }
   };

@@ -41,7 +41,7 @@
       tete: 'img/dinos/sprites/Spinosaurus_tete.png',
       phrase: 'Splish splash ! Avec moi, on compte les poissons, les caisses et plein de trésors !',
       floats: 'chiffres',
-      jeux: ['mj-46', 'mj-47', 'mj-43']
+      jeux: ['mj-46', 'mj-47', 'mj-48', 'mj-43']
     },
     {
       id: 'galli', nom: 'Galli', domaine: 'lire',
@@ -78,6 +78,7 @@
     'mj-32': 'L\'atelier coloriage',
     'mj-46': 'Les œufs surprises',
     'mj-47': 'Les constellations',
+    'mj-48': 'Tout le monde monte !',
     'mj-43': 'Remplis la caisse',
     'mj-09': 'Le tri des lettres',
     'mj-23': 'Lis le mot',
@@ -108,6 +109,7 @@
     'mj-32': '<div class="vig"><img class="v-img" src="img/dinos/paleoart/Triceratops_coloriage.webp" alt=""></div>',
     'mj-46': '<div class="vig vig-oeufs"><i></i><i></i><i></i></div>',
     'mj-47': '<div class="vig vig-constel"><i></i><i></i><i></i><i></i></div>',
+    'mj-48': '<div class="vig vig-bus vig-monte" data-bus="162"></div>',
     'mj-43': '<div class="vig vig-des">' + de3() + de6() + '</div>',
     'mj-09': '<div class="vig vig-lettres"><span class="vig-lettre">a</span><span class="vig-lettre script">a</span></div>',
     'mj-23': '<div class="vig vig-mot"><span>loup</span></div>',

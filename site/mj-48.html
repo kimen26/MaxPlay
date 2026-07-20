@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-48 – Tout le monde monte !</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mp-theme.css">
+  <style>
+    /* --- GABARIT HEADER CANONIQUE --- */
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+    body { font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
+
+    .stage { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:space-evenly; overflow:hidden; padding:2px 8px 10px; gap:2px; }
+
+    /* ── Le bus + son plan de sièges (2 fenêtres de 5, jamais le bazar) ── */
+    .bus-top { flex-shrink:0; filter:drop-shadow(0 6px 12px rgba(0,0,0,.5)); }
+    .bus-top.roule { animation:roule .5s ease-in-out 2; }
+    @keyframes roule { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-8px)} 75%{transform:translateX(8px)} }
+
+    .scene-row { display:flex; align-items:center; justify-content:center; gap:10px; width:100%; }
+    .plan {
+      position:relative; display:flex; flex-direction:column; gap:8px;
+      background:rgba(255,255,255,.04); border:2px solid rgba(255,209,102,.35);
+      border-radius:20px; padding:10px 12px;
+      box-shadow:0 10px 26px rgba(0,0,0,.5), inset 0 0 32px rgba(0,0,0,.35);
+    }
+    .rangee { display:flex; gap:7px; padding:5px; border-radius:14px; transition:background .4s, box-shadow .4s; }
+    .rangee.lit { background:rgba(255,209,102,.14); box-shadow:0 0 22px rgba(255,209,102,.35); }
+    .siege {
+      width:clamp(40px, 9.5vmin, 54px); height:clamp(40px, 9.5vmin, 54px); border-radius:13px; position:relative;
+      display:flex; align-items:center; justify-content:center;
+      background:rgba(255,255,255,.05); border:2px dashed rgba(255,255,255,.28);
+      transition:border-color .3s, background .3s;
+    }
+    .siege img { width:86%; height:86%; object-fit:contain; filter:drop-shadow(0 3px 4px rgba(0,0,0,.4)); }
+    .siege.occupe { border:2px solid rgba(255,209,102,.55); background:rgba(255,209,102,.08); }
+    .siege.pop img { animation:seatPop .4s cubic-bezier(.34,1.56,.64,1); }
+    @keyframes seatPop { from{transform:scale(.4)} 60%{transform:scale(1.18)} to{transform:scale(1)} }
+
+    /* ── L'arrêt + la file d'attente ── */
+    .arret-zone { display:flex; flex-direction:column; align-items:center; gap:2px; min-width:96px; }
+    .arret-zone img.arret { width:clamp(58px, 13vmin, 84px); filter:drop-shadow(0 4px 8px rgba(0,0,0,.5)); }
+    .file { display:flex; align-items:flex-end; justify-content:center; gap:4px; min-height:52px; }
+    /* Question ordinale : le plan se range, la file prend toute la largeur.
+       Le 1ᵉʳ de la file = côté bus (à gauche, sous le bus). */
+    .scene-row.ordinal { }
+    .scene-row.ordinal .plan { display:none; }
+    .scene-row.ordinal .arret-zone { flex-direction:row; align-items:center; gap:10px; min-width:0; }
+    .scene-row.ordinal .file { gap:8px; }
+    .scene-row.ordinal .file .perso { width:clamp(52px, 13vmin, 68px); height:clamp(52px, 13vmin, 68px); }
+    .file .perso {
+      position:relative; width:clamp(42px, 9vmin, 52px); height:clamp(42px, 9vmin, 52px);
+      border-radius:50%; background:rgba(255,255,255,.08); border:2px solid rgba(255,255,255,.25);
+      display:flex; align-items:center; justify-content:center; cursor:pointer; touch-action:manipulation;
+      transition:transform .15s, border-color .2s;
+    }
+    .file .perso img { width:88%; height:88%; object-fit:contain; border-radius:50%; }
+    .file .perso.ok { border-color:#7fe7c4; background:rgba(47,191,143,.25); }
+    .file .perso.ko { animation:persoShake .38s ease; opacity:.6; }
+    @keyframes persoShake { 0%,100%{transform:rotate(0)} 25%{transform:rotate(-9deg)} 60%{transform:rotate(8deg)} }
+    .file .perso .rang {
+      position:absolute; top:-10px; left:50%; transform:translateX(-50%);
+      min-width:22px; height:22px; border-radius:999px; background:#ffe066; color:#4a3005;
+      border:2px solid #fff; font-size:.8rem; display:flex; align-items:center; justify-content:center;
+      animation:rangPop .25s cubic-bezier(.34,1.56,.64,1) both; pointer-events:none;
+    }
+    @keyframes rangPop { from{transform:translateX(-50%) scale(0)} to{transform:translateX(-50%) scale(1)} }
+    .file-fleche { font-size:.72rem; color:rgba(255,255,255,.65); font-family:'Nunito',sans-serif; font-weight:800; }
+
+    /* Passager qui vole (montée/descente) */
+    .dino-fly { position:fixed; z-index:50; width:46px; height:46px; object-fit:contain; pointer-events:none;
+      transition:transform .9s cubic-bezier(.45,0,.55,1), opacity .9s ease; }
+
+    /* ── Phrase du calcul (« 5 et 2, ça fait 7 ! ») ── */
+    .calc-line {
+      min-height:2.2em; display:flex; align-items:center; justify-content:center;
+      font-size:1.3rem; font-weight:900; color:#ffe066; text-align:center;
+      text-shadow:0 0 12px rgba(255,231,160,.4), 0 2px 4px rgba(0,0,0,.55);
+      opacity:0; transform:translateY(8px); transition:opacity .4s, transform .4s; padding:0 10px;
+    }
+    .calc-line.show { opacity:1; transform:translateY(0); }
+
+    /* ── QCM : 3 gros boutons-chiffres ── */
+    .choices { display:flex; gap:16px; justify-content:center; align-items:center; min-height:100px; }
+    .choices.hidden { visibility:hidden; }
+    .choice {
+      font-family:'Fredoka One',sans-serif; font-size:2.3rem; font-weight:900; color:#2a1c05;
+      min-width:92px; min-height:92px; border-radius:24px; border:none; cursor:pointer;
+      background:linear-gradient(145deg,#ffe066,#f0b73f);
+      box-shadow:0 6px 0 #b8860b, 0 10px 20px rgba(0,0,0,.45);
+      transition:transform .1s, opacity .2s; touch-action:manipulation;
+    }
+    .choice:active { transform:translateY(3px) scale(.96); box-shadow:0 2px 0 #b8860b; }
+    .choice.ok { background:linear-gradient(145deg,#7fe7c4,#2fbf8f); box-shadow:0 6px 0 #157a56, 0 0 24px rgba(47,191,143,.7); color:#062e20; }
+    .choice.ko { opacity:.35; }
+  </style>
+</head>
+<body data-ambiance="ville">
+<div id="app">
+
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">🚌 Tout le monde monte !</span>
+  </div>
+
+  <div class="stage">
+    <div class="bus-top" id="bus-top"></div>
+    <div class="scene-row">
+      <div class="plan" id="plan">
+        <div class="rangee" id="rangee1"></div>
+        <div class="rangee" id="rangee2"></div>
+      </div>
+      <div class="arret-zone">
+        <img class="arret" src="img/decor/arret_bus.png" alt="Arrêt de bus">
+        <div class="file" id="file"></div>
+        <div class="file-fleche" id="file-fleche" style="display:none">← le 1ᵉʳ est près de l'arrêt</div>
+      </div>
+    </div>
+    <div class="calc-line" id="calc-line"></div>
+    <div class="choices hidden" id="choices"></div>
+  </div>
+
+</div>
+  <!-- libs SPÉCIFIQUES au jeu -->
+  <script src="js/data.js"></script>
+  <script src="js/bus-svg.js"></script>
+  <script src="js/mj-compte.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
+  <script>
+  MJ.ready(function () {
+    'use strict';
+    // ─── MJ-48 : Tout le monde monte ! — peau bus du moteur mj-compte (spec S3) ───
+    // Le bus 162, 2 fenêtres de 5 places (jamais le bazar — consigne PY), passagers
+    // qui montent/descendent à l'arrêt, file d'attente ordinale.
+    // N0 : combien de passagers (≤5, une rangée) · N1 : qui monte (+1/+2, ≤10)
+    // N2 : monte ET descend · places libres · compléments à 10 · ordre dans la file.
+    const GAME_ID = 'mj-48';
+    const SEATS = 10;
+
+    const TETES = [
+      'Tyrannosaurus', 'Triceratops', 'Stegosaurus', 'Spinosaurus', 'Pteranodon',
+      'Parasaurolophus', 'Brachiosaurus', 'Diplodocus', 'Ankylosaurus', 'Velociraptor',
+      'Carnotaurus', 'Giganotosaurus', 'Mosasaurus', 'Mammuthus', 'Smilodon',
+    ].map(n => 'img/dinos/sprites/' + n + '_tete.png');
+    const ORDINAUX = ['premier', 'deuxième', 'troisième', 'quatrième', 'cinquième'];
+
+    const shell = MJ.init({
+      id: GAME_ID, emoji: '🚌', titre: 'Tout le monde monte !',
+      golden: true, consigne: true,
+      regle: {
+        picto: '🚌🔢',
+        texte: 'Des passagers montent et descendent du bus. À toi de bien compter !',
+        etapes: [
+          { t: 'Je regarde les sièges du bus 🪑',
+            d: 'Le bus a 2 rangées de 5 places, comme un domino. Une rangée pleine, c’est 5 d’un coup !' },
+          { t: 'Des passagers montent ou descendent 🚏',
+            d: 'À l’arrêt, des dinos attendent dans la file. Certains montent, d’autres descendent.' },
+          { t: 'Je tape le bon nombre 🔢',
+            d: 'Combien dans le bus ? Combien de places libres ? Si je me trompe, on recompte ensemble.' },
+          { t: 'La file a un ordre 🥇',
+            d: 'Le premier de la file est juste à côté de l’arrêt ! On me demande parfois de toucher le 2ᵉ ou le 3ᵉ.' }
+        ]
+      }
+    });
+    const G = shell.G;
+
+    // ── Bus SVG canonique — couleur via LIGNES (jamais de hex en dur) ──
+    const L162 = (window.LIGNES || []).find(l => String(l.num) === '162') || (window.LIGNES || [])[0] || { color:'#E2001A', textColor:'#fff', num:'162' };
+    document.getElementById('bus-top').innerHTML = busSVG(L162.color, L162.textColor, L162.num, 220);
+
+    const planEl = document.getElementById('plan');
+    const fileEl = document.getElementById('file');
+    const flecheEl = document.getElementById('file-fleche');
+    const calcEl = document.getElementById('calc-line');
+    const choicesEl = document.getElementById('choices');
+    const rangees = [document.getElementById('rangee1'), document.getElementById('rangee2')];
+
+    // ── Sièges 2×5 ──
+    const sieges = [];
+    rangees.forEach(function (row, r) {
+      for (let c = 0; c < 5; c++) {
+        const s = document.createElement('div');
+        s.className = 'siege';
+        s.dataset.row = r;
+        row.appendChild(s);
+        sieges.push(s);
+      }
+    });
+
+    const shuffleA = a => MJCompte.distractors ? a.map(x => [Math.random(), x]).sort((p, q) => p[0] - q[0]).map(p => p[1]) : a;
+    function sfx(src, vol) { try { const a = new Audio(src); a.volume = vol || 0.5; a.play().catch(() => {}); } catch (e) {} }
+
+    let avatarPool = [];
+    function nextAvatar() {
+      if (!avatarPool.length) avatarPool = shuffleA([...TETES]);
+      return avatarPool.pop();
+    }
+
+    function seatCount() { return sieges.filter(s => s.classList.contains('occupe')).length; }
+
+    function fillSeats(n, animate) {
+      sieges.forEach((s, i) => {
+        s.innerHTML = '';
+        s.classList.remove('occupe', 'pop');
+        if (i < n) {
+          s.classList.add('occupe');
+          const img = document.createElement('img');
+          img.src = nextAvatar();
+          img.alt = 'passager dino';
+          s.appendChild(img);
+          if (animate) {
+            setTimeout(() => { s.classList.add('pop'); if (soundsOn) sndCount(); }, i * 90);
+          }
+        }
+      });
+    }
+
+    function buildFile(n, tappable) {
+      fileEl.innerHTML = '';
+      for (let i = 0; i < n; i++) {
+        const p = document.createElement('div');
+        p.className = 'perso';
+        p.dataset.rank = i + 1; // 1 = le plus près du bus (à gauche)
+        p.innerHTML = '<img src="' + nextAvatar() + '" alt="dino dans la file">';
+        if (tappable) p.addEventListener('click', () => tapPerso(p));
+        fileEl.appendChild(p);
+      }
+      flecheEl.style.display = 'none'; // guide vocal suffisant (le texte débordait — 2026-07-20)
+    }
+
+    // Clone volant file → siège (montée) ou siège → file (descente)
+    function fly(fromEl, toEl, done) {
+      const img = fromEl.querySelector('img');
+      if (!img || !toEl) { if (done) done(); return; }
+      const r1 = img.getBoundingClientRect();
+      const r2 = toEl.getBoundingClientRect();
+      const f = img.cloneNode();
+      f.className = 'dino-fly';
+      f.style.left = r1.left + 'px'; f.style.top = r1.top + 'px';
+      document.body.appendChild(f);
+      requestAnimationFrame(() => {
+        f.style.transform = 'translate(' + (r2.left + r2.width / 2 - r1.left - r1.width / 2) + 'px,'
+          + (r2.top + r2.height / 2 - r1.top - r1.height / 2) + 'px)';
+      });
+      setTimeout(() => { f.remove(); if (done) done(); }, 950);
+    }
+
+    // ── État de la manche ──
+    let qCount = 0, qcm = null, correctAnswer = 0, roundLock = false;
+    let curType = 'count', ordRank = 0, soundsOn = true, testMode = false, forcedLevel = null, forcedType = null;
+    function level() { return forcedLevel !== null ? forcedLevel : G.level; }
+
+    // Types par niveau (N2 : rotation équilibrée, re-mélangée à chaque manche)
+    const N2_TYPES = ['descend', 'places', 'manque', 'ordinal'];
+    let n2bag = [];
+    function nextType() {
+      if (forcedType) return forcedType;
+      const lv = level();
+      if (lv === 0) return 'count';
+      if (lv === 1) return 'monte';
+      if (!n2bag.length) n2bag = shuffleA([...N2_TYPES]);
+      return n2bag.pop();
+    }
+
+    function rand(a, b) { return a + Math.floor(Math.random() * (b - a + 1)); }
+
+    // ── Une question ──
+    function nextQuestion() {
+      if (qCount >= G.totalQ) return showEnd();
+      qCount++;
+      qcm = MJCompte.beginQuestion();
+      roundLock = false;
+      calcEl.classList.remove('show'); calcEl.textContent = '';
+      choicesEl.classList.add('hidden'); choicesEl.innerHTML = '';
+      sieges.forEach(s => s.classList.remove('pop'));
+      rangees.forEach(r => r.classList.remove('lit'));
+      curType = nextType();
+      document.querySelector('.scene-row').classList.toggle('ordinal', curType === 'ordinal');
+
+      if (curType === 'count') {
+        const n = rand(1, 5);
+        correctAnswer = n;
+        fillSeats(n, true);
+        buildFile(0, false);
+        ask('Combien de passagers dans le bus ?', n * 100 + 500);
+
+      } else if (curType === 'monte') {
+        const k = rand(1, 2);
+        const s0 = rand(2, 8 - k + Math.min(2, k)); // s0+k ≤ 10
+        correctAnswer = Math.min(SEATS, s0 + k);
+        fillSeats(s0, false);
+        buildFile(k, false);
+        shell.setConsigne('' + k + (k > 1 ? ' passagers montent !' : ' passager monte !'), qCount === 1 ? false : undefined);
+        sfx('sounds/bus-closing-door-sound.flac', 0.4);
+        // les k de la file montent un par un
+        const persos = [...fileEl.children];
+        persos.forEach((p, i) => {
+          setTimeout(() => {
+            const target = sieges[s0 + i];
+            fly(p, target, () => {
+              p.style.visibility = 'hidden';
+              target.classList.add('occupe', 'pop');
+              target.innerHTML = '<img src="' + p.querySelector('img').src + '" alt="passager dino">';
+              if (soundsOn) sndCount();
+            });
+          }, 300 + i * 550);
+        });
+        setTimeout(() => ask('Combien de passagers maintenant ?'), 300 + k * 550 + 1000);
+
+      } else if (curType === 'descend') {
+        const s0 = rand(5, 10);
+        const b = rand(1, 3);
+        correctAnswer = s0 - b;
+        fillSeats(s0, false);
+        buildFile(0, false);
+        shell.setConsigne('' + b + (b > 1 ? ' passagers descendent !' : ' passager descend !'));
+        document.getElementById('bus-top').classList.add('roule');
+        sfx('sounds/bus-closing-door-sound.flac', 0.4);
+        const partants = sieges.slice(s0 - b, s0);
+        partants.forEach((s, i) => {
+          setTimeout(() => {
+            fly(s, fileEl.parentElement.querySelector('.arret'), () => {});
+            setTimeout(() => { s.innerHTML = ''; s.classList.remove('occupe'); }, 200);
+          }, 300 + i * 450);
+        });
+        setTimeout(() => {
+          document.getElementById('bus-top').classList.remove('roule');
+          ask('Combien il en reste dans le bus ?');
+        }, 300 + b * 450 + 1000);
+
+      } else if (curType === 'places') {
+        const s0 = rand(3, 9);
+        correctAnswer = SEATS - s0;
+        fillSeats(s0, true);
+        buildFile(0, false);
+        ask('Combien de places libres ?', s0 * 90 + 500);
+
+      } else if (curType === 'manque') {
+        const s0 = rand(3, 9);
+        correctAnswer = SEATS - s0;
+        fillSeats(s0, true);
+        buildFile(0, false);
+        ask('Il manque combien de passagers pour remplir le bus ?', s0 * 90 + 500);
+
+      } else if (curType === 'ordinal') {
+        const q = rand(3, 5);
+        ordRank = rand(2, q);
+        correctAnswer = ordRank;
+        fillSeats(rand(0, 3), false);
+        buildFile(q, true);
+        shell.setConsigne('Touche le ' + ORDINAUX[ordRank - 1] + ' de la file !');
+      }
+    }
+
+    function ask(txt, delay) {
+      setTimeout(() => {
+        shell.setConsigne(txt);
+        showChoices();
+      }, testMode ? 0 : (delay || 0));
+    }
+
+    function showChoices() {
+      const opts = MJCompte.distractors(correctAnswer, { count: 3, min: 0, max: 12, spread: 2 });
+      choicesEl.innerHTML = '';
+      opts.forEach(n => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'choice';
+        b.textContent = n;
+        if (n === correctAnswer) b.dataset.correct = '1';
+        b.addEventListener('click', () => answer(n === correctAnswer, b));
+        choicesEl.appendChild(b);
+      });
+      choicesEl.classList.remove('hidden');
+    }
+
+    // ── Réponse QCM ──
+    function answer(isCorrect, btn) {
+      if (roundLock || btn.disabled) return;
+      const res = MJCompte.answer(qcm, isCorrect);
+      if (res.outcome === 'ignored') return;
+      if (res.outcome === 'correct') {
+        btn.classList.add('ok');
+        try { sndDing(); } catch (e) {}
+        roundLock = true;
+        G.notePip(qCount - 1, res.attempts, btn);
+        speakCalc();
+        setTimeout(nextQuestion, testMode ? 0 : 2600);
+      } else if (res.outcome === 'reveal') {
+        btn.classList.add('ko'); btn.disabled = true;
+        try { sndBuzz(); } catch (e) {}
+        const okEl = QcmRetry.revealCorrect(choicesEl);
+        roundLock = true;
+        G.notePip(qCount - 1, 4, okEl);
+        speakCalc();
+        setTimeout(nextQuestion, testMode ? 0 : 2800);
+      } else {
+        btn.classList.add('ko'); btn.disabled = true;
+        try { sndBuzz(); } catch (e) {}
+        recount();
+      }
+    }
+
+    // ── Tap dans la file (questions ordinales) ──
+    function tapPerso(p) {
+      if (roundLock || curType !== 'ordinal' || p.classList.contains('ko')) return;
+      const good = parseInt(p.dataset.rank, 10) === ordRank;
+      const res = MJCompte.answer(qcm, good);
+      if (res.outcome === 'ignored') return;
+      if (res.outcome === 'correct' || res.outcome === 'reveal') {
+        const target = res.outcome === 'correct' ? p : fileEl.querySelector('[data-rank="' + ordRank + '"]');
+        roundLock = true;
+        target.classList.add('ok');
+        target.insertAdjacentHTML('beforeend', '<span class="rang">' + ordRank + '</span>');
+        try { res.outcome === 'correct' ? sndDing() : sndBuzz(); } catch (e) {}
+        G.notePip(qCount - 1, res.outcome === 'correct' ? res.attempts : 4, target);
+        // le bon dino monte dans le bus (le plan est rangé en mode ordinal → vol vers le bus)
+        fly(target, document.getElementById('bus-top'), () => {
+          target.style.visibility = 'hidden';
+        });
+        calcEl.textContent = 'Oui, le ' + ORDINAUX[ordRank - 1] + ' monte dans le bus !';
+        calcEl.classList.add('show');
+        shell.say('Le ' + ORDINAUX[ordRank - 1] + ' monte dans le bus !');
+        setTimeout(nextQuestion, testMode ? 0 : 2400);
+      } else {
+        p.classList.add('ko');
+        try { sndBuzz(); } catch (e) {}
+        shell.say('Le premier, c’est celui qui est juste à côté de l’arrêt. Compte : un, deux, trois…');
+      }
+    }
+
+    // ── La phrase du calcul (CRA : les fenêtres de 5 s'illuminent) ──
+    function speakCalc() {
+      let sentence = '';
+      const n = correctAnswer;
+      if (curType === 'count' || curType === 'monte') {
+        if (n > 5) {
+          rangees[0].classList.add('lit');
+          setTimeout(() => rangees[1].classList.add('lit'), 700);
+          sentence = '5 et ' + (n - 5) + ', ça fait ' + n + ' !';
+        } else {
+          rangees[0].classList.add('lit');
+          sentence = n + (n > 1 ? ' passagers !' : ' passager !');
+        }
+      } else if (curType === 'descend') {
+        sentence = 'Il en reste ' + n + ' !';
+        rangees[0].classList.add('lit');
+      } else if (curType === 'places' || curType === 'manque') {
+        const s0 = seatCount();
+        sentence = s0 + ' et ' + n + ', ça fait 10 ! Le bus est plein !';
+        rangees.forEach(r => r.classList.add('lit'));
+      }
+      calcEl.textContent = sentence;
+      calcEl.classList.add('show');
+      shell.say(sentence);
+    }
+
+    // ── Recompte guidé (sur erreur) : les sièges s'allument un par un ──
+    function recount() {
+      const occ = sieges.filter(s => s.classList.contains('occupe'));
+      const list = (curType === 'places' || curType === 'manque')
+        ? sieges.filter(s => !s.classList.contains('occupe'))
+        : occ;
+      shell.say('Recomptons ensemble !');
+      list.forEach((s, i) => {
+        setTimeout(() => {
+          s.classList.remove('pop'); void s.offsetWidth; s.classList.add('pop');
+          if (soundsOn) sndCount();
+        }, i * 250);
+      });
+    }
+
+    function showEnd() { G.showEnd({ replayUrl: 'mj-48.html' }); }
+
+    // ── Paramètres de test / screenshots : ?level=N · ?type=count|monte|descend|places|manque|ordinal ──
+    const qs = new URLSearchParams(location.search);
+    if (qs.get('level') !== null) forcedLevel = Math.max(0, Math.min(2, parseInt(qs.get('level'), 10) || 0));
+    if (qs.get('type')) forcedType = qs.get('type');
+    if (qs.get('mute')) soundsOn = false;
+
+    // ── Harnais Playwright ──
+    window.__mjTest = {
+      get state() {
+        return {
+          qCount, totalQ: G.totalQ, level: level(), type: curType,
+          correctAnswer, ordRank, roundLock, seated: seatCount(),
+          fileCount: fileEl.children.length,
+          choices: [...choicesEl.querySelectorAll('.choice')].map(b => b.textContent),
+          calcText: calcEl.textContent,
+        };
+      },
+      setTestMode(on) { testMode = !!on; },
+      setDifficulty(lvl) { forcedLevel = Math.max(0, Math.min(2, lvl)); qCount = 0; n2bag = []; nextQuestion(); },
+      forceType(t) { forcedType = t; },
+      showChoicesNow() { if (curType !== 'ordinal') showChoices(); },
+      answer(correct) {
+        if (curType === 'ordinal') {
+          const target = correct
+            ? fileEl.querySelector('[data-rank="' + ordRank + '"]')
+            : fileEl.querySelector('.perso:not([data-rank="' + ordRank + '"]):not(.ko)');
+          if (target) target.click();
+        } else {
+          const btn = correct
+            ? choicesEl.querySelector('[data-correct="1"]')
+            : choicesEl.querySelector('.choice:not([data-correct="1"]):not(.ko)');
+          if (btn) btn.click();
+        }
+      },
+      next() { nextQuestion(); },
+    };
+
+    nextQuestion();
+  });
+  </script>
+</body>
+</html>

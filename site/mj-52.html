@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-52 – La boîte à mots</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mp-theme.css">
+  <style>
+    /* --- GABARIT HEADER CANONIQUE --- */
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+    body { font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
+
+    @font-face { font-family:'Cursif'; src:url('design-shared/fonts/Cursif.ttf') format('truetype'); font-display:swap; }
+
+    .stage { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:space-evenly; overflow:hidden; padding:4px 10px 12px; gap:6px; }
+
+    /* Le mot à entendre (haut-parleur) */
+    .mot-zone { display:flex; flex-direction:column; align-items:center; gap:4px; cursor:pointer; touch-action:manipulation; }
+    .mot-badge {
+      min-width:96px; min-height:96px; padding:8px 22px; border-radius:28px;
+      background:linear-gradient(160deg,#4a3f8f,#332a6b);
+      border:3px solid rgba(255,224,102,.55);
+      box-shadow:0 7px 0 #241d4e, 0 12px 24px rgba(0,0,0,.5);
+      display:flex; align-items:center; justify-content:center; transition:transform .12s;
+    }
+    .mot-badge:active { transform:scale(.94); }
+    .mot-badge.pulse { animation:mPulse .9s ease; }
+    @keyframes mPulse { 0%,100%{transform:scale(1)} 30%{transform:scale(1.1)} 60%{transform:scale(.97)} }
+    .mot-sub { font-family:'Nunito',sans-serif; font-weight:800; font-size:.85rem; color:rgba(255,255,255,.7); }
+
+    /* La boîte : syllabes → cases lettres */
+    .boite { display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; padding:0 8px; }
+    .syllabe {
+      display:flex; gap:6px; padding:8px; border-radius:18px;
+      background:rgba(255,255,255,.05); border:2px solid rgba(255,209,102,.3);
+      transition:background .3s, box-shadow .3s;
+    }
+    .syllabe.done { background:rgba(255,209,102,.12); box-shadow:0 0 18px rgba(255,209,102,.35); }
+    .slot {
+      width:58px; height:66px; border-radius:14px;
+      background:rgba(255,255,255,.06); border:2px dashed rgba(255,255,255,.35);
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Cursif',cursive; font-size:2.4rem; color:#fff;
+      transition:border-color .2s, background .2s;
+    }
+    .slot.next { border-color:var(--gold,#ffe066); box-shadow:0 0 12px rgba(255,224,102,.35); }
+    .slot.fait { border-style:solid; border-color:rgba(125,255,196,.6); background:rgba(47,191,143,.14); animation:slotPop .3s cubic-bezier(.34,1.56,.64,1); }
+    @keyframes slotPop { from{transform:scale(.6)} to{transform:scale(1)} }
+
+    /* Les lettres mobiles */
+    .pool { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; align-items:center; max-width:560px; min-height:100px; }
+    .tuile {
+      min-width:84px; min-height:84px; padding:2px 14px; border-radius:22px; border:none; cursor:pointer;
+      background:linear-gradient(145deg,#265a8f,#173a61);
+      border:3px solid rgba(255,255,255,.22);
+      box-shadow:0 6px 0 #0e2440, 0 10px 20px rgba(0,0,0,.45);
+      color:#fff; font-family:'Cursif',cursive; font-size:2.8rem;
+      display:flex; align-items:center; justify-content:center;
+      transition:transform .1s, opacity .25s, border-color .2s; touch-action:manipulation;
+    }
+    .tuile:active { transform:translateY(3px) scale(.96); box-shadow:0 2px 0 #0e2440; }
+    .tuile.usee { opacity:0; pointer-events:none; }
+    .tuile.aide { border-color:var(--gold,#ffe066); animation:tGlow 1s ease-in-out infinite; }
+    @keyframes tGlow { 0%,100%{box-shadow:0 6px 0 #0e2440} 50%{box-shadow:0 6px 0 #0e2440, 0 0 22px rgba(255,224,102,.8)} }
+    .tuile.ko { animation:tShake .35s ease; }
+    @keyframes tShake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 60%{transform:translateX(6px)} }
+
+    .bravo-mot {
+      min-height:2.2em; display:flex; align-items:center; justify-content:center;
+      font-family:'Cursif',cursive; font-size:2.1rem; color:#ffe9a0; text-align:center;
+      text-shadow:0 0 14px rgba(255,231,160,.45); opacity:0; transition:opacity .4s;
+    }
+    .bravo-mot.show { opacity:1; }
+  </style>
+</head>
+<body data-ambiance="jungle">
+<div id="app">
+
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">📮 La boîte à mots</span>
+  </div>
+
+  <div class="stage">
+    <div class="mot-zone" id="mot-zone" role="button" aria-label="Réécouter le mot">
+      <div class="mot-badge" id="mot-badge"></div>
+      <div class="mot-sub">Touche pour réécouter le mot</div>
+    </div>
+    <div class="boite" id="boite"></div>
+    <div class="bravo-mot" id="bravo-mot"></div>
+    <div class="pool" id="pool"></div>
+  </div>
+
+</div>
+  <!-- LE GABARIT -->
+  <script src="js/mj-shell.js"></script>
+  <script>
+  MJ.ready(function () {
+    'use strict';
+    // ─── MJ-52 : La boîte à mots — écrire avant de lire (spec G3, alphabet mobile) ───
+    // On DIT un mot, Max l'assemble avec des lettres mobiles cursives.
+    // Guide = découpage syllabique (pa | pa). Encoder précède décoder (Montessori).
+    // N0 : papa/maman & co, QUE les lettres du mot · N1 : mots CV/CVC · N2 : + distracteurs.
+    // ⚠ Écart spec assumé : « mot libre » (3★ : son prénom) différé — golden n'a que 3 niveaux.
+    const GAME_ID = 'mj-52';
+
+    // [mot, syllabes] — pas d'accents ni de graphèmes complexes (ils arrivent avec G4)
+    const MOTS_N0 = [
+      ['papa', ['pa', 'pa']], ['maman', ['ma', 'man']], ['papi', ['pa', 'pi']],
+      ['mamie', ['ma', 'mie']], ['dodo', ['do', 'do']], ['moto', ['mo', 'to']],
+    ];
+    const MOTS_N1 = [
+      ['bus', ['bus']], ['sac', ['sac']], ['lit', ['lit']], ['mur', ['mur']],
+      ['ami', ['a', 'mi']], ['tapis', ['ta', 'pis']], ['domino', ['do', 'mi', 'no']],
+      ['salami', ['sa', 'la', 'mi']],
+    ];
+    const SONS = {
+      a:'aaa', e:'eee', i:'iii', o:'ooo', u:'uuu', m:'mmm', s:'sss', l:'lll', r:'rrr',
+      p:'pe', t:'te', d:'de', b:'be', n:'nnn', c:'ke', v:'vvv',
+    };
+    const DISTRACTEURS = ['s', 'r', 'l', 'v', 'o', 'e', 'n', 'b'];
+
+    const shell = MJ.init({
+      id: GAME_ID, emoji: '📮', titre: 'La boîte à mots',
+      golden: true, consigne: true,
+      onRepeat: () => sayWord(),
+      regle: {
+        picto: '📮🔤',
+        texte: 'Écoute le mot, et construis-le avec les lettres mobiles !',
+        etapes: [
+          { t: 'J’écoute le mot 👂',
+            d: 'La voix dit un mot que je connais : papa, maman, moto…' },
+          { t: 'Je regarde la boîte 👀',
+            d: 'Le mot est découpé en morceaux : pa | pa. Chaque case attend sa lettre.' },
+          { t: 'Je pose les lettres dans l’ordre 👆',
+            d: 'Je touche la lettre qu’il faut : elle saute dans sa case et fait son son !' },
+          { t: 'Le mot est construit 🎉',
+            d: 'La voix relit MON mot ! Plus j’ai d’étoiles, plus il y a de lettres pièges.' }
+        ]
+      }
+    });
+    const G = shell.G;
+
+    const boiteEl = document.getElementById('boite');
+    const poolEl = document.getElementById('pool');
+    const badgeEl = document.getElementById('mot-badge');
+    const bravoEl = document.getElementById('bravo-mot');
+
+    const HP_SVG = '<svg width="52" height="52" viewBox="0 0 24 24" fill="none">'
+      + '<path d="M4 9v6h4l5 4V5L8 9H4z" fill="#ffe9a0"/>'
+      + '<path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" stroke="#ffe9a0" stroke-width="1.8" stroke-linecap="round"/></svg>';
+    badgeEl.innerHTML = HP_SVG;
+
+    function shuffleA(a) { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
+    function rnd(a) { return a[Math.floor(Math.random() * a.length)]; }
+
+    let qCount = 0, word = '', sylls = [], letters = [], pos = 0, wrongTaps = 0, aidee = false, roundLock = false;
+    let testMode = false, forcedLevel = null, lastWord = '';
+    function level() { return forcedLevel !== null ? forcedLevel : G.level; }
+
+    function sayWord() {
+      badgeEl.classList.remove('pulse'); void badgeEl.offsetWidth; badgeEl.classList.add('pulse');
+      shell.say(word);
+    }
+    function sayPhoneme(l) {
+      try { if (window.TTS && TTS.speak) { TTS.speak(SONS[l] || l, { rate: 0.6, priority: true }); return; } } catch (e) {}
+    }
+
+    function nextQuestion() {
+      if (qCount >= G.totalQ) return showEnd();
+      qCount++;
+      roundLock = false;
+      pos = 0; wrongTaps = 0; aidee = false;
+      bravoEl.classList.remove('show'); bravoEl.textContent = '';
+
+      const lv = level();
+      const bank = lv === 0 ? MOTS_N0 : MOTS_N0.concat(MOTS_N1);
+      const cand = bank.filter(m => m[0] !== lastWord);
+      const pick = rnd(cand.length ? cand : bank);
+      word = pick[0]; sylls = pick[1];
+      lastWord = word;
+      letters = word.split('');
+
+      // La boîte : une carte par syllabe, une case par lettre
+      boiteEl.innerHTML = '';
+      let li = 0;
+      sylls.forEach(sy => {
+        const s = document.createElement('div');
+        s.className = 'syllabe';
+        for (let i = 0; i < sy.length; i++) {
+          const slot = document.createElement('div');
+          slot.className = 'slot';
+          slot.dataset.idx = li++;
+          s.appendChild(slot);
+        }
+        boiteEl.appendChild(s);
+      });
+      markNext();
+
+      // Les lettres mobiles : celles du mot + distracteurs au N2
+      let pool = [...letters];
+      if (lv === 2) {
+        const extra = shuffleA(DISTRACTEURS.filter(d => !letters.includes(d))).slice(0, 3);
+        pool = pool.concat(extra);
+      }
+      poolEl.innerHTML = '';
+      shuffleA(pool).forEach((l, i) => {
+        const t = document.createElement('button');
+        t.type = 'button';
+        t.className = 'tuile';
+        t.textContent = l;
+        t.dataset.lettre = l;
+        t.dataset.id = i;
+        t.addEventListener('click', () => tap(t));
+        poolEl.appendChild(t);
+      });
+
+      shell.setConsigne('Construis le mot !', false);
+      if (!testMode) setTimeout(sayWord, 400);
+    }
+
+    function markNext() {
+      [...boiteEl.querySelectorAll('.slot')].forEach(s => s.classList.remove('next'));
+      const nx = boiteEl.querySelector('.slot[data-idx="' + pos + '"]');
+      if (nx) nx.classList.add('next');
+    }
+
+    function tap(t) {
+      if (roundLock || t.classList.contains('usee')) return;
+      const expected = letters[pos];
+      if (t.dataset.lettre === expected) {
+        t.classList.add('usee');
+        const slot = boiteEl.querySelector('.slot[data-idx="' + pos + '"]');
+        slot.textContent = expected;
+        slot.classList.add('fait');
+        slot.classList.remove('next');
+        const syl = slot.parentElement;
+        if ([...syl.children].every(s => s.classList.contains('fait'))) syl.classList.add('done');
+        try { sndDing(); } catch (e) {}
+        if (!testMode) sayPhoneme(expected);
+        [...poolEl.querySelectorAll('.tuile')].forEach(x => x.classList.remove('aide'));
+        pos++;
+        if (pos >= letters.length) return wordDone();
+        markNext();
+      } else {
+        wrongTaps++;
+        t.classList.remove('ko'); void t.offsetWidth; t.classList.add('ko');
+        try { sndBuzz(); } catch (e) {}
+        if (wrongTaps >= 3) {
+          // aide : la bonne tuile s'illumine (jamais posée à sa place tout seul)
+          aidee = true;
+          const good = [...poolEl.querySelectorAll('.tuile')].find(x => !x.classList.contains('usee') && x.dataset.lettre === letters[pos]);
+          if (good) good.classList.add('aide');
+          if (!testMode) sayPhoneme(letters[pos]);
+        } else if (!testMode) {
+          sayWord();
+        }
+      }
+    }
+
+    function wordDone() {
+      roundLock = true;
+      const attempts = aidee ? 4 : (wrongTaps === 0 ? 1 : (wrongTaps <= 2 ? 2 : 3));
+      const lastSlot = boiteEl.querySelector('.slot[data-idx="' + (letters.length - 1) + '"]');
+      G.notePip(qCount - 1, attempts, lastSlot);
+      bravoEl.textContent = word;
+      bravoEl.classList.add('show');
+      if (!testMode) {
+        shell.say(word + ' ! Tu as écrit ' + word + ' !');
+        try { confetti(); } catch (e) {}
+      }
+      setTimeout(nextQuestion, testMode ? 0 : 2600);
+    }
+
+    function showEnd() { G.showEnd({ replayUrl: 'mj-52.html' }); }
+
+    document.getElementById('mot-zone').addEventListener('click', sayWord);
+
+    // ── Paramètres test : ?level=N · ?mot=papa ──
+    const qs = new URLSearchParams(location.search);
+    if (qs.get('level') !== null) forcedLevel = Math.max(0, Math.min(2, parseInt(qs.get('level'), 10) || 0));
+
+    // ── Harnais Playwright ──
+    window.__mjTest = {
+      get state() {
+        return {
+          qCount, totalQ: G.totalQ, level: level(), word, sylls, pos, wrongTaps, roundLock,
+          pool: [...poolEl.querySelectorAll('.tuile:not(.usee)')].map(t => t.dataset.lettre),
+          slots: boiteEl.querySelectorAll('.slot').length,
+          syllabes: boiteEl.querySelectorAll('.syllabe').length,
+        };
+      },
+      setTestMode(on) { testMode = !!on; },
+      setDifficulty(lvl) { forcedLevel = Math.max(0, Math.min(2, lvl)); qCount = 0; nextQuestion(); },
+      tap(correct) {
+        const want = letters[pos];
+        const t = [...poolEl.querySelectorAll('.tuile:not(.usee)')].find(x =>
+          correct ? x.dataset.lettre === want : x.dataset.lettre !== want);
+        if (t) t.click();
+        return !!t;
+      },
+      next() { nextQuestion(); },
+    };
+
+    nextQuestion();
+  });
+  </script>
+</body>
+</html>

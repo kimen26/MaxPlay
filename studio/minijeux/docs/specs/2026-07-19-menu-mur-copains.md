@@ -3,8 +3,14 @@
 > Direction **validée par Papa Yann le 2026-07-19** : fusion M1 (Le Mur) + M3 (Les copains).
 > **v0.5 — VERSION PRODUCT OWNER** : consolidation 42 prod + 29 POC → **24 jeux** (3-5 par
 > copain). Chaque jeu est spécifié : mécanique (moteur de [`../MECANIQUES.md`](../MECANIQUES.md)),
-> affichage, paliers 0★→3★, pourquoi pédagogique, jeux absorbés. Plus d'inventaire : que du
-> gardé, fusionné, justifié. (v0.4 : fontes validées, mj-14 repêché ; v0.3 : partie B ; v0.2 : casting.)
+> affichage, paliers 0★→3★, pourquoi pédagogique, jeux absorbés.
+> **v0.6 (2026-07-20, soir)** : challenge externe adopté — **Spino à 4 jeux** (S5 bocal →
+> célébration 3★ de S4) · **G4 sons collés différé** (déclencheur : 2★ sur G3) · **Para V1
+> resserrée** (P1 + P2 + memory ; P3 après test réel ; P4/P5 en vague 3) · **build par MOTEUR,
+> pas par copain** (durcir un moteur → décliner ses peaux) · **critère de coupe** : un jeu
+> réussit si Max le relance seul dans la semaine (télémétrie du bloc Découverte) · vignettes
+> copains **animées en CSS, sans génération d'images** · **pas de voix dans les menus** avant
+> le GO « stable » de PY · jeux non accessibles **cachés** + phrase d'ouverture dans le repaire.
 
 ---
 
@@ -54,16 +60,11 @@ Bloc **🔎 Découverte** (3 vignettes : 1 délaissé · 1 nouveau · 1 mise en 
 ### S4 · Les barquettes de 10 — *la dizaine*
 - **Mécanique** : dés & regroupement (`mj-dice` — composition de groupes) — peau barquettes.
 - **Affichage** : barquette 5×2 ; les objets arrivent, Max les range ; « 10 et 4, ça fait 14 » dit + affiché ; à 3★, mode « il me faut 14 » (blocs de 10 + unités — le « rendre la monnaie » de PY).
-- **Paliers** : 0★ complète la barquette (il en manque 3) · 1★ 10+n (11→19) · 2★ 2 barquettes (jusqu'à 20+n) · 3★ remplis pour atteindre N.
+- **Paliers** : 0★ complète la barquette (il en manque 3) · 1★ 10+n (11→19) · 2★ 2 barquettes (jusqu'à 20+n) · 3★ remplis pour atteindre N **+ célébration bocal : les paquets de 10 brillent et descendent en barquettes** (geste clé récupéré de l'ex-S5).
 - **Pourquoi** : la dizaine est la clé de voûte du système décimal (décision PY : 10 partout, pas 12) — prépare l'addition posée.
-- **Absorbe** : POC-07 · mj-43 · POC-19 (blocs+unités → 3★) · POC-17 (animation du 100 → célébration 3★).
+- **Absorbe** : POC-07 · mj-43 · POC-19 (blocs+unités → 3★) · POC-17 (animation du 100 → célébration 3★) · POC-12 (bocal → célébration de vérification 3★ — **S5 coupé, décision v0.6 : estimation de masses hors ZPD à 4 ans, le partage le remplacera plus tard, plus de valeur péda**).
 
-### S5 · Le bocal géant — *estimer les masses*
-- **Mécanique** : QCM-tap (3 ordres de grandeur) — peau bocal qui se remplit d'un coup.
-- **Affichage** : Max estime → les **paquets de 10 brillent** et descendent en barquettes pour vérifier.
-- **Paliers** : 0★ 5/10/20 · 1★ 10/20/50 · 2★ 10/50/100 · 3★ 30/40/50 (écarts fins).
-- **Pourquoi** : le sens du nombre et des ordres de grandeur — autre compétence que le comptage exact.
-- **Absorbe** : POC-12.
+~~### S5 · Le bocal géant~~ **COUPÉ (v0.6)** → son geste clé devient la célébration 3★ de S4. **Spino = 4 jeux qui bouclent le parcours, pas 5.** Le slot reste vide ; « À chacun sa part » (partage = division vécue) le prendra plus tard.
 
 **Consignés plus tard** : À chacun sa part (partage) · Les paniers (×) · Pair ou impair · Les graines (mj-35, refonte en attente).
 
@@ -92,7 +93,8 @@ Bloc **🔎 Découverte** (3 vignettes : 1 délaissé · 1 nouveau · 1 mise en 
 - **Pourquoi** : encoder précède décoder (Montessori, validé CNESCO 2016) — l'écriture sans la charge motrice du crayon.
 - **Absorbe** : POC-12 · POC-11 (le syllabeur devient le guide intégré).
 
-### G4 · Les sons collés — *on, ou, ch…* (à créer)
+### G4 · Les sons collés — *on, ou, ch…* (spec gardée, **dev DIFFÉRÉ v0.6**)
+- **Déclencheur objectif : Max tient 2★ sur G3 (boîte à mots)** → on ouvre ce chantier. Les graphèmes complexes s'attaquent APRÈS le décodage CVC fluide, pas pendant l'apprentissage des lettres. Seul jeu à code 100% neuf du pôle = coût max, valeur différée. Galli vit à 4 jeux + captcha en attendant.
 - **Mécanique** : QCM-tap / assemblage — **code neuf justifié** (notion absente de la bibliothèque).
 - **Affichage** : 2 lettres glissent l'une vers l'autre et **« collent » en un seul son** animé (o+n → « on ») ; Max choisit le duo qui fait le son entendu, puis complète un mot (t_ton).
 - **Paliers** : 0★ on/ou · 1★ + oi/eu · 2★ + an/in/ch · 3★ dans des mots complets (tonton).
@@ -138,13 +140,34 @@ Libres : **L'atelier coloriage** (mj-32 — 🐛 galerie JSON non compressée, q
 |---|-----|--------|----------------|----------|
 | P1 | **L'atelier peinture** | manipulation couleur (mj-21) | couleurs pures → mélanges primaires → palette 2-3 couleurs imposée → **peindre un dino/avatar** (PY) | Couleurs + mélanges ; « génial » (PY) |
 | P2 | **Compte avec le monde** | comptage QCM (mj-20 corrigé) | FR jusqu'à 5 → FR 10 + 1 pays ouvert → 2-3 pays → langues au choix | Origines brésiliennes ; **1-2 pays à la fois, pas jusqu'à 10 direct** (PY) |
-| P3 | **Où est le pays ?** | QCM-tap carte (mj-22) | 5 pays → 10 → Europe → monde ; victoire = **drapeau + musique** (PY) | Géographie ; « jamais marché » → à tester d'abord |
-| P4 | **Les échecs** | puzzle plateau précalculé (mj-37 **refonte totale**) | une pièce à déplacer (règle expliquée : « le fou va en diagonale ») → 2 pièces → petit mat | **Vraies pièces, plateau entier, pas de déguisement** (PY) |
-| P5 | **Les dames** | puzzle plateau précalculé (mj-38 **refonte totale**) | prise simple → rafle → partie guidée | Idem : vrai damier, règle + indices |
+| P3 | **Où est le pays ?** | QCM-tap carte (mj-22) | 5 pays → 10 → Europe → monde ; victoire = **drapeau + musique** (PY) | **Vague 2 — test réel d'abord** (« jamais marché ») |
+| P4 | **Les échecs** | puzzle plateau précalculé (mj-37 **refonte totale**) | une pièce à déplacer (règle expliquée : « le fou va en diagonale ») → 2 pièces → petit mat | **Vague 3** — vraies pièces, plateau entier (spec validée, dev différé) |
+| P5 | **Les dames** | puzzle plateau précalculé (mj-38 **refonte totale**) | prise simple → rafle → partie guidée | **Vague 3** — idem |
+| P6 | **Le memory** | moteur multi-thèmes (ex-mj-33) | 6 cartes → 8 → 12 → thème au choix | **Promu jeu V1** (v0.6) — thèmes : dinos, véhicules, animaux |
 
-Libres : **Le memory** (moteur multi-thèmes, ex-mj-33) · **Le coin écoute** (mj-12). Plus tard : **La traversée** (mj-42 — mécanique contourner/traverser à trouver) · **Les fiches pays** (idée mj-11).
+Libres : **Le coin écoute** (mj-12). Plus tard : **La traversée** (mj-42 — mécanique contourner/traverser à trouver) · **Les fiches pays** (idée mj-11).
 
-## 8. Bilan de la consolidation
+## 8. Plan de build (v0.6 — par MOTEUR, pas par copain)
+
+> Adopté du challenge externe : durcir un moteur (golden, paliers, multi-peau) → décliner ses
+> peaux dans la foulée. S1+S3+P2 = le même moteur habillé 3 fois. Construire copain par copain
+> = retoucher chaque moteur 3 fois.
+
+| Vague | Contenu | Jeux visibles |
+|-------|---------|---------------|
+| **V1 (socle)** | Moteurs comptage QCM + dés/regroupement durcis → Spino complet (S1→S4) · Galli G1/G2 (moteur tri) · Vélo V3/V5 (existent) · T-Rex T1/T2 (existent) · Para P1/P2 + memory (existent) | **14 jeux** dont ~10 existent déjà |
+| **Vague 2** | G3 boîte à mots · G5 lis-et-fais · captcha (si test tactile OK) · V1 intrus (assets) · V2 Raven · V4 dépôt (🐛 avancement) · T3 vétérinaire · T4 frise (SVG) · P3 géo (après test) | +9 |
+| **Vague 3 (paris)** | P4 échecs · P5 dames · G4 sons collés (déclencheur 2★ G3) · tangram/tetris · partage · traversée · fiches pays | selon tests |
+
+**Critère de coupe continu** : un jeu réussit si **Max le relance seul dans la semaine** — la télémétrie du bloc Découverte (derniers joués, délaissés) le mesure gratuitement.
+
+**Décisions d'implémentation (PY, 2026-07-20 soir)** :
+- Vignettes copains : **CSS animées, zéro génération d'images** — chiffres flottant autour de la tête (Spino) · lettres cursives (Galli) · drapeaux (Para) · **ombres de dino** (T-Rex — « c'est drôle ça ») · pièces/cerveau (Vélo). Têtes = assets existants (`site/img/dinos/`).
+- **Pas de voix/TTS dans les menus** avant le GO « stable » de PY.
+- Jeux non accessibles : **cachés** (pas de cadenas « bientôt ») + phrase en entrant dans le repaire (« Obtiens ★★ sur … pour ouvrir un nouveau jeu ! »).
+- **Encyclopédie Roi T-Rex : visibilité SPÉCIALE** (gros portail, pas une vignette parmi les autres) — bas du Mur + tête de repaire T-Rex.
+
+## 9. Bilan de la consolidation
 
 | | Avant | Après |
 |---|---|---|

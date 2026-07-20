@@ -22,6 +22,14 @@ export async function run({ page, ok }) {
   ok('Bus de Max présent visuellement (.is-max)', await page.locator('.car.is-max').count() === 1);
   ok('Flèche de sortie affichée', await page.locator('.exit-arrow').count() === 1);
 
+  // 🔒 figée 2026-07-20 : UN SEUL bus allumé — les autres sont éteints (grisés)
+  ok('Les autres bus sont marqués obstacles',
+    (await page.locator('.car.obstacle').count()) === state0.cars.length - 1);
+  ok('🔒 Obstacles éteints (grayscale)', await page.evaluate(() => {
+    const svg = document.querySelector('.car.obstacle svg');
+    return svg ? getComputedStyle(svg).filter.includes('grayscale') : false;
+  }));
+
   // Chemin gagnant scripté niveau 1 (tier ★, 3 coups BFS) :
   // A (idx1, vertical) descend de 1, puis Max (idx0) avance de 2 cases → sort.
   await page.evaluate(() => window.__mjTest.move(1, 1));
@@ -82,4 +90,13 @@ export async function run({ page, ok }) {
   ok('Texte de règle correspond', regleTexte === 'Fais glisser les bus pour libérer le bus jaune !', regleTexte);
   await page.click('#ri-close'); // v3 : fermeture explicite ✕ (panneau bottom-sheet)
   ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
+
+  // 🔒 figée 2026-07-20 : avancement persistant — après le palier ★ gagné (étoile 1),
+  // un rechargement reprend au palier ★★, il ne repart JAMAIS à zéro.
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.waitForTimeout(500);
+  if (await page.locator('#ri-panneau.on').count()) await page.click('#ri-ok');
+  const sReload = await page.evaluate(() => window.__mjTest.state());
+  ok('🔒 Reprise au palier ★★ après rechargement (fini le reset à zéro)', sReload.tier === 2,
+     `tier=${sReload.tier} lvl=${sReload.levelIdx}`);
 }

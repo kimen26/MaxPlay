@@ -89,6 +89,9 @@
     }
     .car.dragging { cursor:grabbing; transition:none; z-index:20; filter:drop-shadow(0 6px 14px rgba(0,0,0,0.7)); }
     .car.is-max svg { filter:drop-shadow(0 0 6px #ffd16688); }
+    /* Retour PY 2026-07-19 : UN SEUL bus doit sortir → les autres sont « éteints » */
+    .car.obstacle svg { filter:grayscale(.8) brightness(.55); }
+    .car.obstacle.dragging svg, .car.obstacle:active svg { filter:grayscale(.55) brightness(.75); }
     .car svg { display:block; width:100%; height:100%; }
     .car.bounce { animation:bounceBack .22s ease; }
     @keyframes bounceBack { 0%,100%{ transform:translate(0,0); } 50%{ transform:translate(var(--bx,0),var(--by,0)); } }
@@ -233,8 +236,20 @@
 
     // ── État global ──
     Tracker.startSession('mj-34');
-    let tier = 1;          // 1,2,3 (★, ★★, ★★★)
+    // ── Avancement persistant (fix retour PY 2026-07-19 : « 3 niveaux puis ça repart à zéro ») ──
+    // Le palier de départ suit les étoiles (1 étoile = tier 1 gagné → on reprend au tier 2),
+    // et la position DANS le palier survit au rechargement (localStorage).
+    const PROG_KEY = 'mj34_progress';
+    const startTier = Math.min(3, (window.Stars ? Stars.get('mj-34') : 0) + 1);
+    let tier = startTier;   // 1,2,3 (★, ★★, ★★★)
     let levelIdx = 0;       // 0,1,2 dans le tier courant
+    try {
+      const saved = JSON.parse(localStorage.getItem(PROG_KEY) || 'null');
+      if (saved && saved.tier === startTier && saved.levelIdx > 0) levelIdx = Math.min(2, saved.levelIdx);
+    } catch (e) {}
+    function saveProg() {
+      try { localStorage.setItem(PROG_KEY, JSON.stringify({ tier, levelIdx })); } catch (e) {}
+    }
     let cars = [];          // état vivant (copie mutable des niveaux)
     let N = 4;
     let cellSize = 80;
@@ -407,7 +422,7 @@
       // (footprint width=cellSize, height=len*cellSize — la place réellement occupée sur la grille).
       cars.forEach((c, idx) => {
         const el = document.createElement('div');
-        el.className = 'car' + (idx === 0 ? ' is-max' : '');
+        el.className = 'car' + (idx === 0 ? ' is-max' : ' obstacle');
         el.dataset.idx = idx;
         positionCar(el, c);
         const natW = c.len * cellSize; // largeur "naturelle" du SVG (avant rotation éventuelle)
@@ -572,6 +587,7 @@
       setTimeout(() => {
         evacuateOtherBuses(() => {
           levelIdx++;
+          saveProg();
           if (levelIdx >= LEVELS[tier].length){
             onTierWon();
           } else {
@@ -638,6 +654,7 @@
         } else {
           tier = 1; levelIdx = 0;
         }
+        saveProg();
         Tracker.startSession('mj-34');
         loadLevel();
       });
@@ -647,6 +664,7 @@
           wrap.remove();
           locked = false;
           levelIdx = 0;
+          saveProg();
           Tracker.startSession('mj-34');
           loadLevel();
         });

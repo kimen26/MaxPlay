@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-50 – Trouve la lettre</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mp-theme.css">
+  <style>
+    /* --- GABARIT HEADER CANONIQUE --- */
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+    body { font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
+
+    /* Cursive scolaire FR (Beaumale, avec attaches) — décision fontes v0.6 */
+    @font-face { font-family:'Cursif'; src:url('design-shared/fonts/Cursif.ttf') format('truetype'); font-display:swap; }
+
+    .stage { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:space-evenly; overflow:hidden; padding:4px 10px 12px; gap:6px; }
+
+    /* Le haut-parleur / mot mystère */
+    .son-zone { display:flex; flex-direction:column; align-items:center; gap:6px; cursor:pointer; touch-action:manipulation; }
+    .son-badge {
+      min-width:110px; min-height:110px; padding:10px 26px; border-radius:32px;
+      background:linear-gradient(160deg,#4a3f8f,#332a6b);
+      border:3px solid rgba(255,224,102,.55);
+      box-shadow:0 8px 0 #241d4e, 0 12px 26px rgba(0,0,0,.5);
+      display:flex; align-items:center; justify-content:center;
+      font-size:2.6rem; color:#ffe9a0; font-family:'Fredoka One',sans-serif;
+      transition:transform .12s;
+    }
+    .son-badge:active { transform:scale(.94); }
+    .son-badge.pulse { animation:sonPulse .9s ease; }
+    @keyframes sonPulse { 0%,100%{transform:scale(1)} 30%{transform:scale(1.12)} 55%{transform:scale(.98)} }
+    .son-sub { font-family:'Nunito',sans-serif; font-weight:800; font-size:.85rem; color:rgba(255,255,255,.7); }
+    .son-mot { font-family:'Cursif',cursive; font-size:2rem; color:#fff; }
+
+    /* Les lettres (grosses tuiles tapables) */
+    .lettres { display:flex; flex-wrap:wrap; gap:14px; justify-content:center; align-items:center; max-width:560px; padding:0 6px; }
+    .lettre {
+      min-width:96px; min-height:96px; padding:4px 16px; border-radius:24px; border:none; cursor:pointer;
+      background:linear-gradient(145deg,#265a8f,#173a61);
+      border:3px solid rgba(255,255,255,.22);
+      box-shadow:0 6px 0 #0e2440, 0 10px 20px rgba(0,0,0,.45);
+      color:#fff; display:flex; align-items:center; justify-content:center;
+      transition:transform .1s, opacity .2s, border-color .2s; touch-action:manipulation;
+    }
+    .lettre:active { transform:translateY(3px) scale(.96); box-shadow:0 2px 0 #0e2440; }
+    .lettre.cur { font-family:'Cursif',cursive; font-size:3.4rem; }
+    .lettre.scripte { font-family:'Nunito',sans-serif; font-weight:900; font-size:2.8rem; }
+    .lettre.maj { font-family:'Nunito',sans-serif; font-weight:900; font-size:2.8rem; text-transform:uppercase; }
+    .lettre.ok { background:linear-gradient(145deg,#0e9d63,#087a4b); border-color:#7dffc4; box-shadow:0 6px 0 #065c38, 0 0 24px rgba(47,191,143,.7); }
+    .lettre.ko { opacity:.35; }
+  </style>
+</head>
+<body data-ambiance="jungle">
+<div id="app">
+
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">🔤 Trouve la lettre</span>
+  </div>
+
+  <div class="stage">
+    <div class="son-zone" id="son-zone" role="button" aria-label="Réécouter le son">
+      <div class="son-badge" id="son-badge"></div>
+      <div class="son-sub" id="son-sub">Touche pour réécouter</div>
+    </div>
+    <div class="lettres" id="lettres"></div>
+  </div>
+
+</div>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
+  <script>
+  MJ.ready(function () {
+    'use strict';
+    // ─── MJ-50 : Trouve la lettre — le SON d'abord (spec G1, Montessori/Ehri) ───
+    // La consigne audio dit LE SON (/m/ = « mmm », jamais « ème »).
+    // N0 : sons simples, cursives · N1 : + allures (script, majuscules)
+    // N2 : confusables (b/d/p/q, m/n/u…) + « quel son au début de "maman" ? ».
+    const GAME_ID = 'mj-50';
+
+    // Graphie phonétique du SON de chaque lettre (jamais le nom de la lettre).
+    // Rate lent (0.6) — méthode validée par le POC design-lecture/mockup-01.
+    const SONS = {
+      a:'aaa', e:'eee', i:'iii', o:'ooo', u:'uuu',
+      m:'mmm', s:'sss', f:'fff', l:'lll', r:'rrr', v:'vvv', j:'jjj', z:'zzz', n:'nnn',
+      b:'be', d:'de', p:'pe', t:'te', c:'ke', g:'gue', h:'h muet', k:'ke', q:'ke',
+    };
+    // MP3 ElevenLabs dispo (sounds/phonemes/) — fallback TTS sinon (règle d'or audio)
+    const MP3 = { a:'son-a', l:'son-le', m:'son-me', r:'son-re', t:'son-te' };
+
+    // Pools par niveau
+    const POOL_N0 = ['a','i','o','u','m','s','l','r','f','v'];          // sons simples continus
+    const POOL_N1 = POOL_N0.concat(['e','t','p','n','j','z']);
+    const CONFUSABLES = [['b','d','p','q'], ['m','n','u','v'], ['h','k','l','t'], ['a','o','c','e'], ['f','t','l','j']];
+    // Mots simples pour « le son du début » (mot → lettre initiale)
+    const MOTS = [
+      ['maman','m'], ['papa','p'], ['souris','s'], ['lune','l'], ['radis','r'],
+      ['vélo','v'], ['tortue','t'], ['bus','b'], ['domino','d'], ['nid','n'],
+      ['ami','a'], ['fusée','f'], ['jardin','j'], ['zèbre','z'], ['île','i'],
+    ];
+
+    const shell = MJ.init({
+      id: GAME_ID, emoji: '🔤', titre: 'Trouve la lettre',
+      golden: true, consigne: true,
+      onRepeat: () => playTarget(),
+      regle: {
+        picto: '🔤👂',
+        texte: 'Écoute le son, et touche la lettre qui le fait !',
+        etapes: [
+          { t: 'J’écoute le son 👂',
+            d: 'La voix fait le SON de la lettre : « mmm », « sss »… jamais son nom d’école.' },
+          { t: 'Je touche la bonne lettre 👆',
+            d: 'Les lettres sont écrites en attaché. Le haut-parleur répète le son si je le touche.' },
+          { t: 'Les lettres changent de costume 🎭',
+            d: 'Plus j’ai d’étoiles, plus les lettres s’habillent : attaché, détaché, MAJUSCULES !' },
+          { t: 'Et même le son des mots 🗣️',
+            d: 'Au dernier niveau : « quel son au début de maman ? » — et des lettres qui se ressemblent !' }
+        ]
+      }
+    });
+    const G = shell.G;
+
+    const lettresEl = document.getElementById('lettres');
+    const badgeEl = document.getElementById('son-badge');
+    const motSub = document.getElementById('son-sub');
+
+    // Haut-parleur SVG (zéro emoji dans le visuel principal — règle 0bis)
+    const HP_SVG = '<svg width="56" height="56" viewBox="0 0 24 24" fill="none">'
+      + '<path d="M4 9v6h4l5 4V5L8 9H4z" fill="#ffe9a0"/>'
+      + '<path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" stroke="#ffe9a0" stroke-width="1.8" stroke-linecap="round"/></svg>';
+
+    function rnd(a) { return a[Math.floor(Math.random() * a.length)]; }
+    function shuffleA(a) { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
+
+    let qCount = 0, qcm = null, target = '', curMot = null, roundLock = false;
+    let testMode = false, forcedLevel = null, lastTarget = '';
+    function level() { return forcedLevel !== null ? forcedLevel : G.level; }
+
+    // ── Audio : le SON de la lettre (MP3 → fallback TTS lent) ──
+    let curAudio = null;
+    function playSound(letter) {
+      try { if (curAudio) { curAudio.pause(); curAudio = null; } } catch (e) {}
+      badgeEl.classList.remove('pulse'); void badgeEl.offsetWidth; badgeEl.classList.add('pulse');
+      if (MP3[letter]) {
+        try {
+          curAudio = new Audio('sounds/phonemes/' + MP3[letter] + '.mp3');
+          curAudio.volume = 0.9;
+          curAudio.onerror = () => { shell.say ? sayPhoneme(letter) : null; };
+          curAudio.play().catch(() => sayPhoneme(letter));
+          return;
+        } catch (e) {}
+      }
+      sayPhoneme(letter);
+    }
+    function sayPhoneme(letter) {
+      try {
+        if (window.TTS && TTS.speak) { TTS.speak(SONS[letter] || letter, { rate: 0.6, priority: true }); return; }
+      } catch (e) {}
+      shell.say(SONS[letter] || letter);
+    }
+    function playTarget() {
+      if (curMot) {
+        shell.say('Quel son au début de… ' + curMot + ' ?');
+        setTimeout(() => playSound(target), testMode ? 0 : 1800);
+      } else {
+        playSound(target);
+      }
+    }
+
+    // ── Une question ──
+    function nextQuestion() {
+      if (qCount >= G.totalQ) return showEnd();
+      qCount++;
+      qcm = QcmRetry.create();
+      roundLock = false;
+      curMot = null;
+      const lv = level();
+
+      let pool, allures, count;
+      if (lv === 0) { pool = POOL_N0; allures = ['cur']; count = 4; }
+      else if (lv === 1) { pool = POOL_N1; allures = ['cur', 'scripte', 'maj']; count = 4; }
+      else {
+        allures = ['cur', 'cur', 'scripte', 'maj']; count = 4;
+        if (qCount % 2 === 0) {
+          // variante mot : « quel son au début de "maman" ? »
+          const m = rnd(MOTS.filter(x => x[1] !== lastTarget));
+          curMot = m[0]; target = m[1];
+          pool = null;
+        } else {
+          pool = rnd(CONFUSABLES); count = Math.min(4, pool.length);
+        }
+      }
+
+      let choices;
+      if (curMot) {
+        target = target; // déjà fixé
+        const others = shuffleA(POOL_N1.filter(l => l !== target)).slice(0, count - 1);
+        choices = shuffleA([target, ...others]);
+      } else {
+        const p = pool.filter(l => l !== lastTarget);
+        target = rnd(p.length ? p : pool);
+        const others = shuffleA(pool.filter(l => l !== target)).slice(0, count - 1);
+        choices = shuffleA([target, ...others]);
+      }
+      lastTarget = target;
+
+      // Rendu
+      lettresEl.innerHTML = '';
+      choices.forEach(l => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'lettre ' + rnd(allures);
+        b.textContent = l;
+        b.dataset.lettre = l;
+        if (l === target) b.dataset.correct = '1';
+        b.addEventListener('click', () => answer(l === target, b));
+        lettresEl.appendChild(b);
+      });
+
+      if (curMot) {
+        badgeEl.innerHTML = '<span class="son-mot">' + curMot + '</span>';
+        motSub.textContent = 'Quel son au début ?';
+        shell.setConsigne('Quel son au début de « ' + curMot + ' » ?', false);
+      } else {
+        badgeEl.innerHTML = HP_SVG;
+        motSub.textContent = 'Touche pour réécouter';
+        shell.setConsigne('Touche la lettre qui fait ce son !', false);
+      }
+      if (!testMode) setTimeout(playTarget, 350);
+    }
+
+    function answer(isCorrect, btn) {
+      if (roundLock || btn.disabled) return;
+      const res = QcmRetry.handle(qcm, isCorrect);
+      if (res.outcome === 'ignored') return;
+      if (res.outcome === 'correct') {
+        btn.classList.add('ok');
+        try { sndDing(); } catch (e) {}
+        roundLock = true;
+        G.notePip(qCount - 1, res.attempts, btn);
+        if (!testMode) {
+          if (curMot) shell.say(curMot + ' commence par ' + (SONS[target] || target) + ' !');
+          else sayPhoneme(target);
+        }
+        setTimeout(nextQuestion, testMode ? 0 : 1900);
+      } else if (res.outcome === 'reveal') {
+        btn.classList.add('ko'); btn.disabled = true;
+        try { sndBuzz(); } catch (e) {}
+        const okEl = QcmRetry.revealCorrect(lettresEl);
+        roundLock = true;
+        G.notePip(qCount - 1, 4, okEl);
+        if (!testMode) sayPhoneme(target);
+        setTimeout(nextQuestion, testMode ? 0 : 2300);
+      } else {
+        btn.classList.add('ko'); btn.disabled = true;
+        try { sndBuzz(); } catch (e) {}
+        if (!testMode) setTimeout(playTarget, 300); // on réécoute le son cible (POC-01)
+      }
+    }
+
+    function showEnd() { G.showEnd({ replayUrl: 'mj-50.html' }); }
+
+    document.getElementById('son-zone').addEventListener('click', playTarget);
+
+    // ── Paramètres test/screenshot : ?level=N ──
+    const qs = new URLSearchParams(location.search);
+    if (qs.get('level') !== null) forcedLevel = Math.max(0, Math.min(2, parseInt(qs.get('level'), 10) || 0));
+
+    // ── Harnais Playwright ──
+    window.__mjTest = {
+      get state() {
+        return {
+          qCount, totalQ: G.totalQ, level: level(), target, mot: curMot, roundLock,
+          choices: [...lettresEl.querySelectorAll('.lettre')].map(b => b.dataset.lettre),
+          allures: [...lettresEl.querySelectorAll('.lettre')].map(b => b.className.replace('lettre ', '').replace(/ (ok|ko)/g, '')),
+        };
+      },
+      setTestMode(on) { testMode = !!on; },
+      setDifficulty(lvl) { forcedLevel = Math.max(0, Math.min(2, lvl)); qCount = 0; nextQuestion(); },
+      answer(correct) {
+        const btn = correct
+          ? lettresEl.querySelector('[data-correct="1"]')
+          : lettresEl.querySelector('.lettre:not([data-correct="1"]):not(.ko)');
+        if (btn) btn.click();
+      },
+      next() { nextQuestion(); },
+    };
+
+    nextQuestion();
+  });
+  </script>
+</body>
+</html>

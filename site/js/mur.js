@@ -18,11 +18,9 @@
   'use strict';
 
   // ── Méta locale des jeux absents de catalog.js ─────────────────────
-  // mj-14 (cases mystères, matrices de Raven) : le fichier existe et
-  // tourne, mais l'entrée catalogue a été retirée → méta déclarée ici.
-  var LOCAL_META = {
-    'mj-14': { id: 'mj-14', titre: 'Les cases mystères', url: 'mj-14.html', maxStars: 3 }
-  };
+  // (vide depuis 2026-07-20 : mj-14 a retrouvé sa vraie entrée catalogue.
+  //  Pattern conservé pour un futur jeu hors catalogue.)
+  var LOCAL_META = {};
 
   // ── Les 5 copains + Tritri (hôte) ──────────────────────────────────
   var TRITRI = { tete: 'img/dinos/sprites/Triceratops_tete.png' };

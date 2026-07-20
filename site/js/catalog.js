@@ -71,6 +71,7 @@ window.MAXPLAY_CATALOG = [
 
   // ─── 🧩 Casse-têtes (fusion logique + observer + bricoler) ───
   { id:'mj-13a', category:'casse',    titre:'Le premier bus',       emoji:'🥇', desc:'Quel bus arrive en premier ?',       url:'mj-13a.html', type:'html', orientation:'any',       access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
+  { id:'mj-14',  category:'casse',    titre:'Les cases mystères',   emoji:'🔮', desc:'Devine la case qui manque dans la grille magique !', url:'mj-14.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },
   { id:'mj-15',  category:'casse',    titre:'L\'intrus',            emoji:'🔍', desc:'Lequel est l\'intrus ?',              url:'mj-15.html',  type:'html', orientation:'any',       access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
   { id:'mj-16',  category:'casse',    titre:'Complète la suite',    emoji:'📈', desc:'Qu\'est-ce qui vient ensuite ?',      url:'mj-16.html',  type:'html', orientation:'any',       access:'sequence', maxStars:3, unlock:null, tag:null,  status:'live' },
   { id:'mj-34',  category:'casse',    titre:'Le dépôt bloqué',      emoji:'🚧', desc:'Fais glisser les bus, libère le tien !', url:'mj-34.html', type:'html', orientation:'any',   access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },

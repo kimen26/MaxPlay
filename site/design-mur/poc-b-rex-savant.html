@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>POC B — Rex le savant (T-Rex = encyclopédie, Anky copain des jeux dino)</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  body {
+    font-family:'Nunito',sans-serif; color:#fff; min-height:100dvh; overflow-x:hidden;
+    background:
+      radial-gradient(900px 500px at 85% -10%, #1d2a5e 0%, transparent 60%),
+      radial-gradient(800px 500px at 0% 110%, #241a4d 0%, transparent 55%),
+      linear-gradient(180deg,#0a0f24,#101638 60%,#141b42);
+  }
+  .poc-tag {
+    position:fixed; top:8px; left:50%; transform:translateX(-50%); z-index:60;
+    background:rgba(0,0,0,.55); border:1px solid rgba(255,255,255,.18); border-radius:999px;
+    font:800 11px 'Nunito'; padding:4px 12px; color:#cdd6f4; white-space:nowrap;
+  }
+  .poc-tag a { color:#ffd166; text-decoration:none; }
+
+  .tritri { display:flex; align-items:center; gap:10px; padding:44px 16px 4px; }
+  .tritri img { width:86px; height:86px; object-fit:contain; filter:drop-shadow(0 6px 10px rgba(0,0,0,.5)); }
+  .bulle { position:relative; background:#1c2547; border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:9px 13px; font-weight:800; font-size:14px; line-height:1.35; }
+  .bulle::before { content:''; position:absolute; left:-8px; top:30px; width:14px; height:14px; background:#1c2547; border-left:1px solid rgba(255,255,255,.14); border-bottom:1px solid rgba(255,255,255,.14); transform:rotate(45deg); }
+  .bloc-titre { padding:12px 18px 8px; font-family:'Fredoka One'; font-size:15px; color:#ffd166; letter-spacing:.4px; }
+  .decouv { display:flex; gap:10px; padding:0 16px; }
+  .mini { flex:1; background:#182142; border:1px solid rgba(255,255,255,.12); border-radius:16px; padding:10px 8px 8px; text-align:center; cursor:pointer; }
+  .mini .vig { width:100%; aspect-ratio:1; border-radius:12px; margin-bottom:6px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .mini b { font-size:11.5px; font-weight:900; display:block; line-height:1.15; }
+  .mini .st { color:#ffd166; font-size:11px; letter-spacing:2px; }
+  .prefs { display:flex; gap:8px; padding:2px 16px 4px; overflow-x:auto; }
+  .pref { flex:0 0 auto; display:flex; align-items:center; gap:6px; background:#182142; border:1px solid rgba(255,255,255,.12); border-radius:999px; padding:6px 12px 6px 7px; font-size:12px; font-weight:900; }
+  .pref .pv { width:26px; height:26px; border-radius:50%; }
+
+  .parade-head { display:flex; align-items:baseline; justify-content:space-between; padding:14px 18px 6px; }
+  .parade-head h2 { font-family:'Fredoka One'; font-size:17px; }
+  .parade-head span { font-size:11.5px; font-weight:800; color:#8fa0d0; }
+  .parade { display:flex; gap:14px; overflow-x:auto; scroll-snap-type:x mandatory; padding:6px 16px 14px; scrollbar-width:none; }
+  .parade::-webkit-scrollbar { display:none; }
+  .copain {
+    scroll-snap-align:center; flex:0 0 68%; position:relative; overflow:hidden;
+    background:linear-gradient(160deg,#1b2650,#121a3c);
+    border:1px solid rgba(255,255,255,.14); border-radius:22px; padding:14px 12px 12px;
+    text-align:center; cursor:pointer; user-select:none; touch-action:pan-x;
+  }
+  .copain img.av { height:110px; object-fit:contain; filter:drop-shadow(0 8px 12px rgba(0,0,0,.5)); pointer-events:none; }
+  .copain b { display:block; font-family:'Fredoka One'; font-size:19px; margin-top:2px; }
+  .copain small { display:block; font-weight:800; font-size:12px; color:#8fa0d0; }
+  .copain .etoiles { margin-top:5px; color:#ffd166; font-size:13px; letter-spacing:2px; }
+  .copain .go { position:absolute; right:10px; top:50%; transform:translateY(-50%); font-size:20px; color:#ffd166; animation:goNudge 1.6s ease-in-out infinite; }
+  @keyframes goNudge { 0%,100%{transform:translateY(-50%) translateX(0);} 50%{transform:translateY(-50%) translateX(6px);} }
+
+  .fl { position:absolute; pointer-events:none; opacity:.85; animation:flott 3.4s ease-in-out infinite; }
+  @keyframes flott { 0%,100%{transform:translateY(0) rotate(-4deg);} 50%{transform:translateY(-9px) rotate(5deg);} }
+  .fl.chiffre { font-family:'Fredoka One'; color:#ffd166; font-size:19px; }
+  .fl.lettre { font-family:'Cursif',cursive; color:#9fe6b0; font-size:22px; }
+  .fl img { width:34px; opacity:.5; }
+  .fl.flag { width:22px; height:14px; border-radius:3px; box-shadow:0 2px 4px rgba(0,0,0,.4); }
+  .fl.puz { width:16px; height:16px; border-radius:5px; background:#8fa0d0; }
+
+  /* ── LE TRÔNE DU ROI : grand portail encyclopédie (pattern B) ──── */
+  .trone {
+    margin:6px 16px 26px; position:relative; overflow:hidden; cursor:pointer;
+    background:linear-gradient(160deg,#4a3208,#241a04);
+    border:2px solid #ffd166; border-radius:24px; padding:16px;
+    display:flex; align-items:center; gap:14px;
+    box-shadow:0 0 26px rgba(255,209,102,.3);
+  }
+  .trone img.rex { height:104px; object-fit:contain; filter:drop-shadow(0 8px 14px rgba(0,0,0,.6)); }
+  .trone .txt b { display:block; font-family:'Fredoka One'; font-size:21px; color:#ffd166; line-height:1.15; }
+  .trone .txt small { display:block; font-weight:800; font-size:12.5px; color:#e8d9b0; margin-top:3px; }
+  .trone .txt .go2 { display:inline-block; margin-top:8px; background:#ffd166; color:#3a2a05; font-weight:900; font-size:13px; border-radius:999px; padding:7px 14px; }
+  .trone .ombre-band { position:absolute; right:-8px; bottom:-6px; display:flex; align-items:flex-end; gap:2px; opacity:.35; pointer-events:none; }
+  .trone .ombre-band img { height:56px; }
+
+  .repaire { position:fixed; inset:0; z-index:50; background:linear-gradient(180deg,#0c1226,#131a3f); transform:translateX(102%); transition:transform .35s cubic-bezier(.3,.9,.3,1); overflow-y:auto; }
+  .repaire.show { transform:translateX(0); }
+  .rep-head { display:flex; align-items:center; gap:12px; padding:48px 16px 6px; }
+  .rep-head .bk { width:44px; height:44px; border-radius:50%; border:0; background:rgba(255,255,255,.1); color:#fff; font-size:20px; font-weight:900; cursor:pointer; }
+  .rep-head img { width:64px; height:64px; object-fit:contain; }
+  .rep-head b { font-family:'Fredoka One'; font-size:20px; display:block; }
+  .rep-head span { font-size:12px; font-weight:800; color:#8fa0d0; }
+  .rep-bulle { margin:10px 16px; background:#1c2547; border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:11px 14px; font-weight:800; font-size:14px; }
+  .rep-jeu { display:flex; align-items:center; gap:12px; margin:8px 16px; background:#182142; border:1px solid rgba(255,255,255,.12); border-radius:18px; padding:10px; }
+  .rep-jeu .vig { width:64px; height:64px; border-radius:14px; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+  .rep-jeu b { font-size:14.5px; font-weight:900; display:block; }
+  .rep-jeu .st { color:#ffd166; font-size:12px; letter-spacing:2px; }
+  .rep-note { text-align:center; color:#ffd166; font-weight:800; font-size:12.5px; padding:8px 20px 30px; }
+
+  .v-oeufs { background:linear-gradient(150deg,#4d3a12,#231a08); }
+  .v-oeufs i { width:20%; aspect-ratio:.78; border-radius:50% 50% 50% 50%/60% 60% 40% 40%; background:#f5e3c2; margin:0 2px; }
+  .v-constel { background:radial-gradient(circle at 50% 45%, #16264d, #070d1d 80%); }
+  .v-constel i { width:13%; aspect-ratio:1; border-radius:50%; background:#fff7d6; box-shadow:0 0 8px 3px rgba(255,240,180,.75); margin:0 3px; }
+  .v-bus { background:linear-gradient(150deg,#3d3410,#1c1808); }
+  .v-bus i { width:60%; height:34%; border-radius:6px; background:#2fbf8f; box-shadow:inset 0 -6px 0 rgba(0,0,0,.3); }
+  .v-couleur { background:linear-gradient(150deg,#3d2c10,#1c1408); }
+  .v-couleur i { width:26%; aspect-ratio:1; border-radius:50%; margin:0 2px; mix-blend-mode:screen; }
+  .v-ombre { background:radial-gradient(circle at 50% 40%, #2b3f66, #0b1428 75%); }
+  .v-ombre img { width:70%; height:70%; object-fit:contain; opacity:.85; }
+</style>
+</head>
+<body>
+<div class="poc-tag">POC B « Rex le savant » — T-Rex = encyclopédie · <a href="index.html">sommaire</a></div>
+
+<div class="tritri">
+  <img src="../img/avatars/tritri_joyeux_3.png" alt="Tritri">
+  <div class="bulle">Salut Max ! Regarde ce que j'ai trouvé pour toi aujourd'hui !</div>
+</div>
+<div class="bloc-titre">🔎 À découvrir</div>
+<div class="decouv">
+  <div class="mini"><div class="vig v-oeufs"><i></i><i></i><i></i></div><b>Les œufs surprises</b><span class="st">★★☆</span></div>
+  <div class="mini"><div class="vig v-constel"><i></i><i></i><i></i></div><b>Les constellations</b><span class="st">★☆☆</span></div>
+  <div class="mini"><div class="vig v-couleur"><i style="background:#e0655a"></i><i style="background:#ffd166"></i><i style="background:#4d9de0"></i></div><b>L'atelier peinture</b><span class="st">☆☆☆</span></div>
+</div>
+<div class="bloc-titre">❤️ Tes préférés</div>
+<div class="prefs">
+  <div class="pref"><div class="pv v-bus"><i></i></div>La course des bus</div>
+  <div class="pref"><div class="pv v-constel"><i></i></div>Les potions</div>
+</div>
+
+<div class="parade-head"><h2>Les copains</h2><span>glisse vers la droite pour entrer →</span></div>
+<div class="parade" id="parade"></div>
+
+<!-- LE TRÔNE DU ROI T-REX : il EST l'encyclopédie, plus un repaire de jeux -->
+<div class="trone" onclick="alert('→ encyclopedie (dev-dinos.html)')">
+  <img class="rex" src="../img/avatars/trex_joyeux_1.png" alt="Roi T-Rex">
+  <div class="txt">
+    <b>Le royaume<br>du Roi T-Rex</b>
+    <small>L'encyclopédie de tous les dinosaures — 62 fiches, cris, images !</small>
+    <span class="go2">Ouvrir le grand livre →</span>
+  </div>
+  <div class="ombre-band">
+    <img src="../img/dinos/ombres/Diplodocus_ombre.png">
+    <img src="../img/dinos/ombres/Triceratops_ombre.png">
+    <img src="../img/dinos/ombres/Pteranodon_ombre.png">
+  </div>
+</div>
+
+<div class="repaire" id="repaire"></div>
+
+<script>
+const AV = '../img/avatars/';
+const OMB = '../img/dinos/ombres/';
+const COPAINS = [
+  { id:'spino', nom:'Spino', dom:'compter', av:'spino_joyeux_1.png', floats:'chiffres', stars:'★★★★☆☆☆☆☆',
+    phrase:'Splish splash ! Avec moi, on compte les poissons et plein de trésors !',
+    jeux:[{t:'Les œufs surprises',v:'v-oeufs',s:'★★★'},{t:'Les constellations',v:'v-constel',s:'★★☆'},{t:'Tout le monde monte !',v:'v-bus',s:'☆☆☆'}] },
+  { id:'galli', nom:'Galli', dom:'lire & écrire', av:'galli_joyeux_1.png', floats:'lettres', stars:'★★☆☆☆☆☆☆☆',
+    phrase:'Vite vite ! Les lettres dansent, attrape-les !',
+    jeux:[{t:'Trouve la lettre',v:'v-constel',s:'☆☆☆'},{t:'Le tri des lettres',v:'v-oeufs',s:'★☆☆'}] },
+  { id:'velo', nom:'Vélo', dom:'casse-têtes', av:'velo_joyeux_1.png', floats:'puzzle', stars:'★★★★★☆☆☆☆',
+    phrase:'Chhht… un vrai détective réfléchit doucement.',
+    jeux:[{t:'Trouve-le !',v:'v-oeufs',s:'★★★'},{t:'Les potions',v:'v-couleur',s:'★★☆'}] },
+  { id:'para', nom:'Para', dom:'couleurs & monde', av:'paras_joyeux_1.png', floats:'drapeaux', stars:'★★★☆☆☆☆☆☆',
+    phrase:'Tadada ! Je chante les couleurs et je voyage autour du monde !',
+    jeux:[{t:'L\'atelier peinture',v:'v-couleur',s:'★★★'},{t:'Compte avec le monde',v:'v-bus',s:'★☆☆'}] },
+  // Anky reprend les JEUX dino (le T-Rex ne garde que l'encyclopédie)
+  { id:'anky', nom:'Anky', dom:'les dinos', av:'anky_joyeux_1.png', floats:'ombres', stars:'★★★★☆☆☆☆☆',
+    phrase:'Bonk bonk ! Avec ma grosse queue, je te fais découvrir tous les dinos !',
+    jeux:[{t:'Le cache-cache des dinos',v:'v-ombre',img:'Triceratops_ombre.png',s:'★★☆'},{t:'La lampe magique',v:'v-ombre',img:'Gallimimus_ombre.png',s:'★☆☆'},{t:'Le vétérinaire',v:'v-oeufs',s:'☆☆☆'}] },
+];
+const FLAGS = [['#009c3b','#ffdf00','#002776'],['#0055a4','#fff','#ef4135'],['#aa151b','#f1bf00','#aa151b']];
+
+function floatsHtml(kind){
+  let h='';
+  for(let i=0;i<5;i++){
+    const left=[8,78,4,74,40][i]+'%', top=[12,10,58,52,34][i]+'%', d=(i*0.5).toFixed(1)+'s';
+    let inner='';
+    if(kind==='chiffres') inner='<span class="fl chiffre" style="left:'+left+';top:'+top+';animation-delay:'+d+'">'+[1,3,5,2,7][i]+'</span>';
+    else if(kind==='lettres') inner='<span class="fl lettre" style="left:'+left+';top:'+top+';animation-delay:'+d+'">'+['a','m','s','o','l'][i]+'</span>';
+    else if(kind==='ombres') inner='<span class="fl" style="left:'+left+';top:'+top+';animation-delay:'+d+'"><img src="'+OMB+['Triceratops_ombre.png','Diplodocus_ombre.png','Pteranodon_ombre.png','Velociraptor_ombre.png','Stegosaurus_ombre.png'][i]+'"></span>';
+    else if(kind==='drapeaux'){ const f=FLAGS[i%3]; inner='<span class="fl flag" style="left:'+left+';top:'+top+';animation-delay:'+d+';background:linear-gradient(90deg,'+f[0]+' 33%,'+f[1]+' 33% 66%,'+f[2]+' 66%)"></span>'; }
+    else inner='<span class="fl puz" style="left:'+left+';top:'+top+';animation-delay:'+d+'"></span>';
+    h+=inner;
+  }
+  return h;
+}
+
+const parade = document.getElementById('parade');
+COPAINS.forEach(c=>{
+  const el = document.createElement('div');
+  el.className='copain';
+  el.innerHTML = floatsHtml(c.floats)
+    + '<img class="av" src="'+AV+c.av+'">'
+    + '<b>'+c.nom+'</b><small>'+c.dom+'</small>'
+    + '<div class="etoiles">'+c.stars+'</div>'
+    + '<span class="go">→</span>';
+  armSwipe(el, ()=>openRepaire(c));
+  parade.appendChild(el);
+});
+
+function armSwipe(el, open){
+  let x0=null, y0=null, moved=false;
+  el.addEventListener('pointerdown', e=>{ x0=e.clientX; y0=e.clientY; moved=false; });
+  el.addEventListener('pointermove', e=>{
+    if(x0===null) return;
+    const dx=e.clientX-x0, dy=e.clientY-y0;
+    if(Math.abs(dx)>8||Math.abs(dy)>8) moved=true;
+    if(dx>70){ x0=null; open(); }
+  });
+  el.addEventListener('pointerup', ()=>{ if(x0!==null && !moved) open(); x0=null; });
+}
+
+function openRepaire(c){
+  const r = document.getElementById('repaire');
+  r.innerHTML = '<div class="rep-head"><button class="bk" onclick="closeRepaire()">‹</button>'
+    + '<img src="'+AV+c.av+'"><div><b>'+c.nom+'</b><span>'+c.dom+'</span></div></div>'
+    + '<div class="rep-bulle">'+c.phrase+'</div>'
+    + c.jeux.map(j=>'<div class="rep-jeu"><div class="vig '+j.v+'">'+(j.img?'<img src="'+OMB+j.img+'">':'<i></i><i></i><i></i>')+'</div><div><b>'+j.t+'</b><span class="st">'+j.s+'</span></div></div>').join('')
+    + '<div class="rep-note">Obtiens ★★ sur un jeu pour ouvrir le suivant !</div>';
+  requestAnimationFrame(()=>r.classList.add('show'));
+}
+function closeRepaire(){ document.getElementById('repaire').classList.remove('show'); }
+
+const q = new URLSearchParams(location.search);
+if(q.get('repaire')){ const c = COPAINS.find(x=>x.id===q.get('repaire')); if(c) openRepaire(c); }
+</script>
+</body>
+</html>

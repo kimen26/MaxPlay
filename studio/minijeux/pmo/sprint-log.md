@@ -1392,3 +1392,21 @@ Exécution de `docs/specs/2026-07-20-DELEGATION-LLM-MENU-CIBLE.md` (F1/F2 mj-46/
 **Validation** : screenshots headless N0/N2 (mj-46, 5 puis 11 œufs en vrac dans le nid, QCM visible) + question et état célébré (mj-47) — `temp/mj46-n0b/mj46-n2b/mj47-domino/mj47-celebre.png`.
 
 **Leçon process** : harnais `temp/test-shot.html` réutilisable — pré-remplit `mp_regle_vue_<id>` + fausses étoiles (`maxplay_progress`) puis `location.replace` vers le jeu → screenshots de n'importe quel palier sans jouer.
+
+---
+
+## 2026-07-20 — POC refonte du Mur (menu principal)
+
+**Décisions PY gravées** : avatars cartoon (`img/avatars/`) pour les copains au menu (pas les sprites réalistes) · copains en barre horizontale, entrée dans le repaire par **swipe droite** (>70px) ou tap · flottants thématiques conservés dans les cartes (chiffres/ombres/lettres/drapeaux/puzzle) · Tritri sans repaire : jeux en visuel direct (Découverte + Préférés), zone refaite (avatar + bulle + vignettes).
+
+**POC livrés** (`site/design-mur/`, interactifs, testables sur tablette) :
+- `index.html` — sommaire comparatif des 3 patterns.
+- **A `poc-a-parade.html`** — encyclo = dernière carte de la parade (carte-livre dorée, T-Rex sans repaire, jeux dino à recaser).
+- **B `poc-b-rex-savant.html`** — T-Rex = portail-trône doré en bas (il EST l'encyclo), jeux dino transférés à un nouveau copain **Anky**.
+- **C `poc-c-livre-magique.html`** — encyclo = livre doré flottant en dock bas-droite, toujours visible ; T-Rex garde son repaire.
+
+**Commun** : parade horizontale scroll-snap, repaire en overlay slide depuis la droite, `?repaire=spino` ouvre directement, zéro emoji en visuel, pas de TTS (en attente GO).
+
+**Validation** : screenshots `temp/poc-a.png / poc-a-repaire.png / poc-b.png / poc-c.png` — rendus bons (défauts assumés POC : 3e vignette Découverte rognée à 420px, vignettes overlay simplistes).
+
+**En attente** : choix de pattern par PY (ou mix) → ensuite refonte réelle de `index.html` + `js/mur.js` + `css/mur.css` (mapping `COPAINS.tete` → avatars).

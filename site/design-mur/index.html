@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Design Mur — POC patterns menu</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  body { font-family:'Nunito',sans-serif; background:#0a0f24; color:#fff; padding:30px 18px; max-width:640px; margin:0 auto; }
+  h1 { font-family:'Fredoka One'; font-size:22px; margin-bottom:4px; }
+  p.sub { color:#8fa0d0; font-weight:800; font-size:13px; margin-bottom:18px; }
+  a.poc { display:block; background:#182142; border:1px solid rgba(255,255,255,.14); border-radius:18px; padding:16px; margin-bottom:12px; text-decoration:none; color:#fff; }
+  a.poc b { font-family:'Fredoka One'; font-size:17px; color:#ffd166; display:block; margin-bottom:4px; }
+  a.poc span { font-size:13px; font-weight:800; color:#cdd6f4; line-height:1.4; display:block; }
+  a.poc em { display:block; font-style:normal; font-size:12px; color:#8fa0d0; margin-top:6px; font-weight:800; }
+</style>
+</head>
+<body>
+<h1>Le Mur — 3 patterns (POC)</h1>
+<p class="sub">Commun aux 3 : avatars cartoon · zone Tritri en visuel direct · parade horizontale · swipe → pour entrer dans un repaire. Ce qui change : l'encyclopédie.</p>
+
+<a class="poc" href="poc-a-parade.html">
+  <b>POC A « La parade »</b>
+  <span>L'encyclopédie est la DERNIÈRE CARTE de la parade : une carte-livre dorée avec le Roi T-Rex, visuellement distincte des copains. Les jeux dino restent chez le T-Rex… non — dans A, T-Rex n'a PAS de repaire : la carte-livre remplace son repaire. Les jeux dino devront être recasés (Découverte ou autre copain).</span>
+  <em>+ simple, une seule liste · − les jeux dino perdent leur copain</em>
+</a>
+
+<a class="poc" href="poc-b-rex-savant.html">
+  <b>POC B « Rex le savant »</b>
+  <span>Le Roi T-Rex devient un GRAND PORTAIL doré en bas de page (trône) : il EST l'encyclopédie. Ses jeux dino passent à un nouveau copain, Anky, dans la parade.</span>
+  <em>+ encyclo très visible, jeux dino conservés · − introduit un 6e personnage</em>
+</a>
+
+<a class="poc" href="poc-c-livre-magique.html">
+  <b>POC C « Le livre magique »</b>
+  <span>L'encyclopédie est un LIVRE DORÉ FLOTTANT, toujours visible en bas à droite (dock), sur toutes les pages du menu. Le Roi T-Rex garde son repaire de jeux dino dans la parade.</span>
+  <em>+ rien ne change pour les copains, encyclo accessible partout · − un élément flottant permanent peut gêner</em>
+</a>
+</body>
+</html>

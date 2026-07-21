@@ -12,12 +12,6 @@
     body { font-family:'Nunito',sans-serif; height:100dvh; overflow:hidden; touch-action:none; }
     #app { display:flex; flex-direction:column; height:100dvh; max-width:480px; margin:0 auto; }
 
-    .progress-zone { display:flex; justify-content:center; align-items:center; gap:6px; padding:5px 16px 3px; flex-shrink:0; }
-    .prog-dot { width:11px; height:11px; border-radius:50%; background:rgba(255,255,255,0.12); border:2px solid rgba(255,255,255,0.25); transition:all 0.3s; }
-    .prog-dot.done { background:var(--ok,#00c47a); border-color:var(--ok,#00c47a); box-shadow:0 0 6px #00c47a88; }
-    .prog-dot.current { background:var(--gold-soft,rgba(255,220,80,0.25)); border-color:var(--gold,#ffe066); animation:dotPulse 1.2s ease-in-out infinite alternate; }
-    @keyframes dotPulse { from{box-shadow:0 0 0px rgba(255,220,80,0.3);} to{box-shadow:0 0 8px rgba(255,220,80,0.8);} }
-
     /* Pots de couleur */
     .pots-zone { display:flex; justify-content:center; gap:8px; padding:6px 12px 4px; flex-shrink:0; }
     .pot { width:72px; height:72px; border-radius:18px; border:none; cursor:pointer; font-family:'Nunito',sans-serif; font-weight:900; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px; box-shadow:0 6px 20px rgba(0,0,0,0.5); transition:transform 0.1s, box-shadow 0.1s; }
@@ -105,12 +99,7 @@
 <body>
 <div id="app">
 
-  <div class="hdr">
-    <a href="index.html" class="back">&#8592;</a>
-    <span class="htitle">🎨 Peins les bus !</span>
-  </div>
-
-  <div class="progress-zone" id="progress"></div>
+  <!-- .hdr et #pips (piste + étoiles) sont créés par le gabarit MJ.init (golden:true) -->
 
   <!-- Pots de couleur -->
   <div class="pots-zone">
@@ -171,23 +160,14 @@
   </div>
 </div>
 
-<div class="overlay" id="fin-overlay" style="z-index:101;">
-  <div class="ov-box">
-    <div class="ov-emoji">&#128652;</div>
-    <div class="ov-title">Tous les bus sont peints !</div>
-    <div class="ov-text">Tu es un super peintre !</div>
-    <button class="ov-btn" onclick="resetPartie()">&#127912; Rejouer !</button>
-  </div>
-</div>
-
 <script src="js/bus-svg.js"></script>
 <script src="js/data.js"></script>
 <script src="js/mj-shell.js"></script>
 <script>
 MJ.ready(function () {
-  MJ.init({
+  const shell = MJ.init({
     id: 'mj-21', emoji: '🎨', titre: 'Peins les bus !',
-    golden: false,
+    golden: true,
     consigne: false,
     regle: {
       picto: '🎨🚌',
@@ -251,9 +231,12 @@ function isBrun(t){
 }
 
 // ── ÉTAT ──────────────────────────────────────────────────────────
+const TUBE_CAP = 4; // 🔒 capacité max du tube — au-delà, on bloque l'ajout (jamais silencieux)
 function newTube(){return{r:0,j:0,b:0,w:0,doses:[],mixed:null};}
 let tube=newTube(), defiIdx=0, solved=0, victoire=false, brunShown=false;
-let order=shuffle(DEFIS.map((_,i)=>i));
+const G = shell.G;
+const NB_DEFIS = Math.min(G ? G.totalQ : 4, DEFIS.length);
+let order=shuffle(DEFIS.map((_,i)=>i)).slice(0, NB_DEFIS);
 let defi=DEFIS[order[0]];
 
 // ── RENDU TUBE SVG ────────────────────────────────────────────────
@@ -268,9 +251,11 @@ function renderTubeSVG(t,opts){
     const fH=frac*FILL_H;
     if(fH>0)layers=`<rect x="0" y="${(BOT-fH).toFixed(1)}" width="${SW}" height="${(fH+1).toFixed(1)}" fill="${opts.forceFill}"/>`;
   } else if(t.mixed){
-    // Une fois mixé c'est un liquide homogène : le tube est bien rempli (pas un fond de couches)
+    // Une fois mixé c'est un liquide homogène — MAIS le niveau reflète le VRAI nombre de
+    // doses versées (conservation du volume : 1+1 = 2 doses de vert, jamais un "3" par défaut).
     const bg=t.mixed==='BRUN'?'#6B4226':t.mixed.hex;
-    const fH=FILL_H*0.72;
+    const frac=Math.max(0.25,Math.min(t.doses.length/TUBE_CAP,1));
+    const fH=FILL_H*frac;
     layers=`<rect x="0" y="${(BOT-fH).toFixed(1)}" width="${SW}" height="${(fH+1).toFixed(1)}" fill="${bg}"/>`;
   } else if(t.doses.length>0){
     const vis=t.doses.slice(-8);
@@ -295,6 +280,12 @@ function renderTube(){
   const res=document.getElementById('tube-result');
   if(tube.mixed&&tube.mixed!=='BRUN'){res.textContent=tube.mixed.label;res.style.color='#ffe066';}
   else if(tube.mixed==='BRUN'){res.innerHTML='💩 marron';res.style.color='#cc8844';}
+  else if(tube.doses.length>0){
+    // Conservation du volume : on affiche le nombre de doses versées (jamais de "3" par défaut).
+    const tot=tube.doses.length;
+    res.textContent=`${tot} dose${tot>1?'s':''}`;
+    res.style.color=tot>=TUBE_CAP?'#ff9a5a':'rgba(255,255,255,0.6)';
+  }
   else{res.textContent='';}
 }
 
@@ -310,18 +301,14 @@ function renderBusBas(hex){
   nm.style.color=hex?'#00c47a':'#fff';
 }
 
-function renderProgress(){
-  let h='';
-  for(let i=0;i<DEFIS.length;i++){
-    const c=i<solved?'done':i===solved?'current':'';
-    h+=`<div class="prog-dot ${c}"></div>`;
-  }
-  document.getElementById('progress').innerHTML=h;
-}
-
 // ── ACTIONS ───────────────────────────────────────────────────────
 function addCouleur(type){
   if(victoire)return;
+  // Dépassement capacité : bloquer explicitement, jamais d'état silencieux incohérent.
+  if(tube.doses.length>=TUBE_CAP){
+    showTubePlein();
+    return;
+  }
   // Ajouter une couleur après un mix : on GARDE le contenu (r/j/b/w + doses),
   // on repasse juste en "à re-mixer" — on ne vide JAMAIS le travail de Max.
   if(tube.mixed){tube.mixed=null;}
@@ -330,6 +317,15 @@ function addCouleur(type){
   renderTube();
   // Couleur primaire seule → victoire immédiate sans Mixer
   checkPrimaire();
+}
+
+// Tube plein (4 doses) : on bloque l'ajout, feedback doux et clair (jamais de son négatif fort).
+function showTubePlein(){
+  const wrap=document.getElementById('tube-wrap');
+  wrap.classList.remove('shaking'); wrap.offsetWidth; wrap.classList.add('shaking');
+  const res=document.getElementById('tube-result');
+  res.textContent='Plein ! Vide-moi 🧽';
+  res.style.color='#ff9a5a';
 }
 
 function checkPrimaire(){
@@ -346,12 +342,13 @@ function checkPrimaire(){
   }
 }
 
-let mixerLocked=false;
+let mixerLocked=false, mixerUsedThisDefi=false;
 function mixerTube(){
   if(victoire||mixerLocked)return;
   const tot=tube.r+tube.j+tube.b+tube.w;
   if(tot===0)return;
   mixerLocked=true;
+  mixerUsedThisDefi=true;
   playMix();
   const wrap=document.getElementById('tube-wrap');
   wrap.classList.remove('shaking');
@@ -386,16 +383,10 @@ function viderTube(){
 function sleep(ms){return new Promise(r=>setTimeout(r,ms));}
 
 async function showVictoire(){
-  // Fire-and-forget : jeton du tube vers la pastille qu'on vient de remplir (rendu APRÈS)
+  // Piste golden standard (#pips) : note ce défi comme réussi (1er coup = étoile).
   const tubeElFx=document.getElementById('tube-wrap');
-  const dotsFx=document.querySelectorAll('.prog-dot');
-  const targetDot=dotsFx[solved];
+  if(G) G.notePip(defiIdx, mixerUsedThisDefi?2:1, tubeElFx);
   solved++;
-  renderProgress();
-  if(window.MaxFX && targetDot){
-    const freshDots=document.querySelectorAll('.prog-dot');
-    MaxFX.markPoint(tubeElFx, freshDots[solved-1]||tubeElFx, {style:'bounce', result:'green'});
-  }
   playKlaxon();
 
   // Récupère position du tube et du bus cible
@@ -466,9 +457,9 @@ async function showVictoire(){
   // Auto-next
   await sleep(800);
   defiIdx++;
-  if(defiIdx>=DEFIS.length){document.getElementById('fin-overlay').classList.add('show');return;}
+  if(defiIdx>=NB_DEFIS){ showEnd(); return; }
   defi=DEFIS[order[defiIdx]];
-  tube=newTube(); victoire=false; brunShown=false; mixerLocked=false;
+  tube=newTube(); victoire=false; brunShown=false; mixerLocked=false; mixerUsedThisDefi=false;
   document.getElementById('brun-overlay').classList.remove('show');
   document.getElementById('tube-wrap').style.visibility='visible';
   // Remet le bus à sa place sans rejouer l'anim de glisse
@@ -476,20 +467,10 @@ async function showVictoire(){
   busEl.style.transform='';
   renderTube();
   renderBusBas(null);
-  renderProgress();
 }
 
-function resetPartie(){
-  document.getElementById('fin-overlay').classList.remove('show');
-  solved=0;defiIdx=0;
-  order=shuffle(DEFIS.map((_,i)=>i));
-  defi=DEFIS[order[0]];
-  tube=newTube();victoire=false;brunShown=false;mixerLocked=false;
-  document.getElementById('brun-overlay').classList.remove('show');
-  document.getElementById('tube-wrap').style.visibility='visible';
-  const be=document.getElementById('bus-bas-wrap');
-  be.style.transition='none'; be.style.transform='';
-  renderTube();renderBusBas(null);renderProgress();
+function showEnd(){
+  if(G) G.showEnd({ replayUrl: 'mj-21.html' });
 }
 
 function showHint(){
@@ -539,16 +520,15 @@ function spawnConfetti(scene,rect){
 }
 
 // ── INIT ──────────────────────────────────────────────────────────
+if(G) G.buildPips();
 renderTube();
 renderBusBas(null);
-renderProgress();
 
 // Exposées sur window : appelées par les onclick= inline du HTML
 window.addCouleur = addCouleur;
 window.viderTube = viderTube;
 window.mixerTube = mixerTube;
 window.showHint = showHint;
-window.resetPartie = resetPartie;
 });
 </script>
 </body>

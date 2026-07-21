@@ -48,6 +48,14 @@
     container.classList.remove('hidden');
     const state = global.QcmRetry.create();
     let locked = false;
+    // Verrouille TOUS les boutons de la question (pas seulement celui tapé) :
+    // sans ça, un tap rapide (double-tap d'excitation, ou tap juste avant que
+    // nextQuestion() ait reconstruit le DOM) peut retomber sur une vieille
+    // tuile encore active et valider 2 questions d'un coup (bug remonté par
+    // Papa Yann : "la 3e validation, je la refais 2 fois").
+    function lockAll() {
+      container.querySelectorAll('.mjk-choice').forEach(btn => { btn.disabled = true; });
+    }
     (opts.options || []).forEach(v => {
       const b = document.createElement('button');
       b.type = 'button';
@@ -59,15 +67,17 @@
         const res = global.QcmRetry.handle(state, v === opts.correct);
         if (res.outcome === 'ignored') return;
         if (res.outcome === 'correct') {
+          locked = true;
+          lockAll();
           b.classList.add('ok');
           try { sndDing(); } catch (e) {}
-          locked = true;
           opts.onCorrect && opts.onCorrect(res.attempts, b);
         } else if (res.outcome === 'reveal') {
-          b.classList.add('ko'); b.disabled = true;
+          locked = true;
+          lockAll();
+          b.classList.add('ko');
           try { sndBuzz(); } catch (e) {}
           const okEl = global.QcmRetry.revealCorrect(container);
-          locked = true;
           opts.onReveal && opts.onReveal(okEl);
         } else {
           b.classList.add('ko'); b.disabled = true;

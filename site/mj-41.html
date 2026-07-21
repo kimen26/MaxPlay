@@ -147,7 +147,14 @@
     function dinoImgSrc(id) {
       const byId = {}; DINOS.forEach(d => byId[d.id] = d);
       const d = byId[id];
-      return d ? 'img/dinos/' + d.png : '';
+      if (!d) return '';
+      return 'img/dinos/paleoart/' + d.png.replace(/\.(jpg|png)$/i, '_headshot.jpg');
+    }
+    // Repli si le headshot manque pour ce dino (paleoart complet, existe toujours).
+    function dinoImgFallback(id) {
+      const byId = {}; DINOS.forEach(d => byId[d.id] = d);
+      const d = byId[id];
+      return d ? 'img/dinos/paleoart/' + d.png : '';
     }
     function dinoName(id) {
       const byId = {}; DINOS.forEach(d => byId[d.id] = d);
@@ -282,7 +289,7 @@
         const el = document.createElement('div');
         el.className = 'tile';
         el.dataset.id = t.id;
-        el.innerHTML = '<img src="' + dinoImgSrc(t.dino) + '" alt="">';
+        el.innerHTML = '<img src="' + dinoImgSrc(t.dino) + '" onerror="this.onerror=null;this.src=\'' + dinoImgFallback(t.dino) + '\';" alt="">';
         el.addEventListener('click', () => onTileClick(t.id));
         boardEl.appendChild(el);
         t.el = el;

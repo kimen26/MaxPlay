@@ -15,20 +15,13 @@
       background:rgba(255,255,255,0.08); border:3px solid #d9a441;
       border-radius:16px; padding:10px 14px; line-height:1.1;
     }
-    .syl-btn {
+    .syl-chip {
       font-size:1.9rem; font-weight:900; color:#fff; letter-spacing:.5px;
-      background:rgba(255,255,255,0.12); border:none; border-radius:12px;
+      background:rgba(255,255,255,0.12); border-radius:12px;
       padding:8px 12px; min-height:60px; min-width:60px;
-      font-family:'Nunito',sans-serif; cursor:pointer; transition:transform .12s, background .15s;
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Nunito',sans-serif;
     }
-    .syl-btn:active { transform:scale(.92); }
-    .syl-btn.playing { background:#d9a441; color:#241a10; transform:scale(1.08); }
-    .word-sound-btn {
-      font-size:1.6rem; background:rgba(255,255,255,0.12); border:none;
-      border-radius:50%; width:60px; height:60px; min-width:60px;
-      cursor:pointer; display:flex; align-items:center; justify-content:center;
-    }
-    .word-sound-btn:active { transform:scale(.9); }
     .question-counter { text-align:center; font-size:.85rem; opacity:.7; margin-top:8px; }
     .choices {
       display:grid; grid-template-columns:repeat(2,1fr); gap:12px;
@@ -51,9 +44,7 @@
     <div class="qbox">
       <div class="read-panel">
         <div class="read-hint">Lis bien… trouve ce dino 👇</div>
-        <div class="read-word" id="word">
-          <button class="word-sound-btn" id="wordSoundBtn" aria-label="Écouter le nom entier">🔊</button>
-        </div>
+        <div class="read-word" id="word"></div>
       </div>
     </div>
 
@@ -65,7 +56,6 @@
   <script src="js/lang.js"></script>
   <script src="js/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
-  <script src="js/dinos-audio-manifest.js"></script>
   <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
   <script src="js/mj-shell.js"></script>
   <script>
@@ -73,8 +63,11 @@
     // ─── MJ-27 — Lis le nom du dino (LECTURE PURE, aucun son d'aide) ───
     // Affiche le nom écrit + 6 vraies images de l'encyclopédie. Max lit et trouve.
     const SRC = (typeof DINOS !== 'undefined') ? DINOS : (window.DINOS || []);
-    // Plus d'exclusion : les 60 heros img/dinos/<png> existent (verifie 2026-07-05, promotion staging)
-    const MISSING = new Set();
+    // Ces 2 dinos n'ont pas de version _headshot.jpg dans img/dinos/paleoart/ (vérifié 2026-07-22).
+    // Le onerror du <img> retomberait sur l'image paleoart complète, mais génère un 404 console
+    // bruyant (échec harnais smoke) — plus propre de les exclure du pool de ce quiz plutôt que
+    // de masquer l'erreur.
+    const MISSING = new Set(['Corythosaurus.jpg', 'Hatzegopteryx.jpg']);
     // Pool = dinos avec image top-level valide (pas de sous-dossier, fichier présent)
     const POOL = SRC.filter(d => d.png && d.name && !d.png.includes('/') && !MISSING.has(d.png));
 
@@ -156,52 +149,18 @@
 
     function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
 
-    // Jamais deux voix en même temps (TTS syllabe coupe le MP3 nom complet, et vice-versa).
-    let fullNameAudio = null;
-    function stopFullName(){ if (fullNameAudio){ fullNameAudio.pause(); fullNameAudio = null; } }
-
-    // Tap sur une syllabe → TTS navigateur (courte, rate lent) + surbrillance pendant la lecture.
-    // Pas de MP3 par syllabe (pas encore généré) — TTS acceptable ici car texte très court.
-    function speakSyllable(btn, syl){
-      stopFullName();
-      if (!window.TTS || !TTS.supported()) return;
-      TTS.cancel();
-      document.querySelectorAll('.syl-btn.playing').forEach(b => b.classList.remove('playing'));
-      btn.classList.add('playing');
-      TTS.speak(syl, { rate:0.75, priority:true, onEnd: () => btn.classList.remove('playing') });
-    }
-
-    // Tap sur le nom entier / bouton 🔊 → MP3 réel <id>-nom.mp3 (jamais TTS pour le nom complet,
-    // règle figée dino). Fallback TTS si le manifest ne liste pas encore l'id.
-    function speakFullName(dino){
-      stopFullName();
-      if (window.TTS) TTS.cancel();
-      const hasMp3 = window.DINO_NOM_AUDIO && window.DINO_NOM_AUDIO.has(dino.id);
-      if (!hasMp3) { if (window.TTS) TTS.speak(dino.name, { rate:0.85, priority:true }); return; }
-      const a = new Audio(window.AUDIO_DINOS + '' + dino.id + '-nom.mp3');
-      fullNameAudio = a;
-      a.onerror = () => { if (window.TTS) TTS.speak(dino.name, { rate:0.85, priority:true }); };
-      a.play().catch(() => { if (window.TTS) TTS.speak(dino.name, { rate:0.85, priority:true }); });
-    }
-
+    // Audio retiré (retour Papa Yann 2026-07-19) : lecture pure, aucun son d'aide,
+    // ni sur les syllabes ni sur le nom entier. Le mot reste affiché en chips statiques.
     function renderWord(dino){
       const box = document.getElementById('word');
       box.innerHTML = '';
       const syls = SYLLABES[dino.id] || [dino.name];
       syls.forEach(syl => {
-        const b = document.createElement('button');
-        b.className = 'syl-btn';
-        b.textContent = syl;
-        b.onclick = () => speakSyllable(b, syl);
-        box.appendChild(b);
+        const span = document.createElement('span');
+        span.className = 'syl-chip';
+        span.textContent = syl;
+        box.appendChild(span);
       });
-      const soundBtn = document.createElement('button');
-      soundBtn.className = 'word-sound-btn';
-      soundBtn.id = 'wordSoundBtn';
-      soundBtn.setAttribute('aria-label', 'Écouter le nom entier');
-      soundBtn.textContent = '🔊';
-      soundBtn.onclick = () => speakFullName(dino);
-      box.appendChild(soundBtn);
     }
 
     const shell = MJ.init({
@@ -213,9 +172,7 @@
         texte: 'Lis le nom écrit, puis trouve la bonne image !',
         etapes: [
           { t: 'Je lis les syllabes 👀',
-            d: 'Le nom du dino est découpé en morceaux. Je tape un morceau pour l’entendre.' },
-          { t: 'J’écoute le nom entier si besoin 🔊',
-            d: 'Le rond 🔊 dit le nom complet à voix haute.' },
+            d: 'Le nom du dino est découpé en morceaux : je les lis un par un.' },
           { t: 'Je tape la bonne image 👆',
             d: 'Parmi 6 images, une seule correspond au nom que je viens de lire.' },
           { t: 'Plus j’ai d’étoiles, plus les images se ressemblent 💪',
@@ -258,7 +215,9 @@
         const b = document.createElement('button');
         b.className = 'dino-card';
         if (o.correct) b.dataset.correct = '1';
-        b.innerHTML = '<img src="img/dinos/' + o.d.png + '" alt="">';
+        const headshot = 'img/dinos/paleoart/' + o.d.png.replace(/\.(jpg|png)$/i, '_headshot.jpg');
+        const fallback = 'img/dinos/paleoart/' + o.d.png;
+        b.innerHTML = '<img src="' + headshot + '" onerror="this.onerror=null;this.src=\'' + fallback + '\';" alt="">';
         b.onclick = () => answer(o.correct, b);
         box.appendChild(b);
       });

@@ -2,6 +2,8 @@
 // Vérifie : niveau 1 = 12 tuiles/6 paires, génération 100% solvable (résout tout via
 // __mjTest.pick), progression des billes, écran de fin, et le filet anti-blocage
 // (remélange) déclenché à la demande.
+// Images corrigées 2026-07-22 : chemin réel img/dinos/paleoart/<Nom>_headshot.jpg (bug retour
+// Papa Yann "les images ne s'affichent pas" — l'ancien chemin img/dinos/<png> n'existait nulle part).
 export async function run({ page, ok }) {
   await page.evaluate(() => localStorage.clear());
   await page.reload({ waitUntil: 'networkidle' });
@@ -23,6 +25,17 @@ export async function run({ page, ok }) {
 
   ok('1re bille marquée courante', (await page.locator('.pip.cur').count()) === 1);
   ok('12 tuiles rendues dans le DOM', (await page.locator('.tile').count()) === 12);
+
+  // Preuve réelle que les images des tuiles se CHARGENT (bug retour Papa Yann "les images
+  // ne s'affichent pas" — l'ancien chemin img/dinos/<png> n'existait nulle part sur disque ;
+  // fix : img/dinos/paleoart/<Nom>_headshot.jpg avec repli onerror vers l'image paleoart complète).
+  await page.waitForTimeout(300);
+  const tileWidths = await page.evaluate(() => [...document.querySelectorAll('.tile img')].map(i => i.naturalWidth));
+  ok('toutes les images de tuiles chargent réellement (naturalWidth > 0)',
+    tileWidths.length === 12 && tileWidths.every(w => w > 0), `naturalWidths=${tileWidths.join(',')}`);
+  ok('toutes les tuiles pointent vers img/dinos/paleoart/', await page.evaluate(() =>
+    [...document.querySelectorAll('.tile img')].every(i => /^img\/dinos\/paleoart\/[^/]+\.(png|jpg)$/.test(i.getAttribute('src')))
+  ));
 
   // Chaque dino apparaît un nombre pair de fois (paires complètes)
   const evenCounts = await page.evaluate(() => {

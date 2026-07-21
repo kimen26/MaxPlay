@@ -148,7 +148,16 @@
     const G = shell.G;
 
     // ── Bus SVG canonique — couleur via LIGNES (jamais de hex en dur) ──
-    const L162 = (window.LIGNES || []).find(l => String(l.num) === '162') || (window.LIGNES || [])[0] || { color:'#E2001A', textColor:'#fff', num:'162' };
+    // Bug corrigé (retour Papa Yann 2026-07-22, "le 162 est bleu... ennorme erreur") :
+    // `LIGNES` est un `const` top-level de data.js — un `const`/`let` global ne
+    // devient JAMAIS une propriété de `window` (contrairement à `var`). Le test
+    // `window.LIGNES` était donc TOUJOURS undefined et retombait sur le fallback
+    // codé en dur `#E2001A` (rouge), au lieu du bleu officiel IDFM `#0064B1`.
+    // Fix : référencer `LIGNES` directement (portée lexicale du script, comme
+    // le font tous les autres mini-jeux), le fallback ne sert plus que si la
+    // ligne 162 est absente du tableau.
+    const L162 = (typeof LIGNES !== 'undefined' ? LIGNES : []).find(l => String(l.num) === '162')
+      || { color:'#E2001A', textColor:'#fff', num:'162' };
     document.getElementById('bus-top').innerHTML = busSVG(L162.color, L162.textColor, L162.num, 220);
 
     const planEl = document.getElementById('plan');

@@ -20,14 +20,42 @@ export async function run({ page, ok }) {
   ok('1 seule bonne réponse', (await page.locator('.dino-tile[data-correct="1"]').count()) === 1);
   ok('toutes les silhouettes ont une image', (await page.locator('.dino-tile img.sil').count()) === n);
 
-  // Chemin gagnant : taper la bonne tuile 3 fois de suite → score monte
-  let wins = 0;
-  for (let q = 0; q < 3; q++) {
-    await page.waitForSelector('.dino-tile[data-correct="1"]', { timeout: 4000 });
+  // ── Anti-régression "double validation" (retour Papa Yann : la 3e réponse
+  // se refait 2 fois) : après une bonne réponse, TOUTES les tuiles doivent
+  // être verrouillées immédiatement (pas seulement la tuile tapée), sinon
+  // un tap rapide pendant la fenêtre de victoire peut retomber sur une
+  // vieille tuile encore active et valider 2 questions d'un coup.
+  await page.waitForSelector('.dino-tile[data-correct="1"]', { timeout: 4000 });
+  await page.click('.dino-tile[data-correct="1"]');
+  await page.waitForTimeout(80);
+  const allDisabled = await page.evaluate(() =>
+    [...document.querySelectorAll('.dino-tile')].every(b => b.disabled));
+  ok('Toutes les tuiles verrouillées juste après une bonne réponse', allDisabled);
+  await page.waitForTimeout(1200); // laisse nextQuestion() s'installer (Q2)
+
+  // ── Son d'erreur audible (retour Papa Yann : "on entend pas bien quand on
+  // a fauté" — sndBuzz() synthé trop discret remplacé par le pool SoundPool
+  // 'error' partagé, qui inclut déjà le son "prout" culte de la banque). ──
+  await page.waitForSelector('.dino-tile:not([data-correct="1"])', { timeout: 6000 });
+  await page.evaluate(() => {
+    const orig = SoundPool.play;
+    window.__errCalls = [];
+    SoundPool.play = function (theme, vol) { window.__errCalls.push(theme); return orig.call(SoundPool, theme, vol); };
+  });
+  await page.click('.dino-tile:not([data-correct="1"])');
+  await page.waitForTimeout(150);
+  const errCalls = await page.evaluate(() => window.__errCalls);
+  ok('Mauvaise réponse joue SoundPool.play(\'error\', ...)', errCalls.includes('error'), `calls=${JSON.stringify(errCalls)}`);
+  await page.waitForTimeout(2200); // laisse la révélation (1800ms) passer avant la suite
+
+  // Chemin gagnant : taper la bonne tuile jusqu'à la fin → toutes les billes se remplissent
+  for (let q = 0; q < 4; q++) {
+    const done = await page.evaluate(() => !document.querySelector('.pip.todo, .pip.cur'));
+    if (done) break;
+    await page.waitForSelector('.dino-tile[data-correct="1"]', { timeout: 4000 }).catch(() => {});
     await page.click('.dino-tile[data-correct="1"]').catch(() => {});
     await page.waitForTimeout(1500);
-    wins++;
   }
-  const v1 = await page.locator('.pip.v1').count();
-  ok('3 bonnes réponses → 3 billes vertes', v1 === 3, `billes vertes=${v1}`);
+  const doneAll = await page.evaluate(() => !document.querySelector('.pip.todo, .pip.cur'));
+  ok('Toutes les questions restantes complétées (pips remplis)', doneAll);
 }

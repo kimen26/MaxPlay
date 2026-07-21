@@ -1,7 +1,9 @@
-// Pilote MJ-27 — Lis le nom du dino : nom découpé en syllabes tapables (chacune lue en TTS
-// au tap) + bouton 🔊 nom entier (MP3 <id>-nom.mp3, jamais TTS pour le nom complet).
+// Pilote MJ-27 — Lis le nom du dino : nom découpé en syllabes STATIQUES (chips, sans audio)
+// + 6 vraies images headshot de l'encyclopédie. Max lit et trouve.
 // Migré gabarit js/mj-shell.js (2026-07-14) — consigne:false (lecture pure, EP-033).
-// Amélioration 2026-07-07 suite revue Papa Yann : "cliquer sur les syllabes, entendre le son".
+// Audio retiré (retour Papa Yann 2026-07-19) : plus de TTS syllabe ni de bouton 🔊 nom entier.
+// Images corrigées 2026-07-22 : chemin réel img/dinos/paleoart/<Nom>_headshot.jpg (bug retour
+// Papa Yann "les images ne s'affichent pas" — l'ancien chemin img/dinos/<png> n'existait nulle part).
 export async function run({ page, ok }) {
   await page.evaluate(() => localStorage.clear());
 
@@ -32,28 +34,36 @@ export async function run({ page, ok }) {
   await page.waitForSelector('#word', { timeout: 5000 });
   ok('pas de TTS au chargement (EP-033)', (await page.evaluate(() => window.__ttsCalls.length)) === 0);
 
-  // Le nom est découpé en syllabes tapables ≥ 60px de haut
-  await page.waitForSelector('.syl-btn', { timeout: 5000 });
-  const nSyl = await page.locator('.syl-btn').count();
-  ok('au moins 2 syllabes tapables affichées', nSyl >= 2, `syllabes=${nSyl}`);
-  const sylBox = await page.locator('.syl-btn').first().boundingBox();
-  ok('syllabe ≥ 60px de haut (zone tap enfant)', !!sylBox && sylBox.height >= 60, `h=${sylBox?.height}`);
+  // Le nom est découpé en syllabes STATIQUES (chips, ni bouton ni TTS)
+  await page.waitForSelector('.syl-chip', { timeout: 5000 });
+  const nSyl = await page.locator('.syl-chip').count();
+  ok('au moins 2 syllabes affichées', nSyl >= 2, `syllabes=${nSyl}`);
+  const sylBox = await page.locator('.syl-chip').first().boundingBox();
+  ok('syllabe ≥ 60px de haut (lisibilité enfant)', !!sylBox && sylBox.height >= 60, `h=${sylBox?.height}`);
 
-  // Bouton son du nom entier présent
-  ok('bouton 🔊 nom entier présent', (await page.locator('#wordSoundBtn').count()) === 1);
+  // Audio retiré : ni bouton son nom entier ni syllabes tapables (ancien .syl-btn)
+  ok('aucun bouton 🔊 nom entier (audio retiré)', (await page.locator('#wordSoundBtn').count()) === 0);
+  ok('aucune syllabe tapable ancienne (.syl-btn) résiduelle', (await page.locator('.syl-btn').count()) === 0);
 
-  // Tap sur une syllabe → déclenche speechSynthesis (spy), pas de MP3 par syllabe
-  await page.click('.syl-btn');
+  // Tap sur une syllabe → ne doit déclencher AUCUN speechSynthesis (lecture pure, zéro audio)
+  await page.click('.syl-chip');
   await page.waitForTimeout(150);
   const afterSylTap = await page.evaluate(() => window.__ttsCalls.length);
-  ok('tap syllabe déclenche speechSynthesis', afterSylTap >= 1, `calls=${afterSylTap}`);
+  ok('tap syllabe ne déclenche aucun speechSynthesis', afterSylTap === 0, `calls=${afterSylTap}`);
 
   await page.waitForSelector('.dino-card', { timeout: 5000 });
   ok('6 images de choix', (await page.locator('.dino-card').count()) === 6, `cards=${await page.locator('.dino-card').count()}`);
   ok('1 seule bonne réponse', (await page.locator('.dino-card[data-correct="1"]').count()) === 1);
-  ok('toutes les cartes ont une image encyclo', await page.evaluate(() =>
-    [...document.querySelectorAll('.dino-card img')].every(i => /^img\/dinos\/[^/]+\.(png|jpg)$/.test(i.getAttribute('src')))
+  ok('toutes les cartes pointent vers img/dinos/paleoart/', await page.evaluate(() =>
+    [...document.querySelectorAll('.dino-card img')].every(i => /^img\/dinos\/paleoart\/[^/]+\.(png|jpg)$/.test(i.getAttribute('src')))
   ));
+  // Preuve réelle que les images se CHARGENT (naturalWidth > 0), pas juste que l'attribut src est bien formé.
+  await page.waitForTimeout(400); // laisse le temps aux <img> (+ fallback onerror) de résoudre
+  const loadedCounts = await page.evaluate(() =>
+    [...document.querySelectorAll('.dino-card img')].map(i => i.naturalWidth)
+  );
+  ok('toutes les images dino chargent réellement (naturalWidth > 0)',
+    loadedCounts.every(w => w > 0), `naturalWidths=${loadedCounts.join(',')}`);
 
   // Chemin gagnant
   for (let q = 0; q < 3; q++) {

@@ -135,13 +135,13 @@ window.MAXPLAY_AVATARS = [
   "sub": "Diplodocus",
   "moods": {
    "joyeux": [
-    "diplo_joyeux_1.png"
+    "diplo_joyeux_2.png"
    ],
    "enerve": [
-    "diplo_enerve_1.png"
+    "diplo_enerve_2.png"
    ],
    "original": [
-    "diplo_original_1.png"
+    "diplo_original_2.png"
    ]
   }
  },
@@ -151,13 +151,13 @@ window.MAXPLAY_AVATARS = [
   "sub": "Parasaurolophus",
   "moods": {
    "joyeux": [
-    "paras_joyeux_1.png"
+    "paras_joyeux_2.png"
    ],
    "enerve": [
-    "paras_enerve_1.png"
+    "paras_enerve_2.png"
    ],
    "original": [
-    "paras_original_1.png"
+    "paras_original_2.png"
    ]
   }
  },

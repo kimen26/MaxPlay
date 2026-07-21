@@ -1418,3 +1418,7 @@ Exécution de `docs/specs/2026-07-20-DELEGATION-LLM-MENU-CIBLE.md` (F1/F2 mj-46/
 - **Zone du haut = NOTRE avatar** (dino du profil, `localStorage maxplay_avatar` via `js/avatars.js`, fallback Tritri) — plus Tritri imposé.
 - **Épuré, une seule logique** : encyclo = dernière slide-livre dorée dans le même slider (pas de sous-menu, pas de dock flottant).
 - POC : `site/design-mur/poc-slider.html` · screenshot validé `temp/poc-slider.png` · sommaire `index.html` mis à jour (A/B/C archivés). En attente : test du geste sur tablette par PY.
+
+### Correction PY (croquis) → bandes verticales
+
+Le croquis PY montrait des **bandes pleine largeur empilées verticalement** (scroll de page), pas un carousel 1-écran-par-dino. `poc-slider.html` réécrit : `.liste` verticale de `.bande` (dino à gauche qui se dandine au repos, infos centrées, flottants estompés derrière le texte, flèches « → » à droite) · geste = tirer la bande → (le dino se dandine + grossit pendant le drag, seuil ~1/3, retour élastique sinon) · `touch-action:pan-y` + détection d'angle pour ne pas bloquer le scroll vertical · tap = entrer aussi · encyclo = dernière bande-livre dorée, même geste. Screenshot `temp/poc-bandes.png` validé.

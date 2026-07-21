@@ -84,10 +84,18 @@
     const GAME_ID = 'mj-50';
 
     // Graphie phonétique du SON de chaque lettre (jamais le nom de la lettre).
+    // Une SEULE occurrence par lettre (jamais répétée x3) — la répétition x3
+    // faisait bafouiller le TTS FR sur les consonnes non-continues (retour
+    // Papa Yann 2026-07-21 : "3 fois la même lettre il n'arrive pas à prononcer,
+    // mets qu'une seule lettre et joue sur la sonorité, soit F soit èf").
+    // Graphie choisie pour forcer la bonne prononciation FR d'une voix TTS lambda :
+    // voyelles continues → la lettre seule ; consonnes continues → "è" + lettre
+    // (èf, èl, èm, èr, ès, èv, èz — porte le son sans l'isoler dans un mot-code) ;
+    // occlusives → syllabe CV classique (be, de, pe, te, ke, gue).
     // Rate lent (0.6) — méthode validée par le POC design-lecture/mockup-01.
     const SONS = {
-      a:'aaa', e:'eee', i:'iii', o:'ooo', u:'uuu',
-      m:'mmm', s:'sss', f:'fff', l:'lll', r:'rrr', v:'vvv', j:'jjj', z:'zzz', n:'nnn',
+      a:'a', e:'eu', i:'i', o:'o', u:'u',
+      m:'èm', s:'ès', f:'èf', l:'èl', r:'èr', v:'èv', j:'jeu', z:'èz', n:'èn',
       b:'be', d:'de', p:'pe', t:'te', c:'ke', g:'gue', h:'h muet', k:'ke', q:'ke',
     };
     // MP3 ElevenLabs dispo (sounds/phonemes/) — fallback TTS sinon (règle d'or audio)

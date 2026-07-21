@@ -128,6 +128,18 @@ export async function run({ page, ok }) {
   });
   ok('œuvre sauvegardée avec id + png (nécessaire pour reprendre/supprimer)', pieceHasPngId);
 
+  // ─── Modèle JSON zones (retour Papa Yann annotations Supabase) ───
+  // "on garde en json ou je sais pas quoi quelle couleur dans quelle zone" —
+  // PAS un bitmap compressé. On vérifie la forme exacte des données persistées.
+  const savedFills = await page.evaluate(() => {
+    const list = JSON.parse(localStorage.getItem('mj32_galerie') || '[]');
+    return list[0].fills;
+  });
+  ok('œuvre sauvegardée avec fills[] (zones JSON, pas juste un bitmap)',
+     Array.isArray(savedFills) && savedFills.length >= 2, `fills=${JSON.stringify(savedFills)}`);
+  ok('chaque fill a {nx,ny,hex} normalisés (indépendants de la résolution canvas)',
+     savedFills.every(f => typeof f.nx === 'number' && typeof f.ny === 'number' && typeof f.hex === 'string'));
+
   // ─── Galerie : "Reprendre en copie" ───
   await page.click('#galleryView .thumb-card >> nth=0');
   await page.waitForSelector('#bigView:not(.hidden)', { timeout: 3000 });
@@ -139,7 +151,50 @@ export async function run({ page, ok }) {
     const c = document.getElementById('paintCanvas');
     return c && c.width > 0 && c.height > 0;
   }, { timeout: 5000 });
+  // Laisse le temps au flood fill de rejouer tous les fills (async onload + boucle synchrone)
+  await page.waitForTimeout(300);
   ok('Reprendre en copie rouvre l\'atelier avec le dessin existant', true);
+
+  // ─── Réédition fidèle : couleurs IDENTIQUES + contours NOIRS intacts ───
+  // Cœur du retour Papa Yann : "le dino était bleu, je le change de couleur et
+  // le détourage est baveux dégueulasse" — on vérifie ici que rejouer les fills
+  // sur le lineart original reproduit EXACTEMENT les mêmes pixels (zone centrale
+  // rouge posée plus haut) et que le trait de contour (haut du canvas, hors zone
+  // remplie) reste un noir net, jamais "mangé" par la couleur de fond.
+  const reeditCenter = await page.evaluate((pt) => {
+    const c = document.getElementById('paintCanvas');
+    const rect = c.getBoundingClientRect();
+    const ctx = c.getContext('2d');
+    const x = Math.round((pt.x - rect.left) * (c.width / rect.width));
+    const y = Math.round((pt.y - rect.top) * (c.height / rect.height));
+    const d = ctx.getImageData(x, y, 1, 1).data;
+    return [d[0], d[1], d[2]];
+  }, { x: centerX, y: centerY });
+  ok('réédition : zone centrale reproduit la MÊME couleur rouge (pas de bavure)',
+     reeditCenter[0] > 150 && reeditCenter[1] < 120, `rgb=${reeditCenter}`);
+
+  // Changer la couleur de cette même zone (bleu, swatch index 4) doit rester propre :
+  // pas de résidu rouge, pas de contour mangé — flood fill franc sur zone rééditée.
+  const blueIndex = await page.evaluate(() => {
+    const swatches = [...document.querySelectorAll('.palette .swatch:not(.eraser)')];
+    return swatches.findIndex(s => (s.dataset.hex || '').toLowerCase() === '#1e88e5');
+  });
+  ok('swatch bleu présent dans la palette', blueIndex >= 0);
+  await page.click(`.palette .swatch:not(.eraser) >> nth=${blueIndex}`);
+  await page.mouse.click(centerX, centerY);
+  await page.waitForTimeout(150);
+  const reeditRecolored = await page.evaluate((pt) => {
+    const c = document.getElementById('paintCanvas');
+    const rect = c.getBoundingClientRect();
+    const ctx = c.getContext('2d');
+    const x = Math.round((pt.x - rect.left) * (c.width / rect.width));
+    const y = Math.round((pt.y - rect.top) * (c.height / rect.height));
+    const d = ctx.getImageData(x, y, 1, 1).data;
+    return [d[0], d[1], d[2]];
+  }, { x: centerX, y: centerY });
+  // bleu PALETTE #1e88e5 → r≈30, g≈136, b≈229 — plus de rouge résiduel
+  ok('changement de couleur en réédition propre (bleu net, pas de résidu rouge)',
+     reeditRecolored[2] > 150 && reeditRecolored[0] < 120, `rgb=${reeditRecolored}`);
 
   // L'original doit toujours être dans la galerie (copie, pas déplacement)
   await page.click('#backChoiceBtn');

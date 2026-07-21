@@ -244,6 +244,15 @@
     // infranchissable pour le flood fill : bug "tête noire impossible à recolorier").
     let lineartData = null; // Uint8ClampedArray (RGBA) figée après chargement image
 
+    // ─── Historique de coloriage (modèle JSON zones, PAS de bitmap compressé) ───
+    // Chaque tap qui remplit une zone = 1 entrée {nx, ny, hex} en coordonnées
+    // NORMALISÉES (0..1) — indépendantes de la résolution du canvas (qui varie
+    // selon l'écran). À la réouverture : on recharge le lineart ORIGINAL (webp
+    // vectoriel intact, contours nets) et on rejoue floodFill() dans l'ordre pour
+    // chaque entrée → résultat pixel-identique, jamais de bavure ni de contour
+    // qui prend la couleur du fond (cf. retour Papa Yann annotations Supabase).
+    let fillHistory = [];
+
     // ═══════════════ ÉCRAN CHOIX ═══════════════
     function buildGrid() {
       const grid = document.getElementById('grid');
@@ -260,22 +269,23 @@
       });
     }
 
-    function openAtelier(dino, resumeSrc) {
+    function openAtelier(dino, resumeFills) {
       currentDino = dino;
       document.getElementById('screenChoice').classList.add('hidden');
       document.getElementById('screenGallery').classList.add('hidden');
       document.getElementById('screenAtelier').classList.remove('hidden');
       document.getElementById('modelImg').src = MODEL_DIR + dino.png;
-      loadLineart(dino, resumeSrc);
+      loadLineart(dino, resumeFills);
     }
 
     // ═══════════════ ATELIER : canvas + flood fill ═══════════════
-    // resumeSrc (optionnel) : dataURL d'une œuvre déjà coloriée depuis la galerie
-    // ("Reprendre en copie") — sert de point de départ visuel, mais le masque de
-    // contours (lineartData) reste TOUJOURS celui du lineart vierge du dino : sinon
-    // une zone déjà noircie dans l'œuvre reprise redeviendrait un mur infranchissable
-    // (même bug racine que le flood fill, cf. isContour()).
-    function loadLineart(dino, resumeSrc) {
+    // resumeFills (optionnel) : tableau [{nx,ny,hex}] d'une œuvre déjà coloriée
+    // ("Reprendre en copie") — on repart TOUJOURS du lineart ORIGINAL (webp vierge,
+    // contours intacts) puis on rejoue chaque flood fill dans l'ordre exact de la
+    // sauvegarde. Jamais de dataURL bitmap comme point de départ : c'est la cause
+    // du bavure/contour-qui-prend-la-couleur-du-fond signalée par Papa Yann
+    // (recopier un JPEG dégradé au lieu de reconstruire depuis la source vectorielle).
+    function loadLineart(dino, resumeFills) {
       canvas = document.getElementById('paintCanvas');
       ctx = canvas.getContext('2d', { willReadFrequently: true });
       const lineSrc = COLORIAGE_DIR + baseName(dino.png) + '_coloriage.webp';
@@ -295,10 +305,13 @@
         // Fige le masque de contours AVANT tout coloriage (source de vérité immuable)
         lineartData = ctx.getImageData(0, 0, w, h).data.slice();
 
-        if (resumeSrc) {
-          const resumeImg = new Image();
-          resumeImg.onload = () => { ctx.drawImage(resumeImg, 0, 0, w, h); };
-          resumeImg.src = resumeSrc;
+        fillHistory = [];
+        if (resumeFills && resumeFills.length) {
+          resumeFills.forEach(f => {
+            const x = Math.max(0, Math.min(w - 1, Math.round(f.nx * w)));
+            const y = Math.max(0, Math.min(h - 1, Math.round(f.ny * h)));
+            if (floodFill(x, y, f.hex)) fillHistory.push({ nx: f.nx, ny: f.ny, hex: f.hex });
+          });
         }
       };
       img.onerror = () => {
@@ -307,6 +320,7 @@
         ctx.fillStyle = '#ffffff';
         ctx.fillRect(0, 0, 800, 600);
         lineartData = ctx.getImageData(0, 0, 800, 600).data.slice();
+        fillHistory = [];
       };
       img.src = lineSrc;
     }
@@ -400,7 +414,12 @@
       const [x, y] = canvasPointFromEvent(e);
       filling = true;
       const changed = floodFill(x, y, selectedColor);
-      if (changed && typeof sndDing === 'function') sndDing();
+      if (changed) {
+        // Zone-JSON : on note SEULEMENT le point de départ normalisé + la couleur.
+        // Rejouable à l'identique sur le lineart original (cf. loadLineart).
+        fillHistory.push({ nx: x / canvas.width, ny: y / canvas.height, hex: selectedColor });
+        if (typeof sndDing === 'function') sndDing();
+      }
       filling = false;
     }
 
@@ -438,16 +457,28 @@
     }
 
     // ═══════════════ Fini ! → sauvegarde galerie ═══════════════
+    // Modèle de données : {dinoId, zones} en JSON — PAS un bitmap compressé.
+    // "thumb" (dataURL basse résolution) sert UNIQUEMENT à afficher la vignette de
+    // la grille galerie (perf : éviter de rejouer N flood fills pour chaque carte).
+    // La RÉÉDITION ("Reprendre en copie") ignore totalement thumb : elle repart du
+    // lineart original + fills (cf. resumePiece → loadLineart). Retour Papa Yann :
+    // "on garde en json quelle couleur dans quelle zone" — jamais recopier un JPEG.
     function finishPainting() {
-      // Réduction taille pour localStorage (~300px de large max)
       const outW = 300;
       const outH = Math.round(canvas.height * (outW / canvas.width));
       const out = document.createElement('canvas');
       out.width = outW; out.height = outH;
       out.getContext('2d').drawImage(canvas, 0, 0, outW, outH);
-      const dataUrl = out.toDataURL('image/jpeg', 0.72);
+      const thumb = out.toDataURL('image/jpeg', 0.72);
 
-      saveToGallery({ id: 'p' + Date.now() + Math.random().toString(36).slice(2,7), name: currentDino.name, png: currentDino.png, img: dataUrl, date: Date.now() });
+      saveToGallery({
+        id: 'p' + Date.now() + Math.random().toString(36).slice(2,7),
+        name: currentDino.name,
+        png: currentDino.png,
+        fills: fillHistory.slice(),
+        thumb,
+        date: Date.now()
+      });
 
       if (typeof playEndSound === 'function') playEndSound(1, 1);
       if (window.TTS && TTS.supported()) {
@@ -514,7 +545,9 @@
       [...list].reverse().forEach(piece => {
         const card = document.createElement('div');
         card.className = 'thumb-card';
-        card.innerHTML = '<img class="piece" src="' + piece.img + '" alt=""><div class="tname">' + piece.name + '</div>';
+        // Vignette : thumb (nouveau modèle JSON) sinon img (migration ancien bitmap)
+        const src = piece.thumb || piece.img || '';
+        card.innerHTML = '<img class="piece" src="' + src + '" alt=""><div class="tname">' + piece.name + '</div>';
 
         let pressTimer = null;
         let longPressed = false;
@@ -534,8 +567,14 @@
     }
 
     function showBig(piece) {
-      document.getElementById('bigImg').src = piece.img;
+      document.getElementById('bigImg').src = piece.thumb || piece.img || '';
       document.getElementById('bigView').dataset.pieceId = piece.id;
+      // "Reprendre en copie" n'a de sens QUE pour le modèle JSON zones (fills) —
+      // les anciennes œuvres bitmap (migration, avant ce refactor) restent
+      // consultables mais en lecture seule : pas de fills = pas de reprise fidèle
+      // possible (on ne peut plus reconstruire les zones depuis un JPEG dégradé).
+      const canResume = !!(piece.png && piece.fills && piece.fills.length);
+      document.getElementById('resumeBtn').classList.toggle('hidden', !canResume);
       document.getElementById('bigView').classList.remove('hidden');
     }
 
@@ -544,12 +583,12 @@
     }
 
     // "Reprendre en copie" : recharge l'œuvre comme point de départ d'un NOUVEAU
-    // coloriage. L'original en galerie n'est jamais modifié ni supprimé.
+    // coloriage, en rejouant les fills JSON sur le lineart ORIGINAL (jamais un
+    // bitmap). L'original en galerie n'est jamais modifié ni supprimé.
     function resumePiece() {
       const id = document.getElementById('bigView').dataset.pieceId;
       const piece = loadGallery().find(p => p.id === id);
-      // piece.png absent = ancienne œuvre sauvegardée avant ce champ (migration) → pas de reprise possible
-      if (!piece || !piece.png) return;
+      if (!piece || !piece.png || !piece.fills || !piece.fills.length) return;
       closeBig();
       const dino = (typeof DINOS !== 'undefined' ? DINOS : []).find(d => d.png === piece.png) || { name: piece.name, png: piece.png };
       document.getElementById('screenChoice').classList.add('hidden');
@@ -557,7 +596,7 @@
       document.getElementById('screenAtelier').classList.remove('hidden');
       currentDino = dino;
       document.getElementById('modelImg').src = MODEL_DIR + dino.png;
-      loadLineart(dino, piece.img);
+      loadLineart(dino, piece.fills);
     }
 
     function askDelete(id) {

@@ -1410,3 +1410,11 @@ Exécution de `docs/specs/2026-07-20-DELEGATION-LLM-MENU-CIBLE.md` (F1/F2 mj-46/
 **Validation** : screenshots `temp/poc-a.png / poc-a-repaire.png / poc-b.png / poc-c.png` — rendus bons (défauts assumés POC : 3e vignette Découverte rognée à 420px, vignettes overlay simplistes).
 
 **En attente** : choix de pattern par PY (ou mix) → ensuite refonte réelle de `index.html` + `js/mur.js` + `css/mur.css` (mapping `COPAINS.tete` → avatars).
+
+### Retours PY → POC « Le slider » (remplace la présentation A/B/C)
+
+- **Slider pleine largeur** : 1 copain = 1 écran (plus de cartes 68%), pastilles de navigation.
+- **Geste d'entrée** : attraper le dino et le tirer → il **se dandine et grossit** pendant le drag (rotation oscillante + scale + petits sauts), seuil ~1/3 de la scène, sinon retour élastique. Tap = entrer aussi. Le dino gambade hors de l'écran avant l'arrivée du repaire.
+- **Zone du haut = NOTRE avatar** (dino du profil, `localStorage maxplay_avatar` via `js/avatars.js`, fallback Tritri) — plus Tritri imposé.
+- **Épuré, une seule logique** : encyclo = dernière slide-livre dorée dans le même slider (pas de sous-menu, pas de dock flottant).
+- POC : `site/design-mur/poc-slider.html` · screenshot validé `temp/poc-slider.png` · sommaire `index.html` mis à jour (A/B/C archivés). En attente : test du geste sur tablette par PY.

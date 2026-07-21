@@ -160,7 +160,7 @@
           : 'Recommence et essaie de gagner la ' + (newStars + 1) + 'ᵉ étoile&nbsp;!';
       } else {
         title = (function(){try{var k=(JSON.parse(localStorage.getItem('maxplay_active_child'))||{}).nickname;return k?'Bien joué '+k+'&nbsp;!':'Bien joué&nbsp;!';}catch(e){return 'Bien joué&nbsp;!';}})();
-        sub = 'Fais un sans-faute pour gagner l’étoile&nbsp;!';
+        sub = 'Si tu fais un sans-faute, tu gagnes une étoile&nbsp;!';
       }
       const dly = perfect ? ['3s', '3.2s', '3.4s'] : ['.3s', '.5s', '.7s'];
 
@@ -194,12 +194,10 @@
         }
       } else {
         try { sndBravo(); } catch (e) {}
-        if (global.MaxFX && global.MaxFX.finalStar) {
-          // fin sans étoile : encouragement doux, jamais punitif (pas de cinematic)
-          global.MaxFX.finalStar(app, { style: 'breathe', label: 'BRAVO !' }).catch(() => {});
-        } else {
-          try { confetti(); } catch (e) {}
-        }
+        // Fin sans étoile : encouragement doux, jamais punitif — et surtout PAS
+        // d'étoile pleine écran (trompeur : Papa Yann 2026-07-21, "j'afficherais
+        // pas d'étoile" quand ce n'en est pas une gagnée). Confettis discrets seuls.
+        try { confetti(); } catch (e) {}
       }
     },
 

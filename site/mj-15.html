@@ -158,6 +158,7 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
     <a href="index.html">&#8592;</a>
     <span class="htitle">🔍 L’intrus</span>
     <span id="levelbar" style="font-weight:900;color:var(--gold,#ffe066);background:rgba(255,255,255,0.14);border-radius:10px;padding:3px 12px;font-size:0.85rem;">Niveau 1</span>
+    <span class="mp-g-stars" id="track-stars"></span>
     <div id="score-badge">0 / 0</div>
   </div>
 
@@ -704,6 +705,18 @@ function updateScore() {
   document.getElementById('score-badge').textContent = `${score} / ${round}`;
 }
 
+// Bandeau ★★★ dans l'en-tête, reflète Stars.get('mj-15') (dérivé de Tracker via stars.js).
+// Même convention visuelle que la piste golden standard (.mp-g-stars / .off — mp-theme.css).
+function updateStarsBadge() {
+  const el = document.getElementById('track-stars');
+  if (!el || !window.Stars) return;
+  const earned = Stars.get('mj-15');
+  const max = Stars.max('mj-15') || 3;
+  let html = '';
+  for (let i = 0; i < max; i++) html += i < earned ? '★' : '<span class="off">★</span>';
+  el.innerHTML = html;
+}
+
 function updateLevelDots() {
   for (let i = 0; i < ROUNDS_PER_GAME; i++) {
     const dot = document.getElementById('dot-' + i);
@@ -741,11 +754,15 @@ function showEnd() {
   playEndSound(score, ROUNDS_PER_GAME);
   speak(msg);
   if (typeof Tracker !== 'undefined') Tracker.endSession(score, ROUNDS_PER_GAME);
+  // Stars.get() lit le résultat que Tracker.endSession vient d'écrire en localStorage —
+  // rafraîchir le bandeau ★ APRÈS endSession, sinon l'étoile fraîchement gagnée n'apparaît
+  // pas dans l'en-tête (incident Papa Yann 2026-07-21 : son+étoile joués mais rien à l'écran).
+  updateStarsBadge();
   if (window.MaxFX) {
     MaxFX.finalStar(document.getElementById('end-screen'), {
       style: score >= ROUNDS_PER_GAME ? 'cinematic' : 'breathe',
       label: msg
-    }).catch(() => {});
+    }).then(updateStarsBadge).catch(() => {});
   }
 }
 
@@ -760,6 +777,7 @@ function startGame() {
   document.getElementById('end-screen').classList.remove('visible');
   updateScore();
   updateLevelDots();
+  updateStarsBadge();
   renderPuzzle(generatePuzzle(round));
 }
 

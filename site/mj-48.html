@@ -127,6 +127,7 @@
   <!-- libs SPÉCIFIQUES au jeu -->
   <script src="js/data.js"></script>
   <script src="js/bus-svg.js"></script>
+  <script src="js/avatars.js"></script>
   <script src="js/mj-compte.js"></script>
   <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
   <script src="js/mj-shell.js"></script>
@@ -141,11 +142,12 @@
     const GAME_ID = 'mj-48';
     const SEATS = 10;
 
-    const TETES = [
-      'Tyrannosaurus', 'Triceratops', 'Stegosaurus', 'Spinosaurus', 'Pteranodon',
-      'Parasaurolophus', 'Brachiosaurus', 'Diplodocus', 'Ankylosaurus', 'Velociraptor',
-      'Carnotaurus', 'Giganotosaurus', 'Mosasaurus', 'Mammuthus', 'Smilodon',
-    ].map(n => 'img/dinos/sprites/' + n + '_tete.png');
+    // Passagers = AVATARS low-poly (décision PY 2026-07-21 : jamais de sprite
+    // réaliste dans une scène de jeu). Pool = créatures du manifeste avatars.js.
+    const AV_EXCLUS = ['oeuf', 'vague', 'cendre', 'lave', 'meteorite', 'volcan'];
+    const TETES = (window.MAXPLAY_AVATARS || [])
+      .filter(a => AV_EXCLUS.indexOf(a.id) === -1 && a.moods && a.moods.joyeux && a.moods.joyeux.length)
+      .map(a => (window.MAXPLAY_AVATARS_BASE || 'img/avatars/') + a.moods.joyeux[0]);
     const ORDINAUX = ['premier', 'deuxième', 'troisième', 'quatrième', 'cinquième'];
 
     const shell = MJ.init({

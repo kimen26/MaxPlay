@@ -136,6 +136,7 @@
   </div>
 
   <!-- moteur commun "Compte les …" (tirage palier + distracteurs proches + retry) -->
+  <script src="js/avatars.js"></script>
   <script src="js/mj-compte.js"></script>
   <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
   <script src="js/mj-shell.js"></script>
@@ -154,12 +155,13 @@
       { min: 7, max: 22 },  // N2 : 7→22
     ];
 
-    // Têtes de bébés dinos (variété aléatoire à chaque éclosion)
-    const TETES = [
-      'Tyrannosaurus', 'Triceratops', 'Stegosaurus', 'Spinosaurus', 'Pteranodon',
-      'Parasaurolophus', 'Brachiosaurus', 'Diplodocus', 'Ankylosaurus', 'Velociraptor',
-      'Carnotaurus', 'Giganotosaurus', 'Mosasaurus', 'Mammuthus', 'Smilodon',
-    ];
+    // Bébés dinos qui éclosent = AVATARS low-poly (décision PY 2026-07-21 :
+    // jamais de sprite réaliste dans une scène de jeu). Pool = créatures du
+    // manifeste avatars.js, sans les éléments (volcan, lave, œuf…).
+    const AV_EXCLUS = ['oeuf', 'vague', 'cendre', 'lave', 'meteorite', 'volcan'];
+    const TETES = (window.MAXPLAY_AVATARS || [])
+      .filter(a => AV_EXCLUS.indexOf(a.id) === -1 && a.moods && a.moods.joyeux && a.moods.joyeux.length)
+      .map(a => (window.MAXPLAY_AVATARS_BASE || 'img/avatars/') + a.moods.joyeux[0]);
 
     const G = Golden.setup(GAME_ID);   // G.level = Math.min(2, étoiles) · G.totalQ = 4/6/8
     const MAX_Q = G.totalQ;
@@ -260,7 +262,7 @@
         slot.style.left = (ox + c * cell + cell / 2 + jx - egg / 2) + 'px';
         slot.style.top = (oy + r * cell + cell / 2 + jy - egg * 1.05) + 'px';
         slot.style.animationDelay = `${order[i] * 0.08}s`;
-        slot.innerHTML = `<div class="egg" style="transform:rotate(${rot.toFixed(1)}deg)"></div><img class="baby" src="img/dinos/sprites/${babies[i % babies.length]}_tete.png" alt="bébé dino">`;
+        slot.innerHTML = `<div class="egg" style="transform:rotate(${rot.toFixed(1)}deg)"></div><img class="baby" src="${babies[i % babies.length]}" alt="bébé dino">`;
         slot.onclick = () => tapEgg(slot);
         box.appendChild(slot);
         setTimeout(() => { if (box.contains(slot)) sndCount(); }, order[i] * 80 + 60);

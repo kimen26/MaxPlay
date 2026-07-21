@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/mp-theme.css">
+  <link rel="stylesheet" href="css/mj-kit.css">
   <style>
     /* --- GABARIT HEADER CANONIQUE --- */
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
@@ -16,7 +17,7 @@
     /* Cursive scolaire FR (Beaumale, avec attaches) — décision fontes v0.6 */
     @font-face { font-family:'Cursif'; src:url('design-shared/fonts/Cursif.ttf') format('truetype'); font-display:swap; }
 
-    .stage { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:space-evenly; overflow:hidden; padding:4px 10px 12px; gap:6px; }
+    .stage { position:relative; flex:1; display:flex; flex-direction:column; align-items:center; justify-content:space-evenly; overflow:hidden; padding:4px 10px 12px; gap:6px; }
 
     /* Le haut-parleur / mot mystère */
     .son-zone { display:flex; flex-direction:column; align-items:center; gap:6px; cursor:pointer; touch-action:manipulation; }
@@ -70,6 +71,7 @@
   </div>
 
 </div>
+  <script src="js/mj-kit.js"></script>
   <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
   <script src="js/mj-shell.js"></script>
   <script>
@@ -289,6 +291,7 @@
       next() { nextQuestion(); },
     };
 
+    MJKit.decor(document.querySelector('.stage'), ['fougere-g', 'fougere-d']);
     nextQuestion();
   });
   </script>

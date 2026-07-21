@@ -7,13 +7,14 @@
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/mp-theme.css">
+  <link rel="stylesheet" href="css/mj-kit.css">
   <style>
     /* --- GABARIT HEADER CANONIQUE --- */
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
     body { font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
     #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
 
-    .stage { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:space-evenly; overflow:hidden; padding:2px 8px 10px; gap:2px; }
+    .stage { position:relative; flex:1; display:flex; flex-direction:column; align-items:center; justify-content:space-evenly; overflow:hidden; padding:2px 8px 10px; gap:2px; }
 
     /* ── Le bus + son plan de sièges (2 fenêtres de 5, jamais le bazar) ── */
     .bus-top { flex-shrink:0; filter:drop-shadow(0 6px 12px rgba(0,0,0,.5)); }
@@ -74,28 +75,7 @@
     .dino-fly { position:fixed; z-index:50; width:46px; height:46px; object-fit:contain; pointer-events:none;
       transition:transform .9s cubic-bezier(.45,0,.55,1), opacity .9s ease; }
 
-    /* ── Phrase du calcul (« 5 et 2, ça fait 7 ! ») ── */
-    .calc-line {
-      min-height:2.2em; display:flex; align-items:center; justify-content:center;
-      font-size:1.3rem; font-weight:900; color:#ffe066; text-align:center;
-      text-shadow:0 0 12px rgba(255,231,160,.4), 0 2px 4px rgba(0,0,0,.55);
-      opacity:0; transform:translateY(8px); transition:opacity .4s, transform .4s; padding:0 10px;
-    }
-    .calc-line.show { opacity:1; transform:translateY(0); }
 
-    /* ── QCM : 3 gros boutons-chiffres ── */
-    .choices { display:flex; gap:16px; justify-content:center; align-items:center; min-height:100px; }
-    .choices.hidden { visibility:hidden; }
-    .choice {
-      font-family:'Fredoka One',sans-serif; font-size:2.3rem; font-weight:900; color:#2a1c05;
-      min-width:92px; min-height:92px; border-radius:24px; border:none; cursor:pointer;
-      background:linear-gradient(145deg,#ffe066,#f0b73f);
-      box-shadow:0 6px 0 #b8860b, 0 10px 20px rgba(0,0,0,.45);
-      transition:transform .1s, opacity .2s; touch-action:manipulation;
-    }
-    .choice:active { transform:translateY(3px) scale(.96); box-shadow:0 2px 0 #b8860b; }
-    .choice.ok { background:linear-gradient(145deg,#7fe7c4,#2fbf8f); box-shadow:0 6px 0 #157a56, 0 0 24px rgba(47,191,143,.7); color:#062e20; }
-    .choice.ko { opacity:.35; }
   </style>
 </head>
 <body data-ambiance="ville">
@@ -119,8 +99,8 @@
         <div class="file-fleche" id="file-fleche" style="display:none">← le 1ᵉʳ est près de l'arrêt</div>
       </div>
     </div>
-    <div class="calc-line" id="calc-line"></div>
-    <div class="choices hidden" id="choices"></div>
+    <div id="calc-line"></div>
+    <div class="mjk-choices hidden" id="choices"></div>
   </div>
 
 </div>
@@ -128,6 +108,7 @@
   <script src="js/data.js"></script>
   <script src="js/bus-svg.js"></script>
   <script src="js/avatars.js"></script>
+  <script src="js/mj-kit.js"></script>
   <script src="js/mj-compte.js"></script>
   <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
   <script src="js/mj-shell.js"></script>
@@ -142,12 +123,8 @@
     const GAME_ID = 'mj-48';
     const SEATS = 10;
 
-    // Passagers = AVATARS low-poly (décision PY 2026-07-21 : jamais de sprite
-    // réaliste dans une scène de jeu). Pool = créatures du manifeste avatars.js.
-    const AV_EXCLUS = ['oeuf', 'vague', 'cendre', 'lave', 'meteorite', 'volcan'];
-    const TETES = (window.MAXPLAY_AVATARS || [])
-      .filter(a => AV_EXCLUS.indexOf(a.id) === -1 && a.moods && a.moods.joyeux && a.moods.joyeux.length)
-      .map(a => (window.MAXPLAY_AVATARS_BASE || 'img/avatars/') + a.moods.joyeux[0]);
+    // Passagers = AVATARS low-poly (règle 🔒 2026-07-21) — pool via mj-kit
+    const TETES = MJKit.avatarPool();
     const ORDINAUX = ['premier', 'deuxième', 'troisième', 'quatrième', 'cinquième'];
 
     const shell = MJ.init({
@@ -276,7 +253,7 @@
       qCount++;
       qcm = MJCompte.beginQuestion();
       roundLock = false;
-      calcEl.classList.remove('show'); calcEl.textContent = '';
+      MJKit.calcReset(calcEl);
       choicesEl.classList.add('hidden'); choicesEl.innerHTML = '';
       sieges.forEach(s => s.classList.remove('pop'));
       rangees.forEach(r => r.classList.remove('lit'));
@@ -365,46 +342,25 @@
       }, testMode ? 0 : (delay || 0));
     }
 
+    // QCM = bibliothèque d'actions mj-kit (boutons + retry + révélation)
     function showChoices() {
       const opts = MJCompte.distractors(correctAnswer, { count: 3, min: 0, max: 12, spread: 2 });
-      choicesEl.innerHTML = '';
-      opts.forEach(n => {
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'choice';
-        b.textContent = n;
-        if (n === correctAnswer) b.dataset.correct = '1';
-        b.addEventListener('click', () => answer(n === correctAnswer, b));
-        choicesEl.appendChild(b);
+      MJKit.qcm(choicesEl, {
+        options: opts, correct: correctAnswer,
+        onCorrect: (attempts, btn) => {
+          roundLock = true;
+          G.notePip(qCount - 1, attempts, btn);
+          speakCalc();
+          setTimeout(nextQuestion, testMode ? 0 : 2600);
+        },
+        onReveal: (okEl) => {
+          roundLock = true;
+          G.notePip(qCount - 1, 4, okEl);
+          speakCalc();
+          setTimeout(nextQuestion, testMode ? 0 : 2800);
+        },
+        onWrong: () => recount(),
       });
-      choicesEl.classList.remove('hidden');
-    }
-
-    // ── Réponse QCM ──
-    function answer(isCorrect, btn) {
-      if (roundLock || btn.disabled) return;
-      const res = MJCompte.answer(qcm, isCorrect);
-      if (res.outcome === 'ignored') return;
-      if (res.outcome === 'correct') {
-        btn.classList.add('ok');
-        try { sndDing(); } catch (e) {}
-        roundLock = true;
-        G.notePip(qCount - 1, res.attempts, btn);
-        speakCalc();
-        setTimeout(nextQuestion, testMode ? 0 : 2600);
-      } else if (res.outcome === 'reveal') {
-        btn.classList.add('ko'); btn.disabled = true;
-        try { sndBuzz(); } catch (e) {}
-        const okEl = QcmRetry.revealCorrect(choicesEl);
-        roundLock = true;
-        G.notePip(qCount - 1, 4, okEl);
-        speakCalc();
-        setTimeout(nextQuestion, testMode ? 0 : 2800);
-      } else {
-        btn.classList.add('ko'); btn.disabled = true;
-        try { sndBuzz(); } catch (e) {}
-        recount();
-      }
     }
 
     // ── Tap dans la file (questions ordinales) ──
@@ -424,9 +380,7 @@
         fly(target, document.getElementById('bus-top'), () => {
           target.style.visibility = 'hidden';
         });
-        calcEl.textContent = 'Oui, le ' + ORDINAUX[ordRank - 1] + ' monte dans le bus !';
-        calcEl.classList.add('show');
-        shell.say('Le ' + ORDINAUX[ordRank - 1] + ' monte dans le bus !');
+        MJKit.calcLine(calcEl, 'Le ' + ORDINAUX[ordRank - 1] + ' monte dans le bus !');
         setTimeout(nextQuestion, testMode ? 0 : 2400);
       } else {
         p.classList.add('ko');
@@ -456,9 +410,7 @@
         sentence = s0 + ' et ' + n + ', ça fait 10 ! Le bus est plein !';
         rangees.forEach(r => r.classList.add('lit'));
       }
-      calcEl.textContent = sentence;
-      calcEl.classList.add('show');
-      shell.say(sentence);
+      MJKit.calcLine(calcEl, sentence);
     }
 
     // ── Recompte guidé (sur erreur) : les sièges s'allument un par un ──
@@ -491,7 +443,7 @@
           qCount, totalQ: G.totalQ, level: level(), type: curType,
           correctAnswer, ordRank, roundLock, seated: seatCount(),
           fileCount: fileEl.children.length,
-          choices: [...choicesEl.querySelectorAll('.choice')].map(b => b.textContent),
+          choices: [...choicesEl.querySelectorAll('.mjk-choice')].map(b => b.textContent),
           calcText: calcEl.textContent,
         };
       },
@@ -515,6 +467,7 @@
       next() { nextQuestion(); },
     };
 
+    MJKit.decor(document.querySelector('.stage'), ['nuage']);
     nextQuestion();
   });
   </script>

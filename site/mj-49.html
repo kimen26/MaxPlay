@@ -7,6 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/mp-theme.css">
+  <link rel="stylesheet" href="css/mj-kit.css">
   <style>
     /* --- GABARIT HEADER CANONIQUE --- */
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
@@ -49,28 +50,9 @@
     }
     .cell.plein { border-style:solid; border-color:rgba(255,220,160,.35); }
 
-    /* Œuf (CSS pur, repris de mj-46) */
-    .oeuf {
-      width:88%; height:92%;
-      border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
-      background:
-        radial-gradient(circle at 30% 30%, rgba(176,116,52,.5) 0 5px, transparent 6px),
-        radial-gradient(circle at 62% 58%, rgba(176,116,52,.4) 0 4px, transparent 5px),
-        linear-gradient(160deg, #fff5da 0%, #f3d9a4 70%, #e6c282 100%);
-      box-shadow:inset -4px -6px 10px rgba(120,70,20,.28), 0 3px 6px rgba(0,0,0,.35);
-    }
-    .cell .oeuf, .vrac .oeuf { animation:oeufPop .3s cubic-bezier(.34,1.56,.64,1) both; }
+    /* Œuf + pastille de comptage : mj-kit.css (.mjk-oeuf / .mjk-pastille) */
+    .cell .mjk-oeuf, .vrac .mjk-oeuf { width:88%; height:92%; animation:oeufPop .3s cubic-bezier(.34,1.56,.64,1) both; }
     @keyframes oeufPop { from{transform:scale(0)} to{transform:scale(1)} }
-
-    /* Pastille de comptage (aide optionnelle au tap) */
-    .pastille {
-      position:absolute; top:-8px; left:50%; transform:translateX(-50%);
-      min-width:26px; height:26px; padding:0 5px; border-radius:999px;
-      background:#ffe066; color:#4a3005; border:2px solid #fff;
-      font-size:.95rem; display:flex; align-items:center; justify-content:center;
-      box-shadow:0 3px 6px rgba(0,0,0,.4); z-index:4; pointer-events:none;
-      animation:dixPop .25s cubic-bezier(.34,1.56,.64,1) both;
-    }
 
     /* Œufs en vrac (à côté des barquettes) */
     .vrac { display:flex; align-items:flex-end; justify-content:center; gap:5px; flex-wrap:wrap; min-height:56px; max-width:96%; }
@@ -78,16 +60,8 @@
       position:relative; width:var(--cell, 44px); height:calc(var(--cell, 44px) * 1.18);
       display:flex; align-items:flex-end; justify-content:center; cursor:pointer; touch-action:manipulation;
     }
-    .vrac .loose .oeuf { transform:rotate(var(--rot, 0deg)); }
-
-    /* Phrase du calcul (« 10 et 4, ça fait 14 ! ») */
-    .calc-line {
-      min-height:2.2em; display:flex; align-items:center; justify-content:center;
-      font-size:1.3rem; font-weight:900; color:#ffe066; text-align:center;
-      text-shadow:0 0 12px rgba(255,231,160,.4), 0 2px 4px rgba(0,0,0,.55);
-      opacity:0; transform:translateY(8px); transition:opacity .4s, transform .4s; padding:0 10px;
-    }
-    .calc-line.show { opacity:1; transform:translateY(0); }
+    .vrac .loose .mjk-oeuf { transform:rotate(var(--rot, 0deg)); }
+    .stage { position:relative; } /* ancre des décors mj-kit */
 
     /* Célébration « bocal » (fin N2) : les paquets de 10 brillent et descendent */
     .bocal-out { animation:bocalOut 1.1s ease-in forwards; }
@@ -97,19 +71,6 @@
       100% { transform:translateY(120vh); filter:brightness(1.4); }
     }
 
-    /* QCM : 3 gros boutons-chiffres */
-    .choices { display:flex; gap:16px; justify-content:center; align-items:center; min-height:100px; }
-    .choices.hidden { visibility:hidden; }
-    .choice {
-      font-family:'Fredoka One',sans-serif; font-size:2.3rem; font-weight:900; color:#2a1c05;
-      min-width:92px; min-height:92px; border-radius:24px; border:none; cursor:pointer;
-      background:linear-gradient(145deg,#ffe066,#f0b73f);
-      box-shadow:0 6px 0 #b8860b, 0 10px 20px rgba(0,0,0,.45);
-      transition:transform .1s, opacity .2s; touch-action:manipulation;
-    }
-    .choice:active { transform:translateY(3px) scale(.96); box-shadow:0 2px 0 #b8860b; }
-    .choice.ok { background:linear-gradient(145deg,#7fe7c4,#2fbf8f); box-shadow:0 6px 0 #157a56, 0 0 24px rgba(47,191,143,.7); color:#062e20; }
-    .choice.ko { opacity:.35; }
   </style>
 </head>
 <body data-ambiance="jungle">
@@ -126,13 +87,14 @@
       <div class="barquettes" id="barquettes"></div>
       <div class="vrac" id="vrac"></div>
     </div>
-    <div class="calc-line" id="calc-line"></div>
-    <div class="choices hidden" id="choices"></div>
+    <div id="calc-line"></div>
+    <div class="mjk-choices hidden" id="choices"></div>
   </div>
 
 </div>
   <!-- libs SPÉCIFIQUES au jeu -->
   <script src="js/mj-dice.js"></script>
+  <script src="js/mj-kit.js"></script>
   <script src="js/mj-compte.js"></script>
   <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
   <script src="js/mj-shell.js"></script>
@@ -176,7 +138,7 @@
     const rand = MJDice.randInt;
     function sfx(src, vol) { try { const a = new Audio(src); a.volume = vol || 0.5; a.play().catch(() => {}); } catch (e) {} }
 
-    let qCount = 0, qcm = null, correctAnswer = 0, roundLock = false, tagged = 0;
+    let qCount = 0, correctAnswer = 0, roundLock = false, tagged = 0;
     let curSub = 'manque', soundsOn = true, testMode = false, forcedLevel = null, forcedSub = null;
     function level() { return forcedLevel !== null ? forcedLevel : G.level; }
 
@@ -193,7 +155,7 @@
           const i = r * 5 + c;
           const cell = document.createElement('div');
           cell.className = 'cell' + (i < filled ? ' plein' : '');
-          if (i < filled) cell.innerHTML = '<div class="oeuf"></div>';
+          if (i < filled) cell.innerHTML = '<div class="mjk-oeuf"></div>';
           cell.addEventListener('click', () => tapCount(cell));
           row.appendChild(cell);
         }
@@ -209,7 +171,7 @@
         const l = document.createElement('div');
         l.className = 'loose';
         l.style.setProperty('--rot', (rand(-14, 14)) + 'deg');
-        l.innerHTML = '<div class="oeuf"></div>';
+        l.innerHTML = '<div class="mjk-oeuf"></div>';
         l.addEventListener('click', () => tapCount(l));
         vracEl.appendChild(l);
       }
@@ -225,10 +187,7 @@
       if (!countable || el.dataset.tagged) return;
       el.dataset.tagged = '1';
       tagged++;
-      const p = document.createElement('span');
-      p.className = 'pastille';
-      p.textContent = tagged;
-      el.appendChild(p);
+      el.appendChild(MJKit.pastille(tagged));
       if (soundsOn) try { sndCount(); } catch (e) {}
     }
 
@@ -237,7 +196,7 @@
       vracEl.innerHTML = '';
       targetEl.textContent = '';
       tagged = 0;
-      calcEl.classList.remove('show'); calcEl.textContent = '';
+      MJKit.calcReset(calcEl);
       choicesEl.classList.add('hidden'); choicesEl.innerHTML = '';
     }
 
@@ -245,7 +204,6 @@
     function nextQuestion() {
       if (qCount >= G.totalQ) return endRound();
       qCount++;
-      qcm = MJCompte.beginQuestion();
       roundLock = false;
       clearScene();
 
@@ -293,45 +251,27 @@
       }
     }
 
+    // QCM = bibliothèque d'actions mj-kit (boutons + retry + révélation)
     function showChoices(range) {
       const opts = MJCompte.distractors(correctAnswer, { count: 3, min: range.min, max: range.max, spread: 2 });
-      choicesEl.innerHTML = '';
-      opts.forEach(n => {
-        const b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'choice';
-        b.textContent = n;
-        if (n === correctAnswer) b.dataset.correct = '1';
-        b.addEventListener('click', () => answer(n === correctAnswer, b));
-        choicesEl.appendChild(b);
+      MJKit.qcm(choicesEl, {
+        options: opts, correct: correctAnswer,
+        onCorrect: (attempts, btn) => {
+          roundLock = true;
+          G.notePip(qCount - 1, attempts, btn);
+          celebrateAnswer();
+          setTimeout(nextQuestion, testMode ? 0 : 2700);
+        },
+        onReveal: (okEl) => {
+          roundLock = true;
+          G.notePip(qCount - 1, 4, okEl);
+          celebrateAnswer();
+          setTimeout(nextQuestion, testMode ? 0 : 2900);
+        },
+        onWrong: () => {
+          shell.say(curSub === 'manque' ? 'Tapote les trous vides pour les compter !' : 'Tapote les œufs pour les compter !');
+        },
       });
-      choicesEl.classList.remove('hidden');
-    }
-
-    function answer(isCorrect, btn) {
-      if (roundLock || btn.disabled) return;
-      const res = MJCompte.answer(qcm, isCorrect);
-      if (res.outcome === 'ignored') return;
-      if (res.outcome === 'correct') {
-        btn.classList.add('ok');
-        try { sndDing(); } catch (e) {}
-        roundLock = true;
-        G.notePip(qCount - 1, res.attempts, btn);
-        celebrateAnswer();
-        setTimeout(nextQuestion, testMode ? 0 : 2700);
-      } else if (res.outcome === 'reveal') {
-        btn.classList.add('ko'); btn.disabled = true;
-        try { sndBuzz(); } catch (e) {}
-        const okEl = QcmRetry.revealCorrect(choicesEl);
-        roundLock = true;
-        G.notePip(qCount - 1, 4, okEl);
-        celebrateAnswer();
-        setTimeout(nextQuestion, testMode ? 0 : 2900);
-      } else {
-        btn.classList.add('ko'); btn.disabled = true;
-        try { sndBuzz(); } catch (e) {}
-        shell.say(curSub === 'manque' ? 'Tapote les trous vides pour les compter !' : 'Tapote les œufs pour les compter !');
-      }
     }
 
     // ── La phrase du calcul + le geste visuel de la dizaine ──
@@ -343,8 +283,8 @@
         holes.forEach((h, i) => {
           setTimeout(() => {
             h.classList.add('plein');
-            h.querySelector('.pastille') && h.querySelector('.pastille').remove();
-            h.innerHTML = '<div class="oeuf"></div>';
+            h.querySelector('.mjk-pastille') && h.querySelector('.mjk-pastille').remove();
+            h.innerHTML = '<div class="mjk-oeuf"></div>';
             if (soundsOn) try { sndCount(); } catch (e) {}
             if (i === holes.length - 1) barquettesEl.querySelector('.barquette').classList.add('pleine');
           }, testMode ? 0 : 350 + i * 320);
@@ -358,9 +298,7 @@
         looseHtml(correctAnswer, 40);
         sentence = '10 et ' + correctAnswer + ', ça fait ' + (10 + correctAnswer) + ' !';
       }
-      calcEl.textContent = sentence;
-      calcEl.classList.add('show');
-      shell.say(sentence);
+      MJKit.calcLine(calcEl, sentence);
     }
 
     // ── Fin de manche : célébration bocal au niveau 2 (les paquets de 10 descendent) ──
@@ -391,7 +329,7 @@
           barquettes: barquettesEl.querySelectorAll('.barquette').length,
           pleines: barquettesEl.querySelectorAll('.barquette.pleine').length,
           loose: vracEl.querySelectorAll('.loose').length,
-          choices: [...choicesEl.querySelectorAll('.choice')].map(b => b.textContent),
+          choices: [...choicesEl.querySelectorAll('.mjk-choice')].map(b => b.textContent),
           calcText: calcEl.textContent,
         };
       },
@@ -401,12 +339,13 @@
       answer(correct) {
         const btn = correct
           ? choicesEl.querySelector('[data-correct="1"]')
-          : choicesEl.querySelector('.choice:not([data-correct="1"]):not(.ko)');
+          : choicesEl.querySelector('.mjk-choice:not([data-correct="1"]):not(.ko)');
         if (btn) btn.click();
       },
       next() { nextQuestion(); },
     };
 
+    MJKit.decor(document.querySelector('.stage'), ['fougere-g', 'fougere-d']);
     nextQuestion();
   });
   </script>

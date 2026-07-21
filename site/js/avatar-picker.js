@@ -62,7 +62,10 @@
     return picked;
   }
 
-  // groupe les clusters par teinte → max 3 familles (les plus peuplées).
+  // groupe les clusters par teinte → TOUJOURS 3 familles (2026-07-21).
+  // Un dino quasi monochrome (cendre, ammonite…) ne doit pas tomber à 1-2
+  // pastilles : on scinde la famille la plus étalée en luminosité
+  // (clairs vs foncés), à défaut on synthétise une variante claire/foncée.
   // Retour : { bases:[[r,g,b]…], families:[{h,s,base,baseHsl}…] } — bases[i] = représentant de families[i].
   function extractFamilies(d) {
     var clusters = extractClusters(d);
@@ -77,13 +80,44 @@
       }
       if (f) {
         f.pop += cl.n;
+        f.clusters.push(cl);
         if (cl.n > f.basePop) { f.basePop = cl.n; f.base = cl.c; f.h = hsl[0]; }
       } else {
-        fams.push({ h: hsl[0], grey: grey, pop: cl.n, basePop: cl.n, base: cl.c });
+        fams.push({ h: hsl[0], grey: grey, pop: cl.n, basePop: cl.n, base: cl.c, clusters: [cl] });
       }
     });
     fams.sort(function (a, b) { return b.pop - a.pop; });
     fams = fams.slice(0, 3);
+    var guard = 0;
+    while (fams.length && fams.length < 3 && guard++ < 4) {
+      // famille candidate au split : celle dont les clusters s'étalent le plus en luminosité
+      var bestI = -1, bestSpread = 0;
+      fams.forEach(function (f, i) {
+        if (f.clusters.length < 2) return;
+        var ls = f.clusters.map(function (cl) { return rgb2hsl(cl.c[0], cl.c[1], cl.c[2])[2]; });
+        var spread = Math.max.apply(null, ls) - Math.min.apply(null, ls);
+        if (spread > bestSpread) { bestSpread = spread; bestI = i; }
+      });
+      if (bestI >= 0 && bestSpread > 0.06) {
+        var f0 = fams.splice(bestI, 1)[0];
+        var sorted = f0.clusters.slice().sort(function (a, b) {
+          return rgb2hsl(a.c[0], a.c[1], a.c[2])[2] - rgb2hsl(b.c[0], b.c[1], b.c[2])[2];
+        });
+        var mid = Math.ceil(sorted.length / 2);
+        [sorted.slice(0, mid), sorted.slice(mid)].forEach(function (part) {
+          var base = part[0], pop = 0;
+          part.forEach(function (cl) { pop += cl.n; if (cl.n > base.n) base = cl; });
+          fams.push({ h: rgb2hsl(base.c[0], base.c[1], base.c[2])[0], grey: f0.grey, pop: pop, basePop: base.n, base: base.c.slice(), clusters: part });
+        });
+      } else {
+        // plus rien à scinder : variante claire ou foncée synthétique de la famille principale
+        var fb = fams[0], bh = rgb2hsl(fb.base[0], fb.base[1], fb.base[2]);
+        var l2 = bh[2] > 0.5 ? Math.max(0.12, bh[2] - 0.28) : Math.min(0.92, bh[2] + 0.28);
+        var c2 = hsl2rgb(bh[0], bh[1], l2);
+        fams.push({ h: bh[0], grey: fb.grey, pop: 1, basePop: 1, base: c2, clusters: [{ c: c2, n: 1 }] });
+      }
+      fams.sort(function (a, b) { return b.pop - a.pop; });
+    }
     fams.forEach(function (f) { f.baseHsl = rgb2hsl(f.base[0], f.base[1], f.base[2]); });
     if (!fams.length) return { bases: [], families: [] };
     return { bases: fams.map(function (f) { return f.base.slice(); }), families: fams };
@@ -108,7 +142,18 @@
         for (var k = 0; k < fams.length; k++) {
           if (fams[k].grey) continue;
           var dh = hueDist(fams[k].h, hsl[0]);
-          if (dh < bh) { bh = dh; fi = k; }
+          if (dh < bh) bh = dh;
+        }
+        if (bh < 1e9) {
+          // départage par luminosité entre familles de teinte quasi égale
+          // (cas des familles scindées clairs/foncés d'un dino monochrome)
+          var bl = 1e9;
+          for (var k3 = 0; k3 < fams.length; k3++) {
+            if (fams[k3].grey) continue;
+            if (hueDist(fams[k3].h, hsl[0]) > bh + 12) continue;
+            var dl = Math.abs(hsl[2] - fams[k3].baseHsl[2]);
+            if (dl < bl) { bl = dl; fi = k3; }
+          }
         }
       }
       if (fi < 0) { // pixel gris OU pas de famille colorée : plus proche en RGB

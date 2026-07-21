@@ -205,6 +205,19 @@
   // ── 3 triplets proposés autour d'une teinte (formule presets historique) ──
   // mk(): teinte imposée, saturation/luminosité de CHAQUE base conservées
   // (avec variance par proposition) → nuancé et stylé, jamais aplati.
+  // 2 emoji « de la couleur » (par teinte) — affichés sous chaque triplet
+  function emojisForHue(h) {
+    h = ((h % 360) + 360) % 360;
+    if (h < 15 || h >= 345) return ['🍓', '❤️'];
+    if (h < 40)  return ['🦊', '🍊'];
+    if (h < 65)  return ['⭐', '🍌'];
+    if (h < 95)  return ['🍏', '🍀'];
+    if (h < 165) return ['🌿', '🐸'];
+    if (h < 200) return ['🌊', '🐬'];
+    if (h < 250) return ['💙', '🐳'];
+    if (h < 290) return ['🍇', '🔮'];
+    return ['🌸', '🦩'];
+  }
   function tripletsFor(h) {
     if (!C || !curBases || !curBases.length) return [];
     // hueOff[i] = décalage de teinte pour la FAMILLE i (0 = famille principale).
@@ -218,10 +231,12 @@
         return C.hsl2rgb(hue, s, l);
       });
     }
+    var e0 = emojisForHue(h), e35 = emojisForHue(h + 35), e165 = emojisForHue(h + 165);
+    function pair(a, b) { return a[0] + (b[0] === a[0] ? b[1] : b[0]); } // jamais 2× le même emoji
     return [
-      { emo: '✨', t: mk([0, 0, 0], 1, 0.35, 0) },            // tout dans la teinte (nuancé par les bases)
-      { emo: '🌿', t: mk([0, 35, -25], 0.9, 0.3, 0.04) },     // duo : familles voisines de la teinte
-      { emo: '⚡', t: mk([0, 165, 40], 1.2, 0.5, -0.03) }     // contraste : accent complémentaire
+      { emo: e0[0] + e0[1],  t: mk([0, 0, 0], 1, 0.35, 0) },          // tout dans la teinte (nuancé par les bases)
+      { emo: pair(e0, e35),  t: mk([0, 35, -25], 0.9, 0.3, 0.04) },   // duo : familles voisines de la teinte
+      { emo: pair(e0, e165), t: mk([0, 165, 40], 1.2, 0.5, -0.03) }   // contraste : accent complémentaire
     ];
   }
 

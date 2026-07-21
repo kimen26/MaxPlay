@@ -26,8 +26,13 @@
   .scene { display:flex; align-items:center; justify-content:center; gap:18px; padding:10px 0 2px; }
   .big-avatar { width:150px; height:150px; border-radius:50%; border:4px solid var(--gold);
                 background:radial-gradient(circle at 35% 30%, var(--card-2), var(--card));
-                display:flex; align-items:center; justify-content:center; overflow:hidden; }
+                display:flex; align-items:center; justify-content:center; overflow:hidden; position:relative; }
   .big-avatar img { width:118px; height:118px; object-fit:contain; }
+  /* flash de zone : montre QUELS pixels la pastille tapée va changer */
+  .big-avatar .zflash { position:absolute; left:50%; top:50%; width:118px; height:118px;
+                        transform:translate(-50%,-50%); object-fit:contain; pointer-events:none; opacity:0; }
+  .big-avatar .zflash.go { animation:zflash .65s ease-out; }
+  @keyframes zflash { 0%,100%{opacity:0} 20%,45%{opacity:.9} 60%{opacity:.15} 80%{opacity:.7} }
   .pastilles { display:flex; flex-direction:column; gap:8px; }
   .pastilles button { width:27px; height:27px; border-radius:50%; border:2px solid rgba(255,255,255,.35); cursor:pointer; padding:0; }
   .pastilles button.active { box-shadow:0 0 0 3px #fff; }
@@ -437,8 +442,31 @@
     });
   })();
 
+  // ── flash de zone : la pastille tapée fait clignoter SES pixels sur le dino ──
+  var maskCache = {}; // 'id:idx' -> dataURL
+  function flashZone(idx) {
+    var f = curFile();
+    if (!f || !C || !C.zoneMask) return;
+    var wrap = document.getElementById('bigAvatarWrap');
+    var el = wrap.querySelector('.zflash');
+    if (!el) {
+      el = document.createElement('img');
+      el.className = 'zflash'; el.alt = '';
+      wrap.appendChild(el);
+    }
+    function show(url) {
+      if (!url) return;
+      el.src = url;
+      el.classList.remove('go'); void el.offsetWidth; el.classList.add('go');
+    }
+    var key = curId + ':' + idx;
+    if (maskCache[key]) show(maskCache[key]);
+    else C.zoneMask(f, idx, function (url) { maskCache[key] = url; show(url); });
+  }
+
   function openRetouche(idx) {
     editingIdx = idx;
+    flashZone(idx);
     document.getElementById('normal').classList.remove('show');
     document.getElementById('retouche').classList.add('on');
     var c = (curTargets || curBases || [])[idx];

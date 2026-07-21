@@ -1,0 +1,53 @@
+/* ── mj-kit.css — styles de la bibliothèque de dessin partagée (mj-kit.js) ──
+   Œuf · pastille de comptage · QCM gros boutons · phrase du calcul · décors.
+   Étendre ICI, jamais de copie locale dans un jeu. */
+
+/* Œuf (repris du design validé mj-46 / POC design-compte mockup-1) */
+.mjk-oeuf {
+  width: 44px; height: 55px;
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(176,116,52,.5) 0 5px, transparent 6px),
+    radial-gradient(circle at 62% 58%, rgba(176,116,52,.4) 0 4px, transparent 5px),
+    linear-gradient(160deg, #fff5da 0%, #f3d9a4 70%, #e6c282 100%);
+  box-shadow: inset -4px -6px 10px rgba(120,70,20,.28), 0 3px 6px rgba(0,0,0,.35);
+}
+
+/* Pastille jaune numérotée (comptage un-à-un, POC-02) */
+.mjk-pastille {
+  position: absolute; top: -8px; left: 50%; transform: translateX(-50%);
+  min-width: 26px; height: 26px; padding: 0 5px; border-radius: 999px;
+  background: #ffe066; color: #4a3005; border: 2px solid #fff;
+  font-family: 'Fredoka One', sans-serif; font-size: .95rem;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 3px 6px rgba(0,0,0,.4); z-index: 4; pointer-events: none;
+  animation: mjkPop .25s cubic-bezier(.34,1.56,.64,1) both;
+}
+@keyframes mjkPop { from { transform: translateX(-50%) scale(0); } to { transform: translateX(-50%) scale(1); } }
+
+/* QCM : 3 gros boutons-chiffres (≥ 92px, jaune or, enfoncement au tap) */
+.mjk-choices { display: flex; gap: 16px; justify-content: center; align-items: center; min-height: 100px; }
+.mjk-choices.hidden { visibility: hidden; }
+.mjk-choice {
+  font-family: 'Fredoka One', sans-serif; font-size: 2.3rem; font-weight: 900; color: #2a1c05;
+  min-width: 92px; min-height: 92px; border-radius: 24px; border: none; cursor: pointer;
+  background: linear-gradient(145deg, #ffe066, #f0b73f);
+  box-shadow: 0 6px 0 #b8860b, 0 10px 20px rgba(0,0,0,.45);
+  transition: transform .1s, opacity .2s; touch-action: manipulation;
+}
+.mjk-choice:active { transform: translateY(3px) scale(.96); box-shadow: 0 2px 0 #b8860b; }
+.mjk-choice.ok { background: linear-gradient(145deg, #7fe7c4, #2fbf8f); box-shadow: 0 6px 0 #157a56, 0 0 24px rgba(47,191,143,.7); color: #062e20; }
+.mjk-choice.ko { opacity: .35; }
+
+/* Phrase du calcul (« 10 et 4, ça fait 14 ! ») */
+.mjk-calc {
+  min-height: 2.2em; display: flex; align-items: center; justify-content: center;
+  font-family: 'Fredoka One', sans-serif; font-size: 1.3rem; font-weight: 900;
+  color: #ffe066; text-align: center;
+  text-shadow: 0 0 12px rgba(255,231,160,.4), 0 2px 4px rgba(0,0,0,.55);
+  opacity: 0; transform: translateY(8px); transition: opacity .4s, transform .4s; padding: 0 10px;
+}
+.mjk-calc.show { opacity: 1; transform: translateY(0); }
+
+/* Décor low-poly (img/decor/) — jamais interactif, jamais devant le jeu */
+.mjk-decor { position: absolute; pointer-events: none; z-index: 0; }

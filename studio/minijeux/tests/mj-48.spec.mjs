@@ -21,7 +21,7 @@ export async function run({ page, ok }) {
 
   // ── N0 : question comptage, bonne réponse présente dans le QCM ──
   await page.evaluate(() => { window.__mjTest.forceType('count'); window.__mjTest.setDifficulty(0); });
-  await page.waitForSelector('.choices:not(.hidden) .choice', { timeout: 4000 });
+  await page.waitForSelector('.mjk-choices:not(.hidden) .mjk-choice', { timeout: 4000 });
   const s0 = await page.evaluate(() => window.__mjTest.state);
   ok('N0 : type count, ≤5 passagers', s0.type === 'count' && s0.correctAnswer >= 1 && s0.correctAnswer <= 5,
      `answer=${s0.correctAnswer}`);
@@ -29,7 +29,7 @@ export async function run({ page, ok }) {
   ok('QCM 3 choix avec la bonne réponse', s0.choices.length === 3 && s0.choices.includes(String(s0.correctAnswer)));
 
   // ── Zones tap ≥ 80px ──
-  const box = await page.locator('.choice').first().boundingBox();
+  const box = await page.locator('.mjk-choice').first().boundingBox();
   ok('Bouton QCM ≥ 80px', !!box && box.width >= 80 && box.height >= 80,
      box ? `${Math.round(box.width)}×${Math.round(box.height)}` : 'no-box');
 
@@ -61,7 +61,7 @@ export async function run({ page, ok }) {
   for (let i = 0; i < 8; i++) {
     const done = await page.evaluate(() => !!document.querySelector('.end-wrap'));
     if (done) break;
-    await page.waitForSelector('.choices:not(.hidden) .choice', { timeout: 4000 }).catch(() => {});
+    await page.waitForSelector('.mjk-choices:not(.hidden) .mjk-choice', { timeout: 4000 }).catch(() => {});
     await page.evaluate(() => window.__mjTest.answer(true));
     await page.waitForTimeout(150);
   }

@@ -13,6 +13,7 @@
 | Golden | `site/js/mj-golden.js` | Piste de manches + étoiles ★★★ (3 niveaux via `Stars.get`) |
 | QCM retry | `site/js/qcm-retry.js` | Retry sans pénalité + révélation |
 | Célébrations | `site/js/celebrations.js` | MaxFX : jeton vers la piste, étoile finale (cinematic = sans-faute) |
+| **Kit de dessin & d'actions** | `site/js/mj-kit.js` + `css/mj-kit.css` | Éléments de scène partagés (décision PY 2026-07-21) : œuf (teintable) · pastille de comptage · **QCM gros boutons-chiffres avec boucle QcmRetry complète** (`MJKit.qcm`) · phrase du calcul (`calcLine`) · pool avatars créatures (`avatarPool`) · décors low-poly `img/decor/` posés dans les coins (`decor`). Clients : mj-48/49/50/52/53. **Étendre = enrichir le kit, jamais de copie locale.** |
 
 ## Moteurs réutilisables (libs extraites)
 

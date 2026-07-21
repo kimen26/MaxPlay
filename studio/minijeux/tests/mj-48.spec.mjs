@@ -10,14 +10,42 @@ export async function run({ page, ok }) {
   await page.waitForTimeout(200);
   ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
 
-  await page.evaluate(() => window.__mjTest.setTestMode(true));
-
   // ── Bus SVG canonique ──
   ok('Bus rendu via busSVG()', await page.locator('#bus-top svg').count() === 1);
+
+  // ── Ligne 162 : couleur du bus = couleur officielle IDFM lue depuis LIGNES,
+  // jamais le fallback codé en dur. Anti-régression du bug "162 est rouge au
+  // lieu de bleu" (retour Papa Yann 2026-07-22) : `window.LIGNES` était TOUJOURS
+  // undefined (LIGNES est un `const` top-level, jamais posé sur window), donc
+  // toute lecture via `window.LIGNES` retombait silencieusement sur le fallback
+  // `#E2001A` (rouge) au lieu du bleu réel `#0064B1` de data.js.
+  const busPanelFill = await page.evaluate(() => {
+    const rects = [...document.querySelectorAll('#bus-top svg rect[fill]')];
+    // la fenêtre destination est le seul rect coloré par la ligne (ni gris ni turquoise carrosserie)
+    return rects.map(r => r.getAttribute('fill')).find(f => /^#/.test(f) && f !== '#1abc9c' && f !== '#ecf0f1' && f !== '#7f8c8d' && f !== '#458bba' && f !== '#111' && f !== '#FF4444' && f !== '#FFCC00');
+  });
+  ok('mj-48 : bus 162 rendu dans la couleur officielle IDFM (bleu #0064B1, pas le fallback rouge)',
+     busPanelFill && busPanelFill.toUpperCase() === '#0064B1', `fill=${busPanelFill}`);
 
   // ── Plan 2 fenêtres de 5 (🔒 figée : jamais le bazar) ──
   ok('10 sièges en 2 rangées de 5', await page.locator('.siege').count() === 10
     && await page.locator('#rangee1 .siege').count() === 5);
+
+  // ── Anti-régression "double validation" (retour Papa Yann : la 3e réponse
+  // se refait 2 fois) : après une bonne réponse, TOUS les boutons QCM doivent
+  // être verrouillés immédiatement, sinon un tap rapide pendant la fenêtre de
+  // victoire peut retomber sur une vieille tuile encore active et valider
+  // 2 questions d'un coup. Timing RÉEL (pas testMode, qui enchaîne à 0ms et
+  // masquerait la fenêtre de course qu'on vérifie ici).
+  await page.waitForSelector('.mjk-choices:not(.hidden) .mjk-choice', { timeout: 4000 });
+  await page.click('.mjk-choice[data-correct="1"]');
+  await page.waitForTimeout(80);
+  const allDisabled48 = await page.evaluate(() =>
+    [...document.querySelectorAll('.mjk-choice')].every(b => b.disabled));
+  ok('Toutes les tuiles QCM verrouillées juste après une bonne réponse', allDisabled48);
+  await page.waitForTimeout(3000); // laisse la transition (2.6s) se terminer avant la suite
+
+  await page.evaluate(() => window.__mjTest.setTestMode(true));
 
   // ── N0 : question comptage, bonne réponse présente dans le QCM ──
   await page.evaluate(() => { window.__mjTest.forceType('count'); window.__mjTest.setDifficulty(0); });

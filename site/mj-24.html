@@ -122,24 +122,39 @@
       });
     }
 
+    // Verrouille tous les choix de la question en cours : empêche qu'un tap
+    // rapide (double-tap d'excitation, ou tap pendant la fenêtre de victoire
+    // avant que nextQuestion() ait reconstruit le DOM) ne retombe sur une
+    // vieille tuile encore active et ne valide 2 questions d'un coup
+    // (bug remonté par Papa Yann : "la 3e validation, je la refais 2 fois").
+    function lockChoices(){
+      document.querySelectorAll('#choices .dino-tile').forEach(b => b.disabled = true);
+    }
+
     function answer(correct, btn){
       if (btn.disabled) return;
       const res = QcmRetry.handle(qcm, correct);
       if (res.outcome === 'ignored') return;
       if (res.outcome === 'correct'){
+        lockChoices();
         btn.classList.add('ok'); score += res.points;
         streak = res.streakInc ? streak+1 : 0;
         sndDing(); G.notePip(qCount-1, res.attempts, btn);
         setTimeout(nextQuestion, 950);
       } else if (res.outcome === 'reveal'){
-        btn.classList.add('ko'); btn.disabled = true; streak = 0;
-        revealCorrect(); sndBuzz();
+        lockChoices();
+        btn.classList.add('ko'); streak = 0;
+        revealCorrect();
+        // Son d'erreur AUDIBLE du pool partagé (inclut le prout culte) — remplace
+        // sndBuzz() (tonalité synthé trop discrète, retour Papa Yann : "on entend
+        // pas bien quand on a fauté, vu le texte par dessus"). Jamais punitif.
+        SoundPool.play('error', 0.85);
         const okEl = document.querySelector('.dino-tile[data-correct="1"]');
         G.notePip(qCount-1, 4, okEl);
         setTimeout(nextQuestion, 1800);
       } else {
         btn.classList.add('ko'); btn.disabled = true; streak = 0;
-        sndBuzz();
+        SoundPool.play('error', 0.85);
         SoundPool.voice('doux');   // voix réelle aléatoire (Presque ! / Essaie encore !…)
       }
     }

@@ -37,6 +37,9 @@
       justify-content:space-evenly; overflow:hidden; padding:4px 8px 12px; gap:6px;
     }
 
+    /* ── Bloc domino + ses 2 chiffres alignés dessous ────────────────────── */
+    .domino-wrap { display:flex; flex-direction:column; align-items:center; flex-shrink:0; gap:0; }
+
     /* ── Le DOMINO du ciel : 2 cases accolées (visuel POC-06 validé PY) ── */
     .domino {
       position:relative; display:flex; align-items:stretch; flex-shrink:0;
@@ -46,14 +49,20 @@
       border-radius:22px; overflow:hidden;
       box-shadow:0 8px 24px rgba(0,0,0,.35), inset 0 0 30px rgba(20,30,80,.35);
     }
+    /* ── Chiffres des 2 moitiés, chacun sous SA case (même largeur flex:1) ── */
+    .half-nums { display:flex; width:min(92vw, 52vh, 480px); }
+    .half-nums .half-num {
+      flex:1; text-align:center; font-size:1.6rem; font-weight:900; color:#ffe9a0;
+      text-shadow:0 0 10px rgba(255,231,160,.55), 0 2px 3px rgba(0,0,0,.6);
+      padding-top:4px; opacity:0; transition:opacity .4s;
+    }
+    .half-nums .half-num.show { opacity:1; }
     .domino .divider {
       width:3px; flex-shrink:0;
       background:linear-gradient(180deg, transparent, rgba(255,233,160,.55), transparent);
     }
     .cell { position:relative; flex:1; transition:background .4s, box-shadow .4s; }
     .cell.lit { background:rgba(255,233,160,.10); box-shadow:inset 0 0 38px rgba(255,233,160,.5); }
-
-    .sky-lines { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
 
     .cpip {
       position:absolute; transform:translate(-50%,-50%);
@@ -63,8 +72,11 @@
     @keyframes pipGlow { 0%,100%{filter:brightness(.92);} 50%{filter:brightness(1.15);} }
     .cpip-dino {
       width:100%; height:100%; object-fit:contain;
-      /* silhouette noire → blanc lumineux + halo doré : un "point" d'étoile en dino */
-      filter:brightness(0) invert(1) drop-shadow(0 0 6px rgba(255,231,160,.95)) drop-shadow(0 0 14px rgba(255,231,160,.35));
+      /* silhouette noire → blanc lumineux + halo doré plus large : un "point" d'étoile en dino */
+      filter:brightness(0) invert(1)
+        drop-shadow(0 0 10px rgba(255,231,160,1))
+        drop-shadow(0 0 22px rgba(255,231,160,.55))
+        drop-shadow(0 0 34px rgba(255,231,160,.28));
     }
 
     /* ── Phrase du calcul ("3 et 4, ça fait 7 !") ──────────────── */
@@ -103,7 +115,13 @@
   </div>
 
   <div class="stage">
-    <div class="domino" id="domino"></div>
+    <div class="domino-wrap">
+      <div class="domino" id="domino"></div>
+      <div class="half-nums" id="half-nums">
+        <div class="half-num" id="half-num-0"></div>
+        <div class="half-num" id="half-num-1"></div>
+      </div>
+    </div>
     <div class="calc-line" id="calc-line"></div>
     <div class="choices" id="choices"></div>
   </div>
@@ -162,6 +180,7 @@
     const dominoEl = document.getElementById('domino');
     const calcEl = document.getElementById('calc-line');
     const choicesEl = document.getElementById('choices');
+    const halfNumEls = [document.getElementById('half-num-0'), document.getElementById('half-num-1')];
 
     let qCount = 0, qcm = null, value = 0, halves = null, roundLock = false, testMode = false;
     let forcedLevel = null; // harnais de test seulement
@@ -191,13 +210,8 @@
         cell.className = 'cell g' + gi;
         const pips = MJDice.pipLayout(g);
         const size = g >= 5 ? 34 : 42;
-        // Fines lignes reliant les points (effet constellation)
-        const lines = pips.slice(1).map((p, i) => {
-          const a = pips[i];
-          return `<line x1="${a[0]}" y1="${a[1]}" x2="${p[0]}" y2="${p[1]}"
-                    stroke="rgba(255,231,160,0.30)" stroke-width="1.2"/>`;
-        }).join('');
-        cell.innerHTML = `<svg class="sky-lines" viewBox="0 0 100 100" preserveAspectRatio="none">${lines}</svg>`;
+        // Pas de trait entre les points (retiré 2026-07-21 — ça perturbait Max) :
+        // chaque étoile-dino brille seule, sans ligne de constellation.
         pips.forEach(([x, y], pi) => {
           const pip = document.createElement('div');
           pip.className = 'cpip';
@@ -214,6 +228,12 @@
           d.className = 'divider';
           dominoEl.appendChild(d);
         }
+      });
+      // Chiffre de chaque moitié, caché tant que la réponse n'est pas trouvée
+      // (révélé dans celebrate()) — correspondance visuelle case ↔ chiffre.
+      halfNumEls.forEach((el, i) => {
+        el.textContent = groups[i];
+        el.classList.remove('show');
       });
     }
 
@@ -293,11 +313,20 @@
       choicesEl.classList.add('hidden');
       const cells = dominoEl.querySelectorAll('.cell');
       cells.forEach(c => c.classList.remove('lit'));
+      const equation = halves[0] + ' + ' + halves[1] + ' = ' + value;
       const sentence = halves[0] + ' et ' + halves[1] + ', ça fait ' + value + ' !';
-      setTimeout(() => cells[0] && cells[0].classList.add('lit'), 300);
-      setTimeout(() => cells[1] && cells[1].classList.add('lit'), 900);
+      // Chaque case s'allume + SON chiffre apparaît juste dessous, en même temps
+      // (correspondance visuelle directe demandée par Papa Yann).
       setTimeout(() => {
-        calcEl.textContent = sentence;
+        cells[0] && cells[0].classList.add('lit');
+        halfNumEls[0] && halfNumEls[0].classList.add('show');
+      }, 300);
+      setTimeout(() => {
+        cells[1] && cells[1].classList.add('lit');
+        halfNumEls[1] && halfNumEls[1].classList.add('show');
+      }, 900);
+      setTimeout(() => {
+        calcEl.textContent = equation;
         calcEl.classList.add('show');
         shell.say(sentence);
       }, 550);
@@ -342,6 +371,9 @@
           litCells: Array.from(dominoEl.querySelectorAll('.cell.lit')).length,
           calcText: calcEl.textContent,
           choices: Array.from(choicesEl.querySelectorAll('.choice')).map(b => b.textContent),
+          halfNums: halfNumEls.map(el => el.textContent),
+          halfNumsShown: halfNumEls.map(el => el.classList.contains('show')),
+          skyLines: dominoEl.querySelectorAll('.sky-lines, line').length,
         };
       },
       setTestMode(on) { testMode = !!on; },

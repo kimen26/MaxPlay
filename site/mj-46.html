@@ -41,9 +41,14 @@
     .eggs {
       position: absolute; inset: 6px 6px 20px; z-index: 3;
     }
+    /* Zone tap réelle ≥ 80×80 (règle non-négociable) : l'œuf visuel peut être
+       plus petit que 80px (chevauchement dense jusqu'à 22 œufs) — le SLOT
+       lui-même (élément cliqué) est agrandi au halo min 80×80, centré sur
+       l'œuf visuel (flex), sans changer sa taille dessinée. */
     .slot {
       position: absolute;
-      width: var(--egg, 60px); height: calc(var(--egg, 60px) * 1.55);
+      width: max(80px, var(--egg, 60px));
+      height: max(80px, calc(var(--egg, 60px) * 1.55));
       display: flex; align-items: flex-end; justify-content: center;
       cursor: pointer; touch-action: manipulation;
       animation: eggPop .35s cubic-bezier(.34,1.56,.64,1) both;
@@ -205,6 +210,18 @@
       try { const a = new Audio(src); a.volume = vol || 0.55; a.play().catch(() => {}); } catch (e) {}
     }
 
+    // Fanfare d'éclosion (retour PY 2026-07-21) : craquement identique à chaque œuf
+    // + cri de bébé dino VARIÉ (pioché sans répétition immédiate dans un petit pool)
+    // pour que l'enchaînement sonne comme une fanfare plutôt qu'une boucle.
+    const BABY_CRIES = ['dino-bebe.mp3', 'dino-bebe-2.mp3', 'dino-bebe-3.mp3'];
+    let lastCry = -1;
+    function nextCry() {
+      let idx = Math.floor(Math.random() * BABY_CRIES.length);
+      if (BABY_CRIES.length > 1 && idx === lastCry) idx = (idx + 1) % BABY_CRIES.length;
+      lastCry = idx;
+      return BABY_CRIES[idx];
+    }
+
     function eggSize(n) { return n <= 6 ? 58 : (n <= 10 ? 50 : (n <= 14 ? 44 : 38)); }
 
     function init() {
@@ -230,37 +247,85 @@
       setTimeout(showChoices, Math.min(correctAnswer * 80 + 350, 1300));
     }
 
-    // Phase 1 : les œufs apparaissent en vrac (jamais cachés à +50 %), tapotables → pastille
-    // Disposition : grille de cellules ≥ 1,15× l'œuf + jitter ±20 % + rotation ±12°
-    // → épars MAIS le haut de chaque œuf (« la tête ») reste toujours visible.
+    // Phase 1 : les œufs apparaissent en vrac et se CHEVAUCHENT (retour PY 2026-07-21 :
+    // « encore plus les décaler et les faire se chevaucher, garder 1/3 visible »).
+    // Placement par tirage-rejet : chaque œuf est proposé à une position aléatoire
+    // dans une grille resserrée (cellule < taille œuf) + jitter fort + rotation ;
+    // on rejette le tirage tant qu'il couvrirait un œuf déjà posé à plus de 2/3
+    // (= moins de 1/3 visible garanti) — sinon on ACCEPTE le recouvrement
+    // partiel : c'est le chaos maîtrisé demandé. Si aucun tirage ne passe après
+    // MAX_TRIES, on retombe sur la position de grille pure (sans jitter) pour
+    // CET œuf : elle ne peut jamais chevaucher plus de 2/3 vu l'espacement de
+    // grille — garantit la règle même dans les cas denses (jusqu'à 22 œufs).
+    const MIN_VISIBLE = 1 / 3;   // fraction mini de la surface d'un œuf qui doit rester libre
+    const MAX_TRIES = 20;
+
+    function overlapFraction(ax, ay, aw, ah, bx, by, bw, bh) {
+      const ix = Math.max(0, Math.min(ax + aw, bx + bw) - Math.max(ax, bx));
+      const iy = Math.max(0, Math.min(ay + ah, by + bh) - Math.max(ay, by));
+      const inter = ix * iy;
+      if (!inter) return 0;
+      return inter / Math.min(aw * ah, bw * bh);
+    }
+
     function renderEggs(total) {
       const box = document.getElementById('eggs');
       box.innerHTML = '';
       const W = box.clientWidth || 360, H = box.clientHeight || 220;
       let egg = eggSize(total);
-      while (egg > 30) {                    // réduit jusqu'à ce que tout tienne
-        const cell = egg * 1.15;
+      // Cellule resserrée à 0,8× l'œuf (< 1 = chevauchement possible dès le
+      // placement en grille) — on réduit la taille tant que la surface ne tient pas.
+      while (egg > 30) {
+        const cell = egg * 0.8;
         const cols = Math.max(1, Math.floor(W / cell));
         if (Math.ceil(total / cols) * cell <= H) break;
         egg -= 4;
       }
       box.style.setProperty('--egg', egg + 'px');
-      const cell = egg * 1.15;
+      const cell = egg * 0.8;
       const cols = Math.max(1, Math.floor(W / cell));
       const rows = Math.ceil(total / cols);
+      const eggH = egg * 1.28;
+      // Le slot (élément cliqué) est agrandi au halo min 80×80 mais l'œuf
+      // visuel reste centré en bas dedans (flex) → il faut convertir les
+      // coordonnées "œuf" en coordonnées "slot" pour le positionnement CSS.
+      const slotW = Math.max(80, egg), slotH = Math.max(80, egg * 1.55);
       // aligné en BAS : les œufs sont posés dans le nid, pas flottants en haut
       const ox = (W - cols * cell) / 2, oy = H - rows * cell;
       const babies = _shuffle([...TETES]);
       const order = _shuffle([...Array(total).keys()]);   // apparition désordonnée, pas ligne par ligne
+      const placed = [];   // {x, y} en coordonnées top-left de l'œuf (pas du slot)
+
       for (let i = 0; i < total; i++) {
         const r = Math.floor(i / cols), c = i % cols;
-        const jx = (Math.random() - 0.5) * cell * 0.3;
-        const jy = (Math.random() - 0.5) * cell * 0.3;
-        const rot = (Math.random() - 0.5) * 24;
+        const baseX = ox + c * cell + cell / 2 - egg / 2;
+        const baseY = oy + r * cell + cell / 2 - eggH;
+
+        let best = { x: baseX, y: baseY }, bestWorst = Infinity;
+        for (let t = 0; t <= MAX_TRIES; t++) {
+          // jitter chaotique : jusqu'à ±45% de la cellule (bien plus qu'avant ±15%)
+          // t === MAX_TRIES : tentative finale = position de grille pure (jitter nul),
+          // toujours évaluée pour garder le MEILLEUR tirage si aucun jitter ne passe.
+          const jx = t < MAX_TRIES ? (Math.random() - 0.5) * cell * 0.9 : 0;
+          const jy = t < MAX_TRIES ? (Math.random() - 0.5) * cell * 0.9 : 0;
+          const x = baseX + jx, y = baseY + jy;
+          let worst = 0;
+          for (const p of placed) {
+            worst = Math.max(worst, overlapFraction(x, y, egg, eggH, p.x, p.y, egg, eggH));
+          }
+          if (worst < bestWorst) { bestWorst = worst; best = { x, y }; }
+          if (worst <= (1 - MIN_VISIBLE)) break;   // assez visible → on prend direct
+        }
+        placed.push(best);
+
+        const rot = (Math.random() - 0.5) * 30;   // rotation plus chaotique (±15° vs ±12°)
         const slot = document.createElement('div');
         slot.className = 'slot';
-        slot.style.left = (ox + c * cell + cell / 2 + jx - egg / 2) + 'px';
-        slot.style.top = (oy + r * cell + cell / 2 + jy - egg * 1.05) + 'px';
+        // Conversion coordonnées œuf → coordonnées slot : l'œuf est centré en
+        // bas du slot (flex), le slot peut être plus grand que l'œuf (halo 80px).
+        slot.style.left = (best.x + egg / 2 - slotW / 2) + 'px';
+        slot.style.top = (best.y + eggH - slotH) + 'px';
+        slot.style.zIndex = i + 1;   // z-order cohérent avec l'ordre de grille (pas l'ordre d'apparition)
         slot.style.animationDelay = `${order[i] * 0.08}s`;
         slot.innerHTML = `<div class="egg" style="transform:rotate(${rot.toFixed(1)}deg)"></div><img class="baby" src="${babies[i % babies.length]}" alt="bébé dino">`;
         slot.onclick = () => tapEgg(slot);
@@ -351,11 +416,12 @@
           const baby = slot.querySelector('.baby');
           const pastille = slot.querySelector('.pastille');
           egg.classList.add('shake');
-          sfx('sounds/fx/dino-oeuf-eclot.mp3', 0.4);
+          sfx('sounds/fx/dino-oeuf-eclot.mp3', 0.4);   // craquement (identique, c'est le signal d'action)
           setTimeout(() => {
             egg.style.visibility = 'hidden';
             if (pastille) pastille.style.display = 'none';
             baby.classList.add('pop');
+            sfx('sounds/fx/' + nextCry(), 0.5);        // cri de bébé dino varié → effet fanfare
             if (i === slots.length - 1) setTimeout(done, 650);
           }, 380);
         }, i * 300);

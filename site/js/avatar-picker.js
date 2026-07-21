@@ -86,7 +86,14 @@
         fams.push({ h: hsl[0], grey: grey, pop: cl.n, basePop: cl.n, base: cl.c, clusters: [cl] });
       }
     });
-    fams.sort(function (a, b) { return b.pop - a.pop; });
+    // score de salience (2026-07-21, demande Papa Yann) : marquant = surface
+    // × vivacité, pas juste surface. Un petit accent vif (crête, motif) gagne
+    // sa pastille face à un gros aplat terne.
+    function famScore(f) {
+      var s = rgb2hsl(f.base[0], f.base[1], f.base[2])[1];
+      return f.pop * (0.35 + 1.65 * s);
+    }
+    fams.sort(function (a, b) { return famScore(b) - famScore(a); });
     fams = fams.slice(0, 3);
     var guard = 0;
     while (fams.length && fams.length < 3 && guard++ < 4) {
@@ -116,7 +123,7 @@
         var c2 = hsl2rgb(bh[0], bh[1], l2);
         fams.push({ h: bh[0], grey: fb.grey, pop: 1, basePop: 1, base: c2, clusters: [{ c: c2, n: 1 }] });
       }
-      fams.sort(function (a, b) { return b.pop - a.pop; });
+      fams.sort(function (a, b) { return famScore(b) - famScore(a); });
     }
     fams.forEach(function (f) { f.baseHsl = rgb2hsl(f.base[0], f.base[1], f.base[2]); });
     if (!fams.length) return { bases: [], families: [] };
@@ -125,9 +132,41 @@
   // compat : anciens appels qui ne veulent que les représentants
   function extractBases(d) { return extractFamilies(d).bases; }
 
-  // recolor par familles : chaque pixel rejoint sa famille (par teinte si
-  // saturé, sinon par proximité RGB), puis hue-shift vers la cible en
-  // conservant la luminosité relative (l'ombre reste l'ombre de SA couleur).
+  // affectation d'un pixel à sa famille : par teinte si saturé (départage par
+  // luminosité entre familles de teinte quasi égale — cas des familles
+  // scindées clairs/foncés d'un dino monochrome), sinon par proximité RGB.
+  function famAssign(fams, r, g, b, hsl) {
+    var fi = -1;
+    if (hsl[1] >= 0.14) {
+      var bh = 1e9;
+      for (var k = 0; k < fams.length; k++) {
+        if (fams[k].grey) continue;
+        var dh = hueDist(fams[k].h, hsl[0]);
+        if (dh < bh) bh = dh;
+      }
+      if (bh < 1e9) {
+        var bl = 1e9;
+        for (var k3 = 0; k3 < fams.length; k3++) {
+          if (fams[k3].grey) continue;
+          if (hueDist(fams[k3].h, hsl[0]) > bh + 12) continue;
+          var dl = Math.abs(hsl[2] - fams[k3].baseHsl[2]);
+          if (dl < bl) { bl = dl; fi = k3; }
+        }
+      }
+    }
+    if (fi < 0) { // pixel gris OU pas de famille colorée : plus proche en RGB
+      var bd = 1e9;
+      for (var k2 = 0; k2 < fams.length; k2++) {
+        var dd = dist([r, g, b], fams[k2].base);
+        if (dd < bd) { bd = dd; fi = k2; }
+      }
+    }
+    return fi;
+  }
+
+  // recolor par familles : chaque pixel rejoint sa famille, puis hue-shift
+  // vers la cible en conservant la luminosité relative (l'ombre reste
+  // l'ombre de SA couleur).
   function recolorSmart(imgData, fam, targets) {
     var s = imgData.data, fams = fam.families;
     if (!fams.length) return imgData;
@@ -136,33 +175,7 @@
       var r = s[i], g = s[i + 1], b = s[i + 2];
       if (isKept(r, g, b, s[i + 3])) continue;
       var hsl = rgb2hsl(r, g, b);
-      var fi = -1;
-      if (hsl[1] >= 0.14) {
-        var bh = 1e9;
-        for (var k = 0; k < fams.length; k++) {
-          if (fams[k].grey) continue;
-          var dh = hueDist(fams[k].h, hsl[0]);
-          if (dh < bh) bh = dh;
-        }
-        if (bh < 1e9) {
-          // départage par luminosité entre familles de teinte quasi égale
-          // (cas des familles scindées clairs/foncés d'un dino monochrome)
-          var bl = 1e9;
-          for (var k3 = 0; k3 < fams.length; k3++) {
-            if (fams[k3].grey) continue;
-            if (hueDist(fams[k3].h, hsl[0]) > bh + 12) continue;
-            var dl = Math.abs(hsl[2] - fams[k3].baseHsl[2]);
-            if (dl < bl) { bl = dl; fi = k3; }
-          }
-        }
-      }
-      if (fi < 0) { // pixel gris OU pas de famille colorée : plus proche en RGB
-        var bd = 1e9;
-        for (var k2 = 0; k2 < fams.length; k2++) {
-          var dd = dist([r, g, b], fams[k2].base);
-          if (dd < bd) { bd = dd; fi = k2; }
-        }
-      }
+      var fi = famAssign(fams, r, g, b, hsl);
       var t = tHsl[fi];
       if (!t) continue;
       var base = fams[fi].baseHsl;
@@ -266,6 +279,31 @@
     color: {
       hex: hex, fromHex: fromHex, rgb2hsl: rgb2hsl, hsl2rgb: hsl2rgb,
       vivid: vividTargets,
+      // masque d'une famille (async) → dataURL PNG : blanc semi-transparent
+      // sur les pixels de la famille idx, transparent ailleurs (flash de zone)
+      zoneMask: function (src, idx, cb) {
+        var img = new Image();
+        img.onload = function () {
+          try {
+            var cv = document.createElement('canvas'); cv.width = img.width; cv.height = img.height;
+            var c2 = cv.getContext('2d', { willReadFrequently: true });
+            c2.drawImage(img, 0, 0);
+            var d = c2.getImageData(0, 0, cv.width, cv.height);
+            var fams = extractFamilies(d.data).families;
+            var s = d.data;
+            for (var i = 0; i < s.length; i += 4) {
+              var r = s[i], g = s[i + 1], b = s[i + 2];
+              var on = !isKept(r, g, b, s[i + 3]) && famAssign(fams, r, g, b, rgb2hsl(r, g, b)) === idx;
+              s[i] = 255; s[i + 1] = 255; s[i + 2] = 255;
+              s[i + 3] = on ? 215 : 0;
+            }
+            c2.putImageData(d, 0, 0);
+            cb(cv.toDataURL('image/png'));
+          } catch (e) { cb(null); }
+        };
+        img.onerror = function () { cb(null); };
+        img.src = src;
+      },
       // bases dominantes d'un fichier image (async) → cb([[r,g,b],…]) ou cb(null)
       bases: function (src, cb) {
         var img = new Image();

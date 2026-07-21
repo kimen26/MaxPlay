@@ -23,12 +23,19 @@
   var LOCAL_META = {};
 
   // ── Les 5 copains + Tritri (hôte) ──────────────────────────────────
-  var TRITRI = { tete: 'img/dinos/sprites/Triceratops_tete.png' };
+  // Décision PY 2026-07-21 : scènes de jeu = AVATARS low-poly uniquement
+  // (jamais les sprites réalistes). Résolution via le manifeste avatars.js.
+  function avatarTete(id) {
+    var a = (global.MAXPLAY_AVATARS || []).find(function (x) { return x.id === id; });
+    var f = a && a.moods && a.moods.joyeux && a.moods.joyeux[0];
+    return f ? (global.MAXPLAY_AVATARS_BASE || 'img/avatars/') + f : '';
+  }
+  var TRITRI = { tete: avatarTete('tritri') };
 
   var COPAINS = [
     {
       id: 'trex', nom: 'Roi T-Rex', domaine: 'les dinos',
-      tete: 'img/dinos/sprites/Tyrannosaurus_tete.png',
+      tete: avatarTete('trex'),
       phrase: 'Grrr… bienvenue dans mon royaume ! Ici, on part à la chasse aux dinosaures !',
       floats: 'ombres',
       ency: true, // portail encyclopédie aussi en tête de repaire
@@ -36,28 +43,28 @@
     },
     {
       id: 'spino', nom: 'Spino', domaine: 'compter',
-      tete: 'img/dinos/sprites/Spinosaurus_tete.png',
+      tete: avatarTete('spino'),
       phrase: 'Splish splash ! Avec moi, on compte les poissons, les caisses et plein de trésors !',
       floats: 'chiffres',
       jeux: ['mj-46', 'mj-47', 'mj-48', 'mj-49']
     },
     {
       id: 'galli', nom: 'Galli', domaine: 'lire',
-      tete: 'img/dinos/paleoart/Gallimimus_headshot.jpg', rond: true,
+      tete: avatarTete('galli'),
       phrase: 'Vite vite ! Les lettres dansent, attrape-les et lis tes premiers mots !',
       floats: 'lettres',
       jeux: ['mj-50', 'mj-51', 'mj-52', 'mj-53']
     },
     {
       id: 'velo', nom: 'Vélo', domaine: 'casse-têtes',
-      tete: 'img/dinos/sprites/Velociraptor_tete.png',
+      tete: avatarTete('velo'),
       phrase: 'Chhht… un vrai détective réfléchit doucement. Tu viens résoudre mes énigmes ?',
       floats: 'puzzle',
       jeux: ['mj-15', 'mj-13a', 'mj-14', 'mj-19', 'mj-17', 'mj-18', 'mj-34']
     },
     {
       id: 'para', nom: 'Para', domaine: 'couleurs & monde',
-      tete: 'img/dinos/sprites/Parasaurolophus_tete.png',
+      tete: avatarTete('paras'),
       phrase: 'Tadada ! Je chante les couleurs et je voyage autour du monde. Tu m\'accompagnes ?',
       floats: 'drapeaux',
       jeux: ['mj-21', 'mj-20', 'mj-22', 'mj-33', 'mj-12']
@@ -338,7 +345,7 @@
   // Portail encyclopédie (bannière spéciale) — cible = dev-dinos.html?v=7,
   // verrouillage par code TRITRI géré par unlock.js (flux inchangé).
   function portailHtml(unlocked) {
-    return '<img src="img/dinos/sprites/Tyrannosaurus_tete.png" alt="Roi T-Rex">' +
+    return '<img src="' + avatarTete('trex') + '" alt="Roi T-Rex">' +
       '<div class="grow">' +
         '<div class="p-titre">L\'encyclopédie du Roi T-Rex</div>' +
         '<div class="p-sub">' + (unlocked ? '50 dinos · 6 familles · le grand voyage' : 'Demande le mot magique à un grand') + '</div>' +

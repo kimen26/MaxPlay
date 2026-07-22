@@ -1426,3 +1426,16 @@ Le croquis PY montrait des **bandes pleine largeur empilées verticalement** (sc
 ## 2026-07-22 — Traitement vague annotations Supabase (25 retours)
 
 9 agents game-dev paralleles. Fixes pushes (aff944c0 + 391741d4) : mj-15 badge etoiles entete, mj-21 entete golden + doses 1+1=2 + cap 4, mj-24/48 double-validation (verrouillage tuiles, mj-kit partage) + 162 bleu IDFM (window.LIGNES undefined) + son erreur, mj-27/41 images headshots + audio mj-27 retire, mj-28 halo/contraste + son pre-selection retire, mj-32 galerie JSON fills rejouables, mj-46 chevauchement 1/3 + cris bebes, mj-47 traits/glow/chiffres, mj-50 TTS phonetique + defaite sans etoile. Retires du menu : mj-25/29/33/41 (e8948785). Deblocage total sequence->free (3e3c8d3a, decision PY). 25 annotations passees traite en base avec resolution+commit. Jamais testes par PY : mj-14/49/51/52/53. REX concurrence : Kimi a ecrase catalog.js 1x et un stash concurrent a avale mj-15/50/mj-golden (recuperes du stash, re-testes verts) — regle stager-committer-vite confirmee.
+
+### 4 variantes zone copains (2e vague POC, retours PY)
+
+Corrections PY appliquées : lignes 2-3× plus petites · **seul le dino se déplace** au drag · nom discret (dit à l'oral à l'entrée, pas en énorme) · vraies variantes conceptuelles demandées. Livré (`site/design-mur/`, validé screenshots) :
+- **V1 `v1-file.html` « La file »** — liste compacte (classique) : lignes 64px, drag du dino seul (dandine + grossit ×1.8 en traversant), étoiles sous le nom.
+- **V2 `v2-chemin.html` « Le chemin »** — sentier de pierres serpentant, copains = étapes (Duolingo/Khan Kids), porte dorée encyclo au bout.
+- **V3 `v3-bulles.html` « Les bulles »** — bulles flottantes libres qui pop au tap (exploration libre maternelle).
+- **V4 `v4-village.html` « Le village »** — scène diégétique de nuit : chaque copain à sa place, T-Rex garde le livre doré (Toca/Sago). Retouché par moi (ciel 280px, dinos 96px, encyclo recadrée).
+- Header commun fusionné : 1 seul avatar (profil `maxplay_avatar`) + badge ⭐ total + bulle — réponse au « double avatar » (voir discussion avec PY).
+- Fix asset : `paras_joyeux_1.png` n'existait pas → `paras_joyeux_2.png` partout. `debug-v4.html` supprimé.
+- Agents : V2/V3/V4 délégués (timeout mais fichiers livrés complets), qualité validée par screenshots + retouches maison.
+
+**En attente** : choix PY de la variante (ou mix) → refonte réelle du Mur.

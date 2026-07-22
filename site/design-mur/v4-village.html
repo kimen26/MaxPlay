@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>V4 « Le village » — touche un copain</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  body {
+    font-family:'Nunito',sans-serif; color:#fff; min-height:100dvh; overflow-x:hidden;
+    background:
+      radial-gradient(900px 500px at 85% -10%, #1d2a5e 0%, transparent 60%),
+      radial-gradient(800px 500px at 0% 110%, #241a4d 0%, transparent 55%),
+      linear-gradient(180deg,#0a0f24,#101638 60%,#141b42);
+  }
+  .poc-tag {
+    position:fixed; top:8px; left:50%; transform:translateX(-50%); z-index:60;
+    background:rgba(0,0,0,.55); border:1px solid rgba(255,255,255,.18); border-radius:999px;
+    font:800 11px 'Nunito'; padding:4px 12px; color:#cdd6f4; white-space:nowrap;
+  }
+  .poc-tag a { color:#ffd166; text-decoration:none; }
+
+  /* ── HEADER FUSIONNÉ : 1 seul avatar = celui du profil ── */
+  .moi { display:flex; align-items:center; gap:10px; padding:44px 16px 4px; }
+  .moi .chip { position:relative; flex-shrink:0; }
+  .moi .chip img { width:64px; height:64px; object-fit:contain; filter:drop-shadow(0 6px 10px rgba(0,0,0,.5)); }
+  .moi .chip .tot {
+    position:absolute; right:-6px; bottom:-4px; background:#ffd166; color:#4a3208;
+    font:900 11px 'Nunito'; border-radius:999px; padding:2px 7px; box-shadow:0 2px 6px rgba(0,0,0,.4);
+  }
+  .bulle {
+    position:relative; background:#1c2547; border:1px solid rgba(255,255,255,.14);
+    border-radius:16px; padding:9px 13px; font-weight:800; font-size:13.5px; line-height:1.35;
+  }
+  .bulle::before {
+    content:''; position:absolute; left:-8px; top:26px; width:14px; height:14px;
+    background:#1c2547; border-left:1px solid rgba(255,255,255,.14); border-bottom:1px solid rgba(255,255,255,.14);
+    transform:rotate(45deg);
+  }
+  .bloc-titre { padding:10px 18px 7px; font-family:'Fredoka One'; font-size:15px; color:#ffd166; letter-spacing:.4px; }
+  .decouv { display:flex; gap:10px; padding:0 16px; }
+  .mini {
+    flex:1; background:#182142; border:1px solid rgba(255,255,255,.12); border-radius:16px;
+    padding:10px 8px 8px; text-align:center; cursor:pointer;
+  }
+  .mini .vig { width:100%; aspect-ratio:1; border-radius:12px; margin-bottom:6px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .mini b { font-size:11.5px; font-weight:900; display:block; line-height:1.15; }
+  .mini .st { color:#ffd166; font-size:11px; letter-spacing:2px; }
+  .prefs { display:flex; gap:8px; padding:2px 16px 4px; overflow-x:auto; scrollbar-width:none; }
+  .prefs::-webkit-scrollbar { display:none; }
+  .pref {
+    flex:0 0 auto; display:flex; align-items:center; gap:6px; background:#182142;
+    border:1px solid rgba(255,255,255,.12); border-radius:999px; padding:6px 12px 6px 7px;
+    font-size:12px; font-weight:900;
+  }
+  .pref .pv { width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+
+  /* ── V4 LE VILLAGE : le menu EST une petite scène vivante ──
+       Concept éprouvé (Toca Life, Sago Mini, menus diégétiques) :
+       chaque copain a sa place dans le décor · décor 100% CSS, zéro emoji ·
+       tap = le copain saute (hop) puis ouvre son repaire ── */
+  .copains-head { display:flex; align-items:baseline; justify-content:space-between; padding:12px 18px 6px; }
+  .copains-head h2 { font-family:'Fredoka One'; font-size:16px; }
+  .copains-head span { font-size:11px; font-weight:800; color:#8fa0d0; }
+
+  .scene {
+    position:relative; height:280px; overflow:hidden; margin:2px 0 26px;
+    border-top:1px solid rgba(255,255,255,.07); user-select:none;
+  }
+  /* ciel */
+  .lune {
+    position:absolute; top:22px; left:26px; width:30px; height:30px; border-radius:50%; z-index:0;
+    background:radial-gradient(circle at 38% 35%, #fff8e0, #eed894 72%);
+    box-shadow:0 0 22px 6px rgba(255,240,190,.22); pointer-events:none;
+  }
+  .etoile-bg {
+    position:absolute; width:4px; height:4px; border-radius:50%; background:#fff7d6; z-index:0;
+    animation:twinkle 2.8s ease-in-out infinite; pointer-events:none;
+  }
+  @keyframes twinkle { 0%,100%{opacity:.2;} 50%{opacity:.85;} }
+  /* décor — tout est ancré à gauche dans 420px */
+  .colline {
+    position:absolute; left:110px; bottom:26px; width:240px; height:130px; z-index:1;
+    background:linear-gradient(180deg,#357043,#20492c 82%);
+    border-radius:50% 50% 0 0 / 100% 100% 0 0; pointer-events:none;
+  }
+  .promontoire {
+    position:absolute; left:292px; bottom:52px; width:96px; height:80px; z-index:3;
+    background:linear-gradient(165deg,#6b6257,#453e35 70%);
+    border-radius:46% 54% 10px 10px / 34% 36% 10px 10px;
+    box-shadow:inset 0 6px 0 rgba(255,255,255,.08); pointer-events:none;
+  }
+  .sol {
+    position:absolute; left:0; right:0; bottom:0; height:96px; z-index:2;
+    background:linear-gradient(180deg,#2c5e3a 0%, #1d4027 45%, #16301e 100%);
+    border-top:3px solid #3d7f50; pointer-events:none;
+  }
+  .brin {
+    position:absolute; bottom:94px; width:0; height:0; z-index:2; pointer-events:none;
+    border-left:6px solid transparent; border-right:6px solid transparent; border-bottom:13px solid #3d7f50;
+  }
+  .mare {
+    position:absolute; left:12px; bottom:14px; width:120px; height:44px; border-radius:50%; z-index:5;
+    background:radial-gradient(ellipse at 42% 32%, #58a6d8 0%, #2e6b96 55%, #24557c 100%);
+    box-shadow:inset 0 -8px 12px rgba(0,0,0,.3), 0 2px 8px rgba(0,0,0,.35); pointer-events:none;
+  }
+  .mare::after {
+    content:''; position:absolute; left:22%; top:22%; width:30%; height:18%;
+    border-radius:50%; background:rgba(255,255,255,.35);
+  }
+  .rocher {
+    position:absolute; left:228px; bottom:62px; width:88px; height:46px; z-index:3;
+    background:linear-gradient(160deg,#77809a,#454b5c 75%);
+    border-radius:48% 52% 42% 40% / 62% 64% 36% 34%;
+    box-shadow:inset 0 5px 0 rgba(255,255,255,.12); pointer-events:none;
+  }
+  .buisson { position:absolute; left:100px; bottom:56px; width:74px; height:46px; z-index:3; pointer-events:none; }
+  .buisson i { position:absolute; bottom:0; border-radius:50%; background:radial-gradient(circle at 35% 30%, #2f7a42, #1c4a28 75%); }
+  .buisson i:nth-child(1){ left:0; width:40px; height:34px; }
+  .buisson i:nth-child(2){ left:18px; width:46px; height:44px; }
+  .buisson i:nth-child(3){ right:0; width:38px; height:30px; }
+  .fougere { position:absolute; left:206px; bottom:62px; width:34px; height:42px; z-index:3; pointer-events:none; }
+  .fougere i {
+    position:absolute; bottom:0; left:14px; width:7px; height:38px;
+    border-radius:50% 50% 0 0 / 100% 100% 0 0;
+    background:linear-gradient(90deg,#3a8a4e,#256b37); transform-origin:50% 100%;
+  }
+  .fougere i:nth-child(1){ transform:rotate(-34deg); height:29px; }
+  .fougere i:nth-child(2){ transform:rotate(0deg); }
+  .fougere i:nth-child(3){ transform:rotate(34deg); height:29px; }
+
+  /* les copains DANS la scène */
+  .perso { position:absolute; width:96px; text-align:center; cursor:pointer; z-index:4; }
+  .perso .dino {
+    height:96px; max-width:100%; object-fit:contain; pointer-events:none;
+    filter:drop-shadow(0 5px 8px rgba(0,0,0,.5));
+    animation:dandine 2.6s ease-in-out infinite; transform-origin:50% 90%;
+  }
+  @keyframes dandine {
+    0%,100% { transform:rotate(-3deg); } 25% { transform:rotate(3deg) translateY(-2px); }
+    50% { transform:rotate(-3deg); } 75% { transform:rotate(3deg) translateY(-2px); }
+  }
+  .perso .etiquette {
+    display:inline-block; margin-top:1px; background:rgba(6,10,26,.55);
+    border:1px solid rgba(255,255,255,.16); border-radius:999px;
+    font:900 10.5px 'Nunito'; padding:2px 9px; color:#e8edff; pointer-events:none;
+  }
+  .perso.livre-perso .etiquette { color:#ffd166; border-color:rgba(255,209,102,.5); }
+  /* hop au tap, puis ouverture du repaire */
+  .perso.hop .dino { animation:hop .5s ease; }
+  .perso.hop .livre-geant { animation:hop .5s ease; }
+  @keyframes hop {
+    0% { transform:translateY(0) scale(1,1); }
+    35% { transform:translateY(-24px) scale(.97,1.04); }
+    60% { transform:translateY(0) scale(1.06,.9); }
+    80% { transform:translateY(-7px) scale(1,1); }
+    100% { transform:translateY(0) scale(1,1); }
+  }
+
+  /* le LIVRE DORÉ géant (encyclopédie), 100% CSS */
+  .livre-geant {
+    position:absolute; width:64px; height:46px; border-radius:5px; z-index:5;
+    background:linear-gradient(180deg,#f7c95c,#c8912f);
+    box-shadow:0 0 16px 4px rgba(255,209,102,.38), inset 0 0 0 2px rgba(120,72,10,.55);
+    animation:lueur 2.8s ease-in-out infinite; pointer-events:none;
+  }
+  .livre-geant::before, .livre-geant::after {
+    content:''; position:absolute; top:5px; width:26px; height:36px;
+    background:linear-gradient(180deg,#fff6dd,#efe0b8);
+  }
+  .livre-geant::before { left:4px; border-radius:7px 2px 2px 7px; transform:skewY(-2deg); }
+  .livre-geant::after { right:4px; border-radius:2px 7px 7px 2px; transform:skewY(2deg); }
+  .livre-geant i { position:absolute; left:50%; top:6px; bottom:6px; width:2px; background:rgba(150,110,40,.5); transform:translateX(-50%); }
+  @keyframes lueur {
+    0%,100% { box-shadow:0 0 12px 3px rgba(255,209,102,.28), inset 0 0 0 2px rgba(120,72,10,.55); }
+    50% { box-shadow:0 0 26px 8px rgba(255,209,102,.55), inset 0 0 0 2px rgba(120,72,10,.55); }
+  }
+
+  /* flottants : 2-3, petits, discrets */
+  .fl { position:absolute; pointer-events:none; opacity:.4; animation:flott 3.4s ease-in-out infinite; }
+  @keyframes flott { 0%,100%{transform:translateY(0) rotate(-5deg);} 50%{transform:translateY(-5px) rotate(5deg);} }
+  .fl.chiffre { font-family:'Fredoka One'; color:#ffd166; font-size:15px; }
+  .fl.lettre { font-family:'Cursif',cursive; color:#9fe6b0; font-size:17px; }
+  .fl img { width:22px; opacity:.6; }
+  .fl.flag { width:18px; height:12px; border-radius:3px; }
+  .fl.puz { width:11px; height:11px; border-radius:4px; background:#8fa0d0; }
+
+  /* ── REPAIRE (overlay depuis la droite) ── */
+  .repaire {
+    position:fixed; inset:0; z-index:50; background:linear-gradient(180deg,#0c1226,#131a3f);
+    transform:translateX(102%); transition:transform .35s cubic-bezier(.3,.9,.3,1); overflow-y:auto;
+  }
+  .repaire.show { transform:translateX(0); }
+  .rep-head { display:flex; align-items:center; gap:12px; padding:48px 16px 6px; }
+  .rep-head .bk { width:44px; height:44px; border-radius:50%; border:0; background:rgba(255,255,255,.1); color:#fff; font-size:20px; font-weight:900; cursor:pointer; }
+  .rep-head img { width:64px; height:64px; object-fit:contain; }
+  .rep-head b { font-family:'Fredoka One'; font-size:20px; display:block; }
+  .rep-head span { font-size:12px; font-weight:800; color:#8fa0d0; }
+  .rep-bulle { margin:10px 16px; background:#1c2547; border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:11px 14px; font-weight:800; font-size:14px; }
+  .rep-jeu { display:flex; align-items:center; gap:12px; margin:8px 16px; background:#182142; border:1px solid rgba(255,255,255,.12); border-radius:18px; padding:10px; }
+  .rep-jeu .vig { width:64px; height:64px; border-radius:14px; flex-shrink:0; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .rep-jeu b { font-size:14.5px; font-weight:900; display:block; }
+  .rep-jeu .st { color:#ffd166; font-size:12px; letter-spacing:2px; }
+  .rep-note { text-align:center; color:#ffd166; font-weight:800; font-size:12.5px; padding:8px 20px 30px; }
+
+  .v-oeufs { background:linear-gradient(150deg,#4d3a12,#231a08); }
+  .v-oeufs i { width:20%; aspect-ratio:.78; border-radius:50% 50% 50% 50%/60% 60% 40% 40%; background:#f5e3c2; margin:0 2px; }
+  .v-constel { background:radial-gradient(circle at 50% 45%, #16264d, #070d1d 80%); }
+  .v-constel i { width:13%; aspect-ratio:1; border-radius:50%; background:#fff7d6; box-shadow:0 0 8px 3px rgba(255,240,180,.75); margin:0 3px; }
+  .v-bus { background:linear-gradient(150deg,#3d3410,#1c1808); }
+  .v-bus i { width:60%; height:34%; border-radius:6px; background:#2fbf8f; box-shadow:inset 0 -6px 0 rgba(0,0,0,.3); }
+  .v-couleur { background:linear-gradient(150deg,#3d2c10,#1c1408); }
+  .v-couleur i { width:26%; aspect-ratio:1; border-radius:50%; margin:0 2px; mix-blend-mode:screen; }
+</style>
+</head>
+<body>
+<div class="poc-tag">V4 « Le village » — touche un copain · <a href="index.html">sommaire</a></div>
+
+<!-- HEADER : l'avatar du profil est l'hôte (1 seul avatar, étoiles sur la chip) -->
+<div class="moi">
+  <div class="chip"><img id="moiAv" src="../img/avatars/tritri_joyeux_3.png" alt="Mon dino"><span class="tot">⭐ 22</span></div>
+  <div class="bulle" id="moiBulle">Salut Max ! Regarde ce que j'ai trouvé pour toi aujourd'hui !</div>
+</div>
+<div class="bloc-titre">🔎 À découvrir</div>
+<div class="decouv">
+  <div class="mini"><div class="vig v-oeufs"><i></i><i></i><i></i></div><b>Les œufs surprises</b><span class="st">★★☆</span></div>
+  <div class="mini"><div class="vig v-constel"><i></i><i></i><i></i></div><b>Les constellations</b><span class="st">★☆☆</span></div>
+  <div class="mini"><div class="vig v-couleur"><i style="background:#e0655a"></i><i style="background:#ffd166"></i><i style="background:#4d9de0"></i></div><b>L'atelier peinture</b><span class="st">☆☆☆</span></div>
+</div>
+<div class="bloc-titre">❤️ Tes préférés</div>
+<div class="prefs">
+  <div class="pref"><div class="pv v-bus"><i></i></div>La course des bus</div>
+  <div class="pref"><div class="pv v-constel"><i></i></div>Les potions</div>
+</div>
+
+<!-- V4 : LE VILLAGE -->
+<div class="copains-head"><h2>Les copains</h2><span>touche un copain</span></div>
+<div class="scene" id="scene">
+  <div class="lune"></div>
+  <div class="etoile-bg" style="left:96px;top:34px"></div>
+  <div class="etoile-bg" style="left:176px;top:20px;animation-delay:.9s"></div>
+  <div class="etoile-bg" style="left:258px;top:44px;animation-delay:1.6s"></div>
+  <div class="etoile-bg" style="left:336px;top:26px;animation-delay:.4s"></div>
+  <div class="etoile-bg" style="left:392px;top:58px;animation-delay:1.2s"></div>
+  <div class="colline"></div>
+  <div class="promontoire"></div>
+  <div class="sol"></div>
+  <i class="brin" style="left:14px"></i>
+  <i class="brin" style="left:150px;transform:scale(.8)"></i>
+  <i class="brin" style="left:238px;transform:scale(1.15)"></i>
+  <i class="brin" style="left:306px;transform:scale(.75)"></i>
+  <div class="rocher"></div>
+  <div class="buisson"><i></i><i></i><i></i></div>
+  <div class="fougere"><i></i><i></i><i></i></div>
+  <div class="mare"></div>
+</div>
+
+<div class="repaire" id="repaire"></div>
+
+<script src="../js/avatars.js"></script>
+<script>
+const AV = '../img/avatars/';
+const OMB = '../img/dinos/ombres/';
+const COPAINS = [
+  { id:'spino', nom:'Spino', dom:'compter', av:'spino_joyeux_1.png', floats:'chiffres', stars:'★★★★☆☆☆☆☆',
+    phrase:'Splish splash ! Avec moi, on compte les poissons et plein de trésors !',
+    jeux:[{t:'Les œufs surprises',v:'v-oeufs',s:'★★★'},{t:'Les constellations',v:'v-constel',s:'★★☆'},{t:'Tout le monde monte !',v:'v-bus',s:'☆☆☆'}] },
+  { id:'galli', nom:'Galli', dom:'lire & écrire', av:'galli_joyeux_1.png', floats:'lettres', stars:'★★☆☆☆☆☆☆☆',
+    phrase:'Vite vite ! Les lettres dansent, attrape-les !',
+    jeux:[{t:'Trouve la lettre',v:'v-constel',s:'☆☆☆'},{t:'Le tri des lettres',v:'v-oeufs',s:'★☆☆'}] },
+  { id:'velo', nom:'Vélo', dom:'casse-têtes', av:'velo_joyeux_1.png', floats:'puzzle', stars:'★★★★★☆☆☆☆',
+    phrase:'Chhht… un vrai détective réfléchit doucement.',
+    jeux:[{t:'Trouve-le !',v:'v-oeufs',s:'★★★'},{t:'Les potions',v:'v-couleur',s:'★★☆'}] },
+  { id:'para', nom:'Para', dom:'couleurs & monde', av:'paras_joyeux_2.png', floats:'drapeaux', stars:'★★★☆☆☆☆☆☆',
+    phrase:'Tadada ! Je chante les couleurs et je voyage autour du monde !',
+    jeux:[{t:'L\'atelier peinture',v:'v-couleur',s:'★★★'},{t:'Compte avec le monde',v:'v-bus',s:'★☆☆'}] },
+  { id:'trex', nom:'L\'encyclopédie', dom:'62 dinos', av:'trex_joyeux_1.png', floats:'ombres', stars:'', livre:true },
+];
+const FLAGS = [['#009c3b','#ffdf00','#002776'],['#0055a4','#fff','#ef4135'],['#aa151b','#f1bf00','#aa151b']];
+
+(function(){
+  try{
+    const id = localStorage.getItem('maxplay_avatar');
+    const a = (window.MAXPLAY_AVATARS||[]).find(x=>x.id===id);
+    if(a && a.moods.joyeux && a.moods.joyeux[0]){
+      document.getElementById('moiAv').src = AV + a.moods.joyeux[0];
+      if(a.name && a.name!=='Tritri')
+        document.getElementById('moiBulle').textContent = 'Salut Max ! C\'est moi, '+a.name+' ! Regarde ce que j\'ai trouvé pour toi !';
+    }
+  }catch(e){}
+})();
+
+function floatsHtml(kind){
+  let h='';
+  for(let i=0;i<3;i++){
+    const left=[38,58,80][i]+'%', top=[18,58,28][i]+'%', d=(i*0.6).toFixed(1)+'s';
+    if(kind==='chiffres') h+='<span class="fl chiffre" style="left:'+left+';top:'+top+';animation-delay:'+d+'">'+[3,5,2][i]+'</span>';
+    else if(kind==='lettres') h+='<span class="fl lettre" style="left:'+left+';top:'+top+';animation-delay:'+d+'">'+['a','m','o'][i]+'</span>';
+    else if(kind==='ombres') h+='<span class="fl" style="left:'+left+';top:'+top+';animation-delay:'+d+'"><img src="'+OMB+['Triceratops_ombre.png','Diplodocus_ombre.png','Pteranodon_ombre.png'][i]+'"></span>';
+    else if(kind==='drapeaux'){ const f=FLAGS[i%3]; h+='<span class="fl flag" style="left:'+left+';top:'+top+';animation-delay:'+d+';background:linear-gradient(90deg,'+f[0]+' 33%,'+f[1]+' 33% 66%,'+f[2]+' 66%)"></span>'; }
+    else h+='<span class="fl puz" style="left:'+left+';top:'+top+';animation-delay:'+d+'"></span>';
+  }
+  return h;
+}
+
+/* chaque copain a SA place dans le village — tout tient dans 420px, ancré à gauche */
+const PLACES = {
+  spino:{ left:'22px',  bottom:'62px' },   // derrière la mare
+  galli:{ left:'206px', bottom:'88px' },   // sur le rocher
+  velo:{  left:'116px', bottom:'52px' },   // près du buisson
+  para:{  left:'170px', bottom:'52px' },   // sur la colline
+  trex:{  left:'268px', bottom:'50px' },   // promontoire : le livre doré + le Roi
+};
+const scene = document.getElementById('scene');
+COPAINS.forEach((c,i)=>{
+  const p = PLACES[c.id];
+  const el = document.createElement('div');
+  el.className = 'perso'+(c.livre?' livre-perso':'');
+  el.style.left = p.left;
+  el.style.bottom = p.bottom;
+  if(c.livre){
+    el.style.width = '122px'; el.style.height = '150px';
+    el.innerHTML = floatsHtml(c.floats)
+      + '<div class="livre-geant" style="top:22px;right:20px"><i></i></div>'
+      + '<img class="dino" src="'+AV+c.av+'" alt="'+c.nom+'" draggable="false" style="position:absolute;right:30px;bottom:16px;height:82px;animation-delay:.6s">'
+      + '<span class="etiquette" style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);white-space:nowrap">L\'encyclo</span>';
+  } else {
+    el.innerHTML = floatsHtml(c.floats)
+      + '<img class="dino" src="'+AV+c.av+'" alt="'+c.nom+'" draggable="false" style="animation-delay:'+(i*0.4).toFixed(1)+'s"'
+      + (c.id==='para' ? ' onerror="this.onerror=null;this.src=\''+AV+'paras_joyeux_2.png\'"' : '')
+      + '>'
+      + '<div><span class="etiquette">'+c.nom+'</span></div>';
+  }
+  scene.appendChild(el);
+  /* tap = le copain saute, puis on ouvre son repaire */
+  el.addEventListener('click', ()=>{
+    if(el.classList.contains('hop')) return;
+    el.classList.add('hop');
+    setTimeout(()=>{ openRepaire(c); el.classList.remove('hop'); }, 420);
+  });
+});
+
+function openRepaire(c){
+  if(c.livre){ alert('→ encyclopédie (dev-dinos.html)'); return; }
+  const r = document.getElementById('repaire');
+  r.innerHTML = '<div class="rep-head"><button class="bk" onclick="closeRepaire()">‹</button>'
+    + '<img src="'+AV+c.av+'"><div><b>'+c.nom+'</b><span>'+c.dom+'</span></div></div>'
+    + '<div class="rep-bulle">'+c.phrase+'</div>'
+    + c.jeux.map(j=>'<div class="rep-jeu"><div class="vig '+j.v+'"><i></i><i></i><i></i></div><div><b>'+j.t+'</b><span class="st">'+j.s+'</span></div></div>').join('')
+    + '<div class="rep-note">Obtiens ★★ sur un jeu pour ouvrir le suivant !</div>';
+  requestAnimationFrame(()=>r.classList.add('show'));
+}
+function closeRepaire(){ document.getElementById('repaire').classList.remove('show'); }
+
+const q = new URLSearchParams(location.search);
+if(q.get('repaire')){ const c = COPAINS.find(x=>x.id===q.get('repaire')); if(c) openRepaire(c); }
+</script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>V2 « Le chemin » — suis le sentier</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  body {
+    font-family:'Nunito',sans-serif; color:#fff; min-height:100dvh; overflow-x:hidden;
+    background:
+      radial-gradient(900px 500px at 85% -10%, #1d2a5e 0%, transparent 60%),
+      radial-gradient(800px 500px at 0% 110%, #241a4d 0%, transparent 55%),
+      linear-gradient(180deg,#0a0f24,#101638 60%,#141b42);
+  }
+  .poc-tag {
+    position:fixed; top:8px; left:50%; transform:translateX(-50%); z-index:60;
+    background:rgba(0,0,0,.55); border:1px solid rgba(255,255,255,.18); border-radius:999px;
+    font:800 11px 'Nunito'; padding:4px 12px; color:#cdd6f4; white-space:nowrap;
+  }
+  .poc-tag a { color:#ffd166; text-decoration:none; }
+
+  /* ── HEADER FUSIONNÉ : 1 seul avatar = celui du profil ── */
+  .moi { display:flex; align-items:center; gap:10px; padding:44px 16px 4px; }
+  .moi .chip { position:relative; flex-shrink:0; }
+  .moi .chip img { width:64px; height:64px; object-fit:contain; filter:drop-shadow(0 6px 10px rgba(0,0,0,.5)); }
+  .moi .chip .tot {
+    position:absolute; right:-6px; bottom:-4px; background:#ffd166; color:#4a3208;
+    font:900 11px 'Nunito'; border-radius:999px; padding:2px 7px; box-shadow:0 2px 6px rgba(0,0,0,.4);
+  }
+  .bulle {
+    position:relative; background:#1c2547; border:1px solid rgba(255,255,255,.14);
+    border-radius:16px; padding:9px 13px; font-weight:800; font-size:13.5px; line-height:1.35;
+  }
+  .bulle::before {
+    content:''; position:absolute; left:-8px; top:26px; width:14px; height:14px;
+    background:#1c2547; border-left:1px solid rgba(255,255,255,.14); border-bottom:1px solid rgba(255,255,255,.14);
+    transform:rotate(45deg);
+  }
+  .bloc-titre { padding:10px 18px 7px; font-family:'Fredoka One'; font-size:15px; color:#ffd166; letter-spacing:.4px; }
+  .decouv { display:flex; gap:10px; padding:0 16px; }
+  .mini {
+    flex:1; background:#182142; border:1px solid rgba(255,255,255,.12); border-radius:16px;
+    padding:10px 8px 8px; text-align:center; cursor:pointer;
+  }
+  .mini .vig { width:100%; aspect-ratio:1; border-radius:12px; margin-bottom:6px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .mini b { font-size:11.5px; font-weight:900; display:block; line-height:1.15; }
+  .mini .st { color:#ffd166; font-size:11px; letter-spacing:2px; }
+  .prefs { display:flex; gap:8px; padding:2px 16px 4px; overflow-x:auto; scrollbar-width:none; }
+  .prefs::-webkit-scrollbar { display:none; }
+  .pref {
+    flex:0 0 auto; display:flex; align-items:center; gap:6px; background:#182142;
+    border:1px solid rgba(255,255,255,.12); border-radius:999px; padding:6px 12px 6px 7px;
+    font-size:12px; font-weight:900;
+  }
+  .pref .pv { width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+
+  /* ── V2 LE CHEMIN : un sentier vertical qui serpente (Duolingo, Khan Kids, Mario maps)
+       Concept : les copains sont des ÉTAPES du sentier, alternés gauche/droite ·
+       chaque étape = un palet de pierre posé sur le chemin, le dino debout dessus ·
+       l'encyclo = une porte dorée au bout du chemin · tap = hop puis repaire ── */
+  .copains-head { display:flex; align-items:baseline; justify-content:space-between; padding:12px 18px 6px; }
+  .copains-head h2 { font-family:'Fredoka One'; font-size:16px; }
+  .copains-head span { font-size:11px; font-weight:800; color:#8fa0d0; }
+
+  .chemin { position:relative; max-width:388px; height:640px; margin:0 auto; }
+
+  /* le sentier : lit d'ombre + galets pointillés (SVG étiré, tracé en px écran) */
+  .trail { position:absolute; inset:0; width:100%; height:100%; z-index:0; }
+  .trail .bed { fill:none; stroke:rgba(0,0,0,.28); stroke-width:22; stroke-linecap:round; vector-effect:non-scaling-stroke; }
+  .trail .dots { fill:none; stroke:#c9b18a; stroke-width:13; stroke-linecap:round; stroke-dasharray:.1 24; vector-effect:non-scaling-stroke; opacity:.85; }
+
+  /* déco sobre : un nuage, un buisson, quelques cailloux */
+  .nuage {
+    position:absolute; top:6px; right:4%; width:78px; height:26px; z-index:1;
+    background:rgba(255,255,255,.16); border-radius:999px;
+    animation:derive 8s ease-in-out infinite alternate;
+  }
+  .nuage::before { content:''; position:absolute; left:14px; top:-12px; width:30px; height:30px; background:inherit; border-radius:50%; }
+  .nuage::after { content:''; position:absolute; left:40px; top:-8px; width:24px; height:24px; background:inherit; border-radius:50%; }
+  @keyframes derive { from { transform:translateX(-8px); } to { transform:translateX(10px); } }
+  .buisson { position:absolute; left:3%; top:448px; width:82px; height:34px; z-index:1; animation:balance 4.2s ease-in-out infinite; transform-origin:50% 100%; }
+  .buisson i { position:absolute; bottom:0; border-radius:50%; background:radial-gradient(circle at 35% 30%, #46a56b, #1f6b41); }
+  .buisson i:nth-child(1) { left:0; width:34px; height:28px; }
+  .buisson i:nth-child(2) { left:20px; width:44px; height:34px; }
+  .buisson i:nth-child(3) { left:52px; width:28px; height:23px; }
+  @keyframes balance { 0%,100% { transform:rotate(-2deg); } 50% { transform:rotate(2deg); } }
+  .caillou { position:absolute; width:16px; height:11px; border-radius:50%; z-index:1; background:radial-gradient(circle at 35% 30%, #8b93b8, #565e82); opacity:.8; }
+
+  /* une étape du sentier : palet de pierre + dino qui se dandine */
+  .etape { position:absolute; width:170px; margin-left:-85px; text-align:center; z-index:2; user-select:none; }
+  .etape .dino {
+    position:relative; z-index:3; height:64px; width:76px; object-fit:contain; display:block;
+    margin:0 auto -16px; cursor:grab; touch-action:none;
+    filter:drop-shadow(0 4px 8px rgba(0,0,0,.5));
+    animation:dandine 2.6s ease-in-out infinite; transform-origin:50% 90%;
+  }
+  .etape .dino.drag { animation:none; cursor:grabbing; }
+  @keyframes dandine {
+    0%,100% { transform:rotate(-3deg); } 25% { transform:rotate(3deg) translateY(-2px); }
+    50% { transform:rotate(-3deg); } 75% { transform:rotate(3deg) translateY(-2px); }
+  }
+  .etape .dino.hop { animation:hop .45s ease-out; }
+  @keyframes hop {
+    0% { transform:translateY(0) rotate(0); } 35% { transform:translateY(-24px) rotate(-4deg); }
+    60% { transform:translateY(0); } 78% { transform:translateY(-8px); } 100% { transform:translateY(0); }
+  }
+  .palet {
+    width:96px; height:96px; margin:0 auto; border-radius:50%;
+    background:radial-gradient(circle at 35% 30%, #d8c49a, #b39a6d 60%, #8f7a52);
+    border:2px solid rgba(0,0,0,.28);
+    box-shadow:0 6px 12px rgba(0,0,0,.45), inset 0 -6px 10px rgba(0,0,0,.18), inset 0 0 0 6px rgba(255,255,255,.08);
+  }
+  .etape.suggere .palet { animation:pulse 2.2s ease-in-out infinite; }
+  @keyframes pulse {
+    0%,100% { box-shadow:0 6px 12px rgba(0,0,0,.45), inset 0 -6px 10px rgba(0,0,0,.18), inset 0 0 0 6px rgba(255,255,255,.08), 0 0 0 0 rgba(255,209,102,.55); }
+    50% { box-shadow:0 6px 12px rgba(0,0,0,.45), inset 0 -6px 10px rgba(0,0,0,.18), inset 0 0 0 6px rgba(255,255,255,.08), 0 0 0 13px rgba(255,209,102,0); }
+  }
+  .etape .nom { display:block; font-weight:900; font-size:12.5px; margin-top:5px; text-shadow:0 2px 4px rgba(0,0,0,.6); }
+  .etape .dom { display:block; font-weight:800; font-size:10px; color:#8fa0d0; }
+  .pips { margin-top:3px; }
+  .pips i { display:inline-block; width:7px; height:7px; border-radius:50%; margin:0 1.5px; background:rgba(255,255,255,.14); }
+  .pips i.on { background:#ffd166; box-shadow:0 0 4px rgba(255,209,102,.6); }
+
+  /* la porte dorée : l'encyclopédie, au bout du chemin */
+  .porte {
+    position:relative; width:104px; height:118px; margin:0 auto; border-radius:52px 52px 10px 10px;
+    background:linear-gradient(160deg,#5c4210,#33240a);
+    border:3px solid #ffd166;
+    box-shadow:0 0 22px rgba(255,209,102,.4), 0 8px 14px rgba(0,0,0,.5), inset 0 0 0 5px rgba(255,209,102,.14);
+  }
+  .porte::before {
+    content:''; position:absolute; inset:8px 12px; border-radius:40px 40px 6px 6px;
+    border:1.5px solid rgba(255,209,102,.5);
+  }
+  .porte .pentoile {
+    position:absolute; top:14px; left:50%; transform:translateX(-50%);
+    width:30px; height:30px; border-radius:50%; background:#ffd166; color:#4a3208;
+    display:flex; align-items:center; justify-content:center; font-size:15px;
+    box-shadow:0 2px 6px rgba(0,0,0,.45);
+  }
+  .porte-e .dino { margin:-52px auto 0; }
+  .porte-e .nom { color:#ffd166; }
+
+  /* flottants : 2-3, petits, discrets (domaine du copain) */
+  .fl { position:absolute; pointer-events:none; opacity:.4; animation:flott 3.4s ease-in-out infinite; }
+  @keyframes flott { 0%,100%{transform:translateY(0) rotate(-5deg);} 50%{transform:translateY(-5px) rotate(5deg);} }
+  .fl.chiffre { font-family:'Fredoka One'; color:#ffd166; font-size:15px; }
+  .fl.lettre { font-family:'Cursif',cursive; color:#9fe6b0; font-size:17px; }
+  .fl img { width:22px; opacity:.6; }
+  .fl.flag { width:18px; height:12px; border-radius:3px; }
+  .fl.puz { width:11px; height:11px; border-radius:4px; background:#8fa0d0; }
+
+  /* ── REPAIRE (overlay depuis la droite) ── */
+  .repaire {
+    position:fixed; inset:0; z-index:50; background:linear-gradient(180deg,#0c1226,#131a3f);
+    transform:translateX(102%); transition:transform .35s cubic-bezier(.3,.9,.3,1); overflow-y:auto;
+  }
+  .repaire.show { transform:translateX(0); }
+  .rep-head { display:flex; align-items:center; gap:12px; padding:48px 16px 6px; }
+  .rep-head .bk { width:44px; height:44px; border-radius:50%; border:0; background:rgba(255,255,255,.1); color:#fff; font-size:20px; font-weight:900; cursor:pointer; }
+  .rep-head img { width:64px; height:64px; object-fit:contain; }
+  .rep-head b { font-family:'Fredoka One'; font-size:20px; display:block; }
+  .rep-head span { font-size:12px; font-weight:800; color:#8fa0d0; }
+  .rep-bulle { margin:10px 16px; background:#1c2547; border:1px solid rgba(255,255,255,.14); border-radius:16px; padding:11px 14px; font-weight:800; font-size:14px; }
+  .rep-jeu { display:flex; align-items:center; gap:12px; margin:8px 16px; background:#182142; border:1px solid rgba(255,255,255,.12); border-radius:18px; padding:10px; }
+  .rep-jeu .vig { width:64px; height:64px; border-radius:14px; flex-shrink:0; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .rep-jeu b { font-size:14.5px; font-weight:900; display:block; }
+  .rep-jeu .st { color:#ffd166; font-size:12px; letter-spacing:2px; }
+  .rep-note { text-align:center; color:#ffd166; font-weight:800; font-size:12.5px; padding:8px 20px 30px; }
+
+  .v-oeufs { background:linear-gradient(150deg,#4d3a12,#231a08); }
+  .v-oeufs i { width:20%; aspect-ratio:.78; border-radius:50% 50% 50% 50%/60% 60% 40% 40%; background:#f5e3c2; margin:0 2px; }
+  .v-constel { background:radial-gradient(circle at 50% 45%, #16264d, #070d1d 80%); }
+  .v-constel i { width:13%; aspect-ratio:1; border-radius:50%; background:#fff7d6; box-shadow:0 0 8px 3px rgba(255,240,180,.75); margin:0 3px; }
+  .v-bus { background:linear-gradient(150deg,#3d3410,#1c1808); }
+  .v-bus i { width:60%; height:34%; border-radius:6px; background:#2fbf8f; box-shadow:inset 0 -6px 0 rgba(0,0,0,.3); }
+  .v-couleur { background:linear-gradient(150deg,#3d2c10,#1c1408); }
+  .v-couleur i { width:26%; aspect-ratio:1; border-radius:50%; margin:0 2px; mix-blend-mode:screen; }
+</style>
+</head>
+<body>
+<div class="poc-tag">V2 « Le chemin » — suis le sentier · <a href="index.html">sommaire</a></div>
+
+<!-- HEADER : l'avatar du profil est l'hôte (1 seul avatar, étoiles sur la chip) -->
+<div class="moi">
+  <div class="chip"><img id="moiAv" src="../img/avatars/tritri_joyeux_3.png" alt="Mon dino"><span class="tot">⭐ 22</span></div>
+  <div class="bulle" id="moiBulle">Salut Max ! Regarde ce que j'ai trouvé pour toi aujourd'hui !</div>
+</div>
+<div class="bloc-titre">🔎 À découvrir</div>
+<div class="decouv">
+  <div class="mini"><div class="vig v-oeufs"><i></i><i></i><i></i></div><b>Les œufs surprises</b><span class="st">★★☆</span></div>
+  <div class="mini"><div class="vig v-constel"><i></i><i></i><i></i></div><b>Les constellations</b><span class="st">★☆☆</span></div>
+  <div class="mini"><div class="vig v-couleur"><i style="background:#e0655a"></i><i style="background:#ffd166"></i><i style="background:#4d9de0"></i></div><b>L'atelier peinture</b><span class="st">☆☆☆</span></div>
+</div>
+<div class="bloc-titre">❤️ Tes préférés</div>
+<div class="prefs">
+  <div class="pref"><div class="pv v-bus"><i></i></div>La course des bus</div>
+  <div class="pref"><div class="pv v-constel"><i></i></div>Les potions</div>
+</div>
+
+<!-- V2 : LE CHEMIN -->
+<div class="copains-head"><h2>Les copains</h2><span>suis le sentier, touche un copain</span></div>
+<div class="chemin" id="chemin">
+  <svg class="trail" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+    <path class="bed" d="M 26 6 C 34 9, 22 14, 26 18 C 62 20, 88 26, 74 35 C 60 44, 8 42, 26 52 C 44 62, 90 60, 72 70 C 58 78, 42 76, 50 82"/>
+    <path class="dots" d="M 26 6 C 34 9, 22 14, 26 18 C 62 20, 88 26, 74 35 C 60 44, 8 42, 26 52 C 44 62, 90 60, 72 70 C 58 78, 42 76, 50 82"/>
+  </svg>
+  <div class="nuage"></div>
+  <div class="buisson"><i></i><i></i><i></i></div>
+  <div class="caillou" style="left:93%; top:60px"></div>
+  <div class="caillou" style="left:2%; top:170px"></div>
+  <div class="caillou" style="left:93%; top:290px"></div>
+  <div class="caillou" style="left:4%; top:545px"></div>
+</div>
+
+<div class="repaire" id="repaire"></div>
+
+<script src="../js/avatars.js"></script>
+<script>
+const AV = '../img/avatars/';
+const OMB = '../img/dinos/ombres/';
+const COPAINS = [
+  { id:'spino', nom:'Spino', dom:'compter', av:'spino_joyeux_1.png', floats:'chiffres', stars:'★★★★☆☆☆☆☆',
+    phrase:'Splish splash ! Avec moi, on compte les poissons et plein de trésors !',
+    jeux:[{t:'Les œufs surprises',v:'v-oeufs',s:'★★★'},{t:'Les constellations',v:'v-constel',s:'★★☆'},{t:'Tout le monde monte !',v:'v-bus',s:'☆☆☆'}] },
+  { id:'galli', nom:'Galli', dom:'lire & écrire', av:'galli_joyeux_1.png', floats:'lettres', stars:'★★☆☆☆☆☆☆☆',
+    phrase:'Vite vite ! Les lettres dansent, attrape-les !',
+    jeux:[{t:'Trouve la lettre',v:'v-constel',s:'☆☆☆'},{t:'Le tri des lettres',v:'v-oeufs',s:'★☆☆'}] },
+  { id:'velo', nom:'Vélo', dom:'casse-têtes', av:'velo_joyeux_1.png', floats:'puzzle', stars:'★★★★★☆☆☆☆',
+    phrase:'Chhht… un vrai détective réfléchit doucement.',
+    jeux:[{t:'Trouve-le !',v:'v-oeufs',s:'★★★'},{t:'Les potions',v:'v-couleur',s:'★★☆'}] },
+  { id:'para', nom:'Para', dom:'couleurs & monde', av:'paras_joyeux_2.png', floats:'drapeaux', stars:'★★★☆☆☆☆☆☆',
+    phrase:'Tadada ! Je chante les couleurs et je voyage autour du monde !',
+    jeux:[{t:'L\'atelier peinture',v:'v-couleur',s:'★★★'},{t:'Compte avec le monde',v:'v-bus',s:'★☆☆'}] },
+  { id:'trex', nom:'L\'encyclopédie', dom:'62 dinos', av:'trex_joyeux_1.png', floats:'ombres', stars:'', livre:true },
+];
+const FLAGS = [['#009c3b','#ffdf00','#002776'],['#0055a4','#fff','#ef4135'],['#aa151b','#f1bf00','#aa151b']];
+
+(function(){
+  try{
+    const id = localStorage.getItem('maxplay_avatar');
+    const a = (window.MAXPLAY_AVATARS||[]).find(x=>x.id===id);
+    if(a && a.moods.joyeux && a.moods.joyeux[0]){
+      document.getElementById('moiAv').src = AV + a.moods.joyeux[0];
+      if(a.name && a.name!=='Tritri')
+        document.getElementById('moiBulle').textContent = 'Salut Max ! C\'est moi, '+a.name+' ! Regarde ce que j\'ai trouvé pour toi !';
+    }
+  }catch(e){}
+})();
+
+function floatsHtml(kind){
+  let h='';
+  for(let i=0;i<3;i++){
+    const left=[38,58,80][i]+'%', top=[18,58,28][i]+'%', d=(i*0.6).toFixed(1)+'s';
+    if(kind==='chiffres') h+='<span class="fl chiffre" style="left:'+left+';top:'+top+';animation-delay:'+d+'">'+[3,5,2][i]+'</span>';
+    else if(kind==='lettres') h+='<span class="fl lettre" style="left:'+left+';top:'+top+';animation-delay:'+d+'">'+['a','m','o'][i]+'</span>';
+    else if(kind==='ombres') h+='<span class="fl" style="left:'+left+';top:'+top+';animation-delay:'+d+'"><img src="'+OMB+['Triceratops_ombre.png','Diplodocus_ombre.png','Pteranodon_ombre.png'][i]+'"></span>';
+    else if(kind==='drapeaux'){ const f=FLAGS[i%3]; h+='<span class="fl flag" style="left:'+left+';top:'+top+';animation-delay:'+d+';background:linear-gradient(90deg,'+f[0]+' 33%,'+f[1]+' 33% 66%,'+f[2]+' 66%)"></span>'; }
+    else h+='<span class="fl puz" style="left:'+left+';top:'+top+';animation-delay:'+d+'"></span>';
+  }
+  return h;
+}
+
+/* pips étoiles sous le palet : points dorés (gagnés) / points pâles */
+function pipsHtml(stars){
+  if(!stars) return '';
+  let h='<div class="pips">';
+  for(const ch of stars) h+='<i class="'+(ch==='★'?'on':'')+'"></i>';
+  return h+'</div>';
+}
+
+/* positions des étapes le long du sentier (alternance gauche/droite, porte au centre en bas) */
+const POS = [
+  { l:26, t:20  },   // Spino  (suggéré : palet qui pulse)
+  { l:74, t:130 },   // Galli
+  { l:26, t:240 },   // Vélo
+  { l:72, t:350 },   // Para
+  { l:50, t:465 },   // porte dorée (encyclo)
+];
+
+const chemin = document.getElementById('chemin');
+COPAINS.forEach((c,i)=>{
+  const p = POS[i];
+  const e = document.createElement('div');
+  e.className = 'etape'+(c.livre?' porte-e':'')+(i===0?' suggere':'');
+  e.style.left = p.l+'%'; e.style.top = p.t+'px';
+  if(c.livre){
+    e.innerHTML = floatsHtml(c.floats)
+      + '<div class="porte"><span class="pentoile">★</span></div>'
+      + '<img class="dino" src="'+AV+c.av+'" alt="'+c.nom+'" draggable="false">'
+      + '<b class="nom">'+c.nom+'</b><small class="dom">'+c.dom+'</small>';
+  } else {
+    e.innerHTML = floatsHtml(c.floats)
+      + '<img class="dino" src="'+AV+c.av+'" alt="'+c.nom+'" draggable="false">'
+      + '<div class="palet"></div>'
+      + '<b class="nom">'+c.nom+'</b><small class="dom">'+c.dom+'</small>'
+      + pipsHtml(c.stars);
+  }
+  chemin.appendChild(e);
+  armDrag(e.querySelector('.dino'), e, c);
+});
+
+/* tap : le dino fait un saut (hop), puis le repaire s'ouvre */
+function tapEtape(etape, c){
+  const dino = etape.querySelector('.dino');
+  if(dino.classList.contains('hop')) return;
+  dino.classList.add('hop');
+  setTimeout(()=>{ dino.classList.remove('hop'); openRepaire(c); }, 460);
+}
+
+/* bonus : tirer le dino vers la droite marche aussi (pattern de V1, adapté à l'étape) */
+function armDrag(dino, etape, c){
+  let x0=null, dx=0, raf=null, moved=false;
+  const render = ()=>{
+    const wobble = Math.sin(dx*0.05)*Math.min(12, dx*0.07);
+    const grow = 1 + Math.min(0.8, dx/220);        // il grossit franchement en traversant
+    const lift = Math.abs(Math.sin(dx*0.05))*Math.min(10, dx*0.06);
+    dino.style.transform = 'translate('+dx+'px,'+(-lift)+'px) rotate('+wobble+'deg) scale('+grow+')';
+    dino.style.zIndex = 5;
+  };
+  dino.addEventListener('pointerdown', e=>{ x0=e.clientX; dx=0; moved=false; dino.classList.add('drag'); dino.setPointerCapture(e.pointerId); });
+  dino.addEventListener('pointermove', e=>{
+    if(x0===null) return;
+    dx=Math.max(-16, e.clientX-x0);
+    if(Math.abs(dx)>8) moved=true;
+    if(!raf) raf=requestAnimationFrame(()=>{ render(); raf=null; });
+  });
+  const fin = ()=>{
+    if(x0===null) return;
+    x0=null; dino.classList.remove('drag');
+    if(dx>70){
+      dino.style.transition='transform .3s ease-in';
+      dino.style.transform='translate(90px,0) rotate(10deg) scale(1.5)';
+      setTimeout(()=>{ openRepaire(c); }, 240);
+      setTimeout(()=>{ dino.style.transition=''; dino.style.transform=''; dino.style.zIndex=''; }, 700);
+    } else {
+      dino.style.transition='transform .35s cubic-bezier(.3,1.6,.5,1)';
+      dino.style.transform=''; dino.style.zIndex='';
+      setTimeout(()=>{ dino.style.transition=''; }, 380);
+    }
+    dx=0;
+    setTimeout(()=>{ moved=false; }, 50);
+  };
+  dino.addEventListener('pointerup', fin);
+  dino.addEventListener('pointercancel', fin);
+  etape.addEventListener('click', ()=>{ if(!moved) tapEtape(etape, c); });
+}
+
+function openRepaire(c){
+  if(c.livre){ alert('→ encyclopédie (dev-dinos.html)'); return; }
+  const r = document.getElementById('repaire');
+  r.innerHTML = '<div class="rep-head"><button class="bk" onclick="closeRepaire()">‹</button>'
+    + '<img src="'+AV+c.av+'"><div><b>'+c.nom+'</b><span>'+c.dom+'</span></div></div>'
+    + '<div class="rep-bulle">'+c.phrase+'</div>'
+    + c.jeux.map(j=>'<div class="rep-jeu"><div class="vig '+j.v+'"><i></i><i></i><i></i></div><div><b>'+j.t+'</b><span class="st">'+j.s+'</span></div></div>').join('')
+    + '<div class="rep-note">Obtiens ★★ sur un jeu pour ouvrir le suivant !</div>';
+  requestAnimationFrame(()=>r.classList.add('show'));
+}
+function closeRepaire(){ document.getElementById('repaire').classList.remove('show'); }
+
+const q = new URLSearchParams(location.search);
+if(q.get('repaire')){ const c = COPAINS.find(x=>x.id===q.get('repaire')); if(c) openRepaire(c); }
+</script>
+</body>
+</html>

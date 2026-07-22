@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<title>POC — Les copains en bandes (scroll vertical, tire la bande → pour entrer)</title>
+<title>V1 « La file » — liste compacte, tire le dino →</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
   * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
@@ -21,15 +21,20 @@
   }
   .poc-tag a { color:#ffd166; text-decoration:none; }
 
-  /* ── ZONE AVATAR (le dino du profil propose) ──────────────────── */
+  /* ── HEADER FUSIONNÉ : 1 seul avatar = celui du profil ── */
   .moi { display:flex; align-items:center; gap:10px; padding:44px 16px 4px; }
-  .moi img { width:82px; height:82px; object-fit:contain; filter:drop-shadow(0 6px 10px rgba(0,0,0,.5)); }
+  .moi .chip { position:relative; flex-shrink:0; }
+  .moi .chip img { width:64px; height:64px; object-fit:contain; filter:drop-shadow(0 6px 10px rgba(0,0,0,.5)); }
+  .moi .chip .tot {
+    position:absolute; right:-6px; bottom:-4px; background:#ffd166; color:#4a3208;
+    font:900 11px 'Nunito'; border-radius:999px; padding:2px 7px; box-shadow:0 2px 6px rgba(0,0,0,.4);
+  }
   .bulle {
     position:relative; background:#1c2547; border:1px solid rgba(255,255,255,.14);
-    border-radius:16px; padding:9px 13px; font-weight:800; font-size:14px; line-height:1.35;
+    border-radius:16px; padding:9px 13px; font-weight:800; font-size:13.5px; line-height:1.35;
   }
   .bulle::before {
-    content:''; position:absolute; left:-8px; top:30px; width:14px; height:14px;
+    content:''; position:absolute; left:-8px; top:26px; width:14px; height:14px;
     background:#1c2547; border-left:1px solid rgba(255,255,255,.14); border-bottom:1px solid rgba(255,255,255,.14);
     transform:rotate(45deg);
   }
@@ -51,72 +56,61 @@
   }
   .pref .pv { width:26px; height:26px; border-radius:50%; display:flex; align-items:center; justify-content:center; overflow:hidden; }
 
-  /* ── LES COPAINS : bandes pleine largeur, empilées (scroll vertical) ── */
-  .copains-head { display:flex; align-items:baseline; justify-content:space-between; padding:14px 18px 8px; }
-  .copains-head h2 { font-family:'Fredoka One'; font-size:17px; }
-  .copains-head span { font-size:11.5px; font-weight:800; color:#8fa0d0; }
-  .liste { display:flex; flex-direction:column; gap:14px; padding:0 16px 30px; }
+  /* ── V1 LA FILE : petites lignes, SEUL le dino se tire ──
+       Concept : liste scannable (Khan Kids, menus iOS) · cible tactile = le dino,
+       pas de texte nécessaire · le nom est discret (dit à l'oral à l'entrée) ── */
+  .copains-head { display:flex; align-items:baseline; justify-content:space-between; padding:12px 18px 6px; }
+  .copains-head h2 { font-family:'Fredoka One'; font-size:16px; }
+  .copains-head span { font-size:11px; font-weight:800; color:#8fa0d0; }
+  .file { display:flex; flex-direction:column; gap:8px; padding:0 16px 30px; }
 
-  .bande {
-    position:relative; width:100%; min-height:158px; overflow:hidden;
+  .rang {
+    position:relative; height:64px; border-radius:18px; overflow:hidden;
     background:linear-gradient(160deg,#1b2650,#121a3c);
-    border:1px solid rgba(255,255,255,.14); border-radius:24px;
-    display:flex; align-items:center; gap:4px; padding:10px 14px;
-    touch-action:pan-y;              /* scroll vertical libre, le drag → est géré en JS */
-    user-select:none; cursor:grab;
-    will-change:transform;
+    border:1px solid rgba(255,255,255,.12);
+    display:flex; align-items:center; padding:0 12px;
+    user-select:none;
   }
-  .bande.drag { cursor:grabbing; }
-  .bande.livre {
-    background:linear-gradient(160deg,#4a3208,#241a04);
-    border:2px solid #ffd166; box-shadow:0 0 22px rgba(255,209,102,.25);
-  }
-  .bande.livre .tranche { position:absolute; left:0; top:0; bottom:0; width:12px; background:linear-gradient(90deg,#8a6a20,#ffd166,#8a6a20); opacity:.8; }
+  .rang.livre { background:linear-gradient(160deg,#4a3208,#241a04); border:1.5px solid #ffd166; }
 
-  /* le dino : se dandine au repos, grossit quand on tire la bande */
-  .bande .dino {
-    height:118px; flex-shrink:0; object-fit:contain; pointer-events:none;
-    filter:drop-shadow(0 8px 12px rgba(0,0,0,.5));
-    animation:dandine 2.6s ease-in-out infinite;
-    transform-origin:50% 90%;
+  /* le dino : petite cible draggable, se dandine au repos */
+  .rang .dino {
+    height:52px; width:64px; object-fit:contain; flex-shrink:0; cursor:grab; touch-action:none;
+    filter:drop-shadow(0 4px 8px rgba(0,0,0,.5));
+    animation:dandine 2.6s ease-in-out infinite; transform-origin:50% 90%;
   }
-  .bande.drag .dino { animation:none; }
+  .rang .dino.drag { animation:none; cursor:grabbing; }
   @keyframes dandine {
-    0%,100% { transform:rotate(-2.5deg) translateY(0); }
-    25%     { transform:rotate(2.5deg) translateY(-3px); }
-    50%     { transform:rotate(-2.5deg) translateY(0); }
-    75%     { transform:rotate(2.5deg) translateY(-3px); }
+    0%,100% { transform:rotate(-3deg); } 25% { transform:rotate(3deg) translateY(-2px); }
+    50% { transform:rotate(-3deg); } 75% { transform:rotate(3deg) translateY(-2px); }
   }
-  .bande .infos { flex:1; text-align:center; pointer-events:none; position:relative; z-index:2; }
-  .bande b.nom { font-family:'Fredoka One'; font-size:22px; display:block; }
-  .bande.livre b.nom { color:#ffd166; }
-  .bande small.dom { font-weight:800; font-size:12.5px; color:#8fa0d0; display:block; }
-  .bande.livre small.dom { color:#e8d9b0; }
-  .bande .etoiles { margin-top:4px; color:#ffd166; font-size:13px; letter-spacing:2px; }
+  .rang .qui { flex:1; min-width:0; pointer-events:none; }
+  .rang .qui b { font-weight:900; font-size:13px; display:block; }
+  .rang.livre .qui b { color:#ffd166; }
+  .rang .qui small { font-weight:800; font-size:10.5px; color:#8fa0d0; display:block; }
+  .rang .etoiles { color:#ffd166; font-size:10px; letter-spacing:1.5px; pointer-events:none; white-space:nowrap; }
 
-  /* flèches qui courent vers la droite (invite au geste) */
-  .piste { position:absolute; right:14px; top:50%; transform:translateY(-50%); display:flex; gap:2px; pointer-events:none; }
+  /* flottants : 2-3, petits, discrets */
+  .fl { position:absolute; pointer-events:none; opacity:.4; animation:flott 3.4s ease-in-out infinite; }
+  @keyframes flott { 0%,100%{transform:translateY(0) rotate(-5deg);} 50%{transform:translateY(-5px) rotate(5deg);} }
+  .fl.chiffre { font-family:'Fredoka One'; color:#ffd166; font-size:15px; }
+  .fl.lettre { font-family:'Cursif',cursive; color:#9fe6b0; font-size:17px; }
+  .fl img { width:22px; opacity:.6; }
+  .fl.flag { width:18px; height:12px; border-radius:3px; }
+  .fl.puz { width:11px; height:11px; border-radius:4px; background:#8fa0d0; }
+
+  .piste { display:flex; gap:2px; pointer-events:none; margin-left:8px; }
   .piste i {
-    width:10px; height:10px; border-top:3px solid #ffd166; border-right:3px solid #ffd166;
+    width:7px; height:7px; border-top:2.5px solid #ffd166; border-right:2.5px solid #ffd166;
     transform:rotate(45deg); animation:court 1.2s ease-in-out infinite;
   }
   .piste i:nth-child(2){ animation-delay:.15s; } .piste i:nth-child(3){ animation-delay:.3s; }
   @keyframes court { 0%,100%{opacity:.15;} 50%{opacity:1;} }
 
-  /* flottants thématiques dans la bande */
-  .fl { position:absolute; pointer-events:none; opacity:.38; z-index:1; animation:flott 3.4s ease-in-out infinite; }
-  @keyframes flott { 0%,100%{transform:translateY(0) rotate(-4deg);} 50%{transform:translateY(-7px) rotate(5deg);} }
-  .fl.chiffre { font-family:'Fredoka One'; color:#ffd166; font-size:18px; }
-  .fl.lettre { font-family:'Cursif',cursive; color:#9fe6b0; font-size:21px; }
-  .fl img { width:30px; opacity:.5; }
-  .fl.flag { width:22px; height:14px; border-radius:3px; box-shadow:0 2px 4px rgba(0,0,0,.4); }
-  .fl.puz { width:15px; height:15px; border-radius:5px; background:#8fa0d0; }
-
-  /* ── REPAIRE (overlay qui arrive de la droite) ─────────────────── */
+  /* ── REPAIRE (overlay depuis la droite) ── */
   .repaire {
     position:fixed; inset:0; z-index:50; background:linear-gradient(180deg,#0c1226,#131a3f);
-    transform:translateX(102%); transition:transform .35s cubic-bezier(.3,.9,.3,1);
-    overflow-y:auto;
+    transform:translateX(102%); transition:transform .35s cubic-bezier(.3,.9,.3,1); overflow-y:auto;
   }
   .repaire.show { transform:translateX(0); }
   .rep-head { display:flex; align-items:center; gap:12px; padding:48px 16px 6px; }
@@ -131,7 +125,6 @@
   .rep-jeu .st { color:#ffd166; font-size:12px; letter-spacing:2px; }
   .rep-note { text-align:center; color:#ffd166; font-weight:800; font-size:12.5px; padding:8px 20px 30px; }
 
-  /* vignettes démo */
   .v-oeufs { background:linear-gradient(150deg,#4d3a12,#231a08); }
   .v-oeufs i { width:20%; aspect-ratio:.78; border-radius:50% 50% 50% 50%/60% 60% 40% 40%; background:#f5e3c2; margin:0 2px; }
   .v-constel { background:radial-gradient(circle at 50% 45%, #16264d, #070d1d 80%); }
@@ -143,11 +136,11 @@
 </style>
 </head>
 <body>
-<div class="poc-tag">POC « Les bandes » — tire une bande → · <a href="index.html">sommaire</a></div>
+<div class="poc-tag">V1 « La file » — tire le dino → · <a href="index.html">sommaire</a></div>
 
-<!-- ZONE AVATAR : le dino choisi dans le profil propose les jeux du moment -->
+<!-- HEADER : l'avatar du profil est l'hôte (1 seul avatar, étoiles sur la chip) -->
 <div class="moi">
-  <img id="moiAv" src="../img/avatars/tritri_joyeux_3.png" alt="Mon dino">
+  <div class="chip"><img id="moiAv" src="../img/avatars/tritri_joyeux_3.png" alt="Mon dino"><span class="tot">⭐ 22</span></div>
   <div class="bulle" id="moiBulle">Salut Max ! Regarde ce que j'ai trouvé pour toi aujourd'hui !</div>
 </div>
 <div class="bloc-titre">🔎 À découvrir</div>
@@ -162,11 +155,10 @@
   <div class="pref"><div class="pv v-constel"><i></i></div>Les potions</div>
 </div>
 
-<!-- LES COPAINS : bandes empilées, on scrolle, on TIRE une bande → pour entrer -->
-<div class="copains-head"><h2>Les copains</h2><span>tire un copain vers la droite →</span></div>
-<div class="liste" id="liste"></div>
+<!-- V1 : LA FILE -->
+<div class="copains-head"><h2>Les copains</h2><span>tire un dino vers la droite →</span></div>
+<div class="file" id="file"></div>
 
-<!-- REPAIRE overlay -->
 <div class="repaire" id="repaire"></div>
 
 <script src="../js/avatars.js"></script>
@@ -186,12 +178,10 @@ const COPAINS = [
   { id:'para', nom:'Para', dom:'couleurs & monde', av:'paras_joyeux_2.png', floats:'drapeaux', stars:'★★★☆☆☆☆☆☆',
     phrase:'Tadada ! Je chante les couleurs et je voyage autour du monde !',
     jeux:[{t:'L\'atelier peinture',v:'v-couleur',s:'★★★'},{t:'Compte avec le monde',v:'v-bus',s:'★☆☆'}] },
-  // dernière bande : le livre du Roi T-Rex = l'encyclopédie (même logique, même geste)
-  { id:'trex', nom:'L\'encyclopédie', dom:'le royaume du Roi T-Rex · 62 dinos', av:'trex_joyeux_1.png', floats:'ombres', stars:'', livre:true },
+  { id:'trex', nom:'L\'encyclopédie', dom:'62 dinos', av:'trex_joyeux_1.png', floats:'ombres', stars:'', livre:true },
 ];
 const FLAGS = [['#009c3b','#ffdf00','#002776'],['#0055a4','#fff','#ef4135'],['#aa151b','#f1bf00','#aa151b']];
 
-/* ── avatar du profil (localStorage maxplay_avatar) en hôte de la zone du haut ── */
 (function(){
   try{
     const id = localStorage.getItem('maxplay_avatar');
@@ -206,82 +196,67 @@ const FLAGS = [['#009c3b','#ffdf00','#002776'],['#0055a4','#fff','#ef4135'],['#a
 
 function floatsHtml(kind){
   let h='';
-  for(let i=0;i<5;i++){
-    const left=[30,34,60,66,50][i]+'%', top=[14,64,18,60,40][i]+'%', d=(i*0.5).toFixed(1)+'s';
-    if(kind==='chiffres') h+='<span class="fl chiffre" style="left:'+left+';top:'+top+';animation-delay:'+d+'">'+[1,3,5,2,7][i]+'</span>';
-    else if(kind==='lettres') h+='<span class="fl lettre" style="left:'+left+';top:'+top+';animation-delay:'+d+'">'+['a','m','s','o','l'][i]+'</span>';
-    else if(kind==='ombres') h+='<span class="fl" style="left:'+left+';top:'+top+';animation-delay:'+d+'"><img src="'+OMB+['Triceratops_ombre.png','Diplodocus_ombre.png','Pteranodon_ombre.png','Velociraptor_ombre.png','Stegosaurus_ombre.png'][i]+'"></span>';
+  for(let i=0;i<3;i++){
+    const left=[38,58,80][i]+'%', top=[18,58,28][i]+'%', d=(i*0.6).toFixed(1)+'s';
+    if(kind==='chiffres') h+='<span class="fl chiffre" style="left:'+left+';top:'+top+';animation-delay:'+d+'">'+[3,5,2][i]+'</span>';
+    else if(kind==='lettres') h+='<span class="fl lettre" style="left:'+left+';top:'+top+';animation-delay:'+d+'">'+['a','m','o'][i]+'</span>';
+    else if(kind==='ombres') h+='<span class="fl" style="left:'+left+';top:'+top+';animation-delay:'+d+'"><img src="'+OMB+['Triceratops_ombre.png','Diplodocus_ombre.png','Pteranodon_ombre.png'][i]+'"></span>';
     else if(kind==='drapeaux'){ const f=FLAGS[i%3]; h+='<span class="fl flag" style="left:'+left+';top:'+top+';animation-delay:'+d+';background:linear-gradient(90deg,'+f[0]+' 33%,'+f[1]+' 33% 66%,'+f[2]+' 66%)"></span>'; }
     else h+='<span class="fl puz" style="left:'+left+';top:'+top+';animation-delay:'+d+'"></span>';
   }
   return h;
 }
 
-/* ── construction des bandes ── */
-const liste = document.getElementById('liste');
+const file = document.getElementById('file');
 COPAINS.forEach(c=>{
-  const bande = document.createElement('div');
-  bande.className='bande'+(c.livre?' livre':'');
-  bande.innerHTML = (c.livre?'<div class="tranche"></div>':'') + floatsHtml(c.floats)
+  const rang = document.createElement('div');
+  rang.className='rang'+(c.livre?' livre':'');
+  rang.innerHTML = floatsHtml(c.floats)
     + '<img class="dino" src="'+AV+c.av+'" alt="'+c.nom+'" draggable="false">'
-    + '<div class="infos"><b class="nom">'+c.nom+'</b><small class="dom">'+c.dom+'</small>'
+    + '<div class="qui"><b>'+c.nom+'</b><small>'+c.dom+'</small>'
     + (c.stars?'<div class="etoiles">'+c.stars+'</div>':'') + '</div>'
     + '<div class="piste"><i></i><i></i><i></i></div>';
-  liste.appendChild(bande);
-  armDrag(bande, c);
+  file.appendChild(rang);
+  armDrag(rang.querySelector('.dino'), rang, c);
 });
 
-/* ── LE geste : tirer la bande → le dino se dandine et grossit ── */
-function armDrag(bande, c){
-  const dino = bande.querySelector('.dino');
-  let x0=null, y0=null, dx=0, raf=null, moved=false, annule=false;
+/* SEUL le dino se déplace : on l'attrape, on le tire → il se dandine et grossit */
+function armDrag(dino, rang, c){
+  let x0=null, dx=0, raf=null, moved=false;
   const render = ()=>{
-    // la bande suit le doigt ; le dino se dandine (rotation oscillante + sauts) et grossit
-    const wobble = Math.sin(dx*0.045)*Math.min(10, dx*0.06);
-    const grow = 1 + Math.min(0.35, dx/500);
-    const lift = Math.abs(Math.sin(dx*0.045))*Math.min(8, dx*0.05);
-    bande.style.transform = 'translateX('+dx+'px)';
-    dino.style.transform = 'translateY('+(-lift)+'px) rotate('+wobble+'deg) scale('+grow+')';
+    const wobble = Math.sin(dx*0.05)*Math.min(12, dx*0.07);
+    const grow = 1 + Math.min(0.8, dx/220);        // il grossit franchement en traversant
+    const lift = Math.abs(Math.sin(dx*0.05))*Math.min(10, dx*0.06);
+    dino.style.transform = 'translate('+dx+'px,'+(-lift)+'px) rotate('+wobble+'deg) scale('+grow+')';
+    dino.style.zIndex = 3;
   };
-  bande.addEventListener('pointerdown', e=>{
-    x0=e.clientX; y0=e.clientY; dx=0; moved=false; annule=false;
-  });
-  bande.addEventListener('pointermove', e=>{
-    if(x0===null || annule) return;
-    const dy = e.clientY-y0;
-    dx = Math.max(-20, e.clientX-x0);
-    // geste surtout vertical → on laisse le scroll de la page faire son travail
-    if(Math.abs(dy)>12 && Math.abs(dy)>Math.abs(dx)){ annule=true; x0=null; bande.style.transform=''; dino.style.transform=''; return; }
-    if(dx>8){ moved=true; bande.classList.add('drag'); }
-    if(moved && !raf) raf=requestAnimationFrame(()=>{ render(); raf=null; });
+  dino.addEventListener('pointerdown', e=>{ x0=e.clientX; dx=0; moved=false; dino.classList.add('drag'); dino.setPointerCapture(e.pointerId); });
+  dino.addEventListener('pointermove', e=>{
+    if(x0===null) return;
+    dx=Math.max(-16, e.clientX-x0);
+    if(Math.abs(dx)>8) moved=true;
+    if(!raf) raf=requestAnimationFrame(()=>{ render(); raf=null; });
   });
   const fin = ()=>{
-    if(x0===null){ setTimeout(()=>{ moved=false; }, 50); return; }
-    const seuil = bande.clientWidth*0.32;   // ~1/3 de la bande → on entre
-    x0=null; bande.classList.remove('drag');
+    if(x0===null) return;
+    const seuil = rang.clientWidth*0.30;
+    x0=null; dino.classList.remove('drag');
     if(dx>seuil){
-      // la bande part avec le dino qui gambade, puis le repaire arrive
-      bande.style.transition='transform .3s ease-in';
-      bande.style.transform='translateX('+bande.clientWidth+'px)';
       dino.style.transition='transform .3s ease-in';
-      dino.style.transform='rotate(8deg) scale(1.35)';
+      dino.style.transform='translate('+rang.clientWidth+'px,0) rotate(10deg) scale(1.8)';
       setTimeout(()=>{ openRepaire(c); }, 240);
-      setTimeout(()=>{ bande.style.transition=''; bande.style.transform=''; dino.style.transition=''; dino.style.transform=''; }, 700);
+      setTimeout(()=>{ dino.style.transition=''; dino.style.transform=''; dino.style.zIndex=''; }, 700);
     } else {
-      // retour élastique
-      bande.style.transition='transform .35s cubic-bezier(.3,1.6,.5,1)';
-      bande.style.transform='';
       dino.style.transition='transform .35s cubic-bezier(.3,1.6,.5,1)';
-      dino.style.transform='';
-      setTimeout(()=>{ bande.style.transition=''; dino.style.transition=''; }, 380);
+      dino.style.transform=''; dino.style.zIndex='';
+      setTimeout(()=>{ dino.style.transition=''; }, 380);
     }
     dx=0;
-    setTimeout(()=>{ moved=false; }, 50);   // le click suit le pointerup : on le laisse lire "moved"
+    setTimeout(()=>{ moved=false; }, 50);
   };
-  bande.addEventListener('pointerup', fin);
-  bande.addEventListener('pointercancel', fin);
-  // tap simple (sans déplacement) = entrer aussi
-  bande.addEventListener('click', ()=>{ if(!moved) openRepaire(c); });
+  dino.addEventListener('pointerup', fin);
+  dino.addEventListener('pointercancel', fin);
+  rang.addEventListener('click', ()=>{ if(!moved) openRepaire(c); });
 }
 
 function openRepaire(c){
@@ -296,7 +271,6 @@ function openRepaire(c){
 }
 function closeRepaire(){ document.getElementById('repaire').classList.remove('show'); }
 
-// param de démo : ?repaire=spino ouvre directement
 const q = new URLSearchParams(location.search);
 if(q.get('repaire')){ const c = COPAINS.find(x=>x.id===q.get('repaire')); if(c) openRepaire(c); }
 </script>

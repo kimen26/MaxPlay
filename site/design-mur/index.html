@@ -8,7 +8,7 @@
 <style>
   body { font-family:'Nunito',sans-serif; background:#0a0f24; color:#fff; padding:30px 18px; max-width:640px; margin:0 auto; }
   h1 { font-family:'Fredoka One'; font-size:22px; margin-bottom:4px; }
-  p.sub { color:#8fa0d0; font-weight:800; font-size:13px; margin-bottom:18px; }
+  p.sub { color:#8fa0d0; font-weight:800; font-size:13px; margin-bottom:18px; line-height:1.5; }
   a.poc { display:block; background:#182142; border:1px solid rgba(255,255,255,.14); border-radius:18px; padding:16px; margin-bottom:12px; text-decoration:none; color:#fff; }
   a.poc b { font-family:'Fredoka One'; font-size:17px; color:#ffd166; display:block; margin-bottom:4px; }
   a.poc span { font-size:13px; font-weight:800; color:#cdd6f4; line-height:1.4; display:block; }
@@ -16,33 +16,33 @@
 </style>
 </head>
 <body>
-<h1>Le Mur — POC menu</h1>
-<p class="sub">Version consolidée après retours : 1 copain = 1 écran pleine largeur · on glisse pour changer de copain · on attrape le dino et on le tire → (il se dandine et grossit) pour entrer · la zone du haut, c'est NOTRE avatar (le dino du profil) qui propose · l'encyclo = dernière slide-livre, même logique.</p>
+<h1>Le Mur — 4 variantes de la zone « Les copains »</h1>
+<p class="sub">Commun aux 4 : header fusionné (1 seul avatar = celui du profil, badge ⭐ total, bulle du jour) · Découverte + Préférés · encyclopédie Roi T-Rex en élément doré dans la même logique · tap = entrer partout. Ce qui change : la façon de présenter les copains.</p>
 
-<a class="poc" href="poc-slider.html" style="border-color:#ffd166;">
-  <b>POC « Le slider » ← version retenue pour test</b>
-  <span>Slider pleine largeur : 1 dino par écran, pastilles en bas. Geste d'entrée : tirer le dino vers la droite — il se dandine, grossit, puis gambade hors de l'écran et son repaire arrive. Tap = entrer aussi. Encyclopédie Roi T-Rex = dernière slide dorée (livre), dans la même logique de glisse.</span>
-  <em>+ épuré, une seule logique, geste fun · à valider : le geste sur tablette</em>
+<a class="poc" href="v1-file.html">
+  <b>V1 « La file » — la classique</b>
+  <span>Petites lignes compactes empilées (dino à gauche, nom discret, étoiles dessous). Geste signature : attraper le dino et le tirer → il se dandine et grossit en traversant la ligne. Concept : liste scannable (menus iOS, Khan Kids), zéro lecture nécessaire, tout tient sans presque scroller.</span>
+  <em>+ dense, rapide, geste fun · − la moins « magique »</em>
 </a>
 
-<p class="sub" style="margin-top:20px;">Anciennes pistes (encyclo), gardées pour archive :</p>
-
-<a class="poc" href="poc-a-parade.html">
-  <b>POC A « La parade »</b>
-  <span>L'encyclopédie est la dernière carte d'une parade de cartes 68% (carte-livre dorée). T-Rex sans repaire, jeux dino à recaser.</span>
-  <em>+ simple · − jeux dino perdent leur copain · supplanté par le slider</em>
+<a class="poc" href="v2-chemin.html">
+  <b>V2 « Le chemin » — la gamifiée</b>
+  <span>Un sentier de pierres qui serpente, les copains sont des étapes du voyage (palets gauche/droite), la porte dorée de l'encyclo au bout. Concept : carte de progression (Duolingo, Khan Academy Kids, Mario) — le menu raconte « tu avances ».</span>
+  <em>+ progression visible, très vivant · − plus long à scroller</em>
 </a>
 
-<a class="poc" href="poc-b-rex-savant.html">
-  <b>POC B « Rex le savant »</b>
-  <span>T-Rex = grand portail doré en bas (il EST l'encyclo), jeux dino chez un nouveau copain Anky.</span>
-  <em>+ encyclo très visible · − 6e personnage</em>
+<a class="poc" href="v3-bulles.html">
+  <b>V3 « Les bulles » — la libre</b>
+  <span>Les copains flottent dans des bulles qui dérivent doucement, on touche celle qu'on veut, elle pop. Concept : exploration libre sans hiérarchie (apps bulles maternelle, Toca free-play) — aucun ordre imposé.</span>
+  <em>+ ludique, zéro structure à comprendre · − pas de notion de parcours, peut paraître brouillon</em>
 </a>
 
-<a class="poc" href="poc-c-livre-magique.html">
-  <b>POC C « Le livre magique »</b>
-  <span>Encyclo = livre doré flottant en dock bas-droite, toujours visible. T-Rex garde son repaire.</span>
-  <em>+ rien ne change pour les copains · − élément flottant permanent</em>
+<a class="poc" href="v4-village.html">
+  <b>V4 « Le village » — la diégétique</b>
+  <span>Le menu EST une petite scène vivante de nuit : Spino à la mare, Galli sur son rocher, le Roi T-Rex garde le livre doré sur le promontoire. Concept : monde-menu (Toca Life, Sago Mini) — les copains habitent quelque part, pas de cartes ni de boutons.</span>
+  <em>+ immersion univers, mémorisation spatiale · − place limitée si le roster grandit</em>
 </a>
+
+<p class="sub" style="margin-top:20px;">Archives (1ère vague, patterns encyclo) : <a href="poc-a-parade.html" style="color:#ffd166">A parade</a> · <a href="poc-b-rex-savant.html" style="color:#ffd166">B rex savant</a> · <a href="poc-c-livre-magique.html" style="color:#ffd166">C livre magique</a> · <a href="poc-slider.html" style="color:#ffd166">bandes v0</a></p>
 </body>
 </html>

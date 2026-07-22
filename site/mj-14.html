@@ -4,30 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
 <title>MJ-14 – La grille des bus</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&family=Fredoka+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/mp-theme.css">
 <style>
+/* --- GABARIT HEADER CANONIQUE --- */
 * { box-sizing:border-box; margin:0; padding:0; -webkit-tap-highlight-color:transparent; user-select:none; }
-html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',sans-serif; background:#0d1b2a; color:#fff; }
-
-#app { display:flex; flex-direction:column; height:100dvh; max-width:640px; margin:0 auto; position:relative; }
-
-/* ── Header ── */
-#hdr {
-  flex-shrink:0; display:flex; align-items:center; gap:10px;
-  padding:6px 12px; background:rgba(0,0,0,0.25);
-  border-bottom:1px solid rgba(255,255,255,0.08);
-}
-#hdr a { color:#fff; text-decoration:none; font-size:1.3rem;
-  background:rgba(255,255,255,0.12); border-radius:8px;
-  padding:4px 10px; font-weight:900; }
-#hdr a:active { background:rgba(255,255,255,0.25); }
-#htitle { flex:1; font-size:1.0rem; font-weight:900; }
-#score-badge {
-  display:none !important;
-  background:#ffe066; color:#1a1a1a; font-weight:900;
-  border-radius:20px; padding:4px 14px; font-size:0.95rem; flex-shrink:0;
-}
+html,body { width:100%; height:100dvh; overflow:hidden; }
+body { font-family:'Fredoka One',sans-serif; color:var(--ink); display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+#app { display:flex; flex-direction:column; height:100dvh; max-width:640px; margin:0 auto; width:100%; position:relative; }
 
 /* ── Sélecteur de mode ── */
 #mode-bar {
@@ -36,45 +20,27 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 }
 .mode-btn {
   flex:1; border:2px solid rgba(255,255,255,0.2); border-radius:12px;
-  background:rgba(255,255,255,0.06); color:#fff;
+  background:rgba(255,255,255,0.06); color:var(--ink);
   font-family:'Nunito',sans-serif; font-weight:900; font-size:0.82rem;
   padding:7px 4px; cursor:pointer; transition:all 0.18s;
   display:flex; flex-direction:column; align-items:center; gap:2px;
+  min-height:44px;
 }
 .mode-btn .mode-icon { font-size:1.2rem; }
 .mode-btn:active { transform:scale(0.94); }
 .mode-btn.active {
-  border-color:#ffe066; background:rgba(255,224,102,0.15); color:#ffe066;
+  border-color:var(--gold); background:var(--gold-soft); color:var(--gold);
 }
-
-/* ── Indicateur de niveau ── */
-#level-bar {
-  flex-shrink:0; display:flex; align-items:center; justify-content:center;
-  gap:8px; padding:4px 12px;
-}
-.lvl-dot {
-  width:10px; height:10px; border-radius:50%;
-  background:rgba(255,255,255,0.15); transition:background 0.3s;
-}
-.lvl-dot.done  { background:#00c47a; }
-.lvl-dot.active { background:#ffe066; box-shadow:0 0 6px #ffe066; }
-#level-label { font-size:0.78rem; font-weight:900; opacity:0.6; }
 
 /* ── Zone principale ── */
 #main { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:space-between; padding:8px 10px 6px; overflow:hidden; }
-
-/* ── Label question ── */
-#q-label {
-  font-size:1.05rem; font-weight:900; text-align:center;
-  background:rgba(255,255,255,0.08); border-radius:16px;
-  padding:7px 18px; flex-shrink:0; line-height:1.3;
-}
 
 /* ── Hint ── */
 #pattern-hint {
   font-size:0.72rem; font-weight:700; opacity:0.5;
   text-align:center; flex-shrink:0; padding:0 10px; line-height:1.4;
   min-height:16px;
+  font-family:'Nunito',sans-serif;
 }
 
 /* ── Grille 3×3 ── */
@@ -103,13 +69,13 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 
 /* Case mystère */
 .cell.mystery {
-  background:rgba(255,224,102,0.12) !important;
-  border:3px dashed #ffe066 !important;
+  background:var(--gold-soft) !important;
+  border:3px dashed var(--gold) !important;
   animation:pulse-mystery 1.4s ease-in-out infinite;
 }
 @keyframes pulse-mystery {
-  0%,100% { box-shadow:0 0 0 0 rgba(255,224,102,0.45); }
-  50%      { box-shadow:0 0 0 8px rgba(255,224,102,0); }
+  0%,100% { box-shadow:0 0 0 0 rgba(255,209,102,0.45); }
+  50%      { box-shadow:0 0 0 8px rgba(255,209,102,0); }
 }
 .mystery-icon { font-size:2rem; animation:bounce-q 1.4s ease-in-out infinite; }
 @keyframes bounce-q {
@@ -119,12 +85,12 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 
 /* Feedback */
 .cell.flash-ok { background:rgba(0,196,122,0.35) !important; border-color:#00c47a !important; animation:none; }
-@keyframes shake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
 
 /* ── Choix ── */
 #choices-label {
   font-size:0.75rem; font-weight:900; text-transform:uppercase;
   letter-spacing:2px; opacity:0.45; text-align:center; flex-shrink:0;
+  font-family:'Nunito',sans-serif;
 }
 #choices { display:flex; gap:8px; justify-content:center; flex-shrink:0; width:100%; }
 
@@ -144,42 +110,14 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 .choice-btn.wrong   { border-color:#ff4455; background:rgba(255,68,85,0.15); animation:shake-btn 0.35s ease; }
 @keyframes pop-ok { 0%{transform:scale(1)} 40%{transform:scale(1.1)} 100%{transform:scale(1)} }
 @keyframes shake-btn { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
-.choice-label { font-size:0.7rem; font-weight:900; opacity:0.65; background:rgba(255,255,255,0.1); border-radius:8px; padding:2px 8px; }
+.choice-label { font-size:0.7rem; font-weight:900; opacity:0.65; background:rgba(255,255,255,0.1); border-radius:8px; padding:2px 8px; font-family:'Nunito',sans-serif; }
 
 /* ── Formes SVG (mode Formes) ── */
 .shape-svg { display:block; }
-
-/* ── Écran fin ── */
-#end-screen {
-  display:none; position:absolute; inset:0;
-  background:rgba(13,27,42,0.96);
-  flex-direction:column; align-items:center; justify-content:center;
-  gap:14px; z-index:20;
-}
-#end-screen.visible { display:flex; }
-#end-emoji { font-size:4rem; }
-#end-msg   { font-size:1.4rem; font-weight:900; text-align:center; padding:0 20px; }
-#end-score { font-size:1rem; color:#ffe066; font-weight:900; }
-#btn-replay {
-  background:linear-gradient(135deg,#00c47a,#00906a); color:#fff;
-  border:none; border-radius:20px;
-  font-family:'Nunito',sans-serif; font-weight:900;
-  font-size:1.05rem; padding:13px 34px; cursor:pointer;
-  box-shadow:0 4px 14px rgba(0,196,122,0.4); transition:transform 0.15s;
-}
-#btn-replay:active { transform:scale(0.95); }
 </style>
 </head>
 <body>
 <div id="app">
-
-  <!-- Header -->
-  <div id="hdr">
-    <a href="index.html">←</a>
-    <span id="htitle">🔲 La grille</span>
-    <span id="levelbar" style="font-weight:900;color:#ffe066;background:rgba(255,255,255,0.14);border-radius:10px;padding:3px 12px;font-size:0.85rem;">Niveau 1</span>
-    <div id="score-badge">0 / 0</div>
-  </div>
 
   <!-- Sélecteur mode -->
   <div id="mode-bar">
@@ -193,51 +131,58 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
     </button>
   </div>
 
-  <!-- Indicateur de niveau (rendu dynamique selon ROUNDS_PER_GAME) -->
-  <div id="level-bar">
-    <span id="dots-wrap" style="display:flex;gap:8px;align-items:center;"></span>
-    <span id="level-label">Round 1/8</span>
-  </div>
-
   <!-- Zone de jeu -->
   <div id="main">
-    <div id="q-label">Qu'est-ce qui manque ?</div>
     <div id="pattern-hint"></div>
     <div id="grid-wrap"><div id="grid"></div></div>
     <div id="choices-label">Choisis ↓</div>
     <div id="choices"></div>
   </div>
 
-  <!-- Fin de partie -->
-  <div id="end-screen">
-    <div id="end-emoji">🎉</div>
-    <div id="end-msg"></div>
-    <div id="end-score"></div>
-    <button id="btn-replay" onclick="startGame()">Rejouer !</button>
-    <a href="index.html" style="color:#ffe066;font-weight:900;font-size:0.9rem;margin-top:4px;">← Menu</a>
-  </div>
 </div>
 
+<!-- libs SPÉCIFIQUES au jeu -->
 <script src="js/bus-svg.js"></script>
 <script src="js/data.js"></script>
-<script src="js/catalog.js"></script>
-<script src="js/stars.js"></script>
-<script src="js/victory-sounds.js"></script>
-<script src="js/tts.js"></script>
-<script src="js/tracker.js"></script>
-<script src="js/cloud.js"></script>
-<script src="js/comments.js"></script>
-  <script src="js/back-button.js"></script>
+<!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud, célébrations) -->
+<script src="js/mj-shell.js"></script>
 <script>
+MJ.ready(function () {
+'use strict';
 // ═══════════════════════════════════════════════════════════════
 //  MJ-14 — La grille (Matrices de Raven)
 //  2 modes : Formes géo | Bus IDFM
-//  3 niveaux : pattern ligne → colonne → les deux
+//  5 paliers de difficulté (Stars.get('mj-14')+1) : types de pattern autorisés
+//  🔒 Décisions figées : studio/minijeux/docs/jeux/figees/mj-14.md
 // ═══════════════════════════════════════════════════════════════
+const GAME_ID = 'mj-14';
 
-const ROUNDS_PER_GAME = 8;
+const shell = MJ.init({
+  id: GAME_ID, emoji: '🔮', titre: 'La grille',
+  golden: true, consigne: true,
+  regle: {
+    picto: '🔮🧩',
+    texte: 'Une case manque dans la grille magique ! Trouve le motif caché en regardant les lignes et les colonnes.',
+    etapes: [
+      { t: 'Je regarde la grille 👀',
+        d: 'Il y a une case avec un point d’interrogation : c’est la case mystère !' },
+      { t: 'Je cherche la règle 🔍',
+        d: 'Regarde bien la ligne et la colonne de la case vide : un motif se répète.' },
+      { t: 'Je choisis en bas ✅',
+        d: 'Tape le motif qui complète la grille parmi les 3 propositions.' },
+      { t: 'Plus je gagne d’étoiles, plus c’est malin 🧠',
+        d: 'D’abord une seule règle facile, puis deux règles à la fois : jusqu’au niveau expert !' }
+    ]
+  }
+});
+const G = shell.G;
+
+// 🔒 8 manches fixes (indépendant du barème questions Golden 4/6/8 — voir figée mj-14.md)
+G.totalQ = 8;
+G.buildPips();
+
+const ROUNDS_PER_GAME = G.totalQ;
 let currentMode = 'shapes'; // 'shapes' | 'bus'
-let score = 0;
 let round = 0;
 let answerKey = null;   // clé unique de la bonne réponse
 let answered  = false;
@@ -250,8 +195,8 @@ let levelSchedule = []; // tirage aléatoire en début de partie
 // C : LIGNE + COLONNE (ligne = axe1, colonne = axe2)
 // D : CARRÉ LATIN — chaque ligne ET chaque colonne contient les 3 motifs une
 //     seule fois (pattern Raven classique, pas de diagonale ambiguë).
-// Paliers (doc _PALIERS) : types de pattern autorisés. Niveau = Stars.get+1.
-const STAR_LV = Math.max(0, Math.min(4, (window.Stars ? Stars.get('mj-14') : 0)));
+// 🔒 Paliers (5) : types de pattern autorisés. Niveau = Stars.get('mj-14')+1.
+const STAR_LV = Math.max(0, Math.min(4, (window.Stars ? Stars.get(GAME_ID) : 0)));
 const ALLOWED = [['A'], ['A','B'], ['A','B','C'], ['A','B','C','D'], ['C','D']][STAR_LV];
 function buildLevelSchedule(n) {
   const pool = [];
@@ -276,6 +221,7 @@ function getLevel(r) {
 const SHAPES = ['circle','square','diamond','triangle'];
 const FILLS  = ['empty','solid','striped'];
 
+// Couleurs de gameplay (sémantiques : distinguent ligne/colonne, PAS des couleurs de lignes bus)
 const SHAPE_COLORS = {
   row0: '#5b8fff',  // bleu
   row1: '#ff7043',  // orange
@@ -336,7 +282,6 @@ function shapeSVG(shape, fill, color, size) {
 
 // Génère un token unique pour une forme+fill
 function shapeKey(shape, fill) { return shape + '|' + fill; }
-function parseShapeKey(k) { const [s,f] = k.split('|'); return {shape:s,fill:f}; }
 
 function generateShapesPuzzle(roundNum) {
   const level = getLevel(roundNum);
@@ -345,11 +290,6 @@ function generateShapesPuzzle(roundNum) {
   const fi = [...FILLS].sort(() => Math.random()-0.5).slice(0,3);
   const fixedFill  = fi[0];
   const fixedShape = sh[0];
-
-  // Niveau D (diagonale) : la diagonale principale partage la même forme,
-  // les autres cases sont remplies avec des combos neutres variés.
-  const diagShape = sh[0];
-  const diagFill  = fi[0];
 
   const grid = [];
   for (let r = 0; r < 3; r++) {
@@ -406,7 +346,8 @@ const BUS_POOL = LIGNES.filter(l =>
   ['162','172','185','286','323','V2','V3','V4','132','184','186','47'].includes(l.num)
 );
 
-// Palette de carrosseries (turquoise = standard, + variantes LOCALES à MJ-14)
+// Palette de carrosseries (turquoise = standard, + variantes LOCALES à MJ-14 — gameplay,
+// pas des couleurs de ligne IDFM : autorisé par la règle "gameplay sémantique" du figeage).
 const BODY_COLORS = [
   { key:'turquoise', body:'#1abc9c' },
   { key:'orange',    body:'#ff7043' },
@@ -472,10 +413,6 @@ function generateBusPuzzle(roundNum) {
   const rowLines = sh.slice(0, 3);
   const colLines = sh.slice(3, 6);
 
-  // Pour varier ce que "l'axe" encode, on tire aléatoirement par partie :
-  // - axe "couleur de ligne" : rowLines (toujours)
-  // - axe "numéro de colonne" : colLines (toujours)
-  // - pour niveau C, on peut aussi utiliser carrosserie ou roues selon le round
   const bodiesByRow = [...BODY_COLORS].sort(() => Math.random()-0.5).slice(0,3);
   const wheelsByCol = [...WHEEL_COLORS].sort(() => Math.random()-0.5).slice(0,3);
 
@@ -532,7 +469,6 @@ function generateBusPuzzle(roundNum) {
   // Distracteurs — variantes plausibles qui diffèrent sur au moins un axe
   const distractorPool = [];
   if (level === 'C' && cVariant === 2) {
-    // Mélanges carrosserie × numéro
     bodiesByRow.forEach(b => colLines.forEach(cl => {
       const cand = { num:cl.num, color:cl.color, textColor:cl.textColor, bodyColor:b.body };
       if (busKey(cand) !== answerKey) distractorPool.push(cand);
@@ -584,8 +520,11 @@ function renderPuzzle(puzzle) {
   hintEl.style.opacity = '';
   hintEl.style.color   = '';
   hintEl.style.fontSize = '';
-  document.getElementById('q-label').textContent =
-    type === 'bus' ? 'Quel bus manque dans la grille ?' : 'Qu\'est-ce qui manque ?';
+
+  shell.setConsigne(
+    type === 'bus' ? 'Quel bus manque dans la grille ?' : 'Qu\'est-ce qui manque ?',
+    round === 1 ? undefined : true
+  );
 
   // Taille de grille
   const mainEl = document.getElementById('main');
@@ -663,8 +602,8 @@ function renderPuzzle(puzzle) {
 // ─────────────────────────────────────────────────────────────
 //  INTERACTION
 // ─────────────────────────────────────────────────────────────
-// Indice fort par niveau — parlé à voix haute sur erreur
-function strongHint(level, cVariant) {
+// Indice fort par niveau — parlé à voix haute sur erreur (🔒 retry natif figé)
+function strongHint(level) {
   if (level === 'A') return 'Regarde bien : dans chaque ligne horizontale, tous les motifs sont pareils. Trouve la ligne de la case vide.';
   if (level === 'B') return 'Regarde bien : dans chaque colonne verticale, tous les motifs sont pareils. Trouve la colonne de la case vide.';
   if (level === 'D') return 'Regarde bien : dans chaque ligne il y a 3 motifs différents, et dans chaque colonne aussi. Trouve celui qui manque dans la dernière ligne ET la dernière colonne.';
@@ -676,10 +615,8 @@ function onChoice(key, btn, puzzle) {
 
   if (key === answerKey) {
     answered = true;
-    // +1 au score seulement si première tentative
-    if (wrongCount === 0) score++;
+    const attempts = wrongCount === 0 ? 1 : (wrongCount === 1 ? 2 : 3);
     btn.classList.add('correct');
-    if (typeof Tracker !== 'undefined') Tracker.logAnswer(wrongCount === 0);
 
     // Révèle la case mystère
     const mystery = document.querySelector('.cell.mystery');
@@ -695,7 +632,8 @@ function onChoice(key, btn, puzzle) {
       mystery.classList.add('flash-ok');
     }
     playSuccessBeep();
-    updateScore();
+    // 🔒 Étoile = sans-faute 8/8 en 1ʳᵉ tentative — G.notePip pilote pips + tracker + MaxFX.markPoint
+    G.notePip(round - 1, attempts, btn);
     setTimeout(nextRound, 1100);
     return;
   }
@@ -707,14 +645,14 @@ function onChoice(key, btn, puzzle) {
   playErrorSound();
 
   if (wrongCount === 1) {
-    // 1ère erreur : PAS de révélation, on montre un indice fort + on le dit à l'oral, retry possible
+    // 🔒 1ère erreur : PAS de révélation, indice fort parlé, retry possible
     const hintEl = document.getElementById('pattern-hint');
     const strong = strongHint(puzzle.level);
     hintEl.textContent = '💡 ' + strong;
     hintEl.style.opacity = '1';
-    hintEl.style.color   = '#ffe066';
+    hintEl.style.color   = 'var(--gold)';
     hintEl.style.fontSize = '0.88rem';
-    speak(strong);
+    shell.say(strong);
     setTimeout(() => {
       btn.classList.remove('wrong');
       btn.disabled = true;
@@ -723,18 +661,20 @@ function onChoice(key, btn, puzzle) {
     return;
   }
 
-  // 2e erreur (ou +) : on révèle la bonne réponse et on passe
+  // 🔒 2e erreur (ou +) : révèle la bonne réponse et passe (pas d'étoile)
   answered = true;
   setTimeout(() => {
+    let okEl = null;
     document.querySelectorAll('.choice-btn').forEach(b => {
-      if (b.dataset.key === answerKey) b.classList.add('correct');
+      if (b.dataset.key === answerKey) { b.classList.add('correct'); okEl = b; }
     });
+    G.notePip(round - 1, 4, okEl);
     setTimeout(nextRound, 1100);
   }, 400);
 }
 
 // ─────────────────────────────────────────────────────────────
-//  SONS / TTS
+//  SONS
 // ─────────────────────────────────────────────────────────────
 function playSuccessBeep() {
   try {
@@ -753,59 +693,18 @@ function playSuccessBeep() {
   } catch(e) {}
 }
 
-function speak(text) { TTS.speak(text); }
-
 // ─────────────────────────────────────────────────────────────
-//  SCORE / ROUNDS / NIVEAUX
+//  ROUNDS
 // ─────────────────────────────────────────────────────────────
-function updateScore() {
-  document.getElementById('score-badge').textContent = `${score} / ${round}`;
-}
-
-function renderDots() {
-  const wrap = document.getElementById('dots-wrap');
-  wrap.innerHTML = '';
-  for (let i = 0; i < ROUNDS_PER_GAME; i++) {
-    const d = document.createElement('div');
-    d.className = 'lvl-dot';
-    d.id = 'dot-' + i;
-    wrap.appendChild(d);
-  }
-}
-function updateLevelDots() {
-  for (let i = 0; i < ROUNDS_PER_GAME; i++) {
-    const dot = document.getElementById('dot-' + i);
-    if (!dot) continue;
-    if (i < round - 1)      dot.className = 'lvl-dot done';
-    else if (i === round - 1) dot.className = 'lvl-dot active';
-    else                      dot.className = 'lvl-dot';
-  }
-  document.getElementById('level-label').textContent = `Round ${round}/${ROUNDS_PER_GAME}`;
-}
-
 function nextRound() {
   round++;
   if (round > ROUNDS_PER_GAME) { showEnd(); return; }
-  updateScore();
-  updateLevelDots();
   const puzzle = currentMode === 'bus' ? generateBusPuzzle(round) : generateShapesPuzzle(round);
   renderPuzzle(puzzle);
 }
 
 function showEnd() {
-  const pct = score / ROUNDS_PER_GAME;
-  const emoji = pct >= 0.8 ? '🏆' : pct >= 0.5 ? '🎉' : '🚌';
-  const msg   = pct >= 0.8 ? 'Incroyable ! Tu es un champion !'
-              : pct >= 0.5 ? 'Bien joué ! Continue comme ça !'
-              : "C'est dur, mais tu t'améliores !";
-  document.getElementById('end-emoji').textContent = emoji;
-  document.getElementById('end-msg').textContent   = msg;
-  document.getElementById('end-score').textContent =
-    `${score} bonne${score>1?'s':''} réponse${score>1?'s':''} sur ${ROUNDS_PER_GAME}`;
-  document.getElementById('end-screen').classList.add('visible');
-  playEndSound(score, ROUNDS_PER_GAME);
-  speak(msg);
-  if (typeof Tracker !== 'undefined') Tracker.endSession(score, ROUNDS_PER_GAME);
+  G.showEnd({ replayUrl: 'mj-14.html' });
 }
 
 // ─────────────────────────────────────────────────────────────
@@ -817,25 +716,21 @@ function switchMode(mode) {
   document.getElementById('btn-mode-bus').classList.toggle('active', mode === 'bus');
   startGame();
 }
+window.switchMode = switchMode;
 
 // ─────────────────────────────────────────────────────────────
 //  START
 // ─────────────────────────────────────────────────────────────
 function startGame() {
-  score = 0;
-  round = 1;
+  round = 0;
   answered = false;
-  const lb = document.getElementById('levelbar'); if (lb) lb.textContent = 'Niveau ' + (STAR_LV + 1);
   levelSchedule = buildLevelSchedule(ROUNDS_PER_GAME);
-  renderDots();
-  document.getElementById('end-screen').classList.remove('visible');
-  updateScore();
-  updateLevelDots();
-  const puzzle = currentMode === 'bus' ? generateBusPuzzle(round) : generateShapesPuzzle(round);
-  renderPuzzle(puzzle);
+  G.buildPips();
+  nextRound();
 }
 
 startGame();
+});
 </script>
 </body>
 </html>

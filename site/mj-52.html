@@ -119,9 +119,12 @@
       ['ami', ['a', 'mi']], ['tapis', ['ta', 'pis']], ['domino', ['do', 'mi', 'no']],
       ['salami', ['sa', 'la', 'mi']],
     ];
+    // Graphie harmonisée avec mj-50 (source de vérité) : une SEULE occurrence
+    // par lettre — la répétition x3 (mmm/sss…) fait bafouiller le TTS FR sur
+    // les consonnes non-continues (retour Papa Yann 2026-07-21).
     const SONS = {
-      a:'aaa', e:'eee', i:'iii', o:'ooo', u:'uuu', m:'mmm', s:'sss', l:'lll', r:'rrr',
-      p:'pe', t:'te', d:'de', b:'be', n:'nnn', c:'ke', v:'vvv',
+      a:'a', e:'eu', i:'i', o:'o', u:'u', m:'èm', s:'ès', l:'èl', r:'èr',
+      p:'pe', t:'te', d:'de', b:'be', n:'èn', c:'ke', v:'èv',
     };
     const DISTRACTEURS = ['s', 'r', 'l', 'v', 'o', 'e', 'n', 'b'];
 

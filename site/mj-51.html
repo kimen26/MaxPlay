@@ -140,10 +140,13 @@
 
   const GAME_ID = 'mj-51';
 
-  // Le SON de chaque lettre (dit au rangement — jamais le nom d'école)
+  // Le SON de chaque lettre (dit au rangement — jamais le nom d'école).
+  // Graphie harmonisée avec mj-50 (source de vérité) : une SEULE occurrence
+  // par lettre — la répétition x3 (mmm/sss…) fait bafouiller le TTS FR sur
+  // les consonnes non-continues (retour Papa Yann 2026-07-21).
   const SONS = {
-    a:'aaa', o:'ooo', i:'iii', e:'eee', u:'uuu',
-    m:'mmm', s:'sss', l:'lll', r:'rrr',
+    a:'a', o:'o', i:'i', e:'eu', u:'u',
+    m:'èm', s:'ès', l:'èl', r:'èr',
     b:'be', d:'de', h:'h muet', k:'ke', p:'pe', q:'ke',
   };
 
@@ -368,8 +371,10 @@
     setTimeout(() => {
       const ov = document.getElementById('finOverlay');
       ov.classList.add('show');
-      try { confettiBurst(50); } catch (e) {}
       try { playEndSound(DECK.length, DECK.length); } catch (e) {}
+      // Célébration bibliothèque only (CONTRAT MJ v2) : le style 'cinematic'
+      // déclenche déjà ses propres confettis en interne — pas de burst maison en plus.
+      // MaxFX est garanti chargé par le gabarit mj-shell.js (celebrations.js dans SCRIPTS).
       if (window.MaxFX) MaxFX.finalStar(ov, { style: errors === 0 ? 'cinematic' : 'breathe', label: errors === 0 ? 'SANS-FAUTE !' : 'BRAVO !' });
     }, 500);
   }

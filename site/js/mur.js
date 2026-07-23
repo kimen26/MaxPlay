@@ -209,11 +209,15 @@
   // le précédent. Un jeu verrouillé est CACHÉ (et tout ce qui suit).
   // Les jeux libres (coloriage, coin écoute) sont toujours visibles.
   var UNLOCK_STARS = 2; // aligné sur unlock.js
+  function adminUnlockAll() {
+    try { return !!(JSON.parse(localStorage.getItem('maxplay_admin')) || {}).unlockAll; }
+    catch (e) { return false; }
+  }
   function repaireState(copain) {
     var chain = copain.jeux.filter(function (id) { return !LIBRES[id]; });
     var visibleChain = [];
     for (var i = 0; i < chain.length; i++) {
-      if (i === 0 || starsOf(chain[i - 1]) >= UNLOCK_STARS) visibleChain.push(chain[i]);
+      if (adminUnlockAll() || i === 0 || starsOf(chain[i - 1]) >= UNLOCK_STARS) visibleChain.push(chain[i]);
       else break;
     }
     var libres = copain.jeux.filter(function (id) { return LIBRES[id]; });

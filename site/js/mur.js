@@ -548,6 +548,15 @@
         return;
       }
     });
+
+    // Re-render au retour sur le menu : bfcache (retour navigateur mobile) ou
+    // changement de déblocage fait ailleurs (console parent suivi.html, autre
+    // onglet). Sans ça le menu reste figé — les cadenas persistent alors que
+    // maxplay_admin.unlockAll est passé à true. (Bug déblocage mobile 2026-07-23.)
+    global.addEventListener('pageshow', function (ev) { if (ev.persisted) refresh(); });
+    global.addEventListener('storage', function (ev) {
+      if (ev.key === 'maxplay_admin' || ev.key === 'maxplay_unlocks' || ev.key === null) refresh();
+    });
   }
 
   global.MUR = {

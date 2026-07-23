@@ -28,11 +28,17 @@
   function loadUnlocks() { try { return JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { return {}; } }
   function saveUnlocks(data) { try { localStorage.setItem(KEY, JSON.stringify(data)); } catch (e) {} }
 
+  // Console parent (suivi.html) : { unlockAll:true } ouvre TOUT (jeux + dinos + Mur).
+  // Source UNIQUE du flag admin — mur.js appelle celle-ci, ne recopie pas le parse.
+  function isAdminUnlockAll() {
+    try { return !!(JSON.parse(localStorage.getItem('maxplay_admin')) || {}).unlockAll; }
+    catch (e) { return false; }
+  }
+
   function isUnlocked(id) {
     const e = entry(id);
     if (!e) return false;
-    // Console parent (suivi.html) : { unlockAll:true } ouvre TOUT (jeux + dinos)
-    try { if ((JSON.parse(localStorage.getItem('maxplay_admin')) || {}).unlockAll) return true; } catch (e2) {}
+    if (isAdminUnlockAll()) return true;
     if (e.access === 'free') return true;
     if (e.access === 'code') return !!loadUnlocks()[(e.unlock && e.unlock.bundle) || e.id];
     if (e.access === 'sequence') {
@@ -73,5 +79,5 @@
     }));
   }
 
-  global.Unlock = { isUnlocked, lockedReason, redeem, all, UNLOCK_STARS };
+  global.Unlock = { isUnlocked, lockedReason, redeem, all, UNLOCK_STARS, isAdminUnlockAll };
 })(window);

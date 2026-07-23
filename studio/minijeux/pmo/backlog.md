@@ -11,6 +11,17 @@
 
 ## Tickets épics actifs (EP-xxx)
 
+### L-XXX — 2026-07-23 — Deux moteurs de vérité = même bug qui revient
+Bug cadenas parent (commit 88898a17) ignoré par le Mur avait pour cause racine deux
+copies du flag admin + seuil ★ (unlock.js ET mur.js). Fix ponctuel suffisait pas —
+`UNLOCK_STARS=2` était dupliqué EN PLUS, bombe à retardement identique. Refactor
+(commit 48fefc25) : `unlock.js` expose `isAdminUnlockAll()` + `UNLOCK_STARS`,
+`mur.js` consomme au lieu de recopier. Séquence locale du Mur (ordre par copain,
+caché vs grisé) reste distincte à raison — règle métier différente du catalogue,
+pas une duplication à fusionner. Revue Fable (senior archi) avant d'agir.
+**Leçon** : une règle GLOBALE (flag, seuil) dupliquée nulle part, même par
+un fichier qui "a ses raisons" d'avoir sa propre logique locale.
+
 ### EP-074 — ✅ FAIT 2026-07-18 (v2 : fusion totale) — Composants UI partagés dans mp-theme.css
 **Livré final** : tout fusionné dans `site/css/mp-theme.css` §composants partagés (UN seul fichier CSS, mp-components.css supprimé le jour même). Composants : `.mp-pill` (pills scrollables actif OR), `.mp-dots/.mp-dot` (pills bleues), `.c-dot` (carrousel), keyframes badgePulse/cardBounce/ep-nudge, frise `.journey-*` + `.ep-status` + états. Renommages anti-collision dans dev-dinos : mode-btn→mp-pill, pangee-dot→mp-dot. `@keyframes pulse`+`.speaking` = SUPPRIMÉS du partagé (inutilisés par dinos, 6 MJ ont leur pulse local, mj-20 son speaking).
 **Constat structurel** : les `.mode-btn` de mj-11/14/20 = AUTRE composant (segmented control flex:1, actif liseré) ≠ `.mp-pill` (scrollable, actif or plein) — ne PAS unifier les styles, ce sont 2 patterns UI distincts ; namespace mp-* les sépare proprement.
@@ -2317,3 +2328,5 @@ Setup complet infrastructure. EP-001 terminé. Scaffold Phaser.js créé.
 - 2026-07-22 (DECISION Papa Yann) : tous les jeux deja codes AFFICHES DIRECT dans le menu — fin du gating sequence pour l instant ("on mettra les etapes visible/pas visible apres"). Applique : catalog.js access sequence -> free sur toutes les entrees. Le systeme d etapes/deblocage reste a re-instruire plus tard (donnees chaine perdues volontairement, historique git fait foi).
 - 2026-07-22 (REGLE Papa Yann, durcie) : PLUS AUCUN mini-jeu accepte sans LA bonne entete (entete canonique + avancement + etoiles, CONTRAT MJ v2). Constat vague 2026-07-21 : mj-15 et mj-21 non conformes ("lamentable"). ACTION enforcement a faire : etendre audit-gabarit.mjs pour rendre BLOQUANT l absence de piste avancement/etoiles standard (aujourd hui il ne l attrape pas), pas seulement le markup .hdr.
 - 2026-07-22 (proactivite demandee PY — jeux jamais testes mj-14/49/51/52/53) : audit transverse contre les remarques precedentes. Constats : mj-51/52 = MEME bug TTS lettres triplees que mj-50 (SONS aaa/mmm/sss) ; mj-51 sans piste golden + anim victoire ad-hoc ; mj-14 = ancien gabarit complet (pas de mj-shell, pas de .hdr, hex en dur, celebrations maison) — dette migration deja connue, passee en action. mj-49/52 cadre conforme, mj-53 dette hex mineure (couleurs oeufs de gameplay, tolerable). 2 agents lances : migration mj-14 mj-shell + harmonisation TTS 50/51/52 + golden mj-51.
+
+- 2026-07-23 fix(menu) — déblocage console parent (maxplay_admin.unlockAll) invisible sur mobile : mur.js ne re-render qu'au load, retour bfcache/console laisse les cadenas figés. Ajout listeners pageshow(persisted)+storage → refresh(). Revert hack test maxplay_test_unlock_all. Commit 1ddb2347. NB: index.spec.mjs périmé (teste .game[data-id] du vieux menu v1, count=0 sur HEAD aussi) — à réécrire pour menu v2.

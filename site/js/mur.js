@@ -5,9 +5,10 @@
 //  - 5 copains-domaines, vignettes CSS/SVG animées (zéro image générée).
 //  - Tritri, hôte : bloc Découverte (délaissé · nouveau · mise en avant,
 //    rotation déterministe par date) + bloc Préférés (pins.js).
-//  - Repaires : séquence 2★ (logique LOCALE au repaire — l'ordre diffère
-//    des catégories de catalog.js, donc on n'utilise pas Unlock ici,
-//    sauf pour l'encyclopédie, qui reste en access 'code' TRITRI).
+//  - Repaires : séquence 2★ (ORDRE local au repaire — diffère des catégories
+//    de catalog.js, donc pas Unlock.isUnlocked ici). Le flag admin et le
+//    seuil ★ restent lus depuis unlock.js (Unlock.isAdminUnlockAll/UNLOCK_STARS)
+//    pour rester source unique — pas une 2e copie de la règle globale.
 //  - Jeux non débloqués = CACHÉS + phrase d'ouverture en bas du repaire.
 //  - AUCUN audio/TTS/voix dans les menus (attente GO parent).
 //
@@ -208,16 +209,15 @@
   // Jeux non-libres : le 1er est ouvert, chaque suivant s'ouvre à 2★ sur
   // le précédent. Un jeu verrouillé est CACHÉ (et tout ce qui suit).
   // Les jeux libres (coloriage, coin écoute) sont toujours visibles.
-  var UNLOCK_STARS = 2; // aligné sur unlock.js
-  function adminUnlockAll() {
-    try { return !!(JSON.parse(localStorage.getItem('maxplay_admin')) || {}).unlockAll; }
-    catch (e) { return false; }
-  }
+  // Règles GLOBALES (flag admin, seuil ★) : source unique = unlock.js.
+  // Seule la SÉQUENCE (ordre copain, caché vs grisé) reste locale au Mur.
+  function adminUnlockAll() { return !!(global.Unlock && Unlock.isAdminUnlockAll()); }
+  function unlockStars() { return (global.Unlock && Unlock.UNLOCK_STARS) || 2; }
   function repaireState(copain) {
     var chain = copain.jeux.filter(function (id) { return !LIBRES[id]; });
     var visibleChain = [];
     for (var i = 0; i < chain.length; i++) {
-      if (adminUnlockAll() || i === 0 || starsOf(chain[i - 1]) >= UNLOCK_STARS) visibleChain.push(chain[i]);
+      if (adminUnlockAll() || i === 0 || starsOf(chain[i - 1]) >= unlockStars()) visibleChain.push(chain[i]);
       else break;
     }
     var libres = copain.jeux.filter(function (id) { return LIBRES[id]; });
@@ -388,7 +388,8 @@
     }).join('');
     var ouverture = $('rep-ouverture');
     if (st.hasNext && st.lastChain) {
-      ouverture.textContent = 'Obtiens ★★ sur « ' + st.lastChain.titre + ' » pour ouvrir un nouveau jeu !';
+      var etoiles = new Array(unlockStars() + 1).join('★');
+      ouverture.textContent = 'Obtiens ' + etoiles + ' sur « ' + st.lastChain.titre + ' » pour ouvrir un nouveau jeu !';
     } else if (!st.hasNext && st.games.length > 1) {
       ouverture.textContent = 'Bravo ! Tu as ouvert tous les jeux de ce repaire !';
     } else {

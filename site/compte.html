@@ -158,7 +158,11 @@
         };
         box.appendChild(row);
       });
-    } catch (e) { box.innerHTML = '<p>Erreur de chargement : ' + e.message + '</p>'; }
+    } catch (e) {
+      var errP = document.createElement('p');
+      errP.textContent = 'Erreur de chargement : ' + (e && e.message || 'inconnue');
+      box.replaceChildren(errP);
+    }
   }
 
   function render() {

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>Lecture annotée</title>
 <style>
-  /* ── La veillée au bord de l'étang (même famille que duel.html) ── */
+  /* ── La veillée au bord de l'étang (identité visuelle validée, conservée) ── */
   * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
   body {
     font-family: Georgia, 'Times New Roman', serif;
@@ -25,44 +25,85 @@
     letter-spacing:2.5px; text-transform:uppercase; color:#8FA096; margin-top:8px;
   }
   header .hint { font-family:system-ui,sans-serif; font-size:12px; color:#5F7570; margin-top:5px; font-style:italic; }
-  /* liste histoires */
-  .liste { padding:16px; display:flex; flex-direction:column; gap:14px; }
+  header .back { color:#74C7DE; text-decoration:none; font-size:13px; display:inline-block; margin-bottom:6px; padding:6px 0; }
+
+  /* ── Écran 1 : liste des 8 histoires ── */
+  .liste { padding:16px; display:flex; flex-direction:column; gap:12px; }
   .hcard {
     background:#16262C; border:1px solid #23383F; border-radius:16px;
-    padding:17px; cursor:pointer; font-family:system-ui,sans-serif;
+    padding:16px 17px; cursor:pointer; font-family:system-ui,sans-serif;
     transition:border-color .2s, transform .12s;
+    min-height:80px; display:flex; flex-direction:column; justify-content:center;
   }
   .hcard:active { transform:scale(.985); }
+  .hcard .num {
+    font-family:system-ui,sans-serif; font-size:11px; font-weight:700;
+    letter-spacing:1.5px; color:#74C7DE; margin-bottom:4px;
+  }
   .hcard .t { font-family:Georgia,serif; font-style:italic; font-size:18px; font-weight:400; }
-  .hcard .s { font-size:12.5px; color:#8FA096; margin-top:5px; }
-  .hcard.done { border-color:#74C7DE; box-shadow:0 0 0 1px rgba(116,199,222,.35); }
-  /* lecture — page de livre à la lampe */
-  #texte { flex:1; overflow-y:auto; padding:16px 20px 130px; font-size:18px; line-height:1.85; max-width:620px; width:100%; margin:0 auto; }
+  .hcard .meta { display:flex; gap:8px; margin-top:9px; flex-wrap:wrap; }
+  .badge {
+    font-family:system-ui,sans-serif; font-size:11.5px; font-weight:600;
+    padding:4px 10px; border-radius:12px; background:#0E1A1E; color:#8FA096;
+    border:1px solid #23383F;
+  }
+  .badge.progress { color:#EFE6D0; }
+  .badge.progress.done { color:#0E1A1E; background:#86B979; border-color:#86B979; }
+  .badge.progress.partial { color:#0E1A1E; background:#c9a86a; border-color:#c9a86a; }
+  .badge.verdict { color:#0E1A1E; background:#74C7DE; border-color:#74C7DE; }
+
+  .cta-finir {
+    margin-top:6px; border-color:#c9a86a; text-align:center;
+  }
+  .cta-finir .t { color:#c9a86a; }
+
+  /* ── Écran 2 : liste des versions d'une histoire ── */
+  .versions { padding:16px; display:flex; flex-direction:column; gap:12px; }
+  .vcard {
+    background:#16262C; border:1px solid #23383F; border-radius:16px;
+    padding:16px 17px; cursor:pointer; font-family:system-ui,sans-serif;
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    min-height:80px; transition:border-color .2s, transform .12s;
+  }
+  .vcard:active { transform:scale(.985); }
+  .vcard .t { font-family:Georgia,serif; font-style:italic; font-size:17px; }
+  .vcard .etat { font-size:12px; font-weight:600; padding:5px 11px; border-radius:12px; white-space:nowrap; }
+  .etat.non-lue { background:#0E1A1E; color:#5F7570; border:1px solid #23383F; }
+  .etat.annotee { background:#0E1A1E; color:#74C7DE; border:1px solid #74C7DE; }
+  .etat.verdict { background:#86B979; color:#0E1A1E; font-weight:700; }
+  .vcard.canon { border-color:#c9a86a; }
+  .vcard.canon .t::before { content:'★ '; color:#c9a86a; }
+
+  /* ── Écran 3 : lecture ── */
+  #texte { flex:1; overflow-y:auto; padding:16px 20px 160px; font-size:18px; line-height:1.85; max-width:620px; width:100%; margin:0 auto; }
   #texte p { margin-bottom:16px; }
   .seg { border-radius:4px; padding:1px 2px; cursor:pointer; transition:background .15s; }
   .seg.sel { background:rgba(116,199,222,.14); outline:2px solid #74C7DE; }
   .seg.pos { background:rgba(134,185,121,.18); box-shadow:inset 0 -2px 0 rgba(134,185,121,.6); }
   .seg.neg { background:rgba(201,123,93,.16); box-shadow:inset 0 -2px 0 rgba(201,123,93,.6); }
-  /* barre bas */
+
+  /* barre bas lecture */
   .barre {
     position:fixed; bottom:0; left:0; right:0;
-    background:rgba(14,26,30,.92); backdrop-filter:blur(8px);
+    background:rgba(14,26,30,.94); backdrop-filter:blur(8px);
     border-top:1px solid #23383F;
-    padding:10px 14px calc(10px + env(safe-area-inset-bottom)); display:flex; gap:10px;
-    font-family:system-ui,sans-serif;
+    padding:10px 14px calc(10px + env(safe-area-inset-bottom)); display:flex; gap:8px;
+    font-family:system-ui,sans-serif; flex-wrap:wrap;
   }
   .barre button {
-    flex:1; padding:12px; border-radius:13px; border:1px solid #23383F;
-    font-size:14.5px; font-weight:700; cursor:pointer;
+    flex:1; min-width:90px; min-height:48px; padding:12px 8px; border-radius:13px; border:1px solid #23383F;
+    font-size:13.5px; font-weight:700; cursor:pointer;
     background:transparent; color:#EFE6D0;
   }
   .barre button.main { background:#74C7DE; color:#0E1A1E; border-color:#74C7DE; }
+  .barre button.next { background:#c9a86a; color:#0E1A1E; border-color:#c9a86a; }
+
   /* panneau annotation */
   .sheet {
     position:fixed; bottom:0; left:0; right:0;
     background:#16262C; border-top:1px solid #74C7DE;
     border-radius:20px 20px 0 0; padding:18px 16px calc(18px + env(safe-area-inset-bottom));
-    font-family:system-ui,sans-serif; max-height:55vh; overflow-y:auto;
+    font-family:system-ui,sans-serif; max-height:60vh; overflow-y:auto;
     box-shadow:0 -12px 40px rgba(0,0,0,.5);
   }
   .sheet::before {
@@ -81,8 +122,8 @@
   .chips .ligne { display:flex; flex-wrap:wrap; gap:8px; }
   .chip {
     font-size:13.5px; background:transparent; border:1px solid #23383F;
-    border-radius:18px; padding:8px 13px; cursor:pointer; color:#EFE6D0;
-    transition:background .15s, border-color .15s;
+    border-radius:18px; padding:10px 14px; cursor:pointer; color:#EFE6D0;
+    min-height:40px; transition:background .15s, border-color .15s;
   }
   .chip.pon { background:#86B979; border-color:#86B979; color:#0E1A1E; font-weight:600; }
   .chip.non { background:#C97B5D; border-color:#C97B5D; color:#0E1A1E; font-weight:600; }
@@ -93,12 +134,36 @@
   }
   .sheet .actions { display:flex; gap:10px; margin-top:14px; }
   .sheet .actions button {
-    flex:1; padding:12px; border-radius:13px; border:none;
+    flex:1; padding:14px; border-radius:13px; border:none; min-height:48px;
     font-size:15px; font-weight:700; cursor:pointer;
   }
   .btn-ok { background:#74C7DE; color:#0E1A1E; }
   .btn-annuler { background:transparent; color:#EFE6D0; border:1px solid #23383F !important; }
   .btn-suppr { background:#C97B5D; color:#0E1A1E; }
+
+  /* verdict par version — chips dédiées top/bof/non */
+  .verdict-chips { display:flex; gap:8px; margin:10px 0 4px; }
+  .verdict-chips button {
+    flex:1; min-height:56px; border-radius:14px; border:1px solid #23383F;
+    background:transparent; color:#EFE6D0; font-size:14px; font-weight:700; cursor:pointer;
+  }
+  .verdict-chips button.top { border-color:#86B979; }
+  .verdict-chips button.top.on { background:#86B979; color:#0E1A1E; }
+  .verdict-chips button.bof { border-color:#c9a86a; }
+  .verdict-chips button.bof.on { background:#c9a86a; color:#0E1A1E; }
+  .verdict-chips button.non { border-color:#C97B5D; }
+  .verdict-chips button.non.on { background:#C97B5D; color:#0E1A1E; }
+
+  /* verdict final histoire — choisir sa préférée */
+  .pref-list { display:flex; flex-direction:column; gap:8px; margin:10px 0; }
+  .pref-item {
+    display:flex; align-items:center; gap:10px; padding:12px 14px; border-radius:12px;
+    border:1px solid #23383F; cursor:pointer; min-height:48px;
+  }
+  .pref-item.on { border-color:#c9a86a; background:rgba(201,168,106,.1); }
+  .pref-item .dot { width:18px; height:18px; border-radius:50%; border:2px solid #5F7570; flex-shrink:0; }
+  .pref-item.on .dot { border-color:#c9a86a; background:#c9a86a; }
+
   /* final */
   .final { padding:22px 18px; font-family:system-ui,sans-serif; }
   .final h2 { font-family:Georgia,serif; font-style:italic; font-weight:400; color:#74C7DE; font-size:22px; margin-bottom:10px; }
@@ -106,24 +171,26 @@
   #json { width:100%; height:130px; background:#0A1316; color:#74C7DE; border:1px solid #23383F; border-radius:10px; padding:10px; font-family:ui-monospace,monospace; font-size:11px; }
   .hidden { display:none !important; }
   @media (prefers-reduced-motion: reduce) {
-    .hcard, .seg, .chip { transition:none; }
+    .hcard, .vcard, .seg, .chip { transition:none; }
   }
 </style>
 </head>
 <body>
   <header>
-    <a href="index.html" style="color:#74C7DE;text-decoration:none;font-size:13px;display:inline-block;margin-bottom:6px">← Accueil</a>
-    <div class="titre"><svg width="30" height="16" viewBox="0 0 30 16" fill="none" aria-hidden="true"><ellipse cx="10" cy="6" rx="9" ry="2.6" fill="#74C7DE" opacity=".35" transform="rotate(-16 10 6)"/><ellipse cx="20" cy="6" rx="9" ry="2.6" fill="#74C7DE" opacity=".35" transform="rotate(16 20 6)"/><ellipse cx="11" cy="9.5" rx="7" ry="2" fill="#74C7DE" opacity=".55" transform="rotate(-24 11 9.5)"/><ellipse cx="19" cy="9.5" rx="7" ry="2" fill="#74C7DE" opacity=".55" transform="rotate(24 19 9.5)"/><rect x="14.4" y="3.5" width="1.6" height="11" rx="0.8" fill="#74C7DE"/><circle cx="15.2" cy="3.2" r="1.7" fill="#74C7DE"/></svg>Lecture annotée</div>
-    <div class="sous" id="sous">Choisis une histoire</div>
-    <div class="hint" id="hint">Tape un passage pour le commenter — bien ou pas bien, texte libre bienvenu.</div>
+    <a href="index.html" class="back">← Accueil</a>
+    <div class="titre"><svg width="30" height="16" viewBox="0 0 30 16" fill="none" aria-hidden="true"><ellipse cx="10" cy="6" rx="9" ry="2.6" fill="#74C7DE" opacity=".35" transform="rotate(-16 10 6)"/><ellipse cx="20" cy="6" rx="9" ry="2.6" fill="#74C7DE" opacity=".35" transform="rotate(16 20 6)"/><ellipse cx="11" cy="9.5" rx="7" ry="2" fill="#74C7DE" opacity=".55" transform="rotate(-24 11 9.5)"/><ellipse cx="19" cy="9.5" rx="7" ry="2" fill="#74C7DE" opacity=".55" transform="rotate(24 19 9.5)"/><rect x="14.4" y="3.5" width="1.6" height="11" rx="0.8" fill="#74C7DE"/><circle cx="15.2" cy="3.2" r="1.7" fill="#74C7DE"/></svg><span id="titre-txt">Lecture annotée</span></div>
+    <div class="sous" id="sous">8 histoires à relire</div>
+    <div class="hint" id="hint">Choisis une histoire, puis une version — tape un passage pour le commenter.</div>
   </header>
 
   <div class="liste" id="liste"></div>
+  <div class="versions hidden" id="versions"></div>
 
   <div id="texte" class="hidden"></div>
   <div class="barre hidden" id="barre">
-    <button onclick="retourListe()">← Histoires</button>
-    <button class="main" onclick="verdictGlobal()">Verdict global ✓</button>
+    <button onclick="retourVersions()">← Versions</button>
+    <button class="next hidden" id="btn-suivante" onclick="versionSuivante()">Suivante →</button>
+    <button class="main" onclick="verdictVersion()">Verdict ✓</button>
   </div>
 
   <div class="sheet hidden" id="sheet">
@@ -140,13 +207,27 @@
     </div>
   </div>
 
-  <div class="sheet hidden" id="sheet-verdict">
-    <h3 style="color:#c9a86a">Verdict global sur cette histoire</h3>
-    <div class="chips" id="chips-verdict"></div>
-    <textarea id="note-verdict" placeholder="Ton ressenti global en une ou deux phrases…"></textarea>
+  <div class="sheet hidden" id="sheet-verdict-version">
+    <h3 style="color:#c9a86a">Verdict sur cette version</h3>
+    <div class="verdict-chips" id="verdict-chips-version">
+      <button class="top" data-v="top" onclick="choisirVerdictVersion('top')">👍 Top</button>
+      <button class="bof" data-v="bof" onclick="choisirVerdictVersion('bof')">😐 Bof</button>
+      <button class="non" data-v="non" onclick="choisirVerdictVersion('non')">👎 Non</button>
+    </div>
+    <textarea id="note-verdict-version" placeholder="Ton ressenti sur cette version (optionnel)…"></textarea>
     <div class="actions">
-      <button class="btn-annuler" onclick="document.getElementById('sheet-verdict').classList.add('hidden')">Annuler</button>
-      <button class="btn-ok" onclick="validerVerdict()">Valider → retour liste</button>
+      <button class="btn-annuler" onclick="document.getElementById('sheet-verdict-version').classList.add('hidden')">Annuler</button>
+      <button class="btn-ok" onclick="validerVerdictVersion()">Valider</button>
+    </div>
+  </div>
+
+  <div class="sheet hidden" id="sheet-verdict-final">
+    <h3 style="color:#c9a86a">Verdict final — quelle version tu gardes ?</h3>
+    <div class="pref-list" id="pref-list"></div>
+    <textarea id="note-verdict-final" placeholder="Ton ressenti global sur l'histoire (optionnel)…"></textarea>
+    <div class="actions">
+      <button class="btn-annuler" onclick="document.getElementById('sheet-verdict-final').classList.add('hidden')">Annuler</button>
+      <button class="btn-ok" onclick="validerVerdictFinal()">Valider → retour liste</button>
     </div>
   </div>
 
@@ -154,12 +235,12 @@
     <h2>✅ Merci Papa Yann !</h2>
     <p id="resume-final"></p>
     <p id="statut-cloud">☁️ Envoi à Claude en cours…</p>
-    <button class="btn-ok" style="width:100%;padding:14px;border:none;border-radius:12px;font-weight:700;margin-top:10px;cursor:pointer" onclick="retourFinal()">← Revenir aux histoires</button>
+    <button class="btn-ok" style="width:100%;padding:14px;border:none;border-radius:12px;font-weight:700;margin-top:10px;cursor:pointer;min-height:48px" onclick="retourFinal()">← Revenir aux histoires</button>
     <a href="index.html" style="display:block;text-align:center;color:#74C7DE;margin-top:12px;font-size:14px">🏠 Retour à l'accueil</a>
     <details style="margin-top:14px">
       <summary style="color:#B9BFA9;font-size:12px;cursor:pointer">Secours : JSON manuel (seulement si l'envoi ☁️ a échoué)</summary>
       <textarea id="json" readonly onclick="this.select()"></textarea>
-      <button class="btn-ok" style="width:100%;padding:10px;border:none;border-radius:12px;font-weight:700;margin-top:8px;cursor:pointer" onclick="copier()">📋 Copier le JSON</button>
+      <button class="btn-ok" style="width:100%;padding:10px;border:none;border-radius:12px;font-weight:700;margin-top:8px;cursor:pointer;min-height:44px" onclick="copier()">📋 Copier le JSON</button>
     </details>
   </div>
 
@@ -168,36 +249,131 @@
 <script src="lecture-data.js"></script>
 <script>
 var D = window.LECTURE_DATA;
-var etat = {}; // {H1: {annotations:[], verdict:null}}
-D.histoires.forEach(function(h){ etat[h.id] = { annotations: [], verdict: null }; });
-var hCourante = null;
-var segSel = [];        // indices sélectionnés
-var annoEdit = null;    // annotation en cours d'édition
-var chipsPos = [], chipsNeg = [];
+var LS_KEY = 'maxplay-lecture-etat-v1';
 
+// état : { [storyId]: { [versionId]: { annotations:[], verdict:null, scroll:0 }, verdictFinal:null } }
+var etat = chargerEtat();
+D.histoires.forEach(function(h){
+  etat[h.story] = etat[h.story] || { verdictFinal: null };
+  h.versions.forEach(function(v){
+    etat[h.story][v.id] = etat[h.story][v.id] || { annotations: [], verdict: null, scroll: 0 };
+  });
+});
+
+var hCourante = null;   // objet histoire courante
+var vCourante = null;   // objet version courante
+var segSel = [];
+var annoEdit = null;
+var chipsPos = [], chipsNeg = [];
+var verdictVersionChoix = null;
+
+function chargerEtat() {
+  try { return JSON.parse(localStorage.getItem(LS_KEY)) || {}; } catch(e) { return {}; }
+}
+function sauverEtat() {
+  try { localStorage.setItem(LS_KEY, JSON.stringify(etat)); } catch(e) {}
+}
+
+// ── Écran 1 : liste des histoires ──────────────────────────────────────────
 function renderListe() {
   var z = document.getElementById('liste');
   z.innerHTML = '';
+  document.getElementById('titre-txt').textContent = 'Lecture annotée';
+  document.getElementById('sous').textContent = D.histoires.length + ' histoires à relire';
+  document.getElementById('hint').textContent = 'Choisis une histoire, puis une version — tape un passage pour le commenter.';
+
   D.histoires.forEach(function(h){
+    var st = etat[h.story];
+    var nVersions = h.versions.length;
+    var nLues = h.versions.filter(function(v){ return st[v.id].annotations.length || st[v.id].verdict; }).length;
+    var hasVerdictFinal = !!st.verdictFinal;
+
     var d = document.createElement('div');
-    var st = etat[h.id];
-    var done = st.verdict !== null;
-    d.className = 'hcard' + (done ? ' done' : '');
-    d.innerHTML = '<div class="t">' + h.titre + (done ? ' ✓' : '') + '</div>' +
-      '<div class="s">' + st.annotations.length + ' annotation(s)' + (done ? ' · verdict donné' : '') + '</div>';
-    d.onclick = function(){ ouvrirHistoire(h.id); };
+    d.className = 'hcard';
+    var numStr = 'N°' + String(h.numero).padStart(2, '0');
+    var progClass = hasVerdictFinal ? 'done' : (nLues > 0 ? 'partial' : '');
+    var progLabel = hasVerdictFinal ? '✓ verdict donné' : (nLues + '/' + nVersions + ' lues');
+    d.innerHTML =
+      '<div class="num">' + numStr + '</div>' +
+      '<div class="t">' + h.titre + '</div>' +
+      '<div class="meta">' +
+        '<span class="badge">' + nVersions + ' version' + (nVersions>1?'s':'') + '</span>' +
+        '<span class="badge progress ' + progClass + '">' + progLabel + '</span>' +
+      '</div>';
+    d.onclick = function(){ ouvrirHistoire(h.story); };
     z.appendChild(d);
   });
+
   var fin = document.createElement('div');
-  fin.className = 'hcard';
-  fin.style.borderColor = '#c9a86a';
-  fin.innerHTML = '<div class="t">☁️ Terminer & envoyer à Claude</div><div class="s">Envoi direct (même partiel — lis ce que tu peux), plus rien à copier</div>';
+  fin.className = 'hcard cta-finir';
+  fin.innerHTML = '<div class="t">☁️ Terminer &amp; envoyer à Claude</div><div class="meta"><span class="badge">Envoi direct — même partiel, rien à copier</span></div>';
   fin.onclick = terminer;
   z.appendChild(fin);
+
+  document.getElementById('liste').classList.remove('hidden');
+  document.getElementById('versions').classList.add('hidden');
+  document.getElementById('texte').classList.add('hidden');
+  document.getElementById('barre').classList.add('hidden');
+  document.getElementById('final').classList.add('hidden');
 }
 
+// ── Écran 2 : versions d'une histoire ──────────────────────────────────────
+function ouvrirHistoire(storyId) {
+  hCourante = D.histoires.filter(function(h){ return h.story === storyId; })[0];
+  renderVersions();
+  document.getElementById('liste').classList.add('hidden');
+  document.getElementById('versions').classList.remove('hidden');
+  document.getElementById('sous').textContent = 'N°' + String(hCourante.numero).padStart(2,'0') + ' — ' + hCourante.titre;
+  document.getElementById('hint').textContent = 'Choisis une version à lire.';
+  window.scrollTo(0,0);
+}
+
+function renderVersions() {
+  var z = document.getElementById('versions');
+  z.innerHTML = '';
+  var st = etat[hCourante.story];
+
+  hCourante.versions.forEach(function(v){
+    var vs = st[v.id];
+    var d = document.createElement('div');
+    d.className = 'vcard' + (v.canon ? ' canon' : '');
+    var etatLabel, etatClass;
+    if (vs.verdict) { etatLabel = vs.verdict === 'top' ? '👍 Top' : (vs.verdict === 'bof' ? '😐 Bof' : '👎 Non'); etatClass = 'verdict'; }
+    else if (vs.annotations.length) { etatLabel = vs.annotations.length + ' note(s)'; etatClass = 'annotee'; }
+    else { etatLabel = 'non lue'; etatClass = 'non-lue'; }
+    d.innerHTML = '<div class="t">' + v.titre + '</div><div class="etat ' + etatClass + '">' + etatLabel + '</div>';
+    d.onclick = function(){ ouvrirVersion(v.id); };
+    z.appendChild(d);
+  });
+
+  // Retour bouton
+  var back = document.createElement('div');
+  back.className = 'vcard';
+  back.style.borderColor = '#23383F';
+  back.innerHTML = '<div class="t" style="font-style:normal;color:#74C7DE">← Toutes les histoires</div>';
+  back.onclick = retourListeDepuisVersions;
+  z.appendChild(back);
+
+  // Verdict final histoire (si au moins 1 version lue)
+  var nLues = hCourante.versions.filter(function(v){ return st[v.id].annotations.length || st[v.id].verdict; }).length;
+  if (nLues > 0) {
+    var vf = document.createElement('div');
+    vf.className = 'vcard';
+    vf.style.borderColor = '#c9a86a';
+    vf.innerHTML = '<div class="t" style="color:#c9a86a">🏁 Verdict final de l\'histoire</div>' +
+      (st.verdictFinal ? '<div class="etat verdict">✓ donné</div>' : '<div class="etat non-lue">à faire</div>');
+    vf.onclick = ouvrirVerdictFinal;
+    z.appendChild(vf);
+  }
+}
+
+function retourListeDepuisVersions() {
+  hCourante = null;
+  renderListe();
+}
+
+// ── Écran 3 : lecture d'une version ────────────────────────────────────────
 function decouperSegments(texte) {
-  // paragraphes, puis phrases (répliques entières conservées)
   var segs = [];
   texte.split(/\n\n/).forEach(function(para, pi){
     if (/^[«—]/.test(para.trim()) || para.length < 90) {
@@ -210,23 +386,43 @@ function decouperSegments(texte) {
   return segs;
 }
 
-function ouvrirHistoire(id) {
-  hCourante = D.histoires.filter(function(h){ return h.id === id; })[0];
-  hCourante._segs = hCourante._segs || decouperSegments(hCourante.texte);
-  document.getElementById('sous').textContent = hCourante.titre;
-  document.getElementById('liste').classList.add('hidden');
+function ouvrirVersion(versionId) {
+  vCourante = hCourante.versions.filter(function(v){ return v.id === versionId; })[0];
+  vCourante._segs = vCourante._segs || decouperSegments(vCourante.texte);
+  document.getElementById('sous').textContent = hCourante.titre + ' — ' + vCourante.titre;
+  document.getElementById('hint').textContent = 'Tape un passage pour le commenter — bien ou pas bien, texte libre bienvenu.';
+  document.getElementById('versions').classList.add('hidden');
   document.getElementById('texte').classList.remove('hidden');
   document.getElementById('barre').classList.remove('hidden');
+
+  var idxCourant = hCourante.versions.indexOf(vCourante);
+  var aSuivante = idxCourant < hCourante.versions.length - 1;
+  document.getElementById('btn-suivante').classList.toggle('hidden', !aSuivante);
+
   renderTexte();
-  window.scrollTo(0,0);
+  var vs = etat[hCourante.story][vCourante.id];
+  requestAnimationFrame(function(){
+    document.getElementById('texte').scrollTop = vs.scroll || 0;
+  });
+  document.getElementById('texte').onscroll = function(){
+    vs.scroll = document.getElementById('texte').scrollTop;
+  };
+}
+
+function versionSuivante() {
+  sauverEtat();
+  var idx = hCourante.versions.indexOf(vCourante);
+  if (idx < hCourante.versions.length - 1) {
+    ouvrirVersion(hCourante.versions[idx + 1].id);
+  }
 }
 
 function renderTexte() {
   var z = document.getElementById('texte');
   z.innerHTML = '';
-  var annos = etat[hCourante.id].annotations;
+  var annos = etat[hCourante.story][vCourante.id].annotations;
   var pCour = -1, pEl = null;
-  hCourante._segs.forEach(function(s, i){
+  vCourante._segs.forEach(function(s, i){
     if (s.p !== pCour) { pCour = s.p; pEl = document.createElement('p'); z.appendChild(pEl); }
     var sp = document.createElement('span');
     sp.className = 'seg';
@@ -241,7 +437,7 @@ function renderTexte() {
 }
 
 function tapSegment(i) {
-  var annos = etat[hCourante.id].annotations;
+  var annos = etat[hCourante.story][vCourante.id].annotations;
   var existante = annos.filter(function(x){ return x.segIdx.indexOf(i) >= 0; })[0];
   if (existante) { annoEdit = existante; segSel = existante.segIdx.slice(); ouvrirSheet(); return; }
   var idx = segSel.indexOf(i);
@@ -256,7 +452,7 @@ function ouvrirSheet() {
   chipsNeg = annoEdit ? annoEdit.chipsNeg.slice() : [];
   document.getElementById('note').value = annoEdit ? annoEdit.note : '';
   document.getElementById('btn-suppr').classList.toggle('hidden', !annoEdit);
-  document.getElementById('extrait').textContent = segSel.map(function(i){ return hCourante._segs[i].t; }).join(' ');
+  document.getElementById('extrait').textContent = segSel.map(function(i){ return vCourante._segs[i].t; }).join(' ');
   var zp = document.getElementById('chips-pos'), zn = document.getElementById('chips-neg');
   zp.innerHTML = ''; zn.innerHTML = '';
   renderChips(zp, D.chips.positif, chipsPos, 'pon');
@@ -265,7 +461,6 @@ function ouvrirSheet() {
   degagerTexte();
 }
 
-// chips en lignes thématiques (tableau de tableaux) ou à plat (rétro-compat)
 function renderChips(zone, data, arr, cls) {
   var lignes = Array.isArray(data[0]) ? data : [data];
   lignes.forEach(function(lg){
@@ -276,10 +471,9 @@ function renderChips(zone, data, arr, cls) {
   });
 }
 
-// le panneau ne doit jamais cacher le passage tapé : padding + remontée auto
 function degagerTexte() {
   var texte = document.getElementById('texte');
-  texte.style.paddingBottom = 'calc(55vh + 20px)';
+  texte.style.paddingBottom = 'calc(60vh + 20px)';
   var premier = texte.querySelector('.seg[data-idx="' + segSel[0] + '"]');
   if (premier) setTimeout(function(){
     premier.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
@@ -301,23 +495,25 @@ function mkChip(label, arr, cls) {
 function validerAnno() {
   var note = document.getElementById('note').value.trim();
   if (!chipsPos.length && !chipsNeg.length && !note) { fermerSheet(); return; }
-  var annos = etat[hCourante.id].annotations;
+  var annos = etat[hCourante.story][vCourante.id].annotations;
   if (annoEdit) annos.splice(annos.indexOf(annoEdit), 1);
   annos.push({
     segIdx: segSel.slice(),
-    extrait: segSel.map(function(i){ return hCourante._segs[i].t; }).join(' '),
+    extrait: segSel.map(function(i){ return vCourante._segs[i].t; }).join(' '),
     polarite: (chipsNeg.length > chipsPos.length) ? 'neg' : (chipsPos.length ? 'pos' : 'neg'),
     chipsPos: chipsPos.slice(),
     chipsNeg: chipsNeg.slice(),
     note: note
   });
+  sauverEtat();
   fermerSheet();
 }
 
 function supprimerAnno() {
   if (annoEdit) {
-    var annos = etat[hCourante.id].annotations;
+    var annos = etat[hCourante.story][vCourante.id].annotations;
     annos.splice(annos.indexOf(annoEdit), 1);
+    sauverEtat();
   }
   fermerSheet();
 }
@@ -329,56 +525,120 @@ function fermerSheet() {
   renderTexte();
 }
 
-var chipsVerdict = [];
-function verdictGlobal() {
-  chipsVerdict = [];
-  var z = document.getElementById('chips-verdict');
-  z.innerHTML = '';
-  ['❤️ je la garde','👍 bien mais…','😐 bof','👎 non','trop long','pas fluide','manque un pic','fin parfaite','fin ratée'].forEach(function(c){
-    z.appendChild(mkChip(c, chipsVerdict, 'pon'));
+// ── Verdict par version ────────────────────────────────────────────────────
+function verdictVersion() {
+  var vs = etat[hCourante.story][vCourante.id];
+  verdictVersionChoix = vs.verdict || null;
+  document.querySelectorAll('#verdict-chips-version button').forEach(function(b){
+    b.classList.toggle('on', b.dataset.v === verdictVersionChoix);
   });
-  document.getElementById('note-verdict').value = (etat[hCourante.id].verdict || {}).note || '';
-  document.getElementById('sheet-verdict').classList.remove('hidden');
+  document.getElementById('note-verdict-version').value = vs.verdictNote || '';
+  document.getElementById('sheet-verdict-version').classList.remove('hidden');
+}
+function choisirVerdictVersion(v) {
+  verdictVersionChoix = v;
+  document.querySelectorAll('#verdict-chips-version button').forEach(function(b){
+    b.classList.toggle('on', b.dataset.v === v);
+  });
+}
+function validerVerdictVersion() {
+  var vs = etat[hCourante.story][vCourante.id];
+  vs.verdict = verdictVersionChoix;
+  vs.verdictNote = document.getElementById('note-verdict-version').value.trim();
+  sauverEtat();
+  document.getElementById('sheet-verdict-version').classList.add('hidden');
+  var idx = hCourante.versions.indexOf(vCourante);
+  if (idx < hCourante.versions.length - 1) {
+    ouvrirVersion(hCourante.versions[idx + 1].id);
+  } else {
+    retourVersions();
+  }
 }
 
-function validerVerdict() {
-  etat[hCourante.id].verdict = {
-    chips: chipsVerdict.slice(),
-    note: document.getElementById('note-verdict').value.trim()
+// ── Verdict final histoire ─────────────────────────────────────────────────
+var prefChoisie = null;
+function ouvrirVerdictFinal() {
+  var st = etat[hCourante.story];
+  prefChoisie = st.verdictFinal ? st.verdictFinal.preferee : null;
+  var z = document.getElementById('pref-list');
+  z.innerHTML = '';
+  hCourante.versions.forEach(function(v){
+    var d = document.createElement('div');
+    d.className = 'pref-item' + (prefChoisie === v.id ? ' on' : '');
+    d.innerHTML = '<div class="dot"></div><div>' + v.titre + '</div>';
+    d.onclick = function(){
+      prefChoisie = v.id;
+      Array.from(z.children).forEach(function(c){ c.classList.remove('on'); });
+      d.classList.add('on');
+    };
+    z.appendChild(d);
+  });
+  document.getElementById('note-verdict-final').value = (st.verdictFinal || {}).note || '';
+  document.getElementById('sheet-verdict-final').classList.remove('hidden');
+}
+function validerVerdictFinal() {
+  etat[hCourante.story].verdictFinal = {
+    preferee: prefChoisie,
+    note: document.getElementById('note-verdict-final').value.trim()
   };
-  document.getElementById('sheet-verdict').classList.add('hidden');
-  retourListe();
+  sauverEtat();
+  document.getElementById('sheet-verdict-final').classList.add('hidden');
+  retourListeDepuisVersions();
 }
 
-function retourListe() {
+// ── Navigation ──────────────────────────────────────────────────────────────
+function retourVersions() {
   fermerSheet();
   document.getElementById('texte').classList.add('hidden');
   document.getElementById('barre').classList.add('hidden');
-  document.getElementById('sous').textContent = 'Choisis une histoire';
-  document.getElementById('liste').classList.remove('hidden');
-  renderListe();
+  document.getElementById('sous').textContent = 'N°' + String(hCourante.numero).padStart(2,'0') + ' — ' + hCourante.titre;
+  document.getElementById('hint').textContent = 'Choisis une version à lire.';
+  document.getElementById('versions').classList.remove('hidden');
+  renderVersions();
 }
 
+// ── Envoi final ──────────────────────────────────────────────────────────────
 function terminer() {
   var payload = {
     outil: 'lecture-annotee',
-    domaine: D.domaine, story: D.story, vague: D.vague,
+    domaine: D.domaine, genere: D.genere,
     date: new Date().toISOString().slice(0,10),
     histoires: D.histoires.map(function(h){
-      return { id: h.id, source: h.source,
-        annotations: etat[h.id].annotations.map(function(a){
-          return { extrait: a.extrait, polarite: a.polarite, aime: a.chipsPos, peche: a.chipsNeg, note: a.note };
-        }),
-        verdict: etat[h.id].verdict };
+      var st = etat[h.story];
+      return {
+        story: h.story, numero: h.numero, titre: h.titre,
+        verdictFinal: st.verdictFinal,
+        versions: h.versions.map(function(v){
+          var vs = st[v.id];
+          return {
+            id: v.id, source: v.source,
+            annotations: vs.annotations.map(function(a){
+              return { extrait: a.extrait, polarite: a.polarite, aime: a.chipsPos, peche: a.chipsNeg, note: a.note };
+            }),
+            verdict: vs.verdict, verdictNote: vs.verdictNote || ''
+          };
+        })
+      };
     })
   };
-  var n = 0; D.histoires.forEach(function(h){ n += etat[h.id].annotations.length; });
-  document.getElementById('resume-final').textContent = n + ' annotations sur ' +
-    D.histoires.filter(function(h){ return etat[h.id].annotations.length || etat[h.id].verdict; }).length + ' histoire(s) lue(s).';
+  var n = 0, nVersionsLues = 0, nHistoiresTouchees = 0;
+  D.histoires.forEach(function(h){
+    var st = etat[h.story];
+    var touched = false;
+    h.versions.forEach(function(v){
+      var vs = st[v.id];
+      n += vs.annotations.length;
+      if (vs.annotations.length || vs.verdict) { nVersionsLues++; touched = true; }
+    });
+    if (touched || st.verdictFinal) nHistoiresTouchees++;
+  });
+  document.getElementById('resume-final').textContent =
+    n + ' annotation(s), ' + nVersionsLues + ' version(s) jugée(s) sur ' + nHistoiresTouchees + ' histoire(s) touchée(s).';
   document.getElementById('json').value = JSON.stringify(payload, null, 1);
   document.getElementById('liste').classList.add('hidden');
+  document.getElementById('versions').classList.add('hidden');
   document.getElementById('final').classList.remove('hidden');
-  // Envoi cloud automatique (table annotations) — le JSON n'est qu'un secours replié
+
   var statut = document.getElementById('statut-cloud');
   if (window.Cloud) {
     Cloud.pushAnnotation('lecture', document.getElementById('json').value, 'lecture')
@@ -394,7 +654,7 @@ function terminer() {
 
 function retourFinal() {
   document.getElementById('final').classList.add('hidden');
-  document.getElementById('liste').classList.remove('hidden');
+  renderListe();
 }
 
 function copier() {

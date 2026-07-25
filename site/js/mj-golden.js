@@ -6,6 +6,9 @@
 //    1 étoile → Niveau 2 : 6 questions (plus dur)
 //    2+ étoiles → Niveau 3 (MAX) : 8 questions — on y reste ensuite
 //  ÉTOILE = SANS FAUTE : toutes les questions réussies du 1er coup (billes vertes).
+//  ⚠️ FORMULE FIGÉE LOI (figees/mj-04.md) — NE PAS TOUCHER (chantier NID P2,
+//  2026-07-26) : le défigeage "niveau = max(Stars, compétence)" (A1) est EN
+//  ATTENTE de validation Papa Yann, traité dans une phase séparée.
 //
 //  Billes : v1 vert (1er coup) · v2 jaune (2e) · v3 orange (3e) · v4 rouge (révélé).
 //  Mini-célébrations aléatoires en cours de jeu (confettis / étoile filante).
@@ -14,6 +17,15 @@
 //  de 3 badges. Son Mario (MP3 réel), message niveau.
 //  Fin avec erreurs : pas d'étoile — écran encourageant, jamais punitif.
 //  Pas de "Bravo" parlé à chaque étape : juste sndDing (son de réussite).
+//
+//  CHANTIER NID (2026-07-26, studio/minijeux/docs/2026-07-26-chantier-nid-plan.md) :
+//    A2 — reprise de partie : état {qIndex, résultats pips, niveau} sauvé en
+//         localStorage à chaque question, restauré à l'ouverture si <24h.
+//    A3 — fin de partie RÉÉCRITE : toute partie TERMINÉE (parfaite ou non)
+//         donne 1 capsule (œuf) via Collection.grantCapsule(). Séquence stricte
+//         œuf (~1s) PUIS étoile sans-faute éventuelle (jamais en parallèle),
+//         puis 3 boutons (Encore/La suite/Maison) tapables en < 3s. Rétro-
+//         compatible : conteneurs .end-wrap/.end-btns/#badgeZone conservés.
 //
 //  Usage (après catalog.js/stars.js si le jeu est au catalogue) :
 //    const G = Golden.setup('mj-24');     // → G.level (0..2), G.totalQ (4/6/8)
@@ -25,6 +37,7 @@
 (function (global) {
   const QS_PER_LEVEL = [4, 6, 8];
   const MAX_STARS = 3;
+  const RESUME_TTL_MS = 24 * 60 * 60 * 1000; // 24h (avenant P0 §8 : pas de rattrapage rétroactif au-delà)
 
   function inCatalog(id) {
     return !!(global.MAXPLAY_CATALOG || []).find(c => c.id === id && c.maxStars > 0);
@@ -36,8 +49,33 @@
     return Math.min(MAX_STARS, parseInt(localStorage.getItem('golden_stars_' + id) || '0', 10) || 0);
   }
 
+  // ── A2 — reprise de partie (silencieuse, pas d'UI de choix) ─────────────
+  function resumeKey(id) { return 'maxplay_resume_' + id; }
+
+  function loadResume(id) {
+    try {
+      const raw = localStorage.getItem(resumeKey(id));
+      if (!raw) return null;
+      const d = JSON.parse(raw);
+      if (!d || typeof d !== 'object') return null;
+      if (!d.savedAt || (Date.now() - d.savedAt) > RESUME_TTL_MS) return null;
+      return d;
+    } catch (e) { return null; }
+  }
+
+  function saveResume(id, state) {
+    try {
+      localStorage.setItem(resumeKey(id), JSON.stringify(Object.assign({}, state, { savedAt: Date.now() })));
+    } catch (e) { /* plein/absent : silencieux, la partie continue sans reprise */ }
+  }
+
+  function clearResume(id) {
+    try { localStorage.removeItem(resumeKey(id)); } catch (e) {}
+  }
+
   const Golden = {
     gameId: null, stars: 0, level: 0, totalQ: 4, _firstTry: 0, _answered: 0,
+    _pipResults: [], resumed: false,
 
     setup(gameId) {
       this.gameId = gameId;
@@ -46,6 +84,17 @@
       this.totalQ = QS_PER_LEVEL[this.level];
       this._firstTry = 0;
       this._answered = 0;
+      this._pipResults = [];
+      this.resumed = false;
+
+      // A2 : reprise silencieuse si une partie était en cours (<24h)
+      const r = loadResume(gameId);
+      if (r && Array.isArray(r.pipResults) && typeof r.level === 'number' && r.level === this.level) {
+        this._pipResults = r.pipResults.slice();
+        this._answered = this._pipResults.length;
+        this._firstTry = this._pipResults.filter(a => a === 1).length;
+        this.resumed = true;
+      }
       return this;
     },
 
@@ -74,6 +123,26 @@
       for (let i = 0; i < MAX_STARS; i++) stars += i < this.stars ? '★' : '<span class="off">★</span>';
       gs.innerHTML = stars;
       box.appendChild(gs);
+
+      // A2 : redessine la piste restaurée (le contenu de la question courante
+      // reste à charge du jeu — ici on ne remet que le VISUEL des billes déjà jouées).
+      if (this.resumed && this._pipResults.length) {
+        this._pipResults.forEach((attempts, i) => this._paintPip(i, attempts));
+        const nx = document.getElementById('pip' + this._pipResults.length);
+        if (nx) { nx.classList.add('cur', 'current'); nx.classList.remove('todo'); }
+      }
+    },
+
+    // Peint UNE bille sans compter les stats (utilisé par notePip ET par la reprise A2).
+    _paintPip(i, attempts) {
+      const p = document.getElementById('pip' + i);
+      if (!p) return;
+      const a = Math.min(attempts, 4);
+      const state = a === 1 ? 'done-first' : (a === 4 ? 'done-helped' : 'done-retry');
+      const badge = a === 4 ? '💡' : '✓';
+      p.classList.remove('cur', 'current', 'todo');
+      p.classList.add('v' + a, state);
+      p.textContent = badge;
     },
 
     // À appeler quand une question est TERMINÉE. attempts: 1,2,3 ; 4 = révélé.
@@ -102,6 +171,7 @@
         }
       }
       this._answered++;
+      this._pipResults[i] = a;
       if (attempts === 1) {
         this._firstTry++;
         // mini-celebration en cours de jeu (si pas déjà le jeton MaxFX)
@@ -109,6 +179,13 @@
       }
       // Étoile = sans faute → seul le 1er coup compte comme "correct" pour la progression
       try { if (typeof Tracker !== 'undefined') Tracker.logAnswer(attempts === 1); } catch (e) {}
+
+      // A2 : sauve l'état APRÈS chaque question (silencieux). Effacé en fin de partie.
+      if (this._answered < this.totalQ) {
+        saveResume(this.gameId, { level: this.level, pipResults: this._pipResults.slice() });
+      } else {
+        clearResume(this.gameId);
+      }
     },
 
     isPerfect() { return this._firstTry >= this.totalQ; },
@@ -134,17 +211,37 @@
       ], { duration: 900, easing: 'ease-out' }).onfinish = () => s.remove();
     },
 
+    // Compliments de PROCESSUS (fin non-parfaite) — jamais de rappel d'étoile
+    // promise (anti-pattern gravé, Papa Yann 2026-07-21 : "j'afficherais pas
+    // d'étoile" quand ce n'en est pas une gagnée). Variantes courtes.
+    _PROCESS_COMPLIMENTS: [
+      'Tu as trouvé les plus durs&nbsp;!',
+      'Bien joué, tu as bien cherché&nbsp;!',
+      'Tu progresses à chaque partie&nbsp;!',
+      'Beau travail aujourd’hui&nbsp;!',
+    ],
+
     showEnd(opts) {
       opts = opts || {};
       const app = document.getElementById('app');
       const perfect = this.isPerfect();
       try { if (typeof Tracker !== 'undefined') Tracker.endSession(this._firstTry * 10, this.totalQ * 10); } catch (e) {}
+      clearResume(this.gameId); // A2 : partie terminée → plus rien à reprendre
 
       const newStars = perfect ? Math.min(MAX_STARS, this.stars + 1) : this.stars;
       // Persistance hors-catalogue (jeux de démo) ; au catalogue, stars.js dérive du tracker.
       if (perfect && !inCatalog(this.gameId)) {
         try { localStorage.setItem('golden_stars_' + this.gameId, String(newStars)); } catch (e) {}
       }
+
+      // NID (avenant P0) : 1 capsule par partie TERMINÉE, parfaite ou non.
+      let grant = null;
+      if (global.Collection && global.Collection.grantCapsule) {
+        try { grant = global.Collection.grantCapsule(); } catch (e) {}
+      }
+      const readyToHatch = !!(global.Collection && global.Collection.readyToHatch && (function () {
+        try { return global.Collection.readyToHatch(); } catch (e) { return false; }
+      })());
 
       // Zone de 3 badges : pré-remplie avec les étoiles déjà acquises.
       let slots = '';
@@ -161,45 +258,73 @@
       } else {
         // Surnom échappé : donnée saisie (compte parent, demain sync serveur) → jamais en HTML brut
         title = (function(){try{var k=(JSON.parse(localStorage.getItem('maxplay_active_child'))||{}).nickname;if(!k)return 'Bien joué&nbsp;!';var d=document.createElement('div');d.textContent=k;return 'Bien joué '+d.innerHTML+'&nbsp;!';}catch(e){return 'Bien joué&nbsp;!';}})();
-        sub = 'Si tu fais un sans-faute, tu gagnes une étoile&nbsp;!';
+        sub = Golden._PROCESS_COMPLIMENTS[(Math.random() * Golden._PROCESS_COMPLIMENTS.length) | 0];
       }
       const dly = perfect ? ['3s', '3.2s', '3.4s'] : ['.3s', '.5s', '.7s'];
+
+      // A3 : 3 boutons rétro-compatibles (.end-btns conservé, data-act ajouté).
+      // « La suite » masqué si MJKit.chain indisponible ou pas de jeu suivant.
+      const nextUrl = (global.MJKit && global.MJKit.chain) ? (function () {
+        try { const c = global.MJKit.chain(Golden.gameId); return c && c.next ? c.next.url : null; } catch (e) { return null; }
+      })() : null;
+      const replayUrl = opts.replayUrl || location.pathname.split('/').pop();
+      const nestBadge = readyToHatch ? '<span class="nid-badge" title="ça bouge dans le nid !">🥚</span>' : '';
+
+      let btns = '<a href="' + replayUrl + '" data-act="replay" style="background:#00c47a;">🔄 Encore&nbsp;!</a>';
+      if (nextUrl) {
+        btns += '<a href="' + nextUrl + '" data-act="next" class="btn-next-big" style="background:#ffd166;color:#3a2a00;">La suite →' + nestBadge + '</a>';
+      }
+      btns += '<a href="index.html" data-act="home" aria-label="Maison" style="background:#ffffff22;">🏠' + nestBadge + '</a>';
 
       app.innerHTML =
         '<div class="end-wrap">'
         + '<div class="badge-zone" id="badgeZone">' + slots + '</div>'
+        + '<div class="egg-zone" id="eggZone"></div>'
         + '<div class="end-title" style="animation-delay:' + dly[0] + '">' + title + '</div>'
         + '<div class="end-sub" style="animation-delay:' + dly[1] + '">' + sub + '</div>'
-        + '<div class="end-btns" style="animation-delay:' + dly[2] + '">'
-        + '<a href="' + (opts.replayUrl || location.pathname.split('/').pop()) + '" style="background:#00c47a;">🔄 Rejouer</a>'
-        + '<a href="index.html" style="background:#ffffff22;">📋 Menu</a>'
-        + '</div></div>';
+        + '<div class="end-btns" style="animation-delay:' + dly[2] + '">' + btns + '</div>'
+        + '</div>';
 
-      if (perfect) {
-        // Séquence NORMÉE MaxFX (package célébrations, juillet 2026) :
-        // cinematic UNIQUEMENT sur sans-faute + rangement via belt (ancre = zone badges).
-        if (global.MaxFX && global.MaxFX.finalStar) {
-          try { const a = new Audio('sounds/victory-mario-series-hq-super-smash-bros.mp3'); a.volume = 0.85; a.play().catch(() => {}); } catch (e) {}
-          const anchor = document.getElementById('badgeZone');
-          global.MaxFX.finalStar(app, {
-            style: 'cinematic',
-            belt: { earned: newStars, total: MAX_STARS, anchorEl: anchor },
-          }).then(() => {
-            const slot = document.getElementById('slot' + this.stars);
-            if (slot) slot.classList.add('filled', 'pop');
-            try { if (global.SoundPool && SoundPool.voiceLine) SoundPool.voiceLine('etoile-gagnee', 'Tu as gagné une étoile !'); } catch (e) {}
-            if (typeof opts.celebrate === 'function') { try { opts.celebrate(); } catch (e) {} }
-          }).catch(() => {});
+      // ── Séquencement STRICT (avenant P0 §7) : œuf (~1s) PUIS étoile éventuelle,
+      // jamais en parallèle. Les boutons sont dans le DOM dès le départ (CSS anime
+      // leur apparition via animation-delay) → tapables < 3s même si l'anim continue.
+      const eggZone = document.getElementById('eggZone');
+      const runEgg = (grant && eggZone && global.MaxFX && global.MaxFX.eggEarned)
+        ? (function () {
+            const egg = (global.MJKit && global.MJKit.oeuf) ? global.MJKit.oeuf(56) : (function () {
+              const d = document.createElement('div'); d.textContent = '🥚'; d.style.fontSize = '40px'; return d;
+            })();
+            eggZone.appendChild(egg);
+            try { return global.MaxFX.eggEarned(egg, { golden: !!grant.justGolden }).then(function () { egg.remove(); }); }
+            catch (e) { egg.remove(); return Promise.resolve(); }
+          })()
+        : Promise.resolve();
+
+      runEgg.then(() => {
+        if (perfect) {
+          // Séquence NORMÉE MaxFX (package célébrations, juillet 2026) :
+          // cinematic UNIQUEMENT sur sans-faute + rangement via belt (ancre = zone badges).
+          if (global.MaxFX && global.MaxFX.finalStar) {
+            try { const a = new Audio('sounds/victory-mario-series-hq-super-smash-bros.mp3'); a.volume = 0.85; a.play().catch(() => {}); } catch (e) {}
+            const anchor = document.getElementById('badgeZone');
+            global.MaxFX.finalStar(app, {
+              style: 'cinematic',
+              belt: { earned: newStars, total: MAX_STARS, anchorEl: anchor },
+            }).then(() => {
+              const slot = document.getElementById('slot' + this.stars);
+              if (slot) slot.classList.add('filled', 'pop');
+              try { if (global.SoundPool && SoundPool.voiceLine) SoundPool.voiceLine('etoile-gagnee', 'Tu as gagné une étoile !'); } catch (e) {}
+              if (typeof opts.celebrate === 'function') { try { opts.celebrate(); } catch (e) {} }
+            }).catch(() => {});
+          } else {
+            this._starFlight(this.stars, opts.celebrate); // fallback historique (BIZOU)
+          }
         } else {
-          this._starFlight(this.stars, opts.celebrate); // fallback historique (BIZOU)
+          try { sndBravo(); } catch (e) {}
+          // Fin sans étoile : encouragement doux, jamais punitif — confettis discrets seuls.
+          try { confetti(); } catch (e) {}
         }
-      } else {
-        try { sndBravo(); } catch (e) {}
-        // Fin sans étoile : encouragement doux, jamais punitif — et surtout PAS
-        // d'étoile pleine écran (trompeur : Papa Yann 2026-07-21, "j'afficherais
-        // pas d'étoile" quand ce n'en est pas une gagnée). Confettis discrets seuls.
-        try { confetti(); } catch (e) {}
-      }
+      });
     },
 
     // L'étoile : tour d'écran → BIZOU (zoom plein écran + pop) → atterrit dans le badge.

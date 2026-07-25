@@ -47,6 +47,7 @@
     'js/stars.js',
     'js/qcm-retry.js',
     'js/mj-golden.js',
+    'js/mj-kit.js',
     'js/tracker.js',
     'js/cloud.js',
     'js/comments.js',
@@ -54,6 +55,11 @@
     'js/regle-info.js',
     'js/mp-theme.js',
     'js/celebrations.js',
+    // Chantier NID (2026-07-26) : collection.js (moteur pur) puis son skin dino.
+    // Chargés APRÈS celebrations.js (l'anim d'éclosion vit dans MaxFX.hatch, déjà
+    // dispo). Défensifs : si absents (404), le shell continue sans capsule.
+    'js/collection.js',
+    'js/collection-dinos.js',
   ];
 
   // mp-theme.css si la page ne l'a pas déjà

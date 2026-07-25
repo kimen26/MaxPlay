@@ -5,11 +5,14 @@
 //  + bandeau collection (têtes possédées / ombres) + vignettes-aperçu sur
 //  les rangées copains + frise-chemin dans le repaire.
 //
-//  Code DÉFENSIF : si window.Collection est absent → rien ne s'affiche,
-//  zéro erreur console (P1 collection.js peut ne pas exister encore).
-//  Zéro nouvelle requête réseau : charge dinos-assets.js/dinos-data.js
+//  Code DÉFENSIF : si le moteur ne peut pas se charger → rien ne s'affiche,
+//  zéro erreur console. Zéro nouvelle requête réseau AU-DELÀ du nécessaire :
+//  charge collection.js/collection-dinos.js/dinos-data.js/dinos-assets.js
 //  dynamiquement (paresseux) si absents — mur.js/index.html ne les chargent
-//  pas par défaut (le Mur n'a jamais eu besoin du dico dino jusqu'ici).
+//  pas par défaut (le Mur n'a jamais eu besoin du moteur nid ni du dico dino
+//  jusqu'à ce chantier). ORDRE OBLIGATOIRE : dinos-data.js AVANT collection.js
+//  AVANT collection-dinos.js (le skin dino lit DINOS et window.Collection,
+//  tous deux doivent déjà exister — cf. collection-dinos.js guard clause).
 //
 //  API : window.NidUI = { init, refresh, playHatchIfReady }
 // ─────────────────────────────────────────────────────────────────────────
@@ -20,7 +23,10 @@
   var DINO_BEBE_SFX = ['sounds/fx/dino-bebe.mp3', 'sounds/fx/dino-bebe-2.mp3', 'sounds/fx/dino-bebe-3.mp3'];
 
   // ── chargement paresseux des dépendances (jamais dans index.html) ─────
-  var DEPS = ['js/dinos-assets.js', 'js/dinos-data.js'];
+  // Ordre figé : dinos-data.js (DINOS) → collection.js (window.Collection)
+  // → collection-dinos.js (configure() le catalogue depuis DINOS) → dinos-assets.js
+  // (résolution des sprites, n'a pas de dépendance d'ordre avec les 3 premiers).
+  var DEPS = ['js/dinos-data.js', 'js/collection.js', 'js/collection-dinos.js', 'js/dinos-assets.js'];
   function hasScript(src) {
     var tags = document.querySelectorAll('script[src]');
     for (var i = 0; i < tags.length; i++) {
@@ -28,10 +34,22 @@
     }
     return false;
   }
+  // Un window.Collection déjà présent (posé par un autre script, ou un harnais de
+  // test qui injecte un FAUX Collection avant chargement, cf. mur-nid.spec.mjs)
+  // ne doit JAMAIS être écrasé par notre <script src="js/collection.js"> paresseux —
+  // sinon le mock est remplacé silencieusement par le vrai moteur en cours de test.
+  function alreadySatisfied(src) {
+    if (/collection\.js$/.test(src)) return !!global.Collection;
+    // collection-dinos.js appelle Collection.configure(...) sans garde de son côté —
+    // si un Collection (mock ou réel déjà configuré) est présent SANS configure()
+    // classique attendu, ne pas l'invoquer évite un throw sur un mock de test.
+    if (/collection-dinos\.js$/.test(src)) return !!global.Collection && typeof global.Collection.configure !== 'function';
+    return false;
+  }
   function loadSeq(list, done) {
     if (!list.length) { done(); return; }
     var src = list[0];
-    if (hasScript(src)) { loadSeq(list.slice(1), done); return; }
+    if (hasScript(src) || alreadySatisfied(src)) { loadSeq(list.slice(1), done); return; }
     var s = document.createElement('script');
     s.src = src;
     s.onload = function () { loadSeq(list.slice(1), done); };
@@ -244,10 +262,17 @@
   // ── frise-chemin dans le repaire (remplace la grille) ───────────────
   // fait (≥1 partie) = tampon ✓ · prochain recommandé = grand + brille ·
   // suivants = atténués mais TAPABLES (accès libre depuis 2026-07-22).
+  // `const Tracker = (()=>{...})()` (tracker.js) est un top-level const : il vit
+  // dans l'environnement lexical global du document, PAS sur `window` — donc
+  // `global.Tracker` (= window.Tracker) est TOUJOURS undefined ici, silencieusement
+  // avalé par le catch, et playsOf() retournait 0 pour tout le monde (bug trouvé
+  // chantier NID P4 2026-07-26 : la frise ne tamponnait jamais aucun jeu fait).
+  // Même pattern que dinosArray() ci-dessus : référencer l'identifiant NU.
   function playsOf(id) {
     try {
-      var g = global.Tracker.getStats().games[id];
-      return g ? (g.plays || 0) : 0;
+      var g = (typeof Tracker !== 'undefined' ? Tracker : null);
+      var stats = g ? g.getStats().games[id] : null;
+      return stats ? (stats.plays || 0) : 0;
     } catch (e) { return 0; }
   }
 
@@ -284,9 +309,19 @@
   }
 
   function init() {
-    if (!global.Collection) return; // code défensif : rien sans le moteur (P1)
+    // Pas de garde ici : Collection lui-même fait partie de DEPS (chargé
+    // paresseusement juste en dessous). Le garde utile est dans refresh()/
+    // renderNid()/renderBandeau(), appelés APRÈS le loadSeq — eux protègent
+    // le cas où collection.js est en 404 (fichier absent en prod).
     loadSeq(DEPS, function () {
       refresh();
+      // Si un repaire est déjà ouvert au moment où les DEPS finissent de charger
+      // (deep-link #repaire=xxx : MUR.init() ouvre le repaire de façon SYNCHRONE,
+      // avant que ce loadSeq asynchrone n'ait fini — la frise-chemin de renderRepaire()
+      // tourne alors une 1re fois sans NidUI prêt et ne se redessine jamais toute seule).
+      // MUR.refresh() re-render tout, y compris `if (current) renderRepaire(current)`
+      // qui rappelle NidUI.renderFrise() avec les données maintenant disponibles.
+      if (global.MUR && typeof global.MUR.refresh === 'function') global.MUR.refresh();
       // l'éclosion se joue au retour sur le Mur (théâtre du nid, avenant §8)
       setTimeout(playHatchIfReady, 300);
     });

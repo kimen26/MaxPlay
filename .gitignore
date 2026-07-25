@@ -34,3 +34,5 @@ site/img/dinos/_new-traces/
 
 # Payload hook Stop Kimi Code (runtime, jamais versionne)
 .kimi-code/hooks/stop-payload.jsonl
+
+infra/bot/*.log

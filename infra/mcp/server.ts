@@ -6,7 +6,7 @@ import { readFileSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { createHash } from "node:crypto";
-import { execSync } from "node:child_process";
+import { execFileSync } from "node:child_process";
 
 const server = new McpServer({
   name: "llm-copains",
@@ -688,8 +688,10 @@ server.tool(
       }
 
       if (packetFiles.length === 1) {
-        execSync(
-          `"${FFMPEG_BIN}" -y -i "${packetFiles[0]}" -af "loudnorm=I=-16:TP=-1.5:LRA=11" -c:a libmp3lame -b:a 192k -ar 44100 "${output_path}"`,
+        // execFileSync : chemins passés en tableau, aucune interprétation shell (audit sécu 2026-07-25)
+        execFileSync(
+          FFMPEG_BIN,
+          ["-y", "-i", packetFiles[0], "-af", "loudnorm=I=-16:TP=-1.5:LRA=11", "-c:a", "libmp3lame", "-b:a", "192k", "-ar", "44100", output_path],
           { stdio: "ignore" }
         );
       } else {
@@ -699,8 +701,9 @@ server.tool(
           packetFiles.map((p) => `file '${p.replace(/\\/g, "/")}'`).join("\n"),
           "utf-8"
         );
-        execSync(
-          `"${FFMPEG_BIN}" -y -f concat -safe 0 -i "${listPath}" -af "loudnorm=I=-16:TP=-1.5:LRA=11" -c:a libmp3lame -b:a 192k -ar 44100 "${output_path}"`,
+        execFileSync(
+          FFMPEG_BIN,
+          ["-y", "-f", "concat", "-safe", "0", "-i", listPath, "-af", "loudnorm=I=-16:TP=-1.5:LRA=11", "-c:a", "libmp3lame", "-b:a", "192k", "-ar", "44100", output_path],
           { stdio: "ignore" }
         );
       }

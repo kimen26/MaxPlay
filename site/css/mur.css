@@ -174,7 +174,7 @@
 
 /* tailles : 3 ombres croissantes */
 .vig-tailles { background:linear-gradient(160deg,#1c2c4d,#0d1830); align-items:flex-end; gap:4px; padding-bottom:8px; }
-.vig-tailles img { object-fit:contain; opacity:.85; }
+.vig-tailles img { object-fit:contain; opacity:.85; max-width:30%; }
 .vig-tailles img:nth-child(1){ height:32%; } .vig-tailles img:nth-child(2){ height:52%; } .vig-tailles img:nth-child(3){ height:74%; }
 
 /* dés (Remplis la caisse) */

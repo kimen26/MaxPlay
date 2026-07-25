@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Herbivore. Il broutait des plantes en troupeau, jamais tout seul. Le Gorgosaure et le Daspletosaure rôdaient par là, alors la troupe restait bien groupée."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Ils se prévenaient comment, d'un danger ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Avec des cris puissants, qui portaient loin. Tout le troupeau se sauvait ensemble, dès le premier signal."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

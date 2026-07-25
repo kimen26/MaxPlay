@@ -139,6 +139,19 @@
 → **« tête bien armée / bien protégée »**
 [nom_etym OK — vérifié Wikipedia : eu + hoplo + kephale]
 
+## minmi — Minmi (Minmi paravertebra)
+- **Minmi** = PAS une racine grecque ni latine : nom d'un lieu, *Minmi Crossing* (Queensland, Australie), là où les os ont été trouvés
+- **para-** (latin/grec *para*) = à côté de
+- **-vertebra** (latin) = vertèbre
+→ **« le dino de Minmi Crossing »** (épithète *paravertebra* = les petits os bizarres à côté des vertèbres)
+[nom_etym OK — cas pédago intéressant : tous les noms ne viennent pas du grec. Anecdote : longtemps le nom de dinosaure le plus court du monde]
+
+## scutellosaurus — Scutellosaure (Scutellosaurus lawleri)
+- **scutello- / scutellum** (latin) = petit bouclier (diminutif de *scutum*, le bouclier)
+- **-saurus / -saure** (grec *sauros*) = lézard
+→ **« lézard au petit bouclier »** (plus de 300 petites plaques d'os sur le dos)
+[nom_etym OK — nom MIXTE : *scutellum* est latin, *sauros* est grec. L'épithète *lawleri* honore David Lawler, le découvreur]
+
 ## stegosaurus — Stégosaure (Stegosaurus ungulatus)
 - **stégo- / stegos** (grec) = toit
 - **-saurus / -saure** (grec *sauros*) = lézard
@@ -318,6 +331,30 @@
 - **-odon** (grec *odous*) = dent
 → **« deux tailles de dents »** (dents courtes ET longues)
 [nom_etym OK — note pédago : Dimetrodon n'est PAS un dinosaure mais un synapside du Permien, à signaler ailleurs si besoin]
+
+## edaphosaurus — Édaphosaure (Edaphosaurus pogonias)
+- **édapho- / edaphos** (grec) = le sol, le pavé, la pierre plate
+- **-saurus / -saure** (grec *sauros*) = lézard
+→ **« lézard aux dents en pavés »** (dents serrées en pavage sur le palais, pour broyer les plantes)
+[nom_etym OK — piège à éviter : le nom vient des DENTS pavées, pas d'un mode de vie au sol. Pas un dinosaure : cousin du Dimétrodon, mais herbivore]
+
+## gorgonops — Gorgonops (Gorgonops torvus)
+- **gorgon-** (grec *Gorgô*) = la Gorgone, monstre des vieilles histoires grecques au visage terrifiant
+- **-ops** (grec *ôps*) = visage, œil
+→ **« visage qui fait peur »** (les savants ont trouvé son crâne terrifiant)
+[nom_etym OK — pédago 4 ans : dire « un monstre des vieilles histoires », NE PAS raconter le mythe de Méduse (cheveux-serpents, changer en pierre) = trop effrayant et hors sujet]
+
+## lystrosaurus — Lystrosaure (Lystrosaurus murrayi)
+- **lystro- / lystron** (grec) = la pelle, la bêche
+- **-saurus / -saure** (grec *sauros*) = lézard
+→ **« lézard-pelle »** (museau large et tout plat comme une petite pelle)
+[nom_etym OK — pas un dinosaure. Le grand survivant de l'extinction Permien-Trias]
+
+## moschops — Moschops (Moschops capensis)
+- **moscho- / moschos** (grec) = le veau, le jeune bovin
+- **-ops** (grec *ôps*) = visage, œil
+→ **« visage de veau »** (grosse tête au crâne très épais)
+[nom_etym OK — prononciation : « Mos-kops », le *ch* grec (khi) se dit « k », règle identique à Brachiosaure. Pas un dinosaure. *capensis* = du Cap, en Afrique du Sud]
 
 ---
 

@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Carnivore. Il chassait seul, et mangeait de gros herbivores — c'était sa façon de vivre, tout simplement. Ce n'est pas un dinosaure, c'est un cousin encore plus proche de nous que l'Édaphosaure."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il attrapait ses proies comment ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Avec ses deux longues dents en sabre, longues comme ta main. Personne, à son époque, n'avait de dents pareilles."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

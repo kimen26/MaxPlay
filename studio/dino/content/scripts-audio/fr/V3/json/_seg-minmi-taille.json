@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 3 mètres de long — comme trois enfants de 4 ans allongés. Aussi grand qu'un enfant de 4 ans, debout. Et 300 kilos — aussi lourd qu'un ours brun."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Un ours brun, mais avec une armure ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Exactement. Une armure sur le dos ET sous le ventre — ça, c'est très rare chez les dinos blindés."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

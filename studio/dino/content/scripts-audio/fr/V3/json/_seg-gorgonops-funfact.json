@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ses pattes plus droites lui donnaient une vraie foulée, comme un chien qui court — alors que tous les autres, à son époque, rampaient encore sur des pattes écartées."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Il courait mieux que les autres."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[playful] Bien mieux. Et c'est un pas de plus vers nous : nos propres pattes, à nous, sont droites sous le corps."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

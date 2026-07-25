@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 9 mètres de long — aussi long qu'un camion. 2 mètres de haut — aussi haut qu'une porte. Et 4 mille kilos — aussi lourd qu'un hippopotame."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious][gasps] Aussi haut qu'une porte, avec un casque en plus ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Oui. Un grand herbivore à bec de canard, avec sa crête tout en haut du crâne."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

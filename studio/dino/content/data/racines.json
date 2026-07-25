@@ -3,8 +3,8 @@
     "source": "studio/dino/content/sources/etymo/_ETYMO-RACINES-50.md",
     "genere_par": "scripts/export/_etymo2racines.cjs",
     "note": "STRUCTURE seulement — la source de vérité reste le .md (fact-checké). Curation pédagogique du dico = dino-conseiller.",
-    "nb_racines": 69,
-    "nb_dinos": 50
+    "nb_racines": 76,
+    "nb_dinos": 56
   },
   "racines": [
     {
@@ -13,7 +13,7 @@
       "translitteration": "sauros",
       "sens": "lézard",
       "type": "racine",
-      "n": 29,
+      "n": 32,
       "variantes": [
         "-saura",
         "-saure",
@@ -36,16 +36,19 @@
         "corythosaurus",
         "cryolophosaurus",
         "dilophosaurus",
+        "edaphosaurus",
         "edmontosaurus",
         "giganotosaurus",
         "gorgosaurus",
         "kentrosaurus",
+        "lystrosaurus",
         "maiasaura",
         "mosasaurus",
         "pachycephalosaurus",
         "parasaurolophus",
         "plateosaurus",
         "psittacosaurus",
+        "scutellosaurus",
         "spinosaurus",
         "stegosaurus",
         "styracosaurus",
@@ -72,6 +75,24 @@
         "iguanodon",
         "pteranodon",
         "troodon"
+      ]
+    },
+    {
+      "cle": "-ops",
+      "langue": "grec",
+      "translitteration": "ôps",
+      "sens": "face, visage",
+      "type": "racine",
+      "n": 4,
+      "variantes": [
+        "-ops",
+        "ôps"
+      ],
+      "dinos": [
+        "gorgonops",
+        "moschops",
+        "protoceratops",
+        "triceratops"
       ]
     },
     {
@@ -178,21 +199,6 @@
       ]
     },
     {
-      "cle": "-ops",
-      "langue": "grec",
-      "translitteration": null,
-      "sens": "face, visage",
-      "type": "racine",
-      "n": 2,
-      "variantes": [
-        "-ops"
-      ],
-      "dinos": [
-        "protoceratops",
-        "triceratops"
-      ]
-    },
-    {
       "cle": "di-",
       "langue": "grec",
       "translitteration": null,
@@ -205,6 +211,22 @@
       "dinos": [
         "dilophosaurus",
         "dimetrodon"
+      ]
+    },
+    {
+      "cle": "para-",
+      "langue": "latin",
+      "translitteration": "para",
+      "sens": "à côté de",
+      "type": "racine",
+      "n": 2,
+      "variantes": [
+        "para",
+        "para-"
+      ],
+      "dinos": [
+        "minmi",
+        "parasaurolophus"
       ]
     },
     {
@@ -338,6 +360,20 @@
       ],
       "dinos": [
         "quetzalcoatlus"
+      ]
+    },
+    {
+      "cle": "-vertebra",
+      "langue": "latin",
+      "translitteration": null,
+      "sens": "vertèbre",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "-vertebra"
+      ],
+      "dinos": [
+        "minmi"
       ]
     },
     {
@@ -625,6 +661,21 @@
       ]
     },
     {
+      "cle": "édapho- / edaphos",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "le sol, le pavé, la pierre plate",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "edaphos",
+        "édapho-"
+      ],
+      "dinos": [
+        "edaphosaurus"
+      ]
+    },
+    {
       "cle": "Edmonto-",
       "langue": null,
       "translitteration": null,
@@ -698,6 +749,21 @@
       ]
     },
     {
+      "cle": "gorgon-",
+      "langue": "grec",
+      "translitteration": "Gorgô",
+      "sens": "la Gorgone, monstre des vieilles histoires grecques au visage terrifiant",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "Gorgô",
+        "gorgon-"
+      ],
+      "dinos": [
+        "gorgonops"
+      ]
+    },
+    {
       "cle": "iguano-",
       "langue": null,
       "translitteration": null,
@@ -724,6 +790,21 @@
       ],
       "dinos": [
         "kentrosaurus"
+      ]
+    },
+    {
+      "cle": "lystro- / lystron",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "la pelle, la bêche",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "lystro-",
+        "lystron"
+      ],
+      "dinos": [
+        "lystrosaurus"
       ]
     },
     {
@@ -757,6 +838,20 @@
       ]
     },
     {
+      "cle": "Minmi",
+      "langue": null,
+      "translitteration": null,
+      "sens": "PAS une racine grecque ni latine : nom d'un lieu, *Minmi Crossing* (Queensland, Australie), là où les os ont été trouvés",
+      "type": "nom_propre",
+      "n": 1,
+      "variantes": [
+        "Minmi"
+      ],
+      "dinos": [
+        "minmi"
+      ]
+    },
+    {
       "cle": "Mosa-",
       "langue": "latin",
       "translitteration": "Mosa",
@@ -769,6 +864,21 @@
       ],
       "dinos": [
         "mosasaurus"
+      ]
+    },
+    {
+      "cle": "moscho- / moschos",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "le veau, le jeune bovin",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "moscho-",
+        "moschos"
+      ],
+      "dinos": [
+        "moschops"
       ]
     },
     {
@@ -814,20 +924,6 @@
       ],
       "dinos": [
         "pachycephalosaurus"
-      ]
-    },
-    {
-      "cle": "para-",
-      "langue": "grec",
-      "translitteration": null,
-      "sens": "à côté de, proche de",
-      "type": "racine",
-      "n": 1,
-      "variantes": [
-        "para-"
-      ],
-      "dinos": [
-        "parasaurolophus"
       ]
     },
     {
@@ -916,6 +1012,21 @@
       ],
       "dinos": [
         "tyrannosaurus"
+      ]
+    },
+    {
+      "cle": "scutello- / scutellum",
+      "langue": "latin",
+      "translitteration": null,
+      "sens": "petit bouclier",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "scutello-",
+        "scutellum"
+      ],
+      "dinos": [
+        "scutellosaurus"
       ]
     },
     {
@@ -1547,6 +1658,52 @@
       ],
       "nom_etym": "ok"
     },
+    "minmi": {
+      "nom": "Minmi",
+      "full": "Minmi paravertebra",
+      "sens": "le dino de Minmi Crossing",
+      "racines": [
+        {
+          "racine": "Minmi",
+          "cle": "Minmi",
+          "langue": null,
+          "sens": "PAS une racine grecque ni latine : nom d'un lieu, *Minmi Crossing* (Queensland, Australie), là où les os ont été trouvés"
+        },
+        {
+          "racine": "para-",
+          "cle": "para-",
+          "langue": "latin",
+          "sens": "à côté de"
+        },
+        {
+          "racine": "-vertebra",
+          "cle": "-vertebra",
+          "langue": "latin",
+          "sens": "vertèbre"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "scutellosaurus": {
+      "nom": "Scutellosaure",
+      "full": "Scutellosaurus lawleri",
+      "sens": "lézard au petit bouclier",
+      "racines": [
+        {
+          "racine": "scutello- / scutellum",
+          "cle": "scutello- / scutellum",
+          "langue": "latin",
+          "sens": "petit bouclier"
+        },
+        {
+          "racine": "-saurus / -saure",
+          "cle": "-saure",
+          "langue": "grec",
+          "sens": "lézard"
+        }
+      ],
+      "nom_etym": "ok"
+    },
     "stegosaurus": {
       "nom": "Stégosaure",
       "full": "Stegosaurus ungulatus",
@@ -2162,6 +2319,86 @@
           "cle": "-odon",
           "langue": "grec",
           "sens": "dent"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "edaphosaurus": {
+      "nom": "Édaphosaure",
+      "full": "Edaphosaurus pogonias",
+      "sens": "lézard aux dents en pavés",
+      "racines": [
+        {
+          "racine": "édapho- / edaphos",
+          "cle": "édapho- / edaphos",
+          "langue": "grec",
+          "sens": "le sol, le pavé, la pierre plate"
+        },
+        {
+          "racine": "-saurus / -saure",
+          "cle": "-saure",
+          "langue": "grec",
+          "sens": "lézard"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "gorgonops": {
+      "nom": "Gorgonops",
+      "full": "Gorgonops torvus",
+      "sens": "visage qui fait peur",
+      "racines": [
+        {
+          "racine": "gorgon-",
+          "cle": "gorgon-",
+          "langue": "grec",
+          "sens": "la Gorgone, monstre des vieilles histoires grecques au visage terrifiant"
+        },
+        {
+          "racine": "-ops",
+          "cle": "-ops",
+          "langue": "grec",
+          "sens": "visage, œil"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "lystrosaurus": {
+      "nom": "Lystrosaure",
+      "full": "Lystrosaurus murrayi",
+      "sens": "lézard-pelle",
+      "racines": [
+        {
+          "racine": "lystro- / lystron",
+          "cle": "lystro- / lystron",
+          "langue": "grec",
+          "sens": "la pelle, la bêche"
+        },
+        {
+          "racine": "-saurus / -saure",
+          "cle": "-saure",
+          "langue": "grec",
+          "sens": "lézard"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "moschops": {
+      "nom": "Moschops",
+      "full": "Moschops capensis",
+      "sens": "visage de veau",
+      "racines": [
+        {
+          "racine": "moscho- / moschos",
+          "cle": "moscho- / moschos",
+          "langue": "grec",
+          "sens": "le veau, le jeune bovin"
+        },
+        {
+          "racine": "-ops",
+          "cle": "-ops",
+          "langue": "grec",
+          "sens": "visage, œil"
         }
       ],
       "nom_etym": "ok"

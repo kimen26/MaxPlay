@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ses ailes ouvertes faisaient 10 mètres d'un bout à l'autre — aussi large que six Papas couchés bout à bout. Debout, 3 mètres de haut — aussi haut qu'un panier de basket. Et 220 kilos — aussi lourd qu'un gros cochon."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious][gasps] Aussi haut qu'un panier de basket ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Oui. Mais sa vraie différence, c'est son cou : contrairement au Quetzalcoatlus, son cousin volant au cou tout fin et tout long, lui avait un cou COURT et épais, presque comme un taureau, avec une tête énorme au bout."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

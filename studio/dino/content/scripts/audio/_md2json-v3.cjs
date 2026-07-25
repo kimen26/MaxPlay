@@ -20,7 +20,12 @@ const NARR = voiceMap.voices.narrateur_h;
 const WEX  = voiceMap.voices.wex;
 
 const BLOCS = { 'A': 'nom', 'B': 'taille', 'C': 'regime', 'D': 'funfact' };
-const FILES = ['ceratopsiens', 'trex-lot1', 'trex-lot2', 'sauropodes', 'volants-marins', 'armes-bizarres', 'ornithopodes-raptors', 'megafaune', 'edmontonia'];
+// Scan du dossier V3 (au lieu d'une liste codée en dur qui rotait à chaque ajout de dino).
+// Exclut les fichiers de service : _RELECTURE-*, _FACTCHECK-*, CONSIGNES, diagnostic-*, etc.
+const FILES = fs.readdirSync(V3DIR)
+  .filter(f => f.endsWith('.md') && !f.startsWith('_') && !/^(CONSIGNES|diagnostic)/i.test(f))
+  .map(f => f.replace(/\.md$/, ''))
+  .sort();
 
 // id réels dinos-data.js pour validation
 let s = fs.readFileSync(path.join(__dirname, '..', '..', '..', '..', '..', 'site', 'js', 'dinos-data.js'), 'utf8');
@@ -77,6 +82,6 @@ for (const f of FILES) {
     if (got.length !== 4) missing.push(`${id}: blocs incomplets (${got.join(',') || 'AUCUN'})`);
   });
 }
-console.log(`Dinos traités: ${dinos}/51 · JSON générés: ${made} (attendu ${dinos * 4})`);
+console.log(`Fichiers V3 lus: ${FILES.length} · Dinos traités: ${dinos} · JSON générés: ${made} (attendu ${dinos * 4})`);
 if (missing.length) { console.log('\nPROBLÈMES:'); missing.forEach(x => console.log(' - ' + x)); }
 else console.log('Tous les blocs OK (4/dino).');

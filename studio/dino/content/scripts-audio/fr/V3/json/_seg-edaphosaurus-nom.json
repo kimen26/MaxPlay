@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] É-da-fo-saure. En grec ancien, « édaphos », c'est le pavé, la pierre plate du sol. Et « saure », c'est le lézard. Le lézard aux dents en pavés."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Des dents comme des pierres ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Plein de petites dents serrées les unes contre les autres, pour écraser les plantes. Il vivait au Texas, il y a 280 millions d'années — bien avant les dinosaures."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Alors ce n'est pas un dinosaure ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Non. C'est un cousin très, très ancien des animaux à poils — donc un peu de nous. Un seul danger rôdait par là, le Dimétrodon, qui vivait au même endroit."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

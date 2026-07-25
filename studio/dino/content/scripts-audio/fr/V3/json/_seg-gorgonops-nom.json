@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Gor-go-nops. En grec, « gorgone », c'est un monstre des vieilles histoires, si effrayant qu'on avait peur rien qu'à le voir. Et « ops », c'est le visage. Le visage qui fait peur."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Un vrai monstre ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Non, un chasseur bien réel ! Il vivait en Afrique du Sud, il y a 260 millions d'années, avant les tout premiers dinosaures."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il chassait quoi, par là ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] De gros herbivores. C'était le plus grand chasseur de son époque, sur toute la Terre."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

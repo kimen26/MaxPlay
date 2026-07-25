@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Ma-ia-saura. En grec, « maïa », c'est la bonne mère. Et « saura », c'est le lézard, au féminin. La bonne mère lézarde."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Une maman lézard."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactement. Elle vivait au Crétacé, il y a 76 millions d'années, dans le Montana, aux États-Unis, en immense colonie."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et il y avait des dangers, pour ses bébés ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Le Daspletosaure, un cousin du T-Rex, chassait les jeunes. Et le Troodon venait parfois voler des œufs dans les nids mal gardés."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

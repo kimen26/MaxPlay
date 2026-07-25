@@ -1,0 +1,20 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] 2 mètres 70 de long — comme trois enfants de 4 ans allongés. 1 mètre 10 de haut — aussi grand qu'un enfant de 4 ans. Et 410 kilos — aussi lourd qu'un poney."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Aussi lourd qu'un poney."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[confident] Oui. Gros et trapu, avec un crâne épais comme un casque."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

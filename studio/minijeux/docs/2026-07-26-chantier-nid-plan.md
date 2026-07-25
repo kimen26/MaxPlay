@@ -80,3 +80,26 @@ Perf : zéro nouvelle requête réseau (assets existants), état en localStorage
 - **Specs harnais cassées en masse par le nouvel écran de fin** → P2 inclut la MAJ des asserts `end-wrap` dans les specs impactées, AVANT push.
 - **Conflit sessions Kimi sur mur.js/mur.css** → P3 committé immédiatement, chemins explicites, vérif HEAD.
 - **Régression figées** : chaque agent lit `figees/mj-XX.md` ; l'écran de fin étant transverse, vérifier qu'aucune figée ne grave l'ancien écran (le cas échéant → alerte 🚨, pas de passage en force).
+
+---
+
+## AVENANT P0 — validation conseiller (2026-07-26)
+
+AVIS : GO avec ajustements. INTEGRES au plan :
+1. **Descente de niveau SUPPRIMEE** (anti-pattern : stars.js "jamais de perte", punitif silencieux, signal inverse fatigue). Remplacee par le mix intra-manche existant (mj-04 LOI : 4 niveau courant + 4 niveaux inferieurs) module en temps reel. Montee : >=80 % sur les **3** dernieres parties (pas 2, la 1ere = decouverte).
+2. **Cap 3 oeufs/jour SUPPRIME** (penalite punitive + streak deguise "reviens demain" interdit avant 7 ans + contre-mesure d un probleme hypothetique). Anti-grinding structurel : niveau qui suit la competence + frise + tirage pondere. Si grinding observe au playtest : satiete narrative (eclosion 1/visite au Mur), jamais de refus.
+3. **Serie oeuf dore = 3 parties dans la meme session (fenetre ~30 min)**, plus "sans retour Maison" (contradiction avec l eclosion sur le Mur).
+4. **Fin de collection prevue des l API** : tout possede -> hatch() retourne un doublon-cadeau (offrable a un copain du Mur, V ulterieure) — l API collection.js reserve le cas des P1.
+5. **Decision 6 (calibrage nombres manipulation decomposee) SORTIE du chantier** -> ticket pedagogique separe (touche _PALIERS-DIFFICULTE + figees mj-04/05/13c/26/35/43/45, validation propre).
+6. **Retrocompatibilite specs par construction** : garder .end-wrap/.end-btns/#badgeZone, ajouter data-act="replay|next|home" ; P2 se cloture par sweep COMPLET des 53 specs + audit-gabarit all AVANT push (pas en P4).
+7. **Sequencage ecran de fin** : oeuf (~1 s) PUIS etoile eventuelle (jamais en parallele), boutons tapables < 3 s.
+8. **Migration** : nid demarre VIDE, niveau calcule sur l historique tracker existant (pas de rattrapage retroactif d oeufs).
+9. **Phasage revise** : P1 (moteur) + P3 (nid-ui) en parallele contre l API arretee ; P2 (mj-golden, 30 jeux) SEUL et sequentiel apres.
+
+CONFIRMES contre alternative : oeuf par partie terminee (vs fragments par bonne reponse — score visible interdit STANDARD-MJ) ; eclosion sur le Mur ; etoile bonus muet ; moteur theme-neutre.
+
+## 🚨 CHANGEMENT DE RÈGLE FIGÉE PROPOSÉ — EN ATTENTE PAPA YANN
+
+Le contrat **"Niveau courant = Stars.get(id) + 1"** est grave LOI dans figees/mj-04.md (+ derives dans mj-01/05/13a/13c/14/15/16/18/19/20/34) et STANDARD-MJ § etoiles/niveaux (valide PY 2026-06-11, retouche 2026-07-14).
+**Proposition** : Niveau = **max(Stars.get(id), niveauCompetence(tracker))**, plafonne maxStars. L etoile devient un PLANCHER (aucune regression possible), la competence peut faire monter plus vite. Assouplissement, pas renversement.
+**P2 NE DEMARRE PAS sans defigeage explicite PY.** P1+P3 (moteur + nid-ui) ne touchent aucune figee -> lances.

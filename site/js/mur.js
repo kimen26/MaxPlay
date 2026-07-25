@@ -2,9 +2,15 @@
 //  mur.js — « Le Mur des Copains » (menu enfant MaxPlay, spec 2026-07-19)
 //
 //  Remplace le menu accordéon d'index v2 (conservé pour l'espace parents).
-//  - 5 copains-domaines, vignettes CSS/SVG animées (zéro image générée).
-//  - Tritri, hôte : bloc Découverte (délaissé · nouveau · mise en avant,
-//    rotation déterministe par date) + bloc Préférés (pins.js).
+//  - « La file » (choix PY 2026-07-22, POC v1-file) : les copains sont des
+//    RANGÉES compactes empilées. Entrée au repaire = DRAG UNIQUEMENT :
+//    on attrape le dino de la rangée et on le tire vers la droite (il se
+//    dandine et grossit) — pas de tap, le geste EST le bouton.
+//  - Avatar du profil = hôte du haut (bulle guide) ; Tritri n'est plus hôte.
+//  - T-Rex = dernière rangée dorée ; le portail encyclo vit dans son repaire
+//    (plus de bannière doublon en bas du Mur).
+//  - Découverte (délaissé · nouveau · mise en avant, rotation par date) +
+//    Préférés (pins.js). Vignettes CSS/SVG animées (zéro image générée).
 //  - Repaires : séquence 2★ (ORDRE local au repaire — diffère des catégories
 //    de catalog.js, donc pas Unlock.isUnlocked ici). Le flag admin et le
 //    seuil ★ restent lus depuis unlock.js (Unlock.isAdminUnlockAll/UNLOCK_STARS)
@@ -35,14 +41,6 @@
 
   var COPAINS = [
     {
-      id: 'trex', nom: 'Roi T-Rex', domaine: 'les dinos',
-      tete: avatarTete('trex'),
-      phrase: 'Grrr… bienvenue dans mon royaume ! Ici, on part à la chasse aux dinosaures !',
-      floats: 'ombres',
-      ency: true, // portail encyclopédie aussi en tête de repaire
-      jeux: ['mj-24', 'mj-28', 'mj-31', 'mj-30', 'mj-32']
-    },
-    {
       id: 'spino', nom: 'Spino', domaine: 'compter',
       tete: avatarTete('spino'),
       phrase: 'Splish splash ! Avec moi, on compte les poissons, les caisses et plein de trésors !',
@@ -69,6 +67,15 @@
       phrase: 'Tadada ! Je chante les couleurs et je voyage autour du monde. Tu m\'accompagnes ?',
       floats: 'drapeaux',
       jeux: ['mj-21', 'mj-20', 'mj-22', 'mj-33', 'mj-12']
+    },
+    {
+      // T-Rex = DERNIÈRE rangée (dorée) : son repaire porte le portail encyclo
+      id: 'trex', nom: 'Roi T-Rex', domaine: 'les dinos',
+      tete: avatarTete('trex'),
+      phrase: 'Grrr… bienvenue dans mon royaume ! Ici, on part à la chasse aux dinosaures !',
+      floats: 'ombres',
+      ency: true, // portail encyclopédie aussi en tête de repaire
+      jeux: ['mj-24', 'mj-28', 'mj-31', 'mj-30', 'mj-32']
     }
   ];
 
@@ -140,11 +147,10 @@
     'mj-12': '<div class="vig vig-son"><i></i><i></i><i></i><i></i><i></i></div>'
   };
 
-  // ── Éléments flottants des vignettes copains ───────────────────────
+  // ── Éléments flottants des rangées copains (discrets, derrière) ────
   var FLOAT_SLOTS = [
-    { left: '7%',  top: '10%' }, { left: '76%', top: '7%'  },
-    { left: '4%',  top: '55%' }, { left: '79%', top: '50%' },
-    { left: '10%', top: '33%' }, { left: '74%', top: '30%' }
+    { left: '36%', top: '14%' }, { left: '56%', top: '58%' },
+    { left: '72%', top: '20%' }, { left: '26%', top: '62%' }
   ];
   function floatHtml(kind, i) {
     var slot = FLOAT_SLOTS[i % FLOAT_SLOTS.length];
@@ -334,16 +340,68 @@
     if (!grid) return;
     grid.innerHTML = COPAINS.map(function (c) {
       var floats = '';
-      for (var i = 0; i < 6; i++) floats += floatHtml(c.floats, i);
+      for (var i = 0; i < 4; i++) floats += floatHtml(c.floats, i);
       var stars = copainStars(c);
-      return '<div class="copain" data-copain="' + c.id + '" role="button" aria-label="' + c.nom + ' — ' + c.domaine + '">' +
+      return '<div class="copain' + (c.ency ? ' or' : '') + '" data-copain="' + c.id + '" aria-label="' + c.nom + ' — ' + c.domaine + '">' +
         floats +
-        '<img class="c-tete' + (c.rond ? ' rond' : '') + '" src="' + c.tete + '" alt="' + c.nom + '">' +
-        '<span class="c-nom">' + c.nom + '</span>' +
-        '<span class="c-domaine">' + c.domaine + '</span>' +
-        (stars ? '<span class="c-stars">★ ' + stars + '</span>' : '') +
+        '<img class="c-tete" src="' + c.tete + '" alt="' + c.nom + '" draggable="false">' +
+        '<div class="c-qui">' +
+          '<span class="c-nom">' + c.nom + '</span>' +
+          '<span class="c-domaine">' + c.domaine + '</span>' +
+          (stars ? '<span class="c-stars">★ ' + stars + '</span>' : '') +
+        '</div>' +
+        '        <span class="c-piste">›››</span>' +
       '</div>';
     }).join('');
+    // Entrée au repaire = DRAG UNIQUEMENT : tirer le dino vers la droite.
+    Array.prototype.forEach.call(grid.querySelectorAll('.copain'), function (el) {
+      armDrag(el.querySelector('.c-tete'), el, el.dataset.copain);
+    });
+  }
+
+  // Le geste signature : on attrape le dino, on le tire → il se dandine
+  // (rotation oscillante + petits sauts) et grossit. Passé ~30 % de la
+  // rangée, il gambade hors de l'écran et le repaire s'ouvre. Sinon,
+  // retour élastique. Aucun tap n'ouvre un repaire (choix PY 2026-07-22).
+  function armDrag(dino, rang, copainId) {
+    if (!dino) return;
+    var x0 = null, dx = 0, raf = null;
+    function render() {
+      var wobble = Math.sin(dx * 0.05) * Math.min(12, dx * 0.07);
+      var grow = 1 + Math.min(0.8, dx / 220);
+      var lift = Math.abs(Math.sin(dx * 0.05)) * Math.min(10, dx * 0.06);
+      dino.style.transform = 'translate(' + dx + 'px,' + (-lift) + 'px) rotate(' + wobble + 'deg) scale(' + grow + ')';
+      dino.style.zIndex = 5;
+    }
+    dino.addEventListener('pointerdown', function (e) {
+      x0 = e.clientX; dx = 0;
+      dino.classList.add('drag');
+      try { dino.setPointerCapture(e.pointerId); } catch (err) {}
+    });
+    dino.addEventListener('pointermove', function (e) {
+      if (x0 === null) return;
+      dx = Math.max(-16, e.clientX - x0);
+      if (!raf) raf = requestAnimationFrame(function () { render(); raf = null; });
+    });
+    function fin() {
+      if (x0 === null) return;
+      var seuil = rang.clientWidth * 0.30;
+      x0 = null; dino.classList.remove('drag');
+      if (dx > seuil) {
+        dino.style.transition = 'transform .3s ease-in';
+        dino.style.transform = 'translate(' + rang.clientWidth + 'px,0) rotate(10deg) scale(1.8)';
+        setTimeout(function () { openRepaire(copainId); }, 240);
+        setTimeout(function () { dino.style.transition = ''; dino.style.transform = ''; dino.style.zIndex = ''; }, 700);
+      } else {
+        dino.style.transition = 'transform .35s cubic-bezier(.3,1.6,.5,1)';
+        dino.style.transform = ''; dino.style.zIndex = '';
+        setTimeout(function () { dino.style.transition = ''; }, 380);
+      }
+      dx = 0;
+    }
+    dino.addEventListener('pointerup', fin);
+    dino.addEventListener('pointercancel', fin);
+    dino.addEventListener('dragstart', function (e) { e.preventDefault(); });
   }
 
   // Portail encyclopédie (bannière spéciale) — cible = dev-dinos.html?v=7,
@@ -360,7 +418,7 @@
   function renderPortails() {
     var unlocked = false;
     try { unlocked = global.Unlock && Unlock.isUnlocked('dinos'); } catch (e) {}
-    ['ency-portail', 'rep-portail-trex'].forEach(function (id) {
+    ['rep-portail-trex'].forEach(function (id) {
       var el = $(id);
       if (!el) return;
       el.classList.add('portail');
@@ -514,9 +572,8 @@
     else show('mur');
 
     document.addEventListener('click', function (ev) {
-      // copain → repaire
-      var cop = ev.target.closest('.copain');
-      if (cop && cop.dataset.copain) { openRepaire(cop.dataset.copain); return; }
+      // (copain → repaire : PAS de tap — entrée par drag du dino uniquement,
+      //  voir armDrag. Choix PY 2026-07-22.)
       // retour au Mur
       if (ev.target.closest('.rep-back')) { showMur(); return; }
       // portail encyclopédie (Mur + repaire T-Rex)

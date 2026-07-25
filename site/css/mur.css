@@ -13,12 +13,9 @@
 
 .mur-page { max-width:560px; margin:0 auto; min-height:100dvh; display:flex; flex-direction:column; }
 
-/* ── TRITRI, hôte du Mur ──────────────────────────────────────────── */
+/* ── TRITRI n'est plus hôte (2026-07-22) : l'avatar du profil porte la
+   bulle. La section .tritri ne garde que les blocs Découverte/Préférés. */
 .tritri { padding:6px 16px 4px; }
-.tritri-head { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
-.tritri-head img { width:54px; height:54px; object-fit:contain; filter:drop-shadow(0 3px 6px rgba(0,0,0,.4)); }
-.tritri-head b { font-family:'Fredoka One'; font-weight:400; font-size:17px; display:block; }
-.tritri-head span { font-size:12px; font-weight:800; color:var(--ink-3); }
 
 .mur-bloc { background:var(--card); border:1px solid var(--line); border-radius:var(--r-card); padding:11px 12px 13px; margin-bottom:10px; }
 .mur-bloc-titre { font-family:'Fredoka One'; font-weight:400; font-size:14.5px; margin:0 2px 9px; color:var(--ink-2); }
@@ -35,33 +32,51 @@
 .mur-mini:active .vig { transform:scale(.94); }
 .mur-mini .vig { transition:transform .15s; }
 
-/* ── LES 5 COPAINS ────────────────────────────────────────────────── */
-.copains-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; padding:6px 16px 12px; }
-/* 5e copain seul sur sa ligne → centré */
-.copains-grid .copain:last-child:nth-child(odd) { grid-column:1 / -1; width:calc(50% - 6px); justify-self:center; }
+/* ── LA FILE DES COPAINS (choix PY 2026-07-22, POC v1-file) ──────────
+   Rangées compactes empilées. Entrée = drag du dino vers la droite
+   (il se dandine et grossit) — pas de tap. T-Rex = rangée dorée. */
+.copains-head { display:flex; align-items:baseline; justify-content:space-between; padding:8px 20px 8px; }
+.copains-head h2 { font-family:'Fredoka One'; font-weight:400; font-size:16px; color:var(--ink); }
+.copains-head span { font-size:11px; font-weight:800; color:var(--ink-3); }
+.file { display:flex; flex-direction:column; gap:9px; padding:0 16px 12px; }
 .copain {
-  position:relative; cursor:pointer; overflow:hidden;
+  position:relative; height:70px; border-radius:18px; overflow:hidden;
   background:linear-gradient(160deg, var(--card-2), var(--card));
-  border:1px solid var(--line); border-radius:22px;
-  aspect-ratio:1; display:flex; flex-direction:column;
-  align-items:center; justify-content:center;
-  transition:transform .15s;
+  border:1px solid var(--line);
+  display:flex; align-items:center; padding:0 12px; gap:10px;
+  user-select:none; touch-action:pan-y;
 }
-.copain:active { transform:scale(.95); }
+.copain.or {
+  background:linear-gradient(160deg,#41240c,#1c0f06);
+  border:1.5px solid var(--gold);
+  box-shadow:0 0 18px rgba(255,209,102,.14);
+}
 .copain .c-tete {
-  width:62%; height:62%; object-fit:contain; z-index:2;
-  filter:drop-shadow(0 6px 12px rgba(0,0,0,.45));
-  animation:copain-respi 5s ease-in-out infinite;
+  height:54px; width:62px; object-fit:contain; flex-shrink:0; z-index:2;
+  filter:drop-shadow(0 4px 8px rgba(0,0,0,.45));
+  cursor:grab; touch-action:none;
+  animation:copain-dandine 2.6s ease-in-out infinite; transform-origin:50% 90%;
 }
-.copain .c-tete.rond { border-radius:50%; object-fit:cover; width:58%; height:58%; }
-@keyframes copain-respi { 0%,100%{transform:scale(1);} 50%{transform:scale(1.035);} }
-.copain .c-nom { font-family:'Fredoka One'; font-weight:400; font-size:16px; z-index:2; line-height:1.1; }
-.copain .c-domaine { font-size:11px; font-weight:800; color:var(--ink-3); z-index:2; }
-.copain .c-stars { position:absolute; top:8px; right:10px; font-size:11px; font-weight:900; color:var(--gold); z-index:2;
-  background:rgba(0,0,0,.35); border-radius:999px; padding:3px 8px; }
+.copain .c-tete.drag { animation:none; cursor:grabbing; }
+@keyframes copain-dandine {
+  0%,100% { transform:rotate(-3deg); } 25% { transform:rotate(3deg) translateY(-2px); }
+  50% { transform:rotate(-3deg); } 75% { transform:rotate(3deg) translateY(-2px); }
+}
+.copain .c-qui { flex:1; min-width:0; z-index:2; pointer-events:none; }
+.copain .c-nom { font-family:'Fredoka One'; font-weight:400; font-size:15px; display:block; line-height:1.1; }
+.copain.or .c-nom { color:var(--gold); }
+.copain .c-domaine { font-size:10.5px; font-weight:800; color:var(--ink-3); display:block; }
+.copain .c-stars { display:block; font-size:10px; font-weight:900; color:var(--gold); letter-spacing:1px; margin-top:2px; }
 
-/* éléments flottants autour de la tête */
-.c-float { position:absolute; z-index:1; pointer-events:none; animation:mur-flotte 6s ease-in-out infinite; opacity:.85; }
+/* flèches qui courent → invite au geste (glyphes texte = rendu fiable) */
+.c-piste { position:absolute; right:12px; top:50%; transform:translateY(-50%);
+  z-index:2; pointer-events:none;
+  font-family:'Fredoka One'; font-size:19px; color:var(--gold);
+  animation:copain-court 1.2s ease-in-out infinite; }
+@keyframes copain-court { 0%,100%{opacity:.35;} 50%{opacity:1;} }
+
+/* éléments flottants dans la rangée (petits, discrets, derrière) */
+.c-float { position:absolute; z-index:1; pointer-events:none; animation:mur-flotte 6s ease-in-out infinite; opacity:.38; }
 .c-float.f2 { animation-duration:7.3s; animation-delay:-2.1s; }
 .c-float.f3 { animation-duration:5.2s; animation-delay:-3.4s; }
 .c-float.f4 { animation-duration:8.1s; animation-delay:-1.2s; }
@@ -69,16 +84,16 @@
 .c-float.f6 { animation-duration:7.7s; animation-delay:-.7s; }
 @keyframes mur-flotte {
   0%,100% { transform:translateY(0) rotate(-4deg); }
-  50%     { transform:translateY(-9px) rotate(5deg); }
+  50%     { transform:translateY(-6px) rotate(5deg); }
 }
-.c-float .f-chiffre { font-family:'Fredoka One'; font-size:21px; color:var(--gold); text-shadow:0 2px 6px rgba(0,0,0,.5); }
-.c-float .f-lettre { font-family:'Cursif', cursive; font-size:27px; color:#a8d8ff; text-shadow:0 2px 6px rgba(0,0,0,.5); }
-.c-float img.f-ombre { width:42px; height:42px; object-fit:contain; opacity:.7;
+.c-float .f-chiffre { font-family:'Fredoka One'; font-size:15px; color:var(--gold); text-shadow:0 2px 6px rgba(0,0,0,.5); }
+.c-float .f-lettre { font-family:'Cursif', cursive; font-size:19px; color:#a8d8ff; text-shadow:0 2px 6px rgba(0,0,0,.5); }
+.c-float img.f-ombre { width:22px; height:22px; object-fit:contain; opacity:.7;
   filter:invert(.62) brightness(1.15) drop-shadow(0 2px 4px rgba(0,0,0,.6)); }
-.c-float svg { display:block; }
+.c-float svg { display:block; width:16px; height:16px; }
 
 /* mini drapeaux CSS (Para) */
-.f-flag { display:block; width:26px; height:18px; border-radius:3px; overflow:hidden; box-shadow:0 2px 5px rgba(0,0,0,.5); position:relative; }
+.f-flag { display:block; width:18px; height:12px; border-radius:3px; overflow:hidden; box-shadow:0 2px 5px rgba(0,0,0,.5); position:relative; }
 .f-flag.france  { background:linear-gradient(90deg,#0055a4 33%,#fff 33% 66%,#ef4135 66%); }
 .f-flag.italie  { background:linear-gradient(90deg,#009246 33%,#fff 33% 66%,#ce2b37 66%); }
 .f-flag.espagne { background:linear-gradient(180deg,#aa151b 25%,#f1bf00 25% 75%,#aa151b 75%); }
@@ -375,5 +390,5 @@
 .btn-cancel { background:rgba(255,255,255,.08); color:var(--ink); }
 
 @media (prefers-reduced-motion: reduce) {
-  .c-float, .copain .c-tete, .vig-lampe::after, .vig-temps .v-aiguille, .vig-rouage svg, .vig-son i { animation:none !important; }
+  .c-float, .copain .c-tete, .c-piste, .vig-lampe::after, .vig-temps .v-aiguille, .vig-rouage svg, .vig-son i { animation:none !important; }
 }

@@ -1443,3 +1443,12 @@ Corrections PY appliquées : lignes 2-3× plus petites · **seul le dino se dép
 ## 2026-07-25 — Bug ombre geante + tour factorisation quick wins
 
 Bug menu PY (ombre Diplodocus geante) : cause = vignette mj-30 jeu-du-jour, cache desync mur.js/mur.css -> filet CSS generique .vig img plafonne (447c76cd). Tour factorisation : 3 analyses lecture seule puis 3 agents implementation (0f8b2116, 33 fichiers, -218 lignes nettes) : MJKit.shuffle/pickDistinct (19 jeux, shuffle biaise corrige mj-13a/b/c/15/16, TDZ mj-13c), MJKit.PHONEMES/sayPhoneme (50/51/52 unifies), speak() bruts -> TTS.speak (22/43/44/45), sndOk -> sounds.js (mj-08/09 2e AudioContext supprime), .htitle locaux supprimes (42/43/44/45/47), confetti maison -> MaxFX (11/17/21/37/39). Harnais verts partout + verif croisee. GROS CHANTIERS EN ATTENTE ARBITRAGE PY (backlog 2026-07-25) : QCM->MJKit.qcm x19 + MJCompte, PlayAudio.cue, showEnd sans piste, DnD partage, trilogie 13 LIGNES+fonds, mj-01/13b ancien gabarit.
+
+## 2026-07-25 — Mur « La file » livré en prod (V1 choisie par PY)
+
+Choix PY : variante V1 « La file » + entrée au repaire UNIQUEMENT au drag du dino (seuil 30% de la rangée, retour élastique sinon, sortie gambadante puis openRepaire). Click-to-open supprimé.
+- mur.js : COPAINS spino→galli→velo→para→trex (dernier, doré encyclo) ; rangées 70px (floats ×4, img.c-tete drag, .c-qui, .c-piste ›››) ; renderPortails réduit au trex.
+- mur.css : .file/.copain/.c-tete/.c-qui/.c-piste (doré, anim copain-court) ; reduced-motion étendu.
+- index.html : header profil fusionné (avatar+pseudo+⭐ total+profil-bulle « Tire un copain… »), barre niveau retirée du header, .tritri-head supprimé, #ency-portail retiré du DOM, .copains-head + #copains-grid.file.
+- Fausse alerte debug piste invisible : viewport headless min 504 CSS (Windows scaling) → captures 420px clippaient le bord droit ; la piste a toujours été rendue (preuve computed style). Screenshot final 504px OK.
+- Rappel : voix/TTS menus en attente GO PY. Pistes notées : relique au-dessus de l'étoile (plus tard), vignettes copains animées sans génération (chiffres/lettres/ombres/drapeaux autour de la tête).

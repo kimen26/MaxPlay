@@ -1452,3 +1452,14 @@ Choix PY : variante V1 « La file » + entrée au repaire UNIQUEMENT au drag du 
 - index.html : header profil fusionné (avatar+pseudo+⭐ total+profil-bulle « Tire un copain… »), barre niveau retirée du header, .tritri-head supprimé, #ency-portail retiré du DOM, .copains-head + #copains-grid.file.
 - Fausse alerte debug piste invisible : viewport headless min 504 CSS (Windows scaling) → captures 420px clippaient le bord droit ; la piste a toujours été rendue (preuve computed style). Screenshot final 504px OK.
 - Rappel : voix/TTS menus en attente GO PY. Pistes notées : relique au-dessus de l'étoile (plus tard), vignettes copains animées sans génération (chiffres/lettres/ombres/drapeaux autour de la tête).
+
+## 2026-07-25 — Playtest Max : retours + double analyse gamification
+
+LIVRE AVANT PLAYTEST (deja commite 4edbd1af) : Mur « La file » (entree drag-only, header avatar fusionne, T-Rex dore encyclo), POC design-compte/lecture et doc commentaires PY precedemment pousses.
+
+RETOURS PLAYTEST (dictes PY, traces dans backlog.md L2338) : navigation pas claire · sortie avant la fin · trop facile · aimant = encyclo dino (nouveau style apprecie).
+
+DOUBLE ANALYSE, MEME CONCLUSION — « jouer doit produire du dino » :
+- game-conseiller (Opus) : rapport complet docs/2026-07-25-brainstorm-gamification.md — diagnostic structurel (etoile sans-faute binaire = anti-pattern ; difficulte verrouillee par etoiles = enferme niveau 1) + boucle FOSSILES (fragment par bonne reponse -> collection encyclo) + 3 questions Q1/Q2/Q3 a trancher PY.
+- Kimi (cette session) : propositions convergentes — Nid d'oeufs (boucle visible, eclosion surprise = variante peau des fossiles), frise-chemin par copain (~D1 expeditions), mission du jour + relique copain (~B3 fouille + relique notee 2026-07-22), ecran victoire 3 boutons « Encore / La suite / Maison » (~A3), vignettes picto parlantes (~C1).
+EN ATTENTE : arbitrage PY sur Q1/Q2/Q3 (voir fin du rapport gamification) + choix peau oeufs vs fossiles. Aucun dev gamification lance.

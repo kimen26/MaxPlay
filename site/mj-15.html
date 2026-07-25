@@ -198,6 +198,7 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 <script src="js/lang.js"></script>
   <script src="js/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
+<script src="js/mj-kit.js"></script>
 <script src="js/mj-shell.js"></script>
 <script>
 MJ.ready(function () {
@@ -267,9 +268,7 @@ function isImpair(num) {
 }
 
 // ── Utilitaires ────────────────────────────────────────────────────────────
-function shuffle(arr) {
-  return [...arr].sort(() => Math.random() - 0.5);
-}
+const shuffle = MJKit.shuffle;
 
 function pick(arr, n) {
   return shuffle(arr).slice(0, n);

@@ -73,6 +73,7 @@
 </div>
 
 <script src="js/intro-splash.js"></script>
+<script src="js/mj-kit.js"></script>
 <script src="js/mj-shell.js"></script>
 <script>
 MJ.ready(function () {
@@ -147,7 +148,7 @@ MJ.ready(function () {
   const NIVEAU_TO_LV = [[0, 1], [2], [3, 4]];
   const level = Math.max(0, Math.min(2, (window.Stars ? Stars.get('mj-23') : 0)));
 
-  function shuffle(a) { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
+  const shuffle = MJKit.shuffle;
   function rnd(a, b) { return a + Math.floor(Math.random() * (b - a + 1)); }
   function buildSchedule() {
     const hard = Array(4).fill(level);

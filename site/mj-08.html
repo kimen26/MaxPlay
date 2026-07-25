@@ -292,23 +292,8 @@
     let totalItems = 0;
     let gameComplete = false;
 
-    // ── Audio singleton ──
-    let _ac = null;
-    function getAC() {
-      if (!_ac || _ac.state === 'closed') _ac = new (window.AudioContext || window.webkitAudioContext)();
-      if (_ac.state === 'suspended') _ac.resume();
-      return _ac;
-    }
-    function sndOk() {
-      try {
-        const ac = getAC(), t = ac.currentTime;
-        const o = ac.createOscillator(), g = ac.createGain();
-        o.connect(g); g.connect(ac.destination);
-        o.type = 'sine'; o.frequency.value = 660;
-        g.gain.setValueAtTime(0.25, t); g.gain.exponentialRampToValueAtTime(0.01, t+0.3);
-        o.start(t); o.stop(t+0.3);
-      } catch(e) {}
-    }
+    // ── Audio ── getAC()/sndOk() viennent de js/sounds.js (singleton partagé,
+    // chargé par mj-shell.js) — ne pas redéclarer localement (2026-07-25).
     function sndDing() {
       try {
         const ac = getAC(), t = ac.currentTime;

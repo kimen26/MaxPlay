@@ -129,6 +129,7 @@
 
 <!-- LE GABARIT : charge tout le cadre standard (thème, tracking, cloud, célébrations) -->
 <script src="js/mj-shell.js"></script>
+<script src="js/mj-kit.js"></script>
 <script>
   MJ.ready(function () {
   'use strict';
@@ -141,14 +142,9 @@
   const GAME_ID = 'mj-51';
 
   // Le SON de chaque lettre (dit au rangement — jamais le nom d'école).
-  // Graphie harmonisée avec mj-50 (source de vérité) : une SEULE occurrence
-  // par lettre — la répétition x3 (mmm/sss…) fait bafouiller le TTS FR sur
-  // les consonnes non-continues (retour Papa Yann 2026-07-21).
-  const SONS = {
-    a:'a', o:'o', i:'i', e:'eu', u:'u',
-    m:'èm', s:'ès', l:'èl', r:'èr',
-    b:'be', d:'de', h:'h muet', k:'ke', p:'pe', q:'ke',
-  };
+  // Table SOURCE DE VÉRITÉ partagée : MJKit.PHONEMES (site/js/mj-kit.js,
+  // harmonisée avec mj-50/mj-52 — migration 2026-07-25).
+  const SONS = MJKit.PHONEMES;
 
   // Paliers 🔒 (même logique que mj-09 : niveau = min(2, Stars.get))
   const NIVEAUX = [
@@ -205,7 +201,7 @@
 
   // ── Audio ──
   function sayPhoneme(lettre) {
-    try { if (window.TTS && TTS.speak) { TTS.speak(SONS[lettre] || lettre, { rate: 0.6, priority: true }); return; } } catch (e) {}
+    if (window.MJKit && MJKit.sayPhoneme) MJKit.sayPhoneme(lettre);
   }
   function sndOk() { try { sndDing(); } catch (e) {} }
   function sndKo() { try { sndBuzz(); } catch (e) {} try { playErrorSound(); } catch (e) {} }

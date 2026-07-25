@@ -107,6 +107,7 @@
 
   <script src="js/lang.js"></script>
   <script src="js/dinos-audio-manifest.js"></script>
+  <script src="js/mj-kit.js"></script>
   <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
   <script src="js/mj-shell.js"></script>
   <script>
@@ -208,7 +209,7 @@
     let dragState = null;
     let currentDinoAudio = null; // réf unique : stoppe le son en cours avant d'en jouer un nouveau
 
-    function shuffle(a){ a=[...a]; for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+    const shuffle = MJKit.shuffle;
     function speak(t){ TTS.speak(t,{pitch:1.05,priority:true}); }
     function fr(n){ return (Math.round(n*10)/10).toString().replace('.', ' virgule '); }
 

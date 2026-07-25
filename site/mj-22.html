@@ -177,10 +177,7 @@ function renderMap() {
 }
 
 function speak(txt) {
-  const u = new SpeechSynthesisUtterance(txt);
-  u.lang='fr-FR'; u.rate=0.9; u.pitch=1.2;
-  speechSynthesis.cancel();
-  speechSynthesis.speak(u);
+  try { if (window.TTS && TTS.speak) TTS.speak(txt, { rate: 0.9, pitch: 1.2, priority: true }); } catch (e) {}
 }
 
 function selectCountry(iso) {

@@ -193,15 +193,6 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   50% { transform:translateX(-50%) scale(1.2); }
 }
 
-/* Confettis */
-.confetti {
-  position:absolute; width:10px; height:10px;
-  pointer-events:none; animation:confettiFall 1.2s ease-out forwards;
-}
-@keyframes confettiFall {
-  0% { transform:translate(0,0) rotate(0); opacity:1; }
-  100% { transform:translate(var(--dx),var(--dy)) rotate(360deg); opacity:0; }
-}
 
 .sparkle {
   position:absolute; font-size:1.4rem; pointer-events:none;
@@ -671,7 +662,7 @@ function repairAnim(bus, panne) {
 function finishBus(bus) {
   score++;
   scoreEl.textContent = score;
-  fireConfetti(bus);
+  if (window.MaxFX) MaxFX.randomPoint(bus, scoreEl, { result: 'green' });
   // Petit bruit rigolo de moteur qui démarre quand le bus part (type Trilibus)
   if (typeof sndMoteur === 'function') sndMoteur();
   if (typeof sndKlaxon === 'function') setTimeout(() => sndKlaxon(), 250);
@@ -706,39 +697,6 @@ function showEnd() {
   if (window.MaxFX) {
     const perfect = score === TOTAL_BUS;
     MaxFX.finalStar(ov, { style: perfect ? 'cinematic' : 'breathe', label: perfect ? 'SANS-FAUTE !' : '' });
-  }
-}
-
-function fireConfetti(bus) {
-  const colors = ['#ffe066','#e94560','#00c47a','#4a90e2','#f28cad','#ff9800','#9c27b0'];
-  const r = bus.getBoundingClientRect();
-  const zr = busZone.getBoundingClientRect();
-  const cx = r.left - zr.left + r.width/2;
-  const cy = r.top - zr.top + r.height/2;
-  for (let i = 0; i < 48; i++) {
-    const c = document.createElement('div');
-    c.className = 'confetti';
-    c.style.background = colors[i % colors.length];
-    const size = 8 + Math.random() * 8;
-    c.style.width = size + 'px';
-    c.style.height = size + 'px';
-    c.style.left = cx + 'px';
-    c.style.top  = cy + 'px';
-    c.style.setProperty('--dx', ((Math.random()-0.5)*360) + 'px');
-    c.style.setProperty('--dy', (Math.random()*-260 - 60) + 'px');
-    busZone.appendChild(c);
-    setTimeout(() => c.remove(), 1400);
-  }
-  const emojis = ['✨','⭐','🎊','💫','🎉'];
-  for (let i = 0; i < 8; i++) {
-    const s = document.createElement('div');
-    s.className = 'sparkle';
-    s.textContent = emojis[i % emojis.length];
-    s.style.left = (cx - 10) + 'px';
-    s.style.top  = (cy - 10) + 'px';
-    s.style.setProperty('--dx', ((Math.random()-0.5)*220) + 'px');
-    busZone.appendChild(s);
-    setTimeout(() => s.remove(), 1100);
   }
 }
 

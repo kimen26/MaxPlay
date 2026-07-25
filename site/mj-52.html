@@ -119,13 +119,9 @@
       ['ami', ['a', 'mi']], ['tapis', ['ta', 'pis']], ['domino', ['do', 'mi', 'no']],
       ['salami', ['sa', 'la', 'mi']],
     ];
-    // Graphie harmonisée avec mj-50 (source de vérité) : une SEULE occurrence
-    // par lettre — la répétition x3 (mmm/sss…) fait bafouiller le TTS FR sur
-    // les consonnes non-continues (retour Papa Yann 2026-07-21).
-    const SONS = {
-      a:'a', e:'eu', i:'i', o:'o', u:'u', m:'èm', s:'ès', l:'èl', r:'èr',
-      p:'pe', t:'te', d:'de', b:'be', n:'èn', c:'ke', v:'èv',
-    };
+    // Table SOURCE DE VÉRITÉ partagée : MJKit.PHONEMES (site/js/mj-kit.js,
+    // harmonisée avec mj-50/mj-51 — migration 2026-07-25).
+    const SONS = MJKit.PHONEMES;
     const DISTRACTEURS = ['s', 'r', 'l', 'v', 'o', 'e', 'n', 'b'];
 
     const shell = MJ.init({
@@ -159,7 +155,7 @@
       + '<path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" stroke="#ffe9a0" stroke-width="1.8" stroke-linecap="round"/></svg>';
     badgeEl.innerHTML = HP_SVG;
 
-    function shuffleA(a) { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
+    const shuffleA = MJKit.shuffle;
     function rnd(a) { return a[Math.floor(Math.random() * a.length)]; }
 
     let qCount = 0, word = '', sylls = [], letters = [], pos = 0, wrongTaps = 0, aidee = false, roundLock = false;
@@ -171,7 +167,7 @@
       shell.say(word);
     }
     function sayPhoneme(l) {
-      try { if (window.TTS && TTS.speak) { TTS.speak(SONS[l] || l, { rate: 0.6, priority: true }); return; } } catch (e) {}
+      if (window.MJKit && MJKit.sayPhoneme) MJKit.sayPhoneme(l);
     }
 
     function nextQuestion() {

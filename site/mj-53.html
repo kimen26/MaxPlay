@@ -161,7 +161,7 @@
     const faisEl = document.getElementById('fais');
     const bravoEl = document.getElementById('bravo-line');
 
-    function shuffleA(a) { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
+    const shuffleA = MJKit.shuffle;
     function rnd(a) { return a[Math.floor(Math.random() * a.length)]; }
 
     let qCount = 0, qcm = null, roundLock = false, curType = 'mot';

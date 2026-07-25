@@ -20,10 +20,34 @@
 //    decor(sceneEl, names?)           → pose des décors low-poly (img/decor/)
 //         dans les coins libres de la scène, pointer-events none.
 //         names ex ['volcan','fougere-g','fougere-d'] — défaut jungle douce.
+//    shuffle(arr)                     → copie mélangée (Fisher-Yates), ne mute pas
+//    pickDistinct(pool, n, excludeFn?)→ n éléments distincts au hasard depuis pool
+//         excludeFn(item) → true pour exclure un élément du tirage.
+//    PHONEMES                         → table SON (jamais nom de lettre) SUR-ENSEMBLE
+//         partagée mj-50/51/52 (source mj-50, la plus complète). Une SEULE
+//         occurrence par lettre — la répétition x3 (mmm/sss…) fait bafouiller
+//         le TTS FR sur les consonnes non-continues (retour Papa Yann 2026-07-21).
+//    sayPhoneme(letter, opts?)        → TTS.speak(PHONEMES[letter]||letter, {rate:0.6,
+//         priority:true, ...opts}) — même son partout où une lettre est prononcée.
 //  Étendre = enrichir CE fichier (jamais de copie locale dans un jeu).
 // ─────────────────────────────────────────────────────────────────────────
 (function (global) {
   'use strict';
+
+  // ── Hasard : mélange & tirage (factorisé depuis ~21 jeux, 2026-07-25) ─
+  function shuffle(arr) {
+    const r = (arr || []).slice();
+    for (let i = r.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [r[i], r[j]] = [r[j], r[i]];
+    }
+    return r;
+  }
+
+  function pickDistinct(pool, n, excludeFn) {
+    const src = excludeFn ? (pool || []).filter(item => !excludeFn(item)) : (pool || []);
+    return shuffle(src).slice(0, n);
+  }
 
   // ── Dessins ──────────────────────────────────────────────────────────
   function oeuf(px, tint) {
@@ -140,5 +164,23 @@
     });
   }
 
-  global.MJKit = { oeuf, pastille, qcm, calcLine, calcReset, avatarPool, decor };
+  // ── Phonèmes : LE son de chaque lettre (jamais son nom d'école) ──────
+  // Source de vérité mj-50 (table la plus complète — voyelles simples,
+  // consonnes continues èX, occlusives CV, h muet). mj-51/mj-52 en sont
+  // des sous-ensembles harmonisés — même graphie partout (règle d'or).
+  const PHONEMES = {
+    a: 'a', e: 'eu', i: 'i', o: 'o', u: 'u',
+    m: 'èm', s: 'ès', f: 'èf', l: 'èl', r: 'èr', v: 'èv', j: 'jeu', z: 'èz', n: 'èn',
+    b: 'be', d: 'de', p: 'pe', t: 'te', c: 'ke', g: 'gue', h: 'h muet', k: 'ke', q: 'ke',
+  };
+
+  function sayPhoneme(letter, opts) {
+    try {
+      if (global.TTS && TTS.speak) {
+        TTS.speak(PHONEMES[letter] || letter, Object.assign({ rate: 0.6, priority: true }, opts));
+      }
+    } catch (e) {}
+  }
+
+  global.MJKit = { shuffle, pickDistinct, oeuf, pastille, qcm, calcLine, calcReset, avatarPool, decor, PHONEMES, sayPhoneme };
 })(window);

@@ -116,6 +116,7 @@
   <script src="js/data.js"></script>
   <script src="js/bus-svg.js"></script>
   <script src="js/intro-splash.js"></script>
+  <script src="js/mj-kit.js"></script>
   <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
   <script src="js/mj-shell.js"></script>
   <script>
@@ -130,7 +131,7 @@
     // 🔄 2026-07-14 — passage global 3★ : 5 paliers → 3 niveaux (N0=ex-P1-2 · N1=ex-P3 · N2=ex-P4-5)
     const level = Math.max(0, Math.min(2, (window.Stars ? Stars.get('mj-05') : 0)));
 
-    function shuffle(a) { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
+    const shuffle = MJKit.shuffle;
     function rnd(a, b) { return a + Math.floor(Math.random() * (b - a + 1)); }
     function buildSchedule() {
       const hard = Array(4).fill(level);

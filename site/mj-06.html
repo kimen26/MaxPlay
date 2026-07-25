@@ -162,6 +162,7 @@
   <!-- Feedback overlay -->
   <div id="fbOverlay"></div>
   
+  <script src="js/mj-kit.js"></script>
   <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
   <script src="js/mj-shell.js"></script>
   <script>
@@ -353,14 +354,7 @@
       `;
     }
 
-    function shuffle(array) {
-      const arr = [...array];
-      for (let i = arr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [arr[i], arr[j]] = [arr[j], arr[i]];
-      }
-      return arr;
-    }
+    const shuffle = MJKit.shuffle;
 
     init();
     });

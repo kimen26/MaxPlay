@@ -93,6 +93,7 @@ html, body {
 <script src="js/qcm-retry.js"></script>
   <script src="js/intro-splash.js"></script>
   <script src="js/back-button.js"></script>
+  <script src="js/mj-kit.js"></script>
 <script>
 /* ══ LED ══ */
 const DIGITS={
@@ -216,7 +217,7 @@ let score=0,round=0,answered=false;
 let tickId=null,busId=null;
 let qcm=null;
 
-function shuffle(a){return [...a].sort(()=>Math.random()-.5);}
+const shuffle = MJKit.shuffle;
 function updScore(){document.getElementById('score').textContent=`${score} / ${round}`;}
 
 /* ══ PANNEAU ══ */

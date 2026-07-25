@@ -10,9 +10,7 @@
     /* --- GABARIT HEADER CANONIQUE (ne pas inventer, copier tel quel) --- */
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
     body { font-family:'Fredoka One',sans-serif; color:var(--ink); display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
-    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
-    .htitle { flex:1; font-size:1rem; font-weight:900; }
-    /* --- FIN GABARIT HEADER --- */
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }    /* --- FIN GABARIT HEADER --- */
 
     .stars { text-align:center; padding:3px 8px; font-size:1.1rem; flex-shrink:0; }
     .star { opacity:0.32; transition:opacity 0.25s, transform 0.25s; display:inline-block; }
@@ -129,6 +127,7 @@
 </div>
   <script src="js/bus-svg.js"></script>
   <script src="js/data.js"></script>
+  <script src="js/mj-kit.js"></script>
   <!-- LE GABARIT : charge tout le cadre standard (thème, panneau ?, tracking, cloud) -->
   <script src="js/mj-shell.js"></script>
   <script>
@@ -283,8 +282,7 @@
     let cards = [], boxes = [], selected = null, roundOver = false, testMode = false;
     let nextId = 0;
 
-    function shuffle(a){ for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
-    function samplePick(arr, n){ return shuffle(arr.slice()).slice(0, n); }
+    function samplePick(arr, n){ return MJKit.shuffle(arr).slice(0, n); }
 
     function genRound() {
       const cfg = PALIERS[paletteIdx];
@@ -297,7 +295,7 @@
           cards.push({ id: nextId++, mot: m.mot, picto: m.picto, boxId: b.id, loc:'tray' });
         });
       });
-      shuffle(cards);
+      cards = MJKit.shuffle(cards);
       const bEl = document.getElementById('banner');
       if (bEl.textContent !== cfg.banner) {
         bEl.textContent = cfg.banner;
@@ -463,13 +461,7 @@
 
     function speak(txt) {
       if (testMode) return;
-      try {
-        if (!('speechSynthesis' in window)) return;
-        window.speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance(txt);
-        u.lang = 'fr-FR'; u.rate = 0.9;
-        window.speechSynthesis.speak(u);
-      } catch(e) {}
+      try { if (window.TTS && TTS.speak) TTS.speak(txt, { rate: 0.9, priority: true }); } catch(e) {}
     }
 
     // ── Fin de round / progression ─────────────────────────────────────────────

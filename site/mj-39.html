@@ -81,15 +81,6 @@
     #dragGhost .piece-grid { display:grid; gap:2px; }
     #dragGhost .piece-cell { border-radius:3px; border:2px solid rgba(0,0,0,0.3); opacity:0.9; }
 
-    .confetti {
-      position:absolute; font-size:1.4rem; pointer-events:none;
-      animation: confettiFall 1s ease-in forwards;
-    }
-    @keyframes confettiFall {
-      0%   { transform: translateY(0) rotate(0deg); opacity:1; }
-      100% { transform: translateY(120px) rotate(360deg); opacity:0; }
-    }
-
     /* Écran grille pleine (doux, pas punitif) */
     #fullScreen {
       position:absolute; inset:0; display:none; flex-direction:column;
@@ -402,7 +393,7 @@
       fullRows.forEach(r => for_range(N, c => cellsEls[r][c].classList.add('pop')));
       fullCols.forEach(c => for_range(N, r => cellsEls[r][c].classList.add('pop')));
 
-      if (total > 1) spawnConfetti();
+      if (total > 1 && window.MaxFX) MaxFX.randomPoint(grid, jaugeFill, { result: 'green' });
       sndDing();
       if (total > 1) sndVictory();
 
@@ -424,20 +415,6 @@
       const el = cellsEls[r][c];
       el.classList.remove('pop', 'filled');
       el.style.background = '';
-    }
-
-    function spawnConfetti() {
-      const emojis = ['✨', '🎉', '⭐'];
-      const rect = grid.getBoundingClientRect();
-      for (let i = 0; i < 10; i++) {
-        const el = document.createElement('div');
-        el.className = 'confetti';
-        el.textContent = emojis[i % emojis.length];
-        el.style.left = (Math.random() * rect.width) + 'px';
-        el.style.top = '0px';
-        grid.appendChild(el);
-        setTimeout(() => el.remove(), 1000);
-      }
     }
 
     // ── Jauge + étoiles (paliers session) ───────────────────────────────

@@ -6,25 +6,32 @@
 
 ## Synthèse
 
-- **62 dinos** · **60 complets (8/8)** · **2 incomplets**
+- **69 dinos** · **60 complets (8/8)** · **9 incomplets**
 
 | Axe | Couverture |
 |-----|-----------|
-| hero | 62/62 |
-| paleoart | 60/62 |
-| coloriage | 60/62 |
-| audio | 62/62 |
-| silhouette | 60/62 |
-| fiche | 62/62 |
-| etymo | 62/62 |
-| mesures | 62/62 |
+| hero | 69/69 |
+| paleoart | 60/69 |
+| coloriage | 60/69 |
+| audio | 69/69 |
+| silhouette | 62/69 |
+| fiche | 69/69 |
+| etymo | 69/69 |
+| mesures | 69/69 |
 
 ## Incomplets d'abord
 
 | Dino | id | Score | Manque |
 |------|----|-------|--------|
-| Corythosaure | `corythosaurus` | 5/8 | paléoart(headshot), coloriage, silhouette |
-| Hatzegopteryx | `hatzegopteryx` | 5/8 | paléoart(headshot), coloriage, silhouette |
+| Minmi | `minmi` | 5/8 | paléoart(headshot), coloriage, silhouette |
+| Scutellosaure | `scutellosaurus` | 5/8 | paléoart(headshot), coloriage, silhouette |
+| Maiasaura | `maiasaura` | 5/8 | paléoart(headshot), coloriage, silhouette |
+| Édaphosaure | `edaphosaurus` | 5/8 | paléoart(headshot), coloriage, silhouette |
+| Gorgonops | `gorgonops` | 5/8 | paléoart(headshot), coloriage, silhouette |
+| Lystrosaure | `lystrosaurus` | 5/8 | paléoart(headshot), coloriage, silhouette |
+| Moschops | `moschops` | 5/8 | paléoart(headshot), coloriage, silhouette |
+| Corythosaure | `corythosaurus` | 6/8 | paléoart(headshot), coloriage |
+| Hatzegopteryx | `hatzegopteryx` | 6/8 | paléoart(headshot), coloriage |
 
 ## Complets (60)
 

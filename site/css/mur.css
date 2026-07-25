@@ -154,6 +154,96 @@
 
 .rep-ouverture { padding:2px 22px 18px; text-align:center; font-weight:800; font-size:13.5px; color:var(--gold); }
 
+/* ── LE NID (chantier NID P3, 2026-07-26) ─────────────────────────────
+   3 emplacements d'œufs, jauge lisible sans texte/chiffre (le remplissage
+   EST la jauge). Œuf doré = série de 3 parties, distinct visuellement. */
+.nid-bloc { padding:11px 12px 14px; }
+.nid-titre { font-family:'Fredoka One'; font-weight:400; font-size:14.5px; margin:0 2px 10px; color:var(--ink-2); display:flex; align-items:center; }
+.nid-titre .t-emoji { margin-right:6px; }
+.nid-oeufs { display:flex; justify-content:center; gap:16px; padding:4px 0; }
+.nid-oeuf {
+  width:64px; height:78px; border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
+  border:3px dashed rgba(255,255,255,.28); box-sizing:border-box; opacity:.55;
+}
+.nid-oeuf.plein {
+  border-style:solid; border-color:rgba(255,255,255,.4); opacity:1;
+  background:linear-gradient(160deg,#fff7e0,#f5e3c2);
+  box-shadow:inset -4px -7px 0 rgba(0,0,0,.1), 0 6px 14px rgba(0,0,0,.35);
+  animation:nid-respire 2.6s ease-in-out infinite;
+}
+.nid-oeuf.plein.dore {
+  border-color:var(--gold); background:linear-gradient(160deg,#fff3c4,#ffd166);
+  box-shadow:inset -4px -7px 0 rgba(0,0,0,.12), 0 0 18px rgba(255,209,102,.55);
+}
+@keyframes nid-respire { 0%,100% { transform:scale(1); } 50% { transform:scale(1.05); } }
+
+/* ── ÉCLOSION (tap n'importe où pour continuer) ────────────────────── */
+.hatch-doublon {
+  background:var(--card); border:1px solid var(--line); border-radius:22px;
+  padding:26px 24px; max-width:320px; text-align:center; box-shadow:0 18px 50px rgba(0,0,0,.5);
+}
+.hatch-doublon-emoji { font-size:2.6rem; margin-bottom:8px; }
+.hatch-doublon-txt { font-weight:800; font-size:14.5px; color:var(--ink); line-height:1.4; }
+
+/* ── BANDEAU COLLECTION (possédés couleur / non-possédés ombre) ──────
+   Rangée horizontale scrollable, 60+ vignettes → lazy-load côté JS. */
+.nid-bandeau-bloc { padding:11px 0 14px 12px; }
+.nid-bandeau-bloc .nid-titre { padding-right:12px; }
+.nid-bandeau-row { display:flex; gap:9px; overflow-x:auto; padding:2px 12px 6px 0; scrollbar-width:none; }
+.nid-bandeau-row::-webkit-scrollbar { display:none; }
+.nid-vig {
+  flex:0 0 auto; width:52px; height:52px; border-radius:14px; background:var(--card-2);
+  display:flex; align-items:center; justify-content:center; overflow:hidden;
+}
+.nid-vig img { max-width:80%; max-height:80%; object-fit:contain; }
+.nid-vig.ombre-only img { opacity:.55; filter:invert(.62) brightness(1.1); }
+.nid-vig.possede { cursor:pointer; border:1px solid rgba(255,209,102,.35); transition:transform .15s; }
+.nid-vig.possede:active { transform:scale(.92); }
+
+/* ── VIGNETTES-APERÇU sur les rangées copains (3 mini-jeux, discret) ──
+   Ne casse pas la ligne compacte .copain (height:70px) : colonne étroite
+   à droite, avant les flèches ›››, empilée en 2 lignes de mini-carrés. */
+.c-apercu {
+  position:absolute; right:34px; top:50%; transform:translateY(-50%); z-index:2;
+  display:flex; gap:3px; pointer-events:none;
+}
+.c-apercu-mini {
+  width:22px; height:22px; border-radius:6px; overflow:hidden; opacity:.85;
+  box-shadow:0 2px 5px rgba(0,0,0,.35); background:#101b33;
+}
+.c-apercu-mini .vig { width:100%; height:100%; border-radius:0; }
+
+/* ── FRISE-CHEMIN du repaire (remplace la grille .rep-jeu classique) ──
+   fait=tampon ✓ · prochain recommandé=grand+brille · suivants=atténués
+   MAIS TAPABLES (accès libre depuis 2026-07-22 — la frise guide, elle
+   n'enferme pas). Chemin horizontal scrollable, cartes ≥80px de large. */
+.rep-jeux.frise-host { padding:14px 0 12px; }
+.frise { display:flex; align-items:flex-end; gap:14px; overflow-x:auto; padding:10px 16px 14px; scroll-snap-type:x proximity; }
+.frise-jeu {
+  flex:0 0 auto; scroll-snap-align:center; cursor:pointer; text-align:center;
+  display:flex; flex-direction:column; align-items:center; gap:6px; width:84px;
+  opacity:.62; transition:transform .15s, opacity .2s;
+}
+.frise-jeu:active { transform:scale(.95); }
+.frise-jeu.fait { opacity:.85; }
+.frise-jeu.reco {
+  opacity:1; width:104px;
+  animation:frise-brille 2.2s ease-in-out infinite;
+}
+.frise-vig { position:relative; width:100%; aspect-ratio:1; border-radius:18px; overflow:hidden; }
+.frise-jeu.reco .frise-vig { box-shadow:0 0 0 3px var(--gold), 0 8px 20px rgba(255,209,102,.35); }
+.frise-tampon {
+  position:absolute; right:-4px; bottom:-4px; width:28px; height:28px; border-radius:50%;
+  background:var(--gold); color:#3a2a06; display:flex; align-items:center; justify-content:center;
+  font-weight:900; font-size:16px; box-shadow:0 3px 8px rgba(0,0,0,.35);
+}
+.frise-titre { font-weight:800; font-size:10.5px; line-height:1.15; color:var(--ink-3); }
+.frise-jeu.reco .frise-titre { color:var(--gold); font-weight:900; }
+@keyframes frise-brille {
+  0%,100% { transform:translateY(0) scale(1); }
+  50%     { transform:translateY(-4px) scale(1.04); }
+}
+
 /* ── VIGNETTES DE JEUX (CSS/SVG pur) ────────────────────────────────
    Règle d'or : JAMAIS de padding/gap en % dans une .vig — un % se
    résout contre le PARENT (la ligne), pas contre la vignette, et fait
@@ -391,4 +481,5 @@
 
 @media (prefers-reduced-motion: reduce) {
   .c-float, .copain .c-tete, .c-piste, .vig-lampe::after, .vig-temps .v-aiguille, .vig-rouage svg, .vig-son i { animation:none !important; }
+  .nid-oeuf.plein, .frise-jeu.reco { animation:none !important; }
 }

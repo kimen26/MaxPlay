@@ -10,9 +10,7 @@
     /* --- GABARIT HEADER CANONIQUE (ne pas inventer, copier tel quel) --- */
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
     body { font-family:'Fredoka One',sans-serif; color:var(--ink); display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
-    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
-    .htitle { flex:1; font-size:1rem; font-weight:900; }
-    /* --- FIN GABARIT HEADER --- */
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }    /* --- FIN GABARIT HEADER --- */
 
     .stars { text-align:center; padding:3px 8px; font-size:1.1rem; flex-shrink:0; }
     .star { opacity:0.32; transition:opacity 0.25s, transform 0.25s; display:inline-block; }
@@ -368,13 +366,7 @@
 
     function speak(txt) {
       if (testMode) return;
-      try {
-        if (!('speechSynthesis' in window)) return;
-        window.speechSynthesis.cancel();
-        const u = new SpeechSynthesisUtterance(txt);
-        u.lang = 'fr-FR'; u.rate = 0.95;
-        window.speechSynthesis.speak(u);
-      } catch(e) {}
+      try { if (window.TTS && TTS.speak) TTS.speak(txt, { rate: 0.95, priority: true }); } catch(e) {}
     }
 
     // ── Victoire de round ─────────────────────────────────────────────────────

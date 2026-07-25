@@ -84,6 +84,7 @@ html, body {
 
 <script src="js/bus-svg.js"></script>
   <script src="js/intro-splash.js"></script>
+<script src="js/mj-kit.js"></script>
 <script src="js/mj-shell.js"></script>
 <script>
 MJ.ready(function () {
@@ -234,6 +235,7 @@ let qcm=null;
 const LV_FILE=[3,6,10]; // taille de la file de bus par palier
 const level=Math.max(0,Math.min(LV_FILE.length-1,(window.Stars?Stars.get('mj-13c'):0)));
 (function(){const lb=document.getElementById('levelbar');if(lb)lb.textContent='Niveau '+(level+1);})();
+const shuffle = MJKit.shuffle;
 // Manche mixte : 4 manches au palier courant + 4 plus faciles (mélangées)
 function buildFileSchedule(){
   const hard=Array(4).fill(LV_FILE[level]);
@@ -243,7 +245,6 @@ function buildFileSchedule(){
 }
 let fileSchedule=buildFileSchedule();
 
-function shuffle(a){return [...a].sort(()=>Math.random()-.5);}
 function updScore(){document.getElementById('score').textContent=`${score} / ${round}`;}
 
 /* ══ PANNEAU ══ */

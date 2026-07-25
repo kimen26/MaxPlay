@@ -141,8 +141,6 @@
 
     let qCount = 0, qcm = null, targetDino = null, usedIds = [];
 
-    function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
-
     // JAMAIS deux voix en meme temps : parler (TTS) coupe le MP3, jouer un MP3 coupe le TTS.
     let elAudio = null;
     function stopEl(){ if (elAudio){ elAudio.pause(); elAudio = null; } }

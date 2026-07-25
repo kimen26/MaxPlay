@@ -160,6 +160,26 @@ function sndMoteur() {
   } catch (e) {}
 }
 
+// Ding de succès court (sine 660Hz) — promu depuis mj-08/mj-09 (dupliqué identique,
+// 2026-07-25) : action ponctuelle réussie (objet rangé, bus casé), plus discret
+// que sndDing (arpège 3 notes, réservé aux fins de manche/étape).
+function sndOk() {
+  try {
+    const ac = getAC();
+    const t = ac.currentTime;
+    const o = ac.createOscillator();
+    const g = ac.createGain();
+    o.connect(g);
+    g.connect(ac.destination);
+    o.type = 'sine';
+    o.frequency.value = 660;
+    g.gain.setValueAtTime(0.25, t);
+    g.gain.exponentialRampToValueAtTime(0.01, t + 0.3);
+    o.start(t);
+    o.stop(t + 0.3);
+  } catch (e) {}
+}
+
 // Ding de succès (court et joyeux)
 function sndDing() {
   try {

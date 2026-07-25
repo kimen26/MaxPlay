@@ -56,6 +56,7 @@
   <script src="js/lang.js"></script>
   <script src="js/dinos-data.js"></script>
   <script src="js/dinos-i18n.js"></script>
+  <script src="js/mj-kit.js"></script>
   <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
   <script src="js/mj-shell.js"></script>
   <script>
@@ -147,7 +148,7 @@
 
     let score = 0, streak = 0, qCount = 0, qcm = null, target = null;
 
-    function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+    const shuffle = MJKit.shuffle;
 
     // Audio retiré (retour Papa Yann 2026-07-19) : lecture pure, aucun son d'aide,
     // ni sur les syllabes ni sur le nom entier. Le mot reste affiché en chips statiques.

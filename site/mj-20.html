@@ -408,6 +408,7 @@
     <a href="index.html" style="color:rgba(255,255,255,0.6);font-size:0.9rem;font-weight:900;text-decoration:none;margin-top:-8px">&#8592; Menu</a>
   </div>
 
+  <script src="js/mj-kit.js"></script>
   <script src="js/mj-shell.js"></script>
   <script>
   MJ.ready(function () {
@@ -958,14 +959,7 @@
       }
     }
 
-    function shuffle(arr) {
-      const a = [...arr];
-      for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-      }
-      return a;
-    }
+    const shuffle = MJKit.shuffle;
 
     // Exposés pour les onclick inline du markup
     window.setMode      = setMode;

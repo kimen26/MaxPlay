@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Co-ri-to-saure. En grec ancien, « corytho », c'est le casque, comme celui d'un guerrier. Et « saure », c'est le lézard. Le lézard à casque."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Un casque sur la tête."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactement. Une grande crête arrondie, creuse à l'intérieur. Il vivait en Amérique du Nord, il y a 76 millions d'années."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et il y avait des dangers, par là ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] Oui. Le Gorgosaure et le Daspletosaure, deux cousins du T-Rex, chassaient dans le coin. Alors le Corythosaure ne restait jamais seul."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

@@ -62,12 +62,15 @@
 | Shastasaure | **Chas-ta-saure** | sh→ch |
 | Archélon | **Ar-ké-lon** | ch→k |
 | Ophthalmosaure | **Of-tal-mo-saure** | ph→f, th→t |
+| Moschops | **Mos-kops** | ch→k (khi grec de *moschos*, même règle que Brachiosaure) — ajouté 2026-07-25 |
+| Édaphosaure | **É-da-fo-saure** | ph→f — ajouté 2026-07-25 |
+| Lystrosaure | **Lis-tro-saure** | y→i — ajouté 2026-07-25 |
 
 ---
 
 ## 3. Noms qui se lisent BIEN tels quels (pas de respelling)
 
-Spinosaure · Giganotosaure · Allosaure · Tarbosaure · Albertosaure · Gorgosaure · Cératosaure · Carnotaure · Acrocanthosaure · Apatosaure · Camarasaure · Amargasaure · Plateosaure · Ankylosaure · Stégosaure · Kéntrosaure · Tricératops · Torosaure · Protocératops · Pentacératops · Edmontosaure · Vélociraptor · Utahraptor · Microraptor · Oviraptor · Dimétrodon · Élasmosaure · Liopleurodon.
+Spinosaure · Giganotosaure · Allosaure · Tarbosaure · Albertosaure · Gorgosaure · Cératosaure · Carnotaure · Acrocanthosaure · Apatosaure · Camarasaure · Amargasaure · Plateosaure · Ankylosaure · Stégosaure · Kéntrosaure · Tricératops · Torosaure · Protocératops · Pentacératops · Edmontosaure · Vélociraptor · Utahraptor · Microraptor · Oviraptor · Dimétrodon · Élasmosaure · Liopleurodon · Minmi · Scutellosaure · Maiasaura · Gorgonops.
 
 > En cas de doute → respeller, ça ne coûte rien. Le **preview groupé** (§4) tranche.
 

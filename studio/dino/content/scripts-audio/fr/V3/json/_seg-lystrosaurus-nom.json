@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Lis-tro-saure. En grec, « lystron », c'est la pelle. Et « saure », le lézard. Le lézard-pelle, à cause de son museau large et tout plat."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Un museau en forme de pelle ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Exactement, comme une petite pelle vivante. Il vivait il y a 250 millions d'années, avant les dinosaures — un cousin lointain des animaux à poils, donc un peu de nous."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Il y avait des dangers, par là ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] De moins en moins. De son vivant, une immense catastrophe a frappé la Terre et fait disparaître presque tous les chasseurs."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

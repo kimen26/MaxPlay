@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] Minmi. Ce nom-là ne vient ni du grec ni du latin — c'est le nom d'un endroit ! Minmi Crossing, en Australie, là où on a trouvé ses os."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Un dino avec le nom d'un endroit."
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Oui. Longtemps, ça a même été le nom de dinosaure le plus court du monde. Il vivait au Crétacé, il y a 120 millions d'années, dans le Queensland, en Australie."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Et il avait des ennemis, là-bas ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] De grands chasseurs essayaient de le retourner sur le dos, là où il n'avait pas d'armure. Mais le Minmi avait un secret pour leur échapper."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

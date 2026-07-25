@@ -2074,6 +2074,16 @@ function playSpecial(which, btnEl) {
 
 /* ── Init ── */
 buildMenu();
+
+// Deep-link additif (nid-ui.js, bandeau collection Mur) : dev-dinos.html?open=<id>
+// ouvre directement la fiche du dino. Sans le param, comportement inchangé.
+(function () {
+  try {
+    var p = new URLSearchParams(location.search);
+    var openId = p.get('open');
+    if (openId) setTimeout(function () { showFiche2(openId); }, 0);
+  } catch (e) {}
+})();
 </script>
 <script src="js/dinos-images-local.js"></script>
 <script src="js/dinos-images-grok.js"></script>

@@ -342,7 +342,8 @@
       var floats = '';
       for (var i = 0; i < 4; i++) floats += floatHtml(c.floats, i);
       var stars = copainStars(c);
-      return '<div class="copain' + (c.ency ? ' or' : '') + '" data-copain="' + c.id + '" aria-label="' + c.nom + ' — ' + c.domaine + '">' +
+      var apercuJeux = repaireState(c).games.slice(0, 3).map(function (g) { return g.id; }).join(',');
+      return '<div class="copain' + (c.ency ? ' or' : '') + '" data-copain="' + c.id + '" data-jeux="' + apercuJeux + '" aria-label="' + c.nom + ' — ' + c.domaine + '">' +
         floats +
         '<img class="c-tete" src="' + c.tete + '" alt="' + c.nom + '" draggable="false">' +
         '<div class="c-qui">' +
@@ -453,6 +454,12 @@
     } else {
       ouverture.textContent = '';
     }
+    // Frise-chemin (NID P3) : si NidUI est chargé, elle REMPLACE le rendu
+    // grille ci-dessus dans #rep-jeux (fait=tampon, prochain=grand/brille,
+    // suivants=atténués mais tapables — accès libre, la frise guide).
+    if (global.NidUI && typeof global.NidUI.renderFrise === 'function') {
+      global.NidUI.renderFrise(st.games);
+    }
   }
 
   // ── Navigation Mur ↔ Repaire ↔ Parents (sans recharger) ───────────
@@ -544,6 +551,7 @@
     renderPortails();
     if (current) renderRepaire(current);
     fillBusVignettes();
+    if (global.NidUI && typeof global.NidUI.refresh === 'function') global.NidUI.refresh();
   }
 
   function fillBusVignettes() {
@@ -566,6 +574,7 @@
     renderPreferes();
     renderPortails();
     fillBusVignettes();
+    loadNidUi();
     // deep-link de test : index.html#repaire=velo ouvre directement un repaire
     var m = /repaire=(\w+)/.exec(location.hash || '');
     if (m && COPAINS.some(function (c) { return c.id === m[1]; })) openRepaire(m[1]);
@@ -583,8 +592,8 @@
         if (hooks && hooks.onCodeNeeded) hooks.onCodeNeeded();
         return;
       }
-      // vignette jeu (Mur ou repaire) → lancement direct
-      var jeu = ev.target.closest('.rep-jeu, .mur-mini');
+      // vignette jeu (Mur, repaire ou frise-chemin NID) → lancement direct
+      var jeu = ev.target.closest('.rep-jeu, .mur-mini, .frise-jeu');
       if (jeu && jeu.dataset.url) { location.href = jeu.dataset.url; return; }
       // tiroir parents : un seul ouvert à la fois
       var head = ev.target.closest('.mp-drawer-head');
@@ -621,10 +630,27 @@
     });
   }
 
+  // ── NID (chantier P3, 2026-07-26) : chargement dynamique — index.html
+  //    ne charge pas nid-ui.js par défaut (pôle jeu vs nid encore optionnel
+  //    tant que collection.js/P1 n'existe pas). Défensif : si le fichier ou
+  //    Collection est absent, NidUI.init() ne fait rien, zéro erreur. ─────
+  function loadNidUi() {
+    if (global.NidUI || document.querySelector('script[src$="js/nid-ui.js"]')) { startNid(); return; }
+    var s = document.createElement('script');
+    s.src = 'js/nid-ui.js';
+    s.onload = startNid;
+    s.onerror = function () {}; // jamais bloquer le Mur
+    document.head.appendChild(s);
+  }
+  function startNid() {
+    if (global.NidUI && typeof global.NidUI.init === 'function') global.NidUI.init();
+  }
+
   global.MUR = {
     init: init, refresh: refresh,
     openRepaire: openRepaire, showMur: showMur, showParents: showParents,
     entry: entry, starsOf: starsOf, isVisible: isVisible,
+    vignetteHtml: vignetteHtml,
     _fillBus: fillBusVignettes
   };
 })(window);

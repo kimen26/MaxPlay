@@ -1193,6 +1193,99 @@
     ], { duration: opts.duration || 1100, iterations: opts.iterations || 3, easing: 'ease-in-out' });
   }
 
+  /* ── MaxFX.hatch — éclosion réutilisable (NID, CONTRAT-MJ : bibliothèque
+     enrichie plutôt qu'anim maison par jeu). tremble → craque → révèle une
+     image (le dino surprise) à la place de l'œuf → petite fête.
+     opts.imgSrc : image du dino révélé (obligatoire pour l'effet complet)
+     opts.container : overlay (déf. : ancêtre commun / body)
+     opts.label : texte sous la révélation ('' = aucun) ──────────────── */
+  function hatch(el, opts) {
+    opts = opts || {};
+    var C = themeColors();
+    var container = opts.container || (function () {
+      var n = el.parentElement;
+      while (n && n !== document.body) n = n.parentElement;
+      return n || document.body;
+    })();
+    var ov = makeOverlay(container);
+    var fxp = makeFx(ov);
+    var p = center(el, ov);
+    var size = Math.max(el.offsetWidth, el.offsetHeight, 60);
+    /* 1. tremble (l'œuf original reste visible, on secoue juste) */
+    var shakeAnim = el.animate([
+      { transform: 'rotate(0)' }, { transform: 'rotate(-6deg)' }, { transform: 'rotate(6deg)' },
+      { transform: 'rotate(-8deg)' }, { transform: 'rotate(8deg)' }, { transform: 'rotate(-4deg)' },
+      { transform: 'rotate(4deg)' }, { transform: 'rotate(0)' }
+    ], { duration: 900, iterations: 2, easing: 'ease-in-out' });
+    return shakeAnim.finished.catch(function () {}).then(function () {
+      /* 2. craque : flash + éclats de coquille qui s'écartent */
+      el.style.opacity = '0';
+      var flash = mk(ov, 'inset:0;background:radial-gradient(circle at ' + p.x + 'px ' + p.y + 'px, rgba(255,246,220,.9), transparent 55%);');
+      anim(flash, [{ opacity: 0.7 }, { opacity: 0 }], { duration: 450, easing: 'ease-out', fill: 'forwards' });
+      for (var i = 0; i < 6; i++) {
+        var a = Math.PI * 2 * i / 6;
+        var shard = mk(ov, at(p.x, p.y, size * 0.32) + 'background:#f5e3c2;clip-path:polygon(50% 0,100% 40%,70% 100%,20% 80%,0 30%);box-shadow:0 3px 8px rgba(0,0,0,.35);');
+        anim(shard, [
+          { transform: 'translate(0,0) rotate(0) scale(1)', opacity: 1 },
+          { transform: 'translate(' + (Math.cos(a) * size * 0.9) + 'px,' + (Math.sin(a) * size * 0.9 - 20) + 'px) rotate(' + (i % 2 ? 220 : -220) + 'deg) scale(.4)', opacity: 0 }
+        ], { duration: 700, easing: 'cubic-bezier(.3,0,.6,1)', fill: 'forwards' });
+      }
+      fxp.burst(p.x, p.y, 26, [C.gold, '#fff3d1', '#7fe7c4'], 3.6);
+      /* 3. le dino surprise apparaît à la place de l'œuf */
+      var reveal = mk(ov, at(p.x, p.y, size) + 'display:flex;align-items:center;justify-content:center;');
+      if (opts.imgSrc) {
+        var img = document.createElement('img');
+        img.src = opts.imgSrc;
+        img.alt = '';
+        img.style.cssText = 'max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 6px 14px rgba(0,0,0,.5));';
+        reveal.appendChild(img);
+      }
+      reveal.animate(POP, { duration: 700, delay: 260, easing: 'cubic-bezier(.34,1.56,.64,1)', fill: 'both' });
+      setTimeout(function () {
+        fxp.confetti(46, [C.gold, C.accent, C.green, '#ff7ac8']);
+      }, 500);
+      if (opts.label) labelEl(ov, p.x, p.y + size * 0.62 + 20, opts.label);
+      return wait(1600);
+    }).then(function () {
+      fxp.stop();
+      return ov; /* laissé au caller : il retire l'overlay quand il ferme la séquence */
+    });
+  }
+
+  /* ── MaxFX.eggEarned — capsule gagnée en fin de partie (NID, chantier
+     2026-07-26). Distinct de MaxFX.hatch (réservée à l'ÉCLOSION au 3e œuf,
+     sur le Mur — révèle un dino). Ici : juste "tu as gagné un œuf", ~1s,
+     pop + petit envol vers le haut (image du nid), PUIS disparaît — le jeu
+     ne garde pas l'œuf à l'écran (il vit dans le nid, pas dans le jeu).
+     opts.golden : true → teinte dorée (série de 3, avenant P0 §3).
+     Retourne une Promise résolue à la fin de l'anim (~950ms). ─────────── */
+  function eggEarned(el, opts) {
+    opts = opts || {};
+    var C = themeColors();
+    var container = (function () {
+      var n = el.parentElement;
+      while (n && n !== document.body) n = n.parentElement;
+      return n || document.body;
+    })();
+    var ov = makeOverlay(container);
+    var fxp = makeFx(ov);
+    var p = center(el, ov);
+    var gold = !!opts.golden;
+    var ring = mk(ov, at(p.x, p.y, 70) + 'border-radius:50%;border:3px solid ' + (gold ? C.gold : C.accent) + ';');
+    anim(ring, [
+      { transform: 'scale(.3)', opacity: 0.9 }, { transform: 'scale(1.8)', opacity: 0 }
+    ], { duration: 600, easing: 'ease-out', fill: 'forwards' });
+    fxp.burst(p.x, p.y, gold ? 22 : 14, gold ? [C.gold, '#fff3d1'] : [C.accent, '#ffffff'], 2.4);
+    return anim(el, [
+      { transform: 'translateY(0) scale(1) rotate(0)' },
+      { transform: 'translateY(-10px) scale(1.18) rotate(-6deg)', offset: 0.35 },
+      { transform: 'translateY(-6px) scale(1.1) rotate(4deg)', offset: 0.55 },
+      { transform: 'translateY(-30px) scale(.9) rotate(0)', offset: 0.85, opacity: 1 },
+      { transform: 'translateY(-46px) scale(.6) rotate(0)', opacity: 0 }
+    ], { duration: 950, easing: 'cubic-bezier(.34,1.56,.64,1)', fill: 'forwards' })
+      .then(function () { fxp.stop(); ov.remove(); });
+  }
+
   /* ── Tirages OFFICIELS bibliothèque (CONTRAT-MJ 2026-07-19) ─────────
      Un jeu ne choisit pas son animation : il pioche dans la bibliothèque.
      randomPoint = anim de point aléatoire · randomFinal = victoire sans-faute
@@ -1216,6 +1309,8 @@
     randomPoint: randomPoint,
     randomFinal: randomFinal,
     glow: glow,
+    hatch: hatch,
+    eggEarned: eggEarned,
     markStyles: Object.keys(MARKS),
     starStyles: Object.keys(STARS)
   };

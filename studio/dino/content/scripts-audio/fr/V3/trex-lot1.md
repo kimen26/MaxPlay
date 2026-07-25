@@ -28,7 +28,7 @@
 
 ### BLOC B — Taille
 
-**NARRATEUR H** [excited] : 13 mètres de long — aussi long qu'un bus RATP. 4 mètres de haut — aussi haut qu'un bus anglais à deux étages. 8 mille kilos — aussi lourd que 2 hippopotames.
+**NARRATEUR H** [excited] : 13 mètres de long — aussi long qu'un bus RATP. 4 mètres de haut — aussi haut qu'un bus anglais à deux étages. 8 mille kilos — aussi lourd que 3 hippopotames.
 
 **WEX** [curious] : Et ses petits bras ?
 

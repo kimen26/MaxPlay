@@ -58,7 +58,7 @@
 
 ### BLOC B — Taille
 
-**NARRATEUR H** [excited] : 6 mètres de long — aussi long qu'une rue à deux voies est large. 1 mètre 50 de haut — plus grand que toi. 2 tonnes 200 — aussi lourd qu'un rhinocéros.
+**NARRATEUR H** [excited] : 6 mètres de long — aussi long qu'une rue à deux voies est large. 1 mètre 50 de haut — aussi haut qu'une voiture, il fallait lever la tête. 2 tonnes 200 — aussi lourd qu'un rhinocéros.
 
 **WEX** [curious][gasps] : Plus petit que l'Ankylosaure, mais aussi lourd ?
 
@@ -98,7 +98,7 @@
 
 ### BLOC B — Taille
 
-**NARRATEUR H** [excited] : 9 mètres de long — comme deux voitures garées à la suite. 2 mètres 80 de haut — aussi haut qu'un panier de basket. 4 tonnes — aussi lourd qu'un hippopotame.
+**NARRATEUR H** [excited] : 9 mètres de long — aussi long qu'un camion. 2 mètres 80 de haut — aussi haut qu'un panier de basket. 4 tonnes — aussi lourd qu'un hippopotame.
 
 **WEX** [curious][gasps] : Un panier de basket ? C'était grand.
 
@@ -138,7 +138,7 @@
 
 ### BLOC B — Taille
 
-**NARRATEUR H** [excited] : 4 mètres 50 de long — aussi long qu'un grand 4×4. 1 mètre 50 de haut — plus grand que toi. 1 tonne — aussi lourd qu'une vache.
+**NARRATEUR H** [excited] : 4 mètres 50 de long — aussi long qu'un grand 4×4. 1 mètre 50 de haut — aussi haut qu'une voiture, il fallait lever la tête. 1 tonne — aussi lourd qu'un cheval de trait.
 
 **WEX** [curious][gasps] : Plus petit que le Stégosaure ?
 
@@ -218,7 +218,7 @@
 
 ### BLOC B — Taille
 
-**NARRATEUR H** [excited] : 3 mètres 50 de long — comme une petite voiture. 1 mètre 80 de haut — aussi grand que Papa debout. 250 kilos — aussi lourd qu'un gros cochon.
+**NARRATEUR H** [excited] : 3 mètres 50 de long — comme une petite voiture. 1 mètre 80 de haut — aussi grand que Papa debout. 250 kilos — aussi lourd qu'un ours brun.
 
 **WEX** [curious][gasps] : Et la voile sur le dos ? Elle faisait quelle taille ?
 

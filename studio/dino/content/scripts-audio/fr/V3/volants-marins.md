@@ -50,7 +50,7 @@
 
 ### BLOC A — Présentation
 
-**NARRATEUR H** [excited] : Kèt-zal-ko-atluss. Son nom vient du dieu aztèque Quetzalcoatl — le serpent à plumes. Et ce reptile volant était le plus grand animal volant de tous les temps.
+**NARRATEUR H** [excited] : Kèt-zal-ko-atluss. Son nom vient du dieu aztèque Quetzalcoatl — le serpent à plumes. Et ce reptile volant était un des plus grands animaux volants de tous les temps.
 
 **WEX** [curious][gasps] : Plus grand qu'un avion ?
 
@@ -78,7 +78,7 @@
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [excited] : Le plus grand animal volant de toute l'histoire. Il pouvait traverser des milliers de kilomètres en un jour, comme les oiseaux migrateurs d'aujourd'hui.
+**NARRATEUR H** [excited] : Un des plus grands animaux volants de toute l'histoire. Il pouvait traverser des milliers de kilomètres en un jour, comme les oiseaux migrateurs d'aujourd'hui.
 
 **WEX** [gasps] : Tout un continent en un jour.
 
@@ -132,7 +132,7 @@
 
 **NARRATEUR H** [excited] : Mo-sa-saure. Son nom vient de la Meuse — « Mosa » en latin — une rivière d'Europe où on a trouvé ses os. Et « saure », c'est le lézard. Le lézard de la Meuse.
 
-**WEX** [curious] : C'est un dinosaure ?
+**WEX** [curious] : C'est un cousin des dinosaures ?
 
 **NARRATEUR H** [serious] : Non. C'est un énaliosaure, un reptile marin géant. Cousin lointain des varans et des serpents. Il nageait dans toutes les mers du monde, il y a 70 millions d'années.
 
@@ -146,7 +146,7 @@
 
 **WEX** [gasps] : 17 mètres ?
 
-**NARRATEUR H** [confident] : Imagine deux voitures l'une derrière l'autre, mais qui nagent, avec une queue de requin et une gueule immense.
+**NARRATEUR H** [confident] : Imagine deux bus l'un derrière l'autre, mais qui nagent, avec une queue de requin et une gueule immense.
 
 ### BLOC C — Comment il vivait
 
@@ -218,7 +218,7 @@
 
 ### BLOC B — Taille
 
-**NARRATEUR H** [excited] : 4 mètres de long — comme une petite voiture. 1 mètre de haut — aussi grand qu'un enfant de 4 ans. Et 950 kilos — aussi lourd qu'une vache.
+**NARRATEUR H** [excited] : 4 mètres de long — comme une petite voiture. 1 mètre de haut — aussi grand qu'un enfant de 4 ans. Et 950 kilos — aussi lourd qu'un cheval de trait.
 
 **WEX** [curious] : C'est pas si grand.
 
@@ -248,7 +248,7 @@
 
 **NARRATEUR H** [excited] : Li-o-pleu-ro-don. Trois morceaux grecs. « Leios », c'est lisse. « Pleura », c'est le côté. Et « odon », c'est la dent. La dent aux flancs lisses.
 
-**WEX** [curious] : C'est un dinosaure ?
+**WEX** [curious] : Il vivait avec les dinosaures ?
 
 **NARRATEUR H** [serious] : Non. C'est un pliosaure, un énaliosaure — un reptile marin au cou court et à la grande gueule. Il vivait au Jurassique, il y a 165 millions d'années, en France et en Angleterre.
 
@@ -274,11 +274,11 @@
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [excited] : Une émission de télé en 1999 avait dit que le Liopleurodon faisait 25 mètres. Les vrais scientifiques ont rectifié : 6 à 7 mètres seulement. Beaucoup moins grand, mais toujours aussi redoutable.
+**NARRATEUR H** [excited] : Pendant longtemps, on a raconté que le Liopleurodon faisait 25 mètres. Puis les savants ont mesuré ses os pour de vrai : 6 à 7 mètres. Beaucoup moins grand, mais toujours aussi redoutable.
 
-**WEX** [curious] : La télé s'était trompée.
+**WEX** [curious] : Ils s'étaient trompés.
 
-**NARRATEUR H** [softly] : Oui. Même les adultes se trompent parfois. C'est pour ça qu'on vérifie avec les os.
+**NARRATEUR H** [softly] : Oui. Même les grands se trompent parfois. C'est pour ça qu'on vérifie toujours avec les vrais os.
 
 ---
 
@@ -381,7 +381,7 @@
 
 ### BLOC B — Taille
 
-**NARRATEUR H** [excited] : 2 mètres de long — aussi long qu'une moto. 50 centimètres de haut — il t'arrivait aux genoux. 150 kilos — aussi lourd qu'un gros cochon.
+**NARRATEUR H** [excited] : 2 mètres de long — aussi long qu'une moto. 50 centimètres de haut — il t'arrivait aux fesses. 150 kilos — aussi lourd qu'un gros cochon.
 
 **WEX** [gasps] : Pas très grand.
 

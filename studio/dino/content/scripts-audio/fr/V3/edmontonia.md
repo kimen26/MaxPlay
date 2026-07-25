@@ -15,7 +15,7 @@
 
 ### BLOC B — Taille
 **NARRATEUR H** [excited] : Six mètres et demi de long — aussi long qu'une rue à deux voies est large, il barrait la route. Bas sur ses pattes, un mètre et demi de haut. Et trois mille kilos — aussi lourd que deux rhinocéros.
-**WEX** [gasps] : Deux rhinocéros !
+**WEX** [gasps] : Deux rhinocéros.
 **NARRATEUR H** [confident] : Oui. Une vraie forteresse sur pattes, mais bien à plat sur le sol.
 
 ### BLOC C — Comment il vivait

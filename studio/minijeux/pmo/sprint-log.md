@@ -1439,3 +1439,7 @@ Corrections PY appliquées : lignes 2-3× plus petites · **seul le dino se dép
 - Agents : V2/V3/V4 délégués (timeout mais fichiers livrés complets), qualité validée par screenshots + retouches maison.
 
 **En attente** : choix PY de la variante (ou mix) → refonte réelle du Mur.
+
+## 2026-07-25 — Bug ombre geante + tour factorisation quick wins
+
+Bug menu PY (ombre Diplodocus geante) : cause = vignette mj-30 jeu-du-jour, cache desync mur.js/mur.css -> filet CSS generique .vig img plafonne (447c76cd). Tour factorisation : 3 analyses lecture seule puis 3 agents implementation (0f8b2116, 33 fichiers, -218 lignes nettes) : MJKit.shuffle/pickDistinct (19 jeux, shuffle biaise corrige mj-13a/b/c/15/16, TDZ mj-13c), MJKit.PHONEMES/sayPhoneme (50/51/52 unifies), speak() bruts -> TTS.speak (22/43/44/45), sndOk -> sounds.js (mj-08/09 2e AudioContext supprime), .htitle locaux supprimes (42/43/44/45/47), confetti maison -> MaxFX (11/17/21/37/39). Harnais verts partout + verif croisee. GROS CHANTIERS EN ATTENTE ARBITRAGE PY (backlog 2026-07-25) : QCM->MJKit.qcm x19 + MJCompte, PlayAudio.cue, showEnd sans piste, DnD partage, trilogie 13 LIGNES+fonds, mj-01/13b ancien gabarit.

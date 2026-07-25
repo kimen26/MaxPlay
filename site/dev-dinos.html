@@ -1433,6 +1433,48 @@ function closeCarousel() {
 
 /* ── Extras par dino (images paléoart générées 2026-06-28) ── */
 const DINO_EXTRAS = {
+  minmi:[
+    {folder:'paleoart',file:'Minmi_manger.jpg',label:'Ce qu\'il mange'},
+    {folder:'paleoart',file:'Minmi_paris.jpg',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Minmi_ecosysteme.jpg',label:'Son monde'},
+    {folder:'paleoart',file:'Minmi_funfact.jpg',label:'Le savais-tu ?'},
+  ],
+  scutellosaurus:[
+    {folder:'paleoart',file:'Scutellosaurus_manger.jpg',label:'Ce qu\'il mange'},
+    {folder:'paleoart',file:'Scutellosaurus_paris.jpg',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Scutellosaurus_ecosysteme.jpg',label:'Son monde'},
+    {folder:'paleoart',file:'Scutellosaurus_funfact.jpg',label:'Le savais-tu ?'},
+  ],
+  maiasaura:[
+    {folder:'paleoart',file:'Maiasaura_manger.jpg',label:'Ce qu\'elle mange'},
+    {folder:'paleoart',file:'Maiasaura_paris.jpg',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Maiasaura_ecosysteme.jpg',label:'Son monde'},
+    {folder:'paleoart',file:'Maiasaura_funfact.jpg',label:'Le savais-tu ?'},
+  ],
+  edaphosaurus:[
+    {folder:'paleoart',file:'Edaphosaurus_manger.jpg',label:'Ce qu\'il mange'},
+    {folder:'paleoart',file:'Edaphosaurus_paris.jpg',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Edaphosaurus_ecosysteme.jpg',label:'Son monde'},
+    {folder:'paleoart',file:'Edaphosaurus_funfact.jpg',label:'Le savais-tu ?'},
+  ],
+  gorgonops:[
+    {folder:'paleoart',file:'Gorgonops_manger.jpg',label:'Ce qu\'il mange'},
+    {folder:'paleoart',file:'Gorgonops_paris.jpg',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Gorgonops_ecosysteme.jpg',label:'Son monde'},
+    {folder:'paleoart',file:'Gorgonops_funfact.jpg',label:'Le savais-tu ?'},
+  ],
+  lystrosaurus:[
+    {folder:'paleoart',file:'Lystrosaurus_manger.jpg',label:'Ce qu\'il mange'},
+    {folder:'paleoart',file:'Lystrosaurus_paris.jpg',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Lystrosaurus_ecosysteme.jpg',label:'Son monde'},
+    {folder:'paleoart',file:'Lystrosaurus_funfact.jpg',label:'Le savais-tu ?'},
+  ],
+  moschops:[
+    {folder:'paleoart',file:'Moschops_manger.jpg',label:'Ce qu\'il mange'},
+    {folder:'paleoart',file:'Moschops_paris.jpg',label:'Dans Paris !'},
+    {folder:'paleoart',file:'Moschops_ecosysteme.jpg',label:'Son monde'},
+    {folder:'paleoart',file:'Moschops_funfact.jpg',label:'Le savais-tu ?'},
+  ],
   corythosaurus:[
     {folder:'paleoart',file:'Corythosaurus_manger.jpg',label:'Ce qu\'il mange'},
     {folder:'paleoart',file:'Corythosaurus_paris.jpg',label:'Dans Paris !'},
@@ -1882,6 +1924,14 @@ function _audioSet(id) {
 }
 // Dinos avec audio ElevenLabs (duo Narrateur+Wex, 4 blocs + recap). Absent du map = TTS live navigateur.
 const DINO_AUDIO = {
+  // Vague 2026-07-25 : 3 dinos + 4 synapsides du Permien (dialogues V3, eleven_v3, loudnorm)
+  minmi:            _audioSet('minmi'),
+  scutellosaurus:   _audioSet('scutellosaurus'),
+  maiasaura:        _audioSet('maiasaura'),
+  edaphosaurus:     _audioSet('edaphosaurus'),
+  gorgonops:        _audioSet('gorgonops'),
+  lystrosaurus:     _audioSet('lystrosaurus'),
+  moschops:         _audioSet('moschops'),
   // Nouveaux dinos 2026-07-20 (dialogues V3 Narrateur H + Wex, eleven_v3 stability 0,4)
   corythosaurus:  _audioSet('corythosaurus'),
   hatzegopteryx:  _audioSet('hatzegopteryx'),
@@ -1971,6 +2021,11 @@ const DINO_AUDIO_VERSION = {
   deinonychus: 'V3', utahraptor: 'V3', microraptor: 'V3', troodon: 'V3', gallimimus: 'V3', oviraptor: 'V3',
   aenocyon: 'V3', coelodonta: 'V3', edmontonia: 'V3', glyptodon: 'V3', mammuthus: 'V3',
   megatherium: 'V3', paraceratherium: 'V3', smilodon: 'V3', titanis: 'V3',
+  minmi: 'V3', scutellosaurus: 'V3', maiasaura: 'V3', edaphosaurus: 'V3',
+  gorgonops: 'V3', lystrosaurus: 'V3', moschops: 'V3',
+  // Oubliés lors de la vague 2026-07-20 : leur audio est bien V3, mais l'absence
+  // de cette ligne leur faisait afficher le badge V1 « candidat à relancer ».
+  corythosaurus: 'V3', hatzegopteryx: 'V3',
 };
 function dinoAudioVersion(id) { return DINO_AUDIO_VERSION[id] || 'V1'; }
 

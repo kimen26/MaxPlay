@@ -114,7 +114,8 @@ try {
 
     if (url.pathname === "/permission" && req.method === "POST") {
       if (ALLOWED_CHAT_ID === null) {
-        return Response.json({ decision: "allow" });
+        // Fail-closed (audit sécu 2026-07-25) : pas de destinataire = refus.
+        return Response.json({ decision: "deny" });
       }
 
       let body: { tool_name?: string; tool_input?: unknown; [key: string]: unknown } = {};
@@ -364,7 +365,9 @@ bot.on("callback_query:data", async (ctx) => {
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function isAllowed(ctx: Context): boolean {
-  if (ALLOWED_CHAT_ID === null) return true;
+  // Fail-closed (audit sécu 2026-07-25) : sans ALLOWED_CHAT_ID configuré,
+  // personne ne passe. /start reste accessible pour lire son chat id.
+  if (ALLOWED_CHAT_ID === null) return false;
   return ctx.chat?.id === ALLOWED_CHAT_ID;
 }
 

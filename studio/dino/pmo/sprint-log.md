@@ -799,6 +799,27 @@
 
 ---
 
+## 2026-07-25 — Vague +7 bêtes (3 dinos + 4 synapsides du Permien)
+
+**Demande PY :** « ajouter minmi Scutellosaurus Edaphosaurus Gorgonops Lystrosaurus mochops Maiasaure », process complet (recherche, texte, relecture, dialogue Wex, tags audio, images) + question « on n'a pas un truc qui détaille tout ce process et j'ai juste à te demander d'ajouter un nom ? ».
+
+**Réponse à la question :** oui — [`content/sources/_PLAYBOOK-DINO-NOUVEAU.md`](../content/sources/_PLAYBOOK-DINO-NOUVEAU.md) (7 phases + checklist 8 axes). Il est **documenté mais pas automatisé** : il faut encore donner les noms et le dérouler à la main. Piste à arbitrer : une commande `/dino-nouveau <noms>` qui enchaîne les phases 1 à 5.
+
+**Fait :**
+- **Fact-check** (2 lots en parallèle, Grokipedia 1ʳᵉ source puis Wikipedia). Point taxo tranché : **6 des 7 ne sont pas des dinosaures**. Édaphosaure/Gorgonops/Lystrosaure/Moschops = synapsides → famille `volant` « Avant les dinosaures » (**1 → 5 membres**), cohérent avec l'honnêteté taxo L-D03 (précédent Titanis). Son `explic` ne décrivait que le Dimétrodon : réécrit pour les 5.
+- **Data** 62 → **69**, intégrité vérifiée par script (clés famille/cat/période valides, ids uniques, 0 champ manquant).
+- **Dialogues V3** : 28 blocs A/B/C/D, grep-interdits passé sur les lignes narrées, 0 `!` final chez Wex. Corrigés à la relecture : bloc D Gorgonops trop appuyé sur la blessure (règle prédation-sans-gore), doublon B/C, accord féminin Maiasaura, et **une erreur factuelle** (« juste après lui, une catastrophe » → il a vécu **pendant**).
+- **Audio** : 35 MP3 (28 blocs + 7 recaps), eleven_v3 + loudnorm, manifeste régénéré (69 ids).
+- **Étymo** 69 → **76** racines ; lexique de prononciation complété (**Moschops → « Mos-kops »**, khi grec, même règle que Brachiosaure — l'usage FR courant dirait « Mos-chops » mais la règle écrite prime).
+- **3 bugs corrigés au passage** : L-D-52 (`_compPoids`, 17 dinos déployés mentaient jusqu'à +400 %), L-D-53 (clé ElevenLabs lue au mauvais endroit depuis la norme secrets → scripts audio cassés), + frontmatter `narration-audio-writer` (agent rejeté au lancement, trace côté narration).
+
+**Non fait :**
+- **Paléoart (7 × 5 scènes)** — canal bloqué, voir L-D-54 + backlog. Générateur durci en amont (signatures MORPHO des 7, mot « dinosaure » rendu conditionnel à la famille), prêt dès que le canal répond.
+
+**État au reboot :**
+- **69 dinos**, tous avec data + audio complets. **9 sans paléoart** (les 7 + Corythosaurus + Hatzegopteryx).
+- Commit `ae4adfdb` (82 fichiers), **non poussé** — arbitrage PY : pousser maintenant ou attendre les images.
+
 ---
 
 > 📦 Entrées 2026-06 archivées → [`_archive/sprint-log-2026-06.md`](_archive/sprint-log-2026-06.md) (2026-07-18).

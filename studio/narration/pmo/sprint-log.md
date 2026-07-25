@@ -2290,3 +2290,7 @@ Du skill game-pmo et audit, 6 challenges transmis pour narration-pmo :
 **État au reboot :**
 - Casting figé (voir `decisions.md`)
 - STORY-001-V2 ouvert
+
+## 2026-07-25 — Outil relecture refondu (retour PY)
+
+lecture.html/lecture-data.js n exposaient que STORY-002 (3 versions). Livre (f6603f55) : gen-lecture-data.mjs (scan stories, top 5 panel/histoire, anonymat writers garanti par test), 8 histoires / 51 versions, UX 3 ecrans (accueil numero+titre+progression -> versions avec etat -> lecture segments+chips conserves), verdict par version + version preferee, scroll memorise, push Supabase inchange. Annotation Supabase id 3 (export vide vague 6) passee traite. Anomalies GED gravees au backlog (kanbans 004/008 desynchro, 002 writers vague 6 archives introuvables, deepseek-reco corrompue x3).

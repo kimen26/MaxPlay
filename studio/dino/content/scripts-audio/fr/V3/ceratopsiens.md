@@ -136,7 +136,7 @@
 
 **NARRATEUR H** [excited] : 6 mètres de long — aussi long qu'une rue à deux voies est large. 2 mètres de haut — aussi haut qu'une porte. 5 mille kilos — aussi lourd que 2 hippopotames.
 
-**WEX** [gasps] : Trois rhinocéros.
+**WEX** [gasps] : Deux hippopotames.
 
 **NARRATEUR H** [confident] : Oui. Un costaud avec une tête encore plus impressionnante que son corps.
 

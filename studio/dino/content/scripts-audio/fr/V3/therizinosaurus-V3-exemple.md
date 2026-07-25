@@ -31,7 +31,7 @@ Objectif V3 : **~50-60 s au total** (~12-15 s par segment), tout en gardant tout
 
 **WEX** [curious][gasps] : Et ses griffes ? Elles étaient grandes comment ?
 
-**NARRATEUR H** [playful] : UN MÈTRE chacune. Les PLUS LONGUES griffes de tous les animaux de l'histoire.
+**NARRATEUR H** [playful] : CINQUANTE CENTIMÈTRES chacune. Les PLUS LONGUES griffes de tous les animaux de l'histoire.
 
 ---
 
@@ -59,11 +59,11 @@ Objectif V3 : **~50-60 s au total** (~12-15 s par segment), tout en gardant tout
 
 Version plus rythmée du bloc B, avec tags répartis et majuscules :
 
-**NARRATEUR H** [excited] : 10 mètres de long — aussi long qu'un bus de Paris. [quickly] 5 mètres de haut, 5 tonnes — UN MÈTRE de griffe par main.
+**NARRATEUR H** [excited] : 10 mètres de long — aussi long qu'un bus de Paris. [quickly] 5 mètres de haut, 5 tonnes — CINQUANTE CENTIMÈTRES de griffe par main.
 
 **WEX** [curious][gasps] : UN MÈTRE ? Mais… c'est grand comme moi.
 
-**NARRATEUR H** [playful] : Exactement. Une griffe aussi grande que TOI. Les plus longues de l'histoire.
+**NARRATEUR H** [playful] : Exactement. Une griffe presque aussi longue que ton bras. Les plus longues de l'histoire.
 
 ---
 

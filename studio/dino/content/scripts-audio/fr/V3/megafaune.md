@@ -16,7 +16,7 @@
 
 ### BLOC B — Taille
 **NARRATEUR H** [excited] : Cinq mètres et demi de long — aussi long qu'un grand quatre-quatre. Debout, trois mètres — comme deux Papas l'un sur l'autre. Et cinq mille kilos — aussi lourd que deux hippopotames.
-**WEX** [gasps] : Deux hippopotames !
+**WEX** [gasps] : Deux hippopotames.
 **NARRATEUR H** [confident] : Oui. Et ses deux défenses recourbées faisaient plus de quatre mètres.
 
 ### BLOC C — Comment il vivait
@@ -33,7 +33,7 @@
 
 ### BLOC A — Présentation
 **NARRATEUR H** [excited] : Smi-lo-don. En grec, smilo veut dire couteau. Et odon veut dire dent. La dent-couteau.
-**WEX** [curious] : Le tigre à dents de sabre !
+**WEX** [curious] : Le tigre à dents de sabre.
 **NARRATEUR H** [happily] : Voilà, mais ce n'était pas un tigre. Il vivait en Amérique, à l'âge de glace, à côté du Loup terrible.
 **WEX** [curious] : Ils chassaient ensemble ?
 **NARRATEUR H** [confident] : Non, ils se disputaient plutôt les mêmes proies.
@@ -50,7 +50,7 @@
 
 ### BLOC D — Le truc fou
 **NARRATEUR H** [excited] : Ses deux canines du haut mesuraient presque vingt centimètres — plus longues que ta main.
-**WEX** [gasps] : Plus longues que ma main !
+**WEX** [gasps] : Plus longues que ma main.
 **NARRATEUR H** [playful] : Il ne s'en servait pas pour mâcher, mais pour planter un coup précis, comme un couteau.
 
 ## Mégathère — Megatherium americanum
@@ -74,7 +74,7 @@
 
 ### BLOC D — Le truc fou
 **NARRATEUR H** [excited] : Pour attraper les feuilles tout en haut, il se dressait sur ses pattes arrière en s'appuyant sur sa grosse queue.
-**WEX** [gasps] : Debout sur sa queue !
+**WEX** [gasps] : Debout sur sa queue.
 **NARRATEUR H** [playful] : Comme sur un tabouret. Et ses griffes étaient longues comme ton avant-bras.
 
 ## Paracérathérium — Paraceratherium
@@ -88,7 +88,7 @@
 
 ### BLOC B — Taille
 **NARRATEUR H** [excited] : Huit mètres de long — comme deux voitures l'une derrière l'autre. Debout, cinq mètres — presque trois Papas l'un sur l'autre. Et dix-sept mille kilos — aussi lourd que trois éléphants.
-**WEX** [gasps] : Trois éléphants !
+**WEX** [gasps] : Trois éléphants.
 **NARRATEUR H** [confident] : Oui. Le plus grand animal à poils qui ait jamais marché sur la Terre.
 
 ### BLOC C — Comment il vivait

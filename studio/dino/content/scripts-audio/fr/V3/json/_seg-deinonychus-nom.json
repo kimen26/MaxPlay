@@ -6,19 +6,19 @@
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Une grosse griffe."
+      "text": "[curious] Une griffe en forme de faucille."
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[happily] Exactement. Il vivait en Amérique du Nord, il y a 115 millions d'années. C'est le vrai modèle des raptors de Jurassic Park."
+      "text": "[happily] Tout à fait. Il vivait en Amérique du Nord, il y a 115 millions d'années. Et quand on imagine un grand raptor chasseur, c'est à lui qu'on pense sans le savoir."
     },
     {
       "voice_id": "G54e8CyYslC2Y4ZupTlg",
-      "text": "[curious] Ceux du film, c'était lui ?"
+      "text": "[curious] Pas au Vélociraptor ?"
     },
     {
       "voice_id": "cbRcktt2xvoeFpdvW2wg",
-      "text": "[playful] Presque. Dans le film on les appelle Vélociraptors, mais en vrai ils ressemblaient au Deinonychus."
+      "text": "[playful] Non. Le Vélociraptor, lui, était tout petit. Le grand chasseur à griffe, c'est le Deinonychus."
     }
   ],
   "model_id": "eleven_v3",

@@ -197,7 +197,7 @@
 
 ### BLOC D — Le truc fou
 
-**NARRATEUR H** [excited] : Le vrai Vélociraptor avait des PLUMES. Il ressemblait à un oiseau de terre, pas au monstre du cinéma.
+**NARRATEUR H** [excited] : Le vrai Vélociraptor avait des PLUMES. Il ressemblait à un gros oiseau qui court, pas du tout au monstre tout nu qu'on imagine.
 
 **WEX** [gasps] : Des plumes ?
 
@@ -211,13 +211,13 @@
 
 **NARRATEUR H** [excited] : Daï-no-ni-kuss. « Deino » en grec, c'est terrible, effrayant. Et « nychus », c'est la griffe. La griffe terrible.
 
-**WEX** [curious] : Une grosse griffe.
+**WEX** [curious] : Une griffe en forme de faucille.
 
-**NARRATEUR H** [happily] : Exactement. Il vivait en Amérique du Nord, il y a 115 millions d'années. C'est le vrai modèle des raptors de Jurassic Park.
+**NARRATEUR H** [happily] : Tout à fait. Il vivait en Amérique du Nord, il y a 115 millions d'années. Et quand on imagine un grand raptor chasseur, c'est à lui qu'on pense sans le savoir.
 
-**WEX** [curious] : Ceux du film, c'était lui ?
+**WEX** [curious] : Pas au Vélociraptor ?
 
-**NARRATEUR H** [playful] : Presque. Dans le film on les appelle Vélociraptors, mais en vrai ils ressemblaient au Deinonychus.
+**NARRATEUR H** [playful] : Non. Le Vélociraptor, lui, était tout petit. Le grand chasseur à griffe, c'est le Deinonychus.
 
 ### BLOC B — Taille
 

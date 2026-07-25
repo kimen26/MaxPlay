@@ -825,4 +825,28 @@
 
 ---
 
+## 2026-07-25 (2) — MÉGA-AUDIT 100 % du corpus (69 dinos)
+
+**Demande PY :** « refais un tour de 100% des textes images des dinos, autant le fond que la forme que les chiffres que les images, anatomie, variété, fluidité logique, prends ton temps ».
+
+**Méthode :** 3 audits mécaniques scriptés (intégrité data, échelle honnête, doublons/orphelins d'images, câblage) + **6 agents `dino-conseiller`** en parallèle (textes de fiche et dialogues V3, fact-check Grokipedia/Wikipedia) + **audit visuel** des 69 scènes Paris via planches contact (12 vignettes/planche, pour tenir 407 images sans exploser le contexte).
+
+**23 corrections appliquées** — détail complet et raisons dans [`backlog.md`](backlog.md) § 2026-07-25 MEGA-AUDIT. Les 4 familles :
+1. **Faussetés factuelles** : griffes du Thérizinosaure (1 m → **52 cm**, l'erreur vivait sur 6 supports), Patagotitan (37 → **31 m**), superlatifs absolus contestés ou **contradictoires entre deux fiches** (Torosaurus vs Pentaceratops revendiquaient la même « plus grande tête »).
+2. **Règle figée violée** : **5 références culturelles d'adulte** (Jurassic Park, « le film », « une émission de télé en 1999 »). Le fond pédagogique a été gardé, l'habillage adulte retiré.
+3. **Chiffres narrés ≠ canon** (l'enfant entendait autre chose que la fiche) : 10 cas, dont un chiffre **inventé** par Wex (« trois rhinocéros » juste après « 2 hippopotames »).
+4. **Règles Wex** : 6 `!` finaux, 3 répliques recyclées à l'identique.
+
+**Images :** `Apatosaurus_paris` était le **doublon binaire exact** de `Apatosaurus_manger` (forêt au lieu de Paris) et `Dilophosaurus_paris` montrait un marécage → régénérées et redéployées.
+
+**Audio :** **80 blocs + 20 recaps régénérés** — tout texte corrigé impose de refaire le MP3, sinon l'enfant continue d'entendre l'erreur (leçon **L-D-55**).
+
+**Deux leçons gravées :** L-D-55 (un chiffre faux se propage sur 6 supports à la fois) · **L-D-56** (le détecteur d'écart par comparaison de chaînes a produit 42 alertes pour **1 vrai écart** — calibrer avant de rapporter).
+
+**État au reboot :**
+- 69 dinos, intégrité data OK, **0 doublon d'image**, page 69/69/69, 0 erreur console, 0 404.
+- Restes **non bloquants à arbitrer** : bus rouges non-RATP (3 dinos), traitement marin non uniformisé (aquarium vs rue inondée vs pleine mer), Gallimimus dessiné trop grand. Voir backlog.
+
+---
+
 > 📦 Entrées 2026-06 archivées → [`_archive/sprint-log-2026-06.md`](_archive/sprint-log-2026-06.md) (2026-07-18).

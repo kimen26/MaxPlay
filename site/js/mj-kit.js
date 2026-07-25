@@ -182,5 +182,26 @@
     } catch (e) {}
   }
 
-  global.MJKit = { shuffle, pickDistinct, oeuf, pastille, qcm, calcLine, calcReset, avatarPool, decor, PHONEMES, sayPhoneme };
+  // ── chain(id) : jeu précédent/suivant dans l'ordre du catalogue (chantier
+  // NID, 2026-07-26). Source UNIQUE = window.MAXPLAY_CATALOG (catalog.js).
+  // Ordre = celui des entrées de la MÊME catégorie (category), jeux 'html'
+  // 'live' seulement (pas les outils encyclo/phaser/wip). Boucle en fin de
+  // catégorie → 1er jeu de la catégorie suivante (wrap global en fin de liste).
+  // Défensif : retourne {next:null, prev:null} si catalog absent/jeu absent.
+  function chain(id) {
+    const cat = global.MAXPLAY_CATALOG;
+    if (!Array.isArray(cat) || !cat.length) return { next: null, prev: null };
+    const eligible = cat.filter(c => c.type === 'html' && c.status === 'live');
+    const i = eligible.findIndex(c => c.id === id);
+    if (i === -1) return { next: null, prev: null };
+    const n = eligible.length;
+    const next = eligible[(i + 1) % n];
+    const prev = eligible[(i - 1 + n) % n];
+    return {
+      next: next && next.id !== id ? next : null,
+      prev: prev && prev.id !== id ? prev : null,
+    };
+  }
+
+  global.MJKit = { shuffle, pickDistinct, oeuf, pastille, qcm, calcLine, calcReset, avatarPool, decor, PHONEMES, sayPhoneme, chain };
 })(window);

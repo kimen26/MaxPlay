@@ -102,7 +102,10 @@
 
     s.pending.push({ golden: !!golden, at: now });
     save(s);
-    return { count: s.pending.length, golden: s.pending.filter(function (c) { return c.golden; }).length };
+    // justGolden : cette capsule précise est-elle dorée (P2/mj-golden en a besoin
+    // pour teinter l'anim eggEarned) — additif, ne change pas le contrat existant
+    // `golden` (nb de capsules dorées en attente).
+    return { count: s.pending.length, golden: s.pending.filter(function (c) { return c.golden; }).length, justGolden: !!golden };
   }
 
   // ── Capsules en attente ──────────────────────────────────────────────────

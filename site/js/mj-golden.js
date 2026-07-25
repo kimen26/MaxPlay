@@ -159,7 +159,8 @@
           ? 'Niveau MAXIMUM&nbsp;! Champion&nbsp;!'
           : 'Recommence et essaie de gagner la ' + (newStars + 1) + 'ᵉ étoile&nbsp;!';
       } else {
-        title = (function(){try{var k=(JSON.parse(localStorage.getItem('maxplay_active_child'))||{}).nickname;return k?'Bien joué '+k+'&nbsp;!':'Bien joué&nbsp;!';}catch(e){return 'Bien joué&nbsp;!';}})();
+        // Surnom échappé : donnée saisie (compte parent, demain sync serveur) → jamais en HTML brut
+        title = (function(){try{var k=(JSON.parse(localStorage.getItem('maxplay_active_child'))||{}).nickname;if(!k)return 'Bien joué&nbsp;!';var d=document.createElement('div');d.textContent=k;return 'Bien joué '+d.innerHTML+'&nbsp;!';}catch(e){return 'Bien joué&nbsp;!';}})();
         sub = 'Si tu fais un sans-faute, tu gagnes une étoile&nbsp;!';
       }
       const dly = perfect ? ['3s', '3.2s', '3.4s'] : ['.3s', '.5s', '.7s'];

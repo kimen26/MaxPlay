@@ -2294,3 +2294,15 @@ Du skill game-pmo et audit, 6 challenges transmis pour narration-pmo :
 ## 2026-07-25 — Outil relecture refondu (retour PY)
 
 lecture.html/lecture-data.js n exposaient que STORY-002 (3 versions). Livre (f6603f55) : gen-lecture-data.mjs (scan stories, top 5 panel/histoire, anonymat writers garanti par test), 8 histoires / 51 versions, UX 3 ecrans (accueil numero+titre+progression -> versions avec etat -> lecture segments+chips conserves), verdict par version + version preferee, scroll memorise, push Supabase inchange. Annotation Supabase id 3 (export vide vague 6) passee traite. Anomalies GED gravees au backlog (kanbans 004/008 desynchro, 002 writers vague 6 archives introuvables, deepseek-reco corrompue x3).
+
+## 2026-07-25 — Correctif agent narration-audio-writer (touche depuis une session DINO)
+
+**Contexte :** session pole DINO (ajout de 7 betes), besoin d ecrire des dialogues audio -> invocation de `narration-audio-writer`.
+
+**Bug :** l agent etait **rejete au lancement** ("would be spawned with zero tools : unrecognized [All, tools]"). Son frontmatter portait `tools: All tools`, valeur invalide parsee comme deux outils inexistants. C etait le SEUL agent du repo a declarer une clef `tools:` — tous les autres l omettent, ce qui vaut "tous les outils". Ligne supprimee.
+
+**Portee :** l agent etait donc **inutilisable depuis sa creation** cote invocation Task. A verifier : depuis quand, et si des sessions narration l ont contourne sans le signaler. Le harnais lit les agents au demarrage, le correctif prend effet a la prochaine session.
+
+**Contournement du tour :** dialogues ecrits par `dino-conseiller` (competent contenu dino + memes regles chargees), resultat conforme (grep-interdits passe, regles Wex tenues).
+
+**Lecon :** meme famille que `feedback_agent_frontmatter` (frontmatter casse = agent rejete silencieusement). Ici ce n est pas la `description:` mais `tools:`. Aucune validation ne couvre ce champ — un `ls .claude/agents` + parse du frontmatter en audit FORME l aurait vu.

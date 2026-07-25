@@ -14,14 +14,14 @@
 
 | Quoi | Valeur | Source |
 |------|--------|--------|
-| Dinos (entrées `DINOS`) | **62** | `site/js/dinos-data.js` (✅ 2026-07-19 : +Corythosaurus, Ornithopodes 3→4 · ✅ 2026-07-20 : +Hatzegopteryx, Ptérosaures 2→3. Données seules pour ces deux : assets paléoart + audio à produire) |
-| Familles (`DINO_FAMILLES`) | **11** | idem (✅ 2026-07-03 : +2 familles `mammiferes` + `oiseaux` ; famille `arme` passe 4→5 dinos) |
+| Dinos (entrées `DINOS`) | **69** | `site/js/dinos-data.js` (✅ 2026-07-19 : +Corythosaurus, Ornithopodes 3→4 · ✅ 2026-07-20 : +Hatzegopteryx, Ptérosaures 2→3 · ✅ **2026-07-25 : +7** — Minmi + Scutellosaure (Thyréophores 5→7), Maiasaura (Ornithopodes 4→5), Édaphosaure + Gorgonops + Lystrosaure + Moschops (**« Avant les dinosaures » 1→5**). Data + audio faits ; **paléoart à produire pour ces 7**) |
+| Familles (`DINO_FAMILLES`) | **11** | idem (✅ 2026-07-03 : +2 familles `mammiferes` + `oiseaux` ; famille `arme` passe 4→5 dinos, puis 5→7 le 2026-07-25) |
 | Régimes alimentaires (`DINO_CATEGORIES`) | **4** | idem (inchangé) |
 | Périodes (`DINO_PERIODES`) | **5** | ✅ 2026-07-03 : ajout `cenozoique` (66 Ma → aujourd'hui), rejoins les 4 antérieures (Triassic, Jurassic, Crétacé, Autres) |
 | Récits d'époque (voyage) | **8** | `audio/dinos/recit-*.mp3` |
 | Accroches menu (voix réelle) | **17** | `audio/dinos/menu-*.mp3` (4 onglets + 9 familles `menu-fam-*` + 4 régimes `menu-regime-*`) |
 | Spéciaux (Pangée, Extinction) | **2** | `audio/dinos/special-*.mp3` |
-| Dinos avec audio complet (recap+4 blocs) | **62** | `DINO_AUDIO` (✅ 2026-07-13 : 9 Cénozoïque complétés — 27 blocs text-to-dialogue + 9 recaps, textes V3, commit 8826e489. Plus aucun dino en attente. Audit archiviste : disque conforme, écarts regime 61/recap 62 = menu-regime + special-* légitimes.) |
+| Dinos avec audio complet (recap+4 blocs) | **69** | `DINO_AUDIO` (✅ 2026-07-13 : 9 Cénozoïque complétés. ✅ **2026-07-25 : les 7 nouveaux** — 28 blocs text-to-dialogue + 7 recaps concat ffmpeg loudnorm, eleven_v3, grep-interdits passé. Manifeste régénéré via `_gen-audio-manifest.cjs` : 69 ids. Plus aucun dino en attente d'audio.) |
 | Noms vocaux dino (assets bonus) | **60** | `site/audio/dinos/noms/{id}.mp3` (✅ 2026-07-06 : 60 MP3 narrateur_h [excited] jeu, lancés dans mj-24/28/31/33) |
 | Langues i18n cibles (audio dino) | **9** | ✅ 2026-07-10 : FR (canon) · EN · PT-BR · ES · IT · AR · RU · ZH · JA **FIGÉE**. Archi déployée (pack préfixe langue, overlay strings, manifest anti-404, studio i18n/ centralisé). Tests ✅ 12 specs Playwright (mj-15/24/25/26/27/28/29/30/32/33/41, mj-31 TOUS). Invariant DEC-I18N-INVARIANT-001 : toute langue = lexique AVANT audio, jamais régresser. |
 
@@ -85,7 +85,9 @@ Résolus via `narration/personnages/voix-meta/voice-map.json`. Modèle **eleven_
 3. 🔒 **FRONTIÈRE AUTORING / PRODUIT** — une feature (mini-jeu, page) ne lit QUE `site/js/dinos-data.js` + assets `site/img/dinos/` référencés, nommés par `id` stable. Jamais elle ne monte lire dans `studio/` (non déployé). Donnée manquante → descend dans dinos-data.js via script d'export.
 4. 🔒 **CHECKLIST « DINO COMPLET » (8 axes)** — `hero · 5 scènes paléoart (headshot/manger/paris/ecosysteme/funfact) · coloriage · 5 segments audio (nom/taille/regime/funfact/recap) · silhouette · fiche fact-checkée+relue-péda · étymo · mesures`. (Le récit de voyage est par-époque, PAS par-dino → hors checklist.) Suivi via l'outil généré `_ETAT-DINOS.md` (branché dans dino-pmo unifié, ticket EP-D-GED).
 
-**Statut paléoart (MAJ 2026-07-18 via `_ETAT-DINOS.md` généré)** : **60/60 dinos complets** sur les 7 assets paléoart (hero + headshot/manger/paris/ecosysteme/funfact + coloriage) — gallimimus complété 2026-07-18 (batch série + MORPHO). Paléoart câblé en prod (`dev-dinos.html` lit `img/dinos/paleoart/`). L'ancienne question « déploiement immédiat ou validation ? » du batch 2026-07-10 est **close** (déployé). Régénérer l'état : `node studio/dino/content/scripts/export/_gen-etat-dinos.cjs`.
+> ⚠️ **Statut paléoart 2026-07-25** : **9 dinos sans paléoart** — Corythosaurus et Hatzegopteryx (data 2026-07-19/20) + les **7 de la vague 2026-07-25**. Canal de génération bloqué ce jour (Brave répond en HTTP sur 9222 mais refuse le pilotage Playwright). Les fiches restent fonctionnelles (texte + audio complets, image par défaut). Détail et durcissements du générateur : `backlog.md` § 2026-07-25 + L-D-54. Régénérer l'état réel : `node studio/dino/content/scripts/export/_gen-etat-dinos.cjs`.
+
+**Statut paléoart (MAJ 2026-07-18 via `_ETAT-DINOS.md` généré — périmé, voir l'alerte ci-dessus)** : **60/60 dinos complets** sur les 7 assets paléoart (hero + headshot/manger/paris/ecosysteme/funfact + coloriage) — gallimimus complété 2026-07-18 (batch série + MORPHO). Paléoart câblé en prod (`dev-dinos.html` lit `img/dinos/paleoart/`). L'ancienne question « déploiement immédiat ou validation ? » du batch 2026-07-10 est **close** (déployé). Régénérer l'état : `node studio/dino/content/scripts/export/_gen-etat-dinos.cjs`.
 
 **Statut du bloc « noms vocaux » (décision 2026-07-06)** : Les 60 MP3 narrateur_h `site/audio/dinos/noms/{id}.mp3` sont un **6ᵉ type d'asset BONUS** hors des 5 blocs fiche standard (nom/taille/régime/funfact/recap). Raison : ton jeu [excited] distinct du ton fiche [neutral], usage exclusif mini-jeux (mj-24, mj-28, mj-31, mj-33), optionnel pour nouvelles fiches audio (EL quota). **Implication gouvernance** : la ligne INVARIANTS « Dinos avec audio complet » est désormais à **60/60** (✅ 2026-07-13, 9 Cénozoïque complétés — voir la ligne du tableau plus haut ; la valeur « 51 » de 2026-07-06 est **périmée**) ; le bloc bonus noms/ reste tracé à part. Homogénéisation possible post-reset (unifier tous noms en ton fiche) — décision différée Papa Yann.
 

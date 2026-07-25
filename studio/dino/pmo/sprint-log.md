@@ -813,12 +813,15 @@
 - **Étymo** 69 → **76** racines ; lexique de prononciation complété (**Moschops → « Mos-kops »**, khi grec, même règle que Brachiosaure — l'usage FR courant dirait « Mos-chops » mais la règle écrite prime).
 - **3 bugs corrigés au passage** : L-D-52 (`_compPoids`, 17 dinos déployés mentaient jusqu'à +400 %), L-D-53 (clé ElevenLabs lue au mauvais endroit depuis la norme secrets → scripts audio cassés), + frontmatter `narration-audio-writer` (agent rejeté au lancement, trace côté narration).
 
+- **Paléoart livré le même jour** (commit `bb10f049`) : canal débloqué (voir L-D-54 : Brave répondait en HTTP mais refusait le pilotage CDP ; fix = fermer les seuls process du profil isolé `c:/tmp/brave-debug`, la session normale de PY intacte). **35 images** (5 scènes × 7), JPEG q85, staging vidé après vérification. Générateur durci en amont : signatures MORPHO des 7 + mot « dinosaure » rendu conditionnel à la famille (il était en dur et s'appliquait aux synapsides). Les 7 vérifiés à l'œil, dont les 2 pièges du lot : l'Édaphosaure porte bien les **barres transversales** qui le distinguent du Dimétrodon, et le Scutellosaure est bien **minuscule** (au genou de l'enfant) au lieu du « raptor géant » habituel.
+
 **Non fait :**
-- **Paléoart (7 × 5 scènes)** — canal bloqué, voir L-D-54 + backlog. Générateur durci en amont (signatures MORPHO des 7, mot « dinosaure » rendu conditionnel à la famille), prêt dès que le canal répond.
+- **headshot + coloriage + silhouette** pour ces 7 (et headshot + coloriage pour Corythosaurus/Hatzegopteryx) → **EP-D-27**. Pipelines distincts du batch 5 scènes. `_ETAT-DINOS` régénéré : 69 dinos, **60 complets, 9 à 5/8 ou 6/8**.
 
 **État au reboot :**
-- **69 dinos**, tous avec data + audio complets. **9 sans paléoart** (les 7 + Corythosaurus + Hatzegopteryx).
-- Commit `ae4adfdb` (82 fichiers), **non poussé** — arbitrage PY : pousser maintenant ou attendre les images.
+- **69 dinos** avec data + audio + 5 scènes paléoart. Tout est poussé (`ae4adfdb`, `bf6ce194`, `bb10f049`).
+- Page vérifiée : 69 dinos / 69 extras / 69 audio, 0 erreur console, 0 404.
+- **Idée PY capturée** : skill `nouveau-dino` auto-trigger pilotable depuis Telegram → **EP-D-26**.
 
 ---
 

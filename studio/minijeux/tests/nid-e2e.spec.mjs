@@ -229,10 +229,24 @@ try {
   ok('aucune erreur JS liée au cri du bébé dino (Audio().play() n\'a pas throw)', audioNetworkOk,
      errors.filter(e => /dino-bebe/i.test(e)).join(' | '));
 
-  // tap pour continuer
-  await page.mouse.click(240, 450);
+  // Retour playtest Papa Yann 2026-07-26 : après la fête (MaxFX.hatch), une
+  // carte de gain distincte (.hatch-gain, nom en grand + 2 boutons ≥80px)
+  // remplace le tap-anywhere générique — sauf cas doublon (garde son
+  // tap-anywhere existant). On clique "Continuer" explicitement.
+  const gainCardSeen = await page.waitForSelector('.hatch-gain, .hatch-doublon', { timeout: 5000 }).then(() => true).catch(() => false);
+  ok('carte de gain (nom + actions) affichée après la fête d\'éclosion', gainCardSeen);
+  if (await page.locator('.hatch-gain-nom').count()) {
+    const nomAffiche = await page.locator('.hatch-gain-nom').innerText();
+    ok('le nom du dino gagné est affiché en grand', nomAffiche.trim().length > 0, nomAffiche);
+    const ficheBox = await page.locator('.hatch-btn-fiche').boundingBox().catch(() => null);
+    if (ficheBox) ok('bouton "Voir sa fiche" ≥ 80px', ficheBox.width >= 80 && ficheBox.height >= 80, JSON.stringify(ficheBox));
+    await page.click('.hatch-btn-continuer');
+  } else {
+    await page.mouse.click(240, 450); // fallback doublon : tap-anywhere inchangé
+  }
   await page.waitForFunction(() => {
     return !document.querySelector('.hatch-doublon') &&
+           !document.querySelector('.hatch-gain') &&
            !document.querySelector('div[style*="z-index: 70"]');
   }, null, { timeout: 5000 }).catch(() => {});
   await page.waitForTimeout(300);

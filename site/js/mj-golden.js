@@ -260,7 +260,15 @@
         title = (function(){try{var k=(JSON.parse(localStorage.getItem('maxplay_active_child'))||{}).nickname;if(!k)return 'Bien joué&nbsp;!';var d=document.createElement('div');d.textContent=k;return 'Bien joué '+d.innerHTML+'&nbsp;!';}catch(e){return 'Bien joué&nbsp;!';}})();
         sub = Golden._PROCESS_COMPLIMENTS[(Math.random() * Golden._PROCESS_COMPLIMENTS.length) | 0];
       }
-      const dly = perfect ? ['3s', '3.2s', '3.4s'] : ['.3s', '.5s', '.7s'];
+      // Séquencement (retour playtest Papa Yann 2026-07-26) : l'œuf doit se voir
+      // et se jouer AVANT titre/sous-titre/boutons — plus de délai CSS fixe qui
+      // les affichait EN PARALLÈLE de l'anim d'œuf (~2s, plein écran). Le délai
+      // de base part maintenant après la fin de l'œuf (grant ? ~2s : 0),
+      // + la fenêtre étoile (perfect) comme avant.
+      const eggDelay = grant ? 2.1 : 0;
+      const dly = perfect
+        ? [(eggDelay + 3) + 's', (eggDelay + 3.2) + 's', (eggDelay + 3.4) + 's']
+        : [(eggDelay + .3) + 's', (eggDelay + .5) + 's', (eggDelay + .7) + 's'];
 
       // A3 : 3 boutons rétro-compatibles (.end-btns conservé, data-act ajouté).
       // « La suite » masqué si MJKit.chain indisponible ou pas de jeu suivant.
@@ -285,18 +293,24 @@
         + '<div class="end-btns" style="animation-delay:' + dly[2] + '">' + btns + '</div>'
         + '</div>';
 
-      // ── Séquencement STRICT (avenant P0 §7) : œuf (~1s) PUIS étoile éventuelle,
-      // jamais en parallèle. Les boutons sont dans le DOM dès le départ (CSS anime
-      // leur apparition via animation-delay) → tapables < 3s même si l'anim continue.
+      // ── Séquencement STRICT (avenant P0 §7, réécrit 2026-07-26) : GROS œuf
+      // plein écran (~1.5-2s, MaxFX.eggEarned v2) PUIS étoile éventuelle, jamais
+      // en parallèle — et surtout AVANT titre/sous-titre/boutons (dly ci-dessus
+      // décalé d'autant). L'œuf vole vers la zone des badges (le "nid" visuel
+      // de l'écran de fin), pas vers une mini-pastille invisible.
       const eggZone = document.getElementById('eggZone');
-      const runEgg = (grant && eggZone && global.MaxFX && global.MaxFX.eggEarned)
+      const badgeAnchor = document.getElementById('badgeZone');
+      const runEgg = (grant && global.MaxFX && global.MaxFX.eggEarned)
         ? (function () {
             const egg = (global.MJKit && global.MJKit.oeuf) ? global.MJKit.oeuf(56) : (function () {
               const d = document.createElement('div'); d.textContent = '🥚'; d.style.fontSize = '40px'; return d;
             })();
-            eggZone.appendChild(egg);
-            try { return global.MaxFX.eggEarned(egg, { golden: !!grant.justGolden }).then(function () { egg.remove(); }); }
-            catch (e) { egg.remove(); return Promise.resolve(); }
+            if (eggZone) eggZone.appendChild(egg); else document.body.appendChild(egg);
+            egg.style.visibility = 'hidden'; // ancre invisible : le vrai visuel vit dans l'overlay MaxFX
+            try {
+              return global.MaxFX.eggEarned(egg, { golden: !!grant.justGolden, toEl: badgeAnchor || egg })
+                .then(function () { egg.remove(); });
+            } catch (e) { egg.remove(); return Promise.resolve(); }
           })()
         : Promise.resolve();
 

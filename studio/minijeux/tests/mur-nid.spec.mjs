@@ -109,10 +109,19 @@ try {
 
   if (hatchSeen) await page.screenshot({ path: resolve(artifacts, 'mur-eclosion.png') });
 
-  // tap n'importe où pour continuer (jamais bloquant > ~4s, on tape tout de suite)
-  await page.mouse.click(240, 450);
+  // Retour PY 2026-07-26 : carte de gain distincte (nom + 2 boutons ≥80px)
+  // après la fête d'éclosion — clic "Continuer" explicite (fallback tap-anywhere
+  // pour le cas doublon, qui garde l'ancien comportement).
+  const gainCard = await page.waitForSelector('.hatch-gain, .hatch-doublon', { timeout: 5000 }).then(() => true).catch(() => false);
+  ok('carte de gain affichée après l\'éclosion (nom + actions)', gainCard);
+  if (await page.locator('.hatch-btn-continuer').count()) {
+    await page.click('.hatch-btn-continuer');
+  } else {
+    await page.mouse.click(240, 450);
+  }
   await page.waitForFunction(() => {
     return !document.querySelector('.hatch-doublon') &&
+           !document.querySelector('.hatch-gain') &&
            !document.querySelector('div[style*="z-index: 70"]');
   }, null, { timeout: 5000 }).catch(() => {});
 

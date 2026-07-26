@@ -610,7 +610,7 @@
   }
   function labelEl(ov, x, y, txt, col) {
     if (!txt) return null;
-    var l = mk(ov, at(x, y, 240) + 'height:40px;font:900 26px/1 "Fredoka One","Nunito",system-ui;color:' + (col || '#fff') + ';text-shadow:0 0 18px rgba(255,209,102,.4);opacity:0;');
+    var l = mk(ov, at(x, y, 240) + 'height:40px;font:900 26px/1 "Fredoka One","Nunito",system-ui;color:' + (col || '#fff') + ';text-shadow:0 0 18px rgba(255,209,102,.4);opacity:0;text-align:center;', txt);
     anim(l, [
       { opacity: 0, transform: 'translateY(18px)' }, { opacity: 1, transform: 'translateY(0)' }
     ], { duration: 500, easing: 'ease-out', fill: 'forwards' });
@@ -1253,37 +1253,90 @@
   }
 
   /* ── MaxFX.eggEarned — capsule gagnée en fin de partie (NID, chantier
-     2026-07-26). Distinct de MaxFX.hatch (réservée à l'ÉCLOSION au 3e œuf,
-     sur le Mur — révèle un dino). Ici : juste "tu as gagné un œuf", ~1s,
-     pop + petit envol vers le haut (image du nid), PUIS disparaît — le jeu
-     ne garde pas l'œuf à l'écran (il vit dans le nid, pas dans le jeu).
+     2026-07-26, réécrite v2 suite retour playtest Papa Yann "j'ai joué,
+     j'ai pas compris ce qui se passait"). Distinct de MaxFX.hatch (réservée
+     à l'ÉCLOSION au 3e œuf, sur le Mur — révèle un dino).
+     Ici : GROS œuf plein cadre (~40% de la hauteur), pop d'apparition,
+     wobble, texte bref, PUIS il file vers toEl (coin/badge du nid) avec
+     une traînée. Séquence ~1.5-2s, un son court (banque existante).
      opts.golden : true → teinte dorée (série de 3, avenant P0 §3).
-     Retourne une Promise résolue à la fin de l'anim (~950ms). ─────────── */
+     opts.toEl : élément-cible où l'œuf s'envole à la fin (déf. : el lui-même,
+       vol vertical court — cf. eggEarned appelé sans cible explicite).
+     opts.label : texte affiché sous l'œuf ('' = aucun, déf. 'Un œuf pour le nid !').
+     Retourne une Promise résolue à la fin de l'anim complète. ─────────── */
   function eggEarned(el, opts) {
     opts = opts || {};
     var C = themeColors();
-    var container = (function () {
-      var n = el.parentElement;
-      while (n && n !== document.body) n = n.parentElement;
-      return n || document.body;
-    })();
+    var container = document.body;
     var ov = makeOverlay(container);
     var fxp = makeFx(ov);
-    var p = center(el, ov);
     var gold = !!opts.golden;
-    var ring = mk(ov, at(p.x, p.y, 70) + 'border-radius:50%;border:3px solid ' + (gold ? C.gold : C.accent) + ';');
-    anim(ring, [
-      { transform: 'scale(.3)', opacity: 0.9 }, { transform: 'scale(1.8)', opacity: 0 }
-    ], { duration: 600, easing: 'ease-out', fill: 'forwards' });
-    fxp.burst(p.x, p.y, gold ? 22 : 14, gold ? [C.gold, '#fff3d1'] : [C.accent, '#ffffff'], 2.4);
-    return anim(el, [
-      { transform: 'translateY(0) scale(1) rotate(0)' },
-      { transform: 'translateY(-10px) scale(1.18) rotate(-6deg)', offset: 0.35 },
-      { transform: 'translateY(-6px) scale(1.1) rotate(4deg)', offset: 0.55 },
-      { transform: 'translateY(-30px) scale(.9) rotate(0)', offset: 0.85, opacity: 1 },
-      { transform: 'translateY(-46px) scale(.6) rotate(0)', opacity: 0 }
-    ], { duration: 950, easing: 'cubic-bezier(.34,1.56,.64,1)', fill: 'forwards' })
-      .then(function () { fxp.stop(); ov.remove(); });
+    var W = ov.clientWidth, H = ov.clientHeight;
+    var cx = W / 2, cy = H * 0.4;
+    var toP = opts.toEl ? center(opts.toEl, ov) : center(el, ov);
+    var eggSize = Math.min(W, H) * 0.4;
+    var col = gold ? C.gold : C.accent;
+
+    // son court (banque existante, jamais de nouveau réseau)
+    try {
+      var snd = new Audio('sounds/fx/pop-apparition.mp3');
+      snd.volume = 0.7; snd.play().catch(function () {});
+    } catch (e) {}
+
+    // flash doux derrière le gros œuf
+    var flash = mk(ov, 'inset:0;background:radial-gradient(circle at ' + cx + 'px ' + cy + 'px, rgba(255,246,220,.55), transparent 60%);');
+    anim(flash, [{ opacity: 1 }, { opacity: 0 }], { duration: 500, easing: 'ease-out', fill: 'forwards' });
+
+    // le gros œuf (emoji, cohérent avec le nid sur le Mur)
+    var egg = mk(ov, at(cx, cy, eggSize) + 'font-size:' + eggSize + 'px;line-height:1;filter:drop-shadow(0 10px 24px rgba(0,0,0,.5)) drop-shadow(0 0 26px ' + col + ');', '🥚');
+    fxp.burst(cx, cy, gold ? 30 : 18, gold ? [C.gold, '#fff3d1'] : [C.accent, '#ffffff'], 3);
+
+    // Label texte (pas labelEl : sa boîte 240px fixe centre mal un texte
+    // court/variable). Ligne pleine largeur, texte centré — toujours bien
+    // positionné quel que soit le nombre de caractères.
+    var labelTxt = opts.label != null ? opts.label : 'Un œuf pour le nid !';
+    var label = null;
+    if (labelTxt) {
+      label = mk(ov, 'left:0;right:0;top:' + (cy + eggSize * 0.5 + 34) + 'px;width:auto;' +
+        'text-align:center;font:900 20px/1.3 "Fredoka One","Nunito",system-ui;' +
+        'color:' + (gold ? '#3a2a06' : '#fff') + ';opacity:0;');
+      var pill = document.createElement('span');
+      pill.textContent = labelTxt;
+      pill.style.cssText = 'display:inline-block;background:' + (gold ? 'rgba(255,209,102,.92)' : 'rgba(6,10,22,.78)') +
+        ';border-radius:999px;padding:8px 16px;text-shadow:0 0 18px rgba(255,209,102,.4);';
+      label.appendChild(pill);
+      anim(label, [
+        { opacity: 0, transform: 'translateY(18px)' }, { opacity: 1, transform: 'translateY(0)' }
+      ], { duration: 500, easing: 'ease-out', fill: 'forwards' });
+    }
+
+    // 1. POP d'apparition + 2. wobble (vivant, pas statique)
+    var popWobble = anim(egg, [
+      { transform: 'scale(0) rotate(-18deg)', opacity: 0 },
+      { transform: 'scale(1.18) rotate(6deg)', opacity: 1, offset: 0.45 },
+      { transform: 'scale(.94) rotate(-4deg)', offset: 0.62 },
+      { transform: 'scale(1.04) rotate(3deg)', offset: 0.78 },
+      { transform: 'scale(1) rotate(-2deg)', offset: 0.9 },
+      { transform: 'scale(1) rotate(0deg)' }
+    ], { duration: 900, easing: 'cubic-bezier(.34,1.56,.64,1)', fill: 'forwards' });
+
+    return popWobble.then(function () { return wait(500); }).then(function () {
+      // 3. il file vers le coin/badge avec une traînée
+      var dx = toP.x - cx, dy = toP.y - cy;
+      var iv = setInterval(function () {
+        var b = egg.getBoundingClientRect(), o = ov.getBoundingClientRect();
+        fxp.trail(b.left + b.width / 2 - o.left, b.top + b.height / 2 - o.top, col, 3);
+      }, 35);
+      if (label) anim(label, [{ opacity: 1 }, { opacity: 0 }], { duration: 250, fill: 'forwards' });
+      return anim(egg, [
+        { transform: 'translate(0,0) scale(1)' },
+        { transform: 'translate(' + (dx * 0.3) + 'px,' + (dy * 0.3 - 30) + 'px) scale(.7)', offset: 0.4 },
+        { transform: 'translate(' + dx + 'px,' + dy + 'px) scale(.3)', opacity: 0.9 }
+      ], { duration: 450, easing: 'cubic-bezier(.5,0,.8,.4)', fill: 'forwards' })
+        .then(function () { clearInterval(iv); });
+    }).then(function () {
+      fxp.stop(); ov.remove();
+    });
   }
 
   /* ── Tirages OFFICIELS bibliothèque (CONTRAT-MJ 2026-07-19) ─────────

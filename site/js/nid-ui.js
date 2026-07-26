@@ -140,6 +140,9 @@
 
   // ── éclosion : jouée au chargement du Mur si prête ──────────────────
   var hatchInProgress = false;
+  // id du dino qui vient d'être gagné : le bandeau lui pose un halo persistant
+  // quelques secondes (retour PY : "le gain doit se comprendre sans lire").
+  var _justGainedId = null;
   function playHatchIfReady() {
     if (hatchInProgress || !global.Collection || !global.MaxFX) return;
     var ready = false;
@@ -153,6 +156,7 @@
       var result;
       try { result = Collection.hatch(); } catch (e) { hatchInProgress = false; return; }
       if (!result) { hatchInProgress = false; return; }
+      if (result.type !== 'doublon' && result.id) _justGainedId = result.id;
       runHatchSequence(eggEl, result).then(function () {
         hatchInProgress = false;
         renderNid();
@@ -176,14 +180,58 @@
     }
     var dino = dinoById(result.id);
     var imgSrc = teteSrc(dino) || ombreSrc(dino);
-    var overlay;
     // son du bébé dino (padding déjà fait, cf reference_sfx_silence_padding)
     try {
       var pick = DINO_BEBE_SFX[(Math.random() * DINO_BEBE_SFX.length) | 0];
       new Audio(pick).play().catch(function () {});
     } catch (e) {}
-    return MaxFX.hatch(eggEl, { imgSrc: imgSrc, label: dino ? dino.name + ' !' : 'Un nouveau dino !' })
-      .then(function (ov) { overlay = ov; return showTapToContinue(null, overlay); });
+    // Retour playtest Papa Yann : "on a gagné quoi ? une fiche ? un badge ?" —
+    // après la révélation (fête MaxFX.hatch), une carte claire distincte : NOM
+    // en grand + 2 actions. Le gain (rejoint la collection) doit se comprendre
+    // sans lire : halo persistant posé sur le bandeau juste après (glowNewDino).
+    return MaxFX.hatch(eggEl, { imgSrc: imgSrc, label: '' })
+      .then(function (ov) {
+        if (ov && ov.parentNode) ov.parentNode.removeChild(ov); // referme la fête, place à la carte de gain
+        return showHatchGainCard(dino, imgSrc);
+      });
+  }
+
+  // Carte de gain : nom en grand + « Voir sa fiche » / « Continuer ». Zones ≥80px.
+  function showHatchGainCard(dino, imgSrc) {
+    return new Promise(function (resolve) {
+      var ov = document.createElement('div');
+      ov.style.cssText = 'position:fixed;inset:0;z-index:70;display:flex;align-items:center;justify-content:center;background:rgba(6,10,22,.75);padding:16px;';
+      var name = dino ? dino.name : 'Un nouveau dino';
+      ov.innerHTML =
+        '<div class="hatch-gain">' +
+          (imgSrc ? '<img class="hatch-gain-img" src="' + imgSrc + '" alt="">' : '') +
+          '<div class="hatch-gain-txt">Tu as gagné</div>' +
+          '<div class="hatch-gain-nom">' + name + '</div>' +
+          '<div class="hatch-gain-sub">Il rejoint ta collection&nbsp;!</div>' +
+          '<div class="hatch-gain-btns">' +
+            (dino ? '<button type="button" class="hatch-btn hatch-btn-fiche" data-act="fiche">Voir sa fiche</button>' : '') +
+            '<button type="button" class="hatch-btn hatch-btn-continuer" data-act="continuer">Continuer</button>' +
+          '</div>' +
+        '</div>';
+      document.body.appendChild(ov);
+      var done = false;
+      function finish() {
+        if (done) return;
+        done = true;
+        ov.style.transition = 'opacity .25s';
+        ov.style.opacity = '0';
+        setTimeout(function () { if (ov.parentNode) ov.parentNode.removeChild(ov); resolve(); }, 260);
+      }
+      ov.addEventListener('click', function (ev) {
+        var btn = ev.target.closest('.hatch-btn');
+        if (!btn) return;
+        if (btn.dataset.act === 'fiche' && dino) {
+          location.href = 'dev-dinos.html?v=7&open=' + encodeURIComponent(dino.id);
+          return;
+        }
+        finish();
+      });
+    });
   }
 
   // tap n'importe où pour continuer — jamais bloquant plus de ~4s (auto-continue)
@@ -214,7 +262,28 @@
     });
   }
 
-  // ── bandeau collection ──────────────────────────────────────────────
+  // ── résolution famille (DINO_FAMILLES : label/emoji/color) ──────────
+  function famillesArray() {
+    try { return typeof DINO_FAMILLES !== 'undefined' ? DINO_FAMILLES : []; } catch (e) { return []; }
+  }
+  function familleInfo(id) {
+    var list = famillesArray();
+    for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i];
+    return null;
+  }
+
+  // ── bandeau collection (retour PY : "70 ombres qui défilent, pas
+  //    cliquable" → refonte : compteur X/total, possédés EN PREMIER,
+  //    TOUT tapable (possédé → fiche, ombre → réaction mystère), regroupé
+  //    par famille (séparateur + teinte de fond) pour lire comme un album.
+  function bandeauVigHtml(d, has) {
+    var src = has ? teteSrc(d) : ombreSrc(d);
+    var glow = has && d.id === _justGainedId ? ' gain-glow' : '';
+    return '<div class="nid-vig ' + (has ? 'possede' : 'ombre-only') + glow + '" data-dino="' + d.id + '" data-owned="' + (has ? '1' : '0') + '" role="button" aria-label="' + (has ? d.name : 'Dino à découvrir') + '">' +
+      '<img src="' + src + '" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">' +
+    '</div>';
+  }
+
   function renderBandeau() {
     mountHosts();
     var host = $('nid-bandeau');
@@ -226,15 +295,62 @@
     var owned = {};
     (state.owned || []).forEach(function (id) { owned[id] = 1; });
     host.style.display = '';
-    var row = dinos.map(function (d) {
-      var has = !!owned[d.id];
-      var src = has ? teteSrc(d) : ombreSrc(d);
-      return '<div class="nid-vig ' + (has ? 'possede' : 'ombre-only') + '" data-dino="' + (has ? d.id : '') + '" role="' + (has ? 'button' : 'img') + '" aria-label="' + (has ? d.name : 'Dino à découvrir') + '">' +
-        '<img src="' + src + '" alt="" loading="lazy" onerror="this.style.visibility=\'hidden\'">' +
+
+    // Groupe par famille (ordre DINO_FAMILLES), possédés EN PREMIER dans chaque
+    // famille — se lit comme un album à compléter plutôt qu'une file infinie.
+    var familles = famillesArray();
+    var order = familles.length ? familles.map(function (f) { return f.id; }) : [];
+    var byFam = {};
+    dinos.forEach(function (d) {
+      var f = d.famille || '_sans';
+      if (!byFam[f]) byFam[f] = [];
+      byFam[f].push(d);
+    });
+    var famIds = order.length ? order.filter(function (f) { return byFam[f]; }) : Object.keys(byFam);
+    Object.keys(byFam).forEach(function (f) { if (famIds.indexOf(f) === -1) famIds.push(f); });
+
+    var groupsHtml = famIds.map(function (fid) {
+      var list = byFam[fid].slice().sort(function (a, b) { return (owned[b.id] ? 1 : 0) - (owned[a.id] ? 1 : 0); });
+      var info = familleInfo(fid);
+      var vigs = list.map(function (d) { return bandeauVigHtml(d, !!owned[d.id]); }).join('');
+      return '<div class="nid-fam-groupe" style="' + (info && info.color ? '--fam-c:' + info.color + ';' : '') + '">' +
+        '<div class="nid-fam-sep">' + (info ? (info.emoji + ' ' + info.label) : 'Autres') + '</div>' +
+        '<div class="nid-fam-row">' + vigs + '</div>' +
       '</div>';
     }).join('');
-    host.innerHTML = '<div class="nid-titre"><span class="t-emoji">🦕</span>Ma collection</div>' +
-      '<div class="nid-bandeau-row" id="nid-bandeau-row">' + row + '</div>';
+
+    var got = state.owned ? state.owned.length : 0;
+    host.innerHTML = '<div class="nid-titre"><span class="t-emoji">🦕</span>Ma collection' +
+        '<span class="nid-compteur">' + got + ' / ' + dinos.length + '</span></div>' +
+      '<div class="nid-bandeau-scroll" id="nid-bandeau-row">' + groupsHtml + '</div>';
+
+    // halo persistant sur le dino qui vient d'être gagné, ~4s, puis nettoyé
+    if (_justGainedId) {
+      var justId = _justGainedId;
+      setTimeout(function () {
+        if (_justGainedId !== justId) return; // un autre gain a pris le relai
+        _justGainedId = null;
+        var el = host.querySelector('.nid-vig.gain-glow');
+        if (el) el.classList.remove('gain-glow');
+      }, 4000);
+    }
+  }
+
+  // ── réaction mystère sur une ombre tapée (jamais de tap mort) ───────
+  function reactMystere(el) {
+    if (!el || el.dataset.reacting) return;
+    el.dataset.reacting = '1';
+    var mark = document.createElement('span');
+    mark.className = 'nid-vig-mystere';
+    mark.textContent = '?';
+    el.appendChild(mark);
+    el.classList.add('wobble');
+    try { var s = new Audio('sounds/fx/pop-apparition.mp3'); s.volume = 0.4; s.play().catch(function () {}); } catch (e) {}
+    setTimeout(function () {
+      el.classList.remove('wobble');
+      if (mark.parentNode) mark.parentNode.removeChild(mark);
+      delete el.dataset.reacting;
+    }, 650);
   }
 
   // ── vignettes-aperçu sur les rangées copains (3 mini-vignettes) ─────
@@ -328,13 +444,41 @@
     // re-render si mur.js rafraîchit (retour repaire→mur, storage event…)
     // navigation .frise-jeu / .rep-jeu / .mur-mini déjà gérée par le
     // délégué click unique de mur.js (même sélecteur étendu) — on ne gère
-    // ici QUE ce qui est propre au nid (tap sur un dino possédé).
+    // ici QUE ce qui est propre au nid : bandeau (possédé→fiche, ombre→
+    // réaction mystère, retour PY "jamais de tap mort") + œuf du nid
+    // (réaction vivante, bonus léger avenant §4 — JAMAIS d'ouverture au tap).
     document.addEventListener('click', function (ev) {
-      var vig = ev.target.closest('.nid-vig.possede');
-      if (vig && vig.dataset.dino) {
-        location.href = 'dev-dinos.html?v=7&open=' + encodeURIComponent(vig.dataset.dino);
+      var vig = ev.target.closest('.nid-vig');
+      if (vig) {
+        if (vig.classList.contains('possede') && vig.dataset.dino) {
+          location.href = 'dev-dinos.html?v=7&open=' + encodeURIComponent(vig.dataset.dino);
+        } else {
+          reactMystere(vig);
+        }
+        return;
       }
+      var oeuf = ev.target.closest('.nid-oeuf.plein');
+      if (oeuf) { reactOeuf(oeuf); return; }
     });
+  }
+
+  // ── réaction vivante sur tap d'un œuf du nid (bonus léger, avenant §4) —
+  // wobble + petit cœur, son court. JAMAIS d'ouverture manuelle (l'éclosion
+  // ne se déclenche QUE via Collection.readyToHatch() au retour sur le Mur).
+  function reactOeuf(el) {
+    if (!el || el.dataset.reacting) return;
+    el.dataset.reacting = '1';
+    var heart = document.createElement('span');
+    heart.className = 'nid-oeuf-coeur';
+    heart.textContent = '💛';
+    el.appendChild(heart);
+    el.classList.add('coucou');
+    try { var s = new Audio('sounds/fx/pop-apparition.mp3'); s.volume = 0.35; s.play().catch(function () {}); } catch (e) {}
+    setTimeout(function () {
+      el.classList.remove('coucou');
+      if (heart.parentNode) heart.parentNode.removeChild(heart);
+      delete el.dataset.reacting;
+    }, 700);
   }
 
   global.NidUI = { init: init, refresh: refresh, playHatchIfReady: playHatchIfReady, renderFrise: renderFrise };

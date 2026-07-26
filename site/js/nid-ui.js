@@ -26,7 +26,9 @@
   // Ordre figé : dinos-data.js (DINOS) → collection.js (window.Collection)
   // → collection-dinos.js (configure() le catalogue depuis DINOS) → dinos-assets.js
   // (résolution des sprites, n'a pas de dépendance d'ordre avec les 3 premiers).
-  var DEPS = ['js/dinos-data.js', 'js/collection.js', 'js/collection-dinos.js', 'js/dinos-assets.js'];
+  // dinos-assets AVANT collection-dinos : le skin filtre sur DINO_ASSETS
+  // (seuls les dinos illustrés sont collectionnables).
+  var DEPS = ['js/dinos-data.js', 'js/dinos-assets.js', 'js/collection.js', 'js/collection-dinos.js'];
   function hasScript(src) {
     var tags = document.querySelectorAll('script[src]');
     for (var i = 0; i < tags.length; i++) {
@@ -97,20 +99,27 @@
     for (var i = 0; i < list.length; i++) if (list[i].id === id) return list[i];
     return null;
   }
+  // La clé du manifeste DINO_ASSETS est le nom LATIN capitalisé = l'id du dino
+  // capitalisé ('tyrannosaurus' → 'Tyrannosaurus'). PAS le nom FR ('T-Rex').
+  function assetKey(dino) {
+    if (!dino || !dino.id || !global.DINO_ASSETS) return null;
+    var k = dino.id.charAt(0).toUpperCase() + dino.id.slice(1);
+    return global.DINO_ASSETS[k] ? k : null;
+  }
   function assetsFor(dino) {
-    if (!dino || !dino.png || !global.DINO_ASSETS) return null;
-    var key = dino.png.replace(/\.(jpg|jpeg|png|webp)$/i, '');
-    return global.DINO_ASSETS[key] || null;
+    var k = assetKey(dino);
+    return k ? global.DINO_ASSETS[k] : null;
   }
   function teteSrc(dino) {
     var a = assetsFor(dino);
-    return (a && (a.tete || a.sprite)) || (dino ? OMBRE + dino.name + '_ombre.png' : '');
+    if (a && (a.tete || a.sprite)) return a.tete || a.sprite;
+    return ombreSrc(dino);
   }
   function ombreSrc(dino) {
     var a = assetsFor(dino);
-    // les fichiers _ombre.png sont nommés par le nom CAPITALISÉ (ex Triceratops), pas l'id
-    if (a) return OMBRE + Object.keys(global.DINO_ASSETS).find(function (k) { return global.DINO_ASSETS[k] === a; }) + '_ombre.png';
-    return '';
+    if (a && a.ombre) return a.ombre;
+    var k = assetKey(dino);
+    return k ? OMBRE + k + '_ombre.png' : '';
   }
 
   // ── markup du NID (3 œufs) ──────────────────────────────────────────
@@ -287,7 +296,8 @@
   function renderBandeau() {
     mountHosts();
     var host = $('nid-bandeau');
-    var dinos = dinosArray();
+    // Album = uniquement les dinos illustrés (même filtre que le pool d'éclosion)
+    var dinos = dinosArray().filter(function (d) { return !!assetKey(d); });
     if (!host || !global.Collection || !dinos.length) { if (host) host.style.display = 'none'; return; }
     var state;
     try { state = Collection.state(); } catch (e) { host.style.display = 'none'; return; }

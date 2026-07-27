@@ -10,6 +10,8 @@
 //    node audit-gabarit.mjs --all         → audite TOUS les site/mj-*.html (menu + retirés)
 //    node audit-gabarit.mjs mj-43 mj-45   → audite seulement ces jeux
 //    node audit-gabarit.mjs --json        → sortie JSON (pour CI / agents)
+//    node audit-gabarit.mjs --strict      → les checks C1 (EP-038 2026-07-28) sortent en BLOQUANT
+//                                            au lieu de dette (voir plan de bascule ci-dessous)
 //
 //  Portée par défaut = catalog.js (source de vérité menu). Les jeux retirés du menu
 //  (mj-01/13b/14, conservés en fichier mais absents du catalog) ne sont PAS audités
@@ -18,6 +20,24 @@
 //
 //  Sort code 1 si au moins un jeu a une violation BLOQUANTE (voir plus bas),
 //  0 sinon. Les AVERTISSEMENTS (migration shell non faite, etc.) ne bloquent pas.
+//
+//  ── PLAN DE BASCULE --strict (C1, EP-038, 2026-07-28) ──────────────────────
+//  Constat : 33/45 jeux ont un écran de fin maison (pas G.showEnd), 29/45 sans
+//  golden alors que le catalogue promet des étoiles → ces checks casseraient la
+//  CI d'un coup s'ils étaient BLOQUANT par défaut aujourd'hui. Donc :
+//    - AUJOURD'HUI : les 5 nouveaux checks (showEnd / golden / titre / .hdr /
+//      Cursif) sortent en `dette` par défaut → CI VERTE, mais visibles et tracés.
+//    - Semaine par semaine, lot A (19 jeux 2-boutons) puis lot B (9 jeux
+//      1-bouton) puis lot C (entêtes maison) migrent vers G.showEnd/golden
+//      (voir studio/minijeux/docs/2026-07-28-plan-remise-au-propre.md § C1).
+//    - Quand un jeu migré passe --strict sans BLOQUANT, il reste vert pour
+//      toujours (aucune régression possible en arrière : le check bloque si
+//      quelqu'un réintroduit un overlay maison).
+//    - Quand TOUS les jeux du catalogue passent --strict → on bascule le
+//      défaut : `--strict` devient le comportement normal (retirer le flag,
+//      ou l'inverser en `--legacy` pour l'ancien comportement temporaire).
+//    - Le débogage : `node audit-gabarit.mjs --strict` à tout moment donne
+//      l'état réel migration (compte de bloquants restants par jeu).
 //
 //  Ce qu'il vérifie, par fichier :
 //   [BLOQUANT] cloud.js présent SI comments.js présent, ET cloud.js avant comments.js
@@ -47,7 +67,13 @@ const TESTS = __dir;
 const args = process.argv.slice(2);
 const asJson = args.includes('--json');
 const auditAll = args.includes('--all');
+const strict = args.includes('--strict');
 const wanted = args.filter(a => !a.startsWith('--'));
+
+// Niveau des 5 nouveaux checks C1 (EP-038 2026-07-28) : 'dette' par défaut
+// (CI verte pendant la migration), 'block' avec --strict. Voir plan de
+// bascule en tête de fichier.
+const C1 = strict ? 'block' : 'warn';
 
 const GREEN = '\x1b[32m', RED = '\x1b[31m', YEL = '\x1b[33m', DIM = '\x1b[2m', RST = '\x1b[0m';
 
@@ -63,6 +89,29 @@ function catalogIds() {
   const ids = new Set();
   for (const m of src.matchAll(/id:\s*'(mj-[^']+)'/g)) ids.add(m[1]);
   return ids;
+}
+
+// Découpe catalog.js en lignes d'entrée ({ id:'mj-XX', … }) et extrait titre/maxStars
+// proprement — gère les apostrophes échappées (L\'atelier) que le simple split sur
+// quotes casse. Une entrée = tout ce qui suit `id:'mj-XX'` jusqu'à la fin de ligne
+// (le catalogue est 1 objet = 1 ligne, convention constante depuis catalog.js v1).
+function catalogEntry(id) {
+  const cat = resolve(SITE, 'js', 'catalog.js');
+  if (!existsSync(cat)) return null;
+  const lines = readFileSync(cat, 'utf8').split('\n');
+  const line = lines.find(l => new RegExp(`id:\\s*'${id}'`).test(l));
+  if (!line) return null;
+  const grab = (field) => {
+    // valeur entre quotes, en tenant compte des \' internes (non-greedy sur \'|[^'])*
+    const m = line.match(new RegExp(`${field}\\s*:\\s*'((?:\\\\'|[^'])*)'`));
+    return m ? m[1].replace(/\\'/g, "'") : null;
+  };
+  const maxStarsM = line.match(/maxStars\s*:\s*(\d+)/);
+  return {
+    line,
+    titre: grab('titre'),
+    maxStars: maxStarsM ? Number(maxStarsM[1]) : null,
+  };
 }
 
 let skipped = [];
@@ -174,6 +223,137 @@ function auditOne(file) {
     || /confettiBurst\s*\(/.test(scriptBlocks);
   add('warn', "pas d'animation de victoire ad-hoc (bibliothèque MaxFX only)", !adhocFx,
     'CONTRAT v2 : migrer vers MaxFX.randomFinal — on enrichit la bibliothèque, jamais le jeu');
+
+  // ── C1 — GARDE-FOU RENFORCÉ (EP-038, 2026-07-28) ────────────────────────────
+  // 5 checks qui manquaient et ont laissé la dérive silencieuse durer des mois
+  // (voir studio/minijeux/docs/2026-07-28-plan-remise-au-propre.md § 0).
+  // Niveau C1 = 'dette' par défaut, 'block' avec --strict (plan de bascule en tête de fichier).
+  const lines = html.split('\n');
+  const lineOf = (re) => { const i = lines.findIndex(l => re.test(l)); return i === -1 ? null : i + 1; };
+
+  // 1. BLOQUANT (potentiel) — écran de fin MAISON au lieu de G.showEnd
+  //    Piège mj-34 : réutilise la classe .end-wrap du vrai écran golden en CSS
+  //    locale + JS maison, sans jamais appeler G.showEnd → se fier à L'APPEL,
+  //    jamais au seul nom de classe.
+  {
+    const callsShowEnd = /\bG\.showEnd\s*\(|shell\.G\.showEnd\s*\(/.test(scriptBlocks);
+    // Marqueurs d'écran de fin MAISON — présence d'UN SEUL suffit à indiquer que le
+    // jeu construit sa propre UI de victoire. Piège mj-34 : réutilise .end-wrap (la
+    // classe du VRAI écran golden) en CSS locale + JS maison (createElement + innerHTML
+    // avec boutons "Rejouer"/"Palier suivant"), sans jamais appeler G.showEnd → on ne
+    // se fie donc JAMAIS à .end-wrap seul comme preuve de conformité : seul l'appel
+    // G.showEnd(...) fait foi. Si un marqueur maison est présent ET qu'il n'y a pas
+    // d'appel G.showEnd ailleurs dans le fichier → BLOQUANT (potentiel).
+    const homeMarkers = [
+      { re: /#end-screen\b/, label: '#end-screen' },
+      { re: /class\s*=\s*["'][^"']*\bvictory-overlay\b/, label: '.victory-overlay' },
+      { re: /class\s*=\s*["'][^"']*\bfin-overlay\b/, label: '.fin-overlay' },
+      { re: /#fin-overlay\b/, label: '#fin-overlay' },
+      { re: /#victoryScreen\b/, label: '#victoryScreen' },
+      { re: /class\s*=\s*["'][^"']*\bparade-overlay\b/, label: '.parade-overlay' },
+      { re: /#fullScreen\b/, label: '#fullScreen' },
+      { re: /class\s*=\s*["'][^"']*\bvictoire-overlay\b/, label: '.victoire-overlay' },
+      { re: /\bshowEndScreen\s*\(/, label: 'showEndScreen()' },
+      // .end-wrap / .end-btn : la classe du VRAI écran golden (mj-golden.js) — piège
+      // mj-34, ne prouve PAS la conformité seule, seulement un candidat à vérifier.
+      { re: /class\s*=\s*["'][^"']*\bend-wrap\b/, label: '.end-wrap (class réutilisée, cf. piège mj-34)' },
+      { re: /\.className\s*=\s*['"]end-wrap['"]/, label: 'wrap.className = \'end-wrap\' (construit en JS, cf. mj-34)' },
+      // function showEnd()/showTierEnd()/showVictory() locale : signe qu'un chemin
+      // de fin de partie custom existe ; n'est problématique QUE combiné à l'absence
+      // d'appel G.showEnd (sinon c'est le pattern normal function showEnd(){ G.showEnd(...) }).
+      { re: /function\s+show(Tier)?End\s*\(|function\s+showVictory\s*\(/, label: 'function showEnd/showTierEnd/showVictory() locale' },
+    ];
+    const homeHits = homeMarkers.filter(m => m.re.test(html));
+    const isHomeMade = !callsShowEnd && homeHits.length > 0;
+    const firstHitLine = homeHits.length ? lineOf(homeHits[0].re) : null;
+    const detail = isHomeMade
+      ? `pas d'appel G.showEnd(...) dans tout le fichier ; marqueur(s) maison : ${homeHits.map(h => h.label).join(' ; ')}` +
+        (firstHitLine ? ` (${basename(file)}:${firstHitLine})` : '')
+      : '';
+    add(C1, "écran de fin via G.showEnd (pas d'overlay maison)", !isHomeMade, detail);
+  }
+
+  // 2. BLOQUANT (potentiel) — golden manquant alors que le catalogue promet des étoiles
+  {
+    const entry = catalogEntry(id);
+    if (entry && entry.maxStars > 0) {
+      const hasGoldenTrue = /\bgolden\s*:\s*true\b/.test(scriptBlocks);
+      const hasGoldenSetup = /\bGolden\.setup\s*\(/.test(scriptBlocks);
+      add(C1, `golden:true si maxStars>0 (catalog promet ${entry.maxStars}★)`,
+        hasGoldenTrue || hasGoldenSetup,
+        hasGoldenTrue || hasGoldenSetup ? '' : `maxStars:${entry.maxStars} dans catalog.js mais pas de golden:true / Golden.setup() dans MJ.init`);
+    }
+  }
+
+  // 3. BLOQUANT (potentiel) — titre : longueur + cohérence catalog ↔ MJ.init ↔ <title>
+  {
+    const entry = catalogEntry(id);
+    const normTitle = (s) => (s || '')
+      .replace(/[’‘]/g, "'")
+      .replace(/[.!?…]+$/g, '')
+      .trim();
+    if (entry && entry.titre) {
+      const nbMots = entry.titre.trim().split(/\s+/).filter(Boolean).length;
+      add(C1, 'titre catalog ≤ 4 mots et ≤ 22 caractères',
+        nbMots <= 4 && entry.titre.length <= 22,
+        `"${entry.titre}" → ${nbMots} mot(s), ${entry.titre.length} caractère(s)`);
+
+      const initTitreM = scriptBlocks.match(/titre\s*:\s*'((?:\\'|[^'])*)'/);
+      const initTitre = initTitreM ? initTitreM[1].replace(/\\'/g, "'") : null;
+      const htmlTitreM = html.match(/<title>([^<]*)<\/title>/i);
+      // <title> réel = "MJ-XX – Titre" ou "MJ-XX — Titre" : on retire le préfixe id + tiret
+      const htmlTitreRaw = htmlTitreM ? htmlTitreM[1] : null;
+      const htmlTitre = htmlTitreRaw
+        ? htmlTitreRaw.replace(new RegExp(`^\\s*${id}\\s*[–—-]\\s*`, 'i'), '').trim()
+        : null;
+
+      const mismatches = [];
+      if (initTitre && normTitle(initTitre) !== normTitle(entry.titre))
+        mismatches.push(`catalog "${entry.titre}" ≠ MJ.init "${initTitre}"`);
+      if (htmlTitre && normTitle(htmlTitre) !== normTitle(entry.titre))
+        mismatches.push(`catalog "${entry.titre}" ≠ <title> "${htmlTitreRaw}"`);
+      add(C1, 'titre cohérent catalog.js ↔ MJ.init ↔ <title>', mismatches.length === 0,
+        mismatches.join(' ; '));
+    }
+  }
+
+  // 4. BLOQUANT (potentiel) — .hdr canonique : zéro CSS locale, zéro élément ajouté à la main
+  {
+    const styleBlocks = [...html.matchAll(/<style>([\s\S]*?)<\/style>/g)].map(m => m[1]).join('\n');
+    const localHdrCss = /(^|[\s,}])\.(hdr|htitle)\s*\{/m.test(styleBlocks) || /#(hdr|htitle)\s*\{/.test(styleBlocks);
+    add(C1, 'aucune règle CSS locale .hdr/.htitle (mp-theme.css fait autorité)', !localHdrCss,
+      localHdrCss ? `règle .hdr/.htitle redéclarée en <style> local (${basename(file)}:${lineOf(/\.(hdr|htitle)\s*\{/) || '?'})` : '');
+
+    // éléments ajoutés à la main DANS le bloc .hdr (avant la fermeture </div> du header) :
+    // on isole le markup du .hdr par une regex non-greedy sur son contenu.
+    const hdrMatch = html.match(/<div\s+class\s*=\s*["'][^"']*\bhdr\b[^"']*["'][^>]*>([\s\S]*?)<\/div>/);
+    const hdrInner = hdrMatch ? hdrMatch[1] : '';
+    const addedInHdr = ['levelbar', 'score-badge', 'score', 'mp-g-stars']
+      .filter(sel => new RegExp(`id\\s*=\\s*["']${sel}["']|class\\s*=\\s*["'][^"']*\\b${sel}\\b`).test(hdrInner));
+    add(C1, "aucun élément ajouté dans .hdr (levelbar/score/score-badge/mp-g-stars)", addedInHdr.length === 0,
+      addedInHdr.length ? `détecté dans .hdr : ${addedInHdr.join(', ')} (${lineOf(new RegExp(addedInHdr[0]))||'?'})` : '');
+  }
+
+  // 5. DETTE (jamais bloquant, même en --strict) — débordement Cursif probable
+  {
+    const styleBlocks2 = [...html.matchAll(/<style>([\s\S]*?)<\/style>/g)].map(m => m[1]).join('\n');
+    const cursifRules = [...styleBlocks2.matchAll(/\.[a-zA-Z0-9_-]+(?:[.\s][a-zA-Z0-9_-]+)*\s*\{([^}]*)\}/g)]
+      .map(m => m[0])
+      .filter(rule => /Cursif/.test(rule));
+    const risky = cursifRules.filter(rule => {
+      const sizeM = rule.match(/font-size\s*:\s*([\d.]+)rem/);
+      if (!sizeM) return false;
+      const size = parseFloat(sizeM[1]);
+      if (size < 2) return false;
+      const hasClamp = /font-size\s*:\s*clamp\(/.test(rule);
+      const lhM = rule.match(/line-height\s*:\s*([\d.]+)/);
+      const lhOk = lhM && parseFloat(lhM[1]) >= 1.2;
+      return !hasClamp && !lhOk;
+    });
+    add('warn', 'Cursif ≥2rem avec clamp() ou line-height≥1.2 (dette débordement, jamais bloquant)',
+      risky.length === 0,
+      risky.length ? `${risky.length} règle(s) Cursif à risque sans clamp()/line-height (ex: ${risky[0].replace(/\s+/g, ' ').slice(0, 80)}…)` : '');
+  }
 
   return { id, missing: false, checks };
 }

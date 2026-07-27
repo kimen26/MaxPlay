@@ -1935,6 +1935,7 @@ const DINO_AUDIO = {
   // Nouveaux dinos 2026-07-20 (dialogues V3 Narrateur H + Wex, eleven_v3 stability 0,4)
   corythosaurus:  _audioSet('corythosaurus'),
   hatzegopteryx:  _audioSet('hatzegopteryx'),
+  saurolophus:    _audioSet('saurolophus'),
   triceratops:    _audioSet('triceratops'),
   tyrannosaurus:  _audioSet('tyrannosaurus'),
   velociraptor:   _audioSet('velociraptor'),
@@ -2026,6 +2027,7 @@ const DINO_AUDIO_VERSION = {
   // Oubliés lors de la vague 2026-07-20 : leur audio est bien V3, mais l'absence
   // de cette ligne leur faisait afficher le badge V1 « candidat à relancer ».
   corythosaurus: 'V3', hatzegopteryx: 'V3',
+  saurolophus: 'V3',
 };
 function dinoAudioVersion(id) { return DINO_AUDIO_VERSION[id] || 'V1'; }
 

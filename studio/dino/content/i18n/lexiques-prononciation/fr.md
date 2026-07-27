@@ -65,6 +65,7 @@
 | Moschops | **Mos-kops** | ch→k (khi grec de *moschos*, même règle que Brachiosaure) — ajouté 2026-07-25 |
 | Édaphosaure | **É-da-fo-saure** | ph→f — ajouté 2026-07-25 |
 | Lystrosaure | **Lis-tro-saure** | y→i — ajouté 2026-07-25 |
+| Saurolophe | **So-ro-lo-fuss** | ph→f, -us. ⚠️ Piège de confusion : à ne PAS confondre à l'oral avec Parasaurolophus (« Pa-ra-sau-ro-lofe ») — Saurolophus n'a pas le préfixe « para- », graphie différente pour éviter que les deux se ressemblent en bouche — ajouté 2026-07-27 |
 
 ---
 

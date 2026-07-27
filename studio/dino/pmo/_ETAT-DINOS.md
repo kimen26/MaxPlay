@@ -6,32 +6,33 @@
 
 ## Synthèse
 
-- **69 dinos** · **60 complets (8/8)** · **9 incomplets**
+- **70 dinos** · **60 complets (8/8)** · **10 incomplets**
 
 | Axe | Couverture |
 |-----|-----------|
-| hero | 69/69 |
-| paleoart | 60/69 |
-| coloriage | 60/69 |
-| audio | 69/69 |
-| silhouette | 62/69 |
-| fiche | 69/69 |
-| etymo | 69/69 |
-| mesures | 69/69 |
+| hero | 69/70 |
+| paleoart | 60/70 |
+| coloriage | 60/70 |
+| audio | 70/70 |
+| silhouette | 69/70 |
+| fiche | 70/70 |
+| etymo | 70/70 |
+| mesures | 70/70 |
 
 ## Incomplets d'abord
 
 | Dino | id | Score | Manque |
 |------|----|-------|--------|
-| Minmi | `minmi` | 5/8 | paléoart(headshot), coloriage, silhouette |
-| Scutellosaure | `scutellosaurus` | 5/8 | paléoart(headshot), coloriage, silhouette |
-| Maiasaura | `maiasaura` | 5/8 | paléoart(headshot), coloriage, silhouette |
-| Édaphosaure | `edaphosaurus` | 5/8 | paléoart(headshot), coloriage, silhouette |
-| Gorgonops | `gorgonops` | 5/8 | paléoart(headshot), coloriage, silhouette |
-| Lystrosaure | `lystrosaurus` | 5/8 | paléoart(headshot), coloriage, silhouette |
-| Moschops | `moschops` | 5/8 | paléoart(headshot), coloriage, silhouette |
+| Saurolophe | `saurolophus` | 4/8 | hero, paléoart(headshot/manger/paris/ecosysteme/funfact), coloriage, silhouette |
+| Minmi | `minmi` | 6/8 | paléoart(headshot), coloriage |
+| Scutellosaure | `scutellosaurus` | 6/8 | paléoart(headshot), coloriage |
 | Corythosaure | `corythosaurus` | 6/8 | paléoart(headshot), coloriage |
+| Maiasaura | `maiasaura` | 6/8 | paléoart(headshot), coloriage |
 | Hatzegopteryx | `hatzegopteryx` | 6/8 | paléoart(headshot), coloriage |
+| Édaphosaure | `edaphosaurus` | 6/8 | paléoart(headshot), coloriage |
+| Gorgonops | `gorgonops` | 6/8 | paléoart(headshot), coloriage |
+| Lystrosaure | `lystrosaurus` | 6/8 | paléoart(headshot), coloriage |
+| Moschops | `moschops` | 6/8 | paléoart(headshot), coloriage |
 
 ## Complets (60)
 

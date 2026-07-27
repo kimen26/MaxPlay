@@ -1,9 +1,16 @@
 // ─────────────────────────────────────────────────────────────────────────
 //  comments.js — Bouton commentaire dans chaque MJ
 //  Permet au parent de noter en live ce qui marche / ce qui bug / idées.
-//  Stockage : localStorage['maxplay_comments'] = [{ gameId, date, text }]
+//  Stockage : localStorage['maxplay_comments'] = [{ gameId, date, text, synced }]
 //  Injecte automatiquement un bouton 💬 à côté du ← dans le header.
 //  Saisie texte + dictée vocale (Web Speech Recognition, fr-FR) si dispo.
+//
+//  Fix 2026-07-27 (annotations perdues en silence) : un commentaire poussé
+//  SANS session Supabase active restait bloqué en localStorage pour
+//  toujours, sans AUCUN signal — la bulle 💬 était identique synced ou pas.
+//  Désormais : champ `synced:false|true` par commentaire + badge "!" visible
+//  sur la bulle tant qu'au moins un commentaire attend confirmation serveur.
+//  Cloud.js retente au chargement et à chaque login (voir cloud.js init()).
 // ─────────────────────────────────────────────────────────────────────────
 
 (function() {
@@ -15,8 +22,10 @@
   }
   function save(list) {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(list)); } catch(e) {}
-    // Sync cloud (table annotations) si compte parent actif — no-op sinon
+    // Sync cloud (table annotations) si compte parent actif — sinon le badge
+    // "!" reste affiché (cf. schedulePush() qui émet le signal même en no-op).
     try { window.Cloud && window.Cloud.schedulePush(); } catch(e) {}
+    refreshBadge();
   }
 
   function detectGameId() {
@@ -32,9 +41,71 @@
       gameId: detectGameId(),
       date: new Date().toISOString(),
       text: trimmed,
+      synced: false,
     });
     save(list);
     return true;
+  }
+
+  // ── Badge "en attente d'envoi" sur la bulle 💬 ──────────────────────────
+  function pendingCount() {
+    try {
+      if (window.Cloud && typeof window.Cloud.pendingCommentsCount === 'function') {
+        return window.Cloud.pendingCommentsCount();
+      }
+    } catch (e) {}
+    // Fallback si cloud.js n'est pas (encore) chargé : compte local direct.
+    return load().filter(cm => cm.text && cm.synced !== true).length;
+  }
+
+  // La bulle 💬 vit soit en propre (.mpc-btn, jeux sans panneau règle), soit
+  // DANS le panneau savant fou 🧑‍🔬 (regle-info.js pose data-cmt-inpanel et
+  // retire .mpc-btn — c'est le cas de la quasi-totalité des MJ actuels). Le
+  // badge doit donc pouvoir se poser sur les DEUX points d'entrée possibles :
+  // .mpc-btn (bulle propre) et .mp-prof .bulle (badge "?" déjà existant du
+  // panneau, réutilisé — passe au orange "!" tant qu'il y a de l'attente).
+  function refreshBadge() {
+    const n = pendingCount();
+
+    const ownBtn = document.querySelector('.mpc-btn');
+    if (ownBtn) {
+      let badge = ownBtn.querySelector('.mpc-badge');
+      if (n > 0) {
+        if (!badge) {
+          badge = document.createElement('span');
+          badge.className = 'mpc-badge';
+          badge.textContent = '!';
+          ownBtn.appendChild(badge);
+        }
+        ownBtn.title = titleFor(n);
+        ownBtn.setAttribute('aria-label', ownBtn.title);
+      } else if (badge) {
+        badge.remove();
+        ownBtn.title = 'Ajouter un commentaire';
+        ownBtn.setAttribute('aria-label', 'Ajouter un commentaire');
+      }
+    }
+
+    const panelBulle = document.querySelector('.mp-prof .bulle');
+    if (panelBulle) {
+      const profBtn = panelBulle.closest('.mp-prof');
+      if (n > 0) {
+        panelBulle.dataset.mpcPrev = panelBulle.dataset.mpcPrev || panelBulle.textContent;
+        panelBulle.textContent = '!';
+        panelBulle.classList.add('mpc-pending');
+        if (profBtn) profBtn.title = titleFor(n);
+      } else {
+        panelBulle.classList.remove('mpc-pending');
+        if (panelBulle.dataset.mpcPrev) panelBulle.textContent = panelBulle.dataset.mpcPrev;
+        if (profBtn) profBtn.removeAttribute('title');
+      }
+    }
+  }
+
+  function titleFor(n) {
+    return n === 1
+      ? '1 commentaire pas encore envoyé (hors connexion) — retentera tout seul'
+      : n + ' commentaires pas encore envoyés (hors connexion) — retenteront tout seuls';
   }
 
   // ── Styles (injectés 1 fois) ─────────────────────────────────────────────
@@ -44,6 +115,7 @@
     s.id = 'maxplay-comments-style';
     s.textContent = `
       .mpc-btn {
+        position:relative;
         display:inline-flex; align-items:center; justify-content:center;
         background:rgba(255,255,255,0.09); color:#fff; border:none;
         width:40px; height:40px; border-radius:50%;
@@ -51,6 +123,22 @@
         font-family:inherit;
       }
       .mpc-btn:hover { background:rgba(255,255,255,0.28); }
+      .mpc-badge {
+        position:absolute; top:-2px; right:-2px;
+        width:18px; height:18px; border-radius:50%;
+        background:#ff8c1a; color:#1a2a3d;
+        font-family:'Nunito',sans-serif; font-weight:900; font-size:12px;
+        display:flex; align-items:center; justify-content:center;
+        box-shadow:0 0 0 2px #1a2a3d;
+        animation:mpcBadgePulse 1.6s infinite;
+      }
+      @keyframes mpcBadgePulse { 0%,100% { opacity:1 } 50% { opacity:0.6 } }
+      /* Réutilise le badge "?" existant du panneau règle (mp-theme.css .bulle)
+         en le faisant passer orange pulsant tant qu'un commentaire attend. */
+      .mp-prof .bulle.mpc-pending {
+        background:#ff8c1a !important; color:#1a2a3d !important;
+        animation:mpcBadgePulse 1.6s infinite;
+      }
       .mpc-overlay {
         position:fixed; inset:0; background:rgba(0,0,0,0.7);
         display:none; align-items:center; justify-content:center;
@@ -255,6 +343,12 @@
   function init() {
     injectStyles();
     injectButton();
+    refreshBadge();
+    // comments.js se charge AVANT regle-info.js dans mj-shell.js (ordre gabarit)
+    // → au premier refreshBadge() le panneau .mp-prof n'existe pas encore.
+    // Quelques retries courts suffisent à couvrir son injection asynchrone,
+    // sans dépendance dure ni polling continu.
+    [200, 600, 1500].forEach(ms => setTimeout(refreshBadge, ms));
   }
 
   if (document.readyState === 'loading') {
@@ -262,6 +356,10 @@
   } else {
     init();
   }
+
+  // Rafraîchi par cloud.js après CHAQUE tentative de push (succès ou échec) —
+  // couvre le retry automatique au chargement et après un login réussi.
+  window.addEventListener('maxplay:comments-synced', refreshBadge);
 
   // ── API publique ─────────────────────────────────────────────────────────
   window.Comments = {

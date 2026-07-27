@@ -91,13 +91,31 @@
     // = zéro requête réseau). Le token supabase vit dans localStorage.
     const hasToken = Object.keys(localStorage).some(k => k.startsWith('sb-'));
     const hasAuthParams = /[#?].*(access_token|code)=/.test(location.href);
-    if (!hasToken && !hasAuthParams) return;
+    if (!hasToken && !hasAuthParams) {
+      // Fix 2026-07-27 : cet appareil n'a jamais de session Supabase (tablette
+      // jamais loguée, storage vidé…) → aucun commentaire ne partira JAMAIS de
+      // lui-même. On ne force pas de requête réseau (mode dégradé respecté),
+      // mais on signale l'attente pour que la bulle 💬 affiche le badge "!"
+      // dès le chargement — pas seulement juste après le save.
+      if (pendingCommentsCount() > 0) _emitCommentsSynced(false);
+      return;
+    }
 
     try {
       const c = await _getClient();
       const { data } = await c.auth.getSession();
       _session = data.session || null;
-      c.auth.onAuthStateChange((_evt, session) => { _session = session; _emit(); });
+      // Fix 2026-07-27 : magic-link login (SIGNED_IN) ne déclenchait pas de
+      // flush des annotations en attente — seul verifyCode() (code PWA iOS)
+      // le faisait. Toute session qui APPARAÎT retente désormais le backlog.
+      c.auth.onAuthStateChange((evt, session) => {
+        const hadSession = !!_session;
+        _session = session;
+        if (!hadSession && _session && evt === 'SIGNED_IN') {
+          _flushAnnotations(c).catch(() => {});
+        }
+        _emit();
+      });
       if (hasActiveChild()) await syncNow();
       // Fix audit : parent connecté sans profil actif → pousser quand même le
       // backlog d'annotations (sinon il dort en localStorage jusqu'à une action).
@@ -412,24 +430,34 @@
   }
 
   // ── Flush annotations (💬 comments.js + notes de revue index.html) ──────
+  // Fix 2026-07-27 (EP-annotations-silencieuses) : SANS session Supabase, cette
+  // fonction ne fait RIEN (return immédiat) et schedulePush()/flushNow() sont
+  // eux-mêmes des no-op — un commentaire posté hors-ligne/déconnecté restait
+  // bloqué en localStorage SANS AUCUN SIGNAL (bulle 💬 identique, synced ou pas).
+  // Correctif : chaque commentaire porte désormais `synced:false|true` ; cette
+  // fonction marque `synced:true` seulement après upsert confirmé en base, et
+  // émet un événement `maxplay:comments-synced` que comments.js écoute pour
+  // rafraîchir le badge "!" — que le flush réussisse ou échoue.
   async function _flushAnnotations(c) {
     if (!_session) return;
     const childId = activeChild() ? activeChild().id : null;
+
+    let commentsRaw = [];
+    try { commentsRaw = JSON.parse(localStorage.getItem('maxplay_comments')) || []; } catch (e) {}
+    const pending = commentsRaw.filter(cm => cm.text && cm.synced !== true);
+
     const comments = [];   // immuables (dédup par date) → ignoreDuplicates
     const reviews = [];    // éditables (clé stable par jeu) → mise à jour
 
-    try {
-      // client_key inclut child_id : deux profils du même parent peuvent avoir
-      // le même commentaire sur le même jeu sans que l'un écrase l'autre.
-      (JSON.parse(localStorage.getItem('maxplay_comments')) || []).forEach(cm => {
-        if (!cm.text) return;
-        comments.push({
-          parent_id: _session.user.id, child_id: childId, game_id: cm.gameId || null,
-          source: 'comment', text: String(cm.text).slice(0, 100000),
-          client_key: 'c|' + (childId || '?') + '|' + (cm.gameId || '?') + '|' + (cm.date || '?'),
-        });
+    // client_key inclut child_id : deux profils du même parent peuvent avoir
+    // le même commentaire sur le même jeu sans que l'un écrase l'autre.
+    pending.forEach(cm => {
+      comments.push({
+        parent_id: _session.user.id, child_id: childId, game_id: cm.gameId || null,
+        source: 'comment', text: String(cm.text).slice(0, 100000),
+        client_key: 'c|' + (childId || '?') + '|' + (cm.gameId || '?') + '|' + (cm.date || '?'),
       });
-    } catch (e) {}
+    });
 
     try {
       // client_key de revue stable par (child, jeu) SANS hash du texte : une
@@ -446,17 +474,49 @@
       });
     } catch (e) {}
 
+    let commentsOk = true;
     if (comments.length) {
       const { error } = await c.from('annotations')
         .upsert(comments, { onConflict: 'parent_id,client_key', ignoreDuplicates: true });
-      if (error) throw error;
+      if (error) { commentsOk = false; _emitCommentsSynced(false); throw error; }
     }
     if (reviews.length) {
       // ignoreDuplicates:false → le texte édité écrase l'ancien (même client_key).
       const { error } = await c.from('annotations')
         .upsert(reviews, { onConflict: 'parent_id,client_key', ignoreDuplicates: false });
-      if (error) throw error;
+      if (error) { _emitCommentsSynced(false); throw error; }
     }
+
+    // Marquer synced:true seulement après confirmation serveur (pas avant).
+    if (comments.length && commentsOk) {
+      try {
+        const fresh = JSON.parse(localStorage.getItem('maxplay_comments')) || [];
+        const pushedKeys = new Set(pending.map(cm => (cm.gameId || '?') + '|' + (cm.date || '?')));
+        const updated = fresh.map(cm => {
+          const k = (cm.gameId || '?') + '|' + (cm.date || '?');
+          return pushedKeys.has(k) ? { ...cm, synced: true } : cm;
+        });
+        localStorage.setItem('maxplay_comments', JSON.stringify(updated));
+      } catch (e) {}
+    }
+    _emitCommentsSynced(true);
+  }
+
+  // Notifie comments.js (badge "!") indépendamment du reste de l'app (onChange
+  // sert déjà à login/logout/sync — un événement DOM dédié évite tout couplage).
+  function _emitCommentsSynced(ok) {
+    try {
+      global.dispatchEvent(new CustomEvent('maxplay:comments-synced', { detail: { ok } }));
+    } catch (e) {}
+  }
+
+  // Combien de commentaires attendent encore un push confirmé — lu par
+  // comments.js pour décider d'afficher le badge "!" sur la bulle 💬.
+  function pendingCommentsCount() {
+    try {
+      const list = JSON.parse(localStorage.getItem('maxplay_comments')) || [];
+      return list.filter(cm => cm.text && cm.synced !== true).length;
+    } catch (e) { return 0; }
   }
 
   // ── Envoi direct d'un payload outil (duel, lecture…) ────────────────────
@@ -551,9 +611,13 @@
   }
 
   // Push débouncé — appelé par tracker.js après chaque sauvegarde.
-  // No-op total si pas de compte du tout / offline.
+  // Fix 2026-07-27 : ne PLUS être un no-op total sans compte — sinon un
+  // commentaire posté hors session ne repart JAMAIS de lui-même (silencieux).
+  // Sans session ni profil, on émet quand même le signal "en attente" pour que
+  // comments.js affiche le badge tout de suite ; le push réel attend une
+  // session (retry automatique dans init() dès qu'un login aboutit).
   function schedulePush() {
-    if (!hasActiveChild() && !_session) return;
+    if (!hasActiveChild() && !_session) { _emitCommentsSynced(false); return; }
     clearTimeout(_pushTimer);
     _pushTimer = setTimeout(() => { syncNow().catch(() => {}); }, PUSH_DELAY);
   }
@@ -573,6 +637,7 @@
     signIn, verifyCode, signOut,
     listChildren, createChild, setActiveChild, activeChild,
     syncNow, schedulePush, pushAnnotation, onChange, resetChild, flushNow,
+    pendingCommentsCount,
     _merge, _mergeState, // exposés pour les tests uniquement
   };
 

@@ -34,6 +34,12 @@ paths:
 - 🔒 **CHECKLIST « DINO COMPLET »** (8 axes) : hero · 5 scènes paléoart · coloriage · 5 segments audio · silhouette · fiche fact-checkée+relue-péda · étymo · mesures. Suivi via l'outil généré `pmo/_ETAT-DINOS.md` — **régénérer** (jamais tenir à la main) : `node studio/dino/content/scripts/export/_gen-etat-dinos.cjs` (à lancer dans tout `/dino-pmo-audit` ou question « où en sont les dinos ? »). Playbook « nouveau dino → quoi faire » : [`studio/dino/content/sources/_PLAYBOOK-DINO-NOUVEAU.md`](../../studio/dino/content/sources/_PLAYBOOK-DINO-NOUVEAU.md).
 - 🟡 **STOP silhouettes** : 3 zones coexistent, fusion reportée au 1er mini-jeu qui les consomme — ne pas relancer d'ombres. Voir `content/assets/silhouettes/_STOP-3-ZONES.md`.
 
+## 🔒 NORME CLÉ D'ASSETS (gravée 2026-07-27, demande PY « que ça ne soit jamais oublié »)
+
+- **La clé de liaison de TOUT asset dino = le NOM LATIN capitalisé = `id` du dino capitalisé** (`tyrannosaurus` → `Tyrannosaurus`). Fichiers `Tyrannosaurus_ombre.png`, `Tyrannosaurus_sprite.png`, clés de `DINO_ASSETS`, paramètre `?open=`.
+- **JAMAIS le nom d'affichage FR** (`T-Rex`, `Tricératops` — accents/tirets = 404 garantis). Incident 2026-07-26 : bandeau collection cassé sur 51/69 dinos pour cette raison exacte.
+- Tout nouveau dino : `id` latin minuscule dans dinos-data.js, assets nommés par l'id capitalisé, puis **régénérer** `gen-dinos-assets.mjs`. Un dino sans entrée `DINO_ASSETS` est invisible des jeux/collection.
+
 ## Règles dures (résumé — détail dans figées)
 
 - 🔒 **Tritri** = running gag Wex (dino préféré). JAMAIS « Max », « doudou », « peluche ».

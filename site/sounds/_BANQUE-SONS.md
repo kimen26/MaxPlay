@@ -10,7 +10,7 @@
 | Dossier | Contenu | Voix | Généré via |
 |---|---|---|---|
 | `site/sounds/ui/` (10) | identité hub « Ligne de Max » : moteur-bus, klaxon, porte-bus, tap, fanfare-victoire, etoile, deblocage, ambiance-nuit (loop), voyage-temps, veilleuse | SFX | `text_to_sound_effects` |
-| `site/sounds/fx/` (54) | catalogue général : victoires, rigolo (prout…), dinos (rugissements), animaux, véhicules, instruments, pièces, espace, divers | SFX | `text_to_sound_effects` |
+| `site/sounds/fx/` | catalogue général : victoires, rigolo (prout…), dinos (rugissements), **cris de bébés par famille `cri-bebe-*` (§ 4 bis)**, animaux, véhicules, instruments, pièces, espace, divers | SFX | `text_to_sound_effects` |
 | `site/sounds/voix/f/` (22) | réactions Narratrice — 16 positives + 6 douces (super, bravo, oups, presque…) | narrateur_f | `text_to_speech` |
 | `site/sounds/voix/h/` (22) | réactions Narrateur — idem | narrateur_h | `text_to_speech` |
 | `site/sounds/voix/wex/` (22) | réactions Wex — idem | wex | `text_to_speech` |
@@ -87,6 +87,30 @@ Fonction locale `speakLieu(zone, txt)` : joue `sounds/voix/lieux/{bus|fusee}-<zo
   - Fiches dino : 9 Cénozoïque complétés (taille/régime/funfact/recap) → `DINO_AUDIO` 60/60 dans dev-dinos.html.
   - Fins silencieuses corrigées : mj-17, mj-18, mj-22, mj-39 + bug fanfare mj-42. Funfacts MP3 : mj-28, mj-33. Chaînage il-vivait-quand : mj-31. Mini-étoile : pool `apparition`.
   - Décision produit : PAS de voix « Bravo » à chaque bonne réponse (ding en cours de partie, voix à la fin).
+
+## 4 bis. Cris de bébés dinos PAR FAMILLE (2026-07-27)
+
+11 fichiers `site/sounds/fx/cri-bebe-<famille>.mp3` — un par famille de `DINO_FAMILLES` (`site/js/dinos-data.js`).
+Générés via `text_to_sound_effects` (1,5-2 s), **paddés 250 ms** (règle L-069), tous **aigus, courts, mignons, non effrayants** (cible 4 ans) : c'est un BÉBÉ qui vient d'éclore, jamais un adulte qui rugit.
+
+| Famille (id) | Groupe | Caractéristique sonore justifiée | Fichier |
+|---|---|---|---|
+| `trex` | Théropodes | Bipèdes carnivores proches des oiseaux → couinement aigu râpeux, avec juste un soupçon de grognement (le poussin de prédateur, pas le rugissement de film) | `cri-bebe-trex.mp3` |
+| `cou_long` | Sauropodes | Masse énorme = résonateur long → grondement grave doux + petite montée finale, façon éléphanteau | `cri-bebe-cou_long.mp3` |
+| `arme` | Thyréophores | Corps trapu, museau court, brouteur → bêlement/reniflement grave et court, type chevreau | `cri-bebe-arme.mp3` |
+| `cornu` | Cératopsiens | Bec de perroquet, crâne massif → grognement rauque très court finissant en couinement | `cri-bebe-cornu.mp3` |
+| `bec` | Ornithopodes (hadrosaures) | Crête creuse = **résonateur nasal** (Parasaurolophus : soufflerie testée par les paléontologues) → petit cor nasal mélodieux, deux notes montantes | `cri-bebe-bec.mp3` |
+| `raptor` | Dromæosaures | Les plus proches des oiseaux (plumes) → pépiements aigus rapides, trois de suite, type poussin | `cri-bebe-raptor.mp3` |
+| `pterosaures` | Ptérosaures | Cri perçant d'animal volant colonial (analogie oiseaux de mer) → petit couinement strident et fin | `cri-bebe-pterosaures.mp3` |
+| `enaliosaures` | Reptiles marins | Vie aquatique → sifflement aigu type dauphin + une bulle d'eau | `cri-bebe-enaliosaures.mp3` |
+| `volant` | Synapsides (avant les dinos) | Cousins des animaux à poils → miaulement/plainte douce légèrement râpeuse (pas un cri de reptile) | `cri-bebe-volant.mp3` |
+| `mammiferes` | Mammifères (mégafaune) | Trompe/barrissement du mammouth mais version petit → mini-trompette chaude et courte | `cri-bebe-mammiferes.mp3` |
+| `oiseaux` | Oiseaux-terreurs | Oisillon à gros bec → deux pépiements + un léger clac de bec | `cri-bebe-oiseaux.mp3` |
+
+**Prompts** : anglais, structure « Cute baby <animal-type> : <caractéristique> , short, adorable, not scary. Single call, no music. » (prompts exacts en commentaire du présent tableau — la caractéristique de la colonne 3 est la traduction fidèle du prompt utilisé).
+
+**Branchement** : `site/js/nid-ui.js` → `playBabyCry(dino)` dans `runHatchSequence` — joue `CRI_FAMILLE[dino.famille]`, **fallback défensif** sur les génériques `dino-bebe{,-2,-3}.mp3` si la famille est inconnue ou le MP3 absent (pas de 404 bruyant, pas d'éclosion muette).
+**mj-46** (œufs) reste sur les 3 génériques — inchangé.
 
 ## 5. Ce qui reste (TODO — MAJ 2026-07-13 session « vraie voix partout »)
 

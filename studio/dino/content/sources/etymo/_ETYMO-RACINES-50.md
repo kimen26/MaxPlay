@@ -203,6 +203,12 @@
 → **« lézard à casque »** (crête en forme de casque)
 [nom_etym OK]
 
+## saurolophus — Saurolophe (Saurolophus osborni)
+- **sauro-** (grec *sauros*) = lézard
+- **-lophus / lophos** (grec) = crête
+→ **« lézard à crête »** (éperon d'os plein, droit, pas creuse comme celle du Parasaurolophus)
+[nom_etym OK]
+
 ## edmontosaurus — Edmontosaure (Edmontosaurus regalis)
 - **Edmonto-** = Edmonton, ville du Canada (formation d'Edmonton)
 - **-saurus / -saure** (grec *sauros*) = lézard

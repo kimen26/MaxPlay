@@ -2,6 +2,16 @@
 
 > Journal des sessions (plus récent en haut). Tenu par `dino-pmo`.
 
+## 2026-07-27 — Ajout Saurolophe (phases 2/3/3b/4 skill nouveau-dino)
+
+**Fait** : fact-check pré-validé en amont (taxo `bec`/Ornithopodes). Entrée data insérée auprès des voisins de famille (Corythosaurus/Parasaurolophus/Edmontosaurus/Maiasaura/Iguanodon), comparaisons via `_compLong(9)`/`_compHaut(3)`/`_compPoids(3.5)` (sorties réelles vérifiées par exécution node : « camion »/« panier de basket »/« 2 rhinocéros », aucune > 10 %). Validation d'intégrité complète (70 DINOS, 0 doublon id, 0 champ vide, clés famille/cat/periode valides — via wrapper CommonJS `module.exports` car `vm.runInContext` n'attache pas les `const` top-level au sandbox, contournement documenté).
+
+Dialogue V3 `saurolophus.md` écrit puis relu : 2 questions Wex sans `?` corrigées à la relecture. Vérité critique tenue (crête = éperon d'os PLEIN jamais creux/musical, contraste explicite Parasaurolophus, hypothèse signal visuel formulée comme hypothèse, aucune couleur, pas de « 3 espèces », découverte Mongolie 100+ individus dite sans détail de souffrance). Greps interdits + `!` final Wex : 0 match.
+
+5 MP3 générés (`_gen-audio-v3.sh`), vérifiés sur disque + ffprobe (32s/21,6s/21,4s/15,7s/90,6s, tous dans les bornes). Manifest régénéré (70 ids). Étymo ajoutée (`_ETYMO-RACINES-50.md` + `_etymo2racines.cjs` régénéré, 57 dinos couverts). Prononciation « So-ro-lo-fuss » gravée avec piège de confusion Parasaurolophus explicite. Câblage `dev-dinos.html` : `DINO_AUDIO` + `DINO_AUDIO_VERSION` (2 des 3 maps requises — `DINO_EXTRAS` différé, pas d'images).
+
+**Reste** : phase 5 paléoart (hero + 5 scènes + coloriage) — aucune image générée. `_ETAT-DINOS.md` régénéré : saurolophus 4/8 axes complet.
+
 ## 2026-07-19 — Fusion gouvernance : PMO unifiés + capture immédiate
 
 **Fait (transverse 3 pôles, décision Papa Yann)** :

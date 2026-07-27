@@ -4,7 +4,7 @@
     "genere_par": "scripts/export/_etymo2racines.cjs",
     "note": "STRUCTURE seulement — la source de vérité reste le .md (fact-checké). Curation pédagogique du dico = dino-conseiller.",
     "nb_racines": 76,
-    "nb_dinos": 56
+    "nb_dinos": 57
   },
   "racines": [
     {
@@ -13,13 +13,14 @@
       "translitteration": "sauros",
       "sens": "lézard",
       "type": "racine",
-      "n": 32,
+      "n": 33,
       "variantes": [
         "-saura",
         "-saure",
         "-sauro-",
         "-saurus",
         "saura",
+        "sauro-",
         "sauros"
       ],
       "dinos": [
@@ -48,6 +49,7 @@
         "parasaurolophus",
         "plateosaurus",
         "psittacosaurus",
+        "saurolophus",
         "scutellosaurus",
         "spinosaurus",
         "stegosaurus",
@@ -75,6 +77,25 @@
         "iguanodon",
         "pteranodon",
         "troodon"
+      ]
+    },
+    {
+      "cle": "-lophe",
+      "langue": "grec",
+      "translitteration": "lophos",
+      "sens": "crête",
+      "type": "racine",
+      "n": 4,
+      "variantes": [
+        "-lopho-",
+        "-lophus",
+        "lophos"
+      ],
+      "dinos": [
+        "cryolophosaurus",
+        "dilophosaurus",
+        "parasaurolophus",
+        "saurolophus"
       ]
     },
     {
@@ -110,24 +131,6 @@
         "oviraptor",
         "utahraptor",
         "velociraptor"
-      ]
-    },
-    {
-      "cle": "-lophe",
-      "langue": "grec",
-      "translitteration": "lophos",
-      "sens": "crête",
-      "type": "racine",
-      "n": 3,
-      "variantes": [
-        "-lopho-",
-        "-lophus",
-        "lophos"
-      ],
-      "dinos": [
-        "cryolophosaurus",
-        "dilophosaurus",
-        "parasaurolophus"
       ]
     },
     {
@@ -1878,6 +1881,26 @@
           "cle": "-saure",
           "langue": "grec",
           "sens": "lézard"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "saurolophus": {
+      "nom": "Saurolophe",
+      "full": "Saurolophus osborni",
+      "sens": "lézard à crête",
+      "racines": [
+        {
+          "racine": "sauro-",
+          "cle": "-saure",
+          "langue": "grec",
+          "sens": "lézard"
+        },
+        {
+          "racine": "-lophus / lophos",
+          "cle": "-lophe",
+          "langue": "grec",
+          "sens": "crête"
         }
       ],
       "nom_etym": "ok"

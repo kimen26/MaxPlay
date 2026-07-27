@@ -1,0 +1,28 @@
+{
+  "inputs": [
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[excited] So-ro-lo-fuss. En grec ancien, « sauro », c'est le lézard. Et « lophus », c'est la crête. Le lézard à crête."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[curious] Une crête, comme un chapeau pointu ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[happily] Presque. Un long éperon d'os plein, tout droit, qui pointe vers l'arrière et vers le haut. Il vivait il y a 70 millions d'années."
+    },
+    {
+      "voice_id": "G54e8CyYslC2Y4ZupTlg",
+      "text": "[gasps] Et il vivait où, lui ?"
+    },
+    {
+      "voice_id": "cbRcktt2xvoeFpdvW2wg",
+      "text": "[serious] C'est ça, le plus étonnant : au Canada ET en Mongolie, à l'autre bout du monde, en même temps. Un pont de terre reliait les deux continents à cette époque."
+    }
+  ],
+  "model_id": "eleven_v3",
+  "output_format": "mp3_44100_128",
+  "language_code": "fr",
+  "apply_text_normalization": "auto"
+}

@@ -22,6 +22,52 @@
   var OMBRE = 'img/dinos/ombres/';
   var DINO_BEBE_SFX = ['sounds/fx/dino-bebe.mp3', 'sounds/fx/dino-bebe-2.mp3', 'sounds/fx/dino-bebe-3.mp3'];
 
+  // Cris de bébé PAR FAMILLE (banque 2026-07-27, cf sounds/_BANQUE-SONS.md §
+  // « cris de bébés par famille ») : à l'éclosion, le petit crie selon sa
+  // famille (crête résonante = petit cor, sauropode = grondement doux, etc.).
+  // Mapping défensif : famille inconnue OU fichier absent → fallback générique
+  // dino-bebe-*, jamais de 404 bruyant ni d'éclosion muette.
+  var CRI_FAMILLE = {
+    trex: 'cri-bebe-trex.mp3',
+    cou_long: 'cri-bebe-cou_long.mp3',
+    arme: 'cri-bebe-arme.mp3',
+    cornu: 'cri-bebe-cornu.mp3',
+    bec: 'cri-bebe-bec.mp3',
+    raptor: 'cri-bebe-raptor.mp3',
+    pterosaures: 'cri-bebe-pterosaures.mp3',
+    enaliosaures: 'cri-bebe-enaliosaures.mp3',
+    volant: 'cri-bebe-volant.mp3',
+    mammiferes: 'cri-bebe-mammiferes.mp3',
+    oiseaux: 'cri-bebe-oiseaux.mp3'
+  };
+
+  function playGenericBabyCry() {
+    try {
+      var pick = DINO_BEBE_SFX[(Math.random() * DINO_BEBE_SFX.length) | 0];
+      new Audio(pick).play().catch(function () {});
+    } catch (e) {}
+  }
+
+  // Joue le cri de la famille du dino révélé, sinon retombe sur le générique.
+  function playBabyCry(dino) {
+    var file = dino && dino.famille ? CRI_FAMILLE[dino.famille] : null;
+    if (!file) { playGenericBabyCry(); return; }
+    try {
+      var a = new Audio('sounds/fx/' + file);
+      var fellBack = false;
+      a.addEventListener('error', function () {
+        if (fellBack) return;
+        fellBack = true;
+        playGenericBabyCry();
+      });
+      a.play().catch(function () {
+        if (fellBack) return;
+        fellBack = true;
+        playGenericBabyCry();
+      });
+    } catch (e) { playGenericBabyCry(); }
+  }
+
   // ── chargement paresseux des dépendances (jamais dans index.html) ─────
   // Ordre figé : dinos-data.js (DINOS) → collection.js (window.Collection)
   // → collection-dinos.js (configure() le catalogue depuis DINOS) → dinos-assets.js
@@ -189,11 +235,8 @@
     }
     var dino = dinoById(result.id);
     var imgSrc = teteSrc(dino) || ombreSrc(dino);
-    // son du bébé dino (padding déjà fait, cf reference_sfx_silence_padding)
-    try {
-      var pick = DINO_BEBE_SFX[(Math.random() * DINO_BEBE_SFX.length) | 0];
-      new Audio(pick).play().catch(function () {});
-    } catch (e) {}
+    // son du bébé dino, choisi selon sa famille (padding déjà fait, cf reference_sfx_silence_padding)
+    playBabyCry(dino);
     // Retour playtest Papa Yann : "on a gagné quoi ? une fiche ? un badge ?" —
     // après la révélation (fête MaxFX.hatch), une carte claire distincte : NOM
     // en grand + 2 actions. Le gain (rejoint la collection) doit se comprendre

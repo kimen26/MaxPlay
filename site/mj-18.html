@@ -97,6 +97,29 @@
       overflow:hidden; background:rgba(255,255,255,0.04);
       border-radius:14px;
     }
+
+    /* Dino qui se colorie (re-skin fin de partie, PY 2026-07-28) : le
+       coloriage (trait noir/blanc) est posé PAR-DESSUS un dégradé de
+       couleurs en mix-blend-mode:multiply — le noir du trait reste noir,
+       le blanc prend la teinte. Le dégradé grandit (clip-path) au fil des
+       tubes triés, une bande de couleur par tube (même ordre que la parade). */
+    .dino-color-wrap {
+      position:relative; width:150px; height:150px; margin:6px auto 0;
+      border-radius:16px; overflow:hidden; background:rgba(255,255,255,0.9);
+    }
+    .dino-color-fill {
+      position:absolute; inset:0; display:flex;
+      clip-path:inset(0 100% 0 0); transition:clip-path 0.7s ease;
+    }
+    .dino-color-fill span { flex:1; height:100%; }
+    .dino-color-line {
+      position:absolute; inset:0; width:100%; height:100%;
+      object-fit:contain; mix-blend-mode:multiply;
+    }
+    .dino-color-caption {
+      text-align:center; font-size:0.8rem; color:#fff8e0; margin-top:4px;
+      text-shadow:0 1px 3px rgba(0,0,0,0.5);
+    }
     .paint-tube {
       position:absolute; top:10px; left:50%; transform:translateX(-50%) rotate(0deg);
       width:36px; height:110px;
@@ -147,12 +170,19 @@
       <h2 class="victory-title">Bravo !</h2>
       <p class="victory-text">Tu as trié toutes les couleurs ! Regarde les bus repeints :</p>
       <div class="paint-scene" id="paintScene"></div>
+      <div class="dino-color-wrap" id="dinoColorWrap" style="display:none;">
+        <div class="dino-color-fill" id="dinoColorFill"></div>
+        <img class="dino-color-line" id="dinoColorLine" src="" alt="">
+      </div>
+      <div class="dino-color-caption" id="dinoColorCaption" style="display:none;"></div>
       <button class="victory-btn primary" id="paintContinueBtn">Continuer →</button>
     </div>
   </div>
 
   <script src="js/bus-svg.js"></script>
   <script src="js/data.js"></script>
+  <script src="js/dinos-assets.js"></script>
+  <!-- manifeste coloriages dino (dino qui se colorie en fin de partie, PY 2026-07-28) -->
   <script src="js/mj-shell.js"></script>
   <script>
   MJ.ready(function () {
@@ -190,6 +220,17 @@
     let selected = null;
     let complete = false;
     let animating = false;
+
+    // Dino qui se colorie en fin de partie (re-skin PY 2026-07-28, écran de
+    // fin uniquement, zéro impact gameplay) : un dino au hasard avec un
+    // coloriage dispo se remplit des couleurs triées, un tube = une bande.
+    // Défensif : sans coloriage dispo, la scène reste masquée (display:none).
+    function pickColoriage() {
+      const assets = window.DINO_ASSETS || {};
+      const keys = Object.keys(assets).filter(k => assets[k].paleoart && assets[k].paleoart.coloriage);
+      if (!keys.length) return null;
+      return assets[keys[Math.floor(Math.random() * keys.length)]].paleoart.coloriage;
+    }
 
     function updateCountDisplay() {
       const tv = document.getElementById('tubeCountVal'); if (tv) tv.textContent = colorCount;
@@ -375,6 +416,30 @@
       scene.innerHTML = '';
       const GREY = '#8a95a3';
 
+      // Dino qui se colorie : une bande de couleur par tube trié (même ordre
+      // que la parade des bus). Choisi une fois, masqué si aucun coloriage.
+      const wrap = document.getElementById('dinoColorWrap');
+      const fill = document.getElementById('dinoColorFill');
+      const line = document.getElementById('dinoColorLine');
+      const caption = document.getElementById('dinoColorCaption');
+      const coloriageSrc = pickColoriage();
+      fill.innerHTML = '';
+      if (coloriageSrc) {
+        line.src = coloriageSrc;
+        BUS_THEMES.forEach(t => {
+          const band = document.createElement('span');
+          band.style.background = t.color;
+          fill.appendChild(band);
+        });
+        fill.style.clipPath = 'inset(0 100% 0 0)';
+        wrap.style.display = '';
+        caption.style.display = '';
+        caption.textContent = 'Le dino se colorie avec toi !';
+      } else {
+        wrap.style.display = 'none';
+        caption.style.display = 'none';
+      }
+
       for (let i = 0; i < BUS_THEMES.length; i++) {
         const theme = BUS_THEMES[i];
         const color = theme.color;
@@ -434,6 +499,12 @@
         }
         try { sndDing && sndDing(); } catch(e) {}
 
+        // Le dino se colorie d'un cran de plus (une bande par bus trié)
+        if (coloriageSrc) {
+          const pct = ((i + 1) / BUS_THEMES.length) * 100;
+          fill.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+        }
+
         await sleep(500);
         tube.classList.remove('pouring');
         bus.classList.remove('enter');
@@ -454,6 +525,10 @@
     window.newGame = newGame;
 
     updateCountDisplay(); newGame(); // DOM déjà prêt (MJ.ready)
+
+    // ── Harnais de test (Playwright) — force la victoire sans résoudre le
+    // puzzle water-sort (jugé "trop fragile" à scripter par le spec officiel).
+    window.__mjTest = { forceVictory: () => showVictory() };
   }); // fin MJ.ready
   </script>
 </body>

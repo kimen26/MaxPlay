@@ -65,14 +65,18 @@
       box-shadow:0 4px 10px rgba(0,0,0,0.4);
       cursor:pointer;
       z-index:2;
+      overflow:hidden;
     }
     .piece.max.selected { box-shadow:0 0 0 4px #fff, 0 4px 14px rgba(0,0,0,0.5); }
     .piece.max .face { font-size:calc(var(--cell) * 0.42); line-height:1; }
+    .piece.max img.dino-face { width:100%; height:100%; object-fit:cover; object-position:50% 35%; border-radius:50%; }
     .piece.dodo {
       background:radial-gradient(circle at 35% 30%, #9aa3d9, #6b74b8);
       box-shadow:0 4px 10px rgba(0,0,0,0.35);
+      overflow:hidden;
     }
     .piece.dodo .face { font-size:calc(var(--cell) * 0.4); line-height:1; }
+    .piece.dodo img.dino-face { width:100%; height:100%; object-fit:cover; object-position:50% 35%; border-radius:50%; filter:brightness(0.72) saturate(0.7); }
     .dodo-zzz {
       position:absolute; top:-14px; right:-6px;
       font-size:calc(var(--cell) * 0.22);
@@ -159,6 +163,8 @@
   </div>
 </div>
 
+<script src="js/dinos-assets.js"></script>
+<!-- manifeste têtes de dinos (pions = bébés dinos, re-skin PY 2026-07-28) -->
 <script src="js/mj-shell.js"></script>
 <script>
 MJ.ready(function () {
@@ -206,6 +212,19 @@ const G = shell.G;
 // 🔒 9 niveaux fixes (indépendant du barème questions Golden 4/6/8)
 G.totalQ = LEVELS.length;
 G.buildPips();
+
+// Pions → bébés dinos (re-skin PY 2026-07-28, zéro impact règles) : Max =
+// une tête (éveillée), dodo = têtes endormies (assombries en CSS). Tirées une
+// fois par chargement de partie. Défensif : sans asset, fallback emoji 😊/😴.
+const DINO_TETES_POOL = Object.keys(window.DINO_ASSETS || {})
+  .map(k => window.DINO_ASSETS[k] && window.DINO_ASSETS[k].tete)
+  .filter(Boolean);
+function randomTete() {
+  if (!DINO_TETES_POOL.length) return null;
+  return DINO_TETES_POOL[Math.floor(Math.random() * DINO_TETES_POOL.length)];
+}
+let MAX_TETE = randomTete();
+let DODO_TETE = randomTete();
 
 // ── ÉTAT ──────────────────────────────────────────────────────────
 let levelIdx = 0;
@@ -261,7 +280,9 @@ function makeMaxPiece() {
   const p = document.createElement('div');
   p.className = 'piece max' + (selected ? ' selected' : '');
   p.id = 'piece-max';
-  p.innerHTML = '<span class="face">&#128522;</span>';
+  p.innerHTML = MAX_TETE
+    ? `<img class="dino-face" src="${MAX_TETE}" alt="">`
+    : '<span class="face">&#128522;</span>';
   p.addEventListener('click', (e) => { e.stopPropagation(); onMaxClick(); });
   return p;
 }
@@ -269,7 +290,9 @@ function makeMaxPiece() {
 function makeDodoPiece() {
   const p = document.createElement('div');
   p.className = 'piece dodo';
-  p.innerHTML = '<span class="face">&#128564;</span><span class="dodo-zzz">z<sup>z</sup></span>';
+  p.innerHTML = (DODO_TETE
+    ? `<img class="dino-face" src="${DODO_TETE}" alt="">`
+    : '<span class="face">&#128564;</span>') + '<span class="dodo-zzz">z<sup>z</sup></span>';
   return p;
 }
 

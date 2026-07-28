@@ -30,12 +30,13 @@ export async function run({ page, ok }) {
 
   if (!paysTarget) return;
 
-  // Normalise : capitalize 1ère lettre et minuscule reste (ex : "allemagne" → "Allemagne")
-  paysTarget = paysTarget.charAt(0).toUpperCase() + paysTarget.slice(1).toLowerCase();
-
-  // Trouve le rect SVG correspondant (data-country attribute)
-  const paysSelector = `[data-country="${paysTarget}"]`;
-  const paysEl = await page.locator(paysSelector).first();
+  // Comparaison insensible à la casse : surtout PAS de `.toLowerCase()` sur la fin
+  // du nom, qui écrasait le U de "Royaume-Uni" en "Royaume-uni" et faisait échouer
+  // le sélecteur dès que le UK sortait en premier (tirage aléatoire).
+  const cible = paysTarget.toLowerCase();
+  const paysEl = page
+    .locator(`xpath=//*[translate(@data-country,'ABCDEFGHIJKLMNOPQRSTUVWXYZÀÂÄÉÈÊËÎÏÔÖÙÛÜÇ','abcdefghijklmnopqrstuvwxyzàâäéèêëîïôöùûüç')='${cible}']`)
+    .first();
   const exists = await paysEl.count() > 0;
   ok(`Pays "${paysTarget}" trouvé dans la carte SVG`, exists);
 

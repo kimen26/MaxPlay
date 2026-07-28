@@ -54,15 +54,15 @@
     </div>
   </div>
 
-  <!-- Découverte + Préférés (rotation du jour + pins) -->
+  <!-- Découverte : SEUL mécanisme de mise en avant (décision PY 2026-07-28 —
+       fusion avec l'ancien bloc Préférés, qui faisait doublon et brouillait
+       le message. Le but est de pousser vers la découverte, pas la répétition ;
+       le ❤️ favori (panneau règle d'un jeu) reste utilisable mais ne s'affiche
+       plus en rangée concurrente ici. Voir js/mur.js decouverte(). -->
   <section class="tritri">
     <div class="mur-bloc">
       <div class="mur-bloc-titre"><span class="t-emoji">🔎</span>Découverte</div>
       <div class="mur-trio" id="decouverte-row"></div>
-    </div>
-    <div class="mur-bloc" id="preferes-wrap" style="display:none">
-      <div class="mur-bloc-titre"><span class="t-emoji">❤️</span>Préférés</div>
-      <div class="mur-trio" id="preferes-row"></div>
     </div>
   </section>
 
@@ -155,7 +155,6 @@
   <script src="js/catalog.js"></script>
   <script src="js/stars.js"></script>
   <script src="js/unlock.js"></script>
-  <script src="js/pins.js"></script>
   <script src="js/avatars.js"></script>
   <script src="js/avatar-picker.js"></script>
   <script src="js/bus-svg.js"></script>

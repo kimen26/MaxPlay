@@ -11,8 +11,8 @@ export async function run({ page, ok }) {
   await page.waitForTimeout(250);
   ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
 
-  ok('bandeau Niveau présent', (await page.locator('#levelbar').count()) === 1);
-  ok('démarre au Niveau 1', (((await page.locator('#levelbar').textContent()) || '').includes('Niveau 1')));
+  ok('bandeau Niveau présent', (await page.locator('#lvlVal').count()) === 1);
+  ok('démarre au Niveau 1', (((await page.locator('#lvlVal').textContent()) || '').trim() === '1'));
 
   await page.waitForSelector('.tube', { timeout: 5000 });
   const tubes = await page.locator('.tube').count();

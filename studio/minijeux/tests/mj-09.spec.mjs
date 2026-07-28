@@ -11,9 +11,6 @@ export async function run({ page, ok }) {
   await page.waitForTimeout(250);
   ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
 
-  ok('bandeau Niveau présent', (await page.locator('#levelbar').count()) === 1);
-  ok('démarre au Niveau 1', (((await page.locator('#levelbar').textContent()) || '').includes('Niveau 1')));
-
   await page.waitForSelector('.family-box', { timeout: 5000 });
   const boxes = await page.locator('.family-box').count();
   ok('Niveau 1 = 2 familles (boîtes)', boxes === 2, `boxes=${boxes}`);

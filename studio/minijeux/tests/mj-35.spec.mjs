@@ -46,7 +46,7 @@ export async function run({ page, ok }) {
     const afterWrong = await page.evaluate(() => window.__mjTest.state);
     ok('mauvais trou : pileCount ne progresse pas', afterWrong.pileCount === 0, `pileCount=${afterWrong.pileCount}`);
     ok('mauvais trou : pas de victoire affichée',
-       !(await page.evaluate(() => document.getElementById('end-screen')?.classList.contains('visible'))));
+       !(await page.evaluate(() => !!document.querySelector('.end-wrap'))));
     ok('mauvais trou : toujours exactement un trou PILE-able (rien de cassé)',
        afterWrong.pileIdx !== -1, `pileIdx=${afterWrong.pileIdx}`);
     const bodyTextWrong = await page.evaluate(() => document.body.innerText);
@@ -54,35 +54,8 @@ export async function run({ page, ok }) {
        !/perdu|raté|game over/i.test(bodyTextWrong));
   }
 
-  // ── Chemin gagnant scripté : tape le trou PILE-able 3 fois de suite ──
-  let guard = 0;
-  while (guard < 10) {
-    const state = await page.evaluate(() => window.__mjTest.state);
-    if (state.pileCount >= state.pileTarget) break;
-    ok(`palier ${guard + 1}: trou PILE-able identifiable`, state.pileIdx !== -1, `pileIdx=${state.pileIdx}`);
-    if (state.pileIdx === -1) break;
-
-    await page.evaluate((i) => window.__mjTest.sow(i), state.pileIdx);
-    await page.waitForFunction(() => window.__mjTest.state.sowing === false, null, { timeout: 10000 });
-    await page.waitForTimeout(1100); // laisse "PILE !" fx + transition newBoard/victoire
-    guard++;
-  }
-
-  const finalState = await page.evaluate(() => window.__mjTest.state);
-  ok('3 PILE réussis (pileCount === pileTarget)',
-     finalState.pileCount === finalState.pileTarget, `pileCount=${finalState.pileCount}`);
-
-  const victoryShown = await page.waitForFunction(
-    () => document.getElementById('end-screen')?.classList.contains('visible'),
-    null, { timeout: 5000 }
-  ).then(() => true).catch(() => false);
-  ok('écran de victoire affiché', victoryShown);
-
-  // Zéro pénalité : aucun bouton/texte "perdu" ou score négatif visible
-  const bodyText = await page.evaluate(() => document.body.innerText);
-  ok('aucun texte punitif ("perdu"/"raté") affiché', !/perdu|raté|game over/i.test(bodyText));
-
   // ── Responsive 360×740 (portrait phone) : plateau entièrement visible ──
+  // Testé AVANT le chemin gagnant : l'écran de victoire remplace #app (donc .pit/#granary).
   await page.setViewportSize({ width: 360, height: 740 });
   await page.waitForTimeout(300); // laisse le CSS clamp()/vmin se recalculer
   const viewport = { width: 360, height: 740 };
@@ -112,4 +85,32 @@ export async function run({ page, ok }) {
   ok('1024x768 paysage : tous les trous dans #app (pas coupés)', allPitsInApp, JSON.stringify(pitBoxesLandscape));
   const granaryInApp = !!granaryBoxLandscape && (granaryBoxLandscape.x + granaryBoxLandscape.width) <= appBox.x + appBox.width + 1;
   ok('1024x768 paysage : grenier dans #app (pas coupé)', granaryInApp, JSON.stringify(granaryBoxLandscape));
+
+  // ── Chemin gagnant scripté : tape le trou PILE-able 3 fois de suite ──
+  let guard = 0;
+  while (guard < 10) {
+    const state = await page.evaluate(() => window.__mjTest.state);
+    if (state.pileCount >= state.pileTarget) break;
+    ok(`palier ${guard + 1}: trou PILE-able identifiable`, state.pileIdx !== -1, `pileIdx=${state.pileIdx}`);
+    if (state.pileIdx === -1) break;
+
+    await page.evaluate((i) => window.__mjTest.sow(i), state.pileIdx);
+    await page.waitForFunction(() => window.__mjTest.state.sowing === false, null, { timeout: 10000 });
+    await page.waitForTimeout(1100); // laisse "PILE !" fx + transition newBoard/victoire
+    guard++;
+  }
+
+  const finalState = await page.evaluate(() => window.__mjTest.state);
+  ok('3 PILE réussis (pileCount === pileTarget)',
+     finalState.pileCount === finalState.pileTarget, `pileCount=${finalState.pileCount}`);
+
+  const victoryShown = await page.waitForFunction(
+    () => !!document.querySelector('.end-wrap'),
+    null, { timeout: 5000 }
+  ).then(() => true).catch(() => false);
+  ok('écran de victoire affiché', victoryShown);
+
+  // Zéro pénalité : aucun bouton/texte "perdu" ou score négatif visible
+  const bodyText = await page.evaluate(() => document.body.innerText);
+  ok('aucun texte punitif ("perdu"/"raté") affiché', !/perdu|raté|game over/i.test(bodyText));
 }

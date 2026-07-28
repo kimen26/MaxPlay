@@ -131,7 +131,6 @@
     <div class="hdr">
       <a href="index.html" class="back">←</a>
       <span class="htitle">🧪 Tubes de couleurs</span>
-      <span id="levelbar" style="font-weight:900;color:var(--gold);background:rgba(255,255,255,0.14);border-radius:10px;padding:3px 12px;font-size:0.85rem;">Niveau 1</span>
     </div>
     <div class="info" id="info">Tape un tube, puis tape un autre pour verser !</div>
     <div class="stage" id="stage"></div>
@@ -148,8 +147,7 @@
       <h2 class="victory-title">Bravo !</h2>
       <p class="victory-text">Tu as trié toutes les couleurs ! Regarde les bus repeints :</p>
       <div class="paint-scene" id="paintScene"></div>
-      <button class="victory-btn primary" onclick="newGame();document.getElementById('victoryOverlay').classList.remove('show')">🎲 Nouveau jeu</button>
-      <a href="index.html" class="victory-btn secondary">📋 Menu</a>
+      <button class="victory-btn primary" id="paintContinueBtn">Continuer →</button>
     </div>
   </div>
 
@@ -160,6 +158,7 @@
   MJ.ready(function () {
     const shell = MJ.init({
       id: 'mj-18', emoji: '🧪', titre: 'Tubes de couleurs',
+      golden: true,
       consigne: false, // jeu de manipulation continue (puzzle water-sort), pas de consigne parlée
       regle: {
         picto: '🧪🚌',
@@ -179,6 +178,7 @@
 
     const TUBE_CAPACITY = 4;
     const TUBES_EMPTY = 2;
+    const G = shell.G;
 
     // 3★ (2026-07-14) : 5 paliers → 3 niveaux. N0=ex-P1-2(2 couleurs, entrée douce) · N1=ex-P3(4 couleurs) · N2=ex-P4-5(6 couleurs, l'ancien max inchangé).
     const level = Math.max(0, Math.min(2, (window.Stars ? Stars.get('mj-18') : 0)));
@@ -351,7 +351,6 @@
         render();
         if (isSolved()) {
           complete = true;
-          if (typeof Tracker !== 'undefined') Tracker.endSession(1, 1);
           setTimeout(() => {
             try { confettiBurst(60); } catch(e) {}
             showVictory();
@@ -363,9 +362,13 @@
     function showVictory() {
       try { playEndSound(1, 1); } catch(e) {}
       document.getElementById('victoryOverlay').classList.add('show');
-      if (window.MaxFX) MaxFX.finalStar(document.getElementById('victoryOverlay'), { style: 'breathe', label: '' });
       runPaintParade();
     }
+
+    document.getElementById('paintContinueBtn').addEventListener('click', () => {
+      document.getElementById('victoryOverlay').classList.remove('show');
+      G.showEnd({ replayUrl: 'mj-18.html' });
+    });
 
     async function runPaintParade() {
       const scene = document.getElementById('paintScene');

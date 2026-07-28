@@ -113,6 +113,7 @@
     <a href="index.html">&#8592;</a>
     <span class="htitle">♟️ Croque-échecs !</span>
   </div>
+  <div class="pips" id="pips"></div>
 
   <div id="main">
 
@@ -152,9 +153,9 @@
   MJ.ready(function () {
     'use strict';
 
-    MJ.init({
+    const shell = MJ.init({
       id: 'mj-37', emoji: '♟️', titre: 'Croque-échecs !',
-      golden: false,
+      golden: true,
       consigne: false, // écran intro pièce + snacks-left gèrent la consigne visuelle
       regle: {
         texte: 'Déplace ta pièce pour croquer tous les goûters !',
@@ -202,6 +203,11 @@
     };
 
     const PIECE_NAMES = { fou:'Le Fou', tour:'La Tour', cavalier:'Le Cavalier', dame:'La Dame', roi:'Le Roi', pion:'Le Pion' };
+
+    const G = shell.G;
+    // 🔒 19 niveaux fixes (indépendant du barème questions Golden 4/6/8)
+    G.totalQ = LEVELS.length;
+    G.buildPips();
 
     const PIECE_VOICELINES = {
       fou:      { text: 'Moi je file en diagonale, zioup !',   file: 'sounds/pieces/fou-intro.mp3' },
@@ -493,9 +499,17 @@
 
     function triggerVictory() {
       state.won = true;
-      Tracker.endSession(1, 1);
       progress.done[state.levelId] = true;
       saveProgress(progress);
+
+      const idx = LEVELS.findIndex(l => l.id === state.levelId);
+      G.notePip(idx, 1);
+      const isLastLevel = idx === LEVELS.length - 1;
+
+      if (isLastLevel) {
+        G.showEnd({ replayUrl: 'mj-37.html' });
+        return;
+      }
 
       const overlay = document.getElementById('victory-overlay');
       overlay.style.display = 'flex';
@@ -506,10 +520,8 @@
       vz.innerHTML = '<div class="victory-banner">🎉 Bravo, tout croqué ! 🎉</div>';
       document.getElementById('btn-next').style.display = 'block';
 
-      const idx = LEVELS.findIndex(l => l.id === state.levelId);
-      const isLastLevel = idx === LEVELS.length - 1;
       if (window.MaxFX) {
-        MaxFX.finalStar(document.getElementById('app'), { style: isLastLevel ? 'cinematic' : 'breathe', label: 'BRAVO !' });
+        MaxFX.finalStar(document.getElementById('app'), { style: 'breathe', label: 'BRAVO !' });
       }
 
       setTimeout(() => {

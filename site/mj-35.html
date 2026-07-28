@@ -16,11 +16,6 @@
       src: local('Fredoka One');
     }
 
-    #stars-badge {
-      background:var(--gold-soft); color:var(--gold); font-weight:900;
-      border-radius:16px; padding:4px 12px; font-size:0.9rem; flex-shrink:0;
-    }
-
     #main {
       flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center;
       gap:clamp(6px,1.5vmin,14px); padding:8px 4px; overflow:hidden; position:relative;
@@ -39,10 +34,6 @@
     #instruction {
       font-size:clamp(0.8rem,3vmin,1.1rem); font-weight:900; text-align:center; padding:0 8px;
       opacity:0.95; max-width:100%;
-    }
-
-    #pile-progress {
-      font-size:clamp(0.75rem,2.6vmin,0.95rem); font-weight:900; opacity:0.8; color:#ffe066;
     }
 
     #board {
@@ -135,24 +126,6 @@
       font-size:0.85rem; font-weight:900; opacity:0.65; text-align:center;
     }
 
-    /* Écran de fin */
-    #end-screen {
-      display:none; position:absolute; inset:0;
-      background:rgba(26,26,46,0.97);
-      flex-direction:column; align-items:center; justify-content:center;
-      gap:16px; z-index:30;
-    }
-    #end-screen.visible { display:flex; }
-    #end-emoji { font-size:4.5rem; }
-    #end-msg { font-size:1.4rem; font-weight:900; text-align:center; padding:0 24px; }
-    #end-score { font-size:1rem; color:#ffe066; font-weight:900; }
-    .end-btn {
-      background:linear-gradient(135deg,#00c47a,#00906a); color:#fff;
-      border:none; border-radius:20px; font-family:'Fredoka One',sans-serif; font-weight:900;
-      font-size:1.1rem; padding:14px 38px; cursor:pointer; min-height:60px;
-      box-shadow:0 4px 16px rgba(0,196,122,0.45);
-    }
-    .end-btn:active { transform:scale(0.95); }
   </style>
 </head>
 <body data-ambiance="jungle">
@@ -162,13 +135,12 @@
   <div class="hdr">
     <a href="index.html">&#8592;</a>
     <span class="htitle">🌱 Le jeu des graines</span>
-    <span id="stars-badge">☆</span>
   </div>
+  <div class="pips" id="pips"></div>
 
   <div id="main">
     <div id="count-display">0</div>
     <div id="instruction">Touche une calebasse !</div>
-    <div id="pile-progress"></div>
     <div id="level-label"></div>
 
     <div id="board">
@@ -182,15 +154,6 @@
     </div>
   </div>
 
-  <!-- Fin de partie -->
-  <div id="end-screen">
-    <div id="end-emoji">🎉</div>
-    <div id="end-msg"></div>
-    <div id="end-score"></div>
-    <button class="end-btn" id="btn-replay">Rejouer !</button>
-    <a href="index.html" style="color:#ffe066;font-weight:900;font-size:0.95rem;margin-top:4px;">← Menu</a>
-  </div>
-
 </div>
   <script src="js/mj-shell.js"></script>
   <script>
@@ -201,9 +164,9 @@
     //  Kalah duel/IA NO-GO à 4 ans (décision game-conseiller) → version SOLO.
     // ═══════════════════════════════════════════════════════════════════════
 
-    MJ.init({
+    const shell = MJ.init({
       id: 'mj-35', emoji: '🌱', titre: 'Le jeu des graines',
-      golden: false,
+      golden: true,
       consigne: false, // consigne locale gérée par #instruction (pas la barre standard)
       regle: {
         texte: 'Trouve le trou qui remplit le grenier PILE-POIL !',
@@ -254,6 +217,10 @@
     let pileCount = 0;    // nb de "PILE !" réussis sur le palier en cours
     let sowing = false;   // bloque les taps pendant l'animation
     let sessionScore = 0;
+    let hadWrongThisPile = false;
+    const G = shell.G;
+    // 🔒 3 PILE fixes par palier (indépendant du barème questions Golden 4/6/8)
+    G.totalQ = PILE_TARGET;
 
     // ── Génération du plateau ────────────────────────────────────────────────
     // Garantit qu'UN SEUL trou est "PILE-able" : son nb de graines == distance
@@ -283,10 +250,10 @@
 
     function initLevel() {
       pileCount = 0;
+      hadWrongThisPile = false;
       newBoard();
       document.getElementById('level-label').textContent = LEVELS[level].label;
-      document.getElementById('stars-badge').textContent = '★'.repeat(level) + '☆'.repeat(3 - level) || '☆';
-      updatePileProgress();
+      G.buildPips();
     }
 
     function newBoard() {
@@ -297,10 +264,6 @@
       renderBoard();
       updateGranary();
       document.getElementById('instruction').textContent = 'Trouve le trou qui remplit PILE le grenier !';
-    }
-
-    function updatePileProgress() {
-      document.getElementById('pile-progress').textContent = 'PILE ' + '✓'.repeat(pileCount) + '·'.repeat(PILE_TARGET - pileCount);
     }
 
     // ── Rendu ─────────────────────────────────────────────────────────────────
@@ -408,13 +371,9 @@
 
       if (isPile) {
         showPileFx();
-        if (window.MaxFX) {
-          const fromEl = document.getElementById('granary');
-          const toEl = document.getElementById('pile-progress');
-          MaxFX.markPoint(fromEl, toEl, { style: 'bounce', result: 'green' });
-        }
+        G.notePip(pileCount, hadWrongThisPile ? 2 : 1, document.getElementById('granary'));
         pileCount++;
-        updatePileProgress();
+        hadWrongThisPile = false;
         if (pileCount >= PILE_TARGET) {
           setTimeout(showVictory, 900);
         } else {
@@ -423,6 +382,7 @@
       } else {
         // Mauvais trou : rien n'est perdu, aucun son négatif. On laisse voir
         // le compte (pédagogie) puis on réarrange doucement pour réessayer.
+        hadWrongThisPile = true;
         setTimeout(() => {
           document.getElementById('instruction').textContent = 'Presque ! Compte bien, essaie encore.';
           setTimeout(newBoard, 700);
@@ -444,26 +404,8 @@
     // ── Fin de niveau ───────────────────────────────────────────────────────
     function showVictory() {
       sessionScore++;
-      if (typeof Tracker !== 'undefined') Tracker.logAnswer(true);
-      const emoji = level === 2 ? '🏆' : '🎉';
-      document.getElementById('end-emoji').textContent = emoji;
-      document.getElementById('end-msg').textContent = 'Bravo ! 3 PILE réussis !';
-      document.getElementById('end-score').textContent = `${PILE_TARGET} PILE trouvés`;
-      document.getElementById('end-screen').classList.add('visible');
-      playEndSound(1, 1);
-      if (typeof Tracker !== 'undefined') Tracker.endSession(1, 1);
-      if (window.MaxFX) MaxFX.finalStar(document.getElementById('app'), { style: 'breathe', label: 'BRAVO !' });
+      G.showEnd({ replayUrl: 'mj-35.html' });
     }
-
-    function replay() {
-      stopEndSound();
-      document.getElementById('end-screen').classList.remove('visible');
-      level = getStarLevel();
-      if (typeof Tracker !== 'undefined') Tracker.startSession('mj-35');
-      initLevel();
-    }
-
-    document.getElementById('btn-replay').addEventListener('click', replay);
 
     // ── Démarrage ─────────────────────────────────────────────────────────────
     if (typeof Tracker !== 'undefined') Tracker.startSession('mj-35');

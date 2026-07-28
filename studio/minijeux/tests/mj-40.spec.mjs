@@ -18,6 +18,21 @@ export async function run({ page, ok }) {
   const trayPieces = await page.locator('#tray-svg .piece').count();
   ok('Les 7 pièces sont dans le plateau bas', trayPieces === 7);
 
+  // ── Zones tap : pièces du plateau assez grosses ─────────────────────
+  const box = await page.locator('#tray-svg .piece').first().boundingBox();
+  ok('Pièce du plateau visible et saisissable', !!box && box.width > 20 && box.height > 10);
+
+  // ─── Bouton règles 🧑‍🔬 (savant fou) — composant partagé RegleInfo v3 ───
+  // Testé AVANT le chemin gagnant : l'écran de fin de palier remplace #app (donc le header).
+  ok('Bouton règles présent dans le header', await page.locator('#btn-regle').count() === 1);
+  await page.click('#btn-regle');
+  ok('Panneau règle ouvert au tap', (await page.locator('#ri-panneau.on').count()) === 1);
+  const regleTexte = (await page.locator('.ri-text').textContent() || '').trim();
+  ok('Texte de règle correspond', regleTexte === 'Place les 7 pièces sur la silhouette du dino !', regleTexte);
+  await page.click('#ri-ok');
+  await page.waitForTimeout(250);
+  ok('Panneau règle refermé', (await page.locator('#ri-panneau.on').count()) === 0);
+
   // ── Placement d'une seule pièce ─────────────────────────────────────
   const placed1 = await page.evaluate(() => window.__mjTest.place('bigTri1'));
   const s1 = await page.evaluate(() => window.__mjTest.state);
@@ -45,30 +60,9 @@ export async function run({ page, ok }) {
   await page.evaluate(() => window.__mjTest.placeAll());
   await page.waitForTimeout(1800);
 
-  const endVisible = await page.evaluate(() =>
-    document.getElementById('end-screen').classList.contains('visible'));
-  ok('Écran "Bravo" de fin de palier affiché', endVisible);
+  const endVisible = await page.evaluate(() => !!document.querySelector('.end-wrap'));
+  ok('Écran de fin de palier golden affiché', endVisible);
 
   const s4 = await page.evaluate(() => window.__mjTest.state);
   ok('3 étoiles du palier ★', s4.starsPerTier[1] === 3);
-
-  // ── Changement de palier ────────────────────────────────────────────
-  await page.evaluate(() => { document.getElementById('btn-continue').click(); });
-  await page.evaluate(() => window.__mjTest.goToTier(2));
-  const s5 = await page.evaluate(() => window.__mjTest.state);
-  ok('Palier ★★ accessible', s5.currentTier === 2 && s5.placedCount === 0);
-
-  // ── Zones tap : pièces du plateau assez grosses ─────────────────────
-  const box = await page.locator('#tray-svg .piece').first().boundingBox();
-  ok('Pièce du plateau visible et saisissable', !!box && box.width > 20 && box.height > 10);
-
-  // ─── Bouton règles 🧑‍🔬 (savant fou) — composant partagé RegleInfo v3 ───
-  ok('Bouton règles présent dans le header', await page.locator('#btn-regle').count() === 1);
-  await page.click('#btn-regle');
-  ok('Panneau règle ouvert au tap', (await page.locator('#ri-panneau.on').count()) === 1);
-  const regleTexte = (await page.locator('.ri-text').textContent() || '').trim();
-  ok('Texte de règle correspond', regleTexte === 'Place les 7 pièces sur la silhouette du dino !', regleTexte);
-  await page.click('#ri-ok');
-  await page.waitForTimeout(250);
-  ok('Panneau règle refermé', (await page.locator('#ri-panneau.on').count()) === 0);
 }

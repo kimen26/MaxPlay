@@ -40,6 +40,6 @@ export async function run({ page, ok }) {
     await page.click('.choice-btn[data-correct="1"]');
     await page.waitForTimeout(2700); // enchaînement next round ~2600ms
   }
-  const scoreText = ((await page.locator('.score-label').last().textContent()) || '').trim();
-  ok('score avance après 3 bonnes réponses', scoreText.startsWith('3/3'), `score="${scoreText}"`);
+  const donePips = await page.locator('#pips .pip[class*="done-"]').count();
+  ok('score avance après 3 bonnes réponses (3 billes golden marquées)', donePips === 3, `pips=${donePips}`);
 }

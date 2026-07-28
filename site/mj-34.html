@@ -16,19 +16,6 @@
     body { font-family:'Fredoka One',sans-serif; color:var(--ink); display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
     #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
 
-    .tierbar { display:flex; justify-content:center; gap:8px; padding:8px; flex-shrink:0; }
-    .tier-pip {
-      width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center;
-      background:rgba(255,255,255,0.08); font-size:1.1rem; font-weight:900; border:2px solid rgba(255,255,255,0.15);
-    }
-    .tier-pip.active { background:var(--gold,#ffd166); color:#1a1a2e; border-color:var(--gold,#ffd166); }
-    .tier-pip.done { background:var(--ok,#06d6a0); color:#013a2a; border-color:var(--ok,#06d6a0); }
-
-    .level-pips { display:flex; justify-content:center; gap:10px; padding:2px 8px 6px; flex-shrink:0; }
-    .lvl-pip { width:16px; height:16px; border-radius:50%; background:rgba(255,255,255,0.2); }
-    .lvl-pip.cur { background:var(--gold,#ffd166); box-shadow:0 0 8px #ffd16688; }
-    .lvl-pip.won { background:var(--ok,#06d6a0); }
-
     .stage {
       flex:1; display:flex; align-items:center; justify-content:center;
       padding:10px; min-height:0; position:relative;
@@ -97,19 +84,6 @@
     @keyframes bounceBack { 0%,100%{ transform:translate(0,0); } 50%{ transform:translate(var(--bx,0),var(--by,0)); } }
     .car.exiting { transition:left .55s cubic-bezier(.4,0,.2,1); }
 
-    .end-wrap {
-      position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center;
-      background:rgba(10,10,20,0.92); gap:14px; text-align:center; padding:20px; border-radius:14px;
-    }
-    .end-wrap h2 { font-size:1.6rem; color:var(--gold,#ffd166); }
-    .end-wrap .stars-big { font-size:2.2rem; }
-    .end-btn {
-      background:var(--ok,#06d6a0); color:#013a2a; border:none; border-radius:14px;
-      padding:14px 28px; font-size:1.05rem; font-weight:900; font-family:inherit;
-      min-height:80px; min-width:200px; cursor:pointer;
-    }
-    .end-btn:active { transform:scale(.96); }
-    .end-btn.secondary { background:rgba(255,255,255,0.15); color:#fff; }
   </style>
 </head>
 <body>
@@ -121,8 +95,7 @@
     <span class="htitle">🚧 Le dépôt bloqué</span>
   </div>
 
-  <div class="tierbar" id="tierbar"></div>
-  <div class="level-pips" id="levelPips"></div>
+  <div class="pips" id="pips"></div>
 
   <div class="stage">
     <div class="mission-banner" id="missionBanner">🚌 Libère le bus jaune !</div>
@@ -135,9 +108,9 @@
   <script src="js/mj-shell.js"></script>
   <script>
   MJ.ready(function () {
-    MJ.init({
+    const shell = MJ.init({
       id: 'mj-34', emoji: '🚧', titre: 'Le dépôt bloqué',
-      golden: false,
+      golden: true,
       consigne: false,
       regle: {
         picto: '🚌➡️🚪',
@@ -259,28 +232,12 @@
     let locked = false;     // pendant animation de sortie / fin de palier
 
     const boardEl = document.getElementById('board');
-    const tierbarEl = document.getElementById('tierbar');
-    const levelPipsEl = document.getElementById('levelPips');
+    const G = shell.G;
 
-    function buildTierbar(){
-      tierbarEl.innerHTML = '';
-      for (let t = 1; t <= 3; t++){
-        const pip = document.createElement('div');
-        pip.className = 'tier-pip' + (t === tier ? ' active' : '') + (t < tier ? ' done' : '');
-        pip.textContent = '⭐'.repeat(t) === '⭐' ? '★' : (t === 1 ? '★' : t === 2 ? '★★' : '★★★');
-        pip.style.fontSize = t === 1 ? '1rem' : t === 2 ? '.75rem' : '.6rem';
-        tierbarEl.appendChild(pip);
-      }
-    }
-
+    // 🔒 3 niveaux fixes par palier (indépendant du barème questions Golden 4/6/8)
     function buildLevelPips(){
-      levelPipsEl.innerHTML = '';
-      const list = LEVELS[tier];
-      list.forEach((_, i) => {
-        const p = document.createElement('div');
-        p.className = 'lvl-pip' + (i === levelIdx ? ' cur' : '') + (i < levelIdx ? ' won' : '');
-        levelPipsEl.appendChild(p);
-      });
+      G.totalQ = LEVELS[tier].length;
+      G.buildPips();
     }
 
     function computeCellSize(){
@@ -299,7 +256,6 @@
       obstacleColors = selectDistinctColors(OTHER_POOL, cars.length - 1, 70);
       computeCellSize();
       renderBoard();
-      buildTierbar();
       buildLevelPips();
       playLevelIntro();
     }
@@ -580,10 +536,7 @@
       const exitX = boardPad + (N + 1.4) * cellSize;
       maxEl.style.left = exitX + 'px';
       sndKlaxon();
-      if (window.MaxFX){
-        const curPip = levelPipsEl.querySelector('.lvl-pip.cur');
-        if (curPip) MaxFX.markPoint(maxEl, curPip, {style:'bounce', result:'green'});
-      }
+      G.notePip(levelIdx, 1, maxEl);
       setTimeout(() => {
         evacuateOtherBuses(() => {
           levelIdx++;
@@ -626,49 +579,13 @@
       setTimeout(() => { evacuating = false; done(); }, totalMs);
     }
 
-    // ── Palier (tier) complet → étoile via Tracker ──
+    // ── Palier (tier) complet → étoile via écran de fin golden. ──
+    // Au replay, startTier (voir plus haut) relit Stars.get('mj-34') et reprend
+    // directement au palier suivant — pas besoin de gérer la transition ici.
     function onTierWon(){
-      playEndSound(1, 1); // fanfare victoire (score=maxScore → 100%)
-      Tracker.endSession(1, 1);
-      showTierEnd();
-    }
-
-    function showTierEnd(){
-      const wrap = document.createElement('div');
-      wrap.className = 'end-wrap';
-      const stars = '★'.repeat(tier);
-      wrap.innerHTML = '<div class="stars-big">' + stars + '</div>' +
-        '<h2>Bravo !</h2>' +
-        '<div style="opacity:.85">Le bus est sorti du dépôt !</div>' +
-        '<button class="end-btn" id="btnContinue">' + (tier < 3 ? 'Palier suivant →' : 'Rejouer') + '</button>' +
-        (tier < 3 ? '<button class="end-btn secondary" id="btnReplay">Rejouer ce palier</button>' : '');
-      boardEl.appendChild(wrap);
-      if (window.MaxFX) MaxFX.finalStar(wrap, {style: tier === 3 ? 'cinematic' : 'breathe', label:'Bravo !'});
-
-      document.getElementById('btnContinue').addEventListener('click', () => {
-        wrap.remove();
-        locked = false;
-        if (tier < 3){
-          tier++;
-          levelIdx = 0;
-        } else {
-          tier = 1; levelIdx = 0;
-        }
-        saveProg();
-        Tracker.startSession('mj-34');
-        loadLevel();
-      });
-      const btnReplay = document.getElementById('btnReplay');
-      if (btnReplay){
-        btnReplay.addEventListener('click', () => {
-          wrap.remove();
-          locked = false;
-          levelIdx = 0;
-          saveProg();
-          Tracker.startSession('mj-34');
-          loadLevel();
-        });
-      }
+      if (tier < 3) { tier++; levelIdx = 0; } else { tier = 1; levelIdx = 0; }
+      saveProg();
+      G.showEnd({ replayUrl: 'mj-34.html' });
     }
 
     window.addEventListener('resize', () => { computeCellSize(); renderBoard(); });

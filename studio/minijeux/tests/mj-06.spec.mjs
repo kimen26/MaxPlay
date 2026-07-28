@@ -11,8 +11,7 @@ export async function run({ page, ok }) {
   await page.waitForTimeout(250);
   ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
 
-  ok('compteur de question présent', (await page.locator('#qcounter').count()) === 1);
-  ok('démarre à Question 1 / 5', (((await page.locator('#qcounter').textContent()) || '').includes('Question 1 / 5')));
+  ok('piste golden (pips) présente', (await page.locator('#pips .pip').count()) === 5);
   ok('une phrase à trou est affichée', (await page.locator('.sentence-text .blank').count()) === 1);
   ok('4 choix proposés', (await page.locator('#choices .choice-btn').count()) === 4);
 
@@ -36,6 +35,6 @@ export async function run({ page, ok }) {
     await page.waitForTimeout(2400);
   }
 
-  // Après 5 questions, l'écran de fin remplace #app (titre "Super !")
-  ok('écran de fin affiché', (await page.locator('text=Super !').count()) === 1);
+  // Après 5 questions, l'écran de fin golden remplace #app
+  ok('écran de fin golden affiché', (await page.locator('.end-wrap').count()) === 1);
 }

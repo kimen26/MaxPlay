@@ -12,27 +12,6 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 
 #app { display:flex; flex-direction:column; height:100dvh; max-width:700px; margin:0 auto; position:relative; }
 
-#score-badge {
-  display:none !important;
-  background:var(--gold); color:var(--gold-ink); font-weight:900;
-  border-radius:20px; padding:4px 14px; font-size:0.95rem; flex-shrink:0;
-}
-
-/* ── Indicateur de niveau ── */
-#level-bar {
-  flex-shrink:0; display:flex; align-items:center; justify-content:center;
-  gap:8px; padding:6px 12px;
-  background:rgba(0,0,0,0.18);
-  border-bottom:1px solid var(--line);
-}
-.lvl-dot {
-  width:12px; height:12px; border-radius:50%;
-  background:rgba(255,255,255,0.15); transition:background 0.3s;
-}
-.lvl-dot.done   { background:var(--gold); }
-.lvl-dot.active { background:var(--accent); box-shadow:0 0 8px var(--accent); }
-#level-label { font-size:0.82rem; font-weight:900; opacity:0.65; color:var(--ink-2); }
-
 /* ── Zone principale ── */
 #main {
   flex:1; display:flex; flex-direction:column; align-items:center;
@@ -122,25 +101,6 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   pointer-events:none;
 }
 
-/* ── Écran de fin ── */
-#end-screen {
-  display:none; position:absolute; inset:0;
-  background:rgba(13,27,42,0.96);
-  flex-direction:column; align-items:center; justify-content:center;
-  gap:16px; z-index:20;
-}
-#end-screen.visible { display:flex; }
-#end-emoji  { font-size:4.5rem; }
-#end-msg    { font-size:1.4rem; font-weight:900; text-align:center; padding:0 24px; line-height:1.4; color:var(--ink); }
-#end-score  { font-size:1rem; color:var(--gold); font-weight:900; }
-#btn-replay {
-  background:linear-gradient(135deg, var(--gold), #ffbf3f); color:var(--gold-ink);
-  border:none; border-radius:20px;
-  font-family:'Nunito',sans-serif; font-weight:900;
-  font-size:1.1rem; padding:14px 38px; cursor:pointer;
-  box-shadow:0 8px 22px rgba(255,209,102,.25); transition:transform 0.15s;
-}
-#btn-replay:active { transform:scale(0.95); }
 </style>
 </head>
 <body>
@@ -157,20 +117,8 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
   <div class="hdr">
     <a href="index.html">&#8592;</a>
     <span class="htitle">🔍 L’intrus</span>
-    <span id="levelbar" style="font-weight:900;color:var(--gold,#ffe066);background:rgba(255,255,255,0.14);border-radius:10px;padding:3px 12px;font-size:0.85rem;">Niveau 1</span>
-    <span class="mp-g-stars" id="track-stars"></span>
-    <div id="score-badge">0 / 0</div>
   </div>
-
-  <!-- Indicateur de round -->
-  <div id="level-bar">
-    <div class="lvl-dot active" id="dot-0"></div>
-    <div class="lvl-dot"        id="dot-1"></div>
-    <div class="lvl-dot"        id="dot-2"></div>
-    <div class="lvl-dot"        id="dot-3"></div>
-    <div class="lvl-dot"        id="dot-4"></div>
-    <span id="level-label">Round 1 / 5</span>
-  </div>
+  <div class="pips" id="pips"></div>
 
   <!-- Zone principale -->
   <div id="main">
@@ -183,14 +131,6 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
     </div>
   </div>
 
-  <!-- Fin de partie -->
-  <div id="end-screen">
-    <div id="end-emoji">🎉</div>
-    <div id="end-msg"></div>
-    <div id="end-score"></div>
-    <button id="btn-replay" onclick="startGame()">Rejouer !</button>
-    <a href="index.html" style="color:#ffe066;font-weight:900;font-size:0.95rem;margin-top:4px;">← Menu</a>
-  </div>
 </div>
 
 <script src="js/bus-svg.js"></script>
@@ -204,7 +144,7 @@ html,body { width:100%; height:100dvh; overflow:hidden; font-family:'Nunito',san
 MJ.ready(function () {
   const shell = MJ.init({
     id: 'mj-15', emoji: '🔍', titre: 'L’intrus',
-    golden: false,
+    golden: true,
     consigne: false,
     regle: {
       picto: '🔍🚌',
@@ -233,6 +173,10 @@ MJ.ready(function () {
 // ═══════════════════════════════════════════════════════════════════════════
 
 const ROUNDS_PER_GAME = 5;
+const G = shell.G;
+// 🔒 5 manches fixes (indépendant du barème questions Golden 4/6/8 — voir figée mj-15.md)
+G.totalQ = ROUNDS_PER_GAME;
+G.buildPips();
 
 // ── Familles de lignes (niveau C) ──────────────────────────────────────────
 const FAMILIES = {
@@ -379,6 +323,7 @@ let round    = 0;
 let intrusIdx = -1;   // index (0-4) du bus intrus
 let answered = false;
 let wrongThisRound = false;
+let attemptsThisRound = 1;
 
 // ── Génération des puzzles ─────────────────────────────────────────────────
 
@@ -606,6 +551,7 @@ function renderPuzzle(puzzle) {
   currentPuzzle = puzzle;
   answered      = false;
   wrongThisRound = false;
+  attemptsThisRound = 1;
   intrusIdx     = puzzle.intrusIdx;
 
   document.getElementById('hint-label').textContent = puzzle.hint;
@@ -654,14 +600,10 @@ function onBusTap(idx, btn) {
     // Bonne réponse — étoile seulement si aucune erreur dans la manche
     answered = true;
     if (!wrongThisRound) score++;
-    updateScore();
     btn.classList.add('flash-ok');
     if (typeof Tracker !== 'undefined') Tracker.logAnswer(!wrongThisRound);
+    G.notePip(round - 1, attemptsThisRound, btn);
     playSuccessBeep();
-    if (window.MaxFX) {
-      const lb = document.getElementById('levelbar');
-      MaxFX.markPoint(btn, lb || document.getElementById('level-bar'), { style: 'bounce', result: wrongThisRound ? 'orange' : 'green' }).catch(() => {});
-    }
     setTimeout(() => {
       btn.classList.add('gone');
       setTimeout(nextRound, 500);
@@ -670,6 +612,7 @@ function onBusTap(idx, btn) {
   } else {
     // Mauvaise réponse → on NE révèle PAS l'intrus, on laisse réessayer (+ indice)
     wrongThisRound = true;
+    attemptsThisRound = Math.min(4, attemptsThisRound + 1);
     btn.classList.add('flash-err');
     playErrorSound();
     document.getElementById('hint-label').textContent = '💡 ' + (currentPuzzle ? currentPuzzle.hint : '');
@@ -698,33 +641,7 @@ function playSuccessBeep() {
 
 function speak(text) { TTS.speak(text); }
 
-// ── Score / Rounds / Dots ──────────────────────────────────────────────────
-
-function updateScore() {
-  document.getElementById('score-badge').textContent = `${score} / ${round}`;
-}
-
-// Bandeau ★★★ dans l'en-tête, reflète Stars.get('mj-15') (dérivé de Tracker via stars.js).
-// Même convention visuelle que la piste golden standard (.mp-g-stars / .off — mp-theme.css).
-function updateStarsBadge() {
-  const el = document.getElementById('track-stars');
-  if (!el || !window.Stars) return;
-  const earned = Stars.get('mj-15');
-  const max = Stars.max('mj-15') || 3;
-  let html = '';
-  for (let i = 0; i < max; i++) html += i < earned ? '★' : '<span class="off">★</span>';
-  el.innerHTML = html;
-}
-
-function updateLevelDots() {
-  for (let i = 0; i < ROUNDS_PER_GAME; i++) {
-    const dot = document.getElementById('dot-' + i);
-    if (i < round - 1)       dot.className = 'lvl-dot done';
-    else if (i === round - 1) dot.className = 'lvl-dot active';
-    else                      dot.className = 'lvl-dot';
-  }
-  document.getElementById('level-label').textContent = `Round ${round} / ${ROUNDS_PER_GAME}`;
-}
+// ── Rounds ─────────────────────────────────────────────────────────────────
 
 function nextRound() {
   round++;
@@ -732,37 +649,11 @@ function nextRound() {
     showEnd();
     return;
   }
-  updateScore();
-  updateLevelDots();
   renderPuzzle(generatePuzzle(round));
 }
 
 function showEnd() {
-  const pct   = score / ROUNDS_PER_GAME;
-  const emoji = pct >= 0.8 ? '🏆' : pct >= 0.5 ? '🎉' : '🚌';
-  const msg   = pct >= 0.8 ? 'Incroyable ! Tu as trouvé tous les intrus !'
-              : pct >= 0.5 ? 'Bien joué ! Tu es un détective de bus !'
-              :               'Continue de t’entraîner, tu vas y arriver !';
-
-  document.getElementById('end-emoji').textContent = emoji;
-  document.getElementById('end-msg').textContent   = msg;
-  document.getElementById('end-score').textContent =
-    `${score} bonne${score > 1 ? 's' : ''} réponse${score > 1 ? 's' : ''} sur ${ROUNDS_PER_GAME}`;
-
-  document.getElementById('end-screen').classList.add('visible');
-  playEndSound(score, ROUNDS_PER_GAME);
-  speak(msg);
-  if (typeof Tracker !== 'undefined') Tracker.endSession(score, ROUNDS_PER_GAME);
-  // Stars.get() lit le résultat que Tracker.endSession vient d'écrire en localStorage —
-  // rafraîchir le bandeau ★ APRÈS endSession, sinon l'étoile fraîchement gagnée n'apparaît
-  // pas dans l'en-tête (incident Papa Yann 2026-07-21 : son+étoile joués mais rien à l'écran).
-  updateStarsBadge();
-  if (window.MaxFX) {
-    MaxFX.finalStar(document.getElementById('end-screen'), {
-      style: score >= ROUNDS_PER_GAME ? 'cinematic' : 'breathe',
-      label: msg
-    }).then(updateStarsBadge).catch(() => {});
-  }
+  G.showEnd({ replayUrl: 'mj-15.html' });
 }
 
 // ── Démarrage ──────────────────────────────────────────────────────────────
@@ -771,17 +662,10 @@ function startGame() {
   score    = 0;
   round    = 1;
   answered = false;
-  const lb = document.getElementById('levelbar'); if (lb) lb.textContent = 'Niveau ' + (level + 1);
-  stopEndSound();
-  document.getElementById('end-screen').classList.remove('visible');
-  updateScore();
-  updateLevelDots();
-  updateStarsBadge();
   renderPuzzle(generatePuzzle(round));
 }
 
-// Exposées : onclick="" inline (startGame) + harnais de test (page.evaluate direct)
-window.startGame = startGame;
+// Exposées : harnais de test (page.evaluate direct)
 window.generatePuzzleF = generatePuzzleF;
 window.generatePuzzleG = generatePuzzleG;
 window.OMBRES_MJ15 = OMBRES_MJ15;

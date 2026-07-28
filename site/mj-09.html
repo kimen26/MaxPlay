@@ -157,7 +157,6 @@
   <div class="hdr">
     <a href="index.html" class="back">←</a>
     <span class="htitle">🗂️ Trie les bus !</span>
-    <span id="levelbar">Niveau 1</span>
   </div>
   <div class="scorebar">
     <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
@@ -174,8 +173,7 @@
   <div class="parade-sub">Voilà toutes les familles de bus !</div>
   <div class="parade-families" id="paradeFamilies"></div>
   <div class="parade-btns">
-    <button class="parade-btn primary" onclick="location.reload()">🔄 Rejouer</button>
-    <a href="index.html" class="parade-btn secondary">📋 Menu</a>
+    <button class="parade-btn primary" id="paradeContinueBtn">Continuer →</button>
   </div>
 </div>
 
@@ -293,8 +291,9 @@
     return FAMILIES.find(f => f.id === id) || null;
   }
 
-  MJ.init({
+  const shell = MJ.init({
     id: 'mj-09', emoji: '🗂️', titre: 'Trie les bus !',
+    golden: true,
     consigne: false,
     regle: {
       picto: '🗂️🚌',
@@ -312,12 +311,12 @@
     }
   });
 
+  const G = shell.G;
   // ── Paliers (doc _PALIERS) : nb de familles + nb de bus. Niveau = Stars.get+1 ──
   // 🔄 2026-07-14 — 5 paliers → 3 niveaux (N0=ex-P1-2 · N1=ex-P3 · N2=ex-P4-5, N2 inchangé = ancien P5)
   const level = Math.max(0, Math.min(2, (window.Stars ? Stars.get('mj-09') : 0)));
   const FAM_COUNT = [2, 4, 6][level];
   const BUS_COUNT = [6, 12, 26][level];
-  (function(){ const lb = document.getElementById('levelbar'); if (lb) lb.textContent = 'Niveau ' + (level + 1); })();
   const ACTIVE_FAMILIES = FAMILIES.slice(0, FAM_COUNT);
 
   function _shuffle(a) { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
@@ -343,6 +342,12 @@
   const drags = new Map();
   let rangedCount = 0;
   const totalBuses = ALL_BUSES.length;
+  // 🔒 golden : pas de piste visuelle (drag continu, pas de Q&A discrète) —
+  // G.totalQ pilote seulement isPerfect()/showEnd. Sans-faute = zéro mauvaise
+  // dépose sur toute la session (pas de suivi par bus individuel, non pertinent
+  // en drag libre multi-touch).
+  G.totalQ = totalBuses;
+  let hadAnyWrong = false;
   // Suivi : combien dans chaque boîte
   const boxCounts = {};
   ACTIVE_FAMILIES.forEach(f => boxCounts[f.id] = 0);
@@ -549,22 +554,22 @@ function highlightBox(bus) {
     boxCounts[box.id]++;
     document.getElementById('cnt-' + box.id).textContent = boxCounts[box.id];
 
+    G.notePip(rangedCount, hadAnyWrong ? 2 : 1);
     rangedCount++;
     updateProgress();
 
     if (rangedCount >= totalBuses) {
-      if (typeof Tracker !== 'undefined') Tracker.endSession(totalBuses, totalBuses);
       setTimeout(() => {
         const a = new Audio('sounds/fx/tada.mp3');
         a.volume = 0.85;
         a.play().catch(() => {});
         confettiBurst(60); showParade();
-        if (window.MaxFX) { const ov = document.getElementById('paradeOverlay'); MaxFX.finalStar(ov, { style:'cinematic', label:'SANS-FAUTE !' }); }
       }, 600);
     }
   }
 
   function wrongPark(bus) {
+    hadAnyWrong = true;
     sndWrong();
     playErrorSound();
     bus.el.classList.add('wrong');
@@ -614,6 +619,11 @@ function highlightBox(bus) {
     });
     document.getElementById('paradeOverlay').classList.add('show');
   }
+
+  document.getElementById('paradeContinueBtn').addEventListener('click', () => {
+    document.getElementById('paradeOverlay').classList.remove('show');
+    G.showEnd({ replayUrl: 'mj-09.html' });
+  });
 
   // ── Init ──
   function init() {

@@ -11,22 +11,21 @@ export async function run({ page, ok }) {
   await page.waitForTimeout(250);
   ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
 
-  ok('bandeau Niveau présent', (await page.locator('#levelbar').count()) === 1);
-  ok('démarre au Niveau 1', (((await page.locator('#levelbar').textContent()) || '').includes('Niveau 1')));
+  ok('piste golden (pips) présente', (await page.locator('#pips .pip').count()) === 5);
 
   await page.waitForSelector('.bus-btn', { timeout: 5000 });
   const buses = await page.locator('.bus-btn').count();
   ok('5 bus affichés', buses === 5, `bus=${buses}`);
 
-  // Win path : on tape les bus jusqu'à trouver l'intrus → le round avance (Round 2)
+  // Win path : on tape les bus jusqu'à trouver l'intrus → la 1ère bille golden avance
   let advanced = false;
   for (let i = 0; i < 5; i++) {
     const sel = `.bus-btn[data-idx="${i}"]`;
     if ((await page.locator(sel).count()) === 0) continue;
     await page.click(sel).catch(() => {});
     await page.waitForTimeout(1100);
-    const lvl = (await page.locator('#level-label').textContent()) || '';
-    if (/Round\s*2/.test(lvl)) { advanced = true; break; }
+    const pip0Class = await page.locator('#pip0').evaluate(el => el.className).catch(() => '');
+    if (/done-/.test(pip0Class)) { advanced = true; break; }
   }
   ok('intrus correct → round avance', advanced);
 

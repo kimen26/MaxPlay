@@ -30,12 +30,6 @@
     #confirmBtn.show { display:block; }
     #confirmBtn:active { transform:translateY(3px); box-shadow:0 1px 0 #15803d; }
 
-    .lvl-bar { display:flex; justify-content:space-between; align-items:center; padding:5px 12px; background:rgba(0,0,0,0.3); flex-shrink:0; }
-    .dots-container { display:flex; gap:5px; flex-wrap:wrap; }
-    .progress-dot { width:10px; height:10px; border-radius:50%; background:rgba(255,255,255,0.25); transition:background 300ms; }
-    .progress-dot.done { background:#4CAF50; }
-    .lvl-label { font-size:0.8rem; font-weight:700; color:rgba(255,255,255,0.6); }
-
     .victoire-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.88); display:flex; align-items:center; justify-content:center; z-index:99; animation:fadeIn 200ms; }
     @keyframes fadeIn { from{opacity:0} to{opacity:1} }
     .victoire-card { background:#fff; border-radius:20px; padding:28px 36px; text-align:center; animation:popIn 350ms cubic-bezier(0.34,1.56,0.64,1); max-width:90vw; }
@@ -62,18 +56,15 @@
   <div class="ctrl-zone">
     <button id="confirmBtn" onclick="confirmer()">✓ C'est ça !</button>
   </div>
-  <div class="lvl-bar">
-    <div class="dots-container" id="dots"></div>
-    <div class="lvl-label" id="lvlLabel">🌟 Facile</div>
-  </div>
+  <div class="pips" id="pips"></div>
 </div>
 
 <script src="js/mj-shell.js"></script>
 <script>
 MJ.ready(function () {
-  MJ.init({
+  const shell = MJ.init({
     id: 'mj-22', emoji: '🗺️', titre: 'Trouve le pays !',
-    golden: false,
+    golden: true,
     consigne: false,
     regle: {
       picto: '🗺️🔎',
@@ -137,8 +128,10 @@ const LEVELS = {
   difficile: Object.keys(PAYS)
 };
 
+const G = shell.G;
 let currentLevel = 'facile';
 let queue = [], qIdx = 0, selected = null;
+let attempts = 1;
 const foundSet = new Set();
 let svgLoaded = false;
 
@@ -195,6 +188,7 @@ function confirmer() {
     if (typeof SoundPool !== 'undefined') SoundPool.phrase('cherche-bien', 'Non ce n’est pas ça. Cherche bien.');
     else speak('Non ce n’est pas ça. Cherche bien.');
     selected = null;
+    attempts = Math.min(4, attempts + 1);
     document.getElementById('confirmBtn').classList.remove('show');
     renderMap();
   }
@@ -207,6 +201,7 @@ function victoire(iso) {
   document.getElementById('confirmBtn').classList.remove('show');
   renderMap();
   speak(`Bravo ! C’est ${data.art}${data.name} !`);
+  G.notePip(qIdx, attempts);
 
   const ov = document.createElement('div');
   ov.className = 'victoire-overlay';
@@ -222,8 +217,8 @@ function victoire(iso) {
 
 function nextCountry() {
   qIdx++;
+  attempts = 1;
   if (qIdx >= queue.length) { finGame(); return; }
-  updateDots();
   showConsigne();
 }
 
@@ -236,31 +231,8 @@ function showConsigne() {
   speak(consigne);
 }
 
-function updateDots() {
-  const container = document.getElementById('dots');
-  container.innerHTML = '';
-  const n = Math.min(queue.length, 12);
-  for (let i=0; i<n; i++) {
-    const dot = document.createElement('div');
-    dot.className = 'progress-dot' + (i < qIdx ? ' done' : '');
-    container.appendChild(dot);
-  }
-}
-
 function finGame() {
-  speak('Bravo ! Tu connais l\'Europe par cœur !');
-  try { playEndSound(1, 1); } catch(e) {}
-  const ov = document.createElement('div');
-  ov.className = 'victoire-overlay';
-  ov.innerHTML = `
-    <div class="victoire-card">
-      <div class="drapeau-victoire">🎉</div>
-      <div class="victoire-nom">Bravo !</div>
-      <div style="color:#666;margin:8px 0;font-size:.95rem">Tu connais l'Europe par cœur !</div>
-      <button class="victoire-btn" onclick="window.location.reload()">Rejouer</button>
-      <button class="fin-btn" onclick="window.location.href='index.html'">Menu</button>
-    </div>`;
-  document.body.appendChild(ov);
+  G.showEnd({ replayUrl: 'mj-22.html' });
 }
 
 async function loadSvgMap() {
@@ -297,18 +269,20 @@ function initLevel(lvl) {
   currentLevel = lvl;
   const ids = LEVELS[lvl];
   queue = [...ids].sort(() => Math.random() - 0.5);
-  qIdx = 0; selected = null; foundSet.clear();
-  const labels = {facile:'🌟 Facile', moyen:'⭐⭐ Moyen', difficile:'⭐⭐⭐ Expert'};
-  document.getElementById('lvlLabel').textContent = labels[lvl];
+  qIdx = 0; attempts = 1; selected = null; foundSet.clear();
+  G.totalQ = queue.length;
+  G.buildPips();
   if (svgLoaded) {
     renderMap();
-    updateDots();
     showConsigne();
   }
 }
 
 function init() {
-  const lvl = new URLSearchParams(location.search).get('level') || 'facile';
+  // Niveau par défaut dérivé des étoiles (0★ facile · 1★ moyen · 2★+ difficile).
+  // ?level= reste disponible pour forcer un niveau (tests, liens directs).
+  const byStars = ['facile', 'moyen', 'difficile'][Math.min(2, G.stars)];
+  const lvl = new URLSearchParams(location.search).get('level') || byStars;
   loadSvgMap().then(() => initLevel(lvl));
 }
 

@@ -4,6 +4,12 @@
 
 ---
 
+## 2026-07-29 — Noms courts 70/70 + fix playDinoNom (retour PY mj-30)
+
+- **Bug transverse levé** : `playDinoNom` jouait `audio/dinos/fr/<id>-nom.mp3` = SEGMENTS DE FICHE (20-35 s, nom+étymo) — au tap en jeu, l'enfant recevait la fiche entière (retour PY 2026-07-27 mj-30). Rebranché sur la banque NOM SEUL `audio/dinos/fr/noms/<id>.mp3` (1,5-2 s).
+- **Couverture complétée 60→70/70** : 10 noms courts générés (Corythosaure, Édaphosaure, Gorgonops, Hatzégoptéryx, Lystrosaure, Maiasaura, Minmi, Moschops, Saurolophe, Scutellosaure) — respellings du lexique fr.md appliqués (So-ro-lo-fuss, Mos-kops, Hat-zé-gop-té-rix…), eleven_v3 narrateur_h [excited], padding 250 ms. Manifest `dinos-audio-manifest.js` régénéré (Set = fichiers réels).
+- ⚠ Règle rappelée dans l'en-tête du manifest : ne JAMAIS jouer un `<id>-nom.mp3` à plat sur un tap en jeu.
+
 ## 🚨 ALERTE DATA — Jurassic Park mentionné dans dinos-data.js
 
 **Contexte** : découverte audit 2026-07-17 : dinos-data.js L1170-71 cite deux fois « Jurassic Park » pour Deinonychus. **VIOLE figée ref-adulte** (décision Papa Yann 2026-06-15 : zéro référence film/adulte nommée, on peut démystifier SANS nommer la franchise).

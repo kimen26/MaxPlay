@@ -9,6 +9,20 @@
 
 ---
 
+## 2026-07-29 — Session nocturne « reprend et termine » (autonome, GO PY)
+
+**Fait** :
+- **P1 levés (les 6)** : mj-46 plus d'éclosion en jeu (crackParty, figée mj-46.md créée) · mj-30 tap = nom seul — cause racine : les `<id>-nom.mp3` à plat sont des FICHES de 20-35 s, `playDinoNom` rebranché sur `noms/<id>.mp3` (1,5-2 s, complétés 70/70) · mj-20 confirmation unique courte · mj-49 formulations « il en manque / il en faut » alternées dès N0 · mj-34 panneau SORTIE vert DEVANT la porte + calibrage BFS (★★ 5 coups, ★★★ 7-8, `gen-rushhour.mjs`) · mj-50 « E accent grave f » réglé par la banque MP3 phonèmes.
+- **Banque audio C6 V1 (100 MP3 EL, eleven_v3, narrateur_h, padding 250 ms)** : 10 noms dinos courts manquants · 15 phonèmes (MJKit.sayPhoneme = MP3-first, table partagée mj-50/51/52, zéro copie locale) · nombres 0-30 + 40/50/100/1000 (+ variante fête 1-10) · gabarits COMPLETS il-en-manque-N / il-en-faut-N / N-œufs (jamais d'assemblage mot-à-mot). Brique partagée `site/js/say-nombres.js` branchée mj-46/mj-49.
+- **EP-112 pilote mj-04 (GO PY « codé/testé »)** : `Golden.levelOf` = max(plancher étoiles, niveau ouvert par ≥80 % premier coup sur 3 parties depuis la dernière ouverture), persisté `golden_openlvl` (jamais de descente), `tracker.js` trace `first` par session (rétro-compatible). mj-04 migré au gabarit (piste golden, G.showEnd, scorebar/levelbar supprimés), sac adaptatif 6/2·4/4·2/6 + ajustements silencieux intra-partie. Figée mj-04 amendée datée. Tests T1-T5+T9 verts. **Pilote mj-04 SEUL — les 13 autres figées ne sont PAS défigées** (propagation après validation ressenti Max).
+- **Migration des 7 derniers écrans maison** (mj-06/09/18/20/37/40/51) déléguée à 3 game-dev — vérif git diff avant push.
+
+**Leçon (L-112)** : `Tracker`/`DINOS` sont des `const` top-level, PAS sur `window` — `global.Tracker` vaut undefined dans une lib IIFE ; toujours l'identifiant nu gardé par `typeof`. 2e occurrence du piège (nid-ui, mj-golden) — désormais commenté aux deux endroits.
+
+**État au reboot** : commits 613934xx (P1+audio) et 3fcf1e49 (EP-112) poussés. Rappel programmé 01:49 « reprend et termine ». Restent : rapport des 3 agents migration, MAJ _BANQUE-SONS.md, échantillons nombres à faire écouter à PY.
+
+---
+
 ## 2026-07-19 — Fusion gouvernance : PMO unifiés + capture immédiate
 
 **Fait (transverse 3 pôles, décision Papa Yann)** :

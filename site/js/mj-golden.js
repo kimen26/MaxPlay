@@ -104,6 +104,12 @@
       const box = document.getElementById('pips');
       if (!box) return;
       box.classList.add('mp-track');
+      // Plafond d'affichage (EP-C2) : au-delà de 12 pastilles la piste déborde
+      // et devient illisible (retour PY sur mj-22 en mode difficile, 25 pays).
+      // On garde UNE pastille PAR question (le résultat de chacune doit rester
+      // visible et fiable pour la logique existante), mais on compacte le
+      // rendu : plus petit + passage à la ligne, jamais de scroll horizontal caché.
+      box.classList.toggle('mp-track-dense', this.totalQ > 12);
       box.innerHTML = '';
       for (let i = 0; i < this.totalQ; i++) {
         const d = document.createElement('div');

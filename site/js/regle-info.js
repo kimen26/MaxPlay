@@ -106,13 +106,13 @@
       + '<div id="ri-tab-regle" style="display:flex;flex-direction:column;flex:1;overflow:hidden">'
       + '<div class="lire-tout" id="ri-btn-son"><i>🔊</i><b>Écoute toutes les règles</b></div>'
       + '<div class="p-corps">'
-      + (opts.picto ? '<div style="text-align:center;font-size:1.9rem;letter-spacing:4px;padding:2px 0">' + opts.picto + '</div>' : '')
-      + (texte ? '<div class="ri-text" style="text-align:center;font-family:\'Fredoka One\',cursive;font-size:1.05rem;line-height:1.35;padding:0 4px">' + texte + '</div>' : '')
+      + (opts.picto ? '<div style="text-align:center;font-size:1.5rem;letter-spacing:3px;padding:0">' + opts.picto + '</div>' : '')
+      + (texte ? '<div class="ri-text" style="text-align:center;font-family:\'Fredoka One\',cursive;font-size:0.92rem;line-height:1.3;padding:0 4px">' + texte + '</div>' : '')
       + stepsHtml
       + gagnerHtml
       + '</div>'
-      + '<div style="padding:10px 14px 14px">'
-      + '<button class="mp-btn-primary" id="ri-ok" style="height:48px;font-size:14.5px" type="button">J\'ai compris ! 👍</button>'
+      + '<div style="padding:8px 12px 12px">'
+      + '<button class="mp-btn-primary" id="ri-ok" style="height:42px;font-size:13.5px" type="button">J\'ai compris ! 👍</button>'
       + '</div></div>'
       // onglet AVIS (violet parent fixe)
       + '<div id="ri-tab-avis" style="display:none;flex-direction:column;flex:1;overflow:hidden">'

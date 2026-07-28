@@ -244,18 +244,26 @@ async function loadSvgMap() {
     const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
     const svg = document.getElementById('mapSvg');
 
-    // Copy all paths from Wikimedia to our container
-    svgDoc.querySelectorAll('path').forEach(path => {
-      const iso = path.getAttribute('id');
-      if (iso && iso.length === 2 && PAYS[iso]) {
-        const clone = path.cloneNode();
-        const data = PAYS[iso];
-        clone.setAttribute('data-iso', iso);
-        clone.setAttribute('data-country', data.name);
-        clone.removeAttribute('id');
-        clone.removeAttribute('style');
-        svg.appendChild(clone);
-      }
+    // Copie les formes Wikimedia dans notre conteneur.
+    // Certains pays sont un <g> multi-îles (gb = Grande-Bretagne + Irlande du Nord)
+    // et pas un simple <path> : sans ce cas, le Royaume-Uni était demandé mais absent
+    // de la carte (niveau facile injouable).
+    svgDoc.querySelectorAll('path[id], g[id]').forEach(node => {
+      const iso = node.getAttribute('id');
+      if (!iso || iso.length !== 2 || !PAYS[iso]) return;
+      if (svg.querySelector(`[data-iso="${iso}"]`)) return;   // déjà pris (g parent)
+
+      const clone = node.cloneNode(true);                     // deep : garde les îles du <g>
+      const data = PAYS[iso];
+      clone.setAttribute('data-iso', iso);
+      clone.setAttribute('data-country', data.name);
+      clone.removeAttribute('id');
+      clone.removeAttribute('style');
+      clone.querySelectorAll('[id],[style]').forEach(child => {
+        child.removeAttribute('id');
+        child.removeAttribute('style');
+      });
+      svg.appendChild(clone);
     });
 
     svgLoaded = true;

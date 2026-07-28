@@ -172,11 +172,14 @@
   }
 
   // ── Entrées catalogue + locale ─────────────────────────────────────
+  // entry(id) : lookup BRUT par id (résout même un jeu retire:true — nécessaire
+  // pour un lien direct/parental). Le filtrage retire:true pour l'AFFICHAGE se
+  // fait en aval via catalogVisible() (repaireState ci-dessous), jamais ici.
   function entry(id) {
     if (LOCAL_META[id]) return LOCAL_META[id];
     var e = (global.MAXPLAY_CATALOG || []).find(function (x) { return x.id === id; });
     if (!e) return null;
-    return { id: e.id, titre: TITRES[e.id] || e.titre, url: e.url, maxStars: e.maxStars || 0 };
+    return { id: e.id, titre: TITRES[e.id] || e.titre, url: e.url, maxStars: e.maxStars || 0, retire: !!e.retire };
   }
 
   function maxStarsOf(id) { var e = entry(id); return e ? e.maxStars : 0; }
@@ -219,14 +222,24 @@
   // Seule la SÉQUENCE (ordre copain, caché vs grisé) reste locale au Mur.
   function adminUnlockAll() { return !!(global.Unlock && Unlock.isAdminUnlockAll()); }
   function unlockStars() { return (global.Unlock && Unlock.UNLOCK_STARS) || 2; }
+  // ids gardés au menu enfant, dérivés de catalogVisible() (source unique de
+  // filtrage retire:true, catalog.js) — évite de refiltrer à la main ici.
+  function visibleIds() {
+    var vis = global.catalogVisible ? global.catalogVisible() : (global.MAXPLAY_CATALOG || []);
+    var set = {};
+    vis.forEach(function (e) { set[e.id] = 1; });
+    return set;
+  }
+
   function repaireState(copain) {
-    var chain = copain.jeux.filter(function (id) { return !LIBRES[id]; });
+    var vis = visibleIds();
+    var chain = copain.jeux.filter(function (id) { return !LIBRES[id] && vis[id]; });
     var visibleChain = [];
     for (var i = 0; i < chain.length; i++) {
       if (adminUnlockAll() || i === 0 || starsOf(chain[i - 1]) >= unlockStars()) visibleChain.push(chain[i]);
       else break;
     }
-    var libres = copain.jeux.filter(function (id) { return LIBRES[id]; });
+    var libres = copain.jeux.filter(function (id) { return LIBRES[id] && vis[id]; });
     var hasNext = visibleChain.length < chain.length;
     return {
       games: visibleChain.concat(libres).map(entry).filter(Boolean),
@@ -509,7 +522,8 @@
     if (parentsRendered) return;
     parentsRendered = true;
     var cats = global.MAXPLAY_CATEGORIES || [];
-    var CAT = global.MAXPLAY_CATALOG || [];
+    // catalogVisible() = source unique de filtrage (retire:true exclu), catalog.js.
+    var CAT = (global.catalogVisible ? global.catalogVisible() : global.MAXPLAY_CATALOG) || [];
     var board = $('parents-board');
     board.innerHTML = cats.map(function (c) {
       var items = CAT.filter(function (e) { return e.category === c.id && e.id !== 'dinos'; });

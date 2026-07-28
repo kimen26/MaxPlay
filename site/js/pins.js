@@ -16,7 +16,8 @@ window.Pins = (function () {
   var KEY = 'maxplay_pins';
   var CAP = 5;
 
-  function catalog() { return window.MAXPLAY_CATALOG || []; }
+  // catalogVisible() = source unique de filtrage retire:true (catalog.js).
+  function catalog() { return window.catalogVisible ? window.catalogVisible() : (window.MAXPLAY_CATALOG || []); }
   function entry(id) { return catalog().find(function (e) { return e.id === id; }); }
 
   // Un jeu est « proposable » (rangée/jeu du jour) s'il existe, est live, jouable

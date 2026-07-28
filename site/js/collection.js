@@ -85,11 +85,27 @@
   }
 
   // ── Octroi d'une capsule (fin de partie terminée) ───────────────────────
-  // grantCapsule({golden}) : golden peut être forcé par l'appelant (mj-golden
-  // sait déjà si la série est atteinte), sinon le moteur la calcule lui-même
-  // via la fenêtre de 30 min (avenant P0 #3 : 3 parties enchaînées).
+  // grantCapsule({golden, gameId}) : golden peut être forcé par l'appelant
+  // (mj-golden sait déjà si la série est atteinte), sinon le moteur la calcule
+  // lui-même via la fenêtre de 30 min (avenant P0 #3 : 3 parties enchaînées).
+  //
+  // Arbitrage PY 2026-07-28 : « Max gagne des œufs et peut en gagner tant
+  // qu'il n'y a pas 3 étoiles par jeu ». Anti-farm naturel — au-delà de 3
+  // étoiles sur CE jeu, la partie reste valorisée (le jeu peut toujours
+  // afficher le compliment de fin) mais aucune capsule n'est accordée, pour
+  // pousser vers un jeu qui n'est pas encore maîtrisé plutôt que de re-jouer
+  // le même à l'infini pour la collection.
+  // Défensif : si Stars est absent (page hors gabarit, ou test sans le
+  // script) ou gameId non fourni, on accorde comme avant (pas de régression
+  // silencieuse d'un contrat qu'on ne peut pas vérifier).
   function grantCapsule(opts) {
     opts = opts || {};
+    if (opts.gameId && global.Stars && typeof global.Stars.get === 'function') {
+      var stars = 0;
+      try { stars = global.Stars.get(opts.gameId); } catch (e) { stars = 0; }
+      if (stars >= 3) return { count: load().pending.length, golden: 0, justGolden: false, granted: false };
+    }
+
     var s = load();
     var now = Date.now();
 
@@ -105,7 +121,7 @@
     // justGolden : cette capsule précise est-elle dorée (P2/mj-golden en a besoin
     // pour teinter l'anim eggEarned) — additif, ne change pas le contrat existant
     // `golden` (nb de capsules dorées en attente).
-    return { count: s.pending.length, golden: s.pending.filter(function (c) { return c.golden; }).length, justGolden: !!golden };
+    return { count: s.pending.length, golden: s.pending.filter(function (c) { return c.golden; }).length, justGolden: !!golden, granted: true };
   }
 
   // ── Capsules en attente ──────────────────────────────────────────────────

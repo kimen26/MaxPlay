@@ -210,7 +210,12 @@ try {
   // ═══ RETOUR AU MUR → ÉCLOSION ════════════════════════════════════════
   await page.goto(url('index'), { waitUntil: 'networkidle' });
   await page.waitForFunction(() => !!window.NidUI, null, { timeout: 5000 }).catch(() => {});
-  await page.waitForTimeout(500); // playHatchIfReady() est appelé avec un délai de 300ms
+  // playHatchIfReady() est appelé avec un délai de 300ms (500ms de marge) — SAUF
+  // si la capsule qui complète le trio est dorée (série de 3 parties enchaînées
+  // <30min, exactement ce scénario ici) : le délai monte à 1600ms pour que l'œuf
+  // doré soit VISIBLE dans le nid avant de craquer (bug PY 2026-07-28, "il s'est
+  // ouvert direct" — fix nid-ui.js). On attend large pour couvrir les deux cas.
+  await page.waitForTimeout(2000);
 
   const hatchOverlaySeen = await page.waitForFunction(() => {
     return document.querySelector('div[style*="position: fixed"][style*="z-index: 70"]') ||

@@ -148,6 +148,44 @@ try {
 
   await page.screenshot({ path: resolve(artifacts, 'repaire-frise.png') });
 
+  // ── Bug 1 (PY 2026-07-28, "j'ai eu un œuf en or il s'est ouvert direct") ──
+  // Quand la capsule qui complète le trio (3e œuf) est DORÉE, le nid doit la
+  // montrer un temps perceptible AVANT l'éclosion automatique déclenchée par
+  // init() au chargement du Mur — pas juste 300ms (imperceptible, ressenti
+  // comme "s'ouvre tout seul"). On recharge une page fraîche (nouveau init())
+  // avec 3 capsules déjà en attente et la 3e dorée, et on vérifie qu'à 800ms
+  // l'éclosion n'a PAS encore démarré (le nid doré est encore visible) alors
+  // qu'elle finit par se jouer avant 2500ms (le nid n'est pas bloqué non plus).
+  const FAKE_COLLECTION_GOLDEN_READY = FAKE_COLLECTION.replace(
+    "var pending = { count: 2, golden: false };",
+    "var pending = { count: 3, golden: true };"
+  );
+  const page2 = await browser.newPage({ viewport: { width: 480, height: 900 } });
+  const errors2 = [];
+  page2.on('pageerror', e => errors2.push(`pageerror: ${e.message}`));
+  await page2.addInitScript(FAKE_COLLECTION_GOLDEN_READY);
+  await page2.goto(pathToFileURL(INDEX).href, { waitUntil: 'networkidle' });
+  await page2.waitForFunction(() => !!window.NidUI, null, { timeout: 5000 }).catch(() => {});
+
+  await page2.waitForTimeout(800);
+  const hatchStartedEarly = await page2.evaluate(() => {
+    return !!(document.querySelector('div[style*="position: fixed"][style*="z-index: 70"]') ||
+              document.querySelector('.hatch-doublon'));
+  });
+  ok('œuf doré qui complète le trio : PAS d\'éclosion encore à 800ms (le doré doit se voir)', !hatchStartedEarly);
+
+  const goldenEggVisibleMeanwhile = await page2.locator('.nid-oeuf.dore').count().catch(() => 0);
+  ok('pendant l\'attente, l\'œuf doré est bien visible dans le nid (teinté, pas ouvert)', goldenEggVisibleMeanwhile > 0, `count=${goldenEggVisibleMeanwhile}`);
+
+  const hatchEventuallyPlays = await page2.waitForFunction(() => {
+    return document.querySelector('div[style*="position: fixed"][style*="z-index: 70"]') ||
+           document.querySelector('.hatch-doublon');
+  }, null, { timeout: 4000 }).then(() => true).catch(() => false);
+  ok('l\'éclosion finit par se jouer (nid pas bloqué indéfiniment)', hatchEventuallyPlays === true);
+
+  await page2.close();
+  ok('Aucune erreur JS scénario œuf doré (smoke)', errors2.length === 0, errors2.join(' | '));
+
   ok('Aucune erreur JS / console (smoke)', errors.length === 0, errors.join(' | '));
 } catch (e) {
   ok('exécution sans exception', false, e.message);

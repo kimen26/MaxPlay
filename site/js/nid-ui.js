@@ -491,8 +491,19 @@
       // MUR.refresh() re-render tout, y compris `if (current) renderRepaire(current)`
       // qui rappelle NidUI.renderFrise() avec les données maintenant disponibles.
       if (global.MUR && typeof global.MUR.refresh === 'function') global.MUR.refresh();
-      // l'éclosion se joue au retour sur le Mur (théâtre du nid, avenant §8)
-      setTimeout(playHatchIfReady, 300);
+      // l'éclosion se joue au retour sur le Mur (théâtre du nid, avenant §8).
+      // Bug PY 2026-07-28 ("j'ai eu un œuf en or il s'est ouvert direct") : la
+      // série (3 parties/30 min) doit TEINTER la capsule en doré, jamais court-
+      // circuiter le compteur de 3 ni le théâtre du nid. Le vrai defaut n'etait
+      // pas la logique (readyToHatch() exige toujours 3 capsules, doré ou pas)
+      // mais le delai ridicule (300ms) qui ne laissait jamais VOIR l'oeuf dore
+      // dans le nid avant qu'il ne craque — d'ou l'impression qu'il "s'ouvre
+      // tout seul". Si la capsule qui complete le trio est doree, on marque une
+      // vraie pause (le temps de la lire) avant de lancer l'eclosion.
+      var p = null;
+      try { p = global.Collection ? global.Collection.pending() : null; } catch (e) {}
+      var lastIsGolden = !!(p && p.count >= 3 && p.golden > 0);
+      setTimeout(playHatchIfReady, lastIsGolden ? 1600 : 300);
     });
     // re-render si mur.js rafraîchit (retour repaire→mur, storage event…)
     // navigation .frise-jeu / .rep-jeu / .mur-mini déjà gérée par le

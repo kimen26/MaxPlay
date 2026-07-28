@@ -6,9 +6,12 @@
 //    1 étoile → Niveau 2 : 6 questions (plus dur)
 //    2+ étoiles → Niveau 3 (MAX) : 8 questions — on y reste ensuite
 //  ÉTOILE = SANS FAUTE : toutes les questions réussies du 1er coup (billes vertes).
-//  ⚠️ FORMULE FIGÉE LOI (figees/mj-04.md) — NE PAS TOUCHER (chantier NID P2,
-//  2026-07-26) : le défigeage "niveau = max(Stars, compétence)" (A1) est EN
-//  ATTENTE de validation Papa Yann, traité dans une phase séparée.
+//  ⚠️ FORMULE niveau = min(2, Stars) : reste la LOI pour TOUS les jeux SAUF le
+//  PILOTE EP-112 (mj-04) — GO Papa Yann 2026-07-28 (« je veux bien que ce truc
+//  qui monte le niveau plus vite soit codé/testé »). Spec :
+//  studio/minijeux/docs/2026-07-28-spec-montee-niveau.md. La 2e porte
+//  « compétence » (levelOf) n'est active QUE pour COMPETENCE_PILOTS ; la
+//  propagation aux autres jeux attend la validation du ressenti avec Max.
 //
 //  Billes : v1 vert (1er coup) · v2 jaune (2e) · v3 orange (3e) · v4 rouge (révélé).
 //  Mini-célébrations aléatoires en cours de jeu (confettis / étoile filante).
@@ -49,6 +52,58 @@
     return Math.min(MAX_STARS, parseInt(localStorage.getItem('golden_stars_' + id) || '0', 10) || 0);
   }
 
+  // ── EP-112 — montée de niveau par COMPÉTENCE (spec 2026-07-28, PILOTE) ──
+  // Niveau = max(plancher étoiles, niveau OUVERT par la compétence). La porte
+  // compétence s'ouvre quand les 3 dernières parties terminées DEPUIS la
+  // dernière ouverture totalisent ≥ 80 % de réponses du premier coup
+  // (champ `first` de tracker.js ; 3 parties mini = anti-hasard, cf. spec §1).
+  // JAMAIS de descente : le niveau ouvert est persisté (golden_openlvl_<id>,
+  // monotone) — sans lui, une baisse de forme refermerait la porte. Une seule
+  // ouverture par lot de 3 parties (openedAt date la frontière).
+  const COMPETENCE_PILOTS = ['mj-04'];
+  const _justOpened = {};
+
+  function _firstTryRate(id, sinceTs) {
+    try {
+      // ⚠ Tracker est un const top-level (PAS sur window) — piège documenté
+      // (nid-ui.js) : toujours l'identifiant nu via typeof, jamais global.Tracker.
+      const T = (typeof Tracker !== 'undefined') ? Tracker : global.Tracker;
+      const g = ((T && T.getStats().games) || {})[id];
+      const h = ((g && g.history) || [])
+        .filter(s => s.questions > 0 && (!sinceTs || Date.parse(s.date) > sinceTs))
+        .slice(-3);
+      if (h.length < 3) return null;
+      const q = h.reduce((s, x) => s + x.questions, 0);
+      const c = h.reduce((s, x) => s + (x.first || 0), 0);
+      return q > 0 ? c / q : null;
+    } catch (e) { return null; }
+  }
+
+  // Niveau 0-based, plafonné à maxLevel (2 pour la brique golden).
+  function levelOf(id, maxLevel) {
+    const floor = Math.min(maxLevel, starsOf(id));
+    if (COMPETENCE_PILOTS.indexOf(id) === -1) return floor;
+    let opened = { lvl: 0, at: 0 };
+    try {
+      const raw = JSON.parse(localStorage.getItem('golden_openlvl_' + id) || 'null');
+      if (raw && typeof raw.lvl === 'number') opened = raw;
+    } catch (e) {}
+    let lvl = Math.max(floor, Math.min(maxLevel, opened.lvl));
+    const rate = _firstTryRate(id, opened.at);
+    if (rate !== null && rate >= 0.8 && lvl < maxLevel) {
+      lvl += 1;
+      _justOpened[id] = true;   // la montée se célèbre (spec §4) — le jeu la lit une fois
+      try { localStorage.setItem('golden_openlvl_' + id, JSON.stringify({ lvl: lvl, at: Date.now() })); } catch (e) {}
+    }
+    return lvl;
+  }
+
+  function consumeLevelUp(id) {
+    const up = !!_justOpened[id];
+    _justOpened[id] = false;
+    return up;
+  }
+
   // ── A2 — reprise de partie (silencieuse, pas d'UI de choix) ─────────────
   function resumeKey(id) { return 'maxplay_resume_' + id; }
 
@@ -80,7 +135,9 @@
     setup(gameId) {
       this.gameId = gameId;
       this.stars = starsOf(gameId);
-      this.level = Math.min(2, this.stars);
+      // levelOf = min(2, stars) pour tous les jeux, SAUF pilotes EP-112
+      // (2e porte compétence). Identique à l'historique hors pilote.
+      this.level = levelOf(gameId, 2);
       this.totalQ = QS_PER_LEVEL[this.level];
       this._firstTry = 0;
       this._answered = 0;
@@ -409,6 +466,11 @@
       };
     },
   };
+
+  // EP-112 : exposés pour les jeux hors brique golden (mj-04 pilote) — UNE seule
+  // implémentation de la montée de niveau, jamais de copie locale.
+  Golden.levelOf = levelOf;
+  Golden.consumeLevelUp = consumeLevelUp;
 
   global.Golden = Golden;
 })(window);

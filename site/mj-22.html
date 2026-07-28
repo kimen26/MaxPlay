@@ -255,14 +255,24 @@ async function loadSvgMap() {
 
       const clone = node.cloneNode(true);                     // deep : garde les îles du <g>
       const data = PAYS[iso];
+
+      // Le SVG vient d'un serveur tiers : on ne recopie QUE de la géométrie.
+      // Tout enfant hors liste blanche est jeté, et tout attribut événementiel
+      // (onclick, onload…) ou lien externe est retiré — un clone profond
+      // conserverait sinon ces attributs et les exécuterait au tap.
+      const BALISES_OK = new Set(['path', 'g', 'polygon', 'polyline']);
+      [clone, ...clone.querySelectorAll('*')].forEach(el => {
+        if (el !== clone && !BALISES_OK.has(el.tagName.toLowerCase())) { el.remove(); return; }
+        [...el.attributes].forEach(a => {
+          const nom = a.name.toLowerCase();
+          if (nom.startsWith('on') || nom === 'id' || nom === 'style' || nom.includes('href')) {
+            el.removeAttribute(a.name);
+          }
+        });
+      });
+
       clone.setAttribute('data-iso', iso);
       clone.setAttribute('data-country', data.name);
-      clone.removeAttribute('id');
-      clone.removeAttribute('style');
-      clone.querySelectorAll('[id],[style]').forEach(child => {
-        child.removeAttribute('id');
-        child.removeAttribute('style');
-      });
       svg.appendChild(clone);
     });
 

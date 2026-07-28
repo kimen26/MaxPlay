@@ -59,13 +59,6 @@
     .qtxt-count { text-align:center; font-family:'Fredoka One',sans-serif; font-size:1.05rem; margin:6px 12px 2px; }
     .tap-hint { text-align:center; font-size:0.78rem; opacity:0.6; margin:0 12px 4px; }
 
-    /* Bandeau niveau + étoiles (contrat de difficulté MaxPlay) */
-    .levelbar { display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; padding:4px 12px 0; }
-    .lvl-num { font-family:'Fredoka One',sans-serif; font-size:0.9rem; color:var(--gold); background:var(--gold-soft); padding:3px 12px; border-radius:14px; }
-    .lvl-stars { display:flex; gap:2px; }
-    .lvl-star { font-size:1.1rem; color:rgba(255,255,255,.18); line-height:1; }
-    .lvl-star.on { color:var(--gold); text-shadow:0 1px 2px rgba(255,160,0,0.4); }
-
     /* Indice de méthode (aide, jamais la réponse) */
     .hint { text-align:center; font-weight:800; color:var(--gold); font-size:0.95rem; min-height:1.3em; opacity:0; transition:opacity .2s; padding:6px 12px 0; }
     .hint.show { opacity:1; }
@@ -82,14 +75,9 @@
       <span class="htitle">👥 Compte les passagers</span>
     </div>
 
-    <div class="scorebar">
-      <span class="scoretxt">Score</span>
-      <span class="scoreval" id="score">0</span>
-      <span class="streak" id="streak"></span>
-    </div>
-
-    <!-- Bandeau niveau (Niveau X/N + étoiles déjà gagnées) -->
-    <div class="levelbar" id="levelbar"></div>
+    <!-- Piste golden (progression + étoiles) — remplace scorebar/levelbar
+         (migration gabarit 2026-07-28, exigence PY « même code réutilisable ») -->
+    <div id="pips"></div>
 
     <!-- Scène vivante : arrêt de bus + passagers tapotables -->
     <div class="stop-scene" id="stopScene">
@@ -119,10 +107,12 @@
   <script>
     MJ.ready(function () {
     // ─── MJ-04 : Compte les passagers — PILOTE du contrat de difficulté ───
-    // Niveau = étoiles déjà gagnées + 1 (dérivé, aucun stockage en plus).
-    // Une manche sans révélation (100%) → +1★ (tracker) → niveau +1 au prochain lancement.
+    // PILOTE EP-112 (GO PY 2026-07-28) : niveau = max(étoiles+1, niveau ouvert par
+    // la compétence) — implémentation UNIQUE Golden.levelOf (mj-golden.js).
+    // Manche mixte à dosage adaptatif : 6/2 (maîtrise) · 4/4 (défaut) · 2/6
+    // (difficulté), ajustée EN silence pendant la partie (jamais le niveau affiché).
     const GAME_ID = 'mj-04';
-    const MAX_QUESTIONS = 8; // 4 au niveau courant + 4 à des niveaux inférieurs (manche mixte)
+    const MAX_QUESTIONS = 8; // figée mj-04 : manche = 8 questions, mixte
 
     // Paliers : le nombre de passagers monte avec le niveau
     // 🔄 2026-07-14 — passage global 3★ : 5 paliers → 3 niveaux (N1=ex-P1-2 · N2=ex-P3 · N3=ex-P4-5)
@@ -140,11 +130,12 @@
       ? shuffle
       : (a) => a.map(x => [Math.random(), x]).sort((p, q) => p[0] - q[0]).map(p => p[1]);
 
-    let level = 1, score = 0, streak = 0, questionCount = 0, reveals = 0, qcm = null, correctAnswer = 0, qLevels = [];
+    let level = 1, streak = 0, questionCount = 0, qcm = null, correctAnswer = 0, qLevels = [];
+    let errStreak = 0;   // erreurs consécutives (ajustement silencieux du sac)
 
     const shell = MJ.init({
       id: GAME_ID, emoji: '👥', titre: 'Compte les passagers',
-      consigne: false,
+      golden: true, consigne: false,
       regle: {
         picto: '👥🔢',
         texte: 'Compte les passagers à l’arrêt de bus !',
@@ -161,30 +152,45 @@
       }
     });
 
-    function starsGot() { return window.Stars ? Stars.get(GAME_ID) : 0; }
-    function currentLevel() { return Math.min(LEVELS.length, starsGot() + 1); }
+    const G = shell.G;
 
-    function renderLevelBar() {
-      const lb = document.getElementById('levelbar');
-      if (!lb) return;
-      const got = starsGot();
-      let s = '';
-      for (let i = 0; i < maxStars; i++) s += `<span class="lvl-star ${i < got ? 'on' : ''}">★</span>`;
-      lb.innerHTML = `<span class="lvl-num">Niveau ${level}/${maxStars}</span><span class="lvl-stars">${s}</span>`;
+    // Niveau via la brique commune (EP-112) : max(plancher étoiles, compétence).
+    function currentLevel() { return Math.min(LEVELS.length, Golden.levelOf(GAME_ID, LEVELS.length - 1) + 1); }
+
+    // Dosage du sac (spec §3) : part de questions au niveau courant selon la
+    // performance récente (premier coup, 3 dernières parties) — 6/2 · 4/4 · 2/6.
+    function hardCount() {
+      let rate = null;
+      try {
+        const g = (Tracker.getStats().games || {})[GAME_ID];
+        const h = ((g && g.history) || []).filter(s => s.questions > 0).slice(-3);
+        if (h.length >= 3) {
+          const q = h.reduce((s, x) => s + x.questions, 0);
+          rate = q > 0 ? h.reduce((s, x) => s + (x.first || 0), 0) / q : null;
+        }
+      } catch (e) {}
+      if (rate === null) return 4;          // défaut 4/4
+      if (rate >= 0.8) return 6;            // maîtrise → 6/2
+      if (rate < 0.5) return 2;             // difficulté → 2/6 (SILENCIEUX, spec §4)
+      return 4;
     }
 
     function init() {
       level = currentLevel();
-      // Manche mixte : 4 questions au niveau courant (le « dur ») + 4 à des niveaux
-      // inférieurs tirés au hasard (au niveau 1 → 8 faciles). Pas « que dur d'un coup ».
-      const hard = [level, level, level, level];
+      const nHard = level <= 1 ? 0 : hardCount();
+      const hard = Array(nHard).fill(level);
       const easy = [];
-      for (let i = 0; i < 4; i++) easy.push(level <= 1 ? 1 : 1 + Math.floor(Math.random() * (level - 1)));
+      for (let i = nHard; i < MAX_QUESTIONS; i++) easy.push(level <= 1 ? 1 : 1 + Math.floor(Math.random() * (level - 1)));
       qLevels = _shuffle([...hard, ...easy]);
-      score = 0; streak = 0; questionCount = 0; reveals = 0;
-      document.getElementById('score').textContent = '0';
-      document.getElementById('streak').textContent = '';
-      renderLevelBar();
+      streak = 0; errStreak = 0; questionCount = 0;
+      // Piste golden : manche mj-04 = toujours 8 questions (figée), quel que soit le niveau
+      G.totalQ = MAX_QUESTIONS;
+      G.buildPips();
+      // La MONTÉE se célèbre (spec §4) — une seule fois, au lancement qui l'ouvre
+      if (Golden.consumeLevelUp && Golden.consumeLevelUp(GAME_ID)) {
+        try { shell.say('Ouah ! Tu passes au niveau ' + level + ' !'); } catch (e) {}
+        if (typeof confetti === 'function') setTimeout(confetti, 400);
+      }
 
       // Bus décoratif fixe à l'arrêt (couleur d'une ligne au hasard)
       const d = LIGNES[Math.floor(Math.random() * LIGNES.length)];
@@ -285,34 +291,51 @@
       const res = MJCompte.answer(qcm, isCorrect);
       if (res.outcome === 'ignored') return;
       if ((res.outcome === 'correct' || res.outcome === 'reveal') && typeof Tracker !== 'undefined')
-        Tracker.logAnswer(res.outcome === 'correct');
+        Tracker.logAnswer(res.outcome === 'correct', res.outcome === 'correct' && res.attempts === 1);
 
       if (res.outcome === 'correct') {
         btn.classList.add('ok');
-        score += res.points;
-        if (res.streakInc) streak++; else streak = 0;
+        const firstTry = res.attempts === 1;
+        if (firstTry) { streak++; errStreak = 0; } else { streak = 0; }
+        // Ajustement SILENCIEUX du sac (spec §3, T7) : 3 premiers coups d'affilée
+        // → les questions faciles restantes passent au niveau courant.
+        if (firstTry && streak === 3 && level > 1) {
+          for (let i = questionCount; i < qLevels.length; i++) qLevels[i] = level;
+        }
         waveAll();
         if (streak >= 3 && typeof confetti === 'function') confetti();
         sndDing(); showFB(true); hideHint();
-        updateBar();
+        G.notePip(questionCount - 1, res.attempts, btn);
         setTimeout(nextQuestion, 1300);
       } else if (res.outcome === 'reveal') {
-        reveals++;                          // une révélation = manche non parfaite (pas d'étoile)
         btn.classList.add('ko'); btn.disabled = true;
         streak = 0;
+        softenBag();
         QcmRetry.revealCorrect(document.getElementById('choices'));
         sndBuzz(); showFB(false);
         recountPassengers();
-        updateBar();
+        const okEl = document.querySelector('#choices .ch[data-correct="1"]');
+        G.notePip(questionCount - 1, 4, okEl);
         setTimeout(nextQuestion, 1900);
       } else {
         // mauvaise réponse mais il lui reste des essais → recompte ensemble + INDICE, jamais la réponse
         btn.classList.add('ko'); btn.disabled = true;
         streak = 0;
+        softenBag();
         sndBuzz(); showFB(false);
         showHint();
         recountPassengers();
-        updateBar();
+      }
+    }
+
+    // 2 erreurs consécutives → les questions dures restantes redeviennent faciles.
+    // TOTALEMENT silencieux (spec §4 : « la descente est invisible ») — aucun texte.
+    function softenBag() {
+      errStreak++;
+      if (errStreak >= 2 && level > 1) {
+        for (let i = questionCount; i < qLevels.length; i++) {
+          if (qLevels[i] >= level) qLevels[i] = 1 + Math.floor(Math.random() * (level - 1));
+        }
       }
     }
 
@@ -322,38 +345,10 @@
     }
     function hideHint() { const h = document.getElementById('hint'); if (h) h.classList.remove('show'); }
 
-    function updateBar() {
-      document.getElementById('score').textContent = score;
-      document.getElementById('streak').textContent = streak >= 2 ? `🔥×${streak}` : '';
-    }
-
+    // Fin de manche : écran STANDARD (œuf + étoile sans-faute + 3 boutons) —
+    // migration gabarit 2026-07-28, plus aucun écran maison.
     function showEndScreen() {
-      if (typeof Tracker !== 'undefined') Tracker.endSession(score, MAX_QUESTIONS * 10);
-      if (typeof playEndSound === 'function') playEndSound(score, MAX_QUESTIONS * 10);
-
-      const perfect = reveals === 0;              // manche sans révélation = 100%
-      const got = starsGot();                     // étoiles APRÈS enregistrement de la manche
-      let head, sub;
-      if (perfect && got >= maxStars) { head = '🏆'; sub = 'MAXIMUM ! Tu as toutes les étoiles !'; }
-      else if (perfect) { head = '⭐'; sub = `Bravo ! Une étoile gagnée !<br>Niveau ${Math.min(maxStars, got + 1)} débloqué !`; }
-      else { head = '👍'; sub = `Bien joué, ${score} points !<br>Réussis sans te tromper pour gagner une étoile ⭐`; }
-      if (perfect && typeof confetti === 'function') confetti();
-
-      let starsRow = '';
-      for (let i = 0; i < maxStars; i++)
-        starsRow += `<span style="font-size:2.1rem;color:${i < got ? '#FFC107' : '#ffffff33'}">★</span>`;
-
-      document.getElementById('app').innerHTML = `
-        <div id="endscreen" data-perfect="${perfect ? 1 : 0}" data-stars="${got}"
-             style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100dvh;text-align:center;padding:20px;">
-          <div style="font-size:5rem;margin-bottom:14px;">${head}</div>
-          <h2 style="font-size:1.7rem;margin-bottom:14px;color:#ffe066;line-height:1.3;font-family:'Fredoka One',sans-serif;">${sub}</h2>
-          <div style="margin-bottom:24px;letter-spacing:3px;">${starsRow}</div>
-          <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
-            <a href="mj-04.html" style="background:#00c47a;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">🔄 Rejouer</a>
-            <a href="index.html" style="background:#ffffff22;color:#fff;padding:15px 30px;border-radius:30px;text-decoration:none;font-weight:900;font-size:1.1rem;">📋 Menu</a>
-          </div>
-        </div>`;
+      G.showEnd({ replayUrl: 'mj-04.html' });
     }
 
     init();

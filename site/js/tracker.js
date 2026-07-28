@@ -101,6 +101,7 @@ const Tracker = (() => {
       startTime: Date.now(),
       questions: 0,
       correct: 0,
+      firstTry: 0,   // réponses justes DU PREMIER COUP (EP-112 montée de niveau)
     };
     // TTS du titre désactivé : laggue le démarrage (D-024 2026-05-03)
   }
@@ -129,10 +130,13 @@ const Tracker = (() => {
     } catch (e) {}
   }
 
-  function logAnswer(correct) {
+  // firstTry (optionnel) : la réponse était juste DU PREMIER COUP. Les jeux qui
+  // ne le passent pas gardent le comportement historique (correct seul).
+  function logAnswer(correct, firstTry) {
     if (!_session) return;
     _session.questions++;
     if (correct) _session.correct++;
+    if (firstTry) _session.firstTry++;
   }
 
   function endSession(score, maxScore) {
@@ -165,6 +169,7 @@ const Tracker = (() => {
       score: score || 0,
       maxScore: maxScore || 0,
       correct: _session.correct,
+      first: _session.firstTry || 0,   // premier coup (EP-112) — 0 si le jeu ne le trace pas
       questions: _session.questions,
       duration,
     });

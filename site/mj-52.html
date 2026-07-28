@@ -41,24 +41,26 @@
     }
     .syllabe.done { background:rgba(255,209,102,.12); box-shadow:0 0 18px rgba(255,209,102,.35); }
     .slot {
-      width:58px; height:66px; border-radius:14px;
+      width:clamp(50px,10vmin,64px); height:clamp(58px,12vmin,72px); border-radius:14px;
       background:rgba(255,255,255,.06); border:2px dashed rgba(255,255,255,.35);
       display:flex; align-items:center; justify-content:center;
-      font-family:'Cursif',cursive; font-size:2.4rem; color:#fff;
+      font-family:'Cursif',cursive; font-size:clamp(1.8rem,6vmin,2.4rem); line-height:1.3; color:#fff;
       transition:border-color .2s, background .2s;
     }
     .slot.next { border-color:var(--gold,#ffe066); box-shadow:0 0 12px rgba(255,224,102,.35); }
     .slot.fait { border-style:solid; border-color:rgba(125,255,196,.6); background:rgba(47,191,143,.14); animation:slotPop .3s cubic-bezier(.34,1.56,.64,1); }
     @keyframes slotPop { from{transform:scale(.6)} to{transform:scale(1)} }
 
-    /* Les lettres mobiles */
-    .pool { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; align-items:center; max-width:560px; min-height:100px; }
+    /* Les lettres mobiles — rangée équilibrée : centrée, largeur cappée pour
+       ne jamais forcer une lettre isolée toute seule sur une 2e ligne (PY :
+       "arranger les lettres en bas pour équilibrer"). */
+    .pool { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; align-items:center; max-width:520px; min-height:clamp(76px,14vmin,100px); }
     .tuile {
-      min-width:84px; min-height:84px; padding:2px 14px; border-radius:22px; border:none; cursor:pointer;
+      width:clamp(80px,13vmin,84px); height:clamp(80px,13vmin,84px); padding:2px 6px; border-radius:22px; border:none; cursor:pointer;
       background:linear-gradient(145deg,#265a8f,#173a61);
       border:3px solid rgba(255,255,255,.22);
       box-shadow:0 6px 0 #0e2440, 0 10px 20px rgba(0,0,0,.45);
-      color:#fff; font-family:'Cursif',cursive; font-size:2.8rem;
+      color:#fff; font-family:'Cursif',cursive; font-size:clamp(1.8rem,6vmin,2.8rem); line-height:1.3;
       display:flex; align-items:center; justify-content:center;
       transition:transform .1s, opacity .25s, border-color .2s; touch-action:manipulation;
     }
@@ -70,8 +72,9 @@
     @keyframes tShake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-6px)} 60%{transform:translateX(6px)} }
 
     .bravo-mot {
-      min-height:2.2em; display:flex; align-items:center; justify-content:center;
-      font-family:'Cursif',cursive; font-size:2.1rem; color:#ffe9a0; text-align:center;
+      min-height:2.2em; max-width:94vw; display:flex; align-items:center; justify-content:center;
+      font-family:'Cursif',cursive; font-size:clamp(1.4rem,6vmin,2.1rem); line-height:1.3;
+      color:#ffe9a0; text-align:center; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
       text-shadow:0 0 14px rgba(255,231,160,.45); opacity:0; transition:opacity .4s;
     }
     .bravo-mot.show { opacity:1; }

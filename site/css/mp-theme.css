@@ -120,13 +120,20 @@ body {
    États : done-first (✓ VERT — v3 : l'or est réservé aux ★★★ du jeu) /
    done-retry (orange) / done-helped (rouge doux) / current (anneau accent)
    / todo. Le résultat RESTE affiché. Légende = panneau ?, pas le jeu.   */
-.mp-track { display:flex; align-items:center; gap:7px; padding:6px 18px 4px; }
+.mp-track { display:flex; align-items:center; gap:7px; padding:6px 18px 4px; flex-wrap:wrap; }
 .mp-q { width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:900; }
 .mp-q.done-first  { background:var(--ok); color:#fff; }
 .mp-q.done-retry  { background:var(--retry); color:#3a2000; }
 .mp-q.done-helped { background:var(--helped); color:#fff; }
 .mp-q.current { width:38px; height:38px; background:transparent; border:3px solid var(--accent); color:var(--accent); box-shadow:0 0 12px var(--accent-soft); }
 .mp-q.todo { background:rgba(255,255,255,.1); color:var(--ink-3); font-size:13px; width:28px; height:28px; }
+
+/* Piste dense (>12 pastilles, EP-C2) : compacte au lieu de déborder/scroller.
+   Retour PY mj-22 mode difficile (25 pays) : « sans limite visuelle ». */
+.mp-track-dense { gap:4px; max-height:78px; overflow-y:auto; padding:6px 14px 4px; }
+.mp-track-dense .mp-q { width:22px; height:22px; font-size:10px; }
+.mp-track-dense .mp-q.current { width:26px; height:26px; border-width:2px; }
+.mp-track-dense .mp-q.todo { width:18px; height:18px; font-size:9px; }
 
 /* ── CONSIGNE AUDIO ────────────────────────────────────────────────── */
 .mp-consigne {
@@ -149,6 +156,37 @@ body {
 .col { display:flex; flex-direction:column; gap:10px; }
 .grow { flex:1; min-width:0; }
 .muted { color:var(--ink-3); font-weight:800; font-size:12.5px; }
+
+/* ════════════════════════════════════════════════════════════════════
+   TEXTE CURSIF PARTAGÉ (EP-C2, 2026-07-28) — généralisation du pattern
+   mj-40 (clamp(1.4rem,5vmin,2.2rem)). Le débordement Cursif (haut/bas,
+   hors-cadre) vient toujours de tailles fixes en rem dans des boîtes
+   fixes en px. Règle : taille FLUIDE (clamp, jamais un rem brut) +
+   line-height ≥1.3 (le tracé cursif remonte/descend plus qu'un texte
+   droit) + coupure de mot autorisée pour les mots syllabés/longs.
+   Usage : <span class="mp-cursif">mot</span> — moduler la taille avec
+   --cursif-min/--cursif-vmin/--cursif-max sur le sélecteur local
+   plutôt que redéfinir font-size ailleurs.
+   ════════════════════════════════════════════════════════════════════ */
+.mp-cursif {
+  font-family: 'Cursif', cursive;
+  font-size: clamp(var(--cursif-min, 1.4rem), var(--cursif-vmin, 6vmin), var(--cursif-max, 2.6rem));
+  line-height: 1.3;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  hyphens: auto;
+}
+/* Variante grande (badge son isolé, 1-2 lettres) : autorise un plafond plus haut */
+.mp-cursif-lg { --cursif-min: 1.6rem; --cursif-vmin: 7vmin; --cursif-max: 3.2rem; }
+/* Variante petite (tuile dense, grille serrée) */
+.mp-cursif-sm { --cursif-min: 1.2rem; --cursif-vmin: 5vmin; --cursif-max: 2rem; }
+
+/* ── Hauteur utile de jeu (EP-C2) : 100dvh moins l'entête réel moins la
+   piste de progression. Les jeux à scène unique (mj-50/51/52/53…)
+   posent --mp-game-vh sur #app/.stage pour éviter tout ascenseur mobile
+   sans recalculer une hauteur en dur par jeu. Défaut = entête seul. */
+:root { --mp-hdr-h: 58px; --mp-track-h: 0px; }
+.mp-game-vh { height: calc(100dvh - var(--mp-hdr-h) - var(--mp-track-h)); }
 
 /* ════════════════════════════════════════════════════════════════════
    Additions intégration MaxPlay (2026-07-13) — hors package d'origine
@@ -217,7 +255,11 @@ body:not([data-ambiance]) { --bg0:#0a1226; --bg1:#0c1730; --card:#0e1a34; --card
 .mp-voile { position:fixed; inset:0; background:rgba(5,8,18,.7); backdrop-filter:blur(2px); display:none; z-index:299; }
 .mp-voile.on { display:block; }
 .mp-panneau {
-  position:fixed; left:12px; right:12px; bottom:12px; top:56px; max-width:456px; margin:0 auto;
+  /* Réduit (EP-C2, retour PY « réduire la taille des règles ») : ancré en
+     bas plutôt que plein écran, hauteur qui s'adapte au contenu jusqu'à
+     un plafond raisonnable — laisse voir le jeu derrière, pas un mur. */
+  position:fixed; left:12px; right:12px; bottom:12px; top:auto; max-width:456px; margin:0 auto;
+  max-height:min(72dvh, 560px);
   background:var(--card); border:1px solid var(--line); border-radius:22px;
   display:none; flex-direction:column; overflow:hidden; z-index:300;
   animation:mpModalIn .3s ease both;
@@ -225,32 +267,32 @@ body:not([data-ambiance]) { --bg0:#0a1226; --bg1:#0c1730; --card:#0e1a34; --card
 }
 .mp-panneau.on { display:flex; }
 @keyframes mpModalIn { from{opacity:0;transform:translateY(20px) scale(.96)} to{opacity:1;transform:none} }
-.mp-panneau .p-tabs { display:flex; align-items:center; gap:8px; padding:12px 14px 8px; }
-.mp-panneau .p-badge { width:34px; height:34px; border-radius:12px; background:var(--accent-soft);
-  display:flex; align-items:center; justify-content:center; font-size:17px; flex-shrink:0; }
-.mp-panneau .p-tab { border-radius:999px; padding:7px 14px; font-weight:900; font-size:12.5px; cursor:pointer;
+.mp-panneau .p-tabs { display:flex; align-items:center; gap:6px; padding:10px 12px 6px; }
+.mp-panneau .p-badge { width:28px; height:28px; border-radius:10px; background:var(--accent-soft);
+  display:flex; align-items:center; justify-content:center; font-size:14px; flex-shrink:0; }
+.mp-panneau .p-tab { border-radius:999px; padding:6px 12px; font-weight:900; font-size:11.5px; cursor:pointer;
   background:rgba(255,255,255,.07); color:var(--ink-3); }
 .mp-panneau .p-tab.regle.on { background:var(--accent); color:var(--accent-ink); }
 .mp-panneau .p-tab.avis.on  { background:var(--parent); color:var(--parent-ink); }
-.mp-panneau .p-close { margin-left:auto; width:34px; height:34px; border-radius:50%; border:0; cursor:pointer;
-  background:rgba(255,255,255,.1); color:var(--ink); font-size:15px; font-weight:900; }
-.mp-panneau .p-corps { flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:9px; padding:2px 14px; }
+.mp-panneau .p-close { margin-left:auto; width:28px; height:28px; border-radius:50%; border:0; cursor:pointer;
+  background:rgba(255,255,255,.1); color:var(--ink); font-size:13px; font-weight:900; }
+.mp-panneau .p-corps { flex:1; overflow-y:auto; display:flex; flex-direction:column; gap:6px; padding:2px 12px; }
 /* UN SEUL bouton audio pour toutes les règles */
-.mp-panneau .lire-tout { margin:0 14px 6px; display:flex; align-items:center; gap:10px; cursor:pointer;
+.mp-panneau .lire-tout { margin:0 12px 4px; display:flex; align-items:center; gap:8px; cursor:pointer;
   background:rgba(47,191,143,.12); border:1px solid rgba(47,191,143,.35);
-  border-radius:14px; padding:9px 12px; }
-.mp-panneau .lire-tout i { width:34px; height:34px; flex-shrink:0; border-radius:50%; background:var(--ok);
-  display:flex; align-items:center; justify-content:center; font-style:normal; font-size:14px; }
-.mp-panneau .lire-tout b { font-size:12.5px; color:#c3f0dd; }
-/* étape de règle : titre + 2e ligne d'explication */
-.mp-panneau .etape { display:flex; align-items:flex-start; gap:11px; background:rgba(255,255,255,.05); border-radius:16px; padding:12px; }
-.mp-panneau .etape .num { width:38px; height:38px; flex-shrink:0; border-radius:50%; background:var(--accent-soft);
-  color:var(--accent); display:flex; align-items:center; justify-content:center; font-size:16px; font-weight:900; }
-.mp-panneau .etape b { display:block; font-size:13.5px; color:var(--ink); }
-.mp-panneau .etape small { font-size:11.5px; font-weight:700; color:var(--ink-3); line-height:1.45; }
+  border-radius:12px; padding:7px 10px; }
+.mp-panneau .lire-tout i { width:28px; height:28px; flex-shrink:0; border-radius:50%; background:var(--ok);
+  display:flex; align-items:center; justify-content:center; font-style:normal; font-size:12px; }
+.mp-panneau .lire-tout b { font-size:11.5px; color:#c3f0dd; }
+/* étape de règle : titre + 2e ligne d'explication (compactée EP-C2) */
+.mp-panneau .etape { display:flex; align-items:flex-start; gap:9px; background:rgba(255,255,255,.05); border-radius:13px; padding:8px 10px; }
+.mp-panneau .etape .num { width:28px; height:28px; flex-shrink:0; border-radius:50%; background:var(--accent-soft);
+  color:var(--accent); display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:900; }
+.mp-panneau .etape b { display:block; font-size:12.5px; color:var(--ink); }
+.mp-panneau .etape small { font-size:10.5px; font-weight:700; color:var(--ink-3); line-height:1.35; }
 /* encadré étoiles — la légende vert/orange/rouge vit ICI, pas dans le jeu */
-.mp-panneau .gagner { background:var(--gold-soft); border:1px solid rgba(255,209,102,.25); border-radius:16px;
-  padding:12px; display:flex; flex-direction:column; gap:7px; }
+.mp-panneau .gagner { background:var(--gold-soft); border:1px solid rgba(255,209,102,.25); border-radius:13px;
+  padding:9px 10px; display:flex; flex-direction:column; gap:5px; }
 .mp-panneau .gagner .li { display:flex; align-items:center; gap:9px; font-size:11.5px; font-weight:800; color:var(--ink-2); }
 .mp-panneau .gagner .li i { width:24px; height:24px; border-radius:50%; font-style:normal; font-size:11px; font-weight:900;
   display:flex; align-items:center; justify-content:center; flex-shrink:0; }

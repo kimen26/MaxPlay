@@ -34,12 +34,13 @@
     .son-badge.pulse { animation:sonPulse .9s ease; }
     @keyframes sonPulse { 0%,100%{transform:scale(1)} 30%{transform:scale(1.12)} 55%{transform:scale(.98)} }
     .son-sub { font-family:'Nunito',sans-serif; font-weight:800; font-size:.85rem; color:rgba(255,255,255,.7); }
-    .son-mot { font-family:'Cursif',cursive; font-size:2rem; color:#fff; }
+    .son-mot { font-family:'Cursif',cursive; font-size:clamp(1.5rem,6vmin,2rem); line-height:1.3; color:#fff; }
 
-    /* Les lettres (grosses tuiles tapables) */
-    .lettres { display:flex; flex-wrap:wrap; gap:14px; justify-content:center; align-items:center; max-width:560px; padding:0 6px; }
+    /* Les lettres (grosses tuiles tapables) — TOUJOURS 4 choix : grille 2x2
+       fixe (jamais 3+1 en fin de ligne, retour PY "c'est très moche"). */
+    .lettres { display:grid; grid-template-columns:repeat(2, 1fr); gap:14px; justify-items:center; align-items:center; max-width:400px; width:100%; margin:0 auto; padding:0 6px; }
     .lettre {
-      min-width:96px; min-height:96px; padding:4px 16px; border-radius:24px; border:none; cursor:pointer;
+      width:100%; max-width:120px; min-width:80px; aspect-ratio:1/1; padding:4px 10px; border-radius:24px; border:none; cursor:pointer;
       background:linear-gradient(145deg,#265a8f,#173a61);
       border:3px solid rgba(255,255,255,.22);
       box-shadow:0 6px 0 #0e2440, 0 10px 20px rgba(0,0,0,.45);
@@ -47,9 +48,9 @@
       transition:transform .1s, opacity .2s, border-color .2s; touch-action:manipulation;
     }
     .lettre:active { transform:translateY(3px) scale(.96); box-shadow:0 2px 0 #0e2440; }
-    .lettre.cur { font-family:'Cursif',cursive; font-size:3.4rem; }
-    .lettre.scripte { font-family:'Nunito',sans-serif; font-weight:900; font-size:2.8rem; }
-    .lettre.maj { font-family:'Nunito',sans-serif; font-weight:900; font-size:2.8rem; text-transform:uppercase; }
+    .lettre.cur { font-family:'Cursif',cursive; font-size:clamp(2rem,8vmin,3.4rem); line-height:1.3; }
+    .lettre.scripte { font-family:'Nunito',sans-serif; font-weight:900; font-size:clamp(1.7rem,6.5vmin,2.8rem); }
+    .lettre.maj { font-family:'Nunito',sans-serif; font-weight:900; font-size:clamp(1.7rem,6.5vmin,2.8rem); text-transform:uppercase; }
     .lettre.ok { background:linear-gradient(145deg,#0e9d63,#087a4b); border-color:#7dffc4; box-shadow:0 6px 0 #065c38, 0 0 24px rgba(47,191,143,.7); }
     .lettre.ko { opacity:.35; }
   </style>

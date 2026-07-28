@@ -71,7 +71,9 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
   flex-shrink:0; width:90px; height:90px; border-radius:var(--r-thumb); overflow:hidden;
   background:rgba(255,255,255,0.16); display:flex; align-items:center; justify-content:center;
 }
-.fam-thumb img { width:100%; height:100%; object-fit:contain; padding:6px; box-sizing:border-box; filter:invert(1) brightness(1.4) drop-shadow(0 1px 3px rgba(0,0,0,.6)); }
+/* Emblèmes Lunii = art clair (blanc/gris) déjà sur fond transparent → PAS d'invert (contrairement aux
+   silhouettes _ombre.png ailleurs). Juste un léger drop-shadow pour la lisibilité sur fond coloré clair. */
+.fam-thumb img { width:100%; height:100%; object-fit:contain; padding:6px; box-sizing:border-box; filter:drop-shadow(0 1px 3px rgba(0,0,0,.5)); }
 .fam-thumb-emoji { font-size:2.8rem; }
 .fam-body { flex:1; min-width:0; display:flex; flex-direction:column; justify-content:center; gap:3px; }
 .fam-label { font-family:'Fredoka One',cursive; font-weight:400; font-size:1.02rem; color:#fff; text-shadow:0 1px 4px rgba(0,0,0,0.55); line-height:1.2; }
@@ -550,6 +552,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
     <button class="mp-pill active" id="mp-pill-famille"   onclick="setMode('famille')"  >🦖 Les familles</button>
     <button class="mp-pill"        id="mp-pill-regime"    onclick="setMode('regime')"   >🍽️ Ce qu'il mange</button>
     <button class="mp-pill"        id="mp-pill-periode"   onclick="setMode('periode')"  >⏳ Le voyage</button>
+    <button class="mp-pill"        id="mp-pill-epoque"    onclick="setMode('epoque')"   >🕰️ Les époques</button>
     <button class="mp-pill"        id="mp-pill-dico"      onclick="setMode('dico')"     >📖 Le dico</button>
   </div>
   <div id="menu-scroll"></div>
@@ -591,6 +594,7 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
   <script src="js/dinos-data.js"></script>
 <script src="js/dinos-racines.js"></script>
 <script src="js/dinos-i18n.js"></script>
+<script src="js/dinos-world-map.js"></script>
 <script>
 
 /* ── TTS ── */
@@ -672,6 +676,7 @@ const MENU_FALLBACK = {
   regime:  'Les dinosaures ne mangeaient pas tous la même chose. Les carnivores mangeaient de la viande. Les herbivores mangeaient des plantes.',
   famille: (typeof DINO_FAMILLES_INTRO !== 'undefined' ? DINO_FAMILLES_INTRO : 'Les grandes familles de dinosaures !'),
   periode: 'Le grand voyage dans le temps ! On remonte très loin, de la première vie jusqu\'à aujourd\'hui.',
+  epoque:  'Range les dinosaures par époque ! Du Permien, avant les dinosaures, jusqu\'à aujourd\'hui.',
   dico:    'Les noms des dinos sont faits de petits mots de savants ! Touche un mot pour l\'écouter.',
 };
 function setMode(mode) {
@@ -705,6 +710,8 @@ function buildMenu() {
     buildMenuFamille(el);
   } else if (currentMode === 'periode') {
     buildMenuPeriode(el);
+  } else if (currentMode === 'epoque') {
+    buildMenuEpoque(el);
   } else if (currentMode === 'dico') {
     el.classList.add('mode-dico');
     buildMenuDico(el);
@@ -722,15 +729,25 @@ function buildChronoDinoThumb(d) {
 }
 
 /* ── MENU famille ──
-   Carte horizontale : vignette photo (dino emblème) + bloc texte complet, rien n'est coupé.
-   FAM_EMBLEME = png montré sur la vignette de chaque famille. */
-const FAM_EMBLEME = {
-  trex: 'Tyrannosaurus.png', cou_long: 'Brachiosaurus.png', arme: 'Stegosaurus.png',
-  cornu: 'Triceratops.png', bec: 'Parasaurolophus.png', raptor: 'Velociraptor.png',
-  pterosaures: 'Pteranodon.png', enaliosaures: 'Mosasaurus.png', volant: 'Dimetrodon.png',
+   Carte horizontale : vignette emblème de FAMILLE (pas un dino représentatif) + bloc texte.
+   FAM_EMBLEME_IMG = vignette réemployée des emblèmes Lunii (studio/dino/content/lunii/_sources-hd/,
+   convertis fond transparent 256px dans site/img/dinos/familles/) — demande Papa Yann 2026-07-28
+   « on pourrait pas utiliser les images qu'on a utilisées dans la Lunii ? ».
+   9/11 familles couvertes (source Lunii existe) ; mammiferes/oiseaux n'ont pas d'emblème Lunii
+   → fallback emoji fam.emoji en attendant (ticket dino-pmo backlog). */
+const FAM_EMBLEME_IMG = {
+  trex: 'trex.png', cou_long: 'cou_long.png', arme: 'arme.png',
+  cornu: 'cornu.png', bec: 'bec.png', raptor: 'raptor.png',
+  pterosaures: 'pterosaures.png', enaliosaures: 'enaliosaures.png', volant: 'volant.png',
+  // mammiferes: absent (pas de source Lunii) — fallback emoji
+  // oiseaux: absent (pas de source Lunii) — fallback emoji
 };
+function famEmblemeSrc(famId) {
+  const img = FAM_EMBLEME_IMG[famId];
+  return img ? `img/dinos/familles/${img}` : '';
+}
 // png data ('Tyrannosaurus.jpg' | 'Tyrannosaurus.png') → silhouette 'ombres/Tyrannosaurus_ombre.png'
-// Vignettes = ombre + nom (décision Papa Yann 2026-07-17) : cohérent, léger, purge les heros tiers.
+// (reste utilisé ailleurs : fiches dino individuelles, vignettes chrono du Voyage)
 function ombreSrc(png) {
   if (!png) return '';
   const base = png.replace(/\.(jpg|png|webp)$/i, '');
@@ -756,7 +773,7 @@ function buildMenuFamille(el) {
   DINO_FAMILLES.forEach(fam => {
     const count = DINOS.filter(d => d.famille === fam.id).length;
     if (!count) return;
-    const png = FAM_EMBLEME[fam.id];
+    const emblemeSrc = famEmblemeSrc(fam.id);
     const title = fam.sci || fam.label;        // nom scientifique en GROS
     const sub   = fam.label || '';             // surnom en sous-titre
     const card = document.createElement('div');
@@ -766,8 +783,8 @@ function buildMenuFamille(el) {
     card.style.borderColor = hexToRgba(fam.color, 0.4);
     card.innerHTML = `
       <div class="fam-thumb">
-        ${png ? `<img src="${ombreSrc(png)}" alt="${title}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : ''}
-        <span class="fam-thumb-emoji" ${png ? 'style="display:none"' : ''}>${fam.emoji}</span>
+        ${emblemeSrc ? `<img src="${emblemeSrc}" alt="${title}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">` : ''}
+        <span class="fam-thumb-emoji" ${emblemeSrc ? 'style="display:none"' : ''}>${fam.emoji}</span>
       </div>
       <div class="fam-body">
         <div class="fam-label">${fam.emoji} ${title}</div>
@@ -778,6 +795,40 @@ function buildMenuFamille(el) {
     `;
     // Un seul son : on entre dans la grille, c'est elle qui dit le nom + l'origine grecque.
     card.addEventListener('click', () => { setTimeout(() => showGridFamille(fam.id), 250); });
+    el.appendChild(card);
+  });
+}
+
+/* ── MENU époque (5e onglet, ajouté 2026-07-28 — demande explicite Papa Yann « trier par époque »).
+   RÈGLE FIGÉE « 4 onglets » (studio/dino/figees/encyclopedie.md) DÉFIGÉE ce jour pour ce 5e onglet ; la
+   figée doit être mise à jour pour le graver. Réutilise EXACTEMENT le gabarit .fam-card/.fam-thumb de
+   l'onglet Familles (zéro CSS inventé). DINO_PERIODES est déjà dans l'ORDRE CHRONOLOGIQUE (source
+   site/js/dinos-data.js) — on ne trie pas nous-mêmes, on respecte l'ordre du tableau. ── */
+function buildMenuEpoque(el) {
+  const intro = document.createElement('div');
+  intro.className = 'fam-intro';
+  intro.innerHTML = `<p>Les dinos n'ont pas tous vécu en même temps ! On les range par époque, de la plus ancienne à aujourd'hui.</p>`;
+  el.appendChild(intro);
+
+  DINO_PERIODES.forEach(per => {
+    const count = DINOS.filter(d => d.periode === per.id).length;
+    if (!count) return;
+    const card = document.createElement('div');
+    card.className = 'fam-card';
+    card.style.background = hexToRgba(per.color, 0.12);
+    card.style.borderColor = hexToRgba(per.color, 0.4);
+    card.innerHTML = `
+      <div class="fam-thumb">
+        <span class="fam-thumb-emoji">${per.emoji}</span>
+      </div>
+      <div class="fam-body">
+        <div class="fam-label">${per.emoji} ${per.label}</div>
+        <div class="fam-savant">${per.range}</div>
+        <div class="fam-desc">${per.desc}</div>
+        <div class="fam-count">${count} dino${count > 1 ? 's' : ''} →</div>
+      </div>
+    `;
+    card.addEventListener('click', () => { setTimeout(() => showGridEpoque(per.id), 250); });
     el.appendChild(card);
   });
 }
@@ -1145,12 +1196,48 @@ function showGridFamille(famId) {
   setTimeout(() => playFamVoice(famId, intro.trim()), 200);
 }
 
+/* ── Grille ÉPOQUE (5e onglet, ajouté 2026-07-28 demande Papa Yann « trier par époque ») ──
+   Réutilise le même gabarit de carte que showGridFamille (bandeau explicatif + grid dino-card). */
+function showGridEpoque(perId) {
+  currentCatId = perId;
+  showScreen('grid');
+  const per = DINO_PERIODES.find(p => p.id === perId);
+  document.getElementById('grid-title').textContent = per.emoji + ' ' + per.label;
+  const el = document.getElementById('grid-scroll');
+  el.innerHTML = '';
+  const banner = document.createElement('div');
+  banner.className = 'fam-explic-banner';
+  banner.innerHTML = `<p><b>${per.label}</b> <span style="opacity:.7">— ${per.range}</span><br>${per.desc}</p>`;
+  el.appendChild(banner);
+  const dinos = DINOS.filter(d => d.periode === perId);
+  dinos.forEach(d => {
+    const card = document.createElement('div');
+    card.className = 'dino-card';
+    card.innerHTML = `
+      <div class="dino-thumb" style="background:${hexToRgba(per.color, .12)}">
+        <img src="${ombreSrc(d.png)}" alt="${d.name}" loading="lazy" onerror="this.style.display='none'">
+      </div>
+      <div class="card-name">${d.name}</div>
+      <div class="card-bar" style="background:${per.color}"></div>
+      ${buildBadges(d.id)}
+    `;
+    card.addEventListener('click', () => {
+      currentDino = d;
+      setTimeout(() => showFiche(d), 350);
+    });
+    el.appendChild(card);
+  });
+  setTimeout(() => speakText(per.label + ' ! ' + per.desc + '. Tape sur un dino pour tout savoir !'), 200);
+}
+
 /* ── Retour depuis grille ── */
 function showGrid(catId) {
   if (catId) currentCatId = catId;
   showScreen('grid');
   if (currentMode === 'famille') {
     showGridFamille(currentCatId);
+  } else if (currentMode === 'epoque') {
+    showGridEpoque(currentCatId);
   } else {
     showGridRegime(currentCatId);
   }
@@ -1190,45 +1277,69 @@ function buildBadges(dinoId) {
   }
   return b ? `<div class="card-badges">${b}</div>` : '';
 }
-/* ── Carte SVG continents ── */
+/* ── Carte SVG monde (vraies silhouettes de pays, vendored js/dinos-world-map.js) ──
+   Remplace les 6 patates dessinees a la main (dette signalee par Papa Yann) : on colore
+   maintenant les vrais pays du(des) continent(s) du dino sur une vraie carte du monde.
+   Gere les valeurs composites de dinos-data.js ("Amérique du Nord / Asie", "Eurasie et
+   Amérique du Nord", "Amériques", "Eurasie") + le cas marin sans continent (énaliosaures). */
+const CONTINENT_COLORS = {
+  'Amérique du Nord': '#e74c3c',
+  'Amérique du Sud':  '#e67e22',
+  'Europe':           '#3498db',
+  'Afrique':          '#f39c12',
+  'Asie':             '#e91e63',
+  'Antarctique':      '#00bcd4',
+  'Océanie':          '#1abc9c',
+};
+// "Amérique du Nord / Asie" | "Eurasie et Amérique du Nord" | "Amériques" | "Eurasie" -> liste de continents reels
+function _splitContinents(raw) {
+  if (!raw) return [];
+  if (raw === 'Amériques') return ['Amérique du Nord', 'Amérique du Sud'];
+  if (raw === 'Eurasie') return ['Europe', 'Asie'];
+  return raw.split(/\s*(?:\/|,|\bet\b)\s*/).map(s => s.trim()).filter(Boolean)
+    .map(s => s === 'Eurasie' ? null : s).flatMap(s => s === null ? ['Europe', 'Asie'] : [s]);
+}
+// Cache : mémorise pour chaque pays actif la version "allumée" du path (fill+stroke injectés en dur
+// dans l'attribut style="" de la balise). Pur remplacement de chaîne — pas de script à exécuter après
+// insertion via innerHTML (un <script> injecté par innerHTML ne se lance jamais dans un navigateur).
+let _wmapHighlightCache = null; // { iso: regex } construit une seule fois
+function _wmapBuildCache() {
+  _wmapHighlightCache = {};
+  Object.keys(window.WORLD_MAP_CONTINENTS).forEach(iso => {
+    // capture <path id="xx" .../>  ET  <g id="xx">...</g> (pays multi-morceaux type Angola, Argentine)
+    // Le "/" final de self-close est EXCLU du groupe 1 (sinon injection cassée : ".../ style=..." invalide) —
+    // bug reproduit et corrigé 2026-07-28 (regex greedy [^>]* avalait le "/" de "/>").
+    _wmapHighlightCache[iso] = new RegExp('(<(?:path|g) id="' + iso + '"[^>]*?)\\s*(/?)>', 'g');
+  });
+}
 function buildContinentMap(continent) {
-  const colors = {
-    'Amérique du Nord': '#e74c3c',
-    'Amérique du Sud':  '#e67e22',
-    'Europe':           '#3498db',
-    'Afrique':          '#f39c12',
-    'Asie':             '#e91e63',
-    'Antarctique':      '#00bcd4',
-  };
-  const dimColor = 'rgba(255,255,255,0.08)';
-  const activeColor = colors[continent] || '#fff';
+  const activeContinents = _splitContinents(continent);
+  const hasMap = typeof window.WORLD_MAP_SVG_INNER === 'string' && typeof window.WORLD_MAP_CONTINENTS === 'object';
+  const label = continent || 'Dans les mers du monde entier';
+  const primaryColor = CONTINENT_COLORS[activeContinents[0]] || '#5dade2';
 
-  // Formes simplifiées des continents (viewBox 0 0 200 110)
-  const shapes = {
-    'Amérique du Nord': 'M 18,8 L 44,8 L 52,18 L 56,28 L 52,42 L 44,50 L 34,54 L 26,48 L 18,36 L 14,24 Z',
-    'Amérique du Sud':  'M 34,58 L 46,56 L 52,66 L 54,80 L 50,96 L 40,104 L 30,100 L 26,86 L 28,72 Z',
-    'Europe':           'M 88,8 L 102,8 L 108,16 L 106,26 L 98,30 L 88,28 L 82,20 L 84,12 Z',
-    'Afrique':          'M 88,34 L 102,32 L 112,42 L 114,60 L 108,78 L 98,90 L 86,90 L 76,78 L 74,60 L 78,42 Z',
-    'Asie':             'M 110,8 L 148,8 L 162,20 L 168,36 L 158,52 L 142,56 L 124,50 L 112,36 L 108,20 Z',
-    'Antarctique':      'M 50,102 L 80,100 L 110,100 L 140,102 L 150,108 L 100,110 L 50,108 Z',
-  };
+  if (!hasMap) {
+    // Filet de secours si l'asset vendored ne charge pas : pas de carte, juste le libellé.
+    return `<div style="font-size:0.78rem;color:${primaryColor};font-weight:900;line-height:1.3">🌍 ${label}</div>`;
+  }
+  if (!_wmapHighlightCache) _wmapBuildCache();
 
-  const continents = Object.keys(shapes);
-  const pathsHtml = continents.map(c => {
-    const isActive = c === continent;
-    return `<path d="${shapes[c]}" fill="${isActive ? activeColor : dimColor}" stroke="rgba(255,255,255,0.15)" stroke-width="0.8" ${isActive ? `filter="url(#glow)"` : ''}/>`;
-  }).join('');
+  const onIds = Object.keys(window.WORLD_MAP_CONTINENTS).filter(iso => activeContinents.includes(window.WORLD_MAP_CONTINENTS[iso]));
+  const highlightStyle = `fill:${primaryColor};stroke:rgba(255,255,255,.6);stroke-width:1.4;filter:url(#wmap-glow)`;
+  let svgInner = window.WORLD_MAP_SVG_INNER;
+  onIds.forEach(iso => {
+    svgInner = svgInner.replace(_wmapHighlightCache[iso], `$1 style="${highlightStyle}"$2>`);
+  });
 
-  const label = continent || '';
   return `
     <div style="display:flex;align-items:center;gap:10px">
-      <svg viewBox="0 0 200 112" width="130" height="73" style="border-radius:8px;background:rgba(0,60,120,0.3);flex-shrink:0">
+      <svg class="wmap-svg" viewBox="${window.WORLD_MAP_VIEWBOX}" width="180" height="105" style="border-radius:8px;background:rgba(0,60,120,0.35);flex-shrink:0">
         <defs>
-          <filter id="glow"><feGaussianBlur stdDeviation="2.5" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <filter id="wmap-glow"><feGaussianBlur stdDeviation="2.5" result="coloredBlur"/><feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
         </defs>
-        ${pathsHtml}
+        <g fill="rgba(255,255,255,0.55)" stroke="rgba(255,255,255,0.7)" stroke-width="0.7">${svgInner}</g>
       </svg>
-      <div style="font-size:0.78rem;color:${activeColor};font-weight:900;line-height:1.3">${label}</div>
+      <div style="font-size:0.78rem;color:${primaryColor};font-weight:900;line-height:1.3">${label}</div>
     </div>
   `;
 }

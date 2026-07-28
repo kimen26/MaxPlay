@@ -11,6 +11,24 @@
 
 ## Tickets épics actifs (EP-xxx)
 
+### EP-112 [~] — 2026-07-29 — Montée de niveau par compétence : PILOTE mj-04 LIVRÉ
+GO PY 2026-07-28 (« je veux bien que ce truc qui monte le niveau plus vite soit codé/testé »).
+Livré : `Golden.levelOf` (max plancher étoiles / porte compétence ≥80 % premier coup sur 3 parties
+depuis la dernière ouverture, persisté `golden_openlvl_<id>`, JAMAIS de descente) · `tracker.js`
+champ `first` par session (rétro-compatible) · mj-04 migré gabarit (G.showEnd, piste golden,
+scorebar/levelbar supprimés) · sac adaptatif 6/2·4/4·2/6 + ajustements intra-partie silencieux ·
+figée mj-04 amendée datée · tests T1-T5+T9 verts (T6-T8 restent à écrire).
+**⚠ Périmètre tenu : mj-04 SEUL. Les 13 autres figées ne sont PAS défigées** — propagation
+(ajout d'ids à `COMPETENCE_PILOTS`) après validation du ressenti avec Max par PY.
+Écart spec assumé : stockage minime `golden_openlvl_<id>` (la garantie « jamais de descente »
+est impossible en recalcul pur — tracé dans la figée amendée).
+
+### T-C6b [x] — 2026-07-29 — Banque audio nombres/gabarits V1 LIVRÉE (100 MP3)
+Nombres 0-30+40/50/100/1000 (neutre + fête 1-10) · gabarits complets il-en-manque/il-en-faut/N-œufs
+(1-10) · 15 phonèmes (fix mj-50) · 10 noms dinos courts (fix mj-30, 70/70). API uniques :
+`say-nombres.js` + `MJKit.sayPhoneme`. Branché mj-46/49/50/51/52/30. **À faire écouter à PY**
+(régénération à l'unité facile si un rendu déplaît). Détail : `site/sounds/_BANQUE-SONS.md`.
+
 ### EP-112 [?] — 2026-07-28 — SPEC montée de niveau (défigeage `niveau = Stars+1`) — ATTEND GO PY
 Conception argumentée demandée explicitement par Papa Yann (« faut vraiment concevoir, imaginer,
 ça doit être défini, expliqué, la meilleure manière »). Lève l'**arbitrage B** du plan de remise

@@ -11,6 +11,45 @@
 
 ## Tickets épics actifs (EP-xxx)
 
+### EP-112 [?] — 2026-07-28 — SPEC montée de niveau (défigeage `niveau = Stars+1`) — ATTEND GO PY
+Conception argumentée demandée explicitement par Papa Yann (« faut vraiment concevoir, imaginer,
+ça doit être défini, expliqué, la meilleure manière »). Lève l'**arbitrage B** du plan de remise
+au propre. Spec : [`../docs/2026-07-28-spec-montee-niveau.md`](../docs/2026-07-28-spec-montee-niveau.md).
+**Aucun code écrit.**
+
+Propositions tranchées dans la spec :
+- **Formule** : `niveau = max(Stars.get(id)+1, niveau ouvert par compétence)` — l'étoile devient un
+  plancher acquis à vie, la compétence une 2e porte. **Jamais de descente.** Plafond `maxStars`=3.
+- **Signal** : taux de réponses **du premier coup** (déjà mesuré pour la couleur des billes) sur les
+  **3 dernières parties terminées**, seuil **≥ 80 %**. Écartés : nb d'essais (pénalise la maladresse
+  tactile), vitesse (mesure l'attention, pousse à se dépêcher — interdit par « pas de chrono »),
+  réponse finale correcte (trop généreux avec le réessai).
+- **Intra vs inter-parties** (question centrale de PY, « 2 bonnes réponses → on augmente ») :
+  le **niveau** ne bouge QU'ENTRE les parties (stabilité : piste de billes lisible, écran de fin
+  honnête) ; **pendant** la partie c'est le **dosage du sac de questions** qui s'ajuste (6/2 · 4/4 · 2/6).
+  Motif du refus de l'adaptation intra-partie du niveau : elle fabrique « quand je réussis ça devient
+  plus dur, quand je rate ça devient facile » = punition du succès, contraire à « zéro pénalité ».
+  Seuil **3** réussites et non 2 : à 2, le hasard réussit 1 fois sur 9-16 (recherche skill).
+- **« Niveau 2 moyennement maîtrisé »** (cas décrit par PY) : manche **allégée sous étiquette niveau 2**
+  (2 dures + 6 faciles), PAS de retour au niveau 1. Il regagne son étoile ainsi → elle verrouille son
+  niveau 2 comme plancher. Exactement ce que PY anticipait (« il aura sûrement 1 étoile quand même »).
+- **Visible** : règle asymétrique **« la montée se célèbre, la descente est invisible »**. Zéro mot
+  « niveau »/« difficulté » avant ou pendant. Zéro message quand ça baisse (sinon on détruit la valeur
+  de la victoire — modèle Thinkrolls).
+- **Risque n°1** : monter par compétence puis ne plus jamais décrocher d'étoile. 4 garde-fous, dont le
+  rééquilibrage auto du sac et le plancher étoiles (pire cas de la nouvelle règle = cas normal de l'ancienne).
+- **Test** : 9 scénarios Playwright sur mj-04 (T1 montée sans sans-faute · T9 non-régression enfant neuf).
+- **Point technique** : un SEUL point de modification — `starsOf()` dans `site/js/mj-golden.js` L45-50.
+  Donnée déjà présente (`tracker.js`, 20 sessions/jeu). Zéro stockage nouveau, zéro touche à `stars.js`.
+
+**Impact figées (LOI, défigeage requis)** : **14 fichiers** — mj-01, mj-04, mj-05, mj-09, mj-13a, mj-13c,
+mj-14, mj-15, mj-16, mj-18, mj-19, mj-23, mj-34, mj-51 (13 portent la MÊME ligne, 1 seul amendement
+répété ; mj-04 = pilote, 2 lignes ; mj-34 formulation propre). Plus `_PALIERS-DIFFICULTE.md`,
+`STANDARD-MJ.md`, bandeau `mj-golden.js` L9-11. Formulations de remplacement mot-à-mot rédigées au §7.
+**Ne change PAS** : étoile = sans-faute · jamais de perte d'étoile · jamais de descente · 4/6/8 questions · maxStars 3.
+
+→ **7 décisions attendues de PY (D1..D7, §8 de la spec)**, dont D6 le défigeage et D7 le pilote mj-04 seul.
+
 ### L-XXX — 2026-07-23 — Deux moteurs de vérité = même bug qui revient
 Bug cadenas parent (commit 88898a17) ignoré par le Mur avait pour cause racine deux
 copies du flag admin + seuil ★ (unlock.js ET mur.js). Fix ponctuel suffisait pas —

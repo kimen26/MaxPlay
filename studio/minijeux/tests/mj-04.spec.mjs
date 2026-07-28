@@ -81,4 +81,48 @@ export async function run({ page, ok }) {
   ok('T3 — 2 parties seulement → pas de montée (règle des 3)', lvl.t3 === 0, `lvl=${lvl.t3}`);
   ok('T4 — niveau ouvert + 3 parties ratées → JAMAIS de descente', lvl.t4 === 1, `lvl=${lvl.t4}`);
   ok('T5 — l’étoile reste un plancher', lvl.t5 === true);
+
+  // ── T6 : niveau 2 en difficulté → sac allégé (au plus 2 questions dures) ──
+  await page.evaluate(() => {
+    localStorage.setItem('golden_openlvl_mj-04', JSON.stringify({ lvl: 1, at: Date.now() }));
+    const data = { version: 1, games: {}, sessions: [] };
+    data.games['mj-04'] = {
+      plays: 3, history: [1, 2, 3].map(i => ({
+        date: new Date(Date.parse('2026-07-20T10:00:00Z') + i * 3600e3).toISOString(),
+        score: 0, maxScore: 80, correct: 4, first: 3, questions: 8, duration: 120,
+      })),
+    };
+    localStorage.setItem('maxplay_progress', JSON.stringify(data));
+    localStorage.removeItem('maxplay_resume_mj-04');
+  });
+  await page.reload({ waitUntil: 'networkidle' });
+  await closeIntro();
+  let st = await page.evaluate(() => window.__mjTest.state);
+  const nHard = st.qLevels.filter(l => l >= st.level).length;
+  ok('T6 — niveau 2 + <50% premier coup → sac allégé (≤2 dures sur 8)',
+     st.level === 2 && st.qLevels.length === 8 && nHard <= 2, `level=${st.level} hard=${nHard}`);
+
+  // ── T8 : la baisse est INVISIBLE — aucun texte niveau/difficulté à l'écran ──
+  const visible = await page.evaluate(() => document.body.innerText.toLowerCase());
+  ok('T8 — aucun mot "niveau/difficile/facile" affiché pendant la partie allégée',
+     !/niveau|difficult|facile/.test(visible), visible.slice(0, 120));
+
+  // ── T7 : 3 premiers coups justes d'affilée → les questions restantes durcissent ──
+  await page.evaluate(() => {
+    localStorage.setItem('golden_openlvl_mj-04', JSON.stringify({ lvl: 1, at: Date.now() }));
+    localStorage.removeItem('maxplay_progress');   // pas d'historique → dosage 4/4
+    localStorage.removeItem('maxplay_resume_mj-04');
+  });
+  await page.reload({ waitUntil: 'networkidle' });
+  await closeIntro();
+  for (let i = 0; i < 3; i++) {
+    await page.waitForSelector('.ch[data-correct="1"]:not(.ok):not(.ko)', { timeout: 6000 });
+    await page.click('.ch[data-correct="1"]:not(.ok):not(.ko)');
+    await page.waitForTimeout(1450);
+  }
+  st = await page.evaluate(() => window.__mjTest.state);
+  const restantes = st.qLevels.slice(st.questionCount);
+  ok('T7 — 3 premiers coups justes → toutes les questions restantes au niveau courant',
+     st.level === 2 && restantes.length > 0 && restantes.every(l => l === st.level),
+     `level=${st.level} restantes=${JSON.stringify(restantes)}`);
 }

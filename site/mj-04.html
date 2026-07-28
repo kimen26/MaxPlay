@@ -351,6 +351,13 @@
       G.showEnd({ replayUrl: 'mj-04.html' });
     }
 
+    // ── Harnais Playwright (EP-112 T6-T8 : lecture du sac, jamais du gameplay) ──
+    window.__mjTest = {
+      get state() {
+        return { level, questionCount, qLevels: qLevels.slice(), streak, errStreak };
+      },
+    };
+
     init();
     });
   </script>

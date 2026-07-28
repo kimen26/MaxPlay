@@ -17,7 +17,7 @@ Livré : `Golden.levelOf` (max plancher étoiles / porte compétence ≥80 % pre
 depuis la dernière ouverture, persisté `golden_openlvl_<id>`, JAMAIS de descente) · `tracker.js`
 champ `first` par session (rétro-compatible) · mj-04 migré gabarit (G.showEnd, piste golden,
 scorebar/levelbar supprimés) · sac adaptatif 6/2·4/4·2/6 + ajustements intra-partie silencieux ·
-figée mj-04 amendée datée · tests T1-T5+T9 verts (T6-T8 restent à écrire).
+figée mj-04 amendée datée · **tests T1-T9 complets et verts** (T6-T8 ajoutés 2026-07-29 01:5x via hook __mjTest.state).
 **⚠ Périmètre tenu : mj-04 SEUL. Les 13 autres figées ne sont PAS défigées** — propagation
 (ajout d'ids à `COMPETENCE_PILOTS`) après validation du ressenti avec Max par PY.
 Écart spec assumé : stockage minime `golden_openlvl_<id>` (la garantie « jamais de descente »

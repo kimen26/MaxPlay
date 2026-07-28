@@ -34,6 +34,17 @@
       transition:box-shadow .4s, transform .6s;
     }
     .barquette.pleine { box-shadow:0 0 24px rgba(255,224,102,.55), 0 8px 20px rgba(0,0,0,.5); border-color:var(--gold,#ffe066); }
+    /* Tête de bébé dino qui pointe au-dessus d'une barquette pleine (substitution
+       d'asset PY 2026-07-28 : les œufs existent déjà, on les fait éclore). */
+    .b-dino {
+      position:absolute; top:-38px; left:50%; transform:translateX(-50%) scale(0);
+      width:56px; height:56px; border-radius:50%; object-fit:cover; object-position:50% 35%;
+      background:radial-gradient(circle at 35% 30%, #fff5da, #e6c282);
+      box-shadow:0 4px 10px rgba(0,0,0,.4), 0 0 0 3px rgba(255,255,255,.7);
+      pointer-events:none; z-index:5;
+    }
+    .barquette.pleine .b-dino { animation:dinoPop .4s cubic-bezier(.34,1.56,.64,1) .15s both; }
+    @keyframes dinoPop { from{transform:translateX(-50%) scale(0);} to{transform:translateX(-50%) scale(1);} }
     .barquette .b-dix {
       position:absolute; top:-13px; right:-9px; min-width:34px; height:30px; padding:0 8px;
       border-radius:999px; background:var(--gold,#ffe066); color:#4a3005; border:2px solid #fff;
@@ -96,6 +107,8 @@
   <script src="js/mj-dice.js"></script>
   <script src="js/mj-kit.js"></script>
   <script src="js/mj-compte.js"></script>
+  <script src="js/dinos-assets.js"></script>
+  <!-- manifeste têtes de bébés dinos (éclosion des barquettes pleines, PY 2026-07-28) -->
   <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
   <script src="js/mj-shell.js"></script>
   <script>
@@ -138,6 +151,16 @@
     const rand = MJDice.randInt;
     function sfx(src, vol) { try { const a = new Audio(src); a.volume = vol || 0.5; a.play().catch(() => {}); } catch (e) {} }
 
+    // Têtes de bébés dinos (éclosion des barquettes pleines) — clé = nom latin
+    // capitalisé (norme dino), défensif si le manifeste ou l'asset manque.
+    const DINO_TETES = Object.keys(window.DINO_ASSETS || {})
+      .map(k => window.DINO_ASSETS[k] && window.DINO_ASSETS[k].tete)
+      .filter(Boolean);
+    function randomDinoTete() {
+      if (!DINO_TETES.length) return null;
+      return DINO_TETES[rand(0, DINO_TETES.length - 1)];
+    }
+
     let qCount = 0, correctAnswer = 0, roundLock = false, tagged = 0;
     let curSub = 'manque', soundsOn = true, testMode = false, forcedLevel = null, forcedSub = null;
     function level() { return forcedLevel !== null ? forcedLevel : G.level; }
@@ -145,9 +168,14 @@
     // ── Rendu d'une barquette 5×2 avec f œufs dedans ──
     function barquetteHtml(filled, cellPx) {
       const b = document.createElement('div');
-      b.className = 'barquette' + (filled >= 10 ? ' pleine' : '');
+      const isFull = filled >= 10;
+      b.className = 'barquette' + (isFull ? ' pleine' : '');
       b.style.setProperty('--cell', cellPx + 'px');
       b.innerHTML = '<span class="b-dix">10</span>';
+      if (isFull) {
+        const tete = randomDinoTete();
+        if (tete) b.innerHTML += `<img class="b-dino" src="${tete}" alt="">`;
+      }
       for (let r = 0; r < 2; r++) {
         const row = document.createElement('div');
         row.className = 'b-rangee';
@@ -286,7 +314,12 @@
             h.querySelector('.mjk-pastille') && h.querySelector('.mjk-pastille').remove();
             h.innerHTML = '<div class="mjk-oeuf"></div>';
             if (soundsOn) try { sndCount(); } catch (e) {}
-            if (i === holes.length - 1) barquettesEl.querySelector('.barquette').classList.add('pleine');
+            if (i === holes.length - 1) {
+              const b = barquettesEl.querySelector('.barquette');
+              b.classList.add('pleine');
+              const tete = randomDinoTete();
+              if (tete && !b.querySelector('.b-dino')) b.innerHTML += `<img class="b-dino" src="${tete}" alt="">`;
+            }
           }, testMode ? 0 : 350 + i * 320);
         });
         sentence = 'Il en manquait ' + correctAnswer + ' ! Et 10, la boîte est pleine !';

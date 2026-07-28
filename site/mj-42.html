@@ -71,6 +71,11 @@
     .pawn { pointer-events:none; }
     .pawn-max circle.body { fill:#ff5b7a; stroke:#fff; stroke-width:3; }
     .pawn-ai circle.body { fill:#5bbf6a; stroke:#fff; stroke-width:3; }
+    /* Tête de dino (re-skin) : l'anneau garde la couleur camp, mais ne remplit
+       plus le disque (fill:none posé inline) — sinon il cacherait l'image. */
+    .pawn-max circle.body[fill="none"] { stroke:#ff5b7a; }
+    .pawn-ai circle.body[fill="none"] { stroke:#5bbf6a; }
+    .pawn image { filter:drop-shadow(0 1px 2px rgba(0,0,0,0.5)); }
     .pawn.selected circle.body { filter:drop-shadow(0 0 8px #ffe066); }
 
     .waterdot {
@@ -145,6 +150,8 @@
 </div>
   <script src="js/bus-svg.js"></script>
   <script src="js/data.js"></script>
+  <script src="js/dinos-assets.js"></script>
+  <!-- manifeste têtes de dinos (pions Shisima re-skin, PY 2026-07-28) -->
   <!-- LE GABARIT : charge tout le cadre standard (thème, panneau ?, tracking, cloud) -->
   <script src="js/mj-shell.js"></script>
   <script>
@@ -201,6 +208,25 @@
     ];
     let paletteIdx = 0; // index dans PALIERS = étoile en cours
     const G = shell.G;
+
+    // Pions → têtes de dino (re-skin PY 2026-07-28, zéro impact règles) :
+    // 2 familles bien contrastées visuellement (carnivore à dents vs herbivore
+    // à cornes), tirées une fois par partie. Défensif : si le manifeste ou les
+    // assets manquent, on retombe sur le rond coloré d'origine (jamais de 404).
+    const DINO_FAMILLES = [
+      ['Tyrannosaurus', 'Allosaurus', 'Carnotaurus', 'Giganotosaurus', 'Albertosaurus'],
+      ['Triceratops', 'Ankylosaurus', 'Stegosaurus', 'Pentaceratops', 'Centrosaurus'],
+    ];
+    function pickPawnTete(pool) {
+      const assets = window.DINO_ASSETS || {};
+      const valid = pool.filter(k => assets[k] && assets[k].tete);
+      if (!valid.length) return null;
+      return assets[valid[Math.floor(Math.random() * valid.length)]].tete;
+    }
+    const PAWN_TETE = {
+      max: pickPawnTete(DINO_FAMILLES[0]),
+      ai: pickPawnTete(DINO_FAMILLES[1]),
+    };
 
     function initGame() {
       board = new Array(9).fill(null);
@@ -304,28 +330,60 @@
       return l;
     }
 
+    let _pawnClipN = 0;
     function pawnSVG(p, who, isSelected) {
       const g = document.createElementNS('http://www.w3.org/2000/svg','g');
       g.classList.add('pawn', who === 'max' ? 'pawn-max' : 'pawn-ai');
       if (isSelected) g.classList.add('selected');
-      const body = document.createElementNS('http://www.w3.org/2000/svg','circle');
-      body.setAttribute('cx', p.x); body.setAttribute('cy', p.y); body.setAttribute('r', 15);
-      body.classList.add('body');
-      g.appendChild(body);
-      // yeux
-      [-5, 5].forEach(dx => {
-        const eye = document.createElementNS('http://www.w3.org/2000/svg','circle');
-        eye.setAttribute('cx', p.x + dx); eye.setAttribute('cy', p.y - 3); eye.setAttribute('r', 3);
-        eye.setAttribute('fill', '#1a1a2e');
-        g.appendChild(eye);
-      });
-      if (who === 'ai') {
-        // petit sourire caméléon rigolo
-        const mouth = document.createElementNS('http://www.w3.org/2000/svg','path');
-        mouth.setAttribute('d', `M ${p.x-5} ${p.y+5} Q ${p.x} ${p.y+9} ${p.x+5} ${p.y+5}`);
-        mouth.setAttribute('stroke', '#1a1a2e'); mouth.setAttribute('stroke-width', '2');
-        mouth.setAttribute('fill', 'none');
-        g.appendChild(mouth);
+      const tete = PAWN_TETE[who];
+
+      if (tete) {
+        // Tête de dino ronde (clip), avec le même anneau de couleur que l'ancien
+        // pion (rouge Max / vert IA) pour garder la lisibilité "qui est qui".
+        const cid = 'pawnclip' + (++_pawnClipN);
+        const defs = document.createElementNS('http://www.w3.org/2000/svg','defs');
+        const clip = document.createElementNS('http://www.w3.org/2000/svg','clipPath');
+        clip.setAttribute('id', cid);
+        const clipCircle = document.createElementNS('http://www.w3.org/2000/svg','circle');
+        clipCircle.setAttribute('cx', p.x); clipCircle.setAttribute('cy', p.y); clipCircle.setAttribute('r', 15);
+        clip.appendChild(clipCircle);
+        defs.appendChild(clip);
+        g.appendChild(defs);
+
+        const ring = document.createElementNS('http://www.w3.org/2000/svg','circle');
+        ring.setAttribute('cx', p.x); ring.setAttribute('cy', p.y); ring.setAttribute('r', 15);
+        ring.classList.add('body');
+        ring.setAttribute('fill', 'none');
+        ring.setAttribute('stroke-width', '3');
+        g.appendChild(ring);
+
+        const img = document.createElementNS('http://www.w3.org/2000/svg','image');
+        img.setAttributeNS('http://www.w3.org/1999/xlink', 'href', tete);
+        img.setAttribute('href', tete);
+        img.setAttribute('x', p.x - 15); img.setAttribute('y', p.y - 15);
+        img.setAttribute('width', 30); img.setAttribute('height', 30);
+        img.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+        img.setAttribute('clip-path', `url(#${cid})`);
+        g.appendChild(img);
+      } else {
+        // Fallback défensif (asset manquant) : rond coloré + yeux d'origine.
+        const body = document.createElementNS('http://www.w3.org/2000/svg','circle');
+        body.setAttribute('cx', p.x); body.setAttribute('cy', p.y); body.setAttribute('r', 15);
+        body.classList.add('body');
+        g.appendChild(body);
+        [-5, 5].forEach(dx => {
+          const eye = document.createElementNS('http://www.w3.org/2000/svg','circle');
+          eye.setAttribute('cx', p.x + dx); eye.setAttribute('cy', p.y - 3); eye.setAttribute('r', 3);
+          eye.setAttribute('fill', '#1a1a2e');
+          g.appendChild(eye);
+        });
+        if (who === 'ai') {
+          const mouth = document.createElementNS('http://www.w3.org/2000/svg','path');
+          mouth.setAttribute('d', `M ${p.x-5} ${p.y+5} Q ${p.x} ${p.y+9} ${p.x+5} ${p.y+5}`);
+          mouth.setAttribute('stroke', '#1a1a2e'); mouth.setAttribute('stroke-width', '2');
+          mouth.setAttribute('fill', 'none');
+          g.appendChild(mouth);
+        }
       }
       return g;
     }

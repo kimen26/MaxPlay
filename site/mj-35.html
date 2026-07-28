@@ -66,9 +66,16 @@
       background:rgba(255,255,255,0.1); border-radius:8px; padding:1px 6px;
     }
 
+    /* Graines → petits œufs de dino (substitution visuelle PY 2026-07-28,
+       zéro impact règles). Forme ovoïde au lieu du rond plat, teinte crème
+       fixe (le SEED_COLORS sert seulement à distinguer visuellement l'ORDRE
+       de semis, pas une "vraie" couleur d'œuf — on garde une pointe de teinte
+       en anneau pour ne rien perdre de la lisibilité existante). */
     .seed {
-      width:clamp(9px,2.4vmin,16px); height:clamp(9px,2.4vmin,16px); border-radius:50%;
-      box-shadow:inset -2px -2px 3px rgba(0,0,0,0.35), 0 1px 2px rgba(0,0,0,0.3);
+      width:clamp(8px,2.1vmin,14px); height:clamp(10px,2.7vmin,17px);
+      border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+      background:linear-gradient(160deg, #fff5da 0%, #f3d9a4 65%, #e6c282 100%);
+      box-shadow:inset -2px -2px 3px rgba(120,70,20,0.3), 0 1px 2px rgba(0,0,0,0.3), inset 0 0 0 2px var(--seed-ring, transparent);
     }
 
     .granary-wrap { display:flex; flex-direction:column; align-items:center; gap:3px; margin-left:2px; flex-shrink:0; min-width:0; }
@@ -140,7 +147,7 @@
 
   <div id="main">
     <div id="count-display">0</div>
-    <div id="instruction">Touche une calebasse !</div>
+    <div id="instruction">Touche un trou !</div>
     <div id="level-label"></div>
 
     <div id="board">
@@ -148,7 +155,7 @@
       <!-- 6 trous générés en JS -->
       <div class="granary-wrap">
         <div id="granary"></div>
-        <div class="pit-label">Grenier <span id="granary-count">0</span></div>
+        <div class="pit-label">Nid <span id="granary-count">0</span></div>
       </div>
       <div id="pile-fx"></div>
     </div>
@@ -169,15 +176,15 @@
       golden: true,
       consigne: false, // consigne locale gérée par #instruction (pas la barre standard)
       regle: {
-        texte: 'Trouve le trou qui remplit le grenier PILE-POIL !',
-        picto: '🌱👉🏺',
+        texte: 'Trouve le trou qui remplit le nid PILE-POIL !',
+        picto: '🥚👉🪺',
         etapes: [
-          { t: 'Je regarde les graines dans les trous 👀',
-            d: 'Chaque trou a des graines dedans. Je compte avec mes doigts si je veux !' },
+          { t: 'Je regarde les œufs dans les trous 👀',
+            d: 'Chaque trou a des œufs de dino dedans. Je compte avec mes doigts si je veux !' },
           { t: 'Je cherche LE bon trou 🤔',
-            d: 'Un seul trou a JUSTE assez de graines pour arriver PILE dans le grenier, pas avant, pas après.' },
-          { t: 'Je tape le trou, les graines sautent 👉🌱',
-            d: 'Elles sautent une par une vers le grenier. Si la dernière tombe pile dedans : « PILE ! » ✨' },
+            d: 'Un seul trou a JUSTE assez d’œufs pour arriver PILE dans le nid, pas avant, pas après.' },
+          { t: 'Je tape le trou, les œufs sautent 👉🥚',
+            d: 'Ils sautent un par un vers le nid. Si le dernier tombe pile dedans : « PILE ! » ✨' },
           { t: 'Je me trompe ? Pas grave, je recompte 💡',
             d: 'Rien n’est perdu, le plateau se réarrange et je réessaie. 3 PILE réussis = la partie est gagnée !' }
         ]
@@ -263,7 +270,7 @@
       sowing = false;
       renderBoard();
       updateGranary();
-      document.getElementById('instruction').textContent = 'Trouve le trou qui remplit PILE le grenier !';
+      document.getElementById('instruction').textContent = 'Trouve le trou qui remplit PILE le nid !';
     }
 
     // ── Rendu ─────────────────────────────────────────────────────────────────
@@ -297,7 +304,7 @@
       for (let s = 0; s < n; s++) {
         const seed = document.createElement('div');
         seed.className = 'seed';
-        seed.style.background = SEED_COLORS[s % SEED_COLORS.length];
+        seed.style.setProperty('--seed-ring', SEED_COLORS[s % SEED_COLORS.length]);
         pitEl.appendChild(seed);
       }
       pitEl.classList.toggle('empty-hint', n === 0);
@@ -309,7 +316,7 @@
       for (let s = 0; s < Math.min(granary, 40); s++) {
         const seed = document.createElement('div');
         seed.className = 'seed';
-        seed.style.background = SEED_COLORS[s % SEED_COLORS.length];
+        seed.style.setProperty('--seed-ring', SEED_COLORS[s % SEED_COLORS.length]);
         g.appendChild(seed);
       }
       document.getElementById('granary-count').textContent = granary;

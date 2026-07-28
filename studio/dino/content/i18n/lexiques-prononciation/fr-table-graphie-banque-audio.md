@@ -68,15 +68,15 @@
 | shonisaurus | Shonisaure | **Cho-ni-saure** | sh→ch |
 | patagotitan | Titanosaure | **Pa-ta-go-ti-tan** (si le nom latin est dit) / Titanosaure (nom fiche, OK tel quel) | 🟡 doute mineur, taxon peu établi à l'oral |
 | centrosaurus | Centrosaure | Centrosaure | OK tel quel |
-| ichthyosaurus | Ichtyosaure | **Ik-ti-o-saure** (nom FR déjà francisé « Ichtyosaure » = OK tel quel ; ⚠️ si le LATIN `Ichthyosaurus` est dit, appliquer th→t + y→i) | voir §5 fr.md — MP3 produit dit « Ich-thyo-saure », à risque |
+| ichthyosaurus | Ichtyosaure | **Ik-ti-o-saure** (nom FR déjà francisé « Ichtyosaure » = OK tel quel ; si le LATIN `Ichthyosaurus` est dit, appliquer th→t + y→i) | ✅ validé Papa Yann 2026-07-28, `ichthyosaurus-nom.mp3` régénéré |
 | mammuthus | Mammouth | Mammouth | OK tel quel (mot français courant) |
 | smilodon | Smilodon | Smilodon | OK tel quel |
 | megatherium | Mégathérium | **Mé-ga-té-rium** | th→t |
 | paraceratherium | Paracérathérium | **Pa-ra-cé-ra-té-rium** | th→t |
-| glyptodon | Glyptodon | **Gli-pto-don** | y→i ; ⚠️ MP3 produit dit « Glyp-to-don » (non conforme, voir §5 fr.md) |
-| aenocyon | Loup terrible | **É-no-si-on** (si le LATIN est dit — le nom d'USAGE reste « Loup terrible ») | ae→é, y→i ; ⚠️ MP3 produit dit « Ae-no-cyon » (non conforme, voir §5 fr.md) |
-| coelodonta | Rhino laineux | **Sé-lo-don-ta** (si le LATIN est dit — le nom d'USAGE reste « Rhino laineux ») | oe→é ; ⚠️ MP3 produit dit « Coe-lo-don-ta » (non conforme, voir §5 fr.md) |
-| titanis | Titanis | **Ti-ta-niss** | -is final, S à garantir entendu ; 🟡 doute, MP3 produit dit « Ti-ta-nis » sans le S appuyé |
+| glyptodon | Glyptodon | **Gli-pto-don** | y→i ; ✅ validé Papa Yann 2026-07-28, `glyptodon-nom.mp3` régénéré |
+| aenocyon | Loup terrible | **É-no-si-on** (si le LATIN est dit — le nom d'USAGE reste « Loup terrible ») | ae→é, y→i ; ✅ validé Papa Yann 2026-07-28, `aenocyon-nom.mp3` régénéré |
+| coelodonta | Rhino laineux | **Sé-lo-don-ta** (si le LATIN est dit — le nom d'USAGE reste « Rhino laineux ») | oe→é ; ✅ validé Papa Yann 2026-07-28, `coelodonta-nom.mp3` régénéré |
+| titanis | Titanis | **Ti-ta-niss** | -is final, S à garantir entendu ; ✅ validé Papa Yann 2026-07-28, `titanis-nom.mp3`/`titanis-funfact.mp3` régénérés |
 
 ---
 

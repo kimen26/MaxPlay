@@ -9,8 +9,12 @@
 //  - Avatar du profil = hôte du haut (bulle guide) ; Tritri n'est plus hôte.
 //  - T-Rex = dernière rangée dorée ; le portail encyclo vit dans son repaire
 //    (plus de bannière doublon en bas du Mur).
-//  - Découverte (délaissé · nouveau · mise en avant, rotation par date) +
-//    Préférés (pins.js). Vignettes CSS/SVG animées (zéro image générée).
+//  - Découverte (délaissé · nouveau · mise en avant, rotation par date) :
+//    SEUL mécanisme de mise en avant depuis 2026-07-28 (l'ancien bloc
+//    Préférés/pins.js faisait doublon — décision PY : pousser vers la
+//    découverte, pas la répétition. Le ❤️ favori reste dans le panneau
+//    règle d'un jeu, mais ne s'affiche plus en rangée concurrente ici).
+//    Vignettes CSS/SVG animées (zéro image générée).
 //  - Repaires : séquence 2★ (ORDRE local au repaire — diffère des catégories
 //    de catalog.js, donc pas Unlock.isUnlocked ici). Le flag admin et le
 //    seuil ★ restent lus depuis unlock.js (Unlock.isAdminUnlockAll/UNLOCK_STARS)
@@ -119,7 +123,7 @@
   function de6() { return '<div class="vig-de de2"><i class="d1"></i><i class="d2"></i><i class="d6"></i><i class="d7"></i><i class="d4"></i><i class="d5"></i></div>'; }
   var VIGNETTES = {
     'mj-24': '<div class="vig vig-ombre"><img src="' + OMBRE + 'Triceratops_ombre.png" alt=""></div>',
-    'mj-28': '<div class="vig vig-lampe"><img src="' + OMBRE + 'Gallimimus_ombre.png" alt=""></div>',
+    'mj-28': '<div class="vig vig-lampe"><img class="vl-dino" src="' + OMBRE + 'Gallimimus_ombre.png" alt=""></div>',
     'mj-31': '<div class="vig vig-temps"><span class="v-aiguille"></span><span class="v-aiguille a2"></span></div>',
     'mj-30': '<div class="vig vig-tailles"><img src="' + OMBRE + 'Velociraptor_ombre.png" alt=""><img src="' + OMBRE + 'Triceratops_ombre.png" alt=""><img src="' + OMBRE + 'Diplodocus_ombre.png" alt=""></div>',
     'mj-32': '<div class="vig"><img class="v-img" src="img/dinos/paleoart/Triceratops_coloriage.webp" alt=""></div>',
@@ -128,9 +132,9 @@
     'mj-48': '<div class="vig vig-bus vig-monte" data-bus="162"></div>',
     'mj-49': '<div class="vig vig-barq"><span class="dix">10</span></div>',
     'mj-50': '<div class="vig vig-son-lettre"><span class="vig-lettre">m</span><i class="w1"></i><i class="w2"></i></div>',
-    'mj-51': '<div class="vig vig-lettres"><span class="vig-lettre">a</span><span class="vig-lettre script">a</span></div>',
-    'mj-52': '<div class="vig vig-boitemot"><span class="s1">pa</span><span class="sep"></span><span class="s2">pa</span></div>',
-    'mj-53': '<div class="vig vig-mot"><span>lis !</span></div>',
+    'mj-51': '<div class="vig vig-tri"><div class="tri-case c1"><span class="vig-lettre">a</span></div><div class="tri-case c2"><span class="vig-lettre script">a</span></div><span class="tri-fleche">→</span></div>',
+    'mj-52': '<div class="vig vig-boitemot"><div class="boite"><span class="s1">pa</span><span class="sep"></span><span class="s2">pa</span></div></div>',
+    'mj-53': '<div class="vig vig-lisfais"><span class="vig-lettre lf-mot">pa</span><span class="lf-fleche">→</span><div class="mjk-oeuf-mini"></div></div>',
     'mj-23': '<div class="vig vig-mot"><span>loup</span></div>',
     'mj-06': '<div class="vig vig-phrase"><i></i><i></i><i></i></div>',
     'mj-15': '<div class="vig vig-intrus"><i></i><i></i><i class="autre"></i><i></i></div>',
@@ -325,21 +329,6 @@
     var row = $('decouverte-row');
     if (!row) return;
     row.innerHTML = decouverte().map(function (p) { return miniCardHtml(p.g, p.label, p.cls); }).join('');
-  }
-
-  function renderPreferes() {
-    var wrap = $('preferes-wrap'), row = $('preferes-row');
-    if (!wrap || !row) return;
-    var ids = [];
-    if (global.Pins) {
-      try { ids = Pins.rowIds().filter(isVisible).slice(0, 3); } catch (e) { ids = []; }
-    }
-    if (!ids.length) { wrap.style.display = 'none'; return; }
-    wrap.style.display = '';
-    row.innerHTML = ids.map(function (id) {
-      var g = entry(id);
-      return g ? miniCardHtml(g, '', '') : '';
-    }).join('');
   }
 
   function copainStars(c) {
@@ -560,7 +549,6 @@
   // ── Init ───────────────────────────────────────────────────────────
   function refresh() {
     renderDecouverte();
-    renderPreferes();
     renderCopains();
     renderPortails();
     if (current) renderRepaire(current);
@@ -585,7 +573,6 @@
     injectParentStyles();
     renderCopains();
     renderDecouverte();
-    renderPreferes();
     renderPortails();
     fillBusVignettes();
     loadNidUi();

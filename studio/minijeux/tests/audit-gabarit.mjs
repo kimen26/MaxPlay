@@ -81,13 +81,23 @@ const GREEN = '\x1b[32m', RED = '\x1b[31m', YEL = '\x1b[33m', DIM = '\x1b[2m', R
 // Fichiers de démo/référence du package Design System — pas de vrais jeux, exclus de l'audit batterie.
 const NOT_A_GAME = new Set(['mj-gold-a', 'mj-gold-b']);
 
-// Source de vérité du menu : tout id mj-* présent dans js/catalog.js. Un jeu absent = retiré du menu.
+// Source de vérité du menu : tout id mj-* présent dans js/catalog.js, SAUF
+// retire:true (2026-07-28, C0 tri qualité) — un jeu retiré/fusionné/déplacé
+// vers l'écran parental reste dans le fichier (trace, cf. entête catalog.js)
+// mais ne doit plus compter comme "au menu" pour l'audit gabarit non plus.
+// Une entrée = 1 ligne (convention constante) → on cherche retire:true sur la
+// MÊME ligne que l'id, pas juste n'importe où dans le fichier.
 function catalogIds() {
   const cat = resolve(SITE, 'js', 'catalog.js');
   if (!existsSync(cat)) return null; // pas de catalog → on ne peut pas filtrer, audite tout
   const src = readFileSync(cat, 'utf8');
   const ids = new Set();
-  for (const m of src.matchAll(/id:\s*'(mj-[^']+)'/g)) ids.add(m[1]);
+  for (const line of src.split('\n')) {
+    const m = line.match(/id:\s*'(mj-[^']+)'/);
+    if (!m) continue;
+    if (/retire\s*:\s*true/.test(line)) continue;
+    ids.add(m[1]);
+  }
   return ids;
 }
 

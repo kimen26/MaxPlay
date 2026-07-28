@@ -177,7 +177,7 @@
     // ── Profil : compteur ⭐ global (le niveau vit dans suivi.html) ──
     function paintProfilMeta() {
       let t = 0;
-      (window.MAXPLAY_CATALOG || []).forEach(e => { if (e.maxStars && window.Stars) t += Stars.get(e.id); });
+      (window.catalogVisible ? window.catalogVisible() : (window.MAXPLAY_CATALOG || [])).forEach(e => { if (e.maxStars && window.Stars) t += Stars.get(e.id); });
       document.getElementById('stars-total').textContent = '⭐ ' + t;
     }
 

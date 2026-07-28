@@ -189,7 +189,9 @@
   // catégorie → 1er jeu de la catégorie suivante (wrap global en fin de liste).
   // Défensif : retourne {next:null, prev:null} si catalog absent/jeu absent.
   function chain(id) {
-    const cat = global.MAXPLAY_CATALOG;
+    // catalogVisible() = source unique de filtrage retire:true (catalog.js) —
+    // ne jamais chaîner vers un jeu retiré du menu.
+    const cat = global.catalogVisible ? global.catalogVisible() : global.MAXPLAY_CATALOG;
     if (!Array.isArray(cat) || !cat.length) return { next: null, prev: null };
     const eligible = cat.filter(c => c.type === 'html' && c.status === 'live');
     const i = eligible.findIndex(c => c.id === id);

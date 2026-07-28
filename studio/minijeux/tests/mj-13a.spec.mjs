@@ -15,8 +15,7 @@ export async function run({ page, ok }) {
   await page.waitForTimeout(250);
   ok('panneau refermé', (await page.locator('#ri-panneau.on').count()) === 0);
 
-  ok('bandeau Niveau présent', (await page.locator('#levelbar').count()) === 1);
-  ok('démarre au Niveau 1', (((await page.locator('#levelbar').textContent()) || '').includes('Niveau 1')));
+  ok('piste golden (pips) présente', (await page.locator('#pips .pip').count()) === 8);
 
   await page.waitForSelector('.fiche', { timeout: 5000 });
   const fiches = await page.locator('.fiche').count();

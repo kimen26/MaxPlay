@@ -30,6 +30,16 @@ export async function run({ page, ok }) {
     return svg ? getComputedStyle(svg).filter.includes('grayscale') : false;
   }));
 
+  // ─── EP-068 : bouton règles (i) — composant partagé RegleInfo ───
+  // Testé AVANT le chemin gagnant : l'écran de fin de palier remplace #app (donc le header).
+  ok('Bouton règles ❓ présent dans le header', await page.locator('#btn-regle').count() === 1);
+  await page.click('#btn-regle');
+  ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);
+  const regleTexte = (await page.locator('.ri-text').textContent() || '').trim();
+  ok('Texte de règle correspond', regleTexte === 'Fais glisser les bus pour libérer le bus jaune !', regleTexte);
+  await page.click('#ri-close'); // v3 : fermeture explicite ✕ (panneau bottom-sheet)
+  ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
+
   // Chemin gagnant scripté niveau 1 (tier ★, 3 coups BFS) :
   // A (idx1, vertical) descend de 1, puis Max (idx0) avance de 2 cases → sort.
   await page.evaluate(() => window.__mjTest.move(1, 1));
@@ -81,15 +91,6 @@ export async function run({ page, ok }) {
   // Zéro pénalité : un mouvement bloqué (bounce) ne doit jamais ajouter de classe "lost"/"error"
   ok('Aucun état punitif visible dans le DOM', await page.evaluate(() =>
     !document.querySelector('.lost, .error, .game-over, .perdu')));
-
-  // ─── EP-068 : bouton règles (i) — composant partagé RegleInfo ───
-  ok('Bouton règles ❓ présent dans le header', await page.locator('#btn-regle').count() === 1);
-  await page.click('#btn-regle');
-  ok('Modal règle ouverte au tap', await page.locator('#ri-overlay.show').count() === 1);
-  const regleTexte = (await page.locator('.ri-text').textContent() || '').trim();
-  ok('Texte de règle correspond', regleTexte === 'Fais glisser les bus pour libérer le bus jaune !', regleTexte);
-  await page.click('#ri-close'); // v3 : fermeture explicite ✕ (panneau bottom-sheet)
-  ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
 
   // 🔒 figée 2026-07-20 : avancement persistant — après le palier ★ gagné (étoile 1),
   // un rechargement reprend au palier ★★, il ne repart JAMAIS à zéro.

@@ -13,7 +13,6 @@
     #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
 
     .toolbar { display:flex; align-items:center; justify-content:space-between; gap:10px; padding:6px 14px; flex-shrink:0; }
-    .stars { font-size:1.1rem; letter-spacing:2px; color:var(--gold); }
     .lvl-label { font-size:0.85rem; color:var(--ink-3); }
     .btn-restart {
       background:rgba(255,255,255,0.12); border:2px solid var(--line);
@@ -139,9 +138,9 @@
 
   <div class="toolbar">
     <div class="lvl-label" id="lvl-label">Niveau 1</div>
-    <div class="stars" id="stars-label">★</div>
     <button class="btn-restart" id="btn-restart" onclick="restartLevel()">&#8630; Recommencer</button>
   </div>
+  <div class="pips" id="pips"></div>
 
   <div class="board-wrap">
     <div id="board"></div>
@@ -160,22 +159,13 @@
   </div>
 </div>
 
-<div class="overlay" id="fin-overlay">
-  <div class="ov-box">
-    <div class="ov-emoji">🐑</div>
-    <div class="ov-title">Tu as fini tous les niveaux !</div>
-    <div class="ov-text">Quel champion du saute-mouton !</div>
-    <button class="ov-btn" onclick="resetGame()">&#128257; Rejouer</button>
-  </div>
-</div>
-
 <script src="js/mj-shell.js"></script>
 <script>
 MJ.ready(function () {
 
-  MJ.init({
+  const shell = MJ.init({
     id: 'mj-38', emoji: '🐑', titre: 'Saute-mouton !',
-    golden: false,
+    golden: true,
     consigne: false, // msg-zone gère les messages contextuels (Combo/Coincé)
     regle: {
       texte: 'Saute par-dessus les pions dodo pour les faire disparaître !',
@@ -212,6 +202,11 @@ for (let dr=-1; dr<=1; dr++) for (let dc=-1; dc<=1; dc++) if (dr||dc) DIRS.push(
 function inb(r,c){ return r>=0 && r<N && c>=0 && c<N; }
 function pk(r,c){ return r+','+c; }
 
+const G = shell.G;
+// 🔒 9 niveaux fixes (indépendant du barème questions Golden 4/6/8)
+G.totalQ = LEVELS.length;
+G.buildPips();
+
 // ── ÉTAT ──────────────────────────────────────────────────────────
 let levelIdx = 0;
 let maxPos = null;
@@ -228,7 +223,6 @@ function loadLevel(idx) {
   animating = false;
   comboCount = 0;
   document.getElementById('lvl-label').textContent = `Niveau ${idx+1} / ${LEVELS.length}`;
-  document.getElementById('stars-label').textContent = lv.tier;
   document.getElementById('msg-zone').innerHTML = '';
   renderBoard();
 }
@@ -342,8 +336,9 @@ function doJump(spot) {
     renderBoard();
     const newPiece = document.getElementById('piece-max');
     if (newPiece) newPiece.classList.add('landed');
-    if (window.MaxFX && newPiece) {
-      MaxFX.markPoint(newPiece, document.getElementById('stars-label'), { style: 'bounce', result: 'green' });
+    const pipTarget = document.getElementById('pip' + levelIdx);
+    if (window.MaxFX && newPiece && pipTarget) {
+      MaxFX.markPoint(newPiece, pipTarget, { style: 'bounce', result: 'green' });
     }
 
     if (comboCount > 1) showCombo(toCell);
@@ -383,33 +378,25 @@ function showStuck() {
 }
 
 function showWin() {
-  if (typeof Tracker !== 'undefined') Tracker.endSession(levelIdx+1, LEVELS.length);
+  G.notePip(levelIdx, 1);
+  const isLast = levelIdx >= LEVELS.length - 1;
+  if (isLast) {
+    G.showEnd({ replayUrl: 'mj-38.html' });
+    return;
+  }
   if (typeof playEndSound === 'function') playEndSound(1, 1);
   document.getElementById('win-title').textContent = 'Bravo !';
-  document.getElementById('win-text').textContent = levelIdx < LEVELS.length - 1
-    ? 'Tous les moutons dorment bien !'
-    : 'Dernier niveau terminé !';
+  document.getElementById('win-text').textContent = 'Tous les moutons dorment bien !';
   document.getElementById('win-overlay').classList.add('show');
   if (window.MaxFX) {
-    const isLast = levelIdx >= LEVELS.length - 1;
-    MaxFX.finalStar(document.getElementById('app'), { style: isLast ? 'cinematic' : 'breathe', label: 'BRAVO !' });
+    MaxFX.finalStar(document.getElementById('app'), { style: 'breathe', label: 'BRAVO !' });
   }
 }
 
 function nextLevel() {
   document.getElementById('win-overlay').classList.remove('show');
   levelIdx++;
-  if (levelIdx >= LEVELS.length) {
-    document.getElementById('fin-overlay').classList.add('show');
-    return;
-  }
-  loadLevel(levelIdx);
-}
-
-function resetGame() {
-  document.getElementById('fin-overlay').classList.remove('show');
-  levelIdx = 0;
-  if (typeof Tracker !== 'undefined') Tracker.startSession('mj-38');
+  if (levelIdx >= LEVELS.length) return;
   loadLevel(levelIdx);
 }
 
@@ -435,7 +422,6 @@ window.addEventListener('resize', renderBoard);
 // closure et ne sont plus globales automatiquement).
 window.restartLevel = restartLevel;
 window.nextLevel = nextLevel;
-window.resetGame = resetGame;
 });
 </script>
 </body>

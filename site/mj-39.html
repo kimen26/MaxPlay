@@ -16,8 +16,6 @@
       flex-shrink:0; display:flex; align-items:center; justify-content:center;
       gap:10px; padding:6px 12px; background:rgba(0,0,0,0.25);
     }
-    #progress .stars { display:flex; gap:4px; font-size:1.2rem; }
-    #progress .star.off { opacity:0.25; }
     #progress .jauge {
       flex:1; max-width:220px; height:14px; border-radius:8px;
       background:rgba(255,255,255,0.15); overflow:hidden; position:relative;
@@ -81,21 +79,6 @@
     #dragGhost .piece-grid { display:grid; gap:2px; }
     #dragGhost .piece-cell { border-radius:3px; border:2px solid rgba(0,0,0,0.3); opacity:0.9; }
 
-    /* Écran grille pleine (doux, pas punitif) */
-    #fullScreen {
-      position:absolute; inset:0; display:none; flex-direction:column;
-      align-items:center; justify-content:center; gap:16px;
-      background:var(--bg0); z-index:30; text-align:center; padding:20px;
-    }
-    #fullScreen.show { display:flex; }
-    #fullScreen h2 { font-size:1.6rem; }
-    #fullScreen .stars { font-size:2.2rem; }
-    .btn {
-      font-family:'Fredoka One',sans-serif; font-size:1rem; font-weight:900;
-      color:var(--accent-ink); background:var(--accent); border:none; border-radius:14px;
-      padding:16px 26px; min-width:140px; min-height:80px;
-    }
-    .btn:active { opacity:0.8; }
   </style>
 </head>
 <body data-ambiance="arcade">
@@ -108,11 +91,6 @@
   </div>
 
   <div id="progress">
-    <div class="stars">
-      <span class="star off" id="st1">⭐</span>
-      <span class="star off" id="st2">⭐</span>
-      <span class="star off" id="st3">⭐</span>
-    </div>
     <div class="jauge"><div class="jauge-fill" id="jaugeFill" style="width:0%"></div></div>
     <div class="lignes-label" id="lignesLabel">0 lignes</div>
   </div>
@@ -120,13 +98,6 @@
   <div id="board-wrap">
     <div id="grid"></div>
     <div id="rack"></div>
-
-    <div id="fullScreen">
-      <h2>Grille pleine ! ✨</h2>
-      <div>Tu as fait <span id="fullCount">0</span> lignes !</div>
-      <div class="stars" id="fullStars">⭐</div>
-      <button class="btn" id="btnReplay">Rejouer</button>
-    </div>
   </div>
 
 </div>
@@ -138,9 +109,9 @@
   MJ.ready(function () {
     'use strict';
 
-    MJ.init({
+    const shell = MJ.init({
       id: 'mj-39', emoji: '🧩', titre: 'Blocs magiques',
-      golden: false,
+      golden: true,
       consigne: false, // jauge + compteur de lignes gèrent le retour visuel
       regle: {
         texte: 'Pose les blocs pour remplir des lignes entières !',
@@ -165,9 +136,9 @@
     const dragGhost = document.getElementById('dragGhost');
     const jaugeFill = document.getElementById('jaugeFill');
     const lignesLabel = document.getElementById('lignesLabel');
-    const fullScreen = document.getElementById('fullScreen');
-    const fullCount = document.getElementById('fullCount');
-    const fullStars = document.getElementById('fullStars');
+    const G = shell.G;
+    // 🔒 3 paliers fixes de lignes (indépendant du barème questions Golden 4/6/8)
+    G.totalQ = 3;
 
     // ── Palettes vives, contours gras ────────────────────────────────
     const COLORS = ['#ff5e5e', '#ffb84d', '#ffe14d', '#6ee06e', '#4dd8e0', '#5e9dff', '#b57bff', '#ff7bc6'];
@@ -417,7 +388,7 @@
       el.style.background = '';
     }
 
-    // ── Jauge + étoiles (paliers session) ───────────────────────────────
+    // ── Jauge + paliers golden (billes de progression) ───────────────────
     function updateProgressUI() {
       lignesLabel.textContent = lignesEffacees + (lignesEffacees > 1 ? ' lignes' : ' ligne');
       const maxPalier = PALIERS[PALIERS.length - 1];
@@ -427,44 +398,21 @@
       PALIERS.forEach((need, i) => {
         if (!starsGiven[i] && lignesEffacees >= need) {
           starsGiven[i] = true;
-          const starEl = document.getElementById('st' + (i + 1));
-          starEl.classList.remove('off');
-          Tracker.startSession('mj-39');
-          Tracker.endSession(1, 1);
+          G.notePip(i, 1, grid);
           sndBravo();
-          if (window.MaxFX) MaxFX.markPoint(grid, starEl, { style: 'bounce', result: 'green' });
         }
       });
     }
 
-    // ── Grille pleine (échec neutre) ────────────────────────────────────
+    // ── Grille pleine (fin de session, jamais punitif) ────────────────────
     function checkGameOver() {
       const anyFits = pieces.some(p => p && pieceFitsSomewhere(p.shape));
       if (anyFits) return;
-      // aucune pièce ne rentre -> écran doux
-      fullCount.textContent = lignesEffacees;
-      const nbStars = starsGiven.filter(Boolean).length;
-      fullStars.textContent = nbStars > 0 ? '⭐'.repeat(nbStars) : '✨';
-      try { playEndSound(nbStars, PALIERS.length); } catch(e) {}
-      fullScreen.classList.add('show');
-      if (window.MaxFX) {
-        const allStars = nbStars >= PALIERS.length;
-        MaxFX.finalStar(document.getElementById('app'), { style: allStars ? 'cinematic' : 'breathe', label: nbStars > 0 ? 'BRAVO !' : '' });
-      }
+      G.showEnd({ replayUrl: 'mj-39.html' });
     }
 
-    document.getElementById('btnReplay').addEventListener('click', () => {
-      fullScreen.classList.remove('show');
-      board = Array.from({ length: N }, () => Array(N).fill(null));
-      for (let r = 0; r < N; r++) for (let c = 0; c < N; c++) resetCell(r, c);
-      lignesEffacees = 0;
-      pieces = [newPiece(), newPiece(), newPiece()];
-      updateProgressUI();
-      renderRack();
-      Tracker.startSession('mj-39');
-    });
-
     // ── Init ─────────────────────────────────────────────────────────
+    G.buildPips();
     pieces = [newPiece(), newPiece(), newPiece()];
     renderRack();
     updateProgressUI();
@@ -477,7 +425,7 @@
           pieces: pieces.map(p => p ? { shapeCells: p.shape.cells } : null),
           lignesEffacees,
           starsGiven: starsGiven.slice(),
-          gameOverShown: fullScreen.classList.contains('show'),
+          gameOverShown: !!document.querySelector('.end-wrap'),
         };
       },
       // Pose la pièce idx en (r,c) directement (bypass le drag pointer pour le harnais)

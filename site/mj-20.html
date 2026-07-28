@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>MJ-20 – Compte dans toutes les langues</title>
+  <title>MJ-20 – Compte en 8 langues</title>
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;900&family=Fredoka+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flag-icons@7.2.3/css/flag-icons.min.css">
   <link rel="stylesheet" href="css/mp-theme.css">
@@ -337,7 +337,7 @@
 
   <div class="hdr">
     <a href="index.html">&#8592;</a>
-    <span class="htitle">🌍 Compte dans toutes les langues !</span>
+    <span class="htitle">🌍 Compte en 8 langues</span>
   </div>
 
   <div class="game-area">
@@ -372,7 +372,7 @@
 
     <!-- ===== QUIZ ===== -->
     <div id="quizPanel" class="hidden" style="width:100%;display:flex;flex-direction:column;gap:14px;align-items:center">
-      <div class="score-bar" id="scoreBar"></div>
+      <div class="pips" id="pips" style="width:100%"></div>
       <div class="quiz-card">
         <div class="quiz-flag"><span class="fi" id="quizFlag"></span></div>
         <div class="quiz-lang-name" id="quizLangName">Français</div>
@@ -399,21 +399,13 @@
 
   <div class="unlock-toast" id="unlockToast"></div>
 
-  <div id="victoryScreen">
-    <div class="victory-emoji" id="victoryEmoji">&#127942;</div>
-    <div class="victory-title" id="victoryTitle">Bravo !</div>
-    <div class="victory-msg" id="victoryMsg"></div>
-    <div class="victory-score" id="victoryScore"></div>
-    <button class="replay-btn" onclick="restartQuiz()">Rejouer !</button>
-    <a href="index.html" style="color:rgba(255,255,255,0.6);font-size:0.9rem;font-weight:900;text-decoration:none;margin-top:-8px">&#8592; Menu</a>
-  </div>
-
   <script src="js/mj-kit.js"></script>
   <script src="js/mj-shell.js"></script>
   <script>
   MJ.ready(function () {
     const shell = MJ.init({
-      id: 'mj-20', emoji: '🌍', titre: 'Compte dans toutes les langues !',
+      id: 'mj-20', emoji: '🌍', titre: 'Compte en 8 langues',
+      golden: true,
       consigne: false, // pas de consigne unique : 3 modes (Apprendre / Quiz / Progression)
       regle: {
         picto: '🌍🔢',
@@ -610,7 +602,10 @@
     let reading = false;
 
     // Quiz state
-    const ROUND_COUNT = 10;
+    const G = shell.G;
+    // 🔒 10 manches fixes (indépendant du barème questions Golden 4/6/8)
+    G.totalQ = 10;
+    const ROUND_COUNT = G.totalQ;
     let round = 0;
     let score = 0;
     let quizNumber = 0;
@@ -740,13 +735,8 @@
     function startQuiz() {
       round = 0;
       score = 0;
-      document.getElementById('victoryScreen').classList.remove('show');
+      G.buildPips();
       nextQuizRound();
-    }
-
-    function restartQuiz() {
-      document.getElementById('victoryScreen').classList.remove('show');
-      startQuiz();
     }
 
     function nextQuizRound() {
@@ -771,7 +761,6 @@
       const tierId    = TIERS[tierIdx].id;
       const consec    = progress.langs[quizLang.code].consecutiveCorrect || 0;
 
-      renderScoreBar();
       document.getElementById('quizFlag').className = `fi fi-${quizLang.flag}`;
       document.getElementById('quizLangName').textContent = quizLang.nom;
       document.getElementById('quizTierBadge').textContent =
@@ -819,7 +808,7 @@
         if (res.points === 10) score++;
         if (typeof sndDing === 'function') sndDing();
         showFeedback('');
-        if (window.MaxFX) MaxFX.markPoint(btn, document.getElementById('scoreBar'), { style: 'bounce', result: res.points === 10 ? 'green' : 'orange' });
+        G.notePip(round, res.attempts, btn);
 
         // Enregistrer progression
         const unlock = recordCorrect(quizLang.code);
@@ -842,6 +831,7 @@
         if (typeof playErrorSound === 'function') playErrorSound();
         showFeedback('');
         recordWrong(quizLang.code);
+        G.notePip(round, 4, document.querySelector('.choice-btn.correct'));
         setTimeout(() => TTS.speak(`C’était ${quizNumber}`, { lang:'fr-FR', rate:0.85 }), 300);
         round++;
         setTimeout(nextQuizRound, 2000);
@@ -853,17 +843,6 @@
         // Pas de recordWrong ici — QcmRetry gère les tentatives intermédiaires
         setTimeout(speakQuiz, 400);
       }
-    }
-
-    function renderScoreBar() {
-      const bar = document.getElementById('scoreBar');
-      let html = '';
-      for (let i = 0; i < ROUND_COUNT; i++) {
-        const cls = i < round ? (i < score ? 'ok' : 'miss') : '';
-        html += `<div class="score-pip ${cls}"></div>`;
-      }
-      html += `<div class="score-label">${score}/${round}</div>`;
-      bar.innerHTML = html;
     }
 
     function showFeedback(emoji) {
@@ -941,22 +920,7 @@
     ];
 
     function showVictory() {
-      if (typeof Tracker !== 'undefined') Tracker.endSession(score, ROUND_COUNT);
-      renderScoreBar();
-      const data = VICTORY_DATA.find(d => score >= d.min && score <= d.max);
-      document.getElementById('victoryEmoji').textContent  = data.emoji;
-      document.getElementById('victoryTitle').textContent  = data.title;
-      document.getElementById('victoryMsg').textContent    = data.msg;
-      document.getElementById('victoryScore').textContent  = `${score} / ${ROUND_COUNT}`;
-      document.getElementById('victoryScreen').classList.add('show');
-      if (data.sound === 'victory' && typeof sndVictory === 'function') sndVictory();
-      else if (data.sound === 'bravo' && typeof sndBravo === 'function') sndBravo();
-      else if (data.sound === 'ding' && typeof sndDing === 'function') sndDing();
-      else if (typeof sndBuzz === 'function') sndBuzz();
-      if (window.MaxFX) {
-        const perfect = score === ROUND_COUNT;
-        MaxFX.finalStar(document.getElementById('victoryScreen'), { style: perfect ? 'cinematic' : 'breathe', label: perfect ? 'SANS-FAUTE !' : '' });
-      }
+      G.showEnd({ replayUrl: 'mj-20.html' });
     }
 
     const shuffle = MJKit.shuffle;
@@ -969,7 +933,6 @@
     window.setRange     = setRange;
     window.answerQuiz   = answerQuiz;
     window.speakQuiz    = speakQuiz;
-    window.restartQuiz  = restartQuiz;
 
     // ─── Init ──────────────────────────────────────────────────────────────────
     renderLangScroll();

@@ -1,0 +1,14 @@
+import { chromium } from 'playwright';
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const SITE = path.resolve(__dirname, '../../../../site');
+const url = 'file://' + SITE.split(String.fromCharCode(92)).join('/') + '/dev-dinos.html';
+const browser = await chromium.launch();
+const page = await browser.newPage({ viewport: { width: 1024, height: 900 } });
+await page.goto(url, { waitUntil: 'load' });
+await page.waitForTimeout(400);
+await page.evaluate(() => { document.getElementById('menu-scroll').scrollTop = 1400; });
+await page.waitForTimeout(200);
+await page.screenshot({ path: path.resolve(__dirname, 'familles-tab-bas.png') });
+await browser.close();

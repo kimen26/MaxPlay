@@ -84,14 +84,12 @@ export async function run({ page, ok }) {
   const overlayGone = await page.locator('.victoire-overlay').count() === 0;
   ok('FIGÉ overlay victoire disparu après 2.5s', overlayGone);
 
-  // Progress dots : le 1er dot doit être actif (vert #4CAF50)
-  const firstDot = await page.locator('.progress-dot').first();
-  const dotColor = await firstDot.evaluate(el =>
-    window.getComputedStyle(el).backgroundColor
-  );
-  ok('FIGÉ progress dot n°1 actif (fond vert après victoire)',
-     dotColor.includes('76') || dotColor.includes('74'), // #4CAF50 en rgb(76, 175, 80)
-     `dotColor=${dotColor}`);
+  // Piste golden (migration C1 2026-07-28) : la 1ère bille doit être marquée trouvée
+  const firstPip = await page.locator('#pip0');
+  const pipClass = await firstPip.evaluate(el => el.className);
+  ok('piste golden : bille 1 marquée après victoire',
+     pipClass.includes('done-first') || pipClass.includes('done-retry') || pipClass.includes('done-helped'),
+     `class=${pipClass}`);
 
   // Console.error check (smoke test)
   const errors = await page.evaluate(() => {

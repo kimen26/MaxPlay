@@ -13,8 +13,6 @@
       height:100dvh; overflow:hidden; touch-action:manipulation;
     }
     #app { display:flex; flex-direction:column; height:100dvh; max-width:1000px; margin:0 auto; }
-    .score { color:var(--gold); font-weight:900; }
-    .lvl { color:#fff; font-weight:900; font-size:0.8rem; background:rgba(255,255,255,0.14); border-radius:10px; padding:2px 8px; }
     .quest {
       text-align:center; padding:12px 16px;
       color:#fff; font-size:1.2rem; font-weight:900;
@@ -73,9 +71,8 @@
     <div class="hdr">
       <a href="index.html" class="back">←</a>
       <span class="htitle">🎯 Trouve le bus !</span>
-      <span class="lvl" id="levelbar">Niveau 1</span>
-      <span class="score" id="score">0/7</span>
     </div>
+    <div class="pips" id="pips"></div>
     <div class="quest" id="quest">Trouve le bus <b>162</b> !</div>
     <div class="arena" id="arena"></div>
   </div>
@@ -89,6 +86,7 @@
   MJ.ready(function () {
     const shell = MJ.init({
       id: 'mj-19', emoji: '🎯', titre: 'Trouve le bus !',
+      golden: true,
       consigne: false, // consigne portée par #quest (spécifique, mise à jour à chaque manche)
       regle: {
         picto: '🎯🚌',
@@ -107,9 +105,13 @@
     });
 
     // MJ-19 V1 — Hidden in plain sight
-    // N bus se déplacent, Max doit taper celui demandé. 5 rounds.
+    // N bus se déplacent, Max doit taper celui demandé.
 
-    const ROUNDS = 7;
+    const G = shell.G;
+    // 🔒 7 manches fixes (indépendant du barème questions Golden 4/6/8 — voir figée mj-19.md)
+    G.totalQ = 7;
+    G.buildPips();
+    const ROUNDS = G.totalQ;
     const BUS_WIDTH = 80;
 
     // ── 3★ (2026-07-14) : 5 paliers → 3 niveaux. N0=ex-P1-2(10-12 bus, entrée douce) ·
@@ -125,6 +127,7 @@
 
     let round = 0;
     let score = 0;
+    let attempts = 1;    // essais sur la manche courante (pour la bille golden)
     let movers = [];     // { el, num, line, x, y, vx, vy, w, h }
     let targetNum = null;
     let rafId = null;
@@ -136,6 +139,7 @@
 
     function startRound() {
       locked = false;
+      attempts = 1;
       const arena = document.getElementById('arena');
       arena.innerHTML = '';
       movers = [];
@@ -261,11 +265,10 @@
         flash(true);
         try { sndDing && sndDing(); } catch(e) {}
         try { confettiBurst(25); } catch(e) {}
-        if (window.MaxFX) MaxFX.markPoint(mv.el, document.getElementById('score'), { style: 'bounce', result: 'green' });
+        G.notePip(round, attempts, mv.el);
         if (typeof Tracker !== 'undefined') Tracker.logAnswer(true);
         score++;
         round++;
-        document.getElementById('score').textContent = `${score}/${ROUNDS}`;
         setTimeout(() => {
           if (round >= ROUNDS) endGame();
           else startRound();
@@ -274,6 +277,7 @@
         mv.el.classList.add('wrong');
         flash(false);
         try { sndBuzz && sndBuzz(); } catch(e) {}
+        attempts = Math.min(4, attempts + 1);
         if (typeof Tracker !== 'undefined') Tracker.logAnswer(false);
         setTimeout(() => mv.el.classList.remove('wrong'), 450);
       }
@@ -281,28 +285,10 @@
 
     function endGame() {
       if (rafId) cancelAnimationFrame(rafId);
-      if (typeof Tracker !== 'undefined') Tracker.endSession(score, ROUNDS);
-      const arena = document.getElementById('arena');
-      arena.innerHTML = `
-        <div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;padding:20px;">
-          <div style="font-size:5rem;">🎉</div>
-          <h2 style="color:var(--gold);font-size:2.2rem;margin:10px 0;">Bravo !</h2>
-          <p style="font-size:1.3rem;margin-bottom:24px;">Tu as trouvé ${score} bus sur ${ROUNDS} !</p>
-          <div>
-            <button onclick="location.reload()" style="padding:14px 28px;border-radius:30px;border:none;background:linear-gradient(135deg,var(--ok),#00a86b);color:#fff;font-weight:900;font-family:inherit;margin:0 8px;cursor:pointer;">🔄 Rejouer</button>
-            <a href="index.html" style="padding:14px 28px;border-radius:30px;background:rgba(255,255,255,0.15);color:#fff;font-weight:900;text-decoration:none;margin:0 8px;">📋 Menu</a>
-          </div>
-        </div>`;
-      try { confettiBurst(60); } catch(e) {}
-      if (window.MaxFX) {
-        const perfect = score === ROUNDS;
-        MaxFX.finalStar(arena, { style: perfect ? 'cinematic' : 'breathe', label: perfect ? 'SANS-FAUTE !' : '' });
-      }
+      G.showEnd({ replayUrl: 'mj-19.html' });
     }
 
     // DOM déjà prêt (MJ.ready)
-    const lb = document.getElementById('levelbar');
-    if (lb) lb.textContent = 'Niveau ' + (level + 1);
     if (typeof Tracker !== 'undefined') Tracker.startSession('mj-19');
     startRound();
   }); // fin MJ.ready

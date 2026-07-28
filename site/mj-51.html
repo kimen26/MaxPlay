@@ -105,7 +105,6 @@
   <div class="hdr">
     <a href="index.html" class="back">←</a>
     <span class="htitle">🔠 Le tri des lettres</span>
-    <span id="levelbar">Niveau 1</span>
   </div>
   <div class="scorebar">
     <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
@@ -122,8 +121,7 @@
   <div class="fin-sub">Chaque lettre a retrouvé sa famille, sous tous ses costumes !</div>
   <div class="fin-familles" id="finFamilles"></div>
   <div class="fin-btns">
-    <button class="fin-btn primary" onclick="location.reload()">🔄 Rejouer</button>
-    <a href="index.html" class="fin-btn secondary">📋 Menu</a>
+    <button class="fin-btn primary" id="finContinueBtn">Continuer →</button>
   </div>
 </div>
 
@@ -153,8 +151,9 @@
     { boxes: ['b', 'd', 'h', 'k'],  allures: ['cur', 'scripte', 'maj'],  perBox: 3 }, // N2 : 12 tuiles, confusables
   ];
 
-  MJ.init({
+  const shell = MJ.init({
     id: GAME_ID, emoji: '🔠', titre: 'Le tri des lettres',
+    golden: true,
     consigne: false,
     regle: {
       picto: '🔠🗂️',
@@ -174,7 +173,7 @@
 
   const level = Math.max(0, Math.min(2, (window.Stars ? Stars.get(GAME_ID) : 0)));
   const CFG = NIVEAUX[level];
-  (function(){ const lb = document.getElementById('levelbar'); if (lb) lb.textContent = 'Niveau ' + (level + 1); })();
+  const G = shell.G;
 
   function _shuffle(a) { const r = [...a]; for (let i = r.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [r[i], r[j]] = [r[j], r[i]]; } return r; }
   function rnd(a) { return a[Math.floor(Math.random() * a.length)]; }
@@ -198,6 +197,9 @@
   const drags = new Map();
   const boxCounts = {};
   CFG.boxes.forEach(l => boxCounts[l] = 0);
+  // 🔒 golden : pas de piste visuelle (drag continu, pas de Q&A discrète) —
+  // G.totalQ pilote seulement isPerfect()/showEnd (même pattern que mj-09).
+  G.totalQ = DECK.length;
 
   // ── Audio ──
   function sayPhoneme(lettre) {
@@ -331,6 +333,7 @@
     parked.appendChild(mini);
     boxCounts[box.lettre]++;
     document.getElementById('cnt-' + box.lettre).textContent = boxCounts[box.lettre];
+    G.notePip(rangedCount, errors > 0 ? 2 : 1);
     rangedCount++;
     updateProgress();
     if (rangedCount >= DECK.length) finish();
@@ -351,9 +354,8 @@
     document.getElementById('triCount').textContent = `Lettres rangées : ${rangedCount} / ${DECK.length}`;
   }
 
-  // ── Fin : familles de lettres regroupées, étoile si complétion ──
+  // ── Fin : familles de lettres regroupées (célébration), puis écran golden ──
   function finish() {
-    if (typeof Tracker !== 'undefined') Tracker.endSession(DECK.length, DECK.length);
     const cont = document.getElementById('finFamilles');
     cont.innerHTML = '';
     CFG.boxes.forEach(lettre => {
@@ -367,13 +369,13 @@
     setTimeout(() => {
       const ov = document.getElementById('finOverlay');
       ov.classList.add('show');
-      try { playEndSound(DECK.length, DECK.length); } catch (e) {}
-      // Célébration bibliothèque only (CONTRAT MJ v2) : le style 'cinematic'
-      // déclenche déjà ses propres confettis en interne — pas de burst maison en plus.
-      // MaxFX est garanti chargé par le gabarit mj-shell.js (celebrations.js dans SCRIPTS).
-      if (window.MaxFX) MaxFX.finalStar(ov, { style: errors === 0 ? 'cinematic' : 'breathe', label: errors === 0 ? 'SANS-FAUTE !' : 'BRAVO !' });
     }, 500);
   }
+
+  document.getElementById('finContinueBtn').addEventListener('click', () => {
+    document.getElementById('finOverlay').classList.remove('show');
+    G.showEnd({ replayUrl: 'mj-51.html' });
+  });
 
   // ── Harnais Playwright ──
   window.__mjTest = {

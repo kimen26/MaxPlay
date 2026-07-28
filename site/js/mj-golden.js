@@ -159,15 +159,21 @@
         p.classList.add('v' + a, state);
         p.textContent = badge;
         const nx = document.getElementById('pip' + (i + 1));
-        if (nx) { nx.classList.add('cur', 'current'); nx.classList.remove('todo'); }
+        // Bug transverse (retour PY mj-49) : la pastille suivante ne doit passer
+        // en "current" (bleu) qu'APRÈS la fin de l'anim du jeton MaxFX vers la
+        // pastille courante — jamais pendant que le jeton vole encore. Sans jeton
+        // (fromEl/MaxFX absents), rien à attendre : bascule immédiate comme avant.
+        const activateNext = () => { if (nx) { nx.classList.add('cur', 'current'); nx.classList.remove('todo'); } };
         // Jeton MaxFX : part de la bonne réponse vers la pastille (flair, non bloquant)
         if (fromEl && global.MaxFX && global.MaxFX.markPoint) {
           try {
             global.MaxFX.markPoint(fromEl, p, {
               result: a === 1 ? 'green' : (a === 4 ? 'red' : 'orange'),
               badge: badge,
-            }).catch(() => {});
-          } catch (e) {}
+            }).then(activateNext).catch(activateNext);
+          } catch (e) { activateNext(); }
+        } else {
+          activateNext();
         }
       }
       this._answered++;
@@ -235,10 +241,16 @@
       }
 
       // NID (avenant P0) : 1 capsule par partie TERMINÉE, parfaite ou non.
+      // Arbitrage PY 2026-07-28 : plus d'œuf sur CE jeu une fois 3 étoiles
+      // atteintes ici (anti-farm) — gameId obligatoire pour que collection.js
+      // puisse trancher. `grant.granted === false` : aucune capsule accordée
+      // (jeu déjà maîtrisé), la partie reste valorisée autrement (Bug 3).
       let grant = null;
       if (global.Collection && global.Collection.grantCapsule) {
-        try { grant = global.Collection.grantCapsule(); } catch (e) {}
+        try { grant = global.Collection.grantCapsule({ gameId: this.gameId }); } catch (e) {}
       }
+      const eggGranted = !!(grant && grant.granted !== false);
+      const noMoreEggsHere = !!(grant && grant.granted === false);
       const readyToHatch = !!(global.Collection && global.Collection.readyToHatch && (function () {
         try { return global.Collection.readyToHatch(); } catch (e) { return false; }
       })());
@@ -260,12 +272,19 @@
         title = (function(){try{var k=(JSON.parse(localStorage.getItem('maxplay_active_child'))||{}).nickname;if(!k)return 'Bien joué&nbsp;!';var d=document.createElement('div');d.textContent=k;return 'Bien joué '+d.innerHTML+'&nbsp;!';}catch(e){return 'Bien joué&nbsp;!';}})();
         sub = Golden._PROCESS_COMPLIMENTS[(Math.random() * Golden._PROCESS_COMPLIMENTS.length) | 0];
       }
+      // Bug 3 (lisibilité, exigence PY 2026-07-28) : jamais mélanger œuf et
+      // étoile — d'abord l'œuf (ou le message clair "déjà 3 étoiles ici" s'il
+      // n'y en a pas), PUIS l'étoile sans-faute s'il y en a une. Jamais les
+      // deux en même temps, jamais d'ambiguïté sur ce qui a été gagné.
+      if (noMoreEggsHere) {
+        sub = (sub ? sub + ' ' : '') + 'Tu as déjà toutes les étoiles ici&nbsp;! Essaie un autre jeu pour gagner un œuf.';
+      }
       // Séquencement (retour playtest Papa Yann 2026-07-26) : l'œuf doit se voir
       // et se jouer AVANT titre/sous-titre/boutons — plus de délai CSS fixe qui
       // les affichait EN PARALLÈLE de l'anim d'œuf (~2s, plein écran). Le délai
-      // de base part maintenant après la fin de l'œuf (grant ? ~2s : 0),
+      // de base part maintenant après la fin de l'œuf (eggGranted ? ~2s : 0),
       // + la fenêtre étoile (perfect) comme avant.
-      const eggDelay = grant ? 2.1 : 0;
+      const eggDelay = eggGranted ? 2.1 : 0;
       const dly = perfect
         ? [(eggDelay + 3) + 's', (eggDelay + 3.2) + 's', (eggDelay + 3.4) + 's']
         : [(eggDelay + .3) + 's', (eggDelay + .5) + 's', (eggDelay + .7) + 's'];
@@ -300,7 +319,7 @@
       // de l'écran de fin), pas vers une mini-pastille invisible.
       const eggZone = document.getElementById('eggZone');
       const badgeAnchor = document.getElementById('badgeZone');
-      const runEgg = (grant && global.MaxFX && global.MaxFX.eggEarned)
+      const runEgg = (eggGranted && global.MaxFX && global.MaxFX.eggEarned)
         ? (function () {
             const egg = (global.MJKit && global.MJKit.oeuf) ? global.MJKit.oeuf(56) : (function () {
               const d = document.createElement('div'); d.textContent = '🥚'; d.style.fontSize = '40px'; return d;

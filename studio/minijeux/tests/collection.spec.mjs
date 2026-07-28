@@ -128,6 +128,32 @@ try {
      multiProfile.child1Again.owned.indexOf('a1') !== -1 && multiProfile.child1Again.owned.indexOf('a2') === -1,
      JSON.stringify(multiProfile.child1Again));
 
+  // ── Bug 2 (arbitrage PY 2026-07-28) : plus d'œuf sur un jeu à 3 étoiles ──
+  // grantCapsule({gameId}) doit consulter window.Stars.get(gameId) et refuser
+  // (granted:false, aucune capsule poussée) si >= 3. Défensif : sans gameId
+  // ni Stars, comportement inchangé (grant normal).
+  await page.evaluate(() => { localStorage.clear(); });
+  await seedItems(page);
+  const antiFarm = await page.evaluate(() => {
+    window.Stars = { get: function (id) { return id === 'mj-99' ? 3 : 0; } };
+    const capped = Collection.grantCapsule({ gameId: 'mj-99' });
+    const pendingAfterCapped = Collection.pending();
+    const normal = Collection.grantCapsule({ gameId: 'mj-01' }); // 0 étoile → accordé
+    const pendingAfterNormal = Collection.pending();
+    delete window.Stars;
+    return { capped, pendingAfterCapped, normal, pendingAfterNormal };
+  });
+  ok('gameId à 3 étoiles → grantCapsule() refuse (granted:false)', antiFarm.capped.granted === false, JSON.stringify(antiFarm.capped));
+  ok('gameId à 3 étoiles → aucune capsule poussée (pending toujours 0)', antiFarm.pendingAfterCapped.count === 0, JSON.stringify(antiFarm.pendingAfterCapped));
+  ok('gameId à 0 étoile → grantCapsule() accorde normalement', antiFarm.normal.granted === true, JSON.stringify(antiFarm.normal));
+  ok('gameId à 0 étoile → capsule bien poussée (pending === 1)', antiFarm.pendingAfterNormal.count === 1, JSON.stringify(antiFarm.pendingAfterNormal));
+
+  const antiFarmDefensive = await page.evaluate(() => {
+    // pas de window.Stars du tout, ni de gameId : comportement historique préservé
+    return Collection.grantCapsule({});
+  });
+  ok('sans Stars ni gameId (défensif) → grant toujours accordé (pas de régression silencieuse)', antiFarmDefensive.granted !== false, JSON.stringify(antiFarmDefensive));
+
   ok('Aucune erreur JS (smoke)', errors.length === 0, errors.join(' | '));
 } catch (e) {
   ok('exécution sans exception', false, e.message);

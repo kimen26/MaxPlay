@@ -67,8 +67,10 @@ export async function run({ page, ok }) {
       // ── Audio (manche 1) : chaque placement annonce le nom du dino, et un 2e placement
       // stoppe le son du 1er (Papa Yann : "on ne voit pas bien qui c'est").
       const log = await page.evaluate(() => window.__audioLog);
-      const plays = log.filter(e => e.action === 'play' && /-nom\.mp3$/.test(e.src));
-      ok('chaque placement joue un MP3 "-nom.mp3" (au moins 3, un par dino placé)',
+      // Banque NOM SEUL (noms/<id>.mp3, 1.5-2s) — les <id>-nom.mp3 à plat sont
+      // des fiches de 20-35s, bannies sur un tap (retour PY 2026-07-27).
+      const plays = log.filter(e => e.action === 'play' && /noms\/[a-z]+\.mp3$/.test(e.src));
+      ok('chaque placement joue le NOM SEUL (noms/<id>.mp3, au moins 3)',
          plays.length >= order.length, JSON.stringify(log));
       ok('un 2e placement STOPPE le son du 1er avant de jouer le nouveau (pause() appelé)',
          log.some(e => e.action === 'pause'), JSON.stringify(log));

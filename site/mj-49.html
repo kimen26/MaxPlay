@@ -106,7 +106,8 @@
   <!-- libs SPÉCIFIQUES au jeu -->
   <script src="js/mj-dice.js"></script>
   <script src="js/mj-kit.js"></script>
-  <script src="js/mj-compte.js"></script>
+  <script src="js/say-nombres.js"></script>
+  <script src="js/mj-compte.js"</script>
   <script src="js/dinos-assets.js"></script>
   <!-- manifeste têtes de bébés dinos (éclosion des barquettes pleines, PY 2026-07-28) -->
   <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
@@ -242,11 +243,16 @@
       if (forcedSub) curSub = forcedSub;
 
       if (curSub === 'manque') {
-        // N0 : barquette à trous — combien il en manque pour 10 ?
+        // N0 : barquette à trous — compléments à 10. Les DEUX formulations de PY
+        // (« il en manque » / « il en faut ») alternent dès le niveau 0
+        // (retour passe complète 2026-07-27 : il ne voyait qu'une seule tournure).
         const filled = rand(5, 9);
         correctAnswer = 10 - filled;
         barquettesEl.appendChild(barquetteHtml(filled, 46));
-        shell.setConsigne('Il en manque combien pour remplir la boîte ?', qCount === 1 ? undefined : true);
+        const consigneManque = (qCount % 2 === 0)
+          ? 'Il en faut combien pour faire 10 ?'
+          : 'Il en manque combien pour remplir la boîte ?';
+        shell.setConsigne(consigneManque, qCount === 1 ? undefined : true);
         showChoices({ min: 1, max: 6 });
 
       } else if (curSub === 'dix-plus') {
@@ -287,6 +293,11 @@
         onCorrect: (attempts, btn) => {
           roundLock = true;
           G.notePip(qCount - 1, attempts, btn);
+          // Annonce de la réponse en vraie voix (banque nombres C6, gabarits complets)
+          if (window.SayNombres && !testMode) {
+            if (curSub === 'manque' || curSub === 'atteindre') SayNombres.manque(correctAnswer);
+            else SayNombres.say(correctAnswer, { fete: true });
+          }
           celebrateAnswer();
           setTimeout(nextQuestion, testMode ? 0 : 2700);
         },

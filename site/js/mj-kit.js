@@ -174,12 +174,41 @@
     b: 'be', d: 'de', p: 'pe', t: 'te', c: 'ke', g: 'gue', h: 'h muet', k: 'ke', q: 'ke',
   };
 
-  function sayPhoneme(letter, opts) {
+  // Banque MP3 des phonèmes (sounds/phonemes/, narrateur_h eleven_v3, 2026-07-28).
+  // Fix retour PY 2026-07-27 mj-50 : le TTS tablette épelait la graphie
+  // (« èf » → « E accent grave f ») — la vraie voix passe en premier, TTS en repli.
+  // c/k/q partagent le même son « ke ». h : pas de MP3 (son muet, TTS seul).
+  const PHONEME_MP3 = {
+    a: 'son-a', e: 'son-eu', i: 'son-i', o: 'son-o', u: 'son-u',
+    m: 'son-me', s: 'son-se', f: 'son-fe', l: 'son-le', r: 'son-re',
+    v: 'son-ve', j: 'son-je', z: 'son-ze', n: 'son-ne',
+    b: 'son-be', d: 'son-de', p: 'son-pe', t: 'son-te',
+    c: 'son-ke', k: 'son-ke', q: 'son-ke', g: 'son-gue',
+  };
+  let phonemeAudio = null;
+
+  function ttsPhoneme(letter, opts) {
     try {
       if (global.TTS && TTS.speak) {
         TTS.speak(PHONEMES[letter] || letter, Object.assign({ rate: 0.6, priority: true }, opts));
       }
     } catch (e) {}
+  }
+
+  function sayPhoneme(letter, opts) {
+    const slug = PHONEME_MP3[letter];
+    if (slug) {
+      try {
+        if (phonemeAudio) { phonemeAudio.pause(); phonemeAudio.currentTime = 0; }
+        const a = new Audio('sounds/phonemes/' + slug + '.mp3');
+        a.volume = 0.9;
+        a.onerror = () => ttsPhoneme(letter, opts);
+        a.play().catch(() => ttsPhoneme(letter, opts));
+        phonemeAudio = a;
+        return;
+      } catch (e) { /* fallthrough TTS */ }
+    }
+    ttsPhoneme(letter, opts);
   }
 
   // ── chain(id) : jeu précédent/suivant dans l'ordre du catalogue (chantier

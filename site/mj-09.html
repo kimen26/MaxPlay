@@ -18,21 +18,6 @@
 
     #app { display:flex; flex-direction:column; height:100dvh; max-width:1000px; margin:0 auto; }
 
-    #levelbar { font-weight:900; color:var(--gold); background:var(--gold-soft); border-radius:10px; padding:3px 12px; font-size:0.85rem; }
-
-    /* Progress */
-    .scorebar { padding:6px 14px; background:rgba(0,0,0,0.2); flex-shrink:0; }
-    .progress-bar { width:100%; height:10px; background:rgba(255,255,255,0.15); border-radius:5px; overflow:hidden; }
-    .progress-fill {
-      height:100%; border-radius:5px;
-      background: linear-gradient(90deg, #00c47a, #ffe066, #ff6b6b);
-      background-size:200% 100%;
-      animation:shimmer 2s infinite;
-      transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
-    }
-    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
-    .bus-count { text-align:center; font-size:0.8rem; color:rgba(255,255,255,0.8); margin-top:4px; font-weight:700; }
-
     /* Layout principal */
     .game-area { flex:1; display:flex; gap:0; overflow:hidden; }
 
@@ -157,10 +142,6 @@
   <div class="hdr">
     <a href="index.html" class="back">←</a>
     <span class="htitle">🗂️ Trie les bus !</span>
-  </div>
-  <div class="scorebar">
-    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
-    <div class="bus-count" id="busCount">Bus rangés : 0 / 0</div>
   </div>
   <div class="game-area">
     <div id="busZone"><div class="zone-label">← Glisse dans la bonne boîte</div></div>
@@ -543,7 +524,6 @@ function highlightBox(bus) {
     bus.el.classList.add('parked');
     sndOk();
     setTimeout(() => speakLine(bus.line), 150);
-    if (window.MaxFX) { const cnt = document.getElementById('busCount'); if (cnt) MaxFX.markPoint(bus.el, cnt, { style:'bounce', result:'green' }); }
 
     // Ajouter mini-bus dans la boîte
     const parkedZone = document.getElementById('parked-' + box.id);
@@ -554,9 +534,10 @@ function highlightBox(bus) {
     boxCounts[box.id]++;
     document.getElementById('cnt-' + box.id).textContent = boxCounts[box.id];
 
-    G.notePip(rangedCount, hadAnyWrong ? 2 : 1);
+    // Piste golden : le jeton MaxFX part du bus vers la pastille correspondante
+    // (remplace l'ancien envoi vers #busCount/scorebar — migration gabarit 2026-07-28)
+    G.notePip(rangedCount, hadAnyWrong ? 2 : 1, bus.el);
     rangedCount++;
-    updateProgress();
 
     if (rangedCount >= totalBuses) {
       setTimeout(() => {
@@ -580,12 +561,6 @@ function highlightBox(bus) {
       bus.x = bus.initX; bus.y = bus.initY;
       setTimeout(() => { bus.el.style.transition=''; bus.el.classList.remove('wrong'); }, 320);
     }, 40);
-  }
-
-  function updateProgress() {
-    const pct = (rangedCount / totalBuses) * 100;
-    document.getElementById('progressFill').style.width = pct + '%';
-    document.getElementById('busCount').textContent = `Bus rangés : ${rangedCount} / ${totalBuses}`;
   }
 
   // ── Parade victoire ──
@@ -625,12 +600,25 @@ function highlightBox(bus) {
     G.showEnd({ replayUrl: 'mj-09.html' });
   });
 
+  // ── Harnais Playwright (drag trop fragile à scripter — dépose programmatique) ──
+  window.__mjTest = {
+    get state() {
+      return { totalBuses, rangedCount, hadAnyWrong, familiesCount: ACTIVE_FAMILIES.length };
+    },
+    // Range le 1er bus non rangé dans sa bonne boîte (contourne le drag)
+    parkNext() {
+      const bus = buses.find(b => !b.parked);
+      if (!bus) return false;
+      const box = { id: bus.family };
+      parkBus(bus, box);
+      return true;
+    },
+  };
+
   // ── Init ──
   function init() {
     buildBoxes();
     buildBuses();
-    updateProgress();
-    document.getElementById('busCount').textContent = `Bus rangés : 0 / ${totalBuses}`;
 
     // Listeners globaux pointer events (couvrent souris + touch + stylet)
     document.addEventListener('pointermove',   onDragMove);

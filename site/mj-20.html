@@ -168,24 +168,6 @@
     .choice-btn.correct { background:rgba(76,175,80,0.3); border-color:var(--ok); }
     .choice-btn.wrong   { background:rgba(255,107,107,0.25); border-color:#ff6b6b; }
 
-    /* Score bar */
-    .score-bar {
-      width:100%;
-      display:flex; gap:6px; align-items:center;
-    }
-    .score-pip {
-      width:26px; height:12px; border-radius:6px;
-      background:rgba(255,255,255,0.2);
-      transition:background 0.3s;
-    }
-    .score-pip.ok   { background:var(--ok); }
-    .score-pip.miss { background:#ff6b6b; }
-    .score-label {
-      color:rgba(255,255,255,0.7);
-      font-size:0.8rem; font-weight:900;
-      margin-left:auto;
-    }
-
     /* ========== PROGRESSION ========== */
     #progressPanel {
       width:100%;
@@ -231,16 +213,6 @@
     .tier-dot.locked-dot { border-color:rgba(255,255,255,0.18); }
     .lang-prog-lock { font-size:1.3rem; opacity:0.5; }
     .lang-prog-next { font-size:0.7rem; color:var(--gold); font-weight:700; margin-top:3px; }
-
-    /* Streak */
-    .streak-badge {
-      background:rgba(255,165,0,0.22);
-      border:2px solid rgba(255,165,0,0.5);
-      border-radius:20px;
-      padding:4px 12px;
-      font-size:0.85rem; font-weight:900; color:var(--gold);
-      white-space:nowrap; flex-shrink:0;
-    }
 
     /* Quiz lang row */
     .quiz-lang-row {
@@ -299,41 +271,11 @@
       to   { transform:translateX(-50%) translateY(0); opacity:1; }
     }
 
-    /* Victory */
-    #victoryScreen {
-      display:none;
-      position:fixed; inset:0;
-      background:rgba(0,0,0,0.85);
-      z-index:200;
-      flex-direction:column; align-items:center; justify-content:center;
-      gap:18px; padding:20px;
-    }
-    #victoryScreen.show { display:flex; }
-    .victory-emoji { font-size:3.5rem; }
-    .victory-title {
-      font-size:2.2rem; font-weight:900; text-align:center;
-      text-shadow:3px 3px 0 rgba(0,0,0,0.3);
-    }
-    .victory-msg {
-      color:rgba(255,255,255,0.85);
-      font-size:1.05rem; font-weight:700;
-      text-align:center; max-width:340px; line-height:1.4;
-    }
-    .victory-score { color:var(--gold); font-size:1.5rem; font-weight:900; }
-    .replay-btn {
-      background:linear-gradient(135deg,var(--ok),#2E7D32);
-      color:#fff; border:none; border-radius:28px;
-      padding:16px 36px;
-      font-family:'Nunito',sans-serif;
-      font-size:1.2rem; font-weight:900;
-      cursor:pointer; touch-action:manipulation;
-      box-shadow:0 6px 20px rgba(76,175,80,0.4);
-    }
-
     .hidden { display:none !important; }
   </style>
 </head>
 <body>
+<div id="app">
 
   <div class="hdr">
     <a href="index.html">&#8592;</a>
@@ -392,6 +334,7 @@
     </div>
 
   </div>
+</div>
 
   <div class="feedback" id="feedback">
     <div class="feedback-emoji" id="feedbackEmoji"></div>
@@ -561,37 +504,6 @@
     // Pool actif pour le quiz : langues débloquées (tier >= 1)
     function buildQuizPool() {
       return LANGS.filter(l => isLangActive(l.code));
-    }
-
-    // ─── Streak ────────────────────────────────────────────────────────────────
-    const STREAK_KEY = 'mj20_streak';
-
-    function getStreak() {
-      try {
-        return JSON.parse(localStorage.getItem(STREAK_KEY) || '{"count":0,"last":""}');
-      } catch(e) { return { count: 0, last: '' }; }
-    }
-
-    function touchStreak() {
-      const today = new Date().toDateString();
-      const s = getStreak();
-      if (s.last === today) return s.count;
-      const yesterday = new Date(Date.now() - 86400000).toDateString();
-      const newCount = s.last === yesterday ? s.count + 1 : 1;
-      const updated = { count: newCount, last: today };
-      try { localStorage.setItem(STREAK_KEY, JSON.stringify(updated)); } catch(e) {}
-      return newCount;
-    }
-
-    function renderStreakBadge() {
-      const s = getStreak();
-      const badge = document.getElementById('streakBadge');
-      if (s.count >= 1) {
-        badge.textContent = `🔥 ${s.count}j`;
-        badge.style.display = '';
-      } else {
-        badge.style.display = 'none';
-      }
     }
 
     // ─── État UI ──────────────────────────────────────────────────────────────
@@ -911,15 +823,7 @@
       }).join('');
     }
 
-    // ─── Victoire ─────────────────────────────────────────────────────────────
-    const VICTORY_DATA = [
-      { min:10, max:10, emoji:'', title:'PARFAIT !!!', msg:'10 sur 10 ! Tu parles toutes les langues !',  sound:'victory' },
-      { min:8,  max:9,  emoji:'', title:'Super !', msg:'Presque parfait ! Tu deviens polyglotte !',    sound:'bravo' },
-      { min:6,  max:7,  emoji:'', title:'Bien joué !', msg:"C’est bien ! Continue comme ça !",             sound:'ding' },
-      { min:4,  max:5,  emoji:'', title:'Pas mal !',   msg:'Tu peux encore progresser !',                   sound:'ding' },
-      { min:0,  max:3,  emoji:'', title:'On réessaie ?',msg:'Entraîne-toi en mode Apprendre !',             sound:'buzz' },
-    ];
-
+    // ─── Victoire : écran de fin STANDARD (gabarit golden, plus d'écran maison) ──
     function showVictory() {
       G.showEnd({ replayUrl: 'mj-20.html' });
     }

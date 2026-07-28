@@ -599,6 +599,16 @@
         LEVELS.forEach(l => l.pieces.forEach(p => seenPieces.add(p.type))); // évite les intros bloquantes en test
         loadLevelById(id);
       },
+      // Force la fin de partie STANDARD (G.showEnd) sans rejouer les 19 niveaux
+      // un par un — même garde `isLastLevel` que triggerVictory() en jeu réel.
+      forceLastLevelWin() {
+        loadLevelById(LEVELS[LEVELS.length - 1].id);
+        state.won = true;
+        progress.done[state.levelId] = true;
+        saveProgress(progress);
+        G.notePip(LEVELS.length - 1, 1);
+        G.showEnd({ replayUrl: 'mj-37.html' });
+      },
     };
 
     // ── Démarrage ─────────────────────────────────────────────────────

@@ -18,4 +18,23 @@ export async function run({ page, ok }) {
   await page.waitForSelector('.bus-draggable', { timeout: 5000 });
   const buses = await page.locator('.bus-draggable').count();
   ok('Niveau 1 = 6 bus à trier', buses === 6, `buses=${buses}`);
+
+  // ── Chemin gagnant : ranger tous les bus (programmatique, drag trop fragile) ──
+  for (let i = 0; i < buses; i++) {
+    await page.evaluate(() => window.__mjTest.parkNext());
+    await page.waitForTimeout(60);
+  }
+  const sFin = await page.evaluate(() => window.__mjTest.state);
+  ok('Tous les bus rangés', sFin.rangedCount === 6, `ranged=${sFin.rangedCount}`);
+
+  // ── Défilé victoire (récap par famille) puis écran de fin STANDARD ──
+  await page.waitForSelector('.parade-overlay.show', { timeout: 5000 });
+  ok('Défilé de victoire affiché', (await page.locator('.parade-overlay.show').count()) === 1);
+  await page.click('#paradeContinueBtn');
+  await page.waitForSelector('.end-wrap', { timeout: 5000 });
+  ok('écran de fin STANDARD (.end-wrap, plus d’écran maison)', (await page.locator('.end-wrap').count()) === 1);
+
+  // ── Plus de scorebar/levelbar maison (remplacés par la piste golden) ──
+  ok('plus de scorebar maison', (await page.locator('.scorebar').count()) === 0);
+  ok('plus de bandeau levelbar maison', (await page.locator('#levelbar').count()) === 0);
 }

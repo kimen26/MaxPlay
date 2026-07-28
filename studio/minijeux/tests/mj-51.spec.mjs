@@ -37,6 +37,14 @@ export async function run({ page, ok }) {
   ok('Overlay de fin affiché', (await page.locator('.fin-overlay.show').count()) === 1);
   ok('Familles récapitulées (allographes)', (await page.locator('.fin-row').count()) === 2);
 
+  // ── Continuer → écran de fin STANDARD (gabarit golden, plus d'écran maison) ──
+  await page.click('#finContinueBtn');
+  await page.waitForSelector('.end-wrap', { timeout: 5000 });
+  ok('écran de fin STANDARD (.end-wrap)', (await page.locator('.end-wrap').count()) === 1);
+
+  // ── Plus de scorebar maison (remplacée par la piste golden) ──
+  ok('plus de scorebar maison', (await page.locator('.scorebar').count()) === 0);
+
   // ── Zéro mot punitif ──
   const punitive = await page.evaluate(() => /perdu|raté|échec/i.test(document.body.innerText));
   ok('Zéro mot punitif', punitive === false);

@@ -69,4 +69,15 @@ export async function run({ page, ok }) {
   ok('Texte de règle correspond', regleTexte === 'Déplace ta pièce pour croquer tous les goûters !', regleTexte);
   await page.click('#ri-close'); // v3 : fermeture explicite ✕ (panneau bottom-sheet)
   ok('Modal règle fermée au tap', await page.locator('#ri-overlay.show').count() === 0);
+
+  // Migration gabarit (fin de partie STANDARD) : le petit overlay "Bravo"
+  // (#victory-overlay) n'est que la célébration INTERMÉDIAIRE entre 2 niveaux —
+  // la fin du DERNIER niveau doit passer par G.showEnd (.end-wrap), jamais par
+  // un overlay de fin de partie maison.
+  await page.evaluate(() => window.__mjTest.forceLastLevelWin());
+  await page.waitForSelector('.end-wrap', { timeout: 4000 });
+  ok('fin de partie STANDARD (.end-wrap) affichée au dernier niveau', (await page.locator('.end-wrap').count()) === 1);
+  // G.showEnd() remplace tout #app (donc aussi #victory-overlay, qui y vivait) —
+  // l'overlay "Bravo" intermédiaire ne doit plus exister du tout à la fin réelle.
+  ok('overlay "Bravo" intermédiaire absent à la fin réelle', (await page.locator('#victory-overlay').count()) === 0);
 }

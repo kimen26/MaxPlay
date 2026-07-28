@@ -42,4 +42,16 @@ export async function run({ page, ok }) {
   }
   const donePips = await page.locator('#pips .pip[class*="done-"]').count();
   ok('score avance après 3 bonnes réponses (3 billes golden marquées)', donePips === 3, `pips=${donePips}`);
+
+  // ── Terminer les 10 manches → écran de fin STANDARD (plus d'écran maison) ──
+  for (let i = 0; i < 7; i++) {
+    await page.waitForSelector('.choice-btn[data-correct="1"]', { timeout: 4000 });
+    await page.click('.choice-btn[data-correct="1"]');
+    await page.waitForTimeout(2700);
+  }
+  await page.waitForSelector('.end-wrap', { timeout: 8000 });
+  ok('écran de fin STANDARD (.end-wrap, plus d’écran maison)', (await page.locator('.end-wrap').count()) === 1);
+
+  // ── Dead code retiré : plus d'ancien écran victoire maison ──
+  ok('plus de #victoryScreen maison', (await page.locator('#victoryScreen').count()) === 0);
 }

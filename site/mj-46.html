@@ -94,16 +94,6 @@
     }
     @keyframes pastillePop { from { transform: translateX(-50%) scale(0); } to { transform: translateX(-50%) scale(1); } }
 
-    /* Bébé dino qui surgit de l'œuf (éclosion) */
-    .baby {
-      position: absolute; bottom: 6px; left: 50%; transform: translateX(-50%);
-      width: calc(var(--egg, 60px) * 1.15); display: none;
-      filter: drop-shadow(0 6px 8px rgba(0,0,0,.45));
-      z-index: 3; pointer-events: none;
-    }
-    .baby.pop { display: block; animation: babyPop .5s cubic-bezier(.34,1.56,.64,1) both; }
-    @keyframes babyPop { 0% { transform: translateX(-50%) scale(0) translateY(20px); } 70% { transform: translateX(-50%) scale(1.15) translateY(-6px); } 100% { transform: translateX(-50%) scale(1) translateY(0); } }
-
     /* Indice de méthode (aide, jamais la réponse) */
     .hint { text-align: center; font-weight: 800; color: var(--gold, #ffe066); font-size: 0.95rem; min-height: 1.3em; opacity: 0; transition: opacity .2s; padding: 2px 12px 0; }
     .hint.show { opacity: 1; }
@@ -143,6 +133,7 @@
   <!-- moteur commun "Compte les …" (tirage palier + distracteurs proches + retry) -->
   <script src="js/avatars.js"></script>
   <script src="js/mj-compte.js"></script>
+  <script src="js/say-nombres.js"></script>
   <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
   <script src="js/mj-shell.js"></script>
   <script>
@@ -159,14 +150,6 @@
       { min: 5, max: 15 },  // N1 : 5→15
       { min: 7, max: 22 },  // N2 : 7→22
     ];
-
-    // Bébés dinos qui éclosent = AVATARS low-poly (décision PY 2026-07-21 :
-    // jamais de sprite réaliste dans une scène de jeu). Pool = créatures du
-    // manifeste avatars.js, sans les éléments (volcan, lave, œuf…).
-    const AV_EXCLUS = ['oeuf', 'vague', 'cendre', 'lave', 'meteorite', 'volcan'];
-    const TETES = (window.MAXPLAY_AVATARS || [])
-      .filter(a => AV_EXCLUS.indexOf(a.id) === -1 && a.moods && a.moods.joyeux && a.moods.joyeux.length)
-      .map(a => (window.MAXPLAY_AVATARS_BASE || 'img/avatars/') + a.moods.joyeux[0]);
 
     const G = Golden.setup(GAME_ID);   // G.level = Math.min(2, étoiles) · G.totalQ = 4/6/8
     const MAX_Q = G.totalQ;
@@ -200,26 +183,14 @@
             d: 'Une pastille jaune se pose dessus : 1, 2, 3… et l’œuf se fissure !' },
           { t: 'Le dernier chiffre dit le total 🗣️',
             d: 'Le chiffre du dernier œuf, c’est combien il y a d’œufs en tout !' },
-          { t: 'Quand c’est juste… les œufs éclosent 🐣',
-            d: 'Des bébés dinos sortent des œufs ! Plus j’ai d’étoiles, plus il y a d’œufs à compter.' }
+          { t: 'Quand c’est juste… les œufs dansent 🥚',
+            d: 'Ils frétillent et se fissurent ! Et à la fin je gagne un œuf pour mon nid — il éclora sur l’accueil.' }
         ]
       }
     });
 
     function sfx(src, vol) {
       try { const a = new Audio(src); a.volume = vol || 0.55; a.play().catch(() => {}); } catch (e) {}
-    }
-
-    // Fanfare d'éclosion (retour PY 2026-07-21) : craquement identique à chaque œuf
-    // + cri de bébé dino VARIÉ (pioché sans répétition immédiate dans un petit pool)
-    // pour que l'enchaînement sonne comme une fanfare plutôt qu'une boucle.
-    const BABY_CRIES = ['dino-bebe.mp3', 'dino-bebe-2.mp3', 'dino-bebe-3.mp3'];
-    let lastCry = -1;
-    function nextCry() {
-      let idx = Math.floor(Math.random() * BABY_CRIES.length);
-      if (BABY_CRIES.length > 1 && idx === lastCry) idx = (idx + 1) % BABY_CRIES.length;
-      lastCry = idx;
-      return BABY_CRIES[idx];
     }
 
     function eggSize(n) { return n <= 6 ? 58 : (n <= 10 ? 50 : (n <= 14 ? 44 : 38)); }
@@ -292,7 +263,6 @@
       const slotW = Math.max(80, egg), slotH = Math.max(80, egg * 1.55);
       // aligné en BAS : les œufs sont posés dans le nid, pas flottants en haut
       const ox = (W - cols * cell) / 2, oy = H - rows * cell;
-      const babies = _shuffle([...TETES]);
       const order = _shuffle([...Array(total).keys()]);   // apparition désordonnée, pas ligne par ligne
       const placed = [];   // {x, y} en coordonnées top-left de l'œuf (pas du slot)
 
@@ -327,7 +297,7 @@
         slot.style.top = (best.y + eggH - slotH) + 'px';
         slot.style.zIndex = i + 1;   // z-order cohérent avec l'ordre de grille (pas l'ordre d'apparition)
         slot.style.animationDelay = `${order[i] * 0.08}s`;
-        slot.innerHTML = `<div class="egg" style="transform:rotate(${rot.toFixed(1)}deg)"></div><img class="baby" src="${babies[i % babies.length]}" alt="bébé dino">`;
+        slot.innerHTML = `<div class="egg" style="transform:rotate(${rot.toFixed(1)}deg)"></div>`;
         slot.onclick = () => tapEgg(slot);
         box.appendChild(slot);
         setTimeout(() => { if (box.contains(slot)) sndCount(); }, order[i] * 80 + 60);
@@ -385,10 +355,11 @@
       if (res.outcome === 'correct') {
         btn.classList.add('ok');
         sndDing();
-        // Cardinalité : le total est dit ET affiché en gros
-        shell.setConsigne(correctAnswer + ' œufs !');
+        // Cardinalité : le total est dit (vraie voix, banque nombres) ET affiché en gros
+        shell.setConsigne(correctAnswer + ' œufs !', false);
+        if (window.SayNombres) SayNombres.oeufs(correctAnswer);
         G.notePip(qCount - 1, res.attempts, btn);
-        hatchAll(() => setTimeout(nextQuestion, 500));
+        crackParty(() => setTimeout(nextQuestion, 500));
       } else if (res.outcome === 'reveal') {
         btn.classList.add('ko'); btn.disabled = true;
         QcmRetry.revealCorrect(document.getElementById('choices'));
@@ -406,25 +377,20 @@
       }
     }
 
-    // Éclosion : chaque œuf tremble, craque (son), puis le bébé dino surgit
-    function hatchAll(done) {
+    // Célébration : les œufs frétillent et se fissurent — mais n'éclosent PAS.
+    // Retour PY 2026-07-27 (mj-46) : « je ne ferais pas éclore les œufs,
+    // c'est un truc de l'écran d'accueil ! » — l'éclosion vit dans le nid.
+    function crackParty(done) {
       const slots = [...document.querySelectorAll('#eggs .slot')];
       if (!slots.length) { done(); return; }
+      sfx('sounds/fx/dino-oeuf-eclot.mp3', 0.35);      // un seul craquement doux, collectif
       slots.forEach((slot, i) => {
         setTimeout(() => {
           const egg = slot.querySelector('.egg');
-          const baby = slot.querySelector('.baby');
-          const pastille = slot.querySelector('.pastille');
-          egg.classList.add('shake');
-          sfx('sounds/fx/dino-oeuf-eclot.mp3', 0.4);   // craquement (identique, c'est le signal d'action)
-          setTimeout(() => {
-            egg.style.visibility = 'hidden';
-            if (pastille) pastille.style.display = 'none';
-            baby.classList.add('pop');
-            sfx('sounds/fx/' + nextCry(), 0.5);        // cri de bébé dino varié → effet fanfare
-            if (i === slots.length - 1) setTimeout(done, 650);
-          }, 380);
-        }, i * 300);
+          egg.classList.add('shake', 'cracked');
+          setTimeout(() => egg.classList.remove('shake'), 500);
+          if (i === slots.length - 1) setTimeout(done, 650);
+        }, i * 90);
       });
     }
 

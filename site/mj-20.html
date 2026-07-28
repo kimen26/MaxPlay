@@ -818,10 +818,11 @@
           setTimeout(() => showUnlockToast(lang, tier), 800);
         }
 
-        setTimeout(() => speakQuiz(), 300);
-        setTimeout(() => TTS.speak(`C’est ${quizNumber} !`, { lang:'fr-FR', rate:0.85, priority:false }), 1300);
+        // Retour PY 2026-07-27 : « elle dit 4, 4 c'est 4… trop long » —
+        // UNE seule confirmation courte, pas de re-lecture du mot avant.
+        setTimeout(() => TTS.speak(`${quizNumber} !`, { lang:'fr-FR', rate:0.9, priority:false }), 350);
         round++;
-        setTimeout(nextQuizRound, 2600);
+        setTimeout(nextQuizRound, 1800);
 
       } else if (res.outcome === 'reveal') {
         btn.classList.add('wrong'); btn.disabled = true;

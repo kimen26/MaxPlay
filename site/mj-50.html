@@ -89,8 +89,8 @@
     // migrée depuis ce fichier vers le kit 2026-07-25 (mj-50/51/52 harmonisés).
     // Rate lent (0.6) — méthode validée par le POC design-lecture/mockup-01.
     const SONS = MJKit.PHONEMES;
-    // MP3 ElevenLabs dispo (sounds/phonemes/) — fallback TTS sinon (règle d'or audio)
-    const MP3 = { a:'son-a', l:'son-le', m:'son-me', r:'son-re', t:'son-te' };
+    // Audio du son : MJKit.sayPhoneme = MP3 banque (sounds/phonemes/) puis repli TTS.
+    // Plus AUCUNE table MP3 locale ici (factorisation 2026-07-28, retour PY « E accent grave f »).
 
     // Pools par niveau
     const POOL_N0 = ['a','i','o','u','m','s','l','r','f','v'];          // sons simples continus
@@ -140,20 +140,9 @@
     let testMode = false, forcedLevel = null, lastTarget = '';
     function level() { return forcedLevel !== null ? forcedLevel : G.level; }
 
-    // ── Audio : le SON de la lettre (MP3 → fallback TTS lent) ──
-    let curAudio = null;
+    // ── Audio : le SON de la lettre — brique unique MJKit.sayPhoneme (MP3 → TTS) ──
     function playSound(letter) {
-      try { if (curAudio) { curAudio.pause(); curAudio = null; } } catch (e) {}
       badgeEl.classList.remove('pulse'); void badgeEl.offsetWidth; badgeEl.classList.add('pulse');
-      if (MP3[letter]) {
-        try {
-          curAudio = new Audio('sounds/phonemes/' + MP3[letter] + '.mp3');
-          curAudio.volume = 0.9;
-          curAudio.onerror = () => { shell.say ? sayPhoneme(letter) : null; };
-          curAudio.play().catch(() => sayPhoneme(letter));
-          return;
-        } catch (e) {}
-      }
       sayPhoneme(letter);
     }
     function sayPhoneme(letter) {

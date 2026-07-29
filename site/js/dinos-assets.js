@@ -1018,5 +1018,14 @@ window.DINO_ASSETS = {
    "manger": "img/dinos/paleoart/Velociraptor_manger.jpg",
    "paris": "img/dinos/paleoart/Velociraptor_paris.jpg"
   }
+ },
+ "Saurolophus": {
+  "ombre": null,
+  "sprite": null,
+  "tete": null,
+  "avatar": null,
+  "paleoart": {
+   "hero": "img/dinos/paleoart/Saurolophus.jpg"
+  }
  }
 };

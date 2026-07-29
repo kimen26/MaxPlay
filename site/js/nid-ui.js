@@ -168,17 +168,62 @@
     return k ? OMBRE + k + '_ombre.png' : '';
   }
 
-  // ── markup du NID (3 œufs) ──────────────────────────────────────────
+  // ── markup du NID (3 œufs) — NID v4 : chaque œuf est un INDIVIDU ────
+  // teinté à la couleur de sa FAMILLE (l'espèce reste la surprise), stade de
+  // craquement (caresses, cosmétique), accessoires équipés visibles dessous.
+  // Fallback : moteur v1/mock sans eggs() → rendu anonyme historique.
+  function eggList() {
+    try {
+      if (global.Collection && typeof global.Collection.eggs === 'function') return global.Collection.eggs();
+    } catch (e) {}
+    return null;
+  }
+  function crackSpans(stage) {
+    var h = '';
+    for (var i = 1; i <= stage; i++) h += '<span class="nid-crack c' + i + '"></span>';
+    return h;
+  }
+  var ACC_EMOJI = { paille: '🌾', couverture: '🧶', bonnet: '🧢', echarpe: '🧣', etoile: '🌟' };
+  function accEmoji(id) { return ACC_EMOJI[id] || '🎁'; }
+  function eggAccIcons(egg) {
+    if (!egg.acc || !egg.acc.length) return '';
+    var icons = egg.acc.map(function (id) {
+      return '<span class="nid-oeuf-acc-i">' + accEmoji(id) + '</span>';
+    }).join('');
+    return '<div class="nid-oeuf-accs">' + icons + '</div>';
+  }
+
   function nidHtml(state) {
-    var count = state.pending.count || 0;
-    var golden = !!state.pending.golden;
+    var eggs = eggList();
     var slots = '';
-    for (var i = 0; i < 3; i++) {
-      var filled = i < count;
-      var cls = 'nid-oeuf' + (filled ? ' plein' : '') + (filled && golden && i === count - 1 ? ' dore' : '');
-      slots += '<div class="' + cls + '" role="img" aria-label="' + (filled ? 'œuf' : 'emplacement vide') + '"></div>';
+    if (eggs) {
+      for (var i = 0; i < 3; i++) {
+        var egg = eggs[i];
+        if (egg) {
+          var col = egg.familleMeta && egg.familleMeta.color ? egg.familleMeta.color : '';
+          slots += '<div class="nid-oeuf plein' + (egg.golden ? ' dore' : '') + (egg.ready ? ' pret' : '') +
+            (egg.stage ? ' stage-' + egg.stage : '') + '" data-egg="' + i + '"' +
+            (col && !egg.golden ? ' style="--oeuf-c:' + col + ';"' : '') +
+            ' role="img" aria-label="œuf">' + crackSpans(egg.stage) + eggAccIcons(egg) + '</div>';
+        } else {
+          slots += '<div class="nid-oeuf" role="img" aria-label="emplacement vide"></div>';
+        }
+      }
+    } else {
+      // moteur v1 / mock : rendu historique par compteur anonyme
+      var count = state.pending.count || 0;
+      var golden = !!state.pending.golden;
+      for (var j = 0; j < 3; j++) {
+        var filled = j < count;
+        var cls = 'nid-oeuf' + (filled ? ' plein' : '') + (filled && golden && j === count - 1 ? ' dore' : '');
+        slots += '<div class="' + cls + '" role="img" aria-label="' + (filled ? 'œuf' : 'emplacement vide') + '"></div>';
+      }
     }
-    return '<div class="nid-titre"><span class="t-emoji">🥚</span>Le nid</div>' +
+    // pastille sac : nb d'accessoires dispo (lisible sans lire — juste le 🎒)
+    var sacN = 0;
+    try { if (global.Collection && global.Collection.sac) global.Collection.sac().forEach(function (a) { sacN += a.count; }); } catch (e) {}
+    var sacBadge = sacN > 0 ? '<span class="nid-sac-badge" id="nid-sac-badge">🎒' + sacN + '</span>' : '';
+    return '<div class="nid-titre"><span class="t-emoji">🥚</span>Le nid' + sacBadge + '</div>' +
       '<div class="nid-oeufs" id="nid-oeufs">' + slots + '</div>';
   }
 
@@ -469,6 +514,238 @@
     host.classList.add('frise-host');
   }
 
+  // ── clé de flag préfixée profil (même logique que collection.js) ─────
+  function flagKey(name) {
+    try {
+      var raw = localStorage.getItem('maxplay_active_child');
+      var c = raw ? JSON.parse(raw) : null;
+      return name + (c && c.id ? '__' + c.id : '');
+    } catch (e) { return name; }
+  }
+
+  // ─────────────────────────────────────────────────────────────────────
+  //  LA CHAMBRE DES ŒUFS (NID v4, 2026-07-30) — UN écran plein cadre, pas
+  //  un méta-panneau de plus sur le Mur : tap sur le nid → chambre. Les œufs
+  //  en grand, le SAC À DOS s'ouvre sur le côté, le soin = poser un
+  //  accessoire sur un œuf (tap-tap OU drag). Caresse = tap sur l'œuf :
+  //  réaction tendre + craquement visuel — et si l'œuf a déjà 2 accessoires,
+  //  l'amour peut finir le travail (moteur, règle PY 2026-07-30).
+  //  Zéro texte nécessaire pour l'enfant : tout est gestuel/animé.
+  // ─────────────────────────────────────────────────────────────────────
+  var _chambreSel = null; // accessoire sélectionné dans le sac (tap-tap)
+
+  function chambreSupported() {
+    return !!(global.Collection && typeof global.Collection.eggs === 'function'
+      && typeof global.Collection.warmEgg === 'function');
+  }
+
+  function chambreEggHtml(egg) {
+    var col = egg.familleMeta && egg.familleMeta.color ? egg.familleMeta.color : '';
+    var th = egg.needed || 3;
+    var slots = '';
+    for (var i = 0; i < th; i++) {
+      var accId = egg.acc[i];
+      slots += '<span class="ch-slot' + (accId ? ' rempli' : '') + '">' + (accId ? accEmoji(accId) : '') + '</span>';
+    }
+    return '<div class="ch-oeuf" data-egg="' + egg.index + '">' +
+      '<div class="ch-oeuf-visu' + (egg.golden ? ' dore' : '') + (egg.ready ? ' pret' : '') +
+        (egg.stage ? ' stage-' + egg.stage : '') + '"' +
+        (col && !egg.golden ? ' style="--oeuf-c:' + col + ';"' : '') + '>' +
+        crackSpans(egg.stage) +
+      '</div>' +
+      '<div class="ch-slots">' + slots + '</div>' +
+    '</div>';
+  }
+
+  function chambreSacHtml() {
+    var items = [];
+    try { items = global.Collection.sac(); } catch (e) { items = []; }
+    var rows = items.map(function (a) {
+      return '<button type="button" class="ch-acc' + (_chambreSel === a.id ? ' sel' : '') + '" data-acc="' + a.id + '">' +
+        '<span class="ch-acc-e">' + a.emoji + '</span>' +
+        (a.count > 1 ? '<span class="ch-acc-n">' + a.count + '</span>' : '') +
+      '</button>';
+    }).join('');
+    if (!rows) rows = '<div class="ch-sac-vide">🎒</div>'; // vide : juste le sac (gestuel, pas de promesse)
+    return rows;
+  }
+
+  function renderChambre() {
+    var ov = $('chambre-ov');
+    if (!ov) return;
+    var eggs = [];
+    try { eggs = global.Collection.eggs(); } catch (e) { eggs = []; }
+    var eggsHtml = eggs.length
+      ? eggs.map(chambreEggHtml).join('')
+      : '<div class="ch-vide"><div class="ch-vide-oeuf"></div></div>'; // nid vide : emplacement en creux
+    ov.querySelector('.ch-oeufs').innerHTML = eggsHtml;
+    ov.querySelector('.ch-sac-items').innerHTML = chambreSacHtml();
+  }
+
+  function openChambre() {
+    if (!chambreSupported()) return;
+    if ($('chambre-ov')) return;
+    _chambreSel = null;
+    var ov = document.createElement('div');
+    ov.id = 'chambre-ov';
+    ov.innerHTML =
+      '<div class="chambre">' +
+        '<div class="ch-hdr">' +
+          '<button type="button" class="ch-back" aria-label="Retour">←</button>' +
+          '<span class="ch-titre">🥚 La chambre des œufs</span>' +
+        '</div>' +
+        '<div class="ch-oeufs"></div>' +
+        '<div class="ch-sac"><div class="ch-sac-tete">🎒</div><div class="ch-sac-items"></div></div>' +
+      '</div>';
+    document.body.appendChild(ov);
+    renderChambre();
+
+    ov.addEventListener('click', function (ev) {
+      if (ev.target.closest('.ch-back')) { closeChambre(); return; }
+      var accBtn = ev.target.closest('.ch-acc');
+      if (accBtn) {
+        _chambreSel = (_chambreSel === accBtn.dataset.acc) ? null : accBtn.dataset.acc;
+        renderChambre();
+        return;
+      }
+      var eggEl = ev.target.closest('.ch-oeuf');
+      if (eggEl) {
+        var idx = parseInt(eggEl.dataset.egg, 10);
+        if (_chambreSel !== null) placeAcc(idx, _chambreSel, eggEl);
+        else caressEgg(idx, eggEl);
+      }
+    });
+    // drag naturel : pointerdown sur un accessoire → fantôme qui suit le
+    // doigt → relâché sur un œuf = posé (même geste que le drag du Mur).
+    ov.addEventListener('pointerdown', function (ev) {
+      var accBtn = ev.target.closest('.ch-acc');
+      if (!accBtn) return;
+      var accId = accBtn.dataset.acc;
+      var ghost = null;
+      var moved = false;
+      function onMove(e) {
+        if (!ghost) {
+          ghost = document.createElement('div');
+          ghost.className = 'ch-ghost';
+          ghost.textContent = accEmoji(accId);
+          document.body.appendChild(ghost);
+        }
+        moved = true;
+        ghost.style.left = e.clientX + 'px';
+        ghost.style.top = e.clientY + 'px';
+      }
+      function onUp(e) {
+        document.removeEventListener('pointermove', onMove);
+        document.removeEventListener('pointerup', onUp);
+        if (ghost && ghost.parentNode) ghost.parentNode.removeChild(ghost);
+        if (!moved) return; // simple tap : géré par le click (sélection)
+        var under = document.elementFromPoint(e.clientX, e.clientY);
+        var eggEl = under && under.closest ? under.closest('.ch-oeuf') : null;
+        if (eggEl) placeAcc(parseInt(eggEl.dataset.egg, 10), accId, eggEl);
+      }
+      document.addEventListener('pointermove', onMove);
+      document.addEventListener('pointerup', onUp);
+    });
+  }
+
+  function closeChambre() {
+    var ov = $('chambre-ov');
+    if (ov && ov.parentNode) ov.parentNode.removeChild(ov);
+    _chambreSel = null;
+    refresh(); // le nid du Mur reflète les soins faits
+  }
+
+  function placeAcc(eggIndex, accId, eggEl) {
+    var res = null;
+    try { res = global.Collection.warmEgg(eggIndex, accId); } catch (e) { return; }
+    if (!res || !res.ok) { // rien posé (déjà chaud / plus en stock) → petite réaction, jamais de tap mort
+      if (eggEl) reactOeuf(eggEl.querySelector('.ch-oeuf-visu') || eggEl);
+      return;
+    }
+    _chambreSel = null;
+    try { var s = new Audio('sounds/fx/pop-apparition.mp3'); s.volume = 0.5; s.play().catch(function () {}); } catch (e) {}
+    renderChambre();
+    var visu = document.querySelector('.ch-oeuf[data-egg="' + eggIndex + '"] .ch-oeuf-visu');
+    if (visu) reactOeuf(visu); // l'œuf remercie (coucou + cœur)
+    if (res.ready) setTimeout(function () { hatchInChambre(eggIndex); }, 900);
+  }
+
+  function caressEgg(eggIndex, eggEl) {
+    var res = null;
+    try { res = global.Collection.caress(eggIndex); } catch (e) { return; }
+    var visu = eggEl.querySelector('.ch-oeuf-visu') || eggEl;
+    reactOeuf(visu);
+    if (res && res.stage) { // craquement visuel persistant (cosmétique, 3 stades)
+      visu.classList.remove('stage-1', 'stage-2', 'stage-3');
+      visu.classList.add('stage-' + res.stage);
+      visu.innerHTML = crackSpans(res.stage);
+    }
+    // l'amour a fini le travail (2 accessoires + caresses, random moteur)
+    if (res && (res.loveJustWarmed || res.ready)) setTimeout(function () { hatchInChambre(eggIndex); }, 900);
+  }
+
+  function hatchInChambre(eggIndex) {
+    if (hatchInProgress) return;
+    var eggEl = document.querySelector('.ch-oeuf[data-egg="' + eggIndex + '"] .ch-oeuf-visu');
+    if (!eggEl || !global.MaxFX) return;
+    var result = null;
+    try { result = global.Collection.hatchEgg(eggIndex); } catch (e) { return; }
+    if (!result) return;
+    hatchInProgress = true;
+    if (result.type !== 'doublon' && result.id) _justGainedId = result.id;
+    runHatchSequence(eggEl, result).then(function () {
+      hatchInProgress = false;
+      renderChambre();
+      refresh();
+    });
+  }
+
+  // ─────────────────────────────────────────────────────────────────────
+  //  THÉÂTRE DU 1er ŒUF (onboarding nid, 2026-07-30) — one-shot par profil.
+  //  Au retour sur le Mur avec son tout premier œuf : le nid « apparaît »,
+  //  l'œuf y tombe, puis DÉMO GESTUELLE (pas de texte enfant, Max ne lit
+  //  pas couramment) : un accessoire fantôme se pose sur l'œuf, un cœur
+  //  monte. Une seule phrase courte (pour l'adulte présent). Tap = passer,
+  //  jamais bloquant (auto-fin ~6s).
+  // ─────────────────────────────────────────────────────────────────────
+  function maybeNidIntro() {
+    if (!chambreSupported()) return;
+    var KEY = flagKey('maxplay_nid_intro');
+    try { if (localStorage.getItem(KEY)) return; } catch (e) { return; }
+    var eggs = [];
+    try { eggs = global.Collection.eggs(); } catch (e) { return; }
+    if (!eggs.length) return;
+    try { localStorage.setItem(KEY, '1'); } catch (e) {}
+
+    var egg = eggs[0];
+    var col = egg.familleMeta && egg.familleMeta.color ? egg.familleMeta.color : '#f5e3c2';
+    var ov = document.createElement('div');
+    ov.id = 'nid-intro-ov';
+    ov.innerHTML =
+      '<div class="ni-scene">' +
+        '<div class="ni-nid">🪺</div>' +
+        '<div class="ni-oeuf" style="--oeuf-c:' + col + ';"></div>' +
+        '<div class="ni-acc">🧶</div>' +
+        '<div class="ni-coeur">💛</div>' +
+        '<div class="ni-txt">Un œuf ! Garde-le au chaud dans le nid.</div>' +
+      '</div>';
+    document.body.appendChild(ov);
+    var done = false;
+    function finish() {
+      if (done) return;
+      done = true;
+      ov.style.transition = 'opacity .3s';
+      ov.style.opacity = '0';
+      setTimeout(function () {
+        if (ov.parentNode) ov.parentNode.removeChild(ov);
+        // atterrissage : on ouvre la chambre — la routine de soin commence LÀ
+        openChambre();
+      }, 310);
+    }
+    ov.addEventListener('click', finish);
+    setTimeout(finish, 6000);
+  }
+
   // ── init / refresh ───────────────────────────────────────────────────
   function refresh() {
     if (!global.Collection) return;
@@ -504,6 +781,9 @@
       try { p = global.Collection ? global.Collection.pending() : null; } catch (e) {}
       var lastIsGolden = !!(p && p.count >= 3 && p.golden > 0);
       setTimeout(playHatchIfReady, lastIsGolden ? 1600 : 300);
+      // Théâtre du 1er œuf (one-shot par profil) — après le rendu du nid,
+      // seulement si aucune éclosion n'est déjà en train de se jouer.
+      setTimeout(function () { if (!hatchInProgress) maybeNidIntro(); }, lastIsGolden ? 2000 : 700);
     });
     // re-render si mur.js rafraîchit (retour repaire→mur, storage event…)
     // navigation .frise-jeu / .rep-jeu / .mur-mini déjà gérée par le
@@ -521,8 +801,16 @@
         }
         return;
       }
+      // NID v4 : tap sur le nid du Mur (œuf OU bloc) → la CHAMBRE DES ŒUFS
+      // (la routine de soin vit là, pas sur le Mur). Fallback moteur v1/mock :
+      // réaction tendre historique (jamais de tap mort).
       var oeuf = ev.target.closest('.nid-oeuf.plein');
-      if (oeuf) { reactOeuf(oeuf); return; }
+      if (oeuf) {
+        if (chambreSupported()) openChambre(); else reactOeuf(oeuf);
+        return;
+      }
+      var nidBloc = ev.target.closest('#nid-host');
+      if (nidBloc && chambreSupported()) { openChambre(); return; }
     });
   }
 

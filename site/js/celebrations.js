@@ -1275,7 +1275,10 @@
     var cx = W / 2, cy = H * 0.4;
     var toP = opts.toEl ? center(opts.toEl, ov) : center(el, ov);
     var eggSize = Math.min(W, H) * 0.4;
-    var col = gold ? C.gold : C.accent;
+    // NID v4 (2026-07-30) : opts.color = teinte FAMILLE de l'œuf (le doré
+    // reste prioritaire) · opts.emoji = visuel custom (accessoire de soin
+    // gagné à la place d'un œuf quand le nid est plein — même théâtre).
+    var col = gold ? C.gold : (opts.color || C.accent);
 
     // son court (banque existante, jamais de nouveau réseau)
     try {
@@ -1288,7 +1291,7 @@
     anim(flash, [{ opacity: 1 }, { opacity: 0 }], { duration: 500, easing: 'ease-out', fill: 'forwards' });
 
     // le gros œuf (emoji, cohérent avec le nid sur le Mur)
-    var egg = mk(ov, at(cx, cy, eggSize) + 'font-size:' + eggSize + 'px;line-height:1;filter:drop-shadow(0 10px 24px rgba(0,0,0,.5)) drop-shadow(0 0 26px ' + col + ');', '🥚');
+    var egg = mk(ov, at(cx, cy, eggSize) + 'font-size:' + eggSize + 'px;line-height:1;filter:drop-shadow(0 10px 24px rgba(0,0,0,.5)) drop-shadow(0 0 26px ' + col + ');', opts.emoji || '🥚');
     fxp.burst(cx, cy, gold ? 30 : 18, gold ? [C.gold, '#fff3d1'] : [C.accent, '#ffffff'], 3);
 
     // Label texte (pas labelEl : sa boîte 240px fixe centre mal un texte

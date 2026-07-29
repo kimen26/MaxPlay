@@ -1,6 +1,8 @@
-// collection.spec.mjs — Chantier NID P1 : moteur de collection (site/js/collection.js)
+// collection.spec.mjs — Moteur de collection v2 (NID v4, 2026-07-30, site/js/collection.js)
 // Playwright + Chromium réel (pas jsdom) : charge une page minimale qui inclut
-// collection.js, pilote l'API via page.evaluate(). Lance :
+// collection.js, pilote l'API via page.evaluate(). Les points RANDOM du contrat
+// (1-2 œufs → pile ou face, caresse-amour 1 chance/3) sont rendus DÉTERMINISTES
+// en stubant Math.random dans la page. Lance :
 //   node studio/minijeux/tests/collection.spec.mjs
 import { chromium } from 'playwright';
 import { fileURLToPath, pathToFileURL } from 'node:url';
@@ -22,16 +24,22 @@ let fail = 0;
 const checks = [];
 const ok = (name, cond, detail = '') => { checks.push([cond, name, detail]); if (!cond) fail++; };
 
-// Petit catalogue de test : 10 items, 2 familles (A = 8 items, B = 2 items).
-// B est donc la famille "rare" (20% la moins représentée).
+// Petit catalogue de test : 10 items, 2 familles (A = 8 items dont 1 star, B = 2 items).
+// a1 = "très connu" (star) pour le contrat de l'œuf doré (PY 2026-07-30).
 function seedItems(page) {
   return page.evaluate(() => {
     const items = [];
-    for (let i = 1; i <= 8; i++) items.push({ id: 'a' + i, nom: 'Item A' + i, famille: 'A' });
+    for (let i = 1; i <= 8; i++) items.push({ id: 'a' + i, nom: 'Item A' + i, famille: 'A', star: i === 1 });
     for (let i = 1; i <= 2; i++) items.push({ id: 'b' + i, nom: 'Item B' + i, famille: 'B' });
-    window.Collection.configure({ items });
+    window.Collection.configure({
+      items,
+      familles: [{ id: 'A', label: 'Famille A', emoji: '🅰️', color: '#c0392b' },
+                 { id: 'B', label: 'Famille B', emoji: '🅱️', color: '#27ae60' }],
+    });
   });
 }
+const rnd = (page, v) => page.evaluate(x => { Math.random = () => x; }, v);
+const reset = async (page) => { await page.evaluate(() => localStorage.clear()); await seedItems(page); };
 
 const browser = await chromium.launch();
 const page = await browser.newPage();
@@ -42,117 +50,196 @@ try {
   await page.goto(pathToFileURL(htmlPath).href);
   await seedItems(page);
 
-  // ── grant → pending ──────────────────────────────────────────────────
-  let p = await page.evaluate(() => { Collection.grantCapsule({}); return Collection.pending(); });
-  ok('1 grant → pending.count === 1', p.count === 1, JSON.stringify(p));
+  // ── règle de drop PY 2026-07-30 : nid vide → ŒUF obligatoire ──────────
+  await rnd(page, 0.9); // même avec un random "accessoire", le nid vide force l'œuf
+  let g = await page.evaluate(() => Collection.grantReward({}));
+  ok('nid vide → gain = ŒUF obligatoire (même random défavorable)', g.type === 'oeuf' && g.granted === true, JSON.stringify(g));
+  ok('l\'œuf a une FAMILLE dès le gain (couleur connue, espèce surprise)',
+     !!g.famille && !!(g.familleMeta && g.familleMeta.color), JSON.stringify(g));
 
-  // ── 3 grants → readyToHatch ──────────────────────────────────────────
-  await page.evaluate(() => { Collection.grantCapsule({}); Collection.grantCapsule({}); });
-  const ready = await page.evaluate(() => { const r = Collection.readyToHatch(); return r; });
-  ok('3 grants → readyToHatch() === true', ready === true);
+  // ── 1-2 œufs → random complet (0.4 → œuf, 0.9 → accessoire) ────────────
+  await rnd(page, 0.4);
+  g = await page.evaluate(() => Collection.grantReward({}));
+  ok('1 œuf au nid + random < .5 → ŒUF', g.type === 'oeuf', JSON.stringify(g));
+  await rnd(page, 0.9);
+  g = await page.evaluate(() => Collection.grantReward({}));
+  ok('2 œufs au nid + random > .5 → ACCESSOIRE', g.type === 'accessoire' && !!g.accessoire, JSON.stringify(g));
+  ok('l\'accessoire du tirage n\'est JAMAIS l\'étoile (source unique = maîtrise)',
+     g.accessoire && g.accessoire.id !== 'etoile', JSON.stringify(g.accessoire));
 
-  // ── hatch consomme et donne un non-possédé ───────────────────────────
-  const afterHatch = await page.evaluate(() => {
-    const item = Collection.hatch();
-    return { item, pending: Collection.pending(), owned: Collection.owned() };
+  // ── nid plein (3) → accessoire obligatoire ──────────────────────────────
+  await rnd(page, 0.1); // random "œuf" mais il faut d'abord remplir le nid
+  await page.evaluate(() => Collection.grantReward({})); // 3e œuf
+  g = await page.evaluate(() => Collection.grantReward({}));
+  ok('nid plein → gain = ACCESSOIRE obligatoire (même random œuf)', g.type === 'accessoire', JSON.stringify(g));
+  let st = await page.evaluate(() => Collection.state());
+  ok('état : 3 œufs + 2 accessoires au sac', st.eggs.length === 3 && st.sac.reduce((n, a) => n + a.count, 0) === 2, JSON.stringify({ eggs: st.eggs.length, sac: st.sac }));
+
+  // ── soin : warmEgg consomme le sac, la chaleur ne fait que monter ──────
+  // 1er œuf de l'histoire (hatchCount=0) → seuil 1 accessoire (théâtre rapide)
+  let th = await page.evaluate(() => Collection.hatchThreshold());
+  ok('tout premier œuf de l\'histoire : seuil d\'éclosion = 1', th === 1, 'seuil=' + th);
+  const accId = st.sac[0].id;
+  let w = await page.evaluate(id => Collection.warmEgg(0, id), accId);
+  ok('warmEgg pose l\'accessoire et rend l\'œuf PRÊT (seuil 1)', w.ok === true && w.ready === true, JSON.stringify(w));
+  st = await page.evaluate(() => Collection.state());
+  ok('l\'accessoire a quitté le sac', st.sac.reduce((n, a) => n + a.count, 0) === 1, JSON.stringify(st.sac));
+
+  // ── éclosion INDIVIDUELLE : cet œuf éclot, les 2 autres RESTENT ────────
+  const hatched = await page.evaluate(() => Collection.hatchEgg(0));
+  st = await page.evaluate(() => Collection.state());
+  ok('hatchEgg retourne un item complet {id,nom,famille}', !!(hatched && hatched.id && hatched.famille), JSON.stringify(hatched));
+  ok('les 2 autres œufs SONT TOUJOURS LÀ (plus jamais de disparition)', st.eggs.length === 2, 'eggs=' + st.eggs.length);
+  ok('item possédé', st.owned.indexOf(hatched.id) !== -1);
+  // (l'appartenance espèce↔famille de l'œuf est couverte par le test doré ci-dessous)
+  th = await page.evaluate(() => Collection.hatchThreshold());
+  ok('après la 1re éclosion : seuil = 3 accessoires', th === 3, 'seuil=' + th);
+
+  // ── caresse : jamais d'éclosion seule, mais à seuil-1 accessoires + 2e
+  //    caresse l'amour PEUT finir le travail (random stubé) ────────────────
+  await rnd(page, 0.9); // caresses "malchanceuses"
+  let c = await page.evaluate(() => Collection.caress(0));
+  ok('caresse sur œuf sans accessoire : stade visuel monte, jamais ready', c.stage === 1 && c.ready === false, JSON.stringify(c));
+  // équipe l'œuf 0 à seuil-1 (2 accessoires) : random .9 → les 2 grants donnent des accessoires
+  await rnd(page, 0.9);
+  await page.evaluate(() => { Collection.grantReward({}); Collection.grantReward({}); }); // 2 accessoires (2 œufs + random .9)
+  st = await page.evaluate(() => Collection.state());
+  const ids = [];
+  st.sac.forEach(a => { for (let i = 0; i < a.count; i++) ids.push(a.id); });
+  w = await page.evaluate(id => Collection.warmEgg(0, id), ids[0]);
+  const w2 = await page.evaluate(id => Collection.warmEgg(0, id), ids[1]);
+  ok('2 accessoires posés (seuil 3) → pas encore prêt', w.ok && w2.ok && w2.ready === false, JSON.stringify({ w, w2 }));
+  c = await page.evaluate(() => Collection.caress(0)); // 2e caresse de cet œuf, random .9 → rien
+  ok('2 acc + caresse malchanceuse → toujours pas prêt', c.ready === false, JSON.stringify(c));
+  await rnd(page, 0.1); // l'amour gagne (< 1/3)
+  c = await page.evaluate(() => Collection.caress(0));
+  ok('2 acc + caresse chanceuse (≥2e) → l\'amour finit le travail (ready)', c.ready === true && c.loveJustWarmed === true, JSON.stringify(c));
+  const loveHatch = await page.evaluate(() => Collection.hatchEgg(0));
+  ok('l\'œuf réchauffé par l\'amour éclot bien', !!(loveHatch && loveHatch.id), JSON.stringify(loveHatch));
+
+  // ── œuf DORÉ = dino TRÈS CONNU (star), n'importe quelle famille ────────
+  await reset(page);
+  await rnd(page, 0.1);
+  const goldenGrant = await page.evaluate(() => {
+    Collection.grantReward({}); Collection.grantReward({});
+    return Collection.grantReward({}); // 3e enchaîné (< 30 min) → doré auto
   });
-  ok('hatch() consomme les 3 capsules (pending revient à 0)', afterHatch.pending.count === 0, JSON.stringify(afterHatch.pending));
-  ok('hatch() retourne un item complet {id,nom,famille}',
-     !!(afterHatch.item && afterHatch.item.id && afterHatch.item.nom && afterHatch.item.famille),
-     JSON.stringify(afterHatch.item));
-  ok('item tiré est maintenant dans owned()', afterHatch.owned.indexOf(afterHatch.item.id) !== -1);
-
-  // ── reset propre pour la suite (nouveau profil de test) ───────────────
-  await page.evaluate(() => { localStorage.clear(); });
-  await seedItems(page);
-
-  // ── série 30 min → dorée (3 grants rapprochés dans le temps réel) ─────
-  const streakRes = await page.evaluate(() => {
-    Collection.grantCapsule({});
-    Collection.grantCapsule({});
-    return Collection.grantCapsule({}); // 3e appel : streakCount%3===0 → doré auto
+  ok('3e gain enchaîné → œuf DORÉ (justGolden)', goldenGrant.type === 'oeuf' && goldenGrant.justGolden === true, JSON.stringify(goldenGrant));
+  ok('famille de l\'œuf doré = famille d\'un très connu (A, star a1)', goldenGrant.famille === 'A', JSON.stringify(goldenGrant));
+  // le doré éclot sur la star : seuil 1 (aucune éclosion encore sur ce profil)
+  const starHatch = await page.evaluate(() => {
+    const st2 = Collection.state();
+    const gIdx = st2.eggs.findIndex(e => e.golden);
+    // pas d'accessoire au sac sur ce profil neuf → on en gagne un (nid plein)
+    Math.random = () => 0.9;
+    const acc = Collection.grantReward({});
+    Collection.warmEgg(gIdx, acc.accessoire.id);
+    return Collection.hatchEgg(gIdx);
   });
-  ok('3e grant enchaîné (< 30 min) → doré automatique', streakRes.golden === 1, JSON.stringify(streakRes));
+  ok('éclosion de l\'œuf doré → dino TRÈS CONNU (star a1)', starHatch && starHatch.id === 'a1', JSON.stringify(starHatch));
 
-  // ── doré → pioche rare (famille B, 2 items sur 10 = 20% les moins représentés) ──
-  const hatchGolden = await page.evaluate(() => Collection.hatch());
-  ok('capsule dorée consommée → item tiré appartient à la famille rare (B)',
-     hatchGolden && hatchGolden.famille === 'B', JSON.stringify(hatchGolden));
+  // ── accessoire ÉTOILE (3e étoile d'un jeu) : permanent, max 1/œuf ──────
+  await reset(page);
+  const mast = await page.evaluate(() => Collection.grantReward({ mastered: true }));
+  ok('mastered:true → accessoire ÉTOILE spécial (remplace le gain)', mast.type === 'accessoire' && mast.accessoire.id === 'etoile' && mast.special === true, JSON.stringify(mast));
+  const etoileFlow = await page.evaluate(() => {
+    Math.random = () => 0.1;
+    Collection.grantReward({}); // œuf (nid vide)
+    const w1 = Collection.warmEgg(0, 'etoile');
+    // 2e étoile sur le MÊME œuf : refusée (il faudrait en re-gagner une de toute façon)
+    Collection.grantReward({ mastered: true });
+    const w2 = Collection.warmEgg(0, 'etoile');
+    const hatchedE = Collection.hatchEgg(0); // seuil 1 (1re éclosion du profil)
+    const after = Collection.state();
+    return { w1, w2, hatchedE, sacAfter: after.sac };
+  });
+  ok('étoile posée sur un œuf', etoileFlow.w1.ok === true, JSON.stringify(etoileFlow.w1));
+  ok('2e étoile sur le MÊME œuf refusée (max 1/œuf)', etoileFlow.w2.ok === false, JSON.stringify(etoileFlow.w2));
+  ok('à l\'éclosion, l\'étoile REVIENT au sac (permanente)',
+     etoileFlow.sacAfter.some(a => a.id === 'etoile' && a.count === 2), JSON.stringify(etoileFlow.sacAfter));
 
   // ── tout possédé → doublon ────────────────────────────────────────────
-  await page.evaluate(() => { localStorage.clear(); });
-  await seedItems(page);
+  await reset(page);
   const doublon = await page.evaluate(() => {
-    // possède tout d'un coup (own() idempotent)
     ['a1','a2','a3','a4','a5','a6','a7','a8','b1','b2'].forEach(id => Collection.own(id));
-    Collection.grantCapsule({}); Collection.grantCapsule({}); Collection.grantCapsule({});
-    return Collection.hatch();
+    Math.random = () => 0.1;
+    Collection.grantReward({});
+    Math.random = () => 0.9;
+    const acc = Collection.grantReward({});
+    Collection.warmEgg(0, acc.accessoire.id);
+    return Collection.hatchEgg(0);
   });
-  ok('collection complète → hatch() retourne {type:"doublon", item}',
+  ok('collection complète → hatchEgg() retourne {type:"doublon", item}',
      doublon && doublon.type === 'doublon' && !!doublon.item, JSON.stringify(doublon));
+
+  // ── migration v1 → v2 : les capsules deviennent des œufs à famille ─────
+  await page.evaluate(() => { localStorage.clear(); });
+  await page.evaluate(() => {
+    localStorage.setItem('maxplay_collection_v1', JSON.stringify({
+      version: 1, owned: ['a2'], pending: [{ golden: false, at: 1 }, { golden: true, at: 2 }],
+      lastGrantAt: 2, streakCount: 2,
+    }));
+  });
+  await seedItems(page);
+  const migrated = await page.evaluate(() => Collection.state());
+  ok('migration v1 : 2 capsules → 2 œufs individuels', migrated.eggs.length === 2, JSON.stringify(migrated.eggs));
+  ok('migration v1 : chaque œuf migré a une famille', migrated.eggs.every(e => !!e.famille), JSON.stringify(migrated.eggs));
+  ok('migration v1 : le doré reste doré', migrated.eggs.some(e => e.golden), JSON.stringify(migrated.eggs));
+  ok('migration v1 : owned conservé + seuil normal (a déjà des dinos)',
+     migrated.owned.indexOf('a2') !== -1 && migrated.hatchCount === 1, JSON.stringify({ owned: migrated.owned, hatchCount: migrated.hatchCount }));
 
   // ── persistance après reload ──────────────────────────────────────────
   await page.evaluate(() => { localStorage.clear(); });
   await seedItems(page);
-  await page.evaluate(() => { Collection.grantCapsule({}); Collection.own('a1'); });
+  await page.evaluate(() => { Math.random = () => 0.1; Collection.grantReward({}); Collection.own('a1'); });
   await page.reload();
-  await seedItems(page); // re-configure le catalogue (configure() n'est pas persisté, c'est voulu — thème-neutre)
+  await seedItems(page);
   const afterReload = await page.evaluate(() => Collection.state());
-  ok('persistance après reload : pending survit', afterReload.pending.count === 1, JSON.stringify(afterReload));
-  ok('persistance après reload : owned survit', afterReload.owned.indexOf('a1') !== -1, JSON.stringify(afterReload));
+  ok('persistance après reload : œuf survit', afterReload.eggs.length === 1, JSON.stringify(afterReload.eggs));
+  ok('persistance après reload : owned survit', afterReload.owned.indexOf('a1') !== -1);
 
   // ── multi-profil isolé (maxplay_active_child) ─────────────────────────
   await page.evaluate(() => { localStorage.clear(); });
   await seedItems(page);
   const multiProfile = await page.evaluate(() => {
+    Math.random = () => 0.1;
     localStorage.setItem('maxplay_active_child', JSON.stringify({ id: 'child-1', nickname: 'Max' }));
     Collection.own('a1');
-    Collection.grantCapsule({});
+    Collection.grantReward({});
     const child1State = Collection.state();
-
     localStorage.setItem('maxplay_active_child', JSON.stringify({ id: 'child-2', nickname: 'Lea' }));
     const child2State = Collection.state();
-    Collection.own('a2');
-    const child2After = Collection.state();
-
     localStorage.setItem('maxplay_active_child', JSON.stringify({ id: 'child-1', nickname: 'Max' }));
     const child1Again = Collection.state();
-
-    return { child1State, child2State, child2After, child1Again };
+    localStorage.removeItem('maxplay_active_child');
+    return { child1State, child2State, child1Again };
   });
   ok('profil 2 démarre vide (pas de fuite depuis profil 1)',
-     multiProfile.child2State.owned.length === 0 && multiProfile.child2State.pending.count === 0,
+     multiProfile.child2State.owned.length === 0 && multiProfile.child2State.eggs.length === 0,
      JSON.stringify(multiProfile.child2State));
-  ok('profil 2 possède a2, pas a1', multiProfile.child2After.owned.indexOf('a2') !== -1 && multiProfile.child2After.owned.indexOf('a1') === -1);
-  ok('retour profil 1 : état intact (a1 possédé, a2 absent)',
-     multiProfile.child1Again.owned.indexOf('a1') !== -1 && multiProfile.child1Again.owned.indexOf('a2') === -1,
-     JSON.stringify(multiProfile.child1Again));
+  ok('retour profil 1 : état intact', multiProfile.child1Again.owned.indexOf('a1') !== -1 && multiProfile.child1Again.eggs.length === 1);
 
-  // ── Bug 2 (arbitrage PY 2026-07-28) : plus d'œuf sur un jeu à 3 étoiles ──
-  // grantCapsule({gameId}) doit consulter window.Stars.get(gameId) et refuser
-  // (granted:false, aucune capsule poussée) si >= 3. Défensif : sans gameId
-  // ni Stars, comportement inchangé (grant normal).
+  // ── anti-farm 3★ étendu : NI œuf NI accessoire sur un jeu maîtrisé ─────
   await page.evaluate(() => { localStorage.clear(); });
   await seedItems(page);
   const antiFarm = await page.evaluate(() => {
     window.Stars = { get: function (id) { return id === 'mj-99' ? 3 : 0; } };
-    const capped = Collection.grantCapsule({ gameId: 'mj-99' });
-    const pendingAfterCapped = Collection.pending();
-    const normal = Collection.grantCapsule({ gameId: 'mj-01' }); // 0 étoile → accordé
-    const pendingAfterNormal = Collection.pending();
+    Math.random = () => 0.9;
+    const capped = Collection.grantReward({ gameId: 'mj-99' });
+    const stateAfterCapped = Collection.state();
+    Math.random = () => 0.1;
+    const normal = Collection.grantReward({ gameId: 'mj-01' });
     delete window.Stars;
-    return { capped, pendingAfterCapped, normal, pendingAfterNormal };
+    return { capped, stateAfterCapped, normal };
   });
-  ok('gameId à 3 étoiles → grantCapsule() refuse (granted:false)', antiFarm.capped.granted === false, JSON.stringify(antiFarm.capped));
-  ok('gameId à 3 étoiles → aucune capsule poussée (pending toujours 0)', antiFarm.pendingAfterCapped.count === 0, JSON.stringify(antiFarm.pendingAfterCapped));
-  ok('gameId à 0 étoile → grantCapsule() accorde normalement', antiFarm.normal.granted === true, JSON.stringify(antiFarm.normal));
-  ok('gameId à 0 étoile → capsule bien poussée (pending === 1)', antiFarm.pendingAfterNormal.count === 1, JSON.stringify(antiFarm.pendingAfterNormal));
+  ok('jeu à 3 étoiles → grantReward refuse (granted:false)', antiFarm.capped.granted === false, JSON.stringify(antiFarm.capped));
+  ok('jeu à 3 étoiles → ni œuf ni accessoire poussé',
+     antiFarm.stateAfterCapped.eggs.length === 0 && antiFarm.stateAfterCapped.sac.length === 0,
+     JSON.stringify({ eggs: antiFarm.stateAfterCapped.eggs.length, sac: antiFarm.stateAfterCapped.sac }));
+  ok('jeu à 0 étoile → gain accordé normalement', antiFarm.normal.granted === true, JSON.stringify(antiFarm.normal));
 
-  const antiFarmDefensive = await page.evaluate(() => {
-    // pas de window.Stars du tout, ni de gameId : comportement historique préservé
-    return Collection.grantCapsule({});
-  });
-  ok('sans Stars ni gameId (défensif) → grant toujours accordé (pas de régression silencieuse)', antiFarmDefensive.granted !== false, JSON.stringify(antiFarmDefensive));
+  const antiFarmDefensive = await page.evaluate(() => Collection.grantCapsule({}));
+  ok('compat v1 : grantCapsule (défensif, sans Stars) → toujours accordé', antiFarmDefensive.granted !== false, JSON.stringify(antiFarmDefensive));
 
   ok('Aucune erreur JS (smoke)', errors.length === 0, errors.join(' | '));
 } catch (e) {

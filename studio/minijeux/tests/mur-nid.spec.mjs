@@ -22,28 +22,64 @@ let fail = 0;
 const checks = [];
 const ok = (name, cond, detail = '') => { checks.push([cond, name, detail]); if (!cond) fail++; };
 
-// Fake Collection : 2 œufs en attente au chargement (pas encore prêt à éclore).
-// Mutable via window.__setPending pour simuler le 3e œuf en cours de test.
+// Fake Collection au contrat v2 (NID v4, validé par collection.spec.mjs) :
+// 2 œufs individuels au chargement (pas encore au chaud). Le hook de test
+// __addEgg simule le 3e œuf + le rend prêt (l'éclosion legacy du Mur passe
+// par readyToHatch()/hatch(), inchangés côté nid-ui).
+// Le théâtre du 1er œuf (one-shot) est neutralisé via le flag maxplay_nid_intro
+// pour ne pas interférer avec les scénarios historiques (testé dans nid-e2e).
 const FAKE_COLLECTION = `
 (function () {
+  try { localStorage.setItem('maxplay_nid_intro', '1'); } catch (e) {}
   var owned = ['triceratops'];
-  var pending = { count: 2, golden: false };
+  var eggs = [
+    { famille: 'raptor', golden: false, acc: [], caresses: 0 },
+    { famille: 'cou_long', golden: false, acc: [], caresses: 0 }
+  ];
+  var sac = ['paille'];
   var streak = 0;
+  var FAM = { raptor: { id: 'raptor', label: 'les chasseurs à griffes', emoji: '🦅', color: '#e67e22' },
+              cou_long: { id: 'cou_long', label: 'les géants à long cou', emoji: '🦒', color: '#27ae60' } };
+  function ready(e) { return e.acc.length >= 3 || !!e.loveWarm; }
   window.Collection = {
-    state: function () { return { owned: owned.slice(), pending: Object.assign({}, pending), streak: streak }; },
-    pending: function () { return Object.assign({}, pending); },
+    state: function () { return { owned: owned.slice(), eggs: this.eggs(), sac: this.sac(), pending: this.pending(), streak: streak }; },
+    pending: function () { return { count: eggs.length, golden: eggs.filter(function (e) { return e.golden; }).length }; },
     owned: function () { return owned.slice(); },
-    readyToHatch: function () { return pending.count >= 3; },
-    hatch: function () {
-      if (pending.count < 3) return null;
-      pending = { count: 0, golden: false };
+    eggs: function () {
+      return eggs.map(function (e, i) {
+        return { index: i, famille: e.famille, familleMeta: FAM[e.famille] || null, golden: e.golden,
+                 acc: e.acc.slice(), caresses: e.caresses, stage: Math.min(3, e.caresses), needed: 3, ready: ready(e) };
+      });
+    },
+    sac: function () { return sac.length ? [{ id: 'paille', nom: 'de la paille', emoji: '🌾', count: sac.length }] : []; },
+    familleInfo: function (id) { return FAM[id] || null; },
+    hatchThreshold: function () { return 3; },
+    readyEggIndex: function () { for (var i = 0; i < eggs.length; i++) if (ready(eggs[i])) return i; return -1; },
+    warmEgg: function (i, accId) {
+      var e = eggs[i]; if (!e || sac.indexOf(accId) === -1 || ready(e)) return { ok: false, ready: !!(e && ready(e)) };
+      sac.splice(sac.indexOf(accId), 1); e.acc.push(accId);
+      return { ok: true, ready: ready(e) };
+    },
+    caress: function (i) {
+      var e = eggs[i]; if (!e) return { stage: 0, ready: false };
+      e.caresses++;
+      return { stage: Math.min(3, e.caresses), ready: ready(e), loveJustWarmed: false };
+    },
+    hatchEgg: function (i) {
+      var e = eggs[i]; if (!e || !ready(e)) return null;
+      eggs.splice(i, 1);
       var picked = 'velociraptor';
       if (owned.indexOf(picked) === -1) owned.push(picked);
       return { id: picked, nom: 'Vélociraptor', famille: 'raptor', rare: false };
     },
+    readyToHatch: function () { return this.readyEggIndex() !== -1; },
+    hatch: function () { return this.hatchEgg(this.readyEggIndex()); },
     own: function (id) { if (owned.indexOf(id) === -1) owned.push(id); },
-    // hook de test uniquement (pas dans le vrai contrat P1)
-    __addEgg: function () { pending = { count: Math.min(3, pending.count + 1), golden: pending.count + 1 >= 3 }; }
+    // hook de test uniquement : 3e œuf PRÊT (au chaud) — l'éclosion du Mur peut se jouer
+    __addEgg: function () {
+      if (eggs.length < 3) eggs.push({ famille: 'raptor', golden: eggs.length + 1 >= 3, acc: ['paille', 'paille', 'paille'], caresses: 0 });
+      else eggs[eggs.length - 1].acc = ['paille', 'paille', 'paille'];
+    }
   };
 })();
 `;
@@ -86,6 +122,37 @@ try {
   ok('les non-possédés sont affichés en ombre', ombres > 0, `count=${ombres}`);
   const lazy = await page.locator('.nid-vig img[loading="lazy"]').count();
   ok('lazy-load posé sur les vignettes (60+ têtes)', lazy > 0);
+
+  // ── 3bis. NID v4 : œufs teintés FAMILLE + chambre des œufs ────────────
+  const tinted = await page.locator('.nid-oeuf.plein[style*="--oeuf-c"]').count();
+  ok('les œufs du Mur sont teintés à la couleur de leur famille (--oeuf-c)', tinted === 2, `count=${tinted}`);
+  await page.click('.nid-oeuf.plein', { force: true });
+  const chambreOpen = await page.waitForSelector('#chambre-ov', { timeout: 3000 }).then(() => true).catch(() => false);
+  ok('tap sur un œuf du nid → la CHAMBRE DES ŒUFS s\'ouvre', chambreOpen);
+  if (chambreOpen) {
+    const chOeufs = await page.locator('#chambre-ov .ch-oeuf').count();
+    ok('la chambre montre les 2 œufs en grand', chOeufs === 2, `count=${chOeufs}`);
+    const chAcc = await page.locator('#chambre-ov .ch-acc').count();
+    ok('le sac latéral montre l\'accessoire dispo', chAcc === 1, `count=${chAcc}`);
+    // soin tap-tap : sélectionne l'accessoire puis tap l'œuf → slot rempli
+    await page.click('#chambre-ov .ch-acc');
+    await page.click('#chambre-ov .ch-oeuf', { force: true });
+    await page.waitForTimeout(300);
+    const slotRempli = await page.locator('#chambre-ov .ch-slot.rempli').count();
+    ok('accessoire posé sur l\'œuf (slot rempli, sac décrémenté)', slotRempli === 1, `count=${slotRempli}`);
+    // caresse (tap sans sélection) : fissure cosmétique apparaît
+    await page.click('#chambre-ov .ch-oeuf', { force: true });
+    await page.waitForTimeout(200);
+    const crack = await page.locator('#chambre-ov .nid-crack').count();
+    ok('caresse → craquement visuel (fissure cosmétique)', crack >= 1, `count=${crack}`);
+    await page.screenshot({ path: resolve(artifacts, 'chambre-oeufs.png') });
+    await page.click('#chambre-ov .ch-back');
+    await page.waitForFunction(() => !document.getElementById('chambre-ov'), null, { timeout: 3000 }).catch(() => {});
+    ok('retour ← ferme la chambre', await page.evaluate(() => !document.getElementById('chambre-ov')));
+    // le nid du Mur reflète le soin (mini-icône accessoire sous l'œuf)
+    const accIcon = await page.locator('.nid-oeuf .nid-oeuf-accs').count();
+    ok('le nid du Mur montre l\'accessoire équipé sous l\'œuf', accIcon >= 1, `count=${accIcon}`);
+  }
 
   // ── 4. Vignettes-aperçu présentes sur les rangées copains ─────────────
   const apercus = await page.locator('.copain .c-apercu').count();
@@ -157,8 +224,9 @@ try {
   // l'éclosion n'a PAS encore démarré (le nid doré est encore visible) alors
   // qu'elle finit par se jouer avant 2500ms (le nid n'est pas bloqué non plus).
   const FAKE_COLLECTION_GOLDEN_READY = FAKE_COLLECTION.replace(
-    "var pending = { count: 2, golden: false };",
-    "var pending = { count: 3, golden: true };"
+    `{ famille: 'cou_long', golden: false, acc: [], caresses: 0 }`,
+    `{ famille: 'cou_long', golden: false, acc: [], caresses: 0 },
+    { famille: 'trex', golden: true, acc: ['paille','paille','paille'], caresses: 0 }`
   );
   const page2 = await browser.newPage({ viewport: { width: 480, height: 900 } });
   const errors2 = [];

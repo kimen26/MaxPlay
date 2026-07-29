@@ -53,8 +53,11 @@ La bille de la question courante est neutre (grise) tant qu'elle n'est pas répo
 
 **Implémentation : brique partagée [`site/js/mj-golden.js`](../../../site/js/mj-golden.js)** (`Golden.setup/buildPips/notePip/showEnd`) + styles dans `css/style.css` § STANDARD GOLDEN. Ne PAS dupliquer cette logique dans un jeu.
 
-**Célébration sans-faute** : l'étoile fait un tour d'écran → **bizou à la caméra** (gros plan + 💋 + son pop) → va se ranger dans la **zone de 3 badges** (avancement) → message « Tu as gagné l'étoile niveau N ! Recommence et essaie de gagner la N+1ᵉ ! » + son Mario MP3 réel + confettis/défilé bus.
-**Sans étoile** (erreurs) : écran encourageant « Bien joué ! Fais un sans-faute pour gagner l'étoile ! » — jamais punitif.
+**Célébration d'étoile (décision PY 2026-07-30 — remplace « toute étoile = grande fête »)** :
+- **1re/2e étoile = DISCRET** : petit vol d'étoile direct vers le badge + ding (`Golden._discreetStar`). Pas de cinématique, pas de Mario.
+- **3e étoile = ÉNORME (une fois par jeu)** : cinématique plein écran + Mario + « **Tu maîtrises ce jeu !** » — et le gain de cette partie est remplacé par l'**accessoire ÉTOILE** permanent du NID (`Collection.grantReward({mastered:true})`, cf. `MECANIQUES.md` § Boucle NID v4).
+**Sans étoile** (erreurs) : écran encourageant, compliment de PROCESSUS — jamais punitif, jamais de récompense promise (D-003).
+**Gain NID de fin de partie** : toujours UN seul gain annoncé (œuf teinté famille OU accessoire de soin), jamais mélangé avec l'étoile — séquence œuf PUIS étoile.
 
 ## Règles d'or NON négociables
 

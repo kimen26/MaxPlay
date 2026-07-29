@@ -575,3 +575,76 @@
   .nid-oeuf.plein, .frise-jeu.reco { animation:none !important; }
   .nid-oeuf.plein.coucou, .nid-oeuf-coeur, .nid-vig.gain-glow, .nid-vig.wobble, .nid-vig-mystere { animation:none !important; }
 }
+
+/* ── NID v4 (2026-07-30) — œufs individuels colorés FAMILLE + chambre ──
+   L'œuf du Mur prend la teinte de sa famille (--oeuf-c posé par nid-ui.js
+   depuis DINO_FAMILLES) : famille connue, espèce surprise. Doré = très connu
+   (garde son style or). Fissures = caresses (cosmétique, 3 stades). */
+.nid-oeuf.plein { --oeuf-c:#f5e3c2; background:linear-gradient(160deg,#fff7e0 10%, var(--oeuf-c) 90%); }
+.nid-oeuf.plein.pret { box-shadow:inset -4px -7px 0 rgba(0,0,0,.1), 0 0 20px rgba(255,255,255,.55); }
+.nid-crack { position:absolute; background:rgba(60,40,10,.5); border-radius:2px; pointer-events:none; }
+.nid-crack.c1 { width:2px; height:26%; left:44%; top:12%; transform:rotate(24deg); }
+.nid-crack.c2 { width:2px; height:20%; left:58%; top:30%; transform:rotate(-38deg); }
+.nid-crack.c3 { width:2px; height:24%; left:32%; top:38%; transform:rotate(52deg); }
+.nid-oeuf-accs { position:absolute; left:50%; bottom:-12px; transform:translateX(-50%); display:flex; gap:1px; font-size:12px; pointer-events:none; }
+.nid-sac-badge { margin-left:auto; font-size:13px; background:rgba(255,255,255,.1); border-radius:999px; padding:2px 8px; }
+
+/* ── CHAMBRE DES ŒUFS — écran plein cadre, sac latéral ── */
+#chambre-ov { position:fixed; inset:0; z-index:60; background:rgba(6,10,22,.96); display:flex; }
+#chambre-ov .chambre { display:flex; flex-direction:column; width:100%; max-width:680px; margin:0 auto; padding:10px 12px; }
+.ch-hdr { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
+.ch-back { width:44px; height:44px; border-radius:50%; border:none; background:rgba(255,255,255,.12); color:var(--ink,#fff); font-size:22px; cursor:pointer; }
+.ch-titre { font-family:'Fredoka One'; font-size:18px; color:var(--ink,#fff); }
+.ch-oeufs { flex:1; display:flex; align-items:center; justify-content:center; gap:20px; flex-wrap:wrap; padding:10px 96px 90px 6px; }
+.ch-oeuf { display:flex; flex-direction:column; align-items:center; gap:10px; min-width:96px; cursor:pointer; }
+.ch-oeuf-visu {
+  --oeuf-c:#f5e3c2; width:96px; height:118px; position:relative;
+  border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
+  background:linear-gradient(160deg,#fff7e0 10%, var(--oeuf-c) 90%);
+  border:3px solid rgba(255,255,255,.4);
+  box-shadow:inset -6px -10px 0 rgba(0,0,0,.1), 0 8px 18px rgba(0,0,0,.4);
+  animation:nid-respire 2.6s ease-in-out infinite;
+}
+.ch-oeuf-visu.dore { background:linear-gradient(160deg,#fff3c4,#ffd166); border-color:var(--gold,#ffd166); box-shadow:inset -6px -10px 0 rgba(0,0,0,.12), 0 0 22px rgba(255,209,102,.55); }
+.ch-oeuf-visu.pret { box-shadow:inset -6px -10px 0 rgba(0,0,0,.1), 0 0 26px rgba(255,255,255,.65); }
+.ch-oeuf-visu.coucou { animation:nid-oeuf-coucou .7s ease-in-out; }
+.ch-slots { display:flex; gap:6px; }
+.ch-slot { width:30px; height:30px; border-radius:50%; border:2px dashed rgba(255,255,255,.3); display:flex; align-items:center; justify-content:center; font-size:16px; }
+.ch-slot.rempli { border-style:solid; border-color:rgba(255,255,255,.55); background:rgba(255,255,255,.1); }
+.ch-vide { display:flex; align-items:center; justify-content:center; }
+.ch-vide-oeuf { width:96px; height:118px; border-radius:50% 50% 50% 50%/60% 60% 40% 40%; border:3px dashed rgba(255,255,255,.25); opacity:.5; }
+.ch-sac { position:absolute; right:0; top:70px; bottom:0; width:88px; display:flex; flex-direction:column; align-items:center; gap:10px; padding:12px 6px; background:rgba(255,255,255,.06); border-radius:18px 0 0 18px; }
+.ch-sac-tete { font-size:26px; }
+.ch-sac-items { display:flex; flex-direction:column; gap:10px; overflow-y:auto; align-items:center; }
+.ch-acc { position:relative; width:56px; height:56px; border-radius:16px; border:2px solid rgba(255,255,255,.2); background:rgba(255,255,255,.08); cursor:pointer; touch-action:none; }
+.ch-acc.sel { border-color:var(--gold,#ffd166); background:rgba(255,209,102,.2); transform:scale(1.08); }
+.ch-acc-e { font-size:26px; }
+.ch-acc-n { position:absolute; right:-4px; top:-4px; min-width:20px; height:20px; border-radius:999px; background:var(--gold,#ffd166); color:#3a2a00; font-weight:900; font-size:12px; display:flex; align-items:center; justify-content:center; padding:0 4px; }
+.ch-sac-vide { font-size:26px; opacity:.35; }
+.ch-ghost { position:fixed; z-index:80; font-size:34px; transform:translate(-50%,-50%); pointer-events:none; filter:drop-shadow(0 4px 8px rgba(0,0,0,.5)); }
+
+/* ── THÉÂTRE DU 1er ŒUF (one-shot) ── */
+#nid-intro-ov { position:fixed; inset:0; z-index:65; background:rgba(6,10,22,.9); display:flex; align-items:center; justify-content:center; }
+.ni-scene { position:relative; width:260px; height:300px; }
+.ni-nid { position:absolute; left:50%; bottom:40px; transform:translateX(-50%); font-size:110px; animation:ni-pop .6s cubic-bezier(.34,1.56,.64,1) both; }
+.ni-oeuf {
+  --oeuf-c:#f5e3c2; position:absolute; left:50%; bottom:105px; margin-left:-24px;
+  width:48px; height:60px; border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
+  background:linear-gradient(160deg,#fff7e0 10%, var(--oeuf-c) 90%);
+  border:2px solid rgba(255,255,255,.5); box-shadow:0 4px 10px rgba(0,0,0,.4);
+  animation:ni-tombe .9s .5s cubic-bezier(.3,0,.6,1.4) both;
+}
+.ni-acc { position:absolute; left:14%; top:6%; font-size:34px; opacity:0; animation:ni-acc-pose 1.4s 1.7s ease-in-out both; }
+.ni-coeur { position:absolute; left:50%; bottom:170px; transform:translateX(-50%); font-size:28px; opacity:0; animation:ni-coeur-bat 1.2s 3.1s ease-out both; }
+.ni-txt { position:absolute; left:0; right:0; bottom:-46px; text-align:center; font-family:'Fredoka One'; font-size:15px; color:var(--ink,#fff); opacity:0; animation:ni-fade .5s 1s both; }
+@keyframes ni-pop { from { transform:translateX(-50%) scale(0); } to { transform:translateX(-50%) scale(1); } }
+@keyframes ni-tombe { from { transform:translateY(-180px) rotate(-14deg); opacity:0; } 60% { opacity:1; } to { transform:translateY(0) rotate(0); opacity:1; } }
+@keyframes ni-acc-pose { 0% { opacity:0; transform:translate(0,0) scale(.8); } 25% { opacity:1; } 100% { opacity:1; transform:translate(74px,168px) scale(.75); } }
+@keyframes ni-coeur-bat { 0% { opacity:0; transform:translate(-50%,8px) scale(.6); } 30% { opacity:1; transform:translate(-50%,-8px) scale(1.2); } 100% { opacity:1; transform:translate(-50%,-14px) scale(1); } }
+@keyframes ni-fade { from { opacity:0; } to { opacity:.85; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ch-oeuf-visu, .ch-oeuf-visu.coucou, .ni-nid, .ni-oeuf, .ni-acc, .ni-coeur { animation:none !important; }
+  .ni-acc { opacity:1; transform:translate(74px,168px) scale(.75); }
+  .ni-coeur, .ni-txt { opacity:1; }
+}

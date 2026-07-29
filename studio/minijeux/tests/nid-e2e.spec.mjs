@@ -118,11 +118,14 @@ try {
   const nextBtn1 = await page.locator('[data-act="next"]').count();
   ok('bouton "La suite" présent (MJKit.chain a un suivant)', nextBtn1 === 1);
 
+  // NID v4 : nid vide → le gain de la 1re partie est FORCÉMENT un œuf,
+  // individuel, avec sa famille (couleur connue dès le gain).
   const capsule1 = await page.evaluate(() => {
     const raw = localStorage.getItem('maxplay_collection_v1');
     return raw ? JSON.parse(raw) : null;
   });
-  ok('capsule 1 persistée en localStorage après la partie', !!capsule1 && capsule1.pending.length === 1,
+  ok('œuf 1 persisté (v2 : eggs[] individuel avec famille)',
+     !!capsule1 && capsule1.version === 2 && capsule1.eggs.length === 1 && !!capsule1.eggs[0].famille,
      JSON.stringify(capsule1));
 
   const nextUrl1 = await page.evaluate(() => {
@@ -133,95 +136,52 @@ try {
 
   await page.screenshot({ path: resolve(artifacts, 'nid-e2e-2-fin-oeuf.png') });
 
-  // ═══ 3. « LA SUITE » → jeu suivant de la chaîne, partie complète ════════
-  await page.click('[data-act="next"]');
-  await page.waitForLoadState('networkidle');
-  const urlAfterNext = page.url();
-  ok('navigation "La suite" a bien changé de page', urlAfterNext.endsWith(nextUrl1) || urlAfterNext.includes(nextUrl1.split('#')[0]),
-     `attendu contient ${nextUrl1}, obtenu ${urlAfterNext}`);
-
-  // Le jeu suivant peut être un golden à choix (.dino-tile) ou un autre gabarit ;
-  // on tente le chemin .dino-tile en priorité (partagé par tous les golden "reconnaissance").
-  const isDinoTileGame = await page.locator('.dino-tile').count().then(n => n > 0).catch(() => false);
-  if (isDinoTileGame) {
-    await playPerfectDinoTileGame(page);
-  } else {
-    // Fallback générique : le jeu suivant n'utilise pas .dino-tile — on ne peut pas
-    // scripter un chemin gagnant générique en boîte noire. On le note explicitement
-    // plutôt que de fabriquer un faux succès.
-    console.log(`\n  ⚠ jeu suivant (${urlAfterNext}) n'utilise pas .dino-tile — chemin gagnant non générique, capsule 2 injectée en localStorage (voir note ci-dessous).\n`);
-  }
-
-  let capsule2;
-  if (isDinoTileGame) {
-    ok('2e écran de fin affiché', (await page.locator('.end-wrap').count()) === 1);
-    capsule2 = await page.evaluate(() => {
-      const raw = localStorage.getItem('maxplay_collection_v1');
-      return raw ? JSON.parse(raw) : null;
-    });
-    ok('capsule 2 persistée après la 2e partie réelle', !!capsule2 && capsule2.pending.length === 2,
-       JSON.stringify(capsule2));
-  } else {
-    // Injection explicite et assumée (mission : "si la durée explose, dis-le clairement").
-    await page.evaluate(() => {
-      const raw = localStorage.getItem('maxplay_collection_v1');
-      const s = raw ? JSON.parse(raw) : { version: 1, owned: [], pending: [], lastGrantAt: null, streakCount: 0 };
-      s.pending.push({ golden: false, at: Date.now() });
-      localStorage.setItem('maxplay_collection_v1', JSON.stringify(s));
-    });
-    capsule2 = await page.evaluate(() => JSON.parse(localStorage.getItem('maxplay_collection_v1')));
-    ok('capsule 2 injectée (2e partie réelle impossible en boîte noire générique) — DIT EXPLICITEMENT',
-       capsule2.pending.length === 2, JSON.stringify(capsule2));
-  }
-
-  // ═══ 4. 3e CAPSULE via mj-28, badge "ça bouge dans le nid" avant retour Mur ═══
-  await page.goto(url('mj-28'), { waitUntil: 'networkidle' });
-  const isDinoTileGame28 = await page.locator('.dino-tile').count().then(n => n > 0).catch(() => false);
-  if (isDinoTileGame28) {
-    await playPerfectDinoTileGame(page);
-    ok('3e écran de fin affiché (mj-28)', (await page.locator('.end-wrap').count()) === 1);
-    // ── 5. badge "ça bouge dans le nid" AVANT le retour au Mur ──────────
-    const badgeCount = await page.locator('.nid-badge').count();
-    ok('badge "ça bouge dans le nid" visible sur l\'écran de fin (3e capsule atteinte)', badgeCount > 0,
-       `count=${badgeCount}`);
-    await page.screenshot({ path: resolve(artifacts, 'nid-e2e-badge-nid-bouge.png') });
-  } else {
-    console.log('\n  ⚠ mj-28 n\'utilise pas .dino-tile — capsule 3 injectée directement (voir note).\n');
-    await page.evaluate(() => {
-      const raw = localStorage.getItem('maxplay_collection_v1');
-      const s = raw ? JSON.parse(raw) : { version: 1, owned: [], pending: [], lastGrantAt: null, streakCount: 0 };
-      s.pending.push({ golden: false, at: Date.now() });
-      localStorage.setItem('maxplay_collection_v1', JSON.stringify(s));
-    });
-  }
-
-  const capsule3 = await page.evaluate(() => {
-    const raw = localStorage.getItem('maxplay_collection_v1');
-    return raw ? JSON.parse(raw) : null;
-  });
-  ok('3 capsules en attente avant retour au Mur (readyToHatch)', !!capsule3 && capsule3.pending.length === 3,
-     JSON.stringify(capsule3));
-
-  const ownedBeforeHatch = capsule3 ? (await page.evaluate(() => {
-    const raw = localStorage.getItem('maxplay_collection_v1');
-    return raw ? JSON.parse(raw).owned.length : 0;
-  })) : 0;
-
-  // ═══ RETOUR AU MUR → ÉCLOSION ════════════════════════════════════════
+  // ═══ 3. RETOUR AU MUR → THÉÂTRE DU 1er ŒUF (one-shot) → CHAMBRE ═════════
   await page.goto(url('index'), { waitUntil: 'networkidle' });
   await page.waitForFunction(() => !!window.NidUI, null, { timeout: 5000 }).catch(() => {});
-  // playHatchIfReady() est appelé avec un délai de 300ms (500ms de marge) — SAUF
-  // si la capsule qui complète le trio est dorée (série de 3 parties enchaînées
-  // <30min, exactement ce scénario ici) : le délai monte à 1600ms pour que l'œuf
-  // doré soit VISIBLE dans le nid avant de craquer (bug PY 2026-07-28, "il s'est
-  // ouvert direct" — fix nid-ui.js). On attend large pour couvrir les deux cas.
-  await page.waitForTimeout(2000);
+  const introSeen = await page.waitForSelector('#nid-intro-ov', { timeout: 5000 }).then(() => true).catch(() => false);
+  ok('théâtre du 1er œuf joué au retour au Mur (one-shot)', introSeen);
+  if (introSeen) {
+    await page.screenshot({ path: resolve(artifacts, 'nid-e2e-2b-intro.png') });
+    await page.click('#nid-intro-ov', { force: true });
+    // le théâtre débouche sur la chambre des œufs (la routine commence là)
+    const chambreAfterIntro = await page.waitForSelector('#chambre-ov', { timeout: 4000 }).then(() => true).catch(() => false);
+    ok('le théâtre débouche sur la chambre des œufs', chambreAfterIntro);
+    if (chambreAfterIntro) {
+      await page.click('#chambre-ov .ch-back');
+      await page.waitForFunction(() => !document.getElementById('chambre-ov'), null, { timeout: 3000 }).catch(() => {});
+    }
+  }
+  const introFlag = await page.evaluate(() => localStorage.getItem('maxplay_nid_intro'));
+  ok('flag one-shot posé (le théâtre ne se rejouera pas)', !!introFlag);
+  await page.waitForTimeout(300);
+  const tintedMur = await page.locator('.nid-oeuf.plein[style*="--oeuf-c"]').count();
+  ok('l\'œuf du Mur est teinté à la couleur de sa famille', tintedMur === 1, `count=${tintedMur}`);
+
+  // ═══ 4. SOIN EN CHAMBRE → ÉCLOSION INDIVIDUELLE (seuil 1er œuf = 1) ═════
+  // Fixture explicite : sac garni d'une paille (le drop 1-2 œufs est random
+  // par décision PY — l'e2e fige l'état plutôt que d'espérer un tirage).
+  await page.evaluate(() => {
+    const s = JSON.parse(localStorage.getItem('maxplay_collection_v1'));
+    s.sac = ['paille'];
+    localStorage.setItem('maxplay_collection_v1', JSON.stringify(s));
+  });
+  const ownedBeforeHatch = await page.evaluate(() => JSON.parse(localStorage.getItem('maxplay_collection_v1')).owned.length);
+  await page.reload({ waitUntil: 'networkidle' });
+  await page.waitForFunction(() => !!window.NidUI, null, { timeout: 5000 }).catch(() => {});
+  await page.waitForSelector('.nid-oeuf.plein', { timeout: 5000 });
+  await page.click('.nid-oeuf.plein', { force: true });
+  await page.waitForSelector('#chambre-ov', { timeout: 4000 });
+  ok('chambre ouverte, sac latéral garni', (await page.locator('#chambre-ov .ch-acc').count()) === 1);
+  // soin tap-tap : accessoire → œuf. Seuil du tout 1er œuf = 1 → éclosion SUR PLACE.
+  await page.click('#chambre-ov .ch-acc');
+  await page.click('#chambre-ov .ch-oeuf', { force: true });
 
   const hatchOverlaySeen = await page.waitForFunction(() => {
     return document.querySelector('div[style*="position: fixed"][style*="z-index: 70"]') ||
-           document.querySelector('.hatch-doublon');
-  }, null, { timeout: 5000 }).then(() => true).catch(() => false);
-  ok('séquence d\'éclosion jouée au retour au Mur (overlay affiché)', hatchOverlaySeen);
+           document.querySelector('.hatch-doublon') || document.querySelector('.hatch-gain');
+  }, null, { timeout: 8000 }).then(() => true).catch(() => false);
+  ok('éclosion jouée DANS LA CHAMBRE au moment où l\'œuf est au chaud', hatchOverlaySeen);
 
   if (hatchOverlaySeen) await page.screenshot({ path: resolve(artifacts, 'nid-e2e-3-eclosion.png') });
 
@@ -263,11 +223,15 @@ try {
   ok('un dino a été ajouté à la collection après éclosion', ownedAfterHatch > ownedBeforeHatch,
      `avant=${ownedBeforeHatch} après=${ownedAfterHatch}`);
 
-  const pendingAfterHatch = await page.evaluate(() => {
+  const stateAfterHatch = await page.evaluate(() => {
     const raw = localStorage.getItem('maxplay_collection_v1');
-    return raw ? JSON.parse(raw).pending.length : -1;
+    return raw ? JSON.parse(raw) : null;
   });
-  ok('les 3 capsules sont consommées après éclosion', pendingAfterHatch === 0, `pending=${pendingAfterHatch}`);
+  ok('l\'œuf éclos est consommé (accessoire compris) — nid vide, sac vide',
+     !!stateAfterHatch && stateAfterHatch.eggs.length === 0 && stateAfterHatch.sac.length === 0,
+     JSON.stringify({ eggs: stateAfterHatch && stateAfterHatch.eggs.length, sac: stateAfterHatch && stateAfterHatch.sac.length }));
+  ok('hatchCount incrémenté (le prochain œuf demandera 3 accessoires)',
+     !!stateAfterHatch && stateAfterHatch.hatchCount === 1, `hatchCount=${stateAfterHatch && stateAfterHatch.hatchCount}`);
 
   const possedeApresEclosion = await page.locator('.nid-vig.possede').count();
   ok('bandeau collection MAJ : dino ajouté visible en couleur', possedeApresEclosion > possedeAuDepart,

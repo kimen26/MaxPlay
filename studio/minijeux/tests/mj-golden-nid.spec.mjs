@@ -66,7 +66,11 @@ export async function run({ page, ok }) {
     const raw = localStorage.getItem('maxplay_collection_v1');
     return raw ? JSON.parse(raw) : null;
   });
-  ok('A3 : Collection.grantCapsule a écrit 1 capsule en attente', !!collection && collection.pending.length === 1,
+  // NID v4 (2026-07-30) : état v2 — nid vide → le gain est FORCÉMENT un œuf
+  // individuel dans eggs[] (plus de pending[] anonyme), avec une famille.
+  ok('A3/NID v4 : partie terminée sur nid vide → 1 œuf individuel avec famille',
+     !!collection && collection.version === 2 && Array.isArray(collection.eggs) &&
+     collection.eggs.length === 1 && !!collection.eggs[0].famille,
      JSON.stringify(collection));
 
   // ── A3 : resume effacé en fin de partie ────────────────────────────────

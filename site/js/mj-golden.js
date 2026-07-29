@@ -303,16 +303,24 @@
         try { localStorage.setItem('golden_stars_' + this.gameId, String(newStars)); } catch (e) {}
       }
 
-      // NID (avenant P0) : 1 capsule par partie TERMINÉE, parfaite ou non.
-      // Arbitrage PY 2026-07-28 : plus d'œuf sur CE jeu une fois 3 étoiles
-      // atteintes ici (anti-farm) — gameId obligatoire pour que collection.js
-      // puisse trancher. `grant.granted === false` : aucune capsule accordée
-      // (jeu déjà maîtrisé), la partie reste valorisée autrement (Bug 3).
+      // NID v4 (2026-07-30) : 1 gain par partie TERMINÉE, règle DÉTERMINISTE
+      // lisible — nid pas plein → ŒUF (couleur = famille, connue tout de
+      // suite) · nid plein → ACCESSOIRE de soin (paille/couverture/bonnet/
+      // écharpe, file dans le sac). Anti-farm PY 2026-07-28 étendu : un jeu
+      // à 3 étoiles ne donne plus RIEN (ni œuf ni accessoire) — la partie
+      // reste valorisée par l'écran de fin. UN seul gain, annoncé clairement
+      // (exigence PY 2026-07-28), jamais mélangé avec l'étoile.
+      // 3e étoile GAGNÉE À L'INSTANT (maîtrise) : le gain de la partie est
+      // remplacé par l'accessoire ÉTOILE permanent (décision 2026-07-30) —
+      // toujours UN seul gain annoncé.
+      const justMastered = perfect && this.stars < MAX_STARS && newStars >= MAX_STARS;
       let grant = null;
       if (global.Collection && global.Collection.grantCapsule) {
-        try { grant = global.Collection.grantCapsule({ gameId: this.gameId }); } catch (e) {}
+        try { grant = global.Collection.grantCapsule({ gameId: this.gameId, mastered: justMastered }); } catch (e) {}
       }
-      const eggGranted = !!(grant && grant.granted !== false);
+      const rewardGranted = !!(grant && grant.granted !== false);
+      const eggGranted = rewardGranted && grant.type !== 'accessoire';
+      const accGranted = rewardGranted && grant.type === 'accessoire';
       const noMoreEggsHere = !!(grant && grant.granted === false);
       const readyToHatch = !!(global.Collection && global.Collection.readyToHatch && (function () {
         try { return global.Collection.readyToHatch(); } catch (e) { return false; }
@@ -324,9 +332,15 @@
         slots += '<div class="badge-slot' + (i < this.stars ? ' filled' : '') + '" id="slot' + i + '">★</div>';
       }
 
+      // Célébration d'étoile (décision PY 2026-07-30, fusion brainstorm) :
+      // ÉNORME uniquement quand la 3e étoile vient d'être gagnée (« Tu
+      // maîtrises ce jeu ! ») — les 1re/2e se gagnent DISCRÈTEMENT (petit vol
+      // d'étoile vers le badge, ding, pas de cinématique plein écran).
       let title, sub;
       if (perfect) {
-        title = 'Tu as gagné l’étoile niveau ' + (this.stars + 1) + '&nbsp;!';
+        title = justMastered
+          ? 'Tu maîtrises ce jeu&nbsp;!'
+          : 'Tu as gagné l’étoile niveau ' + (this.stars + 1) + '&nbsp;!';
         sub = (newStars >= MAX_STARS)
           ? 'Niveau MAXIMUM&nbsp;! Champion&nbsp;!'
           : 'Recommence et essaie de gagner la ' + (newStars + 1) + 'ᵉ étoile&nbsp;!';
@@ -347,10 +361,15 @@
       // les affichait EN PARALLÈLE de l'anim d'œuf (~2s, plein écran). Le délai
       // de base part maintenant après la fin de l'œuf (eggGranted ? ~2s : 0),
       // + la fenêtre étoile (perfect) comme avant.
-      const eggDelay = eggGranted ? 2.1 : 0;
-      const dly = perfect
-        ? [(eggDelay + 3) + 's', (eggDelay + 3.2) + 's', (eggDelay + 3.4) + 's']
-        : [(eggDelay + .3) + 's', (eggDelay + .5) + 's', (eggDelay + .7) + 's'];
+      const eggDelay = rewardGranted ? 2.1 : 0;
+      // Fenêtre étoile : large pour la 3e (cinématique), courte pour les
+      // discrètes (petit vol ~1s), nulle sans étoile.
+      const starDelay = justMastered ? 3 : (perfect ? 1.2 : 0);
+      const dly = [
+        (eggDelay + starDelay + .3) + 's',
+        (eggDelay + starDelay + .5) + 's',
+        (eggDelay + starDelay + .7) + 's',
+      ];
 
       // A3 : 3 boutons rétro-compatibles (.end-btns conservé, data-act ajouté).
       // « La suite » masqué si MJKit.chain indisponible ou pas de jeu suivant.
@@ -382,45 +401,86 @@
       // de l'écran de fin), pas vers une mini-pastille invisible.
       const eggZone = document.getElementById('eggZone');
       const badgeAnchor = document.getElementById('badgeZone');
-      const runEgg = (eggGranted && global.MaxFX && global.MaxFX.eggEarned)
+      // Théâtre du gain (œuf teinté FAMILLE ou accessoire de soin) — même
+      // séquence MaxFX.eggEarned pour les deux (un seul visuel plein cadre,
+      // un seul label : jamais d'ambiguïté sur ce qui a été gagné).
+      const runEgg = (rewardGranted && global.MaxFX && global.MaxFX.eggEarned)
         ? (function () {
             const egg = (global.MJKit && global.MJKit.oeuf) ? global.MJKit.oeuf(56) : (function () {
               const d = document.createElement('div'); d.textContent = '🥚'; d.style.fontSize = '40px'; return d;
             })();
             if (eggZone) eggZone.appendChild(egg); else document.body.appendChild(egg);
             egg.style.visibility = 'hidden'; // ancre invisible : le vrai visuel vit dans l'overlay MaxFX
+            const fxOpts = { golden: !!grant.justGolden, toEl: badgeAnchor || egg };
+            if (accGranted) {
+              const acc = grant.accessoire || {};
+              fxOpts.emoji = acc.emoji || '🎁';
+              const nom = acc.nom || 'un cadeau';
+              fxOpts.label = grant.special
+                ? 'Une écharpe étoilée de champion !'
+                : nom.charAt(0).toUpperCase() + nom.slice(1) + ' pour tes œufs !';
+              if (grant.special) fxOpts.golden = true; // l'étoile de maîtrise brille or
+            } else if (grant.familleMeta && grant.familleMeta.color && !grant.justGolden) {
+              fxOpts.color = grant.familleMeta.color; // œuf teinté = famille (surprise l'espèce)
+            }
             try {
-              return global.MaxFX.eggEarned(egg, { golden: !!grant.justGolden, toEl: badgeAnchor || egg })
+              return global.MaxFX.eggEarned(egg, fxOpts)
                 .then(function () { egg.remove(); });
             } catch (e) { egg.remove(); return Promise.resolve(); }
           })()
         : Promise.resolve();
 
       runEgg.then(() => {
-        if (perfect) {
-          // Séquence NORMÉE MaxFX (package célébrations, juillet 2026) :
-          // cinematic UNIQUEMENT sur sans-faute + rangement via belt (ancre = zone badges).
+        if (perfect && justMastered) {
+          // 3e étoile = LA grande fête (cinématique + Mario + « tu maîtrises »).
           if (global.MaxFX && global.MaxFX.finalStar) {
             try { const a = new Audio('sounds/victory-mario-series-hq-super-smash-bros.mp3'); a.volume = 0.85; a.play().catch(() => {}); } catch (e) {}
-            const anchor = document.getElementById('badgeZone');
             global.MaxFX.finalStar(app, {
               style: 'cinematic',
-              belt: { earned: newStars, total: MAX_STARS, anchorEl: anchor },
+              belt: { earned: newStars, total: MAX_STARS, anchorEl: badgeAnchor },
             }).then(() => {
               const slot = document.getElementById('slot' + this.stars);
               if (slot) slot.classList.add('filled', 'pop');
-              try { if (global.SoundPool && SoundPool.voiceLine) SoundPool.voiceLine('etoile-gagnee', 'Tu as gagné une étoile !'); } catch (e) {}
+              try { if (global.SoundPool && SoundPool.voiceLine) SoundPool.voiceLine('etoile-gagnee', 'Tu maîtrises ce jeu !'); } catch (e) {}
               if (typeof opts.celebrate === 'function') { try { opts.celebrate(); } catch (e) {} }
             }).catch(() => {});
           } else {
             this._starFlight(this.stars, opts.celebrate); // fallback historique (BIZOU)
           }
+        } else if (perfect) {
+          // 1re/2e étoile (ou sans-faute à 3★ déjà acquises) : DISCRET —
+          // petit vol direct vers le badge + ding, pas de plein écran.
+          this._discreetStar(Math.min(this.stars, MAX_STARS - 1), this.stars < MAX_STARS);
+          if (typeof opts.celebrate === 'function') { try { opts.celebrate(); } catch (e) {} }
         } else {
           try { sndBravo(); } catch (e) {}
           // Fin sans étoile : encouragement doux, jamais punitif — confettis discrets seuls.
           try { confetti(); } catch (e) {}
         }
       });
+    },
+
+    // Étoile DISCRÈTE (1re/2e, décision PY 2026-07-30) : petit vol direct du
+    // centre vers le badge + ding — pas de plein écran, pas de Mario.
+    _discreetStar(slotIndex, fillSlot) {
+      const star = document.createElement('div');
+      star.className = 'fly-star mini';
+      star.textContent = '★';
+      document.body.appendChild(star);
+      const W = innerWidth, H = innerHeight;
+      const slot = document.getElementById('slot' + slotIndex);
+      const r = slot ? slot.getBoundingClientRect() : { left: W / 2 - 20, top: 60, width: 40, height: 40 };
+      try { if (typeof SoundPool !== 'undefined') SoundPool.play('apparition', 0.6); } catch (e) {}
+      const anim = star.animate([
+        { transform: 'translate(' + (W / 2) + 'px,' + (H * 0.55) + 'px) scale(1.6)', opacity: 0 },
+        { transform: 'translate(' + (W / 2) + 'px,' + (H * 0.5) + 'px) scale(2)', opacity: 1, offset: 0.35 },
+        { transform: 'translate(' + (r.left + r.width / 2) + 'px,' + (r.top + r.height / 2) + 'px) scale(0.5)', opacity: 1 },
+      ], { duration: 950, easing: 'ease-in-out', fill: 'forwards' });
+      anim.onfinish = () => {
+        star.remove();
+        if (fillSlot && slot) slot.classList.add('filled', 'pop');
+        try { sndDing && sndDing(); } catch (e) {}
+      };
     },
 
     // L'étoile : tour d'écran → BIZOU (zoom plein écran + pop) → atterrit dans le badge.

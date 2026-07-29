@@ -80,6 +80,9 @@ body { background:linear-gradient(180deg, var(--bg0), var(--bg1)); }
 .fam-savant { font-size:0.72rem; opacity:0.66; font-style:italic; line-height:1.2; }
 .fam-desc { font-size:0.8rem; opacity:0.94; line-height:1.3; }
 .fam-count { font-size:0.76rem; font-weight:900; color:var(--gold); opacity:1; margin-top:3px; }
+/* Légende œufs (NID v4, 2026-07-30) : au jeu, la couleur d'un œuf = sa famille */
+.fam-oeuf { display:flex; align-items:center; gap:6px; font-size:0.72rem; opacity:.85; margin-top:4px; }
+.fam-oeuf-visu { --oeuf-c:#f5e3c2; flex:none; width:13px; height:16px; border-radius:50% 50% 50% 50%/60% 60% 40% 40%; background:linear-gradient(160deg,#fff7e0 10%, var(--oeuf-c) 90%); border:1px solid rgba(255,255,255,.5); }
 
 /* Bandeau d'explication en haut de la grille d'une famille */
 .fam-explic-banner {
@@ -790,6 +793,7 @@ function buildMenuFamille(el) {
         <div class="fam-label">${fam.emoji} ${title}</div>
         ${sub ? `<div class="fam-savant">${sub}</div>` : ''}
         <div class="fam-desc">${fam.desc}</div>
+        <div class="fam-oeuf"><span class="fam-oeuf-visu" style="--oeuf-c:${fam.color}"></span>Dans les jeux, l'œuf de cette couleur vient de cette famille !</div>
         <div class="fam-count">${count} dinos →</div>
       </div>
     `;

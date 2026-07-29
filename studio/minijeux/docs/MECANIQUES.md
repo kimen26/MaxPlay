@@ -42,6 +42,17 @@
 | **Jeu contre IA à paliers** | mj-42 (Shisima) | ✅ moyen | IA : aléatoire → bloque 1/2 → bloque toujours |
 | **Bac à sable** (0 étoile) | mj-12, 32, pose-tiles | ✅ facile | `maxStars:0`, `access:'free'` |
 
+## Boucle NID v4 — soin des œufs (méta-jeu transverse, 2026-07-30)
+
+| Brique | Fichier | Contrat |
+|--------|---------|---------|
+| Moteur collection v2 | `site/js/collection.js` | PUR zéro DOM. Œufs INDIVIDUELS `{famille, golden, acc[], caresses}` + sac d'accessoires. Gain fin de partie (`grantReward`) : nid vide → œuf · 1-2 œufs → random complet · plein → accessoire · jeu 3★ → rien (anti-farm) · 3e étoile à l'instant (`mastered:true`) → accessoire ÉTOILE permanent (remplace le gain). Doré (série 3 parties/30 min) = dino TRÈS CONNU (`star:true`, toutes familles). Éclosion `hatchEgg` : seuil 3 accessoires (1er œuf de l'histoire : 1), accessoires consommés SAUF étoile (revient au sac, max 1/œuf). Caresse : jamais d'éclosion seule, mais à 2 accessoires + ≥2 caresses → 1 chance/3 (`loveWarm`). Zéro decay (D-002). |
+| Chambre des œufs | `site/js/nid-ui.js` (`openChambre`) | Écran plein cadre (tap sur le nid du Mur), PAS un panneau de plus sur le Mur. Œufs en grand teintés FAMILLE (couleur `DINO_FAMILLES`), fissures = caresses (3 stades cosmétiques), sac latéral 🎒, soin = tap-tap OU drag accessoire → œuf. Éclosion jouée SUR PLACE au moment où l'œuf est au chaud (`MaxFX.hatch` + carte de gain). |
+| Théâtre 1er œuf | `site/js/nid-ui.js` (`maybeNidIntro`) | One-shot par profil (`maxplay_nid_intro`), gestuel (démo animée accessoire+cœur, une phrase pour l'adulte), tap = passer, auto-fin 6 s, débouche sur la chambre. |
+| Gain de fin annoncé | `site/js/mj-golden.js` `showEnd` + `MaxFX.eggEarned` (`opts.color/emoji`) | UN seul gain montré : œuf teinté famille OU accessoire (emoji + label). Étoiles : 1re/2e DISCRÈTES (`_discreetStar`), cinématique + Mario réservés à la 3e (« Tu maîtrises ce jeu ! »). |
+
+⚠️ D-003 : jamais de texte « encore N et il éclot » — les 3 emplacements visibles sur l'œuf SONT la jauge, aucune récompense promise nommée.
+
 ## Contrats transverses (ne pas réinventer)
 
 - **Difficulté = 2 régimes seulement** (décision 2026-07-14) : ① golden 3 niveaux `Math.min(2, Stars.get(id))` pour les jeux à manches · ② niveaux précalculés/jauge pour les puzzles. Plus jamais de « 5 paliers ».

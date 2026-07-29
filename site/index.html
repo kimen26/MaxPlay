@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>MaxPlay — Le Mur des Copains</title>
+  <title>MaxPlay — La Vallée</title>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚌</text></svg>">
   <link rel="manifest" href="manifest-classic.json">
   <link rel="apple-touch-icon" sizes="180x180" href="img/maxplay-icon-180.png">
@@ -17,86 +17,41 @@
     * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
     body { font-family:'Nunito',sans-serif; padding-bottom:env(safe-area-inset-bottom); }
 
-    /* ── profil : avatar (tap = atelier) + pseudo + niveau + ⭐ global ── */
-    .profil { display:flex; align-items:center; gap:12px; padding:18px 18px 12px; }
+    /* ── header 1 ligne : identité SEULE (spec §3) ── */
+    .profil { display:flex; align-items:center; gap:12px; padding:10px 16px; flex-shrink:0; }
     .avatar {
-      width:58px; height:58px; border-radius:50%; cursor:pointer; flex-shrink:0;
+      width:52px; height:52px; border-radius:50%; cursor:pointer; flex-shrink:0;
       background:radial-gradient(circle at 35% 30%, var(--accent), oklch(0.45 0.1 var(--h-avatar)));
       border:3px solid var(--gold); display:flex; align-items:center; justify-content:center;
-      font-size:30px; overflow:hidden;
+      font-size:26px; overflow:hidden;
     }
-    .avatar img { width:50px; height:50px; object-fit:contain; }
-    .pseudo { font-family:'Fredoka One'; font-size:21px; }
-    .profil-bulle {
-      background:var(--card-2); border:1px solid var(--line); border-radius:14px;
-      padding:7px 11px; font-weight:800; font-size:12.5px; line-height:1.3; color:var(--ink);
-    }
-
-    footer { margin-top:14px; color:var(--ink-3); font-size:0.85rem; text-align:center; padding:0 16px 22px; }
+    .avatar img { width:44px; height:44px; object-fit:contain; }
+    .pseudo { font-family:'Fredoka One'; font-size:19px; }
   </style>
 </head>
 <body data-av-nobadge>
 
-<!-- ══════════════ VUE MUR (accueil enfant) ══════════════ -->
-<div class="mur-page" id="mur-view">
+<!-- ══════════════ LA VALLÉE (menu enfant, spec Mur v2) ══════════════ -->
+<div class="mur-page vallee-page" id="mur-view">
 
-  <!-- profil : avatar (tap = atelier) + pseudo + ⭐ global + bulle hôte.
-       L'avatar du profil EST l'hôte du Mur (plus de Tritri présentateur,
-       plus de barre de niveau — info parent dans suivi.html). -->
   <div class="profil">
     <div class="avatar" id="profil-avatar" role="button" aria-label="Habille ton dino">🦕</div>
-    <div class="col grow" style="gap:4px">
-      <div class="row" style="gap:10px;align-items:baseline">
-        <div class="pseudo" id="profil-pseudo">Champion</div>
-        <div class="mp-stars-total" id="stars-total">⭐ 0</div>
-      </div>
-      <div class="profil-bulle">Tire un copain vers la droite pour aller jouer chez lui !</div>
-    </div>
+    <div class="pseudo" id="profil-pseudo">Champion</div>
+    <div class="mp-stars-total" id="stars-total">⭐ 0</div>
+    <button id="parents-btn" aria-label="Espace parents"
+      style="margin-left:auto;background:rgba(255,255,255,0.06);border:1px solid var(--line);
+      color:var(--ink-3);border-radius:12px;padding:7px 12px;font-family:inherit;font-weight:700;
+      font-size:0.8rem;cursor:pointer;">👨‍👩‍👦</button>
   </div>
 
-  <!-- Découverte : SEUL mécanisme de mise en avant (décision PY 2026-07-28 —
-       fusion avec l'ancien bloc Préférés, qui faisait doublon et brouillait
-       le message. Le but est de pousser vers la découverte, pas la répétition ;
-       le ❤️ favori (panneau règle d'un jeu) reste utilisable mais ne s'affiche
-       plus en rangée concurrente ici. Voir js/mur.js decouverte(). -->
-  <section class="tritri">
-    <div class="mur-bloc">
-      <div class="mur-bloc-titre"><span class="t-emoji">🔎</span>Découverte</div>
-      <div class="mur-trio" id="decouverte-row"></div>
-    </div>
-  </section>
-
-  <!-- La file des copains : entrée = tirer le dino vers la droite -->
-  <div class="copains-head"><h2>Les copains</h2><span>tire un dino vers la droite →</span></div>
-  <div class="file" id="copains-grid"></div>
-
-  <footer>
-    🚌 Fait avec ❤️ pour mon Max
-    <br><button id="parents-btn" style="background:rgba(255,255,255,0.06);border:1px solid var(--line);
-      color:var(--ink-3);border-radius:12px;padding:8px 18px;font-family:inherit;font-weight:700;
-      font-size:0.85rem;cursor:pointer;margin-top:6px;">👨‍👩‍👦 Espace parents</button>
-  </footer>
-</div>
-
-<!-- ══════════════ VUE REPAIRE (un copain) ══════════════ -->
-<div class="mur-page" id="repaire-view" style="display:none">
-  <div class="rep-head">
-    <button class="rep-back" aria-label="Retour au Mur">‹</button>
-    <img class="r-tete" id="rep-tete" src="" alt="">
-    <div class="grow"><b id="rep-nom"></b><span id="rep-domaine"></span></div>
-  </div>
-  <div class="rep-bulle" id="rep-phrase"></div>
-  <div style="padding:8px 0 0">
-    <div class="portail" id="rep-portail-trex" role="button" aria-label="Encyclopédie des dinos" style="display:none"></div>
-  </div>
-  <div class="rep-jeux" id="rep-jeux"></div>
-  <div class="rep-ouverture" id="rep-ouverture"></div>
+  <!-- la vallée : rendue entièrement par js/mur-scene.js -->
+  <div class="vallee" id="vallee"></div>
 </div>
 
 <!-- ══════════════ VUE PARENTS (derrière le gate) ══════════════ -->
 <div class="mur-page" id="parents-view" style="display:none">
   <div class="rep-head">
-    <button class="rep-back" aria-label="Retour au Mur">‹</button>
+    <button class="rep-back" aria-label="Retour à la vallée">‹</button>
     <div class="grow"><b style="font-family:'Fredoka One';font-weight:400;font-size:20px">Espace parents</b>
       <span>Tous les jeux, même les cachés</span></div>
   </div>
@@ -161,6 +116,7 @@
   <script src="js/mp-theme.js"></script>
   <script src="js/celebrations.js"></script>
   <script src="js/mur.js"></script>
+  <script src="js/mur-scene.js"></script>
   <script>
   (function () {
     const modal = document.getElementById('code-modal');
@@ -173,7 +129,7 @@
       clearTimeout(showToast._t); showToast._t = setTimeout(() => toast.classList.remove('show'), 2200);
     }
 
-    // ── Profil : compteur ⭐ global (le niveau vit dans suivi.html) ──
+    // ── header : compteur ⭐ global (registre maîtrise, lisible par l'adulte) ──
     function paintProfilMeta() {
       let t = 0;
       (window.catalogVisible ? window.catalogVisible() : (window.MAXPLAY_CATALOG || [])).forEach(e => { if (e.maxStars && window.Stars) t += Stars.get(e.id); });
@@ -205,7 +161,7 @@
     input.addEventListener('keydown', (e) => { if (e.key === 'Enter') validateCode(); });
     modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
-    // ── Le Mur ────────────────────────────────────────────────────────
+    // ── La vallée ─────────────────────────────────────────────────────
     MUR.init({
       onCodeNeeded: openModal,
       onLocked: () => showToast('Gagne ' + Unlock.UNLOCK_STARS + ' ⭐ au jeu d\'avant pour l\'ouvrir !')

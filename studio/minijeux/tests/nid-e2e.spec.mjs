@@ -81,31 +81,33 @@ try {
   await page.evaluate(() => localStorage.clear());
   await page.reload({ waitUntil: 'networkidle' });
 
-  ok('Mur chargé (rangées copains visibles)', (await page.locator('.copain[data-copain]').count()) > 0);
+  // Mur v2 « La Vallée » (spec 2026-07-29) : 6 copains dans la scène
+  await page.waitForSelector('.v-copain', { timeout: 5000 }).catch(() => {});
+  ok('la vallée charge (6 copains)', (await page.locator('.v-copain').count()) === 6);
   await page.waitForFunction(() => !!window.NidUI, null, { timeout: 5000 }).catch(() => {});
   const nidUiPresent = await page.evaluate(() => !!window.NidUI);
   ok('NidUI chargé dynamiquement par mur.js', nidUiPresent);
 
+  await page.waitForFunction(() => !!window.Collection, null, { timeout: 5000 }).catch(() => {});
   const collectionPresent = await page.evaluate(() => !!window.Collection);
-  ok('Collection.js chargé sur le Mur (moteur nid)', collectionPresent);
+  ok('Collection.js chargé sur le menu (moteur nid)', collectionPresent);
 
-  await page.waitForTimeout(400);
-  const nidHostVisible = await page.locator('#nid-host').isVisible().catch(() => false);
-  ok('nid affiché (vide)', nidHostVisible);
-  const oeufsVides = await page.locator('.nid-oeuf:not(.plein)').count();
-  ok('3 emplacements vides au démarrage', oeufsVides === 3, `count=${oeufsVides}`);
+  // profil vierge : le Roi ne pulse pas (rien à voir dans le monde dino)
+  await page.waitForTimeout(600);
+  ok('profil vierge → le Roi T-Rex ne pulse pas', (await page.locator('.v-copain.pulse').count()) === 0);
 
-  const bandeauVisible = await page.locator('#nid-bandeau').isVisible().catch(() => false);
-  ok('bandeau collection affiché', bandeauVisible);
-  const ombresAuDepart = await page.locator('.nid-vig.ombre-only').count();
-  const possedeAuDepart = await page.locator('.nid-vig.possede').count();
-  ok('bandeau tout en ombres (rien possédé)', possedeAuDepart === 0 && ombresAuDepart > 0,
+  // Padidi (derrière le Roi) : tout en ombres au départ
+  await page.click('.v-copain[data-copain="trex"]', { force: true });
+  await page.waitForSelector('.vb-porte[data-porte="padidi"]', { timeout: 4000 });
+  await page.click('.vb-porte[data-porte="padidi"]');
+  await page.waitForSelector('#padidi-ov', { timeout: 5000 });
+  const ombresAuDepart = await page.locator('#padidi-ov .nid-vig.ombre-only').count();
+  const possedeAuDepart = await page.locator('#padidi-ov .nid-vig.possede').count();
+  ok('Padidi tout en ombres (rien possédé)', possedeAuDepart === 0 && ombresAuDepart > 0,
      `possede=${possedeAuDepart} ombres=${ombresAuDepart}`);
+  await page.click('#padidi-ov .ch-back');
 
-  const apercusPresents = await page.locator('.copain .c-apercu').count();
-  ok('vignettes-aperçu sur les rangées copains', apercusPresents > 0, `count=${apercusPresents}`);
-
-  await page.screenshot({ path: resolve(artifacts, 'nid-e2e-1-mur-vide.png') });
+  await page.screenshot({ path: resolve(artifacts, 'nid-e2e-1-vallee-vierge.png') });
 
   // ═══ 2. PARTIE 1 COMPLÈTE — mj-24 (golden simple, .dino-tile) ═══════════
   await page.goto(url('mj-24'), { waitUntil: 'networkidle' });
@@ -154,9 +156,11 @@ try {
   }
   const introFlag = await page.evaluate(() => localStorage.getItem('maxplay_nid_intro'));
   ok('flag one-shot posé (le théâtre ne se rejouera pas)', !!introFlag);
-  await page.waitForTimeout(300);
-  const tintedMur = await page.locator('.nid-oeuf.plein[style*="--oeuf-c"]').count();
-  ok('l\'œuf du Mur est teinté à la couleur de sa famille', tintedMur === 1, `count=${tintedMur}`);
+  // signal de gain sans icone permanente (spec §3) : le théâtre a ouvert la
+  // chambre → le gain est « vu », le Roi ne doit PAS pulser au retour
+  await page.waitForTimeout(400);
+  ok('gain vu pendant le théâtre → le Roi ne pulse pas',
+     (await page.locator('.v-copain[data-copain="trex"].pulse').count()) === 0);
 
   // ═══ 4. SOIN EN CHAMBRE → ÉCLOSION INDIVIDUELLE (seuil 1er œuf = 1) ═════
   // Fixture explicite : sac garni d'une paille (le drop 1-2 œufs est random
@@ -168,9 +172,13 @@ try {
   });
   const ownedBeforeHatch = await page.evaluate(() => JSON.parse(localStorage.getItem('maxplay_collection_v1')).owned.length);
   await page.reload({ waitUntil: 'networkidle' });
-  await page.waitForFunction(() => !!window.NidUI, null, { timeout: 5000 }).catch(() => {});
-  await page.waitForSelector('.nid-oeuf.plein', { timeout: 5000 });
-  await page.click('.nid-oeuf.plein', { force: true });
+  await page.waitForFunction(() => !!window.NidUI && !!window.Collection, null, { timeout: 5000 }).catch(() => {});
+  // le sac vient d'être garni hors chambre → le Roi pulse (gain pas vu)
+  await page.waitForTimeout(600);
+  ok('sac garni non vu → le Roi T-Rex pulse', (await page.locator('.v-copain[data-copain="trex"].pulse').count()) === 1);
+  await page.click('.v-copain[data-copain="trex"]', { force: true });
+  await page.waitForSelector('.vb-porte[data-porte="nid"]', { timeout: 4000 });
+  await page.click('.vb-porte[data-porte="nid"]');
   await page.waitForSelector('#chambre-ov', { timeout: 4000 });
   ok('chambre ouverte, sac latéral garni', (await page.locator('#chambre-ov .ch-acc').count()) === 1);
   // soin tap-tap : accessoire → œuf. Seuil du tout 1er œuf = 1 → éclosion SUR PLACE.
@@ -233,11 +241,17 @@ try {
   ok('hatchCount incrémenté (le prochain œuf demandera 3 accessoires)',
      !!stateAfterHatch && stateAfterHatch.hatchCount === 1, `hatchCount=${stateAfterHatch && stateAfterHatch.hatchCount}`);
 
-  const possedeApresEclosion = await page.locator('.nid-vig.possede').count();
-  ok('bandeau collection MAJ : dino ajouté visible en couleur', possedeApresEclosion > possedeAuDepart,
+  // Padidi reflète l'éclosion : le dino gagné apparaît en couleur
+  await page.evaluate(() => { const o = document.getElementById('chambre-ov'); if (o) o.remove(); });
+  await page.click('.v-copain[data-copain="trex"]', { force: true });
+  await page.waitForSelector('.vb-porte[data-porte="padidi"]', { timeout: 4000 });
+  await page.click('.vb-porte[data-porte="padidi"]');
+  await page.waitForSelector('#padidi-ov', { timeout: 5000 });
+  const possedeApresEclosion = await page.locator('#padidi-ov .nid-vig.possede').count();
+  ok('Padidi MAJ : dino ajouté visible en couleur', possedeApresEclosion > possedeAuDepart,
      `avant=${possedeAuDepart} après=${possedeApresEclosion}`);
-
-  await page.screenshot({ path: resolve(artifacts, 'nid-e2e-4-collection.png') });
+  await page.screenshot({ path: resolve(artifacts, 'nid-e2e-4-padidi.png') });
+  await page.click('#padidi-ov .ch-back');
 
   // ═══ 6. REPRISE A2 : 1 question puis reload → piste restaurée ══════════
   // NOTE : on répond D'ABORD FAUX puis juste (pattern éprouvé de mj-golden-nid.spec.mjs,
@@ -272,20 +286,21 @@ try {
      restoredClasses.filter(c => /done-first|done-retry/.test(c)).length === 1,
      JSON.stringify(restoredClasses));
 
-  // ═══ 7. FRISE REPAIRE : jeu recommandé en avant, jeux faits tamponnés ══
-  await page.goto(url('index') + '#repaire=trex', { waitUntil: 'networkidle' });
-  await page.waitForFunction(() => !!window.NidUI, null, { timeout: 5000 }).catch(() => {});
-  await page.waitForSelector('#repaire-view:not([style*="display: none"])', { timeout: 5000 }).catch(() => {});
-  await page.waitForTimeout(300);
+  // ═══ 7. BULLE COPAIN : tampon ✓ sur le jeu fait, reco qui brille ═══════
+  // (la frise-chemin est morte avec la page repaire — sa FONCTION survit
+  // dans la bulle : fait = tamponné, jamais joué = brille, spec §5)
+  await page.goto(url('index'), { waitUntil: 'networkidle' });
+  await page.waitForSelector('.v-copain[data-copain="dino"]', { timeout: 5000 });
+  await page.click('.v-copain[data-copain="dino"]', { force: true });
+  await page.waitForSelector('.v-bulle .vb-jeu', { timeout: 4000 });
+  const bulleJeux = await page.locator('.v-bulle .vb-jeu').count();
+  ok('bulle de l\'hôte dino : vignettes affichées', bulleJeux > 0, `count=${bulleJeux}`);
+  const tampons = await page.locator('.v-bulle .vb-jeu.fait').count();
+  ok('au moins 1 jeu tamponné ✓ (mj-24 joué 2 fois)', tampons > 0, `count=${tampons}`);
+  const recos = await page.locator('.v-bulle .vb-jeu.reco').count();
+  ok('les jamais-joués brillent (reco)', recos >= 1, `count=${recos}`);
 
-  const friseJeux = await page.locator('.frise .frise-jeu').count();
-  ok('frise-chemin affichée dans le repaire T-Rex', friseJeux > 0, `count=${friseJeux}`);
-  const friseTampons = await page.locator('.frise .frise-jeu.fait').count();
-  ok('au moins 1 jeu tamponné (fait) — mj-24 joué 2 fois', friseTampons > 0, `count=${friseTampons}`);
-  const friseReco = await page.locator('.frise .frise-jeu.reco').count();
-  ok('exactement 1 jeu recommandé mis en avant', friseReco === 1, `count=${friseReco}`);
-
-  await page.screenshot({ path: resolve(artifacts, 'nid-e2e-5-frise.png') });
+  await page.screenshot({ path: resolve(artifacts, 'nid-e2e-5-bulle-dino.png') });
 
   // ═══ 8. Bilan erreurs console ═══════════════════════════════════════════
   ok('Aucune erreur JS/console non-404-connue sur tout le parcours', errors.length === 0, errors.join(' | '));

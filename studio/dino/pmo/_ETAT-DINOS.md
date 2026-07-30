@@ -6,37 +6,26 @@
 
 ## Synthèse
 
-- **70 dinos** · **60 complets (8/8)** · **10 incomplets**
+- **70 dinos** · **70 complets (8/8)** · **0 incomplets**
 
 | Axe | Couverture |
 |-----|-----------|
-| hero | 69/70 |
-| paleoart | 60/70 |
-| coloriage | 60/70 |
+| hero | 70/70 |
+| paleoart | 70/70 |
+| coloriage | 70/70 |
 | audio | 70/70 |
-| silhouette | 69/70 |
+| silhouette | 70/70 |
 | fiche | 70/70 |
 | etymo | 70/70 |
 | mesures | 70/70 |
 
 ## Incomplets d'abord
 
-| Dino | id | Score | Manque |
-|------|----|-------|--------|
-| Saurolophe | `saurolophus` | 4/8 | hero, paléoart(headshot/manger/paris/ecosysteme/funfact), coloriage, silhouette |
-| Minmi | `minmi` | 6/8 | paléoart(headshot), coloriage |
-| Scutellosaure | `scutellosaurus` | 6/8 | paléoart(headshot), coloriage |
-| Corythosaure | `corythosaurus` | 6/8 | paléoart(headshot), coloriage |
-| Maiasaura | `maiasaura` | 6/8 | paléoart(headshot), coloriage |
-| Hatzegopteryx | `hatzegopteryx` | 6/8 | paléoart(headshot), coloriage |
-| Édaphosaure | `edaphosaurus` | 6/8 | paléoart(headshot), coloriage |
-| Gorgonops | `gorgonops` | 6/8 | paléoart(headshot), coloriage |
-| Lystrosaure | `lystrosaurus` | 6/8 | paléoart(headshot), coloriage |
-| Moschops | `moschops` | 6/8 | paléoart(headshot), coloriage |
+_Aucun — les 70 dinos sont complets sur les 8 axes. 🎉_
 
-## Complets (60)
+## Complets (70)
 
-T-Rex · Spinosaure · Giganotosaure · Carcharodontosaure · Allosaure · Tarbosaure · Albertosaure · Cératosaure · Dilophosaure · Carnotaure · Cryolophosaure · Brachiosaure · Diplodocus · Apatosaure (Brontosaure) · Camarasaure · Amargasaure · Plateosaure · Ankylosaure · Euoplocéphale · Edmontonia · Stégosaure · Kéntrosaure · Tricératops · Torosaure · Protocératops · Pentacératops · Parasaurolophus · Edmontosaure · Iguanodon · Pachycéphalosaure · Vélociraptor · Deinonychus · Utahraptor · Microraptor · Troodon · Gallimimus · Oviraptor · Ptéranodon · Quetzalcoatlus · Archaeoptéryx · Mosasaure · Baryonyx · Therizinosaurus · Dimétrodon · Élasmosaure · Ophthalmosaure · Liopleurodon · Archélon · Shonisaure · Titanosaure · Centrosaure · Ichtyosaure · Mammouth · Smilodon · Mégathérium · Paracérathérium · Glyptodon · Loup terrible · Rhino laineux · Titanis
+T-Rex · Spinosaure · Giganotosaure · Carcharodontosaure · Allosaure · Tarbosaure · Albertosaure · Cératosaure · Dilophosaure · Carnotaure · Cryolophosaure · Brachiosaure · Diplodocus · Apatosaure (Brontosaure) · Camarasaure · Amargasaure · Plateosaure · Ankylosaure · Euoplocéphale · Edmontonia · Minmi · Scutellosaure · Stégosaure · Kéntrosaure · Tricératops · Torosaure · Protocératops · Pentacératops · Parasaurolophus · Corythosaure · Maiasaura · Saurolophe · Edmontosaure · Iguanodon · Pachycéphalosaure · Vélociraptor · Deinonychus · Utahraptor · Microraptor · Troodon · Gallimimus · Oviraptor · Ptéranodon · Quetzalcoatlus · Hatzegopteryx · Archaeoptéryx · Mosasaure · Baryonyx · Therizinosaurus · Dimétrodon · Édaphosaure · Gorgonops · Lystrosaure · Moschops · Élasmosaure · Ophthalmosaure · Liopleurodon · Archélon · Shonisaure · Titanosaure · Centrosaure · Ichtyosaure · Mammouth · Smilodon · Mégathérium · Paracérathérium · Glyptodon · Loup terrible · Rhino laineux · Titanis
 
 ## Orphelins / staging
 

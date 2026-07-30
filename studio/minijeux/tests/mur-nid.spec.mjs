@@ -171,6 +171,21 @@ try {
     await page.click('#padidi-ov .ch-back');
   }
 
+  // ── 3ter. Raccourcis d'entête + mini-menu avatar (retour PY 2026-07-30) ──
+  await page.click('#hdr-oeufs');
+  ok('🥚 d\'entête → chambre des œufs', await page.waitForSelector('#chambre-ov', { timeout: 3000 }).then(() => true).catch(() => false));
+  const badge = await page.locator('#hdr-oeufs-n').innerText().catch(() => '');
+  ok('badge d\'entête = nb d\'œufs au nid', badge === '2', `badge=${badge}`);
+  await page.click('#chambre-ov .ch-back');
+  await page.click('#hdr-padidi');
+  ok('🦕 d\'entête → album Padidi', await page.waitForSelector('#padidi-ov', { timeout: 4000 }).then(() => true).catch(() => false));
+  await page.click('#padidi-ov .ch-back');
+  await page.click('#profil-avatar');
+  const amVisible = await page.locator('#avatar-menu').isVisible().catch(() => false);
+  ok('tap avatar → mini-menu (habiller / espace parents)', amVisible);
+  ok('l\'espace parents vit dans le menu avatar', (await page.locator('#avatar-menu #parents-btn').count()) === 1);
+  await page.click('.vallee', { force: true }); // referme le menu
+
   // ── 4. Humeur & pulse : le Roi pulse quand un gain n'a pas été vu ─────
   // (le mock a 2 œufs + 1 paille et rien n'a jamais été "vu" → pulse attendu
   //  au chargement ; après ouverture de la chambre (markGainSeen), plus de pulse)

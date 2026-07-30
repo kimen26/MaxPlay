@@ -542,13 +542,24 @@
 .vb-p-emoji { font-size:34px; }
 .vb-p-txt { font-family:'Fredoka One'; font-size:13.5px; }
 
-/* Padidi : grille d'ombres par famille (réutilise .nid-vig/.nid-fam-*) */
+/* Padidi = MUR D'OMBRES (décision PY 2026-07-31) : TOUS les dinos en UN
+   écran, grille wrap plate, teinte famille par case. Le scroll ne sert que
+   de filet sur les très petits écrans. */
 #padidi-ov {
-  position:fixed; inset:0; z-index:60; background:rgba(6,10,22,.96);
+  position:fixed; inset:0; z-index:60; background:rgba(6,10,22,.97);
   display:flex; flex-direction:column; padding:10px 12px; overflow-y:auto;
 }
 #padidi-ov .ch-hdr { flex-shrink:0; }
 #padidi-ov .nid-compteur { margin-left:auto; font-weight:900; color:var(--gold); }
+.padidi-mur {
+  flex:1; display:grid; gap:5px; align-content:start;
+  grid-template-columns:repeat(auto-fill, minmax(44px, 1fr));
+}
+.padidi-mur .nid-vig { width:auto; height:auto; aspect-ratio:1; border-radius:10px; }
+.padidi-mur .nid-vig.fam-tint {
+  background:color-mix(in srgb, var(--fam-c, transparent) 14%, var(--card-2, #101b33));
+}
+.padidi-mur .nid-vig.possede { border:2px solid var(--fam-c, var(--gold)); }
 
 @media (prefers-reduced-motion: reduce) {
   .v-vole img, .v-copain.marche img, .v-copain.pulse img, .v-copain.nouveau .v-sparkle { animation:none !important; }

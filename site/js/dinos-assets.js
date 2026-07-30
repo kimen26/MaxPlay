@@ -249,6 +249,7 @@ window.DINO_ASSETS = {
   "avatar": "cory",
   "paleoart": {
    "hero": "img/dinos/paleoart/Corythosaurus.jpg",
+   "coloriage": "img/dinos/paleoart/Corythosaurus_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Corythosaurus_ecosysteme.jpg",
    "funfact": "img/dinos/paleoart/Corythosaurus_funfact.jpg",
    "headshot": "img/dinos/paleoart/Corythosaurus_headshot.jpg",
@@ -338,6 +339,7 @@ window.DINO_ASSETS = {
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Edaphosaurus.jpg",
+   "coloriage": "img/dinos/paleoart/Edaphosaurus_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Edaphosaurus_ecosysteme.jpg",
    "funfact": "img/dinos/paleoart/Edaphosaurus_funfact.jpg",
    "headshot": "img/dinos/paleoart/Edaphosaurus_headshot.jpg",
@@ -457,6 +459,7 @@ window.DINO_ASSETS = {
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Gorgonops.jpg",
+   "coloriage": "img/dinos/paleoart/Gorgonops_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Gorgonops_ecosysteme.jpg",
    "funfact": "img/dinos/paleoart/Gorgonops_funfact.jpg",
    "headshot": "img/dinos/paleoart/Gorgonops_headshot.jpg",
@@ -544,6 +547,7 @@ window.DINO_ASSETS = {
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Lystrosaurus.jpg",
+   "coloriage": "img/dinos/paleoart/Lystrosaurus_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Lystrosaurus_ecosysteme.jpg",
    "funfact": "img/dinos/paleoart/Lystrosaurus_funfact.jpg",
    "headshot": "img/dinos/paleoart/Lystrosaurus_headshot.jpg",
@@ -648,6 +652,7 @@ window.DINO_ASSETS = {
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Moschops.jpg",
+   "coloriage": "img/dinos/paleoart/Moschops_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Moschops_ecosysteme.jpg",
    "funfact": "img/dinos/paleoart/Moschops_funfact.jpg",
    "headshot": "img/dinos/paleoart/Moschops_headshot.jpg",

@@ -811,6 +811,19 @@ window.DINO_ASSETS = {
    "paris": "img/dinos/paleoart/Quetzalcoatlus_paris.jpg"
   }
  },
+ "Saurolophus": {
+  "ombre": "img/dinos/ombres/Saurolophus_ombre.png",
+  "sprite": null,
+  "tete": null,
+  "avatar": null,
+  "paleoart": {
+   "hero": "img/dinos/paleoart/Saurolophus.jpg",
+   "ecosysteme": "img/dinos/paleoart/Saurolophus_ecosysteme.jpg",
+   "funfact": "img/dinos/paleoart/Saurolophus_funfact.jpg",
+   "manger": "img/dinos/paleoart/Saurolophus_manger.jpg",
+   "paris": "img/dinos/paleoart/Saurolophus_paris.jpg"
+  }
+ },
  "Scutellosaurus": {
   "ombre": "img/dinos/ombres/Scutellosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Scutellosaurus_sprite.png",
@@ -1017,15 +1030,6 @@ window.DINO_ASSETS = {
    "headshot": "img/dinos/paleoart/Velociraptor_headshot.jpg",
    "manger": "img/dinos/paleoart/Velociraptor_manger.jpg",
    "paris": "img/dinos/paleoart/Velociraptor_paris.jpg"
-  }
- },
- "Saurolophus": {
-  "ombre": null,
-  "sprite": null,
-  "tete": null,
-  "avatar": null,
-  "paleoart": {
-   "hero": "img/dinos/paleoart/Saurolophus.jpg"
   }
  }
 };

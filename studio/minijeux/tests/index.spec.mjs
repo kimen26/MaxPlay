@@ -1,63 +1,62 @@
-// Pilote la COQUE MaxPlay (index.html, Design System v1 juillet 2026) :
-// tiroirs data-driven, profil, étoiles, déblocage séquentiel, modale code dino.
-// Vert = coque saine.
+// index.spec.mjs — Smoke de la COQUE « La Vallée » (Mur v2, spec 2026-07-29).
+// Réécrit 2026-07-30 (l'ancien testait le menu accordéon v2, mort 2 refontes
+// avant — dette tracée depuis le Mur). Piloté par run.mjs :
+//   npm run mj:test index
+// Le détail vallée/monde dino vit dans mur-nid.spec.mjs (mock) et
+// nid-e2e.spec.mjs (réel) — ici : la coque saine, header, gate parents, code.
 export async function run({ page, ok }) {
-  const cls = async (id) => (await page.locator(`.game[data-id="${id}"]`).getAttribute('class')) || '';
+  await page.evaluate(() => localStorage.clear());
+  await page.reload({ waitUntil: 'networkidle' });
 
-  const games = await page.locator('.game').count();
-  ok('jeux générés depuis le catalogue (≥ 18)', games >= 18, `count=${games}`);
-
-  // MENU v2 (2026-07-16) : 5 tiroirs (dinos, couleurs, compter&lire, casse-têtes, monde&libre)
-  const drawers = await page.locator('.mp-drawer').count();
-  ok('tiroirs par catégorie (= 5, menu v2)', drawers === 5, `drawers=${drawers}`);
-  ok('un seul tiroir ouvert', (await page.locator('.mp-drawer.open').count()) === 1);
-  const drawerLabels = await page.locator('.mp-drawer-head').allTextContents();
-  ok('plus de tiroir 🆕 « nouveaux »', !drawerLabels.some(t => /nouveaux/i.test(t)), drawerLabels.join('|'));
-
+  // ── header 1 ligne : identité + raccourcis collection ─────────────────
   ok('profil : avatar présent', (await page.locator('#profil-avatar').count()) === 1);
   ok('profil : compteur ⭐ global', /⭐ \d+/.test((await page.locator('#stars-total').textContent()) || ''));
+  ok('raccourci 🥚 (chambre) présent', (await page.locator('#hdr-oeufs').count()) === 1);
+  ok('raccourci 🦕 (Padidi) présent', (await page.locator('#hdr-padidi').count()) === 1);
 
-  ok('mj-04 ouvert (1er de Compter)',     !(await cls('mj-04')).includes('locked'));
-  ok('mj-09 ouvert (1er de Couleurs)',    !(await cls('mj-09')).includes('locked'));
-  ok('mj-13c verrouillé (2e de Compter)', (await cls('mj-13c')).includes('locked'));
-  ok('mj-12 (accès libre) ouvert',        !(await cls('mj-12')).includes('locked'));
+  // ── la vallée : 6 copains, décor ──────────────────────────────────────
+  await page.waitForSelector('.v-copain', { timeout: 5000 });
+  ok('6 copains dans la vallée', (await page.locator('.v-copain').count()) === 6);
+  ok('décor posé (≥5 éléments)', (await page.locator('.v-decor').count()) >= 5);
+  ok('le Roi T-Rex lit son livre', (await page.locator('.v-roi .v-livre').count()) === 1);
+  // Roi remonté (retour PY 2026-07-30) : jamais collé au bord bas
+  const roiOk = await page.evaluate(() => {
+    const r = document.querySelector('.v-roi').getBoundingClientRect();
+    return r.bottom < innerHeight - 60;
+  });
+  ok('le Roi n\'est pas collé au bord bas de l\'écran', roiOk);
 
-  // encyclopédie épinglée = entrée dinos, verrouillée par code
-  ok('encyclopédie épinglée verrouillée + raison "code"',
-     (await page.locator('#ency').getAttribute('data-reason')) === 'code');
+  // ── bulle copain : TOUT visible en lignes (wrap), pas d'ascenseur ─────
+  await page.click('.v-copain[data-copain="troudi"]', { force: true });
+  await page.waitForSelector('.v-bulle .vb-jeu', { timeout: 3000 });
+  const noHScroll = await page.evaluate(() => {
+    const el = document.querySelector('.vb-jeux');
+    return el.scrollWidth <= el.clientWidth + 1;
+  });
+  ok('bulle : aucun défilement horizontal (tout en 2-3 lignes)', noHScroll);
+  await page.click('.vb-close');
 
-  // clic sur l'encyclopédie → modale code
-  await page.locator('#ency').click();
-  ok('modale code ouverte au clic encyclopédie', (await page.locator('#code-modal.show').count()) === 1);
+  // ── gate parents : dans le mini-menu de l'avatar, appui 3 s + question ─
+  await page.click('#profil-avatar');
+  ok('mini-menu avatar visible', await page.locator('#avatar-menu').isVisible());
+  await page.click('#parents-btn');
+  ok('modale gate ouverte', (await page.locator('#gate-modal.show').count()) === 1);
+  ok('étape 1 = bouton à maintenir (pas d\'entrée directe)', await page.locator('#gate-hold').isVisible());
+  await page.click('#gate-modal', { position: { x: 10, y: 10 } }); // referme (tap dehors)
 
-  // mauvais code → reste verrouillé + message
+  // ── modale code TRITRI : porte 📖 du Roi quand l'encyclo est verrouillée ─
+  await page.click('.v-copain[data-copain="trex"]', { force: true });
+  await page.waitForSelector('.vb-porte[data-porte="encyclo"]', { timeout: 3000 });
+  await page.click('.vb-porte[data-porte="encyclo"]');
+  ok('encyclo verrouillée → modale code ouverte (flux TRITRI inchangé)',
+     (await page.locator('#code-modal.show').count()) === 1);
+  // mauvais code → message, bon code → modale fermée (flux unlock.js complet)
   await page.fill('#code-input', 'NON');
   await page.click('#code-go');
-  await page.waitForTimeout(150);
-  ok('mauvais code → encore verrouillé', ((await page.locator('#ency').getAttribute('class')) || '').includes('locked'));
-  ok('mauvais code → message affiché',   (((await page.locator('#code-msg').textContent()) || '').trim().length) > 0);
-
-  // bon code (tolère minuscules) → débloqué + modale fermée
+  await page.waitForTimeout(200);
+  ok('mauvais code → message affiché', (((await page.locator('#code-msg').textContent()) || '').trim().length) > 0);
   await page.fill('#code-input', 'tritri');
   await page.click('#code-go');
-  await page.waitForTimeout(250);
-  ok('bon code → encyclopédie débloquée', !((await page.locator('#ency').getAttribute('class')) || '').includes('locked'));
-  ok('bon code → modale fermée',          (await page.locator('#code-modal.show').count()) === 0);
-
-  // toggle tiroir : en ouvrir un autre ferme le premier
-  await page.locator('.mp-drawer-head').nth(2).click();
-  await page.waitForTimeout(150);
-  ok('toggle tiroir : toujours 1 seul ouvert', (await page.locator('.mp-drawer.open').count()) === 1);
-
-  // ── rangée ❤️ « Tes jeux » (menu v2) : jeu du jour toujours présent ──
-  // Fresh state (aucun épinglé, aucun joué) → la rangée montre au moins le jeu du jour.
-  const pinsVisible = await page.locator('#pins-wrap').isVisible();
-  ok('rangée ❤️ visible (au moins le jeu du jour)', pinsVisible);
-  if (pinsVisible) {
-    ok('rangée ❤️ : carte « jeu du jour » mise en avant',
-       (await page.locator('.pin-card.today').count()) === 1);
-    // clic sur le jeu du jour → navigue vers un mj-XX.html
-    const url = await page.locator('.pin-card.today').getAttribute('data-url');
-    ok('jeu du jour pointe vers un jeu jouable', /^mj-\d/.test(url || ''), `url=${url}`);
-  }
+  await page.waitForTimeout(300);
+  ok('bon code → modale fermée (dinos débloqués)', (await page.locator('#code-modal.show').count()) === 0);
 }

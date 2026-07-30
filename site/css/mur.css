@@ -230,18 +230,10 @@
 .mjk-oeuf-mini { width:22%; aspect-ratio:.78; border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
   background:linear-gradient(160deg,#fff7e0,#f5e3c2); box-shadow:inset -3px -5px 0 rgba(0,0,0,.12), 0 3px 7px rgba(0,0,0,.4); }
 
-/* lettres (Galli) */
-.vig-lettres { background:linear-gradient(150deg,#123c33,#0a1f1a); gap:6px; }
 .vig-lettre { font-family:'Cursif',cursive; color:#fff; font-size:34px; background:rgba(255,255,255,.12);
   border-radius:12px; width:34%; aspect-ratio:.86; display:flex; align-items:center; justify-content:center;
   box-shadow:0 3px 8px rgba(0,0,0,.35); }
 .vig-lettre.script { font-family:'Fredoka One'; font-size:24px; color:var(--gold); }
-.vig-mot { background:linear-gradient(150deg,#123c33,#0a1f1a); }
-.vig-mot span { font-family:'Cursif',cursive; font-size:34px; color:#fff; letter-spacing:3px; text-shadow:0 3px 8px rgba(0,0,0,.4); }
-.vig-phrase { background:linear-gradient(150deg,#123c33,#0a1f1a); flex-direction:column; gap:9px; padding:0 14px; align-items:stretch; }
-.vig-phrase i { display:block; height:7px; border-radius:4px; background:rgba(255,255,255,.75); }
-.vig-phrase i:nth-child(2){ width:78%; } .vig-phrase i:nth-child(3){ width:55%; background:var(--gold); }
-
 /* intrus */
 .vig-intrus { background:linear-gradient(150deg,#402a12,#1d130a); display:flex; flex-wrap:wrap;
   align-content:center; justify-content:center; gap:8px; padding:13px; }
@@ -259,10 +251,6 @@
 .vig-cible { background:radial-gradient(circle, #e0655a 0 16%, #fff 16% 32%, #e0655a 32% 48%, #fff 48% 64%, #0f1c36 64%); }
 .vig-cible::after { content:''; position:absolute; width:14%; height:14%; border-radius:50%; background:var(--gold);
   top:22%; right:20%; box-shadow:0 0 0 4px rgba(255,209,102,.35); }
-
-/* garage : rouage */
-.vig-rouage { background:linear-gradient(150deg,#2c2f3a,#14161d); }
-.vig-rouage svg { width:62%; height:62%; animation:vig-tourne 9s linear infinite; }
 
 /* potions : tubes */
 .vig-tubes { background:linear-gradient(150deg,#12303f,#081720); gap:7px; align-items:flex-end; padding-bottom:9px; }
@@ -363,7 +351,7 @@
 .btn-cancel { background:rgba(255,255,255,.08); color:var(--ink); }
 
 @media (prefers-reduced-motion: reduce) {
-  .vig-lampe::after, .vig-temps .v-aiguille, .vig-rouage svg, .vig-son i { animation:none !important; }
+  .vig-lampe::after, .vig-temps .v-aiguille, .vig-son i { animation:none !important; }
   .nid-oeuf-coeur, .nid-vig.gain-glow, .nid-vig.wobble, .nid-vig-mystere { animation:none !important; }
 }
 

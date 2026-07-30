@@ -655,14 +655,16 @@
     var famIds = order.length ? order.filter(function (f) { return byFam[f]; }) : Object.keys(byFam);
     Object.keys(byFam).forEach(function (f) { if (famIds.indexOf(f) === -1) famIds.push(f); });
 
-    var groupsHtml = famIds.map(function (fid) {
-      var list = byFam[fid].slice().sort(function (a, b) { return (owned[b.id] ? 1 : 0) - (owned[a.id] ? 1 : 0); });
+    // MUR D'OMBRES (décision PY 2026-07-31) : TOUS les dinos en UN écran —
+    // grille wrap plate, ordonnée par famille (teinte famille sur chaque
+    // case, plus de rangées à défilement horizontal). « C'est ça qui est
+    // marrant » — pour l'enfant ET pour l'avatar qui vient déposer l'œuf.
+    var wallHtml = famIds.map(function (fid) {
       var info = familleInfo(fid);
-      var vigs = list.map(function (d) { return padidiVigHtml(d, !!owned[d.id]); }).join('');
-      return '<div class="nid-fam-groupe" style="' + (info && info.color ? '--fam-c:' + info.color + ';' : '') + '">' +
-        '<div class="nid-fam-sep">' + (info ? (info.emoji + ' ' + info.label) : 'Autres') + '</div>' +
-        '<div class="nid-fam-row">' + vigs + '</div>' +
-      '</div>';
+      var tint = info && info.color ? ' style="--fam-c:' + info.color + ';"' : '';
+      return byFam[fid].map(function (d) {
+        return padidiVigHtml(d, !!owned[d.id]).replace('class="nid-vig', tint + ' class="nid-vig fam-tint');
+      }).join('');
     }).join('');
 
     var got = state.owned ? state.owned.length : 0;
@@ -671,7 +673,7 @@
         '<span class="ch-titre">🏞 Padidi</span>' +
         '<span class="nid-compteur">' + got + ' / ' + dinos.length + '</span>' +
       '</div>' +
-      '<div class="nid-bandeau-scroll">' + groupsHtml + '</div>';
+      '<div class="padidi-mur">' + wallHtml + '</div>';
   }
 
   function openPadidi(opts) {

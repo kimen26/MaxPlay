@@ -13,7 +13,7 @@
 
 ## Mapping menu → image
 
-Le menu « Les familles » de l'encyclopédie (source noms : [`site/js/dinos-data.js`](../../../../site/js/dinos-data.js)) a **9 familles** + une **couverture de section**.
+Le menu « Les familles » de l'encyclopédie (source noms : [`site/js/dinos-data.js`](../../../../site/js/dinos-data.js)) + une **couverture de section**. Le compte de familles fait foi dans [`pmo/INVARIANTS.md`](../../pmo/INVARIANTS.md) — toutes ont leur emblème depuis 2026-07-31.
 
 | Nœud menu | Image (320×240) | Famille (nom scientifique) | id data | Emblème |
 |-----------|-----------------|----------------------------|---------|---------|
@@ -27,6 +27,8 @@ Le menu « Les familles » de l'encyclopédie (source noms : [`site/js/dinos-dat
 | Famille 7 | [`familles/07-pterosaures.png`](familles/07-pterosaures.png) | **Ptérosaures** | `pterosaures` | grandes ailes de peau déployées + crête |
 | Famille 8 | [`familles/08-enaliosaures.png`](familles/08-enaliosaures.png) | **Énaliosaures** | `enaliosaures` | long cou + nageoire-palette émergeant des vagues |
 | Famille 9 | [`familles/09-avant-les-dinos.png`](familles/09-avant-les-dinos.png) | **Avant les dinosaures** | `volant` | Dimétrodon à grande voile dorsale (1 seul membre : pas un dino, cousin des mammifères) |
+| Famille 10 | [`familles/10-mammiferes.png`](familles/10-mammiferes.png) | **Mammifères** | `mammiferes` | 2 défenses de mammouth recourbées en croix + touffe de fourrure laineuse + flocons (signe de l'âge de glace) |
+| Famille 11 | [`familles/11-oiseaux.png`](familles/11-oiseaux.png) | **Oiseaux** | `oiseaux` | grande plume détaillée croisant une patte écailleuse à griffes (dit la filiation dinosaure → oiseau) |
 
 ## Charte de style (figée — voir skill)
 
@@ -41,7 +43,8 @@ Le menu « Les familles » de l'encyclopédie (source noms : [`site/js/dinos-dat
 > Ici = juste le **catalogue des images** (mapping ci-dessus) + leurs sources.
 
 - Produire/ajouter une image : skill [`dino-images-lunii`](../../../../../Users/kimen/.claude/skills/dino-images-lunii/SKILL.md). Specs par dino : [`../sources/fiches/_FICHES-DINOS-GROKIPEDIA.md`](../sources/fiches/_FICHES-DINOS-GROKIPEDIA.md).
-- ⚠️ **EP-D17 en cours** : les `familles/*.png` actuels sont l'ancien rendu (inversion post). À **régénérer en fond noir NATIF** (voir [`../../pmo/backlog.md`](../../pmo/backlog.md)).
+- ⚠️ **EP-D17 en cours** : les `familles/*.png` **00 à 09** sont l'ancien rendu (inversion post). À **régénérer en fond noir NATIF** (voir [`../../pmo/backlog.md`](../../pmo/backlog.md)).
+  **10-mammiferes et 11-oiseaux font exception** : produits le 2026-07-31 directement en fond noir natif (composition pensée sombre dès le prompt), ils sont déjà conformes — les prendre comme référence de style pour régénérer les 9 autres.
 
 ---
 

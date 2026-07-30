@@ -473,7 +473,6 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Hatzegopteryx.jpg",
    "ecosysteme": "img/dinos/paleoart/Hatzegopteryx_ecosysteme.jpg",
    "funfact": "img/dinos/paleoart/Hatzegopteryx_funfact.jpg",
-   "headshot": "img/dinos/paleoart/Hatzegopteryx_headshot.jpg",
    "manger": "img/dinos/paleoart/Hatzegopteryx_manger.jpg",
    "paris": "img/dinos/paleoart/Hatzegopteryx_paris.jpg"
   }
@@ -559,6 +558,7 @@ window.DINO_ASSETS = {
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Maiasaura.jpg",
+   "coloriage": "img/dinos/paleoart/Maiasaura_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Maiasaura_ecosysteme.jpg",
    "funfact": "img/dinos/paleoart/Maiasaura_funfact.jpg",
    "headshot": "img/dinos/paleoart/Maiasaura_headshot.jpg",
@@ -618,6 +618,7 @@ window.DINO_ASSETS = {
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Minmi.jpg",
+   "coloriage": "img/dinos/paleoart/Minmi_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Minmi_ecosysteme.jpg",
    "funfact": "img/dinos/paleoart/Minmi_funfact.jpg",
    "headshot": "img/dinos/paleoart/Minmi_headshot.jpg",
@@ -826,6 +827,7 @@ window.DINO_ASSETS = {
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Saurolophus.jpg",
+   "coloriage": "img/dinos/paleoart/Saurolophus_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Saurolophus_ecosysteme.jpg",
    "funfact": "img/dinos/paleoart/Saurolophus_funfact.jpg",
    "headshot": "img/dinos/paleoart/Saurolophus_headshot.jpg",
@@ -840,6 +842,7 @@ window.DINO_ASSETS = {
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Scutellosaurus.jpg",
+   "coloriage": "img/dinos/paleoart/Scutellosaurus_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Scutellosaurus_ecosysteme.jpg",
    "funfact": "img/dinos/paleoart/Scutellosaurus_funfact.jpg",
    "headshot": "img/dinos/paleoart/Scutellosaurus_headshot.jpg",

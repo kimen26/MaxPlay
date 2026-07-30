@@ -470,12 +470,14 @@ window.DINO_ASSETS = {
  "Hatzegopteryx": {
   "ombre": "img/dinos/ombres/Hatzegopteryx_ombre.png",
   "sprite": "img/dinos/sprites/Hatzegopteryx_sprite.png",
-  "tete": null,
+  "tete": "img/dinos/sprites/Hatzegopteryx_tete.png",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Hatzegopteryx.jpg",
+   "coloriage": "img/dinos/paleoart/Hatzegopteryx_coloriage.webp",
    "ecosysteme": "img/dinos/paleoart/Hatzegopteryx_ecosysteme.jpg",
    "funfact": "img/dinos/paleoart/Hatzegopteryx_funfact.jpg",
+   "headshot": "img/dinos/paleoart/Hatzegopteryx_headshot.jpg",
    "manger": "img/dinos/paleoart/Hatzegopteryx_manger.jpg",
    "paris": "img/dinos/paleoart/Hatzegopteryx_paris.jpg"
   }

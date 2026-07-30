@@ -245,12 +245,13 @@ window.DINO_ASSETS = {
  "Corythosaurus": {
   "ombre": "img/dinos/ombres/Corythosaurus_ombre.png",
   "sprite": "img/dinos/sprites/Corythosaurus_sprite.png",
-  "tete": null,
+  "tete": "img/dinos/sprites/Corythosaurus_tete.png",
   "avatar": "cory",
   "paleoart": {
    "hero": "img/dinos/paleoart/Corythosaurus.jpg",
    "ecosysteme": "img/dinos/paleoart/Corythosaurus_ecosysteme.jpg",
    "funfact": "img/dinos/paleoart/Corythosaurus_funfact.jpg",
+   "headshot": "img/dinos/paleoart/Corythosaurus_headshot.jpg",
    "manger": "img/dinos/paleoart/Corythosaurus_manger.jpg",
    "paris": "img/dinos/paleoart/Corythosaurus_paris.jpg"
   }
@@ -339,6 +340,7 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Edaphosaurus.jpg",
    "ecosysteme": "img/dinos/paleoart/Edaphosaurus_ecosysteme.jpg",
    "funfact": "img/dinos/paleoart/Edaphosaurus_funfact.jpg",
+   "headshot": "img/dinos/paleoart/Edaphosaurus_headshot.jpg",
    "manger": "img/dinos/paleoart/Edaphosaurus_manger.jpg",
    "paris": "img/dinos/paleoart/Edaphosaurus_paris.jpg"
   }
@@ -457,6 +459,7 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Gorgonops.jpg",
    "ecosysteme": "img/dinos/paleoart/Gorgonops_ecosysteme.jpg",
    "funfact": "img/dinos/paleoart/Gorgonops_funfact.jpg",
+   "headshot": "img/dinos/paleoart/Gorgonops_headshot.jpg",
    "manger": "img/dinos/paleoart/Gorgonops_manger.jpg",
    "paris": "img/dinos/paleoart/Gorgonops_paris.jpg"
   }
@@ -470,6 +473,7 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Hatzegopteryx.jpg",
    "ecosysteme": "img/dinos/paleoart/Hatzegopteryx_ecosysteme.jpg",
    "funfact": "img/dinos/paleoart/Hatzegopteryx_funfact.jpg",
+   "headshot": "img/dinos/paleoart/Hatzegopteryx_headshot.jpg",
    "manger": "img/dinos/paleoart/Hatzegopteryx_manger.jpg",
    "paris": "img/dinos/paleoart/Hatzegopteryx_paris.jpg"
   }
@@ -543,6 +547,7 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Lystrosaurus.jpg",
    "ecosysteme": "img/dinos/paleoart/Lystrosaurus_ecosysteme.jpg",
    "funfact": "img/dinos/paleoart/Lystrosaurus_funfact.jpg",
+   "headshot": "img/dinos/paleoart/Lystrosaurus_headshot.jpg",
    "manger": "img/dinos/paleoart/Lystrosaurus_manger.jpg",
    "paris": "img/dinos/paleoart/Lystrosaurus_paris.jpg"
   }
@@ -556,6 +561,7 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Maiasaura.jpg",
    "ecosysteme": "img/dinos/paleoart/Maiasaura_ecosysteme.jpg",
    "funfact": "img/dinos/paleoart/Maiasaura_funfact.jpg",
+   "headshot": "img/dinos/paleoart/Maiasaura_headshot.jpg",
    "manger": "img/dinos/paleoart/Maiasaura_manger.jpg",
    "paris": "img/dinos/paleoart/Maiasaura_paris.jpg"
   }
@@ -614,6 +620,7 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Minmi.jpg",
    "ecosysteme": "img/dinos/paleoart/Minmi_ecosysteme.jpg",
    "funfact": "img/dinos/paleoart/Minmi_funfact.jpg",
+   "headshot": "img/dinos/paleoart/Minmi_headshot.jpg",
    "manger": "img/dinos/paleoart/Minmi_manger.jpg",
    "paris": "img/dinos/paleoart/Minmi_paris.jpg"
   }
@@ -642,6 +649,7 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Moschops.jpg",
    "ecosysteme": "img/dinos/paleoart/Moschops_ecosysteme.jpg",
    "funfact": "img/dinos/paleoart/Moschops_funfact.jpg",
+   "headshot": "img/dinos/paleoart/Moschops_headshot.jpg",
    "manger": "img/dinos/paleoart/Moschops_manger.jpg",
    "paris": "img/dinos/paleoart/Moschops_paris.jpg"
   }
@@ -813,13 +821,14 @@ window.DINO_ASSETS = {
  },
  "Saurolophus": {
   "ombre": "img/dinos/ombres/Saurolophus_ombre.png",
-  "sprite": null,
-  "tete": null,
+  "sprite": "img/dinos/sprites/Saurolophus_sprite.png",
+  "tete": "img/dinos/sprites/Saurolophus_tete.png",
   "avatar": null,
   "paleoart": {
    "hero": "img/dinos/paleoart/Saurolophus.jpg",
    "ecosysteme": "img/dinos/paleoart/Saurolophus_ecosysteme.jpg",
    "funfact": "img/dinos/paleoart/Saurolophus_funfact.jpg",
+   "headshot": "img/dinos/paleoart/Saurolophus_headshot.jpg",
    "manger": "img/dinos/paleoart/Saurolophus_manger.jpg",
    "paris": "img/dinos/paleoart/Saurolophus_paris.jpg"
   }
@@ -833,6 +842,7 @@ window.DINO_ASSETS = {
    "hero": "img/dinos/paleoart/Scutellosaurus.jpg",
    "ecosysteme": "img/dinos/paleoart/Scutellosaurus_ecosysteme.jpg",
    "funfact": "img/dinos/paleoart/Scutellosaurus_funfact.jpg",
+   "headshot": "img/dinos/paleoart/Scutellosaurus_headshot.jpg",
    "manger": "img/dinos/paleoart/Scutellosaurus_manger.jpg",
    "paris": "img/dinos/paleoart/Scutellosaurus_paris.jpg"
   }

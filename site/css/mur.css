@@ -528,7 +528,8 @@
   width:44px; height:44px; border-radius:50%; border:none; flex-shrink:0;
   background:rgba(255,255,255,.1); color:var(--ink); font-size:17px; cursor:pointer;
 }
-.vb-jeux { display:flex; gap:10px; overflow-x:auto; padding-bottom:6px; }
+/* tout visible en 2-3 lignes (retour PY 2026-07-30) — pas d'ascenseur */
+.vb-jeux { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; padding-bottom:6px; max-height:46vh; overflow-y:auto; }
 .vb-jeu {
   position:relative; flex:0 0 auto; width:96px; border-radius:16px; padding:8px 8px 6px;
   background:rgba(255,255,255,.06); cursor:pointer; text-align:center;

@@ -34,7 +34,7 @@
     mare:     { x: 30, y: 56 },
     grotte:   { x: 72, y: 62 },
     fougeres: { x: 22, y: 82 },
-    trone:    { x: 62, y: 86 }
+    trone:    { x: 62, y: 74 }
   };
   var WANDER_R = 16;     // rayon de flânerie autour du coin (%)
   var MIN_DIST = 16;     // distance mini entre deux copains (%) — « on ne se touche pas »

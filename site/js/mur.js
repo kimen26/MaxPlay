@@ -14,7 +14,7 @@
 //  survivent dans la bulle du copain (vignettes + tampons) et la bulle-pensée.
 //
 //  API : window.MUR = { init, refresh, showParents, showMur, entry, starsOf,
-//    isVisible, vignetteHtml, starsHtml, copains, repaireState, playsOf,
+//    vignetteHtml, starsHtml, copains, repaireState, playsOf,
 //    lastPlayedOf, unlockStars, _fillBus }
 // ─────────────────────────────────────────────────────────────────────────
 (function (global) {
@@ -116,8 +116,6 @@
     'mj-51': 'Le tri des lettres',
     'mj-52': 'La boîte à mots',
     'mj-53': 'Lis et fais',
-    'mj-23': 'Lis le mot',
-    'mj-06': 'Lis la phrase',
     'mj-15': 'L\'intrus',
     'mj-13a': 'La course des bus',
     'mj-14': 'Les cases mystères',
@@ -148,8 +146,6 @@
     'mj-51': '<div class="vig vig-tri"><div class="tri-case c1"><span class="vig-lettre">a</span></div><div class="tri-case c2"><span class="vig-lettre script">a</span></div><span class="tri-fleche">→</span></div>',
     'mj-52': '<div class="vig vig-boitemot"><div class="boite"><span class="s1">pa</span><span class="sep"></span><span class="s2">pa</span></div></div>',
     'mj-53': '<div class="vig vig-lisfais"><span class="vig-lettre lf-mot">pa</span><span class="lf-fleche">→</span><div class="mjk-oeuf-mini"></div></div>',
-    'mj-23': '<div class="vig vig-mot"><span>loup</span></div>',
-    'mj-06': '<div class="vig vig-phrase"><i></i><i></i><i></i></div>',
     'mj-15': '<div class="vig vig-intrus"><i></i><i></i><i class="autre"></i><i></i></div>',
     'mj-13a': '<div class="vig vig-bus" data-bus="162,185"></div>',
     'mj-14': '<div class="vig vig-grille"><i></i><i class="rond"></i><i></i><i class="rond"></i><i></i><i class="rond"></i><i></i><i class="rond"></i><i class="vide"></i></div>',
@@ -226,12 +222,6 @@
       lastChain: visibleChain.length ? entry(visibleChain[visibleChain.length - 1]) : null,
       hasNext: hasNext
     };
-  }
-
-  function isVisible(id) {
-    return COPAINS.some(function (c) {
-      return repaireState(c).games.some(function (g) { return g.id === id; });
-    });
   }
 
   // ── Humeurs (ex-Découverte, spec §4.4) : données pour la scène ──────
@@ -428,7 +418,7 @@
   global.MUR = {
     init: init, refresh: refresh,
     showMur: showMur, showParents: showParents,
-    entry: entry, starsOf: starsOf, isVisible: isVisible,
+    entry: entry, starsOf: starsOf,
     vignetteHtml: vignetteHtml, starsHtml: starsHtml,
     copains: COPAINS, dinoHost: dinoHost, repaireState: repaireState,
     humeurs: humeurs, playsOf: playsOf, lastPlayedOf: lastPlayedOf,

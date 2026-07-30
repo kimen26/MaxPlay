@@ -417,7 +417,7 @@
               fxOpts.emoji = acc.emoji || '🎁';
               const nom = acc.nom || 'un cadeau';
               fxOpts.label = grant.special
-                ? 'Une écharpe étoilée de champion !'
+                ? 'Une super étoile de champion !'
                 : nom.charAt(0).toUpperCase() + nom.slice(1) + ' pour tes œufs !';
               if (grant.special) fxOpts.golden = true; // l'étoile de maîtrise brille or
             } else if (grant.familleMeta && grant.familleMeta.color && !grant.justGolden) {
@@ -430,7 +430,41 @@
           })()
         : Promise.resolve();
 
-      runEgg.then(() => {
+      // Première réception de l'étoile (spec v0.7) : les 3 étapes MONTRÉES
+      // côte à côte (super star → jaune → estompée), une phrase — montré,
+      // jamais expliqué. One-shot par profil.
+      const runEtoileIntro = () => {
+        if (!grant || !grant.special) return Promise.resolve();
+        let key = 'maxplay_etoile_intro';
+        try {
+          const c = JSON.parse(localStorage.getItem('maxplay_active_child'));
+          if (c && c.id) key += '__' + c.id;
+        } catch (e) {}
+        try { if (localStorage.getItem(key)) return Promise.resolve(); localStorage.setItem(key, '1'); } catch (e) { return Promise.resolve(); }
+        return new Promise((resolve) => {
+          const ov = document.createElement('div');
+          ov.className = 'etoile-intro-ov';
+          ov.style.cssText = 'position:fixed;inset:0;z-index:72;display:flex;align-items:center;justify-content:center;background:rgba(6,10,22,.8);';
+          ov.innerHTML =
+            '<div style="background:var(--card,#16233f);border-radius:22px;padding:22px 24px;text-align:center;max-width:320px;">' +
+              '<div style="font-size:38px;letter-spacing:6px;">🌟 <span style="opacity:.85">→</span> ⭐ <span style="opacity:.85">→</span> 🧣</div>' +
+              '<div style="font-family:\'Fredoka One\',sans-serif;font-size:17px;margin-top:12px;">Elle dure plus longtemps !</div>' +
+            '</div>';
+          document.body.appendChild(ov);
+          let done = false;
+          const fin = () => {
+            if (done) return;
+            done = true;
+            ov.style.transition = 'opacity .25s';
+            ov.style.opacity = '0';
+            setTimeout(() => { ov.remove(); resolve(); }, 260);
+          };
+          ov.addEventListener('click', fin);
+          setTimeout(fin, 6000);
+        });
+      };
+
+      runEgg.then(runEtoileIntro).then(() => {
         if (perfect && justMastered) {
           // 3e étoile = LA grande fête (cinématique + Mario + « tu maîtrises »).
           if (global.MaxFX && global.MaxFX.finalStar) {

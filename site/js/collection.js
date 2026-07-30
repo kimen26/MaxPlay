@@ -27,9 +27,8 @@
 //    famille — redéfini PY 2026-07-30, avant : famille rare). Pas de cap
 //    journalier (avenant P0 #2).
 //  · 3e étoile d'un jeu (maîtrise) : le gain de CETTE partie est remplacé par
-//    l'accessoire ÉTOILE (permanent : revient au sac à l'éclosion, max 1 par
-//    œuf, une seule source = maîtriser un jeu). Choix Claude entre les 2
-//    options PY (vs œuf spécial top-connu, doublon du doré) — réversible.
+//    l'accessoire ÉTOILE (spec v0.7 : réutilisable 3 charges à déclassement
+//    visuel 🌟→⭐→écharpe, max 1 par œuf, une seule source = maîtriser un jeu).
 //  · Seuil 3 accessoires (= les 3 emplacements visibles sur l'œuf), le tout
 //    PREMIER œuf de l'histoire éclot à 1 accessoire (théâtre d'onboarding).
 //
@@ -57,21 +56,30 @@
   var FIRST_WARMTH_COST = 1; // 1er œuf de l'histoire : éclosion rapide (théâtre)
   var CARESS_STAGES = 3;      // stades de craquement visuel (cosmétique)
   var LOVE_HATCH_CHANCE = 1 / 3; // à 2 accessoires + 2e caresse et plus : l'amour peut ouvrir
-  var ACC_ETOILE = 'etoile';  // accessoire permanent de maîtrise (3e étoile d'un jeu)
+  var ACC_ETOILE = 'etoile';  // accessoire de maîtrise (3e étoile d'un jeu), 3 charges
 
   var _items = [];      // [{id, nom, famille, rare?, star?}] — star = très connu (doré)
   var _familles = [];   // [{id, label, emoji, color}] — méta UI (teinte des œufs)
   // Accessoires de soin par défaut (collection : on les découvre au fil des
   // gains). Thème-neutre : surchargeables via configure({accessoires}).
-  // `etoile` = permanent (jamais consommé, max 1/œuf), JAMAIS dans le tirage
-  // aléatoire : sa seule source est la 3e étoile d'un jeu (maîtrise).
+  // ÉTOILE (spec v0.7, décision PY) : source unique = 3e étoile d'un jeu,
+  // JAMAIS dans le tirage aléatoire (special). RÉUTILISABLE 3 CHARGES à
+  // déclassement VISUEL, zéro chiffre/compteur — l'enfant la VOIT déchoir :
+  //   usage 1 : `etoile`  🌟 super star → revient au sac en `etoile2`
+  //   usage 2 : `etoile2` ⭐ étoile simple → revient au sac en `echarpe`
+  //   usage 3 : écharpe normale, consommée avec son bébé comme les autres.
+  // Une seule règle pour tout le jeu : « tout accessoire finit par partir
+  // avec son bébé » — celle-là a juste 3 vies. Max 1 étoile par œuf.
   var _accessoires = [
     { id: 'paille',     nom: 'de la paille',     emoji: '🌾' },
     { id: 'couverture', nom: 'une couverture',   emoji: '🧶' },
     { id: 'bonnet',     nom: 'un bonnet',        emoji: '🧢' },
     { id: 'echarpe',    nom: 'une écharpe',      emoji: '🧣' },
-    { id: ACC_ETOILE,   nom: 'une écharpe étoilée', emoji: '🌟', permanent: true },
+    { id: ACC_ETOILE,   nom: 'une super étoile', emoji: '🌟', special: true },
+    { id: 'etoile2',    nom: 'une étoile',       emoji: '⭐', special: true },
   ];
+  // déclassement à l'éclosion (usage consommé → ce qui revient au sac)
+  var ETOILE_DOWNGRADE = { etoile: 'etoile2', etoile2: 'echarpe' };
 
   // ── Clé localStorage (préfixée par profil actif si présent) ────────────
   function storageKey() {
@@ -230,7 +238,7 @@
   //  → un accessoire pour tes œufs. » Anti-farm : jeu déjà à 3 étoiles →
   //  aucun gain, la partie reste valorisée par l'écran de fin.
   //  opts.mastered (3e étoile de CE jeu, une fois dans la vie du jeu) : le
-  //  gain de la partie est REMPLACÉ par l'accessoire ÉTOILE permanent —
+  //  gain de la partie est REMPLACÉ par l'accessoire ÉTOILE (3 charges) —
   //  un seul gain annoncé, jamais deux.
   function grantReward(opts) {
     opts = opts || {};
@@ -279,7 +287,7 @@
     }
 
     // accessoire (l'étoile n'est JAMAIS dans le tirage : source unique = maîtrise)
-    var pool = _accessoires.filter(function (a) { return !a.permanent; });
+    var pool = _accessoires.filter(function (a) { return !a.special; });
     var acc = pool[Math.floor(Math.random() * pool.length)];
     s.sac.push(acc.id);
     save(s);
@@ -331,8 +339,10 @@
     if (!egg) return { ok: false, ready: false };
     var th = _thresholdOf(s);
     if (egg.acc.length >= th || egg.loveWarm) return { ok: false, ready: true }; // déjà au chaud
-    // l'accessoire ÉTOILE est unique par œuf (règle PY 2026-07-30)
-    if (accId === ACC_ETOILE && egg.acc.indexOf(ACC_ETOILE) !== -1) return { ok: false, ready: false };
+    // l'accessoire ÉTOILE (quel que soit son stade) est unique par œuf
+    if (accId.indexOf('etoile') === 0 && egg.acc.some(function (a) { return a.indexOf('etoile') === 0; })) {
+      return { ok: false, ready: false };
+    }
     var pos = s.sac.indexOf(accId);
     if (pos === -1) return { ok: false, ready: false };
     s.sac.splice(pos, 1);
@@ -375,8 +385,8 @@
   }
 
   // ── Éclosion d'UN œuf (les autres restent — plus jamais de disparition) ──
-  // Accessoires CONSOMMÉS avec l'œuf (PY 2026-07-30) — sauf l'ÉTOILE
-  // (permanente : elle revient au sac). Espèce : non possédée DANS la famille
+  // Accessoires CONSOMMÉS avec l'œuf (PY 2026-07-30) — l'ÉTOILE revient au
+  // sac DÉCLASSÉE (3 charges, spec v0.7). Espèce : non possédée DANS la famille
   // de l'œuf (doré → parmi les TRÈS CONNUS de la famille d'abord) · famille
   // épuisée → n'importe quelle non possédée · collection complète → doublon.
   function hatchEgg(eggIndex) {
@@ -387,7 +397,11 @@
 
     s.eggs.splice(eggIndex, 1);
     s.hatchCount += 1;
-    if (egg.acc.indexOf(ACC_ETOILE) !== -1) s.sac.push(ACC_ETOILE); // l'étoile survit
+    // l'étoile revient au sac DÉCLASSÉE (🌟→⭐→écharpe normale, spec v0.7) —
+    // la 3e vie est une écharpe comme les autres : consommée, rien ne revient.
+    egg.acc.forEach(function (id) {
+      if (ETOILE_DOWNGRADE[id]) s.sac.push(ETOILE_DOWNGRADE[id]);
+    });
 
     var ownedSet = s.owned.slice();
     var notOwned = _items.filter(function (it) { return ownedSet.indexOf(it.id) === -1; });

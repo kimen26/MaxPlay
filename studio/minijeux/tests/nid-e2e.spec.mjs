@@ -185,13 +185,14 @@ try {
   await page.click('#chambre-ov .ch-acc');
   await page.click('#chambre-ov .ch-oeuf', { force: true });
 
-  const hatchOverlaySeen = await page.waitForFunction(() => {
-    return document.querySelector('div[style*="position: fixed"][style*="z-index: 70"]') ||
-           document.querySelector('.hatch-doublon') || document.querySelector('.hatch-gain');
-  }, null, { timeout: 8000 }).then(() => true).catch(() => false);
-  ok('éclosion jouée DANS LA CHAMBRE au moment où l\'œuf est au chaud', hatchOverlaySeen);
-
-  if (hatchOverlaySeen) await page.screenshot({ path: resolve(artifacts, 'nid-e2e-3-eclosion.png') });
+  // THÉÂTRE D'ÉCLOSION v0.7 : transporteur → glissement Padidi → révélation
+  const hatchOverlaySeen = await page.waitForSelector('.th-carry', { timeout: 8000 }).then(() => true).catch(() => false);
+  ok('théâtre d\'éclosion démarré (transporteur en scène)', hatchOverlaySeen);
+  const slideOk = await page.waitForSelector('#padidi-ov.slide-in', { timeout: 8000 }).then(() => true).catch(() => false);
+  ok('glissement latéral chambre → album Padidi', slideOk);
+  const reveleOk = await page.waitForSelector('.nid-vig.th-revele', { timeout: 15000 }).then(() => true).catch(() => false);
+  ok('révélation : le dino prend sa place dans l\'album', reveleOk);
+  if (reveleOk) await page.screenshot({ path: resolve(artifacts, 'nid-e2e-3-eclosion.png') });
 
   // cri audible : un <audio>/Audio() a été instancié — on vérifie via l'écoute
   // du constructeur Audio (posée AVANT le hatch aurait été idéal ; ici on vérifie
@@ -202,26 +203,17 @@ try {
   ok('aucune erreur JS liée au cri du bébé dino (Audio().play() n\'a pas throw)', audioNetworkOk,
      errors.filter(e => /dino-bebe/i.test(e)).join(' | '));
 
-  // Retour playtest Papa Yann 2026-07-26 : après la fête (MaxFX.hatch), une
-  // carte de gain distincte (.hatch-gain, nom en grand + 2 boutons ≥80px)
-  // remplace le tap-anywhere générique — sauf cas doublon (garde son
-  // tap-anywhere existant). On clique "Continuer" explicitement.
-  const gainCardSeen = await page.waitForSelector('.hatch-gain, .hatch-doublon', { timeout: 5000 }).then(() => true).catch(() => false);
-  ok('carte de gain (nom + actions) affichée après la fête d\'éclosion', gainCardSeen);
-  if (await page.locator('.hatch-gain-nom').count()) {
-    const nomAffiche = await page.locator('.hatch-gain-nom').innerText();
-    ok('le nom du dino gagné est affiché en grand', nomAffiche.trim().length > 0, nomAffiche);
-    const ficheBox = await page.locator('.hatch-btn-fiche').boundingBox().catch(() => null);
-    if (ficheBox) ok('bouton "Voir sa fiche" ≥ 80px', ficheBox.width >= 80 && ficheBox.height >= 80, JSON.stringify(ficheBox));
-    await page.click('.hatch-btn-continuer');
-  } else {
-    await page.mouse.click(240, 450); // fallback doublon : tap-anywhere inchangé
-  }
+  // « Voir sa fiche » PROPOSÉE, jamais forcée (spec §6.1 point 6)
+  const ficheBtn = await page.waitForSelector('.th-fiche', { timeout: 5000 }).then(() => true).catch(() => false);
+  ok('« Voir sa fiche » proposée après la révélation', ficheBtn);
+  // retour libre : le ← du Padidi réapparaît après le rituel
   await page.waitForFunction(() => {
-    return !document.querySelector('.hatch-doublon') &&
-           !document.querySelector('.hatch-gain') &&
-           !document.querySelector('div[style*="z-index: 70"]');
-  }, null, { timeout: 5000 }).catch(() => {});
+    const b = document.querySelector('#padidi-ov .ch-back');
+    return b && b.style.display !== 'none' && !document.querySelector('.th-carry');
+  }, null, { timeout: 6000 }).catch(() => {});
+  const possedeDansAlbum = await page.locator('#padidi-ov .nid-vig.possede').count();
+  ok('l\'album montre le dino révélé en couleur', possedeDansAlbum >= 1, `count=${possedeDansAlbum}`);
+  await page.click('#padidi-ov .ch-back').catch(() => {});
   await page.waitForTimeout(300);
 
   const ownedAfterHatch = await page.evaluate(() => {

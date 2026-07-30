@@ -35,13 +35,20 @@
 <div class="mur-page vallee-page" id="mur-view">
 
   <div class="profil">
-    <div class="avatar" id="profil-avatar" role="button" aria-label="Habille ton dino">🦕</div>
+    <div class="avatar" id="profil-avatar" role="button" aria-label="Mon dino">🦕</div>
     <div class="pseudo" id="profil-pseudo">Champion</div>
     <div class="mp-stars-total" id="stars-total">⭐ 0</div>
-    <button id="parents-btn" aria-label="Espace parents"
-      style="margin-left:auto;background:rgba(255,255,255,0.06);border:1px solid var(--line);
-      color:var(--ink-3);border-radius:12px;padding:7px 12px;font-family:inherit;font-weight:700;
-      font-size:0.8rem;cursor:pointer;">👨‍👩‍👦</button>
+    <!-- raccourcis d'entête (retour PY 2026-07-30, défige spec §3 "aucune
+         icone") : accès direct aux œufs et à l'album — le Roi T-Rex reste
+         l'entrée narrative dans la vallée. -->
+    <button class="hdr-btn" id="hdr-oeufs" aria-label="Mes œufs">🥚<span class="hdr-badge" id="hdr-oeufs-n" style="display:none"></span></button>
+    <button class="hdr-btn" id="hdr-padidi" aria-label="Album Padidi">🦕</button>
+  </div>
+
+  <!-- mini-menu de l'avatar : habiller / espace parents (retour PY 2026-07-30) -->
+  <div class="avatar-menu" id="avatar-menu" style="display:none">
+    <button type="button" id="am-atelier">🎨 Habiller mon dino</button>
+    <button type="button" id="parents-btn">👨‍👩‍👦 Espace parents</button>
   </div>
 
   <!-- la vallée : rendue entièrement par js/mur-scene.js -->
@@ -136,15 +143,45 @@
       document.getElementById('stars-total').textContent = '⭐ ' + t;
     }
 
-    // avatar du profil : dino choisi (recoloré) ou 🦕 par défaut — tap = atelier
+    // avatar du profil : dino choisi (recoloré) ou 🦕 par défaut.
+    // Tap = mini-menu (habiller / espace parents — retour PY 2026-07-30).
     function paintProfil() {
       const el = document.getElementById('profil-avatar');
+      const menu = document.getElementById('avatar-menu');
       try {
         const id = window.Avatar && Avatar.get();
         const f = id ? Avatar.file(id, 'joyeux') : null;
         if (f) { el.innerHTML = '<img alt="Mon dino">'; Avatar.paintInto(el.firstChild, f); }
       } catch (e) {}
-      el.addEventListener('click', () => { location.href = 'avatar-atelier.html'; });
+      el.addEventListener('click', (ev) => {
+        ev.stopPropagation();
+        menu.style.display = menu.style.display === 'none' ? '' : 'none';
+      });
+      document.getElementById('am-atelier').addEventListener('click', () => { location.href = 'avatar-atelier.html'; });
+      document.addEventListener('click', (ev) => {
+        if (!ev.target.closest('#avatar-menu') && !ev.target.closest('#profil-avatar')) menu.style.display = 'none';
+      });
+    }
+
+    // ── raccourcis d'entête : œufs (chambre) + album Padidi ──────────
+    function wireHeaderShortcuts() {
+      document.getElementById('hdr-oeufs').addEventListener('click', () => {
+        if (window.NidUI && NidUI.openChambre) NidUI.openChambre();
+      });
+      document.getElementById('hdr-padidi').addEventListener('click', () => {
+        if (window.NidUI && NidUI.openPadidi) NidUI.openPadidi();
+      });
+      // badge : nb d'œufs au nid (moteur chargé paresseusement → on re-tente)
+      function paintBadge() {
+        try {
+          const n = window.Collection ? Collection.eggs().length : 0;
+          const b = document.getElementById('hdr-oeufs-n');
+          b.textContent = n;
+          b.style.display = n > 0 ? '' : 'none';
+        } catch (e) {}
+      }
+      setTimeout(paintBadge, 1500);
+      window.addEventListener('pageshow', paintBadge);
     }
 
     // ── Modale code TRITRI (encyclopédie) ────────────────────────────
@@ -168,6 +205,7 @@
     });
     paintProfilMeta();
     paintProfil();
+    wireHeaderShortcuts();
 
     // ── Jingle au 1er clic (identité conservée) ───────────────────────
     const JINGLES = ['sounds/ratp-jingle.mp3', 'sounds/sncf-france-jingle.mp3'];

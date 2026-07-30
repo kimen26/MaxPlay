@@ -138,7 +138,8 @@ try {
   });
   ok('éclosion de l\'œuf doré → dino TRÈS CONNU (star a1)', starHatch && starHatch.id === 'a1', JSON.stringify(starHatch));
 
-  // ── accessoire ÉTOILE (3e étoile d'un jeu) : permanent, max 1/œuf ──────
+  // ── accessoire ÉTOILE (3e étoile d'un jeu) : 3 charges à déclassement
+  //    VISUEL (spec v0.7) — 🌟 etoile → ⭐ etoile2 → 🧣 écharpe normale ─────
   await reset(page);
   const mast = await page.evaluate(() => Collection.grantReward({ mastered: true }));
   ok('mastered:true → accessoire ÉTOILE spécial (remplace le gain)', mast.type === 'accessoire' && mast.accessoire.id === 'etoile' && mast.special === true, JSON.stringify(mast));
@@ -146,7 +147,7 @@ try {
     Math.random = () => 0.1;
     Collection.grantReward({}); // œuf (nid vide)
     const w1 = Collection.warmEgg(0, 'etoile');
-    // 2e étoile sur le MÊME œuf : refusée (il faudrait en re-gagner une de toute façon)
+    // 2e étoile sur le MÊME œuf : refusée (max 1 étoile par œuf, tout stade)
     Collection.grantReward({ mastered: true });
     const w2 = Collection.warmEgg(0, 'etoile');
     const hatchedE = Collection.hatchEgg(0); // seuil 1 (1re éclosion du profil)
@@ -155,8 +156,32 @@ try {
   });
   ok('étoile posée sur un œuf', etoileFlow.w1.ok === true, JSON.stringify(etoileFlow.w1));
   ok('2e étoile sur le MÊME œuf refusée (max 1/œuf)', etoileFlow.w2.ok === false, JSON.stringify(etoileFlow.w2));
-  ok('à l\'éclosion, l\'étoile REVIENT au sac (permanente)',
-     etoileFlow.sacAfter.some(a => a.id === 'etoile' && a.count === 2), JSON.stringify(etoileFlow.sacAfter));
+  ok('usage 1 : l\'étoile revient au sac DÉCLASSÉE (⭐ etoile2) — la 🌟 non utilisée reste',
+     etoileFlow.sacAfter.some(a => a.id === 'etoile2' && a.count === 1) &&
+     etoileFlow.sacAfter.some(a => a.id === 'etoile' && a.count === 1),
+     JSON.stringify(etoileFlow.sacAfter));
+  // usage 2 : etoile2 posée → revient en écharpe normale · usage 3 : consommée
+  const etoileFin = await page.evaluate(() => {
+    Math.random = () => 0.1;
+    Collection.grantReward({}); // nouvel œuf (nid vide) — seuil désormais 3
+    Math.random = () => 0.9;
+    const a1 = Collection.grantReward({}); const a2 = Collection.grantReward({}); // 2 accessoires normaux
+    Collection.warmEgg(0, 'etoile2');
+    Collection.warmEgg(0, a1.accessoire.id);
+    Collection.warmEgg(0, a2.accessoire.id);
+    Collection.hatchEgg(0);
+    const apres2 = Collection.state().sac;
+    // usage 3 : l'écharpe issue de l'étoile est un accessoire NORMAL → consommée
+    Math.random = () => 0.1;
+    Collection.grantReward({});
+    const hasEcharpe = apres2.some(a => a.id === 'echarpe');
+    return { apres2, hasEcharpe };
+  });
+  ok('usage 2 : etoile2 utilisée → revient au sac en écharpe NORMALE (le pin\'s a disparu)',
+     etoileFin.hasEcharpe && !etoileFin.apres2.some(a => a.id === 'etoile2'),
+     JSON.stringify(etoileFin.apres2));
+  ok('les étapes du déclassement ne sont jamais dans le tirage aléatoire',
+     etoileFin.apres2.every(a => a.id !== 'etoile' || a.count === 1), JSON.stringify(etoileFin.apres2));
 
   // ── tout possédé → doublon ────────────────────────────────────────────
   await reset(page);

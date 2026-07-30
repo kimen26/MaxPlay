@@ -144,7 +144,7 @@
   }
 
   // ── helpers œufs (chambre) ──────────────────────────────────────────
-  var ACC_EMOJI = { paille: '🌾', couverture: '🧶', bonnet: '🧢', echarpe: '🧣', etoile: '🌟' };
+  var ACC_EMOJI = { paille: '🌾', couverture: '🧶', bonnet: '🧢', echarpe: '🧣', etoile: '🌟', etoile2: '⭐' };
   function accEmoji(id) { return ACC_EMOJI[id] || '🎁'; }
   function crackSpans(stage) {
     var h = '';
@@ -288,7 +288,7 @@
       && typeof global.Collection.warmEgg === 'function');
   }
 
-  function chambreEggHtml(egg) {
+  function chambreEggHtml(egg, sacGarni) {
     var col = egg.familleMeta && egg.familleMeta.color ? egg.familleMeta.color : '';
     var th = egg.needed || 3;
     var slots = '';
@@ -296,8 +296,13 @@
       var accId = egg.acc[i];
       slots += '<span class="ch-slot' + (accId ? ' rempli' : '') + '">' + (accId ? accEmoji(accId) : '') + '</span>';
     }
+    // affordance « il a froid » (spec v0.7, sac sans cap) : un œuf NU alors
+    // que le sac est garni FRISSONNE — zéro règle, zéro pénalité, la
+    // suggestion fait le travail.
+    var frisson = sacGarni && egg.acc.length === 0 && !egg.ready;
     return '<div class="ch-oeuf" data-egg="' + egg.index + '">' +
       '<div class="ch-oeuf-visu' + (egg.golden ? ' dore' : '') + (egg.ready ? ' pret' : '') +
+        (frisson ? ' frisson' : '') +
         (egg.stage ? ' stage-' + egg.stage : '') + '"' +
         (col && !egg.golden ? ' style="--oeuf-c:' + col + ';"' : '') + '>' +
         crackSpans(egg.stage) +
@@ -324,8 +329,10 @@
     if (!ov) return;
     var eggs = [];
     try { eggs = global.Collection.eggs(); } catch (e) { eggs = []; }
+    var sacGarni = 0;
+    try { global.Collection.sac().forEach(function (a) { sacGarni += a.count; }); } catch (e) {}
     var eggsHtml = eggs.length
-      ? eggs.map(chambreEggHtml).join('')
+      ? eggs.map(function (e) { return chambreEggHtml(e, sacGarni > 0); }).join('')
       : '<div class="ch-vide"><div class="ch-vide-oeuf"></div></div>';
     ov.querySelector('.ch-oeufs').innerHTML = eggsHtml;
     ov.querySelector('.ch-sac-items').innerHTML = chambreSacHtml();
@@ -442,20 +449,177 @@
     if (res && (res.loveJustWarmed || res.ready)) setTimeout(function () { hatchInChambre(eggIndex); }, 900);
   }
 
+  // ── THÉÂTRE D'ÉCLOSION (spec v0.7 §6.1, séquence VALIDÉE PY) ─────────
+  //  1. l'œuf prêt s'agite + sparkle (« il va éclore ! », pur visuel)
+  //  2. l'avatar du joueur vient le chercher (transform-only)
+  //  3. transition LATÉRALE chambre → album Padidi (glissement, pas de popup),
+  //     l'avatar traverse avec l'œuf qui suit en petit rebond
+  //  4. arrêt devant l'OMBRE de la case cible (suspense — la case est MASQUÉE
+  //     en ombre pendant le rituel, l'anti-spoiler reste gravé partout ailleurs)
+  //  5. révélation : l'œuf s'ouvre, le sprite prend sa place
+  //  6. « Voir sa fiche » PROPOSÉE, jamais forcée + applaudissements, retour libre.
+  //  Fallback (doublon / données absentes) : séquence historique.
+  function transporterSrc(imgEl) {
+    // l'avatar du joueur transporte ; s'il EST un copain fixe, ce copain
+    // assure le transport (même asset — pas de clone dans la vallée, mais
+    // ici on est DANS le monde dino). Sans avatar choisi : Tritri.
+    try {
+      var id = global.Avatar && Avatar.get();
+      if (id && Avatar.file && Avatar.paintInto) {
+        var f = Avatar.file(id, 'joyeux');
+        if (f) { Avatar.paintInto(imgEl, f); return true; }
+      }
+    } catch (e) {}
+    try {
+      if (global.MUR && MUR.avatarMood) { imgEl.src = MUR.avatarMood('tritri', 'joyeux'); return true; }
+    } catch (e) {}
+    return false;
+  }
+
   function hatchInChambre(eggIndex) {
     if (hatchInProgress) return;
-    var eggEl = document.querySelector('.ch-oeuf[data-egg="' + eggIndex + '"] .ch-oeuf-visu');
-    if (!eggEl || !global.MaxFX) return;
+    var visu = document.querySelector('.ch-oeuf[data-egg="' + eggIndex + '"] .ch-oeuf-visu');
+    if (!visu || !global.MaxFX) return;
+    var eggMeta = null;
+    try {
+      eggMeta = global.Collection.eggs().filter(function (e) { return e.index === eggIndex; })[0] || null;
+    } catch (e) {}
     var result = null;
     try { result = global.Collection.hatchEgg(eggIndex); } catch (e) { return; }
     if (!result) return;
     hatchInProgress = true;
-    runHatchSequence(eggEl, result).then(function () {
+
+    var dino = result.id ? dinoById(result.id) : null;
+    if (result.type === 'doublon' || !dino) {
+      // fallback : fête historique sur place (doublon-cadeau, données absentes)
+      runHatchSequence(visu, result).then(function () {
+        hatchInProgress = false;
+        renderChambre();
+        refresh();
+      });
+      return;
+    }
+    hatchTheatre(visu, eggMeta, dino).then(function () {
       hatchInProgress = false;
       renderChambre();
       refresh();
     });
   }
+
+  function hatchTheatre(visu, eggMeta, dino) {
+    var col = eggMeta && eggMeta.familleMeta && eggMeta.familleMeta.color ? eggMeta.familleMeta.color : '#f5e3c2';
+    var golden = !!(eggMeta && eggMeta.golden);
+
+    // 1. « il va éclore ! » : agitation + sparkle (~1.4 s)
+    visu.classList.add('va-eclore');
+    var spark = document.createElement('span');
+    spark.className = 'ch-oeuf-spark';
+    spark.textContent = '✨';
+    visu.appendChild(spark);
+
+    // couche de transport (au-dessus de la chambre ET du Padidi)
+    var carry = document.createElement('div');
+    carry.className = 'th-carry';
+    var porteur = document.createElement('img');
+    porteur.className = 'th-porteur';
+    porteur.alt = '';
+    transporterSrc(porteur);
+    var oeuf = document.createElement('div');
+    oeuf.className = 'th-oeuf' + (golden ? ' dore' : '');
+    oeuf.style.setProperty('--oeuf-c', col);
+    carry.appendChild(porteur);
+    carry.appendChild(oeuf);
+    document.body.appendChild(carry);
+
+    function moveCarry(x, y, dur, easing) {
+      return carry.animate([
+        { transform: getComputedStyle(carry).transform === 'none' ? 'translate(0,0)' : getComputedStyle(carry).transform },
+        { transform: 'translate(' + x + 'px,' + y + 'px)' }
+      ], { duration: dur, easing: easing || 'ease-in-out', fill: 'forwards' }).finished.catch(function () {});
+    }
+
+    var r = visu.getBoundingClientRect();
+    var eggX = r.left + r.width / 2, eggY = r.top + r.height / 2;
+    // départ hors-champ gauche, à hauteur de l'œuf
+    carry.style.left = '-90px';
+    carry.style.top = (eggY - 40) + 'px';
+
+    return wait_(1400).then(function () {
+      // 2. l'avatar arrive jusqu'à l'œuf
+      return moveCarry(eggX + 50, 0, 1100, 'ease-in-out');
+    }).then(function () {
+      // l'œuf de la chambre « passe » dans les bras du transporteur
+      visu.style.opacity = '0';
+      oeuf.classList.add('porte');
+      // 3. glissement latéral chambre → Padidi
+      var ch = $('chambre-ov');
+      if (ch) ch.classList.add('slide-out');
+      openPadidi({ mask: dino.id, noClose: true });
+      var pad = $('padidi-ov');
+      if (pad) pad.classList.add('slide-in');
+      return wait_(650);
+    }).then(function () {
+      if ($('chambre-ov')) $('chambre-ov').remove(); // la chambre est partie avec le glissement
+      // 4. cap sur l'OMBRE de la case cible (suspense)
+      var cible = document.querySelector('#padidi-ov .nid-vig[data-dino="' + dino.id + '"]');
+      if (!cible) return null; // Padidi indisponible → révélation sur place
+      cible.scrollIntoView({ block: 'center', behavior: 'auto' });
+      cible.classList.add('th-cible');
+      var cr = cible.getBoundingClientRect();
+      var base = carry.getBoundingClientRect();
+      var dx = (cr.left + cr.width / 2) - (base.left + base.width / 2);
+      var dy = (cr.top + cr.height + 34) - (base.top + base.height / 2);
+      return moveCarry(dx, dy, 1400, 'ease-in-out').then(function () { return cible; });
+    }).then(function (cible) {
+      return wait_(700).then(function () { return cible; }); // le court instant face à la silhouette
+    }).then(function (cible) {
+      // 5. révélation : l'œuf s'ouvre, le sprite prend sa place
+      var imgSrc = teteSrc(dino) || ombreSrc(dino);
+      playBabyCry(dino);
+      return MaxFX.hatch(oeuf, { imgSrc: imgSrc, label: '' }).then(function (ov) {
+        if (ov && ov.parentNode) ov.parentNode.removeChild(ov);
+        if (cible) {
+          cible.classList.remove('ombre-only', 'th-cible');
+          cible.classList.add('possede', 'th-revele');
+          cible.dataset.owned = '1';
+          var im = cible.querySelector('img');
+          if (im) im.src = imgSrc;
+        }
+        oeuf.style.display = 'none';
+        // 6. applaudissements + « Voir sa fiche » proposée, jamais forcée
+        try { var a = new Audio('sounds/fx/applaudissements.mp3'); a.volume = 0.7; a.play().catch(function () {}); } catch (e) {}
+        if (cible) {
+          var prop = document.createElement('button');
+          prop.type = 'button';
+          prop.className = 'th-fiche';
+          prop.textContent = '📖 Voir sa fiche';
+          prop.addEventListener('click', function () {
+            location.href = 'dev-dinos.html?v=7&open=' + encodeURIComponent(dino.id);
+          });
+          document.body.appendChild(prop);
+          var pr = cible.getBoundingClientRect();
+          prop.style.left = Math.max(12, Math.min(innerWidth - 172, pr.left + pr.width / 2 - 80)) + 'px';
+          prop.style.top = Math.min(innerHeight - 70, pr.bottom + 10) + 'px';
+          setTimeout(function () { if (prop.parentNode) prop.parentNode.removeChild(prop); }, 7000);
+        }
+        return wait_(600);
+      });
+    }).then(function () {
+      // retour libre : le transporteur repart, le Padidi reste ouvert
+      var pad = $('padidi-ov');
+      if (pad) {
+        var back = pad.querySelector('.ch-back');
+        if (back) back.style.display = '';
+      }
+      return carry.animate([
+        { opacity: 1 }, { opacity: 0 }
+      ], { duration: 500, fill: 'forwards' }).finished.catch(function () {});
+    }).then(function () {
+      if (carry.parentNode) carry.parentNode.removeChild(carry);
+    });
+  }
+
+  function wait_(ms) { return new Promise(function (r) { setTimeout(r, ms); }); }
 
   // ─────────────────────────────────────────────────────────────────────
   //  PADIDI — point d'entrée vers les fiches (spec §6.3) : grille d'ombres
@@ -469,13 +633,16 @@
     '</div>';
   }
 
-  function padidiContentHtml() {
+  // maskId (théâtre d'éclosion §6.1) : cette case reste en OMBRE pendant le
+  // rituel même si l'espèce vient d'être commitée — la révélation la remplit.
+  function padidiContentHtml(maskId) {
     var dinos = dinosArray().filter(function (d) { return !!assetKey(d); });
     if (!global.Collection || !dinos.length) return '';
     var state;
     try { state = Collection.state(); } catch (e) { return ''; }
     var owned = {};
     (state.owned || []).forEach(function (id) { owned[id] = 1; });
+    if (maskId) delete owned[maskId];
 
     var familles = famillesArray();
     var order = familles.length ? familles.map(function (f) { return f.id; }) : [];
@@ -507,13 +674,18 @@
       '<div class="nid-bandeau-scroll">' + groupsHtml + '</div>';
   }
 
-  function openPadidi() {
+  function openPadidi(opts) {
+    opts = opts || {};
     if ($('padidi-ov')) return;
     var ov = document.createElement('div');
     ov.id = 'padidi-ov';
-    ov.innerHTML = padidiContentHtml();
+    ov.innerHTML = padidiContentHtml(opts.mask || null);
     if (!ov.innerHTML) return; // moteur/données absents : pas d'écran vide
     if (global.MurScene && global.MurScene.markGainSeen) global.MurScene.markGainSeen();
+    if (opts.noClose) { // pendant le théâtre : pas de sortie en plein rituel
+      var b = ov.querySelector('.ch-back');
+      if (b) b.style.display = 'none';
+    }
     document.body.appendChild(ov);
     ov.addEventListener('click', function (ev) {
       if (ev.target.closest('.ch-back')) { if (ov.parentNode) ov.parentNode.removeChild(ov); return; }

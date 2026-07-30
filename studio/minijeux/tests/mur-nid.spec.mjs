@@ -214,18 +214,26 @@ try {
     !!(document.querySelector('div[style*="position: fixed"][style*="z-index: 70"]') || document.querySelector('.hatch-gain')));
   ok('œuf doré prêt : PAS d\'éclosion à 700ms (le doré doit se voir)', !earlyHatch);
   ok('l\'œuf doré est visible dans la chambre pendant l\'attente', (await page2.locator('#chambre-ov .ch-oeuf-visu.dore').count()) === 1);
-  const hatchPlays = await page2.waitForFunction(() =>
-    document.querySelector('div[style*="position: fixed"][style*="z-index: 70"]') || document.querySelector('.hatch-gain'),
-    null, { timeout: 5000 }).then(() => true).catch(() => false);
-  ok('l\'éclosion finit par se jouer dans la chambre', hatchPlays);
-  if (hatchPlays) {
-    const gainCard = await page2.waitForSelector('.hatch-gain, .hatch-doublon', { timeout: 5000 }).then(() => true).catch(() => false);
-    ok('carte de gain affichée (nom + actions)', gainCard);
-    if (await page2.locator('.hatch-btn-continuer').count()) await page2.click('.hatch-btn-continuer');
-    await page2.waitForTimeout(400);
-    const eggsLeft = await page2.locator('#chambre-ov .ch-oeuf').count();
-    ok('les 2 autres œufs restent après l\'éclosion individuelle', eggsLeft === 2, `count=${eggsLeft}`);
+  // THÉÂTRE D'ÉCLOSION (spec v0.7 §6.1) : agitation → l'avatar transporte
+  // l'œuf → glissement vers le Padidi → suspense devant l'ombre → révélation
+  const carrySeen = await page2.waitForSelector('.th-carry', { timeout: 6000 }).then(() => true).catch(() => false);
+  ok('le transporteur entre en scène (théâtre §6.1 démarré)', carrySeen);
+  const slideSeen = await page2.waitForSelector('#padidi-ov.slide-in', { timeout: 8000 }).then(() => true).catch(() => false);
+  ok('transition latérale chambre → album Padidi (glissement, pas de popup)', slideSeen);
+  const revealSeen = await page2.waitForSelector('.nid-vig.th-revele', { timeout: 14000 }).then(() => true).catch(() => false);
+  ok('révélation : le sprite prend sa place dans l\'album', revealSeen);
+  if (revealSeen) {
+    const caseOk = await page2.evaluate(() => {
+      const c = document.querySelector('.nid-vig.th-revele');
+      return c && c.classList.contains('possede') && c.dataset.owned === '1';
+    });
+    ok('la case révélée est bien possédée (ombre → couleur)', caseOk);
+    const ficheBtn = await page2.waitForSelector('.th-fiche', { timeout: 4000 }).then(() => true).catch(() => false);
+    ok('« Voir sa fiche » PROPOSÉE, jamais forcée', ficheBtn);
+    await page2.screenshot({ path: resolve(artifacts, 'theatre-eclosion.png') });
   }
+  const eggsLeft = await page2.evaluate(() => window.Collection.eggs().length);
+  ok('les 2 autres œufs restent après l\'éclosion individuelle', eggsLeft === 2, `count=${eggsLeft}`);
   await page2.close();
   ok('Aucune erreur JS scénario doré (smoke)', errors2.length === 0, errors2.join(' | '));
 

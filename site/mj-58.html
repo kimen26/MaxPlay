@@ -300,11 +300,17 @@
       ctx.font = '26px sans-serif';
       eggs.forEach(eg => { if (!eg.taken) ctx.fillText('🥚', eg.x + eg.w / 2, eg.y + eg.h); });
 
-      // Rex — clignote légèrement pendant le trébuchement (feedback mignon, pas punitif)
+      // Rex — clignote légèrement pendant le trébuchement (feedback mignon, pas punitif).
+      // Miroir horizontal : l'emoji 🦖 regarde à GAUCHE nativement, Rex court
+      // vers la DROITE (retour playtest PY 2026-07-31 « mauvais sens »).
       ctx.save();
       if (rex.stumble > 0 && Math.floor(rex.stumble / 4) % 2 === 0) ctx.globalAlpha = 0.5;
       ctx.font = '46px sans-serif';
-      ctx.fillText('🦖', rex.x + rex.w / 2, rex.y);
+      ctx.translate(rex.x + rex.w / 2, rex.y);
+      ctx.scale(-1, 1);
+      ctx.fillText('🦖', 0, 0);
+      ctx.restore();
+      ctx.save();
       if (rex.stumble > 0) {
         ctx.font = '20px sans-serif';
         ctx.fillText('😅', rex.x + rex.w / 2 + 26, rex.y - 40);

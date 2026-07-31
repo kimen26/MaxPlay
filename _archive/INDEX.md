@@ -85,6 +85,10 @@ Documenté en détail dans son `INDEX.md` local (8 dinos retirés un à un, rais
 
 Skills `storytelling-master`, `craft-fundamentals`, `youth-writing`, `enneagramme-system` absorbés par `~/.claude/skills/narration-craft/` (voir son SKILL.md § historique). Entrée ajoutée ici le 2026-07-19 (existait sans note).
 
+### `kimi-hooks-2026-07-27/` — Sonde Stop Kimi remplacée
+
+`stop-probe.kimi.ps1` (loguait le payload Stop brut de Kimi Code) remplacée par `.kimi-code/hooks/pmo-check.kimi.ps1` le 2026-07-19, puis débranchée de `~/.kimi-code/config.toml`. Archivée le 2026-07-27 (audit cartographie narration) ; son log `stop-payload.jsonl` (gitignoré) supprimé. Détail : [`kimi-hooks-2026-07-27/README.md`](kimi-hooks-2026-07-27/README.md).
+
 ## Règle d'or
 
 Ne **rien** y ajouter sans une note dans ce fichier expliquant **quand**, **pourquoi**, et **comment retrouver** la matière. Un cadavre non documenté = un cadavre perdu.

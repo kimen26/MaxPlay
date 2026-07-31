@@ -5,7 +5,7 @@
 import { chromium } from 'playwright';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, resolve } from 'node:path';
-import { mkdirSync } from 'node:fs';
+import { mkdirSync, existsSync } from 'node:fs';
 
 const __dir = dirname(fileURLToPath(import.meta.url));
 const mj = process.argv[2];
@@ -14,6 +14,21 @@ if (!mj) { console.error('Usage: npm run mj:test <mj-XX> [fichier.html]'); proce
 const htmlPath = process.argv[3]
   ? resolve(process.argv[3])
   : resolve(__dir, '..', '..', '..', 'site', `${mj}.html`);
+
+// Certaines specs sont AUTONOMES (collection, mur-nid, cloud-merge…) : elles
+// bâtissent leur propre harnais et n'ont pas de page site/<nom>.html. Les
+// passer à ce runner produisait un rouge trompeur (ERR_FILE_NOT_FOUND lu
+// comme "jeu cassé"). On oriente au lieu de mentir.
+if (!existsSync(htmlPath)) {
+  const ownSpec = resolve(__dir, `${mj}.spec.mjs`);
+  if (existsSync(ownSpec)) {
+    console.error(`\x1b[33m${mj} n'a pas de page site/${mj}.html : c'est une spec AUTONOME.\x1b[0m`);
+    console.error(`Lance-la directement :  node studio/minijeux/tests/${mj}.spec.mjs`);
+  } else {
+    console.error(`\x1b[31mIntrouvable : ${htmlPath}\x1b[0m`);
+  }
+  process.exit(2);
+}
 
 const artifacts = resolve(__dir, '.artifacts');
 mkdirSync(artifacts, { recursive: true });

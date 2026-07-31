@@ -165,6 +165,7 @@ narration/
 | [`personnages/voix-meta/`](personnages/voix-meta/README.md) | **Voix méta** : narrateurs H/F + cheatsheet didascalies + preview-texts + alias-tags catalog + **`_VOICE-IDS-CASTING.md` (source de vérité méthodo v24)** + **`_SESSION-2026-05-11-RETOUR-EXP.md`** + étude vocale 18 prompts + playbook MaxPlay |
 | 🎙️ **Skills audio globaux** (auto-triggered) | `~/.claude/skills/elevenlabs-voice-design/` (CRÉATION voix — **MAJ 2026-05-12 avec AP#15/16/17**) · `~/.claude/skills/audio-direction-elevenlabs/` (**PRODUCTION** multi-voix : text-to-dialogue, tags v3, tricks graphie, dicts, voice settings, **17 anti-patterns**, 12 cultures) |
 | [`equipe/memoire-*.md`](equipe/) | Mémoires décentralisées par agent |
+| [`scripts/check-compteurs.js`](scripts/check-compteurs.js) | **Anti-dérive des chiffres en dur** : recompte les faits sur disque (prénoms, onomatopées, masterclasses craft, stories) et compare aux chiffres déclarés dans les INDEX. Ne réécrit rien, rapporte. `node studio/narration/scripts/check-compteurs.js` — exit 1 si dérive. Filet de la doctrine « zéro chiffre en dur » ([`memory/DOCTRINE.md`](../../memory/DOCTRINE.md)) ; à passer en clôture d'audit PMO. |
 
 ---
 

@@ -29,12 +29,13 @@
   // Coins de prédilection (% de la scène) — chaque copain revient flâner
   // près de son décor sans y être enchaîné (spec §4.2).
   var COINS = {
-    volcan:   { x: 18, y: 22 },
-    arbre:    { x: 78, y: 30 },
-    mare:     { x: 30, y: 56 },
-    grotte:   { x: 72, y: 62 },
-    fougeres: { x: 22, y: 82 },
-    trone:    { x: 62, y: 74 }
+    volcan:   { x: 18, y: 24 },   // hôte dino (avatar du joueur)
+    pic:      { x: 47, y: 15 },   // Volta plane au-dessus du pic rocheux
+    arbre:    { x: 80, y: 32 },
+    mare:     { x: 28, y: 56 },
+    grotte:   { x: 74, y: 62 },
+    fougeres: { x: 20, y: 82 },
+    trone:    { x: 60, y: 76 }
   };
   var WANDER_R = 16;     // rayon de flânerie autour du coin (%)
   var MIN_DIST = 16;     // distance mini entre deux copains (%) — « on ne se touche pas »
@@ -62,16 +63,34 @@
   }
 
   // ── décor : vue du dessus « tapis de jeu » — assets img/decor existants ──
+  // Décor : assets img/decor/ existants, posés en %, non-tappables (spectacle).
+  // Enrichi 2026-07-31 (retour PY « c'est bien sec ») avec des assets qui
+  // dormaient inutilisés dans la réserve : geyser, cactus, cratère. Trois
+  // plans de profondeur (.p-loin atténué → .p-pres net) pour que la vallée
+  // ait un horizon au lieu d'être un tapis plat.
   function decorHtml() {
     return '' +
+      // ── plan lointain : brumeux, petit, jamais au premier regard ──
+      '<img class="v-decor v-sapin s1 p-loin" src="' + DECOR + 'sapin.png" alt="">' +
+      '<img class="v-decor v-sapin s2 p-loin" src="' + DECOR + 'sapin.png" alt="">' +
+      '<img class="v-decor v-cratere p-loin" src="' + DECOR + 'cratere.png" alt="">' +
+      '<div class="v-decor v-nuage n1"></div>' +
+      '<div class="v-decor v-nuage n2"></div>' +
+      // ── plan moyen : les repères des copains ──
       '<img class="v-decor v-volcan" src="' + DECOR + 'volcan_fumant.png" alt="">' +
+      '<img class="v-decor v-pic" src="' + DECOR + 'rocher.png" alt="">' +
       '<img class="v-decor v-arbre" src="' + DECOR + 'palmier.png" alt="">' +
-      '<div class="v-decor v-mare"></div>' +
       '<img class="v-decor v-grotte" src="' + DECOR + 'rocher.png" alt="">' +
+      '<div class="v-decor v-mare"></div>' +
+      '<img class="v-decor v-geyser" src="' + DECOR + 'geyser.png" alt="">' +
+      // ── plan proche : végétation qui habille les bords ──
       '<img class="v-decor v-fougere f1" src="' + DECOR + 'fougere.png" alt="">' +
       '<img class="v-decor v-fougere f2" src="' + DECOR + 'fougere.png" alt="">' +
+      '<img class="v-decor v-fougere f3 p-pres" src="' + DECOR + 'fougere.png" alt="">' +
+      '<img class="v-decor v-cactus" src="' + DECOR + 'cactus.png" alt="">' +
+      '<img class="v-decor v-cactus-2" src="' + DECOR + 'cactus.png" alt="">' +
       '<img class="v-decor v-buisson" src="' + DECOR + 'buisson_fleurs.png" alt="">' +
-      '<img class="v-decor v-sapin" src="' + DECOR + 'sapin.png" alt="">' +
+      '<img class="v-decor v-buisson-2" src="' + DECOR + 'buisson_fleurs.png" alt="">' +
       '<div class="v-route" id="v-route"></div>';
   }
 
@@ -286,10 +305,13 @@
     if (!route || _paused || typeof global.busSVG !== 'function') return;
     var b = document.createElement('div');
     b.className = 'v-bus';
-    b.innerHTML = global.busSVG('#E2001A', '#fff', '162', 130);
-    route.appendChild(b);
     var W = _scene.clientWidth;
     var ltr = Math.random() < 0.5;
+    // sens droite→gauche : la carrosserie est miroitée, mais le NUMÉRO est
+    // contre-miroité par busSVG(mirrored) — un vrai bus ne roule pas avec
+    // son 162 à l'envers (retour PY 2026-07-31).
+    b.innerHTML = global.busSVG('#E2001A', '#fff', '162', 130, { mirrored: !ltr });
+    route.appendChild(b);
     if (!ltr) b.style.transform = 'scaleX(-1)';
     b.animate([
       { transform: 'translateX(' + (ltr ? -160 : W + 160) + 'px)' + (ltr ? '' : ' scaleX(-1)') },

@@ -435,32 +435,100 @@
 .vallee-page .pseudo { max-width:38vw; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .vallee {
   position:relative; flex:1; overflow:hidden; border-radius:22px 22px 0 0;
-  /* tapis de jeu : prairie douce vue du dessus, chemins clairs */
+  /* Tapis de jeu retravaillé (retour PY 2026-07-31 « c'est bien sec ») :
+     au lieu d'un aplat vert uniforme, une vallée avec un HORIZON —
+     ciel chaud au loin, prairie qui se réchauffe vers le bas, clairières
+     et sentes claires. Tout en dégradés CSS : zéro image, zéro poids. */
   background:
-    radial-gradient(ellipse 60% 40% at 30% 58%, rgba(77,157,224,.16), transparent 60%),
-    radial-gradient(ellipse 90% 70% at 50% 30%, #17351f, transparent 90%),
-    linear-gradient(180deg, #142c1b 0%, #1a3a22 45%, #16331e 100%);
+    /* halo de chaleur du volcan (coin haut gauche) */
+    radial-gradient(ellipse 42% 30% at 16% 20%, rgba(255,138,76,.16), transparent 70%),
+    /* clairières douces : le sol respire au lieu d'être plat */
+    radial-gradient(ellipse 34% 20% at 62% 46%, rgba(163,214,124,.10), transparent 70%),
+    radial-gradient(ellipse 26% 16% at 24% 70%, rgba(163,214,124,.07), transparent 72%),
+    /* sente claire qui serpente vers la route (lecture du chemin) */
+    radial-gradient(ellipse 58% 12% at 50% 88%, rgba(214,199,150,.10), transparent 75%),
+    /* profondeur : le fond du décor s'éclaircit comme un lointain brumeux */
+    linear-gradient(180deg,
+      #24402c 0%,      /* horizon brumeux */
+      #1d3724 16%,
+      #1a3322 42%,
+      #16301f 72%,
+      #122a1b 100%);   /* premier plan, plus sombre = plus proche */
+}
+/* voile atmosphérique sur le tiers haut : sépare l'horizon du premier plan */
+.vallee::before {
+  content:''; position:absolute; left:0; right:0; top:0; height:38%;
+  background:linear-gradient(180deg, rgba(126,176,158,.13), transparent);
+  pointer-events:none;
 }
 
 /* décor : assets img/decor/ existants, posés en %, non-tappables (spectacle) */
-.v-decor { position:absolute; transform:translate(-50%,-50%); pointer-events:none; filter:drop-shadow(0 6px 10px rgba(0,0,0,.35)); }
-.v-volcan { left:14%; top:12%; width:94px; }
-.v-arbre { left:84%; top:20%; width:76px; }
+/* z-index du décor < celui des copains (5) : un dino se tient DEVANT son
+   rocher, jamais caché derrière (sinon Volta disparaît dans son perchoir). */
+.v-decor { position:absolute; transform:translate(-50%,-50%); pointer-events:none; z-index:1; filter:drop-shadow(0 6px 10px rgba(0,0,0,.35)); }
+.v-decor.p-loin { z-index:0; }
+.v-volcan { left:14%; top:13%; width:94px; }
+/* Pic rocheux : le perchoir de Volta (retour PY). Même asset que la grotte,
+   donc on le DIFFÉRENCIE — miroité, plus élancé et plus froid — sinon on lit
+   deux fois le même caillou au lieu d'un promontoire. */
+.v-pic {
+  left:46%; top:7%; width:76px;
+  transform:translate(-50%,-50%) scaleX(-1) scaleY(1.16);
+  filter:saturate(.8) brightness(1.06) drop-shadow(0 6px 10px rgba(0,0,0,.4));
+}
+.v-arbre { left:85%; top:22%; width:76px; }
+
+/* ── plans de profondeur : le lointain s'efface, le proche ressort ── */
+.p-loin { opacity:.42; filter:blur(.6px) saturate(.72) brightness(.82); }
+.p-pres { filter:drop-shadow(0 8px 12px rgba(0,0,0,.45)); }
+
+/* décors d'ambiance sortis de la réserve img/decor/ (inutilisés jusqu'ici) */
+.v-sapin.s1 { left:64%; top:9%; width:38px; }
+.v-sapin.s2 { left:72%; top:6%; width:30px; }
+.v-cratere { left:88%; top:12%; width:52px; }
+.v-geyser { left:36%; top:37%; width:44px; opacity:.85; }
+.v-cactus { left:90%; top:47%; width:38px; }
+/* bas de vallée : deux touches de plus pour que la bande au-dessus de la
+   route ne soit pas un aplat vide (retour PY « c'est bien sec »). */
+.v-fougere.f3 { left:70%; top:86%; width:46px; }
+.v-buisson-2 { left:16%; top:66%; width:36px; opacity:.9; }
+.v-cactus-2 { left:40%; top:73%; width:30px; opacity:.85; }
+
+/* nuages : dérive TRÈS lente, pur décor (transform-only, aucun layout) */
+.v-nuage {
+  border-radius:999px; background:rgba(226,240,232,.10); filter:blur(7px);
+  pointer-events:none;
+}
+.v-nuage.n1 { left:30%; top:7%; width:130px; height:26px; animation:v-nuage-derive 68s linear infinite; }
+.v-nuage.n2 { left:76%; top:16%; width:96px; height:20px; animation:v-nuage-derive 92s linear infinite reverse; }
+/* la dérive garde le recentrage translate(-50%,-50%) de .v-decor : l'écraser
+   décalerait le nuage d'une demi-largeur au premier frame. */
+@keyframes v-nuage-derive {
+  0%   { transform:translate(-50%,-50%) translateX(-26px); }
+  50%  { transform:translate(-50%,-50%) translateX(26px); }
+  100% { transform:translate(-50%,-50%) translateX(-26px); }
+}
 .v-mare {
   left:28%; top:52%; width:118px; height:66px; border-radius:50%;
   background:radial-gradient(ellipse at 45% 40%, #7cc4ea, #3b7fb8 75%);
   box-shadow:inset 0 4px 14px rgba(255,255,255,.25), 0 4px 10px rgba(0,0,0,.3);
   opacity:.85;
 }
-.v-grotte { left:80%; top:58%; width:86px; }
+.v-grotte { left:78%; top:60%; width:86px; }
 .v-fougere.f1 { left:12%; top:78%; width:50px; }
 .v-fougere.f2 { left:30%; top:88%; width:40px; }
-.v-buisson { left:55%; top:44%; width:44px; }
-.v-sapin { left:48%; top:12%; width:56px; }
+.v-buisson { left:55%; top:46%; width:44px; }
+/* .v-sapin : taille par défaut ; les positions s1/s2 sont plus bas (plan loin) */
+.v-sapin { width:56px; }
 .v-route { position:absolute; left:0; right:0; bottom:4px; height:104px; pointer-events:none; overflow:visible; }
 .v-bus { position:absolute; bottom:16px; will-change:transform; }
-.v-bus svg { display:block; }
-.v-bus svg { filter:drop-shadow(0 4px 8px rgba(0,0,0,.4)); }
+.v-bus svg { display:block; filter:drop-shadow(0 4px 8px rgba(0,0,0,.4)); }
+/* Bus qui roule vers la GAUCHE : la carrosserie est miroitée (scaleX(-1) posé
+   par mur-scene.js), mais un vrai bus ne retourne JAMAIS son numéro de ligne.
+   Le contre-miroir du numéro est posé par busSVG({mirrored:true}) — attribut
+   SVG dans le repère du viewBox, et non en CSS : des px CSS ne suivraient pas
+   l'échelle du viewBox quand le bus est redimensionné.
+   Retour PY 2026-07-31 : « le 162 est inversé ». */
 
 /* copains : images fixes posées debout sur le tapis, tap ≥ 80px */
 .v-copain {

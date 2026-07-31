@@ -63,13 +63,18 @@
     },
     {
       id: 'volta', nom: 'Volta', domaine: 'couleurs & monde', avatar: 'ptero',
-      coin: 'volcan', vole: true, bulle: 'Ici, on voyage !',
+      // Volta plane au-dessus du PIC ROCHEUX (échange de coins avec l'hôte
+      // dino, retour PY 2026-07-31) : un ptéranodon perche sur un promontoire,
+      // il ne niche pas dans un volcan en éruption.
+      coin: 'pic', vole: true, bulle: 'Ici, on voyage !',
       jeux: ['mj-21', 'mj-20', 'mj-22', 'mj-33', 'mj-12']
     },
     {
       // L'hôte des jeux dino — avatar/nom résolus au rendu (dinoHost()).
       id: 'dino', nom: 'Tritri', domaine: 'les jeux dino', avatar: 'tritri',
-      coin: 'fougeres', bulle: 'Viens voir les dinos !',
+      // L'hôte dino (avatar du joueur) prend le VOLCAN (retour PY 2026-07-31) :
+      // le coin le plus spectaculaire de la vallée revient au dino du joueur.
+      coin: 'volcan', bulle: 'Viens voir les dinos !',
       // mj-57 ouvre (règle nulle, confiance) · mj-58 = la récompense fun (spec §7)
       jeux: ['mj-57', 'mj-58', 'mj-24', 'mj-28', 'mj-31', 'mj-30', 'mj-32']
     },

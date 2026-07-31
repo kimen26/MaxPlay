@@ -25,8 +25,8 @@ const BUS_BODY_COLOR = '#1abc9c';
  * @param {number} width      - Largeur en pixels
  * @returns {string} SVG string
  */
-function busSVG(color, textColor, num, width = 200) {
-  return _busSVGTemplate(color, textColor, num, width, false);
+function busSVG(color, textColor, num, width = 200, opts) {
+  return _busSVGTemplate(color, textColor, num, width, false, opts);
 }
 
 /**
@@ -42,10 +42,18 @@ function busSVGHiddenNum(color, textColor, num, width = 200) {
  * Fonction interne commune — NE PAS appeler directement.
  * Toute la définition visuelle du bus est ici et nulle part ailleurs.
  */
-function _busSVGTemplate(destColor, textColor, num, width, hidden) {
+function _busSVGTemplate(destColor, textColor, num, width, hidden, opts) {
   const body = BUS_BODY_COLOR; // carrosserie toujours identique
   const numOpacity = hidden ? '0' : '1';
-  const numClass = hidden ? 'class="num-text"' : '';
+  // .bus-num toujours présent ; .num-text en plus quand le numéro est masqué
+  // (cible de revealBusNumber).
+  const numClass = hidden ? 'class="bus-num num-text"' : 'class="bus-num"';
+  // mirrored : le bus est retourné par le CSS pour rouler vers la gauche.
+  // On contre-miroite le NUMÉRO autour de son centre (x=104), dans le repère
+  // du viewBox — un vrai bus retourne sa carrosserie, jamais sa girouette.
+  const numFlip = (opts && opts.mirrored)
+    ? ' transform="translate(104,0) scale(-1,1) translate(-104,0)"'
+    : '';
   return `<svg viewBox="0 0 160 80" width="${width}" class="bus-svg" xmlns="http://www.w3.org/2000/svg">
   <!-- Carrosserie — couleur fixe turquoise RATP -->
   <rect x="5" y="10" width="150" height="45" rx="4" fill="${body}"/>
@@ -66,8 +74,11 @@ function _busSVGTemplate(destColor, textColor, num, width, hidden) {
   <rect x="84" y="14" width="40" height="21" fill="${destColor}" stroke="#111" stroke-width="1.5"/>
   <!-- Fenêtre mini droite -->
   <rect x="150.5" y="14" width="5" height="21" fill="#458bba" fill-opacity="0.82" stroke="#111" stroke-width="1"/>
-  <!-- Numéro dans la fenêtre destination -->
-  <text ${numClass} x="104" y="24.5" font-family="Arial,sans-serif" font-size="13" font-weight="bold"
+  <!-- Numéro dans la fenêtre destination.
+       .bus-num permet de CONTRE-MIROITER le seul numéro quand le bus entier
+       est retourné en CSS (scaleX(-1)) pour rouler vers la gauche : un vrai
+       bus retourne sa carrosserie, jamais son numéro de ligne. -->
+  <text ${numClass}${numFlip} x="104" y="24.5" font-family="Arial,sans-serif" font-size="13" font-weight="bold"
         fill="${textColor}" text-anchor="middle" dominant-baseline="central" opacity="${numOpacity}">${num}</text>
   <!-- Rétroviseur -->
   <line x1="149" y1="24" x2="155" y2="24" stroke="#111" stroke-width="2" stroke-linecap="round"/>

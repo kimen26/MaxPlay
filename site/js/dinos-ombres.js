@@ -37,7 +37,8 @@
 
   function colorSrc(pngOrDino) {
     const png = typeof pngOrDino === 'string' ? pngOrDino : (pngOrDino && pngOrDino.png);
-    return 'img/dinos/' + png;
+    // paleoart/ : les héros racine img/dinos/*.jpg ont été purgés le 2026-07-17
+    return 'img/dinos/paleoart/' + png;
   }
 
   // Pool canon : tous les dinos avec un png top-level (pas de sous-dossier) +

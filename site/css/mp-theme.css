@@ -390,3 +390,57 @@ body:not([data-ambiance]) { --bg0:#0a1226; --bg1:#0c1730; --card:#0e1a34; --card
 .journey-ep:not(.ep-done):not(.ep-next) { opacity:.75; }
 .journey-ep:not(.ep-done):not(.ep-next) .journey-btn { background:rgba(255,255,255,.12); color:var(--ink-2); box-shadow:none; border-color:transparent; }
 .journey-ep:not(.ep-done):not(.ep-next) .journey-btn.playing { background:linear-gradient(135deg,#c0392b,#e74c3c); color:#fff; }
+
+/* ════════════════════════════════════════════════════════════════════
+   STANDARD GOLDEN — piste de progression + écran de fin partagés
+   (déplacé de css/style.css le 2026-08-01, retour PY « écrans de
+   victoire éclatés » : 19 jeux consommaient G.showEnd/notePip SANS
+   charger style.css → écran de fin et pips SANS AUCUN style. Le shell
+   garantit mp-theme.css partout : ces classes vivent ici et NULLE PART
+   ailleurs. Marquage généré par js/mj-golden.js + js/mj-shell.js.)
+   ════════════════════════════════════════════════════════════════════ */
+.pips { display:flex; gap:6px; align-items:center; justify-content:center; padding:8px 12px 2px; flex-wrap:wrap; }
+.pip { width:16px; height:16px; border-radius:50%; background:rgba(255,255,255,0.18); border:2px solid rgba(255,255,255,0.25); transition:background .3s, transform .2s; }
+.pip.cur { transform:scale(1.25); border-color:#fff; }
+.pip.v1 { background:#00c47a; border-color:#00c47a; }   /* 1er coup */
+.pip.v2 { background:#ffe066; border-color:#ffe066; }   /* 2e coup  */
+.pip.v3 { background:#F58443; border-color:#F58443; }   /* 3e coup  */
+.pip.v4 { background:#ff4455; border-color:#ff4455; }   /* révélé   */
+
+.end-wrap { display:flex; flex-direction:column; align-items:center; justify-content:center; height:100dvh; max-height:var(--mp-vh, 100dvh); text-align:center; padding:20px; }
+.badge-zone { display:flex; gap:18px; margin-bottom:26px; }
+.badge-slot {
+  width:64px; height:64px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  font-size:2.6rem; color:#ffffff22;
+  background:#ffffff0d; border:3px dashed #ffffff2e;
+}
+.badge-slot.filled { color:#ffd633; border:3px solid #ffd63366; background:#ffd6331a; filter:drop-shadow(0 0 10px #ffd63366); }
+.badge-slot.pop { animation:slotPop .5s ease-out; }
+@keyframes slotPop { 0%{transform:scale(1)} 45%{transform:scale(1.45)} 100%{transform:scale(1)} }
+
+/* couleur : --gold du design system, PAS l ancien --accent-gold de style.css
+   (sinon deux ors différents selon que la page charge style.css ou non). */
+.end-title { font-size:1.9rem; font-weight:900; color:var(--gold, #ffd166); margin:6px 0 8px; opacity:0; animation:fadeUp .4s ease forwards; }
+.end-sub { font-size:1.2rem; font-weight:700; margin-bottom:24px; opacity:0; animation:fadeUp .4s ease forwards; }
+@keyframes fadeUp { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+.end-btns { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; opacity:0; animation:fadeUp .4s ease forwards; }
+.end-btns a { padding:16px 30px; border-radius:30px; text-decoration:none; font-weight:900; min-height:80px; min-width:80px; box-sizing:border-box; display:flex; align-items:center; justify-content:center; gap:6px; color:#fff; position:relative; }
+.end-btns a.btn-next-big { font-size:1.15rem; padding:18px 36px; box-shadow:0 4px 18px #ffd16655; }
+.end-btns a[data-act="home"] { min-width:80px; padding:16px 22px; font-size:1.4rem; }
+
+.egg-zone { display:flex; align-items:center; justify-content:center; min-height:0; }
+.egg-zone:empty { display:none; }
+
+.nid-badge {
+  position:absolute; top:-8px; right:-8px; font-size:1.1rem; line-height:1;
+  animation:nidPulse 1.4s ease-in-out infinite;
+}
+@keyframes nidPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.18)} }
+
+.fly-star {
+  position:fixed; left:-32px; top:-32px; width:64px; height:64px;
+  line-height:64px; text-align:center; font-size:3.4rem; color:#ffd633;
+  filter:drop-shadow(0 0 14px #ffd633aa); pointer-events:none; z-index:9999;
+}
+.fly-star.mini { width:40px; height:40px; line-height:40px; font-size:2rem; left:-20px; top:-20px; }

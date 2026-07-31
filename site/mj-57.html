@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-57 – Œufs Surprise</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mp-theme.css">
+  <link rel="stylesheet" href="css/mj-kit.css">
+  <style>
+    /* --- GABARIT HEADER CANONIQUE --- */
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+    body { font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
+
+    .stage { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; padding:6px 8px 14px; gap:8px; position:relative; }
+
+    .score-line { min-height:1.6em; font-size:1.15rem; color:#ffe9a0; font-weight:900; text-align:center; text-shadow:0 2px 4px rgba(0,0,0,.5); }
+
+    /* ── Grille d'œufs ── */
+    .grid {
+      display:grid; gap:4px; touch-action:manipulation;
+    }
+    .cell {
+      position:relative; width:var(--cell,64px); height:calc(var(--cell,64px) * 1.18);
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; min-width:64px; min-height:64px;
+    }
+    .cell .mjk-oeuf {
+      width:88%; height:92%; transition:transform .18s, filter .18s, box-shadow .18s;
+    }
+    .cell.hover .mjk-oeuf {
+      transform:scale(1.12);
+      filter:brightness(1.35);
+      box-shadow:0 0 0 4px rgba(255,255,255,.85), 0 0 18px rgba(255,255,255,.7);
+    }
+    .cell.golden .mjk-oeuf {
+      box-shadow:inset -4px -6px 10px rgba(120,70,20,.28), 0 0 14px rgba(255,224,102,.9), 0 0 0 3px #ffe066;
+    }
+    .cell.golden.hover .mjk-oeuf {
+      box-shadow:0 0 0 4px #fff, 0 0 22px rgba(255,224,102,1);
+    }
+    .cell.empty { pointer-events:none; }
+    .cell.empty .mjk-oeuf { opacity:0; transform:scale(0); }
+    .cell.falling .mjk-oeuf { transition:transform .28s cubic-bezier(.4,0,.6,1); }
+    .cell.popping .mjk-oeuf {
+      animation:eggPop .32s ease-in forwards;
+    }
+    @keyframes eggPop {
+      0% { transform:scale(1); opacity:1; }
+      50% { transform:scale(1.3); opacity:1; }
+      100% { transform:scale(0); opacity:0; }
+    }
+    .baby {
+      position:absolute; top:0; left:50%; transform:translate(-50%,0); font-size:26px;
+      pointer-events:none; z-index:6; animation:babyFly 1.1s ease-out forwards;
+    }
+    @keyframes babyFly {
+      0% { transform:translate(-50%,0) scale(.6); opacity:0; }
+      20% { transform:translate(-50%,-10px) scale(1.1); opacity:1; }
+      100% { transform:translate(-50%,-140px) scale(.9); opacity:0; }
+    }
+
+    /* Speckles (œufs mouchetés) : appliqués en JS via style inline dataset */
+    .mjk-oeuf.moucheté::before {
+      content:''; position:absolute; inset:0; border-radius:inherit; pointer-events:none;
+      background-image:
+        radial-gradient(circle at 25% 40%, rgba(255,255,255,.5) 0 2px, transparent 3px),
+        radial-gradient(circle at 55% 65%, rgba(255,255,255,.4) 0 2px, transparent 3px),
+        radial-gradient(circle at 70% 30%, rgba(255,255,255,.45) 0 2px, transparent 3px),
+        radial-gradient(circle at 40% 80%, rgba(255,255,255,.35) 0 2px, transparent 3px);
+    }
+  </style>
+</head>
+<body data-ambiance="jungle">
+<div id="app">
+
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">🎨 Œufs Surprise</span>
+  </div>
+
+  <div class="stage">
+    <div class="score-line" id="score-line"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+
+</div>
+  <!-- libs SPÉCIFIQUES au jeu -->
+  <script src="js/bus-svg.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/mj-kit.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
+  <script>
+  MJ.ready(function () {
+    'use strict';
+    // ─── MJ-57 : Œufs Surprise — SameGame/Chain Shot enfant (spec pack DinoJeux 2026-07-31) ───
+    // Tap sur un groupe ≥2 œufs de même couleur → éclosion (pop + bébé qui s'envole),
+    // gravité verticale + compactage horizontal. Score = bébés éclos (JAMAIS chiffre brut).
+    // Fin NATURELLE quand plus aucun groupe ≥2 — JAMAIS de défaite.
+    const GAME_ID = 'mj-57';
+
+    const shell = MJ.init({
+      id: GAME_ID, emoji: '🎨', titre: 'Œufs Surprise',
+      golden: true, consigne: true,
+      regle: {
+        picto: '🥚✨',
+        texte: 'Tapote un groupe d’œufs de la même couleur : ils éclosent !',
+        etapes: [
+          { t: 'Je regarde la grille 👀', d: 'Des œufs colorés, ronds ou mouchetés, remplissent la boîte.' },
+          { t: 'Je touche un œuf ✋', d: 'Le groupe entier de la même couleur s’illumine autour de mon doigt.' },
+          { t: 'Je tapote 🎉', d: 'Le groupe éclot : des bébés dinos s’envolent !' },
+          { t: 'La grille se réorganise 🔄', d: 'Les œufs tombent, les colonnes vides se resserrent. Je continue jusqu’à ce que tout ait éclos !' }
+        ]
+      }
+    });
+    const G = shell.G;
+
+    // ── Spec : UNE PARTIE = 3 grilles (pips golden), pas 4/6/8 ──
+    G.totalQ = 3;
+    G.buildPips();
+
+    const gridEl = document.getElementById('grid');
+    const scoreEl = document.getElementById('score-line');
+
+    function rand(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+
+    // Palette d'œufs : couleurs distinctes issues du pool LIGNES (règle bus/couleurs MaxPlay)
+    function eggColors(n) {
+      const pool = (window.LIGNES ? Object.values(window.LIGNES) : []).filter(l => l && l.color);
+      const picked = (window.selectDistinctColors ? selectDistinctColors(pool, n) : pool.slice(0, n));
+      return picked.map(l => l.color);
+    }
+
+    let gridN = 6, colorsN = 3, hasGoldenEggs = false;
+    let grid = [];       // grid[r][c] = { color, moucheté, golden } | null
+    let rows = 6, cols = 6;
+    let babiesHatched = 0;
+    let goldenLeft = 0;
+    let gameLock = false;
+    let hoverGroup = [];
+    let gridIndex = 0;   // 0..2, la grille courante de la partie
+    let cellPx = 64;
+    let testMode = false;
+    let attemptsThisGrid = 0; // taps qui ont produit un pop (pour la note de fin de grille)
+    let lastGridEndMsg = ''; // dernier message "fin de grille" (le harnais le lit sans course avec nextGrid)
+
+    function levelParams(lv) {
+      if (lv === 0) return { size: 6, colors: 3, golden: false };
+      if (lv === 1) return { size: 8, colors: 4, golden: false };
+      return { size: 8, colors: 4, golden: true };
+    }
+
+    // ── Génération : remplissage aléatoire, re-tirage si aucun groupe ≥2 ──
+    function hasAnyGroup(g, R, C) {
+      const seen = Array.from({ length: R }, () => Array(C).fill(false));
+      for (let r = 0; r < R; r++) {
+        for (let c = 0; c < C; c++) {
+          if (!g[r][c] || seen[r][c]) continue;
+          const grp = floodFill(g, R, C, r, c, seen);
+          if (grp.length >= 2) return true;
+        }
+      }
+      return false;
+    }
+
+    function generateGrid(R, C, palette, goldenCount) {
+      let attempts = 0;
+      let g;
+      do {
+        g = [];
+        for (let r = 0; r < R; r++) {
+          const row = [];
+          for (let c = 0; c < C; c++) {
+            row.push({ color: palette[rand(0, palette.length - 1)], moucheté: Math.random() < 0.4, golden: false });
+          }
+          g.push(row);
+        }
+        attempts++;
+      } while (!hasAnyGroup(g, R, C) && attempts < 40);
+
+      // Place les œufs dorés (objectif N3) sur des cases distinctes, sans casser
+      // la garantie "au moins un groupe" (les dorés ne forment pas leur propre groupe).
+      if (goldenCount > 0) {
+        let placed = 0, tries = 0;
+        while (placed < goldenCount && tries < 200) {
+          const r = rand(0, R - 1), c = rand(0, C - 1);
+          if (!g[r][c].golden) { g[r][c].golden = true; placed++; }
+          tries++;
+        }
+      }
+      return g;
+    }
+
+    // ── Flood-fill : groupe connecté de même couleur (4-directions) ──
+    function floodFill(g, R, C, r0, c0, seenOverride) {
+      const color = g[r0][c0].color;
+      const seen = seenOverride || Array.from({ length: R }, () => Array(C).fill(false));
+      const stack = [[r0, c0]];
+      const group = [];
+      seen[r0][c0] = true;
+      while (stack.length) {
+        const [r, c] = stack.pop();
+        group.push([r, c]);
+        const neighbors = [[r - 1, c], [r + 1, c], [r, c - 1], [r, c + 1]];
+        for (const [nr, nc] of neighbors) {
+          if (nr < 0 || nr >= R || nc < 0 || nc >= C) continue;
+          if (seen[nr][nc] || !g[nr][nc]) continue;
+          if (g[nr][nc].color !== color) continue;
+          seen[nr][nc] = true;
+          stack.push([nr, nc]);
+        }
+      }
+      return group;
+    }
+
+    // ── Rendu ──
+    function render() {
+      gridEl.innerHTML = '';
+      gridEl.style.gridTemplateColumns = 'repeat(' + cols + ', var(--cell))';
+      const px = cellPx;
+      gridEl.style.setProperty('--cell', px + 'px');
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const cell = document.createElement('div');
+          cell.className = 'cell';
+          cell.dataset.r = r; cell.dataset.c = c;
+          const data = grid[r][c];
+          if (!data) {
+            cell.classList.add('empty');
+          } else {
+            const egg = MJKit.oeuf(Math.round(px * 0.88));
+            egg.style.background = eggGradient(data.color);
+            if (data.moucheté) egg.classList.add('moucheté');
+            if (data.golden) cell.classList.add('golden');
+            cell.appendChild(egg);
+          }
+          cell.addEventListener('pointerenter', () => onHover(r, c));
+          cell.addEventListener('pointerleave', clearHover);
+          cell.addEventListener('click', () => onTap(r, c));
+          gridEl.appendChild(cell);
+        }
+      }
+      updateScore();
+    }
+
+    function eggGradient(hex) {
+      return 'radial-gradient(circle at 30% 30%, rgba(255,255,255,.55) 0 5px, transparent 6px),' +
+             'radial-gradient(circle at 62% 58%, rgba(0,0,0,.15) 0 4px, transparent 5px),' +
+             'linear-gradient(160deg, #fff, ' + hex + ' 55%, ' + hex + ' 100%)';
+    }
+
+    function updateScore() {
+      scoreEl.textContent = babiesHatched > 0 ? '🐣'.repeat(Math.min(babiesHatched, 12)) : '';
+    }
+
+    // ── Pré-illumination anti-hasard : survol/maintien avant le tap ──
+    function onHover(r, c) {
+      if (gameLock || !grid[r][c]) { clearHover(); return; }
+      clearHover();
+      const grp = floodFill(grid, rows, cols, r, c);
+      if (grp.length < 2) return;
+      hoverGroup = grp;
+      grp.forEach(([rr, cc]) => {
+        const el = cellAt(rr, cc);
+        if (el) el.classList.add('hover');
+      });
+    }
+    function clearHover() {
+      hoverGroup.forEach(([rr, cc]) => {
+        const el = cellAt(rr, cc);
+        if (el) el.classList.remove('hover');
+      });
+      hoverGroup = [];
+    }
+    function cellAt(r, c) { return gridEl.querySelector('.cell[data-r="' + r + '"][data-c="' + c + '"]'); }
+
+    // ── Tap : éclosion d'un groupe ≥2 (retourne une Promise résolue une fois
+    //    la grille retombée+compactée — le harnais de test peut l'attendre
+    //    au lieu de re-taper en boucle synchrone sur un état pas encore muté). ──
+    function onTap(r, c) {
+      if (gameLock || !grid[r][c]) return Promise.resolve(false);
+      const grp = floodFill(grid, rows, cols, r, c);
+      if (grp.length < 2) {
+        // touche isolée : petit shake doux, jamais de pénalité
+        const el = cellAt(r, c);
+        if (el) { el.animate([{ transform: 'scale(1)' }, { transform: 'scale(.94)' }, { transform: 'scale(1)' }], { duration: 180 }); }
+        return Promise.resolve(false);
+      }
+      return hatchGroup(grp);
+    }
+
+    function hatchGroup(grp) {
+      gameLock = true;
+      clearHover();
+      attemptsThisGrid++;
+      const wasGolden = grp.some(([r, c]) => grid[r][c] && grid[r][c].golden);
+      if (wasGolden) goldenLeft = Math.max(0, goldenLeft - grp.filter(([r, c]) => grid[r][c].golden).length);
+
+      // pop visuel + bébé qui s'envole depuis chaque œuf du groupe
+      grp.forEach(([r, c], i) => {
+        const el = cellAt(r, c);
+        if (!el) return;
+        el.classList.add('popping');
+        const baby = document.createElement('div');
+        baby.className = 'baby';
+        baby.textContent = '🐣';
+        baby.style.left = (rand(30, 70)) + '%';
+        el.appendChild(baby);
+      });
+      try { sndDing(); } catch (e) {}
+      babiesHatched += grp.length;
+      updateScore();
+
+      return new Promise((resolve) => {
+        const afterPop = () => {
+          grp.forEach(([r, c]) => { grid[r][c] = null; });
+          applyGravity();
+          compactColumns();
+          render();
+          gameLock = false;
+          checkGridEnd();
+          resolve(true);
+        };
+        setTimeout(afterPop, testMode ? 0 : 340);
+      });
+    }
+
+    // ── Gravité verticale : les œufs tombent dans les trous de leur colonne ──
+    function applyGravity() {
+      for (let c = 0; c < cols; c++) {
+        const stack = [];
+        for (let r = rows - 1; r >= 0; r--) {
+          if (grid[r][c]) stack.push(grid[r][c]);
+        }
+        for (let r = rows - 1; r >= 0; r--) {
+          grid[r][c] = stack.length ? stack.shift() : null;
+        }
+      }
+    }
+
+    // ── Compactage horizontal : les colonnes vides se resserrent ──
+    function compactColumns() {
+      const colHasEgg = (c) => { for (let r = 0; r < rows; r++) if (grid[r][c]) return true; return false; };
+      const order = [];
+      for (let c = 0; c < cols; c++) if (colHasEgg(c)) order.push(c);
+      for (let c = 0; c < cols; c++) if (!colHasEgg(c)) order.push(c);
+      const newGrid = Array.from({ length: rows }, () => Array(cols).fill(null));
+      for (let r = 0; r < rows; r++) {
+        for (let newC = 0; newC < order.length; newC++) {
+          newGrid[r][newC] = grid[r][order[newC]];
+        }
+      }
+      grid = newGrid;
+    }
+
+    // ── Fin de grille : plus aucun groupe ≥2 → « Tous les œufs ont éclos ! » ──
+    function checkGridEnd() {
+      if (!hasAnyGroup(grid, rows, cols)) {
+        lastGridEndMsg = 'Tous les œufs ont éclos !';
+        shell.setConsigne(lastGridEndMsg, gridIndex === 0 ? undefined : true);
+        // attempts pour notePip : 1 si ≤3 œufs restants (belle éclosion), sinon 2 —
+        // jamais formulé comme un échec à l'écran (spec).
+        const remaining = grid.flat().filter(Boolean).length;
+        const attempts = remaining <= 3 ? 1 : 2;
+        G.notePip(gridIndex, attempts, gridEl);
+        gridIndex++;
+        setTimeout(nextGrid, testMode ? 0 : 1600);
+      } else {
+        shell.setConsigne('Continue à faire éclore les œufs !', false);
+      }
+    }
+
+    // ── Une grille (partie = 3 grilles) ──
+    function nextGrid() {
+      if (gridIndex >= G.totalQ) return showEnd();
+      const lv = G.level;
+      const p = levelParams(lv);
+      gridN = p.size; colorsN = p.colors; hasGoldenEggs = p.golden;
+      rows = gridN; cols = gridN;
+      cellPx = gridN === 6 ? 72 : 54;
+      const palette = eggColors(colorsN);
+      goldenLeft = hasGoldenEggs ? 3 : 0;
+      grid = generateGrid(rows, cols, palette, goldenLeft);
+      attemptsThisGrid = 0;
+      gameLock = false;
+      shell.setConsigne(
+        hasGoldenEggs ? 'Fais éclore les œufs, surtout les dorés !' : 'Tapote un groupe de la même couleur !',
+        gridIndex === 0 ? undefined : true
+      );
+      render();
+    }
+
+    function showEnd() { shell.G.showEnd({ replayUrl: 'mj-57.html' }); }
+
+    // ── Paramètres test : ?level=N ──
+    const qs = new URLSearchParams(location.search);
+    let forcedLevel = null;
+    if (qs.get('level') !== null) forcedLevel = Math.max(0, Math.min(2, parseInt(qs.get('level'), 10) || 0));
+    if (forcedLevel !== null) G.level = forcedLevel;
+    if (qs.get('mute')) { /* pas de son additionnel ici, sndDing gère déjà */ }
+
+    // ── Harnais Playwright ──
+    window.__mjTest = {
+      get state() {
+        return {
+          gridIndex, totalGrids: G.totalQ, level: G.level, rows, cols,
+          babiesHatched, goldenLeft, gameLock, lastGridEndMsg,
+          groupsRemaining: (function () {
+            let n = 0; const seen = Array.from({ length: rows }, () => Array(cols).fill(false));
+            for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+              if (!grid[r][c] || seen[r][c]) continue;
+              if (floodFill(grid, rows, cols, r, c, seen).length >= 2) n++;
+            }
+            return n;
+          })(),
+          eggsLeft: grid.flat ? grid.flat().filter(Boolean).length : 0,
+        };
+      },
+      setTestMode(on) { testMode = !!on; },
+      setLevel(lvl) { forcedLevel = Math.max(0, Math.min(2, lvl)); G.level = forcedLevel; gridIndex = 0; nextGrid(); },
+      // Retourne les coordonnées [r,c] d'un groupe ≥2 encore présent (ou null).
+      findGroup() {
+        const seen = Array.from({ length: rows }, () => Array(cols).fill(false));
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            if (!grid[r][c] || seen[r][c]) continue;
+            const grp = floodFill(grid, rows, cols, r, c, seen);
+            if (grp.length >= 2) return grp;
+          }
+        }
+        return null;
+      },
+      async tapGroup() {
+        const grp = this.findGroup();
+        if (grp) await onTap(grp[0][0], grp[0][1]);
+        return !!grp;
+      },
+      // Joue une grille jusqu'à épuisement des groupes (usage test) — attend
+      // la résolution de chaque éclosion (gravité+compactage) avant de re-chercher
+      // un groupe, sinon boucle infinie sur un état pas encore muté (gameLock actif).
+      async clearGrid() {
+        let g, guard = 0;
+        while ((g = this.findGroup()) && guard < 500) {
+          await onTap(g[0][0], g[0][1]);
+          guard++;
+        }
+      },
+    };
+
+    MJKit.decor(document.querySelector('.stage'), ['fougere-g', 'fougere-d']);
+    nextGrid();
+  });
+  </script>
+</body>
+</html>

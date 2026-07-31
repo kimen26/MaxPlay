@@ -631,3 +631,29 @@
 @media (prefers-reduced-motion: reduce) {
   .ch-oeuf-visu.frisson, .ch-oeuf-visu.va-eclore, .th-oeuf.porte, .ch-oeuf-spark { animation:none !important; }
 }
+
+/* ── Vignettes pack DinoJeux (mj-54..59, 2026-07-31) ── */
+.vig-sudoku { background:linear-gradient(150deg,#33255c,#17102e); display:grid; grid-template-columns:1fr 1fr; gap:5px; padding:10px; }
+.vig-sudoku img { width:80%; height:80%; object-fit:contain; margin:auto; opacity:.85; filter:invert(.62) brightness(1.3); }
+.vig-sudoku .mjk-oeuf-mini { width:60%; margin:auto; aspect-ratio:.78; }
+.vig-equilibre { background:linear-gradient(150deg,#123c33,#0a1f1a); gap:7px; }
+.vig-equilibre img { width:30%; height:52%; object-fit:contain; opacity:.85; filter:invert(.62) brightness(1.3); }
+.vig-equilibre .mjk-oeuf-mini { width:22%; }
+.vig-equilibre .eq-q { font-family:'Fredoka One'; font-size:26px; color:var(--gold); }
+.vig-enclos { background:#101b33; display:grid; grid-template-columns:1fr 1fr; }
+.vig-enclos i.z1 { background:rgba(47,191,143,.35); } .vig-enclos i.z2 { background:rgba(77,157,224,.35); }
+.vig-enclos i.z3 { background:rgba(255,209,102,.3); } .vig-enclos i.z4 { background:rgba(224,101,90,.32); }
+.vig-enclos img { position:absolute; width:44%; height:44%; left:8%; top:8%; object-fit:contain; opacity:.9; filter:invert(.62) brightness(1.3); }
+.vig-oeufs-col { background:linear-gradient(150deg,#4d3a12,#231a08); align-items:flex-end; gap:5px; padding-bottom:10px; flex-wrap:wrap; align-content:flex-end; justify-content:center; }
+.vig-oeufs-col i { width:20%; aspect-ratio:.78; border-radius:50% 50% 50% 50%/60% 60% 40% 40%; box-shadow:inset -3px -5px 0 rgba(0,0,0,.15), 0 3px 7px rgba(0,0,0,.4); }
+.vig-oeufs-col i:nth-child(1){ background:#2fbf8f; } .vig-oeufs-col i:nth-child(2){ background:#4d9de0; }
+.vig-oeufs-col i:nth-child(3){ background:#ffd166; } .vig-oeufs-col i:nth-child(4){ background:#e0655a; }
+.vig-run { background:linear-gradient(180deg,#1c2c4d 62%, #3d2c10 62%); align-items:flex-end; padding:0 10px 12px; justify-content:space-between; }
+.vig-run img { width:42%; height:52%; object-fit:contain; transform:scaleX(-1); opacity:.9; filter:invert(.62) brightness(1.3); }
+.vig-run .cactus { width:14%; height:34%; border-radius:6px; background:#2fbf8f; position:relative; }
+.vig-run .cactus::before { content:''; position:absolute; left:-40%; top:22%; width:40%; height:26%; border-radius:6px 0 0 6px; background:#2fbf8f; }
+.vig-terr { background:#101b33; padding:10px; display:grid; grid-template-columns:2fr 1fr; grid-template-rows:1fr 1fr; gap:5px; }
+.vig-terr i { border-radius:8px; border:2px solid rgba(255,255,255,.35); }
+.vig-terr .r1 { background:rgba(47,191,143,.35); grid-row:span 2; }
+.vig-terr .r2 { background:rgba(255,209,102,.3); }
+.vig-terr .r3 { background:rgba(224,101,90,.32); }

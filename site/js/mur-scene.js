@@ -50,6 +50,17 @@
   function $(id) { return document.getElementById(id); }
   function rnd(a, b) { return a + Math.random() * (b - a); }
 
+  // Plafond vertical de balade : la bande du bas (route + bus 162 + moitié
+  // basse du copain ≈ 150px) est RÉSERVÉE — sur petit écran le % grimpe,
+  // plus personne ne finit tronqué ni sous le bus (retour PY 2026-07-31).
+  function yMax() {
+    var h = _scene ? _scene.clientHeight : 0;
+    return h ? Math.max(60, 100 - (150 / h) * 100) : 82;
+  }
+  function clampPos(x, y) {
+    return { x: Math.max(8, Math.min(92, x)), y: Math.max(12, Math.min(yMax(), y)) };
+  }
+
   // ── décor : vue du dessus « tapis de jeu » — assets img/decor existants ──
   function decorHtml() {
     return '' +
@@ -84,7 +95,8 @@
         (c.monde ? '<span class="v-livre">📖</span>' : '') +
         '<span class="v-nom">' + c.nom + '</span>';
       _scene.appendChild(el);
-      var a = { el: el, img: el.querySelector('img'), copain: c, x: coin.x + rnd(-6, 6), y: coin.y + rnd(-4, 4), anim: null, flip: false };
+      var p = clampPos(coin.x + rnd(-6, 6), coin.y + rnd(-4, 4));
+      var a = { el: el, img: el.querySelector('img'), copain: c, x: p.x, y: p.y, anim: null, flip: false };
       a.img.src = moodSrc(c, 'joyeux');
       place(a);
       _actors[c.id] = a;
@@ -125,9 +137,8 @@
       var nearHome = Math.random() < 0.7;
       var x = nearHome ? coin.x + rnd(-WANDER_R, WANDER_R) : rnd(12, 88);
       var y = nearHome ? coin.y + rnd(-WANDER_R * 0.7, WANDER_R * 0.7) : rnd(16, 88);
-      x = Math.max(8, Math.min(92, x));
-      y = Math.max(12, Math.min(90, y));
-      if (!othersTooClose(a.copain.id, x, y)) return { x: x, y: y };
+      var p = clampPos(x, y);
+      if (!othersTooClose(a.copain.id, p.x, p.y)) return p;
     }
     return null; // trop de monde : on reste où on est (jamais de contact)
   }

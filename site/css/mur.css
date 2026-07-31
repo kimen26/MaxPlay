@@ -365,7 +365,8 @@
 .nid-crack.c3 { width:2px; height:24%; left:32%; top:38%; transform:rotate(52deg); }
 
 /* ── CHAMBRE DES ŒUFS — écran plein cadre, sac latéral ── */
-#chambre-ov { position:fixed; inset:0; z-index:60; background:rgba(6,10,22,.96); display:flex; }
+#chambre-ov { position:fixed; inset:0; z-index:60; background:rgba(6,10,22,.96); display:flex;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px); }
 #chambre-ov .chambre { display:flex; flex-direction:column; width:100%; max-width:680px; margin:0 auto; padding:10px 12px; }
 .ch-hdr { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
 .ch-back { width:44px; height:44px; border-radius:50%; border:none; background:rgba(255,255,255,.12); color:var(--ink,#fff); font-size:22px; cursor:pointer; }
@@ -427,7 +428,10 @@
 /* ═══════════════════ LA VALLÉE (Mur v2, spec 2026-07-29) ═══════════════════
    La scène EST le menu : tapis de jeu vu du dessus, copains en balade libre.
    Une page, zéro scroll enfant. */
-.vallee-page { height:100dvh; display:flex; flex-direction:column; overflow:hidden; }
+/* hauteur VISIBLE (mp-theme --mp-vh = 100dvh moins barres système) : sur
+   téléphone edge-to-edge, 100dvh brut passait sous la barre de gestes
+   → bus 162 et copains du bas tronqués (retour PY 2026-07-31). */
+.vallee-page { height:var(--mp-vh, 100dvh); min-height:0; display:flex; flex-direction:column; overflow:hidden; }
 .vallee-page .pseudo { max-width:38vw; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
 .vallee {
   position:relative; flex:1; overflow:hidden; border-radius:22px 22px 0 0;
@@ -547,7 +551,8 @@
    de filet sur les très petits écrans. */
 #padidi-ov {
   position:fixed; inset:0; z-index:60; background:rgba(6,10,22,.97);
-  display:flex; flex-direction:column; padding:10px 12px; overflow-y:auto;
+  display:flex; flex-direction:column; overflow-y:auto;
+  padding:calc(10px + env(safe-area-inset-top,0px)) 12px calc(10px + env(safe-area-inset-bottom,0px));
 }
 #padidi-ov .ch-hdr { flex-shrink:0; }
 #padidi-ov .nid-compteur { margin-left:auto; font-weight:900; color:var(--gold); }

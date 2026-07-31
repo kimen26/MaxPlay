@@ -14,8 +14,9 @@ export async function run({ page, ok }) {
   await page.evaluate(() => window.__mjTest.setDifficulty(0));
   await page.waitForTimeout(150);
   const s0 = await page.evaluate(() => window.__mjTest.state);
-  ok('N1 : grille = 1 ligne × 6 colonnes', s0.rows === 1 && s0.cols === 6, `rows=${s0.rows} cols=${s0.cols}`);
-  ok('N1 : cases 6', await page.locator('.eq-cell').count() === 6);
+  // Amendement PY 2026-07-31 : plus de niveau ligne-seule — 4×4 dès le N0.
+  ok('N0 : grille 4×4 directement (plus de ligne seule)', s0.rows === 4 && s0.cols === 4, `rows=${s0.rows} cols=${s0.cols}`);
+  ok('N0 : 16 cases', await page.locator('.eq-cell').count() === 16);
 
   // ── Cycle tap 3 états sur une case vide ──
   const emptyIdx = s0.given[0].findIndex(v => v === 0);

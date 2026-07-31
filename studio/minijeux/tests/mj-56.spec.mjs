@@ -22,7 +22,18 @@ export async function run({ page, ok }) {
   const box = await page.locator('.cell').first().boundingBox();
   ok('Case ≥ 80px', !!box && box.width >= 80 && box.height >= 80);
 
-  // ── Pose un dino → feedback rouge doux sur les cases attaquées ──
+  // ── Amendement PY 2026-07-31 : au niveau débutant, le 1er dino est PRÉ-POSÉ
+  //    (fixe, non tappable) et ses cases interdites se voient tout de suite ──
+  ok('Dino guide pré-posé (ligne 0)', s0.placed[0] !== -1, `placed=${JSON.stringify(s0.placed)}`);
+  ok('Ses cases interdites sont visibles dès le départ', s0.attacked.length > 0);
+  const guideCol = s0.placed[0];
+  await page.evaluate((gc) => window.__mjTest.tap(0, (gc + 2) % 4), guideCol);
+  const afterGuideTap = await page.evaluate(() => window.__mjTest.state);
+  ok('Le dino guide ne bouge pas (tap ligne 0 ignoré)', afterGuideTap.placed[0] === guideCol);
+
+  // ── Interactions testées au N1 (5×5, pas de dino guide) ──
+  await page.evaluate(() => window.__mjTest.setDifficulty(1));
+  await page.waitForSelector('.cell', { timeout: 4000 });
   await page.evaluate(() => window.__mjTest.tap(0, 0));
   const afterPose = await page.evaluate(() => window.__mjTest.state);
   ok('Pose : dino en (0,0)', afterPose.placed[0] === 0);

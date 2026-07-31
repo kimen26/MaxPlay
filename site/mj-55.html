@@ -269,9 +269,12 @@
       mistakeMade = false;
       statusEl.textContent = '';
 
+      // Retour playtest PY 2026-07-31 : le niveau « une ligne seule » SUPPRIMÉ
+      // (« je ne comprends pas l'intérêt ») — matrice 4×4 directement.
+      // N0 = 4×4 règle des 3, plus d'indices · N1 = 4×4, moins d'indices ·
+      // N2 = + équilibre 2/2.
       const lv = level();
-      if (lv === 0) { rows = 1; cols = 6; }
-      else { rows = 4; cols = 4; }
+      rows = 4; cols = 4;
       const balance = lv >= 2;
 
       let sol = null, tries = 0;
@@ -279,13 +282,13 @@
       if (!sol) sol = genSolution(rows, cols, false); // filet anti-échec générateur
       solution = sol;
       const total = rows * cols;
-      const keep = lv === 0 ? Math.min(3, total) : 6;
+      const keep = lv === 0 ? 9 : 6;
       given = maskSolution(solution, rows, cols, Math.min(keep, total - 1));
       grid = given.map(row => row.slice());
 
-      shell.setConsigne(lv === 0
-        ? 'Tapote pour compléter : jamais 3 pareils !'
-        : (lv >= 2 ? 'Complète la grille : jamais 3 pareils, autant de dinos que d’œufs !' : 'Complète la grille : jamais 3 pareils !'),
+      shell.setConsigne(lv >= 2
+        ? 'Complète la grille : jamais 3 pareils, autant de dinos que d’œufs !'
+        : 'Complète la grille : jamais 3 pareils !',
         qCount === 1 ? undefined : true);
 
       buildGrid();

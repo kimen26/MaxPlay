@@ -65,6 +65,9 @@ window.MAXPLAY_CATALOG = [
   // ─── 🦕 Les dinos ───
   { id:'dinos', category:'dinos', titre:'Encyclopédie Dinos', emoji:'🦕', desc:'50 dinos · 6 familles · fiches riches · audio', url:'dev-dinos.html?v=7', type:'encyclo', orientation:'any', access:'code', maxStars:0, unlock:{ code:'TRITRI', bundle:'dinos' }, tag:'tts', status:'wip' },
   { id:'mj-24', category:'dinos', titre:'Trouve le dino',     emoji:'🦕', desc:'Trouve le bon dino par son nom !',       url:'mj-24.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:'tts', status:'live' },
+  // ── Pack DinoJeux (spec PY 2026-07-31) : les 2 jeux dino du pack ──
+  { id:'mj-57', category:'dinos', titre:'Œufs Surprise',      emoji:'🎨', desc:'Tape les œufs de même couleur, les bébés éclosent !', url:'mj-57.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:null, status:'live' },
+  { id:'mj-58', category:'dinos', titre:'Dino Run',           emoji:'🏃', desc:'Cours avec Rex, saute les cactus jusqu\'au volcan !', url:'mj-58.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:null, status:'live' },
   // RETIRÉ 2026-07-28 (C0) : redondant avec mj-46 « il y en a combien » (même peau, mêmes moteurs de dénombrement).
   { id:'mj-26', category:'dinos', titre:'Compte les dinos',   emoji:'🔢', desc:'Combien de dinos ? Compte-les !',        url:'mj-26.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:'tts', status:'live', retire:true },
   // FUSIONNÉ 2026-07-28 (C0) : absorbé par mj-53 « Lis et fais » (même mécanique lecture+choix).
@@ -107,6 +110,11 @@ window.MAXPLAY_CATALOG = [
   { id:'mj-44',  category:'compter',  titre:'La boîte à sons',      emoji:'🔤', desc:'Range chaque mot dans la boîte du bon son !', url:'mj-44.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:'tts', status:'live', retire:true },
 
   // ─── 🧩 Casse-têtes (fusion logique + observer + bricoler) ───
+  // ── Pack DinoJeux logique (spec PY 2026-07-31, docs/specs/2026-07-31-dinojeux-pack-logique.md) ──
+  { id:'mj-54',  category:'casse',    titre:'Sudoku Dino',          emoji:'🥚', desc:'Un de chaque partout : remplis la grille de dinos !', url:'mj-54.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },
+  { id:'mj-55',  category:'casse',    titre:'Équilibre',            emoji:'⚖️', desc:'Jamais 3 pareils qui se suivent : dinos et œufs à égalité !', url:'mj-55.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },
+  { id:'mj-56',  category:'casse',    titre:'Les Enclos',           emoji:'🦕', desc:'Un dino par enclos, et ils ne se touchent jamais !', url:'mj-56.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },
+  { id:'mj-59',  category:'casse',    titre:'Territoires',          emoji:'🟦', desc:'Découpe la vallée en territoires, un par pierre !', url:'mj-59.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },
   { id:'mj-13a', category:'casse',    titre:'Le premier bus',       emoji:'🥇', desc:'Quel bus arrive en premier ?',       url:'mj-13a.html', type:'html', orientation:'any',       access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },
   { id:'mj-14',  category:'casse',    titre:'Les cases mystères',   emoji:'🔮', desc:'Devine la case qui manque dans la grille magique !', url:'mj-14.html', type:'html', orientation:'any', access:'free', maxStars:3, unlock:null, tag:null,  status:'live', refonte:true },
   { id:'mj-15',  category:'casse',    titre:'L\'intrus',            emoji:'🔍', desc:'Lequel est l\'intrus ?',              url:'mj-15.html',  type:'html', orientation:'any',       access:'free', maxStars:3, unlock:null, tag:null,  status:'live' },

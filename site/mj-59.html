@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-59 – Territoires</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mp-theme.css">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+    body { font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
+
+    .stage { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; padding:6px 8px 12px; gap:8px; position:relative; }
+
+    .grid-wrap { position:relative; touch-action:none; }
+    .grid {
+      display:grid; gap:3px;
+      background:rgba(0,0,0,.28); border-radius:14px; padding:6px;
+      box-shadow:0 8px 20px rgba(0,0,0,.45), inset 0 2px 8px rgba(0,0,0,.3);
+    }
+    .cell {
+      width:var(--cell,72px); height:var(--cell,72px); border-radius:8px;
+      background:rgba(255,255,255,.10); border:2px solid rgba(255,255,255,.14);
+      display:flex; align-items:center; justify-content:center;
+      font-size:calc(var(--cell,72px) * 0.42); font-weight:900; color:#fff;
+      text-shadow:0 2px 4px rgba(0,0,0,.5);
+      transition:background .18s, border-color .18s, transform .15s;
+      position:relative;
+    }
+    .cell.stone { background:rgba(255,224,102,.16); }
+    .cell.preview { background:rgba(120,220,255,.42); border-color:#78dcff; }
+    .cell.preview-bad { background:rgba(255,110,110,.42); border-color:#ff6e6e; }
+    .cell.locked { border-radius:8px; }
+    .cell .stone-num { pointer-events:none; }
+    .cell .dino-mini { font-size:calc(var(--cell,72px) * 0.5); pointer-events:none; filter:drop-shadow(0 2px 3px rgba(0,0,0,.4)); }
+
+    .territory-fill { position:absolute; border-radius:6px; pointer-events:none; z-index:1; }
+
+    .live-count {
+      position:absolute; top:-58px; left:50%; transform:translateX(-50%);
+      font-size:2.4rem; font-weight:900; color:#ffe066; text-shadow:0 3px 8px rgba(0,0,0,.6);
+      background:rgba(0,0,0,.35); padding:2px 18px; border-radius:999px;
+      pointer-events:none; opacity:0; transition:opacity .12s;
+      white-space:nowrap;
+    }
+    .live-count.on { opacity:1; }
+
+    .fade-out { animation:fadeOutSoft .45s ease-out forwards; }
+    @keyframes fadeOutSoft {
+      0% { transform:scale(1); }
+      40% { transform:scale(1.04); }
+      100% { transform:scale(.9); opacity:0; }
+    }
+
+    .territory-lock { animation:lockPop .35s cubic-bezier(.34,1.56,.64,1) both; }
+    @keyframes lockPop { from{transform:scale(.85); opacity:.5;} to{transform:scale(1); opacity:1;} }
+  </style>
+</head>
+<body data-ambiance="jungle">
+<div id="app">
+
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">🟦 Territoires</span>
+  </div>
+
+  <div class="stage">
+    <div class="grid-wrap" id="gridWrap">
+      <div class="live-count" id="liveCount"></div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </div>
+
+</div>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
+  <script>
+  MJ.ready(function () {
+    'use strict';
+    // ─── MJ-59 : Territoires (Shikaku enfant) ───
+    // Une grille de pierres numérotées. Découper la vallée en rectangles :
+    // chaque rectangle contient EXACTEMENT une pierre et son aire = son nombre.
+    // Geste UNIQUE : drag d'une case à une autre → prévisualisation en surbrillance
+    // + compteur live. Relâché : valide → territoire verrouillé + petit dino qui
+    // s'y installe ; invalide → s'efface doucement (son doux, zéro message).
+    // Tap sur un territoire verrouillé → le libère.
+    const GAME_ID = 'mj-59';
+    const DINO_EMOJIS = ['🦕', '🦖', '🐊', '🦎'];
+
+    const shell = MJ.init({
+      id: GAME_ID, emoji: '🟦', titre: 'Territoires',
+      golden: true, consigne: true,
+      regle: {
+        picto: '🟦🪨',
+        texte: 'Découpe la vallée : chaque pierre doit avoir son terrain, juste à sa taille !',
+        etapes: [
+          { t: 'Je regarde le chiffre 👀', d: 'Chaque pierre porte un nombre : c\'est la taille de son terrain.' },
+          { t: 'Je glisse mon doigt 👆', d: 'Je pars d\'une case et je glisse jusqu\'à une autre : un rectangle apparaît.' },
+          { t: 'Je vise le bon compte 🔢', d: 'Le nombre de cases s\'affiche en grand pendant que je glisse.' },
+          { t: 'Je relâche ✋', d: 'Si c\'est juste, un petit dino s\'installe ! Sinon, ça s\'efface tout doux.' },
+        ]
+      }
+    });
+    const G = shell.G;
+    // Le pack "Territoires" = toujours 4 puzzles par partie (pas 4/6/8 :
+    // la difficulté vient de la taille de grille/du nombre de pierres, pas du
+    // nombre de manches — décision spec mj-59).
+    G.totalQ = 4;
+    G.buildPips();
+
+    const gridEl = document.getElementById('grid');
+    const gridWrap = document.getElementById('gridWrap');
+    const liveCountEl = document.getElementById('liveCount');
+
+    let qCount = 0, roundLock = false, testMode = false, forcedLevel = null;
+    let hadInvalidThisPuzzle = false;
+    function level() { return forcedLevel !== null ? forcedLevel : Math.min(2, G.level); }
+
+    // ── État du puzzle courant ──
+    let rows = 3, cols = 3, cellPx = 72;
+    let stones = [];          // [{r,c,n}]
+    let cellOwner = [];       // [r][c] = index territoire verrouillé, ou -1
+    let territories = [];     // [{r0,c0,r1,c1,stoneIdx}]
+    let dragging = false, dragStart = null, dragCur = null;
+
+    // ── Générateur : partition récursive de la grille (toujours soluble) ──
+    function genPuzzle(R, C, maxCut) {
+      // Découpe récursive d'un rectangle [r0,c0,r1,c1] en 2 sous-rectangles
+      // tant que sa surface > 1 et qu'on n'a pas atteint le budget de coupes.
+      const rects = [];
+      function split(r0, c0, r1, c1, depth) {
+        const h = r1 - r0 + 1, w = c1 - c0 + 1;
+        const area = h * w;
+        const canCut = depth < maxCut && area > 2 && (h > 1 || w > 1);
+        if (!canCut || Math.random() < 0.28) {
+          rects.push({ r0, c0, r1, c1 });
+          return;
+        }
+        // coupe horizontale ou verticale selon ce qui est possible
+        const canH = h > 1, canV = w > 1;
+        const vertical = canV && (!canH || Math.random() < 0.5);
+        if (vertical) {
+          const cut = c0 + 1 + Math.floor(Math.random() * (w - 1));
+          split(r0, c0, r1, cut - 1, depth + 1);
+          split(r0, cut, r1, c1, depth + 1);
+        } else {
+          const cut = r0 + 1 + Math.floor(Math.random() * (h - 1));
+          split(r0, c0, cut - 1, c1, depth + 1);
+          split(cut, c0, r1, c1, depth + 1);
+        }
+      }
+      split(0, 0, R - 1, C - 1, 0);
+      // 1 pierre par rectangle, position aléatoire dedans, valeur = aire
+      const st = rects.map(rc => {
+        const h = rc.r1 - rc.r0 + 1, w = rc.c1 - rc.c0 + 1;
+        const r = rc.r0 + Math.floor(Math.random() * h);
+        const c = rc.c0 + Math.floor(Math.random() * w);
+        return { r, c, n: h * w };
+      });
+      return { rects, stones: st };
+    }
+
+    // Niveaux : N0/N1 passerelle (grille 3×3, 1 puis 2 pierres) · N2 5×5 (~8-10 pierres,
+    // tailles 1-4 via maxCut modéré) · N3 6×6 (tailles jusqu'à 6, moins de coupes).
+    function paramsFor(lv, puzzleIdx) {
+      if (lv === 0) {
+        // Passerelle stricte : puzzle 1 = UNE pierre, la grille ENTIÈRE est le
+        // rectangle-solution (3×1 = "un rectangle de 3 autour de la pierre"),
+        // puzzles suivants = grille 3×3, 2 pierres.
+        return puzzleIdx === 0
+          ? { R: 1, C: 3, forceSingle: true }
+          : { R: 3, C: 3, maxCut: 1 };
+      }
+      if (lv === 1) return { R: 3, C: 3, maxCut: puzzleIdx === 0 ? 1 : 2 };
+      if (lv === 2) return { R: 5, C: 5, maxCut: 7 };
+      return { R: 6, C: 6, maxCut: 5 };
+    }
+
+    function buildForceSingle(R, C) {
+      // 1 seule pierre : le rectangle-solution = TOUTE la grille (R×C, aire = R*C).
+      // Appelée avec une grille 1×3 : la vallée entière EST le rectangle de 3.
+      const r = Math.floor(Math.random() * R);
+      const c = Math.floor(Math.random() * C);
+      return {
+        rects: [{ r0: 0, c0: 0, r1: R - 1, c1: C - 1 }],
+        stones: [{ r, c, n: R * C }],
+      };
+    }
+
+    function newPuzzle() {
+      qCount++;
+      roundLock = false;
+      hadInvalidThisPuzzle = false;
+      const lv = level();
+      const p = paramsFor(lv, qCount - 1);
+      rows = p.R; cols = p.C;
+      let gen;
+      if (p.forceSingle) gen = buildForceSingle(rows, cols);
+      else gen = genPuzzle(rows, cols, p.maxCut);
+      stones = gen.stones;
+
+      cellOwner = Array.from({ length: rows }, () => new Array(cols).fill(-1));
+      territories = [];
+
+      renderGrid();
+      const label = stones.length === 1
+        ? 'Trace un rectangle de ' + stones[0].n + ' autour de la pierre !'
+        : 'Fais un territoire pour chaque pierre !';
+      shell.setConsigne(label, qCount === 1 ? undefined : true);
+    }
+
+    function cellSize() {
+      const maxW = Math.min(window.innerWidth - 32, 500);
+      const maxH = Math.min(window.innerHeight - 260, 500);
+      const size = Math.floor(Math.min(maxW / cols, maxH / rows, 92));
+      return Math.max(64, size);
+    }
+
+    function renderGrid() {
+      cellPx = cellSize();
+      gridEl.style.setProperty('--cell', cellPx + 'px');
+      gridEl.style.gridTemplateColumns = 'repeat(' + cols + ', var(--cell))';
+      gridEl.style.gridTemplateRows = 'repeat(' + rows + ', var(--cell))';
+      gridEl.innerHTML = '';
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          const cell = document.createElement('div');
+          cell.className = 'cell';
+          cell.dataset.r = r; cell.dataset.c = c;
+          const stone = stones.find(s => s.r === r && s.c === c);
+          if (stone) {
+            cell.classList.add('stone');
+            const sp = document.createElement('span');
+            sp.className = 'stone-num';
+            sp.textContent = stone.n;
+            cell.appendChild(sp);
+          }
+          gridEl.appendChild(cell);
+        }
+      }
+      attachGridEvents();
+      paintLockedTerritories();
+    }
+
+    // ── Geste UNIQUE : drag pour tracer un rectangle ──
+    function attachGridEvents() {
+      let pointerId = null;
+
+      function cellFromPoint(x, y) {
+        const el = document.elementFromPoint(x, y);
+        if (!el || !el.classList.contains('cell')) return null;
+        return { r: +el.dataset.r, c: +el.dataset.c };
+      }
+
+      function onDown(x, y) {
+        if (roundLock) return;
+        const start = cellFromPoint(x, y);
+        if (!start) return;
+        // Tap sur un territoire verrouillé → le libère (pas de drag démarré)
+        if (cellOwner[start.r][start.c] !== -1) {
+          unlockTerritory(cellOwner[start.r][start.c]);
+          return;
+        }
+        dragging = true;
+        dragStart = start;
+        dragCur = start;
+        updatePreview();
+      }
+      function onMove(x, y) {
+        if (!dragging) return;
+        const cur = cellFromPoint(x, y);
+        if (cur) { dragCur = cur; updatePreview(); }
+      }
+      function onUp() {
+        if (!dragging) return;
+        dragging = false;
+        commitDrag();
+      }
+
+      gridEl.addEventListener('pointerdown', (e) => {
+        pointerId = e.pointerId;
+        try { gridEl.setPointerCapture(pointerId); } catch (err) {}
+        onDown(e.clientX, e.clientY);
+      });
+      gridEl.addEventListener('pointermove', (e) => {
+        if (e.pointerId !== pointerId) return;
+        onMove(e.clientX, e.clientY);
+      });
+      gridEl.addEventListener('pointerup', (e) => { onUp(); });
+      gridEl.addEventListener('pointercancel', () => { dragging = false; clearPreview(); });
+    }
+
+    function rectFromDrag() {
+      const r0 = Math.min(dragStart.r, dragCur.r), r1 = Math.max(dragStart.r, dragCur.r);
+      const c0 = Math.min(dragStart.c, dragCur.c), c1 = Math.max(dragStart.c, dragCur.c);
+      return { r0, c0, r1, c1 };
+    }
+
+    function updatePreview() {
+      clearCellClasses();
+      const { r0, c0, r1, c1 } = rectFromDrag();
+      const count = (r1 - r0 + 1) * (c1 - c0 + 1);
+      const overlap = rectOverlapsLocked(r0, c0, r1, c1);
+      const stonesInside = stones.filter(s => s.r >= r0 && s.r <= r1 && s.c >= c0 && s.c <= c1);
+      const bad = overlap || stonesInside.length !== 1;
+      for (let r = r0; r <= r1; r++) {
+        for (let c = c0; c <= c1; c++) {
+          const cell = gridEl.querySelector('.cell[data-r="' + r + '"][data-c="' + c + '"]');
+          if (cell) cell.classList.add(bad ? 'preview-bad' : 'preview');
+        }
+      }
+      liveCountEl.textContent = String(count);
+      liveCountEl.classList.add('on');
+    }
+
+    function clearPreview() {
+      clearCellClasses();
+      liveCountEl.classList.remove('on');
+    }
+
+    function clearCellClasses() {
+      gridEl.querySelectorAll('.preview, .preview-bad').forEach(el => {
+        el.classList.remove('preview', 'preview-bad');
+      });
+    }
+
+    function rectOverlapsLocked(r0, c0, r1, c1) {
+      for (let r = r0; r <= r1; r++) {
+        for (let c = c0; c <= c1; c++) {
+          if (cellOwner[r][c] !== -1) return true;
+        }
+      }
+      return false;
+    }
+
+    function commitDrag() {
+      const { r0, c0, r1, c1 } = rectFromDrag();
+      const count = (r1 - r0 + 1) * (c1 - c0 + 1);
+      const overlap = rectOverlapsLocked(r0, c0, r1, c1);
+      const stonesInside = stones.filter(s => s.r >= r0 && s.r <= r1 && s.c >= c0 && s.c <= c1);
+      const valid = !overlap && stonesInside.length === 1 && count === stonesInside[0].n;
+
+      clearPreview();
+
+      if (valid) {
+        lockTerritory(r0, c0, r1, c1, stonesInside[0]);
+        if (window.sndDing) try { sndDing(); } catch (e) {}
+        checkPuzzleComplete();
+      } else {
+        hadInvalidThisPuzzle = true;
+        if (window.sndBuzz) try { sndBuzz(); } catch (e) {}
+        // s'efface doucement : classe d'anim puis retour neutre, ZÉRO message
+        const cells = [];
+        for (let r = r0; r <= r1; r++) {
+          for (let c = c0; c <= c1; c++) {
+            const cell = gridEl.querySelector('.cell[data-r="' + r + '"][data-c="' + c + '"]');
+            if (cell) { cell.classList.add('fade-out'); cells.push(cell); }
+          }
+        }
+        setTimeout(() => { cells.forEach(c => c.classList.remove('fade-out')); }, testMode ? 0 : 460);
+      }
+    }
+
+    function lockTerritory(r0, c0, r1, c1, stone) {
+      const idx = territories.length;
+      const dino = DINO_EMOJIS[idx % DINO_EMOJIS.length];
+      territories.push({ r0, c0, r1, c1, stoneR: stone.r, stoneC: stone.c, dino });
+      for (let r = r0; r <= r1; r++) {
+        for (let c = c0; c <= c1; c++) cellOwner[r][c] = idx;
+      }
+      paintLockedTerritories();
+    }
+
+    function unlockTerritory(idx) {
+      if (roundLock) return;
+      const t = territories[idx];
+      if (!t) return;
+      for (let r = t.r0; r <= t.r1; r++) {
+        for (let c = t.c0; c <= t.c1; c++) cellOwner[r][c] = -1;
+      }
+      territories.splice(idx, 1);
+      // ré-indexe les cases des territoires suivants
+      for (let r = 0; r < rows; r++) {
+        for (let c = 0; c < cols; c++) {
+          if (cellOwner[r][c] > idx) cellOwner[r][c]--;
+        }
+      }
+      renderGrid();
+    }
+
+    // Palette de teintes de territoire, cycle simple (aucun hex bus).
+    const T_HUES = [200, 260, 320, 20, 150, 40, 280, 350, 100, 220];
+    function paintLockedTerritories() {
+      gridEl.querySelectorAll('.cell').forEach(cell => {
+        const r = +cell.dataset.r, c = +cell.dataset.c;
+        const idx = cellOwner[r][c];
+        cell.classList.remove('territory-lock');
+        if (idx === -1) {
+          cell.style.background = '';
+          cell.style.borderColor = '';
+          const dinoEl = cell.querySelector('.dino-mini');
+          if (dinoEl) dinoEl.remove();
+          return;
+        }
+        const hue = T_HUES[idx % T_HUES.length];
+        cell.style.background = 'hsla(' + hue + ',70%,55%,.38)';
+        cell.style.borderColor = 'hsla(' + hue + ',80%,65%,.7)';
+        cell.classList.add('territory-lock');
+        const t = territories[idx];
+        if (t && r === t.stoneR && c === t.stoneC && !cell.querySelector('.dino-mini')) {
+          const dinoEl = document.createElement('span');
+          dinoEl.className = 'dino-mini';
+          dinoEl.textContent = t.dino;
+          cell.appendChild(dinoEl);
+        }
+      });
+    }
+
+    function checkPuzzleComplete() {
+      const allCovered = cellOwner.every(row => row.every(v => v !== -1));
+      if (!allCovered) return;
+      roundLock = true;
+      const attempts = hadInvalidThisPuzzle ? 2 : 1;
+      const anchor = gridWrap;
+      G.notePip(qCount - 1, attempts, anchor);
+      setTimeout(() => {
+        if (qCount >= G.totalQ) endGame();
+        else newPuzzle();
+      }, testMode ? 0 : 900);
+    }
+
+    function endGame() {
+      G.showEnd({ replayUrl: 'mj-59.html' });
+    }
+
+    // ── Paramètres test/screenshot ──
+    const qs = new URLSearchParams(location.search);
+    if (qs.get('level') !== null) forcedLevel = Math.max(0, Math.min(2, parseInt(qs.get('level'), 10) || 0));
+
+    // ── Harnais Playwright ──
+    window.__mjTest = {
+      get state() {
+        return {
+          qCount, totalQ: G.totalQ, level: level(), rows, cols,
+          stones: stones.map(s => ({ r: s.r, c: s.c, n: s.n })),
+          territories: territories.length,
+          covered: cellOwner.every(row => row.every(v => v !== -1)),
+          roundLock,
+        };
+      },
+      // Retourne la partition-solution du puzzle courant : un rectangle exact par pierre.
+      get solution() {
+        // Reconstruit via genPuzzle n'est pas fiable a posteriori (aléatoire déjà tiré) :
+        // on expose donc directement les rects générés, gardés en mémoire.
+        return lastRects.map(rc => ({ r0: rc.r0, c0: rc.c0, r1: rc.r1, c1: rc.c1 }));
+      },
+      setTestMode(on) { testMode = !!on; },
+      setDifficulty(lvl) { forcedLevel = Math.max(0, Math.min(2, lvl)); qCount = 0; newPuzzle(); },
+      cellCenter(r, c) {
+        const cell = gridEl.querySelector('.cell[data-r="' + r + '"][data-c="' + c + '"]');
+        if (!cell) return null;
+        const box = cell.getBoundingClientRect();
+        return { x: box.left + box.width / 2, y: box.top + box.height / 2 };
+      },
+      dragRect(r0, c0, r1, c1) {
+        // Aide de test synchrone (sans события souris réels) : commit direct.
+        dragStart = { r: r0, c: c0 }; dragCur = { r: r1, c: c1 };
+        commitDrag();
+      },
+      next() { newPuzzle(); },
+    };
+    // Mémorise les rects du dernier puzzle généré pour l'exposer via .solution.
+    let lastRects = [];
+    const _origGen = genPuzzle;
+    genPuzzle = function (R, C, maxCut) {
+      const g = _origGen(R, C, maxCut);
+      lastRects = g.rects;
+      return g;
+    };
+    const _origForceSingle = buildForceSingle;
+    buildForceSingle = function (R, C) {
+      const g = _origForceSingle(R, C);
+      lastRects = g.rects;
+      return g;
+    };
+
+    window.addEventListener('resize', () => { if (!dragging) renderGrid(); });
+
+    newPuzzle();
+  });
+  </script>
+</body>
+</html>

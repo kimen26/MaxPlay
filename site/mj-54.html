@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-54 – Sudoku Dino</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mp-theme.css">
+  <link rel="stylesheet" href="css/mj-kit.css">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+    body { font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
+
+    .stage { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:space-evenly; overflow:hidden; padding:4px 8px 10px; gap:8px; }
+
+    /* ── Grille sudoku ── */
+    .sud-grid {
+      display:grid; gap:4px;
+      background:rgba(0,0,0,.28); border-radius:16px; padding:8px;
+      box-shadow:0 8px 20px rgba(0,0,0,.4), inset 0 2px 8px rgba(0,0,0,.3);
+    }
+    .sud-cell {
+      width:var(--cell,72px); height:var(--cell,72px);
+      display:flex; align-items:center; justify-content:center;
+      font-size:calc(var(--cell,72px) * 0.55);
+      background:rgba(255,255,255,.08); border-radius:10px;
+      border:2px solid rgba(255,255,255,.16);
+      cursor:pointer; touch-action:manipulation;
+      transition:background .15s, transform .15s, border-color .15s;
+    }
+    .sud-cell.fixed { background:rgba(255,255,255,.14); cursor:default; }
+    .sud-cell.sel { background:var(--gold,#ffd166); border-color:#fff; box-shadow:0 0 0 3px rgba(255,209,102,.5); }
+    .sud-cell.conflict { animation:sudShake .4s; border-color:#ff8a4c; }
+    .sud-cell.empty:active { transform:scale(0.94); }
+    /* séparation visuelle des blocs (bordure plus épaisse toutes les blockW/blockH cellules) */
+    .sud-cell.blk-r { border-left-width:4px; border-left-color:rgba(255,255,255,.4); }
+    .sud-cell.blk-b { border-bottom-width:4px; border-bottom-color:rgba(255,255,255,.4); }
+    @keyframes sudShake {
+      0%,100% { transform:translateX(0); }
+      20% { transform:translateX(-6px); }
+      40% { transform:translateX(6px); }
+      60% { transform:translateX(-4px); }
+      80% { transform:translateX(4px); }
+    }
+
+    /* ── Palette des symboles ── */
+    .sud-palette { display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+    .sud-sym {
+      width:80px; height:80px; min-width:80px; min-height:80px;
+      display:flex; align-items:center; justify-content:center;
+      font-size:2.3rem; border-radius:16px;
+      background:rgba(255,255,255,.1); border:2px solid rgba(255,255,255,.2);
+      cursor:pointer; touch-action:manipulation; transition:transform .12s, background .12s;
+    }
+    .sud-sym:active { transform:scale(0.92); background:rgba(255,255,255,.22); }
+
+    .sud-hint { min-height:1.4em; font-size:1.05rem; color:#ffe9a0; text-align:center; font-weight:700; }
+  </style>
+</head>
+<body data-ambiance="jungle">
+<div id="app">
+
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">🥚 Sudoku Dino</span>
+  </div>
+
+  <div class="stage">
+    <div class="sud-hint" id="hint"></div>
+    <div class="sud-grid" id="grid"></div>
+    <div class="sud-palette" id="palette"></div>
+  </div>
+
+</div>
+  <!-- libs SPÉCIFIQUES au jeu -->
+  <script src="js/mj-dice.js"></script>
+  <script src="js/mj-kit.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
+  <script>
+  MJ.ready(function () {
+    'use strict';
+    // ─── MJ-54 : Sudoku Dino — sudoku 4×4 (puis 6×6) à symboles 🦕🦖🥚🌋 ───
+    // UNE PARTIE = 4 puzzles (pips golden). Niveaux par étoiles (G.level 0/1/2) :
+    //   N0 : 4×4, 8 indices  ·  N1 : 4×4, 5-6 indices  ·  N2 : 6×6, 10 indices
+    // Générateur : solution canonique + permutations (bandes/piles/symboles),
+    // puis retrait de cases en vérifiant l'UNICITÉ par backtracking.
+    // Conflit = 2 cases tremblent orange (indice visuel, jamais bloquant).
+    const GAME_ID = 'mj-54';
+
+    const shell = MJ.init({
+      id: GAME_ID, emoji: '🥚', titre: 'Sudoku Dino',
+      golden: true, consigne: true,
+      regle: {
+        picto: '🥚🧩',
+        texte: 'Chaque ligne, chaque colonne et chaque petit carré doit avoir les 4 symboles, jamais deux fois le même !',
+        etapes: [
+          { t: 'Je tapote une case vide 👆',
+            d: 'Elle devient jaune : c’est elle que je remplis.' },
+          { t: 'Je choisis un symbole en bas 🦕🦖🥚🌋',
+            d: 'Il se pose dans la case jaune.' },
+          { t: 'Si deux pareils se touchent, ça tremble 🫨',
+            d: 'Les deux cases tremblent en orange : je peux changer, ce n’est jamais grave.' },
+          { t: 'Je peux effacer une case que j’ai posée 🧹',
+            d: 'Retape dessus pour la vider et recommencer.' }
+        ]
+      }
+    });
+    const G = shell.G;
+
+    const gridEl = document.getElementById('grid');
+    const paletteEl = document.getElementById('palette');
+    const hintEl = document.getElementById('hint');
+
+    const SYMBOLS = ['🦕', '🦖', '🥚', '🌋'];
+    const SYMBOLS6 = ['🦕', '🦖', '🥚', '🌋', '🌿', '🌊'];
+
+    const rand = MJDice.randInt;
+    function shuffleArr(a) {
+      const arr = a.slice();
+      for (let i = arr.length - 1; i > 0; i--) {
+        const j = rand(0, i);
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+      }
+      return arr;
+    }
+
+    let testMode = false, forcedLevel = null;
+    function level() { return forcedLevel !== null ? forcedLevel : G.level; }
+
+    // ── Config par niveau ──
+    function cfgFor(lv) {
+      if (lv === 2) return { N: 6, bw: 3, bh: 2, syms: SYMBOLS6, clues: 10 };
+      if (lv === 1) return { N: 4, bw: 2, bh: 2, syms: SYMBOLS, clues: rand(5, 6) };
+      return { N: 4, bw: 2, bh: 2, syms: SYMBOLS, clues: 8 };
+    }
+
+    // ── Générateur : solution canonique + permutations ──
+    function canonicalSolution(N, bw, bh) {
+      // motif standard : cell(r,c) = (r*bw + floor(r/bh) + c) % N
+      const g = [];
+      for (let r = 0; r < N; r++) {
+        const row = [];
+        for (let c = 0; c < N; c++) {
+          row.push((r * bw + Math.floor(r / bh) + c) % N);
+        }
+        g.push(row);
+      }
+      return g;
+    }
+
+    function permuteSolution(base, N, bw, bh) {
+      let g = base.map(r => r.slice());
+      // permute les bandes de blocs (groupes de bh lignes) puis les lignes DANS une bande
+      const nBands = N / bh;
+      const bandOrder = shuffleArr([...Array(nBands).keys()]);
+      let rows = [];
+      bandOrder.forEach(b => {
+        const linesInBand = shuffleArr([...Array(bh).keys()]);
+        linesInBand.forEach(l => rows.push(b * bh + l));
+      });
+      g = rows.map(r => base[r].slice());
+
+      // permute les piles de blocs (groupes de bw colonnes) puis les colonnes DANS une pile
+      const nStacks = N / bw;
+      const stackOrder = shuffleArr([...Array(nStacks).keys()]);
+      let cols = [];
+      stackOrder.forEach(s => {
+        const colsInStack = shuffleArr([...Array(bw).keys()]);
+        colsInStack.forEach(l => cols.push(s * bw + l));
+      });
+      g = g.map(row => cols.map(ci => row[ci]));
+
+      // permute les symboles (relabeling)
+      const symMap = shuffleArr([...Array(N).keys()]);
+      g = g.map(row => row.map(v => symMap[v]));
+
+      return g;
+    }
+
+    // ── Retrait de cases avec vérification d'unicité (backtracking) ──
+    function countSolutions(grid, N, bw, bh, limit) {
+      const g = grid.map(r => r.slice());
+      let count = 0;
+      function valid(r, c, v) {
+        for (let i = 0; i < N; i++) {
+          if (g[r][i] === v || g[i][c] === v) return false;
+        }
+        const br = Math.floor(r / bh) * bh, bc = Math.floor(c / bw) * bw;
+        for (let rr = br; rr < br + bh; rr++) {
+          for (let cc = bc; cc < bc + bw; cc++) {
+            if (g[rr][cc] === v) return false;
+          }
+        }
+        return true;
+      }
+      function solve() {
+        if (count >= limit) return;
+        let br = -1, bc = -1;
+        for (let r = 0; r < N && br === -1; r++) {
+          for (let c = 0; c < N; c++) {
+            if (g[r][c] === -1) { br = r; bc = c; break; }
+          }
+        }
+        if (br === -1) { count++; return; }
+        for (let v = 0; v < N; v++) {
+          if (valid(br, bc, v)) {
+            g[br][bc] = v;
+            solve();
+            g[br][bc] = -1;
+            if (count >= limit) return;
+          }
+        }
+      }
+      solve();
+      return count;
+    }
+
+    function generatePuzzle(lv) {
+      const cfg = cfgFor(lv);
+      const { N, bw, bh, syms, clues } = cfg;
+      const base = canonicalSolution(N, bw, bh);
+      const solution = permuteSolution(base, N, bw, bh);
+
+      // Grille avec toutes les cases, on retire jusqu'à atteindre ~clues indices
+      // en garantissant l'unicité à chaque retrait (backtracking, borné pour rester rapide).
+      const puzzle = solution.map(r => r.slice());
+      const cellsOrder = shuffleArr(
+        Array.from({ length: N * N }, (_, i) => [Math.floor(i / N), i % N])
+      );
+      let removed = 0;
+      const targetRemoved = N * N - clues;
+      for (const [r, c] of cellsOrder) {
+        if (removed >= targetRemoved) break;
+        const saved = puzzle[r][c];
+        puzzle[r][c] = -1;
+        const solCount = countSolutions(puzzle, N, bw, bh, 2);
+        if (solCount === 1) {
+          removed++;
+        } else {
+          puzzle[r][c] = saved; // remet si ça casse l'unicité
+        }
+      }
+      return { N, bw, bh, syms, solution, puzzle };
+    }
+
+    // ── État du puzzle courant ──
+    let puz = null;       // { N, bw, bh, syms, solution, puzzle }
+    let userGrid = [];    // valeurs posées par le joueur (-1 = vide)
+    let fixedMask = [];   // true = case indice, non modifiable
+    let selR = -1, selC = -1;
+    let qCount = 0;       // puzzle courant (0..3)
+    let conflictSeen = false; // au moins un conflit affiché depuis le début du puzzle
+    let helpTaps = 0;
+
+    function cellEl(r, c) { return gridEl.querySelector(`[data-r="${r}"][data-c="${c}"]`); }
+
+    function buildGrid() {
+      const { N, bw, bh, syms } = puz;
+      const cellPx = N === 6 ? 52 : 72;
+      gridEl.style.setProperty('--cell', cellPx + 'px');
+      gridEl.style.gridTemplateColumns = `repeat(${N}, var(--cell))`;
+      gridEl.innerHTML = '';
+      for (let r = 0; r < N; r++) {
+        for (let c = 0; c < N; c++) {
+          const cell = document.createElement('div');
+          cell.className = 'sud-cell';
+          cell.dataset.r = r; cell.dataset.c = c;
+          if (c % bw === 0 && c > 0) cell.classList.add('blk-r');
+          if (r % bh === 0 && r > 0) cell.classList.add('blk-b');
+          const fixed = fixedMask[r][c];
+          if (fixed) { cell.classList.add('fixed'); cell.textContent = syms[userGrid[r][c]]; }
+          else { cell.classList.add('empty'); }
+          cell.addEventListener('click', () => onCellTap(r, c));
+          gridEl.appendChild(cell);
+        }
+      }
+      buildPalette();
+    }
+
+    function buildPalette() {
+      paletteEl.innerHTML = '';
+      puz.syms.forEach((sym, idx) => {
+        const b = document.createElement('div');
+        b.className = 'sud-sym';
+        b.textContent = sym;
+        b.dataset.idx = idx;
+        b.addEventListener('click', () => onSymbolTap(idx));
+        paletteEl.appendChild(b);
+      });
+    }
+
+    function onCellTap(r, c) {
+      if (fixedMask[r][c]) return;
+      if (userGrid[r][c] !== -1) {
+        // re-tap une case posée non fixe → vide
+        userGrid[r][c] = -1;
+        clearSel();
+        const el = cellEl(r, c);
+        el.textContent = '';
+        el.classList.add('empty');
+        checkConflictsAround(r, c);
+        checkComplete();
+        return;
+      }
+      clearSel();
+      selR = r; selC = c;
+      cellEl(r, c).classList.add('sel');
+    }
+
+    function onSymbolTap(idx) {
+      if (selR === -1) return;
+      const r = selR, c = selC;
+      userGrid[r][c] = idx;
+      const el = cellEl(r, c);
+      el.textContent = puz.syms[idx];
+      el.classList.remove('empty');
+      clearSel();
+      helpTaps++;
+      checkConflictsAround(r, c);
+      checkComplete();
+    }
+
+    function clearSel() {
+      if (selR !== -1) { const el = cellEl(selR, selC); if (el) el.classList.remove('sel'); }
+      selR = -1; selC = -1;
+    }
+
+    // ── Conflit : deux cases avec la même valeur sur une ligne/colonne/bloc ──
+    function findConflicts() {
+      const { N, bw, bh } = puz;
+      const conflicts = new Set();
+      // lignes
+      for (let r = 0; r < N; r++) {
+        const seen = {};
+        for (let c = 0; c < N; c++) {
+          const v = userGrid[r][c];
+          if (v === -1) continue;
+          if (seen[v] !== undefined) { conflicts.add(r + ',' + c); conflicts.add(r + ',' + seen[v]); }
+          else seen[v] = c;
+        }
+      }
+      // colonnes
+      for (let c = 0; c < N; c++) {
+        const seen = {};
+        for (let r = 0; r < N; r++) {
+          const v = userGrid[r][c];
+          if (v === -1) continue;
+          if (seen[v] !== undefined) { conflicts.add(r + ',' + c); conflicts.add(seen[v] + ',' + c); }
+          else seen[v] = r;
+        }
+      }
+      // blocs
+      for (let br = 0; br < N; br += bh) {
+        for (let bc = 0; bc < N; bc += bw) {
+          const seen = {};
+          for (let r = br; r < br + bh; r++) {
+            for (let c = bc; c < bc + bw; c++) {
+              const v = userGrid[r][c];
+              if (v === -1) continue;
+              if (seen[v] !== undefined) { conflicts.add(r + ',' + c); conflicts.add(seen[v]); }
+              else seen[v] = r + ',' + c;
+            }
+          }
+        }
+      }
+      return conflicts;
+    }
+
+    function checkConflictsAround() {
+      // recalcule TOUS les conflits (grille petite, coût négligeable)
+      gridEl.querySelectorAll('.sud-cell.conflict').forEach(el => el.classList.remove('conflict'));
+      const conflicts = findConflicts();
+      if (conflicts.size) {
+        conflictSeen = true;
+        conflicts.forEach(key => {
+          const [r, c] = key.split(',').map(Number);
+          const el = cellEl(r, c);
+          if (el) { el.classList.add('conflict'); shakeEl(el); }
+        });
+        if (!testMode) try { sndBuzz(); } catch (e) {}
+      }
+    }
+
+    function isComplete() {
+      for (let r = 0; r < puz.N; r++) {
+        for (let c = 0; c < puz.N; c++) {
+          if (userGrid[r][c] === -1) return false;
+        }
+      }
+      return findConflicts().size === 0;
+    }
+
+    function checkComplete() {
+      if (!isComplete()) return;
+      // puzzle réussi : attempts pour notePip = 1 si aucun conflit affiché, sinon 2
+      const attempts = conflictSeen ? 2 : 1;
+      const fromEl = gridEl;
+      G.notePip(qCount, attempts, fromEl);
+      if (!testMode) try { sndDing(); } catch (e) {}
+      setTimeout(nextPuzzle, testMode ? 0 : 1400);
+    }
+
+    // ── Une question = un puzzle ──
+    function nextPuzzle() {
+      if (qCount >= G.totalQ) return showEnd();
+      const lv = level();
+      puz = generatePuzzle(lv);
+      userGrid = puz.puzzle.map(r => r.slice());
+      fixedMask = puz.puzzle.map(r => r.map(v => v !== -1));
+      selR = -1; selC = -1;
+      conflictSeen = false;
+      helpTaps = 0;
+      hintEl.textContent = '';
+      shell.setConsigne('Complète la grille : les 4 symboles partout !', qCount === 0 ? undefined : true);
+      buildGrid();
+    }
+
+    function showEnd() { G.showEnd({ replayUrl: 'mj-54.html' }); }
+
+    // ── Paramètres test/screenshot : ?level=N ──
+    const qs = new URLSearchParams(location.search);
+    if (qs.get('level') !== null) forcedLevel = Math.max(0, Math.min(2, parseInt(qs.get('level'), 10) || 0));
+    if (qs.get('mute')) testMode = true;
+
+    // ── Harnais Playwright ──
+    window.__mjTest = {
+      get state() {
+        return {
+          qCount, totalQ: G.totalQ, level: level(),
+          N: puz ? puz.N : 0,
+          userGrid: puz ? userGrid.map(r => r.slice()) : [],
+          solution: puz ? puz.solution.map(r => r.slice()) : [],
+          fixedMask: puz ? fixedMask.map(r => r.slice()) : [],
+          syms: puz ? puz.syms.slice() : [],
+          conflictSeen,
+          conflicts: [...findConflicts()],
+          complete: puz ? isComplete() : false,
+        };
+      },
+      setTestMode(on) { testMode = !!on; },
+      setDifficulty(lvl) { forcedLevel = Math.max(0, Math.min(2, lvl)); qCount = 0; nextPuzzle(); },
+      // fixe qCount local (le shell le gère via notePip ; on suit en le déduisant de G._answered)
+      // Résout tout le puzzle courant d'un coup avec la solution (chemin gagnant scripté)
+      solvePuzzle() {
+        if (!puz) return;
+        for (let r = 0; r < puz.N; r++) {
+          for (let c = 0; c < puz.N; c++) {
+            if (!fixedMask[r][c]) {
+              userGrid[r][c] = puz.solution[r][c];
+              const el = cellEl(r, c);
+              if (el) el.textContent = puz.syms[userGrid[r][c]];
+            }
+          }
+        }
+        checkConflictsAround();
+        checkComplete();
+      },
+      // pose une valeur précise (pour scripter le tap case → tap symbole)
+      selectCell(r, c) { onCellTap(r, c); },
+      placeSymbol(idx) { onSymbolTap(idx); },
+      forceConflict() {
+        // pose délibérément un doublon dans la PREMIÈRE ligne qui a ≥2 cases
+        // libres (la ligne 0 seule ne suffit pas : selon le tirage des indices
+        // elle peut n'avoir qu'une case libre — bug flaky attrapé au re-run).
+        if (!puz) return;
+        for (let r = 0; r < puz.N; r++) {
+          let c0 = -1, c1 = -1;
+          for (let c = 0; c < puz.N; c++) {
+            if (!fixedMask[r][c]) { if (c0 === -1) c0 = c; else if (c1 === -1) { c1 = c; break; } }
+          }
+          if (c0 === -1 || c1 === -1) continue;
+          onCellTap(r, c0); onSymbolTap(puz.solution[r][c0]);
+          onCellTap(r, c1); onSymbolTap(puz.solution[r][c0]); // même valeur → conflit
+          return;
+        }
+      },
+    };
+
+    // suit qCount via le décompte des pips notés (le gabarit golden ne l'expose pas
+    // directement ; on le déduit de G._answered à chaque puzzle terminé)
+    const _origNotePip = G.notePip.bind(G);
+    G.notePip = function (i, attempts, fromEl) {
+      _origNotePip(i, attempts, fromEl);
+      qCount = G._answered;
+    };
+
+    MJKit.decor(document.querySelector('.stage'), ['fougere-g', 'fougere-d']);
+    nextPuzzle();
+  });
+  </script>
+</body>
+</html>

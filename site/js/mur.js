@@ -57,7 +57,9 @@
     {
       id: 'troudi', nom: 'Troudi', domaine: 'casse-têtes', avatar: 'velo',
       coin: 'grotte', bulle: 'Ici, on réfléchit !',
-      jeux: ['mj-15', 'mj-13a', 'mj-14', 'mj-19', 'mj-18', 'mj-34']
+      // Pack DinoJeux (spec 2026-07-31) : ordre de déblocage de la spec —
+      // sudoku/équilibre ouvrent la chaîne, enclos/territoires la terminent.
+      jeux: ['mj-54', 'mj-55', 'mj-15', 'mj-13a', 'mj-14', 'mj-19', 'mj-18', 'mj-34', 'mj-56', 'mj-59']
     },
     {
       id: 'volta', nom: 'Volta', domaine: 'couleurs & monde', avatar: 'ptero',
@@ -68,7 +70,8 @@
       // L'hôte des jeux dino — avatar/nom résolus au rendu (dinoHost()).
       id: 'dino', nom: 'Tritri', domaine: 'les jeux dino', avatar: 'tritri',
       coin: 'fougeres', bulle: 'Viens voir les dinos !',
-      jeux: ['mj-24', 'mj-28', 'mj-31', 'mj-30', 'mj-32']
+      // mj-57 ouvre (règle nulle, confiance) · mj-58 = la récompense fun (spec §7)
+      jeux: ['mj-57', 'mj-58', 'mj-24', 'mj-28', 'mj-31', 'mj-30', 'mj-32']
     },
     {
       // Roi T-Rex : IMMOBILE avec son livre — porte du MONDE DINO
@@ -126,7 +129,13 @@
     'mj-20': 'Compte avec le monde',
     'mj-22': 'Où est le pays ?',
     'mj-33': 'Le memory',
-    'mj-12': 'Le coin écoute'
+    'mj-12': 'Le coin écoute',
+    'mj-54': 'Sudoku Dino',
+    'mj-55': 'Équilibre',
+    'mj-56': 'Les Enclos',
+    'mj-57': 'Œufs Surprise',
+    'mj-58': 'Dino Run',
+    'mj-59': 'Territoires'
   };
 
   // ── Vignettes de jeux (CSS/SVG pur, zéro emoji) — réutilisées telles
@@ -156,7 +165,13 @@
     'mj-20': '<div class="vig vig-drapeaux"><span class="f-flag france"></span><span class="f-flag bresil"></span><span class="f-flag espagne"></span></div>',
     'mj-22': '<div class="vig vig-carte"><svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><path fill="#2fbf8f" d="M18 30c10-8 22-10 32-6 12 5 24 2 32-6v44c-8 8-20 11-32 6-10-4-22-2-32 6z" opacity=".9"/><path fill="#e0655a" d="M50 18c-8 0-14 6-14 13 0 10 14 25 14 25s14-15 14-25c0-7-6-13-14-13z"/><circle cx="50" cy="31" r="6" fill="#fff"/></svg></div>',
     'mj-33': '<div class="vig vig-memory"><div class="vig-carte-m dos"></div><div class="vig-carte-m"><img src="' + OMBRE + 'Parasaurolophus_ombre.png" alt=""></div></div>',
-    'mj-12': '<div class="vig vig-son"><i></i><i></i><i></i><i></i><i></i></div>'
+    'mj-12': '<div class="vig vig-son"><i></i><i></i><i></i><i></i><i></i></div>',
+    'mj-54': '<div class="vig vig-sudoku"><img src="' + OMBRE + 'Triceratops_ombre.png" alt=""><span class="mjk-oeuf-mini"></span><span class="mjk-oeuf-mini"></span><img src="' + OMBRE + 'Velociraptor_ombre.png" alt=""></div>',
+    'mj-55': '<div class="vig vig-equilibre"><img src="' + OMBRE + 'Diplodocus_ombre.png" alt=""><span class="mjk-oeuf-mini"></span><span class="eq-q">?</span></div>',
+    'mj-56': '<div class="vig vig-enclos"><i class="z1"></i><i class="z2"></i><i class="z3"></i><i class="z4"></i><img src="' + OMBRE + 'Stegosaurus_ombre.png" alt=""></div>',
+    'mj-57': '<div class="vig vig-oeufs-col"><i></i><i></i><i></i><i></i></div>',
+    'mj-58': '<div class="vig vig-run"><img src="' + OMBRE + 'Tyrannosaurus_ombre.png" alt=""><i class="cactus"></i></div>',
+    'mj-59': '<div class="vig vig-terr"><i class="r1"></i><i class="r2"></i><i class="r3"></i></div>'
   };
 
   // ── Entrées catalogue + locale ─────────────────────────────────────

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-56 – Les Enclos</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mp-theme.css">
+  <link rel="stylesheet" href="css/mj-kit.css">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+    body { font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
+
+    .stage { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; padding:6px 8px 14px; gap:10px; }
+
+    .grid-wrap { position:relative; }
+    .grid {
+      display:grid; gap:4px;
+      background:rgba(0,0,0,.25); padding:6px; border-radius:16px;
+      box-shadow:0 8px 22px rgba(0,0,0,.5), inset 0 2px 6px rgba(0,0,0,.35);
+    }
+    .cell {
+      position:relative; border-radius:12px; cursor:pointer; touch-action:manipulation;
+      display:flex; align-items:center; justify-content:center;
+      transition:transform .12s, box-shadow .25s, background .25s;
+      font-size:var(--dino-size, 34px); line-height:1;
+    }
+    .cell:active { transform:scale(.94); }
+    .cell .dino { animation:dinoPop .3s cubic-bezier(.34,1.56,.64,1) both; pointer-events:none; }
+    @keyframes dinoPop { from{transform:scale(0);} to{transform:scale(1);} }
+
+    /* Feedback pédagogique : attaque = teinte rouge douce, jamais bloquant */
+    .cell.attacked::after {
+      content:''; position:absolute; inset:0; border-radius:12px;
+      background:rgba(255,90,90,.28); box-shadow:inset 0 0 0 2px rgba(255,120,120,.35);
+      pointer-events:none;
+    }
+    /* Conflit direct entre deux dinos : tremblement orange */
+    .cell.conflict { animation:conflictShake .4s ease-in-out; }
+    .cell.conflict::before {
+      content:''; position:absolute; inset:0; border-radius:12px;
+      box-shadow:0 0 0 3px rgba(255,166,60,.85), 0 0 16px rgba(255,166,60,.6);
+      pointer-events:none;
+    }
+    @keyframes conflictShake {
+      0%,100% { transform:translateX(0); }
+      20% { transform:translateX(-4px) rotate(-3deg); }
+      40% { transform:translateX(4px) rotate(3deg); }
+      60% { transform:translateX(-3px) rotate(-2deg); }
+      80% { transform:translateX(3px) rotate(2deg); }
+    }
+    .cell.solved { box-shadow:0 0 0 3px rgba(255,224,102,.9), 0 0 18px rgba(255,224,102,.55); }
+
+    .zone-legend { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; min-height:1.2em; }
+  </style>
+</head>
+<body data-ambiance="jungle">
+<div id="app">
+
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">🦕 Les Enclos</span>
+  </div>
+
+  <div class="stage">
+    <div class="grid-wrap">
+      <div class="grid" id="grid"></div>
+    </div>
+  </div>
+
+</div>
+  <!-- libs SPÉCIFIQUES au jeu -->
+  <script src="js/mj-kit.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
+  <script>
+  MJ.ready(function () {
+    'use strict';
+    // ─── MJ-56 : Les Enclos — Queens/N-reines enfant (spec 2026-07-31) ───
+    // 1 dino 🦕 par ligne, par colonne, par enclos coloré — et jamais deux
+    // dinos adjacents (même en diagonale, "ils sont grognons"). Le TEACHING
+    // est le feedback visuel : poser un dino illumine en rouge doux toutes
+    // les cases qu'il "attaque" (ligne + colonne + 8 voisines) ; deux dinos
+    // en conflit direct tremblent en orange tant que le conflit existe.
+    // Retirer un dino est toujours possible (re-tap). Jamais de blocage,
+    // jamais de "perdu" — juste le feedback qui guide.
+    const GAME_ID = 'mj-56';
+    const N4_ZONES = [
+      [0,0,1,1],
+      [0,0,1,1],
+      [2,2,3,3],
+      [2,2,3,3],
+    ];
+    // Palette d'enclos douce (pas de hex chrome UI, teintes pastel/nature)
+    const ZONE_COLORS = ['#7fbf8f', '#f2c464', '#7fa8d9', '#e08fa0', '#c79bdb', '#8fd0c9'];
+
+    const shell = MJ.init({
+      id: GAME_ID, emoji: '🦕', titre: 'Les Enclos',
+      golden: true, consigne: true,
+      regle: {
+        picto: '🦕🚧',
+        texte: 'Un dino par ligne, par colonne, par enclos… et jamais collés, même en coin !',
+        etapes: [
+          { t: 'Je pose un dino 🦕',
+            d: 'Je tape une case pour poser un dino dedans.' },
+          { t: 'Attention aux voisins 🔴',
+            d: 'Les cases qui deviennent rouges, c’est là où je ne peux plus en poser.' },
+          { t: 'Ils sont grognons 😤',
+            d: 'Deux dinos jamais collés, même en diagonale — sinon ils tremblent, je les sépare.' },
+          { t: 'Un par enclos 🚧',
+            d: 'Chaque couleur d’enclos n’a droit qu’à un seul dino.' },
+        ]
+      }
+    });
+    const G = shell.G;
+
+    const gridEl = document.getElementById('grid');
+
+    let qCount = 0, puzzleLock = false, testMode = false, forcedLevel = null;
+    let size = 4, zones = N4_ZONES, solution = [];
+    let placed = []; // placed[r] = c ou -1
+    let hadConflict = false; // pour attempts (1 si jamais de conflit simultané, sinon 2)
+
+    function level() { return forcedLevel !== null ? forcedLevel : G.level; }
+
+    // ── Générateur N-reines (sans adjacence, diagonales incluses) ──
+    function generateQueensSolution(n) {
+      const cols = [];
+      function safe(r, c) {
+        for (let i = 0; i < r; i++) {
+          const cc = cols[i];
+          if (cc === c) return false;
+          if (Math.abs(cc - c) <= 1 && (r - i) === 1) return false; // adjacence stricte
+        }
+        return true;
+      }
+      function backtrack(r) {
+        if (r === n) return true;
+        const order = MJKit.shuffle(Array.from({ length: n }, (_, i) => i));
+        for (const c of order) {
+          if (safe(r, c)) {
+            cols[r] = c;
+            if (backtrack(r + 1)) return true;
+            cols[r] = undefined;
+          }
+        }
+        return false;
+      }
+      if (!backtrack(0)) return null;
+      return cols.slice();
+    }
+
+    // ── Zones par croissance organique autour de chaque reine (garantit la solution) ──
+    function generateZones(n, sol) {
+      const zoneOf = Array.from({ length: n }, () => Array(n).fill(-1));
+      const seeds = sol.map((c, r) => [r, c]);
+      seeds.forEach(([r, c], zi) => { zoneOf[r][c] = zi; });
+      const frontiers = seeds.map(([r, c]) => [[r, c]]);
+      let remaining = n * n - n;
+      const order = MJKit.shuffle(Array.from({ length: n }, (_, i) => i));
+      let guard = 0;
+      while (remaining > 0 && guard++ < 5000) {
+        for (const zi of order) {
+          if (remaining <= 0) break;
+          const front = frontiers[zi];
+          if (!front.length) continue;
+          const idx = Math.floor(Math.random() * front.length);
+          const [r, c] = front[idx];
+          const neighbors = MJKit.shuffle([[r - 1, c], [r + 1, c], [r, c - 1], [r, c + 1]]);
+          let grew = false;
+          for (const [nr, nc] of neighbors) {
+            if (nr < 0 || nr >= n || nc < 0 || nc >= n) continue;
+            if (zoneOf[nr][nc] !== -1) continue;
+            zoneOf[nr][nc] = zi;
+            frontiers[zi].push([nr, nc]);
+            remaining--;
+            grew = true;
+            break;
+          }
+          if (!grew) front.splice(idx, 1);
+        }
+        if (frontiers.every(f => !f.length) && remaining > 0) break; // sécurité anti-boucle
+      }
+      // Cases orphelines résiduelles (grille bloquée) : rattacher à une zone voisine
+      for (let r = 0; r < n; r++) {
+        for (let c = 0; c < n; c++) {
+          if (zoneOf[r][c] !== -1) continue;
+          const cand = [[r - 1, c], [r + 1, c], [r, c - 1], [r, c + 1]]
+            .filter(([nr, nc]) => nr >= 0 && nr < n && nc >= 0 && nc < n && zoneOf[nr][nc] !== -1);
+          zoneOf[r][c] = cand.length ? zoneOf[cand[0][0]][cand[0][1]] : 0;
+        }
+      }
+      return zoneOf;
+    }
+
+    function buildPuzzle(n) {
+      if (n === 4) {
+        // N1 : grille figée de la spec (2 solutions connues), pas de génération
+        zones = N4_ZONES;
+        solution = [1, 3, 0, 2]; // une des 2 solutions valides pour ce quadrillage
+        // vérification défensive : si jamais invalide, régénère
+        if (!isValidFullSolution(solution, zones, 4)) {
+          const gen = generateQueensSolution(4);
+          solution = gen || [1, 3, 0, 2];
+          zones = generateZones(4, solution);
+        }
+        return;
+      }
+      const gen = generateQueensSolution(n);
+      solution = gen || generateQueensSolution(n); // n>=4 toujours soluble
+      zones = generateZones(n, solution);
+    }
+
+    function isValidFullSolution(sol, zn, n) {
+      const cols = new Set(sol);
+      if (cols.size !== n) return false;
+      const zoneSet = new Set(sol.map((c, r) => zn[r][c]));
+      if (zoneSet.size !== n) return false;
+      for (let r = 0; r < n; r++) {
+        for (let r2 = r + 1; r2 < n; r2++) {
+          if (Math.abs(sol[r] - sol[r2]) <= 1 && (r2 - r) === 1) return false;
+        }
+      }
+      return true;
+    }
+
+    // ── Rendu ──
+    function cellPx() {
+      const w = Math.min(680, innerWidth) - 40;
+      const h = innerHeight - 220;
+      const avail = Math.min(w, h);
+      return Math.max(80, Math.min(96, Math.floor(avail / size) - 4));
+    }
+
+    function render() {
+      const px = cellPx();
+      gridEl.style.gridTemplateColumns = 'repeat(' + size + ', ' + px + 'px)';
+      gridEl.style.gridTemplateRows = 'repeat(' + size + ', ' + px + 'px)';
+      gridEl.innerHTML = '';
+      gridEl.style.setProperty('--dino-size', Math.round(px * 0.55) + 'px');
+      for (let r = 0; r < size; r++) {
+        for (let c = 0; c < size; c++) {
+          const cell = document.createElement('div');
+          cell.className = 'cell';
+          cell.dataset.r = r; cell.dataset.c = c;
+          cell.style.background = ZONE_COLORS[zones[r][c] % ZONE_COLORS.length];
+          if (placed[r] === c) cell.innerHTML = '<span class="dino">🦕</span>';
+          cell.addEventListener('click', () => tapCell(r, c));
+          gridEl.appendChild(cell);
+        }
+      }
+      paintFeedback();
+    }
+
+    // ── Cases "attaquées" par un dino donné : ligne, colonne, 8 voisines ──
+    function attackedCells(r, c) {
+      const out = new Set();
+      for (let i = 0; i < size; i++) { out.add(i + ',' + c); out.add(r + ',' + i); }
+      for (let dr = -1; dr <= 1; dr++) {
+        for (let dc = -1; dc <= 1; dc++) {
+          if (dr === 0 && dc === 0) continue;
+          const nr = r + dr, nc = c + dc;
+          if (nr >= 0 && nr < size && nc >= 0 && nc < size) out.add(nr + ',' + nc);
+        }
+      }
+      out.delete(r + ',' + c);
+      return out;
+    }
+
+    // Deux dinos sont en conflit direct s'ils sont adjacents (8 sens, y compris diag)
+    function isAdjacent(r1, c1, r2, c2) {
+      return Math.max(Math.abs(r1 - r2), Math.abs(c1 - c2)) <= 1;
+    }
+
+    function paintFeedback() {
+      const dinos = [];
+      placed.forEach((c, r) => { if (c !== -1) dinos.push([r, c]); });
+
+      // 1) rouge doux = cases attaquées par au moins un dino posé
+      const attacked = new Set();
+      dinos.forEach(([r, c]) => attackedCells(r, c).forEach(k => attacked.add(k)));
+
+      // 2) conflits directs (adjacence stricte entre deux dinos posés)
+      const conflictCells = new Set();
+      for (let i = 0; i < dinos.length; i++) {
+        for (let j = i + 1; j < dinos.length; j++) {
+          const [r1, c1] = dinos[i], [r2, c2] = dinos[j];
+          if (isAdjacent(r1, c1, r2, c2)) {
+            conflictCells.add(r1 + ',' + c1);
+            conflictCells.add(r2 + ',' + c2);
+          }
+        }
+      }
+      if (conflictCells.size) hadConflict = true;
+
+      gridEl.querySelectorAll('.cell').forEach(cell => {
+        const r = +cell.dataset.r, c = +cell.dataset.c;
+        const key = r + ',' + c;
+        cell.classList.toggle('attacked', attacked.has(key) && placed[r] !== c);
+        cell.classList.toggle('conflict', conflictCells.has(key));
+      });
+    }
+
+    // ── Tap = pose / retire ──
+    function tapCell(r, c) {
+      if (puzzleLock) return;
+      if (placed[r] === c) {
+        placed[r] = -1;
+      } else {
+        placed[r] = c;
+        try { sndDing(); } catch (e) {}
+      }
+      render();
+      checkWin();
+    }
+
+    function checkWin() {
+      const allPlaced = placed.every(c => c !== -1);
+      if (!allPlaced) return;
+      const cols = new Set(placed);
+      if (cols.size !== size) return; // colonnes pas toutes distinctes
+      const zoneSet = new Set(placed.map((c, r) => zones[r][c]));
+      if (zoneSet.size !== size) return; // enclos pas tous distincts
+      for (let r = 0; r < size; r++) {
+        for (let r2 = r + 1; r2 < size; r2++) {
+          if (isAdjacent(r, placed[r], r2, placed[r2])) return; // conflit résiduel
+        }
+      }
+      // ── Résolu ! ──
+      puzzleLock = true;
+      const attempts = hadConflict ? 2 : 1;
+      gridEl.querySelectorAll('.cell').forEach(cell => {
+        const r = +cell.dataset.r, c = +cell.dataset.c;
+        if (placed[r] === c) cell.classList.add('solved');
+      });
+      const fromEl = gridEl.querySelector('.cell.solved');
+      try { sndBravo(); } catch (e) {}
+      G.notePip(qCount - 1, attempts, fromEl);
+      setTimeout(nextPuzzle, testMode ? 0 : 1400);
+    }
+
+    // ── Une manche = 4 puzzles ──
+    function nextPuzzle() {
+      if (qCount >= G.totalQ) return showEnd();
+      qCount++;
+      puzzleLock = false;
+      hadConflict = false;
+      const lv = level();
+      size = lv === 0 ? 4 : (lv === 1 ? 5 : 6);
+      buildPuzzle(size);
+      placed = Array(size).fill(-1);
+      render();
+      shell.setConsigne('Un dino par ligne, colonne et enclos… jamais collés !', qCount === 1 ? undefined : true);
+    }
+
+    function showEnd() { G.showEnd({ replayUrl: 'mj-56.html' }); }
+
+    // ── Paramètres test/screenshot : ?level=N ──
+    const qs = new URLSearchParams(location.search);
+    if (qs.get('level') !== null) forcedLevel = Math.max(0, Math.min(2, parseInt(qs.get('level'), 10) || 0));
+    if (qs.get('mute')) { /* pas de son critique ici */ }
+
+    // ── Harnais Playwright ──
+    window.__mjTest = {
+      get state() {
+        return {
+          qCount, totalQ: G.totalQ, level: level(), size, placed: placed.slice(),
+          solution: solution.slice(), zones: zones.map(row => row.slice()),
+          puzzleLock, hadConflict,
+          attacked: [...gridEl.querySelectorAll('.cell.attacked')].map(c => c.dataset.r + ',' + c.dataset.c),
+          conflicts: [...gridEl.querySelectorAll('.cell.conflict')].map(c => c.dataset.r + ',' + c.dataset.c),
+        };
+      },
+      setTestMode(on) { testMode = !!on; },
+      setDifficulty(lvl) { forcedLevel = Math.max(0, Math.min(2, lvl)); qCount = 0; nextPuzzle(); },
+      tap(r, c) { tapCell(r, c); },
+      solve() { solution.forEach((c, r) => tapCell(r, c)); },
+    };
+
+    nextPuzzle();
+  });
+  </script>
+</body>
+</html>

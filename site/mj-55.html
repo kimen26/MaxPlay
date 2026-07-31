@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>MJ-55 – Équilibre</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/mp-theme.css">
+  <link rel="stylesheet" href="css/mj-kit.css">
+  <style>
+    /* --- GABARIT HEADER CANONIQUE --- */
+    * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; user-select:none; }
+    body { font-family:'Fredoka One',sans-serif; color:#fff; display:flex; flex-direction:column; height:100dvh; overflow:hidden; }
+    #app { display:flex; flex-direction:column; height:100dvh; max-width:680px; margin:0 auto; width:100%; }
+
+    .stage { flex:1; display:flex; flex-direction:column; align-items:center; justify-content:center; overflow:hidden; padding:6px 8px 14px; gap:10px; position:relative; }
+
+    /* ── La grille ── */
+    .eq-grid { display:grid; gap:8px; margin:0 auto; }
+    .eq-cell {
+      width:var(--cell, 76px); height:var(--cell, 76px);
+      border-radius:16px; background:rgba(255,255,255,.08);
+      border:3px solid rgba(255,255,255,.22);
+      display:flex; align-items:center; justify-content:center;
+      font-size:calc(var(--cell, 76px) * 0.56); line-height:1;
+      cursor:pointer; touch-action:manipulation;
+      transition:background .15s, border-color .2s, transform .1s;
+    }
+    .eq-cell:active { transform:scale(.94); }
+    .eq-cell.filled { background:rgba(255,255,255,.14); }
+    .eq-cell.conflict {
+      border-color:#ff8c3c; background:rgba(255,140,60,.28);
+      animation:eqShake .35s ease-in-out;
+    }
+    @keyframes eqShake {
+      0%,100% { transform:translateX(0); }
+      25% { transform:translateX(-3px); }
+      75% { transform:translateX(3px); }
+    }
+    .eq-cell.given { border-color:rgba(255,224,102,.55); background:rgba(255,224,102,.10); cursor:default; }
+
+    .eq-status { min-height:1.4em; font-size:1.1rem; color:#ffe9a0; font-weight:900; text-align:center; text-shadow:0 2px 4px rgba(0,0,0,.5); }
+  </style>
+</head>
+<body data-ambiance="jungle">
+<div id="app">
+
+  <div class="hdr">
+    <a href="index.html">&#8592;</a>
+    <span class="htitle">⚖️ Équilibre</span>
+  </div>
+
+  <div class="stage">
+    <div class="eq-status" id="status"></div>
+    <div class="eq-grid" id="grid"></div>
+  </div>
+
+</div>
+  <!-- libs SPÉCIFIQUES au jeu -->
+  <script src="js/mj-dice.js"></script>
+  <script src="js/mj-kit.js"></script>
+  <!-- LE GABARIT : charge tout le cadre standard (thème, golden, panneau ?, tracking, cloud) -->
+  <script src="js/mj-shell.js"></script>
+  <script>
+  MJ.ready(function () {
+    'use strict';
+    // ─── MJ-55 : Équilibre (Takuzu/Binairo enfant, spec 2026-07-31 §mj-55) ───
+    // Grille de 🦕/🥚. Geste UNIQUE : tap sur case vide → 🦕, re-tap → 🥚,
+    // re-tap → vide (cycle 3 états). Règle 1 (toujours) : jamais 3 symboles
+    // identiques adjacents en ligne/colonne. Règle 2 (niveau 2+) : équilibre
+    // 2/2 par ligne et par colonne. Conflit = les 3 cases du trio surlignées
+        // orange TANT QUE le conflit existe — jamais bloquant. Grille pleine +
+    // contraintes OK = puzzle réussi. UNE PARTIE = 4 puzzles (pips golden).
+    const GAME_ID = 'mj-55';
+    const EMPTY = 0, DINO = 1, EGG = 2;
+    const SYM = { [DINO]: '🦕', [EGG]: '🥚' };
+
+    const shell = MJ.init({
+      id: GAME_ID, emoji: '⚖️', titre: 'Équilibre',
+      golden: true, consigne: true,
+      regle: {
+        picto: '🦕🥚',
+        texte: 'Jamais 3 pareils qui se suivent ! Tapote pour changer.',
+        etapes: [
+          { t: 'Je tapote une case vide 👆',
+            d: 'Elle devient un dino 🦕. Je retapote : un œuf 🥚. Encore : elle se vide.' },
+          { t: 'Jamais 3 pareils à la suite 🚫',
+            d: 'En ligne ou en colonne : pas 3 dinos ni 3 œufs collés. Sinon ça s’allume orange !' },
+          { t: 'Je corrige tranquillement 🧩',
+            d: 'L’orange n’est pas grave : je retapote pour changer et ça repart.' },
+          { t: 'La grille pleine et juste = gagné ✨',
+            d: 'Plus tard, il faudra aussi autant de dinos que d’œufs sur chaque ligne et colonne !' }
+        ]
+      }
+    });
+    const G = shell.G;
+
+    const gridEl = document.getElementById('grid');
+    const statusEl = document.getElementById('status');
+    const rand = MJDice.randInt;
+
+    let qCount = 0, size = 6, rows = 1, cols = 6, grid = [], given = [], solution = [];
+    let attempts = 1, mistakeMade = false, roundLock = false;
+    let testMode = false, forcedLevel = null;
+    function level() { return forcedLevel !== null ? forcedLevel : G.level; }
+
+    // ── Génération d'une solution valide par backtracking ──────────────
+    // balance=true active la règle 2/2 par ligne/colonne (niveau 2+).
+    function genSolution(r, c, balance) {
+      const g = Array.from({ length: r }, () => new Array(c).fill(EMPTY));
+      const half = c; // longueur max d'une ligne pour l'équilibre (c colonnes)
+
+      function okAt(g, i, j, v) {
+        // pas 3 pareils consécutifs horizontalement
+        if (j >= 2 && g[i][j - 1] === v && g[i][j - 2] === v) return false;
+        // pas 3 pareils consécutifs verticalement
+        if (i >= 2 && g[i - 1][j] === v && g[i - 2][j] === v) return false;
+        if (balance) {
+          const rowCount = g[i].slice(0, j).filter(x => x === v).length + 1;
+          if (rowCount > c / 2) return false;
+          let colCount = 1;
+          for (let k = 0; k < i; k++) if (g[k][j] === v) colCount++;
+          if (colCount > r / 2) return false;
+        }
+        return true;
+      }
+
+      function rec(i, j) {
+        if (i === r) return true;
+        const ni = (j === c - 1) ? i + 1 : i;
+        const nj = (j === c - 1) ? 0 : j + 1;
+        const order = MJDice.shuffle([DINO, EGG]);
+        for (const v of order) {
+          if (okAt(g, i, j, v)) {
+            g[i][j] = v;
+            if (rec(ni, nj)) return true;
+            g[i][j] = EMPTY;
+          }
+        }
+        return false;
+      }
+      const ok = rec(0, 0);
+      return ok ? g : null;
+    }
+
+    // ── Masque des cases : garde ~40% en indices (given), le reste vide ──
+    function maskSolution(sol, r, c, keepCount) {
+      const total = r * c;
+      const idx = MJDice.shuffle(Array.from({ length: total }, (_, i) => i)).slice(0, keepCount);
+      const keepSet = new Set(idx);
+      const g = [];
+      for (let i = 0; i < r; i++) {
+        const row = [];
+        for (let j = 0; j < c; j++) row.push(keepSet.has(i * c + j) ? sol[i][j] : EMPTY);
+        g.push(row);
+      }
+      return g;
+    }
+
+    // ── Contrôle des trios en conflit (jamais bloquant, juste visuel) ──
+    function computeConflicts(g, r, c) {
+      const bad = Array.from({ length: r }, () => new Array(c).fill(false));
+      for (let i = 0; i < r; i++) {
+        for (let j = 0; j < c - 2; j++) {
+          const a = g[i][j], b = g[i][j + 1], d = g[i][j + 2];
+          if (a !== EMPTY && a === b && b === d) { bad[i][j] = bad[i][j + 1] = bad[i][j + 2] = true; }
+        }
+      }
+      for (let j = 0; j < c; j++) {
+        for (let i = 0; i < r - 2; i++) {
+          const a = g[i][j], b = g[i + 1][j], d = g[i + 2][j];
+          if (a !== EMPTY && a === b && b === d) { bad[i][j] = bad[i + 1][j] = bad[i + 2][j] = true; }
+        }
+      }
+      return bad;
+    }
+
+    function isFull(g, r, c) {
+      for (let i = 0; i < r; i++) for (let j = 0; j < c; j++) if (g[i][j] === EMPTY) return false;
+      return true;
+    }
+
+    function balanceOk(g, r, c) {
+      for (let i = 0; i < r; i++) {
+        const dinos = g[i].filter(v => v === DINO).length;
+        const eggs = g[i].filter(v => v === EGG).length;
+        if (dinos !== eggs) return false;
+      }
+      for (let j = 0; j < c; j++) {
+        let dinos = 0, eggs = 0;
+        for (let i = 0; i < r; i++) { if (g[i][j] === DINO) dinos++; else if (g[i][j] === EGG) eggs++; }
+        if (dinos !== eggs) return false;
+      }
+      return true;
+    }
+
+    // ── Construction visuelle de la grille ──
+    function buildGrid() {
+      gridEl.innerHTML = '';
+      const cellPx = cols <= 6 && rows === 1 ? 62 : 76;
+      gridEl.style.setProperty('--cell', cellPx + 'px');
+      gridEl.style.gridTemplateColumns = 'repeat(' + cols + ', var(--cell))';
+      gridEl.style.gridTemplateRows = 'repeat(' + rows + ', var(--cell))';
+      for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+          const cell = document.createElement('div');
+          cell.className = 'eq-cell';
+          cell.dataset.r = i; cell.dataset.c = j;
+          if (given[i][j] !== EMPTY) { cell.classList.add('given'); }
+          paintCell(cell, i, j);
+          cell.addEventListener('click', () => tapCell(i, j));
+          gridEl.appendChild(cell);
+        }
+      }
+    }
+
+    function cellEl(i, j) { return gridEl.querySelector('.eq-cell[data-r="' + i + '"][data-c="' + j + '"]'); }
+
+    function paintCell(el, i, j) {
+      const v = grid[i][j];
+      el.classList.toggle('filled', v !== EMPTY);
+      el.textContent = v === EMPTY ? '' : SYM[v];
+    }
+
+    function refreshConflicts() {
+      const bad = computeConflicts(grid, rows, cols);
+      let any = false;
+      for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+          const el = cellEl(i, j);
+          if (!el) continue;
+          if (bad[i][j]) { el.classList.add('conflict'); any = true; }
+          else el.classList.remove('conflict');
+        }
+      }
+      return any;
+    }
+
+    function tapCell(i, j) {
+      if (roundLock || given[i][j] !== EMPTY) return;
+      grid[i][j] = (grid[i][j] + 1) % 3; // vide → dino → œuf → vide
+      const el = cellEl(i, j);
+      paintCell(el, i, j);
+      try { sndCount(); } catch (e) {}
+      const hasConflict = refreshConflicts();
+      if (hasConflict) mistakeMade = true;
+      checkWin(hasConflict);
+    }
+
+    function checkWin(hasConflict) {
+      if (roundLock) return;
+      if (!isFull(grid, rows, cols) || hasConflict) return;
+      if (level() >= 2 && !balanceOk(grid, rows, cols)) return;
+      roundLock = true;
+      const finalAttempts = mistakeMade ? 2 : 1;
+      const anyCell = gridEl.querySelector('.eq-cell.filled');
+      statusEl.textContent = 'Bien joué !';
+      try { sndDing(); } catch (e) {}
+      G.notePip(qCount - 1, finalAttempts, anyCell);
+      setTimeout(nextPuzzle, testMode ? 0 : 1400);
+    }
+
+    // ── Une manche = un puzzle ──
+    function nextPuzzle() {
+      if (qCount >= G.totalQ) return endRound();
+      qCount++;
+      roundLock = false;
+      mistakeMade = false;
+      statusEl.textContent = '';
+
+      const lv = level();
+      if (lv === 0) { rows = 1; cols = 6; }
+      else { rows = 4; cols = 4; }
+      const balance = lv >= 2;
+
+      let sol = null, tries = 0;
+      while (!sol && tries < 40) { sol = genSolution(rows, cols, balance); tries++; }
+      if (!sol) sol = genSolution(rows, cols, false); // filet anti-échec générateur
+      solution = sol;
+      const total = rows * cols;
+      const keep = lv === 0 ? Math.min(3, total) : 6;
+      given = maskSolution(solution, rows, cols, Math.min(keep, total - 1));
+      grid = given.map(row => row.slice());
+
+      shell.setConsigne(lv === 0
+        ? 'Tapote pour compléter : jamais 3 pareils !'
+        : (lv >= 2 ? 'Complète la grille : jamais 3 pareils, autant de dinos que d’œufs !' : 'Complète la grille : jamais 3 pareils !'),
+        qCount === 1 ? undefined : true);
+
+      buildGrid();
+      refreshConflicts();
+    }
+
+    function endRound() { G.showEnd({ replayUrl: 'mj-55.html' }); }
+
+    // ── Paramètres test/screenshot : ?level=N ──
+    const qs = new URLSearchParams(location.search);
+    if (qs.get('level') !== null) forcedLevel = Math.max(0, Math.min(2, parseInt(qs.get('level'), 10) || 0));
+    if (qs.get('mute')) testMode = true;
+
+    // ── Harnais Playwright ──
+    window.__mjTest = {
+      get state() {
+        return {
+          qCount, totalQ: G.totalQ, level: level(), rows, cols,
+          grid: grid.map(r => r.slice()),
+          given: given.map(r => r.slice()),
+          solution: solution.map(r => r.slice()),
+          roundLock, mistakeMade,
+          hasConflict: gridEl.querySelectorAll('.eq-cell.conflict').length > 0,
+          full: isFull(grid, rows, cols),
+        };
+      },
+      setTestMode(on) { testMode = !!on; },
+      setDifficulty(lvl) { forcedLevel = Math.max(0, Math.min(2, lvl)); qCount = 0; nextPuzzle(); },
+      tap(i, j) { tapCell(i, j); },
+      // Résout tout le puzzle courant en tapant chaque case vide jusqu'à obtenir
+      // la valeur de la solution (chemin gagnant scripté, jamais de logique dupliquée).
+      solveCurrent() {
+        for (let i = 0; i < rows; i++) {
+          for (let j = 0; j < cols; j++) {
+            if (given[i][j] !== EMPTY) continue;
+            let guard = 0;
+            while (!roundLock && grid[i][j] !== solution[i][j] && guard < 4) { tapCell(i, j); guard++; }
+            if (roundLock) return;
+          }
+        }
+      },
+      next() { nextPuzzle(); },
+    };
+
+    nextPuzzle();
+  });
+  </script>
+</body>
+</html>

@@ -348,7 +348,8 @@
       fn.classList.add('show');
 
       const reveal = document.getElementById('dinoReveal');
-      document.getElementById('dinoImg').src = 'img/dinos/' + currentDino.png;
+      // paleoart/ : les héros racine img/dinos/*.jpg ont été purgés le 2026-07-17
+      document.getElementById('dinoImg').src = 'img/dinos/paleoart/' + currentDino.png;
       document.getElementById('dinoImg').alt = currentDino.name;
       document.getElementById('dinoSens').textContent = currentDino.sens ? (currentDino.sens.charAt(0).toUpperCase() + currentDino.sens.slice(1)) : '';
       reveal.classList.add('show');

@@ -206,7 +206,8 @@
       wrap.style.setProperty('--mx', '50%');
       wrap.style.setProperty('--my', '50%');
       document.getElementById('digShadow').src = ombrePath(target);
-      document.getElementById('digColor').src = 'img/dinos/' + target.png;
+      // paleoart/ : les héros racine img/dinos/*.jpg ont été purgés le 2026-07-17
+      document.getElementById('digColor').src = 'img/dinos/paleoart/' + target.png;
       document.getElementById('fait').textContent = '';
 
       shell.setConsigne('Quel dino se cache dans le noir ?');

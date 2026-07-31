@@ -72,8 +72,11 @@ export async function run({ page, ok }) {
   await page.waitForTimeout(1200); // laisse resolveMismatch tourner et tout remettre à plat
 
   const log = await page.evaluate(() => window.__audioLog);
-  ok('clic sur une carte joue un MP3 "-nom.mp3" (nom seulement, pas le détail long)',
-     log.some(e => e.action === 'play' && /-nom\.mp3$/.test(e.src)), JSON.stringify(log));
+  // Layout audio depuis la réorg : audio/dinos/<lang>/noms/<dino>.mp3
+  // (ex-<dino>-nom.mp3 à plat). L'intention testée reste : le NOM seul,
+  // jamais le détail long.
+  ok('clic sur une carte joue le MP3 de NOM (noms/<dino>.mp3, pas le détail long)',
+     log.some(e => e.action === 'play' && /noms\/[a-z0-9-]+\.mp3$/.test(e.src)), JSON.stringify(log));
   ok('cliquer une 2e carte STOPPE le son de la 1re avant de jouer le nouveau (pause() appelé)',
      log.some(e => e.action === 'pause'), JSON.stringify(log));
   // L'ordre doit être : play (carte 1), pause (stop carte 1), play (carte 2)

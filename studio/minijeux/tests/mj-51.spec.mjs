@@ -33,14 +33,12 @@ export async function run({ page, ok }) {
   }
   const sFin = await page.evaluate(() => window.__mjTest.state);
   ok('Tout rangé (6/6)', sFin.ranged === 6);
-  await page.waitForSelector('.fin-overlay.show', { timeout: 5000 });
-  ok('Overlay de fin affiché', (await page.locator('.fin-overlay.show').count()) === 1);
-  ok('Familles récapitulées (allographes)', (await page.locator('.fin-row').count()) === 2);
 
-  // ── Continuer → écran de fin STANDARD (gabarit golden, plus d'écran maison) ──
-  await page.click('#finContinueBtn');
+  // ── Fin : converge directement vers l'écran STANDARD (gabarit golden),
+  //     zéro overlay maison résiduel (mutualisation UI, ex .fin-overlay) ──
   await page.waitForSelector('.end-wrap', { timeout: 5000 });
   ok('écran de fin STANDARD (.end-wrap)', (await page.locator('.end-wrap').count()) === 1);
+  ok('plus d’overlay maison (.fin-overlay)', (await page.locator('.fin-overlay').count()) === 0);
 
   // ── Plus de scorebar maison (remplacée par la piste golden) ──
   ok('plus de scorebar maison', (await page.locator('.scorebar').count()) === 0);

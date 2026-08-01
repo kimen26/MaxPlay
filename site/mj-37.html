@@ -96,13 +96,6 @@
     }
     #btn-next:active { transform:translateY(4px); box-shadow:0 2px 0 rgba(0,0,0,0.28); }
     .victory-banner { font-size:1.1rem; font-weight:900; color:var(--ok); text-align:center; padding:6px; }
-
-    /* ── Overlay victoire ── */
-    #victory-overlay {
-      position:fixed; inset:0; background:rgba(0,0,0,0.55); display:none;
-      align-items:center; justify-content:center; z-index:20; flex-direction:column; gap:16px;
-    }
-    #victory-overlay .vtext { font-size:1.6rem; font-weight:900; text-shadow:2px 2px 0 rgba(0,0,0,0.3); }
   </style>
 </head>
 <body data-ambiance="musee">
@@ -139,10 +132,6 @@
       <button id="btn-next">Niveau suivant →</button>
     </div>
 
-  </div>
-
-  <div id="victory-overlay">
-    <div class="vtext">🎉 Bravo ! 🎉</div>
   </div>
 
 </div>
@@ -327,7 +316,6 @@
         won: false,
       };
       Tracker.startSession('mj-37');
-      document.getElementById('victory-overlay').style.display = 'none';
       document.getElementById('btn-next').style.display = 'none';
       document.getElementById('victory-zone').innerHTML = '';
 
@@ -511,8 +499,6 @@
         return;
       }
 
-      const overlay = document.getElementById('victory-overlay');
-      overlay.style.display = 'flex';
       if (window.playEndSound) { try { playEndSound(1, 1); } catch (e) {} }
       else if (window.sndVictory) { try { sndVictory(); } catch (e) {} }
 
@@ -523,10 +509,6 @@
       if (window.MaxFX) {
         MaxFX.finalStar(document.getElementById('app'), { style: 'breathe', label: 'BRAVO !' });
       }
-
-      setTimeout(() => {
-        overlay.style.display = 'none';
-      }, 1200);
     }
 
     document.getElementById('btn-next').addEventListener('click', () => {

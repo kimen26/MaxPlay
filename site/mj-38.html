@@ -121,14 +121,6 @@
     .msg { font-size:0.95rem; color:#ffe066; font-weight:900; }
     .msg.soft { color:#9aa3d9; font-size:0.85rem; }
 
-    .overlay { position:fixed; inset:0; background:rgba(0,0,0,0.88); display:flex; align-items:center; justify-content:center; z-index:100; opacity:0; visibility:hidden; transition:all 0.4s; }
-    .overlay.show { opacity:1; visibility:visible; }
-    .ov-box { background:var(--card); border-radius:24px; border:2px solid var(--line); padding:28px 24px; text-align:center; max-width:320px; width:90%; }
-    .ov-emoji { font-size:3rem; margin-bottom:8px; }
-    .ov-title { font-size:1.4rem; color:#ffe066; font-weight:900; margin-bottom:8px; }
-    .ov-text  { color:#fff; font-size:1rem; margin-bottom:20px; line-height:1.4; }
-    .ov-btn   { background:linear-gradient(135deg,#00c47a,#00a86b); color:#fff; border:none; border-radius:20px; font-family:'Fredoka One',sans-serif; font-weight:900; font-size:1.1rem; padding:12px 28px; cursor:pointer; min-height:48px; }
-    .ov-btn:active { opacity:0.8; }
   </style>
 </head>
 <body data-ambiance="nuit">
@@ -152,15 +144,6 @@
 
   <div class="msg-zone" id="msg-zone"></div>
 
-</div>
-
-<div class="overlay" id="win-overlay">
-  <div class="ov-box">
-    <div class="ov-emoji">🎉</div>
-    <div class="ov-title" id="win-title">Bravo !</div>
-    <div class="ov-text" id="win-text">Tous les moutons dorment bien !</div>
-    <button class="ov-btn" onclick="nextLevel()">&#9654; Continuer</button>
-  </div>
 </div>
 
 <script src="js/dinos-assets.js"></script>
@@ -408,23 +391,22 @@ function showWin() {
     return;
   }
   if (typeof playEndSound === 'function') playEndSound(1, 1);
-  document.getElementById('win-title').textContent = 'Bravo !';
-  document.getElementById('win-text').textContent = 'Tous les moutons dorment bien !';
-  document.getElementById('win-overlay').classList.add('show');
-  if (window.MaxFX) {
-    MaxFX.finalStar(document.getElementById('app'), { style: 'breathe', label: 'BRAVO !' });
-  }
+  animating = true; // bloque le plateau pendant la célébration inter-niveau
+  const celebration = window.MaxFX
+    ? MaxFX.finalStar(document.getElementById('app'), { style: 'breathe', label: 'BRAVO !' })
+    : Promise.resolve();
+  Promise.resolve(celebration).then(() => setTimeout(nextLevel, 400));
 }
 
 function nextLevel() {
-  document.getElementById('win-overlay').classList.remove('show');
   levelIdx++;
+  animating = false;
   if (levelIdx >= LEVELS.length) return;
   loadLevel(levelIdx);
 }
 
 function restartLevel() {
-  document.getElementById('win-overlay').classList.remove('show');
+  animating = false;
   loadLevel(levelIdx);
 }
 

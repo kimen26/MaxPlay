@@ -65,27 +65,6 @@
       60%{transform:translateX(-4px)} 80%{transform:translateX(4px)}
     }
     .tile-lettre.wrong { animation:shake 0.35s ease; }
-
-    /* Fin de partie */
-    .fin-overlay {
-      position:fixed; inset:0; background:rgba(0,0,0,0.92);
-      display:flex; flex-direction:column; align-items:center; justify-content:center;
-      z-index:1000; opacity:0; visibility:hidden; transition:all 0.5s; color:#fff;
-    }
-    .fin-overlay.show { opacity:1; visibility:visible; }
-    .fin-title { font-size:2rem; color:var(--gold); font-weight:900; margin-bottom:8px; text-align:center; font-family:'Fredoka One',sans-serif; }
-    .fin-sub { font-size:1.05rem; opacity:0.85; margin-bottom:18px; text-align:center; }
-    .fin-familles { display:flex; flex-direction:column; gap:8px; margin-bottom:22px; max-width:90vw; }
-    .fin-row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; justify-content:center; }
-    .fin-row .fam { font-family:'Cursif',cursive; font-size:clamp(1.6rem,4.5vmin,2rem); line-height:1.3; color:var(--gold); min-width:44px; text-align:center; }
-    .fin-row .exs { display:flex; gap:8px; flex-wrap:wrap; }
-    .fin-row .exs span { font-size:1.4rem; background:rgba(255,255,255,.1); border-radius:10px; padding:4px 10px; }
-    .fin-row .exs span.cur { font-family:'Cursif',cursive; }
-    .fin-row .exs span.maj { text-transform:uppercase; font-weight:900; }
-    .fin-btns { display:flex; gap:12px; flex-wrap:wrap; justify-content:center; }
-    .fin-btn { padding:13px 26px; border-radius:28px; font-weight:900; font-size:1rem; border:none; cursor:pointer; font-family:'Nunito',sans-serif; text-decoration:none; color:#fff; }
-    .fin-btn.primary { background:linear-gradient(135deg,#00c47a,#00a86b); }
-    .fin-btn.secondary { background:rgba(255,255,255,0.15); }
   </style>
 </head>
 <body data-ambiance="jungle">
@@ -97,15 +76,6 @@
   <div class="game-area">
     <div id="chaosZone"><div class="zone-label">← Glisse chaque lettre dans sa boîte</div></div>
     <div id="boxZone"></div>
-  </div>
-</div>
-
-<div class="fin-overlay" id="finOverlay">
-  <div class="fin-title" id="finTitle">Tout rangé !</div>
-  <div class="fin-sub">Chaque lettre a retrouvé sa famille, sous tous ses costumes !</div>
-  <div class="fin-familles" id="finFamilles"></div>
-  <div class="fin-btns">
-    <button class="fin-btn primary" id="finContinueBtn">Continuer →</button>
   </div>
 </div>
 
@@ -331,28 +301,14 @@
       setTimeout(() => { t.el.style.transition = ''; t.el.classList.remove('wrong'); }, 320);
     }, 40);
   }
-  // ── Fin : familles de lettres regroupées (célébration), puis écran golden ──
+  // ── Fin : écran golden STANDARD directement (mutualisation UI) ──
+  // (ex-overlay maison .fin-overlay/#finOverlay supprimé ; le récap "familles
+  // regroupées" reste visible via les mini-exemplaires empilés dans chaque
+  // boîte pendant la partie, cf. box-parked. La célébration sans-faute/étoile
+  // est déjà portée par G.showEnd en interne — pas de doublon MaxFX ici.)
   function finish() {
-    const cont = document.getElementById('finFamilles');
-    cont.innerHTML = '';
-    CFG.boxes.forEach(lettre => {
-      const row = document.createElement('div');
-      row.className = 'fin-row';
-      const exs = CFG.allures.map(a => `<span class="${a}">${lettre}</span>`).join('');
-      row.innerHTML = `<span class="fam">${lettre}</span><div class="exs">${exs}</div>`;
-      cont.appendChild(row);
-    });
-    document.getElementById('finTitle').textContent = errors === 0 ? 'SANS-FAUTE ! Tout rangé !' : 'Bravo, tout rangé !';
-    setTimeout(() => {
-      const ov = document.getElementById('finOverlay');
-      ov.classList.add('show');
-    }, 500);
+    setTimeout(() => G.showEnd({ replayUrl: 'mj-51.html' }), 500);
   }
-
-  document.getElementById('finContinueBtn').addEventListener('click', () => {
-    document.getElementById('finOverlay').classList.remove('show');
-    G.showEnd({ replayUrl: 'mj-51.html' });
-  });
 
   // ── Harnais Playwright ──
   window.__mjTest = {
@@ -360,7 +316,6 @@
       return {
         level, boxes: CFG.boxes, deckSize: DECK.length, ranged: rangedCount, errors,
         allures: tiles.map(t => t.allure),
-        finShown: document.getElementById('finOverlay').classList.contains('show'),
       };
     },
     // dépose programmatique (contourne le drag) : range la 1ʳᵉ tuile libre, bien ou mal

@@ -81,6 +81,18 @@ const GREEN = '\x1b[32m', RED = '\x1b[31m', YEL = '\x1b[33m', DIM = '\x1b[2m', R
 // Fichiers de démo/référence du package Design System — pas de vrais jeux, exclus de l'audit batterie.
 const NOT_A_GAME = new Set(['mj-gold-a', 'mj-gold-b']);
 
+// LEGACY écran de fin maison (état au tour de conformité 2026-08-01, sonde
+// runtime 56 jeux) : les SEULS jeux encore autorisés en avertissement sur le
+// check « fin via G.showEnd ». Liste NOMINATIVE qui ne peut que RÉTRÉCIR :
+// on en SORT un jeu quand il est migré (il devient alors bloquant à jamais),
+// on n'en AJOUTE JAMAIS (un nouveau jeu naît conforme, directive PY
+// mutualisation gravée en mémoire). 3 cas sandbox/continus (mj-17, mj-32,
+// mj-pose-tiles) : piste sans objet, fin standard à statuer PY.
+const LEGACY_FIN_MAISON = new Set([
+  'mj-05', 'mj-08', 'mj-11', 'mj-12', 'mj-16', 'mj-17', 'mj-23',
+  'mj-32', 'mj-36', 'mj-43', 'mj-44', 'mj-45', 'mj-pose-tiles',
+]);
+
 // Source de vérité du menu : tout id mj-* présent dans js/catalog.js, SAUF
 // retire:true (2026-07-28, C0 tri qualité) — un jeu retiré/fusionné/déplacé
 // vers l'écran parental reste dans le fichier (trace, cf. entête catalog.js)
@@ -280,7 +292,38 @@ function auditOne(file) {
       ? `pas d'appel G.showEnd(...) dans tout le fichier ; marqueur(s) maison : ${homeHits.map(h => h.label).join(' ; ')}` +
         (firstHitLine ? ` (${basename(file)}:${firstHitLine})` : '')
       : '';
-    add(C1, "écran de fin via G.showEnd (pas d'overlay maison)", !isHomeMade, detail);
+    // BASCULE 2026-08-01 (directive PY mutualisation, répétée 5×, gravée
+    // memory feedback_mutualisation_ui_militaire) : ce check est BLOQUANT PAR
+    // DÉFAUT. Le mode 'dette' silencieux a laissé le parc diverger 5 semaines.
+    // Seuls les jeux de la liste LEGACY nominative ci-dessous restent en
+    // avertissement — la liste ne peut que RÉTRÉCIR (un jeu migré en sort et
+    // ne peut plus régresser). En AJOUTER un = violation de la directive PY.
+    const lvl = LEGACY_FIN_MAISON.has(id) ? 'warn' : 'block';
+    add(lvl, "écran de fin via G.showEnd (pas d'overlay maison)" + (lvl === 'warn' ? ' [legacy assumé]' : ''), !isHomeMade, detail);
+
+    // 1bis. BLOQUANT TOUJOURS — DOUBLE écran de fin : le jeu appelle G.showEnd
+    // ET garde un overlay de victoire local par-dessus/avant. C'était le trou
+    // du check 1 (callsShowEnd=true → conforme), à l'origine des retours PY
+    // 2026-07-27 sur mj-18/37/38/51 (« écran de victoire pas le bon »).
+    // Marqueurs = overlays SÛRS uniquement (pas .end-wrap ni function showEnd,
+    // légitimes en présence de G.showEnd).
+    {
+      const overlayOnly = [
+        { re: /class\s*=\s*["'][^"']*\bvictory-overlay\b/, label: '.victory-overlay' },
+        { re: /id\s*=\s*["']victoryOverlay["']/, label: '#victoryOverlay' },
+        { re: /id\s*=\s*["']victory-overlay["']/, label: '#victory-overlay' },
+        // #victory-zone (mj-37) EXCLU : bannière INTERMÉDIAIRE de fin de
+        // niveau, protégée par figée mj-37.md 🔒 (≠ écran de fin de partie).
+        { re: /class\s*=\s*["'][^"']*\bfin-overlay\b/, label: '.fin-overlay' },
+        { re: /id\s*=\s*["']finOverlay["']/, label: '#finOverlay' },
+        { re: /id\s*=\s*["']win-overlay["']/, label: '#win-overlay' },
+        { re: /id\s*=\s*["']victoryScreen["']/, label: '#victoryScreen' },
+        { re: /class\s*=\s*["'][^"']*\bvictoire-overlay\b/, label: '.victoire-overlay' },
+      ];
+      const dbl = callsShowEnd ? overlayOnly.filter(m => m.re.test(html)) : [];
+      add('block', 'pas de DOUBLE écran de fin (overlay local en plus de G.showEnd)', dbl.length === 0,
+        dbl.length ? `G.showEnd appelé MAIS overlay local présent : ${dbl.map(h => h.label).join(' ; ')}` : '');
+    }
   }
 
   // 2. BLOQUANT (potentiel) — golden manquant alors que le catalogue promet des étoiles

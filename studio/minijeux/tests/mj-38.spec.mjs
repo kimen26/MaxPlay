@@ -55,16 +55,16 @@ export async function run({ page, ok }) {
   await page.click('#cell-1-3');
   await page.waitForTimeout(550);
 
-  // Victoire niveau 1 : overlay #win-overlay visible
-  const winVisible = await page.waitForFunction(
-    () => document.getElementById('win-overlay')?.classList.contains('show'),
+  // Victoire niveau 1 : plus d'overlay maison — écran de fin mutualisé
+  // (MaxFX.finalStar) puis enchaînement AUTO vers le niveau 2, aucun bouton
+  // "Continuer" local (directive Papa Yann mutualisation UI, 2026-08-01).
+  ok('#win-overlay supprimé du DOM (mutualisation UI)', (await page.locator('#win-overlay').count()) === 0);
+
+  const lvl2Loaded = await page.waitForFunction(
+    () => (document.getElementById('lvl-label')?.textContent || '').includes('2'),
     null, { timeout: 5000 }
   ).then(() => true).catch(() => false);
-  ok('Victoire niveau 1 détectée (overlay affiché)', winVisible);
-
-  // Message positif, pas de mot négatif dans le titre/texte de victoire
-  const winTitle = (await page.locator('#win-title').textContent() || '').toLowerCase();
-  ok('Titre de victoire positif ("Bravo")', winTitle.includes('bravo'), winTitle);
+  ok('Niveau 2 chargé automatiquement après victoire niveau 1 (sans bouton local)', lvl2Loaded);
 
   // Bouton Recommencer toujours visible pendant/après la partie
   const restartVisibleAfter = await page.locator('#btn-restart').isVisible();

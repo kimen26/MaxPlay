@@ -21,15 +21,15 @@ export async function run({ page, ok }) {
   const cnt = ((await page.locator('#tubeCountVal').textContent()) || '').trim();
   ok('compteur couleurs = 2', cnt === '2', `cnt=${cnt}`);
 
-  // Migration gabarit (fin de partie STANDARD) : la victoire réelle n'est
-  // qu'une célébration INTERMÉDIAIRE (parade bus/dino) — la fin de partie doit
-  // passer par G.showEnd (.end-wrap), jamais par un overlay maison figé.
+  // Mutualisation UI (2026-08-01) : l'ancien overlay maison #victoryOverlay a
+  // été retiré — la victoire réelle n'est qu'une célébration INTERMÉDIAIRE
+  // (parade bus/dino) rendue inline dans #stage, qui enchaîne automatiquement
+  // sur l'écran de fin STANDARD G.showEnd (.end-wrap), sans bouton local.
   await page.evaluate(() => window.__mjTest.forceVictory());
-  await page.waitForSelector('#victoryOverlay.show', { timeout: 4000 });
-  ok('célébration intermédiaire (parade) affichée', (await page.locator('#victoryOverlay.show').count()) === 1);
+  await page.waitForSelector('.paint-scene', { timeout: 4000 });
+  ok('célébration intermédiaire (parade) affichée inline', (await page.locator('.paint-scene').count()) === 1);
+  ok('aucun overlay maison résiduel', (await page.locator('#victoryOverlay').count()) === 0);
 
-  await page.click('#paintContinueBtn');
-  await page.waitForSelector('.end-wrap', { timeout: 4000 });
+  await page.waitForSelector('.end-wrap', { timeout: 8000 });
   ok('fin de partie STANDARD (.end-wrap) affichée après la parade', (await page.locator('.end-wrap').count()) === 1);
-  ok('overlay maison refermé (pas de doublon avec .end-wrap)', (await page.locator('#victoryOverlay.show').count()) === 0);
 }

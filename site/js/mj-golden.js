@@ -35,7 +35,8 @@
 //    G.buildPips();                        // construit les billes
 //    G.notePip(index, attempts);           // à CHAQUE question terminée (1..3, 4=révélé)
 //    G.showEnd({ replayUrl:'mj-24.html', celebrate: fn? });  // écran de fin auto
-//  Styles requis : css/style.css (section STANDARD GOLDEN).
+//  Styles requis : css/mp-theme.css (section STANDARD GOLDEN — déplacée de
+//  style.css le 2026-08-01, chargée partout par mj-shell).
 // ─────────────────────────────────────────────────────────────────────────
 (function (global) {
   const QS_PER_LEVEL = [4, 6, 8];

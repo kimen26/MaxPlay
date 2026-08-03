@@ -1,4 +1,4 @@
-# Étymologie complète — 60 dinos (format explicatif validé)
+# Étymologie complète — 77 dinos (format explicatif validé)
 
 > Source : Grokipedia + vérif Wiktionary/etymonline (karcharos, ops, tyrannos). Format : chaque morceau décomposé, bonne langue, sens expliqué, « saurus = on dit aussi saure = lézard », fin « En entier : … ».
 > Aussi parlé dans le bloc audio « nom ». Modifié 2026-06-01.
@@ -66,6 +66,9 @@
 **Plateosaure** (Plateosaurus engelhardti)
 : « Plateosaurus », deux morceaux grecs ! Platéo, ça veut dire large, plat — comme un plateau ! Et saurus (ou saure), le lézard. En entier : le lézard plat !
 
+**Titanosaure** (Patagotitan mayorum)
+: « Patagotitan » mélange un lieu et une légende ! Patago, c'est la Patagonie, une grande région d'Argentine où on a trouvé ses os. Et titan, ça vient des Titans, des géants des vieilles histoires grecques. En entier : le Titan de Patagonie — un des plus grands dinosaures de tous les temps !
+
 
 ## Tout-blindés
 
@@ -80,6 +83,9 @@
 
 **Kéntrosaure** (Kentrosaurus aethiopicus)
 : « Kentrosaurus », deux morceaux grecs ! Kentro, ça veut dire une pointe, un aiguillon qui pique — il en avait partout sur le dos ! Et saurus (ou saure), le lézard. En entier : le lézard à pointes !
+
+**Edmontonia** (Edmontonia rugosidens)
+: « Edmontonia » parle d'un endroit ! Edmonton, c'est le nom de la roche où on a trouvé ses os, en Alberta, au Canada. En entier : celui de la roche d'Edmonton — un dino blindé avec de grandes piques sur les épaules !
 
 
 ## Cornus
@@ -201,6 +207,27 @@
 **Baryonyx** (Baryonyx walkeri)
 : « Baryonyx », deux morceaux grecs ! Bary, ça veut dire lourd, pesant. Et onyx, c'est la griffe. En entier : la griffe lourde — il avait une énorme griffe pour attraper les poissons !
 
+**Hatzegopteryx** (Hatzegopteryx thambema)
+: « Hatzegopteryx » mélange un lieu et du grec ! Hațeg, c'est une région de Roumanie où on a trouvé ses os — au temps des dinos, c'était une île ! Et ptéryx, en grec, c'est l'aile, comme dans Archaeoptéryx. En entier : l'aile de Hațeg !
+
+**Élasmosaure** (Elasmosaurus platyurus)
+: « Elasmosaurus », deux morceaux grecs ! Élasmo, ça veut dire une plaque de métal toute fine — les os de ses épaules et de son bassin étaient plats comme des plaques. Et saurus (ou saure), le lézard. En entier : le lézard aux plaques fines ! (Et attention : ce n'est pas un dinosaure, c'est un plésiosaure, un reptile des mers !)
+
+**Ophthalmosaure** (Ophthalmosaurus icenicus)
+: « Ophthalmosaurus », deux morceaux grecs ! Ophtalmo, ça veut dire l'œil — comme l'ophtalmologue, le docteur des yeux ! Et saurus (ou saure), le lézard. En entier : le lézard aux yeux — il avait des yeux énormes pour voir dans l'eau sombre ! (Ce n'est pas un dinosaure non plus : c'est un ichtyosaure !)
+
+**Liopleurodon** (Liopleurodon ferox)
+: « Liopleurodon », trois morceaux grecs ! Lio, ça veut dire lisse, tout doux. Pleuro, c'est le côté. Et odon, c'est la dent. En entier : les dents aux côtés lisses — ses dents n'avaient pas de petites rayures !
+
+**Archélon** (Archelon ischyros)
+: « Archelon », deux morceaux grecs ! Arch, ça veut dire le chef, le numéro un. Et elon, ça vient de « khelônè », la tortue. En entier : la tortue chef — la plus grande tortue de mer de tous les temps !
+
+**Shonisaure** (Shonisaurus popularis)
+: « Shonisaurus » parle d'un endroit ! Shoni, ça vient des monts Shoshone, des montagnes du Nevada, aux États-Unis, où on a trouvé plein de ses squelettes. Et saurus (ou saure), en grec, le lézard. En entier : le lézard des monts Shoshone !
+
+**Ichtyosaure** (Ichthyosaurus communis)
+: « Ichthyosaurus », deux morceaux grecs ! Ichtyo, ça veut dire le poisson. Et saurus (ou saure), le lézard. En entier : le lézard-poisson — il nageait très vite, comme un dauphin ! (Mais ce n'est ni un poisson ni un dinosaure : c'est un reptile des mers !)
+
 
 ## Bizarres
 
@@ -209,4 +236,31 @@
 
 **Dimétrodon** (Dimetrodon grandis)
 : « Dimetrodon », trois morceaux grecs ! Di, ça veut dire deux. Métro, c'est la mesure, la taille — comme un mètre ! Et odon, c'est la dent — il avait des dents de deux tailles différentes ! En entier : les dents de deux tailles. (Et attention : ce n'est pas un vrai dinosaure, il vivait avant eux !)
+
+
+## Après les dinos : l'âge de glace
+
+**Mammouth** (Mammuthus primigenius)
+: « Mammouth », ce nom ne vient ni du grec ni du latin ! Il vient du russe « mamont », un mot des peuples de Sibérie qui veut dire « corne de la terre » — parce que les gens trouvaient ses grandes défenses plantées dans la terre gelée et croyaient que c'étaient des cornes d'un animal géant ! En entier : la corne de la terre !
+
+**Smilodon** (Smilodon fatalis)
+: « Smilodon », deux morceaux grecs ! Smilo, ça veut dire le couteau, la lame. Et odon, c'est la dent. En entier : la dent couteau — ses deux grandes dents étaient longues et tranchantes comme des sabres !
+
+**Mégathérium** (Megatherium americanum)
+: « Megatherium », deux morceaux grecs ! Méga, ça veut dire grand — comme « méga-géant » ! Et thérium, c'est la bête, l'animal sauvage. En entier : la grande bête — un paresseux géant, gros comme un éléphant !
+
+**Paracérathérium** (Paraceratherium)
+: « Paraceratherium », tout en grec ! Para, ça veut dire à côté de, proche. Céra, c'est la corne, avec un petit « a » devant qui veut dire « sans ». Et thérium, la bête. En entier : proche de la bête sans corne — les savants pensaient qu'il était le cousin d'un autre rhinocéros !
+
+**Glyptodon** (Glyptodon)
+: « Glyptodon », deux morceaux grecs ! Glypto, ça veut dire sculpté, gravé — comme une gravure. Et odon, c'est la dent. En entier : la dent sculptée — ses molaires avaient des sillons, comme gravées !
+
+**Loup terrible** (Aenocyon dirus)
+: « Aenocyon », deux morceaux grecs ! Aeno, ça veut dire terrible, qui fait très peur. Et cyon, c'est le chien. En entier : le chien terrible — et son deuxième nom, « dirus », veut dire « redoutable » en latin !
+
+**Rhino laineux** (Coelodonta antiquitatis)
+: « Coelodonta », deux morceaux grecs ! Coelo, ça veut dire creux — comme dans Coelophysis ! Et odonta, c'est la dent. En entier : la dent creuse — ses molaires avaient de grands creux profonds !
+
+**Titanis** (Titanis walleri)
+: « Titanis » vient d'une légende ! Les Titans, c'étaient des géants des vieilles histoires grecques. On a donné ce nom à un oiseau géant qui ne volait pas et courait très vite. En entier : l'oiseau Titan !
 

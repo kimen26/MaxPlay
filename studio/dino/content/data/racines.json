@@ -3,8 +3,8 @@
     "source": "studio/dino/content/sources/etymo/_ETYMO-RACINES-50.md",
     "genere_par": "scripts/export/_etymo2racines.cjs",
     "note": "STRUCTURE seulement — la source de vérité reste le .md (fact-checké). Curation pédagogique du dico = dino-conseiller.",
-    "nb_racines": 76,
-    "nb_dinos": 57
+    "nb_racines": 100,
+    "nb_dinos": 74
   },
   "racines": [
     {
@@ -13,7 +13,7 @@
       "translitteration": "sauros",
       "sens": "lézard",
       "type": "racine",
-      "n": 33,
+      "n": 37,
       "variantes": [
         "-saura",
         "-saure",
@@ -39,18 +39,22 @@
         "dilophosaurus",
         "edaphosaurus",
         "edmontosaurus",
+        "elasmosaurus",
         "giganotosaurus",
         "gorgosaurus",
+        "ichthyosaurus",
         "kentrosaurus",
         "lystrosaurus",
         "maiasaura",
         "mosasaurus",
+        "ophthalmosaurus",
         "pachycephalosaurus",
         "parasaurolophus",
         "plateosaurus",
         "psittacosaurus",
         "saurolophus",
         "scutellosaurus",
+        "shonisaurus",
         "spinosaurus",
         "stegosaurus",
         "styracosaurus",
@@ -65,7 +69,7 @@
       "translitteration": "odous",
       "sens": "dent",
       "type": "racine",
-      "n": 5,
+      "n": 8,
       "variantes": [
         "-odon",
         "-odonto-",
@@ -74,8 +78,11 @@
       "dinos": [
         "carcharodontosaurus",
         "dimetrodon",
+        "glyptodon",
         "iguanodon",
+        "liopleurodon",
         "pteranodon",
+        "smilodon",
         "troodon"
       ]
     },
@@ -151,6 +158,23 @@
       ]
     },
     {
+      "cle": "para-",
+      "langue": "latin",
+      "translitteration": "para",
+      "sens": "à côté de",
+      "type": "racine",
+      "n": 3,
+      "variantes": [
+        "para",
+        "para-"
+      ],
+      "dinos": [
+        "minmi",
+        "paraceratherium",
+        "parasaurolophus"
+      ]
+    },
+    {
       "cle": "-céphale",
       "langue": "grec",
       "translitteration": "kephale",
@@ -202,6 +226,54 @@
       ]
     },
     {
+      "cle": "-pteryx / pterux",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "aile",
+      "type": "racine",
+      "n": 2,
+      "variantes": [
+        "-pteryx",
+        "pterux"
+      ],
+      "dinos": [
+        "archaeopteryx",
+        "hatzegopteryx"
+      ]
+    },
+    {
+      "cle": "-thérium / thèrion",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "bête, animal sauvage",
+      "type": "racine",
+      "n": 2,
+      "variantes": [
+        "-thérium",
+        "thèrion"
+      ],
+      "dinos": [
+        "megatherium",
+        "paraceratherium"
+      ]
+    },
+    {
+      "cle": "coelo- / koilos",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "creux",
+      "type": "racine",
+      "n": 2,
+      "variantes": [
+        "coelo-",
+        "koilos"
+      ],
+      "dinos": [
+        "coelodonta",
+        "coelophysis"
+      ]
+    },
+    {
       "cle": "di-",
       "langue": "grec",
       "translitteration": null,
@@ -217,19 +289,17 @@
       ]
     },
     {
-      "cle": "para-",
-      "langue": "latin",
-      "translitteration": "para",
-      "sens": "à côté de",
+      "cle": "-a-",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "sans",
       "type": "racine",
-      "n": 2,
+      "n": 1,
       "variantes": [
-        "para",
-        "para-"
+        "-a-"
       ],
       "dinos": [
-        "minmi",
-        "parasaurolophus"
+        "paraceratherium"
       ]
     },
     {
@@ -248,6 +318,36 @@
       ]
     },
     {
+      "cle": "-céras- / keras",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "corne",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "-céras-",
+        "keras"
+      ],
+      "dinos": [
+        "paraceratherium"
+      ]
+    },
+    {
+      "cle": "-cyon / kuôn",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "chien",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "-cyon",
+        "kuôn"
+      ],
+      "dinos": [
+        "aenocyon"
+      ]
+    },
+    {
       "cle": "-docus / dokos",
       "langue": "grec",
       "translitteration": null,
@@ -260,6 +360,21 @@
       ],
       "dinos": [
         "diplodocus"
+      ]
+    },
+    {
+      "cle": "-elon / khelônè",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "tortue",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "-elon",
+        "khelônè"
+      ],
+      "dinos": [
+        "archelon"
       ]
     },
     {
@@ -278,6 +393,20 @@
       ]
     },
     {
+      "cle": "-ia",
+      "langue": null,
+      "translitteration": null,
+      "sens": "terminaison latine qui dit « celui de »",
+      "type": "nom_propre",
+      "n": 1,
+      "variantes": [
+        "-ia"
+      ],
+      "dinos": [
+        "edmontonia"
+      ]
+    },
+    {
       "cle": "-metro- / metron",
       "langue": "grec",
       "translitteration": null,
@@ -290,6 +419,21 @@
       ],
       "dinos": [
         "dimetrodon"
+      ]
+    },
+    {
+      "cle": "-odonta / odous",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "dent",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "-odonta",
+        "odous"
+      ],
+      "dinos": [
+        "coelodonta"
       ]
     },
     {
@@ -323,18 +467,18 @@
       ]
     },
     {
-      "cle": "-pteryx / pterux",
+      "cle": "-pleuro- / pleura",
       "langue": "grec",
       "translitteration": null,
-      "sens": "aile, plume",
+      "sens": "côté, flanc",
       "type": "racine",
       "n": 1,
       "variantes": [
-        "-pteryx",
-        "pterux"
+        "-pleuro-",
+        "pleura"
       ],
       "dinos": [
-        "archaeopteryx"
+        "liopleurodon"
       ]
     },
     {
@@ -349,6 +493,21 @@
       ],
       "dinos": [
         "carnotaurus"
+      ]
+    },
+    {
+      "cle": "-titan / Titan",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "les Titans, géants des vieilles histoires grecques",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "-titan",
+        "Titan"
+      ],
+      "dinos": [
+        "patagotitan"
       ]
     },
     {
@@ -392,6 +551,21 @@
       ],
       "dinos": [
         "acrocanthosaurus"
+      ]
+    },
+    {
+      "cle": "aeno- / ainos",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "terrible, redoutable",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "aeno-",
+        "ainos"
+      ],
+      "dinos": [
+        "aenocyon"
       ]
     },
     {
@@ -484,6 +658,21 @@
       ]
     },
     {
+      "cle": "arch- / arkhè",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "chef, premier",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "arch-",
+        "arkhè"
+      ],
+      "dinos": [
+        "archelon"
+      ]
+    },
+    {
       "cle": "archaeo- / arkhaios",
       "langue": "grec",
       "translitteration": null,
@@ -571,21 +760,6 @@
       ],
       "dinos": [
         "carnotaurus"
-      ]
-    },
-    {
-      "cle": "coelo- / koilos",
-      "langue": "grec",
-      "translitteration": null,
-      "sens": "creux",
-      "type": "racine",
-      "n": 1,
-      "variantes": [
-        "coelo-",
-        "koilos"
-      ],
-      "dinos": [
-        "coelophysis"
       ]
     },
     {
@@ -693,6 +867,35 @@
       ]
     },
     {
+      "cle": "Edmonton-",
+      "langue": null,
+      "translitteration": null,
+      "sens": "la formation d'Edmonton (aujourd'hui Horseshoe Canyon), en Alberta, Canada, où ses os ont été trouvés",
+      "type": "nom_propre",
+      "n": 1,
+      "variantes": [
+        "Edmonton-"
+      ],
+      "dinos": [
+        "edmontonia"
+      ]
+    },
+    {
+      "cle": "élasmo- / elasmos",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "plaque de métal fine, tôle",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "elasmos",
+        "élasmo-"
+      ],
+      "dinos": [
+        "elasmosaurus"
+      ]
+    },
+    {
       "cle": "eu-",
       "langue": "grec",
       "translitteration": null,
@@ -737,6 +940,21 @@
       ]
     },
     {
+      "cle": "glypto- / glyptos",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "sculpté, gravé",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "glypto-",
+        "glyptos"
+      ],
+      "dinos": [
+        "glyptodon"
+      ]
+    },
+    {
       "cle": "gorgo-",
       "langue": "grec",
       "translitteration": "gorgos",
@@ -764,6 +982,35 @@
       ],
       "dinos": [
         "gorgonops"
+      ]
+    },
+    {
+      "cle": "Hatzego-",
+      "langue": null,
+      "translitteration": null,
+      "sens": "Hațeg, région de Roumanie (une île au temps des dinos) où ses os ont été trouvés",
+      "type": "nom_propre",
+      "n": 1,
+      "variantes": [
+        "Hatzego-"
+      ],
+      "dinos": [
+        "hatzegopteryx"
+      ]
+    },
+    {
+      "cle": "ichthyo- / ikhthus",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "poisson",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "ichthyo-",
+        "ikhthus"
+      ],
+      "dinos": [
+        "ichthyosaurus"
       ]
     },
     {
@@ -796,6 +1043,21 @@
       ]
     },
     {
+      "cle": "lio- / leios",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "lisse",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "leios",
+        "lio-"
+      ],
+      "dinos": [
+        "liopleurodon"
+      ]
+    },
+    {
       "cle": "lystro- / lystron",
       "langue": "grec",
       "translitteration": null,
@@ -823,6 +1085,35 @@
       ],
       "dinos": [
         "maiasaura"
+      ]
+    },
+    {
+      "cle": "Mammuth-",
+      "langue": null,
+      "translitteration": null,
+      "sens": "PAS du grec ni du latin : vient du russe *mamont*, lui-même d'une langue de Sibérie (mansi) qui veut dire « corne de la terre » — les défenses trouvées dans la terre gelée étaient prises pour des cornes",
+      "type": "nom_propre",
+      "n": 1,
+      "variantes": [
+        "Mammuth-"
+      ],
+      "dinos": [
+        "mammuthus"
+      ]
+    },
+    {
+      "cle": "méga- / megas",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "grand",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "megas",
+        "méga-"
+      ],
+      "dinos": [
+        "megatherium"
       ]
     },
     {
@@ -900,6 +1191,21 @@
       ]
     },
     {
+      "cle": "ophthalmo- / ophthalmos",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "œil",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "ophthalmo-",
+        "ophthalmos"
+      ],
+      "dinos": [
+        "ophthalmosaurus"
+      ]
+    },
+    {
       "cle": "ovi-",
       "langue": "latin",
       "translitteration": "ovum",
@@ -927,6 +1233,20 @@
       ],
       "dinos": [
         "pachycephalosaurus"
+      ]
+    },
+    {
+      "cle": "Patago-",
+      "langue": null,
+      "translitteration": null,
+      "sens": "la Patagonie, région d'Argentine où ses os ont été trouvés",
+      "type": "nom_propre",
+      "n": 1,
+      "variantes": [
+        "Patago-"
+      ],
+      "dinos": [
+        "patagotitan"
       ]
     },
     {
@@ -1033,6 +1353,35 @@
       ]
     },
     {
+      "cle": "Shoni-",
+      "langue": null,
+      "translitteration": null,
+      "sens": "les monts Shoshone (Nevada, États-Unis), où ses os ont été trouvés",
+      "type": "nom_propre",
+      "n": 1,
+      "variantes": [
+        "Shoni-"
+      ],
+      "dinos": [
+        "shonisaurus"
+      ]
+    },
+    {
+      "cle": "smilo- / smilè",
+      "langue": "grec",
+      "translitteration": null,
+      "sens": "couteau, lame",
+      "type": "racine",
+      "n": 1,
+      "variantes": [
+        "smilo-",
+        "smilè"
+      ],
+      "dinos": [
+        "smilodon"
+      ]
+    },
+    {
       "cle": "spino-",
       "langue": "latin",
       "translitteration": "spina",
@@ -1120,6 +1469,20 @@
       ],
       "dinos": [
         "therizinosaurus"
+      ]
+    },
+    {
+      "cle": "Titanis",
+      "langue": null,
+      "translitteration": null,
+      "sens": "les Titans, géants des vieilles histoires grecques",
+      "type": "nom_propre",
+      "n": 1,
+      "variantes": [
+        "Titanis"
+      ],
+      "dinos": [
+        "titanis"
       ]
     },
     {
@@ -1657,6 +2020,26 @@
           "cle": "-céphale",
           "langue": "grec",
           "sens": "tête"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "edmontonia": {
+      "nom": "Edmontonia",
+      "full": "Edmontonia rugosidens",
+      "sens": "celui de la formation d'Edmonton",
+      "racines": [
+        {
+          "racine": "Edmonton-",
+          "cle": "Edmonton-",
+          "langue": null,
+          "sens": "la formation d'Edmonton (aujourd'hui Horseshoe Canyon), en Alberta, Canada, où ses os ont été trouvés"
+        },
+        {
+          "racine": "-ia",
+          "cle": "-ia",
+          "langue": null,
+          "sens": "terminaison latine qui dit « celui de »"
         }
       ],
       "nom_etym": "ok"
@@ -2220,6 +2603,26 @@
       ],
       "nom_etym": "ok"
     },
+    "hatzegopteryx": {
+      "nom": "Hatzegopteryx",
+      "full": "Hatzegopteryx thambema",
+      "sens": "l'aile de Hațeg",
+      "racines": [
+        {
+          "racine": "Hatzego-",
+          "cle": "Hatzego-",
+          "langue": null,
+          "sens": "Hațeg, région de Roumanie (une île au temps des dinos) où ses os ont été trouvés"
+        },
+        {
+          "racine": "-pteryx / pterux",
+          "cle": "-pteryx / pterux",
+          "langue": "grec",
+          "sens": "aile"
+        }
+      ],
+      "nom_etym": "ok"
+    },
     "archaeopteryx": {
       "nom": "Archaeoptéryx",
       "full": "Archaeopteryx lithographica",
@@ -2422,6 +2825,312 @@
           "cle": "-ops",
           "langue": "grec",
           "sens": "visage, œil"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "elasmosaurus": {
+      "nom": "Élasmosaure",
+      "full": "Elasmosaurus platyurus",
+      "sens": "lézard aux plaques fines",
+      "racines": [
+        {
+          "racine": "élasmo- / elasmos",
+          "cle": "élasmo- / elasmos",
+          "langue": "grec",
+          "sens": "plaque de métal fine, tôle"
+        },
+        {
+          "racine": "-saurus / -saure",
+          "cle": "-saure",
+          "langue": "grec",
+          "sens": "lézard"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "ophthalmosaurus": {
+      "nom": "Ophthalmosaure",
+      "full": "Ophthalmosaurus icenicus",
+      "sens": "lézard aux yeux",
+      "racines": [
+        {
+          "racine": "ophthalmo- / ophthalmos",
+          "cle": "ophthalmo- / ophthalmos",
+          "langue": "grec",
+          "sens": "œil"
+        },
+        {
+          "racine": "-saurus / -saure",
+          "cle": "-saure",
+          "langue": "grec",
+          "sens": "lézard"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "liopleurodon": {
+      "nom": "Liopleurodon",
+      "full": "Liopleurodon ferox",
+      "sens": "dents aux côtés lisses",
+      "racines": [
+        {
+          "racine": "lio- / leios",
+          "cle": "lio- / leios",
+          "langue": "grec",
+          "sens": "lisse"
+        },
+        {
+          "racine": "-pleuro- / pleura",
+          "cle": "-pleuro- / pleura",
+          "langue": "grec",
+          "sens": "côté, flanc"
+        },
+        {
+          "racine": "-odon",
+          "cle": "-odon",
+          "langue": "grec",
+          "sens": "dent"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "archelon": {
+      "nom": "Archélon",
+      "full": "Archelon ischyros",
+      "sens": "tortue chef",
+      "racines": [
+        {
+          "racine": "arch- / arkhè",
+          "cle": "arch- / arkhè",
+          "langue": "grec",
+          "sens": "chef, premier"
+        },
+        {
+          "racine": "-elon / khelônè",
+          "cle": "-elon / khelônè",
+          "langue": "grec",
+          "sens": "tortue"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "shonisaurus": {
+      "nom": "Shonisaure",
+      "full": "Shonisaurus popularis",
+      "sens": "lézard des monts Shoshone",
+      "racines": [
+        {
+          "racine": "Shoni-",
+          "cle": "Shoni-",
+          "langue": null,
+          "sens": "les monts Shoshone (Nevada, États-Unis), où ses os ont été trouvés"
+        },
+        {
+          "racine": "-saurus / -saure",
+          "cle": "-saure",
+          "langue": "grec",
+          "sens": "lézard"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "patagotitan": {
+      "nom": "Titanosaure",
+      "full": "Patagotitan mayorum",
+      "sens": "le Titan de Patagonie",
+      "racines": [
+        {
+          "racine": "Patago-",
+          "cle": "Patago-",
+          "langue": null,
+          "sens": "la Patagonie, région d'Argentine où ses os ont été trouvés"
+        },
+        {
+          "racine": "-titan / Titan",
+          "cle": "-titan / Titan",
+          "langue": "grec",
+          "sens": "les Titans, géants des vieilles histoires grecques"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "ichthyosaurus": {
+      "nom": "Ichtyosaure",
+      "full": "Ichthyosaurus communis",
+      "sens": "lézard-poisson",
+      "racines": [
+        {
+          "racine": "ichthyo- / ikhthus",
+          "cle": "ichthyo- / ikhthus",
+          "langue": "grec",
+          "sens": "poisson"
+        },
+        {
+          "racine": "-saurus / -saure",
+          "cle": "-saure",
+          "langue": "grec",
+          "sens": "lézard"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "mammuthus": {
+      "nom": "Mammouth",
+      "full": "Mammuthus primigenius",
+      "sens": "la corne de la terre",
+      "racines": [
+        {
+          "racine": "Mammuth-",
+          "cle": "Mammuth-",
+          "langue": null,
+          "sens": "PAS du grec ni du latin : vient du russe *mamont*, lui-même d'une langue de Sibérie (mansi) qui veut dire « corne de la terre » — les défenses trouvées dans la terre gelée étaient prises pour des cornes"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "smilodon": {
+      "nom": "Smilodon",
+      "full": "Smilodon fatalis",
+      "sens": "dent couteau",
+      "racines": [
+        {
+          "racine": "smilo- / smilè",
+          "cle": "smilo- / smilè",
+          "langue": "grec",
+          "sens": "couteau, lame"
+        },
+        {
+          "racine": "-odon",
+          "cle": "-odon",
+          "langue": "grec",
+          "sens": "dent"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "megatherium": {
+      "nom": "Mégathérium",
+      "full": "Megatherium americanum",
+      "sens": "la grande bête",
+      "racines": [
+        {
+          "racine": "méga- / megas",
+          "cle": "méga- / megas",
+          "langue": "grec",
+          "sens": "grand"
+        },
+        {
+          "racine": "-thérium / thèrion",
+          "cle": "-thérium / thèrion",
+          "langue": "grec",
+          "sens": "bête, animal sauvage"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "paraceratherium": {
+      "nom": "Paracérathérium",
+      "full": "Paraceratherium",
+      "sens": "proche de la bête sans corne",
+      "racines": [
+        {
+          "racine": "para-",
+          "cle": "para-",
+          "langue": "grec",
+          "sens": "à côté de, proche de"
+        },
+        {
+          "racine": "-a-",
+          "cle": "-a-",
+          "langue": "grec",
+          "sens": "sans"
+        },
+        {
+          "racine": "-céras- / keras",
+          "cle": "-céras- / keras",
+          "langue": "grec",
+          "sens": "corne"
+        },
+        {
+          "racine": "-thérium / thèrion",
+          "cle": "-thérium / thèrion",
+          "langue": "grec",
+          "sens": "bête"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "glyptodon": {
+      "nom": "Glyptodon",
+      "full": "Glyptodon",
+      "sens": "dent sculptée",
+      "racines": [
+        {
+          "racine": "glypto- / glyptos",
+          "cle": "glypto- / glyptos",
+          "langue": "grec",
+          "sens": "sculpté, gravé"
+        },
+        {
+          "racine": "-odon",
+          "cle": "-odon",
+          "langue": "grec",
+          "sens": "dent"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "aenocyon": {
+      "nom": "Loup terrible",
+      "full": "Aenocyon dirus",
+      "sens": "chien terrible",
+      "racines": [
+        {
+          "racine": "aeno- / ainos",
+          "cle": "aeno- / ainos",
+          "langue": "grec",
+          "sens": "terrible, redoutable"
+        },
+        {
+          "racine": "-cyon / kuôn",
+          "cle": "-cyon / kuôn",
+          "langue": "grec",
+          "sens": "chien"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "coelodonta": {
+      "nom": "Rhino laineux",
+      "full": "Coelodonta antiquitatis",
+      "sens": "dent creuse",
+      "racines": [
+        {
+          "racine": "coelo- / koilos",
+          "cle": "coelo- / koilos",
+          "langue": "grec",
+          "sens": "creux"
+        },
+        {
+          "racine": "-odonta / odous",
+          "cle": "-odonta / odous",
+          "langue": "grec",
+          "sens": "dent"
+        }
+      ],
+      "nom_etym": "ok"
+    },
+    "titanis": {
+      "nom": "Titanis",
+      "full": "Titanis walleri",
+      "sens": "l'oiseau Titan",
+      "racines": [
+        {
+          "racine": "Titanis",
+          "cle": "Titanis",
+          "langue": null,
+          "sens": "les Titans, géants des vieilles histoires grecques"
         }
       ],
       "nom_etym": "ok"

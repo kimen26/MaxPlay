@@ -42,7 +42,7 @@
 
 | Fichier | Rôle |
 |---------|------|
-| [`content/data/racines.json`](content/data/racines.json) | Dictionnaire racines grec/latin (69 racines) + décompo par dino. Source de la future page **Dico**, du **Quiz** et des fiches. Régénéré par [`scripts/export/_etymo2racines.cjs`](content/scripts/export/_etymo2racines.cjs). |
+| [`content/data/racines.json`](content/data/racines.json) | Dictionnaire racines grec/latin (100 racines, MAJ 2026-08-03) + décompo par dino. Source de la future page **Dico**, du **Quiz** et des fiches. Régénéré par [`scripts/export/_etymo2racines.cjs`](content/scripts/export/_etymo2racines.cjs). |
 
 ## 🛠️ Scripts (`content/scripts/`)
 

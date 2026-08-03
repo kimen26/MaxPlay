@@ -1,7 +1,7 @@
-// Audit exhaustif assets fiches dino — 2026-08-02 — usage: node studio/dino/temp/audit-fiches.cjs
+// Audit exhaustif assets fiches dino — 2026-08-02 — usage: node studio/dino/content/scripts/export/_audit-fiches-complet.cjs (depuis la racine du repo)
 const fs = require('fs'), path = require('path');
-const R = path.resolve(__dirname, '../../..');
-const rd = p => fs.readdirSync(path.join(R, p));
+const R = path.resolve(__dirname, '../../../../..'); // racine repo (script dans studio/dino/content/scripts/export/)
+const rd = p => { try { return fs.readdirSync(path.join(R, p)); } catch { return []; } }; // tolère les dossiers absents (ex _new-* purgés)
 
 // 1. DINOS + familles
 const src = fs.readFileSync(path.join(R, 'site/js/dinos-data.js'), 'utf8');
@@ -62,7 +62,7 @@ const rows = DINOS.map(d => {
 const ok = b => b ? '✅' : '❌';
 let md = [];
 md.push(`# Audit exhaustif des fiches dino — assets croisés`, ``);
-md.push(`**Date : 2026-08-02** · 70 dinos (DINOS de \`site/js/dinos-data.js\`) · croisement disque \`site/img/dinos/\`, \`site/audio/dinos/fr/\`, sources \`studio/dino/content/sources/\`.`, ``);
+md.push(`**Date : ${new Date().toISOString().slice(0,10)}** · 70 dinos (DINOS de \`site/js/dinos-data.js\`) · croisement disque \`site/img/dinos/\`, \`site/audio/dinos/fr/\`, sources \`studio/dino/content/sources/\`.`, ``);
 md.push(`> Régénéré par \`node studio/dino/temp/audit-fiches.cjs\`. État PMO de référence : \`_ETAT-DINOS.md\` (régénéré le même jour : **70 dinos · 70 complets · 0 incomplets** sur ses 8 axes).`, ``);
 
 // Synthèse chiffrée
@@ -122,7 +122,7 @@ const orphanCheck = (files, stripRe) => files.filter(f => {
   const base = f.replace(/\.\w+$/, '').replace(stripRe, '');
   return !caps.has(base) && !ids.has(base.toLowerCase());
 });
-const oPaleo = orphanCheck(paleo, /_(headshot|manger|paris|ecosysteme|funfact|coloriage)$/);
+const oPaleo = orphanCheck(paleo, /_(headshot|manger|paris|ecosysteme|funfact|coloriage)$/).filter(f => !f.startsWith('Amargasaurus_hypo-')); // hypo-* = slides fiche référencées dev-dinos.html (carousel hypothèses), pas des orphelins
 const oOmbres = orphanCheck([...ombres], /_ombre$/);
 const oSprites = orphanCheck([...sprites], /_(sprite|tete)$/);
 const oTraces = orphanCheck([...traces], /_trace$/);
@@ -141,7 +141,7 @@ md.push(`- audio fiche (5 blocs) : ${oAudio.length ? oAudio.map(f => '`' + f + '
 md.push(`- audio noms/ : ${oNoms.length ? oNoms.map(f => '`' + f + '`').join(', ') : 'aucun'}`);
 md.push(`- grok/ : ${oGrok.length ? oGrok.map(f => '`' + f + '`').join(', ') : 'aucun (match par préfixe)'}`);
 md.push(``);
-md.push(`> NB grok/ : les 13 « orphelins » correspondent à des dinos du **dico des racines hors DINOS** (compsognathus, gorgosaurus, psittacosaurus, styracosaurus, suchomimus — présents dans \`dinos-racines.js\`) — galerie gelée, pas une erreur. Les 2 \`Amargasaurus_hypo-*\` de paleoart sont des variantes d'hypothèse (épines vs voile), à documenter ou ranger.`);
+md.push(`> NB grok/ : les 13 « orphelins » correspondent à des dinos du **dico des racines hors DINOS** (compsognathus, gorgosaurus, psittacosaurus, styracosaurus, suchomimus — présents dans \`dinos-racines.js\`) — galerie gelée, pas une erreur. Les 2 \`Amargasaurus_hypo-*\` de paleoart sont des slides de fiche RÉFÉRENCÉES (dev-dinos.html, carousel « épines vs voile ») — exclus des orphelins.`);
 md.push(``);
 
 // (d) audio

@@ -1455,3 +1455,601 @@ Théropode herbivore géant du **Crétacé supérieur (~70 Ma)**, **Mongolie** (
 ---
 
 _Batch 6 rédigé par dino-conseiller depuis Grokipédia. Cinq fiches : Ptéranodon · Quetzalcoatlus · Mosasaure · Dimétrodon · Thérizinosaurus._
+
+---
+
+# Fiches batch 2026-08-03 — complétion sources (24 fiches)
+
+> Chiffres repris de `dinos-data.js` qui fait FOI (fact-check antérieur). Rédaction : consensus paléo (Wikipedia et al.) — Grokipedia non interrogée en direct (fetch bloqué 403 sans Playwright). Points non fossilisés marqués `⚠️ probable`. Ordre = tableau DINOS.
+
+---
+
+## 🦕 Edmontonia — *Edmontonia rugosidens* · Thyréophores
+
+### 📋 CONTEXTE
+Ankylosaurien (nodosauridé) herbivore du **Crétacé supérieur (~76–70 Ma)**, Amérique du Nord (Alberta — la formation qui lui a donné son nom), forêts riveraines et plaines côtières.
+- **Taille** : **6,6 m** de long · **~1,5 m** au dos · **~3 tonnes**. *(face à un enfant d'1 m : l'enfant lui arrive sous le ventre.)*
+- **Silhouette** : quadrupède bas et large, tank vivant, queue musclée **SANS massue** (c'est un nodosauridé, pas un ankylosauridé).
+- **Tête** : crâne long et étroit, petites dents, museau en bec.
+- **Armure** : dos couvert de plaques osseuses + **grandes épines pointues sur les épaules** (les plus longues pointent vers l'avant, jusqu'à ~50 cm).
+- **Peau** : cuir épais sous les plaques.
+- **Couleur (hypothèse dessin)** : brun-gris, épines plus claires.
+- **Mange (précis)** : végétation basse — fougères, jeunes pousses, qu'il fauche avec son bec.
+- **Chassé par** : tyrannosaures de son époque ; sa parade = se plaquer au sol + présenter ses épines d'épaule. `⚠️ probable`
+- **Vit avec** : plutôt solitaire. `⚠️ probable`
+- **Bébés/œufs** : `⚠️ probable` (aucun nid connu).
+- ⭐ **Signature** : les **grandes épines sur les épaules** — et **pas de boule au bout de la queue**.
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un Edmontonia quadrupède blindé dans une forêt riveraine du Crétacé, fougères, style BD enfant, anatomie juste. »
+2. **Échelle enfant 1 m** — « …avec un enfant d'1 mètre debout à côté ; l'enfant arrive sous son ventre. »
+3. **En train de manger** — « Un Edmontonia fauchant des fougères basses avec son bec. »
+4. **Défense (sobre, zéro sang)** — « Un Edmontonia plaqué au sol, épines d'épaule dressées vers l'avant, face à un tyrannosaure, sans blessure ni sang. »
+
+> ⚠️ **Data-check vs `dinos-data.js`** : 6,6 m / 1,5 m / 3 t / herbivore ✓. Insister sur l'absence de massue (piège classique de confusion avec l'Ankylosaure).
+
+---
+
+## 🦕 Minmi — *Minmi paravertebra* · Thyréophores
+
+### 📋 CONTEXTE
+Petit ankylosaurien primitif herbivore du **Crétacé inférieur (~119–113 Ma)**, **Australie** (Queensland — découvert près de Minmi Crossing), forêts et plaines du Gondwana.
+- **Taille** : **~3 m** de long · **~0,9 m** au dos · **~300 kg**. *(face à un enfant d'1 m : presque aussi haut que lui — un mini-tank.)*
+- **Silhouette** : quadrupède petit et trapu, pattes plutôt longues pour un ankylosaurien (bon marcheur).
+- **Tête** : ⚠️ **aucun crâne connu** — le crâne autrefois attribué à Minmi appartient en fait à un autre dino (Kunbarrasaurus, séparé en 2015). Dessiner une tête d'ankylosaurien simple, petit bec, sans détail crânien affirmé.
+- **Armure** : petites plaques osseuses sur le dos ET **aussi sous le ventre** — très rare chez les ankylosauriens.
+- **Couleur (hypothèse dessin)** : vert-brun discret.
+- **Mange (précis)** : plantes basses, fougères.
+- **Chassé par** : théropodes australiens de son époque. `⚠️ probable`
+- **Vit avec** : inconnu. `⚠️ probable`
+- **Bébés/œufs** : `⚠️ probable` (aucun nid connu).
+- ⭐ **Signature** : un **petit ankylosaure australien au ventre blindé**.
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un Minmi, petit ankylosaure trapu, dans une forêt d'Australie préhistorique, fougères arborescentes, style BD enfant. »
+2. **Échelle enfant 1 m** — « …avec un enfant d'1 mètre : le Minmi est à peine plus haut que lui. »
+3. **En train de manger** — « Un Minmi mangeant des fougères basses. »
+
+> ⚠️ **Data-check** : 3 m / 0,9 m / 0,3 t / herbivore ✓. **AUCUN détail crânien** (crâne historique = Kunbarrasaurus) — règle gravée L-D-64.
+
+---
+
+## 🦕 Scutellosaure — *Scutellosaurus lawleri* · Thyréophores
+
+### 📋 CONTEXTE
+Thyréophore primitif herbivore du **Jurassique inférieur (~196–183 Ma)**, Amérique du Nord (Arizona, formation Kayenta), plaines semi-arides et rivières.
+- **Taille** : **~1,2 m** de long · **~0,4 m** au dos · **~4 kg**. *(face à un enfant d'1 m : il lui arrive au genou — un dino miniature.)*
+- **Silhouette** : **bipède** léger et svelte (ou en partie quadrupède), longue queue — il ne ressemble pas encore aux tanks que seront ses descendants.
+- **Tête** : petite tête, petit bec, petites dents en feuille.
+- **Armure** : **des centaines de toutes petites plaques osseuses** (ostéodermes) alignées en rangées le long du cou, du dos et de la queue — une armure légère de billes d'os.
+- **Couleur (hypothèse dessin)** : sable-vert, plaques plus sombres.
+- **Mange (précis)** : jeunes pousses et plantes tendres.
+- **Chassé par** : théropodes de son époque (ex. Dilophosaure vivait dans la même région) — sa défense = la course. `⚠️ probable`
+- **Vit avec** : inconnu. `⚠️ probable`
+- **Bébés/œufs** : `⚠️ probable`.
+- ⭐ **Signature** : un **mini-dinosaure bipède couvert de petites billes d'os** — l'arrière-grand-père des ankylosaures et stégosaures.
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un Scutellosaurus, petit dinosaure bipède au dos couvert de petites plaques rondes, dans une plaine avec rivière, style BD enfant. »
+2. **Échelle enfant 1 m** — « …il arrive au genou d'un enfant d'1 mètre. »
+3. **En train de manger** — « Un Scutellosaurus picorant des jeunes pousses. »
+
+> ⚠️ **Data-check** : 1,2 m / 0,4 m / 4 kg / herbivore ✓. Bien le montrer **bipède** (anti-pattern : en faire un mini-ankylosaure quadrupède).
+
+---
+
+## 🦕 Maiasaura — *Maiasaura peeblesorum* · Ornithopodes
+
+### 📋 CONTEXTE
+Hadrosauridé (« bec de canard ») herbivore du **Crétacé supérieur (~77 Ma)**, Amérique du Nord (Montana), plaines et forêts riveraines. Son nom veut dire **« bonne maman lézard »**.
+- **Taille** : **9 m** de long · **~2,5 m** au dos · **~2,5 tonnes**. *(face à un enfant d'1 m : l'enfant passe sous son ventre.)*
+- **Silhouette** : grand ornithopode, marche à 2 ou 4 pattes, queue épaisse.
+- **Tête** : **large bec plat de canard**, petite crête pleine entre les yeux (pas de tube !), batteries de centaines de dents pour broyer.
+- **Peau** : écailles (empreintes connues chez les hadrosaures).
+- **Couleur (hypothèse dessin)** : vert olive, ventre clair.
+- **Mange (précis)** : feuillages, aiguilles, fruits — broyés par ses batteries dentaires.
+- **Chassé par** : tyrannosaures et dromæosaures de son époque. `⚠️ probable`
+- **Vit avec** : **d'immenses colonies de nids** — des milliers de nids fossilisés découverts : les mamans gardaient le nid et **apportaient de la nourriture aux bébés** (première preuve de soin parental chez un dinosaure, découverte célèbre de Jack Horner).
+- **Bébés/œufs** : œufs en nids de terre végétale, bébés restant au nid après l'éclosion — **confirmé par les fossiles** (bébés aux dents usées trouvés dans les nids).
+- ⭐ **Signature** : la **maman dinosaure qui nourrit ses petits au nid**, en grandes colonies.
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Une Maiasaura, grand dinosaure à bec de canard, dans une plaine du Crétacé, style BD enfant, anatomie juste. »
+2. **Échelle enfant 1 m** — « …avec un enfant d'1 mètre qui passe sous son ventre. »
+3. **En famille** — « Une maman Maiasaura apportant des feuilles à ses bébés dans un nid de terre, d'autres nids au loin. »
+4. **En train de manger** — « Une Maiasaura broyant un branchage avec son large bec plat. »
+
+> ⚠️ **Data-check** : 9 m / 2,5 m / 2,5 t / herbivore ✓. Les nids et le soin parental sont **confirmés** (pas « probable ») — c'est LE fait marquant de l'espèce.
+
+---
+
+---
+
+## 🦕 Centrosaure — *Centrosaurus apertus* · Cératopsiens
+
+### 📋 CONTEXTE
+Cératopsien herbivore du **Crétacé supérieur (~76 Ma)**, Amérique du Nord (Alberta, parc provincial Dinosaur), plaines inondables côtières.
+- **Taille** : **5,5 m** de long · **~1,8 m** au dos · **~2,5 tonnes**. *(face à un enfant d'1 m : un peu plus haut que lui au garrot.)*
+- **Silhouette** : quadrupède massif, corps de rhinocéros.
+- **Tête** : **UNE grande corne sur le nez** (longue, parfois courbée) + toutes petites cornes au-dessus des yeux — l'inverse du Tricératops ; **collerette courte** ornée de petits crochets osseux recourbés vers l'avant ; bec de perroquet.
+- **Peau** : cuir épais à écailles.
+- **Couleur (hypothèse dessin)** : rouille-brun, collerette bordée plus clair.
+- **Mange (précis)** : végétation basse, plantes coriaces coupées au bec.
+- **Chassé par** : tyrannosaures de son époque (Albertosaure). `⚠️ probable`
+- **Vit avec** : **troupeaux de MILLIERS d'individus** — des « cimetières » de fossiles (bonebeds) montrent des troupeaux entiers pris dans des crues de rivières.
+- **Bébés/œufs** : `⚠️ probable` (pas de nid attribué).
+- ⭐ **Signature** : **une seule grande corne sur le nez** + des troupeaux géants.
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un Centrosaurus, cératopsien à une seule corne nasale, dans une plaine du Crétacé, style BD enfant, anatomie juste. »
+2. **Échelle enfant 1 m** — « …avec un enfant d'1 mètre à côté de sa tête. »
+3. **En troupeau** — « Plusieurs Centrosaurus marchant ensemble, de loin, comme une migration de gnous. »
+4. **En train de manger** — « Un Centrosaurus coupant des plantes basses avec son bec. »
+
+> ⚠️ **Data-check** : 5,5 m / 1,8 m / 2,5 t / herbivore ✓. Bien dessiner UNE corne nasale dominante (anti-pattern : lui mettre 3 cornes façon Tricératops).
+
+---
+
+## 🦕 Titanosaure — *Patagotitan mayorum* · Sauropodes
+
+### 📋 CONTEXTE
+Sauropode titanosaure herbivore du **Crétacé supérieur (~101–95 Ma)**, **Patagonie** (Argentine), plaines boisées. Un des **plus grands animaux terrestres connus** (découvert en 2014 par un fermier, nommé en 2017).
+- **Taille** : **~31 m** de long · **~12 m** tête haute · **~70 tonnes**. *(face à un enfant d'1 m : l'enfant lui arrive à la cheville — sa patte avant est plus haute que Papa.)*
+- **Silhouette** : colosse à 4 pattes-piliers, très long cou, longue queue, dos en pente douce.
+- **Tête** : toute petite tête au bout de l'immense cou, dents en crayons pour arracher.
+- **Os** : un fémur mesure **~2,4 m** — plus grand qu'un enfant ! Vertèbres immenses mais allégées par des cavités.
+- **Peau** : écailles ; des titanosaures avaient de petites plaques osseuses. `⚠️ probable`
+- **Couleur (hypothèse dessin)** : gris-vert éléphant, plus clair dessous.
+- **Mange (précis)** : feuillages d'arbres en quantité gigantesque — conifères, cycadées ; il avale sans mâcher, des cailloux d'estomac (gastrolithes) font le travail. `⚠️ probable`
+- **Chassé par** : presque rien à l'âge adulte — trop grand ; les jeunes pouvaient être menacés par de grands théropodes. `⚠️ probable`
+- **Vit avec** : plusieurs squelettes trouvés au même endroit → peut-être des groupes. `⚠️ probable`
+- **Bébés/œufs** : les titanosaures pondaient des œufs ronds en nids creusés (connu chez le groupe en Argentine). `⚠️ probable`
+- ⭐ **Signature** : **le plus lourd des géants** — un dino gros comme ~10 éléphants.
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un Patagotitan, sauropode colossal, dans une plaine de Patagonie au Crétacé, conifères au loin, style BD enfant, anatomie juste. »
+2. **Échelle enfant 1 m** — « …avec un enfant d'1 mètre tout petit à côté de sa patte avant ; l'enfant arrive à sa cheville. »
+3. **En train de manger** — « Un Patagotitan arrachant les feuilles au sommet d'un arbre géant. »
+
+> ⚠️ **Data-check** : 31 m / 12 m / 70 t / herbivore ✓. Ne jamais écrire « le plus grand » sans « un des » — le titre est débattu avec Argentinosaurus.
+
+---
+
+## 🦕 Hatzegopteryx — *Hatzegopteryx thambema* · Ptérosaures
+
+### 📋 CONTEXTE
+Ptérosaure azhdarchidé du **Crétacé terminal (~66 Ma)**, **Roumanie** — il vivait sur l'**île de Hațeg**, une île où tous les dinosaures étaient des nains. Lui, au contraire, était géant : c'était **le super-prédateur de l'île**.
+- **Taille** : **~10 m d'envergure** · **~3 m debout** · **~220 kg**. *(face à un enfant d'1 m : debout, il fait 3 enfants empilés.)*
+- **Silhouette** : grand échassier volant ; ailes immenses repliées au sol, il marche à 4 pattes.
+- **Tête et cou** : crâne énorme et **très robuste (~2,5–3 m)** avec un grand bec-hachoir ; **cou COURT et ÉPAIS, très musclé** — c'est ce qui le distingue du Quetzalcoatlus au cou fin. Cette construction lui permettait d'emporter de grosses proies.
+- **Corps** : os creux et légers comme tous les ptérosaures, mais renforcés.
+- **Couleur (hypothèse dessin)** : gris-ardoise, crête plus vive.
+- **Mange (précis)** : **chassait AU SOL** les dinosaures nains de son île — il les happait entiers avec son grand bec. Pas un pêcheur : un chasseur terrestre.
+- **Chassé par** : rien — c'était le sommet de la chaîne alimentaire de l'île.
+- **Vit avec** : inconnu. `⚠️ probable`
+- **Bébés/œufs** : les ptérosaures pondaient des œufs à coquille souple (connu chez le groupe). `⚠️ probable`
+- ⭐ **Signature** : le **cou épais et le crâne massif** — la terreur de l'île aux dinosaures nains.
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un Hatzegopteryx, immense ptérosaure au cou épais, debout sur une colline d'une île méditerranéenne préhistorique, style BD enfant, anatomie juste. »
+2. **Échelle enfant 1 m** — « …avec un enfant d'1 mètre ; debout, le Hatzegopteryx fait 3 enfants de haut. »
+3. **En vol** — « Un Hatzegopteryx en vol, ailes de 10 mètres déployées au-dessus de la mer. »
+4. **Chasse (sobre, zéro sang)** — « Un Hatzegopteryx marchant à 4 pattes, grand bec pointé vers le sol, posture de chasse, sans proie blessée ni sang. »
+
+> ⚠️ **Data-check** : 10 m (envergure) / 3 m / 0,22 t / carnivore au sol ✓. **Cou COURT et épais** (signature MORPHO gravée — sans elle, le modèle sort un Quetzalcoatlus).
+
+---
+
+## 🦕 Gorgonops — *Gorgonops torvus* · Avant les dinosaures
+
+### 📋 CONTEXTE
+**PAS un dinosaure** — un thérapside (cousin de la lignée des mammifères) carnivore du **Permien supérieur (~260–254 Ma)**, **avant les dinosaures**, Afrique du Sud (désert du Karoo). Son nom veut dire « face de Gorgone ».
+- **Taille** : **~1,8 m** de long · **~0,8 m** au garrot · **~100 kg**. *(face à un enfant d'1 m : un peu moins haut que lui, comme un très gros chien.)*
+- **Silhouette** : prédateur musclé à 4 pattes, allure de grand fauve, queue longue.
+- **Tête** : **longues dents de sabre** (canines de ~12 cm) qui dépassent de la gueule — 80 millions d'années AVANT les tigres à dents de sabre !
+- **Peau** : pas de plumes ni d'écailles de dino — probablement une peau nue ou à poils très ras. `⚠️ probable`
+- **Couleur (hypothèse dessin)** : brun-sable.
+- **Mange (précis)** : grands herbivores de son époque (pareïasaures, dicynodontes) — un des **super-prédateurs du Permien**.
+- **Chassé par** : rien de plus gros dans son monde.
+- **Vit avec** : inconnu. `⚠️ probable`
+- **Bébés/œufs** : `⚠️ probable` (les thérapsides pondaient probablement des œufs).
+- ⭐ **Signature** : des **dents de sabre avant les dinosaures**.
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un Gorgonops, prédateur à dents de sabre sans écailles, dans un paysage sec du Permien, style BD enfant, anatomie juste. »
+2. **Échelle enfant 1 m** — « …un peu moins haut qu'un enfant d'1 mètre, comme un très gros chien. »
+3. **Gueule** — « Un Gorgonops gueule ouverte montrant ses longues dents de sabre, posture d'intimidation, zéro sang. »
+
+> ⚠️ **Data-check** : 1,8 m / 0,8 m / 0,1 t / carnivore ✓. Bien dire « **avant les dinosaures** » — c'est toute la famille (famille `volant` = « Avant les dinosaures »).
+
+---
+
+## 🦕 Lystrosaure — *Lystrosaurus murrayi* · Avant les dinosaures
+
+### 📋 CONTEXTE
+**PAS un dinosaure** — un dicynodonte (thérapside herbivore) de la **fin du Permien et du début du Trias (~255–250 Ma)**. C'est **LE survivant** : après la plus grande extinction de tous les temps, ses fossiles forment jusqu'à 90 % des vertébrés terrestres de son époque !
+- **Taille** : **~0,7 m** de long · **~0,35 m** au dos · **~17 kg**. *(face à un enfant d'1 m : il lui arrive au genou — comme un gros chat.)*
+- **Silhouette** : petit tonneau à 4 pattes courtes, corps de fouisseur.
+- **Tête** : **bec de tortue + 2 petites défenses** (canines) qui dépassent — ses seules dents. Visage haut, yeux rapprochés.
+- **Peau** : inconnue. `⚠️ probable`
+- **Couleur (hypothèse dessin)** : gris-taupe.
+- **Mange (précis)** : plantes qu'il coupait avec son bec et creusait avec ses pattes — racines et pousses.
+- **Chassé par** : les prédateurs survivants du début du Trias ; il se réfugiait peut-être dans des terriers. `⚠️ probable`
+- **Vit avec** : fossiles trouvés sur TOUS les continents (preuve que les terres étaient réunies en un seul continent, la Pangée).
+- **Bébés/œufs** : `⚠️ probable`.
+- ⭐ **Signature** : le **survivant de la plus grande extinction** — un petit tonneau à bec et défenses.
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un Lystrosaurus, petit herbivore rond à bec de tortue et 2 défenses, dans une plaine du début du Trias, style BD enfant. »
+2. **Échelle enfant 1 m** — « …il arrive au genou d'un enfant d'1 mètre, comme un gros chat. »
+3. **En train de manger** — « Un Lystrosaurus creusant le sol pour manger des racines. »
+
+> ⚠️ **Data-check** : 0,7 m / 0,35 m / 0,017 t / herbivore ✓. Le fait marquant (90 % des vertébrés post-extinction) est confirmé — c'est sa star-info.
+
+---
+
+## 🦕 Moschops — *Moschops capensis* · Avant les dinosaures
+
+### 📋 CONTEXTE
+**PAS un dinosaure** — un thérapside (tapinocéphale) herbivore du **Permien moyen (~265–260 Ma)**, Afrique du Sud. Son nom veut dire « face de veau ».
+- **Taille** : **~2,7 m** de long · **~1,1 m** au dos · **~410 kg**. *(face à un enfant d'1 m : un peu plus haut que lui.)*
+- **Silhouette** : gros tonneau lent à 4 pattes écartées, queue courte.
+- **Tête** : **crâne extra-épais** — l'os du dessus du crâne mesure jusqu'à **15 cm d'épaisseur** ! Les mâles se donnaient probablement des coups de tête, comme les mouflons. `⚠️ probable`
+- **Dents** : petites dents en ciseaux pour couper les plantes.
+- **Couleur (hypothèse dessin)** : gris-brun.
+- **Mange (précis)** : végétation basse de son époque.
+- **Chassé par** : les gorgonopsiens (comme le Gorgonops) de son époque. `⚠️ probable`
+- **Vit avec** : probablement en groupes. `⚠️ probable`
+- **Bébés/œufs** : `⚠️ probable`.
+- ⭐ **Signature** : le **casque d'os** — le champion des coups de tête, avant les dinosaures.
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un Moschops, gros herbivore au crâne très épais, dans une plaine du Permien, style BD enfant, anatomie juste. »
+2. **Échelle enfant 1 m** — « …un peu plus haut qu'un enfant d'1 mètre. »
+3. **Duel (sobre)** — « Deux Moschops tête baissée face à face, comme des mouflons qui se mesurent, sans blessure. »
+
+> ⚠️ **Data-check** : 2,7 m / 1,1 m / 0,41 t / herbivore ✓. Insister sur l'épaisseur du crâne (sa signature visuelle).
+
+---
+
+## 🦕 Élasmosaure — *Elasmosaurus platyurus* · Énaliosaures
+
+### 📋 CONTEXTE
+Plésiosaure (reptile marin, **PAS un dinosaure**) piscivore du **Crétacé supérieur (~80 Ma)**, mer intérieure qui coupait l'Amérique du Nord en deux. Son nom vient des grandes plaques d'os de son bassin.
+- **Taille** : **~13 m** de long (dont **~7 m de cou** !) · **~2,5 tonnes**. *(face à un enfant d'1 m : rien que son cou fait 7 enfants bout à bout.)*
+- **Silhouette** : corps compact de tortue sans carapace, **4 grandes nageoires**, **cou EXTRA-LONG** — la plus grande partie de l'animal.
+- **Tête** : **minuscule** au bout du cou, dents fines et croisées comme un peigne pour attraper les poissons glissants.
+- **Cou** : environ **76 vertèbres** — le record chez les vertébrés.
+- **Couleur (hypothèse dessin)** : bleu-gris, ventre clair (camouflage marin).
+- **Mange (précis)** : poissons et calmars, happés d'un coup de cou ; il avalait aussi des cailloux (gastrolithes) — retrouvés dans son ventre.
+- **Chassé par** : les grands mosasaures de sa mer. `⚠️ probable`
+- **Vit avec** : inconnu. `⚠️ probable`
+- **Bébés/œufs** : les plésiosaures donnaient naissance à des petits vivants dans l'eau (confirmé chez le groupe). `⚠️ probable`
+- ⭐ **Signature** : **le cou le plus long des mers** — 7 mètres de cou et une toute petite tête.
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un Elasmosaurus, reptile marin à très long cou, nageant dans une mer bleue du Crétacé, poissons autour, style BD enfant, anatomie juste. »
+2. **Échelle enfant 1 m** — « …avec un enfant d'1 mètre à côté : l'enfant est plus petit qu'une de ses nageoires. »
+3. **En train de manger** — « Un Elasmosaurus happe un banc de petits poissons d'un coup de cou, sous l'eau. »
+
+> ⚠️ **Data-check** : 13 m / 2,5 t / piscivore ✓. Anti-pattern : tête proportionnée trop grosse — la tête est MINUSCULE.
+
+---
+
+## 🦕 Ophthalmosaure — *Ophthalmosaurus icenicus* · Énaliosaures
+
+### 📋 CONTEXTE
+Ichthyosaure (reptile marin, **PAS un dinosaure**) piscivore du **Jurassique (~165–150 Ma)**, mers d'Europe et d'Amérique. Son nom veut dire « lézard aux yeux ».
+- **Taille** : **~4 m** de long · **~950 kg**. *(face à un enfant d'1 m : gros comme une voiture.)*
+- **Silhouette** : corps de **dauphin** parfaitement hydrodynamique — fuselé, nageoire caudale en croissant de lune, nageoire dorsale, 4 nageoires-palettes.
+- **Tête** : **les YEUX les plus GRANDS du règne animal** rapportés au corps — ~23 cm, gros comme un ballon, entourés d'un anneau d'os. Ils voyaient dans la pénombre des grandes profondeurs.
+- **Dents** : petites dents (les adultes presque pas) dans un long bec fin — pour aspirer calmars et poissons.
+- **Couleur (hypothèse dessin)** : bleu nuit, ventre clair.
+- **Mange (précis)** : calmars et poissons, chassés en plongée profonde (ses os montrent qu'il pouvait descendre très bas).
+- **Chassé par** : les grands pliosaures de sa mer (comme le Liopleurodon). `⚠️ probable`
+- **Vit avec** : peut-être en groupes, comme les dauphins. `⚠️ probable`
+- **Bébés/œufs** : naissait de petits vivants dans l'eau (confirmé chez les ichthyosaures).
+- ⭐ **Signature** : **des yeux gros comme des ballons** — le plongeur des mers profondes.
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un Ophthalmosaurus, reptile marin dauphin aux yeux immenses, dans une mer bleu profond, style BD enfant, anatomie juste. »
+2. **Échelle enfant 1 m** — « …avec un enfant d'1 mètre à côté ; son œil est gros comme un ballon. »
+3. **En train de manger** — « Un Ophthalmosaurus attrapant un calmar dans la pénombre. »
+
+> ⚠️ **Data-check** : 4 m / 0,95 t / piscivore ✓. Les YEUX sont la signature — sans eux, c'est un dauphin générique.
+
+---
+
+## 🦕 Liopleurodon — *Liopleurodon ferox* · Énaliosaures
+
+### 📋 CONTEXTE
+Pliosaure (reptile marin, **PAS un dinosaure**) super-prédateur du **Jurassique moyen (~166–155 Ma)**, mers d'Europe. Le « crocodile géant » des mers jurassiques.
+- **Taille** : **~7 m** de long · **~5 tonnes**. ⚠️ **débat scientifique** : d'anciennes estimations télévisées le gonflaient à 25 m — les fossiles disent plutôt 6–8 m (question Q-DINO-11 du pôle, on reste conservateur). *(face à un enfant d'1 m : gros comme un bus RATP vu de côté… en un peu plus court.)*
+- **Silhouette** : corps massif de crocodile marin, **4 grandes nageoires** qui « volent » sous l'eau, cou court, grosse tête.
+- **Tête** : crâne énorme (~1,5 m), dents croisées en ciseaux jusqu'à ~20 cm — une mâchoire-piège.
+- **Sens** : il **reniflait sous l'eau** — des canaux dans son museau détectaient les proies à distance, comme les requins.
+- **Couleur (hypothèse dessin)** : gris-bleu sombre, ventre clair.
+- **Mange (précis)** : poissons, calmars géants, autres reptiles marins — le sommet de la chaîne alimentaire de sa mer.
+- **Chassé par** : rien — c'était lui le patron.
+- **Vit avec** : plutôt solitaire. `⚠️ probable`
+- **Bébés/œufs** : petits vivants nés dans l'eau. `⚠️ probable`
+- ⭐ **Signature** : le **grand crocodile des mers** — 4 nageoires, mâchoire-piège, et il renifle sous l'eau.
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un Liopleurodon, pliosaure massif à 4 nageoires, dans une mer verte du Jurassique, style BD enfant, anatomie juste. »
+2. **Échelle enfant 1 m** — « …avec un enfant d'1 mètre tout petit à côté de sa tête. »
+3. **Chasse (sobre, zéro sang)** — « Un Liopleurodon fondant sur un banc de poissons, gueule entrouverte, sans proie blessée ni sang. »
+
+> ⚠️ **Data-check** : 7 m / 5 t / carnivore ✓ (conservateur, débat Q-DINO-11 noté). Ne JAMAIS écrire 25 m (mythe TV).
+
+---
+
+## 🦕 Archélon — *Archelon ischyros* · Énaliosaures
+
+### 📋 CONTEXTE
+**La plus grande tortue de tous les temps** (reptile marin, **PAS un dinosaure**), du **Crétacé supérieur (~75–66 Ma)**, mer intérieure d'Amérique du Nord. Son nom veut dire « tortue chef ».
+- **Taille** : **~4,6 m** de long (nageoires comprises) · **~2,2 tonnes**. *(face à un enfant d'1 m : l'enfant tiendrait assis sur sa carapace.)*
+- **Silhouette** : tortue marine géante aux **immenses nageoires avant** (comme la tortue luth d'aujourd'hui, en plus grand).
+- **Carapace** : ⚠️ ce n'était **pas une carapace dure complète** — une armature d'os recouverte de **cuir épais**, plus légère (comme la tortue luth).
+- **Tête** : grosse tête au **bec crochu puissant** — il ne rentrait pas dans sa carapace.
+- **Couleur (hypothèse dessin)** : brun-olive tacheté.
+- **Mange (précis)** : méduses, calmars, poissons, crustacés — croqués au bec.
+- **Chassé par** : les mosasaures et grands requins de sa mer. `⚠️ probable`
+- **Vit avec** : comme les tortues marines, il venait peut-être pondre sur les plages. `⚠️ probable`
+- **Bébés/œufs** : œufs enterrés dans le sable. `⚠️ probable` (logique tortue marine, pas fossilisé chez Archelon).
+- ⭐ **Signature** : **la tortue géante à carapace de cuir**, grande comme une voiture.
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un Archelon, tortue marine géante à carapace de cuir, nageant dans une mer du Crétacé, méduses autour, style BD enfant, anatomie juste. »
+2. **Échelle enfant 1 m** — « …avec un enfant d'1 mètre assis à côté de sa carapace. »
+3. **En train de manger** — « Un Archelon attrapant une méduse avec son bec crochu. »
+
+> ⚠️ **Data-check** : 4,6 m / 2,2 t / carnivore ✓. Carapace DE CUIR (pas dure) — piège classique du « gros Galápagos ».
+
+---
+
+## 🦕 Shonisaure — *Shonisaurus popularis* · Énaliosaures
+
+### 📋 CONTEXTE
+Ichthyosaure géant (reptile marin, **PAS un dinosaure**) du **Trias supérieur (~237–227 Ma)**, Nevada (USA — les montagnes Shoshone qui lui ont donné son nom). Gros **comme une baleine** — le plus grand reptile marin du Trias.
+- **Taille** : **~14 m** de long · **~25 tonnes**. *(face à un enfant d'1 m : long comme un bus accordéon !)*
+- **Silhouette** : corps énorme de baleine-dauphin, ventre profond, 4 nageoires, queue en croissant.
+- **Tête** : **très long museau fin** ; les adultes n'avaient des dents qu'au bout du museau (voire plus du tout) — il aspirait ses proies comme un goulot.
+- **Couleur (hypothèse dessin)** : gris-bleu, ventre clair.
+- **Mange (précis)** : poissons et surtout **calmars et mollusques** aspirés.
+- **Chassé par** : rien de sa taille dans sa mer.
+- **Vit avec** : des dizaines de squelettes trouvés ensemble au Nevada → il vivait peut-être en groupes. `⚠️ probable`
+- **Bébés/œufs** : petits vivants nés dans l'eau (logique ichthyosaure). `⚠️ probable`
+- ⭐ **Signature** : **la baleine du Trias** — un ichthyosaure géant au museau-aspirateur.
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un Shonisaurus, ichthyosaure géant comme une baleine au long museau fin, dans une mer du Trias, style BD enfant, anatomie juste. »
+2. **Échelle enfant 1 m** — « …avec un enfant d'1 mètre à côté : l'animal est long comme un bus accordéon. »
+3. **En train de manger** — « Un Shonisaurus aspirant un groupe de calmars avec son long museau. »
+
+> ⚠️ **Data-check** : 14 m / 25 t / piscivore ✓. Museau long et FIN, quasi édenté à l'âge adulte — ne pas lui faire une gueule de crocodile.
+
+---
+
+## 🦕 Ichtyosaure — *Ichthyosaurus communis* · Énaliosaures
+
+### 📋 CONTEXTE
+Ichthyosaure (reptile marin, **PAS un dinosaure**) piscivore du **Jurassique inférieur (~199–189 Ma)**, mers d'Angleterre. C'est **LE reptile marin de Mary Anning**, la petite fille devenue la plus célèbre chasseuse de fossiles — elle a trouvé le premier squelette complet à Lyme Regis.
+- **Taille** : **~2 m** de long · **~150 kg**. *(face à un enfant d'1 m : long comme Papa allongé.)*
+- **Silhouette** : **copie conforme d'un dauphin** — corps fuselé, nageoire dorsale, queue en croissant, 4 palettes. Le modèle original du « poisson-lézard ».
+- **Tête** : long bec fin rempli de petites dents pointues, **grands yeux**.
+- **Couleur (hypothèse dessin)** : gris-bleu, ventre clair.
+- **Mange (précis)** : poissons et calmars (confirmé par les restes fossilisés dans son estomac).
+- **Chassé par** : les grands prédateurs marins de son époque. `⚠️ probable`
+- **Vit avec** : des fossiles montrent des bébés nés **queue la première** dans l'eau — les mamans donnaient naissance à des petits vivants, comme les dauphins (confirmé).
+- **Bébés/œufs** : vivipare — **pas d'œufs**, bébés nés directement dans la mer (fossiles de mamans avec bébés !).
+- ⭐ **Signature** : le **dauphin des mers jurassiques**, découvert par Mary Anning.
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un Ichthyosaurus, reptile marin dauphin, nageant dans une mer bleue du Jurassique, style BD enfant, anatomie juste. »
+2. **Échelle enfant 1 m** — « …avec un enfant d'1 mètre à côté : il est long comme Papa allongé. »
+3. **En train de manger** — « Un Ichthyosaurus attrapant un petit poisson argenté. »
+
+> ⚠️ **Data-check** : 2 m / 0,15 t / piscivore ✓. Viviparité = fait confirmé (fossiles), pas « probable ».
+
+---
+
+# Fiches Cénozoïque — l'âge de glace (8 bêtes, batch 2026-08-03)
+
+> Même format. Rappel pôle : ce ne sont PAS des dinosaures — ils vivaient **après** eux, en même temps que les premiers hommes pour certains.
+
+---
+
+## 🦕 Mammouth — *Mammuthus primigenius* · Mammifères
+
+### 📋 CONTEXTE
+Éléphant laineux (mammifère) herbivore du **Cénozoïque — l'âge de glace (~700 000 à 4 000 ans avant aujourd'hui)**, plaines froides de l'hémisphère nord (Sibérie, Alaska, Europe). Les hommes préhistoriques l'ont **croisé et dessiné** sur les murs des grottes !
+- **Taille** : **~5,5 m** de long · **~3,3 m** au garrot · **~5 tonnes**. *(face à un enfant d'1 m : l'enfant passe sous son ventre ; il faut 3 enfants empilés pour arriver à son dos.)*
+- **Silhouette** : éléphant massif au dos en pente, **bosse de graisse** sur les épaules (son garde-manger pour l'hiver).
+- **Fourrure** : **double manteau de laine** — poils longs par-dessus un duvet chaud — + oreilles et queue **petites** (pour ne pas perdre de chaleur).
+- **Défenses** : **immenses défenses recourbées en spirale** (jusqu'à 4 m+) — pour balayer la neige et trouver l'herbe.
+- **Trompe** : longue trompe avec 2 petits « doigts » au bout.
+- **Couleur (hypothèse dessin)** : brun-roux laineux.
+- **Mange (précis)** : herbes et petites plantes de la steppe gelée — des kilos et des kilos chaque jour.
+- **Chassé par** : les hommes préhistoriques le chassaient (avec des pièges et des lances) ; les loups terribles et smilodons s'attaquaient aux petits. `⚠️ probable`
+- **Vit avec** : **troupeaux conduits par une grand-mère** (matriarche), comme les éléphants d'aujourd'hui — il est d'ailleurs le cousin de l'éléphant d'Asie.
+- **Bébés** : bébés laineux suivant le troupeau ; des bébés mammouths ont été retrouvés **congelés entiers** dans la glace de Sibérie !
+- ⭐ **Signature** : **défenses en spirale + manteau de laine** — l'éléphant de l'âge de glace.
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un mammouth laineux aux grandes défenses courbées, dans une steppe enneigée, style BD enfant, anatomie juste. »
+2. **Échelle enfant 1 m** — « …avec un enfant d'1 mètre qui passe sous son ventre. »
+3. **En troupeau** — « Un troupeau de mammouths marchant dans la neige, conduit par une vieille grand-mère mammouth, un bébé au milieu. »
+4. **En train de manger** — « Un mammouth balayant la neige avec ses défenses pour trouver l'herbe. »
+
+> ⚠️ **Data-check** : 5,5 m / 3,3 m / 5 t / herbivore ✓. Oreilles PETITES (anti-pattern : oreilles d'éléphant d'Afrique).
+
+---
+
+## 🦕 Smilodon — *Smilodon fatalis* · Mammifères
+
+### 📋 CONTEXTE
+Félin à dents de sabre (mammifère) carnivore du **Cénozoïque (~2,5 millions à 10 000 ans avant aujourd'hui)**, Amériques. Des MILLIERS de ses os ont été trouvés dans les **asphaltes de La Brea** (Los Angeles) — des pièges de goudron naturel.
+- **Taille** : **~1,75 m** de long · **~1 m** au garrot · **~250 kg**. *(face à un enfant d'1 m : haut comme lui au garrot, mais bien plus lourd qu'un lion.)*
+- **Silhouette** : félin compact et ultra-musclé, **avant-corps très puissant** (plus qu'un lion), queue courte.
+- **Tête** : **canines de ~28 cm** en sabre, fines et fragiles ; sa gueule s'ouvrait à **120°** — énorme — pour planter ses sabres sans les casser.
+- **Chasse (précis)** : embuscade — il plaquait la proie avec ses bras puissants PUIS plantait les sabres dans le cou. Pas un coureur.
+- **Couleur (hypothèse dessin)** : fauve uni ou légèrement tacheté.
+- **Mange (précis)** : grands herbivores (bisons, jeunes mammouths).
+- **Vit avec** : des os guéris de vieilles blessures suggèrent qu'il vivait **en groupe** — les blessés survivaient grâce aux autres. `⚠️ probable`
+- **Bébés** : chatons élevés par la mère. `⚠️ probable`
+- ⭐ **Signature** : **les dents de sabre de 28 cm** — le tigre à dents de sabre (qui n'est pas un tigre !).
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un Smilodon, félin à longues dents de sabre, dans une plaine d'Amérique préhistorique, style BD enfant, anatomie juste. »
+2. **Échelle enfant 1 m** — « …haut comme un enfant d'1 mètre au garrot. »
+3. **Gueule** — « Un Smilodon ouvrant sa gueule très grand (120 degrés) montrant ses 2 dents de sabre, zéro sang. »
+
+> ⚠️ **Data-check** : 1,75 m / 1 m / 0,25 t / carnivore ✓. Corps compact + queue courte (anti-pattern : le dessiner comme un lion à longues canines).
+
+---
+
+## 🦕 Mégathérium — *Megatherium americanum* · Mammifères
+
+### 📋 CONTEXTE
+**Paresseux terrestre géant** (mammifère) herbivore du **Cénozoïque (~5 millions à 10 000 ans avant aujourd'hui)**, Amérique du Sud. Le cousin géant du petit paresseux des arbres d'aujourd'hui — gros comme un éléphant !
+- **Taille** : **~6 m** de long · **~3,5 m debout** · **~4 tonnes**. *(face à un enfant d'1 m : debout, il fait 3 enfants et demi.)*
+- **Silhouette** : énorme tonneau pouvant **se dresser sur ses pattes arrière** + queue épaisse en trépied pour atteindre les branches en hauteur.
+- **Griffes** : **griffes géantes** (~30 cm et plus) — pour arracher les branches ; il marchait sur les **côtés de ses pieds** pour ne pas les abîmer.
+- **Fourrure** : épaisse, brune ; sa peau avait de **petits os dans l'épaisseur** (armure sous la fourrure !).
+- **Couleur (hypothèse dessin)** : brun-gris.
+- **Mange (précis)** : feuilles et branches qu'il tirait à lui avec ses griffes.
+- **Chassé par** : presque rien — trop gros et trop blindé. `⚠️ probable`
+- **Vit avec** : plutôt solitaire. `⚠️ probable`
+- **Bébés** : un petit à la fois, porté par la mère. `⚠️ probable`
+- ⭐ **Signature** : le **paresseux géant qui se dresse debout** avec des griffes énormes.
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un Megatherium, paresseux géant dressé sur ses pattes arrière, dans une forêt d'Amérique du Sud, style BD enfant, anatomie juste. »
+2. **Échelle enfant 1 m** — « …debout, il fait 3 enfants et demi de haut. »
+3. **En train de manger** — « Un Megatherium dressé, tirant une branche vers sa bouche avec ses grandes griffes. »
+
+> ⚠️ **Data-check** : 6 m / 3,5 m / 4 t / herbivore ✓. Marche sur les côtés des pieds + posture dressée = ses signatures visuelles.
+
+---
+
+## 🦕 Paracérathérium — *Paraceratherium* · Mammifères
+
+### 📋 CONTEXTE
+**Rhino géant SANS corne** (mammifère) herbivore du **Cénozoïque (~34 à 23 millions d'années avant aujourd'hui)**, Asie (Mongolie, Pakistan). C'est **le plus grand mammifère terrestre connu de tous les temps**.
+- **Taille** : **~8 m** de long · **~5 m** au garrot · **~17 tonnes**. *(face à un enfant d'1 m : haut comme une girafe — 5 enfants empilés !)*
+- **Silhouette** : corps de rhinocéros mais avec un **long cou** et de longues pattes — un mix rhino-girafe, SANS aucune corne sur le nez.
+- **Tête** : grande tête allongée avec une **lèvre musculeuse** (peut-être une mini-trompe courte) pour pincer les feuilles. `⚠️ probable`
+- **Peau** : nue ou très peu poilue, grise (il vivait dans des forêts chaudes, pas besoin de laine). `⚠️ probable`
+- **Couleur (hypothèse dessin)** : gris-éléphant.
+- **Mange (précis)** : feuilles au sommet des arbres, que personne d'autre ne pouvait atteindre.
+- **Chassé par** : presque rien à l'âge adulte. `⚠️ probable`
+- **Vit avec** : inconnu. `⚠️ probable`
+- **Bébés** : un petit à la fois, comme les rhinos d'aujourd'hui. `⚠️ probable`
+- ⭐ **Signature** : **le plus grand mammifère de terre ferme** — un rhino sans corne haut comme une girafe.
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un Paraceratherium, rhinocéros géant sans corne à long cou, dans une forêt d'Asie préhistorique, style BD enfant, anatomie juste. »
+2. **Échelle enfant 1 m** — « …avec un enfant d'1 mètre ; il est haut comme 5 enfants empilés. »
+3. **En train de manger** — « Un Paraceratherium pinçant des feuilles tout en haut d'un arbre avec sa lèvre. »
+
+> ⚠️ **Data-check** : 8 m / 5 m / 17 t / herbivore ✓. **AUCUNE corne** (anti-pattern fréquent).
+
+---
+
+## 🦕 Glyptodon — *Glyptodon* · Mammifères
+
+### 📋 CONTEXTE
+Glyptodonte (mammifère blindé) herbivore du **Cénozoïque (~2,5 millions à 10 000 ans avant aujourd'hui)**, Amérique du Sud. Le **cousin géant du tatou** — une voiture blindée vivante.
+- **Taille** : **~3,3 m** de long · **~1,5 m** de haut · **~1 tonne**. *(face à un enfant d'1 m : sa carapace arrive au-dessus de la tête de l'enfant.)*
+- **Silhouette** : gros dôme ambulant à 4 pattes courtes — comme un tatou gros comme une voiture.
+- **Carapace** : **un seul énorme dôme osseux** fait de plus de 1 000 petites plaques soudées — impossible à ouvrir.
+- **Tête et queue** : tête protégée par un **casque d'os**, queue entourée d'anneaux blindés (⚠️ **PAS de massue** — c'est son cousin Doedicurus qui en avait une).
+- **Couleur (hypothèse dessin)** : carapace brun miel, peau grise.
+- **Mange (précis)** : herbes des plaines humides.
+- **Chassé par** : smilodons et hommes préhistoriques ; sa parade = se plaquer au sol sous son dôme. `⚠️ probable`
+- **Vit avec** : inconnu. `⚠️ probable`
+- **Bébés** : petits à carapace souple qui durcit en grandissant. `⚠️ probable`
+- ⭐ **Signature** : la **voiture blindée** — un tatou d'une tonne.
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un Glyptodon, tatou géant sous un dôme osseux, dans une plaine d'Amérique du Sud, style BD enfant, anatomie juste. »
+2. **Échelle enfant 1 m** — « …avec un enfant d'1 mètre à côté de sa carapace-dôme. »
+3. **En train de manger** — « Un Glyptodon broutant l'herbe, tête sous son casque d'os. »
+
+> ⚠️ **Data-check** : 3,3 m / 1,5 m / 1 t / herbivore ✓. **PAS de massue caudale** (piège Doedicurus).
+
+---
+
+## 🦕 Loup terrible — *Aenocyon dirus* · Mammifères
+
+### 📋 CONTEXTE
+**Loup terrible** / « dire wolf » (mammifère) carnivore du **Cénozoïque (~250 000 à 10 000 ans avant aujourd'hui)**, Amériques. Des MILLIERS d'individus piégés dans les asphaltes de La Brea — la preuve qu'ils chassaient **en meutes**.
+- **Taille** : **~1,7 m** de long · **~0,85 m** au garrot · **~70 kg**. *(face à un enfant d'1 m : un peu moins haut que lui — comme un très gros loup.)*
+- **Silhouette** : loup mais **plus lourd et plus costaud** que le loup gris d'aujourd'hui — pattes plus courtes, corps plus dense.
+- **Tête** : crâne plus large, **mâchoires plus puissantes** que celles du loup — faites pour les grosses proies de l'âge de glace.
+- **Fourrure** : épaisse. Couleur inconnue. `⚠️ probable` (souvent dessiné gris-brun).
+- **Mange (précis)** : chevaux, bisons, paresseux géants — chassés en meute.
+- **Chassé par** : personne ; il partageait son monde avec le smilodon.
+- **Vit avec** : **en meutes** — les pièges de La Brea ont pris des centaines de loups venus manger les proies coincées.
+- **Bébés** : louveteaux élevés par la meute. `⚠️ probable`
+- ⭐ **Signature** : la **meute de La Brea** — un loup plus lourd que le loup d'aujourd'hui. Son ADN (2021) montre qu'il n'était **pas un vrai loup**, mais une cousine très ancienne — d'où son nouveau nom *Aenocyon*, « chien terrible ».
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un Aenocyon, loup préhistorique très costaud, dans une plaine d'Amérique de l'âge de glace, style BD enfant, anatomie juste. »
+2. **Échelle enfant 1 m** — « …un peu moins haut qu'un enfant d'1 mètre. »
+3. **En meute** — « Plusieurs loups terribles marchant ensemble dans la plaine, de profil. »
+
+> ⚠️ **Data-check** : 1,7 m / 0,85 m / 0,07 t / carnivore ✓. Plus COSTAUD qu'un loup gris (pattes plus courtes) — pas juste « un loup ».
+
+---
+
+## 🦕 Rhino laineux — *Coelodonta antiquitatis* · Mammifères
+
+### 📋 CONTEXTE
+**Rhinocéros laineux** (mammifère) herbivore du **Cénozoïque — l'âge de glace (~350 000 à 10 000 ans avant aujourd'hui)**, steppes froides d'Eurasie. Les hommes des cavernes l'ont **dessiné sur les murs des grottes** (grotte Chauvet !) et on en a trouvé des **congelés entiers** dans la glace.
+- **Taille** : **~3,5 m** de long · **~1,9 m** au garrot · **~2,5 tonnes**. *(face à un enfant d'1 m : 2 enfants empilés pour arriver à son dos.)*
+- **Silhouette** : rhinocéros massif à **bosse sur les épaules** (muscles pour porter la grosse tête), pattes courtes.
+- **Fourrure** : **épais manteau de laine** brun-roux + petites oreilles (contre le froid).
+- **Cornes** : **2 cornes** — la frontale très longue et **plate comme un sabre** (jusqu'à ~1 m+) pour balayer la neige.
+- **Couleur (hypothèse dessin)** : brun-roux laineux (connu grâce aux corps congelés et aux peintures rupestres !).
+- **Mange (précis)** : herbes de la steppe gelée, dégagées de la neige avec sa corne.
+- **Chassé par** : les hommes préhistoriques et les hyènes des cavernes. `⚠️ probable`
+- **Vit avec** : plutôt solitaire ou en petits groupes. `⚠️ probable`
+- **Bébés** : petits suivant la mère, comme les rhinos d'aujourd'hui. `⚠️ probable`
+- ⭐ **Signature** : le **rhino à fourrure de l'âge de glace**, dessiné par les hommes des cavernes.
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un rhinocéros laineux à 2 cornes, dans une steppe enneigée, style BD enfant, anatomie juste. »
+2. **Échelle enfant 1 m** — « …2 enfants empilés pour arriver à son dos. »
+3. **En train de manger** — « Un rhino laineux balayant la neige avec sa longue corne plate pour trouver l'herbe. »
+
+> ⚠️ **Data-check** : 3,5 m / 1,9 m / 2,5 t / herbivore ✓. 2 cornes + fourrure (anti-pattern : rhino gris d'Afrique).
+
+---
+
+## 🦕 Titanis — *Titanis walleri* · Oiseaux
+
+### 📋 CONTEXTE
+**Oiseau-terreur** (phorusrhacidé) carnivore du **Cénozoïque (~5 à 2 millions d'années avant aujourd'hui)**, Amérique (Floride, Texas) — un des rares oiseaux-terreur à avoir rejoint l'Amérique du Nord. Après la disparition des dinosaures, ce sont des OISEAUX comme lui qui ont pris leur place de super-prédateurs !
+- **Taille** : **~1,9 m** de haut · **~300 kg**. *(face à un enfant d'1 m : 2 enfants empilés.)*
+- **Silhouette** : **immense oiseau coureur qui ne volait pas** — longues pattes de sprinter, corps droit, ailes minuscules.
+- **Tête** : **énorme bec-hachoir** crochu et tranchant — pour frapper et découper les proies ; crâne massif.
+- **Pattes** : serres puissantes ; il courait **très vite** pour attraper ses proies.
+- **Plumes** : inconnues. `⚠️ probable` (souvent dessiné brun-gris).
+- **Mange (précis)** : petits mammifères, jeunes chevaux — frappés à coups de bec-hache.
+- **Chassé par** : plus tard, les grands carnivores venus d'Amérique du Nord. `⚠️ probable`
+- **Vit avec** : plutôt solitaire. `⚠️ probable`
+- **Bébés** : œufs au sol. `⚠️ probable`
+- ⭐ **Signature** : **l'oiseau-terreur** — un dino-oiseau de 2 mètres qui chassait à coups de bec-hache. (C'est bien un OISEAU : il est dans la famille `oiseaux`, pas chez les mammifères — honnêteté taxo du pôle.)
+
+### ❓ QUESTIONS / SCÈNES
+1. **Environnement** — « Un Titanis, oiseau-terreur coureur au bec en hache, dans une savane d'Amérique préhistorique, style BD enfant, anatomie juste. »
+2. **Échelle enfant 1 m** — « …2 enfants empilés pour arriver à sa tête. »
+3. **Course (sobre, zéro sang)** — « Un Titanis courant à toute vitesse dans la savane, sans proie blessée. »
+
+> ⚠️ **Data-check** : 1,9 m / 0,3 t / carnivore ✓ (taille corrigée 2,5 m → 1,9 m le 2026-07-03). Ailes MINUSCULES, il ne vole pas.
+
+---
+
+_Batch 2026-08-03 terminé : 24 fiches ajoutées (Edmontonia → Titanis), chiffres = `dinos-data.js`._

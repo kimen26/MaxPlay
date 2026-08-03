@@ -1,6 +1,7 @@
-# BLOC B CANONIQUE — 50 dinos (source: dinos-data.js, NE PAS RÉINVENTER)
+# BLOC B CANONIQUE — 73 dinos (source: dinos-data.js, NE PAS RÉINVENTER)
 
 _Le Narrateur du Bloc B dit EXACTEMENT cette phrase (chiffres + comparaisons validés/fact-checkés). Wex réagit après, sans répéter les chiffres._
+_+23 entrées ajoutées 2026-08-03 (sorties exactes `_compXXX`/`_statsPhrase` de dinos-data.js) ; Pachycéphalosaure resynchronisé (« poney », paliers _compPoids resserrés 2026-07-25)._
 
 ## T-Rex (tyrannosaurus)
 NARRATEUR Bloc B : « Il mesurait 13 mètres de long — aussi long qu'un bus RATP ! Debout, il faisait 4 mètres de haut — aussi haut qu'un bus anglais à deux étages ! Et il pesait 8 mille kilos — aussi lourd que 3 hippopotames ! »
@@ -65,6 +66,15 @@ NARRATEUR Bloc B : « Il mesurait 7 mètres de long — comme deux voitures l'un
 ## Euoplocéphale (euoplocephalus)
 NARRATEUR Bloc B : « Il mesurait 6 mètres de long — aussi long qu'une rue à deux voies est large — il barrait la route ! Debout, il faisait 1 virgule 5 mètres de haut — aussi haut qu'une voiture — il fallait lever la tête ! Et il pesait 2 mille kilos — aussi lourd que un rhinocéros ! »
 
+## Edmontonia (edmontonia)
+NARRATEUR Bloc B : « Il mesurait 6 virgule 6 mètres de long — aussi long qu'une rue à deux voies est large — il barrait la route ! Debout, il faisait 1 virgule 5 mètres de haut — aussi haut qu'une voiture — il fallait lever la tête ! Et il pesait 3 mille kilos — aussi lourd que 2 rhinocéros ! »
+
+## Minmi (minmi)
+NARRATEUR Bloc B : « Il mesurait 3 mètres de long — comme trois enfants de 4 ans allongés ! Debout, il faisait 0 virgule 9 mètres de haut — aussi grand qu'un enfant de 4 ans ! Et il pesait 300 kilos — aussi lourd qu'un ours brun ! »
+
+## Scutellosaure (scutellosaurus)
+NARRATEUR Bloc B : « Il mesurait 1 virgule 2 mètres de long — comme un grand chien — un labrador ! Debout, il faisait 0 virgule 4 mètres de haut — il t'arrivait aux genoux ! Et il pesait 4 kilos — aussi lourd qu'un gros chat ! »
+
 ## Stégosaure (stegosaurus)
 NARRATEUR Bloc B : « Il mesurait 9 mètres de long — aussi long qu'un camion ! Debout, il faisait 2 virgule 8 mètres de haut — aussi haut qu'un panier de basket ! Et il pesait 4 mille kilos — aussi lourd que un hippopotame ! »
 
@@ -99,7 +109,7 @@ NARRATEUR Bloc B : « Il mesurait 12 mètres de long — aussi long qu'un bus RA
 NARRATEUR Bloc B : « Il mesurait 10 mètres de long — aussi long qu'un camion ! Debout, il faisait 2 virgule 7 mètres de haut — aussi haut qu'un but de foot ! Et il pesait 3 mille kilos — aussi lourd que 2 rhinocéros ! »
 
 ## Pachycéphalosaure (pachycephalosaurus)
-NARRATEUR Bloc B : « Il mesurait 4 virgule 5 mètres de long — aussi long qu'un grand 4×4 ! Debout, il faisait 1 virgule 5 mètres de haut — aussi haut qu'une voiture — il fallait lever la tête ! Et il pesait 450 kilos — aussi lourd qu'un gros cochon ! »
+NARRATEUR Bloc B : « Il mesurait 4 virgule 5 mètres de long — aussi long qu'un grand 4×4 ! Debout, il faisait 1 virgule 5 mètres de haut — aussi haut qu'une voiture — il fallait lever la tête ! Et il pesait 450 kilos — aussi lourd qu'un poney ! »
 
 ## Vélociraptor (velociraptor)
 NARRATEUR Bloc B : « Il mesurait 2 mètres de long — aussi long qu'une moto ! Debout, il faisait 0 virgule 5 mètres de haut — il t'arrivait aux fesses ! Et il pesait 15 kilos — aussi lourd qu'un enfant de 4 ans ! »
@@ -134,6 +144,9 @@ NARRATEUR Bloc B : « Il avait des ailes de 6 mètres d'un bout à l'autre — s
 ## Quetzalcoatlus (quetzalcoatlus)
 NARRATEUR Bloc B : « Il avait des ailes de 11 mètres d'un bout à l'autre — ses ailes ouvertes étaient larges comme un bus de Paris ! Debout, il faisait 5 mètres de haut — presque trois Papas l'un sur l'autre ! Et il pesait 200 kilos — aussi lourd qu'un gros cochon ! »
 
+## Hatzegopteryx (hatzegopteryx)
+NARRATEUR Bloc B : « Il avait des ailes de 10 mètres d'un bout à l'autre — ses ailes ouvertes étaient aussi larges que six Papas couchés bout à bout ! Debout, il faisait 3 mètres de haut — aussi haut qu'un panier de basket ! Et il pesait 220 kilos — aussi lourd qu'un gros cochon ! »
+
 ## Archaeoptéryx (archaeopteryx)
 NARRATEUR Bloc B : « Il mesurait 0 virgule 5 mètres de long — comme un gros chat allongé ! Debout, il faisait 0 virgule 3 mètres de haut — il t'arrivait aux genoux ! Et il pesait 1 kilos — léger comme un petit oiseau ! »
 
@@ -151,4 +164,61 @@ NARRATEUR Bloc B : « Il mesurait 10 mètres de long — aussi long qu'un camion
 
 ## Dimétrodon (dimetrodon)
 NARRATEUR Bloc B : « Il mesurait 3 virgule 5 mètres de long — comme une petite voiture ! Debout, il faisait 1 virgule 8 mètres de haut — aussi grand que Papa debout ! Et il pesait 250 kilos — aussi lourd qu'un gros cochon ! »
+
+## Édaphosaure (edaphosaurus)
+NARRATEUR Bloc B : « Il mesurait 3 mètres de long — comme trois enfants de 4 ans allongés ! Debout, il faisait 1 virgule 3 mètres de haut — aussi haut qu'une voiture — il fallait lever la tête ! Et il pesait 120 kilos — aussi lourd que Papa ! »
+
+## Gorgonops (gorgonops)
+NARRATEUR Bloc B : « Il mesurait 1 virgule 8 mètres de long — comme un grand Papa allongé par terre ! Debout, il faisait 0 virgule 8 mètres de haut — il t'arrivait au nombril ! Et il pesait 100 kilos — aussi lourd que Papa ! »
+
+## Lystrosaure (lystrosaurus)
+NARRATEUR Bloc B : « Il mesurait 0 virgule 7 mètres de long — comme un gros chat allongé ! Debout, il faisait 0 virgule 35 mètres de haut — il t'arrivait aux genoux ! Et il pesait 17 kilos — aussi lourd qu'un enfant de 4 ans ! »
+
+## Moschops (moschops)
+NARRATEUR Bloc B : « Il mesurait 2 virgule 7 mètres de long — comme trois enfants de 4 ans allongés ! Debout, il faisait 1 virgule 1 mètres de haut — aussi grand qu'un enfant de 4 ans ! Et il pesait 410 kilos — aussi lourd qu'un poney ! »
+
+## Élasmosaure (elasmosaurus)
+NARRATEUR Bloc B : « Il mesurait 13 mètres de long — aussi long qu'un bus RATP ! Debout, il faisait 1 mètres de haut — aussi grand qu'un enfant de 4 ans ! Et il pesait 3 mille kilos — aussi lourd que 2 rhinocéros ! »
+
+## Ophthalmosaure (ophthalmosaurus)
+NARRATEUR Bloc B : « Il mesurait 4 mètres de long — comme une petite voiture ! Debout, il faisait 1 mètres de haut — aussi grand qu'un enfant de 4 ans ! Et il pesait 950 kilos — aussi lourd qu'un cheval de trait ! »
+
+## Liopleurodon (liopleurodon)
+NARRATEUR Bloc B : « Il mesurait 7 mètres de long — comme deux voitures l'une derrière l'autre ! Debout, il faisait 1 virgule 5 mètres de haut — aussi haut qu'une voiture — il fallait lever la tête ! Et il pesait 5 mille kilos — aussi lourd que 2 hippopotames ! »
+
+## Archélon (archelon)
+NARRATEUR Bloc B : « Il mesurait 4 virgule 6 mètres de long — aussi long qu'un grand 4×4 ! Debout, il faisait 1 virgule 2 mètres de haut — aussi grand qu'un enfant de 4 ans ! Et il pesait 2 mille kilos — aussi lourd qu'un rhinocéros ! »
+
+## Shonisaure (shonisaurus)
+NARRATEUR Bloc B : « Il mesurait 14 mètres de long — aussi long qu'un bus RATP ! Debout, il faisait 2 mètres de haut — aussi haut qu'une porte ! Et il pesait 25 mille kilos — aussi lourd que 4 éléphants ! »
+
+## Titanosaure (patagotitan)
+NARRATEUR Bloc B : « Il mesurait 31 mètres de long — comme un bus accordéon et un bus, l'un derrière l'autre ! Debout, il faisait 12 mètres de haut — aussi haut qu'un immeuble de 4 étages ! Et il pesait 70 mille kilos — aussi lourd que 12 éléphants ! »
+
+## Ichtyosaure (ichthyosaurus)
+NARRATEUR Bloc B : « Il mesurait 2 mètres de long — aussi long qu'une moto ! Debout, il faisait 0 virgule 5 mètres de haut — il t'arrivait aux fesses ! Et il pesait 150 kilos — aussi lourd qu'un gros cochon ! »
+
+## Mammouth (mammuthus)
+NARRATEUR Bloc B : « Il mesurait 5 virgule 5 mètres de long — aussi long qu'un grand 4×4 ! Debout, il faisait 3 virgule 3 mètres de haut — comme deux Papas l'un sur l'autre ! Et il pesait 5 mille kilos — aussi lourd que 2 hippopotames ! »
+
+## Smilodon (smilodon)
+NARRATEUR Bloc B : « Il mesurait 1 virgule 75 mètres de long — comme un grand Papa allongé par terre ! Debout, il faisait 1 mètres de haut — aussi grand qu'un enfant de 4 ans ! Et il pesait 250 kilos — aussi lourd qu'un ours brun ! »
+
+## Mégathérium (megatherium)
+NARRATEUR Bloc B : « Il mesurait 6 mètres de long — aussi long qu'une rue à deux voies est large — il barrait la route ! Debout, il faisait 3 virgule 5 mètres de haut — comme deux Papas l'un sur l'autre ! Et il pesait 4 mille kilos — aussi lourd qu'un hippopotame ! »
+
+## Paracérathérium (paraceratherium)
+NARRATEUR Bloc B : « Il mesurait 8 mètres de long — comme deux voitures l'une derrière l'autre ! Debout, il faisait 5 mètres de haut — presque trois Papas l'un sur l'autre ! Et il pesait 17 mille kilos — aussi lourd que 3 éléphants ! »
+
+## Glyptodon (glyptodon)
+NARRATEUR Bloc B : « Il mesurait 3 virgule 3 mètres de long — comme une petite voiture ! Debout, il faisait 1 virgule 5 mètres de haut — aussi haut qu'une voiture — il fallait lever la tête ! Et il pesait 1 mille kilos — aussi lourd qu'un cheval de trait ! »
+
+## Loup terrible (aenocyon)
+NARRATEUR Bloc B : « Il mesurait 1 virgule 7 mètres de long — comme un grand Papa allongé par terre ! Debout, il faisait 0 virgule 85 mètres de haut — aussi grand qu'un enfant de 4 ans ! Et il pesait 70 kilos — aussi lourd que Papa ! »
+
+## Rhino laineux (coelodonta)
+NARRATEUR Bloc B : « Il mesurait 3 virgule 5 mètres de long — comme une petite voiture ! Debout, il faisait 1 virgule 9 mètres de haut — aussi haut qu'une porte ! Et il pesait 3 mille kilos — aussi lourd que 2 rhinocéros ! »
+
+## Titanis (titanis)
+NARRATEUR Bloc B : « Il mesurait 1 virgule 9 mètres de long — aussi long qu'une moto ! Debout, il faisait 1 virgule 9 mètres de haut — aussi haut qu'une porte ! Et il pesait 300 kilos — aussi lourd qu'un ours brun ! »
 

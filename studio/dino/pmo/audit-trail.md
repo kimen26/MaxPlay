@@ -635,3 +635,6 @@ Tous segments JSON V3 + MP3 5 blocs → images paléoart. Zéro orphelin audio.
 - Anomalies : menu-fam-mammiferes/oiseaux + emblèmes familles manquants · staging `_new-*` non vidé (21 PNG purgeables + 13 xxl à arbitrer) · dico 11 racines sans MP3 · README sprites « top 15 » obsolète · special-* = 6 fichiers (INVARIANTS dit 2) · menu-ep = 8 (INVARIANTS implicite 7).
 
 **Résolution 2026-08-03** (demande « tout corriger ») : anomalies 1-4 traitées — menu-fam Cénozoïque générés + câblés · dico 76/76 (11 MP3 + 4 remappings) · emblèmes 11/11 · staging purgé + XXL archivés · README/INVARIANTS corrigés. Corrections sur l'audit lui-même : `Amargasaurus_hypo-*` = slides fiche actives (pas orphelins), `menu-regime.mp3` = intro onglet active (pas legacy). Reste ouvert : textes sources 26 dinos (EP-DINO-SOURCES-TEXTES-26) + bug MCP clé EL (EP-DINO-BUG-MCP-CLE-EL). Détail : sprint-log 2026-08-03.
+
+
+**Clôture 2026-08-03 (EP-DINO-SOURCES-TEXTES-26)** : fiches (24) + étymos (17) + mesures (24) livrées → audit régénéré **70/70 complets sur tous les axes, 0 gap, 0 orphelin**. Dico passé à 100 racines (~24 sans MP3 → ticket EP-DINO-DICO-AUDIO-24). Paliers `_compPoids` >10 % remontés (EP-DINO-PALIERS-COMPPOIDS, décision Papa Yann). Script d'audit stabilisé dans `content/scripts/export/`.

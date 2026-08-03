@@ -1,4 +1,4 @@
-# Décomposition en racines — 50 dinosaures MaxPlay
+# Décomposition en racines — 67 dinosaures MaxPlay
 
 > Étymologie vérifiée pour encyclopédie audio enfant (4 ans). Racines vraies (grec/latin), recomposition simple.
 > Ordre = ordre du tableau `DINOS` dans `dinos-data.js`. Sources : Wikipedia EN « etymology », Wiktionary, racines classiques.
@@ -138,6 +138,12 @@
 - **-céphale / kephale** (grec) = tête
 → **« tête bien armée / bien protégée »**
 [nom_etym OK — vérifié Wikipedia : eu + hoplo + kephale]
+
+## edmontonia — Edmontonia (Edmontonia rugosidens)
+- **Edmonton-** = la formation d'Edmonton (aujourd'hui Horseshoe Canyon), en Alberta, Canada, où ses os ont été trouvés
+- **-ia** = terminaison latine qui dit « celui de »
+→ **« celui de la formation d'Edmonton »** (au Canada)
+[nom_etym OK — nom de lieu, PAS du grec : vérifié Wikipedia « named after the Edmonton Formation ». Cousin blindé de l'Ankylosaure, avec des piques sur les épaules]
 
 ## minmi — Minmi (Minmi paravertebra)
 - **Minmi** = PAS une racine grecque ni latine : nom d'un lieu, *Minmi Crossing* (Queensland, Australie), là où les os ont été trouvés
@@ -301,6 +307,12 @@
 → **« le Quetzalcoatl »** (nom du dieu serpent à plumes, donné au plus grand volant)
 [nom_etym OK — bien d'origine aztèque, pas grec/latin]
 
+## hatzegopteryx — Hatzegopteryx (Hatzegopteryx thambema)
+- **Hatzego-** = Hațeg, région de Roumanie (une île au temps des dinos) où ses os ont été trouvés
+- **-pteryx / pterux** (grec) = aile
+→ **« l'aile de Hațeg »** (en Roumanie)
+[nom_etym OK — nom de lieu + racine grecque, vérifié Wikipedia. Pas un dinosaure : ptérosaure géant]
+
 ## archaeopteryx — Archaeoptéryx (Archaeopteryx lithographica)
 - **archaeo- / arkhaios** (grec) = ancien, du début
 - **-pteryx / pterux** (grec) = aile, plume
@@ -362,6 +374,97 @@
 → **« visage de veau »** (grosse tête au crâne très épais)
 [nom_etym OK — prononciation : « Mos-kops », le *ch* grec (khi) se dit « k », règle identique à Brachiosaure. Pas un dinosaure. *capensis* = du Cap, en Afrique du Sud]
 
+## elasmosaurus — Élasmosaure (Elasmosaurus platyurus)
+- **élasmo- / elasmos** (grec) = plaque de métal fine, tôle
+- **-saurus / -saure** (grec *sauros*) = lézard
+→ **« lézard aux plaques fines »** (les os de ses épaules et de son bassin étaient plats comme des plaques)
+[nom_etym OK — vérifié etymonline/Wikipedia : *elasmos* = plaque de métal. Le nom parle des os en plaque, PAS du long cou. Pas un dinosaure : plésiosaure]
+
+## ophthalmosaurus — Ophthalmosaure (Ophthalmosaurus icenicus)
+- **ophthalmo- / ophthalmos** (grec) = œil
+- **-saurus / -saure** (grec *sauros*) = lézard
+→ **« lézard aux yeux »** (yeux énormes, pour voir dans l'eau sombre)
+[nom_etym OK — pas un dinosaure : ichtyosaure]
+
+## liopleurodon — Liopleurodon (Liopleurodon ferox)
+- **lio- / leios** (grec) = lisse
+- **-pleuro- / pleura** (grec) = côté, flanc
+- **-odon** (grec *odous*) = dent
+→ **« dents aux côtés lisses »** (ses dents n'ont pas de rayures)
+[nom_etym OK — vérifié Wikipedia : leios + pleura + odous. Pas un dinosaure : pliosaure]
+
+## archelon — Archélon (Archelon ischyros)
+- **arch- / arkhè** (grec) = chef, premier
+- **-elon / khelônè** (grec) = tortue
+→ **« tortue chef »** (la plus grande tortue de mer de tous les temps)
+[nom_etym OK — vérifié : *archē* + *chelōnē*, « première tortue / tortue chef ». Pas un dinosaure : tortue marine géante]
+
+## shonisaurus — Shonisaure (Shonisaurus popularis)
+- **Shoni-** = les monts Shoshone (Nevada, États-Unis), où ses os ont été trouvés
+- **-saurus / -saure** (grec *sauros*) = lézard
+→ **« lézard des monts Shoshone »** (aux États-Unis)
+[nom_etym OK — nom de lieu, PAS du grec pour la première partie : vérifié Wikipedia. Pas un dinosaure : ichtyosaure géant]
+
+## patagotitan — Titanosaure (Patagotitan mayorum)
+- **Patago-** = la Patagonie, région d'Argentine où ses os ont été trouvés
+- **-titan / Titan** (grec) = les Titans, géants des vieilles histoires grecques
+→ **« le Titan de Patagonie »** (en Argentine)
+[nom_etym OK — nom de lieu + mythologie grecque, vérifié Wikipedia]
+
+## ichthyosaurus — Ichtyosaure (Ichthyosaurus communis)
+- **ichthyo- / ikhthus** (grec) = poisson
+- **-saurus / -saure** (grec *sauros*) = lézard
+→ **« lézard-poisson »** (il nageait comme un dauphin)
+[nom_etym OK — pas un dinosaure : reptile marin]
+
+## mammuthus — Mammouth (Mammuthus primigenius)
+- **Mammuth-** = PAS du grec ni du latin : vient du russe *mamont*, lui-même d'une langue de Sibérie (mansi) qui veut dire « corne de la terre » — les défenses trouvées dans la terre gelée étaient prises pour des cornes
+→ **« la corne de la terre »** (le mammouth)
+[nom_etym OK — vérifié etymonline/American Heritage : russe *mamont* ← mansi *mē̮ŋ-ońt* « earth-horn ». *primigenius* = latin « premier-né, originel ». Pas un dinosaure : éléphant de l'âge de glace]
+
+## smilodon — Smilodon (Smilodon fatalis)
+- **smilo- / smilè** (grec) = couteau, lame
+- **-odon** (grec *odous*) = dent
+→ **« dent couteau »** (ses grandes dents de sabre)
+[nom_etym OK — vérifié Wikipedia : *smilē* = couteau à découper + *odous*. Pas un dinosaure : félin à dents de sabre, âge de glace]
+
+## megatherium — Mégathérium (Megatherium americanum)
+- **méga- / megas** (grec) = grand
+- **-thérium / thèrion** (grec) = bête, animal sauvage
+→ **« la grande bête »** (un paresseux géant)
+[nom_etym OK — pas un dinosaure : mammifère de l'âge de glace]
+
+## paraceratherium — Paracérathérium (Paraceratherium)
+- **para-** (grec) = à côté de, proche de
+- **-a-** (grec) = sans
+- **-céras- / keras** (grec) = corne
+- **-thérium / thèrion** (grec) = bête
+→ **« proche de la bête sans corne »** (les savants le croyaient cousin du rhinocéros « Acérathérium », la bête sans corne)
+[nom_etym OK — vérifié Wikipedia : nommé « près de l'Aceratherium ». Pas un dinosaure : rhinocéros géant, le plus grand mammifère terrestre connu]
+
+## glyptodon — Glyptodon (Glyptodon)
+- **glypto- / glyptos** (grec) = sculpté, gravé
+- **-odon** (grec *odous*) = dent
+→ **« dent sculptée »** (ses molaires ont des sillons gravés)
+[nom_etym OK — vérifié : glyptos + odous. Pas un dinosaure : tatou géant de l'âge de glace]
+
+## aenocyon — Loup terrible (Aenocyon dirus)
+- **aeno- / ainos** (grec) = terrible, redoutable
+- **-cyon / kuôn** (grec) = chien
+→ **« chien terrible »** (et *dirus*, en latin, veut dire « qui fait très peur »)
+[nom_etym OK — vérifié Wikipedia : *ainos* + *kuôn* (nommé par Merriam 1918, revalidé par une étude ADN 2021). C'est le « dire wolf ». Pas un dinosaure]
+
+## coelodonta — Rhino laineux (Coelodonta antiquitatis)
+- **coelo- / koilos** (grec) = creux
+- **-odonta / odous** (grec) = dent
+→ **« dent creuse »** (ses molaires ont de profonds creux)
+[nom_etym OK — vérifié : koilos + odous, pour les sillons profonds des molaires. C'est le rhinocéros laineux. Pas un dinosaure]
+
+## titanis — Titanis (Titanis walleri)
+- **Titanis** = les Titans, géants des vieilles histoires grecques (parce que c'est un oiseau géant)
+→ **« l'oiseau Titan »** (un oiseau qui ne volait pas, grand et carnivore)
+[nom_etym OK — vérifié : nommé d'après les Titans de la mythologie grecque, allusion à sa taille. Pas un dinosaure mais un « oiseau-terreur », lointain cousin des dinos]
+
 ---
 
-_Fichier généré 2026-05-17. 50 dinos, ordre `DINOS` de `dinos-data.js`. Racines vérifiées (grec/latin). Cas recherchés en ligne : Euoplocephalus, Therizinosaurus, Carcharodontosaurus, Diplodocus._
+_Fichier généré 2026-05-17. 67 dinos, ordre `DINOS` de `dinos-data.js`. Racines vérifiées (grec/latin). Cas recherchés en ligne : Euoplocephalus, Therizinosaurus, Carcharodontosaurus, Diplodocus. 2026-08-03 : +17 entrées (Edmontonia, Hatzegopteryx, 6 marins, Patagotitan, 8 Cénozoïque) — vérifiées Wikipedia / etymonline / American Heritage. Prépare EP-D-GED-03._

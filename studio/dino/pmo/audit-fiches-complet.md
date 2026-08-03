@@ -1,15 +1,13 @@
 # Audit exhaustif des fiches dino — assets croisés
 
-**Date : 2026-08-02** · 70 dinos (DINOS de `site/js/dinos-data.js`) · croisement disque `site/img/dinos/`, `site/audio/dinos/fr/`, sources `studio/dino/content/sources/`.
+**Date : 2026-08-03** · 70 dinos (DINOS de `site/js/dinos-data.js`) · croisement disque `site/img/dinos/`, `site/audio/dinos/fr/`, sources `studio/dino/content/sources/`.
 
-> Régénéré par `node studio/dino/content/scripts/export/_audit-fiches-complet.cjs`. État PMO de référence : `_ETAT-DINOS.md` (régénéré le même jour : **70 dinos · 70 complets · 0 incomplets** sur ses 8 axes).
-
-> ✅ **RÉSOLUTION 2026-08-03** — les anomalies de cet audit ont été traitées (détail : `sprint-log.md` 2026-08-03 + `audit-trail.md`) : menu-fam Cénozoïque générés (EP-D-GED-08 clos) · dico 76/76 sans fallback · emblèmes 11/11 · staging `_new-*` purgé + XXL archivés · README/INVARIANTS corrigés. **2 erreurs de cet audit corrigées** : les `Amargasaurus_hypo-*` sont des slides de fiche RÉFÉRENCÉES (`dev-dinos.html:1627`), pas des orphelins ; `menu-regime.mp3` est l'intro active de l'onglet régime, pas un legacy. Reste ouvert : textes sources des 26 dinos (EP-DINO-SOURCES-TEXTES-26).
+> Régénéré par `node studio/dino/temp/audit-fiches.cjs`. État PMO de référence : `_ETAT-DINOS.md` (régénéré le même jour : **70 dinos · 70 complets · 0 incomplets** sur ses 8 axes).
 
 ## Synthèse
 
-- **Dinos 100% complets (hors trace, réservée au top 15) : 44/70**
-- Fiches src (Grokipédia consolidé) : 46/70 · étymo : 53/70 · mesures : 46/70
+- **Dinos 100% complets (hors trace, réservée au top 15) : 70/70**
+- Fiches src (Grokipédia consolidé) : 70/70 · étymo : 70/70 · mesures : 70/70
 - Audio fiche 5 blocs : 70/70 · nom vocal (noms/) : 70/70
 - hero : 70/70
 - headshot : 70/70
@@ -48,9 +46,9 @@ Colonnes : src = fiche/étymo/mesures sources · A5 = 5 blocs audio fiche · NV 
 | 17 | plateosaurus | Plateosaure | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
 | 18 | ankylosaurus | Ankylosaure | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 19 | euoplocephalus | Euoplocéphale | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 20 | edmontonia | Edmontonia | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 21 | minmi | Minmi | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 22 | scutellosaurus | Scutellosaure | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 20 | edmontonia | Edmontonia | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 21 | minmi | Minmi | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 22 | scutellosaurus | Scutellosaure | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
 | 23 | stegosaurus | Stégosaure | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 24 | kentrosaurus | Kéntrosaure | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
 | 25 | triceratops | Tricératops | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
@@ -59,11 +57,11 @@ Colonnes : src = fiche/étymo/mesures sources · A5 = 5 blocs audio fiche · NV 
 | 28 | pentaceratops | Pentacératops | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
 | 29 | parasaurolophus | Parasaurolophus | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 30 | corythosaurus | Corythosaure | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 31 | maiasaura | Maiasaura | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 31 | maiasaura | Maiasaura | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
 | 32 | saurolophus | Saurolophe | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
 | 33 | edmontosaurus | Edmontosaure | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
 | 34 | iguanodon | Iguanodon | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 35 | pachycephalosaurus | Pachycéphalosaure | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 35 | pachycephalosaurus | Pachycéphalosaure | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
 | 36 | velociraptor | Vélociraptor | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 37 | deinonychus | Deinonychus | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
 | 38 | utahraptor | Utahraptor | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
@@ -73,113 +71,54 @@ Colonnes : src = fiche/étymo/mesures sources · A5 = 5 blocs audio fiche · NV 
 | 42 | oviraptor | Oviraptor | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
 | 43 | pteranodon | Ptéranodon | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 44 | quetzalcoatlus | Quetzalcoatlus | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 45 | hatzegopteryx | Hatzegopteryx | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 45 | hatzegopteryx | Hatzegopteryx | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
 | 46 | archaeopteryx | Archaeoptéryx | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
 | 47 | mosasaurus | Mosasaure | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
 | 48 | baryonyx | Baryonyx | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
 | 49 | therizinosaurus | Therizinosaurus | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
 | 50 | dimetrodon | Dimétrodon | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 51 | edaphosaurus | Édaphosaure | ✅ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 52 | gorgonops | Gorgonops | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 53 | lystrosaurus | Lystrosaure | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 54 | moschops | Moschops | ❌ | ✅ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 55 | elasmosaurus | Élasmosaure | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 56 | ophthalmosaurus | Ophthalmosaure | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 57 | liopleurodon | Liopleurodon | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 58 | archelon | Archélon | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 59 | shonisaurus | Shonisaure | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 60 | patagotitan | Titanosaure | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 61 | centrosaurus | Centrosaure | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 62 | ichthyosaurus | Ichtyosaure | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 63 | mammuthus | Mammouth | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| 64 | smilodon | Smilodon | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
-| 65 | megatherium | Mégathérium | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 66 | paraceratherium | Paracérathérium | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 67 | glyptodon | Glyptodon | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 68 | aenocyon | Loup terrible | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 69 | coelodonta | Rhino laineux | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
-| 70 | titanis | Titanis | ❌ | ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 51 | edaphosaurus | Édaphosaure | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 52 | gorgonops | Gorgonops | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 53 | lystrosaurus | Lystrosaure | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 54 | moschops | Moschops | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 55 | elasmosaurus | Élasmosaure | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 56 | ophthalmosaurus | Ophthalmosaure | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 57 | liopleurodon | Liopleurodon | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 58 | archelon | Archélon | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 59 | shonisaurus | Shonisaure | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 60 | patagotitan | Titanosaure | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 61 | centrosaurus | Centrosaure | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 62 | ichthyosaurus | Ichtyosaure | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 63 | mammuthus | Mammouth | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| 64 | smilodon | Smilodon | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ |
+| 65 | megatherium | Mégathérium | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 66 | paraceratherium | Paracérathérium | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 67 | glyptodon | Glyptodon | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 68 | aenocyon | Loup terrible | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 69 | coelodonta | Rhino laineux | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
+| 70 | titanis | Titanis | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ✅ | ⚪ |
 
 ## (a) Dinos avec au moins un ❌ (hors traces)
 
-- **edmontonia** (Edmontonia) : fiche-src, etymo-src, mesures-src
-- **minmi** (Minmi) : fiche-src, mesures-src
-- **scutellosaurus** (Scutellosaure) : fiche-src, mesures-src
-- **maiasaura** (Maiasaura) : fiche-src
-- **pachycephalosaurus** (Pachycéphalosaure) : mesures-src
-- **hatzegopteryx** (Hatzegopteryx) : fiche-src, etymo-src, mesures-src
-- **edaphosaurus** (Édaphosaure) : mesures-src
-- **gorgonops** (Gorgonops) : fiche-src, mesures-src
-- **lystrosaurus** (Lystrosaure) : fiche-src, mesures-src
-- **moschops** (Moschops) : fiche-src, mesures-src
-- **elasmosaurus** (Élasmosaure) : fiche-src, etymo-src, mesures-src
-- **ophthalmosaurus** (Ophthalmosaure) : fiche-src, etymo-src, mesures-src
-- **liopleurodon** (Liopleurodon) : fiche-src, etymo-src, mesures-src
-- **archelon** (Archélon) : fiche-src, etymo-src, mesures-src
-- **shonisaurus** (Shonisaure) : fiche-src, etymo-src, mesures-src
-- **patagotitan** (Titanosaure) : fiche-src, etymo-src, mesures-src
-- **centrosaurus** (Centrosaure) : fiche-src
-- **ichthyosaurus** (Ichtyosaure) : fiche-src, etymo-src, mesures-src
-- **mammuthus** (Mammouth) : fiche-src, etymo-src, mesures-src
-- **smilodon** (Smilodon) : fiche-src, etymo-src, mesures-src
-- **megatherium** (Mégathérium) : fiche-src, etymo-src, mesures-src
-- **paraceratherium** (Paracérathérium) : fiche-src, etymo-src, mesures-src
-- **glyptodon** (Glyptodon) : fiche-src, etymo-src, mesures-src
-- **aenocyon** (Loup terrible) : fiche-src, etymo-src, mesures-src
-- **coelodonta** (Rhino laineux) : fiche-src, etymo-src, mesures-src
-- **titanis** (Titanis) : fiche-src, etymo-src, mesures-src
+Aucun — les 70 dinos ont tous leurs assets.
 
 ## (b) Staging `_new-*` — contenu et action recommandée
 
-### _new-coloriage (10)
+### _new-coloriage (0)
 
-- `Corythosaurus_coloriage.png` → dino : corythosaurus · existe déjà : paleoart/Corythosaurus_coloriage.webp
-- `Edaphosaurus_coloriage.png` → dino : edaphosaurus · existe déjà : paleoart/Edaphosaurus_coloriage.webp
-- `Gorgonops_coloriage.png` → dino : gorgonops · existe déjà : paleoart/Gorgonops_coloriage.webp
-- `Hatzegopteryx_coloriage.png` → dino : hatzegopteryx · existe déjà : paleoart/Hatzegopteryx_coloriage.webp
-- `Lystrosaurus_coloriage.png` → dino : lystrosaurus · existe déjà : paleoart/Lystrosaurus_coloriage.webp
-- `Maiasaura_coloriage.png` → dino : maiasaura · existe déjà : paleoart/Maiasaura_coloriage.webp
-- `Minmi_coloriage.png` → dino : minmi · existe déjà : paleoart/Minmi_coloriage.webp
-- `Moschops_coloriage.png` → dino : moschops · existe déjà : paleoart/Moschops_coloriage.webp
-- `Saurolophus_coloriage.png` → dino : saurolophus · existe déjà : paleoart/Saurolophus_coloriage.webp
-- `Scutellosaurus_coloriage.png` → dino : scutellosaurus · existe déjà : paleoart/Scutellosaurus_coloriage.webp
 
-### _new-headshots (10)
+### _new-headshots (0)
 
-- `Corythosaurus_headshot.png` → dino : corythosaurus · existe déjà : paleoart/Corythosaurus_headshot.jpg
-- `Edaphosaurus_headshot.png` → dino : edaphosaurus · existe déjà : paleoart/Edaphosaurus_headshot.jpg
-- `Gorgonops_headshot.png` → dino : gorgonops · existe déjà : paleoart/Gorgonops_headshot.jpg
-- `Hatzegopteryx_headshot.png` → dino : hatzegopteryx · existe déjà : paleoart/Hatzegopteryx_headshot.jpg
-- `Lystrosaurus_headshot.png` → dino : lystrosaurus · existe déjà : paleoart/Lystrosaurus_headshot.jpg
-- `Maiasaura_headshot.png` → dino : maiasaura · existe déjà : paleoart/Maiasaura_headshot.jpg
-- `Minmi_headshot.png` → dino : minmi · existe déjà : paleoart/Minmi_headshot.jpg
-- `Moschops_headshot.png` → dino : moschops · existe déjà : paleoart/Moschops_headshot.jpg
-- `Saurolophus_headshot.png` → dino : saurolophus · existe déjà : paleoart/Saurolophus_headshot.jpg
-- `Scutellosaurus_headshot.png` → dino : scutellosaurus · existe déjà : paleoart/Scutellosaurus_headshot.jpg
 
-### _new-ombre (1)
+### _new-ombre (0)
 
-- `Saurolophus_ombre.png` → dino : saurolophus · existe déjà : ombres/Saurolophus_ombre.png
 
-### _new-xxl (13)
+### _new-xxl (0)
 
-- `Dilophosaurus_manger.png` → dino : dilophosaurus · à qualifier (xxl)
-- `Gallimimus_paris.png` → dino : gallimimus · à qualifier (xxl)
-- `Giganotosaurus_meute_argentino.png` → dino : giganotosaurus · à qualifier (xxl)
-- `Giganotosaurus_meute_diplo.png` → dino : giganotosaurus · à qualifier (xxl)
-- `Mosasaurus_ecosysteme.png` → dino : mosasaurus · à qualifier (xxl)
-- `Mosasaurus_manger.png` → dino : mosasaurus · à qualifier (xxl)
-- `Parasaurolophus_paris.png` → dino : parasaurolophus · à qualifier (xxl)
-- `Plateosaurus_paris.png` → dino : plateosaurus · à qualifier (xxl)
-- `Saurolophus.png` → dino : saurolophus · à qualifier (xxl)
-- `Saurolophus_ecosysteme.png` → dino : saurolophus · à qualifier (xxl)
-- `Saurolophus_funfact.png` → dino : saurolophus · à qualifier (xxl)
-- `Saurolophus_manger.png` → dino : saurolophus · à qualifier (xxl)
-- `Saurolophus_paris.png` → dino : saurolophus · à qualifier (xxl)
 
 ## (c) Fichiers orphelins (id ne matchant aucun dino)
 
-- paleoart : `Amargasaurus_hypo-epines.jpg`, `Amargasaurus_hypo-voile.jpg`
+- paleoart : aucun
 - ombres : aucun
 - sprites : aucun
 - traces : aucun
@@ -187,27 +126,27 @@ Colonnes : src = fiche/étymo/mesures sources · A5 = 5 blocs audio fiche · NV 
 - audio noms/ : aucun
 - grok/ : `compsognathus_lot2_1_environnement.jpg`, `compsognathus_lot2_1_sa_vie.jpg`, `gorgosaurus_inbox2_5_environnement.jpg`, `psittacosaurus_lot2_1_environnement.jpg`, `psittacosaurus_lot2_1_sa_vie.jpg`, `styracosaurus_inbox2_1_taille.jpg`, `styracosaurus_inbox2_2_sa_vie.jpg`, `styracosaurus_inbox2_3_environnement.jpg`, `styracosaurus_inbox2_4_environnement.jpg`, `styracosaurus_inbox2_5_sa_vie.jpg`, `styracosaurus_lot2_1_sa_vie.jpg`, `suchomimus_lot2_1_environnement.jpg`, `suchomimus_lot2_1_sa_vie.jpg`
 
-> NB grok/ : les 13 « orphelins » correspondent à des dinos du **dico des racines hors DINOS** (compsognathus, gorgosaurus, psittacosaurus, styracosaurus, suchomimus — présents dans `dinos-racines.js`) — galerie gelée, pas une erreur. Les 2 `Amargasaurus_hypo-*` de paleoart sont des variantes d'hypothèse (épines vs voile), à documenter ou ranger.
+> NB grok/ : les 13 « orphelins » correspondent à des dinos du **dico des racines hors DINOS** (compsognathus, gorgosaurus, psittacosaurus, styracosaurus, suchomimus — présents dans `dinos-racines.js`) — galerie gelée, pas une erreur. Les 2 `Amargasaurus_hypo-*` de paleoart sont des slides de fiche RÉFÉRENCÉES (dev-dinos.html, carousel « épines vs voile ») — exclus des orphelins.
 
 ## (d) Audio — couverture EL vs fallback TTS
 
-- Fichiers totaux audio/dinos/fr/ : 454 mp3 (+ 70 dans noms/)
+- Fichiers totaux audio/dinos/fr/ : 467 mp3 (+ 70 dans noms/)
 - 5 blocs fiche : 70/70 dinos complets → 350/350 segments
 - noms/ (bonus jeux, voix courte) : 70/70
 - récits : 8/8 ✅ (recit-cretace.mp3, recit-extinction.mp3, recit-glace-mammouth.mp3, recit-intro.mp3, recit-jurassique.mp3, recit-mammiferes.mp3, recit-paleo.mp3, recit-trias.mp3)
-- menu-fam-* : 9/11 → **manquants : menu-fam-mammiferes.mp3, menu-fam-oiseaux.mp3** (fallback TTS navigateur)
+- menu-fam-* : 11/11 → **manquants : ** (fallback TTS navigateur)
 - menu-ep-* : 8 (menu-ep-cretace.mp3, menu-ep-extinction.mp3, menu-ep-glace-mammouth.mp3, menu-ep-intro.mp3, menu-ep-jurassique.mp3, menu-ep-mammiferes.mp3, menu-ep-paleo.mp3, menu-ep-trias.mp3)
 - autres menu-* : 8 (menu-accueil.mp3, menu-familles.mp3, menu-regime-carnivores.mp3, menu-regime-herbivores.mp3, menu-regime-omnivores.mp3, menu-regime-piscivores.mp3, menu-regime.mp3, menu-voyage.mp3)
-- dico-* (racines étymo) : 65
+- dico-* (racines étymo) : 76
 - special-* : 6 (special-extinction-a.mp3, special-extinction-b.mp3, special-extinction-c.mp3, special-extinction-d.mp3, special-extinction-recap.mp3, special-pangee-recap.mp3)
 - manifeste DINO_NOM_AUDIO_BY_LANG.fr : 70 ids · disque noms/ : 70 · delta manifeste−disque : ∅ · delta disque−manifeste : ∅
 - manifeste DINO_FUNFACT_AUDIO_BY_LANG.fr : 70 ids · delta vs disque *-funfact.mp3 : ∅
-- dico : DINO_RACINES déclare 76 racines · DICO_VOICE (dev-dinos.html) en mappe 61 · fichiers disque 65 · mappés sans fichier : ∅ · fichiers non mappés : dico-alberto.mp3, dico-edmonto.mp3, dico-mosa.mp3, dico-utah.mp3 → **15 racines sans MP3 (fallback voix « dame » TTS)**
+- dico : DINO_RACINES déclare 100 racines · DICO_VOICE (dev-dinos.html) en mappe 76 · fichiers disque 76 · mappés sans fichier : ∅ · fichiers non mappés : ∅ → **24 racines sans MP3 (fallback voix « dame » TTS)**
 
 ## (e) Emblèmes familles
 
-- DINO_FAMILLES : 11 familles · emblèmes présents : 9
-- **manquants : mammiferes (Mammifères), oiseaux (Oiseaux)**
+- DINO_FAMILLES : 11 familles · emblèmes présents : 11
+- **manquants : aucun**
 
 ## (f) Écarts README/INVARIANTS vs disque
 

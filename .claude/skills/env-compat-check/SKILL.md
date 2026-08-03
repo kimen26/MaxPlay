@@ -186,6 +186,18 @@ EOF
 
 ✅ chaque serveur en `OK` + `PARITE OK`. ❌ `CLAUDE-ONLY` / `KIMI-ONLY` = dérive → recopier l'entrée de l'autre côté (format identique `mcpServers`, copier les `env` sans les afficher ; user-level côté Kimi). `BINAIRE MANQUANT` = `command` introuvable (ex : bun/npx hors PATH, exe supprimé). Exception légitime possible : un serveur volontairement mono-outil — le documenter alors dans l'en-tête de ce skill (non-portage volontaire).
 
+## Check 11b — MCP : pas de placeholder `${VAR}` non résolu (ajout 2026-08-03)
+
+> Leçon EP-DINO-BUG-MCP-CLE-EL : Claude Code **résout** `"${ELEVENLABS_API_KEY}"` depuis le bloc `env` de `~/.claude/settings.json` ; Kimi Code **ne le résout pas** → le placeholder part tel quel comme clé → **401 invalid_api_key** silencieux côté Kimi (alors que « ça marche sous Claude »). Incident réel 2026-08-03 : 7 placeholders cassés dans `~/.kimi-code/mcp.json` (llm-copains + elevenlabs).
+
+```bash
+for f in "$HOME/.kimi-code/mcp.json" .kimi-code/mcp.json "$HOME/.claude.json" .mcp.json; do
+  [ -f "$f" ] && grep -q '\${' "$f" && echo "PLACEHOLDER ${f} : $(grep -o '\${[A-Z_]*}' "$f" | sort -u | tr '\n' ' ')"
+done; echo "check terminé"
+```
+
+✅ aucune ligne `PLACEHOLDER` côté Kimi (côté Claude c'est toléré, l'expansion y fonctionne — mais préférer la valeur réelle pour rester bi-outil). ❌ placeholder côté Kimi → remplacer par la valeur réelle depuis `~/.claude/settings.json` → `env` (backup d'abord, **sans jamais afficher la clé**), puis redémarrer la session (les process MCP gardent l'env de leur spawn).
+
 ---
 
 ## Rapport final attendu

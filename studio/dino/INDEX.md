@@ -66,5 +66,5 @@
 
 - **Compte dinos · familles · régimes** → [`pmo/INVARIANTS.md`](pmo/INVARIANTS.md).
 - Familles : titres = noms scientifiques (table clé↔libellé dans INVARIANTS). 4 régimes alimentaires.
-- Audio : récits d'époque + menus (voix réelle) + spéciaux + fiches dino (5 blocs). Reste = TTS navigateur. Cénozoïque ✅ livré (9 blocs complétés 2026-07-13). ⚠️ 2 accroches familles Cénozoïque (`menu-fam-mammiferes`, `menu-fam-oiseaux`) manquent → TTS navigateur (voir backlog).
+- Audio : récits d'époque + menus (voix réelle) + spéciaux + fiches dino (5 blocs). Reste = TTS navigateur. Cénozoïque ✅ livré (9 blocs complétés 2026-07-13). Accroches familles ✅ 11/11 (2 Cénozoïque ajoutées 2026-08-03).
 - Voyage : indicateur d'avancement (reset session). Fil rouge Tritri.

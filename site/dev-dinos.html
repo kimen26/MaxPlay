@@ -643,6 +643,7 @@ const MENU_FAM_VOICE = {
   bec: window.AUDIO_DINOS + 'menu-fam-bec.mp3', raptor: window.AUDIO_DINOS + 'menu-fam-raptor.mp3',
   pterosaures: window.AUDIO_DINOS + 'menu-fam-pterosaures.mp3', enaliosaures: window.AUDIO_DINOS + 'menu-fam-enaliosaures.mp3',
   volant: window.AUDIO_DINOS + 'menu-fam-volant.mp3',
+  mammiferes: window.AUDIO_DINOS + 'menu-fam-mammiferes.mp3', oiseaux: window.AUDIO_DINOS + 'menu-fam-oiseaux.mp3',
 };
 const MENU_REGIME_VOICE = {
   carnivores: window.AUDIO_DINOS + 'menu-regime-carnivores.mp3', herbivores: window.AUDIO_DINOS + 'menu-regime-herbivores.mp3',
@@ -653,7 +654,7 @@ function playRegimeVoice(catId, fallbackTxt) { _playMenuSrc(MENU_REGIME_VOICE[ca
 
 /* ── Dico : dialogue 2 voix (narrateur explique la racine + Wex donne les exemples de dinos) ──
    clé racine (r.cle) → audio/dinos/dico-<slug>.mp3. Racines sans MP3 = fallback dame jusqu'à génération. */
-const DICO_VOICE = {"-saure":"dico-saure","-odon":"dico-odon","-raptor":"dico-raptor","-lophe":"dico-lophe","cérat-":"dico-cerat","-céphale":"dico-cephale","-mime":"dico-mime","-onyx":"dico-onyx","-ops":"dico-ops","di-":"dico-di","-cantho-":"dico-cantho","-docus / dokos":"dico-docus","-gnathus / gnathos":"dico-gnathus","-metro- / metron":"dico-metro","-oplo-":"dico-oplo","-physis":"dico-physis","-pteryx / pterux":"dico-pteryx","-taurus":"dico-taurus","acro-":"dico-acro","allo-":"dico-allo","an-":"dico-an","anky- / ankylo-":"dico-anky","apato-":"dico-apato","archaeo- / arkhaios":"dico-archaeo","bary- / barus":"dico-bary","brachio-":"dico-brachio","camara-":"dico-camara","carcharo-":"dico-carcharo","carno-":"dico-carno","coelo- / koilos":"dico-coelo","compso- / kompsos":"dico-compso","corytho- / korus":"dico-corytho","cryo-":"dico-cryo","deino- / deinos":"dico-deino","diplo-":"dico-diplo","eu-":"dico-eu","galli-":"dico-galli","giga- / gigas":"dico-giga","gorgo-":"dico-gorgo","kentro- / kentron":"dico-kentro","maia-":"dico-maia","micro- / mikros":"dico-micro","noto-":"dico-noto","ovi-":"dico-ovi","pachy- / pakhus":"dico-pachy","para-":"dico-para","plateo-":"dico-plateo","proto-":"dico-proto","psittaco- / psittakos":"dico-psittaco","ptér- / pteron":"dico-pter","rex":"dico-rex","spino-":"dico-spino","stégo- / stegos":"dico-stego","styraco- / sturax":"dico-styraco","sucho- / soukhos":"dico-sucho","tarbo-":"dico-tarbo","therizino- / therizo":"dico-therizino","tri-":"dico-tri","troo- / titrosko":"dico-troo","tyrannos-":"dico-tyrannos","veloci-":"dico-veloci"};
+const DICO_VOICE = {"-saure":"dico-saure","-odon":"dico-odon","-raptor":"dico-raptor","-lophe":"dico-lophe","cérat-":"dico-cerat","-céphale":"dico-cephale","-mime":"dico-mime","-onyx":"dico-onyx","-ops":"dico-ops","di-":"dico-di","-cantho-":"dico-cantho","-docus / dokos":"dico-docus","-gnathus / gnathos":"dico-gnathus","-metro- / metron":"dico-metro","-oplo-":"dico-oplo","-physis":"dico-physis","-pteryx / pterux":"dico-pteryx","-taurus":"dico-taurus","-us":"dico-us","-vertebra":"dico-vertebra","acro-":"dico-acro","Alberto-":"dico-alberto","allo-":"dico-allo","Amarga-":"dico-amarga","an-":"dico-an","anky- / ankylo-":"dico-anky","apato-":"dico-apato","archaeo- / arkhaios":"dico-archaeo","bary- / barus":"dico-bary","brachio-":"dico-brachio","camara-":"dico-camara","carcharo-":"dico-carcharo","carno-":"dico-carno","coelo- / koilos":"dico-coelo","compso- / kompsos":"dico-compso","corytho- / korus":"dico-corytho","cryo-":"dico-cryo","deino- / deinos":"dico-deino","diplo-":"dico-diplo","édapho- / edaphos":"dico-edapho","Edmonto-":"dico-edmonto","eu-":"dico-eu","galli-":"dico-galli","giga- / gigas":"dico-giga","gorgo-":"dico-gorgo","gorgon-":"dico-gorgon","iguano-":"dico-iguano","kentro- / kentron":"dico-kentro","lystro- / lystron":"dico-lystro","maia-":"dico-maia","micro- / mikros":"dico-micro","Minmi":"dico-minmi","Mosa-":"dico-mosa","moscho- / moschos":"dico-moscho","noto-":"dico-noto","ovi-":"dico-ovi","pachy- / pakhus":"dico-pachy","para-":"dico-para","plateo-":"dico-plateo","proto-":"dico-proto","psittaco- / psittakos":"dico-psittaco","ptér- / pteron":"dico-pter","Quetzalcoatl-":"dico-quetzalcoatl","rex":"dico-rex","scutello- / scutellum":"dico-scutello","spino-":"dico-spino","stégo- / stegos":"dico-stego","styraco- / sturax":"dico-styraco","sucho- / soukhos":"dico-sucho","tarbo-":"dico-tarbo","therizino- / therizo":"dico-therizino","tri-":"dico-tri","troo- / titrosko":"dico-troo","tyrannos-":"dico-tyrannos","Utah-":"dico-utah","veloci-":"dico-veloci"};
 function playDicoVoice(cle, fallbackTxt) {
   const slug = DICO_VOICE[cle];
   _playMenuSrc(slug ? window.AUDIO_DINOS + '' + slug + '.mp3' : null, fallbackTxt);
@@ -736,14 +737,12 @@ function buildChronoDinoThumb(d) {
    FAM_EMBLEME_IMG = vignette réemployée des emblèmes Lunii (studio/dino/content/lunii/_sources-hd/,
    convertis fond transparent 256px dans site/img/dinos/familles/) — demande Papa Yann 2026-07-28
    « on pourrait pas utiliser les images qu'on a utilisées dans la Lunii ? ».
-   9/11 familles couvertes (source Lunii existe) ; mammiferes/oiseaux n'ont pas d'emblème Lunii
-   → fallback emoji fam.emoji en attendant (ticket dino-pmo backlog). */
+   11/11 familles couvertes (mammiferes + oiseaux convertis des sources HD Lunii le 2026-08-02). */
 const FAM_EMBLEME_IMG = {
   trex: 'trex.png', cou_long: 'cou_long.png', arme: 'arme.png',
   cornu: 'cornu.png', bec: 'bec.png', raptor: 'raptor.png',
   pterosaures: 'pterosaures.png', enaliosaures: 'enaliosaures.png', volant: 'volant.png',
-  // mammiferes: absent (pas de source Lunii) — fallback emoji
-  // oiseaux: absent (pas de source Lunii) — fallback emoji
+  mammiferes: 'mammiferes.png', oiseaux: 'oiseaux.png',
 };
 function famEmblemeSrc(famId) {
   const img = FAM_EMBLEME_IMG[famId];

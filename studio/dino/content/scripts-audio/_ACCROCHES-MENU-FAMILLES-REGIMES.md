@@ -18,6 +18,10 @@
 | `pterosaures` | Ptérosaures ! Ptéro = aile, saure = lézard. Les ailes de peau comme des chauves-souris géantes — le plus grand, large comme un petit avion ! |
 | `enaliosaures` | Énaliosaures ! Enalio = de la mer, saure = lézard. Pas des dinos : des reptiles géants de la MER ! |
 | `volant` | Avant les dinosaures ! Lui, le Dimétrodon, vivait bien AVANT les dinos — un cousin des mammifères, comme toi ! |
+| `mammiferes` | Les mammifères ! Des bêtes à poils dont la maman fait du lait — comme toi ! Ici : mammouth et smilodon ! |
+| `oiseaux` | Les oiseaux ! Les petits-cousins des dinos — les seuls qui restent ! Le Titanis, l'oiseau-terreur ! |
+
+> ➕ `mammiferes` + `oiseaux` ajoutés 2026-08-03 (Cénozoïque — les 2 familles sans source Lunii). Même voix/modèle que les 9 autres.
 
 ## 🍽️ Régimes (4) — fichier `menu-regime-<cat>.mp3`
 

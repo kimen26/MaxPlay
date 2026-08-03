@@ -539,6 +539,61 @@ wex: [excited] Comme Quetzalcoatl-**us**, Diplodoc-**us**, Tyrannosaurus — le 
 
 ---
 
+## CLIPS AJOUTÉS 2026-08-03 (7 racines présentes dans dinos-racines.js mais sans script)
+
+> Racines arrivées avec l'extension 69 → 76 du dico. Même format dialogue narrateur_h + wex.
+
+---
+
+**`-vertebra`** | latin | `dico-vertebra`
+
+narrateur_h: *-ver-tè-bra*, en latin ça veut dire vertèbre — les petits os du dos !
+wex: [happily] Minmi para-**vertebra** — un petit blindé d'Australie, nommé pour ses vertèbres spéciales !
+
+---
+
+**`édapho- / edaphos`** | grec | `dico-edapho`
+
+narrateur_h: *é-da-pho-*, en grec ça veut dire le sol, le pavé.
+wex: [happily] **Édapho**-saure — ses dents étaient serrées comme les pierres d'un pavé, et il portait une grande voile sur le dos !
+
+---
+
+**`gorgon-`** | grec | `dico-gorgon`
+
+narrateur_h: *gor-gon-*, en grec c'est la Gorgone — un monstre des vieilles histoires grecques au visage terrifiant.
+wex: [excited] **Gorgon**-ops — la face de Gorgone ! Un chasseur aux dents en sabre, bien avant les dinosaures !
+
+---
+
+**`lystro- / lystron`** | grec | `dico-lystro`
+
+narrateur_h: *lys-tro-*, en grec ça veut dire la pelle.
+wex: [happily] **Lystro**-saure — le lézard-pelle ! Un petit fouisseur qui a survécu à la plus grosse catastrophe de la Terre !
+
+---
+
+**`Minmi`** | nom propre | `dico-minmi`
+
+narrateur_h: *Min-mi*, ce n'est pas un mot grec : c'est Minmi Crossing — un lieu en Australie où on a trouvé ses os.
+wex: [excited] **Minmi** — un petit blindé à plaques, découvert tout en bas, en Australie !
+
+---
+
+**`moscho- / moschos`** | grec | `dico-moscho`
+
+narrateur_h: *mo-scho-*, en grec ça veut dire le veau — le bébé de la vache.
+wex: [happily] **Mosch**-ops — la face de veau ! Un gros doux au crâne épais comme un casque, bien avant les dinosaures !
+
+---
+
+**`scutello- / scutellum`** | latin | `dico-scutello`
+
+narrateur_h: *scu-tel-lo-*, en latin ça veut dire petit bouclier.
+wex: [excited] **Scutello**-saure — couvert de centaines de petits boucliers sur le dos, comme un chevalier !
+
+---
+
 ## BILAN
 
 - Clips racines (type "racine") : **61**

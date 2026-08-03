@@ -625,3 +625,13 @@ Tous segments JSON V3 + MP3 5 blocs → images paléoart. Zéro orphelin audio.
 - 🟡 `content/INDEX.md` (ancien) coexiste avec le nouveau `dino/INDEX.md` : l'ancien décrit le dossier content, le nouveau est le catalogue du pôle. Pas un doublon (scopes différents) mais à vérifier au prochain audit forme.
 
 **Verdict** : pôle opérationnel, structure saine. Prochain audit forme : vérifier orphelins dans `content/` + cohérence count.
+
+---
+
+## 2026-08-02 — Audit complet fiches dino (demande Papa Yann, session Kimi)
+
+- Nouveau canon : [`audit-fiches-complet.md`](audit-fiches-complet.md) — matrice 70 dinos × 17 axes (textes, audio EL, images, ombres, sprites, traces), générée par `studio/dino/content/scripts/export/_audit-fiches-complet.cjs` (ré-exécutable).
+- Verdict : 70/70 assets déployés OK (paleoart 7/7, ombres, 2 sprites, 5 audio + nom vocal). Gaps = textes sources seulement (26 dinos : fiches/étymo/mesures consolidés manquants).
+- Anomalies : menu-fam-mammiferes/oiseaux + emblèmes familles manquants · staging `_new-*` non vidé (21 PNG purgeables + 13 xxl à arbitrer) · dico 11 racines sans MP3 · README sprites « top 15 » obsolète · special-* = 6 fichiers (INVARIANTS dit 2) · menu-ep = 8 (INVARIANTS implicite 7).
+
+**Résolution 2026-08-03** (demande « tout corriger ») : anomalies 1-4 traitées — menu-fam Cénozoïque générés + câblés · dico 76/76 (11 MP3 + 4 remappings) · emblèmes 11/11 · staging purgé + XXL archivés · README/INVARIANTS corrigés. Corrections sur l'audit lui-même : `Amargasaurus_hypo-*` = slides fiche actives (pas orphelins), `menu-regime.mp3` = intro onglet active (pas legacy). Reste ouvert : textes sources 26 dinos (EP-DINO-SOURCES-TEXTES-26) + bug MCP clé EL (EP-DINO-BUG-MCP-CLE-EL). Détail : sprint-log 2026-08-03.

@@ -21,8 +21,8 @@
 | Régimes alimentaires (`DINO_CATEGORIES`) | **4** | idem (inchangé) |
 | Périodes (`DINO_PERIODES`) | **5** | ✅ 2026-07-03 : ajout `cenozoique` (66 Ma → aujourd'hui), rejoins les 4 antérieures (Triassic, Jurassic, Crétacé, Autres) |
 | Récits d'époque (voyage) | **8** | `audio/dinos/recit-*.mp3` |
-| Accroches menu (voix réelle) | **17** | `audio/dinos/menu-*.mp3` (4 onglets + 9 familles `menu-fam-*` + 4 régimes `menu-regime-*`) |
-| Spéciaux (Pangée, Extinction) | **2** | `audio/dinos/special-*.mp3` |
+| Accroches menu (voix réelle) | **17** | `audio/dinos/menu-*.mp3` (4 onglets + 9 familles `menu-fam-*` + 4 régimes `menu-regime-*` — dont 2 Cénozoïque ajoutés 2026-08-02) |
+| Spéciaux (Pangée, Extinction) | **6** | `audio/dinos/special-*.mp3` (✅ 2026-08-02 : 6 fichiers sur disque — special-extinction-a/b/c/d, special-extinction-recap, special-pangee-recap ; le count historique « 2 » était obsolète) |
 | Dinos avec audio complet (recap+4 blocs) | **70** | `DINO_AUDIO` (✅ 2026-07-13 : 9 Cénozoïque complétés. ✅ 2026-07-25 : les 7 nouveaux — 28 blocs text-to-dialogue + 7 recaps concat ffmpeg loudnorm, eleven_v3, grep-interdits passé. ✅ **2026-07-27 : +Saurolophe** — 4 blocs + recap, durées vérifiées ffprobe (32s/21,6s/21,4s/15,7s/90,6s). Manifeste régénéré via `_gen-audio-manifest.cjs` : 70 ids. Plus aucun dino en attente d'audio.) |
 | Noms vocaux dino (assets bonus) | **60** | `site/audio/dinos/noms/{id}.mp3` (✅ 2026-07-06 : 60 MP3 narrateur_h [excited] jeu, lancés dans mj-24/28/31/33) |
 | Langues i18n cibles (audio dino) | **9** | ✅ 2026-07-10 : FR (canon) · EN · PT-BR · ES · IT · AR · RU · ZH · JA **FIGÉE**. Archi déployée (pack préfixe langue, overlay strings, manifest anti-404, studio i18n/ centralisé). Tests ✅ 12 specs Playwright (mj-15/24/25/26/27/28/29/30/32/33/41, mj-31 TOUS). Invariant DEC-I18N-INVARIANT-001 : toute langue = lexique AVANT audio, jamais régresser. |

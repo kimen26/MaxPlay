@@ -594,6 +594,181 @@ wex: [excited] **Scutello**-saure — couvert de centaines de petits boucliers s
 
 ---
 
+## CLIPS AJOUTÉS 2026-08-03 (2e vague) — 24 racines, extension 76 → 100 du dico
+
+> Même format dialogue narrateur_h + wex. Racines-lieux : dire que ce n'est PAS du grec
+> (pattern Minmi/Amarga/Quetzalcoatl). `-titan` et `Titanis` : même sens, 2 clips distincts cohérents.
+
+---
+
+**`-thérium / thèrion`** | grec | `dico-therium`
+
+narrateur_h: *-thé-rium*, en grec ça veut dire bête, animal sauvage.
+wex: [excited] Mé-ga-**thérium**, la grande bête, et Para-cér-a-**thérium** — deux géants d'après les dinosaures !
+
+---
+
+**`-a-`** | grec | `dico-a`
+
+narrateur_h: *-a-*, tout petit, en grec ça veut dire sans.
+wex: [happily] Para-cér-**a**-thérium — la bête presque SANS corne ! Un tout petit mot qui change tout !
+
+---
+
+**`-céras- / keras`** | grec | `dico-ceras`
+
+narrateur_h: *-cé-ras-* ou *ké-ras*, en grec ça veut dire corne — c'est pareil !
+wex: [excited] Para-**cér**-a-thérium — presque sans corne ! Et Tri-**céra**-tops, les trois cornes — même mot !
+
+---
+
+**`-cyon / kuôn`** | grec | `dico-cyon`
+
+narrateur_h: *-cy-on*, en grec ça veut dire chien.
+wex: [happily] Aeno-**cyon** — le chien terrible, le loup géant d'après les dinosaures !
+
+---
+
+**`-elon / khelônè`** | grec | `dico-elon`
+
+narrateur_h: *-é-lon*, en grec ça veut dire tortue.
+wex: [excited] Arch-**élon** — la tortue chef ! La plus grande tortue de tous les temps, grande comme une petite voiture !
+
+---
+
+**`-ia`** | latin | `dico-ia`
+
+narrateur_h: *-ia*, c'est une fin de nom latin qui veut dire « celui de ».
+wex: [happily] Edmonton-**ia** — celui d'Edmonton ! Un blindé à épines du Canada !
+
+---
+
+**`-odonta / odous`** | grec | `dico-odonta`
+
+narrateur_h: *-o-don-ta* ou *o-dous*, en grec ça veut dire dent — c'est pareil !
+wex: [excited] Coel-**odonta** — la dent creuse ! Un rhinocéros tout poilu d'après les dinosaures !
+
+---
+
+**`-pleuro- / pleura`** | grec | `dico-pleuro`
+
+narrateur_h: *-pleu-ro-*, en grec ça veut dire côté, flanc.
+wex: [happily] Lio-**pleuro**-don — des dents lisses sur le côté ! Un monstre marin immense !
+
+---
+
+**`-titan / Titan`** | grec | `dico-titan`
+
+narrateur_h: *-ti-tan*, en grec ce sont les Titans — des géants des vieilles histoires grecques.
+wex: [excited] Patago-**titan** — le géant de Patagonie, un des plus grands dinosaures de toute l'histoire !
+
+---
+
+**`aeno- / ainos`** | grec | `dico-aeno`
+
+narrateur_h: *aé-no-*, en grec ça veut dire terrible, redoutable.
+wex: [excited] **Aeno**-cyon — le chien terrible ! Un loup géant, le chef de sa meute !
+
+---
+
+**`arch- / arkhè`** | grec | `dico-arch`
+
+narrateur_h: *arch-*, en grec ça veut dire chef, premier.
+wex: [happily] **Arch**-élon — la tortue chef ! La plus grande tortue qui ait jamais nagé !
+
+---
+
+**`Edmonton-`** | lieu | `dico-edmonton`
+
+narrateur_h: *Ed-mon-ton-*, ce n'est pas un mot grec : c'est la formation d'Edmonton — un lieu du Canada où on a trouvé ses os.
+wex: [happily] **Edmonton**-ia — celui d'Edmonton ! Un blindé à épines découvert au Canada !
+
+---
+
+**`élasmo- / elasmos`** | grec | `dico-elasmo`
+
+narrateur_h: *é-las-mo-*, en grec ça veut dire plaque de métal fine, tôle.
+wex: [excited] **Élasmo**-saure — ses os étaient fins comme des tôles ! Un serpent de mer au cou immense !
+
+---
+
+**`glypto- / glyptos`** | grec | `dico-glypto`
+
+narrateur_h: *glyp-to-*, en grec ça veut dire sculpté, gravé.
+wex: [happily] **Glypto**-don — la dent sculptée ! Un tatou géant avec sa carapace gravée, gros comme une voiture !
+
+---
+
+**`Hatzego-`** | lieu | `dico-hatzego`
+
+narrateur_h: *Ha-tze-go-*, ce n'est pas un mot grec : c'est Hațeg — une région de Roumanie, une île au temps des dinosaures.
+wex: [excited] **Hatzego**-ptéryx — l'aile de Hațeg ! Un reptile volant géant qui chassait à quatre pattes !
+
+---
+
+**`ichthyo- / ikhthus`** | grec | `dico-ichthyo`
+
+narrateur_h: *ich-thyo-*, en grec ça veut dire poisson.
+wex: [happily] **Ichthyo**-saure — le lézard-poisson ! Il nageait comme un dauphin dans la mer des dinos !
+
+---
+
+**`lio- / leios`** | grec | `dico-lio`
+
+narrateur_h: *li-o-*, en grec ça veut dire lisse.
+wex: [excited] **Lio**-pleuro-don — ses dents étaient lisses, sans une rayure ! Un monstre marin aux dents lisses !
+
+---
+
+**`Mammuth-`** | russe/mansi | `dico-mammuth`
+
+narrateur_h: *Mam-mouth-*, ce n'est pas du grec : ça vient du russe mamont — « corne de la terre », car on trouvait ses défenses dans la terre gelée !
+wex: [excited] Le **mammouth** — tout poilu, avec des défenses immenses, la star des glaces !
+
+---
+
+**`méga- / megas`** | grec | `dico-mega`
+
+narrateur_h: *mé-ga-*, en grec ça veut dire grand.
+wex: [excited] **Méga**-thérium — la grande bête ! Un paresseux géant, grand comme un éléphant !
+
+---
+
+**`ophthalmo- / ophthalmos`** | grec | `dico-ophthalmo`
+
+narrateur_h: *ophtal-mo-*, en grec ça veut dire œil.
+wex: [happily] **Ophtalmo**-saure — des yeux immenses, gros comme des assiettes, pour voir dans la nuit des mers !
+
+---
+
+**`Patago-`** | lieu | `dico-patago`
+
+narrateur_h: *Pa-ta-go-*, ce n'est pas un mot grec : c'est la Patagonie — une région d'Argentine où on a trouvé ses os.
+wex: [excited] **Patago**-titan — le titan de Patagonie ! Un des plus grands dinosaures jamais trouvés !
+
+---
+
+**`Shoni-`** | lieu | `dico-shoni`
+
+narrateur_h: *Sho-ni-*, ce n'est pas un mot grec : ce sont les monts Shoshone — des montagnes du Nevada où on a trouvé ses os.
+wex: [happily] **Shoni**-saure — un reptile de la mer grand comme une baleine, trouvé dans les montagnes !
+
+---
+
+**`smilo- / smilè`** | grec | `dico-smilo`
+
+narrateur_h: *smi-lo-*, en grec ça veut dire couteau, lame.
+wex: [excited] **Smilo**-don — la dent-couteau ! Le tigre à dents de sabre, le chasseur des glaces !
+
+---
+
+**`Titanis`** | grec | `dico-titanis`
+
+narrateur_h: *Ti-ta-nis*, en grec ça vient des Titans — des géants des vieilles histoires grecques, comme *-titan*.
+wex: [excited] **Titanis** — l'oiseau-terreur ! Un oiseau géant qui courait plus vite qu'un cheval, sans jamais voler !
+
+---
+
 ## BILAN
 
 - Clips racines (type "racine") : **61**

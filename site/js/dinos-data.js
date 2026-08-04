@@ -266,19 +266,33 @@ function _compHaut(m) {
 // gros chat 4 kg · enfant 4 ans 16 kg · enfant 8 ans 25 kg · gros chien 30 kg · enfant 10 ans 35 kg ·
 // loup 50 kg · kangourou 70 kg · Papa 80 kg · cochon 110 kg · âne 160 kg · lion 200 kg · tigre 250 kg ·
 // zèbre 300 kg · poney 380 kg · cheval 500 kg · vache 650 kg · petite voiture ~1 t · grosse voiture ~1,6 t ·
-// rhinocéros 2 t · hippopotame 2,5 t · petit camion 3,5 t · éléphant 5 t.
+// rhinocéros 2 t · hippopotame 3 t · petit camion 3,5 t · éléphant 5 t · camion 7 t.
 // Historique : paliers resserrés 2026-07-25 (trou 0,13→1,2 t = +400 %) · repères intermédiaires 2026-08-03
-// (cochon/âne/lion/tigre/cheval + hippo 2,5 t + éléphant 5 t) · vérif 70/70 ≤ 10 % : + enfant 8 ans, kangourou,
-// zèbre, 2 lions, grosse voiture, 3 petites voitures, petit camion, 3 rhinocéros — règle : jamais > 10 % d'écart.
+// (cochon/âne/lion/tigre/zèbre/cheval + enfant 8 ans/kangourou + grosse voiture/petit camion/camion)
+// · hippo recalé 2,5→3 t (décision PY) : 2,5 t = « 5 chevaux », multiplicateurs au meilleur éléphant/hippo/rhino.
+// Règle : jamais > 10 % d'écart (vérif : content/scripts/export/_verif-comppoids.cjs).
 function _compPoids(t) {
-  if (t >= 11)   return `aussi lourd ${_que(_qty(Math.round(t / 5.5), 'éléphant', 'éléphants'))} !`;
-  if (t >= 6.5)  return `aussi lourd ${_que(_qty(Math.round(t / 2.5), 'hippopotame', 'hippopotames'))} !`;
+  if (t >= 7.5) {
+    // Multiplicateurs : le plus honnête parmi éléphant (5 t) / hippopotame (3 t) / rhinocéros (2 t).
+    // L'éléphant ne prime que s'il est presque aussi honnête que le meilleur (≤ 3 points d'écart en plus).
+    const cands = [
+      { n: Math.round(t / 5), w: 5, sing: 'éléphant', plur: 'éléphants', pref: 0 },
+      { n: Math.round(t / 3), w: 3, sing: 'hippopotame', plur: 'hippopotames', pref: 1 },
+      { n: Math.round(t / 2), w: 2, sing: 'rhinocéros', plur: 'rhinocéros', pref: 2 },
+    ].filter(c => c.n >= 2)
+     .map(c => ({ ...c, err: Math.abs(t - c.n * c.w) / (c.n * c.w) }))
+     .sort((a, b) => a.err - b.err || a.pref - b.pref);
+    const ele = cands.find(c => c.w === 5);
+    const best = (ele && ele.err <= 0.10 && ele.err <= cands[0].err + 0.03) ? ele : cands[0];
+    return `aussi lourd ${_que(_qty(best.n, best.sing, best.plur))} !`;
+  }
+  if (t >= 6.3)  return `aussi lourd qu'un camion !`;
   if (t >= 5.5)  return `aussi lourd que 3 rhinocéros !`;
   if (t >= 4.4)  return `aussi lourd qu'un éléphant !`;
   if (t >= 3.7)  return `aussi lourd que 2 rhinocéros !`;
   if (t >= 3.35) return `aussi lourd qu'un petit camion !`;
-  if (t >= 2.75) return `aussi lourd que 3 petites voitures !`;
-  if (t >= 2.3)  return `aussi lourd qu'un hippopotame !`;
+  if (t >= 2.8)  return `aussi lourd qu'un hippopotame !`;
+  if (t >= 2.3)  return `aussi lourd que 5 chevaux !`;
   if (t >= 1.8)  return `aussi lourd qu'un rhinocéros !`;
   if (t >= 1.45) return `aussi lourd qu'une grosse voiture !`;
   if (t >= 0.85) return `aussi lourd qu'une petite voiture !`;

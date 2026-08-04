@@ -11,13 +11,14 @@ const { DINOS, _compPoids } = m.exports;
 
 // Repères (t) — mot-clé de la phrase générée → poids implicite
 const REPERES = [
-  [/(\d+) éléphants/, 5.5, true], [/un éléphant/, 5],
-  [/(\d+) hippopotames/, 2.5, true], [/un hippopotame/, 2.5],
+  [/(\d+) éléphants/, 5, true], [/un éléphant/, 5],
+  [/(\d+) hippopotames/, 3, true], [/un hippopotame/, 3],
   [/(\d+) rhinocéros/, 2, true], [/un rhinocéros/, 2],
-  [/(\d+) petites voitures/, 1, true], [/une petite voiture/, 1],
-  [/petit camion/, 3.5], [/grosse voiture/, 1.6],
-  [/une vache/, 0.65], [/un cheval/, 0.5], [/(\d+) lions/, 0.2, true],
-  [/un lion/, 0.2], [/un poney/, 0.38], [/un zèbre/, 0.3],
+  [/(\d+) chevaux/, 0.5, true], [/un cheval/, 0.5],
+  [/petit camion/, 3.5], [/un camion/, 7],
+  [/(\d+) lions/, 0.2, true], [/un lion/, 0.2],
+  [/une petite voiture/, 1], [/grosse voiture/, 1.6],
+  [/une vache/, 0.65], [/un poney/, 0.38], [/un zèbre/, 0.3],
   [/un tigre/, 0.25], [/un âne/, 0.16], [/un cochon/, 0.11],
   [/que Papa/, 0.08], [/un kangourou/, 0.07], [/un loup/, 0.05],
   [/enfant de 10 ans/, 0.035], [/un gros chien/, 0.03],

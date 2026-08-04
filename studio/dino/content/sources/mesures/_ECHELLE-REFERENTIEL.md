@@ -68,7 +68,7 @@ camion (poubelle) ~9-10 m · bus RATP 12 m · bus accordéon 18 m.
 Repères (validés Papa Yann 2026-08-03) : petit oiseau · gros chat ≈ 4 kg · enfant 4 ans ≈ 16 kg · enfant 8 ans ≈ 25 kg ·
 gros chien ≈ 30 kg · enfant 10 ans ≈ 35 kg · loup ≈ 50 kg · kangourou ≈ 70 kg · **Papa ≈ 80 kg** · cochon ≈ 110 kg ·
 âne ≈ 160 kg · lion ≈ 200 kg · tigre ≈ 250 kg · zèbre ≈ 300 kg · poney ≈ 380 kg · cheval ≈ 500 kg · vache ≈ 650 kg ·
-petite voiture ≈ 1 t · grosse voiture ≈ 1,6 t · rhinocéros ≈ 2 t · hippopotame ≈ 2,5 t · petit camion ≈ 3,5 t · éléphant ≈ 5 t.
+petite voiture ≈ 1 t · grosse voiture ≈ 1,6 t · rhinocéros ≈ 2 t · hippopotame ≈ 3 t · petit camion ≈ 3,5 t · éléphant ≈ 5 t · camion ≈ 7 t.
 
 | Poids réel | Comparaison dite à Max |
 |------------|------------------------|
@@ -91,11 +91,13 @@ petite voiture ≈ 1 t · grosse voiture ≈ 1,6 t · rhinocéros ≈ 2 t · hip
 | ~650 kg | « aussi lourd qu'une vache ! » |
 | ~1 t | « aussi lourd qu'une petite voiture ! » |
 | ~1,6 t | « aussi lourd qu'une grosse voiture ! » |
-| ~2 t | « aussi lourd qu'un rhinocéros ! » (×2 = 4 t, ×3 = 6 t) |
-| ~2,5 t | « aussi lourd qu'un hippopotame ! » (×N au-delà de 6,5 t) |
-| ~3 t | « aussi lourd que 3 petites voitures ! » |
+| ~2 t | « aussi lourd qu'un rhinocéros ! » (×2 = 4 t, ×3 = 6 t, ×4 = 8 t) |
+| ~2,5 t | « aussi lourd que 5 chevaux ! » |
+| ~3 t | « aussi lourd qu'un hippopotame ! » (×N possible : 9 t = 3 hippo, 12 t = 4, 17-18 t = 6, 23 t = 8) |
 | ~3,5 t | « aussi lourd qu'un petit camion ! » |
-| ~5 t | « aussi lourd qu'un éléphant ! » (×N au-delà de 11 t) |
+| ~5 t | « aussi lourd qu'un éléphant ! » (×N possible : 10 t = 2, 25 t = 5, 47 t = 9, 70 t = 14) |
+| ~7 t | « aussi lourd qu'un camion ! » |
+| > 7,5 t | multiplicateur automatique : le plus honnête parmi éléphant (5 t) / hippopotame (3 t) / rhinocéros (2 t) — l'éléphant ne prime que s'il est presque aussi honnête (≤ 3 points en plus) |
 
 Règle : **aucune comparaison qui ment > 10 %** — vérifié 70/70 le 2026-08-03 (script `content/scripts/export/_verif-comppoids.cjs`).
 

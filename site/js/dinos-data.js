@@ -262,24 +262,41 @@ function _compHaut(m) {
   return `plus bas que tes genoux !`;
 }
 
-// POIDS (t). Repères : chat 4 kg · enfant 4 ans 16 kg · gros chien 30 kg · enfant 10 ans 50 kg ·
-// Papa 80 kg · gros cochon 200 kg · ours brun 300 kg · poney 400 kg · vache 0,7 t ·
-// cheval de trait 1 t · rhino 1,5 t · hippo 3 t · éléphant 6 t.
-// Paliers resserrés 2026-07-25 : le trou 0,13→1,2 t renvoyait « gros cochon » (200 kg) pour
-// 17 dinos, jusqu'à +400 % d'écart sur ceux d'1 t — violait la règle « jamais > 10 % ».
+// POIDS (t). Repères (validés Papa Yann 2026-08-03, animaux/objets connus d'un enfant) : petit oiseau ·
+// gros chat 4 kg · enfant 4 ans 16 kg · enfant 8 ans 25 kg · gros chien 30 kg · enfant 10 ans 35 kg ·
+// loup 50 kg · kangourou 70 kg · Papa 80 kg · cochon 110 kg · âne 160 kg · lion 200 kg · tigre 250 kg ·
+// zèbre 300 kg · poney 380 kg · cheval 500 kg · vache 650 kg · petite voiture ~1 t · grosse voiture ~1,6 t ·
+// rhinocéros 2 t · hippopotame 2,5 t · petit camion 3,5 t · éléphant 5 t.
+// Historique : paliers resserrés 2026-07-25 (trou 0,13→1,2 t = +400 %) · repères intermédiaires 2026-08-03
+// (cochon/âne/lion/tigre/cheval + hippo 2,5 t + éléphant 5 t) · vérif 70/70 ≤ 10 % : + enfant 8 ans, kangourou,
+// zèbre, 2 lions, grosse voiture, 3 petites voitures, petit camion, 3 rhinocéros — règle : jamais > 10 % d'écart.
 function _compPoids(t) {
-  if (t >= 11)   return `aussi lourd ${_que(_qty(Math.round(t / 6), 'éléphant', 'éléphants'))} !`;
-  if (t >= 4)    return `aussi lourd ${_que(_qty(Math.round(t / 3), 'hippopotame', 'hippopotames'))} !`;
-  if (t >= 2)    return `aussi lourd ${_que(_qty(Math.round(t / 1.5), 'rhinocéros', 'rhinocéros'))} !`;
-  if (t >= 1.2)  return `aussi lourd qu'un rhinocéros !`;
-  if (t >= 0.85) return `aussi lourd qu'un cheval de trait !`;
-  if (t >= 0.5)  return `aussi lourd qu'une vache !`;
+  if (t >= 11)   return `aussi lourd ${_que(_qty(Math.round(t / 5.5), 'éléphant', 'éléphants'))} !`;
+  if (t >= 6.5)  return `aussi lourd ${_que(_qty(Math.round(t / 2.5), 'hippopotame', 'hippopotames'))} !`;
+  if (t >= 5.5)  return `aussi lourd que 3 rhinocéros !`;
+  if (t >= 4.4)  return `aussi lourd qu'un éléphant !`;
+  if (t >= 3.7)  return `aussi lourd que 2 rhinocéros !`;
+  if (t >= 3.35) return `aussi lourd qu'un petit camion !`;
+  if (t >= 2.75) return `aussi lourd que 3 petites voitures !`;
+  if (t >= 2.3)  return `aussi lourd qu'un hippopotame !`;
+  if (t >= 1.8)  return `aussi lourd qu'un rhinocéros !`;
+  if (t >= 1.45) return `aussi lourd qu'une grosse voiture !`;
+  if (t >= 0.85) return `aussi lourd qu'une petite voiture !`;
+  if (t >= 0.55) return `aussi lourd qu'une vache !`;
+  if (t >= 0.45) return `aussi lourd qu'un cheval !`;
+  if (t >= 0.42) return `aussi lourd que 2 lions !`;
   if (t >= 0.33) return `aussi lourd qu'un poney !`;
-  if (t >= 0.24) return `aussi lourd qu'un ours brun !`;
-  if (t >= 0.13) return `aussi lourd qu'un gros cochon !`;
-  if (t >= 0.065) return `aussi lourd que Papa !`;
-  if (t >= 0.04) return `aussi lourd qu'un grand enfant de 10 ans !`;
-  if (t >= 0.022) return `aussi lourd qu'un gros chien !`;
+  if (t >= 0.285) return `aussi lourd qu'un zèbre !`;
+  if (t >= 0.225) return `aussi lourd qu'un tigre !`;
+  if (t >= 0.18) return `aussi lourd qu'un lion !`;
+  if (t >= 0.14) return `aussi lourd qu'un âne !`;
+  if (t >= 0.09) return `aussi lourd qu'un cochon !`;
+  if (t >= 0.075) return `aussi lourd que Papa !`;
+  if (t >= 0.068) return `aussi lourd qu'un kangourou !`;
+  if (t >= 0.045) return `aussi lourd qu'un loup !`;
+  if (t >= 0.035) return `aussi lourd qu'un grand enfant de 10 ans !`;
+  if (t >= 0.027) return `aussi lourd qu'un gros chien !`;
+  if (t >= 0.023) return `aussi lourd qu'un enfant de 8 ans !`;
   if (t >= 0.011) return `aussi lourd qu'un enfant de 4 ans !`;
   if (t >= 0.0035) return `aussi lourd qu'un gros chat !`;
   return `léger comme un petit oiseau !`;

@@ -871,4 +871,6 @@ Dialogue V3 `saurolophus.md` écrit puis relu : 2 questions Wex sans `?` corrig�
 
 - 2026-08-03 (fin 2 — EP-DINO-DICO-AUDIO-24 LIVRÉ) : 24 MP3 dico via MCP réparés (0 401, eleven_v3 dialogue narrateur_h/wex) → **dico 100 % vraies voix : 100/100 racines, zéro fallback TTS**. `DICO_VOICE` 76→100. Vérif 100/100/100 programmatique.
 
+- 2026-08-03 (fin 3 — EP-DINO-PALIERS-COMPPOIDS + EP-DINO-NOMETYM-5 CLÔTURÉS) : **Paliers poids refondus** selon décisions Papa Yann (petite voiture ~1 t · cochon unique 110 kg · éléphant 5 t · hippo 2,5 t · PAS bison/girafe au poids) — `_compPoids` : nouveaux repères enfant 8 ans 25 kg · kangourou 70 kg · âne 160 kg · lion 200 kg · tigre 250 kg · zèbre 300 kg · poney 380 kg · cheval 500 kg · grosse voiture 1,6 t · 3 petites voitures 3 t · petit camion 3,5 t · 2 lions · 3 rhinocéros. Vérif `content/scripts/export/_verif-comppoids.cjs` : **68/68 ≤ 10 %** (+2 oiseaux). Bonus : élision « que un rhinocéros » corrigée. Bloc B régénéré (70 phrases), `_ECHELLE-REFERENTIEL.md` § C réécrite. **NOMETYM-5** : les 5 textes data étaient déjà conformes, marqueurs flippés dans `_ETYMO-RACINES-50.md`. **Backlog pôle dino : 0 ticket ouvert.**
+
 > 📦 Entrées 2026-06 archivées → [`_archive/sprint-log-2026-06.md`](_archive/sprint-log-2026-06.md) (2026-07-18).

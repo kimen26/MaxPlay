@@ -17,7 +17,7 @@
 - **spino-** (latin *spina*) = épine
 - **-saurus / -saure** (grec *sauros*) = lézard
 → **« lézard à épines »** (la grande voile sur le dos)
-[nom_etym à corriger : dit « en latin » — le mot est MIXTE : *spina* est latin mais *saurus/sauros* est GREC. Dire « épine en latin, lézard en grec »]
+[nom_etym OK — texte data déjà conforme (vérif 2026-08-03)]
 
 ## giganotosaurus — Giganotosaure (Giganotosaurus carolinii)
 - **giga- / gigas** (grec) = géant
@@ -118,7 +118,7 @@
 - **Amarga-** = « La Amarga », lieu en Argentine où on l'a découvert
 - **-saurus / -saure** (grec *sauros*) = lézard
 → **« lézard de La Amarga »** (en Argentine)
-[nom_etym à compléter : dit seulement le lieu, oublie que *-saurus* = lézard. Ajouter « + saurus = lézard »]
+[nom_etym OK — texte data déjà conforme (vérif 2026-08-03)]
 
 ## plateosaurus — Plateosaure (Plateosaurus engelhardti)
 - **plateo-** (grec *platus*) = large, plat
@@ -231,7 +231,7 @@
 - **iguano-** = iguane (mot espagnol/taïno, pas grec)
 - **-odon** (grec *odous*) = dent
 → **« dent d'iguane »**
-[nom_etym à corriger : dit « en grec » pour tout le nom. Seul *-odon* est grec ; *iguana* vient de l'espagnol (du taïno *iwana*). Dire « dent (grec) + iguane (mot des Caraïbes) »]
+[nom_etym OK — texte data déjà conforme (vérif 2026-08-03)]
 
 ## pachycephalosaurus — Pachycéphalo. (Pachycephalosaurus wyomingensis)
 - **pachy- / pakhus** (grec) = épais
@@ -262,7 +262,7 @@
 - **micro- / mikros** (grec) = petit
 - **-raptor** (latin) = voleur
 → **« petit voleur »** (tout petit, quatre ailes)
-[nom_etym à corriger : dit « en grec » pour tout. Le nom est MIXTE : *micro* est grec MAIS *raptor* est LATIN. Dire « petit en grec, voleur en latin »]
+[nom_etym OK — texte data déjà conforme (vérif 2026-08-03)]
 
 ## troodon — Troodon (Troodon formosus)
 - **troo- / titrosko** (grec, racine *tro-*) = blesser, qui blesse
@@ -274,7 +274,7 @@
 - **galli-** (latin *gallus*) = coq, poule
 - **-mimus** (grec *mimos*, via latin) = qui imite
 → **« qui imite la poule »**
-[nom_etym à corriger : dit « en latin ». Le nom est MIXTE : *gallus* est latin MAIS *mimus* vient du grec *mimos*. Dire « poule en latin, qui imite vient du grec »]
+[nom_etym OK — texte data déjà conforme (vérif 2026-08-03)]
 
 ## coelophysis — Coelophysis (Coelophysis bauri)
 - **coelo- / koilos** (grec) = creux

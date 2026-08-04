@@ -65,21 +65,40 @@ camion (poubelle) ~9-10 m · bus RATP 12 m · bus accordéon 18 m.
 
 ## C. POIDS
 
-Repères (kg) : poule ≈ 3 · chat ≈ 4 · gros chien ≈ 30 · **Max ≈ 16** · **Papa ≈ 80** · gros cochon ≈ 200 · rhinocéros ≈ 1,5 t · hippopotame ≈ 3 t · éléphant ≈ 6 t.
+Repères (validés Papa Yann 2026-08-03) : petit oiseau · gros chat ≈ 4 kg · enfant 4 ans ≈ 16 kg · enfant 8 ans ≈ 25 kg ·
+gros chien ≈ 30 kg · enfant 10 ans ≈ 35 kg · loup ≈ 50 kg · kangourou ≈ 70 kg · **Papa ≈ 80 kg** · cochon ≈ 110 kg ·
+âne ≈ 160 kg · lion ≈ 200 kg · tigre ≈ 250 kg · zèbre ≈ 300 kg · poney ≈ 380 kg · cheval ≈ 500 kg · vache ≈ 650 kg ·
+petite voiture ≈ 1 t · grosse voiture ≈ 1,6 t · rhinocéros ≈ 2 t · hippopotame ≈ 2,5 t · petit camion ≈ 3,5 t · éléphant ≈ 5 t.
 
 | Poids réel | Comparaison dite à Max |
 |------------|------------------------|
-| < 2 kg | « léger comme un petit oiseau ! » |
-| ~3-4 kg | « comme une poule ! » / « un gros chat ! » |
+| < 3,5 kg | « léger comme un petit oiseau ! » |
+| ~4 kg | « aussi lourd qu'un gros chat ! » |
 | ~16 kg | « aussi lourd qu'un enfant de 4 ans ! » |
+| ~25 kg | « aussi lourd qu'un enfant de 8 ans ! » |
 | ~30 kg | « aussi lourd qu'un gros chien ! » |
-| ~50 kg | « aussi lourd qu'un grand enfant de 10 ans ! » |
+| ~35 kg | « aussi lourd qu'un grand enfant de 10 ans ! » |
+| ~50 kg | « aussi lourd qu'un loup ! » |
+| ~70 kg | « aussi lourd qu'un kangourou ! » |
 | ~80 kg | « aussi lourd que Papa ! » |
-| ~200 kg | « aussi lourd qu'un gros cochon ! » |
-| ~1,5 t (1 rhino) | « aussi lourd qu'un rhinocéros ! » |
-| 3 – 7 t | « aussi lourd que N hippopotames ! » (hippo = 3 t) |
-| ≥ 8 t | « aussi lourd que N éléphants ! » (éléphant = 6 t) |
+| ~110 kg | « aussi lourd qu'un cochon ! » |
+| ~160 kg | « aussi lourd qu'un âne ! » |
+| ~200 kg | « aussi lourd qu'un lion ! » (×2 entre 420 et 455 kg) |
+| ~250 kg | « aussi lourd qu'un tigre ! » |
+| ~300 kg | « aussi lourd qu'un zèbre ! » |
+| ~380 kg | « aussi lourd qu'un poney ! » |
+| ~500 kg | « aussi lourd qu'un cheval ! » |
+| ~650 kg | « aussi lourd qu'une vache ! » |
+| ~1 t | « aussi lourd qu'une petite voiture ! » |
+| ~1,6 t | « aussi lourd qu'une grosse voiture ! » |
+| ~2 t | « aussi lourd qu'un rhinocéros ! » (×2 = 4 t, ×3 = 6 t) |
+| ~2,5 t | « aussi lourd qu'un hippopotame ! » (×N au-delà de 6,5 t) |
+| ~3 t | « aussi lourd que 3 petites voitures ! » |
+| ~3,5 t | « aussi lourd qu'un petit camion ! » |
+| ~5 t | « aussi lourd qu'un éléphant ! » (×N au-delà de 11 t) |
+
+Règle : **aucune comparaison qui ment > 10 %** — vérifié 70/70 le 2026-08-03 (script `content/scripts/export/_verif-comppoids.cjs`).
 
 ---
 
-_Créé 2026-05-31. Bus vérifiés en ligne. À VALIDER par Papa Yann avant réécriture des fonctions + dialogues + audio._
+_Créé 2026-05-31. Bus vérifiés en ligne. ~~À VALIDER par Papa Yann~~ → paliers poids VALIDÉS Papa Yann 2026-08-03 (petite voiture ~1 t, cochon unique, pas de bison/girafe au poids ; animaux ajoutés : âne, lion, tigre, cheval, loup, kangourou, zèbre)._

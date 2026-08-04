@@ -1604,8 +1604,7 @@
           "sens": "lézard"
         }
       ],
-      "nom_etym": "a_corriger",
-      "note": "dit « en latin » — le mot est MIXTE : *spina* est latin mais *saurus/sauros* est GREC. Dire « épine en latin, lézard en grec »"
+      "nom_etym": "ok"
     },
     "giganotosaurus": {
       "nom": "Giganotosaure",
@@ -1955,8 +1954,7 @@
           "sens": "lézard"
         }
       ],
-      "nom_etym": "a_corriger",
-      "note": "à compléter : dit seulement le lieu, oublie que *-saurus* = lézard. Ajouter « + saurus = lézard »"
+      "nom_etym": "ok"
     },
     "plateosaurus": {
       "nom": "Plateosaure",
@@ -2346,8 +2344,7 @@
           "sens": "dent"
         }
       ],
-      "nom_etym": "a_corriger",
-      "note": "dit « en grec » pour tout le nom. Seul *-odon* est grec ; *iguana* vient de l'espagnol (du taïno *iwana*). Dire « dent (grec) + iguane (mot des Caraïbes) »"
+      "nom_etym": "ok"
     },
     "pachycephalosaurus": {
       "nom": "Pachycéphalo.",
@@ -2453,8 +2450,7 @@
           "sens": "voleur"
         }
       ],
-      "nom_etym": "a_corriger",
-      "note": "dit « en grec » pour tout. Le nom est MIXTE : *micro* est grec MAIS *raptor* est LATIN. Dire « petit en grec, voleur en latin »"
+      "nom_etym": "ok"
     },
     "troodon": {
       "nom": "Troodon",
@@ -2494,8 +2490,7 @@
           "sens": "qui imite"
         }
       ],
-      "nom_etym": "a_corriger",
-      "note": "dit « en latin ». Le nom est MIXTE : *gallus* est latin MAIS *mimus* vient du grec *mimos*. Dire « poule en latin, qui imite vient du grec »"
+      "nom_etym": "ok"
     },
     "coelophysis": {
       "nom": "Coelophysis",

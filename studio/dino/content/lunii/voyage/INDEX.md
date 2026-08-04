@@ -26,7 +26,7 @@ Deux registres cohérents (blanc qui brille sur noir) :
 
 | Clé (`ep-<key>`) | Image | Contenu |
 |------------------|-------|---------|
-| `intro` | [`ep-intro.png`](ep-intro.png) | Globe Terre **aujourd'hui** (départ du voyage) |
+| `intro` | [`ep-intro.png`](ep-intro.png) | Globe **Terre primitive** (lave, volcans, météores — il y a 4 Mds d'années). ⚠️ avant 2026-08-03 : Terre actuelle (incohérent avec l'audio « la terre est chaude et vide » — corrigé à la demande de Papa Yann) |
 | `trias` | [`ep-trias.png`](ep-trias.png) | Globe **Pangée** (un seul continent) |
 | `jurassique` | [`ep-jurassique.png`](ep-jurassique.png) | Globe Pangée **qui se fend** (océan au milieu) |
 | `cretace` | [`ep-cretace.png`](ep-cretace.png) | Globe **mi-dérive** (Atlantique jeune et étroit) |

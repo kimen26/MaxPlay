@@ -6,17 +6,17 @@
 
 | | |
 |---|---|
-| Appels prévus | **223** |
-| — fichiers à créer | 114 |
-| — fichiers à remplacer | 109 |
-| Coût estimé | **5 186 caractères** |
-| Textes déjà vérifiés | 0 / 223 |
+| Appels prévus | **239** |
+| — fichiers à créer | 24 |
+| — fichiers à remplacer | 215 |
+| Coût estimé | **5 860 caractères** |
+| Textes déjà vérifiés | 106 / 239 |
 
 ## Par langue
 
 | Langue | Appels | Caractères |
 |---|---|---|
-| fr | 133 | 3 509 |
+| fr | 149 | 4 183 |
 | 🇧🇷 brésilien | 15 | 291 |
 | 🇬🇧 anglais | 15 | 312 |
 | 🇯🇵 japonais | 15 | 228 |
@@ -28,7 +28,7 @@
 
 | Rôle | Appels |
 |---|---|
-| narrateur_h | 105 |
+| narrateur_h | 121 |
 | narrateur_f | 65 |
 | wex | 53 |
 
@@ -108,7 +108,7 @@ _Les voice_id sont résolus depuis `voice-map.json` au moment du plan et ne sont
 | `humeur.doux.fr.pas-tout-a-fait.narrateur_h` | narrateur_h | [gently] Pas tout à fait ! | remplacer |
 | `humeur.doux.fr.pas-tout-a-fait.wex` | wex | [gently] Pas tout à fait ! | remplacer |
 
-_… et 163 autres — détail complet dans `plan-generation.json`._
+_… et 179 autres — détail complet dans `plan-generation.json`._
 
 ## Hors de ce plan
 

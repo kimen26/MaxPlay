@@ -8,7 +8,7 @@
 import path from 'node:path';
 import { STUDIO, lireJson } from './socle.mjs';
 import { HUMEUR, HUMEUR_INVITEE } from '../catalogue/fr/humeur.mjs';
-import { REPLIQUES, LIEUX, LIGNES_NOMMEES } from '../catalogue/fr/repliques.mjs';
+import { REPLIQUES, LIEUX, LIGNES_NOMMEES, CONSIGNES_GENEREES } from '../catalogue/fr/repliques.mjs';
 import { ATOMES, GABARITS } from '../catalogue/fr/atomes.mjs';
 import { BRUITAGES } from '../catalogue/_bruitages.mjs';
 import { ROLES, REGLAGES, TRAITEMENT, LANGUES_INVITEES } from '../catalogue/voix.mjs';
@@ -38,7 +38,7 @@ export function chargerVoix() {
  * Met à plat la réserve d'humeur : une entrée par (variante × voix), puisque
  * chaque variante existe dans les trois voix — c'est ce qui fait la variété.
  */
-function aplatirHumeur(pool, langue) {
+function aplatirHumeur(pool, langue, texteVerifie = false) {
   const entrees = [];
   for (const variante of pool.variantes) {
     for (const voix of pool.voix) {
@@ -59,7 +59,7 @@ function aplatirHumeur(pool, langue) {
         texte: variante.texte,
         translitteration: variante.translitteration || null,
         tags: variante.tags || [],
-        texte_verifie: false,
+        texte_verifie: texteVerifie,
         production: { voix, usage: 'reaction' },
         fichier: `${dossier}/${variante.slug}.mp3`,
         consommee_par: pool.consommee_par || [],
@@ -116,12 +116,15 @@ export function chargerCatalogue() {
   for (const invite of HUMEUR_INVITEE) {
     const pool = HUMEUR.find((p) => p.cle === invite.cle);
     if (!pool) continue;
+    // Les pools invités ont été GÉNÉRÉS depuis ce catalogue le 2026-08-10 :
+    // leur texte est donc prouvé, contrairement au FR hérité qui reste reconstruit.
     entrees.push(...aplatirHumeur(
-      { ...pool, variantes: invite.variantes }, invite.langue,
+      { ...pool, variantes: invite.variantes }, invite.langue, invite.genere === true,
     ));
   }
 
   entrees.push(...REPLIQUES.map((r) => ({ ...r, langue: 'fr' })));
+  entrees.push(...CONSIGNES_GENEREES.map((r) => ({ ...r, langue: 'fr' })));
   entrees.push(...LIGNES_NOMMEES.map((r) => ({ ...r, langue: 'fr' })));
   entrees.push(...LIEUX.map((r) => ({ ...r, langue: 'fr' })));
   entrees.push(...ATOMES.map((a) => ({

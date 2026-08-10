@@ -46,6 +46,8 @@ const FAMILLES = [
   { nom: 'Extinction (mj-31)', motif: /^audio\/dinos\/fr\/special-/, verbatim: null, pole: 'DINO' },
   { nom: 'Périodes', motif: /^audio\/dinos\/fr\/periodes\//, verbatim: null, pole: 'DINO' },
   { nom: 'Réactions (f/h/wex)', motif: /^sounds\/voix\/(f|h|wex)\//, verbatim: null, pole: 'JEU' },
+  { nom: 'Encouragements langues invitées', motif: /^sounds\/voix\/(pt-BR|en|ja|zh|it|es)\//,
+    verbatim: 'studio/referentiel/catalogue/fr/humeur.mjs § HUMEUR_INVITEE', pole: 'JEU' },
   { nom: 'Consignes de jeu', motif: /^sounds\/voix\/phrases\//, verbatim: null, pole: 'JEU' },
   { nom: 'Noms de lieux', motif: /^sounds\/voix\/lieux\//, verbatim: null, pole: 'JEU' },
   { nom: 'Nombres', motif: /^sounds\/nombres\//, verbatim: null, pole: 'JEU' },

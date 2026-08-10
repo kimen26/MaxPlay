@@ -60,7 +60,7 @@ writeFileSync(join(tmp, "concat.txt"), concatList);
 run(
   FFMPEG,
   ["-y", "-f", "concat", "-safe", "0", "-i", join(tmp, "concat.txt"),
-   "-af", "loudnorm", "-ar", "44100", "-ac", "1", "-b:a", "128k", join(tmp, "recit.mp3")],
+   "-af", "loudnorm=I=-13:TP=-1.5:LRA=11", "-ar", "44100", "-ac", "1", "-b:a", "128k", join(tmp, "recit.mp3")],
   "ffmpeg concat+loudnorm"
 );
 
@@ -68,7 +68,7 @@ run(
 run(
   FFMPEG,
   ["-y", "-i", join(AUDIO_DIR, "triceratops-nom.mp3"),
-   "-af", "loudnorm", "-ar", "44100", "-ac", "1", "-b:a", "128k", join(tmp, "cover.mp3")],
+   "-af", "loudnorm=I=-13:TP=-1.5:LRA=11", "-ar", "44100", "-ac", "1", "-b:a", "128k", join(tmp, "cover.mp3")],
   "ffmpeg cover audio"
 );
 

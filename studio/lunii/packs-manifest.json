@@ -1,0 +1,17 @@
+{
+  "description": "SOURCE DE VÉRITÉ des packs Lunii MaxPlay — synchronisation des boîtes via scripts/sync-lunii.mjs. Règle d'or : tout pack créé est DÉPOSÉ D'ABORD dans la bibliothèque maître (~/.studio/library/), PUIS ajouté ici, et seulement ensuite transféré sur une boîte. Le sync AJOUTE ce qui manque, ne SUPPRIME JAMAIS ce qui n'est pas listé (enregistrements micro, packs usine…).",
+  "bibliotheque_maitre": "C:/Users/kimen/.studio/library",
+  "packs": [
+    { "id": "D4E5F603", "titre": "Les dinos de Max",          "type": "zip",     "src": "C:/Users/kimen/.studio/library/maxplay-dinos-de-max.zip" },
+    { "id": "D4E5F605", "titre": "Histoires pour dodo",       "type": "zip",     "src": "C:/Users/kimen/.studio/library/maxplay-histoires-dodo.zip" },
+    { "id": "D4E5F601", "titre": "Le voyage des dinosaures",  "type": "zip",     "src": "C:/Users/kimen/.studio/library/maxplay-voyage-dinosaures.zip" },
+    { "id": "D4E5F6A1", "titre": "Pierre et le loup",         "type": "zip",     "src": "C:/Users/kimen/.studio/library/maxplay-pierre-et-le-loup.zip" },
+    { "id": "8171A964", "titre": "Les Aventuriers des 6 royaumes - Zoé et Léo", "type": "library", "src": "8126c612-f668-4d89-bf46-7c888171a964" },
+    { "id": "27A75F64", "titre": "Suzanne et Gaston découvrent la Préhistoire", "type": "library", "src": "f18407a6-eb9d-4223-9769-d63927a75f64" },
+    { "id": "DEC391D0", "titre": "Suzanne et Gaston à Londres",                 "type": "library", "src": "e1b35776-064d-4201-80c9-0bf6dec391d0" },
+    { "id": "38260255", "titre": "Les mondes merveilleux de Suzanne et Gaston", "type": "library", "src": "3d411a00-3437-4939-a60d-71b038260255" },
+    { "id": "4CDF38C6", "titre": "Les Histoires de Suzanne et Gaston",          "type": "library", "src": "c4139d59-872a-4d15-8cf1-76d34cdf38c6" },
+    { "id": "E91E70CF", "titre": "Du côté des dinos",         "type": "library", "src": "595c9576-e210-4349-b9ba-7965e91e70cf" },
+    { "id": "F3C18541", "titre": "Douce Nuit",                "type": "plainpk", "src": "C:/ProjetsPerso/Tools/lunii-backups/2026-08-02/packs/Douce Nuit.F3C18541.plain.pk" }
+  ]
+}

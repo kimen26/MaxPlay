@@ -11,8 +11,9 @@
 //       --OK--> Fiche complète du dino (5 blocs collés : nom+taille+régime+funfact+récap)
 //         --fin (autoplay)--> retour au menu DINOS de sa famille
 //
-// 51 dinos, 9 familles. EMBALLE l'audio déjà canon (règle d'or Lunii — aucun TTS ici).
-// Audio puisé dans studio/lunii/assets/ (pré-généré), images dans site/img/dinos (gris auto).
+// 70 dinos, 11 familles (2026-08-02 : +19 — 62 + mammifères/oiseaux une fois leurs menus produits).
+// EMBALLE l'audio déjà canon (règle d'or Lunii — aucun TTS ici, sauf accroches menu/noms validées).
+// Audio puisé dans studio/lunii/assets/ (pré-généré), images paleoart (gris auto).
 
 import { createHash } from "crypto";
 import { mkdirSync, rmSync, writeFileSync, readFileSync, existsSync } from "fs";
@@ -21,7 +22,10 @@ import { homedir } from "os";
 import { spawnSync } from "child_process";
 
 const ROOT = "c:/ProjetsPerso/Claude_Projects/MaxPlay";
-const IMG_WEB = join(ROOT, "site/img/dinos");
+// Photos dino : paleoart canon (site/img/dinos/paleoart/<Nom>.jpg).
+// NB : avant 2026-08, les photos web vivaient à la racine de site/img/dinos en .png
+// (répertoire depuis réorganisé en sous-dossiers — d'où ce chemin).
+const IMG_WEB = join(ROOT, "site/img/dinos/paleoart");
 const ASSETS = join(ROOT, "studio/lunii/assets");
 const A_NOMS = join(ASSETS, "audio/noms-dino");
 const A_RECITS = join(ASSETS, "audio/recits-dino");
@@ -34,6 +38,7 @@ const FAM_IMG = {
   trex: "01-theropodes.png", cou_long: "02-sauropodes.png", arme: "03-thyreophores.png",
   cornu: "04-ceratopsiens.png", bec: "05-ornithopodes.png", raptor: "06-dromaeosaures.png",
   pterosaures: "07-pterosaures.png", enaliosaures: "08-enaliosaures.png", volant: "09-avant-les-dinos.png",
+  mammiferes: "10-mammiferes.png", oiseaux: "11-oiseaux.png",
 };
 const COVER_IMG = join(IMG_LUNII_FAM, "00-cover-toutes-familles.png");
 const FFMPEG =
@@ -60,6 +65,8 @@ const FAMILLES = [
   { key: "pterosaures",  menu: "menu-fam-pterosaures.mp3",  titre: "Pterosaures",  color: "0x2980b9", emblem: "pteranodon",    uuid: "b2000000-0000-4000-8000-000000000007" },
   { key: "enaliosaures", menu: "menu-fam-enaliosaures.mp3", titre: "Enaliosaures", color: "0x16607a", emblem: "mosasaurus",    uuid: "b2000000-0000-4000-8000-000000000008" },
   { key: "volant",       menu: "menu-fam-avant-dinos.mp3",  titre: "Avant les dinos", color: "0x8e6e3c", emblem: "dimetrodon", uuid: "b2000000-0000-4000-8000-000000000009" },
+  { key: "mammiferes",   menu: "menu-fam-mammiferes.mp3",   titre: "Mammiferes",   color: "0x8d6e63", emblem: "mammuthus",    uuid: "b2000000-0000-4000-8000-000000000010" },
+  { key: "oiseaux",      menu: "menu-fam-oiseaux.mp3",      titre: "Oiseaux",      color: "0xd68910", emblem: "titanis",      uuid: "b2000000-0000-4000-8000-000000000011" },
 ];
 
 const TITLE = TEST_MODE ? "Les dinos de Max (TEST)" : "Les dinos de Max";
@@ -74,7 +81,7 @@ function sha1(buf) { return createHash("sha1").update(buf).digest("hex"); }
 
 // ─── Charge la liste des dinos (slug, famille, nom d'affichage) ───────────────
 // DINOS_JSON permet un sous-ensemble test (ex. c:/tmp/dinos-test10.json).
-const DINOS_SRC = process.env.DINOS_JSON || "c:/tmp/dinos51.json";
+const DINOS_SRC = process.env.DINOS_JSON || "c:/tmp/dinos70.json";
 const DINOS = JSON.parse(readFileSync(DINOS_SRC, "utf8"));
 
 // En mode test, re-dériver les UUID de famille pour ne pas collisionner avec le pack complet
@@ -96,6 +103,17 @@ function addAsset(srcPath, ext) {
   return name;
 }
 
+// Masterise un audio pour la boîte : -13 LUFS / TP -1.5 dB.
+// Les packs du commerce sont masterisés à ≈ -13 LUFS (mesuré sur Suzanne et Gaston) alors
+// que loudnorm sans paramètre vise -24 (norme TV) → nos histoires sonnaient ~11 dB trop bas
+// (constat Papa Yann 2026-08-04). La masterisation se fait ICI, au packaging : le canon web
+// (site/audio) n'est pas touché.
+function masterAudio(srcPath, outName) {
+  run(FFMPEG, ["-y", "-i", srcPath,
+    "-af", "loudnorm=I=-13:TP=-1.5:LRA=11", "-ar", "44100", "-ac", "1", "-b:a", "128k", join(tmp, outName)], `master ${outName}`);
+  return addAsset(join(tmp, outName), ".mp3");
+}
+
 // Image 320x240 : 1) image Lunii fournie (gardée telle quelle, fond noir = contraste Lunii)
 //                 2) sinon photo web en gris + bandeau  3) sinon carton couleur
 // Pad NOIR (pas blanc) pour rester cohérent avec le fond sombre des emblèmes fournis.
@@ -107,7 +125,7 @@ function buildImage(opts, outPath) {
       join(tmp, outPath)], `img fournie ${outPath}`);
     return;
   }
-  const web = webSlug ? join(IMG_WEB, webSlug.charAt(0).toUpperCase() + webSlug.slice(1) + ".png") : null;
+  const web = webSlug ? join(IMG_WEB, webSlug.charAt(0).toUpperCase() + webSlug.slice(1) + ".jpg") : null;
   if (web && existsSync(web)) {
     run(FFMPEG, ["-y", "-i", web,
       "-vf", "scale=320:240:force_original_aspect_ratio=decrease,pad=320:240:(ow-iw)/2:(oh-ih)/2:black,format=gray," +
@@ -133,7 +151,7 @@ const assets = {};
 // ─── 1. Cover (= menu familles) : image scène de groupe fournie + annonce ─────
 buildImage({ provided: COVER_IMG, webSlug: null, label: "Les dinos de Max", color: "0x4a235a" }, "cover.png");
 assets.coverImage = addAsset(join(tmp, "cover.png"), ".png");
-assets.coverAudio = addAsset(join(A_MENUS, "menu-cover-dinos.mp3"), ".mp3");
+assets.coverAudio = masterAudio(join(A_MENUS, "menu-cover-dinos.mp3"), "cover-audio.mp3");
 writeFileSync(join(tmp, "staging", "thumbnail.png"), readFileSync(join(tmp, "cover.png")));
 
 const stageNodes = [];
@@ -159,7 +177,7 @@ for (const fam of FAMILLES_ACTIVES) {
   const famProvided = FAM_IMG[fam.key] ? join(IMG_LUNII_FAM, FAM_IMG[fam.key]) : null;
   buildImage({ provided: famProvided, webSlug: fam.emblem, label: fam.titre, color: fam.color }, `fam-${fam.key}.png`);
   const famImg = addAsset(join(tmp, `fam-${fam.key}.png`), ".png");
-  const famAudio = addAsset(join(A_MENUS, fam.menu), ".mp3"); // accroche [excited] nom savant
+  const famAudio = masterAudio(join(A_MENUS, fam.menu), `fam-audio-${fam.key}.mp3`); // accroche [excited] nom savant
 
   // stage d'entrée famille : on entend l'accroche, molette = ses dinos
   stageNodes.push({
@@ -178,8 +196,8 @@ for (const fam of FAMILLES_ACTIVES) {
     // image dino (Lunii fournie sinon photo web gris + bandeau nom)
     buildImage({ provided: join(A_IMG_DINO, `${d.slug}.png`), webSlug: d.slug, label: d.name.replace(/\s*\(.*\)/, ""), color: fam.color }, `dino-${d.slug}.png`);
     const dinoImg = addAsset(join(tmp, `dino-${d.slug}.png`), ".png");
-    const nomAudio = addAsset(join(A_NOMS, `nom-${d.slug}.mp3`), ".mp3");   // nom sec [excited]
-    const ficheAudio = addAsset(join(A_RECITS, `${d.slug}.mp3`), ".mp3");   // 5 blocs collés
+    const nomAudio = masterAudio(join(A_NOMS, `nom-${d.slug}.mp3`), `nom-${d.slug}.mp3`);   // nom sec [excited]
+    const ficheAudio = masterAudio(join(A_RECITS, `${d.slug}.mp3`), `fiche-${d.slug}.mp3`); // 5 blocs collés
 
     // (a) option molette : DIT le nom, OK → fiche
     stageNodes.push({

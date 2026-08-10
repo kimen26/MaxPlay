@@ -65,42 +65,42 @@ camion (poubelle) ~9-10 m · bus RATP 12 m · bus accordéon 18 m.
 
 ## C. POIDS
 
-Repères (validés Papa Yann 2026-08-03) : petit oiseau · gros chat ≈ 4 kg · enfant 4 ans ≈ 16 kg · enfant 8 ans ≈ 25 kg ·
-gros chien ≈ 30 kg · enfant 10 ans ≈ 35 kg · loup ≈ 50 kg · kangourou ≈ 70 kg · **Papa ≈ 80 kg** · cochon ≈ 110 kg ·
-âne ≈ 160 kg · lion ≈ 200 kg · tigre ≈ 250 kg · zèbre ≈ 300 kg · poney ≈ 380 kg · cheval ≈ 500 kg · vache ≈ 650 kg ·
-petite voiture ≈ 1 t · grosse voiture ≈ 1,6 t · rhinocéros ≈ 2 t · hippopotame ≈ 3 t · petit camion ≈ 3,5 t · éléphant ≈ 5 t · camion ≈ 7 t.
+Repères (validés Papa Yann 2026-08-03) : petit oiseau · gros chat ≈ 4 kg · enfant 4 ans ≈ 16 kg · chien ≈ 25 kg ·
+enfant 10 ans ≈ 35 kg · loup ≈ 50 kg · kangourou ≈ 70 kg · **Papa ≈ 80 kg** · cochon ≈ 110 kg ·
+âne ≈ 160 kg (×2 = 320 kg) · lion ≈ 200 kg (×2 = 400 kg) · tigre ≈ 250 kg · cheval ≈ 500 kg (×5 = 2,5 t) · vache ≈ 650 kg ·
+petite voiture ≈ 1 t (**SEUL véhicule**, pour le trou 0,9-1,3 t) · rhinocéros ≈ 2 t (×2/×3/×4) · hippopotame ≈ 3 t (×N) · éléphant ≈ 5 t (×N).
 
 | Poids réel | Comparaison dite à Max |
 |------------|------------------------|
 | < 3,5 kg | « léger comme un petit oiseau ! » |
 | ~4 kg | « aussi lourd qu'un gros chat ! » |
 | ~16 kg | « aussi lourd qu'un enfant de 4 ans ! » |
-| ~25 kg | « aussi lourd qu'un enfant de 8 ans ! » |
-| ~30 kg | « aussi lourd qu'un gros chien ! » |
+| ~25 kg | « aussi lourd qu'un chien ! » |
 | ~35 kg | « aussi lourd qu'un grand enfant de 10 ans ! » |
 | ~50 kg | « aussi lourd qu'un loup ! » |
 | ~70 kg | « aussi lourd qu'un kangourou ! » |
 | ~80 kg | « aussi lourd que Papa ! » |
 | ~110 kg | « aussi lourd qu'un cochon ! » |
-| ~160 kg | « aussi lourd qu'un âne ! » |
-| ~200 kg | « aussi lourd qu'un lion ! » (×2 entre 420 et 455 kg) |
+| ~160 kg | « aussi lourd qu'un âne ! » (×2 = 320 kg) |
+| ~200 kg | « aussi lourd qu'un lion ! » (×2 = 400 kg) |
 | ~250 kg | « aussi lourd qu'un tigre ! » |
-| ~300 kg | « aussi lourd qu'un zèbre ! » |
-| ~380 kg | « aussi lourd qu'un poney ! » |
-| ~500 kg | « aussi lourd qu'un cheval ! » |
+| ~500 kg | « aussi lourd qu'un cheval ! » (×5 = 2,5 t) |
 | ~650 kg | « aussi lourd qu'une vache ! » |
 | ~1 t | « aussi lourd qu'une petite voiture ! » |
-| ~1,6 t | « aussi lourd qu'une grosse voiture ! » |
+| ~1,65 t ⚑ | « aussi lourd qu'une petite voiture et une vache ensemble ! » |
 | ~2 t | « aussi lourd qu'un rhinocéros ! » (×2 = 4 t, ×3 = 6 t, ×4 = 8 t) |
 | ~2,5 t | « aussi lourd que 5 chevaux ! » |
-| ~3 t | « aussi lourd qu'un hippopotame ! » (×N possible : 9 t = 3 hippo, 12 t = 4, 17-18 t = 6, 23 t = 8) |
-| ~3,5 t | « aussi lourd qu'un petit camion ! » |
-| ~5 t | « aussi lourd qu'un éléphant ! » (×N possible : 10 t = 2, 25 t = 5, 47 t = 9, 70 t = 14) |
-| ~7 t | « aussi lourd qu'un camion ! » |
+| ~3 t | « aussi lourd qu'un hippopotame ! » (×N : 9 t = 3, 12 t = 4, 17-18 t = 6, 23 t = 8) |
+| ~3,5 t ⚑ | « aussi lourd qu'un hippopotame et un cheval ensemble ! » |
+| ~5 t | « aussi lourd qu'un éléphant ! » (×N : 10 t = 2, 25 t = 5, 47 t = 9, 70 t = 14) |
+| ~7 t ⚑ | « aussi lourd qu'un éléphant et un rhinocéros ensemble ! » |
 | > 7,5 t | multiplicateur automatique : le plus honnête parmi éléphant (5 t) / hippopotame (3 t) / rhinocéros (2 t) — l'éléphant ne prime que s'il est presque aussi honnête (≤ 3 points en plus) |
+
+⚑ = exceptions-additions validées Papa Yann (« c'est rigolo, ça reste l'exception ») — 8 dinos seulement.
+Zéro camion/grosse voiture : retirés par PY 2026-08-03, de même que zèbre (→ 2 ânes), poney (→ 2 lions), enfant 8 ans (→ chien 25 kg).
 
 Règle : **aucune comparaison qui ment > 10 %** — vérifié 70/70 le 2026-08-03 (script `content/scripts/export/_verif-comppoids.cjs`).
 
 ---
 
-_Créé 2026-05-31. Bus vérifiés en ligne. ~~À VALIDER par Papa Yann~~ → paliers poids VALIDÉS Papa Yann 2026-08-03 (petite voiture ~1 t, cochon unique, pas de bison/girafe au poids ; animaux ajoutés : âne, lion, tigre, cheval, loup, kangourou, zèbre)._
+_Créé 2026-05-31. Bus vérifiés en ligne. ~~À VALIDER par Papa Yann~~ → paliers poids VALIDÉS Papa Yann 2026-08-03 (petite voiture ~1 t comme seul véhicule, cochon unique, pas de bison/girafe au poids, rhino 2 t / hippo 3 t / éléphant 5 t, additions en exception)._

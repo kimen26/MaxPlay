@@ -14,7 +14,7 @@
 | — domaine DINO | 350 |
 | — domaine JEU | 741 |
 | Clés vérifiables automatiquement | 70 |
-| 🔴 Dérives de fait confirmées | **1** |
+| 🔴 Dérives de fait confirmées | **0** |
 | 🟠 Audio en retard sur son script | **6** |
 | 🟡 Canaux manquants au contrat | 0 |
 | 🟡 Consignes lues sans voix réelle | 23 |
@@ -25,8 +25,7 @@
 Le texte parlé n'énonce plus ce que `dinos-data.js` calcule aujourd'hui.
 Détection exacte et rétroactive : le bloc « taille » a un générateur déterministe (`_statsPhrase`).
 
-- **dino.velociraptor.taille** — repère de hauteur : dit « nombril », la donnée dit « fesses »
-  <br>script : `studio/dino/content/scripts-audio/fr/V3/json/_seg-velociraptor-taille.json`
+_Aucune dérive de fait détectée._
 
 ## 🟠 Audio en retard sur son script
 

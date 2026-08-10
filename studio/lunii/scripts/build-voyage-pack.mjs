@@ -20,7 +20,7 @@ import { homedir } from "os";
 import { spawnSync } from "child_process";
 
 const ROOT = "c:/ProjetsPerso/Claude_Projects/MaxPlay";
-const AUDIO_DIR = join(ROOT, "site/audio/dinos");
+const AUDIO_DIR = join(ROOT, "site/audio/dinos/fr"); // récits + menus déplacés sous fr/ (canon multilingue)
 const IMG_DIR = join(ROOT, "studio/dino/content/lunii/voyage");
 const FFMPEG =
   "C:/Users/kimen/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-8.1.1-full_build/bin/ffmpeg.exe";
@@ -85,7 +85,7 @@ function addAsset(srcPath, ext) {
 // Image = cover-evolution.png (évolution complète), Audio = menu-voyage.mp3
 const coverImgPath = join(IMG_DIR, "cover-evolution.png");
 run(FFMPEG, ["-y", "-i", coverAudio,
-  "-af", "adelay=300|300,loudnorm", "-ar", "44100", "-ac", "1", "-b:a", "128k", join(tmp, "cover.mp3")], "cover voyage audio");
+  "-af", "adelay=300|300,loudnorm=I=-13:TP=-1.5:LRA=11", "-ar", "44100", "-ac", "1", "-b:a", "128k", join(tmp, "cover.mp3")], "cover voyage audio");
 assets.coverImage = addAsset(coverImgPath, ".png");
 assets.coverAudio = addAsset(join(tmp, "cover.mp3"), ".mp3");
 
@@ -94,11 +94,13 @@ for (const e of EPOQUES) {
   const imgPath = join(IMG_DIR, e.image);
   const audioPath = join(AUDIO_DIR, e.audio);
   run(FFMPEG, ["-y", "-i", audioPath,
-    "-af", "adelay=300|300,loudnorm", "-ar", "44100", "-ac", "1", "-b:a", "128k", join(tmp, `ep-${e.key}.mp3`)], `recit ${e.key}`);
+    "-af", "adelay=300|300,loudnorm=I=-13:TP=-1.5:LRA=11", "-ar", "44100", "-ac", "1", "-b:a", "128k", join(tmp, `ep-${e.key}.mp3`)], `recit ${e.key}`);
   e.imgAsset = addAsset(imgPath, ".png");
   e.audioAsset = addAsset(join(tmp, `ep-${e.key}.mp3`), ".mp3");
-  // étiquette de menu (niveau 2) : titre court parlé (déjà pad+loudnorm), même image que le récit
-  e.titleAsset = addAsset(join(AUDIO_DIR, `menu-ep-${e.key}.mp3`), ".mp3");
+  // étiquette de menu (niveau 2) : titre court parlé, masterisé à -13 LUFS comme les récits, même image que le récit
+  run(FFMPEG, ["-y", "-i", join(AUDIO_DIR, `menu-ep-${e.key}.mp3`),
+    "-af", "loudnorm=I=-13:TP=-1.5:LRA=11", "-ar", "44100", "-ac", "1", "-b:a", "128k", join(tmp, `menu-ep-${e.key}.mp3`)], `menu ${e.key}`);
+  e.titleAsset = addAsset(join(tmp, `menu-ep-${e.key}.mp3`), ".mp3");
   e.uuidTitle = `a2000000-0000-4000-8000-00000000000${e.n}`;
 }
 

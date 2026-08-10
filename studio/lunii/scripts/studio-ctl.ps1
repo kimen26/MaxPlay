@@ -1,4 +1,4 @@
-# studio-ctl.ps1 — pilote STUdio (Lunii) de façon fiable.
+﻿# studio-ctl.ps1 — pilote STUdio (Lunii) de façon fiable.
 # Le .bat fourni (studio-windows.bat) échoue souvent : `java` n'est PAS sur le PATH système,
 # et son `copy` prompte quand les jars existent déjà. Ce script lance java en CHEMIN ABSOLU.
 #

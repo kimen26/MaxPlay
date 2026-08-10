@@ -15,9 +15,11 @@ import { homedir } from "os";
 import { spawnSync } from "child_process";
 
 const ROOT = "c:/ProjetsPerso/Claude_Projects/MaxPlay";
-const INBOX = join(ROOT, "studio/dino/content/inbox");
-const AUDIO_SRC = join(INBOX, "Pierre et le Loup par Gérard Philipe (12).mp3");
-const IMAGE_SRC = join(INBOX, "pierre et le loup.png");
+// Sources : récupérées du zip de la bibliothèque le 2026-08-04 (l'inbox d'origine a été purgée).
+// L'audio est le récit déjà pad 300 ms ; l'image est l'illustration du pack.
+const ASSETS = join(ROOT, "studio/lunii/assets/audio/pierre-loup");
+const AUDIO_SRC = join(ASSETS, "pierre-et-le-loup-gerard-philipe.mp3");
+const IMAGE_SRC = join(ASSETS, "6d9481178cf6013111800eaf9c79674c66f6b0ad.png");
 const FFMPEG = "C:/Users/kimen/AppData/Local/Microsoft/WinGet/Packages/Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe/ffmpeg-8.1.1-full_build/bin/ffmpeg.exe";
 const JAR = "C:/Program Files/Eclipse Adoptium/jdk-17.0.19.10-hotspot/bin/jar.exe";
 const LIBRARY = join(homedir(), ".studio", "library");
@@ -40,11 +42,11 @@ rmSync(tmp, { recursive: true, force: true });
 mkdirSync(join(tmp, "staging", "assets"), { recursive: true });
 
 // ─── 1. Récit complet : +300ms silence tête (anti-coupe) puis loudnorm, 44100 mono 128k ─
-run(FFMPEG, ["-y", "-i", AUDIO_SRC, "-af", "adelay=300:all=1,loudnorm",
+run(FFMPEG, ["-y", "-i", AUDIO_SRC, "-af", "adelay=300:all=1,loudnorm=I=-13:TP=-1.5:LRA=11",
   "-ar", "44100", "-ac", "1", "-b:a", "128k", join(tmp, "recit.mp3")], "ffmpeg recit");
 
 // ─── 2. Cover audio : bumper = 8 premières secondes (intro orchestrale) + pad + loudnorm ─
-run(FFMPEG, ["-y", "-i", AUDIO_SRC, "-t", "8", "-af", "adelay=300:all=1,loudnorm",
+run(FFMPEG, ["-y", "-i", AUDIO_SRC, "-t", "8", "-af", "adelay=300:all=1,loudnorm=I=-13:TP=-1.5:LRA=11",
   "-ar", "44100", "-ac", "1", "-b:a", "128k", join(tmp, "cover.mp3")], "ffmpeg cover audio");
 
 // ─── 3. Image 320x240 (4:3 natif → pas de bandes), pad noir (écran rétro-éclairé), sans alpha ─

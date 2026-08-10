@@ -31,6 +31,10 @@ sprint-log du **pôle source** (dino ou narration), pas ici.
 5. 🔒 **UUIDs figés dans les scripts** → un rebuild ne crée pas de doublon côté Lunii.
 6. 🔒 **Packs (zips) hors git** : ils vivent dans `~/.studio/library/`. Seuls les
    **scripts de build** (rejouables) sont versionnés dans `scripts/`.
+7. 🔒 **Source de vérité = [`packs-manifest.json`](packs-manifest.json)** : tout pack
+   créé est déposé dans `~/.studio/library/` PUIS ajouté au manifest, et les boîtes se
+   synchronisent uniquement via `node scripts/sync-lunii.mjs` (skill `lunii-sync`).
+   Jamais de transfert à la main hors sync.
 
 ---
 
